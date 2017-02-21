@@ -1,45 +1,50 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH net-next v2] macsec: fix validation failed in asynchronous operation.
-Date: Tue, 21 Feb 2017 17:40:45 +0800
-Message-ID: <1487670045-54641-1-git-send-email-ryder.lee@mediatek.com>
+From: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 1/1] thermal: mt8173: minor mtk_thermal.c cleanups
+Date: Tue, 21 Feb 2017 20:26:52 +0800
+Message-ID: <1487680012-61948-2-git-send-email-dawei.chien@mediatek.com>
+References: <1487680012-61948-1-git-send-email-dawei.chien@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: "David S. Miller" <davem@davemloft.net>, Sabrina Dubroca <sd@queasysnail.net>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1487680012-61948-1-git-send-email-dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Fan Chen <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Stable <stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-MACSec test failed when asynchronous crypto operations is used. It
-encounters packet validation failed since macsec_skb_cb(skb)->valid
-is always 'false'.
+If thermal bank with 4 sensors, thermal driver should read TEMP_MSR3.
 
-This patch adds missing "macsec_skb_cb(skb)->valid = true" in
-macsec_decrypt_done() when "err == 0".
+However, currently thermal driver would not read TEMP_MSR3 since mt8173
+thermal driver only use 3 sensors on each thermal bank at the same time,
+so this patch would not effect temperature.
+Only if mt mt8173 thermal driver use 4 sensors on any thermal bank, would
+read third sensor two times, and lose fourth sensor of vale.
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+cc: stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Fixes: b7cf0053738c ("thermal: Add Mediatek thermal driver for mt2701.")
+Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
-Changes since v2:
-- fix indentation and replace "err == 0" with "!err".
-Changes since v1:
-- add "err == 0" to check decrypt status.
+ drivers/thermal/mtk_thermal.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/net/macsec.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/net/macsec.c b/drivers/net/macsec.c
-index f83cf66..899853a 100644
---- a/drivers/net/macsec.c
-+++ b/drivers/net/macsec.c
-@@ -879,6 +879,9 @@ static void macsec_decrypt_done(struct crypto_async_request *base, int err)
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index 34169c3..c124151 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -191,7 +191,7 @@ struct mtk_thermal {
+ };
  
- 	aead_request_free(macsec_skb_cb(skb)->req);
+ const int mt8173_msr[MT8173_NUM_SENSORS_PER_ZONE] = {
+-	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR2
++	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR3
+ };
  
-+	if (!err)
-+		macsec_skb_cb(skb)->valid = true;
-+
- 	rcu_read_lock_bh();
- 	pn = ntohl(macsec_ethhdr(skb)->packet_number);
- 	if (!macsec_post_decrypt(skb, &macsec->secy, pn)) {
+ const int mt8173_adcpnp[MT8173_NUM_SENSORS_PER_ZONE] = {
 -- 
 1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
