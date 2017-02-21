@@ -1,24 +1,29 @@
-From: Dawei Chien <dawei.chien@mediatek.com>
-Subject: [PATCH v2 0/1] thermal: mt8173: minor mtk_thermal.c cleanups
-Date: Tue, 21 Feb 2017 20:26:51 +0800
-Message-ID: <1487680012-61948-1-git-send-email-dawei.chien@mediatek.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH net-next v2] macsec: fix validation failed in
+ asynchronous operation.
+Date: Tue, 21 Feb 2017 13:14:11 -0500 (EST)
+Message-ID: <20170221.131411.2277956930369431131.davem@davemloft.net>
+References: <1487670045-54641-1-git-send-email-ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@armlinux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Fan Chen <fan.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Erin Lo <erin.lo@mediatek.com>, Stable <stable@vger.kernel.org>
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1487670045-54641-1-git-send-email-ryder.lee@mediatek.com>
+Sender: netdev-owner@vger.kernel.org
+To: ryder.lee@mediatek.com
+Cc: sd@queasysnail.net, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-If thermal bank with 4 sensors, thermal driver should read TEMP_MSR3.
+From: Ryder Lee <ryder.lee@mediatek.com>
+Date: Tue, 21 Feb 2017 17:40:45 +0800
 
-However, currently thermal driver would not read TEMP_MSR3 since mt8173
-thermal driver only use 3 sensors on each thermal bank at the same time,
-so this patch would not effect temperature.
-Only if mt mt8173 thermal driver use 4 sensors on any thermal bank, would
-read third sensor two times, and lose fourth sensor of vale.
+> MACSec test failed when asynchronous crypto operations is used. It
+> encounters packet validation failed since macsec_skb_cb(skb)->valid
+> is always 'false'.
+> 
+> This patch adds missing "macsec_skb_cb(skb)->valid = true" in
+> macsec_decrypt_done() when "err == 0".
+> 
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 
-Change since V1:
-1. Update commis message
- a. Add Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
- b. Add tag Fixes: b7cf0053738c ("thermal: Add Mediatek thermal driver for mt2701.")
+Applied, thanks.
