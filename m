@@ -1,86 +1,93 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: mediatek: add I2C dependency for
-	CS42XX8" to the asoc tree
-Date: Tue, 21 Feb 2017 15:05:10 -0800
-Message-ID: <E1cgJUc-0004l6-Gv@finisterre>
-References: <20170221220108.200734-1-arnd@arndb.de>
+From: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v20 2/4] mailbox: mediatek: Add Mediatek CMDQ driver
+Date: Wed, 22 Feb 2017 11:12:30 +0800
+Message-ID: <1487733150.15869.11.camel@mtksdaap41>
+References: <1483499169-16329-1-git-send-email-hs.liao@mediatek.com>
+         <1483499169-16329-3-git-send-email-hs.liao@mediatek.com>
+         <CABb+yY23TUB8NpmpiO=cCmVFAVJMqKPfGgX14j+_Yj7tJvMOuQ@mail.gmail.com>
+         <1485419833.990.1.camel@mtksdaap41>
+         <CABb+yY13VaFpYz6EExvAXLpAqEWDJ4R50WG0DYbXO6iCESbA5A@mail.gmail.com>
+         <1486359476.11424.33.camel@mtksdaap41>
+         <CABb+yY0jCGqnrMLkkTNoEmLX4jDstWh7-UYhDyKjV-gFOnxpsg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170221220108.200734-1-arnd@arndb.de>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Koro Chen <koro.chen@mediatek.com>, alsa-devel@alsa-project.org, Garlic Tseng <garlic.tseng@mediatek.com>, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CABb+yY0jCGqnrMLkkTNoEmLX4jDstWh7-UYhDyKjV-gFOnxpsg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jassi Brar <jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Devicetree List <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jo
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+On Thu, 2017-02-16 at 21:02 +0530, Jassi Brar wrote:
+> On Mon, Feb 6, 2017 at 11:07 AM, Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> > Hi Jassi,
+> >
+> > On Wed, 2017-02-01 at 10:52 +0530, Jassi Brar wrote:
+> >> On Thu, Jan 26, 2017 at 2:07 PM, Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> >> > Hi Jassi,
+> >> >
+> >> > On Thu, 2017-01-26 at 10:08 +0530, Jassi Brar wrote:
+> >> >> On Wed, Jan 4, 2017 at 8:36 AM, HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> >> >>
+> >> >> > diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+> >> >> > new file mode 100644
+> >> >> > index 0000000..747bcd3
+> >> >> > --- /dev/null
+> >> >> > +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> >> >>
+> >> >> ...
+> >> >>
+> >> >> > +static void cmdq_task_exec(struct cmdq_pkt *pkt, struct cmdq_thread *thread)
+> >> >> > +{
+> >> >> > +       struct cmdq *cmdq;
+> >> >> > +       struct cmdq_task *task;
+> >> >> > +       unsigned long curr_pa, end_pa;
+> >> >> > +
+> >> >> > +       cmdq = dev_get_drvdata(thread->chan->mbox->dev);
+> >> >> > +
+> >> >> > +       /* Client should not flush new tasks if suspended. */
+> >> >> > +       WARN_ON(cmdq->suspended);
+> >> >> > +
+> >> >> > +       task = kzalloc(sizeof(*task), GFP_ATOMIC);
+> >> >> > +       task->cmdq = cmdq;
+> >> >> > +       INIT_LIST_HEAD(&task->list_entry);
+> >> >> > +       task->pa_base = dma_map_single(cmdq->mbox.dev, pkt->va_base,
+> >> >> > +                                      pkt->cmd_buf_size, DMA_TO_DEVICE);
+> >> >> >
+> >> >> You seem to parse the requests and responses, that should ideally be
+> >> >> done in client driver.
+> >> >> Also, we are here in atomic context, can you move it in client driver
+> >> >> (before the spin_lock)?
+> >> >> Maybe by adding a new 'pa_base' member as well in 'cmdq_pkt'.
+> >> >
+> >> > will do
+> >
+> > I agree with moving dma_map_single out from spin_lock.
+> >
+> > However, mailbox clients cannot map virtual memory to mailbox
+> > controller's device for DMA.
+> >
+> If DMA is a resource used by MBox to transfer data, then yes the
+> mapping needs to be done in the Mbox controller driver. To map memory
+> outside of spinlock, you could schedule a tasklet in send_data() ?
 
-   ASoC: mediatek: add I2C dependency for CS42XX8
+Hi Jassi,
 
-has been applied to the asoc tree at
+For CMDQ, the order of CMDQ tasks should be guaranteed.
+However, it seems tasklet cannot ensure this requirement.
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+Quote from Linux Device Drivers 3rd edition ch7.
+"void tasklet_schedule(struct tasklet_struct *t);
+  Schedule the tasklet for execution. If a tasklet is scheduled again
+before it has a chance to run, it runs only once...."
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+May I use workqueue instead of tasklet?
 
 Thanks,
-Mark
+HS
 
->From 72cedf599fcebfd6cd2550274d7855838068d28c Mon Sep 17 00:00:00 2001
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Tue, 21 Feb 2017 23:00:46 +0100
-Subject: [PATCH] ASoC: mediatek: add I2C dependency for CS42XX8
-
-We should not select drivers that depend on I2C when that is disabled,
-as it results in a build error:
-
-warning: (SND_SOC_MT2701_CS42448) selects SND_SOC_CS42XX8_I2C which has unmet direct dependencies (SOUND && !M68K && !UML && SND && SND_SOC && I2C)
-sound/soc/codecs/cs42xx8-i2c.c:60:1: warning: data definition has no type or storage class
- module_i2c_driver(cs42xx8_i2c_driver);
-sound/soc/codecs/cs42xx8-i2c.c:60:1: error: type defaults to 'int' in declaration of 'module_i2c_driver' [-Werror=implicit-int]
-
-Fixes: 1f458d53f76c ("ASoC: mediatek: Add mt2701-cs42448 driver and config option.")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/mediatek/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index 05cf809cf9e1..d7013bde6f45 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -13,7 +13,7 @@ config SND_SOC_MT2701
- 
- config SND_SOC_MT2701_CS42448
- 	tristate "ASoc Audio driver for MT2701 with CS42448 codec"
--	depends on SND_SOC_MT2701
-+	depends on SND_SOC_MT2701 && I2C
- 	select SND_SOC_CS42XX8_I2C
- 	select SND_SOC_BT_SCO
- 	help
--- 
-2.11.0
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
