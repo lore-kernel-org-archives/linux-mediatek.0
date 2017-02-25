@@ -1,31 +1,79 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4 1/3] mmc: dt-bindings: update Mediatek MMC bindings
-Date: Fri, 24 Feb 2017 16:47:42 -0600
-Message-ID: <CAL_Jsq+eo-Fy8Wf2yZpE3Ufp4V_7Gn+w9fTyjZDP6V7tY-=gdw@mail.gmail.com>
-References: <1484988923-1543-1-git-send-email-yong.mao@mediatek.com>
- <1484988923-1543-2-git-send-email-yong.mao@mediatek.com> <CAPDyKFqo7fMTp3YPJwgoa4u3iAie2U884VUfTnMQ_js8neMqTQ@mail.gmail.com>
- <1487930376.22858.14.camel@mhfsdcap03>
+From: Ingo Molnar <mingo@kernel.org>
+Subject: Re: [WARNING: A/V UNSCANNABLE][Merge tag 'media/v4.11-1' of git]
+ ff58d005cd: BUG: unable to handle kernel NULL pointer dereference at
+ 0000039c
+Date: Sat, 25 Feb 2017 10:07:41 +0100
+Message-ID: <20170225090741.GA20463@gmail.com>
+References: <58b07b30.9XFLj9Hhl7F6HMc2%fengguang.wu@intel.com>
+ <CA+55aFytXj+TZ_TanbxcY0KgRTrV7Vvr=fWON8tioUGmYHYiNA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1487930376.22858.14.camel@mhfsdcap03>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-leds-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CA+55aFytXj+TZ_TanbxcY0KgRTrV7Vvr=fWON8tioUGmYHYiNA@mail.gmail.com>
+Sender: linux-leds-owner@vger.kernel.org
+To: Linus Torvalds <torvalds@linux-foundation.org>
+Cc: kernel test robot <fengguang.wu@intel.com>, Thomas Gleixner <tglx@linutronix.de>, Mauro Carvalho Chehab <mchehab@infradead.org>, Sean Young <sean@mess.org>, Ruslan Ruslichenko <rruslich@cisco.com>, LKP <lkp@01.org>, "linux-input@vger.kernel.org" <linux-input@vger.kernel.org>, "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>, kernel@stlinux.com, Linux Media Mailing List <linux-media@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Linux LED Subsystem <linux-leds@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, wfg@linux.intel.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Feb 24, 2017 at 3:59 AM, Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> Dear Rob,
->
-> Could you please help to make comments for this patch?
-> Thanks.
 
-I already did comment. It's still wrong as Ulf commented. So fix and
-send a new version. It has to go to the DT list if you want to be in
-my queue.
+* Linus Torvalds <torvalds@linux-foundation.org> wrote:
 
-Rob
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> I'm pretty sure that the thing that triggered this is once more commit
+> a9b4f08770b4 ("x86/ioapic: Restore IO-APIC irq_chip retrigger
+> callback") which seems to retrigger stale irqs that simply should not
+> be retriggered.
+> 
+> They aren't actually active any more, if they ever were.
+> 
+> So that commit seems to act like a random CONFIG_DEBUG_SHIRQ. It's
+> good for testing, but not good for actual users.
+
+Yeah, so some distros like Fedora already have CONFIG_DEBUG_SHIRQ=y enabled, but 
+part of the problem is that CONFIG_DEBUG_SHIRQ=y has this:
+
+#ifdef CONFIG_DEBUG_SHIRQ_FIXME
+        if (!retval && (irqflags & IRQF_SHARED)) {
+                /*
+                 * It's a shared IRQ -- the driver ought to be prepared for it
+                 * to happen immediately, so let's make sure....
+                 * We disable the irq to make sure that a 'real' IRQ doesn't
+                 * run in parallel with our fake.
+                 */
+                unsigned long flags;
+
+                disable_irq(irq);
+                local_irq_save(flags);
+
+                handler(irq, dev_id);
+
+                local_irq_restore(flags);
+                enable_irq(irq);
+        }
+#endif
+
+Note that the '_FIXME' postfix effectively turns off this particular debug check 
+...
+
+Thomas and me realized this risk a week ago ago, and tried to resurrect full 
+CONFIG_DEBUG_SHIRQ=y functionality to more reliably trigger these problems:
+
+  https://lkml.org/lkml/2017/2/15/341
+
+... but were forced to revert that fix because it's not working on x86 yet (it's 
+crashing). We also thought we fixed the problems exposed in drivers, as the 
+retrigger changes have been in -tip and -next for some time, but were clearly too 
+optimistic about that.
+
+So, should we revert the hw-retrigger change:
+
+  a9b4f08770b4 x86/ioapic: Restore IO-APIC irq_chip retrigger callback
+
+... until we managed to fix CONFIG_DEBUG_SHIRQ=y? If you'd like to revert it 
+upstream straight away:
+
+Acked-by: Ingo Molnar <mingo@kernel.org>
+
+Thanks,
+
+	Ingo
