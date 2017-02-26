@@ -1,57 +1,125 @@
-From: Linus Torvalds <torvalds@linux-foundation.org>
-Subject: Re: [WARNING: A/V UNSCANNABLE][Merge tag 'media/v4.11-1' of git]
- ff58d005cd: BUG: unable to handle kernel NULL pointer dereference at 0000039c
-Date: Sat, 25 Feb 2017 10:02:44 -0800
-Message-ID: <CA+55aFy+ER8cYV02eZsKAOLnZBWY96zNWqUFWSWT1+3sZD4XnQ@mail.gmail.com>
-References: <58b07b30.9XFLj9Hhl7F6HMc2%fengguang.wu@intel.com>
- <CA+55aFytXj+TZ_TanbxcY0KgRTrV7Vvr=fWON8tioUGmYHYiNA@mail.gmail.com> <20170225090741.GA20463@gmail.com>
+From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
+Subject: Re: [PATCH v4 1/4] Documentation: devicetree: Add document bindings
+ for leds-mt6323
+Date: Sun, 26 Feb 2017 18:35:11 +0100
+Message-ID: <709ff2c2-38f3-a3dd-f686-de3db873997d@gmail.com>
+References: <1487962041-6548-1-git-send-email-sean.wang@mediatek.com>
+ <1487962041-6548-2-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-input-owner@vger.kernel.org>
-In-Reply-To: <20170225090741.GA20463@gmail.com>
-Sender: linux-input-owner@vger.kernel.org
-To: Ingo Molnar <mingo@kernel.org>
-Cc: kernel test robot <fengguang.wu@intel.com>, Thomas Gleixner <tglx@linutronix.de>, Mauro Carvalho Chehab <mchehab@infradead.org>, Sean Young <sean@mess.org>, Ruslan Ruslichenko <rruslich@cisco.com>, LKP <lkp@01.org>, "linux-input@vger.kernel.org" <linux-input@vger.kernel.org>, "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>, kernel@stlinux.com, Linux Media Mailing List <linux-media@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Linux LED Subsystem <linux-leds@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, wfg@linux.intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1487962041-6548-2-git-send-email-sean.wang@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: sean.wang@mediatek.com, rpurdie@rpsys.net, lee.jones@linaro.org, matthias.bgg@gmail.com, pavel@ucw.cz, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: devicetree@vger.kernel.org, keyhaede@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Feb 25, 2017 at 1:07 AM, Ingo Molnar <mingo@kernel.org> wrote:
->
-> So, should we revert the hw-retrigger change:
->
->   a9b4f08770b4 x86/ioapic: Restore IO-APIC irq_chip retrigger callback
->
-> ... until we managed to fix CONFIG_DEBUG_SHIRQ=y? If you'd like to revert it
-> upstream straight away:
->
-> Acked-by: Ingo Molnar <mingo@kernel.org>
+Hi Sean,
 
-So I'm in no huge hurry to revert that commit as long as we're still
-in the merge window or early -rc's.
+Thanks for the update. I have one comment below.
 
->From a debug standpoint, the spurious early interrupts are fine, and
-hopefully will help us find more broken drivers.
+On 02/24/2017 07:47 PM, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> This patch adds documentation for devicetree bindings
+> for LED support on MT6323 PMIC
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  .../devicetree/bindings/leds/leds-mt6323.txt       | 64 ++++++++++++++++++++++
+>  1 file changed, 64 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/leds/leds-mt6323.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/leds/leds-mt6323.txt b/Documentation/devicetree/bindings/leds/leds-mt6323.txt
+> new file mode 100644
+> index 0000000..950b8c6
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/leds/leds-mt6323.txt
+> @@ -0,0 +1,64 @@
+> +Device Tree Bindings for LED support on MT6323 PMIC
+> +
+> +MT6323 LED controller is subfunction provided by
+> +MT6323 PMIC, so the LED controllers are defined as
+> +the subnode of the function node provided by MT6323
+> +PMIC controller that is being defined as one kind of
+> +Muti-Function Device (MFD) using shared bus called
+> +PMIC wrapper for each subfunction to access remote
+> +MT6323 PMIC hardware.
+> +
+> +For MT6323 MFD bindings see:
+> +Documentation/devicetree/bindings/mfd/mt6397.txt
+> +For MediaTek PMIC wrapper bindings see:
+> +Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> +
+> +There's sub-node for the LED controller that describes
+> +the initial behavior for each LED physically and currently
+> +only four LED sub-nodes can be supported.
+> +
+> +Required properties:
+> +- compatible : Must be "mediatek,mt6323-led"
+> +- reg : LED channel number (0..3)
+> +
+> +Optional properties:
+> +- label : (optional)
+> +  see Documentation/devicetree/bindings/leds/common.txt
+> +- linux,default-trigger : (optional)
+> +  see Documentation/devicetree/bindings/leds/common.txt
+> +- default-state: (optional) The initial state of the LED
+> +  see Documentation/devicetree/bindings/leds/common.txt
+> +
+> +Example:
+> +
+> +&pwrap {
+> +	pmic: mt6323 {
+> +		compatible = "mediatek,mt6323";
+> +		interrupt-parent = <&pio>;
+> +		interrupts = <150 IRQ_TYPE_LEVEL_HIGH>;
+> +		interrupt-controller;
+> +		#interrupt-cells = <2>;
+> +
+> +		mt6323led: mt6323led{
+> +			compatible = "mediatek,mt6323-led";
 
-It's just that I'd like to revert it before the actual 4.11 release,
-unless we can find a better solution.
+You require here also:
 
-Because it really seems like the interrupt re-trigger is entirely
-bogus. It's not an _actual_ "re-trigger the interrupt that may have
-gotten lost", it's some code that ends up triggering it for no good
-reason.
+#address-cells = <1>;
+#size-cells = <0>;
 
-So I'd actually hope that we could figure out why IRQS_PENDING got
-set, and perhaps fix the underlying cause?
+Without these entries you should notice a warning from dtc compiler.
 
-There are several things that set IRQS_PENDING, ranging from "try to
-test mis-routed interrupts while irqd was working", to "prepare for
-suspend losing the irq for us", to "irq auto-probing uses it on
-unassigned probable irqs".
 
-The *actual* reason to re-send, namely getting a nested irq that we
-had to drop because we got a second one while still handling the first
-(or because it was disabled), is just one case.
+> +
+> +			led0: isink0 {
+> +				reg = <0>;
+> +				label = "LED0"
+> +				linux,default-trigger = "timer";
+> +				default-state = "on";
+> +			};
+> +			led1: isink1 {
+> +				reg = <1>;
+> +				label = "LED1";
+> +				default-state = "on";
+> +			};
+> +			led2: isink2 {
+> +				reg = <2>;
+> +				label = "LED2";
+> +				linux,default-trigger = "timer";
+> +				default-state = "off";
+> +			};
+> +		};
+> +	};
+> +};
+> 
 
-Personally, I'd suspect some left-over state from auto-probing earlier
-in the boot, but I don't know. Could we fix that underlying issue?
-
-                 Linus
+-- 
+Best regards,
+Jacek Anaszewski
