@@ -1,58 +1,76 @@
-From: Tony Lindgren <tony@atomide.com>
-Subject: Re: [WARNING: A/V UNSCANNABLE][Merge tag 'media/v4.11-1' of git]
- ff58d005cd: BUG: unable to handle kernel NULL pointer dereference at
- 0000039c
-Date: Mon, 27 Feb 2017 08:26:39 -0800
-Message-ID: <20170227162639.GN21809@atomide.com>
-References: <58b07b30.9XFLj9Hhl7F6HMc2%fengguang.wu@intel.com>
- <CA+55aFytXj+TZ_TanbxcY0KgRTrV7Vvr=fWON8tioUGmYHYiNA@mail.gmail.com>
- <20170225090741.GA20463@gmail.com>
- <CA+55aFy+ER8cYV02eZsKAOLnZBWY96zNWqUFWSWT1+3sZD4XnQ@mail.gmail.com>
- <alpine.DEB.2.20.1702271105090.4732@nanos>
- <alpine.DEB.2.20.1702271231410.4732@nanos>
- <20170227154124.GA20569@gmail.com>
- <20170227160750.GM21809@atomide.com>
- <alpine.DEB.2.20.1702271712470.4732@nanos>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 1/2] Documentation: devicetree: Add i2c binding for
+ mediatek MT2701 Soc Platform
+Date: Mon, 27 Feb 2017 11:14:27 -0600
+Message-ID: <20170227171427.4szwecmvn3qzytjz@rob-hp-laptop>
+References: <1487125976-25243-1-git-send-email-jun.gao@mediatek.com>
+ <1487125976-25243-2-git-send-email-jun.gao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-leds-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.20.1702271712470.4732@nanos>
-Sender: linux-leds-owner@vger.kernel.org
-To: Thomas Gleixner <tglx@linutronix.de>
-Cc: Ingo Molnar <mingo@kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Ruslan Ruslichenko <rruslich@cisco.com>, "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>, kernel@stlinux.com, Sean Young <sean@mess.org>, wfg@linux.intel.com, Peter Zijlstra <peterz@infradead.org>, Linus Torvalds <torvalds@linux-foundation.org>, LKML <linux-kernel@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, linux-mediatek@lists.infradead.org, Linux LED Subsystem <linux-leds@vger.kernel.org>, "linux-input@vger.kernel.org" <linux-input@vger.kernel.org>, linux-amlogic@lists.infradead.org, kernel test robot <fengguang.wu@intel.com>, LKP <lkp@01.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>Linux
+In-Reply-To: <1487125976-25243-2-git-send-email-jun.gao@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Jun Gao <jun.gao@mediatek.com>
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Wolfram Sang <wsa@the-dreams.de>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-* Thomas Gleixner <tglx@linutronix.de> [170227 08:20]:
-> On Mon, 27 Feb 2017, Tony Lindgren wrote:
-> > * Ingo Molnar <mingo@kernel.org> [170227 07:44]:
-> > > Because it's not the requirement that hurts primarily, but the resulting 
-> > > non-determinism and the sporadic crashes. Which can be solved by making the race 
-> > > deterministic via the debug facility.
-> > > 
-> > > If the IRQ handler crashed the moment it was first written by the driver author 
-> > > we'd never see these problems.
-> > 
-> > Just in case this is PM related.. Maybe the spurious interrupt is pending
-> > from earlier? This could be caused by glitches on the lines with runtime PM,
-> > or a pending interrupt during suspend/resume. In that case IRQ_DISABLE_UNLAZY
-> > might provide more clues if the problem goes away.
+On Wed, Feb 15, 2017 at 10:32:55AM +0800, Jun Gao wrote:
+> From: Jun Gao <jun.gao@mediatek.com>
 > 
-> It's not PM related.  That's just silly hardware. At the moment when you
-> enable some magic bit in the control register, which is required to probe
-> the version, the fricking thing spits out a spurious interrupt despite the
-> interrupt enable bit in the same control register being still disabled. Of
-> course we cannot install an interrupt handler before having probed the
-> version and setup other stuff, except we add magic 'if (!initialized)'
-> crappola into the handler and lose the ability to install version dependent
-> handlers afterwards.
+> Add i2c DT binding to i2c-mt6577.txt for MT2701 and there is no need to modify i2c driver.
 
-OK and presumably no -EPROBE_DEFER happening either.
+Wrap your lines.
 
-> Wonderful crap that, isn't it?
+> 
+> Change-Id: I892f866d755aa3865bffd1a80884cd41b6ecc1f1
 
-Sounds broken..
+Remove Gerrit Ids.
 
-Regards,
+> Signed-off-by: Jun Gao <jun.gao@mediatek.com>
+> ---
+>  .../devicetree/bindings/i2c/i2c-mt6577.txt         |   11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+> index 0ce6fa3..ef22ecf 100644
+> --- a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+> +++ b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+> @@ -4,11 +4,12 @@ The Mediatek's I2C controller is used to interface with I2C devices.
+>  
+>  Required properties:
+>    - compatible: value should be either of the following.
+> -      (a) "mediatek,mt6577-i2c", for i2c compatible with mt6577 i2c.
+> -      (b) "mediatek,mt6589-i2c", for i2c compatible with mt6589 i2c.
+> -      (c) "mediatek,mt8127-i2c", for i2c compatible with mt8127 i2c.
+> -      (d) "mediatek,mt8135-i2c", for i2c compatible with mt8135 i2c.
+> -      (e) "mediatek,mt8173-i2c", for i2c compatible with mt8173 i2c.
+> +	"mediatek,mt2701-i2c", for i2c compatible with mt2701 i2c.
+> +	"mediatek,mt6577-i2c", for i2c compatible with mt6577 i2c.
+> +	"mediatek,mt6589-i2c", for i2c compatible with mt6589 i2c.
+> +	"mediatek,mt8127-i2c", for i2c compatible with mt8127 i2c.
+> +	"mediatek,mt8135-i2c", for i2c compatible with mt8135 i2c.
+> +	"mediatek,mt8173-i2c", for i2c compatible with mt8173 i2c.
 
-Tony
+All the parts after the compatible strings are a bit redundant. Just 
+drop them.
+
+>    - reg: physical base address of the controller and dma base, length of memory
+>      mapped region.
+>    - interrupts: interrupt number to the cpu.
+> -- 
+> 1.7.9.5
+> 
+> --
+> To unsubscribe from this list: send the line "unsubscribe devicetree" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
