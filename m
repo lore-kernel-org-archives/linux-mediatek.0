@@ -1,90 +1,77 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/4] dt-bindings: dma: uart: add uart dma bindings
-Date: Mon, 27 Feb 2017 09:22:26 -0600
-Message-ID: <20170227152226.g4zokauxii2nuyxn@rob-hp-laptop>
-References: <1487243251-964-1-git-send-email-long.cheng@mediatek.com>
- <1487243251-964-2-git-send-email-long.cheng@mediatek.com>
+From: Ingo Molnar <mingo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [WARNING: A/V UNSCANNABLE][Merge tag 'media/v4.11-1' of git]
+ ff58d005cd: BUG: unable to handle kernel NULL pointer dereference at
+ 0000039c
+Date: Mon, 27 Feb 2017 16:41:24 +0100
+Message-ID: <20170227154124.GA20569@gmail.com>
+References: <58b07b30.9XFLj9Hhl7F6HMc2%fengguang.wu@intel.com>
+ <CA+55aFytXj+TZ_TanbxcY0KgRTrV7Vvr=fWON8tioUGmYHYiNA@mail.gmail.com>
+ <20170225090741.GA20463@gmail.com>
+ <CA+55aFy+ER8cYV02eZsKAOLnZBWY96zNWqUFWSWT1+3sZD4XnQ@mail.gmail.com>
+ <alpine.DEB.2.20.1702271105090.4732@nanos>
+ <alpine.DEB.2.20.1702271231410.4732@nanos>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1487243251-964-2-git-send-email-long.cheng@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Long Cheng <long.cheng@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Vinod Koul <vinod.koul@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, dmaengine@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, Jiri Slaby <jslaby@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <alpine.DEB.2.20.1702271231410.4732@nanos>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
+Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ruslan Ruslichenko <rruslich-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, "linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Sean Young <sean-hENCXIMQXOg@public.gmane.org>, wfg-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Linus Torvalds <torvalds-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Mauro Carvalho Chehab <mchehab-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux LED Subsystem <linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel test robot <fengguang.wu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, LKP <lkp-JC7UmRfGjtg@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Feb 16, 2017 at 07:07:28PM +0800, Long Cheng wrote:
-> add uart dma bindings
 
-This and the subject need to be more specific in that this is for 
-Mediatek.
+* Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org> wrote:
 
+> The pending interrupt issue happens, at least on my test boxen, mostly on
+> the 'legacy' interrupts (0 - 15). But even the IOAPIC interrupts >=16
+> happen occasionally.
+>
 > 
-> Signed-off-by: Long Cheng <long.cheng@mediatek.com>
-> ---
->  .../devicetree/bindings/dma/mtk_uart_dma.txt       |   32 ++++++++++++++++++++
-
-mediatek,uart-dma.txt for filename.
-
->  1 file changed, 32 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/dma/mtk_uart_dma.txt
+>  - Spurious interrupts on IRQ7, which are triggered by IRQ 0 (PIT/HPET). On
+>    one of the affected machines this stops when the interrupt system is
+>    switched to interrupt remapping !?!?!?
 > 
-> diff --git a/Documentation/devicetree/bindings/dma/mtk_uart_dma.txt b/Documentation/devicetree/bindings/dma/mtk_uart_dma.txt
-> new file mode 100644
-> index 0000000..b8aa7f4
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/dma/mtk_uart_dma.txt
-> @@ -0,0 +1,32 @@
-> +* Mediatek UART APDMA Controller
-
-Is the block really for UARTs only or just happens to be connected to 
-UARTs. For the latter, you should drop UART here and in the compatible.
-
-> +
-> +Required properties:
-> +- compatible should contain:
-> +  * "mediatek,mt2701-uart-dma" for MT2701 compatible APDMA
-> +  * "mediatek,mt6577-uart-dma" for MT6577 and all of the above
-> +
-> +- reg: The base address of the APDMA register bank.
-> +
-> +- interrupts: A single interrupt specifier.
-> +
-> +- clocks : Must contain an entry for each entry in clock-names.
-> +  See ../clocks/clock-bindings.txt for details.
-> +- clock-names: The APDMA clock for register accesses
-
-Needs to list "apdma" here. Is apdma really the right name here? It 
-should be the name of the input to this block.
-
-> +
-> +Examples:
-> +
-> +	apdma: dma-controller@11000380 {
-> +		compatible = "mediatek,mt2701-uart-dma";
-> +		reg = <0 0x11000380 0 0x400>;
-> +		interrupts = <GIC_SPI 63 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 64 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 65 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 66 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 67 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 68 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 69 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 70 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&pericfg CLK_PERI_AP_DMA>;
-> +		clock-names = "apdma";
-> +		#dma-cells = <1>;
-> +	};
-> -- 
-> 1.7.9.5
+>  - Spurious interrupts on various interrupt lines, which are triggered by
+>    IOAPIC interrupts >= IRQ16. That's a known issue on quite some chipsets
+>    that the legacy PCI interrupt (which is used when IOAPIC is disabled) is
+>    triggered when the IOAPIC >=16 interrupt fires.
 > 
+>  - Spurious interrupt caused by driver probing itself. I.e. the driver
+>    probing code causes an interrupt issued from the device
+>    inadvertently. That happens even on IRQ >= 16.
+> 
+>    This problem might be handled by the device driver code itself, but
+>    that's going to be ugly. See below.
+
+That's pretty colorful behavior...
+
+> We can try to sample more data from the machines of affected users, but I doubt 
+> that it will give us more information than confirming that we really have to 
+> deal with all that hardware wreckage out there in some way or the other.
+
+BTW., instead of trying to avoid the scenario, wow about moving in the other 
+direction: making CONFIG_DEBUG_SHIRQ=y unconditional property in the IRQ core code 
+starting from v4.12 or so, i.e. requiring device driver IRQ handlers to handle the 
+invocation of IRQ handlers at pretty much any moment. (We could also extend it a 
+bit, such as invoking IRQ handlers early after suspend/resume wakeup.)
+
+Because it's not the requirement that hurts primarily, but the resulting 
+non-determinism and the sporadic crashes. Which can be solved by making the race 
+deterministic via the debug facility.
+
+If the IRQ handler crashed the moment it was first written by the driver author 
+we'd never see these problems.
+
+Thanks,
+
+	Ingo
