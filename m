@@ -1,21 +1,15 @@
-From: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
-Subject: Re: [WARNING: A/V UNSCANNABLE][Merge tag 'media/v4.11-1' of git]
- ff58d005cd: BUG: unable to handle kernel NULL pointer dereference at
- 0000039c
-Date: Tue, 28 Feb 2017 11:51:25 +0100 (CET)
-Message-ID: <alpine.DEB.2.20.1702281103590.4732@nanos>
-References: <58b07b30.9XFLj9Hhl7F6HMc2%fengguang.wu@intel.com>
- <CA+55aFytXj+TZ_TanbxcY0KgRTrV7Vvr=fWON8tioUGmYHYiNA@mail.gmail.com>
- <20170225090741.GA20463@gmail.com>
- <CA+55aFy+ER8cYV02eZsKAOLnZBWY96zNWqUFWSWT1+3sZD4XnQ@mail.gmail.com>
- <alpine.DEB.2.20.1702271105090.4732@nanos>
- <alpine.DEB.2.20.1702271231410.4732@nanos> <20170227154124.GA20569@gmail.com>
- <CA+55aFxwtkOs95R-v7z8yjguvp91oDTxRKs-x3uN_=sM_33Gvg@mail.gmail.com>
+From: Laura Abbott <labbott-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH] arm64: dump: hide kernel pointers
+Date: Tue, 28 Feb 2017 14:55:51 -0800
+Message-ID: <ae6f608f-6c84-b999-d238-a74f6f42d2e5@redhat.com>
+References: <1488265536-20441-1-git-send-email-miles.chen@mediatek.com>
+ <CAKv+Gu_AG0n5jPDCuUD6tvr2sAz9a4sycDy9CtL4iT+OHiN_iQ@mail.gmail.com>
+ <20170228100420.GA3691@leverpostej>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CA+55aFxwtkOs95R-v7z8yjguvp91oDTxRKs-x3uN_=sM_33Gvg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <20170228100420.GA3691@leverpostej>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -25,66 +19,134 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Linus Torvalds <torvalds-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>
-Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ruslan Ruslichenko <rruslich-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, "linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Sean Young <sean-hENCXIMQXOg@public.gmane.org>, wfg-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Mauro Carvalho Chehab <mchehab-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux LED Subsystem <linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel test robot <fengguang.wu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, LKP <lkp-JC7UmRfGjtg@public.gmane.org>, Ingo Molnar <mingo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+To: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ard Biesheuvel <ard.biesheuvel-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 27 Feb 2017, Linus Torvalds wrote:
-> So I don't disagree that in a perfect world all drivers should just
-> handle it. It's just that it's not realistic.
+On 02/28/2017 02:04 AM, Mark Rutland wrote:
+> On Tue, Feb 28, 2017 at 08:42:51AM +0000, Ard Biesheuvel wrote:
+>> (+ Mark)
 > 
-> The fact that we have now *twice* gotten an oops report or a "this
-> machine doesn't boot" report etc within a week or so of merging the
-> problematic patch does *not* indicate that it's easy to fix or rare.
+> (+ Laura)
 > 
-> Quite the reverse.
+>> On 28 February 2017 at 07:05, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+>>> Mask kernel pointers of /sys/kernel/debug/kernel_page_tables entry like
+>>> /proc/vmallocinfo does.
+>>>
+>>> With sysctl kernel.kptr_restrict=0 or 1:
+>>> cat /sys/kernel/debug/kernel_page_tables
+>>
+>> I wonder if this file should be accessible at all if kptr_restrict > 0
 > 
-> It indicates that it's just rare enough that core developers don't see
-> it, but it's common enough to have triggered issues in random places.
+> I don't have strong feelings either way.
 > 
-> And it will just get *much* worse when you then get the random
-> end-users that usually have older machines than the developers who
-> actually test daily development -git trees.
+> This isn't typically enabled, and it's under debugfs, so this shouldn't
+> be accessible by a typical user anyhow.
+> 
+> That said, there are very few of us who need to take a look at this
+> file. I'm happy to deal with attacking kptr_restrict when required.
+> 
 
-I tend to disagree.
+In the interest of security it's probably for the best to switch to the
+restricted pointer. Who knows what might get enabled or forgotten about.
+I don't like the idea of tying enablement of the file to kptr_restrict
+though.
 
-The retrigger mechanism has been there forever, at least the history git
-tree which goes back to 2.5.0 has it and as it was in the initial commit is
-it was there in 2.4 already.
+This should probably be fixed up on all arches that implement the
+page table dump feature.
 
-We broke that in 4.2 when the x86 interrupt mechanism was reworked
-completely. That went pretty much unnoticed until somebody moved from 4.1
-to 4.9 and discovered that edge interrupts got lost. It's not surprising
-that it went unnoticed because lots of stuff moved towards MSI (which has
-the retrigger still enabled) and the devices which are prone to the 'lost
-edge' issue are limited.
+Laura
 
-So we had that retrigger exposing crappy older drivers to the spurious
-interrupt until 2 years ago. The two drivers which have been exposed by
-bringing the retrigger back are post 4.2 or have been wreckaged post 4.2.
-
-Due to the fact that the old drivers have been exposed over many years to
-the spurious retrigger (that "feature" exists on old hardware as well) I
-don't think it's much of a problem.
-
-We also had the DEBUG_SHIRQ active until we had to disable it in
-6d83f94db95cf (2.6.38) but not because it exposed crappy interrupt
-handlers. We had to disable due to a functional problem described in the
-commit message. I know for sure that distros had enabled DEBUG_SHIRQ (and
-some still have the reduced functionality of it enabled).
-
-What I find more problematic is:
-
- - to keep this 'lost edge' regression around, which really can render
-   hardware useless.
-
- - to ignore the fact that these buggy interrupt handlers can be exposed by
-   spurious interrupt events (as I showed in the other mail) "naturaly",
-   but with a way smaller probability. If a user runs into such a spurious
-   problem he has absolutely NO chance to debug it at all. Exposing it by
-   the retrigger mechanism makes the detection more "reliable" and allows
-   debugging it. The backtraces are pretty telling and clear.
-
-Thanks,
-
-	tglx
+> Thanks,
+> Mark.
+> 
+>>> ---[ Modules start ]---
+>>> ---[ Modules end ]---
+>>> ---[ vmalloc() Area ]---
+>>> ffffff8008000000-ffffff8008010000          64K PTE       RW NX SHD AF...
+>>> ffffff8008015000-ffffff8008016000           4K PTE       RW NX SHD AF...
+>>> ffffff8008020000-ffffff8008030000          64K PTE       RW NX SHD AF...
+>>> ffffff8008031000-ffffff8008071000         256K PTE       RW NX SHD AF...
+>>> ffffff8008080000-ffffff8008200000        1536K PTE       ro x  SHD AF...
+>>> ffffff8008200000-ffffff8008400000           2M PMD       ro x  SHD AF...
+>>> ffffff8008400000-ffffff8008540000        1280K PTE       ro x  SHD AF...
+>>> ffffff8008540000-ffffff8008690000        1344K PTE       ro NX SHD AF...
+>>> ffffff8008940000-ffffff8008a10000         832K PTE       RW NX SHD AF...
+>>> ffffff8008aca000-ffffff8008acd000          12K PTE       RW NX SHD AF...
+>>> ffffffbebffd8000-ffffffbebffdb000          12K PTE       RW NX SHD AF...
+>>> ---[ vmalloc() End ]---
+>>> ---[ Fixmap start ]---
+>>> ffffffbefe800000-ffffffbefea00000           2M PMD       ro NX SHD AF...
+>>> ---[ Fixmap end ]---
+>>> ---[ PCI I/O start ]---
+>>> ---[ PCI I/O end ]---
+>>> ---[ Linear Mapping ]---
+>>> ffffffc000000000-ffffffc000080000         512K PTE       RW NX SHD AF...
+>>> ffffffc000080000-ffffffc000200000        1536K PTE       ro NX SHD AF...
+>>> ffffffc000200000-ffffffc000600000           4M PMD       ro NX SHD AF...
+>>> ffffffc000600000-ffffffc000690000         576K PTE       ro NX SHD AF...
+>>> ffffffc000690000-ffffffc000800000        1472K PTE       RW NX SHD AF...
+>>> ffffffc000800000-ffffffc002000000          24M PMD       RW NX SHD AF...
+>>> ffffffc002000000-ffffffc040000000         992M PMD       RW NX SHD AF...
+>>> ffffffc040000000-ffffffc080000000           1G PGD       RW NX SHD AF...
+>>>
+>>> With sysctl kernel.kptr_restrict=2:
+>>> cat /sys/kernel/debug/kernel_page_tables
+>>> ---[ Modules start ]---
+>>> ---[ Modules end ]---
+>>> ---[ vmalloc() Area ]---
+>>> 0000000000000000-0000000000000000          64K PTE       RW NX SHD AF...
+>>> 0000000000000000-0000000000000000           4K PTE       RW NX SHD AF...
+>>> 0000000000000000-0000000000000000          64K PTE       RW NX SHD AF...
+>>> 0000000000000000-0000000000000000         256K PTE       RW NX SHD AF...
+>>> 0000000000000000-0000000000000000        1536K PTE       ro x  SHD AF...
+>>> 0000000000000000-0000000000000000           2M PMD       ro x  SHD AF...
+>>> 0000000000000000-0000000000000000        1280K PTE       ro x  SHD AF...
+>>> 0000000000000000-0000000000000000        1344K PTE       ro NX SHD AF...
+>>> 0000000000000000-0000000000000000         832K PTE       RW NX SHD AF...
+>>> 0000000000000000-0000000000000000          12K PTE       RW NX SHD AF...
+>>> 0000000000000000-0000000000000000          12K PTE       RW NX SHD AF...
+>>> ---[ vmalloc() End ]---
+>>> ---[ Fixmap start ]---
+>>> 0000000000000000-0000000000000000           2M PMD       ro NX SHD AF...
+>>> ---[ Fixmap end ]---
+>>> ---[ PCI I/O start ]---
+>>> ---[ PCI I/O end ]---
+>>> ---[ Linear Mapping ]---
+>>> 0000000000000000-0000000000000000         512K PTE       RW NX SHD AF...
+>>> 0000000000000000-0000000000000000        1536K PTE       ro NX SHD AF...
+>>> 0000000000000000-0000000000000000           4M PMD       ro NX SHD AF...
+>>> 0000000000000000-0000000000000000         576K PTE       ro NX SHD AF...
+>>> 0000000000000000-0000000000000000        1472K PTE       RW NX SHD AF...
+>>> 0000000000000000-0000000000000000          24M PMD       RW NX SHD AF...
+>>> 0000000000000000-0000000000000000         992M PMD       RW NX SHD AF...
+>>> 0000000000000000-0000000000000000           1G PGD       RW NX SHD AF...
+>>>
+>>> Signed-off-by: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>> ---
+>>>  arch/arm64/mm/dump.c | 4 ++--
+>>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/arch/arm64/mm/dump.c b/arch/arm64/mm/dump.c
+>>> index ca74a2a..e055ecf 100644
+>>> --- a/arch/arm64/mm/dump.c
+>>> +++ b/arch/arm64/mm/dump.c
+>>> @@ -253,8 +253,8 @@ static void note_page(struct pg_state *st, unsigned long addr, unsigned level,
+>>>                 if (st->current_prot) {
+>>>                         note_prot_uxn(st, addr);
+>>>                         note_prot_wx(st, addr);
+>>> -                       pt_dump_seq_printf(st->seq, "0x%016lx-0x%016lx   ",
+>>> -                                  st->start_address, addr);
+>>> +                       pt_dump_seq_printf(st->seq, "%pK-%pK   ",
+>>> +                                  (void *)st->start_address, (void *)addr);
+>>>
+>>>                         delta = (addr - st->start_address) >> 10;
+>>>                         while (!(delta & 1023) && unit[1]) {
+>>> --
+>>> 1.9.1
+>>>
+>>>
+>>> _______________________________________________
+>>> linux-arm-kernel mailing list
+>>> linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+>>> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
