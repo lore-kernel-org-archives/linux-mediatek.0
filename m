@@ -1,83 +1,124 @@
-From: Ingo Molnar <mingo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [WARNING: A/V UNSCANNABLE][Merge tag 'media/v4.11-1' of git]
- ff58d005cd: BUG: unable to handle kernel NULL pointer dereference at
- 0000039c
-Date: Tue, 28 Feb 2017 08:25:50 +0100
-Message-ID: <20170228072550.GA17204@gmail.com>
-References: <58b07b30.9XFLj9Hhl7F6HMc2%fengguang.wu@intel.com>
- <CA+55aFytXj+TZ_TanbxcY0KgRTrV7Vvr=fWON8tioUGmYHYiNA@mail.gmail.com>
- <20170225090741.GA20463@gmail.com>
- <CA+55aFy+ER8cYV02eZsKAOLnZBWY96zNWqUFWSWT1+3sZD4XnQ@mail.gmail.com>
- <alpine.DEB.2.20.1702271105090.4732@nanos>
- <alpine.DEB.2.20.1702271231410.4732@nanos>
- <20170227154124.GA20569@gmail.com>
- <CA+55aFxwtkOs95R-v7z8yjguvp91oDTxRKs-x3uN_=sM_33Gvg@mail.gmail.com>
+From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Subject: Re: [PATCH] arm64: dump: hide kernel pointers
+Date: Tue, 28 Feb 2017 08:42:51 +0000
+Message-ID: <CAKv+Gu_AG0n5jPDCuUD6tvr2sAz9a4sycDy9CtL4iT+OHiN_iQ@mail.gmail.com>
+References: <1488265536-20441-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CA+55aFxwtkOs95R-v7z8yjguvp91oDTxRKs-x3uN_=sM_33Gvg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Linus Torvalds <torvalds-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>
-Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ruslan Ruslichenko <rruslich-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, "linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Sean Young <sean-hENCXIMQXOg@public.gmane.org>, wfg-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Mauro Carvalho Chehab <mchehab-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux LED Subsystem <linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, kernel test robot <fengguang.wu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, LKP <lkp-JC7UmRfGjtg@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1488265536-20441-1-git-send-email-miles.chen@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Miles Chen <miles.chen@mediatek.com>, Mark Rutland <mark.rutland@arm.com>
+Cc: wsd_upstream@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+(+ Mark)
 
-* Linus Torvalds <torvalds-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org> wrote:
+On 28 February 2017 at 07:05, Miles Chen <miles.chen@mediatek.com> wrote:
+> Mask kernel pointers of /sys/kernel/debug/kernel_page_tables entry like
+> /proc/vmallocinfo does.
+>
+> With sysctl kernel.kptr_restrict=0 or 1:
+> cat /sys/kernel/debug/kernel_page_tables
 
-> In other words: what will happen is that distros start getting bootup problem 
-> reports six months or a year after we've done it, and *if* they figure out it's 
-> the irq enabling, they'll disable it, because they have no way to solve it 
-> either.
-> 
-> And core developers will just maybe see the occasional "4.12 doesn't boot for 
-> me" reports, but by then developers will ahve moved on to 4.16 or something.
+I wonder if this file should be accessible at all if kptr_restrict > 0
 
-Yeah, you are right, there's over 2,100 request_irq() calls in the kernel and 
-perhaps only 1% of them gets tested on real hardware by the time a change gets 
-upstream :-/
-
-So in theory we could require all *new* drivers handle this properly, as new 
-drivers tend to come through developers who can fix such bugs - which would at 
-least guarantee that with time the problem would obsolete itself.
-
-But I cannot see an easy non-intrusive way to do that - we'd have to rename all 
-existing request_irq() calls:
-
- - We could rename request_irq() to request_irq_legacy() - which does not do the 
-   tests.
-
- - The 'new' request_irq() function would do the tests unconditionally.
-
-... and that's just too much churn - unless you think it's worth it, or if anyone 
-can think of a better method to phase in the new behavior without affecting old 
-users.
-
-Another, less intrusive method would be to introduce a new request_irq_shared() 
-API call, mark request_irq() obsolete (without putting warnings into the build 
-though), and put a check into checkpatch that warns about request_irq() use.
-
-The flip side would be that:
-
- - request_irq() is such a nice and well-known name to waste
-
- - plus request_irq_shared() is a misnomer, as this has nothing to do with sharing 
-   IRQs, it's about getting IRQs in unexpected moments.
-
-I'd rather do the renaming that is easy to automate and the pain is one time only.
-
-Or revert the retrigger change and muddle through, although as per Thomas's 
-observations spurious interrupts are very common.
-
-Thanks,
-
-	Ingo
+> ---[ Modules start ]---
+> ---[ Modules end ]---
+> ---[ vmalloc() Area ]---
+> ffffff8008000000-ffffff8008010000          64K PTE       RW NX SHD AF...
+> ffffff8008015000-ffffff8008016000           4K PTE       RW NX SHD AF...
+> ffffff8008020000-ffffff8008030000          64K PTE       RW NX SHD AF...
+> ffffff8008031000-ffffff8008071000         256K PTE       RW NX SHD AF...
+> ffffff8008080000-ffffff8008200000        1536K PTE       ro x  SHD AF...
+> ffffff8008200000-ffffff8008400000           2M PMD       ro x  SHD AF...
+> ffffff8008400000-ffffff8008540000        1280K PTE       ro x  SHD AF...
+> ffffff8008540000-ffffff8008690000        1344K PTE       ro NX SHD AF...
+> ffffff8008940000-ffffff8008a10000         832K PTE       RW NX SHD AF...
+> ffffff8008aca000-ffffff8008acd000          12K PTE       RW NX SHD AF...
+> ffffffbebffd8000-ffffffbebffdb000          12K PTE       RW NX SHD AF...
+> ---[ vmalloc() End ]---
+> ---[ Fixmap start ]---
+> ffffffbefe800000-ffffffbefea00000           2M PMD       ro NX SHD AF...
+> ---[ Fixmap end ]---
+> ---[ PCI I/O start ]---
+> ---[ PCI I/O end ]---
+> ---[ Linear Mapping ]---
+> ffffffc000000000-ffffffc000080000         512K PTE       RW NX SHD AF...
+> ffffffc000080000-ffffffc000200000        1536K PTE       ro NX SHD AF...
+> ffffffc000200000-ffffffc000600000           4M PMD       ro NX SHD AF...
+> ffffffc000600000-ffffffc000690000         576K PTE       ro NX SHD AF...
+> ffffffc000690000-ffffffc000800000        1472K PTE       RW NX SHD AF...
+> ffffffc000800000-ffffffc002000000          24M PMD       RW NX SHD AF...
+> ffffffc002000000-ffffffc040000000         992M PMD       RW NX SHD AF...
+> ffffffc040000000-ffffffc080000000           1G PGD       RW NX SHD AF...
+>
+> With sysctl kernel.kptr_restrict=2:
+> cat /sys/kernel/debug/kernel_page_tables
+> ---[ Modules start ]---
+> ---[ Modules end ]---
+> ---[ vmalloc() Area ]---
+> 0000000000000000-0000000000000000          64K PTE       RW NX SHD AF...
+> 0000000000000000-0000000000000000           4K PTE       RW NX SHD AF...
+> 0000000000000000-0000000000000000          64K PTE       RW NX SHD AF...
+> 0000000000000000-0000000000000000         256K PTE       RW NX SHD AF...
+> 0000000000000000-0000000000000000        1536K PTE       ro x  SHD AF...
+> 0000000000000000-0000000000000000           2M PMD       ro x  SHD AF...
+> 0000000000000000-0000000000000000        1280K PTE       ro x  SHD AF...
+> 0000000000000000-0000000000000000        1344K PTE       ro NX SHD AF...
+> 0000000000000000-0000000000000000         832K PTE       RW NX SHD AF...
+> 0000000000000000-0000000000000000          12K PTE       RW NX SHD AF...
+> 0000000000000000-0000000000000000          12K PTE       RW NX SHD AF...
+> ---[ vmalloc() End ]---
+> ---[ Fixmap start ]---
+> 0000000000000000-0000000000000000           2M PMD       ro NX SHD AF...
+> ---[ Fixmap end ]---
+> ---[ PCI I/O start ]---
+> ---[ PCI I/O end ]---
+> ---[ Linear Mapping ]---
+> 0000000000000000-0000000000000000         512K PTE       RW NX SHD AF...
+> 0000000000000000-0000000000000000        1536K PTE       ro NX SHD AF...
+> 0000000000000000-0000000000000000           4M PMD       ro NX SHD AF...
+> 0000000000000000-0000000000000000         576K PTE       ro NX SHD AF...
+> 0000000000000000-0000000000000000        1472K PTE       RW NX SHD AF...
+> 0000000000000000-0000000000000000          24M PMD       RW NX SHD AF...
+> 0000000000000000-0000000000000000         992M PMD       RW NX SHD AF...
+> 0000000000000000-0000000000000000           1G PGD       RW NX SHD AF...
+>
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> ---
+>  arch/arm64/mm/dump.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/arch/arm64/mm/dump.c b/arch/arm64/mm/dump.c
+> index ca74a2a..e055ecf 100644
+> --- a/arch/arm64/mm/dump.c
+> +++ b/arch/arm64/mm/dump.c
+> @@ -253,8 +253,8 @@ static void note_page(struct pg_state *st, unsigned long addr, unsigned level,
+>                 if (st->current_prot) {
+>                         note_prot_uxn(st, addr);
+>                         note_prot_wx(st, addr);
+> -                       pt_dump_seq_printf(st->seq, "0x%016lx-0x%016lx   ",
+> -                                  st->start_address, addr);
+> +                       pt_dump_seq_printf(st->seq, "%pK-%pK   ",
+> +                                  (void *)st->start_address, (void *)addr);
+>
+>                         delta = (addr - st->start_address) >> 10;
+>                         while (!(delta & 1023) && unit[1]) {
+> --
+> 1.9.1
+>
+>
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
