@@ -1,59 +1,168 @@
-From: Will Deacon <will.deacon@arm.com>
-Subject: Re: [PATCH] arm64: dump: hide kernel pointers
-Date: Wed, 1 Mar 2017 03:52:15 +0000
-Message-ID: <20170301035214.GA12637@arm.com>
-References: <1488265536-20441-1-git-send-email-miles.chen@mediatek.com>
- <CAKv+Gu_AG0n5jPDCuUD6tvr2sAz9a4sycDy9CtL4iT+OHiN_iQ@mail.gmail.com>
- <20170228100420.GA3691@leverpostej>
- <ae6f608f-6c84-b999-d238-a74f6f42d2e5@redhat.com>
+From: Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v1] mmc: mediatek: Fixed bug where clock frequency could
+ be set wrong
+Date: Wed, 1 Mar 2017 17:56:00 +0800
+Message-ID: <1488362160.27826.27.camel@mhfsdcap03>
+References: <1487924527-22584-1-git-send-email-yong.mao@mediatek.com>
+ <1487924527-22584-2-git-send-email-yong.mao@mediatek.com>
+ <CAGS+omDuPwXqTJ2CrLbLvSHdp3CL895qop1x6dLT1u7bG7XnVw@mail.gmail.com>
+ <1487929124.22858.10.camel@mhfsdcap03>
+ <CAGS+omCaP99xvpu-A-NVGwdCSKETgtDBxxcYxjTRkFCyzBNL-Q@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <ae6f608f-6c84-b999-d238-a74f6f42d2e5@redhat.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Laura Abbott <labbott@redhat.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, wsd_upstream@mediatek.com, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Catalin Marinas <catalin.marinas@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Miles Chen <miles.chen@mediatek.com>, linux-mediatek@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAGS+omCaP99xvpu-A-NVGwdCSKETgtDBxxcYxjTRkFCyzBNL-Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Feb 28, 2017 at 02:55:51PM -0800, Laura Abbott wrote:
-> On 02/28/2017 02:04 AM, Mark Rutland wrote:
-> > On Tue, Feb 28, 2017 at 08:42:51AM +0000, Ard Biesheuvel wrote:
-> >> On 28 February 2017 at 07:05, Miles Chen <miles.chen@mediatek.com> wrote:
-> >>> Mask kernel pointers of /sys/kernel/debug/kernel_page_tables entry like
-> >>> /proc/vmallocinfo does.
-> >>>
-> >>> With sysctl kernel.kptr_restrict=0 or 1:
-> >>> cat /sys/kernel/debug/kernel_page_tables
+On Tue, 2017-02-28 at 14:56 +0800, Daniel Kurtz wrote:
+> On Fri, Feb 24, 2017 at 5:38 PM, Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> > From:   Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > To:     Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> > Subject:        Re: [PATCH v1] mmc: mediatek: Fixed bug where clock frequency
+> > could be set wrong
+> > Date:   Fri, 24 Feb 2017 17:33:37 +0800
+> >
+> >
+> > On Fri, 2017-02-24 at 17:52 +0900, Daniel Kurtz wrote:
+> >> On Fri, Feb 24, 2017 at 5:22 PM, Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > wrote:
+> >> >
+> >> > From: yong mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >> >
+> >> > This patch can fix two issues:
+> >> >
+> >> > Issue 1:
+> >> > The maximum value of clock divider is 0xff.
+> >> > Because the type of div is u32, div may be larger than max_div.
+> >> > In this case, we should use max_div to set the clock frequency.
+> >> >
+> >> > Issue 2:
+> >> > In previous code, we can not set the correct clock frequency when
+> >> > div equals 0xff.
+> >> >
+> >> > Signed-off-by: Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >> > Signed-off-by: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >> > ---
+> >> >  drivers/mmc/host/mtk-sd.c |   13 ++++++++++++-
+> >> >  1 file changed, 12 insertions(+), 1 deletion(-)
+> >> >
+> >> > diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> >> > index 07f3236..3174445 100644
+> >> > --- a/drivers/mmc/host/mtk-sd.c
+> >> > +++ b/drivers/mmc/host/mtk-sd.c
+> >> > @@ -540,6 +540,7 @@ static void msdc_set_mclk(struct msdc_host
+> > *host, unsigned char timing, u32 hz)
+> >> >         u32 mode;
+> >> >         u32 flags;
+> >> >         u32 div;
+> >> > +       u32 max_div;
 > >>
-> >> I wonder if this file should be accessible at all if kptr_restrict > 0
-> > 
-> > I don't have strong feelings either way.
-> > 
-> > This isn't typically enabled, and it's under debugfs, so this shouldn't
-> > be accessible by a typical user anyhow.
-> > 
-> > That said, there are very few of us who need to take a look at this
-> > file. I'm happy to deal with attacking kptr_restrict when required.
-> > 
+> >> There's really no need for this variable.  Just use 0xff below.
+> > For all of our IC, max_div is not a constant.
+> > We will upstream another patch which max_div will get the different
+> > value depending on the IC.
+> > Therefore, we keep the max_div as a variable here.
 > 
-> In the interest of security it's probably for the best to switch to the
-> restricted pointer. Who knows what might get enabled or forgotten about.
-> I don't like the idea of tying enablement of the file to kptr_restrict
-> though.
+> Please add the variable in the patch that uses it as a variable.
+> 
+> >
+> >>
+> >> >         u32 sclk;
+> >> >
+> >> >         if (!hz) {
+> >> > @@ -590,8 +591,18 @@ static void msdc_set_mclk(struct msdc_host
+> > *host, unsigned char timing, u32 hz)
+> >> >                         sclk = (host->src_clk_freq >> 2) / div;
+> >> >                 }
+> >> >         }
+> >> > +
+> >> > +       /**
+> >> > +        * The maximum value of div is 0xff.
+> >> > +        * Check if the div is larger than max_div.
+> >> > +        */
+> >> > +       max_div = 0xff;
+> >> > +       if (div > max_div) {
+> >> > +               div = max_div;
+> >> > +               sclk = (host->src_clk_freq >> 2) / div;
+> >> > +       }
+> >> >         sdr_set_field(host->base + MSDC_CFG, MSDC_CFG_CKMOD |
+> > MSDC_CFG_CKDIV,
+> >> > -                       (mode << 8) | (div % 0xff));
+> >> > +                     (mode << 8) | div);
+> >>
+> >> Hmm, I don't know much about this sub-system, but should we even be
+> >> allowing requests to set a frequency that we can't actually achieve
+> >> with the divider?
+> >>
+> >
+> > No. We can not get a frequency that we can't actually achieve with the
+> > divider. This patch is to solve this kind of issue.
+> 
+> Sorry, I am trying to understand why we need this patch.
+> 
+> AFAICT, it looks like sometimes msdc_set_mclk() is being called with
+> hz that cannot be generated by your hardware.  In particular,
+> sometimes the original code computes "div > 255".
+> To work around this problem, this patch just caps the divider value to
+> 255, which is the maximum divider provided by the hardware.  However,
+> presumably this means that in this case we won't actually be
+> generating the requested hz value.
+> 
+> So, can you please explain in what exact scenario this patch is
+> required, and justify why it is ok to generate a clock other than the
+> requested in this case?
+> 
+> -Dan
+> 
 
-... but it's also pretty weird to show the sizes, mapping type and
-permissions yet hide the virtual addresses. If you want to keep the file
-in spite of kptr_restrict, which bits are actually useful once the
-addresses are nobbled?
+This issue is hidden deeply. It is a boundary related issue.
+Let me take the real value to explain how this issue occurs.
 
-Will
+1. mmc->f_min = host->src_clk_freq / (4 * 255);
+   mmc->f_min = 400000000 / (4 * 255) = 392156;
+2. mmc core tries to initialize emmc by using 400000hz.
+   If the first try failed, it will retry by using max(300000hz,
+mmc->f_min)= 392156hz
+3. msdc_set_mclk will be invoked by mmc core to set the clock.
+   and then following code will be executed.   
+div = (host->src_clk_freq + ((hz << 2) - 1)) / (hz << 2);
+(div = (400000000 + (392156 << 2) - 1)) / (392156 << 2) = 256)
+
+Why do we use (host->src_clk_freq + ((hz << 2) - 1))?
+==> Because if we can not get a proper clock frequency, we should set a
+clock frequency which is less than proper clock frequency.
+
+4. In this IC, it only use 8 bits to indicate the value of clock
+divider. Therefore, 256 is overflow, it is equal 0 here.
+And then we will get a wrong 100000000Hz clock frequency.
+
+Can you understand how this issue occurs now?
+
+> >
+> >
+> >> >         sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_CKPDN);
+> >> >         while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
+> >> >                 cpu_relax();
+> >> > --
+> >> > 1.7.9.5
+> >> >
+> >> >
+> >> > _______________________________________________
+> >> > Linux-mediatek mailing list
+> >> > Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> >> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> >
+> >
+> >
