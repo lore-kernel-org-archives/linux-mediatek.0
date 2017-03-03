@@ -1,180 +1,48 @@
-From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v1] mmc: mediatek: Fixed bug where clock frequency could
- be set wrong
-Date: Thu, 2 Mar 2017 20:20:38 +0800
-Message-ID: <CAGS+omBw_vXMmjtjyE+9CbDBP06u_ngnEreEf9jfQvNw9dCktg@mail.gmail.com>
-References: <1487924527-22584-1-git-send-email-yong.mao@mediatek.com>
- <1487924527-22584-2-git-send-email-yong.mao@mediatek.com>
- <CAGS+omDuPwXqTJ2CrLbLvSHdp3CL895qop1x6dLT1u7bG7XnVw@mail.gmail.com>
- <1487929124.22858.10.camel@mhfsdcap03>
- <CAGS+omCaP99xvpu-A-NVGwdCSKETgtDBxxcYxjTRkFCyzBNL-Q@mail.gmail.com>
- <1488362160.27826.27.camel@mhfsdcap03>
+From: Jun Gao <jun.gao@mediatek.com>
+Subject: [PATCH v3 1/2] dt-bindings: i2c: Add Mediatek MT2701 i2c binding
+Date: Fri, 3 Mar 2017 10:05:12 +0800
+Message-ID: <1488506713-20767-2-git-send-email-jun.gao@mediatek.com>
+References: <1488506713-20767-1-git-send-email-jun.gao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1488362160.27826.27.camel@mhfsdcap03>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1488506713-20767-1-git-send-email-jun.gao@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Jun Gao <jun.gao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Mar 1, 2017 at 5:56 PM, Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> On Tue, 2017-02-28 at 14:56 +0800, Daniel Kurtz wrote:
->> On Fri, Feb 24, 2017 at 5:38 PM, Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->> > From:   Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> > To:     Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->> > Subject:        Re: [PATCH v1] mmc: mediatek: Fixed bug where clock frequency
->> > could be set wrong
->> > Date:   Fri, 24 Feb 2017 17:33:37 +0800
->> >
->> >
->> > On Fri, 2017-02-24 at 17:52 +0900, Daniel Kurtz wrote:
->> >> On Fri, Feb 24, 2017 at 5:22 PM, Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> > wrote:
->> >> >
->> >> > From: yong mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> >> >
->> >> > This patch can fix two issues:
->> >> >
->> >> > Issue 1:
->> >> > The maximum value of clock divider is 0xff.
->> >> > Because the type of div is u32, div may be larger than max_div.
->> >> > In this case, we should use max_div to set the clock frequency.
->> >> >
->> >> > Issue 2:
->> >> > In previous code, we can not set the correct clock frequency when
->> >> > div equals 0xff.
->> >> >
->> >> > Signed-off-by: Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> >> > Signed-off-by: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> >> > ---
->> >> >  drivers/mmc/host/mtk-sd.c |   13 ++++++++++++-
->> >> >  1 file changed, 12 insertions(+), 1 deletion(-)
->> >> >
->> >> > diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
->> >> > index 07f3236..3174445 100644
->> >> > --- a/drivers/mmc/host/mtk-sd.c
->> >> > +++ b/drivers/mmc/host/mtk-sd.c
->> >> > @@ -540,6 +540,7 @@ static void msdc_set_mclk(struct msdc_host
->> > *host, unsigned char timing, u32 hz)
->> >> >         u32 mode;
->> >> >         u32 flags;
->> >> >         u32 div;
->> >> > +       u32 max_div;
->> >>
->> >> There's really no need for this variable.  Just use 0xff below.
->> > For all of our IC, max_div is not a constant.
->> > We will upstream another patch which max_div will get the different
->> > value depending on the IC.
->> > Therefore, we keep the max_div as a variable here.
->>
->> Please add the variable in the patch that uses it as a variable.
->>
->> >
->> >>
->> >> >         u32 sclk;
->> >> >
->> >> >         if (!hz) {
->> >> > @@ -590,8 +591,18 @@ static void msdc_set_mclk(struct msdc_host
->> > *host, unsigned char timing, u32 hz)
->> >> >                         sclk = (host->src_clk_freq >> 2) / div;
->> >> >                 }
->> >> >         }
->> >> > +
->> >> > +       /**
->> >> > +        * The maximum value of div is 0xff.
->> >> > +        * Check if the div is larger than max_div.
->> >> > +        */
->> >> > +       max_div = 0xff;
->> >> > +       if (div > max_div) {
->> >> > +               div = max_div;
->> >> > +               sclk = (host->src_clk_freq >> 2) / div;
->> >> > +       }
->> >> >         sdr_set_field(host->base + MSDC_CFG, MSDC_CFG_CKMOD |
->> > MSDC_CFG_CKDIV,
->> >> > -                       (mode << 8) | (div % 0xff));
->> >> > +                     (mode << 8) | div);
->> >>
->> >> Hmm, I don't know much about this sub-system, but should we even be
->> >> allowing requests to set a frequency that we can't actually achieve
->> >> with the divider?
->> >>
->> >
->> > No. We can not get a frequency that we can't actually achieve with the
->> > divider. This patch is to solve this kind of issue.
->>
->> Sorry, I am trying to understand why we need this patch.
->>
->> AFAICT, it looks like sometimes msdc_set_mclk() is being called with
->> hz that cannot be generated by your hardware.  In particular,
->> sometimes the original code computes "div > 255".
->> To work around this problem, this patch just caps the divider value to
->> 255, which is the maximum divider provided by the hardware.  However,
->> presumably this means that in this case we won't actually be
->> generating the requested hz value.
->>
->> So, can you please explain in what exact scenario this patch is
->> required, and justify why it is ok to generate a clock other than the
->> requested in this case?
->>
->> -Dan
->>
->
-> This issue is hidden deeply. It is a boundary related issue.
-> Let me take the real value to explain how this issue occurs.
->
-> 1. mmc->f_min = host->src_clk_freq / (4 * 255);
->    mmc->f_min = 400000000 / (4 * 255) = 392156;
-> 2. mmc core tries to initialize emmc by using 400000hz.
->    If the first try failed, it will retry by using max(300000hz,
-> mmc->f_min)= 392156hz
-> 3. msdc_set_mclk will be invoked by mmc core to set the clock.
->    and then following code will be executed.
-> div = (host->src_clk_freq + ((hz << 2) - 1)) / (hz << 2);
-> (div = (400000000 + (392156 << 2) - 1)) / (392156 << 2) = 256)
->
-> Why do we use (host->src_clk_freq + ((hz << 2) - 1))?
-> ==> Because if we can not get a proper clock frequency, we should set a
-> clock frequency which is less than proper clock frequency.
->
-> 4. In this IC, it only use 8 bits to indicate the value of clock
-> divider. Therefore, 256 is overflow, it is equal 0 here.
-> And then we will get a wrong 100000000Hz clock frequency.
->
-> Can you understand how this issue occurs now?
+From: Jun Gao <jun.gao@mediatek.com>
 
-Thanks for the excellent explanation.  Things are a lot clearer now.
+Add MT2701 i2c binding to i2c-mt6577.txt and there is no need to
+modify i2c driver.
 
-I think this can be solved even easier by computing f_min the same way:
+Signed-off-by: Jun Gao <jun.gao@mediatek.com>
+---
+ .../devicetree/bindings/i2c/i2c-mt6577.txt         |   11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-  mmc->f_min = DIV_ROUND_UP(400000000, 4 * 255);  /* = 392157 */
-
-
->
->> >
->> >
->> >> >         sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_CKPDN);
->> >> >         while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
->> >> >                 cpu_relax();
->> >> > --
->> >> > 1.7.9.5
->> >> >
->> >> >
->> >> > _______________________________________________
->> >> > Linux-mediatek mailing list
->> >> > Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
->> >> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
->> >
->> >
->> >
->
->
+diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+index 0ce6fa3..27dbbf9 100644
+--- a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
++++ b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+@@ -4,11 +4,12 @@ The Mediatek's I2C controller is used to interface with I2C devices.
+ 
+ Required properties:
+   - compatible: value should be either of the following.
+-      (a) "mediatek,mt6577-i2c", for i2c compatible with mt6577 i2c.
+-      (b) "mediatek,mt6589-i2c", for i2c compatible with mt6589 i2c.
+-      (c) "mediatek,mt8127-i2c", for i2c compatible with mt8127 i2c.
+-      (d) "mediatek,mt8135-i2c", for i2c compatible with mt8135 i2c.
+-      (e) "mediatek,mt8173-i2c", for i2c compatible with mt8173 i2c.
++	"mediatek,mt2701-i2c"
++	"mediatek,mt6577-i2c"
++	"mediatek,mt6589-i2c"
++	"mediatek,mt8127-i2c"
++	"mediatek,mt8135-i2c"
++	"mediatek,mt8173-i2c"
+   - reg: physical base address of the controller and dma base, length of memory
+     mapped region.
+   - interrupts: interrupt number to the cpu.
+-- 
+1.7.9.5
