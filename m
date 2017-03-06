@@ -1,75 +1,74 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH] mmc: mediatek: Fixed bug where clock frequency could be
- set wrong
-Date: Mon, 6 Mar 2017 15:06:37 +0800
-Message-ID: <CAGS+omCf1JH0EcuKp_GFKUaeQc1TJw8LDBgmxsuTtyzg9vBqLA@mail.gmail.com>
-References: <1488611403-30186-1-git-send-email-yong.mao@mediatek.com>
- <1488611403-30186-2-git-send-email-yong.mao@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [RESEND PATCH v3 7/8] arm64: dts: mt8173: move clock from phy node
+ into port nodes
+Date: Mon, 6 Mar 2017 21:49:28 +0800
+Message-ID: <1488808169-6031-7-git-send-email-chunfeng.yun@mediatek.com>
+References: <1488808169-6031-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1488611403-30186-2-git-send-email-yong.mao@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Yong Mao <yong.mao@mediatek.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, srv_heupstream <srv_heupstream@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, linux-mmc@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Eddie Huang <eddie.huang@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1488808169-6031-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Yong,
+there is a reference clock for each port, HighSpeed port is 48M,
+and SuperSpeed port is 26M which usually comes from 26M oscillator
+directly, but some SoCs is not. it is flexible to move it into port
+node.
 
-On Sat, Mar 4, 2017 at 3:10 PM, Yong Mao <yong.mao@mediatek.com> wrote:
-> From: yong mao <yong.mao@mediatek.com>
->
-> This patch can fix two issues:
->
-> Issue 1:
-> In previous code, div may be overflow when setting clock frequency
-> as f_min. We can use DIV_ROUND_UP to fix this boundary related
-> issue.
->
-> Issue 2:
-> In previous code, we can not set the correct clock frequency when
-> div equals 0xff.
->
-> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi |    8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-
-> ---
->  drivers/mmc/host/mtk-sd.c |    4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 07f3236..3ad5228 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -591,7 +591,7 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
->                 }
->         }
->         sdr_set_field(host->base + MSDC_CFG, MSDC_CFG_CKMOD | MSDC_CFG_CKDIV,
-> -                       (mode << 8) | (div % 0xff));
-> +                     (mode << 8) | div);
->         sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_CKPDN);
->         while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
->                 cpu_relax();
-> @@ -1692,7 +1692,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
->         host->src_clk_freq = clk_get_rate(host->src_clk);
->         /* Set host parameters to mmc */
->         mmc->ops = &mt_msdc_ops;
-> -       mmc->f_min = host->src_clk_freq / (4 * 255);
-> +       mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 255);
->
->         mmc->caps |= MMC_CAP_ERASE | MMC_CAP_CMD23;
->         /* MMC core transfer sizes tunable parameters */
-> --
-> 1.7.9.5
->
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 1dc4629..1c9e0d5 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -764,8 +764,6 @@
+ 		u3phy: usb-phy@11290000 {
+ 			compatible = "mediatek,mt8173-u3phy";
+ 			reg = <0 0x11290000 0 0x800>;
+-			clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
+-			clock-names = "u3phya_ref";
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+ 			ranges;
+@@ -773,18 +771,24 @@
+ 
+ 			u2port0: usb-phy@11290800 {
+ 				reg = <0 0x11290800 0 0x100>;
++				clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
++				clock-names = "ref";
+ 				#phy-cells = <1>;
+ 				status = "okay";
+ 			};
+ 
+ 			u3port0: usb-phy@11290900 {
+ 				reg = <0 0x11290900 0 0x700>;
++				clocks = <&clk26m>;
++				clock-names = "ref";
+ 				#phy-cells = <1>;
+ 				status = "okay";
+ 			};
+ 
+ 			u2port1: usb-phy@11291000 {
+ 				reg = <0 0x11291000 0 0x100>;
++				clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
++				clock-names = "ref";
+ 				#phy-cells = <1>;
+ 				status = "okay";
+ 			};
+-- 
+1.7.9.5
