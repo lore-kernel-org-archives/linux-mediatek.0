@@ -1,134 +1,84 @@
-From: =?UTF-8?B?V3UtQ2hlbmcgTGkgKOadjuWLmeiqoCk=?= <wuchengli-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 1/1] mtk-vcodec: check the vp9 decoder buffer index from
- VPU.
-Date: Tue, 7 Mar 2017 17:13:29 +0800
-Message-ID: <CAOMLVLhZ5ZrreMixO0B3V7zsdRjJ=KO4ktntih+b-64ZaYFAJA@mail.gmail.com>
-References: <20170307060328.114348-1-wuchengli@chromium.org>
- <20170307060328.114348-2-wuchengli@chromium.org>
- <1488873582.20293.4.camel@mtksdaap41>
+From: Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH 2/2] usb: xhci: remove dummy extra_priv_size for size of
+ xhci_hcd struct
+Date: Tue, 7 Mar 2017 12:02:39 +0100
+Message-ID: <20170307110238.GA31069@ulmo.ba.sec>
+References: <1488857543-9384-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1488857543-9384-2-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1488873582.20293.4.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: =?UTF-8?B?QW5kcmV3LUNUIENoZW4gKOmZs+aZuui/qik=?= <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wu-Cheng Li <wuchengli-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: multipart/mixed; boundary="===============5074414573148261415=="
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1488857543-9384-2-git-send-email-chunfeng.yun@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Mathias Nyman <mathias.nyman@intel.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Mar 7, 2017 at 3:59 PM, Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> On Tue, 2017-03-07 at 14:03 +0800, Wu-Cheng Li wrote:
->> From: Wu-Cheng Li <wuchengli-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
->>
->> VPU firmware has a bug and may return invalid buffer index for
->> some vp9 videos. Check the buffer indexes before accessing the
->> buffer.
->>
->> Signed-off-by: Wu-Cheng Li <wuchengli-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->> ---
->>  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |  6 +++++
->>  .../media/platform/mtk-vcodec/vdec/vdec_vp9_if.c   | 26 ++++++++++++++++++++++
->>  drivers/media/platform/mtk-vcodec/vdec_drv_if.h    |  2 ++
->>  3 files changed, 34 insertions(+)
->>
->> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
->> index 502877a4b1df..7ebcf9e57ac7 100644
->> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
->> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
->> @@ -1176,6 +1176,12 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
->>                              "[%d] vdec_if_decode() src_buf=%d, size=%zu, fail=%d, res_chg=%d",
->>                              ctx->id, src_buf->index,
->>                              src_mem.size, ret, res_chg);
->> +
->> +             if (ret == -EIO) {
->> +                     mtk_v4l2_err("[%d] Unrecoverable error in vdec_if_decode.",
->> +                                     ctx->id);
->> +                     ctx->state = MTK_STATE_ABORT;
->> +             }
-> Could we use v4l2_m2m_buf_done(to_vb2_v4l2_buffer(src_buf),
-> VB2_BUF_STATE_ERROR); instead ctx->state = MTK_STATE_ABORT;
-> In this case, the behavior will be same as vdec_if_decode called in
-> mtk_vdec_worker.
-If we use VB2_BUF_STATE_ERROR, dqbuf will return V4L2_BUF_FLAG_ERROR.
-It means a recoverable error.
+--===============5074414573148261415==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="fUYQa+Pmc3FrFX/N"
+Content-Disposition: inline
 
-"The driver may also set V4L2_BUF_FLAG_ERROR in the flags field. It indicates
-a non-critical (recoverable) streaming error. In such case the application may
-continue as normal, but should be aware that data in the dequeued buffer might
-be corrupted."
-https://static.lwn.net/kerneldoc/media/uapi/v4l/vidioc-qbuf.html
-> And we could also get information about what output buffer make vpu
-> crash.
->
-> best regards,
-> Tiffany
->>               return;
->>       }
->>
->> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
->> index e91a3b425b0c..5539b1853f16 100644
->> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
->> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
->> @@ -718,6 +718,26 @@ static void get_free_fb(struct vdec_vp9_inst *inst, struct vdec_fb **out_fb)
->>       *out_fb = fb;
->>  }
->>
->> +static int validate_vsi_array_indexes(struct vdec_vp9_inst *inst,
->> +             struct vdec_vp9_vsi *vsi) {
->> +     if (vsi->sf_frm_idx >= VP9_MAX_FRM_BUF_NUM - 1) {
->> +             mtk_vcodec_err(inst, "Invalid vsi->sf_frm_idx=%u.",
->> +                             vsi->sf_frm_idx);
->> +             return -EIO;
->> +     }
->> +     if (vsi->frm_to_show_idx >= VP9_MAX_FRM_BUF_NUM) {
->> +             mtk_vcodec_err(inst, "Invalid vsi->frm_to_show_idx=%u.",
->> +                             vsi->frm_to_show_idx);
->> +             return -EIO;
->> +     }
->> +     if (vsi->new_fb_idx >= VP9_MAX_FRM_BUF_NUM) {
->> +             mtk_vcodec_err(inst, "Invalid vsi->new_fb_idx=%u.",
->> +                             vsi->new_fb_idx);
->> +             return -EIO;
->> +     }
->> +     return 0;
->> +}
->> +
->>  static void vdec_vp9_deinit(unsigned long h_vdec)
->>  {
->>       struct vdec_vp9_inst *inst = (struct vdec_vp9_inst *)h_vdec;
->> @@ -834,6 +854,12 @@ static int vdec_vp9_decode(unsigned long h_vdec, struct mtk_vcodec_mem *bs,
->>                       goto DECODE_ERROR;
->>               }
->>
->> +             ret = validate_vsi_array_indexes(inst, vsi);
->> +             if (ret) {
->> +                     mtk_vcodec_err(inst, "Invalid values from VPU.");
->> +                     goto DECODE_ERROR;
->> +             }
->> +
->>               if (vsi->resolution_changed) {
->>                       if (!vp9_alloc_work_buf(inst)) {
->>                               ret = -EINVAL;
->> diff --git a/drivers/media/platform/mtk-vcodec/vdec_drv_if.h b/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
->> index db6b5205ffb1..ded1154481cd 100644
->> --- a/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
->> +++ b/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
->> @@ -85,6 +85,8 @@ void vdec_if_deinit(struct mtk_vcodec_ctx *ctx);
->>   * @res_chg  : [out] resolution change happens if current bs have different
->>   *   picture width/height
->>   * Note: To flush the decoder when reaching EOF, set input bitstream as NULL.
->> + *
->> + * Return: 0 on success. -EIO on unrecoverable error.
->>   */
->>  int vdec_if_decode(struct mtk_vcodec_ctx *ctx, struct mtk_vcodec_mem *bs,
->>                  struct vdec_fb *fb, bool *res_chg);
->
->
+--fUYQa+Pmc3FrFX/N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Mar 07, 2017 at 11:32:23AM +0800, Chunfeng Yun wrote:
+> because hcd_priv_size is already size of xhci_hcd struct,
+> extra_priv_size is not needed anymore for MTK and tegra drivers.
+>=20
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  drivers/usb/host/xhci-mtk.c   |    1 -
+>  drivers/usb/host/xhci-tegra.c |    1 -
+>  2 files changed, 2 deletions(-)
+
+For Tegra:
+
+Tested-by: Thierry Reding <treding@nvidia.com>
+Acked-by: Thierry Reding <treding@nvidia.com>
+
+--fUYQa+Pmc3FrFX/N
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAli+k0oACgkQ3SOs138+
+s6HUXg//aewlARvT7iQ8wVFTPGM7jCD8erKeP0s1OzaV6xaoFmR7j6LMRMg+HDWZ
+0cqWP6n7mLb7t3H/U/S2dNZSqzUWa9Aeg+uunKlH1FzwaER9yRM9vupS5wivsmv9
+6y+mjkITwtzOJ/ES7r83E+vsnjo/nDzXdOU1YQdjEXoAOMizYlpEDGQY4QUEHb2m
+7Dh9yxcXLa+m9M+2Kwsbss428MJ4EbUhwTIOMBGeJY6kNBtkdvGAzE7nawOa15zC
+ASeMC7HXaSIHSvzMVWQ0EuPSB4p0MZH8Pnk8QkApZ7zvHw+FhFRkgFyB7EvhQuwn
+rJh3Ojm28qcwkZHzaw+EFuFZHp3HbdR1ZNuQmndncChLdUvTST0V+s4e1om/ntIV
+K0WPKvNWcXtTC9+3ehSq8g4scGh//JtCZapNRxev9nFrIq3px0N9cC/eW3NFPfe6
+bBo2z+aoz2zzT9HFvyk143sT7L589JEeeaSwtXpxk+CAeMK61zVAYlY+Vv394pGs
++lm7T+tbp0KvUVIYEQoW3bqfFhMpLwJ9E8Qyhaa00mRAL6wN+InHtL0ZJbujn5MX
+D4fMwYaoaNFEjOSvpxgTdb4wLaL3ZdcZngDkZSYlCUIeAtYIxWd/e/wJh2ZK4LdF
+9+yVdEsiItOGsZrnqW24vKoYlqDnGH2We+HlY/AyIeG5L1ytFXE=
+=goXv
+-----END PGP SIGNATURE-----
+
+--fUYQa+Pmc3FrFX/N--
+
+
+--===============5074414573148261415==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--===============5074414573148261415==--
