@@ -1,114 +1,86 @@
-From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: Re: [PATCH 1/1] mtk-vcodec: check the vp9 decoder buffer index from
- VPU.
-Date: Tue, 7 Mar 2017 15:59:42 +0800
-Message-ID: <1488873582.20293.4.camel@mtksdaap41>
-References: <20170307060328.114348-1-wuchengli@chromium.org>
-         <20170307060328.114348-2-wuchengli@chromium.org>
+From: Yong Mao <yong.mao@mediatek.com>
+Subject: Re: [PATCH v4 1/3] mmc: dt-bindings: update Mediatek MMC bindings
+Date: Tue, 7 Mar 2017 16:05:07 +0800
+Message-ID: <1488873907.10538.3.camel@mhfsdcap03>
+References: <1484988923-1543-1-git-send-email-yong.mao@mediatek.com>
+ <1484988923-1543-2-git-send-email-yong.mao@mediatek.com>
+ <CAPDyKFqo7fMTp3YPJwgoa4u3iAie2U884VUfTnMQ_js8neMqTQ@mail.gmail.com>
+ <1487930376.22858.14.camel@mhfsdcap03>
+ <CAL_Jsq+eo-Fy8Wf2yZpE3Ufp4V_7Gn+w9fTyjZDP6V7tY-=gdw@mail.gmail.com>
+ <1488512995.21451.16.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170307060328.114348-2-wuchengli@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wu-Cheng Li <wuchengli@chromium.org>
-Cc: pawel@osciak.com, andrew-ct.chen@mediatek.com, mchehab@kernel.org, matthias.bgg@gmail.com, hans.verkuil@cisco.com, wuchengli@google.com, djkurtz@chromium.org, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1488512995.21451.16.camel@mhfsdcap03>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh@kernel.org>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, srv_heupstream <srv_heupstream@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-03-07 at 14:03 +0800, Wu-Cheng Li wrote:
-> From: Wu-Cheng Li <wuchengli@google.com>
+On Fri, 2017-03-03 at 11:49 +0800, Yong Mao wrote:
+> On Fri, 2017-02-24 at 16:47 -0600, Rob Herring wrote:
+> > On Fri, Feb 24, 2017 at 3:59 AM, Yong Mao <yong.mao@mediatek.com> wrote:
+> > > Dear Rob,
+> > >
+> > > Could you please help to make comments for this patch?
+> > > Thanks.
+> > 
+> > I already did comment. It's still wrong as Ulf commented. So fix and
+> > send a new version. It has to go to the DT list if you want to be in
+> > my queue.
+> > 
+> > Rob
 > 
-> VPU firmware has a bug and may return invalid buffer index for
-> some vp9 videos. Check the buffer indexes before accessing the
-> buffer.
+> After reviewing the history, We guess your mentioned Ulf's comments is as below.
+>   
+> "> +- mtk-hs200-cmd-int-delay: HS200 command internal delay setting.
+> > + The value is an integer from 0 to 31
 > 
-> Signed-off-by: Wu-Cheng Li <wuchengli@chromium.org>
-> ---
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |  6 +++++
->  .../media/platform/mtk-vcodec/vdec/vdec_vp9_if.c   | 26 ++++++++++++++++++++++
->  drivers/media/platform/mtk-vcodec/vdec_drv_if.h    |  2 ++
->  3 files changed, 34 insertions(+)
+> Please change to:
 > 
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> index 502877a4b1df..7ebcf9e57ac7 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> @@ -1176,6 +1176,12 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
->  			       "[%d] vdec_if_decode() src_buf=%d, size=%zu, fail=%d, res_chg=%d",
->  			       ctx->id, src_buf->index,
->  			       src_mem.size, ret, res_chg);
-> +
-> +		if (ret == -EIO) {
-> +			mtk_v4l2_err("[%d] Unrecoverable error in vdec_if_decode.",
-> +					ctx->id);
-> +			ctx->state = MTK_STATE_ABORT;
-> +		}
-Could we use v4l2_m2m_buf_done(to_vb2_v4l2_buffer(src_buf),
-VB2_BUF_STATE_ERROR); instead ctx->state = MTK_STATE_ABORT;
-In this case, the behavior will be same as vdec_if_decode called in
-mtk_vdec_worker.
-And we could also get information about what output buffer make vpu
-crash.
+> mediatek,hs200-cmd-delay
+> 
+> ... and if there is a unit, like ns or us, please add that a suffix.
+> 
+> > +- mtk-hs400-cmd-int-delay: HS400 command internal delay setting
+> > + The value is an integer from 0 to 31
+> 
+> mediatek,hs400-cmd-delay and add unit if applicable.
+> 
+> > +- mtk-hs400-cmd-resp-sel: HS400 command response sample selection
+> > + The value is an integer from 0 to 1
+> 
+> mediatek,hs400-cmd-resp-sel
+> 
+> And make it a boolean value instead!"
+> 
+> ==> We already fix this comment in v4. 
+> We use "mediatek,hs200-cmd-int-delay" to replace "mtk-hs200-cmd-int-delay", 
+> but not use "mediatek,hs200-cmd-delay". This is because "-int-" here means internal.
+> We should not drop it.
+> 
+> And this field does not have unit, it only have total 32 stages.
+> We also change the description in v4.
+> 
+> For comment about "mtk-hs400-cmd-resp-sel", we also make it a boolean value in v4.
+> And re-name it as "mediatek,hs400-cmd-resp-rising".
+> 
+> Please help to point out where we need to modify.
+> Thanks.
+> 
+> 
 
-best regards,
-Tiffany
->  		return;
->  	}
->  
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> index e91a3b425b0c..5539b1853f16 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> @@ -718,6 +718,26 @@ static void get_free_fb(struct vdec_vp9_inst *inst, struct vdec_fb **out_fb)
->  	*out_fb = fb;
->  }
->  
-> +static int validate_vsi_array_indexes(struct vdec_vp9_inst *inst,
-> +		struct vdec_vp9_vsi *vsi) {
-> +	if (vsi->sf_frm_idx >= VP9_MAX_FRM_BUF_NUM - 1) {
-> +		mtk_vcodec_err(inst, "Invalid vsi->sf_frm_idx=%u.",
-> +				vsi->sf_frm_idx);
-> +		return -EIO;
-> +	}
-> +	if (vsi->frm_to_show_idx >= VP9_MAX_FRM_BUF_NUM) {
-> +		mtk_vcodec_err(inst, "Invalid vsi->frm_to_show_idx=%u.",
-> +				vsi->frm_to_show_idx);
-> +		return -EIO;
-> +	}
-> +	if (vsi->new_fb_idx >= VP9_MAX_FRM_BUF_NUM) {
-> +		mtk_vcodec_err(inst, "Invalid vsi->new_fb_idx=%u.",
-> +				vsi->new_fb_idx);
-> +		return -EIO;
-> +	}
-> +	return 0;
-> +}
-> +
->  static void vdec_vp9_deinit(unsigned long h_vdec)
->  {
->  	struct vdec_vp9_inst *inst = (struct vdec_vp9_inst *)h_vdec;
-> @@ -834,6 +854,12 @@ static int vdec_vp9_decode(unsigned long h_vdec, struct mtk_vcodec_mem *bs,
->  			goto DECODE_ERROR;
->  		}
->  
-> +		ret = validate_vsi_array_indexes(inst, vsi);
-> +		if (ret) {
-> +			mtk_vcodec_err(inst, "Invalid values from VPU.");
-> +			goto DECODE_ERROR;
-> +		}
-> +
->  		if (vsi->resolution_changed) {
->  			if (!vp9_alloc_work_buf(inst)) {
->  				ret = -EINVAL;
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec_drv_if.h b/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
-> index db6b5205ffb1..ded1154481cd 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
-> +++ b/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
-> @@ -85,6 +85,8 @@ void vdec_if_deinit(struct mtk_vcodec_ctx *ctx);
->   * @res_chg	: [out] resolution change happens if current bs have different
->   *	picture width/height
->   * Note: To flush the decoder when reaching EOF, set input bitstream as NULL.
-> + *
-> + * Return: 0 on success. -EIO on unrecoverable error.
->   */
->  int vdec_if_decode(struct mtk_vcodec_ctx *ctx, struct mtk_vcodec_mem *bs,
->  		   struct vdec_fb *fb, bool *res_chg);
+Please help to point out a bright way for this patch.
+We are anxiously waiting for your response.
+
+Best Regards,
+Yong Mao.
