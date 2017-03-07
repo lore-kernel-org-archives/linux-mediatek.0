@@ -1,57 +1,134 @@
-From: Vinod Koul <vinod.koul@intel.com>
-Subject: Re: [PATCH 0/4] add uart DMA function
-Date: Tue, 7 Mar 2017 14:23:55 +0530
-Message-ID: <20170307085355.GI2843@localhost>
-References: <1487243251-964-1-git-send-email-long.cheng@mediatek.com>
+From: =?UTF-8?B?V3UtQ2hlbmcgTGkgKOadjuWLmeiqoCk=?= <wuchengli-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH 1/1] mtk-vcodec: check the vp9 decoder buffer index from
+ VPU.
+Date: Tue, 7 Mar 2017 17:13:29 +0800
+Message-ID: <CAOMLVLhZ5ZrreMixO0B3V7zsdRjJ=KO4ktntih+b-64ZaYFAJA@mail.gmail.com>
+References: <20170307060328.114348-1-wuchengli@chromium.org>
+ <20170307060328.114348-2-wuchengli@chromium.org>
+ <1488873582.20293.4.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <1487243251-964-1-git-send-email-long.cheng@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Long Cheng <long.cheng@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, dmaengine@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, Jiri Slaby <jslaby@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1488873582.20293.4.camel@mtksdaap41>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: =?UTF-8?B?QW5kcmV3LUNUIENoZW4gKOmZs+aZuui/qik=?= <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wu-Cheng Li <wuchengli-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Feb 16, 2017 at 07:07:27PM +0800, Long Cheng wrote:
-> In Mediatek SOCs, the uart can support DMA function.
-> Base on DMA engine formwork, we add the DMA code to support uart. And put the code under drivers/dma.
+On Tue, Mar 7, 2017 at 3:59 PM, Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> On Tue, 2017-03-07 at 14:03 +0800, Wu-Cheng Li wrote:
+>> From: Wu-Cheng Li <wuchengli-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+>>
+>> VPU firmware has a bug and may return invalid buffer index for
+>> some vp9 videos. Check the buffer indexes before accessing the
+>> buffer.
+>>
+>> Signed-off-by: Wu-Cheng Li <wuchengli-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>> ---
+>>  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |  6 +++++
+>>  .../media/platform/mtk-vcodec/vdec/vdec_vp9_if.c   | 26 ++++++++++++++++++++++
+>>  drivers/media/platform/mtk-vcodec/vdec_drv_if.h    |  2 ++
+>>  3 files changed, 34 insertions(+)
+>>
+>> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+>> index 502877a4b1df..7ebcf9e57ac7 100644
+>> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+>> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+>> @@ -1176,6 +1176,12 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
+>>                              "[%d] vdec_if_decode() src_buf=%d, size=%zu, fail=%d, res_chg=%d",
+>>                              ctx->id, src_buf->index,
+>>                              src_mem.size, ret, res_chg);
+>> +
+>> +             if (ret == -EIO) {
+>> +                     mtk_v4l2_err("[%d] Unrecoverable error in vdec_if_decode.",
+>> +                                     ctx->id);
+>> +                     ctx->state = MTK_STATE_ABORT;
+>> +             }
+> Could we use v4l2_m2m_buf_done(to_vb2_v4l2_buffer(src_buf),
+> VB2_BUF_STATE_ERROR); instead ctx->state = MTK_STATE_ABORT;
+> In this case, the behavior will be same as vdec_if_decode called in
+> mtk_vdec_worker.
+If we use VB2_BUF_STATE_ERROR, dqbuf will return V4L2_BUF_FLAG_ERROR.
+It means a recoverable error.
 
-Are these interdependent, if not can you send them separately please
-
-> 
-> This series contains document bindings, Kconfig to control the function enable or not,
-> device tree including interrupt and dma device node, the code of UART DMA function.
-> 
-> Long Cheng (4):
->   dt-bindings: dma: uart: add uart dma bindings
->   dmaengine: mtk_uart_dma: add Mediatek uart DMA support
->   serial: 8250-mtk: add uart DMA support
->   arm: dts: mt2701: add uart APDMA to device tree
-> 
->  .../devicetree/bindings/dma/mtk_uart_dma.txt       |   32 +
->  arch/arm/boot/dts/mt2701-evb.dts                   |   22 +
->  arch/arm/boot/dts/mt2701.dtsi                      |   29 +
->  drivers/dma/Kconfig                                |    9 +
->  drivers/dma/Makefile                               |    1 +
->  drivers/dma/mtk_uart_dma.c                         |  955 ++++++++++++++++++++
->  drivers/tty/serial/8250/8250_mtk.c                 |  194 +++-
->  7 files changed, 1241 insertions(+), 1 deletion(-)
->  create mode 100644 Documentation/devicetree/bindings/dma/mtk_uart_dma.txt
->  create mode 100644 drivers/dma/mtk_uart_dma.c
-> 
-> -- 
-> 1.7.9.5
-> 
-
--- 
-~Vinod
+"The driver may also set V4L2_BUF_FLAG_ERROR in the flags field. It indicates
+a non-critical (recoverable) streaming error. In such case the application may
+continue as normal, but should be aware that data in the dequeued buffer might
+be corrupted."
+https://static.lwn.net/kerneldoc/media/uapi/v4l/vidioc-qbuf.html
+> And we could also get information about what output buffer make vpu
+> crash.
+>
+> best regards,
+> Tiffany
+>>               return;
+>>       }
+>>
+>> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+>> index e91a3b425b0c..5539b1853f16 100644
+>> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+>> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+>> @@ -718,6 +718,26 @@ static void get_free_fb(struct vdec_vp9_inst *inst, struct vdec_fb **out_fb)
+>>       *out_fb = fb;
+>>  }
+>>
+>> +static int validate_vsi_array_indexes(struct vdec_vp9_inst *inst,
+>> +             struct vdec_vp9_vsi *vsi) {
+>> +     if (vsi->sf_frm_idx >= VP9_MAX_FRM_BUF_NUM - 1) {
+>> +             mtk_vcodec_err(inst, "Invalid vsi->sf_frm_idx=%u.",
+>> +                             vsi->sf_frm_idx);
+>> +             return -EIO;
+>> +     }
+>> +     if (vsi->frm_to_show_idx >= VP9_MAX_FRM_BUF_NUM) {
+>> +             mtk_vcodec_err(inst, "Invalid vsi->frm_to_show_idx=%u.",
+>> +                             vsi->frm_to_show_idx);
+>> +             return -EIO;
+>> +     }
+>> +     if (vsi->new_fb_idx >= VP9_MAX_FRM_BUF_NUM) {
+>> +             mtk_vcodec_err(inst, "Invalid vsi->new_fb_idx=%u.",
+>> +                             vsi->new_fb_idx);
+>> +             return -EIO;
+>> +     }
+>> +     return 0;
+>> +}
+>> +
+>>  static void vdec_vp9_deinit(unsigned long h_vdec)
+>>  {
+>>       struct vdec_vp9_inst *inst = (struct vdec_vp9_inst *)h_vdec;
+>> @@ -834,6 +854,12 @@ static int vdec_vp9_decode(unsigned long h_vdec, struct mtk_vcodec_mem *bs,
+>>                       goto DECODE_ERROR;
+>>               }
+>>
+>> +             ret = validate_vsi_array_indexes(inst, vsi);
+>> +             if (ret) {
+>> +                     mtk_vcodec_err(inst, "Invalid values from VPU.");
+>> +                     goto DECODE_ERROR;
+>> +             }
+>> +
+>>               if (vsi->resolution_changed) {
+>>                       if (!vp9_alloc_work_buf(inst)) {
+>>                               ret = -EINVAL;
+>> diff --git a/drivers/media/platform/mtk-vcodec/vdec_drv_if.h b/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
+>> index db6b5205ffb1..ded1154481cd 100644
+>> --- a/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
+>> +++ b/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
+>> @@ -85,6 +85,8 @@ void vdec_if_deinit(struct mtk_vcodec_ctx *ctx);
+>>   * @res_chg  : [out] resolution change happens if current bs have different
+>>   *   picture width/height
+>>   * Note: To flush the decoder when reaching EOF, set input bitstream as NULL.
+>> + *
+>> + * Return: 0 on success. -EIO on unrecoverable error.
+>>   */
+>>  int vdec_if_decode(struct mtk_vcodec_ctx *ctx, struct mtk_vcodec_mem *bs,
+>>                  struct vdec_fb *fb, bool *res_chg);
+>
+>
