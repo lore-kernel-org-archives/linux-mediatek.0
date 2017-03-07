@@ -1,49 +1,36 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH 2/2] usb: xhci: remove dummy extra_priv_size for size of xhci_hcd struct
-Date: Tue, 7 Mar 2017 11:32:23 +0800
-Message-ID: <1488857543-9384-2-git-send-email-chunfeng.yun@mediatek.com>
-References: <1488857543-9384-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Wu-Cheng Li <wuchengli@chromium.org>
+Subject: [PATCH v1 0/1] mtk-vcodec: check the vp9 decoder buffer index from VPU
+Date: Tue,  7 Mar 2017 14:03:27 +0800
+Message-ID: <20170307060328.114348-1-wuchengli@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1488857543-9384-1-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@intel.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Thierry Reding <treding@nvidia.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: pawel@osciak.com, tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com, mchehab@kernel.org, matthias.bgg@gmail.com, hans.verkuil@cisco.com, wuchengli@google.com
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, djkurtz@chromium.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-because hcd_priv_size is already size of xhci_hcd struct,
-extra_priv_size is not needed anymore for MTK and tegra drivers.
+From: Wu-Cheng Li <wuchengli@google.com>
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/host/xhci-mtk.c   |    1 -
- drivers/usb/host/xhci-tegra.c |    1 -
- 2 files changed, 2 deletions(-)
+This patch guards against the invalid buffer index from
+VPU firmware.
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 6ac73a6..67d5dc7 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -382,7 +382,6 @@ static int usb_wakeup_of_property_parse(struct xhci_hcd_mtk *mtk,
- 
- static int xhci_mtk_setup(struct usb_hcd *hcd);
- static const struct xhci_driver_overrides xhci_mtk_overrides __initconst = {
--	.extra_priv_size = sizeof(struct xhci_hcd),
- 	.reset = xhci_mtk_setup,
- };
- 
-diff --git a/drivers/usb/host/xhci-tegra.c b/drivers/usb/host/xhci-tegra.c
-index a59fafb..74436f8 100644
---- a/drivers/usb/host/xhci-tegra.c
-+++ b/drivers/usb/host/xhci-tegra.c
-@@ -1308,7 +1308,6 @@ static int tegra_xhci_setup(struct usb_hcd *hcd)
- }
- 
- static const struct xhci_driver_overrides tegra_xhci_overrides __initconst = {
--	.extra_priv_size = sizeof(struct xhci_hcd),
- 	.reset = tegra_xhci_setup,
- };
- 
+Wu-Cheng Li (1):
+  mtk-vcodec: check the vp9 decoder buffer index from VPU.
+
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |  6 +++++
+ .../media/platform/mtk-vcodec/vdec/vdec_vp9_if.c   | 26 ++++++++++++++++++++++
+ drivers/media/platform/mtk-vcodec/vdec_drv_if.h    |  2 ++
+ 3 files changed, 34 insertions(+)
+
 -- 
-1.7.9.5
+2.12.0.rc1.440.g5b76565f74-goog
