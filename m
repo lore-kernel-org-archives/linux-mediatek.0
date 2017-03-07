@@ -1,81 +1,114 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 1/2] usb: xhci-mtk: rebuild xhci_mtk_setup()
-Date: Tue, 7 Mar 2017 14:57:20 +0800
-Message-ID: <1488869841-9959-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: Re: [PATCH 1/1] mtk-vcodec: check the vp9 decoder buffer index from
+ VPU.
+Date: Tue, 7 Mar 2017 15:59:42 +0800
+Message-ID: <1488873582.20293.4.camel@mtksdaap41>
+References: <20170307060328.114348-1-wuchengli@chromium.org>
+         <20170307060328.114348-2-wuchengli@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170307060328.114348-2-wuchengli@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wu-Cheng Li <wuchengli@chromium.org>
+Cc: pawel@osciak.com, andrew-ct.chen@mediatek.com, mchehab@kernel.org, matthias.bgg@gmail.com, hans.verkuil@cisco.com, wuchengli@google.com, djkurtz@chromium.org, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-simplify xhci_mtk_setup() and add xhci_mtk_start() for
-xhci_driver_overrides struct
+On Tue, 2017-03-07 at 14:03 +0800, Wu-Cheng Li wrote:
+> From: Wu-Cheng Li <wuchengli@google.com>
+> 
+> VPU firmware has a bug and may return invalid buffer index for
+> some vp9 videos. Check the buffer indexes before accessing the
+> buffer.
+> 
+> Signed-off-by: Wu-Cheng Li <wuchengli@chromium.org>
+> ---
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |  6 +++++
+>  .../media/platform/mtk-vcodec/vdec/vdec_vp9_if.c   | 26 ++++++++++++++++++++++
+>  drivers/media/platform/mtk-vcodec/vdec_drv_if.h    |  2 ++
+>  3 files changed, 34 insertions(+)
+> 
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+> index 502877a4b1df..7ebcf9e57ac7 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+> @@ -1176,6 +1176,12 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
+>  			       "[%d] vdec_if_decode() src_buf=%d, size=%zu, fail=%d, res_chg=%d",
+>  			       ctx->id, src_buf->index,
+>  			       src_mem.size, ret, res_chg);
+> +
+> +		if (ret == -EIO) {
+> +			mtk_v4l2_err("[%d] Unrecoverable error in vdec_if_decode.",
+> +					ctx->id);
+> +			ctx->state = MTK_STATE_ABORT;
+> +		}
+Could we use v4l2_m2m_buf_done(to_vb2_v4l2_buffer(src_buf),
+VB2_BUF_STATE_ERROR); instead ctx->state = MTK_STATE_ABORT;
+In this case, the behavior will be same as vdec_if_decode called in
+mtk_vdec_worker.
+And we could also get information about what output buffer make vpu
+crash.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/usb/host/xhci-mtk.c |   16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 67d5dc7..9636884 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -381,8 +381,10 @@ static int usb_wakeup_of_property_parse(struct xhci_hcd_mtk *mtk,
- }
- 
- static int xhci_mtk_setup(struct usb_hcd *hcd);
-+static int xhci_mtk_start(struct usb_hcd *hcd);
- static const struct xhci_driver_overrides xhci_mtk_overrides __initconst = {
- 	.reset = xhci_mtk_setup,
-+	.start = xhci_mtk_start,
- };
- 
- static struct hc_driver __read_mostly xhci_mtk_hc_driver;
-@@ -492,7 +494,6 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
- /* called during probe() after chip reset completes */
- static int xhci_mtk_setup(struct usb_hcd *hcd)
- {
--	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
- 	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
- 	int ret;
- 
-@@ -502,9 +503,14 @@ static int xhci_mtk_setup(struct usb_hcd *hcd)
- 			return ret;
- 	}
- 
--	ret = xhci_gen_setup(hcd, xhci_mtk_quirks);
--	if (ret)
--		return ret;
-+	return xhci_gen_setup(hcd, xhci_mtk_quirks);
-+}
-+
-+static int xhci_mtk_start(struct usb_hcd *hcd)
-+{
-+	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
-+	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
-+	int ret;
- 
- 	if (usb_hcd_is_primary_hcd(hcd)) {
- 		mtk->num_u3_ports = xhci->num_usb3_ports;
-@@ -514,7 +520,7 @@ static int xhci_mtk_setup(struct usb_hcd *hcd)
- 			return ret;
- 	}
- 
--	return ret;
-+	return xhci_run(hcd);
- }
- 
- static int xhci_mtk_probe(struct platform_device *pdev)
--- 
-1.7.9.5
+best regards,
+Tiffany
+>  		return;
+>  	}
+>  
+> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+> index e91a3b425b0c..5539b1853f16 100644
+> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+> @@ -718,6 +718,26 @@ static void get_free_fb(struct vdec_vp9_inst *inst, struct vdec_fb **out_fb)
+>  	*out_fb = fb;
+>  }
+>  
+> +static int validate_vsi_array_indexes(struct vdec_vp9_inst *inst,
+> +		struct vdec_vp9_vsi *vsi) {
+> +	if (vsi->sf_frm_idx >= VP9_MAX_FRM_BUF_NUM - 1) {
+> +		mtk_vcodec_err(inst, "Invalid vsi->sf_frm_idx=%u.",
+> +				vsi->sf_frm_idx);
+> +		return -EIO;
+> +	}
+> +	if (vsi->frm_to_show_idx >= VP9_MAX_FRM_BUF_NUM) {
+> +		mtk_vcodec_err(inst, "Invalid vsi->frm_to_show_idx=%u.",
+> +				vsi->frm_to_show_idx);
+> +		return -EIO;
+> +	}
+> +	if (vsi->new_fb_idx >= VP9_MAX_FRM_BUF_NUM) {
+> +		mtk_vcodec_err(inst, "Invalid vsi->new_fb_idx=%u.",
+> +				vsi->new_fb_idx);
+> +		return -EIO;
+> +	}
+> +	return 0;
+> +}
+> +
+>  static void vdec_vp9_deinit(unsigned long h_vdec)
+>  {
+>  	struct vdec_vp9_inst *inst = (struct vdec_vp9_inst *)h_vdec;
+> @@ -834,6 +854,12 @@ static int vdec_vp9_decode(unsigned long h_vdec, struct mtk_vcodec_mem *bs,
+>  			goto DECODE_ERROR;
+>  		}
+>  
+> +		ret = validate_vsi_array_indexes(inst, vsi);
+> +		if (ret) {
+> +			mtk_vcodec_err(inst, "Invalid values from VPU.");
+> +			goto DECODE_ERROR;
+> +		}
+> +
+>  		if (vsi->resolution_changed) {
+>  			if (!vp9_alloc_work_buf(inst)) {
+>  				ret = -EINVAL;
+> diff --git a/drivers/media/platform/mtk-vcodec/vdec_drv_if.h b/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
+> index db6b5205ffb1..ded1154481cd 100644
+> --- a/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
+> +++ b/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
+> @@ -85,6 +85,8 @@ void vdec_if_deinit(struct mtk_vcodec_ctx *ctx);
+>   * @res_chg	: [out] resolution change happens if current bs have different
+>   *	picture width/height
+>   * Note: To flush the decoder when reaching EOF, set input bitstream as NULL.
+> + *
+> + * Return: 0 on success. -EIO on unrecoverable error.
+>   */
+>  int vdec_if_decode(struct mtk_vcodec_ctx *ctx, struct mtk_vcodec_mem *bs,
+>  		   struct vdec_fb *fb, bool *res_chg);
