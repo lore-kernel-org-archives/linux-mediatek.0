@@ -1,13 +1,13 @@
-From: Wu-Cheng Li <wuchengli-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH 1/1] mtk-vcodec: check the vp9 decoder buffer index from VPU.
-Date: Tue,  7 Mar 2017 14:03:28 +0800
-Message-ID: <20170307060328.114348-2-wuchengli@chromium.org>
-References: <20170307060328.114348-1-wuchengli@chromium.org>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 2/2] usb: xhci-mtk: fix checkpatch warning and erorr
+Date: Tue, 7 Mar 2017 14:57:21 +0800
+Message-ID: <1488869841-9959-2-git-send-email-chunfeng.yun@mediatek.com>
+References: <1488869841-9959-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170307060328.114348-1-wuchengli-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+In-Reply-To: <1488869841-9959-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -17,96 +17,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org, tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, wuchengli-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wu-Cheng Li <wuchengli-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Wu-Cheng Li <wuchengli-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+there are two warnings and a erorr when checked by checkpatch.pl
+as following:
 
-VPU firmware has a bug and may return invalid buffer index for
-some vp9 videos. Check the buffer indexes before accessing the
-buffer.
+WARNING:BLOCK_COMMENT_STYLE: Block comments should align
+the * on each line
 
-Signed-off-by: Wu-Cheng Li <wuchengli-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+ERROR:COMPLEX_MACRO: Macros with complex values should be
+enclosed in parentheses
+
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |  6 +++++
- .../media/platform/mtk-vcodec/vdec/vdec_vp9_if.c   | 26 ++++++++++++++++++++++
- drivers/media/platform/mtk-vcodec/vdec_drv_if.h    |  2 ++
- 3 files changed, 34 insertions(+)
+ drivers/usb/host/xhci-mtk.c |   16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-index 502877a4b1df..7ebcf9e57ac7 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-@@ -1176,6 +1176,12 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
- 			       "[%d] vdec_if_decode() src_buf=%d, size=%zu, fail=%d, res_chg=%d",
- 			       ctx->id, src_buf->index,
- 			       src_mem.size, ret, res_chg);
-+
-+		if (ret == -EIO) {
-+			mtk_v4l2_err("[%d] Unrecoverable error in vdec_if_decode.",
-+					ctx->id);
-+			ctx->state = MTK_STATE_ABORT;
-+		}
- 		return;
- 	}
- 
-diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-index e91a3b425b0c..5539b1853f16 100644
---- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-@@ -718,6 +718,26 @@ static void get_free_fb(struct vdec_vp9_inst *inst, struct vdec_fb **out_fb)
- 	*out_fb = fb;
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index 9636884..22c94fe 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -287,9 +287,9 @@ static void usb_wakeup_ip_sleep_dis(struct xhci_hcd_mtk *mtk)
  }
  
-+static int validate_vsi_array_indexes(struct vdec_vp9_inst *inst,
-+		struct vdec_vp9_vsi *vsi) {
-+	if (vsi->sf_frm_idx >= VP9_MAX_FRM_BUF_NUM - 1) {
-+		mtk_vcodec_err(inst, "Invalid vsi->sf_frm_idx=%u.",
-+				vsi->sf_frm_idx);
-+		return -EIO;
-+	}
-+	if (vsi->frm_to_show_idx >= VP9_MAX_FRM_BUF_NUM) {
-+		mtk_vcodec_err(inst, "Invalid vsi->frm_to_show_idx=%u.",
-+				vsi->frm_to_show_idx);
-+		return -EIO;
-+	}
-+	if (vsi->new_fb_idx >= VP9_MAX_FRM_BUF_NUM) {
-+		mtk_vcodec_err(inst, "Invalid vsi->new_fb_idx=%u.",
-+				vsi->new_fb_idx);
-+		return -EIO;
-+	}
-+	return 0;
-+}
-+
- static void vdec_vp9_deinit(unsigned long h_vdec)
+ /*
+-* for line-state wakeup mode, phy's power should not power-down
+-* and only support cable plug in/out
+-*/
++ * for line-state wakeup mode, phy's power should not power-down
++ * and only support cable plug in/out
++ */
+ static void usb_wakeup_line_state_en(struct xhci_hcd_mtk *mtk)
  {
- 	struct vdec_vp9_inst *inst = (struct vdec_vp9_inst *)h_vdec;
-@@ -834,6 +854,12 @@ static int vdec_vp9_decode(unsigned long h_vdec, struct mtk_vcodec_mem *bs,
- 			goto DECODE_ERROR;
- 		}
+ 	u32 tmp;
+@@ -350,10 +350,10 @@ static int usb_wakeup_of_property_parse(struct xhci_hcd_mtk *mtk,
+ 	struct device *dev = mtk->dev;
  
-+		ret = validate_vsi_array_indexes(inst, vsi);
-+		if (ret) {
-+			mtk_vcodec_err(inst, "Invalid values from VPU.");
-+			goto DECODE_ERROR;
-+		}
-+
- 		if (vsi->resolution_changed) {
- 			if (!vp9_alloc_work_buf(inst)) {
- 				ret = -EINVAL;
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_drv_if.h b/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
-index db6b5205ffb1..ded1154481cd 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
-+++ b/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
-@@ -85,6 +85,8 @@ void vdec_if_deinit(struct mtk_vcodec_ctx *ctx);
-  * @res_chg	: [out] resolution change happens if current bs have different
-  *	picture width/height
-  * Note: To flush the decoder when reaching EOF, set input bitstream as NULL.
-+ *
-+ * Return: 0 on success. -EIO on unrecoverable error.
-  */
- int vdec_if_decode(struct mtk_vcodec_ctx *ctx, struct mtk_vcodec_mem *bs,
- 		   struct vdec_fb *fb, bool *res_chg);
+ 	/*
+-	* wakeup function is optional, so it is not an error if this property
+-	* does not exist, and in such case, no need to get relative
+-	* properties anymore.
+-	*/
++	 * wakeup function is optional, so it is not an error if this property
++	 * does not exist, and in such case, no need to get relative
++	 * properties anymore.
++	 */
+ 	of_property_read_u32(dn, "mediatek,wakeup-src", &mtk->wakeup_src);
+ 	if (!mtk->wakeup_src)
+ 		return 0;
+@@ -796,7 +796,7 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
+ static const struct dev_pm_ops xhci_mtk_pm_ops = {
+ 	SET_SYSTEM_SLEEP_PM_OPS(xhci_mtk_suspend, xhci_mtk_resume)
+ };
+-#define DEV_PM_OPS IS_ENABLED(CONFIG_PM) ? &xhci_mtk_pm_ops : NULL
++#define DEV_PM_OPS (IS_ENABLED(CONFIG_PM) ? &xhci_mtk_pm_ops : NULL)
+ 
+ #ifdef CONFIG_OF
+ static const struct of_device_id mtk_xhci_of_match[] = {
 -- 
-2.12.0.rc1.440.g5b76565f74-goog
+1.7.9.5
