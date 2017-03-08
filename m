@@ -1,183 +1,41 @@
-From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: Re: [PATCH v3 1/1] mtk-vcodec: check the vp9 decoder buffer index
- from VPU.
-Date: Wed, 8 Mar 2017 11:50:51 +0800
-Message-ID: <1488945051.4522.4.camel@mtksdaap41>
-References: <20170308034058.99886-1-wuchengli@chromium.org>
- <20170308034058.99886-2-wuchengli@chromium.org>
+From: Herbert Xu <herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org>
+Subject: Re: [PATCH 9/9] crypto: mediatek - add support to OFB mode and
+ CFB128 mode
+Date: Wed, 8 Mar 2017 18:48:40 +0800
+Message-ID: <20170308104840.GA5069@gondor.apana.org.au>
+References: <1487582822-30393-1-git-send-email-ryder.lee@mediatek.com>
+ <1487582822-30393-10-git-send-email-ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170308034058.99886-2-wuchengli@chromium.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Wu-Cheng Li <wuchengli@chromium.org>
-Cc: andrew-ct.chen@mediatek.com, pawel@osciak.com, wuchengli@google.com, linux-kernel@vger.kernel.org, djkurtz@chromium.org, hans.verkuil@cisco.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1487582822-30393-10-git-send-email-ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-03-08 at 11:40 +0800, Wu-Cheng Li wrote:
-> From: Wu-Cheng Li <wuchengli@google.com>
+On Mon, Feb 20, 2017 at 05:27:02PM +0800, Ryder Lee wrote:
+> This patch adds support to OFB mode and CFB128 mode.
 > 
-> VPU firmware has a bug and may return invalid buffer index for
-> some vp9 videos. Check the buffer indexes before accessing the
-> buffer.
-> 
+> Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Acked-by: Tiffany Lin <Tiffany.lin@mediatek.com>
+In general we do not add any algorithms that
 
-> Signed-off-by: Wu-Cheng Li <wuchengli@chromium.org>
-> ---
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c | 33 +++++++++++++++++-----
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h |  2 ++
->  .../media/platform/mtk-vcodec/vdec/vdec_vp9_if.c   | 26 +++++++++++++++++
->  drivers/media/platform/mtk-vcodec/vdec_drv_if.h    |  2 ++
->  4 files changed, 56 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> index 502877a4b1df..a60b538686ea 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> @@ -420,6 +420,11 @@ static void mtk_vdec_worker(struct work_struct *work)
->  			dst_buf->index,
->  			ret, res_chg);
->  		src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
-> +		if (ret == -EIO) {
-> +			mutex_lock(&ctx->lock);
-> +			src_buf_info->error = true;
-> +			mutex_unlock(&ctx->lock);
-> +		}
->  		v4l2_m2m_buf_done(&src_buf_info->vb, VB2_BUF_STATE_ERROR);
->  	} else if (res_chg == false) {
->  		/*
-> @@ -1170,8 +1175,16 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
->  		 */
->  
->  		src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
-> -		v4l2_m2m_buf_done(to_vb2_v4l2_buffer(src_buf),
-> -					VB2_BUF_STATE_DONE);
-> +		if (ret == -EIO) {
-> +			mtk_v4l2_err("[%d] Unrecoverable error in vdec_if_decode.",
-> +					ctx->id);
-> +			ctx->state = MTK_STATE_ABORT;
-> +			v4l2_m2m_buf_done(to_vb2_v4l2_buffer(src_buf),
-> +						VB2_BUF_STATE_ERROR);
-> +		} else {
-> +			v4l2_m2m_buf_done(to_vb2_v4l2_buffer(src_buf),
-> +						VB2_BUF_STATE_DONE);
-> +		}
->  		mtk_v4l2_debug(ret ? 0 : 1,
->  			       "[%d] vdec_if_decode() src_buf=%d, size=%zu, fail=%d, res_chg=%d",
->  			       ctx->id, src_buf->index,
-> @@ -1216,16 +1229,22 @@ static void vb2ops_vdec_buf_finish(struct vb2_buffer *vb)
->  	struct mtk_vcodec_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
->  	struct vb2_v4l2_buffer *vb2_v4l2;
->  	struct mtk_video_dec_buf *buf;
-> -
-> -	if (vb->vb2_queue->type != V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE)
-> -		return;
-> +	bool buf_error;
->  
->  	vb2_v4l2 = container_of(vb, struct vb2_v4l2_buffer, vb2_buf);
->  	buf = container_of(vb2_v4l2, struct mtk_video_dec_buf, vb);
->  	mutex_lock(&ctx->lock);
-> -	buf->queued_in_v4l2 = false;
-> -	buf->queued_in_vb2 = false;
-> +	if (vb->vb2_queue->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
-> +		buf->queued_in_v4l2 = false;
-> +		buf->queued_in_vb2 = false;
-> +	}
-> +	buf_error = buf->error;
->  	mutex_unlock(&ctx->lock);
-> +
-> +	if (buf_error) {
-> +		mtk_v4l2_err("Unrecoverable error on buffer.");
-> +		ctx->state = MTK_STATE_ABORT;
-> +	}
->  }
->  
->  static int vb2ops_vdec_buf_init(struct vb2_buffer *vb)
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
-> index 362f5a85762e..dc4fc1df63c5 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
-> @@ -50,6 +50,7 @@ struct vdec_fb {
->   * @queued_in_v4l2:	Capture buffer is in v4l2 driver, but not in vb2
->   *			queue yet
->   * @lastframe:		Intput buffer is last buffer - EOS
-> + * @error:		An unrecoverable error occurs on this buffer.
->   * @frame_buffer:	Decode status, and buffer information of Capture buffer
->   *
->   * Note : These status information help us track and debug buffer state
-> @@ -63,6 +64,7 @@ struct mtk_video_dec_buf {
->  	bool	queued_in_vb2;
->  	bool	queued_in_v4l2;
->  	bool	lastframe;
-> +	bool	error;
->  	struct vdec_fb	frame_buffer;
->  };
->  
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> index e91a3b425b0c..5539b1853f16 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> @@ -718,6 +718,26 @@ static void get_free_fb(struct vdec_vp9_inst *inst, struct vdec_fb **out_fb)
->  	*out_fb = fb;
->  }
->  
-> +static int validate_vsi_array_indexes(struct vdec_vp9_inst *inst,
-> +		struct vdec_vp9_vsi *vsi) {
-> +	if (vsi->sf_frm_idx >= VP9_MAX_FRM_BUF_NUM - 1) {
-> +		mtk_vcodec_err(inst, "Invalid vsi->sf_frm_idx=%u.",
-> +				vsi->sf_frm_idx);
-> +		return -EIO;
-> +	}
-> +	if (vsi->frm_to_show_idx >= VP9_MAX_FRM_BUF_NUM) {
-> +		mtk_vcodec_err(inst, "Invalid vsi->frm_to_show_idx=%u.",
-> +				vsi->frm_to_show_idx);
-> +		return -EIO;
-> +	}
-> +	if (vsi->new_fb_idx >= VP9_MAX_FRM_BUF_NUM) {
-> +		mtk_vcodec_err(inst, "Invalid vsi->new_fb_idx=%u.",
-> +				vsi->new_fb_idx);
-> +		return -EIO;
-> +	}
-> +	return 0;
-> +}
-> +
->  static void vdec_vp9_deinit(unsigned long h_vdec)
->  {
->  	struct vdec_vp9_inst *inst = (struct vdec_vp9_inst *)h_vdec;
-> @@ -834,6 +854,12 @@ static int vdec_vp9_decode(unsigned long h_vdec, struct mtk_vcodec_mem *bs,
->  			goto DECODE_ERROR;
->  		}
->  
-> +		ret = validate_vsi_array_indexes(inst, vsi);
-> +		if (ret) {
-> +			mtk_vcodec_err(inst, "Invalid values from VPU.");
-> +			goto DECODE_ERROR;
-> +		}
-> +
->  		if (vsi->resolution_changed) {
->  			if (!vp9_alloc_work_buf(inst)) {
->  				ret = -EINVAL;
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec_drv_if.h b/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
-> index db6b5205ffb1..ded1154481cd 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
-> +++ b/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
-> @@ -85,6 +85,8 @@ void vdec_if_deinit(struct mtk_vcodec_ctx *ctx);
->   * @res_chg	: [out] resolution change happens if current bs have different
->   *	picture width/height
->   * Note: To flush the decoder when reaching EOF, set input bitstream as NULL.
-> + *
-> + * Return: 0 on success. -EIO on unrecoverable error.
->   */
->  int vdec_if_decode(struct mtk_vcodec_ctx *ctx, struct mtk_vcodec_mem *bs,
->  		   struct vdec_fb *fb, bool *res_chg);
+1) have no in-kernel users;
+2) and/or have no software implementations.
+
+Thanks,
+-- 
+Email: Herbert Xu <herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
