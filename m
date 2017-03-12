@@ -1,29 +1,54 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v5 2/4] dt-bindings: mfd: Add LED subnode binding for
- MT6323 PMIC
-Date: Sun, 12 Mar 2017 09:05:44 -0500
-Message-ID: <20170312140544.37h6sklywmqhfa5w@rob-hp-laptop>
-References: <1488549385-19899-1-git-send-email-sean.wang@mediatek.com>
- <1488549385-19899-3-git-send-email-sean.wang@mediatek.com>
+From: =?UTF-8?q?J=C3=A9r=C3=A9my=20Lefaure?= <jeremy.lefaure@lse.epita.fr>
+Subject: [PATCH] [media] vcodev: mediatek: add missing include in JPEG decoder
+ driver
+Date: Sun, 12 Mar 2017 16:13:29 -0400
+Message-ID: <20170312201329.28357-1-jeremy.lefaure@lse.epita.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-leds-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1488549385-19899-3-git-send-email-sean.wang@mediatek.com>
-Sender: linux-leds-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: rpurdie@rpsys.net, jacek.anaszewski@gmail.com, lee.jones@linaro.org, matthias.bgg@gmail.com, pavel@ucw.cz, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-leds@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rick Chang <rick.chang@mediatek.com>, Bin Liu <bin.liu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: =?UTF-8?q?J=C3=A9r=C3=A9my=20Lefaure?= <jeremy.lefaure@lse.epita.fr>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Mar 03, 2017 at 09:56:23PM +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> This patch adds documentation for devicetree bindings
-> for LED support as the subnode of MT6323 PMIC
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/mfd/mt6397.txt | 5 +++++
->  1 file changed, 5 insertions(+)
-
-Acked-by: Rob Herring <robh@kernel.org>
+VGhlIGRyaXZlciB1c2VzIGt6YWxsb2MgYW5kIGtmcmVlIGZ1bmN0aW9ucy4gU28gaXQgc2hvdWxk
+IGluY2x1ZGUKbGludXgvc2xhYi5oLiBUaGlzIGhlYWRlciBmaWxlIGlzIGltcGxpY2l0bHkgaW5j
+bHVkZWQgYnkgdjRsMi1jb21tb24uaAppZiBDT05GSUdfU1BJIGlzIGVuYWJsZWQuIEJ1dCB3aGVu
+IGl0IGlzIGRpc2FibGVkLCBzbGFiLmggaXMgbm90CmluY2x1ZGVkLiBJbiB0aGlzIGNhc2UsIHRo
+ZSBkcml2ZXIgZG9lcyBub3QgY29tcGlsZToKCmRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWpw
+ZWcvbXRrX2pwZWdfY29yZS5jOiBJbiBmdW5jdGlvbiDigJhtdGtfanBlZ19vcGVu4oCZOgpkcml2
+ZXJzL21lZGlhL3BsYXRmb3JtL210ay1qcGVnL210a19qcGVnX2NvcmUuYzoxMDE3Ojg6IGVycm9y
+OiBpbXBsaWNpdApkZWNsYXJhdGlvbiBvZiBmdW5jdGlvbiDigJhremFsbG9j4oCZClstV2Vycm9y
+PWltcGxpY2l0LWZ1bmN0aW9uLWRlY2xhcmF0aW9uXQogIGN0eCA9IGt6YWxsb2Moc2l6ZW9mKCpj
+dHgpLCBHRlBfS0VSTkVMKTsKICAgICAgICBefn5+fn5+CmRyaXZlcnMvbWVkaWEvcGxhdGZvcm0v
+bXRrLWpwZWcvbXRrX2pwZWdfY29yZS5jOjEwMTc6Njogd2FybmluZzoKYXNzaWdubWVudCBtYWtl
+cyBwb2ludGVyIGZyb20gaW50ZWdlciB3aXRob3V0IGEgY2FzdCBbLVdpbnQtY29udmVyc2lvbl0K
+ICBjdHggPSBremFsbG9jKHNpemVvZigqY3R4KSwgR0ZQX0tFUk5FTCk7CiAgICAgIF4KZHJpdmVy
+cy9tZWRpYS9wbGF0Zm9ybS9tdGstanBlZy9tdGtfanBlZ19jb3JlLmM6MTA0NzoyOiBlcnJvcjog
+aW1wbGljaXQKZGVjbGFyYXRpb24gb2YgZnVuY3Rpb24g4oCYa2ZyZWXigJkgWy1XZXJyb3I9aW1w
+bGljaXQtZnVuY3Rpb24tZGVjbGFyYXRpb25dCiAga2ZyZWUoY3R4KTsKICBefn5+fgoKVGhpcyBw
+YXRjaCBhZGRzIHRoZSBtaXNzaW5nIGluY2x1ZGUgdG8gZml4IHRoaXMgaXNzdWUuCgpTaWduZWQt
+b2ZmLWJ5OiBKw6lyw6lteSBMZWZhdXJlIDxqZXJlbXkubGVmYXVyZUBsc2UuZXBpdGEuZnI+Ci0t
+LQogZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstanBlZy9tdGtfanBlZ19jb3JlLmMgfCAxICsK
+IDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVk
+aWEvcGxhdGZvcm0vbXRrLWpwZWcvbXRrX2pwZWdfY29yZS5jIGIvZHJpdmVycy9tZWRpYS9wbGF0
+Zm9ybS9tdGstanBlZy9tdGtfanBlZ19jb3JlLmMKaW5kZXggYjEwMTgzZjc5NDJiLi5mOWJkNThj
+ZTdkMzIgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWpwZWcvbXRrX2pw
+ZWdfY29yZS5jCisrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWpwZWcvbXRrX2pwZWdf
+Y29yZS5jCkBAIC0yMiw2ICsyMiw3IEBACiAjaW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4K
+ICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KICNpbmNsdWRlIDxsaW51eC9wbV9y
+dW50aW1lLmg+CisjaW5jbHVkZSA8bGludXgvc2xhYi5oPgogI2luY2x1ZGUgPGxpbnV4L3NwaW5s
+b2NrLmg+CiAjaW5jbHVkZSA8bWVkaWEvdjRsMi1ldmVudC5oPgogI2luY2x1ZGUgPG1lZGlhL3Y0
+bDItbWVtMm1lbS5oPgotLSAKMi4xMi4wCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJt
+LWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
