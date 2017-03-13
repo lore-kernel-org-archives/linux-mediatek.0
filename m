@@ -1,45 +1,60 @@
-From: Rick Chang <rick.chang@mediatek.com>
+From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
 Subject: Re: [PATCH] [media] vcodev: mediatek: add missing include in JPEG
  decoder driver
-Date: Mon, 13 Mar 2017 11:04:54 +0800
-Message-ID: <1489374294.19716.1.camel@mtksdaap41>
+Date: Mon, 13 Mar 2017 11:17:33 +0100
+Message-ID: <27eb2dc3-cc98-d41f-ed4f-71b2660702aa@xs4all.nl>
 References: <20170312201329.28357-1-jeremy.lefaure@lse.epita.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20170312201329.28357-1-jeremy.lefaure@lse.epita.fr>
-Sender: linux-media-owner@vger.kernel.org
-To: =?ISO-8859-1?Q?J=E9r=E9my?= Lefaure <jeremy.lefaure@lse.epita.fr>
-Cc: Bin Liu <bin.liu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170312201329.28357-1-jeremy.lefaure-tU7rkvAWjlwhT4uAktR2oQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?J=c3=a9r=c3=a9my_Lefaure?= <jeremy.lefaure-tU7rkvAWjlwhT4uAktR2oQ@public.gmane.org>, Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bin Liu <bin.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, 2017-03-12 at 16:13 -0400, Jérémy Lefaure wrote:
-> The driver uses kzalloc and kfree functions. So it should include
-> linux/slab.h. This header file is implicitly included by v4l2-common.h
-> if CONFIG_SPI is enabled. But when it is disabled, slab.h is not
-> included. In this case, the driver does not compile:
-> 
-> drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c: In function ‘mtk_jpeg_open’:
-> drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c:1017:8: error: implicit
-> declaration of function ‘kzalloc’
-> [-Werror=implicit-function-declaration]
->   ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
->         ^~~~~~~
-> drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c:1017:6: warning:
-> assignment makes pointer from integer without a cast [-Wint-conversion]
->   ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
->       ^
-> drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c:1047:2: error: implicit
-> declaration of function ‘kfree’ [-Werror=implicit-function-declaration]
->   kfree(ctx);
->   ^~~~~
-> 
-> This patch adds the missing include to fix this issue.
-> 
-> Signed-off-by: Jérémy Lefaure <jeremy.lefaure@lse.epita.fr>
-> ---
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 1 +
->  1 file changed, 1 insertion(+)
-
-Acked-by: Rick Chang <rick.chang@mediatek.com>
+T24gMDMvMTIvMjAxNyAwOToxMyBQTSwgSsOpcsOpbXkgTGVmYXVyZSB3cm90ZToKPiBUaGUgZHJp
+dmVyIHVzZXMga3phbGxvYyBhbmQga2ZyZWUgZnVuY3Rpb25zLiBTbyBpdCBzaG91bGQgaW5jbHVk
+ZQo+IGxpbnV4L3NsYWIuaC4gVGhpcyBoZWFkZXIgZmlsZSBpcyBpbXBsaWNpdGx5IGluY2x1ZGVk
+IGJ5IHY0bDItY29tbW9uLmgKPiBpZiBDT05GSUdfU1BJIGlzIGVuYWJsZWQuIEJ1dCB3aGVuIGl0
+IGlzIGRpc2FibGVkLCBzbGFiLmggaXMgbm90Cj4gaW5jbHVkZWQuIEluIHRoaXMgY2FzZSwgdGhl
+IGRyaXZlciBkb2VzIG5vdCBjb21waWxlOgo+IAo+IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRr
+LWpwZWcvbXRrX2pwZWdfY29yZS5jOiBJbiBmdW5jdGlvbiDigJhtdGtfanBlZ19vcGVu4oCZOgo+
+IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWpwZWcvbXRrX2pwZWdfY29yZS5jOjEwMTc6ODog
+ZXJyb3I6IGltcGxpY2l0Cj4gZGVjbGFyYXRpb24gb2YgZnVuY3Rpb24g4oCYa3phbGxvY+KAmQo+
+IFstV2Vycm9yPWltcGxpY2l0LWZ1bmN0aW9uLWRlY2xhcmF0aW9uXQo+ICAgY3R4ID0ga3phbGxv
+YyhzaXplb2YoKmN0eCksIEdGUF9LRVJORUwpOwo+ICAgICAgICAgXn5+fn5+fgo+IGRyaXZlcnMv
+bWVkaWEvcGxhdGZvcm0vbXRrLWpwZWcvbXRrX2pwZWdfY29yZS5jOjEwMTc6Njogd2FybmluZzoK
+PiBhc3NpZ25tZW50IG1ha2VzIHBvaW50ZXIgZnJvbSBpbnRlZ2VyIHdpdGhvdXQgYSBjYXN0IFst
+V2ludC1jb252ZXJzaW9uXQo+ICAgY3R4ID0ga3phbGxvYyhzaXplb2YoKmN0eCksIEdGUF9LRVJO
+RUwpOwo+ICAgICAgIF4KPiBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1qcGVnL210a19qcGVn
+X2NvcmUuYzoxMDQ3OjI6IGVycm9yOiBpbXBsaWNpdAo+IGRlY2xhcmF0aW9uIG9mIGZ1bmN0aW9u
+IOKAmGtmcmVl4oCZIFstV2Vycm9yPWltcGxpY2l0LWZ1bmN0aW9uLWRlY2xhcmF0aW9uXQo+ICAg
+a2ZyZWUoY3R4KTsKPiAgIF5+fn5+Cj4gCj4gVGhpcyBwYXRjaCBhZGRzIHRoZSBtaXNzaW5nIGlu
+Y2x1ZGUgdG8gZml4IHRoaXMgaXNzdWUuCgpUaGFua3MgZm9yIHRoZSBwYXRjaCwgYnV0IHNvbWVv
+bmUgZWxzZSBtYWRlIHRoZSBzYW1lIGZpeCBhbHJlYWR5IGFuZCBpdCBpcwpxdWV1ZWQgdXAgZm9y
+IDQuMTIuCgpSZWdhcmRzLAoKCUhhbnMKCj4gCj4gU2lnbmVkLW9mZi1ieTogSsOpcsOpbXkgTGVm
+YXVyZSA8amVyZW15LmxlZmF1cmVAbHNlLmVwaXRhLmZyPgo+IC0tLQo+ICBkcml2ZXJzL21lZGlh
+L3BsYXRmb3JtL210ay1qcGVnL210a19qcGVnX2NvcmUuYyB8IDEgKwo+ICAxIGZpbGUgY2hhbmdl
+ZCwgMSBpbnNlcnRpb24oKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9y
+bS9tdGstanBlZy9tdGtfanBlZ19jb3JlLmMgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1q
+cGVnL210a19qcGVnX2NvcmUuYwo+IGluZGV4IGIxMDE4M2Y3OTQyYi4uZjliZDU4Y2U3ZDMyIDEw
+MDY0NAo+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWpwZWcvbXRrX2pwZWdfY29y
+ZS5jCj4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstanBlZy9tdGtfanBlZ19jb3Jl
+LmMKPiBAQCAtMjIsNiArMjIsNyBAQAo+ICAjaW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4K
+PiAgI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+ICAjaW5jbHVkZSA8bGludXgv
+cG1fcnVudGltZS5oPgo+ICsjaW5jbHVkZSA8bGludXgvc2xhYi5oPgo+ICAjaW5jbHVkZSA8bGlu
+dXgvc3BpbmxvY2suaD4KPiAgI2luY2x1ZGUgPG1lZGlhL3Y0bDItZXZlbnQuaD4KPiAgI2luY2x1
+ZGUgPG1lZGlhL3Y0bDItbWVtMm1lbS5oPgo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1t
+ZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
