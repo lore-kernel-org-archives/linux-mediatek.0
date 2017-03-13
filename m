@@ -1,60 +1,57 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: Re: [PATCH] [media] vcodev: mediatek: add missing include in JPEG
- decoder driver
-Date: Mon, 13 Mar 2017 11:17:33 +0100
-Message-ID: <27eb2dc3-cc98-d41f-ed4f-71b2660702aa@xs4all.nl>
-References: <20170312201329.28357-1-jeremy.lefaure@lse.epita.fr>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v5 2/4] dt-bindings: mfd: Add LED subnode binding for
+ MT6323 PMIC
+Date: Mon, 13 Mar 2017 13:00:31 +0100
+Message-ID: <c86eacdb-d5c8-2f0a-11f1-1a3bc623b4b0@gmail.com>
+References: <1488549385-19899-1-git-send-email-sean.wang@mediatek.com>
+ <1488549385-19899-3-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170312201329.28357-1-jeremy.lefaure-tU7rkvAWjlwhT4uAktR2oQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?J=c3=a9r=c3=a9my_Lefaure?= <jeremy.lefaure-tU7rkvAWjlwhT4uAktR2oQ@public.gmane.org>, Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bin Liu <bin.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-leds-owner@vger.kernel.org>
+In-Reply-To: <1488549385-19899-3-git-send-email-sean.wang@mediatek.com>
+Sender: linux-leds-owner@vger.kernel.org
+To: sean.wang@mediatek.com, rpurdie@rpsys.net, jacek.anaszewski@gmail.com, pavel@ucw.cz, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: devicetree@vger.kernel.org, linux-leds@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com, lee.jones@linaro.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gMDMvMTIvMjAxNyAwOToxMyBQTSwgSsOpcsOpbXkgTGVmYXVyZSB3cm90ZToKPiBUaGUgZHJp
-dmVyIHVzZXMga3phbGxvYyBhbmQga2ZyZWUgZnVuY3Rpb25zLiBTbyBpdCBzaG91bGQgaW5jbHVk
-ZQo+IGxpbnV4L3NsYWIuaC4gVGhpcyBoZWFkZXIgZmlsZSBpcyBpbXBsaWNpdGx5IGluY2x1ZGVk
-IGJ5IHY0bDItY29tbW9uLmgKPiBpZiBDT05GSUdfU1BJIGlzIGVuYWJsZWQuIEJ1dCB3aGVuIGl0
-IGlzIGRpc2FibGVkLCBzbGFiLmggaXMgbm90Cj4gaW5jbHVkZWQuIEluIHRoaXMgY2FzZSwgdGhl
-IGRyaXZlciBkb2VzIG5vdCBjb21waWxlOgo+IAo+IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRr
-LWpwZWcvbXRrX2pwZWdfY29yZS5jOiBJbiBmdW5jdGlvbiDigJhtdGtfanBlZ19vcGVu4oCZOgo+
-IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWpwZWcvbXRrX2pwZWdfY29yZS5jOjEwMTc6ODog
-ZXJyb3I6IGltcGxpY2l0Cj4gZGVjbGFyYXRpb24gb2YgZnVuY3Rpb24g4oCYa3phbGxvY+KAmQo+
-IFstV2Vycm9yPWltcGxpY2l0LWZ1bmN0aW9uLWRlY2xhcmF0aW9uXQo+ICAgY3R4ID0ga3phbGxv
-YyhzaXplb2YoKmN0eCksIEdGUF9LRVJORUwpOwo+ICAgICAgICAgXn5+fn5+fgo+IGRyaXZlcnMv
-bWVkaWEvcGxhdGZvcm0vbXRrLWpwZWcvbXRrX2pwZWdfY29yZS5jOjEwMTc6Njogd2FybmluZzoK
-PiBhc3NpZ25tZW50IG1ha2VzIHBvaW50ZXIgZnJvbSBpbnRlZ2VyIHdpdGhvdXQgYSBjYXN0IFst
-V2ludC1jb252ZXJzaW9uXQo+ICAgY3R4ID0ga3phbGxvYyhzaXplb2YoKmN0eCksIEdGUF9LRVJO
-RUwpOwo+ICAgICAgIF4KPiBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1qcGVnL210a19qcGVn
-X2NvcmUuYzoxMDQ3OjI6IGVycm9yOiBpbXBsaWNpdAo+IGRlY2xhcmF0aW9uIG9mIGZ1bmN0aW9u
-IOKAmGtmcmVl4oCZIFstV2Vycm9yPWltcGxpY2l0LWZ1bmN0aW9uLWRlY2xhcmF0aW9uXQo+ICAg
-a2ZyZWUoY3R4KTsKPiAgIF5+fn5+Cj4gCj4gVGhpcyBwYXRjaCBhZGRzIHRoZSBtaXNzaW5nIGlu
-Y2x1ZGUgdG8gZml4IHRoaXMgaXNzdWUuCgpUaGFua3MgZm9yIHRoZSBwYXRjaCwgYnV0IHNvbWVv
-bmUgZWxzZSBtYWRlIHRoZSBzYW1lIGZpeCBhbHJlYWR5IGFuZCBpdCBpcwpxdWV1ZWQgdXAgZm9y
-IDQuMTIuCgpSZWdhcmRzLAoKCUhhbnMKCj4gCj4gU2lnbmVkLW9mZi1ieTogSsOpcsOpbXkgTGVm
-YXVyZSA8amVyZW15LmxlZmF1cmVAbHNlLmVwaXRhLmZyPgo+IC0tLQo+ICBkcml2ZXJzL21lZGlh
-L3BsYXRmb3JtL210ay1qcGVnL210a19qcGVnX2NvcmUuYyB8IDEgKwo+ICAxIGZpbGUgY2hhbmdl
-ZCwgMSBpbnNlcnRpb24oKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9y
-bS9tdGstanBlZy9tdGtfanBlZ19jb3JlLmMgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1q
-cGVnL210a19qcGVnX2NvcmUuYwo+IGluZGV4IGIxMDE4M2Y3OTQyYi4uZjliZDU4Y2U3ZDMyIDEw
-MDY0NAo+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWpwZWcvbXRrX2pwZWdfY29y
-ZS5jCj4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstanBlZy9tdGtfanBlZ19jb3Jl
-LmMKPiBAQCAtMjIsNiArMjIsNyBAQAo+ICAjaW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4K
-PiAgI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+ICAjaW5jbHVkZSA8bGludXgv
-cG1fcnVudGltZS5oPgo+ICsjaW5jbHVkZSA8bGludXgvc2xhYi5oPgo+ICAjaW5jbHVkZSA8bGlu
-dXgvc3BpbmxvY2suaD4KPiAgI2luY2x1ZGUgPG1lZGlhL3Y0bDItZXZlbnQuaD4KPiAgI2luY2x1
-ZGUgPG1lZGlhL3Y0bDItbWVtMm1lbS5oPgo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1t
-ZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+
+
+On 03/03/17 14:56, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+>
+> This patch adds documentation for devicetree bindings
+> for LED support as the subnode of MT6323 PMIC
+>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/mfd/mt6397.txt | 5 +++++
+>  1 file changed, 5 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
+> index 949c85f..522a3bb 100644
+> --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
+> +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
+> @@ -6,6 +6,7 @@ MT6397/MT6323 is a multifunction device with the following sub modules:
+>  - Audio codec
+>  - GPIO
+>  - Clock
+> +- LED
+>
+>  It is interfaced to host controller using SPI interface by a proprietary hardware
+>  called PMIC wrapper or pwrap. MT6397/MT6323 MFD is a child device of pwrap.
+> @@ -34,6 +35,10 @@ Optional subnodes:
+>  - clk
+>  	Required properties:
+>  		- compatible: "mediatek,mt6397-clk"
+> +- led
+> +	Required properties:
+> +		- compatible: "mediatek,mt6323-led"
+> +	see Documentation/devicetree/bindings/leds/leds-mt6323.txt
+
+Part of this patch is already part of linux-next:
+05daab3 ("Documentation: devicetree: Add LED subnode binding for MT6323 
+PMIC")
+
+Regards,
+Matthias
