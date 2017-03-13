@@ -1,54 +1,45 @@
-From: =?UTF-8?q?J=C3=A9r=C3=A9my=20Lefaure?= <jeremy.lefaure@lse.epita.fr>
-Subject: [PATCH] [media] vcodev: mediatek: add missing include in JPEG decoder
- driver
-Date: Sun, 12 Mar 2017 16:13:29 -0400
-Message-ID: <20170312201329.28357-1-jeremy.lefaure@lse.epita.fr>
+From: Rick Chang <rick.chang@mediatek.com>
+Subject: Re: [PATCH] [media] vcodev: mediatek: add missing include in JPEG
+ decoder driver
+Date: Mon, 13 Mar 2017 11:04:54 +0800
+Message-ID: <1489374294.19716.1.camel@mtksdaap41>
+References: <20170312201329.28357-1-jeremy.lefaure@lse.epita.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rick Chang <rick.chang@mediatek.com>, Bin Liu <bin.liu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: =?UTF-8?q?J=C3=A9r=C3=A9my=20Lefaure?= <jeremy.lefaure@lse.epita.fr>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20170312201329.28357-1-jeremy.lefaure@lse.epita.fr>
+Sender: linux-media-owner@vger.kernel.org
+To: =?ISO-8859-1?Q?J=E9r=E9my?= Lefaure <jeremy.lefaure@lse.epita.fr>
+Cc: Bin Liu <bin.liu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhlIGRyaXZlciB1c2VzIGt6YWxsb2MgYW5kIGtmcmVlIGZ1bmN0aW9ucy4gU28gaXQgc2hvdWxk
-IGluY2x1ZGUKbGludXgvc2xhYi5oLiBUaGlzIGhlYWRlciBmaWxlIGlzIGltcGxpY2l0bHkgaW5j
-bHVkZWQgYnkgdjRsMi1jb21tb24uaAppZiBDT05GSUdfU1BJIGlzIGVuYWJsZWQuIEJ1dCB3aGVu
-IGl0IGlzIGRpc2FibGVkLCBzbGFiLmggaXMgbm90CmluY2x1ZGVkLiBJbiB0aGlzIGNhc2UsIHRo
-ZSBkcml2ZXIgZG9lcyBub3QgY29tcGlsZToKCmRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWpw
-ZWcvbXRrX2pwZWdfY29yZS5jOiBJbiBmdW5jdGlvbiDigJhtdGtfanBlZ19vcGVu4oCZOgpkcml2
-ZXJzL21lZGlhL3BsYXRmb3JtL210ay1qcGVnL210a19qcGVnX2NvcmUuYzoxMDE3Ojg6IGVycm9y
-OiBpbXBsaWNpdApkZWNsYXJhdGlvbiBvZiBmdW5jdGlvbiDigJhremFsbG9j4oCZClstV2Vycm9y
-PWltcGxpY2l0LWZ1bmN0aW9uLWRlY2xhcmF0aW9uXQogIGN0eCA9IGt6YWxsb2Moc2l6ZW9mKCpj
-dHgpLCBHRlBfS0VSTkVMKTsKICAgICAgICBefn5+fn5+CmRyaXZlcnMvbWVkaWEvcGxhdGZvcm0v
-bXRrLWpwZWcvbXRrX2pwZWdfY29yZS5jOjEwMTc6Njogd2FybmluZzoKYXNzaWdubWVudCBtYWtl
-cyBwb2ludGVyIGZyb20gaW50ZWdlciB3aXRob3V0IGEgY2FzdCBbLVdpbnQtY29udmVyc2lvbl0K
-ICBjdHggPSBremFsbG9jKHNpemVvZigqY3R4KSwgR0ZQX0tFUk5FTCk7CiAgICAgIF4KZHJpdmVy
-cy9tZWRpYS9wbGF0Zm9ybS9tdGstanBlZy9tdGtfanBlZ19jb3JlLmM6MTA0NzoyOiBlcnJvcjog
-aW1wbGljaXQKZGVjbGFyYXRpb24gb2YgZnVuY3Rpb24g4oCYa2ZyZWXigJkgWy1XZXJyb3I9aW1w
-bGljaXQtZnVuY3Rpb24tZGVjbGFyYXRpb25dCiAga2ZyZWUoY3R4KTsKICBefn5+fgoKVGhpcyBw
-YXRjaCBhZGRzIHRoZSBtaXNzaW5nIGluY2x1ZGUgdG8gZml4IHRoaXMgaXNzdWUuCgpTaWduZWQt
-b2ZmLWJ5OiBKw6lyw6lteSBMZWZhdXJlIDxqZXJlbXkubGVmYXVyZUBsc2UuZXBpdGEuZnI+Ci0t
-LQogZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstanBlZy9tdGtfanBlZ19jb3JlLmMgfCAxICsK
-IDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVk
-aWEvcGxhdGZvcm0vbXRrLWpwZWcvbXRrX2pwZWdfY29yZS5jIGIvZHJpdmVycy9tZWRpYS9wbGF0
-Zm9ybS9tdGstanBlZy9tdGtfanBlZ19jb3JlLmMKaW5kZXggYjEwMTgzZjc5NDJiLi5mOWJkNThj
-ZTdkMzIgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWpwZWcvbXRrX2pw
-ZWdfY29yZS5jCisrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWpwZWcvbXRrX2pwZWdf
-Y29yZS5jCkBAIC0yMiw2ICsyMiw3IEBACiAjaW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4K
-ICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KICNpbmNsdWRlIDxsaW51eC9wbV9y
-dW50aW1lLmg+CisjaW5jbHVkZSA8bGludXgvc2xhYi5oPgogI2luY2x1ZGUgPGxpbnV4L3NwaW5s
-b2NrLmg+CiAjaW5jbHVkZSA8bWVkaWEvdjRsMi1ldmVudC5oPgogI2luY2x1ZGUgPG1lZGlhL3Y0
-bDItbWVtMm1lbS5oPgotLSAKMi4xMi4wCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJt
-LWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+On Sun, 2017-03-12 at 16:13 -0400, Jérémy Lefaure wrote:
+> The driver uses kzalloc and kfree functions. So it should include
+> linux/slab.h. This header file is implicitly included by v4l2-common.h
+> if CONFIG_SPI is enabled. But when it is disabled, slab.h is not
+> included. In this case, the driver does not compile:
+> 
+> drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c: In function ‘mtk_jpeg_open’:
+> drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c:1017:8: error: implicit
+> declaration of function ‘kzalloc’
+> [-Werror=implicit-function-declaration]
+>   ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
+>         ^~~~~~~
+> drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c:1017:6: warning:
+> assignment makes pointer from integer without a cast [-Wint-conversion]
+>   ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
+>       ^
+> drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c:1047:2: error: implicit
+> declaration of function ‘kfree’ [-Werror=implicit-function-declaration]
+>   kfree(ctx);
+>   ^~~~~
+> 
+> This patch adds the missing include to fix this issue.
+> 
+> Signed-off-by: Jérémy Lefaure <jeremy.lefaure@lse.epita.fr>
+> ---
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 1 +
+>  1 file changed, 1 insertion(+)
+
+Acked-by: Rick Chang <rick.chang@mediatek.com>
