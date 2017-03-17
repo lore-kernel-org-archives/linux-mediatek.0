@@ -1,65 +1,70 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH] mmc: mediatek: Fixed bug where clock frequency could be
- set wrong
-Date: Thu, 16 Mar 2017 15:45:53 +0100
-Message-ID: <CAPDyKFqzj-UT12rorqZ9536608=Zs37s1LhQb=4GpqV95QoNNw@mail.gmail.com>
-References: <1488611403-30186-1-git-send-email-yong.mao@mediatek.com> <1488611403-30186-2-git-send-email-yong.mao@mediatek.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [PATCH] drm/mediatek: use platform_register_drivers
+Date: Fri, 17 Mar 2017 18:00:23 +0100
+Message-ID: <20170317170023.17658-1-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1488611403-30186-2-git-send-email-yong.mao@mediatek.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Yong Mao <yong.mao@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Daniel Kurtz <djkurtz@chromium.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 4 March 2017 at 08:10, Yong Mao <yong.mao@mediatek.com> wrote:
-> From: yong mao <yong.mao@mediatek.com>
->
-> This patch can fix two issues:
->
-> Issue 1:
-> In previous code, div may be overflow when setting clock frequency
-> as f_min. We can use DIV_ROUND_UP to fix this boundary related
-> issue.
->
-> Issue 2:
-> In previous code, we can not set the correct clock frequency when
-> div equals 0xff.
->
-> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> ---
->  drivers/mmc/host/mtk-sd.c |    4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 07f3236..3ad5228 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -591,7 +591,7 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
->                 }
->         }
->         sdr_set_field(host->base + MSDC_CFG, MSDC_CFG_CKMOD | MSDC_CFG_CKDIV,
-> -                       (mode << 8) | (div % 0xff));
-> +                     (mode << 8) | div);
->         sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_CKPDN);
->         while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
->                 cpu_relax();
-> @@ -1692,7 +1692,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
->         host->src_clk_freq = clk_get_rate(host->src_clk);
->         /* Set host parameters to mmc */
->         mmc->ops = &mt_msdc_ops;
-> -       mmc->f_min = host->src_clk_freq / (4 * 255);
-> +       mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 255);
->
->         mmc->caps |= MMC_CAP_ERASE | MMC_CAP_CMD23;
->         /* MMC core transfer sizes tunable parameters */
-> --
-> 1.7.9.5
->
-
-Thanks, applied for fixes!
-
-Kind regards
-Uffe
+VXNlIHBsYXRmb3JtX3JlZ2lzdGVyX2RyaXZlcnMgaW5zdGVhZCBvZiBvcGVuIGNvZGluZyB0aGUg
+aXRlcmF0aW9uIG92ZXIKY29tcG9uZW50IHBsYXRmb3JtIGRyaXZlcnMgaW4gdGhlIG10a19kcm1f
+ZHJ2IGFuZCBtdGtfaGRtaSBtb2R1bGVzLgoKU2lnbmVkLW9mZi1ieTogUGhpbGlwcCBaYWJlbCA8
+cC56YWJlbEBwZW5ndXRyb25peC5kZT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RybV9kcnYuYyB8IDI3ICsrKystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19oZG1pLmMgICAgfCAyNyArKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0KIDIgZmlsZXMgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspLCA0NiBkZWxldGlvbnMoLSkKCmRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCmluZGV4IGY1YTFmZDliM2VjYzcuLjIw
+ZTU0MGFhOWU4N2EgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
+X2Rydi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCkBAIC01
+MzYsMzMgKzUzNiwxNCBAQCBzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciAqIGNvbnN0IG10
+a19kcm1fZHJpdmVyc1tdID0gewogCiBzdGF0aWMgaW50IF9faW5pdCBtdGtfZHJtX2luaXQodm9p
+ZCkKIHsKLQlpbnQgcmV0OwotCWludCBpOwotCi0JZm9yIChpID0gMDsgaSA8IEFSUkFZX1NJWkUo
+bXRrX2RybV9kcml2ZXJzKTsgaSsrKSB7Ci0JCXJldCA9IHBsYXRmb3JtX2RyaXZlcl9yZWdpc3Rl
+cihtdGtfZHJtX2RyaXZlcnNbaV0pOwotCQlpZiAocmV0IDwgMCkgewotCQkJcHJfZXJyKCJGYWls
+ZWQgdG8gcmVnaXN0ZXIgJXMgZHJpdmVyOiAlZFxuIiwKLQkJCSAgICAgICBtdGtfZHJtX2RyaXZl
+cnNbaV0tPmRyaXZlci5uYW1lLCByZXQpOwotCQkJZ290byBlcnI7Ci0JCX0KLQl9Ci0KLQlyZXR1
+cm4gMDsKLQotZXJyOgotCXdoaWxlICgtLWkgPj0gMCkKLQkJcGxhdGZvcm1fZHJpdmVyX3VucmVn
+aXN0ZXIobXRrX2RybV9kcml2ZXJzW2ldKTsKLQotCXJldHVybiByZXQ7CisJcmV0dXJuIHBsYXRm
+b3JtX3JlZ2lzdGVyX2RyaXZlcnMobXRrX2RybV9kcml2ZXJzLAorCQkJCQkgQVJSQVlfU0laRSht
+dGtfZHJtX2RyaXZlcnMpKTsKIH0KIAogc3RhdGljIHZvaWQgX19leGl0IG10a19kcm1fZXhpdCh2
+b2lkKQogewotCWludCBpOwotCi0JZm9yIChpID0gQVJSQVlfU0laRShtdGtfZHJtX2RyaXZlcnMp
+IC0gMTsgaSA+PSAwOyBpLS0pCi0JCXBsYXRmb3JtX2RyaXZlcl91bnJlZ2lzdGVyKG10a19kcm1f
+ZHJpdmVyc1tpXSk7CisJcGxhdGZvcm1fdW5yZWdpc3Rlcl9kcml2ZXJzKG10a19kcm1fZHJpdmVy
+cywKKwkJCQkgICAgQVJSQVlfU0laRShtdGtfZHJtX2RyaXZlcnMpKTsKIH0KIAogbW9kdWxlX2lu
+aXQobXRrX2RybV9pbml0KTsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKaW5kZXggNGUy
+ZjljNDMzOTVjMi4uNjVhYzI5NmEwMmZhYyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19oZG1pLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1p
+LmMKQEAgLTE3OTgsMzMgKzE3OTgsMTQgQEAgc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIg
+KiBjb25zdCBtdGtfaGRtaV9kcml2ZXJzW10gPSB7CiAKIHN0YXRpYyBpbnQgX19pbml0IG10a19o
+ZG1pdHhfaW5pdCh2b2lkKQogewotCWludCByZXQ7Ci0JaW50IGk7Ci0KLQlmb3IgKGkgPSAwOyBp
+IDwgQVJSQVlfU0laRShtdGtfaGRtaV9kcml2ZXJzKTsgaSsrKSB7Ci0JCXJldCA9IHBsYXRmb3Jt
+X2RyaXZlcl9yZWdpc3RlcihtdGtfaGRtaV9kcml2ZXJzW2ldKTsKLQkJaWYgKHJldCA8IDApIHsK
+LQkJCXByX2VycigiRmFpbGVkIHRvIHJlZ2lzdGVyICVzIGRyaXZlcjogJWRcbiIsCi0JCQkgICAg
+ICAgbXRrX2hkbWlfZHJpdmVyc1tpXS0+ZHJpdmVyLm5hbWUsIHJldCk7Ci0JCQlnb3RvIGVycjsK
+LQkJfQotCX0KLQotCXJldHVybiAwOwotCi1lcnI6Ci0Jd2hpbGUgKC0taSA+PSAwKQotCQlwbGF0
+Zm9ybV9kcml2ZXJfdW5yZWdpc3RlcihtdGtfaGRtaV9kcml2ZXJzW2ldKTsKLQotCXJldHVybiBy
+ZXQ7CisJcmV0dXJuIHBsYXRmb3JtX3JlZ2lzdGVyX2RyaXZlcnMobXRrX2hkbWlfZHJpdmVycywK
+KwkJCQkJIEFSUkFZX1NJWkUobXRrX2hkbWlfZHJpdmVycykpOwogfQogCiBzdGF0aWMgdm9pZCBf
+X2V4aXQgbXRrX2hkbWl0eF9leGl0KHZvaWQpCiB7Ci0JaW50IGk7Ci0KLQlmb3IgKGkgPSBBUlJB
+WV9TSVpFKG10a19oZG1pX2RyaXZlcnMpIC0gMTsgaSA+PSAwOyBpLS0pCi0JCXBsYXRmb3JtX2Ry
+aXZlcl91bnJlZ2lzdGVyKG10a19oZG1pX2RyaXZlcnNbaV0pOworCXBsYXRmb3JtX3VucmVnaXN0
+ZXJfZHJpdmVycyhtdGtfaGRtaV9kcml2ZXJzLAorCQkJCSAgICBBUlJBWV9TSVpFKG10a19oZG1p
+X2RyaXZlcnMpKTsKIH0KIAogbW9kdWxlX2luaXQobXRrX2hkbWl0eF9pbml0KTsKLS0gCjIuMTEu
+MAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
+dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
