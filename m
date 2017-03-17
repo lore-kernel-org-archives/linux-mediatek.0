@@ -1,70 +1,64 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH] drm/mediatek: use platform_register_drivers
-Date: Fri, 17 Mar 2017 18:00:23 +0100
-Message-ID: <20170317170023.17658-1-p.zabel@pengutronix.de>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: [PATCH] [media] vcodec: mediatek: Remove double parentheses
+Date: Fri, 17 Mar 2017 14:01:33 -0700
+Message-ID: <20170317210133.9662-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, Julia Lawall <Julia.Lawall@lip6.fr>, Matthias Kaehlcke <mka@chromium.org>, Hans Verkuil <hans.verkuil@cisco.com>, PoChun Lin <pochun.lin@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-VXNlIHBsYXRmb3JtX3JlZ2lzdGVyX2RyaXZlcnMgaW5zdGVhZCBvZiBvcGVuIGNvZGluZyB0aGUg
-aXRlcmF0aW9uIG92ZXIKY29tcG9uZW50IHBsYXRmb3JtIGRyaXZlcnMgaW4gdGhlIG10a19kcm1f
-ZHJ2IGFuZCBtdGtfaGRtaSBtb2R1bGVzLgoKU2lnbmVkLW9mZi1ieTogUGhpbGlwcCBaYWJlbCA8
-cC56YWJlbEBwZW5ndXRyb25peC5kZT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kcnYuYyB8IDI3ICsrKystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19oZG1pLmMgICAgfCAyNyArKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0KIDIgZmlsZXMgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspLCA0NiBkZWxldGlvbnMoLSkKCmRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCmluZGV4IGY1YTFmZDliM2VjYzcuLjIw
-ZTU0MGFhOWU4N2EgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
-X2Rydi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCkBAIC01
-MzYsMzMgKzUzNiwxNCBAQCBzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciAqIGNvbnN0IG10
-a19kcm1fZHJpdmVyc1tdID0gewogCiBzdGF0aWMgaW50IF9faW5pdCBtdGtfZHJtX2luaXQodm9p
-ZCkKIHsKLQlpbnQgcmV0OwotCWludCBpOwotCi0JZm9yIChpID0gMDsgaSA8IEFSUkFZX1NJWkUo
-bXRrX2RybV9kcml2ZXJzKTsgaSsrKSB7Ci0JCXJldCA9IHBsYXRmb3JtX2RyaXZlcl9yZWdpc3Rl
-cihtdGtfZHJtX2RyaXZlcnNbaV0pOwotCQlpZiAocmV0IDwgMCkgewotCQkJcHJfZXJyKCJGYWls
-ZWQgdG8gcmVnaXN0ZXIgJXMgZHJpdmVyOiAlZFxuIiwKLQkJCSAgICAgICBtdGtfZHJtX2RyaXZl
-cnNbaV0tPmRyaXZlci5uYW1lLCByZXQpOwotCQkJZ290byBlcnI7Ci0JCX0KLQl9Ci0KLQlyZXR1
-cm4gMDsKLQotZXJyOgotCXdoaWxlICgtLWkgPj0gMCkKLQkJcGxhdGZvcm1fZHJpdmVyX3VucmVn
-aXN0ZXIobXRrX2RybV9kcml2ZXJzW2ldKTsKLQotCXJldHVybiByZXQ7CisJcmV0dXJuIHBsYXRm
-b3JtX3JlZ2lzdGVyX2RyaXZlcnMobXRrX2RybV9kcml2ZXJzLAorCQkJCQkgQVJSQVlfU0laRSht
-dGtfZHJtX2RyaXZlcnMpKTsKIH0KIAogc3RhdGljIHZvaWQgX19leGl0IG10a19kcm1fZXhpdCh2
-b2lkKQogewotCWludCBpOwotCi0JZm9yIChpID0gQVJSQVlfU0laRShtdGtfZHJtX2RyaXZlcnMp
-IC0gMTsgaSA+PSAwOyBpLS0pCi0JCXBsYXRmb3JtX2RyaXZlcl91bnJlZ2lzdGVyKG10a19kcm1f
-ZHJpdmVyc1tpXSk7CisJcGxhdGZvcm1fdW5yZWdpc3Rlcl9kcml2ZXJzKG10a19kcm1fZHJpdmVy
-cywKKwkJCQkgICAgQVJSQVlfU0laRShtdGtfZHJtX2RyaXZlcnMpKTsKIH0KIAogbW9kdWxlX2lu
-aXQobXRrX2RybV9pbml0KTsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKaW5kZXggNGUy
-ZjljNDMzOTVjMi4uNjVhYzI5NmEwMmZhYyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19oZG1pLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1p
-LmMKQEAgLTE3OTgsMzMgKzE3OTgsMTQgQEAgc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIg
-KiBjb25zdCBtdGtfaGRtaV9kcml2ZXJzW10gPSB7CiAKIHN0YXRpYyBpbnQgX19pbml0IG10a19o
-ZG1pdHhfaW5pdCh2b2lkKQogewotCWludCByZXQ7Ci0JaW50IGk7Ci0KLQlmb3IgKGkgPSAwOyBp
-IDwgQVJSQVlfU0laRShtdGtfaGRtaV9kcml2ZXJzKTsgaSsrKSB7Ci0JCXJldCA9IHBsYXRmb3Jt
-X2RyaXZlcl9yZWdpc3RlcihtdGtfaGRtaV9kcml2ZXJzW2ldKTsKLQkJaWYgKHJldCA8IDApIHsK
-LQkJCXByX2VycigiRmFpbGVkIHRvIHJlZ2lzdGVyICVzIGRyaXZlcjogJWRcbiIsCi0JCQkgICAg
-ICAgbXRrX2hkbWlfZHJpdmVyc1tpXS0+ZHJpdmVyLm5hbWUsIHJldCk7Ci0JCQlnb3RvIGVycjsK
-LQkJfQotCX0KLQotCXJldHVybiAwOwotCi1lcnI6Ci0Jd2hpbGUgKC0taSA+PSAwKQotCQlwbGF0
-Zm9ybV9kcml2ZXJfdW5yZWdpc3RlcihtdGtfaGRtaV9kcml2ZXJzW2ldKTsKLQotCXJldHVybiBy
-ZXQ7CisJcmV0dXJuIHBsYXRmb3JtX3JlZ2lzdGVyX2RyaXZlcnMobXRrX2hkbWlfZHJpdmVycywK
-KwkJCQkJIEFSUkFZX1NJWkUobXRrX2hkbWlfZHJpdmVycykpOwogfQogCiBzdGF0aWMgdm9pZCBf
-X2V4aXQgbXRrX2hkbWl0eF9leGl0KHZvaWQpCiB7Ci0JaW50IGk7Ci0KLQlmb3IgKGkgPSBBUlJB
-WV9TSVpFKG10a19oZG1pX2RyaXZlcnMpIC0gMTsgaSA+PSAwOyBpLS0pCi0JCXBsYXRmb3JtX2Ry
-aXZlcl91bnJlZ2lzdGVyKG10a19oZG1pX2RyaXZlcnNbaV0pOworCXBsYXRmb3JtX3VucmVnaXN0
-ZXJfZHJpdmVycyhtdGtfaGRtaV9kcml2ZXJzLAorCQkJCSAgICBBUlJBWV9TSVpFKG10a19oZG1p
-X2RyaXZlcnMpKTsKIH0KIAogbW9kdWxlX2luaXQobXRrX2hkbWl0eF9pbml0KTsKLS0gCjIuMTEu
-MAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
-dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+The extra pairs of parentheses are not needed and cause clang
+warnings like this:
+
+drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:158:32: error: equality comparison with extraneous parentheses [-Werror,-Wparentheses-equality]
+                if ((inst->work_bufs[i].size == 0))
+                     ~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:158:32: note: remove extraneous parentheses around the comparison to silence this warning
+                if ((inst->work_bufs[i].size == 0))
+                    ~                        ^   ~
+drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:158:32: note: use '=' to turn this equality comparison into an assignment
+                if ((inst->work_bufs[i].size == 0))
+                                             ^~
+                                             =
+
+Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+---
+ drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
+index 544f57186243..129cc74b4fe4 100644
+--- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
++++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
+@@ -155,7 +155,7 @@ static void vp8_enc_free_work_buf(struct venc_vp8_inst *inst)
+ 
+ 	/* Buffers need to be freed by AP. */
+ 	for (i = 0; i < VENC_VP8_VPU_WORK_BUF_MAX; i++) {
+-		if ((inst->work_bufs[i].size == 0))
++		if (inst->work_bufs[i].size == 0)
+ 			continue;
+ 		mtk_vcodec_mem_free(inst->ctx, &inst->work_bufs[i]);
+ 	}
+@@ -172,7 +172,7 @@ static int vp8_enc_alloc_work_buf(struct venc_vp8_inst *inst)
+ 	mtk_vcodec_debug_enter(inst);
+ 
+ 	for (i = 0; i < VENC_VP8_VPU_WORK_BUF_MAX; i++) {
+-		if ((wb[i].size == 0))
++		if (wb[i].size == 0)
+ 			continue;
+ 		/*
+ 		 * This 'wb' structure is set by VPU side and shared to AP for
+-- 
+2.12.0.367.g23dc2f6d3c-goog
