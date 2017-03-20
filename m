@@ -1,41 +1,95 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v6 4/4] mfd: mt6397: Align the placement at which the mfd_cell of LED is defined
-Date: Mon, 20 Mar 2017 14:47:27 +0800
-Message-ID: <1489992447-13007-5-git-send-email-sean.wang@mediatek.com>
-References: <1489992447-13007-1-git-send-email-sean.wang@mediatek.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH 2/2] [media] vcodec: mediatek: mark pm functions as
+ __maybe_unused
+Date: Mon, 20 Mar 2017 10:47:55 +0100
+Message-ID: <20170320094812.1365229-2-arnd@arndb.de>
+References: <20170320094812.1365229-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1489992447-13007-1-git-send-email-sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: rpurdie@rpsys.net, jacek.anaszewski@gmail.com, lee.jones@linaro.org, matthias.bgg@gmail.com, pavel@ucw.cz, robh+dt@kernel.org, mark.rutland@arm.com
-Cc: devicetree@vger.kernel.org, linux-leds@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20170320094812.1365229-1-arnd@arndb.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rick Chang <rick.chang@mediatek.com>, Bin Liu <bin.liu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, Ricky Liang <jcliang@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+When CONFIG_PM is disabled, we get a couple of unused functions:
 
-Align the placement as which the mfd_cell of LED is defined as the other
-members done on the structure.
+drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c:927:13: error: 'mtk_jpeg_clk_off' defined but not used [-Werror=unused-function]
+ static void mtk_jpeg_clk_off(struct mtk_jpeg_dev *jpeg)
+             ^~~~~~~~~~~~~~~~
+drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c:916:13: error: 'mtk_jpeg_clk_on' defined but not used [-Werror=unused-function]
+ static void mtk_jpeg_clk_on(struct mtk_jpeg_dev *jpeg)
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Acked-by: Lee Jones <lee.jones@linaro.org>
+Rather than adding more error-prone #ifdefs around those, this patch
+removes the existing #ifdef checks and marks the PM functions as __maybe_unused
+to let gcc do the right thing.
+
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
- drivers/mfd/mt6397-core.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-index 8e601c8..04a601f 100644
---- a/drivers/mfd/mt6397-core.c
-+++ b/drivers/mfd/mt6397-core.c
-@@ -47,8 +47,7 @@
- 	{
- 		.name = "mt6323-regulator",
- 		.of_compatible = "mediatek,mt6323-regulator"
--	},
--	{
-+	}, {
- 		.name = "mt6323-led",
- 		.of_compatible = "mediatek,mt6323-led"
- 	},
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+index f9bd58ce7d32..7103b6da25d2 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+@@ -1224,8 +1224,7 @@ static int mtk_jpeg_remove(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-#ifdef CONFIG_PM
+-static int mtk_jpeg_pm_suspend(struct device *dev)
++static __maybe_unused int mtk_jpeg_pm_suspend(struct device *dev)
+ {
+ 	struct mtk_jpeg_dev *jpeg = dev_get_drvdata(dev);
+ 
+@@ -1235,7 +1234,7 @@ static int mtk_jpeg_pm_suspend(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int mtk_jpeg_pm_resume(struct device *dev)
++static __maybe_unused int mtk_jpeg_pm_resume(struct device *dev)
+ {
+ 	struct mtk_jpeg_dev *jpeg = dev_get_drvdata(dev);
+ 
+@@ -1244,10 +1243,8 @@ static int mtk_jpeg_pm_resume(struct device *dev)
+ 
+ 	return 0;
+ }
+-#endif /* CONFIG_PM */
+ 
+-#ifdef CONFIG_PM_SLEEP
+-static int mtk_jpeg_suspend(struct device *dev)
++static __maybe_unused int mtk_jpeg_suspend(struct device *dev)
+ {
+ 	int ret;
+ 
+@@ -1258,7 +1255,7 @@ static int mtk_jpeg_suspend(struct device *dev)
+ 	return ret;
+ }
+ 
+-static int mtk_jpeg_resume(struct device *dev)
++static __maybe_unused int mtk_jpeg_resume(struct device *dev)
+ {
+ 	int ret;
+ 
+@@ -1269,7 +1266,6 @@ static int mtk_jpeg_resume(struct device *dev)
+ 
+ 	return ret;
+ }
+-#endif /* CONFIG_PM_SLEEP */
+ 
+ static const struct dev_pm_ops mtk_jpeg_pm_ops = {
+ 	SET_SYSTEM_SLEEP_PM_OPS(mtk_jpeg_suspend, mtk_jpeg_resume)
 -- 
-1.9.1
+2.9.0
