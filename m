@@ -1,52 +1,92 @@
-From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3 09/12] soc: mediatek: add vdec item for scpsys
-Date: Sun, 19 Mar 2017 23:26:30 +0800
-Message-ID: <1489937193-2953-10-git-send-email-mars.cheng@mediatek.com>
-References: <1489937193-2953-1-git-send-email-mars.cheng@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v6 0/4] leds: add leds-mt6323 support on MT7623 SoC
+Date: Mon, 20 Mar 2017 14:47:23 +0800
+Message-ID: <1489992447-13007-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1489937193-2953-1-git-send-email-mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, CC Hwang <cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Loda Chou <loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jades Shih <jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, My Chuang <my.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-leds-owner@vger.kernel.org>
+Sender: linux-leds-owner@vger.kernel.org
+To: rpurdie@rpsys.net, jacek.anaszewski@gmail.com, lee.jones@linaro.org, matthias.bgg@gmail.com, pavel@ucw.cz, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: devicetree@vger.kernel.org, linux-leds@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-for some chips, there is vdec item in scpsys, this patch adds it.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Signed-off-by: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/soc/mediatek/mtk-scpsys.c |    2 ++
- 1 file changed, 2 insertions(+)
+MT7623 SoC uses MT6323 PMIC as the default power supply which has LED function
+insides. The patchset introduces the LED support for MT6323 with on, off and
+hardware dimmed and blinked and it should work on other similar SoCs if also
+using MT6323.
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index eadbf0d..a8ba800 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -71,6 +71,7 @@ enum clk_id {
- 	CLK_VENC,
- 	CLK_VENC_LT,
- 	CLK_ETHIF,
-+	CLK_VDEC,
- 	CLK_MAX,
- };
- 
-@@ -81,6 +82,7 @@ enum clk_id {
- 	"venc",
- 	"venc_lt",
- 	"ethif",
-+	"vdec",
- 	NULL,
- };
- 
+Changes since v1:
+- fixed typo in the comments
+- sorted include directives alphabetically
+- applied all register definitions with MT6323 prefix
+- removed the redundant structure declaration
+- fixed coding style defined in kernel doc format consistently
+- added error handling into all the occurrences where regmap APIs
+  are used
+- removed loudly debug message
+- made magic constant into meaningful macro
+- added missing mutex_destroy when module removed called
+- updated module license with GPL
+- fixed sparse warnings
+
+Changes since v2:
+- fixed the typo in devicetree Documentation
+- cleaned up the style and explanation in the comments
+- applied all macro/struct/function definitions with MT6323 prefix
+- put the logic about the setup from device tree into function for simplicity
+
+Changes since v3:
+- changed the variable current_brightness into the proper type
+- removed the redundant member led_num from mt6323_leds structure
+- collected the brightness setting into mt6323_led_hw_brightness() call
+- added brightness_get() support into the core layer
+- fixed zero duty cycle handling due to hardware doesn't support
+- fixed duty cycle calculation mapping to the hardware register
+- added the brightness as the input in mt6323_led_hw_on() call
+- enhanced error handling in mt6323_led_set_dt_default() call
+- fixed potential issue which caused accessing unallocated memory if excessive
+  the led controller nodes are defined
+- fixed redundant memory allocation in mt6323_leds structure
+- added reg property for defining the led controller for which the child
+  node is predestined
+
+Changes since v4:
+- enhanced the example in leds-mt6323.txt for patch 1/4 with adding the missing
+  #address-cell and #size-cell, correcting sub-node naming with led@0 style,
+  removing the unrelated setup for LED and moving the description for the node
+  properties into the right place
+- enhanced the documentation in mt6397.txt for patch 2/4
+- changed the subject prefixes into "dt-bindings: ..." for the device tree commits
+- fixed that missing of_node_put() in the error path called from mt6323_led_probe()
+- fixed that incorrect duty_cycle calculation mapping into the hardware register in
+case duty ratio is lower than 1/64 rather than 0
+
+Changes since v5:
+- changed codebase into 4.11-rc1
+- split the already merged ones out from patch #2 and #4 on v4
+- fixed line wrap to 72-80 char for patch #1
+- grouped properties by required and optional for patch #1
+- enhanced the node identifier for the example with "mt6323: pmic" instead of
+"pmic: mt6323" for patch #1
+
+Sean Wang (4):
+  dt-bindings: leds: Add document bindings for leds-mt6323
+  dt-bindings: mfd: Add the description for LED as the sub module
+  leds: Add LED support for MT6323 PMIC
+  mfd: mt6397: Align the placement at which the mfd_cell of LED is
+    defined
+
+ .../devicetree/bindings/leds/leds-mt6323.txt       |  60 +++
+ Documentation/devicetree/bindings/mfd/mt6397.txt   |   1 +
+ drivers/leds/Kconfig                               |   8 +
+ drivers/leds/Makefile                              |   1 +
+ drivers/leds/leds-mt6323.c                         | 502 +++++++++++++++++++++
+ drivers/mfd/mt6397-core.c                          |   3 +-
+ 6 files changed, 573 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/leds/leds-mt6323.txt
+ create mode 100644 drivers/leds/leds-mt6323.c
+
 -- 
-1.7.9.5
+1.9.1
