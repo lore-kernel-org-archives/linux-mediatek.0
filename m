@@ -1,1654 +1,594 @@
-From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH net-next v2 5/5] net-next: dsa: add dsa support for Mediatek
- MT7530 switch
-Date: Tue, 21 Mar 2017 17:35:10 +0800
-Message-ID: <1490088910-19405-6-git-send-email-sean.wang@mediatek.com>
-References: <1490088910-19405-1-git-send-email-sean.wang@mediatek.com>
+From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
+Subject: Re: [PATCH v6 3/4] leds: Add LED support for MT6323 PMIC
+Date: Tue, 21 Mar 2017 20:18:51 +0100
+Message-ID: <efd7c1cf-10ae-ed5e-16d8-e412b3306770@gmail.com>
+References: <1489992447-13007-1-git-send-email-sean.wang@mediatek.com>
+ <1489992447-13007-4-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1490088910-19405-1-git-send-email-sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: andrew-g2DYL2Zd6BY@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, vivien.didelot-4ysUXcep3aM1wj+D4I0NRVaTQe2KTcn/@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Landen.Chao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, objelf-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1489992447-13007-4-git-send-email-sean.wang@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: sean.wang@mediatek.com, matthias.bgg@gmail.com, pavel@ucw.cz, robh+dt@kernel.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, keyhaede@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, rpurdie@rpsys.net, lee.jones@linaro.org, linux-leds@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Hi Sean,
 
-MT7530 is a 7-ports Gigabit Ethernet Switch that could be found on
-Mediatek router platforms such as MT7623A or MT7623N platform which
-includes 7-port Gigabit Ethernet MAC and 5-port Gigabit Ethernet PHY.
-Among these ports, The port from 0 to 4 are the user ports connecting
-with the remote devices while the port 5 and 6 are the CPU ports
-connecting into Mediatek Ethernet GMAC.
+Thanks for the updated patch set. I've just applied patches
+1/4 and 3/4 to the for-next branch of linux-leds.git.
 
-For port 6, it can communicate with the CPU via Mediatek Ethernet GMAC
-through either the TRGMII or RGMII which could be controlled by phy-mode
-in the dt-bindings to specify which mode is preferred to use. And for
-port 5, only RGMII can be specified. However, currently, only port 6 is
-being supported in this DSA driver.
+Thanks for your effort.
 
-The driver is made with the reference to qca8k and other existing DSA
-driver. The most of the essential callbacks of the DSA are already
-support in the driver, including tag insert for user port distinguishing,
-port control, bridge offloading, STP setup and ethtool operation to allow
-DSA to model each user port into a standalone netdevice as the other DSA
-driver had done.
+Best regards,
+Jacek Anaszewski
 
-Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Landen Chao <Landen.Chao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/net/dsa/Kconfig  |    8 +
- drivers/net/dsa/Makefile |    2 +-
- drivers/net/dsa/mt7530.c | 1172 ++++++++++++++++++++++++++++++++++++++++++++++
- drivers/net/dsa/mt7530.h |  382 +++++++++++++++
- 4 files changed, 1563 insertions(+), 1 deletion(-)
- create mode 100644 drivers/net/dsa/mt7530.c
- create mode 100644 drivers/net/dsa/mt7530.h
+On 03/20/2017 07:47 AM, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> MT6323 PMIC is a multi-function device that includes LED function.
+> It allows attaching up to 4 LEDs which can either be on, off or dimmed
+> and/or blinked with the controller.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Reviewed-by: Jacek Anaszewski <jacek.anaszewski@gmail.com>
+> ---
+>  drivers/leds/Kconfig       |   8 +
+>  drivers/leds/Makefile      |   1 +
+>  drivers/leds/leds-mt6323.c | 502 +++++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 511 insertions(+)
+>  create mode 100644 drivers/leds/leds-mt6323.c
+> 
+> diff --git a/drivers/leds/Kconfig b/drivers/leds/Kconfig
+> index 275f467..1cf4b6d 100644
+> --- a/drivers/leds/Kconfig
+> +++ b/drivers/leds/Kconfig
+> @@ -126,6 +126,14 @@ config LEDS_MIKROTIK_RB532
+>  	  This option enables support for the so called "User LED" of
+>  	  Mikrotik's Routerboard 532.
+>  
+> +config LEDS_MT6323
+> +	tristate "LED Support for Mediatek MT6323 PMIC"
+> +	depends on LEDS_CLASS
+> +	depends on MFD_MT6397
+> +	help
+> +	  This option enables support for on-chip LED drivers found on
+> +	  Mediatek MT6323 PMIC.
+> +
+>  config LEDS_S3C24XX
+>  	tristate "LED Support for Samsung S3C24XX GPIO LEDs"
+>  	depends on LEDS_CLASS
+> diff --git a/drivers/leds/Makefile b/drivers/leds/Makefile
+> index 6b82737..4feb332 100644
+> --- a/drivers/leds/Makefile
+> +++ b/drivers/leds/Makefile
+> @@ -72,6 +72,7 @@ obj-$(CONFIG_LEDS_IS31FL32XX)		+= leds-is31fl32xx.o
+>  obj-$(CONFIG_LEDS_PM8058)		+= leds-pm8058.o
+>  obj-$(CONFIG_LEDS_MLXCPLD)		+= leds-mlxcpld.o
+>  obj-$(CONFIG_LEDS_NIC78BX)		+= leds-nic78bx.o
+> +obj-$(CONFIG_LEDS_MT6323)		+= leds-mt6323.o
+>  
+>  # LED SPI Drivers
+>  obj-$(CONFIG_LEDS_DAC124S085)		+= leds-dac124s085.o
+> diff --git a/drivers/leds/leds-mt6323.c b/drivers/leds/leds-mt6323.c
+> new file mode 100644
+> index 0000000..48081bc
+> --- /dev/null
+> +++ b/drivers/leds/leds-mt6323.c
+> @@ -0,0 +1,502 @@
+> +/*
+> + * LED driver for Mediatek MT6323 PMIC
+> + *
+> + * Copyright (C) 2017 Sean Wang <sean.wang@mediatek.com>
+> + *
+> + * This program is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU General Public License as
+> + * published by the Free Software Foundation; either version 2 of
+> + * the License, or (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+> + * GNU General Public License for more details.
+> + */
+> +#include <linux/kernel.h>
+> +#include <linux/leds.h>
+> +#include <linux/mfd/mt6323/registers.h>
+> +#include <linux/mfd/mt6397/core.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
+> +
+> +/*
+> + * Register field for MT6323_TOP_CKPDN0 to enable
+> + * 32K clock common for LED device.
+> + */
+> +#define MT6323_RG_DRV_32K_CK_PDN	BIT(11)
+> +#define MT6323_RG_DRV_32K_CK_PDN_MASK	BIT(11)
+> +
+> +/*
+> + * Register field for MT6323_TOP_CKPDN2 to enable
+> + * individual clock for LED device.
+> + */
+> +#define MT6323_RG_ISINK_CK_PDN(i)	BIT(i)
+> +#define MT6323_RG_ISINK_CK_PDN_MASK(i)	BIT(i)
+> +
+> +/*
+> + * Register field for MT6323_TOP_CKCON1 to select
+> + * clock source.
+> + */
+> +#define MT6323_RG_ISINK_CK_SEL_MASK(i)	(BIT(10) << (i))
+> +
+> +/*
+> + * Register for MT6323_ISINK_CON0 to setup the
+> + * duty cycle of the blink.
+> + */
+> +#define MT6323_ISINK_CON0(i)		(MT6323_ISINK0_CON0 + 0x8 * (i))
+> +#define MT6323_ISINK_DIM_DUTY_MASK	(0x1f << 8)
+> +#define MT6323_ISINK_DIM_DUTY(i)	(((i) << 8) & \
+> +					MT6323_ISINK_DIM_DUTY_MASK)
+> +
+> +/* Register to setup the period of the blink. */
+> +#define MT6323_ISINK_CON1(i)		(MT6323_ISINK0_CON1 + 0x8 * (i))
+> +#define MT6323_ISINK_DIM_FSEL_MASK	(0xffff)
+> +#define MT6323_ISINK_DIM_FSEL(i)	((i) & MT6323_ISINK_DIM_FSEL_MASK)
+> +
+> +/* Register to control the brightness. */
+> +#define MT6323_ISINK_CON2(i)		(MT6323_ISINK0_CON2 + 0x8 * (i))
+> +#define MT6323_ISINK_CH_STEP_SHIFT	12
+> +#define MT6323_ISINK_CH_STEP_MASK	(0x7 << 12)
+> +#define MT6323_ISINK_CH_STEP(i)		(((i) << 12) & \
+> +					MT6323_ISINK_CH_STEP_MASK)
+> +#define MT6323_ISINK_SFSTR0_TC_MASK	(0x3 << 1)
+> +#define MT6323_ISINK_SFSTR0_TC(i)	(((i) << 1) & \
+> +					MT6323_ISINK_SFSTR0_TC_MASK)
+> +#define MT6323_ISINK_SFSTR0_EN_MASK	BIT(0)
+> +#define MT6323_ISINK_SFSTR0_EN		BIT(0)
+> +
+> +/* Register to LED channel enablement. */
+> +#define MT6323_ISINK_CH_EN_MASK(i)	BIT(i)
+> +#define MT6323_ISINK_CH_EN(i)		BIT(i)
+> +
+> +#define MT6323_MAX_PERIOD		10000
+> +#define MT6323_MAX_LEDS			4
+> +#define MT6323_MAX_BRIGHTNESS		6
+> +#define MT6323_UNIT_DUTY		3125
+> +#define MT6323_CAL_HW_DUTY(o, p)	DIV_ROUND_CLOSEST((o) * 100000ul,\
+> +					(p) * MT6323_UNIT_DUTY)
+> +
+> +struct mt6323_leds;
+> +
+> +/**
+> + * struct mt6323_led - state container for the LED device
+> + * @id:			the identifier in MT6323 LED device
+> + * @parent:		the pointer to MT6323 LED controller
+> + * @cdev:		LED class device for this LED device
+> + * @current_brightness: current state of the LED device
+> + */
+> +struct mt6323_led {
+> +	int			id;
+> +	struct mt6323_leds	*parent;
+> +	struct led_classdev	cdev;
+> +	enum led_brightness	current_brightness;
+> +};
+> +
+> +/**
+> + * struct mt6323_leds -	state container for holding LED controller
+> + *			of the driver
+> + * @dev:		the device pointer
+> + * @hw:			the underlying hardware providing shared
+> + *			bus for the register operations
+> + * @lock:		the lock among process context
+> + * @led:		the array that contains the state of individual
+> + *			LED device
+> + */
+> +struct mt6323_leds {
+> +	struct device		*dev;
+> +	struct mt6397_chip	*hw;
+> +	/* protect among process context */
+> +	struct mutex		lock;
+> +	struct mt6323_led	*led[MT6323_MAX_LEDS];
+> +};
+> +
+> +static int mt6323_led_hw_brightness(struct led_classdev *cdev,
+> +				    enum led_brightness brightness)
+> +{
+> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
+> +	struct mt6323_leds *leds = led->parent;
+> +	struct regmap *regmap = leds->hw->regmap;
+> +	u32 con2_mask = 0, con2_val = 0;
+> +	int ret;
+> +
+> +	/*
+> +	 * Setup current output for the corresponding
+> +	 * brightness level.
+> +	 */
+> +	con2_mask |= MT6323_ISINK_CH_STEP_MASK |
+> +		     MT6323_ISINK_SFSTR0_TC_MASK |
+> +		     MT6323_ISINK_SFSTR0_EN_MASK;
+> +	con2_val |=  MT6323_ISINK_CH_STEP(brightness - 1) |
+> +		     MT6323_ISINK_SFSTR0_TC(2) |
+> +		     MT6323_ISINK_SFSTR0_EN;
+> +
+> +	ret = regmap_update_bits(regmap, MT6323_ISINK_CON2(led->id),
+> +				 con2_mask, con2_val);
+> +	return ret;
+> +}
+> +
+> +static int mt6323_led_hw_off(struct led_classdev *cdev)
+> +{
+> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
+> +	struct mt6323_leds *leds = led->parent;
+> +	struct regmap *regmap = leds->hw->regmap;
+> +	unsigned int status;
+> +	int ret;
+> +
+> +	status = MT6323_ISINK_CH_EN(led->id);
+> +	ret = regmap_update_bits(regmap, MT6323_ISINK_EN_CTRL,
+> +				 MT6323_ISINK_CH_EN_MASK(led->id), ~status);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	usleep_range(100, 300);
+> +	ret = regmap_update_bits(regmap, MT6323_TOP_CKPDN2,
+> +				 MT6323_RG_ISINK_CK_PDN_MASK(led->id),
+> +				 MT6323_RG_ISINK_CK_PDN(led->id));
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	return 0;
+> +}
+> +
+> +static enum led_brightness
+> +mt6323_get_led_hw_brightness(struct led_classdev *cdev)
+> +{
+> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
+> +	struct mt6323_leds *leds = led->parent;
+> +	struct regmap *regmap = leds->hw->regmap;
+> +	unsigned int status;
+> +	int ret;
+> +
+> +	ret = regmap_read(regmap, MT6323_TOP_CKPDN2, &status);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	if (status & MT6323_RG_ISINK_CK_PDN_MASK(led->id))
+> +		return 0;
+> +
+> +	ret = regmap_read(regmap, MT6323_ISINK_EN_CTRL, &status);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	if (!(status & MT6323_ISINK_CH_EN(led->id)))
+> +		return 0;
+> +
+> +	ret = regmap_read(regmap, MT6323_ISINK_CON2(led->id), &status);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	return  ((status & MT6323_ISINK_CH_STEP_MASK)
+> +		  >> MT6323_ISINK_CH_STEP_SHIFT) + 1;
+> +}
+> +
+> +static int mt6323_led_hw_on(struct led_classdev *cdev,
+> +			    enum led_brightness brightness)
+> +{
+> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
+> +	struct mt6323_leds *leds = led->parent;
+> +	struct regmap *regmap = leds->hw->regmap;
+> +	unsigned int status;
+> +	int ret;
+> +
+> +	/*
+> +	 * Setup required clock source, enable the corresponding
+> +	 * clock and channel and let work with continuous blink as
+> +	 * the default.
+> +	 */
+> +	ret = regmap_update_bits(regmap, MT6323_TOP_CKCON1,
+> +				 MT6323_RG_ISINK_CK_SEL_MASK(led->id), 0);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	status = MT6323_RG_ISINK_CK_PDN(led->id);
+> +	ret = regmap_update_bits(regmap, MT6323_TOP_CKPDN2,
+> +				 MT6323_RG_ISINK_CK_PDN_MASK(led->id),
+> +				 ~status);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	usleep_range(100, 300);
+> +
+> +	ret = regmap_update_bits(regmap, MT6323_ISINK_EN_CTRL,
+> +				 MT6323_ISINK_CH_EN_MASK(led->id),
+> +				 MT6323_ISINK_CH_EN(led->id));
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	ret = mt6323_led_hw_brightness(cdev, brightness);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	ret = regmap_update_bits(regmap, MT6323_ISINK_CON0(led->id),
+> +				 MT6323_ISINK_DIM_DUTY_MASK,
+> +				 MT6323_ISINK_DIM_DUTY(31));
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	ret = regmap_update_bits(regmap, MT6323_ISINK_CON1(led->id),
+> +				 MT6323_ISINK_DIM_FSEL_MASK,
+> +				 MT6323_ISINK_DIM_FSEL(1000));
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	return 0;
+> +}
+> +
+> +static int mt6323_led_set_blink(struct led_classdev *cdev,
+> +				unsigned long *delay_on,
+> +				unsigned long *delay_off)
+> +{
+> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
+> +	struct mt6323_leds *leds = led->parent;
+> +	struct regmap *regmap = leds->hw->regmap;
+> +	unsigned long period;
+> +	u8 duty_hw;
+> +	int ret;
+> +
+> +	/*
+> +	 * Units are in ms, if over the hardware able
+> +	 * to support, fallback into software blink
+> +	 */
+> +	period = *delay_on + *delay_off;
+> +
+> +	if (period > MT6323_MAX_PERIOD)
+> +		return -EINVAL;
+> +
+> +	/*
+> +	 * LED subsystem requires a default user
+> +	 * friendly blink pattern for the LED so using
+> +	 * 1Hz duty cycle 50% here if without specific
+> +	 * value delay_on and delay off being assigned.
+> +	 */
+> +	if (!*delay_on && !*delay_off) {
+> +		*delay_on = 500;
+> +		*delay_off = 500;
+> +	}
+> +
+> +	/*
+> +	 * Calculate duty_hw based on the percentage of period during
+> +	 * which the led is ON.
+> +	 */
+> +	duty_hw = MT6323_CAL_HW_DUTY(*delay_on, period);
+> +
+> +	/* hardware doesn't support zero duty cycle. */
+> +	if (!duty_hw)
+> +		return -EINVAL;
+> +
+> +	mutex_lock(&leds->lock);
+> +	/*
+> +	 * Set max_brightness as the software blink behavior
+> +	 * when no blink brightness.
+> +	 */
+> +	if (!led->current_brightness) {
+> +		ret = mt6323_led_hw_on(cdev, cdev->max_brightness);
+> +		if (ret < 0)
+> +			goto out;
+> +		led->current_brightness = cdev->max_brightness;
+> +	}
+> +
+> +	ret = regmap_update_bits(regmap, MT6323_ISINK_CON0(led->id),
+> +				 MT6323_ISINK_DIM_DUTY_MASK,
+> +				 MT6323_ISINK_DIM_DUTY(duty_hw - 1));
+> +	if (ret < 0)
+> +		goto out;
+> +
+> +	ret = regmap_update_bits(regmap, MT6323_ISINK_CON1(led->id),
+> +				 MT6323_ISINK_DIM_FSEL_MASK,
+> +				 MT6323_ISINK_DIM_FSEL(period - 1));
+> +out:
+> +	mutex_unlock(&leds->lock);
+> +
+> +	return ret;
+> +}
+> +
+> +static int mt6323_led_set_brightness(struct led_classdev *cdev,
+> +				     enum led_brightness brightness)
+> +{
+> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
+> +	struct mt6323_leds *leds = led->parent;
+> +	int ret;
+> +
+> +	mutex_lock(&leds->lock);
+> +
+> +	if (!led->current_brightness && brightness) {
+> +		ret = mt6323_led_hw_on(cdev, brightness);
+> +		if (ret < 0)
+> +			goto out;
+> +	} else if (brightness) {
+> +		ret = mt6323_led_hw_brightness(cdev, brightness);
+> +		if (ret < 0)
+> +			goto out;
+> +	} else {
+> +		ret = mt6323_led_hw_off(cdev);
+> +		if (ret < 0)
+> +			goto out;
+> +	}
+> +
+> +	led->current_brightness = brightness;
+> +out:
+> +	mutex_unlock(&leds->lock);
+> +
+> +	return ret;
+> +}
+> +
+> +static int mt6323_led_set_dt_default(struct led_classdev *cdev,
+> +				     struct device_node *np)
+> +{
+> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
+> +	const char *state;
+> +	int ret = 0;
+> +
+> +	led->cdev.name = of_get_property(np, "label", NULL) ? : np->name;
+> +	led->cdev.default_trigger = of_get_property(np,
+> +						    "linux,default-trigger",
+> +						    NULL);
+> +
+> +	state = of_get_property(np, "default-state", NULL);
+> +	if (state) {
+> +		if (!strcmp(state, "keep")) {
+> +			ret = mt6323_get_led_hw_brightness(cdev);
+> +			if (ret < 0)
+> +				return ret;
+> +			led->current_brightness = ret;
+> +			ret = 0;
+> +		} else if (!strcmp(state, "on")) {
+> +			ret =
+> +			mt6323_led_set_brightness(cdev, cdev->max_brightness);
+> +		} else  {
+> +			ret = mt6323_led_set_brightness(cdev, LED_OFF);
+> +		}
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+> +static int mt6323_led_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct device_node *np = pdev->dev.of_node;
+> +	struct device_node *child;
+> +	struct mt6397_chip *hw = dev_get_drvdata(pdev->dev.parent);
+> +	struct mt6323_leds *leds;
+> +	struct mt6323_led *led;
+> +	int ret;
+> +	unsigned int status;
+> +	u32 reg;
+> +
+> +	leds = devm_kzalloc(dev, sizeof(*leds), GFP_KERNEL);
+> +	if (!leds)
+> +		return -ENOMEM;
+> +
+> +	platform_set_drvdata(pdev, leds);
+> +	leds->dev = dev;
+> +
+> +	/*
+> +	 * leds->hw points to the underlying bus for the register
+> +	 * controlled.
+> +	 */
+> +	leds->hw = hw;
+> +	mutex_init(&leds->lock);
+> +
+> +	status = MT6323_RG_DRV_32K_CK_PDN;
+> +	ret = regmap_update_bits(leds->hw->regmap, MT6323_TOP_CKPDN0,
+> +				 MT6323_RG_DRV_32K_CK_PDN_MASK, ~status);
+> +	if (ret < 0) {
+> +		dev_err(leds->dev,
+> +			"Failed to update MT6323_TOP_CKPDN0 Register\n");
+> +		return ret;
+> +	}
+> +
+> +	for_each_available_child_of_node(np, child) {
+> +		ret = of_property_read_u32(child, "reg", &reg);
+> +		if (ret) {
+> +			dev_err(dev, "Failed to read led 'reg' property\n");
+> +			goto put_child_node;
+> +		}
+> +
+> +		if (reg < 0 || reg > MT6323_MAX_LEDS || leds->led[reg]) {
+> +			dev_err(dev, "Invalid led reg %u\n", reg);
+> +			ret = -EINVAL;
+> +			goto put_child_node;
+> +		}
+> +
+> +		led = devm_kzalloc(dev, sizeof(*led), GFP_KERNEL);
+> +		if (!led) {
+> +			ret = -ENOMEM;
+> +			goto put_child_node;
+> +		}
+> +
+> +		leds->led[reg] = led;
+> +		leds->led[reg]->id = reg;
+> +		leds->led[reg]->cdev.max_brightness = MT6323_MAX_BRIGHTNESS;
+> +		leds->led[reg]->cdev.brightness_set_blocking =
+> +					mt6323_led_set_brightness;
+> +		leds->led[reg]->cdev.blink_set = mt6323_led_set_blink;
+> +		leds->led[reg]->cdev.brightness_get =
+> +					mt6323_get_led_hw_brightness;
+> +		leds->led[reg]->parent = leds;
+> +
+> +		ret = mt6323_led_set_dt_default(&leds->led[reg]->cdev, child);
+> +		if (ret < 0) {
+> +			dev_err(leds->dev,
+> +				"Failed to LED set default from devicetree\n");
+> +			goto put_child_node;
+> +		}
+> +
+> +		ret = devm_led_classdev_register(dev, &leds->led[reg]->cdev);
+> +		if (ret) {
+> +			dev_err(&pdev->dev, "Failed to register LED: %d\n",
+> +				ret);
+> +			goto put_child_node;
+> +		}
+> +		leds->led[reg]->cdev.dev->of_node = child;
+> +	}
+> +
+> +	return 0;
+> +
+> +put_child_node:
+> +	of_node_put(child);
+> +	return ret;
+> +}
+> +
+> +static int mt6323_led_remove(struct platform_device *pdev)
+> +{
+> +	struct mt6323_leds *leds = platform_get_drvdata(pdev);
+> +	int i;
+> +
+> +	/* Turn the LEDs off on driver removal. */
+> +	for (i = 0 ; leds->led[i] ; i++)
+> +		mt6323_led_hw_off(&leds->led[i]->cdev);
+> +
+> +	regmap_update_bits(leds->hw->regmap, MT6323_TOP_CKPDN0,
+> +			   MT6323_RG_DRV_32K_CK_PDN_MASK,
+> +			   MT6323_RG_DRV_32K_CK_PDN);
+> +
+> +	mutex_destroy(&leds->lock);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id mt6323_led_dt_match[] = {
+> +	{ .compatible = "mediatek,mt6323-led" },
+> +	{},
+> +};
+> +MODULE_DEVICE_TABLE(of, mt6323_led_dt_match);
+> +
+> +static struct platform_driver mt6323_led_driver = {
+> +	.probe		= mt6323_led_probe,
+> +	.remove		= mt6323_led_remove,
+> +	.driver		= {
+> +		.name	= "mt6323-led",
+> +		.of_match_table = mt6323_led_dt_match,
+> +	},
+> +};
+> +
+> +module_platform_driver(mt6323_led_driver);
+> +
+> +MODULE_DESCRIPTION("LED driver for Mediatek MT6323 PMIC");
+> +MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
+> +MODULE_LICENSE("GPL");
+> 
 
-diff --git a/drivers/net/dsa/Kconfig b/drivers/net/dsa/Kconfig
-index 0659846..5b322b4 100644
---- a/drivers/net/dsa/Kconfig
-+++ b/drivers/net/dsa/Kconfig
-@@ -34,4 +34,12 @@ config NET_DSA_QCA8K
- 	  This enables support for the Qualcomm Atheros QCA8K Ethernet
- 	  switch chips.
- 
-+config NET_DSA_MT7530
-+	tristate "Mediatek MT7530 Ethernet switch support"
-+	depends on NET_DSA
-+	select NET_DSA_TAG_MTK
-+	---help---
-+	  This enables support for the Mediatek MT7530 Ethernet switch
-+	  chip.
-+
- endmenu
-diff --git a/drivers/net/dsa/Makefile b/drivers/net/dsa/Makefile
-index a3c9416..8e629c1 100644
---- a/drivers/net/dsa/Makefile
-+++ b/drivers/net/dsa/Makefile
-@@ -2,6 +2,6 @@ obj-$(CONFIG_NET_DSA_MV88E6060) += mv88e6060.o
- obj-$(CONFIG_NET_DSA_BCM_SF2)	+= bcm-sf2.o
- bcm-sf2-objs			:= bcm_sf2.o bcm_sf2_cfp.o
- obj-$(CONFIG_NET_DSA_QCA8K)	+= qca8k.o
--
-+obj-$(CONFIG_NET_DSA_MT7530) += mt7530.o
- obj-y				+= b53/
- obj-y				+= mv88e6xxx/
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-new file mode 100644
-index 0000000..99e5485
---- /dev/null
-+++ b/drivers/net/dsa/mt7530.c
-@@ -0,0 +1,1172 @@
-+/*
-+ * Mediatek MT7530 DSA Switch driver
-+ * Copyright (C) 2017 Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+#include <linux/etherdevice.h>
-+#include <linux/if_bridge.h>
-+#include <linux/mdio.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/netdevice.h>
-+#include <linux/of_gpio.h>
-+#include <linux/of_mdio.h>
-+#include <linux/of_net.h>
-+#include <linux/of_platform.h>
-+#include <linux/phy.h>
-+#include <linux/regmap.h>
-+#include <linux/regulator/consumer.h>
-+#include <linux/reset.h>
-+#include <net/dsa.h>
-+#include <net/switchdev.h>
-+
-+#include "mt7530.h"
-+
-+/* String, offset, and register size in bytes if different from 4 bytes */
-+static const struct mt7530_mib_desc mt7530_mib[] = {
-+	MIB_DESC(1, 0x00, "TxDrop"),
-+	MIB_DESC(1, 0x04, "TxCrcErr"),
-+	MIB_DESC(1, 0x08, "TxUnicast"),
-+	MIB_DESC(1, 0x0c, "TxMulticast"),
-+	MIB_DESC(1, 0x10, "TxBroadcast"),
-+	MIB_DESC(1, 0x14, "TxCollision"),
-+	MIB_DESC(1, 0x18, "TxSingleCollision"),
-+	MIB_DESC(1, 0x1c, "TxMultipleCollision"),
-+	MIB_DESC(1, 0x20, "TxDeferred"),
-+	MIB_DESC(1, 0x24, "TxLateCollision"),
-+	MIB_DESC(1, 0x28, "TxExcessiveCollistion"),
-+	MIB_DESC(1, 0x2c, "TxPause"),
-+	MIB_DESC(1, 0x30, "TxPktSz64"),
-+	MIB_DESC(1, 0x34, "TxPktSz65To127"),
-+	MIB_DESC(1, 0x38, "TxPktSz128To255"),
-+	MIB_DESC(1, 0x3c, "TxPktSz256To511"),
-+	MIB_DESC(1, 0x40, "TxPktSz512To1023"),
-+	MIB_DESC(1, 0x44, "Tx1024ToMax"),
-+	MIB_DESC(2, 0x48, "TxBytes"),
-+	MIB_DESC(1, 0x60, "RxDrop"),
-+	MIB_DESC(1, 0x64, "RxFiltering"),
-+	MIB_DESC(1, 0x6c, "RxMulticast"),
-+	MIB_DESC(1, 0x70, "RxBroadcast"),
-+	MIB_DESC(1, 0x74, "RxAlignErr"),
-+	MIB_DESC(1, 0x78, "RxCrcErr"),
-+	MIB_DESC(1, 0x7c, "RxUnderSizeErr"),
-+	MIB_DESC(1, 0x80, "RxFragErr"),
-+	MIB_DESC(1, 0x84, "RxOverSzErr"),
-+	MIB_DESC(1, 0x88, "RxJabberErr"),
-+	MIB_DESC(1, 0x8c, "RxPause"),
-+	MIB_DESC(1, 0x90, "RxPktSz64"),
-+	MIB_DESC(1, 0x94, "RxPktSz65To127"),
-+	MIB_DESC(1, 0x98, "RxPktSz128To255"),
-+	MIB_DESC(1, 0x9c, "RxPktSz256To511"),
-+	MIB_DESC(1, 0xa0, "RxPktSz512To1023"),
-+	MIB_DESC(1, 0xa4, "RxPktSz1024ToMax"),
-+	MIB_DESC(2, 0xa8, "RxBytes"),
-+	MIB_DESC(1, 0xb0, "RxCtrlDrop"),
-+	MIB_DESC(1, 0xb4, "RxIngressDrop"),
-+	MIB_DESC(1, 0xb8, "RxArlDrop"),
-+};
-+
-+static int
-+mt7623_trgmii_write(struct mt7530_priv *priv,  u32 reg, u32 val)
-+{
-+	int ret;
-+
-+	ret =  regmap_write(priv->ethernet, TRGMII_BASE(reg), val);
-+	if (ret < 0)
-+		dev_err(priv->dev,
-+			"failed to priv write register\n");
-+	return ret;
-+}
-+
-+static u32
-+mt7623_trgmii_read(struct mt7530_priv *priv, u32 reg)
-+{
-+	int ret;
-+	u32 val;
-+
-+	ret = regmap_read(priv->ethernet, TRGMII_BASE(reg), &val);
-+	if (ret < 0) {
-+		dev_err(priv->dev,
-+			"failed to priv read register\n");
-+		return ret;
-+	}
-+
-+	return val;
-+}
-+
-+static void
-+mt7623_trgmii_rmw(struct mt7530_priv *priv, u32 reg,
-+		  u32 mask, u32 set)
-+{
-+	u32 val;
-+
-+	val = mt7623_trgmii_read(priv, reg);
-+	val &= ~mask;
-+	val |= set;
-+	mt7623_trgmii_write(priv, reg, val);
-+}
-+
-+static void
-+mt7623_trgmii_set(struct mt7530_priv *priv, u32 reg, u32 val)
-+{
-+	mt7623_trgmii_rmw(priv, reg, 0, val);
-+}
-+
-+static void
-+mt7623_trgmii_clear(struct mt7530_priv *priv, u32 reg, u32 val)
-+{
-+	mt7623_trgmii_rmw(priv, reg, val, 0);
-+}
-+
-+static int
-+core_read_mmd_indirect(struct mt7530_priv *priv, int prtad, int devad)
-+{
-+	struct mii_bus *bus = priv->bus;
-+	int value, ret;
-+
-+	/* Write the desired MMD Devad */
-+	ret = bus->write(bus, 0, MII_MMD_CTRL, devad);
-+	if (ret < 0)
-+		goto err;
-+
-+	/* Write the desired MMD register address */
-+	ret = bus->write(bus, 0, MII_MMD_DATA, prtad);
-+	if (ret < 0)
-+		goto err;
-+
-+	/* Select the Function : DATA with no post increment */
-+	ret = bus->write(bus, 0, MII_MMD_CTRL, (devad | MII_MMD_CTRL_NOINCR));
-+	if (ret < 0)
-+		goto err;
-+
-+	/* Read the content of the MMD's selected register */
-+	value = bus->read(bus, 0, MII_MMD_DATA);
-+
-+	return value;
-+err:
-+	dev_err(&bus->dev,  "failed to read mmd register\n");
-+
-+	return ret;
-+}
-+
-+static int
-+core_write_mmd_indirect(struct mt7530_priv *priv, int prtad,
-+			int devad, u32 data)
-+{
-+	struct mii_bus *bus = priv->bus;
-+	int ret;
-+
-+	/* Write the desired MMD Devad */
-+	ret = bus->write(bus, 0, MII_MMD_CTRL, devad);
-+	if (ret < 0)
-+		goto err;
-+
-+	/* Write the desired MMD register address */
-+	ret = bus->write(bus, 0, MII_MMD_DATA, prtad);
-+	if (ret < 0)
-+		goto err;
-+
-+	/* Select the Function : DATA with no post increment */
-+	ret = bus->write(bus, 0, MII_MMD_CTRL, (devad | MII_MMD_CTRL_NOINCR));
-+	if (ret < 0)
-+		goto err;
-+
-+	/* Write the data into MMD's selected register */
-+	ret = bus->write(bus, 0, MII_MMD_DATA, data);
-+err:
-+	if (ret < 0)
-+		dev_err(&bus->dev,
-+			"failed to write mmd register\n");
-+	return ret;
-+}
-+
-+static void
-+core_write(struct mt7530_priv *priv, u32 reg, u32 val)
-+{
-+	struct mii_bus *bus = priv->bus;
-+
-+	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+
-+	core_write_mmd_indirect(priv, reg, MDIO_MMD_VEND2, val);
-+
-+	mutex_unlock(&bus->mdio_lock);
-+}
-+
-+static void
-+core_rmw(struct mt7530_priv *priv, u32 reg, u32 mask, u32 set)
-+{
-+	struct mii_bus *bus = priv->bus;
-+	u32 val;
-+
-+	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+
-+	val = core_read_mmd_indirect(priv, reg, MDIO_MMD_VEND2);
-+	val &= ~mask;
-+	val |= set;
-+	core_write_mmd_indirect(priv, reg, MDIO_MMD_VEND2, val);
-+
-+	mutex_unlock(&bus->mdio_lock);
-+}
-+
-+static void
-+core_set(struct mt7530_priv *priv, u32 reg, u32 val)
-+{
-+	core_rmw(priv, reg, 0, val);
-+}
-+
-+static void
-+core_clear(struct mt7530_priv *priv, u32 reg, u32 val)
-+{
-+	core_rmw(priv, reg, val, 0);
-+}
-+
-+static int
-+mt7530_mii_write(struct mt7530_priv *priv, u32 reg, u32 val)
-+{
-+	struct mii_bus *bus = priv->bus;
-+	u16 page, r, lo, hi;
-+	int ret;
-+
-+	page = (reg >> 6) & 0x3ff;
-+	r  = (reg >> 2) & 0xf;
-+	lo = val & 0xffff;
-+	hi = val >> 16;
-+
-+	/* MT7530 uses 31 as the pseudo port */
-+	ret = bus->write(bus, 0x1f, 0x1f, page);
-+	if (ret < 0)
-+		goto err;
-+
-+	ret = bus->write(bus, 0x1f, r,  lo);
-+	if (ret < 0)
-+		goto err;
-+
-+	ret = bus->write(bus, 0x1f, 0x10, hi);
-+err:
-+	if (ret < 0)
-+		dev_err(&bus->dev,
-+			"failed to write mt7530 register\n");
-+	return ret;
-+}
-+
-+static u32
-+mt7530_mii_read(struct mt7530_priv *priv, u32 reg)
-+{
-+	struct mii_bus *bus = priv->bus;
-+	u16 page, r, lo, hi;
-+	int ret;
-+
-+	page = (reg >> 6) & 0x3ff;
-+	r = (reg >> 2) & 0xf;
-+
-+	/* MT7530 uses 31 as the pseudo port */
-+	ret = bus->write(bus, 0x1f, 0x1f, page);
-+	if (ret < 0) {
-+		dev_err(&bus->dev,
-+			"failed to read mt7530 register\n");
-+		return ret;
-+	}
-+
-+	lo = bus->read(bus, 0x1f, r);
-+	hi = bus->read(bus, 0x1f, 0x10);
-+
-+	return (hi << 16) | (lo & 0xffff);
-+}
-+
-+static void
-+mt7530_write(struct mt7530_priv *priv, u32 reg, u32 val)
-+{
-+	struct mii_bus *bus = priv->bus;
-+
-+	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+
-+	mt7530_mii_write(priv, reg, val);
-+
-+	mutex_unlock(&bus->mdio_lock);
-+}
-+
-+static u32
-+mt7530_read(struct mt7530_priv *priv, u32 reg)
-+{
-+	struct mii_bus *bus = priv->bus;
-+	u32 val;
-+
-+	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+
-+	val = mt7530_mii_read(priv, reg);
-+
-+	mutex_unlock(&bus->mdio_lock);
-+
-+	return val;
-+}
-+
-+static void
-+mt7530_rmw(struct mt7530_priv *priv, u32 reg,
-+	   u32 mask, u32 set)
-+{
-+	struct mii_bus *bus = priv->bus;
-+	u32 val;
-+
-+	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+
-+	val = mt7530_mii_read(priv, reg);
-+	val &= ~mask;
-+	val |= set;
-+	mt7530_mii_write(priv, reg, val);
-+
-+	mutex_unlock(&bus->mdio_lock);
-+}
-+
-+static void
-+mt7530_set(struct mt7530_priv *priv, u32 reg, u32 val)
-+{
-+	mt7530_rmw(priv, reg, 0, val);
-+}
-+
-+static void
-+mt7530_clear(struct mt7530_priv *priv, u32 reg, u32 val)
-+{
-+	mt7530_rmw(priv, reg, val, 0);
-+}
-+
-+static int
-+mt7530_regmap_read(void *ctx, uint32_t reg, uint32_t *val)
-+{
-+	struct mt7530_priv *priv = (struct mt7530_priv *)ctx;
-+
-+	/* BIT(15) is used as indication for pseudo registers
-+	 * which would be translated into the general MDIO
-+	 * access to leverage the unique regmap sys interface.
-+	 */
-+	if (reg & BIT(15))
-+		*val = mdiobus_read_nested(priv->bus,
-+					   (reg & 0xf00) >> 8,
-+					   (reg & 0xff) >> 2);
-+	else
-+		*val = mt7530_read(priv, reg);
-+
-+	return 0;
-+}
-+
-+static int
-+mt7530_regmap_write(void *ctx, uint32_t reg, uint32_t val)
-+{
-+	struct mt7530_priv *priv = (struct mt7530_priv *)ctx;
-+
-+	if (reg & BIT(15))
-+		mdiobus_write_nested(priv->bus,
-+				     (reg & 0xf00) >> 8,
-+				     (reg & 0xff) >> 2, val);
-+	else
-+		mt7530_write(priv, reg, val);
-+
-+	return 0;
-+}
-+
-+static const struct regmap_range mt7530_readable_ranges[] = {
-+	regmap_reg_range(0x0000, 0x00ac), /* Global control */
-+	regmap_reg_range(0x2000, 0x202c), /* Port Control - P0 */
-+	regmap_reg_range(0x2100, 0x212c), /* Port Control - P1 */
-+	regmap_reg_range(0x2200, 0x222c), /* Port Control - P2 */
-+	regmap_reg_range(0x2300, 0x232c), /* Port Control - P3 */
-+	regmap_reg_range(0x2400, 0x242c), /* Port Control - P4 */
-+	regmap_reg_range(0x2500, 0x252c), /* Port Control - P5 */
-+	regmap_reg_range(0x2600, 0x262c), /* Port Control - P6 */
-+	regmap_reg_range(0x30e0, 0x30f8), /* Port MAC - SYS */
-+	regmap_reg_range(0x3000, 0x3014), /* Port MAC - P0 */
-+	regmap_reg_range(0x3100, 0x3114), /* Port MAC - P1 */
-+	regmap_reg_range(0x3200, 0x3214), /* Port MAC - P2*/
-+	regmap_reg_range(0x3300, 0x3314), /* Port MAC - P3*/
-+	regmap_reg_range(0x3400, 0x3414), /* Port MAC - P4 */
-+	regmap_reg_range(0x3500, 0x3514), /* Port MAC - P5 */
-+	regmap_reg_range(0x3600, 0x3614), /* Port MAC - P6 */
-+	regmap_reg_range(0x4000, 0x40d4), /* MIB - P0 */
-+	regmap_reg_range(0x4100, 0x41d4), /* MIB - P1 */
-+	regmap_reg_range(0x4200, 0x42d4), /* MIB - P2 */
-+	regmap_reg_range(0x4300, 0x43d4), /* MIB - P3 */
-+	regmap_reg_range(0x4400, 0x44d4), /* MIB - P4 */
-+	regmap_reg_range(0x4500, 0x45d4), /* MIB - P5 */
-+	regmap_reg_range(0x4600, 0x46d4), /* MIB - P6 */
-+	regmap_reg_range(0x4fe0, 0x4ff4), /* SYS */
-+	regmap_reg_range(0x7000, 0x700c), /* SYS 2 */
-+	regmap_reg_range(0x7018, 0x7028), /* SYS 3 */
-+	regmap_reg_range(0x7800, 0x7830), /* SYS 4 */
-+	regmap_reg_range(0x7a00, 0x7a7c), /* TRGMII */
-+	regmap_reg_range(0x8000, 0x8078), /* Psedo address for Phy - P0 */
-+	regmap_reg_range(0x8100, 0x8178), /* Psedo address for Phy - P1 */
-+	regmap_reg_range(0x8200, 0x8278), /* Psedo address for Phy - P2 */
-+	regmap_reg_range(0x8300, 0x8378), /* Psedo address for Phy - P3 */
-+	regmap_reg_range(0x8400, 0x8478), /* Psedo address for Phy - P4 */
-+};
-+
-+static const struct regmap_access_table mt7530_readable_table = {
-+	.yes_ranges = mt7530_readable_ranges,
-+	.n_yes_ranges = ARRAY_SIZE(mt7530_readable_ranges),
-+};
-+
-+static struct regmap_config mt7530_regmap_config = {
-+	.reg_bits = 16,
-+	.val_bits = 32,
-+	.reg_stride = 4,
-+	.max_register = 0x8478,
-+	.reg_read = mt7530_regmap_read,
-+	.reg_write = mt7530_regmap_write,
-+	.rd_table = &mt7530_readable_table,
-+};
-+
-+static int
-+mt7530_fdb_cmd(struct mt7530_priv *priv, enum mt7530_fdb_cmd cmd, u32 *rsp)
-+{
-+	u32 reg;
-+	int ret;
-+
-+	/* Set the command operating upon the MAC address entries */
-+	reg = ATC_BUSY | ATC_MAT(0) | cmd;
-+	mt7530_write(priv, MT7530_ATC, reg);
-+
-+	/* Wait for completion */
-+	ret = wait_condition_timeout(
-+		!(mt7530_read(priv, MT7530_ATC) & ATC_BUSY), 20);
-+	if (ret < 0) {
-+		dev_err(priv->dev, "cmd = %x timeout\n", cmd);
-+		return -EIO;
-+	}
-+
-+	/* Additional sanity for read command if the specified
-+	 * entry is invalid
-+	 */
-+	reg = mt7530_read(priv, MT7530_ATC);
-+	if ((cmd == MT7530_FDB_READ) && (reg & ATC_INVALID))
-+		return -EINVAL;
-+
-+	if (rsp)
-+		*rsp = reg;
-+
-+	return 0;
-+}
-+
-+static void
-+mt7530_fdb_read(struct mt7530_priv *priv, struct mt7530_fdb *fdb)
-+{
-+	u32 reg[3];
-+	int i;
-+
-+	/* Read from ARL table into an array */
-+	for (i = 0; i < 3; i++) {
-+		reg[i] = mt7530_read(priv, MT7530_TSRA1 + (i * 4));
-+
-+		dev_dbg(priv->dev, "%s(%d) reg[%d]=0x%x\n",
-+			__func__, __LINE__, i, reg[i]);
-+	}
-+
-+	/* vid - 11:0 on reg[1] */
-+	fdb->vid = (reg[1] >> 0) & 0xfff;
-+	/* aging - 31:24 on reg[2] */
-+	fdb->aging = (reg[2] >> 24) & 0xff;
-+	/* portmask - 11:4 on reg[2] */
-+	fdb->port_mask = (reg[2] >> 4) & 0xff;
-+	/* mac - 31:0 on reg[0] and 31:16 on reg[1] */
-+	fdb->mac[0] = (reg[0] >> 24) & 0xff;
-+	fdb->mac[1] = (reg[0] >> 16) & 0xff;
-+	fdb->mac[2] = (reg[0] >>  8) & 0xff;
-+	fdb->mac[3] = (reg[0] >>  0) & 0xff;
-+	fdb->mac[4] = (reg[1] >> 24) & 0xff;
-+	fdb->mac[5] = (reg[1] >> 16) & 0xff;
-+	/* noarp - 3:2 on reg[2] */
-+	fdb->noarp = ((reg[2] >> 2) & 0x3) == STATIC_ENT;
-+}
-+
-+static void
-+mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
-+		 u8 port_mask, const u8 *mac,
-+		 u8 aging, u8 type)
-+{
-+	u32 reg[3] = { 0 };
-+	int i;
-+
-+	/* vid - 11:0 on reg[1] */
-+	reg[1] |= (vid & 0xfff) << 0;
-+	/* aging - 31:25 on reg[2] */
-+	reg[2] |= (aging & 0xff) << 24;
-+	/* portmask - 11:4 on reg[2] */
-+	reg[2] |= (port_mask & 0xff) << 4;
-+	/* type - 3 indicate that entry is static wouldn't
-+	 * be aged out and 0 specified as erasing an entry
-+	 */
-+	reg[2] |= (type & 0x3) << 2;
-+	/* mac - 31:0 on reg[0] and 31:16 on reg[1] */
-+	reg[1] |= mac[5] << 16;
-+	reg[1] |= mac[4] << 24;
-+	reg[0] |= mac[3] << 0;
-+	reg[0] |= mac[2] << 8;
-+	reg[0] |= mac[1] << 16;
-+	reg[0] |= mac[0] << 24;
-+
-+	/* Wrirte array into the ARL table */
-+	for (i = 0; i < 3; i++)
-+		mt7530_write(priv, MT7530_ATA1 + (i * 4), reg[i]);
-+}
-+
-+static int
-+mt7530_pad_clk_setup(struct dsa_switch *ds, int mode)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	u32 ncpo1, ssc_delta, trgint, i;
-+
-+	switch (mode) {
-+	case PHY_INTERFACE_MODE_RGMII:
-+		trgint = 0;
-+		ncpo1 = 0x0c80;
-+		ssc_delta = 0x87;
-+		break;
-+	case PHY_INTERFACE_MODE_TRGMII:
-+		trgint = 1;
-+		ncpo1 = 0x1400;
-+		ssc_delta = 0x57;
-+		break;
-+	default:
-+		pr_err("xMII mode %d not supported\n", mode);
-+		return -EINVAL;
-+	}
-+
-+	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
-+		   P6_INTF_MODE(trgint));
-+
-+	/* Lower Tx Driving */
-+	for (i = 0 ; i < 6 ; i++)
-+		mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
-+			     TD_DM_DRVP(8) | TD_DM_DRVN(8));
-+
-+	/* Setup MT7530 core clock */
-+	if (!trgint) {
-+		/* Disable MT7530 core clock */
-+		core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_GSWCK_EN);
-+
-+		/* Disable MT7530 PLL, since phy_device has not yet been
-+		 * created when this function is called. So we provide
-+		 * core_write_mmd_indirect to complete this function
-+		 */
-+		core_write_mmd_indirect(priv,
-+					CORE_GSWPLL_GRP1,
-+					MDIO_MMD_VEND2,
-+					0);
-+
-+		/* Setup MT7530 core clock into 500Mhz */
-+		core_write(priv, CORE_GSWPLL_GRP2,
-+			   RG_GSWPLL_POSDIV_500M(1) |
-+			   RG_GSWPLL_FBKDIV_500M(25));
-+
-+		/* Enable MT7530 PLL */
-+		core_write(priv, CORE_GSWPLL_GRP1,
-+			   RG_GSWPLL_EN_PRE |
-+			   RG_GSWPLL_POSDIV_200M(2) |
-+			   RG_GSWPLL_FBKDIV_200M(32));
-+
-+		/* Enable MT7530 core clock */
-+		core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_GSWCK_EN);
-+	}
-+
-+	/* Setup the MT7530 TRGMII Tx Clock */
-+	core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_GSWCK_EN);
-+	core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
-+	core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
-+	core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
-+	core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
-+	core_write(priv, CORE_PLL_GROUP4,
-+		   RG_SYSPLL_DDSFBK_EN | RG_SYSPLL_BIAS_EN |
-+		   RG_SYSPLL_BIAS_LPF_EN);
-+	core_write(priv, CORE_PLL_GROUP2,
-+		   RG_SYSPLL_EN_NORMAL | RG_SYSPLL_VODEN |
-+		   RG_SYSPLL_POSDIV(1));
-+	core_write(priv, CORE_PLL_GROUP7,
-+		   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
-+		   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
-+	core_set(priv, CORE_TRGMII_GSW_CLK_CG,
-+		 REG_GSWCK_EN | REG_TRGMIICK_EN);
-+
-+	if (!trgint)
-+		for (i = 0 ; i < 5 ; i++)
-+			mt7530_rmw(priv, MT7530_TRGMII_RD(i),
-+				   RD_TAP_MASK, RD_TAP(16));
-+	else
-+		mt7623_trgmii_set(priv, GSW_INTF_MODE, INTF_MODE_TRGMII);
-+
-+	return 0;
-+}
-+
-+static int
-+mt7623_pad_clk_setup(struct dsa_switch *ds)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	int i;
-+
-+	for (i = 0 ; i < 6; i++)
-+		mt7623_trgmii_write(priv, GSW_TRGMII_TD_ODT(i),
-+				    TD_DM_DRVP(8) | TD_DM_DRVN(8));
-+
-+	mt7623_trgmii_set(priv, GSW_TRGMII_RCK_CTRL, RX_RST | RXC_DQSISEL);
-+	mt7623_trgmii_clear(priv, GSW_TRGMII_RCK_CTRL, RX_RST);
-+
-+	return 0;
-+}
-+
-+static void
-+mt7530_mib_reset(struct dsa_switch *ds)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+
-+	mt7530_write(priv, MT7530_MIB_CCR, CCR_MIB_FLUSH);
-+	mt7530_write(priv, MT7530_MIB_CCR, CCR_MIB_ACTIVATE);
-+}
-+
-+static void
-+mt7530_port_set_status(struct dsa_switch *ds, int port, int enable)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	u32 mask = PMCR_TX_EN | PMCR_RX_EN;
-+
-+	mutex_lock(&priv->reg_mutex);
-+	if (enable)
-+		mt7530_set(priv, MT7530_PMCR_P(port), mask);
-+	else
-+		mt7530_clear(priv, MT7530_PMCR_P(port), mask);
-+	mutex_unlock(&priv->reg_mutex);
-+}
-+
-+static int
-+mt7530_setup(struct dsa_switch *ds)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	int ret, i, phy_mode;
-+	u8  cpup_mask = 0;
-+	u32 id, val;
-+	struct regmap *regmap;
-+	struct device_node *dn;
-+
-+	/* Make sure that cpu port specfied on the dt is appropriate */
-+	if (!dsa_is_cpu_port(ds, MT7530_CPU_PORT)) {
-+		dev_err(priv->dev, "port not matched with the CPU port\n");
-+		return -EINVAL;
-+	}
-+
-+	/* The parent node of master_netdev which holds the common system
-+	 * controller also is the container for two GMACs nodes representing
-+	 * as two netdev instances.
-+	 */
-+	dn = ds->master_netdev->dev.of_node->parent;
-+	priv->ethernet = syscon_node_to_regmap(dn);
-+	if (IS_ERR(priv->ethernet))
-+		return PTR_ERR(priv->ethernet);
-+
-+	regmap = devm_regmap_init(ds->dev, NULL, priv,
-+				  &mt7530_regmap_config);
-+	if (IS_ERR(regmap))
-+		dev_warn(priv->dev, "phy regmap initialization failed");
-+
-+	phy_mode = of_get_phy_mode(ds->ports[ds->dst->cpu_port].dn);
-+	if (phy_mode < 0) {
-+		dev_err(priv->dev, "Can't find phy-mode for master device\n");
-+		return phy_mode;
-+	}
-+	dev_info(priv->dev, "phy-mode for master device = %x\n", phy_mode);
-+
-+	regulator_set_voltage(priv->core_pwr, 1000000, 1000000);
-+	ret = regulator_enable(priv->core_pwr);
-+	if (ret < 0) {
-+		dev_err(priv->dev,
-+			"Failed to enable core power: %d\n", ret);
-+		return ret;
-+	}
-+
-+	regulator_set_voltage(priv->io_pwr, 3300000, 3300000);
-+	ret = regulator_enable(priv->io_pwr);
-+	if (ret < 0) {
-+		dev_err(priv->dev, "Failed to enable io pwr: %d\n",
-+			ret);
-+		return ret;
-+	}
-+
-+	/* Reset whole chip through gpio pin or memory-mapped registers for
-+	 * different type of hardware
-+	 */
-+	if (priv->mcm) {
-+		reset_control_assert(priv->rstc);
-+		usleep_range(1000, 1100);
-+		reset_control_deassert(priv->rstc);
-+	} else {
-+		gpiod_set_value_cansleep(priv->reset, 0);
-+		usleep_range(1000, 1100);
-+		gpiod_set_value_cansleep(priv->reset, 1);
-+	}
-+
-+	/* Wait until the reset completion */
-+	ret = wait_condition_timeout(mt7530_read(priv, MT7530_HWTRAP) != 0,
-+				     1000);
-+	if (ret < 0) {
-+		dev_err(priv->dev, "reset timeout\n");
-+		return ret;
-+	}
-+
-+	id = mt7530_read(priv, MT7530_CREV);
-+	id >>= CHIP_NAME_SHIFT;
-+	if (id != MT7530_ID)
-+		return -ENODEV;
-+
-+	/* Reset the switch through internal reset */
-+	mt7530_write(priv, MT7530_SYS_CTRL,
-+		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
-+		     SYS_CTRL_REG_RST);
-+
-+	/* Enable Port 6 only, P5 as GMAC5 which currently is not supported */
-+	val = mt7530_read(priv, MT7530_MHWTRAP);
-+	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
-+	val |= MHWTRAP_MANUAL;
-+	mt7530_write(priv, MT7530_MHWTRAP, val);
-+
-+	ret = mt7530_pad_clk_setup(ds, phy_mode);
-+	if (ret < 0)
-+		return ret;
-+
-+	/* Enable and reset MIB counters */
-+	mt7530_mib_reset(ds);
-+
-+	/* Disable forwarding by default on all ports */
-+	for (i = 0; i < MT7530_NUM_PORTS; i++)
-+		mt7530_write(priv, MT7530_PCR_P(i), PCR_MATRIX_INIT);
-+
-+	mt7530_clear(priv, MT7530_MFC, UNU_FFP_MASK);
-+
-+	/* Fabric setup for the cpu port */
-+	for (i = 0; i < MT7530_NUM_PORTS; i++)
-+		if (dsa_is_cpu_port(ds, i)) {
-+			/* Enable Mediatek header mode on the cpu port */
-+			mt7530_write(priv, MT7530_PVC_P(i),
-+				     PORT_SPEC_TAG);
-+
-+			/* Setup the MAC by default for the cpu port */
-+			mt7530_write(priv, MT7530_PMCR_P(i), PMCR_CPUP_LINK);
-+
-+			/* Disable auto learning on the cpu port */
-+			mt7530_set(priv, MT7530_PSC_P(i), SA_DIS);
-+
-+			/* Unknown unicast frame fordwarding to the cpu port */
-+			mt7530_set(priv, MT7530_MFC, UNU_FFP(BIT(i)));
-+
-+			/* CPU port gets connected to all user ports of
-+			 * the switch
-+			 */
-+			mt7530_write(priv, MT7530_PCR_P(i),
-+				     PCR_MATRIX(ds->enabled_port_mask));
-+
-+			cpup_mask |= BIT(i);
-+		}
-+
-+	/* Fabric setup for the all user ports */
-+	for (i = 0; i < MT7530_NUM_PORTS; i++)
-+		if (ds->enabled_port_mask & BIT(i)) {
-+			/* Setup the MAC by default for all user ports */
-+			mt7530_write(priv, MT7530_PMCR_P(i),
-+				     PMCR_USERP_LINK);
-+
-+			/* The user port gets connected to the cpu port only */
-+			mt7530_write(priv, MT7530_PCR_P(i),
-+				     PCR_MATRIX(cpup_mask));
-+		}
-+
-+	/* Flush the FDB table */
-+	ret = mt7530_fdb_cmd(priv, MT7530_FDB_FLUSH, 0);
-+	if (ret < 0)
-+		return ret;
-+
-+	/* Setup RX circuit, relevant PAD and driving on the host which must
-+	 * be placed after the setup on the device side is all finished.
-+	 */
-+	ret = mt7623_pad_clk_setup(ds);
-+	if (ret < 0)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static int mt7530_phy_read(struct dsa_switch *ds, int port, int regnum)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+
-+	return mdiobus_read_nested(priv->bus, port, regnum);
-+}
-+
-+int mt7530_phy_write(struct dsa_switch *ds, int port, int regnum, u16 val)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+
-+	return mdiobus_write_nested(priv->bus, port, regnum, val);
-+}
-+
-+static void
-+mt7530_get_strings(struct dsa_switch *ds, int port, uint8_t *data)
-+{
-+	int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(mt7530_mib); i++)
-+		strncpy(data + i * ETH_GSTRING_LEN, mt7530_mib[i].name,
-+			ETH_GSTRING_LEN);
-+}
-+
-+static void
-+mt7530_get_ethtool_stats(struct dsa_switch *ds, int port,
-+			 uint64_t *data)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	const struct mt7530_mib_desc *mib;
-+	u32 reg, i;
-+	u64 hi;
-+
-+	for (i = 0; i < ARRAY_SIZE(mt7530_mib); i++) {
-+		mib = &mt7530_mib[i];
-+		reg = MT7530_PORT_MIB_COUNTER(port) + mib->offset;
-+
-+		data[i] = mt7530_read(priv, reg);
-+		if (mib->size == 2) {
-+			hi = mt7530_read(priv, reg + 4);
-+			data[i] |= hi << 32;
-+		}
-+	}
-+}
-+
-+static int
-+mt7530_get_sset_count(struct dsa_switch *ds)
-+{
-+	return ARRAY_SIZE(mt7530_mib);
-+}
-+
-+static int
-+mt7530_port_enable(struct dsa_switch *ds, int port,
-+		   struct phy_device *phy)
-+{
-+	mt7530_port_set_status(ds, port, 1);
-+
-+	return 0;
-+}
-+
-+static void
-+mt7530_port_disable(struct dsa_switch *ds, int port,
-+		    struct phy_device *phy)
-+{
-+	mt7530_port_set_status(ds, port, 0);
-+}
-+
-+static void
-+mt7530_stp_state_set(struct dsa_switch *ds, int port, u8 state)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	u32 stp_state;
-+
-+	switch (state) {
-+	case BR_STATE_DISABLED:
-+		stp_state = MT7530_STP_DISABLED;
-+		break;
-+	case BR_STATE_BLOCKING:
-+		stp_state = MT7530_STP_BLOCKING;
-+		break;
-+	case BR_STATE_LISTENING:
-+		stp_state = MT7530_STP_LISTENING;
-+		break;
-+	case BR_STATE_LEARNING:
-+		stp_state = MT7530_STP_LEARNING;
-+		break;
-+	case BR_STATE_FORWARDING:
-+	default:
-+		stp_state = MT7530_STP_FORWARDING;
-+		break;
-+	}
-+
-+	mt7530_rmw(priv, MT7530_SSP_P(port), FID_PST_MASK, stp_state);
-+}
-+
-+static int
-+mt7530_port_bridge_join(struct dsa_switch *ds, int port,
-+			struct net_device *bridge)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	int port_bitmap = BIT(MT7530_CPU_PORT);
-+	int i;
-+
-+	mutex_lock(&priv->reg_mutex);
-+
-+	for (i = 0; i < MT7530_NUM_PORTS; i++)
-+		if (ds->enabled_port_mask & BIT(i)) {
-+			if (ds->ports[i].bridge_dev != bridge)
-+				continue;
-+			/* Add this port to the port maxtrix of the
-+			 * other ports in the bridge
-+			 */
-+			mt7530_set(priv, MT7530_PCR_P(i),
-+				   PCR_MATRIX(BIT(port)));
-+
-+			if (i != port)
-+				port_bitmap |= BIT(i);
-+		}
-+
-+	/* Add all other ports to this port matrix */
-+	mt7530_rmw(priv, MT7530_PCR_P(port),
-+		   PCR_MATRIX_MASK, PCR_MATRIX(port_bitmap));
-+
-+	mutex_unlock(&priv->reg_mutex);
-+
-+	return 0;
-+}
-+
-+static void
-+mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
-+			 struct net_device *bridge)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	int i;
-+
-+	mutex_lock(&priv->reg_mutex);
-+
-+	for (i = 0; i < MT7530_NUM_PORTS; i++)
-+		if (ds->enabled_port_mask & BIT(i)) {
-+			if (ds->ports[i].bridge_dev != bridge)
-+				continue;
-+			/* Remove this port from the port maxtrix
-+			 * of the other ports in the bridge.
-+			 */
-+			mt7530_clear(priv, MT7530_PCR_P(i),
-+				     PCR_MATRIX(BIT(port)));
-+		}
-+
-+	/* Set the cpu port to be the only one in the port matrix of
-+	 * this port.
-+	 */
-+	mt7530_rmw(priv, MT7530_PCR_P(port),
-+		   PCR_MATRIX_MASK,
-+		   PCR_MATRIX(BIT(MT7530_CPU_PORT)));
-+
-+	mutex_unlock(&priv->reg_mutex);
-+}
-+
-+static int
-+mt7530_port_fdb_prepare(struct dsa_switch *ds, int port,
-+			const struct switchdev_obj_port_fdb *fdb,
-+			struct switchdev_trans *trans)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	int ret;
-+
-+	/* Because auto-learned entries shares the same FDB table.
-+	 * an entry is reserved with no port_mask to make sure fdb_add
-+	 * is called while the entry is still available.
-+	 */
-+	mutex_lock(&priv->reg_mutex);
-+	mt7530_fdb_write(priv, fdb->vid, 0, fdb->addr, -1, STATIC_ENT);
-+	ret = mt7530_fdb_cmd(priv, MT7530_FDB_WRITE, 0);
-+	mutex_unlock(&priv->reg_mutex);
-+
-+	return ret;
-+}
-+
-+static void
-+mt7530_port_fdb_add(struct dsa_switch *ds, int port,
-+		    const struct switchdev_obj_port_fdb *fdb,
-+		    struct switchdev_trans *trans)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	u8 port_mask = BIT(port);
-+
-+	mutex_lock(&priv->reg_mutex);
-+	mt7530_fdb_write(priv, fdb->vid, port_mask, fdb->addr, -1, STATIC_ENT);
-+	mt7530_fdb_cmd(priv, MT7530_FDB_WRITE, 0);
-+	mutex_unlock(&priv->reg_mutex);
-+}
-+
-+static int
-+mt7530_port_fdb_del(struct dsa_switch *ds, int port,
-+		    const struct switchdev_obj_port_fdb *fdb)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	int ret;
-+	u8 port_mask = BIT(port);
-+
-+	mutex_lock(&priv->reg_mutex);
-+	mt7530_fdb_write(priv, fdb->vid, port_mask, fdb->addr, -1, STATIC_EMP);
-+	ret = mt7530_fdb_cmd(priv, MT7530_FDB_WRITE, 0);
-+	mutex_unlock(&priv->reg_mutex);
-+
-+	return ret;
-+}
-+
-+static int
-+mt7530_port_fdb_dump(struct dsa_switch *ds, int port,
-+		     struct switchdev_obj_port_fdb *fdb,
-+		     int (*cb)(struct switchdev_obj *obj))
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	struct mt7530_fdb _fdb = { 0 };
-+	int cnt = MT7530_NUM_FDB_RECORDS;
-+	int ret = 0;
-+	u32 rsp = 0;
-+
-+	mutex_lock(&priv->reg_mutex);
-+
-+	ret = mt7530_fdb_cmd(priv, MT7530_FDB_START, &rsp);
-+	if (ret < 0)
-+		goto err;
-+
-+	do {
-+		if (rsp & ATC_SRCH_HIT) {
-+			mt7530_fdb_read(priv, &_fdb);
-+			if (_fdb.port_mask & BIT(port)) {
-+				ether_addr_copy(fdb->addr, _fdb.mac);
-+				fdb->vid = _fdb.vid;
-+				fdb->ndm_state = _fdb.noarp ?
-+						NUD_NOARP : NUD_REACHABLE;
-+				ret = cb(&fdb->obj);
-+				if (ret < 0)
-+					break;
-+			}
-+		}
-+	} while (--cnt &&
-+		 !(rsp & ATC_SRCH_END) &&
-+		 !mt7530_fdb_cmd(priv, MT7530_FDB_NEXT, &rsp));
-+err:
-+	mutex_unlock(&priv->reg_mutex);
-+
-+	return 0;
-+}
-+
-+static enum dsa_tag_protocol
-+mtk_get_tag_protocol(struct dsa_switch *ds)
-+{
-+	return DSA_TAG_PROTO_MTK;
-+}
-+
-+static struct dsa_switch_ops mt7530_switch_ops = {
-+	.get_tag_protocol	= mtk_get_tag_protocol,
-+	.setup			= mt7530_setup,
-+	.get_strings		= mt7530_get_strings,
-+	.phy_read		= mt7530_phy_read,
-+	.phy_write		= mt7530_phy_write,
-+	.get_ethtool_stats	= mt7530_get_ethtool_stats,
-+	.get_sset_count		= mt7530_get_sset_count,
-+	.port_enable		= mt7530_port_enable,
-+	.port_disable		= mt7530_port_disable,
-+	.port_stp_state_set	= mt7530_stp_state_set,
-+	.port_bridge_join	= mt7530_port_bridge_join,
-+	.port_bridge_leave	= mt7530_port_bridge_leave,
-+	.port_fdb_prepare	= mt7530_port_fdb_prepare,
-+	.port_fdb_add		= mt7530_port_fdb_add,
-+	.port_fdb_del		= mt7530_port_fdb_del,
-+	.port_fdb_dump		= mt7530_port_fdb_dump,
-+};
-+
-+static int
-+mt7530_probe(struct mdio_device *mdiodev)
-+{
-+	struct mt7530_priv *priv;
-+	struct device_node *dn;
-+
-+	dn = mdiodev->dev.of_node;
-+
-+	priv = devm_kzalloc(&mdiodev->dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	priv->ds = dsa_switch_alloc(&mdiodev->dev, DSA_MAX_PORTS);
-+	if (!priv->ds)
-+		return -ENOMEM;
-+
-+	/* Use medatek,mcm property to distinguish hardware type that would
-+	 * casues a little bit differences on power-on sequence.
-+	 */
-+	priv->mcm = of_property_read_bool(dn, "mediatek,mcm");
-+	if (priv->mcm) {
-+		dev_info(&mdiodev->dev, "MT7530 adapts as multi-chip module\n");
-+
-+		priv->rstc = devm_reset_control_get(&mdiodev->dev, "mcm");
-+		if (IS_ERR(priv->rstc)) {
-+			dev_err(&mdiodev->dev, "Couldn't get our reset line\n");
-+			return PTR_ERR(priv->rstc);
-+		}
-+	}
-+
-+	priv->core_pwr = devm_regulator_get(&mdiodev->dev, "core");
-+	if (IS_ERR(priv->core_pwr))
-+		return PTR_ERR(priv->core_pwr);
-+
-+	priv->io_pwr = devm_regulator_get(&mdiodev->dev, "io");
-+	if (IS_ERR(priv->io_pwr))
-+		return PTR_ERR(priv->io_pwr);
-+
-+	/* Not MCM that indicates switch works as the remote standalone
-+	 * integrated circuit so the GPIO pin would be used to complete
-+	 * the reset, otherwise memory-mapped register accessing used
-+	 * through syscon provides in the case of MCM.
-+	 */
-+	if (!priv->mcm) {
-+		priv->reset = devm_gpiod_get_optional(&mdiodev->dev, "reset",
-+						      GPIOD_OUT_LOW);
-+		if (IS_ERR(priv->reset)) {
-+			dev_err(&mdiodev->dev, "Couldn't get our reset line\n");
-+			return PTR_ERR(priv->reset);
-+		}
-+	}
-+
-+	priv->bus = mdiodev->bus;
-+	priv->dev = &mdiodev->dev;
-+	priv->ds->priv = priv;
-+	priv->ds->ops = &mt7530_switch_ops;
-+	mutex_init(&priv->reg_mutex);
-+	dev_set_drvdata(&mdiodev->dev, priv);
-+
-+	return dsa_register_switch(priv->ds, &mdiodev->dev);
-+}
-+
-+static void
-+mt7530_remove(struct mdio_device *mdiodev)
-+{
-+	struct mt7530_priv *priv = dev_get_drvdata(&mdiodev->dev);
-+	int ret = 0;
-+
-+	ret = regulator_disable(priv->core_pwr);
-+	if (ret < 0)
-+		dev_err(priv->dev,
-+			"Failed to disable core power: %d\n", ret);
-+
-+	ret = regulator_disable(priv->io_pwr);
-+	if (ret < 0)
-+		dev_err(priv->dev, "Failed to disable io pwr: %d\n",
-+			ret);
-+
-+	dsa_unregister_switch(priv->ds);
-+	mutex_destroy(&priv->reg_mutex);
-+}
-+
-+static const struct of_device_id mt7530_of_match[] = {
-+	{ .compatible = "mediatek,mt7530" },
-+	{ /* sentinel */ },
-+};
-+
-+static struct mdio_driver mt7530_mdio_driver = {
-+	.probe  = mt7530_probe,
-+	.remove = mt7530_remove,
-+	.mdiodrv.driver = {
-+		.name = "mt7530",
-+		.of_match_table = mt7530_of_match,
-+	},
-+};
-+
-+mdio_module_driver(mt7530_mdio_driver);
-+
-+MODULE_AUTHOR("Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
-+MODULE_DESCRIPTION("Driver for Mediatek MT7530 Switch");
-+MODULE_LICENSE("GPL");
-+MODULE_ALIAS("platform:mediatek-mt7530");
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-new file mode 100644
-index 0000000..ba1e1cd
---- /dev/null
-+++ b/drivers/net/dsa/mt7530.h
-@@ -0,0 +1,382 @@
-+/*
-+ * Copyright (C) 2017 Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#ifndef __MT7530_H
-+#define __MT7530_H
-+
-+#define MT7530_NUM_PORTS		7
-+#define MT7530_CPU_PORT			6
-+#define MT7530_NUM_FDB_RECORDS		2048
-+
-+#define TRGMII_BASE(x)			(0x10000 + (x))
-+
-+/* Registers to ethsys access */
-+#define ETHSYS_CLKCFG0			0x2c
-+#define  ETHSYS_TRGMII_CLK_SEL362_5	BIT(11)
-+
-+#define SYSC_REG_RSTCTRL		0x34
-+#define  RESET_MCM			BIT(2)
-+
-+/* Registers to mac forward conrol for unknown frames */
-+#define MT7530_MFC			0x10
-+#define  BC_FFP(x)			(((x) & 0xff) << 24)
-+#define  UNM_FFP(x)			(((x) & 0xff) << 16)
-+#define  UNU_FFP(x)			(((x) & 0xff) << 8)
-+#define  UNU_FFP_MASK			UNU_FFP(~0)
-+
-+/* Registers for address table access */
-+
-+#define MT7530_ATA1			0x74
-+#define  STATIC_EMP			0
-+#define  STATIC_ENT			3
-+#define MT7530_ATA2			0x78
-+
-+/* Register for address table write data */
-+#define MT7530_ATWD			0x7c
-+
-+/* Register for address table control */
-+#define MT7530_ATC			0x80
-+#define  ATC_HASH			(((x) & 0xfff) << 16)
-+#define  ATC_BUSY			BIT(15)
-+#define  ATC_SRCH_END			BIT(14)
-+#define  ATC_SRCH_HIT			BIT(13)
-+#define  ATC_INVALID			BIT(12)
-+#define  ATC_MAT(x)			(((x) & 0xf) << 8)
-+#define  ATC_MAT_MACTAB			ATC_MAT(0)
-+
-+enum mt7530_fdb_cmd {
-+	MT7530_FDB_READ	= 0,
-+	MT7530_FDB_WRITE = 1,
-+	MT7530_FDB_FLUSH = 2,
-+	MT7530_FDB_START = 4,
-+	MT7530_FDB_NEXT = 5,
-+};
-+
-+/* Registers for table search read address */
-+#define MT7530_TSRA1			0x84
-+#define MT7530_TSRA2			0x88
-+#define MT7530_ATRD			0x8C
-+
-+/* Register for vlan table control */
-+#define MT7530_VTCR			0x90
-+#define  VTCR_BUSY			BIT(31)
-+#define  VTCR_FUNC			(((x) & 0xf) << 12)
-+#define  VTCR_FUNC_RD_VID		0x1
-+#define  VTCR_FUNC_WR_VID		0x2
-+#define  VTCR_FUNC_INV_VID		0x3
-+#define  VTCR_FUNC_VAL_VID		0x4
-+#define  VTCR_VID			((x) & 0xfff)
-+
-+/* Register for setup vlan and acl write data */
-+#define MT7530_VAWD1			0x94
-+#define  PORT_STAG			BIT(31)
-+#define  IVL_MAC			BIT(30)
-+#define  PORT_MEM(x)			(((x) & 0xff) << 16)
-+#define  VALID				BIT(1)
-+
-+#define MT7530_VAWD2			0x98
-+
-+/* Register for port STP state control */
-+#define MT7530_SSP_P(x)			(0x2000 + ((x) * 0x100))
-+#define  FID_PST(x)			((x) & 0x3)
-+#define  FID_PST_MASK			FID_PST(0x3)
-+
-+enum mt7530_stp_state {
-+	MT7530_STP_DISABLED = 0,
-+	MT7530_STP_BLOCKING = 1,
-+	MT7530_STP_LISTENING = 1,
-+	MT7530_STP_LEARNING = 2,
-+	MT7530_STP_FORWARDING  = 3
-+};
-+
-+/* Registor for port control */
-+#define MT7530_PCR_P(x)			(0x2004 + ((x) * 0x100))
-+#define  PORT_VLAN(x)			((x) & 0x3)
-+#define  PCR_MATRIX(x)			(((x) & 0xff) << 16)
-+#define  PORT_PRI(x)			(((x) & 0x7) << 24)
-+#define  EG_TAG(x)			(((x) & 0x3) << 28)
-+#define  PCR_MATRIX_MASK		PCR_MATRIX(0xff)
-+#define  PCR_MATRIX_INIT		PCR_MATRIX(0)
-+
-+/* Register for port security control */
-+#define MT7530_PSC_P(x)			(0x200c + ((x) * 0x100))
-+#define  SA_DIS				BIT(4)
-+
-+/* Register for port vlan control */
-+#define MT7530_PVC_P(x)			(0x2010 + ((x) * 0x100))
-+#define  PORT_SPEC_TAG			BIT(5)
-+#define  VLAN_ATTR(x)			(((x) & 0x3) << 6)
-+#define  STAG_VPID			(((x) & 0xffff) << 16)
-+
-+/* Register for port port-and-protocol based vlan 1 control */
-+#define MT7530_PPBV1_P(x)		(0x2014 + ((x) * 0x100))
-+
-+/* Register for port MAC control register */
-+#define MT7530_PMCR_P(x)		(0x3000 + ((x) * 0x100))
-+#define  PMCR_IFG_XMIT(x)		(((x) & 0x3) << 18)
-+#define  PMCR_MAC_MODE			BIT(16)
-+#define  PMCR_FORCE_MODE		BIT(15)
-+#define  PMCR_TX_EN			BIT(14)
-+#define  PMCR_RX_EN			BIT(13)
-+#define  PMCR_BACKOFF_EN		BIT(9)
-+#define  PMCR_BACKPR_EN			BIT(8)
-+#define  PMCR_TX_FC_EN			BIT(5)
-+#define  PMCR_RX_FC_EN			BIT(4)
-+#define  PMCR_FORCE_SPEED_1000		BIT(3)
-+#define  PMCR_FORCE_FDX			BIT(1)
-+#define  PMCR_FORCE_LNK			BIT(0)
-+#define  PMCR_COMMON_LINK		(PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | \
-+					 PMCR_BACKOFF_EN | PMCR_BACKPR_EN | \
-+					 PMCR_TX_EN | PMCR_RX_EN | \
-+					 PMCR_TX_FC_EN | PMCR_RX_FC_EN)
-+#define  PMCR_CPUP_LINK			(PMCR_COMMON_LINK | PMCR_FORCE_MODE | \
-+					 PMCR_FORCE_SPEED_1000 | \
-+					 PMCR_FORCE_FDX | \
-+					 PMCR_FORCE_LNK)
-+#define  PMCR_USERP_LINK		PMCR_COMMON_LINK
-+#define  PMCR_FIXED_LINK		(PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | \
-+					 PMCR_FORCE_MODE | PMCR_TX_EN | \
-+					 PMCR_RX_EN | PMCR_BACKPR_EN | \
-+					 PMCR_BACKOFF_EN | \
-+					 PMCR_FORCE_SPEED_1000 | \
-+					 PMCR_FORCE_FDX | \
-+					 PMCR_FORCE_LNK)
-+#define PMCR_FIXED_LINK_FC		(PMCR_FIXED_LINK | \
-+					 PMCR_TX_FC_EN | PMCR_RX_FC_EN)
-+
-+#define MT7530_PMSR_P(x)		(0x3008 + (x) * 0x100)
-+
-+/* Register for MIB */
-+#define MT7530_PORT_MIB_COUNTER(x)	(0x4000 + (x) * 0x100)
-+#define MT7530_MIB_CCR			0x4fe0
-+#define  CCR_MIB_ENABLE			BIT(31)
-+#define  CCR_RX_OCT_CNT_GOOD		BIT(7)
-+#define  CCR_RX_OCT_CNT_BAD		BIT(6)
-+#define  CCR_TX_OCT_CNT_GOOD		BIT(5)
-+#define  CCR_TX_OCT_CNT_BAD		BIT(4)
-+#define  CCR_MIB_FLUSH			(CCR_RX_OCT_CNT_GOOD | \
-+					 CCR_RX_OCT_CNT_BAD | \
-+					 CCR_TX_OCT_CNT_GOOD | \
-+					 CCR_TX_OCT_CNT_BAD)
-+#define  CCR_MIB_ACTIVATE		(CCR_MIB_ENABLE | \
-+					 CCR_RX_OCT_CNT_GOOD | \
-+					 CCR_RX_OCT_CNT_BAD | \
-+					 CCR_TX_OCT_CNT_GOOD | \
-+					 CCR_TX_OCT_CNT_BAD)
-+/* Register for system reset */
-+#define MT7530_SYS_CTRL			0x7000
-+#define  SYS_CTRL_PHY_RST		BIT(2)
-+#define  SYS_CTRL_SW_RST		BIT(1)
-+#define  SYS_CTRL_REG_RST		BIT(0)
-+
-+/* Register for hw trap status */
-+#define MT7530_HWTRAP			0x7800
-+
-+/* Register for hw trap modification */
-+#define MT7530_MHWTRAP			0x7804
-+#define  MHWTRAP_MANUAL			BIT(16)
-+#define  MHWTRAP_P5_MAC_SEL		BIT(13)
-+#define  MHWTRAP_P6_DIS			BIT(8)
-+#define  MHWTRAP_P5_RGMII_MODE		BIT(7)
-+#define  MHWTRAP_P5_DIS			BIT(6)
-+#define  MHWTRAP_PHY_ACCESS		BIT(5)
-+
-+/* Regiser for TOP signal control */
-+#define MT7530_TOP_SIG_CTRL		0x7808
-+#define  TOP_SIG_CTRL_NORMAL		(BIT(17) | BIT(16))
-+
-+#define MT7530_IO_DRV_CR		0x7810
-+#define  P5_IO_CLK_DRV(x)		((x) & 0x3)
-+#define  P5_IO_DATA_DRV(x)		(((x) & 0x3) << 4)
-+
-+#define MT7530_P6ECR			0x7830
-+#define  P6_INTF_MODE_MASK		0x3
-+#define  P6_INTF_MODE(x)		((x) & 0x3)
-+
-+/* Registers for TRGMII on the both side */
-+#define MT7530_TRGMII_RCK_CTRL		0x7a00
-+#define GSW_TRGMII_RCK_CTRL		0x300
-+#define  RX_RST				BIT(31)
-+#define  RXC_DQSISEL			BIT(30)
-+#define  DQSI1_TAP_MASK			(0x7f << 8)
-+#define  DQSI0_TAP_MASK			0x7f
-+#define  DQSI1_TAP(x)			(((x) & 0x7f) << 8)
-+#define  DQSI0_TAP(x)			((x) & 0x7f)
-+
-+#define MT7530_TRGMII_RCK_RTT		0x7a04
-+#define GSW_TRGMII_RCK_RTT		0x304
-+#define  DQS1_GATE			BIT(31)
-+#define  DQS0_GATE			BIT(30)
-+
-+#define MT7530_TRGMII_RD(x)		(0x7a10 + (x) * 8)
-+#define GSW_TRGMII_RD(x)		(0x310 + (x) * 8)
-+#define  BSLIP_EN			BIT(31)
-+#define  EDGE_CHK			BIT(30)
-+#define  RD_TAP_MASK			0x7f
-+#define  RD_TAP(x)			((x) & 0x7f)
-+
-+#define GSW_TRGMII_TXCTRL		0x340
-+#define MT7530_TRGMII_TXCTRL		0x7a40
-+#define  TRAIN_TXEN			BIT(31)
-+#define  TXC_INV			BIT(30)
-+#define  TX_RST				BIT(28)
-+
-+#define MT7530_TRGMII_TD_ODT(i)		(0x7a54 + 8 * (i))
-+#define GSW_TRGMII_TD_ODT(i)		(0x354 + 8 * (i))
-+#define  TD_DM_DRVP(x)			((x) & 0xf)
-+#define  TD_DM_DRVN(x)			(((x) & 0xf) << 4)
-+
-+#define GSW_INTF_MODE			0x390
-+#define  INTF_MODE_TRGMII		BIT(1)
-+
-+#define MT7530_TRGMII_TCK_CTRL		0x7a78
-+#define  TCK_TAP(x)			(((x) & 0xf) << 8)
-+
-+#define MT7530_P5RGMIIRXCR		0x7b00
-+#define  CSR_RGMII_EDGE_ALIGN		BIT(8)
-+#define  CSR_RGMII_RXC_0DEG_CFG(x)	((x) & 0xf)
-+
-+#define MT7530_P5RGMIITXCR		0x7b04
-+#define  CSR_RGMII_TXC_CFG(x)		((x) & 0x1f)
-+
-+#define MT7530_CREV			0x7ffc
-+#define  CHIP_NAME_SHIFT		16
-+#define  MT7530_ID			0x7530
-+
-+/* Registers for core PLL access through mmd indirect */
-+#define CORE_PLL_GROUP2			0x401
-+#define  RG_SYSPLL_EN_NORMAL		BIT(15)
-+#define  RG_SYSPLL_VODEN		BIT(14)
-+#define  RG_SYSPLL_LF			BIT(13)
-+#define  RG_SYSPLL_RST_DLY(x)		(((x) & 0x3) << 12)
-+#define  RG_SYSPLL_LVROD_EN		BIT(10)
-+#define  RG_SYSPLL_PREDIV(x)		(((x) & 0x3) << 8)
-+#define  RG_SYSPLL_POSDIV(x)		(((x) & 0x3) << 5)
-+#define  RG_SYSPLL_FBKSEL		BIT(4)
-+#define  RT_SYSPLL_EN_AFE_OLT		BIT(0)
-+
-+#define CORE_PLL_GROUP4			0x403
-+#define  RG_SYSPLL_DDSFBK_EN		BIT(12)
-+#define  RG_SYSPLL_BIAS_EN		BIT(11)
-+#define  RG_SYSPLL_BIAS_LPF_EN		BIT(10)
-+
-+#define CORE_PLL_GROUP5			0x404
-+#define  RG_LCDDS_PCW_NCPO1(x)		((x) & 0xffff)
-+
-+#define CORE_PLL_GROUP6			0x405
-+#define  RG_LCDDS_PCW_NCPO0(x)		((x) & 0xffff)
-+
-+#define CORE_PLL_GROUP7			0x406
-+#define  RG_LCDDS_PWDB			BIT(15)
-+#define  RG_LCDDS_ISO_EN		BIT(13)
-+#define  RG_LCCDS_C(x)			(((x) & 0x7) << 4)
-+#define  RG_LCDDS_PCW_NCPO_CHG		BIT(3)
-+
-+#define CORE_PLL_GROUP10		0x409
-+#define  RG_LCDDS_SSC_DELTA(x)		((x) & 0xfff)
-+
-+#define CORE_PLL_GROUP11		0x40a
-+#define  RG_LCDDS_SSC_DELTA1(x)		((x) & 0xfff)
-+
-+#define CORE_GSWPLL_GRP1		0x40d
-+#define  RG_GSWPLL_PREDIV(x)		(((x) & 0x3) << 14)
-+#define  RG_GSWPLL_POSDIV_200M(x)	(((x) & 0x3) << 12)
-+#define  RG_GSWPLL_EN_PRE		BIT(11)
-+#define  RG_GSWPLL_FBKSEL		BIT(10)
-+#define  RG_GSWPLL_BP			BIT(9)
-+#define  RG_GSWPLL_BR			BIT(8)
-+#define  RG_GSWPLL_FBKDIV_200M(x)	((x) & 0xff)
-+
-+#define CORE_GSWPLL_GRP2		0x40e
-+#define  RG_GSWPLL_POSDIV_500M(x)	(((x) & 0x3) << 8)
-+#define  RG_GSWPLL_FBKDIV_500M(x)	((x) & 0xff)
-+
-+#define CORE_TRGMII_GSW_CLK_CG		0x410
-+#define  REG_GSWCK_EN			BIT(0)
-+#define  REG_TRGMIICK_EN		BIT(1)
-+
-+#define wait_condition_timeout(condition, timeout)			\
-+({									\
-+	long __ret = 0;							\
-+	unsigned long toj;						\
-+	toj = jiffies + msecs_to_jiffies(timeout);			\
-+									\
-+	for ( ; !(condition) && !time_after_eq(jiffies, toj) ; )	\
-+		cond_resched();						\
-+									\
-+	if (time_after_eq(jiffies, toj))				\
-+		__ret = -ETIMEDOUT;					\
-+	__ret;								\
-+})
-+
-+#define MIB_DESC(_s, _o, _n)	\
-+	{			\
-+		.size = (_s),	\
-+		.offset = (_o),	\
-+		.name = (_n),	\
-+	}
-+
-+struct mt7530_mib_desc {
-+	unsigned int size;
-+	unsigned int offset;
-+	const char *name;
-+};
-+
-+struct mt7530_fdb {
-+	u16 vid;
-+	u8 port_mask;
-+	u8 aging;
-+	u8 mac[6];
-+	bool noarp;
-+};
-+
-+/* struct mt7530_priv -	This is the main datasructure for holding the state
-+ *			of the driver
-+ * @dev:		The device pointer
-+ * @ds:			The pointer to the dsa core structure
-+ * @bus:		The bus used for the device and built-in PHY
-+ * @ethsys:		The regmap used for enabling the necessary PLL
-+ * @ethernet:		The regmap used for access TRGMII-based registers
-+ * @core_pwr:		The power supplied into the core
-+ * @io_pwr:		The power supplied into the I/O
-+ * @mcm:		Flag for distinguishing if standalone IC or module
-+ *			coupling
-+ * @reset:		The descriptor for GPIO line tied to its reset pin
-+ * @phy_mode:		The xMII for cpu port used
-+ * @ports:		Holding the state amongs ports
-+ * @reg_mutex:		The lock for protecting among process accessing
-+ *			registers
-+ */
-+struct mt7530_priv {
-+	struct device		*dev;
-+	struct dsa_switch	*ds;
-+	struct mii_bus		*bus;
-+	struct reset_control	*rstc;
-+	struct regmap		*ethernet;
-+	struct regulator	*core_pwr;
-+	struct regulator	*io_pwr;
-+	bool			mcm;
-+	struct gpio_desc	*reset;
-+	int phy_mode;
-+
-+	/* protect among processes for registers access*/
-+	struct mutex reg_mutex;
-+};
-+
-+struct mt7530_hw_stats {
-+	const char	*string;
-+	u16		reg;
-+	u8		sizeof_stat;
-+};
-+
-+#endif /* __MT7530_H */
 -- 
-1.9.1
+Best regards,
+Jacek Anaszewski
