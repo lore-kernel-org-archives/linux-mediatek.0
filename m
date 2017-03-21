@@ -1,74 +1,48 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v4 1/8] phy: phy-mt65xx-usb3: improve RX detection
- stable time
-Date: Tue, 21 Mar 2017 09:22:00 +0800
-Message-ID: <1490059320.29981.3.camel@mhfsdcap03>
-References: <1489213373-2544-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Rick Chang <rick.chang@mediatek.com>
+Subject: Re: [PATCH 1/2] [media] vcodec: mediatek: add missing linux/slab.h
+ include
+Date: Tue, 21 Mar 2017 09:22:15 +0800
+Message-ID: <1490059335.27725.7.camel@mtksdaap41>
+References: <20170320094812.1365229-1-arnd@arndb.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1489213373-2544-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20170320094812.1365229-1-arnd@arndb.de>
+Sender: linux-media-owner@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Bin Liu <bin.liu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Ricky Liang <jcliang@chromium.org>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil@xs4all.nl>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Kishon,
+Hi Arnd,
 
-    Do you have any comments or suggestions on the series of patches?
+Thank you for the patch, but someone has fixed the same problem.
 
-Thanks a lot
+Regards,
+Rick
 
-On Sat, 2017-03-11 at 14:22 +0800, Chunfeng Yun wrote:
-> The default value of RX detection stable time is 10us, and this
-> margin is too big for some critical cases which cause U3 link fail
-> and link to U2(probability is about 1%). So change it to 5us.
+On Mon, 2017-03-20 at 10:47 +0100, Arnd Bergmann wrote:
+> With the newly added driver, I have run into randconfig failures like:
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c: In function 'mtk_jpeg_open':
+> drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c:1017:8: error: implicit declaration of function 'kzalloc';did you mean 'kvzalloc'? [-Werror=implicit-function-declaration]
+> 
+> Including the header with the declaration solves the problem.
+> 
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 > ---
->  drivers/phy/phy-mt65xx-usb3.c |   18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
-> index d972067..fe2392a 100644
-> --- a/drivers/phy/phy-mt65xx-usb3.c
-> +++ b/drivers/phy/phy-mt65xx-usb3.c
-> @@ -112,6 +112,14 @@
->  #define P3D_RG_CDR_BIR_LTD0		GENMASK(12, 8)
->  #define P3D_RG_CDR_BIR_LTD0_VAL(x)	((0x1f & (x)) << 8)
->  
-> +#define U3P_U3_PHYD_RXDET1		(SSUSB_SIFSLV_U3PHYD_BASE + 0x128)
-> +#define P3D_RG_RXDET_STB2_SET		GENMASK(17, 9)
-> +#define P3D_RG_RXDET_STB2_SET_VAL(x)	((0x1ff & (x)) << 9)
-> +
-> +#define U3P_U3_PHYD_RXDET2		(SSUSB_SIFSLV_U3PHYD_BASE + 0x12c)
-> +#define P3D_RG_RXDET_STB2_SET_P3	GENMASK(8, 0)
-> +#define P3D_RG_RXDET_STB2_SET_P3_VAL(x)	(0x1ff & (x))
-> +
->  #define U3P_XTALCTL3		(SSUSB_SIFSLV_SPLLC + 0x0018)
->  #define XC3_RG_U3_XTAL_RX_PWD		BIT(9)
->  #define XC3_RG_U3_FRC_XTAL_RX_PWD	BIT(8)
-> @@ -295,6 +303,16 @@ static void phy_instance_init(struct mt65xx_u3phy *u3phy,
->  	tmp |= P3D_RG_CDR_BIR_LTD0_VAL(0xc) | P3D_RG_CDR_BIR_LTD1_VAL(0x3);
->  	writel(tmp, port_base + U3P_PHYD_CDR1);
->  
-> +	tmp = readl(port_base + U3P_U3_PHYD_RXDET1);
-> +	tmp &= ~P3D_RG_RXDET_STB2_SET;
-> +	tmp |= P3D_RG_RXDET_STB2_SET_VAL(0x10);
-> +	writel(tmp, port_base + U3P_U3_PHYD_RXDET1);
-> +
-> +	tmp = readl(port_base + U3P_U3_PHYD_RXDET2);
-> +	tmp &= ~P3D_RG_RXDET_STB2_SET_P3;
-> +	tmp |= P3D_RG_RXDET_STB2_SET_P3_VAL(0x10);
-> +	writel(tmp, port_base + U3P_U3_PHYD_RXDET2);
-> +
->  	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, index);
->  }
->  
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> index b10183f7942b..f9bd58ce7d32 100644
+> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> @@ -22,6 +22,7 @@
+>  #include <linux/of_platform.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_runtime.h>
+> +#include <linux/slab.h>
+>  #include <linux/spinlock.h>
+>  #include <media/v4l2-event.h>
+>  #include <media/v4l2-mem2mem.h>
