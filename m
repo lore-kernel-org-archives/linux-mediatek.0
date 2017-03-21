@@ -1,36 +1,36 @@
-From: Rick Chang <rick.chang@mediatek.com>
-Subject: Re: [PATCH 2/2] [media] vcodec: mediatek: mark pm functions as
- __maybe_unused
-Date: Tue, 21 Mar 2017 09:46:29 +0800
-Message-ID: <1490060789.27725.9.camel@mtksdaap41>
-References: <20170320094812.1365229-1-arnd@arndb.de>
-         <20170320094812.1365229-2-arnd@arndb.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20170320094812.1365229-2-arnd@arndb.de>
-Sender: linux-media-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Bin Liu <bin.liu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Ricky Liang <jcliang@chromium.org>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil@xs4all.nl>
+From: Nickey Yang <nickey.yang@rock-chips.com>
+Subject: [PATCH] drm/mediatek: fix mtk_hdmi_setup_vendor_specific_infoframe mistake
+Date: Tue, 21 Mar 2017 16:27:03 +0800
+Message-ID: <1490084823-3968-1-git-send-email-nickey.yang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, matthias.bgg@gmail.com
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, jie.qiu@mediatek.com, junzhi.zhao@mediatek.com, Nickey Yang <nickey.yang@rock-chips.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2017-03-20 at 10:47 +0100, Arnd Bergmann wrote:
-> When CONFIG_PM is disabled, we get a couple of unused functions:
-> 
-> drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c:927:13: error: 'mtk_jpeg_clk_off' defined but not used [-Werror=unused-function]
->  static void mtk_jpeg_clk_off(struct mtk_jpeg_dev *jpeg)
->              ^~~~~~~~~~~~~~~~
-> drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c:916:13: error: 'mtk_jpeg_clk_on' defined but not used [-Werror=unused-function]
->  static void mtk_jpeg_clk_on(struct mtk_jpeg_dev *jpeg)
-> 
-> Rather than adding more error-prone #ifdefs around those, this patch
-> removes the existing #ifdef checks and marks the PM functions as __maybe_unused
-> to let gcc do the right thing.
-> 
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 12 ++++--------
->  1 file changed, 4 insertions(+), 8 deletions(-)
+mtk_hdmi_setup_vendor_specific_infoframe will return before handle
+mtk_hdmi_hw_send_info_frame.Because hdmi_vendor_infoframe_pack
+returns the number of bytes packed into the binary buffer or
+a negative error code on failure.
+So correct it.
 
-Acked-by: Rick Chang <rick.chang@mediatek.com>
+Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
+---
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index c262512..b43aa29 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -1062,7 +1062,7 @@ static int mtk_hdmi_setup_vendor_specific_infoframe(struct mtk_hdmi *hdmi,
+ 	}
+ 
+ 	err = hdmi_vendor_infoframe_pack(&frame, buffer, sizeof(buffer));
+-	if (err) {
++	if (err < 0) {
+ 		dev_err(hdmi->dev, "Failed to pack vendor infoframe: %zd\n",
+ 			err);
+ 		return err;
+-- 
+1.9.1
