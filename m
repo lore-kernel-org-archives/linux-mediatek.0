@@ -1,49 +1,74 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v6 2/4] dt-bindings: mfd: Add the description for LED as
- the sub module
-Date: Mon, 20 Mar 2017 10:45:04 +0000
-Message-ID: <20170320104504.mtefoscl355kgxlv@dell>
-References: <1489992447-13007-1-git-send-email-sean.wang@mediatek.com>
- <1489992447-13007-3-git-send-email-sean.wang@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 1/8] phy: phy-mt65xx-usb3: improve RX detection
+ stable time
+Date: Tue, 21 Mar 2017 09:22:00 +0800
+Message-ID: <1490059320.29981.3.camel@mhfsdcap03>
+References: <1489213373-2544-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <1489992447-13007-3-git-send-email-sean.wang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: sean.wang@mediatek.com
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, keyhaede@gmail.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org, rpurdie@rpsys.net, jacek.anaszewski@gmail.com, pavel@ucw.cz, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1489213373-2544-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gTW9uLCAyMCBNYXIgMjAxNywgc2Vhbi53YW5nQG1lZGlhdGVrLmNvbSB3cm90ZToKCj4gRnJv
-bTogU2VhbiBXYW5nIDxzZWFuLndhbmdAbWVkaWF0ZWsuY29tPgo+IAo+IFRoaXMgcGF0Y2ggYWRk
-cyBkZXNjcmlwdGlvbiBmb3IgTEVEIGFzIHRoZSBzdWItbW9kdWxlIG9uIE1UNjM5Ny9NVDYzMjMK
-PiBtdWx0aWZ1bmN0aW9uIGRldmljZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBTZWFuIFdhbmcgPHNl
-YW4ud2FuZ0BtZWRpYXRlay5jb20+Cj4gLS0tCj4gIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
-aW5kaW5ncy9tZmQvbXQ2Mzk3LnR4dCB8IDEgKwo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRp
-b24oKykKCkFwcGxpZWQsIHRoYW5rcy4KCj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2
-aWNldHJlZS9iaW5kaW5ncy9tZmQvbXQ2Mzk3LnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJl
-ZS9iaW5kaW5ncy9tZmQvbXQ2Mzk3LnR4dAo+IGluZGV4IGM1NjhkNTIuLjUyMmEzYmIgMTAwNjQ0
-Cj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9tdDYzOTcudHh0
-Cj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9tdDYzOTcudHh0
-Cj4gQEAgLTYsNiArNiw3IEBAIE1UNjM5Ny9NVDYzMjMgaXMgYSBtdWx0aWZ1bmN0aW9uIGRldmlj
-ZSB3aXRoIHRoZSBmb2xsb3dpbmcgc3ViIG1vZHVsZXM6Cj4gIC0gQXVkaW8gY29kZWMKPiAgLSBH
-UElPCj4gIC0gQ2xvY2sKPiArLSBMRUQKPiAgCj4gIEl0IGlzIGludGVyZmFjZWQgdG8gaG9zdCBj
-b250cm9sbGVyIHVzaW5nIFNQSSBpbnRlcmZhY2UgYnkgYSBwcm9wcmlldGFyeSBoYXJkd2FyZQo+
-ICBjYWxsZWQgUE1JQyB3cmFwcGVyIG9yIHB3cmFwLiBNVDYzOTcvTVQ2MzIzIE1GRCBpcyBhIGNo
-aWxkIGRldmljZSBvZiBwd3JhcC4KCi0tIApMZWUgSm9uZXMKTGluYXJvIFNUTWljcm9lbGVjdHJv
-bmljcyBMYW5kaW5nIFRlYW0gTGVhZApMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2Fy
-ZSBmb3IgQVJNIFNvQ3MKRm9sbG93IExpbmFybzogRmFjZWJvb2sgfCBUd2l0dGVyIHwgQmxvZwoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJt
-LWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtl
-cm5lbAo=
+Hi Kishon,
+
+    Do you have any comments or suggestions on the series of patches?
+
+Thanks a lot
+
+On Sat, 2017-03-11 at 14:22 +0800, Chunfeng Yun wrote:
+> The default value of RX detection stable time is 10us, and this
+> margin is too big for some critical cases which cause U3 link fail
+> and link to U2(probability is about 1%). So change it to 5us.
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/phy/phy-mt65xx-usb3.c |   18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+> 
+> diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
+> index d972067..fe2392a 100644
+> --- a/drivers/phy/phy-mt65xx-usb3.c
+> +++ b/drivers/phy/phy-mt65xx-usb3.c
+> @@ -112,6 +112,14 @@
+>  #define P3D_RG_CDR_BIR_LTD0		GENMASK(12, 8)
+>  #define P3D_RG_CDR_BIR_LTD0_VAL(x)	((0x1f & (x)) << 8)
+>  
+> +#define U3P_U3_PHYD_RXDET1		(SSUSB_SIFSLV_U3PHYD_BASE + 0x128)
+> +#define P3D_RG_RXDET_STB2_SET		GENMASK(17, 9)
+> +#define P3D_RG_RXDET_STB2_SET_VAL(x)	((0x1ff & (x)) << 9)
+> +
+> +#define U3P_U3_PHYD_RXDET2		(SSUSB_SIFSLV_U3PHYD_BASE + 0x12c)
+> +#define P3D_RG_RXDET_STB2_SET_P3	GENMASK(8, 0)
+> +#define P3D_RG_RXDET_STB2_SET_P3_VAL(x)	(0x1ff & (x))
+> +
+>  #define U3P_XTALCTL3		(SSUSB_SIFSLV_SPLLC + 0x0018)
+>  #define XC3_RG_U3_XTAL_RX_PWD		BIT(9)
+>  #define XC3_RG_U3_FRC_XTAL_RX_PWD	BIT(8)
+> @@ -295,6 +303,16 @@ static void phy_instance_init(struct mt65xx_u3phy *u3phy,
+>  	tmp |= P3D_RG_CDR_BIR_LTD0_VAL(0xc) | P3D_RG_CDR_BIR_LTD1_VAL(0x3);
+>  	writel(tmp, port_base + U3P_PHYD_CDR1);
+>  
+> +	tmp = readl(port_base + U3P_U3_PHYD_RXDET1);
+> +	tmp &= ~P3D_RG_RXDET_STB2_SET;
+> +	tmp |= P3D_RG_RXDET_STB2_SET_VAL(0x10);
+> +	writel(tmp, port_base + U3P_U3_PHYD_RXDET1);
+> +
+> +	tmp = readl(port_base + U3P_U3_PHYD_RXDET2);
+> +	tmp &= ~P3D_RG_RXDET_STB2_SET_P3;
+> +	tmp |= P3D_RG_RXDET_STB2_SET_P3_VAL(0x10);
+> +	writel(tmp, port_base + U3P_U3_PHYD_RXDET2);
+> +
+>  	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, index);
+>  }
+>  
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
