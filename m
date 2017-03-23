@@ -1,65 +1,43 @@
-From: Pavel Machek <pavel@ucw.cz>
-Subject: Re: [PATCH] leds: mt6323: Fix an off by one bug in probe
-Date: Thu, 23 Mar 2017 12:16:55 +0100
-Message-ID: <20170323111655.GA12792@amd>
-References: <20170323104049.GC20154@mwanda>
+From: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+Subject: Re: [PATCH net-next v2 5/5] net-next: dsa: add dsa support for
+ Mediatek MT7530 switch
+Date: Thu, 23 Mar 2017 15:09:06 +0100
+Message-ID: <c9ffd691-b959-1e19-5bea-6386b816bac2@nbd.name>
+References: <1490088910-19405-1-git-send-email-sean.wang@mediatek.com>
+ <1490088910-19405-6-git-send-email-sean.wang@mediatek.com>
+ <20170323072233.GA10076@lunn.ch> <1490256416.14184.2.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-        protocol="application/pgp-signature"; boundary="2oS5YaxWCcQjTEyO"
-Return-path: <linux-leds-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170323104049.GC20154@mwanda>
-Sender: linux-leds-owner@vger.kernel.org
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: Richard Purdie <rpurdie@rpsys.net>, Sean Wang <sean.wang@mediatek.com>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-leds@vger.kernel.org, linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1490256416.14184.2.camel@mtkswgap22>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>
+Cc: f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, vivien.didelot-4ysUXcep3aM1wj+D4I0NRVaTQe2KTcn/@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, Landen.Chao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, objelf-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On 2017-03-23 09:06, Sean Wang wrote:
+> Hi Andrew,
+> 
+> The purpose for the regmap table registered is to 
+> 
+> provide a way which helps us to look up a specific 
+> 
+> register on the switch through regmap-debugfs.
+> 
+> 
+> And not all ranges of register is defined
+> 
+> so I only include the meaningful ones in a sparse way 
+> 
+> for the table.
+I think in that case it might be nice to make regmap support optional in
+order to avoid pulling in bloat on platforms that don't need it.
 
---2oS5YaxWCcQjTEyO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu 2017-03-23 13:40:49, Dan Carpenter wrote:
-> It should be ">=3D MT6323_MAX_LEDS" instead of ">".  Also "reg" is a u32
-> so it can't be negative and we can remove the test for negative values.
->=20
-> Fixes: 216ec6cc4c19 ("leds: Add LED support for MT6323 PMIC")
-> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
-
-Acked-by: Pavel Machek <pavel@ucw.cz>
+- Felix
 
 
-> diff --git a/drivers/leds/leds-mt6323.c b/drivers/leds/leds-mt6323.c
-> index 48081bccbea5..8893c74e9a1f 100644
-> --- a/drivers/leds/leds-mt6323.c
-> +++ b/drivers/leds/leds-mt6323.c
-> @@ -417,7 +417,7 @@ static int mt6323_led_probe(struct platform_device *p=
-dev)
->  			goto put_child_node;
->  		}
-> =20
-> -		if (reg < 0 || reg > MT6323_MAX_LEDS || leds->led[reg]) {
-> +		if (reg >=3D MT6323_MAX_LEDS || leds->led[reg]) {
->  			dev_err(dev, "Invalid led reg %u\n", reg);
->  			ret =3D -EINVAL;
->  			goto put_child_node;
-
---=20
-(english) http://www.livejournal.com/~pavelmachek
-(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
-g.html
-
---2oS5YaxWCcQjTEyO
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iEYEARECAAYFAljTrqcACgkQMOfwapXb+vL80QCgkbm4xkqm3DyxQOPXGOV2RHnr
-z7cAn1jMMfv/9ewRNV4LWhQe71ZYsa69
-=0p98
------END PGP SIGNATURE-----
-
---2oS5YaxWCcQjTEyO--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
