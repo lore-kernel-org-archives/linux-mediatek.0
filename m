@@ -1,30 +1,37 @@
-From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-Subject: Re: [PATCH] leds: mt6323: Fix an off by one bug in probe
-Date: Thu, 23 Mar 2017 20:37:18 +0100
-Message-ID: <af65e771-f0ae-193d-5ece-74e76489d726@gmail.com>
-References: <20170323104049.GC20154@mwanda> <20170323111655.GA12792@amd>
+From: Mars Cheng <mars.cheng@mediatek.com>
+Subject: Re: [PATCH v3 00/12] Add Basic SoC support for MT6797
+Date: Fri, 24 Mar 2017 07:46:13 +0800
+Message-ID: <1490312773.25996.5.camel@mtkswgap22>
+References: <1489937193-2953-1-git-send-email-mars.cheng@mediatek.com>
+         <1490229971.25996.2.camel@mtkswgap22>
+         <b22b31e0-a965-bc4f-e139-58f0d59d90a9@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-leds-owner@vger.kernel.org>
-In-Reply-To: <20170323111655.GA12792@amd>
-Sender: linux-leds-owner@vger.kernel.org
-To: Pavel Machek <pavel@ucw.cz>, Dan Carpenter <dan.carpenter@oracle.com>
-Cc: Richard Purdie <rpurdie@rpsys.net>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-leds@vger.kernel.org, linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <b22b31e0-a965-bc4f-e139-58f0d59d90a9@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Marc Zyngier <marc.zyngier@arm.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 03/23/2017 12:16 PM, Pavel Machek wrote:
-> On Thu 2017-03-23 13:40:49, Dan Carpenter wrote:
->> It should be ">= MT6323_MAX_LEDS" instead of ">".  Also "reg" is a u32
->> so it can't be negative and we can remove the test for negative values.
->>
->> Fixes: 216ec6cc4c19 ("leds: Add LED support for MT6323 PMIC")
->> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+On Thu, 2017-03-23 at 15:24 +0000, Marc Zyngier wrote:
+> Hi Mars,
 > 
-> Acked-by: Pavel Machek <pavel@ucw.cz>
+> On 23/03/17 00:46, Mars Cheng wrote:
+> > Hi Matthias, Rob, Marc, Stephen
+> > 
+> > gentle ping for this patch set.
+> 
+> I appreciate that you're eager to see this reviewed, but less than 4
+> days between a posting and a reminder is a bit too eager. We're not
+> machines! ;-)
+> 
+> Thanks,
+> 
+> 	M.
+Hi Marc
 
-Applied, thanks.
+My bad. I should wait for one week at least.
 
--- 
-Best regards,
-Jacek Anaszewski
+Thanks for reminding. :-) 
