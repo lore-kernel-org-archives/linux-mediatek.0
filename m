@@ -1,50 +1,40 @@
-From: Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH net-next v2 5/5] net-next: dsa: add dsa support for
- Mediatek MT7530 switch
-Date: Thu, 23 Mar 2017 15:30:05 +0100
-Message-ID: <90daf3f4-cd9f-2c97-2781-feef4c5e2227@nbd.name>
-References: <1490088910-19405-1-git-send-email-sean.wang@mediatek.com>
- <1490088910-19405-6-git-send-email-sean.wang@mediatek.com>
- <20170323072233.GA10076@lunn.ch> <1490256416.14184.2.camel@mtkswgap22>
- <c9ffd691-b959-1e19-5bea-6386b816bac2@nbd.name>
- <e55dd89f-e2a6-284e-1905-bd8dc92a042d@phrozen.org>
+From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH v3 00/12] Add Basic SoC support for MT6797
+Date: Thu, 23 Mar 2017 15:24:31 +0000
+Message-ID: <b22b31e0-a965-bc4f-e139-58f0d59d90a9@arm.com>
+References: <1489937193-2953-1-git-send-email-mars.cheng@mediatek.com>
+ <1490229971.25996.2.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e55dd89f-e2a6-284e-1905-bd8dc92a042d@phrozen.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, Landen.Chao@mediatek.com, f.fainelli@gmail.com, keyhaede@gmail.com, vivien.didelot@savoirfairelinux.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, objelf@gmail.com, matthias.bgg@gmail.com, davem@davemloft.net
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1490229971.25996.2.camel@mtkswgap22>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, CC Hwang <cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Loda Chou <loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jades Shih <jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, My Chuang <my.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2017-03-23 15:25, John Crispin wrote:
-> 
-> 
-> On 23/03/17 15:09, Felix Fietkau wrote:
->> On 2017-03-23 09:06, Sean Wang wrote:
->>> Hi Andrew,
->>>
->>> The purpose for the regmap table registered is to
->>>
->>> provide a way which helps us to look up a specific
->>>
->>> register on the switch through regmap-debugfs.
->>>
->>>
->>> And not all ranges of register is defined
->>>
->>> so I only include the meaningful ones in a sparse way
->>>
->>> for the table.
->> I think in that case it might be nice to make regmap support optional in
->> order to avoid pulling in bloat on platforms that don't need it.
->>
->> - Felix
->>
-> The 2 relevant platforms are mips/ralink and arm/mediatek. both require 
-> regmap for the eth_sysctl syscon if they want to utilize the mtk_soc_eth 
-> driver which is a prereq for mt7530. so regmap cannot be optional here.
-Makes sense, thanks.
+Hi Mars,
 
-- Felix
+On 23/03/17 00:46, Mars Cheng wrote:
+> Hi Matthias, Rob, Marc, Stephen
+> 
+> gentle ping for this patch set.
+
+I appreciate that you're eager to see this reviewed, but less than 4
+days between a posting and a reminder is a bit too eager. We're not
+machines! ;-)
+
+Thanks,
+
+	M.
+-- 
+Jazz is not dead. It just smells funny...
