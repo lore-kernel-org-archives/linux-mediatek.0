@@ -1,35 +1,30 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: Re: [PATCH v3 02/12] irqchip: mtk-sysirq: extend intpol base to
- arbitrary number
-Date: Thu, 23 Mar 2017 16:25:54 +0000
-Message-ID: <3790b6ad-12c0-0c48-c24e-0f3397c6bbba@arm.com>
-References: <1489937193-2953-1-git-send-email-mars.cheng@mediatek.com>
- <1489937193-2953-3-git-send-email-mars.cheng@mediatek.com>
+From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
+Subject: Re: [PATCH] leds: mt6323: Fix an off by one bug in probe
+Date: Thu, 23 Mar 2017 20:37:18 +0100
+Message-ID: <af65e771-f0ae-193d-5ece-74e76489d726@gmail.com>
+References: <20170323104049.GC20154@mwanda> <20170323111655.GA12792@amd>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1489937193-2953-3-git-send-email-mars.cheng@mediatek.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Mars Cheng <mars.cheng@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-clk@vger.kernel.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-leds-owner@vger.kernel.org>
+In-Reply-To: <20170323111655.GA12792@amd>
+Sender: linux-leds-owner@vger.kernel.org
+To: Pavel Machek <pavel@ucw.cz>, Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Richard Purdie <rpurdie@rpsys.net>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-leds@vger.kernel.org, linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 19/03/17 15:26, Mars Cheng wrote:
-> Originally driver only supports one base. However, MT6797 has
-> more than one bases to configure interrupt polarity. To support
-> possible design change, here comes a solution to use arbitrary
-> number of bases.
+On 03/23/2017 12:16 PM, Pavel Machek wrote:
+> On Thu 2017-03-23 13:40:49, Dan Carpenter wrote:
+>> It should be ">= MT6323_MAX_LEDS" instead of ">".  Also "reg" is a u32
+>> so it can't be negative and we can remove the test for negative values.
+>>
+>> Fixes: 216ec6cc4c19 ("leds: Add LED support for MT6323 PMIC")
+>> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 > 
-> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> Acked-by: Pavel Machek <pavel@ucw.cz>
 
-Acked-by: Marc Zyngier <marc.zyngier@arm.com>
+Applied, thanks.
 
-What is the merge strategy for this? I'm happy to take the irqchip stuff
-through my tree, but there is much more in this series...
-
-Thanks,
-
-	M.
 -- 
-Jazz is not dead. It just smells funny...
+Best regards,
+Jacek Anaszewski
