@@ -1,94 +1,54 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: Re: [PATCH] mmc: core: Do not hold re-tuning during CMD6 commands
-Date: Fri, 24 Mar 2017 17:40:27 +0800
-Message-ID: <1490348427.22814.19.camel@mhfsdcap03>
-References: <1490336341-22292-1-git-send-email-chaotian.jing@mediatek.com>
-         <1490336341-22292-2-git-send-email-chaotian.jing@mediatek.com>
-         <13a83728-0031-5683-c371-4b517df32299@intel.com>
-         <1490344369.22814.10.camel@mhfsdcap03>
-         <03d54000-9ced-1b31-df80-d254f02433db@intel.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Subject: Re: [PATCH v3 02/12] irqchip: mtk-sysirq: extend intpol base to
+ arbitrary number
+Date: Fri, 24 Mar 2017 09:42:10 +0000
+Message-ID: <c2fcee41-f78f-da13-bf01-a0a01c7e8b39@arm.com>
+References: <1489937193-2953-1-git-send-email-mars.cheng@mediatek.com>
+ <1489937193-2953-3-git-send-email-mars.cheng@mediatek.com>
+ <3790b6ad-12c0-0c48-c24e-0f3397c6bbba@arm.com>
+ <1490313138.25996.10.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <03d54000-9ced-1b31-df80-d254f02433db@intel.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Adrian Hunter <adrian.hunter@intel.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jaehoon Chung <jh80.chung@samsung.com>, Shawn Lin <shawn.lin@rock-chips.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1490313138.25996.10.camel@mtkswgap22>
+Sender: linux-clk-owner@vger.kernel.org
+To: Mars Cheng <mars.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-clk@vger.kernel.org, chieh-jay.liu@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2017-03-24 at 11:19 +0200, Adrian Hunter wrote:
-> On 24/03/17 10:32, Chaotian Jing wrote:
-> > On Fri, 2017-03-24 at 09:52 +0200, Adrian Hunter wrote:
-> >> On 24/03/17 08:19, Chaotian Jing wrote:
-> >>> this patch is refine for 'commit c6dbab9cb58f ("mmc: core: Hold re-tuning
-> >>> during switch commands")'
-> >>> Since it has 3 retries at max for CMD6, if the first CMD6 got CRC error,
-> >>> then should do re-tune before the next CMD6 was sent.
-> >>>
-> >>> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> >>> ---
-> >>>  drivers/mmc/core/mmc_ops.c |    3 +--
-> >>>  1 file changed, 1 insertion(+), 2 deletions(-)
-> >>>
-> >>> diff --git a/drivers/mmc/core/mmc_ops.c b/drivers/mmc/core/mmc_ops.c
-> >>> index fe80f26..6931927 100644
-> >>> --- a/drivers/mmc/core/mmc_ops.c
-> >>> +++ b/drivers/mmc/core/mmc_ops.c
-> >>> @@ -534,8 +534,6 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
-> >>>  	bool use_r1b_resp = use_busy_signal;
-> >>>  	unsigned char old_timing = host->ios.timing;
-> >>>  
-> >>> -	mmc_retune_hold(host);
-> >>> -
-> >>>  	/*
-> >>>  	 * If the cmd timeout and the max_busy_timeout of the host are both
-> >>>  	 * specified, let's validate them. A failure means we need to prevent
-> >>> @@ -567,6 +565,7 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
-> >>>  		cmd.sanitize_busy = true;
-> >>>  
-> >>>  	err = mmc_wait_for_cmd(host, &cmd, MMC_CMD_RETRIES);
-> >>> +	mmc_retune_hold(host);
-> >>
-> >> That is not how mmc_retune_hold() works, you need mmc_retune_hold_now() as
-> >> it is here:
-> >>
-> >> 	https://marc.info/?l=linux-mmc&m=148940903816582
-> >>
-> >> But using "retries" with commands that have busy-waiting on the data line
-> >> doesn't make much sense anyway.  Particularly with CRC errors, I would
-> >> expect the card is actually busily doing the switch and we need only to wait
-> >> for it.  The same can be true for timeout errors.  For some CMD6 we might
-> >> need to send CMD12 if the card is busy after an error.  I would prefer an
-> >> explicit attempt at recovery from CMD6 errors.
-> >>
-> > 
-> > It's the host driver's responsibility to ensure card is not in busy
-> > state before issue the next R1B command, or the MMC core layer needs do
-> > extra check/waiting before issue a R1B command.
+On 23/03/17 23:52, Mars Cheng wrote:
+> On Thu, 2017-03-23 at 16:25 +0000, Marc Zyngier wrote:
+>> On 19/03/17 15:26, Mars Cheng wrote:
+>>> Originally driver only supports one base. However, MT6797 has
+>>> more than one bases to configure interrupt polarity. To support
+>>> possible design change, here comes a solution to use arbitrary
+>>> number of bases.
+>>>
+>>> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+>>
+>> Acked-by: Marc Zyngier <marc.zyngier@arm.com>
+>>
+>> What is the merge strategy for this? I'm happy to take the irqchip stuff
+>> through my tree, but there is much more in this series...
+>>
+> Hi Marc
 > 
-> Better to deal with cards stuck in busy from the places where busy-waiting
-> is expected.
+> Thanks for your review.
 > 
-Yes, if a R1B command got response CRC error, we can do busy-waiting in
-the error hander funtion(mmc_wait_for_req_done())
-> > I think the purpose of "re-tune" is trying to cover particular case(eg.
-> > voltage fluctuate or EMI or some glitch of host/device which caused CRC
-> > error)
+> Hi Matthias
 > 
-> No, re-tuning is to compensate for drift caused primarily by temperature change.
+> Would you comment on this? If Marc take the following stuff first in his
+> tree:
 > 
-Yes, by JEDEC spec, temperature change cause timing drift of EMMC
-device, but, as you mentioned, maybe I have a hardware problem of host,
-but needs Software to cover it. so that we are doing our best to do
-re-tune if got CRC error. if could recover it, then  it's better than
-system hung.
-> > error) , but in such cases, too many cases are disable re-tune function
-> > by mmc_retune_hold(), for example, in this case, if a response CRC error
-> > got then we never have chance to recover it. then cause system cannot
-> > access emmc or suspend/resume fail.
-> 
-> Maybe you have a hardware problem.
-> 
+> [PATCH v3 01/12] dt-bindings: mediatek: multiple bases support for
+> sysirq  
 
+Before taking this patch, I still need one of the DT maintainer to ack
+the binding extension.
 
+Thanks,
+
+	M.
+-- 
+Jazz is not dead. It just smells funny...
