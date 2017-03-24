@@ -1,29 +1,22 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v5 1/3] mmc: dt-bindings: update Mediatek MMC bindings
-Date: Thu, 23 Mar 2017 20:56:39 -0500
-Message-ID: <20170324015639.2hleaavsaw6bcgu6@rob-hp-laptop>
-References: <1489562800-27431-1-git-send-email-yong.mao@mediatek.com>
- <1489562800-27431-2-git-send-email-yong.mao@mediatek.com>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: mmc: core: Do not hold re-tuning during CMD6 commands
+Date: Fri, 24 Mar 2017 14:18:59 +0800
+Message-ID: <1490336341-22292-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-mmc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1489562800-27431-2-git-send-email-yong.mao@mediatek.com>
 Sender: linux-mmc-owner@vger.kernel.org
-To: Yong Mao <yong.mao@mediatek.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Linus Walleij <linus.walleij@linaro.org>, Daniel Kurtz <djkurtz@chromium.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-mmc@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>, Jaehoon Chung <jh80.chung@samsung.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Shawn Lin <shawn.lin@rock-chips.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Mar 15, 2017 at 03:26:38PM +0800, Yong Mao wrote:
-> From: yong mao <yong.mao@mediatek.com>
-> 
-> Add description for mediatek,hs200-cmd-int-delay
-> Add description for mediatek,hs400-cmd-int-delay
-> Add description for mediatek,hs400-cmd-resp-sel-rising
-> 
-> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/mmc/mtk-sd.txt |   12 ++++++++++++
->  1 file changed, 12 insertions(+)
 
-Acked-by: Rob Herring <robh@kernel.org>
+Chaotian Jing (1):
+  mmc: core: Do not hold re-tuning during CMD6 commands
+
+ drivers/mmc/core/mmc_ops.c |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+-- 
+1.7.9.5
+
