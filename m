@@ -1,65 +1,72 @@
-From: Adrian Hunter <adrian.hunter@intel.com>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
 Subject: Re: [PATCH] mmc: core: Do not hold re-tuning during CMD6 commands
-Date: Fri, 24 Mar 2017 09:52:18 +0200
-Message-ID: <13a83728-0031-5683-c371-4b517df32299@intel.com>
+Date: Fri, 24 Mar 2017 16:32:49 +0800
+Message-ID: <1490344369.22814.10.camel@mhfsdcap03>
 References: <1490336341-22292-1-git-send-email-chaotian.jing@mediatek.com>
- <1490336341-22292-2-git-send-email-chaotian.jing@mediatek.com>
+         <1490336341-22292-2-git-send-email-chaotian.jing@mediatek.com>
+         <13a83728-0031-5683-c371-4b517df32299@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1490336341-22292-2-git-send-email-chaotian.jing@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: srv_heupstream@mediatek.com, Shawn Lin <shawn.lin@rock-chips.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Jaehoon Chung <jh80.chung@samsung.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <13a83728-0031-5683-c371-4b517df32299@intel.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Adrian Hunter <adrian.hunter@intel.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jaehoon Chung <jh80.chung@samsung.com>, Shawn Lin <shawn.lin@rock-chips.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 24/03/17 08:19, Chaotian Jing wrote:
-> this patch is refine for 'commit c6dbab9cb58f ("mmc: core: Hold re-tuning
-> during switch commands")'
-> Since it has 3 retries at max for CMD6, if the first CMD6 got CRC error,
-> then should do re-tune before the next CMD6 was sent.
+On Fri, 2017-03-24 at 09:52 +0200, Adrian Hunter wrote:
+> On 24/03/17 08:19, Chaotian Jing wrote:
+> > this patch is refine for 'commit c6dbab9cb58f ("mmc: core: Hold re-tuning
+> > during switch commands")'
+> > Since it has 3 retries at max for CMD6, if the first CMD6 got CRC error,
+> > then should do re-tune before the next CMD6 was sent.
+> > 
+> > Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> > ---
+> >  drivers/mmc/core/mmc_ops.c |    3 +--
+> >  1 file changed, 1 insertion(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/mmc/core/mmc_ops.c b/drivers/mmc/core/mmc_ops.c
+> > index fe80f26..6931927 100644
+> > --- a/drivers/mmc/core/mmc_ops.c
+> > +++ b/drivers/mmc/core/mmc_ops.c
+> > @@ -534,8 +534,6 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
+> >  	bool use_r1b_resp = use_busy_signal;
+> >  	unsigned char old_timing = host->ios.timing;
+> >  
+> > -	mmc_retune_hold(host);
+> > -
+> >  	/*
+> >  	 * If the cmd timeout and the max_busy_timeout of the host are both
+> >  	 * specified, let's validate them. A failure means we need to prevent
+> > @@ -567,6 +565,7 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
+> >  		cmd.sanitize_busy = true;
+> >  
+> >  	err = mmc_wait_for_cmd(host, &cmd, MMC_CMD_RETRIES);
+> > +	mmc_retune_hold(host);
 > 
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> ---
->  drivers/mmc/core/mmc_ops.c |    3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+> That is not how mmc_retune_hold() works, you need mmc_retune_hold_now() as
+> it is here:
 > 
-> diff --git a/drivers/mmc/core/mmc_ops.c b/drivers/mmc/core/mmc_ops.c
-> index fe80f26..6931927 100644
-> --- a/drivers/mmc/core/mmc_ops.c
-> +++ b/drivers/mmc/core/mmc_ops.c
-> @@ -534,8 +534,6 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
->  	bool use_r1b_resp = use_busy_signal;
->  	unsigned char old_timing = host->ios.timing;
->  
-> -	mmc_retune_hold(host);
-> -
->  	/*
->  	 * If the cmd timeout and the max_busy_timeout of the host are both
->  	 * specified, let's validate them. A failure means we need to prevent
-> @@ -567,6 +565,7 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
->  		cmd.sanitize_busy = true;
->  
->  	err = mmc_wait_for_cmd(host, &cmd, MMC_CMD_RETRIES);
-> +	mmc_retune_hold(host);
+> 	https://marc.info/?l=linux-mmc&m=148940903816582
+> 
+> But using "retries" with commands that have busy-waiting on the data line
+> doesn't make much sense anyway.  Particularly with CRC errors, I would
+> expect the card is actually busily doing the switch and we need only to wait
+> for it.  The same can be true for timeout errors.  For some CMD6 we might
+> need to send CMD12 if the card is busy after an error.  I would prefer an
+> explicit attempt at recovery from CMD6 errors.
+> 
 
-That is not how mmc_retune_hold() works, you need mmc_retune_hold_now() as
-it is here:
+It's the host driver's responsibility to ensure card is not in busy
+state before issue the next R1B command, or the MMC core layer needs do
+extra check/waiting before issue a R1B command.
+I think the purpose of "re-tune" is trying to cover particular case(eg.
+voltage fluctuate or EMI or some glitch of host/device which caused CRC
+error) , but in such cases, too many cases are disable re-tune function
+by mmc_retune_hold(), for example, in this case, if a response CRC error
+got then we never have chance to recover it. then cause system cannot
+access emmc or suspend/resume fail.
 
-	https://marc.info/?l=linux-mmc&m=148940903816582
 
-But using "retries" with commands that have busy-waiting on the data line
-doesn't make much sense anyway.  Particularly with CRC errors, I would
-expect the card is actually busily doing the switch and we need only to wait
-for it.  The same can be true for timeout errors.  For some CMD6 we might
-need to send CMD12 if the card is busy after an error.  I would prefer an
-explicit attempt at recovery from CMD6 errors.
