@@ -1,8 +1,8 @@
-From: Youlin Pei <youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Subject: Re: [PATCH v3 2/3] irqchip: mtk-cirq: Add mediatek mtk-cirq
  implement
-Date: Wed, 29 Mar 2017 13:30:06 +0800
-Message-ID: <1490765406.30825.9.camel@mtksdaap41>
+Date: Wed, 29 Mar 2017 15:53:01 +0800
+Message-ID: <1490773981.12634.9.camel@mtkswgap22>
 References: <1487040961-18319-1-git-send-email-youlin.pei@mediatek.com>
          <1487040961-18319-3-git-send-email-youlin.pei@mediatek.com>
          <499f9186-82c1-cb5a-91de-754c89bcdd3d@arm.com>
@@ -13,8 +13,12 @@ Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <499f9186-82c1-cb5a-91de-754c89bcdd3d-5wv7dgnIgG8@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: Youlin Pei <youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
+
+Hi Marc
+
+comments inline
 
 On Fri, 2017-03-24 at 16:22 +0000, Marc Zyngier wrote:
 > On 14/02/17 02:56, Youlin Pei wrote:
@@ -118,12 +122,17 @@ On Fri, 2017-03-24 at 16:22 +0000, Marc Zyngier wrote:
 > Specially given that the platform that is using this driver does also
 > have a sysirq controller.
 
-Hi Marc,
-Thanks for your review.
+sysirq is kind of special design which mediatek's HW guys put the bases
+in a range with other misc usages. so sysirq might happen to have
+several bases.
 
-All of the cirq's registers are in continuous space, So no need to
-support multiple non-continuous register sets.
+cirq is like other normal controller which has its own base and range.
+We have all cirq design with single base.
 
+Also asked our HW guys to allocate sysirq with single base as possible
+in the future even they put it in misc address range.
+
+Thanks.
 > 
 > > +
 > > +static void mtk_cirq_write_mask(struct irq_data *data, unsigned int offset)
@@ -277,10 +286,6 @@ support multiple non-continuous register sets.
 > 
 > It would be worth documenting exactly what this is for. I had to go back
 > to our previous discussion in November to remember it.
-
-Okay, i will add some comments to explain what this is for in next
-version. Thanks!
-
 > 
 > > +
 > > +	/* set edge_only mode, record edge-triggerd interrupts */
