@@ -1,96 +1,62 @@
-From: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH V1 1/1] mtd: mtk-nor: set controller to 4B mode with
- large capacity flash
-Date: Fri, 31 Mar 2017 10:26:47 +0800
-Message-ID: <1490927207.7262.7.camel@mhfsdcap03>
-References: <1490862222-723-1-git-send-email-guochun.mao@mediatek.com>
-         <1490862222-723-2-git-send-email-guochun.mao@mediatek.com>
-         <24d60072-4124-7ec4-6cd3-fd70f4f6b10a@wedev4u.fr>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v5 1/9] phy: phy-mt65xx-usb3: improve RX detection stable time
+Date: Fri, 31 Mar 2017 15:35:27 +0800
+Message-ID: <1490945735-9531-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <24d60072-4124-7ec4-6cd3-fd70f4f6b10a-yU5RGvR974pGWvitb5QawA@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Cyrille Pitchen <cyrille.pitchen-yU5RGvR974pGWvitb5QawA@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Cyrille, Marek,
+The default value of RX detection stable time is 10us, and this
+margin is too big for some critical cases which cause U3 link fail
+and link to U2(probability is about 1%). So change it to 5us.
 
-Thanks for your suggestions.
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/phy/phy-mt65xx-usb3.c |   18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-On Thu, 2017-03-30 at 19:40 +0200, Cyrille Pitchen wrote:
-> Hi Guochun,
-> 
-> Le 30/03/2017 à 10:23, Guochun Mao a écrit :
-> > when nor's size larger than 16MByte, nor and controller should
-> > enter 4Byte mode simultaneously.
-> > 
-> > Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  drivers/mtd/spi-nor/mtk-quadspi.c |    7 +++++++
-> >  1 file changed, 7 insertions(+)
-> > 
-> > diff --git a/drivers/mtd/spi-nor/mtk-quadspi.c b/drivers/mtd/spi-nor/mtk-quadspi.c
-> > index e661877..05cd8a8 100644
-> > --- a/drivers/mtd/spi-nor/mtk-quadspi.c
-> > +++ b/drivers/mtd/spi-nor/mtk-quadspi.c
-> > @@ -369,6 +369,13 @@ static int mt8173_nor_write_reg(struct spi_nor *nor, u8 opcode, u8 *buf,
-> >  		/* We only handle 1 byte */
-> >  		ret = mt8173_nor_wr_sr(mt8173_nor, *buf);
-> >  		break;
-> > +	case SPINOR_OP_EN4B:
-> > +		/* Set nor controller to 4-byte address mode,
-> > +		 * and simultaneously set nor flash.
-> > +		 * This case should cooperate with default operation.
-> > +		 */
-> > +		writeb(readb(mt8173_nor->base + MTK_NOR_DUAL_REG) | 0x10,
-> > +				mt8173_nor->base + MTK_NOR_DUAL_REG);
-> 
-> This is not good: you should check in both mt8173_nor_read() and
-> mt8173_nor_write() whether nor->addr_width is either 3 or 4.
-> 
-> from include/linux/mtd/spi-nor.h:
->  * @addr_width:		number of address bytes
-> 
-> Besides SPI commands using an op code from 4-byte address instruction
-> set always carry a 4-byte address. They can be used directly, without
-> sending the SPINOR_OP_EN4B before. So you cannot assume that addresses
-> will be 4-byte long only if your SPI controller driver has seen a
-> SPINOR_OP_EN4B command before. This assumption is wrong.
-Nor->addr_width is assigned in spi_nor_scan in spi-nor.c, and it's not
-modified in later process.
-Does it means that we will not switch nor between 3Byte address and
-4Byte?
-So, is it better to check nor->addr_width when do nor initialization?
-
-> 
-> SPI controller driver should never check SPINOR_OP_* op codes like this.
-I agree that SPI controller driver should not check SPINOR_OP_* op codes
-like what I do.
-I will correct it next version.
-
-Best Regards,
-Guochun
-> 
-> Then, testing SPINOR_OP_RDSR from mt8173_nor_read_reg() or
-> SPINOR_OP_WRSR from mt8173_nor_write_reg() is not a good practice too:
-> op codes may change depending on the memory manufacturer. So testing op
-> code values like you do can work with some memories but maybe not all.
-> 
-> Finally, don't use 0x10, please define a macro instead.
-> 
-> Best regards,
-> 
-> Cyrille
-> 
-> >  	default:
-> >  		ret = mt8173_nor_do_tx_rx(mt8173_nor, opcode, buf, len, NULL, 0);
-> >  		if (ret)
-> > 
-> 
-
+diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
+index d972067..fe2392a 100644
+--- a/drivers/phy/phy-mt65xx-usb3.c
++++ b/drivers/phy/phy-mt65xx-usb3.c
+@@ -112,6 +112,14 @@
+ #define P3D_RG_CDR_BIR_LTD0		GENMASK(12, 8)
+ #define P3D_RG_CDR_BIR_LTD0_VAL(x)	((0x1f & (x)) << 8)
+ 
++#define U3P_U3_PHYD_RXDET1		(SSUSB_SIFSLV_U3PHYD_BASE + 0x128)
++#define P3D_RG_RXDET_STB2_SET		GENMASK(17, 9)
++#define P3D_RG_RXDET_STB2_SET_VAL(x)	((0x1ff & (x)) << 9)
++
++#define U3P_U3_PHYD_RXDET2		(SSUSB_SIFSLV_U3PHYD_BASE + 0x12c)
++#define P3D_RG_RXDET_STB2_SET_P3	GENMASK(8, 0)
++#define P3D_RG_RXDET_STB2_SET_P3_VAL(x)	(0x1ff & (x))
++
+ #define U3P_XTALCTL3		(SSUSB_SIFSLV_SPLLC + 0x0018)
+ #define XC3_RG_U3_XTAL_RX_PWD		BIT(9)
+ #define XC3_RG_U3_FRC_XTAL_RX_PWD	BIT(8)
+@@ -295,6 +303,16 @@ static void phy_instance_init(struct mt65xx_u3phy *u3phy,
+ 	tmp |= P3D_RG_CDR_BIR_LTD0_VAL(0xc) | P3D_RG_CDR_BIR_LTD1_VAL(0x3);
+ 	writel(tmp, port_base + U3P_PHYD_CDR1);
+ 
++	tmp = readl(port_base + U3P_U3_PHYD_RXDET1);
++	tmp &= ~P3D_RG_RXDET_STB2_SET;
++	tmp |= P3D_RG_RXDET_STB2_SET_VAL(0x10);
++	writel(tmp, port_base + U3P_U3_PHYD_RXDET1);
++
++	tmp = readl(port_base + U3P_U3_PHYD_RXDET2);
++	tmp &= ~P3D_RG_RXDET_STB2_SET_P3;
++	tmp |= P3D_RG_RXDET_STB2_SET_P3_VAL(0x10);
++	writel(tmp, port_base + U3P_U3_PHYD_RXDET2);
++
+ 	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, index);
+ }
+ 
+-- 
+1.7.9.5
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
