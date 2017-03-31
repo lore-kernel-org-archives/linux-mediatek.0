@@ -1,129 +1,151 @@
-From: Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>
-Subject: Re: [PATCH V1 1/1] mtd: mtk-nor: set controller to 4B mode with large
- capacity flash
-Date: Fri, 31 Mar 2017 10:56:03 +0200
-Message-ID: <873a3dac-7d3a-0723-4c7d-c786d3398278@wedev4u.fr>
-References: <1490862222-723-1-git-send-email-guochun.mao@mediatek.com>
- <1490862222-723-2-git-send-email-guochun.mao@mediatek.com>
- <24d60072-4124-7ec4-6cd3-fd70f4f6b10a@wedev4u.fr>
- <1490927207.7262.7.camel@mhfsdcap03>
+From: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v13 00/12] MT2701 DRM support
+Date: Fri, 31 Mar 2017 19:30:27 +0800
+Message-ID: <1490959839-39816-1-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1490927207.7262.7.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Guochun Mao <guochun.mao@mediatek.com>, Marek Vasut <marek.vasut@gmail.com>
-Cc: Boris Brezillon <boris.brezillon@free-electrons.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Richard Weinberger <richard@nod.at>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mtd@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Cyrille Pitchen <cyrille.pitchen@atmel.com>, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Le 31/03/2017 à 04:26, Guochun Mao a écrit :
-> Hi Cyrille, Marek,
-> 
-> Thanks for your suggestions.
-> 
-> On Thu, 2017-03-30 at 19:40 +0200, Cyrille Pitchen wrote:
->> Hi Guochun,
->>
->> Le 30/03/2017 à 10:23, Guochun Mao a écrit :
->>> when nor's size larger than 16MByte, nor and controller should
->>> enter 4Byte mode simultaneously.
->>>
->>> Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
->>> ---
->>>  drivers/mtd/spi-nor/mtk-quadspi.c |    7 +++++++
->>>  1 file changed, 7 insertions(+)
->>>
->>> diff --git a/drivers/mtd/spi-nor/mtk-quadspi.c b/drivers/mtd/spi-nor/mtk-quadspi.c
->>> index e661877..05cd8a8 100644
->>> --- a/drivers/mtd/spi-nor/mtk-quadspi.c
->>> +++ b/drivers/mtd/spi-nor/mtk-quadspi.c
->>> @@ -369,6 +369,13 @@ static int mt8173_nor_write_reg(struct spi_nor *nor, u8 opcode, u8 *buf,
->>>  		/* We only handle 1 byte */
->>>  		ret = mt8173_nor_wr_sr(mt8173_nor, *buf);
->>>  		break;
->>> +	case SPINOR_OP_EN4B:
->>> +		/* Set nor controller to 4-byte address mode,
->>> +		 * and simultaneously set nor flash.
->>> +		 * This case should cooperate with default operation.
->>> +		 */
->>> +		writeb(readb(mt8173_nor->base + MTK_NOR_DUAL_REG) | 0x10,
->>> +				mt8173_nor->base + MTK_NOR_DUAL_REG);
->>
->> This is not good: you should check in both mt8173_nor_read() and
->> mt8173_nor_write() whether nor->addr_width is either 3 or 4.
->>
->> from include/linux/mtd/spi-nor.h:
->>  * @addr_width:		number of address bytes
->>
->> Besides SPI commands using an op code from 4-byte address instruction
->> set always carry a 4-byte address. They can be used directly, without
->> sending the SPINOR_OP_EN4B before. So you cannot assume that addresses
->> will be 4-byte long only if your SPI controller driver has seen a
->> SPINOR_OP_EN4B command before. This assumption is wrong.
-> Nor->addr_width is assigned in spi_nor_scan in spi-nor.c, and it's not
-> modified in later process.
-> Does it means that we will not switch nor between 3Byte address and
-> 4Byte?
-> So, is it better to check nor->addr_width when do nor initialization?
->
+This is MT2701 DRM support PATCH v13, based on 4.11-rc1.
+We add DSI interrupt control, transfer function for MIPI DSI panel support.
+Most codes are the same, except some register changed.
 
-Currently yes, nor->addr_width, nor->read_opcode, nor->read_dummy, and
-nor->program_opcode are set once for all in spi_nor_scan().
+For example:
+ - DISP_OVL address offset changed, color format definition changed.
+ - DISP_RDMA fifo size changed.
+ - DISP_COLOR offset changed.
+ - MIPI_TX setting changed.
 
-However, nor->read() is likely to be called soon from spi_nor_scan()
-with values of nor->addr_width, nor->read_opcode and nor->read_dummy
-different from those selected when exiting spi_nor_scan().
+We add a new component DDP_COMPONENT_BLS, and the connections are updated.
+OVL -> RDMA -> COLOR -> BLS -> DSI
+RDMA -> DPI
+And we have shadow register support in MT2701.
 
-So nor->read() / mt8173_nor_read should check nor->addr_width,
-nor->read_opcode and nor->read_dummy at each call.
+Changes since v12:
+- Fix DSI enable flow we changed at v12
 
-More precisely, I plan to use nor->read() from spi_nor_scan() to read
-SFDP (Serial Flash Discoverable Parameters) data.
+Changes since v11:
+- Update mtk_dsi_poweron() and mtk_output_dsi_enable() to symmetric flow
 
-Whatever op code, numbers of address bytes and dummy cycles used for
-(Fast) Read commands, the Read SFDP command uses fixed settings
-standardized for all manufacturers and all memory parts:
-- op code: 5Ah
-- number of bytes for the address: 3 (even for memory > 128Mbits)
-- number of dummy clock cycles: 8 clocks
+Changes since v10:
+- Add binding descriptions for newly added bindings
+- Remove color data pointer from generic mtk_ddp_comp
+- Remove "drm/mediatek: add mipi_tx data rate check" from the patch series
+- Remove "drm/mediatek: add dsi ulp mode control" from the patch series
+- Update descriptions for "drm/mediatek: add non-continuous clock mode and EOT packet control"
+- Fix DSI disable flow
 
-https://patchwork.ozlabs.org/patch/742380/
+Changes since v9:
+- Split DSI patches into smaller parts
+- Use a real linux errno for return value
+- Add error handling in mtk_output_dsi_enable()
+- Remove unused changes and redundant delays
+- Add helpers and macros for configuration
+- Combine "drm/mediatek: rename macros, add chip prefix" and "drm/mediatek: add *driver_data for different hardware setting"
 
-Please have a look at the spi_nor_read_sfdp().
+Changes since v8:
+- enable 3 DSI interrupts only
+- move mtk_dsi_wait_for_irq_done() to the patch of irq control
+- use the name BLS in DRM driver part
+- move BLS declaration to a separate patch
+- update mtk_dsi_switch_to_cmd_mode()
+- update mtk_output_dsi_enable() and mtk_output_dsi_disable()
 
-spi_nor_read_sfdp() is likely to be called from and only from
-spi_nor_scan().
+Changes since v7:
+- Remove redundant codes
+- Move the definition of DDP_COMPONENT_BLS to patch of "drm/mediatek: update display module connections"
+- Move _dsi_irq_wait_queue into platform driver data
+- Move mtk_dsi_irq_data_clear() to patch of "drm/mediatek: add dsi interrupt control"
+- Add more descriptions in the commit messages
 
-Best regards,
+Changes since v6:
+- Change data type of irq_data to u32
+- Rewrite mtk_dsi_host_transfer() for simplify
+- Move some MIPI_TX config to patch of "drm/mediatek: add *driver_data for different hardware settings".
+- Remove device tree from this patch series
 
-Cyrille
+Changes since v5:
+- Remove DPI device tree and compatible string
+- Use one wait queue to handle interrupt status
+- Update the interrupt check flow and DSI_INT_ALL_BITS
+- Use same function for host read/write command
+- various fixes
 
->>
->> SPI controller driver should never check SPINOR_OP_* op codes like this.
-> I agree that SPI controller driver should not check SPINOR_OP_* op codes
-> like what I do.
-> I will correct it next version.
-> 
-> Best Regards,
-> Guochun
->>
->> Then, testing SPINOR_OP_RDSR from mt8173_nor_read_reg() or
->> SPINOR_OP_WRSR from mt8173_nor_write_reg() is not a good practice too:
->> op codes may change depending on the memory manufacturer. So testing op
->> code values like you do can work with some memories but maybe not all.
->>
->> Finally, don't use 0x10, please define a macro instead.
->>
->> Best regards,
->>
->> Cyrille
->>
->>>  	default:
->>>  		ret = mt8173_nor_do_tx_rx(mt8173_nor, opcode, buf, len, NULL, 0);
->>>  		if (ret)
->>>
->>
-> 
-> 
-> 
+Changes since v4:
+- Add messages when timeout in mtk_disp_mutex_acquire()
+- Add descriptions for DISP_REG_MUTEX registers
+- Move connection settings for display modules to a separate patch
+- Remove 'mt2701-disp-wdma' because it is unused
+- Move cleaning up and renaming to a separate patch
+- Use wait_event_interruptible_timeout() to replace polling
+- Remove irq_num from mtk_dsi structure
+- Remove redundant and debug codes
+
+Changes since v3:
+- Add DSI support for MIPI DSI panels
+- Update BLS binding to PWM nodes
+- Remove ufoe device nodes
+- Remove redundant parentheses
+- Remove global variable initialization
+
+Changes since v2:
+- Rename mtk_ddp_mux_sel to mtk_ddp_sout_sel
+- Update mt2701_mtk_ddp_ext components
+- Changed to prefix naming
+- Reorder the patch series
+- Use of_device_get_match_data() to get driver private data
+- Use iopoll macros to implement mtk_disp_mutex_acquire()
+- Removed empty device tree nodes
+
+Changes since v1:
+- Removed BLS bindings and codes, which belong to pwm driver
+- Moved mtk_disp_mutex_acquire() just before mtk_crtc_ddp_config()
+- Split patch into smaller parts
+- Added const keyword to constant structure
+- Removed codes for special memory align
+
+Thanks,
+yt.shen
+
+YT Shen (10):
+  dt-bindings: display: mediatek: update supported chips
+  drm/mediatek: add helpers for coverting from the generic components
+  drm/mediatek: add *driver_data for different hardware settings
+  drm/mediatek: add shadow register support
+  drm/mediatek: add BLS component
+  drm/mediatek: update display module connections
+  drm/mediatek: cleaning up and refine
+  drm/mediatek: add non-continuous clock mode and EOT packet control
+  drm/mediatek: update DSI sub driver flow for sending commands to panel
+  drm/mediatek: add support for Mediatek SoC MT2701
+
+shaoming chen (2):
+  drm/mediatek: add dsi interrupt control
+  drm/mediatek: add dsi transfer function
+
+ .../bindings/display/mediatek/mediatek,disp.txt    |   2 +
+ .../bindings/display/mediatek/mediatek,dsi.txt     |   2 +
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c            |  64 ++-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c           |  39 +-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c            |  75 +--
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c             | 138 +++--
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.h             |   2 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c        |  69 ++-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h        |   2 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  54 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h             |   9 +
+ drivers/gpu/drm/mediatek/mtk_dsi.c                 | 572 ++++++++++++++++-----
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.c             |  38 +-
+ 13 files changed, 828 insertions(+), 238 deletions(-)
+
+-- 
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
