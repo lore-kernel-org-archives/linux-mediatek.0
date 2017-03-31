@@ -1,310 +1,129 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v5 3/9] phy: phy-mt65xx-usb3: split SuperSpeed port into two
- ones
-Date: Fri, 31 Mar 2017 15:35:29 +0800
-Message-ID: <1490945735-9531-3-git-send-email-chunfeng.yun@mediatek.com>
-References: <1490945735-9531-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>
+Subject: Re: [PATCH V1 1/1] mtd: mtk-nor: set controller to 4B mode with large
+ capacity flash
+Date: Fri, 31 Mar 2017 10:56:03 +0200
+Message-ID: <873a3dac-7d3a-0723-4c7d-c786d3398278@wedev4u.fr>
+References: <1490862222-723-1-git-send-email-guochun.mao@mediatek.com>
+ <1490862222-723-2-git-send-email-guochun.mao@mediatek.com>
+ <24d60072-4124-7ec4-6cd3-fd70f4f6b10a@wedev4u.fr>
+ <1490927207.7262.7.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1490945735-9531-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1490927207.7262.7.camel@mhfsdcap03>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Guochun Mao <guochun.mao@mediatek.com>, Marek Vasut <marek.vasut@gmail.com>
+Cc: Boris Brezillon <boris.brezillon@free-electrons.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Richard Weinberger <richard@nod.at>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mtd@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Cyrille Pitchen <cyrille.pitchen@atmel.com>, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Currently usb3 port in fact includes two sub-ports, but it is not
-flexible for some cases, such as following one:
-    usb3 port0 includes u2port0 and u3port0;
-    usb2 port0 includes u2port1;
-If wants to support only HS, we can use u2port0 or u2port1, when
-select u2port0, u3port0 is not needed;
-If wants to support SS, we can compound u2port0 and u3port0,
-or u2port1 and u3port0, if select latter one, u2port0 is not needed.
+Le 31/03/2017 à 04:26, Guochun Mao a écrit :
+> Hi Cyrille, Marek,
+> 
+> Thanks for your suggestions.
+> 
+> On Thu, 2017-03-30 at 19:40 +0200, Cyrille Pitchen wrote:
+>> Hi Guochun,
+>>
+>> Le 30/03/2017 à 10:23, Guochun Mao a écrit :
+>>> when nor's size larger than 16MByte, nor and controller should
+>>> enter 4Byte mode simultaneously.
+>>>
+>>> Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
+>>> ---
+>>>  drivers/mtd/spi-nor/mtk-quadspi.c |    7 +++++++
+>>>  1 file changed, 7 insertions(+)
+>>>
+>>> diff --git a/drivers/mtd/spi-nor/mtk-quadspi.c b/drivers/mtd/spi-nor/mtk-quadspi.c
+>>> index e661877..05cd8a8 100644
+>>> --- a/drivers/mtd/spi-nor/mtk-quadspi.c
+>>> +++ b/drivers/mtd/spi-nor/mtk-quadspi.c
+>>> @@ -369,6 +369,13 @@ static int mt8173_nor_write_reg(struct spi_nor *nor, u8 opcode, u8 *buf,
+>>>  		/* We only handle 1 byte */
+>>>  		ret = mt8173_nor_wr_sr(mt8173_nor, *buf);
+>>>  		break;
+>>> +	case SPINOR_OP_EN4B:
+>>> +		/* Set nor controller to 4-byte address mode,
+>>> +		 * and simultaneously set nor flash.
+>>> +		 * This case should cooperate with default operation.
+>>> +		 */
+>>> +		writeb(readb(mt8173_nor->base + MTK_NOR_DUAL_REG) | 0x10,
+>>> +				mt8173_nor->base + MTK_NOR_DUAL_REG);
+>>
+>> This is not good: you should check in both mt8173_nor_read() and
+>> mt8173_nor_write() whether nor->addr_width is either 3 or 4.
+>>
+>> from include/linux/mtd/spi-nor.h:
+>>  * @addr_width:		number of address bytes
+>>
+>> Besides SPI commands using an op code from 4-byte address instruction
+>> set always carry a 4-byte address. They can be used directly, without
+>> sending the SPINOR_OP_EN4B before. So you cannot assume that addresses
+>> will be 4-byte long only if your SPI controller driver has seen a
+>> SPINOR_OP_EN4B command before. This assumption is wrong.
+> Nor->addr_width is assigned in spi_nor_scan in spi-nor.c, and it's not
+> modified in later process.
+> Does it means that we will not switch nor between 3Byte address and
+> 4Byte?
+> So, is it better to check nor->addr_width when do nor initialization?
+>
 
-So it's more flexible to split usb3 port into two ones and also try
-best to save power by disabling unnecessary ports.
+Currently yes, nor->addr_width, nor->read_opcode, nor->read_dummy, and
+nor->program_opcode are set once for all in spi_nor_scan().
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/phy/phy-mt65xx-usb3.c |  149 +++++++++++++++++++++--------------------
- 1 file changed, 75 insertions(+), 74 deletions(-)
+However, nor->read() is likely to be called soon from spi_nor_scan()
+with values of nor->addr_width, nor->read_opcode and nor->read_dummy
+different from those selected when exiting spi_nor_scan().
 
-diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
-index 4fd47d0..7fff482 100644
---- a/drivers/phy/phy-mt65xx-usb3.c
-+++ b/drivers/phy/phy-mt65xx-usb3.c
-@@ -30,11 +30,11 @@
- #define SSUSB_SIFSLV_SPLLC		0x0000
- #define SSUSB_SIFSLV_U2FREQ		0x0100
- 
--/* offsets of sub-segment in each port registers */
-+/* offsets of banks in each u2phy registers */
- #define SSUSB_SIFSLV_U2PHY_COM_BASE	0x0000
--#define SSUSB_SIFSLV_U3PHYD_BASE	0x0100
--#define SSUSB_USB30_PHYA_SIV_B_BASE	0x0300
--#define SSUSB_SIFSLV_U3PHYA_DA_BASE	0x0400
-+/* offsets of banks in each u3phy registers */
-+#define SSUSB_SIFSLV_U3PHYD_BASE	0x0000
-+#define SSUSB_SIFSLV_U3PHYA_BASE	0x0200
- 
- #define U3P_USBPHYACR0		(SSUSB_SIFSLV_U2PHY_COM_BASE + 0x0000)
- #define PA0_RG_U2PLL_FORCE_ON		BIT(15)
-@@ -49,7 +49,6 @@
- #define PA5_RG_U2_HS_100U_U3_EN	BIT(11)
- 
- #define U3P_USBPHYACR6		(SSUSB_SIFSLV_U2PHY_COM_BASE + 0x0018)
--#define PA6_RG_U2_ISO_EN		BIT(31)
- #define PA6_RG_U2_BC11_SW_EN		BIT(23)
- #define PA6_RG_U2_OTG_VBUSCMP_EN	BIT(20)
- #define PA6_RG_U2_SQTH		GENMASK(3, 0)
-@@ -91,18 +90,18 @@
- #define P2C_RG_SESSEND			BIT(4)
- #define P2C_RG_AVALID			BIT(2)
- 
--#define U3P_U3_PHYA_REG0	(SSUSB_USB30_PHYA_SIV_B_BASE + 0x0000)
-+#define U3P_U3_PHYA_REG0	(SSUSB_SIFSLV_U3PHYA_BASE + 0x0000)
- #define P3A_RG_U3_VUSB10_ON		BIT(5)
- 
--#define U3P_U3_PHYA_REG6	(SSUSB_USB30_PHYA_SIV_B_BASE + 0x0018)
-+#define U3P_U3_PHYA_REG6	(SSUSB_SIFSLV_U3PHYA_BASE + 0x0018)
- #define P3A_RG_TX_EIDLE_CM		GENMASK(31, 28)
- #define P3A_RG_TX_EIDLE_CM_VAL(x)	((0xf & (x)) << 28)
- 
--#define U3P_U3_PHYA_REG9	(SSUSB_USB30_PHYA_SIV_B_BASE + 0x0024)
-+#define U3P_U3_PHYA_REG9	(SSUSB_SIFSLV_U3PHYA_BASE + 0x0024)
- #define P3A_RG_RX_DAC_MUX		GENMASK(5, 1)
- #define P3A_RG_RX_DAC_MUX_VAL(x)	((0x1f & (x)) << 1)
- 
--#define U3P_U3PHYA_DA_REG0	(SSUSB_SIFSLV_U3PHYA_DA_BASE + 0x0000)
-+#define U3P_U3PHYA_DA_REG0	(SSUSB_SIFSLV_U3PHYA_BASE + 0x0100)
- #define P3A_RG_XTAL_EXT_EN_U3		GENMASK(11, 10)
- #define P3A_RG_XTAL_EXT_EN_U3_VAL(x)	((0x3 & (x)) << 10)
- 
-@@ -160,7 +159,7 @@ struct mt65xx_phy_instance {
- 
- struct mt65xx_u3phy {
- 	struct device *dev;
--	void __iomem *sif_base;	/* include sif2, but exclude port's */
-+	void __iomem *sif_base;	/* only shared sif */
- 	struct clk *u3phya_ref;	/* reference clock of usb3 anolog phy */
- 	const struct mt65xx_phy_pdata *pdata;
- 	struct mt65xx_phy_instance **phys;
-@@ -190,7 +189,7 @@ static void hs_slew_rate_calibrate(struct mt65xx_u3phy *u3phy,
- 	tmp = readl(sif_base + U3P_U2FREQ_FMCR0);
- 	tmp &= ~(P2F_RG_CYCLECNT | P2F_RG_MONCLK_SEL);
- 	tmp |= P2F_RG_CYCLECNT_VAL(U3P_FM_DET_CYCLE_CNT);
--	tmp |= P2F_RG_MONCLK_SEL_VAL(instance->index);
-+	tmp |= P2F_RG_MONCLK_SEL_VAL(instance->index >> 1);
- 	writel(tmp, sif_base + U3P_U2FREQ_FMCR0);
- 
- 	/* enable frequency meter */
-@@ -238,6 +237,56 @@ static void hs_slew_rate_calibrate(struct mt65xx_u3phy *u3phy,
- 	writel(tmp, instance->port_base + U3P_USBPHYACR5);
- }
- 
-+static void u3_phy_instance_init(struct mt65xx_u3phy *u3phy,
-+	struct mt65xx_phy_instance *instance)
-+{
-+	void __iomem *port_base = instance->port_base;
-+	u32 tmp;
-+
-+	/* gating PCIe Analog XTAL clock */
-+	tmp = readl(u3phy->sif_base + U3P_XTALCTL3);
-+	tmp |= XC3_RG_U3_XTAL_RX_PWD | XC3_RG_U3_FRC_XTAL_RX_PWD;
-+	writel(tmp, u3phy->sif_base + U3P_XTALCTL3);
-+
-+	/* gating XSQ */
-+	tmp = readl(port_base + U3P_U3PHYA_DA_REG0);
-+	tmp &= ~P3A_RG_XTAL_EXT_EN_U3;
-+	tmp |= P3A_RG_XTAL_EXT_EN_U3_VAL(2);
-+	writel(tmp, port_base + U3P_U3PHYA_DA_REG0);
-+
-+	tmp = readl(port_base + U3P_U3_PHYA_REG9);
-+	tmp &= ~P3A_RG_RX_DAC_MUX;
-+	tmp |= P3A_RG_RX_DAC_MUX_VAL(4);
-+	writel(tmp, port_base + U3P_U3_PHYA_REG9);
-+
-+	tmp = readl(port_base + U3P_U3_PHYA_REG6);
-+	tmp &= ~P3A_RG_TX_EIDLE_CM;
-+	tmp |= P3A_RG_TX_EIDLE_CM_VAL(0xe);
-+	writel(tmp, port_base + U3P_U3_PHYA_REG6);
-+
-+	tmp = readl(port_base + U3P_PHYD_CDR1);
-+	tmp &= ~(P3D_RG_CDR_BIR_LTD0 | P3D_RG_CDR_BIR_LTD1);
-+	tmp |= P3D_RG_CDR_BIR_LTD0_VAL(0xc) | P3D_RG_CDR_BIR_LTD1_VAL(0x3);
-+	writel(tmp, port_base + U3P_PHYD_CDR1);
-+
-+	tmp = readl(port_base + U3P_U3_PHYD_LFPS1);
-+	tmp &= ~P3D_RG_FWAKE_TH;
-+	tmp |= P3D_RG_FWAKE_TH_VAL(0x34);
-+	writel(tmp, port_base + U3P_U3_PHYD_LFPS1);
-+
-+	tmp = readl(port_base + U3P_U3_PHYD_RXDET1);
-+	tmp &= ~P3D_RG_RXDET_STB2_SET;
-+	tmp |= P3D_RG_RXDET_STB2_SET_VAL(0x10);
-+	writel(tmp, port_base + U3P_U3_PHYD_RXDET1);
-+
-+	tmp = readl(port_base + U3P_U3_PHYD_RXDET2);
-+	tmp &= ~P3D_RG_RXDET_STB2_SET_P3;
-+	tmp |= P3D_RG_RXDET_STB2_SET_P3_VAL(0x10);
-+	writel(tmp, port_base + U3P_U3_PHYD_RXDET2);
-+
-+	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, instance->index);
-+}
-+
- static void phy_instance_init(struct mt65xx_u3phy *u3phy,
- 	struct mt65xx_phy_instance *instance)
- {
-@@ -287,41 +336,6 @@ static void phy_instance_init(struct mt65xx_u3phy *u3phy,
- 	tmp |= PA6_RG_U2_SQTH_VAL(2);
- 	writel(tmp, port_base + U3P_USBPHYACR6);
- 
--	tmp = readl(port_base + U3P_U3PHYA_DA_REG0);
--	tmp &= ~P3A_RG_XTAL_EXT_EN_U3;
--	tmp |= P3A_RG_XTAL_EXT_EN_U3_VAL(2);
--	writel(tmp, port_base + U3P_U3PHYA_DA_REG0);
--
--	tmp = readl(port_base + U3P_U3_PHYA_REG9);
--	tmp &= ~P3A_RG_RX_DAC_MUX;
--	tmp |= P3A_RG_RX_DAC_MUX_VAL(4);
--	writel(tmp, port_base + U3P_U3_PHYA_REG9);
--
--	tmp = readl(port_base + U3P_U3_PHYA_REG6);
--	tmp &= ~P3A_RG_TX_EIDLE_CM;
--	tmp |= P3A_RG_TX_EIDLE_CM_VAL(0xe);
--	writel(tmp, port_base + U3P_U3_PHYA_REG6);
--
--	tmp = readl(port_base + U3P_PHYD_CDR1);
--	tmp &= ~(P3D_RG_CDR_BIR_LTD0 | P3D_RG_CDR_BIR_LTD1);
--	tmp |= P3D_RG_CDR_BIR_LTD0_VAL(0xc) | P3D_RG_CDR_BIR_LTD1_VAL(0x3);
--	writel(tmp, port_base + U3P_PHYD_CDR1);
--
--	tmp = readl(port_base + U3P_U3_PHYD_LFPS1);
--	tmp &= ~P3D_RG_FWAKE_TH;
--	tmp |= P3D_RG_FWAKE_TH_VAL(0x34);
--	writel(tmp, port_base + U3P_U3_PHYD_LFPS1);
--
--	tmp = readl(port_base + U3P_U3_PHYD_RXDET1);
--	tmp &= ~P3D_RG_RXDET_STB2_SET;
--	tmp |= P3D_RG_RXDET_STB2_SET_VAL(0x10);
--	writel(tmp, port_base + U3P_U3_PHYD_RXDET1);
--
--	tmp = readl(port_base + U3P_U3_PHYD_RXDET2);
--	tmp &= ~P3D_RG_RXDET_STB2_SET_P3;
--	tmp |= P3D_RG_RXDET_STB2_SET_P3_VAL(0x10);
--	writel(tmp, port_base + U3P_U3_PHYD_RXDET2);
--
- 	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, index);
- }
- 
-@@ -332,13 +346,6 @@ static void phy_instance_power_on(struct mt65xx_u3phy *u3phy,
- 	u32 index = instance->index;
- 	u32 tmp;
- 
--	if (!index) {
--		/* Set RG_SSUSB_VUSB10_ON as 1 after VUSB10 ready */
--		tmp = readl(port_base + U3P_U3_PHYA_REG0);
--		tmp |= P3A_RG_U3_VUSB10_ON;
--		writel(tmp, port_base + U3P_U3_PHYA_REG0);
--	}
--
- 	/* (force_suspendm=0) (let suspendm=1, enable usb 480MHz pll) */
- 	tmp = readl(port_base + U3P_U2PHYDTM0);
- 	tmp &= ~(P2C_FORCE_SUSPENDM | P2C_RG_XCVRSEL);
-@@ -351,10 +358,6 @@ static void phy_instance_power_on(struct mt65xx_u3phy *u3phy,
- 	writel(tmp, port_base + U3P_USBPHYACR6);
- 
- 	if (!index) {
--		tmp = readl(u3phy->sif_base + U3P_XTALCTL3);
--		tmp |= XC3_RG_U3_XTAL_RX_PWD | XC3_RG_U3_FRC_XTAL_RX_PWD;
--		writel(tmp, u3phy->sif_base + U3P_XTALCTL3);
--
- 		/* switch 100uA current to SSUSB */
- 		tmp = readl(port_base + U3P_USBPHYACR5);
- 		tmp |= PA5_RG_U2_HS_100U_U3_EN;
-@@ -366,12 +369,6 @@ static void phy_instance_power_on(struct mt65xx_u3phy *u3phy,
- 	tmp &= ~P2C_RG_SESSEND;
- 	writel(tmp, port_base + U3P_U2PHYDTM1);
- 
--	/* USB 2.0 slew rate calibration */
--	tmp = readl(port_base + U3P_USBPHYACR5);
--	tmp &= ~PA5_RG_U2_HSTX_SRCTRL;
--	tmp |= PA5_RG_U2_HSTX_SRCTRL_VAL(4);
--	writel(tmp, port_base + U3P_USBPHYACR5);
--
- 	if (u3phy->pdata->avoid_rx_sen_degradation && index) {
- 		tmp = readl(port_base + U3D_U2PHYDCR0);
- 		tmp |= P2C_RG_SIF_U2PLL_FORCE_ON;
-@@ -419,12 +416,6 @@ static void phy_instance_power_off(struct mt65xx_u3phy *u3phy,
- 	tmp |= P2C_RG_SESSEND;
- 	writel(tmp, port_base + U3P_U2PHYDTM1);
- 
--	if (!index) {
--		tmp = readl(port_base + U3P_U3_PHYA_REG0);
--		tmp &= ~P3A_RG_U3_VUSB10_ON;
--		writel(tmp, port_base + U3P_U3_PHYA_REG0);
--	}
--
- 	if (u3phy->pdata->avoid_rx_sen_degradation && index) {
- 		tmp = readl(port_base + U3D_U2PHYDCR0);
- 		tmp &= ~P2C_RG_SIF_U2PLL_FORCE_ON;
-@@ -464,7 +455,11 @@ static int mt65xx_phy_init(struct phy *phy)
- 		return ret;
- 	}
- 
--	phy_instance_init(u3phy, instance);
-+	if (instance->type == PHY_TYPE_USB2)
-+		phy_instance_init(u3phy, instance);
-+	else
-+		u3_phy_instance_init(u3phy, instance);
-+
- 	return 0;
- }
- 
-@@ -473,8 +468,10 @@ static int mt65xx_phy_power_on(struct phy *phy)
- 	struct mt65xx_phy_instance *instance = phy_get_drvdata(phy);
- 	struct mt65xx_u3phy *u3phy = dev_get_drvdata(phy->dev.parent);
- 
--	phy_instance_power_on(u3phy, instance);
--	hs_slew_rate_calibrate(u3phy, instance);
-+	if (instance->type == PHY_TYPE_USB2) {
-+		phy_instance_power_on(u3phy, instance);
-+		hs_slew_rate_calibrate(u3phy, instance);
-+	}
- 	return 0;
- }
- 
-@@ -483,7 +480,9 @@ static int mt65xx_phy_power_off(struct phy *phy)
- 	struct mt65xx_phy_instance *instance = phy_get_drvdata(phy);
- 	struct mt65xx_u3phy *u3phy = dev_get_drvdata(phy->dev.parent);
- 
--	phy_instance_power_off(u3phy, instance);
-+	if (instance->type == PHY_TYPE_USB2)
-+		phy_instance_power_off(u3phy, instance);
-+
- 	return 0;
- }
- 
-@@ -492,7 +491,9 @@ static int mt65xx_phy_exit(struct phy *phy)
- 	struct mt65xx_phy_instance *instance = phy_get_drvdata(phy);
- 	struct mt65xx_u3phy *u3phy = dev_get_drvdata(phy->dev.parent);
- 
--	phy_instance_exit(u3phy, instance);
-+	if (instance->type == PHY_TYPE_USB2)
-+		phy_instance_exit(u3phy, instance);
-+
- 	clk_disable_unprepare(u3phy->u3phya_ref);
- 	return 0;
- }
--- 
-1.7.9.5
+So nor->read() / mt8173_nor_read should check nor->addr_width,
+nor->read_opcode and nor->read_dummy at each call.
+
+More precisely, I plan to use nor->read() from spi_nor_scan() to read
+SFDP (Serial Flash Discoverable Parameters) data.
+
+Whatever op code, numbers of address bytes and dummy cycles used for
+(Fast) Read commands, the Read SFDP command uses fixed settings
+standardized for all manufacturers and all memory parts:
+- op code: 5Ah
+- number of bytes for the address: 3 (even for memory > 128Mbits)
+- number of dummy clock cycles: 8 clocks
+
+https://patchwork.ozlabs.org/patch/742380/
+
+Please have a look at the spi_nor_read_sfdp().
+
+spi_nor_read_sfdp() is likely to be called from and only from
+spi_nor_scan().
+
+Best regards,
+
+Cyrille
+
+>>
+>> SPI controller driver should never check SPINOR_OP_* op codes like this.
+> I agree that SPI controller driver should not check SPINOR_OP_* op codes
+> like what I do.
+> I will correct it next version.
+> 
+> Best Regards,
+> Guochun
+>>
+>> Then, testing SPINOR_OP_RDSR from mt8173_nor_read_reg() or
+>> SPINOR_OP_WRSR from mt8173_nor_write_reg() is not a good practice too:
+>> op codes may change depending on the memory manufacturer. So testing op
+>> code values like you do can work with some memories but maybe not all.
+>>
+>> Finally, don't use 0x10, please define a macro instead.
+>>
+>> Best regards,
+>>
+>> Cyrille
+>>
+>>>  	default:
+>>>  		ret = mt8173_nor_do_tx_rx(mt8173_nor, opcode, buf, len, NULL, 0);
+>>>  		if (ret)
+>>>
+>>
+> 
+> 
+> 
