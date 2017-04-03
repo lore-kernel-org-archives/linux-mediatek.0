@@ -1,73 +1,60 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH] [media] vcodec: mediatek: Remove double parentheses
-Date: Mon, 3 Apr 2017 10:35:34 +0200
-Message-ID: <b515fcac-fc62-484b-ddb5-2cf7b1ad8364@xs4all.nl>
-References: <20170317210133.9662-1-mka@chromium.org>
- <20170331235850.GB2130@google.com>
+From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: [bug report] mmc: mediatek: Use data tune for CMD line tune
+Date: Mon, 3 Apr 2017 17:34:42 +0300
+Message-ID: <20170403143442.GA23053@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170331235850.GB2130@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Kaehlcke <mka@chromium.org>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, PoChun Lin <pochun.lin@mediatek.com>, Julia Lawall <Julia.Lawall@lip6.fr>, Arnd Bergmann <arnd@arndb.de>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 04/01/2017 01:58 AM, Matthias Kaehlcke wrote:
-> El Fri, Mar 17, 2017 at 02:01:33PM -0700 Matthias Kaehlcke ha dit:
-> 
->> The extra pairs of parentheses are not needed and cause clang
->> warnings like this:
->>
->> drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:158:32: error: equality comparison with extraneous parentheses [-Werror,-Wparentheses-equality]
->>                 if ((inst->work_bufs[i].size == 0))
->>                      ~~~~~~~~~~~~~~~~~~~~~~~~^~~~
->> drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:158:32: note: remove extraneous parentheses around the comparison to silence this warning
->>                 if ((inst->work_bufs[i].size == 0))
->>                     ~                        ^   ~
->> drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:158:32: note: use '=' to turn this equality comparison into an assignment
->>                 if ((inst->work_bufs[i].size == 0))
->>                                              ^~
->>                                              =
->>
->> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
->> ---
->>  drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
->> index 544f57186243..129cc74b4fe4 100644
->> --- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
->> +++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
->> @@ -155,7 +155,7 @@ static void vp8_enc_free_work_buf(struct venc_vp8_inst *inst)
->>  
->>  	/* Buffers need to be freed by AP. */
->>  	for (i = 0; i < VENC_VP8_VPU_WORK_BUF_MAX; i++) {
->> -		if ((inst->work_bufs[i].size == 0))
->> +		if (inst->work_bufs[i].size == 0)
->>  			continue;
->>  		mtk_vcodec_mem_free(inst->ctx, &inst->work_bufs[i]);
->>  	}
->> @@ -172,7 +172,7 @@ static int vp8_enc_alloc_work_buf(struct venc_vp8_inst *inst)
->>  	mtk_vcodec_debug_enter(inst);
->>  
->>  	for (i = 0; i < VENC_VP8_VPU_WORK_BUF_MAX; i++) {
->> -		if ((wb[i].size == 0))
->> +		if (wb[i].size == 0)
->>  			continue;
->>  		/*
->>  		 * This 'wb' structure is set by VPU side and shared to AP for
-> 
-> Ping? Any feedback on this patch?
-> 
-> Cheers
-> 
-> Matthias
-> 
+[  You didn't really add this but since you touched it maybe that means
+   you know how to silence this static checker warning?  - dan ]
 
-It's part of a pull request that is waiting to be merged. Just be patient.
+Hello yong mao,
 
-Regards,
+The patch a768529d73a1: "mmc: mediatek: Use data tune for CMD line
+tune" from Mar 15, 2017, leads to the following static checker
+warning:
 
-	Hans
+	drivers/mmc/host/mtk-sd.c:1466 hs400_tune_response()
+	error: uninitialized symbol 'cmd_err'.
+
+drivers/mmc/host/mtk-sd.c
+  1456          for (i = 0 ; i < PAD_DELAY_MAX; i++) {
+  1457                  sdr_set_field(host->base + PAD_CMD_TUNE,
+  1458                                PAD_CMD_TUNE_RX_DLY3, i);
+  1459                  /*
+  1460                   * Using the same parameters, it may sometimes pass the test,
+  1461                   * but sometimes it may fail. To make sure the parameters are
+  1462                   * more stable, we test each set of parameters 3 times.
+  1463                   */
+  1464                  for (j = 0; j < 3; j++) {
+  1465                          mmc_send_tuning(mmc, opcode, &cmd_err);
+                                                              ^^^^^^^
+If kzalloc() fails then cmd_err isn't initialized.  We could probably
+check for errors here?
+
+  1466                          if (!cmd_err) {
+  1467                                  cmd_delay |= (1 << i);
+  1468                          } else {
+  1469                                  cmd_delay &= ~(1 << i);
+  1470                                  break;
+  1471                          }
+  1472                  }
+  1473          }
+
+regards,
+dan carpenter
