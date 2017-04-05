@@ -1,78 +1,64 @@
-From: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v1 1/1] mtd: mtk-nor: set controller's address width according to nor flash
-Date: Wed, 5 Apr 2017 16:37:42 +0800
-Message-ID: <1491381462-21893-2-git-send-email-guochun.mao@mediatek.com>
-References: <1491381462-21893-1-git-send-email-guochun.mao@mediatek.com>
+From: Chunhui Li <chunhui.li@mediatek.com>
+Subject: [PATCH] fs: seq_buf_alloc use vmalloc for high order allocations
+Date: Wed, 5 Apr 2017 09:29:04 +0800
+Message-ID: <20170405012904.1469-1-chunhui.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1491381462-21893-1-git-send-email-guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>
-Cc: David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Alexander Viro <viro@zeniv.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, "chunhui.li" <chunhui.li@mediatek.com>, linux-fsdevel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-When nor's size larger than 16MByte, nor's address width maybe
-set to 3 or 4, and controller should change address width according
-to nor's setting.
+From: "chunhui.li" <chunhui.li@mediatek.com>
 
-Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+For high order allocations, use vmalloc() to reduce physically
+contiguous memory consumption and avoid memory fragmentation issues
+
+Signed-off-by: chunhui.li <chunhui.li@mediatek.com>
 ---
- drivers/mtd/spi-nor/mtk-quadspi.c |   27 +++++++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
+ fs/seq_file.c | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/mtd/spi-nor/mtk-quadspi.c b/drivers/mtd/spi-nor/mtk-quadspi.c
-index e661877..b637770 100644
---- a/drivers/mtd/spi-nor/mtk-quadspi.c
-+++ b/drivers/mtd/spi-nor/mtk-quadspi.c
-@@ -104,6 +104,8 @@
- #define MTK_NOR_MAX_RX_TX_SHIFT		6
- /* can shift up to 56 bits (7 bytes) transfer by MTK_NOR_PRG_CMD */
- #define MTK_NOR_MAX_SHIFT		7
-+/* nor controller 4-byte address mode enable bit */
-+#define MTK_NOR_4B_ADDR_EN		BIT(4)
+diff --git a/fs/seq_file.c b/fs/seq_file.c
+index ca69fb9..4527e79 100644
+--- a/fs/seq_file.c
++++ b/fs/seq_file.c
+@@ -26,19 +26,17 @@ static void seq_set_overflow(struct seq_file *m)
+ static void *seq_buf_alloc(unsigned long size)
+ {
+ 	void *buf;
+-	gfp_t gfp = GFP_KERNEL;
  
- /* Helpers for accessing the program data / shift data registers */
- #define MTK_NOR_PRG_REG(n)		(MTK_NOR_PRGDATA0_REG + 4 * (n))
-@@ -230,10 +232,35 @@ static int mt8173_nor_write_buffer_disable(struct mt8173_nor *mt8173_nor)
- 				  10000);
+ 	/*
+-	 * For high order allocations, use __GFP_NORETRY to avoid oom-killing -
+-	 * it's better to fall back to vmalloc() than to kill things.  For small
+-	 * allocations, just use GFP_KERNEL which will oom kill, thus no need
+-	 * for vmalloc fallback.
+-	 */
++	 * For high order allocations, use vmalloc() to reduce physically
++	 * contiguous memory usage and avoid memory fragmentation issue.
++	 * For small allocations, just use GFP_KERNEL
++	 * which will oom kill, thus no need for vmalloc fallback.
++	 */
+ 	if (size > PAGE_SIZE)
+-		gfp |= __GFP_NORETRY | __GFP_NOWARN;
+-	buf = kmalloc(size, gfp);
+-	if (!buf && size > PAGE_SIZE)
+ 		buf = vmalloc(size);
++	else
++		buf = kmalloc(size, GFP_KERNEL);
+ 	return buf;
  }
  
-+static void mt8173_nor_set_addr_width(struct mt8173_nor *mt8173_nor)
-+{
-+	u8 val;
-+	struct spi_nor *nor = &mt8173_nor->nor;
-+
-+	val = readb(mt8173_nor->base + MTK_NOR_DUAL_REG);
-+
-+	switch (nor->addr_width) {
-+	case 3:
-+		val &= ~MTK_NOR_4B_ADDR_EN;
-+		break;
-+	case 4:
-+		val |= MTK_NOR_4B_ADDR_EN;
-+		break;
-+	default:
-+		dev_warn(mt8173_nor->dev, "Unexpected address width %u.\n",
-+			 nor->addr_width);
-+		break;
-+	}
-+
-+	writeb(val, mt8173_nor->base + MTK_NOR_DUAL_REG);
-+}
-+
- static void mt8173_nor_set_addr(struct mt8173_nor *mt8173_nor, u32 addr)
- {
- 	int i;
- 
-+	mt8173_nor_set_addr_width(mt8173_nor);
-+
- 	for (i = 0; i < 3; i++) {
- 		writeb(addr & 0xff, mt8173_nor->base + MTK_NOR_RADR0_REG + i * 4);
- 		addr >>= 8;
 -- 
-1.7.9.5
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+2.9.2
