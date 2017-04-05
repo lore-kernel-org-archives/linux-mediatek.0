@@ -1,44 +1,147 @@
-From: Kyle McMartin <kyle@infradead.org>
-Subject: Re: pull request: linux-firmware: Update Mediatek MT8173 VPU firmware
-Date: Tue, 4 Apr 2017 15:48:27 -0700
-Message-ID: <20170404224827.GK13400@bombadil.infradead.org>
-References: <1490686650-43882-1-git-send-email-andrew-ct.chen@mediatek.com>
+From: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH V1 1/1] mtd: mtk-nor: set controller to 4B mode with
+ large capacity flash
+Date: Wed, 5 Apr 2017 11:34:34 +0800
+Message-ID: <1491363274.7262.10.camel@mhfsdcap03>
+References: <1490862222-723-1-git-send-email-guochun.mao@mediatek.com>
+         <1490862222-723-2-git-send-email-guochun.mao@mediatek.com>
+         <24d60072-4124-7ec4-6cd3-fd70f4f6b10a@wedev4u.fr>
+         <1490927207.7262.7.camel@mhfsdcap03>
+         <873a3dac-7d3a-0723-4c7d-c786d3398278@wedev4u.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <1490686650-43882-1-git-send-email-andrew-ct.chen@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-Cc: eddie.huang@mediatek.com, srv_heupstream@mediatek.com, wuchengli@google.com, linux-firmware@kernel.org, linux-mediatek@lists.infradead.org, tiffany.lin@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <873a3dac-7d3a-0723-4c7d-c786d3398278-yU5RGvR974pGWvitb5QawA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Cyrille Pitchen <cyrille.pitchen-yU5RGvR974pGWvitb5QawA@public.gmane.org>
+Cc: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Mar 28, 2017 at 03:37:29PM +0800, Andrew-CT Chen wrote:
-> Hi linux-firmware maintainers,
+Hi Cyrille,
+
+Thank you for so detailed explanation.
+I'll check nor->addr_width in both mt8173_nor_read() and
+mt8173_nor_write().
+
+Best regards,
+Guochun
+
+On Fri, 2017-03-31 at 10:56 +0200, Cyrille Pitchen wrote:
+> Le 31/03/2017 à 04:26, Guochun Mao a écrit :
+> > Hi Cyrille, Marek,
+> > 
+> > Thanks for your suggestions.
+> > 
+> > On Thu, 2017-03-30 at 19:40 +0200, Cyrille Pitchen wrote:
+> >> Hi Guochun,
+> >>
+> >> Le 30/03/2017 à 10:23, Guochun Mao a écrit :
+> >>> when nor's size larger than 16MByte, nor and controller should
+> >>> enter 4Byte mode simultaneously.
+> >>>
+> >>> Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >>> ---
+> >>>  drivers/mtd/spi-nor/mtk-quadspi.c |    7 +++++++
+> >>>  1 file changed, 7 insertions(+)
+> >>>
+> >>> diff --git a/drivers/mtd/spi-nor/mtk-quadspi.c b/drivers/mtd/spi-nor/mtk-quadspi.c
+> >>> index e661877..05cd8a8 100644
+> >>> --- a/drivers/mtd/spi-nor/mtk-quadspi.c
+> >>> +++ b/drivers/mtd/spi-nor/mtk-quadspi.c
+> >>> @@ -369,6 +369,13 @@ static int mt8173_nor_write_reg(struct spi_nor *nor, u8 opcode, u8 *buf,
+> >>>  		/* We only handle 1 byte */
+> >>>  		ret = mt8173_nor_wr_sr(mt8173_nor, *buf);
+> >>>  		break;
+> >>> +	case SPINOR_OP_EN4B:
+> >>> +		/* Set nor controller to 4-byte address mode,
+> >>> +		 * and simultaneously set nor flash.
+> >>> +		 * This case should cooperate with default operation.
+> >>> +		 */
+> >>> +		writeb(readb(mt8173_nor->base + MTK_NOR_DUAL_REG) | 0x10,
+> >>> +				mt8173_nor->base + MTK_NOR_DUAL_REG);
+> >>
+> >> This is not good: you should check in both mt8173_nor_read() and
+> >> mt8173_nor_write() whether nor->addr_width is either 3 or 4.
+> >>
+> >> from include/linux/mtd/spi-nor.h:
+> >>  * @addr_width:		number of address bytes
+> >>
+> >> Besides SPI commands using an op code from 4-byte address instruction
+> >> set always carry a 4-byte address. They can be used directly, without
+> >> sending the SPINOR_OP_EN4B before. So you cannot assume that addresses
+> >> will be 4-byte long only if your SPI controller driver has seen a
+> >> SPINOR_OP_EN4B command before. This assumption is wrong.
+> > Nor->addr_width is assigned in spi_nor_scan in spi-nor.c, and it's not
+> > modified in later process.
+> > Does it means that we will not switch nor between 3Byte address and
+> > 4Byte?
+> > So, is it better to check nor->addr_width when do nor initialization?
+> >
 > 
-> The following changes since commit 44d8e8d4fdcdff56e9e21208d4b4aa7cd6962656:
+> Currently yes, nor->addr_width, nor->read_opcode, nor->read_dummy, and
+> nor->program_opcode are set once for all in spi_nor_scan().
 > 
->   Merge branch 'master' of https://github.com/Netronome/linux-firmware (2017-03-24 09:43:35 -0700)
+> However, nor->read() is likely to be called soon from spi_nor_scan()
+> with values of nor->addr_width, nor->read_opcode and nor->read_dummy
+> different from those selected when exiting spi_nor_scan().
 > 
-> are available in the git repository at:
+> So nor->read() / mt8173_nor_read should check nor->addr_width,
+> nor->read_opcode and nor->read_dummy at each call.
 > 
+> More precisely, I plan to use nor->read() from spi_nor_scan() to read
+> SFDP (Serial Flash Discoverable Parameters) data.
 > 
->   https://github.com/andrewct-chen/linux_fw_vpu_v1.0.4.git vp9_profile
+> Whatever op code, numbers of address bytes and dummy cycles used for
+> (Fast) Read commands, the Read SFDP command uses fixed settings
+> standardized for all manufacturers and all memory parts:
+> - op code: 5Ah
+> - number of bytes for the address: 3 (even for memory > 128Mbits)
+> - number of dummy clock cycles: 8 clocks
 > 
-> for you to fetch changes up to 936f3e98847e89f119b24e0fa50f7028d667c744:
+> https://patchwork.ozlabs.org/patch/742380/
 > 
->   mediatek: update MT8173 VPU firmware for unsupported VP9 profiles (2017-03-28 15:21:24 +0800)
+> Please have a look at the spi_nor_read_sfdp().
+> 
+> spi_nor_read_sfdp() is likely to be called from and only from
+> spi_nor_scan().
+> 
+> Best regards,
+> 
+> Cyrille
+> 
+> >>
+> >> SPI controller driver should never check SPINOR_OP_* op codes like this.
+> > I agree that SPI controller driver should not check SPINOR_OP_* op codes
+> > like what I do.
+> > I will correct it next version.
+> > 
+> > Best Regards,
+> > Guochun
+> >>
+> >> Then, testing SPINOR_OP_RDSR from mt8173_nor_read_reg() or
+> >> SPINOR_OP_WRSR from mt8173_nor_write_reg() is not a good practice too:
+> >> op codes may change depending on the memory manufacturer. So testing op
+> >> code values like you do can work with some memories but maybe not all.
+> >>
+> >> Finally, don't use 0x10, please define a macro instead.
+> >>
+> >> Best regards,
+> >>
+> >> Cyrille
+> >>
+> >>>  	default:
+> >>>  		ret = mt8173_nor_do_tx_rx(mt8173_nor, opcode, buf, len, NULL, 0);
+> >>>  		if (ret)
+> >>>
+> >>
+> > 
+> > 
+> > 
 > 
 
-Pulled, thanks Andrew-CT.
 
-regards, Kyle
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
