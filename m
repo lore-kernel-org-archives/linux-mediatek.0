@@ -1,75 +1,108 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 1/9] phy: phy-mt65xx-usb3: improve RX detection
- stable time
-Date: Thu, 6 Apr 2017 18:49:39 +0800
-Message-ID: <1491475779.19361.4.camel@mhfsdcap03>
-References: <1490945735-9531-1-git-send-email-chunfeng.yun@mediatek.com>
-         <de1b9870-d325-e97a-a2f0-bd355c70356c@ti.com>
+From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 00/12] Add Basic SoC support for MT6797
+Date: Thu, 6 Apr 2017 20:11:05 +0800
+Message-ID: <1491480665.6485.4.camel@mtkswgap22>
+References: <1489937193-2953-1-git-send-email-mars.cheng@mediatek.com>
+         <1490229971.25996.2.camel@mtkswgap22>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <de1b9870-d325-e97a-a2f0-bd355c70356c-l0cyMroinI0@public.gmane.org>
+In-Reply-To: <1490229971.25996.2.camel@mtkswgap22>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, CC Hwang <cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Loda Chou <loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jades Shih <jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, My Chuang <my.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-04-06 at 15:58 +0530, Kishon Vijay Abraham I wrote:
+Hi Matthias, Stephen
+
+Would you like to give some comments for this patch set?
+If there are any suggestions, I will try my best to fix the errors.
+
+Thanks. 
+
+On Thu, 2017-03-23 at 08:46 +0800, Mars Cheng wrote:
+> Hi Matthias, Rob, Marc, Stephen
 > 
-> On Friday 31 March 2017 01:05 PM, Chunfeng Yun wrote:
-> > The default value of RX detection stable time is 10us, and this
-> > margin is too big for some critical cases which cause U3 link fail
-> > and link to U2(probability is about 1%). So change it to 5us.
-> > 
-> merged all the phy patches in this series to linux-phy -next.
-Thanks a lot
+> gentle ping for this patch set.
 > 
-> Thanks
-> Kishon
+> Thanks.
 > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  drivers/phy/phy-mt65xx-usb3.c |   18 ++++++++++++++++++
-> >  1 file changed, 18 insertions(+)
+> On Sun, 2017-03-19 at 23:26 +0800, Mars Cheng wrote:
+> > This patch set adds basic SoC support for mediatek's first 10-core
+> > chip, X20, also known as MT6797.
 > > 
-> > diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
-> > index d972067..fe2392a 100644
-> > --- a/drivers/phy/phy-mt65xx-usb3.c
-> > +++ b/drivers/phy/phy-mt65xx-usb3.c
-> > @@ -112,6 +112,14 @@
-> >  #define P3D_RG_CDR_BIR_LTD0		GENMASK(12, 8)
-> >  #define P3D_RG_CDR_BIR_LTD0_VAL(x)	((0x1f & (x)) << 8)
-> >  
-> > +#define U3P_U3_PHYD_RXDET1		(SSUSB_SIFSLV_U3PHYD_BASE + 0x128)
-> > +#define P3D_RG_RXDET_STB2_SET		GENMASK(17, 9)
-> > +#define P3D_RG_RXDET_STB2_SET_VAL(x)	((0x1ff & (x)) << 9)
-> > +
-> > +#define U3P_U3_PHYD_RXDET2		(SSUSB_SIFSLV_U3PHYD_BASE + 0x12c)
-> > +#define P3D_RG_RXDET_STB2_SET_P3	GENMASK(8, 0)
-> > +#define P3D_RG_RXDET_STB2_SET_P3_VAL(x)	(0x1ff & (x))
-> > +
-> >  #define U3P_XTALCTL3		(SSUSB_SIFSLV_SPLLC + 0x0018)
-> >  #define XC3_RG_U3_XTAL_RX_PWD		BIT(9)
-> >  #define XC3_RG_U3_FRC_XTAL_RX_PWD	BIT(8)
-> > @@ -295,6 +303,16 @@ static void phy_instance_init(struct mt65xx_u3phy *u3phy,
-> >  	tmp |= P3D_RG_CDR_BIR_LTD0_VAL(0xc) | P3D_RG_CDR_BIR_LTD1_VAL(0x3);
-> >  	writel(tmp, port_base + U3P_PHYD_CDR1);
-> >  
-> > +	tmp = readl(port_base + U3P_U3_PHYD_RXDET1);
-> > +	tmp &= ~P3D_RG_RXDET_STB2_SET;
-> > +	tmp |= P3D_RG_RXDET_STB2_SET_VAL(0x10);
-> > +	writel(tmp, port_base + U3P_U3_PHYD_RXDET1);
-> > +
-> > +	tmp = readl(port_base + U3P_U3_PHYD_RXDET2);
-> > +	tmp &= ~P3D_RG_RXDET_STB2_SET_P3;
-> > +	tmp |= P3D_RG_RXDET_STB2_SET_P3_VAL(0x10);
-> > +	writel(tmp, port_base + U3P_U3_PHYD_RXDET2);
-> > +
-> >  	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, index);
-> >  }
-> >  
+> > - based on 4.11-rc1
+> > - support multiple base address for sysirq
+> > - support common clk framework
 > > 
+> > Changes since v2:
+> > - prevent uncessary #intpol-bases for mtk-sysirq
+> > - add fast path for mtk-sysirq set_type when introducing multiple bases
+> > - add acked-by and tested-by
+> > - remove wrong usage for timer node
+> > 
+> > Changes since v1:
+> > - add multiple base addresses support, v1 only allow 2 bases
+> > - clean up clk driver
+> > 
+> > 
+> > Kevin-CW Chen (2):
+> >   dt-bindings: arm: mediatek: document clk bindings for MT6797
+> >   clk: mediatek: add clk support for MT6797
+> > 
+> > Mars Cheng (10):
+> >   dt-bindings: mediatek: multiple bases support for sysirq
+> >   irqchip: mtk-sysirq: extend intpol base to arbitrary number
+> >   irqchip: mtk-sysirq: prevent unnecessary visibility when set_type
+> >   dt-bindings: mediatek: Add bindings for mediatek MT6797 Platform
+> >   arm64: dts: mediatek: add mt6797 support
+> >   soc: mediatek: avoid using fixed spm power status defines
+> >   soc: mediatek: add vdec item for scpsys
+> >   dt-bindings: mediatek: add MT6797 power dt-bindings
+> >   soc: mediatek: add MT6797 scysys support
+> >   arm64: dts: mediatek: add clk and scp nodes for MT6797
+> > 
+> >  Documentation/devicetree/bindings/arm/mediatek.txt |    4 +
+> >  .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    1 +
+> >  .../bindings/arm/mediatek/mediatek,imgsys.txt      |    1 +
+> >  .../bindings/arm/mediatek/mediatek,infracfg.txt    |    1 +
+> >  .../bindings/arm/mediatek/mediatek,mmsys.txt       |    1 +
+> >  .../bindings/arm/mediatek/mediatek,topckgen.txt    |    1 +
+> >  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    1 +
+> >  .../bindings/arm/mediatek/mediatek,vencsys.txt     |    3 +-
+> >  .../interrupt-controller/mediatek,sysirq.txt       |   12 +-
+> >  .../devicetree/bindings/serial/mtk-uart.txt        |    1 +
+> >  .../devicetree/bindings/soc/mediatek/scpsys.txt    |    6 +-
+> >  arch/arm64/boot/dts/mediatek/Makefile              |    1 +
+> >  arch/arm64/boot/dts/mediatek/mt6797-evb.dts        |   36 +
+> >  arch/arm64/boot/dts/mediatek/mt6797.dtsi           |  245 +++++++
+> >  drivers/clk/mediatek/Kconfig                       |   32 +
+> >  drivers/clk/mediatek/Makefile                      |    5 +
+> >  drivers/clk/mediatek/clk-mt6797-img.c              |   76 +++
+> >  drivers/clk/mediatek/clk-mt6797-mm.c               |  136 ++++
+> >  drivers/clk/mediatek/clk-mt6797-vdec.c             |   93 +++
+> >  drivers/clk/mediatek/clk-mt6797-venc.c             |   78 +++
+> >  drivers/clk/mediatek/clk-mt6797.c                  |  716 ++++++++++++++++++++
+> >  drivers/irqchip/irq-mtk-sysirq.c                   |  116 +++-
+> >  drivers/soc/mediatek/mtk-scpsys.c                  |  149 +++-
+> >  include/dt-bindings/clock/mt6797-clk.h             |  281 ++++++++
+> >  include/dt-bindings/power/mt6797-power.h           |   30 +
+> >  25 files changed, 1993 insertions(+), 33 deletions(-)
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt6797-evb.dts
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt6797.dtsi
+> >  create mode 100644 drivers/clk/mediatek/clk-mt6797-img.c
+> >  create mode 100644 drivers/clk/mediatek/clk-mt6797-mm.c
+> >  create mode 100644 drivers/clk/mediatek/clk-mt6797-vdec.c
+> >  create mode 100644 drivers/clk/mediatek/clk-mt6797-venc.c
+> >  create mode 100644 drivers/clk/mediatek/clk-mt6797.c
+> >  create mode 100644 include/dt-bindings/clock/mt6797-clk.h
+> >  create mode 100644 include/dt-bindings/power/mt6797-power.h
+> > 
+> > --
+> > 1.7.9.5
+> > 
+> 
 
 
 --
