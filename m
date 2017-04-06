@@ -1,110 +1,129 @@
-From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 00/12] Add Basic SoC support for MT6797
-Date: Thu, 6 Apr 2017 20:11:05 +0800
-Message-ID: <1491480665.6485.4.camel@mtkswgap22>
+From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH v3 07/12] clk: mediatek: add clk support for MT6797
+Date: Thu, 6 Apr 2017 13:08:52 -0700
+Message-ID: <20170406200852.GQ7065@codeaurora.org>
 References: <1489937193-2953-1-git-send-email-mars.cheng@mediatek.com>
-         <1490229971.25996.2.camel@mtkswgap22>
+ <1489937193-2953-8-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1490229971.25996.2.camel@mtkswgap22>
+Content-Disposition: inline
+In-Reply-To: <1489937193-2953-8-git-send-email-mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, CC Hwang <cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Loda Chou <loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jades Shih <jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, My Chuang <my.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, CC Hwang <cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Loda Chou <loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jades Shih <jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, My Chuang <my.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kevin-CW Chen <kevin-cw.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias, Stephen
-
-Would you like to give some comments for this patch set?
-If there are any suggestions, I will try my best to fix the errors.
-
-Thanks. 
-
-On Thu, 2017-03-23 at 08:46 +0800, Mars Cheng wrote:
-> Hi Matthias, Rob, Marc, Stephen
+On 03/19, Mars Cheng wrote:
+> From: Kevin-CW Chen <kevin-cw.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> gentle ping for this patch set.
+> Add MT6797 clock support, include topckgen, apmixedsys, infracfg
+> and subsystem clocks
 > 
-> Thanks.
-> 
-> On Sun, 2017-03-19 at 23:26 +0800, Mars Cheng wrote:
-> > This patch set adds basic SoC support for mediatek's first 10-core
-> > chip, X20, also known as MT6797.
-> > 
-> > - based on 4.11-rc1
-> > - support multiple base address for sysirq
-> > - support common clk framework
-> > 
-> > Changes since v2:
-> > - prevent uncessary #intpol-bases for mtk-sysirq
-> > - add fast path for mtk-sysirq set_type when introducing multiple bases
-> > - add acked-by and tested-by
-> > - remove wrong usage for timer node
-> > 
-> > Changes since v1:
-> > - add multiple base addresses support, v1 only allow 2 bases
-> > - clean up clk driver
-> > 
-> > 
-> > Kevin-CW Chen (2):
-> >   dt-bindings: arm: mediatek: document clk bindings for MT6797
-> >   clk: mediatek: add clk support for MT6797
-> > 
-> > Mars Cheng (10):
-> >   dt-bindings: mediatek: multiple bases support for sysirq
-> >   irqchip: mtk-sysirq: extend intpol base to arbitrary number
-> >   irqchip: mtk-sysirq: prevent unnecessary visibility when set_type
-> >   dt-bindings: mediatek: Add bindings for mediatek MT6797 Platform
-> >   arm64: dts: mediatek: add mt6797 support
-> >   soc: mediatek: avoid using fixed spm power status defines
-> >   soc: mediatek: add vdec item for scpsys
-> >   dt-bindings: mediatek: add MT6797 power dt-bindings
-> >   soc: mediatek: add MT6797 scysys support
-> >   arm64: dts: mediatek: add clk and scp nodes for MT6797
-> > 
-> >  Documentation/devicetree/bindings/arm/mediatek.txt |    4 +
-> >  .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    1 +
-> >  .../bindings/arm/mediatek/mediatek,imgsys.txt      |    1 +
-> >  .../bindings/arm/mediatek/mediatek,infracfg.txt    |    1 +
-> >  .../bindings/arm/mediatek/mediatek,mmsys.txt       |    1 +
-> >  .../bindings/arm/mediatek/mediatek,topckgen.txt    |    1 +
-> >  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    1 +
-> >  .../bindings/arm/mediatek/mediatek,vencsys.txt     |    3 +-
-> >  .../interrupt-controller/mediatek,sysirq.txt       |   12 +-
-> >  .../devicetree/bindings/serial/mtk-uart.txt        |    1 +
-> >  .../devicetree/bindings/soc/mediatek/scpsys.txt    |    6 +-
-> >  arch/arm64/boot/dts/mediatek/Makefile              |    1 +
-> >  arch/arm64/boot/dts/mediatek/mt6797-evb.dts        |   36 +
-> >  arch/arm64/boot/dts/mediatek/mt6797.dtsi           |  245 +++++++
-> >  drivers/clk/mediatek/Kconfig                       |   32 +
-> >  drivers/clk/mediatek/Makefile                      |    5 +
-> >  drivers/clk/mediatek/clk-mt6797-img.c              |   76 +++
-> >  drivers/clk/mediatek/clk-mt6797-mm.c               |  136 ++++
-> >  drivers/clk/mediatek/clk-mt6797-vdec.c             |   93 +++
-> >  drivers/clk/mediatek/clk-mt6797-venc.c             |   78 +++
-> >  drivers/clk/mediatek/clk-mt6797.c                  |  716 ++++++++++++++++++++
-> >  drivers/irqchip/irq-mtk-sysirq.c                   |  116 +++-
-> >  drivers/soc/mediatek/mtk-scpsys.c                  |  149 +++-
-> >  include/dt-bindings/clock/mt6797-clk.h             |  281 ++++++++
-> >  include/dt-bindings/power/mt6797-power.h           |   30 +
-> >  25 files changed, 1993 insertions(+), 33 deletions(-)
-> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt6797-evb.dts
-> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> >  create mode 100644 drivers/clk/mediatek/clk-mt6797-img.c
-> >  create mode 100644 drivers/clk/mediatek/clk-mt6797-mm.c
-> >  create mode 100644 drivers/clk/mediatek/clk-mt6797-vdec.c
-> >  create mode 100644 drivers/clk/mediatek/clk-mt6797-venc.c
-> >  create mode 100644 drivers/clk/mediatek/clk-mt6797.c
-> >  create mode 100644 include/dt-bindings/clock/mt6797-clk.h
-> >  create mode 100644 include/dt-bindings/power/mt6797-power.h
-> > 
-> > --
-> > 1.7.9.5
-> > 
-> 
+> Signed-off-by: Kevin-CW Chen <kevin-cw.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Tested-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
+Acked-by: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
 
+Looks fine to me except for the one comment below. Did you want
+me to merge it into clk tree?
+
+> diff --git a/drivers/clk/mediatek/clk-mt6797.c b/drivers/clk/mediatek/clk-mt6797.c
+> new file mode 100644
+> index 0000000..7ebb7f1
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt6797.c
+> @@ -0,0 +1,716 @@
+> +/*
+> + * Copyright (c) 2016 MediaTek Inc.
+> + * Author: Kevin Chen <kevin-cw.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +#include <linux/clk.h>
+
+Is this include used? Please include clk-provider if the file is
+a clk driver. Same comment applies to other files in this patch.
+
+> +#include <linux/of.h>
+> +#include <linux/of_address.h>
+> +#include <linux/of_device.h>
+> +#include <linux/platform_device.h>
+> +
+> +#include "clk-mtk.h"
+> +#include "clk-gate.h"
+> +
+> +#include <dt-bindings/clock/mt6797-clk.h>
+> +
+> +/*
+> + * For some clocks, we don't care what their actual rates are. And these
+> + * clocks may change their rate on different products or different scenarios.
+> + * So we model these clocks' rate as 0, to denote it's not an actual rate.
+> + */
+> +
+> +static DEFINE_SPINLOCK(mt6797_clk_lock);
+> +
+> +static const struct mtk_fixed_factor top_fixed_divs[] = {
+> +	FACTOR(CLK_TOP_SYSPLL_CK, "syspll_ck", "mainpll", 1, 1),
+> +	FACTOR(CLK_TOP_SYSPLL_D2, "syspll_d2", "mainpll", 1, 2),
+> +	FACTOR(CLK_TOP_SYSPLL1_D2, "syspll1_d2", "syspll_d2", 1, 2),
+[...]
+> +	clk_init = of_device_get_match_data(&pdev->dev);
+> +	if (!clk_init)
+> +		return -EINVAL;
+> +
+> +	r = clk_init(pdev);
+> +	if (r)
+> +		dev_err(&pdev->dev,
+> +			"could not register clock provider: %s: %d\n",
+> +			pdev->name, r);
+> +
+> +	return r;
+> +}
+> +
+> +static struct platform_driver clk_mt6797_drv = {
+> +	.probe = clk_mt6797_probe,
+> +	.driver = {
+> +		.name = "clk-mt6797",
+> +		.owner = THIS_MODULE,
+
+This can be removed, platform_driver_register() does it already.
+
+> +		.of_match_table = of_match_clk_mt6797,
+> +	},
+> +};
+> +
+> +static int __init clk_mt6797_init(void)
+> +{
+> +	return platform_driver_register(&clk_mt6797_drv);
+> +}
+> +
+> +arch_initcall(clk_mt6797_init);
+> diff --git a/include/dt-bindings/clock/mt6797-clk.h b/include/dt-bindings/clock/mt6797-clk.h
+> new file mode 100644
+> index 0000000..e48aa47
+> --- /dev/null
+> +++ b/include/dt-bindings/clock/mt6797-clk.h
+> @@ -0,0 +1,281 @@
+
+I think arm-soc folks don't want us merging whole drivers into
+the DT branch anymore, so please split off the dt-bindings header
+into a different patch that we can apply directly. Then we can
+layer the driver on top and just send off the header to arm-soc
+via a stable clk branch.
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
