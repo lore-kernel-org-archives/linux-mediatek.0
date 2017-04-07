@@ -1,79 +1,50 @@
-From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [GIT PULL] mediatek-drm-next for 4.12
-Date: Sat, 8 Apr 2017 00:42:20 +0800
-Message-ID: <1491583340.5667.9.camel@mtksdaap41>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH net-next v4 5/5] net-next: dsa: add dsa support for
+ Mediatek MT7530 switch
+Date: Fri, 7 Apr 2017 21:37:16 +0200
+Message-ID: <20170407193716.GC500@lunn.ch>
+References: <1491554709-9723-1-git-send-email-sean.wang@mediatek.com>
+ <1491554709-9723-6-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>
-Cc: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Shaoming Chen <shaoming.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1491554709-9723-6-git-send-email-sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: f.fainelli@gmail.com, vivien.didelot@savoirfairelinux.com, matthias.bgg@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, davem@davemloft.net, Landen.Chao@mediatek.com, keyhaede@gmail.com, objelf@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Dave:
+On Fri, Apr 07, 2017 at 04:45:09PM +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> MT7530 is a 7-ports Gigabit Ethernet Switch that could be found on
+> Mediatek router platforms such as MT7623A or MT7623N platform which
+> includes 7-port Gigabit Ethernet MAC and 5-port Gigabit Ethernet PHY.
+> Among these ports, The port from 0 to 4 are the user ports connecting
+> with the remote devices while the port 5 and 6 are the CPU ports
+> connecting into Mediatek Ethernet GMAC.
+> 
+> For port 6, it can communicate with the CPU via Mediatek Ethernet GMAC
+> through either the TRGMII or RGMII which could be controlled by phy-mode
+> in the dt-bindings to specify which mode is preferred to use. And for
+> port 5, only RGMII can be specified. However, currently, only port 6 is
+> being supported in this DSA driver.
+> 
+> The driver is made with the reference to qca8k and other existing DSA
+> driver. The most of the essential callbacks of the DSA are already
+> support in the driver, including tag insert for user port distinguishing,
+> port control, bridge offloading, STP setup and ethtool operation to allow
+> DSA to model each user port into a standalone netdevice as the other DSA
+> driver had done.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Landen Chao <Landen.Chao@mediatek.com>
 
-This series is MT2701 DRM support.
+Hi Sean
 
-The following changes since commit
-0168778115687486575a6831df865dbc4f5369fe:
+This is looking good now. Thanks
 
-  Merge branch 'drm-next-4.12' of
-git://people.freedesktop.org/~agd5f/linux into drm-next (2017-04-07
-05:49:12 +1000)
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-are available in the git repository at:
-
-
-  https://github.com/ckhu-mediatek/linux.git-tags.git drm-next-4.12
-
-for you to fetch changes up to 84a5ead18e57e9018d3de0a5388be8f6c2686329:
-
-  drm/mediatek: add support for Mediatek SoC MT2701 (2017-04-08 00:02:17
-+0800)
-
-----------------------------------------------------------------
-shaoming chen (2):
-      drm/mediatek: add dsi interrupt control
-      drm/mediatek: add dsi transfer function
-
-yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org (10):
-      dt-bindings: display: mediatek: update supported chips
-      drm/mediatek: add helpers for coverting from the generic
-components
-      drm/mediatek: add *driver_data for different hardware settings
-      drm/mediatek: add shadow register support
-      drm/mediatek: add BLS component
-      drm/mediatek: update display module connections
-      drm/mediatek: cleaning up and refine
-      drm/mediatek: add non-continuous clock mode and EOT packet control
-      drm/mediatek: update DSI sub driver flow for sending commands to
-panel
-      drm/mediatek: add support for Mediatek SoC MT2701
-
- .../bindings/display/mediatek/mediatek,disp.txt    |   2 +
- .../bindings/display/mediatek/mediatek,dsi.txt     |   2 +
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c            |  64 ++-
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c           |  39 +-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c            |  75 +--
- drivers/gpu/drm/mediatek/mtk_drm_ddp.c             | 138 +++--
- drivers/gpu/drm/mediatek/mtk_drm_ddp.h             |   2 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c        |  69 ++-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h        |   2 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  54 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.h             |   9 +
- drivers/gpu/drm/mediatek/mtk_dsi.c                 | 572
-++++++++++++++++-----
- drivers/gpu/drm/mediatek/mtk_mipi_tx.c             |  38 +-
- 13 files changed, 828 insertions(+), 238 deletions(-)
-
-Regards,
-CK
+    Andrew
