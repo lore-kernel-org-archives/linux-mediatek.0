@@ -1,38 +1,55 @@
-From: Colin King <colin.king@canonical.com>
-Subject: [PATCH] drm/mediatek: re-phrase DRM_INFO error message
-Date: Tue, 11 Apr 2017 14:44:19 +0100
-Message-ID: <20170411134419.21277-1-colin.king@canonical.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH net 2/2] net: ethernet: mediatek: fix inconsistency of
+ port number carried in TXD
+Date: Tue, 11 Apr 2017 10:35:35 -0400 (EDT)
+Message-ID: <20170411.103535.2136552403177283944.davem@davemloft.net>
+References: <1491894754-16384-1-git-send-email-sean.wang@mediatek.com>
+        <1491894754-16384-3-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1491894754-16384-3-git-send-email-sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogQ29saW4gSWFuIEtpbmcgPGNvbGluLmtpbmdAY2Fub25pY2FsLmNvbT4KClRoZSBjdXJy
-ZW50IG1lc3NhZ2UgY29udGFpbnMgYSBzcGVsbGluZyBtaXN0YWtlIGFuZCBpcyBub3QgZWFzaWx5
-CnBhcnNhYmxlLiBSZS1waHJhc2UgaXQgdG8gYmUgbW9yZSB1bmRlcnN0YW5kYWJsZS4KClNpZ25l
-ZC1vZmYtYnk6IENvbGluIElhbiBLaW5nIDxjb2xpbi5raW5nQGNhbm9uaWNhbC5jb20+Ci0tLQog
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyB8IDIgKy0KIDEgZmlsZSBjaGFuZ2Vk
-LCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rz
-aS5jCmluZGV4IDgwOGI5OTVhOTkwZi4uNzlkMjQwZmYxMzMxIDEwMDY0NAotLS0gYS9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHNpLmMKQEAgLTkzMyw3ICs5MzMsNyBAQCBzdGF0aWMgdTMyIG10a19kc2lfcmVjdl9j
-bnQodTggdHlwZSwgdTggKnJlYWRfZGF0YSkKIAkJRFJNX0lORk8oInR5cGUgaXMgMHgwMiwgdHJ5
-IGFnYWluXG4iKTsKIAkJYnJlYWs7CiAJZGVmYXVsdDoKLQkJRFJNX0lORk8oInR5cGUoMHgleCkg
-Y2Fubm90IGJlIG5vbi1yZWNvZ25pdGVcbiIsIHR5cGUpOworCQlEUk1fSU5GTygidHlwZSgweCV4
-KSBub3QgcmVjb2duaXplZFxuIiwgdHlwZSk7CiAJCWJyZWFrOwogCX0KIAotLSAKMi4xMS4wCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+From: <sean.wang@mediatek.com>
+Date: Tue, 11 Apr 2017 15:12:34 +0800
+
+> @@ -410,12 +410,18 @@ struct mtk_hw_stats {
+>  	struct u64_stats_sync	syncp;
+>  };
+>  
+> -/* PDMA descriptor can point at 1-2 segments. This enum allows us to track how
+> - * memory was allocated so that it can be freed properly
+> - */
+>  enum mtk_tx_flags {
+> +	/* PDMA descriptor can point at 1-2 segments. This enum allows us to
+> +	 * track how memory was allocated so that it can be freed properly.
+> +	 */
+>  	MTK_TX_FLAGS_SINGLE0	= 0x01,
+>  	MTK_TX_FLAGS_PAGE0	= 0x02,
+> +
+> +	/* MTK_TX_FLAGS_FPORTx allows tracking which port the transmitted
+> +	 * SKB out instead of looking up through hardware TX descriptor.
+> +	 */
+> +	MTK_TX_FLAGS_FPORT1	= 0x03,
+> +	MTK_TX_FLAGS_FPORT0	= 0x04,
+>  };
+
+You're creating a confusing situation here and asking for bugs to be introduced
+into the driver.
+
+The existing two enumeration values are "bit masks", but these two new values
+are bit numbers and must be used with BIT().
+
+Make them consistent, and I would suggest to make all of them bit masks, thus:
+
+	MTK_TX_FLAGS_FPORT1	= 0x04,
+	MTK_TX_FLAGS_FPORT0	= 0x08,
+
+And then remove the use of BIT() to these values.
+
+Thanks.
