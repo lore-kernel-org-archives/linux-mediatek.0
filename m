@@ -1,36 +1,87 @@
-From: Dave Airlie <airlied@gmail.com>
-Subject: Re: [GIT PULL] mediatek-drm-next for 4.12
-Date: Thu, 13 Apr 2017 06:19:05 +1000
-Message-ID: <CAPM=9txC2UXFmG7Enuzn3PfMk7d6G+BruhJgDProyNKCGCNC5Q@mail.gmail.com>
-References: <1491583340.5667.9.camel@mtksdaap41>
+From: Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>
+Subject: Re: [PATCH v1 1/1] mtd: mtk-nor: set controller's address width
+ according to nor flash
+Date: Wed, 12 Apr 2017 22:57:27 +0200
+Message-ID: <e9eafca3-41a0-7e88-996b-9d1c51f0c132@wedev4u.fr>
+References: <1491381462-21893-1-git-send-email-guochun.mao@mediatek.com>
+ <1491381462-21893-2-git-send-email-guochun.mao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1491583340.5667.9.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Stephen Rothwell <sfr@canb.auug.org.au>, Shaoming Chen <shaoming.chen@mediatek.com>, linux-mediatek@lists.infradead.org, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1491381462-21893-2-git-send-email-guochun.mao@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Guochun Mao <guochun.mao@mediatek.com>, Cyrille Pitchen <cyrille.pitchen@atmel.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Richard Weinberger <richard@nod.at>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mtd@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gOCBBcHJpbCAyMDE3IGF0IDAyOjQyLCBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPiB3cm90
-ZToKPiBIaSwgRGF2ZToKPgo+IFRoaXMgc2VyaWVzIGlzIE1UMjcwMSBEUk0gc3VwcG9ydC4KCkp1
-c3QgRllJLCBJIGZhaWxlZCB0byBub3RpY2UgdGhpcywgYnV0IFN0ZXBoZW4gcG9pbnRlZCBpdCBv
-dXQsCgpwbGVhc2UgbWFrZSBzdXJlIHlvdSBhZGQgYSBTaWduZWQtb2ZmLWJ5IGxpbmUgaWYgeW91
-IGFyZSBjb21taXR0aW5nCm90aGVyIHBlb3BsZSdzIHBhdGNoIHRvIGEgdHJlZSwgQXMgdGhlIG1h
-aW50YWluZXIgeW91IG11c3QgYWRkIHRoZXNlLApub3QgQWNrZWQtYnkuCgpBY2tlZC1ieSBhcmUg
-Zm9yIG5vbi1tYWludGFpbmVycy4KCkluIHRoaXMgY2FzZSBJIGNhbid0IGdvIGJhY2sgYW5kIHVu
-ZG8gdGhpbmdzIGF0IHRoaXMgc3RhZ2UsIHRoZXkgaGF2ZQphbiBTaWduZWQtb2ZmLWJ5IGZyb20g
-YSBtZWRpYXRlayBlbXBsb3llZSBhbnl3YXlzIHdoaWNoIHNob3VsZCBsZWF2ZQp0aGVtIGluIGdv
-b2Qgc3RhbmRpbmcuCgpEYXZlLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWwK
+Hi Guochun,
+
+Le 05/04/2017 à 10:37, Guochun Mao a écrit :
+> When nor's size larger than 16MByte, nor's address width maybe
+> set to 3 or 4, and controller should change address width according
+> to nor's setting.
+> 
+> Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
+> ---
+>  drivers/mtd/spi-nor/mtk-quadspi.c |   27 +++++++++++++++++++++++++++
+>  1 file changed, 27 insertions(+)
+> 
+> diff --git a/drivers/mtd/spi-nor/mtk-quadspi.c b/drivers/mtd/spi-nor/mtk-quadspi.c
+> index e661877..b637770 100644
+> --- a/drivers/mtd/spi-nor/mtk-quadspi.c
+> +++ b/drivers/mtd/spi-nor/mtk-quadspi.c
+> @@ -104,6 +104,8 @@
+>  #define MTK_NOR_MAX_RX_TX_SHIFT		6
+>  /* can shift up to 56 bits (7 bytes) transfer by MTK_NOR_PRG_CMD */
+>  #define MTK_NOR_MAX_SHIFT		7
+> +/* nor controller 4-byte address mode enable bit */
+> +#define MTK_NOR_4B_ADDR_EN		BIT(4)
+>  
+>  /* Helpers for accessing the program data / shift data registers */
+>  #define MTK_NOR_PRG_REG(n)		(MTK_NOR_PRGDATA0_REG + 4 * (n))
+> @@ -230,10 +232,35 @@ static int mt8173_nor_write_buffer_disable(struct mt8173_nor *mt8173_nor)
+>  				  10000);
+>  }
+>  
+> +static void mt8173_nor_set_addr_width(struct mt8173_nor *mt8173_nor)
+> +{
+> +	u8 val;
+> +	struct spi_nor *nor = &mt8173_nor->nor;
+> +
+> +	val = readb(mt8173_nor->base + MTK_NOR_DUAL_REG);
+> +
+> +	switch (nor->addr_width) {
+> +	case 3:
+> +		val &= ~MTK_NOR_4B_ADDR_EN;
+> +		break;
+> +	case 4:
+> +		val |= MTK_NOR_4B_ADDR_EN;
+> +		break;
+> +	default:
+> +		dev_warn(mt8173_nor->dev, "Unexpected address width %u.\n",
+> +			 nor->addr_width);
+> +		break;
+> +	}
+> +
+> +	writeb(val, mt8173_nor->base + MTK_NOR_DUAL_REG);
+> +}
+> +
+>  static void mt8173_nor_set_addr(struct mt8173_nor *mt8173_nor, u32 addr)
+>  {
+>  	int i;
+>  
+> +	mt8173_nor_set_addr_width(mt8173_nor);
+> +
+>  	for (i = 0; i < 3; i++) {
+
+Should it be 'i < nor->addr_width' instead of 'i < 3' ?
+Does it work when accessing data after 128Mbit ?
+
+Best regards,
+
+Cyrille
+
+>  		writeb(addr & 0xff, mt8173_nor->base + MTK_NOR_RADR0_REG + i * 4);
+>  		addr >>= 8;
+> 
