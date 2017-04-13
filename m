@@ -1,129 +1,79 @@
-From: Guochun Mao <guochun.mao@mediatek.com>
-Subject: Re: [PATCH v1 1/1] mtd: mtk-nor: set controller's address width
- according to nor flash
-Date: Thu, 13 Apr 2017 10:40:37 +0800
-Message-ID: <1492051237.2866.36.camel@mhfsdcap03>
-References: <1491381462-21893-1-git-send-email-guochun.mao@mediatek.com>
-         <1491381462-21893-2-git-send-email-guochun.mao@mediatek.com>
-         <e9eafca3-41a0-7e88-996b-9d1c51f0c132@wedev4u.fr>
+From: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] [media] mtk-mdp: Fix g_/s_selection capture/compose logic
+Date: Thu, 13 Apr 2017 12:18:50 +0800
+Message-ID: <1492057130-1194-1-git-send-email-minghsiu.tsai@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e9eafca3-41a0-7e88-996b-9d1c51f0c132@wedev4u.fr>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>
-Cc: Cyrille Pitchen <cyrille.pitchen@atmel.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Richard Weinberger <richard@nod.at>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mtd@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Houlong Wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Wu-Cheng Li <wuchengli-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Cyrille,
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-On Wed, 2017-04-12 at 22:57 +0200, Cyrille Pitchen wrote:
-> Hi Guochun,
-> 
-> Le 05/04/2017 à 10:37, Guochun Mao a écrit :
-> > When nor's size larger than 16MByte, nor's address width maybe
-> > set to 3 or 4, and controller should change address width according
-> > to nor's setting.
-> > 
-> > Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>st
-> > ---
-> >  drivers/mtd/spi-nor/mtk-quadspi.c |   27 +++++++++++++++++++++++++++
-> >  1 file changed, 27 insertions(+)
-> > 
-> > diff --git a/drivers/mtd/spi-nor/mtk-quadspi.c b/drivers/mtd/spi-nor/mtk-quadspi.c
-> > index e661877..b637770 100644
-> > --- a/drivers/mtd/spi-nor/mtk-quadspi.c
-> > +++ b/drivers/mtd/spi-nor/mtk-quadspi.c
-> > @@ -104,6 +104,8 @@
-> >  #define MTK_NOR_MAX_RX_TX_SHIFT		6
-> >  /* can shift up to 56 bits (7 bytes) transfer by MTK_NOR_PRG_CMD */
-> >  #define MTK_NOR_MAX_SHIFT		7
-> > +/* nor controller 4-byte address mode enable bit */
-> > +#define MTK_NOR_4B_ADDR_EN		BIT(4)
-> >  
-> >  /* Helpers for accessing the program data / shift data registers */
-> >  #define MTK_NOR_PRG_REG(n)		(MTK_NOR_PRGDATA0_REG + 4 * (n))
-> > @@ -230,10 +232,35 @@ static int mt8173_nor_write_buffer_disable(struct mt8173_nor *mt8173_nor)
-> >  				  10000);
-> >  }
-> >  
-> > +static void mt8173_nor_set_addr_width(struct mt8173_nor *mt8173_nor)
-> > +{
-> > +	u8 val;
-> > +	struct spi_nor *nor = &mt8173_nor->nor;
-> > +
-> > +	val = readb(mt8173_nor->base + MTK_NOR_DUAL_REG);
-> > +
-> > +	switch (nor->addr_width) {
-> > +	case 3:
-> > +		val &= ~MTK_NOR_4B_ADDR_EN;
-> > +		break;
-> > +	case 4:
-> > +		val |= MTK_NOR_4B_ADDR_EN;
-> > +		break;
-> > +	default:
-> > +		dev_warn(mt8173_nor->dev, "Unexpected address width %u.\n",
-> > +			 nor->addr_width);
-> > +		break;
-> > +	}
-> > +
-> > +	writeb(val, mt8173_nor->base + MTK_NOR_DUAL_REG);
-> > +}
-> > +
-> >  static void mt8173_nor_set_addr(struct mt8173_nor *mt8173_nor, u32 addr)
-> >  {
-> >  	int i;
-> >  
-> > +	mt8173_nor_set_addr_width(mt8173_nor);
-> > +
-> >  	for (i = 0; i < 3; i++) {
-> 
-> Should it be 'i < nor->addr_width' instead of 'i < 3' ?
-> Does it work when accessing data after 128Mbit ?
+Experiments show that the:
+ (1) mtk-mdp uses the _MPLANE form of CAPTURE/OUTPUT
+ (2) CAPTURE types use CROP targets, and OUTPUT types use COMPOSE targets
 
-Yes, it can work.
+Signed-off-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Let's see the whole function,
+---
+ drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-static void mt8173_nor_set_addr(struct mt8173_nor *mt8173_nor, u32 addr)
-{
-        int i;
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+index 13afe48..8ab7ca0 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+@@ -837,12 +837,12 @@ static int mtk_mdp_m2m_g_selection(struct file *file, void *fh,
+ 	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
+ 	bool valid = false;
+ 
+-	if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE) {
+-		if (mtk_mdp_is_target_compose(s->target))
+-			valid = true;
+-	} else if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT) {
++	if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
+ 		if (mtk_mdp_is_target_crop(s->target))
+ 			valid = true;
++	} else if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
++		if (mtk_mdp_is_target_compose(s->target))
++			valid = true;
+ 	}
+ 	if (!valid) {
+ 		mtk_mdp_dbg(1, "[%d] invalid type:%d,%u", ctx->id, s->type,
+@@ -907,12 +907,12 @@ static int mtk_mdp_m2m_s_selection(struct file *file, void *fh,
+ 	int ret;
+ 	bool valid = false;
+ 
+-	if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE) {
+-		if (s->target == V4L2_SEL_TGT_COMPOSE)
+-			valid = true;
+-	} else if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT) {
++	if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
+ 		if (s->target == V4L2_SEL_TGT_CROP)
+ 			valid = true;
++	} else if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
++		if (s->target == V4L2_SEL_TGT_COMPOSE)
++			valid = true;
+ 	}
+ 	if (!valid) {
+ 		mtk_mdp_dbg(1, "[%d] invalid type:%d,%u", ctx->id, s->type,
+@@ -925,7 +925,7 @@ static int mtk_mdp_m2m_s_selection(struct file *file, void *fh,
+ 	if (ret)
+ 		return ret;
+ 
+-	if (mtk_mdp_is_target_crop(s->target))
++	if (mtk_mdp_is_target_compose(s->target))
+ 		frame = &ctx->s_frame;
+ 	else
+ 		frame = &ctx->d_frame;
+-- 
+1.9.1
 
-        mt8173_nor_set_addr_width(mt8173_nor);
-
-        for (i = 0; i < 3; i++) {
-                writeb(addr & 0xff, mt8173_nor->base + MTK_NOR_RADR0_REG
-+ i * 4);
-                addr >>= 8;
-        }
-        /* Last register is non-contiguous */
-        writeb(addr & 0xff, mt8173_nor->base + MTK_NOR_RADR3_REG);
-}
-
-The nor controller has 4 registers for address.
-This '3' indicates the number of contiguous address' registers
-base + MTK_NOR_RADR0_REG(0x10)
-base + MTK_NOR_RADR1_REG(0x14)
-base + MTK_NOR_RADR2_REG(0x18),
-but the last address register is non-contiguous,
-it's base + MTK_NOR_RADR3_REG(0xc8)
-
-mt8173_nor_set_addr will set addr into these 4 registers by Byte.
-The bit MTK_NOR_4B_ADDR_EN will decide whether 3-byte(0x10,0x14,0x18)
-or 4-byte(0x10,0x14,x018,0xc8) been sent to nor device.
-and, it can access data after 128Mbit when sent 4-byte address.
-
-Best regards,
-
-Guochun
-
-> 
-> Best regards,
-> 
-> Cyrille
-> 
-> >  		writeb(addr & 0xff, mt8173_nor->base + MTK_NOR_RADR0_REG + i * 4);
-> >  		addr >>= 8;
-> > 
-> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
