@@ -1,81 +1,142 @@
-From: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
-Subject: [PATCH 1/3] dt-bindings: mt8173: Fix mdp device tree
-Date: Thu, 13 Apr 2017 15:33:05 +0800
-Message-ID: <1492068787-17838-2-git-send-email-minghsiu.tsai@mediatek.com>
-References: <1492068787-17838-1-git-send-email-minghsiu.tsai@mediatek.com>
+From: Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>
+Subject: Re: [PATCH v1 1/1] mtd: mtk-nor: set controller's address width
+ according to nor flash
+Date: Thu, 13 Apr 2017 10:24:58 +0200
+Message-ID: <3cf1c63e-c56f-2f07-9d16-7ec346758dfa@wedev4u.fr>
+References: <1491381462-21893-1-git-send-email-guochun.mao@mediatek.com>
+ <1491381462-21893-2-git-send-email-guochun.mao@mediatek.com>
+ <e9eafca3-41a0-7e88-996b-9d1c51f0c132@wedev4u.fr>
+ <1492051237.2866.36.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1492068787-17838-1-git-send-email-minghsiu.tsai@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Houlong Wei <houlong.wei@mediatek.com>
-Cc: devicetree@vger.kernel.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, srv_heupstream@mediatek.com, Wu-Cheng Li <wuchengli@google.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1492051237.2866.36.camel@mhfsdcap03>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Guochun Mao <guochun.mao@mediatek.com>
+Cc: Cyrille Pitchen <cyrille.pitchen@atmel.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Richard Weinberger <richard@nod.at>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mtd@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-If the mdp_* nodes are under an mdp sub-node, their corresponding
-platform device does not automatically get its iommu assigned properly.
+Hi Guochun,
 
-Fix this by moving the mdp component nodes up a level such that they are
-siblings of mdp and all other SoC subsystems.  This also simplifies the
-device tree.
+Le 13/04/2017 à 04:40, Guochun Mao a écrit :
+> Hi Cyrille,
+> 
+> On Wed, 2017-04-12 at 22:57 +0200, Cyrille Pitchen wrote:
+>> Hi Guochun,
+>>
+>> Le 05/04/2017 à 10:37, Guochun Mao a écrit :
+>>> When nor's size larger than 16MByte, nor's address width maybe
+>>> set to 3 or 4, and controller should change address width according
+>>> to nor's setting.
+>>>
+>>> Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>st
 
-Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
-Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Acked-by: Cyrille Pitchen <cyrille.pitchen@atmel.com>
 
----
- Documentation/devicetree/bindings/media/mediatek-mdp.txt | 12 +++---------
- 1 file changed, 3 insertions(+), 9 deletions(-)
+>>> ---
+>>>  drivers/mtd/spi-nor/mtk-quadspi.c |   27 +++++++++++++++++++++++++++
+>>>  1 file changed, 27 insertions(+)
+>>>
+>>> diff --git a/drivers/mtd/spi-nor/mtk-quadspi.c b/drivers/mtd/spi-nor/mtk-quadspi.c
+>>> index e661877..b637770 100644
+>>> --- a/drivers/mtd/spi-nor/mtk-quadspi.c
+>>> +++ b/drivers/mtd/spi-nor/mtk-quadspi.c
+>>> @@ -104,6 +104,8 @@
+>>>  #define MTK_NOR_MAX_RX_TX_SHIFT		6
+>>>  /* can shift up to 56 bits (7 bytes) transfer by MTK_NOR_PRG_CMD */
+>>>  #define MTK_NOR_MAX_SHIFT		7
+>>> +/* nor controller 4-byte address mode enable bit */
+>>> +#define MTK_NOR_4B_ADDR_EN		BIT(4)
+>>>  
+>>>  /* Helpers for accessing the program data / shift data registers */
+>>>  #define MTK_NOR_PRG_REG(n)		(MTK_NOR_PRGDATA0_REG + 4 * (n))
+>>> @@ -230,10 +232,35 @@ static int mt8173_nor_write_buffer_disable(struct mt8173_nor *mt8173_nor)
+>>>  				  10000);
+>>>  }
+>>>  
+>>> +static void mt8173_nor_set_addr_width(struct mt8173_nor *mt8173_nor)
+>>> +{
+>>> +	u8 val;
+>>> +	struct spi_nor *nor = &mt8173_nor->nor;
+>>> +
+>>> +	val = readb(mt8173_nor->base + MTK_NOR_DUAL_REG);
+>>> +
+>>> +	switch (nor->addr_width) {
+>>> +	case 3:
+>>> +		val &= ~MTK_NOR_4B_ADDR_EN;
+>>> +		break;
+>>> +	case 4:
+>>> +		val |= MTK_NOR_4B_ADDR_EN;
+>>> +		break;
+>>> +	default:
+>>> +		dev_warn(mt8173_nor->dev, "Unexpected address width %u.\n",
+>>> +			 nor->addr_width);
+>>> +		break;
+>>> +	}
+>>> +
+>>> +	writeb(val, mt8173_nor->base + MTK_NOR_DUAL_REG);
+>>> +}
+>>> +
+>>>  static void mt8173_nor_set_addr(struct mt8173_nor *mt8173_nor, u32 addr)
+>>>  {
+>>>  	int i;
+>>>  
+>>> +	mt8173_nor_set_addr_width(mt8173_nor);
+>>> +
+>>>  	for (i = 0; i < 3; i++) {
+>>
+>> Should it be 'i < nor->addr_width' instead of 'i < 3' ?
+>> Does it work when accessing data after 128Mbit ?
+> 
+> Yes, it can work.
+> 
+> Let's see the whole function,
+> 
+> static void mt8173_nor_set_addr(struct mt8173_nor *mt8173_nor, u32 addr)
+> {
+>         int i;
+> 
+>         mt8173_nor_set_addr_width(mt8173_nor);
+> 
+>         for (i = 0; i < 3; i++) {
+>                 writeb(addr & 0xff, mt8173_nor->base + MTK_NOR_RADR0_REG
+> + i * 4);
+>                 addr >>= 8;
+>         }
+>         /* Last register is non-contiguous */
+>         writeb(addr & 0xff, mt8173_nor->base + MTK_NOR_RADR3_REG);
+> }
+> 
+> The nor controller has 4 registers for address.
+> This '3' indicates the number of contiguous address' registers
+> base + MTK_NOR_RADR0_REG(0x10)
+> base + MTK_NOR_RADR1_REG(0x14)
+> base + MTK_NOR_RADR2_REG(0x18),
+> but the last address register is non-contiguous,
+> it's base + MTK_NOR_RADR3_REG(0xc8)
+> 
+> mt8173_nor_set_addr will set addr into these 4 registers by Byte.
+> The bit MTK_NOR_4B_ADDR_EN will decide whether 3-byte(0x10,0x14,0x18)
+> or 4-byte(0x10,0x14,x018,0xc8) been sent to nor device.
+> and, it can access data after 128Mbit when sent 4-byte address.
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek-mdp.txt b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
-index 4182063..0d03e3a 100644
---- a/Documentation/devicetree/bindings/media/mediatek-mdp.txt
-+++ b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
-@@ -2,7 +2,7 @@
- 
- Media Data Path is used for scaling and color space conversion.
- 
--Required properties (controller (parent) node):
-+Required properties (controller node):
- - compatible: "mediatek,mt8173-mdp"
- - mediatek,vpu: the node of video processor unit, see
-   Documentation/devicetree/bindings/media/mediatek-vpu.txt for details.
-@@ -32,21 +32,16 @@ Required properties (DMA function blocks, child node):
-   for details.
- 
- Example:
--mdp {
--	compatible = "mediatek,mt8173-mdp";
--	#address-cells = <2>;
--	#size-cells = <2>;
--	ranges;
--	mediatek,vpu = <&vpu>;
--
- 	mdp_rdma0: rdma@14001000 {
- 		compatible = "mediatek,mt8173-mdp-rdma";
-+			     "mediatek,mt8173-mdp";
- 		reg = <0 0x14001000 0 0x1000>;
- 		clocks = <&mmsys CLK_MM_MDP_RDMA0>,
- 			 <&mmsys CLK_MM_MUTEX_32K>;
- 		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
- 		iommus = <&iommu M4U_PORT_MDP_RDMA0>;
- 		mediatek,larb = <&larb0>;
-+		mediatek,vpu = <&vpu>;
- 	};
- 
- 	mdp_rdma1: rdma@14002000 {
-@@ -106,4 +101,3 @@ mdp {
- 		iommus = <&iommu M4U_PORT_MDP_WROT1>;
- 		mediatek,larb = <&larb4>;
- 	};
--};
--- 
-1.9.1
+Indeed, you're right. Sorry for the noise!
+
+> 
+> Best regards,
+> 
+> Guochun
+> 
+>>
+>> Best regards,
+>>
+>> Cyrille
+>>
+>>>  		writeb(addr & 0xff, mt8173_nor->base + MTK_NOR_RADR0_REG + i * 4);
+>>>  		addr >>= 8;
+>>>
+>>
+> 
+> 
+> 
