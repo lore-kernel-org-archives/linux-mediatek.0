@@ -1,81 +1,38 @@
-From: =?UTF-8?B?V3UtQ2hlbmcgTGkgKOadjuWLmeiqoCk=?= <wuchengli@google.com>
-Subject: Re: [PATCH] [media] mtk-mdp: Fix g_/s_selection capture/compose logic
-Date: Thu, 13 Apr 2017 14:50:08 +0800
-Message-ID: <CAOMLVLiLkZsBfezx6b9Xq=kyPjUZOXwHC4LfHh1=wy6Ynt=zSQ@mail.gmail.com>
-References: <1492057130-1194-1-git-send-email-minghsiu.tsai@mediatek.com>
+From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 0/2] hwrng: mtk: add support for hardware random generator on MT7623 SoC
+Date: Thu, 13 Apr 2017 15:05:06 +0800
+Message-ID: <1492067108-14748-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1492057130-1194-1-git-send-email-minghsiu.tsai@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, Daniel Thompson <daniel.thompson@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Houlong Wei <houlong.wei@mediatek.com>, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org, mpm-VDJrAJ4Gl5ZBDgjK7y7TUQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, clabbe.montjoie-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, prasannatsmkumar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, romain.perier-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, shannon.nelson-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org
+Cc: weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Reviewed-by: Wu-Cheng Li <wuchengli@chromium.org>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-On Thu, Apr 13, 2017 at 12:18 PM, Minghsiu Tsai
-<minghsiu.tsai@mediatek.com> wrote:
-> From: Daniel Kurtz <djkurtz@chromium.org>
->
-> Experiments show that the:
->  (1) mtk-mdp uses the _MPLANE form of CAPTURE/OUTPUT
->  (2) CAPTURE types use CROP targets, and OUTPUT types use COMPOSE targets
->
-> Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
-> Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
->
-> ---
->  drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c | 18 +++++++++---------
->  1 file changed, 9 insertions(+), 9 deletions(-)
->
-> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-> index 13afe48..8ab7ca0 100644
-> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-> @@ -837,12 +837,12 @@ static int mtk_mdp_m2m_g_selection(struct file *file, void *fh,
->         struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
->         bool valid = false;
->
-> -       if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE) {
-> -               if (mtk_mdp_is_target_compose(s->target))
-> -                       valid = true;
-> -       } else if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT) {
-> +       if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
->                 if (mtk_mdp_is_target_crop(s->target))
->                         valid = true;
-> +       } else if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
-> +               if (mtk_mdp_is_target_compose(s->target))
-> +                       valid = true;
->         }
->         if (!valid) {
->                 mtk_mdp_dbg(1, "[%d] invalid type:%d,%u", ctx->id, s->type,
-> @@ -907,12 +907,12 @@ static int mtk_mdp_m2m_s_selection(struct file *file, void *fh,
->         int ret;
->         bool valid = false;
->
-> -       if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE) {
-> -               if (s->target == V4L2_SEL_TGT_COMPOSE)
-> -                       valid = true;
-> -       } else if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT) {
-> +       if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
->                 if (s->target == V4L2_SEL_TGT_CROP)
->                         valid = true;
-> +       } else if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
-> +               if (s->target == V4L2_SEL_TGT_COMPOSE)
-> +                       valid = true;
->         }
->         if (!valid) {
->                 mtk_mdp_dbg(1, "[%d] invalid type:%d,%u", ctx->id, s->type,
-> @@ -925,7 +925,7 @@ static int mtk_mdp_m2m_s_selection(struct file *file, void *fh,
->         if (ret)
->                 return ret;
->
-> -       if (mtk_mdp_is_target_crop(s->target))
-> +       if (mtk_mdp_is_target_compose(s->target))
->                 frame = &ctx->s_frame;
->         else
->                 frame = &ctx->d_frame;
-> --
-> 1.9.1
->
+This patchset introduces support for Mediatek hardware random generator (RNG)
+Currently, the driver is already tested successfully with rng-tools on MT7623
+SoC. And it should also be workable on other similar Mediatek SoCs.
+
+SoC that also works on other similar SoCs. 
+Sean Wang (2):
+  dt-bindings: hwrng: Add Mediatek hardware random generator bindings
+  hwrng: mtk: Add driver for hardware random generator on MT7623 SoC
+
+ Documentation/devicetree/bindings/rng/mtk-rng.txt |  18 +++
+ drivers/char/hw_random/Kconfig                    |  16 +-
+ drivers/char/hw_random/Makefile                   |   2 +-
+ drivers/char/hw_random/mtk-rng.c                  | 174 ++++++++++++++++++++++
+ 4 files changed, 208 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/rng/mtk-rng.txt
+ create mode 100644 drivers/char/hw_random/mtk-rng.c
+
+-- 
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
