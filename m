@@ -1,69 +1,25 @@
-From: =?utf-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?=
-        <jiajie.hao@mediatek.com>
-Subject: =?utf-8?B?562U5aSNOiBbUEFUQ0hdIG1tYzogc2RpbzogRml4IHNkaW8gd2FpdCBidXN5?=
- =?utf-8?Q?_implement_limitation?=
-Date: Mon, 17 Apr 2017 08:36:00 +0000
-Message-ID: <013a85cdb0434870bfaeadf08373af97@MTKMBS31N1.mediatek.inc>
-References: <1492416571-28843-1-git-send-email-jiajie.hao@mediatek.com>
- <1492416571-28843-2-git-send-email-jiajie.hao@mediatek.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH v2 net 0/2] Fix crash caused by reporting inconsistent
+ skb->len to BQL
+Date: Mon, 17 Apr 2017 13:34:23 -0400 (EDT)
+Message-ID: <20170417.133423.1964068698419105282.davem@davemloft.net>
+References: <1492139952-8104-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1492416571-28843-2-git-send-email-jiajie.hao@mediatek.com>
-Content-Language: zh-CN
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?utf-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>, "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>
-Cc: "linus.walleij@linaro.org" <linus.walleij@linaro.org>, =?utf-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?= <Chaotian.Jing@mediatek.com>, =?utf-8?B?WW9uZyBNYW8gKOavm+WLhyk=?= <yong.mao@mediatek.com>, =?utf-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1492139952-8104-1-git-send-email-sean.wang@mediatek.com>
+Sender: netdev-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Q0M6IGxpbnV4LWFybS1rZXJuZWwNCg0KDQpNYW55IHRoYW5rcw0KSmlhamllLg0KDQotLS0tLemC
-ruS7tuWOn+S7ti0tLS0tDQrlj5Hku7bkuro6IGppYWppZS5oYW9AbWVkaWF0ZWsuY29tIFttYWls
-dG86amlhamllLmhhb0BtZWRpYXRlay5jb21dIA0K5Y+R6YCB5pe26Ze0OiAyMDE35bm0NOaciDE3
-5pelIDE2OjEwDQrmlLbku7bkuro6IHVsZi5oYW5zc29uQGxpbmFyby5vcmcNCuaKhOmAgTogbGlu
-dXMud2FsbGVpakBsaW5hcm8ub3JnOyBDaGFvdGlhbiBKaW5nICjkupXmnJ3lpKkpIDxDaGFvdGlh
-bi5KaW5nQG1lZGlhdGVrLmNvbT47IFlvbmcgTWFvICjmr5vli4cpIDx5b25nLm1hb0BtZWRpYXRl
-ay5jb20+OyBFZGRpZSBIdWFuZyAo6buD5pm65YKRKSA8ZWRkaWUuaHVhbmdAbWVkaWF0ZWsuY29t
-Pjsgc3J2X2hldXBzdHJlYW0gPHNydl9oZXVwc3RyZWFtQG1lZGlhdGVrLmNvbT47IGxpbnV4LW1t
-Y0B2Z2VyLmtlcm5lbC5vcmc7IGxpbnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmc7IGxpbnV4LW1l
-ZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmc7IGxpbnV4LWFybS1rZXJuZWxAbWVkaWF0ZWsuY29t
-OyBKaWFqaWUgSGFvICjpg53liqDoioIpIDxqaWFqaWUuaGFvQG1lZGlhdGVrLmNvbT4NCuS4u+mi
-mDogW1BBVENIXSBtbWM6IHNkaW86IEZpeCBzZGlvIHdhaXQgYnVzeSBpbXBsZW1lbnQgbGltaXRh
-dGlvbg0KDQpGcm9tOiBKaWFqaWUgSGFvIDxqaWFqaWUuaGFvQG1lZGlhdGVrLmNvbT4NCg0KVGhl
-IGhvc3QgbWF5IGlzc3VlIGFuIEkvTyBhYm9ydCBieSB3cml0aW5nIHRvIHRoZSBDQ0NSIGF0IGFu
-eSB0aW1lIGR1cmluZyBJL08gcmVhZCBvcGVyYXRpb24gdmlhIENNRDUyLiBBbmQgaG9zdCBtYXkg
-bmVlZCBzdXNwZW5kIHRyYW5zY2F0aW9uIGR1cmluZyB3cml0ZSBidXN5IHN0YWdlIGluIFNESU8g
-c3VzcGVuZC9yZXN1bWUgc2NlbmFyaW8uDQpGcm9tIG90aGVyIHNpZGUsIGEgY2FyZCBtYXkgYWNj
-ZXB0IENNRDUyIGR1cmluZyBkYXRhIHRyYW5zZmVyIHBoYXNlLg0KDQpQcmV2aW91cyBpbXBsZW1l
-bnQgd291bGQgYmxvY2sgaXNzdWluZyBhYm92ZSBjb21tYW5kIGluIGJ1c3kgc3RhZ2UuDQpJdCBj
-YXVzZSBmdW5jdGlvbiBkcml2ZXIgY2FuJ3QgaW1wbGVtZW50IGFzIHByb3BlciB3YXkgYW5kIGhh
-cyBubyBvcHBvcnR1bml0eSB0byBkbyBzb21lIGNvdmVyYWdlIGluIGVycm9yIGNhc2UgdmlhIEkv
-TyBhYm9ydCBldGMuDQoNCldlIG5lZWQgYnlwYXNzIHNvbWUgbmVjZXNzYXJ5IG9wZXJhdGlvbiBk
-dXJpbmcgYnVzeSBjaGVjayBzdGFnZS4NCg0KQ2hhbmdlLUlkOiBJYjVhNDU5OWEyYTk4Y2JjZjQ0
-MWI1NjRmNWY2ZmJiMTBjOGE1OWUxYg0KU2lnbmVkLW9mZi1ieTogSmlhamllIEhhbyA8amlhamll
-Lmhhb0BtZWRpYXRlay5jb20+DQotLS0NCiBkcml2ZXJzL21tYy9jb3JlL2NvcmUuYyAgICAgfCAg
-ICA0ICsrKy0NCiBkcml2ZXJzL21tYy9jb3JlL3NkaW9fb3BzLmggfCAgIDEwICsrKysrKysrKysN
-CiAyIGZpbGVzIGNoYW5nZWQsIDEzIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkNCg0KZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvbW1jL2NvcmUvY29yZS5jIGIvZHJpdmVycy9tbWMvY29yZS9jb3Jl
-LmMgaW5kZXggOTI2ZTBmZC4uOWM5YTRiYyAxMDA2NDQNCi0tLSBhL2RyaXZlcnMvbW1jL2NvcmUv
-Y29yZS5jDQorKysgYi9kcml2ZXJzL21tYy9jb3JlL2NvcmUuYw0KQEAgLTIzNCw4ICsyMzQsMTAg
-QEAgc3RhdGljIHZvaWQgX19tbWNfc3RhcnRfcmVxdWVzdChzdHJ1Y3QgbW1jX2hvc3QgKmhvc3Qs
-IHN0cnVjdCBtbWNfcmVxdWVzdCAqbXJxKQ0KIAkvKg0KIAkgKiBGb3Igc2RpbyBydyBjb21tYW5k
-cyB3ZSBtdXN0IHdhaXQgZm9yIGNhcmQgYnVzeSBvdGhlcndpc2Ugc29tZQ0KIAkgKiBzZGlvIGRl
-dmljZXMgd29uJ3Qgd29yayBwcm9wZXJseS4NCisJICogQW5kIGJ5cGFzcyBJL08gYWJvcnQsIHJl
-c2V0IGFuZCBidXMgc3VzcGVuZCBvcGVyYXRpb25zLg0KIAkgKi8NCi0JaWYgKG1tY19pc19pb19v
-cChtcnEtPmNtZC0+b3Bjb2RlKSAmJiBob3N0LT5vcHMtPmNhcmRfYnVzeSkgew0KKwlpZiAobW1j
-X2lzX2lvX29wKG1ycS0+Y21kLT5vcGNvZGUpICYmIGhvc3QtPm9wcy0+Y2FyZF9idXN5ICYmDQor
-CSAgICAhbW1jX2lzX2lvX2J5cGFzcyhtcnEtPmNtZC0+b3Bjb2RlLCBtcnEtPmNtZC0+YXJnKSkg
-ew0KIAkJaW50IHRyaWVzID0gNTAwOyAvKiBXYWl0IGFwcm94IDUwMG1zIGF0IG1heGltdW0gKi8N
-CiANCiAJCXdoaWxlIChob3N0LT5vcHMtPmNhcmRfYnVzeShob3N0KSAmJiAtLXRyaWVzKSBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9tbWMvY29yZS9zZGlvX29wcy5oIGIvZHJpdmVycy9tbWMvY29yZS9z
-ZGlvX29wcy5oIGluZGV4IGJlZDhhODMuLjk4OTY2OTYgMTAwNjQ0DQotLS0gYS9kcml2ZXJzL21t
-Yy9jb3JlL3NkaW9fb3BzLmgNCisrKyBiL2RyaXZlcnMvbW1jL2NvcmUvc2Rpb19vcHMuaA0KQEAg
-LTMxLDUgKzMxLDE1IEBAIHN0YXRpYyBpbmxpbmUgYm9vbCBtbWNfaXNfaW9fb3AodTMyIG9wY29k
-ZSkNCiAJcmV0dXJuIG9wY29kZSA9PSBTRF9JT19SV19ESVJFQ1QgfHwgb3Bjb2RlID09IFNEX0lP
-X1JXX0VYVEVOREVEOyAgfQ0KIA0KK3N0YXRpYyBpbmxpbmUgYm9vbCBtbWNfaXNfaW9fYnlwYXNz
-KHUzMiBvcGNvZGUsIHUzMiBhcmcpIHsNCisJdTMyIGFkZHI7DQorDQorCWFkZHIgPSAoYXJnID4+
-IDkpICYgMHgxRkZGRjsNCisNCisJcmV0dXJuICgob3Bjb2RlID09IFNEX0lPX1JXX0RJUkVDVCkg
-JiYNCisJCShhZGRyID09IFNESU9fQ0NDUl9BQk9SVCB8fCBhZGRyID09IFNESU9fQ0NDUl9TVVNQ
-RU5EKSk7IH0NCisNCiAjZW5kaWYNCiANCi0tDQoxLjcuOS41DQoNCg==
+From: <sean.wang@mediatek.com>
+Date: Fri, 14 Apr 2017 11:19:10 +0800
+
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> Changes since v1:
+> - fix inconsistent enumeration which easily causes the potential bug
+
+Series applied, thanks.
