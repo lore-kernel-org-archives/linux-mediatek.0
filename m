@@ -1,138 +1,73 @@
-From: Yong Mao <yong.mao@mediatek.com>
-Subject: [PATCH v2 2/3] ARM64: dts: mediatek: Enable mmc3 for supporting sdio
- feature
-Date: Tue, 18 Apr 2017 18:13:10 +0800
-Message-ID: <1492510391-704-3-git-send-email-yong.mao@mediatek.com>
-References: <1492510391-704-1-git-send-email-yong.mao@mediatek.com>
+From: Mauro Carvalho Chehab <mchehab@osg.samsung.com>
+Subject: Re: [PATCH] media: mtk-vcodec: remove informative log
+Date: Wed, 19 Apr 2017 07:56:43 -0300
+Message-ID: <20170419075643.0a04af21@vento.lan>
+References: <1491389669-32737-1-git-send-email-minghsiu.tsai@mediatek.com>
+        <1491390599.32502.1.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1492510391-704-1-git-send-email-yong.mao@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Linus Walleij <linus.walleij@linaro.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, yong mao <yong.mao@mediatek.com>, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <1491390599.32502.1.camel@mtksdaap41>
+Sender: linux-media-owner@vger.kernel.org
+To: Tiffany Lin <tiffany.lin@mediatek.com>
+Cc: Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Wu-Cheng Li <wuchengli@google.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: yong mao <yong.mao@mediatek.com>
+Em Wed, 5 Apr 2017 19:09:59 +0800
+Tiffany Lin <tiffany.lin@mediatek.com> escreveu:
 
-Add description of mmc3 for supporting sdio feature
+> On Wed, 2017-04-05 at 18:54 +0800, Minghsiu Tsai wrote:
+> > Driver is stable. Remove DEBUG definition from driver.
+> > 
+> > There are debug message in /var/log/messages if DEBUG is defined,
+> > such as:
+> > [MTK_V4L2] level=0 fops_vcodec_open(),170: decoder capability 0
+> > [MTK_V4L2] level=0 fops_vcodec_open(),177: 16000000.vcodec decoder [0]
+> > [MTK_V4L2] level=0 fops_vcodec_release(),200: [0] decoder
+> > 
+> > Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>  
+> Acked-by:Tiffany Lin <Tiffany.lin@mediatek.com>
+> 
+> > ---
+> >  drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h | 1 -
+> >  1 file changed, 1 deletion(-)
+> > 
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
+> > index 7d55975..1248083 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
+> > @@ -31,7 +31,6 @@ struct mtk_vcodec_mem {
+> >  extern int mtk_v4l2_dbg_level;
+> >  extern bool mtk_vcodec_dbg;
+> >  
+> > -#define DEBUG	1
+> >  
+> >  #if defined(DEBUG)
+> >    
 
-Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts |   77 +++++++++++++++++++++++++++
- 1 file changed, 77 insertions(+)
+After this patch, building the Kernel with W=1 now shows warnings:
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index 1c3634f..fb8fa5c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -68,6 +68,14 @@
- 		gpio = <&pio 9 GPIO_ACTIVE_HIGH>;
- 		enable-active-high;
- 	};
-+
-+	sdio_fixed_3v3: regulator@2 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "3V3";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		gpio = <&pio 85 GPIO_ACTIVE_HIGH>;
-+	};
- };
- 
- &cec {
-@@ -156,6 +164,25 @@
- 	vqmmc-supply = <&mt6397_vmc_reg>;
- };
- 
-+&mmc3 {
-+	status = "okay";
-+	pinctrl-names = "default", "state_uhs";
-+	pinctrl-0 = <&mmc3_pins_default>;
-+	pinctrl-1 = <&mmc3_pins_uhs>;
-+	bus-width = <4>;
-+	max-frequency = <200000000>;
-+	cap-sd-highspeed;
-+	sd-uhs-sdr50;
-+	sd-uhs-sdr104;
-+	mediatek,clk-pad-delay = <5>;
-+	keep-power-in-suspend;
-+	enable-sdio-wakeup;
-+	cap-sdio-irq;
-+	vmmc-supply = <&sdio_fixed_3v3>;
-+	vqmmc-supply = <&mt6397_vgp3_reg>;
-+	non-removable;
-+};
-+
- &pio {
- 	disp_pwm0_pins: disp_pwm0_pins {
- 		pins1 {
-@@ -261,6 +288,56 @@
- 		};
- 	};
- 
-+	mmc3_pins_default: mmc3default {
-+		pins_dat {
-+			pinmux = <MT8173_PIN_22_MSDC3_DAT0__FUNC_MSDC3_DAT0>,
-+				 <MT8173_PIN_23_MSDC3_DAT1__FUNC_MSDC3_DAT1>,
-+				 <MT8173_PIN_24_MSDC3_DAT2__FUNC_MSDC3_DAT2>,
-+				 <MT8173_PIN_25_MSDC3_DAT3__FUNC_MSDC3_DAT3>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pins_cmd {
-+			pinmux = <MT8173_PIN_27_MSDC3_CMD__FUNC_MSDC3_CMD>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pins_clk {
-+			pinmux = <MT8173_PIN_26_MSDC3_CLK__FUNC_MSDC3_CLK>;
-+			bias-pull-down;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+		};
-+	};
-+
-+	mmc3_pins_uhs: mmc3 {
-+		pins_dat {
-+			pinmux = <MT8173_PIN_22_MSDC3_DAT0__FUNC_MSDC3_DAT0>,
-+				 <MT8173_PIN_23_MSDC3_DAT1__FUNC_MSDC3_DAT1>,
-+				 <MT8173_PIN_24_MSDC3_DAT2__FUNC_MSDC3_DAT2>,
-+				 <MT8173_PIN_25_MSDC3_DAT3__FUNC_MSDC3_DAT3>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pins_cmd {
-+			pinmux = <MT8173_PIN_27_MSDC3_CMD__FUNC_MSDC3_CMD>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pins_clk {
-+			pinmux = <MT8173_PIN_26_MSDC3_CLK__FUNC_MSDC3_CLK>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+	};
-+
- 	usb_id_pins_float: usb_iddig_pull_up {
- 		pins_iddig {
- 			pinmux = <MT8173_PIN_16_IDDIG__FUNC_IDDIG>;
--- 
-1.7.9.5
+drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c: In function 'mtk_vcodec_dec_pw_on':
+drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c:114:51: warning: suggest braces around empty body in an 'if' statement [-Wempty-body]
+   mtk_v4l2_err("pm_runtime_get_sync fail %d", ret);
+                                                   ^
+
+I wrote a patch fixing it, as this is really a trivial issue.
+
+Yet, after that, this one still remains:
+
+
+drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c: In function 'mtk_vdec_pic_info_update':
+drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c:284:6: warning: variable 'ret' set but not used [-Wunused-but-set-variable]
+  int ret;
+      ^~~
+
+
+Shouldn't be mtk_vdec_pic_info_update() returning an error code?
+
+
+Also, IMHO, at least errors should be shown at dmesg.
+
+Thanks,
+Mauro
