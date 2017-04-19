@@ -1,56 +1,35 @@
-From: John Crispin <john@phrozen.org>
-Subject: Re: [PATCH 0/2] clk: mediatek: add missing ethernet reset definition
-Date: Wed, 19 Apr 2017 21:17:52 +0200
-Message-ID: <0753780a-0a08-e0b2-0eb0-c3272d7bc487@phrozen.org>
-References: <1485175707-58528-1-git-send-email-john@phrozen.org>
- <20170127001441.GS8801@codeaurora.org>
- <6803ef87-fb22-075c-bee1-3c0adb8e297d@phrozen.org>
- <20170419171835.GO7065@codeaurora.org>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] dt-bindings: hwrng: Add Mediatek hardware random
+ generator bindings
+Date: Wed, 19 Apr 2017 16:23:25 -0500
+Message-ID: <20170419212325.y3t2vohmsuhet2xu@rob-hp-laptop>
+References: <1492067108-14748-1-git-send-email-sean.wang@mediatek.com>
+ <1492067108-14748-2-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20170419171835.GO7065@codeaurora.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Michael Turquette <mturquette@baylibre.com>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1492067108-14748-2-git-send-email-sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org, mpm-VDJrAJ4Gl5ZBDgjK7y7TUQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, clabbe.montjoie-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, prasannatsmkumar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, romain.perier-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, shannon.nelson-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Thu, Apr 13, 2017 at 03:05:07PM +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> Document the devicetree bindings for Mediatek random number
+> generator which could be found on MT7623 SoC or other similar
+> Mediatek SoCs.
+> 
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/rng/mtk-rng.txt | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/rng/mtk-rng.txt
 
-
-On 19/04/17 19:18, Stephen Boyd wrote:
-> On 01/27, John Crispin wrote:
->>
->> On 27/01/2017 01:14, Stephen Boyd wrote:
->>> On 01/23, John Crispin wrote:
->>>> When the clk code for mt2701 was merged, we forgot to add the reset
->>>> controller of the ethernet subsystem. This series adds the missing code
->>>> and header files required to reference the bits from within a devicetree
->>>> file.
->>>>
->>>> John Crispin (2):
->>>>    clk: mediatek: add mt2701 ethernet reset
->>>>    reset: mediatek: Add MT2701 ethsys reset controller include file
->>>>
->>>>   drivers/clk/mediatek/clk-mt2701-eth.c     |    2 ++
->>>>   include/dt-bindings/reset/mt2701-resets.h |    7 +++++++
->>> Any planned DT users in the next merge window? Should I put this
->>> into a topic branch? Do you want a clk maintainer ack? At the
->>> least we need someone like James to ack this first.
->>>
->> Hi Stephen,
->>
->> the addition of the dtsi snippets for the ethernet core is pending due
->> to this patch. getting it into v4.11 would be geat so that i can sent
->> dtsi changes during the next merge window.
->>
-> Sorry, I never saw anything from anyone @mediatek so I never did
-> anything here. I suppose I'll just go and apply this to clk-next
-> now and then v4.13 can get the ethernet patches?
->
-Hi Stephen,
-
-sounds like a plan. i'll add the series to my local pending tree and 
-resend stuff during the next merge window if it was not merged by then.
-
-     John
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
