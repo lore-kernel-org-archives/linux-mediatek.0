@@ -1,53 +1,33 @@
-From: Mauro Carvalho Chehab <mchehab@s-opensource.com>
-Subject: [PATCH] [media] mtk-vcodec: avoid warnings because of empty macros
-Date: Wed, 19 Apr 2017 07:56:34 -0300
-Message-ID: <5bc3ebc3c6f57c2b30126f113bc35ec95c6f5b5d.1492599391.git.mchehab@s-opensource.com>
-Return-path: <linux-media-owner@vger.kernel.org>
-Sender: linux-media-owner@vger.kernel.org
-Cc: Mauro Carvalho Chehab <mchehab@s-opensource.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v4 05/10] clk: mediatek: add clk support for MT6797
+Date: Wed, 19 Apr 2017 09:19:00 -0700
+Message-ID: <20170419161900.GC7065@codeaurora.org>
+References: <1491614435-23754-1-git-send-email-mars.cheng@mediatek.com>
+ <1491614435-23754-6-git-send-email-mars.cheng@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1491614435-23754-6-git-send-email-mars.cheng@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mars Cheng <mars.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Kevin-CW Chen <kevin-cw.chen@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Remove those gcc warnings:
+On 04/08, Mars Cheng wrote:
+> From: Kevin-CW Chen <kevin-cw.chen@mediatek.com>
+> 
+> Add MT6797 clock support, include topckgen, apmixedsys, infracfg
+> and subsystem clocks
+> 
+> Signed-off-by: Kevin-CW Chen <kevin-cw.chen@mediatek.com>
+> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> Tested-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Acked-by: Stephen Boyd <sboyd@codeaurora.org>
+> ---
 
-	drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c: In function 'mtk_vcodec_dec_pw_on':
-	drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c:114:51: warning: suggest braces around empty body in an 'if' statement [-Wempty-body]
-	   mtk_v4l2_err("pm_runtime_get_sync fail %d", ret);
-	                                                   ^
+Applied to clk-next
 
-By adding braces.
-
-Signed-off-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
----
- drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
-index 12480837ff2e..237e144c194f 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
-@@ -66,15 +66,15 @@ extern bool mtk_vcodec_dbg;
- 
- #else
- 
--#define mtk_v4l2_debug(level, fmt, args...)
--#define mtk_v4l2_err(fmt, args...)
--#define mtk_v4l2_debug_enter()
--#define mtk_v4l2_debug_leave()
-+#define mtk_v4l2_debug(level, fmt, args...) {}
-+#define mtk_v4l2_err(fmt, args...) {}
-+#define mtk_v4l2_debug_enter() {}
-+#define mtk_v4l2_debug_leave() {}
- 
--#define mtk_vcodec_debug(h, fmt, args...)
--#define mtk_vcodec_err(h, fmt, args...)
--#define mtk_vcodec_debug_enter(h)
--#define mtk_vcodec_debug_leave(h)
-+#define mtk_vcodec_debug(h, fmt, args...) {}
-+#define mtk_vcodec_err(h, fmt, args...) {}
-+#define mtk_vcodec_debug_enter(h) {}
-+#define mtk_vcodec_debug_leave(h) {}
- 
- #endif
- 
 -- 
-2.9.3
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
