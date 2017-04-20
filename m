@@ -1,29 +1,87 @@
-From: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH] drm/mediatek: fix a loop timeout
-Date: Thu, 20 Apr 2017 14:53:15 +0300
-Message-ID: <20170420115315.eunpr3kj2eefhh6t@mwanda>
-References: <20170420102423.5yqe6uwohaeleyyl@mwanda>
- <1492686305.2158.51.camel@pengutronix.de>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH] mmc: sdio: Fix sdio wait busy implement limitation
+Date: Thu, 20 Apr 2017 15:27:16 +0200
+Message-ID: <CAPDyKFrDNBFV=1PtiopXoc+Zd7Tc-MZnR5k4za4Grbbs1aCP4Q@mail.gmail.com>
+References: <1492416571-28843-1-git-send-email-jiajie.hao@mediatek.com> <1492416571-28843-2-git-send-email-jiajie.hao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1492686305.2158.51.camel@pengutronix.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, shaoming chen <shaoming.chen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1492416571-28843-2-git-send-email-jiajie.hao@mediatek.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: jiajie.hao@mediatek.com
+Cc: Linus Walleij <linus.walleij@linaro.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Yong Mao <yong.mao@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SSdsbCBzZW5kIGEgdjIgdGhhdCBkb2VzIHRoYXQuCgpyZWdhcmRzLApkYW4gY2FycGVudGVyCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On 17 April 2017 at 10:09,  <jiajie.hao@mediatek.com> wrote:
+> From: Jiajie Hao <jiajie.hao@mediatek.com>
+>
+> The host may issue an I/O abort by writing to the CCCR at any time
+> during I/O read operation via CMD52. And host may need suspend
+> transcation during write busy stage in SDIO suspend/resume scenario.
+> From other side, a card may accept CMD52 during data transfer phase.
+>
+> Previous implement would block issuing above command in busy stage.
+> It cause function driver can't implement as proper way and has no
+> opportunity to do some coverage in error case via I/O abort etc.
+>
+> We need bypass some necessary operation during busy check stage.
+>
+> Change-Id: Ib5a4599a2a98cbcf441b564f5f6fbb10c8a59e1b
+
+Please remove this.
+
+> Signed-off-by: Jiajie Hao <jiajie.hao@mediatek.com>
+> ---
+>  drivers/mmc/core/core.c     |    4 +++-
+>  drivers/mmc/core/sdio_ops.h |   10 ++++++++++
+>  2 files changed, 13 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
+> index 926e0fd..9c9a4bc 100644
+> --- a/drivers/mmc/core/core.c
+> +++ b/drivers/mmc/core/core.c
+> @@ -234,8 +234,10 @@ static void __mmc_start_request(struct mmc_host *host, struct mmc_request *mrq)
+>         /*
+>          * For sdio rw commands we must wait for card busy otherwise some
+>          * sdio devices won't work properly.
+> +        * And bypass I/O abort, reset and bus suspend operations.
+>          */
+> -       if (mmc_is_io_op(mrq->cmd->opcode) && host->ops->card_busy) {
+> +       if (mmc_is_io_op(mrq->cmd->opcode) && host->ops->card_busy &&
+> +           !mmc_is_io_bypass(mrq->cmd->opcode, mrq->cmd->arg)) {
+
+Instead of adding yet another function, let's extend the existing
+mmc_is_io_op() to cover this new cases as well.
+
+Moreover, to be reflect the purpose of the function, I suggest we
+rename it from mmc_is_io_op() to sdio_is_op_busy().
+
+>                 int tries = 500; /* Wait aprox 500ms at maximum */
+>
+>                 while (host->ops->card_busy(host) && --tries)
+> diff --git a/drivers/mmc/core/sdio_ops.h b/drivers/mmc/core/sdio_ops.h
+> index bed8a83..9896696 100644
+> --- a/drivers/mmc/core/sdio_ops.h
+> +++ b/drivers/mmc/core/sdio_ops.h
+> @@ -31,5 +31,15 @@ static inline bool mmc_is_io_op(u32 opcode)
+>         return opcode == SD_IO_RW_DIRECT || opcode == SD_IO_RW_EXTENDED;
+>  }
+>
+> +static inline bool mmc_is_io_bypass(u32 opcode, u32 arg)
+> +{
+> +       u32 addr;
+> +
+> +       addr = (arg >> 9) & 0x1FFFF;
+> +
+> +       return ((opcode == SD_IO_RW_DIRECT) &&
+> +               (addr == SDIO_CCCR_ABORT || addr == SDIO_CCCR_SUSPEND));
+> +}
+> +
+>  #endif
+>
+> --
+> 1.7.9.5
+>
+
+Kind regards
+Uffe
