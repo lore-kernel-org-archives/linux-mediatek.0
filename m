@@ -1,12 +1,13 @@
-From: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: [PATCH] drm/mediatek: fix a loop timeout
-Date: Thu, 20 Apr 2017 13:24:23 +0300
-Message-ID: <20170420102423.5yqe6uwohaeleyyl@mwanda>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH] drm/mediatek: fix a loop timeout
+Date: Thu, 20 Apr 2017 13:05:05 +0200
+Message-ID: <1492686305.2158.51.camel@pengutronix.de>
+References: <20170420102423.5yqe6uwohaeleyyl@mwanda>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
+In-Reply-To: <20170420102423.5yqe6uwohaeleyyl@mwanda>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -16,23 +17,32 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>, shaoming chen <shaoming.chen@mediatek.com>
-Cc: kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, shaoming chen <shaoming.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-V2UgZXhwZWN0ZWQgdG8gZW5kIHdpdGggInRpbWVvdXRfbXMiIHNldCB0byB6ZXJvLCBidXQgaXQn
-cyBhIHBvc3Qtb3Agc28KdGhlIGN1cnJlbnQgY29kZSBlbmRzIHdpdGggLTEuICBMZXQncyBmaXgg
-dGhpcyBieSBjaGFuZ2luZyBpdCB0byBhCnByZS1vcC4KCkZpeGVzOiAyMTg5ODgxNjgzMWYgKCJk
-cm0vbWVkaWF0ZWs6IGFkZCBkc2kgdHJhbnNmZXIgZnVuY3Rpb24iKQpTaWduZWQtb2ZmLWJ5OiBE
-YW4gQ2FycGVudGVyIDxkYW4uY2FycGVudGVyQG9yYWNsZS5jb20+CgpkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHNpLmMKaW5kZXggODA4Yjk5NWE5OTBmLi4zYTBiNmQxMDU3YTIgMTAwNjQ0Ci0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKKysrIGIvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kc2kuYwpAQCAtOTAyLDcgKzkwMiw3IEBAIHN0YXRpYyB2b2lkIG10a19k
-c2lfd2FpdF9mb3JfaWRsZShzdHJ1Y3QgbXRrX2RzaSAqZHNpKQogewogCXUzMiB0aW1lb3V0X21z
-ID0gNTAwMDAwOyAvKiB0b3RhbCAxcyB+IDJzIHRpbWVvdXQgKi8KIAotCXdoaWxlICh0aW1lb3V0
-X21zLS0pIHsKKwl3aGlsZSAoLS10aW1lb3V0X21zKSB7CiAJCWlmICghKHJlYWRsKGRzaS0+cmVn
-cyArIERTSV9JTlRTVEEpICYgRFNJX0JVU1kpKQogCQkJYnJlYWs7CiAKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+SGkgRGFuLAoKT24gVGh1LCAyMDE3LTA0LTIwIGF0IDEzOjI0ICswMzAwLCBEYW4gQ2FycGVudGVy
+IHdyb3RlOgo+IFdlIGV4cGVjdGVkIHRvIGVuZCB3aXRoICJ0aW1lb3V0X21zIiBzZXQgdG8gemVy
+bywgYnV0IGl0J3MgYSBwb3N0LW9wIHNvCj4gdGhlIGN1cnJlbnQgY29kZSBlbmRzIHdpdGggLTEu
+ICBMZXQncyBmaXggdGhpcyBieSBjaGFuZ2luZyBpdCB0byBhCj4gcHJlLW9wLgo+IAo+IEZpeGVz
+OiAyMTg5ODgxNjgzMWYgKCJkcm0vbWVkaWF0ZWs6IGFkZCBkc2kgdHJhbnNmZXIgZnVuY3Rpb24i
+KQo+IFNpZ25lZC1vZmYtYnk6IERhbiBDYXJwZW50ZXIgPGRhbi5jYXJwZW50ZXJAb3JhY2xlLmNv
+bT4KCkluZGVlZCB3aXRob3V0IHRoaXMgcGF0Y2ggdGhlIHRpbWVvdXQgZXJyb3IgcGF0aCBpcyBv
+bmx5IGV2ZXIgY2hvc2VuIGlmCnRoZSBidXN5IGJpdCBoYXBwZW5lZCB0byBmbGlwIGV4YWN0bHkg
+aW4gdGhlIGxhc3QgaXRlcmF0aW9uIG9mIHRoZSBsb29wLgoKQWNrZWQtYnk6IFBoaWxpcHAgWmFi
+ZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+Cgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RzaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2ku
+Ywo+IGluZGV4IDgwOGI5OTVhOTkwZi4uM2EwYjZkMTA1N2EyIDEwMDY0NAo+IC0tLSBhL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RzaS5jCj4gQEAgLTkwMiw3ICs5MDIsNyBAQCBzdGF0aWMgdm9pZCBtdGtfZHNp
+X3dhaXRfZm9yX2lkbGUoc3RydWN0IG10a19kc2kgKmRzaSkKPiAgewo+ICAJdTMyIHRpbWVvdXRf
+bXMgPSA1MDAwMDA7IC8qIHRvdGFsIDFzIH4gMnMgdGltZW91dCAqLwo+ICAKPiAtCXdoaWxlICh0
+aW1lb3V0X21zLS0pIHsKPiArCXdoaWxlICgtLXRpbWVvdXRfbXMpIHsKPiAgCQlpZiAoIShyZWFk
+bChkc2ktPnJlZ3MgKyBEU0lfSU5UU1RBKSAmIERTSV9CVVNZKSkKPiAgCQkJYnJlYWs7Cj4gIAo+
+IAoKSW5zdGVhZCBvZiBqdXN0IGNhbGxpbmcgdXNsZWVwX3JhbmdlKDIsIDQpIHVwIHRvIDUwMDAw
+MCB0aW1lcyBpbiB0aGlzCm9wZW4gY29kZWQgbG9vcCwgdGhpcyBzaG91bGQgYmUgcmVwbGFjZWQg
+d2l0aCBhIHNpbmdsZSBjYWxsIHRvCnJlYWRsX3BvbGxfdGltZW91dCgpIHRob3VnaC4KCnJlZ2Fy
+ZHMKUGhpbGlwcAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Cg==
