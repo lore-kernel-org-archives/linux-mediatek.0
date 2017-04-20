@@ -1,13 +1,15 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
+From: Dan Carpenter <dan.carpenter@oracle.com>
 Subject: Re: [PATCH] drm/mediatek: fix a loop timeout
-Date: Thu, 20 Apr 2017 13:05:05 +0200
-Message-ID: <1492686305.2158.51.camel@pengutronix.de>
+Date: Thu, 20 Apr 2017 14:53:15 +0300
+Message-ID: <20170420115315.eunpr3kj2eefhh6t@mwanda>
 References: <20170420102423.5yqe6uwohaeleyyl@mwanda>
+ <1492686305.2158.51.camel@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170420102423.5yqe6uwohaeleyyl@mwanda>
+Content-Disposition: inline
+In-Reply-To: <1492686305.2158.51.camel@pengutronix.de>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -17,32 +19,11 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Dan Carpenter <dan.carpenter@oracle.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>
 Cc: kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, shaoming chen <shaoming.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgRGFuLAoKT24gVGh1LCAyMDE3LTA0LTIwIGF0IDEzOjI0ICswMzAwLCBEYW4gQ2FycGVudGVy
-IHdyb3RlOgo+IFdlIGV4cGVjdGVkIHRvIGVuZCB3aXRoICJ0aW1lb3V0X21zIiBzZXQgdG8gemVy
-bywgYnV0IGl0J3MgYSBwb3N0LW9wIHNvCj4gdGhlIGN1cnJlbnQgY29kZSBlbmRzIHdpdGggLTEu
-ICBMZXQncyBmaXggdGhpcyBieSBjaGFuZ2luZyBpdCB0byBhCj4gcHJlLW9wLgo+IAo+IEZpeGVz
-OiAyMTg5ODgxNjgzMWYgKCJkcm0vbWVkaWF0ZWs6IGFkZCBkc2kgdHJhbnNmZXIgZnVuY3Rpb24i
-KQo+IFNpZ25lZC1vZmYtYnk6IERhbiBDYXJwZW50ZXIgPGRhbi5jYXJwZW50ZXJAb3JhY2xlLmNv
-bT4KCkluZGVlZCB3aXRob3V0IHRoaXMgcGF0Y2ggdGhlIHRpbWVvdXQgZXJyb3IgcGF0aCBpcyBv
-bmx5IGV2ZXIgY2hvc2VuIGlmCnRoZSBidXN5IGJpdCBoYXBwZW5lZCB0byBmbGlwIGV4YWN0bHkg
-aW4gdGhlIGxhc3QgaXRlcmF0aW9uIG9mIHRoZSBsb29wLgoKQWNrZWQtYnk6IFBoaWxpcHAgWmFi
-ZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+Cgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RzaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2ku
-Ywo+IGluZGV4IDgwOGI5OTVhOTkwZi4uM2EwYjZkMTA1N2EyIDEwMDY0NAo+IC0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RzaS5jCj4gQEAgLTkwMiw3ICs5MDIsNyBAQCBzdGF0aWMgdm9pZCBtdGtfZHNp
-X3dhaXRfZm9yX2lkbGUoc3RydWN0IG10a19kc2kgKmRzaSkKPiAgewo+ICAJdTMyIHRpbWVvdXRf
-bXMgPSA1MDAwMDA7IC8qIHRvdGFsIDFzIH4gMnMgdGltZW91dCAqLwo+ICAKPiAtCXdoaWxlICh0
-aW1lb3V0X21zLS0pIHsKPiArCXdoaWxlICgtLXRpbWVvdXRfbXMpIHsKPiAgCQlpZiAoIShyZWFk
-bChkc2ktPnJlZ3MgKyBEU0lfSU5UU1RBKSAmIERTSV9CVVNZKSkKPiAgCQkJYnJlYWs7Cj4gIAo+
-IAoKSW5zdGVhZCBvZiBqdXN0IGNhbGxpbmcgdXNsZWVwX3JhbmdlKDIsIDQpIHVwIHRvIDUwMDAw
-MCB0aW1lcyBpbiB0aGlzCm9wZW4gY29kZWQgbG9vcCwgdGhpcyBzaG91bGQgYmUgcmVwbGFjZWQg
-d2l0aCBhIHNpbmdsZSBjYWxsIHRvCnJlYWRsX3BvbGxfdGltZW91dCgpIHRob3VnaC4KCnJlZ2Fy
-ZHMKUGhpbGlwcAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-Cg==
+SSdsbCBzZW5kIGEgdjIgdGhhdCBkb2VzIHRoYXQuCgpyZWdhcmRzLApkYW4gY2FycGVudGVyCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
