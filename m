@@ -1,30 +1,56 @@
-From: Herbert Xu <herbert@gondor.apana.org.au>
-Subject: Re: [PATCH v2 0/2] hwrng: mtk: add support for hardware random
- generator on MT7623 SoC
-Date: Fri, 21 Apr 2017 21:16:53 +0800
-Message-ID: <20170421131653.GI14803@gondor.apana.org.au>
-References: <1492705466-27287-1-git-send-email-sean.wang@mediatek.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH v2] drm/mediatek: fix a timeout loop
+Date: Fri, 21 Apr 2017 15:48:26 +0200
+Message-ID: <1492782506.2364.2.camel@pengutronix.de>
+References: <20170421105143.jbzvbsremnu6ltgp@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-crypto-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1492705466-27287-1-git-send-email-sean.wang@mediatek.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: mpm@selenic.com, robh+dt@kernel.org, mark.rutland@arm.com, clabbe.montjoie@gmail.com, prasannatsmkumar@gmail.com, romain.perier@free-electrons.com, shannon.nelson@oracle.com, weiyongjun1@huawei.com, devicetree@vger.kernel.org, linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170421105143.jbzvbsremnu6ltgp@mwanda>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, shaoming chen <shaoming.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Apr 21, 2017 at 12:24:24AM +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> This patchset introduces support for Mediatek hardware random generator (RNG)
-> Currently, the driver is already tested successfully with rng-tools on MT7623
-> SoC. And it should also be workable on other similar Mediatek SoCs.
-> 
-> Changes since v1:
-
-All applied.  Thanks.
--- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+T24gRnJpLCAyMDE3LTA0LTIxIGF0IDEzOjUxICswMzAwLCBEYW4gQ2FycGVudGVyIHdyb3RlOgo+
+IFRoaXMgY29kZSBjYXVzZXMgYSBzdGF0aWMgY2hlY2tlciB3YXJuaW5nIGJlY2F1c2UgaXQgdHJl
+YXRzICJpID09IDAiIGFzCj4gYSB0aW1lb3V0IGJ1dCwgYmVjYXVzZSBpdCdzIGEgcG9zdC1vcCwg
+dGhlIGxvb3AgYWN0dWFsbHkgZW5kcyB3aXRoICJpIgo+IHNldCB0byAtMS4gIFBoaWxpcHAgWmFi
+ZWwgcG9pbnRzIG91dCB0aGF0IGl0IHdvdWxkIGJlIGNsZWFuZXIgdG8gdXNlCj4gcmVhZGxfcG9s
+bF90aW1lb3V0KCkgaW5zdGVhZC4KPiAKPiBGaXhlczogMjE4OTg4MTY4MzFmICgiZHJtL21lZGlh
+dGVrOiBhZGQgZHNpIHRyYW5zZmVyIGZ1bmN0aW9uIikKPiBTaWduZWQtb2ZmLWJ5OiBEYW4gQ2Fy
+cGVudGVyIDxkYW4uY2FycGVudGVyQG9yYWNsZS5jb20+CgpSZXZpZXdlZC1ieTogUGhpbGlwcCBa
+YWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4KCj4gLS0tCj4gdjI6IFVzZSByZWFkbF9wb2xs
+X3RpbWVvdXQoKS4gIFBsZWFzZSByZXZpZXcgdGhpcyBjYXJlZnVsbHkgYmVjYXVzZSBJJ3ZlCj4g
+bmV2ZXIgdXNlZCByZWFkbF9wb2xsX3RpbWVvdXQoKSBhbmQgY291bGQgZWFzaWx5IG1lc3MgdXAu
+Cj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gaW5kZXggODA4Yjk5NWE5OTBmLi5i
+NWNjNmUxMjMzNGMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+c2kuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiBAQCAtMTks
+NiArMTksNyBAQAo+ICAjaW5jbHVkZSA8ZHJtL2RybV9vZi5oPgo+ICAjaW5jbHVkZSA8bGludXgv
+Y2xrLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4KPiArI2luY2x1ZGUgPGxpbnV4
+L2lvcG9sbC5oPgo+ICAjaW5jbHVkZSA8bGludXgvaXJxLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9v
+Zi5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4KPiBAQCAtOTAwLDE2ICs5MDEs
+MTIgQEAgc3RhdGljIGludCBtdGtfZHNpX2hvc3RfZGV0YWNoKHN0cnVjdCBtaXBpX2RzaV9ob3N0
+ICpob3N0LAo+ICAKPiAgc3RhdGljIHZvaWQgbXRrX2RzaV93YWl0X2Zvcl9pZGxlKHN0cnVjdCBt
+dGtfZHNpICpkc2kpCj4gIHsKPiAtCXUzMiB0aW1lb3V0X21zID0gNTAwMDAwOyAvKiB0b3RhbCAx
+cyB+IDJzIHRpbWVvdXQgKi8KPiAtCj4gLQl3aGlsZSAodGltZW91dF9tcy0tKSB7Cj4gLQkJaWYg
+KCEocmVhZGwoZHNpLT5yZWdzICsgRFNJX0lOVFNUQSkgJiBEU0lfQlVTWSkpCj4gLQkJCWJyZWFr
+Owo+IC0KPiAtCQl1c2xlZXBfcmFuZ2UoMiwgNCk7Cj4gLQl9Cj4gKwlpbnQgcmV0Owo+ICsJdTMy
+IHZhbDsKPiAgCj4gLQlpZiAodGltZW91dF9tcyA9PSAwKSB7Cj4gKwlyZXQgPSByZWFkbF9wb2xs
+X3RpbWVvdXQoZHNpLT5yZWdzICsgRFNJX0lOVFNUQSwgdmFsLCAhKHZhbCAmIERTSV9CVVNZKSwK
+PiArCQkJCSA0LCAyMDAwMDAwKTsKPiArCWlmIChyZXQpIHsKPiAgCQlEUk1fV0FSTigicG9sbGlu
+ZyBkc2kgd2FpdCBub3QgYnVzeSB0aW1lb3V0IVxuIik7Cj4gIAo+ICAJCW10a19kc2lfZW5hYmxl
+KGRzaSk7Cj4gCgpyZWdhcmRzClBoaWxpcHAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaS1kZXZlbAo=
