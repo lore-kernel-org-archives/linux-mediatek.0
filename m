@@ -1,90 +1,51 @@
-From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: Re: [PATCH] media: mtk-vcodec: remove informative log
-Date: Fri, 21 Apr 2017 16:04:14 +0800
-Message-ID: <1492761854.12924.7.camel@mtksdaap41>
-References: <1491389669-32737-1-git-send-email-minghsiu.tsai@mediatek.com>
- <1491390599.32502.1.camel@mtksdaap41> <20170419075643.0a04af21@vento.lan>
+From: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: [PATCH v2] drm/mediatek: fix a timeout loop
+Date: Fri, 21 Apr 2017 13:51:43 +0300
+Message-ID: <20170421105143.jbzvbsremnu6ltgp@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170419075643.0a04af21@vento.lan>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Mauro Carvalho Chehab <mchehab@osg.samsung.com>
-Cc: devicetree@vger.kernel.org, daniel.thompson@linaro.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, srv_heupstream@mediatek.com, Wu-Cheng Li <wuchengli@google.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, Rob Herring <robh+dt@kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Pawel Osciak <posciak@chromium.org>, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>, shaoming chen <shaoming.chen@mediatek.com>
+Cc: kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-04-19 at 07:56 -0300, Mauro Carvalho Chehab wrote:
-> Em Wed, 5 Apr 2017 19:09:59 +0800
-> Tiffany Lin <tiffany.lin@mediatek.com> escreveu:
-> 
-> > On Wed, 2017-04-05 at 18:54 +0800, Minghsiu Tsai wrote:
-> > > Driver is stable. Remove DEBUG definition from driver.
-> > > 
-> > > There are debug message in /var/log/messages if DEBUG is defined,
-> > > such as:
-> > > [MTK_V4L2] level=0 fops_vcodec_open(),170: decoder capability 0
-> > > [MTK_V4L2] level=0 fops_vcodec_open(),177: 16000000.vcodec decoder [0]
-> > > [MTK_V4L2] level=0 fops_vcodec_release(),200: [0] decoder
-> > > 
-> > > Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>  
-> > Acked-by:Tiffany Lin <Tiffany.lin@mediatek.com>
-> > 
-> > > ---
-> > >  drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h | 1 -
-> > >  1 file changed, 1 deletion(-)
-> > > 
-> > > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
-> > > index 7d55975..1248083 100644
-> > > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
-> > > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
-> > > @@ -31,7 +31,6 @@ struct mtk_vcodec_mem {
-> > >  extern int mtk_v4l2_dbg_level;
-> > >  extern bool mtk_vcodec_dbg;
-> > >  
-> > > -#define DEBUG	1
-> > >  
-> > >  #if defined(DEBUG)
-> > >    
-> 
-> After this patch, building the Kernel with W=1 now shows warnings:
-> 
-> drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c: In function 'mtk_vcodec_dec_pw_on':
-> drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c:114:51: warning: suggest braces around empty body in an 'if' statement [-Wempty-body]
->    mtk_v4l2_err("pm_runtime_get_sync fail %d", ret);
->                                                    ^
-> 
-> I wrote a patch fixing it, as this is really a trivial issue.
-> 
-> Yet, after that, this one still remains:
-> 
-> 
-> drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c: In function 'mtk_vdec_pic_info_update':
-> drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c:284:6: warning: variable 'ret' set but not used [-Wunused-but-set-variable]
->   int ret;
->       ^~~
-> 
-
-
-> 
-> Shouldn't be mtk_vdec_pic_info_update() returning an error code?
-> 
-> 
-> Also, IMHO, at least errors should be shown at dmesg.
-> 
-Got it. We will upstream patch to fix warning and add dmesg when error.
-
-
-best regards,
-Tiffany
-
-> Thanks,
-> Mauro
+VGhpcyBjb2RlIGNhdXNlcyBhIHN0YXRpYyBjaGVja2VyIHdhcm5pbmcgYmVjYXVzZSBpdCB0cmVh
+dHMgImkgPT0gMCIgYXMKYSB0aW1lb3V0IGJ1dCwgYmVjYXVzZSBpdCdzIGEgcG9zdC1vcCwgdGhl
+IGxvb3AgYWN0dWFsbHkgZW5kcyB3aXRoICJpIgpzZXQgdG8gLTEuICBQaGlsaXBwIFphYmVsIHBv
+aW50cyBvdXQgdGhhdCBpdCB3b3VsZCBiZSBjbGVhbmVyIHRvIHVzZQpyZWFkbF9wb2xsX3RpbWVv
+dXQoKSBpbnN0ZWFkLgoKRml4ZXM6IDIxODk4ODE2ODMxZiAoImRybS9tZWRpYXRlazogYWRkIGRz
+aSB0cmFuc2ZlciBmdW5jdGlvbiIpClNpZ25lZC1vZmYtYnk6IERhbiBDYXJwZW50ZXIgPGRhbi5j
+YXJwZW50ZXJAb3JhY2xlLmNvbT4KLS0tCnYyOiBVc2UgcmVhZGxfcG9sbF90aW1lb3V0KCkuICBQ
+bGVhc2UgcmV2aWV3IHRoaXMgY2FyZWZ1bGx5IGJlY2F1c2UgSSd2ZQpuZXZlciB1c2VkIHJlYWRs
+X3BvbGxfdGltZW91dCgpIGFuZCBjb3VsZCBlYXNpbHkgbWVzcyB1cC4KCmRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kc2kuYwppbmRleCA4MDhiOTk1YTk5MGYuLmI1Y2M2ZTEyMzM0YyAxMDA2NDQKLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYworKysgYi9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RzaS5jCkBAIC0xOSw2ICsxOSw3IEBACiAjaW5jbHVkZSA8ZHJtL2Ry
+bV9vZi5oPgogI2luY2x1ZGUgPGxpbnV4L2Nsay5oPgogI2luY2x1ZGUgPGxpbnV4L2NvbXBvbmVu
+dC5oPgorI2luY2x1ZGUgPGxpbnV4L2lvcG9sbC5oPgogI2luY2x1ZGUgPGxpbnV4L2lycS5oPgog
+I2luY2x1ZGUgPGxpbnV4L29mLmg+CiAjaW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4KQEAg
+LTkwMCwxNiArOTAxLDEyIEBAIHN0YXRpYyBpbnQgbXRrX2RzaV9ob3N0X2RldGFjaChzdHJ1Y3Qg
+bWlwaV9kc2lfaG9zdCAqaG9zdCwKIAogc3RhdGljIHZvaWQgbXRrX2RzaV93YWl0X2Zvcl9pZGxl
+KHN0cnVjdCBtdGtfZHNpICpkc2kpCiB7Ci0JdTMyIHRpbWVvdXRfbXMgPSA1MDAwMDA7IC8qIHRv
+dGFsIDFzIH4gMnMgdGltZW91dCAqLwotCi0Jd2hpbGUgKHRpbWVvdXRfbXMtLSkgewotCQlpZiAo
+IShyZWFkbChkc2ktPnJlZ3MgKyBEU0lfSU5UU1RBKSAmIERTSV9CVVNZKSkKLQkJCWJyZWFrOwot
+Ci0JCXVzbGVlcF9yYW5nZSgyLCA0KTsKLQl9CisJaW50IHJldDsKKwl1MzIgdmFsOwogCi0JaWYg
+KHRpbWVvdXRfbXMgPT0gMCkgeworCXJldCA9IHJlYWRsX3BvbGxfdGltZW91dChkc2ktPnJlZ3Mg
+KyBEU0lfSU5UU1RBLCB2YWwsICEodmFsICYgRFNJX0JVU1kpLAorCQkJCSA0LCAyMDAwMDAwKTsK
+KwlpZiAocmV0KSB7CiAJCURSTV9XQVJOKCJwb2xsaW5nIGRzaSB3YWl0IG5vdCBidXN5IHRpbWVv
+dXQhXG4iKTsKIAogCQltdGtfZHNpX2VuYWJsZShkc2kpOwpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
