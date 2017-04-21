@@ -1,51 +1,30 @@
-From: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: [PATCH v2] drm/mediatek: fix a timeout loop
-Date: Fri, 21 Apr 2017 13:51:43 +0300
-Message-ID: <20170421105143.jbzvbsremnu6ltgp@mwanda>
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Subject: Re: [PATCH v2 0/2] hwrng: mtk: add support for hardware random
+ generator on MT7623 SoC
+Date: Fri, 21 Apr 2017 21:16:53 +0800
+Message-ID: <20170421131653.GI14803@gondor.apana.org.au>
+References: <1492705466-27287-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-crypto-owner@vger.kernel.org>
 Content-Disposition: inline
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>, shaoming chen <shaoming.chen@mediatek.com>
-Cc: kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <1492705466-27287-1-git-send-email-sean.wang@mediatek.com>
+Sender: linux-crypto-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: mpm@selenic.com, robh+dt@kernel.org, mark.rutland@arm.com, clabbe.montjoie@gmail.com, prasannatsmkumar@gmail.com, romain.perier@free-electrons.com, shannon.nelson@oracle.com, weiyongjun1@huawei.com, devicetree@vger.kernel.org, linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhpcyBjb2RlIGNhdXNlcyBhIHN0YXRpYyBjaGVja2VyIHdhcm5pbmcgYmVjYXVzZSBpdCB0cmVh
-dHMgImkgPT0gMCIgYXMKYSB0aW1lb3V0IGJ1dCwgYmVjYXVzZSBpdCdzIGEgcG9zdC1vcCwgdGhl
-IGxvb3AgYWN0dWFsbHkgZW5kcyB3aXRoICJpIgpzZXQgdG8gLTEuICBQaGlsaXBwIFphYmVsIHBv
-aW50cyBvdXQgdGhhdCBpdCB3b3VsZCBiZSBjbGVhbmVyIHRvIHVzZQpyZWFkbF9wb2xsX3RpbWVv
-dXQoKSBpbnN0ZWFkLgoKRml4ZXM6IDIxODk4ODE2ODMxZiAoImRybS9tZWRpYXRlazogYWRkIGRz
-aSB0cmFuc2ZlciBmdW5jdGlvbiIpClNpZ25lZC1vZmYtYnk6IERhbiBDYXJwZW50ZXIgPGRhbi5j
-YXJwZW50ZXJAb3JhY2xlLmNvbT4KLS0tCnYyOiBVc2UgcmVhZGxfcG9sbF90aW1lb3V0KCkuICBQ
-bGVhc2UgcmV2aWV3IHRoaXMgY2FyZWZ1bGx5IGJlY2F1c2UgSSd2ZQpuZXZlciB1c2VkIHJlYWRs
-X3BvbGxfdGltZW91dCgpIGFuZCBjb3VsZCBlYXNpbHkgbWVzcyB1cC4KCmRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kc2kuYwppbmRleCA4MDhiOTk1YTk5MGYuLmI1Y2M2ZTEyMzM0YyAxMDA2NDQKLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYworKysgYi9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RzaS5jCkBAIC0xOSw2ICsxOSw3IEBACiAjaW5jbHVkZSA8ZHJtL2Ry
-bV9vZi5oPgogI2luY2x1ZGUgPGxpbnV4L2Nsay5oPgogI2luY2x1ZGUgPGxpbnV4L2NvbXBvbmVu
-dC5oPgorI2luY2x1ZGUgPGxpbnV4L2lvcG9sbC5oPgogI2luY2x1ZGUgPGxpbnV4L2lycS5oPgog
-I2luY2x1ZGUgPGxpbnV4L29mLmg+CiAjaW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4KQEAg
-LTkwMCwxNiArOTAxLDEyIEBAIHN0YXRpYyBpbnQgbXRrX2RzaV9ob3N0X2RldGFjaChzdHJ1Y3Qg
-bWlwaV9kc2lfaG9zdCAqaG9zdCwKIAogc3RhdGljIHZvaWQgbXRrX2RzaV93YWl0X2Zvcl9pZGxl
-KHN0cnVjdCBtdGtfZHNpICpkc2kpCiB7Ci0JdTMyIHRpbWVvdXRfbXMgPSA1MDAwMDA7IC8qIHRv
-dGFsIDFzIH4gMnMgdGltZW91dCAqLwotCi0Jd2hpbGUgKHRpbWVvdXRfbXMtLSkgewotCQlpZiAo
-IShyZWFkbChkc2ktPnJlZ3MgKyBEU0lfSU5UU1RBKSAmIERTSV9CVVNZKSkKLQkJCWJyZWFrOwot
-Ci0JCXVzbGVlcF9yYW5nZSgyLCA0KTsKLQl9CisJaW50IHJldDsKKwl1MzIgdmFsOwogCi0JaWYg
-KHRpbWVvdXRfbXMgPT0gMCkgeworCXJldCA9IHJlYWRsX3BvbGxfdGltZW91dChkc2ktPnJlZ3Mg
-KyBEU0lfSU5UU1RBLCB2YWwsICEodmFsICYgRFNJX0JVU1kpLAorCQkJCSA0LCAyMDAwMDAwKTsK
-KwlpZiAocmV0KSB7CiAJCURSTV9XQVJOKCJwb2xsaW5nIGRzaSB3YWl0IG5vdCBidXN5IHRpbWVv
-dXQhXG4iKTsKIAogCQltdGtfZHNpX2VuYWJsZShkc2kpOwpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Fri, Apr 21, 2017 at 12:24:24AM +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> This patchset introduces support for Mediatek hardware random generator (RNG)
+> Currently, the driver is already tested successfully with rng-tools on MT7623
+> SoC. And it should also be workable on other similar Mediatek SoCs.
+> 
+> Changes since v1:
+
+All applied.  Thanks.
+-- 
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
