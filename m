@@ -1,56 +1,106 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH] ASoC: mediatek: add I2C dependency for
-	CS42XX8
-Date: Fri, 21 Apr 2017 10:10:38 +0800
-Message-ID: <1492740638.23218.0.camel@mtkswgap22>
-References: <20170420081541.658178-1-arnd@arndb.de>
+From: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Subject: Re: [PATCH 1/3] dt-bindings: mt8173: Fix mdp device tree
+Date: Fri, 21 Apr 2017 12:06:10 +0800
+Message-ID: <1492747570.25908.36.camel@mtksdaap41>
+References: <1492068787-17838-1-git-send-email-minghsiu.tsai@mediatek.com>
+         <1492068787-17838-2-git-send-email-minghsiu.tsai@mediatek.com>
+         <20170419213540.4vigeed3mx24ie4e@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170420081541.658178-1-arnd@arndb.de>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Koro Chen <koro.chen@mediatek.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Garlic Tseng <garlic.tseng@mediatek.com>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170419213540.4vigeed3mx24ie4e@rob-hp-laptop>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Houlong Wei <houlong.wei@mediatek.com>, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Wu-Cheng Li <wuchengli@google.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-04-20 at 10:15 +0200, Arnd Bergmann wrote:
-> We should not select drivers that depend on I2C when that is disabled,
-> as it results in a build error:
+On Wed, 2017-04-19 at 16:35 -0500, Rob Herring wrote:
+> On Thu, Apr 13, 2017 at 03:33:05PM +0800, Minghsiu Tsai wrote:
+> > If the mdp_* nodes are under an mdp sub-node, their corresponding
+> > platform device does not automatically get its iommu assigned properly.
+> > 
+> > Fix this by moving the mdp component nodes up a level such that they are
+> > siblings of mdp and all other SoC subsystems.  This also simplifies the
+> > device tree.
 > 
-> warning: (SND_SOC_MT2701_WM8960) selects SND_SOC_WM8960 which has unmet direct dependencies (SOUND && !M68K && !UML && SND && SND_SOC && I2C)
-> sound/soc/codecs/wm8960.c:1469:1: error: data definition has no type or storage class [-Werror]
-> sound/soc/codecs/wm8960.c:1469:1: error: type defaults to 'int' in declaration of 'module_i2c_driver' [-Werror=implicit-int]
+> It may simplify the DT, but it also breaks compatibility with old DT. 
+> Not sure if that's a problem on Mediatek platforms, but please be 
+> explicit here that you are breaking compatibility and why that is okay.
 > 
-> Fixes: 8625c1dbd876 ("ASoC: mediatek: Add mt2701-wm8960 machine driver")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
->  sound/soc/mediatek/Kconfig | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+
+I will add the following description for more information.
+"
+Although it fixes iommu assignment issue, it also break compatibility
+with old device tree, so driver patch[1] is needed to iterate over
+sibling mdp device nodes, not child ones, to keep driver work properly.
+In mtk_mdp_probe()
+Old: for_each_child_of_node(dev->of_node, node)
+New: for_each_child_of_node(dev->of_node->parent, node)
+
+[1]https://patchwork.kernel.org/patch/9678833/
+"
+
+> > 
+> > Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+> > Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
 > 
-> diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-> index c6f39040f71f..5c68797f36c4 100644
-> --- a/sound/soc/mediatek/Kconfig
-> +++ b/sound/soc/mediatek/Kconfig
-> @@ -24,7 +24,7 @@ config SND_SOC_MT2701_CS42448
->  
->  config SND_SOC_MT2701_WM8960
->  	tristate "ASoc Audio driver for MT2701 with WM8960 codec"
-> -	depends on SND_SOC_MT2701
-> +	depends on SND_SOC_MT2701 && I2C
->  	select SND_SOC_WM8960
->  	help
->  	  This adds ASoC driver for Mediatek MT2701 boards
+> Should this have Daniel as the author?
+
+This patch is provided by Daniel, so I keep he is the author.
+I just split his patch into two parts. One is dts only, and the other is
+for driver. I also provide another patch to modify dts bindings
+according to this patch.
 
 
-Acked-by: Ryder Lee <ryder.lee@mediatek.com>
-
-Thanks
+> 
+> > 
+> > ---
+> >  Documentation/devicetree/bindings/media/mediatek-mdp.txt | 12 +++---------
+> >  1 file changed, 3 insertions(+), 9 deletions(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/media/mediatek-mdp.txt b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
+> > index 4182063..0d03e3a 100644
+> > --- a/Documentation/devicetree/bindings/media/mediatek-mdp.txt
+> > +++ b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
+> > @@ -2,7 +2,7 @@
+> >  
+> >  Media Data Path is used for scaling and color space conversion.
+> >  
+> > -Required properties (controller (parent) node):
+> > +Required properties (controller node):
+> >  - compatible: "mediatek,mt8173-mdp"
+> >  - mediatek,vpu: the node of video processor unit, see
+> >    Documentation/devicetree/bindings/media/mediatek-vpu.txt for details.
+> > @@ -32,21 +32,16 @@ Required properties (DMA function blocks, child node):
+> >    for details.
+> >  
+> >  Example:
+> > -mdp {
+> > -	compatible = "mediatek,mt8173-mdp";
+> > -	#address-cells = <2>;
+> > -	#size-cells = <2>;
+> > -	ranges;
+> > -	mediatek,vpu = <&vpu>;
+> > -
+> >  	mdp_rdma0: rdma@14001000 {
+> >  		compatible = "mediatek,mt8173-mdp-rdma";
+> > +			     "mediatek,mt8173-mdp";
+> >  		reg = <0 0x14001000 0 0x1000>;
+> >  		clocks = <&mmsys CLK_MM_MDP_RDMA0>,
+> >  			 <&mmsys CLK_MM_MUTEX_32K>;
+> >  		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+> >  		iommus = <&iommu M4U_PORT_MDP_RDMA0>;
+> >  		mediatek,larb = <&larb0>;
+> > +		mediatek,vpu = <&vpu>;
+> >  	};
+> >  
+> >  	mdp_rdma1: rdma@14002000 {
+> > @@ -106,4 +101,3 @@ mdp {
+> >  		iommus = <&iommu M4U_PORT_MDP_WROT1>;
+> >  		mediatek,larb = <&larb4>;
+> >  	};
+> > -};
+> > -- 
+> > 1.9.1
+> > 
