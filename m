@@ -1,56 +1,86 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH v2] drm/mediatek: fix a timeout loop
-Date: Fri, 21 Apr 2017 15:48:26 +0200
-Message-ID: <1492782506.2364.2.camel@pengutronix.de>
-References: <20170421105143.jbzvbsremnu6ltgp@mwanda>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: mediatek: add I2C dependency for CS42XX8" to the asoc
+ tree
+Date: Fri, 21 Apr 2017 18:28:33 +0100
+Message-ID: <E1d1cMD-0001wP-SQ@debutante>
+References: <20170420081541.658178-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170421105143.jbzvbsremnu6ltgp@mwanda>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, shaoming chen <shaoming.chen@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20170420081541.658178-1-arnd@arndb.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Koro Chen <koro.chen@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, alsa-devel@alsa-project.org, Garlic Tseng <garlic.tseng@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Takashi Iwai <tiwai@suse.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gRnJpLCAyMDE3LTA0LTIxIGF0IDEzOjUxICswMzAwLCBEYW4gQ2FycGVudGVyIHdyb3RlOgo+
-IFRoaXMgY29kZSBjYXVzZXMgYSBzdGF0aWMgY2hlY2tlciB3YXJuaW5nIGJlY2F1c2UgaXQgdHJl
-YXRzICJpID09IDAiIGFzCj4gYSB0aW1lb3V0IGJ1dCwgYmVjYXVzZSBpdCdzIGEgcG9zdC1vcCwg
-dGhlIGxvb3AgYWN0dWFsbHkgZW5kcyB3aXRoICJpIgo+IHNldCB0byAtMS4gIFBoaWxpcHAgWmFi
-ZWwgcG9pbnRzIG91dCB0aGF0IGl0IHdvdWxkIGJlIGNsZWFuZXIgdG8gdXNlCj4gcmVhZGxfcG9s
-bF90aW1lb3V0KCkgaW5zdGVhZC4KPiAKPiBGaXhlczogMjE4OTg4MTY4MzFmICgiZHJtL21lZGlh
-dGVrOiBhZGQgZHNpIHRyYW5zZmVyIGZ1bmN0aW9uIikKPiBTaWduZWQtb2ZmLWJ5OiBEYW4gQ2Fy
-cGVudGVyIDxkYW4uY2FycGVudGVyQG9yYWNsZS5jb20+CgpSZXZpZXdlZC1ieTogUGhpbGlwcCBa
-YWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4KCj4gLS0tCj4gdjI6IFVzZSByZWFkbF9wb2xs
-X3RpbWVvdXQoKS4gIFBsZWFzZSByZXZpZXcgdGhpcyBjYXJlZnVsbHkgYmVjYXVzZSBJJ3ZlCj4g
-bmV2ZXIgdXNlZCByZWFkbF9wb2xsX3RpbWVvdXQoKSBhbmQgY291bGQgZWFzaWx5IG1lc3MgdXAu
-Cj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gaW5kZXggODA4Yjk5NWE5OTBmLi5i
-NWNjNmUxMjMzNGMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-c2kuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiBAQCAtMTks
-NiArMTksNyBAQAo+ICAjaW5jbHVkZSA8ZHJtL2RybV9vZi5oPgo+ICAjaW5jbHVkZSA8bGludXgv
-Y2xrLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4KPiArI2luY2x1ZGUgPGxpbnV4
-L2lvcG9sbC5oPgo+ICAjaW5jbHVkZSA8bGludXgvaXJxLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9v
-Zi5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4KPiBAQCAtOTAwLDE2ICs5MDEs
-MTIgQEAgc3RhdGljIGludCBtdGtfZHNpX2hvc3RfZGV0YWNoKHN0cnVjdCBtaXBpX2RzaV9ob3N0
-ICpob3N0LAo+ICAKPiAgc3RhdGljIHZvaWQgbXRrX2RzaV93YWl0X2Zvcl9pZGxlKHN0cnVjdCBt
-dGtfZHNpICpkc2kpCj4gIHsKPiAtCXUzMiB0aW1lb3V0X21zID0gNTAwMDAwOyAvKiB0b3RhbCAx
-cyB+IDJzIHRpbWVvdXQgKi8KPiAtCj4gLQl3aGlsZSAodGltZW91dF9tcy0tKSB7Cj4gLQkJaWYg
-KCEocmVhZGwoZHNpLT5yZWdzICsgRFNJX0lOVFNUQSkgJiBEU0lfQlVTWSkpCj4gLQkJCWJyZWFr
-Owo+IC0KPiAtCQl1c2xlZXBfcmFuZ2UoMiwgNCk7Cj4gLQl9Cj4gKwlpbnQgcmV0Owo+ICsJdTMy
-IHZhbDsKPiAgCj4gLQlpZiAodGltZW91dF9tcyA9PSAwKSB7Cj4gKwlyZXQgPSByZWFkbF9wb2xs
-X3RpbWVvdXQoZHNpLT5yZWdzICsgRFNJX0lOVFNUQSwgdmFsLCAhKHZhbCAmIERTSV9CVVNZKSwK
-PiArCQkJCSA0LCAyMDAwMDAwKTsKPiArCWlmIChyZXQpIHsKPiAgCQlEUk1fV0FSTigicG9sbGlu
-ZyBkc2kgd2FpdCBub3QgYnVzeSB0aW1lb3V0IVxuIik7Cj4gIAo+ICAJCW10a19kc2lfZW5hYmxl
-KGRzaSk7Cj4gCgpyZWdhcmRzClBoaWxpcHAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbAo=
+The patch
+
+   ASoC: mediatek: add I2C dependency for CS42XX8
+
+has been applied to the asoc tree at
+
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From 362c59436c143edbcdd4cc2ee0e9856eb6a93bc4 Mon Sep 17 00:00:00 2001
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Thu, 20 Apr 2017 10:15:20 +0200
+Subject: [PATCH] ASoC: mediatek: add I2C dependency for CS42XX8
+
+We should not select drivers that depend on I2C when that is disabled,
+as it results in a build error:
+
+warning: (SND_SOC_MT2701_WM8960) selects SND_SOC_WM8960 which has unmet direct dependencies (SOUND && !M68K && !UML && SND && SND_SOC && I2C)
+sound/soc/codecs/wm8960.c:1469:1: error: data definition has no type or storage class [-Werror]
+sound/soc/codecs/wm8960.c:1469:1: error: type defaults to 'int' in declaration of 'module_i2c_driver' [-Werror=implicit-int]
+
+Fixes: 8625c1dbd876 ("ASoC: mediatek: Add mt2701-wm8960 machine driver")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/mediatek/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+index c6f39040f71f..5c68797f36c4 100644
+--- a/sound/soc/mediatek/Kconfig
++++ b/sound/soc/mediatek/Kconfig
+@@ -24,7 +24,7 @@ config SND_SOC_MT2701_CS42448
+ 
+ config SND_SOC_MT2701_WM8960
+ 	tristate "ASoc Audio driver for MT2701 with WM8960 codec"
+-	depends on SND_SOC_MT2701
++	depends on SND_SOC_MT2701 && I2C
+ 	select SND_SOC_WM8960
+ 	help
+ 	  This adds ASoC driver for Mediatek MT2701 boards
+-- 
+2.11.0
