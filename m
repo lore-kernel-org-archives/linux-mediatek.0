@@ -1,32 +1,56 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 1/3] mmc: dt-bindings: update Mediatek MMC bindings
-Date: Thu, 20 Apr 2017 11:27:18 -0500
-Message-ID: <20170420162718.nxgzkiek6xhk2atb@rob-hp-laptop>
-References: <1492510391-704-1-git-send-email-yong.mao@mediatek.com>
- <1492510391-704-2-git-send-email-yong.mao@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: Re: [PATCH] ASoC: mediatek: add I2C dependency for
+	CS42XX8
+Date: Fri, 21 Apr 2017 10:10:38 +0800
+Message-ID: <1492740638.23218.0.camel@mtkswgap22>
+References: <20170420081541.658178-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1492510391-704-2-git-send-email-yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20170420081541.658178-1-arnd@arndb.de>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Koro Chen <koro.chen@mediatek.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Garlic Tseng <garlic.tseng@mediatek.com>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Apr 18, 2017 at 06:13:09PM +0800, Yong Mao wrote:
-> From: yong mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Thu, 2017-04-20 at 10:15 +0200, Arnd Bergmann wrote:
+> We should not select drivers that depend on I2C when that is disabled,
+> as it results in a build error:
 > 
-> Add description for mediatek,clk-pad-delay
+> warning: (SND_SOC_MT2701_WM8960) selects SND_SOC_WM8960 which has unmet direct dependencies (SOUND && !M68K && !UML && SND && SND_SOC && I2C)
+> sound/soc/codecs/wm8960.c:1469:1: error: data definition has no type or storage class [-Werror]
+> sound/soc/codecs/wm8960.c:1469:1: error: type defaults to 'int' in declaration of 'module_i2c_driver' [-Werror=implicit-int]
 > 
-> Signed-off-by: Yong Mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Fixes: 8625c1dbd876 ("ASoC: mediatek: Add mt2701-wm8960 machine driver")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 > ---
->  Documentation/devicetree/bindings/mmc/mtk-sd.txt |    2 ++
->  1 file changed, 2 insertions(+)
+>  sound/soc/mediatek/Kconfig | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+> index c6f39040f71f..5c68797f36c4 100644
+> --- a/sound/soc/mediatek/Kconfig
+> +++ b/sound/soc/mediatek/Kconfig
+> @@ -24,7 +24,7 @@ config SND_SOC_MT2701_CS42448
+>  
+>  config SND_SOC_MT2701_WM8960
+>  	tristate "ASoc Audio driver for MT2701 with WM8960 codec"
+> -	depends on SND_SOC_MT2701
+> +	depends on SND_SOC_MT2701 && I2C
+>  	select SND_SOC_WM8960
+>  	help
+>  	  This adds ASoC driver for Mediatek MT2701 boards
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+
+Thanks
