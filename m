@@ -1,106 +1,68 @@
-From: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
-Subject: Re: [PATCH 1/3] dt-bindings: mt8173: Fix mdp device tree
-Date: Fri, 21 Apr 2017 12:06:10 +0800
-Message-ID: <1492747570.25908.36.camel@mtksdaap41>
-References: <1492068787-17838-1-git-send-email-minghsiu.tsai@mediatek.com>
-         <1492068787-17838-2-git-send-email-minghsiu.tsai@mediatek.com>
-         <20170419213540.4vigeed3mx24ie4e@rob-hp-laptop>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: Re: [PATCH] [media] mtk-vcodec: avoid warnings because of empty macros
+Date: Fri, 21 Apr 2017 15:50:35 +0800
+Message-ID: <1492761035.12924.0.camel@mtksdaap41>
+References: <5bc3ebc3c6f57c2b30126f113bc35ec95c6f5b5d.1492599391.git.mchehab@s-opensource.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170419213540.4vigeed3mx24ie4e@rob-hp-laptop>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Houlong Wei <houlong.wei@mediatek.com>, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Wu-Cheng Li <wuchengli@google.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <5bc3ebc3c6f57c2b30126f113bc35ec95c6f5b5d.1492599391.git.mchehab@s-opensource.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@infradead.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Linux Media Mailing List <linux-media@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-04-19 at 16:35 -0500, Rob Herring wrote:
-> On Thu, Apr 13, 2017 at 03:33:05PM +0800, Minghsiu Tsai wrote:
-> > If the mdp_* nodes are under an mdp sub-node, their corresponding
-> > platform device does not automatically get its iommu assigned properly.
-> > 
-> > Fix this by moving the mdp component nodes up a level such that they are
-> > siblings of mdp and all other SoC subsystems.  This also simplifies the
-> > device tree.
+On Wed, 2017-04-19 at 07:56 -0300, Mauro Carvalho Chehab wrote:
+> Remove those gcc warnings:
 > 
-> It may simplify the DT, but it also breaks compatibility with old DT. 
-> Not sure if that's a problem on Mediatek platforms, but please be 
-> explicit here that you are breaking compatibility and why that is okay.
+> 	drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c: In function 'mtk_vcodec_dec_pw_on':
+> 	drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c:114:51: warning: suggest braces around empty body in an 'if' statement [-Wempty-body]
+> 	   mtk_v4l2_err("pm_runtime_get_sync fail %d", ret);
+> 	                                                   ^
 > 
-
-I will add the following description for more information.
-"
-Although it fixes iommu assignment issue, it also break compatibility
-with old device tree, so driver patch[1] is needed to iterate over
-sibling mdp device nodes, not child ones, to keep driver work properly.
-In mtk_mdp_probe()
-Old: for_each_child_of_node(dev->of_node, node)
-New: for_each_child_of_node(dev->of_node->parent, node)
-
-[1]https://patchwork.kernel.org/patch/9678833/
-"
-
-> > 
-> > Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
-> > Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+> By adding braces.
 > 
-> Should this have Daniel as the author?
-
-This patch is provided by Daniel, so I keep he is the author.
-I just split his patch into two parts. One is dts only, and the other is
-for driver. I also provide another patch to modify dts bindings
-according to this patch.
-
-
+> Signed-off-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+> ---
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
 > 
-> > 
-> > ---
-> >  Documentation/devicetree/bindings/media/mediatek-mdp.txt | 12 +++---------
-> >  1 file changed, 3 insertions(+), 9 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/media/mediatek-mdp.txt b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
-> > index 4182063..0d03e3a 100644
-> > --- a/Documentation/devicetree/bindings/media/mediatek-mdp.txt
-> > +++ b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
-> > @@ -2,7 +2,7 @@
-> >  
-> >  Media Data Path is used for scaling and color space conversion.
-> >  
-> > -Required properties (controller (parent) node):
-> > +Required properties (controller node):
-> >  - compatible: "mediatek,mt8173-mdp"
-> >  - mediatek,vpu: the node of video processor unit, see
-> >    Documentation/devicetree/bindings/media/mediatek-vpu.txt for details.
-> > @@ -32,21 +32,16 @@ Required properties (DMA function blocks, child node):
-> >    for details.
-> >  
-> >  Example:
-> > -mdp {
-> > -	compatible = "mediatek,mt8173-mdp";
-> > -	#address-cells = <2>;
-> > -	#size-cells = <2>;
-> > -	ranges;
-> > -	mediatek,vpu = <&vpu>;
-> > -
-> >  	mdp_rdma0: rdma@14001000 {
-> >  		compatible = "mediatek,mt8173-mdp-rdma";
-> > +			     "mediatek,mt8173-mdp";
-> >  		reg = <0 0x14001000 0 0x1000>;
-> >  		clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-> >  			 <&mmsys CLK_MM_MUTEX_32K>;
-> >  		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
-> >  		iommus = <&iommu M4U_PORT_MDP_RDMA0>;
-> >  		mediatek,larb = <&larb0>;
-> > +		mediatek,vpu = <&vpu>;
-> >  	};
-> >  
-> >  	mdp_rdma1: rdma@14002000 {
-> > @@ -106,4 +101,3 @@ mdp {
-> >  		iommus = <&iommu M4U_PORT_MDP_WROT1>;
-> >  		mediatek,larb = <&larb4>;
-> >  	};
-> > -};
-> > -- 
-> > 1.9.1
-> > 
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
+> index 12480837ff2e..237e144c194f 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
+> @@ -66,15 +66,15 @@ extern bool mtk_vcodec_dbg;
+>  
+>  #else
+>  
+> -#define mtk_v4l2_debug(level, fmt, args...)
+> -#define mtk_v4l2_err(fmt, args...)
+> -#define mtk_v4l2_debug_enter()
+> -#define mtk_v4l2_debug_leave()
+> +#define mtk_v4l2_debug(level, fmt, args...) {}
+> +#define mtk_v4l2_err(fmt, args...) {}
+> +#define mtk_v4l2_debug_enter() {}
+> +#define mtk_v4l2_debug_leave() {}
+>  
+> -#define mtk_vcodec_debug(h, fmt, args...)
+> -#define mtk_vcodec_err(h, fmt, args...)
+> -#define mtk_vcodec_debug_enter(h)
+> -#define mtk_vcodec_debug_leave(h)
+> +#define mtk_vcodec_debug(h, fmt, args...) {}
+> +#define mtk_vcodec_err(h, fmt, args...) {}
+> +#define mtk_vcodec_debug_enter(h) {}
+> +#define mtk_vcodec_debug_leave(h) {}
+>  
+>  #endif
+>  
+
+Acked-by: Tiffany Lin <Tiffany.lin@mediatek.com>
