@@ -1,13 +1,24 @@
 From: Corentin Labbe <clabbe.montjoie@gmail.com>
-Subject: [PATCH 9/9] crypto: ccp - Use IPAD/OPAD constant
-Date: Mon, 24 Apr 2017 16:16:29 +0200
-Message-ID: <20170424141629.27155-9-clabbe.montjoie@gmail.com>
+Subject: [PATCH 2/9] crypto: brcm - Use IPAD/OPAD constant
+Date: Mon, 24 Apr 2017 16:16:22 +0200
+Message-ID: <20170424141629.27155-2-clabbe.montjoie@gmail.com>
 References: <20170424141629.27155-1-clabbe.montjoie@gmail.com>
-Return-path: <linux-crypto-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20170424141629.27155-1-clabbe.montjoie@gmail.com>
-Sender: linux-crypto-owner@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: herbert@gondor.apana.org.au, davem@davemloft.net, thomas.lendacky@amd.com, gary.hook@amd.com, boris.brezillon@free-electrons.com, arno@natisbad.org, matthias.bgg@gmail.com, giovanni.cabiddu@intel.com, salvatore.benedetto@intel.com
-Cc: linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, qat-linux@intel.com, Corentin Labbe <clabbe.montjoie@gmail.com>
+Cc: qat-linux@intel.com, linux-kernel@vger.kernel.org, Corentin Labbe <clabbe.montjoie@gmail.com>, linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 This patch simply replace all occurrence of HMAC IPAD/OPAD value by their
@@ -15,23 +26,23 @@ define.
 
 Signed-off-by: Corentin Labbe <clabbe.montjoie@gmail.com>
 ---
- drivers/crypto/ccp/ccp-crypto-sha.c | 4 ++--
+ drivers/crypto/bcm/cipher.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/crypto/ccp/ccp-crypto-sha.c b/drivers/crypto/ccp/ccp-crypto-sha.c
-index 6b46eea..3834366 100644
---- a/drivers/crypto/ccp/ccp-crypto-sha.c
-+++ b/drivers/crypto/ccp/ccp-crypto-sha.c
-@@ -308,8 +308,8 @@ static int ccp_sha_setkey(struct crypto_ahash *tfm, const u8 *key,
- 	}
+diff --git a/drivers/crypto/bcm/cipher.c b/drivers/crypto/bcm/cipher.c
+index cc0d5b9..304c7ed 100644
+--- a/drivers/crypto/bcm/cipher.c
++++ b/drivers/crypto/bcm/cipher.c
+@@ -2510,8 +2510,8 @@ static int ahash_hmac_setkey(struct crypto_ahash *ahash, const u8 *key,
+ 		memcpy(ctx->opad, ctx->ipad, blocksize);
  
- 	for (i = 0; i < block_size; i++) {
--		ctx->u.sha.ipad[i] = ctx->u.sha.key[i] ^ 0x36;
--		ctx->u.sha.opad[i] = ctx->u.sha.key[i] ^ 0x5c;
-+		ctx->u.sha.ipad[i] = ctx->u.sha.key[i] ^ HMAC_IPAD_VALUE;
-+		ctx->u.sha.opad[i] = ctx->u.sha.key[i] ^ HMAC_OPAD_VALUE;
- 	}
+ 		for (index = 0; index < blocksize; index++) {
+-			ctx->ipad[index] ^= 0x36;
+-			ctx->opad[index] ^= 0x5c;
++			ctx->ipad[index] ^= HMAC_IPAD_VALUE;
++			ctx->opad[index] ^= HMAC_OPAD_VALUE;
+ 		}
  
- 	sg_init_one(&ctx->u.sha.opad_sg, ctx->u.sha.opad, block_size);
+ 		flow_dump("  ipad: ", ctx->ipad, blocksize);
 -- 
 2.10.2
