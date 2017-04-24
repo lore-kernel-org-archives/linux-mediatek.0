@@ -1,37 +1,29 @@
-From: Corentin Labbe <clabbe.montjoie@gmail.com>
-Subject: [PATCH 4/9] crypto: marvell - Use IPAD/OPAD constant
-Date: Mon, 24 Apr 2017 16:16:24 +0200
-Message-ID: <20170424141629.27155-4-clabbe.montjoie@gmail.com>
-References: <20170424141629.27155-1-clabbe.montjoie@gmail.com>
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <20170424141629.27155-1-clabbe.montjoie@gmail.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: herbert@gondor.apana.org.au, davem@davemloft.net, thomas.lendacky@amd.com, gary.hook@amd.com, boris.brezillon@free-electrons.com, arno@natisbad.org, matthias.bgg@gmail.com, giovanni.cabiddu@intel.com, salvatore.benedetto@intel.com
-Cc: linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, qat-linux@intel.com, Corentin Labbe <clabbe.montjoie@gmail.com>
+From: "K.Mani" <sailormani-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: mt7621 Hardware NAT offload
+Date: Mon, 24 Apr 2017 21:23:17 +0530
+Message-ID: <CACBNxUG2920FwxEuJDwDdnLNezrN_q0+0e4xs8MwCCdNmdCbeQ@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch simply replace all occurrence of HMAC IPAD/OPAD value by their
-define.
+On my mt7621 router, I'm running LEDE with 4.4 kernel, i'm looking for
+hw nat offload implementation to increase the speed.
+On the net I saw hw nat offload for older kernels, which uses QoS & QDMA.
+But the newer kernels are missing those implementations.
 
-Signed-off-by: Corentin Labbe <clabbe.montjoie@gmail.com>
----
- drivers/crypto/marvell/hash.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Can someone guide me to port 'hw nat offlaod' in newer kernels.
 
-diff --git a/drivers/crypto/marvell/hash.c b/drivers/crypto/marvell/hash.c
-index 77c0fb9..a6df61f 100644
---- a/drivers/crypto/marvell/hash.c
-+++ b/drivers/crypto/marvell/hash.c
-@@ -1164,8 +1164,8 @@ static int mv_cesa_ahmac_pad_init(struct ahash_request *req,
- 	memcpy(opad, ipad, blocksize);
- 
- 	for (i = 0; i < blocksize; i++) {
--		ipad[i] ^= 0x36;
--		opad[i] ^= 0x5c;
-+		ipad[i] ^= HMAC_IPAD_VALUE;
-+		opad[i] ^= HMAC_OPAD_VALUE;
- 	}
- 
- 	return 0;
--- 
-2.10.2
+Thanks
+Mani
