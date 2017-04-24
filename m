@@ -1,29 +1,84 @@
-From: "K.Mani" <sailormani-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: mt7621 Hardware NAT offload
-Date: Mon, 24 Apr 2017 21:23:17 +0530
-Message-ID: <CACBNxUG2920FwxEuJDwDdnLNezrN_q0+0e4xs8MwCCdNmdCbeQ@mail.gmail.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v2] mmc: sdio: Fix sdio wait busy implement limitation
+Date: Mon, 24 Apr 2017 21:56:57 +0200
+Message-ID: <CAPDyKFpNoStWkKzrX39NSn-1W0YSMoE1nNLygNtS7V6uD7mocQ@mail.gmail.com>
+References: <1492940307-20785-1-git-send-email-jiajie.hao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1492940307-20785-1-git-send-email-jiajie.hao@mediatek.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jiajie Hao <jiajie.hao@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Yong Mao <yong.mao@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On my mt7621 router, I'm running LEDE with 4.4 kernel, i'm looking for
-hw nat offload implementation to increase the speed.
-On the net I saw hw nat offload for older kernels, which uses QoS & QDMA.
-But the newer kernels are missing those implementations.
+On 23 April 2017 at 11:38, Jiajie Hao <jiajie.hao@mediatek.com> wrote:
+> The host may issue an I/O abort by writing to the CCCR at any time
+> during I/O read operation via CMD52. And host may need suspend
+> transcation during write busy stage in SDIO suspend/resume scenario.
+> From other side, a card may accept CMD52 during data transfer phase.
+>
+> Previous implement would block issuing above command in busy stage.
+> It cause function driver can't implement as proper way and has no
+> opportunity to do some coverage in error case via I/O abort etc.
+>
+> We need bypass some necessary operation during busy check stage.
+>
+> Signed-off-by: Jiajie Hao <jiajie.hao@mediatek.com>
 
-Can someone guide me to port 'hw nat offlaod' in newer kernels.
+Thanks, applied for next!
 
-Thanks
-Mani
+Kind regards
+Uffe
+
+> ---
+> Changes since v1:(https://lkml.org/lkml/2017/4/17/69)
+>     * extend orignal interface to cover necessary cases.
+>     * rename mmc_is_io_op() to sdio_is_op_busy() for matching it's meaning.
+>
+> ---
+>  drivers/mmc/core/core.c     |    4 +++-
+>  drivers/mmc/core/sdio_ops.h |   10 ++++++++--
+>  2 files changed, 11 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
+> index 926e0fd..2ae83a7 100644
+> --- a/drivers/mmc/core/core.c
+> +++ b/drivers/mmc/core/core.c
+> @@ -234,8 +234,10 @@ static void __mmc_start_request(struct mmc_host *host, struct mmc_request *mrq)
+>         /*
+>          * For sdio rw commands we must wait for card busy otherwise some
+>          * sdio devices won't work properly.
+> +        * And bypass I/O abort, reset and bus suspend operations.
+>          */
+> -       if (mmc_is_io_op(mrq->cmd->opcode) && host->ops->card_busy) {
+> +       if (sdio_is_io_busy(mrq->cmd->opcode, mrq->cmd->arg) &&
+> +           host->ops->card_busy) {
+>                 int tries = 500; /* Wait aprox 500ms at maximum */
+>
+>                 while (host->ops->card_busy(host) && --tries)
+> diff --git a/drivers/mmc/core/sdio_ops.h b/drivers/mmc/core/sdio_ops.h
+> index bed8a83..ee35cb4 100644
+> --- a/drivers/mmc/core/sdio_ops.h
+> +++ b/drivers/mmc/core/sdio_ops.h
+> @@ -26,9 +26,15 @@ int mmc_io_rw_extended(struct mmc_card *card, int write, unsigned fn,
+>  int sdio_reset(struct mmc_host *host);
+>  unsigned int mmc_align_data_size(struct mmc_card *card, unsigned int sz);
+>
+> -static inline bool mmc_is_io_op(u32 opcode)
+> +static inline bool sdio_is_io_busy(u32 opcode, u32 arg)
+>  {
+> -       return opcode == SD_IO_RW_DIRECT || opcode == SD_IO_RW_EXTENDED;
+> +       u32 addr;
+> +
+> +       addr = (arg >> 9) & 0x1FFFF;
+> +
+> +       return (opcode == SD_IO_RW_EXTENDED ||
+> +               (opcode == SD_IO_RW_DIRECT &&
+> +               !(addr == SDIO_CCCR_ABORT || addr == SDIO_CCCR_SUSPEND)));
+>  }
+>
+>  #endif
+> --
+> 1.7.9.5
+>
