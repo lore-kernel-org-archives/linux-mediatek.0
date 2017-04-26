@@ -1,69 +1,30 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v2 12/30] arm: dts: mt7623: add mmc nodes to the mt7623.dtsi
- file
-Date: Wed, 26 Apr 2017 17:25:56 +0800
-Message-ID: <1493198774-4478-13-git-send-email-sean.wang@mediatek.com>
-References: <1493198774-4478-1-git-send-email-sean.wang@mediatek.com>
+From: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [1/1] mt7601u: check return value of alloc_skb
+Date: Wed, 26 Apr 2017 09:03:05 +0000 (UTC)
+Message-ID: <20170426090305.4C13361496@smtp.codeaurora.org>
+References: <1492930823-17249-1-git-send-email-bianpan2016@163.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1493198774-4478-1-git-send-email-sean.wang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: robh+dt@kernel.org, matthias.bgg@gmail.com, john@phrozen.org, mark.rutland@arm.com, linux@armlinux.org.uk, linus.walleij@linaro.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: linux-gpio@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1492930823-17249-1-git-send-email-bianpan2016-9Onoh4P/yGk@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Pan Bian <bianpan2016-9Onoh4P/yGk@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: John Crispin <john@phrozen.org>
+Pan Bian <bianpan2016-9Onoh4P/yGk@public.gmane.org> wrote:
+> Function alloc_skb() will return a NULL pointer if there is no enough
+> memory. However, in function mt7601u_mcu_msg_alloc(), its return value
+> is not validated before it is used. This patch fixes it.
+> 
+> Signed-off-by: Pan Bian <bianpan2016-9Onoh4P/yGk@public.gmane.org>
+> Acked-by: Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>
 
-Add e/MMC nodes to the mt7623.dtsi file.
+Patch applied to wireless-drivers-next.git, thanks.
 
-Signed-off-by: John Crispin <john@phrozen.org>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- arch/arm/boot/dts/mt7623.dtsi | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+5fb01e91daf8 mt7601u: check return value of alloc_skb
 
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index f15d65a..1ea9b18 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -355,6 +355,28 @@
- 		status = "disabled";
- 	};
- 
-+	mmc0: mmc@11230000 {
-+		compatible = "mediatek,mt7623-mmc",
-+			     "mediatek,mt8135-mmc";
-+		reg = <0 0x11230000 0 0x1000>;
-+		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&pericfg CLK_PERI_MSDC30_0>,
-+			 <&topckgen CLK_TOP_MSDC30_0_SEL>;
-+		clock-names = "source", "hclk";
-+		status = "disabled";
-+	};
-+
-+	mmc1: mmc@11240000 {
-+		compatible = "mediatek,mt7623-mmc",
-+			     "mediatek,mt8135-mmc";
-+		reg = <0 0x11240000 0 0x1000>;
-+		interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&pericfg CLK_PERI_MSDC30_1>,
-+			 <&topckgen CLK_TOP_MSDC30_1_SEL>;
-+		clock-names = "source", "hclk";
-+		status = "disabled";
-+	};
-+
- 	hifsys: syscon@1a000000 {
- 		compatible = "mediatek,mt7623-hifsys",
- 			     "mediatek,mt2701-hifsys",
 -- 
-1.9.1
+https://patchwork.kernel.org/patch/9694549/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
