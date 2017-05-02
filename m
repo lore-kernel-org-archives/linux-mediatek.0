@@ -1,79 +1,59 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: FW: [PATCH 2/2] dt-bindings: pcie: Add documentation for
- Mediatek PCIe
-Date: Tue, 2 May 2017 15:09:38 +0800
-Message-ID: <1493708978.6464.37.camel@mtkswgap22>
-References: <1492935543-18190-1-git-send-email-ryder.lee@mediatek.com>
-         <1492935543-18190-3-git-send-email-ryder.lee@mediatek.com>
-         <CAK8P3a1vgi9VBZfRNq0dDKzmfe8FkHQtgz6fEXW9fyUnBHtaQQ@mail.gmail.com>
-         <1493194205.27023.80.camel@mtkswgap22>
-         <CAK8P3a0vD8s_3R+jS=JdUXX3X05SkCk-mipMA6UxWYQZe6vLUQ@mail.gmail.com>
-         <1493347596.29314.55.camel@mtkswgap22>
-         <CAK8P3a0WGwukWj8V-S2c13S3futkxBhiMfRTa=0QWaDG7qREVw@mail.gmail.com>
-         <CAFST5+Dn3bMwtGt9pQBMc+q+qkrpvmXh67ZXm2=hs-ZoX8E_ww@mail.gmail.com>
-         <4BAFE512E7223A4B91F29C40AC7A579616B5155E@MTKMBS05N1.mediatek.inc>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 29/30] dt-bindings: add vendor prefix for bananapi
+Date: Tue, 2 May 2017 08:52:49 -0500
+Message-ID: <CAL_JsqKHpWGviZ2H-xhGMzNWsCCRMj_O5ux8aguFfeVKBfJa_w@mail.gmail.com>
+References: <1493198774-4478-1-git-send-email-sean.wang@mediatek.com>
+ <1493198774-4478-30-git-send-email-sean.wang@mediatek.com>
+ <20170428203727.m6jm5w6nb2iirxih@rob-hp-laptop> <1493621880.32195.13.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <4BAFE512E7223A4B91F29C40AC7A579616B5155E-FTLr7L0+/BWGRgb7Xm6L22/AB3i2Q03W@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1493621880.32195.13.camel@mtkswgap22>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>, "arm@kernel.org" <arm@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <john@phrozen.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, Linus Walleij <linus.walleij@linaro.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, linux-mediatek@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
++arm-soc
 
-Hi Arnd,
+On Mon, May 1, 2017 at 1:58 AM, Sean Wang <sean.wang@mediatek.com> wrote:
+> On Fri, 2017-04-28 at 15:37 -0500, Rob Herring wrote:
+>> On Wed, Apr 26, 2017 at 05:26:13PM +0800, sean.wang@mediatek.com wrote:
+>> > From: Sean Wang <sean.wang@mediatek.com>
+>> >
+>> > Banana Pi team in Sinovoip Co., Limited which are dedicated to
+>> > design and manufacture open hardware product.
+>> >
+>> > Website: http://www.banana-pi.org/
+>> >
+>> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>> > ---
+>> >  Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
+>> >  1 file changed, 1 insertion(+)
+>> >
+>> > diff --git a/Documentation/devicetree/bindings/vendor-prefixes.txt b/Documentation/devicetree/bindings/vendor-prefixes.txt
+>> > index ec0bfb9..8ca0f3c 100644
+>> > --- a/Documentation/devicetree/bindings/vendor-prefixes.txt
+>> > +++ b/Documentation/devicetree/bindings/vendor-prefixes.txt
+>> > @@ -44,6 +44,7 @@ avia      avia semiconductor
+>> >  avic       Shanghai AVIC Optoelectronics Co., Ltd.
+>> >  axentia    Axentia Technologies AB
+>> >  axis       Axis Communications AB
+>> > +bananapi Banana Pi SINOVOP CO., LIMITED
+>>
+>> s/SINOVOP/SINOVOIP/
+>
+> Hi Rob,
+>
+> thanks for your careful reviewing , i will correct it in the next
+> version.
+>
+> BTW, Could those related dts changes go through your tree if everything
+> looks good? Because I find Matthias have been inactive for a while and
+> the latest branch in his tree seems still staying on 4.10.
 
-> 2017-04-28 19:41 GMT+08:00 Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>:
-> 
->         On Fri, Apr 28, 2017 at 4:46 AM, Ryder Lee
->         <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->         > On Thu, 2017-04-27 at 21:06 +0200, Arnd Bergmann wrote:
->         >> On Wed, Apr 26, 2017 at 10:10 AM, Ryder Lee
->         <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->         >> > On Tue, 2017-04-25 at 14:18 +0200, Arnd Bergmann wrote:
->         >> >> On Sun, Apr 23, 2017 at 10:19 AM, Ryder Lee
->         <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->         >> Are any of the registers the same at all, e.g. for MSI
->         handling?
->         >
->         > No, It doesn't support MSI. All I can do is using the
->         registers that designer provide to me. The others are inviable
->         for software. So I treat it as different hardware.
->         Furthermore, we hope that we can put all mediatek drivers
->         together regardless of in-house IP or lincense IP
->         >
->         > We have no particular IP name but just use chip name to call
->         it. So I will temporarily use "mediatek,gen2v1-pcie" in patch
->         v1.
->         
->         I think using the chip name as in the first version of your
->         patch name is better then, in particular since the 'gen2v1'
->         would not be an actual version number but just say which
->         variant got merged into mainline first.
+Happy to take binding doc changes, but I don't take dts changes
+because those go thru arm-soc. If the platform maintainer is not
+responsive, then we should replace or add maintainers.
 
-Okay, i will correct it.
-
->         A related question would be on how general we want the binding
->         to be.
->         Your binding text starts out by describing that there are
->         three root ports and what their capabilities are.
->         
->         If you think there might be other (existing or future) chips
->         that use the same binding and driver, then being a little more
->         abstract could help in the long run.
-
-Thanks for reminding me. If we decide to use the same driver in the
-future, we will have a internal discussion about it.
-
-Ryder.
-
-
-
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Rob
