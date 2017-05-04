@@ -1,59 +1,41 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 29/30] dt-bindings: add vendor prefix for bananapi
-Date: Tue, 2 May 2017 08:52:49 -0500
-Message-ID: <CAL_JsqKHpWGviZ2H-xhGMzNWsCCRMj_O5ux8aguFfeVKBfJa_w@mail.gmail.com>
-References: <1493198774-4478-1-git-send-email-sean.wang@mediatek.com>
- <1493198774-4478-30-git-send-email-sean.wang@mediatek.com>
- <20170428203727.m6jm5w6nb2iirxih@rob-hp-laptop> <1493621880.32195.13.camel@mtkswgap22>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v1 0/2] Add PCIe phy driver for some Mediatek SoCs
+Date: Thu, 4 May 2017 17:31:46 +0800
+Message-ID: <1493890308-6159-1-git-send-email-ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1493621880.32195.13.camel@mtkswgap22>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>, "arm@kernel.org" <arm@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <john@phrozen.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, Linus Walleij <linus.walleij@linaro.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, linux-mediatek@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-+arm-soc
+Hi,
 
-On Mon, May 1, 2017 at 1:58 AM, Sean Wang <sean.wang@mediatek.com> wrote:
-> On Fri, 2017-04-28 at 15:37 -0500, Rob Herring wrote:
->> On Wed, Apr 26, 2017 at 05:26:13PM +0800, sean.wang@mediatek.com wrote:
->> > From: Sean Wang <sean.wang@mediatek.com>
->> >
->> > Banana Pi team in Sinovoip Co., Limited which are dedicated to
->> > design and manufacture open hardware product.
->> >
->> > Website: http://www.banana-pi.org/
->> >
->> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->> > ---
->> >  Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
->> >  1 file changed, 1 insertion(+)
->> >
->> > diff --git a/Documentation/devicetree/bindings/vendor-prefixes.txt b/Documentation/devicetree/bindings/vendor-prefixes.txt
->> > index ec0bfb9..8ca0f3c 100644
->> > --- a/Documentation/devicetree/bindings/vendor-prefixes.txt
->> > +++ b/Documentation/devicetree/bindings/vendor-prefixes.txt
->> > @@ -44,6 +44,7 @@ avia      avia semiconductor
->> >  avic       Shanghai AVIC Optoelectronics Co., Ltd.
->> >  axentia    Axentia Technologies AB
->> >  axis       Axis Communications AB
->> > +bananapi Banana Pi SINOVOP CO., LIMITED
->>
->> s/SINOVOP/SINOVOIP/
->
-> Hi Rob,
->
-> thanks for your careful reviewing , i will correct it in the next
-> version.
->
-> BTW, Could those related dts changes go through your tree if everything
-> looks good? Because I find Matthias have been inactive for a while and
-> the latest branch in his tree seems still staying on 4.10.
+This patch series add PCIe phy driver and related dt-binding file for
+Mediatek mt7623 SoCs families.
 
-Happy to take binding doc changes, but I don't take dts changes
-because those go thru arm-soc. If the platform maintainer is not
-responsive, then we should replace or add maintainers.
+Changes since v1:
+- revise binding document:
+  drop 'status' properties.
+  add a description to 'phy-switch' property and add vendor prefix.
 
-Rob
+Ryder Lee (2):
+  phy: add PCIe PHY driver for mt7623 SoCs families
+  dt-bindings: phy: Add documentation for Mediatek PCIe PHY
+
+ .../devicetree/bindings/phy/phy-mt7623-pcie.txt    |  63 +++++
+ drivers/phy/Kconfig                                |   9 +
+ drivers/phy/Makefile                               |   1 +
+ drivers/phy/phy-mt7623-pcie.c                      | 290 +++++++++++++++++++++
+ 4 files changed, 363 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-mt7623-pcie.txt
+ create mode 100644 drivers/phy/phy-mt7623-pcie.c
+
+-- 
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
