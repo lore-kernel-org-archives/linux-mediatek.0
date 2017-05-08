@@ -1,32 +1,41 @@
-From: Geliang Tang <geliangtang@gmail.com>
-Subject: [PATCH] crypto: mediatek - drop .owner field in mtk_crypto_driver
-Date: Sat,  6 May 2017 23:35:29 +0800
-Message-ID: <55f4a84740c5d01a35ff6ec68890fcca0b26f28d.1493797414.git.geliangtang@gmail.com>
-Return-path: <linux-crypto-owner@vger.kernel.org>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>
-Cc: Geliang Tang <geliangtang@gmail.com>, linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH 5/6] dt-bindings: cpufreq: move Mediatek cpufreq
+ dt-bindings document to proper place
+Date: Mon, 8 May 2017 09:48:27 +0530
+Message-ID: <20170508041827.GC17010@vireshk-i7>
+References: <1493997974-17699-1-git-send-email-sean.wang@mediatek.com>
+ <1493997974-17699-6-git-send-email-sean.wang@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1493997974-17699-6-git-send-email-sean.wang@mediatek.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: rjw@rjwysocki.net, robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, mturquette@baylibre.com, jamesjj.liao@mediatek.com, p.zabel@pengutronix.de, shunli.wang@mediatek.com, erin.lo@mediatek.com, jdelvare@suse.de, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Drop .owner field in mtk_crypto_driver, since platform_driver_register()
-will set it automatically.
+On 05-05-17, 23:26, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> The old place is Documentation/devicetree/bindings/clock/ that would
+> let people hard to find how to use Mediatek cpufreq driver, so moving
+> it to the new place as other cpufreq dirvers are done would be better.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  .../devicetree/bindings/clock/mt8173-cpu-dvfs.txt  | 83 ----------------------
+>  .../bindings/cpufreq/cpufreq-mediatek.txt          | 83 ++++++++++++++++++++++
+>  2 files changed, 83 insertions(+), 83 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/clock/mt8173-cpu-dvfs.txt
+>  create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
 
-Signed-off-by: Geliang Tang <geliangtang@gmail.com>
----
- drivers/crypto/mediatek/mtk-platform.c | 1 -
- 1 file changed, 1 deletion(-)
+Please generate patches with:
 
-diff --git a/drivers/crypto/mediatek/mtk-platform.c b/drivers/crypto/mediatek/mtk-platform.c
-index b6ecc28..f7536b1 100644
---- a/drivers/crypto/mediatek/mtk-platform.c
-+++ b/drivers/crypto/mediatek/mtk-platform.c
-@@ -596,7 +596,6 @@ static struct platform_driver mtk_crypto_driver = {
- 	.remove = mtk_crypto_remove,
- 	.driver = {
- 		   .name = "mtk-crypto",
--		   .owner = THIS_MODULE,
- 		   .of_match_table = of_crypto_id,
- 	},
- };
+git format-patch -C -M --thread=shallow
+
+You would be required to resend this patch at least to let us see what has
+changed.
+
 -- 
-2.9.3
+viresh
