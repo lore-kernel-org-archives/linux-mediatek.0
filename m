@@ -1,153 +1,131 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] dt-bindings: pcie: Add documentation for Mediatek
- PCIe
-Date: Mon, 8 May 2017 11:33:42 -0500
-Message-ID: <20170508163342.deosevmxu7g2sv6d@rob-hp-laptop>
-References: <1493890376-6713-1-git-send-email-ryder.lee@mediatek.com>
- <1493890376-6713-3-git-send-email-ryder.lee@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 29/30] dt-bindings: add vendor prefix for bananapi
+Date: Tue, 9 May 2017 09:49:07 +0200
+Message-ID: <CABuKBe+pXWk=oRpF75xidDocPQdjUiAqwpKtqEFnFnLO52AqtQ@mail.gmail.com>
+References: <1493198774-4478-1-git-send-email-sean.wang@mediatek.com>
+ <1493198774-4478-30-git-send-email-sean.wang@mediatek.com>
+ <20170428203727.m6jm5w6nb2iirxih@rob-hp-laptop> <1493621880.32195.13.camel@mtkswgap22>
+ <CAL_JsqKHpWGviZ2H-xhGMzNWsCCRMj_O5ux8aguFfeVKBfJa_w@mail.gmail.com>
+ <1494237213.9662.50.camel@mtkswgap22> <CAK8P3a3FpbGErEo93xaDLZMi0+XQvKk44dniZqrecQf=WJD1-g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=UTF-8
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1493890376-6713-3-git-send-email-ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <CAK8P3a3FpbGErEo93xaDLZMi0+XQvKk44dniZqrecQf=WJD1-g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Red Hung <red.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, RobHerring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>, =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, May 04, 2017 at 05:32:56PM +0800, Ryder Lee wrote:
-> Add documentation for PCIe host driver available in MT7623
-> series SoCs.
-> 
-> Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  .../bindings/pci/mediatek,mt7623-pcie.txt          | 149 +++++++++++++++++++++
->  1 file changed, 149 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pci/mediatek,mt7623-pcie.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek,mt7623-pcie.txt b/Documentation/devicetree/bindings/pci/mediatek,mt7623-pcie.txt
-> new file mode 100644
-> index 0000000..9c5d5a7
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pci/mediatek,mt7623-pcie.txt
-> @@ -0,0 +1,149 @@
-> +Mediatek Gen2 PCIe controller which is available on MT7623 series SoCs
-> +
-> +PCIe subsys supports single root complex (RC) with 3 Root Ports. Each root
-> +ports supports a Gen2 1-lane Link and has PIPE interface to PHY.
-> +
-> +Required properties:
-> +- compatible: Should contain "mediatek,mt7623-pcie".
-> +- device_type: Must be "pci"
-> +- reg: Base addresses and lengths of the PCIe controller.
-> +- #address-cells: Address representation for root ports (must be 3)
-> +- #size-cells: Size representation for root ports (must be 2)
-> +- #interrupt-cells: Size representation for interrupts (must be 1)
-> +- interrupts: Three interrupt outputs of the controller. Must contain an
-> +  entry for each entry in the interrupt-names property.
-> +- interrupt-names: Must include the following names
-> +  - "pcie-int0"
-> +  - "pcie-int1"
-> +  - "pcie-int2"
-> +- interrupt-map-mask and interrupt-map: Standard PCI IRQ mapping properties
-> +  Please refer to the standard PCI bus binding document for a more detailed
-> +  explanation.
-> +- clocks: Must contain an entry for each entry in clock-names.
-> +  See ../clocks/clock-bindings.txt for details.
-> +- clock-names: Must include the following entries:
-> +  - free_ck :for reference clock of PCIe subsys
-> +  - sys_ck0 :for clock of Port0
-> +  - sys_ck1 :for clock of Port1
-> +  - sys_ck2 :for clock of Port2
-> +- resets: Must contain an entry for each entry in reset-names.
-> +  See ../reset/reset.txt for details.
-> +- reset-names: Must include the following entries:
-> +  - pcie-rst0 :port0 reset
-> +  - pcie-rst1 :port1 reset
-> +  - pcie-rst2 :port2 reset
-> +- phys: list of PHY specifiers (used by generic PHY framework).
-> +- phy-names : must be "pcie-phy0", "pcie-phy1", "pcie-phyN".. based on the
-> +  number of PHYs as specified in *phys* property.
-> +- power-domains: A phandle and power domain specifier pair to the power domain
-> +  which is responsible for collapsing and restoring power to the peripheral.
-> +- bus-range: Range of bus numbers associated with this controller.
-> +- ranges:
-> +  - The first three entries are expected to translate the addresses for the root
-> +    port registers, which are referenced by the assigned-addresses property of
-> +    the root port nodes (see below).
-> +  - The remaining entries setup the mapping for the standard I/O and memory
-> +	regions.
-> +  Please refer to the standard PCI bus binding document for a more detailed
-> +  explanation.
-> +
-> +In addition, the device tree node must have sub-nodes describing each
-> +PCIe port interface, having the following mandatory properties:
-> +
-> +Required properties:
-> +- device_type: Must be "pci"
-> +- assigned-addresses: Address and size of the port configuration registers
-> +- reg: Only the first four bytes are used to refer to the correct bus number
-> +  and device number.
-> +- #address-cells: Must be 3
-> +- #size-cells: Must be 2
-> +- #interrupt-cells: Must be 1
-> +- interrupt-map-mask and interrupt-map: Standard PCI IRQ mapping properties
-> +  Please refer to the standard PCI bus binding document for a more detailed
-> +  explanation.
-> +- ranges: Sub-ranges distributed from the PCIe controller node. An empty
-> +  property is sufficient.
-> +- num-lanes: Number of lanes to use for this port.
-> +
-> +Examples:
-> +
-> +	hifsys: syscon@1a000000 {
-> +		compatible = "mediatek,mt7623-hifsys", "syscon";
-> +		reg = <0 0x1a000000 0 0x1000>;
-> +		#clock-cells = <1>;
-> +		#reset-cells = <1>;
-> +	};
-> +
-> +	pcie: pcie-controller@1a140000 {
-> +		compatible = "mediatek,mt7623-pcie";
-> +		device_type = "pci";
-> +		reg = <0 0x1a140000 0 0x1000>; /* PCIe shared registers */
-> +		#address-cells = <3>;
-> +		#size-cells = <2>;
-> +		#interrupt-cells = <1>;
-> +		interrupts = <GIC_SPI 193 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 195 IRQ_TYPE_LEVEL_LOW>;
-> +		interrupt-names = "pcie-int0", "pcie-int1", "pcie-int2";
-> +		interrupt-map-mask = <0xf800 0 0 0>;
-> +		interrupt-map = <0x0000 0 0 0 &gic GIC_SPI 193 IRQ_TYPE_NONE>,
-> +				 <0x0800 0 0 0 &gic GIC_SPI 194 IRQ_TYPE_NONE>,
-> +			     <0x1000 0 0 0 &gic GIC_SPI 195 IRQ_TYPE_NONE>;
-> +		clocks = <&topckgen CLK_TOP_ETHIF_SEL>,
-> +			     <&hifsys CLK_HIFSYS_PCIE0>,
-> +				 <&hifsys CLK_HIFSYS_PCIE1>,
-> +				 <&hifsys CLK_HIFSYS_PCIE2>;
-> +		clock-names = "free_ck", "sys_ck0", "sys_ck1", "sys_ck2";
-> +		resets = <&hifsys MT2701_HIFSYS_PCIE0_RST>,
-> +			     <&hifsys MT2701_HIFSYS_PCIE1_RST>,
-> +			     <&hifsys MT2701_HIFSYS_PCIE2_RST>;
-> +		reset-names = "pcie-rst0", "pcie-rst1", "pcie-rst2";
-> +		phys = <&pcie0_phy>, <&pcie1_phy>, <&pcie2_phy>;
-> +		phy-names = "pcie-phy0", "pcie-phy1", "pcie-phy2";
-> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_HIF>;
-> +		bus-range = <0x00 0xff>;
-> +		ranges = <0x82000000 0 0x1a142000 0 0x1a142000 0 0x1000 /* Port0 registers */
-> +			  0x82000000 0 0x1a143000 0 0x1a143000 0 0x1000 /* Port1 registers */
-> +			  0x82000000 0 0x1a144000 0 0x1a144000 0 0x1000 /* Port2 registers */
-> +			  0x81000000 0 0x1a160000 0 0x1a160000 0 0x00010000 /* I/O space */
-> +			  0x83000000 0 0x60000000 0 0x60000000 0 0x10000000>;	/* memory space */
-> +
-> +		pcie@1,0 {
+Hi Sean, Hi Arnd,
 
-Your unit addresses appear to be off by 1. This one should be 0,0.
++Eddie who pinged me about this in a private mail.
 
-With those fixed,
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+2017-05-08 13:36 GMT+02:00 Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>:
+> On Mon, May 8, 2017 at 11:53 AM, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+>> Hi Rob,
+>>
+>> thanks for helping me looping in the right group
+>>
+>>
+>> Hi Arnd and Olof
+>>
+>> I found Matthias is inactive for a while (his branch in his tree seemed
+>> to stop at 4.10 since the end of February) maybe he was busy at other
+>> things. Is there a good way to break the stuck situation and keeping
+>> linux-mediatek moving on?
+>>
+>> I have the willing to fork his tree, prepare dt-for-4.12 and send
+>> pull-requests to you.
+>
+> Hi Sean,
+>
+> Thanks for offering to help out. I've added Matthias' other email address
+> to Cc here, let's see if he notices the discussion now. Ideally any
+> important platform should have multiple maintainers so there is
+> always a backup person when the primary contact is unavailable
+> for any reason.
+>
+> I'm not sure how much we can still do for 4.12, if you can prepare a
+> branch now we can definitely have a look and see what we can
+> realistically take for a late merge, but as we are in the second half
+> of the merge window already, we would normally put new features
+> into a 4.13 branch and only take bug fixes for 4.12. If there are
+> some entirely new files for additional boards, or only small changes
+> to the existing files, we might make an exception this time.
+>
+>> But I am worried in that way violating the reviewing process if
+>> Matthias no reads it.
+>
+> Don't worry about that at the moment, if Matthias cannot be reached
+> at all, we have to find an alternative way to get patches in.
+>
+
+
+I'm very sorry for the situation. Actually I was struggling lately to
+do my maintainer work in an acceptable manner. And this merge window I
+definitely wasn't able to follow the discussions. I hope that this
+will change in the very near future.
+
+I would propose to send a merge request or a summary with the relevant
+patches now and I will look at it today and forward them to Arnd.
+For the future we should start to think about who could step-in as
+co-maintainer to avoid situation like this.
+
+Once again, sorry for the inconvenience,
+Matthias
+
+>         Arnd
+>
+>> On Tue, 2017-05-02 at 08:52 -0500, Rob Herring wrote:
+>>> +arm-soc
+>>>
+>>> On Mon, May 1, 2017 at 1:58 AM, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+>>> > On Fri, 2017-04-28 at 15:37 -0500, Rob Herring wrote:
+>>> >> On Wed, Apr 26, 2017 at 05:26:13PM +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+>>> >> > From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>> >> >
+>>> >> > Banana Pi team in Sinovoip Co., Limited which are dedicated to
+>>> >> > design and manufacture open hardware product.
+>>> >> >
+>>> >> > Website: http://www.banana-pi.org/
+>>> >> >
+>>> >> > Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>> >> > ---
+>>> >> >  Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
+>>> >> >  1 file changed, 1 insertion(+)
+>>> >> >
+>>> >> > diff --git a/Documentation/devicetree/bindings/vendor-prefixes.txt b/Documentation/devicetree/bindings/vendor-prefixes.txt
+>>> >> > index ec0bfb9..8ca0f3c 100644
+>>> >> > --- a/Documentation/devicetree/bindings/vendor-prefixes.txt
+>>> >> > +++ b/Documentation/devicetree/bindings/vendor-prefixes.txt
+>>> >> > @@ -44,6 +44,7 @@ avia      avia semiconductor
+>>> >> >  avic       Shanghai AVIC Optoelectronics Co., Ltd.
+>>> >> >  axentia    Axentia Technologies AB
+>>> >> >  axis       Axis Communications AB
+>>> >> > +bananapi Banana Pi SINOVOP CO., LIMITED
+>>> >>
+>>> >> s/SINOVOP/SINOVOIP/
+>>> >
+>>> > Hi Rob,
+>>> >
+>>> > thanks for your careful reviewing , i will correct it in the next
+>>> > version.
+>>> >
+>>> > BTW, Could those related dts changes go through your tree if everything
+>>> > looks good? Because I find Matthias have been inactive for a while and
+>>> > the latest branch in his tree seems still staying on 4.10.
+>>>
+>>> Happy to take binding doc changes, but I don't take dts changes
+>>> because those go thru arm-soc. If the platform maintainer is not
+>>> responsive, then we should replace or add maintainers.
+>>>
+>>> Rob
+
+
+
+-- 
+motzblog.wordpress.com
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
