@@ -1,43 +1,60 @@
-From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3] dt-bindings: add vendor prefix for bananapi
-Date: Wed, 10 May 2017 00:12:31 +0800
-Message-ID: <271c3a1548a712c529e5fd783f785e9847ab5103.1494345301.git.sean.wang@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [GIT PULL] fixes for v4.11-next
+Date: Tue, 9 May 2017 18:57:22 +0200
+Message-ID: <3fed6631-6f28-027c-94fd-09188098f66e@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, wens-jdAy2FN1RRM@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Hi Arnd and Olof,
 
-Add BIPAI KEJI LIMITED which is a company dedicating to design and
-manufacture bananapi open hardware.
+First of all, sorry for being that late.
+Please evaluate if you can merge the following fixes into your tree.
 
-Website: http://www.banana-pi.org/
+Thanks a lot,
+Matthias
 
-Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
- 1 file changed, 1 insertion(+)
+The following changes since commit c1ae3cfa0e89fa1a7ecc4c99031f5e9ae99d9201:
 
-diff --git a/Documentation/devicetree/bindings/vendor-prefixes.txt b/Documentation/devicetree/bindings/vendor-prefixes.txt
-index c7d1b72..8f7283d 100644
---- a/Documentation/devicetree/bindings/vendor-prefixes.txt
-+++ b/Documentation/devicetree/bindings/vendor-prefixes.txt
-@@ -44,6 +44,7 @@ avia	avia semiconductor
- avic	Shanghai AVIC Optoelectronics Co., Ltd.
- axentia	Axentia Technologies AB
- axis	Axis Communications AB
-+bananapi BIPAI KEJI LIMITED
- boe	BOE Technology Group Co., Ltd.
- bosch	Bosch Sensortec GmbH
- boundary	Boundary Devices Inc.
--- 
-2.7.4
+   Linux 4.11-rc1 (2017-03-05 12:59:56 -0800)
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+are available in the git repository at:
+
+   https://github.com/mbgg/linux-mediatek.git tags/v4.11-next-fixes
+
+for you to fetch changes up to 1c0803652d82b9a62980886e019c9f70576028a5:
+
+   ARM64: dts: mediatek: configure some fixed mmc parameters (2017-05-09 
+18:35:33 +0200)
+
+----------------------------------------------------------------
+DTS fixes
+- mt8173: fix mmc parameters
+- set timer frequency explicitly and force the driver to set it
+
+----------------------------------------------------------------
+John Crispin (1):
+       arm: dts: mt7623: add clock-frequency to the a7 timer node to 
+mt7623.dtsi
+
+yong mao (1):
+       ARM64: dts: mediatek: configure some fixed mmc parameters
+
+  arch/arm/boot/dts/mt7623.dtsi               | 2 ++
+  arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 3 +++
+  2 files changed, 5 insertions(+)
