@@ -1,117 +1,95 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [PATCH v3 2/2] dt-bindings: pcie: Add documentation for Mediatek PCIe
-Date: Wed, 10 May 2017 12:01:49 +0200
-Message-ID: <CAK8P3a1AUsUTNDnN+_9251sxC7R4vvkQRr37dvAke6ooCJ_oxg@mail.gmail.com>
-References: <1494382020-26790-1-git-send-email-ryder.lee@mediatek.com>
- <1494382020-26790-3-git-send-email-ryder.lee@mediatek.com>
- <CAK8P3a193RxchvFAMWeZiP0sc0bd+VGg=_aVvipSgcbDpHXojg@mail.gmail.com> <1494408707.31307.32.camel@mtkswgap22>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [RESEND PATCH v3 1/2] dt-bindings: i2c: Add Mediatek MT2701 i2c
+ binding
+Date: Wed, 10 May 2017 12:35:42 +0200
+Message-ID: <4111ffc2-0a25-0811-fbd3-401649431315@gmail.com>
+References: <1489029185-21447-1-git-send-email-jun.gao@mediatek.com>
+ <1489029185-21447-2-git-send-email-jun.gao@mediatek.com>
+ <20170322090543.sxacnddn2o7stjnq@ninjato>
+ <1490694612.18582.11.camel@mhfsdcap03> <20170328192258.GA4525@katana>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1494408707.31307.32.camel@mtkswgap22>
+In-Reply-To: <20170328192258.GA4525@katana>
+Content-Language: en-US
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-pci <linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Red Hung <red.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+To: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, May 10, 2017 at 11:31 AM, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> On Wed, 2017-05-10 at 10:08 +0200, Arnd Bergmann wrote:
->> On Wed, May 10, 2017 at 4:07 AM, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+
+
+On 28/03/17 21:22, Wolfram Sang wrote:
+> On Tue, Mar 28, 2017 at 05:50:12PM +0800, Jun Gao wrote:
+>> On Wed, 2017-03-22 at 10:05 +0100, Wolfram Sang wrote:
+>>> On Thu, Mar 09, 2017 at 11:13:04AM +0800, Jun Gao wrote:
+>>>> From: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>>>
+>>>> Add MT2701 i2c binding to i2c-mt6577.txt and there is no need to
+>>>> modify i2c driver.
+>>>>
+>>>> Signed-off-by: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>>
+>>> There is still the issue which Matthias Brugger pointed out on January,
+>>> 24th: you need to describe the fallback compatibles.
+>>>
 >>
->> > +- ranges:
->> > +  - The first three entries are expected to translate the addresses for the root
->> > +    port registers, which are referenced by the assigned-addresses property of
->> > +    the root port nodes (see below).
+>> IMHO the value under compatible are just inputs which can be accepted.
+>> It's little strange to add fallback information in binding. Some other
+>> bindings do not describe so detailedly.
+>> Is it OK to make binding as minimum standard?
+>> If we describe it very detailedly, we will have to modify binding if
+>> there are some changes for mt2701.
+> 
+> My reading of the below is that I could simply use "mediatek,mt2701-i2c"
+> as compatible and things will work. But it won't, we don't have that in
+> the driver IIRC. So, we need a fallback for that to work.
+> 
+>> Rob, could you give some suggestions?  Thanks!
+> 
+> Would be welcome, yes. I lost track what the preferred solution is.
+> 
+
+We will need to define the fallback binding for each SoC.
+As example take the rockchip mmc:
+http://elixir.free-electrons.com/linux/latest/source/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
+
+Regards,
+Matthias
+
 >>
->> I don't understand this part. Why do you need a static translation for these?
->> Shouldn't they just be listed in the 'reg' property of the parent node now that
->> you have the clk/reset/phy properties in the parent as well?
->
-> At first, I did like that. But I noticed that someone suggest it's
-> better to use 'assigned-addresses' to handle per-port registers, the
-> same path as tegra and marvell did, in other platform discussion thread.
-> So I just put shared register in root node. It could be rolled back if
-> you feel this is inappropriate.
-
-The marvell case is not a good example for your case: their top-level
-device is made up by the OS to help with the shared resource allocation,
-while in your case the bus bridge actually exists in hardware.
-
-I'm not too familiar with the Tegra case, and haven't looked at that here,
-but it could be an artifact of how for a while we used to list the config
-space access in the top-level "ranges" instead of the "reg" property.
-
-I'd vote for moving it back, for consistency with the other port specific
-properties that are now in the root node. Once you do that, the port
-nodes can be removed completely, which is what I was aiming for with
-the comments on the previous version.
-
->> > +Required properties:
->> > +- device_type: Must be "pci"
->> > +- assigned-addresses: Address and size of the port configuration registers
->> > +- reg: Only the first four bytes are used to refer to the correct bus number
->> > +  and device number.
->> > +- #address-cells: Must be 3
->> > +- #size-cells: Must be 2
->> > +- #interrupt-cells: Must be 1
->> > +- interrupt-map-mask and interrupt-map: Standard PCI IRQ mapping properties
->> > +  Please refer to the standard PCI bus binding document for a more detailed
->> > +  explanation.
+>>>> ---
+>>>>   .../devicetree/bindings/i2c/i2c-mt6577.txt         |   11 ++++++-----
+>>>>   1 file changed, 6 insertions(+), 5 deletions(-)
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+>>>> index 0ce6fa3..27dbbf9 100644
+>>>> --- a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+>>>> +++ b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+>>>> @@ -4,11 +4,12 @@ The Mediatek's I2C controller is used to interface with I2C devices.
+>>>>   
+>>>>   Required properties:
+>>>>     - compatible: value should be either of the following.
+>>>> -      (a) "mediatek,mt6577-i2c", for i2c compatible with mt6577 i2c.
+>>>> -      (b) "mediatek,mt6589-i2c", for i2c compatible with mt6589 i2c.
+>>>> -      (c) "mediatek,mt8127-i2c", for i2c compatible with mt8127 i2c.
+>>>> -      (d) "mediatek,mt8135-i2c", for i2c compatible with mt8135 i2c.
+>>>> -      (e) "mediatek,mt8173-i2c", for i2c compatible with mt8173 i2c.
+>>>> +	"mediatek,mt2701-i2c"
+>>>> +	"mediatek,mt6577-i2c"
+>>>> +	"mediatek,mt6589-i2c"
+>>>> +	"mediatek,mt8127-i2c"
+>>>> +	"mediatek,mt8135-i2c"
+>>>> +	"mediatek,mt8173-i2c"
+>>>>     - reg: physical base address of the controller and dma base, length of memory
+>>>>       mapped region.
+>>>>     - interrupts: interrupt number to the cpu.
+>>>> -- 
+>>>> 1.7.9.5
+>>>>
 >>
->> Child nodes do not normally have interrupt-map properties. Isn't this
->> already covered by the interrupt-map in the parent?
 >>
->
-> I have one Intel 4 port ethernet card(0000:00:01) and MTK WLAN card
-> (0000:00:02), probe message looks good to me.
->
-> pci 0000:00:01.0: fixup irq: got 224
-> pci 0000:00:01.0: assigning IRQ 224
-> pci 0000:00:02.0: fixup irq: got 225
-> pci 0000:00:02.0: assigning IRQ 225
->
-> pci 0000:01:00.0: fixup irq: got 224
-> pci 0000:01:00.0: assigning IRQ 224
-> pci 0000:01:00.1: fixup irq: got 224
-> pci 0000:01:00.1: assigning IRQ 224
-> pci 0000:01:00.2: fixup irq: got 224
-> pci 0000:01:00.2: assigning IRQ 224
-> pci 0000:01:00.3: fixup irq: got 224
-> pci 0000:01:00.3: assigning IRQ 224
->
-> pci 0000:02:00.0: fixup irq: got 225
-> pci 0000:02:00.0: assigning IRQ 225
->
->
-> But child nodes without interrupt-map properties:
-> It seems incorrect.
->
-> pci 0000:00:01.0: fixup irq: got 224
-> pci 0000:00:01.0: assigning IRQ 224
-> pci 0000:00:02.0: fixup irq: got 225
-> pci 0000:00:02.0: assigning IRQ 225
->
-> pci 0000:01:00.0: fixup irq: got 223
-> pci 0000:01:00.0: assigning IRQ 223
-
-Not entirely sure what happens here, but I guess the problem
-is that the 'reg' portion of the parent interrupt-map refers to
-the port devices, not the devices attached the devices behind
-them.
-
-On a related note, I see that you still list
-
-> +- interrupts: Three interrupt outputs of the controller. Must contain an
-> +  entry for each entry in the interrupt-names property.
-> +- interrupt-names: Must include the following names
-> +  - "pcie-int0"
-> +  - "pcie-int1"
-> +  - "pcie-int2"
-
-This seems to be an artifact from the older version and should be
-removed as the driver correctly ignores the properties now.
-
-      Arnd
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
