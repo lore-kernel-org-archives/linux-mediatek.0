@@ -1,77 +1,81 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v4 0/3] Add Mediatek CIRQ interrupt controller
-Date: Wed, 10 May 2017 11:42:19 +0200
-Message-ID: <36732dc3-e113-246c-0828-150e9b31f4fb@gmail.com>
-References: <1491552397-7893-1-git-send-email-youlin.pei@mediatek.com>
- <771954fe-c994-96be-76ab-ece75383d058@arm.com>
- <1491558884.24848.3.camel@mtksdaap41>
+Subject: Re: [PATCH v5 1/9] phy: phy-mt65xx-usb3: improve RX detection stable
+ time
+Date: Wed, 10 May 2017 11:48:31 +0200
+Message-ID: <75079f91-01f3-88ef-1733-5139857cc609@gmail.com>
+References: <1490945735-9531-1-git-send-email-chunfeng.yun@mediatek.com>
+ <de1b9870-d325-e97a-a2f0-bd355c70356c@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1491558884.24848.3.camel@mtksdaap41>
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <de1b9870-d325-e97a-a2f0-bd355c70356c-l0cyMroinI0@public.gmane.org>
 Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Youlin Pei <youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 07/04/17 11:54, Youlin Pei wrote:
-> On Fri, 2017-04-07 at 09:52 +0100, Marc Zyngier wrote:
->> On 07/04/17 09:06, Youlin Pei wrote:
->>> In Mediatek SOCs, the CIRQ is a low power interrupt controller designed to
->>> works outside MCUSYS which comprises with Cortex-Ax cores,CCI and GIC.
->>>
->>> The CIRQ controller is integrated in between MCUSYS and interrupt sources
->>> as the second level interrupt controller. The external interrupts which
->>> outside MCUSYS will feed through CIRQ then bypass to GIC.
->>>
->>> In normal mode(where MCUSYS is active), CIRQ is disabled and interrupts
->>> will directly issue to MCUSYS. When MCUSYS enters sleep mode, where GIC
->>> is power downed. CIRQ will be enabled and monitor all edge trigger
->>> interrupts(only edge trigger interrupts will be lost in this scenario).
->>> When an edge interrupt is triggered, CIRQ will record the status and
->>> generated a pulse signal to GIC when flush command is executed.
->>>
->>> With CIRQ, MCUSYS can be completely turned off to improve the system
->>> power consumption without losing interrupts.
->>>
->>> change in v4:
->>> 1. add some comment to explain CIRQ suspend callback.
->>> 2. rebase on 4.11
->>
->> Hi Youlin,
->>
->> I'm happy to take the first two patches through the irq tree. How do we
->> deal with the third one? It seems to me that it'd be better routed via
->> armsoc.
->>
->> Let me know what you and Matthias want to do.
-> 
-> Hi Marc,
-> 
-> Thanks for your review. I think that driver and dtsi can merged
-> separately.
-> 
-> Hi Matthias,
-> Could you help to review the dtsi patch?
-
-queued now for v4.12-next/dts32
-sorry for the late answer.
-
+I took DTS parts for v4.12-next.
+Sorry for the late response.
 Matthias
 
-> Thanks a lot!
+On 06/04/17 12:28, Kishon Vijay Abraham I wrote:
 > 
+> 
+> On Friday 31 March 2017 01:05 PM, Chunfeng Yun wrote:
+>> The default value of RX detection stable time is 10us, and this
+>> margin is too big for some critical cases which cause U3 link fail
+>> and link to U2(probability is about 1%). So change it to 5us.
 >>
->> Thanks,
+> merged all the phy patches in this series to linux-phy -next.
+> 
+> Thanks
+> Kishon
+> 
+>> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>> ---
+>>   drivers/phy/phy-mt65xx-usb3.c |   18 ++++++++++++++++++
+>>   1 file changed, 18 insertions(+)
 >>
->> 	M.
-> 
-> 
+>> diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
+>> index d972067..fe2392a 100644
+>> --- a/drivers/phy/phy-mt65xx-usb3.c
+>> +++ b/drivers/phy/phy-mt65xx-usb3.c
+>> @@ -112,6 +112,14 @@
+>>   #define P3D_RG_CDR_BIR_LTD0		GENMASK(12, 8)
+>>   #define P3D_RG_CDR_BIR_LTD0_VAL(x)	((0x1f & (x)) << 8)
+>>   
+>> +#define U3P_U3_PHYD_RXDET1		(SSUSB_SIFSLV_U3PHYD_BASE + 0x128)
+>> +#define P3D_RG_RXDET_STB2_SET		GENMASK(17, 9)
+>> +#define P3D_RG_RXDET_STB2_SET_VAL(x)	((0x1ff & (x)) << 9)
+>> +
+>> +#define U3P_U3_PHYD_RXDET2		(SSUSB_SIFSLV_U3PHYD_BASE + 0x12c)
+>> +#define P3D_RG_RXDET_STB2_SET_P3	GENMASK(8, 0)
+>> +#define P3D_RG_RXDET_STB2_SET_P3_VAL(x)	(0x1ff & (x))
+>> +
+>>   #define U3P_XTALCTL3		(SSUSB_SIFSLV_SPLLC + 0x0018)
+>>   #define XC3_RG_U3_XTAL_RX_PWD		BIT(9)
+>>   #define XC3_RG_U3_FRC_XTAL_RX_PWD	BIT(8)
+>> @@ -295,6 +303,16 @@ static void phy_instance_init(struct mt65xx_u3phy *u3phy,
+>>   	tmp |= P3D_RG_CDR_BIR_LTD0_VAL(0xc) | P3D_RG_CDR_BIR_LTD1_VAL(0x3);
+>>   	writel(tmp, port_base + U3P_PHYD_CDR1);
+>>   
+>> +	tmp = readl(port_base + U3P_U3_PHYD_RXDET1);
+>> +	tmp &= ~P3D_RG_RXDET_STB2_SET;
+>> +	tmp |= P3D_RG_RXDET_STB2_SET_VAL(0x10);
+>> +	writel(tmp, port_base + U3P_U3_PHYD_RXDET1);
+>> +
+>> +	tmp = readl(port_base + U3P_U3_PHYD_RXDET2);
+>> +	tmp &= ~P3D_RG_RXDET_STB2_SET_P3;
+>> +	tmp |= P3D_RG_RXDET_STB2_SET_P3_VAL(0x10);
+>> +	writel(tmp, port_base + U3P_U3_PHYD_RXDET2);
+>> +
+>>   	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, index);
+>>   }
+>>   
+>>
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
