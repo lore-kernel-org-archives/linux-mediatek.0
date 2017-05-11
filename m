@@ -1,82 +1,147 @@
-From: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] arm: dts: mt2701: add nor flash node
-Date: Thu, 11 May 2017 09:30:11 +0800
-Message-ID: <1494466211.6463.2.camel@mhfsdcap03>
-References: <1485315515-29942-1-git-send-email-guochun.mao@mediatek.com>
-         <1485315515-29942-3-git-send-email-guochun.mao@mediatek.com>
-         <1486267249.10417.9.camel@mhfsdcap03> <20170206084544.24878633@bbrezillon>
-         <77e0e3b0-2fe4-b32b-9099-11ce9811ba15@gmail.com>
-         <1487044733.19037.0.camel@mhfsdcap03>
-         <1a788098-1cf8-5fec-e847-5c14189f8586@gmail.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: Re: [PATCH v3 2/2] dt-bindings: pcie: Add documentation for
+ Mediatek PCIe
+Date: Thu, 11 May 2017 10:44:10 +0800
+Message-ID: <1494470650.20742.36.camel@mtkswgap22>
+References: <1494382020-26790-1-git-send-email-ryder.lee@mediatek.com>
+         <1494382020-26790-3-git-send-email-ryder.lee@mediatek.com>
+         <CAK8P3a193RxchvFAMWeZiP0sc0bd+VGg=_aVvipSgcbDpHXojg@mail.gmail.com>
+         <1494408707.31307.32.camel@mtkswgap22>
+         <CAK8P3a1AUsUTNDnN+_9251sxC7R4vvkQRr37dvAke6ooCJ_oxg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1a788098-1cf8-5fec-e847-5c14189f8586-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <CAK8P3a1AUsUTNDnN+_9251sxC7R4vvkQRr37dvAke6ooCJ_oxg@mail.gmail.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, linux-pci <linux-pci@vger.kernel.org>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Linux ARM <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Red Hung <red.hung@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-05-10 at 12:49 +0200, Matthias Brugger wrote:
-> 
-> On 14/02/17 04:58, Guochun Mao wrote:
-> > On Sun, 2017-02-12 at 07:35 +0800, Matthias Brugger wrote:
+On Wed, 2017-05-10 at 12:01 +0200, Arnd Bergmann wrote:
+> On Wed, May 10, 2017 at 11:31 AM, Ryder Lee <ryder.lee@mediatek.com> wrote:
+> > On Wed, 2017-05-10 at 10:08 +0200, Arnd Bergmann wrote:
+> >> On Wed, May 10, 2017 at 4:07 AM, Ryder Lee <ryder.lee@mediatek.com> wrote:
 > >>
-> >> On 02/06/2017 08:45 AM, Boris Brezillon wrote:
-> >>> Hi Guochun,
-> >>>
-> >>> On Sun, 5 Feb 2017 12:00:49 +0800
-> >>> Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> >>>
-> >>>
-> >>>>>
-> >>>>> +   nor_flash: spi@11014000 {
-> >>>>> +           compatible = "mediatek,mt2701-nor",
-> >>>>> +                        "mediatek,mt8173-nor";
-> >>>>> +           reg = <0 0x11014000 0 0xe0>;
-> >>>>> +           clocks = <&pericfg CLK_PERI_FLASH>,
-> >>>>> +                    <&topckgen CLK_TOP_FLASH_SEL>;
-> >>>>> +           clock-names = "spi", "sf";
-> >>>>> +           #address-cells = <1>;
-> >>>>> +           #size-cells = <0>;
-> >>>>> +           status = "disabled";
-> >>>>> +   };
-> >>>>> +
-> >>>>>      mmsys: syscon@14000000 {
-> >>>>>              compatible = "mediatek,mt2701-mmsys", "syscon";
-> >>>>>              reg = <0 0x14000000 0 0x1000>;
-> >>>>
-> >>>> Hi,
-> >>>> mtk-quadspi.txt had been updated as suggested.
-> >>>> Is there suggestion about this patch?
-> >>>
-> >>> It should probably go through the Mediatek tree. Matthias, any opinion?
-> >>>
+> >> > +- ranges:
+> >> > +  - The first three entries are expected to translate the addresses for the root
+> >> > +    port registers, which are referenced by the assigned-addresses property of
+> >> > +    the root port nodes (see below).
 > >>
-> >> Yes, I will take this one through mine tree.
+> >> I don't understand this part. Why do you need a static translation for these?
+> >> Shouldn't they just be listed in the 'reg' property of the parent node now that
+> >> you have the clk/reset/phy properties in the parent as well?
+> >
+> > At first, I did like that. But I noticed that someone suggest it's
+> > better to use 'assigned-addresses' to handle per-port registers, the
+> > same path as tegra and marvell did, in other platform discussion thread.
+> > So I just put shared register in root node. It could be rolled back if
+> > you feel this is inappropriate.
+> 
+> The marvell case is not a good example for your case: their top-level
+> device is made up by the OS to help with the shared resource allocation,
+> while in your case the bus bridge actually exists in hardware.
+> 
+> I'm not too familiar with the Tegra case, and haven't looked at that here,
+> but it could be an artifact of how for a while we used to list the config
+> space access in the top-level "ranges" instead of the "reg" property.
+> 
+> I'd vote for moving it back, for consistency with the other port specific
+> properties that are now in the root node. Once you do that, the port
+> nodes can be removed completely, which is what I was aiming for with
+> the comments on the previous version.
+ 
+I'll move it back.
+
+> >> > +Required properties:
+> >> > +- device_type: Must be "pci"
+> >> > +- assigned-addresses: Address and size of the port configuration registers
+> >> > +- reg: Only the first four bytes are used to refer to the correct bus number
+> >> > +  and device number.
+> >> > +- #address-cells: Must be 3
+> >> > +- #size-cells: Must be 2
+> >> > +- #interrupt-cells: Must be 1
+> >> > +- interrupt-map-mask and interrupt-map: Standard PCI IRQ mapping properties
+> >> > +  Please refer to the standard PCI bus binding document for a more detailed
+> >> > +  explanation.
 > >>
-> >> Thanks,
-> >> Matthias
-> > 
-> > Thanks,
-> > Guochun
-> > 
-> > 
+> >> Child nodes do not normally have interrupt-map properties. Isn't this
+> >> already covered by the interrupt-map in the parent?
+> >>
+> >
+> > I have one Intel 4 port ethernet card(0000:00:01) and MTK WLAN card
+> > (0000:00:02), probe message looks good to me.
+> >
+> > pci 0000:00:01.0: fixup irq: got 224
+> > pci 0000:00:01.0: assigning IRQ 224
+> > pci 0000:00:02.0: fixup irq: got 225
+> > pci 0000:00:02.0: assigning IRQ 225
+> >
+> > pci 0000:01:00.0: fixup irq: got 224
+> > pci 0000:01:00.0: assigning IRQ 224
+> > pci 0000:01:00.1: fixup irq: got 224
+> > pci 0000:01:00.1: assigning IRQ 224
+> > pci 0000:01:00.2: fixup irq: got 224
+> > pci 0000:01:00.2: assigning IRQ 224
+> > pci 0000:01:00.3: fixup irq: got 224
+> > pci 0000:01:00.3: assigning IRQ 224
+> >
+> > pci 0000:02:00.0: fixup irq: got 225
+> > pci 0000:02:00.0: assigning IRQ 225
+> >
+> >
+> > But child nodes without interrupt-map properties:
+> > It seems incorrect.
+> >
+> > pci 0000:00:01.0: fixup irq: got 224
+> > pci 0000:00:01.0: assigning IRQ 224
+> > pci 0000:00:02.0: fixup irq: got 225
+> > pci 0000:00:02.0: assigning IRQ 225
+> >
+> > pci 0000:01:00.0: fixup irq: got 223
+> > pci 0000:01:00.0: assigning IRQ 223
 > 
-> Queued now for v4.12-next/dts32
-> Sorry for the delay.
+> Not entirely sure what happens here, but I guess the problem
+> is that the 'reg' portion of the parent interrupt-map refers to
+> the port devices, not the devices attached the devices behind
+> them.
+
+I agree with you. That's why I need additional interrupt-map properties
+to resolve IRQ correctly for the devices behind root ports.
+
+Not sure whether other platforms have similar case like me here.
+
+> On a related note, I see that you still list
 > 
-> Matthias
+> > +- interrupts: Three interrupt outputs of the controller. Must contain an
+> > +  entry for each entry in the interrupt-names property.
+> > +- interrupt-names: Must include the following names
+> > +  - "pcie-int0"
+> > +  - "pcie-int1"
+> > +  - "pcie-int2"
+> 
+> This seems to be an artifact from the older version and should be
+> removed as the driver correctly ignores the properties now.
 
-Hi, Matthias,
+Actually, everything works fine without these properties however when it
+loads we see a few weird error message:
 
-It's OK. Thanks a lot.
+pcieport 0000:00:01.0: Signaling PME with IRQ 232
+pcieport 0000:00:02.0: enabling device (0140 -> 0142)
+pcieport 0000:00:02.0: enabling bus mastering
+irq 232: nobody cared (try booting with the "irqpoll" option)
+...
+[<c03f6be4>] (pcie_pme_probe) from [<c03f47b8>] (pcie_port_probe_service
++0x44/0x6c)
+(pcie_port_probe_service) from [<c0454cf8>] (driver_probe_device
++0x280/0x470)
+...
+(pcie_port_device_register) from [<c03f51a0>] (pcie_portdrv_probe
++0x3c/0xb4)
+(pcie_portdrv_probe) from [<c03e7acc>] (pci_device_probe+0x98/0xfc)
+(pci_device_probe) from [<c0454cf8>] (driver_probe_device+0x280/0x470)
+handlers:
+[<c03f68b0>] pcie_pme_irq
+Disabling IRQ #233
 
-Guochun
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+I haven't dig it out yet, but just keep them here to solve that.
