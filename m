@@ -1,97 +1,62 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v3 3/3] media: mtk-mdp: Fix mdp device tree
-Date: Fri, 12 May 2017 17:05:27 +0200
-Message-ID: <60f89b9a-f068-25a7-3f8b-d13b19357361@gmail.com>
-References: <1494559361-42835-1-git-send-email-minghsiu.tsai@mediatek.com>
- <1494559361-42835-4-git-send-email-minghsiu.tsai@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3 1/9] arm: dts: mt7623: add mt7623-mt6323.dtsi file
+Date: Fri, 12 May 2017 17:46:06 +0200
+Message-ID: <7f1d5fb3-5295-bb61-f21b-9d08bfaf070c@gmail.com>
+References: <201705121837.eDU3hOId%fengguang.wu@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1494559361-42835-4-git-send-email-minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <201705121837.eDU3hOId%fengguang.wu@intel.com>
 Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Houlong Wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Wu-Cheng Li <wuchengli-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: kbuild test robot <lkp@intel.com>, sean.wang@mediatek.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, kbuild-all@01.org, john@phrozen.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 12/05/17 05:22, Minghsiu Tsai wrote:
-> From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+On 12/05/17 12:46, kbuild test robot wrote:
+> Hi John,
 > 
-> If the mdp_* nodes are under an mdp sub-node, their corresponding
-> platform device does not automatically get its iommu assigned properly.
-> 
-> Fix this by moving the mdp component nodes up a level such that they are
-> siblings of mdp and all other SoC subsystems.  This also simplifies the
-> device tree.
-> 
-> Although it fixes iommu assignment issue, it also break compatibility
-> with old device tree. So, the patch in driver is needed to iterate over
-> sibling mdp device nodes, not child ones, to keep driver work properly.
-> 
+> [auto build test ERROR on robh/for-next]
+> [also build test ERROR on v4.11 next-20170512]
+> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
 
-Couldn't we preserve backwards compatibility by doing something like this:
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c 
-b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-index 9e4eb7dcc424..277d8fe6eb76 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-@@ -103,7 +103,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
-  {
-  	struct mtk_mdp_dev *mdp;
-  	struct device *dev = &pdev->dev;
--	struct device_node *node;
-+	struct device_node *node, *parent;
-  	int i, ret = 0;
+Mediatek dts patches should be tested against this branch:
+https://github.com/mbgg/linux-mediatek.git for-next
 
-  	mdp = devm_kzalloc(dev, sizeof(*mdp), GFP_KERNEL);
-@@ -117,8 +117,14 @@ static int mtk_mdp_probe(struct platform_device *pdev)
-  	mutex_init(&mdp->lock);
-  	mutex_init(&mdp->vpulock);
+Thanks for maintaining the kbuild test robot.
 
-+	/* Old dts had the components as child nodes */
-+	if (of_get_next_child(dev->of_node, NULL))
-+		parent = dev->of_node;
-+	else
-+		parent = dev->of_node->parent;
-+
-  	/* Iterate over sibling MDP function blocks */
--	for_each_child_of_node(dev->of_node, node) {
-+	for_each_child_of_node(parent, node) {
-  		const struct of_device_id *of_id;
-  		enum mtk_mdp_comp_type comp_type;
-  		int comp_id;
-
-Maybe even by putting a warning in the if branch to make sure, people 
-are aware of their out-of-date device tree blobs.
-
-Regards,
 Matthias
 
-> Signed-off-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> url:    https://github.com/0day-ci/linux/commits/sean-wang-mediatek-com/arm-dts-extend-mt7623-support/20170512-165138
+> base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+> config: arm-at91_dt_defconfig (attached as .config)
+> compiler: arm-linux-gnueabi-gcc (Debian 6.1.1-9) 6.1.1 20160705
+> reproduce:
+>          wget https://raw.githubusercontent.com/01org/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>          chmod +x ~/bin/make.cross
+>          # save the attached .config to linux build tree
+>          make.cross ARCH=arm
+> 
+> All errors (new ones prefixed by >>):
+> 
+>>> Error: arch/arm/boot/dts/mt7623-mt6323.dtsi:33.1-7 Label or path pwrap not found
+>>> Error: arch/arm/boot/dts/mt7623-mt6323.dtsi:261.1-6 Label or path mmc0 not found
+>>> Error: arch/arm/boot/dts/mt7623-mt6323.dtsi:266.1-6 Label or path mmc1 not found
+>     FATAL ERROR: Syntax error parsing input tree
 > 
 > ---
->   drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> 0-DAY kernel test infrastructure                Open Source Technology Center
+> https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 > 
-> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-> index 9e4eb7d..a5ad586 100644
-> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-> @@ -118,7 +118,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
->   	mutex_init(&mdp->vpulock);
->   
->   	/* Iterate over sibling MDP function blocks */
-> -	for_each_child_of_node(dev->of_node, node) {
-> +	for_each_child_of_node(dev->of_node->parent, node) {
->   		const struct of_device_id *of_id;
->   		enum mtk_mdp_comp_type comp_type;
->   		int comp_id;
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
