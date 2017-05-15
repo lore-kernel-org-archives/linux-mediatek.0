@@ -1,121 +1,122 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 2/2] dt-bindings: pcie: Add documentation for
- Mediatek PCIe
-Date: Sun, 14 May 2017 13:27:36 +0800
-Message-ID: <1494739656.22906.32.camel@mtkswgap22>
-References: <1494382020-26790-1-git-send-email-ryder.lee@mediatek.com>
-         <1494382020-26790-3-git-send-email-ryder.lee@mediatek.com>
-         <CAK8P3a193RxchvFAMWeZiP0sc0bd+VGg=_aVvipSgcbDpHXojg@mail.gmail.com>
-         <1494408707.31307.32.camel@mtkswgap22>
-         <CAK8P3a1AUsUTNDnN+_9251sxC7R4vvkQRr37dvAke6ooCJ_oxg@mail.gmail.com>
-         <1494470650.20742.36.camel@mtkswgap22>
-         <CAK8P3a1FVyoFufnbQFjGovoQpkxMj3kaAgjb5Q+v-DQnYKeA-g@mail.gmail.com>
-         <1494493719.9564.26.camel@mtkswgap22>
-         <1494504718.19420.10.camel@mtkswgap22>
+From: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 3/3] media: mtk-mdp: Fix mdp device tree
+Date: Mon, 15 May 2017 10:31:52 +0800
+Message-ID: <1494815512.31916.11.camel@mtksdaap41>
+References: <1494559361-42835-1-git-send-email-minghsiu.tsai@mediatek.com>
+         <1494559361-42835-4-git-send-email-minghsiu.tsai@mediatek.com>
+         <60f89b9a-f068-25a7-3f8b-d13b19357361@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1494504718.19420.10.camel@mtkswgap22>
+In-Reply-To: <60f89b9a-f068-25a7-3f8b-d13b19357361-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-pci <linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Red Hung <red.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Houlong Wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Wu-Cheng Li <wuchengli-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-Hi Arnd,
-
-Sorry to bother you again.
-
-On Thu, 2017-05-11 at 20:11 +0800, Ryder Lee wrote:
-> > interrupt-map-mask = <0xff800 0 0 0>;
-> > interrupt-map = <0x0000 0 0 0 &gic GIC_SPI 193 IRQ_TYPE_NONE>,
-> > 		 <0x0800 0 0 0 &gic GIC_SPI 194 IRQ_TYPE_NONE>,
-> > 		 <0x1000 0 0 0 &gic GIC_SPI 195 IRQ_TYPE_NONE>,
+On Fri, 2017-05-12 at 17:05 +0200, Matthias Brugger wrote:
+> 
+> On 12/05/17 05:22, Minghsiu Tsai wrote:
+> > From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 > > 
-> > 		 /* workaround here*/
-> > 		 <0x10000 0 0 0 &gic GIC_SPI 193 IRQ_TYPE_NONE>,
-> > 		 <0x20000 0 0 0 &gic GIC_SPI 194 IRQ_TYPE_NONE>,
-> > 	     <0x30000 0 0 0 &gic GIC_SPI 195 IRQ_TYPE_NONE>;
+> > If the mdp_* nodes are under an mdp sub-node, their corresponding
+> > platform device does not automatically get its iommu assigned properly.
 > > 
-> > It works well. But how could we handle the situation if root port0
-> > status = "disabled" ? I think we cannot assign child bus number
-> > dynamically from binding.
-> 
-> That is to say, we route it statically if port0 (or port1) is
-> unavailable. The PCI child bus enumeration should look something like
-> this:
-> 
->  pci 0000:00:01.0: fixup irq: got 224
->  pci 0000:00:01.0: assigning IRQ 224
->  pci 0000:00:02.0: fixup irq: got 225
->  pci 0000:00:02.0: assigning IRQ 225
->  
->  Go wrong here! IRQ 223/224 should be assigned to the devices behind
-> port0 and port1.
->  pci 0000:01:00.0: fixup irq: got 223
->  pci 0000:01:00.0: assigning IRQ 223
->  pci 0000:02:00.0: fixup irq: got 224
->  pci 0000:02:00.0: assigning IRQ 224
-
-What I thought was wrong. I have misunderstood something in previous
-discussion. Actually it could work for the situation that I mentioned
-before. However, I'm not sure whether this is a proper representation
-you want to see.
-
-> > > >> On a related note, I see that you still list
-> > > >>
-> > > >> > +- interrupts: Three interrupt outputs of the controller. Must contain an
-> > > >> > +  entry for each entry in the interrupt-names property.
-> > > >> > +- interrupt-names: Must include the following names
-> > > >> > +  - "pcie-int0"
-> > > >> > +  - "pcie-int1"
-> > > >> > +  - "pcie-int2"
-> > > >>
-> > > >> This seems to be an artifact from the older version and should be
-> > > >> removed as the driver correctly ignores the properties now.
-> > > >
-> > > > Actually, everything works fine without these properties however when it
-> > > > loads we see a few weird error message:
-> > > >
-> > > > pcieport 0000:00:01.0: Signaling PME with IRQ 232
-> > > > pcieport 0000:00:02.0: enabling device (0140 -> 0142)
-> > > > pcieport 0000:00:02.0: enabling bus mastering
-> > > > irq 232: nobody cared (try booting with the "irqpoll" option)
-> > > > ...
-> > > > [<c03f6be4>] (pcie_pme_probe) from [<c03f47b8>] (pcie_port_probe_service
-> > > > +0x44/0x6c)
-> > > > (pcie_port_probe_service) from [<c0454cf8>] (driver_probe_device
-> > > > +0x280/0x470)
-> > > > ...
-> > > > (pcie_port_device_register) from [<c03f51a0>] (pcie_portdrv_probe
-> > > > +0x3c/0xb4)
-> > > > (pcie_portdrv_probe) from [<c03e7acc>] (pci_device_probe+0x98/0xfc)
-> > > > (pci_device_probe) from [<c0454cf8>] (driver_probe_device+0x280/0x470)
-> > > > handlers:
-> > > > [<c03f68b0>] pcie_pme_irq
-> > > > Disabling IRQ #233
-> > > >
-> > > > I haven't dig it out yet, but just keep them here to solve that.
-> > > 
-> > > Something is going very wrong if adding the properties helps. I can't
-> > > think of what that is, but we have to find out before the binding can
-> > > be merged.
+> > Fix this by moving the mdp component nodes up a level such that they are
+> > siblings of mdp and all other SoC subsystems.  This also simplifies the
+> > device tree.
 > > 
-> > Not really understand PME service. But I will find the reason here.
+> > Although it fixes iommu assignment issue, it also break compatibility
+> > with old device tree. So, the patch in driver is needed to iterate over
+> > sibling mdp device nodes, not child ones, to keep driver work properly.
+> > 
 > 
-> I have do some test here. PME needs port IRQs, which interrupt type was
-> set correctly(IRQ_TYPE_LEVEL_LOW). But we cannot set it from
-> interrupt-map, according to gic_set_type() /* SPIs have restrictions on
-> the supported types */ .
+> Couldn't we preserve backwards compatibility by doing something like this:
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c 
+> b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> index 9e4eb7dcc424..277d8fe6eb76 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> @@ -103,7 +103,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+>   {
+>   	struct mtk_mdp_dev *mdp;
+>   	struct device *dev = &pdev->dev;
+> -	struct device_node *node;
+> +	struct device_node *node, *parent;
+>   	int i, ret = 0;
 > 
-> So we need to add additional interrupt properties.
+>   	mdp = devm_kzalloc(dev, sizeof(*mdp), GFP_KERNEL);
+> @@ -117,8 +117,14 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+>   	mutex_init(&mdp->lock);
+>   	mutex_init(&mdp->vpulock);
+> 
+> +	/* Old dts had the components as child nodes */
+> +	if (of_get_next_child(dev->of_node, NULL))
+> +		parent = dev->of_node;
+> +	else
+> +		parent = dev->of_node->parent;
+> +
+>   	/* Iterate over sibling MDP function blocks */
+> -	for_each_child_of_node(dev->of_node, node) {
+> +	for_each_child_of_node(parent, node) {
+>   		const struct of_device_id *of_id;
+>   		enum mtk_mdp_comp_type comp_type;
+>   		int comp_id;
+> 
+> Maybe even by putting a warning in the if branch to make sure, people 
+> are aware of their out-of-date device tree blobs.
+> 
+> Regards,
+> Matthias
+> 
 
-I could use iPerf to test my WLAN card normally. But just ignore this
-exception message. I would definitely appreciate if someone could give
-me some hint on how to properly solve it. 
+Hi Matthias,
 
-Thanks a lot.
+It is a good idea to do compatible in such a way and put a warning the
+device tree is out of date. People can find out cause soon if device
+tree is old.
+
+I modify the code as below:
+
++	/* Old dts had the components as child nodes */
++	if (of_get_next_child(dev->of_node, NULL)) {
++		parent = dev->of_node;
++		dev_warn(dev, "device tree is out of date\n");
++	} else {
++		parent = dev->of_node->parent;
++	}
+
+Will you upload it in a separate patch? 
+If not, I can merge it in my patch series and upload v4.
+
+
+Best Regards,
+
+Ming Hsiu
+
+> > Signed-off-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> > Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > 
+> > ---
+> >   drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> > index 9e4eb7d..a5ad586 100644
+> > --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> > +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> > @@ -118,7 +118,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+> >   	mutex_init(&mdp->vpulock);
+> >   
+> >   	/* Iterate over sibling MDP function blocks */
+> > -	for_each_child_of_node(dev->of_node, node) {
+> > +	for_each_child_of_node(dev->of_node->parent, node) {
+> >   		const struct of_device_id *of_id;
+> >   		enum mtk_mdp_comp_type comp_type;
+> >   		int comp_id;
+> > 
+
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
