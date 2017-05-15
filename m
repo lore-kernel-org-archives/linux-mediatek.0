@@ -1,136 +1,80 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v3 3/3] media: mtk-mdp: Fix mdp device tree
-Date: Mon, 15 May 2017 09:27:52 +0200
-Message-ID: <79df594b-33cb-e606-5ace-66f450f839e9@gmail.com>
-References: <1494559361-42835-1-git-send-email-minghsiu.tsai@mediatek.com>
- <1494559361-42835-4-git-send-email-minghsiu.tsai@mediatek.com>
- <60f89b9a-f068-25a7-3f8b-d13b19357361@gmail.com>
- <1494815512.31916.11.camel@mtksdaap41>
+Subject: Re: [PATCH v3 3/9] dt-bindings: arm: mediatek: update for MT7623n SoC
+ and relevant boards
+Date: Mon, 15 May 2017 09:53:37 +0200
+Message-ID: <33b3a8a3-006b-91b3-e30d-56518fb9ae7a@gmail.com>
+References: <cover.1494574682.git.sean.wang@mediatek.com>
+ <e8f5dc8578c3980ac9c6411ad7fae1c8d747f567.1494574682.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1494815512.31916.11.camel@mtksdaap41>
+In-Reply-To: <e8f5dc8578c3980ac9c6411ad7fae1c8d747f567.1494574682.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Content-Language: en-US
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
-Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Houlong Wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Wu-Cheng Li <wuchengli-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 15/05/17 04:31, Minghsiu Tsai wrote:
-> On Fri, 2017-05-12 at 17:05 +0200, Matthias Brugger wrote:
->>
->> On 12/05/17 05:22, Minghsiu Tsai wrote:
->>> From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->>>
->>> If the mdp_* nodes are under an mdp sub-node, their corresponding
->>> platform device does not automatically get its iommu assigned properly.
->>>
->>> Fix this by moving the mdp component nodes up a level such that they are
->>> siblings of mdp and all other SoC subsystems.  This also simplifies the
->>> device tree.
->>>
->>> Although it fixes iommu assignment issue, it also break compatibility
->>> with old device tree. So, the patch in driver is needed to iterate over
->>> sibling mdp device nodes, not child ones, to keep driver work properly.
->>>
->>
->> Couldn't we preserve backwards compatibility by doing something like this:
->> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
->> b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
->> index 9e4eb7dcc424..277d8fe6eb76 100644
->> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
->> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
->> @@ -103,7 +103,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
->>    {
->>    	struct mtk_mdp_dev *mdp;
->>    	struct device *dev = &pdev->dev;
->> -	struct device_node *node;
->> +	struct device_node *node, *parent;
->>    	int i, ret = 0;
->>
->>    	mdp = devm_kzalloc(dev, sizeof(*mdp), GFP_KERNEL);
->> @@ -117,8 +117,14 @@ static int mtk_mdp_probe(struct platform_device *pdev)
->>    	mutex_init(&mdp->lock);
->>    	mutex_init(&mdp->vpulock);
->>
->> +	/* Old dts had the components as child nodes */
->> +	if (of_get_next_child(dev->of_node, NULL))
->> +		parent = dev->of_node;
->> +	else
->> +		parent = dev->of_node->parent;
->> +
->>    	/* Iterate over sibling MDP function blocks */
->> -	for_each_child_of_node(dev->of_node, node) {
->> +	for_each_child_of_node(parent, node) {
->>    		const struct of_device_id *of_id;
->>    		enum mtk_mdp_comp_type comp_type;
->>    		int comp_id;
->>
->> Maybe even by putting a warning in the if branch to make sure, people
->> are aware of their out-of-date device tree blobs.
->>
->> Regards,
->> Matthias
->>
+On 12/05/17 09:56, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> Hi Matthias,
+> Because there are two versions of MT7623 SoC that is MT7623a and MT7623n
+> respectively. So update the part of MT7623n bindings to allow that people
+> tend to differentiate which MT7623 SoC the boards applies.
 > 
-> It is a good idea to do compatible in such a way and put a warning the
-> device tree is out of date. People can find out cause soon if device
-> tree is old.
+> Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>   Documentation/devicetree/bindings/arm/mediatek.txt | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
 > 
-> I modify the code as below:
-> 
-> +	/* Old dts had the components as child nodes */
-> +	if (of_get_next_child(dev->of_node, NULL)) {
-> +		parent = dev->of_node;
-> +		dev_warn(dev, "device tree is out of date\n");
-> +	} else {
-> +		parent = dev->of_node->parent;
-> +	}
-> 
-> Will you upload it in a separate patch?
-> If not, I can merge it in my patch series and upload v4.
-> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt b/Documentation/devicetree/bindings/arm/mediatek.txt
+> index c860b24..0924b62 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.txt
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.txt
+> @@ -1,6 +1,6 @@
+>   MediaTek mt65xx, mt67xx & mt81xx Platforms Device Tree Bindings
+>   
+> -Boards with a MediaTek mt65xx/mt67xx/mt81xx SoC shall have the
+> +Boards with a MediaTek mt65xx/mt67xx/mt762x/mt81xx SoC shall have the
+>   following property:
+>   
+>   Required root node property:
+> @@ -12,7 +12,7 @@ compatible: Must contain one of
+>      "mediatek,mt6592"
+>      "mediatek,mt6755"
+>      "mediatek,mt6795"
+> -   "mediatek,mt7623"
+> +   "mediatek,mt7623" which is referred to MT7623N SoC
+>      "mediatek,mt8127"
+>      "mediatek,mt8135"
+>      "mediatek,mt8173"
+> @@ -38,9 +38,9 @@ Supported boards:
+>   - Evaluation board for MT6795(Helio X10):
+>       Required root node properties:
+>         - compatible = "mediatek,mt6795-evb", "mediatek,mt6795";
+> -- Evaluation board for MT7623:
+> +- Reference  board for MT7623n with NAND:
+>       Required root node properties:
+> -      - compatible = "mediatek,mt7623-evb", "mediatek,mt7623";
+> +      - compatible = "mediatek,mt7623n-rfb-nand", "mediatek,mt7623";
 
-Please integrate it into your patch series.
+Please explain in the commit message why you change this binding and why 
+this is not problematic. Either in this patch or add a new one.
 
-Mauro, are you ok with the dev_warn about the out-of-date device-tree?
+For convenience for the device-tree maintainer, add the binding patches 
+at the beginning of your patch list. It makes their life easier and a 
+review faster, a clear win-win situation :)
 
-Regards,
+Thanks,
 Matthias
 
-
-> 
-> Best Regards,
-> 
-> Ming Hsiu
-> 
->>> Signed-off-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->>> Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>>
->>> ---
->>>    drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 2 +-
->>>    1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
->>> index 9e4eb7d..a5ad586 100644
->>> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
->>> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
->>> @@ -118,7 +118,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
->>>    	mutex_init(&mdp->vpulock);
->>>    
->>>    	/* Iterate over sibling MDP function blocks */
->>> -	for_each_child_of_node(dev->of_node, node) {
->>> +	for_each_child_of_node(dev->of_node->parent, node) {
->>>    		const struct of_device_id *of_id;
->>>    		enum mtk_mdp_comp_type comp_type;
->>>    		int comp_id;
->>>
-> 
+>   - MTK mt8127 tablet moose EVB:
+>       Required root node properties:
+>         - compatible = "mediatek,mt8127-moose", "mediatek,mt8127";
 > 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
