@@ -1,55 +1,61 @@
-From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3 1/4] mtd: nand: mediatek: update DT bindings
-Date: Mon, 15 May 2017 20:39:36 +0800
-Message-ID: <1494851979-14416-2-git-send-email-xiaolei.li@mediatek.com>
+From: Xiaolei Li <xiaolei.li@mediatek.com>
+Subject: [PATCH v3 2/4] mtd: nand: mediatek: refine register NFI_PAGEFMT
+ setting
+Date: Mon, 15 May 2017 20:39:37 +0800
+Message-ID: <1494851979-14416-3-git-send-email-xiaolei.li@mediatek.com>
 References: <1494851979-14416-1-git-send-email-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1494851979-14416-1-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+In-Reply-To: <1494851979-14416-1-git-send-email-xiaolei.li@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
+To: boris.brezillon@free-electrons.com, computersforpeace@gmail.com, matthias.bgg@gmail.com
+Cc: srv_heupstream@mediatek.com, robh+dt@kernel.org, linux-mtd@lists.infradead.org, yt.shen@mediatek.com, linux-mediatek@lists.infradead.org, xiaolei.li@mediatek.com, dwmw2@infradead.org, rogercc.lin@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Add MT2712 NAND Flash Controller dt bindings documentation.
+The register NFI_PAGEFMT is always 32 bits length, so it is better to
+do register program using writel() compare with writew().
 
-Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
 ---
- Documentation/devicetree/bindings/mtd/mtk-nand.txt | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/mtd/nand/mtk_nand.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/mtd/mtk-nand.txt b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-index 069c192..dbf9e05 100644
---- a/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-+++ b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-@@ -12,7 +12,8 @@ tree nodes.
+diff --git a/drivers/mtd/nand/mtk_nand.c b/drivers/mtd/nand/mtk_nand.c
+index 6c517c6..c28f4b7 100644
+--- a/drivers/mtd/nand/mtk_nand.c
++++ b/drivers/mtd/nand/mtk_nand.c
+@@ -408,7 +408,7 @@ static int mtk_nfc_hw_runtime_config(struct mtd_info *mtd)
  
- The first part of NFC is NAND Controller Interface (NFI) HW.
- Required NFI properties:
--- compatible:			Should be "mediatek,mtxxxx-nfc".
-+- compatible:			Should be one of "mediatek,mt2701-nfc",
-+				"mediatek,mt2712-nfc".
- - reg:				Base physical address and size of NFI.
- - interrupts:			Interrupts of NFI.
- - clocks:			NFI required clocks.
-@@ -141,7 +142,7 @@ Example:
- ==============
+ 	fmt |= mtk_nand->fdm.reg_size << PAGEFMT_FDM_SHIFT;
+ 	fmt |= mtk_nand->fdm.ecc_size << PAGEFMT_FDM_ECC_SHIFT;
+-	nfi_writew(nfc, fmt, NFI_PAGEFMT);
++	nfi_writel(nfc, fmt, NFI_PAGEFMT);
  
- Required BCH properties:
--- compatible:	Should be "mediatek,mtxxxx-ecc".
-+- compatible:	Should be one of "mediatek,mt2701-ecc", "mediatek,mt2712-ecc".
- - reg:		Base physical address and size of ECC.
- - interrupts:	Interrupts of ECC.
- - clocks:	ECC required clocks.
+ 	nfc->ecc_cfg.strength = chip->ecc.strength;
+ 	nfc->ecc_cfg.len = chip->ecc.size + mtk_nand->fdm.ecc_size;
+@@ -1009,7 +1009,7 @@ static inline void mtk_nfc_hw_init(struct mtk_nfc *nfc)
+ 	 * 0  : poll the status of the busy/ready signal after [7:4]*16 cycles.
+ 	 */
+ 	nfi_writew(nfc, 0xf1, NFI_CNRNB);
+-	nfi_writew(nfc, PAGEFMT_8K_16K, NFI_PAGEFMT);
++	nfi_writel(nfc, PAGEFMT_8K_16K, NFI_PAGEFMT);
+ 
+ 	mtk_nfc_hw_reset(nfc);
+ 
 -- 
 1.9.1
+
+
+______________________________________________________
+Linux MTD discussion mailing list
+http://lists.infradead.org/mailman/listinfo/linux-mtd/
