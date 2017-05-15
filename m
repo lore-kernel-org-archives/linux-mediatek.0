@@ -1,107 +1,92 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v3 3/9] dt-bindings: arm: mediatek: update for MT7623n
- SoC and relevant boards
-Date: Mon, 15 May 2017 17:19:35 +0800
-Message-ID: <1494839975.10505.24.camel@mtkswgap22>
-References: <cover.1494574682.git.sean.wang@mediatek.com>
-         <e8f5dc8578c3980ac9c6411ad7fae1c8d747f567.1494574682.git.sean.wang@mediatek.com>
-         <33b3a8a3-006b-91b3-e30d-56518fb9ae7a@gmail.com>
+From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v3 0/4] Mediatek MT2712 NAND FLASH Controller driver
+Date: Mon, 15 May 2017 20:39:35 +0800
+Message-ID: <1494851979-14416-1-git-send-email-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <33b3a8a3-006b-91b3-e30d-56518fb9ae7a@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, john@phrozen.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
+The following patch-set adds support for Mediatek MT2712 NAND FLASH
+Controller.
 
-Appreciate your help on reviewing. Add my comments inline
+Changes on v3 relative to:
+--------------------
 
+tree    : https://github.com/bbrezillon/linux-0day
+branch  : nand/next
+commit  :
+        'commit 2b12c057cc2837312001f4fc3a4d89498fb6f463
+        Author: Kamal Dasu <kdasu.kdev-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+        Date:   Fri Mar 3 16:16:53 2017 -0500'
 
-On Mon, 2017-05-15 at 09:53 +0200, Matthias Brugger wrote:
-> 
-> On 12/05/17 09:56, sean.wang@mediatek.com wrote:
-> > From: Sean Wang <sean.wang@mediatek.com>
-> > 
-> > Because there are two versions of MT7623 SoC that is MT7623a and MT7623n
-> > respectively. So update the part of MT7623n bindings to allow that people
-> > tend to differentiate which MT7623 SoC the boards applies.
-> > 
-> > Signed-off-by: John Crispin <john@phrozen.org>
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > ---
-> >   Documentation/devicetree/bindings/arm/mediatek.txt | 8 ++++----
-> >   1 file changed, 4 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt b/Documentation/devicetree/bindings/arm/mediatek.txt
-> > index c860b24..0924b62 100644
-> > --- a/Documentation/devicetree/bindings/arm/mediatek.txt
-> > +++ b/Documentation/devicetree/bindings/arm/mediatek.txt
-> > @@ -1,6 +1,6 @@
-> >   MediaTek mt65xx, mt67xx & mt81xx Platforms Device Tree Bindings
-> >   
-> > -Boards with a MediaTek mt65xx/mt67xx/mt81xx SoC shall have the
-> > +Boards with a MediaTek mt65xx/mt67xx/mt762x/mt81xx SoC shall have the
-> >   following property:
-> >   
-> >   Required root node property:
-> > @@ -12,7 +12,7 @@ compatible: Must contain one of
-> >      "mediatek,mt6592"
-> >      "mediatek,mt6755"
-> >      "mediatek,mt6795"
-> > -   "mediatek,mt7623"
-> > +   "mediatek,mt7623" which is referred to MT7623N SoC
-> >      "mediatek,mt8127"
-> >      "mediatek,mt8135"
-> >      "mediatek,mt8173"
-> > @@ -38,9 +38,9 @@ Supported boards:
-> >   - Evaluation board for MT6795(Helio X10):
-> >       Required root node properties:
-> >         - compatible = "mediatek,mt6795-evb", "mediatek,mt6795";
-> > -- Evaluation board for MT7623:
-> > +- Reference  board for MT7623n with NAND:
-> >       Required root node properties:
-> > -      - compatible = "mediatek,mt7623-evb", "mediatek,mt7623";
-> > +      - compatible = "mediatek,mt7623n-rfb-nand", "mediatek,mt7623";
-> 
-> Please explain in the commit message why you change this binding and why 
-> this is not problematic. Either in this patch or add a new one.
-> 
-I will add more description for why changing binding here in the commit
-message of the patch. 
+Patch v3:
+---------
+- separate patches into 4.
+- rename struct mtk_ecc_devdata and struct mtk_nfc_devdata to struct
+  mtk_ecc_caps and struct mtk_nfc_caps respectively.
+- add variables const u8 *ecc_strength and u8 num_ecc_strength into struct
+  mtk_ecc_caps, and remove u8 max_ecc_strength.
+- rename variabl u32 temp in function mtk_ecc_probe to u32 max_eccdata_size.
+- remove ECC_CNFG_xBIT define, use a for loop to do ecc hw configuration.
+- remove const u32 *spare_format from struct mtk_nfc_caps, and add variables
+  u8 num_spare_size and u8 pageformat_spare_shift.
+- remove PAGEFMT_SPARE_ define, use a for loop to do nfc hw configuration.
+- sort spare size array before setting spare size.
+- fix coding style issue.
 
-"mediatek,mt7623-evb" can be safely changed to
-"mediatek,mt7623n-rfb-nand" because real users can't get the board that
-is a kind of debug board internally in Mediatek. Instead We should add
-more specific board variants as the adding here to let people easily
-know what board they uses. 
+Patch v2:
+---------
+- sperate patches into 3.
+- refine DT bindings documentation about NFC and ECC compatible.
+- use ecc->devdata->encode_parity_reg0 and ecc->devdata->err_mask
+  directly, but hide them in define.
 
-The similar description is done as (2/9) arm: dts: mt7623: rename
-mt7623-evb.dts to arch/arm/boot/dts/mt7623n-rfb.dtsi that states
-" Additionally Mediatek pointed out, that the EVB is yet another board
-and the board in question is infact the RFB. Take this into account
-while renaming the files." 
+Tests:
+------
 
-However I didn't make similar sufficient statements into the patch when
-I split from the last version of the patch. Sorry:(
+* ubifs and jffs2 are validated on NAND device MT29F16G08ADBCA
+  by 'dd' command.
+* all drivers/mtd/tests/* pass.
+* speed test:
+  eraseblock write speed is 8318 KiB/s
+  eraseblock read speed is 11374 KiB/s
+  page write speed is 8155 KiB/s
+  page read speed is 11290 KiB/s
+  2 page write speed is 8217 KiB/s
+  2 page read speed is 11354 KiB/s
+  erase speed is 116472 KiB/s
+  2x multi-block erase speed is 352978 KiB/s
+  4x multi-block erase speed is 359750 KiB/s
+  8x multi-block erase speed is 361484 KiB/s
+  16x multi-block erase speed is 364116 KiB/s
+  32x multi-block erase speed is 364116 KiB/s
+  64x multi-block erase speed is 364116 KiB/s
 
+Xiaolei Li (4):
+  mtd: nand: mediatek: update DT bindings
+  mtd: nand: mediatek: refine register NFI_PAGEFMT setting
+  mtd: nand: mediatek: add support for different MTK NAND FLASH
+    Controller IP
+  mtd: nand: mediatek: add support for MT2712 NAND FLASH Controller
 
-> For convenience for the device-tree maintainer, add the binding patches 
-> at the beginning of your patch list. It makes their life easier and a 
-> review faster, a clear win-win situation :)
-> 
+ Documentation/devicetree/bindings/mtd/mtk-nand.txt |   5 +-
+ drivers/mtd/nand/mtk_ecc.c                         | 218 ++++++++++-----------
+ drivers/mtd/nand/mtk_ecc.h                         |   2 +-
+ drivers/mtd/nand/mtk_nand.c                        | 193 ++++++++++--------
+ 4 files changed, 219 insertions(+), 199 deletions(-)
 
-Okay. thanks for the suggestion:) 
-I will reorder them to help direct them to the part they're interested
-in.
-
-> Thanks,
-> Matthias
-> 
-> >   - MTK mt8127 tablet moose EVB:
-> >       Required root node properties:
-> >         - compatible = "mediatek,mt8127-moose", "mediatek,mt8127";
-> > 
+--
+1.9.1
