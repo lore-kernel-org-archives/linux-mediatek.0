@@ -1,62 +1,57 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v3 1/4] mtd: nand: mediatek: update DT bindings
-Date: Tue, 16 May 2017 08:20:45 +0200
-Message-ID: <9668a149-7fa9-361b-752d-4ae9db311a07@gmail.com>
-References: <1494851979-14416-1-git-send-email-xiaolei.li@mediatek.com>
- <1494851979-14416-2-git-send-email-xiaolei.li@mediatek.com>
+From: "Gustavo A. R. Silva" <garsilva@embeddedor.com>
+Subject: [pwm] question about potential division by zero
+Date: Tue, 16 May 2017 16:56:53 -0500
+Message-ID: <20170516165653.Horde.Xe6MBOoWtIt1Jni0nYqF1GM@gator4166.hostgator.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1494851979-14416-2-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+Sender: linux-kernel-owner@vger.kernel.org
+To: Thierry Reding <thierry.reding@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
+Hello everybody,
 
-On 15/05/17 14:39, Xiaolei Li wrote:
-> Add MT2712 NAND Flash Controller dt bindings documentation.
-> 
-> Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->   Documentation/devicetree/bindings/mtd/mtk-nand.txt | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
-> 
+While looking into Coverity ID 1408721 I ran into the following piece  
+of code at /drivers/pwm/pwm-mediatek.c:77:
 
-Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+  77static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+  78                          int duty_ns, int period_ns)
+  79{
+  80        struct mtk_pwm_chip *pc = to_mtk_pwm_chip(chip);
+  81        struct clk *clk = pc->clks[MTK_CLK_PWM1 + pwm->hwpwm];
+  82        u32 resolution, clkdiv = 0;
+  83
+  84        resolution = NSEC_PER_SEC / clk_get_rate(clk);
+  85
+  86        while (period_ns / resolution > 8191) {
+  87                resolution *= 2;
+  88                clkdiv++;
+  89        }
+  90
+  91        if (clkdiv > 7)
+  92                return -EINVAL;
+  93
+  94        mtk_pwm_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | BIT(3) | clkdiv);
+  95        mtk_pwm_writel(pc, pwm->hwpwm, PWMDWIDTH, period_ns / resolution);
+  96        mtk_pwm_writel(pc, pwm->hwpwm, PWMTHRES, duty_ns / resolution);
+  97
+  98        return 0;
+  99}
 
-> diff --git a/Documentation/devicetree/bindings/mtd/mtk-nand.txt b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> index 069c192..dbf9e05 100644
-> --- a/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> +++ b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> @@ -12,7 +12,8 @@ tree nodes.
->   
->   The first part of NFC is NAND Controller Interface (NFI) HW.
->   Required NFI properties:
-> -- compatible:			Should be "mediatek,mtxxxx-nfc".
-> +- compatible:			Should be one of "mediatek,mt2701-nfc",
-> +				"mediatek,mt2712-nfc".
->   - reg:				Base physical address and size of NFI.
->   - interrupts:			Interrupts of NFI.
->   - clocks:			NFI required clocks.
-> @@ -141,7 +142,7 @@ Example:
->   ==============
->   
->   Required BCH properties:
-> -- compatible:	Should be "mediatek,mtxxxx-ecc".
-> +- compatible:	Should be one of "mediatek,mt2701-ecc", "mediatek,mt2712-ecc".
->   - reg:		Base physical address and size of ECC.
->   - interrupts:	Interrupts of ECC.
->   - clocks:	ECC required clocks.
-> 
+The issue here is that in case _clk_ is null, function clk_get_rate()  
+at line 84 will return zero and a division by zero will occur.
+
+So my question here is if there is any chance for _clk_ to be null at  
+line 81, hence ending up triggering a division by zero at line 84?
+
+I'm trying to figure out if this is a false positive or something that  
+needs to be fixed.
+
+I'd really appreciate any comment on this.
+
+Thank you
+--
+Gustavo A. R. Silva
