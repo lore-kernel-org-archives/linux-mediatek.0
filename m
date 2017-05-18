@@ -1,79 +1,64 @@
-From: "Gustavo A. R. Silva" <garsilva@embeddedor.com>
-Subject: Re: [pwm] question about potential division by zero
-Date: Wed, 17 May 2017 17:48:29 -0500
-Message-ID: <20170517174829.Horde.T6_ImT2RRkpgldJZDNKUSr5@gator4166.hostgator.com>
-References: <20170516165653.Horde.Xe6MBOoWtIt1Jni0nYqF1GM@gator4166.hostgator.com>
- <89269556-bb5d-b2bf-b44c-a078d6ca274a@gmail.com>
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Subject: Re: [PATCH 1/9] crypto: add hmac IPAD/OPAD constant
+Date: Thu, 18 May 2017 12:10:45 +0800
+Message-ID: <20170518041045.GA32127@gondor.apana.org.au>
+References: <20170424141629.27155-1-clabbe.montjoie@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <89269556-bb5d-b2bf-b44c-a078d6ca274a@gmail.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-crypto-owner@vger.kernel.org>
 Content-Disposition: inline
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20170424141629.27155-1-clabbe.montjoie@gmail.com>
+Sender: linux-crypto-owner@vger.kernel.org
+To: Corentin Labbe <clabbe.montjoie@gmail.com>
+Cc: davem@davemloft.net, thomas.lendacky@amd.com, gary.hook@amd.com, boris.brezillon@free-electrons.com, arno@natisbad.org, matthias.bgg@gmail.com, giovanni.cabiddu@intel.com, salvatore.benedetto@intel.com, linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, qat-linux@intel.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
+On Mon, Apr 24, 2017 at 04:16:21PM +0200, Corentin Labbe wrote:
+> Many HMAC users directly use directly 0x36/0x5c values.
+> It's better with crypto to use a name instead of directly some crypto
+> constant.
+> 
+> This patch simply add HMAC_IPAD_VALUE/HMAC_OPAD_VALUE defines.
+> 
+> Signed-off-by: Corentin Labbe <clabbe.montjoie@gmail.com>
+> ---
+>  crypto/hmac.c         | 4 ++--
+>  include/crypto/hash.h | 3 +++
+>  2 files changed, 5 insertions(+), 2 deletions(-)
+> 
+> diff --git a/crypto/hmac.c b/crypto/hmac.c
+> index 72e38c0..4a997ce 100644
+> --- a/crypto/hmac.c
+> +++ b/crypto/hmac.c
+> @@ -74,8 +74,8 @@ static int hmac_setkey(struct crypto_shash *parent,
+>  	memcpy(opad, ipad, bs);
+>  
+>  	for (i = 0; i < bs; i++) {
+> -		ipad[i] ^= 0x36;
+> -		opad[i] ^= 0x5c;
+> +		ipad[i] ^= HMAC_IPAD_VALUE;
+> +		opad[i] ^= HMAC_OPAD_VALUE;
+>  	}
+>  
+>  	return crypto_shash_init(shash) ?:
+> diff --git a/include/crypto/hash.h b/include/crypto/hash.h
+> index b5727bc..0f51ff1 100644
+> --- a/include/crypto/hash.h
+> +++ b/include/crypto/hash.h
+> @@ -922,4 +922,7 @@ static inline void shash_desc_zero(struct shash_desc *desc)
+>  			 sizeof(*desc) + crypto_shash_descsize(desc->tfm));
+>  }
+>  
+> +#define HMAC_IPAD_VALUE 0x36
+> +#define HMAC_OPAD_VALUE 0x5c
+> +
+>  #endif	/* _CRYPTO_HASH_H */
 
-Quoting Matthias Brugger <matthias.bgg@gmail.com>:
+I think this should go into a header file specific to hmac.  Since
+I don't see an existing hmac header file you should create one for it.
 
-> On 16/05/17 23:56, Gustavo A. R. Silva wrote:
->>
->> Hello everybody,
->>
->> While looking into Coverity ID 1408721 I ran into the following  
->> piece of code at /drivers/pwm/pwm-mediatek.c:77:
->>
->>  77static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
->>  78                          int duty_ns, int period_ns)
->>  79{
->>  80        struct mtk_pwm_chip *pc = to_mtk_pwm_chip(chip);
->>  81        struct clk *clk = pc->clks[MTK_CLK_PWM1 + pwm->hwpwm];
->>  82        u32 resolution, clkdiv = 0;
->>  83
->>  84        resolution = NSEC_PER_SEC / clk_get_rate(clk);
->>  85
->>  86        while (period_ns / resolution > 8191) {
->>  87                resolution *= 2;
->>  88                clkdiv++;
->>  89        }
->>  90
->>  91        if (clkdiv > 7)
->>  92                return -EINVAL;
->>  93
->>  94        mtk_pwm_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | BIT(3)  
->> | clkdiv);
->>  95        mtk_pwm_writel(pc, pwm->hwpwm, PWMDWIDTH, period_ns /  
->> resolution);
->>  96        mtk_pwm_writel(pc, pwm->hwpwm, PWMTHRES, duty_ns / resolution);
->>  97
->>  98        return 0;
->>  99}
->>
->> The issue here is that in case _clk_ is null, function  
->> clk_get_rate() at line 84 will return zero and a division by zero  
->> will occur.
->>
->> So my question here is if there is any chance for _clk_ to be null  
->> at line 81, hence ending up triggering a division by zero at line 84?
->
-> No it can't, in the probe function will error out if one of the  
-> seven clocks are not found.
->
-> for (i = 0; i < MTK_CLK_MAX; i++) {
-> 	pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
-> 	if (IS_ERR(pc->clks[i]))
-> 		return PTR_ERR(pc->clks[i]);
-> }
->
-> It registers a pwm chip with five PWMs. When the config function is  
-> called one of the five PWMs is identified (with a value from 0-4)  
-> which correspondents to the MTK_CLK_PWM[1-5], so no bug here neither.
->
-
-I get it.
-
-Thank you very much for the clarification.
---
-Gustavo A. R. Silva
+Thanks,
+-- 
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
