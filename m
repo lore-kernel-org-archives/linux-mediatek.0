@@ -1,64 +1,76 @@
-From: Herbert Xu <herbert@gondor.apana.org.au>
-Subject: Re: [PATCH 1/9] crypto: add hmac IPAD/OPAD constant
-Date: Thu, 18 May 2017 12:10:45 +0800
-Message-ID: <20170518041045.GA32127@gondor.apana.org.au>
-References: <20170424141629.27155-1-clabbe.montjoie@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-crypto-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170424141629.27155-1-clabbe.montjoie@gmail.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Corentin Labbe <clabbe.montjoie@gmail.com>
-Cc: davem@davemloft.net, thomas.lendacky@amd.com, gary.hook@amd.com, boris.brezillon@free-electrons.com, arno@natisbad.org, matthias.bgg@gmail.com, giovanni.cabiddu@intel.com, salvatore.benedetto@intel.com, linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, qat-linux@intel.com
+From: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+Subject: [PATCH 4/4] [media] mtk_vcodec_dec: return error at mtk_vdec_pic_info_update()
+Date: Thu, 18 May 2017 11:06:46 -0300
+Message-ID: <3a15120de0eb6f4e67d83126a95cc4a80b788f4b.1495116400.git.mchehab@s-opensource.com>
+References: <754069659fbb44b458d8a8bef67d8f3f235d0c87.1495116400.git.mchehab@s-opensource.com>
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <754069659fbb44b458d8a8bef67d8f3f235d0c87.1495116400.git.mchehab@s-opensource.com>
+In-Reply-To: <754069659fbb44b458d8a8bef67d8f3f235d0c87.1495116400.git.mchehab@s-opensource.com>
+References: <754069659fbb44b458d8a8bef67d8f3f235d0c87.1495116400.git.mchehab@s-opensource.com>
+Sender: linux-media-owner@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@s-opensource.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Apr 24, 2017 at 04:16:21PM +0200, Corentin Labbe wrote:
-> Many HMAC users directly use directly 0x36/0x5c values.
-> It's better with crypto to use a name instead of directly some crypto
-> constant.
-> 
-> This patch simply add HMAC_IPAD_VALUE/HMAC_OPAD_VALUE defines.
-> 
-> Signed-off-by: Corentin Labbe <clabbe.montjoie@gmail.com>
-> ---
->  crypto/hmac.c         | 4 ++--
->  include/crypto/hash.h | 3 +++
->  2 files changed, 5 insertions(+), 2 deletions(-)
-> 
-> diff --git a/crypto/hmac.c b/crypto/hmac.c
-> index 72e38c0..4a997ce 100644
-> --- a/crypto/hmac.c
-> +++ b/crypto/hmac.c
-> @@ -74,8 +74,8 @@ static int hmac_setkey(struct crypto_shash *parent,
->  	memcpy(opad, ipad, bs);
->  
->  	for (i = 0; i < bs; i++) {
-> -		ipad[i] ^= 0x36;
-> -		opad[i] ^= 0x5c;
-> +		ipad[i] ^= HMAC_IPAD_VALUE;
-> +		opad[i] ^= HMAC_OPAD_VALUE;
->  	}
->  
->  	return crypto_shash_init(shash) ?:
-> diff --git a/include/crypto/hash.h b/include/crypto/hash.h
-> index b5727bc..0f51ff1 100644
-> --- a/include/crypto/hash.h
-> +++ b/include/crypto/hash.h
-> @@ -922,4 +922,7 @@ static inline void shash_desc_zero(struct shash_desc *desc)
->  			 sizeof(*desc) + crypto_shash_descsize(desc->tfm));
->  }
->  
-> +#define HMAC_IPAD_VALUE 0x36
-> +#define HMAC_OPAD_VALUE 0x5c
-> +
->  #endif	/* _CRYPTO_HASH_H */
+Gcc 7.1 complains that:
 
-I think this should go into a header file specific to hmac.  Since
-I don't see an existing hmac header file you should create one for it.
+	drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c: In function 'mtk_vdec_pic_info_update':
+	drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c:284:6: warning: variable 'ret' set but not used [-Wunused-but-set-variable]
+	  int ret;
+	      ^~~
 
-Thanks,
+Indeed, if debug is disabled, "ret" is never used. The best
+fix for it seems to make the fuction to return an error code.
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+index a60b538686ea..843510979ad8 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+@@ -278,7 +278,7 @@ static void mtk_vdec_flush_decoder(struct mtk_vcodec_ctx *ctx)
+ 	clean_free_buffer(ctx);
+ }
+ 
+-static void mtk_vdec_pic_info_update(struct mtk_vcodec_ctx *ctx)
++static int mtk_vdec_pic_info_update(struct mtk_vcodec_ctx *ctx)
+ {
+ 	unsigned int dpbsize = 0;
+ 	int ret;
+@@ -288,7 +288,7 @@ static void mtk_vdec_pic_info_update(struct mtk_vcodec_ctx *ctx)
+ 				&ctx->last_decoded_picinfo)) {
+ 		mtk_v4l2_err("[%d]Error!! Cannot get param : GET_PARAM_PICTURE_INFO ERR",
+ 				ctx->id);
+-		return;
++		return -EINVAL;
+ 	}
+ 
+ 	if (ctx->last_decoded_picinfo.pic_w == 0 ||
+@@ -296,12 +296,12 @@ static void mtk_vdec_pic_info_update(struct mtk_vcodec_ctx *ctx)
+ 		ctx->last_decoded_picinfo.buf_w == 0 ||
+ 		ctx->last_decoded_picinfo.buf_h == 0) {
+ 		mtk_v4l2_err("Cannot get correct pic info");
+-		return;
++		return -EINVAL;
+ 	}
+ 
+ 	if ((ctx->last_decoded_picinfo.pic_w == ctx->picinfo.pic_w) ||
+ 	    (ctx->last_decoded_picinfo.pic_h == ctx->picinfo.pic_h))
+-		return;
++		return 0;
+ 
+ 	mtk_v4l2_debug(1,
+ 			"[%d]-> new(%d,%d), old(%d,%d), real(%d,%d)",
+@@ -316,6 +316,8 @@ static void mtk_vdec_pic_info_update(struct mtk_vcodec_ctx *ctx)
+ 		mtk_v4l2_err("Incorrect dpb size, ret=%d", ret);
+ 
+ 	ctx->dpb_size = dpbsize;
++
++	return ret;
+ }
+ 
+ static void mtk_vdec_worker(struct work_struct *work)
 -- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+2.9.3
