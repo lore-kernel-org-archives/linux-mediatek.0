@@ -1,76 +1,71 @@
-From: Mauro Carvalho Chehab <mchehab@s-opensource.com>
-Subject: [PATCH 4/4] [media] mtk_vcodec_dec: return error at mtk_vdec_pic_info_update()
-Date: Thu, 18 May 2017 11:06:46 -0300
-Message-ID: <3a15120de0eb6f4e67d83126a95cc4a80b788f4b.1495116400.git.mchehab@s-opensource.com>
-References: <754069659fbb44b458d8a8bef67d8f3f235d0c87.1495116400.git.mchehab@s-opensource.com>
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <754069659fbb44b458d8a8bef67d8f3f235d0c87.1495116400.git.mchehab@s-opensource.com>
-In-Reply-To: <754069659fbb44b458d8a8bef67d8f3f235d0c87.1495116400.git.mchehab@s-opensource.com>
-References: <754069659fbb44b458d8a8bef67d8f3f235d0c87.1495116400.git.mchehab@s-opensource.com>
-Sender: linux-media-owner@vger.kernel.org
-Cc: Mauro Carvalho Chehab <mchehab@s-opensource.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/2] dt-bindings: dmaengine: Add Mediatek High-Speed DMA
+ controller bindings
+Date: Thu, 18 May 2017 20:29:57 -0500
+Message-ID: <20170519012957.q3dr73qharbwtvc3@rob-hp-laptop>
+References: <cover.1494830885.git.sean.wang@mediatek.com>
+ <07cc981fbf9620459d1ac63e8720eaa2dd110048.1494830885.git.sean.wang@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <07cc981fbf9620459d1ac63e8720eaa2dd110048.1494830885.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: dan.j.williams@intel.com, vinod.koul@intel.com, mark.rutland@arm.com, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Gcc 7.1 complains that:
+On Mon, May 15, 2017 at 02:59:26PM +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> Document the devicetree bindings for Mediatek High-Speed DMA controller
+> which could be found on MT7623 SoC or other similar Mediatek SoCs.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  .../devicetree/bindings/dma/mtk-hsdma.txt          | 30 ++++++++++++++++++++++
+>  1 file changed, 30 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/dma/mtk-hsdma.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/dma/mtk-hsdma.txt b/Documentation/devicetree/bindings/dma/mtk-hsdma.txt
+> new file mode 100644
+> index 0000000..62cdda4
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/dma/mtk-hsdma.txt
+> @@ -0,0 +1,30 @@
+> +Mediatek High-Speed DMA Controller
+> +==================================
+> +
+> +This driver follows the generic DMA bindings defined in dma/dma.txt.
+> +
+> +Required properties:
+> +
+> +- compatible:	Must be one of
+> +		  "mediatek,mt7623-hsdma".
+> +- reg:		Should contain the register's base address and length.
+> +- interrupts:	Should contain a reference to the interrupt used by this
+> +		device.
+> +- clocks:	Should be the clock specifiers corresponding to the entry in
+> +		clock-names property.
+> +- clock-names:	Should contain "hsdma" entries.
+> +- #dma-cells: 	The length of the DMA specifier, must be <1>. This one cell
+> +		in dmas property of a client device represents the channel
+> +		number.
+> +Example:
+> +
+> +        hsdma: hsdma@1b007000 {
 
-	drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c: In function 'mtk_vdec_pic_info_update':
-	drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c:284:6: warning: variable 'ret' set but not used [-Wunused-but-set-variable]
-	  int ret;
-	      ^~~
+dma-controller@...
 
-Indeed, if debug is disabled, "ret" is never used. The best
-fix for it seems to make the fuction to return an error code.
+> +		compatible = "mediatek,mt7623-hsdma";
+> +		reg = <0 0x1b007000 0 0x1000>;
+> +		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&ethsys CLK_ETHSYS_HSDMA>;
+> +		clock-names = "hsdma";
+> +		status = "okay";
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
----
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+Don't need to show status in examples.
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-index a60b538686ea..843510979ad8 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-@@ -278,7 +278,7 @@ static void mtk_vdec_flush_decoder(struct mtk_vcodec_ctx *ctx)
- 	clean_free_buffer(ctx);
- }
- 
--static void mtk_vdec_pic_info_update(struct mtk_vcodec_ctx *ctx)
-+static int mtk_vdec_pic_info_update(struct mtk_vcodec_ctx *ctx)
- {
- 	unsigned int dpbsize = 0;
- 	int ret;
-@@ -288,7 +288,7 @@ static void mtk_vdec_pic_info_update(struct mtk_vcodec_ctx *ctx)
- 				&ctx->last_decoded_picinfo)) {
- 		mtk_v4l2_err("[%d]Error!! Cannot get param : GET_PARAM_PICTURE_INFO ERR",
- 				ctx->id);
--		return;
-+		return -EINVAL;
- 	}
- 
- 	if (ctx->last_decoded_picinfo.pic_w == 0 ||
-@@ -296,12 +296,12 @@ static void mtk_vdec_pic_info_update(struct mtk_vcodec_ctx *ctx)
- 		ctx->last_decoded_picinfo.buf_w == 0 ||
- 		ctx->last_decoded_picinfo.buf_h == 0) {
- 		mtk_v4l2_err("Cannot get correct pic info");
--		return;
-+		return -EINVAL;
- 	}
- 
- 	if ((ctx->last_decoded_picinfo.pic_w == ctx->picinfo.pic_w) ||
- 	    (ctx->last_decoded_picinfo.pic_h == ctx->picinfo.pic_h))
--		return;
-+		return 0;
- 
- 	mtk_v4l2_debug(1,
- 			"[%d]-> new(%d,%d), old(%d,%d), real(%d,%d)",
-@@ -316,6 +316,8 @@ static void mtk_vdec_pic_info_update(struct mtk_vcodec_ctx *ctx)
- 		mtk_v4l2_err("Incorrect dpb size, ret=%d", ret);
- 
- 	ctx->dpb_size = dpbsize;
-+
-+	return ret;
- }
- 
- static void mtk_vdec_worker(struct work_struct *work)
--- 
-2.9.3
+With those,
+
+Acked-by: Rob Herring <robh@kernel.org>
