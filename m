@@ -1,53 +1,53 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH v2 4/9] crypto: marvell - Use IPAD/OPAD constant
-Date: Fri, 19 May 2017 11:17:24 +0200
-Message-ID: <20170519111724.3933c91d@bbrezillon>
-References: <20170519065331.27670-1-clabbe.montjoie@gmail.com>
-        <20170519065331.27670-5-clabbe.montjoie@gmail.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v2] drm: mediatek: change the variable type of rdma threshold
+Date: Fri, 19 May 2017 17:57:23 +0800
+Message-ID: <1495187843-6882-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <20170519065331.27670-5-clabbe.montjoie@gmail.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Corentin Labbe <clabbe.montjoie@gmail.com>
-Cc: herbert@gondor.apana.org.au, davem@davemloft.net, thomas.lendacky@amd.com, gary.hook@amd.com, arno@natisbad.org, matthias.bgg@gmail.com, giovanni.cabiddu@intel.com, salvatore.benedetto@intel.com, linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, qat-linux@intel.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 19 May 2017 08:53:26 +0200
-Corentin Labbe <clabbe.montjoie@gmail.com> wrote:
-
-> This patch simply replace all occurrence of HMAC IPAD/OPAD value by their
-> define.
-> 
-> Signed-off-by: Corentin Labbe <clabbe.montjoie@gmail.com>
-
-Acked-by: Boris Brezillon <boris.brezillon@free-electrons.com>
-
-> ---
->  drivers/crypto/marvell/hash.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/crypto/marvell/hash.c b/drivers/crypto/marvell/hash.c
-> index 77c0fb936f47..e61b08566093 100644
-> --- a/drivers/crypto/marvell/hash.c
-> +++ b/drivers/crypto/marvell/hash.c
-> @@ -12,6 +12,7 @@
->   * by the Free Software Foundation.
->   */
->  
-> +#include <crypto/hmac.h>
->  #include <crypto/md5.h>
->  #include <crypto/sha.h>
->  
-> @@ -1164,8 +1165,8 @@ static int mv_cesa_ahmac_pad_init(struct ahash_request *req,
->  	memcpy(opad, ipad, blocksize);
->  
->  	for (i = 0; i < blocksize; i++) {
-> -		ipad[i] ^= 0x36;
-> -		opad[i] ^= 0x5c;
-> +		ipad[i] ^= HMAC_IPAD_VALUE;
-> +		opad[i] ^= HMAC_OPAD_VALUE;
->  	}
->  
->  	return 0;
+Rm9yIHNvbWUgZ3JlYXRlciByZXNvbHV0aW9uLCB0aGUgcmRtYSB0aHJlc2hvbGQKdmFyaWFibGUg
+d2lsbCBvdmVyZmxvdy4KClNpZ25lZC1vZmYtYnk6IEJpYmJ5IEhzaWVoIDxiaWJieS5oc2llaEBt
+ZWRpYXRlay5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEu
+YyB8IDcgKysrKy0tLQogMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlv
+bnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRt
+YS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwppbmRleCAwZGYw
+NWY5Li45YWZkY2Q3IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rp
+c3BfcmRtYS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMK
+QEAgLTM3LDcgKzM3LDcgQEAKICNkZWZpbmUgRElTUF9SRUdfUkRNQV9GSUZPX0NPTgkJCTB4MDA0
+MAogI2RlZmluZSBSRE1BX0ZJRk9fVU5ERVJGTE9XX0VOCQkJCUJJVCgzMSkKICNkZWZpbmUgUkRN
+QV9GSUZPX1BTRVVET19TSVpFKGJ5dGVzKQkJCSgoKGJ5dGVzKSAvIDE2KSA8PCAxNikKLSNkZWZp
+bmUgUkRNQV9PVVRQVVRfVkFMSURfRklGT19USFJFU0hPTEQoYnl0ZXMpCQkoKGJ5dGVzKSAvIDE2
+KQorI2RlZmluZSBSRE1BX09VVFBVVF9WQUxJRF9GSUZPX1RIUkVTSE9MRChieXRlcykgKCgoYnl0
+ZXMpIC8gMTYpICYgMHgzZmYpCiAKIC8qKgogICogc3RydWN0IG10a19kaXNwX3JkbWEgLSBESVNQ
+X1JETUEgZHJpdmVyIHN0cnVjdHVyZQpAQCAtMTA5LDcgKzEwOSw3IEBAIHN0YXRpYyB2b2lkIG10
+a19yZG1hX2NvbmZpZyhzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLCB1bnNpZ25lZCBpbnQgd2lk
+dGgsCiAJCQkgICAgdW5zaWduZWQgaW50IGhlaWdodCwgdW5zaWduZWQgaW50IHZyZWZyZXNoLAog
+CQkJICAgIHVuc2lnbmVkIGludCBicGMpCiB7Ci0JdW5zaWduZWQgaW50IHRocmVzaG9sZDsKKwl1
+bnNpZ25lZCBsb25nIGxvbmcgdGhyZXNob2xkOwogCXVuc2lnbmVkIGludCByZWc7CiAKIAlyZG1h
+X3VwZGF0ZV9iaXRzKGNvbXAsIERJU1BfUkVHX1JETUFfU0laRV9DT05fMCwgMHhmZmYsIHdpZHRo
+KTsKQEAgLTEyMSw3ICsxMjEsOCBAQCBzdGF0aWMgdm9pZCBtdGtfcmRtYV9jb25maWcoc3RydWN0
+IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IHdpZHRoLAogCSAqIG91dHB1dCB0aHJl
+c2hvbGQgdG8gNiBtaWNyb3NlY29uZHMgd2l0aCA3LzYgb3ZlcmhlYWQgdG8KIAkgKiBhY2NvdW50
+IGZvciBibGFua2luZywgYW5kIHdpdGggYSBwaXhlbCBkZXB0aCBvZiA0IGJ5dGVzOgogCSAqLwot
+CXRocmVzaG9sZCA9IHdpZHRoICogaGVpZ2h0ICogdnJlZnJlc2ggKiA0ICogNyAvIDEwMDAwMDA7
+CisJdGhyZXNob2xkID0gKHVuc2lnbmVkIGxvbmcgbG9uZyl3aWR0aCAqIGhlaWdodCAqIHZyZWZy
+ZXNoICoKKwkJICAgIDQgKiA3IC8gMTAwMDAwMDsKIAlyZWcgPSBSRE1BX0ZJRk9fVU5ERVJGTE9X
+X0VOIHwKIAkgICAgICBSRE1BX0ZJRk9fUFNFVURPX1NJWkUoU1pfOEspIHwKIAkgICAgICBSRE1B
+X09VVFBVVF9WQUxJRF9GSUZPX1RIUkVTSE9MRCh0aHJlc2hvbGQpOwotLSAKMS45LjEKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
+aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
+ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
