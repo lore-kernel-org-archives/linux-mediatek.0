@@ -1,71 +1,64 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: dmaengine: Add Mediatek High-Speed DMA
- controller bindings
-Date: Thu, 18 May 2017 20:29:57 -0500
-Message-ID: <20170519012957.q3dr73qharbwtvc3@rob-hp-laptop>
-References: <cover.1494830885.git.sean.wang@mediatek.com>
- <07cc981fbf9620459d1ac63e8720eaa2dd110048.1494830885.git.sean.wang@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <07cc981fbf9620459d1ac63e8720eaa2dd110048.1494830885.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: dan.j.williams@intel.com, vinod.koul@intel.com, mark.rutland@arm.com, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com
+From: Corentin Labbe <clabbe.montjoie@gmail.com>
+Subject: [PATCH v2 1/9] crypto: add hmac IPAD/OPAD constant
+Date: Fri, 19 May 2017 08:53:23 +0200
+Message-ID: <20170519065331.27670-2-clabbe.montjoie@gmail.com>
+References: <20170519065331.27670-1-clabbe.montjoie@gmail.com>
+Return-path: <linux-crypto-owner@vger.kernel.org>
+In-Reply-To: <20170519065331.27670-1-clabbe.montjoie@gmail.com>
+Sender: linux-crypto-owner@vger.kernel.org
+To: herbert@gondor.apana.org.au, davem@davemloft.net, thomas.lendacky@amd.com, gary.hook@amd.com, boris.brezillon@free-electrons.com, arno@natisbad.org, matthias.bgg@gmail.com, giovanni.cabiddu@intel.com, salvatore.benedetto@intel.com
+Cc: linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, qat-linux@intel.com, Corentin Labbe <clabbe.montjoie@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, May 15, 2017 at 02:59:26PM +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Document the devicetree bindings for Mediatek High-Speed DMA controller
-> which could be found on MT7623 SoC or other similar Mediatek SoCs.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  .../devicetree/bindings/dma/mtk-hsdma.txt          | 30 ++++++++++++++++++++++
->  1 file changed, 30 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/dma/mtk-hsdma.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/dma/mtk-hsdma.txt b/Documentation/devicetree/bindings/dma/mtk-hsdma.txt
-> new file mode 100644
-> index 0000000..62cdda4
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/dma/mtk-hsdma.txt
-> @@ -0,0 +1,30 @@
-> +Mediatek High-Speed DMA Controller
-> +==================================
-> +
-> +This driver follows the generic DMA bindings defined in dma/dma.txt.
-> +
-> +Required properties:
-> +
-> +- compatible:	Must be one of
-> +		  "mediatek,mt7623-hsdma".
-> +- reg:		Should contain the register's base address and length.
-> +- interrupts:	Should contain a reference to the interrupt used by this
-> +		device.
-> +- clocks:	Should be the clock specifiers corresponding to the entry in
-> +		clock-names property.
-> +- clock-names:	Should contain "hsdma" entries.
-> +- #dma-cells: 	The length of the DMA specifier, must be <1>. This one cell
-> +		in dmas property of a client device represents the channel
-> +		number.
-> +Example:
-> +
-> +        hsdma: hsdma@1b007000 {
+Many HMAC users directly use directly 0x36/0x5c values.
+It's better with crypto to use a name instead of directly some crypto
+constant.
 
-dma-controller@...
+This patch simply add HMAC_IPAD_VALUE/HMAC_OPAD_VALUE defines in a new
+include file "crypto/hmac.h" and use them in crypto/hmac.c
 
-> +		compatible = "mediatek,mt7623-hsdma";
-> +		reg = <0 0x1b007000 0 0x1000>;
-> +		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&ethsys CLK_ETHSYS_HSDMA>;
-> +		clock-names = "hsdma";
-> +		status = "okay";
+Signed-off-by: Corentin Labbe <clabbe.montjoie@gmail.com>
+---
+ crypto/hmac.c         | 5 +++--
+ include/crypto/hmac.h | 7 +++++++
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+ create mode 100644 include/crypto/hmac.h
 
-Don't need to show status in examples.
-
-With those,
-
-Acked-by: Rob Herring <robh@kernel.org>
+diff --git a/crypto/hmac.c b/crypto/hmac.c
+index 72e38c098bb3..92871dc2a63e 100644
+--- a/crypto/hmac.c
++++ b/crypto/hmac.c
+@@ -16,6 +16,7 @@
+  *
+  */
+ 
++#include <crypto/hmac.h>
+ #include <crypto/internal/hash.h>
+ #include <crypto/scatterwalk.h>
+ #include <linux/err.h>
+@@ -74,8 +75,8 @@ static int hmac_setkey(struct crypto_shash *parent,
+ 	memcpy(opad, ipad, bs);
+ 
+ 	for (i = 0; i < bs; i++) {
+-		ipad[i] ^= 0x36;
+-		opad[i] ^= 0x5c;
++		ipad[i] ^= HMAC_IPAD_VALUE;
++		opad[i] ^= HMAC_OPAD_VALUE;
+ 	}
+ 
+ 	return crypto_shash_init(shash) ?:
+diff --git a/include/crypto/hmac.h b/include/crypto/hmac.h
+new file mode 100644
+index 000000000000..ef09f7938204
+--- /dev/null
++++ b/include/crypto/hmac.h
+@@ -0,0 +1,7 @@
++#ifndef _CRYPTO_HMAC_H
++#define _CRYPTO_HMAC_H
++
++#define HMAC_IPAD_VALUE 0x36
++#define HMAC_OPAD_VALUE 0x5c
++
++#endif /* _CRYPTO_HMAC_H */
+-- 
+2.13.0
