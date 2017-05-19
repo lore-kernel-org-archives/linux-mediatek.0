@@ -1,264 +1,57 @@
-From: YT Shen <yt.shen@mediatek.com>
-Subject: [PATCH 2/2] arm64: dts: Add Mediatek SoC MT2712 and evaluation board dts and Makefile
-Date: Fri, 19 May 2017 19:09:46 +0800
-Message-ID: <1495192186-22480-3-git-send-email-yt.shen@mediatek.com>
-References: <1495192186-22480-1-git-send-email-yt.shen@mediatek.com>
+From: Gary R Hook <gary.hook@amd.com>
+Subject: Re: [PATCH v2 9/9] crypto: ccp - Use IPAD/OPAD constant
+Date: Fri, 19 May 2017 15:32:09 -0500
+Message-ID: <5f959f00-ca3b-0515-d743-33b251fb4b18@amd.com>
+References: <20170519065331.27670-1-clabbe.montjoie@gmail.com>
+ <20170519065331.27670-10-clabbe.montjoie@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1495192186-22480-1-git-send-email-yt.shen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Mars Cheng <mars.cheng@mediatek.com>, YT Shen <yt.shen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-crypto-owner@vger.kernel.org>
+In-Reply-To: <20170519065331.27670-10-clabbe.montjoie@gmail.com>
+Content-Language: en-US
+Sender: linux-crypto-owner@vger.kernel.org
+To: Corentin Labbe <clabbe.montjoie@gmail.com>, "herbert@gondor.apana.org.au" <herbert@gondor.apana.org.au>, "davem@davemloft.net" <davem@davemloft.net>, "Lendacky, Thomas" <Thomas.Lendacky@amd.com>, "boris.brezillon@free-electrons.com" <boris.brezillon@free-electrons.com>, "arno@natisbad.org" <arno@natisbad.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "giovanni.cabiddu@intel.com" <giovanni.cabiddu@intel.com>, "salvatore.benedetto@intel.com" <salvatore.benedetto@intel.com>
+Cc: "linux-crypto@vger.kernel.org" <linux-crypto@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "qat-linux@intel.com" <qat-linux@intel.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds basic chip support for Mediatek 2712
+On 5/19/2017 1:53 AM, Corentin Labbe wrote:
+> This patch simply replace all occurrence of HMAC IPAD/OPAD value by their
+> define.
+> 
+> Signed-off-by: Corentin Labbe <clabbe.montjoie@gmail.com>
 
-Signed-off-by: YT Shen <yt.shen@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/Makefile       |   1 +
- arch/arm64/boot/dts/mediatek/mt2712-evb.dts |  44 +++++++
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi   | 172 ++++++++++++++++++++++++++++
- 3 files changed, 217 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt2712-evb.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+Acked-by: Gary R Hook <gary.hook@amd.com>
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 9fbfd32..fcc0604 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -1,3 +1,4 @@
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-new file mode 100644
-index 0000000..40b0c91
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-@@ -0,0 +1,44 @@
-+/*
-+ * Copyright (c) 2017 MediaTek Inc.
-+ * Author: YT Shen <yt.shen@mediatek.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+/dts-v1/;
-+#include "mt2712e.dtsi"
-+
-+/ {
-+	model = "MediaTek MT2712 evaluation board";
-+	compatible = "mediatek,mt2712-evb", "mediatek,mt2712";
-+
-+	aliases {
-+		serial0 = &uart0;
-+		serial1 = &uart1;
-+		serial2 = &uart2;
-+		serial3 = &uart3;
-+		serial4 = &uart4;
-+		serial5 = &uart5;
-+	};
-+
-+	memory@40000000 {
-+		device_type = "memory";
-+		reg = <0 0x40000000 0 0x80000000>;
-+	};
-+
-+	chosen {
-+		bootargs = "console=ttyS0,921600n1 initrd=0x45000000,90M";
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-+
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-new file mode 100644
-index 0000000..40747a9
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-@@ -0,0 +1,172 @@
-+/*
-+ * Copyright (c) 2017 MediaTek Inc.
-+ * Author: YT Shen <yt.shen@mediatek.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/interrupt-controller/arm-gic.h>
-+
-+/ {
-+	compatible = "mediatek,mt2712";
-+	interrupt-parent = <&sysirq>;
-+	#address-cells = <2>;
-+	#size-cells = <2>;
-+
-+	cpus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		cpu-map {
-+			cluster0 {
-+				core0 {
-+					cpu = <&cpu0>;
-+				};
-+				core1 {
-+					cpu = <&cpu1>;
-+				};
-+			};
-+
-+			cluster1 {
-+				core0 {
-+					cpu = <&cpu2>;
-+				};
-+			};
-+		};
-+
-+		cpu0: cpu@0 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a35";
-+			reg = <0x000>;
-+		};
-+
-+		cpu1: cpu@1 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a35";
-+			reg = <0x001>;
-+			enable-method = "psci";
-+		};
-+
-+		cpu2: cpu@200 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a72";
-+			reg = <0x200>;
-+			enable-method = "psci";
-+		};
-+	};
-+
-+	psci {
-+		compatible = "arm,psci-0.2";
-+		method = "smc";
-+	};
-+
-+	uart_clk: dummy26m {
-+		compatible = "fixed-clock";
-+		clock-frequency = <26000000>;
-+		#clock-cells = <0>;
-+	};
-+
-+	timer {
-+		compatible = "arm,armv8-timer";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 13
-+			      (GIC_CPU_MASK_SIMPLE(6) | IRQ_TYPE_LEVEL_LOW)>,
-+			     <GIC_PPI 14
-+			      (GIC_CPU_MASK_SIMPLE(6) | IRQ_TYPE_LEVEL_LOW)>,
-+			     <GIC_PPI 11
-+			      (GIC_CPU_MASK_SIMPLE(6) | IRQ_TYPE_LEVEL_LOW)>,
-+			     <GIC_PPI 10
-+			      (GIC_CPU_MASK_SIMPLE(6) | IRQ_TYPE_LEVEL_LOW)>;
-+	};
-+
-+	soc {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		compatible = "simple-bus";
-+		ranges;
-+
-+		uart5: serial@1000f000 {
-+			compatible = "mediatek,mt2712-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x1000f000 0 0x400>;
-+			interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			status = "disabled";
-+		};
-+
-+		sysirq: intpol-controller@10220a80 {
-+			compatible = "mediatek,mt2712-sysirq",
-+				     "mediatek,mt6577-sysirq";
-+			interrupt-controller;
-+			#interrupt-cells = <3>;
-+			interrupt-parent = <&gic>;
-+			reg = <0 0x10220a80 0 0x40>;
-+		};
-+
-+		gic: interrupt-controller@10510000 {
-+			compatible = "arm,gic-400";
-+			#interrupt-cells = <3>;
-+			interrupt-parent = <&gic>;
-+			interrupt-controller;
-+			reg = <0 0x10510000 0 0x1000>,
-+			      <0 0x10520000 0 0x1000>,
-+			      <0 0x10540000 0 0x2000>,
-+			      <0 0x10560000 0 0x2000>;
-+			interrupts = <GIC_PPI 9
-+				(GIC_CPU_MASK_SIMPLE(6) | IRQ_TYPE_LEVEL_HIGH)>;
-+		};
-+
-+		uart0: serial@11002000 {
-+			compatible = "mediatek,mt2712-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11002000 0 0x400>;
-+			interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			status = "disabled";
-+		};
-+
-+		uart1: serial@11003000 {
-+			compatible = "mediatek,mt2712-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11003000 0 0x400>;
-+			interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			status = "disabled";
-+		};
-+
-+		uart2: serial@11004000 {
-+			compatible = "mediatek,mt2712-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11004000 0 0x400>;
-+			interrupts = <GIC_SPI 93 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			status = "disabled";
-+		};
-+
-+		uart3: serial@11005000 {
-+			compatible = "mediatek,mt2712-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11005000 0 0x400>;
-+			interrupts = <GIC_SPI 94 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			status = "disabled";
-+		};
-+
-+		uart4: serial@11019000 {
-+			compatible = "mediatek,mt2712-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11019000 0 0x400>;
-+			interrupts = <GIC_SPI 126 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			status = "disabled";
-+		};
-+	};
-+};
-+
--- 
-1.9.1
+> ---
+>   drivers/crypto/ccp/ccp-crypto-sha.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/crypto/ccp/ccp-crypto-sha.c 
+> b/drivers/crypto/ccp/ccp-crypto-sha.c
+> index 6b46eea94932..ce97b3868f4a 100644
+> --- a/drivers/crypto/ccp/ccp-crypto-sha.c
+> +++ b/drivers/crypto/ccp/ccp-crypto-sha.c
+> @@ -18,6 +18,7 @@
+>   #include <linux/crypto.h>
+>   #include <crypto/algapi.h>
+>   #include <crypto/hash.h>
+> +#include <crypto/hmac.h>
+>   #include <crypto/internal/hash.h>
+>   #include <crypto/sha.h>
+>   #include <crypto/scatterwalk.h>
+> @@ -308,8 +309,8 @@ static int ccp_sha_setkey(struct crypto_ahash *tfm, 
+> const u8 *key,
+>           }
+> 
+>           for (i = 0; i < block_size; i++) {
+> -               ctx->u.sha.ipad[i] = ctx->u.sha.key[i] ^ 0x36;
+> -               ctx->u.sha.opad[i] = ctx->u.sha.key[i] ^ 0x5c;
+> +               ctx->u.sha.ipad[i] = ctx->u.sha.key[i] ^ HMAC_IPAD_VALUE;
+> +               ctx->u.sha.opad[i] = ctx->u.sha.key[i] ^ HMAC_OPAD_VALUE;
+>           }
+> 
+>           sg_init_one(&ctx->u.sha.opad_sg, ctx->u.sha.opad, block_size);
+> -- 
+> 2.13.0
+> 
