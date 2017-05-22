@@ -1,72 +1,71 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2] drm: mediatek: change the variable type of rdma
- threshold
-Date: Mon, 22 May 2017 13:46:04 +0800
-Message-ID: <1495431964.20811.8.camel@mtksdaap41>
-References: <1495187843-6882-1-git-send-email-bibby.hsieh@mediatek.com>
+Subject: Re: [PATCH v2] drm/mediatek: fix a timeout loop
+Date: Mon, 22 May 2017 14:00:00 +0800
+Message-ID: <1495432800.20811.11.camel@mtksdaap41>
+References: <20170421105143.jbzvbsremnu6ltgp@mwanda>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1495187843-6882-1-git-send-email-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
+Return-path: <kernel-janitors-owner@vger.kernel.org>
+In-Reply-To: <20170421105143.jbzvbsremnu6ltgp@mwanda>
+Sender: kernel-janitors-owner@vger.kernel.org
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: shaoming chen <shaoming.chen@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Bibby:
+Hi, Dan:
 
-One comment inline.
-
-On Fri, 2017-05-19 at 17:57 +0800, Bibby Hsieh wrote:
-> For some greater resolution, the rdma threshold
-> variable will overflow.
-> 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> index 0df05f9..9afdcd7 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> @@ -37,7 +37,7 @@
->  #define DISP_REG_RDMA_FIFO_CON			0x0040
->  #define RDMA_FIFO_UNDERFLOW_EN				BIT(31)
->  #define RDMA_FIFO_PSEUDO_SIZE(bytes)			(((bytes) / 16) << 16)
-> -#define RDMA_OUTPUT_VALID_FIFO_THRESHOLD(bytes)		((bytes) / 16)
-> +#define RDMA_OUTPUT_VALID_FIFO_THRESHOLD(bytes) (((bytes) / 16) & 0x3ff)
-
-I think it's not necessary to do this mask operation. Before calling
-RDMA_OUTPUT_VALID_FIFO_THRESHOLD(), you should make sure that width,
-height, and vrefresh matches the HW spec, so the result of threshold
-likely does not exceed 0x3ff. If width, height, and vrefresh matches the
-HW spec but threshold exceed 0x3ff, maybe you should limited it to 0x3ff
-rather than truncating it.
+Sorry for the late reply. I've applied this patch to my branch
+mediatek-drm-fixes-4.12-rc1.
 
 Regards,
 CK
 
+On Fri, 2017-04-21 at 13:51 +0300, Dan Carpenter wrote:
+> This code causes a static checker warning because it treats "i == 0" as
+> a timeout but, because it's a post-op, the loop actually ends with "i"
+> set to -1.  Philipp Zabel points out that it would be cleaner to use
+> readl_poll_timeout() instead.
+> 
+> Fixes: 21898816831f ("drm/mediatek: add dsi transfer function")
+> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+> ---
+> v2: Use readl_poll_timeout().  Please review this carefully because I've
+> never used readl_poll_timeout() and could easily mess up.
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index 808b995a990f..b5cc6e12334c 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -19,6 +19,7 @@
+>  #include <drm/drm_of.h>
+>  #include <linux/clk.h>
+>  #include <linux/component.h>
+> +#include <linux/iopoll.h>
+>  #include <linux/irq.h>
+>  #include <linux/of.h>
+>  #include <linux/of_platform.h>
+> @@ -900,16 +901,12 @@ static int mtk_dsi_host_detach(struct mipi_dsi_host *host,
 >  
->  /**
->   * struct mtk_disp_rdma - DISP_RDMA driver structure
-> @@ -109,7 +109,7 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
->  			    unsigned int height, unsigned int vrefresh,
->  			    unsigned int bpc)
+>  static void mtk_dsi_wait_for_idle(struct mtk_dsi *dsi)
 >  {
-> -	unsigned int threshold;
-> +	unsigned long long threshold;
->  	unsigned int reg;
+> -	u32 timeout_ms = 500000; /* total 1s ~ 2s timeout */
+> -
+> -	while (timeout_ms--) {
+> -		if (!(readl(dsi->regs + DSI_INTSTA) & DSI_BUSY))
+> -			break;
+> -
+> -		usleep_range(2, 4);
+> -	}
+> +	int ret;
+> +	u32 val;
 >  
->  	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0, 0xfff, width);
-> @@ -121,7 +121,8 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
->  	 * output threshold to 6 microseconds with 7/6 overhead to
->  	 * account for blanking, and with a pixel depth of 4 bytes:
->  	 */
-> -	threshold = width * height * vrefresh * 4 * 7 / 1000000;
-> +	threshold = (unsigned long long)width * height * vrefresh *
-> +		    4 * 7 / 1000000;
->  	reg = RDMA_FIFO_UNDERFLOW_EN |
->  	      RDMA_FIFO_PSEUDO_SIZE(SZ_8K) |
->  	      RDMA_OUTPUT_VALID_FIFO_THRESHOLD(threshold);
+> -	if (timeout_ms == 0) {
+> +	ret = readl_poll_timeout(dsi->regs + DSI_INTSTA, val, !(val & DSI_BUSY),
+> +				 4, 2000000);
+> +	if (ret) {
+>  		DRM_WARN("polling dsi wait not busy timeout!\n");
+>  
+>  		mtk_dsi_enable(dsi);
+
+
