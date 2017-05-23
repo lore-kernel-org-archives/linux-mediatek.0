@@ -1,58 +1,38 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH] drm/mediatek: hdmi: Filter interlaced resolutions
-Date: Tue, 23 May 2017 15:12:43 +0200
-Message-ID: <20170523131243.5bjz5n4uv73r2l7j@phenom.ffwll.local>
-References: <1485234604-19889-1-git-send-email-bibby.hsieh@mediatek.com>
- <1495531695.20811.19.camel@mtksdaap41>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] Document: DT: Add bindings for Mediatek MT2712 SoC
+ Platform
+Date: Tue, 23 May 2017 09:57:12 -0500
+Message-ID: <20170523145712.wos6fwow6srwgjgd@rob-hp-laptop>
+References: <1495192186-22480-1-git-send-email-yt.shen@mediatek.com>
+ <1495192186-22480-2-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1495531695.20811.19.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Bibby Hsieh <bibby.hsieh@mediatek.com>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Yingjoe Chen =?utf-8?B?KOmZs+iLsea0sik=?= <Yingjoe.Chen@mediatek.com>, Cawa Cheng =?utf-8?B?KOmEreabhOempyk=?= <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen =?utf-8?B?KOayiOWys+mchik=?= <Yt.Shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Mao Huang <littlecvr@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-kernel@vger.ker
+In-Reply-To: <1495192186-22480-2-git-send-email-yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, May 23, 2017 at 05:28:15PM +0800, CK Hu wrote:
-> Hi, Bibby:
-> 
-> I've applied this patch to my branch mediatek-drm-fixes-4.12-rc1,
-> thanks.
-> 
-> Regards,
-> CK
-> 
-> On Tue, 2017-01-24 at 13:10 +0800, Bibby Hsieh wrote:
-> > Current Mediatek DRM driver does not support interlaced mode, and
-> > will hang if such resolution is used: Filter those to prevent
-> > kernel hangs, until the DRM driver is fixed properly.
-> > 
-> > Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_hdmi.c | 2 ++
-> >  1 file changed, 2 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> > index 0e8c4d9..e33678d 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> > @@ -1244,6 +1244,8 @@ static int mtk_hdmi_conn_mode_valid(struct drm_connector *conn,
-> >  			return MODE_BAD;
-> >  	}
-> >  
-> > +	if (mode->flags & DRM_MODE_FLAG_INTERLACE)
-> > +		return MODE_NO_INTERLACE;
-> >  	if (mode->clock < 27000)
-> >  		return MODE_CLOCK_LOW;
-> >  	if (mode->clock > 297000)
+On Fri, May 19, 2017 at 07:09:45PM +0800, YT Shen wrote:
+> This adds dt-binding documentation for Mediatek MT2712.
+> Only include very basic items: cpu, gic and uart.
 
-You probably want to check out Jose's mode_valid work, since only
-filtering in the connector's ->mode_valid callback isn't enough. You also
-need to filter in ->mode_fixup (or some other place called at atomic_check
-time).
--Daniel
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+'dt-bindings: arm: ...' is the preferred subject prefix.
+
+> 
+> Signed-off-by: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.txt                    | 4 ++++
+>  .../devicetree/bindings/interrupt-controller/mediatek,sysirq.txt      | 1 +
+>  Documentation/devicetree/bindings/serial/mtk-uart.txt                 | 1 +
+>  3 files changed, 6 insertions(+)
+
+Otherwise,
+
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
