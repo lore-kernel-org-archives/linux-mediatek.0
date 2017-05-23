@@ -1,106 +1,41 @@
-From: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 0/3] Fix mdp device tree
-Date: Tue, 23 May 2017 11:35:57 +0800
-Message-ID: <1495510557.4116.1.camel@mtksdaap41>
-References: <1494559361-42835-1-git-send-email-minghsiu.tsai@mediatek.com>
-         <20ba4f83-7d22-2a8e-4eb6-7d4eba92e2ae@xs4all.nl>
-         <1f7de9e7-2c18-6662-4b95-519d22a70723@gmail.com>
-         <fe23cd68-461d-845a-13e9-93dd9493c1f9@xs4all.nl>
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Subject: Re: [PATCH v2 0/9] crypto: add HMAC IPAD/OPAD constant
+Date: Tue, 23 May 2017 13:03:45 +0800
+Message-ID: <20170523050345.GF17569@gondor.apana.org.au>
+References: <20170519065331.27670-1-clabbe.montjoie@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <fe23cd68-461d-845a-13e9-93dd9493c1f9-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Houlong Wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Wu-Cheng Li <wuchengli-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-crypto-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170519065331.27670-1-clabbe.montjoie@gmail.com>
+Sender: linux-crypto-owner@vger.kernel.org
+To: Corentin Labbe <clabbe.montjoie@gmail.com>
+Cc: davem@davemloft.net, thomas.lendacky@amd.com, gary.hook@amd.com, boris.brezillon@free-electrons.com, arno@natisbad.org, matthias.bgg@gmail.com, giovanni.cabiddu@intel.com, salvatore.benedetto@intel.com, linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, qat-linux@intel.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2017-05-22 at 16:16 +0200, Hans Verkuil wrote:
-> On 05/22/2017 04:14 PM, Matthias Brugger wrote:
-> > 
-> > 
-> > On 22/05/17 11:09, Hans Verkuil wrote:
-> >> On 05/12/2017 05:22 AM, Minghsiu Tsai wrote:
-> >>
-> >> Who should take care of the dtsi changes? I'm not sure who maintains the mdp dts.
-> > 
-> > I will take care of the dtsi patches.
-> > 
-> >>
-> >> The driver change and the dtsi change need to be in sync, so it is probably easiest
-> >> to merge this via one tree.
-> >>
-> >> Here is my Acked-by for these three patches:
-> >>
-> >> Acked-by: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
-> >>
-> >> I can take all three, provided I have the Ack of the mdp dts maintainer. Or it can
-> >> go through him with my Ack.
-> >>
-> > 
-> > I think we should provide backwards compability instead, as proposed here:
-> > http://lists.infradead.org/pipermail/linux-mediatek/2017-May/008811.html
-> > 
-> > If this change is ok for you, please let Minghsiu know so that he can 
-> > provide a v4.
+On Fri, May 19, 2017 at 08:53:22AM +0200, Corentin Labbe wrote:
+> Hello
 > 
-> That's a lot better. In that case I can take the media patches and you the dts.
+> Many HMAC users directly use directly 0x36/0x5c values.
+> It's better with crypto to use a name instead of directly some crypto constant.
 > 
-> I'll wait for the v4.
+> Changes since v1:
+> - Moved constant to include/crypto/hmac.h
+> - Added <crypto/hmac.h> to includes
 > 
+> Corentin Labbe (9):
+>   crypto: add hmac IPAD/OPAD constant
+>   crypto: brcm - Use IPAD/OPAD constant
+>   crypto: ixp4xx - Use IPAD/OPAD constant
+>   crypto: marvell - Use IPAD/OPAD constant
+>   crypto: mv_cesa - Use IPAD/OPAD constant
+>   crypto: omap-sham - Use IPAD/OPAD constant
+>   crypto: qat - Use IPAD/OPAD constant
+>   crypto: mediatek - Use IPAD/OPAD constant
+>   crypto: ccp - Use IPAD/OPAD constant
 
-Hi Hans, Matthias,
-
-I have uploaded v4, thanks.
-
-
-> Regards,
-> 
-> 	Hans
-> 
-> > 
-> > Regards,
-> > Matthias
-> > 
-> >> Regards,
-> >>
-> >> 	Hans
-> >>
-> >>> Changes in v3:
-> >>> - Upload patches again because forget to add v2 in title
-> >>>
-> >>> Changes in v2:
-> >>> - Update commit message
-> >>>
-> >>> If the mdp_* nodes are under an mdp sub-node, their corresponding
-> >>> platform device does not automatically get its iommu assigned properly.
-> >>>
-> >>> Fix this by moving the mdp component nodes up a level such that they are
-> >>> siblings of mdp and all other SoC subsystems.  This also simplifies the
-> >>> device tree.
-> >>>
-> >>> Although it fixes iommu assignment issue, it also break compatibility
-> >>> with old device tree. So, the patch in driver is needed to iterate over
-> >>> sibling mdp device nodes, not child ones, to keep driver work properly.
-> >>>
-> >>> Daniel Kurtz (2):
-> >>>    arm64: dts: mt8173: Fix mdp device tree
-> >>>    media: mtk-mdp: Fix mdp device tree
-> >>>
-> >>> Minghsiu Tsai (1):
-> >>>    dt-bindings: mt8173: Fix mdp device tree
-> >>>
-> >>>   .../devicetree/bindings/media/mediatek-mdp.txt     |  12 +-
-> >>>   arch/arm64/boot/dts/mediatek/mt8173.dtsi           | 126 ++++++++++-----------
-> >>>   drivers/media/platform/mtk-mdp/mtk_mdp_core.c      |   2 +-
-> >>>   3 files changed, 64 insertions(+), 76 deletions(-)
-> >>>
-> >>
-> 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+All applied.  Thanks.
+-- 
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
