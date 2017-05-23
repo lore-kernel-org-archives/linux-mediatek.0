@@ -1,61 +1,58 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v3] drm/mediatek: Support UYVY and YUYV format for overlay
-Date: Tue, 23 May 2017 17:33:04 +0800
-Message-ID: <1495531984.20811.21.camel@mtksdaap41>
-References: <1485232858-40418-1-git-send-email-bibby.hsieh@mediatek.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH] drm/mediatek: hdmi: Filter interlaced resolutions
+Date: Tue, 23 May 2017 15:12:43 +0200
+Message-ID: <20170523131243.5bjz5n4uv73r2l7j@phenom.ffwll.local>
+References: <1485234604-19889-1-git-send-email-bibby.hsieh@mediatek.com>
+ <1495531695.20811.19.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1485232858-40418-1-git-send-email-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng =?UTF-8?Q?=28=E9=84=AD=E6=9B=84=E7=A6=A7=29?= <cawa.cheng@mediatek.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Mao Huang <littlecvr@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?= <Yingjoe.Chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1495531695.20811.19.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Bibby Hsieh <bibby.hsieh@mediatek.com>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Yingjoe Chen =?utf-8?B?KOmZs+iLsea0sik=?= <Yingjoe.Chen@mediatek.com>, Cawa Cheng =?utf-8?B?KOmEreabhOempyk=?= <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen =?utf-8?B?KOayiOWys+mchik=?= <Yt.Shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Mao Huang <littlecvr@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-kernel@vger.ker
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEJpYmJ5OgoKSSd2ZSBhcHBsaWVkIHRoaXMgcGF0Y2ggdG8gbXkgYnJhbmNoIG1lZGlhdGVr
-LWRybS1uZXh0LTQuMTMsIHRoYW5rcy4KClJlZ2FyZHMsCkNLCgpPbiBUdWUsIDIwMTctMDEtMjQg
-YXQgMTI6NDAgKzA4MDAsIEJpYmJ5IEhzaWVoIHdyb3RlOgo+IE1UODE3MyBvdmVybGF5IGNhbiBz
-dXBwb3J0IFVZVlkgYW5kIFlVWVYgZm9ybWF0LAo+IHdlIGFkZCB0aGUgZm9ybWF0IGluIERSTSBk
-cml2ZXIuCj4gCj4gU2lnbmVkLW9mZi1ieTogQmliYnkgSHNpZWggPGJpYmJ5LmhzaWVoQG1lZGlh
-dGVrLmNvbT4KPiBSZXZpZXdlZC1ieTogRGFuaWVsIEt1cnR6IDxkamt1cnR6QGNocm9taXVtLm9y
-Zz4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jICB8IDcg
-KysrKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jIHwgMiAr
-Kwo+ICAyIGZpbGVzIGNoYW5nZWQsIDkgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMgYi9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMKPiBpbmRleCBjNzAzMTAyLi41M2YyMDAxIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYwo+ICsrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYwo+IEBAIC00MCwxMCArNDAsMTMg
-QEAKPiAgI2RlZmluZQlPVkxfUkRNQV9NRU1fR01DCTB4NDA0MDIwMjAKPiAgCj4gICNkZWZpbmUg
-T1ZMX0NPTl9CWVRFX1NXQVAJQklUKDI0KQo+ICsjZGVmaW5lIE9WTF9DT05fTVRYX1lVVl9UT19S
-R0IJKDYgPDwgMTYpCj4gICNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfUkdCNTY1CSgwIDw8IDEyKQo+
-ICAjZGVmaW5lIE9WTF9DT05fQ0xSRk1UX1JHQjg4OAkoMSA8PCAxMikKPiAgI2RlZmluZSBPVkxf
-Q09OX0NMUkZNVF9SR0JBODg4OAkoMiA8PCAxMikKPiAgI2RlZmluZSBPVkxfQ09OX0NMUkZNVF9B
-UkdCODg4OAkoMyA8PCAxMikKPiArI2RlZmluZSBPVkxfQ09OX0NMUkZNVF9VWVZZCSg0IDw8IDEy
-KQo+ICsjZGVmaW5lIE9WTF9DT05fQ0xSRk1UX1lVWVYJKDUgPDwgMTIpCj4gICNkZWZpbmUJT1ZM
-X0NPTl9BRU4JCUJJVCg4KQo+ICAjZGVmaW5lCU9WTF9DT05fQUxQSEEJCTB4ZmYKPiAgCj4gQEAg
-LTE2Miw2ICsxNjUsMTAgQEAgc3RhdGljIHVuc2lnbmVkIGludCBvdmxfZm10X2NvbnZlcnQodW5z
-aWduZWQgaW50IGZtdCkKPiAgCWNhc2UgRFJNX0ZPUk1BVF9YQkdSODg4ODoKPiAgCWNhc2UgRFJN
-X0ZPUk1BVF9BQkdSODg4ODoKPiAgCQlyZXR1cm4gT1ZMX0NPTl9DTFJGTVRfUkdCQTg4ODggfCBP
-VkxfQ09OX0JZVEVfU1dBUDsKPiArCWNhc2UgRFJNX0ZPUk1BVF9VWVZZOgo+ICsJCXJldHVybiBP
-VkxfQ09OX0NMUkZNVF9VWVZZIHwgT1ZMX0NPTl9NVFhfWVVWX1RPX1JHQjsKPiArCWNhc2UgRFJN
-X0ZPUk1BVF9ZVVlWOgo+ICsJCXJldHVybiBPVkxfQ09OX0NMUkZNVF9ZVVlWIHwgT1ZMX0NPTl9N
-VFhfWVVWX1RPX1JHQjsKPiAgCX0KPiAgfQo+ICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX3BsYW5lLmMKPiBpbmRleCBjNDYxYTIzLi44YzAyZDFkIDEwMDY0NAo+IC0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmMKPiArKysgYi9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jCj4gQEAgLTI4LDYgKzI4LDggQEAKPiAgCURS
-TV9GT1JNQVRfWFJHQjg4ODgsCj4gIAlEUk1fRk9STUFUX0FSR0I4ODg4LAo+ICAJRFJNX0ZPUk1B
-VF9SR0I1NjUsCj4gKwlEUk1fRk9STUFUX1VZVlksCj4gKwlEUk1fRk9STUFUX1lVWVYsCj4gIH07
-Cj4gIAo+ICBzdGF0aWMgdm9pZCBtdGtfcGxhbmVfcmVzZXQoc3RydWN0IGRybV9wbGFuZSAqcGxh
-bmUpCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Tue, May 23, 2017 at 05:28:15PM +0800, CK Hu wrote:
+> Hi, Bibby:
+> 
+> I've applied this patch to my branch mediatek-drm-fixes-4.12-rc1,
+> thanks.
+> 
+> Regards,
+> CK
+> 
+> On Tue, 2017-01-24 at 13:10 +0800, Bibby Hsieh wrote:
+> > Current Mediatek DRM driver does not support interlaced mode, and
+> > will hang if such resolution is used: Filter those to prevent
+> > kernel hangs, until the DRM driver is fixed properly.
+> > 
+> > Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_hdmi.c | 2 ++
+> >  1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> > index 0e8c4d9..e33678d 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> > @@ -1244,6 +1244,8 @@ static int mtk_hdmi_conn_mode_valid(struct drm_connector *conn,
+> >  			return MODE_BAD;
+> >  	}
+> >  
+> > +	if (mode->flags & DRM_MODE_FLAG_INTERLACE)
+> > +		return MODE_NO_INTERLACE;
+> >  	if (mode->clock < 27000)
+> >  		return MODE_CLOCK_LOW;
+> >  	if (mode->clock > 297000)
+
+You probably want to check out Jose's mode_valid work, since only
+filtering in the connector's ->mode_valid callback isn't enough. You also
+need to filter in ->mode_fixup (or some other place called at atomic_check
+time).
+-Daniel
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
