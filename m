@@ -1,116 +1,79 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [RESEND PATCH v3 1/2] dt-bindings: i2c: Add Mediatek MT2701 i2c
- binding
-Date: Tue, 23 May 2017 08:31:53 +0200
-Message-ID: <aa667dcb-2c11-8179-0098-edbc3eeaf093@gmail.com>
-References: <1489029185-21447-1-git-send-email-jun.gao@mediatek.com>
- <1489029185-21447-2-git-send-email-jun.gao@mediatek.com>
- <20170322090543.sxacnddn2o7stjnq@ninjato>
- <1490694612.18582.11.camel@mhfsdcap03> <20170328192258.GA4525@katana>
- <4111ffc2-0a25-0811-fbd3-401649431315@gmail.com>
- <1495510441.930.7.camel@mhfsdcap03>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH] drm/mediatek: use platform_register_drivers
+Date: Tue, 23 May 2017 14:48:26 +0800
+Message-ID: <1495522106.20811.15.camel@mtksdaap41>
+References: <20170317170023.17658-1-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <1495510441.930.7.camel@mhfsdcap03>
-Content-Language: en-US
-Sender: linux-i2c-owner@vger.kernel.org
-To: Jun Gao <jun.gao@mediatek.com>, robh@kernel.org
-Cc: Wolfram Sang <wsa@the-dreams.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170317170023.17658-1-p.zabel@pengutronix.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 23/05/17 05:34, Jun Gao wrote:
-> On Wed, 2017-05-10 at 12:35 +0200, Matthias Brugger wrote:
->>
->> On 28/03/17 21:22, Wolfram Sang wrote:
->>> On Tue, Mar 28, 2017 at 05:50:12PM +0800, Jun Gao wrote:
->>>> On Wed, 2017-03-22 at 10:05 +0100, Wolfram Sang wrote:
->>>>> On Thu, Mar 09, 2017 at 11:13:04AM +0800, Jun Gao wrote:
->>>>>> From: Jun Gao <jun.gao@mediatek.com>
->>>>>>
->>>>>> Add MT2701 i2c binding to i2c-mt6577.txt and there is no need to
->>>>>> modify i2c driver.
->>>>>>
->>>>>> Signed-off-by: Jun Gao <jun.gao@mediatek.com>
->>>>>
->>>>> There is still the issue which Matthias Brugger pointed out on January,
->>>>> 24th: you need to describe the fallback compatibles.
->>>>>
->>>>
->>>> IMHO the value under compatible are just inputs which can be accepted.
->>>> It's little strange to add fallback information in binding. Some other
->>>> bindings do not describe so detailedly.
->>>> Is it OK to make binding as minimum standard?
->>>> If we describe it very detailedly, we will have to modify binding if
->>>> there are some changes for mt2701.
->>>
->>> My reading of the below is that I could simply use "mediatek,mt2701-i2c"
->>> as compatible and things will work. But it won't, we don't have that in
->>> the driver IIRC. So, we need a fallback for that to work.
->>>
->>>> Rob, could you give some suggestions?  Thanks!
->>>
->>> Would be welcome, yes. I lost track what the preferred solution is.
->>>
->>
->> We will need to define the fallback binding for each SoC.
->> As example take the rockchip mmc:
->> http://elixir.free-electrons.com/linux/latest/source/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
->>
->> Regards,
->> Matthias
->>
-> 
-> Hi Rob,
-> 
-> There is no such requirement for other components.
-
-The requirement is that the binding description reflects a compatible 
-the driver is able to consume. Right now if you pass 
-"mediatek,mt2701-i2c" the driver won't recognize this, therefor you need 
-the fallback compatible. Which point isn't clear to you?
-
-Regards,
-Matthias
-
-> Could you give us some suggestions?
-> Thanks!
-> 
-> 
->>>>
->>>>>> ---
->>>>>>    .../devicetree/bindings/i2c/i2c-mt6577.txt         |   11 ++++++-----
->>>>>>    1 file changed, 6 insertions(+), 5 deletions(-)
->>>>>>
->>>>>> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
->>>>>> index 0ce6fa3..27dbbf9 100644
->>>>>> --- a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
->>>>>> +++ b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
->>>>>> @@ -4,11 +4,12 @@ The Mediatek's I2C controller is used to interface with I2C devices.
->>>>>>    
->>>>>>    Required properties:
->>>>>>      - compatible: value should be either of the following.
->>>>>> -      (a) "mediatek,mt6577-i2c", for i2c compatible with mt6577 i2c.
->>>>>> -      (b) "mediatek,mt6589-i2c", for i2c compatible with mt6589 i2c.
->>>>>> -      (c) "mediatek,mt8127-i2c", for i2c compatible with mt8127 i2c.
->>>>>> -      (d) "mediatek,mt8135-i2c", for i2c compatible with mt8135 i2c.
->>>>>> -      (e) "mediatek,mt8173-i2c", for i2c compatible with mt8173 i2c.
->>>>>> +	"mediatek,mt2701-i2c"
->>>>>> +	"mediatek,mt6577-i2c"
->>>>>> +	"mediatek,mt6589-i2c"
->>>>>> +	"mediatek,mt8127-i2c"
->>>>>> +	"mediatek,mt8135-i2c"
->>>>>> +	"mediatek,mt8173-i2c"
->>>>>>      - reg: physical base address of the controller and dma base, length of memory
->>>>>>        mapped region.
->>>>>>      - interrupts: interrupt number to the cpu.
->>>>>> -- 
->>>>>> 1.7.9.5
->>>>>>
->>>>
->>>>
-> 
-> 
+SGksIFBoaWxpcHA6CgpTb3JyeSBmb3IgdGhlIGxhdGUgcmVwbHkuIEkndmUgYXBwbGllZCB0aGlz
+IHBhdGNoIHRvIG15IGJyYW5jaAptZWRpYXRlay1kcm0tbmV4dC00LjEzLCB0aGFua3MuCgpSZWdh
+cmRzLApDSwoKT24gRnJpLCAyMDE3LTAzLTE3IGF0IDE4OjAwICswMTAwLCBQaGlsaXBwIFphYmVs
+IHdyb3RlOgo+IFVzZSBwbGF0Zm9ybV9yZWdpc3Rlcl9kcml2ZXJzIGluc3RlYWQgb2Ygb3BlbiBj
+b2RpbmcgdGhlIGl0ZXJhdGlvbiBvdmVyCj4gY29tcG9uZW50IHBsYXRmb3JtIGRyaXZlcnMgaW4g
+dGhlIG10a19kcm1fZHJ2IGFuZCBtdGtfaGRtaSBtb2R1bGVzLgo+IAo+IFNpZ25lZC1vZmYtYnk6
+IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+Cj4gLS0tCj4gIGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIHwgMjcgKysrKy0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jICAgIHwgMjcgKysr
+Ky0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gIDIgZmlsZXMgY2hhbmdlZCwgOCBpbnNlcnRpb25z
+KCspLCA0NiBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9k
+cnYuYwo+IGluZGV4IGY1YTFmZDliM2VjYzcuLjIwZTU0MGFhOWU4N2EgMTAwNjQ0Cj4gLS0tIGEv
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiArKysgYi9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+IEBAIC01MzYsMzMgKzUzNiwxNCBAQCBzdGF0
+aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciAqIGNvbnN0IG10a19kcm1fZHJpdmVyc1tdID0gewo+
+ICAKPiAgc3RhdGljIGludCBfX2luaXQgbXRrX2RybV9pbml0KHZvaWQpCj4gIHsKPiAtCWludCBy
+ZXQ7Cj4gLQlpbnQgaTsKPiAtCj4gLQlmb3IgKGkgPSAwOyBpIDwgQVJSQVlfU0laRShtdGtfZHJt
+X2RyaXZlcnMpOyBpKyspIHsKPiAtCQlyZXQgPSBwbGF0Zm9ybV9kcml2ZXJfcmVnaXN0ZXIobXRr
+X2RybV9kcml2ZXJzW2ldKTsKPiAtCQlpZiAocmV0IDwgMCkgewo+IC0JCQlwcl9lcnIoIkZhaWxl
+ZCB0byByZWdpc3RlciAlcyBkcml2ZXI6ICVkXG4iLAo+IC0JCQkgICAgICAgbXRrX2RybV9kcml2
+ZXJzW2ldLT5kcml2ZXIubmFtZSwgcmV0KTsKPiAtCQkJZ290byBlcnI7Cj4gLQkJfQo+IC0JfQo+
+IC0KPiAtCXJldHVybiAwOwo+IC0KPiAtZXJyOgo+IC0Jd2hpbGUgKC0taSA+PSAwKQo+IC0JCXBs
+YXRmb3JtX2RyaXZlcl91bnJlZ2lzdGVyKG10a19kcm1fZHJpdmVyc1tpXSk7Cj4gLQo+IC0JcmV0
+dXJuIHJldDsKPiArCXJldHVybiBwbGF0Zm9ybV9yZWdpc3Rlcl9kcml2ZXJzKG10a19kcm1fZHJp
+dmVycywKPiArCQkJCQkgQVJSQVlfU0laRShtdGtfZHJtX2RyaXZlcnMpKTsKPiAgfQo+ICAKPiAg
+c3RhdGljIHZvaWQgX19leGl0IG10a19kcm1fZXhpdCh2b2lkKQo+ICB7Cj4gLQlpbnQgaTsKPiAt
+Cj4gLQlmb3IgKGkgPSBBUlJBWV9TSVpFKG10a19kcm1fZHJpdmVycykgLSAxOyBpID49IDA7IGkt
+LSkKPiAtCQlwbGF0Zm9ybV9kcml2ZXJfdW5yZWdpc3RlcihtdGtfZHJtX2RyaXZlcnNbaV0pOwo+
+ICsJcGxhdGZvcm1fdW5yZWdpc3Rlcl9kcml2ZXJzKG10a19kcm1fZHJpdmVycywKPiArCQkJCSAg
+ICBBUlJBWV9TSVpFKG10a19kcm1fZHJpdmVycykpOwo+ICB9Cj4gIAo+ICBtb2R1bGVfaW5pdCht
+dGtfZHJtX2luaXQpOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4gaW5kZXggNGUy
+ZjljNDMzOTVjMi4uNjVhYzI5NmEwMmZhYyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2hkbWkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+aGRtaS5jCj4gQEAgLTE3OTgsMzMgKzE3OTgsMTQgQEAgc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9k
+cml2ZXIgKiBjb25zdCBtdGtfaGRtaV9kcml2ZXJzW10gPSB7Cj4gIAo+ICBzdGF0aWMgaW50IF9f
+aW5pdCBtdGtfaGRtaXR4X2luaXQodm9pZCkKPiAgewo+IC0JaW50IHJldDsKPiAtCWludCBpOwo+
+IC0KPiAtCWZvciAoaSA9IDA7IGkgPCBBUlJBWV9TSVpFKG10a19oZG1pX2RyaXZlcnMpOyBpKysp
+IHsKPiAtCQlyZXQgPSBwbGF0Zm9ybV9kcml2ZXJfcmVnaXN0ZXIobXRrX2hkbWlfZHJpdmVyc1tp
+XSk7Cj4gLQkJaWYgKHJldCA8IDApIHsKPiAtCQkJcHJfZXJyKCJGYWlsZWQgdG8gcmVnaXN0ZXIg
+JXMgZHJpdmVyOiAlZFxuIiwKPiAtCQkJICAgICAgIG10a19oZG1pX2RyaXZlcnNbaV0tPmRyaXZl
+ci5uYW1lLCByZXQpOwo+IC0JCQlnb3RvIGVycjsKPiAtCQl9Cj4gLQl9Cj4gLQo+IC0JcmV0dXJu
+IDA7Cj4gLQo+IC1lcnI6Cj4gLQl3aGlsZSAoLS1pID49IDApCj4gLQkJcGxhdGZvcm1fZHJpdmVy
+X3VucmVnaXN0ZXIobXRrX2hkbWlfZHJpdmVyc1tpXSk7Cj4gLQo+IC0JcmV0dXJuIHJldDsKPiAr
+CXJldHVybiBwbGF0Zm9ybV9yZWdpc3Rlcl9kcml2ZXJzKG10a19oZG1pX2RyaXZlcnMsCj4gKwkJ
+CQkJIEFSUkFZX1NJWkUobXRrX2hkbWlfZHJpdmVycykpOwo+ICB9Cj4gIAo+ICBzdGF0aWMgdm9p
+ZCBfX2V4aXQgbXRrX2hkbWl0eF9leGl0KHZvaWQpCj4gIHsKPiAtCWludCBpOwo+IC0KPiAtCWZv
+ciAoaSA9IEFSUkFZX1NJWkUobXRrX2hkbWlfZHJpdmVycykgLSAxOyBpID49IDA7IGktLSkKPiAt
+CQlwbGF0Zm9ybV9kcml2ZXJfdW5yZWdpc3RlcihtdGtfaGRtaV9kcml2ZXJzW2ldKTsKPiArCXBs
+YXRmb3JtX3VucmVnaXN0ZXJfZHJpdmVycyhtdGtfaGRtaV9kcml2ZXJzLAo+ICsJCQkJICAgIEFS
+UkFZX1NJWkUobXRrX2hkbWlfZHJpdmVycykpOwo+ICB9Cj4gIAo+ICBtb2R1bGVfaW5pdChtdGtf
+aGRtaXR4X2luaXQpOwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
+ZXZlbAo=
