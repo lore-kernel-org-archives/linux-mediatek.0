@@ -1,13 +1,13 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH] drm/mediatek: re-phrase DRM_INFO error message
-Date: Tue, 23 May 2017 14:55:28 +0800
-Message-ID: <1495522528.20811.17.camel@mtksdaap41>
-References: <20170411134419.21277-1-colin.king@canonical.com>
+Subject: Re: [PATCH] drm/mediatek: hdmi: Filter interlaced resolutions
+Date: Tue, 23 May 2017 17:28:15 +0800
+Message-ID: <1495531695.20811.19.camel@mtksdaap41>
+References: <1485234604-19889-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170411134419.21277-1-colin.king@canonical.com>
+In-Reply-To: <1485234604-19889-1-git-send-email-bibby.hsieh@mediatek.com>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -17,28 +17,28 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Colin King <colin.king@canonical.com>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng =?UTF-8?Q?=28=E9=84=AD=E6=9B=84=E7=A6=A7=29?= <cawa.cheng@mediatek.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Mao Huang <littlecvr@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?= <Yingjoe.Chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIENvbGluOgoKU29ycnkgZm9yIG15IGxhdGUgcmVwbHkuIEkndmUgYXBwbGllZCB0aGlzIHBh
-dGNoIHRvIG15IGJyYW5jaAptZWRpYXRlay1kcm0tbmV4dC00LjEzLCB0aGFua3MuCgpSZWdhcmRz
-LApDSwoKT24gVHVlLCAyMDE3LTA0LTExIGF0IDE0OjQ0ICswMTAwLCBDb2xpbiBLaW5nIHdyb3Rl
-Ogo+IEZyb206IENvbGluIElhbiBLaW5nIDxjb2xpbi5raW5nQGNhbm9uaWNhbC5jb20+Cj4gCj4g
-VGhlIGN1cnJlbnQgbWVzc2FnZSBjb250YWlucyBhIHNwZWxsaW5nIG1pc3Rha2UgYW5kIGlzIG5v
-dCBlYXNpbHkKPiBwYXJzYWJsZS4gUmUtcGhyYXNlIGl0IHRvIGJlIG1vcmUgdW5kZXJzdGFuZGFi
-bGUuCj4gCj4gU2lnbmVkLW9mZi1ieTogQ29saW4gSWFuIEtpbmcgPGNvbGluLmtpbmdAY2Fub25p
-Y2FsLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyB8IDIg
-Ky0KPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4gCj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgYi9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gaW5kZXggODA4Yjk5NWE5OTBmLi43OWQyNDBm
-ZjEzMzEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+
-ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiBAQCAtOTMzLDcgKzkz
-Myw3IEBAIHN0YXRpYyB1MzIgbXRrX2RzaV9yZWN2X2NudCh1OCB0eXBlLCB1OCAqcmVhZF9kYXRh
-KQo+ICAJCURSTV9JTkZPKCJ0eXBlIGlzIDB4MDIsIHRyeSBhZ2FpblxuIik7Cj4gIAkJYnJlYWs7
-Cj4gIAlkZWZhdWx0Ogo+IC0JCURSTV9JTkZPKCJ0eXBlKDB4JXgpIGNhbm5vdCBiZSBub24tcmVj
-b2duaXRlXG4iLCB0eXBlKTsKPiArCQlEUk1fSU5GTygidHlwZSgweCV4KSBub3QgcmVjb2duaXpl
-ZFxuIiwgdHlwZSk7Cj4gIAkJYnJlYWs7Cj4gIAl9Cj4gIAoKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+SGksIEJpYmJ5OgoKSSd2ZSBhcHBsaWVkIHRoaXMgcGF0Y2ggdG8gbXkgYnJhbmNoIG1lZGlhdGVr
+LWRybS1maXhlcy00LjEyLXJjMSwKdGhhbmtzLgoKUmVnYXJkcywKQ0sKCk9uIFR1ZSwgMjAxNy0w
+MS0yNCBhdCAxMzoxMCArMDgwMCwgQmliYnkgSHNpZWggd3JvdGU6Cj4gQ3VycmVudCBNZWRpYXRl
+ayBEUk0gZHJpdmVyIGRvZXMgbm90IHN1cHBvcnQgaW50ZXJsYWNlZCBtb2RlLCBhbmQKPiB3aWxs
+IGhhbmcgaWYgc3VjaCByZXNvbHV0aW9uIGlzIHVzZWQ6IEZpbHRlciB0aG9zZSB0byBwcmV2ZW50
+Cj4ga2VybmVsIGhhbmdzLCB1bnRpbCB0aGUgRFJNIGRyaXZlciBpcyBmaXhlZCBwcm9wZXJseS4K
+PiAKPiBTaWduZWQtb2ZmLWJ5OiBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29t
+Pgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYyB8IDIgKysKPiAg
+MSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfaGRtaS5jCj4gaW5kZXggMGU4YzRkOS4uZTMzNjc4ZCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfaGRtaS5jCj4gQEAgLTEyNDQsNiArMTI0NCw4IEBAIHN0YXRpYyBpbnQgbXRrX2hk
+bWlfY29ubl9tb2RlX3ZhbGlkKHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uLAo+ICAJCQlyZXR1
+cm4gTU9ERV9CQUQ7Cj4gIAl9Cj4gIAo+ICsJaWYgKG1vZGUtPmZsYWdzICYgRFJNX01PREVfRkxB
+R19JTlRFUkxBQ0UpCj4gKwkJcmV0dXJuIE1PREVfTk9fSU5URVJMQUNFOwo+ICAJaWYgKG1vZGUt
+PmNsb2NrIDwgMjcwMDApCj4gIAkJcmV0dXJuIE1PREVfQ0xPQ0tfTE9XOwo+ICAJaWYgKG1vZGUt
+PmNsb2NrID4gMjk3MDAwKQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
+dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbAo=
