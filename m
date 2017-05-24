@@ -1,68 +1,25 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH] drm/mediatek: hdmi: Filter interlaced resolutions
-Date: Wed, 24 May 2017 14:24:51 +0200
-Message-ID: <20170524122451.vc252rdphzwzljeu@phenom.ffwll.local>
-References: <1485234604-19889-1-git-send-email-bibby.hsieh@mediatek.com>
- <1495531695.20811.19.camel@mtksdaap41>
- <20170523131243.5bjz5n4uv73r2l7j@phenom.ffwll.local>
- <1495617645.15919.6.camel@mtksdaap41>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH net-next v3 5/5] net-next: dsa: add dsa support for
+ Mediatek MT7530 switch
+Date: Wed, 24 May 2017 15:20:49 +0200
+Message-ID: <20170524132049.GB24980@lunn.ch>
+References: <1490780303-18598-1-git-send-email-sean.wang@mediatek.com>
+ <1490780303-18598-6-git-send-email-sean.wang@mediatek.com>
+ <hn6gvd-qp1.ln1@banana.localnet>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1495617645.15919.6.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng =?utf-8?B?KOmEreabhOempyk=?= <cawa.cheng@mediatek.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Mao Huang <littlecvr@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen =?utf-8?B?KOmZs+iLsea0sik=?= <Yingjoe.Chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+In-Reply-To: <hn6gvd-qp1.ln1@banana.localnet>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "Andrey Jr. Melnikov" <temnota.am@gmail.com>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gV2VkLCBNYXkgMjQsIDIwMTcgYXQgMDU6MjA6NDVQTSArMDgwMCwgQ0sgSHUgd3JvdGU6Cj4g
-T24gVHVlLCAyMDE3LTA1LTIzIGF0IDE1OjEyICswMjAwLCBEYW5pZWwgVmV0dGVyIHdyb3RlOgo+
-ID4gT24gVHVlLCBNYXkgMjMsIDIwMTcgYXQgMDU6Mjg6MTVQTSArMDgwMCwgQ0sgSHUgd3JvdGU6
-Cj4gPiA+IEhpLCBCaWJieToKPiA+ID4gCj4gPiA+IEkndmUgYXBwbGllZCB0aGlzIHBhdGNoIHRv
-IG15IGJyYW5jaCBtZWRpYXRlay1kcm0tZml4ZXMtNC4xMi1yYzEsCj4gPiA+IHRoYW5rcy4KPiA+
-ID4gCj4gPiA+IFJlZ2FyZHMsCj4gPiA+IENLCj4gPiA+IAo+ID4gPiBPbiBUdWUsIDIwMTctMDEt
-MjQgYXQgMTM6MTAgKzA4MDAsIEJpYmJ5IEhzaWVoIHdyb3RlOgo+ID4gPiA+IEN1cnJlbnQgTWVk
-aWF0ZWsgRFJNIGRyaXZlciBkb2VzIG5vdCBzdXBwb3J0IGludGVybGFjZWQgbW9kZSwgYW5kCj4g
-PiA+ID4gd2lsbCBoYW5nIGlmIHN1Y2ggcmVzb2x1dGlvbiBpcyB1c2VkOiBGaWx0ZXIgdGhvc2Ug
-dG8gcHJldmVudAo+ID4gPiA+IGtlcm5lbCBoYW5ncywgdW50aWwgdGhlIERSTSBkcml2ZXIgaXMg
-Zml4ZWQgcHJvcGVybHkuCj4gPiA+ID4gCj4gPiA+ID4gU2lnbmVkLW9mZi1ieTogQmliYnkgSHNp
-ZWggPGJpYmJ5LmhzaWVoQG1lZGlhdGVrLmNvbT4KPiA+ID4gPiAtLS0KPiA+ID4gPiAgZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMgfCAyICsrCj4gPiA+ID4gIDEgZmlsZSBjaGFu
-Z2VkLCAyIGluc2VydGlvbnMoKykKPiA+ID4gPiAKPiA+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2hkbWkuYwo+ID4gPiA+IGluZGV4IDBlOGM0ZDkuLmUzMzY3OGQgMTAwNjQ0Cj4gPiA+ID4g
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKPiA+ID4gPiArKysgYi9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwo+ID4gPiA+IEBAIC0xMjQ0LDYgKzEy
-NDQsOCBAQCBzdGF0aWMgaW50IG10a19oZG1pX2Nvbm5fbW9kZV92YWxpZChzdHJ1Y3QgZHJtX2Nv
-bm5lY3RvciAqY29ubiwKPiA+ID4gPiAgCQkJcmV0dXJuIE1PREVfQkFEOwo+ID4gPiA+ICAJfQo+
-ID4gPiA+ICAKPiA+ID4gPiArCWlmIChtb2RlLT5mbGFncyAmIERSTV9NT0RFX0ZMQUdfSU5URVJM
-QUNFKQo+ID4gPiA+ICsJCXJldHVybiBNT0RFX05PX0lOVEVSTEFDRTsKPiA+ID4gPiAgCWlmICht
-b2RlLT5jbG9jayA8IDI3MDAwKQo+ID4gPiA+ICAJCXJldHVybiBNT0RFX0NMT0NLX0xPVzsKPiA+
-ID4gPiAgCWlmIChtb2RlLT5jbG9jayA+IDI5NzAwMCkKPiA+IAo+ID4gWW91IHByb2JhYmx5IHdh
-bnQgdG8gY2hlY2sgb3V0IEpvc2UncyBtb2RlX3ZhbGlkIHdvcmssIHNpbmNlIG9ubHkKPiA+IGZp
-bHRlcmluZyBpbiB0aGUgY29ubmVjdG9yJ3MgLT5tb2RlX3ZhbGlkIGNhbGxiYWNrIGlzbid0IGVu
-b3VnaC4gWW91IGFsc28KPiA+IG5lZWQgdG8gZmlsdGVyIGluIC0+bW9kZV9maXh1cCAob3Igc29t
-ZSBvdGhlciBwbGFjZSBjYWxsZWQgYXQgYXRvbWljX2NoZWNrCj4gPiB0aW1lKS4KPiA+IC1EYW5p
-ZWwKPiAKPiBIaSwgRGFuaWVsOgo+IAo+IFllcywgSSBzdGlsbCBuZWVkIHRvIGZpbHRlciBpbiAt
-Pm1vZGVfZml4dXAuCj4gCj4gSGksIEJpYmJ5Ogo+IAo+IEJlY2F1c2UgSm9zZSdzIHdvcmsgcGxh
-biB0byB1c2UgbW9kZV92YWxpZCB0byByZXBsYWNlIG1vZGVfZml4dXAsIHNvCj4gaXQncyBiZXR0
-ZXIgdG8gcmVmaW5lIHRoaXMgcGF0Y2ggYWZ0ZXIgSm9zZSdzIHdvcmsgaXMgZG9uZS4gQW5kIEkg
-d291bGQKPiBub3cgcmVtb3ZlIHRoaXMgcGF0Y2ggZnJvbSBteSBicmFuY2guCgpCdHcgaWYgeW91
-IGhhdmUgYSByZXZpc2VkIHZlcnNpb24gb2YgeW91ciBwYXRjaCBvbiB0b3Agb2YgSm9zZSdzIHNl
-cmllcywgYQp0ZXN0ZWQtYnkgb24gdGhhdCB3b3VsZCBiZSBhd2Vzb21lLiBUaGUgbW9yZSBwZW9w
-bGUgZmluZCBpdCB1c2VmdWwsIHRoZQpmYXN0ZXIgaXQgd2lsbCBsYW5kLgotRGFuaWVsCi0tIApE
-YW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8v
-YmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+> What about JUMBO frames and large MTU support? devlink support?
+
+To get the driver merged, it is better to start small, a minimal set
+of features. Other features can be added later. If these features are
+important to you, please feel free to submit patches.
+
+	  Andrew
