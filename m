@@ -1,353 +1,68 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v3 1/2] phy: add PCIe PHY driver for Mediatek SoCs
-Date: Thu, 25 May 2017 12:36:02 +0800
-Message-ID: <1495686963-50071-2-git-send-email-ryder.lee@mediatek.com>
-References: <1495686963-50071-1-git-send-email-ryder.lee@mediatek.com>
+From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 1/2] dt-bindings: dmaengine: Add Mediatek High-Speed DMA controller bindings
+Date: Thu, 25 May 2017 15:12:48 +0800
+Message-ID: <b44d916a9a3048c2450f438bf25b9d2230ae170b.1495695814.git.sean.wang@mediatek.com>
+References: <cover.1495695814.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1495686963-50071-1-git-send-email-ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <cover.1495695814.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
+Cc: dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds a generic PCIe PHY driver for Mediatek SoCs.
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Document the devicetree bindings for Mediatek High-Speed DMA controller
+which could be found on MT7623 SoC or other similar Mediatek SoCs.
+
+Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 ---
- drivers/phy/Kconfig             |   8 ++
- drivers/phy/Makefile            |   1 +
- drivers/phy/phy-mediatek-pcie.c | 290 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 299 insertions(+)
- create mode 100644 drivers/phy/phy-mediatek-pcie.c
+ .../devicetree/bindings/dma/mtk-hsdma.txt          | 29 ++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/dma/mtk-hsdma.txt
 
-diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
-index afaf7b6..220f12f 100644
---- a/drivers/phy/Kconfig
-+++ b/drivers/phy/Kconfig
-@@ -241,6 +241,14 @@ config PHY_MT65XX_USB3
- 	  Say 'Y' here to add support for Mediatek USB3.0 PHY driver,
- 	  it supports multiple usb2.0 and usb3.0 ports.
- 
-+config PHY_MEDIATEK_PCIE
-+	tristate "Mediatek PCIe PHY driver"
-+	depends on ARCH_MEDIATEK && OF
-+	select GENERIC_PHY
-+	select MFD_SYSCON
-+	help
-+	  Say 'Y' here to add support for generic Mediatek PCIe PHY driver.
-+
- config PHY_HI6220_USB
- 	tristate "hi6220 USB PHY support"
- 	depends on (ARCH_HISI && ARM64) || COMPILE_TEST
-diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
-index f8047b4..b337ae9 100644
---- a/drivers/phy/Makefile
-+++ b/drivers/phy/Makefile
-@@ -28,6 +28,7 @@ obj-$(CONFIG_PHY_EXYNOS5250_SATA)	+= phy-exynos5250-sata.o
- obj-$(CONFIG_PHY_HIX5HD2_SATA)		+= phy-hix5hd2-sata.o
- obj-$(CONFIG_PHY_HI6220_USB)		+= phy-hi6220-usb.o
- obj-$(CONFIG_PHY_MT65XX_USB3)		+= phy-mt65xx-usb3.o
-+obj-$(CONFIG_PHY_MEDIATEK_PCIE)		+= phy-mediatek-pcie.o
- obj-$(CONFIG_PHY_SUN4I_USB)		+= phy-sun4i-usb.o
- obj-$(CONFIG_PHY_SUN9I_USB)		+= phy-sun9i-usb.o
- obj-$(CONFIG_PHY_SAMSUNG_USB2)		+= phy-exynos-usb2.o
-diff --git a/drivers/phy/phy-mediatek-pcie.c b/drivers/phy/phy-mediatek-pcie.c
+diff --git a/Documentation/devicetree/bindings/dma/mtk-hsdma.txt b/Documentation/devicetree/bindings/dma/mtk-hsdma.txt
 new file mode 100644
-index 0000000..7c6f5aa
+index 0000000..b37e76e
 --- /dev/null
-+++ b/drivers/phy/phy-mediatek-pcie.c
-@@ -0,0 +1,290 @@
-+/*
-+ * Copyright (c) 2017 MediaTek Inc.
-+ * Author: Ryder Lee <ryder.lee@mediatek.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
++++ b/Documentation/devicetree/bindings/dma/mtk-hsdma.txt
+@@ -0,0 +1,29 @@
++Mediatek High-Speed DMA Controller
++==================================
 +
-+#include <linux/clk.h>
-+#include <linux/delay.h>
-+#include <linux/io.h>
-+#include <linux/kernel.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/of_platform.h>
-+#include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
++This driver follows the generic DMA bindings defined in dma/dma.txt.
 +
-+/* Offsets of sub-segment in each port registers */
-+#define PCIE_SIFSLV_PHYD_BANK2_BASE	0xa00
-+#define SSUSB_SIFSLV_PHYA_BASE		0xb00
-+#define SSUSB_SIFSLV_PHYA_DA_BASE	0xc00
++Required properties:
 +
-+/*
-+ * RX detection stable - 1 scale represent 8 reference cycles
-+ * cover reference clock from 1M~100MHz, 7us~40us
-+ */
-+#define B2_PHYD_RXDET1			(PCIE_SIFSLV_PHYD_BANK2_BASE + 0x28)
-+#define RG_SSUSB_RXDET_STB2		GENMASK(17, 9)
-+#define RG_SSUSB_RXDET_STB2_VAL(x)	((0x1ff & (x)) << 9)
++- compatible:	Must be one of
++		  "mediatek,mt7623-hsdma".
++- reg:		Should contain the register's base address and length.
++- interrupts:	Should contain a reference to the interrupt used by this
++		device.
++- clocks:	Should be the clock specifiers corresponding to the entry in
++		clock-names property.
++- clock-names:	Should contain "hsdma" entries.
++- #dma-cells: 	The length of the DMA specifier, must be <1>. This one cell
++		in dmas property of a client device represents the channel
++		number.
++Example:
 +
-+#define B2_PHYD_RXDET2			(PCIE_SIFSLV_PHYD_BANK2_BASE + 0x2c)
-+#define RG_SSUSB_RXDET_STB2_P3		GENMASK(8, 0)
-+#define RG_SSUSB_RXDET_STB2_P3_VAL(x)	(0x1ff & (x))
++        hsdma: hsdma@1b007000 {
++		compatible = "mediatek,mt7623-hsdma";
++		reg = <0 0x1b007000 0 0x1000>;
++		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&ethsys CLK_ETHSYS_HSDMA>;
++		clock-names = "hsdma";
++	};
 +
-+#define U3_PHYA_REG0			(SSUSB_SIFSLV_PHYA_BASE + 0x00)
-+#define RG_PCIE_CLKDRV_OFFSET		GENMASK(3, 1)
-+#define RG_PCIE_CLKDRV_OFFSET_VAL(x)	((0x3 & (x)) << 2)
-+
-+#define U3_PHYA_REG1			(SSUSB_SIFSLV_PHYA_BASE + 0x04)
-+#define RG_PCIE_CLKDRV_AMP		GENMASK(31, 29)
-+#define RG_PCIE_CLKDRV_AMP_VAL(x)	((0x7 & (x)) << 29)
-+
-+#define DA_SSUSB_CDR_REFCK_SEL		(SSUSB_SIFSLV_PHYA_DA_BASE + 0x00)
-+#define RG_SSUSB_XTAL_EXT_PE1H		GENMASK(13, 12)
-+#define RG_SSUSB_XTAL_EXT_PE1H_VAL(x)	((0x3 & (x)) << 12)
-+#define RG_SSUSB_XTAL_EXT_PE2H		GENMASK(17, 16)
-+#define RG_SSUSB_XTAL_EXT_PE2H_VAL(x)		((0x3 & (x)) << 16)
-+
-+#define DA_SSUSB_PLL_IC			(SSUSB_SIFSLV_PHYA_DA_BASE + 0x0c)
-+#define RG_SSUSB_PLL_IC_PE2H		GENMASK(15, 12)
-+#define RG_SSUSB_PLL_IC_PE2H_VAL(x)	((0xf & (x)) << 12)
-+#define RG_SSUSB_PLL_BR_PE2H		GENMASK(29, 28)
-+#define RG_SSUSB_PLL_BR_PE2H_VAL(x)	((0x3 & (x)) << 28)
-+
-+#define DA_SSUSB_PLL_BC			(SSUSB_SIFSLV_PHYA_DA_BASE + 0x08)
-+#define RG_SSUSB_PLL_DIVEN_PE2H		GENMASK(21, 19)
-+#define RG_SSUSB_PLL_BC_PE2H		GENMASK(7, 6)
-+#define RG_SSUSB_PLL_BC_PE2H_VAL(x)	((0x3 & (x)) << 6)
-+
-+#define DA_SSUSB_PLL_IR			(SSUSB_SIFSLV_PHYA_DA_BASE + 0x10)
-+#define RG_SSUSB_PLL_IR_PE2H		GENMASK(19, 16)
-+#define RG_SSUSB_PLL_IR_PE2H_VAL(x)	((0xf & (x)) << 16)
-+
-+#define DA_SSUSB_PLL_BP			(SSUSB_SIFSLV_PHYA_DA_BASE + 0x14)
-+#define RG_SSUSB_PLL_BP_PE2H		GENMASK(19, 16)
-+#define RG_SSUSB_PLL_BP_PE2H_VAL(x)	((0xf & (x)) << 16)
-+
-+#define DA_SSUSB_PLL_SSC_DELTA1_REG20	(SSUSB_SIFSLV_PHYA_DA_BASE + 0x3c)
-+#define RG_SSUSB_PLL_SSC_DELTA1_PE2H		GENMASK(31, 16)
-+#define RG_SSUSB_PLL_SSC_DELTA1_PE2H_VAL(x)	((0xffff & (x)) << 16)
-+
-+#define DA_SSUSB_PLL_SSC_DELTA_REG25	(SSUSB_SIFSLV_PHYA_DA_BASE + 0x48)
-+#define RG_SSUSB_PLL_SSC_DELTA_PE2H		GENMASK(15, 0)
-+#define RG_SSUSB_PLL_SSC_DELTA_PE2H_VAL(x)	(0xffff & (x))
-+
-+#define HIF_SYSCFG1			0x14
-+#define HIF_SYSCFG1_PHY2_MASK		(0x3 << 20)
-+
-+struct mtk_pcie_phy {
-+	struct device *dev;
-+	void __iomem *base;
-+	struct regmap *hif;
-+	struct clk *phya_ref;
-+	struct phy *phy;
-+};
-+
-+static inline u32 phy_read(struct mtk_pcie_phy *phy, u32 reg)
-+{
-+	return readl(phy->base + reg);
-+}
-+
-+static inline void phy_write(struct mtk_pcie_phy *phy, u32 val, u32 reg)
-+{
-+	writel(val, phy->base + reg);
-+}
-+
-+static int mtk_pcie_phy_power_on(struct phy *phy)
-+{
-+	struct mtk_pcie_phy *mtk_phy = phy_get_drvdata(phy);
-+	int err;
-+	u32 val;
-+
-+	/* enable PCIe mode if needed */
-+	if (mtk_phy->hif)
-+		regmap_update_bits(mtk_phy->hif, HIF_SYSCFG1,
-+				   HIF_SYSCFG1_PHY2_MASK, 0);
-+
-+	err = clk_prepare_enable(mtk_phy->phya_ref);
-+	if (err) {
-+		dev_err(mtk_phy->dev, "failed to enable PCIe phy clock\n");
-+		return err;
-+	}
-+
-+	val = phy_read(mtk_phy, DA_SSUSB_CDR_REFCK_SEL);
-+	val &= ~(RG_SSUSB_XTAL_EXT_PE1H | RG_SSUSB_XTAL_EXT_PE2H);
-+	val |= RG_SSUSB_XTAL_EXT_PE1H_VAL(0x2) |
-+	       RG_SSUSB_XTAL_EXT_PE2H_VAL(0x2);
-+	phy_write(mtk_phy, val, DA_SSUSB_CDR_REFCK_SEL);
-+
-+	/* ref clk drive */
-+	val = phy_read(mtk_phy, U3_PHYA_REG1);
-+	val &= ~RG_PCIE_CLKDRV_AMP;
-+	val |= RG_PCIE_CLKDRV_AMP_VAL(0x4);
-+	phy_write(mtk_phy, val, U3_PHYA_REG1);
-+
-+	val = phy_read(mtk_phy, U3_PHYA_REG0);
-+	val &= ~RG_PCIE_CLKDRV_OFFSET;
-+	val |= RG_PCIE_CLKDRV_OFFSET_VAL(0x1);
-+	phy_write(mtk_phy, val, U3_PHYA_REG0);
-+
-+	/* SSC delta -5000ppm */
-+	val = phy_read(mtk_phy, DA_SSUSB_PLL_SSC_DELTA1_REG20);
-+	val &= ~RG_SSUSB_PLL_SSC_DELTA1_PE2H;
-+	val |= RG_SSUSB_PLL_SSC_DELTA1_PE2H_VAL(0x3c);
-+	phy_write(mtk_phy, val, DA_SSUSB_PLL_SSC_DELTA1_REG20);
-+
-+	val = phy_read(mtk_phy, DA_SSUSB_PLL_SSC_DELTA_REG25);
-+	val &= ~RG_SSUSB_PLL_SSC_DELTA_PE2H;
-+	val |= RG_SSUSB_PLL_SSC_DELTA_PE2H_VAL(0x36);
-+	phy_write(mtk_phy, val, DA_SSUSB_PLL_SSC_DELTA_REG25);
-+
-+	/* change pll BW 0.6M */
-+	val = phy_read(mtk_phy, DA_SSUSB_PLL_IC);
-+	val &= ~RG_SSUSB_PLL_BR_PE2H;
-+	val |= RG_SSUSB_PLL_BR_PE2H_VAL(0x1);
-+	phy_write(mtk_phy, val, DA_SSUSB_PLL_IC);
-+
-+	val = phy_read(mtk_phy, DA_SSUSB_PLL_BC);
-+	val &= ~(RG_SSUSB_PLL_DIVEN_PE2H | RG_SSUSB_PLL_BC_PE2H);
-+	val |= RG_SSUSB_PLL_BC_PE2H_VAL(0x3);
-+	phy_write(mtk_phy, val, DA_SSUSB_PLL_BC);
-+
-+	val = phy_read(mtk_phy, DA_SSUSB_PLL_IR);
-+	val &= ~RG_SSUSB_PLL_IR_PE2H;
-+	val |= RG_SSUSB_PLL_IR_PE2H_VAL(0x2);
-+	phy_write(mtk_phy, val, DA_SSUSB_PLL_IR);
-+
-+	val = phy_read(mtk_phy, DA_SSUSB_PLL_IC);
-+	val &= ~RG_SSUSB_PLL_IC_PE2H;
-+	val |= RG_SSUSB_PLL_IC_PE2H_VAL(0x1);
-+	phy_write(mtk_phy, val, DA_SSUSB_PLL_IC);
-+
-+	val = phy_read(mtk_phy, DA_SSUSB_PLL_BP);
-+	val &= ~RG_SSUSB_PLL_BP_PE2H;
-+	val |= RG_SSUSB_PLL_BP_PE2H_VAL(0xa);
-+	phy_write(mtk_phy, val, DA_SSUSB_PLL_BP);
-+
-+	/* Tx Detect Rx Timing: 10us -> 5us */
-+	val = phy_read(mtk_phy, B2_PHYD_RXDET1);
-+	val &= ~RG_SSUSB_RXDET_STB2;
-+	val |= RG_SSUSB_RXDET_STB2_VAL(0x10);
-+	phy_write(mtk_phy, val, B2_PHYD_RXDET1);
-+
-+	val = phy_read(mtk_phy, B2_PHYD_RXDET2);
-+	val &= ~RG_SSUSB_RXDET_STB2_P3;
-+	val |= RG_SSUSB_RXDET_STB2_P3_VAL(0x10);
-+	phy_write(mtk_phy, val, B2_PHYD_RXDET2);
-+
-+	/* wait for PCIe subsys register to active */
-+	usleep_range(2500, 3000);
-+
-+	return 0;
-+}
-+
-+static int mtk_pcie_phy_power_off(struct phy *phy)
-+{
-+	struct mtk_pcie_phy *mtk_phy = phy_get_drvdata(phy);
-+
-+	clk_disable_unprepare(mtk_phy->phya_ref);
-+
-+	return 0;
-+}
-+
-+static struct phy_ops mtk_pcie_phy_ops = {
-+	.power_on	= mtk_pcie_phy_power_on,
-+	.power_off	= mtk_pcie_phy_power_off,
-+	.owner		= THIS_MODULE,
-+};
-+
-+static const struct of_device_id mtk_pcie_phy_of_match[];
-+
-+static int mtk_pcie_phy_probe(struct platform_device *pdev)
-+{
-+	struct device_node *np = pdev->dev.of_node;
-+	const struct of_device_id *match;
-+	struct phy_provider *phy_provider;
-+	struct mtk_pcie_phy *mtk_phy;
-+	struct resource *res;
-+	struct phy *phy;
-+
-+	match = of_match_device(mtk_pcie_phy_of_match, &pdev->dev);
-+	if (!match)
-+		return -ENODEV;
-+
-+	mtk_phy = devm_kzalloc(&pdev->dev, sizeof(*mtk_phy), GFP_KERNEL);
-+	if (!mtk_phy)
-+		return -ENOMEM;
-+
-+	mtk_phy->dev = &pdev->dev;
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	mtk_phy->base = devm_ioremap_resource(&pdev->dev, res);
-+	if (IS_ERR(mtk_phy->base)) {
-+		dev_err(&pdev->dev, "failed to get phy base\n");
-+		return PTR_ERR(mtk_phy->base);
-+	}
-+
-+	mtk_phy->phya_ref = devm_clk_get(&pdev->dev, "pciephya_ref");
-+	if (IS_ERR(mtk_phy->phya_ref)) {
-+		dev_err(&pdev->dev, "error to get pciephya_ref\n");
-+		return PTR_ERR(mtk_phy->phya_ref);
-+	}
-+
-+	if (of_find_property(np, "mediatek,phy-switch", NULL)) {
-+		mtk_phy->hif = syscon_regmap_lookup_by_phandle(
-+						np, "mediatek,phy-switch");
-+		if (IS_ERR(mtk_phy->hif)) {
-+			dev_err(&pdev->dev, "missing \"mediatek,phy-switch\" phandle\n");
-+			return PTR_ERR(mtk_phy->hif);
-+		}
-+	}
-+
-+	platform_set_drvdata(pdev, mtk_phy);
-+	phy = devm_phy_create(&pdev->dev, NULL, &mtk_pcie_phy_ops);
-+	if (IS_ERR(phy)) {
-+		dev_err(&pdev->dev, "failed to create phy device\n");
-+		return PTR_ERR(phy);
-+	}
-+
-+	mtk_phy->phy = phy;
-+	phy_set_drvdata(phy, mtk_phy);
-+
-+	phy_provider = devm_of_phy_provider_register(&pdev->dev,
-+						     of_phy_simple_xlate);
-+	if (IS_ERR(phy_provider)) {
-+		dev_err(&pdev->dev, "failed to register phy provider\n");
-+		return PTR_ERR(phy_provider);
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id mtk_pcie_phy_of_match[] = {
-+	{ .compatible = "mediatek,mt7623-pcie-phy"},
-+	{ .compatible = "mediatek,mt2701-pcie-phy"},
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, mtk_pcie_phy_of_match);
-+
-+static struct platform_driver mtk_pcie_phy_driver = {
-+	.probe	= mtk_pcie_phy_probe,
-+	.driver = {
-+		.name	= "mtk-pcie-phy",
-+		.of_match_table	= mtk_pcie_phy_of_match,
-+	}
-+};
-+module_platform_driver(mtk_pcie_phy_driver);
-+
-+MODULE_AUTHOR("Ryder Lee <ryder.lee@mediatek.com>");
-+MODULE_DESCRIPTION("Mediatek PCIe PHY driver");
-+MODULE_LICENSE("GPL v2");
++DMA clients must use the format described in dma/dma.txt file.
 -- 
-1.9.1
+2.7.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
