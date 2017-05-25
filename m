@@ -1,58 +1,72 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 0/2] Add PCIe phy driver for some Mediatek SoCs
-Date: Thu, 25 May 2017 10:41:10 +0800
-Message-ID: <1495680070.11680.3.camel@mtkswgap22>
-References: <1495338192-9423-1-git-send-email-ryder.lee@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH] drm/mediatek: hdmi: Filter interlaced resolutions
+Date: Thu, 25 May 2017 11:38:26 +0800
+Message-ID: <1495683506.15919.10.camel@mtksdaap41>
+References: <1485234604-19889-1-git-send-email-bibby.hsieh@mediatek.com>
+ <1495531695.20811.19.camel@mtksdaap41>
+ <20170523131243.5bjz5n4uv73r2l7j@phenom.ffwll.local>
+ <1495617645.15919.6.camel@mtksdaap41>
+ <20170524122451.vc252rdphzwzljeu@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1495338192-9423-1-git-send-email-ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170524122451.vc252rdphzwzljeu@phenom.ffwll.local>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng =?UTF-8?Q?=28=E9=84=AD=E6=9B=84=E7=A6=A7=29?= <cawa.cheng@mediatek.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Mao Huang <littlecvr@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?= <Yingjoe.Chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-Hi Kishon,
-
-I'd like to rename driver name to make it more generic so that we could
-reuse it for other MTK SoCs, and I'll resend patches with a new name.
-
-Sorry for the inconvenience.
-
-Ryder.
-
-
-On Sun, 2017-05-21 at 11:43 +0800, Ryder Lee wrote:
-> Hi,
-> 
-> This patch series add PCIe phy driver and related dt-binding file for
-> Mediatek mt7623 SoCs families.
-> 
-> Changes since v2:
-> - rebase to Linux 4.12-rc1
-> 
-> Changes since v1:
-> - revise binding document:
->   drop 'status' properties.
->   add a description to 'phy-switch' property and add vendor prefix.
-> 
-> Ryder Lee (2):
->   phy: add PCIe PHY driver for mt7623 SoCs families
->   dt-bindings: phy: Add documentation for Mediatek PCIe PHY
-> 
->  .../devicetree/bindings/phy/phy-mt7623-pcie.txt    |  63 +++++
->  drivers/phy/Kconfig                                |   8 +
->  drivers/phy/Makefile                               |   1 +
->  drivers/phy/phy-mt7623-pcie.c                      | 290 +++++++++++++++++++++
->  4 files changed, 362 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/phy-mt7623-pcie.txt
->  create mode 100644 drivers/phy/phy-mt7623-pcie.c
-> 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gV2VkLCAyMDE3LTA1LTI0IGF0IDE0OjI0ICswMjAwLCBEYW5pZWwgVmV0dGVyIHdyb3RlOgo+
+IE9uIFdlZCwgTWF5IDI0LCAyMDE3IGF0IDA1OjIwOjQ1UE0gKzA4MDAsIENLIEh1IHdyb3RlOgo+
+ID4gT24gVHVlLCAyMDE3LTA1LTIzIGF0IDE1OjEyICswMjAwLCBEYW5pZWwgVmV0dGVyIHdyb3Rl
+Ogo+ID4gPiBPbiBUdWUsIE1heSAyMywgMjAxNyBhdCAwNToyODoxNVBNICswODAwLCBDSyBIdSB3
+cm90ZToKPiA+ID4gPiBIaSwgQmliYnk6Cj4gPiA+ID4gCj4gPiA+ID4gSSd2ZSBhcHBsaWVkIHRo
+aXMgcGF0Y2ggdG8gbXkgYnJhbmNoIG1lZGlhdGVrLWRybS1maXhlcy00LjEyLXJjMSwKPiA+ID4g
+PiB0aGFua3MuCj4gPiA+ID4gCj4gPiA+ID4gUmVnYXJkcywKPiA+ID4gPiBDSwo+ID4gPiA+IAo+
+ID4gPiA+IE9uIFR1ZSwgMjAxNy0wMS0yNCBhdCAxMzoxMCArMDgwMCwgQmliYnkgSHNpZWggd3Jv
+dGU6Cj4gPiA+ID4gPiBDdXJyZW50IE1lZGlhdGVrIERSTSBkcml2ZXIgZG9lcyBub3Qgc3VwcG9y
+dCBpbnRlcmxhY2VkIG1vZGUsIGFuZAo+ID4gPiA+ID4gd2lsbCBoYW5nIGlmIHN1Y2ggcmVzb2x1
+dGlvbiBpcyB1c2VkOiBGaWx0ZXIgdGhvc2UgdG8gcHJldmVudAo+ID4gPiA+ID4ga2VybmVsIGhh
+bmdzLCB1bnRpbCB0aGUgRFJNIGRyaXZlciBpcyBmaXhlZCBwcm9wZXJseS4KPiA+ID4gPiA+IAo+
+ID4gPiA+ID4gU2lnbmVkLW9mZi1ieTogQmliYnkgSHNpZWggPGJpYmJ5LmhzaWVoQG1lZGlhdGVr
+LmNvbT4KPiA+ID4gPiA+IC0tLQo+ID4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfaGRtaS5jIHwgMiArKwo+ID4gPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMo
+KykKPiA+ID4gPiA+IAo+ID4gPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKPiA+
+ID4gPiA+IGluZGV4IDBlOGM0ZDkuLmUzMzY3OGQgMTAwNjQ0Cj4gPiA+ID4gPiAtLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwo+ID4gPiA+ID4gKysrIGIvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKPiA+ID4gPiA+IEBAIC0xMjQ0LDYgKzEyNDQsOCBA
+QCBzdGF0aWMgaW50IG10a19oZG1pX2Nvbm5fbW9kZV92YWxpZChzdHJ1Y3QgZHJtX2Nvbm5lY3Rv
+ciAqY29ubiwKPiA+ID4gPiA+ICAJCQlyZXR1cm4gTU9ERV9CQUQ7Cj4gPiA+ID4gPiAgCX0KPiA+
+ID4gPiA+ICAKPiA+ID4gPiA+ICsJaWYgKG1vZGUtPmZsYWdzICYgRFJNX01PREVfRkxBR19JTlRF
+UkxBQ0UpCj4gPiA+ID4gPiArCQlyZXR1cm4gTU9ERV9OT19JTlRFUkxBQ0U7Cj4gPiA+ID4gPiAg
+CWlmIChtb2RlLT5jbG9jayA8IDI3MDAwKQo+ID4gPiA+ID4gIAkJcmV0dXJuIE1PREVfQ0xPQ0tf
+TE9XOwo+ID4gPiA+ID4gIAlpZiAobW9kZS0+Y2xvY2sgPiAyOTcwMDApCj4gPiA+IAo+ID4gPiBZ
+b3UgcHJvYmFibHkgd2FudCB0byBjaGVjayBvdXQgSm9zZSdzIG1vZGVfdmFsaWQgd29yaywgc2lu
+Y2Ugb25seQo+ID4gPiBmaWx0ZXJpbmcgaW4gdGhlIGNvbm5lY3RvcidzIC0+bW9kZV92YWxpZCBj
+YWxsYmFjayBpc24ndCBlbm91Z2guIFlvdSBhbHNvCj4gPiA+IG5lZWQgdG8gZmlsdGVyIGluIC0+
+bW9kZV9maXh1cCAob3Igc29tZSBvdGhlciBwbGFjZSBjYWxsZWQgYXQgYXRvbWljX2NoZWNrCj4g
+PiA+IHRpbWUpLgo+ID4gPiAtRGFuaWVsCj4gPiAKPiA+IEhpLCBEYW5pZWw6Cj4gPiAKPiA+IFll
+cywgSSBzdGlsbCBuZWVkIHRvIGZpbHRlciBpbiAtPm1vZGVfZml4dXAuCj4gPiAKPiA+IEhpLCBC
+aWJieToKPiA+IAo+ID4gQmVjYXVzZSBKb3NlJ3Mgd29yayBwbGFuIHRvIHVzZSBtb2RlX3ZhbGlk
+IHRvIHJlcGxhY2UgbW9kZV9maXh1cCwgc28KPiA+IGl0J3MgYmV0dGVyIHRvIHJlZmluZSB0aGlz
+IHBhdGNoIGFmdGVyIEpvc2UncyB3b3JrIGlzIGRvbmUuIEFuZCBJIHdvdWxkCj4gPiBub3cgcmVt
+b3ZlIHRoaXMgcGF0Y2ggZnJvbSBteSBicmFuY2guCj4gCj4gQnR3IGlmIHlvdSBoYXZlIGEgcmV2
+aXNlZCB2ZXJzaW9uIG9mIHlvdXIgcGF0Y2ggb24gdG9wIG9mIEpvc2UncyBzZXJpZXMsIGEKPiB0
+ZXN0ZWQtYnkgb24gdGhhdCB3b3VsZCBiZSBhd2Vzb21lLiBUaGUgbW9yZSBwZW9wbGUgZmluZCBp
+dCB1c2VmdWwsIHRoZQo+IGZhc3RlciBpdCB3aWxsIGxhbmQuCj4gLURhbmllbAoKSGksIERhbmll
+bDoKCkkgdW5kZXJzdGFuZC4KCkhpIEJpYmJ5OgoKSWYgeW91IGhhdmUgdGltZSwgcGxlYXNlIGhl
+bHAgdG8gdGVzdCBKb3NlJ3MgcGF0Y2hlcyB3aXRoIHRoZSBwcm9ibGVtCnlvdSBoYXZlIG1ldC4g
+T3RoZXJ3aXNlLCBpdCB3b3VsZCBiZSBhIGxvbmcgcHJvY2Vzcy4KClJlZ2FyZHMsCkNLCgoKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
+YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
+LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
