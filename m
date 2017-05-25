@@ -1,72 +1,77 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH] drm/mediatek: hdmi: Filter interlaced resolutions
-Date: Thu, 25 May 2017 11:38:26 +0800
-Message-ID: <1495683506.15919.10.camel@mtksdaap41>
-References: <1485234604-19889-1-git-send-email-bibby.hsieh@mediatek.com>
- <1495531695.20811.19.camel@mtksdaap41>
- <20170523131243.5bjz5n4uv73r2l7j@phenom.ffwll.local>
- <1495617645.15919.6.camel@mtksdaap41>
- <20170524122451.vc252rdphzwzljeu@phenom.ffwll.local>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v4 1/9] dt-bindings: arm: mediatek: update for MT7623n SoC and
+ relevant boards
+Date: Thu, 25 May 2017 12:02:39 +0800
+Message-ID: <ec281bfc67e633873bb519e607aca67213454b6d.1495683769.git.sean.wang@mediatek.com>
+References: <cover.1495683769.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170524122451.vc252rdphzwzljeu@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng =?UTF-8?Q?=28=E9=84=AD=E6=9B=84=E7=A6=A7=29?= <cawa.cheng@mediatek.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Mao Huang <littlecvr@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?= <Yingjoe.Chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <cover.1495683769.git.sean.wang@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, john@phrozen.org, linux-mediatek@lists.infradead.org
+Cc: Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gV2VkLCAyMDE3LTA1LTI0IGF0IDE0OjI0ICswMjAwLCBEYW5pZWwgVmV0dGVyIHdyb3RlOgo+
-IE9uIFdlZCwgTWF5IDI0LCAyMDE3IGF0IDA1OjIwOjQ1UE0gKzA4MDAsIENLIEh1IHdyb3RlOgo+
-ID4gT24gVHVlLCAyMDE3LTA1LTIzIGF0IDE1OjEyICswMjAwLCBEYW5pZWwgVmV0dGVyIHdyb3Rl
-Ogo+ID4gPiBPbiBUdWUsIE1heSAyMywgMjAxNyBhdCAwNToyODoxNVBNICswODAwLCBDSyBIdSB3
-cm90ZToKPiA+ID4gPiBIaSwgQmliYnk6Cj4gPiA+ID4gCj4gPiA+ID4gSSd2ZSBhcHBsaWVkIHRo
-aXMgcGF0Y2ggdG8gbXkgYnJhbmNoIG1lZGlhdGVrLWRybS1maXhlcy00LjEyLXJjMSwKPiA+ID4g
-PiB0aGFua3MuCj4gPiA+ID4gCj4gPiA+ID4gUmVnYXJkcywKPiA+ID4gPiBDSwo+ID4gPiA+IAo+
-ID4gPiA+IE9uIFR1ZSwgMjAxNy0wMS0yNCBhdCAxMzoxMCArMDgwMCwgQmliYnkgSHNpZWggd3Jv
-dGU6Cj4gPiA+ID4gPiBDdXJyZW50IE1lZGlhdGVrIERSTSBkcml2ZXIgZG9lcyBub3Qgc3VwcG9y
-dCBpbnRlcmxhY2VkIG1vZGUsIGFuZAo+ID4gPiA+ID4gd2lsbCBoYW5nIGlmIHN1Y2ggcmVzb2x1
-dGlvbiBpcyB1c2VkOiBGaWx0ZXIgdGhvc2UgdG8gcHJldmVudAo+ID4gPiA+ID4ga2VybmVsIGhh
-bmdzLCB1bnRpbCB0aGUgRFJNIGRyaXZlciBpcyBmaXhlZCBwcm9wZXJseS4KPiA+ID4gPiA+IAo+
-ID4gPiA+ID4gU2lnbmVkLW9mZi1ieTogQmliYnkgSHNpZWggPGJpYmJ5LmhzaWVoQG1lZGlhdGVr
-LmNvbT4KPiA+ID4gPiA+IC0tLQo+ID4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfaGRtaS5jIHwgMiArKwo+ID4gPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMo
-KykKPiA+ID4gPiA+IAo+ID4gPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKPiA+
-ID4gPiA+IGluZGV4IDBlOGM0ZDkuLmUzMzY3OGQgMTAwNjQ0Cj4gPiA+ID4gPiAtLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwo+ID4gPiA+ID4gKysrIGIvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKPiA+ID4gPiA+IEBAIC0xMjQ0LDYgKzEyNDQsOCBA
-QCBzdGF0aWMgaW50IG10a19oZG1pX2Nvbm5fbW9kZV92YWxpZChzdHJ1Y3QgZHJtX2Nvbm5lY3Rv
-ciAqY29ubiwKPiA+ID4gPiA+ICAJCQlyZXR1cm4gTU9ERV9CQUQ7Cj4gPiA+ID4gPiAgCX0KPiA+
-ID4gPiA+ICAKPiA+ID4gPiA+ICsJaWYgKG1vZGUtPmZsYWdzICYgRFJNX01PREVfRkxBR19JTlRF
-UkxBQ0UpCj4gPiA+ID4gPiArCQlyZXR1cm4gTU9ERV9OT19JTlRFUkxBQ0U7Cj4gPiA+ID4gPiAg
-CWlmIChtb2RlLT5jbG9jayA8IDI3MDAwKQo+ID4gPiA+ID4gIAkJcmV0dXJuIE1PREVfQ0xPQ0tf
-TE9XOwo+ID4gPiA+ID4gIAlpZiAobW9kZS0+Y2xvY2sgPiAyOTcwMDApCj4gPiA+IAo+ID4gPiBZ
-b3UgcHJvYmFibHkgd2FudCB0byBjaGVjayBvdXQgSm9zZSdzIG1vZGVfdmFsaWQgd29yaywgc2lu
-Y2Ugb25seQo+ID4gPiBmaWx0ZXJpbmcgaW4gdGhlIGNvbm5lY3RvcidzIC0+bW9kZV92YWxpZCBj
-YWxsYmFjayBpc24ndCBlbm91Z2guIFlvdSBhbHNvCj4gPiA+IG5lZWQgdG8gZmlsdGVyIGluIC0+
-bW9kZV9maXh1cCAob3Igc29tZSBvdGhlciBwbGFjZSBjYWxsZWQgYXQgYXRvbWljX2NoZWNrCj4g
-PiA+IHRpbWUpLgo+ID4gPiAtRGFuaWVsCj4gPiAKPiA+IEhpLCBEYW5pZWw6Cj4gPiAKPiA+IFll
-cywgSSBzdGlsbCBuZWVkIHRvIGZpbHRlciBpbiAtPm1vZGVfZml4dXAuCj4gPiAKPiA+IEhpLCBC
-aWJieToKPiA+IAo+ID4gQmVjYXVzZSBKb3NlJ3Mgd29yayBwbGFuIHRvIHVzZSBtb2RlX3ZhbGlk
-IHRvIHJlcGxhY2UgbW9kZV9maXh1cCwgc28KPiA+IGl0J3MgYmV0dGVyIHRvIHJlZmluZSB0aGlz
-IHBhdGNoIGFmdGVyIEpvc2UncyB3b3JrIGlzIGRvbmUuIEFuZCBJIHdvdWxkCj4gPiBub3cgcmVt
-b3ZlIHRoaXMgcGF0Y2ggZnJvbSBteSBicmFuY2guCj4gCj4gQnR3IGlmIHlvdSBoYXZlIGEgcmV2
-aXNlZCB2ZXJzaW9uIG9mIHlvdXIgcGF0Y2ggb24gdG9wIG9mIEpvc2UncyBzZXJpZXMsIGEKPiB0
-ZXN0ZWQtYnkgb24gdGhhdCB3b3VsZCBiZSBhd2Vzb21lLiBUaGUgbW9yZSBwZW9wbGUgZmluZCBp
-dCB1c2VmdWwsIHRoZQo+IGZhc3RlciBpdCB3aWxsIGxhbmQuCj4gLURhbmllbAoKSGksIERhbmll
-bDoKCkkgdW5kZXJzdGFuZC4KCkhpIEJpYmJ5OgoKSWYgeW91IGhhdmUgdGltZSwgcGxlYXNlIGhl
-bHAgdG8gdGVzdCBKb3NlJ3MgcGF0Y2hlcyB3aXRoIHRoZSBwcm9ibGVtCnlvdSBoYXZlIG1ldC4g
-T3RoZXJ3aXNlLCBpdCB3b3VsZCBiZSBhIGxvbmcgcHJvY2Vzcy4KClJlZ2FyZHMsCkNLCgoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
-YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
-LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+From: Sean Wang <sean.wang@mediatek.com>
+
+Because there are two versions of MT7623 SoC that is MT7623a and MT7623n
+respectively. So update the part of MT7623n bindings to allow that people
+tend to differentiate which MT7623 SoC the boards applies.
+
+And "mediatek,mt7623-evb" can be safely changed to
+"mediatek,mt7623n-rfb-nand" because mt7623-evb is a kind of debug board
+internally in Mediatek which real users can't get. So instead we should
+indicate which variants it belongs to with more specific postfix as the
+adding here to let people easily know what board they use.
+
+Signed-off-by: John Crispin <john@phrozen.org>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ Documentation/devicetree/bindings/arm/mediatek.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt b/Documentation/devicetree/bindings/arm/mediatek.txt
+index c860b24..0924b62 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek.txt
+@@ -1,6 +1,6 @@
+ MediaTek mt65xx, mt67xx & mt81xx Platforms Device Tree Bindings
+ 
+-Boards with a MediaTek mt65xx/mt67xx/mt81xx SoC shall have the
++Boards with a MediaTek mt65xx/mt67xx/mt762x/mt81xx SoC shall have the
+ following property:
+ 
+ Required root node property:
+@@ -12,7 +12,7 @@ compatible: Must contain one of
+    "mediatek,mt6592"
+    "mediatek,mt6755"
+    "mediatek,mt6795"
+-   "mediatek,mt7623"
++   "mediatek,mt7623" which is referred to MT7623N SoC
+    "mediatek,mt8127"
+    "mediatek,mt8135"
+    "mediatek,mt8173"
+@@ -38,9 +38,9 @@ Supported boards:
+ - Evaluation board for MT6795(Helio X10):
+     Required root node properties:
+       - compatible = "mediatek,mt6795-evb", "mediatek,mt6795";
+-- Evaluation board for MT7623:
++- Reference  board for MT7623n with NAND:
+     Required root node properties:
+-      - compatible = "mediatek,mt7623-evb", "mediatek,mt7623";
++      - compatible = "mediatek,mt7623n-rfb-nand", "mediatek,mt7623";
+ - MTK mt8127 tablet moose EVB:
+     Required root node properties:
+       - compatible = "mediatek,mt8127-moose", "mediatek,mt8127";
+-- 
+2.7.4
