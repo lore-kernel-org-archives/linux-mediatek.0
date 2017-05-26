@@ -1,60 +1,40 @@
-From: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH net-next v3 5/5] net-next: dsa: add dsa support for Mediatek MT7530 switch
-Date: Thu, 25 May 2017 22:54:32 -0700
-Message-ID: <043CDC76-3C57-4F54-97B6-896591A11CB3@gmail.com>
-References: <1490780303-18598-1-git-send-email-sean.wang@mediatek.com> <1490780303-18598-6-git-send-email-sean.wang@mediatek.com> <hn6gvd-qp1.ln1@banana.localnet>
+From: Jun Gao <jun.gao@mediatek.com>
+Subject: [PATCH v4 0/2] Add i2c dt-binding and device node for Mediatek MT2701 Soc
+Date: Fri, 26 May 2017 15:35:05 +0800
+Message-ID: <1495784107-6711-1-git-send-email-jun.gao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <hn6gvd-qp1.ln1-f2MyMQbBE8IG/9ncUZ6upg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: "Andrey Jr. Melnikov" <temnota.am-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On May 24, 2017 4:17:39 AM PDT, "Andrey Jr=2E Melnikov" <temnota=2Eam@gmail=
-=2Ecom> wrote:
->In gmane=2Elinux=2Ekernel sean=2Ewang@mediatek=2Ecom wrote:
->> From: Sean Wang <sean=2Ewang@mediatek=2Ecom>
->
->> MT7530 is a 7-ports Gigabit Ethernet Switch that could be found on
->> Mediatek router platforms such as MT7623A or MT7623N platform which
->> includes 7-port Gigabit Ethernet MAC and 5-port Gigabit Ethernet PHY=2E
->> Among these ports, The port from 0 to 4 are the user ports connecting
->> with the remote devices while the port 5 and 6 are the CPU ports
->> connecting into Mediatek Ethernet GMAC=2E
->
->> For port 6, it can communicate with the CPU via Mediatek Ethernet
->GMAC
->> through either the TRGMII or RGMII which could be controlled by
->phy-mode
->> in the dt-bindings to specify which mode is preferred to use=2E And for
->> port 5, only RGMII can be specified=2E However, currently, only port 6
->is
->> being supported in this DSA driver=2E
->
->> The driver is made with the reference to qca8k and other existing DSA
->> driver=2E The most of the essential callbacks of the DSA are already
->> support in the driver, including tag insert for user port
->distinguishing,
->> port control, bridge offloading, STP setup and ethtool operation to
->allow
->> DSA to model each user port into a standalone netdevice as the other
->DSA
->> driver had done=2E
->
->What about JUMBO frames and large MTU support? devlink support?
+This patch series based on v4.12-rc1, include MT2701 i2c dt-binding
+and device node.
 
-We don't have a ndo_change_mtu callback implemented for DSA network device=
-s but that is probably how we should do it=2E Regarding devlink, Andrew add=
-ed basic support for it but unlike mlxsw it is currently of mild interest=
-=2E Do you have something specific in mind with devlink?
+changes since v3:
+- Add fallback compatible to dt-binding
 
---=20
-Florian
+changes since v2:
+- Modify commit message
+- Revise dt-binding documentation
+
+changes since v1:
+- Modify commit message
+
+Dependent on "Add clock and power domain DT nodes for Mediatek MT2701"[1].
+
+[1] http://lists.infradead.org/pipermail/linux-mediatek/2016-December/007637.html
+
+Jun Gao (2):
+  dt-bindings: i2c: Add Mediatek MT2701 i2c binding
+  arm: dts: Add Mediatek MT2701 i2c device node
+
+ .../devicetree/bindings/i2c/i2c-mt6577.txt         | 11 +++---
+ arch/arm/boot/dts/mt2701-evb.dts                   | 42 ++++++++++++++++++++++
+ arch/arm/boot/dts/mt2701.dtsi                      | 42 ++++++++++++++++++++++
+ 3 files changed, 90 insertions(+), 5 deletions(-)
+
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+1.8.1.1
