@@ -1,24 +1,24 @@
 From: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v4 7/9] arm: dts: mt7623: enable the usb device on the
- mt7623n rfb
-Date: Mon, 29 May 2017 00:02:00 +0800
-Message-ID: <201705282334.smDMEWQD%fengguang.wu@intel.com>
-References: <4cb528c77f4d44bd0932b69f39b0d5b557d9eab1.1495683769.git.sean.wang@mediatek.com>
+Subject: Re: [PATCH v4 9/9] arm: dts: mt7623: add dts file for Bananapi R2
+ (BPI-R2) board
+Date: Mon, 29 May 2017 04:53:44 +0800
+Message-ID: <201705290415.tikz1ylK%fengguang.wu@intel.com>
+References: <5cc5489b38fc2723c30c8cfe0d4353f967d100f3.1495683769.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="6c2NcOVqGQ03X4Wi"
+Content-Type: multipart/mixed; boundary="qMm9M+Fa2AknHoGS"
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <4cb528c77f4d44bd0932b69f39b0d5b557d9eab1.1495683769.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <5cc5489b38fc2723c30c8cfe0d4353f967d100f3.1495683769.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: kbuild-all-JC7UmRfGjtg@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 
---6c2NcOVqGQ03X4Wi
+--qMm9M+Fa2AknHoGS
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-Hi John,
+Hi Sean,
 
 [auto build test ERROR on robh/for-next]
 [also build test ERROR on v4.12-rc2 next-20170526]
@@ -39,19 +39,19 @@ All errors (new ones prefixed by >>):
    Error: arch/arm/boot/dts/mt7623-mt6323.dtsi:33.1-7 Label or path pwrap not found
    Error: arch/arm/boot/dts/mt7623-mt6323.dtsi:261.1-6 Label or path mmc0 not found
    Error: arch/arm/boot/dts/mt7623-mt6323.dtsi:266.1-6 Label or path mmc1 not found
->> Error: arch/arm/boot/dts/mt7623n-rfb.dtsi:37.20-21 syntax error
+>> Error: arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts:31.22-23 syntax error
    FATAL ERROR: Unable to parse input tree
 
 ---
 0-DAY kernel test infrastructure                Open Source Technology Center
 https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 
---6c2NcOVqGQ03X4Wi
+--qMm9M+Fa2AknHoGS
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICHflKlkAAy5jb25maWcAjFxbk+Ookn6fX+Ho2Yfdh5my5WvtRj0gCduMJaECZLvqhfDU
+H4sICGgpK1kAAy5jb25maWcAjFxbk+Ookn6fX+Ho2Yfdh5my5WvtRj0gCduMJaECZLvqhfDU
 uHscpy69ruo50/vrNwHJAoTcM3HidOvLBBJI8gbun3/6eYC+fby9HD5OT4fn5++DL8fX4/nw
 cfxj8Pn0fPyfQUoHBRUDnBLxKzBnp9dvf98czi+Dya+j0a/DX85P0WBzPL8enwfJ2+vn05dv
 0Pr09vrTzz8ltFiSlUQsv/tufcg14pKvZLJGpGgpBcapgtMcyQwXK7F2Wym84lgSmudVl6Rh
@@ -1174,7 +1174,7 @@ J+7TsB9hagrUyfRzagmSEm2fY/v2t8R8rRnnt1risCP5EtUIC2Vu+/eWrne261mNht6ySUGC
 EidwE8AsunPim1+jtSpqKC4J437vb2g07bokITYU0X0uKLISw9XBtis18c4B8v9obWYBstoD
 AA==
 
---6c2NcOVqGQ03X4Wi--
+--qMm9M+Fa2AknHoGS--
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
