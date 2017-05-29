@@ -1,109 +1,89 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 4/4] arm64: dts: mt7622: group clock DT nodes into
- separate DT file
-Date: Tue, 30 May 2017 09:16:32 +0800
-Message-ID: <1496106992.3570.15.camel@mtkswgap22>
-References: <cover.1496061587.git.sean.wang@mediatek.com>
-         <f5fa4a4dd78bf92500a517b0582c745569aa8ff2.1496061587.git.sean.wang@mediatek.com>
-         <4a57ab2f-03b0-3c68-23cd-ed8253978ed7@gmail.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [PATCH 2/7] clocksource: Rename CLOCKSOURCE_OF_DECLARE
+Date: Mon, 29 May 2017 11:57:25 +0200
+Message-ID: <CAK8P3a1Kv_RhKL43ie6co_N5pDXvRHd7Uq8g70qt80WkxuhzLw@mail.gmail.com>
+References: <1495879129-28109-1-git-send-email-daniel.lezcano@linaro.org>
+ <1495879129-28109-2-git-send-email-daniel.lezcano@linaro.org>
+ <CAK8P3a3QACHYqtCO1z_FpW0nXEtx356wCDha_=SNXU872=q1UQ@mail.gmail.com>
+ <20170529084809.GA2192@mai>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <4a57ab2f-03b0-3c68-23cd-ed8253978ed7-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170529084809.GA2192@mai>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "open list:RALINK MIPS ARCHITECTURE" <linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org>, Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Santosh Shilimkar <ssantosh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, "moderated list:ARM/OXNAS platform support" <linux-oxnas-Xt5XgHjqiBU06sgRBLv0+0B+6BGkLq7r@public.gmane.org>, Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ingo Molnar <mingo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "open list:ARM/STI ARCHITECTURE" <kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "moderated list:ARM/SAMSUNG EXYNOS ARM ARCHITECTURES" <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "moderated list:H8/300 ARCHITECTURE" <uclinux-h8-devel-5NWGOfrQmneRv+LV9MX5uooqe+aC9MnS@public.gmane.org>, Alexander Shiyan <shc>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2017-05-29 at 17:09 +0200, Matthias Brugger wrote:
-> 
-> On 29/05/17 14:56, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> > From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > 
-> > For more readability and maintenance, all the clock related DT
-> > nodes for mt7622 SoC are grouped into a separate DT file. And
-> > currently mt7622-clock.dtsi only includes the fixed clock for
-> > uart0 and the oscillator which would be extended after MT7622
-> > clock driver is introduced.
-> > 
-> 
-> We've not done this for any other Mediatek SoC at the moment.
-> Do you expect the m7622 to have more clock nodes then for example mt7623?
+On Mon, May 29, 2017 at 10:48 AM, Daniel Lezcano
+<daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
+> On Mon, May 29, 2017 at 10:41:52AM +0200, Arnd Bergmann wrote:
+>> On Sat, May 27, 2017 at 11:58 AM, Daniel Lezcano
+>> <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
+>> > The CLOCKSOUCE_OF_DECLARE macro is used widely for the timers to declare the
+>> > clocksource at early stage. However, this macro is also used to initialize
+>> > the clockevent if any, or the clockevent only.
+>> >
+>> > It was originally suggested to declare another macro to initialize a
+>> > clockevent, so in order to separate the two entities even they belong to the
+>> > same IP. This was not accepted because of the impact on the DT where splitting
+>> > a clocksource/clockevent definition does not make sense as it is a Linux
+>> > concept not a hardware description.
+>> >
+>> > On the other side, the clocksource has not interrupt declared while the
+>> > clockevent has, so it is easy from the driver to know if the description is
+>> > for a clockevent or a clocksource, IOW it could be implemented at the driver
+>> > level.
+>> >
+>> > So instead of dealing with a named clocksource macro, let's use a more generic
+>> > one: TIMER_OF_DECLARE.
+>> >
+>> > The patch has not functional changes.
+>> >
+>> > Signed-off-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+>>
+>> Could you either leave the old name as an alias for one release, or introduce
+>> the new name as an alias now for 4.13?
+>>
+>> I think that that would make it easier to merge new drivers. Otherwise this
+>> looks good to me,
+>
+>
+> New drivers should go through my tree, so I can catch them with the old macro
+> name and do the change.
 
+Sure, they should, and it's quite likely that you won't even need the fallback,
+I've just seen too many cases where a similar assumption turned out wrong,
+that I'd just pick the safer option just in case whenever I do an API change.
 
-clocks on mt7622 has fewer nodes than mt7623
+Things that could go wrong include:
 
-> Apart from that this clock nodes are just dummy clocks which should 
-> disappear as soon as the clock driver got merged.
-> Last point, you break bisectability if add a clock node in a patch 
-> *after* the consumer was added.
-> 
-> So please add the clock nodes to the dtsi as we did up to now. If in the 
-> future we see that mt7622 has a whole bunch of clock nodes, we can still 
-> abstract them in an external dtsi file.
-> 
+- A platform maintainer wants to add a new platform and has a for-next
+  branch that gets merged into linux-next, with parts of it going through
+  different maintainers, and now they have to choose between a branch
+  that doesn't build without the timer branch, or one that break for-next
+  unless Stephen applies a fixup
 
-Okay, I will merge back them into the main dtsi files for those reasons
-in the next version. 
+- Some architecture maintainer didn't get the memo and adds an instance of
+  CLOCKSOUCE_OF_DECLARE in architecture specific code without asking
+  having the patch reviewed first
 
+- A platform has a branch with complex cross-tree dependencies and
+  it need to get merged in an unconventional way.
 
-Appreciate all your reviewing and suggestions
+- You make a mistake and accidentally merge one driver for an unusual
+  architecture that escapes your test matrix.
 
-	Sean
+While those all are unlikely to happen in a particular merge window, they do
+happen occasionally and tend to cause a lot of pain.
 
-> Thanks,
-> Matthias
-> 
-> > Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt7622-clock.dtsi | 20 ++++++++++++++++++++
-> >   arch/arm64/boot/dts/mediatek/mt7622.dtsi       |  1 +
-> >   2 files changed, 21 insertions(+)
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt7622-clock.dtsi
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt7622-clock.dtsi b/arch/arm64/boot/dts/mediatek/mt7622-clock.dtsi
-> > new file mode 100644
-> > index 0000000..264421d
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7622-clock.dtsi
-> > @@ -0,0 +1,20 @@
-> > +/*
-> > + * Copyright (c) 2017 MediaTek Inc.
-> > + * Author: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > + *
-> > + * SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > + */
-> > +/ {
-> > +	clk25m: oscillator@0 {
-> > +		compatible = "fixed-clock";
-> > +		#clock-cells = <0>;
-> > +		clock-frequency = <25000000>;
-> > +		clock-output-names = "clkxtal";
-> > +	};
-> > +
-> > +	uart_clk: dummy26m {
-> > +		compatible = "fixed-clock";
-> > +		#clock-cells = <0>;
-> > +		clock-frequency = <25000000>;
-> > +	};
-> > +};
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> > index 3a729d9..3768c28 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> > @@ -8,6 +8,7 @@
-> >   
-> >   #include <dt-bindings/interrupt-controller/irq.h>
-> >   #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +#include "mt7622-clock.dtsi"
-> >   
-> >   / {
-> >   	compatible = "mediatek,mt7622";
-> > 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+       Arnd
