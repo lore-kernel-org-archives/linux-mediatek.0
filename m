@@ -1,122 +1,59 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 1/4] dt-bindings: mediatek: add bindings for MediaTek
- MT7622 SoC
-Date: Mon, 29 May 2017 17:11:57 +0200
-Message-ID: <63ce337b-db36-b1e2-09cd-8e29a96247f2@gmail.com>
-References: <cover.1496061587.git.sean.wang@mediatek.com>
- <9b4e201f8f9ad11be98f22ccc3022b4e5d76a681.1496061587.git.sean.wang@mediatek.com>
- <cf8fabea-8eb1-6a28-0e8e-cfc3087f5fb5@gmail.com>
+Subject: Re: [PATCH v4 3/9] arm: dts: mt7623: add mt7623-mt6323.dtsi file
+Date: Mon, 29 May 2017 17:27:45 +0200
+Message-ID: <d565b4dd-f6b7-ee43-ddfe-ae98328646ed@gmail.com>
+References: <201705281908.LU8TFOQ8%fengguang.wu@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <cf8fabea-8eb1-6a28-0e8e-cfc3087f5fb5-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <201705281908.LU8TFOQ8%fengguang.wu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
 Content-Language: en-US
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: kbuild-all-JC7UmRfGjtg@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 29/05/17 17:11, Matthias Brugger wrote:
+On 28/05/17 13:31, kbuild test robot wrote:
+> Hi John,
 > 
+> [auto build test ERROR on robh/for-next]
+> [also build test ERROR on v4.12-rc2 next-20170526]
+> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
 > 
-> On 29/05/17 14:56, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
->> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>
->> This adds dt-binding documentation for MediaTek MT7622 SoC
->> which currently only includes basic items such as ARM CPU,
->> MediaTek SYSIRQ and UART.
->>
->> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> ---
->>   
->> Documentation/devicetree/bindings/arm/mediatek.txt                    
->> | 4 ++++
->>   
->> .../devicetree/bindings/interrupt-controller/mediatek,sysirq.txt      
->> | 3 ++-
->>   
->> Documentation/devicetree/bindings/serial/mtk-uart.txt                 
->> | 1 +
->>   3 files changed, 7 insertions(+), 1 deletion(-)
->>
->> diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt 
->> b/Documentation/devicetree/bindings/arm/mediatek.txt
->> index c860b24..fc68570 100644
->> --- a/Documentation/devicetree/bindings/arm/mediatek.txt
->> +++ b/Documentation/devicetree/bindings/arm/mediatek.txt
->> @@ -12,6 +12,7 @@ compatible: Must contain one of
->>      "mediatek,mt6592"
->>      "mediatek,mt6755"
->>      "mediatek,mt6795"
->> +   "mediatek,mt7622"
->>      "mediatek,mt7623"
->>      "mediatek,mt8127"
->>      "mediatek,mt8135"
->> @@ -38,6 +39,9 @@ Supported boards:
->>   - Evaluation board for MT6795(Helio X10):
->>       Required root node properties:
->>         - compatible = "mediatek,mt6795-evb", "mediatek,mt6795";
->> +- Reference board variant 1 for MT7622:
->> +    Required root node properties:
->> +      - compatible = "mediatek,mt7622-rfb1", "mediatek,mt7622";
->>   - Evaluation board for MT7623:
->>       Required root node properties:
->>         - compatible = "mediatek,mt7623-evb", "mediatek,mt7623";
->> diff --git 
->> a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt 
->> b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt 
->>
->> index a89c03b..eda1183 100644
->> --- 
->> a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt 
->>
->> +++ 
->> b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt 
->>
->> @@ -1,4 +1,4 @@
->> -+Mediatek 65xx/67xx/81xx sysirq
->> ++Mediatek MT65xx/MT67xx/MT762x/MT81xx sysirq
->>   Mediatek SOCs sysirq support controllable irq inverter for each GIC SPI
->>   interrupt.
->> @@ -15,6 +15,7 @@ Required properties:
->>       "mediatek,mt6582-sysirq"
->>       "mediatek,mt6580-sysirq"
->>       "mediatek,mt6577-sysirq"
->> +    "mediatek,mt7622-sysirq"
->>       "mediatek,mt2701-sysirq"
-> 
-> This file is a mess and I posted some cleanups on the mailinglist. No 
-> need for you to resubmit. If the DT maintainers are fine with my 
-> cleanups, I cann change the line accordingly.
-> 
+> url:    https://github.com/0day-ci/linux/commits/sean-wang-mediatek-com/arm-dts-extend-mt7623-support/20170525-142103
+> base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
 
-I forgot:
+Mediatek dts patches should be tested against:
+https://github.com/mbgg/linux-mediatek.git for-next
 
-Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Not sure why this happend, as this got already fixed in lkp-tests:
+bc0c8847 ("mediatek: mark for-next branch")
 
-> Regards,
-> Matthias
+Regards,
+Matthias
+
+> config: arm-allyesconfig (attached as .config)
+> compiler: arm-linux-gnueabi-gcc (Debian 6.1.1-9) 6.1.1 20160705
+> reproduce:
+>          wget https://raw.githubusercontent.com/01org/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>          chmod +x ~/bin/make.cross
+>          # save the attached .config to linux build tree
+>          make.cross ARCH=arm
 > 
->>   - interrupt-controller : Identifies the node as an interrupt controller
->>   - #interrupt-cells : Use the same format as specified by GIC in 
->> arm,gic.txt.
->> diff --git a/Documentation/devicetree/bindings/serial/mtk-uart.txt 
->> b/Documentation/devicetree/bindings/serial/mtk-uart.txt
->> index 0015c72..daa1eef 100644
->> --- a/Documentation/devicetree/bindings/serial/mtk-uart.txt
->> +++ b/Documentation/devicetree/bindings/serial/mtk-uart.txt
->> @@ -8,6 +8,7 @@ Required properties:
->>     * "mediatek,mt6589-uart" for MT6589 compatible UARTS
->>     * "mediatek,mt6755-uart" for MT6755 compatible UARTS
->>     * "mediatek,mt6795-uart" for MT6795 compatible UARTS
->> +  * "mediatek,mt7622-uart" for MT7622 compatible UARTS
->>     * "mediatek,mt7623-uart" for MT7623 compatible UARTS
->>     * "mediatek,mt8127-uart" for MT8127 compatible UARTS
->>     * "mediatek,mt8135-uart" for MT8135 compatible UARTS
->>
+> All errors (new ones prefixed by >>):
+> 
+>>> Error: arch/arm/boot/dts/mt7623-mt6323.dtsi:33.1-7 Label or path pwrap not found
+>>> Error: arch/arm/boot/dts/mt7623-mt6323.dtsi:261.1-6 Label or path mmc0 not found
+>>> Error: arch/arm/boot/dts/mt7623-mt6323.dtsi:266.1-6 Label or path mmc1 not found
+>     FATAL ERROR: Syntax error parsing input tree
+> 
+> ---
+> 0-DAY kernel test infrastructure                Open Source Technology Center
+> https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+> 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
