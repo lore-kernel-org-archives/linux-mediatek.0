@@ -1,9 +1,9 @@
 From: Hirokazu Honda <hiroh@chromium.org>
-Subject: [PATCH] mtk-vcodec: Show mtk driver error without DEBUG definition
-Date: Tue, 30 May 2017 17:59:31 +0900
-Message-ID: <20170530085931.187344-1-hiroh@chromium.org>
-Return-path: <linux-media-owner@vger.kernel.org>
-Sender: linux-media-owner@vger.kernel.org
+Subject: [PATCH v2] [media] mtk-vcodec: Show mtk driver error without DEBUG definition
+Date: Tue, 30 May 2017 18:53:58 +0900
+Message-ID: <20170530095358.2685-1-hiroh@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Hirokazu Honda <hiroh@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
