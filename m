@@ -1,83 +1,71 @@
-From: YT Shen <yt.shen@mediatek.com>
-Subject: [PATCH v2 1/2] dt-bindings: arm: Add bindings for Mediatek MT2712 SoC
- Platform
-Date: Wed, 31 May 2017 19:39:32 +0800
-Message-ID: <1496230773-22633-2-git-send-email-yt.shen@mediatek.com>
-References: <1496230773-22633-1-git-send-email-yt.shen@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v4 1/2] dt-bindings: i2c: Add Mediatek MT2701 i2c binding
+Date: Wed, 31 May 2017 14:05:07 +0200
+Message-ID: <ab1e1baf-a30f-97e1-e232-d479eaf52acc@gmail.com>
+References: <1495784107-6711-1-git-send-email-jun.gao@mediatek.com>
+ <1495784107-6711-2-git-send-email-jun.gao@mediatek.com>
+ <1d073e6a-e275-24e1-7954-f1af913bd03b@gmail.com>
+ <20170530213828.pxmexdzfv6u5db6m@rob-hp-laptop>
+ <1496197469.930.17.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1496230773-22633-1-git-send-email-yt.shen@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Jason Cooper <jason@lakedaemon.net>, srv_heupstream@mediatek.com, Marc Zyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, Mars Cheng <mars.cheng@mediatek.com>, linux-serial@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, YT Shen <yt.shen@mediatek.com>, linux-mediatek@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1496197469.930.17.camel@mhfsdcap03>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds dt-binding documentation for Mediatek MT2712.
-Only include very basic items: cpu, gic and uart.
 
-Signed-off-by: YT Shen <yt.shen@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
----
- Documentation/devicetree/bindings/arm/mediatek.txt                    | 4 ++++
- .../devicetree/bindings/interrupt-controller/mediatek,sysirq.txt      | 1 +
- Documentation/devicetree/bindings/serial/mtk-uart.txt                 | 1 +
- 3 files changed, 6 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt b/Documentation/devicetree/bindings/arm/mediatek.txt
-index c860b24..3161651 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek.txt
-@@ -7,6 +7,7 @@ Required root node property:
- 
- compatible: Must contain one of
-    "mediatek,mt2701"
-+   "mediatek,mt2712"
-    "mediatek,mt6580"
-    "mediatek,mt6589"
-    "mediatek,mt6592"
-@@ -23,6 +24,9 @@ Supported boards:
- - Evaluation board for MT2701:
-     Required root node properties:
-       - compatible = "mediatek,mt2701-evb", "mediatek,mt2701";
-+- Evaluation board for MT2712:
-+    Required root node properties:
-+      - compatible = "mediatek,mt2712-evb", "mediatek,mt2712";
- - Evaluation board for MT6580:
-     Required root node properties:
-       - compatible = "mediatek,mt6580-evbp1", "mediatek,mt6580";
-diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-index a89c03b..653adb5 100644
---- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-+++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-@@ -16,6 +16,7 @@ Required properties:
- 	"mediatek,mt6580-sysirq"
- 	"mediatek,mt6577-sysirq"
- 	"mediatek,mt2701-sysirq"
-+	"mediatek,mt2712-sysirq"
- - interrupt-controller : Identifies the node as an interrupt controller
- - #interrupt-cells : Use the same format as specified by GIC in arm,gic.txt.
- - interrupt-parent: phandle of irq parent for sysirq. The parent must
-diff --git a/Documentation/devicetree/bindings/serial/mtk-uart.txt b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-index 0015c72..5f88e0d 100644
---- a/Documentation/devicetree/bindings/serial/mtk-uart.txt
-+++ b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-@@ -3,6 +3,7 @@
- Required properties:
- - compatible should contain:
-   * "mediatek,mt2701-uart" for MT2701 compatible UARTS
-+  * "mediatek,mt2712-uart" for MT2712 compatible UARTS
-   * "mediatek,mt6580-uart" for MT6580 compatible UARTS
-   * "mediatek,mt6582-uart" for MT6582 compatible UARTS
-   * "mediatek,mt6589-uart" for MT6589 compatible UARTS
--- 
-1.9.1
+On 31/05/17 04:24, Jun Gao wrote:
+> On Tue, 2017-05-30 at 16:38 -0500, Rob Herring wrote:
+>> On Mon, May 29, 2017 at 05:30:26PM +0200, Matthias Brugger wrote:
+>> g>
+>>>
+>>> On 26/05/17 09:35, Jun Gao wrote:
+>>>> From: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>>>
+>>>> Add MT2701 i2c binding to i2c-mt6577.txt and there is no need to
+>>>> modify i2c driver.
+>>>>
+>>>> Signed-off-by: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>>> ---
+>>>>    Documentation/devicetree/bindings/i2c/i2c-mt6577.txt | 11 ++++++-----
+>>>>    1 file changed, 6 insertions(+), 5 deletions(-)
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+>>>> index 0ce6fa3..52f2023 100644
+>>>> --- a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+>>>> +++ b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+>>>> @@ -4,11 +4,12 @@ The Mediatek's I2C controller is used to interface with I2C devices.
+>>>>    Required properties:
+>>>>      - compatible: value should be either of the following.
+>>>> -      (a) "mediatek,mt6577-i2c", for i2c compatible with mt6577 i2c.
+>>>> -      (b) "mediatek,mt6589-i2c", for i2c compatible with mt6589 i2c.
+>>>> -      (c) "mediatek,mt8127-i2c", for i2c compatible with mt8127 i2c.
+>>>> -      (d) "mediatek,mt8135-i2c", for i2c compatible with mt8135 i2c.
+>>>> -      (e) "mediatek,mt8173-i2c", for i2c compatible with mt8173 i2c.
+>>>> +	"mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek MT2701
+>>>
+>>> I send a cleanup patch for the file, which fixes all the other SoCs.
+>>> I can fold this one into it, a soon as I got a Signed-off from the DT
+>>> maintainers.
+>>
+>> I already acked it on the prior versions.
+>>
+>> Rob
+> 
+> Hi Matthias,
+> 
+> Which patch should I use now? Or you help to modify dt-binding, I only
+> send dtsi file patch ?  Thanks!
+> 
+
+Don't worry, I fixed the commit and took both of them.
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
