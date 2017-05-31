@@ -1,115 +1,82 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH v5 0/4] Mediatek MT2712 NAND FLASH Controller driver
-Date: Wed, 31 May 2017 16:32:29 +0200
-Message-ID: <20170531163229.50abc305@bbrezillon>
-References: <1496219201-45414-1-git-send-email-xiaolei.li@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v3 3/3] arm64: dts: mt7622: add dts file for MT7622 reference
+ board variant 1
+Date: Thu, 1 Jun 2017 01:29:01 +0800
+Message-ID: <ca25972aafe7788c98de8fa161922b691c20f109.1496250798.git.sean.wang@mediatek.com>
+References: <cover.1496250798.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1496219201-45414-1-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <cover.1496250798.git.sean.wang@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 31 May 2017 16:26:37 +0800
-Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+From: Sean Wang <sean.wang@mediatek.com>
 
-> The following patch-set adds support for Mediatek MT2712 NAND FLASH
-> Controller.
+Add the support for the MT7622 reference board variant 1 from
+MediaTek.
 
-Applied to nand/next.
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/Makefile        |  1 +
+ arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts | 27 +++++++++++++++++++++++++++
+ 2 files changed, 28 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
 
-Thanks,
-
-Boris
-
-> 
-> Changes on v5 relative to:
-> --------------------
-> 
-> tree    : https://github.com/bbrezillon/linux-0day
-> branch  : nand/next
-> commit  :
->         'commit 2b12c057cc28 ("mtd: nand: brcmnand: Check flash #WP pin
->          status before nand erase/program")'
-> 
-> Patch v5:
-> ---------
-> - rename variable j as closest_spare in function mtk_nfc_set_spare_per_sector
-> - remove unneeded parenthesis
-> - add define MTK_NFC_MIN_SPARE to check whether there is no entry that is
->   less than *sps.
-> 
-> Patch v4:
-> ---------
-> - remove spare size array sort. iterate over all entries of spare size
->   table and pick the best one.
-> 
-> Patch v3:
-> ---------
-> - separate patches into 4.
-> - rename struct mtk_ecc_devdata and struct mtk_nfc_devdata to struct
->   mtk_ecc_caps and struct mtk_nfc_caps respectively.
-> - add variables const u8 *ecc_strength and u8 num_ecc_strength into struct
->   mtk_ecc_caps, and remove u8 max_ecc_strength.
-> - rename variabl u32 temp in function mtk_ecc_probe to u32 max_eccdata_size.
-> - remove ECC_CNFG_xBIT define, use a for loop to do ecc hw configuration.
-> - remove const u32 *spare_format from struct mtk_nfc_caps, and add variables
->   u8 num_spare_size and u8 pageformat_spare_shift.
-> - remove PAGEFMT_SPARE_ define, use a for loop to do nfc hw configuration.
-> - sort spare size array before setting spare size.
-> - fix coding style issue.
-> 
-> Patch v2:
-> ---------
-> - sperate patches into 3.
-> - refine DT bindings documentation about NFC and ECC compatible.
-> - use ecc->devdata->encode_parity_reg0 and ecc->devdata->err_mask
->   directly, but hide them in define.
-> 
-> Tests:
-> ------
-> 
-> * ubifs and jffs2 are validated on NAND device MT29F16G08ADBCA
->   by 'dd' command.
-> * all drivers/mtd/tests/* pass.
-> * speed test:
->   eraseblock write speed is 8318 KiB/s
->   eraseblock read speed is 11374 KiB/s
->   page write speed is 8155 KiB/s
->   page read speed is 11290 KiB/s
->   2 page write speed is 8217 KiB/s
->   2 page read speed is 11354 KiB/s
->   erase speed is 116472 KiB/s
->   2x multi-block erase speed is 352978 KiB/s
->   4x multi-block erase speed is 359750 KiB/s
->   8x multi-block erase speed is 361484 KiB/s
->   16x multi-block erase speed is 364116 KiB/s
->   32x multi-block erase speed is 364116 KiB/s
->   64x multi-block erase speed is 364116 KiB/s
-> 
-> Xiaolei Li (4):
->   mtd: nand: mediatek: update DT bindings
->   mtd: nand: mediatek: refine register NFI_PAGEFMT setting
->   mtd: nand: mediatek: add support for different MTK NAND FLASH
->     Controller IP
->   mtd: nand: mediatek: add support for MT2712 NAND FLASH Controller
-> 
->  Documentation/devicetree/bindings/mtd/mtk-nand.txt |   5 +-
->  drivers/mtd/nand/mtk_ecc.c                         | 218 ++++++++++-----------
->  drivers/mtd/nand/mtk_ecc.h                         |   2 +-
->  drivers/mtd/nand/mtk_nand.c                        | 187 +++++++++---------
->  4 files changed, 206 insertions(+), 206 deletions(-)
-> 
-> --
-> 1.9.1
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 9fbfd32..e71456a2 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -1,5 +1,6 @@
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
+ 
+ always		:= $(dtb-y)
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+new file mode 100644
+index 0000000..c08309d
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+@@ -0,0 +1,27 @@
++/*
++ * Copyright (c) 2017 MediaTek Inc.
++ * Author: Ming Huang <ming.huang@mediatek.com>
++ *	   Sean Wang <sean.wang@mediatek.com>
++ *
++ * SPDX-License-Identifier: (GPL-2.0 OR MIT)
++ */
++
++/dts-v1/;
++#include "mt7622.dtsi"
++
++/ {
++	model = "MediaTek MT7622 RFB1 board";
++	compatible = "mediatek,mt7622-rfb1", "mediatek,mt7622";
++
++	chosen {
++		bootargs = "console=ttyS0,115200n1";
++	};
++
++	memory {
++		reg = <0 0x40000000 0 0x3F000000>;
++	};
++};
++
++&uart0 {
++	status = "okay";
++};
+-- 
+1.9.1
