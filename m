@@ -1,7 +1,8 @@
 From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v4 1/4] mtd: nand: mediatek: update DT bindings
-Date: Wed, 31 May 2017 11:37:54 +0800
-Message-ID: <1496201877-34373-2-git-send-email-xiaolei.li@mediatek.com>
+Subject: [PATCH v4 2/4] mtd: nand: mediatek: refine register NFI_PAGEFMT
+ setting
+Date: Wed, 31 May 2017 11:37:55 +0800
+Message-ID: <1496201877-34373-3-git-send-email-xiaolei.li@mediatek.com>
 References: <1496201877-34373-1-git-send-email-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,36 +22,35 @@ To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, computers
 Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add MT2712 NAND Flash Controller dt bindings documentation.
+The register NFI_PAGEFMT is always 32 bits length, so it is better to
+do register program using writel() compare with writew().
 
 Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- Documentation/devicetree/bindings/mtd/mtk-nand.txt | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/mtd/nand/mtk_nand.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/mtd/mtk-nand.txt b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-index 069c192..dbf9e05 100644
---- a/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-+++ b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-@@ -12,7 +12,8 @@ tree nodes.
+diff --git a/drivers/mtd/nand/mtk_nand.c b/drivers/mtd/nand/mtk_nand.c
+index 6c517c6..c28f4b7 100644
+--- a/drivers/mtd/nand/mtk_nand.c
++++ b/drivers/mtd/nand/mtk_nand.c
+@@ -408,7 +408,7 @@ static int mtk_nfc_hw_runtime_config(struct mtd_info *mtd)
  
- The first part of NFC is NAND Controller Interface (NFI) HW.
- Required NFI properties:
--- compatible:			Should be "mediatek,mtxxxx-nfc".
-+- compatible:			Should be one of "mediatek,mt2701-nfc",
-+				"mediatek,mt2712-nfc".
- - reg:				Base physical address and size of NFI.
- - interrupts:			Interrupts of NFI.
- - clocks:			NFI required clocks.
-@@ -141,7 +142,7 @@ Example:
- ==============
+ 	fmt |= mtk_nand->fdm.reg_size << PAGEFMT_FDM_SHIFT;
+ 	fmt |= mtk_nand->fdm.ecc_size << PAGEFMT_FDM_ECC_SHIFT;
+-	nfi_writew(nfc, fmt, NFI_PAGEFMT);
++	nfi_writel(nfc, fmt, NFI_PAGEFMT);
  
- Required BCH properties:
--- compatible:	Should be "mediatek,mtxxxx-ecc".
-+- compatible:	Should be one of "mediatek,mt2701-ecc", "mediatek,mt2712-ecc".
- - reg:		Base physical address and size of ECC.
- - interrupts:	Interrupts of ECC.
- - clocks:	ECC required clocks.
+ 	nfc->ecc_cfg.strength = chip->ecc.strength;
+ 	nfc->ecc_cfg.len = chip->ecc.size + mtk_nand->fdm.ecc_size;
+@@ -1009,7 +1009,7 @@ static inline void mtk_nfc_hw_init(struct mtk_nfc *nfc)
+ 	 * 0  : poll the status of the busy/ready signal after [7:4]*16 cycles.
+ 	 */
+ 	nfi_writew(nfc, 0xf1, NFI_CNRNB);
+-	nfi_writew(nfc, PAGEFMT_8K_16K, NFI_PAGEFMT);
++	nfi_writel(nfc, PAGEFMT_8K_16K, NFI_PAGEFMT);
+ 
+ 	mtk_nfc_hw_reset(nfc);
+ 
 -- 
 1.9.1
