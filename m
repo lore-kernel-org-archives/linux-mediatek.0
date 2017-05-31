@@ -1,74 +1,89 @@
-From: Patrice CHOTARD <patrice.chotard@st.com>
-Subject: Re: [PATCH 2/7] clocksource: Rename CLOCKSOURCE_OF_DECLARE
-Date: Wed, 31 May 2017 07:11:41 +0000
-Message-ID: <e6ebd144-414a-51da-d2b4-8d7877eb5d99@st.com>
-References: <1495879129-28109-1-git-send-email-daniel.lezcano@linaro.org>
- <1495879129-28109-2-git-send-email-daniel.lezcano@linaro.org>
+From: Ye Xiaolong <xiaolong.ye-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Subject: Re: [kbuild-all] [PATCH v4 3/9] arm: dts: mt7623: add
+ mt7623-mt6323.dtsi file
+Date: Wed, 31 May 2017 16:08:42 +0800
+Message-ID: <20170531080842.GB12568@yexl-desktop>
+References: <201705281908.LU8TFOQ8%fengguang.wu@intel.com>
+ <d565b4dd-f6b7-ee43-ddfe-ae98328646ed@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1495879129-28109-2-git-send-email-daniel.lezcano@linaro.org>
-Content-Language: en-US
-Content-ID: <267EBEA7178F2C4F80A2CFADCAB2FBA3@st.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-snps-arc>,
- <mailto:linux-snps-arc-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-snps-arc/>
-List-Post: <mailto:linux-snps-arc@lists.infradead.org>
-List-Help: <mailto:linux-snps-arc-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-snps-arc>,
- <mailto:linux-snps-arc-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-snps-arc" <linux-snps-arc-bounces@lists.infradead.org>
-Errors-To: linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, "tglx@linutronix.de" <tglx@linutronix.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, "open list:RALINK MIPS
- ARCHITECTURE" <linux-mips@linux-mips.org>, Baruch Siach <baruch@tkos.co.il>, Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <narmstrong@baylibre.com>, Linus Walleij <linus.walleij@linaro.org>, Santosh Shilimkar <ssantosh@kernel.org>, Liviu Dudau <liviu.dudau@arm.com>, "moderated
- list:ARM/OXNAS platform support" <linux-oxnas@lists.tuxfamily.org>, Eric Anholt <eric@anholt.net>, Thierry Reding <thierry.reding@gmail.com>, Ingo Molnar <mingo@kernel.org>, Alexandre Courbot <gnurou@gmail.com>, "moderated
- list:ARM/SAMSUNG EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>, Florian Fainelli <f.fainelli@gmail.com>, "moderated list:H8/300 ARCHITECTURE" <uclinux-h8-devel@lists.sourceforge.jp>, Alexander Shiyan <shc_work@mail.ru>, "open list:ARM/Rockchip
- SoC support" <linux-rockchip@lists.infradead.org>, Kevin
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <d565b4dd-f6b7-ee43-ddfe-ae98328646ed-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kbuild-all-JC7UmRfGjtg@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Daniel
+Hi, Matthias
 
-On 05/27/2017 11:58 AM, Daniel Lezcano wrote:
-> The CLOCKSOUCE_OF_DECLARE macro is used widely for the timers to declare the
-> clocksource at early stage. However, this macro is also used to initialize
-> the clockevent if any, or the clockevent only.
-> 
-> It was originally suggested to declare another macro to initialize a
-> clockevent, so in order to separate the two entities even they belong to the
-> same IP. This was not accepted because of the impact on the DT where splitting
-> a clocksource/clockevent definition does not make sense as it is a Linux
-> concept not a hardware description.
-> 
-> On the other side, the clocksource has not interrupt declared while the
-> clockevent has, so it is easy from the driver to know if the description is
-> for a clockevent or a clocksource, IOW it could be implemented at the driver
-> level.
-> 
-> So instead of dealing with a named clocksource macro, let's use a more generic
-> one: TIMER_OF_DECLARE.
-> 
-> The patch has not functional changes.
-> 
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> ---
+On 05/29, Matthias Brugger wrote:
+>
+>
+>On 28/05/17 13:31, kbuild test robot wrote:
+>>Hi John,
+>>
+>>[auto build test ERROR on robh/for-next]
+>>[also build test ERROR on v4.12-rc2 next-20170526]
+>>[if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+>>
+>>url:    https://github.com/0day-ci/linux/commits/sean-wang-mediatek-com/arm-dts-extend-mt7623-support/20170525-142103
+>>base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+>
+>Mediatek dts patches should be tested against:
+>https://github.com/mbgg/linux-mediatek.git for-next
+>
+>Not sure why this happend, as this got already fixed in lkp-tests:
+>bc0c8847 ("mediatek: mark for-next branch")
 
-[...]
+0day mainly relies on MAINTAINERS file to determine the git am base for lkml
+patches, could you help add your tree in below section?
 
-> diff --git a/drivers/clocksource/clksrc_st_lpc.c b/drivers/clocksource/clksrc_st_lpc.c
-> index 03cc492..a1d01eb 100644
-> --- a/drivers/clocksource/clksrc_st_lpc.c
-> +++ b/drivers/clocksource/clksrc_st_lpc.c
-> @@ -132,4 +132,4 @@ static int __init st_clksrc_of_register(struct device_node *np)
->   
->   	return ret;
->   }
-> -CLOCKSOURCE_OF_DECLARE(ddata, "st,stih407-lpc", st_clksrc_of_register);
-> +TIMER_OF_DECLARE(ddata, "st,stih407-lpc", st_clksrc_of_register);
+ARM/Mediatek SoC support
+M:      Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+L:      linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org (moderated for non-subscribers)
+L:      linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org (moderated for non-subscribers)
+S:      Maintained
+F:      arch/arm/boot/dts/mt6*
+F:      arch/arm/boot/dts/mt7*
+F:      arch/arm/boot/dts/mt8*
+F:      arch/arm/mach-mediatek/
+F:      arch/arm64/boot/dts/mediatek/
+N:      mtk
+K:      mediatek
 
-For the STi driver:
 
-Acked-by: Patrice Chotard <patrice.chotard@st.com>
+Thanks,
+Xiaolong
 
-Thanks
+>
+>Regards,
+>Matthias
+>
+>>config: arm-allyesconfig (attached as .config)
+>>compiler: arm-linux-gnueabi-gcc (Debian 6.1.1-9) 6.1.1 20160705
+>>reproduce:
+>>         wget https://raw.githubusercontent.com/01org/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>>         chmod +x ~/bin/make.cross
+>>         # save the attached .config to linux build tree
+>>         make.cross ARCH=arm
+>>
+>>All errors (new ones prefixed by >>):
+>>
+>>>>Error: arch/arm/boot/dts/mt7623-mt6323.dtsi:33.1-7 Label or path pwrap not found
+>>>>Error: arch/arm/boot/dts/mt7623-mt6323.dtsi:261.1-6 Label or path mmc0 not found
+>>>>Error: arch/arm/boot/dts/mt7623-mt6323.dtsi:266.1-6 Label or path mmc1 not found
+>>    FATAL ERROR: Syntax error parsing input tree
+>>
+>>---
+>>0-DAY kernel test infrastructure                Open Source Technology Center
+>>https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+>>
+>_______________________________________________
+>kbuild-all mailing list
+>kbuild-all-hn68Rpc1hR1g9hUCZPvPmw@public.gmane.org
+>https://lists.01.org/mailman/listinfo/kbuild-all
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
