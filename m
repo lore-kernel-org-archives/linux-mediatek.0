@@ -1,59 +1,112 @@
-From: Jun Gao <jun.gao@mediatek.com>
-Subject: Re: [PATCH v4 1/2] dt-bindings: i2c: Add Mediatek MT2701 i2c binding
-Date: Wed, 31 May 2017 10:24:29 +0800
-Message-ID: <1496197469.930.17.camel@mhfsdcap03>
-References: <1495784107-6711-1-git-send-email-jun.gao@mediatek.com>
-         <1495784107-6711-2-git-send-email-jun.gao@mediatek.com>
-         <1d073e6a-e275-24e1-7954-f1af913bd03b@gmail.com>
-         <20170530213828.pxmexdzfv6u5db6m@rob-hp-laptop>
+From: xiaolei li <xiaolei.li@mediatek.com>
+Subject: Re: [PATCH v3 3/4] mtd: nand: mediatek: add support for different
+ MTK NAND FLASH Controller IP
+Date: Wed, 31 May 2017 11:15:31 +0800
+Message-ID: <1496200531.492.0.camel@mhfsdcap03>
+References: <1494851979-14416-1-git-send-email-xiaolei.li@mediatek.com>
+ <1494851979-14416-4-git-send-email-xiaolei.li@mediatek.com>
+ <20170529184842.06ec8275@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170530213828.pxmexdzfv6u5db6m@rob-hp-laptop>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
-Cc: Wolfram Sang <wsa@the-dreams.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+In-Reply-To: <20170529184842.06ec8275@bbrezillon>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
+To: Boris Brezillon <boris.brezillon@free-electrons.com>
+Cc: srv_heupstream@mediatek.com, yt.shen@mediatek.com, robh+dt@kernel.org, linux-mtd@lists.infradead.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, computersforpeace@gmail.com, dwmw2@infradead.org, rogercc.lin@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-05-30 at 16:38 -0500, Rob Herring wrote:
-> On Mon, May 29, 2017 at 05:30:26PM +0200, Matthias Brugger wrote:
-> g> 
-> > 
-> > On 26/05/17 09:35, Jun Gao wrote:
-> > > From: Jun Gao <jun.gao@mediatek.com>
-> > > 
-> > > Add MT2701 i2c binding to i2c-mt6577.txt and there is no need to
-> > > modify i2c driver.
-> > > 
-> > > Signed-off-by: Jun Gao <jun.gao@mediatek.com>
-> > > ---
-> > >   Documentation/devicetree/bindings/i2c/i2c-mt6577.txt | 11 ++++++-----
-> > >   1 file changed, 6 insertions(+), 5 deletions(-)
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
-> > > index 0ce6fa3..52f2023 100644
-> > > --- a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
-> > > +++ b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
-> > > @@ -4,11 +4,12 @@ The Mediatek's I2C controller is used to interface with I2C devices.
-> > >   Required properties:
-> > >     - compatible: value should be either of the following.
-> > > -      (a) "mediatek,mt6577-i2c", for i2c compatible with mt6577 i2c.
-> > > -      (b) "mediatek,mt6589-i2c", for i2c compatible with mt6589 i2c.
-> > > -      (c) "mediatek,mt8127-i2c", for i2c compatible with mt8127 i2c.
-> > > -      (d) "mediatek,mt8135-i2c", for i2c compatible with mt8135 i2c.
-> > > -      (e) "mediatek,mt8173-i2c", for i2c compatible with mt8173 i2c.
-> > > +	"mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek MT2701
-> > 
-> > I send a cleanup patch for the file, which fixes all the other SoCs.
-> > I can fold this one into it, a soon as I got a Signed-off from the DT
-> > maintainers.
-> 
-> I already acked it on the prior versions.
-> 
-> Rob
+Hi Boris,
 
-Hi Matthias,
+On Mon, 2017-05-29 at 18:48 +0200, Boris Brezillon wrote:
+> Hi Xiaolei,
+> 
+> On Mon, 15 May 2017 20:39:38 +0800
+> Xiaolei Li <xiaolei.li@mediatek.com> wrote:
+> 
+> > ECC strength and spare size supported may be different among MTK NAND
+> > FLASH Controller IPs.
+> > 
+> > This patch contains changes as following:
+> > (1) add new struct mtk_nfc_caps to support different spare size.
+> > (2) add new struct mtk_ecc_caps to support different ecc strength.
+> > (3) remove ECC_CNFG_xBIT define, use a for loop to do ecc strength config.
+> > (4) remove PAGEFMT_SPARE_ define, use a for loop to do spare format config.
+> > (5) malloc ecc->eccdata buffer according to max ecc strength of this IP.
+> > 
+> > Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
+> > ---
+> >  drivers/mtd/nand/mtk_ecc.c  | 181 ++++++++++++++++++--------------------------
+> >  drivers/mtd/nand/mtk_ecc.h  |   2 +-
+> >  drivers/mtd/nand/mtk_nand.c | 175 +++++++++++++++++++++---------------------
+> >  3 files changed, 166 insertions(+), 192 deletions(-)
+> > 
+> > diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
+> > index dbf2562..ae51303 100644
+> > --- a/drivers/mtd/nand/mtk_ecc.c
+> > +++ b/drivers/mtd/nand/mtk_ecc.c
+> > @@ -33,26 +33,6 @@
+> 
+> [...]
+> 
+> > -static void mtk_nfc_set_spare_per_sector(u32 *sps, struct mtd_info *mtd)
+> > +static int cmp_map(const void *m0, const void *m1)
+> > +{
+> > +	return *(u8 *)m0 > *(u8 *)m1 ? 1 : -1;
+> > +}
+> > +
+> > +static int mtk_nfc_set_spare_per_sector(u32 *sps, struct mtd_info *mtd)
+> >  {
+> >  	struct nand_chip *nand = mtd_to_nand(mtd);
+> > -	u32 spare[] = {16, 26, 27, 28, 32, 36, 40, 44,
+> > -			48, 49, 50, 51, 52, 62, 63, 64};
+> > +	struct mtk_nfc *nfc = nand_get_controller_data(nand);
+> > +	u8 *spare;
+> >  	u32 eccsteps, i;
+> >  
+> > +	spare = vmalloc(nfc->caps->num_spare_size);
+> > +	if (!spare)
+> > +		return -ENOMEM;
+> > +
+> > +	memcpy(spare, nfc->caps->spare_size, nfc->caps->num_spare_size);
+> > +
+> > +	/*
+> > +	 * Spare size array of some IP may be not sorted, because the spare
+> > +	 * size does not always increase as the spare size bitfiled value of
+> > +	 * register NFI_PAGEFMT. So, sort it here.
+> > +	 */
+> > +	sort(spare, nfc->caps->num_spare_size, sizeof(u8), cmp_map, NULL);
+> > +
+> 
+> Let's avoid this dup+sort dance. If it's not sorted, we'd better
+> iterate over all entries of the table and pick the best one (the array
+> is rather small, so it shouldn't be a problem).
+> 
+OK. will remove sort next version.
 
-Which patch should I use now? Or you help to modify dt-binding, I only
-send dtsi file patch ?  Thanks!
+> >  	eccsteps = mtd->writesize / nand->ecc.size;
+> >  	*sps = mtd->oobsize / eccsteps;
+> >  
+> >  	if (nand->ecc.size == 1024)
+> >  		*sps >>= 1;
+> >  
+> > -	for (i = 0; i < ARRAY_SIZE(spare); i++) {
+> > +	for (i = 0; i < nfc->caps->num_spare_size; i++) {
+> >  		if (*sps <= spare[i]) {
+> >  			if (!i)
+> >  				*sps = spare[i];
+> 
+
+
+
+______________________________________________________
+Linux MTD discussion mailing list
+http://lists.infradead.org/mailman/listinfo/linux-mtd/
