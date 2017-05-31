@@ -1,70 +1,74 @@
-From: xiaolei li <xiaolei.li@mediatek.com>
-Subject: Re: [PATCH v4 3/4] mtd: nand: mediatek: add support for different
- MTK NAND FLASH Controller IP
-Date: Wed, 31 May 2017 14:52:41 +0800
-Message-ID: <1496213561.492.12.camel@mhfsdcap03>
-References: <1496201877-34373-1-git-send-email-xiaolei.li@mediatek.com>
- <1496201877-34373-4-git-send-email-xiaolei.li@mediatek.com>
- <20170531081241.2137fe38@bbrezillon>
+From: Patrice CHOTARD <patrice.chotard@st.com>
+Subject: Re: [PATCH 2/7] clocksource: Rename CLOCKSOURCE_OF_DECLARE
+Date: Wed, 31 May 2017 07:11:41 +0000
+Message-ID: <e6ebd144-414a-51da-d2b4-8d7877eb5d99@st.com>
+References: <1495879129-28109-1-git-send-email-daniel.lezcano@linaro.org>
+ <1495879129-28109-2-git-send-email-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
-In-Reply-To: <20170531081241.2137fe38@bbrezillon>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
-List-Post: <mailto:linux-mtd@lists.infradead.org>
-List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
-Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
-To: Boris Brezillon <boris.brezillon@free-electrons.com>
-Cc: srv_heupstream@mediatek.com, yt.shen@mediatek.com, robh+dt@kernel.org, linux-mtd@lists.infradead.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, computersforpeace@gmail.com, dwmw2@infradead.org, rogercc.lin@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1495879129-28109-2-git-send-email-daniel.lezcano@linaro.org>
+Content-Language: en-US
+Content-ID: <267EBEA7178F2C4F80A2CFADCAB2FBA3@st.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-snps-arc>,
+ <mailto:linux-snps-arc-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-snps-arc/>
+List-Post: <mailto:linux-snps-arc@lists.infradead.org>
+List-Help: <mailto:linux-snps-arc-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-snps-arc>,
+ <mailto:linux-snps-arc-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-snps-arc" <linux-snps-arc-bounces@lists.infradead.org>
+Errors-To: linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, "tglx@linutronix.de" <tglx@linutronix.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, "open list:RALINK MIPS
+ ARCHITECTURE" <linux-mips@linux-mips.org>, Baruch Siach <baruch@tkos.co.il>, Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <narmstrong@baylibre.com>, Linus Walleij <linus.walleij@linaro.org>, Santosh Shilimkar <ssantosh@kernel.org>, Liviu Dudau <liviu.dudau@arm.com>, "moderated
+ list:ARM/OXNAS platform support" <linux-oxnas@lists.tuxfamily.org>, Eric Anholt <eric@anholt.net>, Thierry Reding <thierry.reding@gmail.com>, Ingo Molnar <mingo@kernel.org>, Alexandre Courbot <gnurou@gmail.com>, "moderated
+ list:ARM/SAMSUNG EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>, Florian Fainelli <f.fainelli@gmail.com>, "moderated list:H8/300 ARCHITECTURE" <uclinux-h8-devel@lists.sourceforge.jp>, Alexander Shiyan <shc_work@mail.ru>, "open list:ARM/Rockchip
+ SoC support" <linux-rockchip@lists.infradead.org>, Kevin
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgQm9yaXMsCgpPbiBXZWQsIDIwMTctMDUtMzEgYXQgMDg6MTIgKzAyMDAsIEJvcmlzIEJyZXpp
-bGxvbiB3cm90ZToKPiBMZSBXZWQsIDMxIE1heSAyMDE3IDExOjM3OjU2ICswODAwLAo+IFhpYW9s
-ZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPiBhIMOpY3JpdCA6Cj4gCj4gPiAgCj4gPiAt
-c3RhdGljIHZvaWQgbXRrX25mY19zZXRfc3BhcmVfcGVyX3NlY3Rvcih1MzIgKnNwcywgc3RydWN0
-IG10ZF9pbmZvICptdGQpCj4gPiArc3RhdGljIGludCBtdGtfbmZjX3NldF9zcGFyZV9wZXJfc2Vj
-dG9yKHUzMiAqc3BzLCBzdHJ1Y3QgbXRkX2luZm8gKm10ZCkKPiAKPiBXaHkgZG8geW91IGNoYW5n
-ZSB0aGUgcHJvdG90eXBlIGhlcmU/IFlvdSBzZWVtIHRvIGFsd2F5cyByZXR1cm4gMAo+IGFueXdh
-eS4KPiAKU29ycnksIGl0IHNob3VsZCBiZSB2b2lkLgoKQnV0IGFzIHlvdXIgc3VnZ2VzdGlvbiBi
-ZWxvdywgSSB3aWxsIGtlZXAgdXNpbmcgaW50IGhlcmUgdG8gcmV0dXJuIGVycm9yCmlmIHRoZXJl
-IGlzIG5vIGVudHJ5IHRoYXQgaXMgbGVzcyB0aGFuICpzcHMuCgo+ID4gIHsKPiA+ICAJc3RydWN0
-IG5hbmRfY2hpcCAqbmFuZCA9IG10ZF90b19uYW5kKG10ZCk7Cj4gPiAtCXUzMiBzcGFyZVtdID0g
-ezE2LCAyNiwgMjcsIDI4LCAzMiwgMzYsIDQwLCA0NCwKPiA+IC0JCQk0OCwgNDksIDUwLCA1MSwg
-NTIsIDYyLCA2MywgNjR9Owo+ID4gLQl1MzIgZWNjc3RlcHMsIGk7Cj4gPiArCXN0cnVjdCBtdGtf
-bmZjICpuZmMgPSBuYW5kX2dldF9jb250cm9sbGVyX2RhdGEobmFuZCk7Cj4gPiArCWNvbnN0IHU4
-ICpzcGFyZSA9IG5mYy0+Y2Fwcy0+c3BhcmVfc2l6ZTsKPiA+ICsJdTMyIGVjY3N0ZXBzLCBpLCBq
-ID0gMDsKPiAKPiBDYW4gd2UgcmVuYW1lICdqJyBpbnRvICdjbG9zZXN0X3NwYXJlJz8KPiAKb2su
-Cgo+ID4gIAo+ID4gIAllY2NzdGVwcyA9IG10ZC0+d3JpdGVzaXplIC8gbmFuZC0+ZWNjLnNpemU7
-Cj4gPiAgCSpzcHMgPSBtdGQtPm9vYnNpemUgLyBlY2NzdGVwczsKPiA+IEBAIC0xMTQ0LDI4ICsx
-MTAyLDI4IEBAIHN0YXRpYyB2b2lkIG10a19uZmNfc2V0X3NwYXJlX3Blcl9zZWN0b3IodTMyICpz
-cHMsIHN0cnVjdCBtdGRfaW5mbyAqbXRkKQo+ID4gIAlpZiAobmFuZC0+ZWNjLnNpemUgPT0gMTAy
-NCkKPiA+ICAJCSpzcHMgPj49IDE7Cj4gPiAgCj4gPiAtCWZvciAoaSA9IDA7IGkgPCBBUlJBWV9T
-SVpFKHNwYXJlKTsgaSsrKSB7Cj4gPiAtCQlpZiAoKnNwcyA8PSBzcGFyZVtpXSkgewo+ID4gLQkJ
-CWlmICghaSkKPiA+IC0JCQkJKnNwcyA9IHNwYXJlW2ldOwo+ID4gLQkJCWVsc2UgaWYgKCpzcHMg
-IT0gc3BhcmVbaV0pCj4gPiAtCQkJCSpzcHMgPSBzcGFyZVtpIC0gMV07Cj4gPiAtCQkJYnJlYWs7
-Cj4gPiArCWZvciAoaSA9IDA7IGkgPCBuZmMtPmNhcHMtPm51bV9zcGFyZV9zaXplOyBpKyspIHsK
-PiA+ICsJCWlmICgoKnNwcyA+PSBzcGFyZVtpXSkgJiYgKHNwYXJlW2ldID49IHNwYXJlW2pdKSkg
-ewo+IAo+IFBhcmVudGhlc2lzIGFyb3VuZCB0aGUgJ2EgPj0gYicgdGVzdHMgYXJlIHVubmVlZGVk
-Ogo+IAo+IAkJaWYgKCpzcHMgPj0gc3BhcmVbaV0gJiYgc3BhcmVbaV0gPj0gc3BhcmVbal0pIHsK
-PiAKb2suCgo+ID4gKwkJCWogPSBpOwo+ID4gKwkJCWlmICgqc3BzID09IHNwYXJlW2ldKQo+ID4g
-KwkJCQlicmVhazsKPiA+ICAJCX0KPiA+ICAJfQo+ID4gIAo+ID4gLQlpZiAoaSA+PSBBUlJBWV9T
-SVpFKHNwYXJlKSkKPiA+IC0JCSpzcHMgPSBzcGFyZVtBUlJBWV9TSVpFKHNwYXJlKSAtIDFdOwo+
-IAo+IE1heWJlIHlvdSBjb3VsZCByZXR1cm4gYW4gZXJyb3IgaWYgeW91IGRpZG4ndCBmaW5kIGFu
-eSBlbnRyeSB0aGF0IGlzCj4gbGVzcyB0aGF0ICpzcHMgaW4gdGhlIHRhYmxlLCBidXQgSSdtIG5v
-dCBzdXJlIHRoaXMgY2FuIHJlYWxseSBoYXBwZW4sCj4gYW5kIHRoZSBtaW5pbXVtIHNwYXJlIHNp
-emUgc2VlbXMgdG8gYmUgdGhlIHNhbWUgZm9yIGFsbCBJUHMsIHRoaXMgaXMKPiBzb21ldGhpbmcg
-eW91IGNhbiBjaGVjayBiZWZvcmUgaXRlcmF0aW5nIG92ZXIgdGhlIGFycmF5Ogo+IAo+IAlpZiAo
-KnNwcyA8IE1US19ORkNfTUlOX1NQQVJFKQo+IAkJcmV0dXJuIC1FSU5WQUw7Cj4gCk9LLiBJdCBz
-ZWVtcyBiZXR0ZXIgdG8gY2hlY2sgd2hldGhlciB0aGVyZSBpcyBubyBlbnRyeSB0aGF0IGlzIGxl
-c3MgdGhhbgoqc3BzLgpXaWxsIGFkZCBNVEtfTkZDX01JTl9TUEFSRSBhbmQgY2hlY2sgaXQuCgo+
-ID4gKwkqc3BzID0gc3BhcmVbal07Cj4gPiAgCj4gPiAgCWlmIChuYW5kLT5lY2Muc2l6ZSA9PSAx
-MDI0KQo+ID4gIAkJKnNwcyA8PD0gMTsKPiA+ICsKPiA+ICsJcmV0dXJuIDA7Cj4gPiAgfQoKVGhh
-bmtzLgpYaWFvbGVpCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4IE1URCBkaXNjdXNzaW9uIG1haWxpbmcgbGlzdApodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW10ZC8K
+Hi Daniel
+
+On 05/27/2017 11:58 AM, Daniel Lezcano wrote:
+> The CLOCKSOUCE_OF_DECLARE macro is used widely for the timers to declare the
+> clocksource at early stage. However, this macro is also used to initialize
+> the clockevent if any, or the clockevent only.
+> 
+> It was originally suggested to declare another macro to initialize a
+> clockevent, so in order to separate the two entities even they belong to the
+> same IP. This was not accepted because of the impact on the DT where splitting
+> a clocksource/clockevent definition does not make sense as it is a Linux
+> concept not a hardware description.
+> 
+> On the other side, the clocksource has not interrupt declared while the
+> clockevent has, so it is easy from the driver to know if the description is
+> for a clockevent or a clocksource, IOW it could be implemented at the driver
+> level.
+> 
+> So instead of dealing with a named clocksource macro, let's use a more generic
+> one: TIMER_OF_DECLARE.
+> 
+> The patch has not functional changes.
+> 
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> ---
+
+[...]
+
+> diff --git a/drivers/clocksource/clksrc_st_lpc.c b/drivers/clocksource/clksrc_st_lpc.c
+> index 03cc492..a1d01eb 100644
+> --- a/drivers/clocksource/clksrc_st_lpc.c
+> +++ b/drivers/clocksource/clksrc_st_lpc.c
+> @@ -132,4 +132,4 @@ static int __init st_clksrc_of_register(struct device_node *np)
+>   
+>   	return ret;
+>   }
+> -CLOCKSOURCE_OF_DECLARE(ddata, "st,stih407-lpc", st_clksrc_of_register);
+> +TIMER_OF_DECLARE(ddata, "st,stih407-lpc", st_clksrc_of_register);
+
+For the STi driver:
+
+Acked-by: Patrice Chotard <patrice.chotard@st.com>
+
+Thanks
