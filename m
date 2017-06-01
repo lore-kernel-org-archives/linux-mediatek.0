@@ -1,7 +1,7 @@
 From: Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2] arm: dts: mediatek: Add audio driver node for MT2701
-Date: Thu, 1 Jun 2017 13:18:36 +0800
-Message-ID: <1496294316-27520-1-git-send-email-garlic.tseng@mediatek.com>
+Subject: [PATCH v3] arm: dts: mediatek: Add audio driver node for MT2701
+Date: Thu, 1 Jun 2017 13:42:10 +0800
+Message-ID: <1496295730-24766-1-git-send-email-garlic.tseng@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
@@ -11,6 +11,7 @@ Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUp
 List-Id: linux-mediatek@lists.infradead.org
 
 Add audio driver node for mt2701
+(fix intend problem in version 2)
 
 Signed-off-by: Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
@@ -19,7 +20,7 @@ Signed-off-by: Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.or
  2 files changed, 163 insertions(+)
 
 diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
-index 98bf12c..6c458f1 100644
+index 98bf12c..f484973 100644
 --- a/arch/arm/boot/dts/mt2701-evb.dts
 +++ b/arch/arm/boot/dts/mt2701-evb.dts
 @@ -22,6 +22,40 @@
@@ -27,7 +28,7 @@ index 98bf12c..6c458f1 100644
  		reg = <0 0x80000000 0 0x40000000>;
  	};
 +
-+		sound:sound {
++	sound:sound {
 +		compatible = "mediatek,mt2701-cs42448-machine";
 +		mediatek,platform = <&afe>;
 +		/* CS42448 Machine name */
