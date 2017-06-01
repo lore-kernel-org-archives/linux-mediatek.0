@@ -1,31 +1,28 @@
 From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH 2/2] crypto: mediatek - update DT binding documentation
-Date: Thu, 1 Jun 2017 09:04:38 +0800
-Message-ID: <1496279078.31264.2.camel@mtkswgap22>
-References: <1495791789-19230-1-git-send-email-ryder.lee@mediatek.com>
-         <1495791789-19230-2-git-send-email-ryder.lee@mediatek.com>
-         <20170531184620.io3nohu3f4hhkpwz@rob-hp-laptop>
+Subject: [PATCH v1 0/2] remove mediatek ethif clock in crypto driver
+Date: Thu, 1 Jun 2017 10:30:20 +0800
+Message-ID: <1496284222-12560-1-git-send-email-ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <20170531184620.io3nohu3f4hhkpwz@rob-hp-laptop>
 Sender: linux-crypto-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Herbert Xu <herbert@gondor.apana.org.au>, devicetree@vger.kernel.org, linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-05-31 at 13:46 -0500, Rob Herring wrote:
-> On Fri, May 26, 2017 at 05:43:09PM +0800, Ryder Lee wrote:
-> > This patch removes unnecessary clock in binding file.
-> 
-> Why is the clock unnecessary? A h/w block either has a clock or doesn't.
-> 
-> The subject needs some work. Perhaps "dt-bindings: crypto: remove 
-> mediatek ethif clock".
-> 
-> Rob
+This patch series only remove redundant clock setting in mediatek crypto driver.
 
-I'll write more clearly, thanks.
+Changes since v1:
+-rework the commit message.
 
-Ryder.
+Ryder Lee (2):
+  crypto: mediatek - remove redundant clock setting
+  dt-bindings: crypto: remove mediatek ethif clock
+
+ Documentation/devicetree/bindings/crypto/mediatek-crypto.txt |  8 +++-----
+ drivers/crypto/mediatek/mtk-platform.c                       | 10 +---------
+ drivers/crypto/mediatek/mtk-platform.h                       |  2 --
+ 3 files changed, 4 insertions(+), 16 deletions(-)
+
+-- 
+1.9.1
