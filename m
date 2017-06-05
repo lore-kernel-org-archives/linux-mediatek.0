@@ -1,44 +1,51 @@
-From: Daniel Golle <daniel-g5gK2j5usbvCyp4qypjU+w@public.gmane.org>
-Subject: [PATCH] MIPS: pci-mt7620: enabled PCIe on MT7688
-Date: Sat, 3 Jun 2017 20:20:14 +0200
-Message-ID: <20170603181807.GA27284@makrotopia.org>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] PCI: mediatek: fix error handling in mtk_pcie_parse_and_add_res()
+Date: Mon, 5 Jun 2017 14:27:58 +0800
+Message-ID: <1496644078-27122-1-git-send-email-ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-Cc: Wei Yongjun <yongjun_wei-zrsr2BFq86L20UzCJQGyNP8+0UxHXcjY@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ralf Baechle <ralf-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Use PCIe support for MT7628AN also on MT7688.
-Tested on WRTNODE2R.
+The 'linkup' variable would always increment by one whether the link
+status is true or not. Therefore, this patch fixes the return value in
+mtk_pcie_parse_and_add_res() and removes unnecessary 'linkup' variable.
 
-Signed-off-by: Daniel Golle <daniel-g5gK2j5usbvCyp4qypjU+w@public.gmane.org>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- arch/mips/pci/pci-mt7620.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/pci/host/pcie-mediatek.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/arch/mips/pci/pci-mt7620.c b/arch/mips/pci/pci-mt7620.c
-index 628c5132b3d8..cd8e2b87efd5 100644
---- a/arch/mips/pci/pci-mt7620.c
-+++ b/arch/mips/pci/pci-mt7620.c
-@@ -316,6 +316,7 @@ static int mt7620_pci_probe(struct platform_device *pdev)
- 		break;
+diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+index 8ec8fa8..3baafa8 100644
+--- a/drivers/pci/host/pcie-mediatek.c
++++ b/drivers/pci/host/pcie-mediatek.c
+@@ -373,7 +373,7 @@ static int mtk_pcie_parse_and_add_res(struct mtk_pcie *pcie)
+ 	struct of_pci_range_parser parser;
+ 	struct of_pci_range range;
+ 	struct resource res;
+-	int err, linkup = 0;
++	int err;
  
- 	case MT762X_SOC_MT7628AN:
-+	case MT762X_SOC_MT7688:
- 		if (mt7628_pci_hw_init(pdev))
- 			return -1;
- 		break;
+ 	/* parse shared resources */
+ 	err = mtk_pcie_handle_shared_resource(pcie);
+@@ -444,11 +444,11 @@ static int mtk_pcie_parse_and_add_res(struct mtk_pcie *pcie)
+ 
+ 		/* enable each port, and then check link status */
+ 		err = mtk_pcie_enable_ports(port);
+-		if (!err)
+-			linkup++;
++		if (err)
++			return err;
+ 	}
+ 
+-	return !linkup;
++	return 0;
+ }
+ 
+ static int mtk_pcie_request_resources(struct mtk_pcie *pcie)
 -- 
-2.13.0
+1.9.1
