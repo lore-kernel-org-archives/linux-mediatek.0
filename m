@@ -1,64 +1,68 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v4 1/4] mtd: nand: mediatek: update DT bindings
-Date: Tue, 6 Jun 2017 12:55:48 +0200
-Message-ID: <e9286a90-8829-8b37-476a-ac8bd057d341@gmail.com>
-References: <1496201877-34373-1-git-send-email-xiaolei.li@mediatek.com>
- <1496201877-34373-2-git-send-email-xiaolei.li@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 1/4] dt-bindings: rng: add generic bindings for MediaTek
+ SoCs
+Date: Tue, 6 Jun 2017 13:07:44 +0200
+Message-ID: <9eb87222-ca89-0abb-4532-3887008f6e7a@gmail.com>
+References: <cover.1496255334.git.sean.wang@mediatek.com>
+ <1d9c981e1b45bf2f04732a02d90e6857cc203ce5.1496255334.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1496201877-34373-2-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1d9c981e1b45bf2f04732a02d90e6857cc203ce5.1496255334.git.sean.wang@mediatek.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com, herbert@gondor.apana.org.au, mpm@selenic.com, robh+dt@kernel.org, mark.rutland@arm.com, clabbe.montjoie@gmail.com, prasannatsmkumar@gmail.com, romain.perier@free-electrons.com, shannon.nelson@oracle.com
+Cc: devicetree@vger.kernel.org, keyhaede@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-crypto@vger.kernel.org, weiyongjun1@huawei.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 31/05/17 05:37, Xiaolei Li wrote:
-> Add MT2712 NAND Flash Controller dt bindings documentation.
+On 31/05/17 20:44, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Add the generic binding for allowing the support of RNG on MediaTek SoCs
+> such as MT7622.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
-
-Subject line should be something like;
-dt-bindings: mtd: Update mediatek bindings.
-
->   Documentation/devicetree/bindings/mtd/mtk-nand.txt | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
+>   Documentation/devicetree/bindings/rng/mtk-rng.txt | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/mtd/mtk-nand.txt b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> index 069c192..dbf9e05 100644
-> --- a/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> +++ b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> @@ -12,7 +12,8 @@ tree nodes.
+> diff --git a/Documentation/devicetree/bindings/rng/mtk-rng.txt b/Documentation/devicetree/bindings/rng/mtk-rng.txt
+> index a6d62a2..0772913 100644
+> --- a/Documentation/devicetree/bindings/rng/mtk-rng.txt
+> +++ b/Documentation/devicetree/bindings/rng/mtk-rng.txt
+> @@ -2,7 +2,8 @@ Device-Tree bindings for Mediatek random number generator
+>   found in Mediatek SoC family
 >   
->   The first part of NFC is NAND Controller Interface (NFI) HW.
->   Required NFI properties:
-> -- compatible:			Should be "mediatek,mtxxxx-nfc".
-> +- compatible:			Should be one of "mediatek,mt2701-nfc",
-> +				"mediatek,mt2712-nfc".
->   - reg:				Base physical address and size of NFI.
->   - interrupts:			Interrupts of NFI.
->   - clocks:			NFI required clocks.
-> @@ -141,7 +142,7 @@ Example:
->   ==============
->   
->   Required BCH properties:
-> -- compatible:	Should be "mediatek,mtxxxx-ecc".
-> +- compatible:	Should be one of "mediatek,mt2701-ecc", "mediatek,mt2712-ecc".
->   - reg:		Base physical address and size of ECC.
->   - interrupts:	Interrupts of ECC.
->   - clocks:	ECC required clocks.
+>   Required properties:
+> -- compatible	    : Should be "mediatek,mt7623-rng"
+> +- compatible	    : Should be "mediatek,generic-rng" or
+> +				"mediatek,mt7623-rng".
+
+What does generic-rng mean. Is it for all mt7xxx, or also for mt6xxx and 
+mt8xxx based SoCs? I think we should stick with SoC specific bindings, 
+as we don't know if Mediatek won't publish a new IP block next year 
+which is differnet.
+
+Just in case we should add a binding for the actual SoC + a fallback. 
+For example.
+- compatible " Should be
+	"mediatek,mt7622-rng", 	"mediatek,mt7623-rng" for SoC mt7622
+	"mediatek,mt7623-rng" for SoC mt7623
+
+This will also eliminate the need of adding mt6722-rng to the driver, as 
+it will use mt7623-rng as fallback. If in the future we realize that 
+mt7622-rng has a extra feature/bug, we can still work around it, without 
+breaking the bindings.
+
+Makes sense?
+
+Regards,
+Matthias
+
+>   - clocks	    : list of clock specifiers, corresponding to
+>   		      entries in clock-names property;
+>   - clock-names	    : Should contain "rng" entries;
 > 
