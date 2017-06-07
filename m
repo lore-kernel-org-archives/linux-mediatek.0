@@ -1,51 +1,79 @@
-From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v4 1/4] mtd: nand: mediatek: update DT bindings
-Date: Wed, 7 Jun 2017 15:37:41 +0800
-Message-ID: <1496821061.28992.2.camel@mhfsdcap03>
-References: <1496201877-34373-1-git-send-email-xiaolei.li@mediatek.com>
- <1496201877-34373-2-git-send-email-xiaolei.li@mediatek.com>
- <e9286a90-8829-8b37-476a-ac8bd057d341@gmail.com>
- <1496820297.28992.1.camel@mhfsdcap03> <20170607093422.1a114568@bbrezillon>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v4 3/3] media: mtk-mdp: Fix mdp device tree
+Date: Wed, 7 Jun 2017 10:44:58 +0200
+Message-ID: <e7996ad5-03a1-7b53-5d61-ae171473581f@gmail.com>
+References: <1495509851-29159-1-git-send-email-minghsiu.tsai@mediatek.com>
+ <1495509851-29159-4-git-send-email-minghsiu.tsai@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170607093422.1a114568@bbrezillon>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1495509851-29159-4-git-send-email-minghsiu.tsai@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Houlong Wei <houlong.wei@mediatek.com>
+Cc: srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Wu-Cheng Li <wuchengli@google.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-06-07 at 09:34 +0200, Boris Brezillon wrote:
-> On Wed, 7 Jun 2017 15:24:57 +0800
-> xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> 
-> > Hi Mattias,
-> > 
-> > On Tue, 2017-06-06 at 12:55 +0200, Matthias Brugger wrote:
-> > > 
-> > > On 31/05/17 05:37, Xiaolei Li wrote:  
-> > > > Add MT2712 NAND Flash Controller dt bindings documentation.
-> > > > 
-> > > > Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > > Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > > > ---  
-> > > 
-> > > Subject line should be something like;
-> > > dt-bindings: mtd: Update mediatek bindings.  
-> > 
-> > This patch has been accepted on PATCH v5 by Boris. So, should I send
-> > PATCH v6?
-> 
-> No, I already applied the patch, and it's not such a big deal anyway.
-> Try to use this prefix for you future DT bindings contributions ;-).
+Hi Hans, hi Mauro,
 
-OK. Thanks Boris, Matthias.
+On 23/05/17 05:24, Minghsiu Tsai wrote:
+> From: Daniel Kurtz <djkurtz@chromium.org>
+> 
+> If the mdp_* nodes are under an mdp sub-node, their corresponding
+> platform device does not automatically get its iommu assigned properly.
+> 
+> Fix this by moving the mdp component nodes up a level such that they are
+> siblings of mdp and all other SoC subsystems.  This also simplifies the
+> device tree.
+> 
+> Although it fixes iommu assignment issue, it also break compatibility
+> with old device tree. So, the patch in driver is needed to iterate over
+> sibling mdp device nodes, not child ones, to keep driver work properly.
+> 
+> Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+> Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+> 
+
+Are you OK to take this patch, or do you have any further comments?
+
+Regards,
+Matthias
+
+> ---
+>   drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 12 ++++++++++--
+>   1 file changed, 10 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> index 9e4eb7d..8134755 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> @@ -103,7 +103,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+>   {
+>   	struct mtk_mdp_dev *mdp;
+>   	struct device *dev = &pdev->dev;
+> -	struct device_node *node;
+> +	struct device_node *node, *parent;
+>   	int i, ret = 0;
+>   
+>   	mdp = devm_kzalloc(dev, sizeof(*mdp), GFP_KERNEL);
+> @@ -117,8 +117,16 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+>   	mutex_init(&mdp->lock);
+>   	mutex_init(&mdp->vpulock);
+>   
+> +	/* Old dts had the components as child nodes */
+> +	if (of_get_next_child(dev->of_node, NULL)) {
+> +		parent = dev->of_node;
+> +		dev_warn(dev, "device tree is out of date\n");
+> +	} else {
+> +		parent = dev->of_node->parent;
+> +	}
+> +
+>   	/* Iterate over sibling MDP function blocks */
+> -	for_each_child_of_node(dev->of_node, node) {
+> +	for_each_child_of_node(parent, node) {
+>   		const struct of_device_id *of_id;
+>   		enum mtk_mdp_comp_type comp_type;
+>   		int comp_id;
+> 
