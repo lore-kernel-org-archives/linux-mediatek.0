@@ -1,78 +1,40 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "spi: mediatek: Add bindings for mediatek MT7622 soc
- platform" to the spi tree
-Date: Tue, 06 Jun 2017 20:07:14 +0100
-Message-ID: <E1dIJow-0007ZA-UM@debutante>
-References: <1496387923-31674-2-git-send-email-leilk.liu@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: [GIT PULL] mediatek drm fixes for 4.12
+Date: Wed, 7 Jun 2017 09:28:05 +0800
+Message-ID: <1496798885.29074.9.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1496387923-31674-2-git-send-email-leilk.liu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Leilk Liu <leilk.liu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>
+Cc: Nickey Yang <nickey.yang@rock-chips.com>, linux-mediatek@lists.infradead.org, Dan Carpenter <dan.carpenter@oracle.com>, dri-devel@lists.freedesktop.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
-
-   spi: mediatek: Add bindings for mediatek MT7622 soc platform
-
-has been applied to the spi tree at
-
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git 
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From d27ae103bf89a0ed28976da58a8f5e1c4c85ecb5 Mon Sep 17 00:00:00 2001
-From: Leilk Liu <leilk.liu@mediatek.com>
-Date: Fri, 2 Jun 2017 15:18:41 +0800
-Subject: [PATCH] spi: mediatek: Add bindings for mediatek MT7622 soc platform
-
-This patch adds a DT binding documentation for the MT7622 soc.
-
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- Documentation/devicetree/bindings/spi/spi-mt65xx.txt | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-index e43f4cf4cf35..c0b1f0134390 100644
---- a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-+++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-@@ -4,6 +4,7 @@ Required properties:
- - compatible: should be one of the following.
-     - mediatek,mt2701-spi: for mt2701 platforms
-     - mediatek,mt6589-spi: for mt6589 platforms
-+    - mediatek,mt7622-spi: for mt7622 platforms
-     - mediatek,mt8135-spi: for mt8135 platforms
-     - mediatek,mt8173-spi: for mt8173 platforms
- 
--- 
-2.11.0
+SGksIERhdmU6CgpUaGlzIGluY2x1ZGUgdHdvIGZpeGVzOiBkc2kgd2FpdCB0aW1lb3V0IGxvb3Ag
+YW5kIGhkbWkgaW5mb2ZyYW1lCm1pc3Rha2UuCgpSZWdhcmRzLApDSwoKClRoZSBmb2xsb3dpbmcg
+Y2hhbmdlcyBzaW5jZSBjb21taXQKMmVhNjU5YTllZjQ4ODEyNWViNDZkYTZlYjU3MWRlNWVhZTVj
+NDNmNjoKCiAgTGludXggNC4xMi1yYzEgKDIwMTctMDUtMTMgMTM6MTk6NDkgLTA3MDApCgphcmUg
+YXZhaWxhYmxlIGluIHRoZSBnaXQgcmVwb3NpdG9yeSBhdDoKCiAgaHR0cHM6Ly9naXRodWIuY29t
+L2NraHUtbWVkaWF0ZWsvbGludXguZ2l0LXRhZ3MuZ2l0Cm1lZGlhdGVrLWRybS1maXhlcy00LjEy
+LXJjMQoKZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDAxNDU4MGZmYWI2NTRiYjgzMjU2
+NzgzYTJiMTg1Y2Y2YzA2ZGZmYWE6CgogIGRybS9tZWRpYXRlazogZml4IG10a19oZG1pX3NldHVw
+X3ZlbmRvcl9zcGVjaWZpY19pbmZvZnJhbWUgbWlzdGFrZQooMjAxNy0wNS0yMiAxMzo0OToxNyAr
+MDgwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0KRGFuIENhcnBlbnRlciAoMSk6CiAgICAgIGRybS9tZWRpYXRlazogZml4
+IGEgdGltZW91dCBsb29wCgpZWVMgKDEpOgogICAgICBkcm0vbWVkaWF0ZWs6IGZpeCBtdGtfaGRt
+aV9zZXR1cF92ZW5kb3Jfc3BlY2lmaWNfaW5mb2ZyYW1lIG1pc3Rha2UKCiBkcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RzaS5jICB8IDE1ICsrKysrKy0tLS0tLS0tLQogZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19oZG1pLmMgfCAgMiArLQogMiBmaWxlcyBjaGFuZ2VkLCA3IGluc2Vy
+dGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaS1kZXZlbAo=
