@@ -1,66 +1,150 @@
-From: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
-Subject: Re: [PATCH] [media] mtk-mdp: Fix g_/s_selection capture/compose
- logic
-Date: Thu, 8 Jun 2017 11:22:51 +0800
-Message-ID: <1496892171.22652.2.camel@mtksdaap41>
-References: <1492057130-1194-1-git-send-email-minghsiu.tsai@mediatek.com>
-         <a8c1da24-d812-7c4d-a05d-34cb90edddf5@linaro.org>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v3 2/3] arm64: dts: mt7622: add basic nodes to the
+ mt7622.dtsi file
+Date: Thu, 8 Jun 2017 15:52:57 +0200
+Message-ID: <1abcc8b1-de0f-859e-0200-ccdc2dce7354@gmail.com>
+References: <cover.1496250798.git.sean.wang@mediatek.com>
+ <60640937c793184ce12f88e5c66f3f316e97cefa.1496250798.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <a8c1da24-d812-7c4d-a05d-34cb90edddf5@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Stanimir Varbanov <stanimir.varbanov@linaro.org>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Houlong Wei <houlong.wei@mediatek.com>, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Wu-Cheng Li <wuchengli@google.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <60640937c793184ce12f88e5c66f3f316e97cefa.1496250798.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Stanimir Varbanov,
-
-I have upload patch v2. 
-https://patchwork.kernel.org/patch/9723463/
-
-Could you review it? Thanks
 
 
-On Thu, 2017-04-27 at 17:42 +0300, Stanimir Varbanov wrote:
-> Hi,
+On 31/05/17 19:29, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> On 04/13/2017 07:18 AM, Minghsiu Tsai wrote:
-> > From: Daniel Kurtz <djkurtz@chromium.org>
-> > 
-> > Experiments show that the:
-> >  (1) mtk-mdp uses the _MPLANE form of CAPTURE/OUTPUT
-> >  (2) CAPTURE types use CROP targets, and OUTPUT types use COMPOSE targets
-> > 
-> > Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
-> > Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
-> > 
-> > ---
-> >  drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c | 18 +++++++++---------
-> >  1 file changed, 9 insertions(+), 9 deletions(-)
-> > 
-> > diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-> > index 13afe48..8ab7ca0 100644
-> > --- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-> > +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-> > @@ -837,12 +837,12 @@ static int mtk_mdp_m2m_g_selection(struct file *file, void *fh,
-> >  	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
-> >  	bool valid = false;
-> >  
-> > -	if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE) {
-> > -		if (mtk_mdp_is_target_compose(s->target))
-> > -			valid = true;
-> > -	} else if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT) {
-> > +	if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
-> >  		if (mtk_mdp_is_target_crop(s->target))
-> >  			valid = true;
-> > +	} else if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
-> > +		if (mtk_mdp_is_target_compose(s->target))
-> > +			valid = true;
-> >  	}
+> add basic nodes into the mt7622.dtsi for the system
+> bring-up which includes ARM CPU, GIC, timer, MediaTek
+> UART, SYSIRQ and one reserved memory region for ATF.
 > 
-> Using MPLANE formats in g/s_selection violates the v4l2 spec. See [1].
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7622.dtsi | 103 +++++++++++++++++++++++++++++++
+>   1 file changed, 103 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7622.dtsi
 > 
-> <snip>
-> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> new file mode 100644
+> index 0000000..2031b73
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> @@ -0,0 +1,103 @@
+> +/*
+> + * Copyright (c) 2017 MediaTek Inc.
+> + * Author: Ming Huang <ming.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> + *	   Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> + *
+> + * SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> + */
+> +
+> +#include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +/ {
+> +	compatible = "mediatek,mt7622";
+> +	interrupt-parent = <&sysirq>;
+> +	#address-cells = <2>;
+> +	#size-cells = <2>;
+> +
+> +	cpus {
+> +		#address-cells = <2>;
+> +		#size-cells = <0>;
+> +
+> +		cpu0: cpu@0 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a53", "arm,armv8";
+> +			reg = <0x0 0x0>;
+> +			enable-method = "psci";
+> +			clock-frequency = <1300000000>;
+> +		};
+> +
+> +		cpu1: cpu@1 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a53", "arm,armv8";
+> +			reg = <0x0 0x1>;
+> +			enable-method = "psci";
+> +			clock-frequency = <1300000000>;
+> +		};
+> +	};
+> +
+> +	uart_clk: dummy26m {
+> +		compatible = "fixed-clock";
+> +		#clock-cells = <0>;
+> +		clock-frequency = <25000000>;
+> +	};
+> +
+> +	psci {
+> +		compatible  = "arm,psci-0.2";
+> +		method      = "smc";
+> +	};
+> +
+> +	reserved-memory {
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +
+> +		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
+> +		secmon_reserved: secmon@43000000 {
+> +			reg = <0 0x43000000 0 0x30000>;
+> +			no-map;
+> +		};
+> +	};
+> +
+> +	timer {
+> +		compatible = "arm,armv8-timer";
+> +		interrupt-parent = <&gic>;
+> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(2) |
+> +			      IRQ_TYPE_LEVEL_HIGH)>,
+> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(2) |
+> +			      IRQ_TYPE_LEVEL_HIGH)>,
+> +			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(2) |
+> +			      IRQ_TYPE_LEVEL_HIGH)>,
+> +			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(2) |
+> +			      IRQ_TYPE_LEVEL_HIGH)>;
+> +	};
+> +
+> +	sysirq: interrupt-controller@10200620 {
+> +		compatible = "mediatek,mt7622-sysirq",
+> +			     "mediatek,mt6577-sysirq";
+> +		interrupt-controller;
+> +		#interrupt-cells = <3>;
+> +		interrupt-parent = <&gic>;
+> +		reg = <0 0x10200620 0 0x20>;
+> +	};
+> +
+> +	gic: interrupt-controller@10300000 {
+> +		compatible = "arm,gic-400";
+> +		interrupt-controller;
+> +		#interrupt-cells = <3>;
+> +		interrupt-parent = <&gic>;
+> +		reg = <0 0x10310000 0 0x1000>,
+> +		      <0 0x10320000 0 0x1000>,
+> +		      <0 0x10340000 0 0x2000>,
+> +		      <0 0x10360000 0 0x2000>;
+> +	};
+> +
+> +	uart0: serial@11002000 {
+> +		compatible = "mediatek,mt7622-uart",
+> +			     "mediatek,mt6577-uart";
+> +		reg = <0 0x11002000 0 0x400>;
+> +		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&uart_clk>;
+
+mt6577-uart has two clocks. Please fix this.
+I would appreciate if you could rebase on the mediatek for-next branch 
+(especially for 3/3), which will make it easier for me to take this.
+
+Regards,
+Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
