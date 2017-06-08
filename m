@@ -1,36 +1,66 @@
-From: lei liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 2/3] spi: mediatek: support adjust register define
-Date: Thu, 8 Jun 2017 09:41:03 +0800
-Message-ID: <1496886063.30249.1.camel@mhfsdcap03>
-References: <1496387923-31674-1-git-send-email-leilk.liu@mediatek.com>
-         <1496387923-31674-3-git-send-email-leilk.liu@mediatek.com>
-         <20170606185730.mrvgvp4hynftwahx@sirena.org.uk>
+From: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Subject: Re: [PATCH] [media] mtk-mdp: Fix g_/s_selection capture/compose
+ logic
+Date: Thu, 8 Jun 2017 11:22:51 +0800
+Message-ID: <1496892171.22652.2.camel@mtksdaap41>
+References: <1492057130-1194-1-git-send-email-minghsiu.tsai@mediatek.com>
+         <a8c1da24-d812-7c4d-a05d-34cb90edddf5@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170606185730.mrvgvp4hynftwahx-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <a8c1da24-d812-7c4d-a05d-34cb90edddf5@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Stanimir Varbanov <stanimir.varbanov@linaro.org>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Houlong Wei <houlong.wei@mediatek.com>, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Wu-Cheng Li <wuchengli@google.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-06-06 at 19:57 +0100, Mark Brown wrote:
-> On Fri, Jun 02, 2017 at 03:18:42PM +0800, Leilk Liu wrote:
-> 
-> > +	/* some IC design adjust register define */
-> > +	bool adjust_reg;
-> 
-> Can we have a name that's more specific to the particular quirk please?
-> The current name will get confusing if some future chip also needs
-> slightly different register settings.
-> 
-thanks for your suggestion, I'll fix it.
+Hi, Stanimir Varbanov,
 
-> Otherwise this looks good.
+I have upload patch v2. 
+https://patchwork.kernel.org/patch/9723463/
+
+Could you review it? Thanks
 
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+On Thu, 2017-04-27 at 17:42 +0300, Stanimir Varbanov wrote:
+> Hi,
+> 
+> On 04/13/2017 07:18 AM, Minghsiu Tsai wrote:
+> > From: Daniel Kurtz <djkurtz@chromium.org>
+> > 
+> > Experiments show that the:
+> >  (1) mtk-mdp uses the _MPLANE form of CAPTURE/OUTPUT
+> >  (2) CAPTURE types use CROP targets, and OUTPUT types use COMPOSE targets
+> > 
+> > Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+> > Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+> > 
+> > ---
+> >  drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c | 18 +++++++++---------
+> >  1 file changed, 9 insertions(+), 9 deletions(-)
+> > 
+> > diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> > index 13afe48..8ab7ca0 100644
+> > --- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> > +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> > @@ -837,12 +837,12 @@ static int mtk_mdp_m2m_g_selection(struct file *file, void *fh,
+> >  	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
+> >  	bool valid = false;
+> >  
+> > -	if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE) {
+> > -		if (mtk_mdp_is_target_compose(s->target))
+> > -			valid = true;
+> > -	} else if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT) {
+> > +	if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
+> >  		if (mtk_mdp_is_target_crop(s->target))
+> >  			valid = true;
+> > +	} else if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
+> > +		if (mtk_mdp_is_target_compose(s->target))
+> > +			valid = true;
+> >  	}
+> 
+> Using MPLANE formats in g/s_selection violates the v4l2 spec. See [1].
+> 
+> <snip>
+> 
