@@ -1,30 +1,36 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v1 2/2] dt-bindings: crypto: remove mediatek ethif clock
-Date: Wed, 7 Jun 2017 16:38:17 -0500
-Message-ID: <20170607213817.nr3n6vdrchspcc5i@rob-hp-laptop>
-References: <1496284222-12560-1-git-send-email-ryder.lee@mediatek.com>
- <1496284222-12560-3-git-send-email-ryder.lee@mediatek.com>
+From: lei liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/3] spi: mediatek: support adjust register define
+Date: Thu, 8 Jun 2017 09:41:03 +0800
+Message-ID: <1496886063.30249.1.camel@mhfsdcap03>
+References: <1496387923-31674-1-git-send-email-leilk.liu@mediatek.com>
+         <1496387923-31674-3-git-send-email-leilk.liu@mediatek.com>
+         <20170606185730.mrvgvp4hynftwahx@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1496284222-12560-3-git-send-email-ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Herbert Xu <herbert@gondor.apana.org.au>, devicetree@vger.kernel.org, linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170606185730.mrvgvp4hynftwahx-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jun 01, 2017 at 10:30:22AM +0800, Ryder Lee wrote:
-> This patch removes the parent clock 'ethif' in bindings, since we don't
-> need to control the parent of a clock in current clock framework.
+On Tue, 2017-06-06 at 19:57 +0100, Mark Brown wrote:
+> On Fri, Jun 02, 2017 at 03:18:42PM +0800, Leilk Liu wrote:
 > 
-> Moreover, the clocks are get by name in the driver, thus this change
-> does not break backwards compatibility.
+> > +	/* some IC design adjust register define */
+> > +	bool adjust_reg;
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> ---
->  Documentation/devicetree/bindings/crypto/mediatek-crypto.txt | 8 +++-----
->  1 file changed, 3 insertions(+), 5 deletions(-)
+> Can we have a name that's more specific to the particular quirk please?
+> The current name will get confusing if some future chip also needs
+> slightly different register settings.
+> 
+thanks for your suggestion, I'll fix it.
 
-Acked-by: Rob Herring <robh@kernel.org>
+> Otherwise this looks good.
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
