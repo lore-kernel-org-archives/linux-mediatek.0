@@ -1,39 +1,103 @@
-From: Brian Norris <computersforpeace@gmail.com>
-Subject: Re: [PATCH] mtd: subpagetest: fix wrong written check in function
- write_eraseblock2
-Date: Thu, 8 Jun 2017 16:43:16 -0700
-Message-ID: <20170608234316.GJ102137@google.com>
-References: <1496307679-16245-1-git-send-email-xiaolei.li@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 2/3] arm: dts: mt2701: Add display bls related nodes for
+ MT2701
+Date: Fri, 9 Jun 2017 10:12:50 +0200
+Message-ID: <82c8b877-ec34-bd37-7428-8af86191a66e@gmail.com>
+References: <1496297324-21091-1-git-send-email-erin.lo@mediatek.com>
+ <1496297324-21091-3-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <1496307679-16245-1-git-send-email-xiaolei.li@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
-List-Post: <mailto:linux-mtd@lists.infradead.org>
-List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
-Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
-To: xiaolei.li@mediatek.com
-Cc: boris.brezillon@free-electrons.com, linux-mediatek@lists.infradead.org, dwmw2@infradead.org, linux-mtd@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1496297324-21091-3-git-send-email-erin.lo@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Erin Lo <erin.lo@mediatek.com>
+Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, YT Shen <yt.shen@mediatek.com>, Weiqing Kong <weiqing.kong@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jun 01, 2017 at 05:01:19PM +0800, xiaolei.li@mediatek.com wrote:
-> From: Xiaolei Li <xiaolei.li@mediatek.com>
-> 
-> Write size in function write_eraseblock2 is subpgsize * k.
-> It is wrong to check whether written is equal to subpgsize after each
-> mtd_write.
-> 
-> Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
 
-Applied to l2-mtd.git
 
-______________________________________________________
-Linux MTD discussion mailing list
-http://lists.infradead.org/mailman/listinfo/linux-mtd/
+On 01/06/17 08:08, Erin Lo wrote:
+> From: YT Shen <yt.shen@mediatek.com>
+
+I miss the Singed-off-by from YT Shen.
+
+> 
+> This patch adds the device node of display backlight for MT2701
+> 
+> Signed-off-by: Weiqing Kong <weiqing.kong@mediatek.com>
+> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
+> ---
+>   arch/arm/boot/dts/mt2701-evb.dts | 29 +++++++++++++++++++++++++++++
+>   arch/arm/boot/dts/mt2701.dtsi    |  9 +++++++++
+>   2 files changed, 38 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
+> index a483798..e49c2b7 100644
+> --- a/arch/arm/boot/dts/mt2701-evb.dts
+> +++ b/arch/arm/boot/dts/mt2701-evb.dts
+> @@ -22,6 +22,35 @@
+>   	memory {
+>   		reg = <0 0x80000000 0 0x40000000>;
+>   	};
+> +
+> +	backlight_lcd: backlight_lcd {
+> +		compatible = "pwm-backlight";
+> +		pwms = <&bls 0 100000>;
+> +		brightness-levels = <
+> +			  0  16  32  48  64  80  96 112
+> +			128 144 160 176 192 208 224 240
+> +			255
+> +		>;
+> +		default-brightness-level = <9>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&pwm_bls_gpio>;
+> +	};
+> +};
+> +
+> +&bls {
+> +	status = "okay";
+> +};
+> +
+> +&mmsys {
+> +	status = "okay";
+> +};
+> +
+> +&pio {
+> +	pwm_bls_gpio: pwm_bls_gpio {
+> +		pins_cmd_dat {
+> +			pinmux = <MT2701_PIN_208_AUD_EXT_CK1__FUNC_DISP_PWM>;
+> +		};
+> +	};
+>   };
+>   
+>   &auxadc {
+> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
+> index de88bd7..4f110d5 100644
+> --- a/arch/arm/boot/dts/mt2701.dtsi
+> +++ b/arch/arm/boot/dts/mt2701.dtsi
+> @@ -366,6 +366,15 @@
+>   		#clock-cells = <1>;
+>   	};
+>   
+> +	bls: bls@1400a000 {
+> +		compatible = "mediatek,mt2701-disp-pwm";
+> +		reg = <0 0x1400a000 0 0x1000>;
+> +		#pwm-cells = <2>;
+> +		clocks = <&mmsys CLK_MM_MDP_BLS_26M>, <&mmsys CLK_MM_DISP_BLS>;
+> +		clock-names = "main", "mm";
+> +		status = "disabled";
+> +	};
+> +
+
+Can you make this a new patch please. It's preferred to have one patch 
+for the dtsi and another one for the actual board.
+
+Thanks,
+Matthias
+
+>   	larb0: larb@14010000 {
+>   		compatible = "mediatek,mt2701-smi-larb";
+>   		reg = <0 0x14010000 0 0x1000>;
+> 
