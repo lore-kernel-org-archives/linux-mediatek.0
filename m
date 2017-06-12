@@ -1,68 +1,147 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [GIT PULL] ARM: Mediatek soc drivers for v4.13
-Date: Mon, 12 Jun 2017 12:37:42 +0200
-Message-ID: <25946bae-31fb-ab97-aedb-92681cf603c4@gmail.com>
+From: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 2/2] arm: dts: Add Mediatek MT2701 i2c device node
+Date: Mon, 12 Jun 2017 19:54:28 +0800
+Message-ID: <1497268468.930.26.camel@mhfsdcap03>
+References: <1495784107-6711-1-git-send-email-jun.gao@mediatek.com>
+         <1495784107-6711-3-git-send-email-jun.gao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Christophe JAILLET <christophe.jaillet-39ZsbGIQGT5GWvitb5QawA@public.gmane.org>, Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Shailendra Verma <shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1495784107-6711-3-git-send-email-jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Olof, hi Anrd,
+On Fri, 2017-05-26 at 15:35 +0800, Jun Gao wrote:
+> From: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> Add MT2701 i2c device node.
+> 
+> Signed-off-by: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/mt2701-evb.dts | 42 ++++++++++++++++++++++++++++++++++++++++
+>  arch/arm/boot/dts/mt2701.dtsi    | 42 ++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 84 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
+> index a483798..3f5a96c 100644
+> --- a/arch/arm/boot/dts/mt2701-evb.dts
+> +++ b/arch/arm/boot/dts/mt2701-evb.dts
+> @@ -28,7 +28,49 @@
+>  	status = "okay";
+>  };
+>  
+> +&i2c0 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c0_pins_a>;
+> +	status = "okay";
+> +};
+> +
+> +&i2c1 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c1_pins_a>;
+> +	status = "okay";
+> +};
+> +
+> +&i2c2 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c2_pins_a>;
+> +	status = "okay";
+> +};
+> +
+>  &pio {
+> +	i2c0_pins_a: i2c0@0 {
+> +		pins1 {
+> +			pinmux = <MT2701_PIN_75_SDA0__FUNC_SDA0>,
+> +				 <MT2701_PIN_76_SCL0__FUNC_SCL0>;
+> +			bias-disable;
+> +		};
+> +	};
+> +
+> +	i2c1_pins_a: i2c1@0 {
+> +		pins1 {
+> +			pinmux = <MT2701_PIN_57_SDA1__FUNC_SDA1>,
+> +				 <MT2701_PIN_58_SCL1__FUNC_SCL1>;
+> +			bias-disable;
+> +		};
+> +	};
+> +
+> +	i2c2_pins_a: i2c2@0 {
+> +		pins1 {
+> +			pinmux = <MT2701_PIN_77_SDA2__FUNC_SDA2>,
+> +				 <MT2701_PIN_78_SCL2__FUNC_SCL2>;
+> +			bias-disable;
+> +		};
+> +	};
+> +
+>  	spi_pins_a: spi0@0 {
+>  		pins_spi {
+>  			pinmux = <MT2701_PIN_53_SPI0_CSN__FUNC_SPI0_CS>,
+> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
+> index 8037210..1b6157e 100644
+> --- a/arch/arm/boot/dts/mt2701.dtsi
+> +++ b/arch/arm/boot/dts/mt2701.dtsi
+> @@ -286,6 +286,48 @@
+>  		status = "disabled";
+>  	};
+>  
+> +	i2c0: i2c@11007000 {
+> +		compatible = "mediatek,mt2701-i2c",
+> +			     "mediatek,mt6577-i2c";
+> +		reg = <0 0x11007000 0 0x70>,
+> +		      <0 0x11000200 0 0x80>;
+> +		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
+> +		clock-div = <16>;
+> +		clocks = <&pericfg CLK_PERI_I2C0>, <&pericfg CLK_PERI_AP_DMA>;
+> +		clock-names = "main", "dma";
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		status = "disabled";
+> +	};
+> +
+> +	i2c1: i2c@11008000 {
+> +		compatible = "mediatek,mt2701-i2c",
+> +			     "mediatek,mt6577-i2c";
+> +		reg = <0 0x11008000 0 0x70>,
+> +		      <0 0x11000280 0 0x80>;
+> +		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_LOW>;
+> +		clock-div = <16>;
+> +		clocks = <&pericfg CLK_PERI_I2C1>, <&pericfg CLK_PERI_AP_DMA>;
+> +		clock-names = "main", "dma";
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		status = "disabled";
+> +	};
+> +
+> +	i2c2: i2c@11009000 {
+> +		compatible = "mediatek,mt2701-i2c",
+> +			     "mediatek,mt6577-i2c";
+> +		reg = <0 0x11009000 0 0x70>,
+> +		      <0 0x11000300 0 0x80>;
+> +		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_LOW>;
+> +		clock-div = <16>;
+> +		clocks = <&pericfg CLK_PERI_I2C2>, <&pericfg CLK_PERI_AP_DMA>;
+> +		clock-names = "main", "dma";
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		status = "disabled";
+> +	};
+> +
+>  	spi0: spi@1100a000 {
+>  		compatible = "mediatek,mt2701-spi";
+>  		#address-cells = <1>;
 
-Please merge this updates for mediatek soc drivers.
+Dear Matthias,
 
-Regards,
-Matthias
+Could you take this patch together with 
+[PATCH v4 1/2]dt-bindings: i2c: Add Mediatek MT2701 i2c binding ?
 
----
+Thanks!
 
-The following changes since commit 2ea659a9ef488125eb46da6eb571de5eae5c43f6:
 
-   Linux 4.12-rc1 (2017-05-13 13:19:49 -0700)
-
-are available in the git repository at:
-
-   https://github.com/mbgg/linux-mediatek.git tags/v4.12-next-soc
-
-for you to fetch changes up to 58a823dd7b515827ed07adb268e1769b3c292586:
-
-   soc: mediatek: PMIC wrap: Fix possible NULL derefrence. (2017-05-15 
-10:47:25 +0200)
-
-----------------------------------------------------------------
-- enhance scpsys to support mt6797
-- add mt6797 support to scpsys
-- fix error path in pmic-wrapper
-- fix possible NULL pointer dereference in pmic-wrapper
-
-----------------------------------------------------------------
-Christophe Jaillet (1):
-       soc: mediatek: PMIC wrap: Fix error handling
-
-Mars Cheng (3):
-       soc: mediatek: avoid using fixed spm power status defines
-       soc: mediatek: add vdec item for scpsys
-       soc: mediatek: add MT6797 scpsys support
-
-shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org (1):
-       soc: mediatek: PMIC wrap: Fix possible NULL derefrence.
-
-  drivers/soc/mediatek/mtk-pmic-wrap.c     |  14 ++-
-  drivers/soc/mediatek/mtk-scpsys.c        | 149 
-+++++++++++++++++++++++++++++--
-  include/dt-bindings/power/mt6797-power.h |  30 +++++++
-  3 files changed, 184 insertions(+), 9 deletions(-)
-  create mode 100644 include/dt-bindings/power/mt6797-power.h
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
