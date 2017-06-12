@@ -1,31 +1,30 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] ARM: mediatek: armv8 DTS for v4.13
-Date: Mon, 12 Jun 2017 12:34:58 +0200
-Message-ID: <a6d19346-24a8-b130-607c-9116c34b673b@gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [GIT PULL] ARM: Mediatek soc drivers for v4.13
+Date: Mon, 12 Jun 2017 12:37:42 +0200
+Message-ID: <25946bae-31fb-ab97-aedb-92681cf603c4@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm-soc <arm@kernel.org>
-Cc: Sean Wang <sean.wang@mediatek.com>, Jun Gao <jun.gao@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Mars Cheng <mars.cheng@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Christophe JAILLET <christophe.jaillet-39ZsbGIQGT5GWvitb5QawA@public.gmane.org>, Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Shailendra Verma <shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Olof and Arnd,
+Hi Olof, hi Anrd,
 
-Please find below the relevant branch with updates for arm64 device tree 
-files and device tree bindings for v4.13.
+Please merge this updates for mediatek soc drivers.
 
-Thanks a lot,
+Regards,
 Matthias
 
 ---
@@ -36,69 +35,34 @@ The following changes since commit 2ea659a9ef488125eb46da6eb571de5eae5c43f6:
 
 are available in the git repository at:
 
-   https://github.com/mbgg/linux-mediatek.git tags/v4.12-next-dts64
+   https://github.com/mbgg/linux-mediatek.git tags/v4.12-next-soc
 
-for you to fetch changes up to 5f0047466e3c653ffc95fe72e1ea19b1f9927e48:
+for you to fetch changes up to 58a823dd7b515827ed07adb268e1769b3c292586:
 
-   dt-bindings: mediatek: add bindings for MediaTek MT7622 SoC 
-(2017-06-08 15:27:16 +0200)
-
-----------------------------------------------------------------
-Add device tree nodes for
-mt8173:
-- split USB SuperSpeed port in HighSpeed and SuperSpeed ports.
-- move USB phy clocks up in hierarchy to met new bindings description
-- move MDP nodes up in hierarchy to met new bindings description
-
-mt6797:
-- add basic SoC support
-- add clock driver
-- add power domain
-
-dt-bindings:
-- clean-up i2c binding description
-- add binding for mt2701 i2c node
-- add fallback compatible to scpsys binding description
-- add bindings description for mt7622 and mt6796
+   soc: mediatek: PMIC wrap: Fix possible NULL derefrence. (2017-05-15 
+10:47:25 +0200)
 
 ----------------------------------------------------------------
-Daniel Kurtz (1):
-       arm64: dts: mt8173: Fix mdp device tree
+- enhance scpsys to support mt6797
+- add mt6797 support to scpsys
+- fix error path in pmic-wrapper
+- fix possible NULL pointer dereference in pmic-wrapper
 
-Jun Gao (1):
-       dt-bindings: i2c: Add Mediatek MT2701 i2c binding
+----------------------------------------------------------------
+Christophe Jaillet (1):
+       soc: mediatek: PMIC wrap: Fix error handling
 
-Mars Cheng (4):
-       dt-bindings: mediatek: Add bindings for mediatek MT6797 Platform
-       arm64: dts: mediatek: add mt6797 support
-       dt-bindings: mediatek: add MT6797 power dt-bindings
-       arm64: dts: mediatek: add clk and scp nodes for MT6797
+Mars Cheng (3):
+       soc: mediatek: avoid using fixed spm power status defines
+       soc: mediatek: add vdec item for scpsys
+       soc: mediatek: add MT6797 scpsys support
 
-Matthias Brugger (4):
-       dt-bindings: mtk-sysirq: Correct bindings for supported SoCs
-       dt-bindings: i2c-mt6577: Rename file to reflect bindings
-       dt-bindings: i2c-mtk: Delete bindings
-       dt-bindings: i2c-mtk: Add mt7623 binding
+shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org (1):
+       soc: mediatek: PMIC wrap: Fix possible NULL derefrence.
 
-Sean Wang (1):
-       dt-bindings: mediatek: add bindings for MediaTek MT7622 SoC
-
-chunfeng.yun@mediatek.com (2):
-       arm64: dts: mt8173: split usb SuperSpeed port into two ports
-       arm64: dts: mt8173: move clock from phy node into port nodes
-
-  Documentation/devicetree/bindings/arm/mediatek.txt |   8 +
-  .../bindings/i2c/{i2c-mt6577.txt => i2c-mtk.txt}   |  10 +-
-  .../interrupt-controller/mediatek,sysirq.txt       |  28 +--
-  .../devicetree/bindings/serial/mtk-uart.txt        |   2 +
-  .../devicetree/bindings/soc/mediatek/scpsys.txt    |   6 +-
-  arch/arm64/boot/dts/mediatek/Makefile              |   1 +
-  arch/arm64/boot/dts/mediatek/mt6797-evb.dts        |  36 +++
-  arch/arm64/boot/dts/mediatek/mt6797.dtsi           | 245 
-+++++++++++++++++++++
-  arch/arm64/boot/dts/mediatek/mt8173.dtsi           | 153 ++++++-------
-  9 files changed, 396 insertions(+), 93 deletions(-)
-  rename Documentation/devicetree/bindings/i2c/{i2c-mt6577.txt => 
-i2c-mtk.txt} (77%)
-  create mode 100644 arch/arm64/boot/dts/mediatek/mt6797-evb.dts
-  create mode 100644 arch/arm64/boot/dts/mediatek/mt6797.dtsi
+  drivers/soc/mediatek/mtk-pmic-wrap.c     |  14 ++-
+  drivers/soc/mediatek/mtk-scpsys.c        | 149 
++++++++++++++++++++++++++++++--
+  include/dt-bindings/power/mt6797-power.h |  30 +++++++
+  3 files changed, 184 insertions(+), 9 deletions(-)
+  create mode 100644 include/dt-bindings/power/mt6797-power.h
