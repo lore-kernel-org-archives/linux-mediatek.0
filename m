@@ -1,147 +1,35 @@
-From: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v4 2/2] arm: dts: Add Mediatek MT2701 i2c device node
-Date: Mon, 12 Jun 2017 19:54:28 +0800
-Message-ID: <1497268468.930.26.camel@mhfsdcap03>
-References: <1495784107-6711-1-git-send-email-jun.gao@mediatek.com>
-         <1495784107-6711-3-git-send-email-jun.gao@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v2 0/3] add support of hardware random generator on MediaTek MT7622
+Date: Mon, 12 Jun 2017 23:56:53 +0800
+Message-ID: <cover.1497280813.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1495784107-6711-3-git-send-email-jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: herbert@gondor.apana.org.au, mpm@selenic.com, robh+dt@kernel.org, mark.rutland@arm.com, clabbe.montjoie@gmail.com, prasannatsmkumar@gmail.com, romain.perier@free-electrons.com, shannon.nelson@oracle.com
+Cc: weiyongjun1@huawei.com, devicetree@vger.kernel.org, linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2017-05-26 at 15:35 +0800, Jun Gao wrote:
-> From: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> Add MT2701 i2c device node.
-> 
-> Signed-off-by: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  arch/arm/boot/dts/mt2701-evb.dts | 42 ++++++++++++++++++++++++++++++++++++++++
->  arch/arm/boot/dts/mt2701.dtsi    | 42 ++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 84 insertions(+)
-> 
-> diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
-> index a483798..3f5a96c 100644
-> --- a/arch/arm/boot/dts/mt2701-evb.dts
-> +++ b/arch/arm/boot/dts/mt2701-evb.dts
-> @@ -28,7 +28,49 @@
->  	status = "okay";
->  };
->  
-> +&i2c0 {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&i2c0_pins_a>;
-> +	status = "okay";
-> +};
-> +
-> +&i2c1 {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&i2c1_pins_a>;
-> +	status = "okay";
-> +};
-> +
-> +&i2c2 {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&i2c2_pins_a>;
-> +	status = "okay";
-> +};
-> +
->  &pio {
-> +	i2c0_pins_a: i2c0@0 {
-> +		pins1 {
-> +			pinmux = <MT2701_PIN_75_SDA0__FUNC_SDA0>,
-> +				 <MT2701_PIN_76_SCL0__FUNC_SCL0>;
-> +			bias-disable;
-> +		};
-> +	};
-> +
-> +	i2c1_pins_a: i2c1@0 {
-> +		pins1 {
-> +			pinmux = <MT2701_PIN_57_SDA1__FUNC_SDA1>,
-> +				 <MT2701_PIN_58_SCL1__FUNC_SCL1>;
-> +			bias-disable;
-> +		};
-> +	};
-> +
-> +	i2c2_pins_a: i2c2@0 {
-> +		pins1 {
-> +			pinmux = <MT2701_PIN_77_SDA2__FUNC_SDA2>,
-> +				 <MT2701_PIN_78_SCL2__FUNC_SCL2>;
-> +			bias-disable;
-> +		};
-> +	};
-> +
->  	spi_pins_a: spi0@0 {
->  		pins_spi {
->  			pinmux = <MT2701_PIN_53_SPI0_CSN__FUNC_SPI0_CS>,
-> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-> index 8037210..1b6157e 100644
-> --- a/arch/arm/boot/dts/mt2701.dtsi
-> +++ b/arch/arm/boot/dts/mt2701.dtsi
-> @@ -286,6 +286,48 @@
->  		status = "disabled";
->  	};
->  
-> +	i2c0: i2c@11007000 {
-> +		compatible = "mediatek,mt2701-i2c",
-> +			     "mediatek,mt6577-i2c";
-> +		reg = <0 0x11007000 0 0x70>,
-> +		      <0 0x11000200 0 0x80>;
-> +		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
-> +		clock-div = <16>;
-> +		clocks = <&pericfg CLK_PERI_I2C0>, <&pericfg CLK_PERI_AP_DMA>;
-> +		clock-names = "main", "dma";
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +		status = "disabled";
-> +	};
-> +
-> +	i2c1: i2c@11008000 {
-> +		compatible = "mediatek,mt2701-i2c",
-> +			     "mediatek,mt6577-i2c";
-> +		reg = <0 0x11008000 0 0x70>,
-> +		      <0 0x11000280 0 0x80>;
-> +		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_LOW>;
-> +		clock-div = <16>;
-> +		clocks = <&pericfg CLK_PERI_I2C1>, <&pericfg CLK_PERI_AP_DMA>;
-> +		clock-names = "main", "dma";
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +		status = "disabled";
-> +	};
-> +
-> +	i2c2: i2c@11009000 {
-> +		compatible = "mediatek,mt2701-i2c",
-> +			     "mediatek,mt6577-i2c";
-> +		reg = <0 0x11009000 0 0x70>,
-> +		      <0 0x11000300 0 0x80>;
-> +		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_LOW>;
-> +		clock-div = <16>;
-> +		clocks = <&pericfg CLK_PERI_I2C2>, <&pericfg CLK_PERI_AP_DMA>;
-> +		clock-names = "main", "dma";
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +		status = "disabled";
-> +	};
-> +
->  	spi0: spi@1100a000 {
->  		compatible = "mediatek,mt2701-spi";
->  		#address-cells = <1>;
+From: Sean Wang <sean.wang@mediatek.com>
 
-Dear Matthias,
+Changes since v1:
+- update the bindings with the specific "mediatek,mt7622-rng"
+  instead of the generic one as "mediatek,generic-rng"
 
-Could you take this patch together with 
-[PATCH v4 1/2]dt-bindings: i2c: Add Mediatek MT2701 i2c binding ?
+The series add support of hardware RNG on MediaTek MT7622 and
+, runtime PM support and add me as the maintainer for the existing
+and following chipset.
 
-Thanks!
+Sean Wang (3):
+  dt-bindings: rng: add MediaTek MT7622 Hardware Random Generator
+    bindings
+  hwrng: mtk - add runtime PM support
+  MAINTAINERS: add entry for MediaTek Random Number Generator
 
+ Documentation/devicetree/bindings/rng/mtk-rng.txt |  4 ++-
+ MAINTAINERS                                       |  5 +++
+ drivers/char/hw_random/mtk-rng.c                  | 42 +++++++++++++++++++++++
+ 3 files changed, 50 insertions(+), 1 deletion(-)
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+1.9.1
