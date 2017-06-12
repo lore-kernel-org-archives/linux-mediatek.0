@@ -1,169 +1,104 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 3/3] arm: dts: mt2701: Add display subsystem related nodes
- for MT2701
-Date: Mon, 12 Jun 2017 11:13:43 +0200
-Message-ID: <dc75371a-b9f4-9393-4c09-0a07d20ee169@gmail.com>
-References: <1496297324-21091-1-git-send-email-erin.lo@mediatek.com>
- <1496297324-21091-4-git-send-email-erin.lo@mediatek.com>
+Subject: [GIT PULL] ARM: mediatek: armv8 DTS for v4.13
+Date: Mon, 12 Jun 2017 12:34:58 +0200
+Message-ID: <a6d19346-24a8-b130-607c-9116c34b673b@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1496297324-21091-4-git-send-email-erin.lo@mediatek.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Erin Lo <erin.lo@mediatek.com>
-Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, YT Shen <yt.shen@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm-soc <arm@kernel.org>
+Cc: Sean Wang <sean.wang@mediatek.com>, Jun Gao <jun.gao@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Mars Cheng <mars.cheng@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Olof and Arnd,
 
+Please find below the relevant branch with updates for arm64 device tree 
+files and device tree bindings for v4.13.
 
-On 01/06/17 08:08, Erin Lo wrote:
-> From: YT Shen <yt.shen@mediatek.com>
-> 
-> This patch adds the device nodes for the DISP function blocks for MT2701
-> 
-> Signed-off-by: YT Shen <yt.shen@mediatek.com>
-> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-> ---
->   arch/arm/boot/dts/mt2701.dtsi | 84 +++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 84 insertions(+)
-> 
-> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-> index 4f110d5..e20b65c 100644
-> --- a/arch/arm/boot/dts/mt2701.dtsi
-> +++ b/arch/arm/boot/dts/mt2701.dtsi
-> @@ -17,6 +17,7 @@
->   #include <dt-bindings/interrupt-controller/irq.h>
->   #include <dt-bindings/interrupt-controller/arm-gic.h>
->   #include <dt-bindings/reset/mt2701-resets.h>
-> +#include <dt-bindings/memory/mt2701-larb-port.h>
->   #include "skeleton64.dtsi"
->   #include "mt2701-pinfunc.h"
->   
-> @@ -24,6 +25,11 @@
->   	compatible = "mediatek,mt2701";
->   	interrupt-parent = <&sysirq>;
->   
-> +	aliases {
-> +		rdma0 = &rdma0;
-> +		rdma1 = &rdma1;
-> +	};
-> +
->   	cpus {
->   		#address-cells = <1>;
->   		#size-cells = <0>;
-> @@ -201,6 +207,16 @@
->   		power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
->   	};
->   
-> +	mipi_tx0: mipi-dphy@10010000 {
-> +		compatible = "mediatek,mt2701-mipi-tx";
-> +		reg = <0 0x10010000 0 0x90>;
-> +		clocks = <&clk26m>;
-> +		clock-output-names = "mipi_tx0_pll";
-> +		#clock-cells = <0>;
-> +		#phy-cells = <0>;
-> +		status = "disabled";
-> +	};
-> +
->   	sysirq: interrupt-controller@10200100 {
->   		compatible = "mediatek,mt2701-sysirq",
->   			     "mediatek,mt6577-sysirq";
-> @@ -366,6 +382,39 @@
->   		#clock-cells = <1>;
->   	};
->   
-> +	display_components: dispsys@14000000 {
-> +		compatible = "mediatek,mt2701-mmsys";
-> +		reg = <0 0x14000000 0 0x1000>;
-> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
-> +	};
-
-Can you please rebase on a recent kernel version. mt2701-mmsys node is 
-already present.
-
-Thanks,
+Thanks a lot,
 Matthias
 
-> +
-> +	ovl@14007000 {
-> +		compatible = "mediatek,mt2701-disp-ovl";
-> +		reg = <0 0x14007000 0 0x1000>;
-> +		interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&mmsys CLK_MM_DISP_OVL>;
-> +		iommus = <&iommu MT2701_M4U_PORT_DISP_OVL_0>;
-> +		mediatek,larb = <&larb0>;
-> +	};
-> +
-> +	rdma0: rdma@14008000 {
-> +		compatible = "mediatek,mt2701-disp-rdma";
-> +		reg = <0 0x14008000 0 0x1000>;
-> +		interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&mmsys CLK_MM_DISP_RDMA>;
-> +		iommus = <&iommu MT2701_M4U_PORT_DISP_RDMA>;
-> +		mediatek,larb = <&larb0>;
-> +	};
-> +
-> +	wdma@14009000 {
-> +		compatible = "mediatek,mt2701-disp-wdma";
-> +		reg = <0 0x14009000 0 0x1000>;
-> +		interrupts = <GIC_SPI 154 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&mmsys CLK_MM_DISP_WDMA>;
-> +		iommus = <&iommu MT2701_M4U_PORT_DISP_WDMA>;
-> +		mediatek,larb = <&larb0>;
-> +	};
-> +
->   	bls: bls@1400a000 {
->   		compatible = "mediatek,mt2701-disp-pwm";
->   		reg = <0 0x1400a000 0 0x1000>;
-> @@ -375,6 +424,32 @@
->   		status = "disabled";
->   	};
->   
-> +	color@1400b000 {
-> +		compatible = "mediatek,mt2701-disp-color";
-> +		reg = <0 0x1400b000 0 0x1000>;
-> +		interrupts = <GIC_SPI 156 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&mmsys CLK_MM_DISP_COLOR>;
-> +	};
-> +
-> +	dsi: dsi@1400c000 {
-> +		compatible = "mediatek,mt2701-dsi";
-> +		reg = <0 0x1400c000 0 0x1000>;
-> +		interrupts = <GIC_SPI 157 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&mmsys CLK_MM_DSI_ENGINE>, <&mmsys CLK_MM_DSI_DIG>,
-> +			 <&mipi_tx0>;
-> +		clock-names = "engine", "digital", "hs";
-> +		phys = <&mipi_tx0>;
-> +		phy-names = "dphy";
-> +		status = "disabled";
-> +	};
-> +
-> +	mutex: mutex@1400e000 {
-> +		compatible = "mediatek,mt2701-disp-mutex";
-> +		reg = <0 0x1400e000 0 0x1000>;
-> +		interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&mmsys CLK_MM_MUTEX_32K>;
-> +	};
-> +
->   	larb0: larb@14010000 {
->   		compatible = "mediatek,mt2701-smi-larb";
->   		reg = <0 0x14010000 0 0x1000>;
-> @@ -385,6 +460,15 @@
->   		power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
->   	};
->   
-> +	rdma1: rdma@14012000 {
-> +		compatible = "mediatek,mt2701-disp-rdma";
-> +		reg = <0 0x14012000 0 0x1000>;
-> +		interrupts = <GIC_SPI 164 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&mmsys CLK_MM_DISP_RDMA1>;
-> +		iommus = <&iommu MT2701_M4U_PORT_DISP_RDMA1>;
-> +		mediatek,larb = <&larb0>;
-> +	};
-> +
->   	imgsys: syscon@15000000 {
->   		compatible = "mediatek,mt2701-imgsys", "syscon";
->   		reg = <0 0x15000000 0 0x1000>;
-> 
+---
+
+The following changes since commit 2ea659a9ef488125eb46da6eb571de5eae5c43f6:
+
+   Linux 4.12-rc1 (2017-05-13 13:19:49 -0700)
+
+are available in the git repository at:
+
+   https://github.com/mbgg/linux-mediatek.git tags/v4.12-next-dts64
+
+for you to fetch changes up to 5f0047466e3c653ffc95fe72e1ea19b1f9927e48:
+
+   dt-bindings: mediatek: add bindings for MediaTek MT7622 SoC 
+(2017-06-08 15:27:16 +0200)
+
+----------------------------------------------------------------
+Add device tree nodes for
+mt8173:
+- split USB SuperSpeed port in HighSpeed and SuperSpeed ports.
+- move USB phy clocks up in hierarchy to met new bindings description
+- move MDP nodes up in hierarchy to met new bindings description
+
+mt6797:
+- add basic SoC support
+- add clock driver
+- add power domain
+
+dt-bindings:
+- clean-up i2c binding description
+- add binding for mt2701 i2c node
+- add fallback compatible to scpsys binding description
+- add bindings description for mt7622 and mt6796
+
+----------------------------------------------------------------
+Daniel Kurtz (1):
+       arm64: dts: mt8173: Fix mdp device tree
+
+Jun Gao (1):
+       dt-bindings: i2c: Add Mediatek MT2701 i2c binding
+
+Mars Cheng (4):
+       dt-bindings: mediatek: Add bindings for mediatek MT6797 Platform
+       arm64: dts: mediatek: add mt6797 support
+       dt-bindings: mediatek: add MT6797 power dt-bindings
+       arm64: dts: mediatek: add clk and scp nodes for MT6797
+
+Matthias Brugger (4):
+       dt-bindings: mtk-sysirq: Correct bindings for supported SoCs
+       dt-bindings: i2c-mt6577: Rename file to reflect bindings
+       dt-bindings: i2c-mtk: Delete bindings
+       dt-bindings: i2c-mtk: Add mt7623 binding
+
+Sean Wang (1):
+       dt-bindings: mediatek: add bindings for MediaTek MT7622 SoC
+
+chunfeng.yun@mediatek.com (2):
+       arm64: dts: mt8173: split usb SuperSpeed port into two ports
+       arm64: dts: mt8173: move clock from phy node into port nodes
+
+  Documentation/devicetree/bindings/arm/mediatek.txt |   8 +
+  .../bindings/i2c/{i2c-mt6577.txt => i2c-mtk.txt}   |  10 +-
+  .../interrupt-controller/mediatek,sysirq.txt       |  28 +--
+  .../devicetree/bindings/serial/mtk-uart.txt        |   2 +
+  .../devicetree/bindings/soc/mediatek/scpsys.txt    |   6 +-
+  arch/arm64/boot/dts/mediatek/Makefile              |   1 +
+  arch/arm64/boot/dts/mediatek/mt6797-evb.dts        |  36 +++
+  arch/arm64/boot/dts/mediatek/mt6797.dtsi           | 245 
++++++++++++++++++++++
+  arch/arm64/boot/dts/mediatek/mt8173.dtsi           | 153 ++++++-------
+  9 files changed, 396 insertions(+), 93 deletions(-)
+  rename Documentation/devicetree/bindings/i2c/{i2c-mt6577.txt => 
+i2c-mtk.txt} (77%)
+  create mode 100644 arch/arm64/boot/dts/mediatek/mt6797-evb.dts
+  create mode 100644 arch/arm64/boot/dts/mediatek/mt6797.dtsi
