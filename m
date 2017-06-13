@@ -1,93 +1,81 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v4 2/2] arm: dts: Add Mediatek MT2701 i2c device node
-Date: Tue, 13 Jun 2017 15:45:30 +0200
-Message-ID: <8c0e441c-a3d9-9cfd-dbf9-556ad852a072@gmail.com>
-References: <1495784107-6711-1-git-send-email-jun.gao@mediatek.com>
- <1495784107-6711-3-git-send-email-jun.gao@mediatek.com>
- <1497268468.930.26.camel@mhfsdcap03>
- <dbfcfd5b-8812-8df2-40dc-42e889577c9a@gmail.com>
- <1497349452.930.36.camel@mhfsdcap03>
- <ba658a59-7ef9-2340-57fa-3bcefa3f47ed@gmail.com>
- <1497360189.930.42.camel@mhfsdcap03>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <1497360189.930.42.camel@mhfsdcap03>
-Content-Language: en-US
-Sender: linux-i2c-owner@vger.kernel.org
-To: Jun Gao <jun.gao@mediatek.com>
-Cc: Wolfram Sang <wsa@the-dreams.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "spi: mediatek: add spi support for mt7622 IC" to the spi tree
+Date: Tue, 13 Jun 2017 22:09:39 +0100
+Message-ID: <E1dKt4F-0000n2-CR@debutante>
+References: <1497230680-20448-3-git-send-email-leilk.liu@mediatek.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1497230680-20448-3-git-send-email-leilk.liu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Leilk Liu <leilk.liu@mediatek.com>
+Cc: Mark Brown <broonie@kernel.org>Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, sean.wang@mediatek.comlinux-spi@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
+The patch
 
+   spi: mediatek: add spi support for mt7622 IC
 
-On 13/06/17 15:23, Jun Gao wrote:
-> On Tue, 2017-06-13 at 14:52 +0200, Matthias Brugger wrote:
->>
->> On 13/06/17 12:24, Jun Gao wrote:
->>> On Tue, 2017-06-13 at 11:36 +0200, Matthias Brugger wrote:
->>>>
->>>> On 12/06/17 13:54, Jun Gao wrote:
->>>>> On Fri, 2017-05-26 at 15:35 +0800, Jun Gao wrote:
->>>>>> From: Jun Gao <jun.gao@mediatek.com>
->>>>>>
->>>>>> Add MT2701 i2c device node.
->>>>>>
->>>>>> Signed-off-by: Jun Gao <jun.gao@mediatek.com>
->>>>>> ---
->>>>>>     arch/arm/boot/dts/mt2701-evb.dts | 42 ++++++++++++++++++++++++++++++++++++++++
->>>>>>     arch/arm/boot/dts/mt2701.dtsi    | 42 ++++++++++++++++++++++++++++++++++++++++
->>>>>>     2 files changed, 84 insertions(+)
->>>> [...]
->>>>>
->>>>> Dear Matthias,
->>>>>
->>>>> Could you take this patch together with
->>>>> [PATCH v4 1/2]dt-bindings: i2c: Add Mediatek MT2701 i2c binding ?
->>>>>
->>>>> Thanks!
->>>>>
->>>>
->>>> They are both included in the pull request I send [1] [2], or do I miss
->>>> something?
->>>>
->>>> Regards,
->>>> Matthias
->>>>
->>>> [1]
->>>> https://github.com/mbgg/linux-mediatek/commit/729b7f8dbdaff270c53052897ea06486221a49a2
->>>> [2]
->>>> https://github.com/mbgg/linux-mediatek/commit/c6c301d3ff7531894257acc4f4a73928a109bda1
->>>
->>> Dear Matthias,
->>>
->>> Would you mind to use the same style as follows in i2c-mtk.txt of [2]?
->>>
->>> "mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek MT2701
->>> "mediatek,mt6577-i2c": for Mediatek MT6577
->>> "mediatek,mt6589-i2c": for Mediatek MT6589
->>> "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for Mediatek MT7623
->>> "mediatek,mt8173-i2c": for Mediatek MT8173
->>>
->>>
->>> Thanks!
->>>
->>
->> You mean I should fix-up the patch to fit to the new binding
->> description? Or do you mean it should be MTxxxx instead of mtxxxx?
->>
->> Regards,
->> Matthias
-> 
-> Dear Matthias,
-> 
-> I mean fix-up the patch to fit to the new binding description. Is it OK?
-> 
+has been applied to the spi tree at
 
-Then I can't see the difference between what you are asking for and what 
-is already pushed to the repository. Please send a patch, that will make 
-things clearer.
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git 
 
-Regards,
-Matthias
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From fc4f226fece3d09d1014c2e98b5accc874a62617 Mon Sep 17 00:00:00 2001
+From: Leilk Liu <leilk.liu@mediatek.com>
+Date: Mon, 12 Jun 2017 09:24:40 +0800
+Subject: [PATCH] spi: mediatek: add spi support for mt7622 IC
+
+this patch add support for mt7622 IC.
+
+Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ drivers/spi/spi-mt65xx.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index eae73b58248b..ec7755b7a94b 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -104,6 +104,12 @@ struct mtk_spi {
+ };
+ 
+ static const struct mtk_spi_compatible mtk_common_compat;
++
++static const struct mtk_spi_compatible mt7622_compat = {
++	.must_tx = true,
++	.enhance_timing = true,
++};
++
+ static const struct mtk_spi_compatible mt8173_compat = {
+ 	.need_pad_sel = true,
+ 	.must_tx = true,
+@@ -127,6 +133,9 @@ static const struct of_device_id mtk_spi_of_match[] = {
+ 	{ .compatible = "mediatek,mt6589-spi",
+ 		.data = (void *)&mtk_common_compat,
+ 	},
++	{ .compatible = "mediatek,mt7622-spi",
++		.data = (void *)&mt7622_compat,
++	},
+ 	{ .compatible = "mediatek,mt8135-spi",
+ 		.data = (void *)&mtk_common_compat,
+ 	},
+-- 
+2.11.0
