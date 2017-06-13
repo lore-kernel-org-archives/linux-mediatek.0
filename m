@@ -1,50 +1,64 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 1/3] dt-bindings: rng: add MediaTek MT7622 Hardware
- Random Generator bindings
-Date: Tue, 13 Jun 2017 11:39:38 +0200
-Message-ID: <3f01f336-b2ac-20ee-d984-2f13f7853d1f@gmail.com>
-References: <cover.1497280813.git.sean.wang@mediatek.com>
- <89b9b682ff9e294df7cda75787c1439c95ffc992.1497280813.git.sean.wang@mediatek.com>
+From: Jun Gao <jun.gao@mediatek.com>
+Subject: Re: [PATCH v4 2/2] arm: dts: Add Mediatek MT2701 i2c device node
+Date: Tue, 13 Jun 2017 18:24:12 +0800
+Message-ID: <1497349452.930.36.camel@mhfsdcap03>
+References: <1495784107-6711-1-git-send-email-jun.gao@mediatek.com>
+         <1495784107-6711-3-git-send-email-jun.gao@mediatek.com>
+         <1497268468.930.26.camel@mhfsdcap03>
+         <dbfcfd5b-8812-8df2-40dc-42e889577c9a@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <89b9b682ff9e294df7cda75787c1439c95ffc992.1497280813.git.sean.wang@mediatek.com>
-Content-Language: en-US
-Sender: linux-crypto-owner@vger.kernel.org
-To: sean.wang@mediatek.com, herbert@gondor.apana.org.au, mpm@selenic.com, robh+dt@kernel.org, mark.rutland@arm.com, clabbe.montjoie@gmail.com, prasannatsmkumar@gmail.com, romain.perier@free-electrons.com, shannon.nelson@oracle.com
-Cc: devicetree@vger.kernel.org, keyhaede@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-crypto@vger.kernel.org, weiyongjun1@huawei.com, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <dbfcfd5b-8812-8df2-40dc-42e889577c9a@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Wolfram Sang <wsa@the-dreams.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Tue, 2017-06-13 at 11:36 +0200, Matthias Brugger wrote:
+> 
+> On 12/06/17 13:54, Jun Gao wrote:
+> > On Fri, 2017-05-26 at 15:35 +0800, Jun Gao wrote:
+> >> From: Jun Gao <jun.gao@mediatek.com>
+> >>
+> >> Add MT2701 i2c device node.
+> >>
+> >> Signed-off-by: Jun Gao <jun.gao@mediatek.com>
+> >> ---
+> >>   arch/arm/boot/dts/mt2701-evb.dts | 42 ++++++++++++++++++++++++++++++++++++++++
+> >>   arch/arm/boot/dts/mt2701.dtsi    | 42 ++++++++++++++++++++++++++++++++++++++++
+> >>   2 files changed, 84 insertions(+)
+> [...]
+> > 
+> > Dear Matthias,
+> > 
+> > Could you take this patch together with
+> > [PATCH v4 1/2]dt-bindings: i2c: Add Mediatek MT2701 i2c binding ?
+> > 
+> > Thanks!
+> > 
+> 
+> They are both included in the pull request I send [1] [2], or do I miss 
+> something?
+> 
+> Regards,
+> Matthias
+> 
+> [1] 
+> https://github.com/mbgg/linux-mediatek/commit/729b7f8dbdaff270c53052897ea06486221a49a2
+> [2] 
+> https://github.com/mbgg/linux-mediatek/commit/c6c301d3ff7531894257acc4f4a73928a109bda1
+
+Dear Matthias,
+
+Would you mind to use the same style as follows in i2c-mtk.txt of [2]?
+
+"mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek MT2701
+"mediatek,mt6577-i2c": for Mediatek MT6577
+"mediatek,mt6589-i2c": for Mediatek MT6589
+"mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for Mediatek MT7623
+"mediatek,mt8173-i2c": for Mediatek MT8173
 
 
-On 12/06/17 17:56, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Document the bindings used by MediaTek MT7622 SoC hardware random number
-> generator.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->   Documentation/devicetree/bindings/rng/mtk-rng.txt | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> diff --git a/Documentation/devicetree/bindings/rng/mtk-rng.txt b/Documentation/devicetree/bindings/rng/mtk-rng.txt
-> index a6d62a2..366b99b 100644
-> --- a/Documentation/devicetree/bindings/rng/mtk-rng.txt
-> +++ b/Documentation/devicetree/bindings/rng/mtk-rng.txt
-> @@ -2,7 +2,9 @@ Device-Tree bindings for Mediatek random number generator
->   found in Mediatek SoC family
->   
->   Required properties:
-> -- compatible	    : Should be "mediatek,mt7623-rng"
-> +- compatible	    : Should be
-> +			"mediatek,mt7622-rng", 	"mediatek,mt7623-rng" : for MT7622
-> +			"mediatek,mt7623-rng" : for MT7623
->   - clocks	    : list of clock specifiers, corresponding to
->   		      entries in clock-names property;
->   - clock-names	    : Should contain "rng" entries;
-> 
+Thanks!
