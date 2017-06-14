@@ -1,175 +1,120 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "spi: mediatek: adjust register to enhance time accuracy" to
- the spi tree
-Date: Tue, 13 Jun 2017 22:09:42 +0100
-Message-ID: <E1dKt4I-0000o9-CL@debutante>
-References: <1497069989-30584-2-git-send-email-leilk.liu@mediatek.com>
+From: Jun Gao <jun.gao@mediatek.com>
+Subject: Re: [PATCH v4 2/2] arm: dts: Add Mediatek MT2701 i2c device node
+Date: Wed, 14 Jun 2017 09:11:49 +0800
+Message-ID: <1497402709.930.48.camel@mhfsdcap03>
+References: <1495784107-6711-1-git-send-email-jun.gao@mediatek.com>
+         <1495784107-6711-3-git-send-email-jun.gao@mediatek.com>
+         <1497268468.930.26.camel@mhfsdcap03>
+         <dbfcfd5b-8812-8df2-40dc-42e889577c9a@gmail.com>
+         <1497349452.930.36.camel@mhfsdcap03>
+         <ba658a59-7ef9-2340-57fa-3bcefa3f47ed@gmail.com>
+         <1497360189.930.42.camel@mhfsdcap03>
+         <8c0e441c-a3d9-9cfd-dbf9-556ad852a072@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1497069989-30584-2-git-send-email-leilk.liu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Leilk Liu <leilk.liu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <8c0e441c-a3d9-9cfd-dbf9-556ad852a072@gmail.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Wolfram Sang <wsa@the-dreams.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+On Tue, 2017-06-13 at 15:45 +0200, Matthias Brugger wrote:
+> 
+> On 13/06/17 15:23, Jun Gao wrote:
+> > On Tue, 2017-06-13 at 14:52 +0200, Matthias Brugger wrote:
+> >>
+> >> On 13/06/17 12:24, Jun Gao wrote:
+> >>> On Tue, 2017-06-13 at 11:36 +0200, Matthias Brugger wrote:
+> >>>>
+> >>>> On 12/06/17 13:54, Jun Gao wrote:
+> >>>>> On Fri, 2017-05-26 at 15:35 +0800, Jun Gao wrote:
+> >>>>>> From: Jun Gao <jun.gao@mediatek.com>
+> >>>>>>
+> >>>>>> Add MT2701 i2c device node.
+> >>>>>>
+> >>>>>> Signed-off-by: Jun Gao <jun.gao@mediatek.com>
+> >>>>>> ---
+> >>>>>>     arch/arm/boot/dts/mt2701-evb.dts | 42 ++++++++++++++++++++++++++++++++++++++++
+> >>>>>>     arch/arm/boot/dts/mt2701.dtsi    | 42 ++++++++++++++++++++++++++++++++++++++++
+> >>>>>>     2 files changed, 84 insertions(+)
+> >>>> [...]
+> >>>>>
+> >>>>> Dear Matthias,
+> >>>>>
+> >>>>> Could you take this patch together with
+> >>>>> [PATCH v4 1/2]dt-bindings: i2c: Add Mediatek MT2701 i2c binding ?
+> >>>>>
+> >>>>> Thanks!
+> >>>>>
+> >>>>
+> >>>> They are both included in the pull request I send [1] [2], or do I miss
+> >>>> something?
+> >>>>
+> >>>> Regards,
+> >>>> Matthias
+> >>>>
+> >>>> [1]
+> >>>> https://github.com/mbgg/linux-mediatek/commit/729b7f8dbdaff270c53052897ea06486221a49a2
+> >>>> [2]
+> >>>> https://github.com/mbgg/linux-mediatek/commit/c6c301d3ff7531894257acc4f4a73928a109bda1
+> >>>
+> >>> Dear Matthias,
+> >>>
+> >>> Would you mind to use the same style as follows in i2c-mtk.txt of [2]?
+> >>>
+> >>> "mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek MT2701
+> >>> "mediatek,mt6577-i2c": for Mediatek MT6577
+> >>> "mediatek,mt6589-i2c": for Mediatek MT6589
+> >>> "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for Mediatek MT7623
+> >>> "mediatek,mt8173-i2c": for Mediatek MT8173
+> >>>
+> >>>
+> >>> Thanks!
+> >>>
+> >>
+> >> You mean I should fix-up the patch to fit to the new binding
+> >> description? Or do you mean it should be MTxxxx instead of mtxxxx?
+> >>
+> >> Regards,
+> >> Matthias
+> > 
+> > Dear Matthias,
+> > 
+> > I mean fix-up the patch to fit to the new binding description. Is it OK?
+> > 
+> 
+> Then I can't see the difference between what you are asking for and what 
+> is already pushed to the repository. Please send a patch, that will make 
+> things clearer.
+> 
+> Regards,
+> Matthias
 
-   spi: mediatek: adjust register to enhance time accuracy
+Dear Matthias,
 
-has been applied to the spi tree at
+like this:
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git 
+diff:
+ Required properties:
+   - compatible: value should be either of the following.
+-      (a) "mediatek,mt6577-i2c", for i2c compatible with mt6577 i2c.
+-      (b) "mediatek,mt6589-i2c", for i2c compatible with mt6589 i2c.
+-      (c) "mediatek,mt8127-i2c", for i2c compatible with mt8127 i2c.
+-      (d) "mediatek,mt8135-i2c", for i2c compatible with mt8135 i2c.
+-      (e) "mediatek,mt8173-i2c", for i2c compatible with mt8173 i2c.
++       "mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek
+MT2701
++       "mediatek,mt6577-i2c": for Mediatek MT6577
++       "mediatek,mt6589-i2c": for Mediatek MT6589
++       "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for Mediatek
+MT7623
++       "mediatek,mt8173-i2c": for Mediatek MT8173
+   - reg: physical base address of the controller and dma base, length
+of memory
+     mapped region.
+   - interrupts: interrupt number to the cpu.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From 058fe49da3b6ab71b57effd49dcc5d007071eea5 Mon Sep 17 00:00:00 2001
-From: Leilk Liu <leilk.liu@mediatek.com>
-Date: Mon, 12 Jun 2017 09:24:39 +0800
-Subject: [PATCH] spi: mediatek: adjust register to enhance time accuracy
-
-this patch adjust register to enhance time accuracy.
-
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- drivers/spi/spi-mt65xx.c                 | 45 ++++++++++++++++++++++++++++----
- include/linux/platform_data/spi-mt65xx.h |  2 ++
- 2 files changed, 42 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 278867a31950..eae73b58248b 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -35,11 +35,15 @@
- #define SPI_CMD_REG                       0x0018
- #define SPI_STATUS0_REG                   0x001c
- #define SPI_PAD_SEL_REG                   0x0024
-+#define SPI_CFG2_REG                      0x0028
- 
- #define SPI_CFG0_SCK_HIGH_OFFSET          0
- #define SPI_CFG0_SCK_LOW_OFFSET           8
- #define SPI_CFG0_CS_HOLD_OFFSET           16
- #define SPI_CFG0_CS_SETUP_OFFSET          24
-+#define SPI_ADJUST_CFG0_SCK_LOW_OFFSET    16
-+#define SPI_ADJUST_CFG0_CS_HOLD_OFFSET    0
-+#define SPI_ADJUST_CFG0_CS_SETUP_OFFSET   16
- 
- #define SPI_CFG1_CS_IDLE_OFFSET           0
- #define SPI_CFG1_PACKET_LOOP_OFFSET       8
-@@ -55,6 +59,8 @@
- #define SPI_CMD_RST                  BIT(2)
- #define SPI_CMD_PAUSE_EN             BIT(4)
- #define SPI_CMD_DEASSERT             BIT(5)
-+#define SPI_CMD_SAMPLE_SEL           BIT(6)
-+#define SPI_CMD_CS_POL               BIT(7)
- #define SPI_CMD_CPHA                 BIT(8)
- #define SPI_CMD_CPOL                 BIT(9)
- #define SPI_CMD_RX_DMA               BIT(10)
-@@ -80,6 +86,8 @@ struct mtk_spi_compatible {
- 	bool need_pad_sel;
- 	/* Must explicitly send dummy Tx bytes to do Rx only transfer */
- 	bool must_tx;
-+	/* some IC design adjust cfg register to enhance time accuracy */
-+	bool enhance_timing;
- };
- 
- struct mtk_spi {
-@@ -108,6 +116,8 @@ static const struct mtk_spi_compatible mt8173_compat = {
- static const struct mtk_chip_config mtk_default_chip_info = {
- 	.rx_mlsb = 1,
- 	.tx_mlsb = 1,
-+	.cs_pol = 0,
-+	.sample_sel = 0,
- };
- 
- static const struct of_device_id mtk_spi_of_match[] = {
-@@ -182,6 +192,17 @@ static int mtk_spi_prepare_message(struct spi_master *master,
- 	reg_val |= SPI_CMD_RX_ENDIAN;
- #endif
- 
-+	if (mdata->dev_comp->enhance_timing) {
-+		if (chip_config->cs_pol)
-+			reg_val |= SPI_CMD_CS_POL;
-+		else
-+			reg_val &= ~SPI_CMD_CS_POL;
-+		if (chip_config->sample_sel)
-+			reg_val |= SPI_CMD_SAMPLE_SEL;
-+		else
-+			reg_val &= ~SPI_CMD_SAMPLE_SEL;
-+	}
-+
- 	/* set finish and pause interrupt always enable */
- 	reg_val |= SPI_CMD_FINISH_IE | SPI_CMD_PAUSE_IE;
- 
-@@ -233,11 +254,25 @@ static void mtk_spi_prepare_transfer(struct spi_master *master,
- 	sck_time = (div + 1) / 2;
- 	cs_time = sck_time * 2;
- 
--	reg_val |= (((sck_time - 1) & 0xff) << SPI_CFG0_SCK_HIGH_OFFSET);
--	reg_val |= (((sck_time - 1) & 0xff) << SPI_CFG0_SCK_LOW_OFFSET);
--	reg_val |= (((cs_time - 1) & 0xff) << SPI_CFG0_CS_HOLD_OFFSET);
--	reg_val |= (((cs_time - 1) & 0xff) << SPI_CFG0_CS_SETUP_OFFSET);
--	writel(reg_val, mdata->base + SPI_CFG0_REG);
-+	if (mdata->dev_comp->enhance_timing) {
-+		reg_val |= (((sck_time - 1) & 0xffff)
-+			   << SPI_CFG0_SCK_HIGH_OFFSET);
-+		reg_val |= (((sck_time - 1) & 0xffff)
-+			   << SPI_ADJUST_CFG0_SCK_LOW_OFFSET);
-+		writel(reg_val, mdata->base + SPI_CFG2_REG);
-+		reg_val |= (((cs_time - 1) & 0xffff)
-+			   << SPI_ADJUST_CFG0_CS_HOLD_OFFSET);
-+		reg_val |= (((cs_time - 1) & 0xffff)
-+			   << SPI_ADJUST_CFG0_CS_SETUP_OFFSET);
-+		writel(reg_val, mdata->base + SPI_CFG0_REG);
-+	} else {
-+		reg_val |= (((sck_time - 1) & 0xff)
-+			   << SPI_CFG0_SCK_HIGH_OFFSET);
-+		reg_val |= (((sck_time - 1) & 0xff) << SPI_CFG0_SCK_LOW_OFFSET);
-+		reg_val |= (((cs_time - 1) & 0xff) << SPI_CFG0_CS_HOLD_OFFSET);
-+		reg_val |= (((cs_time - 1) & 0xff) << SPI_CFG0_CS_SETUP_OFFSET);
-+		writel(reg_val, mdata->base + SPI_CFG0_REG);
-+	}
- 
- 	reg_val = readl(mdata->base + SPI_CFG1_REG);
- 	reg_val &= ~SPI_CFG1_CS_IDLE_MASK;
-diff --git a/include/linux/platform_data/spi-mt65xx.h b/include/linux/platform_data/spi-mt65xx.h
-index 54b04483976c..ba4e4bb70262 100644
---- a/include/linux/platform_data/spi-mt65xx.h
-+++ b/include/linux/platform_data/spi-mt65xx.h
-@@ -16,5 +16,7 @@
- struct mtk_chip_config {
- 	u32 tx_mlsb;
- 	u32 rx_mlsb;
-+	u32 cs_pol;
-+	u32 sample_sel;
- };
- #endif
--- 
-2.11.0
+Thanks!
