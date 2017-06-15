@@ -1,165 +1,68 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v4 1/2] arm64: dts: mt7622: add basic nodes to the
- mt7622.dtsi file
-Date: Fri, 16 Jun 2017 01:39:26 +0800
-Message-ID: <1497548366.4975.3.camel@mtkswgap22>
-References: <cover.1497455465.git.sean.wang@mediatek.com>
-         <4d7c2a58fb2bd68cc5c17a313ee426e0d4233ca0.1497455465.git.sean.wang@mediatek.com>
-         <37f67b23-7995-3b93-2ee0-c04b34428bd9@gmail.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH] PCI: mediatek: fix error handling in
+ mtk_pcie_parse_and_add_res()
+Date: Thu, 15 Jun 2017 16:11:30 -0500
+Message-ID: <20170615211130.GF12735@bhelgaas-glaptop.roam.corp.google.com>
+References: <1496644078-27122-1-git-send-email-ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <37f67b23-7995-3b93-2ee0-c04b34428bd9-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1496644078-27122-1-git-send-email-ryder.lee@mediatek.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-06-15 at 18:04 +0200, Matthias Brugger wrote:
+On Mon, Jun 05, 2017 at 02:27:58PM +0800, Ryder Lee wrote:
+> The 'linkup' variable would always increment by one whether the link
+> status is true or not. Therefore, this patch fixes the return value in
+> mtk_pcie_parse_and_add_res() and removes unnecessary 'linkup' variable.
 > 
-> On 14/06/17 18:11, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> > From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > 
-> > add basic nodes into the mt7622.dtsi for the system
-> > bring-up which includes ARM CPU, GIC, timer, MediaTek
-> > UART, SYSIRQ and one reserved memory region for ATF.
-> > 
-> > Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt7622.dtsi | 104 +++++++++++++++++++++++++++++++
-> >   1 file changed, 104 insertions(+)
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> > new file mode 100644
-> > index 0000000..239b9b3
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> > @@ -0,0 +1,104 @@
-> > +/*
-> > + * Copyright (c) 2017 MediaTek Inc.
-> > + * Author: Ming Huang <ming.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > + *	   Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > + *
-> > + * SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > + */
-> > +
-> > +#include <dt-bindings/interrupt-controller/irq.h>
-> > +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +
-> > +/ {
-> > +	compatible = "mediatek,mt7622";
-> > +	interrupt-parent = <&sysirq>;
-> > +	#address-cells = <2>;
-> > +	#size-cells = <2>;
-> > +
-> > +	cpus {
-> > +		#address-cells = <2>;
-> > +		#size-cells = <0>;
-> > +
-> > +		cpu0: cpu@0 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53", "arm,armv8";
-> > +			reg = <0x0 0x0>;
-> > +			enable-method = "psci";
-> > +			clock-frequency = <1300000000>;
-> > +		};
-> > +
-> > +		cpu1: cpu@1 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53", "arm,armv8";
-> > +			reg = <0x0 0x1>;
-> > +			enable-method = "psci";
-> > +			clock-frequency = <1300000000>;
-> > +		};
-> > +	};
-> > +
-> > +	uart_clk: dummy25m {
-> > +		compatible = "fixed-clock";
-> > +		#clock-cells = <0>;
-> > +		clock-frequency = <25000000>;
-> > +	};
-> > +
-> > +	psci {
-> > +		compatible  = "arm,psci-0.2";
-> > +		method      = "smc";
-> > +	};
-> > +
-> > +	reserved-memory {
-> > +		#address-cells = <2>;
-> > +		#size-cells = <2>;
-> > +		ranges;
-> > +
-> > +		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
-> > +		secmon_reserved: secmon@43000000 {
-> > +			reg = <0 0x43000000 0 0x30000>;
-> > +			no-map;
-> > +		};
-> > +	};
-> > +
-> > +	timer {
-> > +		compatible = "arm,armv8-timer";
-> > +		interrupt-parent = <&gic>;
-> > +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(2) |
-> > +			      IRQ_TYPE_LEVEL_HIGH)>,
-> > +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(2) |
-> > +			      IRQ_TYPE_LEVEL_HIGH)>,
-> > +			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(2) |
-> > +			      IRQ_TYPE_LEVEL_HIGH)>,
-> > +			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(2) |
-> > +			      IRQ_TYPE_LEVEL_HIGH)>;
-> > +	};
-> > +
-> > +	sysirq: interrupt-controller@10200620 {
-> > +		compatible = "mediatek,mt7622-sysirq",
-> > +			     "mediatek,mt6577-sysirq";
-> > +		interrupt-controller;
-> > +		#interrupt-cells = <3>;
-> > +		interrupt-parent = <&gic>;
-> > +		reg = <0 0x10200620 0 0x20>;
-> > +	};
-> > +
-> > +	gic: interrupt-controller@10300000 {
-> > +		compatible = "arm,gic-400";
-> > +		interrupt-controller;
-> > +		#interrupt-cells = <3>;
-> > +		interrupt-parent = <&gic>;
-> > +		reg = <0 0x10310000 0 0x1000>,
-> > +		      <0 0x10320000 0 0x1000>,
-> > +		      <0 0x10340000 0 0x2000>,
-> > +		      <0 0x10360000 0 0x2000>;
-> > +	};
-> > +
-> > +	uart0: serial@11002000 {
-> > +		compatible = "mediatek,mt7622-uart",
-> > +			     "mediatek,mt6577-uart";
-> > +		reg = <0 0x11002000 0 0x400>;
-> > +		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
-> > +		clocks = <&uart_clk>, <&uart_clk>;
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+
+I folded this into pci/host-mediatek for v4.13, thanks!
+
+I just noticed that we didn't get a MAINTAINERS update for this driver.
+Can you send me that, too, please?
+
+> ---
+>  drivers/pci/host/pcie-mediatek.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 > 
-> Please add a dummy clock node with the correct frequency, as done in 
-> other chips as well.
+> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+> index 8ec8fa8..3baafa8 100644
+> --- a/drivers/pci/host/pcie-mediatek.c
+> +++ b/drivers/pci/host/pcie-mediatek.c
+> @@ -373,7 +373,7 @@ static int mtk_pcie_parse_and_add_res(struct mtk_pcie *pcie)
+>  	struct of_pci_range_parser parser;
+>  	struct of_pci_range range;
+>  	struct resource res;
+> -	int err, linkup = 0;
+> +	int err;
+>  
+>  	/* parse shared resources */
+>  	err = mtk_pcie_handle_shared_resource(pcie);
+> @@ -444,11 +444,11 @@ static int mtk_pcie_parse_and_add_res(struct mtk_pcie *pcie)
+>  
+>  		/* enable each port, and then check link status */
+>  		err = mtk_pcie_enable_ports(port);
+> -		if (!err)
+> -			linkup++;
+> +		if (err)
+> +			return err;
+>  	}
+>  
+> -	return !linkup;
+> +	return 0;
+>  }
+>  
+>  static int mtk_pcie_request_resources(struct mtk_pcie *pcie)
+> -- 
+> 1.9.1
 > 
-> Thanks,
-> Matthias
 > 
-
-Okay, the uart clock should be 50MHz, and bus clock should be 280MHz
-from AXI bus
-
-I will update in the next version .
-	
-	Sean 
-
-> > +		clock-names = "baud", "bus";
-> > +		status = "disabled";
-> > +	};
-> > +};
-> > 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
