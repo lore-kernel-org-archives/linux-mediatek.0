@@ -1,93 +1,52 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v2] [media] mtk-mdp: Fix g_/s_selection capture/compose
- logic
-Date: Thu, 15 Jun 2017 10:45:10 +0200
-Message-ID: <74fd208e-b3d4-6d39-66b2-4fe1ee28be27@xs4all.nl>
-References: <1494556970-12278-1-git-send-email-minghsiu.tsai@mediatek.com>
- <1497508166.3384.5.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 13/23] clocksource/drivers: Rename clocksource_probe to
+ timer_probe
+Date: Thu, 15 Jun 2017 18:02:00 +0200
+Message-ID: <a6614bcf-5552-b168-eee9-a1d604673494@gmail.com>
+References: <20170614123800.GH2261@mai>
+ <1497443984-12371-1-git-send-email-daniel.lezcano@linaro.org>
+ <1497443984-12371-13-git-send-email-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <1497508166.3384.5.camel@mtksdaap41>
-Sender: linux-media-owner@vger.kernel.org
-To: Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>
-Cc: daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Houlong Wei <houlong.wei@mediatek.com>, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Wu-Cheng Li <wuchengli@google.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1497443984-12371-13-git-send-email-daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org
+Cc: "open list:MIPS" <linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org>, Kefeng Wang <wangkefeng.wang-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Rich Felker <dalias-8zAoT0mYgF4@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:SUPERH" <linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tony Lindgren <tony-4v6yS6AI5VpBDgjK7y7TUQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "moderated list:NIOS2 ARCHITECTURE" <nios2-dev-g9ZBwUv/Ih/yUk5EbOjzuce+I+R0W71w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Max Filippov <jcmvbkbc-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Yoshinori Sato <ysato-Rn4VEauK+AKRv+LV9MX5uooqe+aC9MnS@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Noam Camus <noamc-d5a29ZRxExrQT0dZR+AlfA@public.gmane.org>, "moderated list:ARM PORT" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 06/15/17 08:29, Minghsiu Tsai wrote:
-> Hi, Hans,
-> 
-> Would you have time to review this patch v2?
-> The patch v1 violates v4l2 spec. I have fixed it in v2.
 
-I plan to review it Friday or Monday.
 
-Regards,
+On 14/06/17 14:39, Daniel Lezcano wrote:
+> The function name is now renamed to 'timer_probe' for consistency with
+> the CLOCKSOURCE_OF_DECLARE => TIMER_OF_DECLARE change.
+> 
+> Signed-off-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> Acked-by: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> Acked-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Reviewed-by: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> ---
+[...]
+> diff --git a/arch/arm/mach-mediatek/mediatek.c b/arch/arm/mach-mediatek/mediatek.c
+> index a6e3c98..c3cf215 100644
+> --- a/arch/arm/mach-mediatek/mediatek.c
+> +++ b/arch/arm/mach-mediatek/mediatek.c
+> @@ -41,7 +41,7 @@ static void __init mediatek_timer_init(void)
+>   	}
+>   
+>   	of_clk_init(NULL);
+> -	clocksource_probe();
+> +	timer_probe();
+>   };
 
-	Hans
-
-> 
-> 
-> Sincerely,
-> Ming Hsiu
-> 
-> On Fri, 2017-05-12 at 10:42 +0800, Minghsiu Tsai wrote:
->> From: Daniel Kurtz <djkurtz@chromium.org>
->>
->> Experiments show that the:
->>  (1) mtk-mdp uses the _MPLANE form of CAPTURE/OUTPUT
->>  (2) CAPTURE types use CROP targets, and OUTPUT types use COMPOSE targets
->>
->> Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
->> Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
->> Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
->>
->> ---
->> Changes in v2:
->> . Can not use *_MPLANE type in g_/s_selection 
->> ---
->>  drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c | 10 +++++-----
->>  1 file changed, 5 insertions(+), 5 deletions(-)
->>
->> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
->> index 13afe48..e18ac626 100644
->> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
->> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
->> @@ -838,10 +838,10 @@ static int mtk_mdp_m2m_g_selection(struct file *file, void *fh,
->>  	bool valid = false;
->>  
->>  	if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE) {
->> -		if (mtk_mdp_is_target_compose(s->target))
->> +		if (mtk_mdp_is_target_crop(s->target))
->>  			valid = true;
->>  	} else if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT) {
->> -		if (mtk_mdp_is_target_crop(s->target))
->> +		if (mtk_mdp_is_target_compose(s->target))
->>  			valid = true;
->>  	}
->>  	if (!valid) {
->> @@ -908,10 +908,10 @@ static int mtk_mdp_m2m_s_selection(struct file *file, void *fh,
->>  	bool valid = false;
->>  
->>  	if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE) {
->> -		if (s->target == V4L2_SEL_TGT_COMPOSE)
->> +		if (s->target == V4L2_SEL_TGT_CROP)
->>  			valid = true;
->>  	} else if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT) {
->> -		if (s->target == V4L2_SEL_TGT_CROP)
->> +		if (s->target == V4L2_SEL_TGT_COMPOSE)
->>  			valid = true;
->>  	}
->>  	if (!valid) {
->> @@ -925,7 +925,7 @@ static int mtk_mdp_m2m_s_selection(struct file *file, void *fh,
->>  	if (ret)
->>  		return ret;
->>  
->> -	if (mtk_mdp_is_target_crop(s->target))
->> +	if (mtk_mdp_is_target_compose(s->target))
->>  		frame = &ctx->s_frame;
->>  	else
->>  		frame = &ctx->d_frame;
-> 
-> 
+Acked-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
