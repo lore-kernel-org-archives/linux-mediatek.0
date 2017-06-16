@@ -1,46 +1,48 @@
-From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] arm64: dts: mt6797: fixup build breakage from no such file
-Date: Sat, 17 Jun 2017 00:31:01 +0800
-Message-ID: <df54b5e599b47ca9a73a0b6f5f9ca2e4139a4a7f.1497630282.git.sean.wang@mediatek.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH] MAINTAINERS: Add an entry for MediaTek PCIe driver
+Date: Fri, 16 Jun 2017 11:51:14 -0500
+Message-ID: <20170616165114.GB11129@bhelgaas-glaptop.roam.corp.google.com>
+References: <1497588789-28607-1-git-send-email-ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1497588789-28607-1-git-send-email-ryder.lee@mediatek.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Fri, Jun 16, 2017 at 12:53:09PM +0800, Ryder Lee wrote:
+> Add MediaTek PCIe driver maintainer entry.
+> 
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 
-fixup build error from no such file as the following complains
-from branch v4.12-next/dts64 in linux mediatek tree
+Folded into pci/host-mediatek for v4.13, thanks!
 
-arch/arm64/boot/dts/mediatek/mt6797.dtsi:15:44: fatal error:
-dt-bindings/power/mt6797-power.h: No such file or directory
- #include <dt-bindings/power/mt6797-power.h>
-
-Fixes: 003f5d0c3462 ("arm64: dts: mediatek: add clk and scp nodes for MT6797")
-Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- arch/arm64/boot/dts/mediatek/mt6797.dtsi | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-index 3512c8e..31088a9f 100644
---- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-@@ -12,7 +12,6 @@
-  */
- 
- #include <dt-bindings/clock/mt6797-clk.h>
--#include <dt-bindings/power/mt6797-power.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- 
--- 
-2.7.4
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> ---
+>  MAINTAINERS | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index f7d568b..736648e 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -9957,6 +9957,14 @@ S:	Supported
+>  F:	Documentation/devicetree/bindings/pci/pci-thunder-*
+>  F:	drivers/pci/host/pci-thunder-*
+>  
+> +PCIE DRIVER FOR MEDIATEK
+> +M:      Ryder Lee <ryder.lee@mediatek.com>
+> +L:      linux-pci@vger.kernel.org
+> +L:      linux-mediatek@lists.infradead.org
+> +S:      Supported
+> +F:      Documentation/devicetree/bindings/pci/mediatek*
+> +F:      drivers/pci/host/*mediatek*
+> +
+>  PCMCIA SUBSYSTEM
+>  P:	Linux PCMCIA Team
+>  L:	linux-pcmcia@lists.infradead.org
+> -- 
+> 1.9.1
+> 
