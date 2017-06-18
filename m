@@ -1,73 +1,29 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v5 2/2] arm64: dts: mt7622: add dts file for MT7622 reference board variant 1
-Date: Sat, 17 Jun 2017 01:06:27 +0800
-Message-ID: <89b858d84d42b857a47588c489c55cca06603ae8.1497631953.git.sean.wang@mediatek.com>
-References: <cover.1497631953.git.sean.wang@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 1/3] dt-bindings: rng: add MediaTek MT7622 Hardware
+ Random Generator bindings
+Date: Sun, 18 Jun 2017 09:04:45 -0500
+Message-ID: <20170618140445.54uxdqtgi4mlsrpr@rob-hp-laptop>
+References: <cover.1497280813.git.sean.wang@mediatek.com>
+ <89b9b682ff9e294df7cda75787c1439c95ffc992.1497280813.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1497631953.git.sean.wang@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <89b9b682ff9e294df7cda75787c1439c95ffc992.1497280813.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+To: sean.wang@mediatek.com
+Cc: herbert@gondor.apana.org.au, mpm@selenic.com, mark.rutland@arm.com, clabbe.montjoie@gmail.com, prasannatsmkumar@gmail.com, romain.perier@free-electrons.com, shannon.nelson@oracle.com, weiyongjun1@huawei.com, devicetree@vger.kernel.org, linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Mon, Jun 12, 2017 at 11:56:54PM +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> Document the bindings used by MediaTek MT7622 SoC hardware random number
+> generator.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/rng/mtk-rng.txt | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 
-Add the support for the MT7622 reference board variant 1 from
-MediaTek.
-
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/Makefile        |  1 +
- arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts | 27 +++++++++++++++++++++++++++
- 2 files changed, 28 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 015eb07..89371be 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -1,6 +1,7 @@
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
- 
- always		:= $(dtb-y)
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-new file mode 100644
-index 0000000..c08309d
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-@@ -0,0 +1,27 @@
-+/*
-+ * Copyright (c) 2017 MediaTek Inc.
-+ * Author: Ming Huang <ming.huang@mediatek.com>
-+ *	   Sean Wang <sean.wang@mediatek.com>
-+ *
-+ * SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+ */
-+
-+/dts-v1/;
-+#include "mt7622.dtsi"
-+
-+/ {
-+	model = "MediaTek MT7622 RFB1 board";
-+	compatible = "mediatek,mt7622-rfb1", "mediatek,mt7622";
-+
-+	chosen {
-+		bootargs = "console=ttyS0,115200n1";
-+	};
-+
-+	memory {
-+		reg = <0 0x40000000 0 0x3F000000>;
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
--- 
-2.7.4
+Acked-by: Rob Herring <robh@kernel.org>
