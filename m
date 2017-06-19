@@ -1,117 +1,80 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: Re: [PATCH v2] [media] mtk-mdp: Fix g_/s_selection capture/compose
- logic
-Date: Mon, 19 Jun 2017 12:10:52 +0200
-Message-ID: <74fa6870-fc5e-13b2-a111-cf9f2e83034c@xs4all.nl>
-References: <1494556970-12278-1-git-send-email-minghsiu.tsai@mediatek.com>
- <a180f2fc-1dce-3630-ed48-25c247eff79a@xs4all.nl>
- <1497866607.25194.14.camel@mtksdaap41>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1497866607.25194.14.camel@mtksdaap41>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Houlong Wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Wu-Cheng Li <wuchengli-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: John Crispin <john@phrozen.org>
+Subject: [PATCH 2/4] net-next: mediatek: add RX IRQ delay support
+Date: Mon, 19 Jun 2017 15:37:04 +0200
+Message-ID: <20170619133706.3415-3-john@phrozen.org>
+References: <20170619133706.3415-1-john@phrozen.org>
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20170619133706.3415-1-john@phrozen.org>
+Sender: netdev-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>, "David S . Miller" <davem@davemloft.net>
+Cc: linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, John Crispin <john@phrozen.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 06/19/2017 12:03 PM, Minghsiu Tsai wrote:
-> Hi, Hans,
-> 
-> On Fri, 2017-06-16 at 12:42 +0200, Hans Verkuil wrote:
->> On 05/12/17 04:42, Minghsiu Tsai wrote:
->>> From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->>>
->>> Experiments show that the:
->>>   (1) mtk-mdp uses the _MPLANE form of CAPTURE/OUTPUT
->>
->> Please drop this, since this no longer applies to this patch.
->>
-> 
-> I will remove it next version
-> 
-> 
->>>   (2) CAPTURE types use CROP targets, and OUTPUT types use COMPOSE targets
->>
->> Are you really certain about this?
->>
->> For m2m devices the output (i.e. memory to hardware) typically crops from memory
->> and the capture side (hardware to memory) composes into memory.
->>
->> I.e.: for the output side you crop the part of the memory buffer that you want
->> to process and on the capture side you compose the result into a memory buffer:
->> i.e. the memory buffer might be 1920x1080, but you compose the decoder output
->> into a rectangle of 640x480 at offset 128x128 within that buffer (just an example).
->>
->> CAPTURE using crop would be if, before the data is DMAed, the hardware decoder
->> output is cropped. E.g. if the stream fed to the decoder is 1920x1080, but you
->> want to only DMA a subselection of that, then that would be cropping, and it
->> would go to a memory buffer of the size of the crop selection.
->>
->> OUTPUT using compose is highly unlikely: that means that the frame you give
->> is composed in a larger internal buffer with generated border data around it.
->> Very rare and really only something that a compositor of some sort would do.
->>
-> 
-> That's strange. In v4l2-ioctl.c, v4l_g_crop()
-> OUTPUT is using COMPOSE
-> CAPTURE is using CROP
+The PDMA engine used for RX allows IRQ aggregation. The patch sets up the
+corresponding registers to aggregate 4 IRQs into one. Using aggregation
+reduces the load on the core handling to a quarter thus reducing IRQ
+latency and increasing RX performance by around 10%.
 
-The old crop API can't be used with most (all?) codec drivers. Codec drivers do
-exactly the opposite of what the old crop API did.
+Signed-off-by: John Crispin <john@phrozen.org>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c |  4 +++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 13 ++++++++++---
+ 2 files changed, 13 insertions(+), 4 deletions(-)
 
-It is the reason the selection API was created.
-
-The old crop API was written for SDTV receivers where the hardware would crop
-the received video. For output (rarely used) the hardware would compose the
-image into a larger (PAL or NTSC sizes) frame.
-
-Applications have to use the selection API to work with codec drivers. Just
-ignore the old crop ioctls, they are not suitable for such hardware.
-
-> 
-> static int v4l_g_crop(const struct v4l2_ioctl_ops *ops,
-> 				struct file *file, void *fh, void *arg)
-> ...
-> 	/* crop means compose for output devices */
-> 	if (V4L2_TYPE_IS_OUTPUT(p->type))
-> 		s.target = V4L2_SEL_TGT_COMPOSE_ACTIVE;
-> 	else
-> 		s.target = V4L2_SEL_TGT_CROP_ACTIVE;
-> 
-> 	ret = ops->vidioc_g_selection(file, fh, &s);
-> 
-> 
->> What exactly does the hardware do? Both for the encoder and for the decoder
->> case. Perhaps if I knew exactly what that is, then I can advise.
->>
-> 
-> NV12M/YUV420M/MT21 -> MDP -> NV12M/YUV420M
-> 
-> The usage would be like this:
-> For decoder:
-> decoder -> MT21 -> MDP -> NV12M/YUV420M
-> 
-> For encoder:
-> NV12M/YUV420M -> MDP -> NV12M/YUV420M -> encoder
-
-That doesn't help. Where in these two chains does the cropping (encoder) or
-composing (decoder) take place? I assume it is the DMA engine that read from
-a rectangle in the source buffer (encoder) or writes to a rectangle in the
-destination buffer (decoder).
-
-And in that case the current driver is correct.
-
-I wonder if the g/s_crop description in the V4L2 Specification should get a
-big fat warning that it doesn't apply to codec drivers and that the selection
-API should be used instead. A patch for that is welcome!
-
-Regards,
-
-	Hans
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 24d5f1cad7f4..92be59a1e4e7 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1861,9 +1861,11 @@ static int mtk_hw_init(struct mtk_eth *eth)
+ 	/* Enable RX VLan Offloading */
+ 	mtk_w32(eth, 1, MTK_CDMP_EG_CTRL);
+ 
++	/* enable interrupt delay for RX */
++	mtk_w32(eth, MTK_PDMA_DELAY_RX_DELAY, MTK_PDMA_DELAY_INT);
++
+ 	/* disable delay and normal interrupt */
+ 	mtk_w32(eth, 0, MTK_QDMA_DELAY_INT);
+-	mtk_w32(eth, 0, MTK_PDMA_DELAY_INT);
+ 	mtk_irq_disable(eth, MTK_QDMA_INT_MASK, ~0);
+ 	mtk_irq_disable(eth, MTK_PDMA_INT_MASK, ~0);
+ 	mtk_w32(eth, RST_GL_PSE, MTK_RST_GL);
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 3c46a3b613b9..e130c3b24c4c 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -125,7 +125,14 @@
+ #define MTK_PST_DRX_IDX_CFG(x)	(MTK_PST_DRX_IDX0 << (x))
+ 
+ /* PDMA Delay Interrupt Register */
+-#define MTK_PDMA_DELAY_INT	0xa0c
++#define MTK_PDMA_DELAY_INT		0xa0c
++#define MTK_PDMA_DELAY_RX_EN		BIT(15)
++#define MTK_PDMA_DELAY_RX_PINT		4
++#define MTK_PDMA_DELAY_RX_PINT_SHIFT	8
++#define MTK_PDMA_DELAY_RX_PTIME		4
++#define MTK_PDMA_DELAY_RX_DELAY		\
++	(MTK_PDMA_DELAY_RX_EN | MTK_PDMA_DELAY_RX_PTIME | \
++	(MTK_PDMA_DELAY_RX_PINT << MTK_PDMA_DELAY_RX_PINT_SHIFT))
+ 
+ /* PDMA Interrupt Status Register */
+ #define MTK_PDMA_INT_STATUS	0xa20
+@@ -206,6 +213,7 @@
+ 
+ /* QDMA Interrupt Status Register */
+ #define MTK_QMTK_INT_STATUS	0x1A18
++#define MTK_RX_DONE_DLY		BIT(30)
+ #define MTK_RX_DONE_INT3	BIT(19)
+ #define MTK_RX_DONE_INT2	BIT(18)
+ #define MTK_RX_DONE_INT1	BIT(17)
+@@ -214,8 +222,7 @@
+ #define MTK_TX_DONE_INT2	BIT(2)
+ #define MTK_TX_DONE_INT1	BIT(1)
+ #define MTK_TX_DONE_INT0	BIT(0)
+-#define MTK_RX_DONE_INT		(MTK_RX_DONE_INT0 | MTK_RX_DONE_INT1 | \
+-				 MTK_RX_DONE_INT2 | MTK_RX_DONE_INT3)
++#define MTK_RX_DONE_INT		MTK_RX_DONE_DLY
+ #define MTK_TX_DONE_INT		(MTK_TX_DONE_INT0 | MTK_TX_DONE_INT1 | \
+ 				 MTK_TX_DONE_INT2 | MTK_TX_DONE_INT3)
+ 
+-- 
+2.11.0
