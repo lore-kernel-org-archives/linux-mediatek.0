@@ -1,173 +1,98 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 1/3] PCI: mediatek: modify controller powerup logic
-Date: Mon, 19 Jun 2017 17:59:58 +0800
-Message-ID: <1497866400-41844-2-git-send-email-ryder.lee@mediatek.com>
-References: <1497866400-41844-1-git-send-email-ryder.lee@mediatek.com>
+From: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2] [media] mtk-mdp: Fix g_/s_selection capture/compose
+ logic
+Date: Mon, 19 Jun 2017 18:03:27 +0800
+Message-ID: <1497866607.25194.14.camel@mtksdaap41>
+References: <1494556970-12278-1-git-send-email-minghsiu.tsai@mediatek.com>
+         <a180f2fc-1dce-3630-ed48-25c247eff79a@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <1497866400-41844-1-git-send-email-ryder.lee@mediatek.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <a180f2fc-1dce-3630-ed48-25c247eff79a-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Houlong Wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Wu-Cheng Li <wuchengli-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The current powerup logic may lead to unbalanced pm_runtime_enable() if
-the earlier probe failed due to -EPROBE_DEFER. Hence we do a little flow
-adjustment to avoid that:
+Hi, Hans,
 
-Parse standard PCI resources firstly, then check properties for each port,
-power on controller finally.
+On Fri, 2017-06-16 at 12:42 +0200, Hans Verkuil wrote:
+> On 05/12/17 04:42, Minghsiu Tsai wrote:
+> > From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> > 
+> > Experiments show that the:
+> >  (1) mtk-mdp uses the _MPLANE form of CAPTURE/OUTPUT
+> 
+> Please drop this, since this no longer applies to this patch.
+> 
 
-Also, this patch removes unused registers and renames funtions properly.
+I will remove it next version
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/pci/host/pcie-mediatek.c | 51 +++++++++++++++++-----------------------
- 1 file changed, 21 insertions(+), 30 deletions(-)
 
-diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-index 3baafa8..165d82d 100644
---- a/drivers/pci/host/pcie-mediatek.c
-+++ b/drivers/pci/host/pcie-mediatek.c
-@@ -34,8 +34,6 @@
- 
- /* PCIe per port registers */
- #define PCIE_BAR0_SETUP		0x10
--#define PCIE_BAR1_SETUP		0x14
--#define PCIE_BAR0_MEM_BASE	0x18
- #define PCIE_CLASS		0x34
- #define PCIE_LINK_STATUS	0x50
- 
-@@ -224,7 +222,7 @@ static void mtk_pcie_assert_ports(struct mtk_pcie_port *port)
- 	msleep(100);
- }
- 
--static int mtk_pcie_enable_ports(struct mtk_pcie_port *port)
-+static void mtk_pcie_enable_ports(struct mtk_pcie_port *port)
- {
- 	struct device *dev = port->pcie->dev;
- 	int err;
-@@ -249,7 +247,7 @@ static int mtk_pcie_enable_ports(struct mtk_pcie_port *port)
- 	/* if link up, then setup root port configuration space */
- 	if (mtk_pcie_link_is_up(port)) {
- 		mtk_pcie_configure_rc(port);
--		return 0;
-+		return;
- 	}
- 
- 	dev_info(dev, "Port%d link down\n", port->index);
-@@ -257,13 +255,13 @@ static int mtk_pcie_enable_ports(struct mtk_pcie_port *port)
- 	phy_power_off(port->phy);
- err_phy_on:
- 	clk_disable_unprepare(port->sys_ck);
--	mtk_pcie_port_free(port);
- err_sys_clk:
--	return err;
-+	mtk_pcie_port_free(port);
-+
-+	return;
- }
- 
- static int mtk_pcie_parse_ports(struct mtk_pcie *pcie,
--				struct mtk_pcie_port **p,
- 				struct device_node *node,
- 				int index)
- {
-@@ -274,12 +272,10 @@ static int mtk_pcie_parse_ports(struct mtk_pcie *pcie,
- 	char name[10];
- 	int err;
- 
--	*p = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
--	if (!*p)
-+	port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
-+	if (!port)
- 		return -ENOMEM;
- 
--	port = *p;
--
- 	err = of_property_read_u32(node, "num-lanes", &port->lane);
- 	if (err) {
- 		dev_err(dev, "missing num-lanes property\n");
-@@ -323,7 +319,7 @@ static int mtk_pcie_parse_ports(struct mtk_pcie *pcie,
- 	return 0;
- }
- 
--static int mtk_pcie_handle_shared_resource(struct mtk_pcie *pcie)
-+static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
- {
- 	struct device *dev = pcie->dev;
- 	struct platform_device *pdev = to_platform_device(dev);
-@@ -366,20 +362,16 @@ static int mtk_pcie_handle_shared_resource(struct mtk_pcie *pcie)
- 	return err;
- }
- 
--static int mtk_pcie_parse_and_add_res(struct mtk_pcie *pcie)
-+static int mtk_pcie_setup(struct mtk_pcie *pcie)
- {
- 	struct device *dev = pcie->dev;
- 	struct device_node *node = dev->of_node, *child;
- 	struct of_pci_range_parser parser;
- 	struct of_pci_range range;
- 	struct resource res;
-+	struct mtk_pcie_port *port, *tmp;
- 	int err;
- 
--	/* parse shared resources */
--	err = mtk_pcie_handle_shared_resource(pcie);
--	if (err)
--		return err;
--
- 	if (of_pci_range_parser_init(&parser, node)) {
- 		dev_err(dev, "missing \"ranges\" property\n");
- 		return -EINVAL;
-@@ -423,8 +415,7 @@ static int mtk_pcie_parse_and_add_res(struct mtk_pcie *pcie)
- 		pcie->busn.flags = IORESOURCE_BUS;
- 	}
- 
--	for_each_child_of_node(node, child) {
--		struct mtk_pcie_port *port;
-+	for_each_available_child_of_node(node, child) {
- 		int index;
- 
- 		err = of_pci_get_devfn(child);
-@@ -435,19 +426,19 @@ static int mtk_pcie_parse_and_add_res(struct mtk_pcie *pcie)
- 
- 		index = PCI_SLOT(err);
- 
--		if (!of_device_is_available(child))
--			continue;
--
--		err = mtk_pcie_parse_ports(pcie, &port, child, index);
--		if (err)
--			return err;
--
--		/* enable each port, and then check link status */
--		err = mtk_pcie_enable_ports(port);
-+		err = mtk_pcie_parse_ports(pcie, child, index);
- 		if (err)
- 			return err;
- 	}
- 
-+	err = mtk_pcie_subsys_powerup(pcie);
-+	if (err)
-+		return err;
-+
-+	/* enable each port, and then check link status */
-+	list_for_each_entry_safe(port, tmp, &pcie->ports, list)
-+		mtk_pcie_enable_ports(port);
-+
- 	return 0;
- }
- 
-@@ -516,7 +507,7 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 	platform_set_drvdata(pdev, pcie);
- 	INIT_LIST_HEAD(&pcie->ports);
- 
--	err = mtk_pcie_parse_and_add_res(pcie);
-+	err = mtk_pcie_setup(pcie);
- 	if (err)
- 		return err;
- 
--- 
-1.9.1
+> >  (2) CAPTURE types use CROP targets, and OUTPUT types use COMPOSE targets
+> 
+> Are you really certain about this?
+> 
+> For m2m devices the output (i.e. memory to hardware) typically crops from memory
+> and the capture side (hardware to memory) composes into memory.
+> 
+> I.e.: for the output side you crop the part of the memory buffer that you want
+> to process and on the capture side you compose the result into a memory buffer:
+> i.e. the memory buffer might be 1920x1080, but you compose the decoder output
+> into a rectangle of 640x480 at offset 128x128 within that buffer (just an example).
+> 
+> CAPTURE using crop would be if, before the data is DMAed, the hardware decoder
+> output is cropped. E.g. if the stream fed to the decoder is 1920x1080, but you
+> want to only DMA a subselection of that, then that would be cropping, and it
+> would go to a memory buffer of the size of the crop selection.
+> 
+> OUTPUT using compose is highly unlikely: that means that the frame you give
+> is composed in a larger internal buffer with generated border data around it.
+> Very rare and really only something that a compositor of some sort would do.
+> 
+
+That's strange. In v4l2-ioctl.c, v4l_g_crop()
+OUTPUT is using COMPOSE
+CAPTURE is using CROP
+
+static int v4l_g_crop(const struct v4l2_ioctl_ops *ops,
+				struct file *file, void *fh, void *arg)
+...
+	/* crop means compose for output devices */
+	if (V4L2_TYPE_IS_OUTPUT(p->type))
+		s.target = V4L2_SEL_TGT_COMPOSE_ACTIVE;
+	else
+		s.target = V4L2_SEL_TGT_CROP_ACTIVE;
+
+	ret = ops->vidioc_g_selection(file, fh, &s);
+
+
+> What exactly does the hardware do? Both for the encoder and for the decoder
+> case. Perhaps if I knew exactly what that is, then I can advise.
+> 
+
+NV12M/YUV420M/MT21 -> MDP -> NV12M/YUV420M
+
+The usage would be like this:
+For decoder:
+decoder -> MT21 -> MDP -> NV12M/YUV420M
+
+For encoder:
+NV12M/YUV420M -> MDP -> NV12M/YUV420M -> encoder
+
+
+
+> Regards,
+> 
+> 	Hans
+> 
+
+
+
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
