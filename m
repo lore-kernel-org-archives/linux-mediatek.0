@@ -1,29 +1,121 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 1/3] dt-bindings: rng: add MediaTek MT7622 Hardware
- Random Generator bindings
-Date: Sun, 18 Jun 2017 09:04:45 -0500
-Message-ID: <20170618140445.54uxdqtgi4mlsrpr@rob-hp-laptop>
-References: <cover.1497280813.git.sean.wang@mediatek.com>
- <89b9b682ff9e294df7cda75787c1439c95ffc992.1497280813.git.sean.wang@mediatek.com>
+From: Olof Johansson <olof@lixom.net>
+Subject: Re: [GIT PULL] ARM: Medaitek armv7 DTS for v4.13
+Date: Sun, 18 Jun 2017 19:34:37 -0700
+Message-ID: <20170619023437.GV30022@localhost>
+References: <5056d433-90b3-a3ca-4df7-9ff02ab6027b@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <89b9b682ff9e294df7cda75787c1439c95ffc992.1497280813.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: herbert@gondor.apana.org.au, mpm@selenic.com, mark.rutland@arm.com, clabbe.montjoie@gmail.com, prasannatsmkumar@gmail.com, romain.perier@free-electrons.com, shannon.nelson@oracle.com, weiyongjun1@huawei.com, devicetree@vger.kernel.org, linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com
+In-Reply-To: <5056d433-90b3-a3ca-4df7-9ff02ab6027b@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Youlin Pei <youlin.pei@mediatek.com>, Garlic Tseng <garlic.tseng@mediatek.com>, Rick Chang <rick.chang@mediatek.com>, Jun Gao <jun.gao@mediatek.com>, arm-soc <arm@kernel.org>, linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, John Crispin <john@phrozen.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jun 12, 2017 at 11:56:54PM +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On Mon, Jun 12, 2017 at 12:31:47PM +0200, Matthias Brugger wrote:
+> Hi Arnd and Olof,
 > 
-> Document the bindings used by MediaTek MT7622 SoC hardware random number
-> generator.
+> Please find below my merge request for armv7 device tree changes.
 > 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Regards,
+> Matthias
+> 
 > ---
->  Documentation/devicetree/bindings/rng/mtk-rng.txt | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> The following changes since commit 2ea659a9ef488125eb46da6eb571de5eae5c43f6:
+> 
+>   Linux 4.12-rc1 (2017-05-13 13:19:49 -0700)
+> 
+> are available in the git repository at:
+> 
+>   https://github.com/mbgg/linux-mediatek.git tags/v4.12-next-dts32
+> 
+> for you to fetch changes up to aac5e972d4c7bc728df605f5427d9c2458c34ea9:
+> 
+>   arm: dts: mediatek: Add audio driver node for MT2701 (2017-06-07 10:47:25
+> +0200)
 
-Acked-by: Rob Herring <robh@kernel.org>
+Thanks, merged. Comment below:
+
+> 
+> ----------------------------------------------------------------
+> Add device tree nodes for
+> mt7623:
+> - clocks
+> - power domain
+> - pmic-wrapper
+> - pinctrl
+> - i2c
+> - spi
+> - nand
+> - mmc
+> - usb
+> - pwm
+> - ethernet
+> - crypto engine
+> - infared remote control
+> - audio controller
+> - ADC
+> - efuse
+> - thermal driver
+> - HW random generator
+> 
+> mt2701:
+> - NOR flash
+> - JPEG decoder
+> - i2c
+> - audio controller
+> 
+> ----------------------------------------------------------------
+> Garlic Tseng (1):
+>       arm: dts: mediatek: Add audio driver node for MT2701
+> 
+> Guochun Mao (1):
+>       arm: dts: mt2701: add nor flash node
+> 
+> John Crispin (9):
+>       arm: dts: mt7623: add clock controller device nodes
+>       arm: dts: mt7623: add subsystem clock controller device nodes
+>       arm: dts: mt7623: add power domain controller device node
+>       arm: dts: mt7623: add pinctrl nodes to the mt7623 dtsi file
+>       arm: dts: mt7623: add pmic wrapper nodes to the mt7623 dtsi file
+>       arm: dts: mt7623: add i2c nodes to the mt7623.dtsi file
+>       arm: dts: mt7623: add nand nodes to the mt7623.dtsi file
+>       arm: dts: mt7623: add mmc nodes to the mt7623.dtsi file
+>       arm: dts: mt7623: add usb nodes to the mt7623.dtsi file
+> 
+> Jun Gao (1):
+>       arm: dts: Add Mediatek MT2701 i2c device node
+> 
+> Rick Chang (1):
+>       arm: dts: mt2701: Add node for Mediatek JPEG Decoder
+> 
+> Sean Wang (11):
+>       arm: dts: mt7623: add spi nodes to the mt7623.dtsi file
+>       arm: dts: mt7623: add pwm nodes to the mt7623.dtsi file
+>       arm: dts: mt7623: add ethernet nodes to the mt7623.dtsi file
+>       arm: dts: mt7623: add crypto engine nodes to the mt7623.dtsi file
+>       arm: dts: mt7623: add ir nodes to the mt7623.dtsi file
+>       arm: dts: mt7623: add afe nodes to the mt7623.dtsi file
+>       arm: dts: mt7623: add rng nodes to the mt7623.dtsi file
+>       arm: dts: mt7623: add auxadc nodes to the mt7623.dtsi file
+>       arm: dts: mt7623: add efuse nodes to the mt7623.dtsi file
+>       arm: dts: mt7623: add thermal nodes to the mt7623.dtsi file
+>       arm: dts: mt7623: add Sean as one of authors for mt7623.dtsi files
+
+This excessive patch splitting probably isn't warranted. In the future,
+especially for new and major updates like this, a single patch (or one per
+author) should do just fine.
+
+
+-Olof
