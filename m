@@ -1,48 +1,86 @@
-From: Leilk Liu <leilk.liu@mediatek.com>
-Subject: [PATCH 2/2] spi: mediatek: add spi support for mt2712 IC
-Date: Tue, 20 Jun 2017 16:21:07 +0800
-Message-ID: <1497946867-25708-3-git-send-email-leilk.liu@mediatek.com>
-References: <1497946867-25708-1-git-send-email-leilk.liu@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [GIT PULL] ARM: Mediatek soc drivers for v4.13
+Date: Tue, 20 Jun 2017 12:10:42 +0200
+Message-ID: <a24f9e49-3c5e-052e-83ef-b58705cf7b11@gmail.com>
+References: <25946bae-31fb-ab97-aedb-92681cf603c4@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1497946867-25708-1-git-send-email-leilk.liu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, Leilk Liu <leilk.liu@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <25946bae-31fb-ab97-aedb-92681cf603c4-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Christophe JAILLET <christophe.jaillet-39ZsbGIQGT5GWvitb5QawA@public.gmane.org>, Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Shailendra Verma <shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-this patch add support for mt2712 IC.
+Hi Olof and Arnd,
 
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
----
- drivers/spi/spi-mt65xx.c |    7 +++++++
- 1 file changed, 7 insertions(+)
+Olof merged my v4.12-next-dts32 and v4.12-next-dts64 branch, but didn't 
+merge this one.
+Actually dts64 depends on a this branch as it provides the dt-binding 
+header for the scpsys on mt6797. Not sure if I screwed up here having 
+such dependencies between my branches.
 
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index ec7755b..86bf456 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -105,6 +105,10 @@ struct mtk_spi {
- 
- static const struct mtk_spi_compatible mtk_common_compat;
- 
-+static const struct mtk_spi_compatible mt2712_compat = {
-+	.must_tx = true,
-+};
-+
- static const struct mtk_spi_compatible mt7622_compat = {
- 	.must_tx = true,
- 	.enhance_timing = true,
-@@ -130,6 +134,9 @@ struct mtk_spi {
- 	{ .compatible = "mediatek,mt2701-spi",
- 		.data = (void *)&mtk_common_compat,
- 	},
-+	{ .compatible = "mediatek,mt2712-spi",
-+		.data = (void *)&mt2712_compat,
-+	},
- 	{ .compatible = "mediatek,mt6589-spi",
- 		.data = (void *)&mtk_common_compat,
- 	},
--- 
-1.7.9.5
+Are there any concerns regarding the v4.12-next-soc which holds you back 
+on merging it?
+
+Regards,
+Matthias
+
+On 12/06/17 12:37, Matthias Brugger wrote:
+> Hi Olof, hi Anrd,
+> 
+> Please merge this updates for mediatek soc drivers.
+> 
+> Regards,
+> Matthias
+> 
+> ---
+> 
+> The following changes since commit 
+> 2ea659a9ef488125eb46da6eb571de5eae5c43f6:
+> 
+>    Linux 4.12-rc1 (2017-05-13 13:19:49 -0700)
+> 
+> are available in the git repository at:
+> 
+>    https://github.com/mbgg/linux-mediatek.git tags/v4.12-next-soc
+> 
+> for you to fetch changes up to 58a823dd7b515827ed07adb268e1769b3c292586:
+> 
+>    soc: mediatek: PMIC wrap: Fix possible NULL derefrence. (2017-05-15 
+> 10:47:25 +0200)
+> 
+> ----------------------------------------------------------------
+> - enhance scpsys to support mt6797
+> - add mt6797 support to scpsys
+> - fix error path in pmic-wrapper
+> - fix possible NULL pointer dereference in pmic-wrapper
+> 
+> ----------------------------------------------------------------
+> Christophe Jaillet (1):
+>        soc: mediatek: PMIC wrap: Fix error handling
+> 
+> Mars Cheng (3):
+>        soc: mediatek: avoid using fixed spm power status defines
+>        soc: mediatek: add vdec item for scpsys
+>        soc: mediatek: add MT6797 scpsys support
+> 
+> shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org (1):
+>        soc: mediatek: PMIC wrap: Fix possible NULL derefrence.
+> 
+>   drivers/soc/mediatek/mtk-pmic-wrap.c     |  14 ++-
+>   drivers/soc/mediatek/mtk-scpsys.c        | 149 
+> +++++++++++++++++++++++++++++--
+>   include/dt-bindings/power/mt6797-power.h |  30 +++++++
+>   3 files changed, 184 insertions(+), 9 deletions(-)
+>   create mode 100644 include/dt-bindings/power/mt6797-power.h
