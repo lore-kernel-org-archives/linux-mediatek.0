@@ -1,64 +1,31 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v2 0/3] add support of hardware random generator on
- MediaTek MT7622
-Date: Wed, 21 Jun 2017 00:08:14 +0800
-Message-ID: <1497974894.31931.8.camel@mtkswgap22>
-References: <cover.1497280813.git.sean.wang@mediatek.com>
-         <20170620034009.GD17764@gondor.apana.org.au>
-         <1497968477.27946.5.camel@mtkswgap22> <20170620145933.GA4177@suse.de>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH 0/4] net-next: mediatek: various performance
+ improvements
+Date: Tue, 20 Jun 2017 13:40:52 -0400 (EDT)
+Message-ID: <20170620.134052.264394808259657804.davem@davemloft.net>
+References: <20170619133706.3415-1-john@phrozen.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <20170620145933.GA4177@suse.de>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Torsten Duwe <duwe@suse.de>
-Cc: Herbert Xu <herbert@gondor.apana.org.au>, mpm@selenic.com, robh+dt@kernel.org, mark.rutland@arm.com, clabbe.montjoie@gmail.com, prasannatsmkumar@gmail.com, romain.perier@free-electrons.com, shannon.nelson@oracle.com, weiyongjun1@huawei.com, devicetree@vger.kernel.org, linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20170619133706.3415-1-john@phrozen.org>
+Sender: netdev-owner@vger.kernel.org
+To: john@phrozen.org
+Cc: sean.wang@mediatek.com, linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-06-20 at 16:59 +0200, Torsten Duwe wrote:
-> On Tue, Jun 20, 2017 at 10:21:17PM +0800, Sean Wang wrote:
-> > Hi Herbert,
-> > 
-> > thanks for effort reviewing on those patches.
-> > 
-> > By the way, also loop in Torsten
-> > 
-> > Could you kindly guide me how to determine appropriate 
-> > rng->ops.quality value used by the driver?
-> > 
-> > I have tested with rngtest on mtk-cir and the result is got as
-> > the below log shown.  If the rngtest always gives the result for
-> > success rate over 99.8%, can I set the rng->ops.quality 998?
-> > 
-> > rngtest: starting FIPS tests...
-> > rngtest: bits received from input: 20000032
-> > rngtest: FIPS 140-2 successes: 998
-> > rngtest: FIPS 140-2 failures: 2
+From: John Crispin <john@phrozen.org>
+Date: Mon, 19 Jun 2017 15:37:02 +0200
+
+> During development we mainly ran testing using iperf doing 1500 byte
+> tcp frames. It was pointed out recently, that the driver does not perform
+> very well when using 512 byte udp frames. The biggest problem was that
+> RPS was not working as no rx queue was being set. fixing this more than
+> doubled the throughput. Additionally the IRQ mask register is now locked
+> independently for RX and TX. RX IRQ aggregation is also added. With all
+> these patches applied we can almost triple the throughput.
 > 
-> No! You'd have to determine the failure threshold of the test and
-> apply some math to find a lower boundary of your RNG's entropy.
-> 
-> What the quality is for: your RNG produces bits, but not all of them
-> are completely independent of each other i.e. not completely random.
-> So you simply lower the quality rating to express the net entropy
-> contained in the data stream.
-> 
-> 	Torsten
-> 
+> While at it we also add PHY status change reporting for GMACs connecting
+> directly to a PHY.
 
-
-Hi Torsten,
-
-Understood, appreciate your quick and clear explanation.
- 
-For the math, is there existing any well-known or recommended
-open source software assisting identify the lower boundary of
-RNG entropy? I think the logic should be common for all RNGs.
-
-thanks again
-
-	Sean
-
-
-	Sean
+Series applied, thank you.
