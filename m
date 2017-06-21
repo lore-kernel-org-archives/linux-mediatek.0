@@ -1,77 +1,64 @@
-From: John Crispin <john@phrozen.org>
-Subject: Re: [PATCH RESEND 4/4] pwm: mediatek: add MT2712/MT7622 support
-Date: Wed, 21 Jun 2017 14:22:31 +0200
-Message-ID: <4600cf23-5e59-df02-37dc-056cb4a9744c@phrozen.org>
-References: <1498032672-7172-1-git-send-email-zhi.mao@mediatek.com>
- <1498032672-7172-5-git-send-email-zhi.mao@mediatek.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [v2] drm: mediatek: change the variable type of rdma threshold
+Date: Wed, 21 Jun 2017 14:14:56 -0700
+Message-ID: <20170621211456.GA21176@roeck-us.net>
+References: <1495187843-6882-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <1498032672-7172-5-git-send-email-zhi.mao@mediatek.com>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Zhi Mao <zhi.mao@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pwm@vger.kernel.org
-Cc: zhenbao.liu@mediatek.com, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1495187843-6882-1-git-send-email-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, CK Hu <ck.hu@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 21/06/17 10:11, Zhi Mao wrote:
-> support multiple chip(MT2712, MT7622, MT7623)
-This patch does more than add extra SoC support. It also
-* adds PWM_CLK_DIV_MAX which really should go into its own patch
-* adds mtk_pwm_com_reg which should also go into its own patch
-
-more comments inline
-
->
-> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+On Fri, May 19, 2017 at 05:57:23PM +0800, Bibby Hsieh wrote:
+> For some greater resolution, the rdma threshold
+> variable will overflow.
+> 
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
 > ---
->   drivers/pwm/pwm-mediatek.c |   63 +++++++++++++++++++++++++++++++++++---------
->   1 file changed, 51 insertions(+), 12 deletions(-)
->
-> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-> index c803ff6..d520356 100644
-> --- a/drivers/pwm/pwm-mediatek.c
-> +++ b/drivers/pwm/pwm-mediatek.c
-> @@ -16,6 +16,7 @@
->   #include <linux/module.h>
->   #include <linux/clk.h>
->   #include <linux/of.h>
-> +#include <linux/of_device.h>
->   #include <linux/platform_device.h>
->   #include <linux/pwm.h>
->   #include <linux/slab.h>
-[...]
-> @@ -215,9 +238,25 @@ static int mtk_pwm_remove(struct platform_device *pdev)
->   	return pwmchip_remove(&pc->chip);
->   }
->   
-> +/*==========================================*/
+>  drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> index 0df05f9..9afdcd7 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> @@ -37,7 +37,7 @@
+>  #define DISP_REG_RDMA_FIFO_CON			0x0040
+>  #define RDMA_FIFO_UNDERFLOW_EN				BIT(31)
+>  #define RDMA_FIFO_PSEUDO_SIZE(bytes)			(((bytes) / 16) << 16)
+> -#define RDMA_OUTPUT_VALID_FIFO_THRESHOLD(bytes)		((bytes) / 16)
+> +#define RDMA_OUTPUT_VALID_FIFO_THRESHOLD(bytes) (((bytes) / 16) & 0x3ff)
 
-please remove these comment lines
+I agree with the earlier comment; clamp_val() might be more appropriate here
+and would avoid unexpected results.
 
-     John
-> +static const struct mtk_com_pwm_data mt2712_pwm_data = {
-> +	.pwm_nums = 8,
-> +};
-> +
-> +static const struct mtk_com_pwm_data mt7622_pwm_data = {
-> +	.pwm_nums = 6,
-> +};
-> +
-> +static const struct mtk_com_pwm_data mt7623_pwm_data = {
-> +	.pwm_nums = 5,
-> +};
-> +/*==========================================*/
-> +
->   static const struct of_device_id mtk_pwm_of_match[] = {
-> -	{ .compatible = "mediatek,mt7623-pwm" },
-> -	{ }
-> +	{.compatible = "mediatek,mt2712-pwm", .data = &mt2712_pwm_data},
-> +	{.compatible = "mediatek,mt7622-pwm", .data = &mt7622_pwm_data},
-> +	{.compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data},
-> +	{},
->   };
->   MODULE_DEVICE_TABLE(of, mtk_pwm_of_match);
->   
+>  
+>  /**
+>   * struct mtk_disp_rdma - DISP_RDMA driver structure
+> @@ -109,7 +109,7 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
+>  			    unsigned int height, unsigned int vrefresh,
+>  			    unsigned int bpc)
+>  {
+> -	unsigned int threshold;
+> +	unsigned long long threshold;
+>  	unsigned int reg;
+>  
+>  	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0, 0xfff, width);
+> @@ -121,7 +121,8 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
+>  	 * output threshold to 6 microseconds with 7/6 overhead to
+>  	 * account for blanking, and with a pixel depth of 4 bytes:
+>  	 */
+> -	threshold = width * height * vrefresh * 4 * 7 / 1000000;
+> +	threshold = (unsigned long long)width * height * vrefresh *
+> +		    4 * 7 / 1000000;
+
+This is a 64 bit divide operation. It will result in a build failure
+if compiled for a 32 bit kernel (eg arm:allmodconfig).
+
+ERROR: "__aeabi_uldivmod" [drivers/gpu/drm/mediatek/mediatek-drm.ko] undefined!
+
+Guenter
