@@ -1,182 +1,136 @@
-From: Zhi Mao <zhi.mao@mediatek.com>
-Subject: [PATCH RESEND 2/4] pwm: mediatek: fix clk issue
-Date: Wed, 21 Jun 2017 16:11:10 +0800
-Message-ID: <1498032672-7172-3-git-send-email-zhi.mao@mediatek.com>
-References: <1498032672-7172-1-git-send-email-zhi.mao@mediatek.com>
+From: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 2/2] arm64: dts: Add Mediatek SoC MT2712 and
+ evaluation board dts and Makefile
+Date: Wed, 21 Jun 2017 19:01:06 +0800
+Message-ID: <1498042866.2865.3.camel@mtksdaap41>
+References: <1497620721-61444-1-git-send-email-yt.shen@mediatek.com>
+         <1497620721-61444-3-git-send-email-yt.shen@mediatek.com>
+         <d5509532-7ab6-c9ce-d951-4bcdcc1399ff@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1498032672-7172-1-git-send-email-zhi.mao@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: john@phrozen.org, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pwm@vger.kernel.org
-Cc: zhenbao.liu@mediatek.com, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, zhi.mao@mediatek.com, yt.shen@mediatek.com, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <d5509532-7ab6-c9ce-d951-4bcdcc1399ff-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-1.fix clock control
- - prepare top/main clk in mtk_pwm_probe() function,
-   it will increase power consumption
-   and in original code these clocks is only prepeare but never enabled
- - pwm clock should be enabled before setting pwm registers
-   in function: mtk_pwm_config()
+On Fri, 2017-06-16 at 16:33 +0200, Matthias Brugger wrote:
+> 
+> On 16/06/17 15:45, YT Shen wrote:
+> > This adds basic chip support for Mediatek 2712
+> > 
+> > Signed-off-by: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/Makefile       |   1 +
+> >   arch/arm64/boot/dts/mediatek/mt2712-evb.dts |  32 ++++++
+> >   arch/arm64/boot/dts/mediatek/mt2712e.dtsi   | 166 ++++++++++++++++++++++++++++
+> >   3 files changed, 199 insertions(+)
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> > index 9fbfd32..fcc0604 100644
+> > --- a/arch/arm64/boot/dts/mediatek/Makefile
+> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> > @@ -1,3 +1,4 @@
+> > +dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+> > new file mode 100644
+> > index 0000000..8c804df
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+> > @@ -0,0 +1,32 @@
+> > +/*
+> > + * Copyright (c) 2017 MediaTek Inc.
+> > + * Author: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > + *
+> > + * SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> > + */
+> > +
+> > +/dts-v1/;
+> > +#include "mt2712e.dtsi"
+> > +
+> > +/ {
+> > +	model = "MediaTek MT2712 evaluation board";
+> > +	compatible = "mediatek,mt2712-evb", "mediatek,mt2712";
+> > +
+> > +	aliases {
+> > +		serial0 = &uart0;
+> > +	};
+> > +
+> > +	memory@40000000 {
+> > +		device_type = "memory";
+> > +		reg = <0 0x40000000 0 0x80000000>;
+> > +	};
+> > +
+> > +	chosen {
+> > +		stdout-path = "serial0:921600n8";
+> > +	};
+> > +};
+> > +
+> > +&uart0 {
+> > +	status = "okay";
+> > +};
+> > +
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> > new file mode 100644
+> > index 0000000..65cdd4a
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> > @@ -0,0 +1,166 @@
+> [...]
+> > +
+> > +	uart_clk: dummy26m {
+> > +		compatible = "fixed-clock";
+> > +		clock-frequency = <26000000>;
+> > +		#clock-cells = <0>;
+> > +	};
+> > +
+> > +	timer {
+> > +		compatible = "arm,armv8-timer";
+> > +		interrupt-parent = <&gic>;
+> > +		interrupts = <GIC_PPI 13
+> > +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>,
+> > +			     <GIC_PPI 14
+> > +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>,
+> > +			     <GIC_PPI 11
+> > +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>,
+> > +			     <GIC_PPI 10
+> > +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>;
+> > +	};
+> > +
+> > +	soc {
+> > +		#address-cells = <2>;
+> > +		#size-cells = <2>;
+> > +		compatible = "simple-bus";
+> > +		ranges;
+> > +
+> > +		uart5: serial@1000f000 {
+> > +			compatible = "mediatek,mt2712-uart",
+> > +				     "mediatek,mt6577-uart";
+> > +			reg = <0 0x1000f000 0 0x400>;
+> > +			interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
+> > +			clocks = <&uart_clk>;
+> 
+> uart has two clocks, baud and bus clock. Please refer to the bindings 
+> descrption for more information, that's what they are for.
+> 
+> Please define the two dummy clocks with the correct frequency and use them.
+> 
+> Regards,
+> Matthias
+Okay, after checking
+Documentation/devicetree/bindings/serial/mtk-uart.txt, I will use baud
+and bus clock in the next version.
 
-2.fix pwm source clock selection
- - in original code, the pwm output frequency is not correct
-   when set bit<3>=1 to PWMCON register.
+yt.shen
 
-Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
----
- drivers/pwm/pwm-mediatek.c |   69 +++++++++++++++++++++++++++-----------------
- 1 file changed, 43 insertions(+), 26 deletions(-)
-
-diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-index 5c11bc7..c803ff6 100644
---- a/drivers/pwm/pwm-mediatek.c
-+++ b/drivers/pwm/pwm-mediatek.c
-@@ -2,6 +2,7 @@
-  * Mediatek Pulse Width Modulator driver
-  *
-  * Copyright (C) 2015 John Crispin <blogic@openwrt.org>
-+ * Copyright (C) 2017 Zhi Mao <zhi.mao@mediatek.com>
-  *
-  * This file is licensed under the terms of the GNU General Public
-  * License version 2. This program is licensed "as is" without any
-@@ -61,6 +62,40 @@ static inline struct mtk_pwm_chip *to_mtk_pwm_chip(struct pwm_chip *chip)
- 	return container_of(chip, struct mtk_pwm_chip, chip);
- }
- 
-+static int mtk_pwm_clk_enable(struct pwm_chip *chip, struct pwm_device *pwm)
-+{
-+	struct mtk_pwm_chip *pc = to_mtk_pwm_chip(chip);
-+	int ret = 0;
-+
-+	ret = clk_prepare_enable(pc->clks[MTK_CLK_TOP]);
-+	if (ret < 0)
-+		return ret;
-+
-+	ret = clk_prepare_enable(pc->clks[MTK_CLK_MAIN]);
-+	if (ret < 0) {
-+		clk_disable_unprepare(pc->clks[MTK_CLK_TOP]);
-+		return ret;
-+	}
-+
-+	ret = clk_prepare_enable(pc->clks[MTK_CLK_PWM1 + pwm->hwpwm]);
-+	if (ret < 0) {
-+		clk_disable_unprepare(pc->clks[MTK_CLK_MAIN]);
-+		clk_disable_unprepare(pc->clks[MTK_CLK_TOP]);
-+		return ret;
-+	}
-+
-+	return ret;
-+}
-+
-+static void mtk_pwm_clk_disable(struct pwm_chip *chip, struct pwm_device *pwm)
-+{
-+	struct mtk_pwm_chip *pc = to_mtk_pwm_chip(chip);
-+
-+	clk_disable_unprepare(pc->clks[MTK_CLK_PWM1 + pwm->hwpwm]);
-+	clk_disable_unprepare(pc->clks[MTK_CLK_MAIN]);
-+	clk_disable_unprepare(pc->clks[MTK_CLK_TOP]);
-+}
-+
- static inline u32 mtk_pwm_readl(struct mtk_pwm_chip *chip, unsigned int num,
- 				unsigned int offset)
- {
-@@ -81,6 +116,8 @@ static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	struct clk *clk = pc->clks[MTK_CLK_PWM1 + pwm->hwpwm];
- 	u32 resolution, clkdiv = 0;
- 
-+	mtk_pwm_clk_enable(chip, pwm);
-+
- 	resolution = NSEC_PER_SEC / clk_get_rate(clk);
- 
- 	while (period_ns / resolution > 8191) {
-@@ -91,10 +128,12 @@ static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	if (clkdiv > 7)
- 		return -EINVAL;
- 
--	mtk_pwm_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | BIT(3) | clkdiv);
-+	mtk_pwm_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
- 	mtk_pwm_writel(pc, pwm->hwpwm, PWMDWIDTH, period_ns / resolution);
- 	mtk_pwm_writel(pc, pwm->hwpwm, PWMTHRES, duty_ns / resolution);
- 
-+	mtk_pwm_clk_disable(chip, pwm);
-+
- 	return 0;
- }
- 
-@@ -102,11 +141,8 @@ static int mtk_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
- {
- 	struct mtk_pwm_chip *pc = to_mtk_pwm_chip(chip);
- 	u32 value;
--	int ret;
- 
--	ret = clk_prepare(pc->clks[MTK_CLK_PWM1 + pwm->hwpwm]);
--	if (ret < 0)
--		return ret;
-+	mtk_pwm_clk_enable(chip, pwm);
- 
- 	value = readl(pc->regs);
- 	value |= BIT(pwm->hwpwm);
-@@ -124,7 +160,7 @@ static void mtk_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
- 	value &= ~BIT(pwm->hwpwm);
- 	writel(value, pc->regs);
- 
--	clk_unprepare(pc->clks[MTK_CLK_PWM1 + pwm->hwpwm]);
-+	mtk_pwm_clk_disable(chip, pwm);
- }
- 
- static const struct pwm_ops mtk_pwm_ops = {
-@@ -156,14 +192,6 @@ static int mtk_pwm_probe(struct platform_device *pdev)
- 			return PTR_ERR(pc->clks[i]);
- 	}
- 
--	ret = clk_prepare(pc->clks[MTK_CLK_TOP]);
--	if (ret < 0)
--		return ret;
--
--	ret = clk_prepare(pc->clks[MTK_CLK_MAIN]);
--	if (ret < 0)
--		goto disable_clk_top;
--
- 	platform_set_drvdata(pdev, pc);
- 
- 	pc->chip.dev = &pdev->dev;
-@@ -174,26 +202,15 @@ static int mtk_pwm_probe(struct platform_device *pdev)
- 	ret = pwmchip_add(&pc->chip);
- 	if (ret < 0) {
- 		dev_err(&pdev->dev, "pwmchip_add() failed: %d\n", ret);
--		goto disable_clk_main;
-+		return ret;
- 	}
- 
- 	return 0;
--
--disable_clk_main:
--	clk_unprepare(pc->clks[MTK_CLK_MAIN]);
--disable_clk_top:
--	clk_unprepare(pc->clks[MTK_CLK_TOP]);
--
--	return ret;
- }
- 
- static int mtk_pwm_remove(struct platform_device *pdev)
- {
- 	struct mtk_pwm_chip *pc = platform_get_drvdata(pdev);
--	unsigned int i;
--
--	for (i = 0; i < pc->chip.npwm; i++)
--		pwm_disable(&pc->chip.pwms[i]);
- 
- 	return pwmchip_remove(&pc->chip);
- }
--- 
-1.7.9.5
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
