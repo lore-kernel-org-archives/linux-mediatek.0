@@ -1,60 +1,48 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 06/30] arm: dts: mt7623: add clock-frequency to the
- a7 timer node to mt7623.dtsi
-Date: Wed, 21 Jun 2017 11:28:21 +0800
-Message-ID: <1498015701.3383.4.camel@mtkswgap22>
-References: <1493197474-3718-1-git-send-email-sean.wang@mediatek.com>
- <1493197474-3718-7-git-send-email-sean.wang@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH 1/2] dt-bindings: net: mediatek: update documentation for reset signals
+Date: Wed, 21 Jun 2017 15:49:51 +0800
+Message-ID: <302c3965ce2bde6354cee7614852096e6cfdf6b9.1498030300.git.sean.wang@mediatek.com>
+References: <cover.1498030300.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1493197474-3718-7-git-send-email-sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1498030300.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, john@phrozen.org, linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+From: Sean Wang <sean.wang@mediatek.com>
 
-Hi Matthias,
+Since there's no user for the property reset inside the ethernet node
+for current supported MediaTek SoCs and boards, so it should be safe to
+update reset property in the bindings to introduce more reset signals as
+corresponding that commit 7c2adaf11036 ("reset: mediatek: Add MT2701 ethsys
+reset controller include file") did in order to be referenced them from
+within a devicetree file.
 
-the patch seems to be gone in your tree which would make the unit not
-boot, but 5/30 and 7/30 have been accepted. Have any concern ? 
+Cc: John Crispin <john@phrozen.org>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ Documentation/devicetree/bindings/net/mediatek-net.txt | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-	Sean
-
-
-On Wed, 2017-04-26 at 17:04 +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-> 
-> We need to tell the driver what the timers frequency is and that the core
-> has not be configured by the bootrom. Not doing so makes the unit not
-> boot.
-> 
-> Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  arch/arm/boot/dts/mt7623.dtsi | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-> index adb2393..3cc0a3a 100644
-> --- a/arch/arm/boot/dts/mt7623.dtsi
-> +++ b/arch/arm/boot/dts/mt7623.dtsi
-> @@ -77,6 +77,8 @@
->  			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
->  			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
->  			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
-> +		clock-frequency = <13000000>;
-> +		arm,cpu-registers-not-fw-configured;
->  	};
->  
->  	topckgen: syscon@10000000 {
+diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
+index c7194e8..4eea17e 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-net.txt
++++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
+@@ -15,8 +15,10 @@ Required properties:
+ - clock-names: the names of the clock listed in the clocks property. These are
+ 	"ethif", "esw", "gp2", "gp1"
+ - power-domains: phandle to the power domain that the ethernet is part of
+-- resets: Should contain a phandle to the ethsys reset signal
+-- reset-names: Should contain the reset signal name "eth"
++- resets: Should contain phandles to the ethsys reset signals
++- reset-names: Should contain the names of reset signal listed in the resets
++		property
++		These are "fe", "gmac" and "ppe"
+ - mediatek,ethsys: phandle to the syscon node that handles the port setup
+ - mediatek,pctl: phandle to the syscon node that handles the ports slew rate
+ 	and driver current
+-- 
+2.7.4
