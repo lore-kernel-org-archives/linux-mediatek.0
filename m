@@ -1,64 +1,73 @@
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [v2] drm: mediatek: change the variable type of rdma threshold
-Date: Wed, 21 Jun 2017 14:14:56 -0700
-Message-ID: <20170621211456.GA21176@roeck-us.net>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: Re: [PATCH v2] drm: mediatek: change the variable type of rdma
+ threshold
+Date: Thu, 22 Jun 2017 10:21:04 +0800
+Message-ID: <1498098064.717.12.camel@mtksdaap41>
 References: <1495187843-6882-1-git-send-email-bibby.hsieh@mediatek.com>
+ <1495431964.20811.8.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1495187843-6882-1-git-send-email-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, CK Hu <ck.hu@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1495431964.20811.8.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, May 19, 2017 at 05:57:23PM +0800, Bibby Hsieh wrote:
-> For some greater resolution, the rdma threshold
-> variable will overflow.
-> 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> index 0df05f9..9afdcd7 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> @@ -37,7 +37,7 @@
->  #define DISP_REG_RDMA_FIFO_CON			0x0040
->  #define RDMA_FIFO_UNDERFLOW_EN				BIT(31)
->  #define RDMA_FIFO_PSEUDO_SIZE(bytes)			(((bytes) / 16) << 16)
-> -#define RDMA_OUTPUT_VALID_FIFO_THRESHOLD(bytes)		((bytes) / 16)
-> +#define RDMA_OUTPUT_VALID_FIFO_THRESHOLD(bytes) (((bytes) / 16) & 0x3ff)
-
-I agree with the earlier comment; clamp_val() might be more appropriate here
-and would avoid unexpected results.
-
->  
->  /**
->   * struct mtk_disp_rdma - DISP_RDMA driver structure
-> @@ -109,7 +109,7 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
->  			    unsigned int height, unsigned int vrefresh,
->  			    unsigned int bpc)
->  {
-> -	unsigned int threshold;
-> +	unsigned long long threshold;
->  	unsigned int reg;
->  
->  	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0, 0xfff, width);
-> @@ -121,7 +121,8 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
->  	 * output threshold to 6 microseconds with 7/6 overhead to
->  	 * account for blanking, and with a pixel depth of 4 bytes:
->  	 */
-> -	threshold = width * height * vrefresh * 4 * 7 / 1000000;
-> +	threshold = (unsigned long long)width * height * vrefresh *
-> +		    4 * 7 / 1000000;
-
-This is a 64 bit divide operation. It will result in a build failure
-if compiled for a 32 bit kernel (eg arm:allmodconfig).
-
-ERROR: "__aeabi_uldivmod" [drivers/gpu/drm/mediatek/mediatek-drm.ko] undefined!
-
-Guenter
+SGksIENLLAoKVGhhbmtzIGZvciB5b3VyIHJldmlldyBhbmQgY29tbWVudC4KCk9uIE1vbiwgMjAx
+Ny0wNS0yMiBhdCAxMzo0NiArMDgwMCwgQ0sgSHUgd3JvdGU6Cj4gSGksIEJpYmJ5Ogo+IAo+IE9u
+ZSBjb21tZW50IGlubGluZS4KPiAKPiBPbiBGcmksIDIwMTctMDUtMTkgYXQgMTc6NTcgKzA4MDAs
+IEJpYmJ5IEhzaWVoIHdyb3RlOgo+ID4gRm9yIHNvbWUgZ3JlYXRlciByZXNvbHV0aW9uLCB0aGUg
+cmRtYSB0aHJlc2hvbGQKPiA+IHZhcmlhYmxlIHdpbGwgb3ZlcmZsb3cuCj4gPiAKPiA+IFNpZ25l
+ZC1vZmYtYnk6IEJpYmJ5IEhzaWVoIDxiaWJieS5oc2llaEBtZWRpYXRlay5jb20+Cj4gPiAtLS0K
+PiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jIHwgNyArKysrLS0t
+Cj4gPiAgMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKPiA+
+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1h
+LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jCj4gPiBpbmRleCAw
+ZGYwNWY5Li45YWZkY2Q3IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kaXNwX3JkbWEuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+aXNwX3JkbWEuYwo+ID4gQEAgLTM3LDcgKzM3LDcgQEAKPiA+ICAjZGVmaW5lIERJU1BfUkVHX1JE
+TUFfRklGT19DT04JCQkweDAwNDAKPiA+ICAjZGVmaW5lIFJETUFfRklGT19VTkRFUkZMT1dfRU4J
+CQkJQklUKDMxKQo+ID4gICNkZWZpbmUgUkRNQV9GSUZPX1BTRVVET19TSVpFKGJ5dGVzKQkJCSgo
+KGJ5dGVzKSAvIDE2KSA8PCAxNikKPiA+IC0jZGVmaW5lIFJETUFfT1VUUFVUX1ZBTElEX0ZJRk9f
+VEhSRVNIT0xEKGJ5dGVzKQkJKChieXRlcykgLyAxNikKPiA+ICsjZGVmaW5lIFJETUFfT1VUUFVU
+X1ZBTElEX0ZJRk9fVEhSRVNIT0xEKGJ5dGVzKSAoKChieXRlcykgLyAxNikgJiAweDNmZikKPiAK
+PiBJIHRoaW5rIGl0J3Mgbm90IG5lY2Vzc2FyeSB0byBkbyB0aGlzIG1hc2sgb3BlcmF0aW9uLiBC
+ZWZvcmUgY2FsbGluZwo+IFJETUFfT1VUUFVUX1ZBTElEX0ZJRk9fVEhSRVNIT0xEKCksIHlvdSBz
+aG91bGQgbWFrZSBzdXJlIHRoYXQgd2lkdGgsCj4gaGVpZ2h0LCBhbmQgdnJlZnJlc2ggbWF0Y2hl
+cyB0aGUgSFcgc3BlYywgc28gdGhlIHJlc3VsdCBvZiB0aHJlc2hvbGQKPiBsaWtlbHkgZG9lcyBu
+b3QgZXhjZWVkIDB4M2ZmLiBJZiB3aWR0aCwgaGVpZ2h0LCBhbmQgdnJlZnJlc2ggbWF0Y2hlcyB0
+aGUKPiBIVyBzcGVjIGJ1dCB0aHJlc2hvbGQgZXhjZWVkIDB4M2ZmLCBtYXliZSB5b3Ugc2hvdWxk
+IGxpbWl0ZWQgaXQgdG8gMHgzZmYKPiByYXRoZXIgdGhhbiB0cnVuY2F0aW5nIGl0Lgo+IAoKT2ss
+IEl0IHNlZW1zIHRvIG1lIHRoYXQgSSB3aWxsIHJlZmVyIEd1ZW50ZXIncyBjb21tZW50LCBhZGQg
+Y2xhbXBfdmFsKCkKdG8gYXZvaWQgdW5leHBlY3RlZCB2YWx1ZS4gVGhhbmtzLgoKCkJpYmJ5Cgo+
+IFJlZ2FyZHMsCj4gQ0sKPiAKPiA+ICAKPiA+ICAvKioKPiA+ICAgKiBzdHJ1Y3QgbXRrX2Rpc3Bf
+cmRtYSAtIERJU1BfUkRNQSBkcml2ZXIgc3RydWN0dXJlCj4gPiBAQCAtMTA5LDcgKzEwOSw3IEBA
+IHN0YXRpYyB2b2lkIG10a19yZG1hX2NvbmZpZyhzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLCB1
+bnNpZ25lZCBpbnQgd2lkdGgsCj4gPiAgCQkJICAgIHVuc2lnbmVkIGludCBoZWlnaHQsIHVuc2ln
+bmVkIGludCB2cmVmcmVzaCwKPiA+ICAJCQkgICAgdW5zaWduZWQgaW50IGJwYykKPiA+ICB7Cj4g
+PiAtCXVuc2lnbmVkIGludCB0aHJlc2hvbGQ7Cj4gPiArCXVuc2lnbmVkIGxvbmcgbG9uZyB0aHJl
+c2hvbGQ7Cj4gPiAgCXVuc2lnbmVkIGludCByZWc7Cj4gPiAgCj4gPiAgCXJkbWFfdXBkYXRlX2Jp
+dHMoY29tcCwgRElTUF9SRUdfUkRNQV9TSVpFX0NPTl8wLCAweGZmZiwgd2lkdGgpOwo+ID4gQEAg
+LTEyMSw3ICsxMjEsOCBAQCBzdGF0aWMgdm9pZCBtdGtfcmRtYV9jb25maWcoc3RydWN0IG10a19k
+ZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IHdpZHRoLAo+ID4gIAkgKiBvdXRwdXQgdGhyZXNo
+b2xkIHRvIDYgbWljcm9zZWNvbmRzIHdpdGggNy82IG92ZXJoZWFkIHRvCj4gPiAgCSAqIGFjY291
+bnQgZm9yIGJsYW5raW5nLCBhbmQgd2l0aCBhIHBpeGVsIGRlcHRoIG9mIDQgYnl0ZXM6Cj4gPiAg
+CSAqLwo+ID4gLQl0aHJlc2hvbGQgPSB3aWR0aCAqIGhlaWdodCAqIHZyZWZyZXNoICogNCAqIDcg
+LyAxMDAwMDAwOwo+ID4gKwl0aHJlc2hvbGQgPSAodW5zaWduZWQgbG9uZyBsb25nKXdpZHRoICog
+aGVpZ2h0ICogdnJlZnJlc2ggKgo+ID4gKwkJICAgIDQgKiA3IC8gMTAwMDAwMDsKPiA+ICAJcmVn
+ID0gUkRNQV9GSUZPX1VOREVSRkxPV19FTiB8Cj4gPiAgCSAgICAgIFJETUFfRklGT19QU0VVRE9f
+U0laRShTWl84SykgfAo+ID4gIAkgICAgICBSRE1BX09VVFBVVF9WQUxJRF9GSUZPX1RIUkVTSE9M
+RCh0aHJlc2hvbGQpOwo+IAo+IAoKLS0gCkJpYmJ5CgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWwK
