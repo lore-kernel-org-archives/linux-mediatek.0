@@ -1,49 +1,34 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v3] drm: mediatek: change the variable type of rdma threshold
-Date: Thu, 22 Jun 2017 10:43:33 +0800
-Message-ID: <1498099413-13357-1-git-send-email-bibby.hsieh@mediatek.com>
+From: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 0/3] ADC: Mediatek auxadc driver for mt7622
+Date: Thu, 22 Jun 2017 13:44:31 +0800
+Message-ID: <1498110274-18678-1-git-send-email-zhiyong.tao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Rm9yIHNvbWUgZ3JlYXRlciByZXNvbHV0aW9uLCB0aGUgcmRtYSB0aHJlc2hvbGQKdmFyaWFibGUg
-d2lsbCBvdmVyZmxvdy4KClNpZ25lZC1vZmYtYnk6IEJpYmJ5IEhzaWVoIDxiaWJieS5oc2llaEBt
-ZWRpYXRlay5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEu
-YyB8IDcgKysrKy0tLQogMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlv
-bnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRt
-YS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwppbmRleCAwZGYw
-NWY5Li44NTQwYWFhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rp
-c3BfcmRtYS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMK
-QEAgLTEwOSw3ICsxMDksNyBAQCBzdGF0aWMgdm9pZCBtdGtfcmRtYV9jb25maWcoc3RydWN0IG10
-a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IHdpZHRoLAogCQkJICAgIHVuc2lnbmVkIGlu
-dCBoZWlnaHQsIHVuc2lnbmVkIGludCB2cmVmcmVzaCwKIAkJCSAgICB1bnNpZ25lZCBpbnQgYnBj
-KQogewotCXVuc2lnbmVkIGludCB0aHJlc2hvbGQ7CisJdW5zaWduZWQgbG9uZyBsb25nIHRocmVz
-aG9sZDsKIAl1bnNpZ25lZCBpbnQgcmVnOwogCiAJcmRtYV91cGRhdGVfYml0cyhjb21wLCBESVNQ
-X1JFR19SRE1BX1NJWkVfQ09OXzAsIDB4ZmZmLCB3aWR0aCk7CkBAIC0xMjEsMTAgKzEyMSwxMSBA
-QCBzdGF0aWMgdm9pZCBtdGtfcmRtYV9jb25maWcoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwg
-dW5zaWduZWQgaW50IHdpZHRoLAogCSAqIG91dHB1dCB0aHJlc2hvbGQgdG8gNiBtaWNyb3NlY29u
-ZHMgd2l0aCA3LzYgb3ZlcmhlYWQgdG8KIAkgKiBhY2NvdW50IGZvciBibGFua2luZywgYW5kIHdp
-dGggYSBwaXhlbCBkZXB0aCBvZiA0IGJ5dGVzOgogCSAqLwotCXRocmVzaG9sZCA9IHdpZHRoICog
-aGVpZ2h0ICogdnJlZnJlc2ggKiA0ICogNyAvIDEwMDAwMDA7CisJdGhyZXNob2xkID0gZGl2X3U2
-NCgodW5zaWduZWQgbG9uZyBsb25nKXdpZHRoICogaGVpZ2h0ICogdnJlZnJlc2ggKgorCQkJICAg
-IDQgKiA3LCAxMDAwMDAwKTsKIAlyZWcgPSBSRE1BX0ZJRk9fVU5ERVJGTE9XX0VOIHwKIAkgICAg
-ICBSRE1BX0ZJRk9fUFNFVURPX1NJWkUoU1pfOEspIHwKLQkgICAgICBSRE1BX09VVFBVVF9WQUxJ
-RF9GSUZPX1RIUkVTSE9MRCh0aHJlc2hvbGQpOworCSAgICAgIFJETUFfT1VUUFVUX1ZBTElEX0ZJ
-Rk9fVEhSRVNIT0xEKGNsYW1wX3ZhbCh0aHJlc2hvbGQsIDAsIDB4M2ZmMCkpOwogCXdyaXRlbChy
-ZWcsIGNvbXAtPnJlZ3MgKyBESVNQX1JFR19SRE1BX0ZJRk9fQ09OKTsKIH0KIAotLSAKMS45LjEK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZl
-bCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xp
-c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+These patches are first version of Mediatek auxadc driver for mt7622.
+These patches include three patches.
+The First patch adds mt7622 compatible node in binding document.
+The second patch adds support for suspend/resume.
+The last patch adds mt7622 compatible node in auxadc driver.
+
+Zhiyong Tao (3):
+  dt-bindings: adc: mt7622: add binding document
+  iio: adc: mt7622: add support for suspend/resume.
+  iio: adc: mt7622: Add compatible node for mt7622.
+
+ .../devicetree/bindings/iio/adc/mt6577_auxadc.txt  |    1 +
+ drivers/iio/adc/mt6577_auxadc.c                    |   38 ++++++++++++++++++++
+ 2 files changed, 39 insertions(+)
+
+--
+1.7.9.5
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
