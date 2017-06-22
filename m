@@ -1,61 +1,55 @@
-From: Erin Lo <erin.lo@mediatek.com>
-Subject: [PATCH v2 1/4] arm: dts: mt2701: Add ethernet device node
-Date: Thu, 22 Jun 2017 16:43:36 +0800
-Message-ID: <1498121019-21984-2-git-send-email-erin.lo@mediatek.com>
-References: <1498121019-21984-1-git-send-email-erin.lo@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v3] drm: mediatek: change the variable type of rdma
+ threshold
+Date: Thu, 22 Jun 2017 16:44:04 +0800
+Message-ID: <1498121044.20158.1.camel@mtksdaap41>
+References: <1498099413-13357-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1498121019-21984-1-git-send-email-erin.lo@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, Erin Lo <erin.lo@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1498099413-13357-1-git-send-email-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
-
-Add ethernet device node for MT2701
-
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Erin Lo <erin.lo@mediatek.com>
----
- arch/arm/boot/dts/mt2701.dtsi | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
-
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index 8037210..91ed40d 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -420,6 +420,30 @@
- 		#clock-cells = <1>;
- 	};
- 
-+	eth: ethernet@1b100000 {
-+		compatible = "mediatek,mt2701-eth", "syscon";
-+		reg = <0 0x1b100000 0 0x20000>;
-+		interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 199 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&topckgen CLK_TOP_ETHIF_SEL>,
-+			 <&ethsys CLK_ETHSYS_ESW>,
-+			 <&ethsys CLK_ETHSYS_GP1>,
-+			 <&ethsys CLK_ETHSYS_GP2>,
-+			 <&apmixedsys CLK_APMIXED_TRGPLL>;
-+		clock-names = "ethif", "esw", "gp1", "gp2", "trgpll";
-+		resets = <&ethsys MT2701_ETHSYS_FE_RST>,
-+			 <&ethsys MT2701_ETHSYS_GMAC_RST>,
-+			 <&ethsys MT2701_ETHSYS_PPE_RST>;
-+		reset-names = "fe", "gmac", "ppe";
-+		power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
-+		mediatek,ethsys = <&ethsys>;
-+		mediatek,pctl = <&syscfg_pctl_a>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		status = "disabled";
-+	};
-+
- 	bdpsys: syscon@1c000000 {
- 		compatible = "mediatek,mt2701-bdpsys", "syscon";
- 		reg = <0 0x1c000000 0 0x1000>;
--- 
-1.9.1
+T24gVGh1LCAyMDE3LTA2LTIyIGF0IDEwOjQzICswODAwLCBCaWJieSBIc2llaCB3cm90ZToKPiBG
+b3Igc29tZSBncmVhdGVyIHJlc29sdXRpb24sIHRoZSByZG1hIHRocmVzaG9sZAo+IHZhcmlhYmxl
+IHdpbGwgb3ZlcmZsb3cuCj4gCj4gU2lnbmVkLW9mZi1ieTogQmliYnkgSHNpZWggPGJpYmJ5Lmhz
+aWVoQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+aXNwX3JkbWEuYyB8IDcgKysrKy0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCsp
+LCAzIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2Rpc3BfcmRtYS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3Jk
+bWEuYwo+IGluZGV4IDBkZjA1ZjkuLjg1NDBhYWEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZGlzcF9yZG1hLmMKPiBAQCAtMTA5LDcgKzEwOSw3IEBAIHN0YXRpYyB2b2lkIG10
+a19yZG1hX2NvbmZpZyhzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLCB1bnNpZ25lZCBpbnQgd2lk
+dGgsCj4gIAkJCSAgICB1bnNpZ25lZCBpbnQgaGVpZ2h0LCB1bnNpZ25lZCBpbnQgdnJlZnJlc2gs
+Cj4gIAkJCSAgICB1bnNpZ25lZCBpbnQgYnBjKQo+ICB7Cj4gLQl1bnNpZ25lZCBpbnQgdGhyZXNo
+b2xkOwo+ICsJdW5zaWduZWQgbG9uZyBsb25nIHRocmVzaG9sZDsKPiAgCXVuc2lnbmVkIGludCBy
+ZWc7Cj4gIAo+ICAJcmRtYV91cGRhdGVfYml0cyhjb21wLCBESVNQX1JFR19SRE1BX1NJWkVfQ09O
+XzAsIDB4ZmZmLCB3aWR0aCk7Cj4gQEAgLTEyMSwxMCArMTIxLDExIEBAIHN0YXRpYyB2b2lkIG10
+a19yZG1hX2NvbmZpZyhzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLCB1bnNpZ25lZCBpbnQgd2lk
+dGgsCj4gIAkgKiBvdXRwdXQgdGhyZXNob2xkIHRvIDYgbWljcm9zZWNvbmRzIHdpdGggNy82IG92
+ZXJoZWFkIHRvCj4gIAkgKiBhY2NvdW50IGZvciBibGFua2luZywgYW5kIHdpdGggYSBwaXhlbCBk
+ZXB0aCBvZiA0IGJ5dGVzOgo+ICAJICovCj4gLQl0aHJlc2hvbGQgPSB3aWR0aCAqIGhlaWdodCAq
+IHZyZWZyZXNoICogNCAqIDcgLyAxMDAwMDAwOwo+ICsJdGhyZXNob2xkID0gZGl2X3U2NCgodW5z
+aWduZWQgbG9uZyBsb25nKXdpZHRoICogaGVpZ2h0ICogdnJlZnJlc2ggKgo+ICsJCQkgICAgNCAq
+IDcsIDEwMDAwMDApOwo+ICAJcmVnID0gUkRNQV9GSUZPX1VOREVSRkxPV19FTiB8Cj4gIAkgICAg
+ICBSRE1BX0ZJRk9fUFNFVURPX1NJWkUoU1pfOEspIHwKPiAtCSAgICAgIFJETUFfT1VUUFVUX1ZB
+TElEX0ZJRk9fVEhSRVNIT0xEKHRocmVzaG9sZCk7Cj4gKwkgICAgICBSRE1BX09VVFBVVF9WQUxJ
+RF9GSUZPX1RIUkVTSE9MRChjbGFtcF92YWwodGhyZXNob2xkLCAwLCAweDNmZjApKTsKCkhpLCBC
+aWJieToKClBsZWFzZSBzeW1ib2xpemUgJzB4M2ZmMCcuCgpSZWdhcmRzLApDSwoKPiAgCXdyaXRl
+bChyZWcsIGNvbXAtPnJlZ3MgKyBESVNQX1JFR19SRE1BX0ZJRk9fQ09OKTsKPiAgfQo+ICAKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
