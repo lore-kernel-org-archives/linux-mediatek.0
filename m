@@ -1,68 +1,128 @@
-From: Weiqing Kong <weiqing.kong@mediatek.com>
-Subject: Re: [PATCH v2 3/4] arm: dts: mt2701: Add display bls related nodes
- for MT2701
-Date: Fri, 23 Jun 2017 10:10:39 +0800
-Message-ID: <1498183839.29101.2.camel@mhfsdcap03>
-References: <1498121019-21984-1-git-send-email-erin.lo@mediatek.com>
-         <1498121019-21984-4-git-send-email-erin.lo@mediatek.com>
-         <1498123650.25128.1.camel@mtksdaap41>
+From: <xiaolei.li@mediatek.com>
+Subject: [PATCH] ubifs: Massage assert in ubifs_xattr_set() wrt. init_xattrs
+Date: Fri, 23 Jun 2017 10:37:23 +0800
+Message-ID: <1498185443-65378-1-git-send-email-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1498123650.25128.1.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Erin Lo <erin.lo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: richard@nod.at, dedekind1@gmail.com
+Cc: adrian.hunter@intel.com, linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, xiaolei.li@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-06-22 at 17:27 +0800, Yingjoe Chen wrote:
-> On Thu, 2017-06-22 at 16:43 +0800, Erin Lo wrote:
-> > From: Weiqing Kong <weiqing.kong@mediatek.com>
-> > 
-> > This patch adds board related config for backlight
-> > 
-> > Signed-off-by: Weiqing Kong <weiqing.kong@mediatek.com>
-> > Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-> > ---
-> >  arch/arm/boot/dts/mt2701-evb.dts | 29 +++++++++++++++++++++++++++++
-> >  1 file changed, 29 insertions(+)
-> > 
-> > diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
-> > index a483798..e49c2b7 100644
-> > --- a/arch/arm/boot/dts/mt2701-evb.dts
-> > +++ b/arch/arm/boot/dts/mt2701-evb.dts
-> 
-> <...>
-> 
-> > +
-> > +&bls {
-> > +	status = "okay";
-> > +};
-> > +
-> > +&mmsys {
-> > +	status = "okay";
-> > +};
-> > +
-> > +&pio {
-> > +	pwm_bls_gpio: pwm_bls_gpio {
-> > +		pins_cmd_dat {
-> > +			pinmux = <MT2701_PIN_208_AUD_EXT_CK1__FUNC_DISP_PWM>;
-> > +		};
-> > +	};
-> >  };
-> >  
-> >  &auxadc {
-> 
-> 
-> To help merge, I think this should be sorted according to name.
-> 
-> Joe.C
+From: Xiaolei Li <xiaolei.li@mediatek.com>
 
-Thanks for your advice, I will refine this patch as quickly.
+The inode is not locked in init_xattrs when creating a new inode.
 
-Weiqing Kong
-> 
-> 
-> 
-> 
+Without this patch, there will occurs assert when booting or creating
+a new file, if the kernel config CONFIG_SECURITY_SMACK is enabled.
+
+Log likes:
+
+UBIFS assert failed in ubifs_xattr_set at 298 (pid 1156)
+CPU: 1 PID: 1156 Comm: ldconfig Tainted: G S 4.12.0-rc1-207440-g1e70b02 #2
+Hardware name: MediaTek MT2712 evaluation board (DT)
+Call trace:
+[<ffff000008088538>] dump_backtrace+0x0/0x238
+[<ffff000008088834>] show_stack+0x14/0x20
+[<ffff0000083d98d4>] dump_stack+0x9c/0xc0
+[<ffff00000835d524>] ubifs_xattr_set+0x374/0x5e0
+[<ffff00000835d7ec>] init_xattrs+0x5c/0xb8
+[<ffff000008385788>] security_inode_init_security+0x110/0x190
+[<ffff00000835e058>] ubifs_init_security+0x30/0x68
+[<ffff00000833ada0>] ubifs_mkdir+0x100/0x200
+[<ffff00000820669c>] vfs_mkdir+0x11c/0x1b8
+[<ffff00000820b73c>] SyS_mkdirat+0x74/0xd0
+[<ffff000008082f8c>] __sys_trace_return+0x0/0x4
+
+Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
+---
+ fs/ubifs/crypto.c |  7 ++++++-
+ fs/ubifs/ubifs.h  |  2 +-
+ fs/ubifs/xattr.c  | 17 ++++++++---------
+ 3 files changed, 15 insertions(+), 11 deletions(-)
+
+diff --git a/fs/ubifs/crypto.c b/fs/ubifs/crypto.c
+index 382ed42..114ba45 100644
+--- a/fs/ubifs/crypto.c
++++ b/fs/ubifs/crypto.c
+@@ -9,8 +9,13 @@ static int ubifs_crypt_get_context(struct inode *inode, void *ctx, size_t len)
+ static int ubifs_crypt_set_context(struct inode *inode, const void *ctx,
+ 				   size_t len, void *fs_data)
+ {
++	/*
++	 * Creating an encryption context is done unlocked since we
++	 * operate on a new inode which is not visible to other users
++	 * at this point. So, no need to check whether inode is locked.
++	 */
+ 	return ubifs_xattr_set(inode, UBIFS_XATTR_NAME_ENCRYPTION_CONTEXT,
+-			       ctx, len, 0);
++			       ctx, len, 0, false);
+ }
+ 
+ static bool ubifs_crypt_empty_dir(struct inode *inode)
+diff --git a/fs/ubifs/ubifs.h b/fs/ubifs/ubifs.h
+index 298b4d8..1676856 100644
+--- a/fs/ubifs/ubifs.h
++++ b/fs/ubifs/ubifs.h
+@@ -1754,7 +1754,7 @@ int ubifs_getattr(const struct path *path, struct kstat *stat,
+ extern const struct xattr_handler *ubifs_xattr_handlers[];
+ ssize_t ubifs_listxattr(struct dentry *dentry, char *buffer, size_t size);
+ int ubifs_xattr_set(struct inode *host, const char *name, const void *value,
+-		    size_t size, int flags);
++		    size_t size, int flags, bool check_lock);
+ ssize_t ubifs_xattr_get(struct inode *host, const char *name, void *buf,
+ 			size_t size);
+ 
+diff --git a/fs/ubifs/xattr.c b/fs/ubifs/xattr.c
+index 6c9e62c..dcfdd53 100644
+--- a/fs/ubifs/xattr.c
++++ b/fs/ubifs/xattr.c
+@@ -280,7 +280,7 @@ static struct inode *iget_xattr(struct ubifs_info *c, ino_t inum)
+ }
+ 
+ int ubifs_xattr_set(struct inode *host, const char *name, const void *value,
+-		    size_t size, int flags)
++		    size_t size, int flags, bool check_lock)
+ {
+ 	struct inode *inode;
+ 	struct ubifs_info *c = host->i_sb->s_fs_info;
+@@ -289,12 +289,7 @@ int ubifs_xattr_set(struct inode *host, const char *name, const void *value,
+ 	union ubifs_key key;
+ 	int err;
+ 
+-	/*
+-	 * Creating an encryption context is done unlocked since we
+-	 * operate on a new inode which is not visible to other users
+-	 * at this point.
+-	 */
+-	if (strcmp(name, UBIFS_XATTR_NAME_ENCRYPTION_CONTEXT) != 0)
++	if (check_lock)
+ 		ubifs_assert(inode_is_locked(host));
+ 
+ 	if (size > UBIFS_MAX_INO_DATA)
+@@ -576,8 +571,12 @@ static int init_xattrs(struct inode *inode, const struct xattr *xattr_array,
+ 		}
+ 		strcpy(name, XATTR_SECURITY_PREFIX);
+ 		strcpy(name + XATTR_SECURITY_PREFIX_LEN, xattr->name);
++		/*
++		 * creating a new inode without holding the inode rwsem,
++		 * no need to check whether inode is locked.
++		 */
+ 		err = ubifs_xattr_set(inode, name, xattr->value,
+-				      xattr->value_len, 0);
++				      xattr->value_len, 0, false);
+ 		kfree(name);
+ 		if (err < 0)
+ 			break;
+@@ -624,7 +623,7 @@ static int xattr_set(const struct xattr_handler *handler,
+ 	name = xattr_full_name(handler, name);
+ 
+ 	if (value)
+-		return ubifs_xattr_set(inode, name, value, size, flags);
++		return ubifs_xattr_set(inode, name, value, size, flags, true);
+ 	else
+ 		return ubifs_xattr_remove(inode, name);
+ }
+-- 
+1.9.1
