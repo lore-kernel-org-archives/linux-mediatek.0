@@ -1,84 +1,146 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [GIT PULL] ARM: Mediatek soc drivers for v4.13
-Date: Fri, 23 Jun 2017 12:32:10 +0200
-Message-ID: <CAK8P3a2jG9TZgqwM9_2iE7bUsW9duCuXw+ZpW8NfMANHO4_T7w@mail.gmail.com>
-References: <25946bae-31fb-ab97-aedb-92681cf603c4@gmail.com>
- <a24f9e49-3c5e-052e-83ef-b58705cf7b11@gmail.com>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 3/9] regulator: mt6380: Add support for MT6380
+Date: Fri, 23 Jun 2017 23:56:05 +0800
+Message-ID: <1498233365.20651.25.camel@mtkswgap22>
+References: <cover.1496425268.git.sean.wang@mediatek.com>
+         <4276ab23ae0bbb6a54b1add98c4dc668f1a69c50.1496425268.git.sean.wang@mediatek.com>
+         <20170606182224.sifkfod7hehadjvm@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <a24f9e49-3c5e-052e-83ef-b58705cf7b11@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, arm-soc <arm@kernel.org>, Christophe JAILLET <christophe.jaillet@wanadoo.fr>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Mars Cheng <mars.cheng@mediatek.com>, Shailendra Verma <shailendra.v@samsung.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170606182224.sifkfod7hehadjvm-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jun 20, 2017 at 12:10 PM, Matthias Brugger
-<matthias.bgg@gmail.com> wrote:
-> Hi Olof and Arnd,
->
-> Olof merged my v4.12-next-dts32 and v4.12-next-dts64 branch, but didn't
-> merge this one.
+Hi Mark,
 
-AFAICT, he merged it but forgot to send an email about it.
+appreciate your effort on reviewing those patches 
 
-> Actually dts64 depends on a this branch as it provides the dt-binding header
-> for the scpsys on mt6797. Not sure if I screwed up here having such
-> dependencies between my branches.
+we'll make next version following your suggestion, here also adding some
+comments as inline to explain what thoughts in mind
 
-You did, but it already went in unnoticed and I now get this build
-error in next/dt:
+On Tue, 2017-06-06 at 19:22 +0100, Mark Brown wrote:
+> On Sat, Jun 03, 2017 at 01:55:44AM +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> 
+> > +static int mt6380_get_status(struct regulator_dev *rdev)
+> > +{
+> > +	int ret;
+> > +	u32 regval;
+> > +	struct mt6380_regulator_info *info = rdev_get_drvdata(rdev);
+> > +
+> > +	ret = regmap_read(rdev->regmap, info->desc.enable_reg, &regval);
+> > +	if (ret != 0) {
+> > +		dev_err(&rdev->dev, "Failed to get enable reg: %d\n", ret);
+> > +		return ret;
+> > +	}
+> > +
+> > +	return (regval & info->desc.enable_mask) ?
+> > +		REGULATOR_STATUS_ON : REGULATOR_STATUS_OFF;
+> 
+> This isn't really a get_status() operation - it's just showing the
+> status of the enable we set.  The get_status() operation is for hardware
+> that has a mechanism for reading back the current physical status of the
+> regulator, usually including things like if it's in regulation or not.
+> 
+> Also please write normal conditional statements, it helps people read
+> the code.
 
-make O=obj-arm64 ARCH=arm64 dtbs
-CROSS_COMPILE=/home/arnd/cross-gcc/bin/aarch64-linux- -skj30
-In file included from ../arch/arm64/boot/dts/mediatek/mt6797-evb.dts:16:0:
-../arch/arm64/boot/dts/mediatek/mt6797.dtsi:15:10: fatal error:
-dt-bindings/power/mt6797-power.h: No such file or directory
- #include <dt-bindings/power/mt6797-power.h>
+for the hardware, the way for reflect the current physical physical 
+has to depend on the bit reading as the bit we enable. It indeed tends
+to confuse other users and developers, we maybe can add some comments
+for this to avoid.
 
-I've fixed it up for now with this patch:
 
->From 10c235cdc9350c6da40760f7468d1189bfd4e7ff Mon Sep 17 00:00:00 2001
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Fri, 23 Jun 2017 12:28:34 +0200
-Subject: [PATCH] arm64: dts: mediatek: don't include missing file
+> > +	ret = regmap_update_bits(rdev->regmap, info->modeset_reg,
+> > +				 info->modeset_mask, val);
+> > +
+> > +	if (regmap_read(rdev->regmap, info->modeset_reg, &reg_value) < 0) {
+> > +		dev_err(&rdev->dev, "Failed to read register value\n");
+> > +		return -EIO;
+> > +	}
+> 
+> Is I/O to the device unreliable for some reason?  If so this isn't great
+> handling for it...  also if there is an error from regmap_read() you
+> should return the error code.
+> 
 
-This resolves a build error in the next/dt branch:
+O.K. we'll remove it. that just is debug purpose code which confirms the
+value we set is correct.
 
-In file included from arch/arm64/boot/dts/mediatek/mt6797-evb.dts:16:0:
-arch/arm64/boot/dts/mediatek/mt6797.dtsi:15:10: fatal error:
-dt-bindings/power/mt6797-power.h: No such file or directory
 
-003f5d0c3462 ("arm64: dts: mediatek: add clk and scp nodes for MT6797")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> > +	unsigned int mode;
+> > +	int ret;
+> > +	struct mt6380_regulator_info *info = rdev_get_drvdata(rdev);
+> > +
+> > +	if (!info->modeset_mask) {
+> > +		dev_err(&rdev->dev, "regulator %s doesn't support get_mode\n",
+> > +			info->desc.name);
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	ret = regmap_read(rdev->regmap, info->modeset_reg, &val);
+> > +	if (ret < 0)
+> > +		return ret;
+> > +
+> > +	val &= info->modeset_mask;
+> > +	val >>= ffs(info->modeset_mask) - 1;
+> > +
+> > +	if (val & 0x1)
+> > +		mode = REGULATOR_MODE_STANDBY;
+> > +	else
+> > +		mode = REGULATOR_MODE_NORMAL;
+> > +
+> > +	return mode;
+> > +}
+> 
+> This won't initialize mode if the regulator is in force PWM mode.  It'd
+> be clearer and safer to just write a switch statement.
+> 
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-index 3512c8e6dc65..31088a9f71de 100644
---- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-@@ -12,7 +12,6 @@
-  */
+we'll fix up the bug with switch statement.
 
- #include <dt-bindings/clock/mt6797-clk.h>
--#include <dt-bindings/power/mt6797-power.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +		/* Constrain board-specific capabilities according to what
+> > +		 * this driver and the chip itself can actually do.
+> > +		 */
+> > +		c = rdev->constraints;
+> > +		c->valid_modes_mask |= REGULATOR_MODE_NORMAL |
+> > +			REGULATOR_MODE_STANDBY | REGULATOR_MODE_FAST;
+> 
+> No, this is completely broken.  A regulator driver should *never* modify
+> constraints, if the constraints are broken the constraints are broken,
+> and the constraints will already have been applied when we return from
+> registering the regulator.
+> 
 
-Once you actually start using the symbols from mt6797-power.h,
-you'll have to add this back, but after the merge window it will be
-there from the drivers branch.
+agreed. we shouldn't break any constraint and the violation would be
+removed.
 
-In the future, please make sure each branch can be built by itself
-and produce a working kernel image, including "make dtb".
+> > +		c->valid_ops_mask |= REGULATOR_CHANGE_MODE;
+> 
+> > +static const struct of_device_id mt6380_of_match[] = {
+> > +	{ .compatible = "mediatek,mt6380-regulator", },
+> > +	{ /* sentinel */ },
+> > +};
+> > +MODULE_DEVICE_TABLE(of, mt6380_of_match);
+> 
+> Given that this driver is entirely specific to the parent PMIC there
+> should be no need for a separate compatible string, it's redundant.
 
-      Arnd
+
+the parent of pmic is MediaTek pwrap which is possibly being used with
+various pmics such as MT6323, MT6797, MT6380 and so on. So extra
+matching we thought is required to identify which pmic is actually being
+connected. 
+
+For those opinions, maybe we didn't get your exact point. If something
+is wrong, please kindly guide us to the right place.
+
+	Sean
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
