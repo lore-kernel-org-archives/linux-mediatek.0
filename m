@@ -1,43 +1,61 @@
-From: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 3/3] iio: adc: mt7622: Add compatible node for mt7622.
-Date: Sat, 24 Jun 2017 21:02:13 +0100
-Message-ID: <20170624210213.5e552e5c@kernel.org>
-References: <1498110274-18678-1-git-send-email-zhiyong.tao@mediatek.com>
-        <1498110274-18678-4-git-send-email-zhiyong.tao@mediatek.com>
+From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH 0/5] Improve MTK NAND driver
+Date: Sat, 24 Jun 2017 22:11:32 +0200
+Message-ID: <20170624221132.538ac58e@bbrezillon>
+References: <1498201948-39088-1-git-send-email-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1498110274-18678-4-git-send-email-zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1498201948-39088-1-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jie.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 22 Jun 2017 13:44:34 +0800
-Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-
-> This commit adds mt7622 compatible node.
-> 
-> Signed-off-by: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/iio/adc/mt6577_auxadc.c |    1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
-> index 2dd7c74..4a2cd9e 100644
-> --- a/drivers/iio/adc/mt6577_auxadc.c
-> +++ b/drivers/iio/adc/mt6577_auxadc.c
-> @@ -308,6 +308,7 @@ static int mt6577_auxadc_remove(struct platform_device *pdev)
->  static const struct of_device_id mt6577_auxadc_of_match[] = {
->  	{ .compatible = "mediatek,mt2701-auxadc", },
->  	{ .compatible = "mediatek,mt8173-auxadc", },
-> +	{ .compatible = "mediatek,mt7622-auxadc", },
-Keep them in numeric order perhaps?
-
-Might become a worthwhile step if this logic gets used for lot more parts in future!
-
-Jonathan
->  	{ }
->  };
->  MODULE_DEVICE_TABLE(of, mt6577_auxadc_of_match);
+TGUgRnJpLCAyMyBKdW4gMjAxNyAxNToxMjoyMyArMDgwMCwKWGlhb2xlaSBMaSA8eGlhb2xlaS5s
+aUBtZWRpYXRlay5jb20+IGEgw6ljcml0IDoKCj4gVGhlIGZvbGxvd2luZyBwYXRjaCBzZXQgbWFp
+bmx5IGNvbnRhaW5zOgo+ICogb3B0aW1pemUgZWNjIGlycSBzZXR0aW5nCj4gKiByZW1vdmUgcmVk
+dW5kYW50IGNvZGUgaW4gbmZpL2VjYyByZXN1bWUgZnVuY3Rpb25zCj4gKiBzdXBwb3J0IC0+c2V0
+dXBfZGF0YV9pbnRlcmZhY2UoKSBob29rLCB0byBvcHRpbWl6ZSBkcml2ZXIgcGVyZm9ybWFuY2UK
+CkFwcGxpZWQgdGhlIHdob2xlIHNlcmllcy4KClRoYW5rcywKCkJvcmlzCgo+IAo+IENoYW5nZXMg
+cmVsYXRpdmUgdG86Cj4gLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAKPiB0cmVlICAgIDogaHR0cHM6
+Ly9naXRodWIuY29tL2JicmV6aWxsb24vbGludXgtMGRheQo+IGJyYW5jaCAgOiBuYW5kL25leHQK
+PiBjb21taXQgIDoKPiAgICAgICAgICdjb21taXQgYzI1MDMwYWNmOTIwICgibXRkOiBuYW5kOiBk
+ZW5hbGk6IGF2b2lkIG1hZ2ljIG51bWJlcnMgYW5kCj4gICAgICAgICAgcmVuYW1lIGZvciBjbGFy
+aWZpY2F0aW9uIiknCj4gCj4gVGVzdHM6Cj4gLS0tLS0tCj4gCj4gKiBzdXNwZW5kL3Jlc3VtZSBm
+dW5jdGlvbiBjaGVjayB0aHJvdWdoIGNvbW1hbmRzOgo+ICAgZWNobyBtZW0gPiAvc3lzL3Bvd2Vy
+L3N0YXRlCj4gICBjYXQgL3N5cy9rZXJuZWwvZGVidWcvc3VzcGVuZF9zdGF0cwo+ICogdWJpZnMg
+YW5kIGpmZnMyIGFyZSB2YWxpZGF0ZWQgb24gTkFORCBkZXZpY2UgTVQyOUYxNkcwOEFEQkNBCj4g
+ICBieSAnZGQnIGNvbW1hbmQgYW5kIGlvem9uZS4KPiAqIGFsbCBkcml2ZXJzL210ZC90ZXN0cy8q
+IHBhc3MuCj4gKiBzcGVlZCB0ZXN0Ogo+ICAgZXJhc2VibG9jayB3cml0ZSBzcGVlZCBpcyAxMDUy
+MCBLaUIvcwo+ICAgZXJhc2VibG9jayByZWFkIHNwZWVkIGlzIDE3NzE0IEtpQi9zCj4gICBwYWdl
+IHdyaXRlIHNwZWVkIGlzIDEwMzY1IEtpQi9zCj4gICBwYWdlIHJlYWQgc3BlZWQgaXMgMTc1MDYg
+S2lCL3MKPiAgIDIgcGFnZSB3cml0ZSBzcGVlZCBpcyAxMDQzOSBLaUIvcwo+ICAgMiBwYWdlIHJl
+YWQgc3BlZWQgaXMgMTc2MjYgS2lCL3MKPiAgIGVyYXNlIHNwZWVkIGlzIDY0NDI3IEtpQi9zCj4g
+ICAyeCBtdWx0aS1ibG9jayBlcmFzZSBzcGVlZCBpcyAzMjQ0MzUgS2lCL3MKPiAgIDR4IG11bHRp
+LWJsb2NrIGVyYXNlIHNwZWVkIGlzIDMzMTY1OSBLaUIvcwo+ICAgOHggbXVsdGktYmxvY2sgZXJh
+c2Ugc3BlZWQgaXMgMzMyMzMyIEtpQi9zCj4gICAxNnggbXVsdGktYmxvY2sgZXJhc2Ugc3BlZWQg
+aXMgMzMzMDA4IEtpQi9zCj4gICAzMnggbXVsdGktYmxvY2sgZXJhc2Ugc3BlZWQgaXMgMzM0MzY3
+IEtpQi9zCj4gICA2NHggbXVsdGktYmxvY2sgZXJhc2Ugc3BlZWQgaXMgMzMzMDA4IEtpQi9zCj4g
+Cj4gWGlhb2xlaSBMaSAoNSk6Cj4gICBtdGQ6IG5hbmQ6IG10azogZml4IGluY29ycmVjdCByZWdp
+c3RlciBzZXR0aW5nIG9yZGVyIGFib3V0IGVjYyBpcnEKPiAgIG10ZDogbmFuZDogbXRrOiBkaXNh
+YmxlIGVjYyBpcnEgd2hlbiB3cml0aW5nIHBhZ2Ugd2l0aCBod2VjYwo+ICAgbXRkOiBuYW5kOiBt
+dGs6IHJlbW92ZSB1bm5lZWRlZCBtdGtfbmZjX2h3X2luaXQgZnJvbSBtdGtfbmZjX3Jlc3VtZQo+
+ICAgbXRkOiBuYW5kOiBtdGs6IHJlbW92ZSB1bm5lZWRlZCBtdGtfZWNjX2h3X2luaXQgZnJvbSBt
+dGtfZWNjX3Jlc3VtZQo+ICAgbXRkOiBuYW5kOiBtdGs6IGFkZCAtPnNldHVwX2RhdGFfaW50ZXJm
+YWNlKCkgaG9vawo+IAo+ICBkcml2ZXJzL210ZC9uYW5kL210a19lY2MuYyAgfCAyNiArKysrKyst
+LS0tLS0tCj4gIGRyaXZlcnMvbXRkL25hbmQvbXRrX25hbmQuYyB8IDkyICsrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLQo+ICAyIGZpbGVzIGNoYW5nZWQsIDg4IGlu
+c2VydGlvbnMoKyksIDMwIGRlbGV0aW9ucygtKQo+IAo+IC0tCj4gMS45LjEKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
+aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
