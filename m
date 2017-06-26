@@ -1,76 +1,56 @@
-From: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3 3/4] arm: dts: mt2701: Add display bls related nodes for MT2701
-Date: Mon, 26 Jun 2017 15:51:31 +0800
-Message-ID: <1498463492-24633-4-git-send-email-erin.lo@mediatek.com>
-References: <1498463492-24633-1-git-send-email-erin.lo@mediatek.com>
+From: m18063 <Claudiu.Beznea@microchip.com>
+Subject: Re: [PATCH v2 5/6] pwm: mediatek: add PWM_CLK_DIV_MAX
+Date: Mon, 26 Jun 2017 11:43:01 +0300
+Message-ID: <8eaabcb6-c7b1-efcc-7dae-967a38feb8f1@microchip.com>
+References: <1498194505-30930-1-git-send-email-zhi.mao@mediatek.com>
+ <1498194505-30930-6-git-send-email-zhi.mao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1498463492-24633-1-git-send-email-erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1498194505-30930-6-git-send-email-zhi.mao@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Zhi Mao <zhi.mao@mediatek.com>, john@phrozen.org, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pwm@vger.kernel.org
+Cc: zhenbao.liu@mediatek.com, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-This patch adds board related config for backlight
 
-Signed-off-by: Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- arch/arm/boot/dts/mt2701-evb.dts | 27 +++++++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
-
-diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
-index a483798..3c1cf20 100644
---- a/arch/arm/boot/dts/mt2701-evb.dts
-+++ b/arch/arm/boot/dts/mt2701-evb.dts
-@@ -22,13 +22,40 @@
- 	memory {
- 		reg = <0 0x80000000 0 0x40000000>;
- 	};
-+
-+	backlight_lcd: backlight_lcd {
-+		compatible = "pwm-backlight";
-+		pwms = <&bls 0 100000>;
-+		brightness-levels = <
-+			  0  16  32  48  64  80  96 112
-+			128 144 160 176 192 208 224 240
-+			255
-+		>;
-+		default-brightness-level = <9>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pwm_bls_gpio>;
-+	};
- };
- 
- &auxadc {
- 	status = "okay";
- };
- 
-+&bls {
-+	status = "okay";
-+};
-+
-+&mmsys {
-+	status = "okay";
-+};
-+
- &pio {
-+	pwm_bls_gpio: pwm_bls_gpio {
-+		pins_cmd_dat {
-+			pinmux = <MT2701_PIN_208_AUD_EXT_CK1__FUNC_DISP_PWM>;
-+		};
-+	};
-+
- 	spi_pins_a: spi0@0 {
- 		pins_spi {
- 			pinmux = <MT2701_PIN_53_SPI0_CSN__FUNC_SPI0_CS>,
--- 
-1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+On 23.06.2017 08:08, Zhi Mao wrote:
+> Replace "7" with "PWM_CLK_DIV_MAX" in function:mtk_pwm_config()
+> to improve the code readablity.
+> 
+> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+> ---
+>  drivers/pwm/pwm-mediatek.c |    6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+> index 554a042..e5f6425 100644
+> --- a/drivers/pwm/pwm-mediatek.c
+> +++ b/drivers/pwm/pwm-mediatek.c
+> @@ -30,6 +30,8 @@
+>  #define PWMDWIDTH		0x2c
+>  #define PWMTHRES		0x30
+>  
+> +#define PWM_CLK_DIV_MAX		7
+> +
+>  enum {
+>  	MTK_CLK_MAIN = 0,
+>  	MTK_CLK_TOP,
+> @@ -130,8 +132,10 @@ static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+>  		clkdiv++;
+>  	}
+>  
+> -	if (clkdiv > 7)
+> +	if (clkdiv > PWM_CLK_DIV_MAX) {
+You forgot to:
+		mtk_pwm_clk_disable(chip, pwm);
+> +		dev_err(chip->dev, "period %d not supported\n", period_ns);
+>  		return -EINVAL;
+> +	}
+>  
+>  	mtk_pwm_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
+>  	mtk_pwm_writel(pc, pwm->hwpwm, PWMDWIDTH, period_ns / resolution);
+> 
