@@ -1,43 +1,43 @@
-From: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Subject: Re: [PATCH 1/3] dt-bindings: adc: mt7622: add binding document
-Date: Mon, 26 Jun 2017 18:45:19 +0800
-Message-ID: <1498473919.844.7.camel@mhfsdcap03>
-References: <1498110274-18678-1-git-send-email-zhiyong.tao@mediatek.com>
-         <1498110274-18678-2-git-send-email-zhiyong.tao@mediatek.com>
-         <20170624210241.361743b3@kernel.org>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] dt-bindings: net: mediatek: update documentation for
+ reset signals
+Date: Mon, 26 Jun 2017 09:51:43 -0500
+Message-ID: <20170626145143.fdztj3koh5gumblu@rob-hp-laptop>
+References: <cover.1498030300.git.sean.wang@mediatek.com>
+ <302c3965ce2bde6354cee7614852096e6cfdf6b9.1498030300.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170624210241.361743b3@kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jonathan Cameron <jic23@kernel.org>
-Cc: robh+dt@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, srv_heupstream@mediatek.com, liguo.zhang@mediatek.com, yingjoe.chen@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com, s.hauer@pengutronix.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-iio@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <302c3965ce2bde6354cee7614852096e6cfdf6b9.1498030300.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 2017-06-24 at 21:02 +0100, Jonathan Cameron wrote:
-> On Thu, 22 Jun 2017 13:44:32 +0800
-> Zhiyong Tao <zhiyong.tao@mediatek.com> wrote:
+On Wed, Jun 21, 2017 at 03:49:51PM +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> > The commit adds mt7622 compatible node in binding document.
-> > 
-> > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/iio/adc/mt6577_auxadc.txt  |    1 +
-> >  1 file changed, 1 insertion(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt b/Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt
-> > index 68c45cb..e6aa30a 100644
-> > --- a/Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt
-> > +++ b/Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt
-> > @@ -13,6 +13,7 @@ Required properties:
-> >    - compatible: Should be one of:
-> >      - "mediatek,mt2701-auxadc": For MT2701 family of SoCs
-> >      - "mediatek,mt8173-auxadc": For MT8173 family of SoCs
-> > +    - "mediatek,mt7622-auxadc": For MT7622 family of SoCs
-> numeric order?
-==> yes, we have changed it as numeric order in v2. Thanks.
-> >    - reg: Address range of the AUXADC unit.
-> >    - clocks: Should contain a clock specifier for each entry in clock-names
-> >    - clock-names: Should contain "main".
+> Since there's no user for the property reset inside the ethernet node
+> for current supported MediaTek SoCs and boards, so it should be safe to
+> update reset property in the bindings to introduce more reset signals as
+> corresponding that commit 7c2adaf11036 ("reset: mediatek: Add MT2701 ethsys
+> reset controller include file") did in order to be referenced them from
+> within a devicetree file.
 > 
+> Cc: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/net/mediatek-net.txt | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
