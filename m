@@ -1,33 +1,69 @@
-From: Julian Smith <sinara_group-KN7UnAbNpbg@public.gmane.org>
-Subject: Product Inquiry
-Date: Mon, 26 Jun 2017 17:51:53 -0400 (EDT)
-Message-ID: <20170626215153.A3CB92CC77@mail.dealer.com>
-Reply-To: sinara-group-5URONGGNgjI@public.gmane.org
+From: Zhi Mao <zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 5/6] pwm: mediatek: add PWM_CLK_DIV_MAX
+Date: Tue, 27 Jun 2017 10:50:15 +0800
+Message-ID: <1498531815.22478.3.camel@mhfsdcap03>
+References: <1498194505-30930-1-git-send-email-zhi.mao@mediatek.com>
+         <1498194505-30930-6-git-send-email-zhi.mao@mediatek.com>
+         <8eaabcb6-c7b1-efcc-7dae-967a38feb8f1@microchip.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <8eaabcb6-c7b1-efcc-7dae-967a38feb8f1-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: m18063 <Claudiu.Beznea-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>
+Cc: john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, zhenbao.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello, 
+On Mon, 2017-06-26 at 11:43 +0300, m18063 wrote:
+> 
+> On 23.06.2017 08:08, Zhi Mao wrote:
+> > Replace "7" with "PWM_CLK_DIV_MAX" in function:mtk_pwm_config()
+> > to improve the code readablity.
+> > 
+> > Signed-off-by: Zhi Mao <zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/pwm/pwm-mediatek.c |    6 +++++-
+> >  1 file changed, 5 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+> > index 554a042..e5f6425 100644
+> > --- a/drivers/pwm/pwm-mediatek.c
+> > +++ b/drivers/pwm/pwm-mediatek.c
+> > @@ -30,6 +30,8 @@
+> >  #define PWMDWIDTH		0x2c
+> >  #define PWMTHRES		0x30
+> >  
+> > +#define PWM_CLK_DIV_MAX		7
+> > +
+> >  enum {
+> >  	MTK_CLK_MAIN = 0,
+> >  	MTK_CLK_TOP,
+> > @@ -130,8 +132,10 @@ static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+> >  		clkdiv++;
+> >  	}
+> >  
+> > -	if (clkdiv > 7)
+> > +	if (clkdiv > PWM_CLK_DIV_MAX) {
+> You forgot to:
+> 		mtk_pwm_clk_disable(chip, pwm);
+Hi Claudiu,
 
-My name is Ms Julian Smith and i am from Sinara Group Co.
-We are glad to know about your company from the web and we are interested in
-your products.Please send us your Latest catalog and price list for our
-trial order. 
+Thanks for your suggestion.
+It's a problem, I will modify this in the next release.
 
-Julian Smith, 
-Purchasing Manager
-Sinara Group Co.
-7 Krasnogo Znameni Ave.
-Vladivostok,690106,Ukraine
+Regards,
+Zhi
+> > +		dev_err(chip->dev, "period %d not supported\n", period_ns);
+> >  		return -EINVAL;
+> > +	}
+> >  
+> >  	mtk_pwm_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
+> >  	mtk_pwm_writel(pc, pwm->hwpwm, PWMDWIDTH, period_ns / resolution);
+> > 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
