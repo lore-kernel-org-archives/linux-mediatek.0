@@ -1,29 +1,37 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 1/3] dt-bindings: adc: mt7622: add binding document
-Date: Wed, 28 Jun 2017 11:46:22 -0500
-Message-ID: <20170628164622.4fmqmlhhyvkwvbwd@rob-hp-laptop>
-References: <1498457502-3669-1-git-send-email-zhiyong.tao@mediatek.com>
- <1498457502-3669-2-git-send-email-zhiyong.tao@mediatek.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH 0/3] change powerup logic for MediaTek PCIe controller
+Date: Wed, 28 Jun 2017 14:50:49 -0500
+Message-ID: <20170628195049.GQ17844@bhelgaas-glaptop.roam.corp.google.com>
+References: <1497866400-41844-1-git-send-email-ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1498457502-3669-2-git-send-email-zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <1497866400-41844-1-git-send-email-ryder.lee@mediatek.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jun 26, 2017 at 02:11:40PM +0800, Zhiyong Tao wrote:
-> The commit adds mt7622 compatible node in binding document.
+On Mon, Jun 19, 2017 at 05:59:57PM +0800, Ryder Lee wrote:
+> Hi Bjorn,
 > 
-> Signed-off-by: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  .../devicetree/bindings/iio/adc/mt6577_auxadc.txt  |    1 +
->  1 file changed, 1 insertion(+)
+> This patch series does some modifications to powerup logic to avoid unbalanced
+> PM warnings, and turns off host power if no link is detected.
+> 
+> I also make some properties(eg, PHY/reset/..) optional to gain more flexibility
+> just in case future SoCs don't have it.
+> 
+> Could you also fold this patch series into pci/host-mediatek for v4.13?
+> Thanks!
+> 
+> Ryder Lee (3):
+>   PCI: mediatek: modify controller powerup logic
+>   PCI: mediatek: turn off subsys power if no link up detected
+>   PCI: mediatek: make some properties optioanl
+> 
+>  drivers/pci/host/pcie-mediatek.c | 110 +++++++++++++++++++++------------------
+>  1 file changed, 58 insertions(+), 52 deletions(-)
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+I folded these into the initial driver commit on pci/host-mediatek
+for v4.13, thanks!
