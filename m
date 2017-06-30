@@ -1,54 +1,50 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 1/2] PCI: mediatek: Add Mediatek PCIe host controller
- support
-Date: Thu, 29 Jun 2017 10:00:23 +0800
-Message-ID: <1498701623.32475.9.camel@mtkswgap22>
-References: <1495338145-9384-1-git-send-email-ryder.lee@mediatek.com>
-         <1495338145-9384-2-git-send-email-ryder.lee@mediatek.com>
-         <20170628195325.GR17844@bhelgaas-glaptop.roam.corp.google.com>
+From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v1 1/4] dt-bindings: media: mtk-cir: Add support for MT7622 SoC
+Date: Fri, 30 Jun 2017 14:03:04 +0800
+Message-ID: <a778a3a33a273f00d3ff071d62fe672a207d949c.1498794408.git.sean.wang@mediatek.com>
+References: <cover.1498794408.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170628195325.GR17844-1RhO1Y9PlrlHTL0Zs8A6p5iNqAH0jzoTYJqu5kTmcBRl57MIdRCFDg@public.gmane.org>
+In-Reply-To: <cover.1498794408.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Red Hung <red.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, sean-hENCXIMQXOg@public.gmane.org, hdegoede-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: andi.shyti-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, ivo.g.dimitrov.75-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-06-28 at 14:53 -0500, Bjorn Helgaas wrote:
-> On Sun, May 21, 2017 at 11:42:24AM +0800, Ryder Lee wrote:
-> > Add support for the Mediatek PCIe Gen2 controller which can
-> > be found on MT7623 series SoCs.
-> > 
-> > Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  drivers/pci/host/Kconfig         |  11 +
-> >  drivers/pci/host/Makefile        |   1 +
-> >  drivers/pci/host/pcie-mediatek.c | 553 +++++++++++++++++++++++++++++++++++++++
-> >  3 files changed, 565 insertions(+)
-> >  create mode 100644 drivers/pci/host/pcie-mediatek.c
-> >...
-> 
-> > +static int mtk_pcie_register_host(struct pci_host_bridge *host)
-> > +{
-> > +	struct mtk_pcie *pcie = pci_host_bridge_priv(host);
-> > +	struct pci_bus *child;
-> > +	int err;
-> > +
-> > +	pci_add_flags(PCI_REASSIGN_ALL_RSRC | PCI_REASSIGN_ALL_BUS);
-> 
-> Do you really need the PCI_REASSIGN_ALL_RSRC and PCI_REASSIGN_ALL_BUS
-> flags?  I'd like to get rid of them because we should automatically
-> assign resources if the firmware hasn't done it.
-> 
-> Bjorn
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-You're right! These flags are not needed and should be removed.
-Thanks for catching that.
+Document the devicetree bindings for CIR on MediaTek MT7622
+SoC.
 
-Ryder
+Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ Documentation/devicetree/bindings/media/mtk-cir.txt | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
+diff --git a/Documentation/devicetree/bindings/media/mtk-cir.txt b/Documentation/devicetree/bindings/media/mtk-cir.txt
+index 2be2005..5e18087 100644
+--- a/Documentation/devicetree/bindings/media/mtk-cir.txt
++++ b/Documentation/devicetree/bindings/media/mtk-cir.txt
+@@ -2,10 +2,14 @@ Device-Tree bindings for Mediatek consumer IR controller
+ found in Mediatek SoC family
+ 
+ Required properties:
+-- compatible	    : "mediatek,mt7623-cir"
++- compatible	    : Should be
++			"mediatek,mt7623-cir": for MT7623 SoC
++			"mediatek,mt7622-cir": for MT7622 SoC
+ - clocks	    : list of clock specifiers, corresponding to
+ 		      entries in clock-names property;
+-- clock-names	    : should contain "clk" entries;
++- clock-names	    : should contain
++			- "clk" entries: for MT7623 SoC
++			- "clk", "bus" entries: for MT7622 SoC
+ - interrupts	    : should contain IR IRQ number;
+ - reg		    : should contain IO map address for IR.
+ 
+-- 
+2.7.4
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
