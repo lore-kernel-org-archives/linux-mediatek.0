@@ -1,104 +1,50 @@
 From: Gilad Ben-Yossef <gilad@benyossef.com>
-Subject: [PATCH v3 27/28] crypto: mediatek: move to generic async
-	completion
-Date: Sun,  2 Jul 2017 17:42:09 +0300
-Message-ID: <1499006535-19760-28-git-send-email-gilad@benyossef.com>
+Subject: [PATCH v3 09/28] dm: verity: use -EIOCBQUEUED for backlog indication
+Date: Sun,  2 Jul 2017 17:41:51 +0300
+Message-ID: <1499006535-19760-10-git-send-email-gilad__9701.10787679932$1499007292$gmane$org@benyossef.com>
 References: <1499006535-19760-1-git-send-email-gilad@benyossef.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <dm-devel-bounces@redhat.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <1499006535-19760-1-git-send-email-gilad@benyossef.com>
-List-Unsubscribe: <https://www.redhat.com/mailman/options/dm-devel>,
-	<mailto:dm-devel-request@redhat.com?subject=unsubscribe>
-List-Archive: <https://www.redhat.com/archives/dm-devel>
-List-Post: <mailto:dm-devel@redhat.com>
-List-Help: <mailto:dm-devel-request@redhat.com?subject=help>
-List-Subscribe: <https://www.redhat.com/mailman/listinfo/dm-devel>,
-	<mailto:dm-devel-request@redhat.com?subject=subscribe>
-Sender: dm-devel-bounces@redhat.com
-Errors-To: dm-devel-bounces@redhat.com
-To: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, Jonathan Corbet <corbet@lwn.net>, David Howells <dhowells@redhat.com>, Tom Lendacky <thomas.lendacky@amd.com>, Gary Hook <gary.hook@amd.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Arnaud Ebalard <arno@natisbad.org>, Matthias Brugger <matthias.bgg@gmail.com>, Alasdair Kergon <agk@redhat.com>, Mike Snitzer <snitzer@redhat.com>, dm-devel@redhat.com, Shaohua Li <shli@kernel.org>, Steve French <sfrench@samba.org>, "Theodore Y. Ts'o" <tytso@mit.edu>, Jaegeuk Kim <jaegeuk@kernel.org>, Mimi Zohar <zohar@linux.vnet.ibm.com>, Dmitry Kasatkin <dmitry.kasatkin@gmail.com>, James Morris <james.l.morris@oracle.com>, "Serge E. Hallyn" <serge@hallyn.com>, linux-crypto@vger.kernel.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, keyrings@vger.kernel.org, linux-arm-kernel@lis
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, Jonathan Corbet <corbet@lwn.net>, David Howells <dhowells@redhat.com>, Tom Lendacky <thomas.lendacky@amd.com>, Gary Hook <gary.hook@amd.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Arnaud Ebalard <arno@natisbad.org>, Matthias Brugger <matthias.bgg@gmail.com>, Alasdair Kergon <agk@redhat.com>, Mike Snitzer <snitzer@redhat.com>, dm-devel@redhat.com, Shaohua Li <shli@kernel.org>, Steve French <sfrench@samba.org>, "Theodore Y. Ts'o" <tytso@mit.edu>, Jaegeuk Kim <jaegeuk@kernel.org>, Mimi Zohar <zohar@linux.vnet.ibm.com>, Dmitry Kasatkin <dmitry.kasatkin@gmail.com>, James Morris <james.l.morris@oracle.com>, "Serge E. Hallyn" <serge@hallyn.com>, linux-crypto@vger.kernel.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, keyrings@vger.kernel.org, linux-arm-kernel@lists
 Cc: Ofir Drang <ofir.drang@arm.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The mediatek driver starts several async crypto ops and waits for their
-completions. Move it over to generic code doing the same.
+Replace -EBUSY with -EIOCBQUEUED for backlog queueing indication
+as part of new API.
 
 Signed-off-by: Gilad Ben-Yossef <gilad@benyossef.com>
 ---
- drivers/crypto/mediatek/mtk-aes.c | 31 +++++--------------------------
- 1 file changed, 5 insertions(+), 26 deletions(-)
 
-diff --git a/drivers/crypto/mediatek/mtk-aes.c b/drivers/crypto/mediatek/mtk-aes.c
-index 5254e13..e2c7c95 100644
---- a/drivers/crypto/mediatek/mtk-aes.c
-+++ b/drivers/crypto/mediatek/mtk-aes.c
-@@ -137,11 +137,6 @@ struct mtk_aes_gcm_ctx {
- 	struct crypto_skcipher *ctr;
- };
+This patch should be squashed with the first patch in the series
+when applied.
+
+ drivers/md/dm-verity-target.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/md/dm-verity-target.c b/drivers/md/dm-verity-target.c
+index b46705e..4fe7d18 100644
+--- a/drivers/md/dm-verity-target.c
++++ b/drivers/md/dm-verity-target.c
+@@ -116,7 +116,7 @@ static inline int verity_complete_op(struct verity_result *res, int ret)
+ 		break;
  
--struct mtk_aes_gcm_setkey_result {
--	int err;
--	struct completion completion;
--};
--
- struct mtk_aes_drv {
- 	struct list_head dev_list;
- 	/* Device list lock */
-@@ -936,17 +931,6 @@ static int mtk_aes_gcm_crypt(struct aead_request *req, u64 mode)
- 				    &req->base);
- }
- 
--static void mtk_gcm_setkey_done(struct crypto_async_request *req, int err)
--{
--	struct mtk_aes_gcm_setkey_result *result = req->data;
--
--	if (err == -EINPROGRESS)
--		return;
--
--	result->err = err;
--	complete(&result->completion);
--}
--
- /*
-  * Because of the hardware limitation, we need to pre-calculate key(H)
-  * for the GHASH operation. The result of the encryption operation
-@@ -962,7 +946,7 @@ static int mtk_aes_gcm_setkey(struct crypto_aead *aead, const u8 *key,
- 		u32 hash[4];
- 		u8 iv[8];
- 
--		struct mtk_aes_gcm_setkey_result result;
-+		struct crypto_wait wait;
- 
- 		struct scatterlist sg[1];
- 		struct skcipher_request req;
-@@ -1002,22 +986,17 @@ static int mtk_aes_gcm_setkey(struct crypto_aead *aead, const u8 *key,
- 	if (!data)
- 		return -ENOMEM;
- 
--	init_completion(&data->result.completion);
-+	crypto_init_wait(&data->wait);
- 	sg_init_one(data->sg, &data->hash, AES_BLOCK_SIZE);
- 	skcipher_request_set_tfm(&data->req, ctr);
- 	skcipher_request_set_callback(&data->req, CRYPTO_TFM_REQ_MAY_SLEEP |
- 				      CRYPTO_TFM_REQ_MAY_BACKLOG,
--				      mtk_gcm_setkey_done, &data->result);
-+				      crypto_req_done, &data->wait);
- 	skcipher_request_set_crypt(&data->req, data->sg, data->sg,
- 				   AES_BLOCK_SIZE, data->iv);
- 
--	err = crypto_skcipher_encrypt(&data->req);
--	if (err == -EINPROGRESS || err == -EIOCBQUEUED) {
--		err = wait_for_completion_interruptible(
--			&data->result.completion);
--		if (!err)
--			err = data->result.err;
--	}
-+	err = crypto_wait_req(crypto_skcipher_encrypt(&data->req),
-+			      &data->wait);
- 	if (err)
- 		goto out;
- 
+ 	case -EINPROGRESS:
+-	case -EBUSY:
++	case -EIOCBQUEUED:
+ 		ret = wait_for_completion_interruptible(&res->completion);
+ 		if (!ret)
+ 			ret = res->err;
 -- 
 2.1.4
