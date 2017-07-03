@@ -1,38 +1,34 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: [PATCH] mmc: mediatek: add ops->get_cd() support
-Date: Mon, 3 Jul 2017 14:24:56 +0800
-Message-ID: <1499063096-10604-1-git-send-email-chaotian.jing@mediatek.com>
+From: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: [PATCH] mtd: nand: mtk: release lock on error path
+Date: Mon, 3 Jul 2017 13:54:28 +0300
+Message-ID: <20170703104858.2226i5bmcvnhhy2x@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Heiner Kallweit <hkallweit1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset=us-ascii
+Return-path: <kernel-janitors-owner@vger.kernel.org>
+Content-Disposition: inline
+Sender: kernel-janitors-owner@vger.kernel.org
+To: Boris Brezillon <boris.brezillon@free-electrons.com>, Xiaolei Li <xiaolei.li@mediatek.com>
+Cc: Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-if user plug out sd card slowly, finally card is plugged out but
-cat /proc/partitions can find that card is still exist in kernel.
-that's because alougth get card detect interrupt but CMD13 still
-can get correct response(all other pins are connected expect card
-detect pin).
-add ops->get_cd() can avoid this issue.
+We only want to hold the lock on the success path, not this error path.
 
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 1 +
- 1 file changed, 1 insertion(+)
+Fixes: 7ec4a37c5d71 ("mtd: nand: mediatek: add support for different MTK NAND FLASH Controller IP")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 5c1e178..975c765 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -1585,6 +1585,7 @@ static void msdc_hw_reset(struct mmc_host *mmc)
- 	.request = msdc_ops_request,
- 	.set_ios = msdc_ops_set_ios,
- 	.get_ro = mmc_gpio_get_ro,
-+	.get_cd = mmc_gpio_get_cd,
- 	.start_signal_voltage_switch = msdc_ops_switch_volt,
- 	.card_busy = msdc_card_busy,
- 	.execute_tuning = msdc_execute_tuning,
--- 
-1.8.1.1.dirty
+diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
+index f38e2bb1953e..6c3a4aab0b48 100644
+--- a/drivers/mtd/nand/mtk_ecc.c
++++ b/drivers/mtd/nand/mtk_ecc.c
+@@ -273,8 +273,10 @@ int mtk_ecc_enable(struct mtk_ecc *ecc, struct mtk_ecc_config *config)
+ 	mtk_ecc_wait_idle(ecc, op);
+ 
+ 	ret = mtk_ecc_config(ecc, config);
+-	if (ret)
++	if (ret) {
++		mutex_unlock(&ecc->lock);
+ 		return ret;
++	}
+ 
+ 	if (config->mode != ECC_NFI_MODE || op != ECC_ENCODE) {
+ 		init_completion(&ecc->done);
