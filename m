@@ -1,59 +1,42 @@
-From: Herbert Xu <herbert@gondor.apana.org.au>
-Subject: Re: [PATCH v3 01/28] crypto: change backlog return code
- to -EIOCBQUEUED
-Date: Mon, 3 Jul 2017 20:35:15 +0800
-Message-ID: <20170703123515.GC30067@gondor.apana.org.au>
-References: <1499006535-19760-1-git-send-email-gilad@benyossef.com>
-	<1499006535-19760-2-git-send-email-gilad@benyossef.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH] PCI: mediatek: Remove unnecessary PCI_REASSIGN_* flags
+Date: Mon, 3 Jul 2017 08:07:39 -0500
+Message-ID: <20170703130739.GD13824@bhelgaas-glaptop.roam.corp.google.com>
+References: <1499061300-55951-1-git-send-email-ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <dm-devel-bounces@redhat.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1499006535-19760-2-git-send-email-gilad@benyossef.com>
-List-Unsubscribe: <https://www.redhat.com/mailman/options/dm-devel>,
-	<mailto:dm-devel-request@redhat.com?subject=unsubscribe>
-List-Archive: <https://www.redhat.com/archives/dm-devel>
-List-Post: <mailto:dm-devel@redhat.com>
-List-Help: <mailto:dm-devel-request@redhat.com?subject=help>
-List-Subscribe: <https://www.redhat.com/mailman/listinfo/dm-devel>,
-	<mailto:dm-devel-request@redhat.com?subject=subscribe>
-Sender: dm-devel-bounces@redhat.com
-Errors-To: dm-devel-bounces@redhat.com
-To: Gilad Ben-Yossef <gilad@benyossef.com>
-Cc: Mike Snitzer <snitzer@redhat.com>, linux-doc@vger.kernel.org, Gary Hook <gary.hook@amd.com>, David Howells <dhowells@redhat.com>, dm-devel@redhat.com, keyrings@vger.kernel.org, linux-ima-devel@lists.sourceforge.net, Alasdair Kergon <agk@redhat.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Jonathan Corbet <corbet@lwn.net>, Mimi Zohar <zohar@linux.vnet.ibm.com>, "Serge E. Hallyn" <serge@hallyn.com>, Tom Lendacky <thomas.lendacky@amd.com>, linux-cifs@vger.kernel.org, linux-ima-user@lists.sourceforge.net, Arnaud Ebalard <arno@natisbad.org>, linux-raid@vger.kernel.org, linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org, James Morris <james.l.morris@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jaegeuk Kim <jaegeuk@kernel.org>, linux-arm-kernel@lists.infradead.org, Ofir Drang <ofir.drang@arm.com>, "Theodore Y. Ts'o" <tytso@mit.edu>, Dm
+In-Reply-To: <1499061300-55951-1-git-send-email-ryder.lee@mediatek.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Jul 02, 2017 at 05:41:43PM +0300, Gilad Ben-Yossef wrote:
-> The crypto API was using the -EBUSY return value to indicate
-> both a hard failure to submit a crypto operation into a
-> transformation provider when the latter was busy and the backlog
-> mechanism was not enabled as well as a notification that the operation
-> was queued into the backlog when the backlog mechanism was enabled.
+On Mon, Jul 03, 2017 at 01:55:00PM +0800, Ryder Lee wrote:
+> The PCI_REASSIGN_ALL_RSRC and PCI_REASSIGN_ALL_BUS flags are not needed,
+> since we should automatically assign resources if the firmware hasn't done it.
 > 
-> Having the same return code indicate two very different conditions
-> depending on a flag is both error prone and requires extra runtime
-> check like the following to discern between the cases:
-> 
-> 	if (err == -EINPROGRESS ||
-> 	    (err == -EBUSY && (ahash_request_flags(req) &
-> 			       CRYPTO_TFM_REQ_MAY_BACKLOG)))
-> 
-> This patch changes the return code used to indicate a crypto op
-> was queued in the backlog to -EIOCBQUEUED, thus resolving both
-> issues.
-> 
-> Signed-off-by: Gilad Ben-Yossef <gilad@benyossef.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 
-So you're changing the success case from EBUSY to EIOCBQUEUED.
-This results in a lot of churn as you have to change every single
-driver and caller.
+Folded into pci/host-mediatek, thanks!
 
-How about changing the error case to use something other than
-EBUSY instead?
-
-Thanks,
--- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+> ---
+>  drivers/pci/host/pcie-mediatek.c | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+> index 51c6118..5a9d858 100644
+> --- a/drivers/pci/host/pcie-mediatek.c
+> +++ b/drivers/pci/host/pcie-mediatek.c
+> @@ -478,7 +478,6 @@ static int mtk_pcie_register_host(struct pci_host_bridge *host)
+>  	struct pci_bus *child;
+>  	int err;
+>  
+> -	pci_add_flags(PCI_REASSIGN_ALL_RSRC | PCI_REASSIGN_ALL_BUS);
+>  	host->busnr = pcie->busn.start;
+>  	host->dev.parent = pcie->dev;
+>  	host->ops = &mtk_pcie_ops;
+> -- 
+> 1.9.1
+> 
