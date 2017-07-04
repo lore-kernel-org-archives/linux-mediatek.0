@@ -1,36 +1,90 @@
-From: Andi Shyti <andi.shyti@samsung.com>
-Subject: Re: [PATCH v1 0/4] media: rc: add support for IR receiver on MT7622
- SoC
-Date: Tue, 04 Jul 2017 19:10:08 +0900
-Message-ID: <20170704101008.pgnjacbsk3twadzo@gangnam.samsung>
-References: <CGME20170630060312epcas4p351a77795e8469640d5177039f6b1955d@epcas4p3.samsung.com>
-        <cover.1498794408.git.sean.wang@mediatek.com>
+From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 1/3] cpufreq: mediatek: Add support of cpufreq to MT2701/MT7623 SoC
+Date: Wed, 5 Jul 2017 02:55:28 +0800
+Message-ID: <ba9f5abddd87c84adb7bacb95a02534d47e8e6a7.1499194061.git.sean.wang@mediatek.com>
+References: <cover.1499194061.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-disposition: inline
-In-reply-to: <cover.1498794408.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: mchehab@osg.samsung.com, sean@mess.org, hdegoede@redhat.com, hkallweit1@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, hverkuil@xs4all.nl, ivo.g.dimitrov.75@gmail.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <cover.1499194061.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jdelvare-l3A5Bk7waGM@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sean,
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-> This patchset introduces Consumer IR (CIR) support for MT7622 SoC
-> implements raw mode for more compatibility with different protocols
-> as previously SoC did. Before adding support to MT7622 SoC, extra
-> code refactor is done since there're major differences in register and
-> field definition from the previous SoC.
-> 
-> Sean Wang (4):
->   dt-bindings: media: mtk-cir: Add support for MT7622 SoC
->   media: rc: mtk-cir: add platform data to adapt into various hardware
->   media: rc: mtk-cir: add support for MediaTek MT7622 SoC
->   MAINTAINERS: add entry for MediaTek CIR driver
+MT2701/MT7623 is a 32-bit ARMv7 based quad-core (4 * Cortex-A7) with
+single cluster and this hardware is also compatible with the existing
+driver through enabling CPU frequency feature with operating-points-v2
+bindings. Also, this driver actually supports all MediaTek SoCs, the
+Kconfig menu entry and file name itself should be updated with more
+generic name to drop "MT8173"
 
-for the whole patchset:
+Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/cpufreq/Kconfig.arm                         | 8 ++++----
+ drivers/cpufreq/Makefile                            | 2 +-
+ drivers/cpufreq/{mt8173-cpufreq.c => mtk-cpufreq.c} | 2 ++
+ 3 files changed, 7 insertions(+), 5 deletions(-)
+ rename drivers/cpufreq/{mt8173-cpufreq.c => mtk-cpufreq.c} (99%)
 
-Reviewed-by: Andi Shyti <andi.shyti@samsung.com>
+diff --git a/drivers/cpufreq/Kconfig.arm b/drivers/cpufreq/Kconfig.arm
+index 74ed7e9..79aece7 100644
+--- a/drivers/cpufreq/Kconfig.arm
++++ b/drivers/cpufreq/Kconfig.arm
+@@ -87,14 +87,14 @@ config ARM_KIRKWOOD_CPUFREQ
+ 	  This adds the CPUFreq driver for Marvell Kirkwood
+ 	  SoCs.
+ 
+-config ARM_MT8173_CPUFREQ
+-	tristate "Mediatek MT8173 CPUFreq support"
++config ARM_MEDIATEK_CPUFREQ
++	tristate "CPU Frequency scaling support for MediaTek SoCs"
+ 	depends on ARCH_MEDIATEK && REGULATOR
+-	depends on ARM64 || (ARM_CPU_TOPOLOGY && COMPILE_TEST)
++	depends on ARM || ARM64 || COMPILE_TEST
+ 	depends on !CPU_THERMAL || THERMAL
+ 	select PM_OPP
+ 	help
+-	  This adds the CPUFreq driver support for Mediatek MT8173 SoC.
++	  This adds the CPUFreq driver support for MediaTek SoCs.
+ 
+ config ARM_OMAP2PLUS_CPUFREQ
+ 	bool "TI OMAP2+"
+diff --git a/drivers/cpufreq/Makefile b/drivers/cpufreq/Makefile
+index b7e78f0..4956f5d 100644
+--- a/drivers/cpufreq/Makefile
++++ b/drivers/cpufreq/Makefile
+@@ -58,7 +58,7 @@ obj-$(CONFIG_ARM_EXYNOS5440_CPUFREQ)	+= exynos5440-cpufreq.o
+ obj-$(CONFIG_ARM_HIGHBANK_CPUFREQ)	+= highbank-cpufreq.o
+ obj-$(CONFIG_ARM_IMX6Q_CPUFREQ)		+= imx6q-cpufreq.o
+ obj-$(CONFIG_ARM_KIRKWOOD_CPUFREQ)	+= kirkwood-cpufreq.o
+-obj-$(CONFIG_ARM_MT8173_CPUFREQ)	+= mt8173-cpufreq.o
++obj-$(CONFIG_ARM_MEDIATEK_CPUFREQ)	+= mtk-cpufreq.o
+ obj-$(CONFIG_ARM_OMAP2PLUS_CPUFREQ)	+= omap-cpufreq.o
+ obj-$(CONFIG_ARM_PXA2xx_CPUFREQ)	+= pxa2xx-cpufreq.o
+ obj-$(CONFIG_PXA3xx)			+= pxa3xx-cpufreq.o
+diff --git a/drivers/cpufreq/mt8173-cpufreq.c b/drivers/cpufreq/mtk-cpufreq.c
+similarity index 99%
+rename from drivers/cpufreq/mt8173-cpufreq.c
+rename to drivers/cpufreq/mtk-cpufreq.c
+index fd1886f..481ec77 100644
+--- a/drivers/cpufreq/mt8173-cpufreq.c
++++ b/drivers/cpufreq/mtk-cpufreq.c
+@@ -575,6 +575,8 @@ static struct platform_driver mt8173_cpufreq_platdrv = {
+ 
+ /* List of machines supported by this driver */
+ static const struct of_device_id mt8173_cpufreq_machines[] __initconst = {
++	{ .compatible = "mediatek,mt2701", },
++	{ .compatible = "mediatek,mt7623", },
+ 	{ .compatible = "mediatek,mt817x", },
+ 	{ .compatible = "mediatek,mt8173", },
+ 	{ .compatible = "mediatek,mt8176", },
+-- 
+2.7.4
 
-Andi
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
