@@ -1,56 +1,75 @@
-From: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 0/3] some fixups for MediaTek cpufreq driver
-Date: Wed, 5 Jul 2017 09:52:34 +0530
-Message-ID: <20170705042234.GL3532@vireshk-i7>
-References: <cover.1499194061.git.sean.wang@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <cover.1499194061.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jdelvare-l3A5Bk7waGM@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Hirokazu Honda <hiroh@chromium.org>
+Subject: [PATCH v3] [media] mtk-vcodec: Show mtk driver error without DEBUG definition
+Date: Wed,  5 Jul 2017 14:33:48 +0900
+Message-ID: <20170705053348.2865-1-hiroh@chromium.org>
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Hirokazu Honda <hiroh@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 05-07-17, 02:55, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> Changes since v1:
-> - drop those patches already accepted
-> - refine the commit messages and Kconfig dependency
-> - Kconfig menu entry and file name itself are updated with more
-> generic name to drop "MT8173" since this driver actually supports
-> all MediaTek SoCs.
-> - generate patchset again with git format-patch -C -M --thread=shallow
-> - fix binding examples by replacing '@' with '-' as the OPP nodes will
-> never have a "reg" property.
-> 
-> Hi,
-> 
-> The purpose of the series is
-> - (patch 1 to 3) to fix up current Mediatek cpufreq driver
-> can't work with the latest tree since one required CPU clock muxer missing
-> would cause the driver getting the resource fails when driver probe gets
-> called.
-> - (patch 4) to enable cpufreq feature on MT2701/MT7623 platform.
-> - (patch 5 to 6) to update the binding document to reflect
-> latest driver logic and add more examples guiding people how to apply for
-> Mediatek cpufreq driver.
-> 
-> Sean Wang (3):
->   cpufreq: mediatek: Add support of cpufreq to MT2701/MT7623 SoC
->   dt-bindings: cpufreq: move MediaTek cpufreq dt-bindings document to
->     proper place
->   dt-bindings: cpufreq: enhance MediaTek cpufreq dt-binding document
+A driver error message is shown without DEBUG definition
+to find an error and debug easily.
 
-Just a minor comment on 3/3.
+Signed-off-by: Hirokazu Honda <hiroh@chromium.org>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h | 20 +++++++++-----------
+ 1 file changed, 9 insertions(+), 11 deletions(-)
 
-Acked-by: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
+index 237e144c194f..c1378c1b402c 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
+@@ -32,6 +32,15 @@ extern int mtk_v4l2_dbg_level;
+ extern bool mtk_vcodec_dbg;
+ 
+ 
++#define mtk_v4l2_err(fmt, args...)					\
++	pr_err("[MTK_V4L2][ERROR] %s:%d: " fmt "\n", __func__, __LINE__, \
++	       ##args)
++
++#define mtk_vcodec_err(h, fmt, args...)					\
++	pr_err("[MTK_VCODEC][ERROR][%d]: %s() " fmt "\n",		\
++	       ((struct mtk_vcodec_ctx *)h->ctx)->id, __func__, ##args)
++
++
+ #if defined(DEBUG)
+ 
+ #define mtk_v4l2_debug(level, fmt, args...)				 \
+@@ -41,11 +50,6 @@ extern bool mtk_vcodec_dbg;
+ 				level, __func__, __LINE__, ##args);	 \
+ 	} while (0)
+ 
+-#define mtk_v4l2_err(fmt, args...)                \
+-	pr_err("[MTK_V4L2][ERROR] %s:%d: " fmt "\n", __func__, __LINE__, \
+-	       ##args)
+-
+-
+ #define mtk_v4l2_debug_enter()  mtk_v4l2_debug(3, "+")
+ #define mtk_v4l2_debug_leave()  mtk_v4l2_debug(3, "-")
+ 
+@@ -57,22 +61,16 @@ extern bool mtk_vcodec_dbg;
+ 				__func__, ##args);			\
+ 	} while (0)
+ 
+-#define mtk_vcodec_err(h, fmt, args...)					\
+-	pr_err("[MTK_VCODEC][ERROR][%d]: %s() " fmt "\n",		\
+-	       ((struct mtk_vcodec_ctx *)h->ctx)->id, __func__, ##args)
+-
+ #define mtk_vcodec_debug_enter(h)  mtk_vcodec_debug(h, "+")
+ #define mtk_vcodec_debug_leave(h)  mtk_vcodec_debug(h, "-")
+ 
+ #else
+ 
+ #define mtk_v4l2_debug(level, fmt, args...) {}
+-#define mtk_v4l2_err(fmt, args...) {}
+ #define mtk_v4l2_debug_enter() {}
+ #define mtk_v4l2_debug_leave() {}
+ 
+ #define mtk_vcodec_debug(h, fmt, args...) {}
+-#define mtk_vcodec_err(h, fmt, args...) {}
+ #define mtk_vcodec_debug_enter(h) {}
+ #define mtk_vcodec_debug_leave(h) {}
+ 
 -- 
-viresh
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+2.13.2.725.g09c95d1e9-goog
