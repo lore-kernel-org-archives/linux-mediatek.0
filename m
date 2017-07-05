@@ -1,56 +1,51 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] dt-bindings: nvmem: mediatek: add support for MediaTek
- MT7623 and MT7622 SoC
-Date: Tue, 4 Jul 2017 23:21:59 +0200
-Message-ID: <7922fc9b-ad4a-fad7-023f-587db484b5aa@gmail.com>
-References: <fc06fbe496ac237b961b73d51bb823e4ac2f8578.1498808678.git.sean.wang@mediatek.com>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH v2 3/3] dt-bindings: cpufreq: enhance MediaTek cpufreq
+ dt-binding document
+Date: Wed, 5 Jul 2017 09:52:12 +0530
+Message-ID: <20170705042212.GK3532@vireshk-i7>
+References: <cover.1499194061.git.sean.wang@mediatek.com>
+ <ce40386c0ae1e574d8d03354aa665bf9de6b0bbc.1499194061.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <fc06fbe496ac237b961b73d51bb823e4ac2f8578.1498808678.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <ce40386c0ae1e574d8d03354aa665bf9de6b0bbc.1499194061.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, jamesjj.liao@mediatek.com, p.zabel@pengutronix.de, shunli.wang@mediatek.com, erin.lo@mediatek.com, jdelvare@suse.de, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 06/30/2017 09:49 AM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On 05-07-17, 02:55, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> This updates dt-binding documentation for MediaTek MT7622 and
-> MT7623 SoC. For the both SoCs supported all rely on the fallback
-> binding of the generic case with "mediatek,efuse".
+> Update binding document with adding operating-points-v2 as the required
+> property and the cooling level as the optional properties and adding more
+> examples guiding people how to use MediaTek cpufreq driver for MediaTek
+> SoCs.
 > 
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
-
-Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-
->   Documentation/devicetree/bindings/nvmem/mtk-efuse.txt | 5 ++++-
->   1 file changed, 4 insertions(+), 1 deletion(-)
+>  .../bindings/cpufreq/cpufreq-mediatek.txt          | 170 ++++++++++++++++++++-
+>  1 file changed, 167 insertions(+), 3 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-> index 74cf529..0668c45 100644
-> --- a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-> +++ b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-> @@ -3,7 +3,10 @@
->   This binding is intended to represent MTK-EFUSE which is found in most Mediatek SOCs.
->   
->   Required properties:
-> -- compatible: should be "mediatek,mt8173-efuse" or "mediatek,efuse"
-> +- compatible: should be
-> +	      "mediatek,mt7622-efuse", "mediatek,efuse": for MT7622
-> +	      "mediatek,mt7623-efuse", "mediatek,efuse": for MT7623
-> +	      "mediatek,mt8173-efuse" or "mediatek,efuse": for MT8173
->   - reg: Should contain registers location and length
->   
->   = Data cells =
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> index 52b457c..e919ca7 100644
+> --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> @@ -1,4 +1,5 @@
+> -Device Tree Clock bindins for CPU DVFS of Mediatek MT8173 SoC
+> +Binding for MediaTek's CPUFreq driver
+> +=====================================
+>  
+>  Required properties:
+>  - clocks: A list of phandle + clock-specifier pairs for the clocks listed in clock names.
+> @@ -9,6 +10,8 @@ Required properties:
+>  			  transition and not stable yet.
+>  	Please refer to Documentation/devicetree/bindings/clk/clock-bindings.txt for
+>  	generic clock consumer properties.
+> +- operating-points-v2: Pleaser refer to Documentation/devicetree/bindings/opp/opp.txt
+
+s/Pleaser/Please
+
+-- 
+viresh
