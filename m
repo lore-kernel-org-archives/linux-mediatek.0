@@ -1,85 +1,55 @@
-From: Zhi Mao <zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 2/6] pwm: mediatek: fix pwm source clock selection
-Date: Thu, 6 Jul 2017 14:43:55 +0800
-Message-ID: <1499323435.22478.26.camel@mhfsdcap03>
-References: <1498802721-32455-1-git-send-email-zhi.mao@mediatek.com>
-         <1498802721-32455-3-git-send-email-zhi.mao@mediatek.com>
-         <d009712e-f0a2-2dc7-2f64-ad8cfa21f98d@gmail.com>
-         <1499321801.22478.12.camel@mhfsdcap03>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: [RESEND GIT PULL] mediatek drm next for 4.13
+Date: Thu, 6 Jul 2017 22:18:53 +0800
+Message-ID: <1499350733.8678.2.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1499321801.22478.12.camel@mhfsdcap03>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, zhenbao.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-07-06 at 14:16 +0800, Zhi Mao wrote:
-> On Wed, 2017-07-05 at 13:09 +0200, Matthias Brugger wrote:
-> > 
-> > On 06/30/2017 08:05 AM, Zhi Mao wrote:
-> > > In original code, the pwm output frequency is not correct
-> > > when set bit<3>=1 to PWMCON register.
-> > > 
-> > > Signed-off-by: Zhi Mao <zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > ---
-> > >   drivers/pwm/pwm-mediatek.c |    2 +-
-> > >   1 file changed, 1 insertion(+), 1 deletion(-)
-> > > 
-> > > diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-> > > index 5c11bc7..d08b5b3 100644
-> > > --- a/drivers/pwm/pwm-mediatek.c
-> > > +++ b/drivers/pwm/pwm-mediatek.c
-> > > @@ -91,7 +91,7 @@ static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
-> > >   	if (clkdiv > 7)
-> > >   		return -EINVAL;
-> > >   
-> > > -	mtk_pwm_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | BIT(3) | clkdiv);
-> > > +	mtk_pwm_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
-> > 
-> > Just for clarification, BIT(15) enables old PWM mode, which ignores 
-> > CLKSEL (BIT(3)). Therefore setting BIT(3) does not have any effect and 
-> > can be discarded.
-> > 
-> > Am I correct? I took mt7623n datasheet for reference.
-> > 
-> > Regards,
-> > Matthias
-> > 
-> Yes, remove setting bit<3> will not take any effect. 
-> PWMCON bit<3> is pwm source clock selecting register.
-> You can check the datasheet of MT7623 for details.
-> 
-> Regards
-> Zhi
-> 
-Hi Mattias,
-
-Ignore the above reply, I explain this bit<3> issue for you.
-In the data sheet of MT7623: 
-PWMCON bit<3> is PWM source clock selecting register
-0: CLK=CLKSRC
-1: CLK=CLKSRC/1625
-for example,
-bit<3>=0, PWM clk source is 26M
-bit<3>=1, PWM clk source is 16K
-The frequency of PWM output will based on this clock source
-if set bit<3>=1, it will cause the frequency of PWM output is not
-correct. I also use the oscilloscope device to measure the output,     
-set bit<3>=0, the output meet expectation. 
- 
-Regards
-Zhi
-> > >   	mtk_pwm_writel(pc, pwm->hwpwm, PWMDWIDTH, period_ns / resolution);
-> > >   	mtk_pwm_writel(pc, pwm->hwpwm, PWMTHRES, duty_ns / resolution);
-> > >   
-> > > 
-> 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGksIERhdmU6CgpUaGlzIGluY2x1ZGUgbmV3IGNvbG9yIGZvcm1hdCBzdXBwb3J0IGFuZCBzb21l
+IGZpeHVwcy4KUGxlYXNlIGtpbmRseSBsZXQgbWUga25vdyBpZiB0aGVyZSBpcyBhbnkgcHJvYmxl
+bS4KClJlZ2FyZHMsCkNLCgpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0CjZkNjFl
+NzBjY2MyMTYwNmZmYjhhMGEwM2JkM2FiYTI0ZjY1OTUwMmI6CgogIEJhY2ttZXJnZSB0YWcgJ3Y0
+LjEyLXJjNycgaW50byBkcm0tbmV4dCAoMjAxNy0wNi0yNyAwODoyODozMCArMTAwMCkKCmFyZSBh
+dmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0OgoKCiAgaHR0cHM6Ly9naXRodWIuY29t
+L2NraHUtbWVkaWF0ZWsvbGludXguZ2l0LXRhZ3MuZ2l0Cm1lZGlhdGVrLWRybS1uZXh0LTQuMTMK
+CmZvciB5b3UgdG8gZmV0Y2ggY2hhbmdlcyB1cCB0byA1YWM1ODk1YTg0ZDkyYmQyYjNkYjQ5MGY4
+ZWUyNDJjY2I0ZDc3ZTk2OgoKICBkcm0vbWVkaWF0ZWs6IHNlcGFyYXRlIGNvbG9yIG1vZHVsZSB0
+byBmaXh1cCBlcnJvciBtZW1vcnkgcmVhbGxvY2F0aW9uCigyMDE3LTA2LTI3IDE3OjM0OjUzICsw
+ODAwKQoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLQpCaWJieSBIc2llaCAoMSk6CiAgICAgIGRybS9tZWRpYXRlazogU3VwcG9y
+dCBVWVZZIGFuZCBZVVlWIGZvcm1hdCBmb3Igb3ZlcmxheQoKQ2hyaXN0b3BoZSBKYWlsbGV0ICgx
+KToKICAgICAgZHJtL21lZGlhdGVrOiBjaGVjayBmb3IgbWVtb3J5IGFsbG9jYXRpb24gZmFpbHVy
+ZQoKQ29saW4gSWFuIEtpbmcgKDEpOgogICAgICBkcm0vbWVkaWF0ZWs6IHJlLXBocmFzZSBEUk1f
+SU5GTyBlcnJvciBtZXNzYWdlCgpQaGlsaXBwIFphYmVsICgxKToKICAgICAgZHJtL21lZGlhdGVr
+OiB1c2UgcGxhdGZvcm1fcmVnaXN0ZXJfZHJpdmVycwoKeXQuc2hlbkBtZWRpYXRlay5jb20gKDEp
+OgogICAgICBkcm0vbWVkaWF0ZWs6IHNlcGFyYXRlIGNvbG9yIG1vZHVsZSB0byBmaXh1cCBlcnJv
+ciBtZW1vcnkKcmVhbGxvY2F0aW9uCgpkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvTWFrZWZpbGUg
+ICAgICAgICAgIHwgICAzICstCmRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9jb2xv
+ci5jICAgfCAxNzYKKysrKysrKysrKysrKysrKysrKysrKysrKysrKwpkcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMgICAgIHwgICA3ICsrCmRyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHJtX2NydGMuYyAgICAgfCAgIDIgKwpkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2RybV9kZHBfY29tcC5jIHwgIDgwICstLS0tLS0tLS0tLS0KZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fZHJ2LmMgICAgICB8ICAzMyArKy0tLS0KZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fZHJ2LmggICAgICB8ICAgMSArCmRyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZHJtX3BsYW5lLmMgICAgfCAgIDIgKwpkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RzaS5jICAgICAgICAgIHwgICAyICstCmRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRt
+aS5jICAgICAgICAgfCAgMjcgKy0tLS0KMTAgZmlsZXMgY2hhbmdlZCwgMjA1IGluc2VydGlvbnMo
+KyksIDEyOCBkZWxldGlvbnMoLSkKY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZGlzcF9jb2xvci5jCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
