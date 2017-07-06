@@ -1,55 +1,88 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: [RESEND GIT PULL] mediatek drm next for 4.13
-Date: Thu, 6 Jul 2017 22:18:53 +0800
-Message-ID: <1499350733.8678.2.camel@mtksdaap41>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: [PATCH 1/2] iommu/mtk: Avoid redundant TLB syncs locally
+Date: Thu,  6 Jul 2017 17:55:30 +0100
+Message-ID: <367e86d1e73867eaf0467732c10c7dc74380f97c.1499360104.git.robin.murphy@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Dave Airlie <airlied@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: will.deacon-5wv7dgnIgG8@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIERhdmU6CgpUaGlzIGluY2x1ZGUgbmV3IGNvbG9yIGZvcm1hdCBzdXBwb3J0IGFuZCBzb21l
-IGZpeHVwcy4KUGxlYXNlIGtpbmRseSBsZXQgbWUga25vdyBpZiB0aGVyZSBpcyBhbnkgcHJvYmxl
-bS4KClJlZ2FyZHMsCkNLCgpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0CjZkNjFl
-NzBjY2MyMTYwNmZmYjhhMGEwM2JkM2FiYTI0ZjY1OTUwMmI6CgogIEJhY2ttZXJnZSB0YWcgJ3Y0
-LjEyLXJjNycgaW50byBkcm0tbmV4dCAoMjAxNy0wNi0yNyAwODoyODozMCArMTAwMCkKCmFyZSBh
-dmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0OgoKCiAgaHR0cHM6Ly9naXRodWIuY29t
-L2NraHUtbWVkaWF0ZWsvbGludXguZ2l0LXRhZ3MuZ2l0Cm1lZGlhdGVrLWRybS1uZXh0LTQuMTMK
-CmZvciB5b3UgdG8gZmV0Y2ggY2hhbmdlcyB1cCB0byA1YWM1ODk1YTg0ZDkyYmQyYjNkYjQ5MGY4
-ZWUyNDJjY2I0ZDc3ZTk2OgoKICBkcm0vbWVkaWF0ZWs6IHNlcGFyYXRlIGNvbG9yIG1vZHVsZSB0
-byBmaXh1cCBlcnJvciBtZW1vcnkgcmVhbGxvY2F0aW9uCigyMDE3LTA2LTI3IDE3OjM0OjUzICsw
-ODAwKQoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLQpCaWJieSBIc2llaCAoMSk6CiAgICAgIGRybS9tZWRpYXRlazogU3VwcG9y
-dCBVWVZZIGFuZCBZVVlWIGZvcm1hdCBmb3Igb3ZlcmxheQoKQ2hyaXN0b3BoZSBKYWlsbGV0ICgx
-KToKICAgICAgZHJtL21lZGlhdGVrOiBjaGVjayBmb3IgbWVtb3J5IGFsbG9jYXRpb24gZmFpbHVy
-ZQoKQ29saW4gSWFuIEtpbmcgKDEpOgogICAgICBkcm0vbWVkaWF0ZWs6IHJlLXBocmFzZSBEUk1f
-SU5GTyBlcnJvciBtZXNzYWdlCgpQaGlsaXBwIFphYmVsICgxKToKICAgICAgZHJtL21lZGlhdGVr
-OiB1c2UgcGxhdGZvcm1fcmVnaXN0ZXJfZHJpdmVycwoKeXQuc2hlbkBtZWRpYXRlay5jb20gKDEp
-OgogICAgICBkcm0vbWVkaWF0ZWs6IHNlcGFyYXRlIGNvbG9yIG1vZHVsZSB0byBmaXh1cCBlcnJv
-ciBtZW1vcnkKcmVhbGxvY2F0aW9uCgpkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvTWFrZWZpbGUg
-ICAgICAgICAgIHwgICAzICstCmRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9jb2xv
-ci5jICAgfCAxNzYKKysrKysrKysrKysrKysrKysrKysrKysrKysrKwpkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMgICAgIHwgICA3ICsrCmRyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZHJtX2NydGMuYyAgICAgfCAgIDIgKwpkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9kZHBfY29tcC5jIHwgIDgwICstLS0tLS0tLS0tLS0KZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcm1fZHJ2LmMgICAgICB8ICAzMyArKy0tLS0KZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcm1fZHJ2LmggICAgICB8ICAgMSArCmRyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHJtX3BsYW5lLmMgICAgfCAgIDIgKwpkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RzaS5jICAgICAgICAgIHwgICAyICstCmRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRt
-aS5jICAgICAgICAgfCAgMjcgKy0tLS0KMTAgZmlsZXMgY2hhbmdlZCwgMjA1IGluc2VydGlvbnMo
-KyksIDEyOCBkZWxldGlvbnMoLSkKY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZGlzcF9jb2xvci5jCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+Under certain circumstances, the io-pgtable code may end up issuing two
+TLB sync operations without any intervening invalidations. This goes
+badly for the M4U hardware, since it means the second sync ends up
+polling for a non-existent operation to finish, and as a result times
+out and warns. The io_pgtable_tlb_* helpers implement a high-level
+optimisation to avoid issuing the second sync at all in such cases, but
+in order to work correctly that requires all pagetable operations to be
+serialised under a lock, thus is no longer applicable to all io-pgtable
+users.
+
+Since we're the only user actually relying on this flag for correctness,
+let's reimplement it locally to avoid the headache of trying to make the
+high-level version concurrency-safe for other users.
+
+CC: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+CC: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+---
+ drivers/iommu/mtk_iommu.c | 6 ++++++
+ drivers/iommu/mtk_iommu.h | 1 +
+ 2 files changed, 7 insertions(+)
+
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 5d14cd15198d..91c6d367ab35 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -129,6 +129,7 @@ static void mtk_iommu_tlb_add_flush_nosync(unsigned long iova, size_t size,
+ 	writel_relaxed(iova, data->base + REG_MMU_INVLD_START_A);
+ 	writel_relaxed(iova + size - 1, data->base + REG_MMU_INVLD_END_A);
+ 	writel_relaxed(F_MMU_INV_RANGE, data->base + REG_MMU_INVALIDATE);
++	data->tlb_flush_active = true;
+ }
+ 
+ static void mtk_iommu_tlb_sync(void *cookie)
+@@ -137,6 +138,10 @@ static void mtk_iommu_tlb_sync(void *cookie)
+ 	int ret;
+ 	u32 tmp;
+ 
++	/* Avoid timing out if there's nothing to wait for */
++	if (!data->tlb_flush_active)
++		return;
++
+ 	ret = readl_poll_timeout_atomic(data->base + REG_MMU_CPE_DONE, tmp,
+ 					tmp != 0, 10, 100000);
+ 	if (ret) {
+@@ -146,6 +151,7 @@ static void mtk_iommu_tlb_sync(void *cookie)
+ 	}
+ 	/* Clear the CPE status */
+ 	writel_relaxed(0, data->base + REG_MMU_CPE_DONE);
++	data->tlb_flush_active = false;
+ }
+ 
+ static const struct iommu_gather_ops mtk_iommu_gather_ops = {
+diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+index 2a28eadeea0e..c06cc91b5d9a 100644
+--- a/drivers/iommu/mtk_iommu.h
++++ b/drivers/iommu/mtk_iommu.h
+@@ -47,6 +47,7 @@ struct mtk_iommu_data {
+ 	struct iommu_group		*m4u_group;
+ 	struct mtk_smi_iommu		smi_imu;      /* SMI larb iommu info */
+ 	bool                            enable_4GB;
++	bool				tlb_flush_active;
+ 
+ 	struct iommu_device		iommu;
+ };
+-- 
+2.12.2.dirty
