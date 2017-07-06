@@ -1,88 +1,33 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: [PATCH 2/2] Revert "iommu/io-pgtable: Avoid redundant TLB syncs"
-Date: Thu,  6 Jul 2017 17:55:31 +0100
-Message-ID: <451e91afbca0c225635cb6203c68f74a11d0da49.1499360104.git.robin.murphy@arm.com>
-References: <367e86d1e73867eaf0467732c10c7dc74380f97c.1499360104.git.robin.murphy@arm.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v1 1/4] dt-bindings: media: mtk-cir: Add support for
+ MT7622 SoC
+Date: Thu, 6 Jul 2017 13:56:27 -0500
+Message-ID: <20170706185627.zqhgwtc7m7buf3kg@rob-hp-laptop>
+References: <cover.1498794408.git.sean.wang@mediatek.com>
+ <a778a3a33a273f00d3ff071d62fe672a207d949c.1498794408.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <367e86d1e73867eaf0467732c10c7dc74380f97c.1499360104.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: will.deacon-5wv7dgnIgG8@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org
-Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <a778a3a33a273f00d3ff071d62fe672a207d949c.1498794408.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, sean-hENCXIMQXOg@public.gmane.org, hdegoede-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, andi.shyti-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, ivo.g.dimitrov.75-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The tlb_sync_pending flag was necessary for correctness in the Mediatek
-M4U driver, but since it offered a small theoretical optimisation for
-all io-pgtable users it was implemented as a high-level thing. However,
-now that some users may not be using a synchronising lock, there are
-several ways this flag can go wrong for them, and at worst it could
-result in incorrect behaviour.
+On Fri, Jun 30, 2017 at 02:03:04PM +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> Document the devicetree bindings for CIR on MediaTek MT7622
+> SoC.
+> 
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/media/mtk-cir.txt | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
 
-Since we've addressed the correctness issue within the Mediatek driver
-itself, and fixing the optimisation aspect to be concurrency-safe would
-be quite a headache (and impose extra overhead on every operation for
-the sake of slightly helping one case which will virtually never happen
-in typical usage), let's just retire it.
-
-This reverts commit 88492a4700360a086e55d8874ad786105a5e8b0f.
-
-Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
----
- drivers/iommu/io-pgtable.h | 9 +--------
- 1 file changed, 1 insertion(+), 8 deletions(-)
-
-diff --git a/drivers/iommu/io-pgtable.h b/drivers/iommu/io-pgtable.h
-index 524263a7ae6f..a3e667077b14 100644
---- a/drivers/iommu/io-pgtable.h
-+++ b/drivers/iommu/io-pgtable.h
-@@ -158,14 +158,12 @@ void free_io_pgtable_ops(struct io_pgtable_ops *ops);
-  * @fmt:    The page table format.
-  * @cookie: An opaque token provided by the IOMMU driver and passed back to
-  *          any callback routines.
-- * @tlb_sync_pending: Private flag for optimising out redundant syncs.
-  * @cfg:    A copy of the page table configuration.
-  * @ops:    The page table operations in use for this set of page tables.
-  */
- struct io_pgtable {
- 	enum io_pgtable_fmt	fmt;
- 	void			*cookie;
--	bool			tlb_sync_pending;
- 	struct io_pgtable_cfg	cfg;
- 	struct io_pgtable_ops	ops;
- };
-@@ -175,22 +173,17 @@ struct io_pgtable {
- static inline void io_pgtable_tlb_flush_all(struct io_pgtable *iop)
- {
- 	iop->cfg.tlb->tlb_flush_all(iop->cookie);
--	iop->tlb_sync_pending = true;
- }
- 
- static inline void io_pgtable_tlb_add_flush(struct io_pgtable *iop,
- 		unsigned long iova, size_t size, size_t granule, bool leaf)
- {
- 	iop->cfg.tlb->tlb_add_flush(iova, size, granule, leaf, iop->cookie);
--	iop->tlb_sync_pending = true;
- }
- 
- static inline void io_pgtable_tlb_sync(struct io_pgtable *iop)
- {
--	if (iop->tlb_sync_pending) {
--		iop->cfg.tlb->tlb_sync(iop->cookie);
--		iop->tlb_sync_pending = false;
--	}
-+	iop->cfg.tlb->tlb_sync(iop->cookie);
- }
- 
- /**
--- 
-2.12.2.dirty
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
