@@ -1,94 +1,62 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 1/2] iommu/mtk: Avoid redundant TLB syncs locally
-Date: Fri, 7 Jul 2017 11:06:13 +0800
-Message-ID: <1499396773.2256.1.camel@mhfsdcap03>
-References: <367e86d1e73867eaf0467732c10c7dc74380f97c.1499360104.git.robin.murphy@arm.com>
+From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v3 0/3] some fixups for MediaTek cpufreq driver
+Date: Fri, 7 Jul 2017 11:56:44 +0800
+Message-ID: <cover.1499399121.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <367e86d1e73867eaf0467732c10c7dc74380f97c.1499360104.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jdelvare-l3A5Bk7waGM@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-07-06 at 17:55 +0100, Robin Murphy wrote:
-> Under certain circumstances, the io-pgtable code may end up issuing two
-> TLB sync operations without any intervening invalidations. This goes
-> badly for the M4U hardware, since it means the second sync ends up
-> polling for a non-existent operation to finish, and as a result times
-> out and warns. The io_pgtable_tlb_* helpers implement a high-level
-> optimisation to avoid issuing the second sync at all in such cases, but
-> in order to work correctly that requires all pagetable operations to be
-> serialised under a lock, thus is no longer applicable to all io-pgtable
-> users.
-> 
-> Since we're the only user actually relying on this flag for correctness,
-> let's reimplement it locally to avoid the headache of trying to make the
-> high-level version concurrency-safe for other users.
-> 
-> CC: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> CC: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Thanks Robin.
+Changes since v2:
+- correct the typo in the binding document
 
-Tested-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Changes since v1:
+- drop those patches already accepted
+- refine the commit messages and Kconfig dependency
+- Kconfig menu entry and file name itself are updated with more
+generic name to drop "MT8173" since this driver actually supports
+all MediaTek SoCs.
+- generate patchset again with git format-patch -C -M --thread=shallow
+- fix binding examples by replacing '@' with '-' as the OPP nodes will
+never have a "reg" property.
 
-> ---
->  drivers/iommu/mtk_iommu.c | 6 ++++++
->  drivers/iommu/mtk_iommu.h | 1 +
->  2 files changed, 7 insertions(+)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 5d14cd15198d..91c6d367ab35 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -129,6 +129,7 @@ static void mtk_iommu_tlb_add_flush_nosync(unsigned long iova, size_t size,
->  	writel_relaxed(iova, data->base + REG_MMU_INVLD_START_A);
->  	writel_relaxed(iova + size - 1, data->base + REG_MMU_INVLD_END_A);
->  	writel_relaxed(F_MMU_INV_RANGE, data->base + REG_MMU_INVALIDATE);
-> +	data->tlb_flush_active = true;
->  }
->  
->  static void mtk_iommu_tlb_sync(void *cookie)
-> @@ -137,6 +138,10 @@ static void mtk_iommu_tlb_sync(void *cookie)
->  	int ret;
->  	u32 tmp;
->  
-> +	/* Avoid timing out if there's nothing to wait for */
-> +	if (!data->tlb_flush_active)
-> +		return;
-> +
->  	ret = readl_poll_timeout_atomic(data->base + REG_MMU_CPE_DONE, tmp,
->  					tmp != 0, 10, 100000);
->  	if (ret) {
-> @@ -146,6 +151,7 @@ static void mtk_iommu_tlb_sync(void *cookie)
->  	}
->  	/* Clear the CPE status */
->  	writel_relaxed(0, data->base + REG_MMU_CPE_DONE);
-> +	data->tlb_flush_active = false;
->  }
->  
->  static const struct iommu_gather_ops mtk_iommu_gather_ops = {
-> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> index 2a28eadeea0e..c06cc91b5d9a 100644
-> --- a/drivers/iommu/mtk_iommu.h
-> +++ b/drivers/iommu/mtk_iommu.h
-> @@ -47,6 +47,7 @@ struct mtk_iommu_data {
->  	struct iommu_group		*m4u_group;
->  	struct mtk_smi_iommu		smi_imu;      /* SMI larb iommu info */
->  	bool                            enable_4GB;
-> +	bool				tlb_flush_active;
->  
->  	struct iommu_device		iommu;
->  };
+Hi,
+
+The purpose of the series is
+- (patch 1 to 3) to fix up current Mediatek cpufreq driver
+can't work with the latest tree since one required CPU clock muxer missing
+would cause the driver getting the resource fails when driver probe gets
+called.
+- (patch 4) to enable cpufreq feature on MT2701/MT7623 platform.
+- (patch 5 to 6) to update the binding document to reflect
+latest driver logic and add more examples guiding people how to apply for
+Mediatek cpufreq driver.
+
+Sean Wang (3):
+  cpufreq: mediatek: Add support of cpufreq to MT2701/MT7623 SoC
+  dt-bindings: cpufreq: move MediaTek cpufreq dt-bindings document to
+    proper place
+  dt-bindings: cpufreq: enhance MediaTek cpufreq dt-binding document
+
+ .../devicetree/bindings/clock/mt8173-cpu-dvfs.txt  |  83 -------
+ .../bindings/cpufreq/cpufreq-mediatek.txt          | 247 +++++++++++++++++++++
+ drivers/cpufreq/Kconfig.arm                        |   8 +-
+ drivers/cpufreq/Makefile                           |   2 +-
+ .../cpufreq/{mt8173-cpufreq.c => mtk-cpufreq.c}    |   2 +
+ 5 files changed, 254 insertions(+), 88 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/clock/mt8173-cpu-dvfs.txt
+ create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+ rename drivers/cpufreq/{mt8173-cpufreq.c => mtk-cpufreq.c} (99%)
+
+-- 
+2.7.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
