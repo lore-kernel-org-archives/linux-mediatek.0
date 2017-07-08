@@ -1,56 +1,65 @@
 From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [bug report] clk: mediatek: add missing cpu mux causing
- Mediatek cpufreq can't work
-Date: Sat, 8 Jul 2017 14:39:44 +0800
-Message-ID: <1499495984.16278.13.camel@mtkswgap22>
-References: <20170707095331.s7zlvk5hbqwgngld@mwanda>
+Subject: Re: [PATCH] net: ethernet: mediatek: remove useless code in
+ mtk_probe()
+Date: Sat, 8 Jul 2017 14:56:41 +0800
+Message-ID: <1499497001.16278.19.camel@mtkswgap22>
+References: <20170707202333.GA5114@embeddedgus>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20170707095331.s7zlvk5hbqwgngld@mwanda>
-Sender: linux-clk-owner@vger.kernel.org
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, sboyd@codeaurora.org
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20170707202333.GA5114@embeddedgus>
+Sender: netdev-owner@vger.kernel.org
+To: "Gustavo A. R. Silva" <garsilva@embeddedor.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Felix Fietkau <nbd@openwrt.org>, John Crispin <blogic@openwrt.org>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Dan, 
+Hi,  Gustavo
 
-	thank you for reporting the defect, I will handle this int next days.
+It indeed is useless at the current time point.
+
+
+but actually I will add new SoC support to the driver in the next week,
+which requires the variable match :-(
+
 	Sean
 
-On Fri, 2017-07-07 at 12:53 +0300, Dan Carpenter wrote:
-> Hello Sean Wang,
-> 
-> The patch 1e17de9049da: "clk: mediatek: add missing cpu mux causing
-> Mediatek cpufreq can't work" from May 5, 2017, leads to the following
-> static checker warning:
-> 
-> 	drivers/clk/mediatek/clk-cpumux.c:39 clk_cpumux_get_parent()
-> 	warn: signedness bug returning '(-22)'
-> 
-> drivers/clk/mediatek/clk-cpumux.c
->     27  static u8 clk_cpumux_get_parent(struct clk_hw *hw)
->     28  {
->     29          struct mtk_clk_cpumux *mux = to_mtk_clk_cpumux(hw);
->     30          int num_parents = clk_hw_get_num_parents(hw);
->     31          unsigned int val;
->     32  
->     33          regmap_read(mux->regmap, mux->reg, &val);
->     34  
->     35          val >>= mux->shift;
->     36          val &= mux->mask;
->     37  
->     38          if (val >= num_parents)
->     39                  return -EINVAL;
->                         ^^^^^^^^^^^^^^
-> Doesn't work for u8.
-> 
->     40  
->     41          return val;
->     42  }
-> 
-> regards,
-> dan carpenter
 
-
+On Fri, 2017-07-07 at 15:23 -0500, Gustavo A. R. Silva wrote:
+> Remove useless local variables _match_, _soc_ and the code related.
+> 
+> Notice that
+> 
+> const struct of_device_id of_mtk_match[] = {
+>         { .compatible = "mediatek,mt2701-eth" },
+>         {},
+> };
+> 
+> So match->data is NULL.
+> 
+> Suggested-by: Andrew Lunn <andrew@lunn.ch>
+> Signed-off-by: Gustavo A. R. Silva <garsilva@embeddedor.com>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 5 -----
+>  1 file changed, 5 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index adaaafc..b9a5a65 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -2401,15 +2401,10 @@ static int mtk_probe(struct platform_device *pdev)
+>  {
+>  	struct resource *res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>  	struct device_node *mac_np;
+> -	const struct of_device_id *match;
+> -	struct mtk_soc_data *soc;
+>  	struct mtk_eth *eth;
+>  	int err;
+>  	int i;
+>  
+> -	match = of_match_device(of_mtk_match, &pdev->dev);
+> -	soc = (struct mtk_soc_data *)match->data;
+> -
+>  	eth = devm_kzalloc(&pdev->dev, sizeof(*eth), GFP_KERNEL);
+>  	if (!eth)
+>  		return -ENOMEM;
