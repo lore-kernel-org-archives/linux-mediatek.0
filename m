@@ -1,37 +1,36 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH] net: ethernet: mediatek: remove useless code in
- mtk_probe()
-Date: Sat, 08 Jul 2017 11:28:19 +0100 (WEST)
-Message-ID: <20170708.112819.2140475148838704261.davem@davemloft.net>
-References: <20170707150831.Horde.MYtEbXeqxGS-hTg2bUv3DWt@gator4166.hostgator.com>
-        <20170707202333.GA5114@embeddedgus>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] dt-bindings: nvmem: mediatek: add support for MediaTek
+ MT7623 and MT7622 SoC
+Date: Sun, 9 Jul 2017 19:57:24 -0500
+Message-ID: <20170710005724.s4t6ejp73aipgp6b@rob-hp-laptop>
+References: <fc06fbe496ac237b961b73d51bb823e4ac2f8578.1498808678.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170707202333.GA5114@embeddedgus>
-Sender: linux-kernel-owner@vger.kernel.org
-To: garsilva@embeddedor.com
-Cc: andrew@lunn.ch, nbd@openwrt.org, blogic@openwrt.org, matthias.bgg@gmail.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <fc06fbe496ac237b961b73d51bb823e4ac2f8578.1498808678.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: "Gustavo A. R. Silva" <garsilva@embeddedor.com>
-Date: Fri, 7 Jul 2017 15:23:34 -0500
-
-> Remove useless local variables _match_, _soc_ and the code related.
+On Fri, Jun 30, 2017 at 03:49:00PM +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> Notice that
+> This updates dt-binding documentation for MediaTek MT7622 and
+> MT7623 SoC. For the both SoCs supported all rely on the fallback
+> binding of the generic case with "mediatek,efuse".
 > 
-> const struct of_device_id of_mtk_match[] = {
->         { .compatible = "mediatek,mt2701-eth" },
->         {},
-> };
-> 
-> So match->data is NULL.
-> 
-> Suggested-by: Andrew Lunn <andrew@lunn.ch>
-> Signed-off-by: Gustavo A. R. Silva <garsilva@embeddedor.com>
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/nvmem/mtk-efuse.txt | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
 
 Applied, thanks.
 
-If someone needs this they can it back, in a less buggy form.
+Rob
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
