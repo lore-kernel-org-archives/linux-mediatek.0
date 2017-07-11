@@ -1,57 +1,48 @@
-From: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-Subject: [PATCH v2 06/12] drm/mediatek: Handle drm_atomic_helper_swap_state
- failure
-Date: Tue, 11 Jul 2017 16:33:08 +0200
-Message-ID: <20170711143314.2148-7-maarten.lankhorst@linux.intel.com>
-References: <20170711143314.2148-1-maarten.lankhorst@linux.intel.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH] mmc: mediatek: add ops->get_cd() support
+Date: Tue, 11 Jul 2017 16:43:54 +0200
+Message-ID: <CAPDyKFo+UeW4AMFZDN=ob8U9Oj7mZ24ANyT5LQ=ZQ6YxOtRqKQ@mail.gmail.com>
+References: <1499063096-10604-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170711143314.2148-1-maarten.lankhorst@linux.intel.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: dri-devel@lists.freedesktop.org
-Cc: intel-gfx@lists.freedesktop.org, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1499063096-10604-1-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Heiner Kallweit <hkallweit1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-drm_atomic_helper_swap_state() will be changed to interruptible waiting
-in the next few commits, so all drivers have to be changed to handling
-failure.
+On 3 July 2017 at 08:24, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+> if user plug out sd card slowly, finally card is plugged out but
+> cat /proc/partitions can find that card is still exist in kernel.
+> that's because alougth get card detect interrupt but CMD13 still
+> can get correct response(all other pins are connected expect card
+> detect pin).
+> add ops->get_cd() can avoid this issue.
+>
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
 
-Signed-off-by: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-Cc: CK Hu <ck.hu@mediatek.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+Thanks, applied for next!
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 56f802d0a51c..9a130c84c861 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -109,7 +109,12 @@ static int mtk_atomic_commit(struct drm_device *drm,
- 	mutex_lock(&private->commit.lock);
- 	flush_work(&private->commit.work);
- 
--	drm_atomic_helper_swap_state(state, true);
-+	ret = drm_atomic_helper_swap_state(state, true);
-+	if (ret) {
-+		mutex_unlock(&private->commit.lock);
-+		drm_atomic_helper_cleanup_planes(drm, state);
-+		return ret;
-+	}
- 
- 	drm_atomic_state_get(state);
- 	if (async)
--- 
-2.11.0
+Kind regards
+Uffe
+
+> ---
+>  drivers/mmc/host/mtk-sd.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 5c1e178..975c765 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -1585,6 +1585,7 @@ static void msdc_hw_reset(struct mmc_host *mmc)
+>         .request = msdc_ops_request,
+>         .set_ios = msdc_ops_set_ios,
+>         .get_ro = mmc_gpio_get_ro,
+> +       .get_cd = mmc_gpio_get_cd,
+>         .start_signal_voltage_switch = msdc_ops_switch_volt,
+>         .card_busy = msdc_card_busy,
+>         .execute_tuning = msdc_execute_tuning,
+> --
+> 1.8.1.1.dirty
+>
