@@ -1,53 +1,62 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH 13/16] drm/mediatek: Convert to new iterator
-	macros
-Date: Wed, 12 Jul 2017 12:01:00 +0200
-Message-ID: <1499853660.6374.17.camel@pengutronix.de>
-References: <20170712081344.25495-1-maarten.lankhorst@linux.intel.com>
- <20170712081344.25495-14-maarten.lankhorst@linux.intel.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v4 1/3] cpufreq: mediatek: Add support of cpufreq to
+ MT2701/MT7623 SoC
+Date: Wed, 12 Jul 2017 16:50:53 +0200
+Message-ID: <12f23fb1-a145-bdf0-54c8-c2818ba75d9d@gmail.com>
+References: <cover.1499692967.git.sean.wang@mediatek.com>
+ <feabcfd53899954198c6620e9d9b68f4a3c55201.1499692967.git.sean.wang@mediatek.com>
+ <1499741386.12408.11.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <20170712081344.25495-14-maarten.lankhorst@linux.intel.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-Cc: intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, CK Hu <ck.hu@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1499741386.12408.11.camel@mtksdaap41>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Eddie Huang <eddie.huang@mediatek.com>, sean.wang@mediatek.com
+Cc: viresh.kumar@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, jamesjj.liao@mediatek.com, p.zabel@pengutronix.de, shunli.wang@mediatek.com, erin.lo@mediatek.com, jdelvare@suse.de, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Jean Delvare <jdelvare@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gV2VkLCAyMDE3LTA3LTEyIGF0IDEwOjEzICswMjAwLCBNYWFydGVuIExhbmtob3JzdCB3cm90
-ZToKPiBmb3JfZWFjaF9vYmpfaW5fc3RhdGUgaXMgYWJvdXQgdG8gYmUgcmVtb3ZlZCwgc28gdXNl
-IHRoZSBuZXcgYXRvbWljCj4gaXRlcmF0b3IgbWFjcm9zLgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1h
-YXJ0ZW4gTGFua2hvcnN0IDxtYWFydGVuLmxhbmtob3JzdEBsaW51eC5pbnRlbC5jb20+Cj4gQ2M6
-IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+Cj4gQ2M6IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxA
-cGVuZ3V0cm9uaXguZGU+Cj4gQ2M6IE1hdHRoaWFzIEJydWdnZXIgPG1hdHRoaWFzLmJnZ0BnbWFp
-bC5jb20+Cj4gQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IENjOiBs
-aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIHwgNiArKystLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDMg
-aW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9kcnYuYwo+IGluZGV4IDU2ZjgwMmQwYTUxYy4uYmUwNzQxNjM4Zjk0IDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gKysrIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiBAQCAtNDgsMTEgKzQ4LDExIEBA
-IHN0YXRpYyB2b2lkIG10a19hdG9taWNfc2NoZWR1bGUoc3RydWN0IG10a19kcm1fcHJpdmF0ZSAq
-cHJpdmF0ZSwKPiAgc3RhdGljIHZvaWQgbXRrX2F0b21pY193YWl0X2Zvcl9mZW5jZXMoc3RydWN0
-IGRybV9hdG9taWNfc3RhdGUgKnN0YXRlKQo+ICB7Cj4gIAlzdHJ1Y3QgZHJtX3BsYW5lICpwbGFu
-ZTsKPiAtCXN0cnVjdCBkcm1fcGxhbmVfc3RhdGUgKnBsYW5lX3N0YXRlOwo+ICsJc3RydWN0IGRy
-bV9wbGFuZV9zdGF0ZSAqbmV3X3BsYW5lX3N0YXRlOwo+ICAJaW50IGk7Cj4gIAo+IC0JZm9yX2Vh
-Y2hfcGxhbmVfaW5fc3RhdGUoc3RhdGUsIHBsYW5lLCBwbGFuZV9zdGF0ZSwgaSkKPiAtCQltdGtf
-ZmJfd2FpdChwbGFuZS0+c3RhdGUtPmZiKTsKPiArCWZvcl9lYWNoX25ld19wbGFuZV9pbl9zdGF0
-ZShzdGF0ZSwgcGxhbmUsIG5ld19wbGFuZV9zdGF0ZSwgaSkKPiArCQltdGtfZmJfd2FpdChuZXdf
-cGxhbmVfc3RhdGUtPmZiKTsKPiAgfQo+ICAKPiAgc3RhdGljIHZvaWQgbXRrX2F0b21pY19jb21w
-bGV0ZShzdHJ1Y3QgbXRrX2RybV9wcml2YXRlICpwcml2YXRlLAoKQWNrZWQtYnk6IFBoaWxpcHAg
-WmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+CgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC1nZnggbWFpbGluZyBsaXN0CkludGVsLWdmeEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9pbnRlbC1nZngK
+Hi Eddie,
+
+On 07/11/2017 04:49 AM, Eddie Huang wrote:
+> Hi Sean,
+> 
+> On Mon, 2017-07-10 at 22:23 +0800, sean.wang@mediatek.com wrote:
+>> From: Sean Wang <sean.wang@mediatek.com>
+>>
+>> MT2701/MT7623 is a 32-bit ARMv7 based quad-core (4 * Cortex-A7) with
+>> single cluster and this hardware is also compatible with the existing
+>> driver through enabling CPU frequency feature with operating-points-v2
+>> bindings. Also, this driver actually supports all MediaTek SoCs, the
+>> Kconfig menu entry and file name itself should be updated with more
+>> generic name to drop "MT8173"
+>>
+>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+>> Reviewed-by: Jean Delvare <jdelvare@suse.de>
+>> ---
+>>   drivers/cpufreq/Kconfig.arm                              | 7 +++----
+>>   drivers/cpufreq/Makefile                                 | 2 +-
+>>   drivers/cpufreq/{mt8173-cpufreq.c => mediatek-cpufreq.c} | 2 ++
+>>   3 files changed, 6 insertions(+), 5 deletions(-)
+>>   rename drivers/cpufreq/{mt8173-cpufreq.c => mediatek-cpufreq.c} (99%)
+>>
+> 
+> As Viresh mentioned, there are already many drivers use "mtk" as
+> filename prefix or postfix.To align with those files, I suggest use
+> mtk-cpufreq.c.I think there are not too many values to change all "mtk-"
+> to "mediatek-", but it is worth to have the same naming rule for
+> mediatek upstream driver.
+> 
+
+In the last submission Jean proposed to change all file names from 
+mtk-*.[ch] to mediatek-*.[ch] as this will cause less confusion.
+
+Viresh are you OK with that approach or do you prefer that we stay with 
+mtk prefix? I think it makes sense to have a unique prefix and resolve 
+the situation we now have with source files and Kconfig options.
+But TBH I have no strong feeling for any of the two prefixes.
+
+Regards,
+Matthias
