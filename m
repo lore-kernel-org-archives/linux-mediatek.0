@@ -1,48 +1,41 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH] mmc: mediatek: add ops->get_cd() support
-Date: Tue, 11 Jul 2017 16:43:54 +0200
-Message-ID: <CAPDyKFo+UeW4AMFZDN=ob8U9Oj7mZ24ANyT5LQ=ZQ6YxOtRqKQ@mail.gmail.com>
-References: <1499063096-10604-1-git-send-email-chaotian.jing@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH net-next 0/4] net-next: mediatek: add support for ethernet on MT7622 SoC
+Date: Wed, 12 Jul 2017 11:37:41 +0800
+Message-ID: <cover.1499829241.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1499063096-10604-1-git-send-email-chaotian.jing@mediatek.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Heiner Kallweit <hkallweit1@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
+Content-Type: text/plain
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: john@phrozen.org, davem@davemloft.net
+Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 3 July 2017 at 08:24, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
-> if user plug out sd card slowly, finally card is plugged out but
-> cat /proc/partitions can find that card is still exist in kernel.
-> that's because alougth get card detect interrupt but CMD13 still
-> can get correct response(all other pins are connected expect card
-> detect pin).
-> add ops->get_cd() can avoid this issue.
->
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
 
-Thanks, applied for next!
+The series adds the driver for ethernet controller found on MT7622 SoC.
+There are additions against with previous MT7623 SoC such as shared SGMII
+given for the dual GMACs and built-in 5-ports 10/100 embedded switch support
+(ESW). Thus more clocks consumers and SGMII hardware setup for the extra
+features are all introduced here and as for the support for ESW that would be
+planned to add in the separate patch integrating with DSA infrastructure
+in the future.
 
-Kind regards
-Uffe
+Currently testing successfully is done with those patches for the conditions
+such as GMAC2 with IP1001 PHY via RGMII and GMAC1/2 with RTL8211F PHY via SGMII.
 
-> ---
->  drivers/mmc/host/mtk-sd.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 5c1e178..975c765 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -1585,6 +1585,7 @@ static void msdc_hw_reset(struct mmc_host *mmc)
->         .request = msdc_ops_request,
->         .set_ios = msdc_ops_set_ios,
->         .get_ro = mmc_gpio_get_ro,
-> +       .get_cd = mmc_gpio_get_cd,
->         .start_signal_voltage_switch = msdc_ops_switch_volt,
->         .card_busy = msdc_card_busy,
->         .execute_tuning = msdc_execute_tuning,
-> --
-> 1.8.1.1.dirty
->
+Sean Wang (4):
+  dt-bindings: net: mediatek: add support for MediaTek MT7623 and MT7622
+    SoC
+  net-next: mediatek: add platform data to adapt into various hardware
+  net-next: mediatek: add support for MediaTek MT7622 SoC
+  MAINTAINERS: add Sean/Nelson as MediaTek ethernet maintainers
+
+ .../devicetree/bindings/net/mediatek-net.txt       |  12 +-
+ MAINTAINERS                                        |   2 +
+ drivers/net/ethernet/mediatek/Kconfig              |   6 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c        | 143 +++++++++++++++++++--
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h        |  73 ++++++++++-
+ 5 files changed, 216 insertions(+), 20 deletions(-)
+
+-- 
+2.7.4
