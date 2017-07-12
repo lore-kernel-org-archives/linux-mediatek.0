@@ -1,72 +1,48 @@
-From: Florian Fainelli <f.fainelli@gmail.com>
-Subject: Re: [PATCH net-next 2/4] net-next: mediatek: add platform data to
- adapt into various hardware
-Date: Tue, 11 Jul 2017 21:19:49 -0700
-Message-ID: <2ab410a6-bf08-79bc-28ca-e05eb8b67cf5@gmail.com>
-References: <cover.1499829241.git.sean.wang@mediatek.com>
- <401e9fa04ea4759c936fa5af11bb2b5c97ef14f0.1499829241.git.sean.wang@mediatek.com>
+From: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Subject: [PATCH 13/16] drm/mediatek: Convert to new iterator macros
+Date: Wed, 12 Jul 2017 10:13:41 +0200
+Message-ID: <20170712081344.25495-14-maarten.lankhorst@linux.intel.com>
+References: <20170712081344.25495-1-maarten.lankhorst@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <401e9fa04ea4759c936fa5af11bb2b5c97ef14f0.1499829241.git.sean.wang@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com, john@phrozen.org, davem@davemloft.net
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170712081344.25495-1-maarten.lankhorst@linux.intel.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: intel-gfx@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 07/11/2017 08:37 PM, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> This patch is the preparation patch in order to adapt into various
-> hardware through adding platform data which holds specific characteristics
-> among MediaTek SoCs and introducing the unified clock handler for those
-> distinct clock requirements depending on different features such as
-> TRGMII and SGMII getting support on the target SoC. And finally, add
-> enhancement with given the generic description for Kconfig and remove the
-> unnecessary machine type dependency in Makefile.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
-
->  	if (dev->phydev->link)
-> @@ -1837,6 +1838,39 @@ static void ethsys_reset(struct mtk_eth *eth, u32 reset_bits)
->  	mdelay(10);
->  }
->  
-> +static void mtk_clk_disable(struct mtk_eth *eth)
-> +{
-> +	int clk;
-> +
-> +	for (clk = MTK_CLK_MAX - 1; clk >= 0; clk--) {
-> +		if (eth->clks[clk])
-> +			clk_disable_unprepare(eth->clks[clk]);
-> +	}
-
-The clock framework works just fine with NULL clk references, no need to
-check that.
-
-> +}
-
-There are now (or will be soon in clk-next) bulk accessors that you may
-consider using for this.
-
-> +
-> +static int mtk_clk_enable(struct mtk_eth *eth)
-> +{
-> +	int clk, ret;
-> +
-> +	for (clk = 0; clk < MTK_CLK_MAX ; clk++) {
-> +		if (eth->clks[clk]) {
-> +			ret = clk_prepare_enable(eth->clks[clk]);
-> +			if (ret)
-> +				goto err_disable_clks;
-> +		}
-> +	}
-
-Same here.
--- 
-Florian
+Zm9yX2VhY2hfb2JqX2luX3N0YXRlIGlzIGFib3V0IHRvIGJlIHJlbW92ZWQsIHNvIHVzZSB0aGUg
+bmV3IGF0b21pYwppdGVyYXRvciBtYWNyb3MuCgpTaWduZWQtb2ZmLWJ5OiBNYWFydGVuIExhbmto
+b3JzdCA8bWFhcnRlbi5sYW5raG9yc3RAbGludXguaW50ZWwuY29tPgpDYzogQ0sgSHUgPGNrLmh1
+QG1lZGlhdGVrLmNvbT4KQ2M6IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+
+CkNjOiBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPgpDYzogbGludXgt
+YXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCkNjOiBsaW51eC1tZWRpYXRla0BsaXN0cy5p
+bmZyYWRlYWQub3JnCi0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMg
+fCA2ICsrKy0tLQogMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMo
+LSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBi
+L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCmluZGV4IDU2ZjgwMmQwYTUx
+Yy4uYmUwNzQxNjM4Zjk0IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RybV9kcnYuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwpA
+QCAtNDgsMTEgKzQ4LDExIEBAIHN0YXRpYyB2b2lkIG10a19hdG9taWNfc2NoZWR1bGUoc3RydWN0
+IG10a19kcm1fcHJpdmF0ZSAqcHJpdmF0ZSwKIHN0YXRpYyB2b2lkIG10a19hdG9taWNfd2FpdF9m
+b3JfZmVuY2VzKHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZSkKIHsKIAlzdHJ1Y3QgZHJt
+X3BsYW5lICpwbGFuZTsKLQlzdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpwbGFuZV9zdGF0ZTsKKwlz
+dHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpuZXdfcGxhbmVfc3RhdGU7CiAJaW50IGk7CiAKLQlmb3Jf
+ZWFjaF9wbGFuZV9pbl9zdGF0ZShzdGF0ZSwgcGxhbmUsIHBsYW5lX3N0YXRlLCBpKQotCQltdGtf
+ZmJfd2FpdChwbGFuZS0+c3RhdGUtPmZiKTsKKwlmb3JfZWFjaF9uZXdfcGxhbmVfaW5fc3RhdGUo
+c3RhdGUsIHBsYW5lLCBuZXdfcGxhbmVfc3RhdGUsIGkpCisJCW10a19mYl93YWl0KG5ld19wbGFu
+ZV9zdGF0ZS0+ZmIpOwogfQogCiBzdGF0aWMgdm9pZCBtdGtfYXRvbWljX2NvbXBsZXRlKHN0cnVj
+dCBtdGtfZHJtX3ByaXZhdGUgKnByaXZhdGUsCi0tIAoyLjExLjAKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
+LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
