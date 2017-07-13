@@ -1,82 +1,71 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH] clk: mediatek: fixed static checker warning in
- clk_cpumux_get_parent call
-Date: Thu, 13 Jul 2017 11:15:47 +0800
-Message-ID: <1499915747.16278.30.camel@mtkswgap22>
-References: <59fd4aa684632f1d9d2e7573a95bc42850e81690.1499701486.git.sean.wang@mediatek.com>
-         <20170712231726.GQ22780@codeaurora.org>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH v4 1/3] cpufreq: mediatek: Add support of cpufreq to
+ MT2701/MT7623 SoC
+Date: Thu, 13 Jul 2017 08:46:14 +0530
+Message-ID: <20170713031614.GH1679@vireshk-i7>
+References: <cover.1499692967.git.sean.wang@mediatek.com>
+ <feabcfd53899954198c6620e9d9b68f4a3c55201.1499692967.git.sean.wang@mediatek.com>
+ <1499741386.12408.11.camel@mtksdaap41>
+ <12f23fb1-a145-bdf0-54c8-c2818ba75d9d@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20170712231726.GQ22780@codeaurora.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: dan.carpenter@oracle.com, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <12f23fb1-a145-bdf0-54c8-c2818ba75d9d@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, sean.wang@mediatek.com, robh+dt@kernel.org, mark.rutland@arm.com, jamesjj.liao@mediatek.com, p.zabel@pengutronix.de, shunli.wang@mediatek.com, erin.lo@mediatek.com, jdelvare@suse.de, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Jean Delvare <jdelvare@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-07-12 at 16:17 -0700, Stephen Boyd wrote:
-> On 07/11, sean.wang@mediatek.com wrote:
-> > diff --git a/drivers/clk/mediatek/clk-cpumux.c b/drivers/clk/mediatek/clk-cpumux.c
-> > index edd8e69..c6a3a1a 100644
-> > --- a/drivers/clk/mediatek/clk-cpumux.c
-> > +++ b/drivers/clk/mediatek/clk-cpumux.c
-> > @@ -27,7 +27,6 @@ static inline struct mtk_clk_cpumux *to_mtk_clk_cpumux(struct clk_hw *_hw)
-> >  static u8 clk_cpumux_get_parent(struct clk_hw *hw)
-> >  {
-> >  	struct mtk_clk_cpumux *mux = to_mtk_clk_cpumux(hw);
-> > -	int num_parents = clk_hw_get_num_parents(hw);
-> >  	unsigned int val;
-> >  
-> >  	regmap_read(mux->regmap, mux->reg, &val);
-> > @@ -35,17 +34,18 @@ static u8 clk_cpumux_get_parent(struct clk_hw *hw)
-> >  	val >>= mux->shift;
-> >  	val &= mux->mask;
-> >  
-> > -	if (val >= num_parents)
-> > -		return -EINVAL;
-> > -
+On 12-07-17, 16:50, Matthias Brugger wrote:
+> Hi Eddie,
 > 
-> Yeah we really need to fix the get_parent() op to return a
-> clk_hw pointer instead. Time for another migration plan...
+> On 07/11/2017 04:49 AM, Eddie Huang wrote:
+> >Hi Sean,
+> >
+> >On Mon, 2017-07-10 at 22:23 +0800, sean.wang@mediatek.com wrote:
+> >>From: Sean Wang <sean.wang@mediatek.com>
+> >>
+> >>MT2701/MT7623 is a 32-bit ARMv7 based quad-core (4 * Cortex-A7) with
+> >>single cluster and this hardware is also compatible with the existing
+> >>driver through enabling CPU frequency feature with operating-points-v2
+> >>bindings. Also, this driver actually supports all MediaTek SoCs, the
+> >>Kconfig menu entry and file name itself should be updated with more
+> >>generic name to drop "MT8173"
+> >>
+> >>Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> >>Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+> >>Reviewed-by: Jean Delvare <jdelvare@suse.de>
+> >>---
+> >>  drivers/cpufreq/Kconfig.arm                              | 7 +++----
+> >>  drivers/cpufreq/Makefile                                 | 2 +-
+> >>  drivers/cpufreq/{mt8173-cpufreq.c => mediatek-cpufreq.c} | 2 ++
+> >>  3 files changed, 6 insertions(+), 5 deletions(-)
+> >>  rename drivers/cpufreq/{mt8173-cpufreq.c => mediatek-cpufreq.c} (99%)
+> >>
+> >
+> >As Viresh mentioned, there are already many drivers use "mtk" as
+
+Do you have a link to when I mentioned this?
+
+/me suffering from Amnesia ? :)
+
+> >filename prefix or postfix.To align with those files, I suggest use
+> >mtk-cpufreq.c.I think there are not too many values to change all "mtk-"
+> >to "mediatek-", but it is worth to have the same naming rule for
+> >mediatek upstream driver.
+> >
 > 
-
-Agreed
-
-Using clk_hw pointer as returned type is better
-
-otherwise, core driver strongly depends on raw value from hardware  
-
-which easily breaks core driver's logic
-
-> >  	return val;
-> >  }
-> >  
-> >  static int clk_cpumux_set_parent(struct clk_hw *hw, u8 index)
-> >  {
-> >  	struct mtk_clk_cpumux *mux = to_mtk_clk_cpumux(hw);
-> > +	int num_parents = clk_hw_get_num_parents(hw);
-> >  	u32 mask, val;
-> >  
-> > +	if (index >= num_parents)
-> > +		return -EINVAL;
+> In the last submission Jean proposed to change all file names from
+> mtk-*.[ch] to mediatek-*.[ch] as this will cause less confusion.
 > 
-> When would we call this function with an invalid index? The
-> framework should be making sure to only call it with an index
-> that's valid. So perhaps this hunk can be left out?
-> 
+> Viresh are you OK with that approach or do you prefer that we stay with mtk
+> prefix? I think it makes sense to have a unique prefix and resolve the
+> situation we now have with source files and Kconfig options.
+> But TBH I have no strong feeling for any of the two prefixes.
 
-O.K. the hunk will be left out
+I am fine with both. Maybe don't resend for just that, mediatek
+doesn't sound any bad.
 
-core driver handles everything well when the appropriate number of
-parents is registered.
-
-
-
-
-
-
-
-> 
-
-
+-- 
+viresh
