@@ -1,89 +1,63 @@
-From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v4 1/3] cpufreq: mediatek: Add support of cpufreq to
- MT2701/MT7623 SoC
-Date: Thu, 13 Jul 2017 11:54:38 +0800
-Message-ID: <1499918078.2392.14.camel@mtksdaap41>
-References: <cover.1499692967.git.sean.wang@mediatek.com>
-         <feabcfd53899954198c6620e9d9b68f4a3c55201.1499692967.git.sean.wang@mediatek.com>
-         <1499741386.12408.11.camel@mtksdaap41>
-         <12f23fb1-a145-bdf0-54c8-c2818ba75d9d@gmail.com>
-         <20170713031614.GH1679@vireshk-i7>
+From: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Subject: Re: [PATCH 13/16] drm/mediatek: Convert to new iterator macros
+Date: Thu, 13 Jul 2017 18:00:49 +0200
+Message-ID: <c11717fa-f18a-b66a-0c3c-f46d19f65691@linux.intel.com>
+References: <20170712081344.25495-1-maarten.lankhorst@linux.intel.com>
+ <20170712081344.25495-14-maarten.lankhorst@linux.intel.com>
+ <20170712094503.hilg3he7amcrwvyi@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170713031614.GH1679@vireshk-i7>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jdelvare-l3A5Bk7waGM@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170712094503.hilg3he7amcrwvyi@phenom.ffwll.local>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, intel-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-07-13 at 08:46 +0530, Viresh Kumar wrote:
-> On 12-07-17, 16:50, Matthias Brugger wrote:
-> > Hi Eddie,
-> > 
-> > On 07/11/2017 04:49 AM, Eddie Huang wrote:
-> > >Hi Sean,
-> > >
-> > >On Mon, 2017-07-10 at 22:23 +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> > >>From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > >>
-> > >>MT2701/MT7623 is a 32-bit ARMv7 based quad-core (4 * Cortex-A7) with
-> > >>single cluster and this hardware is also compatible with the existing
-> > >>driver through enabling CPU frequency feature with operating-points-v2
-> > >>bindings. Also, this driver actually supports all MediaTek SoCs, the
-> > >>Kconfig menu entry and file name itself should be updated with more
-> > >>generic name to drop "MT8173"
-> > >>
-> > >>Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > >>Acked-by: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> > >>Reviewed-by: Jean Delvare <jdelvare-l3A5Bk7waGM@public.gmane.org>
-> > >>---
-> > >>  drivers/cpufreq/Kconfig.arm                              | 7 +++----
-> > >>  drivers/cpufreq/Makefile                                 | 2 +-
-> > >>  drivers/cpufreq/{mt8173-cpufreq.c => mediatek-cpufreq.c} | 2 ++
-> > >>  3 files changed, 6 insertions(+), 5 deletions(-)
-> > >>  rename drivers/cpufreq/{mt8173-cpufreq.c => mediatek-cpufreq.c} (99%)
-> > >>
-> > >
-> > >As Viresh mentioned, there are already many drivers use "mtk" as
-> 
-> Do you have a link to when I mentioned this?
-> 
-> /me suffering from Amnesia ? :)
-
-Sorry, my fault. It's from Jean. The link is 
-http://lists.infradead.org/pipermail/linux-arm-kernel/2017-July/517782.html
-
-> 
-> > >filename prefix or postfix.To align with those files, I suggest use
-> > >mtk-cpufreq.c.I think there are not too many values to change all "mtk-"
-> > >to "mediatek-", but it is worth to have the same naming rule for
-> > >mediatek upstream driver.
-> > >
-> > 
-> > In the last submission Jean proposed to change all file names from
-> > mtk-*.[ch] to mediatek-*.[ch] as this will cause less confusion.
-> > 
-> > Viresh are you OK with that approach or do you prefer that we stay with mtk
-> > prefix? I think it makes sense to have a unique prefix and resolve the
-> > situation we now have with source files and Kconfig options.
-> > But TBH I have no strong feeling for any of the two prefixes.
-> 
-> I am fine with both. Maybe don't resend for just that, mediatek
-> doesn't sound any bad.
-
-I am also fine with both. I think most people won't confuse about mtk
-and mediatek. I don't like send patches to just only change filenames
-and kconfig, especially kconfig modification will affect project
-defconfigs. My point is we shouldn't spend much time on this topic, and
-revisit filename when that driver need support new SoC, like this case.
-
-Regards,
-Eddie
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T3AgMTItMDctMTcgb20gMTE6NDUgc2NocmVlZiBEYW5pZWwgVmV0dGVyOgo+IE9uIFdlZCwgSnVs
+IDEyLCAyMDE3IGF0IDEwOjEzOjQxQU0gKzAyMDAsIE1hYXJ0ZW4gTGFua2hvcnN0IHdyb3RlOgo+
+PiBmb3JfZWFjaF9vYmpfaW5fc3RhdGUgaXMgYWJvdXQgdG8gYmUgcmVtb3ZlZCwgc28gdXNlIHRo
+ZSBuZXcgYXRvbWljCj4+IGl0ZXJhdG9yIG1hY3Jvcy4KPj4KPj4gU2lnbmVkLW9mZi1ieTogTWFh
+cnRlbiBMYW5raG9yc3QgPG1hYXJ0ZW4ubGFua2hvcnN0QGxpbnV4LmludGVsLmNvbT4KPj4gQ2M6
+IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+Cj4+IENjOiBQaGlsaXBwIFphYmVsIDxwLnphYmVs
+QHBlbmd1dHJvbml4LmRlPgo+PiBDYzogTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdt
+YWlsLmNvbT4KPj4gQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwo+PiBD
+YzogbGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwo+PiAtLS0KPj4gIGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIHwgNiArKystLS0KPj4gIDEgZmlsZSBjaGFu
+Z2VkLCAzIGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4+IGluZGV4IDU2ZjgwMmQwYTUxYy4uYmUwNzQxNjM4Zjk0
+IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+
+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+PiBAQCAtNDgs
+MTEgKzQ4LDExIEBAIHN0YXRpYyB2b2lkIG10a19hdG9taWNfc2NoZWR1bGUoc3RydWN0IG10a19k
+cm1fcHJpdmF0ZSAqcHJpdmF0ZSwKPj4gIHN0YXRpYyB2b2lkIG10a19hdG9taWNfd2FpdF9mb3Jf
+ZmVuY2VzKHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZSkKPj4gIHsKPj4gIAlzdHJ1Y3Qg
+ZHJtX3BsYW5lICpwbGFuZTsKPj4gLQlzdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpwbGFuZV9zdGF0
+ZTsKPj4gKwlzdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpuZXdfcGxhbmVfc3RhdGU7Cj4+ICAJaW50
+IGk7Cj4+ICAKPj4gLQlmb3JfZWFjaF9wbGFuZV9pbl9zdGF0ZShzdGF0ZSwgcGxhbmUsIHBsYW5l
+X3N0YXRlLCBpKQo+PiAtCQltdGtfZmJfd2FpdChwbGFuZS0+c3RhdGUtPmZiKTsKPj4gKwlmb3Jf
+ZWFjaF9uZXdfcGxhbmVfaW5fc3RhdGUoc3RhdGUsIHBsYW5lLCBuZXdfcGxhbmVfc3RhdGUsIGkp
+Cj4+ICsJCW10a19mYl93YWl0KG5ld19wbGFuZV9zdGF0ZS0+ZmIpOwo+PiAgfQo+IEkgdGhpbmsg
+YSB2YXJpYW50IG9mIGRybV9hdG9taWNfc2V0X2ZlbmNlX2Zvcl9wbGFuZSwgd2hpY2ggdGFrZXMg
+YQo+IHJlc2VydmF0aW9uIG9iaiAob3IgYSBkbWEtYnVmIGFuZCB0aGVuIGRlcmVmcyBkbWFfYnVm
+LT5yZXN2IGl0c2VsZikgd291bGQKPiBiZSBuaWNlLCBzbyB0aGF0IGRyaXZlcnMgZG9uJ3QgaGF2
+ZSB0byBoYW5kLXJvbGwgc3ViLXBhciBmZW5jZSB3YWl0aW5nCj4gY29kZSBsaWtlIHRoaXMgKGl0
+J3MgZS5nLiBub3QgaW50ZXJydXB0aWJsZSBmb3IgYmxvY2tpbmcgY29tbWl0cykuCj4KPiBBbnl3
+YXksIHBhdGNoIGl0c2VsZiBsb29rcyBnb29kLgo+Cj4gUmV2aWV3ZWQtYnk6IERhbmllbCBWZXR0
+ZXIgPGRhbmllbC52ZXR0ZXJAZmZ3bGwuY2g+Cj4KClRoYW5rcy4KClB1c2hlZCBwYXRjaCAxLTMs
+IDQgKGZpcnN0IGh1bmsgb25seSksIDUgKHdpdGggc3RhdGljIGZpeCksIDYsIDgsIDksIDExLTEz
+LgoKU3RpbGwgaG9waW5nIGZvciBhY2sgZnJvbSBkcml2ZXIgbWFpbnRhaW5lcnMgb24gcGF0Y2gg
+NyAodjIpLCAxMCwgMTQgKHYyKSBhbmQgMTUgKHdpdGggdGhlIGZpeCBkYW5pZWwgc3BvdHRlZCku
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
+ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
+aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
