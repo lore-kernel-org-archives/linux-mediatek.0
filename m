@@ -1,63 +1,93 @@
-From: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-Subject: Re: [PATCH 13/16] drm/mediatek: Convert to new iterator macros
-Date: Thu, 13 Jul 2017 18:00:49 +0200
-Message-ID: <c11717fa-f18a-b66a-0c3c-f46d19f65691@linux.intel.com>
-References: <20170712081344.25495-1-maarten.lankhorst@linux.intel.com>
- <20170712081344.25495-14-maarten.lankhorst@linux.intel.com>
- <20170712094503.hilg3he7amcrwvyi@phenom.ffwll.local>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 3/9] regulator: mt6380: Add support for MT6380
+Date: Fri, 14 Jul 2017 23:06:08 +0800
+Message-ID: <1500044768.16278.37.camel@mtkswgap22>
+References: <cover.1496425268.git.sean.wang@mediatek.com>
+         <4276ab23ae0bbb6a54b1add98c4dc668f1a69c50.1496425268.git.sean.wang@mediatek.com>
+         <20170606182224.sifkfod7hehadjvm@sirena.org.uk>
+         <1498233365.20651.25.camel@mtkswgap22>
+         <20170623161420.tbhn6sjuz7jjhaiu@sirena.org.uk>
+         <1498236198.20651.32.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170712094503.hilg3he7amcrwvyi@phenom.ffwll.local>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, intel-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1498236198.20651.32.camel@mtkswgap22>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T3AgMTItMDctMTcgb20gMTE6NDUgc2NocmVlZiBEYW5pZWwgVmV0dGVyOgo+IE9uIFdlZCwgSnVs
-IDEyLCAyMDE3IGF0IDEwOjEzOjQxQU0gKzAyMDAsIE1hYXJ0ZW4gTGFua2hvcnN0IHdyb3RlOgo+
-PiBmb3JfZWFjaF9vYmpfaW5fc3RhdGUgaXMgYWJvdXQgdG8gYmUgcmVtb3ZlZCwgc28gdXNlIHRo
-ZSBuZXcgYXRvbWljCj4+IGl0ZXJhdG9yIG1hY3Jvcy4KPj4KPj4gU2lnbmVkLW9mZi1ieTogTWFh
-cnRlbiBMYW5raG9yc3QgPG1hYXJ0ZW4ubGFua2hvcnN0QGxpbnV4LmludGVsLmNvbT4KPj4gQ2M6
-IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+Cj4+IENjOiBQaGlsaXBwIFphYmVsIDxwLnphYmVs
-QHBlbmd1dHJvbml4LmRlPgo+PiBDYzogTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdt
-YWlsLmNvbT4KPj4gQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwo+PiBD
-YzogbGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwo+PiAtLS0KPj4gIGRyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIHwgNiArKystLS0KPj4gIDEgZmlsZSBjaGFu
-Z2VkLCAzIGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4+IGluZGV4IDU2ZjgwMmQwYTUxYy4uYmUwNzQxNjM4Zjk0
-IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+
-PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+PiBAQCAtNDgs
-MTEgKzQ4LDExIEBAIHN0YXRpYyB2b2lkIG10a19hdG9taWNfc2NoZWR1bGUoc3RydWN0IG10a19k
-cm1fcHJpdmF0ZSAqcHJpdmF0ZSwKPj4gIHN0YXRpYyB2b2lkIG10a19hdG9taWNfd2FpdF9mb3Jf
-ZmVuY2VzKHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZSkKPj4gIHsKPj4gIAlzdHJ1Y3Qg
-ZHJtX3BsYW5lICpwbGFuZTsKPj4gLQlzdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpwbGFuZV9zdGF0
-ZTsKPj4gKwlzdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpuZXdfcGxhbmVfc3RhdGU7Cj4+ICAJaW50
-IGk7Cj4+ICAKPj4gLQlmb3JfZWFjaF9wbGFuZV9pbl9zdGF0ZShzdGF0ZSwgcGxhbmUsIHBsYW5l
-X3N0YXRlLCBpKQo+PiAtCQltdGtfZmJfd2FpdChwbGFuZS0+c3RhdGUtPmZiKTsKPj4gKwlmb3Jf
-ZWFjaF9uZXdfcGxhbmVfaW5fc3RhdGUoc3RhdGUsIHBsYW5lLCBuZXdfcGxhbmVfc3RhdGUsIGkp
-Cj4+ICsJCW10a19mYl93YWl0KG5ld19wbGFuZV9zdGF0ZS0+ZmIpOwo+PiAgfQo+IEkgdGhpbmsg
-YSB2YXJpYW50IG9mIGRybV9hdG9taWNfc2V0X2ZlbmNlX2Zvcl9wbGFuZSwgd2hpY2ggdGFrZXMg
-YQo+IHJlc2VydmF0aW9uIG9iaiAob3IgYSBkbWEtYnVmIGFuZCB0aGVuIGRlcmVmcyBkbWFfYnVm
-LT5yZXN2IGl0c2VsZikgd291bGQKPiBiZSBuaWNlLCBzbyB0aGF0IGRyaXZlcnMgZG9uJ3QgaGF2
-ZSB0byBoYW5kLXJvbGwgc3ViLXBhciBmZW5jZSB3YWl0aW5nCj4gY29kZSBsaWtlIHRoaXMgKGl0
-J3MgZS5nLiBub3QgaW50ZXJydXB0aWJsZSBmb3IgYmxvY2tpbmcgY29tbWl0cykuCj4KPiBBbnl3
-YXksIHBhdGNoIGl0c2VsZiBsb29rcyBnb29kLgo+Cj4gUmV2aWV3ZWQtYnk6IERhbmllbCBWZXR0
-ZXIgPGRhbmllbC52ZXR0ZXJAZmZ3bGwuY2g+Cj4KClRoYW5rcy4KClB1c2hlZCBwYXRjaCAxLTMs
-IDQgKGZpcnN0IGh1bmsgb25seSksIDUgKHdpdGggc3RhdGljIGZpeCksIDYsIDgsIDksIDExLTEz
-LgoKU3RpbGwgaG9waW5nIGZvciBhY2sgZnJvbSBkcml2ZXIgbWFpbnRhaW5lcnMgb24gcGF0Y2gg
-NyAodjIpLCAxMCwgMTQgKHYyKSBhbmQgMTUgKHdpdGggdGhlIGZpeCBkYW5pZWwgc3BvdHRlZCku
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
-ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Sat, 2017-06-24 at 00:43 +0800, Sean Wang wrote:
+> On Fri, 2017-06-23 at 17:14 +0100, Mark Brown wrote:
+> > On Fri, Jun 23, 2017 at 11:56:05PM +0800, Sean Wang wrote:
+> > > On Tue, 2017-06-06 at 19:22 +0100, Mark Brown wrote:
+> > 
+> > > > > +	return (regval & info->desc.enable_mask) ?
+> > > > > +		REGULATOR_STATUS_ON : REGULATOR_STATUS_OFF;
+> > 
+> > > > This isn't really a get_status() operation - it's just showing the
+> > > > status of the enable we set.  The get_status() operation is for hardware
+> > > > that has a mechanism for reading back the current physical status of the
+> > > > regulator, usually including things like if it's in regulation or not.
+> > 
+> > > > Also please write normal conditional statements, it helps people read
+> > > > the code.
+> > 
+> > > for the hardware, the way for reflect the current physical physical 
+> > > has to depend on the bit reading as the bit we enable. It indeed tends
+> > > to confuse other users and developers, we maybe can add some comments
+> > > for this to avoid.
+> > 
+> > It's OK to just not have a get_status() operation - a lot of regulators
+> > just can't do this and that's fine, the subsystem will cope.
+> > 
+> 
+> understood. it seems to be better with subsystem coping. we'll remove
+> get_status callback.
+> 
+
+Hi, Mark
+
+We usually want to use /sys/class/regulator/regulator.*/status to get
+actual status from hardware, but if we remove the get_status(), the
+status entry under sysfs would be gone. So could I keep the get_status
+callback in this driver ?
+
+	Sean
+
+> > > > > +static const struct of_device_id mt6380_of_match[] = {
+> > > > > +	{ .compatible = "mediatek,mt6380-regulator", },
+> > > > > +	{ /* sentinel */ },
+> > > > > +};
+> > > > > +MODULE_DEVICE_TABLE(of, mt6380_of_match);
+> > 
+> > > > Given that this driver is entirely specific to the parent PMIC there
+> > > > should be no need for a separate compatible string, it's redundant.
+> > 
+> > > the parent of pmic is MediaTek pwrap which is possibly being used with
+> > > various pmics such as MT6323, MT6797, MT6380 and so on. So extra
+> > > matching we thought is required to identify which pmic is actually being
+> > > connected. 
+> > 
+> > > For those opinions, maybe we didn't get your exact point. If something
+> > > is wrong, please kindly guide us to the right place.
+> > 
+> > It sounds like pwrap should be a bus rather than using a platform device
+> > here?  But I guess that's how things are for now so OK.
+> 
+> yes, it is a bus , a proprietary bus,  which is something like
+> encapsulation of spi and there's some protocol running on this 
+> between master/slave.
+> 
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
