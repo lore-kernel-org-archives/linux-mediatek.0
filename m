@@ -1,41 +1,49 @@
-From: "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>
-Subject: Re: [PATCH v4 0/3] some fixups for MediaTek cpufreq driver
-Date: Mon, 17 Jul 2017 13:33:11 +0200
-Message-ID: <2164503.JjlIkNveU4@aspire.rjw.lan>
-References: <cover.1499692967.git.sean.wang@mediatek.com> <1500272192.16278.44.camel@mtkswgap22> <20170717073543.GL352@vireshk-i7>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH net-next v2 1/4] dt-bindings: net: mediatek: add support
+ for MediaTek MT7623 and MT7622 SoC
+Date: Mon, 17 Jul 2017 15:38:11 +0200
+Message-ID: <20170717133811.GA30392@lunn.ch>
+References: <cover.1500285278.git.sean.wang@mediatek.com>
+ <d1e8daa3291f303bd581b89eae6e4003f2ee58a8.1500285278.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170717073543.GL352@vireshk-i7>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jdelvare-l3A5Bk7waGM@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <d1e8daa3291f303bd581b89eae6e4003f2ee58a8.1500285278.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: john@phrozen.org, davem@davemloft.net, nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Monday, July 17, 2017 01:05:43 PM Viresh Kumar wrote:
-> On 17-07-17, 14:16, Sean Wang wrote:
-> > Hi, Viresh
-> > 
-> > I missed to add Acks from Rob for patch 2 and 3 since we sent out almost
-> > at the same time. Do I need to resend again for this or the series is
-> > okay for you?
+On Mon, Jul 17, 2017 at 06:06:22PM +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Looks like you missed including Rafael for this series (He is the one
-> who applies these patches).
+> The patch adds the supplements in the dt-binding document for MediaTek
+> MT7622 SoC with extra SGMII system controller and relevant clock consumers
+> listed as the requirements for those SoCs equipped with the SGMII circuit.
+> Also, add the missing binding information for MT7623 SoC here which relies
+> on the fallback binding of MT2701.
 > 
-> I will let him answer for this.
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/net/mediatek-net.txt | 12 +++++++++---
+>  1 file changed, 9 insertions(+), 3 deletions(-)
 > 
-> 
+> diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
+> index c7194e8..1d1168b 100644
+> --- a/Documentation/devicetree/bindings/net/mediatek-net.txt
+> +++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
+> @@ -7,24 +7,30 @@ have dual GMAC each represented by a child node..
+>  * Ethernet controller node
+>  
+>  Required properties:
+> -- compatible: Should be "mediatek,mt2701-eth"
+> +- compatible: Should be
+> +		"mediatek,mt2701-eth": for MT2701 SoC
+> +		"mediatek,mt7623-eth", "mediatek,mt2701-eth": for MT7623 SoC
 
-Please respin with all of the applicable tags.
+Hi Sean
 
-I haven't been following all of the discussions on this that closely.
+We appear to have "mediatek,mt2701-eth" twice.
 
-Thanks,
-Rafael
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+   Andrew
