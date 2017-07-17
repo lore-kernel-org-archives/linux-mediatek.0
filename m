@@ -1,302 +1,179 @@
-From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH net-next v2 3/4] net-next: mediatek: add support for MediaTek
- MT7622 SoC
-Date: Mon, 17 Jul 2017 18:06:24 +0800
-Message-ID: <ad1d53a5224e2f8bbe88f7efcdb136f3afbe9c37.1500285278.git.sean.wang@mediatek.com>
-References: <cover.1500285278.git.sean.wang@mediatek.com>
+From: Jun Gao <jun.gao@mediatek.com>
+Subject: [RESEND PATCH v1] i2c: mediatek: send i2c master code at 400k
+Date: Mon, 17 Jul 2017 19:02:10 +0800
+Message-ID: <1500289330-31822-1-git-send-email-jun.gao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <cover.1500285278.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org
-Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Jun Gao <jun.gao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+From: Jun Gao <jun.gao@mediatek.com>
 
-This patch adds the driver for ethernet controller on MT7622 SoC. It has
-the similar handling logic as the previously MT7623 does, but there are
-additions against with MT7623 SoC, the shared SGMII given for the dual
-GMACs and including 5-ports 10/100 embedded switch support (ESW) as the
-GMAC1 option, thus more clocks consumers for the extra feature are
-introduced here. So for ease portability and maintenance, those
-differences all are being kept inside the platform data as other drivers
-usually do. Currently testing successfully is done with those patches for
-the conditions such as GMAC2 with IP1001 PHY via RGMII and GMAC1/2 with
-RTL8211F PHY via SGMII.
+The speed of sending i2c master code in high-speed mode depends on
+source clock, clock-div and TIMING register. The source clock and
+clock-div of different SoC are not all the same. In order to send
+i2c master code at 400k in high-speed mode, a appropriate value
+should be set to TIMING register for a certain source clock and
+clock-div.
 
-Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Jun Gao <jun.gao@mediatek.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 67 ++++++++++++++++++++++++++++-
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 54 ++++++++++++++++++++++-
- 2 files changed, 117 insertions(+), 4 deletions(-)
+ drivers/i2c/busses/i2c-mt65xx.c | 65 +++++++++++++++++++++++++++++------------
+ 1 file changed, 46 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index ad48623..9f44246 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -52,7 +52,8 @@ static const struct mtk_ethtool_stats {
- };
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index 45d6171..9bedf0b 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -50,7 +50,6 @@
+ #define I2C_FS_START_CON		0x1800
+ #define I2C_TIME_CLR_VALUE		0x0000
+ #define I2C_TIME_DEFAULT_VALUE		0x0003
+-#define I2C_FS_TIME_INIT_VALUE		0x1303
+ #define I2C_WRRD_TRANAC_VALUE		0x0002
+ #define I2C_RD_TRANAC_VALUE		0x0001
  
- static const char * const mtk_clks_source_name[] = {
--	"ethif", "esw", "gp1", "gp2", "trgpll"
-+	"ethif", "esw", "gp0", "gp1", "gp2", "trgpll", "sgmii_tx250m",
-+	"sgmii_rx250m", "sgmii_cdr_ref", "sgmii_cdr_fb", "sgmii_ck", "eth2pll"
- };
+@@ -154,6 +153,7 @@ struct mtk_i2c {
+ 	bool use_push_pull;		/* IO config push-pull mode */
  
- void mtk_w32(struct mtk_eth *eth, u32 val, unsigned reg)
-@@ -162,6 +163,47 @@ static void mtk_gmac0_rgmii_adjust(struct mtk_eth *eth, int speed)
- 	mtk_w32(eth, val, TRGMII_TCK_CTRL);
- }
+ 	u16 irq_stat;			/* interrupt status */
++	unsigned int clk_src_div;
+ 	unsigned int speed_hz;		/* The speed in transfer */
+ 	enum mtk_trans_op op;
+ 	u16 timing_reg;
+@@ -285,23 +285,20 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
+  * less than or equal to i2c->speed_hz. The calculation try to get
+  * sample_cnt and step_cn
+  */
+-static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk,
+-			     unsigned int clock_div)
++static int mtk_i2c_calculate_speed(struct mtk_i2c *i2c, unsigned int clk_src,
++				   unsigned int target_speed,
++				   unsigned int *timing_step_cnt,
++				   unsigned int *timing_sample_cnt)
+ {
+-	unsigned int clk_src;
+ 	unsigned int step_cnt;
+ 	unsigned int sample_cnt;
+ 	unsigned int max_step_cnt;
+-	unsigned int target_speed;
+ 	unsigned int base_sample_cnt = MAX_SAMPLE_CNT_DIV;
+ 	unsigned int base_step_cnt;
+ 	unsigned int opt_div;
+ 	unsigned int best_mul;
+ 	unsigned int cnt_mul;
  
-+static void mtk_gmac_sgmii_hw_setup(struct mtk_eth *eth, int mac_id)
-+{
-+	u32 val;
+-	clk_src = parent_clk / clock_div;
+-	target_speed = i2c->speed_hz;
+-
+ 	if (target_speed > MAX_HS_MODE_SPEED)
+ 		target_speed = MAX_HS_MODE_SPEED;
+ 
+@@ -347,16 +344,48 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk,
+ 		return -EINVAL;
+ 	}
+ 
+-	step_cnt--;
+-	sample_cnt--;
++	*timing_step_cnt = step_cnt - 1;
++	*timing_sample_cnt = sample_cnt - 1;
 +
-+	/* Setup the link timer and QPHY power up inside SGMIISYS */
-+	regmap_write(eth->sgmiisys, SGMSYS_PCS_LINK_TIMER,
-+		     SGMII_LINK_TIMER_DEFAULT);
-+
-+	regmap_read(eth->sgmiisys, SGMSYS_SGMII_MODE, &val);
-+	val |= SGMII_REMOTE_FAULT_DIS;
-+	regmap_write(eth->sgmiisys, SGMSYS_SGMII_MODE, val);
-+
-+	regmap_read(eth->sgmiisys, SGMSYS_PCS_CONTROL_1, &val);
-+	val |= SGMII_AN_RESTART;
-+	regmap_write(eth->sgmiisys, SGMSYS_PCS_CONTROL_1, val);
-+
-+	regmap_read(eth->sgmiisys, SGMSYS_QPHY_PWR_STATE_CTRL, &val);
-+	val &= ~SGMII_PHYA_PWD;
-+	regmap_write(eth->sgmiisys, SGMSYS_QPHY_PWR_STATE_CTRL, val);
-+
-+	/* Determine MUX for which GMAC uses the SGMII interface */
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_DUAL_GMAC_SHARED_SGMII)) {
-+		regmap_read(eth->ethsys, ETHSYS_SYSCFG0, &val);
-+		val &= ~SYSCFG0_SGMII_MASK;
-+		val |= !mac_id ? SYSCFG0_SGMII_GMAC1 : SYSCFG0_SGMII_GMAC2;
-+		regmap_write(eth->ethsys, ETHSYS_SYSCFG0, val);
-+
-+		dev_info(eth->dev, "setup shared sgmii for gmac=%d\n",
-+			 mac_id);
-+	}
-+
-+	/* Setup the GMAC1 going through SGMII path when SoC also support
-+	 * ESW on GMAC1
-+	 */
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_GMAC1_ESW | MTK_GMAC1_SGMII) &&
-+	    !mac_id) {
-+		mtk_w32(eth, 0, MTK_MAC_MISC);
-+		dev_info(eth->dev, "setup gmac1 going through sgmii");
-+	}
++	return 0;
 +}
 +
- static void mtk_phy_link_adjust(struct net_device *dev)
- {
- 	struct mtk_mac *mac = netdev_priv(dev);
-@@ -269,6 +311,7 @@ static int mtk_phy_connect(struct net_device *dev)
- 	if (!np)
- 		return -ENODEV;
++static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
++{
++	unsigned int clk_src;
++	unsigned int step_cnt;
++	unsigned int sample_cnt;
++	unsigned int target_speed;
++	int ret;
++
++	clk_src = parent_clk / i2c->clk_src_div;
++	target_speed = i2c->speed_hz;
  
-+	mac->ge_mode = 0;
- 	switch (of_get_phy_mode(np)) {
- 	case PHY_INTERFACE_MODE_TRGMII:
- 		mac->trgmii = true;
-@@ -276,7 +319,10 @@ static int mtk_phy_connect(struct net_device *dev)
- 	case PHY_INTERFACE_MODE_RGMII_RXID:
- 	case PHY_INTERFACE_MODE_RGMII_ID:
- 	case PHY_INTERFACE_MODE_RGMII:
--		mac->ge_mode = 0;
-+		break;
-+	case PHY_INTERFACE_MODE_SGMII:
-+		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SGMII))
-+			mtk_gmac_sgmii_hw_setup(eth, mac->id);
- 		break;
- 	case PHY_INTERFACE_MODE_MII:
- 		mac->ge_mode = 1;
-@@ -2421,6 +2467,7 @@ static int mtk_get_chip_id(struct mtk_eth *eth, u32 *chip_id)
- static bool mtk_is_hwlro_supported(struct mtk_eth *eth)
- {
- 	switch (eth->chip_id) {
-+	case MT7622_ETH:
- 	case MT7623_ETH:
- 		return true;
+ 	if (target_speed > MAX_FS_MODE_SPEED) {
++		/* Set master code speed register */
++		ret = mtk_i2c_calculate_speed(i2c, clk_src, MAX_FS_MODE_SPEED,
++					      &step_cnt, &sample_cnt);
++		if (ret < 0)
++			return ret;
++
++		i2c->timing_reg = (sample_cnt << 8) | step_cnt;
++
+ 		/* Set the high speed mode register */
+-		i2c->timing_reg = I2C_FS_TIME_INIT_VALUE;
++		ret = mtk_i2c_calculate_speed(i2c, clk_src, target_speed,
++					      &step_cnt, &sample_cnt);
++		if (ret < 0)
++			return ret;
++
+ 		i2c->high_speed_reg = I2C_TIME_DEFAULT_VALUE |
+ 			(sample_cnt << 12) | (step_cnt << 8);
+ 	} else {
+-		i2c->timing_reg = (sample_cnt << 8) | (step_cnt << 0);
++		ret = mtk_i2c_calculate_speed(i2c, clk_src, target_speed,
++					      &step_cnt, &sample_cnt);
++		if (ret < 0)
++			return ret;
++
++		i2c->timing_reg = (sample_cnt << 8) | step_cnt;
++
+ 		/* Disable the high speed transaction */
+ 		i2c->high_speed_reg = I2C_TIME_CLR_VALUE;
  	}
-@@ -2460,6 +2507,16 @@ static int mtk_probe(struct platform_device *pdev)
- 		return PTR_ERR(eth->ethsys);
- 	}
- 
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SGMII)) {
-+		eth->sgmiisys =
-+		syscon_regmap_lookup_by_phandle(pdev->dev.of_node,
-+						"mediatek,sgmiisys");
-+		if (IS_ERR(eth->sgmiisys)) {
-+			dev_err(&pdev->dev, "no sgmiisys regmap found\n");
-+			return PTR_ERR(eth->sgmiisys);
-+		}
-+	}
-+
- 	eth->pctl = syscon_regmap_lookup_by_phandle(pdev->dev.of_node,
- 						    "mediatek,pctl");
- 	if (IS_ERR(eth->pctl)) {
-@@ -2593,6 +2650,11 @@ static const struct mtk_soc_data mt2701_data = {
- 	.required_clks = MT7623_CLKS_BITMAP
+@@ -647,8 +676,7 @@ static u32 mtk_i2c_functionality(struct i2c_adapter *adap)
+ 	.functionality = mtk_i2c_functionality,
  };
  
-+static const struct mtk_soc_data mt7622_data = {
-+	.caps = MTK_DUAL_GMAC_SHARED_SGMII | MTK_GMAC1_ESW,
-+	.required_clks = MT7622_CLKS_BITMAP
-+};
-+
- static const struct mtk_soc_data mt7623_data = {
- 	.caps = MTK_GMAC1_TRGMII,
- 	.required_clks = MT7623_CLKS_BITMAP
-@@ -2600,6 +2662,7 @@ static const struct mtk_soc_data mt7623_data = {
+-static int mtk_i2c_parse_dt(struct device_node *np, struct mtk_i2c *i2c,
+-			    unsigned int *clk_src_div)
++static int mtk_i2c_parse_dt(struct device_node *np, struct mtk_i2c *i2c)
+ {
+ 	int ret;
  
- const struct of_device_id of_mtk_match[] = {
- 	{ .compatible = "mediatek,mt2701-eth", .data = &mt2701_data},
-+	{ .compatible = "mediatek,mt7622-eth", .data = &mt7622_data},
- 	{ .compatible = "mediatek,mt7623-eth", .data = &mt7623_data},
- 	{},
- };
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 8ade23df..4594862 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -302,6 +302,9 @@
- #define PHY_IAC_REG_SHIFT	25
- #define PHY_IAC_TIMEOUT		HZ
+@@ -656,11 +684,11 @@ static int mtk_i2c_parse_dt(struct device_node *np, struct mtk_i2c *i2c,
+ 	if (ret < 0)
+ 		i2c->speed_hz = I2C_DEFAULT_SPEED;
  
-+#define MTK_MAC_MISC		0x1000c
-+#define MTK_MUX_TO_ESW		BIT(0)
-+
- /* Mac control registers */
- #define MTK_MAC_MCR(x)		(0x10100 + (x * 0x100))
- #define MAC_MCR_MAX_RX_1536	BIT(24)
-@@ -357,11 +360,15 @@
- #define ETHSYS_CHIPID0_3	0x0
- #define ETHSYS_CHIPID4_7	0x4
- #define MT7623_ETH		7623
-+#define MT7622_ETH		7622
+-	ret = of_property_read_u32(np, "clock-div", clk_src_div);
++	ret = of_property_read_u32(np, "clock-div", &i2c->clk_src_div);
+ 	if (ret < 0)
+ 		return ret;
  
- /* ethernet subsystem config register */
- #define ETHSYS_SYSCFG0		0x14
- #define SYSCFG0_GE_MASK		0x3
- #define SYSCFG0_GE_MODE(x, y)	(x << (12 + (y * 2)))
-+#define SYSCFG0_SGMII_MASK	(3 << 8)
-+#define SYSCFG0_SGMII_GMAC1	((2 << 8) & GENMASK(9, 8))
-+#define SYSCFG0_SGMII_GMAC2	((3 << 8) & GENMASK(9, 8))
+-	if (*clk_src_div == 0)
++	if (i2c->clk_src_div == 0)
+ 		return -EINVAL;
  
- /* ethernet subsystem clock register */
- #define ETHSYS_CLKCFG0		0x2c
-@@ -372,6 +379,23 @@
- #define RSTCTRL_FE		BIT(6)
- #define RSTCTRL_PPE		BIT(31)
+ 	i2c->have_pmic = of_property_read_bool(np, "mediatek,have-pmic");
+@@ -676,7 +704,6 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+ 	int ret = 0;
+ 	struct mtk_i2c *i2c;
+ 	struct clk *clk;
+-	unsigned int clk_src_div;
+ 	struct resource *res;
+ 	int irq;
  
-+/* SGMII subsystem config registers */
-+/* Register to auto-negotiation restart */
-+#define SGMSYS_PCS_CONTROL_1	0x0
-+#define SGMII_AN_RESTART	BIT(9)
-+
-+/* Register to programmable link timer, the unit in 2 * 8ns */
-+#define SGMSYS_PCS_LINK_TIMER	0x18
-+#define SGMII_LINK_TIMER_DEFAULT	(0x186a0 & GENMASK(19, 0))
-+
-+/* Register to control remote fault */
-+#define SGMSYS_SGMII_MODE	0x20
-+#define SGMII_REMOTE_FAULT_DIS	BIT(8)
-+
-+/* Register to power up QPHY */
-+#define SGMSYS_QPHY_PWR_STATE_CTRL 0xe8
-+#define	SGMII_PHYA_PWD		BIT(4)
-+
- struct mtk_rx_dma {
- 	unsigned int rxd1;
- 	unsigned int rxd2;
-@@ -437,15 +461,31 @@ enum mtk_tx_flags {
- enum mtk_clks_map {
- 	MTK_CLK_ETHIF,
- 	MTK_CLK_ESW,
-+	MTK_CLK_GP0,
- 	MTK_CLK_GP1,
- 	MTK_CLK_GP2,
- 	MTK_CLK_TRGPLL,
-+	MTK_CLK_SGMII_TX_250M,
-+	MTK_CLK_SGMII_RX_250M,
-+	MTK_CLK_SGMII_CDR_REF,
-+	MTK_CLK_SGMII_CDR_FB,
-+	MTK_CLK_SGMII_CK,
-+	MTK_CLK_ETH2PLL,
- 	MTK_CLK_MAX
- };
+@@ -684,7 +711,7 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+ 	if (!i2c)
+ 		return -ENOMEM;
  
- #define MT7623_CLKS_BITMAP	(BIT(MTK_CLK_ETHIF) | BIT(MTK_CLK_ESW) |  \
- 				 BIT(MTK_CLK_GP1) | BIT(MTK_CLK_GP2) | \
- 				 BIT(MTK_CLK_TRGPLL))
-+#define MT7622_CLKS_BITMAP	(BIT(MTK_CLK_ETHIF) | BIT(MTK_CLK_ESW) |  \
-+				 BIT(MTK_CLK_GP0) | BIT(MTK_CLK_GP1) | \
-+				 BIT(MTK_CLK_GP2) | \
-+				 BIT(MTK_CLK_SGMII_TX_250M) | \
-+				 BIT(MTK_CLK_SGMII_RX_250M) | \
-+				 BIT(MTK_CLK_SGMII_CDR_REF) | \
-+				 BIT(MTK_CLK_SGMII_CDR_FB) | \
-+				 BIT(MTK_CLK_SGMII_CK) | \
-+				 BIT(MTK_CLK_ETH2PLL))
- enum mtk_dev_state {
- 	MTK_HW_INIT,
- 	MTK_RESETTING
-@@ -516,9 +556,16 @@ struct mtk_rx_ring {
+-	ret = mtk_i2c_parse_dt(pdev->dev.of_node, i2c, &clk_src_div);
++	ret = mtk_i2c_parse_dt(pdev->dev.of_node, i2c);
+ 	if (ret)
+ 		return -EINVAL;
  
- #define MTK_TRGMII			BIT(0)
- #define MTK_GMAC1_TRGMII		(BIT(1) | MTK_TRGMII)
-+#define MTK_ESW				BIT(4)
-+#define MTK_GMAC1_ESW			(BIT(5) | MTK_ESW)
-+#define MTK_SGMII			BIT(8)
-+#define MTK_GMAC1_SGMII			(BIT(9) | MTK_SGMII)
-+#define MTK_GMAC2_SGMII			(BIT(10) | MTK_SGMII)
-+#define MTK_DUAL_GMAC_SHARED_SGMII	(BIT(11) | MTK_GMAC1_SGMII | \
-+					 MTK_GMAC2_SGMII)
- #define MTK_HAS_CAPS(caps, _x)		(((caps) & (_x)) == (_x))
+@@ -745,7 +772,7 @@ static int mtk_i2c_probe(struct platform_device *pdev)
  
--/* struct mtk_soc_data -	This is the structure holding all differences
-+/* struct mtk_eth_data -	This is the structure holding all differences
-  *				among various plaforms
-  * @caps			Flags shown the extra capability for the SoC
-  * @required_clks		Flags shown the bitmap for required clocks on
-@@ -547,6 +594,8 @@ struct mtk_soc_data {
-  * @msg_enable:		Ethtool msg level
-  * @ethsys:		The register map pointing at the range used to setup
-  *			MII modes
-+ * @sgmiisys:		The register map pointing at the range used to setup
-+ *			SGMII modes
-  * @pctl:		The register map pointing at the range used to setup
-  *			GMAC port drive/slew values
-  * @dma_refcnt:		track how many netdevs are using the DMA engine
-@@ -560,7 +609,7 @@ struct mtk_soc_data {
-  * @clks:		clock array for all clocks required
-  * @mii_bus:		If there is a bus we need to create an instance for it
-  * @pending_work:	The workqueue used to reset the dma ring
-- * @state		Initialization and runtime state of the device
-+ * @state:		Initialization and runtime state of the device
-  * @soc:		Holding specific data among vaious SoCs
-  */
+ 	strlcpy(i2c->adap.name, I2C_DRV_NAME, sizeof(i2c->adap.name));
  
-@@ -577,6 +626,7 @@ struct mtk_eth {
- 	u32				msg_enable;
- 	unsigned long			sysclk;
- 	struct regmap			*ethsys;
-+	struct regmap			*sgmiisys;
- 	struct regmap			*pctl;
- 	u32				chip_id;
- 	bool				hwlro;
+-	ret = mtk_i2c_set_speed(i2c, clk_get_rate(clk), clk_src_div);
++	ret = mtk_i2c_set_speed(i2c, clk_get_rate(clk));
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Failed to set the speed.\n");
+ 		return -EINVAL;
 -- 
-2.7.4
+1.8.1.1
