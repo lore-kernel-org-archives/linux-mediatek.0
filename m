@@ -1,42 +1,51 @@
-From: Zhi Mao <zhi.mao@mediatek.com>
-Subject: Re: [PATCH v3 0/6] mediatek: pwm driver add MT2712/MT7622 support
-Date: Mon, 17 Jul 2017 11:16:04 +0800
-Message-ID: <1500261364.22478.32.camel@mhfsdcap03>
-References: <1498802721-32455-1-git-send-email-zhi.mao@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v2] clk: mediatek: fixed static checker warning in clk_cpumux_get_parent call
+Date: Mon, 17 Jul 2017 14:01:19 +0800
+Message-ID: <e1f7ea2d9cc9717fce5c349bcfb81ce37306aad1.1500270942.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1498802721-32455-1-git-send-email-zhi.mao@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "john@phrozen.org" <john@phrozen.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-pwm@vger.kernel.org" <linux-pwm@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?= <Yingjoe.Chen@mediatek.com>, YT Shen =?UTF-8?Q?=28=E6=B2=88=E5=B2=B3=E9=9C=86=29?= <Yt.Shen@mediatek.com>, Sean Wang =?UTF-8?Q?=28=E7=8E=8B=E5=BF=97=E4=BA=98=29?=
+Content-Type: text/plain
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: sboyd@codeaurora.org, dan.carpenter@oracle.com, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi John, Matthais & PWM Maintainers
+From: Sean Wang <sean.wang@mediatek.com>
 
-Just a Gentle ping on this issue :)
-Is there anything should be modified?
+Fixed the signedness bug returning '(-22)' on the return type as u8 with
+removing the sanity checker in clk_cpumux_get_parent() since
+clk_cpumux_set_parent() always ensures validity in clk_cpumux_get_parent()
+got called.
 
-Regards,
-Zhi
+Fixes: commit 1e17de9049da ("clk: mediatek: add missing cpu mux causing Mediatek cpufreq can't work")
+Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/clk/mediatek/clk-cpumux.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
+diff --git a/drivers/clk/mediatek/clk-cpumux.c b/drivers/clk/mediatek/clk-cpumux.c
+index edd8e69..347d799 100644
+--- a/drivers/clk/mediatek/clk-cpumux.c
++++ b/drivers/clk/mediatek/clk-cpumux.c
+@@ -27,7 +27,6 @@ static inline struct mtk_clk_cpumux *to_mtk_clk_cpumux(struct clk_hw *_hw)
+ static u8 clk_cpumux_get_parent(struct clk_hw *hw)
+ {
+ 	struct mtk_clk_cpumux *mux = to_mtk_clk_cpumux(hw);
+-	int num_parents = clk_hw_get_num_parents(hw);
+ 	unsigned int val;
+ 
+ 	regmap_read(mux->regmap, mux->reg, &val);
+@@ -35,9 +34,6 @@ static u8 clk_cpumux_get_parent(struct clk_hw *hw)
+ 	val >>= mux->shift;
+ 	val &= mux->mask;
+ 
+-	if (val >= num_parents)
+-		return -EINVAL;
+-
+ 	return val;
+ }
+ 
+-- 
+2.7.4
 
-On Fri, 2017-06-30 at 14:05 +0800, Zhi Mao wrote:
-> change in v3:
-> 1. add pwm clk disable in function:mtk_pwm_config()
->    for error parameter checking case
-> 
-> Zhi Mao (6):
->   pwm: kconfig: modify mediatek information
->   pwm: mediatek: fix pwm source clock selection
->   pwm: mediatek: fix clock control issue
->   pwm: bindings: add MT2712/MT7622 information
->   pwm: mediatek: add PWM_CLK_DIV_MAX
->   pwm: mediatek: add MT2712/MT7622 support
-> 
->  .../devicetree/bindings/pwm/pwm-mediatek.txt       |    6 +-
->  drivers/pwm/Kconfig                                |    2 +-
->  drivers/pwm/pwm-mediatek.c                         |  133 ++++++++++++++------
->  3 files changed, 104 insertions(+), 37 deletions(-)
-> 
