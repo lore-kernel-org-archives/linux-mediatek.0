@@ -1,78 +1,42 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH net-next 2/4] net-next: mediatek: add platform data to
- adapt into various hardware
-Date: Sat, 15 Jul 2017 09:47:41 +0800
-Message-ID: <1500083261.16278.40.camel@mtkswgap22>
-References: <cover.1499829241.git.sean.wang@mediatek.com>
-         <401e9fa04ea4759c936fa5af11bb2b5c97ef14f0.1499829241.git.sean.wang@mediatek.com>
-         <20170712145050.GD2557@lunn.ch>
+From: Zhi Mao <zhi.mao@mediatek.com>
+Subject: Re: [PATCH v3 0/6] mediatek: pwm driver add MT2712/MT7622 support
+Date: Mon, 17 Jul 2017 11:16:04 +0800
+Message-ID: <1500261364.22478.32.camel@mhfsdcap03>
+References: <1498802721-32455-1-git-send-email-zhi.mao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170712145050.GD2557@lunn.ch>
+In-Reply-To: <1498802721-32455-1-git-send-email-zhi.mao@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: john@phrozen.org, davem@davemloft.net, nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: "john@phrozen.org" <john@phrozen.org>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-pwm@vger.kernel.org" <linux-pwm@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?= <Yingjoe.Chen@mediatek.com>, YT Shen =?UTF-8?Q?=28=E6=B2=88=E5=B2=B3=E9=9C=86=29?= <Yt.Shen@mediatek.com>, Sean Wang =?UTF-8?Q?=28=E7=8E=8B=E5=BF=97=E4=BA=98=29?=
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-07-12 at 16:50 +0200, Andrew Lunn wrote:
-> > +static int mtk_clk_enable(struct mtk_eth *eth)
-> > +{
-> > +	int clk, ret;
-> > +
-> > +	for (clk = 0; clk < MTK_CLK_MAX ; clk++) {
-> > +		if (eth->clks[clk]) {
-> > +			ret = clk_prepare_enable(eth->clks[clk]);
-> > +			if (ret)
-> > +				goto err_disable_clks;
-> > +		}
-> > +	}
-> > +
-> > +	return 0;
-> > +
-> > +err_disable_clks:
-> > +	while (--clk >= 0) {
-> > +		if (eth->clks[clk])
-> > +			clk_disable_unprepare(eth->clks[clk]);
-> > +	}
-> > +
-> > +	return ret;
-> > +}
+Hi John, Matthais & PWM Maintainers
+
+Just a Gentle ping on this issue :)
+Is there anything should be modified?
+
+Regards,
+Zhi
+
+
+On Fri, 2017-06-30 at 14:05 +0800, Zhi Mao wrote:
+> change in v3:
+> 1. add pwm clk disable in function:mtk_pwm_config()
+>    for error parameter checking case
 > 
-> > +
-> >  static int mtk_hw_init(struct mtk_eth *eth)
-> >  {
-> >  	int i, val;
-> > @@ -1847,10 +1881,8 @@ static int mtk_hw_init(struct mtk_eth *eth)
-> >  	pm_runtime_enable(eth->dev);
-> >  	pm_runtime_get_sync(eth->dev);
-> >  
-> > -	clk_prepare_enable(eth->clks[MTK_CLK_ETHIF]);
-> > -	clk_prepare_enable(eth->clks[MTK_CLK_ESW]);
-> > -	clk_prepare_enable(eth->clks[MTK_CLK_GP1]);
-> > -	clk_prepare_enable(eth->clks[MTK_CLK_GP2]);
-> > +	mtk_clk_enable(eth);
-> > +
+> Zhi Mao (6):
+>   pwm: kconfig: modify mediatek information
+>   pwm: mediatek: fix pwm source clock selection
+>   pwm: mediatek: fix clock control issue
+>   pwm: bindings: add MT2712/MT7622 information
+>   pwm: mediatek: add PWM_CLK_DIV_MAX
+>   pwm: mediatek: add MT2712/MT7622 support
 > 
-> mtk_clk_enable() returns an error code. It is probably a good idea to
-> use it, especially if it could be EPRODE_DEFER.
-
-okay, I will improve those clocks handling better along with Florian's
-suggestion in the next version
-
-	Sean
-
-
-
-
-
-
-
-
-
-
-
-
+>  .../devicetree/bindings/pwm/pwm-mediatek.txt       |    6 +-
+>  drivers/pwm/Kconfig                                |    2 +-
+>  drivers/pwm/pwm-mediatek.c                         |  133 ++++++++++++++------
+>  3 files changed, 104 insertions(+), 37 deletions(-)
 > 
->     Andrew
