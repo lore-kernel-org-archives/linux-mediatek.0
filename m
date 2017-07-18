@@ -1,7 +1,7 @@
 From: <sean.wang@mediatek.com>
-Subject: [PATCH v2 9/9] soc: mediatek: pwrap: fixup warnings from coding style
-Date: Tue, 18 Jul 2017 17:49:29 +0800
-Message-ID: <568c3b518b70a0af17cbef1223721b68448a8ac6.1500368529.git.sean.wang@mediatek.com>
+Subject: [PATCH v2 6/9] soc: mediatek: pwrap: update pwrap_init without slave programming
+Date: Tue, 18 Jul 2017 17:49:26 +0800
+Message-ID: <bc717df23dc0f7efc697fabc9dda3450b50e7927.1500368529.git.sean.wang@mediatek.com>
 References: <cover.1500368529.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,71 +14,167 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-fixup those warnings such as lines over 80 words and parenthesis
-alignment which would be complained by checkpatch.pl.
+pwrap initialization is highly associated with the base SoC, so
+update here for allowing pwrap_init without slave program which would be
+used to those PMICs without extra encryption on bus such as MT6380.
 
+Signed-off-by: Chenglin Xu <chenglin.xu@mediatek.com>
+Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-pmic-wrap.c | 20 +++++++++++++-------
- 1 file changed, 13 insertions(+), 7 deletions(-)
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 91 +++++++++++++++++++++---------------
+ 1 file changed, 54 insertions(+), 37 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 142f40a..5f1036f 100644
+index 03c0520..1a62848 100644
 --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
 +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -1057,7 +1057,8 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
- 	/* wait for cipher data ready@PMIC */
- 	ret = pwrap_wait_for_state(wrp, pwrap_is_pmic_cipher_ready);
- 	if (ret) {
--		dev_err(wrp->dev, "timeout waiting for cipher data ready@PMIC\n");
-+		dev_err(wrp->dev,
-+			"timeout waiting for cipher data ready@PMIC\n");
- 		return ret;
+@@ -531,6 +531,7 @@ struct pmic_wrapper_type {
+ 	u32 spi_w;
+ 	u32 wdt_src;
+ 	int has_bridge:1;
++	int slv_program:1;
+ 	int (*init_reg_clock)(struct pmic_wrapper *wrp);
+ 	int (*init_soc_specific)(struct pmic_wrapper *wrp);
+ };
+@@ -999,9 +1000,12 @@ static int pwrap_init(struct pmic_wrapper *wrp)
  	}
  
-@@ -1454,23 +1455,27 @@ static int pwrap_probe(struct platform_device *pdev)
- 		if (IS_ERR(wrp->bridge_base))
- 			return PTR_ERR(wrp->bridge_base);
+ 	/* Reset SPI slave */
+-	ret = pwrap_reset_spislave(wrp);
+-	if (ret)
+-		return ret;
++
++	if (wrp->master->slv_program) {
++		ret = pwrap_reset_spislave(wrp);
++		if (ret)
++			return ret;
++	}
  
--		wrp->rstc_bridge = devm_reset_control_get(wrp->dev, "pwrap-bridge");
-+		wrp->rstc_bridge = devm_reset_control_get(wrp->dev,
-+							  "pwrap-bridge");
- 		if (IS_ERR(wrp->rstc_bridge)) {
- 			ret = PTR_ERR(wrp->rstc_bridge);
--			dev_dbg(wrp->dev, "cannot get pwrap-bridge reset: %d\n", ret);
-+			dev_dbg(wrp->dev,
-+				"cannot get pwrap-bridge reset: %d\n", ret);
- 			return ret;
- 		}
- 	}
+ 	pwrap_writel(wrp, 1, PWRAP_WRAP_EN);
  
- 	wrp->clk_spi = devm_clk_get(wrp->dev, "spi");
- 	if (IS_ERR(wrp->clk_spi)) {
--		dev_dbg(wrp->dev, "failed to get clock: %ld\n", PTR_ERR(wrp->clk_spi));
-+		dev_dbg(wrp->dev, "failed to get clock: %ld\n",
-+			PTR_ERR(wrp->clk_spi));
- 		return PTR_ERR(wrp->clk_spi);
- 	}
- 
- 	wrp->clk_wrap = devm_clk_get(wrp->dev, "wrap");
- 	if (IS_ERR(wrp->clk_wrap)) {
--		dev_dbg(wrp->dev, "failed to get clock: %ld\n", PTR_ERR(wrp->clk_wrap));
-+		dev_dbg(wrp->dev, "failed to get clock: %ld\n",
-+			PTR_ERR(wrp->clk_wrap));
- 		return PTR_ERR(wrp->clk_wrap);
- 	}
- 
-@@ -1514,8 +1519,9 @@ static int pwrap_probe(struct platform_device *pdev)
- 	pwrap_writel(wrp, wrp->master->int_en_all, PWRAP_INT_EN);
- 
- 	irq = platform_get_irq(pdev, 0);
--	ret = devm_request_irq(wrp->dev, irq, pwrap_interrupt, IRQF_TRIGGER_HIGH,
--			"mt-pmic-pwrap", wrp);
-+	ret = devm_request_irq(wrp->dev, irq, pwrap_interrupt,
-+			       IRQF_TRIGGER_HIGH,
-+			       "mt-pmic-pwrap", wrp);
+@@ -1013,45 +1017,52 @@ static int pwrap_init(struct pmic_wrapper *wrp)
  	if (ret)
- 		goto err_out2;
+ 		return ret;
  
+-	/* Setup serial input delay */
+-	ret = pwrap_init_sidly(wrp);
+-	if (ret)
+-		return ret;
++	if (wrp->master->slv_program) {
++		/* Setup serial input delay */
++		ret = pwrap_init_sidly(wrp);
++		if (ret)
++			return ret;
+ 
+-	/* Enable dual IO mode */
+-	pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_DIO_EN], 1);
++		/* Enable dual IO mode */
++		pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_DIO_EN], 1);
+ 
+-	/* Check IDLE & INIT_DONE in advance */
+-	ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle_and_sync_idle);
+-	if (ret) {
+-		dev_err(wrp->dev, "%s fail, ret=%d\n", __func__, ret);
+-		return ret;
+-	}
++		/* Check IDLE & INIT_DONE in advance */
++		ret = pwrap_wait_for_state(wrp,
++					   pwrap_is_fsm_idle_and_sync_idle);
++		if (ret) {
++			dev_err(wrp->dev, "%s fail, ret=%d\n", __func__, ret);
++			return ret;
++		}
+ 
+-	pwrap_writel(wrp, 1, PWRAP_DIO_EN);
++		pwrap_writel(wrp, 1, PWRAP_DIO_EN);
+ 
+-	/* Read Test */
+-	pwrap_read(wrp, wrp->slave->dew_regs[PWRAP_DEW_READ_TEST], &rdata);
+-	if (rdata != PWRAP_DEW_READ_TEST_VAL) {
+-		dev_err(wrp->dev, "Read test failed after switch to DIO mode: 0x%04x != 0x%04x\n",
++		/* Read Test */
++		pwrap_read(wrp,
++			   wrp->slave->dew_regs[PWRAP_DEW_READ_TEST], &rdata);
++		if (rdata != PWRAP_DEW_READ_TEST_VAL) {
++			dev_err(wrp->dev,
++				"Read failed on DIO mode: 0x%04x!=0x%04x\n",
+ 				PWRAP_DEW_READ_TEST_VAL, rdata);
+-		return -EFAULT;
+-	}
+-
+-	/* Enable encryption */
+-	ret = pwrap_init_cipher(wrp);
+-	if (ret)
+-		return ret;
++			return -EFAULT;
++		}
+ 
+-	/* Signature checking - using CRC */
+-	if (pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CRC_EN], 0x1))
+-		return -EFAULT;
++		/* Enable encryption */
++		ret = pwrap_init_cipher(wrp);
++		if (ret)
++			return ret;
+ 
+-	pwrap_writel(wrp, 0x1, PWRAP_CRC_EN);
+-	pwrap_writel(wrp, 0x0, PWRAP_SIG_MODE);
+-	pwrap_writel(wrp, wrp->slave->dew_regs[PWRAP_DEW_CRC_VAL],
+-		     PWRAP_SIG_ADR);
+-	pwrap_writel(wrp, wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
++		/* Signature checking - using CRC */
++		if (pwrap_write(wrp,
++				wrp->slave->dew_regs[PWRAP_DEW_CRC_EN], 0x1))
++			return -EFAULT;
++
++		pwrap_writel(wrp, 0x1, PWRAP_CRC_EN);
++		pwrap_writel(wrp, 0x0, PWRAP_SIG_MODE);
++		pwrap_writel(wrp, wrp->slave->dew_regs[PWRAP_DEW_CRC_VAL],
++			     PWRAP_SIG_ADR);
++		pwrap_writel(wrp,
++			     wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
++	}
+ 
+ 	if (wrp->master->type == PWRAP_MT8135)
+ 		pwrap_writel(wrp, 0x7, PWRAP_RRARB_EN);
+@@ -1059,8 +1070,11 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+ 	pwrap_writel(wrp, 0x1, PWRAP_WACS0_EN);
+ 	pwrap_writel(wrp, 0x1, PWRAP_WACS1_EN);
+ 	pwrap_writel(wrp, 0x1, PWRAP_WACS2_EN);
+-	pwrap_writel(wrp, 0x5, PWRAP_STAUPD_PRD);
+-	pwrap_writel(wrp, 0xff, PWRAP_STAUPD_GRPEN);
++
++	if (wrp->master->slv_program) {
++		pwrap_writel(wrp, 0x5, PWRAP_STAUPD_PRD);
++		pwrap_writel(wrp, 0xff, PWRAP_STAUPD_GRPEN);
++	}
+ 
+ 	if (wrp->master->init_soc_specific) {
+ 		ret = wrp->master->init_soc_specific(wrp);
+@@ -1146,6 +1160,7 @@ static const struct pmic_wrapper_type pwrap_mt2701 = {
+ 	.spi_w = PWRAP_MAN_CMD_SPI_WRITE_NEW,
+ 	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
+ 	.has_bridge = 0,
++	.slv_program = 1,
+ 	.init_reg_clock = pwrap_mt2701_init_reg_clock,
+ 	.init_soc_specific = pwrap_mt2701_init_soc_specific,
+ };
+@@ -1158,6 +1173,7 @@ static struct pmic_wrapper_type pwrap_mt8135 = {
+ 	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
+ 	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
+ 	.has_bridge = 1,
++	.slv_program = 1,
+ 	.init_reg_clock = pwrap_mt8135_init_reg_clock,
+ 	.init_soc_specific = pwrap_mt8135_init_soc_specific,
+ };
+@@ -1170,6 +1186,7 @@ static struct pmic_wrapper_type pwrap_mt8173 = {
+ 	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
+ 	.wdt_src = PWRAP_WDT_SRC_MASK_NO_STAUPD,
+ 	.has_bridge = 0,
++	.slv_program = 1,
+ 	.init_reg_clock = pwrap_mt8173_init_reg_clock,
+ 	.init_soc_specific = pwrap_mt8173_init_soc_specific,
+ };
 -- 
 2.7.4
