@@ -1,32 +1,34 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [PATCH net-next v2 2/4] net-next: mediatek: add platform data to
- adapt into various hardware
-Date: Mon, 17 Jul 2017 15:44:01 +0200
-Message-ID: <20170717134401.GC30392@lunn.ch>
-References: <cover.1500285278.git.sean.wang@mediatek.com>
- <2987b7e3b40cfcd143b5da444c6722b5e92bc0b5.1500285278.git.sean.wang@mediatek.com>
- <20170717134309.GB30392@lunn.ch>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v2] clk: mediatek: fixed static checker warning in
+ clk_cpumux_get_parent call
+Date: Mon, 17 Jul 2017 18:17:47 -0700
+Message-ID: <20170718011747.GO22780@codeaurora.org>
+References: <e1f7ea2d9cc9717fce5c349bcfb81ce37306aad1.1500270942.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20170717134309.GB30392@lunn.ch>
-Sender: netdev-owner@vger.kernel.org
+In-Reply-To: <e1f7ea2d9cc9717fce5c349bcfb81ce37306aad1.1500270942.git.sean.wang@mediatek.com>
+Sender: linux-clk-owner@vger.kernel.org
 To: sean.wang@mediatek.com
-Cc: john@phrozen.org, davem@davemloft.net, nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: dan.carpenter@oracle.com, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jul 17, 2017 at 03:43:09PM +0200, Andrew Lunn wrote:
-> >  const struct of_device_id of_mtk_match[] = {
-> > -	{ .compatible = "mediatek,mt2701-eth" },
-> > +	{ .compatible = "mediatek,mt2701-eth", .data = &mt2701_data},
-> > +	{ .compatible = "mediatek,mt7623-eth", .data = &mt7623_data},
-> >  	{},
+On 07/17, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Hi Sean
+> Fixed the signedness bug returning '(-22)' on the return type as u8 with
+> removing the sanity checker in clk_cpumux_get_parent() since
+> clk_cpumux_set_parent() always ensures validity in clk_cpumux_get_parent()
+> got called.
 > 
-> The binding document also lists "mediatek,mt7622-eth"?
+> Fixes: commit 1e17de9049da ("clk: mediatek: add missing cpu mux causing Mediatek cpufreq can't work")
+> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
 
-Doh! The next patch adds it. Sorry for the noise.
+Applied to clk-next
 
-     Andrew
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
