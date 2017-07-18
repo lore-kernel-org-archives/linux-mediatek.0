@@ -1,86 +1,65 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v5 1/3] cpufreq: mediatek: Add support of cpufreq to MT2701/MT7623 SoC
-Date: Tue, 18 Jul 2017 14:01:43 +0800
-Message-ID: <feabcfd53899954198c6620e9d9b68f4a3c55201.1500355954.git.sean.wang@mediatek.com>
-References: <cover.1500355954.git.sean.wang@mediatek.com>
+From: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 0/2] Add basic support for Mediatek MT2712 SoC
+Date: Tue, 18 Jul 2017 15:46:02 +0800
+Message-ID: <1500363962.4499.4.camel@mtksdaap41>
+References: <1498123975-9748-1-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1500355954.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: rjw@rjwysocki.net, viresh.kumar@linaro.org, robh+dt@kernel.org, matthias.bgg@gmail.com, jdelvare@suse.de, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1498123975-9748-1-git-send-email-yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+Hi Matthias,
 
-MT2701/MT7623 is a 32-bit ARMv7 based quad-core (4 * Cortex-A7) with
-single cluster and this hardware is also compatible with the existing
-driver through enabling CPU frequency feature with operating-points-v2
-bindings. Also, this driver actually supports all MediaTek SoCs, the
-Kconfig menu entry and file name itself should be updated with more
-generic name to drop "MT8173"
+Just a gentle ping.
+Should I rebase to 4.13-rc1 and send v5?
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
-Reviewed-by: Jean Delvare <jdelvare@suse.de>
----
- drivers/cpufreq/Kconfig.arm                              | 7 +++----
- drivers/cpufreq/Makefile                                 | 2 +-
- drivers/cpufreq/{mt8173-cpufreq.c => mediatek-cpufreq.c} | 2 ++
- 3 files changed, 6 insertions(+), 5 deletions(-)
- rename drivers/cpufreq/{mt8173-cpufreq.c => mediatek-cpufreq.c} (99%)
+Thanks
+yt.shen
 
-diff --git a/drivers/cpufreq/Kconfig.arm b/drivers/cpufreq/Kconfig.arm
-index 74ed7e9..24ef446 100644
---- a/drivers/cpufreq/Kconfig.arm
-+++ b/drivers/cpufreq/Kconfig.arm
-@@ -87,14 +87,13 @@ config ARM_KIRKWOOD_CPUFREQ
- 	  This adds the CPUFreq driver for Marvell Kirkwood
- 	  SoCs.
- 
--config ARM_MT8173_CPUFREQ
--	tristate "Mediatek MT8173 CPUFreq support"
-+config ARM_MEDIATEK_CPUFREQ
-+	tristate "CPU Frequency scaling support for MediaTek SoCs"
- 	depends on ARCH_MEDIATEK && REGULATOR
--	depends on ARM64 || (ARM_CPU_TOPOLOGY && COMPILE_TEST)
- 	depends on !CPU_THERMAL || THERMAL
- 	select PM_OPP
- 	help
--	  This adds the CPUFreq driver support for Mediatek MT8173 SoC.
-+	  This adds the CPUFreq driver support for MediaTek SoCs.
- 
- config ARM_OMAP2PLUS_CPUFREQ
- 	bool "TI OMAP2+"
-diff --git a/drivers/cpufreq/Makefile b/drivers/cpufreq/Makefile
-index b7e78f0..ea043aa 100644
---- a/drivers/cpufreq/Makefile
-+++ b/drivers/cpufreq/Makefile
-@@ -58,7 +58,7 @@ obj-$(CONFIG_ARM_EXYNOS5440_CPUFREQ)	+= exynos5440-cpufreq.o
- obj-$(CONFIG_ARM_HIGHBANK_CPUFREQ)	+= highbank-cpufreq.o
- obj-$(CONFIG_ARM_IMX6Q_CPUFREQ)		+= imx6q-cpufreq.o
- obj-$(CONFIG_ARM_KIRKWOOD_CPUFREQ)	+= kirkwood-cpufreq.o
--obj-$(CONFIG_ARM_MT8173_CPUFREQ)	+= mt8173-cpufreq.o
-+obj-$(CONFIG_ARM_MEDIATEK_CPUFREQ)	+= mediatek-cpufreq.o
- obj-$(CONFIG_ARM_OMAP2PLUS_CPUFREQ)	+= omap-cpufreq.o
- obj-$(CONFIG_ARM_PXA2xx_CPUFREQ)	+= pxa2xx-cpufreq.o
- obj-$(CONFIG_PXA3xx)			+= pxa3xx-cpufreq.o
-diff --git a/drivers/cpufreq/mt8173-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-similarity index 99%
-rename from drivers/cpufreq/mt8173-cpufreq.c
-rename to drivers/cpufreq/mediatek-cpufreq.c
-index fd1886f..481ec77 100644
---- a/drivers/cpufreq/mt8173-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -575,6 +575,8 @@ static struct platform_driver mt8173_cpufreq_platdrv = {
- 
- /* List of machines supported by this driver */
- static const struct of_device_id mt8173_cpufreq_machines[] __initconst = {
-+	{ .compatible = "mediatek,mt2701", },
-+	{ .compatible = "mediatek,mt7623", },
- 	{ .compatible = "mediatek,mt817x", },
- 	{ .compatible = "mediatek,mt8173", },
- 	{ .compatible = "mediatek,mt8176", },
--- 
-2.7.4
+On Thu, 2017-06-22 at 17:32 +0800, YT Shen wrote:
+> MT2712 is a SoC based on 64bit ARMv8 architecture.
+> MT2712 share many HW IP with MT8173.  This patchset was tested on MT2712 evaluation board, and boot to shell ok.
+> 
+> This series contains document bindings, device tree including interrupt and uart.
+> 
+> Changes compared to v3:
+> - use two uart clocks refer to the bindings
+> 
+> Changes compared to v2:
+> - remove alias from serial1 to serial5
+> - remove initrd-start and initrd-end
+> - change GIC_CPU_MASK_SIMPLE(6) to GIC_CPU_MASK_RAW(0x13)
+> - change gic-400 reg range
+> 
+> Changes compared to v1:
+> - change subject prefix for bindings
+> - change device tree license to SPDX tag.
+> - change bootargs parameter to DT usage.
+> - change intpol-controller to interrupt-controller
+> 
+> YT Shen (2):
+>   dt-bindings: arm: Add bindings for Mediatek MT2712 SoC Platform
+>   arm64: dts: Add Mediatek SoC MT2712 and evaluation board dts and
+>     Makefile
+> 
+>  Documentation/devicetree/bindings/arm/mediatek.txt |   4 +
+>  .../interrupt-controller/mediatek,sysirq.txt       |   1 +
+>  .../devicetree/bindings/serial/mtk-uart.txt        |   1 +
+>  arch/arm64/boot/dts/mediatek/Makefile              |   1 +
+>  arch/arm64/boot/dts/mediatek/mt2712-evb.dts        |  32 ++++
+>  arch/arm64/boot/dts/mediatek/mt2712e.dtsi          | 172 +++++++++++++++++++++
+>  6 files changed, 211 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
