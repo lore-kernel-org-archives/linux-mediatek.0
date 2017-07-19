@@ -1,147 +1,203 @@
-From: Maxime Ripard <maxime.ripard@free-electrons.com>
-Subject: Re: [PATCH] gpu: Convert to using %pOF instead of full_name
-Date: Wed, 19 Jul 2017 08:23:48 +0200
-Message-ID: <20170719062348.3epnl4u6vdnkx5cb@flea>
-References: <20170718214339.7774-24-robh@kernel.org>
+From: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 2/2] arm64: dts: Add Mediatek SoC MT2712 and
+ evaluation board dts and Makefile
+Date: Wed, 19 Jul 2017 14:48:04 +0800
+Message-ID: <1500446884.14021.12.camel@mtksdaap41>
+References: <1498123975-9748-1-git-send-email-yt.shen@mediatek.com>
+         <1498123975-9748-3-git-send-email-yt.shen@mediatek.com>
+         <ddfb5e58-520f-1ef5-2351-d7545e17a429@gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1360306020=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170718214339.7774-24-robh@kernel.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Kevin Hilman <khilman@baylibre.com>, Russell King <linux@armlinux.org.uk>, Krzysztof Kozlowski <krzk@kernel.org>, Xinliang Liu <z.liuxinliang@hisilicon.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Xinwei Kong <kong.kongxinwei@hisilicon.com>, Kukjin Kim <kgene@kernel.org>, devicetree@vger.kernel.org, Chen Feng <puck.chen@hisilicon.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Carlo Caione <carlo@caione.org>, Jyri Sarha <jsarha@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, linux-arm-kernel@lists.infradead.org, Se
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <ddfb5e58-520f-1ef5-2351-d7545e17a429-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Tue, 2017-07-18 at 18:29 +0200, Matthias Brugger wrote:
+> 
+> On 06/22/2017 11:32 AM, YT Shen wrote:
+> > This adds basic chip support for Mediatek 2712
+> > 
+> > Signed-off-by: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/Makefile       |   1 +
+> >   arch/arm64/boot/dts/mediatek/mt2712-evb.dts |  32 ++++++
+> >   arch/arm64/boot/dts/mediatek/mt2712e.dtsi   | 172 ++++++++++++++++++++++++++++
+> >   3 files changed, 205 insertions(+)
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> > index 9fbfd32..fcc0604 100644
+> > --- a/arch/arm64/boot/dts/mediatek/Makefile
+> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> > @@ -1,3 +1,4 @@
+> > +dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+> > new file mode 100644
+> > index 0000000..8c804df
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+> > @@ -0,0 +1,32 @@
+> > +/*
+> > + * Copyright (c) 2017 MediaTek Inc.
+> > + * Author: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > + *
+> > + * SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> > + */
+> > +
+> > +/dts-v1/;
+> > +#include "mt2712e.dtsi"
+> > +
+> > +/ {
+> > +	model = "MediaTek MT2712 evaluation board";
+> > +	compatible = "mediatek,mt2712-evb", "mediatek,mt2712";
+> > +
+> > +	aliases {
+> > +		serial0 = &uart0;
+> > +	};
+> > +
+> > +	memory@40000000 {
+> > +		device_type = "memory";
+> > +		reg = <0 0x40000000 0 0x80000000>;
+> > +	};
+> > +
+> > +	chosen {
+> > +		stdout-path = "serial0:921600n8";
+> > +	};
+> > +};
+> > +
+> > +&uart0 {
+> > +	status = "okay";
+> > +};
+> > +
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> > new file mode 100644
+> > index 0000000..461ee0f
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> > @@ -0,0 +1,172 @@
+> > +/*
+> > + * Copyright (c) 2017 MediaTek Inc.
+> > + * Author: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > + *
+> > + * SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> > + */
+> > +
+> > +#include <dt-bindings/interrupt-controller/irq.h>
+> > +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +
+> > +/ {
+> > +	compatible = "mediatek,mt2712";
+> > +	interrupt-parent = <&sysirq>;
+> > +	#address-cells = <2>;
+> > +	#size-cells = <2>;
+> > +
+> > +	cpus {
+> > +		#address-cells = <1>;
+> > +		#size-cells = <0>;
+> > +
+> > +		cpu-map {
+> > +			cluster0 {
+> > +				core0 {
+> > +					cpu = <&cpu0>;
+> > +				};
+> > +				core1 {
+> > +					cpu = <&cpu1>;
+> > +				};
+> > +			};
+> > +
+> > +			cluster1 {
+> > +				core0 {
+> > +					cpu = <&cpu2>;
+> > +				};
+> > +			};
+> > +		};
+> > +
+> > +		cpu0: cpu@0 {
+> > +			device_type = "cpu";
+> > +			compatible = "arm,cortex-a35";
+> > +			reg = <0x000>;
+> > +		};
+> > +
+> > +		cpu1: cpu@1 {
+> > +			device_type = "cpu";
+> > +			compatible = "arm,cortex-a35";
+> > +			reg = <0x001>;
+> > +			enable-method = "psci";
+> > +		};
+> > +
+> > +		cpu2: cpu@200 {
+> > +			device_type = "cpu";
+> > +			compatible = "arm,cortex-a72";
+> > +			reg = <0x200>;
+> > +			enable-method = "psci";
+> > +		};
+> > +	};
+> > +
+> > +	psci {
+> > +		compatible = "arm,psci-0.2";
+> > +		method = "smc";
+> > +	};
+> > +
+> > +	uart_clk: dummy26m {
+> > +		compatible = "fixed-clock";
+> > +		clock-frequency = <26000000>;
+> > +		#clock-cells = <0>;
+> > +	};
+> > +
+> > +	timer {
+> > +		compatible = "arm,armv8-timer";
+> > +		interrupt-parent = <&gic>;
+> > +		interrupts = <GIC_PPI 13
+> > +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>,
+> > +			     <GIC_PPI 14
+> > +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>,
+> > +			     <GIC_PPI 11
+> > +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>,
+> > +			     <GIC_PPI 10
+> > +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>;
+> > +	};
+> > +
+> > +	soc {
+> > +		#address-cells = <2>;
+> > +		#size-cells = <2>;
+> > +		compatible = "simple-bus";
+> > +		ranges;
+> > +
+> > +		uart5: serial@1000f000 {
+> > +			compatible = "mediatek,mt2712-uart",
+> > +				     "mediatek,mt6577-uart";
+> > +			reg = <0 0x1000f000 0 0x400>;
+> > +			interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
+> > +			clocks = <&uart_clk>, <&uart_clk>;
+> > +			clock-names = "baud", "bus";
+> > +			status = "disabled";
+> > +		};
+> 
+> So baud and bus clock are both 26 MHz?
+We didn't have CCF clock support in this series.
+After we have clock source support, we could use the correct clocks to
+the UARTs and drop the 26MHz fixed rate UART clock.
 
---===============1360306020==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="t6ilc4dxca6ptagp"
-Content-Disposition: inline
+The bus clock is 26MHz.  The baud clock could be from another clock
+source, using the same 26MHz fixed clock works also.
 
 
---t6ilc4dxca6ptagp
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+[1] https://patchwork.kernel.org/patch/9670877/
+[2] https://patchwork.kernel.org/patch/6436021/
 
-On Tue, Jul 18, 2017 at 04:43:04PM -0500, Rob Herring wrote:
-> Now that we have a custom printf format specifier, convert users of
-> full_name to use %pOF instead. This is preparation to remove storing
-> of the full path string for each node.
->=20
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> Cc: Russell King <linux@armlinux.org.uk>
-> Cc: David Airlie <airlied@linux.ie>
-> Cc: Daniel Vetter <daniel.vetter@intel.com>
-> Cc: Jani Nikula <jani.nikula@linux.intel.com>
-> Cc: Sean Paul <seanpaul@chromium.org>
-> Cc: Inki Dae <inki.dae@samsung.com>
-> Cc: Joonyoung Shim <jy0922.shim@samsung.com>
-> Cc: Seung-Woo Kim <sw0312.kim@samsung.com>
-> Cc: Kyungmin Park <kyungmin.park@samsung.com>
-> Cc: Kukjin Kim <kgene@kernel.org>
-> Cc: Krzysztof Kozlowski <krzk@kernel.org>
-> Cc: Javier Martinez Canillas <javier@osg.samsung.com>
-> Cc: Xinliang Liu <z.liuxinliang@hisilicon.com>
-> Cc: Rongrong Zou <zourongrong@gmail.com>
-> Cc: Xinwei Kong <kong.kongxinwei@hisilicon.com>
-> Cc: Chen Feng <puck.chen@hisilicon.com>
-> Cc: CK Hu <ck.hu@mediatek.com>
-> Cc: Philipp Zabel <p.zabel@pengutronix.de>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Neil Armstrong <narmstrong@baylibre.com>
-> Cc: Carlo Caione <carlo@caione.org>
-> Cc: Kevin Hilman <khilman@baylibre.com>
-> Cc: Thierry Reding <thierry.reding@gmail.com>
-> Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Cc: Mark Yao <mark.yao@rock-chips.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Maxime Ripard <maxime.ripard@free-electrons.com>
-> Cc: Chen-Yu Tsai <wens@csie.org>
-> Cc: Jyri Sarha <jsarha@ti.com>
-> Cc: Tomi Valkeinen <tomi.valkeinen@ti.com>
-> Cc: dri-devel@lists.freedesktop.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-samsung-soc@vger.kernel.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-amlogic@lists.infradead.org
-> Cc: linux-renesas-soc@vger.kernel.org
-> Cc: linux-rockchip@lists.infradead.org
-> ---
->  drivers/gpu/drm/armada/armada_crtc.c            |  3 +--
->  drivers/gpu/drm/armada/armada_drv.c             |  4 ++--
->  drivers/gpu/drm/drm_mipi_dsi.c                  |  6 +++---
->  drivers/gpu/drm/drm_modes.c                     |  4 ++--
->  drivers/gpu/drm/drm_of.c                        |  4 ++--
->  drivers/gpu/drm/exynos/exynos_drm_dsi.c         |  3 +--
->  drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c |  3 +--
->  drivers/gpu/drm/mediatek/mtk_disp_color.c       |  4 ++--
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c         |  4 ++--
->  drivers/gpu/drm/mediatek/mtk_disp_rdma.c        |  4 ++--
->  drivers/gpu/drm/mediatek/mtk_dpi.c              |  6 +++---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c         |  7 +++----
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c     |  6 ++----
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c          | 16 ++++++++--------
->  drivers/gpu/drm/mediatek/mtk_dsi.c              |  4 ++--
->  drivers/gpu/drm/mediatek/mtk_hdmi.c             |  8 ++++----
->  drivers/gpu/drm/meson/meson_drv.c               |  5 ++---
->  drivers/gpu/drm/panel/panel-lvds.c              | 16 ++++++++--------
->  drivers/gpu/drm/rcar-du/rcar_du_encoder.c       |  4 ++--
->  drivers/gpu/drm/rcar-du/rcar_du_kms.c           | 16 ++++++++--------
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.c     |  4 ++--
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.c     |  4 ++--
->  drivers/gpu/drm/stm/ltdc.c                      |  3 +--
->  drivers/gpu/drm/sun4i/sun4i_drv.c               |  9 ++++-----
+> Regards,
+> Matthias
 
-For sun4i-drm:
-Acked-by: Maxime Ripard <maxime.ripard@free-electrons.com>
 
-Thanks!
-Maxime
-
---=20
-Maxime Ripard, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
-
---t6ilc4dxca6ptagp
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIcBAEBAgAGBQJZbvr0AAoJEBx+YmzsjxAgITYP/iWQDwIsdtm3dr7Z9sIdesLo
-gY84xayD01vmtGj3ex/rmnwG9CxHXLrI6whLh8dGwE+NV+lEEczL+ydjUhTDo9gW
-wOJXmCL11qEcbhPyQmrTGayFpsNkEQZrttNUpNpLOAB85m1G69Ky236TqLu5xgqE
-MXOueG+cXhVHOMfW9vu/E55qLotmU6oNnOAwTfA1Qfejp3L6frZqRGNNxewkXQh1
-I5s8J89Y+UZ4ZBe52nWUda7HxkaPLdj/e/QtsqirHRvXCEh9Xk1r7h8bDNYrWiZ6
-5Cq83PXHn8CWW4zl0bAcCPN2tt7v93VE1Q5wV9N671X7XLTy8eaIkCwHQ5jyR6c8
-SqwHX/p+IhpcTYZV3h6X6pldbqE0LzKmPmNjhWGh9SYtQUBb7x39HUKmbIS3quC8
-cRlqh7idfcoS6u+GuHNyYs0NOExlC/FFG1Sg+7CxOC5OHs27NQ/iut4jpoLG2iRL
-EQGO/FrnIGPAQFCeafAfM9s0YaDLboS3BY8EIuAewPCmrUM/q3QyzNBNq61BdHOB
-GM33nFunka0eXWKgHTkoihcSGjSnTp8JElqecicNGjLhLYJ8P+klqX2rFMBfostm
-So4ZmCSPZz3dmFGfroUu5So/mwuVJ4bbhUZGzR4/SQqtfJUGTBu6xNFaM1A/z7L8
-zLggRDwKaHQAeerdu3Fh
-=sj0d
------END PGP SIGNATURE-----
-
---t6ilc4dxca6ptagp--
-
---===============1360306020==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
-
---===============1360306020==--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
