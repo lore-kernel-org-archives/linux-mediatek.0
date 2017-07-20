@@ -1,87 +1,36 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH] media: Convert to using %pOF instead of full_name
-Date: Thu, 20 Jul 2017 09:06:01 -0500
-Message-ID: <CAL_JsqJcS_Ewfow0+iuUtLRab62m=AHO+bvbHXX-eSR0Hw_JaQ@mail.gmail.com>
-References: <CGME20170718215328epcas2p2e5e1d7df96fcd894e70a961df864abdd@epcas2p2.samsung.com>
- <20170718214339.7774-33-robh@kernel.org> <564a6768-3b23-6dc7-ecb5-cb4f4359b633@samsung.com>
- <CAL_JsqLDCgO60ECGB70pMNcaLg0zUcJ6_+50vH-evfGe-D266Q@mail.gmail.com> <20170720081508.33563afe@vento.lan>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 000/102] Convert drivers to explicit reset API
+Date: Thu, 20 Jul 2017 22:32:49 +0200
+Message-ID: <1687646.TMvigZNUOP__40287.1742415757$1500583024$gmane$org@phil>
+References: <20170719152646.25903-1-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <20170720081508.33563afe@vento.lan>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Mauro Carvalho Chehab <mchehab@s-opensource.com>
-Cc: Sylwester Nawrocki <s.nawrocki@samsung.com>, Frank Rowand <frowand.list@gmail.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Kyungmin Park <kyungmin.park@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, "Lad, Prabhakar" <prabhakar.csengg@gmail.com>, Songjun Wu <songjun.wu@microchip.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170719152646.25903-1-p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Prashant Gaikwad <pgaikwad-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Peter Chen <Peter.Chen-3arQi8VN3Tc@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Marc Dietrich <marvin24-Mmb7MZpHnFY@public.gmane.org>, Rakesh Iyer <riyer-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wim Van Sebroeck <wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org>, Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Xinliang Liu <z.liuxinliang-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Jiri Slaby <jslaby-IBi9RG/b67k@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Ohad Ben-Cohen <ohad-Ix1uc/W3ht7QT0dZR+AlfA@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Bin Liu <b-liu-l0cyMroinI0@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jul 20, 2017 at 6:15 AM, Mauro Carvalho Chehab
-<mchehab@s-opensource.com> wrote:
-> Em Wed, 19 Jul 2017 11:02:01 -0500
-> Rob Herring <robh@kernel.org> escreveu:
->
->> On Wed, Jul 19, 2017 at 4:41 AM, Sylwester Nawrocki
->> <s.nawrocki@samsung.com> wrote:
->> > On 07/18/2017 11:43 PM, Rob Herring wrote:
->> >> Now that we have a custom printf format specifier, convert users of
->> >> full_name to use %pOF instead. This is preparation to remove storing
->> >> of the full path string for each node.
->> >>
->> >> Signed-off-by: Rob Herring <robh@kernel.org>
->> >
->> >> ---
->> >>   drivers/media/i2c/s5c73m3/s5c73m3-core.c       |  3 +-
->> >>   drivers/media/i2c/s5k5baf.c                    |  7 ++--
->> >>   drivers/media/platform/am437x/am437x-vpfe.c    |  4 +-
->> >>   drivers/media/platform/atmel/atmel-isc.c       |  4 +-
->> >>   drivers/media/platform/davinci/vpif_capture.c  | 16 ++++----
->> >>   drivers/media/platform/exynos4-is/fimc-is.c    |  8 ++--
->> >>   drivers/media/platform/exynos4-is/fimc-lite.c  |  3 +-
->> >>   drivers/media/platform/exynos4-is/media-dev.c  |  8 ++--
->> >>   drivers/media/platform/exynos4-is/mipi-csis.c  |  4 +-
->> >>   drivers/media/platform/mtk-mdp/mtk_mdp_comp.c  |  6 +--
->> >>   drivers/media/platform/mtk-mdp/mtk_mdp_core.c  |  8 ++--
->> >>   drivers/media/platform/omap3isp/isp.c          |  8 ++--
->> >>   drivers/media/platform/pxa_camera.c            |  2 +-
->> >>   drivers/media/platform/rcar-vin/rcar-core.c    |  4 +-
->> >>   drivers/media/platform/soc_camera/soc_camera.c |  6 +--
->> >>   drivers/media/platform/xilinx/xilinx-vipp.c    | 52 +++++++++++++-------------
->> >>   drivers/media/v4l2-core/v4l2-async.c           |  4 +-
->> >>   drivers/media/v4l2-core/v4l2-clk.c             |  3 +-
->> >>   include/media/v4l2-clk.h                       |  4 +-
->> >>   19 files changed, 71 insertions(+), 83 deletions(-)
->> >
->> >> diff --git a/drivers/media/platform/xilinx/xilinx-vipp.c b/drivers/media/platform/xilinx/xilinx-vipp.c
->> >> index ac4704388920..9233ad0b1b6b 100644
->> >> --- a/drivers/media/platform/xilinx/xilinx-vipp.c
->> >> +++ b/drivers/media/platform/xilinx/xilinx-vipp.c
->> >
->> >> @@ -144,9 +144,8 @@ static int xvip_graph_build_one(struct xvip_composite_device *xdev,
->> >>               remote = ent->entity;
->> >>
->> >>               if (link.remote_port >= remote->num_pads) {
->> >> -                     dev_err(xdev->dev, "invalid port number %u on %s\n",
->> >> -                             link.remote_port,
->> >> -                             to_of_node(link.remote_node)->full_name);
->> >> +                     dev_err(xdev->dev, "invalid port number %u on %pOF\n",
->> >> +                             link.remote_port, link.remote_node);
->> >
->> > Shouldn't there be to_of_node(link.remote_node) instead of link.remote_node ?
->>
->> Humm, yes. I thought I fixed that.
->
-> After such fix, I'm OK with this patch.
+Hi,
 
-I'll send a new version.
+>   crypto: rockchip: explicitly request exclusive reset control
+>   iio: adc: rockchip_saradc: explicitly request exclusive reset control
+>   PCI: rockchip: explicitly request exclusive reset control
+>   phy: rockchip-pcie: explicitly request exclusive reset control
+>   phy: rockchip-typec: explicitly request exclusive reset control
+>   phy: rockchip-usb: explicitly request exclusive reset control
+>   thermal: rockchip: explicitly request exclusive reset control
 
-I think I'll send a revert of the referenced commit. It won't apply
-cleanly, but at least it will capture the change in behavior and why
-it was wrong.
+for the driver-related Rockchip changes
 
-> Are you planning to apply it on your tree, or via the media one?
->
-> I guess it is probably better to apply via media, in order to avoid
-> conflicts with other changes.
-
-Yes, you can take it.
-
-Rob
+Acked-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
