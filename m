@@ -1,66 +1,85 @@
-From: Sylwester Nawrocki <s.nawrocki@samsung.com>
-Subject: Re: [PATCH] media: Convert to using %pOF instead of full_name
-Date: Thu, 20 Jul 2017 12:22:34 +0200
-Message-ID: <7b004361-f103-f804-3884-299eb5607648@samsung.com>
-References: <CGME20170718215328epcas2p2e5e1d7df96fcd894e70a961df864abdd@epcas2p2.samsung.com>
-        <20170718214339.7774-33-robh@kernel.org>
-        <564a6768-3b23-6dc7-ecb5-cb4f4359b633@samsung.com>
-        <CAL_JsqLDCgO60ECGB70pMNcaLg0zUcJ6_+50vH-evfGe-D266Q@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 06/30] arm: dts: mt7623: add clock-frequency to the a7
+ timer node to mt7623.dtsi
+Date: Thu, 20 Jul 2017 11:54:00 +0200
+Message-ID: <c23162d4-75fe-8e5b-64d9-06da799e0246@gmail.com>
+References: <1493197474-3718-1-git-send-email-sean.wang@mediatek.com>
+ <1493197474-3718-7-git-send-email-sean.wang@mediatek.com>
+ <1498015701.3383.4.camel@mtkswgap22> <1500520486.25149.7.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <CAL_JsqLDCgO60ECGB70pMNcaLg0zUcJ6_+50vH-evfGe-D266Q@mail.gmail.com>
-Content-language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>, Frank Rowand <frowand.list@gmail.com>
-Cc: "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Kyungmin Park <kyungmin.park@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, "Lad, Prabhakar" <prabhakar.csengg@gmail.com>, Songjun Wu <songjun.wu@microchip.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?UTF-8?Q?Niklas_S=c3=b6der
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1500520486.25149.7.camel@mtkswgap22>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 07/19/2017 06:02 PM, Rob Herring wrote:
->>> diff --git a/drivers/media/v4l2-core/v4l2-async.c b/drivers/media/v4l2-core/v4l2-async.c
->>> index 851f128eba22..0a385d1ff28c 100644
->>> --- a/drivers/media/v4l2-core/v4l2-async.c
->>> +++ b/drivers/media/v4l2-core/v4l2-async.c
->>> @@ -47,9 +47,7 @@ static bool match_fwnode(struct v4l2_subdev *sd, struct v4l2_async_subdev *asd)
->>>        if (!is_of_node(sd->fwnode) || !is_of_node(asd->match.fwnode.fwnode))
->>>                return sd->fwnode == asd->match.fwnode.fwnode;
->>>
->>> -     return !of_node_cmp(of_node_full_name(to_of_node(sd->fwnode)),
->>> -                         of_node_full_name(
->>> -                                 to_of_node(asd->match.fwnode.fwnode)));
->>> +     return to_of_node(sd->fwnode) == to_of_node(asd->match.fwnode.fwnode);
- >>
->> I'm afraid this will not work, please see commit d2180e0cf77dc7a7049671d5d57d
->> "[media] v4l: async: make v4l2 coexist with devicetree nodes in a dt overlay"
- >
-> Maybe I'm missing something, but how does that work exactly? Before
-> the overlay is applied, the remote endpoint node (and its parent)
-> can't be resolved. In the commit example, the endpoint in the
-> media_bridge would also have to be part of the overlay. If you apply
-> and un-apply the overlay, then the of_node (and fw_node) in the
-> overlay is once again invalid. IOW, you should be in the same state as
-> before the overlay was applied. The node is still around because of
-> paranoia that actually freeing nodes would break things. It seems this
-> paranoia is real, so i think we need to do something to prevent this
-> from spreading.
+Hi Sean,
+
+On 07/20/2017 05:14 AM, Sean Wang wrote:
+> Hi, Matthias
 > 
-> Furthermore, it does not appear that any media driver supports
-> overlays and we have no general way to apply them in mainline yet
-> (other than an in kernel API). So really this scenario is not one we
-> have to support yet.
+> ditto, just another gentle ping on this missing patch
+> 
+> 	Sean
+> 
+> On Wed, 2017-06-21 at 11:28 +0800, Sean Wang wrote:
+>> Hi Matthias,
+>>
+>> the patch seems to be gone in your tree which would make the unit not
+>> boot, but 5/30 and 7/30 have been accepted. Have any concern ?
 
-Indeed, the motivation of the above mentioned commit was some out of
-tree driver. I don't know was the exact use case, assuming that the
-endpoint in the bridge node was also part of the overlay the bridge
-driver must have not been rescanning device tree after overlay un-apply
-and apply. Currently there is no other way to do this than to unbind
-and bind. So the bridge driver must have been referencing an already
-invalid node as you point out.
+Isn't that:
 
-I haven't been following DT overlays very closely, as Frank explains
-your change seems to be actually an improvement of current code.
+7e6c7fe95e3d ("arm: dts: mt7623: add clock-frequency to the a7 timer 
+node to mt7623.dtsi")
 
--- 
-Thanks,
-Sylwester
+Which is in v4.13-rc1. Are we missing some other patch maybe?
+
+Regards,
+Matthias
+
+>>
+>> 	Sean
+>>
+>>
+>> On Wed, 2017-04-26 at 17:04 +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+>>> From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+>>>
+>>> We need to tell the driver what the timers frequency is and that the core
+>>> has not be configured by the bootrom. Not doing so makes the unit not
+>>> boot.
+>>>
+>>> Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+>>> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>> ---
+>>>   arch/arm/boot/dts/mt7623.dtsi | 2 ++
+>>>   1 file changed, 2 insertions(+)
+>>>
+>>> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+>>> index adb2393..3cc0a3a 100644
+>>> --- a/arch/arm/boot/dts/mt7623.dtsi
+>>> +++ b/arch/arm/boot/dts/mt7623.dtsi
+>>> @@ -77,6 +77,8 @@
+>>>   			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+>>>   			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+>>>   			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
+>>> +		clock-frequency = <13000000>;
+>>> +		arm,cpu-registers-not-fw-configured;
+>>>   	};
+>>>   
+>>>   	topckgen: syscon@10000000 {
+>>
+> 
+> 
