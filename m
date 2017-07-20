@@ -1,43 +1,68 @@
 From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 0/2] fixed ethernet binding violation for reset signal
-Date: Thu, 20 Jul 2017 11:07:53 +0800
-Message-ID: <1500520073.25149.2.camel@mtkswgap22>
-References: <cover.1498030300.git.sean.wang@mediatek.com>
+Subject: Re: [PATCH v2 06/30] arm: dts: mt7623: add clock-frequency to the
+ a7 timer node to mt7623.dtsi
+Date: Thu, 20 Jul 2017 11:14:46 +0800
+Message-ID: <1500520486.25149.7.camel@mtkswgap22>
+References: <1493197474-3718-1-git-send-email-sean.wang@mediatek.com>
+ <1493197474-3718-7-git-send-email-sean.wang@mediatek.com>
+ <1498015701.3383.4.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <cover.1498030300.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1498015701.3383.4.camel@mtkswgap22>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi, Matthias
 
-just a gentle ping on this 
+ditto, just another gentle ping on this missing patch
 
 	Sean
 
-
-On Wed, 2017-06-21 at 15:49 +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Wed, 2017-06-21 at 11:28 +0800, Sean Wang wrote:
+> Hi Matthias,
 > 
-> Fixed binding violation and also updated related binding documentation to
-> reflect the reset signals the MediaTek Ethernet requires.
+> the patch seems to be gone in your tree which would make the unit not
+> boot, but 5/30 and 7/30 have been accepted. Have any concern ? 
 > 
-> Sean Wang (2):
->   dt-bindings: net: mediatek: update documentation for reset signals
->   arm: dts: mt7623: fixup binding violation missing reset in ethernet
->     node
+> 	Sean
 > 
->  Documentation/devicetree/bindings/net/mediatek-net.txt | 6 ++++--
->  arch/arm/boot/dts/mt7623.dtsi                          | 4 ++++
->  2 files changed, 8 insertions(+), 2 deletions(-)
 > 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> On Wed, 2017-04-26 at 17:04 +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> > From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+> > 
+> > We need to tell the driver what the timers frequency is and that the core
+> > has not be configured by the bootrom. Not doing so makes the unit not
+> > boot.
+> > 
+> > Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+> > Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  arch/arm/boot/dts/mt7623.dtsi | 2 ++
+> >  1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> > index adb2393..3cc0a3a 100644
+> > --- a/arch/arm/boot/dts/mt7623.dtsi
+> > +++ b/arch/arm/boot/dts/mt7623.dtsi
+> > @@ -77,6 +77,8 @@
+> >  			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+> >  			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+> >  			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
+> > +		clock-frequency = <13000000>;
+> > +		arm,cpu-registers-not-fw-configured;
+> >  	};
+> >  
+> >  	topckgen: syscon@10000000 {
+> 
