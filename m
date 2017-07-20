@@ -1,71 +1,50 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH 000/102] Convert drivers to explicit reset API
-Date: Thu, 20 Jul 2017 11:36:55 +0200
-Message-ID: <1500543415.2354.37.camel@pengutronix.de>
-References: <20170719152646.25903-1-p.zabel@pengutronix.de>
-         <20170719211515.46a1196c@windsurf>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] Documentation: mtk-quadspi: update DT bindings
+Date: Thu, 20 Jul 2017 11:55:12 +0200
+Message-ID: <8629861c-5da6-2ed3-cc69-e3ee18f48b07@gmail.com>
+References: <1500539352-9499-1-git-send-email-guochun.mao@mediatek.com>
+ <1500539352-9499-2-git-send-email-guochun.mao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mips-bounce@linux-mips.org>
-In-Reply-To: <20170719211515.46a1196c@windsurf>
-Sender: linux-mips-bounce@linux-mips.org
-Errors-to: linux-mips-bounce@linux-mips.org
-List-help: <mailto:ecartis@linux-mips.org?Subject=help>
-List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
-List-software: Ecartis version 1.0.0
-List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
-List-owner: <mailto:ralf@linux-mips.org>
-List-post: <mailto:linux-mips@linux-mips.org>
-List-archive: <http://www.linux-mips.org/archives/linux-mips/>
-To: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>
-Cc: linux-kernel@vger.kernel.org, Andrew Lunn <andrew@lunn.ch>, Prashant Gaikwad <pgaikwad@nvidia.com>, Heiko Stuebner <heiko@sntech.de>, Peter Chen <Peter.Chen@nxp.com>, Linus Walleij <linus.walleij@linaro.org>, dri-devel@lists.freedesktop.org, Marc Dietrich <marvin24@gmx.de>, Rakesh Iyer <riyer@nvidia.com>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>, linux-clk@vger.kernel.org, Wim Van Sebroeck <wim@iguana.be>, Wolfram Sang <wsa@the-dreams.de>, Xinliang Liu <z.liuxinliang@hisilicon.com>, Chanwoo Choi <cw00.choi@samsung.com>, Alan Stern <stern@rowland.harvard.edu>, Jiri Slaby <jslaby@suse.com>, Michael Turquette <mturquette@baylibre.com>, Guenter Roeck <linux@roeck-us.net>, Ohad Ben-Cohen <ohad@wizery.com>, linux-pm@vger.kernel.org, Thomas Gleixner <tglx>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1500539352-9499-2-git-send-email-guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Thomas,
 
-On Wed, 2017-07-19 at 21:15 +0200, Thomas Petazzoni wrote:
-> Hello,
-> 
-> On Wed, 19 Jul 2017 17:25:04 +0200, Philipp Zabel wrote:
-> > The reset control API has two modes: exclusive access, where the driver
-> > expects to have full and immediate control over the state of the reset
-> > line, and shared (clock-like) access, where drivers only request reset
-> > deassertion while active, but don't care about the state of the reset line
-> > while inactive.
-> > 
-> > Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
-> > reset lines") started to transition the reset control request API calls
-> > to explicitly state whether the driver needs exclusive or shared reset
-> > control behavior.
-> > 
-> > This series converts all drivers that currently implicitly request
-> > exclusive reset controls to the corresponding explicit API call. It is,
-> > for the most part, generated from the following semantic patch:
-> > 
-> > @@
-> > expression rstc, dev, id;
-> > @@
-> > -rstc = reset_control_get(dev, id);
-> > +rstc = reset_control_get_exclusive(dev, id);
-> 
-> I don't know if it has been discussed in the past, so forgive me if it
-> has been. Have you considered adding a "int flags" argument to the
-> existing reset_control_get_*() functions, rather than introducing
-> separate exclusive variants ?
-> 
-> Indeed, with a "int flags" argument you could in the future add more
-> variants/behaviors without actually multiplying the number of
-> functions. Something like the "flags" argument for request_irq() for
-> example.
 
-I can't find the discussion right now, but I remember we had talked
-about this in the past.
-Behind the scenes, all the inline API functions already call common
-entry points with flags (well, currently separate bool parameters for
-shared and optional).
-One reason against exposing those as an int flags in the user facing API
-is the possibility to accidentally provide a wrong value.
+On 07/20/2017 10:29 AM, Guochun Mao wrote:
+> Add "mediatek,mt2712-nor" for nor flash node's compatible.
+> 
+> Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>   .../devicetree/bindings/mtd/mtk-quadspi.txt        |    1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+> index 5ded66a..592bb71 100644
+> --- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+> +++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+> @@ -2,6 +2,7 @@
+>   
+>   Required properties:
+>   - compatible: 	  The possible values are:
+> +		  "mediatek,mt2712-nor"
 
-regards
-Philipp
+Please sort in alphabetic order.
+
+Thanks,
+Matthias
+
+>   		  "mediatek,mt2701-nor"
+>   		  "mediatek,mt7623-nor"
+>   		  "mediatek,mt8173-nor"
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
