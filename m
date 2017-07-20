@@ -1,17 +1,15 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 06/30] arm: dts: mt7623: add clock-frequency to the a7
- timer node to mt7623.dtsi
-Date: Thu, 20 Jul 2017 11:54:00 +0200
-Message-ID: <c23162d4-75fe-8e5b-64d9-06da799e0246@gmail.com>
-References: <1493197474-3718-1-git-send-email-sean.wang@mediatek.com>
- <1493197474-3718-7-git-send-email-sean.wang@mediatek.com>
- <1498015701.3383.4.camel@mtkswgap22> <1500520486.25149.7.camel@mtkswgap22>
+From: Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH 000/102] Convert drivers to explicit reset API
+Date: Thu, 20 Jul 2017 12:36:40 +0200
+Message-ID: <20170720123640.43c2ce01@windsurf>
+References: <20170719152646.25903-1-p.zabel@pengutronix.de>
+ <20170719211515.46a1196c@windsurf>
+ <1500543415.2354.37.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1500520486.25149.7.camel@mtkswgap22>
-Content-Language: en-US
+In-Reply-To: <1500543415.2354.37.camel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -21,65 +19,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Prashant Gaikwad <pgaikwad-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Peter Chen <Peter.Chen-3arQi8VN3Tc@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Marc Dietrich <marvin24-Mmb7MZpHnFY@public.gmane.org>, Rakesh Iyer <riyer-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Xinliang Liu <z.liuxinliang-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Jiri Slaby <jslaby-IBi9RG/b67k@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Ohad Ben-Cohen <ohad-Ix1uc/W3ht7QT0dZR+AlfA@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Bin Liu <b-liu-l0cyMroinI0@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sean,
+Hello,
 
-On 07/20/2017 05:14 AM, Sean Wang wrote:
-> Hi, Matthias
+On Thu, 20 Jul 2017 11:36:55 +0200, Philipp Zabel wrote:
+
+> > I don't know if it has been discussed in the past, so forgive me if it
+> > has been. Have you considered adding a "int flags" argument to the
+> > existing reset_control_get_*() functions, rather than introducing
+> > separate exclusive variants ?
+> > 
+> > Indeed, with a "int flags" argument you could in the future add more
+> > variants/behaviors without actually multiplying the number of
+> > functions. Something like the "flags" argument for request_irq() for
+> > example.  
 > 
-> ditto, just another gentle ping on this missing patch
-> 
-> 	Sean
-> 
-> On Wed, 2017-06-21 at 11:28 +0800, Sean Wang wrote:
->> Hi Matthias,
->>
->> the patch seems to be gone in your tree which would make the unit not
->> boot, but 5/30 and 7/30 have been accepted. Have any concern ?
+> I can't find the discussion right now, but I remember we had talked
+> about this in the past.
+> Behind the scenes, all the inline API functions already call common
+> entry points with flags (well, currently separate bool parameters for
+> shared and optional).
+> One reason against exposing those as an int flags in the user facing API
+> is the possibility to accidentally provide a wrong value.
 
-Isn't that:
+This is a quite strange argument. You could also accidentally use the
+wrong variant of the function, just like you could use the wrong flag.
 
-7e6c7fe95e3d ("arm: dts: mt7623: add clock-frequency to the a7 timer 
-node to mt7623.dtsi")
+Once again, the next time you have another parameter for those reset
+functions, beyond the exclusive/shared variant, you will multiply again
+by two the number of functions ? You already have the  exclusive/shared
+and optional/mandatory variants, so 4 variants. When you'll add a new
+parameter, you'll have 8 variants. Doesn't seem really good.
 
-Which is in v4.13-rc1. Are we missing some other patch maybe?
+What about reset_control_get(struct device *, const char *, int flags)
+to replace all those variants ?
 
-Regards,
-Matthias
+Best regards,
 
->>
->> 	Sean
->>
->>
->> On Wed, 2017-04-26 at 17:04 +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
->>> From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
->>>
->>> We need to tell the driver what the timers frequency is and that the core
->>> has not be configured by the bootrom. Not doing so makes the unit not
->>> boot.
->>>
->>> Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
->>> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>> ---
->>>   arch/arm/boot/dts/mt7623.dtsi | 2 ++
->>>   1 file changed, 2 insertions(+)
->>>
->>> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
->>> index adb2393..3cc0a3a 100644
->>> --- a/arch/arm/boot/dts/mt7623.dtsi
->>> +++ b/arch/arm/boot/dts/mt7623.dtsi
->>> @@ -77,6 +77,8 @@
->>>   			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
->>>   			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
->>>   			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
->>> +		clock-frequency = <13000000>;
->>> +		arm,cpu-registers-not-fw-configured;
->>>   	};
->>>   
->>>   	topckgen: syscon@10000000 {
->>
-> 
-> 
+Thomas
+-- 
+Thomas Petazzoni, CTO, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
