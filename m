@@ -1,68 +1,43 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 06/30] arm: dts: mt7623: add clock-frequency to the
- a7 timer node to mt7623.dtsi
-Date: Thu, 20 Jul 2017 11:14:46 +0800
-Message-ID: <1500520486.25149.7.camel@mtkswgap22>
-References: <1493197474-3718-1-git-send-email-sean.wang@mediatek.com>
- <1493197474-3718-7-git-send-email-sean.wang@mediatek.com>
- <1498015701.3383.4.camel@mtkswgap22>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH net] net: ethernet: mediatek: avoid potential invalid memory access
+Date: Thu, 20 Jul 2017 14:52:02 +0800
+Message-ID: <3a9d3ee4bcfd47487c5dbac4c658f10e0233b723.1500532842.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1498015701.3383.4.camel@mtkswgap22>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: john@phrozen.org, davem@davemloft.net
+Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Matthias
+From: Sean Wang <sean.wang@mediatek.com>
 
-ditto, just another gentle ping on this missing patch
+Potential dangerous invalid memory might be accessed if invalid mac value
+reflected from the forward port field in rxd4 caused by possible potential
+hardware defects. So added a simple sanity checker to avoid the kind of
+situation happening.
 
-	Sean
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-On Wed, 2017-06-21 at 11:28 +0800, Sean Wang wrote:
-> Hi Matthias,
-> 
-> the patch seems to be gone in your tree which would make the unit not
-> boot, but 5/30 and 7/30 have been accepted. Have any concern ? 
-> 
-> 	Sean
-> 
-> 
-> On Wed, 2017-04-26 at 17:04 +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> > From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-> > 
-> > We need to tell the driver what the timers frequency is and that the core
-> > has not be configured by the bootrom. Not doing so makes the unit not
-> > boot.
-> > 
-> > Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-> > Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  arch/arm/boot/dts/mt7623.dtsi | 2 ++
-> >  1 file changed, 2 insertions(+)
-> > 
-> > diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-> > index adb2393..3cc0a3a 100644
-> > --- a/arch/arm/boot/dts/mt7623.dtsi
-> > +++ b/arch/arm/boot/dts/mt7623.dtsi
-> > @@ -77,6 +77,8 @@
-> >  			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-> >  			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-> >  			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
-> > +		clock-frequency = <13000000>;
-> > +		arm,cpu-registers-not-fw-configured;
-> >  	};
-> >  
-> >  	topckgen: syscon@10000000 {
-> 
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index c1dc08c..8175433 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -999,6 +999,12 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 		      RX_DMA_FPORT_MASK;
+ 		mac--;
+ 
++		if (unlikely(mac < 0 || mac >= MTK_MAC_COUNT ||
++			     !eth->netdev[mac])) {
++			netdev->stats.rx_dropped++;
++			goto release_desc;
++		}
++
+ 		netdev = eth->netdev[mac];
+ 
+ 		if (unlikely(test_bit(MTK_RESETTING, &eth->state)))
+-- 
+2.7.4
