@@ -1,50 +1,96 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] Documentation: mtk-quadspi: update DT bindings
-Date: Mon, 24 Jul 2017 11:14:11 -0500
-Message-ID: <20170724161411.6fjl7eee4auvco5z@rob-hp-laptop>
-References: <1500607619-21969-1-git-send-email-guochun.mao@mediatek.com>
- <1500607619-21969-2-git-send-email-guochun.mao@mediatek.com>
+From: Florian Fainelli <f.fainelli@gmail.com>
+Subject: Re: [PATCH] net: dsa: fixup fail to get tag in mtk_get_tag_protocol
+Date: Mon, 24 Jul 2017 09:37:12 -0700
+Message-ID: <557d5c4b-118d-034f-5580-b57b06126965@gmail.com>
+References: <77d2e1bb09314a27a08d02dec9ec62e217b2b9d6.1500908869.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1500607619-21969-2-git-send-email-guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <77d2e1bb09314a27a08d02dec9ec62e217b2b9d6.1500908869.git.sean.wang@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com, davem@davemloft.net, andrew@lunn.ch, vivien.didelot@savoirfairelinux.com
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jul 21, 2017 at 11:26:59AM +0800, Guochun Mao wrote:
-> Add "mediatek,mt2712-nor" and "mediatek,mt7622-nor"
-> for nor flash node's compatible.
+On 07/24/2017 08:14 AM, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> dsa_is_cpu_port() checking ds->cpu_port_mask is not available in
+> ds->ops->get_tag_protocol
+> 
+> Since commit 14be36c2c96c ("net: dsa: Initialize all CPU and enabled
+> ports masks in dsa_ds_parse()") So force returning DSA_TAG_PROTO_MTK
+> inside mtk_get_tag_protocol call after that.
 
-The subject could be improved because it is exactly the same as the last 
-patch adding the 2701 and 7623. Also, use "dt-bindings: mtd: ..." for 
-the subject prefix.
+So a better fix could look like this then:
+
+diff --git a/net/dsa/dsa2.c b/net/dsa/dsa2.c
+index 56e46090526b..c442051d5a55 100644
+--- a/net/dsa/dsa2.c
++++ b/net/dsa/dsa2.c
+@@ -509,21 +509,22 @@ static int dsa_cpu_parse(struct dsa_port *port,
+u32 index,
+                dst->cpu_dp->netdev = ethernet_dev;
+        }
+
++       /* Initialize cpu_port_mask now for drv->setup()
++        * to have access to a correct value, just like what
++        * net/dsa/dsa.c::dsa_switch_setup_one does.
++        */
++       ds->cpu_port_mask |= BIT(index);
++
+        tag_protocol = ds->ops->get_tag_protocol(ds);
+        dst->tag_ops = dsa_resolve_tag_protocol(tag_protocol);
+        if (IS_ERR(dst->tag_ops)) {
+                dev_warn(ds->dev, "No tagger for this switch\n");
++               ds->cpu_port_mask &= ~BIT(index);
+                return PTR_ERR(dst->tag_ops);
+        }
+
+        dst->rcv = dst->tag_ops->rcv;
+
+-       /* Initialize cpu_port_mask now for drv->setup()
+-        * to have access to a correct value, just like what
+-        * net/dsa/dsa.c::dsa_switch_setup_one does.
+-        */
+-       ds->cpu_port_mask |= BIT(index);
+-
+        return 0;
+ }
+
 
 > 
-> Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Cc: Florian Fainelli <f.fainelli@gmail.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
->  .../devicetree/bindings/mtd/mtk-quadspi.txt        |    2 ++
->  1 file changed, 2 insertions(+)
+>  drivers/net/dsa/mt7530.c | 10 +---------
+>  1 file changed, 1 insertion(+), 9 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> index 5ded66a..9845ff4 100644
-> --- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> +++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> @@ -3,6 +3,8 @@
->  Required properties:
->  - compatible: 	  The possible values are:
->  		  "mediatek,mt2701-nor"
-> +		  "mediatek,mt2712-nor"
-> +		  "mediatek,mt7622-nor"
->  		  "mediatek,mt7623-nor"
->  		  "mediatek,mt8173-nor"
->  		  For mt8173, compatible should be "mediatek,mt8173-nor".
-> -- 
-> 1.7.9.5
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 1e46418..c265e7e 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -892,15 +892,7 @@ mt7530_port_fdb_dump(struct dsa_switch *ds, int port,
+>  static enum dsa_tag_protocol
+>  mtk_get_tag_protocol(struct dsa_switch *ds)
+>  {
+> -	struct mt7530_priv *priv = ds->priv;
+> -
+> -	if (!dsa_is_cpu_port(ds, MT7530_CPU_PORT)) {
+> -		dev_warn(priv->dev,
+> -			 "port not matched with tagging CPU port\n");
+> -		return DSA_TAG_PROTO_NONE;
+> -	} else {
+> -		return DSA_TAG_PROTO_MTK;
+> -	}
+> +	return DSA_TAG_PROTO_MTK;
+>  }
+>  
+>  static int
 > 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+
+-- 
+Florian
