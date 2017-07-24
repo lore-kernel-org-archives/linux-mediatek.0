@@ -1,59 +1,31 @@
 From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 2/9] dt-bindings: regulator: Add document for MediaTek
- MT6380 regulator
-Date: Mon, 24 Jul 2017 13:22:42 -0500
-Message-ID: <20170724182242.ejrobnjks3ehprpw@rob-hp-laptop>
-References: <cover.1500368529.git.sean.wang@mediatek.com>
- <fef9412087f3961e03b77c067e227a31860a1417.1500368529.git.sean.wang@mediatek.com>
+Subject: Re: [PATCH 1/4] ARM: mediatek: dts: Cleanup bindings documentation
+Date: Mon, 24 Jul 2017 14:56:44 -0500
+Message-ID: <20170724195644.oztdexqhicir5xn3@rob-hp-laptop>
+References: <20170720102247.12342-1-matthias.bgg@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <fef9412087f3961e03b77c067e227a31860a1417.1500368529.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+In-Reply-To: <20170720102247.12342-1-matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jul 18, 2017 at 05:49:22PM +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Thu, Jul 20, 2017 at 12:22:44PM +0200, Matthias Brugger wrote:
+> From: Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>
 > 
-> add dt-binding document for MediaTek MT6380 PMIC
+> This patch cleans up the binding documentation stating explicitly
+> the binding and it's fallback for every SoC.
 > 
-> Signed-off-by: Chenglin Xu <chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 > ---
->  .../bindings/regulator/mt6380-regulator.txt        | 90 ++++++++++++++++++++++
->  1 file changed, 90 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mt6380-regulator.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/regulator/mt6380-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6380-regulator.txt
-> new file mode 100644
-> index 0000000..2a559f0
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/regulator/mt6380-regulator.txt
-> @@ -0,0 +1,90 @@
-> +MediaTek MT6380 Regulator Driver
+>  Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
 
-Bindings don't describe drivers.
-
-> +
-> +All voltage regulators are defined as subnodes of the regulators node. A list
-
-What's the regulators node a child of?
-
-> +of regulators provided by this controller are defined as subnodes of the
-> +PMIC's node. Each regulator is named according to its regulator type,
-> +buck-<name> and ldo-<name>. The definition for each of these nodes is defined
-> +using the standard binding for regulators at
-> +Documentation/devicetree/bindings/regulator/regulator.txt.
-> +
-> +The valid names for regulators are:
-> +BUCK:
-> +  buck-core1, buck-vcore, buck-vrf
-> +LDO:
-> +  ldo-vm ,ldo-va , ldo-vphy, ldo-vddr, ldo-vt
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
+To unsubscribe from this list: send the line "unsubscribe linux-watchdog" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
