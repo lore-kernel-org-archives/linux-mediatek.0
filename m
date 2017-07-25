@@ -1,49 +1,198 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 3/3] usb: mtu3: fix ip sleep auto-exit issue when enable DRD mode
-Date: Tue, 25 Jul 2017 16:10:24 +0800
-Message-ID: <1500970224-23791-3-git-send-email-chunfeng.yun@mediatek.com>
-References: <1500970224-23791-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 3/3] soc: mediatek: add SCPSYS power domain driver for
+ MediaTek MT7622 SoC
+Date: Tue, 25 Jul 2017 10:56:30 +0200
+Message-ID: <a44d92b0-41e6-8bb3-fd3f-9add05040b91@gmail.com>
+References: <cover.1500608650.git.sean.wang@mediatek.com>
+ <284911261d7e423e5bb47625858b3284be713a1b.1500608650.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1500970224-23791-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <284911261d7e423e5bb47625858b3284be713a1b.1500608650.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
+Cc: ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Ip sleep will auto exit if vbus comparison circuit of u2 phy is
-disabled when system tries to enter suspend mode, so get vbus-valid
-status from mac but not from u2 phy when enable DRD mode to fix
-the issue.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/usb/mtu3/mtu3_hw_regs.h |    4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/usb/mtu3/mtu3_hw_regs.h b/drivers/usb/mtu3/mtu3_hw_regs.h
-index 2123672..06b2966 100644
---- a/drivers/usb/mtu3/mtu3_hw_regs.h
-+++ b/drivers/usb/mtu3/mtu3_hw_regs.h
-@@ -462,10 +462,12 @@
- #define SSUSB_U3_PORT_DIS		BIT(0)
- 
- /* U3D_SSUSB_U2_CTRL_0P */
-+#define SSUSB_U2_PORT_VBUSVALID	BIT(9)
- #define SSUSB_U2_PORT_OTG_SEL		BIT(7)
--#define SSUSB_U2_PORT_HOST_SEL		BIT(2)
-+#define SSUSB_U2_PORT_HOST		BIT(2)
- #define SSUSB_U2_PORT_PDN		BIT(1)
- #define SSUSB_U2_PORT_DIS		BIT(0)
-+#define SSUSB_U2_PORT_HOST_SEL	(SSUSB_U2_PORT_VBUSVALID | SSUSB_U2_PORT_HOST)
- 
- /* U3D_SSUSB_DEV_RST_CTRL */
- #define SSUSB_DEV_SW_RST		BIT(0)
--- 
-1.7.9.5
+On 07/21/2017 05:57 AM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> Add SCPSYS power domain driver for MT7622 SoC having four power domains
+> which are respectively ETHSYS for Ethernet including embedded switch,
+> WBSYS for WIFI and Bluetooth, HIF0SYS for PCI-E and SATA, and HIF1SYS for
+> USB. Those functions could be selectively powered gated when the
+> corresponding function is no longer to use in order to reach more minimal
+> power dissipation.
+> 
+> Signed-off-by: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>   drivers/soc/mediatek/mtk-scpsys.c     | 76 +++++++++++++++++++++++++++++++++++
+>   include/linux/soc/mediatek/infracfg.h |  8 +++-
+>   2 files changed, 83 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> index beb7916..8a0ca02 100644
+> --- a/drivers/soc/mediatek/mtk-scpsys.c
+> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> @@ -21,6 +21,7 @@
+>   #include <linux/soc/mediatek/infracfg.h>
+>   
+>   #include <dt-bindings/power/mt2701-power.h>
+> +#include <dt-bindings/power/mt7622-power.h>
+>   #include <dt-bindings/power/mt8173-power.h>
+>   
+>   #define SPM_VDE_PWR_CON			0x0210
+> @@ -38,6 +39,11 @@
+>   #define SPM_MFG_2D_PWR_CON		0x02c0
+>   #define SPM_MFG_ASYNC_PWR_CON		0x02c4
+>   #define SPM_USB_PWR_CON			0x02cc
+> +#define SPM_ETHSYS_PWR_CON		0x02e0	/* MT7622 */
+> +#define SPM_HIF0_PWR_CON		0x02e4	/* MT7622 */
+> +#define SPM_HIF1_PWR_CON		0x02e8	/* MT7622 */
+> +#define SPM_WB_PWR_CON			0x02ec	/* MT7622 */
+> +
+>   
+>   #define SPM_PWR_STATUS			0x060c
+>   #define SPM_PWR_STATUS_2ND		0x0610
+> @@ -63,6 +69,10 @@
+>   #define PWR_STATUS_MFG_ASYNC		BIT(23)
+>   #define PWR_STATUS_AUDIO		BIT(24)
+>   #define PWR_STATUS_USB			BIT(25)
+> +#define PWR_STATUS_ETHSYS		BIT(24)	/* MT7622 */
+> +#define PWR_STATUS_HIF0			BIT(25)	/* MT7622 */
+> +#define PWR_STATUS_HIF1			BIT(26)	/* MT7622 */
+> +#define PWR_STATUS_WB			BIT(27)	/* MT7622 */
+>   
+>   enum clk_id {
+>   	CLK_NONE,
+> @@ -71,6 +81,7 @@ enum clk_id {
+>   	CLK_VENC,
+>   	CLK_VENC_LT,
+>   	CLK_ETHIF,
+> +	CLK_HIFSEL,
+>   	CLK_MAX,
+>   };
+>   
+> @@ -81,6 +92,7 @@ static const char * const clk_names[] = {
+>   	"venc",
+>   	"venc_lt",
+>   	"ethif",
+> +	"hif_sel",
+>   	NULL,
+>   };
+>   
+> @@ -567,6 +579,67 @@ static int __init scpsys_probe_mt2701(struct platform_device *pdev)
+>   }
+>   
+>   /*
+> + * MT7622 power domain support
+> + */
+> +static const struct scp_domain_data scp_domain_data_mt7622[] = {
+> +	[MT7622_POWER_DOMAIN_ETHSYS] = {
+> +		.name = "ethsys",
+> +		.sta_mask = PWR_STATUS_ETHSYS,
+> +		.ctl_offs = SPM_ETHSYS_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(11, 8),
+> +		.sram_pdn_ack_bits = GENMASK(15, 12),
+> +		.clk_id = {CLK_NONE},
+> +		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_ETHSYS,
+> +		.active_wakeup = true,
+> +	},
+> +	[MT7622_POWER_DOMAIN_HIF0] = {
+> +		.name = "hif0",
+> +		.sta_mask = PWR_STATUS_HIF0,
+> +		.ctl_offs = SPM_HIF0_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(11, 8),
+> +		.sram_pdn_ack_bits = GENMASK(15, 12),
+> +		.clk_id = {CLK_HIFSEL},
+> +		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_HIF0,
+> +		.active_wakeup = true,
+> +	},
+> +	[MT7622_POWER_DOMAIN_HIF1] = {
+> +		.name = "hif1",
+> +		.sta_mask = PWR_STATUS_HIF1,
+> +		.ctl_offs = SPM_HIF1_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(11, 8),
+> +		.sram_pdn_ack_bits = GENMASK(15, 12),
+> +		.clk_id = {CLK_HIFSEL},
+> +		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_HIF1,
+> +		.active_wakeup = true,
+> +	},
+> +	[MT7622_POWER_DOMAIN_WB] = {
+> +		.name = "wb",
+> +		.sta_mask = PWR_STATUS_WB,
+> +		.ctl_offs = SPM_WB_PWR_CON,
+> +		.sram_pdn_bits = 0,
+> +		.sram_pdn_ack_bits = 0,
+> +		.clk_id = {CLK_NONE},
+> +		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_WB,
+> +		.active_wakeup = true,
+> +	},
+> +};
+> +
+> +#define NUM_DOMAINS_MT7622	ARRAY_SIZE(scp_domain_data_mt7622)
+> +
+> +static int __init scpsys_probe_mt7622(struct platform_device *pdev)
+> +{
+> +	struct scp *scp;
+> +
+> +	scp = init_scp(pdev, scp_domain_data_mt7622, NUM_DOMAINS_MT7622);
 
+This does not look correct, init_scp awaits 4 arguments.
+
+Apart, please rebase your patches against v4.13-rc1 as this does not apply cleanly.
+
+Thanks,
+Matthias
+
+> +	if (IS_ERR(scp))
+> +		return PTR_ERR(scp);
+> +
+> +	mtk_register_power_domains(pdev, scp, NUM_DOMAINS_MT7622);
+> +
+> +	return 0;
+> +}
+> +
+> +/*
+>    * MT8173 power domain support
+>    */
+>   
+> @@ -698,6 +771,9 @@ static const struct of_device_id of_scpsys_match_tbl[] = {
+>   		.compatible = "mediatek,mt2701-scpsys",
+>   		.data = scpsys_probe_mt2701,
+>   	}, {
+> +		.compatible = "mediatek,mt7622-scpsys",
+> +		.data = scpsys_probe_mt7622,
+> +	}, {
+>   		.compatible = "mediatek,mt8173-scpsys",
+>   		.data = scpsys_probe_mt8173,
+>   	}, {
+> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
+> index a5714e9..c1e5062 100644
+> --- a/include/linux/soc/mediatek/infracfg.h
+> +++ b/include/linux/soc/mediatek/infracfg.h
+> @@ -20,7 +20,13 @@
+>   #define MT8173_TOP_AXI_PROT_EN_MFG_M1		BIT(22)
+>   #define MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT	BIT(23)
+>   
+> +#define MT7622_TOP_AXI_PROT_EN_ETHSYS		(BIT(3) | BIT(17))
+> +#define MT7622_TOP_AXI_PROT_EN_HIF0		(BIT(24) | BIT(25))
+> +#define MT7622_TOP_AXI_PROT_EN_HIF1		(BIT(26) | BIT(27) | \
+> +						 BIT(28))
+> +#define MT7622_TOP_AXI_PROT_EN_WB		(BIT(2) | BIT(6) | \
+> +						 BIT(7) | BIT(8))
+> +
+>   int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask);
+>   int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask);
+> -
+>   #endif /* __SOC_MEDIATEK_INFRACFG_H */
+> 
 --
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
