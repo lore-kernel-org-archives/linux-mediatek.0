@@ -1,198 +1,41 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 3/3] soc: mediatek: add SCPSYS power domain driver for
- MediaTek MT7622 SoC
-Date: Tue, 25 Jul 2017 10:56:30 +0200
-Message-ID: <a44d92b0-41e6-8bb3-fd3f-9add05040b91@gmail.com>
-References: <cover.1500608650.git.sean.wang@mediatek.com>
- <284911261d7e423e5bb47625858b3284be713a1b.1500608650.git.sean.wang@mediatek.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH 7/8] drm: Nuke drm_atomic_helper_connector_dpms
+Date: Tue, 25 Jul 2017 10:59:17 +0200
+Message-ID: <1500973157.4101.13.camel@pengutronix.de>
+References: <20170725080122.20548-1-daniel.vetter@ffwll.ch>
+ <20170725080122.20548-8-daniel.vetter@ffwll.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <284911261d7e423e5bb47625858b3284be713a1b.1500608650.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
-Cc: ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170725080122.20548-8-daniel.vetter@ffwll.ch>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel.vetter@ffwll.ch>
+Cc: Martyn Welch <martyn.welch@collabora.co.uk>, Neil Armstrong <narmstrong@baylibre.com>, nouveau@lists.freedesktop.org, DRI Development <dri-devel@lists.freedesktop.org>, virtualization@lists.linux-foundation.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, linux-mediatek@lists.infradead.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Romain Perier <romain.perier@collabora.com>, Daniel Vetter <daniel.vetter@intel.com>, Jyri Sarha <jsarha@ti.com>, Marek Vasut <marex@denx.de>, linux-renesas-soc@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, Alexey Brodkin <abrodkin@synopsys.com>, Russell King <linux@armlinux.org.uk>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, Xinliang Liu <z.liuxinliang@hisilicon.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, Peter Senna Tschudin <peter>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 07/21/2017 05:57 AM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> Add SCPSYS power domain driver for MT7622 SoC having four power domains
-> which are respectively ETHSYS for Ethernet including embedded switch,
-> WBSYS for WIFI and Bluetooth, HIF0SYS for PCI-E and SATA, and HIF1SYS for
-> USB. Those functions could be selectively powered gated when the
-> corresponding function is no longer to use in order to reach more minimal
-> power dissipation.
-> 
-> Signed-off-by: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->   drivers/soc/mediatek/mtk-scpsys.c     | 76 +++++++++++++++++++++++++++++++++++
->   include/linux/soc/mediatek/infracfg.h |  8 +++-
->   2 files changed, 83 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index beb7916..8a0ca02 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -21,6 +21,7 @@
->   #include <linux/soc/mediatek/infracfg.h>
->   
->   #include <dt-bindings/power/mt2701-power.h>
-> +#include <dt-bindings/power/mt7622-power.h>
->   #include <dt-bindings/power/mt8173-power.h>
->   
->   #define SPM_VDE_PWR_CON			0x0210
-> @@ -38,6 +39,11 @@
->   #define SPM_MFG_2D_PWR_CON		0x02c0
->   #define SPM_MFG_ASYNC_PWR_CON		0x02c4
->   #define SPM_USB_PWR_CON			0x02cc
-> +#define SPM_ETHSYS_PWR_CON		0x02e0	/* MT7622 */
-> +#define SPM_HIF0_PWR_CON		0x02e4	/* MT7622 */
-> +#define SPM_HIF1_PWR_CON		0x02e8	/* MT7622 */
-> +#define SPM_WB_PWR_CON			0x02ec	/* MT7622 */
-> +
->   
->   #define SPM_PWR_STATUS			0x060c
->   #define SPM_PWR_STATUS_2ND		0x0610
-> @@ -63,6 +69,10 @@
->   #define PWR_STATUS_MFG_ASYNC		BIT(23)
->   #define PWR_STATUS_AUDIO		BIT(24)
->   #define PWR_STATUS_USB			BIT(25)
-> +#define PWR_STATUS_ETHSYS		BIT(24)	/* MT7622 */
-> +#define PWR_STATUS_HIF0			BIT(25)	/* MT7622 */
-> +#define PWR_STATUS_HIF1			BIT(26)	/* MT7622 */
-> +#define PWR_STATUS_WB			BIT(27)	/* MT7622 */
->   
->   enum clk_id {
->   	CLK_NONE,
-> @@ -71,6 +81,7 @@ enum clk_id {
->   	CLK_VENC,
->   	CLK_VENC_LT,
->   	CLK_ETHIF,
-> +	CLK_HIFSEL,
->   	CLK_MAX,
->   };
->   
-> @@ -81,6 +92,7 @@ static const char * const clk_names[] = {
->   	"venc",
->   	"venc_lt",
->   	"ethif",
-> +	"hif_sel",
->   	NULL,
->   };
->   
-> @@ -567,6 +579,67 @@ static int __init scpsys_probe_mt2701(struct platform_device *pdev)
->   }
->   
->   /*
-> + * MT7622 power domain support
-> + */
-> +static const struct scp_domain_data scp_domain_data_mt7622[] = {
-> +	[MT7622_POWER_DOMAIN_ETHSYS] = {
-> +		.name = "ethsys",
-> +		.sta_mask = PWR_STATUS_ETHSYS,
-> +		.ctl_offs = SPM_ETHSYS_PWR_CON,
-> +		.sram_pdn_bits = GENMASK(11, 8),
-> +		.sram_pdn_ack_bits = GENMASK(15, 12),
-> +		.clk_id = {CLK_NONE},
-> +		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_ETHSYS,
-> +		.active_wakeup = true,
-> +	},
-> +	[MT7622_POWER_DOMAIN_HIF0] = {
-> +		.name = "hif0",
-> +		.sta_mask = PWR_STATUS_HIF0,
-> +		.ctl_offs = SPM_HIF0_PWR_CON,
-> +		.sram_pdn_bits = GENMASK(11, 8),
-> +		.sram_pdn_ack_bits = GENMASK(15, 12),
-> +		.clk_id = {CLK_HIFSEL},
-> +		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_HIF0,
-> +		.active_wakeup = true,
-> +	},
-> +	[MT7622_POWER_DOMAIN_HIF1] = {
-> +		.name = "hif1",
-> +		.sta_mask = PWR_STATUS_HIF1,
-> +		.ctl_offs = SPM_HIF1_PWR_CON,
-> +		.sram_pdn_bits = GENMASK(11, 8),
-> +		.sram_pdn_ack_bits = GENMASK(15, 12),
-> +		.clk_id = {CLK_HIFSEL},
-> +		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_HIF1,
-> +		.active_wakeup = true,
-> +	},
-> +	[MT7622_POWER_DOMAIN_WB] = {
-> +		.name = "wb",
-> +		.sta_mask = PWR_STATUS_WB,
-> +		.ctl_offs = SPM_WB_PWR_CON,
-> +		.sram_pdn_bits = 0,
-> +		.sram_pdn_ack_bits = 0,
-> +		.clk_id = {CLK_NONE},
-> +		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_WB,
-> +		.active_wakeup = true,
-> +	},
-> +};
-> +
-> +#define NUM_DOMAINS_MT7622	ARRAY_SIZE(scp_domain_data_mt7622)
-> +
-> +static int __init scpsys_probe_mt7622(struct platform_device *pdev)
-> +{
-> +	struct scp *scp;
-> +
-> +	scp = init_scp(pdev, scp_domain_data_mt7622, NUM_DOMAINS_MT7622);
-
-This does not look correct, init_scp awaits 4 arguments.
-
-Apart, please rebase your patches against v4.13-rc1 as this does not apply cleanly.
-
-Thanks,
-Matthias
-
-> +	if (IS_ERR(scp))
-> +		return PTR_ERR(scp);
-> +
-> +	mtk_register_power_domains(pdev, scp, NUM_DOMAINS_MT7622);
-> +
-> +	return 0;
-> +}
-> +
-> +/*
->    * MT8173 power domain support
->    */
->   
-> @@ -698,6 +771,9 @@ static const struct of_device_id of_scpsys_match_tbl[] = {
->   		.compatible = "mediatek,mt2701-scpsys",
->   		.data = scpsys_probe_mt2701,
->   	}, {
-> +		.compatible = "mediatek,mt7622-scpsys",
-> +		.data = scpsys_probe_mt7622,
-> +	}, {
->   		.compatible = "mediatek,mt8173-scpsys",
->   		.data = scpsys_probe_mt8173,
->   	}, {
-> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-> index a5714e9..c1e5062 100644
-> --- a/include/linux/soc/mediatek/infracfg.h
-> +++ b/include/linux/soc/mediatek/infracfg.h
-> @@ -20,7 +20,13 @@
->   #define MT8173_TOP_AXI_PROT_EN_MFG_M1		BIT(22)
->   #define MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT	BIT(23)
->   
-> +#define MT7622_TOP_AXI_PROT_EN_ETHSYS		(BIT(3) | BIT(17))
-> +#define MT7622_TOP_AXI_PROT_EN_HIF0		(BIT(24) | BIT(25))
-> +#define MT7622_TOP_AXI_PROT_EN_HIF1		(BIT(26) | BIT(27) | \
-> +						 BIT(28))
-> +#define MT7622_TOP_AXI_PROT_EN_WB		(BIT(2) | BIT(6) | \
-> +						 BIT(7) | BIT(8))
-> +
->   int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask);
->   int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask);
-> -
->   #endif /* __SOC_MEDIATEK_INFRACFG_H */
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gVHVlLCAyMDE3LTA3LTI1IGF0IDEwOjAxICswMjAwLCBEYW5pZWwgVmV0dGVyIHdyb3RlOgo+
+IEl0J3MgZGVhZCBjb2RlLCB0aGUgY29yZSBoYW5kbGVzIGFsbCB0aGlzIGRpcmVjdGx5IG5vdy4K
+PiAKPiBUaGUgb25seSBzcGVjaWFsIGNhc2UgaXMgbm91dmVhdSBhbmQgdGRhOTg4eCB3aGljaCB1
+c2VkIG9uZSBmdW5jdGlvbgo+IGZvciBib3RoIGxlZ2FjeSBtb2Rlc2V0IGNvZGUgYW5kIC1udjUw
+IGF0b21pYyB3b3JsZCBpbnN0ZWFkIG9mIDIKPiB2dGFibGVzLiBCdXQgYW1vdW50cyB0byBleGFj
+dGx5IHRoZSBzYW1lLgo+IAo+IHYyOiBSZWJhc2Ugb3ZlciB0aGUgcGFuZWwvYnJpZGVnIHJlZmFj
+dG9yaW5ncyBpbiBzdG0vbHRkYy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgVmV0dGVyIDxk
+YW5pZWwudmV0dGVyQGludGVsLmNvbT4KWy4uLl0KPiAgZHJpdmVycy9ncHUvZHJtL2lteC9pbXgt
+bGRiLmMgICAgICAgICAgICAgICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS9pbXgv
+aW14LXR2ZS5jICAgICAgICAgICAgICAgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0v
+aW14L3BhcmFsbGVsLWRpc3BsYXkuYyAgICAgICAgICAgICB8ICAxIC0KPiAgZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kc2kuYyAgICAgICAgICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jICAgICAgICAgICAgICAgIHwgIDEgLQoKQWNrZWQt
+Ynk6IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+CgpyZWdhcmRzClBoaWxp
+cHAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
+ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
