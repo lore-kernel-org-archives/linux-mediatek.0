@@ -1,36 +1,49 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH 2/3] usb: mtu3: clear u1/u2_enable to 0 in mtu3_gadget_reset
-Date: Tue, 25 Jul 2017 16:10:23 +0800
-Message-ID: <1500970224-23791-2-git-send-email-chunfeng.yun@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 3/3] usb: mtu3: fix ip sleep auto-exit issue when enable DRD mode
+Date: Tue, 25 Jul 2017 16:10:24 +0800
+Message-ID: <1500970224-23791-3-git-send-email-chunfeng.yun@mediatek.com>
 References: <1500970224-23791-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1500970224-23791-1-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1500970224-23791-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-when the device is reset by host, the status of u1_enable and
-u2_enable should also be restored to default value.
+Ip sleep will auto exit if vbus comparison circuit of u2 phy is
+disabled when system tries to enter suspend mode, so get vbus-valid
+status from mac but not from u2 phy when enable DRD mode to fix
+the issue.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/usb/mtu3/mtu3_gadget.c |    2 ++
- 1 file changed, 2 insertions(+)
+ drivers/usb/mtu3/mtu3_hw_regs.h |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
-index a4ad67c..434fca5 100644
---- a/drivers/usb/mtu3/mtu3_gadget.c
-+++ b/drivers/usb/mtu3/mtu3_gadget.c
-@@ -728,5 +728,7 @@ void mtu3_gadget_reset(struct mtu3 *mtu)
- 	mtu->address = 0;
- 	mtu->ep0_state = MU3D_EP0_STATE_SETUP;
- 	mtu->may_wakeup = 0;
-+	mtu->u1_enable = 0;
-+	mtu->u2_enable = 0;
- 	mtu->delayed_status = false;
- }
+diff --git a/drivers/usb/mtu3/mtu3_hw_regs.h b/drivers/usb/mtu3/mtu3_hw_regs.h
+index 2123672..06b2966 100644
+--- a/drivers/usb/mtu3/mtu3_hw_regs.h
++++ b/drivers/usb/mtu3/mtu3_hw_regs.h
+@@ -462,10 +462,12 @@
+ #define SSUSB_U3_PORT_DIS		BIT(0)
+ 
+ /* U3D_SSUSB_U2_CTRL_0P */
++#define SSUSB_U2_PORT_VBUSVALID	BIT(9)
+ #define SSUSB_U2_PORT_OTG_SEL		BIT(7)
+-#define SSUSB_U2_PORT_HOST_SEL		BIT(2)
++#define SSUSB_U2_PORT_HOST		BIT(2)
+ #define SSUSB_U2_PORT_PDN		BIT(1)
+ #define SSUSB_U2_PORT_DIS		BIT(0)
++#define SSUSB_U2_PORT_HOST_SEL	(SSUSB_U2_PORT_VBUSVALID | SSUSB_U2_PORT_HOST)
+ 
+ /* U3D_SSUSB_DEV_RST_CTRL */
+ #define SSUSB_DEV_SW_RST		BIT(0)
 -- 
 1.7.9.5
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
