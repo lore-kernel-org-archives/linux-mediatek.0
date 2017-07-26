@@ -1,7 +1,7 @@
 From: <honghui.zhang@mediatek.com>
 Subject: [PATCH] memory: mtk-smi: Use of_device_get_match_data helper
-Date: Wed, 26 Jul 2017 17:52:05 +0800
-Message-ID: <1501062725-8571-1-git-send-email-honghui.zhang@mediatek.com>
+Date: Wed, 26 Jul 2017 17:59:10 +0800
+Message-ID: <1501063150-8778-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
@@ -16,11 +16,11 @@ Replace custom code with generic helper to retrieve driver data.
 
 Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
 ---
- drivers/memory/mtk-smi.c | 14 ++------------
- 1 file changed, 2 insertions(+), 12 deletions(-)
+ drivers/memory/mtk-smi.c | 18 ++++--------------
+ 1 file changed, 4 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index 4afbc41..69249f5 100644
+index 4afbc41..fe8b81a 100644
 --- a/drivers/memory/mtk-smi.c
 +++ b/drivers/memory/mtk-smi.c
 @@ -240,20 +240,15 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
@@ -45,15 +45,17 @@ index 4afbc41..69249f5 100644
  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
  	larb->base = devm_ioremap_resource(dev, res);
  	if (IS_ERR(larb->base))
-@@ -319,7 +314,6 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+@@ -319,8 +314,7 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
  	struct device *dev = &pdev->dev;
  	struct mtk_smi *common;
  	struct resource *res;
 -	const struct of_device_id *of_id;
- 	enum mtk_smi_gen smi_gen;
+-	enum mtk_smi_gen smi_gen;
++	const enum mtk_smi_gen *smi_gen;
  
  	if (!dev->pm_domain)
-@@ -338,17 +332,13 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+ 		return -EPROBE_DEFER;
+@@ -338,18 +332,14 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
  	if (IS_ERR(common->clk_smi))
  		return PTR_ERR(common->clk_smi);
  
@@ -68,9 +70,11 @@ index 4afbc41..69249f5 100644
  	 * base.
  	 */
 -	smi_gen = (enum mtk_smi_gen)of_id->data;
+-	if (smi_gen == MTK_SMI_GEN1) {
 +	smi_gen = of_device_get_match_data(dev);
- 	if (smi_gen == MTK_SMI_GEN1) {
++	if (*smi_gen == MTK_SMI_GEN1) {
  		res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
  		common->smi_ao_base = devm_ioremap_resource(dev, res);
+ 		if (IS_ERR(common->smi_ao_base))
 -- 
 2.6.4
