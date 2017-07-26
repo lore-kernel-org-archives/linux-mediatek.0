@@ -1,78 +1,76 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH net] net: dsa: Initialize ds->cpu_port_mask earlier
-Date: Wed, 26 Jul 2017 10:13:28 +0800
-Message-ID: <1501035208.27236.2.camel@mtkswgap22>
-References: <20170724174923.29156-1-f.fainelli@gmail.com>
+From: <honghui.zhang@mediatek.com>
+Subject: [PATCH] memory: mtk-smi: Use of_device_get_match_data helper
+Date: Wed, 26 Jul 2017 17:52:05 +0800
+Message-ID: <1501062725-8571-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20170724174923.29156-1-f.fainelli@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: Florian Fainelli <f.fainelli@gmail.com>
-Cc: netdev@vger.kernel.org, andrew@lunn.ch, vivien.didelot@savoirfairelinux.com, davem@davemloft.net, linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: joro@8bytes.org, matthias.bgg@gmail.com, robh@kernel.org, robin.murphy@arm.com
+Cc: srv_heupstream@mediatek.com, catalin.marinas@arm.com, linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, youlin.pei@mediatek.com, erin.lo@mediatek.com, Honghui Zhang <honghui.zhang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Florian
+From: Honghui Zhang <honghui.zhang@mediatek.com>
 
-the solution is better and also can fix the problem I originally
-reported. Thank for your immediate help :-)
+Replace custom code with generic helper to retrieve driver data.
 
-Sean
+Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+---
+ drivers/memory/mtk-smi.c | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
 
-
-On Mon, 2017-07-24 at 10:49 -0700, Florian Fainelli wrote:
-> The mt7530 driver has its dsa_switch_ops::get_tag_protocol function
-> check ds->cpu_port_mask to issue a warning in case the configured CPU
-> port is not capable of supporting tags.
-> 
-> After commit 14be36c2c96c ("net: dsa: Initialize all CPU and enabled
-> ports masks in dsa_ds_parse()") we slightly re-arranged the
-> initialization such that this was no longer working. Just make sure that
-> ds->cpu_port_mask is set prior to the first call to get_tag_protocol,
-> thus restoring the expected contract. In case of error, the CPU port bit
-> is cleared.
-> 
-> Fixes: 14be36c2c96c ("net: dsa: Initialize all CPU and enabled ports masks in dsa_ds_parse()")
-> Reported-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Florian Fainelli <f.fainelli@gmail.com>
-> ---
-> Sean, can you check this does fix the problem you originally reported
-> correctly for you? Thanks!
-> 
->  net/dsa/dsa2.c | 13 +++++++------
->  1 file changed, 7 insertions(+), 6 deletions(-)
-> 
-> diff --git a/net/dsa/dsa2.c b/net/dsa/dsa2.c
-> index 56e46090526b..c442051d5a55 100644
-> --- a/net/dsa/dsa2.c
-> +++ b/net/dsa/dsa2.c
-> @@ -509,21 +509,22 @@ static int dsa_cpu_parse(struct dsa_port *port, u32 index,
->  		dst->cpu_dp->netdev = ethernet_dev;
->  	}
->  
-> +	/* Initialize cpu_port_mask now for drv->setup()
-> +	 * to have access to a correct value, just like what
-> +	 * net/dsa/dsa.c::dsa_switch_setup_one does.
-> +	 */
-> +	ds->cpu_port_mask |= BIT(index);
-> +
->  	tag_protocol = ds->ops->get_tag_protocol(ds);
->  	dst->tag_ops = dsa_resolve_tag_protocol(tag_protocol);
->  	if (IS_ERR(dst->tag_ops)) {
->  		dev_warn(ds->dev, "No tagger for this switch\n");
-> +		ds->cpu_port_mask &= ~BIT(index);
->  		return PTR_ERR(dst->tag_ops);
->  	}
->  
->  	dst->rcv = dst->tag_ops->rcv;
->  
-> -	/* Initialize cpu_port_mask now for drv->setup()
-> -	 * to have access to a correct value, just like what
-> -	 * net/dsa/dsa.c::dsa_switch_setup_one does.
-> -	 */
-> -	ds->cpu_port_mask |= BIT(index);
-> -
->  	return 0;
->  }
->  
+diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+index 4afbc41..69249f5 100644
+--- a/drivers/memory/mtk-smi.c
++++ b/drivers/memory/mtk-smi.c
+@@ -240,20 +240,15 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *smi_node;
+ 	struct platform_device *smi_pdev;
+-	const struct of_device_id *of_id;
+ 
+ 	if (!dev->pm_domain)
+ 		return -EPROBE_DEFER;
+ 
+-	of_id = of_match_node(mtk_smi_larb_of_ids, pdev->dev.of_node);
+-	if (!of_id)
+-		return -EINVAL;
+-
+ 	larb = devm_kzalloc(dev, sizeof(*larb), GFP_KERNEL);
+ 	if (!larb)
+ 		return -ENOMEM;
+ 
+-	larb->larb_gen = of_id->data;
++	larb->larb_gen = of_device_get_match_data(dev);
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	larb->base = devm_ioremap_resource(dev, res);
+ 	if (IS_ERR(larb->base))
+@@ -319,7 +314,6 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct mtk_smi *common;
+ 	struct resource *res;
+-	const struct of_device_id *of_id;
+ 	enum mtk_smi_gen smi_gen;
+ 
+ 	if (!dev->pm_domain)
+@@ -338,17 +332,13 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+ 	if (IS_ERR(common->clk_smi))
+ 		return PTR_ERR(common->clk_smi);
+ 
+-	of_id = of_match_node(mtk_smi_common_of_ids, pdev->dev.of_node);
+-	if (!of_id)
+-		return -EINVAL;
+-
+ 	/*
+ 	 * for mtk smi gen 1, we need to get the ao(always on) base to config
+ 	 * m4u port, and we need to enable the aync clock for transform the smi
+ 	 * clock into emi clock domain, but for mtk smi gen2, there's no smi ao
+ 	 * base.
+ 	 */
+-	smi_gen = (enum mtk_smi_gen)of_id->data;
++	smi_gen = of_device_get_match_data(dev);
+ 	if (smi_gen == MTK_SMI_GEN1) {
+ 		res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 		common->smi_ao_base = devm_ioremap_resource(dev, res);
+-- 
+2.6.4
