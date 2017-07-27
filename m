@@ -1,92 +1,49 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v4 9/9] arm: dts: mt7623: add dts file for Bananapi R2
- (BPI-R2) board
-Date: Thu, 27 Jul 2017 16:39:39 +0200
-Message-ID: <805ad5c4-db47-ef10-565d-b63e33a84bdf@gmail.com>
-References: <cover.1495683769.git.sean.wang@mediatek.com>
- <5cc5489b38fc2723c30c8cfe0d4353f967d100f3.1495683769.git.sean.wang@mediatek.com>
+From: Simon Horman <horms@verge.net.au>
+Subject: Re: [PATCH] soc: Convert to using %pOF instead of full_name
+Date: Thu, 27 Jul 2017 17:27:31 +0200
+Message-ID: <20170727152730.GL16143@verge.net.au>
+References: <20170718214339.7774-49-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <5cc5489b38fc2723c30c8cfe0d4353f967d100f3.1495683769.git.sean.wang@mediatek.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: sean.wang@mediatek.com, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, john@phrozen.org, linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170718214339.7774-49-robh@kernel.org>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: arm@kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Scott Wood <oss@buserror.net>, Qiang Zhao <qiang.zhao@nxp.com>, Matthias Brugger <matthias.bgg@gmail.com>, Magnus Damm <magnus.damm@gmail.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 05/25/2017 06:02 AM, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On Tue, Jul 18, 2017 at 04:43:29PM -0500, Rob Herring wrote:
+> Now that we have a custom printf format specifier, convert users of
+> full_name to use %pOF instead. This is preparation to remove storing
+> of the full path string for each node.
 > 
-> Add support for the Bananapi R2 (BPI-R2) development board from
-> BIPAI KEJI. Detailed hardware information for BPI-R2 which could be
-> found on http://www.banana-pi.org/r2.html
-> 
-> The patch currently only adds Mediatek GMAC, MT7530 Switch, the crypto
-> engine, USB, IR, I2S, I2C, UART, SPI, PWM, GPIO keys, GPIO LEDs and
-> PMIC LEDs. As to the other missing hardware and peripherals, they would
-> be added and integrated continuously.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Acked-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> Cc: Scott Wood <oss@buserror.net>
+> Cc: Qiang Zhao <qiang.zhao@nxp.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Simon Horman <horms@verge.net.au>
+> Cc: Magnus Damm <magnus.damm@gmail.com>
+> Cc: Kukjin Kim <kgene@kernel.org>
+> Cc: Krzysztof Kozlowski <krzk@kernel.org>
+> Cc: Javier Martinez Canillas <javier@osg.samsung.com>
+> Cc: linuxppc-dev@lists.ozlabs.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-renesas-soc@vger.kernel.org
+> Cc: linux-samsung-soc@vger.kernel.org
 > ---
->   Documentation/devicetree/bindings/arm/mediatek.txt |   2 +
->   arch/arm/boot/dts/Makefile                         |   1 +
->   arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts      | 440 +++++++++++++++++++++
->   3 files changed, 443 insertions(+)
->   create mode 100644 arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> 
-[...]
-> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> new file mode 100644
-> index 0000000..72c7984
-> --- /dev/null
-> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-[...]
-> +
-> +&eth {
-> +	status = "okay";
-> +	gmac0: mac@0 {
-> +		compatible = "mediatek,eth-mac";
-> +		reg = <0>;
-> +		phy-mode = "trgmii";
-> +		fixed-link {
-> +			speed = <1000>;
-> +			full-duplex;
-> +			pause;
-> +		};
-> +	};
-> +
-> +	mdio: mdio-bus {
-> +		switch@0 {
-> +			compatible = "mediatek,mt7530";
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +			reg = <0>;
+>  drivers/soc/fsl/qbman/bman_ccsr.c    | 10 +++++-----
+>  drivers/soc/fsl/qbman/bman_portal.c  |  8 +++-----
+>  drivers/soc/fsl/qbman/qman_ccsr.c    | 12 ++++++------
+>  drivers/soc/fsl/qbman/qman_portal.c  | 11 ++++-------
+>  drivers/soc/fsl/qe/gpio.c            |  4 ++--
+>  drivers/soc/mediatek/mtk-pmic-wrap.c |  4 ++--
+>  drivers/soc/renesas/rcar-rst.c       |  4 ++--
+>  drivers/soc/renesas/rcar-sysc.c      |  6 +++---
+>  drivers/soc/samsung/pm_domains.c     |  8 ++++----
+>  9 files changed, 31 insertions(+), 36 deletions(-)
 
-What is this reg needed for? I can't find it neither in the code nor in the 
-bindings (mt7530 and general dsa bindings). Actually it throws a warning when 
-compiling:
-arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dtb: Warning (reg_format): "reg" 
-property in /ethernet@1b100000/mdio-bus/switch@0 has invalid length (4 bytes) 
-(#address-cells == 2, #size-cells == 1)
-arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dtb: Warning 
-(avoid_default_addr_size): Relying on default #address-cells value for 
-/ethernet@1b100000/mdio-bus/switch@0
-arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dtb: Warning 
-(avoid_default_addr_size): Relying on default #size-cells value for 
-/ethernet@1b100000/mdio-bus/switch@0
+Renesas portions:
 
-Regards,
-Matthias
+Acked-by: Simon Horman <horms+renesas@verge.net.au>
