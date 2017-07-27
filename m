@@ -1,255 +1,31 @@
-From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 5/5] dt-bindings: PCI: add support for new generation
- controller
-Date: Thu, 27 Jul 2017 11:38:09 +0800
-Message-ID: <1501126689.20860.14.camel@mtksdaap41>
-References: <cover.1501122135.git.honghui.zhang@mediatek.com>
-         <06c9b3439431221794fc9f723fef52ff59be7ec6.1501122135.git.honghui.zhang@mediatek.com>
+From: <louis.yu@mediatek.com>
+Subject: [PATCH v1 0/4] Add Mediatek thermal driver for mt2712
+Date: Thu, 27 Jul 2017 13:46:53 +0800
+Message-ID: <1501134417-3505-1-git-send-email-louis.yu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <06c9b3439431221794fc9f723fef52ff59be7ec6.1501122135.git.honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
-Cc: robh-+zGGX9k9yNkdnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, dawei.chien@mediatek.com, fan.chen@mediatek.com, eddie.huang@mediatek.com, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-07-27 at 10:58 +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> Add support for MediaTek new generation controller and update related
-> properities.
-> 
-> Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  .../devicetree/bindings/pci/mediatek-pcie.txt      | 168 ++++++++++++++++++++-
->  1 file changed, 161 insertions(+), 7 deletions(-)
-> 
+This series support for mt2712 chip to mtk_thermal.c, and integrate
+mt8173, mt2701, and mt2712 on the same mediatek thermal driver.
+mt2712 has only one bank and four sensors, and extends calibration
+data for mt2712.
+Unpaired clock error handle flow is also fixed in this series.
 
-Sorry for the disturb, I send the wrong patch from my local version for
-this patch: 
-[PATCH v2 5/5] dt-bindings: PCI: add support for new generation
- controller
+Louis Yu (4):
+  dt-bindings: thermal: Add binding document for Mediatek thermal
+    controller
+  thermal: mediatek: add Mediatek thermal driver for mt2712
+  thermal: mediatek: extend calibration data for mt2712 chip
+  thermal: mediatek: minor mtk_thermal.c cleanups
 
-And the new right version have been re-send.
-
-thanks.
-
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-> index a968f25..179329b 100644
-> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-> @@ -3,18 +3,31 @@ MediaTek Gen2 PCIe controller
->  Required properties:
->  - compatible: Should contain one of the following string:
->  	"mediatek,mt2701-pcie"
-> +	"mediatek,mt2712-pcie"
-> +	"mediatek,mt7622-pcie"
->  	"mediatek,mt7623-pcie"
->  - device_type: Must be "pci"
-> -- reg: Base addresses and lengths of the PCIe controller.
-> +- reg: Base addresses and lengths of the PICe subsys and root ports.
-> +- reg-names: Names of the above areas to use during resource look-up.
->  - #address-cells: Address representation for root ports (must be 3)
->  - #size-cells: Size representation for root ports (must be 2)
->  - clocks: Must contain an entry for each entry in clock-names.
->    See ../clocks/clock-bindings.txt for details.
-> -- clock-names: Must include the following entries:
-> -  - free_ck :for reference clock of PCIe subsys
-> -  - sys_ck0 :for clock of Port0
-> -  - sys_ck1 :for clock of Port1
-> -  - sys_ck2 :for clock of Port2
-> +- clock-names:
-> +  Mandatory entries:
-> +   - sys_ckN :transaction layer and data link layer clock
-> +  Required entries for MT2701/MT7623:
-> +   - free_ck :for reference clock of PCIe subsys
-> +  Required entries for MT2712/MT7622:
-> +   - ahb_ckN :AHB slave interface operating clock for CSR access and RC
-> +	      initiated MMIO access
-> +  Required entries for MT7622:
-> +   - axi_ckN :application layer MMIO channel operating clock
-> +   - aux_ckN :pe2_mac_bridge and pe2_mac_core operating clock when
-> +	      pcie_mac_ck/pcie_pipe_ck is turned off
-> +   - obff_ckN :OBFF functional block operating clock
-> +   - pipe_ckN :LTSSM and phy/mac layer operating clock
-> +  where N starting from 0 to the maximum number of root ports.
->  - phys: List of PHY specifiers (used by generic PHY framework).
->  - phy-names : Must be "pcie-phy0", "pcie-phy1", "pcie-phyN".. based on the
->    number of PHYs as specified in *phys* property.
-> @@ -33,6 +46,10 @@ Required properties for MT7623/MT2701:
->  - reset-names: Must be "pcie-rst0", "pcie-rst1", "pcie-rstN".. based on the
->    number of root ports.
->  
-> +Required properties for MT2712/MT7622:
-> +-interrupts: A list of interrupt outputs of the controller, must have one
-> +	     entry for each PCIe port
-> +
->  In addition, the device tree node must have sub-nodes describing each
->  PCIe port interface, having the following mandatory properties:
->  
-> @@ -50,7 +67,7 @@ Required properties:
->    property is sufficient.
->  - num-lanes: Number of lanes to use for this port.
->  
-> -Examples:
-> +Examples for MT7623:
->  
->  	hifsys: syscon@1a000000 {
->  		compatible = "mediatek,mt7623-hifsys",
-> @@ -68,6 +85,7 @@ Examples:
->  		      <0 0x1a142000 0 0x1000>, /* Port0 registers */
->  		      <0 0x1a143000 0 0x1000>, /* Port1 registers */
->  		      <0 0x1a144000 0 0x1000>; /* Port2 registers */
-> +		reg-names = "subsys", "port0", "port1", "port2";
->  		#address-cells = <3>;
->  		#size-cells = <2>;
->  		#interrupt-cells = <1>;
-> @@ -127,3 +145,139 @@ Examples:
->  			num-lanes = <1>;
->  		};
->  	};
-> +
-> +Examples for MT2712:
-> +	pcie: pcie@11700000 {
-> +		compatible = "mediatek,generic-pcie-v2";
-> +		device_type = "pci";
-> +		reg = <0 0x11700000 0 0x1000>,
-> +		      <0 0x112ff000 0 0x1000>;
-> +		reg-names = "port0", "port1";
-> +		#address-cells = <3>;
-> +		#size-cells = <2>;
-> +		interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>,
-> +			     <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&pericfg CLK_PERI_PCIE0>,
-> +			 <&pericfg CLK_PERI_PCIE1>,
-> +			 <&topckgen CLK_TOP_PE2_MAC_P0_SEL>,
-> +			 <&topckgen CLK_TOP_PE2_MAC_P1_SEL>;
-> +		clock-names = "sys_ck0", "sys_ck1", "ahb_ck0", "ahb_ck1";
-> +		phys = <&pcie0_phy PHY_TYPE_PCIE>, <&pcie1_phy PHY_TYPE_PCIE>;
-> +		phy-names = "pcie-phy0", "pcie-phy1";
-> +		bus-range = <0x00 0xff>;
-> +		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x10000000>;
-> +
-> +		pcie0: pcie@0,0 {
-> +			device_type = "pci";
-> +			reg = <0x0000 0 0 0 0>;
-> +			#address-cells = <3>;
-> +			#size-cells = <2>;
-> +			#interrupt-cells = <1>;
-> +			ranges;
-> +			num-lanes = <1>;
-> +			interrupt-map-mask = <0 0 0 7>;
-> +			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
-> +					<0 0 0 2 &pcie_intc0 1>,
-> +					<0 0 0 3 &pcie_intc0 2>,
-> +					<0 0 0 4 &pcie_intc0 3>;
-> +			pcie_intc0: interrupt-controller {
-> +				interrupt-controller;
-> +				#address-cells = <0>;
-> +				#interrupt-cells = <1>;
-> +			};
-> +		};
-> +
-> +		pcie1: pcie@1,0 {
-> +			device_type = "pci";
-> +			reg = <0x0800 0 0 0 0>;
-> +			#address-cells = <3>;
-> +			#size-cells = <2>;
-> +			#interrupt-cells = <1>;
-> +			ranges;
-> +			num-lanes = <1>;
-> +			interrupt-map-mask = <0 0 0 7>;
-> +			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
-> +					<0 0 0 2 &pcie_intc1 1>,
-> +					<0 0 0 3 &pcie_intc1 2>,
-> +					<0 0 0 4 &pcie_intc1 3>;
-> +			pcie_intc1: interrupt-controller {
-> +				interrupt-controller;
-> +				#address-cells = <0>;
-> +				#interrupt-cells = <1>;
-> +			};
-> +		};
-> +	};
-> +
-> +Examples for MT7622:
-> +	pcie: pcie@1a140000 {
-> +		compatible = "mediatek,generic-pcie-v2";
-> +		device_type = "pci";
-> +		reg = <0 0x1a140000 0 0x1000>,
-> +		      <0 0x1a143000 0 0x1000>,
-> +		      <0 0x1a145000 0 0x1000>;
-> +		reg-names = "subsys", "port0", "port1";
-> +		#address-cells = <3>;
-> +		#size-cells = <2>;
-> +		interrupts = <GIC_SPI 228 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 229 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&pciesys CLK_PCIE_P0_MAC_EN>,
-> +			 <&pciesys CLK_PCIE_P1_MAC_EN>,
-> +			 <&pciesys CLK_PCIE_P0_AHB_EN>,
-> +			 <&pciesys CLK_PCIE_P1_AHB_EN>,
-> +			 <&pciesys CLK_PCIE_P0_AUX_EN>,
-> +			 <&pciesys CLK_PCIE_P1_AUX_EN>,
-> +			 <&pciesys CLK_PCIE_P0_AXI_EN>,
-> +			 <&pciesys CLK_PCIE_P1_AXI_EN>,
-> +			 <&pciesys CLK_PCIE_P0_OBFF_EN>,
-> +			 <&pciesys CLK_PCIE_P1_OBFF_EN>,
-> +			 <&pciesys CLK_PCIE_P0_PIPE_EN>,
-> +			 <&pciesys CLK_PCIE_P1_PIPE_EN>;
-> +		clock-names = "sys_ck0", "sys_ck1", "ahb_ck0", "ahb_ck1",
-> +			      "aux_ck0", "aux_ck1", "axi_ck0", "axi_ck1",
-> +			      "obff_ck0", "obff_ck1", "pipe_ck0", "pipe_ck1";
-> +		phys = <&pcie0_phy PHY_TYPE_PCIE>, <&pcie1_phy PHY_TYPE_PCIE>;
-> +		phy-names = "pcie-phy0", "pcie-phy1";
-> +		power-domains = <&scpsys MT7622_POWER_DOMAIN_HIF0>;
-> +		bus-range = <0x00 0xff>;
-> +		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x10000000>;
-> +
-> +		pcie0: pcie@0,0 {
-> +			device_type = "pci";
-> +			reg = <0x0000 0 0 0 0>;
-> +			#address-cells = <3>;
-> +			#size-cells = <2>;
-> +			#interrupt-cells = <1>;
-> +			ranges;
-> +			num-lanes = <1>;
-> +			interrupt-map-mask = <0 0 0 7>;
-> +			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
-> +					<0 0 0 2 &pcie_intc0 1>,
-> +					<0 0 0 3 &pcie_intc0 2>,
-> +					<0 0 0 4 &pcie_intc0 3>;
-> +			pcie_intc0: interrupt-controller {
-> +				interrupt-controller;
-> +				#address-cells = <0>;
-> +				#interrupt-cells = <1>;
-> +			};
-> +		};
-> +
-> +		pcie1: pcie@1,0 {
-> +			device_type = "pci";
-> +			reg = <0x0800 0 0 0 0>;
-> +			#address-cells = <3>;
-> +			#size-cells = <2>;
-> +			#interrupt-cells = <1>;
-> +			ranges;
-> +			num-lanes = <1>;
-> +			interrupt-map-mask = <0 0 0 7>;
-> +			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
-> +					<0 0 0 2 &pcie_intc1 1>,
-> +					<0 0 0 3 &pcie_intc1 2>,
-> +					<0 0 0 4 &pcie_intc1 3>;
-> +			pcie_intc1: interrupt-controller {
-> +				interrupt-controller;
-> +				#address-cells = <0>;
-> +				#interrupt-cells = <1>;
-> +			};
-> +		};
-> +	};
-
+ .../bindings/thermal/mediatek-thermal.txt          |  1 +
+ drivers/thermal/mtk_thermal.c                      | 90 +++++++++++++++++++---
+ 2 files changed, 80 insertions(+), 11 deletions(-)
 
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+1.9.1
