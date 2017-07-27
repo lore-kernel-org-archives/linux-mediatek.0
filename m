@@ -1,65 +1,74 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v1 3/4] thermal: mediatek: extend calibration data for
- mt2712 chip
-Date: Thu, 27 Jul 2017 17:46:44 +0200
-Message-ID: <f11a8633-79cb-42f7-eb7c-b4e929829568@gmail.com>
-References: <1501134417-3505-1-git-send-email-louis.yu@mediatek.com>
- <1501134417-3505-4-git-send-email-louis.yu@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 1/3] memory: mtk-smi: add larbid init routine
+Date: Thu, 27 Jul 2017 17:42:29 +0200
+Message-ID: <f7dac4d6-4ef8-e10d-e483-088120392ab2@gmail.com>
+References: <1501120872-19652-1-git-send-email-honghui.zhang@mediatek.com>
+ <1501120872-19652-2-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1501134417-3505-4-git-send-email-louis.yu@mediatek.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1501120872-19652-2-git-send-email-honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Content-Language: en-US
-Sender: linux-pm-owner@vger.kernel.org
-To: louis.yu@mediatek.com, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, dawei.chien@mediatek.com, fan.chen@mediatek.com, eddie.huang@mediatek.com, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 07/27/2017 07:46 AM, louis.yu@mediatek.com wrote:
-> From: Louis Yu <louis.yu@mediatek.com>
+On 07/27/2017 04:01 AM, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> This patch adds support for mt2712 chip thermal calibration data
-> and calculation.
+> In the commit 3c8f4ad85c4b ("memory/mediatek: add support for mt2701"),
+> the larb->larbid was added but not initialized.
+> Mediatek's gen1 smi need this hardware larbid information to get the
+> register offset which controls whether enable iommu for this larb.
+> This patch add the initialize routine for larbid.
 > 
-> Signed-off-by: Louis Yu <louis.yu@mediatek.com>
+> Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
->   drivers/thermal/mtk_thermal.c | 8 +++++++-
->   1 file changed, 7 insertions(+), 1 deletion(-)
+>   drivers/memory/mtk-smi.c | 9 +++++++++
+>   1 file changed, 9 insertions(+)
 > 
-> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-> index e35d28d..f2a7155 100644
-> --- a/drivers/thermal/mtk_thermal.c
-> +++ b/drivers/thermal/mtk_thermal.c
-> @@ -126,6 +126,8 @@
->   #define MT8173_CALIB_BUF2_VTS_TSABB(x)	(((x) >> 14) & 0x1ff)
->   #define MT8173_CALIB_BUF0_DEGC_CALI(x)	(((x) >> 1) & 0x3f)
->   #define MT8173_CALIB_BUF0_O_SLOPE(x)	(((x) >> 26) & 0x3f)
-> +#define MT8173_CALIB_BUF0_O_SLOPE_SIGN(x)	(((x) >> 7) & 0x1)
-> +#define MT8173_CALIB_BUF1_ID(x)	(((x) >> 9) & 0x1)
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index 2b798bb4..fe36b3e 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -240,6 +240,7 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+>   	struct device *dev = &pdev->dev;
+>   	struct device_node *smi_node;
+>   	struct platform_device *smi_pdev;
+> +	int err;
+>   
+>   	if (!dev->pm_domain)
+>   		return -EPROBE_DEFER;
+> @@ -263,6 +264,14 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+>   		return PTR_ERR(larb->smi.clk_smi);
+>   	larb->smi.dev = dev;
+>   
+> +	err = of_property_read_u32(dev->of_node, "mediatek,larbid",
+> +				   &larb->larbid);
+> +	if (err && of_device_is_compatible(dev->of_node,
+> +					   "mediatek,mt2701-smi-larb")) {
 
-Why do define them as MT8173_* is this calibration computation generic to 
-all/some SoCs?
+Instead of checking hard-coded bindings you should be able to determine the 
+generation using the smi_pdev.
+Apart I think it would be better to check for mediatek,larbid only on 
+MTK_SIM_GEN1, or do I miss something?
 
 Regards,
 Matthias
 
->   
->   /* MT2701 thermal sensors */
->   #define MT2701_TS1	0
-> @@ -609,7 +611,11 @@ static int mtk_thermal_get_calibration_data(struct device *dev,
->   		mt->vts[MT8173_TS4] = MT8173_CALIB_BUF2_VTS_TS4(buf[2]);
->   		mt->vts[MT8173_TSABB] = MT8173_CALIB_BUF2_VTS_TSABB(buf[2]);
->   		mt->degc_cali = MT8173_CALIB_BUF0_DEGC_CALI(buf[0]);
-> -		mt->o_slope = MT8173_CALIB_BUF0_O_SLOPE(buf[0]);
-> +		if (MT8173_CALIB_BUF1_ID(buf[1]) &
-> +		    MT8173_CALIB_BUF0_O_SLOPE_SIGN(buf[0]))
-> +			mt->o_slope = -MT8173_CALIB_BUF0_O_SLOPE(buf[0]);
-> +		else
-> +			mt->o_slope = MT8173_CALIB_BUF0_O_SLOPE(buf[0]);
->   	} else {
->   		dev_info(dev, "Device not calibrated, using default calibration values\n");
->   	}
+> +		dev_err(dev, "missing larbid property\n");
+> +		return err;
+> +	}
+> +
+>   	smi_node = of_parse_phandle(dev->of_node, "mediatek,smi", 0);
+>   	if (!smi_node)
+>   		return -EINVAL;
 > 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
