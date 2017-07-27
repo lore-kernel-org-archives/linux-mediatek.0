@@ -1,7 +1,7 @@
 From: <louis.yu@mediatek.com>
-Subject: [PATCH v1 1/4] dt-bindings: thermal: Add binding document for Mediatek thermal controller
-Date: Thu, 27 Jul 2017 13:46:54 +0800
-Message-ID: <1501134417-3505-2-git-send-email-louis.yu@mediatek.com>
+Subject: [PATCH v1 3/4] thermal: mediatek: extend calibration data for mt2712 chip
+Date: Thu, 27 Jul 2017 13:46:56 +0800
+Message-ID: <1501134417-3505-4-git-send-email-louis.yu@mediatek.com>
 References: <1501134417-3505-1-git-send-email-louis.yu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,25 +14,39 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Louis Yu <louis.yu@mediatek.com>
 
-This adds the device tree binding documentation for the mediatek thermal
-controller found on Mediatek MT2712.
+This patch adds support for mt2712 chip thermal calibration data
+and calculation.
 
 Signed-off-by: Louis Yu <louis.yu@mediatek.com>
 ---
- Documentation/devicetree/bindings/thermal/mediatek-thermal.txt | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/thermal/mtk_thermal.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-index e2f494d..0d73ea5 100644
---- a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-+++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-@@ -11,6 +11,7 @@ Required properties:
- - compatible:
-   - "mediatek,mt8173-thermal" : For MT8173 family of SoCs
-   - "mediatek,mt2701-thermal" : For MT2701 family of SoCs
-+  - "mediatek,mt2712-thermal" : For MT2712 family of SoCs
- - reg: Address range of the thermal controller
- - interrupts: IRQ for the thermal controller
- - clocks, clock-names: Clocks needed for the thermal controller. required
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index e35d28d..f2a7155 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -126,6 +126,8 @@
+ #define MT8173_CALIB_BUF2_VTS_TSABB(x)	(((x) >> 14) & 0x1ff)
+ #define MT8173_CALIB_BUF0_DEGC_CALI(x)	(((x) >> 1) & 0x3f)
+ #define MT8173_CALIB_BUF0_O_SLOPE(x)	(((x) >> 26) & 0x3f)
++#define MT8173_CALIB_BUF0_O_SLOPE_SIGN(x)	(((x) >> 7) & 0x1)
++#define MT8173_CALIB_BUF1_ID(x)	(((x) >> 9) & 0x1)
+ 
+ /* MT2701 thermal sensors */
+ #define MT2701_TS1	0
+@@ -609,7 +611,11 @@ static int mtk_thermal_get_calibration_data(struct device *dev,
+ 		mt->vts[MT8173_TS4] = MT8173_CALIB_BUF2_VTS_TS4(buf[2]);
+ 		mt->vts[MT8173_TSABB] = MT8173_CALIB_BUF2_VTS_TSABB(buf[2]);
+ 		mt->degc_cali = MT8173_CALIB_BUF0_DEGC_CALI(buf[0]);
+-		mt->o_slope = MT8173_CALIB_BUF0_O_SLOPE(buf[0]);
++		if (MT8173_CALIB_BUF1_ID(buf[1]) &
++		    MT8173_CALIB_BUF0_O_SLOPE_SIGN(buf[0]))
++			mt->o_slope = -MT8173_CALIB_BUF0_O_SLOPE(buf[0]);
++		else
++			mt->o_slope = MT8173_CALIB_BUF0_O_SLOPE(buf[0]);
+ 	} else {
+ 		dev_info(dev, "Device not calibrated, using default calibration values\n");
+ 	}
 -- 
 1.9.1
