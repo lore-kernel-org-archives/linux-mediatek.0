@@ -1,49 +1,65 @@
-From: Simon Horman <horms@verge.net.au>
-Subject: Re: [PATCH] soc: Convert to using %pOF instead of full_name
-Date: Thu, 27 Jul 2017 17:27:31 +0200
-Message-ID: <20170727152730.GL16143@verge.net.au>
-References: <20170718214339.7774-49-robh@kernel.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v1 3/4] thermal: mediatek: extend calibration data for
+ mt2712 chip
+Date: Thu, 27 Jul 2017 17:46:44 +0200
+Message-ID: <f11a8633-79cb-42f7-eb7c-b4e929829568@gmail.com>
+References: <1501134417-3505-1-git-send-email-louis.yu@mediatek.com>
+ <1501134417-3505-4-git-send-email-louis.yu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170718214339.7774-49-robh@kernel.org>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: arm@kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Scott Wood <oss@buserror.net>, Qiang Zhao <qiang.zhao@nxp.com>, Matthias Brugger <matthias.bgg@gmail.com>, Magnus Damm <magnus.damm@gmail.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1501134417-3505-4-git-send-email-louis.yu@mediatek.com>
+Content-Language: en-US
+Sender: linux-pm-owner@vger.kernel.org
+To: louis.yu@mediatek.com, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, dawei.chien@mediatek.com, fan.chen@mediatek.com, eddie.huang@mediatek.com, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jul 18, 2017 at 04:43:29PM -0500, Rob Herring wrote:
-> Now that we have a custom printf format specifier, convert users of
-> full_name to use %pOF instead. This is preparation to remove storing
-> of the full path string for each node.
+
+
+On 07/27/2017 07:46 AM, louis.yu@mediatek.com wrote:
+> From: Louis Yu <louis.yu@mediatek.com>
 > 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> Cc: Scott Wood <oss@buserror.net>
-> Cc: Qiang Zhao <qiang.zhao@nxp.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Simon Horman <horms@verge.net.au>
-> Cc: Magnus Damm <magnus.damm@gmail.com>
-> Cc: Kukjin Kim <kgene@kernel.org>
-> Cc: Krzysztof Kozlowski <krzk@kernel.org>
-> Cc: Javier Martinez Canillas <javier@osg.samsung.com>
-> Cc: linuxppc-dev@lists.ozlabs.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-renesas-soc@vger.kernel.org
-> Cc: linux-samsung-soc@vger.kernel.org
+> This patch adds support for mt2712 chip thermal calibration data
+> and calculation.
+> 
+> Signed-off-by: Louis Yu <louis.yu@mediatek.com>
 > ---
->  drivers/soc/fsl/qbman/bman_ccsr.c    | 10 +++++-----
->  drivers/soc/fsl/qbman/bman_portal.c  |  8 +++-----
->  drivers/soc/fsl/qbman/qman_ccsr.c    | 12 ++++++------
->  drivers/soc/fsl/qbman/qman_portal.c  | 11 ++++-------
->  drivers/soc/fsl/qe/gpio.c            |  4 ++--
->  drivers/soc/mediatek/mtk-pmic-wrap.c |  4 ++--
->  drivers/soc/renesas/rcar-rst.c       |  4 ++--
->  drivers/soc/renesas/rcar-sysc.c      |  6 +++---
->  drivers/soc/samsung/pm_domains.c     |  8 ++++----
->  9 files changed, 31 insertions(+), 36 deletions(-)
+>   drivers/thermal/mtk_thermal.c | 8 +++++++-
+>   1 file changed, 7 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+> index e35d28d..f2a7155 100644
+> --- a/drivers/thermal/mtk_thermal.c
+> +++ b/drivers/thermal/mtk_thermal.c
+> @@ -126,6 +126,8 @@
+>   #define MT8173_CALIB_BUF2_VTS_TSABB(x)	(((x) >> 14) & 0x1ff)
+>   #define MT8173_CALIB_BUF0_DEGC_CALI(x)	(((x) >> 1) & 0x3f)
+>   #define MT8173_CALIB_BUF0_O_SLOPE(x)	(((x) >> 26) & 0x3f)
+> +#define MT8173_CALIB_BUF0_O_SLOPE_SIGN(x)	(((x) >> 7) & 0x1)
+> +#define MT8173_CALIB_BUF1_ID(x)	(((x) >> 9) & 0x1)
 
-Renesas portions:
+Why do define them as MT8173_* is this calibration computation generic to 
+all/some SoCs?
 
-Acked-by: Simon Horman <horms+renesas@verge.net.au>
+Regards,
+Matthias
+
+>   
+>   /* MT2701 thermal sensors */
+>   #define MT2701_TS1	0
+> @@ -609,7 +611,11 @@ static int mtk_thermal_get_calibration_data(struct device *dev,
+>   		mt->vts[MT8173_TS4] = MT8173_CALIB_BUF2_VTS_TS4(buf[2]);
+>   		mt->vts[MT8173_TSABB] = MT8173_CALIB_BUF2_VTS_TSABB(buf[2]);
+>   		mt->degc_cali = MT8173_CALIB_BUF0_DEGC_CALI(buf[0]);
+> -		mt->o_slope = MT8173_CALIB_BUF0_O_SLOPE(buf[0]);
+> +		if (MT8173_CALIB_BUF1_ID(buf[1]) &
+> +		    MT8173_CALIB_BUF0_O_SLOPE_SIGN(buf[0]))
+> +			mt->o_slope = -MT8173_CALIB_BUF0_O_SLOPE(buf[0]);
+> +		else
+> +			mt->o_slope = MT8173_CALIB_BUF0_O_SLOPE(buf[0]);
+>   	} else {
+>   		dev_info(dev, "Device not calibrated, using default calibration values\n");
+>   	}
+> 
