@@ -1,74 +1,68 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 1/3] memory: mtk-smi: add larbid init routine
-Date: Thu, 27 Jul 2017 17:42:29 +0200
-Message-ID: <f7dac4d6-4ef8-e10d-e483-088120392ab2@gmail.com>
-References: <1501120872-19652-1-git-send-email-honghui.zhang@mediatek.com>
- <1501120872-19652-2-git-send-email-honghui.zhang@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v1 4/4] thermal: mediatek: minor mtk_thermal.c cleanups
+Date: Thu, 27 Jul 2017 17:49:33 +0200
+Message-ID: <c8585136-d7a8-3a47-1af2-512c6485eca0@gmail.com>
+References: <1501134417-3505-1-git-send-email-louis.yu@mediatek.com>
+ <1501134417-3505-5-git-send-email-louis.yu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1501120872-19652-2-git-send-email-honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1501134417-3505-5-git-send-email-louis.yu@mediatek.com>
 Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Sender: linux-pm-owner@vger.kernel.org
+To: louis.yu@mediatek.com, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, dawei.chien@mediatek.com, fan.chen@mediatek.com, eddie.huang@mediatek.com, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 07/27/2017 04:01 AM, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On 07/27/2017 07:46 AM, louis.yu@mediatek.com wrote:
+> From: Louis Yu <louis.yu@mediatek.com>
 > 
-> In the commit 3c8f4ad85c4b ("memory/mediatek: add support for mt2701"),
-> the larb->larbid was added but not initialized.
-> Mediatek's gen1 smi need this hardware larbid information to get the
-> register offset which controls whether enable iommu for this larb.
-> This patch add the initialize routine for larbid.
+> Move thermal module reset in the beginning and revise clock error
+> handle flow to pair the clock control.
 > 
-> Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Louis Yu <louis.yu@mediatek.com>
 > ---
->   drivers/memory/mtk-smi.c | 9 +++++++++
->   1 file changed, 9 insertions(+)
+>   drivers/thermal/mtk_thermal.c | 12 ++++++------
+>   1 file changed, 6 insertions(+), 6 deletions(-)
 > 
-> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> index 2b798bb4..fe36b3e 100644
-> --- a/drivers/memory/mtk-smi.c
-> +++ b/drivers/memory/mtk-smi.c
-> @@ -240,6 +240,7 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
->   	struct device *dev = &pdev->dev;
->   	struct device_node *smi_node;
->   	struct platform_device *smi_pdev;
-> +	int err;
+> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+> index f2a7155..5dffdb4 100644
+> --- a/drivers/thermal/mtk_thermal.c
+> +++ b/drivers/thermal/mtk_thermal.c
+> @@ -712,20 +712,20 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+>   		return -EINVAL;
+>   	}
 >   
->   	if (!dev->pm_domain)
->   		return -EPROBE_DEFER;
-> @@ -263,6 +264,14 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
->   		return PTR_ERR(larb->smi.clk_smi);
->   	larb->smi.dev = dev;
+> +	ret = device_reset(&pdev->dev);
+> +	if (ret)
+> +		return ret;
+> +
+>   	ret = clk_prepare_enable(mt->clk_auxadc);
+>   	if (ret) {
+>   		dev_err(&pdev->dev, "Can't enable auxadc clk: %d\n", ret);
+> -		return ret;
+> -	}
+> -
+> -	ret = device_reset(&pdev->dev);
+> -	if (ret)
+>   		goto err_disable_clk_auxadc;
+> +	}
 >   
-> +	err = of_property_read_u32(dev->of_node, "mediatek,larbid",
-> +				   &larb->larbid);
-> +	if (err && of_device_is_compatible(dev->of_node,
-> +					   "mediatek,mt2701-smi-larb")) {
+>   	ret = clk_prepare_enable(mt->clk_peri_therm);
+>   	if (ret) {
+>   		dev_err(&pdev->dev, "Can't enable peri clk: %d\n", ret);
+> -		goto err_disable_clk_auxadc;
+> +		goto err_disable_clk_peri_therm;
 
-Instead of checking hard-coded bindings you should be able to determine the 
-generation using the smi_pdev.
-Apart I think it would be better to check for mediatek,larbid only on 
-MTK_SIM_GEN1, or do I miss something?
+If you can't enable the clock, there is no use in disable it in the error path.
 
 Regards,
 Matthias
 
-> +		dev_err(dev, "missing larbid property\n");
-> +		return err;
-> +	}
-> +
->   	smi_node = of_parse_phandle(dev->of_node, "mediatek,smi", 0);
->   	if (!smi_node)
->   		return -EINVAL;
+>   	}
+>   
+>   	for (i = 0; i < mt->conf->num_banks; i++)
 > 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
