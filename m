@@ -1,96 +1,104 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [PATCH 2/2] dt-bindings: ata: add DT bindings for MediaTek SATA
- controller
-Date: Fri, 28 Jul 2017 12:20:04 +0300
-Message-ID: <7adf5e2c-4678-3e91-1036-f5e82d23329f@cogentembedded.com>
-References: <cover.1501134896.git.ryder.lee@mediatek.com>
- <45c7b2abc65b0d7b5b945763837811296e56835f.1501134896.git.ryder.lee@mediatek.com>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH 1/3] memory: mtk-smi: add larbid init routine
+Date: Fri, 28 Jul 2017 10:59:35 +0100
+Message-ID: <a4a00e4b-175c-88d3-d2b4-9f4f1c41a935@arm.com>
+References: <1501120872-19652-1-git-send-email-honghui.zhang@mediatek.com>
+	<1501120872-19652-2-git-send-email-honghui.zhang@mediatek.com>
+	<f7dac4d6-4ef8-e10d-e483-088120392ab2@gmail.com>
+	<1501204505.29316.9.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-ide-owner@vger.kernel.org>
-In-Reply-To: <45c7b2abc65b0d7b5b945763837811296e56835f.1501134896.git.ryder.lee@mediatek.com>
-Content-Language: en-US
-Sender: linux-ide-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>, Hans de Goede <hdegoede@redhat.com>, Tejun Heo <tj@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, Long Cheng <long.cheng@mediatek.com>
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <1501204505.29316.9.camel@mtksdaap41>
+Content-Language: en-GB
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello!
-
-On 7/27/2017 9:38 AM, Ryder Lee wrote:
-
-> Add DT bindings for the onboard SATA controller present on the MediaTek
-> SoCs.
+On 28/07/17 02:15, Honghui Zhang wrote:
+> On Thu, 2017-07-27 at 17:42 +0200, Matthias Brugger wrote:
+>>
+>> On 07/27/2017 04:01 AM, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+>>> From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>>
+>>> In the commit 3c8f4ad85c4b ("memory/mediatek: add support for mt2701"),
+>>> the larb->larbid was added but not initialized.
+>>> Mediatek's gen1 smi need this hardware larbid information to get the
+>>> register offset which controls whether enable iommu for this larb.
+>>> This patch add the initialize routine for larbid.
+>>>
+>>> Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>> ---
+>>>   drivers/memory/mtk-smi.c | 9 +++++++++
+>>>   1 file changed, 9 insertions(+)
+>>>
+>>> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+>>> index 2b798bb4..fe36b3e 100644
+>>> --- a/drivers/memory/mtk-smi.c
+>>> +++ b/drivers/memory/mtk-smi.c
+>>> @@ -240,6 +240,7 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+>>>   	struct device *dev = &pdev->dev;
+>>>   	struct device_node *smi_node;
+>>>   	struct platform_device *smi_pdev;
+>>> +	int err;
+>>>   
+>>>   	if (!dev->pm_domain)
+>>>   		return -EPROBE_DEFER;
+>>> @@ -263,6 +264,14 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+>>>   		return PTR_ERR(larb->smi.clk_smi);
+>>>   	larb->smi.dev = dev;
+>>>   
+>>> +	err = of_property_read_u32(dev->of_node, "mediatek,larbid",
+>>> +				   &larb->larbid);
+>>> +	if (err && of_device_is_compatible(dev->of_node,
+>>> +					   "mediatek,mt2701-smi-larb")) {
+>>
+>> Instead of checking hard-coded bindings you should be able to determine the 
+>> generation using the smi_pdev.
+>> Apart I think it would be better to check for mediatek,larbid only on 
+>> MTK_SIM_GEN1, or do I miss something?
+>>
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> ---
->   Documentation/devicetree/bindings/ata/ahci-mtk.txt | 48 ++++++++++++++++++++++
->   1 file changed, 48 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/ata/ahci-mtk.txt
+> Hi, Matthias,
+> 	There's a new SoC of mediatek which use MTK_SMI_GEN2 hardware, but it
+> has 2 iommus and 2 smi_common, and we are intend to send it's driver
+> soon. It need the mediatek,larbid to identify which iommu should be
+> binding to.
 > 
-> diff --git a/Documentation/devicetree/bindings/ata/ahci-mtk.txt b/Documentation/devicetree/bindings/ata/ahci-mtk.txt
-> new file mode 100644
-> index 0000000..a8d11db
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/ata/ahci-mtk.txt
-> @@ -0,0 +1,48 @@
-> +MediaTek Seria ATA controller
-> +
-> +Required properties:
-> + - compatible	   : Must be "mediatek,ahci".
-> + - reg		   : Physical base addresses and length of register sets.
-> + - interrupts	   : Interrupt associated with the SATA device.
-> + - interrupt-names : Associated name must be: "hostc".
-> + - clocks	   : The phandle for the clock.
+> This patch use the hard-code bindings will make the future work easier.
 
-    Your example shows that you need both phandle and specifier (afetr phandle).
+In that case, might it make sense to add some indicator like "bool
+need_larb_id" to struct mtk_smi_larb_gen?
 
-> + - clock-names	   : Associated name must be: "ahb", "axi", "asic", "rbc", "pm"
-> + - phys		   : The phandle for the PHY port.
+Robin.
 
-     Likewise.
-
-> + - phy-names	   : Associated name must be: "sata-phy".
-> + - ports-implemented : Mask that indicates which ports that the HBA supports
-> +		       are available for software to use. Useful if PORTS_IMPL
-> +		       is not programmed by the BIOS, which is true with some
-> +		       embedded SOC's.
-
-    An empty line wouldn't hurt here...
-
-> +Optional properties:
-> + - power-domains   : A phandle and power domain specifier pair to the power
-> +		     domain which is responsible for collapsing and restoring
-> +		     power to the peripheral.
-> + - resets	   : Must contain an entry for each entry in reset-names.
-> +		     See ../reset/reset.txt for details.
-> + - reset-names	   : Associated names must be: "axi-rst", "sw-rst", "reg-rst".
-> + - mediatek,phy-mode : A phandle to the system controller, used to enable
-> +		       SATA function.
-> +
-> +Example:
-> +
-> +	sata: sata@1a200000 {
-> +		compatible = "mediatek,ahci";
-> +		reg = <0 0x1a200000 0 0x1100>;
-> +		interrupts = <GIC_SPI 233 IRQ_TYPE_LEVEL_HIGH>;
-> +		interrupt-names = "hostc";
-> +		clocks = <&pciesys CLK_SATA_AHB_EN>,
-> +			 <&pciesys CLK_SATA_AXI_EN>,
-> +			 <&pciesys CLK_SATA_ASIC_EN>,
-> +			 <&pciesys CLK_SATA_RBC_EN>,
-> +			 <&pciesys CLK_SATA_PM_EN>;
-> +		clock-names = "ahb", "axi", "asic", "rbc", "pm";
-> +		phys = <&u3port1 PHY_TYPE_SATA>;
-> +		phy-names = "sata-phy";
-> +		ports-implemented = <0x1>;
-> +		power-domains = <&scpsys MT7622_POWER_DOMAIN_HIF0>;
-> +		resets = <&pciesys MT7622_SATA_AXI_BUS_RST>,
-> +			 <&pciesys MT7622_SATA_PHY_SW_RST>,
-> +			 <&pciesys MT7622_SATA_PHY_REG_RST>;
-> +		reset-names = "axi-rst", "sw-rst", "reg-rst";
-> +		mediatek,phy-mode = <&pciesys>;
-> +	};
-
-MBR, Sergei
+> 
+> thanks.
+>> Regards,
+>> Matthias
+>>
+>>> +		dev_err(dev, "missing larbid property\n");
+>>> +		return err;
+>>> +	}
+>>> +
+>>>   	smi_node = of_parse_phandle(dev->of_node, "mediatek,smi", 0);
+>>>   	if (!smi_node)
+>>>   		return -EINVAL;
+>>>
+>>
+>> _______________________________________________
+>> Linux-mediatek mailing list
+>> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+>> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> 
+> 
