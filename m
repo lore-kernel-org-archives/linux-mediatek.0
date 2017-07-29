@@ -1,64 +1,58 @@
-From: Paul Moore <pmoore@redhat.com>
-Subject: Re: [PATCH] Cipso: cipso_v4_optptr enter infinite loop
-Date: Fri, 28 Jul 2017 11:12:43 -0400
-Message-ID: <CAGH-KgtXtM1q2h8k--Gi7buYfdXsuXh1ZbJcSF_eL71kPdfBPA@mail.gmail.com>
-References: <1501241408-19129-1-git-send-email-yujuan.qi@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: Re: [PATCH 2/2] dt-bindings: ata: add DT bindings for MediaTek SATA
+ controller
+Date: Sat, 29 Jul 2017 11:41:11 +0800
+Message-ID: <1501299671.12447.4.camel@mtkswgap22>
+References: <cover.1501134896.git.ryder.lee@mediatek.com>
+         <45c7b2abc65b0d7b5b945763837811296e56835f.1501134896.git.ryder.lee@mediatek.com>
+         <7adf5e2c-4678-3e91-1036-f5e82d23329f@cogentembedded.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501241408-19129-1-git-send-email-yujuan.qi@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yujuan Qi <yujuan.qi@mediatek.com>
-Cc: "David S. Miller" <davem@davemloft.net>, Casey Schaufler <casey@schaufler-ca.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-ide-owner@vger.kernel.org>
+In-Reply-To: <7adf5e2c-4678-3e91-1036-f5e82d23329f@cogentembedded.com>
+Sender: linux-ide-owner@vger.kernel.org
+To: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Cc: Hans de Goede <hdegoede@redhat.com>, Tejun Heo <tj@kernel.org>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, Long Cheng <long.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jul 28, 2017 at 7:30 AM, Yujuan Qi <yujuan.qi@mediatek.com> wrote:
-> From: "yujuan.qi" <yujuan.qi@mediatek.com>
->
-> in for(),if((optlen > 0) && (optptr[1] == 0)), enter infinite loop.
->
-> Test: receive a packet which the ip length > 20 and the first byte of ip option is 0, produce this issue
->
-> Signed-off-by: yujuan.qi <yujuan.qi@mediatek.com>
-> ---
->  net/ipv4/cipso_ipv4.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/net/ipv4/cipso_ipv4.c b/net/ipv4/cipso_ipv4.c
-> index ae20616..b3d97c7 100644
-> --- a/net/ipv4/cipso_ipv4.c
-> +++ b/net/ipv4/cipso_ipv4.c
-> @@ -1528,6 +1528,8 @@ unsigned char *cipso_v4_optptr(const struct sk_buff *skb)
->                 taglen = optptr[1];
->                 optlen -= taglen;
->                 optptr += taglen;
-> +               if (!taglen)
-> +                       break;
->         }
->
->         return NULL;
+On Fri, 2017-07-28 at 12:20 +0300, Sergei Shtylyov wrote:
+> > +Required properties:
+> > + - compatible	   : Must be "mediatek,ahci".
+> > + - reg		   : Physical base addresses and length of register sets.
+> > + - interrupts	   : Interrupt associated with the SATA device.
+> > + - interrupt-names : Associated name must be: "hostc".
+> > + - clocks	   : The phandle for the clock.
+> 
+>     Your example shows that you need both phandle and specifier (afetr phandle).
+> 
+> > + - clock-names	   : Associated name must be: "ahb", "axi", "asic", "rbc", "pm"
+> > + - phys		   : The phandle for the PHY port.
+> 
+>      Likewise.
 
-Thanks for catching this and submitting a patch.  Unfortunately
-checking taglen/optptr[1] isn't going to help with the NOP and EOL
-options as they are single byte options.  I think a for-loop like the
-following, or something similar, is probably the better solution:
+Oh yeah, I forgot about that.
 
-  for (optlen = iph->ihl*4 - sizeof(struct iphdr); optlen > 0; ) {
-         switch (optptr[0]) {
-         case IPOPT_CIPSO:
-                 return optptr;
-         case IPOPT_END:
-                 return NULL;
-         case IPOPT_NOOP:
-                 taglen = 1;
-                 break;
-         default:
-                 taglen = optptr[1];
-         }
-         optlen -= taglen;
-         optptr += taglen;
-  }
+> > + - phy-names	   : Associated name must be: "sata-phy".
+> > + - ports-implemented : Mask that indicates which ports that the HBA supports
+> > +		       are available for software to use. Useful if PORTS_IMPL
+> > +		       is not programmed by the BIOS, which is true with some
+> > +		       embedded SOC's.
+> 
+>     An empty line wouldn't hurt here...
 
--- 
-paul moore
-security @ redhat
+Okay.
+
+> > +Optional properties:
+> > + - power-domains   : A phandle and power domain specifier pair to the power
+> > +		     domain which is responsible for collapsing and restoring
+> > +		     power to the peripheral.
+> > + - resets	   : Must contain an entry for each entry in reset-names.
+> > +		     See ../reset/reset.txt for details.
+> > + - reset-names	   : Associated names must be: "axi-rst", "sw-rst", "reg-rst".
+> > + - mediatek,phy-mode : A phandle to the system controller, used to enable
+> > +		       SATA function.
+
+Thanks!
+Ryder.
+
