@@ -1,58 +1,32 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH 2/2] dt-bindings: ata: add DT bindings for MediaTek SATA
- controller
-Date: Sat, 29 Jul 2017 11:41:11 +0800
-Message-ID: <1501299671.12447.4.camel@mtkswgap22>
-References: <cover.1501134896.git.ryder.lee@mediatek.com>
-         <45c7b2abc65b0d7b5b945763837811296e56835f.1501134896.git.ryder.lee@mediatek.com>
-         <7adf5e2c-4678-3e91-1036-f5e82d23329f@cogentembedded.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-ide-owner@vger.kernel.org>
-In-Reply-To: <7adf5e2c-4678-3e91-1036-f5e82d23329f@cogentembedded.com>
-Sender: linux-ide-owner@vger.kernel.org
-To: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Cc: Hans de Goede <hdegoede@redhat.com>, Tejun Heo <tj@kernel.org>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, Long Cheng <long.cheng@mediatek.com>
+From: Julia Lawall <Julia.Lawall@lip6.fr>
+Subject: [PATCH 00/12] constify mmc_host_ops structures
+Date: Sat, 29 Jul 2017 07:59:29 +0200
+Message-ID: <1501307981-29745-1-git-send-email-Julia.Lawall@lip6.fr>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: linux-mediatek@lists.infradead.org
+Cc: bhumirks@gmail.com, kernel-janitors@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Ulf Hansson <ulf.hansson@linaro.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rpi-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2017-07-28 at 12:20 +0300, Sergei Shtylyov wrote:
-> > +Required properties:
-> > + - compatible	   : Must be "mediatek,ahci".
-> > + - reg		   : Physical base addresses and length of register sets.
-> > + - interrupts	   : Interrupt associated with the SATA device.
-> > + - interrupt-names : Associated name must be: "hostc".
-> > + - clocks	   : The phandle for the clock.
-> 
->     Your example shows that you need both phandle and specifier (afetr phandle).
-> 
-> > + - clock-names	   : Associated name must be: "ahb", "axi", "asic", "rbc", "pm"
-> > + - phys		   : The phandle for the PHY port.
-> 
->      Likewise.
 
-Oh yeah, I forgot about that.
+The mmc_host_ops structure is only stored in the ops field of an
+mmc_host structure, which is declared as const.  Thus the mmc_host_ops
+structure itself can be const.
 
-> > + - phy-names	   : Associated name must be: "sata-phy".
-> > + - ports-implemented : Mask that indicates which ports that the HBA supports
-> > +		       are available for software to use. Useful if PORTS_IMPL
-> > +		       is not programmed by the BIOS, which is true with some
-> > +		       embedded SOC's.
-> 
->     An empty line wouldn't hurt here...
+Done with the help of Coccinelle.
 
-Okay.
+---
 
-> > +Optional properties:
-> > + - power-domains   : A phandle and power domain specifier pair to the power
-> > +		     domain which is responsible for collapsing and restoring
-> > +		     power to the peripheral.
-> > + - resets	   : Must contain an entry for each entry in reset-names.
-> > +		     See ../reset/reset.txt for details.
-> > + - reset-names	   : Associated names must be: "axi-rst", "sw-rst", "reg-rst".
-> > + - mediatek,phy-mode : A phandle to the system controller, used to enable
-> > +		       SATA function.
-
-Thanks!
-Ryder.
-
+ drivers/mmc/host/bcm2835.c     |    2 +-
+ drivers/mmc/host/davinci_mmc.c |    2 +-
+ drivers/mmc/host/moxart-mmc.c  |    2 +-
+ drivers/mmc/host/mtk-sd.c      |    2 +-
+ drivers/mmc/host/s3cmci.c      |    2 +-
+ drivers/mmc/host/sdricoh_cs.c  |    2 +-
+ drivers/mmc/host/sh_mmcif.c    |    2 +-
+ drivers/mmc/host/sunxi-mmc.c   |    2 +-
+ drivers/mmc/host/toshsd.c      |    2 +-
+ drivers/mmc/host/usdhi6rol0.c  |    2 +-
+ drivers/mmc/host/vub300.c      |    2 +-
+ drivers/mmc/host/wmt-sdmmc.c   |    2 +-
+ 12 files changed, 12 insertions(+), 12 deletions(-)
