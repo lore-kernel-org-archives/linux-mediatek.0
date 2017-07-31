@@ -1,58 +1,76 @@
-From: Yujuan Qi <yujuan.qi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] Cipso: cipso_v4_optptr enter infinite loop
-Date: Mon, 31 Jul 2017 11:23:01 +0800
-Message-ID: <1501471381-12808-1-git-send-email-yujuan.qi@mediatek.com>
+From: Louis Yu <louis.yu@mediatek.com>
+Subject: Re: [PATCH v1 3/4] thermal: mediatek: extend calibration data for
+ mt2712 chip
+Date: Mon, 31 Jul 2017 15:21:35 +0800
+Message-ID: <1501485695.9219.32.camel@mtksdaap41>
+References: <1501134417-3505-1-git-send-email-louis.yu@mediatek.com>
+         <1501134417-3505-4-git-send-email-louis.yu@mediatek.com>
+         <f11a8633-79cb-42f7-eb7c-b4e929829568@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Paul Moore <pmoore-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
-Cc: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "yujuan.qi" <yujuan.qi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Casey Schaufler <casey-iSGtlc1asvQWG2LlvL+J4A@public.gmane.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <f11a8633-79cb-42f7-eb7c-b4e929829568@gmail.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, dawei.chien@mediatek.com, fan.chen@mediatek.com, eddie.huang@mediatek.com, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: "yujuan.qi" <yujuan.qi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Hi Matthias,
 
-in for(),if((optlen > 0) && (optptr[1] == 0)), enter infinite loop.
+On Thu, 2017-07-27 at 17:46 +0200, Matthias Brugger wrote:
+> 
+> On 07/27/2017 07:46 AM, louis.yu@mediatek.com wrote:
+> > From: Louis Yu <louis.yu@mediatek.com>
+> > 
+> > This patch adds support for mt2712 chip thermal calibration data
+> > and calculation.
+> > 
+> > Signed-off-by: Louis Yu <louis.yu@mediatek.com>
+> > ---
+> >   drivers/thermal/mtk_thermal.c | 8 +++++++-
+> >   1 file changed, 7 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+> > index e35d28d..f2a7155 100644
+> > --- a/drivers/thermal/mtk_thermal.c
+> > +++ b/drivers/thermal/mtk_thermal.c
+> > @@ -126,6 +126,8 @@
+> >   #define MT8173_CALIB_BUF2_VTS_TSABB(x)	(((x) >> 14) & 0x1ff)
+> >   #define MT8173_CALIB_BUF0_DEGC_CALI(x)	(((x) >> 1) & 0x3f)
+> >   #define MT8173_CALIB_BUF0_O_SLOPE(x)	(((x) >> 26) & 0x3f)
+> > +#define MT8173_CALIB_BUF0_O_SLOPE_SIGN(x)	(((x) >> 7) & 0x1)
+> > +#define MT8173_CALIB_BUF1_ID(x)	(((x) >> 9) & 0x1)
+> 
+> Why do define them as MT8173_* is this calibration computation generic to 
+> all/some SoCs?
+> 
+> Regards,
+> Matthias
+> 
 
-Test: receive a packet which the ip length > 20 and the first byte of ip option is 0, produce this issue
+Since this calibration computation is generic to all current
+upstreamable Mediatek SoCs including mt8173, mt2701, and mt2712. Hence,
+The definition of the added bits in calibration data is common for
+mt8173, mt2701 and mt2712, and is compatible with these SoCs.
 
-Signed-off-by: yujuan.qi <yujuan.qi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- net/ipv4/cipso_ipv4.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
+Regards,
+Louis
 
-diff --git a/net/ipv4/cipso_ipv4.c b/net/ipv4/cipso_ipv4.c
-index ae20616..0d1e07d 100644
---- a/net/ipv4/cipso_ipv4.c
-+++ b/net/ipv4/cipso_ipv4.c
-@@ -1523,9 +1523,17 @@ unsigned char *cipso_v4_optptr(const struct sk_buff *skb)
- 	int taglen;
- 
- 	for (optlen = iph->ihl*4 - sizeof(struct iphdr); optlen > 0; ) {
--		if (optptr[0] == IPOPT_CIPSO)
-+		switch (optptr[0]) {
-+		case IPOPT_CIPSO:
- 			return optptr;
--		taglen = optptr[1];
-+		case IPOPT_END:
-+			return NULL;
-+		case IPOPT_NOOP:
-+			taglen = 1;
-+			break;
-+		default:
-+			taglen = optptr[1];
-+		}
- 		optlen -= taglen;
- 		optptr += taglen;
- 	}
--- 
-1.9.1
+> >   
+> >   /* MT2701 thermal sensors */
+> >   #define MT2701_TS1	0
+> > @@ -609,7 +611,11 @@ static int mtk_thermal_get_calibration_data(struct device *dev,
+> >   		mt->vts[MT8173_TS4] = MT8173_CALIB_BUF2_VTS_TS4(buf[2]);
+> >   		mt->vts[MT8173_TSABB] = MT8173_CALIB_BUF2_VTS_TSABB(buf[2]);
+> >   		mt->degc_cali = MT8173_CALIB_BUF0_DEGC_CALI(buf[0]);
+> > -		mt->o_slope = MT8173_CALIB_BUF0_O_SLOPE(buf[0]);
+> > +		if (MT8173_CALIB_BUF1_ID(buf[1]) &
+> > +		    MT8173_CALIB_BUF0_O_SLOPE_SIGN(buf[0]))
+> > +			mt->o_slope = -MT8173_CALIB_BUF0_O_SLOPE(buf[0]);
+> > +		else
+> > +			mt->o_slope = MT8173_CALIB_BUF0_O_SLOPE(buf[0]);
+> >   	} else {
+> >   		dev_info(dev, "Device not calibrated, using default calibration values\n");
+> >   	}
+> > 
