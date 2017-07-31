@@ -1,107 +1,58 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v4 9/9] arm: dts: mt7623: add dts file for Bananapi R2
- (BPI-R2) board
-Date: Mon, 31 Jul 2017 10:46:22 +0800
-Message-ID: <1501469182.10930.3.camel@mtkswgap22>
-References: <cover.1495683769.git.sean.wang@mediatek.com>
-         <5cc5489b38fc2723c30c8cfe0d4353f967d100f3.1495683769.git.sean.wang@mediatek.com>
-         <805ad5c4-db47-ef10-565d-b63e33a84bdf@gmail.com>
+From: Yujuan Qi <yujuan.qi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] Cipso: cipso_v4_optptr enter infinite loop
+Date: Mon, 31 Jul 2017 11:23:01 +0800
+Message-ID: <1501471381-12808-1-git-send-email-yujuan.qi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <805ad5c4-db47-ef10-565d-b63e33a84bdf-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Paul Moore <pmoore-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
+Cc: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "yujuan.qi" <yujuan.qi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Casey Schaufler <casey-iSGtlc1asvQWG2LlvL+J4A@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-07-27 at 16:39 +0200, Matthias Brugger wrote:
-> 
-> On 05/25/2017 06:02 AM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> > From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > 
-> > Add support for the Bananapi R2 (BPI-R2) development board from
-> > BIPAI KEJI. Detailed hardware information for BPI-R2 which could be
-> > found on http://www.banana-pi.org/r2.html
-> > 
-> > The patch currently only adds Mediatek GMAC, MT7530 Switch, the crypto
-> > engine, USB, IR, I2S, I2C, UART, SPI, PWM, GPIO keys, GPIO LEDs and
-> > PMIC LEDs. As to the other missing hardware and peripherals, they would
-> > be added and integrated continuously.
-> > 
-> > Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> > ---
-> >   Documentation/devicetree/bindings/arm/mediatek.txt |   2 +
-> >   arch/arm/boot/dts/Makefile                         |   1 +
-> >   arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts      | 440 +++++++++++++++++++++
-> >   3 files changed, 443 insertions(+)
-> >   create mode 100644 arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> > 
-> [...]
-> > diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> > new file mode 100644
-> > index 0000000..72c7984
-> > --- /dev/null
-> > +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> [...]
-> > +
-> > +&eth {
-> > +	status = "okay";
-> > +	gmac0: mac@0 {
-> > +		compatible = "mediatek,eth-mac";
-> > +		reg = <0>;
-> > +		phy-mode = "trgmii";
-> > +		fixed-link {
-> > +			speed = <1000>;
-> > +			full-duplex;
-> > +			pause;
-> > +		};
-> > +	};
-> > +
-> > +	mdio: mdio-bus {
-> > +		switch@0 {
-> > +			compatible = "mediatek,mt7530";
-> > +			#address-cells = <1>;
-> > +			#size-cells = <0>;
-> > +			reg = <0>;
-> 
-> What is this reg needed for? I can't find it neither in the code nor in the 
-> bindings (mt7530 and general dsa bindings). Actually it throws a warning when 
-> compiling:
-> arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dtb: Warning (reg_format): "reg" 
-> property in /ethernet@1b100000/mdio-bus/switch@0 has invalid length (4 bytes) 
-> (#address-cells == 2, #size-cells == 1)
-> arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dtb: Warning 
-> (avoid_default_addr_size): Relying on default #address-cells value for 
-> /ethernet@1b100000/mdio-bus/switch@0
-> arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dtb: Warning 
-> (avoid_default_addr_size): Relying on default #size-cells value for 
-> /ethernet@1b100000/mdio-bus/switch@0
-> 
-> Regards,
-> Matthias
-> 
+From: "yujuan.qi" <yujuan.qi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
+in for(),if((optlen > 0) && (optptr[1] == 0)), enter infinite loop.
 
-Hi, Matthias
+Test: receive a packet which the ip length > 20 and the first byte of ip option is 0, produce this issue
 
-many thanks
+Signed-off-by: yujuan.qi <yujuan.qi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ net/ipv4/cipso_ipv4.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-It should be just my written mistakes. Recently I prepared the next
-version including a few fixups and enhancements which also would include
-the warning correction you reported here.
-
-	Sean 
-
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/net/ipv4/cipso_ipv4.c b/net/ipv4/cipso_ipv4.c
+index ae20616..0d1e07d 100644
+--- a/net/ipv4/cipso_ipv4.c
++++ b/net/ipv4/cipso_ipv4.c
+@@ -1523,9 +1523,17 @@ unsigned char *cipso_v4_optptr(const struct sk_buff *skb)
+ 	int taglen;
+ 
+ 	for (optlen = iph->ihl*4 - sizeof(struct iphdr); optlen > 0; ) {
+-		if (optptr[0] == IPOPT_CIPSO)
++		switch (optptr[0]) {
++		case IPOPT_CIPSO:
+ 			return optptr;
+-		taglen = optptr[1];
++		case IPOPT_END:
++			return NULL;
++		case IPOPT_NOOP:
++			taglen = 1;
++			break;
++		default:
++			taglen = optptr[1];
++		}
+ 		optlen -= taglen;
+ 		optptr += taglen;
+ 	}
+-- 
+1.9.1
