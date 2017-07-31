@@ -1,101 +1,38 @@
-From: Louis Yu <louis.yu@mediatek.com>
-Subject: Re: [PATCH v1 4/4] thermal: mediatek: minor mtk_thermal.c cleanups
-Date: Mon, 31 Jul 2017 15:23:31 +0800
-Message-ID: <1501485811.9219.34.camel@mtksdaap41>
-References: <1501134417-3505-1-git-send-email-louis.yu@mediatek.com>
-         <1501134417-3505-5-git-send-email-louis.yu@mediatek.com>
-         <c8585136-d7a8-3a47-1af2-512c6485eca0@gmail.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v5 02/10] dt-bindings: arm: mediatek: add bindings for mediatek MT7623a SoC Platform
+Date: Mon, 31 Jul 2017 15:36:35 +0800
+Message-ID: <61b96a69cf5a76932fe1e8cbe0d0fce32f11dca2.1501486190.git.sean.wang@mediatek.com>
+References: <cover.1501486190.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <c8585136-d7a8-3a47-1af2-512c6485eca0@gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, dawei.chien@mediatek.com, fan.chen@mediatek.com, eddie.huang@mediatek.com, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1501486190.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: john@phrozen.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
+From: Sean Wang <sean.wang@mediatek.com>
 
-On Thu, 2017-07-27 at 17:49 +0200, Matthias Brugger wrote:
-> 
-> On 07/27/2017 07:46 AM, louis.yu@mediatek.com wrote:
-> > From: Louis Yu <louis.yu@mediatek.com>
-> > 
-> > Move thermal module reset in the beginning and revise clock error
-> > handle flow to pair the clock control.
-> > 
-> > Signed-off-by: Louis Yu <louis.yu@mediatek.com>
-> > ---
-> >   drivers/thermal/mtk_thermal.c | 12 ++++++------
-> >   1 file changed, 6 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-> > index f2a7155..5dffdb4 100644
-> > --- a/drivers/thermal/mtk_thermal.c
-> > +++ b/drivers/thermal/mtk_thermal.c
-> > @@ -712,20 +712,20 @@ static int mtk_thermal_probe(struct platform_device *pdev)
-> >   		return -EINVAL;
-> >   	}
-> >   
-> > +	ret = device_reset(&pdev->dev);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> >   	ret = clk_prepare_enable(mt->clk_auxadc);
-> >   	if (ret) {
-> >   		dev_err(&pdev->dev, "Can't enable auxadc clk: %d\n", ret);
-> > -		return ret;
-> > -	}
-> > -
-> > -	ret = device_reset(&pdev->dev);
-> > -	if (ret)
-> >   		goto err_disable_clk_auxadc;
-> > +	}
-> >   
-> >   	ret = clk_prepare_enable(mt->clk_peri_therm);
-> >   	if (ret) {
-> >   		dev_err(&pdev->dev, "Can't enable peri clk: %d\n", ret);
-> > -		goto err_disable_clk_auxadc;
-> > +		goto err_disable_clk_peri_therm;
-> 
-> If you can't enable the clock, there is no use in disable it in the error path.
-> 
-> Regards,
-> Matthias
-> 
+This adds DT binding documentation for Mediatek MT7623a
 
-Thanks for your reminder.This is no use to disable it in the error path.
-I would update this in next version as follows.
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ Documentation/devicetree/bindings/arm/mediatek.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/thermal/mtk_thermal.c
-b/drivers/thermal/mtk_thermal.c
-index 5dffdb4..3df0de3 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mtk_thermal.c
-@@ -719,13 +719,13 @@ static int mtk_thermal_probe(struct
-platform_device *pdev)
- 	ret = clk_prepare_enable(mt->clk_auxadc);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Can't enable auxadc clk: %d\n", ret);
--		goto err_disable_clk_auxadc;
-+		return ret;
- 	}
- 
- 	ret = clk_prepare_enable(mt->clk_peri_therm);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Can't enable peri clk: %d\n", ret);
--		goto err_disable_clk_peri_therm;
-+		goto err_disable_clk_auxadc;
- 	}
- 
- 	for (i = 0; i < mt->conf->num_banks; i++)
-
-
-Regards
-Louis
-
-> >   	}
-> >   
-> >   	for (i = 0; i < mt->conf->num_banks; i++)
-> > 
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt b/Documentation/devicetree/bindings/arm/mediatek.txt
+index cab2074..ae011b2 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek.txt
+@@ -14,6 +14,7 @@ compatible: Must contain one of
+    "mediatek,mt6797"
+    "mediatek,mt7622"
+    "mediatek,mt7623" which is referred to MT7623N SoC
++   "mediatek,mt7623a"
+    "mediatek,mt8127"
+    "mediatek,mt8135"
+    "mediatek,mt8173"
+-- 
+2.7.4
