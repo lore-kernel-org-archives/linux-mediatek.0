@@ -1,40 +1,51 @@
-From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 0/3] PINCTRL: Mediatek pinctrl driver for mt2712
-Date: Tue, 1 Aug 2017 16:44:29 +0800
-Message-ID: <1501577069.32089.0.camel@mtksdaap41>
-References: <1501489333-23145-1-git-send-email-zhiyong.tao@mediatek.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH v5 2/2] arm64: dts: Add Mediatek SoC MT2712 and
+ evaluation board dts and Makefile
+Date: Tue, 1 Aug 2017 16:51:21 +0800
+Message-ID: <1501577481.32089.3.camel@mtksdaap41>
+References: <1501241835-47849-1-git-send-email-yt.shen@mediatek.com>
+         <1501241835-47849-3-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1501489333-23145-1-git-send-email-zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1501241835-47849-3-git-send-email-yt.shen@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: YT Shen <yt.shen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Jason Cooper <jason@lakedaemon.net>, srv_heupstream@mediatek.com, Marc Zyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, Mars Cheng <mars.cheng@mediatek.com>, linux-serial@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mediatek@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2017-07-31 at 16:22 +0800, Zhiyong Tao wrote:
-> This series includes three patches:
-> 1.Add mt2712 compatible node in binding document.
-> 2.Add mt2712 pinctrl device node.
-> 3.Add mt2712 pinctrl driver.
-> 
-> Zhiyong Tao (3):
->   dt-bindings: pinctrl: mt2712: add binding document
->   arm64: dts: mt2712: add pintcrl device node.
->   pinctrl: add mt2712 pinctrl driver
-> 
->  .../devicetree/bindings/pinctrl/pinctrl-mt65xx.txt |    1 +
->  arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h      | 1014 +++++++++++
->  arch/arm64/boot/dts/mediatek/mt2712e.dtsi          |   18 +
+On Fri, 2017-07-28 at 19:37 +0800, YT Shen wrote:
+> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> new file mode 100644
+> index 0000000..1e135af
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
 
-mt2712e.dtsi doesn't exists in v4.13-rc1.
-What's the base for this series?
+<...>
+
+> +	timer {
+> +		compatible = "arm,armv8-timer";
+> +		interrupt-parent = <&gic>;
+> +		interrupts = <GIC_PPI 13
+> +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 14
+> +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 11
+> +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 10
+> +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>;
+> +	};
+> +
+> +	soc {
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		compatible = "simple-bus";
+> +		ranges;
+
+Matthias,
+
+I notice this have soc node.
+Do we need to get rid of it?
 
 Joe.C
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
