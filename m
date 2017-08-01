@@ -1,46 +1,34 @@
-From: Erin Lo <erin.lo@mediatek.com>
-Subject: [PATCH 2/5] arm: dts: mt2701: Add display bls related nodes for MT2701
-Date: Tue, 1 Aug 2017 15:03:30 +0800
-Message-ID: <1501571013-22327-3-git-send-email-erin.lo@mediatek.com>
-References: <1501571013-22327-1-git-send-email-erin.lo@mediatek.com>
+From: Louis Yu <louis.yu@mediatek.com>
+Subject: [PATCH v2 0/4] Add Mediatek thermal driver for mt2712
+Date: Tue, 1 Aug 2017 15:28:29 +0800
+Message-ID: <1501572513-7958-1-git-send-email-louis.yu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501571013-22327-1-git-send-email-erin.lo@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Weiqing Kong <weiqing.kong@mediatek.com>, Erin Lo <erin.lo@mediatek.com>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Dawei Chien <dawei.chien@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Weiqing Kong <weiqing.kong@mediatek.com>
+This series support for mt2712 chip to mtk_thermal.c, and integrate
+mt8173, mt2701, and mt2712 on the same mediatek thermal driver.
+mt2712 has only one bank and four sensors, and extends calibration
+data for mt2712 and the existing chips.
 
-This patch adds the device node of display backlight for MT2701
+Changes since v1:
+- fix wrong clock error handle flow from Matthias' comment.
+- make clear comment for the extended calibration data.
 
-Signed-off-by: Weiqing Kong <weiqing.kong@mediatek.com>
-Signed-off-by: Erin Lo <erin.lo@mediatek.com>
----
- arch/arm/boot/dts/mt2701.dtsi | 9 +++++++++
- 1 file changed, 9 insertions(+)
+Louis Yu (4):
+  dt-bindings: thermal: Add binding document for Mediatek thermal
+    controller
+  thermal: mediatek: add Mediatek thermal driver for mt2712
+  thermal: mediatek: extend calibration data for mt2712 chip
+  thermal: mediatek: minor mtk_thermal.c cleanups
 
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index 0619b86..2bcf739 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -529,6 +529,15 @@
- 		#clock-cells = <1>;
- 	};
- 
-+	bls: bls@1400a000 {
-+		compatible = "mediatek,mt2701-disp-pwm";
-+		reg = <0 0x1400a000 0 0x1000>;
-+		#pwm-cells = <2>;
-+		clocks = <&mmsys CLK_MM_MDP_BLS_26M>, <&mmsys CLK_MM_DISP_BLS>;
-+		clock-names = "main", "mm";
-+		status = "disabled";
-+	};
-+
- 	larb0: larb@14010000 {
- 		compatible = "mediatek,mt2701-smi-larb";
- 		reg = <0 0x14010000 0 0x1000>;
--- 
-1.9.1
+ .../bindings/thermal/mediatek-thermal.txt          |  1 +
+ drivers/thermal/mtk_thermal.c                      | 88 +++++++++++++++++++---
+ 2 files changed, 79 insertions(+), 10 deletions(-)
+
+--
+1.8.1.1.dirty
