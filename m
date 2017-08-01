@@ -1,58 +1,33 @@
-From: Paul Moore <pmoore@redhat.com>
-Subject: Re: [PATCH] Cipso: cipso_v4_optptr enter infinite loop
-Date: Mon, 31 Jul 2017 16:13:57 -0400
-Message-ID: <CAGH-KguiiVTyxHp0Z3Z==6b5n2h3Lm4SmU=ruydMpGgctdhYSw@mail.gmail.com>
-References: <1501471381-12808-1-git-send-email-yujuan.qi@mediatek.com>
+From: Erin Lo <erin.lo@mediatek.com>
+Subject: [PATCH 0/5] Add some DT nodes for Mediatek MT2701
+Date: Tue, 1 Aug 2017 15:03:28 +0800
+Message-ID: <1501571013-22327-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501471381-12808-1-git-send-email-yujuan.qi@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yujuan Qi <yujuan.qi@mediatek.com>
-Cc: "David S. Miller" <davem@davemloft.net>, Casey Schaufler <casey@schaufler-ca.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Jul 30, 2017 at 11:23 PM, Yujuan Qi <yujuan.qi@mediatek.com> wrote:
-> From: "yujuan.qi" <yujuan.qi@mediatek.com>
->
-> in for(),if((optlen > 0) && (optptr[1] == 0)), enter infinite loop.
->
-> Test: receive a packet which the ip length > 20 and the first byte of ip option is 0, produce this issue
->
-> Signed-off-by: yujuan.qi <yujuan.qi@mediatek.com>
-> ---
->  net/ipv4/cipso_ipv4.c | 12 ++++++++++--
->  1 file changed, 10 insertions(+), 2 deletions(-)
+This patch series based on v4.13-rc1, include MT2701 ethernet/disp bls/display/usb3 function DT nodes.
 
-Considering I gave you the code below I should probably ack it, right? ;)
+Chunfeng Yun (1):
+  arm: dts: mt2701: Add usb3 device nodes
 
-Acked-by: Paul Moore <paul@paul-moore.com>
+Sean Wang (1):
+  arm: dts: mt2701: Add ethernet device node
 
-> diff --git a/net/ipv4/cipso_ipv4.c b/net/ipv4/cipso_ipv4.c
-> index ae20616..0d1e07d 100644
-> --- a/net/ipv4/cipso_ipv4.c
-> +++ b/net/ipv4/cipso_ipv4.c
-> @@ -1523,9 +1523,17 @@ unsigned char *cipso_v4_optptr(const struct sk_buff *skb)
->         int taglen;
->
->         for (optlen = iph->ihl*4 - sizeof(struct iphdr); optlen > 0; ) {
-> -               if (optptr[0] == IPOPT_CIPSO)
-> +               switch (optptr[0]) {
-> +               case IPOPT_CIPSO:
->                         return optptr;
-> -               taglen = optptr[1];
-> +               case IPOPT_END:
-> +                       return NULL;
-> +               case IPOPT_NOOP:
-> +                       taglen = 1;
-> +                       break;
-> +               default:
-> +                       taglen = optptr[1];
-> +               }
->                 optlen -= taglen;
->                 optptr += taglen;
->         }
+Weiqing Kong (2):
+  arm: dts: mt2701: Add display bls related nodes for MT2701
+  arm: dts: mt2701: Add display bls related nodes for MT2701
 
--- 
-paul moore
-security @ redhat
+YT Shen (1):
+  arm: dts: mt2701: Add display subsystem related nodes for MT2701
+
+ arch/arm/boot/dts/mt2701-evb.dts |  27 ++++++
+ arch/arm/boot/dts/mt2701.dtsi    | 189 +++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 216 insertions(+)
+
+--
+1.9.1 
