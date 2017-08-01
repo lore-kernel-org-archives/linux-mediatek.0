@@ -1,43 +1,50 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 1/4] ARM: mediatek: dts: Cleanup bindings documentation
-Date: Tue, 1 Aug 2017 15:44:06 +0200
-Message-ID: <5451bdfa-e2c1-30cb-a5a9-252662b2d190@gmail.com>
-References: <20170720102247.12342-1-matthias.bgg@gmail.com>
- <20170724195644.oztdexqhicir5xn3@rob-hp-laptop>
+Subject: Re: [PATCH 0/5] Add some DT nodes for Mediatek MT2701
+Date: Tue, 1 Aug 2017 16:06:37 +0200
+Message-ID: <f1ea36ee-0a8b-135a-f5f1-67ba7f6dbbce@gmail.com>
+References: <1501571013-22327-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170724195644.oztdexqhicir5xn3@rob-hp-laptop>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1501571013-22327-1-git-send-email-erin.lo@mediatek.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>, linux-watchdog@vger.kernel.org, catalin.marinas@arm.com, will.deacon@arm.com, linux-kernel@vger.kernel.org, wim@iguana.be, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux@roeck-us.net
+Sender: linux-kernel-owner@vger.kernel.org
+To: Erin Lo <erin.lo@mediatek.com>
+Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Erin,
 
-
-On 07/24/2017 09:56 PM, Rob Herring wrote:
-> On Thu, Jul 20, 2017 at 12:22:44PM +0200, Matthias Brugger wrote:
->> From: Matthias Brugger <mbrugger@suse.com>
->>
->> This patch cleans up the binding documentation stating explicitly
->> the binding and it's fallback for every SoC.
->>
->> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
->> ---
->>   Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 5 ++---
->>   1 file changed, 2 insertions(+), 3 deletions(-)
+On 08/01/2017 09:03 AM, Erin Lo wrote:
+> This patch series based on v4.13-rc1, include MT2701 ethernet/disp bls/display/usb3 function DT nodes.
 > 
-> Acked-by: Rob Herring <robh@kernel.org>
+> Chunfeng Yun (1):
+>    arm: dts: mt2701: Add usb3 device nodes
+> 
+> Sean Wang (1):
+>    arm: dts: mt2701: Add ethernet device node
+> 
+> Weiqing Kong (2):
+>    arm: dts: mt2701: Add display bls related nodes for MT2701
+>    arm: dts: mt2701: Add display bls related nodes for MT2701
+> 
+> YT Shen (1):
+>    arm: dts: mt2701: Add display subsystem related nodes for MT2701
 > 
 
-Thanks. Whole series pushed now to v4.13-next/dts64
+I took 1/5 and 5/5 in v4.13-next/dts32
+
+Please reword the commit message on 2/5 and 3/5.
+Also the node should be called pwm instead of bls.
+
+Regards,
+Matthias
+
+>   arch/arm/boot/dts/mt2701-evb.dts |  27 ++++++
+>   arch/arm/boot/dts/mt2701.dtsi    | 189 +++++++++++++++++++++++++++++++++++++++
+>   2 files changed, 216 insertions(+)
+> 
+> --
+> 1.9.1
+> 
