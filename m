@@ -1,27 +1,40 @@
 From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH] Cipso: cipso_v4_optptr enter infinite loop
-Date: Tue, 01 Aug 2017 15:31:58 -0700 (PDT)
-Message-ID: <20170801.153158.1079818266452638846.davem@davemloft.net>
-References: <1501471381-12808-1-git-send-email-yujuan.qi@mediatek.com>
+Subject: Re: [PATCH net-next v3 0/4] net-next: mediatek: add support for
+ ethernet on MT7622 SoC
+Date: Tue, 01 Aug 2017 15:52:49 -0700 (PDT)
+Message-ID: <20170801.155249.2173180679406605650.davem@davemloft.net>
+References: <cover.1501494522.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501471381-12808-1-git-send-email-yujuan.qi@mediatek.com>
+In-Reply-To: <cover.1501494522.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: yujuan.qi@mediatek.com
-Cc: pmoore@redhat.com, casey@schaufler-ca.com, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com
+To: sean.wang@mediatek.com
+Cc: john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Yujuan Qi <yujuan.qi@mediatek.com>
-Date: Mon, 31 Jul 2017 11:23:01 +0800
+From: <sean.wang@mediatek.com>
+Date: Mon, 31 Jul 2017 18:05:07 +0800
 
-> From: "yujuan.qi" <yujuan.qi@mediatek.com>
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> in for(),if((optlen > 0) && (optptr[1] == 0)), enter infinite loop.
+> Changes since v2:
+> - update John's mail
 > 
-> Test: receive a packet which the ip length > 20 and the first byte of ip option is 0, produce this issue
+> Changes since v1:
+> - add refinement for ethernet clock management
+> - take out the code block for ESW, add it until ESW driver is actually introduced
 > 
-> Signed-off-by: yujuan.qi <yujuan.qi@mediatek.com>
+> The series adds the driver for ethernet controller found on MT7622 SoC.
+> There are additions against with previous MT7623 SoC such as shared SGMII
+> given for the dual GMACs and built-in 5-ports 10/100 embedded switch support
+> (ESW). Thus more clocks consumers and SGMII hardware setup for the extra
+> features are all introduced here and as for the support for ESW that would be
+> planned to add in the separate patch integrating with DSA infrastructure
+> in the future.
+> 
+> Currently testing successfully is done with those patches for the conditions
+> such as GMAC2 with IP1001 PHY via RGMII and GMAC1/2 with RTL8211F PHY via SGMII.
 
-Applied, thanks.
+Series applied, thank you.
