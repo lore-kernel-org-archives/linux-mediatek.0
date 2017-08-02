@@ -1,100 +1,59 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 2/2] arm: dts: mt7623: Add SD-card to bananapi-r2
-Date: Wed, 2 Aug 2017 15:27:20 +0800
-Message-ID: <1501658840.29348.7.camel@mtkswgap22>
-References: <20170801134009.14349-1-matthias.bgg@gmail.com>
- <20170801134009.14349-2-matthias.bgg@gmail.com>
+From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH] dt-bindings: mtd: add new compatible strings for mtk
+ nor controller
+Date: Wed, 2 Aug 2017 10:36:37 +0200
+Message-ID: <20170802103637.16cd6548@bbrezillon>
+References: <1500948617-19627-1-git-send-email-guochun.mao@mediatek.com>
+        <1500948617-19627-2-git-send-email-guochun.mao@mediatek.com>
+        <03016ea3-51ad-0b2d-e824-0a20913bd7c1@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170801134009.14349-2-matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <03016ea3-51ad-0b2d-e824-0a20913bd7c1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>
+Cc: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-08-01 at 15:40 +0200, Matthias Brugger wrote:
-> The bananapi-r2 board has an SD-card controller, enable
-> the device in the devicetree.
+Hi Matthias,
+
+On Tue, 1 Aug 2017 14:33:22 +0200
+Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+
+> On 07/25/2017 04:10 AM, Guochun Mao wrote:
+> > Add "mediatek,mt2712-nor" and "mediatek,mt7622-nor"
+> > for nor flash node's compatible strings.
+> > 
+> > Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> > Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >   .../devicetree/bindings/mtd/mtk-quadspi.txt        |    2 ++
+> >   1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+> > index 5ded66a..9845ff4 100644
+> > --- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+> > +++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+> > @@ -3,6 +3,8 @@
+> >   Required properties:
+> >   - compatible: 	  The possible values are:
+> >   		  "mediatek,mt2701-nor"
+> > +		  "mediatek,mt2712-nor"
+> > +		  "mediatek,mt7622-nor"
+> >   		  "mediatek,mt7623-nor"
+> >   		  "mediatek,mt8173-nor"
+> >   		  For mt8173, compatible should be "mediatek,mt8173-nor".
+> >   
 > 
-> Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
->  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
-> 
-> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> index 9f3e6ddd545f..d457544c3a1d 100644
-> --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> @@ -179,6 +179,19 @@
->  	status = "okay";
->  };
->  
-> +&mmc1 {
-> +	pinctrl-names = "default", "state_uhs";
-> +	pinctrl-0 = <&mmc1_pins_default>;
-> +	pinctrl-1 = <&mmc1_pins_uhs>;
-> +	status = "okay";
-> +	bus-width = <4>;
-> +	max-frequency = <50000000>;
-> +	cap-sd-highspeed;
-> +	cd-gpios = <&pio 261 0>;
-> +	vmmc-supply = <&mt6323_vmch_reg>;
-> +	vqmmc-supply = <&mt6323_vmc_reg>;
-> +};
-> +
->  &pio {
->  	cir_pins_a:cir@0 {
->  		pins_cir {
+> Boris, will you take this through your tree, or do you prefer that I take it?
 
-I can base the patch to fixup and add something in the next version 
+I'm not the spi-nor maintainer, you should ask Cyrille or Marek.
 
-such as
+Regards,
 
-1) to add property with extra wp-gpios
-
-2) to correct power source from mt6323_vio18_reg instead of
-mt6323_vmc_reg based on the schematic
-
-3) to enable mmc0 that is used as emmc
-
-
-&mmc0 {
-        pinctrl-names = "default", "state_uhs";
-        pinctrl-0 = <&mmc0_pins_default>;
-        pinctrl-1 = <&mmc0_pins_uhs>;
-        status = "okay";
-        bus-width = <8>;
-        max-frequency = <50000000>;
-        cap-mmc-highspeed;
-        vmmc-supply = <&mt6323_vemc3v3_reg>;
-        vqmmc-supply = <&mt6323_vio18_reg>;
-        non-removable;
-};
-
-
-&mmc1 {
-        pinctrl-names = "default", "state_uhs";
-        pinctrl-0 = <&mmc1_pins_default>;
-        pinctrl-1 = <&mmc1_pins_uhs>;
-        status = "okay";
-        bus-width = <4>;
-        max-frequency = <50000000>;
-        cap-sd-highspeed;
-        cd-gpios = <&pio 261 0>;
-        wp-gpios = <&pio 29 0>;
-        vmmc-supply = <&mt6323_vmch_reg>;
-        vqmmc-supply = <&mt6323_vio18_reg>;
-};
-
-
-those upper nodes could make sdhc sd card/emmc workable
+Boris
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
