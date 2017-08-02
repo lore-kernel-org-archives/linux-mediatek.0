@@ -1,129 +1,82 @@
-From: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 3/4] input: Add MediaTek PMIC keys support
-Date: Wed, 2 Aug 2017 21:46:42 +0800
-Message-ID: <1501681602.28466.2.camel@mhfsdcap03>
-References: <1501643840-21485-1-git-send-email-chen.zhong@mediatek.com>
- <1501643840-21485-4-git-send-email-chen.zhong@mediatek.com>
- <a6b77a6e-00bb-8aa1-86fe-f158bd96abbc@gmail.com>
+From: Cyrille Pitchen <cyrille.pitchen-yU5RGvR974pGWvitb5QawA@public.gmane.org>
+Subject: Re: [PATCH] dt-bindings: mtd: add new compatible strings for mtk nor
+ controller
+Date: Wed, 2 Aug 2017 17:31:01 +0200
+Message-ID: <535cc2d5-7bc9-2cb7-42cf-9d7058e64226@wedev4u.fr>
+References: <1500948617-19627-1-git-send-email-guochun.mao@mediatek.com>
+ <1500948617-19627-2-git-send-email-guochun.mao@mediatek.com>
+ <03016ea3-51ad-0b2d-e824-0a20913bd7c1@gmail.com>
+ <20170802103637.16cd6548@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <a6b77a6e-00bb-8aa1-86fe-f158bd96abbc-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170802103637.16cd6548@bbrezillon>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-08-02 at 12:33 +0200, Matthias Brugger wrote:
+Hi Guochun,
+
+Le 02/08/2017 à 10:36, Boris Brezillon a écrit :
+> Hi Matthias,
 > 
-> On 08/02/2017 05:17 AM, Chen Zhong wrote:
-> > This patch add support to handle MediaTek PMIC MT6397/MT6323 key
-> > interrupts including pwrkey and homekey, also add setting for
-> > long press key shutdown behavior.
-> > 
-> > Signed-off-by: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >   drivers/input/keyboard/mtk-pmic-keys.c |  320 ++++++++++++++++++++++++++++++++
-> >   1 file changed, 320 insertions(+)
-> >   create mode 100644 drivers/input/keyboard/mtk-pmic-keys.c
-> > 
-> > diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-> > new file mode 100644
-> > index 0000000..0ea7d17
-> > --- /dev/null
-> > +++ b/drivers/input/keyboard/mtk-pmic-keys.c
-> > @@ -0,0 +1,320 @@
-> > +/*
-> > + * Copyright (C) 2017 MediaTek, Inc.
-> > + *
-> > + * Author: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > + *
-> > + * This software is licensed under the terms of the GNU General Public
-> > + * License version 2, as published by the Free Software Foundation, and
-> > + * may be copied, distributed, and modified under those terms.
-> > + *
-> > + * This program is distributed in the hope that it will be useful,
-> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + * GNU General Public License for more details.
-> > + *
-> > + */
-> > +
-> > +#include <linux/ioctl.h>
-> > +#include <linux/module.h>
-> > +#include <linux/kernel.h>
-> > +#include <linux/input.h>
-> > +#include <linux/interrupt.h>
-> > +#include <linux/platform_device.h>
-> > +#include <linux/kernel.h>
-> > +#include <linux/of.h>
-> > +#include <linux/of_device.h>
-> > +#include <linux/regmap.h>
-> > +#include <linux/mfd/mt6323/registers.h>
-> > +#include <linux/mfd/mt6397/registers.h>
-> > +#include <linux/mfd/mt6397/core.h>
-> > +#include <linux/slab.h>
-> > +#include <linux/irqdomain.h>
-> > +
-> > +#define PWRKEY_RST_EN_MASK  0x1
-> > +#define PWRKEY_RST_EN_SHIFT  6
-> > +#define HOMEKEY_RST_EN_MASK  0x1
-> > +#define HOMEKEY_RST_EN_SHIFT  5
-> > +#define RST_DU_MASK  0x3
-> > +#define RST_DU_SHIFT  8
-> > +
-> > +struct pmic_keys_regs {
-> > +	u32 deb_reg;
-> > +	u32 deb_mask;
-> > +	u32 intsel_reg;
-> > +	u32 intsel_mask;
-> > +};
-> > +
-> > +#define PMIC_KEYS_REGS(_deb_reg, _deb_mask, _intsel_reg, _intsel_mask)	\
-> > +{									\
-> > +	.deb_reg		= _deb_reg,				\
-> > +	.deb_mask		= _deb_mask,				\
-> > +	.intsel_reg		= _intsel_reg,				\
-> > +	.intsel_mask		= _intsel_mask,				\
-> > +}
-> > +
-> > +struct pmic_regs {
-> > +	const struct pmic_keys_regs pwrkey_regs;
-> > +	const struct pmic_keys_regs homekey_regs;
-> > +	u32 pmic_rst_reg;
-> > +};
-> > +
-> > +static const struct pmic_regs mt6397_regs = {
-> > +	.pwrkey_regs = PMIC_KEYS_REGS(MT6397_CHRSTATUS,
-> > +		0x8, MT6397_INT_RSV, 0x10),
-> > +	.homekey_regs = PMIC_KEYS_REGS(MT6397_OCSTATUS2,
-> > +		0x10, MT6397_INT_RSV, 0x8),
-> > +	.pmic_rst_reg = MT6397_TOP_RST_MISC,
-> > +};
-> > +
-> > +static const struct pmic_regs mt6323_regs = {
-> > +	.pwrkey_regs = PMIC_KEYS_REGS(MT6323_CHRSTATUS,
-> > +		0x2, MT6323_INT_MISC_CON, 0x10),
-> > +	.homekey_regs = PMIC_KEYS_REGS(MT6323_CHRSTATUS,
-> > +		0x4, MT6323_INT_MISC_CON, 0x8),
-> > +	.pmic_rst_reg = MT6323_TOP_RST_MISC,
-> > +};
+> On Tue, 1 Aug 2017 14:33:22 +0200
+> Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
 > 
-> Where are this MTxxxx_CHRSTATUS defined?
+>> On 07/25/2017 04:10 AM, Guochun Mao wrote:
+>>> Add "mediatek,mt2712-nor" and "mediatek,mt7622-nor"
+>>> for nor flash node's compatible strings.
+>>>
+>>> Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+>>> Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>> ---
+>>>   .../devicetree/bindings/mtd/mtk-quadspi.txt        |    2 ++
+>>>   1 file changed, 2 insertions(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+>>> index 5ded66a..9845ff4 100644
+>>> --- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+>>> +++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+>>> @@ -3,6 +3,8 @@
+>>>   Required properties:
+>>>   - compatible: 	  The possible values are:
+>>>   		  "mediatek,mt2701-nor"
+>>> +		  "mediatek,mt2712-nor"
+>>> +		  "mediatek,mt7622-nor"
+>>>   		  "mediatek,mt7623-nor"
+>>>   		  "mediatek,mt8173-nor"
+>>>   		  For mt8173, compatible should be "mediatek,mt8173-nor".
+>>>
 
-Hi Matthias,
+There should be another patch to update the mtk_nor_of_ids[] array in
+the mtk-quadspi.c driver, shouldn't it?
 
-They are defined in "linux/mfd/mt63xx/registers.h".
+Currently, I only see the "mediatek,mt8173-nor" compatible string at the
+driver side. The driver and its documentation should be aligned and both
+patches should be applied at the same time.
 
+Best regards,
+
+Cyrille
+
+>>
+>> Boris, will you take this through your tree, or do you prefer that I take it?
+> 
+> I'm not the spi-nor maintainer, you should ask Cyrille or Marek.
 > 
 > Regards,
-> Matthias
+> 
+> Boris
+> 
+> ______________________________________________________
+> Linux MTD discussion mailing list
+> http://lists.infradead.org/mailman/listinfo/linux-mtd/
+> 
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
