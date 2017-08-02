@@ -1,51 +1,45 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v1 0/4] media: rc: add support for IR receiver on MT7622
- SoC
-Date: Wed, 2 Aug 2017 10:24:07 +0800
-Message-ID: <1501640647.17690.25.camel@mtkswgap22>
-References: <CGME20170630060312epcas4p351a77795e8469640d5177039f6b1955d@epcas4p3.samsung.com>
-         <cover.1498794408.git.sean.wang@mediatek.com>
-         <20170704101008.pgnjacbsk3twadzo@gangnam.samsung>
+From: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 0/3] PINCTRL: Mediatek pinctrl driver for mt2712
+Date: Wed, 2 Aug 2017 10:58:52 +0800
+Message-ID: <1501642732.844.14.camel@mhfsdcap03>
+References: <1501489333-23145-1-git-send-email-zhiyong.tao@mediatek.com>
+         <1501577069.32089.0.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170704101008.pgnjacbsk3twadzo-8vUhnHFVuGn35fTxX1Dczw@public.gmane.org>
+In-Reply-To: <1501577069.32089.0.camel@mtksdaap41>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, sean-hENCXIMQXOg@public.gmane.orgmchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org
-Cc: Andi Shyti <andi.shyti-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, hdegoede-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, ivo.g.dimitrov.75-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-Hi, Mauro and Sean
-
-Just a gentle ping on the whole patchset porting MediaTek CIR to another
-platform.
-
-	Sean
-
-
-On Tue, 2017-07-04 at 19:10 +0900, Andi Shyti wrote:
-> Hi Sean,
-> 
-> > This patchset introduces Consumer IR (CIR) support for MT7622 SoC
-> > implements raw mode for more compatibility with different protocols
-> > as previously SoC did. Before adding support to MT7622 SoC, extra
-> > code refactor is done since there're major differences in register and
-> > field definition from the previous SoC.
+On Tue, 2017-08-01 at 16:44 +0800, Yingjoe Chen wrote:
+> On Mon, 2017-07-31 at 16:22 +0800, Zhiyong Tao wrote:
+> > This series includes three patches:
+> > 1.Add mt2712 compatible node in binding document.
+> > 2.Add mt2712 pinctrl device node.
+> > 3.Add mt2712 pinctrl driver.
 > > 
-> > Sean Wang (4):
-> >   dt-bindings: media: mtk-cir: Add support for MT7622 SoC
-> >   media: rc: mtk-cir: add platform data to adapt into various hardware
-> >   media: rc: mtk-cir: add support for MediaTek MT7622 SoC
-> >   MAINTAINERS: add entry for MediaTek CIR driver
+> > Zhiyong Tao (3):
+> >   dt-bindings: pinctrl: mt2712: add binding document
+> >   arm64: dts: mt2712: add pintcrl device node.
+> >   pinctrl: add mt2712 pinctrl driver
+> > 
+> >  .../devicetree/bindings/pinctrl/pinctrl-mt65xx.txt |    1 +
+> >  arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h      | 1014 +++++++++++
+> >  arch/arm64/boot/dts/mediatek/mt2712e.dtsi          |   18 +
 > 
-> for the whole patchset:
+> mt2712e.dtsi doesn't exists in v4.13-rc1.
+> What's the base for this series? 
 > 
-> Reviewed-by: Andi Shyti <andi.shyti-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+>
 > 
-> Andi
-
+> 
+==> This patch is based on 
+http://lists.infradead.org/pipermail/linux-mediatek/2017-July/009618.html
+I forgot to add the comment, I will add it in the next version.
+Thanks.
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
