@@ -1,82 +1,41 @@
-From: Cyrille Pitchen <cyrille.pitchen-yU5RGvR974pGWvitb5QawA@public.gmane.org>
-Subject: Re: [PATCH] dt-bindings: mtd: add new compatible strings for mtk nor
- controller
-Date: Wed, 2 Aug 2017 17:31:01 +0200
-Message-ID: <535cc2d5-7bc9-2cb7-42cf-9d7058e64226@wedev4u.fr>
-References: <1500948617-19627-1-git-send-email-guochun.mao@mediatek.com>
- <1500948617-19627-2-git-send-email-guochun.mao@mediatek.com>
- <03016ea3-51ad-0b2d-e824-0a20913bd7c1@gmail.com>
- <20170802103637.16cd6548@bbrezillon>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH 0/2] serial: 8250: add support for MediaTek BTIF controller
+Date: Thu, 3 Aug 2017 01:05:21 +0800
+Message-ID: <cover.1501692369.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170802103637.16cd6548@bbrezillon>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, gregkh@linuxfoundation.org, jslaby@suse.com, andriy.shevchenko@linux.intel.com, jan.kiszka@siemens.com, heikki.krogerus@linux.intel.com, hpeter@gmail.com, vigneshr@ti.com, matthias.bgg@gmail.com
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Guochun,
+From: Sean Wang <sean.wang@mediatek.com>
 
-Le 02/08/2017 à 10:36, Boris Brezillon a écrit :
-> Hi Matthias,
-> 
-> On Tue, 1 Aug 2017 14:33:22 +0200
-> Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> 
->> On 07/25/2017 04:10 AM, Guochun Mao wrote:
->>> Add "mediatek,mt2712-nor" and "mediatek,mt7622-nor"
->>> for nor flash node's compatible strings.
->>>
->>> Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->>> Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>> ---
->>>   .../devicetree/bindings/mtd/mtk-quadspi.txt        |    2 ++
->>>   1 file changed, 2 insertions(+)
->>>
->>> diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
->>> index 5ded66a..9845ff4 100644
->>> --- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
->>> +++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
->>> @@ -3,6 +3,8 @@
->>>   Required properties:
->>>   - compatible: 	  The possible values are:
->>>   		  "mediatek,mt2701-nor"
->>> +		  "mediatek,mt2712-nor"
->>> +		  "mediatek,mt7622-nor"
->>>   		  "mediatek,mt7623-nor"
->>>   		  "mediatek,mt8173-nor"
->>>   		  For mt8173, compatible should be "mediatek,mt8173-nor".
->>>
+This patchset introduces the support for MediaTek BTIF controller.
 
-There should be another patch to update the mtk_nor_of_ids[] array in
-the mtk-quadspi.c driver, shouldn't it?
+MediaTek BTIF controller is the serial interface similar to UART but it
+works only as the digital device which is mainly used to communicate with
+the connectivity module also called CONNSYS inside the SoC which could be
+mostly found on those MediaTek SoCs with Bluetooth feature.
 
-Currently, I only see the "mediatek,mt8173-nor" compatible string at the
-driver side. The driver and its documentation should be aligned and both
-patches should be applied at the same time.
+And the controller is made as being compatible with the 8250 register
+layout so it tends to be integrated with existing 8250 core driver and
+have no requirement for the modem configuration additionally such as the
+baud rate calculation and assignment.
 
-Best regards,
+Sean Wang (2):
+  dt-bindings: serial: Add MediaTek BTIF controller bindings
+  tty: serial: 8250: Add MediaTek BTIF controller on MT7622 and MT7623
+    SoC
 
-Cyrille
+ .../devicetree/bindings/serial/mtk-btif.txt        |  26 +++
+ drivers/tty/serial/8250/8250_btif.c                | 224 +++++++++++++++++++++
+ drivers/tty/serial/8250/Kconfig                    |   9 +
+ drivers/tty/serial/8250/Makefile                   |   1 +
+ 4 files changed, 260 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/serial/mtk-btif.txt
+ create mode 100644 drivers/tty/serial/8250/8250_btif.c
 
->>
->> Boris, will you take this through your tree, or do you prefer that I take it?
-> 
-> I'm not the spi-nor maintainer, you should ask Cyrille or Marek.
-> 
-> Regards,
-> 
-> Boris
-> 
-> ______________________________________________________
-> Linux MTD discussion mailing list
-> http://lists.infradead.org/mailman/listinfo/linux-mtd/
-> 
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+2.7.4
