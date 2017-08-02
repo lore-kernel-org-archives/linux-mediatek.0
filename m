@@ -1,47 +1,49 @@
-From: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 0/3] PINCTRL: Mediatek pinctrl driver for mt2712
-Date: Wed, 2 Aug 2017 10:58:52 +0800
-Message-ID: <1501642732.844.14.camel@mhfsdcap03>
-References: <1501489333-23145-1-git-send-email-zhiyong.tao@mediatek.com>
-         <1501577069.32089.0.camel@mtksdaap41>
+From: Chen Zhong <chen.zhong@mediatek.com>
+Subject: [PATCH 2/4] dt-bindings: mfd: Add bindings for the keys as subnode of PMIC
+Date: Wed, 2 Aug 2017 11:17:18 +0800
+Message-ID: <1501643840-21485-3-git-send-email-chen.zhong@mediatek.com>
+References: <1501643840-21485-1-git-send-email-chen.zhong@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1501577069.32089.0.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-input-owner@vger.kernel.org>
+In-Reply-To: <1501643840-21485-1-git-send-email-chen.zhong@mediatek.com>
+Sender: linux-input-owner@vger.kernel.org
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-08-01 at 16:44 +0800, Yingjoe Chen wrote:
-> On Mon, 2017-07-31 at 16:22 +0800, Zhiyong Tao wrote:
-> > This series includes three patches:
-> > 1.Add mt2712 compatible node in binding document.
-> > 2.Add mt2712 pinctrl device node.
-> > 3.Add mt2712 pinctrl driver.
-> > 
-> > Zhiyong Tao (3):
-> >   dt-bindings: pinctrl: mt2712: add binding document
-> >   arm64: dts: mt2712: add pintcrl device node.
-> >   pinctrl: add mt2712 pinctrl driver
-> > 
-> >  .../devicetree/bindings/pinctrl/pinctrl-mt65xx.txt |    1 +
-> >  arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h      | 1014 +++++++++++
-> >  arch/arm64/boot/dts/mediatek/mt2712e.dtsi          |   18 +
-> 
-> mt2712e.dtsi doesn't exists in v4.13-rc1.
-> What's the base for this series? 
-> 
->
-> 
-> 
-==> This patch is based on 
-http://lists.infradead.org/pipermail/linux-mediatek/2017-July/009618.html
-I forgot to add the comment, I will add it in the next version.
-Thanks.
+This patch adds documentation for device tree bindings for keys support
+as the subnode of MT6397/MT6323 PMIC.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
+---
+ Documentation/devicetree/bindings/mfd/mt6397.txt |    6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
+index 522a3bb..d1df77f 100644
+--- a/Documentation/devicetree/bindings/mfd/mt6397.txt
++++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
+@@ -7,6 +7,7 @@ MT6397/MT6323 is a multifunction device with the following sub modules:
+ - GPIO
+ - Clock
+ - LED
++- Keys
+ 
+ It is interfaced to host controller using SPI interface by a proprietary hardware
+ called PMIC wrapper or pwrap. MT6397/MT6323 MFD is a child device of pwrap.
+@@ -40,6 +41,11 @@ Optional subnodes:
+ 		- compatible: "mediatek,mt6323-led"
+ 	see Documentation/devicetree/bindings/leds/leds-mt6323.txt
+ 
++- keys
++	Required properties:
++		- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
++	see Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
++
+ Example:
+ 	pwrap: pwrap@1000f000 {
+ 		compatible = "mediatek,mt8135-pwrap";
+-- 
+1.7.9.5
+
