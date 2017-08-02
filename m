@@ -1,54 +1,54 @@
-From: Zhi Mao <zhi.mao@mediatek.com>
-Subject: Re: [PATCH v3 0/6] mediatek: pwm driver add MT2712/MT7622 support
-Date: Wed, 2 Aug 2017 15:19:54 +0800
-Message-ID: <1501658394.22478.36.camel@mhfsdcap03>
-References: <1498802721-32455-1-git-send-email-zhi.mao@mediatek.com>
-         <1500261364.22478.32.camel@mhfsdcap03>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 1/2] arm: dts: mt7623: fix mmc interrupt assignment
+Date: Wed, 2 Aug 2017 15:20:59 +0800
+Message-ID: <1501658459.29348.1.camel@mtkswgap22>
+References: <20170801134009.14349-1-matthias.bgg@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <1500261364.22478.32.camel@mhfsdcap03>
-Sender: linux-pwm-owner@vger.kernel.org
-To: "john@phrozen.org" <john@phrozen.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-pwm@vger.kernel.org" <linux-pwm@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?= <Yingjoe.Chen@mediatek.com>, YT Shen =?UTF-8?Q?=28=E6=B2=88=E5=B2=B3=E9=9C=86=29?= <Yt.Shen@mediatek.com>, Sean Wang =?UTF-8?Q?=28=E7=8E=8B=E5=BF=97=E4=BA=98=29?=
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170801134009.14349-1-matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi John, Matthais & Thierry,
+On Tue, 2017-08-01 at 15:40 +0200, Matthias Brugger wrote:
+> The mmc1 interrupt should be connected to GIC_SPI 40,
+> this patch fixes this.
 > 
-> Just a gentle ping on this issue again.
-> Do you have any update?
+> Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/mt7623.dtsi | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Regards,
-> Zhi
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index 4ae0ab07e053..2a877ed8ff23 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -648,7 +648,7 @@
+>  		compatible = "mediatek,mt7623-mmc",
+>  			     "mediatek,mt8135-mmc";
+>  		reg = <0 0x11240000 0 0x1000>;
+> -		interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_LOW>;
+>  		clocks = <&pericfg CLK_PERI_MSDC30_1>,
+>  			 <&topckgen CLK_TOP_MSDC30_1_SEL>;
+>  		clock-names = "source", "hclk";
 
 
-On Mon, 2017-07-17 at 11:16 +0800, Zhi Mao wrote:
-> Hi John, Matthais & PWM Maintainers
-> 
-> Just a Gentle ping on this issue :)
-> Is there anything should be modified?
-> 
-> Regards,
-> Zhi
-> 
-> 
-> On Fri, 2017-06-30 at 14:05 +0800, Zhi Mao wrote:
-> > change in v3:
-> > 1. add pwm clk disable in function:mtk_pwm_config()
-> >    for error parameter checking case
-> > 
-> > Zhi Mao (6):
-> >   pwm: kconfig: modify mediatek information
-> >   pwm: mediatek: fix pwm source clock selection
-> >   pwm: mediatek: fix clock control issue
-> >   pwm: bindings: add MT2712/MT7622 information
-> >   pwm: mediatek: add PWM_CLK_DIV_MAX
-> >   pwm: mediatek: add MT2712/MT7622 support
-> > 
-> >  .../devicetree/bindings/pwm/pwm-mediatek.txt       |    6 +-
-> >  drivers/pwm/Kconfig                                |    2 +-
-> >  drivers/pwm/pwm-mediatek.c                         |  133 ++++++++++++++------
-> >  3 files changed, 104 insertions(+), 37 deletions(-)
-> > 
-> 
+Hi, Matthias
+
+many thanks!
+
+Acked-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+
+	Sean
