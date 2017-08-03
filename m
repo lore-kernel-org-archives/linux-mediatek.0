@@ -1,313 +1,81 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v3] arm: dts: mt7623: Add SD-card and EMMC to bananapi-r2
-Date: Thu, 3 Aug 2017 22:25:16 +0800
-Message-ID: <1501770316.4398.10.camel@mtkswgap22>
-References: <687af2dc98feffc678945f130c03ca020d9ca7b5.1501748754.git.sean.wang@mediatek.com>
-         <1501749538.4398.6.camel@mtkswgap22>
-         <18397c89-e569-c3f7-ce3f-24e91c2770c9@gmail.com>
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH 1/2] usb: mtu3: add a vbus debugfs interface
+Date: Thu, 3 Aug 2017 09:00:57 -0700
+Message-ID: <20170803160057.GB20736@kroah.com>
+References: <1501749439-8837-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <18397c89-e569-c3f7-ce3f-24e91c2770c9@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <1501749439-8837-1-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-08-03 at 12:03 +0200, Matthias Brugger wrote:
-> Hi Sean,
-> 
-> On 08/03/2017 10:38 AM, Sean Wang wrote:
-> > Hi, Matthias,
-> > 
-> > Ryder and me tried to make the patch better, so the delivery is made in
-> > v3,  including add missing pin  state for mmc1 and remove wp-gpio
-> > because the board only has micro-sd slot that can't be adjusted for the
-> > lock manually. And also some cleanups are made for nodes sorted in
-> > alphabetical order. Thanks for Ryder to catch.
-> > 
-> 
-> Thanks for that. Would you mind to split the clean-up into another patch?
-> We should avoid patches which do cleanup and adding drivers in one go.
-> 
-> Thanks,
-> Matthias
-> 
+On Thu, Aug 03, 2017 at 04:37:18PM +0800, Chunfeng Yun wrote:
+> +static ssize_t ssusb_vbus_write(struct file *file,
+> +	const char __user *ubuf, size_t count, loff_t *ppos)
+> +{
+> +	struct seq_file *sf = file->private_data;
+> +	struct ssusb_mtk *ssusb = sf->private;
+> +	struct otg_switch_mtk *otg_sx = &ssusb->otg_switch;
+> +	char buf[16];
+> +
+> +	if (copy_from_user(&buf, ubuf, min_t(size_t, sizeof(buf) - 1, count)))
+> +		return -EFAULT;
+> +
+> +	if (!strncmp(buf, "on", 2)) {
+> +		ssusb_set_vbus(otg_sx, 1);
+> +	} else if (!strncmp(buf, "off", 3)) {
+> +		ssusb_set_vbus(otg_sx, 0);
 
-okay, no problem, I will split it up into two patches 
+kstrtobool() is better to use here.
 
-	Sean
+> +static int ssusb_debugfs_init(struct ssusb_mtk *ssusb)
+>  {
+>  	struct dentry *root;
+>  	struct dentry *file;
+>  
+>  	root = debugfs_create_dir(dev_name(ssusb->dev), usb_debug_root);
+>  	if (IS_ERR_OR_NULL(root)) {
 
-> > 	Sean
-> > 
-> > On Thu, 2017-08-03 at 16:29 +0800, sean.wang@mediatek.com wrote:
-> >> From: Sean Wang <sean.wang@mediatek.com>
-> >>
-> >> The bananapi-r2 board has an SD-card controller and built-in
-> >> EMMC storage so enables those devices in the devicetree. Also
-> >> cleanup nodes in alphabetical order in the patch.
-> >>
-> >> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-> >> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> >> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> >> ---
-> >>   arch/arm/boot/dts/mt7623.dtsi                 | 73 ++++++++++++++-------------
-> >>   arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 73 ++++++++++++++++++++-------
-> >>   2 files changed, 94 insertions(+), 52 deletions(-)
-> >>
-> >> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-> >> index 2a877ed..ec8a074 100644
-> >> --- a/arch/arm/boot/dts/mt7623.dtsi
-> >> +++ b/arch/arm/boot/dts/mt7623.dtsi
-> >> @@ -91,6 +91,7 @@
-> >>   			cooling-max-level = <7>;
-> >>   			clock-frequency = <1300000000>;
-> >>   		};
-> >> +
-> >>   		cpu1: cpu@1 {
-> >>   			device_type = "cpu";
-> >>   			compatible = "arm,cortex-a7";
-> >> @@ -98,6 +99,7 @@
-> >>   			operating-points-v2 = <&cpu_opp_table>;
-> >>   			clock-frequency = <1300000000>;
-> >>   		};
-> >> +
-> >>   		cpu2: cpu@2 {
-> >>   			device_type = "cpu";
-> >>   			compatible = "arm,cortex-a7";
-> >> @@ -105,6 +107,7 @@
-> >>   			operating-points-v2 = <&cpu_opp_table>;
-> >>   			clock-frequency = <1300000000>;
-> >>   		};
-> >> +
-> >>   		cpu3: cpu@3 {
-> >>   			device_type = "cpu";
-> >>   			compatible = "arm,cortex-a7";
-> >> @@ -172,10 +175,12 @@
-> >>   					trip = <&cpu_passive>;
-> >>   					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-> >>   				};
-> >> +
-> >>   				map1 {
-> >>   					trip = <&cpu_active>;
-> >>   					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-> >>   				};
-> >> +
-> >>   				map2 {
-> >>   					trip = <&cpu_hot>;
-> >>   					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-> >> @@ -481,6 +486,31 @@
-> >>   		nvmem-cell-names = "calibration-data";
-> >>   	};
-> >>   
-> >> +	nandc: nfi@1100d000 {
-> >> +		compatible = "mediatek,mt7623-nfc",
-> >> +			     "mediatek,mt2701-nfc";
-> >> +		reg = <0 0x1100d000 0 0x1000>;
-> >> +		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_LOW>;
-> >> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
-> >> +		clocks = <&pericfg CLK_PERI_NFI>,
-> >> +			 <&pericfg CLK_PERI_NFI_PAD>;
-> >> +		clock-names = "nfi_clk", "pad_clk";
-> >> +		status = "disabled";
-> >> +		ecc-engine = <&bch>;
-> >> +		#address-cells = <1>;
-> >> +		#size-cells = <0>;
-> >> +	};
-> >> +
-> >> +	bch: ecc@1100e000 {
-> >> +		compatible = "mediatek,mt7623-ecc",
-> >> +			     "mediatek,mt2701-ecc";
-> >> +		reg = <0 0x1100e000 0 0x1000>;
-> >> +		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_LOW>;
-> >> +		clocks = <&pericfg CLK_PERI_NFI_ECC>;
-> >> +		clock-names = "nfiecc_clk";
-> >> +		status = "disabled";
-> >> +	};
-> >> +
-> >>   	spi1: spi@11016000 {
-> >>   		compatible = "mediatek,mt7623-spi",
-> >>   			     "mediatek,mt2701-spi";
-> >> @@ -509,31 +539,6 @@
-> >>   		status = "disabled";
-> >>   	};
-> >>   
-> >> -	nandc: nfi@1100d000 {
-> >> -		compatible = "mediatek,mt7623-nfc",
-> >> -			     "mediatek,mt2701-nfc";
-> >> -		reg = <0 0x1100d000 0 0x1000>;
-> >> -		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_LOW>;
-> >> -		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
-> >> -		clocks = <&pericfg CLK_PERI_NFI>,
-> >> -			 <&pericfg CLK_PERI_NFI_PAD>;
-> >> -		clock-names = "nfi_clk", "pad_clk";
-> >> -		status = "disabled";
-> >> -		ecc-engine = <&bch>;
-> >> -		#address-cells = <1>;
-> >> -		#size-cells = <0>;
-> >> -	};
-> >> -
-> >> -	bch: ecc@1100e000 {
-> >> -		compatible = "mediatek,mt7623-ecc",
-> >> -			     "mediatek,mt2701-ecc";
-> >> -		reg = <0 0x1100e000 0 0x1000>;
-> >> -		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_LOW>;
-> >> -		clocks = <&pericfg CLK_PERI_NFI_ECC>;
-> >> -		clock-names = "nfiecc_clk";
-> >> -		status = "disabled";
-> >> -	};
-> >> -
-> >>   	afe: audio-controller@11220000 {
-> >>   		compatible = "mediatek,mt7623-audio",
-> >>   			     "mediatek,mt2701-audio";
-> >> @@ -655,6 +660,15 @@
-> >>   		status = "disabled";
-> >>   	};
-> >>   
-> >> +	hifsys: syscon@1a000000 {
-> >> +		compatible = "mediatek,mt7623-hifsys",
-> >> +			     "mediatek,mt2701-hifsys",
-> >> +			     "syscon";
-> >> +		reg = <0 0x1a000000 0 0x1000>;
-> >> +		#clock-cells = <1>;
-> >> +		#reset-cells = <1>;
-> >> +	};
-> >> +
-> >>   	usb1: usb@1a1c0000 {
-> >>   		compatible = "mediatek,mt7623-xhci",
-> >>   			     "mediatek,mt8173-xhci";
-> >> @@ -733,15 +747,6 @@
-> >>   		};
-> >>   	};
-> >>   
-> >> -	hifsys: syscon@1a000000 {
-> >> -		compatible = "mediatek,mt7623-hifsys",
-> >> -			     "mediatek,mt2701-hifsys",
-> >> -			     "syscon";
-> >> -		reg = <0 0x1a000000 0 0x1000>;
-> >> -		#clock-cells = <1>;
-> >> -		#reset-cells = <1>;
-> >> -	};
-> >> -
-> >>   	ethsys: syscon@1b000000 {
-> >>   		compatible = "mediatek,mt7623-ethsys",
-> >>   			     "mediatek,mt2701-ethsys",
-> >> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> >> index 9f3e6dd..0aa1c69 100644
-> >> --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> >> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> >> @@ -179,6 +179,32 @@
-> >>   	status = "okay";
-> >>   };
-> >>   
-> >> +&mmc0 {
-> >> +	pinctrl-names = "default", "state_uhs";
-> >> +	pinctrl-0 = <&mmc0_pins_default>;
-> >> +	pinctrl-1 = <&mmc0_pins_uhs>;
-> >> +	status = "okay";
-> >> +	bus-width = <8>;
-> >> +	max-frequency = <50000000>;
-> >> +	cap-mmc-highspeed;
-> >> +	vmmc-supply = <&mt6323_vemc3v3_reg>;
-> >> +	vqmmc-supply = <&mt6323_vio18_reg>;
-> >> +	non-removable;
-> >> +};
-> >> +
-> >> +&mmc1 {
-> >> +	pinctrl-names = "default", "state_uhs";
-> >> +	pinctrl-0 = <&mmc1_pins_default>;
-> >> +	pinctrl-1 = <&mmc1_pins_uhs>;
-> >> +	status = "okay";
-> >> +	bus-width = <4>;
-> >> +	max-frequency = <50000000>;
-> >> +	cap-sd-highspeed;
-> >> +	cd-gpios = <&pio 261 0>;
-> >> +	vmmc-supply = <&mt6323_vmch_reg>;
-> >> +	vqmmc-supply = <&mt6323_vio18_reg>;
-> >> +};
-> >> +
-> >>   &pio {
-> >>   	cir_pins_a:cir@0 {
-> >>   		pins_cir {
-> >> @@ -314,6 +340,17 @@
-> >>   			bias-pull-down;
-> >>   			drive-strength = <MTK_DRIVE_4mA>;
-> >>   		};
-> >> +
-> >> +		pins_wp {
-> >> +			pinmux = <MT7623_PIN_29_EINT7_FUNC_MSDC1_WP>;
-> >> +			input-enable;
-> >> +			bias-pull-up;
-> >> +		};
-> >> +
-> >> +		pins_insert {
-> >> +			pinmux = <MT7623_PIN_261_MSDC1_INS_FUNC_GPIO261>;
-> >> +			bias-pull-up;
-> >> +		};
-> >>   	};
-> >>   
-> >>   	mmc1_pins_uhs: mmc1 {
-> >> @@ -335,16 +372,6 @@
-> >>   		};
-> >>   	};
-> >>   
-> >> -	spi0_pins_a: spi@0 {
-> >> -		pins_spi {
-> >> -			pinmux = <MT7623_PIN_53_SPI0_CSN_FUNC_SPI0_CS>,
-> >> -				<MT7623_PIN_54_SPI0_CK_FUNC_SPI0_CK>,
-> >> -				<MT7623_PIN_55_SPI0_MI_FUNC_SPI0_MI>,
-> >> -				<MT7623_PIN_56_SPI0_MO_FUNC_SPI0_MO>;
-> >> -			bias-disable;
-> >> -		};
-> >> -	};
-> >> -
-> >>   	pwm_pins_a: pwm@0 {
-> >>   		pins_pwm {
-> >>   			pinmux = <MT7623_PIN_203_PWM0_FUNC_PWM0>,
-> >> @@ -355,6 +382,16 @@
-> >>   		};
-> >>   	};
-> >>   
-> >> +	spi0_pins_a: spi@0 {
-> >> +		pins_spi {
-> >> +			pinmux = <MT7623_PIN_53_SPI0_CSN_FUNC_SPI0_CS>,
-> >> +				<MT7623_PIN_54_SPI0_CK_FUNC_SPI0_CK>,
-> >> +				<MT7623_PIN_55_SPI0_MI_FUNC_SPI0_MI>,
-> >> +				<MT7623_PIN_56_SPI0_MO_FUNC_SPI0_MO>;
-> >> +			bias-disable;
-> >> +		};
-> >> +	};
-> >> +
-> >>   	uart0_pins_a: uart@0 {
-> >>   		pins_dat {
-> >>   			pinmux = <MT7623_PIN_79_URXD0_FUNC_URXD0>,
-> >> @@ -414,14 +451,6 @@
-> >>   	status = "disabled";
-> >>   };
-> >>   
-> >> -&u3phy1 {
-> >> -	status = "okay";
-> >> -};
-> >> -
-> >> -&u3phy2 {
-> >> -	status = "okay";
-> >> -};
-> >> -
-> >>   &uart1 {
-> >>   	pinctrl-names = "default";
-> >>   	pinctrl-0 = <&uart1_pins_a>;
-> >> @@ -441,3 +470,11 @@
-> >>   	vusb33-supply = <&mt6323_vusb_reg>;
-> >>   	status = "okay";
-> >>   };
-> >> +
-> >> +&u3phy1 {
-> >> +	status = "okay";
-> >> +};
-> >> +
-> >> +&u3phy2 {
-> >> +	status = "okay";
-> >> +};
-> > 
-> > 
+That test is wrong, you should never need to care about the return value
+of a debugfs call.  You can always just use it in your next call (if it
+is a dentry *), or just ignore it.
+
+> -		if (!root)
+> -			dev_err(ssusb->dev, "create debugfs root failed\n");
+> -		return;
+> +		dev_err(ssusb->dev, "create debugfs root failed\n");
+> +		goto err_dbgfs;
+>  	}
+>  	ssusb->dbgfs_root = root;
+>  
+> -	file = debugfs_create_file("mode", S_IRUGO | S_IWUSR, root,
+> -			ssusb, &ssusb_mode_fops);
+> -	if (!file)
+> -		dev_dbg(ssusb->dev, "create debugfs mode failed\n");
+> +	file = debugfs_create_file("mode", 0644, root, ssusb, &ssusb_mode_fops);
+> +	if (!file) {
+> +		dev_err(ssusb->dev, "create debugfs mode failed\n");
+
+Same here, do not care, as it does not matter.  Actually, you don't even
+need to keep the file pointer around, right?
+
+> +		goto err_dbgfs;
+> +	}
+> +
+> +	file = debugfs_create_file("vbus", 0644, root, ssusb, &ssusb_vbus_fops);
+> +	if (!file) {
+
+Same here, you don't care if debugfs fails or not, it should never
+affect your code flow.
+
+And don't you need to remove the directory when your module/hardware is
+removed?  I don't see that happening here as you are not saving root off
+anywhere.
+
+thanks,
+
+greg k-h
