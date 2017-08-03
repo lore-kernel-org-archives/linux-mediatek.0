@@ -1,119 +1,293 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH 1/2] usb: mtu3: add a vbus debugfs interface
-Date: Thu, 3 Aug 2017 16:37:18 +0800
-Message-ID: <1501749439-8837-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v3] arm: dts: mt7623: Add SD-card and EMMC to bananapi-r2
+Date: Thu, 3 Aug 2017 16:38:58 +0800
+Message-ID: <1501749538.4398.6.camel@mtkswgap22>
+References: <687af2dc98feffc678945f130c03ca020d9ca7b5.1501748754.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <687af2dc98feffc678945f130c03ca020d9ca7b5.1501748754.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: matthias.bgg@gmail.com
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Provides a new vbus debugfs interface used to turn on/off vbus
-regulator, it also can be used to get/put reference count of
-vbus, due to sometimes we need keep it alive when manually switch
-mtu3 to device mode.
+Hi, Matthias,
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/mtu3/mtu3_dr.c |   75 +++++++++++++++++++++++++++++++++++++++-----
- 1 file changed, 67 insertions(+), 8 deletions(-)
+Ryder and me tried to make the patch better, so the delivery is made in
+v3,  including add missing pin  state for mmc1 and remove wp-gpio
+because the board only has micro-sd slot that can't be adjusted for the
+lock manually. And also some cleanups are made for nodes sorted in
+alphabetical order. Thanks for Ryder to catch.
 
-diff --git a/drivers/usb/mtu3/mtu3_dr.c b/drivers/usb/mtu3/mtu3_dr.c
-index 11a0d3b..6c75916 100644
---- a/drivers/usb/mtu3/mtu3_dr.c
-+++ b/drivers/usb/mtu3/mtu3_dr.c
-@@ -322,23 +322,82 @@ static ssize_t ssusb_mode_write(struct file *file,
- 	.release = single_release,
- };
- 
--static void ssusb_debugfs_init(struct ssusb_mtk *ssusb)
-+static int ssusb_vbus_show(struct seq_file *sf, void *unused)
-+{
-+	struct ssusb_mtk *ssusb = sf->private;
-+	struct otg_switch_mtk *otg_sx = &ssusb->otg_switch;
-+
-+	seq_printf(sf, "vbus state: %s\n(echo on/off)\n",
-+		regulator_is_enabled(otg_sx->vbus) ? "on" : "off");
-+
-+	return 0;
-+}
-+
-+static int ssusb_vbus_open(struct inode *inode, struct file *file)
-+{
-+	return single_open(file, ssusb_vbus_show, inode->i_private);
-+}
-+
-+static ssize_t ssusb_vbus_write(struct file *file,
-+	const char __user *ubuf, size_t count, loff_t *ppos)
-+{
-+	struct seq_file *sf = file->private_data;
-+	struct ssusb_mtk *ssusb = sf->private;
-+	struct otg_switch_mtk *otg_sx = &ssusb->otg_switch;
-+	char buf[16];
-+
-+	if (copy_from_user(&buf, ubuf, min_t(size_t, sizeof(buf) - 1, count)))
-+		return -EFAULT;
-+
-+	if (!strncmp(buf, "on", 2)) {
-+		ssusb_set_vbus(otg_sx, 1);
-+	} else if (!strncmp(buf, "off", 3)) {
-+		ssusb_set_vbus(otg_sx, 0);
-+	} else {
-+		dev_err(ssusb->dev, "wrong setting\n");
-+		return -EINVAL;
-+	}
-+
-+	return count;
-+}
-+
-+static const struct file_operations ssusb_vbus_fops = {
-+	.open = ssusb_vbus_open,
-+	.write = ssusb_vbus_write,
-+	.read = seq_read,
-+	.llseek = seq_lseek,
-+	.release = single_release,
-+};
-+
-+static int ssusb_debugfs_init(struct ssusb_mtk *ssusb)
- {
- 	struct dentry *root;
- 	struct dentry *file;
- 
- 	root = debugfs_create_dir(dev_name(ssusb->dev), usb_debug_root);
- 	if (IS_ERR_OR_NULL(root)) {
--		if (!root)
--			dev_err(ssusb->dev, "create debugfs root failed\n");
--		return;
-+		dev_err(ssusb->dev, "create debugfs root failed\n");
-+		goto err_dbgfs;
- 	}
- 	ssusb->dbgfs_root = root;
- 
--	file = debugfs_create_file("mode", S_IRUGO | S_IWUSR, root,
--			ssusb, &ssusb_mode_fops);
--	if (!file)
--		dev_dbg(ssusb->dev, "create debugfs mode failed\n");
-+	file = debugfs_create_file("mode", 0644, root, ssusb, &ssusb_mode_fops);
-+	if (!file) {
-+		dev_err(ssusb->dev, "create debugfs mode failed\n");
-+		goto err_dbgfs;
-+	}
-+
-+	file = debugfs_create_file("vbus", 0644, root, ssusb, &ssusb_vbus_fops);
-+	if (!file) {
-+		dev_err(ssusb->dev, "create debugfs vbus failed\n");
-+		goto err_dbgfs;
-+	}
-+
-+	return 0;
-+
-+err_dbgfs:
-+	debugfs_remove_recursive(ssusb->dbgfs_root);
-+	return -ENOMEM;
- }
- 
- static void ssusb_debugfs_exit(struct ssusb_mtk *ssusb)
--- 
-1.7.9.5
+	Sean
+
+On Thu, 2017-08-03 at 16:29 +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> The bananapi-r2 board has an SD-card controller and built-in
+> EMMC storage so enables those devices in the devicetree. Also
+> cleanup nodes in alphabetical order in the patch.
+> 
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  arch/arm/boot/dts/mt7623.dtsi                 | 73 ++++++++++++++-------------
+>  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 73 ++++++++++++++++++++-------
+>  2 files changed, 94 insertions(+), 52 deletions(-)
+> 
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index 2a877ed..ec8a074 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -91,6 +91,7 @@
+>  			cooling-max-level = <7>;
+>  			clock-frequency = <1300000000>;
+>  		};
+> +
+>  		cpu1: cpu@1 {
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a7";
+> @@ -98,6 +99,7 @@
+>  			operating-points-v2 = <&cpu_opp_table>;
+>  			clock-frequency = <1300000000>;
+>  		};
+> +
+>  		cpu2: cpu@2 {
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a7";
+> @@ -105,6 +107,7 @@
+>  			operating-points-v2 = <&cpu_opp_table>;
+>  			clock-frequency = <1300000000>;
+>  		};
+> +
+>  		cpu3: cpu@3 {
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a7";
+> @@ -172,10 +175,12 @@
+>  					trip = <&cpu_passive>;
+>  					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+>  				};
+> +
+>  				map1 {
+>  					trip = <&cpu_active>;
+>  					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+>  				};
+> +
+>  				map2 {
+>  					trip = <&cpu_hot>;
+>  					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> @@ -481,6 +486,31 @@
+>  		nvmem-cell-names = "calibration-data";
+>  	};
+>  
+> +	nandc: nfi@1100d000 {
+> +		compatible = "mediatek,mt7623-nfc",
+> +			     "mediatek,mt2701-nfc";
+> +		reg = <0 0x1100d000 0 0x1000>;
+> +		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_LOW>;
+> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+> +		clocks = <&pericfg CLK_PERI_NFI>,
+> +			 <&pericfg CLK_PERI_NFI_PAD>;
+> +		clock-names = "nfi_clk", "pad_clk";
+> +		status = "disabled";
+> +		ecc-engine = <&bch>;
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +	};
+> +
+> +	bch: ecc@1100e000 {
+> +		compatible = "mediatek,mt7623-ecc",
+> +			     "mediatek,mt2701-ecc";
+> +		reg = <0 0x1100e000 0 0x1000>;
+> +		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&pericfg CLK_PERI_NFI_ECC>;
+> +		clock-names = "nfiecc_clk";
+> +		status = "disabled";
+> +	};
+> +
+>  	spi1: spi@11016000 {
+>  		compatible = "mediatek,mt7623-spi",
+>  			     "mediatek,mt2701-spi";
+> @@ -509,31 +539,6 @@
+>  		status = "disabled";
+>  	};
+>  
+> -	nandc: nfi@1100d000 {
+> -		compatible = "mediatek,mt7623-nfc",
+> -			     "mediatek,mt2701-nfc";
+> -		reg = <0 0x1100d000 0 0x1000>;
+> -		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_LOW>;
+> -		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+> -		clocks = <&pericfg CLK_PERI_NFI>,
+> -			 <&pericfg CLK_PERI_NFI_PAD>;
+> -		clock-names = "nfi_clk", "pad_clk";
+> -		status = "disabled";
+> -		ecc-engine = <&bch>;
+> -		#address-cells = <1>;
+> -		#size-cells = <0>;
+> -	};
+> -
+> -	bch: ecc@1100e000 {
+> -		compatible = "mediatek,mt7623-ecc",
+> -			     "mediatek,mt2701-ecc";
+> -		reg = <0 0x1100e000 0 0x1000>;
+> -		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_LOW>;
+> -		clocks = <&pericfg CLK_PERI_NFI_ECC>;
+> -		clock-names = "nfiecc_clk";
+> -		status = "disabled";
+> -	};
+> -
+>  	afe: audio-controller@11220000 {
+>  		compatible = "mediatek,mt7623-audio",
+>  			     "mediatek,mt2701-audio";
+> @@ -655,6 +660,15 @@
+>  		status = "disabled";
+>  	};
+>  
+> +	hifsys: syscon@1a000000 {
+> +		compatible = "mediatek,mt7623-hifsys",
+> +			     "mediatek,mt2701-hifsys",
+> +			     "syscon";
+> +		reg = <0 0x1a000000 0 0x1000>;
+> +		#clock-cells = <1>;
+> +		#reset-cells = <1>;
+> +	};
+> +
+>  	usb1: usb@1a1c0000 {
+>  		compatible = "mediatek,mt7623-xhci",
+>  			     "mediatek,mt8173-xhci";
+> @@ -733,15 +747,6 @@
+>  		};
+>  	};
+>  
+> -	hifsys: syscon@1a000000 {
+> -		compatible = "mediatek,mt7623-hifsys",
+> -			     "mediatek,mt2701-hifsys",
+> -			     "syscon";
+> -		reg = <0 0x1a000000 0 0x1000>;
+> -		#clock-cells = <1>;
+> -		#reset-cells = <1>;
+> -	};
+> -
+>  	ethsys: syscon@1b000000 {
+>  		compatible = "mediatek,mt7623-ethsys",
+>  			     "mediatek,mt2701-ethsys",
+> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+> index 9f3e6dd..0aa1c69 100644
+> --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+> @@ -179,6 +179,32 @@
+>  	status = "okay";
+>  };
+>  
+> +&mmc0 {
+> +	pinctrl-names = "default", "state_uhs";
+> +	pinctrl-0 = <&mmc0_pins_default>;
+> +	pinctrl-1 = <&mmc0_pins_uhs>;
+> +	status = "okay";
+> +	bus-width = <8>;
+> +	max-frequency = <50000000>;
+> +	cap-mmc-highspeed;
+> +	vmmc-supply = <&mt6323_vemc3v3_reg>;
+> +	vqmmc-supply = <&mt6323_vio18_reg>;
+> +	non-removable;
+> +};
+> +
+> +&mmc1 {
+> +	pinctrl-names = "default", "state_uhs";
+> +	pinctrl-0 = <&mmc1_pins_default>;
+> +	pinctrl-1 = <&mmc1_pins_uhs>;
+> +	status = "okay";
+> +	bus-width = <4>;
+> +	max-frequency = <50000000>;
+> +	cap-sd-highspeed;
+> +	cd-gpios = <&pio 261 0>;
+> +	vmmc-supply = <&mt6323_vmch_reg>;
+> +	vqmmc-supply = <&mt6323_vio18_reg>;
+> +};
+> +
+>  &pio {
+>  	cir_pins_a:cir@0 {
+>  		pins_cir {
+> @@ -314,6 +340,17 @@
+>  			bias-pull-down;
+>  			drive-strength = <MTK_DRIVE_4mA>;
+>  		};
+> +
+> +		pins_wp {
+> +			pinmux = <MT7623_PIN_29_EINT7_FUNC_MSDC1_WP>;
+> +			input-enable;
+> +			bias-pull-up;
+> +		};
+> +
+> +		pins_insert {
+> +			pinmux = <MT7623_PIN_261_MSDC1_INS_FUNC_GPIO261>;
+> +			bias-pull-up;
+> +		};
+>  	};
+>  
+>  	mmc1_pins_uhs: mmc1 {
+> @@ -335,16 +372,6 @@
+>  		};
+>  	};
+>  
+> -	spi0_pins_a: spi@0 {
+> -		pins_spi {
+> -			pinmux = <MT7623_PIN_53_SPI0_CSN_FUNC_SPI0_CS>,
+> -				<MT7623_PIN_54_SPI0_CK_FUNC_SPI0_CK>,
+> -				<MT7623_PIN_55_SPI0_MI_FUNC_SPI0_MI>,
+> -				<MT7623_PIN_56_SPI0_MO_FUNC_SPI0_MO>;
+> -			bias-disable;
+> -		};
+> -	};
+> -
+>  	pwm_pins_a: pwm@0 {
+>  		pins_pwm {
+>  			pinmux = <MT7623_PIN_203_PWM0_FUNC_PWM0>,
+> @@ -355,6 +382,16 @@
+>  		};
+>  	};
+>  
+> +	spi0_pins_a: spi@0 {
+> +		pins_spi {
+> +			pinmux = <MT7623_PIN_53_SPI0_CSN_FUNC_SPI0_CS>,
+> +				<MT7623_PIN_54_SPI0_CK_FUNC_SPI0_CK>,
+> +				<MT7623_PIN_55_SPI0_MI_FUNC_SPI0_MI>,
+> +				<MT7623_PIN_56_SPI0_MO_FUNC_SPI0_MO>;
+> +			bias-disable;
+> +		};
+> +	};
+> +
+>  	uart0_pins_a: uart@0 {
+>  		pins_dat {
+>  			pinmux = <MT7623_PIN_79_URXD0_FUNC_URXD0>,
+> @@ -414,14 +451,6 @@
+>  	status = "disabled";
+>  };
+>  
+> -&u3phy1 {
+> -	status = "okay";
+> -};
+> -
+> -&u3phy2 {
+> -	status = "okay";
+> -};
+> -
+>  &uart1 {
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&uart1_pins_a>;
+> @@ -441,3 +470,11 @@
+>  	vusb33-supply = <&mt6323_vusb_reg>;
+>  	status = "okay";
+>  };
+> +
+> +&u3phy1 {
+> +	status = "okay";
+> +};
+> +
+> +&u3phy2 {
+> +	status = "okay";
+> +};
