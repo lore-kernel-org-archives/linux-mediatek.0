@@ -1,68 +1,50 @@
-From: Felipe Balbi <felipe.balbi@linux.intel.com>
-Subject: Re: [PATCH 2/2] MAINTAINERS: add entry for mediatek usb3 DRD IP driver
-Date: Thu, 03 Aug 2017 12:23:09 +0300
-Message-ID: <87y3r1dmyq.fsf@linux.intel.com>
-References: <1501749439-8837-1-git-send-email-chunfeng.yun@mediatek.com> <1501749439-8837-2-git-send-email-chunfeng.yun@mediatek.com>
+From: Zhi Mao <zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 0/6] mediatek: pwm driver add MT2712/MT7622 support
+Date: Thu, 3 Aug 2017 17:41:42 +0800
+Message-ID: <1501753302.22478.41.camel@mhfsdcap03>
+References: <1498802721-32455-1-git-send-email-zhi.mao@mediatek.com>
+         <1500261364.22478.32.camel@mhfsdcap03>
+         <1501658394.22478.36.camel@mhfsdcap03>
+         <a9dc58dc-d54c-6e8b-9006-8e8da1535daf@phrozen.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-        micalg=pgp-sha256; protocol="application/pgp-signature"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501749439-8837-2-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <a9dc58dc-d54c-6e8b-9006-8e8da1535daf-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Zhenbao Liu =?UTF-8?Q?=28=E5=88=98=E6=8C=AF=E5=AE=9D=29?= <Zhenbao.Liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sean Wang =?UTF-8?Q?=28=E7=8E=8B=E5=BF=97=E4=BA=98=29?= <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, YT Shen =?UTF-8?Q?=28=E6=B2=88=E5=B2=B3=E9=9C=86=29?= <Yt.Shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=
 List-Id: linux-mediatek@lists.infradead.org
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Thanks John's reply.
+
+Hi Thierry & Matthais,
+
+What's your opinion?
 
 
-Hi,
+On Wed, 2017-08-02 at 16:42 +0800, John Crispin wrote:
+> 
+> On 02/08/17 09:19, Zhi Mao wrote:
+> > Hi John, Matthais & Thierry,
+> >> Just a gentle ping on this issue again.
+> >> Do you have any update?
+> >>
+> >> Regards,
+> >> Zhi
+> Hi Zhi,
+> 
+> looks good to me
+> 
+> Acked-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+> 
+>      John
+> 
+> 
+> 
 
-Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
-> Add myself as maintainer of MediaTek USB3 DRD IP driver
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->  MAINTAINERS |    7 +++++++
->  1 file changed, 7 insertions(+)
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 205d397..0f0bcc7 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -8472,6 +8472,13 @@ M:      Sean Wang <sean.wang@mediatek.com>
->  S:      Maintained
->  F:      drivers/char/hw_random/mtk-rng.c
->=20=20
-> +MEDIATEK USB3 DRD IP DRIVER
-> +M:	Chunfeng Yun <chunfeng.yun@mediatek.com>
-> +L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
-> +L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
 
-everything USB should go to linux-usb too.
-
-=2D-=20
-balbi
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEElLzh7wn96CXwjh2IzL64meEamQYFAlmC630ACgkQzL64meEa
-mQbL9BAAsetGOL0OGwMKpYKYrMxXrt8lRf9SORXrvGChQkznPzO8ninoXppOaAon
-aYrfrE7HLYc6zR8Fst/IIKE5kA6f4bbCb6pNMALGuLr+K8tp10KNdsJ7QAP/dfdL
-mAMV0Q6axB60xUzxGO1mE9/Q+PsQRJVdkDksoLgJV3B7nApGpNCK4qnHXteE4gni
-nNdl+kNaMkqpKa9YON1JVQgJB+xYNU03W/A5sDKR1ohyVID77pJ8In34lLeOR0Ej
-qB7k8/pgNUizpn5CWecdJW+eC7G3gDompZl16nJTBbinXF20OPhvVGOWJgq4X9Ku
-ZMs9fWmq3AAhCp7ucnxOikOi8K5YfGmxCrSPCnDAviQKpoBFebPfOMUDoD3Zfi/z
-iBTSlj85jt3viLJX98IdM0gi/GskkWcGHz++wrpew4A8S0Be1KjOU2GRxc7/f7ta
-MrIHlA6M85Ir5qVvWEbps6LjkzogG5R0OqE5SOBGwIRMwiGRHHgJQr5dM7XkpnBr
-JjbAe4qUtOZjLkiazMD3rN03i2AToJBtDZK4sRcigTRUhg0iE9m1U9hMHhcPLjF6
-RSB6CIjW0pVVao+jBRFpMbVeZEvRoSMAPkVzhfl8OOp4dbMb4brPWxKhWoecmvYO
-ll1raRfFUY12nYhX2txCL3dQgIyJE+GvOyS1d/DChZ0Cp91zxiA=
-=tUAN
------END PGP SIGNATURE-----
---=-=-=--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
