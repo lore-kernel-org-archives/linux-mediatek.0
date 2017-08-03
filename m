@@ -1,30 +1,57 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 5/5] dt-bindings: PCI: add support for new generation
- controller
-Date: Thu, 3 Aug 2017 14:12:16 -0500
-Message-ID: <20170803191216.sox2avhvxyharbst@rob-hp-laptop>
-References: <cover.1501125202.git.honghui.zhang@mediatek.com>
- <54392579509fd9b9b4635559c1c4e32be63d9781.1501125202.git.honghui.zhang@mediatek.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH 056/102] PCI: mediatek: explicitly request exclusive
+ reset control
+Date: Thu, 3 Aug 2017 16:45:00 -0500
+Message-ID: <20170803214500.GF20308@bhelgaas-glaptop.roam.corp.google.com>
+References: <20170719152646.25903-1-p.zabel@pengutronix.de>
+ <20170719152646.25903-57-p.zabel@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <54392579509fd9b9b4635559c1c4e32be63d9781.1501125202.git.honghui.zhang@mediatek.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com
-Cc: bhelgaas@google.com, robh@kerenl.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+In-Reply-To: <20170719152646.25903-57-p.zabel@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jul 27, 2017 at 11:14:21AM +0800, honghui.zhang@mediatek.com wrote:
-> From: Ryder Lee <ryder.lee@mediatek.com>
+On Wed, Jul 19, 2017 at 05:26:00PM +0200, Philipp Zabel wrote:
+> Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
+> reset lines") started to transition the reset control request API calls
+> to explicitly state whether the driver needs exclusive or shared reset
+> control behavior. Convert all drivers requesting exclusive resets to the
+> explicit API call so the temporary transition helpers can be removed.
 > 
-> Add support for MediaTek new generation controller and update related
-> properities.
+> No functional changes.
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> ---
->  .../devicetree/bindings/pci/mediatek-pcie.txt      | 168 ++++++++++++++++++++-
->  1 file changed, 161 insertions(+), 7 deletions(-)
+> Cc: Ryder Lee <ryder.lee@mediatek.com>
+> Cc: Bjorn Helgaas <bhelgaas@google.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: linux-pci@vger.kernel.org
+> Cc: linux-mediatek@lists.infradead.org
+> Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
 
-Acked-by: Rob Herring <robh@kernel.org>
+Applied to pci/host-mediatek for v4.14, thanks!
+
+Ryder, Matthias, holler if you see any issues.
+
+> ---
+>  drivers/pci/host/pcie-mediatek.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+> index 5a9d8589ea0bd..9c9f89bcf24ce 100644
+> --- a/drivers/pci/host/pcie-mediatek.c
+> +++ b/drivers/pci/host/pcie-mediatek.c
+> @@ -303,7 +303,7 @@ static int mtk_pcie_parse_ports(struct mtk_pcie *pcie,
+>  	}
+>  
+>  	snprintf(name, sizeof(name), "pcie-rst%d", index);
+> -	port->reset = devm_reset_control_get_optional(dev, name);
+> +	port->reset = devm_reset_control_get_optional_exclusive(dev, name);
+>  	if (PTR_ERR(port->reset) == -EPROBE_DEFER)
+>  		return PTR_ERR(port->reset);
+>  
+> -- 
+> 2.11.0
+> 
