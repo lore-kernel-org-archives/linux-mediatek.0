@@ -1,48 +1,71 @@
-From: Zhi Mao <zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 0/6] mediatek: pwm driver add MT2712/MT7622 support
-Date: Thu, 3 Aug 2017 17:41:42 +0800
-Message-ID: <1501753302.22478.41.camel@mhfsdcap03>
-References: <1498802721-32455-1-git-send-email-zhi.mao@mediatek.com>
-         <1500261364.22478.32.camel@mhfsdcap03>
-         <1501658394.22478.36.camel@mhfsdcap03>
-         <a9dc58dc-d54c-6e8b-9006-8e8da1535daf@phrozen.org>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 4/4] dt-bindings: phy-mt65xx-usb: supports PCIe, SATA and rename file
+Date: Thu, 3 Aug 2017 18:01:03 +0800
+Message-ID: <b6d9a64f328356fb726845a7c7903683eb496c01.1501753328.git.chunfeng.yun@mediatek.com>
+References: <72854b92d5d86698e5cbb427b1009e346eb15978.1501753328.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <a9dc58dc-d54c-6e8b-9006-8e8da1535daf-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+In-Reply-To: <72854b92d5d86698e5cbb427b1009e346eb15978.1501753328.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Zhenbao Liu =?UTF-8?Q?=28=E5=88=98=E6=8C=AF=E5=AE=9D=29?= <Zhenbao.Liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sean Wang =?UTF-8?Q?=28=E7=8E=8B=E5=BF=97=E4=BA=98=29?= <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, YT Shen =?UTF-8?Q?=28=E6=B2=88=E5=B2=B3=E9=9C=86=29?= <Yt.Shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Thanks John's reply.
+add support for PCIe and SATA, also add some new compatibles.
 
-Hi Thierry & Matthais,
+due to phy-mt65xx-usb.txt holds the bindings for all mediatek SoCs
+with T-PHY controller, change the name to phy-mtk-tphy.txt to
+reflect that.
 
-What's your opinion?
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ .../phy/{phy-mt65xx-usb.txt => phy-mtk-tphy.txt}   |   17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+ rename Documentation/devicetree/bindings/phy/{phy-mt65xx-usb.txt => phy-mtk-tphy.txt} (88%)
 
-
-On Wed, 2017-08-02 at 16:42 +0800, John Crispin wrote:
-> 
-> On 02/08/17 09:19, Zhi Mao wrote:
-> > Hi John, Matthais & Thierry,
-> >> Just a gentle ping on this issue again.
-> >> Do you have any update?
-> >>
-> >> Regards,
-> >> Zhi
-> Hi Zhi,
-> 
-> looks good to me
-> 
-> Acked-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-> 
->      John
-> 
-> 
-> 
-
+diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+similarity index 88%
+rename from Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+rename to Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+index 0acc5a9..faf1808 100644
+--- a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
++++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+@@ -1,13 +1,18 @@
+-mt65xx USB3.0 PHY binding
++MediaTek T-PHY binding
+ --------------------------
+ 
+-This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
++T-phy controller supports physical layer functionality for a number of
++controllers on MediaTek SoCs, such as, USB2.0, USB3.0, PCIe, and SATA.
+ 
+ Required properties (controller (parent) node):
+  - compatible	: should be one of
+-		  "mediatek,mt2701-u3phy"
+-		  "mediatek,mt2712-u3phy"
+-		  "mediatek,mt8173-u3phy"
++		  "mediatek,generic-tphy-v1"
++		  "mediatek,generic-tphy-v2"
++		  "mediatek,mt2701-u3phy" (deprecated)
++		  "mediatek,mt2712-u3phy" (deprecated)
++		  "mediatek,mt8173-u3phy";
++		  make use of "mediatek,generic-tphy-v1" on mt2701 instead and
++		  "mediatek,generic-tphy-v2" on mt2712 instead.
+  - clocks	: (deprecated, use port's clocks instead) a list of phandle +
+ 		  clock-specifier pairs, one for each entry in clock-names
+  - clock-names	: (deprecated, use port's one instead) must contain
+@@ -35,6 +40,8 @@ Required properties (port (child) node):
+ 		  cell after port phandle is phy type from:
+ 			- PHY_TYPE_USB2
+ 			- PHY_TYPE_USB3
++			- PHY_TYPE_PCIE
++			- PHY_TYPE_SATA
+ 
+ Example:
+ 
+-- 
+1.7.9.5
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
