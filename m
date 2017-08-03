@@ -1,268 +1,234 @@
-From: John Crispin <john@phrozen.org>
-Subject: Re: [V3 1/2] phy: ralink-usb: add driver for Mediatek/Ralink
-Date: Thu, 3 Aug 2017 13:56:07 +0200
-Message-ID: <3e78faeb-4da0-75b5-bfb4-0ffa9548c29d@phrozen.org>
-References: <1501756323-61555-1-git-send-email-harvey.hunt@imgtec.com>
+From: Cihangir Akturk <cakturk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH 00/29] DRM API conversions
+Date: Thu,  3 Aug 2017 14:58:15 +0300
+Message-ID: <1501761585-11757-1-git-send-email-cakturk@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501756323-61555-1-git-send-email-harvey.hunt@imgtec.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Harvey Hunt <harvey.hunt@imgtec.com>, robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, kishon@ti.com
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Xinliang Liu <xinliang.liu-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Benjamin Herrenschmidt <benh-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Sumit Semwal <sumit.semwal-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Alex Xie <AlexBin.Xie-5C7GfCeVMHo@public.gmane.org>, Chunming Zhou <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ben Skeggs <bskeggs-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Andrey Grodzovsky <Andrey.Grodzovsky-5C7GfCeVMHo@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, etnaviv-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Dave Airlie <airlied-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?q?Nicolai=20H=C3=A4hnle?= <Nicolai.Haehnle-5C7GfCeVMHo@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, =?UTF-8?q?Michel=20D=C3=A4nzer?= <michel.daenzer-5C7GfCeVMHo@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Alex Deucher <alexander.deucher-5C7GfCeVMHo@public.gmane.org>, Ken Wang <Qingqing.Wang-5C7GfCeVMHo@public.gmane.org>, Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>, freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Harvey,
+This patch set replaces the occurrences of drm_*_reference() and
+drm_*_unreference() with the new drm_*_get() and drm_*_put() functions.
+All patches in the series do the same thing, converting to the new APIs.
+I created patches per DRM driver as suggested by Daniel Vetter.
 
-Thanks for picking up my stale patch. small comment inline ...
+Background:
 
+In the kernel, reference counting APIs use *_get(), *_put() style naming
+to reference-count the objects. But DRM subsystem uses a different
+naming for them such as *_reference(), *_unreference() which is
+inconsistent with the other reference counting APIs in the kernel. To
+solve this consistency issue, Thierry Reding introduced a couple of
+functions and compatibility aliases in the following commits for them.
 
-On 03/08/17 12:32, Harvey Hunt wrote:
-> From: John Crispin <john@phrozen.org>
->
-> Add a driver to setup the USB phy on Mediatek/Ralink SoCs.
-> The driver is trivial and only sets up power and host mode.
->
-> Signed-off-by: John Crispin <john@phrozen.org>
-> Signed-off-by: Harvey Hunt <harvey.hunt@imgtec.com>
-> Cc: linux-kernel@vger.kernel.org
-> Cc: linux-mediatek@lists.infradead.org
-> ---
-> Changes in V3
-> * Separate DT bindings
-> * Update Kconfig text
-> * Modify John's email address
-> * Rebase onto v4.13-rc3
->
-> Changes in V2
-> * remove refcounting
-> * drop empty functions
-> * dont use static globals
-> * use explicit compatible strings
->
->   drivers/phy/Kconfig          |   8 ++
->   drivers/phy/Makefile         |   1 +
->   drivers/phy/phy-ralink-usb.c | 175 +++++++++++++++++++++++++++++++++++++++++++
->   3 files changed, 184 insertions(+)
->   create mode 100644 drivers/phy/phy-ralink-usb.c
->
-> diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
-> index c1807d4..79f966a 100644
-> --- a/drivers/phy/Kconfig
-> +++ b/drivers/phy/Kconfig
-> @@ -41,6 +41,14 @@ config PHY_PISTACHIO_USB
->   	help
->   	  Enable this to support the USB2.0 PHY on the IMG Pistachio SoC.
->   
-> +config PHY_RALINK_USB
-> +	tristate "Ralink USB PHY driver"
-> +	select GENERIC_PHY
-> +	depends on RALINK
-> +	help
-> +	  This option enables support for the Ralink USB PHY found inside
-> +	  RT3352, MT7620, MT7628 and MT7688.
-> +
->   config PHY_XGENE
->   	tristate "APM X-Gene 15Gbps PHY support"
->   	depends on HAS_IOMEM && OF && (ARM64 || COMPILE_TEST)
-> diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
-> index f252201..60ed30b 100644
-> --- a/drivers/phy/Makefile
-> +++ b/drivers/phy/Makefile
-> @@ -7,6 +7,7 @@ obj-$(CONFIG_PHY_LPC18XX_USB_OTG)	+= phy-lpc18xx-usb-otg.o
->   obj-$(CONFIG_PHY_MT65XX_USB3)		+= phy-mt65xx-usb3.o
->   obj-$(CONFIG_PHY_XGENE)			+= phy-xgene.o
->   obj-$(CONFIG_PHY_PISTACHIO_USB)		+= phy-pistachio-usb.o
-> +obj-$(CONFIG_PHY_RALINK_USB)		+= phy-ralink-usb.o
->   
->   obj-$(CONFIG_ARCH_SUNXI)		+= allwinner/
->   obj-$(CONFIG_ARCH_MESON)		+= amlogic/
-> diff --git a/drivers/phy/phy-ralink-usb.c b/drivers/phy/phy-ralink-usb.c
-> new file mode 100644
-> index 0000000..c693fb1
-> --- /dev/null
-> +++ b/drivers/phy/phy-ralink-usb.c
-> @@ -0,0 +1,175 @@
-> +/*
-> + * Allwinner ralink USB phy driver
-We should remove the "Allwinner" from the header
+commit 020a218f95bd3ceff7dd1022ff7ebc0497bc7bf9
+Author: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Date:   Tue Feb 28 15:46:38 2017 +0100
 
-     John
+    drm: Introduce drm_mode_object_{get,put}()
+
+commit ad09360750afa18a0a0ce0253d6ea6033abc22e7
+Author: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Date:   Tue Feb 28 15:46:39 2017 +0100
+
+    drm: Introduce drm_connector_{get,put}()
+
+commit a4a69da06bc11a937a6e417938b1bb698ee1fa46
+Author: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Date:   Tue Feb 28 15:46:40 2017 +0100
+
+    drm: Introduce drm_framebuffer_{get,put}()
+
+commit e6b62714e87c8811d5564b6a0738dcde63a51774
+Author: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Date:   Tue Feb 28 15:46:41 2017 +0100
+
+    drm: Introduce drm_gem_object_{get,put}()
+
+commit 6472e5090be7c78749a3c279b4faae87ab835c40
+Author: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Date:   Tue Feb 28 15:46:42 2017 +0100
+
+    drm: Introduce drm_property_blob_{get,put}()
 
 
+This patch set was generated using the following shell script:
 
-> + *
-> + * Copyright (C) 2016 John Crispin <john@phrozen.org>
-> + *
-> + * Based on code from
-> + * Allwinner Technology Co., Ltd. <www.allwinnertech.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <linux/delay.h>
-> +#include <linux/err.h>
-> +#include <linux/io.h>
-> +#include <linux/kernel.h>
-> +#include <linux/module.h>
-> +#include <linux/mutex.h>
-> +#include <linux/phy/phy.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/reset.h>
-> +#include <linux/of_platform.h>
-> +
-> +#include <asm/mach-ralink/ralink_regs.h>
-> +
-> +#define RT_SYSC_REG_SYSCFG1		0x014
-> +#define RT_SYSC_REG_CLKCFG1		0x030
-> +#define RT_SYSC_REG_USB_PHY_CFG		0x05c
-> +
-> +#define RT_RSTCTRL_UDEV			BIT(25)
-> +#define RT_RSTCTRL_UHST			BIT(22)
-> +#define RT_SYSCFG1_USB0_HOST_MODE	BIT(10)
-> +
-> +#define MT7620_CLKCFG1_UPHY0_CLK_EN	BIT(25)
-> +#define MT7620_CLKCFG1_UPHY1_CLK_EN	BIT(22)
-> +#define RT_CLKCFG1_UPHY1_CLK_EN		BIT(20)
-> +#define RT_CLKCFG1_UPHY0_CLK_EN		BIT(18)
-> +
-> +#define USB_PHY_UTMI_8B60M		BIT(1)
-> +#define UDEV_WAKEUP			BIT(0)
-> +
-> +struct ralink_usb_phy {
-> +	struct reset_control	*rstdev;
-> +	struct reset_control	*rsthost;
-> +	u32			clk;
-> +	struct phy		*phy;
-> +};
-> +
-> +static int ralink_usb_phy_power_on(struct phy *_phy)
-> +{
-> +	struct ralink_usb_phy *phy = phy_get_drvdata(_phy);
-> +	u32 t;
-> +
-> +	/* enable the phy */
-> +	rt_sysc_m32(0, phy->clk, RT_SYSC_REG_CLKCFG1);
-> +
-> +	/* setup host mode */
-> +	rt_sysc_m32(0, RT_SYSCFG1_USB0_HOST_MODE, RT_SYSC_REG_SYSCFG1);
-> +
-> +	/* deassert the reset lines */
-> +	reset_control_deassert(phy->rsthost);
-> +	reset_control_deassert(phy->rstdev);
-> +
-> +	/*
-> +	 * The SDK kernel had a delay of 100ms. however on device
-> +	 * testing showed that 10ms is enough
-> +	 */
-> +	mdelay(10);
-> +
-> +	/* print some status info */
-> +	t = rt_sysc_r32(RT_SYSC_REG_USB_PHY_CFG);
-> +	dev_info(&phy->phy->dev, "remote usb device wakeup %s\n",
-> +		(t & UDEV_WAKEUP) ? ("enabled") : ("disabled"));
-> +	if (t & USB_PHY_UTMI_8B60M)
-> +		dev_info(&phy->phy->dev, "UTMI 8bit 60MHz\n");
-> +	else
-> +		dev_info(&phy->phy->dev, "UTMI 16bit 30MHz\n");
-> +
-> +	return 0;
-> +}
-> +
-> +static int ralink_usb_phy_power_off(struct phy *_phy)
-> +{
-> +	struct ralink_usb_phy *phy = phy_get_drvdata(_phy);
-> +
-> +	/* disable the phy */
-> +	rt_sysc_m32(phy->clk, 0, RT_SYSC_REG_CLKCFG1);
-> +
-> +	/* assert the reset lines */
-> +	reset_control_assert(phy->rstdev);
-> +	reset_control_assert(phy->rsthost);
-> +
-> +	return 0;
-> +}
-> +
-> +static struct phy_ops ralink_usb_phy_ops = {
-> +	.power_on	= ralink_usb_phy_power_on,
-> +	.power_off	= ralink_usb_phy_power_off,
-> +	.owner		= THIS_MODULE,
-> +};
-> +
-> +static const struct of_device_id ralink_usb_phy_of_match[] = {
-> +	{
-> +		.compatible = "ralink,rt3352-usbphy",
-> +		.data = (void *) (RT_CLKCFG1_UPHY1_CLK_EN |
-> +				  RT_CLKCFG1_UPHY0_CLK_EN)
-> +	},
-> +	{
-> +		.compatible = "mediatek,mt7620-usbphy",
-> +		.data = (void *) (MT7620_CLKCFG1_UPHY1_CLK_EN |
-> +				  MT7620_CLKCFG1_UPHY0_CLK_EN) },
-> +	{ },
-> +};
-> +MODULE_DEVICE_TABLE(of, ralink_usb_phy_of_match);
-> +
-> +static int ralink_usb_phy_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct phy_provider *phy_provider;
-> +	const struct of_device_id *match;
-> +	struct ralink_usb_phy *phy;
-> +
-> +	phy = devm_kzalloc(dev, sizeof(*phy), GFP_KERNEL);
-> +	if (!phy)
-> +		return -ENOMEM;
-> +
-> +	match = of_match_device(ralink_usb_phy_of_match, &pdev->dev);
-> +	if (!match)
-> +		return -ENODEV;
-> +
-> +	phy->clk = (int) match->data;
-> +
-> +	phy->rsthost = devm_reset_control_get(&pdev->dev, "host");
-> +	if (IS_ERR(phy->rsthost)) {
-> +		dev_err(dev, "host reset is missing\n");
-> +		return PTR_ERR(phy->rsthost);
-> +	}
-> +
-> +	phy->rstdev = devm_reset_control_get(&pdev->dev, "device");
-> +	if (IS_ERR(phy->rstdev)) {
-> +		dev_err(dev, "device reset is missing\n");
-> +		return PTR_ERR(phy->rstdev);
-> +	}
-> +
-> +	phy->phy = devm_phy_create(dev, NULL, &ralink_usb_phy_ops);
-> +	if (IS_ERR(phy->phy)) {
-> +		dev_err(dev, "failed to create PHY\n");
-> +		return PTR_ERR(phy->phy);
-> +	}
-> +	phy_set_drvdata(phy->phy, phy);
-> +
-> +	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
-> +
-> +	return PTR_ERR_OR_ZERO(phy_provider);
-> +}
-> +
-> +static struct platform_driver ralink_usb_phy_driver = {
-> +	.probe	= ralink_usb_phy_probe,
-> +	.driver = {
-> +		.of_match_table	= ralink_usb_phy_of_match,
-> +		.name  = "ralink-usb-phy",
-> +	}
-> +};
-> +module_platform_driver(ralink_usb_phy_driver);
-> +
-> +MODULE_DESCRIPTION("Ralink USB phy driver");
-> +MODULE_AUTHOR("John Crispin <john@phrozen.org>");
-> +MODULE_LICENSE("GPL v2");
+#!/bin/sh
+
+path=$1
+
+do_replace() {
+    local pattern=$1
+    local replacement=$2
+
+    git grep -lw "${pattern}" -- "${path}/*.[hc]" |\
+        xargs -r sed -i "s/\b$pattern\b/$replacement/g"
+}
+
+do_replace drm_mode_object_reference drm_mode_object_get
+do_replace drm_mode_object_unreference drm_mode_object_put
+do_replace drm_connector_reference drm_connector_get
+do_replace drm_connector_unreference drm_connector_put
+do_replace drm_framebuffer_reference drm_framebuffer_get
+do_replace drm_framebuffer_unreference drm_framebuffer_put
+do_replace drm_gem_object_reference drm_gem_object_get
+do_replace drm_gem_object_unreference drm_gem_object_put
+do_replace __drm_gem_object_unreference __drm_gem_object_put
+do_replace drm_gem_object_unreference_unlocked drm_gem_object_put_unlocked
+do_replace drm_property_reference_blob drm_property_blob_get
+do_replace drm_property_unreference_blob drm_property_blob_put
+
+Cihangir Akturk (29):
+  drm/amdgpu: switch to drm_*{get,put} helpers
+  drm: mali-dp: switch to drm_*{get,put} helpers
+  drm/armada: switch to drm_*{get,put} helpers
+  drm/ast: switch to drm_*{get,put} helpers
+  drm/atmel-hlcdc: switch to drm_*{get,put} helpers
+  drm/bochs: switch to drm_*{get,put} helpers
+  drm/cirrus: switch to drm_*{get,put} helpers
+  drm/etnaviv: switch to drm_*{get,put} helpers
+  drm/exynos: switch to drm_*{get,put} helpers
+  drm/gma500: switch to drm_*{get,put} helpers
+  drm/hisilicon: switch to drm_*{get,put} helpers
+  drm/i915: switch to drm_*{get,put} helpers
+  drm/imx: switch to drm_*{get,put} helpers
+  drm/mediatek: switch to drm_*{get,put} helpers
+  drm/mgag200: switch to drm_*{get,put} helpers
+  drm/msm: switch to drm_*{get,put} helpers
+  drm/nouveau: switch to drm_*{get,put} helpers
+  drm/omap: switch to drm_*{get,put} helpers
+  drm/qxl: switch to drm_*{get,put} helpers
+  drm/radeon: switch to drm_*{get,put} helpers
+  drm/rockchip: switch to drm_*{get,put} helpers
+  drm/tegra: switch to drm_*{get,put} helpers
+  drm/tilcdc: switch to drm_*{get,put} helpers
+  drm/udl: switch to drm_*{get,put} helpers
+  drm/vc4: switch to drm_*{get,put} helpers
+  drm/vgem: switch to drm_*{get,put} helpers
+  drm/virtio: switch to drm_*{get,put} helpers
+  drm/vmwgfx: switch to drm_*{get,put} helpers
+  staging: vboxvideo: switch to drm_*{get,put} helpers
+
+ drivers/gpu/drm/amd/amdgpu/amdgpu_bo_list.c       |  2 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_cs.c            |  2 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_display.c       |  6 ++---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_fb.c            |  4 +--
+ drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c           | 22 ++++++++---------
+ drivers/gpu/drm/amd/amdgpu/dce_v10_0.c            |  6 ++---
+ drivers/gpu/drm/amd/amdgpu/dce_v11_0.c            |  6 ++---
+ drivers/gpu/drm/amd/amdgpu/dce_v6_0.c             |  6 ++---
+ drivers/gpu/drm/amd/amdgpu/dce_v8_0.c             |  6 ++---
+ drivers/gpu/drm/arm/malidp_planes.c               |  2 +-
+ drivers/gpu/drm/armada/armada_crtc.c              | 22 ++++++++---------
+ drivers/gpu/drm/armada/armada_drv.c               |  2 +-
+ drivers/gpu/drm/armada/armada_fb.c                |  8 +++---
+ drivers/gpu/drm/armada/armada_fbdev.c             |  6 ++---
+ drivers/gpu/drm/armada/armada_gem.c               | 14 +++++------
+ drivers/gpu/drm/armada/armada_overlay.c           |  4 +--
+ drivers/gpu/drm/ast/ast_fb.c                      |  2 +-
+ drivers/gpu/drm/ast/ast_main.c                    | 10 ++++----
+ drivers/gpu/drm/ast/ast_mode.c                    |  6 ++---
+ drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c   |  8 +++---
+ drivers/gpu/drm/bochs/bochs_fbdev.c               |  2 +-
+ drivers/gpu/drm/bochs/bochs_mm.c                  | 10 ++++----
+ drivers/gpu/drm/cirrus/cirrus_fbdev.c             |  2 +-
+ drivers/gpu/drm/cirrus/cirrus_main.c              | 10 ++++----
+ drivers/gpu/drm/etnaviv/etnaviv_drv.c             |  8 +++---
+ drivers/gpu/drm/etnaviv/etnaviv_gem.c             | 20 +++++++--------
+ drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c       |  2 +-
+ drivers/gpu/drm/etnaviv/etnaviv_gem_submit.c      |  4 +--
+ drivers/gpu/drm/exynos/exynos_drm_fb.c            |  4 +--
+ drivers/gpu/drm/exynos/exynos_drm_gem.c           | 12 ++++-----
+ drivers/gpu/drm/exynos/exynos_drm_plane.c         |  2 +-
+ drivers/gpu/drm/gma500/framebuffer.c              |  4 +--
+ drivers/gpu/drm/gma500/gem.c                      |  4 +--
+ drivers/gpu/drm/gma500/gma_display.c              |  6 ++---
+ drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_fbdev.c |  4 +--
+ drivers/gpu/drm/hisilicon/hibmc/hibmc_ttm.c       |  8 +++---
+ drivers/gpu/drm/i915/i915_gem_object.h            | 10 ++++----
+ drivers/gpu/drm/i915/intel_display.c              | 24 +++++++++---------
+ drivers/gpu/drm/i915/intel_dp_mst.c               |  2 +-
+ drivers/gpu/drm/i915/intel_fbdev.c                |  4 +--
+ drivers/gpu/drm/imx/ipuv3-crtc.c                  |  2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_fb.c             |  4 +--
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c            |  4 +--
+ drivers/gpu/drm/mgag200/mgag200_cursor.c          |  2 +-
+ drivers/gpu/drm/mgag200/mgag200_fb.c              |  4 +--
+ drivers/gpu/drm/mgag200/mgag200_main.c            | 10 ++++----
+ drivers/gpu/drm/msm/adreno/a5xx_gpu.c             | 10 ++++----
+ drivers/gpu/drm/msm/adreno/a5xx_power.c           |  2 +-
+ drivers/gpu/drm/msm/adreno/adreno_gpu.c           |  2 +-
+ drivers/gpu/drm/msm/mdp/mdp4/mdp4_crtc.c          |  6 ++---
+ drivers/gpu/drm/msm/mdp/mdp4/mdp4_kms.c           |  2 +-
+ drivers/gpu/drm/msm/mdp/mdp5/mdp5_crtc.c          |  2 +-
+ drivers/gpu/drm/msm/mdp/mdp5/mdp5_plane.c         |  4 +--
+ drivers/gpu/drm/msm/msm_drv.c                     |  8 +++---
+ drivers/gpu/drm/msm/msm_fb.c                      |  4 +--
+ drivers/gpu/drm/msm/msm_fbdev.c                   |  2 +-
+ drivers/gpu/drm/msm/msm_gem.c                     |  8 +++---
+ drivers/gpu/drm/msm/msm_gem_submit.c              |  4 +--
+ drivers/gpu/drm/msm/msm_gpu.c                     |  4 +--
+ drivers/gpu/drm/msm/msm_ringbuffer.c              |  2 +-
+ drivers/gpu/drm/nouveau/dispnv04/crtc.c           |  2 +-
+ drivers/gpu/drm/nouveau/nouveau_abi16.c           |  2 +-
+ drivers/gpu/drm/nouveau/nouveau_display.c         |  8 +++---
+ drivers/gpu/drm/nouveau/nouveau_fbcon.c           |  2 +-
+ drivers/gpu/drm/nouveau/nouveau_gem.c             | 14 +++++------
+ drivers/gpu/drm/nouveau/nv50_display.c            |  2 +-
+ drivers/gpu/drm/omapdrm/omap_drv.c                |  2 +-
+ drivers/gpu/drm/omapdrm/omap_fb.c                 |  4 +--
+ drivers/gpu/drm/omapdrm/omap_fbdev.c              |  2 +-
+ drivers/gpu/drm/omapdrm/omap_gem.c                |  4 +--
+ drivers/gpu/drm/omapdrm/omap_gem_dmabuf.c         |  2 +-
+ drivers/gpu/drm/qxl/qxl_display.c                 |  4 +--
+ drivers/gpu/drm/qxl/qxl_dumb.c                    |  2 +-
+ drivers/gpu/drm/qxl/qxl_fb.c                      |  6 ++---
+ drivers/gpu/drm/qxl/qxl_gem.c                     |  2 +-
+ drivers/gpu/drm/qxl/qxl_ioctl.c                   |  4 +--
+ drivers/gpu/drm/qxl/qxl_object.c                  |  6 ++---
+ drivers/gpu/drm/radeon/radeon_cs.c                |  2 +-
+ drivers/gpu/drm/radeon/radeon_cursor.c            |  6 ++---
+ drivers/gpu/drm/radeon/radeon_display.c           | 12 ++++-----
+ drivers/gpu/drm/radeon/radeon_fb.c                |  4 +--
+ drivers/gpu/drm/radeon/radeon_gem.c               | 30 +++++++++++------------
+ drivers/gpu/drm/radeon/radeon_object.c            |  2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c        |  6 ++---
+ drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c     |  2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c       |  4 +--
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c       |  4 +--
+ drivers/gpu/drm/tegra/drm.c                       | 12 ++++-----
+ drivers/gpu/drm/tegra/fb.c                        |  8 +++---
+ drivers/gpu/drm/tegra/gem.c                       | 10 ++++----
+ drivers/gpu/drm/tilcdc/tilcdc_crtc.c              |  6 ++---
+ drivers/gpu/drm/udl/udl_fb.c                      |  6 ++---
+ drivers/gpu/drm/udl/udl_gem.c                     |  4 +--
+ drivers/gpu/drm/vc4/vc4_bo.c                      | 12 ++++-----
+ drivers/gpu/drm/vc4/vc4_crtc.c                    |  6 ++---
+ drivers/gpu/drm/vc4/vc4_gem.c                     | 14 +++++------
+ drivers/gpu/drm/vc4/vc4_kms.c                     |  2 +-
+ drivers/gpu/drm/vgem/vgem_drv.c                   |  4 +--
+ drivers/gpu/drm/vgem/vgem_fence.c                 |  2 +-
+ drivers/gpu/drm/virtio/virtgpu_display.c          |  4 +--
+ drivers/gpu/drm/virtio/virtgpu_gem.c              |  4 +--
+ drivers/gpu/drm/virtio/virtgpu_ioctl.c            | 14 +++++------
+ drivers/gpu/drm/vmwgfx/vmwgfx_fb.c                |  2 +-
+ drivers/gpu/drm/vmwgfx/vmwgfx_ioctl.c             |  4 +--
+ drivers/staging/vboxvideo/vbox_fb.c               |  2 +-
+ drivers/staging/vboxvideo/vbox_main.c             |  8 +++---
+ drivers/staging/vboxvideo/vbox_mode.c             |  2 +-
+ 107 files changed, 319 insertions(+), 319 deletions(-)
+
+-- 
+2.7.4
