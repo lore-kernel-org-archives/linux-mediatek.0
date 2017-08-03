@@ -1,88 +1,286 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH 0/2] serial: 8250: add support for MediaTek BTIF controller
-Date: Thu, 3 Aug 2017 11:18:11 +0800
-Message-ID: <1501730291.21633.12.camel@mtkswgap22>
-References: <cover.1501692369.git.sean.wang@mediatek.com>
- <1501694063.29303.361.camel@linux.intel.com>
- <1501695470.25246.7.camel@mtkswgap22>
- <1501696935.29303.367.camel@linux.intel.com>
+From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v3] arm: dts: mt7623: Add SD-card and EMMC to bananapi-r2
+Date: Thu, 3 Aug 2017 16:29:41 +0800
+Message-ID: <687af2dc98feffc678945f130c03ca020d9ca7b5.1501748754.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1501696935.29303.367.camel@linux.intel.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: devicetree@vger.kernel.org, heikki.krogerus@linux.intel.com, vigneshr@ti.com, gregkh@linuxfoundation.org, jslaby@suse.com, hpeter@gmail.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, jan.kiszka@siemens.com, matthias.bgg@gmail.com, "arnd.bergmann" <arnd.bergmann@linaro.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-08-02 at 21:02 +0300, Andy Shevchenko wrote:
-> On Thu, 2017-08-03 at 01:37 +0800, Sean Wang wrote:
-> > On Wed, 2017-08-02 at 20:14 +0300, Andy Shevchenko wrote:
-> > > On Thu, 2017-08-03 at 01:05 +0800, sean.wang@mediatek.com wrote:
-> > > > From: Sean Wang <sean.wang@mediatek.com>
-> > > > 
-> > > > This patchset introduces the support for MediaTek BTIF controller.
-> > > > 
-> > > > MediaTek BTIF controller is the serial interface similar to UART
-> > > > but
-> > > > it
-> > > > works only as the digital device which is mainly used to
-> > > > communicate
-> > > > with
-> > > > the connectivity module also called CONNSYS inside the SoC which
-> > > > could
-> > > > be
-> > > > mostly found on those MediaTek SoCs with Bluetooth feature.
-> > > > 
-> > > > And the controller is made as being compatible with the 8250
-> > > > register
-> > > > layout so it tends to be integrated with existing 8250 core driver
-> > > > and
-> > > > have no requirement for the modem configuration additionally such
-> > > > as
-> > > > the
-> > > > baud rate calculation and assignment.
-> 
-> +Cc: Arnd.
-> 
-> > > Why it requires a separate driver?
-> > > 
-> > > 8250_of is for DT enabled drivers.
-> > > 
-> > 
-> > Hi, Andy
-> > 
-> > thanks for your information
-> > 
-> > the hardware is not completely identical to 8250 device, 
-> > it has extra registers belonged to platform control such as internal
-> > loopback, dma disable/enable, sleep/wakeup setup and so on, so I
-> > create
-> > it as a separate driver.
-> 
-> Over all 200+ LOCs I didn't see any of the above except loopback, which
-> is one property that can be easily added to 8250_of.c.
-> 
-> Moreover, if you have more code coming I would suggest you to split
-> 8250_of to library and driver parts and re-use stuff from there.
-> 
-> Arnd, what is your opinion about new 8250 OF based drivers?
-> 
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Hi, Andy
+The bananapi-r2 board has an SD-card controller and built-in
+EMMC storage so enables those devices in the devicetree. Also
+cleanup nodes in alphabetical order in the patch.
 
-many thanks for the detailed guidance.
-I will turn into reusing 8250 OF stuff in the next version and look
-forward to any idea from Arnd how to do with 8250 OF driver to add
-specific programming/data for those devices using 8250 OF.
+Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ arch/arm/boot/dts/mt7623.dtsi                 | 73 ++++++++++++++-------------
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 73 ++++++++++++++++++++-------
+ 2 files changed, 94 insertions(+), 52 deletions(-)
 
-	Sean
+diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+index 2a877ed..ec8a074 100644
+--- a/arch/arm/boot/dts/mt7623.dtsi
++++ b/arch/arm/boot/dts/mt7623.dtsi
+@@ -91,6 +91,7 @@
+ 			cooling-max-level = <7>;
+ 			clock-frequency = <1300000000>;
+ 		};
++
+ 		cpu1: cpu@1 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+@@ -98,6 +99,7 @@
+ 			operating-points-v2 = <&cpu_opp_table>;
+ 			clock-frequency = <1300000000>;
+ 		};
++
+ 		cpu2: cpu@2 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+@@ -105,6 +107,7 @@
+ 			operating-points-v2 = <&cpu_opp_table>;
+ 			clock-frequency = <1300000000>;
+ 		};
++
+ 		cpu3: cpu@3 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+@@ -172,10 +175,12 @@
+ 					trip = <&cpu_passive>;
+ 					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 				};
++
+ 				map1 {
+ 					trip = <&cpu_active>;
+ 					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 				};
++
+ 				map2 {
+ 					trip = <&cpu_hot>;
+ 					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+@@ -481,6 +486,31 @@
+ 		nvmem-cell-names = "calibration-data";
+ 	};
+ 
++	nandc: nfi@1100d000 {
++		compatible = "mediatek,mt7623-nfc",
++			     "mediatek,mt2701-nfc";
++		reg = <0 0x1100d000 0 0x1000>;
++		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_LOW>;
++		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
++		clocks = <&pericfg CLK_PERI_NFI>,
++			 <&pericfg CLK_PERI_NFI_PAD>;
++		clock-names = "nfi_clk", "pad_clk";
++		status = "disabled";
++		ecc-engine = <&bch>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++	};
++
++	bch: ecc@1100e000 {
++		compatible = "mediatek,mt7623-ecc",
++			     "mediatek,mt2701-ecc";
++		reg = <0 0x1100e000 0 0x1000>;
++		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&pericfg CLK_PERI_NFI_ECC>;
++		clock-names = "nfiecc_clk";
++		status = "disabled";
++	};
++
+ 	spi1: spi@11016000 {
+ 		compatible = "mediatek,mt7623-spi",
+ 			     "mediatek,mt2701-spi";
+@@ -509,31 +539,6 @@
+ 		status = "disabled";
+ 	};
+ 
+-	nandc: nfi@1100d000 {
+-		compatible = "mediatek,mt7623-nfc",
+-			     "mediatek,mt2701-nfc";
+-		reg = <0 0x1100d000 0 0x1000>;
+-		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_LOW>;
+-		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+-		clocks = <&pericfg CLK_PERI_NFI>,
+-			 <&pericfg CLK_PERI_NFI_PAD>;
+-		clock-names = "nfi_clk", "pad_clk";
+-		status = "disabled";
+-		ecc-engine = <&bch>;
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-	};
+-
+-	bch: ecc@1100e000 {
+-		compatible = "mediatek,mt7623-ecc",
+-			     "mediatek,mt2701-ecc";
+-		reg = <0 0x1100e000 0 0x1000>;
+-		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_LOW>;
+-		clocks = <&pericfg CLK_PERI_NFI_ECC>;
+-		clock-names = "nfiecc_clk";
+-		status = "disabled";
+-	};
+-
+ 	afe: audio-controller@11220000 {
+ 		compatible = "mediatek,mt7623-audio",
+ 			     "mediatek,mt2701-audio";
+@@ -655,6 +660,15 @@
+ 		status = "disabled";
+ 	};
+ 
++	hifsys: syscon@1a000000 {
++		compatible = "mediatek,mt7623-hifsys",
++			     "mediatek,mt2701-hifsys",
++			     "syscon";
++		reg = <0 0x1a000000 0 0x1000>;
++		#clock-cells = <1>;
++		#reset-cells = <1>;
++	};
++
+ 	usb1: usb@1a1c0000 {
+ 		compatible = "mediatek,mt7623-xhci",
+ 			     "mediatek,mt8173-xhci";
+@@ -733,15 +747,6 @@
+ 		};
+ 	};
+ 
+-	hifsys: syscon@1a000000 {
+-		compatible = "mediatek,mt7623-hifsys",
+-			     "mediatek,mt2701-hifsys",
+-			     "syscon";
+-		reg = <0 0x1a000000 0 0x1000>;
+-		#clock-cells = <1>;
+-		#reset-cells = <1>;
+-	};
+-
+ 	ethsys: syscon@1b000000 {
+ 		compatible = "mediatek,mt7623-ethsys",
+ 			     "mediatek,mt2701-ethsys",
+diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+index 9f3e6dd..0aa1c69 100644
+--- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
++++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+@@ -179,6 +179,32 @@
+ 	status = "okay";
+ };
+ 
++&mmc0 {
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc0_pins_default>;
++	pinctrl-1 = <&mmc0_pins_uhs>;
++	status = "okay";
++	bus-width = <8>;
++	max-frequency = <50000000>;
++	cap-mmc-highspeed;
++	vmmc-supply = <&mt6323_vemc3v3_reg>;
++	vqmmc-supply = <&mt6323_vio18_reg>;
++	non-removable;
++};
++
++&mmc1 {
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc1_pins_default>;
++	pinctrl-1 = <&mmc1_pins_uhs>;
++	status = "okay";
++	bus-width = <4>;
++	max-frequency = <50000000>;
++	cap-sd-highspeed;
++	cd-gpios = <&pio 261 0>;
++	vmmc-supply = <&mt6323_vmch_reg>;
++	vqmmc-supply = <&mt6323_vio18_reg>;
++};
++
+ &pio {
+ 	cir_pins_a:cir@0 {
+ 		pins_cir {
+@@ -314,6 +340,17 @@
+ 			bias-pull-down;
+ 			drive-strength = <MTK_DRIVE_4mA>;
+ 		};
++
++		pins_wp {
++			pinmux = <MT7623_PIN_29_EINT7_FUNC_MSDC1_WP>;
++			input-enable;
++			bias-pull-up;
++		};
++
++		pins_insert {
++			pinmux = <MT7623_PIN_261_MSDC1_INS_FUNC_GPIO261>;
++			bias-pull-up;
++		};
+ 	};
+ 
+ 	mmc1_pins_uhs: mmc1 {
+@@ -335,16 +372,6 @@
+ 		};
+ 	};
+ 
+-	spi0_pins_a: spi@0 {
+-		pins_spi {
+-			pinmux = <MT7623_PIN_53_SPI0_CSN_FUNC_SPI0_CS>,
+-				<MT7623_PIN_54_SPI0_CK_FUNC_SPI0_CK>,
+-				<MT7623_PIN_55_SPI0_MI_FUNC_SPI0_MI>,
+-				<MT7623_PIN_56_SPI0_MO_FUNC_SPI0_MO>;
+-			bias-disable;
+-		};
+-	};
+-
+ 	pwm_pins_a: pwm@0 {
+ 		pins_pwm {
+ 			pinmux = <MT7623_PIN_203_PWM0_FUNC_PWM0>,
+@@ -355,6 +382,16 @@
+ 		};
+ 	};
+ 
++	spi0_pins_a: spi@0 {
++		pins_spi {
++			pinmux = <MT7623_PIN_53_SPI0_CSN_FUNC_SPI0_CS>,
++				<MT7623_PIN_54_SPI0_CK_FUNC_SPI0_CK>,
++				<MT7623_PIN_55_SPI0_MI_FUNC_SPI0_MI>,
++				<MT7623_PIN_56_SPI0_MO_FUNC_SPI0_MO>;
++			bias-disable;
++		};
++	};
++
+ 	uart0_pins_a: uart@0 {
+ 		pins_dat {
+ 			pinmux = <MT7623_PIN_79_URXD0_FUNC_URXD0>,
+@@ -414,14 +451,6 @@
+ 	status = "disabled";
+ };
+ 
+-&u3phy1 {
+-	status = "okay";
+-};
+-
+-&u3phy2 {
+-	status = "okay";
+-};
+-
+ &uart1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart1_pins_a>;
+@@ -441,3 +470,11 @@
+ 	vusb33-supply = <&mt6323_vusb_reg>;
+ 	status = "okay";
+ };
++
++&u3phy1 {
++	status = "okay";
++};
++
++&u3phy2 {
++	status = "okay";
++};
+-- 
+2.7.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
