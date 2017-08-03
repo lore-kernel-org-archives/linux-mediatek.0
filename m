@@ -1,57 +1,30 @@
 From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH 056/102] PCI: mediatek: explicitly request exclusive
- reset control
-Date: Thu, 3 Aug 2017 16:45:00 -0500
-Message-ID: <20170803214500.GF20308@bhelgaas-glaptop.roam.corp.google.com>
-References: <20170719152646.25903-1-p.zabel@pengutronix.de>
- <20170719152646.25903-57-p.zabel@pengutronix.de>
+Subject: Re: [PATCH v2 1/5] PCI: mediatek: Add a structure to abstract the
+ controller generations
+Date: Thu, 3 Aug 2017 17:15:46 -0500
+Message-ID: <20170803221546.GL20308@bhelgaas-glaptop.roam.corp.google.com>
+References: <cover.1501122135.git.honghui.zhang@mediatek.com>
+ <948f9bd0881402d13e6913ad425e7dff50f3fcfc.1501122135.git.honghui.zhang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20170719152646.25903-57-p.zabel@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <948f9bd0881402d13e6913ad425e7dff50f3fcfc.1501122135.git.honghui.zhang@mediatek.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: honghui.zhang@mediatek.com
+Cc: bhelgaas@google.com, robh@kerenl.org, robh+dt@kernel.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jul 19, 2017 at 05:26:00PM +0200, Philipp Zabel wrote:
-> Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
-> reset lines") started to transition the reset control request API calls
-> to explicitly state whether the driver needs exclusive or shared reset
-> control behavior. Convert all drivers requesting exclusive resets to the
-> explicit API call so the temporary transition helpers can be removed.
+On Thu, Jul 27, 2017 at 10:58:35AM +0800, honghui.zhang@mediatek.com wrote:
+> From: Ryder Lee <ryder.lee@mediatek.com>
 > 
-> No functional changes.
+> Introduce a structure "mtk_pcie_soc" to abstract the differences between
+> controller generations, and the .startup() hook is used to encapsulate
+> some SoC-dependent related setting. In doing so, the common code which
+> will be reused by future chips.
 > 
-> Cc: Ryder Lee <ryder.lee@mediatek.com>
-> Cc: Bjorn Helgaas <bhelgaas@google.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: linux-pci@vger.kernel.org
-> Cc: linux-mediatek@lists.infradead.org
-> Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
+> In addition, we change the approaches to waiting Gen2 training by using
+> readl_poll_timeout() calls.
 
-Applied to pci/host-mediatek for v4.14, thanks!
-
-Ryder, Matthias, holler if you see any issues.
-
-> ---
->  drivers/pci/host/pcie-mediatek.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-> index 5a9d8589ea0bd..9c9f89bcf24ce 100644
-> --- a/drivers/pci/host/pcie-mediatek.c
-> +++ b/drivers/pci/host/pcie-mediatek.c
-> @@ -303,7 +303,7 @@ static int mtk_pcie_parse_ports(struct mtk_pcie *pcie,
->  	}
->  
->  	snprintf(name, sizeof(name), "pcie-rst%d", index);
-> -	port->reset = devm_reset_control_get_optional(dev, name);
-> +	port->reset = devm_reset_control_get_optional_exclusive(dev, name);
->  	if (PTR_ERR(port->reset) == -EPROBE_DEFER)
->  		return PTR_ERR(port->reset);
->  
-> -- 
-> 2.11.0
-> 
+Please split the Gen2 training change to a separate patch, since
+that's not related to the mtk_pcie_soc changes.
