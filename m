@@ -1,397 +1,102 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 1/4] phy: phy-mt65xx-usb3: add PCIe PHY support
-Date: Thu, 3 Aug 2017 18:01:00 +0800
-Message-ID: <72854b92d5d86698e5cbb427b1009e346eb15978.1501753328.git.chunfeng.yun@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] dt-bindings: mtd: add new compatible strings for mtk nor
+ controller
+Date: Thu, 3 Aug 2017 12:09:44 +0200
+Message-ID: <0796f86e-044b-5891-e56e-c96242611608@gmail.com>
+References: <1500948617-19627-1-git-send-email-guochun.mao@mediatek.com>
+ <1500948617-19627-2-git-send-email-guochun.mao@mediatek.com>
+ <03016ea3-51ad-0b2d-e824-0a20913bd7c1@gmail.com>
+ <20170802103637.16cd6548@bbrezillon>
+ <535cc2d5-7bc9-2cb7-42cf-9d7058e64226@wedev4u.fr>
+ <1501726602.4381.23.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1501726602.4381.23.camel@mhfsdcap03>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Guochun Mao <guochun.mao@mediatek.com>, Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>
+Cc: Boris Brezillon <boris.brezillon@free-electrons.com>, Marek Vasut <marek.vasut@gmail.com>, Cyrille Pitchen <cyrille.pitchen@atmel.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Richard Weinberger <richard@nod.at>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mtd@lists.infradead.org, linux-mediatek@lists.infradead.org, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-This patch adds PCIe PHY setting part.
 
-Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/phy/phy-mt65xx-usb3.c |  220 +++++++++++++++++++++++++++++++++++++----
- 1 file changed, 202 insertions(+), 18 deletions(-)
+On 08/03/2017 04:16 AM, Guochun Mao wrote:
+> Hi Cyrille,
+> 
+> On Wed, 2017-08-02 at 17:31 +0200, Cyrille Pitchen wrote:
+>> Hi Guochun,
+>>
+>> Le 02/08/2017 à 10:36, Boris Brezillon a écrit :
+>>> Hi Matthias,
+>>>
+>>> On Tue, 1 Aug 2017 14:33:22 +0200
+>>> Matthias Brugger <matthias.bgg@gmail.com> wrote:
+>>>
+>>>> On 07/25/2017 04:10 AM, Guochun Mao wrote:
+>>>>> Add "mediatek,mt2712-nor" and "mediatek,mt7622-nor"
+>>>>> for nor flash node's compatible strings.
+>>>>>
+>>>>> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+>>>>> Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
+>>>>> ---
+>>>>>    .../devicetree/bindings/mtd/mtk-quadspi.txt        |    2 ++
+>>>>>    1 file changed, 2 insertions(+)
+>>>>>
+>>>>> diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+>>>>> index 5ded66a..9845ff4 100644
+>>>>> --- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+>>>>> +++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+>>>>> @@ -3,6 +3,8 @@
+>>>>>    Required properties:
+>>>>>    - compatible: 	  The possible values are:
+>>>>>    		  "mediatek,mt2701-nor"
+>>>>> +		  "mediatek,mt2712-nor"
+>>>>> +		  "mediatek,mt7622-nor"
+>>>>>    		  "mediatek,mt7623-nor"
+>>>>>    		  "mediatek,mt8173-nor"
+>>>>>    		  For mt8173, compatible should be "mediatek,mt8173-nor".
+>>>>>
+>>
+>> There should be another patch to update the mtk_nor_of_ids[] array in
+>> the mtk-quadspi.c driver, shouldn't it?
+>>
+>> Currently, I only see the "mediatek,mt8173-nor" compatible string at the
+>> driver side. The driver and its documentation should be aligned and both
+>> patches should be applied at the same time.
+> 
+>> Best regards,
+>>
+>> Cyrille
+> 
+> 
+>  From my designer's info, these IPs' nor controller could use same
+> driver, and I had verified it. I think there's no need to update
+> mtk_nor_of_ids[], unless we find difference between these IPs(exactly
+> compared with mt8173).
+> How do you think?
+>
 
-diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
-index 59b110f..8ba6905 100644
---- a/drivers/phy/phy-mt65xx-usb3.c
-+++ b/drivers/phy/phy-mt65xx-usb3.c
-@@ -29,7 +29,7 @@
- #define SSUSB_SIFSLV_V1_U2FREQ		0x100	/* shared by u2 phys */
- /* u2 phy bank */
- #define SSUSB_SIFSLV_V1_U2PHY_COM	0x000
--/* u3 phy banks */
-+/* u3/pcie phy banks */
- #define SSUSB_SIFSLV_V1_U3PHYD		0x000
- #define SSUSB_SIFSLV_V1_U3PHYA		0x200
- 
-@@ -99,6 +99,23 @@
- #define P2C_RG_SESSEND			BIT(4)
- #define P2C_RG_AVALID			BIT(2)
- 
-+#define U3P_U3_CHIP_GPIO_CTLD		0x0c
-+#define P3C_REG_IP_SW_RST		BIT(31)
-+#define P3C_MCU_BUS_CK_GATE_EN		BIT(30)
-+#define P3C_FORCE_IP_SW_RST		BIT(29)
-+
-+#define U3P_U3_CHIP_GPIO_CTLE		0x10
-+#define P3C_RG_SWRST_U3_PHYD		BIT(25)
-+#define P3C_RG_SWRST_U3_PHYD_FORCE_EN	BIT(24)
-+
-+#define U3P_U3_PHYA_REG0	0x000
-+#define P3A_RG_CLKDRV_OFF		GENMASK(3, 2)
-+#define P3A_RG_CLKDRV_OFF_VAL(x)	((0x3 & (x)) << 2)
-+
-+#define U3P_U3_PHYA_REG1	0x004
-+#define P3A_RG_CLKDRV_AMP		GENMASK(31, 29)
-+#define P3A_RG_CLKDRV_AMP_VAL(x)	((0x7 & (x)) << 29)
-+
- #define U3P_U3_PHYA_REG6	0x018
- #define P3A_RG_TX_EIDLE_CM		GENMASK(31, 28)
- #define P3A_RG_TX_EIDLE_CM_VAL(x)	((0xf & (x)) << 28)
-@@ -108,9 +125,40 @@
- #define P3A_RG_RX_DAC_MUX_VAL(x)	((0x1f & (x)) << 1)
- 
- #define U3P_U3_PHYA_DA_REG0	0x100
-+#define P3A_RG_XTAL_EXT_PE2H		GENMASK(17, 16)
-+#define P3A_RG_XTAL_EXT_PE2H_VAL(x)	((0x3 & (x)) << 16)
-+#define P3A_RG_XTAL_EXT_PE1H		GENMASK(13, 12)
-+#define P3A_RG_XTAL_EXT_PE1H_VAL(x)	((0x3 & (x)) << 12)
- #define P3A_RG_XTAL_EXT_EN_U3		GENMASK(11, 10)
- #define P3A_RG_XTAL_EXT_EN_U3_VAL(x)	((0x3 & (x)) << 10)
- 
-+#define U3P_U3_PHYA_DA_REG4	0x108
-+#define P3A_RG_PLL_DIVEN_PE2H		GENMASK(21, 19)
-+#define P3A_RG_PLL_BC_PE2H		GENMASK(7, 6)
-+#define P3A_RG_PLL_BC_PE2H_VAL(x)	((0x3 & (x)) << 6)
-+
-+#define U3P_U3_PHYA_DA_REG5	0x10c
-+#define P3A_RG_PLL_BR_PE2H		GENMASK(29, 28)
-+#define P3A_RG_PLL_BR_PE2H_VAL(x)	((0x3 & (x)) << 28)
-+#define P3A_RG_PLL_IC_PE2H		GENMASK(15, 12)
-+#define P3A_RG_PLL_IC_PE2H_VAL(x)	((0xf & (x)) << 12)
-+
-+#define U3P_U3_PHYA_DA_REG6	0x110
-+#define P3A_RG_PLL_IR_PE2H		GENMASK(19, 16)
-+#define P3A_RG_PLL_IR_PE2H_VAL(x)	((0xf & (x)) << 16)
-+
-+#define U3P_U3_PHYA_DA_REG7	0x114
-+#define P3A_RG_PLL_BP_PE2H		GENMASK(19, 16)
-+#define P3A_RG_PLL_BP_PE2H_VAL(x)	((0xf & (x)) << 16)
-+
-+#define U3P_U3_PHYA_DA_REG20	0x13c
-+#define P3A_RG_PLL_DELTA1_PE2H		GENMASK(31, 16)
-+#define P3A_RG_PLL_DELTA1_PE2H_VAL(x)	((0xffff & (x)) << 16)
-+
-+#define U3P_U3_PHYA_DA_REG25	0x148
-+#define P3A_RG_PLL_DELTA_PE2H		GENMASK(15, 0)
-+#define P3A_RG_PLL_DELTA_PE2H_VAL(x)	(0xffff & (x))
-+
- #define U3P_U3_PHYD_LFPS1		0x00c
- #define P3D_RG_FWAKE_TH		GENMASK(21, 16)
- #define P3D_RG_FWAKE_TH_VAL(x)	((0x3f & (x)) << 16)
-@@ -322,7 +370,7 @@ static void u3_phy_instance_init(struct mt65xx_u3phy *u3phy,
- 	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, instance->index);
- }
- 
--static void phy_instance_init(struct mt65xx_u3phy *u3phy,
-+static void u2_phy_instance_init(struct mt65xx_u3phy *u3phy,
- 	struct mt65xx_phy_instance *instance)
- {
- 	struct u2phy_banks *u2_banks = &instance->u2_banks;
-@@ -384,7 +432,7 @@ static void phy_instance_init(struct mt65xx_u3phy *u3phy,
- 	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, index);
- }
- 
--static void phy_instance_power_on(struct mt65xx_u3phy *u3phy,
-+static void u2_phy_instance_power_on(struct mt65xx_u3phy *u3phy,
- 	struct mt65xx_phy_instance *instance)
- {
- 	struct u2phy_banks *u2_banks = &instance->u2_banks;
-@@ -420,7 +468,7 @@ static void phy_instance_power_on(struct mt65xx_u3phy *u3phy,
- 	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, index);
- }
- 
--static void phy_instance_power_off(struct mt65xx_u3phy *u3phy,
-+static void u2_phy_instance_power_off(struct mt65xx_u3phy *u3phy,
- 	struct mt65xx_phy_instance *instance)
- {
- 	struct u2phy_banks *u2_banks = &instance->u2_banks;
-@@ -458,7 +506,7 @@ static void phy_instance_power_off(struct mt65xx_u3phy *u3phy,
- 	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, index);
- }
- 
--static void phy_instance_exit(struct mt65xx_u3phy *u3phy,
-+static void u2_phy_instance_exit(struct mt65xx_u3phy *u3phy,
- 	struct mt65xx_phy_instance *instance)
- {
- 	struct u2phy_banks *u2_banks = &instance->u2_banks;
-@@ -477,21 +525,133 @@ static void phy_instance_exit(struct mt65xx_u3phy *u3phy,
- 	}
- }
- 
-+static void pcie_phy_instance_init(struct mt65xx_u3phy *u3phy,
-+	struct mt65xx_phy_instance *instance)
-+{
-+	struct u3phy_banks *u3_banks = &instance->u3_banks;
-+	u32 tmp;
-+
-+	if (u3phy->pdata->version != MT_PHY_V1)
-+		return;
-+
-+	tmp = readl(u3_banks->phya + U3P_U3_PHYA_DA_REG0);
-+	tmp &= ~(P3A_RG_XTAL_EXT_PE1H | P3A_RG_XTAL_EXT_PE2H);
-+	tmp |= P3A_RG_XTAL_EXT_PE1H_VAL(0x2) | P3A_RG_XTAL_EXT_PE2H_VAL(0x2);
-+	writel(tmp, u3_banks->phya + U3P_U3_PHYA_DA_REG0);
-+
-+	/* ref clk drive */
-+	tmp = readl(u3_banks->phya + U3P_U3_PHYA_REG1);
-+	tmp &= ~P3A_RG_CLKDRV_AMP;
-+	tmp |= P3A_RG_CLKDRV_AMP_VAL(0x4);
-+	writel(tmp, u3_banks->phya + U3P_U3_PHYA_REG1);
-+
-+	tmp = readl(u3_banks->phya + U3P_U3_PHYA_REG0);
-+	tmp &= ~P3A_RG_CLKDRV_OFF;
-+	tmp |= P3A_RG_CLKDRV_OFF_VAL(0x1);
-+	writel(tmp, u3_banks->phya + U3P_U3_PHYA_REG0);
-+
-+	/* SSC delta -5000ppm */
-+	tmp = readl(u3_banks->phya + U3P_U3_PHYA_DA_REG20);
-+	tmp &= ~P3A_RG_PLL_DELTA1_PE2H;
-+	tmp |= P3A_RG_PLL_DELTA1_PE2H_VAL(0x3c);
-+	writel(tmp, u3_banks->phya + U3P_U3_PHYA_DA_REG20);
-+
-+	tmp = readl(u3_banks->phya + U3P_U3_PHYA_DA_REG25);
-+	tmp &= ~P3A_RG_PLL_DELTA_PE2H;
-+	tmp |= P3A_RG_PLL_DELTA_PE2H_VAL(0x36);
-+	writel(tmp, u3_banks->phya + U3P_U3_PHYA_DA_REG25);
-+
-+	/* change pll BW 0.6M */
-+	tmp = readl(u3_banks->phya + U3P_U3_PHYA_DA_REG5);
-+	tmp &= ~(P3A_RG_PLL_BR_PE2H | P3A_RG_PLL_IC_PE2H);
-+	tmp |= P3A_RG_PLL_BR_PE2H_VAL(0x1) | P3A_RG_PLL_IC_PE2H_VAL(0x1);
-+	writel(tmp, u3_banks->phya + U3P_U3_PHYA_DA_REG5);
-+
-+	tmp = readl(u3_banks->phya + U3P_U3_PHYA_DA_REG4);
-+	tmp &= ~(P3A_RG_PLL_DIVEN_PE2H | P3A_RG_PLL_BC_PE2H);
-+	tmp |= P3A_RG_PLL_BC_PE2H_VAL(0x3);
-+	writel(tmp, u3_banks->phya + U3P_U3_PHYA_DA_REG4);
-+
-+	tmp = readl(u3_banks->phya + U3P_U3_PHYA_DA_REG6);
-+	tmp &= ~P3A_RG_PLL_IR_PE2H;
-+	tmp |= P3A_RG_PLL_IR_PE2H_VAL(0x2);
-+	writel(tmp, u3_banks->phya + U3P_U3_PHYA_DA_REG6);
-+
-+	tmp = readl(u3_banks->phya + U3P_U3_PHYA_DA_REG7);
-+	tmp &= ~P3A_RG_PLL_BP_PE2H;
-+	tmp |= P3A_RG_PLL_BP_PE2H_VAL(0xa);
-+	writel(tmp, u3_banks->phya + U3P_U3_PHYA_DA_REG7);
-+
-+	/* Tx Detect Rx Timing: 10us -> 5us */
-+	tmp = readl(u3_banks->phyd + U3P_U3_PHYD_RXDET1);
-+	tmp &= ~P3D_RG_RXDET_STB2_SET;
-+	tmp |= P3D_RG_RXDET_STB2_SET_VAL(0x10);
-+	writel(tmp, u3_banks->phyd + U3P_U3_PHYD_RXDET1);
-+
-+	tmp = readl(u3_banks->phyd + U3P_U3_PHYD_RXDET2);
-+	tmp &= ~P3D_RG_RXDET_STB2_SET_P3;
-+	tmp |= P3D_RG_RXDET_STB2_SET_P3_VAL(0x10);
-+	writel(tmp, u3_banks->phyd + U3P_U3_PHYD_RXDET2);
-+
-+	/* wait for PCIe subsys register to active */
-+	usleep_range(2500, 3000);
-+	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, instance->index);
-+}
-+
-+static void pcie_phy_instance_power_on(struct mt65xx_u3phy *u3phy,
-+	struct mt65xx_phy_instance *instance)
-+{
-+	struct u3phy_banks *bank = &instance->u3_banks;
-+	u32 tmp;
-+
-+	tmp = readl(bank->chip + U3P_U3_CHIP_GPIO_CTLD);
-+	tmp &= ~(P3C_FORCE_IP_SW_RST | P3C_MCU_BUS_CK_GATE_EN |
-+		P3C_REG_IP_SW_RST);
-+	writel(tmp, bank->chip + U3P_U3_CHIP_GPIO_CTLD);
-+
-+	tmp = readl(bank->chip + U3P_U3_CHIP_GPIO_CTLE);
-+	tmp &= ~(P3C_RG_SWRST_U3_PHYD_FORCE_EN | P3C_RG_SWRST_U3_PHYD);
-+	writel(tmp, bank->chip + U3P_U3_CHIP_GPIO_CTLE);
-+}
-+
-+static void pcie_phy_instance_power_off(struct mt65xx_u3phy *u3phy,
-+	struct mt65xx_phy_instance *instance)
-+
-+{
-+	struct u3phy_banks *bank = &instance->u3_banks;
-+	u32 tmp;
-+
-+	tmp = readl(bank->chip + U3P_U3_CHIP_GPIO_CTLD);
-+	tmp |= P3C_FORCE_IP_SW_RST | P3C_REG_IP_SW_RST;
-+	writel(tmp, bank->chip + U3P_U3_CHIP_GPIO_CTLD);
-+
-+	tmp = readl(bank->chip + U3P_U3_CHIP_GPIO_CTLE);
-+	tmp |= P3C_RG_SWRST_U3_PHYD_FORCE_EN | P3C_RG_SWRST_U3_PHYD;
-+	writel(tmp, bank->chip + U3P_U3_CHIP_GPIO_CTLE);
-+}
-+
- static void phy_v1_banks_init(struct mt65xx_u3phy *u3phy,
- 			      struct mt65xx_phy_instance *instance)
- {
- 	struct u2phy_banks *u2_banks = &instance->u2_banks;
- 	struct u3phy_banks *u3_banks = &instance->u3_banks;
- 
--	if (instance->type == PHY_TYPE_USB2) {
-+	switch (instance->type) {
-+	case PHY_TYPE_USB2:
- 		u2_banks->misc = NULL;
- 		u2_banks->fmreg = u3phy->sif_base + SSUSB_SIFSLV_V1_U2FREQ;
- 		u2_banks->com = instance->port_base + SSUSB_SIFSLV_V1_U2PHY_COM;
--	} else if (instance->type == PHY_TYPE_USB3) {
-+		break;
-+	case PHY_TYPE_USB3:
-+	case PHY_TYPE_PCIE:
- 		u3_banks->spllc = u3phy->sif_base + SSUSB_SIFSLV_V1_SPLLC;
- 		u3_banks->chip = NULL;
- 		u3_banks->phyd = instance->port_base + SSUSB_SIFSLV_V1_U3PHYD;
- 		u3_banks->phya = instance->port_base + SSUSB_SIFSLV_V1_U3PHYA;
-+		break;
-+	default:
-+		dev_err(u3phy->dev, "incompatible PHY type\n");
-+		return;
- 	}
- }
- 
-@@ -501,15 +661,22 @@ static void phy_v2_banks_init(struct mt65xx_u3phy *u3phy,
- 	struct u2phy_banks *u2_banks = &instance->u2_banks;
- 	struct u3phy_banks *u3_banks = &instance->u3_banks;
- 
--	if (instance->type == PHY_TYPE_USB2) {
-+	switch (instance->type) {
-+	case PHY_TYPE_USB2:
- 		u2_banks->misc = instance->port_base + SSUSB_SIFSLV_V2_MISC;
- 		u2_banks->fmreg = instance->port_base + SSUSB_SIFSLV_V2_U2FREQ;
- 		u2_banks->com = instance->port_base + SSUSB_SIFSLV_V2_U2PHY_COM;
--	} else if (instance->type == PHY_TYPE_USB3) {
-+		break;
-+	case PHY_TYPE_USB3:
-+	case PHY_TYPE_PCIE:
- 		u3_banks->spllc = instance->port_base + SSUSB_SIFSLV_V2_SPLLC;
- 		u3_banks->chip = instance->port_base + SSUSB_SIFSLV_V2_CHIP;
- 		u3_banks->phyd = instance->port_base + SSUSB_SIFSLV_V2_U3PHYD;
- 		u3_banks->phya = instance->port_base + SSUSB_SIFSLV_V2_U3PHYA;
-+		break;
-+	default:
-+		dev_err(u3phy->dev, "incompatible PHY type\n");
-+		return;
- 	}
- }
- 
-@@ -531,10 +698,20 @@ static int mt65xx_phy_init(struct phy *phy)
- 		return ret;
- 	}
- 
--	if (instance->type == PHY_TYPE_USB2)
--		phy_instance_init(u3phy, instance);
--	else
-+	switch (instance->type) {
-+	case PHY_TYPE_USB2:
-+		u2_phy_instance_init(u3phy, instance);
-+		break;
-+	case PHY_TYPE_USB3:
- 		u3_phy_instance_init(u3phy, instance);
-+		break;
-+	case PHY_TYPE_PCIE:
-+		pcie_phy_instance_init(u3phy, instance);
-+		break;
-+	default:
-+		dev_err(u3phy->dev, "incompatible PHY type\n");
-+		return -EINVAL;
-+	}
- 
- 	return 0;
- }
-@@ -545,9 +722,12 @@ static int mt65xx_phy_power_on(struct phy *phy)
- 	struct mt65xx_u3phy *u3phy = dev_get_drvdata(phy->dev.parent);
- 
- 	if (instance->type == PHY_TYPE_USB2) {
--		phy_instance_power_on(u3phy, instance);
-+		u2_phy_instance_power_on(u3phy, instance);
- 		hs_slew_rate_calibrate(u3phy, instance);
-+	} else if (instance->type == PHY_TYPE_PCIE) {
-+		pcie_phy_instance_power_on(u3phy, instance);
- 	}
-+
- 	return 0;
- }
- 
-@@ -557,7 +737,9 @@ static int mt65xx_phy_power_off(struct phy *phy)
- 	struct mt65xx_u3phy *u3phy = dev_get_drvdata(phy->dev.parent);
- 
- 	if (instance->type == PHY_TYPE_USB2)
--		phy_instance_power_off(u3phy, instance);
-+		u2_phy_instance_power_off(u3phy, instance);
-+	else if (instance->type == PHY_TYPE_PCIE)
-+		pcie_phy_instance_power_off(u3phy, instance);
- 
- 	return 0;
- }
-@@ -568,7 +750,7 @@ static int mt65xx_phy_exit(struct phy *phy)
- 	struct mt65xx_u3phy *u3phy = dev_get_drvdata(phy->dev.parent);
- 
- 	if (instance->type == PHY_TYPE_USB2)
--		phy_instance_exit(u3phy, instance);
-+		u2_phy_instance_exit(u3phy, instance);
- 
- 	clk_disable_unprepare(instance->ref_clk);
- 	clk_disable_unprepare(u3phy->u3phya_ref);
-@@ -601,7 +783,8 @@ static struct phy *mt65xx_phy_xlate(struct device *dev,
- 
- 	instance->type = args->args[0];
- 	if (!(instance->type == PHY_TYPE_USB2 ||
--	      instance->type == PHY_TYPE_USB3)) {
-+	      instance->type == PHY_TYPE_USB3 ||
-+	      instance->type == PHY_TYPE_PCIE)) {
- 		dev_err(dev, "unsupported device type: %d\n", instance->type);
- 		return ERR_PTR(-EINVAL);
- 	}
-@@ -626,7 +809,7 @@ static struct phy *mt65xx_phy_xlate(struct device *dev,
- 	.owner		= THIS_MODULE,
- };
- 
--static const struct mt65xx_phy_pdata mt2701_pdata = {
-+static const struct mt65xx_phy_pdata tphy_v1_pdata = {
- 	.avoid_rx_sen_degradation = false,
- 	.version = MT_PHY_V1,
- };
-@@ -642,9 +825,10 @@ static struct phy *mt65xx_phy_xlate(struct device *dev,
- };
- 
- static const struct of_device_id mt65xx_u3phy_id_table[] = {
--	{ .compatible = "mediatek,mt2701-u3phy", .data = &mt2701_pdata },
-+	{ .compatible = "mediatek,mt2701-u3phy", .data = &tphy_v1_pdata },
- 	{ .compatible = "mediatek,mt2712-u3phy", .data = &mt2712_pdata },
- 	{ .compatible = "mediatek,mt8173-u3phy", .data = &mt8173_pdata },
-+	{ .compatible = "mediatek,generic-tphy-v1", .data = &tphy_v1_pdata },
- 	{ },
- };
- MODULE_DEVICE_TABLE(of, mt65xx_u3phy_id_table);
--- 
-1.7.9.5
+
+Right, mt8173-nor is the fallback binding which will be used by the driver. As 
+the documentation states, the compatible string should be something like:
+"mediatek,mt7622-nor", "mediatek,mt8173-nor"
+
+So the mt7622-nor binding is not matched in the driver, as the driver is the 
+same on all SoCs. Nonetheless if we realize in the future that mt7622 IP has 
+some special feature/bug, we can use the binding to implement that in the driver.
+
+AFAIK this is the standard way for bindings. Cyrille, is this ok for you, or do 
+want all bindings to be reflected in the driver even though they don't change 
+any functionality?
+
+Regards,
+Matthias
+
+> And, we will add dts patches for new SOCs, are these patches should
+> applied with this documentation?
+> 
+> Best regards,
+> Guochun
+> 
