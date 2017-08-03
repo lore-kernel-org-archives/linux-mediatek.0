@@ -1,83 +1,33 @@
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH 1/2] usb: mtu3: add a vbus debugfs interface
-Date: Thu, 3 Aug 2017 09:01:35 -0700
-Message-ID: <20170803160135.GC20736@kroah.com>
-References: <1501749439-8837-1-git-send-email-chunfeng.yun@mediatek.com>
- <20170803160057.GB20736@kroah.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 1/3] dt-bindings: soc: update the binding document for
+ SCPSYS on MediaTek MT7622 SoC
+Date: Thu, 3 Aug 2017 11:09:32 -0500
+Message-ID: <20170803160932.fgn6ia3jgo2ulh5z@rob-hp-laptop>
+References: <cover.1501581552.git.sean.wang@mediatek.com>
+ <978aad669c09316ee6d18f84e2b5ac8b161aa12c.1501581552.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <20170803160057.GB20736@kroah.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <978aad669c09316ee6d18f84e2b5ac8b161aa12c.1501581552.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 03, 2017 at 09:00:57AM -0700, Greg Kroah-Hartman wrote:
-> On Thu, Aug 03, 2017 at 04:37:18PM +0800, Chunfeng Yun wrote:
-> > +static ssize_t ssusb_vbus_write(struct file *file,
-> > +	const char __user *ubuf, size_t count, loff_t *ppos)
-> > +{
-> > +	struct seq_file *sf = file->private_data;
-> > +	struct ssusb_mtk *ssusb = sf->private;
-> > +	struct otg_switch_mtk *otg_sx = &ssusb->otg_switch;
-> > +	char buf[16];
-> > +
-> > +	if (copy_from_user(&buf, ubuf, min_t(size_t, sizeof(buf) - 1, count)))
-> > +		return -EFAULT;
-> > +
-> > +	if (!strncmp(buf, "on", 2)) {
-> > +		ssusb_set_vbus(otg_sx, 1);
-> > +	} else if (!strncmp(buf, "off", 3)) {
-> > +		ssusb_set_vbus(otg_sx, 0);
+On Tue, Aug 01, 2017 at 06:06:11PM +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> kstrtobool() is better to use here.
+> Update the binding document for enabling SCPSYS on MediaTek MT7622 SoC.
 > 
-> > +static int ssusb_debugfs_init(struct ssusb_mtk *ssusb)
-> >  {
-> >  	struct dentry *root;
-> >  	struct dentry *file;
-> >  
-> >  	root = debugfs_create_dir(dev_name(ssusb->dev), usb_debug_root);
-> >  	if (IS_ERR_OR_NULL(root)) {
-> 
-> That test is wrong, you should never need to care about the return value
-> of a debugfs call.  You can always just use it in your next call (if it
-> is a dentry *), or just ignore it.
-> 
-> > -		if (!root)
-> > -			dev_err(ssusb->dev, "create debugfs root failed\n");
-> > -		return;
-> > +		dev_err(ssusb->dev, "create debugfs root failed\n");
-> > +		goto err_dbgfs;
-> >  	}
-> >  	ssusb->dbgfs_root = root;
-> >  
-> > -	file = debugfs_create_file("mode", S_IRUGO | S_IWUSR, root,
-> > -			ssusb, &ssusb_mode_fops);
-> > -	if (!file)
-> > -		dev_dbg(ssusb->dev, "create debugfs mode failed\n");
-> > +	file = debugfs_create_file("mode", 0644, root, ssusb, &ssusb_mode_fops);
-> > +	if (!file) {
-> > +		dev_err(ssusb->dev, "create debugfs mode failed\n");
-> 
-> Same here, do not care, as it does not matter.  Actually, you don't even
-> need to keep the file pointer around, right?
-> 
-> > +		goto err_dbgfs;
-> > +	}
-> > +
-> > +	file = debugfs_create_file("vbus", 0644, root, ssusb, &ssusb_vbus_fops);
-> > +	if (!file) {
-> 
-> Same here, you don't care if debugfs fails or not, it should never
-> affect your code flow.
-> 
-> And don't you need to remove the directory when your module/hardware is
-> removed?  I don't see that happening here as you are not saving root off
-> anywhere.
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/soc/mediatek/scpsys.txt | 3 +++
+>  1 file changed, 3 insertions(+)
 
-Oh nevermind, you do save it, sorry for the noise...
-
-greg k-h
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
