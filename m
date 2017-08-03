@@ -1,84 +1,88 @@
-From: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] dt-bindings: mtd: add new compatible strings for mtk
- nor controller
-Date: Thu, 3 Aug 2017 10:16:42 +0800
-Message-ID: <1501726602.4381.23.camel@mhfsdcap03>
-References: <1500948617-19627-1-git-send-email-guochun.mao@mediatek.com>
-         <1500948617-19627-2-git-send-email-guochun.mao@mediatek.com>
-         <03016ea3-51ad-0b2d-e824-0a20913bd7c1@gmail.com>
-         <20170802103637.16cd6548@bbrezillon>
-         <535cc2d5-7bc9-2cb7-42cf-9d7058e64226@wedev4u.fr>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH 0/2] serial: 8250: add support for MediaTek BTIF controller
+Date: Thu, 3 Aug 2017 11:18:11 +0800
+Message-ID: <1501730291.21633.12.camel@mtkswgap22>
+References: <cover.1501692369.git.sean.wang@mediatek.com>
+ <1501694063.29303.361.camel@linux.intel.com>
+ <1501695470.25246.7.camel@mtkswgap22>
+ <1501696935.29303.367.camel@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <535cc2d5-7bc9-2cb7-42cf-9d7058e64226-yU5RGvR974pGWvitb5QawA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Cyrille Pitchen <cyrille.pitchen-yU5RGvR974pGWvitb5QawA@public.gmane.org>
-Cc: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1501696935.29303.367.camel@linux.intel.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: devicetree@vger.kernel.org, heikki.krogerus@linux.intel.com, vigneshr@ti.com, gregkh@linuxfoundation.org, jslaby@suse.com, hpeter@gmail.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, jan.kiszka@siemens.com, matthias.bgg@gmail.com, "arnd.bergmann" <arnd.bergmann@linaro.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Cyrille,
-
-On Wed, 2017-08-02 at 17:31 +0200, Cyrille Pitchen wrote:
-> Hi Guochun,
+On Wed, 2017-08-02 at 21:02 +0300, Andy Shevchenko wrote:
+> On Thu, 2017-08-03 at 01:37 +0800, Sean Wang wrote:
+> > On Wed, 2017-08-02 at 20:14 +0300, Andy Shevchenko wrote:
+> > > On Thu, 2017-08-03 at 01:05 +0800, sean.wang@mediatek.com wrote:
+> > > > From: Sean Wang <sean.wang@mediatek.com>
+> > > > 
+> > > > This patchset introduces the support for MediaTek BTIF controller.
+> > > > 
+> > > > MediaTek BTIF controller is the serial interface similar to UART
+> > > > but
+> > > > it
+> > > > works only as the digital device which is mainly used to
+> > > > communicate
+> > > > with
+> > > > the connectivity module also called CONNSYS inside the SoC which
+> > > > could
+> > > > be
+> > > > mostly found on those MediaTek SoCs with Bluetooth feature.
+> > > > 
+> > > > And the controller is made as being compatible with the 8250
+> > > > register
+> > > > layout so it tends to be integrated with existing 8250 core driver
+> > > > and
+> > > > have no requirement for the modem configuration additionally such
+> > > > as
+> > > > the
+> > > > baud rate calculation and assignment.
 > 
-> Le 02/08/2017 à 10:36, Boris Brezillon a écrit :
-> > Hi Matthias,
+> +Cc: Arnd.
+> 
+> > > Why it requires a separate driver?
+> > > 
+> > > 8250_of is for DT enabled drivers.
+> > > 
 > > 
-> > On Tue, 1 Aug 2017 14:33:22 +0200
-> > Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> > Hi, Andy
 > > 
-> >> On 07/25/2017 04:10 AM, Guochun Mao wrote:
-> >>> Add "mediatek,mt2712-nor" and "mediatek,mt7622-nor"
-> >>> for nor flash node's compatible strings.
-> >>>
-> >>> Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> >>> Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >>> ---
-> >>>   .../devicetree/bindings/mtd/mtk-quadspi.txt        |    2 ++
-> >>>   1 file changed, 2 insertions(+)
-> >>>
-> >>> diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> >>> index 5ded66a..9845ff4 100644
-> >>> --- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> >>> +++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> >>> @@ -3,6 +3,8 @@
-> >>>   Required properties:
-> >>>   - compatible: 	  The possible values are:
-> >>>   		  "mediatek,mt2701-nor"
-> >>> +		  "mediatek,mt2712-nor"
-> >>> +		  "mediatek,mt7622-nor"
-> >>>   		  "mediatek,mt7623-nor"
-> >>>   		  "mediatek,mt8173-nor"
-> >>>   		  For mt8173, compatible should be "mediatek,mt8173-nor".
-> >>>
+> > thanks for your information
+> > 
+> > the hardware is not completely identical to 8250 device, 
+> > it has extra registers belonged to platform control such as internal
+> > loopback, dma disable/enable, sleep/wakeup setup and so on, so I
+> > create
+> > it as a separate driver.
 > 
-> There should be another patch to update the mtk_nor_of_ids[] array in
-> the mtk-quadspi.c driver, shouldn't it?
+> Over all 200+ LOCs I didn't see any of the above except loopback, which
+> is one property that can be easily added to 8250_of.c.
 > 
-> Currently, I only see the "mediatek,mt8173-nor" compatible string at the
-> driver side. The driver and its documentation should be aligned and both
-> patches should be applied at the same time.
-
-> Best regards,
+> Moreover, if you have more code coming I would suggest you to split
+> 8250_of to library and driver parts and re-use stuff from there.
 > 
-> Cyrille
+> Arnd, what is your opinion about new 8250 OF based drivers?
+> 
 
+Hi, Andy
 
->From my designer's info, these IPs' nor controller could use same
-driver, and I had verified it. I think there's no need to update
-mtk_nor_of_ids[], unless we find difference between these IPs(exactly
-compared with mt8173).
-How do you think?
+many thanks for the detailed guidance.
+I will turn into reusing 8250 OF stuff in the next version and look
+forward to any idea from Arnd how to do with 8250 OF driver to add
+specific programming/data for those devices using 8250 OF.
 
-And, we will add dts patches for new SOCs, are these patches should
-applied with this documentation?
-
-Best regards,
-Guochun
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+	Sean
