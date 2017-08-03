@@ -1,45 +1,61 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH 2/2] MAINTAINERS: add entry for mediatek usb3 DRD IP
- driver
-Date: Thu, 3 Aug 2017 18:20:43 +0800
-Message-ID: <1501755643.25536.110.camel@mhfsdcap03>
-References: <1501749439-8837-1-git-send-email-chunfeng.yun@mediatek.com>
-         <1501749439-8837-2-git-send-email-chunfeng.yun@mediatek.com>
-         <87y3r1dmyq.fsf@linux.intel.com>
+From: Harvey Hunt <harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>
+Subject: [V3 2/2] dt-bindings: phy: Add bindings for ralink-usb PHY
+Date: Thu, 3 Aug 2017 11:32:03 +0100
+Message-ID: <1501756323-61555-2-git-send-email-harvey.hunt@imgtec.com>
+References: <1501756323-61555-1-git-send-email-harvey.hunt@imgtec.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <87y3r1dmyq.fsf@linux.intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1501756323-61555-1-git-send-email-harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org
+Cc: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, Harvey Hunt <harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-08-03 at 12:23 +0300, Felipe Balbi wrote:
-> Hi,
-> 
-> Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
-> > Add myself as maintainer of MediaTek USB3 DRD IP driver
-> >
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> >  MAINTAINERS |    7 +++++++
-> >  1 file changed, 7 insertions(+)
-> >
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index 205d397..0f0bcc7 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -8472,6 +8472,13 @@ M:      Sean Wang <sean.wang@mediatek.com>
-> >  S:      Maintained
-> >  F:      drivers/char/hw_random/mtk-rng.c
-> >  
-> > +MEDIATEK USB3 DRD IP DRIVER
-> > +M:	Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > +L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
-> > +L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
-> 
-> everything USB should go to linux-usb too.
-Ok, I'll add it, thanks
-> 
+From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+
+Add a binding for the USB phy on Mediatek/Ralink SoCs.
+
+Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Signed-off-by: Harvey Hunt <harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org 
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org 
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org 
+---
+Changes in V3:
+* Split out from first patch
+
+ .../devicetree/bindings/phy/ralink-usb-phy.txt          | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/ralink-usb-phy.txt
+
+diff --git a/Documentation/devicetree/bindings/phy/ralink-usb-phy.txt b/Documentation/devicetree/bindings/phy/ralink-usb-phy.txt
+new file mode 100644
+index 0000000..5b27cad
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/ralink-usb-phy.txt
+@@ -0,0 +1,17 @@
++Mediatek/Ralink USB PHY
++
++Required properties:
++ - compatible: ralink,rt3352-usbphy or mediatek,mt7620-usbphy
++ - #phy-cells: should be 0
++ - resets: the two reset controllers for host and device
++ - reset-names: the names of the 2 reset controllers
++
++Example:
++
++usbphy: phy {
++	compatible = "mediatek,mt7620-usbphy";
++	#phy-cells = <0>;
++
++	resets = <&rstctrl 22 &rstctrl 25>;
++	reset-names = "host", "device";
++};
+-- 
+2.7.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
