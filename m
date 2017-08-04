@@ -1,100 +1,65 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v4 1/2] arm: dts: mt7623: Add SD-card and EMMC to
- bananapi-r2
-Date: Fri, 4 Aug 2017 18:14:24 +0800
-Message-ID: <1501841664.17551.2.camel@mtkswgap22>
-References: <1c83eae1944992f7c5a9af946e03bc2c4e62c874.1501819056.git.sean.wang@mediatek.com>
+From: YT Shen <yt.shen@mediatek.com>
+Subject: Re: [PATCH v5 2/2] arm64: dts: Add Mediatek SoC MT2712 and
+ evaluation board dts and Makefile
+Date: Fri, 4 Aug 2017 19:49:23 +0800
+Message-ID: <1501847363.27655.2.camel@mtksdaap41>
+References: <1501241835-47849-1-git-send-email-yt.shen@mediatek.com>
+         <1501241835-47849-3-git-send-email-yt.shen@mediatek.com>
+         <1501577481.32089.3.camel@mtksdaap41>
+         <85f5d713-a599-e4cc-f1b4-2e0dedf2797f@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1c83eae1944992f7c5a9af946e03bc2c4e62c874.1501819056.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <85f5d713-a599-e4cc-f1b4-2e0dedf2797f@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Jason Cooper <jason@lakedaemon.net>, srv_heupstream@mediatek.com, Marc Zyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, Mars Cheng <mars.cheng@mediatek.com>, linux-serial@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mediatek@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2017-08-04 at 11:59 +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Tue, 2017-08-01 at 14:46 +0200, Matthias Brugger wrote:
 > 
-> The bananapi-r2 board has an SD-card controller and built-in
-> EMMC storage so enables those devices in the devicetree. Also
-> cleanup nodes in alphabetical order in the patch.
+> On 08/01/2017 10:51 AM, Yingjoe Chen wrote:
+> > On Fri, 2017-07-28 at 19:37 +0800, YT Shen wrote:
+> >> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> >> new file mode 100644
+> >> index 0000000..1e135af
+> >> --- /dev/null
+> >> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> > 
+> > <...>
+> > 
+> >> +	timer {
+> >> +		compatible = "arm,armv8-timer";
+> >> +		interrupt-parent = <&gic>;
+> >> +		interrupts = <GIC_PPI 13
+> >> +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>,
+> >> +			     <GIC_PPI 14
+> >> +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>,
+> >> +			     <GIC_PPI 11
+> >> +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>,
+> >> +			     <GIC_PPI 10
+> >> +			      (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_LOW)>;
+> >> +	};
+> >> +
+> >> +	soc {
+> >> +		#address-cells = <2>;
+> >> +		#size-cells = <2>;
+> >> +		compatible = "simple-bus";
+> >> +		ranges;
+> > 
+> > Matthias,
+> > 
+> > I notice this have soc node.
+> > Do we need to get rid of it?
+> > 
 > 
+> Good catch. Yes please get rid of it. We should avoid artificial bus nodes. As 
+> soc is no real bus, we should get rid of it.
 
-Hi, Matthias
+OK, we will remove the soc node and send a new version.
+Thanks.
 
-could your help remove those words "Also cleanup nodes in alphabetical
-order in the patch." when merging, i was forgetting to do it.
-
-or prefer wanting me to resend it again?
-
-	Sean
-
-> Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 37 +++++++++++++++++++++++++++
->  1 file changed, 37 insertions(+)
 > 
-> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> index 9f3e6dd..444ed93 100644
-> --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> @@ -179,6 +179,32 @@
->  	status = "okay";
->  };
->  
-> +&mmc0 {
-> +	pinctrl-names = "default", "state_uhs";
-> +	pinctrl-0 = <&mmc0_pins_default>;
-> +	pinctrl-1 = <&mmc0_pins_uhs>;
-> +	status = "okay";
-> +	bus-width = <8>;
-> +	max-frequency = <50000000>;
-> +	cap-mmc-highspeed;
-> +	vmmc-supply = <&mt6323_vemc3v3_reg>;
-> +	vqmmc-supply = <&mt6323_vio18_reg>;
-> +	non-removable;
-> +};
-> +
-> +&mmc1 {
-> +	pinctrl-names = "default", "state_uhs";
-> +	pinctrl-0 = <&mmc1_pins_default>;
-> +	pinctrl-1 = <&mmc1_pins_uhs>;
-> +	status = "okay";
-> +	bus-width = <4>;
-> +	max-frequency = <50000000>;
-> +	cap-sd-highspeed;
-> +	cd-gpios = <&pio 261 0>;
-> +	vmmc-supply = <&mt6323_vmch_reg>;
-> +	vqmmc-supply = <&mt6323_vio18_reg>;
-> +};
-> +
->  &pio {
->  	cir_pins_a:cir@0 {
->  		pins_cir {
-> @@ -314,6 +340,17 @@
->  			bias-pull-down;
->  			drive-strength = <MTK_DRIVE_4mA>;
->  		};
-> +
-> +		pins_wp {
-> +			pinmux = <MT7623_PIN_29_EINT7_FUNC_MSDC1_WP>;
-> +			input-enable;
-> +			bias-pull-up;
-> +		};
-> +
-> +		pins_insert {
-> +			pinmux = <MT7623_PIN_261_MSDC1_INS_FUNC_GPIO261>;
-> +			bias-pull-up;
-> +		};
->  	};
->  
->  	mmc1_pins_uhs: mmc1 {
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Thanks,
+> Matthias
