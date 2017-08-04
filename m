@@ -1,114 +1,54 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v2 4/5] PCI: mediatek: Add new generation controller
- support
-Date: Fri, 4 Aug 2017 08:18:09 -0500
-Message-ID: <20170804131808.GA16580@bhelgaas-glaptop.roam.corp.google.com>
-References: <cover.1501122135.git.honghui.zhang@mediatek.com>
- <824c61d13fe2731d812df8a0a878ca1a36399e76.1501122135.git.honghui.zhang@mediatek.com>
- <20170803224206.GN20308@bhelgaas-glaptop.roam.corp.google.com>
- <1501835976.24341.21.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [v2 1/2] arm: dts: mt7623: fix mmc interrupt assignment
+Date: Fri, 4 Aug 2017 16:18:38 +0200
+Message-ID: <bbbf9db9-11aa-4a2b-4780-8fb192d1c4ff@gmail.com>
+References: <20170802162230.11812-1-matthias.bgg@gmail.com>
+ <20170802162230.11812-2-matthias.bgg@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1501835976.24341.21.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Honghui Zhang <honghui.zhang@mediatek.com>
-Cc: bhelgaas@google.com, robh@kerenl.org, robh+dt@kernel.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170802162230.11812-2-matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Aug 04, 2017 at 04:39:36PM +0800, Honghui Zhang wrote:
-> On Thu, 2017-08-03 at 17:42 -0500, Bjorn Helgaas wrote:
-> 
-> 
-> ......
-> > > +}
-> > > +
-> > > +static struct mtk_pcie_port *mtk_pcie_find_port(struct mtk_pcie *pcie,
-> > > +						struct pci_bus *bus, int devfn)
-> > > +{
-> > > +	struct pci_dev *dev;
-> > > +	struct pci_bus *pbus;
-> > > +	struct mtk_pcie_port *port, *tmp;
-> > > +
-> > > +	list_for_each_entry_safe(port, tmp, &pcie->ports, list) {
-> > > +		if (bus->number == 0 && port->index == PCI_SLOT(devfn)) {
-> > > +			return port;
-> > > +		} else if (bus->number != 0) {
-> > > +			pbus = bus;
-> > > +			do {
-> > > +				dev = pbus->self;
-> > > +				if (port->index == PCI_SLOT(dev->devfn))
-> > > +					return port;
-> > > +				pbus = dev->bus;
-> > > +			} while (dev->bus->number != 0);
-> > > +		}
-> > > +	}
-> > > +
-> > > +	return NULL;
-> > 
-> > You should be able to use sysdata to avoid searching the list.
-> > See drivers/pci/host/pci-aardvark.c, for example.
-> > 
-> 
-> I could put the mtk_pcie * in sysdata, but still need to searching the
-> list to get the mtk_pcie_port *, how about:
-> 
-> 	list_for_each_entry_safe(port, tmp, &pcie->ports, list) {
-> 		if (port->index == PCI_SLOT(devfn))
-> 			return port;
-> 	}
 
-No.  Other drivers don't need to search the list.  Please take a look
-at them and see how they solve this problem.  I don't think your
-hardware is fundamentally different in a way that means you need to
-search when the others don't.
 
-> > > +	 * Enable rc internal reset.
-> > > +	 * The reset will work when the link is from link up to link down.
-> > 
-> > ?  That sentence doesn't parse for me.
+On 08/02/2017 06:22 PM, Matthias Brugger wrote:
+> The mmc1 interrupt should be connected to GIC_SPI 40,
+> this patch fixes this.
 > 
-> What about:
+> Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Acked-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+
+pushed now to v4.13-next/dts32
+
+> ---
+>   arch/arm/boot/dts/mt7623.dtsi | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> 	/*
-> 	 * Enable PCIe link down reset, if link status changed from link up to
-> 	 * link down, this will reset MAC control registers and configuration
-> 	 * space.
-> 	 */
-
-That at least parses as a sentence.
-
-> > > +	port->irq_domain = irq_domain_add_linear(pcie_intc_node, INTX_NUM,
-> > > +						 &intx_domain_ops, port);
-> > 
-> > I think there's an issue here with a 4-element IRQ domain and the
-> > hwirq numbers 1-4 from the of_irq_parse_and_map_pci() path, so INTD
-> > may not work correctly.
-> > 
-> > See
-> > http://lkml.kernel.org/r/20170801212931.GA26498@bhelgaas-glaptop.roam.corp.google.com
-> > and related discussion.
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index 4ae0ab07e053..2a877ed8ff23 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -648,7 +648,7 @@
+>   		compatible = "mediatek,mt7623-mmc",
+>   			     "mediatek,mt8135-mmc";
+>   		reg = <0 0x11240000 0 0x1000>;
+> -		interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_LOW>;
+>   		clocks = <&pericfg CLK_PERI_MSDC30_1>,
+>   			 <&topckgen CLK_TOP_MSDC30_1_SEL>;
+>   		clock-names = "source", "hclk";
 > 
-> Sorry, I did not get this,
-> I do some test with an intel E350T4 PCIe NICs, it's a x1 lane
-> multi-function device.
-> What I got from the log is below:
-> ->of_irq_parse_and_map_pci
-> 	->of_irq_parse_pci
-> 		->irq_create_of_mapping
-> 			->irq_create_fwspec_mapping
-> 				->irq_domain_translate
-> 				which will go through
-> 				d->ops->translate #the hwirq really start from 0
-> 
-> And I tested every NIC port of the Intel E350T4 with tftp transfer data,
-> seems all are OK with this code.
-
-OK.  I don't know what d->ops->translate is involved here, but if it
-works, I guess this is OK for now.  We're trying to clean this up and
-make it consistent across all the drivers.  Many of them allocate a
-5-element IRQ domain, some make a 4-element domain, and on some of
-them INTD doesn't work.  It's a mess.
-
-Bjorn
