@@ -1,111 +1,114 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v4 1/2] arm: dts: mt7623: Add SD-card and EMMC to
- bananapi-r2
-Date: Fri, 4 Aug 2017 14:19:33 +0200
-Message-ID: <9fd98b55-8c71-f697-3a41-bb8b70b7dcf1@gmail.com>
-References: <1c83eae1944992f7c5a9af946e03bc2c4e62c874.1501819056.git.sean.wang@mediatek.com>
- <1501841664.17551.2.camel@mtkswgap22>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH v2 4/5] PCI: mediatek: Add new generation controller
+ support
+Date: Fri, 4 Aug 2017 08:18:09 -0500
+Message-ID: <20170804131808.GA16580@bhelgaas-glaptop.roam.corp.google.com>
+References: <cover.1501122135.git.honghui.zhang@mediatek.com>
+ <824c61d13fe2731d812df8a0a878ca1a36399e76.1501122135.git.honghui.zhang@mediatek.com>
+ <20170803224206.GN20308@bhelgaas-glaptop.roam.corp.google.com>
+ <1501835976.24341.21.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1501841664.17551.2.camel@mtkswgap22>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1501835976.24341.21.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Honghui Zhang <honghui.zhang@mediatek.com>
+Cc: bhelgaas@google.com, robh@kerenl.org, robh+dt@kernel.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
+On Fri, Aug 04, 2017 at 04:39:36PM +0800, Honghui Zhang wrote:
+> On Thu, 2017-08-03 at 17:42 -0500, Bjorn Helgaas wrote:
+> 
+> 
+> ......
+> > > +}
+> > > +
+> > > +static struct mtk_pcie_port *mtk_pcie_find_port(struct mtk_pcie *pcie,
+> > > +						struct pci_bus *bus, int devfn)
+> > > +{
+> > > +	struct pci_dev *dev;
+> > > +	struct pci_bus *pbus;
+> > > +	struct mtk_pcie_port *port, *tmp;
+> > > +
+> > > +	list_for_each_entry_safe(port, tmp, &pcie->ports, list) {
+> > > +		if (bus->number == 0 && port->index == PCI_SLOT(devfn)) {
+> > > +			return port;
+> > > +		} else if (bus->number != 0) {
+> > > +			pbus = bus;
+> > > +			do {
+> > > +				dev = pbus->self;
+> > > +				if (port->index == PCI_SLOT(dev->devfn))
+> > > +					return port;
+> > > +				pbus = dev->bus;
+> > > +			} while (dev->bus->number != 0);
+> > > +		}
+> > > +	}
+> > > +
+> > > +	return NULL;
+> > 
+> > You should be able to use sysdata to avoid searching the list.
+> > See drivers/pci/host/pci-aardvark.c, for example.
+> > 
+> 
+> I could put the mtk_pcie * in sysdata, but still need to searching the
+> list to get the mtk_pcie_port *, how about:
+> 
+> 	list_for_each_entry_safe(port, tmp, &pcie->ports, list) {
+> 		if (port->index == PCI_SLOT(devfn))
+> 			return port;
+> 	}
 
+No.  Other drivers don't need to search the list.  Please take a look
+at them and see how they solve this problem.  I don't think your
+hardware is fundamentally different in a way that means you need to
+search when the others don't.
 
-On 08/04/2017 12:14 PM, Sean Wang wrote:
-> On Fri, 2017-08-04 at 11:59 +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
->> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>
->> The bananapi-r2 board has an SD-card controller and built-in
->> EMMC storage so enables those devices in the devicetree. Also
->> cleanup nodes in alphabetical order in the patch.
->>
+> > > +	 * Enable rc internal reset.
+> > > +	 * The reset will work when the link is from link up to link down.
+> > 
+> > ?  That sentence doesn't parse for me.
 > 
-> Hi, Matthias
+> What about:
 > 
-> could your help remove those words "Also cleanup nodes in alphabetical
-> order in the patch." when merging, i was forgetting to do it.
-> 
-> or prefer wanting me to resend it again?
+> 	/*
+> 	 * Enable PCIe link down reset, if link status changed from link up to
+> 	 * link down, this will reset MAC control registers and configuration
+> 	 * space.
+> 	 */
 
-Yes I can do that. No need to resend.
+That at least parses as a sentence.
 
-Regards,
-Matthias
+> > > +	port->irq_domain = irq_domain_add_linear(pcie_intc_node, INTX_NUM,
+> > > +						 &intx_domain_ops, port);
+> > 
+> > I think there's an issue here with a 4-element IRQ domain and the
+> > hwirq numbers 1-4 from the of_irq_parse_and_map_pci() path, so INTD
+> > may not work correctly.
+> > 
+> > See
+> > http://lkml.kernel.org/r/20170801212931.GA26498@bhelgaas-glaptop.roam.corp.google.com
+> > and related discussion.
+> 
+> Sorry, I did not get this,
+> I do some test with an intel E350T4 PCIe NICs, it's a x1 lane
+> multi-function device.
+> What I got from the log is below:
+> ->of_irq_parse_and_map_pci
+> 	->of_irq_parse_pci
+> 		->irq_create_of_mapping
+> 			->irq_create_fwspec_mapping
+> 				->irq_domain_translate
+> 				which will go through
+> 				d->ops->translate #the hwirq really start from 0
+> 
+> And I tested every NIC port of the Intel E350T4 with tftp transfer data,
+> seems all are OK with this code.
 
-> 
-> 	Sean
-> 
->> Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> ---
->>   arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 37 +++++++++++++++++++++++++++
->>   1 file changed, 37 insertions(+)
->>
->> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
->> index 9f3e6dd..444ed93 100644
->> --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
->> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
->> @@ -179,6 +179,32 @@
->>   	status = "okay";
->>   };
->>   
->> +&mmc0 {
->> +	pinctrl-names = "default", "state_uhs";
->> +	pinctrl-0 = <&mmc0_pins_default>;
->> +	pinctrl-1 = <&mmc0_pins_uhs>;
->> +	status = "okay";
->> +	bus-width = <8>;
->> +	max-frequency = <50000000>;
->> +	cap-mmc-highspeed;
->> +	vmmc-supply = <&mt6323_vemc3v3_reg>;
->> +	vqmmc-supply = <&mt6323_vio18_reg>;
->> +	non-removable;
->> +};
->> +
->> +&mmc1 {
->> +	pinctrl-names = "default", "state_uhs";
->> +	pinctrl-0 = <&mmc1_pins_default>;
->> +	pinctrl-1 = <&mmc1_pins_uhs>;
->> +	status = "okay";
->> +	bus-width = <4>;
->> +	max-frequency = <50000000>;
->> +	cap-sd-highspeed;
->> +	cd-gpios = <&pio 261 0>;
->> +	vmmc-supply = <&mt6323_vmch_reg>;
->> +	vqmmc-supply = <&mt6323_vio18_reg>;
->> +};
->> +
->>   &pio {
->>   	cir_pins_a:cir@0 {
->>   		pins_cir {
->> @@ -314,6 +340,17 @@
->>   			bias-pull-down;
->>   			drive-strength = <MTK_DRIVE_4mA>;
->>   		};
->> +
->> +		pins_wp {
->> +			pinmux = <MT7623_PIN_29_EINT7_FUNC_MSDC1_WP>;
->> +			input-enable;
->> +			bias-pull-up;
->> +		};
->> +
->> +		pins_insert {
->> +			pinmux = <MT7623_PIN_261_MSDC1_INS_FUNC_GPIO261>;
->> +			bias-pull-up;
->> +		};
->>   	};
->>   
->>   	mmc1_pins_uhs: mmc1 {
-> 
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+OK.  I don't know what d->ops->translate is involved here, but if it
+works, I guess this is OK for now.  We're trying to clean this up and
+make it consistent across all the drivers.  Many of them allocate a
+5-element IRQ domain, some make a 4-element domain, and on some of
+them INTD doesn't work.  It's a mess.
+
+Bjorn
