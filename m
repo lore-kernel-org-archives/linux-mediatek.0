@@ -1,104 +1,90 @@
-From: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] dt-bindings: mtd: add new compatible strings for mtk
- nor controller
-Date: Fri, 4 Aug 2017 11:44:10 +0800
-Message-ID: <1501818250.4381.26.camel@mhfsdcap03>
-References: <1500948617-19627-1-git-send-email-guochun.mao@mediatek.com>
-         <1500948617-19627-2-git-send-email-guochun.mao@mediatek.com>
-         <03016ea3-51ad-0b2d-e824-0a20913bd7c1@gmail.com>
-         <20170802103637.16cd6548@bbrezillon>
-         <535cc2d5-7bc9-2cb7-42cf-9d7058e64226@wedev4u.fr>
-         <1501726602.4381.23.camel@mhfsdcap03>
-         <20170803174750.bipdynhyyyozzjk6@rob-hp-laptop>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v4 1/2] arm: dts: mt7623: Add SD-card and EMMC to bananapi-r2
+Date: Fri, 4 Aug 2017 11:59:34 +0800
+Message-ID: <1c83eae1944992f7c5a9af946e03bc2c4e62c874.1501819056.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170803174750.bipdynhyyyozzjk6@rob-hp-laptop>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Cyrille Pitchen <cyrille.pitchen-yU5RGvR974pGWvitb5QawA@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-08-03 at 12:47 -0500, Rob Herring wrote:
-> On Thu, Aug 03, 2017 at 10:16:42AM +0800, Guochun Mao wrote:
-> > Hi Cyrille,
-> > 
-> > On Wed, 2017-08-02 at 17:31 +0200, Cyrille Pitchen wrote:
-> > > Hi Guochun,
-> > > 
-> > > Le 02/08/2017 à 10:36, Boris Brezillon a écrit :
-> > > > Hi Matthias,
-> > > > 
-> > > > On Tue, 1 Aug 2017 14:33:22 +0200
-> > > > Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> > > > 
-> > > >> On 07/25/2017 04:10 AM, Guochun Mao wrote:
-> > > >>> Add "mediatek,mt2712-nor" and "mediatek,mt7622-nor"
-> > > >>> for nor flash node's compatible strings.
-> > > >>>
-> > > >>> Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > > >>> Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > >>> ---
-> > > >>>   .../devicetree/bindings/mtd/mtk-quadspi.txt        |    2 ++
-> > > >>>   1 file changed, 2 insertions(+)
-> > > >>>
-> > > >>> diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> > > >>> index 5ded66a..9845ff4 100644
-> > > >>> --- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> > > >>> +++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> > > >>> @@ -3,6 +3,8 @@
-> > > >>>   Required properties:
-> > > >>>   - compatible: 	  The possible values are:
-> > > >>>   		  "mediatek,mt2701-nor"
-> > > >>> +		  "mediatek,mt2712-nor"
-> > > >>> +		  "mediatek,mt7622-nor"
-> > > >>>   		  "mediatek,mt7623-nor"
-> > > >>>   		  "mediatek,mt8173-nor"
-> > > >>>   		  For mt8173, compatible should be "mediatek,mt8173-nor".
-> > > >>>
-> > > 
-> > > There should be another patch to update the mtk_nor_of_ids[] array in
-> > > the mtk-quadspi.c driver, shouldn't it?
-> > > 
-> > > Currently, I only see the "mediatek,mt8173-nor" compatible string at the
-> > > driver side. The driver and its documentation should be aligned and both
-> > > patches should be applied at the same time.
-> > 
-> > > Best regards,
-> > > 
-> > > Cyrille
-> > 
-> > 
-> > From my designer's info, these IPs' nor controller could use same
-> > driver, and I had verified it. I think there's no need to update
-> > mtk_nor_of_ids[], unless we find difference between these IPs(exactly
-> > compared with mt8173).
-> > How do you think?
-> 
-> That is perfectly fine, but then the documentation needs to be explicit 
-> as to what are the fallback compatibles. It's one valid combination per 
-> line, not 1 compatible string per line.
+From: Sean Wang <sean.wang@mediatek.com>
 
-OK, I'll corret the description in next version.
-Thanks a lot.
+The bananapi-r2 board has an SD-card controller and built-in
+EMMC storage so enables those devices in the devicetree. Also
+cleanup nodes in alphabetical order in the patch.
 
-Guochun
+Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 37 +++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
-
-> 
-> Rob
-> 
-> > 
-> > And, we will add dts patches for new SOCs, are these patches should
-> > applied with this documentation?
-> > 
-> > Best regards,
-> > Guochun
-> > 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+index 9f3e6dd..444ed93 100644
+--- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
++++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+@@ -179,6 +179,32 @@
+ 	status = "okay";
+ };
+ 
++&mmc0 {
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc0_pins_default>;
++	pinctrl-1 = <&mmc0_pins_uhs>;
++	status = "okay";
++	bus-width = <8>;
++	max-frequency = <50000000>;
++	cap-mmc-highspeed;
++	vmmc-supply = <&mt6323_vemc3v3_reg>;
++	vqmmc-supply = <&mt6323_vio18_reg>;
++	non-removable;
++};
++
++&mmc1 {
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc1_pins_default>;
++	pinctrl-1 = <&mmc1_pins_uhs>;
++	status = "okay";
++	bus-width = <4>;
++	max-frequency = <50000000>;
++	cap-sd-highspeed;
++	cd-gpios = <&pio 261 0>;
++	vmmc-supply = <&mt6323_vmch_reg>;
++	vqmmc-supply = <&mt6323_vio18_reg>;
++};
++
+ &pio {
+ 	cir_pins_a:cir@0 {
+ 		pins_cir {
+@@ -314,6 +340,17 @@
+ 			bias-pull-down;
+ 			drive-strength = <MTK_DRIVE_4mA>;
+ 		};
++
++		pins_wp {
++			pinmux = <MT7623_PIN_29_EINT7_FUNC_MSDC1_WP>;
++			input-enable;
++			bias-pull-up;
++		};
++
++		pins_insert {
++			pinmux = <MT7623_PIN_261_MSDC1_INS_FUNC_GPIO261>;
++			bias-pull-up;
++		};
+ 	};
+ 
+ 	mmc1_pins_uhs: mmc1 {
+-- 
+2.7.4
