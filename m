@@ -1,54 +1,39 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [v2 1/2] arm: dts: mt7623: fix mmc interrupt assignment
-Date: Fri, 4 Aug 2017 16:18:38 +0200
-Message-ID: <bbbf9db9-11aa-4a2b-4780-8fb192d1c4ff@gmail.com>
-References: <20170802162230.11812-1-matthias.bgg@gmail.com>
- <20170802162230.11812-2-matthias.bgg@gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3 0/4] Add larbid init routine for mediatek's gen1 smi
+ larb driver
+Date: Fri, 4 Aug 2017 16:28:36 +0200
+Message-ID: <781f5dee-9a2d-30b6-b080-8b027de41b03@gmail.com>
+References: <1501810348-20997-1-git-send-email-honghui.zhang@mediatek.com>
+ <20170804100632.GC17443@8bytes.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170802162230.11812-2-matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170804100632.GC17443@8bytes.org>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Joerg Roedel <joro@8bytes.org>, honghui.zhang@mediatek.com
+Cc: robh@kernel.org, robin.murphy@arm.com, robh+dt@kernel.org, devicetree@vger.kernel.org, kendrick.hsu@mediatek.com, srv_heupstream@mediatek.com, will.deacon@arm.com, linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, youlin.pei@mediatek.com, erin.lo@mediatek.com, yong.wu@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 08/02/2017 06:22 PM, Matthias Brugger wrote:
-> The mmc1 interrupt should be connected to GIC_SPI 40,
-> this patch fixes this.
+On 08/04/2017 12:06 PM, Joerg Roedel wrote:
+> On Fri, Aug 04, 2017 at 09:32:24AM +0800, honghui.zhang@mediatek.com wrote:
+>> Honghui Zhang (4):
+>>    memory: mtk-smi: Use of_device_get_match_data helper
+>>    memory: mtk-smi: add larbid handle routine
+>>    dt-bindings: mediatek: add descriptions for larbid
+>>    arm: dts: mediatek: add larbid property for larb
+>>
+>>   .../memory-controllers/mediatek,smi-larb.txt       | 15 +++++++++++++
+>>   arch/arm/boot/dts/mt2701.dtsi                      |  3 +++
+>>   drivers/memory/mtk-smi.c                           | 26 ++++++++++++----------
+>>   3 files changed, 32 insertions(+), 12 deletions(-)
 > 
-> Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Acked-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Applied, thanks.
+> 
 
-pushed now to v4.13-next/dts32
+I just pushed patch 4/4 to v4.13-next/dts32
 
-> ---
->   arch/arm/boot/dts/mt7623.dtsi | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-> index 4ae0ab07e053..2a877ed8ff23 100644
-> --- a/arch/arm/boot/dts/mt7623.dtsi
-> +++ b/arch/arm/boot/dts/mt7623.dtsi
-> @@ -648,7 +648,7 @@
->   		compatible = "mediatek,mt7623-mmc",
->   			     "mediatek,mt8135-mmc";
->   		reg = <0 0x11240000 0 0x1000>;
-> -		interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_LOW>;
-> +		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_LOW>;
->   		clocks = <&pericfg CLK_PERI_MSDC30_1>,
->   			 <&topckgen CLK_TOP_MSDC30_1_SEL>;
->   		clock-names = "source", "hclk";
-> 
+Thanks everybody!
