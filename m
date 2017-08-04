@@ -1,62 +1,90 @@
-From: <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3 4/4] arm: dts: mediatek: add larbid property for larb
-Date: Fri, 4 Aug 2017 09:32:28 +0800
-Message-ID: <1501810348-20997-5-git-send-email-honghui.zhang@mediatek.com>
-References: <1501810348-20997-1-git-send-email-honghui.zhang@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH 1/2] usb: mtu3: add a vbus debugfs interface
+Date: Fri, 4 Aug 2017 10:11:03 +0800
+Message-ID: <1501812663.25536.116.camel@mhfsdcap03>
+References: <1501749439-8837-1-git-send-email-chunfeng.yun@mediatek.com>
+         <20170803160057.GB20736@kroah.com> <20170803160135.GC20736@kroah.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1501810348-20997-1-git-send-email-honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170803160135.GC20736@kroah.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Thu, 2017-08-03 at 09:01 -0700, Greg Kroah-Hartman wrote:
+> On Thu, Aug 03, 2017 at 09:00:57AM -0700, Greg Kroah-Hartman wrote:
+> > On Thu, Aug 03, 2017 at 04:37:18PM +0800, Chunfeng Yun wrote:
+> > > +static ssize_t ssusb_vbus_write(struct file *file,
+> > > +	const char __user *ubuf, size_t count, loff_t *ppos)
+> > > +{
+> > > +	struct seq_file *sf = file->private_data;
+> > > +	struct ssusb_mtk *ssusb = sf->private;
+> > > +	struct otg_switch_mtk *otg_sx = &ssusb->otg_switch;
+> > > +	char buf[16];
+> > > +
+> > > +	if (copy_from_user(&buf, ubuf, min_t(size_t, sizeof(buf) - 1, count)))
+> > > +		return -EFAULT;
+> > > +
+> > > +	if (!strncmp(buf, "on", 2)) {
+> > > +		ssusb_set_vbus(otg_sx, 1);
+> > > +	} else if (!strncmp(buf, "off", 3)) {
+> > > +		ssusb_set_vbus(otg_sx, 0);
+> > 
+> > kstrtobool() is better to use here.
+Ok
+> > 
+> > > +static int ssusb_debugfs_init(struct ssusb_mtk *ssusb)
+> > >  {
+> > >  	struct dentry *root;
+> > >  	struct dentry *file;
+> > >  
+> > >  	root = debugfs_create_dir(dev_name(ssusb->dev), usb_debug_root);
+> > >  	if (IS_ERR_OR_NULL(root)) {
+> > 
+> > That test is wrong, you should never need to care about the return value
+> > of a debugfs call.  You can always just use it in your next call (if it
+> > is a dentry *), or just ignore it.
+Ok, I'll just test NULL pointer, and ignore other ERROR value
+> > 
+> > > -		if (!root)
+> > > -			dev_err(ssusb->dev, "create debugfs root failed\n");
+> > > -		return;
+> > > +		dev_err(ssusb->dev, "create debugfs root failed\n");
+> > > +		goto err_dbgfs;
+> > >  	}
+> > >  	ssusb->dbgfs_root = root;
+> > >  
+> > > -	file = debugfs_create_file("mode", S_IRUGO | S_IWUSR, root,
+> > > -			ssusb, &ssusb_mode_fops);
+> > > -	if (!file)
+> > > -		dev_dbg(ssusb->dev, "create debugfs mode failed\n");
+> > > +	file = debugfs_create_file("mode", 0644, root, ssusb, &ssusb_mode_fops);
+> > > +	if (!file) {
+> > > +		dev_err(ssusb->dev, "create debugfs mode failed\n");
+> > 
+> > Same here, do not care, as it does not matter.  Actually, you don't even
+> > need to keep the file pointer around, right?
+Yes, you are right
+> > 
+> > > +		goto err_dbgfs;
+> > > +	}
+> > > +
+> > > +	file = debugfs_create_file("vbus", 0644, root, ssusb, &ssusb_vbus_fops);
+> > > +	if (!file) {
+> > 
+> > Same here, you don't care if debugfs fails or not, it should never
+> > affect your code flow.
+Ok
 
-Add mediatek's hardware id information for smi larb.
-
-Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- arch/arm/boot/dts/mt2701.dtsi | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index f1efdc6..d95bfe0 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -533,6 +533,7 @@
- 		compatible = "mediatek,mt2701-smi-larb";
- 		reg = <0 0x14010000 0 0x1000>;
- 		mediatek,smi = <&smi_common>;
-+		mediatek,larb-id = <0>;
- 		clocks = <&mmsys CLK_MM_SMI_LARB0>,
- 			 <&mmsys CLK_MM_SMI_LARB0>;
- 		clock-names = "apb", "smi";
-@@ -549,6 +550,7 @@
- 		compatible = "mediatek,mt2701-smi-larb";
- 		reg = <0 0x15001000 0 0x1000>;
- 		mediatek,smi = <&smi_common>;
-+		mediatek,larb-id = <2>;
- 		clocks = <&imgsys CLK_IMG_SMI_COMM>,
- 			 <&imgsys CLK_IMG_SMI_COMM>;
- 		clock-names = "apb", "smi";
-@@ -579,6 +581,7 @@
- 		compatible = "mediatek,mt2701-smi-larb";
- 		reg = <0 0x16010000 0 0x1000>;
- 		mediatek,smi = <&smi_common>;
-+		mediatek,larb-id = <1>;
- 		clocks = <&vdecsys CLK_VDEC_CKGEN>,
- 			 <&vdecsys CLK_VDEC_LARB>;
- 		clock-names = "apb", "smi";
--- 
-2.6.4
+Thanks a lot
+> > 
+> > And don't you need to remove the directory when your module/hardware is
+> > removed?  I don't see that happening here as you are not saving root off
+> > anywhere.
+> 
+> Oh nevermind, you do save it, sorry for the noise...
+> 
+> greg k-h
