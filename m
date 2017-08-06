@@ -1,89 +1,229 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH v2 4/5] PCI: mediatek: Add new generation controller
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 5/6] PCI: mediatek: Add new generation controller
  support
-Date: Sat, 5 Aug 2017 14:16:53 +0800
-Message-ID: <1501913813.12086.17.camel@mtkswgap22>
-References: <cover.1501122135.git.honghui.zhang@mediatek.com>
-         <824c61d13fe2731d812df8a0a878ca1a36399e76.1501122135.git.honghui.zhang@mediatek.com>
-         <20170803224206.GN20308@bhelgaas-glaptop.roam.corp.google.com>
-         <1501835976.24341.21.camel@mtksdaap41>
-         <20170804131808.GA16580@bhelgaas-glaptop.roam.corp.google.com>
-         <1501908763.8298.11.camel@mtkswgap22>
+Date: Sun, 6 Aug 2017 10:06:30 +0800
+Message-ID: <1501985190.8058.20.camel@mtkswgap22>
+References: <cover.1501846816.git.honghui.zhang@mediatek.com>
+         <2adcb5f915eb8bd5817592ea32974eb25da02e4f.1501846816.git.honghui.zhang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <1501908763.8298.11.camel@mtkswgap22>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Honghui Zhang <honghui.zhang@mediatek.com>, bhelgaas@google.com, robh@kerenl.org, robh+dt@kernel.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <2adcb5f915eb8bd5817592ea32974eb25da02e4f.1501846816.git.honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, robh-+zGGX9k9yNkdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 2017-08-05 at 12:52 +0800, Ryder Lee wrote:
-> Hi Honghui, Bjorn,
-> 
-> On Fri, 2017-08-04 at 08:18 -0500, Bjorn Helgaas wrote:
-> > On Fri, Aug 04, 2017 at 04:39:36PM +0800, Honghui Zhang wrote:
-> > > On Thu, 2017-08-03 at 17:42 -0500, Bjorn Helgaas wrote:
-> > > > > +
-> > > > > +static struct mtk_pcie_port *mtk_pcie_find_port(struct mtk_pcie *pcie,
-> > > > > +						struct pci_bus *bus, int devfn)
-> > > > > +{
-> > > > > +	struct pci_dev *dev;
-> > > > > +	struct pci_bus *pbus;
-> > > > > +	struct mtk_pcie_port *port, *tmp;
-> > > > > +
-> > > > > +	list_for_each_entry_safe(port, tmp, &pcie->ports, list) {
-> > > > > +		if (bus->number == 0 && port->index == PCI_SLOT(devfn)) {
-> > > > > +			return port;
-> > > > > +		} else if (bus->number != 0) {
-> > > > > +			pbus = bus;
-> > > > > +			do {
-> > > > > +				dev = pbus->self;
-> > > > > +				if (port->index == PCI_SLOT(dev->devfn))
-> > > > > +					return port;
-> > > > > +				pbus = dev->bus;
-> > > > > +			} while (dev->bus->number != 0);
-> > > > > +		}
-> > > > > +	}
-> > > > > +
-> > > > > +	return NULL;
-> > > > 
-> > > > You should be able to use sysdata to avoid searching the list.
-> > > > See drivers/pci/host/pci-aardvark.c, for example.
-> > > > 
-> > > 
-> > > I could put the mtk_pcie * in sysdata, but still need to searching the
-> > > list to get the mtk_pcie_port *, how about:
-> > > 
-> > > 	list_for_each_entry_safe(port, tmp, &pcie->ports, list) {
-> > > 		if (port->index == PCI_SLOT(devfn))
-> > > 			return port;
-> > > 	}
-> > 
-> > No.  Other drivers don't need to search the list.  Please take a look
-> > at them and see how they solve this problem.  I don't think your
-> > hardware is fundamentally different in a way that means you need to
-> > search when the others don't.
-> > 
-> 
-> I'm not directly involved in this generation, but I guess the main reason why Honghui need to do that is just because this hardware access configuration space via per-port registers, not just for the guard.  
-> Currently, We had a host bridge with two ports (two subnodes in binding text), thus he tried to tells them apart so that he can get the correct registers.
-> 
-> Some platforms don't need to do that since they just have a single port (no more subnodes), the others might have specific/shared registers to access configuration space. (e.g. Tegra, MTK legacy IP block).
-> Or, he can split them into two independent nodes, but it will break common probing flow by doing so. (I'd prefer to use subnodes.)
-> 
-> Ryder
-> 
+Hi Honghui,
 
-Sorry for the typesetting in previous mail and noise again,
+If you plan to send next version, then I would suggest some minor
+changes.
 
-I've took a look at pci-rcar-gen2.c, this is a similar case I can found
-for Honghui's case. It gathers two ports reg regions into one, and uses
-the "slot id" to calculate the cfg base of each port.
+On Fri, 2017-08-04 at 20:06 +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> +#define PCIE_CRSTB		BIT(3)
+> +#define PCIE_PERSTB		BIT(8)
+> +#define PCI_LINKDOWN_RST_EN	GENMASK(15, 13)
 
-Perhaps this is a example for those who need to use subnodes and use
-port registers for cfg operation. Not sure whether it's worthwhile doing
-that since we need to changes ports/host structures.
+PCIE_LINKDOWN_RST_EN
 
-Ryder.
+> +#define PCIE_LINK_STATUS_V2	0x804
+> +#define PCIE_PORT_LINKUP_V2	BIT(10)
+> +
+> +
+> +static int mtk_pcie_hw_rd_cfg(struct mtk_pcie_port *port, u32 bus, u32 devfn,
+> +			      int where, int size, u32 *val)
+> +{
+> +	int reg, shift = 8 * (where & 3);
+
+int reg => u32
+
+> +	/* Write PCIe Configuration Transaction Header for cfgrd */
+> +	writel(CFG_HEADER_DW0(CFG_WRRD_TYPE_0, CFG_RD_FMT),
+> +	       port->base + PCIE_CFG_HEADER0);
+> +	writel(CFG_HEADER_DW1(where, size), port->base + PCIE_CFG_HEADER1);
+> +	writel(CFG_HEADER_DW2(where, PCI_FUNC(devfn), PCI_SLOT(devfn), bus),
+> +	       port->base + PCIE_CFG_HEADER2);
+> +
+> +	/* Trigger h/w to transmit Cfgrd TLP */
+> +	reg = readl(port->base + PCIE_APP_TLP_REQ);
+> +	writel(reg | APP_CFG_REQ, port->base + PCIE_APP_TLP_REQ);
+> +
+> +	/* Check completion status */
+> +	if (mtk_pcie_check_cfg_cpld(port))
+> +		return PCIBIOS_SET_FAILED;
+> +
+> +	/* Read cpld payload of Cfgrd */
+> +	*val = readl(port->base + PCIE_CFG_RDATA);
+> +
+> +	switch (size) {
+> +	case 4:
+> +		break;
+> +	case 3:
+> +		*val = (*val >> shift) & 0xffffff;
+> +		break;
+> +	case 2:
+> +		*val = (*val >> shift) & 0xffff;
+> +		break;
+> +	case 1:
+> +		*val = (*val >> shift) & 0xff;
+> +		break;
+> +	default:
+> +		return PCIBIOS_BAD_REGISTER_NUMBER;
+> +	}
+
+Do we really need case 3? I guess case 1, 2 or 4 should be enough.
+
+> +	return PCIBIOS_SUCCESSFUL;
+> +}
+> +
+> +static int mtk_pcie_hw_wr_cfg(struct mtk_pcie_port *port, u32 bus, u32 devfn,
+> +			      int where, int size, u32 val)
+> +{
+> +	/* Write PCIe Configuration Transaction Header for Cfgwr */
+> +	writel(CFG_HEADER_DW0(CFG_WRRD_TYPE_0, CFG_WR_FMT),
+> +	       port->base + PCIE_CFG_HEADER0);
+> +	writel(CFG_HEADER_DW1(where, size), port->base + PCIE_CFG_HEADER1);
+> +	writel(CFG_HEADER_DW2(where, PCI_FUNC(devfn), PCI_SLOT(devfn), bus),
+> +	       port->base + PCIE_CFG_HEADER2);
+> +
+> +	/* Write cfgwr data */
+> +	val = val << 8 * (where & 3);
+> +	writel(val, port->base + PCIE_CFG_WDATA);
+> +
+> +	/* Trigger h/w to transmit Cfgwr TLP */
+> +	val = readl(port->base + PCIE_APP_TLP_REQ);
+> +	val |= APP_CFG_REQ;
+> +	writel(val, port->base + PCIE_APP_TLP_REQ);
+> +
+> +	/* Check completion status */
+> +	return mtk_pcie_check_cfg_cpld(port);
+> +}
+> +
+> +static int mtk_pcie_config_read(struct pci_bus *bus, unsigned int devfn,
+> +				int where, int size, u32 *val)
+> +{
+> +	struct mtk_pcie_port *port = NULL, *iter, *tmp;
+> +	struct mtk_pcie *pcie = bus->sysdata;
+> +	u32 bn = bus->number;
+> +	int ret;
+> +
+> +	list_for_each_entry_safe(iter, tmp, &pcie->ports, list)
+> +		if (iter->index == PCI_SLOT(devfn)) {
+> +			port = iter;
+> +			break;
+> +		}
+> +
+> +	if (!port) {
+> +		*val = ~0;
+> +		return PCIBIOS_DEVICE_NOT_FOUND;
+> +	}
+
+list_for_each_entry(), since you don't really remove or free something.
+
+I know you need to find port->base to write/read configuration space. I
+think it's better to move this part to another function. You can take a
+look at pci-mvebu.c mvebu_pcie_find_portmvebu().
+ 
+> +	ret = mtk_pcie_hw_rd_cfg(port, bn, devfn, where, size, val);
+> +	if (ret)
+> +		*val = ~0;
+> +
+> +	return ret;
+> +}
+> +
+> +static int mtk_pcie_config_write(struct pci_bus *bus, unsigned int devfn,
+> +				 int where, int size, u32 val)
+> +{
+> +	struct mtk_pcie_port *port = NULL, *iter, *tmp;
+> +	struct mtk_pcie *pcie = bus->sysdata;
+> +	u32 bn = bus->number;
+> +
+> +	list_for_each_entry_safe(iter, tmp, &pcie->ports, list)
+> +		if (iter->index == PCI_SLOT(devfn)) {
+> +			port = iter;
+> +			break;
+> +		}
+> +
+> +	if (!port)
+> +		return PCIBIOS_DEVICE_NOT_FOUND;
+
+Ditto.
+
+> +	return mtk_pcie_hw_wr_cfg(port, bn, devfn, where, size, val);
+> +}
+> +
+> +static struct pci_ops mtk_pcie_ops_v2 = {
+> +	.read  = mtk_pcie_config_read,
+> +	.write = mtk_pcie_config_write,
+> +};
+> +
+> +static int mtk_pcie_startup_ports_v2(struct mtk_pcie_port *port)
+> +{
+> +	struct mtk_pcie *pcie = port->pcie;
+> +	struct resource *mem = &pcie->mem;
+> +	u32 val;
+> +	size_t size;
+> +	int err;
+> +
+> +	/* mt7622 platforms need to enable LTSSM and ASPM from PCIe subsys */
+> +	if (pcie->base) {
+> +		val = readl(pcie->base + PCIE_SYS_CFG_V2);
+> +		val |= PCIE_CSR_LTSSM_EN(port->index) |
+> +		       PCIE_CSR_ASPM_L1_EN(port->index);
+> +		writel(val, pcie->base + PCIE_SYS_CFG_V2);
+> +	}
+> +
+> +	/* Assert all reset signals */
+> +	writel(0, port->base + PCIE_RST_CTRL);
+> +
+> +	/*
+> +	 * Enable PCIe link down reset, if link status changed from link up to
+> +	 * link down, this will reset MAC control registers and configuration
+> +	 * space.
+> +	 */
+> +	writel(PCI_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
+> +
+> +	/* De-assert PHY, PE, PIPE, MAC and configuration reset	*/
+> +	val = readl(port->base + PCIE_RST_CTRL);
+> +	val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
+> +	       PCIE_MAC_SRSTB | PCIE_CRSTB;
+> +	writel(val, port->base + PCIE_RST_CTRL);
+> +
+> +	/* PCIe v2.0 need at least 100ms delay to train from Gen1 to Gen2 */
+
+/* 100ms timeout value should be enough for Gen1/2 training */ for
+consistency.
+
+> +	err = readl_poll_timeout(port->base + PCIE_LINK_STATUS_V2, val,
+> +				 !!(val & PCIE_PORT_LINKUP_V2), 20,
+> +				 100 * USEC_PER_MSEC);
+> +	if (err)
+> +		return -ETIMEDOUT;
+> +
+> +	/* Set INTx mask */
+> +	val = readl(port->base + PCIE_INT_MASK);
+> +	val &= ~INTX_MASK;
+> +	writel(val, port->base + PCIE_INT_MASK);
+> +
+> +	/* Set AHB to PCIe translation windows */
+> +	size = mem->end - mem->start;
+> +	val = AHB2PCIE_BASEL(mem->start) | AHB2PCIE_SIZE(fls(size));
+> +	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
+> +
+> +	val = AHB2PCIE_BASEH(mem->start);
+> +	writel(val, port->base + PCIE_AHB_TRANS_BASE0_H);
+> +
+> +	/* Set PCIe to AXI translation memory space.*/
+> +	val = fls(0xffffffff) | WIN_ENABLE;
+> +	writel(val, port->base + PCIE_AXI_WINDOW0);
+> +
+> +	return 0;
+> +}
+
+Ryder
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
