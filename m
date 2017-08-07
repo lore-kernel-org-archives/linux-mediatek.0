@@ -1,67 +1,86 @@
-From: Will Deacon <will.deacon@arm.com>
-Subject: Re: [PATCH] arm64: correct modules range of kernel virtual memory
- layout
-Date: Mon, 7 Aug 2017 15:01:39 +0100
-Message-ID: <20170807140138.GB18817@arm.com>
-References: <1502103886-19725-1-git-send-email-miles.chen@mediatek.com>
- <20170807131608.GA18817@arm.com>
- <CAKv+Gu9qD_-GNHus5txiqj9eHLpU5S7RX8QxYeUG17Ok0QNz-A@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: John Crispin <john@phrozen.org>
+Subject: [PATCH] net: dsa: mediatek: add adjust link support for user ports
+Date: Mon,  7 Aug 2017 16:20:49 +0200
+Message-ID: <20170807142049.4144-1-john@phrozen.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAKv+Gu9qD_-GNHus5txiqj9eHLpU5S7RX8QxYeUG17Ok0QNz-A@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Cc: Miles Chen <miles.chen@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+To: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@savoirfairelinux.com>, Florian Fainelli <f.fainelli@gmail.com>
+Cc: sean Wang <sean.wang@mediatek.com>, Ryder Lee <Ryder.Lee@mediatek.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Shashidhar Lakkavalli <shashidhar.lakkavalli@openmesh.com>, Muciri Gatimu <muciri@openmesh.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Aug 07, 2017 at 02:18:00PM +0100, Ard Biesheuvel wrote:
-> On 7 August 2017 at 14:16, Will Deacon <will.deacon@arm.com> wrote:
-> > On Mon, Aug 07, 2017 at 07:04:46PM +0800, Miles Chen wrote:
-> >> The commit f80fb3a3d508 ("arm64: add support for kernel ASLR")
-> >> moved module virtual address to
-> >> [module_alloc_base, module_alloc_base + MODULES_VSIZE).
-> >>
-> >> Display module information of the virtual kernel
-> >> memory layout by using module_alloc_base.
-> >>
-> >> testing output:
-> >> 1) Current implementation:
-> >> Virtual kernel memory layout:
-> >>       modules : 0xffffff8000000000 - 0xffffff8008000000   (   128 MB)
-> >> 2) this patch + KASLR:
-> >> Virtual kernel memory layout:
-> >>       modules : 0xffffff8000560000 - 0xffffff8008560000   (   128 MB)
-> >> 3) this patch + KASLR and a dummy seed:
-> >> Virtual kernel memory layout:
-> >>       modules : 0xffffffa7df637000 - 0xffffffa7e7637000   (   128 MB)
-> >>
-> >> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> >> ---
-> >>  arch/arm64/mm/init.c | 5 +++--
-> >>  1 file changed, 3 insertions(+), 2 deletions(-)
-> >
-> > Does this mean the modules code in our pt dumper is busted
-> > (arch/arm64/mm/dump.c)? Also, what about KASAN, which uses these addresses
-> > too (in kasan_init)? Should we just remove MODULES_VADDR and MODULES_END
-> > altogether?
-> >
-> 
-> I don't think we need this patch. The 'module' line simply prints the
-> VA region that is reserved for modules. The fact that we end up
-> putting them elsewhere when running randomized does not necessarily
-> mean this line should reflect that.
+Manually adjust the port settings of user ports once PHY polling has
+completed. This patch extends the adjust_link callback to configure the
+per port PMCR register, applying the proper values polled from the PHY.
+Without this patch flow control was not always getting setup properly.
 
-I was more concerned by other users of MODULES_VADDR tbh, although I see
-now that we don't randomize the module region if kasan is enabled. Still,
-the kcore code adds the modules region as a separate area (distinct from
-vmalloc) if MODULES_VADDR is defined, the page table dumping code uses
-MODULES_VADDR to identify the module region and I think we'll get false
-positives from is_vmalloc_or_module_addr, which again uses the static
-region.
+Signed-off-by: Shashidhar Lakkavalli <shashidhar.lakkavalli@openmesh.com>
+Signed-off-by: Muciri Gatimu <muciri@openmesh.com>
+Signed-off-by: John Crispin <john@phrozen.org>
+---
+ drivers/net/dsa/mt7530.c | 38 ++++++++++++++++++++++++++++++++++++++
+ drivers/net/dsa/mt7530.h |  1 +
+ 2 files changed, 39 insertions(+)
 
-So, given that MODULES_VADDR never points at the module area, can't we get
-rid of it?
-
-Will
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 1e46418a3b74..264b281eb86b 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -625,6 +625,44 @@ static void mt7530_adjust_link(struct dsa_switch *ds, int port,
+ 		 * all finished.
+ 		 */
+ 		mt7623_pad_clk_setup(ds);
++	} else {
++		u16 lcl_adv = 0, rmt_adv = 0;
++		u8 flowctrl;
++		u32 mcr = PMCR_USERP_LINK | PMCR_FORCE_MODE;
++
++		switch (phydev->speed) {
++		case SPEED_1000:
++			mcr |= PMCR_FORCE_SPEED_1000;
++			break;
++		case SPEED_100:
++			mcr |= PMCR_FORCE_SPEED_100;
++			break;
++		};
++
++		if (phydev->link)
++			mcr |= PMCR_FORCE_LNK;
++
++		if (phydev->duplex) {
++			mcr |= PMCR_FORCE_FDX;
++
++			if (phydev->pause)
++				rmt_adv = LPA_PAUSE_CAP;
++			if (phydev->asym_pause)
++				rmt_adv |= LPA_PAUSE_ASYM;
++
++			if (phydev->advertising & ADVERTISED_Pause)
++				lcl_adv |= ADVERTISE_PAUSE_CAP;
++			if (phydev->advertising & ADVERTISED_Asym_Pause)
++				lcl_adv |= ADVERTISE_PAUSE_ASYM;
++
++			flowctrl = mii_resolve_flowctrl_fdx(lcl_adv, rmt_adv);
++
++			if (flowctrl & FLOW_CTRL_TX)
++				mcr |= PMCR_TX_FC_EN;
++			if (flowctrl & FLOW_CTRL_RX)
++				mcr |= PMCR_RX_FC_EN;
++		}
++		mt7530_write(priv, MT7530_PMCR_P(port), mcr);
+ 	}
+ }
+ 
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index b83d76b99802..74db9822eb40 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -151,6 +151,7 @@ enum mt7530_stp_state {
+ #define  PMCR_TX_FC_EN			BIT(5)
+ #define  PMCR_RX_FC_EN			BIT(4)
+ #define  PMCR_FORCE_SPEED_1000		BIT(3)
++#define  PMCR_FORCE_SPEED_100		BIT(2)
+ #define  PMCR_FORCE_FDX			BIT(1)
+ #define  PMCR_FORCE_LNK			BIT(0)
+ #define  PMCR_COMMON_LINK		(PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | \
+-- 
+2.11.0
