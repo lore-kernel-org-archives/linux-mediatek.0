@@ -1,94 +1,59 @@
-From: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 5/5] mfd: mt6397: Add PMIC keys support to MT6397 driver
-Date: Mon, 7 Aug 2017 09:57:45 +0800
-Message-ID: <1502071065-6745-6-git-send-email-chen.zhong@mediatek.com>
-References: <1502071065-6745-1-git-send-email-chen.zhong@mediatek.com>
+From: Rick Chang <rick.chang@mediatek.com>
+Subject: Re: [PATCH 05/12] [media] vcodec: mediatek: constify v4l2_m2m_ops
+ structures
+Date: Mon, 7 Aug 2017 10:42:05 +0800
+Message-ID: <1502073725.2886.2.camel@mtksdaap41>
+References: <1502007921-22968-1-git-send-email-Julia.Lawall@lip6.fr>
+         <1502007921-22968-6-git-send-email-Julia.Lawall@lip6.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1502071065-6745-1-git-send-email-chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Alessandro Zummo <a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jaechul Lee <jcsing.lee-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Beomho Seo <beomho.seo-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rtc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1502007921-22968-6-git-send-email-Julia.Lawall@lip6.fr>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Julia Lawall <Julia.Lawall@lip6.fr>
+Cc: bhumirks@gmail.com, kernel-janitors@vger.kernel.org, Bin Liu <bin.liu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds compatible strings and interrupts for pmic keys
-which serves as child device of MFD.
-
-Signed-off-by: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Sun, 2017-08-06 at 10:25 +0200, Julia Lawall wrote:
+> The v4l2_m2m_ops structures are only passed as the only
+> argument to v4l2_m2m_init, which is declared as const.
+> Thus the v4l2_m2m_ops structures themselves can be const.
+> 
+> Done with the help of Coccinelle.
+> 
+> // <smpl>
+> @r disable optional_qualifier@
+> identifier i;
+> position p;
+> @@
+> static struct v4l2_m2m_ops i@p = { ... };
+> 
+> @ok1@
+> identifier r.i;
+> position p;
+> @@
+> v4l2_m2m_init(&i@p)
+> 
+> @bad@
+> position p != {r.p,ok1.p};
+> identifier r.i;
+> struct v4l2_m2m_ops e;
+> @@
+> e@i@p
+> 
+> @depends on !bad disable optional_qualifier@
+> identifier r.i;
+> @@
+> static
+> +const
+>  struct v4l2_m2m_ops i = { ... };
+> // </smpl>
+> 
+> Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
+> 
 ---
- drivers/mfd/mt6397-core.c |   36 +++++++++++++++++++++++++++++++++++-
- 1 file changed, 35 insertions(+), 1 deletion(-)
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-index 6546d7f..3c6a765 100644
---- a/drivers/mfd/mt6397-core.c
-+++ b/drivers/mfd/mt6397-core.c
-@@ -43,6 +43,30 @@
- 	},
- };
- 
-+static const struct resource mt6323_keys_resources[] = {
-+	{
-+		.start = MT6323_IRQ_STATUS_PWRKEY,
-+		.end   = MT6323_IRQ_STATUS_PWRKEY,
-+		.flags = IORESOURCE_IRQ,
-+	}, {
-+		.start = MT6323_IRQ_STATUS_FCHRKEY,
-+		.end   = MT6323_IRQ_STATUS_FCHRKEY,
-+		.flags = IORESOURCE_IRQ,
-+	},
-+};
-+
-+static const struct resource mt6397_keys_resources[] = {
-+	{
-+		.start = MT6397_IRQ_PWRKEY,
-+		.end   = MT6397_IRQ_PWRKEY,
-+		.flags = IORESOURCE_IRQ,
-+	}, {
-+		.start = MT6397_IRQ_HOMEKEY,
-+		.end   = MT6397_IRQ_HOMEKEY,
-+		.flags = IORESOURCE_IRQ,
-+	},
-+};
-+
- static const struct mfd_cell mt6323_devs[] = {
- 	{
- 		.name = "mt6323-regulator",
-@@ -50,6 +74,11 @@
- 	}, {
- 		.name = "mt6323-led",
- 		.of_compatible = "mediatek,mt6323-led"
-+	}, {
-+		.name = "mtk-pmic-keys",
-+		.num_resources = ARRAY_SIZE(mt6323_keys_resources),
-+		.resources = mt6323_keys_resources,
-+		.of_compatible = "mediatek,mt6323-keys"
- 	},
- };
- 
-@@ -71,7 +100,12 @@
- 	}, {
- 		.name = "mt6397-pinctrl",
- 		.of_compatible = "mediatek,mt6397-pinctrl",
--	},
-+	}, {
-+		.name = "mtk-pmic-keys",
-+		.num_resources = ARRAY_SIZE(mt6397_keys_resources),
-+		.resources = mt6397_keys_resources,
-+		.of_compatible = "mediatek,mt6397-keys"
-+	}
- };
- 
- static void mt6397_irq_lock(struct irq_data *data)
--- 
-1.7.9.5
+Acked-by: Rick Chang <rick.chang@mediatek.com>
