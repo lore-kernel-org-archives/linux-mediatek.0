@@ -1,45 +1,46 @@
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: [PATCH] ASoC: mediatek: Fix an error checking code
-Date: Mon,  7 Aug 2017 02:23:15 +0200
-Message-ID: <20170807002315.3512-1-christophe.jaillet@wanadoo.fr>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v3 0/4] add support of SCPSYS power domain for MediaTek MT7622
+Date: Mon, 7 Aug 2017 15:24:33 +0800
+Message-ID: <cover.1502090240.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, matthias.bgg@gmail.com
-Cc: alsa-devel@alsa-project.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: robh+dt@kernel.org, matthias.bgg@gmail.com, rjw@rjwysocki.net, khilman@baylibre.com
+Cc: ulf.hansson@linaro.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Check the value returned by 'devm_clk_get()' instead of the clock
-identifier which can never be an ERR code.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Fixes: d6f3710a56e1 ("ASoC: mediatek: add structure define and clock control for 2701")
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
- sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes since v2:
+- reduce code duplication of scpsys_probe across all SoCs
 
-diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
-index b815ecc6bbf6..affa7fb25dd9 100644
---- a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
-+++ b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
-@@ -75,7 +75,7 @@ int mt2701_init_clock(struct mtk_base_afe *afe)
- 
- 	for (i = 0; i < MT2701_CLOCK_NUM; i++) {
- 		afe_priv->clocks[i] = devm_clk_get(afe->dev, aud_clks[i]);
--		if (IS_ERR(aud_clks[i])) {
-+		if (IS_ERR(afe_priv->clocks[i])) {
- 			dev_warn(afe->dev, "%s devm_clk_get %s fail\n",
- 				 __func__, aud_clks[i]);
- 			return PTR_ERR(aud_clks[i]);
+Changes since v1:
+- rebase to Linux v4.13-rc1
+
+There are four power domains on MediaTek MT7622 SoC which are respectively
+ETHSYS for Ethernet including extra embedded switch, HIF0SYS for PCI-E and
+SATA, HIF1SYS for USB and WBSYS for WIFI and Bluetooth.
+
+Those functions could be selectively powered gated when the corresponding
+function is no longer to use in order to reach more minimal power
+dissipation through the patch series introduced here.
+
+Chen Zhong (1):
+  soc: mediatek: add header files required for MT7622 SCPSYS dt-binding
+
+Sean Wang (3):
+  dt-bindings: soc: update the binding document for SCPSYS on MediaTek
+    MT7622 SoC
+  soc: mediatek: reduce code duplication of scpsys_probe across all SoCs
+  soc: mediatek: add SCPSYS power domain driver for MediaTek MT7622 SoC
+
+ .../devicetree/bindings/soc/mediatek/scpsys.txt    |   3 +
+ drivers/soc/mediatek/mtk-scpsys.c                  | 247 ++++++++++++---------
+ include/dt-bindings/power/mt7622-power.h           |  22 ++
+ include/linux/soc/mediatek/infracfg.h              |   7 +
+ 4 files changed, 179 insertions(+), 100 deletions(-)
+ create mode 100644 include/dt-bindings/power/mt7622-power.h
+
 -- 
-2.11.0
+2.7.4
