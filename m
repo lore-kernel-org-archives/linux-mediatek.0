@@ -1,86 +1,157 @@
-From: John Crispin <john@phrozen.org>
-Subject: [PATCH] net: dsa: mediatek: add adjust link support for user ports
-Date: Mon,  7 Aug 2017 16:20:49 +0200
-Message-ID: <20170807142049.4144-1-john@phrozen.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@savoirfairelinux.com>, Florian Fainelli <f.fainelli@gmail.com>
-Cc: sean Wang <sean.wang@mediatek.com>, Ryder Lee <Ryder.Lee@mediatek.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Shashidhar Lakkavalli <shashidhar.lakkavalli@openmesh.com>, Muciri Gatimu <muciri@openmesh.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH] mtd: nand: Rename nand.h into rawnand.h
+Date: Mon, 7 Aug 2017 21:06:09 +0200
+Message-ID: <20170807190609.uz6fpatkzijfgifr@kozik-lap>
+References: <1501860550-16506-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1501860550-16506-2-git-send-email-boris.brezillon@free-electrons.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+Content-Disposition: inline
+In-Reply-To: <1501860550-16506-2-git-send-email-boris.brezillon@free-electrons.com>
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: Boris Brezillon <boris.brezillon@free-electrons.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Rich Felker <dalias@libc.org>, Neil Armstrong <narmstrong@baylibre.com>, Tony Lindgren <tony@atomide.com>, linux-mips@linux-mips.org, Sekhar Nori <nsekhar@ti.com>, Stefan Agner <stefan@agner.ch>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mtd@lists.infradead.org, Marc Gonzalez <marc_gonzalez@sigmadesigns.com>, bcm-kernel-feedback-list@broadcom.com, Robert Jarzmik <robert.jarzmik@free.fr>, Alexander Clouter <alex@digriz.org.uk>, devel@driverdev.osuosl.org, Jesper Nilsson <jesper.nilsson@axis.com>, linux-omap@vger.kernel.org, Maxim Levitsky <maximlevitsky@gmail.com>, Yoshinori Sato <ysato@users.sourceforge.jp>, Jonathan Corbet <corbet@lwn.net>, linux-sh@vger.kernel.org, Richard Weinberger <richard@nod.at>, linux-doc@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-oxnas@lists.tuxfamily.org, Marek Vasut <marek.vasut@gmail.>
 List-Id: linux-mediatek@lists.infradead.org
 
-Manually adjust the port settings of user ports once PHY polling has
-completed. This patch extends the adjust_link callback to configure the
-per port PMCR register, applying the proper values polled from the PHY.
-Without this patch flow control was not always getting setup properly.
+On Fri, Aug 04, 2017 at 05:29:10PM +0200, Boris Brezillon wrote:
+> We are planning to share more code between different NAND based
+> devices (SPI NAND, OneNAND and raw NANDs), but before doing that
+> we need to move the existing include/linux/mtd/nand.h file into
+> include/linux/mtd/rawnand.h so we can later create a nand.h header
+> containing all common structure and function prototypes.
+> 
+> Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
+> Signed-off-by: Peter Pan <peterpandong@micron.com>
+> Cc: Jonathan Corbet <corbet@lwn.net>
+> Cc: Sekhar Nori <nsekhar@ti.com>
+> Cc: Kevin Hilman <khilman@kernel.org>
+> Cc: Jason Cooper <jason@lakedaemon.net>
+> Cc: Andrew Lunn <andrew@lunn.ch>
+> Cc: Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>
+> Cc: Gregory Clement <gregory.clement@free-electrons.com>
+> Cc: Hartley Sweeten <hsweeten@visionengravers.com>
+> Cc: Alexander Sverdlin <alexander.sverdlin@gmail.com>
+> Cc: Shawn Guo <shawnguo@kernel.org>
+> Cc: Sascha Hauer <kernel@pengutronix.de>
+> Cc: Fabio Estevam <fabio.estevam@nxp.com>
+> Cc: Imre Kaloz <kaloz@openwrt.org>
+> Cc: Krzysztof Halasa <khalasa@piap.pl>
+> Cc: Eric Miao <eric.y.miao@gmail.com>
+> Cc: Haojian Zhuang <haojian.zhuang@gmail.com>
+> Cc: Aaro Koskinen <aaro.koskinen@iki.fi>
+> Cc: Tony Lindgren <tony@atomide.com>
+> Cc: Alexander Clouter <alex@digriz.org.uk>
+> Cc: Daniel Mack <daniel@zonque.org>
+> Cc: Robert Jarzmik <robert.jarzmik@free.fr>
+> Cc: Marek Vasut <marek.vasut@gmail.com>
+> Cc: Kukjin Kim <kgene@kernel.org>
+> Cc: Krzysztof Kozlowski <krzk@kernel.org>
+> Cc: Simtec Linux Team <linux@simtec.co.uk>
+> Cc: Steven Miao <realmz6@gmail.com>
+> Cc: Mikael Starvik <starvik@axis.com>
+> Cc: Jesper Nilsson <jesper.nilsson@axis.com>
+> Cc: Ralf Baechle <ralf@linux-mips.org>
+> Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
+> Cc: Rich Felker <dalias@libc.org>
+> Cc: Wenyou Yang <wenyou.yang@atmel.com>
+> Cc: Josh Wu <rainyfeeling@outlook.com>
+> Cc: Kamal Dasu <kdasu.kdev@gmail.com>
+> Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+> Cc: Han Xu <han.xu@nxp.com>
+> Cc: Harvey Hunt <harveyhuntnexus@gmail.com>
+> Cc: Vladimir Zapolskiy <vz@mleia.com>
+> Cc: Sylvain Lemieux <slemieux.tyco@gmail.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Wan ZongShun <mcuos.com@gmail.com>
+> Cc: Neil Armstrong <narmstrong@baylibre.com>
+> Cc: Ezequiel Garcia <ezequiel.garcia@free-electrons.com>
+> Cc: Maxim Levitsky <maximlevitsky@gmail.com>
+> Cc: Marc Gonzalez <marc_gonzalez@sigmadesigns.com>
+> Cc: Stefan Agner <stefan@agner.ch>
+> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
+> Cc: linux-doc@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-omap@vger.kernel.org
+> Cc: linux-samsung-soc@vger.kernel.org
+> Cc: adi-buildroot-devel@lists.sourceforge.net
+> Cc: linux-cris-kernel@axis.com
+> Cc: linux-mips@linux-mips.org
+> Cc: linux-sh@vger.kernel.org
+> Cc: bcm-kernel-feedback-list@broadcom.com
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-oxnas@lists.tuxfamily.org
+> Cc: linuxppc-dev@lists.ozlabs.org
+> Cc: devel@driverdev.osuosl.org
+> ---
+> Hi All,
+> 
+> Sorry for the huge Cc list, but I'd like to collect as much acks as
+> possible for this patch which is actually part of a bigger series [1].
+> 
+> Note that there's nothing complicated here, it's just a mechanical
+> s/nand\.h/rawnand\.h/ replacement, but it impacts several architectures,
+> the doc and staging directories.
+> 
+> Regards,
+> 
+> Boris
+> 
+> [1]https://lwn.net/Articles/723694/
+> ---
+>  Documentation/driver-api/mtdnand.rst            | 8 ++++----
+>  MAINTAINERS                                     | 2 +-
+>  arch/arm/mach-davinci/board-da850-evm.c         | 2 +-
+>  arch/arm/mach-davinci/board-dm355-evm.c         | 2 +-
+>  arch/arm/mach-davinci/board-dm355-leopard.c     | 2 +-
+>  arch/arm/mach-davinci/board-dm365-evm.c         | 2 +-
+>  arch/arm/mach-davinci/board-dm644x-evm.c        | 2 +-
+>  arch/arm/mach-davinci/board-dm646x-evm.c        | 2 +-
+>  arch/arm/mach-davinci/board-sffsdr.c            | 2 +-
+>  arch/arm/mach-dove/dove-db-setup.c              | 2 +-
+>  arch/arm/mach-ep93xx/snappercl15.c              | 2 +-
+>  arch/arm/mach-ep93xx/ts72xx.c                   | 2 +-
+>  arch/arm/mach-imx/mach-qong.c                   | 2 +-
+>  arch/arm/mach-ixp4xx/ixdp425-setup.c            | 2 +-
+>  arch/arm/mach-mmp/aspenite.c                    | 2 +-
+>  arch/arm/mach-omap1/board-fsample.c             | 2 +-
+>  arch/arm/mach-omap1/board-h2.c                  | 2 +-
+>  arch/arm/mach-omap1/board-h3.c                  | 2 +-
+>  arch/arm/mach-omap1/board-nand.c                | 2 +-
+>  arch/arm/mach-omap1/board-perseus2.c            | 2 +-
+>  arch/arm/mach-orion5x/db88f5281-setup.c         | 2 +-
+>  arch/arm/mach-orion5x/kurobox_pro-setup.c       | 2 +-
+>  arch/arm/mach-orion5x/ts209-setup.c             | 2 +-
+>  arch/arm/mach-orion5x/ts78xx-setup.c            | 2 +-
+>  arch/arm/mach-pxa/balloon3.c                    | 2 +-
+>  arch/arm/mach-pxa/em-x270.c                     | 2 +-
+>  arch/arm/mach-pxa/eseries.c                     | 2 +-
+>  arch/arm/mach-pxa/palmtx.c                      | 2 +-
+>  arch/arm/mach-pxa/tosa.c                        | 2 +-
+>  arch/arm/mach-s3c24xx/common-smdk.c             | 2 +-
+>  arch/arm/mach-s3c24xx/mach-anubis.c             | 2 +-
+>  arch/arm/mach-s3c24xx/mach-at2440evb.c          | 2 +-
+>  arch/arm/mach-s3c24xx/mach-bast.c               | 2 +-
+>  arch/arm/mach-s3c24xx/mach-gta02.c              | 2 +-
+>  arch/arm/mach-s3c24xx/mach-jive.c               | 2 +-
+>  arch/arm/mach-s3c24xx/mach-mini2440.c           | 2 +-
+>  arch/arm/mach-s3c24xx/mach-osiris.c             | 2 +-
+>  arch/arm/mach-s3c24xx/mach-qt2410.c             | 2 +-
+>  arch/arm/mach-s3c24xx/mach-rx3715.c             | 2 +-
+>  arch/arm/mach-s3c24xx/mach-vstms.c              | 2 +-
 
-Signed-off-by: Shashidhar Lakkavalli <shashidhar.lakkavalli@openmesh.com>
-Signed-off-by: Muciri Gatimu <muciri@openmesh.com>
-Signed-off-by: John Crispin <john@phrozen.org>
----
- drivers/net/dsa/mt7530.c | 38 ++++++++++++++++++++++++++++++++++++++
- drivers/net/dsa/mt7530.h |  1 +
- 2 files changed, 39 insertions(+)
+For s3c24xx:
+Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 1e46418a3b74..264b281eb86b 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -625,6 +625,44 @@ static void mt7530_adjust_link(struct dsa_switch *ds, int port,
- 		 * all finished.
- 		 */
- 		mt7623_pad_clk_setup(ds);
-+	} else {
-+		u16 lcl_adv = 0, rmt_adv = 0;
-+		u8 flowctrl;
-+		u32 mcr = PMCR_USERP_LINK | PMCR_FORCE_MODE;
-+
-+		switch (phydev->speed) {
-+		case SPEED_1000:
-+			mcr |= PMCR_FORCE_SPEED_1000;
-+			break;
-+		case SPEED_100:
-+			mcr |= PMCR_FORCE_SPEED_100;
-+			break;
-+		};
-+
-+		if (phydev->link)
-+			mcr |= PMCR_FORCE_LNK;
-+
-+		if (phydev->duplex) {
-+			mcr |= PMCR_FORCE_FDX;
-+
-+			if (phydev->pause)
-+				rmt_adv = LPA_PAUSE_CAP;
-+			if (phydev->asym_pause)
-+				rmt_adv |= LPA_PAUSE_ASYM;
-+
-+			if (phydev->advertising & ADVERTISED_Pause)
-+				lcl_adv |= ADVERTISE_PAUSE_CAP;
-+			if (phydev->advertising & ADVERTISED_Asym_Pause)
-+				lcl_adv |= ADVERTISE_PAUSE_ASYM;
-+
-+			flowctrl = mii_resolve_flowctrl_fdx(lcl_adv, rmt_adv);
-+
-+			if (flowctrl & FLOW_CTRL_TX)
-+				mcr |= PMCR_TX_FC_EN;
-+			if (flowctrl & FLOW_CTRL_RX)
-+				mcr |= PMCR_RX_FC_EN;
-+		}
-+		mt7530_write(priv, MT7530_PMCR_P(port), mcr);
- 	}
- }
- 
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index b83d76b99802..74db9822eb40 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -151,6 +151,7 @@ enum mt7530_stp_state {
- #define  PMCR_TX_FC_EN			BIT(5)
- #define  PMCR_RX_FC_EN			BIT(4)
- #define  PMCR_FORCE_SPEED_1000		BIT(3)
-+#define  PMCR_FORCE_SPEED_100		BIT(2)
- #define  PMCR_FORCE_FDX			BIT(1)
- #define  PMCR_FORCE_LNK			BIT(0)
- #define  PMCR_COMMON_LINK		(PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | \
--- 
-2.11.0
+Best regards,
+Krzysztof
