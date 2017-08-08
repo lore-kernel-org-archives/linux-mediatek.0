@@ -1,37 +1,48 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH 2/4] usb: xhci-mtk: add generic compatible string
-Date: Tue, 8 Aug 2017 13:42:50 +0800
-Message-ID: <c90d5a8f0d7e67e277ebd3d4339598e83c044bc5.1502170518.git.chunfeng.yun@mediatek.com>
-References: <8f0cb0047b2aa195d818ad686cbbceabb3ad91a0.1502170518.git.chunfeng.yun@mediatek.com>
+From: Mars Cheng <mars.cheng@mediatek.com>
+Subject: [PATCH 0/5] Add clk and scpsys support for MT6755
+Date: Tue, 8 Aug 2017 16:13:29 +0800
+Message-ID: <1502180014-7995-1-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <8f0cb0047b2aa195d818ad686cbbceabb3ad91a0.1502170518.git.chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@intel.com>, Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-The xhci-mtk driver is a generic driver for MediaTek xHCI IP, add
-a generic compatible to avoid confusion when support new SoCs but
-use a compatible with specific SoC's name "mt8173".
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/host/xhci-mtk.c |    1 +
- 1 file changed, 1 insertion(+)
+Mars Cheng (3):
+  clk: mediatek: add mt6755 clock ID
+  clk: mediatek: add clk support for MT6755
+  soc: mediatek: add MT6755 scpsys support
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 67d5dc7..d2934b9 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -795,6 +795,7 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
- #ifdef CONFIG_OF
- static const struct of_device_id mtk_xhci_of_match[] = {
- 	{ .compatible = "mediatek,mt8173-xhci"},
-+	{ .compatible = "mediatek,xhci-mtk"},
- 	{ },
- };
- MODULE_DEVICE_TABLE(of, mtk_xhci_of_match);
--- 
-1.7.9.5
+wendell.lin (2):
+  dt-bindings: mediatek: add MT6755 power dt-bindings
+  dt-bindings: arm: mediatek: document clk bindings for MT6755
+
+ .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    1 +
+ .../bindings/arm/mediatek/mediatek,imgsys.txt      |    1 +
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    |    1 +
+ .../bindings/arm/mediatek/mediatek,mmsys.txt       |    1 +
+ .../bindings/arm/mediatek/mediatek,topckgen.txt    |    1 +
+ .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    1 +
+ .../bindings/arm/mediatek/mediatek,vencsys.txt     |    1 +
+ .../devicetree/bindings/soc/mediatek/scpsys.txt    |    3 +
+ drivers/clk/mediatek/Kconfig                       |   32 +
+ drivers/clk/mediatek/Makefile                      |    5 +
+ drivers/clk/mediatek/clk-mt6755-img.c              |   81 +++
+ drivers/clk/mediatek/clk-mt6755-mm.c               |  148 +++++
+ drivers/clk/mediatek/clk-mt6755-vdec.c             |   91 +++
+ drivers/clk/mediatek/clk-mt6755-venc.c             |   78 +++
+ drivers/clk/mediatek/clk-mt6755.c                  |  666 ++++++++++++++++++++
+ drivers/soc/mediatek/mtk-scpsys.c                  |  116 ++++
+ include/dt-bindings/clock/mt6755-clk.h             |  293 +++++++++
+ include/dt-bindings/power/mt6755-power.h           |   26 +
+ 18 files changed, 1546 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt6755-img.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6755-mm.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6755-vdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6755-venc.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6755.c
+ create mode 100644 include/dt-bindings/clock/mt6755-clk.h
+ create mode 100644 include/dt-bindings/power/mt6755-power.h
