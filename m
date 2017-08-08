@@ -1,61 +1,59 @@
-From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v1 1/5] dt-bindings: mediatek: add MT6755 power dt-bindings
-Date: Tue, 8 Aug 2017 16:13:30 +0800
-Message-ID: <1502180014-7995-2-git-send-email-mars.cheng@mediatek.com>
-References: <1502180014-7995-1-git-send-email-mars.cheng@mediatek.com>
+From: Honghui Zhang <honghui.zhang@mediatek.com>
+Subject: Re: [PATCH] memory: mtk-smi: Handle return value of
+ clk_prepare_enable
+Date: Tue, 8 Aug 2017 16:35:19 +0800
+Message-ID: <1502181319.24341.38.camel@mtksdaap41>
+References: <472bce58da459a7c64d0ad1cd39b74fa0fcf77f1.1502167256.git.arvind.yadav.cs@gmail.com>
+         <2c1de1862ce9fdefe7653706915c146038b12c4c.1502167256.git.arvind.yadav.cs@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1502180014-7995-1-git-send-email-mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "wendell.lin" <wendell.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <2c1de1862ce9fdefe7653706915c146038b12c4c.1502167256.git.arvind.yadav.cs@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Arvind Yadav <arvind.yadav.cs@gmail.com>
+Cc: matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: "wendell.lin" <wendell.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Tue, 2017-08-08 at 11:06 +0530, Arvind Yadav wrote:
+> clk_prepare_enable() can fail here and we must check its return value.
+> 
+> Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
+> ---
 
-This adds power dt-bindings for MT6755
+Hi, Arvind,
+please rebase this to my latest patchset[1], it's been applied by Joerg.
+And please send this one to Joerg and iommu mail list.
 
-Signed-off-by: wendell.lin <wendell.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- .../devicetree/bindings/soc/mediatek/scpsys.txt    |    3 +++
- 1 file changed, 3 insertions(+)
+otherwise:
+Acked-by: Honghui Zhang <honghui.zhang@mediatek.com>
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-index b1d165b..3105955 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-+++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-@@ -11,11 +11,13 @@ The driver implements the Generic PM domain bindings described in
- power/power_domain.txt. It provides the power domains defined in
- - include/dt-bindings/power/mt8173-power.h
- - include/dt-bindings/power/mt6797-power.h
-+- include/dt-bindings/power/mt6755-power.h
- - include/dt-bindings/power/mt2701-power.h
- 
- Required properties:
- - compatible: Should be one of:
- 	- "mediatek,mt2701-scpsys"
-+	- "mediatek,mt6755-scpsys"
- 	- "mediatek,mt6797-scpsys"
- 	- "mediatek,mt8173-scpsys"
- - #power-domain-cells: Must be 1
-@@ -25,6 +27,7 @@ Required properties:
-                       These are clocks which hardware needs to be
-                       enabled before enabling certain power domains.
- 	Required clocks for MT2701: "mm", "mfg", "ethif"
-+	Required clocks for MT6755: "mm", "mfg", "vdec"
- 	Required clocks for MT6797: "mm", "mfg", "vdec"
- 	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
- 
--- 
-1.7.9.5
+[1]https://lkml.org/lkml/2017/8/3/968
+
+Thanks.
+>  drivers/memory/mtk-smi.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index 4afbc41..edf36f0 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -321,6 +321,7 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+>  	struct resource *res;
+>  	const struct of_device_id *of_id;
+>  	enum mtk_smi_gen smi_gen;
+> +	int ret;
+>  
+>  	if (!dev->pm_domain)
+>  		return -EPROBE_DEFER;
+> @@ -359,7 +360,9 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+>  		if (IS_ERR(common->clk_async))
+>  			return PTR_ERR(common->clk_async);
+>  
+> -		clk_prepare_enable(common->clk_async);
+> +		ret = clk_prepare_enable(common->clk_async);
+> +		if (ret)
+> +			return ret;
+>  	}
+>  	pm_runtime_enable(dev);
+>  	platform_set_drvdata(pdev, common);
