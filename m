@@ -1,93 +1,101 @@
-From: Gilad Ben-Yossef <gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org>
-Subject: [PATCH v4 07/19] crypto: move pub key to generic async completion
-Date: Tue,  8 Aug 2017 15:03:38 +0300
-Message-ID: <1502193834-11289-8-git-send-email-gilad__16637.2068961666$1502197392$gmane$org@benyossef.com>
-References: <1502193834-11289-1-git-send-email-gilad@benyossef.com>
+From: Will Deacon <will.deacon@arm.com>
+Subject: Re: [PATCH] arm64: correct modules range of kernel virtual memory
+ layout
+Date: Tue, 8 Aug 2017 14:19:09 +0100
+Message-ID: <20170808131909.GI13355@arm.com>
+References: <1502103886-19725-1-git-send-email-miles.chen@mediatek.com>
+ <20170807131608.GA18817@arm.com>
+ <CAKv+Gu9qD_-GNHus5txiqj9eHLpU5S7RX8QxYeUG17Ok0QNz-A@mail.gmail.com>
+ <20170807140138.GB18817@arm.com>
+ <1502167450.24380.21.camel@mtkswgap22>
+ <1502170045.30154.5.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1502193834-11289-1-git-send-email-gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Herbert Xu <herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Jonathan Corbet <corbet-T1hC0tSOHrs@public.gmane.org>, David Howells <dhowells-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Tom Lendacky <thomas.lendacky-5C7GfCeVMHo@public.gmane.org>, Gary Hook <gary.hook-5C7GfCeVMHo@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Arnaud Ebalard <arno-LkuqDEemtHBg9hUCZPvPmw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alasdair Kergon <agk-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Mike Snitzer <snitzer-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, dm-devel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, Shaohua Li <shli-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Steve French <sfrench-eUNUBHrolfbYtjvyW6yDsg@public.gmane.org>, "Theodore Y. Ts'o" <tytso-3s7WtUTddSA@public.gmane.org>, Jaegeuk Kim <jaegeuk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mimi Zohar <zohar-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org>, Dmitry Kasatkin <dmitry.kasatkin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, James Morris <james.l.morris-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "Serge E. Hallyn" <serge-A9i7LUbDfNHQT0dZR+AlfA@public.gmane.org>, linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-doc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, keyrings-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel@lists
-Cc: Ofir Drang <ofir.drang-5wv7dgnIgG8@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1502170045.30154.5.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Miles Chen <miles.chen@mediatek.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>, Catalin Marinas <catalin.marinas@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-public_key_verify_signature() is starting an async crypto op and
-waiting for it to complete. Move it over to generic code doing
-the same.
+On Tue, Aug 08, 2017 at 01:27:25PM +0800, Miles Chen wrote:
+> On Tue, 2017-08-08 at 12:44 +0800, Miles Chen wrote:
+> > On Mon, 2017-08-07 at 15:01 +0100, Will Deacon wrote:
+> > > On Mon, Aug 07, 2017 at 02:18:00PM +0100, Ard Biesheuvel wrote:
+> > > > On 7 August 2017 at 14:16, Will Deacon <will.deacon@arm.com> wrote:
+> > > > > On Mon, Aug 07, 2017 at 07:04:46PM +0800, Miles Chen wrote:
+> > > > >> The commit f80fb3a3d508 ("arm64: add support for kernel ASLR")
+> > > > >> moved module virtual address to
+> > > > >> [module_alloc_base, module_alloc_base + MODULES_VSIZE).
+> > > > >>
+> > > > >> Display module information of the virtual kernel
+> > > > >> memory layout by using module_alloc_base.
+> > > > >>
+> > > > >> testing output:
+> > > > >> 1) Current implementation:
+> > > > >> Virtual kernel memory layout:
+> > > > >>       modules : 0xffffff8000000000 - 0xffffff8008000000   (   128 MB)
+> > > > >> 2) this patch + KASLR:
+> > > > >> Virtual kernel memory layout:
+> > > > >>       modules : 0xffffff8000560000 - 0xffffff8008560000   (   128 MB)
+> > > > >> 3) this patch + KASLR and a dummy seed:
+> > > > >> Virtual kernel memory layout:
+> > > > >>       modules : 0xffffffa7df637000 - 0xffffffa7e7637000   (   128 MB)
+> > > > >>
+> > > > >> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> > > > >> ---
+> > > > >>  arch/arm64/mm/init.c | 5 +++--
+> > > > >>  1 file changed, 3 insertions(+), 2 deletions(-)
+> > > > >
+> > > > > Does this mean the modules code in our pt dumper is busted
+> > > > > (arch/arm64/mm/dump.c)? Also, what about KASAN, which uses these addresses
+> > > > > too (in kasan_init)? Should we just remove MODULES_VADDR and MODULES_END
+> > > > > altogether?
+> > > > >
+> > > > 
+> > > > I don't think we need this patch. The 'module' line simply prints the
+> > > > VA region that is reserved for modules. The fact that we end up
+> > > > putting them elsewhere when running randomized does not necessarily
+> > > > mean this line should reflect that.
+> > > 
+> > > I was more concerned by other users of MODULES_VADDR tbh, although I see
+> > > now that we don't randomize the module region if kasan is enabled. Still,
+> > > the kcore code adds the modules region as a separate area (distinct from
+> > > vmalloc) if MODULES_VADDR is defined, the page table dumping code uses
+> > > MODULES_VADDR to identify the module region and I think we'll get false
+> > > positives from is_vmalloc_or_module_addr, which again uses the static
+> > > region.
+> > > 
+> > > So, given that MODULES_VADDR never points at the module area, can't we get
+> > > rid of it?
+> > 
+> > Agreed.MODULES_VADDR should be phased out. Considering the kernel
+> > modules live somewhere between [VMALLOC_START, VMALLOC_END) now:
+> > (arch/arm64/kernel/module.c:module_alloc). I suggest the following
+> > changes:
+> > 
+> > 1. is_vmalloc_or_module_addr() should return is_vmalloc_addr() directly
+> > 2. arch/arm64/mm/dump.c does not need MODULES_VADDR and MODULES_END.
+> > 3. kasan uses [module_alloc_base, module_alloc_base + MODULES_VSIZE) to
+> > get the shadow memory? (the kernel modules still live in this range when
+> > kasan is enabled)
+> > 4. remove modules line in kernel memory layout
+> > (optional, thanks for Ard's feedback)
+> > 5. remove MODULE_VADDR, MODULES_END definition
+> 
+> I was wrong about this. is_vmalloc_or_module_addr() is defined
+> in mm/vmalloc and it uses MODULES_VADDR and MODULES_END.
+> May it is better to give MODULES_VADDR and MODULES_END
+> proper values, not remove them.
 
-Signed-off-by: Gilad Ben-Yossef <gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org>
----
- crypto/asymmetric_keys/public_key.c | 28 ++++------------------------
- 1 file changed, 4 insertions(+), 24 deletions(-)
+I think the only cases where the modules area isn't completely contained
+within vmalloc is where either randomization is disabled
+(CONFIG_RANDOMIZE_BASE=n) or we fail in kaslr_early_init. However, in both
+of these cases, module_alloc_base is set correctly, so perhaps we could
+defined MODULES_VADDR in terms of that oto get is_vmalloc_or_module_addr
+working properly. We'd need to add some code to the table dumper to avoid
+printing the module area if it's contained within vmalloc, and that could
+also be used for the kernel memory layout print.
 
-diff --git a/crypto/asymmetric_keys/public_key.c b/crypto/asymmetric_keys/public_key.c
-index 3cd6e12..d916235 100644
---- a/crypto/asymmetric_keys/public_key.c
-+++ b/crypto/asymmetric_keys/public_key.c
-@@ -57,29 +57,13 @@ static void public_key_destroy(void *payload0, void *payload3)
- 	public_key_signature_free(payload3);
- }
- 
--struct public_key_completion {
--	struct completion completion;
--	int err;
--};
--
--static void public_key_verify_done(struct crypto_async_request *req, int err)
--{
--	struct public_key_completion *compl = req->data;
--
--	if (err == -EINPROGRESS)
--		return;
--
--	compl->err = err;
--	complete(&compl->completion);
--}
--
- /*
-  * Verify a signature using a public key.
-  */
- int public_key_verify_signature(const struct public_key *pkey,
- 				const struct public_key_signature *sig)
- {
--	struct public_key_completion compl;
-+	struct crypto_wait cwait;
- 	struct crypto_akcipher *tfm;
- 	struct akcipher_request *req;
- 	struct scatterlist sig_sg, digest_sg;
-@@ -131,20 +115,16 @@ int public_key_verify_signature(const struct public_key *pkey,
- 	sg_init_one(&digest_sg, output, outlen);
- 	akcipher_request_set_crypt(req, &sig_sg, &digest_sg, sig->s_size,
- 				   outlen);
--	init_completion(&compl.completion);
-+	crypto_init_wait(&cwait);
- 	akcipher_request_set_callback(req, CRYPTO_TFM_REQ_MAY_BACKLOG |
- 				      CRYPTO_TFM_REQ_MAY_SLEEP,
--				      public_key_verify_done, &compl);
-+				      crypto_req_done, &cwait);
- 
- 	/* Perform the verification calculation.  This doesn't actually do the
- 	 * verification, but rather calculates the hash expected by the
- 	 * signature and returns that to us.
- 	 */
--	ret = crypto_akcipher_verify(req);
--	if ((ret == -EINPROGRESS) || (ret == -EBUSY)) {
--		wait_for_completion(&compl.completion);
--		ret = compl.err;
--	}
-+	ret = crypto_wait_req(crypto_akcipher_verify(req), &cwait);
- 	if (ret < 0)
- 		goto out_free_output;
- 
--- 
-2.1.4
+Will
