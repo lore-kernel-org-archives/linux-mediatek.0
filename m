@@ -1,44 +1,35 @@
-From: Arvind Yadav <arvind.yadav.cs@gmail.com>
-Subject: [PATCH] memory: mtk-smi: Handle return value of clk_prepare_enable
-Date: Tue,  8 Aug 2017 11:06:07 +0530
-Message-ID: <2c1de1862ce9fdefe7653706915c146038b12c4c.1502167256.git.arvind.yadav.cs@gmail.com>
-References: <472bce58da459a7c64d0ad1cd39b74fa0fcf77f1.1502167256.git.arvind.yadav.cs@gmail.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH 1/4] usb: mtu3: add generic compatible string
+Date: Tue, 8 Aug 2017 13:42:49 +0800
+Message-ID: <8f0cb0047b2aa195d818ad686cbbceabb3ad91a0.1502170518.git.chunfeng.yun@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <472bce58da459a7c64d0ad1cd39b74fa0fcf77f1.1502167256.git.arvind.yadav.cs@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Mathias Nyman <mathias.nyman@intel.com>, Felipe Balbi <felipe.balbi@linux.intel.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-clk_prepare_enable() can fail here and we must check its return value.
+The mtu3 driver is a generic driver for MediaTek usb3 DRD IP, add
+a generic compatible to avoid confusion when support new SoCs but
+use a compatible with specific SoC's name "mt8173".
 
-Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/memory/mtk-smi.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/usb/mtu3/mtu3_plat.c |    1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index 4afbc41..edf36f0 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -321,6 +321,7 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
- 	struct resource *res;
- 	const struct of_device_id *of_id;
- 	enum mtk_smi_gen smi_gen;
-+	int ret;
+diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+index 0d3ebb3..088e3e6 100644
+--- a/drivers/usb/mtu3/mtu3_plat.c
++++ b/drivers/usb/mtu3/mtu3_plat.c
+@@ -500,6 +500,7 @@ static int __maybe_unused mtu3_resume(struct device *dev)
  
- 	if (!dev->pm_domain)
- 		return -EPROBE_DEFER;
-@@ -359,7 +360,9 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
- 		if (IS_ERR(common->clk_async))
- 			return PTR_ERR(common->clk_async);
+ static const struct of_device_id mtu3_of_match[] = {
+ 	{.compatible = "mediatek,mt8173-mtu3",},
++	{.compatible = "mediatek,mtu3",},
+ 	{},
+ };
  
--		clk_prepare_enable(common->clk_async);
-+		ret = clk_prepare_enable(common->clk_async);
-+		if (ret)
-+			return ret;
- 	}
- 	pm_runtime_enable(dev);
- 	platform_set_drvdata(pdev, common);
 -- 
-1.9.1
+1.7.9.5
