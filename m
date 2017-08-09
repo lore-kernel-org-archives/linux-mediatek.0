@@ -1,46 +1,52 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH 2/2] cpufreq: mediatek: add support of cpufreq to MT7622
- SoC
-Date: Wed, 9 Aug 2017 19:56:33 +0530
-Message-ID: <20170809142633.GD29383@vireshk-i7>
-References: <cover.1502272372.git.sean.wang@mediatek.com>
- <8d96863368adb8a0435de9739e458035e6a6233b.1502272372.git.sean.wang@mediatek.com>
+From: Vivien Didelot <vivien.didelot@savoirfairelinux.com>
+Subject: Re: [PATCH 0/4] net-next: dsa: fix flow dissection
+Date: Wed, 09 Aug 2017 11:07:28 -0400
+Message-ID: <87h8xghj9r.fsf@weeman.i-did-not-set--mail-host-address--so-tickle-me>
+References: <20170809124119.24320-1-john@phrozen.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <8d96863368adb8a0435de9739e458035e6a6233b.1502272372.git.sean.wang@mediatek.com>
+In-Reply-To: <20170809124119.24320-1-john@phrozen.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: rjw@rjwysocki.net, robh+dt@kernel.org, matthias.bgg@gmail.com, jdelvare@suse.de, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, "David S . Miller" <davem@davemloft.net>, Sean Wang <sean.wang@mediatek.com>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Muciri Gatimu <muciri@openmesh.com>, Shashidhar Lakkavalli <shashidhar.lakkavalli@openmesh.com>, John Crispin <john@phrozen.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 09-08-17, 18:12, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> MT7622 is a 64-bit ARMv8 based dual-core SoC (2 * Cortex-A53) with a
-> single cluster. The hardware is also compatible with the current driver,
-> so add MT7622 as one of the compatible string list.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  drivers/cpufreq/mediatek-cpufreq.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> index 9fa9291..18c4bd9 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> @@ -574,6 +574,7 @@ static struct platform_driver mtk_cpufreq_platdrv = {
->  /* List of machines supported by this driver */
->  static const struct of_device_id mtk_cpufreq_machines[] __initconst = {
->  	{ .compatible = "mediatek,mt2701", },
-> +	{ .compatible = "mediatek,mt7622", },
->  	{ .compatible = "mediatek,mt7623", },
->  	{ .compatible = "mediatek,mt817x", },
->  	{ .compatible = "mediatek,mt8173", },
+Hi John,
 
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+John Crispin <john@phrozen.org> writes:
 
--- 
-viresh
+> RPS and probably other kernel features are currently broken on some if not
+> all DSA devices. The root cause of this is that skb_hash will call the
+> flow_dissector. At this point the skb still contains the magic switch
+> header and the skb->protocol field is not set up to the correct 802.3
+> value yet. By the time the tag specific code is called, removing the header
+> and properly setting the protocol an invalid hash is already set. In the
+> case of the mt7530 this will result in all flows always having the same
+> hash.
+>
+> Changes since RFC:
+> * use a callback instead of static values
+> * add cover letter
+>
+> John Crispin (4):
+>   net-next: dsa: move struct dsa_device_ops to the global header file
+>   net-next: dsa: add flow_dissect callback to struct dsa_device_ops
+>   net-next: tag_mtk: add flow_dissect callback to the ops struct
+>   net-next: dsa: fix flow dissection
+
+The "net-next" tag goes into the subject-prefix, i.e.
+"[PATCH net-next v3 0/4]" (this is the result of git format-patch
+--subject-prefix="PATCH net-next" -v3 --cover-letter.)
+
+The commit title prefix represents the most impacted subsystem, here
+"net: dsa: xxx" would map the net/dsa/ or drivers/net/dsa directories.
+
+Other than that, the whole patchset LGTM:
+
+Reviewed-by: Vivien Didelot <vivien.didelot@savoirfairelinux.com>
+
+
+Thanks,
+
+        Vivien
