@@ -1,34 +1,50 @@
-From: Tony Lindgren <tony@atomide.com>
-Subject: Re: [PATCH] mtd: nand: Rename nand.h into rawnand.h
-Date: Wed, 9 Aug 2017 14:41:03 -0700
-Message-ID: <20170809214101.GG3934@atomide.com>
-References: <1501860550-16506-1-git-send-email-boris.brezillon@free-electrons.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH] soc: Convert to using %pOF instead of full_name
+Date: Wed, 9 Aug 2017 17:09:36 -0500
+Message-ID: <CAL_JsqLYz9ACd-YAtU0gEHkY8A++cCeBTW9jvUyc5OheEq4scQ@mail.gmail.com>
+References: <20170718214339.7774-49-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-Content-Disposition: inline
-In-Reply-To: <1501860550-16506-1-git-send-email-boris.brezillon@free-electrons.com>
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Boris Brezillon <boris.brezillon@free-electrons.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Rich Felker <dalias@libc.org>, Neil Armstrong <narmstrong@baylibre.com>, linux-samsung-soc@vger.kernel.org, linux-mips@linux-mips.org, Sekhar Nori <nsekhar@ti.com>, Stefan Agner <stefan@agner.ch>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mtd@lists.infradead.org, Marc Gonzalez <marc_gonzalez@sigmadesigns.com>, bcm-kernel-feedback-list@broadcom.com, Robert Jarzmik <robert.jarzmik@free.fr>, Alexander Clouter <alex@digriz.org.uk>, devel@driverdev.osuosl.org, Jesper Nilsson <jesper.nilsson@axis.com>, linux-omap@vger.kernel.org, Maxim Levitsky <maximlevitsky@gmail.com>, Yoshinori Sato <ysato@users.sourceforge.jp>, Jonathan Corbet <corbet@lwn.net>, linux-sh@vger.kernel.org, Richard Weinberger <richard@nod.at>, linux-doc@vger.kernel.org, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk@kernel.org>, Marek Vasut <marek.vasut>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-renesas-soc-owner@vger.kernel.org>
+In-Reply-To: <20170718214339.7774-49-robh@kernel.org>
+Sender: linux-renesas-soc-owner@vger.kernel.org
+To: "arm@kernel.org" <arm@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Scott Wood <oss@buserror.net>, Qiang Zhao <qiang.zhao@nxp.com>, Matthias Brugger <matthias.bgg@gmail.com>, Simon Horman <horms@verge.net.au>, Magnus Damm <magnus.damm@gmail.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "open list:MEDIA DRIVERS FOR RENESAS - FCP" <linux-renesas-soc@vger.kernel.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-* Boris Brezillon <boris.brezillon@free-electrons.com> [170804 08:30]:
-> We are planning to share more code between different NAND based
-> devices (SPI NAND, OneNAND and raw NANDs), but before doing that
-> we need to move the existing include/linux/mtd/nand.h file into
-> include/linux/mtd/rawnand.h so we can later create a nand.h header
-> containing all common structure and function prototypes.
+On Tue, Jul 18, 2017 at 4:43 PM, Rob Herring <robh@kernel.org> wrote:
+> Now that we have a custom printf format specifier, convert users of
+> full_name to use %pOF instead. This is preparation to remove storing
+> of the full path string for each node.
+>
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> Cc: Scott Wood <oss@buserror.net>
+> Cc: Qiang Zhao <qiang.zhao@nxp.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Simon Horman <horms@verge.net.au>
+> Cc: Magnus Damm <magnus.damm@gmail.com>
+> Cc: Kukjin Kim <kgene@kernel.org>
+> Cc: Krzysztof Kozlowski <krzk@kernel.org>
+> Cc: Javier Martinez Canillas <javier@osg.samsung.com>
+> Cc: linuxppc-dev@lists.ozlabs.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-renesas-soc@vger.kernel.org
+> Cc: linux-samsung-soc@vger.kernel.org
+> ---
+>  drivers/soc/fsl/qbman/bman_ccsr.c    | 10 +++++-----
+>  drivers/soc/fsl/qbman/bman_portal.c  |  8 +++-----
+>  drivers/soc/fsl/qbman/qman_ccsr.c    | 12 ++++++------
+>  drivers/soc/fsl/qbman/qman_portal.c  | 11 ++++-------
+>  drivers/soc/fsl/qe/gpio.c            |  4 ++--
+>  drivers/soc/mediatek/mtk-pmic-wrap.c |  4 ++--
+>  drivers/soc/renesas/rcar-rst.c       |  4 ++--
+>  drivers/soc/renesas/rcar-sysc.c      |  6 +++---
+>  drivers/soc/samsung/pm_domains.c     |  8 ++++----
+>  9 files changed, 31 insertions(+), 36 deletions(-)
 
-For omap:
+Arnd, Olof,
 
-Acked-by: Tony Lindgren <tony@atomide.com>
+Can you please apply this one.
+
+Rob
