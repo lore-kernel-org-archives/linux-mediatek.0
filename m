@@ -1,51 +1,95 @@
-From: John Crispin <john@phrozen.org>
-Subject: [PATCH 3/4] net-next: tag_mtk: add flow_dissect callback to the ops struct
-Date: Wed,  9 Aug 2017 14:41:18 +0200
-Message-ID: <20170809124119.24320-4-john@phrozen.org>
-References: <20170809124119.24320-1-john@phrozen.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170809124119.24320-1-john@phrozen.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@savoirfairelinux.com>, Florian Fainelli <f.fainelli@gmail.com>, "David S . Miller" <davem@davemloft.net>, Sean Wang <sean.wang@mediatek.com>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Muciri Gatimu <muciri@openmesh.com>, Shashidhar Lakkavalli <shashidhar.lakkavalli@openmesh.com>, John Crispin <john@phrozen.org>
+From: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/2] i2c: mediatek: Add i2c compatible for MediaTek
+ MT7622
+Date: Wed, 9 Aug 2017 20:58:39 +0800
+Message-ID: <1502283519.930.62.camel@mhfsdcap03>
+References: <1502264631-12572-1-git-send-email-jun.gao@mediatek.com>
+         <1502264631-12572-3-git-send-email-jun.gao@mediatek.com>
+         <1502271638.31781.3.camel@mtksdaap41>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1502271638.31781.3.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The MT7530 inserts the 4 magic header in between the 802.3 address and
-protocol field. The patch implements the callback that can be called by
-the flow dissector to figure out the real protocol and offset of the
-network header. With this patch applied we can properly parse the packet
-and thus make hashing function properly.
+On Wed, 2017-08-09 at 17:40 +0800, Yingjoe Chen wrote:
+> On Wed, 2017-08-09 at 15:43 +0800, Jun Gao wrote:
+> > From: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > 
+> > Add i2c compatible for MT7622. Compare to MT8173 i2c controller,
+> > MT7622 limit message size to 255, and not support 4GB DMA mode.
+> 
+> 
+> Jun,
+> 
+> Do you mean message numbers?
+> 
+> 
+> Joe.C
+> 
 
-Signed-off-by: Muciri Gatimu <muciri@openmesh.com>
-Signed-off-by: Shashidhar Lakkavalli <shashidhar.lakkavalli@openmesh.com>
-Signed-off-by: John Crispin <john@phrozen.org>
----
- net/dsa/tag_mtk.c | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+Yes, bit7~bit0 of i2c register TRANSAC_LEN will be used as message
+numbers.
 
-diff --git a/net/dsa/tag_mtk.c b/net/dsa/tag_mtk.c
-index 2f32b7ea3365..02163c045a96 100644
---- a/net/dsa/tag_mtk.c
-+++ b/net/dsa/tag_mtk.c
-@@ -87,7 +87,17 @@ static struct sk_buff *mtk_tag_rcv(struct sk_buff *skb, struct net_device *dev,
- 	return skb;
- }
- 
-+static int mtk_tag_flow_dissect(const struct sk_buff *skb, __be16 *proto,
-+				int *offset)
-+{
-+	*offset = 4;
-+	*proto = ((__be16 *)skb->data)[1];
-+
-+	return 0;
-+}
-+
- const struct dsa_device_ops mtk_netdev_ops = {
--	.xmit	= mtk_tag_xmit,
--	.rcv	= mtk_tag_rcv,
-+	.xmit		= mtk_tag_xmit,
-+	.rcv		= mtk_tag_rcv,
-+	.flow_dissect	= mtk_tag_flow_dissect,
- };
--- 
-2.11.0
+Jun
+> > 
+> > Signed-off-by: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/i2c/busses/i2c-mt65xx.c | 18 ++++++++++++++++++
+> >  1 file changed, 18 insertions(+)
+> > 
+> > diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> > index 9bedf0b..2c7f847 100644
+> > --- a/drivers/i2c/busses/i2c-mt65xx.c
+> > +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> > @@ -172,6 +172,14 @@ struct mtk_i2c {
+> >  	.max_comb_2nd_msg_len = 31,
+> >  };
+> >  
+> > +static const struct i2c_adapter_quirks mt7622_i2c_quirks = {
+> > +	.max_num_msgs = 255,
+> > +	.max_write_len = 65535,
+> > +	.max_read_len = 65535,
+> > +	.max_comb_1st_msg_len = 65535,
+> > +	.max_comb_2nd_msg_len = 65535,
+> > +};
+> > +
+> >  static const struct mtk_i2c_compatible mt6577_compat = {
+> >  	.quirks = &mt6577_i2c_quirks,
+> >  	.pmic_i2c = 0,
+> > @@ -190,6 +198,15 @@ struct mtk_i2c {
+> >  	.support_33bits = 0,
+> >  };
+> >  
+> > +static const struct mtk_i2c_compatible mt7622_compat = {
+> > +	.quirks = &mt7622_i2c_quirks,
+> > +	.pmic_i2c = 0,
+> > +	.dcm = 1,
+> > +	.auto_restart = 1,
+> > +	.aux_len_reg = 1,
+> > +	.support_33bits = 0,
+> > +};
+> > +
+> >  static const struct mtk_i2c_compatible mt8173_compat = {
+> >  	.pmic_i2c = 0,
+> >  	.dcm = 1,
+> > @@ -201,6 +218,7 @@ struct mtk_i2c {
+> >  static const struct of_device_id mtk_i2c_of_match[] = {
+> >  	{ .compatible = "mediatek,mt6577-i2c", .data = &mt6577_compat },
+> >  	{ .compatible = "mediatek,mt6589-i2c", .data = &mt6589_compat },
+> > +	{ .compatible = "mediatek,mt7622-i2c", .data = &mt7622_compat },
+> >  	{ .compatible = "mediatek,mt8173-i2c", .data = &mt8173_compat },
+> >  	{}
+> >  };
+> 
+> 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
