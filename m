@@ -1,52 +1,37 @@
-From: Vivien Didelot <vivien.didelot@savoirfairelinux.com>
-Subject: Re: [PATCH 0/4] net-next: dsa: fix flow dissection
-Date: Wed, 09 Aug 2017 11:07:28 -0400
-Message-ID: <87h8xghj9r.fsf@weeman.i-did-not-set--mail-host-address--so-tickle-me>
-References: <20170809124119.24320-1-john@phrozen.org>
-Mime-Version: 1.0
-Content-Type: text/plain
+From: Arvind Yadav <arvind.yadav.cs@gmail.com>
+Subject: [PATCH v2 12/20] mt7601u: constify usb_device_id
+Date: Wed,  9 Aug 2017 21:58:24 +0530
+Message-ID: <1502296104-21360-1-git-send-email-arvind.yadav.cs@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170809124119.24320-1-john@phrozen.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, "David S . Miller" <davem@davemloft.net>, Sean Wang <sean.wang@mediatek.com>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Muciri Gatimu <muciri@openmesh.com>, Shashidhar Lakkavalli <shashidhar.lakkavalli@openmesh.com>, John Crispin <john@phrozen.org>
+To: kvalo@codeaurora.org, kubakici@wp.pl, matthias.bgg@gmail.com
+Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi John,
+usb_device_id are not supposed to change at runtime. All functions
+working with usb_device_id provided by <linux/usb.h> work with
+const usb_device_id. So mark the non-const structs as const.
 
-John Crispin <john@phrozen.org> writes:
+Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
+---
+changes in v2:
+              Re-submitting wireless separately.
 
-> RPS and probably other kernel features are currently broken on some if not
-> all DSA devices. The root cause of this is that skb_hash will call the
-> flow_dissector. At this point the skb still contains the magic switch
-> header and the skb->protocol field is not set up to the correct 802.3
-> value yet. By the time the tag specific code is called, removing the header
-> and properly setting the protocol an invalid hash is already set. In the
-> case of the mt7530 this will result in all flows always having the same
-> hash.
->
-> Changes since RFC:
-> * use a callback instead of static values
-> * add cover letter
->
-> John Crispin (4):
->   net-next: dsa: move struct dsa_device_ops to the global header file
->   net-next: dsa: add flow_dissect callback to struct dsa_device_ops
->   net-next: tag_mtk: add flow_dissect callback to the ops struct
->   net-next: dsa: fix flow dissection
+ drivers/net/wireless/mediatek/mt7601u/usb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-The "net-next" tag goes into the subject-prefix, i.e.
-"[PATCH net-next v3 0/4]" (this is the result of git format-patch
---subject-prefix="PATCH net-next" -v3 --cover-letter.)
-
-The commit title prefix represents the most impacted subsystem, here
-"net: dsa: xxx" would map the net/dsa/ or drivers/net/dsa directories.
-
-Other than that, the whole patchset LGTM:
-
-Reviewed-by: Vivien Didelot <vivien.didelot@savoirfairelinux.com>
-
-
-Thanks,
-
-        Vivien
+diff --git a/drivers/net/wireless/mediatek/mt7601u/usb.c b/drivers/net/wireless/mediatek/mt7601u/usb.c
+index 416c604..b9e4f67 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/usb.c
++++ b/drivers/net/wireless/mediatek/mt7601u/usb.c
+@@ -19,7 +19,7 @@
+ #include "usb.h"
+ #include "trace.h"
+ 
+-static struct usb_device_id mt7601u_device_table[] = {
++static const struct usb_device_id mt7601u_device_table[] = {
+ 	{ USB_DEVICE(0x0b05, 0x17d3) },
+ 	{ USB_DEVICE(0x0e8d, 0x760a) },
+ 	{ USB_DEVICE(0x0e8d, 0x760b) },
+-- 
+2.7.4
