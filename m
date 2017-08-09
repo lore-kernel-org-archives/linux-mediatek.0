@@ -1,37 +1,73 @@
-From: Gilad Ben-Yossef <gilad@benyossef.com>
-Subject: Re: [PATCH v4 02/19] crypto: ccm: use -EAGAIN for transient busy indication
-Date: Wed, 9 Aug 2017 08:18:03 +0300
-Message-ID: <CAOtvUMeUHk9KxQumhuvJ52dp-_-LFOD8XGvCWvhU6LjEZhEF7A@mail.gmail.com>
-References: <1502193834-11289-1-git-send-email-gilad@benyossef.com>
- <1502193834-11289-3-git-send-email-gilad@benyossef.com> <4600c898-a2f2-f95f-15b4-0adcc6acc0b5@amd.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 4/4] dt-bindings: phy-mt65xx-usb: supports PCIe, SATA and rename file
+Date: Wed, 9 Aug 2017 13:29:49 +0800
+Message-ID: <b2d4141dd3c0dc33d60a727561014d91c5f70176.1502256365.git.chunfeng.yun@mediatek.com>
+References: <d58705436a2563b87a67609a472db3c3d84b36f5.1502256365.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-security-module-owner@vger.kernel.org>
-In-Reply-To: <4600c898-a2f2-f95f-15b4-0adcc6acc0b5@amd.com>
-Sender: owner-linux-security-module@vger.kernel.org
-To: Gary R Hook <gary.hook@amd.com>
-Cc: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, Jonathan Corbet <corbet@lwn.net>, David Howells <dhowells@redhat.com>, "Lendacky, Thomas" <Thomas.Lendacky@amd.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Arnaud Ebalard <arno@natisbad.org>, Matthias Brugger <matthias.bgg@gmail.com>, Alasdair Kergon <agk@redhat.com>, Mike Snitzer <snitzer@redhat.com>, "dm-devel@redhat.com" <dm-devel@redhat.com>, Shaohua Li <shli@kernel.org>, Steve French <sfrench@samba.org>, "Theodore Y. Ts'o" <tytso@mit.edu>, Jaegeuk Kim <jaegeuk@kernel.org>, Mimi Zohar <zohar@linux.vnet.ibm.com>, Dmitry Kasatkin <dmitry.kasatkin@gmail.com>, James Morris <james.l.morris@oracle.com>, "Serge E. Hallyn" <serge@hallyn.com>, linux-
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <d58705436a2563b87a67609a472db3c3d84b36f5.1502256365.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Aug 8, 2017 at 6:24 PM, Gary R Hook <gary.hook@amd.com> wrote:
-> On 08/08/2017 07:03 AM, Gilad Ben-Yossef wrote:
->>
->> Replace -EBUSY with -EAGAIN when reporting transient busy
->> indication in the absence of backlog.
->>
->> Signed-off-by: Gilad Ben-Yossef <gilad@benyossef.com>
->
->
-> Could we use "ccp" in the subject line, please?
+add support for PCIe and SATA, also add some new compatibles.
 
-Of course, sorry about the the typo.
+due to phy-mt65xx-usb.txt holds the bindings for all mediatek SoCs
+with T-PHY controller, change the name to phy-mtk-tphy.txt to
+reflect that.
 
-Gilad
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ .../phy/{phy-mt65xx-usb.txt => phy-mtk-tphy.txt}        | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+ rename Documentation/devicetree/bindings/phy/{phy-mt65xx-usb.txt => phy-mtk-tphy.txt} (88%)
 
+diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+similarity index 88%
+rename from Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+rename to Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+index 0acc5a9..faf1808 100644
+--- a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
++++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+@@ -1,13 +1,18 @@
+-mt65xx USB3.0 PHY binding
++MediaTek T-PHY binding
+ --------------------------
+ 
+-This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
++T-phy controller supports physical layer functionality for a number of
++controllers on MediaTek SoCs, such as, USB2.0, USB3.0, PCIe, and SATA.
+ 
+ Required properties (controller (parent) node):
+  - compatible	: should be one of
+-		  "mediatek,mt2701-u3phy"
+-		  "mediatek,mt2712-u3phy"
+-		  "mediatek,mt8173-u3phy"
++		  "mediatek,generic-tphy-v1"
++		  "mediatek,generic-tphy-v2"
++		  "mediatek,mt2701-u3phy" (deprecated)
++		  "mediatek,mt2712-u3phy" (deprecated)
++		  "mediatek,mt8173-u3phy";
++		  make use of "mediatek,generic-tphy-v1" on mt2701 instead and
++		  "mediatek,generic-tphy-v2" on mt2712 instead.
+  - clocks	: (deprecated, use port's clocks instead) a list of phandle +
+ 		  clock-specifier pairs, one for each entry in clock-names
+  - clock-names	: (deprecated, use port's one instead) must contain
+@@ -35,6 +40,8 @@ Required properties (port (child) node):
+ 		  cell after port phandle is phy type from:
+ 			- PHY_TYPE_USB2
+ 			- PHY_TYPE_USB3
++			- PHY_TYPE_PCIE
++			- PHY_TYPE_SATA
+ 
+ Example:
+ 
 -- 
-Gilad Ben-Yossef
-Chief Coffee Drinker
+1.9.1
 
-"If you take a class in large-scale robotics, can you end up in a
-situation where the homework eats your dog?"
- -- Jean-Baptiste Queru
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
