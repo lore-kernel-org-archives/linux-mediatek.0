@@ -1,25 +1,39 @@
-From: John Crispin <john@phrozen.org>
-Subject: [PATCH 0/2] net-next: mediatek: bring up QDMA RX ring 0
-Date: Wed,  9 Aug 2017 12:09:30 +0200
-Message-ID: <20170809100932.10539-1-john@phrozen.org>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH 2/2] cpufreq: mediatek: add support of cpufreq to MT7622 SoC
+Date: Wed, 9 Aug 2017 18:12:39 +0800
+Message-ID: <8d96863368adb8a0435de9739e458035e6a6233b.1502272372.git.sean.wang@mediatek.com>
+References: <cover.1502272372.git.sean.wang@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1502272372.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "David S . Miller" <davem@davemloft.net>, Sean Wang <sean.wang@mediatek.com>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Muciri Gatimu <muciri@openmesh.com>, Shashidhar Lakkavalli <shashidhar.lakkavalli@openmesh.com>, John Crispin <john@phrozen.org>
+To: rjw@rjwysocki.net, viresh.kumar@linaro.org, robh+dt@kernel.org, matthias.bgg@gmail.com, jdelvare@suse.de, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The MT7623 has several DMA rings. Inside the SW path, the core will use
-the PDMA when receiving traffic. While bringing up the HW path we noticed
-that the PPE requires the QDMA RX to also be brought up as it uses this
-ring internally for its flow scheduling.
+From: Sean Wang <sean.wang@mediatek.com>
 
-John Crispin (2):
-  net-next: mediatek: fix typos inside the header file
-  net-next: mediatek: bring up QDMA RX ring 0
+MT7622 is a 64-bit ARMv8 based dual-core SoC (2 * Cortex-A53) with a
+single cluster. The hardware is also compatible with the current driver,
+so add MT7622 as one of the compatible string list.
 
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 36 +++++++++++++++++++++--------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  7 ++++--
- 2 files changed, 31 insertions(+), 12 deletions(-)
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/cpufreq/mediatek-cpufreq.c | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+index 9fa9291..18c4bd9 100644
+--- a/drivers/cpufreq/mediatek-cpufreq.c
++++ b/drivers/cpufreq/mediatek-cpufreq.c
+@@ -574,6 +574,7 @@ static struct platform_driver mtk_cpufreq_platdrv = {
+ /* List of machines supported by this driver */
+ static const struct of_device_id mtk_cpufreq_machines[] __initconst = {
+ 	{ .compatible = "mediatek,mt2701", },
++	{ .compatible = "mediatek,mt7622", },
+ 	{ .compatible = "mediatek,mt7623", },
+ 	{ .compatible = "mediatek,mt817x", },
+ 	{ .compatible = "mediatek,mt8173", },
 -- 
-2.11.0
+2.7.4
