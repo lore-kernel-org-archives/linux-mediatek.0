@@ -1,37 +1,57 @@
-From: Arvind Yadav <arvind.yadav.cs@gmail.com>
-Subject: [PATCH v2 12/20] mt7601u: constify usb_device_id
-Date: Wed,  9 Aug 2017 21:58:24 +0530
-Message-ID: <1502296104-21360-1-git-send-email-arvind.yadav.cs@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: kvalo@codeaurora.org, kubakici@wp.pl, matthias.bgg@gmail.com
-Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Subject: [PATCH] mtd: nand: mtk: fix error return code in mtk_ecc_probe()
+Date: Wed, 9 Aug 2017 11:35:21 -0500
+Message-ID: <20170809163521.GA4941@embeddedgus>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
+To: Boris Brezillon <boris.brezillon@free-electrons.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, "Gustavo A. R. Silva" <gustavo@embeddedor.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-usb_device_id are not supposed to change at runtime. All functions
-working with usb_device_id provided by <linux/usb.h> work with
-const usb_device_id. So mark the non-const structs as const.
+platform_get_irq() returns an error code, but the mtk_ecc driver
+ignores it and always returns -EINVAL. This is not correct and,
+prevents -EPROBE_DEFER from being propagated properly.
 
-Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
+Print and propagate the return value of platform_get_irq on failure.
+
+This issue was detected with the help of Coccinelle.
+
+Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
 ---
-changes in v2:
-              Re-submitting wireless separately.
+ drivers/mtd/nand/mtk_ecc.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- drivers/net/wireless/mediatek/mt7601u/usb.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt7601u/usb.c b/drivers/net/wireless/mediatek/mt7601u/usb.c
-index 416c604..b9e4f67 100644
---- a/drivers/net/wireless/mediatek/mt7601u/usb.c
-+++ b/drivers/net/wireless/mediatek/mt7601u/usb.c
-@@ -19,7 +19,7 @@
- #include "usb.h"
- #include "trace.h"
+diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
+index 6c3a4aa..7f3b065 100644
+--- a/drivers/mtd/nand/mtk_ecc.c
++++ b/drivers/mtd/nand/mtk_ecc.c
+@@ -464,8 +464,8 @@ static int mtk_ecc_probe(struct platform_device *pdev)
  
--static struct usb_device_id mt7601u_device_table[] = {
-+static const struct usb_device_id mt7601u_device_table[] = {
- 	{ USB_DEVICE(0x0b05, 0x17d3) },
- 	{ USB_DEVICE(0x0e8d, 0x760a) },
- 	{ USB_DEVICE(0x0e8d, 0x760b) },
+ 	irq = platform_get_irq(pdev, 0);
+ 	if (irq < 0) {
+-		dev_err(dev, "failed to get irq\n");
+-		return -EINVAL;
++		dev_err(dev, "failed to get irq: %d\n", irq);
++		return irq;
+ 	}
+ 
+ 	ret = dma_set_mask(dev, DMA_BIT_MASK(32));
 -- 
-2.7.4
+2.5.0
+
+
+______________________________________________________
+Linux MTD discussion mailing list
+http://lists.infradead.org/mailman/listinfo/linux-mtd/
