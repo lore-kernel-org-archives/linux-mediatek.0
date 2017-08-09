@@ -1,72 +1,47 @@
-From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 2/3] regulator: mt6351: Add support for MT6351 regulator
-Date: Wed, 9 Aug 2017 17:14:34 +0800
-Message-ID: <1502270074.31210.2.camel@mtkswgap22>
-References: <1502245865-11403-1-git-send-email-mars.cheng@mediatek.com>
- <1502245865-11403-3-git-send-email-mars.cheng@mediatek.com>
- <1502268398.6566.8.camel@mtksdaap41> <1502269384.6566.12.camel@mtksdaap41>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 4/4] phy: tegra: use of_device_get_match_data()
+Date: Wed, 9 Aug 2017 17:18:00 +0800
+Message-ID: <1502270280-13792-4-git-send-email-chunfeng.yun@mediatek.com>
+References: <1502270280-13792-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1502269384.6566.12.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "Jimmy-YJ.Huang" <jimmy-yj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, CC Hwang <cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1502270280-13792-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kamil Debski <kamil-MZ2JYD8fkKLYtjvyW6yDsg@public.gmane.org>, Sylwester Nawrocki <s.nawrocki-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Vivek Gautam <vivek.gautam-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Axel Lin <axel.lin-8E1dMatC8ynQT0dZR+AlfA@public.gmane.org>, Baoyou Xie <baoyou.xie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Sekhar Nori <nsekhar-l0cyMroinI0@public.gmane.org>, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi
+reduce the boilerplate code to get the specific data
 
-On Wed, 2017-08-09 at 17:03 +0800, Yingjoe Chen wrote:
-> On Wed, 2017-08-09 at 16:46 +0800, Yingjoe Chen wrote:
-...
-> > > +static struct regulator_ops mt6351_volt_table_ops = {
-> > > +	.list_voltage = regulator_list_voltage_table,
-> > > +	.map_voltage = regulator_map_voltage_iterate,
-> > > +	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-> > > +	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-> > > +	.set_voltage_time_sel = regulator_set_voltage_time_sel,
-> > > +	.enable = regulator_enable_regmap,
-> > > +	.disable = regulator_disable_regmap,
-> > > +	.is_enabled = regulator_is_enabled_regmap,
-> > > +	.get_status = mt6351_get_status,
-> > > +};
-> > > +
-> > > +static struct regulator_ops mt6351_volt_fixed_ops = {
-> > > +	.list_voltage = regulator_list_voltage_linear,
-> > > +	.enable = regulator_enable_regmap,
-> > > +	.disable = regulator_disable_regmap,
-> > > +	.is_enabled = regulator_is_enabled_regmap,
-> > > +	.get_status = mt6351_get_status,
-> > > +};
-> > > +
-> > > +/* The array is indexed by id(MT6351_ID_XXX) */
-> > > +static struct mt6351_regulator_info mt6351_regulators[] = {
-> > 
-> > 
-> > const
-> > 
-> > All struct regulator_ops and mt6351_regulators should be const.
-> 
-> 
-> Hi,
-> 
-> It seems mt6351_regulators will be modified so can't be const.
-> But regulator_ops should be.
-> 
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/phy/tegra/xusb.c |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-got it, will fix this along with other coding style and sent v2 later.
-
-Thanks for your review.
-
-> Joe.C
-> 
-> 
+diff --git a/drivers/phy/tegra/xusb.c b/drivers/phy/tegra/xusb.c
+index 3cbcb25..25cdfb1 100644
+--- a/drivers/phy/tegra/xusb.c
++++ b/drivers/phy/tegra/xusb.c
+@@ -848,7 +848,6 @@ static int tegra_xusb_padctl_probe(struct platform_device *pdev)
+ 	struct device_node *np = of_node_get(pdev->dev.of_node);
+ 	const struct tegra_xusb_padctl_soc *soc;
+ 	struct tegra_xusb_padctl *padctl;
+-	const struct of_device_id *match;
+ 	struct resource *res;
+ 	int err;
+ 
+@@ -861,8 +860,9 @@ static int tegra_xusb_padctl_probe(struct platform_device *pdev)
+ 
+ 	of_node_put(np);
+ 
+-	match = of_match_node(tegra_xusb_padctl_of_match, pdev->dev.of_node);
+-	soc = match->data;
++	soc = of_device_get_match_data(&pdev->dev);
++	if (!soc)
++		return -EINVAL;
+ 
+ 	padctl = soc->ops->probe(&pdev->dev, soc);
+ 	if (IS_ERR(padctl))
+-- 
+1.7.9.5
