@@ -1,48 +1,37 @@
-From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 0/3] mfd: add MT6351 regulator driver
-Date: Wed, 9 Aug 2017 10:31:02 +0800
-Message-ID: <1502245865-11403-1-git-send-email-mars.cheng@mediatek.com>
+From: Gilad Ben-Yossef <gilad@benyossef.com>
+Subject: Re: [PATCH v4 02/19] crypto: ccm: use -EAGAIN for transient busy indication
+Date: Wed, 9 Aug 2017 08:18:03 +0300
+Message-ID: <CAOtvUMeUHk9KxQumhuvJ52dp-_-LFOD8XGvCWvhU6LjEZhEF7A@mail.gmail.com>
+References: <1502193834-11289-1-git-send-email-gilad@benyossef.com>
+ <1502193834-11289-3-git-send-email-gilad@benyossef.com> <4600c898-a2f2-f95f-15b4-0adcc6acc0b5@amd.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "Jimmy-YJ.Huang" <jimmy-yj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, CC Hwang <cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-security-module-owner@vger.kernel.org>
+In-Reply-To: <4600c898-a2f2-f95f-15b4-0adcc6acc0b5@amd.com>
+Sender: owner-linux-security-module@vger.kernel.org
+To: Gary R Hook <gary.hook@amd.com>
+Cc: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, Jonathan Corbet <corbet@lwn.net>, David Howells <dhowells@redhat.com>, "Lendacky, Thomas" <Thomas.Lendacky@amd.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Arnaud Ebalard <arno@natisbad.org>, Matthias Brugger <matthias.bgg@gmail.com>, Alasdair Kergon <agk@redhat.com>, Mike Snitzer <snitzer@redhat.com>, "dm-devel@redhat.com" <dm-devel@redhat.com>, Shaohua Li <shli@kernel.org>, Steve French <sfrench@samba.org>, "Theodore Y. Ts'o" <tytso@mit.edu>, Jaegeuk Kim <jaegeuk@kernel.org>, Mimi Zohar <zohar@linux.vnet.ibm.com>, Dmitry Kasatkin <dmitry.kasatkin@gmail.com>, James Morris <james.l.morris@oracle.com>, "Serge E. Hallyn" <serge@hallyn.com>, linux-
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch set adds MT6351 regulator driver which is included in MT6797.
-Also might be used in other chips.
+On Tue, Aug 8, 2017 at 6:24 PM, Gary R Hook <gary.hook@amd.com> wrote:
+> On 08/08/2017 07:03 AM, Gilad Ben-Yossef wrote:
+>>
+>> Replace -EBUSY with -EAGAIN when reporting transient busy
+>> indication in the absence of backlog.
+>>
+>> Signed-off-by: Gilad Ben-Yossef <gilad@benyossef.com>
+>
+>
+> Could we use "ccp" in the subject line, please?
 
+Of course, sorry about the the typo.
 
-Jimmy-YJ.Huang (3):
-  dt-bindings: mfd: Add bindings for the MediaTek MT6351 PMIC
-  regulator: mt6351: Add support for MT6351 regulator
-  mfd: mt6397: Add MT6351 support into MT6397 driver
+Gilad
 
- Documentation/devicetree/bindings/mfd/mt6397.txt   |   10 +-
- .../bindings/regulator/mt6351-regulator.txt        |  347 +++++++
- drivers/mfd/mt6397-core.c                          |   18 +
- drivers/regulator/Kconfig                          |    9 +
- drivers/regulator/Makefile                         |    1 +
- drivers/regulator/mt6351-regulator.c               |  458 +++++++++
- include/linux/mfd/mt6351/core.h                    |   80 ++
- include/linux/mfd/mt6351/registers.h               | 1028 ++++++++++++++++++++
- include/linux/regulator/mt6351-regulator.h         |   66 ++
- 9 files changed, 2013 insertions(+), 4 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/regulator/mt6351-regulator.txt
- create mode 100644 drivers/regulator/mt6351-regulator.c
- create mode 100644 include/linux/mfd/mt6351/core.h
- create mode 100644 include/linux/mfd/mt6351/registers.h
- create mode 100644 include/linux/regulator/mt6351-regulator.h
+-- 
+Gilad Ben-Yossef
+Chief Coffee Drinker
 
---
-1.7.9.5
+"If you take a class in large-scale robotics, can you end up in a
+situation where the homework eats your dog?"
+ -- Jean-Baptiste Queru
