@@ -1,135 +1,111 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 1/4] phy: rockchip: use of_device_get_match_data()
-Date: Wed, 9 Aug 2017 17:17:57 +0800
-Message-ID: <1502270280-13792-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 3/9] regulator: mt6380: Add support for MT6380
+Date: Wed, 9 Aug 2017 17:22:39 +0800
+Message-ID: <1502270559.6566.14.camel@mtksdaap41>
+References: <cover.1500368529.git.sean.wang@mediatek.com>
+         <0cd2be9a7058bb51fbbc7cc96101cba44fc081f6.1500368529.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kamil Debski <kamil-MZ2JYD8fkKLYtjvyW6yDsg@public.gmane.org>, Sylwester Nawrocki <s.nawrocki-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Vivek Gautam <vivek.gautam-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Axel Lin <axel.lin-8E1dMatC8ynQT0dZR+AlfA@public.gmane.org>, Baoyou Xie <baoyou.xie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Sekhar Nori <nsekhar-l0cyMroinI0@public.gmane.org>, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <0cd2be9a7058bb51fbbc7cc96101cba44fc081f6.1500368529.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-reduce the boilerplate code to get the specific data
+On Tue, 2017-07-18 at 17:49 +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Chenglin Xu <chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> The MT6380 is a regulator found those boards with MediaTek MT7622 SoC
+> It is connected as a slave to the SoC using MediaTek PMIC wrapper which
+> is the common interface connecting with Mediatek made various PMICs.
+> 
+> Signed-off-by: Chenglin Xu <chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/regulator/Kconfig                  |   9 +
+>  drivers/regulator/Makefile                 |   1 +
+>  drivers/regulator/mt6380-regulator.c       | 359 +++++++++++++++++++++++++++++
+>  include/linux/regulator/mt6380-regulator.h |  32 +++
+>  4 files changed, 401 insertions(+)
+>  create mode 100644 drivers/regulator/mt6380-regulator.c
+>  create mode 100644 include/linux/regulator/mt6380-regulator.h
+> 
+> diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
+> index 48db87d..c46ef9c 100644
+> --- a/drivers/regulator/Kconfig
+> +++ b/drivers/regulator/Kconfig
+> @@ -541,6 +541,15 @@ config REGULATOR_MT6323
+>  	  This driver supports the control of different power rails of device
+>  	  through regulator interface.
+>  
+> +config REGULATOR_MT6380
+> +	tristate "MediaTek MT6380 PMIC"
+> +	depends on MTK_PMIC_WRAP
+> +	help
+> +	  Say y here to select this option to enable the power regulator of
+> +	  MediaTek MT6380 PMIC.
+> +	  This driver supports the control of different power rails of device
+> +	  through regulator interface.
+> +
+>  config REGULATOR_MT6397
+>  	tristate "MediaTek MT6397 PMIC"
+>  	depends on MFD_MT6397
+> diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
+> index dc3503f..5148583 100644
+> --- a/drivers/regulator/Makefile
+> +++ b/drivers/regulator/Makefile
+> @@ -70,6 +70,7 @@ obj-$(CONFIG_REGULATOR_MC13892) += mc13892-regulator.o
+>  obj-$(CONFIG_REGULATOR_MC13XXX_CORE) +=  mc13xxx-regulator-core.o
+>  obj-$(CONFIG_REGULATOR_MT6311) += mt6311-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6323)	+= mt6323-regulator.o
+> +obj-$(CONFIG_REGULATOR_MT6380)	+= mt6380-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6397)	+= mt6397-regulator.o
+>  obj-$(CONFIG_REGULATOR_QCOM_RPM) += qcom_rpm-regulator.o
+>  obj-$(CONFIG_REGULATOR_QCOM_SMD_RPM) += qcom_smd-regulator.o
+> diff --git a/drivers/regulator/mt6380-regulator.c b/drivers/regulator/mt6380-regulator.c
+> new file mode 100644
+> index 0000000..5fca36f
+> --- /dev/null
+> +++ b/drivers/regulator/mt6380-regulator.c
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c |    9 +++------
- drivers/phy/rockchip/phy-rockchip-pcie.c      |    7 +++----
- drivers/phy/rockchip/phy-rockchip-usb.c       |   10 +++-------
- 3 files changed, 9 insertions(+), 17 deletions(-)
+<...>
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 626883d..c2379b2 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -27,6 +27,7 @@
- #include <linux/mutex.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
-+#include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/of_platform.h>
- #include <linux/phy/phy.h>
-@@ -1024,7 +1025,6 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 	struct phy_provider *provider;
- 	struct rockchip_usb2phy *rphy;
- 	const struct rockchip_usb2phy_cfg *phy_cfgs;
--	const struct of_device_id *match;
- 	unsigned int reg;
- 	int index, ret;
- 
-@@ -1032,11 +1032,9 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 	if (!rphy)
- 		return -ENOMEM;
- 
--	match = of_match_device(dev->driver->of_match_table, dev);
--	if (!match || !match->data) {
--		dev_err(dev, "phy configs are not assigned!\n");
-+	phy_cfgs = of_device_get_match_data(dev);
-+	if (!phy_cfgs)
- 		return -EINVAL;
--	}
- 
- 	if (!dev->parent || !dev->parent->of_node)
- 		return -EINVAL;
-@@ -1052,7 +1050,6 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 	}
- 
- 	rphy->dev = dev;
--	phy_cfgs = match->data;
- 	rphy->chg_state = USB_CHG_STATE_UNDEFINED;
- 	rphy->chg_type = POWER_SUPPLY_TYPE_UNKNOWN;
- 	platform_set_drvdata(pdev, rphy);
-diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
-index 6904633..f7dc0d6 100644
---- a/drivers/phy/rockchip/phy-rockchip-pcie.c
-+++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
-@@ -21,6 +21,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
-+#include <linux/of_device.h>
- #include <linux/of_platform.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-@@ -286,7 +287,6 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
- 	struct phy *generic_phy;
- 	struct phy_provider *phy_provider;
- 	struct regmap *grf;
--	const struct of_device_id *of_id;
- 
- 	grf = syscon_node_to_regmap(dev->parent->of_node);
- 	if (IS_ERR(grf)) {
-@@ -298,11 +298,10 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
- 	if (!rk_phy)
- 		return -ENOMEM;
- 
--	of_id = of_match_device(rockchip_pcie_phy_dt_ids, &pdev->dev);
--	if (!of_id)
-+	rk_phy->phy_data = of_device_get_match_data(dev);
-+	if (!rk_phy->phy_data)
- 		return -EINVAL;
- 
--	rk_phy->phy_data = (struct rockchip_pcie_data *)of_id->data;
- 	rk_phy->reg_base = grf;
- 
- 	rk_phy->phy_rst = devm_reset_control_get(dev, "phy");
-diff --git a/drivers/phy/rockchip/phy-rockchip-usb.c b/drivers/phy/rockchip/phy-rockchip-usb.c
-index 3378eeb..7db1166 100644
---- a/drivers/phy/rockchip/phy-rockchip-usb.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usb.c
-@@ -22,6 +22,7 @@
- #include <linux/mutex.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
-+#include <linux/of_device.h>
- #include <linux/of_platform.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-@@ -417,7 +418,6 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct rockchip_usb_phy_base *phy_base;
- 	struct phy_provider *phy_provider;
--	const struct of_device_id *match;
- 	struct device_node *child;
- 	int err;
- 
-@@ -425,13 +425,9 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
- 	if (!phy_base)
- 		return -ENOMEM;
- 
--	match = of_match_device(dev->driver->of_match_table, dev);
--	if (!match || !match->data) {
--		dev_err(dev, "missing phy data\n");
-+	phy_base->pdata = of_device_get_match_data(dev);
-+	if (!phy_base->pdata)
- 		return -EINVAL;
--	}
--
--	phy_base->pdata = match->data;
- 
- 	phy_base->dev = dev;
- 	phy_base->reg_base = ERR_PTR(-ENODEV);
--- 
-1.7.9.5
+> +static struct regulator_ops mt6380_volt_range_ops = {
+> +	.list_voltage = regulator_list_voltage_linear_range,
+> +	.map_voltage = regulator_map_voltage_linear_range,
+> +	.set_voltage_sel = regulator_set_voltage_sel_regmap,
+> +	.get_voltage_sel = regulator_get_voltage_sel_regmap,
+> +	.set_voltage_time_sel = regulator_set_voltage_time_sel,
+> +	.enable = regulator_enable_regmap,
+> +	.disable = regulator_disable_regmap,
+> +	.is_enabled = regulator_is_enabled_regmap,
+> +	.set_mode = mt6380_regulator_set_mode,
+> +	.get_mode = mt6380_regulator_get_mode,
+> +};
+> +
+> +static struct regulator_ops mt6380_volt_table_ops = {
+> +	.list_voltage = regulator_list_voltage_table,
+> +	.map_voltage = regulator_map_voltage_iterate,
+> +	.set_voltage_sel = regulator_set_voltage_sel_regmap,
+> +	.get_voltage_sel = regulator_get_voltage_sel_regmap,
+> +	.set_voltage_time_sel = regulator_set_voltage_time_sel,
+> +	.enable = regulator_enable_regmap,
+> +	.disable = regulator_disable_regmap,
+> +	.is_enabled = regulator_is_enabled_regmap,
+> +	.set_mode = mt6380_regulator_set_mode,
+> +	.get_mode = mt6380_regulator_get_mode,
+> +};
+> +
+> +static struct regulator_ops mt6380_volt_fixed_ops = {
+
+this should be const.
+
+Joe.C
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
