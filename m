@@ -1,77 +1,72 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH libdrm] drm: Remove create_handle()
- drm_framebuffer "virtual".
-Date: Thu, 10 Aug 2017 10:59:14 +0200
-Message-ID: <20170810085914.baxswpiaym5duub6@phenom.ffwll.local>
-References: <20170808234237.62051-1-djmk@google.com>
- <8a7bf59a-0f58-21ba-8b82-78e6ba873065@tronnes.org>
- <CAOvnNvbEt=Uyve3cu_+6BB0EepvO=OKC6gpV3isRef+UdVoX-g@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <CAOvnNvbEt=Uyve3cu_+6BB0EepvO=OKC6gpV3isRef+UdVoX-g@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Joe Kniss <djmk@google.com>
-Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Edward O'Callaghan <funfunctor@folklore1984.net>, Dave Airlie <airlied@linux.ie>, nouveau <nouveau@lists.freedesktop.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:VIRTIO CORE,
- NET..." <virtualization@lists.linux-foundation.org>, linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, amd-gfx mailing list <amd-gfx@lists.freedesktop.org>, "Vetter,
- Daniel" <daniel.vetter@intel.com>, baoyou.xie@linaro.org, Alex Xie <AlexBin.Xie@amd.com>, "StDenis, Tom" <tom.stdenis@amd.com>, zhoucm1 <David1.Zhou@amd.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Joonyoung Shim <jy0922.shim@samsung.com>, Russell King <linux@armlinux.org.uk>, krzk@kernel.org, jonathanh@nvidia.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Matthi
+From: Cihangir Akturk <cakturk@gmail.com>
+Subject: [PATCH v2 14/29] drm/mediatek: switch to drm_*_get(), drm_*_put() helpers
+Date: Thu, 10 Aug 2017 15:09:57 +0300
+Message-ID: <1502367012-9417-15-git-send-email-cakturk@gmail.com>
+References: <1502367012-9417-1-git-send-email-cakturk@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1502367012-9417-1-git-send-email-cakturk@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: daniel@ffwll.ch, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Cihangir Akturk <cakturk@gmail.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gV2VkLCBBdWcgMDksIDIwMTcgYXQgMDQ6MTM6MDVQTSAtMDcwMCwgSm9lIEtuaXNzIHdyb3Rl
-Ogo+IE9uIFdlZCwgQXVnIDksIDIwMTcgYXQgMTI6MTQgUE0sIE5vcmFsZiBUcsO4bm5lcyA8bm9y
-YWxmQHRyb25uZXMub3JnPiB3cm90ZToKPiA+Cj4gPiBEZW4gMDkuMDguMjAxNyAwMS40Miwgc2ty
-ZXYgSm9lIEtuaXNzOgo+ID4+Cj4gPj4gQmVjYXVzZSBhbGwgZHJpdmVycyBjdXJyZW50bHkgdXNl
-IGdlbSBvYmplY3RzIGZvciBmcmFtZWJ1ZmZlciBwbGFuZXMsCj4gPj4gdGhlIHZpcnR1YWwgY3Jl
-YXRlX2hhbmRsZSgpIGlzIG5vdCByZXF1aXJlZC4gIFRoaXMgY2hhbmdlIGFkZHMgYQo+ID4+IHN0
-cnVjdCBkcm1fZ2VtX29iamVjdCAqZ2Vtc1s0XSBmaWVsZCB0byBkcm1fZnJhbWVidWZmZXIgYW5k
-IHJlbW92ZXMKPiA+PiBjcmVhdGVfaGFuZGxlKCkgZnVuY3Rpb24gcG9pbnRlciBmcm9tIGRybV9m
-cmFtZWJ1ZmZlcl9mdW5jcy4gIFRoZQo+ID4+IGNvcnJlc3BvbmRpbmcgKl9jcmVhdGVfaGFuZGxl
-KCkgZnVuY3Rpb24gaXMgcmVtb3ZlZCBmcm9tIGVhY2ggZHJpdmVyLgo+ID4+Cj4gPj4gSW4gbWFu
-eSBjYXNlcyB0aGlzIGNoYW5nZSBlbGltaW5hdGVzIGEgc3RydWN0ICpfZnJhbWVidWZmZXIgb2Jq
-ZWN0LAo+ID4+IGFzIHRoZSBvbmx5IG5lZWQgZm9yIHRoZSBkZXJpdmVkIHN0cnVjdCBpcyB0aGUg
-YWRkaXRpb24gb2YgdGhlIGdlbQo+ID4+IG9iamVjdCBwb2ludGVyLgo+ID4+Cj4gPj4gVEVTVEVE
-OiBjb21waWxlZDogYWxseWVzY29uZmlnIEFSQ0g9eDg2LGFybSBwbGF0Zm9ybXM6aTkxNSwgcm9j
-a2NoaXAKPiA+Pgo+ID4+IFNpZ25lZC1vZmYtYnk6IEpvZSBLbmlzcyA8ZGpta0Bnb29nbGUuY29t
-Pgo+ID4+IC0tLQo+ID4KPiA+Cj4gPiBIaSBKb2UsCj4gPgo+ID4gSSdtIGFsc28gbG9va2luZyBp
-bnRvIGFkZGluZyBnZW0gb2JqcyB0byBkcm1fZnJhbWVidWZmZXIgaW4gdGhpcyBwYXRjaDoKPiA+
-IFtQQVRDSCB2MiAwMS8yMl0gZHJtOiBBZGQgR0VNIGJhY2tlZCBmcmFtZWJ1ZmZlciBsaWJyYXJ5
-Cj4gPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9hcmNoaXZlcy9kcmktZGV2ZWwvMjAx
-Ny1BdWd1c3QvMTQ5NzgyLmh0bWwKPiA+Cj4gCj4gR3JlYXQuICBUaGVyZSdzIG9ubHkgbWluaW1h
-bCBvdmVybGFwIGhlcmUuICBJJ2xsIHJlYmFzZSB0aGlzIGNoYW5nZSBvbiB5b3Vycwo+IG9uY2Ug
-aXQncyBpbi4KCkV2ZW4gYmV0dGVyIHRoYW4gd2FpdGluZzogUmV2aWV3aW5nIGVhY2ggYW5vdGhl
-cidzIHBhdGNoZXMuIE5vcmFsZiBoYXMKY29tbWl0IHJpZ2h0cyBhbmQga25vd3MgaG93IGRyaXZl
-ci13aWRlIHJlZmFjdG9yaW5nIHdvcmtzLCBzbyB5b3UncmUgYWxsCmNvdmVyZWQgdG8gZ2V0IHRo
-aXMgbGFuZGVkLCBpZiB5b3UgcHJvdmlkZSBhIGJpdCBvZiByZXZpZXcgZm9yIHRoZSByZXZpZXcK
-bWFya2V0IDotKQoKQ2hlZXJzLCBEYW5pZWwKCj4gCj4gPiBbLi4uXQo+ID4KPiA+PiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL2RybV9mYl9jbWFfaGVscGVyLmMKPiA+PiBiL2RyaXZlcnMv
-Z3B1L2RybS9kcm1fZmJfY21hX2hlbHBlci5jCj4gPj4gaW5kZXggYWRlMzE5ZDEwZTcwLi5mNWYw
-MTFiOTEwYjEgMTAwNjQ0Cj4gPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9mYl9jbWFfaGVs
-cGVyLmMKPiA+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2ZiX2NtYV9oZWxwZXIuYwo+ID4+
-IEBAIC0zMSwxNCArMzEsOSBAQAo+ID4+ICAgICAjZGVmaW5lIERFRkFVTFRfRkJERUZJT19ERUxB
-WV9NUyA1MAo+ID4+ICAgLXN0cnVjdCBkcm1fZmJfY21hIHsKPiA+PiAtICAgICAgIHN0cnVjdCBk
-cm1fZnJhbWVidWZmZXIgICAgICAgICAgZmI7Cj4gPj4gLSAgICAgICBzdHJ1Y3QgZHJtX2dlbV9j
-bWFfb2JqZWN0ICAgICAgICpvYmpbNF07Cj4gPj4gLX07Cj4gPj4gLQo+ID4+ICAgc3RydWN0IGRy
-bV9mYmRldl9jbWEgewo+ID4+ICAgICAgICAgc3RydWN0IGRybV9mYl9oZWxwZXIgICAgZmJfaGVs
-cGVyOwo+ID4+IC0gICAgICAgc3RydWN0IGRybV9mYl9jbWEgICAgICAgKmZiOwo+ID4+ICsgICAg
-ICAgc3RydWN0IGRybV9mcmFtZWJ1ZmZlciAgKmZiOwo+ID4KPiA+Cj4gPiBUaGlzIGZiIHBvaW50
-ZXIgaXNuJ3QgbmVjZXNzYXJ5LCBzaW5jZSBmYl9oZWxwZXIgYWxyZWFkeSBoYXMgb25lLgo+ID4K
-PiAKPiBJJ2xsIHJlbW92ZSBpdC4uLiBidXQgSSBhbSBzdXJlIHdoZW4gSSBsb29rIGRlZXBlciB0
-aGVyZSB3aWxsIGJlIG1vcmUKPiBvZiB0aGVzZSBpbiB0aGUgdmFyaW91cyBkcml2ZXJzIHRvby4K
-PiAKPiA+IE5vcmFsZi4KPiA+Cj4gPgo+IAo+IC1qb2UKPiBfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwo+IEludGVsLWdmeCBtYWlsaW5nIGxpc3QKPiBJbnRl
-bC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1nZngKCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJl
-IEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC1nZnggbWFpbGlu
-ZyBsaXN0CkludGVsLWdmeEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1nZngK
+Use drm_*_get() and drm_*_put() helpers instead of drm_*_reference()
+and drm_*_unreference() helpers.
+
+drm_*_reference() and drm_*_unreference() functions are just
+compatibility alias for drm_*_get() and drm_*_put() and should not be
+used by new code. So convert all users of compatibility functions to
+use the new APIs.
+
+Generated by: scripts/coccinelle/api/drm-get-put.cocci
+
+Signed-off-by: Cihangir Akturk <cakturk@gmail.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_fb.c  | 4 ++--
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_fb.c b/drivers/gpu/drm/mediatek/mtk_drm_fb.c
+index d4246c9..0d8d506 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_fb.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_fb.c
+@@ -58,7 +58,7 @@ static void mtk_drm_fb_destroy(struct drm_framebuffer *fb)
+ 
+ 	drm_framebuffer_cleanup(fb);
+ 
+-	drm_gem_object_unreference_unlocked(mtk_fb->gem_obj);
++	drm_gem_object_put_unlocked(mtk_fb->gem_obj);
+ 
+ 	kfree(mtk_fb);
+ }
+@@ -160,6 +160,6 @@ struct drm_framebuffer *mtk_drm_mode_fb_create(struct drm_device *dev,
+ 	return &mtk_fb->base;
+ 
+ unreference:
+-	drm_gem_object_unreference_unlocked(gem);
++	drm_gem_object_put_unlocked(gem);
+ 	return ERR_PTR(ret);
+ }
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index 7abc550..961cbf5 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -122,7 +122,7 @@ int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
+ 		goto err_handle_create;
+ 
+ 	/* drop reference from allocate - handle holds it now. */
+-	drm_gem_object_unreference_unlocked(&mtk_gem->base);
++	drm_gem_object_put_unlocked(&mtk_gem->base);
+ 
+ 	return 0;
+ 
+@@ -152,7 +152,7 @@ int mtk_drm_gem_dumb_map_offset(struct drm_file *file_priv,
+ 	DRM_DEBUG_KMS("offset = 0x%llx\n", *offset);
+ 
+ out:
+-	drm_gem_object_unreference_unlocked(obj);
++	drm_gem_object_put_unlocked(obj);
+ 	return ret;
+ }
+ 
+-- 
+2.7.4
