@@ -1,52 +1,54 @@
-From: John Crispin <john@phrozen.org>
-Subject: Re: [PATCH 0/4] net-next: dsa: fix flow dissection
-Date: Thu, 10 Aug 2017 10:10:27 +0200
-Message-ID: <dfe76105-95a2-bd82-1f71-74b171b4a702@phrozen.org>
-References: <20170809124119.24320-1-john@phrozen.org>
- <20170809.225243.2204411285392662424.davem@davemloft.net>
- <1502347335.4936.2.camel@edumazet-glaptop3.roam.corp.google.com>
+From: Honghui Zhang <honghui.zhang@mediatek.com>
+Subject: Re: [RESEND PATCH 1/2] dt-bindings: i2c: Add MediaTek MT7622 i2c
+ binding
+Date: Thu, 10 Aug 2017 16:19:00 +0800
+Message-ID: <1502353140.17420.7.camel@mtksdaap41>
+References: <1502332061-25085-1-git-send-email-jun.gao@mediatek.com>
+         <1502332061-25085-2-git-send-email-jun.gao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502347335.4936.2.camel@edumazet-glaptop3.roam.corp.google.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Eric Dumazet <eric.dumazet@gmail.com>, David Miller <davem@davemloft.net>
-Cc: andrew@lunn.ch, f.fainelli@gmail.com, muciri@openmesh.com, vivien.didelot@savoirfairelinux.com, netdev@vger.kernel.org, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, shashidhar.lakkavalli@openmesh.com, linux-mediatek@lists.infradead.org
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <1502332061-25085-2-git-send-email-jun.gao@mediatek.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Jun Gao <jun.gao@mediatek.com>
+Cc: Wolfram Sang <wsa@the-dreams.de>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Thu, 2017-08-10 at 10:27 +0800, Jun Gao wrote:
+> From: Jun Gao <jun.gao@mediatek.com>
+> 
+> Add MT7622 i2c binding to binding file. Compare to MT8173 i2c
+> controller, MT7622 limits message numbers to 255, and does not
+> support 4GB DMA mode.
+> 
+> Signed-off-by: Jun Gao <jun.gao@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/i2c/i2c-mtk.txt | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
+> index bd5a7be..ff9ac61 100644
+> --- a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
+> +++ b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
+> @@ -4,11 +4,12 @@ The Mediatek's I2C controller is used to interface with I2C devices.
+>  
+>  Required properties:
+>    - compatible: value should be either of the following.
+> -      "mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek mt2701
+> -      "mediatek,mt6577-i2c": for i2c compatible with mt6577.
+> -      "mediatek,mt6589-i2c": for i2c compatible with mt6589.
+> -      "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for i2c compatible with mt7623.
+> -      "mediatek,mt8173-i2c": for i2c compatible with mt8173.
+> +	"mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek MT2701
+> +	"mediatek,mt6577-i2c": for Mediatek MT6577
+> +	"mediatek,mt6589-i2c": for Mediatek MT6589
 
+Better not change those and just add compatible strings for mt7622.
 
-On 10/08/17 08:42, Eric Dumazet wrote:
-> On Wed, 2017-08-09 at 22:52 -0700, David Miller wrote:
->> From: John Crispin <john@phrozen.org>
->> Date: Wed,  9 Aug 2017 14:41:15 +0200
->>
->>> RPS and probably other kernel features are currently broken on some if not
->>> all DSA devices. The root cause of this is that skb_hash will call the
->>> flow_dissector. At this point the skb still contains the magic switch
->>> header and the skb->protocol field is not set up to the correct 802.3
->>> value yet. By the time the tag specific code is called, removing the header
->>> and properly setting the protocol an invalid hash is already set. In the
->>> case of the mt7530 this will result in all flows always having the same
->>> hash.
->>>
->>> Changes since RFC:
->>> * use a callback instead of static values
->>> * add cover letter
->> Series applied, thanks.
-> Is this related ?
->
-> net/core/flow_dissector.c: In function '__skb_flow_dissect':
-> net/core/flow_dissector.c:448:18: error: 'struct net_device' has no member named 'dsa_ptr'
->      ops = skb->dev->dsa_ptr->tag_ops;
->                    ^
-> make[3]: *** [net/core/flow_dissector.o] Error 1
->
->
-Hi Eric,
-
-I have just sent the fix for this compile error
-
-     John
+> +	"mediatek,mt7622-i2c": for Mediatek MT7622
+> +	"mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for Mediatek MT7623
+> +	"mediatek,mt8173-i2c": for Mediatek MT8173
+>    - reg: physical base address of the controller and dma base, length of memory
+>      mapped region.
+>    - interrupts: interrupt number to the cpu.
