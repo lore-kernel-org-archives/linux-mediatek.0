@@ -1,88 +1,71 @@
-From: Harvey Hunt <Harvey.Hunt@imgtec.com>
-Subject: Re: [V4 1/2] phy: ralink-usb: add driver for Mediatek/Ralink
-Date: Thu, 10 Aug 2017 17:00:17 +0100
-Message-ID: <21122b7e-dd7d-1a83-f4c4-2fbd64622e8e@imgtec.com>
-References: <1502271340-29001-1-git-send-email-harvey.hunt@imgtec.com>
- <F7B73EAF-B32D-4FBC-BE9D-855954027CC0@imgtec.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/2] dt-bindings: serial: Add MediaTek BTIF controller
+ bindings
+Date: Thu, 10 Aug 2017 11:27:52 -0500
+Message-ID: <20170810162752.2xncymekrhu544g7@rob-hp-laptop>
+References: <cover.1501692369.git.sean.wang@mediatek.com>
+ <6b2ad0dc976259563562e7ab23abdacf68c94aa5.1501692369.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <F7B73EAF-B32D-4FBC-BE9D-855954027CC0@imgtec.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <6b2ad0dc976259563562e7ab23abdacf68c94aa5.1501692369.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: James Hogan <james.hogan@imgtec.com>, robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, kishon@ti.com
-Cc: John Crispin <john@phrozen.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: sean.wang@mediatek.com
+Cc: gregkh@linuxfoundation.org, jslaby@suse.com, andriy.shevchenko@linux.intel.com, jan.kiszka@siemens.com, heikki.krogerus@linux.intel.com, hpeter@gmail.com, vigneshr@ti.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi James,
-
-On 09/08/17 23:23, James Hogan wrote:
-> On 9 August 2017 10:35:39 BST, Harvey Hunt <harvey.hunt@imgtec.com> wrote:
->> From: John Crispin <john@phrozen.org>
->>
->> Add a driver to setup the USB phy on Mediatek/Ralink SoCs.
->> The driver is trivial and only sets up power and host mode.
->>
->> Signed-off-by: John Crispin <john@phrozen.org>
->> Signed-off-by: Harvey Hunt <harvey.hunt@imgtec.com>
->> Cc: linux-kernel@vger.kernel.org
->> Cc: linux-mediatek@lists.infradead.org
->> ---
->> Changes in V4
->> * Remove Allwinner from comment
->> * Depend on COMPILE_TEST
->>
->> Changes in V3
->> * Separate DT bindings
->> * Update Kconfig text
->> * Modify John's email address
->> * Rebase onto v4.13-rc3
->>
->> Changes in V2
->> * remove refcounting
->> * drop empty functions
->> * dont use static globals
->> * use explicit compatible strings
->>
->> drivers/phy/Kconfig          |   8 ++
->> drivers/phy/Makefile         |   1 +
->> drivers/phy/phy-ralink-usb.c | 173
->> +++++++++++++++++++++++++++++++++++++++++++
->> 3 files changed, 182 insertions(+)
->> create mode 100644 drivers/phy/phy-ralink-usb.c
->>
->> diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
->> index c1807d4..8fb5260 100644
->> --- a/drivers/phy/Kconfig
->> +++ b/drivers/phy/Kconfig
->> @@ -41,6 +41,14 @@ config PHY_PISTACHIO_USB
->> 	help
->> 	  Enable this to support the USB2.0 PHY on the IMG Pistachio SoC.
->>
->> +config PHY_RALINK_USB
->> +	tristate "Ralink USB PHY driver"
->> +	select GENERIC_PHY
->> +	depends on RALINK || COMPILE_TEST
+On Thu, Aug 03, 2017 at 01:05:22AM +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> given that the driver includes a asm/mach-ralink header, the COMPILE_TEST bit may break x86 allmodconfig?
+> Document the devicetree bindings for MediaTek BTIF controller
+> which could be found on MT7622 and MT7623 SoC.
 > 
-> maybe the header should be moved out of arch/mips or it should depend on MIPS only (so a mips allmodconfig catches it, but cant be enabled on x86 even with COMPILE_TEST=y)
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  .../devicetree/bindings/serial/mtk-btif.txt        | 26 ++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/serial/mtk-btif.txt
 > 
-> cheers
-> James
+> diff --git a/Documentation/devicetree/bindings/serial/mtk-btif.txt b/Documentation/devicetree/bindings/serial/mtk-btif.txt
+> new file mode 100644
+> index 0000000..80c1f5a
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/serial/mtk-btif.txt
+> @@ -0,0 +1,26 @@
+> +Device-Tree bindings for MediaTek BTIF controller found on those
+> +MediaTek SoCs with Bluetooth feature
+> +
+> +Required properties:
+> +- compatible: Should be one of:
+> +	- "mediatek,mt7622-btif" : for MT7622 SoC
+> +	- "mediatek,mt7623-btif" : for MT7623 SoC
+> +- reg: The base address of the BTIF register bank;
+> +- interrupts: A single interrupt specifier;
+> +- clocks: list of clock specifiers, corresponding to
+> +	  entries in clock-names property;
+> +- clock-names: should contain "main" entries.
+> +
+> +Optional properties:
+> +- mediatek,loopback: Boolean; if defined, indicates that BTIF controller
+> +	running on the loopback mode.
+
+I don't think this belongs in DT, but should be a module param or sysfs 
+control.
+
+> +
+> +Example:
+> +
+> +	btif: btif@1100c000 {
+
+bluetooth@...
+
+> +		compatible = "mediatek,mt7623-btif";
+> +		reg = <0 0x1100c000 0 0x1000>;
+> +		interrupts = <GIC_SPI 50 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&pericfg CLK_PERI_BTIF>;
+> +		clock-names = "main";
+> +	};
+> -- 
+> 2.7.4
 > 
-[...]
-
-Well spotted - the build does indeed fail for ARCH=x86 allmodconfig.
-
-I could either use:
-
-depends on RALINK || (COMPILE_TEST && MIPS)
-
-or just drop the COMPILE_TEST altogether, as I don't know how many 
-people are running compile test only on MIPS.
-
-Thanks,
-
-Harvey
