@@ -1,90 +1,74 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: serial: Add MediaTek BTIF controller bindings
-Date: Fri, 11 Aug 2017 09:31:13 -0500
-Message-ID: <CAL_Jsq+EhkmSKeu7Hp93Kgjms4G30Gbjy1jw-nUG+rngLKLaeg@mail.gmail.com>
-References: <cover.1501692369.git.sean.wang@mediatek.com> <6b2ad0dc976259563562e7ab23abdacf68c94aa5.1501692369.git.sean.wang@mediatek.com>
- <20170810162752.2xncymekrhu544g7@rob-hp-laptop> <1502419988.19230.16.camel@mtkswgap22>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v3 13/28] drm/mediatek: switch to drm_*_get(),
+ drm_*_put() helpers
+Date: Fri, 11 Aug 2017 12:04:01 -0400
+Message-ID: <20170811160401.rfee6kegnrtary74@art_vandelay>
+References: <1502454794-28558-1-git-send-email-cakturk@gmail.com>
+ <1502454794-28558-14-git-send-email-cakturk@gmail.com>
+ <1502456500.2310.14.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502419988.19230.16.camel@mtkswgap22>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Jan Kiszka <jan.kiszka@siemens.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Peter H <hpeter@gmail.com>, Vignesh R <vigneshr@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, linux-mediatek@lists.infradead.org, "linux-serial@vger.kernel.org" <linux-serial@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1502456500.2310.14.camel@pengutronix.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Cihangir Akturk <cakturk@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 10, 2017 at 9:53 PM, Sean Wang <sean.wang@mediatek.com> wrote:
-> On Thu, 2017-08-10 at 11:27 -0500, Rob Herring wrote:
->> On Thu, Aug 03, 2017 at 01:05:22AM +0800, sean.wang@mediatek.com wrote:
->> > From: Sean Wang <sean.wang@mediatek.com>
->> >
->> > Document the devicetree bindings for MediaTek BTIF controller
->> > which could be found on MT7622 and MT7623 SoC.
->> >
->> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->> > ---
->> >  .../devicetree/bindings/serial/mtk-btif.txt        | 26 ++++++++++++++++++++++
->> >  1 file changed, 26 insertions(+)
->> >  create mode 100644 Documentation/devicetree/bindings/serial/mtk-btif.txt
->> >
->> > diff --git a/Documentation/devicetree/bindings/serial/mtk-btif.txt b/Documentation/devicetree/bindings/serial/mtk-btif.txt
->> > new file mode 100644
->> > index 0000000..80c1f5a
->> > --- /dev/null
->> > +++ b/Documentation/devicetree/bindings/serial/mtk-btif.txt
->> > @@ -0,0 +1,26 @@
->> > +Device-Tree bindings for MediaTek BTIF controller found on those
->> > +MediaTek SoCs with Bluetooth feature
->> > +
->> > +Required properties:
->> > +- compatible: Should be one of:
->> > +   - "mediatek,mt7622-btif" : for MT7622 SoC
->> > +   - "mediatek,mt7623-btif" : for MT7623 SoC
->> > +- reg: The base address of the BTIF register bank;
->> > +- interrupts: A single interrupt specifier;
->> > +- clocks: list of clock specifiers, corresponding to
->> > +     entries in clock-names property;
->> > +- clock-names: should contain "main" entries.
->> > +
->> > +Optional properties:
->> > +- mediatek,loopback: Boolean; if defined, indicates that BTIF controller
->> > +   running on the loopback mode.
->>
->> I don't think this belongs in DT, but should be a module param or sysfs
->> control.
->>
-> the loopback actually is one of hardware setups so i add it as one
-> property in the dt or could you kindly guide me how to make judgment
-> accurately for listing those changes as either dt or a module param?
-
-It's just a debug mode, right? Generally a user shouldn't have to
-modify the DT to change settings. Only if you wanted a given board to
-always be in loopback would this make sense in DT.
-
->> > +
->> > +Example:
->> > +
->> > +   btif: btif@1100c000 {
->>
->> bluetooth@...
->>
-> btif not bluetooth, which is just the interface hardware allowing the
-> the main processor communicating with the bluetooth hardware built in
-> the SoC, and is really like to the uart used by legacy bluetooth.
-> So i will add bluetooth as the another node.
-
-Right, I realized that after writing this. It should be "serial@..." instead.
-
->
->
->> > +           compatible = "mediatek,mt7623-btif";
->> > +           reg = <0 0x1100c000 0 0x1000>;
->> > +           interrupts = <GIC_SPI 50 IRQ_TYPE_LEVEL_LOW>;
->> > +           clocks = <&pericfg CLK_PERI_BTIF>;
->> > +           clock-names = "main";
->> > +   };
->> > --
->> > 2.7.4
->> >
->
->
+T24gRnJpLCBBdWcgMTEsIDIwMTcgYXQgMDM6MDE6NDBQTSArMDIwMCwgUGhpbGlwcCBaYWJlbCB3
+cm90ZToKPiBPbiBGcmksIDIwMTctMDgtMTEgYXQgMTU6MzIgKzAzMDAsIENpaGFuZ2lyIEFrdHVy
+ayB3cm90ZToKPiA+IFVzZSBkcm1fKl9nZXQoKSBhbmQgZHJtXypfcHV0KCkgaGVscGVycyBpbnN0
+ZWFkIG9mIGRybV8qX3JlZmVyZW5jZSgpCj4gPiBhbmQgZHJtXypfdW5yZWZlcmVuY2UoKSBoZWxw
+ZXJzLgo+ID4gCj4gPiBkcm1fKl9yZWZlcmVuY2UoKSBhbmQgZHJtXypfdW5yZWZlcmVuY2UoKSBm
+dW5jdGlvbnMgYXJlIGp1c3QKPiA+IGNvbXBhdGliaWxpdHkgYWxpYXMgZm9yIGRybV8qX2dldCgp
+IGFuZCBkcm1fKl9wdXQoKSBhbmQgc2hvdWxkIG5vdCBiZQo+ID4gdXNlZCBieSBuZXcgY29kZS4g
+U28gY29udmVydCBhbGwgdXNlcnMgb2YgY29tcGF0aWJpbGl0eSBmdW5jdGlvbnMgdG8KPiA+IHVz
+ZSB0aGUgbmV3IEFQSXMuCj4gPiAKPiA+IEdlbmVyYXRlZCBieTogc2NyaXB0cy9jb2NjaW5lbGxl
+L2FwaS9kcm0tZ2V0LXB1dC5jb2NjaQo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBDaWhhbmdpciBB
+a3R1cmsgPGNha3R1cmtAZ21haWwuY29tPgo+ID4gLS0tCj4gPiDCoGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHJtX2ZiLmPCoMKgfCA0ICsrLS0KPiA+IMKgZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fZ2VtLmMgfCAyICstCj4gPiDCoDIgZmlsZXMgY2hhbmdlZCwgMyBpbnNl
+cnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuYwo+ID4gYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9mYi5jCj4gPiBpbmRleCBkNDI0NmM5Li4wZDhkNTA2IDEwMDY0NAo+ID4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuYwo+ID4gKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuYwo+ID4gQEAgLTU4LDcgKzU4LDcgQEAgc3Rh
+dGljIHZvaWQgbXRrX2RybV9mYl9kZXN0cm95KHN0cnVjdAo+ID4gZHJtX2ZyYW1lYnVmZmVyICpm
+YikKPiA+IMKgCj4gPiDCoAlkcm1fZnJhbWVidWZmZXJfY2xlYW51cChmYik7Cj4gPiDCoAo+ID4g
+LQlkcm1fZ2VtX29iamVjdF91bnJlZmVyZW5jZV91bmxvY2tlZChtdGtfZmItPmdlbV9vYmopOwo+
+ID4gKwlkcm1fZ2VtX29iamVjdF9wdXRfdW5sb2NrZWQobXRrX2ZiLT5nZW1fb2JqKTsKPiA+IMKg
+Cj4gPiDCoAlrZnJlZShtdGtfZmIpOwo+ID4gwqB9Cj4gPiBAQCAtMTYwLDYgKzE2MCw2IEBAIHN0
+cnVjdCBkcm1fZnJhbWVidWZmZXIKPiA+ICptdGtfZHJtX21vZGVfZmJfY3JlYXRlKHN0cnVjdCBk
+cm1fZGV2aWNlICpkZXYsCj4gPiDCoAlyZXR1cm4gJm10a19mYi0+YmFzZTsKPiA+IMKgCj4gPiDC
+oHVucmVmZXJlbmNlOgo+ID4gLQlkcm1fZ2VtX29iamVjdF91bnJlZmVyZW5jZV91bmxvY2tlZChn
+ZW0pOwo+ID4gKwlkcm1fZ2VtX29iamVjdF9wdXRfdW5sb2NrZWQoZ2VtKTsKPiA+IMKgCXJldHVy
+biBFUlJfUFRSKHJldCk7Cj4gPiDCoH0KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2RybV9nZW0uYwo+ID4gYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RybV9nZW0uYwo+ID4gaW5kZXggOGVjOTYzZi4uZjU5NWFjOCAxMDA2NDQKPiA+IC0tLSBhL2Ry
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jCj4gPiArKysgYi9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYwo+ID4gQEAgLTEyMiw3ICsxMjIsNyBAQCBpbnQg
+bXRrX2RybV9nZW1fZHVtYl9jcmVhdGUoc3RydWN0IGRybV9maWxlCj4gPiAqZmlsZV9wcml2LCBz
+dHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ID4gwqAJCWdvdG8gZXJyX2hhbmRsZV9jcmVhdGU7Cj4g
+PiDCoAo+ID4gwqAJLyogZHJvcCByZWZlcmVuY2UgZnJvbSBhbGxvY2F0ZSAtIGhhbmRsZSBob2xk
+cyBpdCBub3cuICovCj4gPiAtCWRybV9nZW1fb2JqZWN0X3VucmVmZXJlbmNlX3VubG9ja2VkKCZt
+dGtfZ2VtLT5iYXNlKTsKPiA+ICsJZHJtX2dlbV9vYmplY3RfcHV0X3VubG9ja2VkKCZtdGtfZ2Vt
+LT5iYXNlKTsKPiA+IMKgCj4gPiDCoAlyZXR1cm4gMDsKPiA+IMKgCj4gCj4gUmV2aWV3ZWQtYnk6
+IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+CgpBcHBsaWVkIHRvIGRybS1t
+aXNjLW5leHQsIHRoYW5rIHlvdSBmb3IgdGhlIHJldmlldyEKClNlYW4KCj4gCj4gcmVnYXJkcwo+
+IFBoaWxpcHAKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+Xwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwKCi0tIApTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1
+bSBPUwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
