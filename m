@@ -1,76 +1,53 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 4/4] dt-bindings: mt8173-xhci: add generic compatible and
- rename file
-Date: Thu, 10 Aug 2017 21:56:17 -0500
-Message-ID: <20170811025617.s3wuqlkgjvgc4exi@rob-hp-laptop>
-References: <8f0cb0047b2aa195d818ad686cbbceabb3ad91a0.1502170518.git.chunfeng.yun@mediatek.com>
- <ed176bd0af123ad6a94982c628bb70a6a3bf7515.1502170518.git.chunfeng.yun@mediatek.com>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 3/9] regulator: mt6380: Add support for MT6380
+Date: Fri, 11 Aug 2017 11:11:15 +0800
+Message-ID: <1502421075.19230.23.camel@mtkswgap22>
+References: <cover.1500368529.git.sean.wang@mediatek.com>
+         <0cd2be9a7058bb51fbbc7cc96101cba44fc081f6.1500368529.git.sean.wang@mediatek.com>
+         <20170718133136.xodadxf2crkcuhze@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <ed176bd0af123ad6a94982c628bb70a6a3bf7515.1502170518.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <20170718133136.xodadxf2crkcuhze-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Aug 08, 2017 at 01:42:52PM +0800, Chunfeng Yun wrote:
-> The mt8173-xhci.txt actually holds the bindings for all mediatek
-> SoCs with xHCI controller, so add a generic compatible and change
-> the name to xhci-mtk.txt to reflect that.
+On Tue, 2017-07-18 at 14:31 +0100, Mark Brown wrote:
+> On Tue, Jul 18, 2017 at 05:49:23PM +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  .../bindings/usb/{mt8173-xhci.txt => xhci-mtk.txt} |   10 +++++++---
->  1 file changed, 7 insertions(+), 3 deletions(-)
->  rename Documentation/devicetree/bindings/usb/{mt8173-xhci.txt => xhci-mtk.txt} (92%)
+> > +	if (!info->modeset_mask) {
+> > +		dev_err(&rdev->dev, "regulator %s doesn't support set_mode\n",
+> > +			info->desc.name);
+> > +		return -EINVAL;
+> > +	}
 > 
-> diff --git a/Documentation/devicetree/bindings/usb/mt8173-xhci.txt b/Documentation/devicetree/bindings/usb/xhci-mtk.txt
-> similarity index 92%
-> rename from Documentation/devicetree/bindings/usb/mt8173-xhci.txt
-> rename to Documentation/devicetree/bindings/usb/xhci-mtk.txt
+> This is mostly fine but the mode operations all have this code - if the
+> regulator doesn't have modesetting facilities it just shouldn't have
+> the ops so the core can handle things in a standard fashion.  It'd mean
+> defining a separate set of operations for those regulators but that's
+> fine.
 
-mediatek,mtk-xhci.txt
 
-> index 0acfc8a..1ce77c7 100644
-> --- a/Documentation/devicetree/bindings/usb/mt8173-xhci.txt
-> +++ b/Documentation/devicetree/bindings/usb/xhci-mtk.txt
-> @@ -11,7 +11,9 @@ into two parts.
->  ------------------------------------------------------------------------
->  
->  Required properties:
-> - - compatible : should contain "mediatek,mt8173-xhci"
-> + - compatible : should be one of
-> +	"mediatek,mt8173-xhci" (deprecated, use "mediatek,xhci-mtk" instead),
+Hi, Mark
 
-NAK for same reason.
+it is really bad for those calls with certain regulator always returning
+-EINVAL, that doesn't make sense.
 
-> +	"mediatek,xhci-mtk"
+we'll follow your suggestion and add them into the next version.
 
-mediatek,mtk-xhci would be more in line with conventions.
+thanks for your help!
 
->   - reg : specifies physical base address and size of the registers
->   - reg-names: should be "mac" for xHCI MAC and "ippc" for IP port control
->   - interrupts : interrupt used by the controller
-> @@ -68,10 +70,12 @@ usb30: usb@11270000 {
->  
->  In the case, xhci is added as subnode to mtu3. An example and the DT binding
->  details of mtu3 can be found in:
-> -Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
-> +Documentation/devicetree/bindings/usb/mtu3.txt
->  
->  Required properties:
-> - - compatible : should contain "mediatek,mt8173-xhci"
-> + - compatible : should be one of
-> +	"mediatek,mt8173-xhci" (deprecated, use "mediatek,xhci-mtk" instead),
-> +	"mediatek,xhci-mtk"
->   - reg : specifies physical base address and size of the registers
->   - reg-names: should be "mac" for xHCI MAC
->   - interrupts : interrupt used by the host controller
-> -- 
-> 1.7.9.5
-> 
+	Sean
+
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
