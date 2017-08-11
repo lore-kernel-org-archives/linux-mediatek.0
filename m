@@ -1,74 +1,67 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v3 13/28] drm/mediatek: switch to drm_*_get(),
- drm_*_put() helpers
-Date: Fri, 11 Aug 2017 12:04:01 -0400
-Message-ID: <20170811160401.rfee6kegnrtary74@art_vandelay>
-References: <1502454794-28558-1-git-send-email-cakturk@gmail.com>
- <1502454794-28558-14-git-send-email-cakturk@gmail.com>
- <1502456500.2310.14.camel@pengutronix.de>
+From: Harvey Hunt <harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>
+Subject: [V5 2/2] dt-bindings: phy: Add bindings for ralink-usb PHY
+Date: Fri, 11 Aug 2017 17:31:10 +0100
+Message-ID: <1502469070-13157-2-git-send-email-harvey.hunt@imgtec.com>
+References: <1502469070-13157-1-git-send-email-harvey.hunt@imgtec.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1502456500.2310.14.camel@pengutronix.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Cihangir Akturk <cakturk@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1502469070-13157-1-git-send-email-harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org
+Cc: james.hogan-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, Harvey Hunt <harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gRnJpLCBBdWcgMTEsIDIwMTcgYXQgMDM6MDE6NDBQTSArMDIwMCwgUGhpbGlwcCBaYWJlbCB3
-cm90ZToKPiBPbiBGcmksIDIwMTctMDgtMTEgYXQgMTU6MzIgKzAzMDAsIENpaGFuZ2lyIEFrdHVy
-ayB3cm90ZToKPiA+IFVzZSBkcm1fKl9nZXQoKSBhbmQgZHJtXypfcHV0KCkgaGVscGVycyBpbnN0
-ZWFkIG9mIGRybV8qX3JlZmVyZW5jZSgpCj4gPiBhbmQgZHJtXypfdW5yZWZlcmVuY2UoKSBoZWxw
-ZXJzLgo+ID4gCj4gPiBkcm1fKl9yZWZlcmVuY2UoKSBhbmQgZHJtXypfdW5yZWZlcmVuY2UoKSBm
-dW5jdGlvbnMgYXJlIGp1c3QKPiA+IGNvbXBhdGliaWxpdHkgYWxpYXMgZm9yIGRybV8qX2dldCgp
-IGFuZCBkcm1fKl9wdXQoKSBhbmQgc2hvdWxkIG5vdCBiZQo+ID4gdXNlZCBieSBuZXcgY29kZS4g
-U28gY29udmVydCBhbGwgdXNlcnMgb2YgY29tcGF0aWJpbGl0eSBmdW5jdGlvbnMgdG8KPiA+IHVz
-ZSB0aGUgbmV3IEFQSXMuCj4gPiAKPiA+IEdlbmVyYXRlZCBieTogc2NyaXB0cy9jb2NjaW5lbGxl
-L2FwaS9kcm0tZ2V0LXB1dC5jb2NjaQo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBDaWhhbmdpciBB
-a3R1cmsgPGNha3R1cmtAZ21haWwuY29tPgo+ID4gLS0tCj4gPiDCoGRyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX2ZiLmPCoMKgfCA0ICsrLS0KPiA+IMKgZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcm1fZ2VtLmMgfCAyICstCj4gPiDCoDIgZmlsZXMgY2hhbmdlZCwgMyBpbnNl
-cnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuYwo+ID4gYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9mYi5jCj4gPiBpbmRleCBkNDI0NmM5Li4wZDhkNTA2IDEwMDY0NAo+ID4gLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuYwo+ID4gKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuYwo+ID4gQEAgLTU4LDcgKzU4LDcgQEAgc3Rh
-dGljIHZvaWQgbXRrX2RybV9mYl9kZXN0cm95KHN0cnVjdAo+ID4gZHJtX2ZyYW1lYnVmZmVyICpm
-YikKPiA+IMKgCj4gPiDCoAlkcm1fZnJhbWVidWZmZXJfY2xlYW51cChmYik7Cj4gPiDCoAo+ID4g
-LQlkcm1fZ2VtX29iamVjdF91bnJlZmVyZW5jZV91bmxvY2tlZChtdGtfZmItPmdlbV9vYmopOwo+
-ID4gKwlkcm1fZ2VtX29iamVjdF9wdXRfdW5sb2NrZWQobXRrX2ZiLT5nZW1fb2JqKTsKPiA+IMKg
-Cj4gPiDCoAlrZnJlZShtdGtfZmIpOwo+ID4gwqB9Cj4gPiBAQCAtMTYwLDYgKzE2MCw2IEBAIHN0
-cnVjdCBkcm1fZnJhbWVidWZmZXIKPiA+ICptdGtfZHJtX21vZGVfZmJfY3JlYXRlKHN0cnVjdCBk
-cm1fZGV2aWNlICpkZXYsCj4gPiDCoAlyZXR1cm4gJm10a19mYi0+YmFzZTsKPiA+IMKgCj4gPiDC
-oHVucmVmZXJlbmNlOgo+ID4gLQlkcm1fZ2VtX29iamVjdF91bnJlZmVyZW5jZV91bmxvY2tlZChn
-ZW0pOwo+ID4gKwlkcm1fZ2VtX29iamVjdF9wdXRfdW5sb2NrZWQoZ2VtKTsKPiA+IMKgCXJldHVy
-biBFUlJfUFRSKHJldCk7Cj4gPiDCoH0KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RybV9nZW0uYwo+ID4gYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9nZW0uYwo+ID4gaW5kZXggOGVjOTYzZi4uZjU5NWFjOCAxMDA2NDQKPiA+IC0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jCj4gPiArKysgYi9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYwo+ID4gQEAgLTEyMiw3ICsxMjIsNyBAQCBpbnQg
-bXRrX2RybV9nZW1fZHVtYl9jcmVhdGUoc3RydWN0IGRybV9maWxlCj4gPiAqZmlsZV9wcml2LCBz
-dHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ID4gwqAJCWdvdG8gZXJyX2hhbmRsZV9jcmVhdGU7Cj4g
-PiDCoAo+ID4gwqAJLyogZHJvcCByZWZlcmVuY2UgZnJvbSBhbGxvY2F0ZSAtIGhhbmRsZSBob2xk
-cyBpdCBub3cuICovCj4gPiAtCWRybV9nZW1fb2JqZWN0X3VucmVmZXJlbmNlX3VubG9ja2VkKCZt
-dGtfZ2VtLT5iYXNlKTsKPiA+ICsJZHJtX2dlbV9vYmplY3RfcHV0X3VubG9ja2VkKCZtdGtfZ2Vt
-LT5iYXNlKTsKPiA+IMKgCj4gPiDCoAlyZXR1cm4gMDsKPiA+IMKgCj4gCj4gUmV2aWV3ZWQtYnk6
-IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+CgpBcHBsaWVkIHRvIGRybS1t
-aXNjLW5leHQsIHRoYW5rIHlvdSBmb3IgdGhlIHJldmlldyEKClNlYW4KCj4gCj4gcmVnYXJkcwo+
-IFBoaWxpcHAKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-Xwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWwKCi0tIApTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1
-bSBPUwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
-ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
-Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+
+Add a binding for the USB phy on Mediatek/Ralink SoCs.
+
+Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Signed-off-by: Harvey Hunt <harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+---
+Changes in V5:
+* None
+
+Changes in V4:
+* None
+
+Changes in V3:
+* Split out from first patch
+
+ .../devicetree/bindings/phy/ralink-usb-phy.txt          | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/ralink-usb-phy.txt
+
+diff --git a/Documentation/devicetree/bindings/phy/ralink-usb-phy.txt b/Documentation/devicetree/bindings/phy/ralink-usb-phy.txt
+new file mode 100644
+index 0000000..5b27cad
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/ralink-usb-phy.txt
+@@ -0,0 +1,17 @@
++Mediatek/Ralink USB PHY
++
++Required properties:
++ - compatible: ralink,rt3352-usbphy or mediatek,mt7620-usbphy
++ - #phy-cells: should be 0
++ - resets: the two reset controllers for host and device
++ - reset-names: the names of the 2 reset controllers
++
++Example:
++
++usbphy: phy {
++	compatible = "mediatek,mt7620-usbphy";
++	#phy-cells = <0>;
++
++	resets = <&rstctrl 22 &rstctrl 25>;
++	reset-names = "host", "device";
++};
+-- 
+2.7.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
