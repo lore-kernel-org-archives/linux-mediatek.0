@@ -1,70 +1,76 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 2/9] dt-bindings: regulator: Add document for
- MediaTek MT6380 regulator
-Date: Fri, 11 Aug 2017 14:13:38 +0800
-Message-ID: <1502432018.19230.29.camel@mtkswgap22>
-References: <cover.1500368529.git.sean.wang@mediatek.com>
-         <fef9412087f3961e03b77c067e227a31860a1417.1500368529.git.sean.wang@mediatek.com>
-         <20170724182242.ejrobnjks3ehprpw@rob-hp-laptop>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH 3/4] dt-bindings: mt8173-mtu3: add generic compatible
+ and rename file
+Date: Fri, 11 Aug 2017 15:00:19 +0800
+Message-ID: <1502434819.25536.125.camel@mhfsdcap03>
+References: <8f0cb0047b2aa195d818ad686cbbceabb3ad91a0.1502170518.git.chunfeng.yun@mediatek.com>
+         <121eaec8845c62383701d4fdfe9649335937f025.1502170518.git.chunfeng.yun@mediatek.com>
+         <20170811025410.65jvjmji4gfnmm6l@rob-hp-laptop>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170724182242.ejrobnjks3ehprpw@rob-hp-laptop>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170811025410.65jvjmji4gfnmm6l@rob-hp-laptop>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: Mathias Nyman <mathias.nyman@intel.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2017-07-24 at 13:22 -0500, Rob Herring wrote:
-> On Tue, Jul 18, 2017 at 05:49:22PM +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> > From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Thu, 2017-08-10 at 21:54 -0500, Rob Herring wrote:
+> On Tue, Aug 08, 2017 at 01:42:51PM +0800, Chunfeng Yun wrote:
+> > The mt8173-mtu3.txt actually holds the bindings for all mediatek
+> > SoCs with usb3 DRD IP, so add a generic compatible and change the
+> > name to mtu3.txt.
 > > 
-> > add dt-binding document for MediaTek MT6380 PMIC
-> > 
-> > Signed-off-by: Chenglin Xu <chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > > ---
-> >  .../bindings/regulator/mt6380-regulator.txt        | 90 ++++++++++++++++++++++
-> >  1 file changed, 90 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/regulator/mt6380-regulator.txt
+> >  .../bindings/usb/{mt8173-mtu3.txt => mtu3.txt}     |    6 ++++--
+> >  1 file changed, 4 insertions(+), 2 deletions(-)
+> >  rename Documentation/devicetree/bindings/usb/{mt8173-mtu3.txt => mtu3.txt} (95%)
 > > 
-> > diff --git a/Documentation/devicetree/bindings/regulator/mt6380-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6380-regulator.txt
-> > new file mode 100644
-> > index 0000000..2a559f0
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/regulator/mt6380-regulator.txt
-> > @@ -0,0 +1,90 @@
-> > +MediaTek MT6380 Regulator Driver
+> > diff --git a/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt b/Documentation/devicetree/bindings/usb/mtu3.txt
+> > similarity index 95%
+> > rename from Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
+> > rename to Documentation/devicetree/bindings/usb/mtu3.txt
+> > index 1d7c3bc..832741d 100644
+> > --- a/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
+> > +++ b/Documentation/devicetree/bindings/usb/mtu3.txt
 > 
-> Bindings don't describe drivers.
+> mediatek,mtu3.txt
+Ok
 > 
-will fix it.
-
-> > +
-> > +All voltage regulators are defined as subnodes of the regulators node. A list
+> > @@ -1,7 +1,9 @@
+> >  The device node for Mediatek USB3.0 DRD controller
+> >  
+> >  Required properties:
+> > - - compatible : should be "mediatek,mt8173-mtu3"
+> > + - compatible : should be one of
+> > +	"mediatek,mt8173-mtu3" (deprecated, use "mediatek,mtu3" instead),
 > 
-> What's the regulators node a child of?
+> NAK. You can add generic compatibles, but you need SoC specific ones in 
+> addition.
+It's for backward compatibility
+
 > 
+> > +	"mediatek,mtu3"
+Is it appropriate if changed to "mediatek,generic-mtu3"?
 
-this two line i felt are a little confusion, i will change them into "
-all voltage regulators provided by the MT6380 PMIC are described as the
-subnodes of the mt6380regulators node "
-
-> > +of regulators provided by this controller are defined as subnodes of the
-> > +PMIC's node. Each regulator is named according to its regulator type,
-> > +buck-<name> and ldo-<name>. The definition for each of these nodes is defined
-> > +using the standard binding for regulators at
-> > +Documentation/devicetree/bindings/regulator/regulator.txt.
-> > +
-> > +The valid names for regulators are:
-> > +BUCK:
-> > +  buck-core1, buck-vcore, buck-vrf
-> > +LDO:
-> > +  ldo-vm ,ldo-va , ldo-vphy, ldo-vddr, ldo-vt
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> >   - reg : specifies physical base address and size of the registers
+> >   - reg-names: should be "mac" for device IP and "ippc" for IP port control
+> >   - interrupts : interrupt used by the device IP
+> > @@ -44,7 +46,7 @@ Optional properties:
+> >  Sub-nodes:
+> >  The xhci should be added as subnode to mtu3 as shown in the following example
+> >  if host mode is enabled. The DT binding details of xhci can be found in:
+> > -Documentation/devicetree/bindings/usb/mt8173-xhci.txt
+> > +Documentation/devicetree/bindings/usb/xhci-mtk.txt
+> 
+> This should be in the patch that renames this file.
+Ok
+> 
+> >  
+> >  Example:
+> >  ssusb: usb@11271000 {
+> > -- 
+> > 1.7.9.5
+> > 
