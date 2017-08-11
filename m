@@ -1,105 +1,78 @@
-From: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 5/5] mfd: mt6397: Add PMIC keys support to MT6397
- driver
-Date: Fri, 11 Aug 2017 15:18:28 +0800
-Message-ID: <1502435908.28466.21.camel@mhfsdcap03>
-References: <1502071065-6745-1-git-send-email-chen.zhong@mediatek.com>
-         <1502071065-6745-6-git-send-email-chen.zhong@mediatek.com>
-         <20170808111556.dmx2s6bcwnsccrkn@dell>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 0/8] MT2712 IOMMU SUPPORT
+Date: Fri, 11 Aug 2017 17:56:09 +0800
+Message-ID: <1502445377-26936-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170808111556.dmx2s6bcwnsccrkn@dell>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Alessandro Zummo <a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Jaechul Lee <jcsing.lee-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Beomho Seo <beomho.seo-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rtc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Arvind Yadav <arvind.yadav.cs-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, cloud.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-08-08 at 12:15 +0100, Lee Jones wrote:
-> On Mon, 07 Aug 2017, Chen Zhong wrote:
-> 
-> > This patch adds compatible strings and interrupts for pmic keys
-> > which serves as child device of MFD.
-> > 
-> > Signed-off-by: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  drivers/mfd/mt6397-core.c |   36 +++++++++++++++++++++++++++++++++++-
-> >  1 file changed, 35 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> > index 6546d7f..3c6a765 100644
-> > --- a/drivers/mfd/mt6397-core.c
-> > +++ b/drivers/mfd/mt6397-core.c
-> > @@ -43,6 +43,30 @@
-> >  	},
-> >  };
-> >  
-> > +static const struct resource mt6323_keys_resources[] = {
-> > +	{
-> > +		.start = MT6323_IRQ_STATUS_PWRKEY,
-> > +		.end   = MT6323_IRQ_STATUS_PWRKEY,
-> > +		.flags = IORESOURCE_IRQ,
-> > +	}, {
-> > +		.start = MT6323_IRQ_STATUS_FCHRKEY,
-> > +		.end   = MT6323_IRQ_STATUS_FCHRKEY,
-> > +		.flags = IORESOURCE_IRQ,
-> > +	},
-> > +};
-> > +
-> > +static const struct resource mt6397_keys_resources[] = {
-> > +	{
-> > +		.start = MT6397_IRQ_PWRKEY,
-> > +		.end   = MT6397_IRQ_PWRKEY,
-> > +		.flags = IORESOURCE_IRQ,
-> > +	}, {
-> > +		.start = MT6397_IRQ_HOMEKEY,
-> > +		.end   = MT6397_IRQ_HOMEKEY,
-> > +		.flags = IORESOURCE_IRQ,
-> > +	},
-> > +};
-> 
-> We have better ways to define these now.
-> 
-> Please grep for "DEFINE_RES_"
+This patchset mainly adds support for M4U of mt2712.
 
-I'll define these with "DEFINE_RES_IRQ" here, Thank you for your
-suggestion.
+The M4U in mt2712 is MTK's generation2 M4U which use the
+Short-descriptor like mt8173. The main difference is that there are 2
+M4Us and 2 smi-commons in mt2712, while there is only 1 M4U and 1
+smi-common in mt8173. The purpose is for balance the bandwidth.
 
-> 
-> >  static const struct mfd_cell mt6323_devs[] = {
-> >  	{
-> >  		.name = "mt6323-regulator",
-> > @@ -50,6 +74,11 @@
-> >  	}, {
-> >  		.name = "mt6323-led",
-> >  		.of_compatible = "mediatek,mt6323-led"
-> > +	}, {
-> > +		.name = "mtk-pmic-keys",
-> > +		.num_resources = ARRAY_SIZE(mt6323_keys_resources),
-> > +		.resources = mt6323_keys_resources,
-> > +		.of_compatible = "mediatek,mt6323-keys"
-> >  	},
-> >  };
-> >  
-> > @@ -71,7 +100,12 @@
-> >  	}, {
-> >  		.name = "mt6397-pinctrl",
-> >  		.of_compatible = "mediatek,mt6397-pinctrl",
-> > -	},
-> > +	}, {
-> > +		.name = "mtk-pmic-keys",
-> > +		.num_resources = ARRAY_SIZE(mt6397_keys_resources),
-> > +		.resources = mt6397_keys_resources,
-> > +		.of_compatible = "mediatek,mt6397-keys"
-> > +	}
-> >  };
-> >  
-> >  static void mt6397_irq_lock(struct irq_data *data)
-> 
+The mt2712 M4U-SMI HW diagram is as below:
 
+                            EMI
+                             |
+              -------------------------------
+              |                             |
+             M4U0                          M4U1
+              |                             |
+         smi-common0                   smi-common1
+              |                             |
+  -------------------------       --------------------
+  |     |     |     |     |       |         |        |
+  |     |     |     |     |       |         |        |
+larb0 larb1 larb2 larb3 larb6    larb4    larb5     larb7
+disp0 vdec  cam   venc   jpg  mdp1/disp1 mdp2/disp2  mdp3->larb names
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+This patchset is based on v4.13-rc1, Also it base on Robin's[1],
+Honghui[2],Arvind[3]. Currently it don't contain the dtsi part
+as the ccf/power-domain has not been ready.
+
+The patch 1/2 adds the support of MT2712 IOMMU support,
+the patch 3/4 improve the m4u flow for mt2712,
+the last patch 5/6/7/8 mainly fix bug or improve code.
+
+[1]:https://patchwork.kernel.org/patch/9828671/
+[2]:https://patchwork.kernel.org/patch/9880223/
+[3]:https://patchwork.kernel.org/patch/9892759/
+
+Yong Wu (8):
+  dt-bindings: mediatek: Add binding for mt2712 IOMMU and SMI
+  iommu/mediatek: Add mt2712 IOMMU support
+  iommu/mediatek: Merge 2 M4U HWs into one iommu domain
+  iommu/mediatek: Move pgtable allocation into domain_alloc
+  iommu/mediatek: Disable iommu clock when system suspend
+  iommu/mediatek: Enlarge the validate PA range for 4GB mode
+  memory: mtk-smi: Rearrange some function position alphabetically
+  memory: mtk-smi: Degrade SMI init to module_init
+
+ .../devicetree/bindings/iommu/mediatek,iommu.txt   |   6 +-
+ .../memory-controllers/mediatek,smi-common.txt     |   6 +-
+ .../memory-controllers/mediatek,smi-larb.txt       |   5 +-
+ drivers/iommu/mtk_iommu.c                          | 184 ++++++++++++++-------
+ drivers/iommu/mtk_iommu.h                          |   9 +
+ drivers/memory/mtk-smi.c                           | 108 +++++++-----
+ include/dt-bindings/memory/mt2712-larb-port.h      |  91 ++++++++++
+ 7 files changed, 305 insertions(+), 104 deletions(-)
+ create mode 100644 include/dt-bindings/memory/mt2712-larb-port.h
+
+-- 
+1.9.1
