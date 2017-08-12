@@ -1,459 +1,86 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 2/8] iommu/mediatek: Add mt2712 IOMMU support
-Date: Sat, 12 Aug 2017 18:04:47 +0800
-Message-ID: <1502532287.11148.70.camel@mhfsdcap03>
-References: <1502445377-26936-1-git-send-email-yong.wu@mediatek.com>
-         <1502445377-26936-3-git-send-email-yong.wu@mediatek.com>
-         <e084edd4-23bb-d44f-83c6-c6d3182a7655@arm.com>
+From: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>
+Subject: Re: [PATCH 000/102] Convert drivers to explicit reset API
+Date: Sat, 12 Aug 2017 13:43:57 +0200
+Message-ID: <20170812114357.v4ru75dw5hq7wemx@ninjato>
+References: <20170719152646.25903-1-p.zabel@pengutronix.de>
+ <20170719211515.46a1196c@windsurf>
+ <1500543415.2354.37.camel@pengutronix.de>
+ <20170720123640.43c2ce01@windsurf>
+ <1500555312.2354.75.camel@pengutronix.de>
+ <CAKdAkRTx8jd8UToz5_EgMmdW3V47i2uo++YvVB_yzytqSA=P1Q@mail.gmail.com>
+ <CACRpkdaXOv7mX+b-q1K34CB5w0SWPXCKa21wHaxL7qjf91PJXQ@mail.gmail.com>
+ <1500885221.2391.50.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <e084edd4-23bb-d44f-83c6-c6d3182a7655-5wv7dgnIgG8@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, cloud.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arvind Yadav <arvind.yadav.cs-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: multipart/mixed; boundary="===============7165033882226333407=="
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1500885221.2391.50.camel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Prashant Gaikwad <pgaikwad-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Peter Chen <Peter.Chen-3arQi8VN3Tc@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, DRI <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Marc Dietrich <marvin24-Mmb7MZpHnFY@public.gmane.org>, Rakesh Iyer <riyer-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, linux-clk <linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Xinliang Liu <z.liuxinliang-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Jiri Slaby <jslaby-IBi9RG/b67k@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Ohad Ben-Cohen <ohad-Ix1uc/W3ht7QT0dZR+AlfA@public.gmane.org>, "linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Bin Liu <b-liu-l0cyMroinI0@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, USB list <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>linux
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2017-08-11 at 18:24 +0100, Robin Murphy wrote:
-> On 11/08/17 10:56, Yong Wu wrote:
-> > The M4U IP blocks in mt2712 is MTK's generation2 M4U which use the
-> > Short-descriptor like mt8173, and most of the HW registers are the
-> > same.
-> > 
-> > The difference is that there are 2 M4U HWs in mt2712 while there's
-> > only one in mt8173. The purpose of 2 M4U HWs is for balance the
-> > bandwidth.
-> 
-> Heh, I never imagined that theoretical argument I made against global
-> data in the original driver would become reality so soon :D
 
-Sorry for this.
-
-The global data you said should be "static LIST_HEAD(m4ulist); "
-
-Actually, After this patch, the mt2712 IOMMU can work successfully.
-
-In order to simplify the IOMMU client code, we add that global data to
-merge 2 IOMMU domains into one, then they don't need map the iova range
-from a iommu domain into another.
-
-I'm not familiar with SMMU. The SMMU should have so many iommu
-domains(each context bank has one.). So how the SMMU deal with this
-case: Does the modules in different context banks need share the iova?
-How does they share the iova?
-
-> 
-> > Normally if there are 2 M4U HWs, there should be 2 iommu domains,
-> > each M4U has a iommu domain.
-> > 
-> > Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> > This patch also include a minor issue:
-> > suspend while there is no iommu client. it will hang because
-> > there is no iommu domain at that time.
-> > ---
-> >  drivers/iommu/mtk_iommu.c | 48 ++++++++++++++++++++++++++++++++---------------
-> >  drivers/iommu/mtk_iommu.h |  7 +++++++
-> >  drivers/memory/mtk-smi.c  | 40 ++++++++++++++++++++++++++++++++++++---
-> >  3 files changed, 77 insertions(+), 18 deletions(-)
-> > 
-> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> > index 91c6d36..da6cedb 100644
-> > --- a/drivers/iommu/mtk_iommu.c
-> > +++ b/drivers/iommu/mtk_iommu.c
-> > @@ -54,7 +54,9 @@
-> >  
-> >  #define REG_MMU_CTRL_REG			0x110
-> >  #define F_MMU_PREFETCH_RT_REPLACE_MOD		BIT(4)
-> > +/* The TF-protect-select is bit[5:4] in mt2712 while it's bit[6:5] in mt8173.*/
-> >  #define F_MMU_TF_PROTECT_SEL(prot)		(((prot) & 0x3) << 5)
-> > +#define F_MMU_TF_PROT_SEL(prot)			(((prot) & 0x3) << 4)
-> 
-> In my opinion PROTECT vs. PROT here is too confusing for its own good...
-
-.Both the strings are from the coda released by our HW DE..
-
-And your suggestion looks better. I will use:
-
-/* mt2712 is named by F_MMU_TF_PROT_SEL */
-#define F_MMU_TF_PROTECT_SEL_SHIFT(data) \
- 	((data)->m4u_type == MT2172 ? 4 : 5)
-#define F_MMU_TF_PROTECT_SEL(prot, data) \
- 	((prot) & 0x3) << F_MMU_TF_PROTECT_SEL_SHIFT(data))
-
-> 
-> >  #define REG_MMU_IVRP_PADDR			0x114
-> >  #define F_MMU_IVRP_PA_SET(pa, ext)		(((pa) >> 1) | ((!!(ext)) << 31))
-> > @@ -301,10 +303,6 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
-> >  			data->m4u_dom = NULL;
-> >  			return ret;
-> >  		}
-> > -	} else if (data->m4u_dom != dom) {
-> > -		/* All the client devices should be in the same m4u domain */
-> > -		dev_err(dev, "try to attach into the error iommu domain\n");
-> > -		return -EPERM;
-> >  	}
-> >  
-> >  	mtk_iommu_config(data, dev, true);
-> > @@ -464,8 +462,12 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
-> >  		return ret;
-> >  	}
-> >  
-> > -	regval = F_MMU_PREFETCH_RT_REPLACE_MOD |
-> > -		F_MMU_TF_PROTECT_SEL(2);
-> > +	if (data->m4u_type == M4U_MT8173) {
-> > +		regval = F_MMU_PREFETCH_RT_REPLACE_MOD |
-> > +			F_MMU_TF_PROTECT_SEL(2);
-> > +	} else {
-> > +		regval = F_MMU_TF_PROT_SEL(2);
-> 
-> ...and it would be a bit more obvious to just use
-> F_MMU_TF_PROTECT_SEL(2) >> 1 here (with the comment from above).
-> Alternatively, the really bullet-proof option would be something like:
-> 
-> #define F_MMU_TF_PROTECT_SEL_SHIFT(data) \
-> 	((data)->m4u_type == MT2172 ? 4 : 5)
-> #define F_MMU_TF_PROTECT_SEL(prot, data) \
-> 	((prot) & 0x3) << F_MMU_TF_PROTECT_SEL_SHIFT(data))
-> 
-> > +	}
-> >  	writel_relaxed(regval, data->base + REG_MMU_CTRL_REG);
-> >  
-> >  	regval = F_L2_MULIT_HIT_EN |
-> > @@ -487,9 +489,11 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
-> >  
-> >  	writel_relaxed(F_MMU_IVRP_PA_SET(data->protect_base, data->enable_4GB),
-> >  		       data->base + REG_MMU_IVRP_PADDR);
-> > -
-> >  	writel_relaxed(0, data->base + REG_MMU_DCM_DIS);
-> > -	writel_relaxed(0, data->base + REG_MMU_STANDARD_AXI_MODE);
-> > +
-> > +	/* It's MISC control register whose default value is ok except mt8173.*/
-> > +	if (data->m4u_type == M4U_MT8173)
-> > +		writel_relaxed(0, data->base + REG_MMU_STANDARD_AXI_MODE);
-> >  
-> >  	if (devm_request_irq(data->dev, data->irq, mtk_iommu_isr, 0,
-> >  			     dev_name(data->dev), (void *)data)) {
-> > @@ -521,6 +525,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
-> >  	if (!data)
-> >  		return -ENOMEM;
-> >  	data->dev = dev;
-> > +	data->m4u_type = (enum mtk_iommu_type)of_device_get_match_data(dev);
-> >  
-> >  	/* Protect memory. HW will access here while translation fault.*/
-> >  	protect = devm_kzalloc(dev, MTK_PROTECT_PA_ALIGN * 2, GFP_KERNEL);
-> > @@ -554,6 +559,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
-> >  	for (i = 0; i < larb_nr; i++) {
-> >  		struct device_node *larbnode;
-> >  		struct platform_device *plarbdev;
-> > +		unsigned int id;
-> 
-> Strictly, this should be u32...
-
-OK.
-
-> 
-> >  
-> >  		larbnode = of_parse_phandle(dev->of_node, "mediatek,larbs", i);
-> >  		if (!larbnode)
-> > @@ -562,6 +568,10 @@ static int mtk_iommu_probe(struct platform_device *pdev)
-> >  		if (!of_device_is_available(larbnode))
-> >  			continue;
-> >  
-> > +		ret = of_property_read_u32(larbnode, "mediatek,larb-id", &id);
-> > +		if (ret)/* The id is consecutive if there is no this property */
-> > +			id = i;
-> 
-> ...but wouldn't it make more sense for the SMI driver to handle this?
-> Admittedly it looks like only this driver knows the default IDs thanks
-> to the ordering of the phandle args, but the SMI driver could at least
-> initialise larb->larbid to some sentinel value which could be detected
-> and replaced with i here.
-
->From the HW diagram before, the "mediatek,larbs" is
-"mediatek,larbs = <&larb0 &larb1 &larb2 &larb3 &larb6>" in M4U0. and
-"mediatek,larbs = <&larb4 &larb5 &larb7>" in M4U1.
-
-Both are not consecutive..this is different with mt8173 and mt2701.
-
-The problem is that: In the mtk_iommu_config, it will get the larbid via
-"larbid = MTK_M4U_TO_LARB(fwspec->ids[i])".
-This function will get the right larbid.
-
-Thus I have to initialize the array "data->smi_imu.larb_imu" with the
-real lardid here.
-
-SMI driver will probe defer because it is delayed by MTK power-domain.
-It will be very late to initialize the larb-id. So currently IOMMU
-initialize the array "smi_imu.larb_imu" according to the real larbid,
-and later SMI driver read the array to get the iommu information about
-each larb.
-Thus, is there some other way the SMI driver can help handle this?
-
-About "the ordering of the phandle args", I have requested it must 
-sort in the binding description of "mediatek,larbs".
-
-> 
-> > +
-> >  		plarbdev = of_find_device_by_node(larbnode);
-> >  		if (!plarbdev) {
-> >  			plarbdev = of_platform_device_create(
-> > @@ -572,7 +582,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
-> >  				return -EPROBE_DEFER;
-> >  			}
-> >  		}
-> > -		data->smi_imu.larb_imu[i].dev = &plarbdev->dev;
-> > +		data->smi_imu.larb_imu[id].dev = &plarbdev->dev;
-> 
-> Changing the way the larb_imu array is indexed also seems to create a
-> worrying inconsistency with mtk_iommu_v1.
-> 
-> >  		component_match_add_release(dev, &match, release_of,
-> >  					    compare_of, larbnode);
-> > @@ -640,8 +650,6 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
-> >  	struct mtk_iommu_suspend_reg *reg = &data->reg;
-> >  	void __iomem *base = data->base;
-> >  
-> > -	writel_relaxed(data->m4u_dom->cfg.arm_v7s_cfg.ttbr[0],
-> > -		       base + REG_MMU_PT_BASE_ADDR);
-> >  	writel_relaxed(reg->standard_axi_mode,
-> >  		       base + REG_MMU_STANDARD_AXI_MODE);
-> >  	writel_relaxed(reg->dcm_dis, base + REG_MMU_DCM_DIS);
-> > @@ -650,15 +658,19 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
-> >  	writel_relaxed(reg->int_main_control, base + REG_MMU_INT_MAIN_CONTROL);
-> >  	writel_relaxed(F_MMU_IVRP_PA_SET(data->protect_base, data->enable_4GB),
-> >  		       base + REG_MMU_IVRP_PADDR);
-> > +	if (data->m4u_dom)
-> > +		writel(data->m4u_dom->cfg.arm_v7s_cfg.ttbr[0],
-> > +		       base + REG_MMU_PT_BASE_ADDR);
-> >  	return 0;
-> >  }
-> >  
-> > -const struct dev_pm_ops mtk_iommu_pm_ops = {
-> > +static const struct dev_pm_ops mtk_iommu_pm_ops = {
-> >  	SET_SYSTEM_SLEEP_PM_OPS(mtk_iommu_suspend, mtk_iommu_resume)
-> >  };
-> >  
-> >  static const struct of_device_id mtk_iommu_of_ids[] = {
-> > -	{ .compatible = "mediatek,mt8173-m4u", },
-> > +	{ .compatible = "mediatek,mt2712-m4u", .data = (void *)M4U_MT2712},
-> > +	{ .compatible = "mediatek,mt8173-m4u", .data = (void *)M4U_MT8173},
-> >  	{}
-> >  };
-> >  
-> > @@ -667,16 +679,20 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
-> >  	.remove	= mtk_iommu_remove,
-> >  	.driver	= {
-> >  		.name = "mtk-iommu",
-> > -		.of_match_table = mtk_iommu_of_ids,
-> > +		.of_match_table = of_match_ptr(mtk_iommu_of_ids),
-> >  		.pm = &mtk_iommu_pm_ops,
-> >  	}
-> >  };
-> >  
-> >  static int mtk_iommu_init_fn(struct device_node *np)
-> >  {
-> > +	static bool init_done;
-> >  	int ret;
-> >  	struct platform_device *pdev;
-> >  
-> > +	if (init_done)
-> > +		return 0;
-> > +
-> 
-> Actually, you can simply get rid of the whole init_fn now - the
-
-Thanks. It looks ok after I change here to subsys_initcall.
-
-> IOMMU_OF_DECLARE() table only remains as a way to identify built-in
-> drivers for the probe-deferral decision. Hopefully the dodgy-looking
-
-Do you means that IOMMU_OF_DECLARE is needed by probe-deferral drivers?
-
-I tested a deferal driver without IOMMU_OF_DEDCALRE.It could also enter
-our of_late. all the flow looks normal.
-
-> forced creation of plarbdev in probe could go away as well.
-
-Yes. I can get rid of it.
-
-> 
-> >  	pdev = of_platform_device_create(np, NULL, platform_bus_type.dev_root);
-> >  	if (!pdev)
-> >  		return -ENOMEM;
-> > @@ -686,8 +702,10 @@ static int mtk_iommu_init_fn(struct device_node *np)
-> >  		pr_err("%s: Failed to register driver\n", __func__);
-> >  		return ret;
-> >  	}
-> > +	init_done = true;
-> >  
-> >  	return 0;
-> >  }
-> >  
-> > -IOMMU_OF_DECLARE(mtkm4u, "mediatek,mt8173-m4u", mtk_iommu_init_fn);
-> > +IOMMU_OF_DECLARE(mt8173m4u, "mediatek,mt8173-m4u", mtk_iommu_init_fn);
-> > +IOMMU_OF_DECLARE(mt2712m4u, "mediatek,mt2712-m4u", mtk_iommu_init_fn);
-> > diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> > index c06cc91..cd729a3 100644
-> > --- a/drivers/iommu/mtk_iommu.h
-> > +++ b/drivers/iommu/mtk_iommu.h
-> > @@ -34,6 +34,12 @@ struct mtk_iommu_suspend_reg {
-> >  	u32				int_main_control;
-> >  };
-> >  
-> > +enum mtk_iommu_type {
-> > +	M4U_MT2701,
-> > +	M4U_MT2712,
-> > +	M4U_MT8173,
-> > +};
-> > +
-> >  struct mtk_iommu_domain;
-> >  
-> >  struct mtk_iommu_data {
-> > @@ -50,6 +56,7 @@ struct mtk_iommu_data {
-> >  	bool				tlb_flush_active;
-> >  
-> >  	struct iommu_device		iommu;
-> > +	enum mtk_iommu_type		m4u_type;
-> >  };
-> >  
-> >  static inline int compare_of(struct device *dev, void *data)
-> > diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> > index 13f8c45..ec06d2b 100644
-> > --- a/drivers/memory/mtk-smi.c
-> > +++ b/drivers/memory/mtk-smi.c
-> > @@ -23,7 +23,10 @@
-> >  #include <soc/mediatek/smi.h>
-> >  #include <dt-bindings/memory/mt2701-larb-port.h>
-> >  
-> > +/* mt8173 */
-> >  #define SMI_LARB_MMU_EN		0xf00
-> > +
-> > +/* mt2701 */
-> >  #define REG_SMI_SECUR_CON_BASE		0x5c0
-> >  
-> >  /* every register control 8 port, register offset 0x4 */
-> > @@ -41,6 +44,10 @@
-> >  /* mt2701 domain should be set to 3 */
-> >  #define SMI_SECUR_CON_VAL_DOMAIN(id)	(0x3 << ((((id) & 0x7) << 2) + 1))
-> >  
-> > +/* mt2712 */
-> > +#define SMI_LARB_NONSEC_CON(id)	(0x380 + (id * 4))
-> > +#define F_MMU_EN		BIT(0)
-> > +
-> >  struct mtk_smi_larb_gen {
-> >  	bool need_larbid;
-> >  	int port_in_larb[MTK_LARB_NR_MAX + 1];
-> > @@ -149,7 +156,7 @@ void mtk_smi_larb_put(struct device *larbdev)
-> >  	struct mtk_smi_iommu *smi_iommu = data;
-> >  	unsigned int         i;
-> >  
-> > -	for (i = 0; i < smi_iommu->larb_nr; i++) {
-> > +	for (i = 0; i < MTK_LARB_NR_MAX; i++) {
-> 
-> This initially looked suspicious, but I guess it's related to the
-> earlier change to indexing. As a result we seem to have a bit of a
-> redundant mess where some things are using larb->larbid and others are
-> relying on inferring it from the index in larb_imu.
-> 
-> I'm not sure whether it would end up better to use larbid consistently
-> everywhere, or to convert everything to make make larb_imu officially a
-> sparse array indexed by ID (and thus remove smi_iommu->larb_nr and
-> larb->larbid), but a weird mix of both is not a great idea.
-
-see above.
-
-> 
-> >  		if (dev == smi_iommu->larb_imu[i].dev) {
-> >  			/* The 'mmu' may be updated in iommu-attach/detach. */
-> >  			larb->mmu = &smi_iommu->larb_imu[i].mmu;
-> > @@ -159,13 +166,28 @@ void mtk_smi_larb_put(struct device *larbdev)
-> >  	return -ENODEV;
-> >  }
-> >  
-> > -static void mtk_smi_larb_config_port(struct device *dev)
-> > +static void mtk_smi_larb_config_port_mt8173(struct device *dev)
-> >  {
-> >  	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
-> >  
-> >  	writel(*larb->mmu, larb->base + SMI_LARB_MMU_EN);
-> >  }
-> >  
-> > +static void mtk_smi_larb_config_port_mt2712(struct device *dev)
-> > +{
-> > +	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
-> > +	u32 reg;
-> > +	int i;
-> > +
-> > +	for (i = 0; i < 32; i++) {
-> > +		if (*larb->mmu & BIT(i)) {
-> 
-> Seeing this immediately make me think of:
-> 
-> 	unsigned long enable = *larb->mmu;
-> 
-> 	for_each_set_bit(i, &enable, 32) {
-> 		...
-> 	}
-> 
-> but maybe that's overkill :/
-
-Good enough..I will use "u32" to instead of "unsigned long" above.
-
-> 
-> Robin.
-> 
-> > +			reg = readl_relaxed(larb->base +
-> > +					    SMI_LARB_NONSEC_CON(i));
-> > +			reg |= F_MMU_EN;
-> > +			writel(reg, larb->base + SMI_LARB_NONSEC_CON(i));
-> > +		}
-> > +	}
-> > +}
-> >  
-> >  static void mtk_smi_larb_config_port_gen1(struct device *dev)
-> >  {
-> > @@ -211,7 +233,11 @@ static void mtk_smi_larb_config_port_gen1(struct device *dev)
-> >  
-> >  static const struct mtk_smi_larb_gen mtk_smi_larb_mt8173 = {
-> >  	/* mt8173 do not need the port in larb */
-> > -	.config_port = mtk_smi_larb_config_port,
-> > +	.config_port = mtk_smi_larb_config_port_mt8173,
-> > +};
-> > +
-> > +static const struct mtk_smi_larb_gen mtk_smi_larb_mt2712 = {
-> > +	.config_port = mtk_smi_larb_config_port_mt2712,
-> >  };
-> >  
-> >  static const struct mtk_smi_larb_gen mtk_smi_larb_mt2701 = {
-> > @@ -232,6 +258,10 @@ static void mtk_smi_larb_config_port_gen1(struct device *dev)
-> >  		.compatible = "mediatek,mt2701-smi-larb",
-> >  		.data = &mtk_smi_larb_mt2701
-> >  	},
-> > +	{
-> > +		.compatible = "mediatek,mt2712-smi-larb",
-> > +		.data = &mtk_smi_larb_mt2712
-> > +	},
-> >  	{}
-> >  };
-> >  
-> > @@ -318,6 +348,10 @@ static int mtk_smi_larb_remove(struct platform_device *pdev)
-> >  		.compatible = "mediatek,mt2701-smi-common",
-> >  		.data = (void *)MTK_SMI_GEN1
-> >  	},
-> > +	{
-> > +		.compatible = "mediatek,mt2712-smi-common",
-> > +		.data = (void *)MTK_SMI_GEN2
-> > +	},
-> >  	{}
-> >  };
-> >  
-> > 
-> 
+--===============7165033882226333407==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ya5itqvemst3o4e7"
+Content-Disposition: inline
 
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--ya5itqvemst3o4e7
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+> Thanks for the hint and the references. It seems this turned out okay,
+> but I wouldn't dare to introduce such macro horror^Wmagic.
+> I'd rather have all users converted to the _exclusive/_shared function
+> calls and maybe then replace the internal __reset_control_get with
+> Thomas' suggestion.
+
+I didn't follow the discussion closely. Shall I still apply the i2c
+patches?
+
+
+--ya5itqvemst3o4e7
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlmO6f0ACgkQFA3kzBSg
+KbYSDw//cXJWh0R/3hL6jnBlw+6I5dbp1tZ9oKChNr2r4yN5M2w5s5CTcGdaO8dM
+UwF9vYlg/rs2t+2VsPDOLzYDRuZRcNuJMFCAF1mU1ZlPA6JJBLaQNVrKM1EROR67
+oslTA46qVHphTZjUBbPSwe4f1Q+KKfgKqOq/16dLq5yO/ZYrPxjP/rUcurd/haYl
+MIPsJ0KBqI90zV744gYGruOO8aykoeC5TmUNkQLJg9LCqhNH2qEp63PJYyBrsgeZ
+dZKvcZwzqaWI9cNzqAdCD320bBfStL3sF/B4jJzHLHy2JUbFGO9yXxoKaJKr3NpN
+fRhsqqCyF0mfzjxccXR22sioSllqbmy6ZnxpRnnIEi+AQHvbRxCYhy/62qRdk0X1
+XApulPWKQo2cJKBeRGSmSYxL5I1wnJDlNuCEuVUyekGajocLfnEGpPFvs8EB2+tu
+kHP96bLxWIA6iwwYTNwjLEabbQ+Zba8P5evWVJg8soKI2S5KHQoNjV8KWGYLP7XX
++ibLSHV1IqsBDwNzVEOLFGzrP/xsqjMWqhdcfeDELCHA4iKlS/W/eQpxDjuKBWHn
+U8aM26YWAq7W/c5h6pz1my9yYNvRehpQR+lcehb69cCDsBwwBgyj2jwGcDPDsT0O
+rgEaw9CJV07s0eK4D9XLOjFjhzTCUor7Ykz6zknwFYn1l8iL/ck=
+=sXni
+-----END PGP SIGNATURE-----
+
+--ya5itqvemst3o4e7--
+
+
+--===============7165033882226333407==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============7165033882226333407==--
