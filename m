@@ -1,48 +1,73 @@
-From: Jun Gao <jun.gao@mediatek.com>
-Subject: [PATCH v2 1/2] dt-bindings: i2c: Add MediaTek MT7622 i2c binding
-Date: Sat, 12 Aug 2017 10:57:51 +0800
-Message-ID: <1502506672-7620-2-git-send-email-jun.gao@mediatek.com>
-References: <1502506672-7620-1-git-send-email-jun.gao@mediatek.com>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 5/8] iommu/mediatek: Disable iommu clock when system
+ suspend
+Date: Sat, 12 Aug 2017 17:34:32 +0800
+Message-ID: <1502530472.11148.54.camel@mhfsdcap03>
+References: <1502445377-26936-1-git-send-email-yong.wu@mediatek.com>
+         <1502445377-26936-6-git-send-email-yong.wu@mediatek.com>
+         <b451cb47-505e-c300-42fd-9cb73c09ef0b@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502506672-7620-1-git-send-email-jun.gao@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wolfram Sang <wsa@the-dreams.de>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Jun Gao <jun.gao@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <b451cb47-505e-c300-42fd-9cb73c09ef0b-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Arvind Yadav <arvind.yadav.cs-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, cloud.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Jun Gao <jun.gao@mediatek.com>
+On Fri, 2017-08-11 at 16:39 +0530, Arvind Yadav wrote:
+> Hi Youn,
+> 
+> 
+> On Friday 11 August 2017 03:26 PM, Yong Wu wrote:
+> > When system suspend, infra power domain may be off, and the iommu's
+> > clock must be disabled when system off, or the iommu's bclk clock maybe
+> > disabled after system resume.
+> >
+> > Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >   drivers/iommu/mtk_iommu.c | 4 +++-
+> >   1 file changed, 3 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> > index e81ed9a..b7c8e52 100644
+> > --- a/drivers/iommu/mtk_iommu.c
+> > +++ b/drivers/iommu/mtk_iommu.c
+> > @@ -675,6 +675,7 @@ static int __maybe_unused mtk_iommu_suspend(struct device *dev)
+> >   	reg->ctrl_reg = readl_relaxed(base + REG_MMU_CTRL_REG);
+> >   	reg->int_control0 = readl_relaxed(base + REG_MMU_INT_CONTROL0);
+> >   	reg->int_main_control = readl_relaxed(base + REG_MMU_INT_MAIN_CONTROL);
+> > +	clk_disable_unprepare(data->bclk);
+> >   	return 0;
+> >   }
+> >   
+> > @@ -684,6 +685,7 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
+> >   	struct mtk_iommu_suspend_reg *reg = &data->reg;
+> >   	void __iomem *base = data->base;
+> >   
+> > +	clk_prepare_enable(data->bclk);
+> Please handle return value of clk_prepare_enable. It can fail
 
-Add MT7622 i2c binding to binding file and change the compatible
-information formats of all SoCs to the same.
+Thanks for the reminding. I will add it in next version.
 
-Signed-off-by: Jun Gao <jun.gao@mediatek.com>
----
- Documentation/devicetree/bindings/i2c/i2c-mtk.txt | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+> >   	writel_relaxed(reg->standard_axi_mode,
+> >   		       base + REG_MMU_STANDARD_AXI_MODE);
+> >   	writel_relaxed(reg->dcm_dis, base + REG_MMU_DCM_DIS);
+> > @@ -699,7 +701,7 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
+> >   }
+> >   
+> >   static const struct dev_pm_ops mtk_iommu_pm_ops = {
+> > -	SET_SYSTEM_SLEEP_PM_OPS(mtk_iommu_suspend, mtk_iommu_resume)
+> > +	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_iommu_suspend, mtk_iommu_resume)
+> >   };
+> >   
+> >   static const struct of_device_id mtk_iommu_of_ids[] = {
+> ~arvind
 
-diff --git a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-index bd5a7be..71fc0b3 100644
---- a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-+++ b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-@@ -4,11 +4,12 @@ The Mediatek's I2C controller is used to interface with I2C devices.
- 
- Required properties:
-   - compatible: value should be either of the following.
--      "mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek mt2701
--      "mediatek,mt6577-i2c": for i2c compatible with mt6577.
--      "mediatek,mt6589-i2c": for i2c compatible with mt6589.
--      "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for i2c compatible with mt7623.
--      "mediatek,mt8173-i2c": for i2c compatible with mt8173.
-+      "mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek MT2701
-+      "mediatek,mt6577-i2c": for Mediatek MT6577
-+      "mediatek,mt6589-i2c": for Mediatek MT6589
-+      "mediatek,mt7622-i2c": for Mediatek MT7622
-+      "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for Mediatek MT7623
-+      "mediatek,mt8173-i2c": for Mediatek MT8173
-   - reg: physical base address of the controller and dma base, length of memory
-     mapped region.
-   - interrupts: interrupt number to the cpu.
--- 
-1.8.1.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
