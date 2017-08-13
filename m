@@ -1,61 +1,54 @@
-From: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] i2c: mediatek: Add i2c compatible for MediaTek
- MT7622
-Date: Sat, 12 Aug 2017 16:44:11 +0200
-Message-ID: <20170812144411.zqgbncsemzaolldv@ninjato>
-References: <1502506672-7620-1-git-send-email-jun.gao@mediatek.com>
- <1502506672-7620-3-git-send-email-jun.gao@mediatek.com>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: Re: [PATCH] mtd: nand: mtk: fix error return code in
+ mtk_ecc_probe()
+Date: Sun, 13 Aug 2017 10:02:12 +0200
+Message-ID: <20170813100212.57ad0b65@bbrezillon>
+References: <20170809163521.GA4941@embeddedgus>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="77qcbpvljp43fpxy"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1502506672-7620-3-git-send-email-jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170809163521.GA4941@embeddedgus>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Cc: Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Le Wed, 9 Aug 2017 11:35:21 -0500,
+"Gustavo A. R. Silva" <gustavo@embeddedor.com> a écrit :
 
---77qcbpvljp43fpxy
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> platform_get_irq() returns an error code, but the mtk_ecc driver
+> ignores it and always returns -EINVAL. This is not correct and,
+> prevents -EPROBE_DEFER from being propagated properly.
+> 
+> Print and propagate the return value of platform_get_irq on failure.
+> 
+> This issue was detected with the help of Coccinelle.
 
+Applied.
 
-> +static const struct i2c_adapter_quirks mt7622_i2c_quirks = {
-> +	.max_num_msgs = 255,
-> +	.max_write_len = 65535,
-> +	.max_read_len = 65535,
-> +	.max_comb_1st_msg_len = 65535,
-> +	.max_comb_2nd_msg_len = 65535,
-> +};
+Thanks,
 
-That looks like no quirks? Then just leave the quirks pointer below
-empty.
+Boris
 
-
---77qcbpvljp43fpxy
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlmPFDcACgkQFA3kzBSg
-KbbSXw/+L393MKgpXHyMY/WZ6CvLAXdqNttJ0BSmBMBkbdGF7gyJzB1pExS5kiGi
-7AkbCBQKI7hhvC6fVPJL8DQTTjKsgAljJSbk0zu6CpdtxBiHnBVyxR3ZBhq8Mm8P
-gb1whgxVOgcKsrDCiCTlUITqXBfRctFrAr7o0CI0DlJoA0ccqixKzodKHBXFtACT
-uQPknHTgB8iDjRe4ZnW47w0M+smKBKTkKFTCwmZ7/Ie6qlj+BsQshTsNpH0JXEws
-3Q9rh5yv+OyK0g4WB0/aMa3GNXHf/5mcIwidndwtWXxHaGt4zu0TFkysRJN/BSXt
-IqG3dcBMEi6RKubiitK0EZpHL947N+jUwZ2JWvLyvnRgoU4h28wjJQXfdmewsedf
-CEQL3yaVK533CJE45HG/Mn/VI2qj1oNFNOXrieG6y7QpEIkKObqoDAkHdwZlZMd6
-jQmwNi8Omxh0fD8q6+SmxqyWAJ/gQIHwobMHRV79r5l/kKL6hPbsJll5cAPbGYTs
-RwVQULPwyv/gLxqrR5PYIObiyhvOaQIHnZ3Zh6gY9/6TEVKhzTXNGm8WQXidyaVo
-HFdT03x+sPimDTy+5vmyG5PiBQh6R11DL12HZbVkU8W8j/KhxZ8f8rLiQnE4BCtb
-0zTfTlp6xZe3mHQMcq4t56EuKiHLURutNt2UB4wt3Du5m/7OUXw=
-=iZLl
------END PGP SIGNATURE-----
-
---77qcbpvljp43fpxy--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+> Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
+> ---
+>  drivers/mtd/nand/mtk_ecc.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
+> index 6c3a4aa..7f3b065 100644
+> --- a/drivers/mtd/nand/mtk_ecc.c
+> +++ b/drivers/mtd/nand/mtk_ecc.c
+> @@ -464,8 +464,8 @@ static int mtk_ecc_probe(struct platform_device *pdev)
+>  
+>  	irq = platform_get_irq(pdev, 0);
+>  	if (irq < 0) {
+> -		dev_err(dev, "failed to get irq\n");
+> -		return -EINVAL;
+> +		dev_err(dev, "failed to get irq: %d\n", irq);
+> +		return irq;
+>  	}
+>  
+>  	ret = dma_set_mask(dev, DMA_BIT_MASK(32));
