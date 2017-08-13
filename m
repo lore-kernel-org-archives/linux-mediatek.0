@@ -1,54 +1,35 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH] mtd: nand: mtk: fix error return code in
- mtk_ecc_probe()
-Date: Sun, 13 Aug 2017 10:02:12 +0200
-Message-ID: <20170813100212.57ad0b65@bbrezillon>
-References: <20170809163521.GA4941@embeddedgus>
+From: Tejun Heo <tj@kernel.org>
+Subject: Re: [PATCH v3 1/2] ata: mediatek: add support for MediaTek SATA
+ controller
+Date: Sun, 13 Aug 2017 11:38:54 -0700
+Message-ID: <20170813183854.GA1438922@devbig577.frc2.facebook.com>
+References: <cover.1502501342.git.ryder.lee@mediatek.com>
+ <cf04d6bf9cf27911023b962ccd8639f063d32739.1502501342.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170809163521.GA4941@embeddedgus>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Cc: Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-ide-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <cf04d6bf9cf27911023b962ccd8639f063d32739.1502501342.git.ryder.lee@mediatek.com>
+Sender: linux-ide-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Hans de Goede <hdegoede@redhat.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, Long Cheng <long.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Le Wed, 9 Aug 2017 11:35:21 -0500,
-"Gustavo A. R. Silva" <gustavo@embeddedor.com> a écrit :
-
-> platform_get_irq() returns an error code, but the mtk_ecc driver
-> ignores it and always returns -EINVAL. This is not correct and,
-> prevents -EPROBE_DEFER from being propagated properly.
+On Sat, Aug 12, 2017 at 09:31:03AM +0800, Ryder Lee wrote:
+> This adds support the AHCI-compliant Serial ATA controller present
+> on MediaTek SoCs.
 > 
-> Print and propagate the return value of platform_get_irq on failure.
-> 
-> This issue was detected with the help of Coccinelle.
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 
-Applied.
+Looks good to me.
 
-Thanks,
+ Acked-by: Tejun Heo <tj@kernel.org>
 
-Boris
+If others are okay with it, please let me know how the patches should
+be routed.  I can push both through libata, both can be routed through
+dt tree, or we can handle them separately.
 
-> 
-> Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
-> ---
->  drivers/mtd/nand/mtk_ecc.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
-> index 6c3a4aa..7f3b065 100644
-> --- a/drivers/mtd/nand/mtk_ecc.c
-> +++ b/drivers/mtd/nand/mtk_ecc.c
-> @@ -464,8 +464,8 @@ static int mtk_ecc_probe(struct platform_device *pdev)
->  
->  	irq = platform_get_irq(pdev, 0);
->  	if (irq < 0) {
-> -		dev_err(dev, "failed to get irq\n");
-> -		return -EINVAL;
-> +		dev_err(dev, "failed to get irq: %d\n", irq);
-> +		return irq;
->  	}
->  
->  	ret = dma_set_mask(dev, DMA_BIT_MASK(32));
+Thanks.
+
+-- 
+tejun
