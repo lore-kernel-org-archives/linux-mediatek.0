@@ -1,64 +1,66 @@
-From: Jun Gao <jun.gao@mediatek.com>
-Subject: Re: [PATCH 1/2] dt-bindings: i2c: Add MediaTek MT7622 i2c binding
-Date: Mon, 14 Aug 2017 18:05:39 +0800
-Message-ID: <1502705139.930.78.camel@mhfsdcap03>
-References: <1502264631-12572-1-git-send-email-jun.gao@mediatek.com>
-         <1502264631-12572-2-git-send-email-jun.gao@mediatek.com>
-         <3384d424-827a-0a4b-d1d6-7d361d8c8391@gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] dt-bindings: watchdog: mediatek: add support for MediaTek
+ MT7623 and MT7622 SoC
+Date: Mon, 14 Aug 2017 13:17:21 +0200
+Message-ID: <6f81355c-8071-1fc2-fe07-20dfef28e80e@gmail.com>
+References: <b0058a0a9f948f17edf3c1a476665c715922ebc3.1501830388.git.sean.wang@mediatek.com>
+ <20170810174343.7pejhh7wxkcaf3zj@rob-hp-laptop>
+ <1502418991.19230.1.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <3384d424-827a-0a4b-d1d6-7d361d8c8391@gmail.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Wolfram Sang <wsa@the-dreams.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1502418991.19230.1.camel@mtkswgap22>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2017-08-14 at 11:36 +0200, Matthias Brugger wrote:
-> 
-> On 08/09/2017 09:43 AM, Jun Gao wrote:
-> > From: Jun Gao <jun.gao@mediatek.com>
-> > 
-> > Add MT7622 i2c binding to binding file. Compare to MT8173 i2c
-> > controller, MT7622 limit message size to 255, and not support
-> > 4GB DMA mode.
-> > 
-> > Signed-off-by: Jun Gao <jun.gao@mediatek.com>
-> > ---
-> >   Documentation/devicetree/bindings/i2c/i2c-mtk.txt | 11 ++++++-----
-> >   1 file changed, 6 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-> > index bd5a7be..ff9ac61 100644
-> > --- a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-> > +++ b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-> > @@ -4,11 +4,12 @@ The Mediatek's I2C controller is used to interface with I2C devices.
-> >   
-> >   Required properties:
-> >     - compatible: value should be either of the following.
-> > -      "mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek mt2701
-> > -      "mediatek,mt6577-i2c": for i2c compatible with mt6577.
-> > -      "mediatek,mt6589-i2c": for i2c compatible with mt6589.
-> > -      "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for i2c compatible with mt7623.
-> > -      "mediatek,mt8173-i2c": for i2c compatible with mt8173.
-> > +	"mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek MT2701
-> > +	"mediatek,mt6577-i2c": for Mediatek MT6577
-> > +	"mediatek,mt6589-i2c": for Mediatek MT6589
-> > +	"mediatek,mt7622-i2c": for Mediatek MT7622
-> > +	"mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for Mediatek MT7623
-> > +	"mediatek,mt8173-i2c": for Mediatek MT8173
-> >     - reg: physical base address of the controller and dma base, length of memory
-> >       mapped region.
-> >     - interrupts: interrupt number to the cpu.
-> > 
-> 
-> In the next series, could you please make sure not to change the indentation.
-> 
-> Thanks a lot,
-> Matthias
 
-Please review [PATCH v2 1/2], I will not change the indentation any
-more. Thanks!
 
-Jun
+On 08/11/2017 04:36 AM, Sean Wang wrote:
+> On Thu, 2017-08-10 at 12:43 -0500, Rob Herring wrote:
+>> On Fri, Aug 04, 2017 at 03:14:07PM +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+>>> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>>
+>>> This updates dt-binding documentation for MediaTek MT7622 and
+>>> MT7623 SoC. For the both SoCs supported all rely on the fallback
+>>> binding of the case with "mediatek,mt6589-wdt".
+>>>
+>>> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>> ---
+>>>   Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 2 ++
+>>>   1 file changed, 2 insertions(+)
+>>
+>> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> 
+> Hi, Rob
+> 
+> thanks a lot
+> 
+> can the patch go through your tree?
+> 
+
+ From the MAINTAINERS file:
+WATCHDOG DEVICE DRIVERS
+M:      Wim Van Sebroeck <wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org>
+R:      Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+L:      linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+W:      http://www.linux-watchdog.org/
+T:      git git://www.linux-watchdog.org/linux-watchdog.git
+S:      Maintained
+F:      Documentation/devicetree/bindings/watchdog/
+F:      Documentation/watchdog/
+F:      drivers/watchdog/
+F:      include/linux/watchdog.h
+F:      include/uapi/linux/watchdog.h
+
+The best will be to resend and add the email addresses/lists
+
+Regards,
+Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
