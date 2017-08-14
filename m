@@ -1,35 +1,33 @@
-From: Tejun Heo <tj@kernel.org>
-Subject: Re: [PATCH v3 1/2] ata: mediatek: add support for MediaTek SATA
- controller
-Date: Sun, 13 Aug 2017 11:38:54 -0700
-Message-ID: <20170813183854.GA1438922@devbig577.frc2.facebook.com>
-References: <cover.1502501342.git.ryder.lee@mediatek.com>
- <cf04d6bf9cf27911023b962ccd8639f063d32739.1502501342.git.ryder.lee@mediatek.com>
+From: Jun Gao <jun.gao@mediatek.com>
+Subject: Re: [PATCH v2 2/2] i2c: mediatek: Add i2c compatible for MediaTek
+ MT7622
+Date: Mon, 14 Aug 2017 09:36:56 +0800
+Message-ID: <1502674616.930.74.camel@mhfsdcap03>
+References: <1502506672-7620-1-git-send-email-jun.gao@mediatek.com>
+         <1502506672-7620-3-git-send-email-jun.gao@mediatek.com>
+         <20170812144411.zqgbncsemzaolldv@ninjato>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-ide-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <cf04d6bf9cf27911023b962ccd8639f063d32739.1502501342.git.ryder.lee@mediatek.com>
-Sender: linux-ide-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Hans de Goede <hdegoede@redhat.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, Long Cheng <long.cheng@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170812144411.zqgbncsemzaolldv@ninjato>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Aug 12, 2017 at 09:31:03AM +0800, Ryder Lee wrote:
-> This adds support the AHCI-compliant Serial ATA controller present
-> on MediaTek SoCs.
+On Sat, 2017-08-12 at 16:44 +0200, Wolfram Sang wrote:
+> > +static const struct i2c_adapter_quirks mt7622_i2c_quirks = {
+> > +	.max_num_msgs = 255,
+> > +	.max_write_len = 65535,
+> > +	.max_read_len = 65535,
+> > +	.max_comb_1st_msg_len = 65535,
+> > +	.max_comb_2nd_msg_len = 65535,
+> > +};
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> That looks like no quirks? Then just leave the quirks pointer below
+> empty.
+> 
+Compare to MT8173 i2c controller, MT7622 limits message numbers to 255.
 
-Looks good to me.
-
- Acked-by: Tejun Heo <tj@kernel.org>
-
-If others are okay with it, please let me know how the patches should
-be routed.  I can push both through libata, both can be routed through
-dt tree, or we can handle them separately.
-
-Thanks.
-
--- 
-tejun
+Jun
