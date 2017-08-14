@@ -1,42 +1,66 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v3 1/2] ata: mediatek: add support for MediaTek SATA
- controller
-Date: Mon, 14 Aug 2017 13:41:13 +0200
-Message-ID: <b02142f2-c4be-73b2-3165-288ac10b0db3@gmail.com>
-References: <cover.1502501342.git.ryder.lee@mediatek.com>
- <cf04d6bf9cf27911023b962ccd8639f063d32739.1502501342.git.ryder.lee@mediatek.com>
- <20170813183854.GA1438922@devbig577.frc2.facebook.com>
+From: <honghui.zhang@mediatek.com>
+Subject: [PATCH v2 1/3] PCI: mediatek: Fix return value in case of error
+Date: Mon, 14 Aug 2017 21:04:26 +0800
+Message-ID: <1502715868-17651-2-git-send-email-honghui.zhang@mediatek.com>
+References: <1502715868-17651-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170813183854.GA1438922@devbig577.frc2.facebook.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tejun Heo <tj@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>
-Cc: devicetree@vger.kernel.org, Hans de Goede <hdegoede@redhat.com>, linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Long Cheng <long.cheng@mediatek.com>
+Content-Type: text/plain
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <1502715868-17651-1-git-send-email-honghui.zhang@mediatek.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com
+Cc: honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
+From: Honghui Zhang <honghui.zhang@mediatek.com>
 
+In commit ae02a6dda285 ("PCI: mediatek: Add controller support for MT2712
+and MT7622"), the function 'mtk_pcie_init_irq_domain', the pattern used to
+check and return error is:
 
-On 08/13/2017 08:38 PM, Tejun Heo wrote:
-> On Sat, Aug 12, 2017 at 09:31:03AM +0800, Ryder Lee wrote:
->> This adds support the AHCI-compliant Serial ATA controller present
->> on MediaTek SoCs.
->>
->> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> 
-> Looks good to me.
-> 
->   Acked-by: Tejun Heo <tj@kernel.org>
-> 
-> If others are okay with it, please let me know how the patches should
-> be routed.  I can push both through libata, both can be routed through
-> dt tree, or we can handle them separately.
-> 
+  if (!var) {
+    dev_err(...);
+    return PTR_ERR(var);
+  }
 
-Please take the device tree bindings through your tree as well.
-You might want to wait for a Ack from a device tree maintainer though.
+The return value in such case is always 0, change it to return -ENODEV
+instead. And if error was returned from this function, the error should
+be returned to upper layer instead of -ENODEV.
 
-Thanks,
-Matthias
+Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+---
+ drivers/pci/host/pcie-mediatek.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+index 44e7885..946c056 100644
+--- a/drivers/pci/host/pcie-mediatek.c
++++ b/drivers/pci/host/pcie-mediatek.c
+@@ -450,14 +450,14 @@ static int mtk_pcie_init_irq_domain(struct mtk_pcie_port *port,
+ 	pcie_intc_node = of_get_next_child(node, NULL);
+ 	if (!pcie_intc_node) {
+ 		dev_err(dev, "no PCIe Intc node found\n");
+-		return PTR_ERR(pcie_intc_node);
++		return -ENODEV;
+ 	}
+ 
+ 	port->irq_domain = irq_domain_add_linear(pcie_intc_node, INTX_NUM,
+ 						 &intx_domain_ops, port);
+ 	if (!port->irq_domain) {
+ 		dev_err(dev, "failed to get INTx IRQ domain\n");
+-		return PTR_ERR(port->irq_domain);
++		return -ENODEV;
+ 	}
+ 
+ 	return 0;
+@@ -502,7 +502,7 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
+ 	err = mtk_pcie_init_irq_domain(port, node);
+ 	if (err) {
+ 		dev_err(dev, "failed to init PCIe legacy IRQ domain\n");
+-		return -ENODEV;
++		return err;
+ 	}
+ 
+ 	return 0;
+-- 
+2.6.4
