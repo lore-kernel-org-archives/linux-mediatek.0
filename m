@@ -1,33 +1,72 @@
-From: Jun Gao <jun.gao@mediatek.com>
-Subject: Re: [PATCH v2 2/2] i2c: mediatek: Add i2c compatible for MediaTek
- MT7622
-Date: Mon, 14 Aug 2017 09:36:56 +0800
-Message-ID: <1502674616.930.74.camel@mhfsdcap03>
-References: <1502506672-7620-1-git-send-email-jun.gao@mediatek.com>
-         <1502506672-7620-3-git-send-email-jun.gao@mediatek.com>
-         <20170812144411.zqgbncsemzaolldv@ninjato>
+From: honghui.zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] PCI: mediatek: add msi support for mt2712 and mt7622
+Date: Mon, 14 Aug 2017 09:12:35 +0800
+Message-ID: <1502673155.7754.1.camel@mhfsdcap03>
+References: <1502454469-29230-1-git-send-email-honghui.zhang@mediatek.com>
+ <1502499441.31707.6.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170812144411.zqgbncsemzaolldv@ninjato>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wolfram Sang <wsa@the-dreams.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1502499441.31707.6.camel@mtkswgap22>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 2017-08-12 at 16:44 +0200, Wolfram Sang wrote:
-> > +static const struct i2c_adapter_quirks mt7622_i2c_quirks = {
-> > +	.max_num_msgs = 255,
-> > +	.max_write_len = 65535,
-> > +	.max_read_len = 65535,
-> > +	.max_comb_1st_msg_len = 65535,
-> > +	.max_comb_2nd_msg_len = 65535,
-> > +};
+On Sat, 2017-08-12 at 08:57 +0800, Ryder Lee wrote:
+> Hi Honghui,
 > 
-> That looks like no quirks? Then just leave the quirks pointer below
-> empty.
+> On Fri, 2017-08-11 at 20:27 +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> ...
+> > +static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
+> > +{
+> > +	u32 val;
+> > +
+> > +	val = lower_32_bits((u64)(port->base + PCIE_MSI_VECTOR));
+> > +	writel(val, port->base + PCIE_IMSI_ADDR);
+> > +
+> > +	val = readl(port->base + PCIE_INT_MASK);
+> > +	val &= ~MSI_MASK;
+> > +	writel(val, port->base + PCIE_INT_MASK);
+> > +}
+> > +
+> >  static int mtk_pcie_intx_map(struct irq_domain *domain, unsigned int irq,
+> >  			     irq_hw_number_t hwirq)
+> >  {
+> > @@ -460,6 +574,18 @@ static int mtk_pcie_init_irq_domain(struct mtk_pcie_port *port,
+> >  		return PTR_ERR(port->irq_domain);
+> >  	}
+> >  
+> > +	/* Setup MSI */
+> > +	if (IS_ENABLED(CONFIG_PCI_MSI)) {
+> > +		port->msi_domain = irq_domain_add_linear(node, MTK_MSI_IRQS_NUM,
+> > +							 &msi_domain_ops,
+> > +							 &mtk_pcie_msi_chip);
+> > +		if (!port->msi_domain) {
+> > +			dev_err(dev, "Failed to get a MSI IRQ domain\n");
+> > +			return PTR_ERR(port->msi_domain);
 > 
-Compare to MT8173 i2c controller, MT7622 limits message numbers to 255.
+> Just return -ENOMEM. PTR_ERR(NULL) will cause a static checker warning.
 
-Jun
+I will fix this in the next version.
+
+Thanks.
+> 
+> > +		}
+> > +		mtk_pcie_enable_msi(port);
+> > +	}
+> > +
+> >  	return 0;
+> >  }
+> 
+> Ryder
+> 
