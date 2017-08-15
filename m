@@ -1,99 +1,238 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 18/19] crypto: mediatek: move to generic async
- completion
-Date: Tue, 15 Aug 2017 13:13:58 +0800
-Message-ID: <1502774038.962.2.camel@mtkswgap22>
-References: <1502724094-23305-1-git-send-email-gilad@benyossef.com>
-         <1502724094-23305-19-git-send-email-gilad@benyossef.com>
+From: <weiyi.lu@mediatek.com>
+Subject: [PATCH v1 6/9] soc: mediatek: add bus protection extend API
+Date: Tue, 15 Aug 2017 14:42:47 +0800
+Message-ID: <1502779370-30150-7-git-send-email-weiyi.lu@mediatek.com>
+References: <1502779370-30150-1-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-cifs-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1502724094-23305-19-git-send-email-gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org>
-Sender: linux-cifs-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Gilad Ben-Yossef <gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org>
-Cc: Herbert Xu <herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Jonathan Corbet <corbet-T1hC0tSOHrs@public.gmane.org>, David Howells <dhowells-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Tom Lendacky <thomas.lendacky-5C7GfCeVMHo@public.gmane.org>, Gary Hook <gary.hook-5C7GfCeVMHo@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Arnaud Ebalard <arno-LkuqDEemtHBg9hUCZPvPmw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alasdair Kergon <agk-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Mike Snitzer <snitzer-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, dm-devel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, Shaohua Li <shli-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Steve French <sfrench-eUNUBHrolfbYtjvyW6yDsg@public.gmane.org>, "Theodore Y. Ts'o" <tytso-3s7WtUTddSA@public.gmane.org>, Jaegeuk Kim <jaegeuk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mimi Zohar <zohar-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org>, Dmitry Kasatkin <dmitry.kasatkin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, James Morris <james.l.morris-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "Serge E. Hallyn" <serge-A9i7LUbDfNHQT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1502779370-30150-1-git-send-email-weiyi.lu@mediatek.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2017-08-14 at 18:21 +0300, Gilad Ben-Yossef wrote:
-> The mediatek driver starts several async crypto ops and waits for their
-> completions. Move it over to generic code doing the same.
-> 
-> Signed-off-by: Gilad Ben-Yossef <gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org>
-> ---
+From: Weiyi Lu <weiyi.lu@mediatek.com>
 
-Acked-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+MT2712 add "set/clear" bus control register to each control register set
+instead of providing only one "enable" control register, we could avoid
+the read-modify-write racing by using extend API with such new design.
+Also there exists the second bus control register set, we could not access
+this setting via original API rather than the extend API.
+By improving the mtk-infracfg bus protection implementation to
+support set/clear bus protection control method and second
+register set while power on/off scpsys.
 
->  drivers/crypto/mediatek/mtk-aes.c | 31 +++++--------------------------
->  1 file changed, 5 insertions(+), 26 deletions(-)
-> 
-> diff --git a/drivers/crypto/mediatek/mtk-aes.c b/drivers/crypto/mediatek/mtk-aes.c
-> index 9e845e8..e2c7c95 100644
-> --- a/drivers/crypto/mediatek/mtk-aes.c
-> +++ b/drivers/crypto/mediatek/mtk-aes.c
-> @@ -137,11 +137,6 @@ struct mtk_aes_gcm_ctx {
->  	struct crypto_skcipher *ctr;
->  };
->  
-> -struct mtk_aes_gcm_setkey_result {
-> -	int err;
-> -	struct completion completion;
-> -};
-> -
->  struct mtk_aes_drv {
->  	struct list_head dev_list;
->  	/* Device list lock */
-> @@ -936,17 +931,6 @@ static int mtk_aes_gcm_crypt(struct aead_request *req, u64 mode)
->  				    &req->base);
->  }
->  
-> -static void mtk_gcm_setkey_done(struct crypto_async_request *req, int err)
-> -{
-> -	struct mtk_aes_gcm_setkey_result *result = req->data;
-> -
-> -	if (err == -EINPROGRESS)
-> -		return;
-> -
-> -	result->err = err;
-> -	complete(&result->completion);
-> -}
-> -
->  /*
->   * Because of the hardware limitation, we need to pre-calculate key(H)
->   * for the GHASH operation. The result of the encryption operation
-> @@ -962,7 +946,7 @@ static int mtk_aes_gcm_setkey(struct crypto_aead *aead, const u8 *key,
->  		u32 hash[4];
->  		u8 iv[8];
->  
-> -		struct mtk_aes_gcm_setkey_result result;
-> +		struct crypto_wait wait;
->  
->  		struct scatterlist sg[1];
->  		struct skcipher_request req;
-> @@ -1002,22 +986,17 @@ static int mtk_aes_gcm_setkey(struct crypto_aead *aead, const u8 *key,
->  	if (!data)
->  		return -ENOMEM;
->  
-> -	init_completion(&data->result.completion);
-> +	crypto_init_wait(&data->wait);
->  	sg_init_one(data->sg, &data->hash, AES_BLOCK_SIZE);
->  	skcipher_request_set_tfm(&data->req, ctr);
->  	skcipher_request_set_callback(&data->req, CRYPTO_TFM_REQ_MAY_SLEEP |
->  				      CRYPTO_TFM_REQ_MAY_BACKLOG,
-> -				      mtk_gcm_setkey_done, &data->result);
-> +				      crypto_req_done, &data->wait);
->  	skcipher_request_set_crypt(&data->req, data->sg, data->sg,
->  				   AES_BLOCK_SIZE, data->iv);
->  
-> -	err = crypto_skcipher_encrypt(&data->req);
-> -	if (err == -EINPROGRESS || err == -EBUSY) {
-> -		err = wait_for_completion_interruptible(
-> -			&data->result.completion);
-> -		if (!err)
-> -			err = data->result.err;
-> -	}
-> +	err = crypto_wait_req(crypto_skcipher_encrypt(&data->req),
-> +			      &data->wait);
->  	if (err)
->  		goto out;
->  
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-infracfg.c   | 90 +++++++++++++++++++++++++++++++++--
+ drivers/soc/mediatek/mtk-scpsys.c     | 36 ++++++++++++--
+ include/linux/soc/mediatek/infracfg.h | 14 +++++-
+ 3 files changed, 132 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
+index dba3055..63898e4 100644
+--- a/drivers/soc/mediatek/mtk-infracfg.c
++++ b/drivers/soc/mediatek/mtk-infracfg.c
+@@ -17,9 +17,6 @@
+ #include <linux/soc/mediatek/infracfg.h>
+ #include <asm/processor.h>
+ 
+-#define INFRA_TOPAXI_PROTECTEN		0x0220
+-#define INFRA_TOPAXI_PROTECTSTA1	0x0228
+-
+ /**
+  * mtk_infracfg_set_bus_protection - enable bus protection
+  * @regmap: The infracfg regmap
+@@ -89,3 +86,90 @@ int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask)
+ 
+ 	return 0;
+ }
++
++/**
++ * mtk_infracfg_set_bus_protection_ext - enable bus protection
++ * @regmap: The infracfg regmap
++ * @mask: The mask containing the protection bits to be enabled.
++ * @reg_set: The register used to enable protection bits.
++ * @reg_sta: The register used to check the protection bits are enabled.
++ * @reg_en: The register used to enable protection bits when there doesn't
++ *          exist reg_set.
++ *
++ * This function enables the bus protection bits for disabled power
++ * domains so that the system does not hang when some unit accesses the
++ * bus while in power down.
++ */
++int mtk_infracfg_set_bus_protection_ext(struct regmap *infracfg, u32 mask,
++		u32 reg_set, u32 reg_sta, u32 reg_en)
++{
++	unsigned long expired;
++	u32 val;
++	int ret;
++
++	if (reg_set)
++		regmap_write(infracfg, reg_set, mask);
++	else
++		regmap_update_bits(infracfg, reg_en, mask, mask);
++
++	expired = jiffies + HZ;
++
++	while (1) {
++		ret = regmap_read(infracfg, reg_sta, &val);
++		if (ret)
++			return ret;
++
++		if ((val & mask) == mask)
++			break;
++
++		cpu_relax();
++		if (time_after(jiffies, expired))
++			return -EIO;
++	}
++
++	return 0;
++}
++
++/**
++ * mtk_infracfg_clear_bus_protection_ext - disable bus protection
++ * @regmap: The infracfg regmap
++ * @mask: The mask containing the protection bits to be disabled.
++ * @reg_clr: The register used to disable protection bits.
++ * @reg_sta: The register used to check the protection bits are disabled.
++ * @reg_en: The register used to disable protection bits when there doesn't
++ *          exist reg_clr.
++ *
++ * This function disables the bus protection bits previously enabled with
++ * mtk_infracfg_set_bus_protection.
++ */
++
++int mtk_infracfg_clear_bus_protection_ext(struct regmap *infracfg, u32 mask,
++		u32 reg_clr, u32 reg_sta, u32 reg_en)
++{
++	unsigned long expired;
++	int ret;
++
++	if (reg_clr)
++		regmap_write(infracfg, reg_clr, mask);
++	else
++		regmap_update_bits(infracfg, reg_en, mask, 0);
++
++	expired = jiffies + HZ;
++
++	while (1) {
++		u32 val;
++
++		ret = regmap_read(infracfg, reg_sta, &val);
++		if (ret)
++			return ret;
++
++		if (!(val & mask))
++			break;
++
++		cpu_relax();
++		if (time_after(jiffies, expired))
++			return -EIO;
++	}
++
++	return 0;
++}
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index ceb2cc4..b181ef2 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -89,6 +89,13 @@ enum clk_id {
+ 
+ #define MAX_CLKS	2
+ 
++struct bus_prot_ext {
++	u32 set_ofs;
++	u32 clr_ofs;
++	u32 en_ofs;
++	u32 sta_ofs;
++};
++
+ struct scp_domain_data {
+ 	const char *name;
+ 	u32 sta_mask;
+@@ -96,6 +103,7 @@ struct scp_domain_data {
+ 	u32 sram_pdn_bits;
+ 	u32 sram_pdn_ack_bits;
+ 	u32 bus_prot_mask;
++	struct bus_prot_ext bp_ext;
+ 	enum clk_id clk_id[MAX_CLKS];
+ 	bool active_wakeup;
+ };
+@@ -228,8 +236,18 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	}
+ 
+ 	if (scpd->data->bus_prot_mask) {
+-		ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
+-				scpd->data->bus_prot_mask);
++		if (((scpd->data->bp_ext.set_ofs && scpd->data->bp_ext.clr_ofs)
++			|| scpd->data->bp_ext.en_ofs)
++			&& scpd->data->bp_ext.sta_ofs)
++			ret = mtk_infracfg_clear_bus_protection_ext(
++					scp->infracfg,
++					scpd->data->bus_prot_mask,
++					scpd->data->bp_ext.clr_ofs,
++					scpd->data->bp_ext.sta_ofs,
++					scpd->data->bp_ext.en_ofs);
++		else
++			ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
++					scpd->data->bus_prot_mask);
+ 		if (ret)
+ 			goto err_pwr_ack;
+ 	}
+@@ -263,8 +281,18 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 	int i;
+ 
+ 	if (scpd->data->bus_prot_mask) {
+-		ret = mtk_infracfg_set_bus_protection(scp->infracfg,
+-				scpd->data->bus_prot_mask);
++		if (((scpd->data->bp_ext.set_ofs && scpd->data->bp_ext.clr_ofs)
++			|| scpd->data->bp_ext.en_ofs)
++			&& scpd->data->bp_ext.sta_ofs)
++			ret = mtk_infracfg_set_bus_protection_ext(
++					scp->infracfg,
++					scpd->data->bus_prot_mask,
++					scpd->data->bp_ext.set_ofs,
++					scpd->data->bp_ext.sta_ofs,
++					scpd->data->bp_ext.en_ofs);
++		else
++			ret = mtk_infracfg_set_bus_protection(scp->infracfg,
++					scpd->data->bus_prot_mask);
+ 		if (ret)
+ 			goto out;
+ 	}
+diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
+index a5714e9..d3fbb45 100644
+--- a/include/linux/soc/mediatek/infracfg.h
++++ b/include/linux/soc/mediatek/infracfg.h
+@@ -1,6 +1,15 @@
+ #ifndef __SOC_MEDIATEK_INFRACFG_H
+ #define __SOC_MEDIATEK_INFRACFG_H
+ 
++#define INFRA_TOPAXI_PROTECTEN		0x0220
++#define INFRA_TOPAXI_PROTECTSTA1	0x0228
++#define INFRA_TOPAXI_PROTECTEN1		0x0250
++#define INFRA_TOPAXI_PROTECTSTA3	0x0258
++#define INFRA_TOPAXI_PROTECTEN_SET	0x0260
++#define INFRA_TOPAXI_PROTECTEN_CLR	0x0264
++#define INFRA_TOPAXI_PROTECTEN1_SET	0x0270
++#define INFRA_TOPAXI_PROTECTEN1_CLR	0x0274
++
+ #define MT8173_TOP_AXI_PROT_EN_MCI_M2		BIT(0)
+ #define MT8173_TOP_AXI_PROT_EN_MM_M0		BIT(1)
+ #define MT8173_TOP_AXI_PROT_EN_MM_M1		BIT(2)
+@@ -22,5 +31,8 @@
+ 
+ int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask);
+ int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask);
+-
++int mtk_infracfg_set_bus_protection_ext(struct regmap *infracfg, u32 mask,
++		u32 reg_set, u32 reg_sta, u32 reg_en);
++int mtk_infracfg_clear_bus_protection_ext(struct regmap *infracfg, u32 mask,
++		u32 reg_clr, u32 reg_sta, u32 reg_en);
+ #endif /* __SOC_MEDIATEK_INFRACFG_H */
+-- 
+1.9.1
+
