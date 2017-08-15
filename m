@@ -1,61 +1,37 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH v5 04/19] crypto: marvell/cesa: remove redundant backlog
- checks on EBUSY
-Date: Tue, 15 Aug 2017 10:16:29 +0200
-Message-ID: <20170815101629.7d323845@bbrezillon>
-References: <1502724094-23305-1-git-send-email-gilad@benyossef.com>
-        <1502724094-23305-5-git-send-email-gilad@benyossef.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v3 1/9] dt-bindings: arm: mediatek: add MT7622 string to the PMIC wrapper doc
+Date: Tue, 15 Aug 2017 17:09:13 +0800
+Message-ID: <d019443230d1a6b64c8449aed078237c1ac4bd9b.1502779753.git.sean.wang@mediatek.com>
+References: <cover.1502779753.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-security-module-owner@vger.kernel.org>
-In-Reply-To: <1502724094-23305-5-git-send-email-gilad@benyossef.com>
-Sender: owner-linux-security-module@vger.kernel.org
-To: Gilad Ben-Yossef <gilad@benyossef.com>
-Cc: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, Jonathan Corbet <corbet@lwn.net>, David Howells <dhowells@redhat.com>, Tom Lendacky <thomas.lendacky@amd.com>, Gary Hook <gary.hook@amd.com>, Arnaud Ebalard <arno@natisbad.org>, Matthias Brugger <matthias.bgg@gmail.com>, Alasdair Kergon <agk@redhat.com>, Mike Snitzer <snitzer@redhat.com>, dm-devel@redhat.com, Shaohua Li <shli@kernel.org>, Steve French <sfrench@samba.org>, "Theodore Y. Ts'o" <tytso@mit.edu>, Jaegeuk Kim <jaegeuk@kernel.org>, Mimi Zohar <zohar@linux.vnet.ibm.com>, Dmitry Kasatkin <dmitry.kasatkin@gmail.com>, James Morris <james.l.morris@oracle.com>, "Serge E. Hallyn" <serge@hallyn.com>, linux-crypto@vger.kernel.org, linux-doc@vger.kernel.org, linux-kerne
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1502779753.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, lgirdwood@gmail.com, broonie@kernel.org, jamesjj.liao@mediatek.com, henryc.chen@mediatek.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: chen.zhong@mediatek.com, chenglin.xu@mediatek.com, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Le Mon, 14 Aug 2017 18:21:14 +0300,
-Gilad Ben-Yossef <gilad@benyossef.com> a écrit :
+From: Sean Wang <sean.wang@mediatek.com>
 
-> Now that -EBUSY return code only indicates backlog queueing
-> we can safely remove the now redundant check for the
-> CRYPTO_TFM_REQ_MAY_BACKLOG flag when -EBUSY is returned.
-> 
-> Signed-off-by: Gilad Ben-Yossef <gilad@benyossef.com>
+Signed-off-by: Chenglin Xu <chenglin.xu@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-Acked-by: Boris Brezillon <boris.brezillon@free-electrons.com>
-
-> ---
->  drivers/crypto/marvell/cesa.c | 3 +--
->  drivers/crypto/marvell/cesa.h | 2 +-
->  2 files changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/crypto/marvell/cesa.c b/drivers/crypto/marvell/cesa.c
-> index 6e7a5c7..269737f 100644
-> --- a/drivers/crypto/marvell/cesa.c
-> +++ b/drivers/crypto/marvell/cesa.c
-> @@ -183,8 +183,7 @@ int mv_cesa_queue_req(struct crypto_async_request *req,
->  	spin_lock_bh(&engine->lock);
->  	ret = crypto_enqueue_request(&engine->queue, req);
->  	if ((mv_cesa_req_get_type(creq) == CESA_DMA_REQ) &&
-> -	    (ret == -EINPROGRESS ||
-> -	    (ret == -EBUSY && req->flags & CRYPTO_TFM_REQ_MAY_BACKLOG)))
-> +	    (ret == -EINPROGRESS || ret == -EBUSY)
->  		mv_cesa_tdma_chain(engine, creq);
->  	spin_unlock_bh(&engine->lock);
->  
-> diff --git a/drivers/crypto/marvell/cesa.h b/drivers/crypto/marvell/cesa.h
-> index b7872f6..63c8457 100644
-> --- a/drivers/crypto/marvell/cesa.h
-> +++ b/drivers/crypto/marvell/cesa.h
-> @@ -763,7 +763,7 @@ static inline int mv_cesa_req_needs_cleanup(struct crypto_async_request *req,
->  	 * the backlog and will be processed later. There's no need to
->  	 * clean it up.
->  	 */
-> -	if (ret == -EBUSY && req->flags & CRYPTO_TFM_REQ_MAY_BACKLOG)
-> +	if (ret == -EBUSY)
->  		return false;
->  
->  	/* Request wasn't queued, we need to clean it up */
-
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+index 107700d..bd97f22 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
++++ b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+@@ -19,6 +19,7 @@ IP Pairing
+ Required properties in pwrap device node.
+ - compatible:
+ 	"mediatek,mt2701-pwrap" for MT2701/7623 SoCs
++	"mediatek,mt7622-pwrap" for MT7622 SoCs
+ 	"mediatek,mt8135-pwrap" for MT8135 SoCs
+ 	"mediatek,mt8173-pwrap" for MT8173 SoCs
+ - interrupts: IRQ for pwrap in SOC
+-- 
+2.7.4
