@@ -1,180 +1,65 @@
-From: Harvey Hunt <harvey.hunt@imgtec.com>
-Subject: [PATCH] MIPS: dts: ralink: Add Mediatek MT7628A SoC
-Date: Tue, 15 Aug 2017 17:28:50 +0100
-Message-ID: <1502814530-40604-1-git-send-email-harvey.hunt@imgtec.com>
-Mime-Version: 1.0
-Content-Type: text/plain
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "regulator: add fixes with MT6311 dt-bindings shouldn't reference driver" to the regulator tree
+Date: Tue, 15 Aug 2017 18:15:45 +0100
+Message-ID: <E1dhfRR-0003m9-ET@debutante>
+References: <8b3da7d4b5aefa34b5c330bae4582c2b44df8a72.1502790160.git.sean.wang@mediatek.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <8b3da7d4b5aefa34b5c330bae4582c2b44df8a72.1502790160.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, ralf@linux-mips.org
-Cc: Harvey Hunt <harvey.hunt@imgtec.com>, John Crispin <john@phrozen.org>, linux-mips@linux-mips.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: Mark Brown <broonie@kernel.org>, robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, lgirdwood@gmail.combroonie@kernel.org, jamesjj.liao@mediatek.com, henryc.chen@mediatek.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, chen.zhong@mediatek.com, chenglin.xu@mediatek.com, linux-kernel@vger.kernel.orglinux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The MT7628A is the successor to the MT7620 and pin compatible with the
-MT7688A, although the latter supports only a 1T1R antenna rather than
-a 2T2R antenna.
+The patch
 
-This commit adds support for the following features:
+   regulator: add fixes with MT6311 dt-bindings shouldn't reference driver
 
-- UART
-- USB PHY
-- EHCI
-- Interrupt controller
-- System controller
-- Memory controller
-- Reset controller
+has been applied to the regulator tree at
 
-Signed-off-by: Harvey Hunt <harvey.hunt@imgtec.com>
-Cc: John Crispin <john@phrozen.org>
-Cc: linux-mips@linux-mips.org 
-Cc: devicetree@vger.kernel.org 
-Cc: linux-kernel@vger.kernel.org 
-Cc: linux-mediatek@lists.infradead.org 
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From 9a843ed483f49044461020601d6f98a336523075 Mon Sep 17 00:00:00 2001
+From: Sean Wang <sean.wang@mediatek.com>
+Date: Tue, 15 Aug 2017 17:46:26 +0800
+Subject: [PATCH] regulator: add fixes with MT6311 dt-bindings shouldn't
+ reference driver
+
+DT bindings shouldn't reference drivers and they should be OS-agnostic.
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- Documentation/devicetree/bindings/mips/ralink.txt |   1 +
- arch/mips/boot/dts/ralink/mt7628a.dtsi            | 125 ++++++++++++++++++++++
- 2 files changed, 126 insertions(+)
- create mode 100644 arch/mips/boot/dts/ralink/mt7628a.dtsi
+ Documentation/devicetree/bindings/regulator/mt6311-regulator.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/mips/ralink.txt b/Documentation/devicetree/bindings/mips/ralink.txt
-index b35a8d0..a16e8d7 100644
---- a/Documentation/devicetree/bindings/mips/ralink.txt
-+++ b/Documentation/devicetree/bindings/mips/ralink.txt
-@@ -15,3 +15,4 @@ value must be one of the following values:
-   ralink,rt5350-soc
-   ralink,mt7620a-soc
-   ralink,mt7620n-soc
-+  ralink,mt7628a-soc
-diff --git a/arch/mips/boot/dts/ralink/mt7628a.dtsi b/arch/mips/boot/dts/ralink/mt7628a.dtsi
-new file mode 100644
-index 0000000..8461fe9
---- /dev/null
-+++ b/arch/mips/boot/dts/ralink/mt7628a.dtsi
-@@ -0,0 +1,125 @@
-+/ {
-+	#address-cells = <1>;
-+	#size-cells = <1>;
-+	compatible = "ralink,mt7628a-soc";
-+
-+	cpus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		cpu@0 {
-+			compatible = "mti,mips24KEc";
-+			device_type = "cpu";
-+			reg = <0>;
-+		};
-+	};
-+
-+	resetctrl: resetctrl {
-+		compatible = "ralink,rt2880-reset";
-+		#reset-cells = <1>;
-+	};
-+
-+	cpuintc: cpuintc {
-+		#address-cells = <0>;
-+		#interrupt-cells = <1>;
-+		interrupt-controller;
-+		compatible = "mti,cpu-interrupt-controller";
-+	};
-+
-+	palmbus@10000000 {
-+		compatible = "palmbus";
-+		reg = <0x10000000 0x200000>;
-+		ranges = <0x0 0x10000000 0x1FFFFF>;
-+
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+
-+		sysc@0 {
-+			compatible = "ralink,mt7620a-sysc";
-+			reg = <0x0 0x100>;
-+		};
-+
-+		intc: intc@200 {
-+			compatible = "ralink,rt2880-intc";
-+			reg = <0x200 0x100>;
-+
-+			interrupt-controller;
-+			#interrupt-cells = <1>;
-+
-+			resets = <&resetctrl 9>;
-+			reset-names = "intc";
-+
-+			interrupt-parent = <&cpuintc>;
-+			interrupts = <2>;
-+
-+			ralink,intc-registers = <0x9c 0xa0
-+						 0x6c 0xa4
-+						 0x80 0x78>;
-+		};
-+
-+		memc@300 {
-+			compatible = "ralink,mt7620a-memc";
-+			reg = <0x300 0x100>;
-+		};
-+
-+		uartlite@c00 {
-+			compatible = "ns16550a";
-+			reg = <0xc00 0x100>;
-+
-+			resets = <&resetctrl 12>;
-+			reset-names = "uart0";
-+
-+			interrupt-parent = <&intc>;
-+			interrupts = <20>;
-+
-+			reg-shift = <2>;
-+		};
-+
-+		uart1@d00 {
-+			compatible = "ns16550a";
-+			reg = <0xd00 0x100>;
-+
-+			resets = <&resetctrl 19>;
-+			reset-names = "uart1";
-+
-+			interrupt-parent = <&intc>;
-+			interrupts = <21>;
-+
-+			reg-shift = <2>;
-+		};
-+
-+		uart2@e00 {
-+			compatible = "ns16550a";
-+			reg = <0xe00 0x100>;
-+
-+			resets = <&resetctrl 20>;
-+			reset-names = "uart2";
-+
-+			interrupt-parent = <&intc>;
-+			interrupts = <22>;
-+
-+			reg-shift = <2>;
-+		};
-+	};
-+
-+	usbphy: uphy@10120000 {
-+		compatible = "mediatek,mt7628-usbphy";
-+		reg = <0x10120000 0x1000>;
-+
-+		#phy-cells = <0>;
-+
-+		resets = <&resetctrl 22 &resetctrl 25>;
-+		reset-names = "host", "device";
-+	};
-+
-+	ehci@101c0000 {
-+		compatible = "generic-ehci";
-+		reg = <0x101c0000 0x1000>;
-+
-+		phys = <&usbphy>;
-+		phy-names = "usb";
-+
-+		interrupt-parent = <&intc>;
-+		interrupts = <18>;
-+	};
-+};
+diff --git a/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
+index 02649d8b3f5a..84d544d8c1b1 100644
+--- a/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
++++ b/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
+@@ -1,4 +1,4 @@
+-Mediatek MT6311 Regulator Driver
++Mediatek MT6311 Regulator
+ 
+ Required properties:
+ - compatible: "mediatek,mt6311-regulator"
 -- 
-2.7.4
+2.13.3
