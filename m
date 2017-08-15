@@ -1,70 +1,82 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH v2 2/2] i2c: mediatek: Add i2c compatible for MediaTek
- MT7622
-Date: Mon, 14 Aug 2017 21:47:13 +0200
-Message-ID: <20170814194713.c6ojqcbi2iluayau@ninjato>
-References: <1502506672-7620-1-git-send-email-jun.gao@mediatek.com>
- <1502506672-7620-3-git-send-email-jun.gao@mediatek.com>
- <20170812144411.zqgbncsemzaolldv@ninjato>
- <1502674616.930.74.camel@mhfsdcap03>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 3/4] dt-bindings: mt8173-mtu3: add generic compatible
+ and rename file
+Date: Tue, 15 Aug 2017 10:22:23 +0800
+Message-ID: <1502763743.25536.128.camel@mhfsdcap03>
+References: <8f0cb0047b2aa195d818ad686cbbceabb3ad91a0.1502170518.git.chunfeng.yun@mediatek.com>
+         <121eaec8845c62383701d4fdfe9649335937f025.1502170518.git.chunfeng.yun@mediatek.com>
+         <20170811025410.65jvjmji4gfnmm6l@rob-hp-laptop>
+         <1502434819.25536.125.camel@mhfsdcap03>
+         <3623aff5-ec37-3209-f6d7-9eaf17096afa@gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="pglexgzmdx5j52xk"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1502674616.930.74.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jun Gao <jun.gao@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <3623aff5-ec37-3209-f6d7-9eaf17096afa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Mon, 2017-08-14 at 13:23 +0200, Matthias Brugger wrote:
+> 
+> On 08/11/2017 09:00 AM, Chunfeng Yun wrote:
+> > On Thu, 2017-08-10 at 21:54 -0500, Rob Herring wrote:
+> >> On Tue, Aug 08, 2017 at 01:42:51PM +0800, Chunfeng Yun wrote:
+> >>> The mt8173-mtu3.txt actually holds the bindings for all mediatek
+> >>> SoCs with usb3 DRD IP, so add a generic compatible and change the
+> >>> name to mtu3.txt.
+> >>>
+> >>> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >>> ---
+> >>>   .../bindings/usb/{mt8173-mtu3.txt => mtu3.txt}     |    6 ++++--
+> >>>   1 file changed, 4 insertions(+), 2 deletions(-)
+> >>>   rename Documentation/devicetree/bindings/usb/{mt8173-mtu3.txt => mtu3.txt} (95%)
+> >>>
+> >>> diff --git a/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt b/Documentation/devicetree/bindings/usb/mtu3.txt
+> >>> similarity index 95%
+> >>> rename from Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
+> >>> rename to Documentation/devicetree/bindings/usb/mtu3.txt
+> >>> index 1d7c3bc..832741d 100644
+> >>> --- a/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
+> >>> +++ b/Documentation/devicetree/bindings/usb/mtu3.txt
+> >>
+> >> mediatek,mtu3.txt
+> > Ok
+> >>
+> >>> @@ -1,7 +1,9 @@
+> >>>   The device node for Mediatek USB3.0 DRD controller
+> >>>   
+> >>>   Required properties:
+> >>> - - compatible : should be "mediatek,mt8173-mtu3"
+> >>> + - compatible : should be one of
+> >>> +	"mediatek,mt8173-mtu3" (deprecated, use "mediatek,mtu3" instead),
+> >>
+> >> NAK. You can add generic compatibles, but you need SoC specific ones in
+> >> addition.
+> > It's for backward compatibility
+> > 
+> 
+> I think backwards compatibility should be in the driver but not in the binding 
+> description. Apart from that device tree files will need to provide a SoC 
+> specific binding apart from the generic one, for example:
+> 
+> "mediatek,mt8173-mtu3", "mediatek,mtu3": for mt8173
+> "mediatek,mt7623-mtu3", "mediatek,mtu3": for mt6723
+> 
+> This is needed to cover possible bugs/features that can be found in the future 
+> for a specific SoC. The driver can match just against the generic binding and 
+> will only implement a match against the SoC specific one if a bug/feature is 
+> present.
+> 
+> Makes sense?
+Got it, thanks a lot
+> 
+> Regards,
+> Matthias
 
---pglexgzmdx5j52xk
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Mon, Aug 14, 2017 at 09:36:56AM +0800, Jun Gao wrote:
-> On Sat, 2017-08-12 at 16:44 +0200, Wolfram Sang wrote:
-> > > +static const struct i2c_adapter_quirks mt7622_i2c_quirks =3D {
-> > > +	.max_num_msgs =3D 255,
-> > > +	.max_write_len =3D 65535,
-> > > +	.max_read_len =3D 65535,
-> > > +	.max_comb_1st_msg_len =3D 65535,
-> > > +	.max_comb_2nd_msg_len =3D 65535,
-> > > +};
-> >=20
-> > That looks like no quirks? Then just leave the quirks pointer below
-> > empty.
-> >=20
-> Compare to MT8173 i2c controller, MT7622 limits message numbers to 255.
-
-I see. But you can safely drop all the length settings. The i2c core has
-this comment in quirk handling:
-
-/* Check if val is exceeding the quirk IFF quirk is non 0 */
-
-IFF means "if and only if".
-
-
---pglexgzmdx5j52xk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlmR/kEACgkQFA3kzBSg
-Kbbj5Q//fQDCE7Au3G8Agh/MrXOjv7xt2g8VnVxGTBz6hRC3wkRjVFhEL1VdhRaa
-jtAfNw5WImXlMAgCK48eWnP3kUi+KEEoFXF/eyevwLX6yhviZEvFHZNtPlH6EjZx
-k+RfmC51eYiC4/T+ebynW7xZJH4oeMwx8kqXkWyTMzC87RNn8l0TnGcSErwoXzRh
-ddAwKI/2yBn9WyxJW0Ab8nu7/NFZQi6MS00UgSUeN3+/jia5FwHOKHWTgcfiG6Sy
-0FkKGG4/+/A09Y1lNIU0fIowflX4T6onTwxs4EgUoF6uMS1q94zKcZZpuMeN7m6L
-WjAk1CpyloV0EuqBUt2NxVNhhaEzgDu29JNuTegTBmfJVPrmzlH54dEfRccurL2G
-v3xQgxOmRWYPiPq3gHm31NHXp8svL7J6nHtz8aRJGL1MIHA47icRbVXFiTibE5Wg
-I4nhYCR1+4Q/m4pYtPGz+7PPc722hguIogHrS05IFeb0tIvuZN+X+2eTjLbqjg4e
-tzIMIkAO52y5TYUsIjI9LViQJrZ8ARA0ftzW+DbbhWf8q615YmIzZLGUBO8HIRjQ
-JykHVgsthDGAOTrxXP1fl7M0qJqRiI98kylmxaeLJkbLLr9/brW9+RGrd6FmppIF
-WkDuGHnQjexTP9ayRLyJpDhb1oziXwtyMZ3lCqob5n4UgDWTIuY=
-=I9R4
------END PGP SIGNATURE-----
-
---pglexgzmdx5j52xk--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
