@@ -1,82 +1,143 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 3/4] dt-bindings: mt8173-mtu3: add generic compatible
- and rename file
-Date: Tue, 15 Aug 2017 10:22:23 +0800
-Message-ID: <1502763743.25536.128.camel@mhfsdcap03>
-References: <8f0cb0047b2aa195d818ad686cbbceabb3ad91a0.1502170518.git.chunfeng.yun@mediatek.com>
-         <121eaec8845c62383701d4fdfe9649335937f025.1502170518.git.chunfeng.yun@mediatek.com>
-         <20170811025410.65jvjmji4gfnmm6l@rob-hp-laptop>
-         <1502434819.25536.125.camel@mhfsdcap03>
-         <3623aff5-ec37-3209-f6d7-9eaf17096afa@gmail.com>
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Subject: Re: [PATCH v5 05/19] crypto: introduce crypto wait for async op
+Date: Tue, 15 Aug 2017 03:23:03 +0100
+Message-ID: <20170815032303.000042b2@huawei.com>
+References: <1502724094-23305-1-git-send-email-gilad@benyossef.com>
+ <1502724094-23305-6-git-send-email-gilad@benyossef.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <3623aff5-ec37-3209-f6d7-9eaf17096afa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1502724094-23305-6-git-send-email-gilad@benyossef.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Gilad Ben-Yossef <gilad@benyossef.com>
+Cc: Mike Snitzer <snitzer@redhat.com>, linux-doc@vger.kernel.org, Gary Hook <gary.hook@amd.com>, David Howells <dhowells@redhat.com>, dm-devel@redhat.com, keyrings@vger.kernel.org, linux-ima-devel@lists.sourceforge.net, Alasdair Kergon <agk@redhat.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Herbert Xu <herbert@gondor.apana.org.au>, Jonathan Corbet <corbet@lwn.net>, Mimi Zohar <zohar@linux.vnet.ibm.com>, "Serge E. Hallyn" <serge@hallyn.com>, Tom Lendacky <thomas.lendacky@amd.com>, Eric Biggers <ebiggers3@gmail.com>, linux-cifs@vger.kernel.org, linux-ima-user@lists.sourceforge.net, Arnaud Ebalard <arno@natisbad.org>, linux-raid@vger.kernel.org, linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org, James Morris <james.l.morris@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jaegeuk Kim <jaegeuk@kernel.org>, linux-arm-kernel@lists.infradead.o
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2017-08-14 at 13:23 +0200, Matthias Brugger wrote:
-> 
-> On 08/11/2017 09:00 AM, Chunfeng Yun wrote:
-> > On Thu, 2017-08-10 at 21:54 -0500, Rob Herring wrote:
-> >> On Tue, Aug 08, 2017 at 01:42:51PM +0800, Chunfeng Yun wrote:
-> >>> The mt8173-mtu3.txt actually holds the bindings for all mediatek
-> >>> SoCs with usb3 DRD IP, so add a generic compatible and change the
-> >>> name to mtu3.txt.
-> >>>
-> >>> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >>> ---
-> >>>   .../bindings/usb/{mt8173-mtu3.txt => mtu3.txt}     |    6 ++++--
-> >>>   1 file changed, 4 insertions(+), 2 deletions(-)
-> >>>   rename Documentation/devicetree/bindings/usb/{mt8173-mtu3.txt => mtu3.txt} (95%)
-> >>>
-> >>> diff --git a/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt b/Documentation/devicetree/bindings/usb/mtu3.txt
-> >>> similarity index 95%
-> >>> rename from Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
-> >>> rename to Documentation/devicetree/bindings/usb/mtu3.txt
-> >>> index 1d7c3bc..832741d 100644
-> >>> --- a/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
-> >>> +++ b/Documentation/devicetree/bindings/usb/mtu3.txt
-> >>
-> >> mediatek,mtu3.txt
-> > Ok
-> >>
-> >>> @@ -1,7 +1,9 @@
-> >>>   The device node for Mediatek USB3.0 DRD controller
-> >>>   
-> >>>   Required properties:
-> >>> - - compatible : should be "mediatek,mt8173-mtu3"
-> >>> + - compatible : should be one of
-> >>> +	"mediatek,mt8173-mtu3" (deprecated, use "mediatek,mtu3" instead),
-> >>
-> >> NAK. You can add generic compatibles, but you need SoC specific ones in
-> >> addition.
-> > It's for backward compatibility
-> > 
-> 
-> I think backwards compatibility should be in the driver but not in the binding 
-> description. Apart from that device tree files will need to provide a SoC 
-> specific binding apart from the generic one, for example:
-> 
-> "mediatek,mt8173-mtu3", "mediatek,mtu3": for mt8173
-> "mediatek,mt7623-mtu3", "mediatek,mtu3": for mt6723
-> 
-> This is needed to cover possible bugs/features that can be found in the future 
-> for a specific SoC. The driver can match just against the generic binding and 
-> will only implement a match against the SoC specific one if a bug/feature is 
-> present.
-> 
-> Makes sense?
-Got it, thanks a lot
-> 
-> Regards,
-> Matthias
+On Mon, 14 Aug 2017 18:21:15 +0300
+Gilad Ben-Yossef <gilad@benyossef.com> wrote:
 
+> Invoking a possibly async. crypto op and waiting for completion
+> while correctly handling backlog processing is a common task
+> in the crypto API implementation and outside users of it.
+> 
+> This patch adds a generic implementation for doing so in
+> preparation for using it across the board instead of hand
+> rolled versions.
+> 
+> Signed-off-by: Gilad Ben-Yossef <gilad@benyossef.com>
+> CC: Eric Biggers <ebiggers3@gmail.com>
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+One really trivial point inline I happened to notice.
+
+> ---
+>  crypto/api.c           | 13 +++++++++++++
+>  include/linux/crypto.h | 41 +++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 54 insertions(+)
+> 
+> diff --git a/crypto/api.c b/crypto/api.c
+> index 941cd4c..2a2479d 100644
+> --- a/crypto/api.c
+> +++ b/crypto/api.c
+> @@ -24,6 +24,7 @@
+>  #include <linux/sched/signal.h>
+>  #include <linux/slab.h>
+>  #include <linux/string.h>
+> +#include <linux/completion.h>
+>  #include "internal.h"
+>  
+>  LIST_HEAD(crypto_alg_list);
+> @@ -595,5 +596,17 @@ int crypto_has_alg(const char *name, u32 type, u32 mask)
+>  }
+>  EXPORT_SYMBOL_GPL(crypto_has_alg);
+>  
+> +void crypto_req_done(struct crypto_async_request *req, int err)
+> +{
+> +	struct crypto_wait *wait = req->data;
+> +
+> +	if (err == -EINPROGRESS)
+> +		return;
+> +
+> +	wait->err = err;
+> +	complete(&wait->completion);
+> +}
+> +EXPORT_SYMBOL_GPL(crypto_req_done);
+> +
+>  MODULE_DESCRIPTION("Cryptographic core API");
+>  MODULE_LICENSE("GPL");
+> diff --git a/include/linux/crypto.h b/include/linux/crypto.h
+> index 84da997..bb00186 100644
+> --- a/include/linux/crypto.h
+> +++ b/include/linux/crypto.h
+> @@ -24,6 +24,7 @@
+>  #include <linux/slab.h>
+>  #include <linux/string.h>
+>  #include <linux/uaccess.h>
+> +#include <linux/completion.h>
+>  
+>  /*
+>   * Autoloaded crypto modules should only use a prefixed name to avoid allowing
+> @@ -468,6 +469,45 @@ struct crypto_alg {
+>  } CRYPTO_MINALIGN_ATTR;
+>  
+>  /*
+> + * A helper struct for waiting for completion of async crypto ops
+> + */
+> +struct crypto_wait {
+> +	struct completion completion;
+> +	int err;
+> +};
+> +
+> +/*
+> + * Macro for declaring a crypto op async wait object on stack
+> + */
+> +#define DECLARE_CRYPTO_WAIT(_wait) \
+> +	struct crypto_wait _wait = { \
+> +		COMPLETION_INITIALIZER_ONSTACK((_wait).completion), 0 }
+> +
+> +/*
+> + * Async ops completion helper functioons
+> + */
+> +void crypto_req_done(struct crypto_async_request *req, int err);
+> +
+> +static inline int crypto_wait_req(int err, struct crypto_wait *wait)
+> +{
+> +	switch (err) {
+> +	case -EINPROGRESS:
+> +	case -EBUSY:
+> +		wait_for_completion(&wait->completion);
+> +		reinit_completion(&wait->completion);
+> +		err = wait->err;
+> +		break;
+> +	};
+> +
+> +	return err;
+> +}
+> +
+> +static inline void crypto_init_wait(struct crypto_wait *wait)
+> +{
+> +	init_completion(&wait->completion);
+> +}
+> +
+> +/*
+>   * Algorithm registration interface.
+>   */
+>  int crypto_register_alg(struct crypto_alg *alg);
+> @@ -1604,5 +1644,6 @@ static inline int crypto_comp_decompress(struct crypto_comp *tfm,
+>  						    src, slen, dst, dlen);
+>  }
+>  
+> +
+
+Trivial observation.  Shouldn't have this bonus blank line inserted here.
+
+>  #endif	/* _LINUX_CRYPTO_H */
+>  
