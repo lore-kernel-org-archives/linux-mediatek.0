@@ -1,72 +1,330 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] ASoC: mediatek: Correct the interrupt
-	property
-Date: Tue, 15 Aug 2017 12:53:09 +0100
-Message-ID: <20170815115309.glj52jx3kpq4jxq3@sirena.org.uk>
-References: <43a7fb98e7252d0b7b73cdabf1eedd0bf896d68c.1502784169.git.ryder.lee@mediatek.com>
+From: Harvey Hunt <harvey.hunt@imgtec.com>
+Subject: [V6 1/2] phy: ralink-usb: add driver for Mediatek/Ralink
+Date: Tue, 15 Aug 2017 13:47:02 +0100
+Message-ID: <1502801223-20833-1-git-send-email-harvey.hunt@imgtec.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============3177391050010024541=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <43a7fb98e7252d0b7b73cdabf1eedd0bf896d68c.1502784169.git.ryder.lee@mediatek.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Garlic Tseng <garlic.tseng@mediatek.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, kishon@ti.com
+Cc: james.hogan@imgtec.com, John Crispin <john@phrozen.org>, Harvey Hunt <harvey.hunt@imgtec.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+From: John Crispin <john@phrozen.org>
 
---===============3177391050010024541==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="gzdig5tpx7iqh6fk"
-Content-Disposition: inline
+Add a driver to setup the USB phy on Mediatek/Ralink SoCs.
+The driver sets up power and host mode, but also needs to
+configure PHY registers for the MT7628 and MT7688.
 
+Signed-off-by: John Crispin <john@phrozen.org>
+Signed-off-by: Harvey Hunt <harvey.hunt@imgtec.com>
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org
+---
+Changes in V6
+* Add binding for MT7628
+* Configure PHY registers for MT76{2,8}8
 
---gzdig5tpx7iqh6fk
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Changes in V5
+* Depend on MIPS
 
-On Tue, Aug 15, 2017 at 04:07:02PM +0800, Ryder Lee wrote:
+Changes in V4
+* Remove Allwinner from comment
+* Depend on COMPILE_TEST
 
-> This patch update interrupt property since we only use ASYS IRQ
-> in the driver, and this may confuse people.
+Changes in V3
+* Separate DT bindings
+* Update Kconfig text
+* Modify John's email address
+* Rebase onto v4.13-rc3
 
-> -		interrupts = <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
-> -			     <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
-> +		interrupts = <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
+Changes in V2
+* remove refcounting
+* drop empty functions
+* dont use static globals
+* use explicit compatible strings
 
-What harm does having the extra information in the bindings do?  If it's
-possible there might be a use for the extra interrupt it seems better to
-have people describe it.
+ drivers/phy/Kconfig          |   9 ++
+ drivers/phy/Makefile         |   1 +
+ drivers/phy/phy-ralink-usb.c | 238 +++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 248 insertions(+)
+ create mode 100644 drivers/phy/phy-ralink-usb.c
 
---gzdig5tpx7iqh6fk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlmS4KQACgkQJNaLcl1U
-h9D93wf+L7m9x7+OQo1mJABVGKFZXqqKwWJifYg/pQX6ZZ0AdYWINzfxk9TynL6j
-PmTmduO9PDR3EOf6Kf34Bk8MEcuN2VwQt+EyIh+ETh71IIM9MBxdwY238cOl6stZ
-QkEFINtxibMbB3OY2c2+J3GO4VeOeZ81Ti50mpG9aiyjtydSKVNNGjnRZ/+pGdU0
-UDh4YWRYCDa4FEW69i7s0bdp2kUW4kX2eWMgwjKDprqplnxMLSB+++la10QcOqNS
-Fwk6PDUjC9Ei3EqLCZsFCjQ1Bo96rIW4a7TNC8CZPy1mBqr8VPiEwyK3A6CoHAxO
-i+5qWyGUcRwrn0uK3yanApM3dvkkjw==
-=qQPk
------END PGP SIGNATURE-----
-
---gzdig5tpx7iqh6fk--
-
---===============3177391050010024541==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============3177391050010024541==--
+diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
+index c1807d4..a95394b 100644
+--- a/drivers/phy/Kconfig
++++ b/drivers/phy/Kconfig
+@@ -41,6 +41,15 @@ config PHY_PISTACHIO_USB
+ 	help
+ 	  Enable this to support the USB2.0 PHY on the IMG Pistachio SoC.
+ 
++config PHY_RALINK_USB
++	tristate "Ralink USB PHY driver"
++	depends on RALINK || COMPILE_TEST
++	depends on MIPS
++	select GENERIC_PHY
++	help
++	  This option enables support for the Ralink USB PHY found inside
++	  RT3352, MT7620, MT7628 and MT7688.
++
+ config PHY_XGENE
+ 	tristate "APM X-Gene 15Gbps PHY support"
+ 	depends on HAS_IOMEM && OF && (ARM64 || COMPILE_TEST)
+diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
+index f252201..60ed30b 100644
+--- a/drivers/phy/Makefile
++++ b/drivers/phy/Makefile
+@@ -7,6 +7,7 @@ obj-$(CONFIG_PHY_LPC18XX_USB_OTG)	+= phy-lpc18xx-usb-otg.o
+ obj-$(CONFIG_PHY_MT65XX_USB3)		+= phy-mt65xx-usb3.o
+ obj-$(CONFIG_PHY_XGENE)			+= phy-xgene.o
+ obj-$(CONFIG_PHY_PISTACHIO_USB)		+= phy-pistachio-usb.o
++obj-$(CONFIG_PHY_RALINK_USB)		+= phy-ralink-usb.o
+ 
+ obj-$(CONFIG_ARCH_SUNXI)		+= allwinner/
+ obj-$(CONFIG_ARCH_MESON)		+= amlogic/
+diff --git a/drivers/phy/phy-ralink-usb.c b/drivers/phy/phy-ralink-usb.c
+new file mode 100644
+index 0000000..d027c43
+--- /dev/null
++++ b/drivers/phy/phy-ralink-usb.c
+@@ -0,0 +1,238 @@
++/*
++ * Copyright (C) 2016 John Crispin <john@phrozen.org>
++ *
++ * Based on code from
++ * Allwinner Technology Co., Ltd. <www.allwinnertech.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
++
++#include <linux/delay.h>
++#include <linux/err.h>
++#include <linux/io.h>
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/mutex.h>
++#include <linux/phy/phy.h>
++#include <linux/platform_device.h>
++#include <linux/reset.h>
++#include <linux/of_platform.h>
++
++#include <asm/mach-ralink/ralink_regs.h>
++
++#define RT_SYSC_REG_SYSCFG1		0x014
++#define RT_SYSC_REG_CLKCFG1		0x030
++#define RT_SYSC_REG_USB_PHY_CFG		0x05c
++
++#define OFS_U2_PHY_AC0			0x800
++#define OFS_U2_PHY_AC1			0x804
++#define OFS_U2_PHY_AC2			0x808
++#define OFS_U2_PHY_ACR0			0x810
++#define OFS_U2_PHY_ACR1			0x814
++#define OFS_U2_PHY_ACR2			0x818
++#define OFS_U2_PHY_ACR3			0x81C
++#define OFS_U2_PHY_ACR4			0x820
++#define OFS_U2_PHY_AMON0		0x824
++#define OFS_U2_PHY_DCR0			0x860
++#define OFS_U2_PHY_DCR1			0x864
++#define OFS_U2_PHY_DTM0			0x868
++#define OFS_U2_PHY_DTM1			0x86C
++
++#define RT_RSTCTRL_UDEV			BIT(25)
++#define RT_RSTCTRL_UHST			BIT(22)
++#define RT_SYSCFG1_USB0_HOST_MODE	BIT(10)
++
++#define MT7620_CLKCFG1_UPHY0_CLK_EN	BIT(25)
++#define MT7620_CLKCFG1_UPHY1_CLK_EN	BIT(22)
++#define RT_CLKCFG1_UPHY1_CLK_EN		BIT(20)
++#define RT_CLKCFG1_UPHY0_CLK_EN		BIT(18)
++
++#define USB_PHY_UTMI_8B60M		BIT(1)
++#define UDEV_WAKEUP			BIT(0)
++
++struct ralink_usb_phy {
++	struct reset_control	*rstdev;
++	struct reset_control	*rsthost;
++	u32			clk;
++	struct phy		*phy;
++	void __iomem		*base;
++};
++
++static void u2_phy_w32(struct ralink_usb_phy *phy, u32 val, u32 reg)
++{
++	iowrite32(val, phy->base + reg);
++}
++
++static u32 u2_phy_r32(struct ralink_usb_phy *phy, u32 reg)
++{
++	return ioread32(phy->base + reg);
++}
++
++static void ralink_usb_phy_init(struct ralink_usb_phy *phy)
++{
++	u2_phy_r32(phy, OFS_U2_PHY_AC2);
++	u2_phy_r32(phy, OFS_U2_PHY_ACR0);
++	u2_phy_r32(phy, OFS_U2_PHY_DCR0);
++
++	u2_phy_w32(phy, 0x00ffff02, OFS_U2_PHY_DCR0);
++	u2_phy_r32(phy, OFS_U2_PHY_DCR0);
++	u2_phy_w32(phy, 0x00555502, OFS_U2_PHY_DCR0);
++	u2_phy_r32(phy, OFS_U2_PHY_DCR0);
++	u2_phy_w32(phy, 0x00aaaa02, OFS_U2_PHY_DCR0);
++	u2_phy_r32(phy, OFS_U2_PHY_DCR0);
++	u2_phy_w32(phy, 0x00000402, OFS_U2_PHY_DCR0);
++	u2_phy_r32(phy, OFS_U2_PHY_DCR0);
++	u2_phy_w32(phy, 0x0048086a, OFS_U2_PHY_AC0);
++	u2_phy_w32(phy, 0x4400001c, OFS_U2_PHY_AC1);
++	u2_phy_w32(phy, 0xc0200000, OFS_U2_PHY_ACR3);
++	u2_phy_w32(phy, 0x02000000, OFS_U2_PHY_DTM0);
++}
++
++static int ralink_usb_phy_power_on(struct phy *_phy)
++{
++	struct ralink_usb_phy *phy = phy_get_drvdata(_phy);
++	u32 t;
++
++	/* enable the phy */
++	rt_sysc_m32(0, phy->clk, RT_SYSC_REG_CLKCFG1);
++
++	/* setup host mode */
++	rt_sysc_m32(0, RT_SYSCFG1_USB0_HOST_MODE, RT_SYSC_REG_SYSCFG1);
++
++	/* deassert the reset lines */
++	reset_control_deassert(phy->rsthost);
++	reset_control_deassert(phy->rstdev);
++
++	/*
++	 * The SDK kernel had a delay of 100ms. however on device
++	 * testing showed that 10ms is enough
++	 */
++	mdelay(10);
++
++	if (phy->base)
++		ralink_usb_phy_init(phy);
++
++	/* print some status info */
++	t = rt_sysc_r32(RT_SYSC_REG_USB_PHY_CFG);
++	dev_info(&phy->phy->dev, "remote usb device wakeup %s\n",
++		(t & UDEV_WAKEUP) ? ("enabled") : ("disabled"));
++	if (t & USB_PHY_UTMI_8B60M)
++		dev_info(&phy->phy->dev, "UTMI 8bit 60MHz\n");
++	else
++		dev_info(&phy->phy->dev, "UTMI 16bit 30MHz\n");
++
++	return 0;
++}
++
++static int ralink_usb_phy_power_off(struct phy *_phy)
++{
++	struct ralink_usb_phy *phy = phy_get_drvdata(_phy);
++
++	/* disable the phy */
++	rt_sysc_m32(phy->clk, 0, RT_SYSC_REG_CLKCFG1);
++
++	/* assert the reset lines */
++	reset_control_assert(phy->rstdev);
++	reset_control_assert(phy->rsthost);
++
++	return 0;
++}
++
++static struct phy_ops ralink_usb_phy_ops = {
++	.power_on	= ralink_usb_phy_power_on,
++	.power_off	= ralink_usb_phy_power_off,
++	.owner		= THIS_MODULE,
++};
++
++static const struct of_device_id ralink_usb_phy_of_match[] = {
++	{
++		.compatible = "ralink,rt3352-usbphy",
++		.data = (void *) (RT_CLKCFG1_UPHY1_CLK_EN |
++				  RT_CLKCFG1_UPHY0_CLK_EN)
++	},
++	{
++		.compatible = "mediatek,mt7620-usbphy",
++		.data = (void *) (MT7620_CLKCFG1_UPHY1_CLK_EN |
++				  MT7620_CLKCFG1_UPHY0_CLK_EN)
++	},
++	{
++		.compatible = "mediatek,mt7628-usbphy",
++		.data = (void *) (MT7620_CLKCFG1_UPHY1_CLK_EN |
++				  MT7620_CLKCFG1_UPHY0_CLK_EN) },
++	{ },
++};
++MODULE_DEVICE_TABLE(of, ralink_usb_phy_of_match);
++
++static int ralink_usb_phy_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct resource *res;
++	struct phy_provider *phy_provider;
++	const struct of_device_id *match;
++	struct ralink_usb_phy *phy;
++
++	phy = devm_kzalloc(dev, sizeof(*phy), GFP_KERNEL);
++	if (!phy)
++		return -ENOMEM;
++
++	match = of_match_device(ralink_usb_phy_of_match, &pdev->dev);
++	if (!match)
++		return -ENODEV;
++
++	phy->clk = (int) match->data;
++	phy->base = NULL;
++
++	/* The MT7628 and MT7688 require extra setup of PHY registers. */
++	if (of_device_is_compatible(dev->of_node, "mediatek,mt7628-usbphy")) {
++		res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++		phy->base = devm_ioremap_resource(&pdev->dev, res);
++		if (IS_ERR(phy->base)) {
++			dev_err(dev, "failed to remap register memory\n");
++			return PTR_ERR(phy->base);
++		}
++	}
++
++	phy->rsthost = devm_reset_control_get(&pdev->dev, "host");
++	if (IS_ERR(phy->rsthost)) {
++		dev_err(dev, "host reset is missing\n");
++		return PTR_ERR(phy->rsthost);
++	}
++
++	phy->rstdev = devm_reset_control_get(&pdev->dev, "device");
++	if (IS_ERR(phy->rstdev)) {
++		dev_err(dev, "device reset is missing\n");
++		return PTR_ERR(phy->rstdev);
++	}
++
++	phy->phy = devm_phy_create(dev, NULL, &ralink_usb_phy_ops);
++	if (IS_ERR(phy->phy)) {
++		dev_err(dev, "failed to create PHY\n");
++		return PTR_ERR(phy->phy);
++	}
++	phy_set_drvdata(phy->phy, phy);
++
++	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
++
++	return PTR_ERR_OR_ZERO(phy_provider);
++}
++
++static struct platform_driver ralink_usb_phy_driver = {
++	.probe	= ralink_usb_phy_probe,
++	.driver = {
++		.of_match_table	= ralink_usb_phy_of_match,
++		.name  = "ralink-usb-phy",
++	}
++};
++module_platform_driver(ralink_usb_phy_driver);
++
++MODULE_DESCRIPTION("Ralink USB phy driver");
++MODULE_AUTHOR("John Crispin <john@phrozen.org>");
++MODULE_LICENSE("GPL v2");
+-- 
+2.7.4
