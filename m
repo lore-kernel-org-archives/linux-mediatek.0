@@ -1,51 +1,38 @@
-From: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3 1/2] dt-bindings: i2c: Add MediaTek MT7622 i2c binding
-Date: Tue, 15 Aug 2017 21:08:14 +0800
-Message-ID: <1502802495-5064-2-git-send-email-jun.gao@mediatek.com>
-References: <1502802495-5064-1-git-send-email-jun.gao@mediatek.com>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] ASoC: mediatek: Correct the interrupt property
+Date: Tue, 15 Aug 2017 21:51:40 +0800
+Message-ID: <1502805100.25910.8.camel@mtkswgap22>
+References: <43a7fb98e7252d0b7b73cdabf1eedd0bf896d68c.1502784169.git.ryder.lee@mediatek.com>
+         <20170815115309.glj52jx3kpq4jxq3@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1502802495-5064-1-git-send-email-jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <20170815115309.glj52jx3kpq4jxq3-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Tue, 2017-08-15 at 12:53 +0100, Mark Brown wrote:
+> On Tue, Aug 15, 2017 at 04:07:02PM +0800, Ryder Lee wrote:
+> 
+> > This patch update interrupt property since we only use ASYS IRQ
+> > in the driver, and this may confuse people.
+> 
+> > -		interrupts = <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
+> > -			     <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
+> > +		interrupts = <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
+> 
+> What harm does having the extra information in the bindings do?  If it's
+> possible there might be a use for the extra interrupt it seems better to
+> have people describe it.
 
-Add MT7622 i2c binding to binding file and change the compatible
-information formats of all SoCs to the same.
+Yes you're right. The current driver get IRQ number by index "0" but
+actually it should be "1" (GIC 132). Perhaps we can switch to use the
+platform_get_irq_byname() and add interrupt-name in DT so that binding
+can be agnostic of the IRQ order. 
 
-Signed-off-by: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- Documentation/devicetree/bindings/i2c/i2c-mtk.txt | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-index bd5a7be..71fc0b3 100644
---- a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-+++ b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-@@ -4,11 +4,12 @@ The Mediatek's I2C controller is used to interface with I2C devices.
- 
- Required properties:
-   - compatible: value should be either of the following.
--      "mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek mt2701
--      "mediatek,mt6577-i2c": for i2c compatible with mt6577.
--      "mediatek,mt6589-i2c": for i2c compatible with mt6589.
--      "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for i2c compatible with mt7623.
--      "mediatek,mt8173-i2c": for i2c compatible with mt8173.
-+      "mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek MT2701
-+      "mediatek,mt6577-i2c": for Mediatek MT6577
-+      "mediatek,mt6589-i2c": for Mediatek MT6589
-+      "mediatek,mt7622-i2c": for Mediatek MT7622
-+      "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for Mediatek MT7623
-+      "mediatek,mt8173-i2c": for Mediatek MT8173
-   - reg: physical base address of the controller and dma base, length of memory
-     mapped region.
-   - interrupts: interrupt number to the cpu.
--- 
-1.8.1.1
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
