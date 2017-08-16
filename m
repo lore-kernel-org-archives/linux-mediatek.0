@@ -1,65 +1,62 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "regulator: add fixes with MT6323 dt-bindings shouldn't reference driver" to the regulator tree
-Date: Tue, 15 Aug 2017 18:15:42 +0100
-Message-ID: <E1dhfRO-0003l1-Di@debutante>
-References: <d7afed6aeb6f623468fb9e8a78e90a391f261e7e.1502790160.git.sean.wang@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: i2c: Add MediaTek MT7622 i2c binding
+Date: Wed, 16 Aug 2017 10:20:23 +0800
+Message-ID: <1502850023.19230.42.camel@mtkswgap22>
+References: <1502802495-5064-1-git-send-email-jun.gao@mediatek.com>
+         <1502802495-5064-2-git-send-email-jun.gao@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <d7afed6aeb6f623468fb9e8a78e90a391f261e7e.1502790160.git.sean.wang@mediatek.com>
+In-Reply-To: <1502802495-5064-2-git-send-email-jun.gao@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: Mark Brown <broonie@kernel.org>, robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, lgirdwood@gmail.combroonie@kernel.org, jamesjj.liao@mediatek.com, henryc.chen@mediatek.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, chen.zhong@mediatek.com, chenglin.xu@mediatek.com, linux-kernel@vger.kernel.orglinux-kernel@vger.kernel.org
+To: Jun Gao <jun.gao@mediatek.com>
+Cc: Wolfram Sang <wsa@the-dreams.de>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+On Tue, 2017-08-15 at 21:08 +0800, Jun Gao wrote:
+> From: Jun Gao <jun.gao@mediatek.com>
+> 
+> Add MT7622 i2c binding to binding file and change the compatible
+> information formats of all SoCs to the same.
+> 
+> Signed-off-by: Jun Gao <jun.gao@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/i2c/i2c-mtk.txt | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
+> index bd5a7be..71fc0b3 100644
+> --- a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
+> +++ b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
+> @@ -4,11 +4,12 @@ The Mediatek's I2C controller is used to interface with I2C devices.
+>  
+>  Required properties:
+>    - compatible: value should be either of the following.
+> -      "mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek mt2701
+> -      "mediatek,mt6577-i2c": for i2c compatible with mt6577.
+> -      "mediatek,mt6589-i2c": for i2c compatible with mt6589.
+> -      "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for i2c compatible with mt7623.
+> -      "mediatek,mt8173-i2c": for i2c compatible with mt8173.
+> +      "mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for Mediatek MT2701
+> +      "mediatek,mt6577-i2c": for Mediatek MT6577
+> +      "mediatek,mt6589-i2c": for Mediatek MT6589
+> +      "mediatek,mt7622-i2c": for Mediatek MT7622
+> +      "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for Mediatek MT7623
+> +      "mediatek,mt8173-i2c": for Mediatek MT8173
+>    - reg: physical base address of the controller and dma base, length of memory
+>      mapped region.
+>    - interrupts: interrupt number to the cpu.
 
-   regulator: add fixes with MT6323 dt-bindings shouldn't reference driver
+Hi, Jun
 
-has been applied to the regulator tree at
+the patch for new soc support and clean-ups should better be in separate
+patch following previous Matthias suggestion. 
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git 
+http://lists.infradead.org/pipermail/linux-mediatek/2017-August/009740.html
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+And also spelling for Mediatek should be corrected using MediaTek.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From daf44c87da5cb6681ddd8afb9245f377cb01c651 Mon Sep 17 00:00:00 2001
-From: Sean Wang <sean.wang@mediatek.com>
-Date: Tue, 15 Aug 2017 17:46:27 +0800
-Subject: [PATCH] regulator: add fixes with MT6323 dt-bindings shouldn't
- reference driver
-
-DT bindings shouldn't reference drivers and they should be OS-agnostic.
-
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- Documentation/devicetree/bindings/regulator/mt6323-regulator.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
-index c35d878b0960..a48749db4df3 100644
---- a/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
-+++ b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
-@@ -1,4 +1,4 @@
--Mediatek MT6323 Regulator Driver
-+Mediatek MT6323 Regulator
- 
- All voltage regulators are defined as subnodes of the regulators node. A list
- of regulators provided by this controller are defined as subnodes of the
--- 
-2.13.3
+	Sean
