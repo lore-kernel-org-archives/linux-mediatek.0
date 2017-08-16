@@ -1,59 +1,37 @@
-From: Mars Cheng <mars.cheng@mediatek.com>
-Subject: Re: [PATCH 0/5] Add clk and scpsys support for MT6755
-Date: Wed, 16 Aug 2017 11:59:53 +0800
-Message-ID: <1502855993.4599.1.camel@mtkswgap22>
-References: <1502180014-7995-1-git-send-email-mars.cheng@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH v2 2/4] usb: xhci-mtk: add generic compatible string
+Date: Wed, 16 Aug 2017 14:08:11 +0800
+Message-ID: <33fa448238c0d95f0cfd6c2be3bd5c4e657a0cd4.1502854628.git.chunfeng.yun@mediatek.com>
+References: <670f9ce1ecaec5859006b6f02b45cfc72c3cca2c.1502854628.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502180014-7995-1-git-send-email-mars.cheng@mediatek.com>
+In-Reply-To: <670f9ce1ecaec5859006b6f02b45cfc72c3cca2c.1502854628.git.chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, wendell.lin@mediatek.com, cc.hwang@mediatek.com
+To: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Rob, Stephen, Matthias
+The xhci-mtk driver is a generic driver for MediaTek xHCI IP, add
+a generic compatible to avoid confusion when support new SoCs but
+use a compatible with specific SoC's name "mt8173".
 
-gentle ping.
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/usb/host/xhci-mtk.c |    1 +
+ 1 file changed, 1 insertion(+)
 
-Thanks.
-
-On Tue, 2017-08-08 at 16:13 +0800, Mars Cheng wrote:
-> Mars Cheng (3):
->   clk: mediatek: add mt6755 clock ID
->   clk: mediatek: add clk support for MT6755
->   soc: mediatek: add MT6755 scpsys support
-> 
-> wendell.lin (2):
->   dt-bindings: mediatek: add MT6755 power dt-bindings
->   dt-bindings: arm: mediatek: document clk bindings for MT6755
-> 
->  .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    1 +
->  .../bindings/arm/mediatek/mediatek,imgsys.txt      |    1 +
->  .../bindings/arm/mediatek/mediatek,infracfg.txt    |    1 +
->  .../bindings/arm/mediatek/mediatek,mmsys.txt       |    1 +
->  .../bindings/arm/mediatek/mediatek,topckgen.txt    |    1 +
->  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    1 +
->  .../bindings/arm/mediatek/mediatek,vencsys.txt     |    1 +
->  .../devicetree/bindings/soc/mediatek/scpsys.txt    |    3 +
->  drivers/clk/mediatek/Kconfig                       |   32 +
->  drivers/clk/mediatek/Makefile                      |    5 +
->  drivers/clk/mediatek/clk-mt6755-img.c              |   81 +++
->  drivers/clk/mediatek/clk-mt6755-mm.c               |  148 +++++
->  drivers/clk/mediatek/clk-mt6755-vdec.c             |   91 +++
->  drivers/clk/mediatek/clk-mt6755-venc.c             |   78 +++
->  drivers/clk/mediatek/clk-mt6755.c                  |  666 ++++++++++++++++++++
->  drivers/soc/mediatek/mtk-scpsys.c                  |  116 ++++
->  include/dt-bindings/clock/mt6755-clk.h             |  293 +++++++++
->  include/dt-bindings/power/mt6755-power.h           |   26 +
->  18 files changed, 1546 insertions(+)
->  create mode 100644 drivers/clk/mediatek/clk-mt6755-img.c
->  create mode 100644 drivers/clk/mediatek/clk-mt6755-mm.c
->  create mode 100644 drivers/clk/mediatek/clk-mt6755-vdec.c
->  create mode 100644 drivers/clk/mediatek/clk-mt6755-venc.c
->  create mode 100644 drivers/clk/mediatek/clk-mt6755.c
->  create mode 100644 include/dt-bindings/clock/mt6755-clk.h
->  create mode 100644 include/dt-bindings/power/mt6755-power.h
-> 
-> 
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index 67d5dc7..8fb6065 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -795,6 +795,7 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
+ #ifdef CONFIG_OF
+ static const struct of_device_id mtk_xhci_of_match[] = {
+ 	{ .compatible = "mediatek,mt8173-xhci"},
++	{ .compatible = "mediatek,mtk-xhci"},
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, mtk_xhci_of_match);
+-- 
+1.7.9.5
