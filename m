@@ -1,80 +1,59 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 2/2] i2c: mediatek: Add i2c compatible for MediaTek
- MT7622
-Date: Wed, 16 Aug 2017 11:08:54 +0800
-Message-ID: <1502852934.19230.45.camel@mtkswgap22>
-References: <1502802495-5064-1-git-send-email-jun.gao@mediatek.com>
-         <1502802495-5064-3-git-send-email-jun.gao@mediatek.com>
+From: Mars Cheng <mars.cheng@mediatek.com>
+Subject: Re: [PATCH 0/5] Add clk and scpsys support for MT6755
+Date: Wed, 16 Aug 2017 11:59:53 +0800
+Message-ID: <1502855993.4599.1.camel@mtkswgap22>
+References: <1502180014-7995-1-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1502802495-5064-3-git-send-email-jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1502180014-7995-1-git-send-email-mars.cheng@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, wendell.lin@mediatek.com, cc.hwang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-08-15 at 21:08 +0800, Jun Gao wrote:
-> From: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Hi Rob, Stephen, Matthias
+
+gentle ping.
+
+Thanks.
+
+On Tue, 2017-08-08 at 16:13 +0800, Mars Cheng wrote:
+> Mars Cheng (3):
+>   clk: mediatek: add mt6755 clock ID
+>   clk: mediatek: add clk support for MT6755
+>   soc: mediatek: add MT6755 scpsys support
 > 
-> Add i2c compatible for MT7622. Compare to MT8173 i2c controller,
-> MT7622 limits message numbers to 255, and does not support 4GB
-> DMA mode.
+> wendell.lin (2):
+>   dt-bindings: mediatek: add MT6755 power dt-bindings
+>   dt-bindings: arm: mediatek: document clk bindings for MT6755
 > 
-> Signed-off-by: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-you seemed missing a Reviewed-by tag from Joe.C
-
-http://lists.infradead.org/pipermail/linux-mediatek/2017-August/009975.html
-
-
-> ---
->  drivers/i2c/busses/i2c-mt65xx.c | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
+>  .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    1 +
+>  .../bindings/arm/mediatek/mediatek,imgsys.txt      |    1 +
+>  .../bindings/arm/mediatek/mediatek,infracfg.txt    |    1 +
+>  .../bindings/arm/mediatek/mediatek,mmsys.txt       |    1 +
+>  .../bindings/arm/mediatek/mediatek,topckgen.txt    |    1 +
+>  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    1 +
+>  .../bindings/arm/mediatek/mediatek,vencsys.txt     |    1 +
+>  .../devicetree/bindings/soc/mediatek/scpsys.txt    |    3 +
+>  drivers/clk/mediatek/Kconfig                       |   32 +
+>  drivers/clk/mediatek/Makefile                      |    5 +
+>  drivers/clk/mediatek/clk-mt6755-img.c              |   81 +++
+>  drivers/clk/mediatek/clk-mt6755-mm.c               |  148 +++++
+>  drivers/clk/mediatek/clk-mt6755-vdec.c             |   91 +++
+>  drivers/clk/mediatek/clk-mt6755-venc.c             |   78 +++
+>  drivers/clk/mediatek/clk-mt6755.c                  |  666 ++++++++++++++++++++
+>  drivers/soc/mediatek/mtk-scpsys.c                  |  116 ++++
+>  include/dt-bindings/clock/mt6755-clk.h             |  293 +++++++++
+>  include/dt-bindings/power/mt6755-power.h           |   26 +
+>  18 files changed, 1546 insertions(+)
+>  create mode 100644 drivers/clk/mediatek/clk-mt6755-img.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt6755-mm.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt6755-vdec.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt6755-venc.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt6755.c
+>  create mode 100644 include/dt-bindings/clock/mt6755-clk.h
+>  create mode 100644 include/dt-bindings/power/mt6755-power.h
 > 
-> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> index 9bedf0b..09d288c 100644
-> --- a/drivers/i2c/busses/i2c-mt65xx.c
-> +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> @@ -172,6 +172,10 @@ struct mtk_i2c {
->  	.max_comb_2nd_msg_len = 31,
->  };
->  
-> +static const struct i2c_adapter_quirks mt7622_i2c_quirks = {
-> +	.max_num_msgs = 255,
-> +};
-> +
->  static const struct mtk_i2c_compatible mt6577_compat = {
->  	.quirks = &mt6577_i2c_quirks,
->  	.pmic_i2c = 0,
-> @@ -190,6 +194,15 @@ struct mtk_i2c {
->  	.support_33bits = 0,
->  };
->  
-> +static const struct mtk_i2c_compatible mt7622_compat = {
-> +	.quirks = &mt7622_i2c_quirks,
-> +	.pmic_i2c = 0,
-> +	.dcm = 1,
-> +	.auto_restart = 1,
-> +	.aux_len_reg = 1,
-> +	.support_33bits = 0,
-> +};
-> +
->  static const struct mtk_i2c_compatible mt8173_compat = {
->  	.pmic_i2c = 0,
->  	.dcm = 1,
-> @@ -201,6 +214,7 @@ struct mtk_i2c {
->  static const struct of_device_id mtk_i2c_of_match[] = {
->  	{ .compatible = "mediatek,mt6577-i2c", .data = &mt6577_compat },
->  	{ .compatible = "mediatek,mt6589-i2c", .data = &mt6589_compat },
-> +	{ .compatible = "mediatek,mt7622-i2c", .data = &mt7622_compat },
->  	{ .compatible = "mediatek,mt8173-i2c", .data = &mt8173_compat },
->  	{}
->  };
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
