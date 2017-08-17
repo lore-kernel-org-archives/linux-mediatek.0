@@ -1,90 +1,64 @@
 From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 4/4] dt-bindings: phy-mt65xx-usb: supports PCIe, SATA
- and rename file
-Date: Thu, 17 Aug 2017 10:10:20 -0500
-Message-ID: <20170817151020.d2gyvdhbpicybwe4@rob-hp-laptop>
-References: <d58705436a2563b87a67609a472db3c3d84b36f5.1502256365.git.chunfeng.yun@mediatek.com>
- <b2d4141dd3c0dc33d60a727561014d91c5f70176.1502256365.git.chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH 1/8] dt-bindings: mediatek: Add binding for mt2712 IOMMU
+	and SMI
+Date: Thu, 17 Aug 2017 10:33:41 -0500
+Message-ID: <20170817153220.52mt3jjgyktydeln@rob-hp-laptop>
+References: <1502445377-26936-1-git-send-email-yong.wu@mediatek.com>
+	<1502445377-26936-2-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <b2d4141dd3c0dc33d60a727561014d91c5f70176.1502256365.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+In-Reply-To: <1502445377-26936-2-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Arvind Yadav <arvind.yadav.cs-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, cloud.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Aug 09, 2017 at 01:29:49PM +0800, Chunfeng Yun wrote:
-> add support for PCIe and SATA, also add some new compatibles.
+On Fri, Aug 11, 2017 at 05:56:10PM +0800, Yong Wu wrote:
+> This patch adds decriptions for mt2712 IOMMU and SMI.
+> 
+> In order to balance the bandwidth, mt2712 has two M4Us, two
+> smi-commons, 8 smi-larbs. and mt2712 is also MTK IOMMU gen2 which
+> use Short-Descriptor translation table format.
 
-s/add/Add/
+s/use/uses/
 
 > 
-> due to phy-mt65xx-usb.txt holds the bindings for all mediatek SoCs
-
-s/due/Due/
-
-> with T-PHY controller, change the name to phy-mtk-tphy.txt to
-> reflect that.
+> The mt2712 M4U-SMI HW diagram is as below:
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>                             EMI
+>                              |
+>               -------------------------------
+>               |                             |
+>              M4U0                          M4U1
+>               |                             |
+>          smi-common0                   smi-common1
+>               |                             |
+>   -------------------------       --------------------
+>   |     |     |     |     |       |         |        |
+>   |     |     |     |     |       |         |        |
+> larb0 larb1 larb2 larb3 larb6    larb4    larb5     larb7
+> disp0 vdec  cam   venc   jpg  mdp1/disp1 mdp2/disp2  mdp3->larb names
+> 
+> All the connections are HW fixed, SW can NOT adjust it.
+> 
+> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
->  .../phy/{phy-mt65xx-usb.txt => phy-mtk-tphy.txt}        | 17 ++++++++++++-----
->  1 file changed, 12 insertions(+), 5 deletions(-)
->  rename Documentation/devicetree/bindings/phy/{phy-mt65xx-usb.txt => phy-mtk-tphy.txt} (88%)
-> 
-> diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-> similarity index 88%
-> rename from Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> rename to Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-> index 0acc5a9..faf1808 100644
-> --- a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> +++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-> @@ -1,13 +1,18 @@
-> -mt65xx USB3.0 PHY binding
-> +MediaTek T-PHY binding
->  --------------------------
->  
-> -This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
-> +T-phy controller supports physical layer functionality for a number of
-> +controllers on MediaTek SoCs, such as, USB2.0, USB3.0, PCIe, and SATA.
->  
->  Required properties (controller (parent) node):
->   - compatible	: should be one of
-> -		  "mediatek,mt2701-u3phy"
-> -		  "mediatek,mt2712-u3phy"
-> -		  "mediatek,mt8173-u3phy"
-> +		  "mediatek,generic-tphy-v1"
-> +		  "mediatek,generic-tphy-v2"
-> +		  "mediatek,mt2701-u3phy" (deprecated)
-> +		  "mediatek,mt2712-u3phy" (deprecated)
+>  .../devicetree/bindings/iommu/mediatek,iommu.txt   |  6 +-
+>  .../memory-controllers/mediatek,smi-common.txt     |  6 +-
+>  .../memory-controllers/mediatek,smi-larb.txt       |  5 +-
+>  include/dt-bindings/memory/mt2712-larb-port.h      | 91 ++++++++++++++++++++++
+>  4 files changed, 102 insertions(+), 6 deletions(-)
+>  create mode 100644 include/dt-bindings/memory/mt2712-larb-port.h
 
-SoC specific compatibles should not be deprecated.
-
-> +		  "mediatek,mt8173-u3phy";
-> +		  make use of "mediatek,generic-tphy-v1" on mt2701 instead and
-> +		  "mediatek,generic-tphy-v2" on mt2712 instead.
->   - clocks	: (deprecated, use port's clocks instead) a list of phandle +
->  		  clock-specifier pairs, one for each entry in clock-names
->   - clock-names	: (deprecated, use port's one instead) must contain
-> @@ -35,6 +40,8 @@ Required properties (port (child) node):
->  		  cell after port phandle is phy type from:
->  			- PHY_TYPE_USB2
->  			- PHY_TYPE_USB3
-> +			- PHY_TYPE_PCIE
-> +			- PHY_TYPE_SATA
->  
->  Example:
->  
-> -- 
-> 1.9.1
-> 
-> --
-> To unsubscribe from this list: send the line "unsubscribe devicetree" in
-> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
