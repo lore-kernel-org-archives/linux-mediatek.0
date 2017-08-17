@@ -1,23 +1,23 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] arm: mediatek: soc updates for v4.14
-Date: Thu, 17 Aug 2017 15:27:25 +0200
-Message-ID: <9f782ba3-4c03-10a9-07c5-b2b682f81846@gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [GIT PULL] arm: mediatek: dts32 updates for v4.14
+Date: Thu, 17 Aug 2017 15:31:22 +0200
+Message-ID: <c357cfa5-8464-8b94-caeb-4b48c2f42659@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: Arvind Yadav <arvind.yadav.cs@gmail.com>, Sean Wang <sean.wang@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Chen Zhong <chen.zhong@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi Olof and Arnd,
@@ -35,39 +35,63 @@ The following changes since commit 5771a8c08880cdca3bfb4a3fc6d309d6bba20877:
 
 are available in the git repository at:
 
-   https://github.com/mbgg/linux-mediatek.git tags/v4.13-next-soc
+   https://github.com/mbgg/linux-mediatek.git tags/v4.13-next-dts32
 
-for you to fetch changes up to 52510ee934885ec846faaa5d029329c9ba0e6ecc:
+for you to fetch changes up to dfff569aaf8886dcc97b145a15f2213b4a4599e6:
 
-   soc: mediatek: add SCPSYS power domain driver for MediaTek MT7622 SoC 
-(2017-08-14 17:28:40 +0200)
-
-----------------------------------------------------------------
-- add mt7623a smp support
-- scpsys: reduce code duplication
-- scpsys: add mt7622 support
-- pmic wrapper: make of_device_ids constant
+   arm: dts: mt7623: cleanup binding file (2017-08-14 17:17:02 +0200)
 
 ----------------------------------------------------------------
-Arvind Yadav (1):
-       soc: mtk-pmic-wrap: make of_device_ids const.
+- mt7623: add mt7623n and mt7623a plattform
+- add mt7623 based reference boards
+- mt7623: add usb3, ethernet, cpufreq,
+- Add banana-pi board
+- add mt6323 pmic
+- mt2701: add larb-id property to smi larb
 
-Chen Zhong (1):
-       soc: mediatek: add header files required for MT7622 SCPSYS dt-binding
+----------------------------------------------------------------
+Chunfeng Yun (1):
+       arm: dts: mt2701: Add usb3 device nodes
 
-Sean Wang (4):
-       ARM: mediatek: add MT7623a smp bringup code
-       dt-bindings: soc: update the binding document for SCPSYS on MediaTek 
-MT7622 SoC
-       soc: mediatek: reduce code duplication of scpsys_probe across all SoCs
-       soc: mediatek: add SCPSYS power domain driver for MediaTek MT7622 SoC
+Honghui Zhang (1):
+       arm: dts: mediatek: add larbid property for larb
 
-  .../devicetree/bindings/soc/mediatek/scpsys.txt    |   3 +
-  arch/arm/mach-mediatek/mediatek.c                  |   2 +
-  arch/arm/mach-mediatek/platsmp.c                   |   1 +
-  drivers/soc/mediatek/mtk-pmic-wrap.c               |   6 +-
-  drivers/soc/mediatek/mtk-scpsys.c                  | 247 ++++++++++++---------
-  include/dt-bindings/power/mt7622-power.h           |  22 ++
-  include/linux/soc/mediatek/infracfg.h              |   7 +
-  7 files changed, 185 insertions(+), 103 deletions(-)
-  create mode 100644 include/dt-bindings/power/mt7622-power.h
+John Crispin (4):
+       arm: dts: mt7623: add mt6323.dtsi file
+       arm: dts: mt7623: cleanup the mt7623n rfb uart nodes
+       arm: dts: mt7623: enable the usb device on the mt7623n rfb
+       arm: dts: mt7623: enable the nand device on the mt7623n nand rfb
+
+Matthias Brugger (1):
+       arm: dts: mt7623: fix mmc interrupt assignment
+
+Ryder Lee (1):
+       arm: dts: mt7623: cleanup binding file
+
+Sean Wang (9):
+       dt-bindings: net: mediatek: update documentation for reset signals
+       arm: dts: mt7623: fixup binding violation missing reset in ethernet node
+       dt-bindings: arm: mediatek: update for MT7623n SoC and relevant boards
+       dt-bindings: arm: mediatek: add bindings for mediatek MT7623a SoC Platform
+       arm: dts: mt7623: rename mt7623-evb.dts to arch/arm/boot/dts/mt7623n-rfb.dtsi
+       arm: dts: mt7623: add support for Bananapi R2 (BPI-R2) board
+       arm: dts: mt7623: add clock-frequency to CPU nodes
+       arm: dts: mt2701: Add ethernet device node
+       arm: dts: mt7623: Add SD-card and EMMC to bananapi-r2
+
+  Documentation/devicetree/bindings/arm/mediatek.txt |  14 +-
+  .../devicetree/bindings/net/mediatek-net.txt       |   6 +-
+  arch/arm/boot/dts/Makefile                         |   3 +-
+  arch/arm/boot/dts/mt2701.dtsi                      | 106 +++++
+  arch/arm/boot/dts/mt6323.dtsi                      | 241 ++++++++++
+  arch/arm/boot/dts/mt7623-evb.dts                   |  33 --
+  arch/arm/boot/dts/mt7623.dtsi                      | 211 +++++++--
+  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts      | 487 +++++++++++++++++++++
+  arch/arm/boot/dts/mt7623n-rfb-nand.dts             | 111 +++++
+  arch/arm/boot/dts/mt7623n-rfb.dtsi                 |  92 ++++
+  10 files changed, 1218 insertions(+), 86 deletions(-)
+  create mode 100644 arch/arm/boot/dts/mt6323.dtsi
+  delete mode 100644 arch/arm/boot/dts/mt7623-evb.dts
+  create mode 100644 arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+  create mode 100644 arch/arm/boot/dts/mt7623n-rfb-nand.dts
+  create mode 100644 arch/arm/boot/dts/mt7623n-rfb.dtsi
