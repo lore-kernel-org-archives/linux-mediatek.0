@@ -1,44 +1,44 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 2/2] dt-bindings: ata: add DT bindings for MediaTek
- SATA controller
-Date: Thu, 17 Aug 2017 15:29:57 -0500
-Message-ID: <20170817202957.u3roxjzmmtwgraef@rob-hp-laptop>
-References: <cover.1502501342.git.ryder.lee@mediatek.com>
- <1efe9aad6d81d88ef315c993b7f1aed25be109f5.1502501342.git.ryder.lee@mediatek.com>
+Subject: Re: [PATCH v1 1/9] dt-bindings: ARM: Mediatek: Document bindings for
+ MT2712
+Date: Thu, 17 Aug 2017 16:04:45 -0500
+Message-ID: <20170817210445.y34gpxbqixt6qswr@rob-hp-laptop>
+References: <1502779370-30150-1-git-send-email-weiyi.lu@mediatek.com>
+ <1502779370-30150-2-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1efe9aad6d81d88ef315c993b7f1aed25be109f5.1502501342.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Hans de Goede <hdegoede@redhat.com>, Tejun Heo <tj@kernel.org>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, Long Cheng <long.cheng@mediatek.com>
+In-Reply-To: <1502779370-30150-2-git-send-email-weiyi.lu@mediatek.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: weiyi.lu@mediatek.com
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, James Liao <jamesjj.liao@mediatek.com>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Aug 12, 2017 at 09:31:04AM +0800, Ryder Lee wrote:
-> Add DT bindings for the onboard SATA controller present on the MediaTek
-> SoCs.
+On Tue, Aug 15, 2017 at 02:42:42PM +0800, weiyi.lu@mediatek.com wrote:
+> From: Weiyi Lu <weiyi.lu@mediatek.com>
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> This patch adds the binding documentation for apmixedsys, bdpsys,
+> imgsys, imgsys, infracfg, mcucfg, mfgcfg, mmsys, pericfg, topckgen,
+> vdecsys and vencsys for Mediatek MT2712.
+> 
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/ata/ahci-mtk.txt | 51 ++++++++++++++++++++++
->  1 file changed, 51 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/ata/ahci-mtk.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/ata/ahci-mtk.txt b/Documentation/devicetree/bindings/ata/ahci-mtk.txt
-> new file mode 100644
-> index 0000000..96c8d22
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/ata/ahci-mtk.txt
-> @@ -0,0 +1,51 @@
-> +MediaTek Serial ATA controller
-> +
-> +Required properties:
-> + - compatible	   : Must be "mediatek,soc-model-ahci", "mediatek,mtk-ahci".
-
-Instead of "soc-model", pick something checkpatch.pl understands. IIRC, 
-"<chip>" is one.
-
-With that,
+>  .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |  1 +
+>  .../bindings/arm/mediatek/mediatek,bdpsys.txt      |  1 +
+>  .../bindings/arm/mediatek/mediatek,imgsys.txt      |  1 +
+>  .../bindings/arm/mediatek/mediatek,infracfg.txt    |  1 +
+>  .../bindings/arm/mediatek/mediatek,jpgdecsys.txt   | 22 ++++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,mcucfg.txt      | 22 ++++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,mfgcfg.txt      | 22 ++++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,mmsys.txt       |  1 +
+>  .../bindings/arm/mediatek/mediatek,pericfg.txt     |  1 +
+>  .../bindings/arm/mediatek/mediatek,topckgen.txt    |  1 +
+>  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |  1 +
+>  .../bindings/arm/mediatek/mediatek,vencsys.txt     |  1 +
+>  12 files changed, 75 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,jpgdecsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mcucfg.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
 
 Acked-by: Rob Herring <robh@kernel.org>
