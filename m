@@ -1,263 +1,73 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v1 6/9] soc: mediatek: add bus protection extend API
-Date: Thu, 17 Aug 2017 12:57:44 +0200
-Message-ID: <a179cf17-0380-f47e-645e-92f38b0e1917@gmail.com>
-References: <1502779370-30150-1-git-send-email-weiyi.lu@mediatek.com>
- <1502779370-30150-7-git-send-email-weiyi.lu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [GIT PULL] arm: mediatek: soc updates for v4.14
+Date: Thu, 17 Aug 2017 15:27:25 +0200
+Message-ID: <9f782ba3-4c03-10a9-07c5-b2b682f81846@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1502779370-30150-7-git-send-email-weiyi.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: weiyi.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Fan Chen <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: Arvind Yadav <arvind.yadav.cs@gmail.com>, Sean Wang <sean.wang@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Chen Zhong <chen.zhong@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Olof and Arnd,
 
+for v4.14 please take the following pull request into account.
 
-On 08/15/2017 08:42 AM, weiyi.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Weiyi Lu <weiyi.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> MT2712 add "set/clear" bus control register to each control register set
-> instead of providing only one "enable" control register, we could avoid
-> the read-modify-write racing by using extend API with such new design.
-> Also there exists the second bus control register set, we could not access
-> this setting via original API rather than the extend API.
-> By improving the mtk-infracfg bus protection implementation to
-> support set/clear bus protection control method and second
-> register set while power on/off scpsys.
-> 
-> Signed-off-by: Weiyi Lu <weiyi.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->   drivers/soc/mediatek/mtk-infracfg.c   | 90 +++++++++++++++++++++++++++++++++--
->   drivers/soc/mediatek/mtk-scpsys.c     | 36 ++++++++++++--
->   include/linux/soc/mediatek/infracfg.h | 14 +++++-
->   3 files changed, 132 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
-> index dba3055..63898e4 100644
-> --- a/drivers/soc/mediatek/mtk-infracfg.c
-> +++ b/drivers/soc/mediatek/mtk-infracfg.c
-> @@ -17,9 +17,6 @@
->   #include <linux/soc/mediatek/infracfg.h>
->   #include <asm/processor.h>
->   
-> -#define INFRA_TOPAXI_PROTECTEN		0x0220
-> -#define INFRA_TOPAXI_PROTECTSTA1	0x0228
-> -
->   /**
->    * mtk_infracfg_set_bus_protection - enable bus protection
->    * @regmap: The infracfg regmap
-> @@ -89,3 +86,90 @@ int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask)
->   
->   	return 0;
->   }
-> +
-> +/**
-> + * mtk_infracfg_set_bus_protection_ext - enable bus protection
-> + * @regmap: The infracfg regmap
-> + * @mask: The mask containing the protection bits to be enabled.
-> + * @reg_set: The register used to enable protection bits.
-> + * @reg_sta: The register used to check the protection bits are enabled.
-> + * @reg_en: The register used to enable protection bits when there doesn't
-> + *          exist reg_set.
-> + *
-> + * This function enables the bus protection bits for disabled power
-> + * domains so that the system does not hang when some unit accesses the
-> + * bus while in power down.
-> + */
-> +int mtk_infracfg_set_bus_protection_ext(struct regmap *infracfg, u32 mask,
-> +		u32 reg_set, u32 reg_sta, u32 reg_en)
-
-There is no need to add a new function. The only differences are:
-1. it passes the register offsets instead of assuming default ones
-2. it checks if reg_set/reg_clr and enables/disable.
-
-We should change the original function instead of adding a new one.
- From what I see, we are all done if we provide a boolean which tells infracfg 
-if it should use set/clear or update register.
-
-For now we don't have any user of INFRA_TOPAXI_PROTECTSTA3 (same for 
-*PROTECTEN1*). Do you expect one in the near future? If so, we could pass a 
-flags value instead of bool which points that out. It seems there is no need for 
-now to pass the register value.
-
-Regards,
+Thanks,
 Matthias
 
-> +{
-> +	unsigned long expired;
-> +	u32 val;
-> +	int ret;
-> +
-> +	if (reg_set)
-> +		regmap_write(infracfg, reg_set, mask);
-> +	else
-> +		regmap_update_bits(infracfg, reg_en, mask, mask);
-> +
-> +	expired = jiffies + HZ;
-> +
-> +	while (1) {
-> +		ret = regmap_read(infracfg, reg_sta, &val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		if ((val & mask) == mask)
-> +			break;
-> +
-> +		cpu_relax();
-> +		if (time_after(jiffies, expired))
-> +			return -EIO;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +/**
-> + * mtk_infracfg_clear_bus_protection_ext - disable bus protection
-> + * @regmap: The infracfg regmap
-> + * @mask: The mask containing the protection bits to be disabled.
-> + * @reg_clr: The register used to disable protection bits.
-> + * @reg_sta: The register used to check the protection bits are disabled.
-> + * @reg_en: The register used to disable protection bits when there doesn't
-> + *          exist reg_clr.
-> + *
-> + * This function disables the bus protection bits previously enabled with
-> + * mtk_infracfg_set_bus_protection.
-> + */
-> +
-> +int mtk_infracfg_clear_bus_protection_ext(struct regmap *infracfg, u32 mask,
-> +		u32 reg_clr, u32 reg_sta, u32 reg_en)
-> +{
-> +	unsigned long expired;
-> +	int ret;
-> +
-> +	if (reg_clr)
-> +		regmap_write(infracfg, reg_clr, mask);
-> +	else
-> +		regmap_update_bits(infracfg, reg_en, mask, 0);
-> +
-> +	expired = jiffies + HZ;
-> +
-> +	while (1) {
-> +		u32 val;
-> +
-> +		ret = regmap_read(infracfg, reg_sta, &val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		if (!(val & mask))
-> +			break;
-> +
-> +		cpu_relax();
-> +		if (time_after(jiffies, expired))
-> +			return -EIO;
-> +	}
-> +
-> +	return 0;
-> +}
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index ceb2cc4..b181ef2 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -89,6 +89,13 @@ enum clk_id {
->   
->   #define MAX_CLKS	2
->   
-> +struct bus_prot_ext {
-> +	u32 set_ofs;
-> +	u32 clr_ofs;
-> +	u32 en_ofs;
-> +	u32 sta_ofs;
-> +};
-> +
->   struct scp_domain_data {
->   	const char *name;
->   	u32 sta_mask;
-> @@ -96,6 +103,7 @@ struct scp_domain_data {
->   	u32 sram_pdn_bits;
->   	u32 sram_pdn_ack_bits;
->   	u32 bus_prot_mask;
-> +	struct bus_prot_ext bp_ext;
->   	enum clk_id clk_id[MAX_CLKS];
->   	bool active_wakeup;
->   };
-> @@ -228,8 +236,18 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->   	}
->   
->   	if (scpd->data->bus_prot_mask) {
-> -		ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
-> -				scpd->data->bus_prot_mask);
-> +		if (((scpd->data->bp_ext.set_ofs && scpd->data->bp_ext.clr_ofs)
-> +			|| scpd->data->bp_ext.en_ofs)
-> +			&& scpd->data->bp_ext.sta_ofs)
-> +			ret = mtk_infracfg_clear_bus_protection_ext(
-> +					scp->infracfg,
-> +					scpd->data->bus_prot_mask,
-> +					scpd->data->bp_ext.clr_ofs,
-> +					scpd->data->bp_ext.sta_ofs,
-> +					scpd->data->bp_ext.en_ofs);
-> +		else
-> +			ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
-> +					scpd->data->bus_prot_mask);
->   		if (ret)
->   			goto err_pwr_ack;
->   	}
-> @@ -263,8 +281,18 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->   	int i;
->   
->   	if (scpd->data->bus_prot_mask) {
-> -		ret = mtk_infracfg_set_bus_protection(scp->infracfg,
-> -				scpd->data->bus_prot_mask);
-> +		if (((scpd->data->bp_ext.set_ofs && scpd->data->bp_ext.clr_ofs)
-> +			|| scpd->data->bp_ext.en_ofs)
-> +			&& scpd->data->bp_ext.sta_ofs)
-> +			ret = mtk_infracfg_set_bus_protection_ext(
-> +					scp->infracfg,
-> +					scpd->data->bus_prot_mask,
-> +					scpd->data->bp_ext.set_ofs,
-> +					scpd->data->bp_ext.sta_ofs,
-> +					scpd->data->bp_ext.en_ofs);
-> +		else
-> +			ret = mtk_infracfg_set_bus_protection(scp->infracfg,
-> +					scpd->data->bus_prot_mask);
->   		if (ret)
->   			goto out;
->   	}
-> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-> index a5714e9..d3fbb45 100644
-> --- a/include/linux/soc/mediatek/infracfg.h
-> +++ b/include/linux/soc/mediatek/infracfg.h
-> @@ -1,6 +1,15 @@
->   #ifndef __SOC_MEDIATEK_INFRACFG_H
->   #define __SOC_MEDIATEK_INFRACFG_H
->   
-> +#define INFRA_TOPAXI_PROTECTEN		0x0220
-> +#define INFRA_TOPAXI_PROTECTSTA1	0x0228
-> +#define INFRA_TOPAXI_PROTECTEN1		0x0250
-> +#define INFRA_TOPAXI_PROTECTSTA3	0x0258
-> +#define INFRA_TOPAXI_PROTECTEN_SET	0x0260
-> +#define INFRA_TOPAXI_PROTECTEN_CLR	0x0264
-> +#define INFRA_TOPAXI_PROTECTEN1_SET	0x0270
-> +#define INFRA_TOPAXI_PROTECTEN1_CLR	0x0274
-> +
->   #define MT8173_TOP_AXI_PROT_EN_MCI_M2		BIT(0)
->   #define MT8173_TOP_AXI_PROT_EN_MM_M0		BIT(1)
->   #define MT8173_TOP_AXI_PROT_EN_MM_M1		BIT(2)
-> @@ -22,5 +31,8 @@
->   
->   int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask);
->   int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask);
-> -
-> +int mtk_infracfg_set_bus_protection_ext(struct regmap *infracfg, u32 mask,
-> +		u32 reg_set, u32 reg_sta, u32 reg_en);
-> +int mtk_infracfg_clear_bus_protection_ext(struct regmap *infracfg, u32 mask,
-> +		u32 reg_clr, u32 reg_sta, u32 reg_en);
->   #endif /* __SOC_MEDIATEK_INFRACFG_H */
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+---
+
+The following changes since commit 5771a8c08880cdca3bfb4a3fc6d309d6bba20877:
+
+   Linux v4.13-rc1 (2017-07-15 15:22:10 -0700)
+
+are available in the git repository at:
+
+   https://github.com/mbgg/linux-mediatek.git tags/v4.13-next-soc
+
+for you to fetch changes up to 52510ee934885ec846faaa5d029329c9ba0e6ecc:
+
+   soc: mediatek: add SCPSYS power domain driver for MediaTek MT7622 SoC 
+(2017-08-14 17:28:40 +0200)
+
+----------------------------------------------------------------
+- add mt7623a smp support
+- scpsys: reduce code duplication
+- scpsys: add mt7622 support
+- pmic wrapper: make of_device_ids constant
+
+----------------------------------------------------------------
+Arvind Yadav (1):
+       soc: mtk-pmic-wrap: make of_device_ids const.
+
+Chen Zhong (1):
+       soc: mediatek: add header files required for MT7622 SCPSYS dt-binding
+
+Sean Wang (4):
+       ARM: mediatek: add MT7623a smp bringup code
+       dt-bindings: soc: update the binding document for SCPSYS on MediaTek 
+MT7622 SoC
+       soc: mediatek: reduce code duplication of scpsys_probe across all SoCs
+       soc: mediatek: add SCPSYS power domain driver for MediaTek MT7622 SoC
+
+  .../devicetree/bindings/soc/mediatek/scpsys.txt    |   3 +
+  arch/arm/mach-mediatek/mediatek.c                  |   2 +
+  arch/arm/mach-mediatek/platsmp.c                   |   1 +
+  drivers/soc/mediatek/mtk-pmic-wrap.c               |   6 +-
+  drivers/soc/mediatek/mtk-scpsys.c                  | 247 ++++++++++++---------
+  include/dt-bindings/power/mt7622-power.h           |  22 ++
+  include/linux/soc/mediatek/infracfg.h              |   7 +
+  7 files changed, 185 insertions(+), 103 deletions(-)
+  create mode 100644 include/dt-bindings/power/mt7622-power.h
