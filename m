@@ -1,78 +1,90 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [Resend GIT PULL] arm: mediatek: soc updates for v4.14
-Date: Thu, 17 Aug 2017 15:43:37 +0200
-Message-ID: <7b07d6c6-94ab-6cbd-0fea-7bc85a928f5a@gmail.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 4/4] dt-bindings: phy-mt65xx-usb: supports PCIe, SATA
+ and rename file
+Date: Thu, 17 Aug 2017 10:10:20 -0500
+Message-ID: <20170817151020.d2gyvdhbpicybwe4@rob-hp-laptop>
+References: <d58705436a2563b87a67609a472db3c3d84b36f5.1502256365.git.chunfeng.yun@mediatek.com>
+ <b2d4141dd3c0dc33d60a727561014d91c5f70176.1502256365.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <b2d4141dd3c0dc33d60a727561014d91c5f70176.1502256365.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Olof and Arnd,
+On Wed, Aug 09, 2017 at 01:29:49PM +0800, Chunfeng Yun wrote:
+> add support for PCIe and SATA, also add some new compatibles.
 
-for v4.14 please take the following pull request into account.
+s/add/Add/
 
-I resend this message, because some problems in my mail setup made 
-linux+armsoc-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org to reject my email.
+> 
+> due to phy-mt65xx-usb.txt holds the bindings for all mediatek SoCs
 
-Sorry for the inconvenience.
+s/due/Due/
 
-Thanks,
-Matthias
+> with T-PHY controller, change the name to phy-mtk-tphy.txt to
+> reflect that.
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  .../phy/{phy-mt65xx-usb.txt => phy-mtk-tphy.txt}        | 17 ++++++++++++-----
+>  1 file changed, 12 insertions(+), 5 deletions(-)
+>  rename Documentation/devicetree/bindings/phy/{phy-mt65xx-usb.txt => phy-mtk-tphy.txt} (88%)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+> similarity index 88%
+> rename from Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> rename to Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+> index 0acc5a9..faf1808 100644
+> --- a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> +++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+> @@ -1,13 +1,18 @@
+> -mt65xx USB3.0 PHY binding
+> +MediaTek T-PHY binding
+>  --------------------------
+>  
+> -This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
+> +T-phy controller supports physical layer functionality for a number of
+> +controllers on MediaTek SoCs, such as, USB2.0, USB3.0, PCIe, and SATA.
+>  
+>  Required properties (controller (parent) node):
+>   - compatible	: should be one of
+> -		  "mediatek,mt2701-u3phy"
+> -		  "mediatek,mt2712-u3phy"
+> -		  "mediatek,mt8173-u3phy"
+> +		  "mediatek,generic-tphy-v1"
+> +		  "mediatek,generic-tphy-v2"
+> +		  "mediatek,mt2701-u3phy" (deprecated)
+> +		  "mediatek,mt2712-u3phy" (deprecated)
 
----
+SoC specific compatibles should not be deprecated.
 
-The following changes since commit 5771a8c08880cdca3bfb4a3fc6d309d6bba20877:
-
-   Linux v4.13-rc1 (2017-07-15 15:22:10 -0700)
-
-are available in the git repository at:
-
-   https://github.com/mbgg/linux-mediatek.git tags/v4.13-next-soc
-
-for you to fetch changes up to 52510ee934885ec846faaa5d029329c9ba0e6ecc:
-
-   soc: mediatek: add SCPSYS power domain driver for MediaTek MT7622 SoC 
-(2017-08-14 17:28:40 +0200)
-
-----------------------------------------------------------------
-- add mt7623a smp support
-- scpsys: reduce code duplication
-- scpsys: add mt7622 support
-- pmic wrapper: make of_device_ids constant
-
-----------------------------------------------------------------
-Arvind Yadav (1):
-       soc: mtk-pmic-wrap: make of_device_ids const.
-
-Chen Zhong (1):
-       soc: mediatek: add header files required for MT7622 SCPSYS dt-binding
-
-Sean Wang (4):
-       ARM: mediatek: add MT7623a smp bringup code
-       dt-bindings: soc: update the binding document for SCPSYS on MediaTek 
-MT7622 SoC
-       soc: mediatek: reduce code duplication of scpsys_probe across all SoCs
-       soc: mediatek: add SCPSYS power domain driver for MediaTek MT7622 SoC
-
-  .../devicetree/bindings/soc/mediatek/scpsys.txt    |   3 +
-  arch/arm/mach-mediatek/mediatek.c                  |   2 +
-  arch/arm/mach-mediatek/platsmp.c                   |   1 +
-  drivers/soc/mediatek/mtk-pmic-wrap.c               |   6 +-
-  drivers/soc/mediatek/mtk-scpsys.c                  | 247 ++++++++++++---------
-  include/dt-bindings/power/mt7622-power.h           |  22 ++
-  include/linux/soc/mediatek/infracfg.h              |   7 +
-  7 files changed, 185 insertions(+), 103 deletions(-)
-  create mode 100644 include/dt-bindings/power/mt7622-power.h
+> +		  "mediatek,mt8173-u3phy";
+> +		  make use of "mediatek,generic-tphy-v1" on mt2701 instead and
+> +		  "mediatek,generic-tphy-v2" on mt2712 instead.
+>   - clocks	: (deprecated, use port's clocks instead) a list of phandle +
+>  		  clock-specifier pairs, one for each entry in clock-names
+>   - clock-names	: (deprecated, use port's one instead) must contain
+> @@ -35,6 +40,8 @@ Required properties (port (child) node):
+>  		  cell after port phandle is phy type from:
+>  			- PHY_TYPE_USB2
+>  			- PHY_TYPE_USB3
+> +			- PHY_TYPE_PCIE
+> +			- PHY_TYPE_SATA
+>  
+>  Example:
+>  
+> -- 
+> 1.9.1
+> 
+> --
+> To unsubscribe from this list: send the line "unsubscribe devicetree" in
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
