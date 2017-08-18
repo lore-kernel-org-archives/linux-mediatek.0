@@ -1,83 +1,86 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Applied "ASoC: mediatek: Add interrupt-names property in binding text" to the asoc tree
-Date: Fri, 18 Aug 2017 12:48:42 +0100
-Message-ID: <E1difla-0000tV-Sq@finisterre>
-References: <8e309915033984c0b949254beef44a8307f479f4.1503019482.git.ryder.lee@mediatek.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <8e309915033984c0b949254beef44a8307f479f4.1503019482.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.orgalsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH 4/4] phy: tegra: use of_device_get_match_data()
+Date: Fri, 18 Aug 2017 14:42:03 +0200
+Message-ID: <20170818124203.GA4556@ulmo>
+References: <1502270280-13792-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1502270280-13792-4-git-send-email-chunfeng.yun@mediatek.com>
+Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="T4sUOijqQbZv57TR"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1502270280-13792-4-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Kamil Debski <kamil@wypas.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Jonathan Hunter <jonathanh@nvidia.com>, Matthias Brugger <matthias.bgg@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Lee Jones <lee.jones@linaro.org>, Vivek Gautam <vivek.gautam@codeaurora.org>, Axel Lin <axel.lin@ingics.com>, Baoyou Xie <baoyou.xie@linaro.org>, Arnd Bergmann <arnd@arndb.de>, Sekhar Nori <nsekhar@ti.com>, Viresh Kumar <viresh.kumar@linaro.org>, Jaehoon Chung <jh80.chung@samsung.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.orglin
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
 
-   ASoC: mediatek: Add interrupt-names property in binding text
+--T4sUOijqQbZv57TR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-has been applied to the asoc tree at
+On Wed, Aug 09, 2017 at 05:18:00PM +0800, Chunfeng Yun wrote:
+> reduce the boilerplate code to get the specific data
+>=20
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  drivers/phy/tegra/xusb.c |    6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+You're not reducing by much here. =3D)
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+> diff --git a/drivers/phy/tegra/xusb.c b/drivers/phy/tegra/xusb.c
+> index 3cbcb25..25cdfb1 100644
+> --- a/drivers/phy/tegra/xusb.c
+> +++ b/drivers/phy/tegra/xusb.c
+> @@ -848,7 +848,6 @@ static int tegra_xusb_padctl_probe(struct platform_de=
+vice *pdev)
+>  	struct device_node *np =3D of_node_get(pdev->dev.of_node);
+>  	const struct tegra_xusb_padctl_soc *soc;
+>  	struct tegra_xusb_padctl *padctl;
+> -	const struct of_device_id *match;
+>  	struct resource *res;
+>  	int err;
+> =20
+> @@ -861,8 +860,9 @@ static int tegra_xusb_padctl_probe(struct platform_de=
+vice *pdev)
+> =20
+>  	of_node_put(np);
+> =20
+> -	match =3D of_match_node(tegra_xusb_padctl_of_match, pdev->dev.of_node);
+> -	soc =3D match->data;
+> +	soc =3D of_device_get_match_data(&pdev->dev);
+> +	if (!soc)
+> +		return -EINVAL;
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+This is never going to happen. There will always be a match, otherwise
+this function would never be called.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+Also, if you omit these last two lines, then you actually do reduce the
+boilerplate.
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+Thierry
 
-Thanks,
-Mark
+--T4sUOijqQbZv57TR
+Content-Type: application/pgp-signature; name="signature.asc"
 
->From 57127d9b8bcbecaac9470f62361570939dde49fd Mon Sep 17 00:00:00 2001
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Date: Fri, 18 Aug 2017 09:28:49 +0800
-Subject: [PATCH] ASoC: mediatek: Add interrupt-names property in binding text
+-----BEGIN PGP SIGNATURE-----
 
-Add interrupt-names property in DT - if future revisions of the IP
-have different sets of interrupts the binding can adapt gracefully.
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlmW4JgACgkQ3SOs138+
+s6HZeA/+JZndCg9U/ujFpVP64Fa46vJ+TIk6H8Y1Bba9fMQCVVvGTMRBB83bRFw3
+/9Ftr3ih5HSYVb7SJAH8v0Uwp3AUAMENOkkllBoXmZj8+paBDk5CACy+uyM1k2Vr
+Uj6+UK05jNoQv7RhtdOoVz5YBwypMyMVaYSYrOUMHnI4VkppPEwgqMXY/4BY+vUf
+QRSTZC03rPG4vamuyQ4eVDnmxUaoDUezodpCrdil7UZ2X12BLJfuY1G/xTcH8imJ
+/LCglKY0ET0SZYgCvOBhYwD48Km21tPIdzJ/VSsyTishn5ZZHi9reYHVwJWKuTBm
+0Xu1A/mAM6G2k2nkqSTAATLzV+Fj19Ivz/KI5ddmJ+1edf/D64mEhT3Y4uVvFQBF
+9NQJ/fgRI0V2O4O21owl2y3N+oPvWJFdyktopmUi4n4dk/nmyPxYZ26OzJuwDGoE
+og7JOdUF5L2czOJkNmc0YmFOfWloatp6FJYSMH8AC5lt4koiceGSNhNrf2nTHT7a
+qsDcZRnzsQh8AlPBhFmTnC96ZGlfOKl8YSh4cJf/FnRFo6FbvRgkjybNqpTE0bSz
+qYrk3eGV2wEfqn2Iphq2pqqRTmQNLOINdM09etnecL7SyA0hZGDZaPFHnLWOut+y
+Ov2oJfNvQa9Pryr6kMTx2wkMr1S0hkN79TdDBBxceH+k1bj/ZJA=
+=zQR5
+-----END PGP SIGNATURE-----
 
-Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-CC: Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt b/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
-index 9800a560e0c2..77a57f84bed4 100644
---- a/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
-+++ b/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
-@@ -3,7 +3,8 @@ Mediatek AFE PCM controller for mt2701
- Required properties:
- - compatible = "mediatek,mt2701-audio";
- - reg: register location and size
--- interrupts: Should contain AFE interrupt
-+- interrupts: should contain AFE and ASYS interrupts
-+- interrupt-names: should be "afe" and "asys"
- - power-domains: should define the power domain
- - clock-names: should have these clock names:
- 		"infra_sys_audio_clk",
-@@ -59,6 +60,7 @@ Example:
- 		      <0 0x112A0000 0 0x20000>;
- 		interrupts = <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
- 			     <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
-+		interrupt-names	= "afe", "asys";
- 		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
- 		clocks = <&infracfg CLK_INFRA_AUDIO>,
- 			 <&topckgen CLK_TOP_AUD_MUX1_SEL>,
--- 
-2.13.2
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--T4sUOijqQbZv57TR--
