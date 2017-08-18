@@ -1,62 +1,85 @@
 From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v1 2/2] ASoC: mediatek: switch to use platform_get_irq_byname()
-Date: Fri, 18 Aug 2017 09:28:50 +0800
-Message-ID: <3c24b787fab90c898450a3027b2d11bf1c04ff24.1503019482.git.ryder.lee@mediatek.com>
-References: <8e309915033984c0b949254beef44a8307f479f4.1503019482.git.ryder.lee@mediatek.com>
+Subject: [PATCH] pinctrl: mediatek: update PCIe mux data for MT7623
+Date: Fri, 18 Aug 2017 11:48:05 +0800
+Message-ID: <ddbc91742005abfc9083876fb976ecc511be98fd.1503026874.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <8e309915033984c0b949254beef44a8307f479f4.1503019482.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Garlic Tseng <garlic.tseng@mediatek.com>
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, Biao Huang <biao.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Switch to use platform_get_irq_byname() so that binding can be agnostic
-of the IRQ order.
+MT2701 shares the same driver with MT7623, but there is a slight difference
+between their pin functions (e.g., PCIe), so we update the different parts
+in pinmux table.
+
+Doing so, SoC could choose the correct mux setting via their own pinfun.h.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-CC: Garlic Tseng <garlic.tseng@mediatek.com>
+CC: Biao Huang <biao.huang@mediatek.com>
 ---
- sound/soc/mediatek/mt2701/mt2701-afe-pcm.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-index bc5d4db..c7d38bf 100644
---- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-+++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-@@ -1496,14 +1496,12 @@ static int mt2701_afe_runtime_resume(struct device *dev)
- 
- static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
- {
--	int ret, i;
--	unsigned int irq_id;
- 	struct mtk_base_afe *afe;
- 	struct mt2701_afe_private *afe_priv;
- 	struct resource *res;
- 	struct device *dev;
-+	int i, irq_id, ret;
- 
--	ret = 0;
- 	afe = devm_kzalloc(&pdev->dev, sizeof(*afe), GFP_KERNEL);
- 	if (!afe)
- 		return -ENOMEM;
-@@ -1516,11 +1514,12 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
- 	afe->dev = &pdev->dev;
- 	dev = afe->dev;
- 
--	irq_id = platform_get_irq(pdev, 0);
--	if (!irq_id) {
--		dev_err(dev, "%s no irq found\n", dev->of_node->name);
--		return -ENXIO;
-+	irq_id = platform_get_irq_byname(pdev, "asys");
-+	if (irq_id < 0) {
-+		dev_err(dev, "unable to get ASYS IRQ\n");
-+		return irq_id;
- 	}
-+
- 	ret = devm_request_irq(dev, irq_id, mt2701_asys_isr,
- 			       IRQF_TRIGGER_NONE, "asys-isr", (void *)afe);
- 	if (ret) {
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h b/drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h
+index f906420..1035df4 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h
+@@ -223,6 +223,8 @@
+ 		MTK_EINT_FUNCTION(0, 0),
+ 		MTK_FUNCTION(0, "GPIO22"),
+ 		MTK_FUNCTION(1, "UCTS0"),
++		/* MT7623 take function 2 as PCIE0_PERST_N */
++		MTK_FUNCTION(2, "PCIE0_PERST_N"),
+ 		MTK_FUNCTION(3, "KCOL3"),
+ 		MTK_FUNCTION(4, "CONN_DSP_JDO"),
+ 		MTK_FUNCTION(5, "EXT_FRAME_SYNC"),
+@@ -235,6 +237,8 @@
+ 		MTK_EINT_FUNCTION(0, 1),
+ 		MTK_FUNCTION(0, "GPIO23"),
+ 		MTK_FUNCTION(1, "URTS0"),
++		/* MT7623 take function 2 as PCIE1_PERST_N */
++		MTK_FUNCTION(2, "PCIE1_PERST_N"),
+ 		MTK_FUNCTION(3, "KCOL2"),
+ 		MTK_FUNCTION(4, "CONN_MCU_TDO"),
+ 		MTK_FUNCTION(5, "EXT_FRAME_SYNC"),
+@@ -247,6 +251,8 @@
+ 		MTK_EINT_FUNCTION(0, 2),
+ 		MTK_FUNCTION(0, "GPIO24"),
+ 		MTK_FUNCTION(1, "UCTS1"),
++		/* MT7623 take function 2 as PCIE2_PERST_N */
++		MTK_FUNCTION(2, "PCIE2_PERST_N"),
+ 		MTK_FUNCTION(3, "KCOL1"),
+ 		MTK_FUNCTION(4, "CONN_MCU_DBGACK_N"),
+ 		MTK_FUNCTION(7, "DBG_MON_A[28]"),
+@@ -308,6 +314,8 @@
+ 		MTK_FUNCTION(3, "KROW0"),
+ 		MTK_FUNCTION(4, "CONN_MCU_TMS"),
+ 		MTK_FUNCTION(5, "CONN_MCU_AICE_JMSC"),
++		/* MT7623 take function 6 as PCIE2_PERST_N */
++		MTK_FUNCTION(6, "PCIE2_PERST_N"),
+ 		MTK_FUNCTION(7, "DBG_MON_A[23]"),
+ 		MTK_FUNCTION(14, "PCIE2_PERST_N")
+ 	),
+@@ -1787,6 +1795,8 @@
+ 		MTK_FUNCTION(0, "GPIO208"),
+ 		MTK_FUNCTION(1, "AUD_EXT_CK1"),
+ 		MTK_FUNCTION(2, "PWM0"),
++		/* MT7623 take function 3 as PCIE0_PERST_N */
++		MTK_FUNCTION(3, "PCIE0_PERST_N"),
+ 		MTK_FUNCTION(4, "ANT_SEL5"),
+ 		MTK_FUNCTION(5, "DISP_PWM"),
+ 		MTK_FUNCTION(7, "DBG_MON_A[31]"),
+@@ -1799,6 +1809,8 @@
+ 		MTK_FUNCTION(0, "GPIO209"),
+ 		MTK_FUNCTION(1, "AUD_EXT_CK2"),
+ 		MTK_FUNCTION(2, "MSDC1_WP"),
++		/* MT7623 take function 3 as PCIE1_PERST_N */
++		MTK_FUNCTION(3, "PCIE1_PERST_N"),
+ 		MTK_FUNCTION(5, "PWM1"),
+ 		MTK_FUNCTION(7, "DBG_MON_A[32]"),
+ 		MTK_FUNCTION(11, "PCIE1_PERST_N")
 -- 
 1.9.1
+
