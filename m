@@ -1,85 +1,248 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH] pinctrl: mediatek: update PCIe mux data for MT7623
-Date: Fri, 18 Aug 2017 11:48:05 +0800
-Message-ID: <ddbc91742005abfc9083876fb976ecc511be98fd.1503026874.git.ryder.lee@mediatek.com>
+From: Harvey Hunt <Harvey.Hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH] MIPS: dts: ralink: Add Mediatek MT7628A SoC
+Date: Fri, 18 Aug 2017 10:42:52 +0100
+Message-ID: <97c83648-3710-cb9a-a065-9fbe8dd1b734@imgtec.com>
+References: <1502814530-40604-1-git-send-email-harvey.hunt@imgtec.com>
+ <20170817213426.34shgxwnjowcg4sk@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, Biao Huang <biao.huang@mediatek.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170817213426.34shgxwnjowcg4sk@rob-hp-laptop>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, ralf-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-MT2701 shares the same driver with MT7623, but there is a slight difference
-between their pin functions (e.g., PCIe), so we update the different parts
-in pinmux table.
+Hi Rob,
 
-Doing so, SoC could choose the correct mux setting via their own pinfun.h.
+Thanks for the review.
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-CC: Biao Huang <biao.huang@mediatek.com>
----
- drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+On 17/08/17 22:34, Rob Herring wrote:
+> On Tue, Aug 15, 2017 at 05:28:50PM +0100, Harvey Hunt wrote:
+>> The MT7628A is the successor to the MT7620 and pin compatible with the
+>> MT7688A, although the latter supports only a 1T1R antenna rather than
+>> a 2T2R antenna.
+>>
+>> This commit adds support for the following features:
+>>
+>> - UART
+>> - USB PHY
+>> - EHCI
+>> - Interrupt controller
+>> - System controller
+>> - Memory controller
+>> - Reset controller
+>>
+>> Signed-off-by: Harvey Hunt <harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>
+>> Cc: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+>> Cc: linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org
+>> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+>> Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+>> Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+>> ---
+>>   Documentation/devicetree/bindings/mips/ralink.txt |   1 +
+>>   arch/mips/boot/dts/ralink/mt7628a.dtsi            | 125 ++++++++++++++++++++++
+>>   2 files changed, 126 insertions(+)
+>>   create mode 100644 arch/mips/boot/dts/ralink/mt7628a.dtsi
+>>
+>> diff --git a/Documentation/devicetree/bindings/mips/ralink.txt b/Documentation/devicetree/bindings/mips/ralink.txt
+>> index b35a8d0..a16e8d7 100644
+>> --- a/Documentation/devicetree/bindings/mips/ralink.txt
+>> +++ b/Documentation/devicetree/bindings/mips/ralink.txt
+>> @@ -15,3 +15,4 @@ value must be one of the following values:
+>>     ralink,rt5350-soc
+>>     ralink,mt7620a-soc
+>>     ralink,mt7620n-soc
+>> +  ralink,mt7628a-soc
+>> diff --git a/arch/mips/boot/dts/ralink/mt7628a.dtsi b/arch/mips/boot/dts/ralink/mt7628a.dtsi
+>> new file mode 100644
+>> index 0000000..8461fe9
+>> --- /dev/null
+>> +++ b/arch/mips/boot/dts/ralink/mt7628a.dtsi
+>> @@ -0,0 +1,125 @@
+>> +/ {
+>> +	#address-cells = <1>;
+>> +	#size-cells = <1>;
+>> +	compatible = "ralink,mt7628a-soc";
+>> +
+>> +	cpus {
+>> +		#address-cells = <1>;
+>> +		#size-cells = <0>;
+>> +
+>> +		cpu@0 {
+>> +			compatible = "mti,mips24KEc";
+>> +			device_type = "cpu";
+>> +			reg = <0>;
+>> +		};
+>> +	};
+>> +
+>> +	resetctrl: resetctrl {
+> 
+> reset-controller {
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h b/drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h
-index f906420..1035df4 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h
-@@ -223,6 +223,8 @@
- 		MTK_EINT_FUNCTION(0, 0),
- 		MTK_FUNCTION(0, "GPIO22"),
- 		MTK_FUNCTION(1, "UCTS0"),
-+		/* MT7623 take function 2 as PCIE0_PERST_N */
-+		MTK_FUNCTION(2, "PCIE0_PERST_N"),
- 		MTK_FUNCTION(3, "KCOL3"),
- 		MTK_FUNCTION(4, "CONN_DSP_JDO"),
- 		MTK_FUNCTION(5, "EXT_FRAME_SYNC"),
-@@ -235,6 +237,8 @@
- 		MTK_EINT_FUNCTION(0, 1),
- 		MTK_FUNCTION(0, "GPIO23"),
- 		MTK_FUNCTION(1, "URTS0"),
-+		/* MT7623 take function 2 as PCIE1_PERST_N */
-+		MTK_FUNCTION(2, "PCIE1_PERST_N"),
- 		MTK_FUNCTION(3, "KCOL2"),
- 		MTK_FUNCTION(4, "CONN_MCU_TDO"),
- 		MTK_FUNCTION(5, "EXT_FRAME_SYNC"),
-@@ -247,6 +251,8 @@
- 		MTK_EINT_FUNCTION(0, 2),
- 		MTK_FUNCTION(0, "GPIO24"),
- 		MTK_FUNCTION(1, "UCTS1"),
-+		/* MT7623 take function 2 as PCIE2_PERST_N */
-+		MTK_FUNCTION(2, "PCIE2_PERST_N"),
- 		MTK_FUNCTION(3, "KCOL1"),
- 		MTK_FUNCTION(4, "CONN_MCU_DBGACK_N"),
- 		MTK_FUNCTION(7, "DBG_MON_A[28]"),
-@@ -308,6 +314,8 @@
- 		MTK_FUNCTION(3, "KROW0"),
- 		MTK_FUNCTION(4, "CONN_MCU_TMS"),
- 		MTK_FUNCTION(5, "CONN_MCU_AICE_JMSC"),
-+		/* MT7623 take function 6 as PCIE2_PERST_N */
-+		MTK_FUNCTION(6, "PCIE2_PERST_N"),
- 		MTK_FUNCTION(7, "DBG_MON_A[23]"),
- 		MTK_FUNCTION(14, "PCIE2_PERST_N")
- 	),
-@@ -1787,6 +1795,8 @@
- 		MTK_FUNCTION(0, "GPIO208"),
- 		MTK_FUNCTION(1, "AUD_EXT_CK1"),
- 		MTK_FUNCTION(2, "PWM0"),
-+		/* MT7623 take function 3 as PCIE0_PERST_N */
-+		MTK_FUNCTION(3, "PCIE0_PERST_N"),
- 		MTK_FUNCTION(4, "ANT_SEL5"),
- 		MTK_FUNCTION(5, "DISP_PWM"),
- 		MTK_FUNCTION(7, "DBG_MON_A[31]"),
-@@ -1799,6 +1809,8 @@
- 		MTK_FUNCTION(0, "GPIO209"),
- 		MTK_FUNCTION(1, "AUD_EXT_CK2"),
- 		MTK_FUNCTION(2, "MSDC1_WP"),
-+		/* MT7623 take function 3 as PCIE1_PERST_N */
-+		MTK_FUNCTION(3, "PCIE1_PERST_N"),
- 		MTK_FUNCTION(5, "PWM1"),
- 		MTK_FUNCTION(7, "DBG_MON_A[32]"),
- 		MTK_FUNCTION(11, "PCIE1_PERST_N")
--- 
-1.9.1
+Done
 
+> 
+>> +		compatible = "ralink,rt2880-reset";
+>> +		#reset-cells = <1>;
+>> +	};
+>> +
+>> +	cpuintc: cpuintc {
+> 
+> interrupt-controller {
+
+Done
+
+> 
+>> +		#address-cells = <0>;
+>> +		#interrupt-cells = <1>;
+>> +		interrupt-controller;
+>> +		compatible = "mti,cpu-interrupt-controller";
+>> +	};
+>> +
+>> +	palmbus@10000000 {
+>> +		compatible = "palmbus";
+>> +		reg = <0x10000000 0x200000>;
+>> +		ranges = <0x0 0x10000000 0x1FFFFF>;
+>> +
+>> +		#address-cells = <1>;
+>> +		#size-cells = <1>;
+>> +
+>> +		sysc@0 {
+> 
+> system-controller@0
+
+Done
+
+> 
+>> +			compatible = "ralink,mt7620a-sysc";
+>> +			reg = <0x0 0x100>;
+>> +		};
+>> +
+>> +		intc: intc@200 {
+> 
+> interrupt-controller@200
+
+Done
+
+> 
+>> +			compatible = "ralink,rt2880-intc";
+>> +			reg = <0x200 0x100>;
+>> +
+>> +			interrupt-controller;
+>> +			#interrupt-cells = <1>;
+>> +
+>> +			resets = <&resetctrl 9>;
+>> +			reset-names = "intc";
+>> +
+>> +			interrupt-parent = <&cpuintc>;
+>> +			interrupts = <2>;
+>> +
+>> +			ralink,intc-registers = <0x9c 0xa0
+>> +						 0x6c 0xa4
+>> +						 0x80 0x78>;
+>> +		};
+>> +
+>> +		memc@300 {
+> 
+> memory-controller@300
+
+Done
+
+> 
+>> +			compatible = "ralink,mt7620a-memc";
+>> +			reg = <0x300 0x100>;
+>> +		};
+>> +
+>> +		uartlite@c00 {
+> 
+> serial@c00
+> 
+> And so on. IOW, use standard, generic node names as defined in the DT
+> spec.
+
+
+The clocks for the UARTs are using the device names "uartlite", "uart1" 
+and "uart2" (as defined in arch/mips/ralink/mt7620.c).
+
+Changing the name of the DT nodes causes the serial driver to bail as it 
+can't find the clock for the device.
+
+arch/mips/boot/dts/ralink/mt7620a.dtsi is already using the uartlite 
+name, although it hasn't been documented...
+
+Thanks,
+
+Harvey
+
+> 
+>> +			compatible = "ns16550a";
+>> +			reg = <0xc00 0x100>;
+>> +
+>> +			resets = <&resetctrl 12>;
+>> +			reset-names = "uart0";
+>> +
+>> +			interrupt-parent = <&intc>;
+>> +			interrupts = <20>;
+>> +
+>> +			reg-shift = <2>;
+>> +		};
+>> +
+>> +		uart1@d00 {
+>> +			compatible = "ns16550a";
+>> +			reg = <0xd00 0x100>;
+>> +
+>> +			resets = <&resetctrl 19>;
+>> +			reset-names = "uart1";
+>> +
+>> +			interrupt-parent = <&intc>;
+>> +			interrupts = <21>;
+>> +
+>> +			reg-shift = <2>;
+>> +		};
+>> +
+>> +		uart2@e00 {
+>> +			compatible = "ns16550a";
+>> +			reg = <0xe00 0x100>;
+>> +
+>> +			resets = <&resetctrl 20>;
+>> +			reset-names = "uart2";
+>> +
+>> +			interrupt-parent = <&intc>;
+>> +			interrupts = <22>;
+>> +
+>> +			reg-shift = <2>;
+>> +		};
+>> +	};
+>> +
+>> +	usbphy: uphy@10120000 {
+>> +		compatible = "mediatek,mt7628-usbphy";
+>> +		reg = <0x10120000 0x1000>;
+>> +
+>> +		#phy-cells = <0>;
+>> +
+>> +		resets = <&resetctrl 22 &resetctrl 25>;
+>> +		reset-names = "host", "device";
+>> +	};
+>> +
+>> +	ehci@101c0000 {
+>> +		compatible = "generic-ehci";
+>> +		reg = <0x101c0000 0x1000>;
+>> +
+>> +		phys = <&usbphy>;
+>> +		phy-names = "usb";
+>> +
+>> +		interrupt-parent = <&intc>;
+>> +		interrupts = <18>;
+>> +	};
+>> +};
+>> -- 
+>> 2.7.4
+>>
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
