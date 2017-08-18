@@ -1,97 +1,54 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH] MIPS: dts: ralink: Add Mediatek MT7628A SoC
-Date: Fri, 18 Aug 2017 10:31:29 -0500
-Message-ID: <CAL_Jsq+2e944JTYmU69JBUjD+iQY6ec7YUgk-_KR4Vks2jKnQg@mail.gmail.com>
-References: <1502814530-40604-1-git-send-email-harvey.hunt@imgtec.com>
- <20170817213426.34shgxwnjowcg4sk@rob-hp-laptop> <97c83648-3710-cb9a-a065-9fbe8dd1b734@imgtec.com>
- <CAL_Jsq+NZWkvibcL+CFWD8curFDKF2=bBzyCVsRyyiFOFwNBbg@mail.gmail.com> <73251933-33bf-416d-cf2a-0fad0337a512@imgtec.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL] arm: mediatek: dts32 updates for v4.14
+Date: Fri, 18 Aug 2017 22:41:07 +0200
+Message-ID: <CAK8P3a0HnyJq4LUQyv8zn5vKcybyY3avam8s=6UFcMSeqXVQbg@mail.gmail.com>
+References: <9434dcb8-d38d-ff3a-a6ce-2b27d3a74cef@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <73251933-33bf-416d-cf2a-0fad0337a512@imgtec.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Harvey Hunt <Harvey.Hunt@imgtec.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Ralf Baechle <ralf@linux-mips.org>, John Crispin <john@phrozen.org>, Linux-MIPS <linux-mips@linux-mips.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <9434dcb8-d38d-ff3a-a6ce-2b27d3a74cef@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Aug 18, 2017 at 9:11 AM, Harvey Hunt <Harvey.Hunt@imgtec.com> wrote:
-> Hi Rob,
+On Thu, Aug 17, 2017 at 3:37 PM, Matthias Brugger
+<matthias.bgg@gmail.com> wrote:
 >
-> On 18/08/17 15:04, Rob Herring wrote:
->>
->> On Fri, Aug 18, 2017 at 4:42 AM, Harvey Hunt <Harvey.Hunt@imgtec.com>
->> wrote:
->>>
->>> Hi Rob,
->>>
->>> Thanks for the review.
->>>
->>>
->>> On 17/08/17 22:34, Rob Herring wrote:
->>>>
->>>>
->>>> On Tue, Aug 15, 2017 at 05:28:50PM +0100, Harvey Hunt wrote:
->>>>>
->>>>>
->>>>> The MT7628A is the successor to the MT7620 and pin compatible with the
->>>>> MT7688A, although the latter supports only a 1T1R antenna rather than
->>>>> a 2T2R antenna.
->>
->>
->> [...]
->>
->>>>> +               uartlite@c00 {
->>>>
->>>>
->>>>
->>>> serial@c00
->>>>
->>>> And so on. IOW, use standard, generic node names as defined in the DT
->>>> spec.
->>>
->>>
->>>
->>>
->>> The clocks for the UARTs are using the device names "uartlite", "uart1"
->>> and
->>> "uart2" (as defined in arch/mips/ralink/mt7620.c).
->>
->>
->> You can't add clocks to the DT? Looks like mt76x8 at least should be
->> pretty easy with some fixed clocks.
->>
->> Depending if backwards compatibility (old dtb working on new kernel)
->> is a concern on these platforms, you could just change all the names
->> both in the kernel and dts.
+> The following changes since commit 5771a8c08880cdca3bfb4a3fc6d309d6bba20877:
 >
+>   Linux v4.13-rc1 (2017-07-15 15:22:10 -0700)
 >
-> I don't think backwards compatibility will matter - the bootloaders I've
-> come across don't ship DTBs with them and I don't think there are any ralink
-> devices using the upstream MT7620 DT.
+> are available in the git repository at:
 >
-> John might have some thoughts on backwards compat though.
+>   https://github.com/mbgg/linux-mediatek.git tags/v4.13-next-dts64
 >
->>
->>> Changing the name of the DT nodes causes the serial driver to bail as it
->>> can't find the clock for the device.
->>>
->>> arch/mips/boot/dts/ralink/mt7620a.dtsi is already using the uartlite
->>> name,
->>> although it hasn't been documented...
->>
->>
->> Generally the kernel shouldn't care what the names are (though you can
->> match by name, it's not widely used).
->>
->> In any case, I guess fixing this can be done later.
->>
->> Rob
->>
+> for you to fetch changes up to bdf2cbb2b3160122f7ff16445fdb73267fffd583:
 >
-> Shall I respin this patch with the earlier nodes (intc etc) renamed and then
-> send a patch later to rename the serial ports in the DT and kernel (assuming
-> there are no backwards compatibility issues)?
+>   arm64: dts: Add Mediatek SoC MT2712 and evaluation board dts and Makefile
+> (2017-08-17 15:33:45 +0200)
+>
+> ----------------------------------------------------------------
+> - add SoC mt7622 and its reference board
+> - cleanup of dts bindings
+> - mt6797: add watchdog and delete unused clock
+> - add support for SoC mt2701 and it's eval board
 
-Yes, that sounds find.
+Nice to see mt7622 support already getting merged, at least it seems this
+is getting there before the chip ends up in consumer devices, normally
+it's the other way round ;-)
 
-Rob
+Could you let me know what mt2712 is? I can't find anything about this
+chip, not even which business unit made it, and I'd like to have a brief
+description for most newly added hardware in my own pull requests.
+
+        Arnd
