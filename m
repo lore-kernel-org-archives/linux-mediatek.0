@@ -1,49 +1,81 @@
-From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 0/5] Add clk and scpsys support for MT6755
-Date: Sat, 19 Aug 2017 16:17:20 +0800
-Message-ID: <1503130640.8938.1.camel@mtkswgap22>
-References: <1502180014-7995-1-git-send-email-mars.cheng@mediatek.com>
-         <1502855993.4599.1.camel@mtkswgap22> <1502938079.4027.3.camel@mtksdaap41>
-         <341316e9-d7ce-85f1-4e54-f872771f530f@gmail.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v2 2/2] serial: 8250: of: Add new port type for MediaTek BTIF controller on MT7622/23 SoC
+Date: Sun, 20 Aug 2017 02:03:30 +0800
+Message-ID: <c2696f6a17ca5914098ad1da394834f8b4b30141.1503165144.git.sean.wang@mediatek.com>
+References: <cover.1503165144.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <341316e9-d7ce-85f1-4e54-f872771f530f-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wendell.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1503165144.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, gregkh@linuxfoundation.org, jslaby@suse.com, andriy.shevchenko@linux.intel.com, robert.jarzmik@free.fr, arnd@arndb.de, p.zabel@pengutronix.de, joel@jms.id.au, david@lechnology.com, jan.kiszka@siemens.com, heikki.krogerus@linux.intel.com, hpeter@gmail.com, vigneshr@ti.com, matthias.bgg@gmail.com, tthayer@opensource.altera.com
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias, Yingjoe
+From: Sean Wang <sean.wang@mediatek.com>
 
-On Thu, 2017-08-17 at 12:19 +0200, Matthias Brugger wrote:
-> 
-...
-> > Hi Mars,
-> > 
-> > Sean reworked the scpsys driver to remove code duplication, see:
-> > http://lists.infradead.org/pipermail/linux-mediatek/2017-August/009687.html
-> > http://lists.infradead.org/pipermail/linux-mediatek/2017-August/009820.html
-> > 
-> > I think current driver will have conflict and can't merge as-is, you'll
-> > need to rebase to Matthias' for-next branch.
-> > 
-> 
-> Yes, please rebase, which should be trivial. Other then that the scpsys driver 
-> looks good.
-> 
+MediaTek BTIF controller is the serial interface similar to UART but it
+works only as the digital device which is mainly used to communicate with
+the connectivity module called CONNSYS inside the SoC which could be mostly
+found on those MediaTek SoCs with Bluetooth feature such as MT7622 and
+MT7623 SoCs.
 
-Thanks for your review. I will rebase it and send the patch again soon.
+And the controller is made as being compatible with the 8250 register
+layout with extra registers such as DMA enablement so it tends to be
+integrated with reusing 8250 OF driver. However, DMA mode is not being
+supported yet in the current driver.
 
-Regards,
-Mars
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Suggested-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+ drivers/tty/serial/8250/8250_of.c   | 2 ++
+ drivers/tty/serial/8250/8250_port.c | 8 ++++++++
+ include/uapi/linux/serial_core.h    | 3 +++
+ 3 files changed, 13 insertions(+)
 
-> Regards,
-> Matthias
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/tty/serial/8250/8250_of.c b/drivers/tty/serial/8250/8250_of.c
+index 6c5a8ca..47d4772 100644
+--- a/drivers/tty/serial/8250/8250_of.c
++++ b/drivers/tty/serial/8250/8250_of.c
+@@ -300,6 +300,8 @@ static const struct of_device_id of_platform_serial_table[] = {
+ 		.data = (void *)PORT_ALTR_16550_F64, },
+ 	{ .compatible = "altr,16550-FIFO128",
+ 		.data = (void *)PORT_ALTR_16550_F128, },
++	{ .compatible = "mediatek,mt7623-btif",
++		.data = (void *)PORT_MTK_BTIF, },
+ 	{ .compatible = "mrvl,mmp-uart",
+ 		.data = (void *)PORT_XSCALE, },
+ 	{ .compatible = "ti,da830-uart", .data = (void *)PORT_DA830, },
+diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
+index 25aae66..053bb38 100644
+--- a/drivers/tty/serial/8250/8250_port.c
++++ b/drivers/tty/serial/8250/8250_port.c
+@@ -289,6 +289,14 @@ static const struct serial8250_config uart_config[] = {
+ 		.rxtrig_bytes	= {1, 4, 8, 14},
+ 		.flags		= UART_CAP_FIFO | UART_CAP_AFE,
+ 	},
++	[PORT_MTK_BTIF] = {
++		.name		= "MediaTek BTIF",
++		.fifo_size	= 16,
++		.tx_loadsz	= 16,
++		.fcr		= UART_FCR_ENABLE_FIFO |
++				  UART_FCR_CLEAR_RCVR | UART_FCR_CLEAR_XMIT,
++		.flags		= UART_CAP_FIFO,
++	},
+ };
+ 
+ /* Uart divisor latch read */
+diff --git a/include/uapi/linux/serial_core.h b/include/uapi/linux/serial_core.h
+index 38bea32..cfc07a5 100644
+--- a/include/uapi/linux/serial_core.h
++++ b/include/uapi/linux/serial_core.h
+@@ -272,4 +272,7 @@
+ /* MPS2 UART */
+ #define PORT_MPS2UART	116
+ 
++/* MediaTek BTIF */
++#define PORT_MTK_BTIF	117
++
+ #endif /* _UAPILINUX_SERIAL_CORE_H */
+-- 
+2.7.4
