@@ -1,39 +1,49 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [GIT PULL] arm: mediatek: soc updates for v4.14
-Date: Fri, 18 Aug 2017 23:29:14 +0200
-Message-ID: <CAK8P3a0hXrZ7CkE6hdGmY-E2DNvUuANRVZ3K8D=ix_p1-_QEiw@mail.gmail.com>
-References: <9f782ba3-4c03-10a9-07c5-b2b682f81846@gmail.com>
- <CAK8P3a1ca44WqucCY0vTSpiKKnM7kHpAkRi29TdN9XN9FZCLgA@mail.gmail.com>
+From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 0/5] Add clk and scpsys support for MT6755
+Date: Sat, 19 Aug 2017 16:17:20 +0800
+Message-ID: <1503130640.8938.1.camel@mtkswgap22>
+References: <1502180014-7995-1-git-send-email-mars.cheng@mediatek.com>
+         <1502855993.4599.1.camel@mtkswgap22> <1502938079.4027.3.camel@mtksdaap41>
+         <341316e9-d7ce-85f1-4e54-f872771f530f@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAK8P3a1ca44WqucCY0vTSpiKKnM7kHpAkRi29TdN9XN9FZCLgA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <341316e9-d7ce-85f1-4e54-f872771f530f-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Arvind Yadav <arvind.yadav.cs-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Cc: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wendell.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Aug 18, 2017 at 11:24 PM, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org> wrote:
-> On Thu, Aug 17, 2017 at 3:27 PM, Matthias Brugger
-> <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->> ----------------------------------------------------------------
->> - add mt7623a smp support
->> - scpsys: reduce code duplication
->> - scpsys: add mt7622 support
->> - pmic wrapper: make of_device_ids constant
->
-> Pulled into next/soc, thanks!
+Hi Matthias, Yingjoe
 
-Upon second thought, I removed it again from next/soc and put it into
-next/drivers instead.
+On Thu, 2017-08-17 at 12:19 +0200, Matthias Brugger wrote:
+> 
+...
+> > Hi Mars,
+> > 
+> > Sean reworked the scpsys driver to remove code duplication, see:
+> > http://lists.infradead.org/pipermail/linux-mediatek/2017-August/009687.html
+> > http://lists.infradead.org/pipermail/linux-mediatek/2017-August/009820.html
+> > 
+> > I think current driver will have conflict and can't merge as-is, you'll
+> > need to rebase to Matthias' for-next branch.
+> > 
+> 
+> Yes, please rebase, which should be trivial. Other then that the scpsys driver 
+> looks good.
+> 
 
-      Arnd
+Thanks for your review. I will rebase it and send the patch again soon.
+
+Regards,
+Mars
+
+> Regards,
+> Matthias
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
