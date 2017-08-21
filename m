@@ -1,164 +1,37 @@
-From: Zhi Mao <zhi.mao@mediatek.com>
-Subject: Re: [PATCH v3 6/6] pwm: mediatek: add MT2712/MT7622 support
-Date: Mon, 21 Aug 2017 17:05:37 +0800
-Message-ID: <1503306337.23444.2.camel@mhfsdcap03>
-References: <1498802721-32455-1-git-send-email-zhi.mao@mediatek.com>
-         <1498802721-32455-7-git-send-email-zhi.mao@mediatek.com>
-         <20170821080511.GP18996@ulmo>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [PATCH v3 2/2] serial: 8250: of: Add new port type for MediaTek
+ BTIF controller on MT7622/23 SoC
+Date: Mon, 21 Aug 2017 11:50:37 +0200
+Message-ID: <CAK8P3a0GWir3RxQug4C0hmO-_-nki7UY8Bd1a1XR=LN_mK_9zA@mail.gmail.com>
+References: <cover.1503248851.git.sean.wang@mediatek.com> <f773843daf6844be7b942185bafcb91304b75f7f.1503248851.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <20170821080511.GP18996@ulmo>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: john@phrozen.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pwm@vger.kernel.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, zhenbao.liu@mediatek.com
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <f773843daf6844be7b942185bafcb91304b75f7f.1503248851.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, gregkh <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Jiri Slaby <jslaby-IBi9RG/b67k@public.gmane.org>, Andy Shevchenko <andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Robert Jarzmik <robert.jarzmik-GANU6spQydw@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Joel Stanley <joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org>, david-nq/r/kbU++upp/zk7JDF2g@public.gmane.org, jan.kiszka-kv7WeFo6aLtBDgjK7y7TUQ@public.gmane.org, Heikki Krogerus <heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, hpeter-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, tthayer-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Thierry,
+On Sun, Aug 20, 2017 at 7:17 PM,  <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>
+> MediaTek BTIF controller is the serial interface similar to UART but it
+> works only as the digital device which is mainly used to communicate with
+> the connectivity module called CONNSYS inside the SoC which could be mostly
+> found on those MediaTek SoCs with Bluetooth feature such as MT7622 and
+> MT7623 SoCs.
+>
+> And the controller is made as being compatible with the 8250 register
+> layout with extra registers such as DMA enablement so it tends to be
+> integrated with reusing 8250 OF driver. However, DMA mode is not being
+> supported yet in the current driver.
+>
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Suggested-by: Andy Shevchenko <andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
 
-Thanks for your review  code.
-I will modify the code as you comment in the next release.
-
-Regards
-Zhi
-
-On Mon, 2017-08-21 at 10:05 +0200, Thierry Reding wrote:
-> On Fri, Jun 30, 2017 at 02:05:21PM +0800, Zhi Mao wrote:
-> > 1. support multiple chip(MT2712, MT7622, MT7623)
-> > 2. add mtk_pwm_com_reg for match the registers of MT2712 pwm8
-> >    the register offset address of pwm8 for MT2712 is not fixed 0x40
-> >    and they are not the same as pwm0~6.
-> > 
-> > Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
-> > ---
-> >  drivers/pwm/pwm-mediatek.c |   55 +++++++++++++++++++++++++++++++++++---------
-> >  1 file changed, 44 insertions(+), 11 deletions(-)
-> > 
-> > diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-> > index 1d78ab1..2c9ce24 100644
-> > --- a/drivers/pwm/pwm-mediatek.c
-> > +++ b/drivers/pwm/pwm-mediatek.c
-> > @@ -16,6 +16,7 @@
-> >  #include <linux/module.h>
-> >  #include <linux/clk.h>
-> >  #include <linux/of.h>
-> > +#include <linux/of_device.h>
-> >  #include <linux/platform_device.h>
-> >  #include <linux/pwm.h>
-> >  #include <linux/slab.h>
-> > @@ -40,11 +41,19 @@ enum {
-> >  	MTK_CLK_PWM3,
-> >  	MTK_CLK_PWM4,
-> >  	MTK_CLK_PWM5,
-> > +	MTK_CLK_PWM6,
-> > +	MTK_CLK_PWM7,
-> > +	MTK_CLK_PWM8,
-> >  	MTK_CLK_MAX,
-> >  };
-> >  
-> > -static const char * const mtk_pwm_clk_name[] = {
-> > -	"main", "top", "pwm1", "pwm2", "pwm3", "pwm4", "pwm5"
-> > +static const char * const mtk_pwm_clk_name[MTK_CLK_MAX] = {
-> > +	"main", "top", "pwm1", "pwm2", "pwm3", "pwm4",
-> > +	"pwm5", "pwm6", "pwm7", "pwm8"
-> 
-> You're wrapping these lines at arbitrary boundaries. Make sure to use
-> all of the 80 columns at your disposal.
-> 
-> > +};
-> > +
-> > +struct mtk_com_pwm_data {
-> 
-> What does the _com stand for in the above?
-> 
-> > +	unsigned int pwm_nums;
-> >  };
-> 
-> Maybe name this num_pwms for consistency with other drivers?
-> 
-> >  
-> >  /**
-> > @@ -57,6 +66,11 @@ struct mtk_pwm_chip {
-> >  	struct pwm_chip chip;
-> >  	void __iomem *regs;
-> >  	struct clk *clks[MTK_CLK_MAX];
-> > +	const struct mtk_com_pwm_data *data;
-> > +};
-> > +
-> > +static const unsigned long mtk_pwm_com_reg[] = {
-> 
-> There's another of these _com that I don't understand what it means.
-> Also since these are all fairly small offsets, these can simply be
-> unsigned int.
-> 
-> > +	0x0010, 0x0050, 0x0090, 0x00d0, 0x0110, 0x0150, 0x0190, 0x0220
-> >  };
-> >  
-> >  static inline struct mtk_pwm_chip *to_mtk_pwm_chip(struct pwm_chip *chip)
-> > @@ -103,14 +117,14 @@ static void mtk_pwm_clk_disable(struct pwm_chip *chip, struct pwm_device *pwm)
-> >  static inline u32 mtk_pwm_readl(struct mtk_pwm_chip *chip, unsigned int num,
-> >  				unsigned int offset)
-> >  {
-> > -	return readl(chip->regs + 0x10 + (num * 0x40) + offset);
-> > +	return readl(chip->regs + mtk_pwm_com_reg[num] + offset);
-> >  }
-> >  
-> >  static inline void mtk_pwm_writel(struct mtk_pwm_chip *chip,
-> >  				  unsigned int num, unsigned int offset,
-> >  				  u32 value)
-> >  {
-> > -	writel(value, chip->regs + 0x10 + (num * 0x40) + offset);
-> > +	writel(value, chip->regs + mtk_pwm_com_reg[num] + offset);
-> >  }
-> >  
-> >  static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
-> > @@ -194,23 +208,28 @@ static int mtk_pwm_probe(struct platform_device *pdev)
-> >  	if (!pc)
-> >  		return -ENOMEM;
-> >  
-> > +	pc->data = of_device_get_match_data(&pdev->dev);
-> > +
-> >  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> >  	pc->regs = devm_ioremap_resource(&pdev->dev, res);
-> >  	if (IS_ERR(pc->regs))
-> >  		return PTR_ERR(pc->regs);
-> >  
-> > -	for (i = 0; i < MTK_CLK_MAX; i++) {
-> > +	for (i = 0; i < pc->data->pwm_nums + 2; i++) {
-> >  		pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
-> > -		if (IS_ERR(pc->clks[i]))
-> > +		if (IS_ERR(pc->clks[i])) {
-> > +			dev_err(&pdev->dev, "[PWM] clock: %s fail: %ld\n",
-> > +				mtk_pwm_clk_name[i], PTR_ERR(pc->clks[i]));
-> 
-> Why include the "[PWM] " prefix in the above message?
-> 
-> >  			return PTR_ERR(pc->clks[i]);
-> > +		}
-> >  	}
-> >  
-> > -	platform_set_drvdata(pdev, pc);
-> > -
-> >  	pc->chip.dev = &pdev->dev;
-> >  	pc->chip.ops = &mtk_pwm_ops;
-> >  	pc->chip.base = -1;
-> > -	pc->chip.npwm = 5;
-> > +	pc->chip.npwm = pc->data->pwm_nums;
-> > +
-> > +	platform_set_drvdata(pdev, pc);
-> 
-> No need to move the location of the platform_set_drvdata() call. It's
-> needless churn.
-> 
-> >  static const struct of_device_id mtk_pwm_of_match[] = {
-> > -	{ .compatible = "mediatek,mt7623-pwm" },
-> > -	{ }
-> > +	{.compatible = "mediatek,mt2712-pwm", .data = &mt2712_pwm_data},
-> > +	{.compatible = "mediatek,mt7622-pwm", .data = &mt7622_pwm_data},
-> > +	{.compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data},
-> > +	{},
-> 
-> Spaces after { and before }, please.
-> 
-> Thierry
+Acked-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
