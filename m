@@ -1,81 +1,36 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v3 2/2] serial: 8250: of: Add new port type for MediaTek BTIF controller on MT7622/23 SoC
-Date: Mon, 21 Aug 2017 01:17:56 +0800
-Message-ID: <f773843daf6844be7b942185bafcb91304b75f7f.1503248851.git.sean.wang@mediatek.com>
-References: <cover.1503248851.git.sean.wang@mediatek.com>
+From: Jun Gao <jun.gao@mediatek.com>
+Subject: [PATCH v4 0/3] Add i2c dt-binding and compatible for Mediatek MT7622 SoC
+Date: Mon, 21 Aug 2017 11:36:51 +0800
+Message-ID: <1503286614-17670-1-git-send-email-jun.gao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1503248851.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, gregkh@linuxfoundation.org, jslaby@suse.com, andriy.shevchenko@linux.intel.com, robert.jarzmik@free.fr, arnd@arndb.de, p.zabel@pengutronix.de, joel@jms.id.au, david@lechnology.com, jan.kiszka@siemens.com, heikki.krogerus@linux.intel.com, hpeter@gmail.com, vigneshr@ti.com, matthias.bgg@gmail.com, tthayer@opensource.altera.com
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+To: Wolfram Sang <wsa@the-dreams.de>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+This patch series based on v4.13-rc1, include i2c binding file information
+formats modification, MT7622 i2c dt-binding and compatible.
 
-MediaTek BTIF controller is the serial interface similar to UART but it
-works only as the digital device which is mainly used to communicate with
-the connectivity module called CONNSYS inside the SoC which could be mostly
-found on those MediaTek SoCs with Bluetooth feature such as MT7622 and
-MT7623 SoCs.
+changes since v3:
+- Split the formats modification into another patch
 
-And the controller is made as being compatible with the 8250 register
-layout with extra registers such as DMA enablement so it tends to be
-integrated with reusing 8250 OF driver. However, DMA mode is not being
-supported yet in the current driver.
+changes since v2:
+- Remove all the length settings from mt7622_i2c_quirks
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Suggested-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- drivers/tty/serial/8250/8250_of.c   | 2 ++
- drivers/tty/serial/8250/8250_port.c | 8 ++++++++
- include/uapi/linux/serial_core.h    | 3 +++
- 3 files changed, 13 insertions(+)
+changes since v1:
+- Modify commit message
+- Revise dt-binding documentation
 
-diff --git a/drivers/tty/serial/8250/8250_of.c b/drivers/tty/serial/8250/8250_of.c
-index 6c5a8ca..be1c5e75 100644
---- a/drivers/tty/serial/8250/8250_of.c
-+++ b/drivers/tty/serial/8250/8250_of.c
-@@ -300,6 +300,8 @@ static const struct of_device_id of_platform_serial_table[] = {
- 		.data = (void *)PORT_ALTR_16550_F64, },
- 	{ .compatible = "altr,16550-FIFO128",
- 		.data = (void *)PORT_ALTR_16550_F128, },
-+	{ .compatible = "mediatek,mtk-btif",
-+		.data = (void *)PORT_MTK_BTIF, },
- 	{ .compatible = "mrvl,mmp-uart",
- 		.data = (void *)PORT_XSCALE, },
- 	{ .compatible = "ti,da830-uart", .data = (void *)PORT_DA830, },
-diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
-index 25aae66..053bb38 100644
---- a/drivers/tty/serial/8250/8250_port.c
-+++ b/drivers/tty/serial/8250/8250_port.c
-@@ -289,6 +289,14 @@ static const struct serial8250_config uart_config[] = {
- 		.rxtrig_bytes	= {1, 4, 8, 14},
- 		.flags		= UART_CAP_FIFO | UART_CAP_AFE,
- 	},
-+	[PORT_MTK_BTIF] = {
-+		.name		= "MediaTek BTIF",
-+		.fifo_size	= 16,
-+		.tx_loadsz	= 16,
-+		.fcr		= UART_FCR_ENABLE_FIFO |
-+				  UART_FCR_CLEAR_RCVR | UART_FCR_CLEAR_XMIT,
-+		.flags		= UART_CAP_FIFO,
-+	},
- };
- 
- /* Uart divisor latch read */
-diff --git a/include/uapi/linux/serial_core.h b/include/uapi/linux/serial_core.h
-index 38bea32..cfc07a5 100644
---- a/include/uapi/linux/serial_core.h
-+++ b/include/uapi/linux/serial_core.h
-@@ -272,4 +272,7 @@
- /* MPS2 UART */
- #define PORT_MPS2UART	116
- 
-+/* MediaTek BTIF */
-+#define PORT_MTK_BTIF	117
-+
- #endif /* _UAPILINUX_SERIAL_CORE_H */
--- 
-2.7.4
+Jun Gao (3):
+  dt-bindings: i2c: modify information formats
+  dt-bindings: i2c: Add MediaTek MT7622 i2c binding
+  i2c: mediatek: Add i2c compatible for MediaTek MT7622
+
+ Documentation/devicetree/bindings/i2c/i2c-mtk.txt | 15 ++++++++-------
+ drivers/i2c/busses/i2c-mt65xx.c                   | 14 ++++++++++++++
+ 2 files changed, 22 insertions(+), 7 deletions(-)
+
+--
+1.8.1.1
