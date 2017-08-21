@@ -1,36 +1,193 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [PATCH v3 2/2] serial: 8250: of: Add new port type for MediaTek
- BTIF controller on MT7622/23 SoC
-Date: Mon, 21 Aug 2017 11:50:37 +0200
-Message-ID: <CAK8P3a0GWir3RxQug4C0hmO-_-nki7UY8Bd1a1XR=LN_mK_9zA@mail.gmail.com>
-References: <cover.1503248851.git.sean.wang@mediatek.com> <f773843daf6844be7b942185bafcb91304b75f7f.1503248851.git.sean.wang@mediatek.com>
+From: Harvey Hunt <harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>
+Subject: [V2 1/4] MIPS: dts: ralink: Add Mediatek MT7628A SoC
+Date: Mon, 21 Aug 2017 11:54:44 +0100
+Message-ID: <1503312887-34310-1-git-send-email-harvey.hunt@imgtec.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <f773843daf6844be7b942185bafcb91304b75f7f.1503248851.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, gregkh <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Jiri Slaby <jslaby-IBi9RG/b67k@public.gmane.org>, Andy Shevchenko <andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Robert Jarzmik <robert.jarzmik-GANU6spQydw@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Joel Stanley <joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org>, david-nq/r/kbU++upp/zk7JDF2g@public.gmane.org, jan.kiszka-kv7WeFo6aLtBDgjK7y7TUQ@public.gmane.org, Heikki Krogerus <heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, hpeter-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, tthayer-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ralf-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org
+Cc: Harvey Hunt <harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>, linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Aug 20, 2017 at 7:17 PM,  <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->
-> MediaTek BTIF controller is the serial interface similar to UART but it
-> works only as the digital device which is mainly used to communicate with
-> the connectivity module called CONNSYS inside the SoC which could be mostly
-> found on those MediaTek SoCs with Bluetooth feature such as MT7622 and
-> MT7623 SoCs.
->
-> And the controller is made as being compatible with the 8250 register
-> layout with extra registers such as DMA enablement so it tends to be
-> integrated with reusing 8250 OF driver. However, DMA mode is not being
-> supported yet in the current driver.
->
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Suggested-by: Andy Shevchenko <andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+The MT7628A is the successor to the MT7620 and pin compatible with the
+MT7688A, although the latter supports only a 1T1R antenna rather than
+a 2T2R antenna.
 
-Acked-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+This commit adds support for the following features:
+
+- UART
+- USB PHY
+- EHCI
+- Interrupt controller
+- System controller
+- Memory controller
+- Reset controller
+
+Signed-off-by: Harvey Hunt <harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>
+Cc: linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org 
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org 
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org 
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org 
+---
+Ralf: I've added this patch to both my vocore2 and omega2+
+patchsets for ease of review, please only merge it once :-)
+
+Changes in V2:
+- Add MT7628 to patchset to keep kbuild happy and retain context
+- Rename multiple DT nodes to standard names
+- Add labels for uarts
+- Rename USB PHY handle
+
+ Documentation/devicetree/bindings/mips/ralink.txt |   1 +
+ arch/mips/boot/dts/ralink/mt7628a.dtsi            | 126 ++++++++++++++++++++++
+ 2 files changed, 127 insertions(+)
+ create mode 100644 arch/mips/boot/dts/ralink/mt7628a.dtsi
+
+diff --git a/Documentation/devicetree/bindings/mips/ralink.txt b/Documentation/devicetree/bindings/mips/ralink.txt
+index b35a8d0..a16e8d7 100644
+--- a/Documentation/devicetree/bindings/mips/ralink.txt
++++ b/Documentation/devicetree/bindings/mips/ralink.txt
+@@ -15,3 +15,4 @@ value must be one of the following values:
+   ralink,rt5350-soc
+   ralink,mt7620a-soc
+   ralink,mt7620n-soc
++  ralink,mt7628a-soc
+diff --git a/arch/mips/boot/dts/ralink/mt7628a.dtsi b/arch/mips/boot/dts/ralink/mt7628a.dtsi
+new file mode 100644
+index 0000000..9ff7e8f
+--- /dev/null
++++ b/arch/mips/boot/dts/ralink/mt7628a.dtsi
+@@ -0,0 +1,126 @@
++/ {
++	#address-cells = <1>;
++	#size-cells = <1>;
++	compatible = "ralink,mt7628a-soc";
++
++	cpus {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		cpu@0 {
++			compatible = "mti,mips24KEc";
++			device_type = "cpu";
++			reg = <0>;
++		};
++	};
++
++	resetc: reset-controller {
++		compatible = "ralink,rt2880-reset";
++		#reset-cells = <1>;
++	};
++
++	cpuintc: interrupt-controller {
++		#address-cells = <0>;
++		#interrupt-cells = <1>;
++		interrupt-controller;
++		compatible = "mti,cpu-interrupt-controller";
++	};
++
++	palmbus@10000000 {
++		compatible = "palmbus";
++		reg = <0x10000000 0x200000>;
++		ranges = <0x0 0x10000000 0x1FFFFF>;
++
++		#address-cells = <1>;
++		#size-cells = <1>;
++
++		sysc: system-controller@0 {
++			compatible = "ralink,mt7620a-sysc", "syscon";
++			reg = <0x0 0x100>;
++		};
++
++		intc: interrupt-controller@200 {
++			compatible = "ralink,rt2880-intc";
++			reg = <0x200 0x100>;
++
++			interrupt-controller;
++			#interrupt-cells = <1>;
++
++			resets = <&resetc 9>;
++			reset-names = "intc";
++
++			interrupt-parent = <&cpuintc>;
++			interrupts = <2>;
++
++			ralink,intc-registers = <0x9c 0xa0
++						 0x6c 0xa4
++						 0x80 0x78>;
++		};
++
++		memory-controller@300 {
++			compatible = "ralink,mt7620a-memc";
++			reg = <0x300 0x100>;
++		};
++
++		uart0: uartlite@c00 {
++			compatible = "ns16550a";
++			reg = <0xc00 0x100>;
++
++			resets = <&resetc 12>;
++			reset-names = "uart0";
++
++			interrupt-parent = <&intc>;
++			interrupts = <20>;
++
++			reg-shift = <2>;
++		};
++
++		uart1: uart1@d00 {
++			compatible = "ns16550a";
++			reg = <0xd00 0x100>;
++
++			resets = <&resetc 19>;
++			reset-names = "uart1";
++
++			interrupt-parent = <&intc>;
++			interrupts = <21>;
++
++			reg-shift = <2>;
++		};
++
++		uart2: uart2@e00 {
++			compatible = "ns16550a";
++			reg = <0xe00 0x100>;
++
++			resets = <&resetc 20>;
++			reset-names = "uart2";
++
++			interrupt-parent = <&intc>;
++			interrupts = <22>;
++
++			reg-shift = <2>;
++		};
++	};
++
++	usb_phy: usb-phy@10120000 {
++		compatible = "mediatek,mt7628-usbphy";
++		reg = <0x10120000 0x1000>;
++
++		#phy-cells = <0>;
++
++		ralink,sysctl = <&sysc>;
++		resets = <&resetc 22 &resetc 25>;
++		reset-names = "host", "device";
++	};
++
++	ehci@101c0000 {
++		compatible = "generic-ehci";
++		reg = <0x101c0000 0x1000>;
++
++		phys = <&usb_phy>;
++		phy-names = "usb";
++
++		interrupt-parent = <&intc>;
++		interrupts = <18>;
++	};
++};
+-- 
+2.7.4
+
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
