@@ -1,13 +1,13 @@
-From: Harvey Hunt <harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>
+From: Harvey Hunt <harvey.hunt@imgtec.com>
 Subject: [V2 1/4] MIPS: dts: ralink: Add Mediatek MT7628A SoC
-Date: Mon, 21 Aug 2017 11:54:44 +0100
-Message-ID: <1503312887-34310-1-git-send-email-harvey.hunt@imgtec.com>
+Date: Mon, 21 Aug 2017 11:55:29 +0100
+Message-ID: <1503312931-34416-1-git-send-email-harvey.hunt@imgtec.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ralf-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org
-Cc: Harvey Hunt <harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>, linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, mark.rutland@arm.com, ralf@linux-mips.org, john@phrozen.org
+Cc: Harvey Hunt <harvey.hunt@imgtec.com>, linux-mips@linux-mips.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 The MT7628A is the successor to the MT7620 and pin compatible with the
@@ -24,11 +24,11 @@ This commit adds support for the following features:
 - Memory controller
 - Reset controller
 
-Signed-off-by: Harvey Hunt <harvey.hunt-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>
-Cc: linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org 
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org 
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org 
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org 
+Signed-off-by: Harvey Hunt <harvey.hunt@imgtec.com>
+Cc: linux-mips@linux-mips.org 
+Cc: devicetree@vger.kernel.org 
+Cc: linux-kernel@vger.kernel.org 
+Cc: linux-mediatek@lists.infradead.org 
 ---
 Ralf: I've added this patch to both my vocore2 and omega2+
 patchsets for ease of review, please only merge it once :-)
@@ -187,8 +187,3 @@ index 0000000..9ff7e8f
 +};
 -- 
 2.7.4
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
