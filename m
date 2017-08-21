@@ -1,39 +1,58 @@
-From: Jun Gao <jun.gao@mediatek.com>
-Subject: [PATCH v4 2/3] dt-bindings: i2c: Add MediaTek MT7622 i2c binding
-Date: Mon, 21 Aug 2017 11:36:53 +0800
-Message-ID: <1503286614-17670-3-git-send-email-jun.gao@mediatek.com>
-References: <1503286614-17670-1-git-send-email-jun.gao@mediatek.com>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH v3 1/6] pwm: kconfig: modify mediatek information
+Date: Mon, 21 Aug 2017 09:31:49 +0200
+Message-ID: <20170821073149.GK18996@ulmo>
+References: <1498802721-32455-1-git-send-email-zhi.mao@mediatek.com>
+ <1498802721-32455-2-git-send-email-zhi.mao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1503286614-17670-1-git-send-email-jun.gao@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wolfram Sang <wsa@the-dreams.de>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Jun Gao <jun.gao@mediatek.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="BFVE2HhgxTpCzM8t"
+Return-path: <linux-pwm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1498802721-32455-2-git-send-email-zhi.mao@mediatek.com>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Zhi Mao <zhi.mao@mediatek.com>
+Cc: john@phrozen.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pwm@vger.kernel.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, zhenbao.liu@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Jun Gao <jun.gao@mediatek.com>
 
-Add MT7622 i2c binding to binding file. Compare to MT8173 i2c
-controller, MT7622 limits message numbers to 255, and does not
-support 4GB DMA mode.
+--BFVE2HhgxTpCzM8t
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Jun Gao <jun.gao@mediatek.com>
----
- Documentation/devicetree/bindings/i2c/i2c-mtk.txt | 1 +
- 1 file changed, 1 insertion(+)
+On Fri, Jun 30, 2017 at 02:05:16PM +0800, Zhi Mao wrote:
+> modify mediatek information
+>=20
+> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+> ---
+>  drivers/pwm/Kconfig |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-index 9c86424..ff7bf37 100644
---- a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-+++ b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-@@ -7,6 +7,7 @@ Required properties:
-       "mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for MediaTek MT2701
-       "mediatek,mt6577-i2c": for MediaTek MT6577
-       "mediatek,mt6589-i2c": for MediaTek MT6589
-+      "mediatek,mt7622-i2c": for MediaTek MT7622
-       "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for MediaTek MT7623
-       "mediatek,mt8173-i2c": for MediaTek MT8173
-   - reg: physical base address of the controller and dma base, length of memory
--- 
-1.8.1.1
+Applied to for-4.14/drivers, with a slightly modified subject and commit
+message.
+
+Thanks,
+Thierry
+
+--BFVE2HhgxTpCzM8t
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlmajGMACgkQ3SOs138+
+s6F+KA/+M+pGhr08L69R0TI27ULRyeXUdeopeAo6pxW8hRiNnRLM5gVfzJS2j3RT
+ZW8/nprAdk1LNtxx6WsLsBM2+MYK4wTyMSCZC8heydj2/esqDzE4LQLEXF0AbMs9
+DfzqPn1jIxcPrMD6OxVa3+l8ogA4HCq1BjrzZzuFAzcCdhuFoqDJFr90p/byrYTy
+WH1PK38DRvZn6Ezf4kAHVxrFCUZTbHUzKPhHb3dL8qV4PsiEIld7Vz28KBs88tzO
+qspiB+lM9fN+0b1MHmFg3gRrWhd47LYfgQuHpPSEv8Er+YPXBKdx4y+kdO5dvdfZ
+L7Z4txlzkW9MkLero8PHc4FTsiNhKJzQukh94VlUquanooq0yhO7GnO0u5flpW1R
+9LV7FRdqxO8LNpJTxaQIwdopNU157MeiQI663VmMOPlGy4Fuwz4mBPPvggth5La0
+jUJNtqHPn+1Wqao1zs8U/K9wp/tRR7bPljJDm1N+jwcCiISQ7WBuRMZPZWBRcdH2
+GiM2AVp3vIuiNntB2tkytOhYpZBZKvnf3EWRlCQ/THoMuE4begzcw+XW1bqNpeFA
+YaEqpQkoG06618iXqR3Z97C8yySsg4wpqrgHojb0MOzvMAE0crdC9vXMe44RfnO6
+EdxdpqIgp0KzpZt5zAbRUVjk+RD1Y5cMqvsQifnRlgQGYR+Kwco=
+=sI36
+-----END PGP SIGNATURE-----
+
+--BFVE2HhgxTpCzM8t--
