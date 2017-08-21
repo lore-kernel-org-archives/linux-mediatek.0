@@ -1,189 +1,101 @@
-From: Harvey Hunt <harvey.hunt@imgtec.com>
-Subject: [V2 1/4] MIPS: dts: ralink: Add Mediatek MT7628A SoC
-Date: Mon, 21 Aug 2017 11:55:29 +0100
-Message-ID: <1503312931-34416-1-git-send-email-harvey.hunt@imgtec.com>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 0/8] MT2712 IOMMU SUPPORT
+Date: Mon, 21 Aug 2017 19:00:13 +0800
+Message-ID: <1503313221-26453-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, mark.rutland@arm.com, ralf@linux-mips.org, john@phrozen.org
-Cc: Harvey Hunt <harvey.hunt@imgtec.com>, linux-mips@linux-mips.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, cloud.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The MT7628A is the successor to the MT7620 and pin compatible with the
-MT7688A, although the latter supports only a 1T1R antenna rather than
-a 2T2R antenna.
+This patchset mainly adds support for M4U of mt2712.
 
-This commit adds support for the following features:
+The M4U in mt2712 is MTK's generation2 M4U which use the ARM
+Short-descriptor like mt8173. The main difference is that there are 2
+M4Us and 2 smi-commons in mt2712, while there is only 1 M4U and 1
+smi-common in mt8173. The purpose is for balance the bandwidth.
 
-- UART
-- USB PHY
-- EHCI
-- Interrupt controller
-- System controller
-- Memory controller
-- Reset controller
+The mt2712 M4U-SMI HW diagram is as below:
 
-Signed-off-by: Harvey Hunt <harvey.hunt@imgtec.com>
-Cc: linux-mips@linux-mips.org 
-Cc: devicetree@vger.kernel.org 
-Cc: linux-kernel@vger.kernel.org 
-Cc: linux-mediatek@lists.infradead.org 
----
-Ralf: I've added this patch to both my vocore2 and omega2+
-patchsets for ease of review, please only merge it once :-)
+                            EMI
+                             |
+              ------------------------------------
+              |                                  |
+             M4U0                              M4U1
+              |                                  |
+         smi-common0                        smi-common1
+              |                                  |
+  -------------------------       --------------------------------
+  |     |     |     |     |       |         |        |     |     |
+  |     |     |     |     |       |         |        |     |     |
+larb0 larb1 larb2 larb3 larb6    larb4    larb5    larb7 larb8 larb9
+disp0 vdec  cam   venc   jpg  mdp1/disp1 mdp2/disp2 mdp3 vdo/nr tvd
 
-Changes in V2:
-- Add MT7628 to patchset to keep kbuild happy and retain context
-- Rename multiple DT nodes to standard names
-- Add labels for uarts
-- Rename USB PHY handle
+This patchset is based on v4.13-rc1, Also it base on Robin's[1],
+Honghui[2],Arvind[3], all have been applied. Currently it don't contain
+the dtsi part.
 
- Documentation/devicetree/bindings/mips/ralink.txt |   1 +
- arch/mips/boot/dts/ralink/mt7628a.dtsi            | 126 ++++++++++++++++++++++
- 2 files changed, 127 insertions(+)
- create mode 100644 arch/mips/boot/dts/ralink/mt7628a.dtsi
+The patch 1 adds the binding for MT2712 IOMMU, the patch 2 is a
+prepared patch for mt2712, the patch 3 adds the MT2712 IOMMU support.
+the patch 4/5 improve the m4u flow for mt2712,
+the last patch 6/7/8 mainly fix bug or improve code.
 
-diff --git a/Documentation/devicetree/bindings/mips/ralink.txt b/Documentation/devicetree/bindings/mips/ralink.txt
-index b35a8d0..a16e8d7 100644
---- a/Documentation/devicetree/bindings/mips/ralink.txt
-+++ b/Documentation/devicetree/bindings/mips/ralink.txt
-@@ -15,3 +15,4 @@ value must be one of the following values:
-   ralink,rt5350-soc
-   ralink,mt7620a-soc
-   ralink,mt7620n-soc
-+  ralink,mt7628a-soc
-diff --git a/arch/mips/boot/dts/ralink/mt7628a.dtsi b/arch/mips/boot/dts/ralink/mt7628a.dtsi
-new file mode 100644
-index 0000000..9ff7e8f
---- /dev/null
-+++ b/arch/mips/boot/dts/ralink/mt7628a.dtsi
-@@ -0,0 +1,126 @@
-+/ {
-+	#address-cells = <1>;
-+	#size-cells = <1>;
-+	compatible = "ralink,mt7628a-soc";
-+
-+	cpus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		cpu@0 {
-+			compatible = "mti,mips24KEc";
-+			device_type = "cpu";
-+			reg = <0>;
-+		};
-+	};
-+
-+	resetc: reset-controller {
-+		compatible = "ralink,rt2880-reset";
-+		#reset-cells = <1>;
-+	};
-+
-+	cpuintc: interrupt-controller {
-+		#address-cells = <0>;
-+		#interrupt-cells = <1>;
-+		interrupt-controller;
-+		compatible = "mti,cpu-interrupt-controller";
-+	};
-+
-+	palmbus@10000000 {
-+		compatible = "palmbus";
-+		reg = <0x10000000 0x200000>;
-+		ranges = <0x0 0x10000000 0x1FFFFF>;
-+
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+
-+		sysc: system-controller@0 {
-+			compatible = "ralink,mt7620a-sysc", "syscon";
-+			reg = <0x0 0x100>;
-+		};
-+
-+		intc: interrupt-controller@200 {
-+			compatible = "ralink,rt2880-intc";
-+			reg = <0x200 0x100>;
-+
-+			interrupt-controller;
-+			#interrupt-cells = <1>;
-+
-+			resets = <&resetc 9>;
-+			reset-names = "intc";
-+
-+			interrupt-parent = <&cpuintc>;
-+			interrupts = <2>;
-+
-+			ralink,intc-registers = <0x9c 0xa0
-+						 0x6c 0xa4
-+						 0x80 0x78>;
-+		};
-+
-+		memory-controller@300 {
-+			compatible = "ralink,mt7620a-memc";
-+			reg = <0x300 0x100>;
-+		};
-+
-+		uart0: uartlite@c00 {
-+			compatible = "ns16550a";
-+			reg = <0xc00 0x100>;
-+
-+			resets = <&resetc 12>;
-+			reset-names = "uart0";
-+
-+			interrupt-parent = <&intc>;
-+			interrupts = <20>;
-+
-+			reg-shift = <2>;
-+		};
-+
-+		uart1: uart1@d00 {
-+			compatible = "ns16550a";
-+			reg = <0xd00 0x100>;
-+
-+			resets = <&resetc 19>;
-+			reset-names = "uart1";
-+
-+			interrupt-parent = <&intc>;
-+			interrupts = <21>;
-+
-+			reg-shift = <2>;
-+		};
-+
-+		uart2: uart2@e00 {
-+			compatible = "ns16550a";
-+			reg = <0xe00 0x100>;
-+
-+			resets = <&resetc 20>;
-+			reset-names = "uart2";
-+
-+			interrupt-parent = <&intc>;
-+			interrupts = <22>;
-+
-+			reg-shift = <2>;
-+		};
-+	};
-+
-+	usb_phy: usb-phy@10120000 {
-+		compatible = "mediatek,mt7628-usbphy";
-+		reg = <0x10120000 0x1000>;
-+
-+		#phy-cells = <0>;
-+
-+		ralink,sysctl = <&sysc>;
-+		resets = <&resetc 22 &resetc 25>;
-+		reset-names = "host", "device";
-+	};
-+
-+	ehci@101c0000 {
-+		compatible = "generic-ehci";
-+		reg = <0x101c0000 0x1000>;
-+
-+		phys = <&usb_phy>;
-+		phy-names = "usb";
-+
-+		interrupt-parent = <&intc>;
-+		interrupts = <18>;
-+	};
-+};
+[1]:https://patchwork.kernel.org/patch/9828671/
+[2]:https://patchwork.kernel.org/patch/9880223/
+[3]:https://patchwork.kernel.org/patch/9892759/
+
+change log:
+v2:
+ 1) Add larb8 and larb9 in the HW diagram. larb8 and larb9 are called
+    by the bdpsys larb, they are a little special, their mmu_en register
+    offset is different from the normal larb. Fortunately, their mmu_en
+    register is enabled defaultly, we don't need set again.
+    After adding larb8 and larb9, the larb number is over 8, therefore,
+    MTK_LARB_NR_MAX also is increased.
+ 2) Add a prepared patch that moving the MTK_M4U_TO_LARB/PORT into the
+    c file.
+ 3) Discard the original patch[7/8] which was only a cleanup for SMI,
+    It's unnecessary for this patch-set.
+ 4) Use subsys_initcall instead of IOMMU_OF_DECLARE according to
+    Robin's suggestion. Also, Improve some coding format, like using
+    for_each_set_bit and changing the definition of
+    F_MMU_TF_PROTECT_SEL.
+
+v1:
+https://lists.linuxfoundation.org/pipermail/iommu/2017-August/023664.html
+
+Yong Wu (8):
+  dt-bindings: mediatek: Add binding for mt2712 IOMMU and SMI
+  iommu/mediatek: Move MTK_M4U_TO_LARB/PORT into mtk_iommu.c
+  iommu/mediatek: Add mt2712 IOMMU support
+  iommu/mediatek: Merge 2 M4U HWs into one iommu domain
+  iommu/mediatek: Move pgtable allocation into domain_alloc
+  iommu/mediatek: Disable iommu clock when system suspend
+  iommu/mediatek: Enlarge the validate PA range for 4GB mode
+  memory: mtk-smi: Degrade SMI init to module_init
+
+ .../devicetree/bindings/iommu/mediatek,iommu.txt   |   6 +-
+ .../memory-controllers/mediatek,smi-common.txt     |   6 +-
+ .../memory-controllers/mediatek,smi-larb.txt       |   5 +-
+ drivers/iommu/mtk_iommu.c                          | 214 +++++++++++++--------
+ drivers/iommu/mtk_iommu.h                          |   9 +
+ drivers/memory/mtk-smi.c                           |  65 ++++++-
+ include/dt-bindings/memory/mt2712-larb-port.h      | 102 ++++++++++
+ include/dt-bindings/memory/mt8173-larb-port.h      |   4 -
+ include/soc/mediatek/smi.h                         |   2 +-
+ 9 files changed, 314 insertions(+), 99 deletions(-)
+ create mode 100644 include/dt-bindings/memory/mt2712-larb-port.h
+
 -- 
-2.7.4
+1.9.1
