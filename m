@@ -1,35 +1,27 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH 2/3] arm64: dts: mt2712: add pintcrl device node.
-Date: Tue, 22 Aug 2017 15:04:31 +0200
-Message-ID: <CACRpkdZHyXec+L8ueRHOs=9TLT1Arqe3KeQpRZ6D0K1Ag1c+Zw@mail.gmail.com>
-References: <1501489333-23145-1-git-send-email-zhiyong.tao@mediatek.com>
- <1501489333-23145-3-git-send-email-zhiyong.tao@mediatek.com> <2f883a8a-5402-5625-bada-bcfed53c098e@gmail.com>
+From: Joerg Roedel <joro@8bytes.org>
+Subject: Re: [PATCH v2 0/8] MT2712 IOMMU SUPPORT
+Date: Tue, 22 Aug 2017 16:38:37 +0200
+Message-ID: <20170822143836.ac3faa7wcwfjtvjc@8bytes.org>
+References: <1503313221-26453-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2f883a8a-5402-5625-bada-bcfed53c098e@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <1503313221-26453-1-git-send-email-yong.wu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Zhiyong Tao <zhiyong.tao@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, srv_heupstream@mediatek.com, Liguo Zhang <liguo.zhang@mediatek.com>, "Joe.C" <yingjoe.chen@mediatek.com>, hongkun.cao@mediatek.com, Biao Huang <biao.huang@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Erin Lo <erin.lo@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will.deacon@arm.com>, Daniel Kurtz <djkurtz@google.com>, Tomasz Figa <tfiga@google.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, arnd@arndb.de, honghui.zhang@mediatek.com, k.zhang@mediatek.com, cloud.zhou@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Aug 14, 2017 at 5:23 PM, Matthias Brugger
-<matthias.bgg@gmail.com> wrote:
-> On 07/31/2017 10:22 AM, Zhiyong Tao wrote:
->>
->> The commit includes two change:
->> 1)add pintcrl device node for mt2712.
->> 2)add pinfunc file for mt2712.
->>
->> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
->> ---
->>   arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h | 1014
->> +++++++++++++++++++++++++
->
->
-> Shouldn't this file be in include/dt-bindings/pinctrl?
+On Mon, Aug 21, 2017 at 07:00:13PM +0800, Yong Wu wrote:
+> Yong Wu (8):
+>   dt-bindings: mediatek: Add binding for mt2712 IOMMU and SMI
+>   iommu/mediatek: Move MTK_M4U_TO_LARB/PORT into mtk_iommu.c
+>   iommu/mediatek: Add mt2712 IOMMU support
+>   iommu/mediatek: Merge 2 M4U HWs into one iommu domain
+>   iommu/mediatek: Move pgtable allocation into domain_alloc
+>   iommu/mediatek: Disable iommu clock when system suspend
+>   iommu/mediatek: Enlarge the validate PA range for 4GB mode
+>   memory: mtk-smi: Degrade SMI init to module_init
 
-Only if it is also #included in the driver.
-
-Yours,
-Linus Walleij
+Applied patches 2-7. Patch 1 is something for Matthias.
