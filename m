@@ -1,60 +1,76 @@
-From: Corentin Labbe <clabbe.montjoie@gmail.com>
-Subject: [PATCH 11/11] crypto: aesni - Use GCM IV size constant
-Date: Tue, 22 Aug 2017 10:08:18 +0200
-Message-ID: <20170822080818.12486-12-clabbe.montjoie@gmail.com>
-References: <20170822080818.12486-1-clabbe.montjoie@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170822080818.12486-1-clabbe.montjoie@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: herbert@gondor.apana.org.au, davem@davemloft.net, tglx@linutronix.de, mingo@redhat.com, hpa@zytor.com, x86@kernel.org, horia.geanta@nxp.com, dan.douglass@nxp.com, thomas.lendacky@amd.com, gary.hook@amd.com, harsh@chelsio.com, matthias.bgg@gmail.com, leosilva@linux.vnet.ibm.com, pfsmorigo@linux.vnet.ibm.com, benh@kernel.crashing.org, paulus@samba.org, mpe@ellerman.id.au
-Cc: linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org, Corentin Labbe <clabbe.montjoie@gmail.com>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: [PATCH v2 0/9] Mediatek MT2712 clock and scpsys support
+Date: Tue, 22 Aug 2017 18:28:13 +0800
+Message-ID: <1503397702-7201-1-git-send-email-weiyi.lu@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch replace GCM IV size value by their constant name.
+This series is based on v4.13-next-soc and composed of
+clock control (PATCH 1-4) and scpsys control (PATCH 5-9)
 
-Signed-off-by: Corentin Labbe <clabbe.montjoie@gmail.com>
----
- arch/x86/crypto/aesni-intel_glue.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+changes since v1:
+- Rebase to v4.13-next-soc.
+- Refine scpsys and infracfg for bus protection.
 
-diff --git a/arch/x86/crypto/aesni-intel_glue.c b/arch/x86/crypto/aesni-intel_glue.c
-index 5c15d6b57329..80664368bf14 100644
---- a/arch/x86/crypto/aesni-intel_glue.c
-+++ b/arch/x86/crypto/aesni-intel_glue.c
-@@ -28,6 +28,7 @@
- #include <crypto/cryptd.h>
- #include <crypto/ctr.h>
- #include <crypto/b128ops.h>
-+#include <crypto/gcm.h>
- #include <crypto/xts.h>
- #include <asm/cpu_device_id.h>
- #include <asm/fpu/api.h>
-@@ -1131,7 +1132,7 @@ static struct aead_alg aesni_aead_algs[] = { {
- 	.setauthsize		= common_rfc4106_set_authsize,
- 	.encrypt		= helper_rfc4106_encrypt,
- 	.decrypt		= helper_rfc4106_decrypt,
--	.ivsize			= 8,
-+	.ivsize			= GCM_RFC4106_IV_SIZE,
- 	.maxauthsize		= 16,
- 	.base = {
- 		.cra_name		= "__gcm-aes-aesni",
-@@ -1149,7 +1150,7 @@ static struct aead_alg aesni_aead_algs[] = { {
- 	.setauthsize		= rfc4106_set_authsize,
- 	.encrypt		= rfc4106_encrypt,
- 	.decrypt		= rfc4106_decrypt,
--	.ivsize			= 8,
-+	.ivsize			= GCM_RFC4106_IV_SIZE,
- 	.maxauthsize		= 16,
- 	.base = {
- 		.cra_name		= "rfc4106(gcm(aes))",
-@@ -1165,7 +1166,7 @@ static struct aead_alg aesni_aead_algs[] = { {
- 	.setauthsize		= generic_gcmaes_set_authsize,
- 	.encrypt		= generic_gcmaes_encrypt,
- 	.decrypt		= generic_gcmaes_decrypt,
--	.ivsize			= 12,
-+	.ivsize			= GCM_AES_IV_SIZE,
- 	.maxauthsize		= 16,
- 	.base = {
- 		.cra_name		= "gcm(aes)",
--- 
-2.13.0
+Weiyi Lu (9):
+  dt-bindings: ARM: Mediatek: Document bindings for MT2712
+  clk: mediatek: Add dt-bindings for MT2712 clocks
+  clk: mediatek: Add MT2712 clock support
+  arm: dts: mt2712: Add clock controller device nodes
+  dt-bindings: soc: add MT2712 power dt-bindings
+  soc: mediatek: extend bus protection API
+  soc: mediatek: add dependent clock jpgdec/audio for scpsys
+  soc: mediatek: add MT2712 scpsys support
+  arm: dts: Add power controller device node of MT2712
+
+ .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    1 +
+ .../bindings/arm/mediatek/mediatek,bdpsys.txt      |    1 +
+ .../bindings/arm/mediatek/mediatek,imgsys.txt      |    1 +
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    |    1 +
+ .../bindings/arm/mediatek/mediatek,jpgdecsys.txt   |   22 +
+ .../bindings/arm/mediatek/mediatek,mcucfg.txt      |   22 +
+ .../bindings/arm/mediatek/mediatek,mfgcfg.txt      |   22 +
+ .../bindings/arm/mediatek/mediatek,mmsys.txt       |    1 +
+ .../bindings/arm/mediatek/mediatek,pericfg.txt     |    1 +
+ .../bindings/arm/mediatek/mediatek,topckgen.txt    |    1 +
+ .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    1 +
+ .../bindings/arm/mediatek/mediatek,vencsys.txt     |    1 +
+ .../devicetree/bindings/soc/mediatek/scpsys.txt    |    3 +
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi          |  131 ++
+ drivers/clk/mediatek/Kconfig                       |   50 +
+ drivers/clk/mediatek/Makefile                      |    8 +
+ drivers/clk/mediatek/clk-mt2712-bdp.c              |  102 ++
+ drivers/clk/mediatek/clk-mt2712-img.c              |   80 ++
+ drivers/clk/mediatek/clk-mt2712-jpgdec.c           |   76 ++
+ drivers/clk/mediatek/clk-mt2712-mfg.c              |   75 ++
+ drivers/clk/mediatek/clk-mt2712-mm.c               |  170 +++
+ drivers/clk/mediatek/clk-mt2712-vdec.c             |   94 ++
+ drivers/clk/mediatek/clk-mt2712-venc.c             |   77 ++
+ drivers/clk/mediatek/clk-mt2712.c                  | 1399 ++++++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.h                     |    2 +
+ drivers/clk/mediatek/clk-pll.c                     |   13 +-
+ drivers/soc/mediatek/mtk-infracfg.c                |   32 +-
+ drivers/soc/mediatek/mtk-scpsys.c                  |  199 ++-
+ include/dt-bindings/clock/mt2712-clk.h             |  427 ++++++
+ include/dt-bindings/power/mt2712-power.h           |   26 +
+ include/linux/soc/mediatek/infracfg.h              |   12 +-
+ 31 files changed, 3013 insertions(+), 38 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,jpgdecsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mcucfg.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-bdp.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-img.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-jpgdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-mfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-mm.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-vdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-venc.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2712.c
+ create mode 100644 include/dt-bindings/clock/mt2712-clk.h
+ create mode 100644 include/dt-bindings/power/mt2712-power.h
+
