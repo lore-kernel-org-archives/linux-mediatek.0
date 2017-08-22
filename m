@@ -1,27 +1,41 @@
-From: Joerg Roedel <joro@8bytes.org>
-Subject: Re: [PATCH v2 0/8] MT2712 IOMMU SUPPORT
-Date: Tue, 22 Aug 2017 16:38:37 +0200
-Message-ID: <20170822143836.ac3faa7wcwfjtvjc@8bytes.org>
-References: <1503313221-26453-1-git-send-email-yong.wu@mediatek.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH v2 0/3] PCI: mediatek: Add MSI support for MT2712 and
+ MT7622
+Date: Tue, 22 Aug 2017 16:36:03 -0500
+Message-ID: <20170822213602.GK6948@bhelgaas-glaptop.roam.corp.google.com>
+References: <1502715868-17651-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1503313221-26453-1-git-send-email-yong.wu@mediatek.com>
+In-Reply-To: <1502715868-17651-1-git-send-email-honghui.zhang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will.deacon@arm.com>, Daniel Kurtz <djkurtz@google.com>, Tomasz Figa <tfiga@google.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, arnd@arndb.de, honghui.zhang@mediatek.com, k.zhang@mediatek.com, cloud.zhou@mediatek.com
+To: honghui.zhang@mediatek.com
+Cc: bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Aug 21, 2017 at 07:00:13PM +0800, Yong Wu wrote:
-> Yong Wu (8):
->   dt-bindings: mediatek: Add binding for mt2712 IOMMU and SMI
->   iommu/mediatek: Move MTK_M4U_TO_LARB/PORT into mtk_iommu.c
->   iommu/mediatek: Add mt2712 IOMMU support
->   iommu/mediatek: Merge 2 M4U HWs into one iommu domain
->   iommu/mediatek: Move pgtable allocation into domain_alloc
->   iommu/mediatek: Disable iommu clock when system suspend
->   iommu/mediatek: Enlarge the validate PA range for 4GB mode
->   memory: mtk-smi: Degrade SMI init to module_init
+On Mon, Aug 14, 2017 at 09:04:25PM +0800, honghui.zhang@mediatek.com wrote:
+> From: Honghui Zhang <honghui.zhang@mediatek.com>
+> 
+> MT2712 and MT7622's PCIe host controller support MSI, but only 32bit MSI
+> address are supportted. It connect to GIC with the same IRQ number of INTx
+> IRQ, so it shares the same IRQ with INTx IRQ.
+> 
+> This patchset add MSI support for MT2712 and MT7622.
+> Also do some code fixup and cleanups.
+> 
+> Change Since V1:
+>  - Add the first two patches into this patchset.
+>  - Using -ENODEV instead of PTR_ERR if msi_domain == NULL
+>  - Change the error logs with consistency of lower-case
+>  - Using has_msi instead of support_msi to make the parameter name a bit shorter
+> 
+> Honghui Zhang (3):
+>   PCI: mediatek: Fix return value in case of error
+>   PCI: mediatek: take use of bus->sysdata to get host private data
+>   PCI: mediatek: add msi support for MT2712 and MT7622
+> 
+>  drivers/pci/host/pcie-mediatek.c | 157 +++++++++++++++++++++++++++++++++++++--
+>  1 file changed, 151 insertions(+), 6 deletions(-)
 
-Applied patches 2-7. Patch 1 is something for Matthias.
+Just waiting for an ack from Ryder...
