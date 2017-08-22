@@ -1,44 +1,44 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH next 1/2] phy: phy-mtk-tphy: fix NULL point of chip bank
-Date: Tue, 22 Aug 2017 14:02:22 +0800
-Message-ID: <a36fbe3171bc71cb91a7aa3ffaa97837d209a4d4.1503381432.git.chunfeng.yun@mediatek.com>
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Subject: Re: [PATCH] crypto: mediatek - Add empty messages check in GCM mode
+Date: Tue, 22 Aug 2017 15:01:44 +0800
+Message-ID: <20170822070144.GA5989@gondor.apana.org.au>
+References: <018d5b804a22b0aa2e4d759749884b0e15c25de4.1502861307.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-crypto-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <018d5b804a22b0aa2e4d759749884b0e15c25de4.1502861307.git.ryder.lee@mediatek.com>
+Sender: linux-crypto-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Chip bank of version-1 is initialized as NULL, but it's used
-by pcie_phy_instance_power_on/off(), so assign it a right
-address.
+On Wed, Aug 16, 2017 at 07:19:48PM +0800, Ryder Lee wrote:
+> Currently, empty messages are not supported in GCM mode, hence add
+> a check to prevent producing incorrect results.
+> 
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  drivers/crypto/mediatek/mtk-aes.c | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/drivers/crypto/mediatek/mtk-aes.c b/drivers/crypto/mediatek/mtk-aes.c
+> index 9e845e8..efe4e63 100644
+> --- a/drivers/crypto/mediatek/mtk-aes.c
+> +++ b/drivers/crypto/mediatek/mtk-aes.c
+> @@ -928,8 +928,13 @@ static int mtk_aes_gcm_start(struct mtk_cryp *cryp, struct mtk_aes_rec *aes)
+>  static int mtk_aes_gcm_crypt(struct aead_request *req, u64 mode)
+>  {
+>  	struct mtk_aes_base_ctx *ctx = crypto_aead_ctx(crypto_aead_reqtfm(req));
+> +	struct mtk_aes_gcm_ctx *gctx = mtk_aes_gcm_ctx_cast(ctx);
+>  	struct mtk_aes_reqctx *rctx = aead_request_ctx(req);
+>  
+> +	/* Empty messages are not supported yet */
+> +	if (!gctx->textlen && !req->assoclen)
+> +		return -EINVAL
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/phy/mediatek/phy-mtk-tphy.c |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index 1ca7fe3..a440de9 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -28,6 +28,7 @@
- /* banks shared by multiple phys */
- #define SSUSB_SIFSLV_V1_SPLLC		0x000	/* shared by u3 phys */
- #define SSUSB_SIFSLV_V1_U2FREQ		0x100	/* shared by u2 phys */
-+#define SSUSB_SIFSLV_V1_CHIP		0x300	/* shared by u3 phys */
- /* u2 phy bank */
- #define SSUSB_SIFSLV_V1_U2PHY_COM	0x000
- /* u3/pcie/sata phy banks */
-@@ -763,7 +764,7 @@ static void phy_v1_banks_init(struct mtk_tphy *tphy,
- 	case PHY_TYPE_USB3:
- 	case PHY_TYPE_PCIE:
- 		u3_banks->spllc = tphy->sif_base + SSUSB_SIFSLV_V1_SPLLC;
--		u3_banks->chip = NULL;
-+		u3_banks->chip = tphy->sif_base + SSUSB_SIFSLV_V1_CHIP;
- 		u3_banks->phyd = instance->port_base + SSUSB_SIFSLV_V1_U3PHYD;
- 		u3_banks->phya = instance->port_base + SSUSB_SIFSLV_V1_U3PHYA;
- 		break;
+Your patch does not compile.
 -- 
-1.7.9.5
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
