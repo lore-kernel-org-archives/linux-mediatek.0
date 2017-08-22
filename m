@@ -1,43 +1,69 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v1] crypto: mediatek - Add empty messages check in GCM mode
-Date: Tue, 22 Aug 2017 15:53:39 +0800
-Message-ID: <efa7d94ce1b5b63f192d05e7c0a1c74b6b48ec38.1503387350.git.ryder.lee@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Herbert Xu <herbert@gondor.apana.org.au>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
+From: Corentin Labbe <clabbe.montjoie@gmail.com>
+Subject: [PATCH 04/11] crypto: nx - Use GCM IV size constant
+Date: Tue, 22 Aug 2017 10:08:11 +0200
+Message-ID: <20170822080818.12486-5-clabbe.montjoie@gmail.com>
+References: <20170822080818.12486-1-clabbe.montjoie@gmail.com>
+Return-path: <linux-crypto-owner@vger.kernel.org>
+In-Reply-To: <20170822080818.12486-1-clabbe.montjoie@gmail.com>
+Sender: linux-crypto-owner@vger.kernel.org
+To: herbert@gondor.apana.org.au, davem@davemloft.net, tglx@linutronix.de, mingo@redhat.com, hpa@zytor.com, x86@kernel.org, horia.geanta@nxp.com, dan.douglass@nxp.com, thomas.lendacky@amd.com, gary.hook@amd.com, harsh@chelsio.com, matthias.bgg@gmail.com, leosilva@linux.vnet.ibm.com, pfsmorigo@linux.vnet.ibm.com, benh@kernel.crashing.org, paulus@samba.org, mpe@ellerman.id.au
+Cc: linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org, Corentin Labbe <clabbe.montjoie@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Currently, empty messages are not supported in GCM mode, hence add
-a check to prevent producing incorrect results.
+This patch replace GCM IV size value by their constant name.
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Corentin Labbe <clabbe.montjoie@gmail.com>
 ---
-changes since v1: 
-- fix build erro: add a missing semicolon.
+ drivers/crypto/nx/nx-aes-gcm.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
- drivers/crypto/mediatek/mtk-aes.c | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/drivers/crypto/mediatek/mtk-aes.c b/drivers/crypto/mediatek/mtk-aes.c
-index 9e845e8..72e4549 100644
---- a/drivers/crypto/mediatek/mtk-aes.c
-+++ b/drivers/crypto/mediatek/mtk-aes.c
-@@ -928,8 +928,13 @@ static int mtk_aes_gcm_start(struct mtk_cryp *cryp, struct mtk_aes_rec *aes)
- static int mtk_aes_gcm_crypt(struct aead_request *req, u64 mode)
- {
- 	struct mtk_aes_base_ctx *ctx = crypto_aead_ctx(crypto_aead_reqtfm(req));
-+	struct mtk_aes_gcm_ctx *gctx = mtk_aes_gcm_ctx_cast(ctx);
- 	struct mtk_aes_reqctx *rctx = aead_request_ctx(req);
+diff --git a/drivers/crypto/nx/nx-aes-gcm.c b/drivers/crypto/nx/nx-aes-gcm.c
+index abd465f479c4..a810596b97c2 100644
+--- a/drivers/crypto/nx/nx-aes-gcm.c
++++ b/drivers/crypto/nx/nx-aes-gcm.c
+@@ -22,6 +22,7 @@
+ #include <crypto/internal/aead.h>
+ #include <crypto/aes.h>
+ #include <crypto/algapi.h>
++#include <crypto/gcm.h>
+ #include <crypto/scatterwalk.h>
+ #include <linux/module.h>
+ #include <linux/types.h>
+@@ -433,7 +434,7 @@ static int gcm_aes_nx_encrypt(struct aead_request *req)
+ 	struct nx_gcm_rctx *rctx = aead_request_ctx(req);
+ 	char *iv = rctx->iv;
  
-+	/* Empty messages are not supported yet */
-+	if (!gctx->textlen && !req->assoclen)
-+		return -EINVAL;
-+
- 	rctx->mode = AES_FLAGS_GCM | mode;
+-	memcpy(iv, req->iv, 12);
++	memcpy(iv, req->iv, GCM_AES_IV_SIZE);
  
- 	return mtk_aes_handle_queue(ctx->cryp, !!(mode & AES_FLAGS_ENCRYPT),
+ 	return gcm_aes_nx_crypt(req, 1, req->assoclen);
+ }
+@@ -443,7 +444,7 @@ static int gcm_aes_nx_decrypt(struct aead_request *req)
+ 	struct nx_gcm_rctx *rctx = aead_request_ctx(req);
+ 	char *iv = rctx->iv;
+ 
+-	memcpy(iv, req->iv, 12);
++	memcpy(iv, req->iv, GCM_AES_IV_SIZE);
+ 
+ 	return gcm_aes_nx_crypt(req, 0, req->assoclen);
+ }
+@@ -498,7 +499,7 @@ struct aead_alg nx_gcm_aes_alg = {
+ 	},
+ 	.init        = nx_crypto_ctx_aes_gcm_init,
+ 	.exit        = nx_crypto_ctx_aead_exit,
+-	.ivsize      = 12,
++	.ivsize      = GCM_AES_IV_SIZE,
+ 	.maxauthsize = AES_BLOCK_SIZE,
+ 	.setkey      = gcm_aes_nx_set_key,
+ 	.encrypt     = gcm_aes_nx_encrypt,
+@@ -516,7 +517,7 @@ struct aead_alg nx_gcm4106_aes_alg = {
+ 	},
+ 	.init        = nx_crypto_ctx_aes_gcm_init,
+ 	.exit        = nx_crypto_ctx_aead_exit,
+-	.ivsize      = 8,
++	.ivsize      = GCM_RFC4106_IV_SIZE,
+ 	.maxauthsize = AES_BLOCK_SIZE,
+ 	.setkey      = gcm4106_aes_nx_set_key,
+ 	.setauthsize = gcm4106_aes_nx_setauthsize,
 -- 
-1.9.1
+2.13.0
