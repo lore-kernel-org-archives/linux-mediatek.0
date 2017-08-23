@@ -1,33 +1,51 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4 2/3] dt-bindings: i2c: Add MediaTek MT7622 i2c binding
-Date: Tue, 22 Aug 2017 19:36:29 -0500
-Message-ID: <20170823003629.pwnuashutcqujdmb@rob-hp-laptop>
-References: <1503286614-17670-1-git-send-email-jun.gao@mediatek.com>
- <1503286614-17670-3-git-send-email-jun.gao@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [V2 1/4] MIPS: dts: ralink: Add Mediatek MT7628A SoC
+Date: Tue, 22 Aug 2017 19:41:14 -0500
+Message-ID: <20170823004114.a7raxjrjj7vcmpbb@rob-hp-laptop>
+References: <1503312931-34416-1-git-send-email-harvey.hunt@imgtec.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1503286614-17670-3-git-send-email-jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <1503312931-34416-1-git-send-email-harvey.hunt@imgtec.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Harvey Hunt <harvey.hunt@imgtec.com>
+Cc: mark.rutland@arm.com, ralf@linux-mips.org, john@phrozen.org, linux-mips@linux-mips.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Aug 21, 2017 at 11:36:53AM +0800, Jun Gao wrote:
-> From: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Mon, Aug 21, 2017 at 11:55:29AM +0100, Harvey Hunt wrote:
+> The MT7628A is the successor to the MT7620 and pin compatible with the
+> MT7688A, although the latter supports only a 1T1R antenna rather than
+> a 2T2R antenna.
 > 
-> Add MT7622 i2c binding to binding file. Compare to MT8173 i2c
-> controller, MT7622 limits message numbers to 255, and does not
-> support 4GB DMA mode.
+> This commit adds support for the following features:
 > 
-> Signed-off-by: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> - UART
+> - USB PHY
+> - EHCI
+> - Interrupt controller
+> - System controller
+> - Memory controller
+> - Reset controller
+> 
+> Signed-off-by: Harvey Hunt <harvey.hunt@imgtec.com>
+> Cc: linux-mips@linux-mips.org 
+> Cc: devicetree@vger.kernel.org 
+> Cc: linux-kernel@vger.kernel.org 
+> Cc: linux-mediatek@lists.infradead.org 
 > ---
->  Documentation/devicetree/bindings/i2c/i2c-mtk.txt | 1 +
->  1 file changed, 1 insertion(+)
+> Ralf: I've added this patch to both my vocore2 and omega2+
+> patchsets for ease of review, please only merge it once :-)
+> 
+> Changes in V2:
+> - Add MT7628 to patchset to keep kbuild happy and retain context
+> - Rename multiple DT nodes to standard names
+> - Add labels for uarts
+> - Rename USB PHY handle
+> 
+>  Documentation/devicetree/bindings/mips/ralink.txt |   1 +
+>  arch/mips/boot/dts/ralink/mt7628a.dtsi            | 126 ++++++++++++++++++++++
+>  2 files changed, 127 insertions(+)
+>  create mode 100644 arch/mips/boot/dts/ralink/mt7628a.dtsi
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Acked-by: Rob Herring <robh@kernel.org>
