@@ -1,59 +1,201 @@
-From: Will Deacon <will.deacon@arm.com>
-Subject: Re: [RFC/PATCH v2] arm64: define MODULES_VADDR by module_alloc_base
-Date: Wed, 23 Aug 2017 17:27:32 +0100
-Message-ID: <20170823162732.GD32528@arm.com>
-References: <1502788166-25730-1-git-send-email-miles.chen@mediatek.com>
+From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 0/3] PCI: mediatek: Add MSI support for MT2712 and
+ MT7622
+Date: Wed, 23 Aug 2017 13:58:30 -0500
+Message-ID: <20170823185830.GE8498@bhelgaas-glaptop.roam.corp.google.com>
+References: <1502715868-17651-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1502788166-25730-1-git-send-email-miles.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Miles Chen <miles.chen@mediatek.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+In-Reply-To: <1502715868-17651-1-git-send-email-honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Aug 15, 2017 at 05:09:26PM +0800, Miles Chen wrote:
-> After the kernel ASLR, the module virtual address is moved to
-> [module_alloc_base, module_alloc_base + MODULES_VSIZE).
-> However, the MODULES_VADDR is still defined as a constant and functions
-> like is_vmalloc_or_module_addr() and dump function will not able to
-> use correct module range information.
+On Mon, Aug 14, 2017 at 09:04:25PM +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> Use module_alloc_base to define MODULES_VADDR. I tested the patch under
-> three different conditions:
-> 1.CONFIG_RANDOMIZE_BASE=y, seed=0, CONFIG_KASAN=n
-> 2.CONFIG_RANDOMIZE_BASE=y, seed=0x2304909023333333, CONFIG_KASAN=n
-> 3.CONFIG_RANDOMIZE_BASE=y, seed=0x2304909023333333, CONFIG_KASAN=y
+> MT2712 and MT7622's PCIe host controller support MSI, but only 32bit MSI
+> address are supportted. It connect to GIC with the same IRQ number of INTx
+> IRQ, so it shares the same IRQ with INTx IRQ.
 > 
-> test log:
+> This patchset add MSI support for MT2712 and MT7622.
+> Also do some code fixup and cleanups.
 > 
-> 1.CONFIG_RANDOMIZE_BASE=y, seed=0, CONFIG_KASAN=n
+> Change Since V1:
+>  - Add the first two patches into this patchset.
+>  - Using -ENODEV instead of PTR_ERR if msi_domain == NULL
+>  - Change the error logs with consistency of lower-case
+>  - Using has_msi instead of support_msi to make the parameter name a bit shorter
 > 
-> [    0.000000] Virtual kernel memory layout:
-> [    0.000000]     modules : 0xffffff8000550000 - 0xffffff8008550000   (   128 MB)
+> Honghui Zhang (3):
+>   PCI: mediatek: Fix return value in case of error
+>   PCI: mediatek: take use of bus->sysdata to get host private data
+>   PCI: mediatek: add msi support for MT2712 and MT7622
+> 
+>  drivers/pci/host/pcie-mediatek.c | 157 +++++++++++++++++++++++++++++++++++++--
+>  1 file changed, 151 insertions(+), 6 deletions(-)
 
-Minor nit: but it might be worth putting this after the vmalloc line in
-the case where they overlap.
+Since "PCI: mediatek: Add controller support for MT2712 and MT7622" patch
+hasn't appeared upstream yet, I folded the return value fix directly into
+it.
 
-> [    0.000000]     vmalloc : 0xffffff8008000000 - 0xffffffbebfff0000   (   250 GB)
-> [    0.000000]       .text : 0xffffff8008080000 - 0xffffff8008550000   (  4928 KB)
-> [    0.000000]     .rodata : 0xffffff8008550000 - 0xffffff80086a0000   (  1344 KB)
-> [    0.000000]       .init : 0xffffff80086a0000 - 0xffffff8008a30000   (  3648 KB)
-> [    0.000000]       .data : 0xffffff8008a30000 - 0xffffff8008ab9200   (   549 KB)
-> [    0.000000]        .bss : 0xffffff8008ab9200 - 0xffffff8008b0b238   (   329 KB)
-> [    0.000000]     fixed   : 0xffffffbefe7fd000 - 0xffffffbefec00000   (  4108 KB)
-> [    0.000000]     PCI I/O : 0xffffffbefee00000 - 0xffffffbeffe00000   (    16 MB)
-> [    0.000000]     vmemmap : 0xffffffbf00000000 - 0xffffffc000000000   (     4 GB maximum)
-> [    0.000000]               0xffffffbf00000000 - 0xffffffbf02000000   (    32 MB actual)
-> [    0.000000]     memory  : 0xffffffc000000000 - 0xffffffc080000000   (  2048 MB)
-> 
-> \# cat kernel_page_tables
-> ---[ Modules start ]---
-> ---[ Modules end ]---
+I applied the others to pci/host-mediatek.  I modified the third one to
+remove what seemed to be needless differences from the rcar and tegra
+drivers.  The incremental diff is attached.  Please check to make sure I
+didn't break anything.
 
 
-I still reckon we should just omit talking about the modules area at all
-for the cases where they're mapped entirely within vmalloc here.
-
-Will
+diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+index 35ab2321ed16..8891c00bf13c 100644
+--- a/drivers/pci/host/pcie-mediatek.c
++++ b/drivers/pci/host/pcie-mediatek.c
+@@ -134,7 +134,7 @@ struct mtk_pcie_port;
+ 
+ /**
+  * struct mtk_pcie_soc - differentiate between host generations
+- * @has_msi: whether this host support MSI interrupt or not
++ * @has_msi: whether this host supports MSI interrupts or not
+  * @ops: pointer to configuration access functions
+  * @startup: pointer to controller setting functions
+  * @setup_irq: pointer to initialize IRQ functions
+@@ -439,44 +439,51 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+ 	return 0;
+ }
+ 
+-static int mtk_pcie_assign_msi(struct mtk_pcie_port *port)
++static int mtk_pcie_msi_alloc(struct mtk_pcie_port *port)
+ {
+-	int pos;
++	int msi;
+ 
+-	pos = find_first_zero_bit(port->msi_irq_in_use, MTK_MSI_IRQS_NUM);
+-	if (pos < MTK_MSI_IRQS_NUM)
+-		set_bit(pos, port->msi_irq_in_use);
++	msi = find_first_zero_bit(port->msi_irq_in_use, MTK_MSI_IRQS_NUM);
++	if (msi < MTK_MSI_IRQS_NUM)
++		set_bit(msi, port->msi_irq_in_use);
+ 	else
+ 		return -ENOSPC;
+ 
+-	return pos;
++	return msi;
++}
++
++static void mtk_pcie_msi_free(struct mtk_pcie_port *port, unsigned long hwirq)
++{
++	clear_bit(hwirq, port->msi_irq_in_use);
+ }
+ 
+ static int mtk_pcie_msi_setup_irq(struct msi_controller *chip,
+-				  struct pci_dev *pdev,
+-				  struct msi_desc *desc)
++				  struct pci_dev *pdev, struct msi_desc *desc)
+ {
+ 	struct mtk_pcie_port *port;
+ 	struct msi_msg msg;
++	unsigned int irq;
+ 	int hwirq;
+-	u32 irq;
+ 
+ 	port = mtk_pcie_find_port(pdev->bus, pdev->devfn);
+ 	if (!port)
+ 		return -EINVAL;
+ 
+-	chip->dev = &pdev->dev;
+-	hwirq = mtk_pcie_assign_msi(port);
++	hwirq = mtk_pcie_msi_alloc(port);
+ 	if (hwirq < 0)
+ 		return hwirq;
+ 
+ 	irq = irq_create_mapping(port->msi_domain, hwirq);
+-	if (!irq)
++	if (!irq) {
++		mtk_pcie_msi_free(port, hwirq);
+ 		return -EINVAL;
++	}
++
++	chip->dev = &pdev->dev;
+ 
+ 	irq_set_msi_desc(irq, desc);
+ 
+-	/* MT2712/MT7622 only support 32 bit MSI address */
++	/* MT2712/MT7622 only support 32-bit MSI addresses */
+ 	msg.address_hi = 0;
+ 	msg.address_lo = lower_32_bits((u64)(port->base + PCIE_MSI_VECTOR));
+ 	msg.data = hwirq;
+@@ -497,10 +504,8 @@ static void mtk_msi_teardown_irq(struct msi_controller *chip, unsigned int irq)
+ 	if (!port)
+ 		return;
+ 
+-	if (!test_bit(hwirq, port->msi_irq_in_use))
+-		dev_err(&pdev->dev, "trying to free unused MSI#%d\n", irq);
+-	else
+-		clear_bit(hwirq, port->msi_irq_in_use);
++	irq_dispose_mapping(irq);
++	mtk_pcie_msi_free(port, hwirq);
+ }
+ 
+ static struct msi_controller mtk_pcie_msi_chip = {
+@@ -529,16 +534,26 @@ static const struct irq_domain_ops msi_domain_ops = {
+ 	.map = mtk_pcie_msi_map,
+ };
+ 
+-static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
++static int mtk_pcie_enable_msi(struct mtk_pcie_port *port)
+ {
+ 	u32 val;
+ 
++	port->msi_domain = irq_domain_add_linear(node, MTK_MSI_IRQS_NUM,
++						 &msi_domain_ops,
++						 &mtk_pcie_msi_chip);
++	if (!port->msi_domain) {
++		dev_err(dev, "failed to create MSI IRQ domain\n");
++		return -ENOMEM;
++	}
++
+ 	val = lower_32_bits((u64)(port->base + PCIE_MSI_VECTOR));
+ 	writel(val, port->base + PCIE_IMSI_ADDR);
+ 
+ 	val = readl(port->base + PCIE_INT_MASK);
+ 	val &= ~MSI_MASK;
+ 	writel(val, port->base + PCIE_INT_MASK);
++
++	return 0;
+ }
+ 
+ static int mtk_pcie_intx_map(struct irq_domain *domain, unsigned int irq,
+@@ -559,6 +574,7 @@ static int mtk_pcie_init_irq_domain(struct mtk_pcie_port *port,
+ {
+ 	struct device *dev = port->pcie->dev;
+ 	struct device_node *pcie_intc_node;
++	int err;
+ 
+ 	/* Setup INTx */
+ 	pcie_intc_node = of_get_next_child(node, NULL);
+@@ -574,16 +590,10 @@ static int mtk_pcie_init_irq_domain(struct mtk_pcie_port *port,
+ 		return -ENODEV;
+ 	}
+ 
+-	/* Setup MSI */
+ 	if (IS_ENABLED(CONFIG_PCI_MSI)) {
+-		port->msi_domain = irq_domain_add_linear(node, MTK_MSI_IRQS_NUM,
+-							 &msi_domain_ops,
+-							 &mtk_pcie_msi_chip);
+-		if (!port->msi_domain) {
+-			dev_err(dev, "failed to get MSI IRQ domain\n");
+-			return -ENODEV;
+-		}
+-		mtk_pcie_enable_msi(port);
++		err = mtk_pcie_enable_msi(port);
++		if (err < 0)
++			return err;
+ 	}
+ 
+ 	return 0;
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
