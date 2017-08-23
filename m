@@ -1,77 +1,73 @@
-From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH] irqchip: Convert to using %pOF instead of full_name
-Date: Wed, 23 Aug 2017 10:17:53 +0100
-Message-ID: <dfc0a724-ea9d-ffad-fd69-ef3f65fe4328@arm.com>
-References: <20170718214339.7774-30-robh@kernel.org>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [GIT PULL] arm: mediatek: dts32 updates for v4.14
+Date: Wed, 23 Aug 2017 11:50:16 +0200
+Message-ID: <CAK8P3a1qP-usWg9=30Oh7t51LEj+LeUXnOCF2Xc9j9Rq6kZnBg@mail.gmail.com>
+References: <9434dcb8-d38d-ff3a-a6ce-2b27d3a74cef@gmail.com>
+ <CAK8P3a0HnyJq4LUQyv8zn5vKcybyY3avam8s=6UFcMSeqXVQbg@mail.gmail.com>
+ <1503454566.15454.0.camel@mtksdaap41> <1503455717.16782.7.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170718214339.7774-30-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Content-Language: en-GB
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>, Lee Jones <lee-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ray Jui <rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Scott Branden <sbranden-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>, Vladimir Zapolskiy <vz-ChpfBGZJDbMAvxtiuMwx3w@public.gmane.org>, Sylvain Lemieux <slemieux.tyco-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Maxime Coquelin <mcoquelin.stm32-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Torgue <alexandre.torgue-qxv4g6HH51o@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Mic
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1503455717.16782.7.camel@mtksdaap41>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 18/07/17 22:43, Rob Herring wrote:
-> Now that we have a custom printf format specifier, convert users of
-> full_name to use %pOF instead. This is preparation to remove storing
-> of the full path string for each node.
-> 
-> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> Cc: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
-> Cc: Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>
-> Cc: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-> Cc: Lee Jones <lee-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> Cc: Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>
-> Cc: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
-> Cc: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Cc: Ray Jui <rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
-> Cc: Scott Branden <sbranden-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
-> Cc: bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org
-> Cc: Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>
-> Cc: Vladimir Zapolskiy <vz-ChpfBGZJDbMAvxtiuMwx3w@public.gmane.org>
-> Cc: Sylvain Lemieux <slemieux.tyco-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Cc: Maxime Coquelin <mcoquelin.stm32-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Cc: Alexandre Torgue <alexandre.torgue-qxv4g6HH51o@public.gmane.org>
-> Cc: Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-> Cc: Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>
-> Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Cc: Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-> Cc: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
-> Cc: "Sören Brinkmann" <soren.brinkmann-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
-> Cc: linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> Cc: linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> ---
->  drivers/irqchip/irq-bcm2835.c            |  9 ++++-----
->  drivers/irqchip/irq-bcm2836.c            |  5 ++---
->  drivers/irqchip/irq-crossbar.c           |  6 +++---
->  drivers/irqchip/irq-digicolor.c          |  8 ++++----
->  drivers/irqchip/irq-dw-apb-ictl.c        | 12 ++++++------
->  drivers/irqchip/irq-gic-v3-its-pci-msi.c |  2 +-
->  drivers/irqchip/irq-gic-v3-its.c         |  6 +++---
->  drivers/irqchip/irq-gic-v3.c             | 11 ++++-------
->  drivers/irqchip/irq-imx-gpcv2.c          |  4 ++--
->  drivers/irqchip/irq-lpc32xx.c            |  2 +-
->  drivers/irqchip/irq-mtk-sysirq.c         |  3 +--
->  drivers/irqchip/irq-mxs.c                |  4 ++--
->  drivers/irqchip/irq-stm32-exti.c         |  8 ++++----
->  drivers/irqchip/irq-sun4i.c              |  6 +++---
->  drivers/irqchip/irq-tegra.c              | 16 ++++++++--------
->  drivers/irqchip/irq-xilinx-intc.c        |  4 ++--
->  16 files changed, 50 insertions(+), 56 deletions(-)
-Queued for 4.14.
+On Wed, Aug 23, 2017 at 4:35 AM, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+>> On Sat, 2017-08-19 at 04:41 +0800, Arnd Bergmann wrote:
+>> > On Thu, Aug 17, 2017 at 3:37 PM, Matthias Brugger
+>> > <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>> > >
+>> > > The following changes since commit 5771a8c08880cdca3bfb4a3fc6d309d6bba20877:
+>> > >
+>> > >   Linux v4.13-rc1 (2017-07-15 15:22:10 -0700)
+>> > >
+>> > > are available in the git repository at:
+>> > >
+>> > >   https://github.com/mbgg/linux-mediatek.git tags/v4.13-next-dts64
+>> > >
+>> > > for you to fetch changes up to bdf2cbb2b3160122f7ff16445fdb73267fffd583:
+>> > >
+>> > >   arm64: dts: Add Mediatek SoC MT2712 and evaluation board dts and Makefile
+>> > > (2017-08-17 15:33:45 +0200)
+>> > >
+>> > > ----------------------------------------------------------------
+>> > > - add SoC mt7622 and its reference board
+>> > > - cleanup of dts bindings
+>> > > - mt6797: add watchdog and delete unused clock
+>> > > - add support for SoC mt2701 and it's eval board
+>> >
+>> > Nice to see mt7622 support already getting merged, at least it seems this
+>> > is getting there before the chip ends up in consumer devices, normally
+>> > it's the other way round ;-)
+>> >
+>> > Could you let me know what mt2712 is? I can't find anything about this
+>> > chip, not even which business unit made it, and I'd like to have a brief
+>> > description for most newly added hardware in my own pull requests.
+>> >
+>> >         Arnd
+>> >
+> Hi,
+>
+> MT2712 is a family of automotive processors designed for infotainment
+> applications.
+>
+> Is that sufficient?  Thanks.
+> yt.shen
 
-Thanks,
+Thanks, that just what I was missing. It would be good to add something
+like that, plus any pointers to public websites (when they exist) when merging
+support for a new chip, in the commit log and/or the Kconfig entry when we
+have one (the latter usually only for arm32 but not arm64).
 
-	M.
--- 
-Jazz is not dead. It just smells funny...
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+      Arnd
