@@ -1,51 +1,52 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [V2 1/4] MIPS: dts: ralink: Add Mediatek MT7628A SoC
-Date: Tue, 22 Aug 2017 19:41:14 -0500
-Message-ID: <20170823004114.a7raxjrjj7vcmpbb@rob-hp-laptop>
-References: <1503312931-34416-1-git-send-email-harvey.hunt@imgtec.com>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 0/3] PCI: mediatek: Add MSI support for MT2712 and
+ MT7622
+Date: Wed, 23 Aug 2017 09:04:26 +0800
+Message-ID: <1503450266.11985.3.camel@mtkswgap22>
+References: <1502715868-17651-1-git-send-email-honghui.zhang@mediatek.com>
+         <20170822213602.GK6948@bhelgaas-glaptop.roam.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1503312931-34416-1-git-send-email-harvey.hunt@imgtec.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Harvey Hunt <harvey.hunt@imgtec.com>
-Cc: mark.rutland@arm.com, ralf@linux-mips.org, john@phrozen.org, linux-mips@linux-mips.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170822213602.GK6948-1RhO1Y9PlrlHTL0Zs8A6p5iNqAH0jzoTYJqu5kTmcBRl57MIdRCFDg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Aug 21, 2017 at 11:55:29AM +0100, Harvey Hunt wrote:
-> The MT7628A is the successor to the MT7620 and pin compatible with the
-> MT7688A, although the latter supports only a 1T1R antenna rather than
-> a 2T2R antenna.
+On Tue, 2017-08-22 at 16:36 -0500, Bjorn Helgaas wrote:
+> On Mon, Aug 14, 2017 at 09:04:25PM +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> > From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > 
+> > MT2712 and MT7622's PCIe host controller support MSI, but only 32bit MSI
+> > address are supportted. It connect to GIC with the same IRQ number of INTx
+> > IRQ, so it shares the same IRQ with INTx IRQ.
+> > 
+> > This patchset add MSI support for MT2712 and MT7622.
+> > Also do some code fixup and cleanups.
+> > 
+> > Change Since V1:
+> >  - Add the first two patches into this patchset.
+> >  - Using -ENODEV instead of PTR_ERR if msi_domain == NULL
+> >  - Change the error logs with consistency of lower-case
+> >  - Using has_msi instead of support_msi to make the parameter name a bit shorter
+> > 
+> > Honghui Zhang (3):
+> >   PCI: mediatek: Fix return value in case of error
+> >   PCI: mediatek: take use of bus->sysdata to get host private data
+> >   PCI: mediatek: add msi support for MT2712 and MT7622
+> > 
+> >  drivers/pci/host/pcie-mediatek.c | 157 +++++++++++++++++++++++++++++++++++++--
+> >  1 file changed, 151 insertions(+), 6 deletions(-)
 > 
-> This commit adds support for the following features:
-> 
-> - UART
-> - USB PHY
-> - EHCI
-> - Interrupt controller
-> - System controller
-> - Memory controller
-> - Reset controller
-> 
-> Signed-off-by: Harvey Hunt <harvey.hunt@imgtec.com>
-> Cc: linux-mips@linux-mips.org 
-> Cc: devicetree@vger.kernel.org 
-> Cc: linux-kernel@vger.kernel.org 
-> Cc: linux-mediatek@lists.infradead.org 
-> ---
-> Ralf: I've added this patch to both my vocore2 and omega2+
-> patchsets for ease of review, please only merge it once :-)
-> 
-> Changes in V2:
-> - Add MT7628 to patchset to keep kbuild happy and retain context
-> - Rename multiple DT nodes to standard names
-> - Add labels for uarts
-> - Rename USB PHY handle
-> 
->  Documentation/devicetree/bindings/mips/ralink.txt |   1 +
->  arch/mips/boot/dts/ralink/mt7628a.dtsi            | 126 ++++++++++++++++++++++
->  2 files changed, 127 insertions(+)
->  create mode 100644 arch/mips/boot/dts/ralink/mt7628a.dtsi
+> Just waiting for an ack from Ryder...
 
-Acked-by: Rob Herring <robh@kernel.org>
+For whole series:
+
+Acked-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
