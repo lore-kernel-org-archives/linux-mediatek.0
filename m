@@ -1,52 +1,65 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 0/3] PCI: mediatek: Add MSI support for MT2712 and
- MT7622
-Date: Wed, 23 Aug 2017 09:04:26 +0800
-Message-ID: <1503450266.11985.3.camel@mtkswgap22>
-References: <1502715868-17651-1-git-send-email-honghui.zhang@mediatek.com>
-         <20170822213602.GK6948@bhelgaas-glaptop.roam.corp.google.com>
+From: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [GIT PULL] arm: mediatek: dts32 updates for v4.14
+Date: Wed, 23 Aug 2017 10:35:17 +0800
+Message-ID: <1503455717.16782.7.camel@mtksdaap41>
+References: <9434dcb8-d38d-ff3a-a6ce-2b27d3a74cef@gmail.com>
+ <CAK8P3a0HnyJq4LUQyv8zn5vKcybyY3avam8s=6UFcMSeqXVQbg@mail.gmail.com>
+ <1503454566.15454.0.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170822213602.GK6948-1RhO1Y9PlrlHTL0Zs8A6p5iNqAH0jzoTYJqu5kTmcBRl57MIdRCFDg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1503454566.15454.0.camel@mtksdaap41>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-08-22 at 16:36 -0500, Bjorn Helgaas wrote:
-> On Mon, Aug 14, 2017 at 09:04:25PM +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> > From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> On Sat, 2017-08-19 at 04:41 +0800, Arnd Bergmann wrote:
+> > On Thu, Aug 17, 2017 at 3:37 PM, Matthias Brugger
+> > <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> > >
+> > > The following changes since commit 5771a8c08880cdca3bfb4a3fc6d309d6bba20877:
+> > >
+> > >   Linux v4.13-rc1 (2017-07-15 15:22:10 -0700)
+> > >
+> > > are available in the git repository at:
+> > >
+> > >   https://github.com/mbgg/linux-mediatek.git tags/v4.13-next-dts64
+> > >
+> > > for you to fetch changes up to bdf2cbb2b3160122f7ff16445fdb73267fffd583:
+> > >
+> > >   arm64: dts: Add Mediatek SoC MT2712 and evaluation board dts and Makefile
+> > > (2017-08-17 15:33:45 +0200)
+> > >
+> > > ----------------------------------------------------------------
+> > > - add SoC mt7622 and its reference board
+> > > - cleanup of dts bindings
+> > > - mt6797: add watchdog and delete unused clock
+> > > - add support for SoC mt2701 and it's eval board
 > > 
-> > MT2712 and MT7622's PCIe host controller support MSI, but only 32bit MSI
-> > address are supportted. It connect to GIC with the same IRQ number of INTx
-> > IRQ, so it shares the same IRQ with INTx IRQ.
+> > Nice to see mt7622 support already getting merged, at least it seems this
+> > is getting there before the chip ends up in consumer devices, normally
+> > it's the other way round ;-)
 > > 
-> > This patchset add MSI support for MT2712 and MT7622.
-> > Also do some code fixup and cleanups.
+> > Could you let me know what mt2712 is? I can't find anything about this
+> > chip, not even which business unit made it, and I'd like to have a brief
+> > description for most newly added hardware in my own pull requests.
 > > 
-> > Change Since V1:
-> >  - Add the first two patches into this patchset.
-> >  - Using -ENODEV instead of PTR_ERR if msi_domain == NULL
-> >  - Change the error logs with consistency of lower-case
-> >  - Using has_msi instead of support_msi to make the parameter name a bit shorter
+> >         Arnd
 > > 
-> > Honghui Zhang (3):
-> >   PCI: mediatek: Fix return value in case of error
-> >   PCI: mediatek: take use of bus->sysdata to get host private data
-> >   PCI: mediatek: add msi support for MT2712 and MT7622
-> > 
-> >  drivers/pci/host/pcie-mediatek.c | 157 +++++++++++++++++++++++++++++++++++++--
-> >  1 file changed, 151 insertions(+), 6 deletions(-)
-> 
-> Just waiting for an ack from Ryder...
+Hi,
 
-For whole series:
+MT2712 is a family of automotive processors designed for infotainment
+applications.
 
-Acked-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Is that sufficient?  Thanks.
+yt.shen
