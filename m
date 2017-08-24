@@ -1,41 +1,68 @@
-From: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [v2] mt7601u: check memory allocation failure
-Date: Thu, 24 Aug 2017 09:55:46 +0000 (UTC)
-Message-ID: <20170824095546.9DE6C602B3@smtp.codeaurora.org>
-References: <20170821220617.21513-1-christophe.jaillet@wanadoo.fr>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v2 02/10] ASoC: mediatek: Remove
+	unnecessary function call
+Date: Thu, 24 Aug 2017 11:40:41 +0100
+Message-ID: <20170824104041.inwummupdvyrzm6z@sirena.org.uk>
+References: <cover.1503484313.git.dolinux.peng@gmail.com>
+ <cebccee7e09dfc8b2abf7447367d222e8840a19c.1503484313.git.dolinux.peng@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170821220617.21513-1-christophe.jaillet@wanadoo.fr>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org, kubakici@wp.pl, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, Christophe JAILLET <christophe.jaillet@wanadoo.fr>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============8835873490926016008=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <cebccee7e09dfc8b2abf7447367d222e8840a19c.1503484313.git.dolinux.peng@gmail.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Peng Donglin <dolinux.peng@gmail.com>
+Cc: alsa-devel@alsa-project.org, lgirdwood@gmail.com, linux-kernel@vger.kernel.org, tiwai@suse.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Christophe Jaillet <christophe.jaillet@wanadoo.fr> wrote:
 
-> Check memory allocation failure and return -ENOMEM in such a case, as
-> already done a few lines below.
-> 
-> As 'dev->tx_q' can be NULL, we also need to check for that in
-> 'mt7601u_free_tx()', and return early.
-> 
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> Acked-by: Jakub Kicinski <kubakici@wp.pl>
+--===============8835873490926016008==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="pz4qlpjrkok6wwp6"
+Content-Disposition: inline
 
-Patch applied to wireless-drivers-next.git, thanks.
 
-b3b2f62c6238 mt7601u: check memory allocation failure
+--pz4qlpjrkok6wwp6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
--- 
-https://patchwork.kernel.org/patch/9913855/
+On Wed, Aug 23, 2017 at 05:18:38AM -0700, Peng Donglin wrote:
+> The work of the function platform_set_drvdata is done by
+> devm_snd_soc_register_card.
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+This also doesn't apply against current code, it looks like versions of
+this series have already been sent - please check the entire series and
+resend anything that's left.
+
+--pz4qlpjrkok6wwp6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlmerSgACgkQJNaLcl1U
+h9B58Qf+KpJZync6HPyDKwneDZtGO3WuH6XXKFuUOgUGAmsoXEGNc0baiQFNKdqj
+AmY/GGGFK4mMtvKmYoHD/mus/3AySkuUtW31bKrFF7WCYXzGwK4D2pN4QT9ryGti
+FhqXcaD51xvkLl9dXx84h4AE7/i1rW9WMcH8N24JAil0J1AV3YfXsUn/S4gPu4t/
+zsrF525uf9lvLLdzoo2EmEn8u8PPpAX3ixAe816twk+zOPhJtoRV0cjjSZ3qySb2
+HvlkNKo/bafJHmOoEKSrtzgcwQguPNLHUwj3c1QmGOPdYcqHv1aLXVc87Q3muFcm
+IvbO0ZxlUY3Qw7nvQHL1cNwFl0tZbA==
+=ihVO
+-----END PGP SIGNATURE-----
+
+--pz4qlpjrkok6wwp6--
+
+--===============8835873490926016008==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============8835873490926016008==--
