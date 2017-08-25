@@ -1,81 +1,68 @@
-From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Subject: Re: [PATCH v3 1/5] mfd: mt6397: create irq mappings in mfd core
- driver
-Date: Fri, 25 Aug 2017 10:39:29 +0200
-Message-ID: <20170825083929.ztyzfelwqcxvpiex@piout.net>
-References: <1503642753-12385-1-git-send-email-chen.zhong@mediatek.com>
- <1503642753-12385-2-git-send-email-chen.zhong@mediatek.com>
+From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: [bug report] PCI: mediatek: Add controller support for MT2712 and
+ MT7622
+Date: Fri, 25 Aug 2017 15:27:43 +0300
+Message-ID: <20170825113431.q7lpvmljar43xzpg@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1503642753-12385-2-git-send-email-chen.zhong@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chen Zhong <chen.zhong@mediatek.com>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, Eddie Huang <eddie.huang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Andi Shyti <andi.shyti@samsung.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Linus Walleij <linus.walleij@linaro.org>, Jaechul Lee <jcsing.lee@samsung.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 25/08/2017 at 14:32:29 +0800, Chen Zhong wrote:
-> The core driver should create and manage irq mappings instead of
-> leaf drivers. This patch change to pass irq domain to
-> devm_mfd_add_devices() and it will create mapping for irq resources
-> automatically. And remove irq mapping in rtc driver since this has
-> been done in core driver.
-> 
-> Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
-> Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
-Acked-by: Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Hello Ryder Lee,
 
-> ---
->  drivers/mfd/mt6397-core.c |    4 ++--
->  drivers/rtc/rtc-mt6397.c  |    7 +++----
->  2 files changed, 5 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> index 04a601f..6546d7f 100644
-> --- a/drivers/mfd/mt6397-core.c
-> +++ b/drivers/mfd/mt6397-core.c
-> @@ -289,7 +289,7 @@ static int mt6397_probe(struct platform_device *pdev)
->  
->  		ret = devm_mfd_add_devices(&pdev->dev, -1, mt6323_devs,
->  					   ARRAY_SIZE(mt6323_devs), NULL,
-> -					   0, NULL);
-> +					   0, pmic->irq_domain);
->  		break;
->  
->  	case MT6397_CID_CODE:
-> @@ -304,7 +304,7 @@ static int mt6397_probe(struct platform_device *pdev)
->  
->  		ret = devm_mfd_add_devices(&pdev->dev, -1, mt6397_devs,
->  					   ARRAY_SIZE(mt6397_devs), NULL,
-> -					   0, NULL);
-> +					   0, pmic->irq_domain);
->  		break;
->  
->  	default:
-> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-> index 1a61fa5..385f830 100644
-> --- a/drivers/rtc/rtc-mt6397.c
-> +++ b/drivers/rtc/rtc-mt6397.c
-> @@ -322,10 +322,9 @@ static int mtk_rtc_probe(struct platform_device *pdev)
->  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->  	rtc->addr_base = res->start;
->  
-> -	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
-> -	rtc->irq = irq_create_mapping(mt6397_chip->irq_domain, res->start);
-> -	if (rtc->irq <= 0)
-> -		return -EINVAL;
-> +	rtc->irq = platform_get_irq(pdev, 0);
-> +	if (rtc->irq < 0)
-> +		return rtc->irq;
->  
->  	rtc->regmap = mt6397_chip->regmap;
->  	rtc->dev = &pdev->dev;
-> -- 
-> 1.7.9.5
-> 
+The patch 6a48aa410571: "PCI: mediatek: Add controller support for
+MT2712 and MT7622" from Aug 10, 2017, leads to the following static
+checker warning:
 
--- 
-Alexandre Belloni, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+	drivers/pci/host/pcie-mediatek.c:453 mtk_pcie_init_irq_domain()
+	warn: passing zero to 'PTR_ERR'
+
+	drivers/pci/host/pcie-mediatek.c:460 mtk_pcie_init_irq_domain()
+	warn: passing zero to 'PTR_ERR'
+
+drivers/pci/host/pcie-mediatek.c
+   443  static int mtk_pcie_init_irq_domain(struct mtk_pcie_port *port,
+   444                                      struct device_node *node)
+   445  {
+   446          struct device *dev = port->pcie->dev;
+   447          struct device_node *pcie_intc_node;
+   448  
+   449          /* Setup INTx */
+   450          pcie_intc_node = of_get_next_child(node, NULL);
+   451          if (!pcie_intc_node) {
+   452                  dev_err(dev, "no PCIe Intc node found\n");
+   453                  return PTR_ERR(pcie_intc_node);
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+This is a complicated way of returning 0, but I'm not sure what we
+should actually be returning here.
+
+   454          }
+   455  
+   456          port->irq_domain = irq_domain_add_linear(pcie_intc_node, INTX_NUM,
+   457                                                   &intx_domain_ops, port);
+   458          if (!port->irq_domain) {
+   459                  dev_err(dev, "failed to get INTx IRQ domain\n");
+   460                  return PTR_ERR(port->irq_domain);
+                               ^^^^^^^^^^^^^^^^^^^^^^^^
+Also zero.
+
+   461          }
+   462  
+   463          return 0;
+   464  }
+
+regards,
+dan carpenter
