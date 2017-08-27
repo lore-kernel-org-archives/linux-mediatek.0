@@ -1,58 +1,58 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] iommu/mediatek: Fix a build fail of m4u_type
-Date: Sat, 26 Aug 2017 21:46:13 +0300
-Message-ID: <c7e936c9-9d77-66cd-32d0-7a07ec45d68b@gmail.com>
-References: <1503552249-22060-1-git-send-email-yong.wu@mediatek.com>
- <ecd9b73a-0c8f-175c-175f-27ae318352bf@gmail.com>
+From: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>
+Subject: Re: [PATCH v4 1/3] dt-bindings: i2c: modify information formats
+Date: Sun, 27 Aug 2017 15:31:41 +0200
+Message-ID: <20170827133141.n4edtxpadutwsfj6@ninjato>
+References: <1503286614-17670-1-git-send-email-jun.gao@mediatek.com>
+ <1503286614-17670-2-git-send-email-jun.gao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="gudrv6hk4uoej7mm"
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <ecd9b73a-0c8f-175c-175f-27ae318352bf-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1503286614-17670-2-git-send-email-jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+To: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
+--gudrv6hk4uoej7mm
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 08/26/2017 09:33 PM, Matthias Brugger wrote:
-> 
-> 
-> On 08/24/2017 08:24 AM, Yong Wu wrote:
->> The commit ("iommu/mediatek: Enlarge the validate PA range
->> for 4GB mode") introduce the following build error:
->>
->>     drivers/iommu/mtk_iommu.c: In function 'mtk_iommu_hw_init':
->>>> drivers/iommu/mtk_iommu.c:536:30: error: 'const struct mtk_iommu_data'
->>   has no member named 'm4u_type'; did you mean 'm4u_dom'?
->>       if (data->enable_4GB && data->m4u_type != M4U_MT8173) {
->>
->> This patch fix it, use "m4u_plat" instead of "m4u_type".
->>
->> Reported-by: kernel test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
->> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> ---
->> 1) In the v2 of mt2712 iommu support patch-set, We changed a variant
->> name from "m4u_type" to "m4u_plat", But I'm sorry that I forgot to
->> change it in the later patch.
->> 2) This patch is based on [1].
->> [1]:https://lists.linuxfoundation.org/pipermail/iommu/2017-August/023847.html
->> 3) I cann't find the commit id of the patch ("iommu/mediatek: Enlarge
->> the validate PA range for 4GB mode") in the [2].
->> So I don't write the commit id for that patch in the commit message.
->> [2]https://git.kernel.org/pub/scm/linux/kernel/git/joro/iommu.git next
-> 
-> Because the kernel test robot took the patch from the mailinglist. Please fold 
-> this fix into v3 of the series.
-> 
+On Mon, Aug 21, 2017 at 11:36:52AM +0800, Jun Gao wrote:
+> From: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>=20
+> Use common name MediaTek and modify the compatible information
+> formats of all SoCs to the same.
+>=20
+> Signed-off-by: Jun Gao <jun.gao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Please ignore this message, I didn't realize that the driver was already queued 
-by Joerg.
+Applied to for-next, thanks!
 
-Regards,
-Matthias
+
+--gudrv6hk4uoej7mm
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlmiyb0ACgkQFA3kzBSg
+KbaIIQ/+NumtDZfmW8y/BOL0ZliY7nLGg6U9N1K/MTCEWnMHZ5SGQnSgP3EW+Jaf
+VsDq/0ntoss6l+oQ8LQ9DT/ulmT8y5jCgz0ixd/jC0nFAZPwuAhyWPMFxIgY8fnM
+KfvDtxfuFiECNjm7EYGAJ3BW9VdTM2Jm1yADCXJZQTLGorFuFf9wi4A+iE8O8liE
+h14v7N//iZ3PNOx6gQLFOTxNtFBOsJvasvqPhVD9UBf+kMOXviVPjhFYFfuF9JMH
+FfqKsrP2tpgGwtYaT16JiSzrF9op/GASsjYUNxbNpLmCRlJD/gHlwWTYfGsdrvFh
+DolJ4vKo9aVrJUKXDbo/0QLHVm/c4llCEHyfFq6vXD3/QeZI7ahbK3P8/FW4TWj/
+V94QTJTpQbvFvIJ+SsOVK1VFw7ZbWARgelczap9whuivqG2/z2XyTBkNN9qbLJI4
+qEkZFDZteVT5+orWNUcWCmwgFJYK9SGTyYpngdSW0KFuU65TxTMEupeUQIHq3uiG
+dro7qFYzQ26HhuQkNTs01LOiyIznOU+hUqUrJYbU8U89NcT0la4Gb7c152dnRp0g
+8rLHY2st874HdrBsyWCvAqeX5K1vq69WpnCjyUFfF3CoSOq0In1zv3yS6k4NeldW
+8EgzNn/29gwbNjGbytiKQPblzbI5HTrjzOkJFSC4lK1/jQ0ygUE=
+=wcij
+-----END PGP SIGNATURE-----
+
+--gudrv6hk4uoej7mm--
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
