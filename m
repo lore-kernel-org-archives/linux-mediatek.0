@@ -1,58 +1,93 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 RESEND 1/2] dt-bindings: serial: 8250: Add MediaTek
- BTIF controller bindings
-Date: Sun, 27 Aug 2017 22:00:55 +0300
-Message-ID: <8548a72a-4bf3-d44a-6d26-d64721cffe85@gmail.com>
-References: <cover.1503165144.git.sean.wang@mediatek.com>
- <29b52a3b95982f1097766d515aae09c57e11b002.1503165144.git.sean.wang@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [GIT PULL] arm: mediatek: dts32 updates for v4.14
+Date: Mon, 28 Aug 2017 03:01:47 +0800
+Message-ID: <1503860507.19230.50.camel@mtkswgap22>
+References: <9434dcb8-d38d-ff3a-a6ce-2b27d3a74cef@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <29b52a3b95982f1097766d515aae09c57e11b002.1503165144.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, jslaby-IBi9RG/b67k@public.gmane.org, andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, robert.jarzmik-GANU6spQydw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org, david-nq/r/kbU++upp/zk7JDF2g@public.gmane.org, jan.kiszka-kv7WeFo6aLtBDgjK7y7TUQ@public.gmane.org, heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, hpeter-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, tthayer-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <9434dcb8-d38d-ff3a-a6ce-2b27d3a74cef@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: arm@kernel.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+just a gentle ping. 
+
+Are those changes similar to missing ones ? The other changes like
+next/dts32 and next/soc seems have been already in the next tree.
 
 
-On 08/19/2017 09:06 PM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Thu, 2017-08-17 at 15:37 +0200, Matthias Brugger wrote:
+> Hi Olof and Arnd,
 > 
-> Document the devicetree bindings in 8250.txt for MediaTek BTIF
-> controller which could be found on MT7622 and MT7623 SoC.
+> for v4.14 please take the following pull request into account.
 > 
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Thanks,
+> Matthias
+> 
 > ---
->   Documentation/devicetree/bindings/serial/8250.txt | 3 +++
->   1 file changed, 3 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/serial/8250.txt b/Documentation/devicetree/bindings/serial/8250.txt
-> index 419ff6c..7528d90 100644
-> --- a/Documentation/devicetree/bindings/serial/8250.txt
-> +++ b/Documentation/devicetree/bindings/serial/8250.txt
-> @@ -14,6 +14,9 @@ Required properties:
->   	  tegra132, or tegra210.
->   	- "nxp,lpc3220-uart"
->   	- "ralink,rt2880-uart"
-> +	- For MediaTek MT7623, must contain "mediatek,mt7623-btif"
-> +	- For other MediaTek SoCs , must contain "mediatek,<chip>-btif",
-> +	  "mediatek,mt7623-btif" where <chip> is mt7622.
-
-Hm, to me that's confusing. What about:
-"mediatek,mt7623-btif": for MediaTek MT7623
-"mediatek,mt7622-btif", "mediatek,mt7623-btif": for MediaTek MT7622
-
-If in the future we have more SoCs that support the BTIF, we should add them 
-like the mt7622 case.
-
-Make sense?
-
-Regards,
-Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> The following changes since commit 5771a8c08880cdca3bfb4a3fc6d309d6bba20877:
+> 
+>    Linux v4.13-rc1 (2017-07-15 15:22:10 -0700)
+> 
+> are available in the git repository at:
+> 
+>    https://github.com/mbgg/linux-mediatek.git tags/v4.13-next-dts64
+> 
+> for you to fetch changes up to bdf2cbb2b3160122f7ff16445fdb73267fffd583:
+> 
+>    arm64: dts: Add Mediatek SoC MT2712 and evaluation board dts and Makefile 
+> (2017-08-17 15:33:45 +0200)
+> 
+> ----------------------------------------------------------------
+> - add SoC mt7622 and its reference board
+> - cleanup of dts bindings
+> - mt6797: add watchdog and delete unused clock
+> - add support for SoC mt2701 and it's eval board
+> 
+> ----------------------------------------------------------------
+> Matthias Brugger (4):
+>        ARM: mediatek: dts: Cleanup bindings documentation
+>        ARM: mediatek: dts: Add MT6797 binding
+>        arm64: dts: mediatek: add watchdog to MT6797
+>        arm64: dts: mediatek: Delete unused dummy clock for MT6797
+> 
+> Sean Wang (2):
+>        arm64: dts: mt7622: add basic nodes to the mt7622.dtsi file
+>        arm64: dts: mt7622: add dts file for MT7622 reference board variant 1
+> 
+> yt.shen@mediatek.com (2):
+>        dt-bindings: arm: Add bindings for Mediatek MT2712 SoC Platform
+>        arm64: dts: Add Mediatek SoC MT2712 and evaluation board dts and Makefile
+> 
+>   Documentation/devicetree/bindings/arm/mediatek.txt |   4 +
+>   .../interrupt-controller/mediatek,sysirq.txt       |   1 +
+>   .../devicetree/bindings/serial/mtk-uart.txt        |   1 +
+>   .../devicetree/bindings/watchdog/mtk-wdt.txt       |   6 +-
+>   arch/arm64/boot/dts/mediatek/Makefile              |   2 +
+>   arch/arm64/boot/dts/mediatek/mt2712-evb.dts        |  32 ++++
+>   arch/arm64/boot/dts/mediatek/mt2712e.dtsi          | 171 +++++++++++++++++++++
+>   arch/arm64/boot/dts/mediatek/mt6797.dtsi           |  12 +-
+>   arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts       |  27 ++++
+>   arch/arm64/boot/dts/mediatek/mt7622.dtsi           | 110 +++++++++++++
+>   10 files changed, 356 insertions(+), 10 deletions(-)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
