@@ -1,56 +1,58 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH v4 2/3] dt-bindings: i2c: Add MediaTek MT7622 i2c binding
-Date: Sun, 27 Aug 2017 15:31:47 +0200
-Message-ID: <20170827133147.gv3mjvz3buodta26@ninjato>
-References: <1503286614-17670-1-git-send-email-jun.gao@mediatek.com>
- <1503286614-17670-3-git-send-email-jun.gao@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 RESEND 1/2] dt-bindings: serial: 8250: Add MediaTek
+ BTIF controller bindings
+Date: Sun, 27 Aug 2017 22:00:55 +0300
+Message-ID: <8548a72a-4bf3-d44a-6d26-d64721cffe85@gmail.com>
+References: <cover.1503165144.git.sean.wang@mediatek.com>
+ <29b52a3b95982f1097766d515aae09c57e11b002.1503165144.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="kqmgyk6uuvciss2r"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1503286614-17670-3-git-send-email-jun.gao@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jun Gao <jun.gao@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <29b52a3b95982f1097766d515aae09c57e11b002.1503165144.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, jslaby-IBi9RG/b67k@public.gmane.org, andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, robert.jarzmik-GANU6spQydw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org, david-nq/r/kbU++upp/zk7JDF2g@public.gmane.org, jan.kiszka-kv7WeFo6aLtBDgjK7y7TUQ@public.gmane.org, heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, hpeter-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, tthayer-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
---kqmgyk6uuvciss2r
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Mon, Aug 21, 2017 at 11:36:53AM +0800, Jun Gao wrote:
-> From: Jun Gao <jun.gao@mediatek.com>
->=20
-> Add MT7622 i2c binding to binding file. Compare to MT8173 i2c
-> controller, MT7622 limits message numbers to 255, and does not
-> support 4GB DMA mode.
->=20
-> Signed-off-by: Jun Gao <jun.gao@mediatek.com>
+On 08/19/2017 09:06 PM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> Document the devicetree bindings in 8250.txt for MediaTek BTIF
+> controller which could be found on MT7622 and MT7623 SoC.
+> 
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>   Documentation/devicetree/bindings/serial/8250.txt | 3 +++
+>   1 file changed, 3 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/serial/8250.txt b/Documentation/devicetree/bindings/serial/8250.txt
+> index 419ff6c..7528d90 100644
+> --- a/Documentation/devicetree/bindings/serial/8250.txt
+> +++ b/Documentation/devicetree/bindings/serial/8250.txt
+> @@ -14,6 +14,9 @@ Required properties:
+>   	  tegra132, or tegra210.
+>   	- "nxp,lpc3220-uart"
+>   	- "ralink,rt2880-uart"
+> +	- For MediaTek MT7623, must contain "mediatek,mt7623-btif"
+> +	- For other MediaTek SoCs , must contain "mediatek,<chip>-btif",
+> +	  "mediatek,mt7623-btif" where <chip> is mt7622.
 
-Applied to for-next, thanks!
+Hm, to me that's confusing. What about:
+"mediatek,mt7623-btif": for MediaTek MT7623
+"mediatek,mt7622-btif", "mediatek,mt7623-btif": for MediaTek MT7622
 
+If in the future we have more SoCs that support the BTIF, we should add them 
+like the mt7622 case.
 
---kqmgyk6uuvciss2r
-Content-Type: application/pgp-signature; name="signature.asc"
+Make sense?
 
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlmiycMACgkQFA3kzBSg
-KbaPLg//bqBXT4rLUPKT/FKye1TiOQ39WRQD7Rer9axjgVt9is30wT81YhJg2lMQ
-h6acnc1NDwnKeUSSI6tjm5aT9Ku6EwqRu97llk1VWkCngQvNJq7/GaAgkWdOLYF/
-RPuG6uFof8tfd8kL5YuQXNrad1hhwaUotmm/wQ0GffKvqksKD+aAFwB7VOOHfsey
-YWkmFNQOMFixXEI/QF+QGn/Tke7FaN0OTZD/AUCJ1njDwO092l1XztDes1yYhAfV
-jpqX4dMgGO2u94WBPRUvgHSbfM0lV6Z1FjOwPH8hwSiVUfJ2MxWalMil3h3KCivP
-eHV66BbxQ14PwcVrVXRvcf5gMBAmAvLplqUUl99rfcU8bgssOBVULBmZyhpHb6+P
-Sl8058G41w2Il6Grcr2HxcabYgKlhPAylxsrQwa8ASr4YkdNcz200ZGTMa21rCAw
-2Q2BVtWgMSC/bIw2nRc7elS2JpZ8nCPM4uV1RMp1+QB8beQmYN/SYnhj7LmNNoQ6
-Kw6haXdOAJMVRxj0LjTFpYQmQoP7Ht3hibW3F/b3f4V/ITAeAvzdV3+PKxtO5hk3
-B3h34nvjKvYtFxN5HWev11OJl5faEaLuPKGfEH5MxfqHow6UZ+GH2Sw3uY6HzBr5
-BoTkLyX2ZBVYNaPuJpXHJL333ASrnpECjQyEjEqHHp/aLn6sNSw=
-=HVrI
------END PGP SIGNATURE-----
-
---kqmgyk6uuvciss2r--
+Regards,
+Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
