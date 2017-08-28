@@ -1,53 +1,39 @@
-From: Guochun Mao <guochun.mao@mediatek.com>
-Subject: Re: [PATCH v5 1/1] dt-bindings: mtd: add new compatible strings and
- improve description
-Date: Mon, 28 Aug 2017 16:47:59 +0800
-Message-ID: <1503910079.11585.3.camel@mhfsdcap03>
-References: <1501834239-25581-1-git-send-email-guochun.mao@mediatek.com>
-         <1501834239-25581-2-git-send-email-guochun.mao@mediatek.com>
-         <20170810182146.glmikeqpqwe66dwt@rob-hp-laptop>
-         <1502934695.1128.11.camel@mhfsdcap03>
+From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] iommu/mediatek: Fix a build fail of m4u_type
+Date: Mon, 28 Aug 2017 11:26:42 +0200
+Message-ID: <20170828092641.mrr2qynqwxhrwhjb@8bytes.org>
+References: <1503560532-24416-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502934695.1128.11.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, Boris Brezillon <boris.brezillon@free-electrons.com>, Marek Vasut <marek.vasut@gmail.com>, David Woodhouse <dwmw2@infradead.org>, Richard Weinberger <richard@nod.at>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-mtd@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1503560532-24416-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Cyrille,
-
-It seems that I sent mail to wrong email-address ;)
-Please help to review this patch.
-
-Thanks a lot.
-
-Guochun
-
-On Thu, 2017-08-17 at 09:51 +0800, Guochun Mao wrote:
-> On Thu, 2017-08-10 at 13:21 -0500, Rob Herring wrote:
-> > On Fri, Aug 04, 2017 at 04:10:39PM +0800, Guochun Mao wrote:
-> > > Add "mediatek,mt2712-nor" and "mediatek,mt7622-nor"
-> > > for nor flash node's compatible strings.
-> > > Explicate the fallback compatible.
-> > > 
-> > > Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
-> > > ---
-> > >  .../devicetree/bindings/mtd/mtk-quadspi.txt        |   15 +++++++++------
-> > >  1 file changed, 9 insertions(+), 6 deletions(-)
-> > 
-> > Acked-by: Rob Herring <robh@kernel.org>
+On Thu, Aug 24, 2017 at 03:42:11PM +0800, Yong Wu wrote:
+> The commit ("iommu/mediatek: Enlarge the validate PA range
+> for 4GB mode") introduce the following build error:
 > 
-> Hi Rob,
-> Thank you very much!
+>    drivers/iommu/mtk_iommu.c: In function 'mtk_iommu_hw_init':
+> >> drivers/iommu/mtk_iommu.c:536:30: error: 'const struct mtk_iommu_data'
+>  has no member named 'm4u_type'; did you mean 'm4u_dom'?
+>      if (data->enable_4GB && data->m4u_type != M4U_MT8173) {
 > 
-> Hi Matthias, Cyrille,
-> Thanks a lot for your efforts in reviewing the patch.
+> This patch fix it, use "m4u_plat" instead of "m4u_type".
 > 
-> Is there any comment about the patch this version?
-> I appreciate your suggestion.
-> 
-> BR,
-> Guochun
+> Reported-by: kernel test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+
+Applied both, thanks.
