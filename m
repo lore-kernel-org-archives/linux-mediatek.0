@@ -1,75 +1,40 @@
-From: Chen Zhong <chen.zhong@mediatek.com>
-Subject: Re: [PATCH v3 4/5] input: Add MediaTek PMIC keys support
-Date: Tue, 29 Aug 2017 15:40:59 +0800
-Message-ID: <1503992459.15359.4.camel@mhfsdcap03>
-References: <1503642753-12385-1-git-send-email-chen.zhong@mediatek.com>
-         <CGME20170825063247epcas5p1df2f4440010dd55dada66e8764d18e50@epcas5p1.samsung.com>
-         <1503642753-12385-5-git-send-email-chen.zhong@mediatek.com>
-         <20170829073453.GB4469@gangnam>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH RESEND v2 1/3] usb: xhci-mtk: add generic compatible string
+Date: Tue, 29 Aug 2017 17:20:41 +0800
+Message-ID: <33fa448238c0d95f0cfd6c2be3bd5c4e657a0cd4.1503998338.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170829073453.GB4469@gangnam>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andi Shyti <andi.shyti@samsung.com>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, Eddie Huang <eddie.huang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Linus Walleij <linus.walleij@linaro.org>, Jaechul Lee <jcsing.lee@samsung.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Andi,
+The xhci-mtk driver is a generic driver for MediaTek xHCI IP, add
+a generic compatible to avoid confusion when support new SoCs but
+use a compatible with specific SoC's name "mt8173".
 
-Sorry for that, i deleted some prefix since the namings will be such
-long. If this should be consistent, I'll check and modify them in the
-next version.
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/usb/host/xhci-mtk.c |    1 +
+ 1 file changed, 1 insertion(+)
 
-Thank you.
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index 67d5dc7..8fb6065 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -795,6 +795,7 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
+ #ifdef CONFIG_OF
+ static const struct of_device_id mtk_xhci_of_match[] = {
+ 	{ .compatible = "mediatek,mt8173-xhci"},
++	{ .compatible = "mediatek,mtk-xhci"},
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, mtk_xhci_of_match);
+-- 
+1.7.9.5
 
-On Tue, 2017-08-29 at 16:34 +0900, Andi Shyti wrote:
-> Hi Chen,
-> 
-> what I would ask you is to be consistent with the naming, if your
-> driver is called mtk-pmic, then all your functions and global
-> variables should be named accordingly as mtk_pmic or MTK_PMIC.
-> Please check in between the lines for real examples:
-> 
-> > +#define PWRKEY_RST_EN_MASK	0x1
-> > +#define PWRKEY_RST_EN_SHIFT	6
-> > +#define HOMEKEY_RST_EN_MASK	0x1
-> > +#define HOMEKEY_RST_EN_SHIFT	5
-> > +#define RST_DU_MASK		0x3
-> > +#define RST_DU_SHIFT		8
-> > +
-> > +#define PMIC_PWRKEY_INDEX	0
-> > +#define PMIC_HOMEKEY_INDEX	1
-> > +#define PMIC_MAX_KEY_COUNT	2
-> 
-> #define MTK_PMIC_*
-> 
-> > +struct pmic_keys_regs {
-> 
-> struct mtk_pmic_keys_regs
-> 
-> > +	u32 deb_reg;
-> > +	u32 deb_mask;
-> > +	u32 intsel_reg;
-> > +	u32 intsel_mask;
-> > +};
-> > +
-> > +#define PMIC_KEYS_REGS(_deb_reg, _deb_mask, _intsel_reg, _intsel_mask)	\
-> 
-> MTK_PMIC_KEYS_REGS
-> 
-> > +{									\
-> > +	.deb_reg		= _deb_reg,				\
-> > +	.deb_mask		= _deb_mask,				\
-> > +	.intsel_reg		= _intsel_reg,				\
-> > +	.intsel_mask		= _intsel_mask,				\
-> > +}
-> > +
-> > +struct pmic_regs {
-> 
-> mtk_pmic_regs
-> 
-> and so on... you got the point.
-> 
-> Andi
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
