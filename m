@@ -1,46 +1,65 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: FW: [PATCH 2/3] iommu: mtk: constify iommu_ops
-Date: Tue, 29 Aug 2017 13:43:33 +0800
-Message-ID: <1503985413.11452.12.camel@mhfsdcap03>
-References: <80e3d51296564c929a039ac83d83dd94@mtkmbs01n1.mediatek.inc>
+From: Andi Shyti <andi.shyti@samsung.com>
+Subject: Re: [PATCH v3 4/5] input: Add MediaTek PMIC keys support
+Date: Tue, 29 Aug 2017 16:34:53 +0900
+Message-ID: <20170829073453.GB4469@gangnam>
+References: <1503642753-12385-1-git-send-email-chen.zhong@mediatek.com>
+        <CGME20170825063247epcas5p1df2f4440010dd55dada66e8764d18e50@epcas5p1.samsung.com>
+        <1503642753-12385-5-git-send-email-chen.zhong@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <80e3d51296564c929a039ac83d83dd94-fSWMoTp6f3O9JaaB6nfwCW/AB3i2Q03W@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Arvind Yadav <arvind.yadav.cs-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-disposition: inline
+In-reply-to: <1503642753-12385-5-git-send-email-chen.zhong@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chen Zhong <chen.zhong@mediatek.com>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, Eddie Huang <eddie.huang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Linus Walleij <linus.walleij@linaro.org>, Jaechul Lee <jcsing.lee@samsung.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-> From: Linux-mediatek [mailto:linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org] On Behalf Of Arvind Yadav
-> Sent: Monday, August 28, 2017 8:12 PM
-> To: m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org; joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org; kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org; krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org; matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org; gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org
-> Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org; linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org; linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org; linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> Subject: [PATCH 2/3] iommu: mtk: constify iommu_ops
-> 
-> iommu_ops are not supposed to change at runtime.
-> Functions 'iommu_device_set_ops' and 'bus_set_iommu' working with
-> const iommu_ops provided by <linux/iommu.h>. So mark the non-const
-> structs as const.
-> 
-> Signed-off-by: Arvind Yadav <arvind.yadav.cs-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Hi Chen,
 
+what I would ask you is to be consistent with the naming, if your
+driver is called mtk-pmic, then all your functions and global
+variables should be named accordingly as mtk_pmic or MTK_PMIC.
+Please check in between the lines for real examples:
 
-Thanks.
+> +#define PWRKEY_RST_EN_MASK	0x1
+> +#define PWRKEY_RST_EN_SHIFT	6
+> +#define HOMEKEY_RST_EN_MASK	0x1
+> +#define HOMEKEY_RST_EN_SHIFT	5
+> +#define RST_DU_MASK		0x3
+> +#define RST_DU_SHIFT		8
+> +
+> +#define PMIC_PWRKEY_INDEX	0
+> +#define PMIC_HOMEKEY_INDEX	1
+> +#define PMIC_MAX_KEY_COUNT	2
 
-Reviewed-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+#define MTK_PMIC_*
 
-nit, the title should be: iommu/mediatek:xxx
+> +struct pmic_keys_regs {
 
-Also, the file mtk_iommu.c may need rebase on[1].
+struct mtk_pmic_keys_regs
 
-[1]https://lists.linuxfoundation.org/pipermail/iommu/2017-August/023847.html
+> +	u32 deb_reg;
+> +	u32 deb_mask;
+> +	u32 intsel_reg;
+> +	u32 intsel_mask;
+> +};
+> +
+> +#define PMIC_KEYS_REGS(_deb_reg, _deb_mask, _intsel_reg, _intsel_mask)	\
+
+MTK_PMIC_KEYS_REGS
+
+> +{									\
+> +	.deb_reg		= _deb_reg,				\
+> +	.deb_mask		= _deb_mask,				\
+> +	.intsel_reg		= _intsel_reg,				\
+> +	.intsel_mask		= _intsel_mask,				\
+> +}
+> +
+> +struct pmic_regs {
+
+mtk_pmic_regs
+
+and so on... you got the point.
+
+Andi
