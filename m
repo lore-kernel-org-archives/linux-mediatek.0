@@ -1,58 +1,30 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [PATCH RESEND v2 3/3] dt-bindings: mt8173-mtu3: add generic
- compatible and rename file
-Date: Tue, 29 Aug 2017 13:08:09 +0300
-Message-ID: <1a489dcc-e95c-bfe3-8e2a-fe2591fe86d8@cogentembedded.com>
-References: <33fa448238c0d95f0cfd6c2be3bd5c4e657a0cd4.1503998338.git.chunfeng.yun@mediatek.com>
- <61060035e057b13f43d383645c53c8726b7e67ab.1503998339.git.chunfeng.yun@mediatek.com>
+From: Tejun Heo <tj@kernel.org>
+Subject: Re: [PATCH v4 2/2] dt-bindings: ata: add DT bindings for MediaTek
+ SATA controller
+Date: Tue, 29 Aug 2017 07:24:27 -0700
+Message-ID: <20170829142427.GH491396@devbig577.frc2.facebook.com>
+References: <cover.1503018631.git.ryder.lee@mediatek.com>
+ <0ac0ff921914acd95b7b5906ca435571e55c355f.1503018631.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <61060035e057b13f43d383645c53c8726b7e67ab.1503998339.git.chunfeng.yun@mediatek.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <0ac0ff921914acd95b7b5906ca435571e55c355f.1503018631.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Hans de Goede <hdegoede@redhat.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, Long Cheng <long.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello!
-
-On 8/29/2017 12:20 PM, Chunfeng Yun wrote:
-
-> The mt8173-mtu3.txt actually holds the bindings for all mediatek
-> SoCs with usb3 DRD IP, so add a generic compatible and change the
-> name to mediatek,mtu3.txt.
+On Fri, Aug 18, 2017 at 09:13:08AM +0800, Ryder Lee wrote:
+> Add DT bindings for the onboard SATA controller present on the MediaTek
+> SoCs.
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 > Acked-by: Rob Herring <robh@kernel.org>
-> ---
->   .../usb/{mt8173-mtu3.txt => mediatek,mtu3.txt}     |    6 +++++-
->   1 file changed, 5 insertions(+), 1 deletion(-)
->   rename Documentation/devicetree/bindings/usb/{mt8173-mtu3.txt => mediatek,mtu3.txt} (92%)
-> 
-> diff --git a/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt b/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
-> similarity index 92%
-> rename from Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
-> rename to Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
-> index b8ea394..722a029 100644
-> --- a/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
-> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
-> @@ -1,7 +1,11 @@
->   The device node for Mediatek USB3.0 DRD controller
->   
->   Required properties:
-> - - compatible : should be "mediatek,mt8173-mtu3"
-> + - compatible : should be "mediatek,soc-model-mtu3", "mediatek,mtu3",
 
-    Worth enclosing soc-model in <>.
+Applied to libata/for-4.14.
 
-> +	soc-model is the name of SoC, such as mt8173, mt2712 etc,
-> +	when using "mediatek,mtu3" compatible string, you need SoC specific
-> +	ones in addition, one of:
-> +	- "mediatek,mt8173-mtu3"
->    - reg : specifies physical base address and size of the registers
->    - reg-names: should be "mac" for device IP and "ippc" for IP port control
->    - interrupts : interrupt used by the device IP
+Thanks.
 
-MBR, Sergei
+-- 
+tejun
