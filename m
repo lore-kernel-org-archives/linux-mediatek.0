@@ -1,47 +1,286 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH v3 3/3] dt-bindings: mt8173-mtu3: add generic compatible and rename file
-Date: Wed, 30 Aug 2017 19:34:11 +0800
-Message-ID: <15a1cdc6e2e7da0f7a74b56794b74c2d258e1b88.1504092763.git.chunfeng.yun@mediatek.com>
-References: <33fa448238c0d95f0cfd6c2be3bd5c4e657a0cd4.1504092763.git.chunfeng.yun@mediatek.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: [RFC/PATCH v3] arm64: define MODULES_VADDR by module_alloc_base
+Date: Wed, 30 Aug 2017 19:46:33 +0800
+Message-ID: <1504093593-2586-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <33fa448238c0d95f0cfd6c2be3bd5c4e657a0cd4.1504092763.git.chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The mt8173-mtu3.txt actually holds the bindings for all mediatek
-SoCs with usb3 DRD IP, so add a generic compatible and change the
-name to mediatek,mtu3.txt.
+After the kernel ASLR, the module virtual address is moved to
+[module_alloc_base, module_alloc_base + MODULES_VSIZE).
+However, the MODULES_VADDR is still defined as a constant and functions
+like is_vmalloc_or_module_addr() or dump functions will not able to
+use correct module range information.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
+The patch omits modules information in virtual kenrel memory layout if
+the modules area is fully mapped whitin vmalloc area.
+
+Use module_alloc_base to define MODULES_VADDR. I tested the patch under
+three different conditions:
+1.CONFIG_RANDOMIZE_BASE=y, seed=0
+CONFIG_KASAN=n
+2.CONFIG_RANDOMIZE_BASE=y, seed=0x2304909023333333
+CONFIG_KASAN=n
+3.CONFIG_RANDOMIZE_BASE=y, seed=0x2304909023333333
+CONFIG_KASAN=y
+
+test log:
+
+1.CONFIG_RANDOMIZE_BASE=y, seed=0
+CONFIG_KASAN=n
+
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     modules : 0xffffff8000550000 - 0xffffff8008550000   (   128 MB)
+[    0.000000]     vmalloc : 0xffffff8008000000 - 0xffffffbebfff0000   (   250 GB)
+[    0.000000]       .text : 0xffffff8008080000 - 0xffffff8008550000   (  4928 KB)
+[    0.000000]     .rodata : 0xffffff8008550000 - 0xffffff80086a0000   (  1344 KB)
+[    0.000000]       .init : 0xffffff80086a0000 - 0xffffff8008a30000   (  3648 KB)
+[    0.000000]       .data : 0xffffff8008a30000 - 0xffffff8008ab9200   (   549 KB)
+[    0.000000]        .bss : 0xffffff8008ab9200 - 0xffffff8008b0b238   (   329 KB)
+[    0.000000]     fixed   : 0xffffffbefe7fd000 - 0xffffffbefec00000   (  4108 KB)
+[    0.000000]     PCI I/O : 0xffffffbefee00000 - 0xffffffbeffe00000   (    16 MB)
+[    0.000000]     vmemmap : 0xffffffbf00000000 - 0xffffffc000000000   (     4 GB maximum)
+[    0.000000]               0xffffffbf00000000 - 0xffffffbf02000000   (    32 MB actual)
+[    0.000000]     memory  : 0xffffffc000000000 - 0xffffffc080000000   (  2048 MB)
+
+\# cat kernel_page_tables
+---[ Modules start ]---
+---[ Modules end ]---
+---[ vmalloc() Area ]---
+0xffffff8008000000-0xffffff8008010000          64K PTE       RW NX SHD AF
+0xffffff8008015000-0xffffff8008016000           4K PTE       RW NX SHD AF
+...
+
+2.CONFIG_RANDOMIZE_BASE=y, seed=0x2304909023333333
+CONFIG_KASAN=n
+
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vmalloc : 0xffffff8008000000 - 0xffffffbebfff0000   (   250 GB)
+[    0.000000]       .text : 0xffffff902b280000 - 0xffffff902b750000   (  4928 KB)
+[    0.000000]     .rodata : 0xffffff902b750000 - 0xffffff902b8a0000   (  1344 KB)
+[    0.000000]       .init : 0xffffff902b8a0000 - 0xffffff902bc30000   (  3648 KB)
+[    0.000000]       .data : 0xffffff902bc30000 - 0xffffff902bcb9200   (   549 KB)
+[    0.000000]        .bss : 0xffffff902bcb9200 - 0xffffff902bd0b238   (   329 KB)
+[    0.000000]     fixed   : 0xffffffbefe7fd000 - 0xffffffbefec00000   (  4108 KB)
+[    0.000000]     PCI I/O : 0xffffffbefee00000 - 0xffffffbeffe00000   (    16 MB)
+[    0.000000]     vmemmap : 0xffffffbf00000000 - 0xffffffc000000000   (     4 GB maximum)
+[    0.000000]               0xffffffbf22000000 - 0xffffffbf24000000   (    32 MB actual)
+[    0.000000]     memory  : 0xffffffc880000000 - 0xffffffc900000000   (  2048 MB)
+
+\# cat kernel_page_tables
+---[ vmalloc() Area ]---
+0xffffff8008000000-0xffffff8008010000          64K PTE       RW NX SHD AF
+0xffffff8008015000-0xffffff8008016000           4K PTE       RW NX SHD AF
+0xffffff8008020000-0xffffff8008030000          64K PTE       RW NX SHD AF
+0xffffff8008031000-0xffffff8008071000         256K PTE       RW NX SHD AF
+0xffffff800813a000-0xffffff800813d000          12K PTE       RW NX SHD AF
+...
+
+3.CONFIG_RANDOMIZE_BASE=y, seed=0x2304909023333333
+CONFIG_KASAN=y
+
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     kasan   : 0xffffff8000000000 - 0xffffff9000000000   (    64 GB)
+[    0.000000]     modules : 0xffffff9000560000 - 0xffffff9008560000   (   128 MB)
+[    0.000000]     vmalloc : 0xffffff9008560000 - 0xffffffbebfff0000   (   186 GB)
+[    0.000000]       .text : 0xffffffa02b280000 - 0xffffffa02b760000   (  4992 KB)
+[    0.000000]     .rodata : 0xffffffa02b760000 - 0xffffffa02b8b0000   (  1344 KB)
+[    0.000000]       .init : 0xffffffa02b8b0000 - 0xffffffa02bc40000   (  3648 KB)
+[    0.000000]       .data : 0xffffffa02bc40000 - 0xffffffa02bcc9200   (   549 KB)
+[    0.000000]        .bss : 0xffffffa02bcc9200 - 0xffffffa02c5342b8   (  8621 KB)
+[    0.000000]     fixed   : 0xffffffbefe7fd000 - 0xffffffbefec00000   (  4108 KB)
+[    0.000000]     PCI I/O : 0xffffffbefee00000 - 0xffffffbeffe00000   (    16 MB)
+[    0.000000]     vmemmap : 0xffffffbf00000000 - 0xffffffc000000000   (     4 GB maximum)
+[    0.000000]               0xffffffbf22000000 - 0xffffffbf24000000   (    32 MB actual)
+[    0.000000]     memory  : 0xffffffc880000000 - 0xffffffc900000000   (  2048 MB)
+
+\# cat kernel_page_tables
+---[ Kasan shadow start ]---
+0xffffff8000000000-0xffffff82000ac000     8389296K PTE       ro NX SHD AF
+0xffffff82010ac000-0xffffff8405600000     8459600K PTE       ro NX SHD AF
+0xffffff8405600000-0xffffff8405a00000           4M PMD       RW NX SHD AF
+0xffffff8405a00000-0xffffff8800000000       16294M PTE       ro NX SHD AF
+0xffffff8910000000-0xffffff8920000000         256M PMD       RW NX SHD AF
+---[ Kasan shadow end ]---
+---[ Modules start ]---
+---[ Modules end ]---
+---[ vmalloc() Area ]---
+0xffffff9008560000-0xffffff9008570000          64K PTE       RW NX SHD AF
+0xffffff9008575000-0xffffff9008576000           4K PTE       RW NX SHD AF
+0xffffff9008580000-0xffffff9008590000          64K PTE       RW NX SHD AF
+0xffffff9008591000-0xffffff90085d1000         256K PTE       RW NX SHD AF
+...
+
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 ---
- .../usb/{mt8173-mtu3.txt => mediatek,mtu3.txt}     |    6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
- rename Documentation/devicetree/bindings/usb/{mt8173-mtu3.txt => mediatek,mtu3.txt} (92%)
+ arch/arm64/include/asm/memory.h  | 12 +++++++--
+ arch/arm64/include/asm/module.h  |  6 -----
+ arch/arm64/include/asm/pgtable.h |  4 +++
+ arch/arm64/mm/dump.c             | 53 ++++++++++++++++++++++++++++++++++++----
+ arch/arm64/mm/init.c             |  6 +++--
+ 5 files changed, 66 insertions(+), 15 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt b/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
-similarity index 92%
-rename from Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
-rename to Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
-index b8ea394..838ae48 100644
---- a/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
-@@ -1,7 +1,11 @@
- The device node for Mediatek USB3.0 DRD controller
+diff --git a/arch/arm64/include/asm/memory.h b/arch/arm64/include/asm/memory.h
+index ef39dcb..41b885c 100644
+--- a/arch/arm64/include/asm/memory.h
++++ b/arch/arm64/include/asm/memory.h
+@@ -68,9 +68,11 @@
+ 	(UL(1) << VA_BITS) + 1)
+ #define PAGE_OFFSET		(UL(0xffffffffffffffff) - \
+ 	(UL(1) << (VA_BITS - 1)) + 1)
+-#define KIMAGE_VADDR		(MODULES_END)
++#define KIMAGE_VADDR		(STATIC_MODULES_END)
++#define STATIC_MODULES_END	(STATIC_MODULES_VADDR + MODULES_VSIZE)
++#define STATIC_MODULES_VADDR	(VA_START + KASAN_SHADOW_SIZE)
+ #define MODULES_END		(MODULES_VADDR + MODULES_VSIZE)
+-#define MODULES_VADDR		(VA_START + KASAN_SHADOW_SIZE)
++#define MODULES_VADDR		((unsigned long)module_alloc_base)
+ #define MODULES_VSIZE		(SZ_128M)
+ #define VMEMMAP_START		(PAGE_OFFSET - VMEMMAP_SIZE)
+ #define PCI_IO_END		(VMEMMAP_START - SZ_2M)
+@@ -138,6 +140,12 @@
+ #include <linux/bitops.h>
+ #include <linux/mmdebug.h>
  
- Required properties:
-- - compatible : should be "mediatek,mt8173-mtu3"
-+ - compatible : should be "mediatek,<soc-model>-mtu3", "mediatek,mtu3",
-+	soc-model is the name of SoC, such as mt8173, mt2712 etc,
-+	when using "mediatek,mtu3" compatible string, you need SoC specific
-+	ones in addition, one of:
-+	- "mediatek,mt8173-mtu3"
-  - reg : specifies physical base address and size of the registers
-  - reg-names: should be "mac" for device IP and "ippc" for IP port control
-  - interrupts : interrupt used by the device IP
++#ifdef CONFIG_RANDOMIZE_BASE
++extern u64 module_alloc_base;
++#else
++#define module_alloc_base	((u64)_etext - MODULES_VSIZE)
++#endif
++
+ extern s64			memstart_addr;
+ /* PHYS_OFFSET - the physical address of the start of memory. */
+ #define PHYS_OFFSET		({ VM_BUG_ON(memstart_addr & 1); memstart_addr; })
+diff --git a/arch/arm64/include/asm/module.h b/arch/arm64/include/asm/module.h
+index 19bd976..fdf0db4 100644
+--- a/arch/arm64/include/asm/module.h
++++ b/arch/arm64/include/asm/module.h
+@@ -39,10 +39,4 @@ struct mod_arch_specific {
+ u64 module_emit_plt_entry(struct module *mod, void *loc, const Elf64_Rela *rela,
+ 			  Elf64_Sym *sym);
+ 
+-#ifdef CONFIG_RANDOMIZE_BASE
+-extern u64 module_alloc_base;
+-#else
+-#define module_alloc_base	((u64)_etext - MODULES_VSIZE)
+-#endif
+-
+ #endif /* __ASM_MODULE_H */
+diff --git a/arch/arm64/include/asm/pgtable.h b/arch/arm64/include/asm/pgtable.h
+index 6eae342..6e309aa 100644
+--- a/arch/arm64/include/asm/pgtable.h
++++ b/arch/arm64/include/asm/pgtable.h
+@@ -30,7 +30,11 @@
+  * VMALLOC_END: extends to the available space below vmmemmap, PCI I/O space
+  *	and fixed mappings
+  */
++#ifdef CONFIG_KASAN
+ #define VMALLOC_START		(MODULES_END)
++#else
++#define VMALLOC_START		(STATIC_MODULES_END)
++#endif
+ #define VMALLOC_END		(PAGE_OFFSET - PUD_SIZE - VMEMMAP_SIZE - SZ_64K)
+ 
+ #define vmemmap			((struct page *)VMEMMAP_START - (memstart_addr >> PAGE_SHIFT))
+diff --git a/arch/arm64/mm/dump.c b/arch/arm64/mm/dump.c
+index ca74a2a..18be771 100644
+--- a/arch/arm64/mm/dump.c
++++ b/arch/arm64/mm/dump.c
+@@ -29,15 +29,36 @@
+ #include <asm/pgtable-hwdef.h>
+ #include <asm/ptdump.h>
+ 
+-static const struct addr_marker address_markers[] = {
++enum marker {
++#ifdef CONFIG_KASAN
++	E_KASAN_SHADOW_START,
++	E_KASAN_SHADOW_END,
++#endif
++	E_MODULES_VADDR,
++	E_MODULES_END,
++	E_VMALLOC_START,
++	E_VMALLOC_END,
++	E_FIXADDR_START,
++	E_FIXADDR_TOP,
++	E_PCI_IO_START,
++	E_PCI_IO_END,
++#ifdef CONFIG_SPARSEMEM_VMEMMAP
++	E_VMEMMAP_START,
++	E_VMEMMAP_END,
++#endif
++	E_PAGE_OFFSET,
++	E_NR_MARKER,
++};
++
++static struct addr_marker address_markers[] = {
+ #ifdef CONFIG_KASAN
+ 	{ KASAN_SHADOW_START,		"Kasan shadow start" },
+ 	{ KASAN_SHADOW_END,		"Kasan shadow end" },
+ #endif
+-	{ MODULES_VADDR,		"Modules start" },
+-	{ MODULES_END,			"Modules end" },
+-	{ VMALLOC_START,		"vmalloc() Area" },
+-	{ VMALLOC_END,			"vmalloc() End" },
++	{ -1,				"Modules start" },
++	{ -1,				"Modules end" },
++	{ -1,				"vmalloc() Area" },
++	{ -1,				"vmalloc() End" },
+ 	{ FIXADDR_START,		"Fixmap start" },
+ 	{ FIXADDR_TOP,			"Fixmap end" },
+ 	{ PCI_IO_START,			"PCI I/O start" },
+@@ -362,10 +383,32 @@ void ptdump_walk_pgd(struct seq_file *m, struct ptdump_info *info)
+ 	note_page(&st, 0, 0, 0);
+ }
+ 
++static void fixup_markers(void)
++{
++	int i;
++
++	address_markers[E_MODULES_VADDR].start_address = MODULES_VADDR;
++	address_markers[E_MODULES_END].start_address = MODULES_END;
++	address_markers[E_VMALLOC_START].start_address = VMALLOC_START;
++	address_markers[E_VMALLOC_END].start_address = VMALLOC_END;
++
++	if (MODULES_VADDR < VMALLOC_START) {
++		address_markers[E_MODULES_END].start_address =
++			(MODULES_END < VMALLOC_START) ?
++			MODULES_END : VMALLOC_START;
++	} else {
++		/* modules is contains in vamlloc area, don't show them */
++		for (i = E_MODULES_VADDR; i <= E_NR_MARKER - 2; i++)
++			address_markers[i] = address_markers[i + 2];
++	}
++}
++
+ static void ptdump_initialize(void)
+ {
+ 	unsigned i, j;
+ 
++	fixup_markers();
++
+ 	for (i = 0; i < ARRAY_SIZE(pg_level); i++)
+ 		if (pg_level[i].bits)
+ 			for (j = 0; j < pg_level[i].num; j++)
+diff --git a/arch/arm64/mm/init.c b/arch/arm64/mm/init.c
+index 5960bef..be77b26 100644
+--- a/arch/arm64/mm/init.c
++++ b/arch/arm64/mm/init.c
+@@ -609,8 +609,10 @@ void __init mem_init(void)
+ 	pr_notice("    kasan   : 0x%16lx - 0x%16lx   (%6ld GB)\n",
+ 		MLG(KASAN_SHADOW_START, KASAN_SHADOW_END));
+ #endif
+-	pr_notice("    modules : 0x%16lx - 0x%16lx   (%6ld MB)\n",
+-		MLM(MODULES_VADDR, MODULES_END));
++	/* print modules info when it's not fully mapped within vamlloc */
++	if (MODULES_VADDR < VMALLOC_START)
++		pr_notice("    modules : 0x%16lx - 0x%16lx   (%6ld MB)\n",
++			MLM(MODULES_VADDR, MODULES_END));
+ 	pr_notice("    vmalloc : 0x%16lx - 0x%16lx   (%6ld GB)\n",
+ 		MLG(VMALLOC_START, VMALLOC_END));
+ 	pr_notice("      .text : 0x%p" " - 0x%p" "   (%6ld KB)\n",
 -- 
-1.7.9.5
+1.9.1
