@@ -1,64 +1,60 @@
-From: Honghui Zhang <honghui.zhang@mediatek.com>
-Subject: Re: [PATCH] PCI: mediatek: take use of PCI_NUM_INTX
-Date: Wed, 30 Aug 2017 09:44:58 +0800
-Message-ID: <1504057498.10964.13.camel@mhfsdcap03>
-References: <1504055954-31545-1-git-send-email-honghui.zhang@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH RESEND v2 3/3] dt-bindings: mt8173-mtu3: add generic
+ compatible and rename file
+Date: Wed, 30 Aug 2017 11:38:53 +0800
+Message-ID: <1504064333.17567.9.camel@mhfsdcap03>
+References: <33fa448238c0d95f0cfd6c2be3bd5c4e657a0cd4.1503998338.git.chunfeng.yun@mediatek.com>
+         <61060035e057b13f43d383645c53c8726b7e67ab.1503998339.git.chunfeng.yun@mediatek.com>
+         <1a489dcc-e95c-bfe3-8e2a-fe2591fe86d8@cogentembedded.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <1504055954-31545-1-git-send-email-honghui.zhang@mediatek.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: bhelgaas@google.com
-Cc: matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1a489dcc-e95c-bfe3-8e2a-fe2591fe86d8@cogentembedded.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Cc: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-08-30 at 09:19 +0800, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
+On Tue, 2017-08-29 at 13:08 +0300, Sergei Shtylyov wrote:
+> Hello!
 > 
-> Switch from using a custom NUM_INTX macro to the generic PCI_NUM_INTX
-> definition for the number of INTx interrupts.
+> On 8/29/2017 12:20 PM, Chunfeng Yun wrote:
 > 
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> ---
->  drivers/pci/host/pcie-mediatek.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
+> > The mt8173-mtu3.txt actually holds the bindings for all mediatek
+> > SoCs with usb3 DRD IP, so add a generic compatible and change the
+> > name to mediatek,mtu3.txt.
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > Acked-by: Rob Herring <robh@kernel.org>
+> > ---
+> >   .../usb/{mt8173-mtu3.txt => mediatek,mtu3.txt}     |    6 +++++-
+> >   1 file changed, 5 insertions(+), 1 deletion(-)
+> >   rename Documentation/devicetree/bindings/usb/{mt8173-mtu3.txt => mediatek,mtu3.txt} (92%)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt b/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
+> > similarity index 92%
+> > rename from Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
+> > rename to Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
+> > index b8ea394..722a029 100644
+> > --- a/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
+> > +++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
+> > @@ -1,7 +1,11 @@
+> >   The device node for Mediatek USB3.0 DRD controller
+> >   
+> >   Required properties:
+> > - - compatible : should be "mediatek,mt8173-mtu3"
+> > + - compatible : should be "mediatek,soc-model-mtu3", "mediatek,mtu3",
 > 
-
-Hi, Bjorn, Ryder,
-	this patch is based on Paul's v7 version of patch[1]("Move enum
-pci_interrupt_pin to linux/pci.h").
-[1]http://www.spinics.net/lists/linux-pci/msg63891.html
-
-Thanks.
-
-> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-> index c567996..5c0ce9b 100644
-> --- a/drivers/pci/host/pcie-mediatek.c
-> +++ b/drivers/pci/host/pcie-mediatek.c
-> @@ -77,7 +77,6 @@
->  #define PCIE_INT_MASK		0x420
->  #define INTX_MASK		GENMASK(19, 16)
->  #define INTX_SHIFT		16
-> -#define INTX_NUM		4
->  #define PCIE_INT_STATUS		0x424
->  #define MSI_STATUS		BIT(23)
->  #define PCIE_IMSI_STATUS	0x42c
-> @@ -576,7 +575,7 @@ static int mtk_pcie_init_irq_domain(struct mtk_pcie_port *port,
->  		return -ENODEV;
->  	}
->  
-> -	port->irq_domain = irq_domain_add_linear(pcie_intc_node, INTX_NUM,
-> +	port->irq_domain = irq_domain_add_linear(pcie_intc_node, PCI_NUM_INTX,
->  						 &intx_domain_ops, port);
->  	if (!port->irq_domain) {
->  		dev_err(dev, "failed to get INTx IRQ domain\n");
-> @@ -594,7 +593,7 @@ static irqreturn_t mtk_pcie_intr_handler(int irq, void *data)
->  	u32 bit = INTX_SHIFT;
->  
->  	while ((status = readl(port->base + PCIE_INT_STATUS)) & INTX_MASK) {
-> -		for_each_set_bit_from(bit, &status, INTX_NUM + INTX_SHIFT) {
-> +		for_each_set_bit_from(bit, &status, PCI_NUM_INTX + INTX_SHIFT) {
->  			/* Clear the INTx */
->  			writel(1 << bit, port->base + PCIE_INT_STATUS);
->  			virq = irq_find_mapping(port->irq_domain,
+>     Worth enclosing soc-model in <>.
+Ok, I'll modify it, thanks
+> 
+> > +	soc-model is the name of SoC, such as mt8173, mt2712 etc,
+> > +	when using "mediatek,mtu3" compatible string, you need SoC specific
+> > +	ones in addition, one of:
+> > +	- "mediatek,mt8173-mtu3"
+> >    - reg : specifies physical base address and size of the registers
+> >    - reg-names: should be "mac" for device IP and "ippc" for IP port control
+> >    - interrupts : interrupt used by the device IP
+> 
+> MBR, Sergei
