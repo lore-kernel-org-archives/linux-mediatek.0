@@ -1,30 +1,54 @@
-From: Tejun Heo <tj@kernel.org>
-Subject: Re: [PATCH v4 2/2] dt-bindings: ata: add DT bindings for MediaTek
- SATA controller
-Date: Tue, 29 Aug 2017 07:24:27 -0700
-Message-ID: <20170829142427.GH491396@devbig577.frc2.facebook.com>
-References: <cover.1503018631.git.ryder.lee@mediatek.com>
- <0ac0ff921914acd95b7b5906ca435571e55c355f.1503018631.git.ryder.lee@mediatek.com>
+From: <honghui.zhang@mediatek.com>
+Subject: [PATCH] PCI: mediatek: take use of PCI_NUM_INTX
+Date: Wed, 30 Aug 2017 09:19:14 +0800
+Message-ID: <1504055954-31545-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <0ac0ff921914acd95b7b5906ca435571e55c355f.1503018631.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Hans de Goede <hdegoede@redhat.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, Long Cheng <long.cheng@mediatek.com>
+To: bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com
+Cc: honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Aug 18, 2017 at 09:13:08AM +0800, Ryder Lee wrote:
-> Add DT bindings for the onboard SATA controller present on the MediaTek
-> SoCs.
-> 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> Acked-by: Rob Herring <robh@kernel.org>
+From: Honghui Zhang <honghui.zhang@mediatek.com>
 
-Applied to libata/for-4.14.
+Switch from using a custom NUM_INTX macro to the generic PCI_NUM_INTX
+definition for the number of INTx interrupts.
 
-Thanks.
+Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+---
+ drivers/pci/host/pcie-mediatek.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+index c567996..5c0ce9b 100644
+--- a/drivers/pci/host/pcie-mediatek.c
++++ b/drivers/pci/host/pcie-mediatek.c
+@@ -77,7 +77,6 @@
+ #define PCIE_INT_MASK		0x420
+ #define INTX_MASK		GENMASK(19, 16)
+ #define INTX_SHIFT		16
+-#define INTX_NUM		4
+ #define PCIE_INT_STATUS		0x424
+ #define MSI_STATUS		BIT(23)
+ #define PCIE_IMSI_STATUS	0x42c
+@@ -576,7 +575,7 @@ static int mtk_pcie_init_irq_domain(struct mtk_pcie_port *port,
+ 		return -ENODEV;
+ 	}
+ 
+-	port->irq_domain = irq_domain_add_linear(pcie_intc_node, INTX_NUM,
++	port->irq_domain = irq_domain_add_linear(pcie_intc_node, PCI_NUM_INTX,
+ 						 &intx_domain_ops, port);
+ 	if (!port->irq_domain) {
+ 		dev_err(dev, "failed to get INTx IRQ domain\n");
+@@ -594,7 +593,7 @@ static irqreturn_t mtk_pcie_intr_handler(int irq, void *data)
+ 	u32 bit = INTX_SHIFT;
+ 
+ 	while ((status = readl(port->base + PCIE_INT_STATUS)) & INTX_MASK) {
+-		for_each_set_bit_from(bit, &status, INTX_NUM + INTX_SHIFT) {
++		for_each_set_bit_from(bit, &status, PCI_NUM_INTX + INTX_SHIFT) {
+ 			/* Clear the INTx */
+ 			writel(1 << bit, port->base + PCIE_INT_STATUS);
+ 			virq = irq_find_mapping(port->irq_domain,
 -- 
-tejun
+2.6.4
