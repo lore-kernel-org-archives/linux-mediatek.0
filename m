@@ -1,81 +1,30 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] arm64: dts: mediatek: Add cpuidle support for MT2712
-Date: Thu, 31 Aug 2017 13:44:00 +0800
-Message-ID: <1504158240-12639-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH] pinctrl: mediatek: update PCIe mux data for MT7623
+Date: Thu, 31 Aug 2017 09:11:11 +0200
+Message-ID: <CACRpkdY6kiPRC9tD3joNwdcj63La06eKnFe_D7s4bpP4a=CO5w@mail.gmail.com>
+References: <ddbc91742005abfc9083876fb976ecc511be98fd.1503026874.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <ddbc91742005abfc9083876fb976ecc511be98fd.1503026874.git.ryder.lee@mediatek.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Biao Huang <biao.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add CPU idle state nodes to enable C1/C2 idle states.
+On Fri, Aug 18, 2017 at 5:48 AM, Ryder Lee <ryder.lee@mediatek.com> wrote:
 
-Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
-This patch bases on latest Matthias v4.13-next/dts64 branch [1],
-add CPU idle states for MT2712.
+> MT2701 shares the same driver with MT7623, but there is a slight difference
+> between their pin functions (e.g., PCIe), so we update the different parts
+> in pinmux table.
+>
+> Doing so, SoC could choose the correct mux setting via their own pinfun.h.
+>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> CC: Biao Huang <biao.huang@mediatek.com>
 
-[1] https://github.com/mbgg/linux-mediatek.git
+No reaction in 13 days from any maintainer.
+Patch applied.
 
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-index 57d0396..5d4e406 100644
---- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-@@ -39,6 +39,7 @@
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a35";
- 			reg = <0x000>;
-+			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
- 		};
- 
- 		cpu1: cpu@1 {
-@@ -46,6 +47,7 @@
- 			compatible = "arm,cortex-a35";
- 			reg = <0x001>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
- 		};
- 
- 		cpu2: cpu@200 {
-@@ -53,6 +55,29 @@
- 			compatible = "arm,cortex-a72";
- 			reg = <0x200>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
-+		};
-+
-+		idle-states {
-+			entry-method = "arm,psci";
-+
-+			CPU_SLEEP_0: cpu-sleep-0 {
-+				compatible = "arm,idle-state";
-+				local-timer-stop;
-+				entry-latency-us = <100>;
-+				exit-latency-us = <80>;
-+				min-residency-us = <2000>;
-+				arm,psci-suspend-param = <0x0010000>;
-+			};
-+
-+			CLUSTER_SLEEP_0: cluster-sleep-0 {
-+				compatible = "arm,idle-state";
-+				local-timer-stop;
-+				entry-latency-us = <350>;
-+				exit-latency-us = <80>;
-+				min-residency-us = <3000>;
-+				arm,psci-suspend-param = <0x1010000>;
-+			};
- 		};
- 	};
- 
--- 
-1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Yours,
+Linus Walleij
