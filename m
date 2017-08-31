@@ -1,160 +1,293 @@
-From: Harsh Jain <harshjain.prof-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v7 00/19] simplify crypto wait for async op
-Date: Thu, 31 Aug 2017 18:01:51 +0530
-Message-ID: <CAFXBA=n6W_n1P=NKHEUAgpaDDrdmh4QwB4aYma9xyio7UFP3Vw@mail.gmail.com>
-References: <1503584350-7831-1-git-send-email-gilad@benyossef.com>
+From: Zhang Rui <rui.zhang@intel.com>
+Subject: Re: [PATCH v2 2/4] thermal: mediatek: add Mediatek thermal driver
+ for mt2712
+Date: Thu, 31 Aug 2017 21:10:03 +0800
+Message-ID: <1504185003.2749.1.camel@intel.com>
+References: <1501572513-7958-1-git-send-email-louis.yu@mediatek.com>
+         <1501572513-7958-3-git-send-email-louis.yu@mediatek.com>
+         <1502198610.4296.58.camel@intel.com> <1503628245.2774.8.camel@intel.com>
+         <1503630623.2003.10.camel@mtksdaap41> <1503631432.2774.15.camel@intel.com>
+         <1503632387.2003.16.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-cifs-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1503584350-7831-1-git-send-email-gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org>
-Sender: linux-cifs-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Gilad Ben-Yossef <gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org>
-Cc: Herbert Xu <herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Jonathan Corbet <corbet-T1hC0tSOHrs@public.gmane.org>, David Howells <dhowells-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Tom Lendacky <thomas.lendacky-5C7GfCeVMHo@public.gmane.org>, Gary Hook <gary.hook-5C7GfCeVMHo@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Arnaud Ebalard <arno-LkuqDEemtHBg9hUCZPvPmw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alasdair Kergon <agk-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Mike Snitzer <snitzer-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, dm-devel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, Shaohua Li <shli-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Steve French <sfrench-eUNUBHrolfbYtjvyW6yDsg@public.gmane.org>, "Theodore Y. Ts'o" <tytso-3s7WtUTddSA@public.gmane.org>, Jaegeuk Kim <jaegeuk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mimi Zohar <zohar-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org>, Dmitry Kasatkin <dmitry.kasatkin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, James Morris <james.l.morris-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "Serge E. Hallyn" <serge-A9i7LUbDfNHQT0dZR+AlfA@public.gmane.org>, linux-crypto@v
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1503632387.2003.16.camel@mtksdaap41>
+Sender: linux-pm-owner@vger.kernel.org
+To: Dawei Chien <dawei.chien@mediatek.com>
+Cc: Louis Yu <louis.yu@mediatek.com>, Eduardo Valentin <edubezval@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, hanyi.wu@mediatek.com, s.hauer@pengutronix.de, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Fan Chen <fan.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-HI Gilad,
+On Fri, 2017-08-25 at 11:39 +0800, Dawei Chien wrote:
+> On Fri, 2017-08-25 at 11:23 +0800, Zhang Rui wrote:
+> > 
+> > Hi, Dawei,
+> > 
+> > 
+> > On Fri, 2017-08-25 at 11:10 +0800, Dawei Chien wrote:
+> > > 
+> > > On Fri, 2017-08-25 at 10:30 +0800, Zhang Rui wrote:
+> > > > 
+> > > > 
+> > > > On Tue, 2017-08-08 at 21:23 +0800, Zhang Rui wrote:
+> > > > > 
+> > > > > 
+> > > > > On Tue, 2017-08-01 at 15:28 +0800, Louis Yu wrote:
+> > > > > > 
+> > > > > > 
+> > > > > > 
+> > > > > > This patch adds support for mt2712 chip to mtk_thermal,
+> > > > > > and integrate mt2712 into the same mediatek thermal driver.
+> > > > > > MT2712 has only 1 bank and 4 sensors.
+> > > > > > 
+> > > > > > Signed-off-by: Louis Yu <louis.yu@mediatek.com>
+> > > > > > ---
+> > > > > >  drivers/thermal/mtk_thermal.c | 70
+> > > > > > ++++++++++++++++++++++++++++++++++++++++---
+> > > > > >  1 file changed, 66 insertions(+), 4 deletions(-)
+> > > > > > 
+> > > > > > diff --git a/drivers/thermal/mtk_thermal.c
+> > > > > > b/drivers/thermal/mtk_thermal.c
+> > > > > > index 7737f14..e35d28d 100644
+> > > > > > --- a/drivers/thermal/mtk_thermal.c
+> > > > > > +++ b/drivers/thermal/mtk_thermal.c
+> > > > > > @@ -3,6 +3,7 @@
+> > > > > >   * Author: Hanyi Wu <hanyi.wu@mediatek.com>
+> > > > > >   *         Sascha Hauer <s.hauer@pengutronix.de>
+> > > > > >   *         Dawei Chien <dawei.chien@mediatek.com>
+> > > > > > + *         Louis Yu <louis.yu@mediatek.com>
+> > > > > I need the feedback from the previous authors for the changes
+> > > > > in
+> > > > > all
+> > > > > this patch set.
+> > > > > 
+> > > > Hanyi, Sascha and Dawei,
+> > > > 
+> > > > can you please review this patch and let me know your opinion?
+> > > > 
+> > > > thanks,
+> > > > rui
+> > > Hi Rui,
+> > > In my opinion, I agree this patch set for supporting MT2712
+> > > thermal
+> > > sensor.
+> > > 
+> > > Reviewed-by: Dawei Chien <dawei.chien@mediatek.com>
+> > > 
+> > thanks for reviewing.
+> > > 
+> > > > 
+> > > > 
+> > > > > 
+> > > > > 
+> > > > > > 
+> > > > > > 
+> > > > > > 
+> > > > > >   *
+> > > > > >   * This program is free software; you can redistribute it
+> > > > > > and/or
+> > > > > > modify
+> > > > > >   * it under the terms of the GNU General Public License
+> > > > > > version 2
+> > > > > > as
+> > > > > > @@ -111,9 +112,10 @@
+> > > > > >  
+> > > > > >  /*
+> > > > > >   * Layout of the fuses providing the calibration data
+> > > > > > - * These macros could be used for both MT8173 and MT2701.
+> > > > > > + * These macros could be used for both MT8173, MT2701, and
+> > > > > > MT2712.
+> > > > > >   * MT8173 has five sensors and need five VTS calibration
+> > > > > > data,
+> > > > > > - * and MT2701 has three sensors and need three VTS
+> > > > > > calibration
+> > > > > > data.
+> > > > > > + * and MT2701 has three sensors and need three VTS
+> > > > > > calibration
+> > > > > > data,
+> > > > > > + * and MT2712 has four sensors and need four VTS
+> > > > > > calibration
+> > > > > > data.
+> > > > > >   */
+> > > > > why bother change these comments again in patch 3/4?
+> > > > > 
+> > > > > thanks,
+> > > > > rui
+> > > Hi Rui,
+> > > May we know your opinion if this patch set need merge patch2/3/4
+> > > 
+> > what do you mean? If you're okay with this, I will merge the full
+> > patch
+> > set.
+> > 
+> > thanks,
+> > rui
+> Hi Rui,
+> It's okay to me. Since we saw your comment "why bother change these
+> comments again in patch 3/4?", so I think you might suggest to merge
+> patch2/patch3/patch4 to one patch.
+> 
+I will take patch 2, 3 and 4 as separate patches.
+BTW, is it okay for me to add your Reviewed-by for all the patch
+series?
 
-I think we need an update in ESP also. Now EBUSY return means driver
-has accepted, Packet should not be dropped in
+thanks,
+rui
 
-esp_output_tail() function.
-
-.
-
-Regards
-Harsh Jain
-
-
-
-On Thu, Aug 24, 2017 at 7:48 PM, Gilad Ben-Yossef <gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org> wrote:
-> Many users of kernel async. crypto services have a pattern of
-> starting an async. crypto op and than using a completion
-> to wait for it to end.
->
-> This patch set simplifies this common use case in two ways:
->
-> First, by separating the return codes of the case where a
-> request is queued to a backlog due to the provider being
-> busy (-EBUSY) from the case the request has failed due
-> to the provider being busy and backlogging is not enabled
-> (-EAGAIN).
->
-> Next, this change is than built on to create a generic API
-> to wait for a async. crypto operation to complete.
->
-> The end result is a smaller code base and an API that is
-> easier to use and more difficult to get wrong.
->
-> The patch set was boot tested on x86_64 and arm64 which
-> at the very least tests the crypto users via testmgr and
-> tcrypt but I do note that I do not have access to some
-> of the HW whose drivers are modified nor do I claim I was
-> able to test all of the corner cases.
->
-> The patch set is based upon linux-next release tagged
-> next-20170824.
->
-> Changes from v6:
-> - Fix brown paper bag compile error on marvell/cesa
->   code.
->
-> Changes from v5:
-> - Remove redundant new line as spotted by Jonathan
->   Cameron.
-> - Reworded dm-verity change commit message to better
->   clarify potential issue averted by change as
->   pointed out by Mikulas Patocka.
->
-> Changes from v4:
-> - Rebase on top of latest algif changes from Stephan
->   Mueller.
-> - Fix typo in ccp patch title.
->
-> Changes from v3:
-> - Instead of changing the return code to indicate
->   backlog queueing, change the return code to indicate
->   transient busy state, as suggested by Herbert Xu.
->
-> Changes from v2:
-> - Patch title changed from "introduce crypto wait for
->   async op" to better reflect the current state.
-> - Rebase on top of latest linux-next.
-> - Add a new return code of -EIOCBQUEUED for backlog
->   queueing, as suggested by Herbert Xu.
-> - Transform more users to the new API.
-> - Update the drbg change to account for new init as
->   indicated by Stephan Muller.
->
-> Changes from v1:
-> - Address review comments from Eric Biggers.
-> - Separated out bug fixes of existing code and rebase
->   on top of that patch set.
-> - Rename 'ecr' to 'wait' in fscrypto code.
-> - Split patch introducing the new API from the change
->   moving over the algif code which it originated from
->   to the new API.
-> - Inline crypto_wait_req().
-> - Some code indentation fixes.
->
-> Gilad Ben-Yossef (19):
->   crypto: change transient busy return code to -EAGAIN
->   crypto: ccp: use -EAGAIN for transient busy indication
->   crypto: remove redundant backlog checks on EBUSY
->   crypto: marvell/cesa: remove redundant backlog checks on EBUSY
->   crypto: introduce crypto wait for async op
->   crypto: move algif to generic async completion
->   crypto: move pub key to generic async completion
->   crypto: move drbg to generic async completion
->   crypto: move gcm to generic async completion
->   crypto: move testmgr to generic async completion
->   fscrypt: move to generic async completion
->   dm: move dm-verity to generic async completion
->   cifs: move to generic async completion
->   ima: move to generic async completion
->   crypto: tcrypt: move to generic async completion
->   crypto: talitos: move to generic async completion
->   crypto: qce: move to generic async completion
->   crypto: mediatek: move to generic async completion
->   crypto: adapt api sample to use async. op wait
->
->  Documentation/crypto/api-samples.rst |  52 ++-------
->  crypto/af_alg.c                      |  27 -----
->  crypto/ahash.c                       |  12 +--
->  crypto/algapi.c                      |   6 +-
->  crypto/algif_aead.c                  |   8 +-
->  crypto/algif_hash.c                  |  50 +++++----
->  crypto/algif_skcipher.c              |   9 +-
->  crypto/api.c                         |  13 +++
->  crypto/asymmetric_keys/public_key.c  |  28 +----
->  crypto/cryptd.c                      |   4 +-
->  crypto/cts.c                         |   6 +-
->  crypto/drbg.c                        |  36 ++-----
->  crypto/gcm.c                         |  32 ++----
->  crypto/lrw.c                         |   8 +-
->  crypto/rsa-pkcs1pad.c                |  16 +--
->  crypto/tcrypt.c                      |  84 +++++----------
->  crypto/testmgr.c                     | 204 ++++++++++++-----------------------
->  crypto/xts.c                         |   8 +-
->  drivers/crypto/ccp/ccp-crypto-main.c |   8 +-
->  drivers/crypto/ccp/ccp-dev.c         |   7 +-
->  drivers/crypto/marvell/cesa.c        |   3 +-
->  drivers/crypto/marvell/cesa.h        |   2 +-
->  drivers/crypto/mediatek/mtk-aes.c    |  31 +-----
->  drivers/crypto/qce/sha.c             |  30 +-----
->  drivers/crypto/talitos.c             |  38 +------
->  drivers/md/dm-verity-target.c        |  81 ++++----------
->  drivers/md/dm-verity.h               |   5 -
->  fs/cifs/smb2ops.c                    |  30 +-----
->  fs/crypto/crypto.c                   |  28 +----
->  fs/crypto/fname.c                    |  36 ++-----
->  fs/crypto/fscrypt_private.h          |  10 --
->  fs/crypto/keyinfo.c                  |  21 +---
->  include/crypto/drbg.h                |   3 +-
->  include/crypto/if_alg.h              |  15 +--
->  include/linux/crypto.h               |  40 +++++++
->  security/integrity/ima/ima_crypto.c  |  56 +++-------
->  36 files changed, 310 insertions(+), 737 deletions(-)
->
-> --
-> 2.1.4
->
+> BR,
+> Dawei
+> 
+> > 
+> > > 
+> > > > 
+> > > > 
+> > > > > 
+> > > > > 
+> > > > > > 
+> > > > > > 
+> > > > > > 
+> > > > > >  #define MT8173_CALIB_BUF0_VALID		BIT(0)
+> > > > > >  #define MT8173_CALIB_BUF1_ADC_GE(x)	(((x) >> 22) &
+> > > > > > 0x3ff)
+> > > > > > @@ -136,11 +138,26 @@
+> > > > > >  /* The total number of temperature sensors in the MT2701
+> > > > > > */
+> > > > > >  #define MT2701_NUM_SENSORS	3
+> > > > > >  
+> > > > > > -#define THERMAL_NAME    "mtk-thermal"
+> > > > > > -
+> > > > > >  /* The number of sensing points per bank */
+> > > > > >  #define MT2701_NUM_SENSORS_PER_ZONE	3
+> > > > > >  
+> > > > > > +/* MT2712 thermal sensors */
+> > > > > > +#define MT2712_TS1	0
+> > > > > > +#define MT2712_TS2	1
+> > > > > > +#define MT2712_TS3	2
+> > > > > > +#define MT2712_TS4	3
+> > > > > > +
+> > > > > > +/* AUXADC channel 11 is used for the temperature sensors
+> > > > > > */
+> > > > > > +#define MT2712_TEMP_AUXADC_CHANNEL	11
+> > > > > > +
+> > > > > > +/* The total number of temperature sensors in the MT2712
+> > > > > > */
+> > > > > > +#define MT2712_NUM_SENSORS	4
+> > > > > > +
+> > > > > > +/* The number of sensing points per bank */
+> > > > > > +#define MT2712_NUM_SENSORS_PER_ZONE	4
+> > > > > > +
+> > > > > > +#define THERMAL_NAME    "mtk-thermal"
+> > > > > > +
+> > > > > >  struct mtk_thermal;
+> > > > > >  
+> > > > > >  struct thermal_bank_cfg {
+> > > > > > @@ -215,6 +232,21 @@ struct mtk_thermal {
+> > > > > >  
+> > > > > >  static const int mt2701_mux_values[MT2701_NUM_SENSORS] = {
+> > > > > > 0,
+> > > > > > 1,
+> > > > > > 16
+> > > > > > };
+> > > > > >  
+> > > > > > +/* MT2712 thermal sensor data */
+> > > > > > +static const int mt2712_bank_data[MT2712_NUM_SENSORS] = {
+> > > > > > +	MT2712_TS1, MT2712_TS2, MT2712_TS3, MT2712_TS4
+> > > > > > +};
+> > > > > > +
+> > > > > > +static const int mt2712_msr[MT2712_NUM_SENSORS_PER_ZONE] =
+> > > > > > {
+> > > > > > +	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR3
+> > > > > > +};
+> > > > > > +
+> > > > > > +static const int
+> > > > > > mt2712_adcpnp[MT2712_NUM_SENSORS_PER_ZONE] =
+> > > > > > {
+> > > > > > +	TEMP_ADCPNP0, TEMP_ADCPNP1, TEMP_ADCPNP2,
+> > > > > > TEMP_ADCPNP3
+> > > > > > +};
+> > > > > > +
+> > > > > > +static const int mt2712_mux_values[MT2712_NUM_SENSORS] = {
+> > > > > > 0,
+> > > > > > 1,
+> > > > > > 2,
+> > > > > > 3 };
+> > > > > > +
+> > > > > >  /**
+> > > > > >   * The MT8173 thermal controller has four banks. Each bank
+> > > > > > can
+> > > > > > read
+> > > > > > up to
+> > > > > >   * four temperature sensors simultaneously. The MT8173 has
+> > > > > > a
+> > > > > > total
+> > > > > > of 5
+> > > > > > @@ -278,6 +310,31 @@ struct mtk_thermal {
+> > > > > >  };
+> > > > > >  
+> > > > > >  /**
+> > > > > > + * The MT2712 thermal controller has one bank, which can
+> > > > > > read
+> > > > > > up
+> > > > > > to
+> > > > > > + * four temperature sensors simultaneously. The MT2712 has
+> > > > > > a
+> > > > > > total
+> > > > > > of 4
+> > > > > > + * temperature sensors.
+> > > > > > + *
+> > > > > > + * The thermal core only gets the maximum temperature of
+> > > > > > this
+> > > > > > one
+> > > > > > bank,
+> > > > > > + * so the bank concept wouldn't be necessary here.
+> > > > > > However,
+> > > > > > the
+> > > > > > SVS
+> > > > > > (Smart
+> > > > > > + * Voltage Scaling) unit makes its decisions based on the
+> > > > > > same
+> > > > > > bank
+> > > > > > + * data.
+> > > > > > + */
+> > > > > > +static const struct mtk_thermal_data mt2712_thermal_data =
+> > > > > > {
+> > > > > > +	.auxadc_channel = MT2712_TEMP_AUXADC_CHANNEL,
+> > > > > > +	.num_banks = 1,
+> > > > > > +	.num_sensors = MT2712_NUM_SENSORS,
+> > > > > > +	.bank_data = {
+> > > > > > +		{
+> > > > > > +			.num_sensors = 4,
+> > > > > > +			.sensors = mt2712_bank_data,
+> > > > > > +		},
+> > > > > > +	},
+> > > > > > +	.msr = mt2712_msr,
+> > > > > > +	.adcpnp = mt2712_adcpnp,
+> > > > > > +	.sensor_mux_values = mt2712_mux_values,
+> > > > > > +};
+> > > > > > +
+> > > > > > +/**
+> > > > > >   * raw_to_mcelsius - convert a raw ADC value to mcelsius
+> > > > > >   * @mt:		The thermal controller
+> > > > > >   * @raw:	raw ADC value
+> > > > > > @@ -571,6 +628,10 @@ static int
+> > > > > > mtk_thermal_get_calibration_data(struct device *dev,
+> > > > > >  	{
+> > > > > >  		.compatible = "mediatek,mt2701-thermal",
+> > > > > >  		.data = (void *)&mt2701_thermal_data,
+> > > > > > +	},
+> > > > > > +	{
+> > > > > > +		.compatible = "mediatek,mt2712-thermal",
+> > > > > > +		.data = (void *)&mt2712_thermal_data,
+> > > > > >  	}, {
+> > > > > >  	},
+> > > > > >  };
+> > > > > > @@ -705,6 +766,7 @@ static int mtk_thermal_remove(struct
+> > > > > > platform_device *pdev)
+> > > > > >  
+> > > > > >  module_platform_driver(mtk_thermal_driver);
+> > > > > >  
+> > > > > > +MODULE_AUTHOR("Louis Yu <louis.yu@mediatek.com>");
+> > > > > >  MODULE_AUTHOR("Dawei Chien <dawei.chien@mediatek.com>");
+> > > > > >  MODULE_AUTHOR("Sascha Hauer <s.hauer@pengutronix.de>");
+> > > > > >  MODULE_AUTHOR("Hanyi Wu <hanyi.wu@mediatek.com>");
+> 
