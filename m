@@ -1,81 +1,297 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 2/5] dt-bindings: input: Add document bindings for
- mtk-pmic-keys
-Date: Thu, 31 Aug 2017 14:52:39 -0500
-Message-ID: <20170831195239.b2litxbu7smhkkjl@rob-hp-laptop>
-References: <1503642753-12385-1-git-send-email-chen.zhong@mediatek.com>
- <1503642753-12385-3-git-send-email-chen.zhong@mediatek.com>
+From: Dawei Chien <dawei.chien@mediatek.com>
+Subject: Re: [PATCH v2 2/4] thermal: mediatek: add Mediatek thermal driver
+ for mt2712
+Date: Fri, 1 Sep 2017 09:26:38 +0800
+Message-ID: <1504229198.10616.2.camel@mtksdaap41>
+References: <1501572513-7958-1-git-send-email-louis.yu@mediatek.com>
+         <1501572513-7958-3-git-send-email-louis.yu@mediatek.com>
+         <1502198610.4296.58.camel@intel.com> <1503628245.2774.8.camel@intel.com>
+         <1503630623.2003.10.camel@mtksdaap41> <1503631432.2774.15.camel@intel.com>
+         <1503632387.2003.16.camel@mtksdaap41> <1504185003.2749.1.camel@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1503642753-12385-3-git-send-email-chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Alessandro Zummo <a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Andi Shyti <andi.shyti-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jaechul Lee <jcsing.lee-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rtc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1504185003.2749.1.camel@intel.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Zhang Rui <rui.zhang@intel.com>
+Cc: Louis Yu <louis.yu@mediatek.com>, Eduardo Valentin <edubezval@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, hanyi.wu@mediatek.com, s.hauer@pengutronix.de, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Fan Chen <fan.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Aug 25, 2017 at 02:32:30PM +0800, Chen Zhong wrote:
-> This patch adds the device tree binding documentation for the MediaTek
-> pmic keys found on PMIC MT6397/MT6323.
+On Thu, 2017-08-31 at 21:10 +0800, Zhang Rui wrote:
+> On Fri, 2017-08-25 at 11:39 +0800, Dawei Chien wrote:
+> > On Fri, 2017-08-25 at 11:23 +0800, Zhang Rui wrote:
+> > > 
+> > > Hi, Dawei,
+> > > 
+> > > 
+> > > On Fri, 2017-08-25 at 11:10 +0800, Dawei Chien wrote:
+> > > > 
+> > > > On Fri, 2017-08-25 at 10:30 +0800, Zhang Rui wrote:
+> > > > > 
+> > > > > 
+> > > > > On Tue, 2017-08-08 at 21:23 +0800, Zhang Rui wrote:
+> > > > > > 
+> > > > > > 
+> > > > > > On Tue, 2017-08-01 at 15:28 +0800, Louis Yu wrote:
+> > > > > > > 
+> > > > > > > 
+> > > > > > > 
+> > > > > > > This patch adds support for mt2712 chip to mtk_thermal,
+> > > > > > > and integrate mt2712 into the same mediatek thermal driver.
+> > > > > > > MT2712 has only 1 bank and 4 sensors.
+> > > > > > > 
+> > > > > > > Signed-off-by: Louis Yu <louis.yu@mediatek.com>
+> > > > > > > ---
+> > > > > > >  drivers/thermal/mtk_thermal.c | 70
+> > > > > > > ++++++++++++++++++++++++++++++++++++++++---
+> > > > > > >  1 file changed, 66 insertions(+), 4 deletions(-)
+> > > > > > > 
+> > > > > > > diff --git a/drivers/thermal/mtk_thermal.c
+> > > > > > > b/drivers/thermal/mtk_thermal.c
+> > > > > > > index 7737f14..e35d28d 100644
+> > > > > > > --- a/drivers/thermal/mtk_thermal.c
+> > > > > > > +++ b/drivers/thermal/mtk_thermal.c
+> > > > > > > @@ -3,6 +3,7 @@
+> > > > > > >   * Author: Hanyi Wu <hanyi.wu@mediatek.com>
+> > > > > > >   *         Sascha Hauer <s.hauer@pengutronix.de>
+> > > > > > >   *         Dawei Chien <dawei.chien@mediatek.com>
+> > > > > > > + *         Louis Yu <louis.yu@mediatek.com>
+> > > > > > I need the feedback from the previous authors for the changes
+> > > > > > in
+> > > > > > all
+> > > > > > this patch set.
+> > > > > > 
+> > > > > Hanyi, Sascha and Dawei,
+> > > > > 
+> > > > > can you please review this patch and let me know your opinion?
+> > > > > 
+> > > > > thanks,
+> > > > > rui
+> > > > Hi Rui,
+> > > > In my opinion, I agree this patch set for supporting MT2712
+> > > > thermal
+> > > > sensor.
+> > > > 
+> > > > Reviewed-by: Dawei Chien <dawei.chien@mediatek.com>
+> > > > 
+> > > thanks for reviewing.
+> > > > 
+> > > > > 
+> > > > > 
+> > > > > > 
+> > > > > > 
+> > > > > > > 
+> > > > > > > 
+> > > > > > > 
+> > > > > > >   *
+> > > > > > >   * This program is free software; you can redistribute it
+> > > > > > > and/or
+> > > > > > > modify
+> > > > > > >   * it under the terms of the GNU General Public License
+> > > > > > > version 2
+> > > > > > > as
+> > > > > > > @@ -111,9 +112,10 @@
+> > > > > > >  
+> > > > > > >  /*
+> > > > > > >   * Layout of the fuses providing the calibration data
+> > > > > > > - * These macros could be used for both MT8173 and MT2701.
+> > > > > > > + * These macros could be used for both MT8173, MT2701, and
+> > > > > > > MT2712.
+> > > > > > >   * MT8173 has five sensors and need five VTS calibration
+> > > > > > > data,
+> > > > > > > - * and MT2701 has three sensors and need three VTS
+> > > > > > > calibration
+> > > > > > > data.
+> > > > > > > + * and MT2701 has three sensors and need three VTS
+> > > > > > > calibration
+> > > > > > > data,
+> > > > > > > + * and MT2712 has four sensors and need four VTS
+> > > > > > > calibration
+> > > > > > > data.
+> > > > > > >   */
+> > > > > > why bother change these comments again in patch 3/4?
+> > > > > > 
+> > > > > > thanks,
+> > > > > > rui
+> > > > Hi Rui,
+> > > > May we know your opinion if this patch set need merge patch2/3/4
+> > > > 
+> > > what do you mean? If you're okay with this, I will merge the full
+> > > patch
+> > > set.
+> > > 
+> > > thanks,
+> > > rui
+> > Hi Rui,
+> > It's okay to me. Since we saw your comment "why bother change these
+> > comments again in patch 3/4?", so I think you might suggest to merge
+> > patch2/patch3/patch4 to one patch.
+> > 
+> I will take patch 2, 3 and 4 as separate patches.
+> BTW, is it okay for me to add your Reviewed-by for all the patch
+> series?
 > 
-> Signed-off-by: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  .../devicetree/bindings/input/mtk-pmic-keys.txt    |   38 ++++++++++++++++++++
->  1 file changed, 38 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+> thanks,
+> rui
 > 
-> diff --git a/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
-> new file mode 100644
-> index 0000000..100ec44
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
-> @@ -0,0 +1,38 @@
-> +MediaTek MT6397/MT6323 PMIC Keys Device Driver
-> +
-> +There are two key functions provided by MT6397/MT6323 PMIC, pwrkey
-> +and homekey. The key functions are defined as the subnode of the function
-> +node provided by MT6397/MT6323 PMIC that is being defined as one kind
-> +of Muti-Function Device (MFD)
-> +
-> +For MT6397/MT6323 MFD bindings see:
-> +Documentation/devicetree/bindings/mfd/mt6397.txt
-> +
-> +Required properties:
-> +- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
-> +- linux,keycodes: Specifies the numeric keycode values to
-> +	be used for reporting keys presses. The array can
-> +	contain up to 2 entries.
-> +
-> +Optional Properties:
-> +- wakeup-source: each key can be used as a wakeup source.
+Hi Rui,
+Yes, please add my Reviewed-by for all the patch series, thank you.
 
-wakeup-source is defined as a boolean.
-
-> +- mediatek,long-press-mode: Long press key shutdown setting, 1 for
-> +	pwrkey only, 2 for pwrkey/homekey together, others for disabled.
-> +- debounce-interval: Long press key shutdown debouncing interval time
-> +	in seconds. 0/1/2/3 for 8/11/14/5 seconds. If not specified defaults to 0.
-> +
-> +Example:
-> +
-> +	pmic: mt6397 {
-> +		compatible = "mediatek,mt6397";
-> +
-> +		...
-> +
-> +		mt6397keys: mt6397keys {
-> +			compatible = "mediatek,mt6397-keys";
-> +			linux,keycodes = <KEY_POWER>, <KEY_VOLUMEDOWN>;
-> +			wakeup-source = <1>, <0>;
-> +			mediatek,long-press-mode = <1>;
-> +			debounce-interval = <0>;
-> +		};
-> +	};
-> -- 
-> 1.7.9.5
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+BR,
+Dawei
+> > 
+> > > 
+> > > > 
+> > > > > 
+> > > > > 
+> > > > > > 
+> > > > > > 
+> > > > > > > 
+> > > > > > > 
+> > > > > > > 
+> > > > > > >  #define MT8173_CALIB_BUF0_VALID		BIT(0)
+> > > > > > >  #define MT8173_CALIB_BUF1_ADC_GE(x)	(((x) >> 22) &
+> > > > > > > 0x3ff)
+> > > > > > > @@ -136,11 +138,26 @@
+> > > > > > >  /* The total number of temperature sensors in the MT2701
+> > > > > > > */
+> > > > > > >  #define MT2701_NUM_SENSORS	3
+> > > > > > >  
+> > > > > > > -#define THERMAL_NAME    "mtk-thermal"
+> > > > > > > -
+> > > > > > >  /* The number of sensing points per bank */
+> > > > > > >  #define MT2701_NUM_SENSORS_PER_ZONE	3
+> > > > > > >  
+> > > > > > > +/* MT2712 thermal sensors */
+> > > > > > > +#define MT2712_TS1	0
+> > > > > > > +#define MT2712_TS2	1
+> > > > > > > +#define MT2712_TS3	2
+> > > > > > > +#define MT2712_TS4	3
+> > > > > > > +
+> > > > > > > +/* AUXADC channel 11 is used for the temperature sensors
+> > > > > > > */
+> > > > > > > +#define MT2712_TEMP_AUXADC_CHANNEL	11
+> > > > > > > +
+> > > > > > > +/* The total number of temperature sensors in the MT2712
+> > > > > > > */
+> > > > > > > +#define MT2712_NUM_SENSORS	4
+> > > > > > > +
+> > > > > > > +/* The number of sensing points per bank */
+> > > > > > > +#define MT2712_NUM_SENSORS_PER_ZONE	4
+> > > > > > > +
+> > > > > > > +#define THERMAL_NAME    "mtk-thermal"
+> > > > > > > +
+> > > > > > >  struct mtk_thermal;
+> > > > > > >  
+> > > > > > >  struct thermal_bank_cfg {
+> > > > > > > @@ -215,6 +232,21 @@ struct mtk_thermal {
+> > > > > > >  
+> > > > > > >  static const int mt2701_mux_values[MT2701_NUM_SENSORS] = {
+> > > > > > > 0,
+> > > > > > > 1,
+> > > > > > > 16
+> > > > > > > };
+> > > > > > >  
+> > > > > > > +/* MT2712 thermal sensor data */
+> > > > > > > +static const int mt2712_bank_data[MT2712_NUM_SENSORS] = {
+> > > > > > > +	MT2712_TS1, MT2712_TS2, MT2712_TS3, MT2712_TS4
+> > > > > > > +};
+> > > > > > > +
+> > > > > > > +static const int mt2712_msr[MT2712_NUM_SENSORS_PER_ZONE] =
+> > > > > > > {
+> > > > > > > +	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR3
+> > > > > > > +};
+> > > > > > > +
+> > > > > > > +static const int
+> > > > > > > mt2712_adcpnp[MT2712_NUM_SENSORS_PER_ZONE] =
+> > > > > > > {
+> > > > > > > +	TEMP_ADCPNP0, TEMP_ADCPNP1, TEMP_ADCPNP2,
+> > > > > > > TEMP_ADCPNP3
+> > > > > > > +};
+> > > > > > > +
+> > > > > > > +static const int mt2712_mux_values[MT2712_NUM_SENSORS] = {
+> > > > > > > 0,
+> > > > > > > 1,
+> > > > > > > 2,
+> > > > > > > 3 };
+> > > > > > > +
+> > > > > > >  /**
+> > > > > > >   * The MT8173 thermal controller has four banks. Each bank
+> > > > > > > can
+> > > > > > > read
+> > > > > > > up to
+> > > > > > >   * four temperature sensors simultaneously. The MT8173 has
+> > > > > > > a
+> > > > > > > total
+> > > > > > > of 5
+> > > > > > > @@ -278,6 +310,31 @@ struct mtk_thermal {
+> > > > > > >  };
+> > > > > > >  
+> > > > > > >  /**
+> > > > > > > + * The MT2712 thermal controller has one bank, which can
+> > > > > > > read
+> > > > > > > up
+> > > > > > > to
+> > > > > > > + * four temperature sensors simultaneously. The MT2712 has
+> > > > > > > a
+> > > > > > > total
+> > > > > > > of 4
+> > > > > > > + * temperature sensors.
+> > > > > > > + *
+> > > > > > > + * The thermal core only gets the maximum temperature of
+> > > > > > > this
+> > > > > > > one
+> > > > > > > bank,
+> > > > > > > + * so the bank concept wouldn't be necessary here.
+> > > > > > > However,
+> > > > > > > the
+> > > > > > > SVS
+> > > > > > > (Smart
+> > > > > > > + * Voltage Scaling) unit makes its decisions based on the
+> > > > > > > same
+> > > > > > > bank
+> > > > > > > + * data.
+> > > > > > > + */
+> > > > > > > +static const struct mtk_thermal_data mt2712_thermal_data =
+> > > > > > > {
+> > > > > > > +	.auxadc_channel = MT2712_TEMP_AUXADC_CHANNEL,
+> > > > > > > +	.num_banks = 1,
+> > > > > > > +	.num_sensors = MT2712_NUM_SENSORS,
+> > > > > > > +	.bank_data = {
+> > > > > > > +		{
+> > > > > > > +			.num_sensors = 4,
+> > > > > > > +			.sensors = mt2712_bank_data,
+> > > > > > > +		},
+> > > > > > > +	},
+> > > > > > > +	.msr = mt2712_msr,
+> > > > > > > +	.adcpnp = mt2712_adcpnp,
+> > > > > > > +	.sensor_mux_values = mt2712_mux_values,
+> > > > > > > +};
+> > > > > > > +
+> > > > > > > +/**
+> > > > > > >   * raw_to_mcelsius - convert a raw ADC value to mcelsius
+> > > > > > >   * @mt:		The thermal controller
+> > > > > > >   * @raw:	raw ADC value
+> > > > > > > @@ -571,6 +628,10 @@ static int
+> > > > > > > mtk_thermal_get_calibration_data(struct device *dev,
+> > > > > > >  	{
+> > > > > > >  		.compatible = "mediatek,mt2701-thermal",
+> > > > > > >  		.data = (void *)&mt2701_thermal_data,
+> > > > > > > +	},
+> > > > > > > +	{
+> > > > > > > +		.compatible = "mediatek,mt2712-thermal",
+> > > > > > > +		.data = (void *)&mt2712_thermal_data,
+> > > > > > >  	}, {
+> > > > > > >  	},
+> > > > > > >  };
+> > > > > > > @@ -705,6 +766,7 @@ static int mtk_thermal_remove(struct
+> > > > > > > platform_device *pdev)
+> > > > > > >  
+> > > > > > >  module_platform_driver(mtk_thermal_driver);
+> > > > > > >  
+> > > > > > > +MODULE_AUTHOR("Louis Yu <louis.yu@mediatek.com>");
+> > > > > > >  MODULE_AUTHOR("Dawei Chien <dawei.chien@mediatek.com>");
+> > > > > > >  MODULE_AUTHOR("Sascha Hauer <s.hauer@pengutronix.de>");
+> > > > > > >  MODULE_AUTHOR("Hanyi Wu <hanyi.wu@mediatek.com>");
+> > 
