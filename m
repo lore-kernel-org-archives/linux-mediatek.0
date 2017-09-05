@@ -1,243 +1,75 @@
-From: Gilad Ben-Yossef <gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org>
-Subject: [PATCH v8 13/20] dm: move dm-verity to generic async completion
-Date: Tue,  5 Sep 2017 15:38:52 +0300
-Message-ID: <1504615144-29770-14-git-send-email-gilad__3977.08284804157$1504619474$gmane$org@benyossef.com>
-References: <1504615144-29770-1-git-send-email-gilad@benyossef.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v3 2/5] dt-bindings: input: Add document bindings for mtk-pmic-keys
+Date: Tue, 5 Sep 2017 11:05:27 -0500
+Message-ID: <CAL_JsqLe3o+iw0Wh=g5Ks93qM1BR1+S04Nv1R3FV17Z3dph1jg@mail.gmail.com>
+References: <1503642753-12385-1-git-send-email-chen.zhong@mediatek.com>
+ <1503642753-12385-3-git-send-email-chen.zhong@mediatek.com>
+ <20170831195239.b2litxbu7smhkkjl@rob-hp-laptop> <1504318583.15359.12.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1504615144-29770-1-git-send-email-gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Herbert Xu <herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Jonathan Corbet <corbet-T1hC0tSOHrs@public.gmane.org>, David Howells <dhowells-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Tom Lendacky <thomas.lendacky-5C7GfCeVMHo@public.gmane.org>, Gary Hook <gary.hook-5C7GfCeVMHo@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Arnaud Ebalard <arno-LkuqDEemtHBg9hUCZPvPmw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alasdair Kergon <agk-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Mike Snitzer <snitzer-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, dm-devel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, Shaohua Li <shli-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Steve French <sfrench-eUNUBHrolfbYtjvyW6yDsg@public.gmane.org>, "Theodore Y. Ts'o" <tytso-3s7WtUTddSA@public.gmane.org>, Jaegeuk Kim <jaegeuk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Steffen Klassert <steffen.klassert-opNxpl+3fjRBDgjK7y7TUQ@public.gmane.org>, Alexey Kuznetsov <kuznet-v/Mj1YrvjDBInbfyfbPRSQ@public.gmane.org>, Hideaki YOSHIFUJI <yoshfuji-VfPWfsRibaP+Ru+s062T9g@public.gmane.org>, Mimi Zohar <zohar-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org>, Dmitry Kasatkin <dmitry.kasatkin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, James Morris <james.l.morris-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "Serge E. Hallyn" <serge-A9i7LUbDfNHQT0dZR+AlfA@public.gmane.org>
-Cc: Mikulas Patocka <mpatocka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Ofir Drang <ofir.drang-5wv7dgnIgG8@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1504318583.15359.12.camel@mhfsdcap03>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chen Zhong <chen.zhong@mediatek.com>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, Eddie Huang <eddie.huang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Andi Shyti <andi.shyti@samsung.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Linus Walleij <linus.walleij@linaro.org>, Jaechul Lee <jcsing.lee@samsung.com>, "linux-input@vger.kernel.org" <linux-input@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-dm-verity is starting async. crypto ops and waiting for them to complete.
-Move it over to generic code doing the same.
+On Fri, Sep 1, 2017 at 9:16 PM, Chen Zhong <chen.zhong@mediatek.com> wrote:
+> On Thu, 2017-08-31 at 14:52 -0500, Rob Herring wrote:
+>> On Fri, Aug 25, 2017 at 02:32:30PM +0800, Chen Zhong wrote:
+>> > This patch adds the device tree binding documentation for the MediaTek
+>> > pmic keys found on PMIC MT6397/MT6323.
+>> >
+>> > Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
+>> > ---
+>> >  .../devicetree/bindings/input/mtk-pmic-keys.txt    |   38 ++++++++++++++++++++
+>> >  1 file changed, 38 insertions(+)
+>> >  create mode 100644 Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+>> >
+>> > diff --git a/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+>> > new file mode 100644
+>> > index 0000000..100ec44
+>> > --- /dev/null
+>> > +++ b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+>> > @@ -0,0 +1,38 @@
+>> > +MediaTek MT6397/MT6323 PMIC Keys Device Driver
+>> > +
+>> > +There are two key functions provided by MT6397/MT6323 PMIC, pwrkey
+>> > +and homekey. The key functions are defined as the subnode of the function
+>> > +node provided by MT6397/MT6323 PMIC that is being defined as one kind
+>> > +of Muti-Function Device (MFD)
+>> > +
+>> > +For MT6397/MT6323 MFD bindings see:
+>> > +Documentation/devicetree/bindings/mfd/mt6397.txt
+>> > +
+>> > +Required properties:
+>> > +- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
+>> > +- linux,keycodes: Specifies the numeric keycode values to
+>> > +   be used for reporting keys presses. The array can
+>> > +   contain up to 2 entries.
+>> > +
+>> > +Optional Properties:
+>> > +- wakeup-source: each key can be used as a wakeup source.
+>>
+>> wakeup-source is defined as a boolean.
+>
+> Hi Rob,
+>
+> Could I modify it as this?
+>
+> mediatek,wakeup-keys = <1>, <0>;
+> wakeup-source;
 
-This also avoids a future potential data coruption bug created
-by the use of wait_for_completion_interruptible() without dealing
-correctly with an interrupt aborting the wait prior to the
-async op finishing, should this code ever move to a context
-where signals are not masked.
+What do the values and index signify? The power key is index 0 and the
+value 1 means enable wakeup? Or each value is the raw key (i.e.
+indexes in linux,keycode) that wakeup is enabled for?
 
-Signed-off-by: Gilad Ben-Yossef <gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org>
-CC: Mikulas Patocka <mpatocka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
----
- drivers/md/dm-verity-target.c | 81 +++++++++++--------------------------------
- drivers/md/dm-verity.h        |  5 ---
- 2 files changed, 20 insertions(+), 66 deletions(-)
+I don't think this should be in DT really. It's really up to the user
+(i.e. userspace) to decide what keys cause wakeup (or maybe that's
+only suspend). If you default to the power key causes wakeup, do you
+really need to support different options?
 
-diff --git a/drivers/md/dm-verity-target.c b/drivers/md/dm-verity-target.c
-index bda3cac..811ad28 100644
---- a/drivers/md/dm-verity-target.c
-+++ b/drivers/md/dm-verity-target.c
-@@ -92,74 +92,33 @@ static sector_t verity_position_at_level(struct dm_verity *v, sector_t block,
- 	return block >> (level * v->hash_per_block_bits);
- }
- 
--/*
-- * Callback function for asynchrnous crypto API completion notification
-- */
--static void verity_op_done(struct crypto_async_request *base, int err)
--{
--	struct verity_result *res = (struct verity_result *)base->data;
--
--	if (err == -EINPROGRESS)
--		return;
--
--	res->err = err;
--	complete(&res->completion);
--}
--
--/*
-- * Wait for async crypto API callback
-- */
--static inline int verity_complete_op(struct verity_result *res, int ret)
--{
--	switch (ret) {
--	case 0:
--		break;
--
--	case -EINPROGRESS:
--	case -EBUSY:
--		ret = wait_for_completion_interruptible(&res->completion);
--		if (!ret)
--			ret = res->err;
--		reinit_completion(&res->completion);
--		break;
--
--	default:
--		DMERR("verity_wait_hash: crypto op submission failed: %d", ret);
--	}
--
--	if (unlikely(ret < 0))
--		DMERR("verity_wait_hash: crypto op failed: %d", ret);
--
--	return ret;
--}
--
- static int verity_hash_update(struct dm_verity *v, struct ahash_request *req,
- 				const u8 *data, size_t len,
--				struct verity_result *res)
-+				struct crypto_wait *wait)
- {
- 	struct scatterlist sg;
- 
- 	sg_init_one(&sg, data, len);
- 	ahash_request_set_crypt(req, &sg, NULL, len);
- 
--	return verity_complete_op(res, crypto_ahash_update(req));
-+	return crypto_wait_req(crypto_ahash_update(req), wait);
- }
- 
- /*
-  * Wrapper for crypto_ahash_init, which handles verity salting.
-  */
- static int verity_hash_init(struct dm_verity *v, struct ahash_request *req,
--				struct verity_result *res)
-+				struct crypto_wait *wait)
- {
- 	int r;
- 
- 	ahash_request_set_tfm(req, v->tfm);
- 	ahash_request_set_callback(req, CRYPTO_TFM_REQ_MAY_SLEEP |
- 					CRYPTO_TFM_REQ_MAY_BACKLOG,
--					verity_op_done, (void *)res);
--	init_completion(&res->completion);
-+					crypto_req_done, (void *)wait);
-+	crypto_init_wait(wait);
- 
--	r = verity_complete_op(res, crypto_ahash_init(req));
-+	r = crypto_wait_req(crypto_ahash_init(req), wait);
- 
- 	if (unlikely(r < 0)) {
- 		DMERR("crypto_ahash_init failed: %d", r);
-@@ -167,18 +126,18 @@ static int verity_hash_init(struct dm_verity *v, struct ahash_request *req,
- 	}
- 
- 	if (likely(v->salt_size && (v->version >= 1)))
--		r = verity_hash_update(v, req, v->salt, v->salt_size, res);
-+		r = verity_hash_update(v, req, v->salt, v->salt_size, wait);
- 
- 	return r;
- }
- 
- static int verity_hash_final(struct dm_verity *v, struct ahash_request *req,
--			     u8 *digest, struct verity_result *res)
-+			     u8 *digest, struct crypto_wait *wait)
- {
- 	int r;
- 
- 	if (unlikely(v->salt_size && (!v->version))) {
--		r = verity_hash_update(v, req, v->salt, v->salt_size, res);
-+		r = verity_hash_update(v, req, v->salt, v->salt_size, wait);
- 
- 		if (r < 0) {
- 			DMERR("verity_hash_final failed updating salt: %d", r);
-@@ -187,7 +146,7 @@ static int verity_hash_final(struct dm_verity *v, struct ahash_request *req,
- 	}
- 
- 	ahash_request_set_crypt(req, NULL, digest, 0);
--	r = verity_complete_op(res, crypto_ahash_final(req));
-+	r = crypto_wait_req(crypto_ahash_final(req), wait);
- out:
- 	return r;
- }
-@@ -196,17 +155,17 @@ int verity_hash(struct dm_verity *v, struct ahash_request *req,
- 		const u8 *data, size_t len, u8 *digest)
- {
- 	int r;
--	struct verity_result res;
-+	struct crypto_wait wait;
- 
--	r = verity_hash_init(v, req, &res);
-+	r = verity_hash_init(v, req, &wait);
- 	if (unlikely(r < 0))
- 		goto out;
- 
--	r = verity_hash_update(v, req, data, len, &res);
-+	r = verity_hash_update(v, req, data, len, &wait);
- 	if (unlikely(r < 0))
- 		goto out;
- 
--	r = verity_hash_final(v, req, digest, &res);
-+	r = verity_hash_final(v, req, digest, &wait);
- 
- out:
- 	return r;
-@@ -389,7 +348,7 @@ int verity_hash_for_block(struct dm_verity *v, struct dm_verity_io *io,
-  * Calculates the digest for the given bio
-  */
- int verity_for_io_block(struct dm_verity *v, struct dm_verity_io *io,
--			struct bvec_iter *iter, struct verity_result *res)
-+			struct bvec_iter *iter, struct crypto_wait *wait)
- {
- 	unsigned int todo = 1 << v->data_dev_block_bits;
- 	struct bio *bio = dm_bio_from_per_bio_data(io, v->ti->per_io_data_size);
-@@ -414,7 +373,7 @@ int verity_for_io_block(struct dm_verity *v, struct dm_verity_io *io,
- 		 */
- 		sg_set_page(&sg, bv.bv_page, len, bv.bv_offset);
- 		ahash_request_set_crypt(req, &sg, NULL, len);
--		r = verity_complete_op(res, crypto_ahash_update(req));
-+		r = crypto_wait_req(crypto_ahash_update(req), wait);
- 
- 		if (unlikely(r < 0)) {
- 			DMERR("verity_for_io_block crypto op failed: %d", r);
-@@ -482,7 +441,7 @@ static int verity_verify_io(struct dm_verity_io *io)
- 	struct dm_verity *v = io->v;
- 	struct bvec_iter start;
- 	unsigned b;
--	struct verity_result res;
-+	struct crypto_wait wait;
- 
- 	for (b = 0; b < io->n_blocks; b++) {
- 		int r;
-@@ -507,17 +466,17 @@ static int verity_verify_io(struct dm_verity_io *io)
- 			continue;
- 		}
- 
--		r = verity_hash_init(v, req, &res);
-+		r = verity_hash_init(v, req, &wait);
- 		if (unlikely(r < 0))
- 			return r;
- 
- 		start = io->iter;
--		r = verity_for_io_block(v, io, &io->iter, &res);
-+		r = verity_for_io_block(v, io, &io->iter, &wait);
- 		if (unlikely(r < 0))
- 			return r;
- 
- 		r = verity_hash_final(v, req, verity_io_real_digest(v, io),
--					&res);
-+					&wait);
- 		if (unlikely(r < 0))
- 			return r;
- 
-diff --git a/drivers/md/dm-verity.h b/drivers/md/dm-verity.h
-index a59e0ad..b675bc0 100644
---- a/drivers/md/dm-verity.h
-+++ b/drivers/md/dm-verity.h
-@@ -90,11 +90,6 @@ struct dm_verity_io {
- 	 */
- };
- 
--struct verity_result {
--	struct completion completion;
--	int err;
--};
--
- static inline struct ahash_request *verity_io_hash_req(struct dm_verity *v,
- 						     struct dm_verity_io *io)
- {
--- 
-2.1.4
+If we do put this in DT, then it should be a common binding to specify
+keys that cause wake-up.
+
+Rob
