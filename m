@@ -1,75 +1,41 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 2/5] dt-bindings: input: Add document bindings for mtk-pmic-keys
-Date: Tue, 5 Sep 2017 11:05:27 -0500
-Message-ID: <CAL_JsqLe3o+iw0Wh=g5Ks93qM1BR1+S04Nv1R3FV17Z3dph1jg@mail.gmail.com>
-References: <1503642753-12385-1-git-send-email-chen.zhong@mediatek.com>
- <1503642753-12385-3-git-send-email-chen.zhong@mediatek.com>
- <20170831195239.b2litxbu7smhkkjl@rob-hp-laptop> <1504318583.15359.12.camel@mhfsdcap03>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 0/8] MT2712 IOMMU SUPPORT
+Date: Wed, 6 Sep 2017 13:40:44 +0800
+Message-ID: <1504676444.20565.3.camel@mhfsdcap03>
+References: <1503313221-26453-1-git-send-email-yong.wu@mediatek.com>
+         <20170822143836.ac3faa7wcwfjtvjc@8bytes.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1504318583.15359.12.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chen Zhong <chen.zhong@mediatek.com>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, Eddie Huang <eddie.huang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Andi Shyti <andi.shyti@samsung.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Linus Walleij <linus.walleij@linaro.org>, Jaechul Lee <jcsing.lee@samsung.com>, "linux-input@vger.kernel.org" <linux-input@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170822143836.ac3faa7wcwfjtvjc-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, "arnd-r2nGTMty4D4@public.gmane.org" <arnd-r2nGTMty4D4@public.gmane.org>, Honghui Zhang =?UTF-8?Q?=28=E5=BC=A0=E6=B4=AA=E8=BE=89=29?= <Honghui.Zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Sep 1, 2017 at 9:16 PM, Chen Zhong <chen.zhong@mediatek.com> wrote:
-> On Thu, 2017-08-31 at 14:52 -0500, Rob Herring wrote:
->> On Fri, Aug 25, 2017 at 02:32:30PM +0800, Chen Zhong wrote:
->> > This patch adds the device tree binding documentation for the MediaTek
->> > pmic keys found on PMIC MT6397/MT6323.
->> >
->> > Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
->> > ---
->> >  .../devicetree/bindings/input/mtk-pmic-keys.txt    |   38 ++++++++++++++++++++
->> >  1 file changed, 38 insertions(+)
->> >  create mode 100644 Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
->> >
->> > diff --git a/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
->> > new file mode 100644
->> > index 0000000..100ec44
->> > --- /dev/null
->> > +++ b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
->> > @@ -0,0 +1,38 @@
->> > +MediaTek MT6397/MT6323 PMIC Keys Device Driver
->> > +
->> > +There are two key functions provided by MT6397/MT6323 PMIC, pwrkey
->> > +and homekey. The key functions are defined as the subnode of the function
->> > +node provided by MT6397/MT6323 PMIC that is being defined as one kind
->> > +of Muti-Function Device (MFD)
->> > +
->> > +For MT6397/MT6323 MFD bindings see:
->> > +Documentation/devicetree/bindings/mfd/mt6397.txt
->> > +
->> > +Required properties:
->> > +- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
->> > +- linux,keycodes: Specifies the numeric keycode values to
->> > +   be used for reporting keys presses. The array can
->> > +   contain up to 2 entries.
->> > +
->> > +Optional Properties:
->> > +- wakeup-source: each key can be used as a wakeup source.
->>
->> wakeup-source is defined as a boolean.
->
-> Hi Rob,
->
-> Could I modify it as this?
->
-> mediatek,wakeup-keys = <1>, <0>;
-> wakeup-source;
+On Tue, 2017-08-22 at 22:38 +0800, Joerg Roedel wrote:
+> On Mon, Aug 21, 2017 at 07:00:13PM +0800, Yong Wu wrote:
+> > Yong Wu (8):
+> >   dt-bindings: mediatek: Add binding for mt2712 IOMMU and SMI
+> >   iommu/mediatek: Move MTK_M4U_TO_LARB/PORT into mtk_iommu.c
+> >   iommu/mediatek: Add mt2712 IOMMU support
+> >   iommu/mediatek: Merge 2 M4U HWs into one iommu domain
+> >   iommu/mediatek: Move pgtable allocation into domain_alloc
+> >   iommu/mediatek: Disable iommu clock when system suspend
+> >   iommu/mediatek: Enlarge the validate PA range for 4GB mode
+> >   memory: mtk-smi: Degrade SMI init to module_init
+> 
+> Applied patches 2-7. Patch 1 is something for Matthias.
 
-What do the values and index signify? The power key is index 0 and the
-value 1 means enable wakeup? Or each value is the raw key (i.e.
-indexes in linux,keycode) that wakeup is enabled for?
+Hi Matthias,
 
-I don't think this should be in DT really. It's really up to the user
-(i.e. userspace) to decide what keys cause wakeup (or maybe that's
-only suspend). If you default to the power key causes wakeup, do you
-really need to support different options?
+   Could you help review the patch[1/8]? If it's ok for you too,Could
+you help apply that one via your tree.
+   Thanks.
 
-If we do put this in DT, then it should be a common binding to specify
-keys that cause wake-up.
 
-Rob
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
