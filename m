@@ -1,52 +1,35 @@
-From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-Subject: Re: [PATCH] MAINTAINERS: add entry for MediaTek PMIC LED driver
-Date: Mon, 11 Sep 2017 22:05:35 +0200
-Message-ID: <eca00e52-dcc4-2db5-f7cf-8b45be2ed91b@gmail.com>
-References: <6ca394e75ef29089eef773b5856366be10745bb4.1504960075.git.sean.wang@mediatek.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 2/3] dt-bindings: mt8173-xhci: add generic compatible
+ and rename file
+Date: Mon, 11 Sep 2017 15:57:08 -0500
+Message-ID: <20170911205708.jh2y74asqvffgy4g@rob-hp-laptop>
+References: <33fa448238c0d95f0cfd6c2be3bd5c4e657a0cd4.1504092763.git.chunfeng.yun@mediatek.com>
+ <0ef0bfd4f2544e57c7bdaea518c3fc75ae40b74f.1504092763.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-leds-owner@vger.kernel.org>
-In-Reply-To: <6ca394e75ef29089eef773b5856366be10745bb4.1504960075.git.sean.wang@mediatek.com>
-Sender: linux-leds-owner@vger.kernel.org
-To: sean.wang@mediatek.com, rpurdie@rpsys.net, pavel@ucw.cz
-Cc: linux-leds@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <0ef0bfd4f2544e57c7bdaea518c3fc75ae40b74f.1504092763.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sean,
-
-On 09/09/2017 02:37 PM, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On Wed, Aug 30, 2017 at 07:34:10PM +0800, Chunfeng Yun wrote:
+> The mt8173-xhci.txt actually holds the bindings for all mediatek
+> SoCs with xHCI controller, so add a generic compatible and change
+> the name to mediatek,mtk-xhci.txt to reflect that.
 > 
-> Add me as maintainers to support existing SoCs and push forward
-> following MediaTek PMICs with LEDs to reuse the driver.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
->  MAINTAINERS | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 2021738..65185bb 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -8648,6 +8648,12 @@ M:	Sean Wang <sean.wang@mediatek.com>
->  S:	Maintained
->  F:	drivers/media/rc/mtk-cir.c
->  
-> +MEDIATEK PMIC LED DRIVER
-> +M:	Sean Wang <sean.wang@mediatek.com>
-> +S:	Maintained
-> +F:	drivers/leds/leds-mt6323.c
-> +F:	Documentation/devicetree/bindings/leds/leds-mt6323.txt
-> +
->  MEDIATEK RANDOM NUMBER GENERATOR SUPPORT
->  M:	Sean Wang <sean.wang@mediatek.com>
->  S:	Maintained
-> 
+>  .../usb/{mt8173-xhci.txt => mediatek,mtk-xhci.txt} |   14 +++++++++++---
+>  .../devicetree/bindings/usb/mt8173-mtu3.txt        |    2 +-
+>  2 files changed, 12 insertions(+), 4 deletions(-)
+>  rename Documentation/devicetree/bindings/usb/{mt8173-xhci.txt => mediatek,mtk-xhci.txt} (85%)
 
-Applied to the for-4.15 branch of linux-leds.git, thanks.
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
--- 
-Best regards,
-Jacek Anaszewski
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
