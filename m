@@ -1,35 +1,81 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 2/3] dt-bindings: mt8173-xhci: add generic compatible
- and rename file
-Date: Mon, 11 Sep 2017 15:57:08 -0500
-Message-ID: <20170911205708.jh2y74asqvffgy4g@rob-hp-laptop>
-References: <33fa448238c0d95f0cfd6c2be3bd5c4e657a0cd4.1504092763.git.chunfeng.yun@mediatek.com>
- <0ef0bfd4f2544e57c7bdaea518c3fc75ae40b74f.1504092763.git.chunfeng.yun@mediatek.com>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: [PATCH v3 0/9] Mediatek MT2712 clock and scpsys support
+Date: Tue, 12 Sep 2017 15:21:40 +0800
+Message-ID: <1505200909-23552-1-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <0ef0bfd4f2544e57c7bdaea518c3fc75ae40b74f.1504092763.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Aug 30, 2017 at 07:34:10PM +0800, Chunfeng Yun wrote:
-> The mt8173-xhci.txt actually holds the bindings for all mediatek
-> SoCs with xHCI controller, so add a generic compatible and change
-> the name to mediatek,mtk-xhci.txt to reflect that.
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  .../usb/{mt8173-xhci.txt => mediatek,mtk-xhci.txt} |   14 +++++++++++---
->  .../devicetree/bindings/usb/mt8173-mtu3.txt        |    2 +-
->  2 files changed, 12 insertions(+), 4 deletions(-)
->  rename Documentation/devicetree/bindings/usb/{mt8173-xhci.txt => mediatek,mtk-xhci.txt} (85%)
+This series is based on v4.13-next-soc and composed of
+clock control (PATCH 1-4) and scpsys control (PATCH 5-9)
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+changes since v2:
+- ensure the clocks used by clocksource driver are registered
+  before clocksource init() by using CLK_OF_DECLARE()
+- correct the frequency of clk32k/clkrtc_ext/clkrtc_int
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+changes since v1:
+- Rebase to v4.13-next-soc.
+- Refine scpsys and infracfg for bus protection.
+
+Weiyi Lu (9):
+  dt-bindings: ARM: Mediatek: Document bindings for MT2712
+  clk: mediatek: Add dt-bindings for MT2712 clocks
+  clk: mediatek: Add MT2712 clock support
+  arm: dts: mt2712: Add clock controller device nodes
+  dt-bindings: soc: add MT2712 power dt-bindings
+  soc: mediatek: extend bus protection API
+  soc: mediatek: add dependent clock jpgdec/audio for scpsys
+  soc: mediatek: add MT2712 scpsys support
+  arm: dts: Add power controller device node of MT2712
+
+ .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    1 +
+ .../bindings/arm/mediatek/mediatek,bdpsys.txt      |    1 +
+ .../bindings/arm/mediatek/mediatek,imgsys.txt      |    1 +
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    |    1 +
+ .../bindings/arm/mediatek/mediatek,jpgdecsys.txt   |   22 +
+ .../bindings/arm/mediatek/mediatek,mcucfg.txt      |   22 +
+ .../bindings/arm/mediatek/mediatek,mfgcfg.txt      |   22 +
+ .../bindings/arm/mediatek/mediatek,mmsys.txt       |    1 +
+ .../bindings/arm/mediatek/mediatek,pericfg.txt     |    1 +
+ .../bindings/arm/mediatek/mediatek,topckgen.txt    |    1 +
+ .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    1 +
+ .../bindings/arm/mediatek/mediatek,vencsys.txt     |    1 +
+ .../devicetree/bindings/soc/mediatek/scpsys.txt    |    3 +
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi          |  131 ++
+ drivers/clk/mediatek/Kconfig                       |   50 +
+ drivers/clk/mediatek/Makefile                      |    8 +
+ drivers/clk/mediatek/clk-mt2712-bdp.c              |  102 ++
+ drivers/clk/mediatek/clk-mt2712-img.c              |   80 ++
+ drivers/clk/mediatek/clk-mt2712-jpgdec.c           |   76 ++
+ drivers/clk/mediatek/clk-mt2712-mfg.c              |   75 +
+ drivers/clk/mediatek/clk-mt2712-mm.c               |  170 +++
+ drivers/clk/mediatek/clk-mt2712-vdec.c             |   94 ++
+ drivers/clk/mediatek/clk-mt2712-venc.c             |   77 ++
+ drivers/clk/mediatek/clk-mt2712.c                  | 1435 ++++++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.h                     |    2 +
+ drivers/clk/mediatek/clk-pll.c                     |   13 +-
+ drivers/soc/mediatek/mtk-infracfg.c                |   32 +-
+ drivers/soc/mediatek/mtk-scpsys.c                  |  199 ++-
+ include/dt-bindings/clock/mt2712-clk.h             |  427 ++++++
+ include/dt-bindings/power/mt2712-power.h           |   26 +
+ include/linux/soc/mediatek/infracfg.h              |   12 +-
+ 31 files changed, 3049 insertions(+), 38 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,jpgdecsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mcucfg.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-bdp.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-img.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-jpgdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-mfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-mm.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-vdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-venc.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2712.c
+ create mode 100644 include/dt-bindings/clock/mt2712-clk.h
+ create mode 100644 include/dt-bindings/power/mt2712-power.h
+
