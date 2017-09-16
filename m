@@ -1,53 +1,55 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: [PATCH] clk: mediatek: mark mtk_infrasys_init_early __init
-Date: Fri, 15 Sep 2017 21:28:30 +0200
-Message-ID: <20170915192848.649455-1-arnd@arndb.de>
+From: Jun Gao <jun.gao@mediatek.com>
+Subject: Re: [I2C] About warning 'DMA-API: device driver maps memory from
+ stack'
+Date: Sat, 16 Sep 2017 17:33:59 +0800
+Message-ID: <1505554439.31793.76.camel@mhfsdcap03>
+References: <1504354088.31793.48.camel@mhfsdcap03>
+         <20170902215829.3jpwmbyy27cpu5rm@ninjato>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <20170902215829.3jpwmbyy27cpu5rm@ninjato>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>
+Cc: srv_heupstream@mediatek.com, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On gcc-4.6, we get a harmless link-time warning:
+On Sat, 2017-09-02 at 23:58 +0200, Wolfram Sang wrote:
+> Hi,
+> 
+> nice to see someone else interested in the I2C & DMA topic.
+> 
+> Please check this series which I sent out recently:
+> 
+> "[RFC PATCH v4 0/6] i2c: document DMA handling and add helpers for it"
+> 
+> In that series, I proposed...
+> 
+> > 3. kmalloc data buffer instead of local variables buf in function
+> > i2c_smbus_xfer_emulated(...)
+> 
+> ... this solution. Although I have to check Mauro's general response to
+> the series first. I'd be interested in what you think of the series,
+> too.
+Sorry for late reply.
 
-WARNING: vmlinux.o(.text.unlikely+0x196a0): Section mismatch in reference from the function mtk_infrasys_init_early() to the function .init.text:mtk_clk_register_cpumuxes()
-The function mtk_infrasys_init_early() references
-the function __init mtk_clk_register_cpumuxes().
-This is often because mtk_infrasys_init_early lacks a __init
-annotation or the annotation of mtk_clk_register_cpumuxes is wrong.
+As you said in "[RFC,v4,3/6]i2c: add docs to clarify DMA handling". Most
+i2c_msgs are register accesses and thus, small messages. And
+"[RFC,v4,4/6] i2c: sh_mobile: use helper to decide if DMA is useful".
 
-Newer compilers inline this function so they don't warn, but
-marking it __init is the right solution for all versions.
+Maybe the solution as below will be better. Other drivers which will use
+i2c would not have to make buffer DMA safe especially register
+accesses(they like to use local variables when data_len = 1 or 2).
 
-Fixes: e9862118272a ("clk: mediatek: Add MT2701 clock support")
-Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
----
- drivers/clk/mediatek/clk-mt2701.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+solution:
+2. use FIFO mode when length<=fifo_depth(mtk i2c fifo_depth=8), use
+the flag "I2C_M_DMA_SAFE" to check buffer for DMA mode when
+length>fifo_depth in i2c-mt65xx.c .
 
-diff --git a/drivers/clk/mediatek/clk-mt2701.c b/drivers/clk/mediatek/clk-mt2701.c
-index 9598889f972b..8e7f16fd87c9 100644
---- a/drivers/clk/mediatek/clk-mt2701.c
-+++ b/drivers/clk/mediatek/clk-mt2701.c
-@@ -750,7 +750,7 @@ static const struct mtk_fixed_factor infra_fixed_divs[] = {
- 
- static struct clk_onecell_data *infra_clk_data;
- 
--static void mtk_infrasys_init_early(struct device_node *node)
-+static void __init mtk_infrasys_init_early(struct device_node *node)
- {
- 	int r, i;
- 
--- 
-2.9.0
+Thanks.
+> 
+> Kind regards,
+> 
+>    Wolfram
+> 
