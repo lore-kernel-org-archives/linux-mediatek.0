@@ -1,55 +1,55 @@
-From: Jun Gao <jun.gao@mediatek.com>
-Subject: Re: [I2C] About warning 'DMA-API: device driver maps memory from
- stack'
-Date: Sat, 16 Sep 2017 17:33:59 +0800
-Message-ID: <1505554439.31793.76.camel@mhfsdcap03>
-References: <1504354088.31793.48.camel@mhfsdcap03>
-         <20170902215829.3jpwmbyy27cpu5rm@ninjato>
+From: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v4 3/5] dt-bindings: mfd: Add bindings for the keys as subnode of PMIC
+Date: Sun, 17 Sep 2017 16:00:50 +0800
+Message-ID: <1505635252-27716-4-git-send-email-chen.zhong@mediatek.com>
+References: <1505635252-27716-1-git-send-email-chen.zhong@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <20170902215829.3jpwmbyy27cpu5rm@ninjato>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Wolfram Sang <wsa@the-dreams.de>
-Cc: srv_heupstream@mediatek.com, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1505635252-27716-1-git-send-email-chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Alessandro Zummo <a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org>, Andi Shyti <andi.shyti-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jaechul Lee <jcsing.lee-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rtc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 2017-09-02 at 23:58 +0200, Wolfram Sang wrote:
-> Hi,
-> 
-> nice to see someone else interested in the I2C & DMA topic.
-> 
-> Please check this series which I sent out recently:
-> 
-> "[RFC PATCH v4 0/6] i2c: document DMA handling and add helpers for it"
-> 
-> In that series, I proposed...
-> 
-> > 3. kmalloc data buffer instead of local variables buf in function
-> > i2c_smbus_xfer_emulated(...)
-> 
-> ... this solution. Although I have to check Mauro's general response to
-> the series first. I'd be interested in what you think of the series,
-> too.
-Sorry for late reply.
+This patch adds documentation for device tree bindings for keys support
+as the subnode of MT6397/MT6323 PMIC.
 
-As you said in "[RFC,v4,3/6]i2c: add docs to clarify DMA handling". Most
-i2c_msgs are register accesses and thus, small messages. And
-"[RFC,v4,4/6] i2c: sh_mobile: use helper to decide if DMA is useful".
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Acked-for-MFD-by: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Signed-off-by: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ Documentation/devicetree/bindings/mfd/mt6397.txt |    6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Maybe the solution as below will be better. Other drivers which will use
-i2c would not have to make buffer DMA safe especially register
-accesses(they like to use local variables when data_len = 1 or 2).
+diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
+index 522a3bb..d1df77f 100644
+--- a/Documentation/devicetree/bindings/mfd/mt6397.txt
++++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
+@@ -7,6 +7,7 @@ MT6397/MT6323 is a multifunction device with the following sub modules:
+ - GPIO
+ - Clock
+ - LED
++- Keys
+ 
+ It is interfaced to host controller using SPI interface by a proprietary hardware
+ called PMIC wrapper or pwrap. MT6397/MT6323 MFD is a child device of pwrap.
+@@ -40,6 +41,11 @@ Optional subnodes:
+ 		- compatible: "mediatek,mt6323-led"
+ 	see Documentation/devicetree/bindings/leds/leds-mt6323.txt
+ 
++- keys
++	Required properties:
++		- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
++	see Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
++
+ Example:
+ 	pwrap: pwrap@1000f000 {
+ 		compatible = "mediatek,mt8135-pwrap";
+-- 
+1.7.9.5
 
-solution:
-2. use FIFO mode when length<=fifo_depth(mtk i2c fifo_depth=8), use
-the flag "I2C_M_DMA_SAFE" to check buffer for DMA mode when
-length>fifo_depth in i2c-mt65xx.c .
-
-Thanks.
-> 
-> Kind regards,
-> 
->    Wolfram
-> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
