@@ -1,84 +1,67 @@
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v4 0/9] Mediatek MT2712 clock and scpsys support
-Date: Tue, 19 Sep 2017 12:00:21 +0800
-Message-ID: <1505793630-12590-1-git-send-email-weiyi.lu@mediatek.com>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v1 1/4] arm: dts: mediatek: update audio node for mt2701 and mt7623
+Date: Tue, 19 Sep 2017 14:27:21 +0800
+Message-ID: <9c4a8be621ac76594fad303d5d49ed32bd530605.1505801355.git.ryder.lee@mediatek.com>
+References: <cover.1505801355.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <cover.1505801355.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This series is based on v4.14-rc1 and composed of
-clock control (PATCH 1-4) and scpsys control (PATCH 5-9)
+This patch adds interrupt-names property in audio node so that
+binding can be agnostic of the IRQ order [1][2].
 
-changes since v3:
-- Rebase to v4.14-rc1.
+Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+CC: Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+CC: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+CC: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+[1]https://patchwork.kernel.org/patch/9901225/
+[2]https://lkml.org/lkml/2017/8/18/292
+---
+---
+ arch/arm/boot/dts/mt2701.dtsi | 4 +++-
+ arch/arm/boot/dts/mt7623.dtsi | 4 +++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
-changes since v2:
-- ensure the clocks used by clocksource driver are registered
-  before clocksource init() by using CLK_OF_DECLARE()
-- correct the frequency of clk32k/clkrtc_ext/clkrtc_int
+diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
+index afe12e5..fd88cbc 100644
+--- a/arch/arm/boot/dts/mt2701.dtsi
++++ b/arch/arm/boot/dts/mt2701.dtsi
+@@ -430,7 +430,9 @@
+ 		compatible = "mediatek,mt2701-audio";
+ 		reg = <0 0x11220000 0 0x2000>,
+ 		      <0 0x112a0000 0 0x20000>;
+-		interrupts = <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
++		interrupts =  <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
++			      <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-names	= "afe", "asys";
+ 		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+ 
+ 		clocks = <&infracfg CLK_INFRA_AUDIO>,
+diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+index ec8a074..381843e 100644
+--- a/arch/arm/boot/dts/mt7623.dtsi
++++ b/arch/arm/boot/dts/mt7623.dtsi
+@@ -544,7 +544,9 @@
+ 			     "mediatek,mt2701-audio";
+ 		reg = <0 0x11220000 0 0x2000>,
+ 		      <0 0x112a0000 0 0x20000>;
+-		interrupts = <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
++		interrupts =  <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
++			      <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-names	= "afe", "asys";
+ 		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+ 
+ 		clocks = <&infracfg CLK_INFRA_AUDIO>,
+-- 
+1.9.1
 
-changes since v1:
-- Rebase to v4.13-next-soc.
-- Refine scpsys and infracfg for bus protection.
-
-Weiyi Lu (9):
-  dt-bindings: ARM: Mediatek: Document bindings for MT2712
-  clk: mediatek: Add dt-bindings for MT2712 clocks
-  clk: mediatek: Add MT2712 clock support
-  arm: dts: mt2712: Add clock controller device nodes
-  dt-bindings: soc: add MT2712 power dt-bindings
-  soc: mediatek: extend bus protection API
-  soc: mediatek: add dependent clock jpgdec/audio for scpsys
-  soc: mediatek: add MT2712 scpsys support
-  arm: dts: Add power controller device node of MT2712
-
- .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    1 +
- .../bindings/arm/mediatek/mediatek,bdpsys.txt      |    1 +
- .../bindings/arm/mediatek/mediatek,imgsys.txt      |    1 +
- .../bindings/arm/mediatek/mediatek,infracfg.txt    |    1 +
- .../bindings/arm/mediatek/mediatek,jpgdecsys.txt   |   22 +
- .../bindings/arm/mediatek/mediatek,mcucfg.txt      |   22 +
- .../bindings/arm/mediatek/mediatek,mfgcfg.txt      |   22 +
- .../bindings/arm/mediatek/mediatek,mmsys.txt       |    1 +
- .../bindings/arm/mediatek/mediatek,pericfg.txt     |    1 +
- .../bindings/arm/mediatek/mediatek,topckgen.txt    |    1 +
- .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    1 +
- .../bindings/arm/mediatek/mediatek,vencsys.txt     |    1 +
- .../devicetree/bindings/soc/mediatek/scpsys.txt    |    3 +
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi          |  131 ++
- drivers/clk/mediatek/Kconfig                       |   50 +
- drivers/clk/mediatek/Makefile                      |    8 +
- drivers/clk/mediatek/clk-mt2712-bdp.c              |  102 ++
- drivers/clk/mediatek/clk-mt2712-img.c              |   80 ++
- drivers/clk/mediatek/clk-mt2712-jpgdec.c           |   76 ++
- drivers/clk/mediatek/clk-mt2712-mfg.c              |   75 +
- drivers/clk/mediatek/clk-mt2712-mm.c               |  170 +++
- drivers/clk/mediatek/clk-mt2712-vdec.c             |   94 ++
- drivers/clk/mediatek/clk-mt2712-venc.c             |   77 ++
- drivers/clk/mediatek/clk-mt2712.c                  | 1435 ++++++++++++++++++++
- drivers/clk/mediatek/clk-mtk.h                     |    2 +
- drivers/clk/mediatek/clk-pll.c                     |   13 +-
- drivers/soc/mediatek/mtk-infracfg.c                |   32 +-
- drivers/soc/mediatek/mtk-scpsys.c                  |  199 ++-
- include/dt-bindings/clock/mt2712-clk.h             |  427 ++++++
- include/dt-bindings/power/mt2712-power.h           |   26 +
- include/linux/soc/mediatek/infracfg.h              |   12 +-
- 31 files changed, 3049 insertions(+), 38 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,jpgdecsys.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mcucfg.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
- create mode 100644 drivers/clk/mediatek/clk-mt2712-bdp.c
- create mode 100644 drivers/clk/mediatek/clk-mt2712-img.c
- create mode 100644 drivers/clk/mediatek/clk-mt2712-jpgdec.c
- create mode 100644 drivers/clk/mediatek/clk-mt2712-mfg.c
- create mode 100644 drivers/clk/mediatek/clk-mt2712-mm.c
- create mode 100644 drivers/clk/mediatek/clk-mt2712-vdec.c
- create mode 100644 drivers/clk/mediatek/clk-mt2712-venc.c
- create mode 100644 drivers/clk/mediatek/clk-mt2712.c
- create mode 100644 include/dt-bindings/clock/mt2712-clk.h
- create mode 100644 include/dt-bindings/power/mt2712-power.h
-
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
