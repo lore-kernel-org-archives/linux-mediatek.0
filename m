@@ -1,7 +1,7 @@
 From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Subject: Re: [PATCH v1 3/4] arm: dts: mt7623: add display related nodes
-Date: Tue, 19 Sep 2017 23:26:53 +0800
-Message-ID: <1505834813.16414.5.camel@mtksdaap41>
+Date: Wed, 20 Sep 2017 09:11:37 +0800
+Message-ID: <1505869897.27600.6.camel@mtksdaap41>
 References: <cover.1505801355.git.ryder.lee@mediatek.com>
          <0eb19ae1a4717d316cdaec44f6c20bfa8aa24ddc.1505801355.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
@@ -16,7 +16,7 @@ List-Id: linux-mediatek@lists.infradead.org
 
 Hi, Ryder:
 
-Some comment inline.
+Mode comment inline.
 
 On Tue, 2017-09-19 at 14:27 +0800, Ryder Lee wrote:
 > This patch adds the device nodes for the display function block.
@@ -50,9 +50,6 @@ On Tue, 2017-09-19 at 14:27 +0800, Ryder Lee wrote:
 > +	aliases {
 > +		rdma0 = &rdma0;
 > +		rdma1 = &rdma1;
-
-For display, are these two aliases enough?
-
 > +	};
 > +
 >  	cpu_opp_table: opp_table {
@@ -154,11 +151,6 @@ For display, are these two aliases enough?
 > +	wdma@14009000 {
 > +		compatible = "mediatek,mt7623-disp-wdma",
 > +			     "mediatek,mt2701-disp-wdma";
-
-There is neither "mediatek,mt7623-disp-wdma" nor
-"mediatek,mt2701-disp-wdma" in driver, do you really need this device
-node?
-
 > +		reg = <0 0x14009000 0 0x1000>;
 > +		interrupts = <GIC_SPI 154 IRQ_TYPE_LEVEL_LOW>;
 > +		clocks = <&mmsys CLK_MM_DISP_WDMA>;
@@ -178,9 +170,6 @@ node?
 > +	};
 > +
 > +	color@1400b000 {
-
-color: color@1400b000 {
-
 > +		compatible = "mediatek,mt7623-disp-color",
 > +			     "mediatek,mt2701-disp-color";
 > +		reg = <0 0x1400b000 0 0x1000>;
@@ -266,6 +255,10 @@ color: color@1400b000 {
 > +		iommus = <&iommu MT2701_M4U_PORT_JPGDEC_WDMA>,
 > +			 <&iommu MT2701_M4U_PORT_JPGDEC_BSDMA>;
 > +	};
+
+jpegdec and some other device node is not related to display. I think
+you should move them to another patch.
+
 > +
 > +	vdecsys: syscon@16000000 {
 > +		compatible = "mediatek,mt7623-vdecsys",
@@ -322,6 +315,10 @@ color: color@1400b000 {
 > +		default-brightness-level = <9>;
 > +	};
 > +
+
+I think this patch only for mt7623 common dtsi modification. This part
+is just for bananapi-bpi-r2, so move non-common part to another patch.
+
 >  	chosen {
 >  		stdout-path = "serial2:115200n8";
 >  	};
