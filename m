@@ -1,82 +1,73 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH 2/5] nvmem: mtk-efuse: use stack for nvmem_config
- instead of malloc'ing it
-Date: Thu, 21 Sep 2017 00:32:39 +0800
-Message-ID: <1505925159.17049.12.camel@mtkswgap22>
-References: <1505134864-11975-1-git-send-email-yamada.masahiro@socionext.com>
-         <1505134864-11975-3-git-send-email-yamada.masahiro@socionext.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v4 2/5] dt-bindings: input: Add document bindings for
+ mtk-pmic-keys
+Date: Wed, 20 Sep 2017 15:53:01 -0500
+Message-ID: <20170920205301.v6gpmhll4pdpuyxv@rob-hp-laptop>
+References: <1505635252-27716-1-git-send-email-chen.zhong@mediatek.com>
+ <1505635252-27716-3-git-send-email-chen.zhong@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1505134864-11975-3-git-send-email-yamada.masahiro@socionext.com>
+Content-Disposition: inline
+In-Reply-To: <1505635252-27716-3-git-send-email-chen.zhong@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Masahiro Yamada <yamada.masahiro@socionext.com>
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Jassi Brar <jaswinder.singh@linaro.org>, Keiji Hayashibara <hayashibara.keiji@socionext.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Masami Hiramatsu <mhiramat@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: Chen Zhong <chen.zhong@mediatek.com>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Lee Jones <lee.jones@linaro.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Andi Shyti <andi.shyti@samsung.com>, Jaechul Lee <jcsing.lee@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Masahiro
-
-For maintainability, I felt it's better if we use the same way to
-register nvmem as that most drivers does under nvmem usually using
-static structure. Otherwise, they should also be changed to use the
-one-time data in stack to avoid extra bytes to keep them.
-
-	Sean
-
-
-On Mon, 2017-09-11 at 22:01 +0900, Masahiro Yamada wrote:
-> nvmem_register() copies all the members of nvmem_config to
-> nvmem_device.  So, nvmem_config is one-time use data during
-> probing.  There is no point to keep it until the driver detach.
-> Using stack should be no problem because nvmem_config is pretty
-> small.
+On Sun, Sep 17, 2017 at 04:00:49PM +0800, Chen Zhong wrote:
+> This patch adds the device tree binding documentation for the MediaTek
+> pmic keys found on PMIC MT6397/MT6323.
 > 
-> Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
+> Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
 > ---
+>  .../devicetree/bindings/input/mtk-pmic-keys.txt    |   41 ++++++++++++++++++++
+>  1 file changed, 41 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
 > 
->  drivers/nvmem/mtk-efuse.c | 24 ++++++++++--------------
->  1 file changed, 10 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
-> index 32fd572..fa7a0f6 100644
-> --- a/drivers/nvmem/mtk-efuse.c
-> +++ b/drivers/nvmem/mtk-efuse.c
-> @@ -49,7 +49,7 @@ static int mtk_efuse_probe(struct platform_device *pdev)
->  	struct device *dev = &pdev->dev;
->  	struct resource *res;
->  	struct nvmem_device *nvmem;
-> -	struct nvmem_config *econfig;
-> +	struct nvmem_config econfig = {};
->  	void __iomem *base;
->  
->  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> @@ -57,19 +57,15 @@ static int mtk_efuse_probe(struct platform_device *pdev)
->  	if (IS_ERR(base))
->  		return PTR_ERR(base);
->  
-> -	econfig = devm_kzalloc(dev, sizeof(*econfig), GFP_KERNEL);
-> -	if (!econfig)
-> -		return -ENOMEM;
-> -
-> -	econfig->stride = 4;
-> -	econfig->word_size = 4;
-> -	econfig->reg_read = mtk_reg_read;
-> -	econfig->reg_write = mtk_reg_write;
-> -	econfig->size = resource_size(res);
-> -	econfig->priv = base;
-> -	econfig->dev = dev;
-> -	econfig->owner = THIS_MODULE;
-> -	nvmem = nvmem_register(econfig);
-> +	econfig.stride = 4;
-> +	econfig.word_size = 4;
-> +	econfig.reg_read = mtk_reg_read;
-> +	econfig.reg_write = mtk_reg_write;
-> +	econfig.size = resource_size(res);
-> +	econfig.priv = base;
-> +	econfig.dev = dev;
-> +	econfig.owner = THIS_MODULE;
-> +	nvmem = nvmem_register(&econfig);
->  	if (IS_ERR(nvmem))
->  		return PTR_ERR(nvmem);
->  
+> diff --git a/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+> new file mode 100644
+> index 0000000..fd48ff7
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+> @@ -0,0 +1,41 @@
+> +MediaTek MT6397/MT6323 PMIC Keys Device Driver
+> +
+> +There are two key functions provided by MT6397/MT6323 PMIC, pwrkey
+> +and homekey. The key functions are defined as the subnode of the function
+> +node provided by MT6397/MT6323 PMIC that is being defined as one kind
+> +of Muti-Function Device (MFD)
+> +
+> +For MT6397/MT6323 MFD bindings see:
+> +Documentation/devicetree/bindings/mfd/mt6397.txt
+> +
+> +Required properties:
+> +- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
+> +- linux,keycodes: Specifies the numeric keycode values to
+> +	be used for reporting keys presses. The array can
+> +	contain up to 2 entries.
+> +
+> +Optional Properties:
+> +- mediatek,wakeup-keys: Specifies each key can be used as a wakeup source
+> +	or not. This can be customized depends on board design.
+
+I think this should be a common property if we're going to put into DT. 
+Something like "wakeup-scancodes" to be clear the values are the raw 
+scancodes. Alternatively, we could list Linux keycodes instead with 
+something like "linux,wakeup-keycodes".
+
+> +- wakeup-source: PMIC keys can be used as wakeup sources.
+
+Just "See ../power/wakeup-source.txt" for the description.
+
+> +- mediatek,long-press-mode: Long press key shutdown setting, 1 for
+> +	pwrkey only, 2 for pwrkey/homekey together, others for disabled.
+> +- debounce-interval: Long press key shutdown debouncing interval time
+> +	in seconds. 0/1/2/3 for 8/11/14/5 seconds. If not specified defaults to 0.
+
+This property units should be in milliseconds. However, this doesn't 
+sound like debounce filtering time if 5-14 seconds. That sounds like 
+forced power off time (i.e. for a hung device). This also should be 
+common. I imagine we already have some drivers with similar properties.
+
+Rob
