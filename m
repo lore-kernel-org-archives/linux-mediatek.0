@@ -1,51 +1,118 @@
-From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: Re: [PATCH 0/5] nvmem: some cleanups and sparse warning fixes
-Date: Wed, 20 Sep 2017 19:02:24 +0900
-Message-ID: <CAK7LNAQHoDN=SOLA6AxyeCOUObRwy6nJHizo6xoDEX1gybvqNg@mail.gmail.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH 3/5] nvmem: mtk-efuse: fix different address space
+ warnings of sparse
+Date: Thu, 21 Sep 2017 00:19:57 +0800
+Message-ID: <1505924397.17049.1.camel@mtkswgap22>
 References: <1505134864-11975-1-git-send-email-yamada.masahiro@socionext.com>
+         <1505134864-11975-4-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1505134864-11975-1-git-send-email-yamada.masahiro@socionext.com>
+In-Reply-To: <1505134864-11975-4-git-send-email-yamada.masahiro@socionext.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Keiji Hayashibara <hayashibara.keiji@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, Jassi Brar <jaswinder.singh@linaro.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, Heiko Stuebner <heiko@sntech.de>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Kevin Hilman <khilman@baylibre.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Joachim Eastwood <manabian@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Carlo Caione <carlo@caione.org>
+To: Masahiro Yamada <yamada.masahiro@socionext.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Jassi Brar <jaswinder.singh@linaro.org>, Keiji Hayashibara <hayashibara.keiji@socionext.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Masami Hiramatsu <mhiramat@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Srinivas,
+On Mon, 2017-09-11 at 22:01 +0900, Masahiro Yamada wrote:
+> Fix the following sparse warnings:
+> 
+> drivers/nvmem/mtk-efuse.c:24:30: warning: incorrect type in initializer (different address spaces)
+> drivers/nvmem/mtk-efuse.c:24:30:    expected void [noderef] <asn:2>*base
+> drivers/nvmem/mtk-efuse.c:24:30:    got void *context
+> drivers/nvmem/mtk-efuse.c:37:30: warning: incorrect type in initializer (different address spaces)
+> drivers/nvmem/mtk-efuse.c:37:30:    expected void [noderef] <asn:2>*base
+> drivers/nvmem/mtk-efuse.c:37:30:    got void *context
+> drivers/nvmem/mtk-efuse.c:69:23: warning: incorrect type in assignment (different address spaces)
+> drivers/nvmem/mtk-efuse.c:69:23:    expected void *priv
+> drivers/nvmem/mtk-efuse.c:69:23:    got void [noderef] <asn:2>*[assigned] base
+> 
+> The type of nvmem_config->priv is (void *), so sparse complains
+> about assignment of the base address with (void __iomem *) type.
+> 
+> Even if we cast it out, sparse still warns:
+> warning: cast removes address space of expression
+> 
+> Of course, we can shut up the sparse by marking __force, but a more
+> correct way is to put the base address into driver private data.
+> 
+> Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
 
+Acked-by: Sean Wang <sean.wang@mediatek.com>
 
-2017-09-11 22:00 GMT+09:00 Masahiro Yamada <yamada.masahiro@socionext.com>:
->
-> Socionext is trying to add a new nvmem driver.
->
-> Before adding a new one, I'd like to be sure about the preferred
-> coding style in this subsystem, and build-up cleaner code base.
->
-> Please pick up what you like.  Please feel free to throw away
-> what you do not like.
->
-> 1/5, 2/5: convert kzalloc to stack because nvmem_config
-> is small one-time use data.
-> This is what we agreed in the discussion.
->
-> 3/5, 4/5: fix sparse warning
-> For mtk-efuse, qfprom, the base address is the only private data
-> but, assigning (void __iomem *) to ->priv directly causes sparse
-> warnings.
->
-> 5/5: clean-up of owner settings - if the owner field matches
-> nvmem->dev->driver->onwer, we need not set the onwer field
-> explicitly.
-
-
-Does this series look OK?
-
-Thanks.
-
-
-
-
--- 
-Best Regards
-Masahiro Yamada
+> ---
+> 
+>  drivers/nvmem/mtk-efuse.c | 26 +++++++++++++++++---------
+>  1 file changed, 17 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
+> index fa7a0f6..c4058b5 100644
+> --- a/drivers/nvmem/mtk-efuse.c
+> +++ b/drivers/nvmem/mtk-efuse.c
+> @@ -18,15 +18,19 @@
+>  #include <linux/nvmem-provider.h>
+>  #include <linux/platform_device.h>
+>  
+> +struct mtk_efuse_priv {
+> +	void __iomem *base;
+> +};
+> +
+>  static int mtk_reg_read(void *context,
+>  			unsigned int reg, void *_val, size_t bytes)
+>  {
+> -	void __iomem *base = context;
+> +	struct mtk_efuse_priv *priv = context;
+>  	u32 *val = _val;
+>  	int i = 0, words = bytes / 4;
+>  
+>  	while (words--)
+> -		*val++ = readl(base + reg + (i++ * 4));
+> +		*val++ = readl(priv->base + reg + (i++ * 4));
+>  
+>  	return 0;
+>  }
+> @@ -34,12 +38,12 @@ static int mtk_reg_read(void *context,
+>  static int mtk_reg_write(void *context,
+>  			 unsigned int reg, void *_val, size_t bytes)
+>  {
+> -	void __iomem *base = context;
+> +	struct mtk_efuse_priv *priv = context;
+>  	u32 *val = _val;
+>  	int i = 0, words = bytes / 4;
+>  
+>  	while (words--)
+> -		writel(*val++, base + reg + (i++ * 4));
+> +		writel(*val++, priv->base + reg + (i++ * 4));
+>  
+>  	return 0;
+>  }
+> @@ -50,19 +54,23 @@ static int mtk_efuse_probe(struct platform_device *pdev)
+>  	struct resource *res;
+>  	struct nvmem_device *nvmem;
+>  	struct nvmem_config econfig = {};
+> -	void __iomem *base;
+> +	struct mtk_efuse_priv *priv;
+> +
+> +	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+> +	if (!priv)
+> +		return -ENOMEM;
+>  
+>  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -	base = devm_ioremap_resource(dev, res);
+> -	if (IS_ERR(base))
+> -		return PTR_ERR(base);
+> +	priv->base = devm_ioremap_resource(dev, res);
+> +	if (IS_ERR(priv->base))
+> +		return PTR_ERR(priv->base);
+>  
+>  	econfig.stride = 4;
+>  	econfig.word_size = 4;
+>  	econfig.reg_read = mtk_reg_read;
+>  	econfig.reg_write = mtk_reg_write;
+>  	econfig.size = resource_size(res);
+> -	econfig.priv = base;
+> +	econfig.priv = priv;
+>  	econfig.dev = dev;
+>  	econfig.owner = THIS_MODULE;
+>  	nvmem = nvmem_register(&econfig);
