@@ -1,156 +1,131 @@
-From: Zhi Mao <zhi.mao@mediatek.com>
-Subject: Re: [PATCH v4 1/1] pwm: mediatek: add MT2712/MT7622 support
-Date: Wed, 20 Sep 2017 16:48:32 +0800
-Message-ID: <1505897312.28692.2.camel@mhfsdcap03>
-References: <1503367755-6519-1-git-send-email-zhi.mao@mediatek.com>
-         <1503367755-6519-2-git-send-email-zhi.mao@mediatek.com>
+From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] reset: mediatek: add reset controller dt-bindings required header for MT7622 SoC
+Date: Wed, 20 Sep 2017 17:40:16 +0800
+Message-ID: <4bb149ef1801c578177beb5e61d19358dd2950ae.1505899696.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <1503367755-6519-2-git-send-email-zhi.mao@mediatek.com>
-Sender: linux-pwm-owner@vger.kernel.org
-To: john@phrozen.org
-Cc: Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pwm@vger.kernel.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, zhenbao.liu@mediatek.com
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Thierry,
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Just a gentle ping on this issue.
-Would you please have a review to this patch?
+Add the reset controller dt-bindings exported from infracfg, pericfg,
+hifsys and ethsys which could be found on MT7622 SoC. So that we can
+reference them from within a device-tree file.
 
-Regards,
-Zhi
+Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ include/dt-bindings/reset/mt7622-reset.h | 94 ++++++++++++++++++++++++++++++++
+ 1 file changed, 94 insertions(+)
+ create mode 100644 include/dt-bindings/reset/mt7622-reset.h
 
+diff --git a/include/dt-bindings/reset/mt7622-reset.h b/include/dt-bindings/reset/mt7622-reset.h
+new file mode 100644
+index 0000000..234052f
+--- /dev/null
++++ b/include/dt-bindings/reset/mt7622-reset.h
+@@ -0,0 +1,94 @@
++/*
++ * Copyright (c) 2017 MediaTek Inc.
++ * Author: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
++
++#ifndef _DT_BINDINGS_RESET_CONTROLLER_MT7622
++#define _DT_BINDINGS_RESET_CONTROLLER_MT7622
++
++/* INFRACFG resets */
++#define MT7622_INFRA_EMI_REG_RST		0
++#define MT7622_INFRA_DRAMC0_A0_RST		1
++#define MT7622_INFRA_APCIRQ_EINT_RST		3
++#define MT7622_INFRA_APXGPT_RST			4
++#define MT7622_INFRA_SCPSYS_RST			5
++#define MT7622_INFRA_PMIC_WRAP_RST		7
++#define MT7622_INFRA_IRRX_RST			9
++#define MT7622_INFRA_EMI_RST			16
++#define MT7622_INFRA_WED0_RST			17
++#define MT7622_INFRA_DRAMC_RST			18
++#define MT7622_INFRA_CCI_INTF_RST		19
++#define MT7622_INFRA_TRNG_RST			21
++#define MT7622_INFRA_SYSIRQ_RST			22
++#define MT7622_INFRA_WED1_RST			25
++
++/* PERICFG Subsystem resets */
++#define MT7622_PERI_UART0_SW_RST		0
++#define MT7622_PERI_UART1_SW_RST		1
++#define MT7622_PERI_UART2_SW_RST		2
++#define MT7622_PERI_UART3_SW_RST		3
++#define MT7622_PERI_UART4_SW_RST		4
++#define MT7622_PERI_BTIF_SW_RST			6
++#define MT7622_PERI_PWM_SW_RST			8
++#define MT7622_PERI_AUXADC_SW_RST		10
++#define MT7622_PERI_DMA_SW_RST			11
++#define MT7622_PERI_IRTX_SW_RST			13
++#define MT7622_PERI_NFI_SW_RST			14
++#define MT7622_PERI_THERM_SW_RST		16
++#define MT7622_PERI_MSDC0_SW_RST		19
++#define MT7622_PERI_MSDC1_SW_RST		20
++#define MT7622_PERI_I2C0_SW_RST			22
++#define MT7622_PERI_I2C1_SW_RST			23
++#define MT7622_PERI_I2C2_SW_RST			24
++#define MT7622_PERI_SPI0_SW_RST			33
++#define MT7622_PERI_SPI1_SW_RST			34
++#define MT7622_PERI_FLASHIF_SW_RST		36
++
++/* TOPRGU resets */
++#define MT7622_TOPRGU_INFRA_RST			0
++#define MT7622_TOPRGU_ETHDMA_RST		1
++#define MT7622_TOPRGU_DDRPHY_RST		6
++#define MT7622_TOPRGU_INFRA_AO_RST		8
++#define MT7622_TOPRGU_CONN_RST			9
++#define MT7622_TOPRGU_APMIXED_RST		10
++#define MT7622_TOPRGU_CONN_MCU_RST		12
++
++/* PCIe/SATA Subsystem resets */
++#define MT7622_SATA_PHY_REG_RST			12
++#define MT7622_SATA_PHY_SW_RST			13
++#define MT7622_SATA_AXI_BUS_RST			15
++#define MT7622_PCIE1_CORE_RST			19
++#define MT7622_PCIE1_MMIO_RST			20
++#define MT7622_PCIE1_HRST			21
++#define MT7622_PCIE1_USER_RST			22
++#define MT7622_PCIE1_PIPE_RST			23
++#define MT7622_PCIE0_CORE_RST			27
++#define MT7622_PCIE0_MMIO_RST			28
++#define MT7622_PCIE0_HRST			29
++#define MT7622_PCIE0_USER_RST			30
++#define MT7622_PCIE0_PIPE_RST			31
++
++/* SSUSB Subsystem resets */
++#define MT7622_SSUSB_PHY_PWR_RST		3
++#define MT7622_SSUSB_MAC_PWR_RST		4
++
++/* ETHSYS Subsystem resets */
++#define MT7622_ETHSYS_SYS_RST			0
++#define MT7622_ETHSYS_MCM_RST			2
++#define MT7622_ETHSYS_HSDMA_RST			5
++#define MT7622_ETHSYS_FE_RST			6
++#define MT7622_ETHSYS_GMAC_RST			23
++#define MT7622_ETHSYS_EPHY_RST			24
++#define MT7622_ETHSYS_CRYPTO_RST		29
++#define MT7622_ETHSYS_PPE_RST			31
++
++#endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT7622 */
+-- 
+2.7.4
 
-On Tue, 2017-08-22 at 10:09 +0800, Zhi Mao wrote:
-> Add support to MT2712 and MT7622.
-> Due to register offset address of pwm7 for MT2712 is not fixed 0x40,
-> add mtk_pwm_reg_offset array for pwm register offset.
-> 
-> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
-> ---
->  drivers/pwm/pwm-mediatek.c |   51 ++++++++++++++++++++++++++++++++++++--------
->  1 file changed, 42 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-> index 1d78ab1..ccd86e7 100644
-> --- a/drivers/pwm/pwm-mediatek.c
-> +++ b/drivers/pwm/pwm-mediatek.c
-> @@ -16,6 +16,7 @@
->  #include <linux/module.h>
->  #include <linux/clk.h>
->  #include <linux/of.h>
-> +#include <linux/of_device.h>
->  #include <linux/platform_device.h>
->  #include <linux/pwm.h>
->  #include <linux/slab.h>
-> @@ -40,11 +41,19 @@ enum {
->  	MTK_CLK_PWM3,
->  	MTK_CLK_PWM4,
->  	MTK_CLK_PWM5,
-> +	MTK_CLK_PWM6,
-> +	MTK_CLK_PWM7,
-> +	MTK_CLK_PWM8,
->  	MTK_CLK_MAX,
->  };
->  
-> -static const char * const mtk_pwm_clk_name[] = {
-> -	"main", "top", "pwm1", "pwm2", "pwm3", "pwm4", "pwm5"
-> +static const char * const mtk_pwm_clk_name[MTK_CLK_MAX] = {
-> +	"main", "top", "pwm1", "pwm2", "pwm3", "pwm4", "pwm5", "pwm6", "pwm7",
-> +	"pwm8"
-> +};
-> +
-> +struct mtk_pwm_platform_data {
-> +	unsigned int num_pwms;
->  };
->  
->  /**
-> @@ -57,6 +66,11 @@ struct mtk_pwm_chip {
->  	struct pwm_chip chip;
->  	void __iomem *regs;
->  	struct clk *clks[MTK_CLK_MAX];
-> +	const struct mtk_pwm_platform_data *data;
-> +};
-> +
-> +static const unsigned int mtk_pwm_reg_offset[] = {
-> +	0x0010, 0x0050, 0x0090, 0x00d0, 0x0110, 0x0150, 0x0190, 0x0220
->  };
->  
->  static inline struct mtk_pwm_chip *to_mtk_pwm_chip(struct pwm_chip *chip)
-> @@ -103,14 +117,14 @@ static void mtk_pwm_clk_disable(struct pwm_chip *chip, struct pwm_device *pwm)
->  static inline u32 mtk_pwm_readl(struct mtk_pwm_chip *chip, unsigned int num,
->  				unsigned int offset)
->  {
-> -	return readl(chip->regs + 0x10 + (num * 0x40) + offset);
-> +	return readl(chip->regs + mtk_pwm_reg_offset[num] + offset);
->  }
->  
->  static inline void mtk_pwm_writel(struct mtk_pwm_chip *chip,
->  				  unsigned int num, unsigned int offset,
->  				  u32 value)
->  {
-> -	writel(value, chip->regs + 0x10 + (num * 0x40) + offset);
-> +	writel(value, chip->regs + mtk_pwm_reg_offset[num] + offset);
->  }
->  
->  static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
-> @@ -194,15 +208,20 @@ static int mtk_pwm_probe(struct platform_device *pdev)
->  	if (!pc)
->  		return -ENOMEM;
->  
-> +	pc->data = of_device_get_match_data(&pdev->dev);
-> +
->  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->  	pc->regs = devm_ioremap_resource(&pdev->dev, res);
->  	if (IS_ERR(pc->regs))
->  		return PTR_ERR(pc->regs);
->  
-> -	for (i = 0; i < MTK_CLK_MAX; i++) {
-> +	for (i = 0; i < pc->data->num_pwms + 2; i++) {
->  		pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
-> -		if (IS_ERR(pc->clks[i]))
-> +		if (IS_ERR(pc->clks[i])) {
-> +			dev_err(&pdev->dev, "clock: %s fail: %ld\n",
-> +				mtk_pwm_clk_name[i], PTR_ERR(pc->clks[i]));
->  			return PTR_ERR(pc->clks[i]);
-> +		}
->  	}
->  
->  	platform_set_drvdata(pdev, pc);
-> @@ -210,7 +229,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
->  	pc->chip.dev = &pdev->dev;
->  	pc->chip.ops = &mtk_pwm_ops;
->  	pc->chip.base = -1;
-> -	pc->chip.npwm = 5;
-> +	pc->chip.npwm = pc->data->num_pwms;
->  
->  	ret = pwmchip_add(&pc->chip);
->  	if (ret < 0) {
-> @@ -228,9 +247,23 @@ static int mtk_pwm_remove(struct platform_device *pdev)
->  	return pwmchip_remove(&pc->chip);
->  }
->  
-> +static const struct mtk_pwm_platform_data mt2712_pwm_data = {
-> +	.num_pwms = 8,
-> +};
-> +
-> +static const struct mtk_pwm_platform_data mt7622_pwm_data = {
-> +	.num_pwms = 6,
-> +};
-> +
-> +static const struct mtk_pwm_platform_data mt7623_pwm_data = {
-> +	.num_pwms = 5,
-> +};
-> +
->  static const struct of_device_id mtk_pwm_of_match[] = {
-> -	{ .compatible = "mediatek,mt7623-pwm" },
-> -	{ }
-> +	{ .compatible = "mediatek,mt2712-pwm", .data = &mt2712_pwm_data },
-> +	{ .compatible = "mediatek,mt7622-pwm", .data = &mt7622_pwm_data },
-> +	{ .compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data },
-> +	{ },
->  };
->  MODULE_DEVICE_TABLE(of, mtk_pwm_of_match);
->  
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
