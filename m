@@ -1,57 +1,58 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH 2/3] arm64: dts: mt2712: add pintcrl device node.
-Date: Thu, 21 Sep 2017 14:17:21 +0200
-Message-ID: <CACRpkdaX0n7BZVkXYFEh_XSN3P7huvhE6j5My=p=2Lh45oFZaQ@mail.gmail.com>
-References: <1501489333-23145-1-git-send-email-zhiyong.tao@mediatek.com>
- <1501489333-23145-3-git-send-email-zhiyong.tao@mediatek.com>
- <2f883a8a-5402-5625-bada-bcfed53c098e@gmail.com> <CACRpkdZHyXec+L8ueRHOs=9TLT1Arqe3KeQpRZ6D0K1Ag1c+Zw@mail.gmail.com>
- <1505981592.22452.7.camel@mhfsdcap03>
+From: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v1 1/2] dt-bindings: mtd: add new compatible strings and improve description
+Date: Thu, 21 Sep 2017 20:45:05 +0800
+Message-ID: <1505997906-30921-2-git-send-email-guochun.mao@mediatek.com>
+References: <1505997906-30921-1-git-send-email-guochun.mao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1505981592.22452.7.camel@mhfsdcap03>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, srv_heupstream@mediatek.com, Liguo Zhang <liguo.zhang@mediatek.com>, "Joe.C" <yingjoe.chen@mediatek.com>, hongkun.cao@mediatek.com, Biao Huang <biao.huang@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Erin Lo <erin.lo@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1505997906-30921-1-git-send-email-guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Cyrille Pitchen <cyrille.pitchen-yU5RGvR974pGWvitb5QawA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Sep 21, 2017 at 10:13 AM, Zhiyong Tao <zhiyong.tao@mediatek.com> wrote:
-> On Tue, 2017-08-22 at 15:04 +0200, Linus Walleij wrote:
->> On Mon, Aug 14, 2017 at 5:23 PM, Matthias Brugger
->> <matthias.bgg@gmail.com> wrote:
->> > On 07/31/2017 10:22 AM, Zhiyong Tao wrote:
->> >>
->> >> The commit includes two change:
->> >> 1)add pintcrl device node for mt2712.
->> >> 2)add pinfunc file for mt2712.
->> >>
->> >> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
->> >> ---
->> >>   arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h | 1014
->> >> +++++++++++++++++++++++++
->> >
->> >
->> > Shouldn't this file be in include/dt-bindings/pinctrl?
->>
->> Only if it is also #included in the driver.
->>
->> Yours,
->> Linus Walleij
->
-> ==>
-> Thanks for your comment.
-> We see our some ICs(mt7623) which move the file to
-> "include/dt-bindings/pinctrl". other ICs(mt2701) which is put in
-> "arch/arm64/boot/dts/mediatek".
-> In mt2712, mt2712-pinfunc.h is only include by dts file. It won't be
-> included by driver. So which is better? "arch/arm64/boot/dts/mediatek/"
-> or "include/dt-bindings/pinctrl".
+Add "mediatak,mt2712-nor" and "mediatek,mt7622-nor"
+for nor flash node's compatible strings.
+Explicate the fallback compatible.
 
-If it is used in both arm and arm64 it is helpful to have it in
-include/dt-bindings so it can be shared between the two
-archs.
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ .../devicetree/bindings/mtd/mtk-quadspi.txt        |   15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-If it is just (ever) for arm64 it can stay inside the arch tree.
+diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+index 840f940..56d3668 100644
+--- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
++++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+@@ -1,13 +1,16 @@
+ * Serial NOR flash controller for MTK MT81xx (and similar)
+ 
+ Required properties:
+-- compatible: 	  The possible values are:
+-		  "mediatek,mt2701-nor"
+-		  "mediatek,mt7623-nor"
++- compatible: 	  For mt8173, compatible should be "mediatek,mt8173-nor",
++		  and it's the fallback compatible for other Soc.
++		  For every other SoC, should contain both the SoC-specific compatible
++		  string and "mediatek,mt8173-nor".
++		  The possible values are:
++		  "mediatek,mt2701-nor", "mediatek,mt8173-nor"
++		  "mediatek,mt2712-nor", "mediatek,mt8173-nor"
++		  "mediatek,mt7622-nor", "mediatek,mt8173-nor"
++		  "mediatek,mt7623-nor", "mediatek,mt8173-nor"
+ 		  "mediatek,mt8173-nor"
+-		  For mt8173, compatible should be "mediatek,mt8173-nor".
+-		  For every other SoC, should contain both the SoC-specific compatible string
+-		  and "mediatek,mt8173-nor".
+ - reg: 		  physical base address and length of the controller's register
+ - clocks: 	  the phandle of the clocks needed by the nor controller
+ - clock-names: 	  the names of the clocks
+-- 
+1.7.9.5
 
-Yours,
-Linus Walleij
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
