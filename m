@@ -1,177 +1,98 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v1 3/4] arm: dts: mt7623: add display related nodes
-Date: Thu, 21 Sep 2017 17:53:36 +0800
-Message-ID: <1505987616.3084.12.camel@mtkswgap22>
-References: <cover.1505801355.git.ryder.lee@mediatek.com>
-         <0eb19ae1a4717d316cdaec44f6c20bfa8aa24ddc.1505801355.git.ryder.lee@mediatek.com>
-         <1505869897.27600.6.camel@mtksdaap41>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH RESEND 2/2] phy: phy-mtk-tphy: add set_mode callback
+Date: Thu, 21 Sep 2017 18:31:49 +0800
+Message-ID: <88ca8e98f1f08e38ac20ece1b7f40189301be74f.1505989703.git.chunfeng.yun@mediatek.com>
+References: <5ddda7cc6940941b645564afff5afa496d7dbb68.1505989703.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1505869897.27600.6.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5ddda7cc6940941b645564afff5afa496d7dbb68.1505989703.git.chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+This is used to force PHY with USB OTG function to enter a specific
+mode, and override OTG IDPIN(or IDDIG) signal.
 
-On Wed, 2017-09-20 at 09:11 +0800, CK Hu wrote:
-> Hi, Ryder:
-> 
-> Mode comment inline.
-> 
-> On Tue, 2017-09-19 at 14:27 +0800, Ryder Lee wrote:
->  
-> > +	smi_common: smi@1000c000 {
-> > +		compatible = "mediatek,mt7623-smi-common",
-> > +			     "mediatek,mt2701-smi-common";
-> > +		reg = <0 0x1000c000 0 0x1000>;
-> > +		clocks = <&infracfg CLK_INFRA_SMI>,
-> > +			 <&mmsys CLK_MM_SMI_COMMON>,
-> > +			 <&infracfg CLK_INFRA_SMI>;
-> > +		clock-names = "apb", "smi", "async";
-> > +		power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
-> > +	};
-> > +
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/phy/mediatek/phy-mtk-tphy.c |   39 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
-> > +	iommu: mmsys_iommu@10205000 {
-> > +		compatible = "mediatek,mt7623-m4u",
-> > +			     "mediatek,mt2701-m4u";
-> > +		reg = <0 0x10205000 0 0x1000>;
-> > +		interrupts = <GIC_SPI 106 IRQ_TYPE_LEVEL_LOW>;
-> > +		clocks = <&infracfg CLK_INFRA_M4U>;
-> > +		clock-names = "bclk";
-> > +		mediatek,larbs = <&larb0 &larb1 &larb2>;
-> > +		#iommu-cells = <1>;
-> > +	};
-> > +
-> > +	mmsys: syscon@14000000 {
-> > +		compatible = "mediatek,mt7623-mmsys",
-> > +			     "mediatek,mt2701-mmsys",
-> > +			     "syscon";
-> > +		reg = <0 0x14000000 0 0x1000>;
-> > +		#clock-cells = <1>;
-> > +	};
-> > +
-
-> > +	larb0: larb@14010000 {
-> > +		compatible = "mediatek,mt7623-smi-larb",
-> > +			     "mediatek,mt2701-smi-larb";
-> > +		reg = <0 0x14010000 0 0x1000>;
-> > +		mediatek,smi = <&smi_common>;
-> > +		mediatek,larb-id = <0>;
-> > +		clocks = <&mmsys CLK_MM_SMI_LARB0>,
-> > +			 <&mmsys CLK_MM_SMI_LARB0>;
-> > +		clock-names = "apb", "smi";
-> > +		power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
-> > +	};
-
-> > +	imgsys: syscon@15000000 {
-> > +		compatible = "mediatek,mt7623-imgsys",
-> > +			     "mediatek,mt2701-imgsys",
-> > +			     "syscon";
-> > +		reg = <0 0x15000000 0 0x1000>;
-> > +		#clock-cells = <1>;
-> > +	};
-> > +
-> > +	larb2: larb@15001000 {
-> > +		compatible = "mediatek,mt7623-smi-larb",
-> > +			     "mediatek,mt2701-smi-larb";
-> > +		reg = <0 0x15001000 0 0x1000>;
-> > +		mediatek,smi = <&smi_common>;
-> > +		mediatek,larb-id = <2>;
-> > +		clocks = <&imgsys CLK_IMG_SMI_COMM>,
-> > +			 <&imgsys CLK_IMG_SMI_COMM>;
-> > +		clock-names = "apb", "smi";
-> > +		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
-> > +	};
-> > +
-> > +	jpegdec: jpegdec@15004000 {
-> > +		compatible = "mediatek,mt7623-jpgdec",
-> > +			     "mediatek,mt2701-jpgdec";
-> > +		reg = <0 0x15004000 0 0x1000>;
-> > +		interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW>;
-> > +		clocks =  <&imgsys CLK_IMG_JPGDEC_SMI>,
-> > +			  <&imgsys CLK_IMG_JPGDEC>;
-> > +		clock-names = "jpgdec-smi",
-> > +			      "jpgdec";
-> > +		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
-> > +		mediatek,larb = <&larb2>;
-> > +		iommus = <&iommu MT2701_M4U_PORT_JPGDEC_WDMA>,
-> > +			 <&iommu MT2701_M4U_PORT_JPGDEC_BSDMA>;
-> > +	};
-> 
-> jpegdec and some other device node is not related to display. I think
-> you should move them to another patch.
-
-Yes, you're right.
-> > +
-> > +	vdecsys: syscon@16000000 {
-> > +		compatible = "mediatek,mt7623-vdecsys",
-> > +			     "mediatek,mt2701-vdecsys",
-> > +			     "syscon";
-> > +		reg = <0 0x16000000 0 0x1000>;
-> > +		#clock-cells = <1>;
-> > +	};
-> > +
-> > +	larb1: larb@16010000 {
-> > +		compatible = "mediatek,mt7623-smi-larb",
-> > +			     "mediatek,mt2701-smi-larb";
-> > +		reg = <0 0x16010000 0 0x1000>;
-> > +		mediatek,smi = <&smi_common>;
-> > +		mediatek,larb-id = <1>;
-> > +		clocks = <&vdecsys CLK_VDEC_CKGEN>,
-> > +			 <&vdecsys CLK_VDEC_LARB>;
-> > +		clock-names = "apb", "smi";
-> > +		power-domains = <&scpsys MT2701_POWER_DOMAIN_VDEC>;
-> > +	};
-> > +
-> >  	hifsys: syscon@1a000000 {
-> >  		compatible = "mediatek,mt7623-hifsys",
-> >  			     "mediatek,mt2701-hifsys",
-> > @@ -799,4 +1001,12 @@
-> >  		power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
-> >  		status = "disabled";
-> >  	};
-> > +
-> > +	bdpsys: syscon@1c000000 {
-> > +		compatible = "mediatek,mt7623-bdpsys",
-> > +			     "mediatek,mt2701-bdpsys",
-> > +			     "syscon";
-> > +		reg = <0 0x1c000000 0 0x1000>;
-> > +		#clock-cells = <1>;
-> > +	};
-> >  };
-
-I will move these nodes to different patches.
-
-> > diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> > index 688a863..267a05a 100644
-> > --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> > +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> > @@ -17,6 +17,17 @@
-> >  		serial2 = &uart2;
-> >  	};
-> >  
-> > +	backlight_lcd: backlight_lcd {
-> > +		compatible = "pwm-backlight";
-> > +		pwms = <&bls 0 100000>;
-> > +		brightness-levels = <
-> > +			  0  16  32  48  64  80  96 112
-> > +			128 144 160 176 192 208 224 240
-> > +			255
-> > +		>;
-> > +		default-brightness-level = <9>;
-> > +	};
-> > +
-> 
-> I think this patch only for mt7623 common dtsi modification. This part
-> is just for bananapi-bpi-r2, so move non-common part to another patch.
-> 
-Okay.
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index 721a2a1..402385f 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -96,9 +96,11 @@
+ 
+ #define U3P_U2PHYDTM1		0x06C
+ #define P2C_RG_UART_EN			BIT(16)
++#define P2C_FORCE_IDDIG		BIT(9)
+ #define P2C_RG_VBUSVALID		BIT(5)
+ #define P2C_RG_SESSEND			BIT(4)
+ #define P2C_RG_AVALID			BIT(2)
++#define P2C_RG_IDDIG			BIT(1)
+ 
+ #define U3P_U3_CHIP_GPIO_CTLD		0x0c
+ #define P3C_REG_IP_SW_RST		BIT(31)
+@@ -585,6 +587,31 @@ static void u2_phy_instance_exit(struct mtk_tphy *tphy,
+ 	}
+ }
+ 
++static void u2_phy_instance_set_mode(struct mtk_tphy *tphy,
++				     struct mtk_phy_instance *instance,
++				     enum phy_mode mode)
++{
++	struct u2phy_banks *u2_banks = &instance->u2_banks;
++	u32 tmp;
++
++	tmp = readl(u2_banks->com + U3P_U2PHYDTM1);
++	switch (mode) {
++	case PHY_MODE_USB_DEVICE:
++		tmp |= P2C_FORCE_IDDIG | P2C_RG_IDDIG;
++		break;
++	case PHY_MODE_USB_HOST:
++		tmp |= P2C_FORCE_IDDIG;
++		tmp &= ~P2C_RG_IDDIG;
++		break;
++	case PHY_MODE_USB_OTG:
++		tmp &= ~(P2C_FORCE_IDDIG | P2C_RG_IDDIG);
++		break;
++	default:
++		return;
++	}
++	writel(tmp, u2_banks->com + U3P_U2PHYDTM1);
++}
++
+ static void pcie_phy_instance_init(struct mtk_tphy *tphy,
+ 	struct mtk_phy_instance *instance)
+ {
+@@ -881,6 +908,17 @@ static int mtk_phy_exit(struct phy *phy)
+ 	return 0;
+ }
+ 
++static int mtk_phy_set_mode(struct phy *phy, enum phy_mode mode)
++{
++	struct mtk_phy_instance *instance = phy_get_drvdata(phy);
++	struct mtk_tphy *tphy = dev_get_drvdata(phy->dev.parent);
++
++	if (instance->type == PHY_TYPE_USB2)
++		u2_phy_instance_set_mode(tphy, instance, mode);
++
++	return 0;
++}
++
+ static struct phy *mtk_phy_xlate(struct device *dev,
+ 					struct of_phandle_args *args)
+ {
+@@ -931,6 +969,7 @@ static struct phy *mtk_phy_xlate(struct device *dev,
+ 	.exit		= mtk_phy_exit,
+ 	.power_on	= mtk_phy_power_on,
+ 	.power_off	= mtk_phy_power_off,
++	.set_mode	= mtk_phy_set_mode,
+ 	.owner		= THIS_MODULE,
+ };
+ 
+-- 
+1.7.9.5
