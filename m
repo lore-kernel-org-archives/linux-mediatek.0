@@ -1,38 +1,59 @@
-From: Thomas Meyer <thomas@m3y3r.de>
-Subject: [PATCH 1/3] ARM: mediatek: Cocci spatch "of_table"
-Date: Thu, 21 Sep 2017 08:24:27 +0200
-Message-ID: <1505974912018-1713366490-1-diffsplit-thomas@m3y3r.de>
-References: <1505974912018-1637125348-0-diffsplit-thomas@m3y3r.de>
+From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Subject: Re: [PATCH 2/3] arm64: dts: mt2712: add pintcrl device node.
+Date: Thu, 21 Sep 2017 16:13:12 +0800
+Message-ID: <1505981592.22452.7.camel@mhfsdcap03>
+References: <1501489333-23145-1-git-send-email-zhiyong.tao@mediatek.com>
+ <1501489333-23145-3-git-send-email-zhiyong.tao@mediatek.com>
+ <2f883a8a-5402-5625-bada-bcfed53c098e@gmail.com>
+ <CACRpkdZHyXec+L8ueRHOs=9TLT1Arqe3KeQpRZ6D0K1Ag1c+Zw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1505974912018-1637125348-0-diffsplit-thomas@m3y3r.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: matthias.bgg@gmail.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CACRpkdZHyXec+L8ueRHOs=9TLT1Arqe3KeQpRZ6D0K1Ag1c+Zw@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, hongkun.cao@mediatek.com, srv_heupstream@mediatek.com, Hongzhou Yang <hongzhou.yang@mediatek.com>, Biao Huang <biao.huang@mediatek.com>, Erin Lo <erin.lo@mediatek.com>, Liguo Zhang <liguo.zhang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, YT Shen <yt.shen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Joe.C" <yingjoe.chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Make sure (of/i2c/platform)_device_id tables are NULL terminated.
-Found by coccinelle spatch "misc/of_table.cocci"
+On Tue, 2017-08-22 at 15:04 +0200, Linus Walleij wrote:
+> On Mon, Aug 14, 2017 at 5:23 PM, Matthias Brugger
+> <matthias.bgg@gmail.com> wrote:
+> > On 07/31/2017 10:22 AM, Zhiyong Tao wrote:
+> >>
+> >> The commit includes two change:
+> >> 1)add pintcrl device node for mt2712.
+> >> 2)add pinfunc file for mt2712.
+> >>
+> >> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> >> ---
+> >>   arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h | 1014
+> >> +++++++++++++++++++++++++
+> >
+> >
+> > Shouldn't this file be in include/dt-bindings/pinctrl?
+> 
+> Only if it is also #included in the driver.
+> 
+> Yours,
+> Linus Walleij
 
-Signed-off-by: Thomas Meyer <thomas@m3y3r.de>
----
+==>
+Thanks for your comment. 
+We see our some ICs(mt7623) which move the file to
+"include/dt-bindings/pinctrl". other ICs(mt2701) which is put in
+"arch/arm64/boot/dts/mediatek".
+In mt2712, mt2712-pinfunc.h is only include by dts file. It won't be
+included by driver. So which is better? "arch/arm64/boot/dts/mediatek/"
+or "include/dt-bindings/pinctrl".
 
-diff -u -p a/arch/arm/mach-mediatek/platsmp.c b/arch/arm/mach-mediatek/platsmp.c
---- a/arch/arm/mach-mediatek/platsmp.c
-+++ b/arch/arm/mach-mediatek/platsmp.c
-@@ -54,12 +54,14 @@ static const struct of_device_id mtk_tz_
- 	{ .compatible   = "mediatek,mt8135", .data = &mtk_mt8135_tz_boot },
- 	{ .compatible   = "mediatek,mt8127", .data = &mtk_mt8135_tz_boot },
- 	{ .compatible   = "mediatek,mt2701", .data = &mtk_mt8135_tz_boot },
-+	{},
- };
- 
- static const struct of_device_id mtk_smp_boot_infos[] __initconst = {
- 	{ .compatible   = "mediatek,mt6589", .data = &mtk_mt6589_boot },
- 	{ .compatible   = "mediatek,mt7623", .data = &mtk_mt7623_boot },
- 	{ .compatible   = "mediatek,mt7623a", .data = &mtk_mt7623_boot },
-+	{},
- };
- 
- static void __iomem *mtk_smp_base;
+Thanks.
