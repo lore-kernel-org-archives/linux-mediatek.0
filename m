@@ -1,62 +1,31 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: Re: [PATCH RESEND 1/2] phy: phy-mtk-tphy: fix NULL point of chip bank
-Date: Thu, 21 Sep 2017 16:23:50 +0530
-Message-ID: <02a5e183-444a-bc75-2a4e-1337c9e7872e@ti.com>
-References: <5ddda7cc6940941b645564afff5afa496d7dbb68.1505989703.git.chunfeng.yun@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 01/12] mmc: dt-bindings: update Mediatek MMC bindings
+Date: Thu, 21 Sep 2017 13:38:27 +0200
+Message-ID: <CACRpkdbfCFL3w6bMzT2D2rukhVkzdHPpsfZO6vYQtv_SHSjgOQ@mail.gmail.com>
+References: <1505207272-16983-1-git-send-email-chaotian.jing@mediatek.com>
+ <1505207272-16983-2-git-send-email-chaotian.jing@mediatek.com>
+ <20170913141026.43oh4n4foipmahsk@rob-hp-laptop> <1505355021.8308.4.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <5ddda7cc6940941b645564afff5afa496d7dbb68.1505989703.git.chunfeng.yun@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1505355021.8308.4.camel@mhfsdcap03>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, yong mao <yong.mao@mediatek.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Heiner Kallweit <hkallweit1@gmail.com>, Phong LE <ple@baylibre.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
+On Thu, Sep 14, 2017 at 4:10 AM, Chaotian Jing
+<chaotian.jing@mediatek.com> wrote:
+> On Wed, 2017-09-13 at 09:10 -0500, Rob Herring wrote:
+>> On Tue, Sep 12, 2017 at 05:07:41PM +0800, Chaotian Jing wrote:
 
+>> > +- mediatek,latch-ck: Some projects do not support enhance_rx, need set correct latch-ck to avoid data crc
+>>
+>> What's a project?
+> eg, MT2701
 
-On Thursday 21 September 2017 04:01 PM, Chunfeng Yun wrote:
-> Chip bank of version-1 is initialized as NULL, but it's used
-> by pcie_phy_instance_power_on/off(), so assign it a right
-> address.
+Replace the word "project" with the word "system" or "SoC" in
+your patch.
 
-merged. How was this not noticed before?
-
-Thanks
-Kishon
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->  drivers/phy/mediatek/phy-mtk-tphy.c |    3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-> index e3baad7..721a2a1 100644
-> --- a/drivers/phy/mediatek/phy-mtk-tphy.c
-> +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-> @@ -27,6 +27,7 @@
->  /* banks shared by multiple phys */
->  #define SSUSB_SIFSLV_V1_SPLLC		0x000	/* shared by u3 phys */
->  #define SSUSB_SIFSLV_V1_U2FREQ		0x100	/* shared by u2 phys */
-> +#define SSUSB_SIFSLV_V1_CHIP		0x300	/* shared by u3 phys */
->  /* u2 phy bank */
->  #define SSUSB_SIFSLV_V1_U2PHY_COM	0x000
->  /* u3/pcie/sata phy banks */
-> @@ -762,7 +763,7 @@ static void phy_v1_banks_init(struct mtk_tphy *tphy,
->  	case PHY_TYPE_USB3:
->  	case PHY_TYPE_PCIE:
->  		u3_banks->spllc = tphy->sif_base + SSUSB_SIFSLV_V1_SPLLC;
-> -		u3_banks->chip = NULL;
-> +		u3_banks->chip = tphy->sif_base + SSUSB_SIFSLV_V1_CHIP;
->  		u3_banks->phyd = instance->port_base + SSUSB_SIFSLV_V1_U3PHYD;
->  		u3_banks->phya = instance->port_base + SSUSB_SIFSLV_V1_U3PHYA;
->  		break;
-> 
+Yours,
+Linus Walleij
