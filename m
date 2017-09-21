@@ -1,138 +1,43 @@
 From: <sean.wang@mediatek.com>
-Subject: [PATCH v4 3/7] soc: mediatek: pwrap: add pwrap_write32 for writing in 32-bit mode
-Date: Thu, 21 Sep 2017 16:26:53 +0800
-Message-ID: <636fdf9b4e5ae29b1c6f0a0a680b61cf0513c97e.1505980364.git.sean.wang@mediatek.com>
-References: <cover.1505980364.git.sean.wang@mediatek.com>
+Subject: [PATCH] soc: mediatek: place Kconfig for all SoC driver under menu
+Date: Thu, 21 Sep 2017 16:46:35 +0800
+Message-ID: <b7aeda2773ebd2f030ddd782b31a594a05fdef2c.1505982942.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1505980364.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: matthias.bgg@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: chen.zhong@mediatek.com, chenglin.xu@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+To: matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, jdelvare@suse.de, arnd@arndb.de
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Some regulators such as MediaTek MT6380 also has to be written in
-32-bit mode. So the patch adds pwrap_write32, rename old pwrap_write
-into pwrap_write16 and one additional function pointer is introduced
-for increasing flexibility allowing the determination which mode is
-used by the pwrap slave detection through device tree.
+Add cleanup for placing all Kconfig for all MediaTek SoC drivers under
+the independent menu as other SoCs vendor usually did.
 
-Signed-off-by: Chenglin Xu <chenglin.xu@mediatek.com>
-Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-pmic-wrap.c | 63 +++++++++++++++++++++++++++---------
- 1 file changed, 47 insertions(+), 16 deletions(-)
+ drivers/soc/mediatek/Kconfig | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index db55f13..27d7ccc 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -506,6 +506,7 @@ struct pwrap_slv_type {
- 	 * which type is used by the detection through device tree.
- 	 */
- 	int (*pwrap_read)(struct pmic_wrapper *wrp, u32 adr, u32 *rdata);
-+	int (*pwrap_write)(struct pmic_wrapper *wrp, u32 adr, u32 wdata);
- };
- 
- struct pmic_wrapper {
-@@ -600,22 +601,6 @@ static int pwrap_wait_for_state(struct pmic_wrapper *wrp,
- 	} while (1);
- }
- 
--static int pwrap_write(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
--{
--	int ret;
--
--	ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
--	if (ret) {
--		pwrap_leave_fsm_vldclr(wrp);
--		return ret;
--	}
--
--	pwrap_writel(wrp, (1 << 31) | ((adr >> 1) << 16) | wdata,
--			PWRAP_WACS2_CMD);
--
--	return 0;
--}
--
- static int pwrap_read16(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
- {
- 	int ret;
-@@ -672,6 +657,49 @@ static int pwrap_read(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
- 	return wrp->slave->pwrap_read(wrp, adr, rdata);
- }
- 
-+static int pwrap_write16(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
-+{
-+	int ret;
+diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+index 609bb34..a2fcd7f 100644
+--- a/drivers/soc/mediatek/Kconfig
++++ b/drivers/soc/mediatek/Kconfig
+@@ -1,6 +1,8 @@
+ #
+ # MediaTek SoC drivers
+ #
++menu "MediaTek SoC drivers"
 +
-+	ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
-+	if (ret) {
-+		pwrap_leave_fsm_vldclr(wrp);
-+		return ret;
-+	}
+ config MTK_INFRACFG
+ 	bool "MediaTek INFRACFG Support"
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
+@@ -30,3 +32,5 @@ config MTK_SCPSYS
+ 	help
+ 	  Say yes here to add support for the MediaTek SCPSYS power domain
+ 	  driver.
 +
-+	pwrap_writel(wrp, (1 << 31) | ((adr >> 1) << 16) | wdata,
-+		     PWRAP_WACS2_CMD);
-+
-+	return 0;
-+}
-+
-+static int pwrap_write32(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
-+{
-+	int ret, msb, rdata;
-+
-+	for (msb = 0; msb < 2; msb++) {
-+		ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
-+		if (ret) {
-+			pwrap_leave_fsm_vldclr(wrp);
-+			return ret;
-+		}
-+
-+		pwrap_writel(wrp, (1 << 31) | (msb << 30) | (adr << 16) |
-+			     ((wdata >> (msb * 16)) & 0xffff),
-+			     PWRAP_WACS2_CMD);
-+
-+		if (!msb)
-+			pwrap_read(wrp, adr, &rdata);
-+	}
-+
-+	return 0;
-+}
-+
-+static int pwrap_write(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
-+{
-+	return wrp->slave->pwrap_write(wrp, adr, wdata);
-+}
-+
- static int pwrap_regmap_read(void *context, u32 adr, u32 *rdata)
- {
- 	return pwrap_read(context, adr, rdata);
-@@ -1080,18 +1108,21 @@ static const struct pwrap_slv_type pmic_mt6323 = {
- 	.dew_regs = mt6323_regs,
- 	.type = PMIC_MT6323,
- 	.pwrap_read = pwrap_read16,
-+	.pwrap_write = pwrap_write16,
- };
- 
- static const struct pwrap_slv_type pmic_mt6380 = {
- 	.dew_regs = NULL,
- 	.type = PMIC_MT6380,
- 	.pwrap_read = pwrap_read32,
-+	.pwrap_write = pwrap_write32,
- };
- 
- static const struct pwrap_slv_type pmic_mt6397 = {
- 	.dew_regs = mt6397_regs,
- 	.type = PMIC_MT6397,
- 	.pwrap_read = pwrap_read16,
-+	.pwrap_write = pwrap_write16,
- };
- 
- static const struct of_device_id of_slave_match_tbl[] = {
++endmenu
 -- 
 2.7.4
