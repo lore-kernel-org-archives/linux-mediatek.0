@@ -1,59 +1,53 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: [PATCH v2] mmc: dt-bindings: Add reg/source_cg/latch-ck for Mediatek MMC bindings
-Date: Thu, 21 Sep 2017 09:52:54 +0800
-Message-ID: <1505958774-14410-1-git-send-email-chaotian.jing@mediatek.com>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: Re: [PATCH 2/5] nvmem: mtk-efuse: use stack for nvmem_config instead
+ of malloc'ing it
+Date: Thu, 21 Sep 2017 11:09:35 +0900
+Message-ID: <CAK7LNARoZnVduzkWqyTYq4iMEAi0A88cpGWrD0Zc=wt=Xa+1QA@mail.gmail.com>
+References: <1505134864-11975-1-git-send-email-yamada.masahiro@socionext.com>
+ <1505134864-11975-3-git-send-email-yamada.masahiro@socionext.com> <1505925159.17049.12.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1505925159.17049.12.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Chaotian Jing <chaotian.jing@mediatek.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Heiner Kallweit <hkallweit1@gmail.com>, Phong LE <ple@baylibre.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Jassi Brar <jaswinder.singh@linaro.org>, Keiji Hayashibara <hayashibara.keiji@socionext.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Masami Hiramatsu <mhiramat@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Change the comptiable for support of multi-platform
-Add description for reg
-Add description for source_cg
-Add description for mediatek,latch-ck
-Note that source_cg and mediatek,latch-ck are optional for some projects,
-eg, MT2701 do not have source_cg, and MT2712 do not need
-mediatek,latch-ck
+Hi Sean,
 
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
----
- Documentation/devicetree/bindings/mmc/mtk-sd.txt | 13 ++++++++++---
- 1 file changed, 10 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-index 4182ea3..405cd06 100644
---- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-+++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-@@ -7,10 +7,15 @@ This file documents differences between the core properties in mmc.txt
- and the properties used by the msdc driver.
- 
- Required properties:
--- compatible: Should be "mediatek,mt8173-mmc","mediatek,mt8135-mmc"
-+- compatible: value should be either of the following.
-+	"mediatek,mt8135-mmc": for mmc host ip compatible with mt8135
-+	"mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
-+	"mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
-+	"mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
-+- reg: physical base address of the controller and length
- - interrupts: Should contain MSDC interrupt number
--- clocks: MSDC source clock, HCLK
--- clock-names: "source", "hclk"
-+- clocks: MSDC source clock, HCLK, source_cg
-+- clock-names: "source", "hclk", "source_cg"
- - pinctrl-names: should be "default", "state_uhs"
- - pinctrl-0: should contain default/high speed pin ctrl
- - pinctrl-1: should contain uhs mode pin ctrl
-@@ -30,6 +35,8 @@ Optional properties:
- - mediatek,hs400-cmd-resp-sel-rising:  HS400 command response sample selection
- 				       If present,HS400 command responses are sampled on rising edges.
- 				       If not present,HS400 command responses are sampled on falling edges.
-+- mediatek,latch-ck: Some projects do not support enhance_rx, need set correct latch-ck to avoid data crc
-+		     error caused by stop clock(fifo full)
- 
- Examples:
- mmc0: mmc@11230000 {
+2017-09-21 1:32 GMT+09:00 Sean Wang <sean.wang@mediatek.com>:
+> Hi, Masahiro
+>
+> For maintainability, I felt it's better if we use the same way to
+> register nvmem as that most drivers does under nvmem usually using
+> static structure. Otherwise, they should also be changed to use the
+> one-time data in stack to avoid extra bytes to keep them.
+>
+>         Sean
+
+
+Srinivas and I discussed the best practice for allocating nvmem_config.
+https://lkml.org/lkml/2017/9/11/4
+
+>From the discussion, static structure is possible only when
+the system has one instance of the device.
+
+If you know this is the case for mediatek,
+yes, you can turn it into static,
+but it is not always possible.
+For example, Socionext SoCs have
+two banks of efuse devices.
+
+So, if we want to align the coding style for consistency,
+nvmem in stack is safe and efficient, I think.
+
+
+Moving one-time data into stack slightly
+reduces the kernel image size.
+
+
 -- 
-1.8.1.1.dirty
+Best Regards
+Masahiro Yamada
