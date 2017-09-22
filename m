@@ -1,55 +1,38 @@
-From: Ji Zhang <ji.zhang@mediatek.com>
-Subject: [PATCH] arm: fix text section corruption
-Date: Fri, 22 Sep 2017 11:15:19 +0800
-Message-ID: <1506050119-2670-1-git-send-email-ji.zhang@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH 0/4] rtc: mediatek: add support for SoC based RTC on MT7622
+Date: Fri, 22 Sep 2017 11:33:13 +0800
+Message-ID: <cover.1506049341.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King <linux@armlinux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Ji Zhang <ji.zhang@mediatek.com>
+To: a.zummo@towertech.it, alexandre.belloni@free-electrons.com, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-When CONFIG_CPU_SW_DOMAIN_PAN is enabled, there are 9 registers being
-pushed into stack in save_regs, but in fixup it still consider there are
-8 registers in stack, which is the case of CONFIG_CPU_SW_DOMAIN_PAN
-disabled.
-When fixup being executed, -EFAULT will be written to the text section.
+From: Sean Wang <sean.wang@mediatek.com>
 
-In fixup:
-mov	r4, #-EFAULT
-/*
- * When CONFIG_CPU_SW_DOMAIN_PAN enabled, r5 will load the value stored by
- * lr in save_regs, which is the address of instruction in text section.
- */
-ldr	r5, [sp,#8*4]	@err_ptr
-/*
- * This will write -EFAULT(0xfffffff2) to r5, which points to text section
- * now, and when function returns, it will use 0xfffffff2 as an
- * instruction, then undefined instruction occurs.
- */
-str	r4, [r5]
+This patchset introduces support for MediaTek SoC based real time clock
+(RTC) Currently, the driver is already tested successfully with hwclock
+and wakealarm on MT7622 SoC. And it should also be workable on other
+similar MediaTek SoCs. And patch 3 is a distinct patch used to distinguish
+between either SoC based or PMIC based RTC to avoid confusion for the RTC
+selection for the target SoC.
 
-Signed-off-by: Ji Zhang <ji.zhang@mediatek.com>
----
- arch/arm/lib/csumpartialcopyuser.S | 4 ++++
- 1 file changed, 4 insertions(+)
+Sean Wang (4):
+  dt-bindings: rtc: mediatek: add bindings for MediaTek SoC based RTC
+  rtc: mediatek: add driver for RTC on MT7622 SoC
+  rtc: mediatek: enhance the description for MediaTek PMIC based RTC
+  rtc: mediatek: update MAINTAINERS entry with MediaTek RTC driver
 
-diff --git a/arch/arm/lib/csumpartialcopyuser.S b/arch/arm/lib/csumpartialcopyuser.S
-index 1712f13..b83fdc0 100644
---- a/arch/arm/lib/csumpartialcopyuser.S
-+++ b/arch/arm/lib/csumpartialcopyuser.S
-@@ -85,7 +85,11 @@
- 		.pushsection .text.fixup,"ax"
- 		.align	4
- 9001:		mov	r4, #-EFAULT
-+#ifdef CONFIG_CPU_SW_DOMAIN_PAN
-+		ldr	r5, [sp, #9*4]		@ *err_ptr
-+#else
- 		ldr	r5, [sp, #8*4]		@ *err_ptr
-+#endif
- 		str	r4, [r5]
- 		ldmia	sp, {r1, r2}		@ retrieve dst, len
- 		add	r2, r2, r1
+ .../devicetree/bindings/rtc/rtc-mediatek.txt       |  21 ++
+ MAINTAINERS                                        |   3 +
+ drivers/rtc/Kconfig                                |  18 +-
+ drivers/rtc/Makefile                               |   1 +
+ drivers/rtc/rtc-mediatek.c                         | 398 +++++++++++++++++++++
+ 5 files changed, 437 insertions(+), 4 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/rtc/rtc-mediatek.txt
+ create mode 100644 drivers/rtc/rtc-mediatek.c
+
 -- 
-1.9.1
+2.7.4
