@@ -1,68 +1,67 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH 2/5] nvmem: mtk-efuse: use stack for nvmem_config
- instead of malloc'ing it
-Date: Fri, 22 Sep 2017 11:59:47 +0800
-Message-ID: <1506052787.21515.10.camel@mtkswgap22>
-References: <1505134864-11975-1-git-send-email-yamada.masahiro@socionext.com>
-         <1505134864-11975-3-git-send-email-yamada.masahiro@socionext.com>
-         <1505925159.17049.12.camel@mtkswgap22>
-         <CAK7LNARoZnVduzkWqyTYq4iMEAi0A88cpGWrD0Zc=wt=Xa+1QA@mail.gmail.com>
+From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 3/4] rtc: mediatek: enhance the description for MediaTek
+ PMIC based RTC
+Date: Fri, 22 Sep 2017 16:07:16 +0800
+Message-ID: <1506067636.26847.2.camel@mtksdaap41>
+References: <cover.1506049341.git.sean.wang@mediatek.com>
+         <0d9d5559d9d884c98ef589a8f56ab0dcb140e5e0.1506049341.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAK7LNARoZnVduzkWqyTYq4iMEAi0A88cpGWrD0Zc=wt=Xa+1QA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Masahiro Yamada <yamada.masahiro@socionext.com>
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Jassi Brar <jaswinder.singh@linaro.org>, Keiji Hayashibara <hayashibara.keiji@socionext.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Masami Hiramatsu <mhiramat@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <0d9d5559d9d884c98ef589a8f56ab0dcb140e5e0.1506049341.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rtc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Masahiro
+Hi Sean,
 
-On Thu, 2017-09-21 at 11:09 +0900, Masahiro Yamada wrote:
-> Hi Sean,
+On Fri, 2017-09-22 at 11:33 +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
+> Give a better description for original MediaTek RTC driver as PMIC based
+> RTC in order to distinguish SoC based RTC. Also turning all words with
+> Mediatek to MediaTek here.
 > 
-> 2017-09-21 1:32 GMT+09:00 Sean Wang <sean.wang@mediatek.com>:
-> > Hi, Masahiro
-> >
-> > For maintainability, I felt it's better if we use the same way to
-> > register nvmem as that most drivers does under nvmem usually using
-> > static structure. Otherwise, they should also be changed to use the
-> > one-time data in stack to avoid extra bytes to keep them.
-> >
-> >         Sean
+> Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/rtc/Kconfig | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 > 
-> 
-> Srinivas and I discussed the best practice for allocating nvmem_config.
-> https://lkml.org/lkml/2017/9/11/4
-> 
-> From the discussion, static structure is possible only when
-> the system has one instance of the device.
-> 
+> diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
+> index 4226295..4500f77 100644
+> --- a/drivers/rtc/Kconfig
+> +++ b/drivers/rtc/Kconfig
+> @@ -1716,14 +1716,14 @@ config RTC_DRV_MEDIATEK
+>  	  will be called rtc-mediatek.
+>  
+>  config RTC_DRV_MT6397
+> -	tristate "Mediatek Real Time Clock driver"
+> +	tristate "MediaTek PMIC based RTC"
+>  	depends on MFD_MT6397 || (COMPILE_TEST && IRQ_DOMAIN)
+>  	help
+> -	  This selects the Mediatek(R) RTC driver. RTC is part of Mediatek
+> +	  This selects the MediaTek(R) RTC driver. RTC is part of MediaTek
+>  	  MT6397 PMIC. You should enable MT6397 PMIC MFD before select
+> -	  Mediatek(R) RTC driver.
+> +	  MediaTek(R) RTC driver.
+>  
+> -	  If you want to use Mediatek(R) RTC interface, select Y or M here.
+> +	  If you want to use MediaTek(R) RTC interface, select Y or M here.
+>  
+>  config RTC_DRV_XGENE
+>  	tristate "APM X-Gene RTC"
 
-thank you for your detailed explanation
+Thanks your correction.
 
-> If you know this is the case for mediatek,
-> yes, you can turn it into static,
-> but it is not always possible.
-> For example, Socionext SoCs have
-> two banks of efuse devices.
-> 
+Acked-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-there should be only one instance of nvmem for mediatek soc, currently
+Regards,
 
 
-> So, if we want to align the coding style for consistency,
-> nvmem in stack is safe and efficient, I think.
-> 
-> 
-> Moving one-time data into stack slightly
-> reduces the kernel image size.
-> 
-> 
-
-agreed on those statements, indeed bigger struct uart_8250_port is still
-used on stack for configuring in a lot 8250 driver, so 
-
-Acked-by: Sean Wang <sean.wang@mediatek.com>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
