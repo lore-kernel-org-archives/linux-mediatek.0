@@ -1,38 +1,25 @@
-From: Herbert Xu <herbert@gondor.apana.org.au>
-Subject: Re: [PATCH 00/11] crypto: gcm - add GCM IV size constant
-Date: Fri, 22 Sep 2017 18:14:05 +0800
-Message-ID: <20170922101405.GI16270@gondor.apana.org.au>
-References: <20170822080818.12486-1-clabbe.montjoie@gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v2] mmc: dt-bindings: Add reg/source_cg/latch-ck for
+ Mediatek MMC bindings
+Date: Fri, 22 Sep 2017 13:25:52 +0200
+Message-ID: <CACRpkdaco5XnWK-gAdGLWFZtjqnM16iT424ist5Zmd3RyAXAEQ@mail.gmail.com>
+References: <1505958774-14410-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170822080818.12486-1-clabbe.montjoie@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Corentin Labbe <clabbe.montjoie@gmail.com>
-Cc: davem@davemloft.net, tglx@linutronix.de, mingo@redhat.com, hpa@zytor.com, x86@kernel.org, horia.geanta@nxp.com, dan.douglass@nxp.com, thomas.lendacky@amd.com, gary.hook@amd.com, harsh@chelsio.com, matthias.bgg@gmail.com, leosilva@linux.vnet.ibm.com, pfsmorigo@linux.vnet.ibm.com, benh@kernel.crashing.org, paulus@samba.org, mpe@ellerman.id.au, linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1505958774-14410-1-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, yong mao <yong.mao@mediatek.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Heiner Kallweit <hkallweit1@gmail.com>, Phong LE <ple@baylibre.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Aug 22, 2017 at 10:08:07AM +0200, Corentin Labbe wrote:
-> Many GCM users use directly GCM IV size instead of using some constant.
-> 
-> This patch add all IV size constant used by GCM and convert drivers for using them..
-> 
-> Corentin Labbe (11):
->   crypto: gcm - add GCM iv size constant
->   crypto: caam - Use GCM IV size constant
->   crypto: ccp - Use GCM IV size constant
->   crypto: nx - Use GCM IV size constant
->   crypto: atmel - Use GCM IV size constant
->   crypto: bcm - Use GCM IV size constant
->   crypto: mediatek - Use GCM IV size constant
->   crypto: chelsio - Use GCM IV size constant
->   crypto: omap - Use GCM IV size constant
->   crypto: gcm - Use GCM IV size constant
->   crypto: aesni - Use GCM IV size constant
+On Thu, Sep 21, 2017 at 3:52 AM, Chaotian Jing
+<chaotian.jing@mediatek.com> wrote:
 
-All applied.  Thanks.
--- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+> +- mediatek,latch-ck: Some projects do not support enhance_rx, need set correct latch-ck to avoid data crc
+> +                    error caused by stop clock(fifo full)
+
+I think I wrote elsewhere: replace "projects" with "systems" or "SoCs".
+
+Yours,
+Linus Walleij
