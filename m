@@ -1,64 +1,108 @@
-From: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3] mmc: dt-bindings: Add reg/source_cg/latch-ck for Mediatek MMC bindings
-Date: Fri, 22 Sep 2017 20:03:49 +0800
-Message-ID: <1506081829-29296-1-git-send-email-chaotian.jing@mediatek.com>
+From: Chen Zhong <chen.zhong@mediatek.com>
+Subject: Re: [PATCH v4 2/5] dt-bindings: input: Add document bindings for
+ mtk-pmic-keys
+Date: Sat, 23 Sep 2017 14:38:15 +0800
+Message-ID: <1506148695.19409.10.camel@mhfsdcap03>
+References: <1505635252-27716-1-git-send-email-chen.zhong@mediatek.com>
+         <1505635252-27716-3-git-send-email-chen.zhong@mediatek.com>
+         <20170920205301.v6gpmhll4pdpuyxv@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, yong mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Heiner Kallweit <hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Phong LE <ple-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-input-owner@vger.kernel.org>
+In-Reply-To: <20170920205301.v6gpmhll4pdpuyxv@rob-hp-laptop>
+Sender: linux-input-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Lee Jones <lee.jones@linaro.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Andi Shyti <andi.shyti@samsung.com>, Jaechul Lee <jcsing.lee@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Change the comptiable for support of multi-platform
-Add description for reg
-Add description for source_cg
-Add description for mediatek,latch-ck
-Note that source_cg and mediatek,latch-ck are optional for some projects,
-eg, MT2701 do not have source_cg, and MT2712 do not need
-mediatek,latch-ck
+On Wed, 2017-09-20 at 15:53 -0500, Rob Herring wrote:
+> On Sun, Sep 17, 2017 at 04:00:49PM +0800, Chen Zhong wrote:
+> > This patch adds the device tree binding documentation for the MediaTek
+> > pmic keys found on PMIC MT6397/MT6323.
+> > 
+> > Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/input/mtk-pmic-keys.txt    |   41 ++++++++++++++++++++
+> >  1 file changed, 41 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+> > new file mode 100644
+> > index 0000000..fd48ff7
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+> > @@ -0,0 +1,41 @@
+> > +MediaTek MT6397/MT6323 PMIC Keys Device Driver
+> > +
+> > +There are two key functions provided by MT6397/MT6323 PMIC, pwrkey
+> > +and homekey. The key functions are defined as the subnode of the function
+> > +node provided by MT6397/MT6323 PMIC that is being defined as one kind
+> > +of Muti-Function Device (MFD)
+> > +
+> > +For MT6397/MT6323 MFD bindings see:
+> > +Documentation/devicetree/bindings/mfd/mt6397.txt
+> > +
+> > +Required properties:
+> > +- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
+> > +- linux,keycodes: Specifies the numeric keycode values to
+> > +	be used for reporting keys presses. The array can
+> > +	contain up to 2 entries.
+> > +
+> > +Optional Properties:
+> > +- mediatek,wakeup-keys: Specifies each key can be used as a wakeup source
+> > +	or not. This can be customized depends on board design.
+> 
+> I think this should be a common property if we're going to put into DT. 
+> Something like "wakeup-scancodes" to be clear the values are the raw 
+> scancodes. Alternatively, we could list Linux keycodes instead with 
+> something like "linux,wakeup-keycodes".
+> 
+> > +- wakeup-source: PMIC keys can be used as wakeup sources.
+> 
+> Just "See ../power/wakeup-source.txt" for the description.
+> 
+> > +- mediatek,long-press-mode: Long press key shutdown setting, 1 for
+> > +	pwrkey only, 2 for pwrkey/homekey together, others for disabled.
+> > +- debounce-interval: Long press key shutdown debouncing interval time
+> > +	in seconds. 0/1/2/3 for 8/11/14/5 seconds. If not specified defaults to 0.
+> 
+> This property units should be in milliseconds. However, this doesn't 
+> sound like debounce filtering time if 5-14 seconds. That sounds like 
+> forced power off time (i.e. for a hung device). This also should be 
+> common. I imagine we already have some drivers with similar properties.
 
-Signed-off-by: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- Documentation/devicetree/bindings/mmc/mtk-sd.txt | 13 ++++++++++---
- 1 file changed, 10 insertions(+), 3 deletions(-)
+Hi Rob,
 
-diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-index 4182ea3..b934a29 100644
---- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-+++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-@@ -7,10 +7,15 @@ This file documents differences between the core properties in mmc.txt
- and the properties used by the msdc driver.
- 
- Required properties:
--- compatible: Should be "mediatek,mt8173-mmc","mediatek,mt8135-mmc"
-+- compatible: value should be either of the following.
-+	"mediatek,mt8135-mmc": for mmc host ip compatible with mt8135
-+	"mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
-+	"mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
-+	"mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
-+- reg: physical base address of the controller and length
- - interrupts: Should contain MSDC interrupt number
--- clocks: MSDC source clock, HCLK
--- clock-names: "source", "hclk"
-+- clocks: MSDC source clock, HCLK, source_cg
-+- clock-names: "source", "hclk", "source_cg"
- - pinctrl-names: should be "default", "state_uhs"
- - pinctrl-0: should contain default/high speed pin ctrl
- - pinctrl-1: should contain uhs mode pin ctrl
-@@ -30,6 +35,8 @@ Optional properties:
- - mediatek,hs400-cmd-resp-sel-rising:  HS400 command response sample selection
- 				       If present,HS400 command responses are sampled on rising edges.
- 				       If not present,HS400 command responses are sampled on falling edges.
-+- mediatek,latch-ck: Some SoCs do not support enhance_rx, need set correct latch-ck to avoid data crc
-+		     error caused by stop clock(fifo full)
- 
- Examples:
- mmc0: mmc@11230000 {
--- 
-1.8.1.1.dirty
+I searched in kernel documents and found a similar usage in
+"ti,palmas-pwrbutton.txt"
+"- ti,palmas-long-press-seconds: Duration in seconds which the power
+  button should be kept pressed for Palmas to power off automatically."
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Could I just wrote it like this?
+mediatek,long-press-seconds = <0>;
+
+And for the wakeup source part, how about Dmitry's suggestion? 
+The whole device node would be:
+
+mt6397keys: mt6397keys {
+	compatible = "mediatek,mt6397-keys";
+	mediatek,long-press-mode = <1>;
+	mediatek,long-press-seconds = <0>;
+	
+	power@0 {
+		linux,code = <116>;
+		wakeup-source;
+	};
+
+	home@0 {
+		linux,code = <114>;
+	};
+};
+
+Thank you.
+
+> 
+> Rob
+
+
