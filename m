@@ -1,77 +1,48 @@
-From: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 3/3] arm64: dts: mt2712: Add auxadc device node.
-Date: Sun, 24 Sep 2017 16:47:05 +0100
-Message-ID: <20170924164705.78cbb856@archlinux>
-References: <1505957212-13402-1-git-send-email-zhiyong.tao@mediatek.com>
-        <1505957212-13402-4-git-send-email-zhiyong.tao@mediatek.com>
+From: Elscha <elscha@freenet.de>
+Subject: [Patch] ARM/Mediatek SoC: Remove useless dependency from UX500_SOC_ID
+ to COMPILE_TEST
+Date: Sun, 24 Sep 2017 17:58:48 +0200
+Message-ID: <59C7D638.9070702@freenet.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1505957212-13402-4-git-send-email-zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 21 Sep 2017 09:26:52 +0800
-Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+Remove useless dependency from UX500_SOC_ID to COMPILE_TEST
 
-> Add auxadc device node for MT2712.
-> 
-> Signed-off-by: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+* This dependency is ignored by the Kbuild scripts (more precisely in
+   drivers/soc/Makefile, line 25). Thus, enabling COMPILE_TEST if ARCH_U8500
+   is disabled has no effect.
+* Further, this code file depends on an ARM specific header (e.g. cputype.h
+   in line 18 is specific to the ARM and Unicore32 architectures). Thus,
+   compiling this file on other architectures than ARM will result in
+   compilation errors.
 
-I've applied the IIO patches to make this work, so assume this will get
-picked up in due course.
+Signed-off-by:  Sascha El-Sharkawy<elscha@freenet.de>
+---
+  drivers/soc/ux500/Kconfig |    2 +-
+  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Jonathan
-
-> ---
-> This patch dependents on "Mediatek MT2712 clock and scpsys support"[1].
-> Please accept this patch together with [1].
-> [1]http://lists.infradead.org/pipermail/linux-mediatek/2017-September/010461.html
-> ---
->  arch/arm64/boot/dts/mediatek/mt2712-evb.dts |    4 ++++
->  arch/arm64/boot/dts/mediatek/mt2712e.dtsi   |    9 +++++++++
->  2 files changed, 13 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-> index 14163b9..76cbf4a 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-> @@ -28,6 +28,10 @@
->  	};
->  };
->  
-> +&auxadc {
-> +	status = "okay";
-> +};
-> +
->  &uart0 {
->  	status = "okay";
->  };
-> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> index 3232e4e..bf65c92 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> @@ -225,6 +225,15 @@
->  			 (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_HIGH)>;
->  	};
->  
-> +	auxadc: adc@11001000 {
-> +		compatible = "mediatek,mt2712-auxadc";
-> +		reg = <0 0x11001000 0 0x1000>;
-> +		clocks = <&pericfg CLK_PERI_AUXADC>;
-> +		clock-names = "main";
-> +		#io-channel-cells = <1>;
-> +		status = "disabled";
-> +	};
-> +
->  	uart0: serial@11002000 {
->  		compatible = "mediatek,mt2712-uart",
->  			     "mediatek,mt6577-uart";
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/soc/ux500/Kconfig b/drivers/soc/ux500/Kconfig
+index 025a44a..49ed883 100644
+--- a/drivers/soc/ux500/Kconfig
++++ b/drivers/soc/ux500/Kconfig
+@@ -1,6 +1,6 @@
+  config UX500_SOC_ID
+  	bool "SoC bus for ST-Ericsson ux500"
+-	depends on ARCH_U8500 || COMPILE_TEST
++	depends on ARCH_U8500
+  	default ARCH_U8500
+  	help
+  	  Include support for the SoC bus on the ARM RealView platforms
