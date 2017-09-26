@@ -1,107 +1,204 @@
-From: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH] iommu/mediatek: Limit the physical address in 32bit for
-	v7s
-Date: Mon, 25 Sep 2017 14:53:36 +0100
-Message-ID: <20170925135335.GB30042@arm.com>
-References: <1506334526-26246-1-git-send-email-yong.wu@mediatek.com>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: Re: [PATCH 03/12] mmc: mediatek: add support of mt2701/mt2712
+Date: Tue, 26 Sep 2017 09:38:30 +0800
+Message-ID: <1506389910.8495.0.camel@mhfsdcap03>
+References: <1505207272-16983-1-git-send-email-chaotian.jing@mediatek.com>
+         <1505207272-16983-4-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1506334526-26246-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1505207272-16983-4-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Heiner Kallweit <hkallweit1@gmail.com>, Phong LE <ple@baylibre.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Sep 25, 2017 at 06:15:26PM +0800, Yong Wu wrote:
-> The ARM short descriptor has already limited the physical address
-> to 32bit after the commit <76557391433c> ("iommu/io-pgtable: Sanitise
-> map/unmap addresses"). But in MediaTek 4GB mode, the physical address
-> is from 0x1_0000_0000 to 0x1_ffff_ffff. this will cause:
+Hi Ulf,
+
+Sorry to disturb you, Do you have some comments of these series of
+patch ?
+Thx!
+On Tue, 2017-09-12 at 17:07 +0800, Chaotian Jing wrote:
+> mt2701/mt2712 has 12bit clock div, which is not compatible with
+> mt8135/mt8173. and, some additional features will be added in
+> mt2701/mt2712, so that need distinguish it by comatibale name.
 > 
-> WARNING: CPU: 4 PID: 3900 at
-> xxx/drivers/iommu/io-pgtable-arm-v7s.c:482 arm_v7s_map+0x40/0xf8
-> Modules linked in:
-> 
-> CPU: 4 PID: 3900 Comm: weston Tainted: G S      W       4.9.44 #1
-> Hardware name: MediaTek MT2712m1v1 board (DT)
-> task: ffffffc0eaa5b280 task.stack: ffffffc0e9858000
-> PC is at arm_v7s_map+0x40/0xf8
-> LR is at mtk_iommu_map+0x64/0x90
-> pc : [<ffffff80085b09e8>] lr : [<ffffff80085b29fc>] pstate: 000001c5
-> sp : ffffffc0e985b920
-> x29: ffffffc0e985b920 x28: 0000000127d00000
-> x27: 0000000000100000 x26: ffffff8008f9e000
-> x25: 0000000000000003 x24: 0000000000100000
-> x23: 0000000127d00000 x22: 00000000ff800000
-> x21: ffffffc0f7ec8ce0 x20: 0000000000000003
-> x19: 0000000000000003 x18: 0000000000000002
-> x17: 0000007f7e5d72c0 x16: ffffff80082b0f08
-> x15: 0000000000000001 x14: 000000000000003f
-> x13: 0000000000000000 x12: 0000000000000028
-> x11: 0088000000000000 x10: 0000000000000000
-> x9 : ffffff80092fa000 x8 : ffffffc0e9858000
-> x7 : ffffff80085b29d8 x6 : 0000000000000000
-> x5 : ffffff80085b09a8 x4 : 0000000000000003
-> x3 : 0000000000100000 x2 : 0000000127d00000
-> x1 : 00000000ff800000 x0 : 0000000000000001
-> ...
-> Call trace:
-> [<ffffff80085b09e8>] arm_v7s_map+0x40/0xf8
-> [<ffffff80085b29fc>] mtk_iommu_map+0x64/0x90
-> [<ffffff80085ab5f8>] iommu_map+0x100/0x3a0
-> [<ffffff80085ab99c>] default_iommu_map_sg+0x104/0x168
-> [<ffffff80085aead8>] iommu_dma_alloc+0x238/0x3f8
-> [<ffffff8008098b30>] __iommu_alloc_attrs+0xa8/0x260
-> [<ffffff80085f364c>] mtk_drm_gem_create+0xac/0x180
-> [<ffffff80085f3894>] mtk_drm_gem_dumb_create+0x54/0xc8
-> [<ffffff80085d576c>] drm_mode_create_dumb_ioctl+0xa4/0xd8
-> [<ffffff80085cb2a0>] drm_ioctl+0x1c0/0x490
-> 
-> In order to satify this, Limit the physical address to 32bit.
-> 
-> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-Based on my understanding of how this works, and from a conversation with
-Robin:
-
-Acked-by: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-
-I guess Joerg will pick this one up directly. I'll queue your other fix in
-case I get any more SMMU fixes.
-
-Will
-
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
 > ---
-> Base on v4.14-rc1.
-> ---
->  drivers/iommu/mtk_iommu.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  drivers/mmc/host/mtk-sd.c | 82 +++++++++++++++++++++++++++++++++++++++--------
+>  1 file changed, 69 insertions(+), 13 deletions(-)
 > 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index bd515be..16d33ac 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -371,7 +371,8 @@ static int mtk_iommu_map(struct iommu_domain *domain, unsigned long iova,
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 267f7ab..643c795 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -95,6 +95,9 @@
+>  #define MSDC_CFG_CKDIV          (0xff << 8)	/* RW */
+>  #define MSDC_CFG_CKMOD          (0x3 << 16)	/* RW */
+>  #define MSDC_CFG_HS400_CK_MODE  (0x1 << 18)	/* RW */
+> +#define MSDC_CFG_HS400_CK_MODE_EXTRA  (0x1 << 22)	/* RW */
+> +#define MSDC_CFG_CKDIV_EXTRA    (0xfff << 8)	/* RW */
+> +#define MSDC_CFG_CKMOD_EXTRA    (0x3 << 20)	/* RW */
+>  
+>  /* MSDC_IOCON mask */
+>  #define MSDC_IOCON_SDR104CKS    (0x1 << 0)	/* RW */
+> @@ -295,6 +298,10 @@ struct msdc_save_para {
+>  	u32 emmc50_cfg0;
+>  };
+>  
+> +struct mtk_mmc_compatible {
+> +	u8 clk_div_bits;
+> +};
+> +
+>  struct msdc_tune_para {
+>  	u32 iocon;
+>  	u32 pad_tune;
+> @@ -309,6 +316,7 @@ struct msdc_delay_phase {
+>  
+>  struct msdc_host {
+>  	struct device *dev;
+> +	const struct mtk_mmc_compatible *dev_comp;
+>  	struct mmc_host *mmc;	/* mmc structure */
+>  	int cmd_rsp;
+>  
+> @@ -350,6 +358,31 @@ struct msdc_host {
+>  	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
+>  };
+>  
+> +static const struct mtk_mmc_compatible mt8135_compat = {
+> +	.clk_div_bits = 8,
+> +};
+> +
+> +static const struct mtk_mmc_compatible mt8173_compat = {
+> +	.clk_div_bits = 8,
+> +};
+> +
+> +static const struct mtk_mmc_compatible mt2701_compat = {
+> +	.clk_div_bits = 12,
+> +};
+> +
+> +static const struct mtk_mmc_compatible mt2712_compat = {
+> +	.clk_div_bits = 12,
+> +};
+> +
+> +static const struct of_device_id msdc_of_ids[] = {
+> +	{ .compatible = "mediatek,mt8135-mmc", .data = &mt8135_compat},
+> +	{ .compatible = "mediatek,mt8173-mmc", .data = &mt8173_compat},
+> +	{ .compatible = "mediatek,mt2701-mmc", .data = &mt2701_compat},
+> +	{ .compatible = "mediatek,mt2712-mmc", .data = &mt2712_compat},
+> +	{}
+> +};
+> +MODULE_DEVICE_TABLE(of, msdc_of_ids);
+> +
+>  static void sdr_set_bits(void __iomem *reg, u32 bs)
+>  {
+>  	u32 val = readl(reg);
+> @@ -509,7 +542,12 @@ static void msdc_set_timeout(struct msdc_host *host, u32 ns, u32 clks)
+>  		timeout = (ns + clk_ns - 1) / clk_ns + clks;
+>  		/* in 1048576 sclk cycle unit */
+>  		timeout = (timeout + (0x1 << 20) - 1) >> 20;
+> -		sdr_get_field(host->base + MSDC_CFG, MSDC_CFG_CKMOD, &mode);
+> +		if (host->dev_comp->clk_div_bits == 8)
+> +			sdr_get_field(host->base + MSDC_CFG,
+> +				      MSDC_CFG_CKMOD, &mode);
+> +		else
+> +			sdr_get_field(host->base + MSDC_CFG,
+> +				      MSDC_CFG_CKMOD_EXTRA, &mode);
+>  		/*DDR mode will double the clk cycles for data timeout */
+>  		timeout = mode >= 2 ? timeout * 2 : timeout;
+>  		timeout = timeout > 1 ? timeout - 1 : 0;
+> @@ -548,7 +586,11 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+>  
+>  	flags = readl(host->base + MSDC_INTEN);
+>  	sdr_clr_bits(host->base + MSDC_INTEN, flags);
+> -	sdr_clr_bits(host->base + MSDC_CFG, MSDC_CFG_HS400_CK_MODE);
+> +	if (host->dev_comp->clk_div_bits == 8)
+> +		sdr_clr_bits(host->base + MSDC_CFG, MSDC_CFG_HS400_CK_MODE);
+> +	else
+> +		sdr_clr_bits(host->base + MSDC_CFG,
+> +			     MSDC_CFG_HS400_CK_MODE_EXTRA);
+>  	if (timing == MMC_TIMING_UHS_DDR50 ||
+>  	    timing == MMC_TIMING_MMC_DDR52 ||
+>  	    timing == MMC_TIMING_MMC_HS400) {
+> @@ -568,8 +610,12 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+>  
+>  		if (timing == MMC_TIMING_MMC_HS400 &&
+>  		    hz >= (host->src_clk_freq >> 1)) {
+> -			sdr_set_bits(host->base + MSDC_CFG,
+> -				     MSDC_CFG_HS400_CK_MODE);
+> +			if (host->dev_comp->clk_div_bits == 8)
+> +				sdr_set_bits(host->base + MSDC_CFG,
+> +					     MSDC_CFG_HS400_CK_MODE);
+> +			else
+> +				sdr_set_bits(host->base + MSDC_CFG,
+> +					     MSDC_CFG_HS400_CK_MODE_EXTRA);
+>  			sclk = host->src_clk_freq >> 1;
+>  			div = 0; /* div is ignore when bit18 is set */
+>  		}
+> @@ -587,8 +633,15 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+>  			sclk = (host->src_clk_freq >> 2) / div;
+>  		}
+>  	}
+> -	sdr_set_field(host->base + MSDC_CFG, MSDC_CFG_CKMOD | MSDC_CFG_CKDIV,
+> -		      (mode << 8) | div);
+> +	if (host->dev_comp->clk_div_bits == 8)
+> +		sdr_set_field(host->base + MSDC_CFG,
+> +			      MSDC_CFG_CKMOD | MSDC_CFG_CKDIV,
+> +			      (mode << 8) | div);
+> +	else
+> +		sdr_set_field(host->base + MSDC_CFG,
+> +			      MSDC_CFG_CKMOD_EXTRA | MSDC_CFG_CKDIV_EXTRA,
+> +			      (mode << 12) | div);
+> +
+>  	sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_CKPDN);
+>  	while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
+>  		cpu_relax();
+> @@ -1617,12 +1670,17 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>  	struct mmc_host *mmc;
+>  	struct msdc_host *host;
+>  	struct resource *res;
+> +	const struct of_device_id *of_id;
 >  	int ret;
 >  
->  	spin_lock_irqsave(&dom->pgtlock, flags);
-> -	ret = dom->iop->map(dom->iop, iova, paddr, size, prot);
-> +	ret = dom->iop->map(dom->iop, iova, paddr & DMA_BIT_MASK(32),
-> +			    size, prot);
->  	spin_unlock_irqrestore(&dom->pgtlock, flags);
+>  	if (!pdev->dev.of_node) {
+>  		dev_err(&pdev->dev, "No DT found\n");
+>  		return -EINVAL;
+>  	}
+> +
+> +	of_id = of_match_node(msdc_of_ids, pdev->dev.of_node);
+> +	if (!of_id)
+> +		return -EINVAL;
+>  	/* Allocate MMC host for this device */
+>  	mmc = mmc_alloc_host(sizeof(struct msdc_host), &pdev->dev);
+>  	if (!mmc)
+> @@ -1686,11 +1744,15 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>  	msdc_of_property_parse(pdev, host);
 >  
->  	return ret;
-> -- 
-> 1.8.1.1.dirty
-> 
+>  	host->dev = &pdev->dev;
+> +	host->dev_comp = of_id->data;
+>  	host->mmc = mmc;
+>  	host->src_clk_freq = clk_get_rate(host->src_clk);
+>  	/* Set host parameters to mmc */
+>  	mmc->ops = &mt_msdc_ops;
+> -	mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 255);
+> +	if (host->dev_comp->clk_div_bits == 8)
+> +		mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 255);
+> +	else
+> +		mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 4095);
+>  
+>  	mmc->caps |= MMC_CAP_ERASE | MMC_CAP_CMD23;
+>  	/* MMC core transfer sizes tunable parameters */
+> @@ -1839,12 +1901,6 @@ static int msdc_runtime_resume(struct device *dev)
+>  	SET_RUNTIME_PM_OPS(msdc_runtime_suspend, msdc_runtime_resume, NULL)
+>  };
+>  
+> -static const struct of_device_id msdc_of_ids[] = {
+> -	{   .compatible = "mediatek,mt8135-mmc", },
+> -	{}
+> -};
+> -MODULE_DEVICE_TABLE(of, msdc_of_ids);
+> -
+>  static struct platform_driver mt_msdc_driver = {
+>  	.probe = msdc_drv_probe,
+>  	.remove = msdc_drv_remove,
