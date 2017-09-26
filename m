@@ -1,85 +1,63 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH] soc: mediatek: place Kconfig for all SoC driver under
- menu
-Date: Tue, 26 Sep 2017 15:24:56 +0800
-Message-ID: <1506410696.21515.17.camel@mtkswgap22>
-References: <b7aeda2773ebd2f030ddd782b31a594a05fdef2c.1505982942.git.sean.wang@mediatek.com>
-         <20170926075558.7e4c99c3@endymion>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH v2 05/10] arm: dts: mt7623: update pio, usb and crypto
+ nodes
+Date: Tue, 26 Sep 2017 18:17:05 +0800
+Message-ID: <1506421025.5626.6.camel@mtksdaap41>
+References: <cover.1506390597.git.ryder.lee@mediatek.com>
+         <93734b87262a8305b67e989777dfa1297d66cee4.1506390597.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170926075558.7e4c99c3@endymion>
+In-Reply-To: <93734b87262a8305b67e989777dfa1297d66cee4.1506390597.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jean Delvare <jdelvare@suse.de>
-Cc: matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, arnd@arndb.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, Erin Lo <erin.lo@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-09-26 at 07:55 +0200, Jean Delvare wrote:
-> On Thu, 21 Sep 2017 16:46:35 +0800, sean.wang@mediatek.com wrote:
-> > From: Sean Wang <sean.wang@mediatek.com>
-> > 
-> > Add cleanup for placing all Kconfig for all MediaTek SoC drivers under
-> > the independent menu as other SoCs vendor usually did.
-> > 
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > ---
-> >  drivers/soc/mediatek/Kconfig | 4 ++++
-> >  1 file changed, 4 insertions(+)
-> > 
-> > diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-> > index 609bb34..a2fcd7f 100644
-> > --- a/drivers/soc/mediatek/Kconfig
-> > +++ b/drivers/soc/mediatek/Kconfig
-> > @@ -1,6 +1,8 @@
-> >  #
-> >  # MediaTek SoC drivers
-> >  #
-> > +menu "MediaTek SoC drivers"
+On Tue, 2017-09-26 at 10:02 +0800, Ryder Lee wrote:
+> This patch updates pio, usb and crypto nodes to make them be consistent
+> with the binding documents.
 > 
-> Could it depend on ARCH_MEDIATEK || COMPILE_TEST? So that it isn't
-> presented if it is going to be empty.
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  arch/arm/boot/dts/mt7623.dtsi | 52 ++++++++++++++++++++++---------------------
+>  1 file changed, 27 insertions(+), 25 deletions(-)
 > 
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index 381843e..9ec3767 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -226,21 +226,6 @@
+>  		#reset-cells = <1>;
+>  	};
+>  
+> -	pio: pinctrl@10005000 {
+> -		compatible = "mediatek,mt7623-pinctrl",
+> -			     "mediatek,mt2701-pinctrl";
+> -		reg = <0 0x1000b000 0 0x1000>;
+> -		mediatek,pctl-regmap = <&syscfg_pctl_a>;
+> -		pins-are-numbered;
+> -		gpio-controller;
+> -		#gpio-cells = <2>;
+> -		interrupt-controller;
+> -		interrupt-parent = <&gic>;
+> -		#interrupt-cells = <2>;
+> -		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>,
+> -			     <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH>;
+> -	};
+> -
+>  	syscfg_pctl_a: syscfg@10005000 {
+>  		compatible = "mediatek,mt7623-pctl-a-syscfg", "syscon";
+>  		reg = <0 0x10005000 0 0x1000>;
 
-Okay, I'll add a dependency for the menu. And all "depends on
-ARCH_MEDIATEK" for items insides the menu can also be removed.
 
-such as
+Hi Ryder,
 
- menu "MediaTek SoC drivers"
-+       depends on ARCH_MEDIATEK || COMPILE_TEST
+pio node is special, it have 2 registers space.
+The address 10005000 is for PIO, it was accesed through syscfg_pctl_a
+regmap. The other one, 0x1000b000, is for EINT.
 
- config MTK_INFRACFG
-        bool "MediaTek INFRACFG Support"
--       depends on ARCH_MEDIATEK || COMPILE_TEST
-        select REGMAP
-        help
-          Say yes here to add support for the MediaTek INFRACFG
-controller. The
-@@ -14,7 +14,6 @@ config MTK_INFRACFG
+So,I think using address @10005000 is correct.
 
- config MTK_PMIC_WRAP
-        tristate "MediaTek PMIC Wrapper Support"
--       depends on ARCH_MEDIATEK
-        select RESET_CONTROLLER
-        select REGMAP
-        help
-@@ -24,7 +23,6 @@ config MTK_PMIC_WRAP
-
- config MTK_SCPSYS
-        bool "MediaTek SCPSYS Support"
--       depends on ARCH_MEDIATEK || COMPILE_TEST
-        default ARCH_MEDIATEK
-
-> > +
-> >  config MTK_INFRACFG
-> >  	bool "MediaTek INFRACFG Support"
-> >  	depends on ARCH_MEDIATEK || COMPILE_TEST
-> > @@ -30,3 +32,5 @@ config MTK_SCPSYS
-> >  	help
-> >  	  Say yes here to add support for the MediaTek SCPSYS power domain
-> >  	  driver.
-> > +
-> > +endmenu
-> 
-> 
+Joe.C
