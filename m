@@ -1,50 +1,85 @@
-From: Jean Delvare <jdelvare@suse.de>
-Subject: Re: [PATCH] soc: mediatek: turn MTK_PMIC_WRAP into visible symbols
-Date: Tue, 26 Sep 2017 08:00:22 +0200
-Message-ID: <20170926080022.215f7b7b@endymion>
-References: <6c1696cf9f860cc8151a906ecbc799121b5aeeab.1505984256.git.sean.wang@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH] soc: mediatek: place Kconfig for all SoC driver under
+ menu
+Date: Tue, 26 Sep 2017 15:24:56 +0800
+Message-ID: <1506410696.21515.17.camel@mtkswgap22>
+References: <b7aeda2773ebd2f030ddd782b31a594a05fdef2c.1505982942.git.sean.wang@mediatek.com>
+         <20170926075558.7e4c99c3@endymion>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6c1696cf9f860cc8151a906ecbc799121b5aeeab.1505984256.git.sean.wang@mediatek.com>
+In-Reply-To: <20170926075558.7e4c99c3@endymion>
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
+To: Jean Delvare <jdelvare@suse.de>
 Cc: matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, arnd@arndb.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 21 Sep 2017 17:01:05 +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On Tue, 2017-09-26 at 07:55 +0200, Jean Delvare wrote:
+> On Thu, 21 Sep 2017 16:46:35 +0800, sean.wang@mediatek.com wrote:
+> > From: Sean Wang <sean.wang@mediatek.com>
+> > 
+> > Add cleanup for placing all Kconfig for all MediaTek SoC drivers under
+> > the independent menu as other SoCs vendor usually did.
+> > 
+> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > ---
+> >  drivers/soc/mediatek/Kconfig | 4 ++++
+> >  1 file changed, 4 insertions(+)
+> > 
+> > diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+> > index 609bb34..a2fcd7f 100644
+> > --- a/drivers/soc/mediatek/Kconfig
+> > +++ b/drivers/soc/mediatek/Kconfig
+> > @@ -1,6 +1,8 @@
+> >  #
+> >  # MediaTek SoC drivers
+> >  #
+> > +menu "MediaTek SoC drivers"
 > 
-> MTK_PMIC_WRAP is the basic and required configuration for those various
-> MediaTek PMICs, so turning MTK_PMIC_WRAP into visible symbols easily
-> allows users tending to have the enablement for those PMICs.
-
-I can't really make sense of the sentence above, sorry, and can't see
-how it matches the change below anyway. MTK_PMIC_WRAP is already a
-visible symbol before this change. The change is probably good in
-itself, but please try to come up with a better description.
-
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  drivers/soc/mediatek/Kconfig | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Could it depend on ARCH_MEDIATEK || COMPILE_TEST? So that it isn't
+> presented if it is going to be empty.
 > 
-> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-> index a2fcd7f..d513629 100644
-> --- a/drivers/soc/mediatek/Kconfig
-> +++ b/drivers/soc/mediatek/Kconfig
-> @@ -15,7 +15,7 @@ config MTK_INFRACFG
->  config MTK_PMIC_WRAP
->  	tristate "MediaTek PMIC Wrapper Support"
->  	depends on ARCH_MEDIATEK
-> -	depends on RESET_CONTROLLER
-> +	select RESET_CONTROLLER
->  	select REGMAP
->  	help
->  	  Say yes here to add support for MediaTek PMIC Wrapper found
 
+Okay, I'll add a dependency for the menu. And all "depends on
+ARCH_MEDIATEK" for items insides the menu can also be removed.
 
--- 
-Jean Delvare
-SUSE L3 Support
+such as
+
+ menu "MediaTek SoC drivers"
++       depends on ARCH_MEDIATEK || COMPILE_TEST
+
+ config MTK_INFRACFG
+        bool "MediaTek INFRACFG Support"
+-       depends on ARCH_MEDIATEK || COMPILE_TEST
+        select REGMAP
+        help
+          Say yes here to add support for the MediaTek INFRACFG
+controller. The
+@@ -14,7 +14,6 @@ config MTK_INFRACFG
+
+ config MTK_PMIC_WRAP
+        tristate "MediaTek PMIC Wrapper Support"
+-       depends on ARCH_MEDIATEK
+        select RESET_CONTROLLER
+        select REGMAP
+        help
+@@ -24,7 +23,6 @@ config MTK_PMIC_WRAP
+
+ config MTK_SCPSYS
+        bool "MediaTek SCPSYS Support"
+-       depends on ARCH_MEDIATEK || COMPILE_TEST
+        default ARCH_MEDIATEK
+
+> > +
+> >  config MTK_INFRACFG
+> >  	bool "MediaTek INFRACFG Support"
+> >  	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > @@ -30,3 +32,5 @@ config MTK_SCPSYS
+> >  	help
+> >  	  Say yes here to add support for the MediaTek SCPSYS power domain
+> >  	  driver.
+> > +
+> > +endmenu
+> 
+> 
