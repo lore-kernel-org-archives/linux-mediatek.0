@@ -1,158 +1,68 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH] dma-debug: fix incorrect pfn calculation
-Date: Tue, 26 Sep 2017 15:53:10 +0100
-Message-ID: <03870968-0060-d6db-d109-f2c299c35bf1@arm.com>
-References: <1506432287-7214-1-git-send-email-miles.chen@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH 01/12] mmc: dt-bindings: update Mediatek MMC bindings
+Date: Wed, 27 Sep 2017 00:33:59 +0200
+Message-ID: <CAPDyKFrUe-0hEsxVRQSZvujcXY8WrR6m-0DMW=VwDDLvz7Lexw@mail.gmail.com>
+References: <1505207272-16983-1-git-send-email-chaotian.jing@mediatek.com>
+ <1505207272-16983-2-git-send-email-chaotian.jing@mediatek.com>
+ <20170913141026.43oh4n4foipmahsk@rob-hp-laptop> <1505355021.8308.4.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1506432287-7214-1-git-send-email-miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>
-Cc: linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1505355021.8308.4.camel@mhfsdcap03>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Heiner Kallweit <hkallweit1@gmail.com>, Phong LE <ple@baylibre.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 26/09/17 14:24, miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> dma-debug report the following warning:
-> 
-> [name:panic&]WARNING: CPU: 3 PID: 298 at kernel-4.4/lib/dma-debug.c:604
-> debug _dma_assert_idle+0x1a8/0x230()
-> DMA-API: cpu touching an active dma mapped cacheline [cln=0x00000882300]
-> CPU: 3 PID: 298 Comm: vold Tainted: G        W  O    4.4.22+ #1
-> Hardware name: MT6739 (DT)
-> Call trace:
-> [<ffffff800808acd0>] dump_backtrace+0x0/0x1d4
-> [<ffffff800808affc>] show_stack+0x14/0x1c
-> [<ffffff800838019c>] dump_stack+0xa8/0xe0
-> [<ffffff80080a0594>] warn_slowpath_common+0xf4/0x11c
-> [<ffffff80080a061c>] warn_slowpath_fmt+0x60/0x80
-> [<ffffff80083afe24>] debug_dma_assert_idle+0x1a8/0x230
-> [<ffffff80081dca9c>] wp_page_copy.isra.96+0x118/0x520
-> [<ffffff80081de114>] do_wp_page+0x4fc/0x534
-> [<ffffff80081e0a14>] handle_mm_fault+0xd4c/0x1310
-> [<ffffff8008098798>] do_page_fault+0x1c8/0x394
-> [<ffffff800808231c>] do_mem_abort+0x50/0xec
-> 
-> I found that debug_dma_alloc_coherent() and debug_dma_free_coherent()
-> always use type "dma_debug_coherent" and assume that dma_alloc_coherent()
-> always returns a linear address.
-> 
-> However if a device returns false on is_device_dma_coherent(),
-> dma_alloc_coherent() will create another non-cacheable mapping
-> (also non linear). In this case, page_to_pfn(virt_to_page(virt)) will
-> return an incorrect pfn. If the pfn is valid and mapped as a COW page,
-> we will hit the warning when doing wp_page_copy().
-> 
-> Fix this by calculating correct pfn if is_device_dma_coherent()
-> returns false.
+On 14 September 2017 at 04:10, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+> On Wed, 2017-09-13 at 09:10 -0500, Rob Herring wrote:
+>> On Tue, Sep 12, 2017 at 05:07:41PM +0800, Chaotian Jing wrote:
+>> > Change the comptiable for support of multi-platform
+>> > Add description for reg
+>> > Add description for source_cg
+>> > Add description for mediatek,latch-ck
+>>
+>> This is at least the 3rd patch with exactly the same vague subject.
+>> Please make the subject somewhat unique.
+>>
+> Thx, will change the subject at next version
+>> >
+>> > Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+>> > ---
+>> >  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 13 ++++++++++---
+>> >  1 file changed, 10 insertions(+), 3 deletions(-)
+>> >
+>> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+>> > index 4182ea3..405cd06 100644
+>> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+>> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+>> > @@ -7,10 +7,15 @@ This file documents differences between the core properties in mmc.txt
+>> >  and the properties used by the msdc driver.
+>> >
+>> >  Required properties:
+>> > -- compatible: Should be "mediatek,mt8173-mmc","mediatek,mt8135-mmc"
+>> > +- compatible: value should be either of the following.
+>> > +   "mediatek,mt8135-mmc": for mmc host ip compatible with mt8135
+>> > +   "mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
+>> > +   "mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
+>> > +   "mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
+>> > +- reg: physical base address of the controller and length
+>> >  - interrupts: Should contain MSDC interrupt number
+>> > -- clocks: MSDC source clock, HCLK
+>> > -- clock-names: "source", "hclk"
+>> > +- clocks: MSDC source clock, HCLK, source_cg
+>> > +- clock-names: "source", "hclk", "source_cg"
+>>
+>> All chips support source_cg? That's not backwards compatible for
+>> existing compatible strings if the driver requires it.
+> Not all chips support source_cg, for chips which do not support
+> source_cg, no need source_cg here, and the driver will parse it
+> to know if current chip support it.
 
-As the inevitable storm of kbuild robot reports will tell you soon, you
-can't do that: is_device_dma_coherent() is a private helper between
-arm{,64} arch code and xen, and should not be used anywhere else.
+In such case you must not add add a required binding for it. I think
+that is what Rob is trying to point out for you.
 
-> Signed-off-by: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  lib/dma-debug.c | 20 ++++++++++++++------
->  1 file changed, 14 insertions(+), 6 deletions(-)
-> 
-> diff --git a/lib/dma-debug.c b/lib/dma-debug.c
-> index ea4cc3d..b17e56e 100644
-> --- a/lib/dma-debug.c
-> +++ b/lib/dma-debug.c
-> @@ -47,6 +47,8 @@ enum {
->  	dma_debug_sg,
->  	dma_debug_coherent,
->  	dma_debug_resource,
-> +	dma_debug_noncoherent,
-> +	nr_dma_debug_types,
->  };
->  
->  enum map_err_types {
-> @@ -154,9 +156,9 @@ static inline bool dma_debug_disabled(void)
->  	[MAP_ERR_CHECKED] = "dma map error checked",
->  };
->  
-> -static const char *type2name[5] = { "single", "page",
-> +static const char *type2name[nr_dma_debug_types] = { "single", "page",
->  				    "scather-gather", "coherent",
-> -				    "resource" };
-> +				    "resource", "noncoherent" };
->  
->  static const char *dir2name[4] = { "DMA_BIDIRECTIONAL", "DMA_TO_DEVICE",
->  				   "DMA_FROM_DEVICE", "DMA_NONE" };
-> @@ -1484,6 +1486,7 @@ void debug_dma_alloc_coherent(struct device *dev, size_t size,
->  			      dma_addr_t dma_addr, void *virt)
->  {
->  	struct dma_debug_entry *entry;
-> +	bool coherent = is_device_dma_coherent(dev);
->  
->  	if (unlikely(dma_debug_disabled()))
->  		return;
-> @@ -1495,9 +1498,11 @@ void debug_dma_alloc_coherent(struct device *dev, size_t size,
->  	if (!entry)
->  		return;
->  
-> -	entry->type      = dma_debug_coherent;
-> +	entry->type      = coherent ? dma_debug_coherent :
-> +					dma_debug_noncoherent;
->  	entry->dev       = dev;
-> -	entry->pfn	 = page_to_pfn(virt_to_page(virt));
+[...]
 
-There are more architectures where the virtual address returned by
-dma_alloc_coherent is not a linear map address - some just have a static
-offset between cacheable and non-cacheable aliases - so there may be
-other cases where this is the wrong calculation, but at least those
-probably don't trigger the problematic false-positive.
-
-That said, the cases where coherent allocations *are* dynamically
-remapped should be easy enough to handle properly without having to
-resort to dodgy hacks:
-
-	if (is_vmalloc_addr(virt))
-		pfn = vmalloc_to_pfn(virt);
-	else
-		pfn = page_to_pfn(virt_to_page(virt));
-
-Simple.
-
-> +	entry->pfn	 = coherent ? page_to_pfn(virt_to_page(virt)) :
-> +					dma_addr >> PAGE_SHIFT;
-
-And in particular, this is just as likely to just give *different* false
-positives, since there's no guarantee whatsoever that dma_addr has any
-relationship to the appropriate pfn.
-
-Robin.
-
->  	entry->offset	 = offset_in_page(virt);
->  	entry->size      = size;
->  	entry->dev_addr  = dma_addr;
-> @@ -1510,10 +1515,13 @@ void debug_dma_alloc_coherent(struct device *dev, size_t size,
->  void debug_dma_free_coherent(struct device *dev, size_t size,
->  			 void *virt, dma_addr_t addr)
->  {
-> +	bool coherent = is_device_dma_coherent(dev);
->  	struct dma_debug_entry ref = {
-> -		.type           = dma_debug_coherent,
-> +		.type           = coherent ? dma_debug_coherent :
-> +						dma_debug_noncoherent,
->  		.dev            = dev,
-> -		.pfn		= page_to_pfn(virt_to_page(virt)),
-> +		.pfn		= coherent ? page_to_pfn(virt_to_page(virt)) :
-> +						addr >> PAGE_SHIFT,
->  		.offset		= offset_in_page(virt),
->  		.dev_addr       = addr,
->  		.size           = size,
-> 
+Kind regards
+Uffe
