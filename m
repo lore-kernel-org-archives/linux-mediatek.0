@@ -1,240 +1,33 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH 04/12] usb: mtu3: add optional mcu and dma bus clocks
-Date: Wed, 27 Sep 2017 18:58:33 +0800
-Message-ID: <ed894dac25c1895f43e82d52eee7bbe7fbc04b6b.1506509658.git.chunfeng.yun@mediatek.com>
-References: <fe8df8503f602586bcea4b1598eb09678b1525e3.1506509658.git.chunfeng.yun@mediatek.com>
+From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] iommu/io-pgtable-arm-v7s: Need dma-sync while there is
+	no QUIRK_NO_DMA
+Date: Wed, 27 Sep 2017 16:56:46 +0200
+Message-ID: <20170927145645.rsxgsmoti7x3xpri@8bytes.org>
+References: <1506331727-25018-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <fe8df8503f602586bcea4b1598eb09678b1525e3.1506509658.git.chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1506331727-25018-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-There are mcu_bus and dma_bus clocks needed to be turned on/off by
-driver on some SoCs, so add them as optional ones
+On Mon, Sep 25, 2017 at 05:28:47PM +0800, Yong Wu wrote:
+> Fix the commit 81b3c2521844 ("iommu/io-pgtable: Introduce explicit
+> coherency"). If there is no IO_PGTABLE_QUIRK_NO_DMA, we should call
+> dma_sync_single_for_device for cache synchronization.
+> 
+> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/mtu3/mtu3.h      |    5 ++
- drivers/usb/mtu3/mtu3_plat.c |  121 ++++++++++++++++++++++++++++--------------
- 2 files changed, 86 insertions(+), 40 deletions(-)
-
-diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
-index 6d3278e..2795294 100644
---- a/drivers/usb/mtu3/mtu3.h
-+++ b/drivers/usb/mtu3/mtu3.h
-@@ -206,6 +206,9 @@ struct otg_switch_mtk {
-  * @ippc_base: register base address of IP Power and Clock interface (IPPC)
-  * @vusb33: usb3.3V shared by device/host IP
-  * @sys_clk: system clock of mtu3, shared by device/host IP
-+ * @ref_clk: reference clock
-+ * @mcu_clk: mcu_bus_ck clock for AHB bus etc
-+ * @dma_clk: dma_bus_ck clock for AXI bus etc
-  * @dr_mode: works in which mode:
-  *		host only, device only or dual-role mode
-  * @u2_ports: number of usb2.0 host ports
-@@ -226,6 +229,8 @@ struct ssusb_mtk {
- 	struct regulator *vusb33;
- 	struct clk *sys_clk;
- 	struct clk *ref_clk;
-+	struct clk *mcu_clk;
-+	struct clk *dma_clk;
- 	/* otg */
- 	struct otg_switch_mtk otg_switch;
- 	enum usb_dr_mode dr_mode;
-diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-index 9edad30..fb89920 100644
---- a/drivers/usb/mtu3/mtu3_plat.c
-+++ b/drivers/usb/mtu3/mtu3_plat.c
-@@ -110,15 +110,9 @@ static void ssusb_phy_power_off(struct ssusb_mtk *ssusb)
- 		phy_power_off(ssusb->phys[i]);
- }
- 
--static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
-+static int ssusb_clks_enable(struct ssusb_mtk *ssusb)
- {
--	int ret = 0;
--
--	ret = regulator_enable(ssusb->vusb33);
--	if (ret) {
--		dev_err(ssusb->dev, "failed to enable vusb33\n");
--		goto vusb33_err;
--	}
-+	int ret;
- 
- 	ret = clk_prepare_enable(ssusb->sys_clk);
- 	if (ret) {
-@@ -132,6 +126,52 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
- 		goto ref_clk_err;
- 	}
- 
-+	ret = clk_prepare_enable(ssusb->mcu_clk);
-+	if (ret) {
-+		dev_err(ssusb->dev, "failed to enable mcu_clk\n");
-+		goto mcu_clk_err;
-+	}
-+
-+	ret = clk_prepare_enable(ssusb->dma_clk);
-+	if (ret) {
-+		dev_err(ssusb->dev, "failed to enable dma_clk\n");
-+		goto dma_clk_err;
-+	}
-+
-+	return 0;
-+
-+dma_clk_err:
-+	clk_disable_unprepare(ssusb->mcu_clk);
-+mcu_clk_err:
-+	clk_disable_unprepare(ssusb->ref_clk);
-+ref_clk_err:
-+	clk_disable_unprepare(ssusb->sys_clk);
-+sys_clk_err:
-+	return ret;
-+}
-+
-+static void ssusb_clks_disable(struct ssusb_mtk *ssusb)
-+{
-+	clk_disable_unprepare(ssusb->dma_clk);
-+	clk_disable_unprepare(ssusb->mcu_clk);
-+	clk_disable_unprepare(ssusb->ref_clk);
-+	clk_disable_unprepare(ssusb->sys_clk);
-+}
-+
-+static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
-+{
-+	int ret = 0;
-+
-+	ret = regulator_enable(ssusb->vusb33);
-+	if (ret) {
-+		dev_err(ssusb->dev, "failed to enable vusb33\n");
-+		goto vusb33_err;
-+	}
-+
-+	ret = ssusb_clks_enable(ssusb);
-+	if (ret)
-+		goto clks_err;
-+
- 	ret = ssusb_phy_init(ssusb);
- 	if (ret) {
- 		dev_err(ssusb->dev, "failed to init phy\n");
-@@ -149,20 +189,16 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
- phy_err:
- 	ssusb_phy_exit(ssusb);
- phy_init_err:
--	clk_disable_unprepare(ssusb->ref_clk);
--ref_clk_err:
--	clk_disable_unprepare(ssusb->sys_clk);
--sys_clk_err:
-+	ssusb_clks_disable(ssusb);
-+clks_err:
- 	regulator_disable(ssusb->vusb33);
- vusb33_err:
--
- 	return ret;
- }
- 
- static void ssusb_rscs_exit(struct ssusb_mtk *ssusb)
- {
--	clk_disable_unprepare(ssusb->sys_clk);
--	clk_disable_unprepare(ssusb->ref_clk);
-+	ssusb_clks_disable(ssusb);
- 	regulator_disable(ssusb->vusb33);
- 	ssusb_phy_power_off(ssusb);
- 	ssusb_phy_exit(ssusb);
-@@ -203,6 +239,19 @@ static int get_iddig_pinctrl(struct ssusb_mtk *ssusb)
- 	return 0;
- }
- 
-+/* ignore the error if the clock does not exist */
-+static struct clk *get_optional_clk(struct device *dev, const char *id)
-+{
-+	struct clk *opt_clk;
-+
-+	opt_clk = devm_clk_get(dev, id);
-+	/* ignore error number except EPROBE_DEFER */
-+	if (IS_ERR(opt_clk) && (PTR_ERR(opt_clk) != -EPROBE_DEFER))
-+		opt_clk = NULL;
-+
-+	return opt_clk;
-+}
-+
- static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
- {
- 	struct device_node *node = pdev->dev.of_node;
-@@ -225,18 +274,17 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
- 		return PTR_ERR(ssusb->sys_clk);
- 	}
- 
--	/*
--	 * reference clock is usually a "fixed-clock", make it optional
--	 * for backward compatibility and ignore the error if it does
--	 * not exist.
--	 */
--	ssusb->ref_clk = devm_clk_get(dev, "ref_ck");
--	if (IS_ERR(ssusb->ref_clk)) {
--		if (PTR_ERR(ssusb->ref_clk) == -EPROBE_DEFER)
--			return -EPROBE_DEFER;
-+	ssusb->ref_clk = get_optional_clk(dev, "ref_ck");
-+	if (IS_ERR(ssusb->ref_clk))
-+		return PTR_ERR(ssusb->ref_clk);
- 
--		ssusb->ref_clk = NULL;
--	}
-+	ssusb->mcu_clk = get_optional_clk(dev, "mcu_ck");
-+	if (IS_ERR(ssusb->mcu_clk))
-+		return PTR_ERR(ssusb->mcu_clk);
-+
-+	ssusb->dma_clk = get_optional_clk(dev, "dma_ck");
-+	if (IS_ERR(ssusb->dma_clk))
-+		return PTR_ERR(ssusb->dma_clk);
- 
- 	ssusb->num_phys = of_count_phandle_with_args(node,
- 			"phys", "#phy-cells");
-@@ -451,8 +499,7 @@ static int __maybe_unused mtu3_suspend(struct device *dev)
- 
- 	ssusb_host_disable(ssusb, true);
- 	ssusb_phy_power_off(ssusb);
--	clk_disable_unprepare(ssusb->sys_clk);
--	clk_disable_unprepare(ssusb->ref_clk);
-+	ssusb_clks_disable(ssusb);
- 	ssusb_wakeup_enable(ssusb);
- 
- 	return 0;
-@@ -470,27 +517,21 @@ static int __maybe_unused mtu3_resume(struct device *dev)
- 		return 0;
- 
- 	ssusb_wakeup_disable(ssusb);
--	ret = clk_prepare_enable(ssusb->sys_clk);
--	if (ret)
--		goto err_sys_clk;
--
--	ret = clk_prepare_enable(ssusb->ref_clk);
-+	ret = ssusb_clks_enable(ssusb);
- 	if (ret)
--		goto err_ref_clk;
-+		goto clks_err;
- 
- 	ret = ssusb_phy_power_on(ssusb);
- 	if (ret)
--		goto err_power_on;
-+		goto phy_err;
- 
- 	ssusb_host_enable(ssusb);
- 
- 	return 0;
- 
--err_power_on:
--	clk_disable_unprepare(ssusb->ref_clk);
--err_ref_clk:
--	clk_disable_unprepare(ssusb->sys_clk);
--err_sys_clk:
-+phy_err:
-+	ssusb_clks_disable(ssusb);
-+clks_err:
- 	return ret;
- }
- 
--- 
-1.7.9.5
+Applied to iommu/fixes, thanks.
