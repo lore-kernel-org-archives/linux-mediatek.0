@@ -1,74 +1,70 @@
-From: <miles.chen@mediatek.com>
-Subject: [PATCH v3] dma-debug: fix incorrect pfn calculation
-Date: Wed, 27 Sep 2017 11:48:07 +0800
-Message-ID: <1506484087-1177-1-git-send-email-miles.chen@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 2/9] usb: xhci-mtk: use ports count from xhci in xhci_mtk_sch_init()
+Date: Wed, 27 Sep 2017 17:22:58 +0800
+Message-ID: <2a1d5bad7e63918e1bfdaa7bb328594d36567d9d.1506503879.git.chunfeng.yun@mediatek.com>
+References: <994382d16d6bdc0f3d7c11b22f1710252e056e34.1506503879.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>, Andrew Morton <akpm@linux-foundation.org>
-Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, iommu@lists.linux-foundation.org, Miles Chen <miles.chen@mediatek.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <994382d16d6bdc0f3d7c11b22f1710252e056e34.1506503879.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Miles Chen <miles.chen@mediatek.com>
+Make use of ports count from xhci but not from ippc in
+xhci_mtk_sch_init()
 
-dma-debug reports the following warning:
-
-[name:panic&]WARNING: CPU: 3 PID: 298 at kernel-4.4/lib/dma-debug.c:604
-debug _dma_assert_idle+0x1a8/0x230()
-DMA-API: cpu touching an active dma mapped cacheline [cln=0x00000882300]
-CPU: 3 PID: 298 Comm: vold Tainted: G        W  O    4.4.22+ #1
-Hardware name: MT6739 (DT)
-Call trace:
-[<ffffff800808acd0>] dump_backtrace+0x0/0x1d4
-[<ffffff800808affc>] show_stack+0x14/0x1c
-[<ffffff800838019c>] dump_stack+0xa8/0xe0
-[<ffffff80080a0594>] warn_slowpath_common+0xf4/0x11c
-[<ffffff80080a061c>] warn_slowpath_fmt+0x60/0x80
-[<ffffff80083afe24>] debug_dma_assert_idle+0x1a8/0x230
-[<ffffff80081dca9c>] wp_page_copy.isra.96+0x118/0x520
-[<ffffff80081de114>] do_wp_page+0x4fc/0x534
-[<ffffff80081e0a14>] handle_mm_fault+0xd4c/0x1310
-[<ffffff8008098798>] do_page_fault+0x1c8/0x394
-[<ffffff800808231c>] do_mem_abort+0x50/0xec
-
-I found that debug_dma_alloc_coherent() and debug_dma_free_coherent()
-assume that dma_alloc_coherent() always returns a linear address.
-However it's possible that dma_alloc_coherent() returns a non-linear
-address. In this case, page_to_pfn(virt_to_page(virt)) will return an
-incorrect pfn. If the pfn is valid and mapped as a COW page,
-we will hit the warning when doing wp_page_copy().
-
-Fix this by calculating pfn for linear and non-linear addresses.
-
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- lib/dma-debug.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/usb/host/xhci-mtk-sch.c |    3 ++-
+ drivers/usb/host/xhci-mtk.c     |    3 ---
+ 2 files changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/lib/dma-debug.c b/lib/dma-debug.c
-index ea4cc3d..e5b4237 100644
---- a/lib/dma-debug.c
-+++ b/lib/dma-debug.c
-@@ -1497,7 +1497,8 @@ void debug_dma_alloc_coherent(struct device *dev, size_t size,
+diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
+index 6e7ddf6..bfc51bc 100644
+--- a/drivers/usb/host/xhci-mtk-sch.c
++++ b/drivers/usb/host/xhci-mtk-sch.c
+@@ -287,12 +287,13 @@ static bool need_bw_sch(struct usb_host_endpoint *ep,
  
- 	entry->type      = dma_debug_coherent;
- 	entry->dev       = dev;
--	entry->pfn	 = page_to_pfn(virt_to_page(virt));
-+	entry->pfn	 = is_vmalloc_addr(virt) ? vmalloc_to_pfn(virt) :
-+						page_to_pfn(virt_to_page(virt));
- 	entry->offset	 = offset_in_page(virt);
- 	entry->size      = size;
- 	entry->dev_addr  = dma_addr;
-@@ -1513,7 +1514,8 @@ void debug_dma_free_coherent(struct device *dev, size_t size,
- 	struct dma_debug_entry ref = {
- 		.type           = dma_debug_coherent,
- 		.dev            = dev,
--		.pfn		= page_to_pfn(virt_to_page(virt)),
-+		.pfn		= is_vmalloc_addr(virt) ? vmalloc_to_pfn(virt) :
-+						page_to_pfn(virt_to_page(virt)),
- 		.offset		= offset_in_page(virt),
- 		.dev_addr       = addr,
- 		.size           = size,
+ int xhci_mtk_sch_init(struct xhci_hcd_mtk *mtk)
+ {
++	struct xhci_hcd *xhci = hcd_to_xhci(mtk->hcd);
+ 	struct mu3h_sch_bw_info *sch_array;
+ 	int num_usb_bus;
+ 	int i;
+ 
+ 	/* ss IN and OUT are separated */
+-	num_usb_bus = mtk->num_u3_ports * 2 + mtk->num_u2_ports;
++	num_usb_bus = xhci->num_usb3_ports * 2 + xhci->num_usb2_ports;
+ 
+ 	sch_array = kcalloc(num_usb_bus, sizeof(*sch_array), GFP_KERNEL);
+ 	if (sch_array == NULL)
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index c197a6d..9502ca4 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -492,7 +492,6 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
+ /* called during probe() after chip reset completes */
+ static int xhci_mtk_setup(struct usb_hcd *hcd)
+ {
+-	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
+ 	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
+ 	int ret;
+ 
+@@ -507,8 +506,6 @@ static int xhci_mtk_setup(struct usb_hcd *hcd)
+ 		return ret;
+ 
+ 	if (usb_hcd_is_primary_hcd(hcd)) {
+-		mtk->num_u3_ports = xhci->num_usb3_ports;
+-		mtk->num_u2_ports = xhci->num_usb2_ports;
+ 		ret = xhci_mtk_sch_init(mtk);
+ 		if (ret)
+ 			return ret;
 -- 
-1.9.1
+1.7.9.5
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
