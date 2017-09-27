@@ -1,85 +1,62 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v3] dma-debug: fix incorrect pfn calculation
-Date: Wed, 27 Sep 2017 11:23:52 +0100
-Message-ID: <273077fd-c5ad-82c8-60aa-cde89355e5e8@arm.com>
-References: <1506484087-1177-1-git-send-email-miles.chen@mediatek.com>
+From: Chen Zhong <chen.zhong@mediatek.com>
+Subject: [PATCH v5 0/6] Add MediaTek PMIC keys support
+Date: Wed, 27 Sep 2017 18:44:02 +0800
+Message-ID: <1506509048-19032-1-git-send-email-chen.zhong@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1506484087-1177-1-git-send-email-miles.chen@mediatek.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: miles.chen@mediatek.com, Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>, wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org, linux-mm@kvack.org, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, Lee Jones <lee.jones@linaro.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Linus Walleij <linus.walleij@linaro.org>, Chanwoo Choi <cw00.choi@samsung.com>, Chen Zhong <chen.zhong@mediatek.com>, Jaechul Lee <jcsing.lee@samsung.com>, Andi Shyti <andi.shyti@samsung.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-[+DMA maintainers]
+Changes since v4:
+- rebase to Linux 4.14-rc1
+- add a common keyboard binding document
+- use child device tree node to define each key
 
-On 27/09/17 04:48, miles.chen@mediatek.com wrote:
-> From: Miles Chen <miles.chen@mediatek.com>
-> 
-> dma-debug reports the following warning:
-> 
-> [name:panic&]WARNING: CPU: 3 PID: 298 at kernel-4.4/lib/dma-debug.c:604
-> debug _dma_assert_idle+0x1a8/0x230()
-> DMA-API: cpu touching an active dma mapped cacheline [cln=0x00000882300]
-> CPU: 3 PID: 298 Comm: vold Tainted: G        W  O    4.4.22+ #1
-> Hardware name: MT6739 (DT)
-> Call trace:
-> [<ffffff800808acd0>] dump_backtrace+0x0/0x1d4
-> [<ffffff800808affc>] show_stack+0x14/0x1c
-> [<ffffff800838019c>] dump_stack+0xa8/0xe0
-> [<ffffff80080a0594>] warn_slowpath_common+0xf4/0x11c
-> [<ffffff80080a061c>] warn_slowpath_fmt+0x60/0x80
-> [<ffffff80083afe24>] debug_dma_assert_idle+0x1a8/0x230
-> [<ffffff80081dca9c>] wp_page_copy.isra.96+0x118/0x520
-> [<ffffff80081de114>] do_wp_page+0x4fc/0x534
-> [<ffffff80081e0a14>] handle_mm_fault+0xd4c/0x1310
-> [<ffffff8008098798>] do_page_fault+0x1c8/0x394
-> [<ffffff800808231c>] do_mem_abort+0x50/0xec
-> 
-> I found that debug_dma_alloc_coherent() and debug_dma_free_coherent()
-> assume that dma_alloc_coherent() always returns a linear address.
-> However it's possible that dma_alloc_coherent() returns a non-linear
-> address. In this case, page_to_pfn(virt_to_page(virt)) will return an
-> incorrect pfn. If the pfn is valid and mapped as a COW page,
-> we will hit the warning when doing wp_page_copy().
+Changes since v3:
+- make the naming to be consistent as mtk_pmic or MTK_PMIC
+- add suspend/resume functions to enable/disable irq
+- change binding properties to define wakeup sources
 
-Yeah, we definitely want that explanation recorded in the commit, since
-the warning is pretty non-obvious otherwise.
+Changes since v2:
+- use standard properties for keycodes and debounce time
+- change to use platform_get_irq in leaf drivers
+- use better ways to define IRQ resources
 
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+Changes since v1:
+- create irq mappings in mfd core driver instead of leaf drivers
+- remove some unused parts in mtk-pmic-keys driver
 
-> Fix this by calculating pfn for linear and non-linear addresses.
-> 
-> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> ---
->  lib/dma-debug.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/lib/dma-debug.c b/lib/dma-debug.c
-> index ea4cc3d..e5b4237 100644
-> --- a/lib/dma-debug.c
-> +++ b/lib/dma-debug.c
-> @@ -1497,7 +1497,8 @@ void debug_dma_alloc_coherent(struct device *dev, size_t size,
->  
->  	entry->type      = dma_debug_coherent;
->  	entry->dev       = dev;
-> -	entry->pfn	 = page_to_pfn(virt_to_page(virt));
-> +	entry->pfn	 = is_vmalloc_addr(virt) ? vmalloc_to_pfn(virt) :
-> +						page_to_pfn(virt_to_page(virt));
->  	entry->offset	 = offset_in_page(virt);
->  	entry->size      = size;
->  	entry->dev_addr  = dma_addr;
-> @@ -1513,7 +1514,8 @@ void debug_dma_free_coherent(struct device *dev, size_t size,
->  	struct dma_debug_entry ref = {
->  		.type           = dma_debug_coherent,
->  		.dev            = dev,
-> -		.pfn		= page_to_pfn(virt_to_page(virt)),
-> +		.pfn		= is_vmalloc_addr(virt) ? vmalloc_to_pfn(virt) :
-> +						page_to_pfn(virt_to_page(virt)),
->  		.offset		= offset_in_page(virt),
->  		.dev_addr       = addr,
->  		.size           = size,
-> 
+MediaTek PMIC are multi-function devices that can handle key interrupts,
+typically there are two keys attached to PMIC, which called pwrkey
+and homekey. PWRKEY usually used to wake up system from sleep. Homekey
+can used as volume down key due to board design. Long press keys can
+shutdown PMIC, the mode can be choose to be one key only or two keys
+together.
+This series add support for key functions for MediaTek PMIC MT6397/MT6323.
+
+Chen Zhong (6):
+  mfd: mt6397: create irq mappings in mfd core driver
+  dt-bindings: input: Add common keyboard document bindings
+  dt-bindings: input: Add document bindings for mtk-pmic-keys
+  dt-bindings: mfd: Add bindings for the keys as subnode of PMIC
+  input: Add MediaTek PMIC keys support
+  mfd: mt6397: Add PMIC keys support to MT6397 driver
+
+ Documentation/devicetree/bindings/input/keys.txt   |   8 +
+ .../devicetree/bindings/input/mtk-pmic-keys.txt    |  43 +++
+ Documentation/devicetree/bindings/mfd/mt6397.txt   |   6 +
+ drivers/input/keyboard/Kconfig                     |   9 +
+ drivers/input/keyboard/Makefile                    |   1 +
+ drivers/input/keyboard/mtk-pmic-keys.c             | 341 +++++++++++++++++++++
+ drivers/mfd/mt6397-core.c                          |  26 +-
+ drivers/rtc/rtc-mt6397.c                           |   7 +-
+ 8 files changed, 434 insertions(+), 7 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/input/keys.txt
+ create mode 100644 Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+ create mode 100644 drivers/input/keyboard/mtk-pmic-keys.c
+
+-- 
+1.9.1
