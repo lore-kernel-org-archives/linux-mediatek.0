@@ -1,107 +1,85 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 5/9] usb: xhci-mtk: remove dummy wakeup debounce clocks
-Date: Wed, 27 Sep 2017 17:23:01 +0800
-Message-ID: <ff9ee49a872084b4fc8c7fbabddc820058acb9b7.1506503879.git.chunfeng.yun@mediatek.com>
-References: <994382d16d6bdc0f3d7c11b22f1710252e056e34.1506503879.git.chunfeng.yun@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH v3] dma-debug: fix incorrect pfn calculation
+Date: Wed, 27 Sep 2017 11:23:52 +0100
+Message-ID: <273077fd-c5ad-82c8-60aa-cde89355e5e8@arm.com>
+References: <1506484087-1177-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <994382d16d6bdc0f3d7c11b22f1710252e056e34.1506503879.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1506484087-1177-1-git-send-email-miles.chen@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: miles.chen@mediatek.com, Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>, wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org, linux-mm@kvack.org, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The wakeup debounce clocks for each ports in fact are not
-needed, so remove them.
+[+DMA maintainers]
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/usb/host/xhci-mtk.c |   33 ---------------------------------
- drivers/usb/host/xhci-mtk.h |    2 --
- 2 files changed, 35 deletions(-)
+On 27/09/17 04:48, miles.chen@mediatek.com wrote:
+> From: Miles Chen <miles.chen@mediatek.com>
+> 
+> dma-debug reports the following warning:
+> 
+> [name:panic&]WARNING: CPU: 3 PID: 298 at kernel-4.4/lib/dma-debug.c:604
+> debug _dma_assert_idle+0x1a8/0x230()
+> DMA-API: cpu touching an active dma mapped cacheline [cln=0x00000882300]
+> CPU: 3 PID: 298 Comm: vold Tainted: G        W  O    4.4.22+ #1
+> Hardware name: MT6739 (DT)
+> Call trace:
+> [<ffffff800808acd0>] dump_backtrace+0x0/0x1d4
+> [<ffffff800808affc>] show_stack+0x14/0x1c
+> [<ffffff800838019c>] dump_stack+0xa8/0xe0
+> [<ffffff80080a0594>] warn_slowpath_common+0xf4/0x11c
+> [<ffffff80080a061c>] warn_slowpath_fmt+0x60/0x80
+> [<ffffff80083afe24>] debug_dma_assert_idle+0x1a8/0x230
+> [<ffffff80081dca9c>] wp_page_copy.isra.96+0x118/0x520
+> [<ffffff80081de114>] do_wp_page+0x4fc/0x534
+> [<ffffff80081e0a14>] handle_mm_fault+0xd4c/0x1310
+> [<ffffff8008098798>] do_page_fault+0x1c8/0x394
+> [<ffffff800808231c>] do_mem_abort+0x50/0xec
+> 
+> I found that debug_dma_alloc_coherent() and debug_dma_free_coherent()
+> assume that dma_alloc_coherent() always returns a linear address.
+> However it's possible that dma_alloc_coherent() returns a non-linear
+> address. In this case, page_to_pfn(virt_to_page(virt)) will return an
+> incorrect pfn. If the pfn is valid and mapped as a COW page,
+> we will hit the warning when doing wp_page_copy().
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 97ba51e..d60463c 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -237,25 +237,8 @@ static int xhci_mtk_clks_enable(struct xhci_hcd_mtk *mtk)
- 		goto sys_clk_err;
- 	}
- 
--	if (mtk->wakeup_src) {
--		ret = clk_prepare_enable(mtk->wk_deb_p0);
--		if (ret) {
--			dev_err(mtk->dev, "failed to enable wk_deb_p0\n");
--			goto usb_p0_err;
--		}
--
--		ret = clk_prepare_enable(mtk->wk_deb_p1);
--		if (ret) {
--			dev_err(mtk->dev, "failed to enable wk_deb_p1\n");
--			goto usb_p1_err;
--		}
--	}
- 	return 0;
- 
--usb_p1_err:
--	clk_disable_unprepare(mtk->wk_deb_p0);
--usb_p0_err:
--	clk_disable_unprepare(mtk->sys_clk);
- sys_clk_err:
- 	clk_disable_unprepare(mtk->ref_clk);
- ref_clk_err:
-@@ -264,10 +247,6 @@ static int xhci_mtk_clks_enable(struct xhci_hcd_mtk *mtk)
- 
- static void xhci_mtk_clks_disable(struct xhci_hcd_mtk *mtk)
- {
--	if (mtk->wakeup_src) {
--		clk_disable_unprepare(mtk->wk_deb_p1);
--		clk_disable_unprepare(mtk->wk_deb_p0);
--	}
- 	clk_disable_unprepare(mtk->sys_clk);
- 	clk_disable_unprepare(mtk->ref_clk);
- }
-@@ -371,18 +350,6 @@ static int usb_wakeup_of_property_parse(struct xhci_hcd_mtk *mtk,
- 	if (!mtk->wakeup_src)
- 		return 0;
- 
--	mtk->wk_deb_p0 = devm_clk_get(dev, "wakeup_deb_p0");
--	if (IS_ERR(mtk->wk_deb_p0)) {
--		dev_err(dev, "fail to get wakeup_deb_p0\n");
--		return PTR_ERR(mtk->wk_deb_p0);
--	}
--
--	mtk->wk_deb_p1 = devm_clk_get(dev, "wakeup_deb_p1");
--	if (IS_ERR(mtk->wk_deb_p1)) {
--		dev_err(dev, "fail to get wakeup_deb_p1\n");
--		return PTR_ERR(mtk->wk_deb_p1);
--	}
--
- 	mtk->pericfg = syscon_regmap_lookup_by_phandle(dn,
- 						"mediatek,syscon-wakeup");
- 	if (IS_ERR(mtk->pericfg)) {
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index db55a12..67783a7 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -126,8 +126,6 @@ struct xhci_hcd_mtk {
- 	struct regulator *vbus;
- 	struct clk *sys_clk;	/* sys and mac clock */
- 	struct clk *ref_clk;
--	struct clk *wk_deb_p0;	/* port0's wakeup debounce clock */
--	struct clk *wk_deb_p1;
- 	struct regmap *pericfg;
- 	struct phy **phys;
- 	int num_phys;
--- 
-1.7.9.5
+Yeah, we definitely want that explanation recorded in the commit, since
+the warning is pretty non-obvious otherwise.
+
+Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+
+> Fix this by calculating pfn for linear and non-linear addresses.
+> 
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> ---
+>  lib/dma-debug.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/lib/dma-debug.c b/lib/dma-debug.c
+> index ea4cc3d..e5b4237 100644
+> --- a/lib/dma-debug.c
+> +++ b/lib/dma-debug.c
+> @@ -1497,7 +1497,8 @@ void debug_dma_alloc_coherent(struct device *dev, size_t size,
+>  
+>  	entry->type      = dma_debug_coherent;
+>  	entry->dev       = dev;
+> -	entry->pfn	 = page_to_pfn(virt_to_page(virt));
+> +	entry->pfn	 = is_vmalloc_addr(virt) ? vmalloc_to_pfn(virt) :
+> +						page_to_pfn(virt_to_page(virt));
+>  	entry->offset	 = offset_in_page(virt);
+>  	entry->size      = size;
+>  	entry->dev_addr  = dma_addr;
+> @@ -1513,7 +1514,8 @@ void debug_dma_free_coherent(struct device *dev, size_t size,
+>  	struct dma_debug_entry ref = {
+>  		.type           = dma_debug_coherent,
+>  		.dev            = dev,
+> -		.pfn		= page_to_pfn(virt_to_page(virt)),
+> +		.pfn		= is_vmalloc_addr(virt) ? vmalloc_to_pfn(virt) :
+> +						page_to_pfn(virt_to_page(virt)),
+>  		.offset		= offset_in_page(virt),
+>  		.dev_addr       = addr,
+>  		.size           = size,
+> 
