@@ -1,140 +1,77 @@
-From: Ulrich Hecht <ulrich.hecht+renesas@gmail.com>
-Subject: [RFC 07/11] hack: mediatek: get mmsys to register as both DRM and
- clock device
-Date: Fri, 29 Sep 2017 15:09:09 +0200
-Message-ID: <1506690553-27357-8-git-send-email-ulrich.hecht+renesas@gmail.com>
+From: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [RFC 08/11] hack: drm/mediatek: roll back
+ drm_of_find_panel_or_bridge() use
+Date: Fri, 29 Sep 2017 15:09:10 +0200
+Message-ID: <1506690553-27357-9-git-send-email-ulrich.hecht+renesas@gmail.com>
 References: <1506690553-27357-1-git-send-email-ulrich.hecht+renesas@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1506690553-27357-1-git-send-email-ulrich.hecht+renesas@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: magnus.damm@gmail.com, laurent.pinchart@ideasonboard.com, jacopo@jmondi.org
-Cc: Ulrich Hecht <ulrich.hecht+renesas@gmail.com>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1506690553-27357-1-git-send-email-ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, jacopo-AW8dsiIh9cEdnm+yROfE0A@public.gmane.org
+Cc: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-"mediatek,mt8173-mmsys" is the compatible string for both a clock controller
-and a DRM device. The assumption seems to be that all compatible strings
-trigger, and that mmsys will be registered as two devices.
-This does work in the 3.18 vendor kernel, but it is not what happens in
-mainline: only the clock portion is probed.
+Haven't looked into how to do this properly.
 
-This hack probes the clocks from mtk_drm_probe(), and has all drivers
-that need these clocks defer instead of fail. Fixes DRM initialization
-on Acer Chromebook R13.
+Fixes display initialization on the Acer Chromebook R13.
 
-Signed-off-by: Ulrich Hecht <ulrich.hecht+renesas@gmail.com>
+Reverts mediatek part of ebc9446135671b89c2397f438af45d9cef0d1368
+("drm: convert drivers to use drm_of_find_panel_or_bridge")
+
+Signed-off-by: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- drivers/clk/mediatek/clk-mt8173.c      | 4 ++--
- drivers/gpu/drm/mediatek/mtk_dpi.c     | 5 +++--
- drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 5 +++--
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 7 +++++++
- drivers/gpu/drm/mediatek/mtk_hdmi.c    | 5 +++--
- 5 files changed, 18 insertions(+), 8 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 21 +++++++++++++++++----
+ 1 file changed, 17 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
-index 96c292c..9339d2c 100644
---- a/drivers/clk/mediatek/clk-mt8173.c
-+++ b/drivers/clk/mediatek/clk-mt8173.c
-@@ -1152,7 +1152,7 @@ static void __init mtk_imgsys_init(struct device_node *node)
- }
- CLK_OF_DECLARE(mtk_imgsys, "mediatek,mt8173-imgsys", mtk_imgsys_init);
- 
--static void __init mtk_mmsys_init(struct device_node *node)
-+/*static*/ void /*__init*/ mtk_mmsys_init(struct device_node *node)
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 7e5e24c..fd10cc4 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -1093,6 +1093,7 @@ static int mtk_dsi_probe(struct platform_device *pdev)
  {
- 	struct clk_onecell_data *clk_data;
- 	int r;
-@@ -1167,7 +1167,7 @@ static void __init mtk_mmsys_init(struct device_node *node)
- 		pr_err("%s(): could not register clock provider: %d\n",
- 			__func__, r);
- }
--CLK_OF_DECLARE(mtk_mmsys, "mediatek,mt8173-mmsys", mtk_mmsys_init);
-+//CLK_OF_DECLARE(mtk_mmsys, "mediatek,mt8173-mmsys", mtk_mmsys_init);
- 
- static void __init mtk_vdecsys_init(struct device_node *node)
- {
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index e80a603..ed999891 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -682,8 +682,9 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 	dpi->engine_clk = devm_clk_get(dev, "engine");
- 	if (IS_ERR(dpi->engine_clk)) {
- 		ret = PTR_ERR(dpi->engine_clk);
--		dev_err(dev, "Failed to get engine clock: %d\n", ret);
--		return ret;
-+		dev_err(dev, "Failed to get engine clock: %d, deferring\n", ret);
-+		return -EPROBE_DEFER;
-+		//return ret;
- 	}
- 
- 	dpi->pixel_clk = devm_clk_get(dev, "pixel");
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-index 8130f3d..465ee60 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-@@ -382,8 +382,9 @@ static int mtk_ddp_probe(struct platform_device *pdev)
- 
- 	ddp->clk = devm_clk_get(dev, NULL);
- 	if (IS_ERR(ddp->clk)) {
--		dev_err(dev, "Failed to get clock\n");
--		return PTR_ERR(ddp->clk);
-+		dev_err(dev, "Failed to get clock, deferring\n");
-+		return -EPROBE_DEFER;
-+		//return PTR_ERR(ddp->clk);
- 	}
- 
- 	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index a2ca90f..8c92630 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -381,6 +381,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	{ }
- };
- 
-+static int foo = 0;
-+void mtk_mmsys_init(struct device_node *node);
- static int mtk_drm_probe(struct platform_device *pdev)
- {
+ 	struct mtk_dsi *dsi;
  	struct device *dev = &pdev->dev;
-@@ -391,6 +393,11 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 	int ret;
- 	int i;
++	struct device_node *remote_node, *endpoint;
+ 	struct resource *regs;
+ 	int irq_num;
+ 	int comp_id;
+@@ -1105,10 +1106,22 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ 	dsi->host.ops = &mtk_dsi_ops;
+ 	dsi->host.dev = dev;
  
-+	if (!foo) {
-+		mtk_mmsys_init(dev->of_node);
-+		foo = 1;
-+	}
-+
- 	private = devm_kzalloc(dev, sizeof(*private), GFP_KERNEL);
- 	if (!private)
- 		return -ENOMEM;
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 690c675..715c0e0 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1441,8 +1441,9 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
- 
- 	ret = mtk_hdmi_get_all_clk(hdmi, np);
- 	if (ret) {
--		dev_err(dev, "Failed to get clocks: %d\n", ret);
+-	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0,
+-					  &dsi->panel, &dsi->bridge);
+-	if (ret)
 -		return ret;
-+		dev_err(dev, "Failed to get clocks: %d, deferring\n", ret);
-+		return -EPROBE_DEFER;
-+		//return ret;
- 	}
++	endpoint = of_graph_get_next_endpoint(dev->of_node, NULL);
++	if (endpoint) {
++		remote_node = of_graph_get_remote_port_parent(endpoint);
++		if (!remote_node) {
++			dev_err(dev, "No panel connected\n");
++			return -ENODEV;
++		}
++
++		dsi->bridge = of_drm_find_bridge(remote_node);
++		dsi->panel = of_drm_find_panel(remote_node);
++		of_node_put(remote_node);
++		if (!dsi->bridge && !dsi->panel) {
++			dev_info(dev, "Waiting for bridge or panel driver\n");
++			return -EPROBE_DEFER;
++		}
++	}
  
- 	/* The CEC module handles HDMI hotplug detection */
+ 	dsi->engine_clk = devm_clk_get(dev, "engine");
+ 	if (IS_ERR(dsi->engine_clk)) {
 -- 
 2.7.4
