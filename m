@@ -1,116 +1,389 @@
-From: Ulrich Hecht <ulrich.hecht+renesas@gmail.com>
-Subject: [RFC 00/11] Acer Chromebook R13 support
-Date: Fri, 29 Sep 2017 15:09:02 +0200
-Message-ID: <1506690553-27357-1-git-send-email-ulrich.hecht+renesas@gmail.com>
+From: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [RFC 02/11] drm/bridge: GPIO-controlled display multiplexer driver
+Date: Fri, 29 Sep 2017 15:09:04 +0200
+Message-ID: <1506690553-27357-3-git-send-email-ulrich.hecht+renesas@gmail.com>
+References: <1506690553-27357-1-git-send-email-ulrich.hecht+renesas@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: magnus.damm@gmail.com, laurent.pinchart@ideasonboard.com, jacopo@jmondi.org
-Cc: Ulrich Hecht <ulrich.hecht+renesas@gmail.com>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1506690553-27357-1-git-send-email-ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, jacopo-AW8dsiIh9cEdnm+yROfE0A@public.gmane.org
+Cc: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi!
+Ported from chromeos-3.18 kernel.
 
-This is a very rough cut of support for the MT8173-based Acer Chromebook R13
-("Elm") platform. It mostly consists of drivers ported from the chromeos-3.18
-vendor kernel, a little device tree, and a number of hacks.
-
-This is the first iteration that worked well enough to light up the display
-and provide a framebuffer console, and I haven't looked much into why most
-of these hacks are necessary yet. The exception is the mmsys device, see
-"hack: mediatek: get mmsys to register as both DRM and clock device" for
-details on that.
-
-You can find this series at https://github.com/uli/kernel/tree/elm-working,
-which also contains a config file and several ancillary bits that are
-required to build a kernel partition for the Chromebook. Instructions on
-how to do so (and various other things that have to be done to get it
-running on your device) are available at
-https://www.elinux.org/User:Uli/Acer_Chromebook_R13_GPU_test_system
-(These instructions have been written for the vendor kernel, but apply to
-mainline as well, except that you won't need any extra patches.)
-
-Testing has so far been limited to what I needed to copy new kernel images
-to the device: keyboard, LCD, backlight, SD card and USB port work.
-
-CU
-Uli
-
-
-Ulrich Hecht (11):
-  soc: mediatek: MediaTek Command Queue (CMDQ) driver
-  drm/bridge: GPIO-controlled display multiplexer driver
-  platform/chrome: ChromeOS firmware interface driver
-  drm/bridge: Parade PS8640 MIPI DSI -> eDP converter driver
-  drm/bridge: Analogix ANX7688 HDMI -> DP bridge driver
-  arm64: dts: mediatek: Add Elm Rev. 3 device tree
-  hack: mediatek: get mmsys to register as both DRM and clock device
-  hack: drm/mediatek: roll back drm_of_find_panel_or_bridge() use
-  drm/mediatek: add fbdev support
-  hack: mtk-sd: use old driver from vendor kernel
-  hack: Revert "iommu/io-pgtable: Sanitise map/unmap addresses"
-
- arch/arm64/boot/dts/mediatek/Makefile            |    1 +
- arch/arm64/boot/dts/mediatek/mt8173-elm-rev3.dts |   21 +
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi     |  210 ++
- arch/arm64/boot/dts/mediatek/mt8173-oak.dtsi     | 1014 ++++++++
- drivers/clk/mediatek/clk-mt8173.c                |    4 +-
- drivers/gpu/drm/bridge/Kconfig                   |   32 +
- drivers/gpu/drm/bridge/Makefile                  |    5 +
- drivers/gpu/drm/bridge/analogix-anx7688.c        |  233 ++
- drivers/gpu/drm/bridge/generic-gpio-mux.c        |  316 +++
- drivers/gpu/drm/bridge/parade-ps8640.c           | 1104 +++++++++
- drivers/gpu/drm/mediatek/Makefile                |    2 +
- drivers/gpu/drm/mediatek/mtk_dpi.c               |    5 +-
- drivers/gpu/drm/mediatek/mtk_drm_ddp.c           |    5 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c           |   16 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.h           |    4 +-
- drivers/gpu/drm/mediatek/mtk_drm_fb.c            |   13 +
- drivers/gpu/drm/mediatek/mtk_drm_fb.h            |    3 +
- drivers/gpu/drm/mediatek/mtk_drm_fbdev.c         |  184 ++
- drivers/gpu/drm/mediatek/mtk_drm_fbdev.h         |   32 +
- drivers/gpu/drm/mediatek/mtk_dsi.c               |   21 +-
- drivers/gpu/drm/mediatek/mtk_hdmi.c              |    5 +-
- drivers/iommu/io-pgtable-arm-v7s.c               |    6 -
- drivers/iommu/io-pgtable-arm.c                   |    7 -
- drivers/mmc/host/mtk-sd.c                        |  465 ++--
- drivers/platform/chrome/Kconfig                  |   18 +
- drivers/platform/chrome/Makefile                 |    2 +
- drivers/platform/chrome/chromeos.c               |  120 +
- drivers/platform/chrome/chromeos.h               |   61 +
- drivers/platform/chrome/chromeos_arm.c           |  264 ++
- drivers/platform/chrome/elog.h                   |  186 ++
- drivers/soc/mediatek/Kconfig                     |   10 +
- drivers/soc/mediatek/Makefile                    |    1 +
- drivers/soc/mediatek/mtk-cmdq.c                  | 2814 ++++++++++++++++++++++
- include/linux/chromeos_platform.h                |   27 +
- include/soc/mediatek/cmdq.h                      |  211 ++
- 35 files changed, 7161 insertions(+), 261 deletions(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8173-elm-rev3.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8173-oak.dtsi
- create mode 100644 drivers/gpu/drm/bridge/analogix-anx7688.c
+Signed-off-by: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ drivers/gpu/drm/bridge/Kconfig            |  11 ++
+ drivers/gpu/drm/bridge/Makefile           |   1 +
+ drivers/gpu/drm/bridge/generic-gpio-mux.c | 316 ++++++++++++++++++++++++++++++
+ 3 files changed, 328 insertions(+)
  create mode 100644 drivers/gpu/drm/bridge/generic-gpio-mux.c
- create mode 100644 drivers/gpu/drm/bridge/parade-ps8640.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_drm_fbdev.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_drm_fbdev.h
- create mode 100644 drivers/platform/chrome/chromeos.c
- create mode 100644 drivers/platform/chrome/chromeos.h
- create mode 100644 drivers/platform/chrome/chromeos_arm.c
- create mode 100644 drivers/platform/chrome/elog.h
- create mode 100644 drivers/soc/mediatek/mtk-cmdq.c
- create mode 100644 include/linux/chromeos_platform.h
- create mode 100644 include/soc/mediatek/cmdq.h
 
+diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
+index adf9ae0..966f4eb 100644
+--- a/drivers/gpu/drm/bridge/Kconfig
++++ b/drivers/gpu/drm/bridge/Kconfig
+@@ -15,6 +15,17 @@ config DRM_PANEL_BRIDGE
+ menu "Display Interface Bridges"
+ 	depends on DRM && DRM_BRIDGE
+ 
++config DRM_GENERIC_GPIO_MUX
++	tristate "Generic GPIO-controlled mux"
++	depends on DRM
++	depends on OF
++	select DRM_KMS_HELPER
++	---help---
++	  This bridge driver models a GPIO-controlled display mux with one
++	  input, 2 outputs (e.g. an HDMI mux). The hardware decides which output
++	  is active, reports it as a GPIO, and the driver redirects calls to the
++	  appropriate downstream bridge (if any).
++
+ config DRM_ANALOGIX_ANX78XX
+ 	tristate "Analogix ANX78XX bridge"
+ 	select DRM_KMS_HELPER
+diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
+index defcf1e..2d5652e 100644
+--- a/drivers/gpu/drm/bridge/Makefile
++++ b/drivers/gpu/drm/bridge/Makefile
+@@ -1,4 +1,5 @@
+ obj-$(CONFIG_DRM_ANALOGIX_ANX78XX) += analogix-anx78xx.o
++obj-$(CONFIG_DRM_GENERIC_GPIO_MUX) += generic-gpio-mux.o
+ obj-$(CONFIG_DRM_DUMB_VGA_DAC) += dumb-vga-dac.o
+ obj-$(CONFIG_DRM_LVDS_ENCODER) += lvds-encoder.o
+ obj-$(CONFIG_DRM_MEGACHIPS_STDPXXXX_GE_B850V3_FW) += megachips-stdpxxxx-ge-b850v3-fw.o
+diff --git a/drivers/gpu/drm/bridge/generic-gpio-mux.c b/drivers/gpu/drm/bridge/generic-gpio-mux.c
+new file mode 100644
+index 0000000..744804b
+--- /dev/null
++++ b/drivers/gpu/drm/bridge/generic-gpio-mux.c
+@@ -0,0 +1,316 @@
++/*
++ * ANX7688 HDMI->DP bridge driver
++ *
++ * Copyright (C) 2016 Google, Inc.
++ *
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
++
++#include <linux/gpio.h>
++#include <linux/interrupt.h>
++#include <linux/platform_device.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/of_gpio.h>
++#include <linux/of_graph.h>
++#include <drm/drm_crtc.h>
++#include <drm/drm_crtc_helper.h>
++
++struct gpio_display_mux {
++	struct device *dev;
++
++	struct gpio_desc *gpiod_detect;
++	int detect_irq;
++
++	struct drm_bridge bridge;
++
++	struct drm_bridge *next[2];
++};
++
++static inline struct gpio_display_mux *bridge_to_gpio_display_mux(
++		struct drm_bridge *bridge)
++{
++	return container_of(bridge, struct gpio_display_mux, bridge);
++}
++
++static irqreturn_t gpio_display_mux_det_threaded_handler(int unused, void *data)
++{
++	struct gpio_display_mux *gpio_display_mux = data;
++	int active = gpiod_get_value(gpio_display_mux->gpiod_detect);
++
++	dev_dbg(gpio_display_mux->dev, "Interrupt %d!\n", active);
++
++	if (gpio_display_mux->bridge.dev)
++		drm_kms_helper_hotplug_event(gpio_display_mux->bridge.dev);
++
++	return IRQ_HANDLED;
++}
++
++static int gpio_display_mux_attach(struct drm_bridge *bridge)
++{
++	struct gpio_display_mux *gpio_display_mux =
++			bridge_to_gpio_display_mux(bridge);
++	struct drm_bridge *next;
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(gpio_display_mux->next); i++) {
++		next = gpio_display_mux->next[i];
++		if (next)
++			next->encoder = bridge->encoder;
++	}
++
++	return 0;
++}
++
++static bool gpio_display_mux_mode_fixup(struct drm_bridge *bridge,
++				const struct drm_display_mode *mode,
++				struct drm_display_mode *adjusted_mode)
++{
++	struct gpio_display_mux *gpio_display_mux =
++		bridge_to_gpio_display_mux(bridge);
++	int active;
++	struct drm_bridge *next;
++
++	active = gpiod_get_value(gpio_display_mux->gpiod_detect);
++	next = gpio_display_mux->next[active];
++
++	if (next && next->funcs->mode_fixup)
++		return next->funcs->mode_fixup(next, mode, adjusted_mode);
++	else
++		return true;
++}
++
++static void gpio_display_mux_mode_set(struct drm_bridge *bridge,
++				struct drm_display_mode *mode,
++				struct drm_display_mode *adjusted_mode)
++{
++	struct gpio_display_mux *gpio_display_mux =
++		bridge_to_gpio_display_mux(bridge);
++	int active;
++	struct drm_bridge *next;
++
++	active = gpiod_get_value(gpio_display_mux->gpiod_detect);
++	next = gpio_display_mux->next[active];
++
++	if (next && next->funcs->mode_set)
++		next->funcs->mode_set(next, mode, adjusted_mode);
++}
++
++/**
++ * Since this driver _reacts_ to mux changes, we need to make sure all
++ * downstream bridges are pre-enabled.
++ */
++static void gpio_display_mux_pre_enable(struct drm_bridge *bridge)
++{
++	struct gpio_display_mux *gpio_display_mux =
++		bridge_to_gpio_display_mux(bridge);
++	struct drm_bridge *next;
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(gpio_display_mux->next); i++) {
++		next = gpio_display_mux->next[i];
++		if (next && next->funcs->pre_enable)
++			next->funcs->pre_enable(next);
++	}
++}
++
++static void gpio_display_mux_post_disable(struct drm_bridge *bridge)
++{
++	struct gpio_display_mux *gpio_display_mux =
++		bridge_to_gpio_display_mux(bridge);
++	struct drm_bridge *next;
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(gpio_display_mux->next); i++) {
++		next = gpio_display_mux->next[i];
++		if (next && next->funcs->post_disable)
++			next->funcs->post_disable(next);
++	}
++}
++
++/**
++ * In an ideal mux driver, only the currently selected bridge should be enabled.
++ * For the sake of simplicity, we just just enable/disable all downstream
++ * bridges at the same time.
++ */
++static void gpio_display_mux_enable(struct drm_bridge *bridge)
++{
++	struct gpio_display_mux *gpio_display_mux =
++		bridge_to_gpio_display_mux(bridge);
++	struct drm_bridge *next;
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(gpio_display_mux->next); i++) {
++		next = gpio_display_mux->next[i];
++		if (next && next->funcs->enable)
++			next->funcs->enable(next);
++	}
++}
++
++static void gpio_display_mux_disable(struct drm_bridge *bridge)
++{
++	struct gpio_display_mux *gpio_display_mux =
++		bridge_to_gpio_display_mux(bridge);
++	struct drm_bridge *next;
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(gpio_display_mux->next); i++) {
++		next = gpio_display_mux->next[i];
++		if (next && next->funcs->disable)
++			next->funcs->disable(next);
++	}
++}
++
++static const struct drm_bridge_funcs gpio_display_mux_bridge_funcs = {
++	.attach = gpio_display_mux_attach,
++	.mode_fixup = gpio_display_mux_mode_fixup,
++	.disable = gpio_display_mux_disable,
++	.post_disable = gpio_display_mux_post_disable,
++	.mode_set = gpio_display_mux_mode_set,
++	.pre_enable = gpio_display_mux_pre_enable,
++	.enable = gpio_display_mux_enable,
++};
++
++static int gpio_display_mux_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct gpio_display_mux *gpio_display_mux;
++	struct device_node *port, *ep, *remote;
++	int ret;
++	u32 reg;
++
++	gpio_display_mux = devm_kzalloc(dev, sizeof(*gpio_display_mux),
++					GFP_KERNEL);
++	if (!gpio_display_mux)
++		return -ENOMEM;
++
++	platform_set_drvdata(pdev, gpio_display_mux);
++	gpio_display_mux->dev = &pdev->dev;
++
++	gpio_display_mux->bridge.of_node = dev->of_node;
++
++	gpio_display_mux->gpiod_detect =
++		devm_gpiod_get(dev, "detect", GPIOD_IN);
++	if (IS_ERR(gpio_display_mux->gpiod_detect))
++		return PTR_ERR(gpio_display_mux->gpiod_detect);
++
++	gpio_display_mux->detect_irq =
++		gpiod_to_irq(gpio_display_mux->gpiod_detect);
++	if (gpio_display_mux->detect_irq < 0) {
++		dev_err(dev, "Failed to get output irq %d\n",
++			gpio_display_mux->detect_irq);
++		return -ENODEV;
++	}
++
++	port = of_graph_get_port_by_id(dev->of_node, 1);
++	if (!port) {
++		dev_err(dev, "Missing output port node\n");
++		return -EINVAL;
++	}
++
++	for_each_child_of_node(port, ep) {
++		if (!ep->name || (of_node_cmp(ep->name, "endpoint") != 0)) {
++			of_node_put(ep);
++			continue;
++		}
++
++		if (of_property_read_u32(ep, "reg", &reg) < 0 ||
++				reg >= ARRAY_SIZE(gpio_display_mux->next)) {
++			dev_err(dev,
++			    "Missing/invalid reg property for endpoint %s\n",
++				ep->full_name);
++			of_node_put(ep);
++			of_node_put(port);
++			return -EINVAL;
++		}
++
++		remote = of_graph_get_remote_port_parent(ep);
++		if (!remote) {
++			dev_err(dev,
++			    "Missing connector/bridge node for endpoint %s\n",
++				ep->full_name);
++			of_node_put(ep);
++			of_node_put(port);
++			return -EINVAL;
++		}
++		of_node_put(ep);
++
++		if (of_device_is_compatible(remote, "hdmi-connector")) {
++			of_node_put(remote);
++			continue;
++		}
++
++		gpio_display_mux->next[reg] = of_drm_find_bridge(remote);
++		if (!gpio_display_mux->next[reg]) {
++			dev_err(dev, "Waiting for external bridge %s\n",
++				remote->name);
++			of_node_put(remote);
++			of_node_put(port);
++			return -EPROBE_DEFER;
++		}
++
++		of_node_put(remote);
++	}
++	of_node_put(port);
++
++	gpio_display_mux->bridge.funcs = &gpio_display_mux_bridge_funcs;
++	ret = drm_bridge_add(&gpio_display_mux->bridge);
++	if (ret < 0) {
++		dev_err(dev, "Failed to add drm bridge\n");
++		return ret;
++	}
++
++	ret = devm_request_threaded_irq(dev, gpio_display_mux->detect_irq,
++				NULL,
++				gpio_display_mux_det_threaded_handler,
++				IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING |
++					IRQF_ONESHOT,
++				"gpio-display-mux-det", gpio_display_mux);
++	if (ret) {
++		dev_err(dev, "Failed to request MUX_DET threaded irq\n");
++		goto err_bridge_remove;
++	}
++
++	return 0;
++
++err_bridge_remove:
++	drm_bridge_remove(&gpio_display_mux->bridge);
++
++	return ret;
++}
++
++static int gpio_display_mux_remove(struct platform_device *pdev)
++{
++	struct gpio_display_mux *gpio_display_mux = platform_get_drvdata(pdev);
++
++	drm_bridge_remove(&gpio_display_mux->bridge);
++
++	return 0;
++}
++
++static const struct of_device_id gpio_display_mux_match[] = {
++	{ .compatible = "gpio-display-mux", },
++	{},
++};
++
++struct platform_driver gpio_display_mux_driver = {
++	.probe = gpio_display_mux_probe,
++	.remove = gpio_display_mux_remove,
++	.driver = {
++		.name = "gpio-display-mux",
++		.of_match_table = gpio_display_mux_match,
++	},
++};
++
++module_platform_driver(gpio_display_mux_driver);
++
++MODULE_DESCRIPTION("GPIO-controlled display mux");
++MODULE_AUTHOR("Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>");
++MODULE_LICENSE("GPL v2");
 -- 
 2.7.4
