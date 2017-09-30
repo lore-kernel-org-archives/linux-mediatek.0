@@ -1,179 +1,59 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH 07/12] usb: mtu3: add support for usb3.1 IP
-Date: Fri, 29 Sep 2017 22:11:41 +0800
-Message-ID: <1506694301.17567.26.camel@mhfsdcap03>
+From: Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH 01/12] usb: mtu3: fix error return code in
+ ssusb_gadget_init()
+Date: Sat, 30 Sep 2017 16:00:28 +0300
+Message-ID: <46f6e8f0-0398-e33e-10fc-d0db6ce06db0@cogentembedded.com>
 References: <fe8df8503f602586bcea4b1598eb09678b1525e3.1506509658.git.chunfeng.yun@mediatek.com>
-         <f862f79fce3eb723a7d9bb6d27e60b82d031d918.1506509659.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f862f79fce3eb723a7d9bb6d27e60b82d031d918.1506509659.git.chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, Rob Herring <robh+dt@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <fe8df8503f602586bcea4b1598eb09678b1525e3.1506509658.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-09-28 at 08:17 +0800, Chunfeng Yun wrote:
-> Support SuperSpeedPlus for usb3.1 device IP
+Hello!
+
+On 9/28/2017 3:17 AM, Chunfeng Yun wrote:
+
+> When fail to get irq number, platform_get_irq() may return
+
+    Failing. IRQ. :-)
+
+> -EPROBE_DEFER, but we ignore it and always return -ENODEV,
+> so fix it.
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
->  drivers/usb/mtu3/mtu3.h            |    1 +
->  drivers/usb/mtu3/mtu3_core.c       |   14 +++++++++++---
->  drivers/usb/mtu3/mtu3_gadget.c     |    3 ++-
->  drivers/usb/mtu3/mtu3_gadget_ep0.c |   16 ++++++++--------
->  drivers/usb/mtu3/mtu3_hw_regs.h    |    1 +
->  5 files changed, 23 insertions(+), 12 deletions(-)
+>   drivers/usb/mtu3/mtu3_core.c |    4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
-> index b0c2b5d..d80e4e8 100644
-> --- a/drivers/usb/mtu3/mtu3.h
-> +++ b/drivers/usb/mtu3/mtu3.h
-> @@ -94,6 +94,7 @@ enum mtu3_speed {
->  	MTU3_SPEED_FULL = 1,
->  	MTU3_SPEED_HIGH = 3,
->  	MTU3_SPEED_SUPER = 4,
-> +	MTU3_SPEED_SUPER_PLUS = 5,
->  };
->  
->  /**
 > diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
-> index cd4528f..67f7a30 100644
+> index 99c65b0..9475798 100644
 > --- a/drivers/usb/mtu3/mtu3_core.c
 > +++ b/drivers/usb/mtu3/mtu3_core.c
-> @@ -237,7 +237,7 @@ void mtu3_ep_stall_set(struct mtu3_ep *mep, bool set)
->  
->  void mtu3_dev_on_off(struct mtu3 *mtu, int is_on)
->  {
-> -	if (mtu->is_u3_ip && (mtu->max_speed == USB_SPEED_SUPER))
-> +	if (mtu->is_u3_ip && mtu->max_speed >= USB_SPEED_SUPER)
->  		mtu3_ss_func_set(mtu, is_on);
->  	else
->  		mtu3_hs_softconn_set(mtu, is_on);
-> @@ -547,6 +547,9 @@ static void mtu3_set_speed(struct mtu3 *mtu)
->  		mtu3_clrbits(mbase, U3D_USB3_CONFIG, USB3_EN);
->  		/* HS/FS detected by HW */
->  		mtu3_setbits(mbase, U3D_POWER_MANAGEMENT, HS_ENABLE);
-> +	} else if (mtu->max_speed == USB_SPEED_SUPER) {
-> +		mtu3_clrbits(mtu->ippc_base, SSUSB_U3_CTRL(0),
-> +			     SSUSB_U3_PORT_SSP_SPEED);
->  	}
->  
->  	dev_info(mtu->dev, "max_speed: %s\n",
-> @@ -624,6 +627,10 @@ static irqreturn_t mtu3_link_isr(struct mtu3 *mtu)
->  		udev_speed = USB_SPEED_SUPER;
->  		maxpkt = 512;
->  		break;
-> +	case MTU3_SPEED_SUPER_PLUS:
-> +		udev_speed = USB_SPEED_SUPER_PLUS;
-> +		maxpkt = 512;
-> +		break;
->  	default:
->  		udev_speed = USB_SPEED_UNKNOWN;
->  		break;
-> @@ -825,14 +832,15 @@ int ssusb_gadget_init(struct ssusb_mtk *ssusb)
->  	case USB_SPEED_FULL:
->  	case USB_SPEED_HIGH:
->  	case USB_SPEED_SUPER:
-> +	case USB_SPEED_SUPER_PLUS:
->  		break;
->  	default:
->  		dev_err(dev, "invalid max_speed: %s\n",
->  			usb_speed_string(mtu->max_speed));
->  		/* fall through */
->  	case USB_SPEED_UNKNOWN:
-> -		/* default as SS */
-> -		mtu->max_speed = USB_SPEED_SUPER;
-> +		/* default as SSP */
-> +		mtu->max_speed = USB_SPEED_SUPER_PLUS;
->  		break;
->  	}
->  
-> diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
-> index 434fca5..b495471 100644
-> --- a/drivers/usb/mtu3/mtu3_gadget.c
-> +++ b/drivers/usb/mtu3/mtu3_gadget.c
-> @@ -89,6 +89,7 @@ static int mtu3_ep_enable(struct mtu3_ep *mep)
->  
->  	switch (mtu->g.speed) {
->  	case USB_SPEED_SUPER:
-> +	case USB_SPEED_SUPER_PLUS:
->  		if (usb_endpoint_xfer_int(desc) ||
->  				usb_endpoint_xfer_isoc(desc)) {
->  			interval = desc->bInterval;
-> @@ -456,7 +457,7 @@ static int mtu3_gadget_wakeup(struct usb_gadget *gadget)
->  		return  -EOPNOTSUPP;
->  
->  	spin_lock_irqsave(&mtu->lock, flags);
-> -	if (mtu->g.speed == USB_SPEED_SUPER) {
-> +	if (mtu->g.speed >= USB_SPEED_SUPER) {
->  		mtu3_setbits(mtu->mac_base, U3D_LINK_POWER_CONTROL, UX_EXIT);
->  	} else {
->  		mtu3_setbits(mtu->mac_base, U3D_POWER_MANAGEMENT, RESUME);
-> diff --git a/drivers/usb/mtu3/mtu3_gadget_ep0.c b/drivers/usb/mtu3/mtu3_gadget_ep0.c
-> index 958d74d..1ca77e8 100644
-> --- a/drivers/usb/mtu3/mtu3_gadget_ep0.c
-> +++ b/drivers/usb/mtu3/mtu3_gadget_ep0.c
-> @@ -212,8 +212,8 @@ static int ep0_set_sel(struct mtu3 *mtu, struct usb_ctrlrequest *setup)
->  	case USB_RECIP_DEVICE:
->  		result[0] = mtu->is_self_powered << USB_DEVICE_SELF_POWERED;
->  		result[0] |= mtu->may_wakeup << USB_DEVICE_REMOTE_WAKEUP;
-> -		/* superspeed only */
-> -		if (mtu->g.speed == USB_SPEED_SUPER) {
-> +
-> +		if (mtu->g.speed >= USB_SPEED_SUPER) {
->  			result[0] |= mtu->u1_enable << USB_DEV_STAT_U1_ENABLED;
->  			result[0] |= mtu->u2_enable << USB_DEV_STAT_U2_ENABLED;
->  		}
-> @@ -329,8 +329,8 @@ static int ep0_handle_feature_dev(struct mtu3 *mtu,
->  		handled = handle_test_mode(mtu, setup);
->  		break;
->  	case USB_DEVICE_U1_ENABLE:
-> -		if (mtu->g.speed != USB_SPEED_SUPER ||
-> -			mtu->g.state != USB_STATE_CONFIGURED)
-> +		if (mtu->g.speed <= USB_SPEED_SUPER ||
-Here is wrong, I'll fix it up in next version.
+> @@ -774,9 +774,9 @@ int ssusb_gadget_init(struct ssusb_mtk *ssusb)
+>   		return -ENOMEM;
+>   
+>   	mtu->irq = platform_get_irq(pdev, 0);
+> -	if (mtu->irq <= 0) {
+> +	if (mtu->irq < 0) {
 
-> +		    mtu->g.state != USB_STATE_CONFIGURED)
->  			break;
->  
->  		lpc = mtu3_readl(mbase, U3D_LINK_POWER_CONTROL);
-> @@ -344,8 +344,8 @@ static int ep0_handle_feature_dev(struct mtu3 *mtu,
->  		handled = 1;
->  		break;
->  	case USB_DEVICE_U2_ENABLE:
-> -		if (mtu->g.speed != USB_SPEED_SUPER ||
-> -			mtu->g.state != USB_STATE_CONFIGURED)
-> +		if (mtu->g.speed <= USB_SPEED_SUPER ||
-It's also wrong.
+    This is good as the function no longer returns 0 on error. Even when it 
+did, 0 could mean a valid IRQ as well...
 
-Sorry
+>   		dev_err(dev, "fail to get irq number\n");
+> -		return -ENODEV;
+> +		return mtu->irq;
+>   	}
+>   	dev_info(dev, "irq %d\n", mtu->irq);
+>   
 
-> +		    mtu->g.state != USB_STATE_CONFIGURED)
->  			break;
->  
->  		lpc = mtu3_readl(mbase, U3D_LINK_POWER_CONTROL);
-> @@ -384,8 +384,8 @@ static int ep0_handle_feature(struct mtu3 *mtu,
->  		break;
->  	case USB_RECIP_INTERFACE:
->  		/* superspeed only */
-> -		if ((value == USB_INTRF_FUNC_SUSPEND)
-> -			&& (mtu->g.speed == USB_SPEED_SUPER)) {
-> +		if (value == USB_INTRF_FUNC_SUSPEND &&
-> +		    mtu->g.speed >= USB_SPEED_SUPER) {
->  			/*
->  			 * forward the request because function drivers
->  			 * should handle it
-> diff --git a/drivers/usb/mtu3/mtu3_hw_regs.h b/drivers/usb/mtu3/mtu3_hw_regs.h
-> index a7e35f6..6953436 100644
-> --- a/drivers/usb/mtu3/mtu3_hw_regs.h
-> +++ b/drivers/usb/mtu3/mtu3_hw_regs.h
-> @@ -467,6 +467,7 @@
->  #define SSUSB_VBUS_CHG_INT_B_EN		BIT(6)
->  
->  /* U3D_SSUSB_U3_CTRL_0P */
-> +#define SSUSB_U3_PORT_SSP_SPEED	BIT(9)
->  #define SSUSB_U3_PORT_HOST_SEL		BIT(2)
->  #define SSUSB_U3_PORT_PDN		BIT(1)
->  #define SSUSB_U3_PORT_DIS		BIT(0)
+MBR, Sergei
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
