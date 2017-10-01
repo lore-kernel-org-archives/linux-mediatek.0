@@ -1,59 +1,47 @@
-From: Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH 01/12] usb: mtu3: fix error return code in
- ssusb_gadget_init()
-Date: Sat, 30 Sep 2017 16:00:28 +0300
-Message-ID: <46f6e8f0-0398-e33e-10fc-d0db6ce06db0@cogentembedded.com>
-References: <fe8df8503f602586bcea4b1598eb09678b1525e3.1506509658.git.chunfeng.yun@mediatek.com>
+From: Christoph Hellwig <hch@lst.de>
+Subject: Re: [PATCH v3] dma-debug: fix incorrect pfn calculation
+Date: Sun, 1 Oct 2017 10:04:49 +0200
+Message-ID: <20171001080449.GB11843@lst.de>
+References: <1506484087-1177-1-git-send-email-miles.chen@mediatek.com> <273077fd-c5ad-82c8-60aa-cde89355e5e8@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <fe8df8503f602586bcea4b1598eb09678b1525e3.1506509658.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <owner-linux-mm@kvack.org>
+Content-Disposition: inline
+In-Reply-To: <273077fd-c5ad-82c8-60aa-cde89355e5e8@arm.com>
+Sender: owner-linux-mm@kvack.org
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: miles.chen@mediatek.com, Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>, Andrew Morton <akpm@linux-foundation.org>, wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org, linux-mm@kvack.org, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello!
+On Wed, Sep 27, 2017 at 11:23:52AM +0100, Robin Murphy wrote:
+> > I found that debug_dma_alloc_coherent() and debug_dma_free_coherent()
+> > assume that dma_alloc_coherent() always returns a linear address.
+> > However it's possible that dma_alloc_coherent() returns a non-linear
+> > address. In this case, page_to_pfn(virt_to_page(virt)) will return an
+> > incorrect pfn. If the pfn is valid and mapped as a COW page,
+> > we will hit the warning when doing wp_page_copy().
 
-On 9/28/2017 3:17 AM, Chunfeng Yun wrote:
+Hmm, can the debug code assume anything?  Right now you're just patching
+it from supporting linear and vmalloc.  But what about other
+potential mapping types?
 
-> When fail to get irq number, platform_get_irq() may return
+> > +	entry->pfn	 = is_vmalloc_addr(virt) ? vmalloc_to_pfn(virt) :
+> > +						page_to_pfn(virt_to_page(virt));
 
-    Failing. IRQ. :-)
+Please use normal if/else conditionsals:
 
-> -EPROBE_DEFER, but we ignore it and always return -ENODEV,
-> so fix it.
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->   drivers/usb/mtu3/mtu3_core.c |    4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
-> index 99c65b0..9475798 100644
-> --- a/drivers/usb/mtu3/mtu3_core.c
-> +++ b/drivers/usb/mtu3/mtu3_core.c
-> @@ -774,9 +774,9 @@ int ssusb_gadget_init(struct ssusb_mtk *ssusb)
->   		return -ENOMEM;
->   
->   	mtu->irq = platform_get_irq(pdev, 0);
-> -	if (mtu->irq <= 0) {
-> +	if (mtu->irq < 0) {
+	if (is_vmalloc_addr(virt))
+		entry->pfn = vmalloc_to_pfn(virt);
+	else
+		entry->pfn = page_to_pfn(virt_to_page(virt));
 
-    This is good as the function no longer returns 0 on error. Even when it 
-did, 0 could mean a valid IRQ as well...
+> > +		.pfn		= is_vmalloc_addr(virt) ? vmalloc_to_pfn(virt) :
+> > +						page_to_pfn(virt_to_page(virt)),
 
->   		dev_err(dev, "fail to get irq number\n");
-> -		return -ENODEV;
-> +		return mtu->irq;
->   	}
->   	dev_info(dev, "irq %d\n", mtu->irq);
->   
+Same here.
 
-MBR, Sergei
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+To unsubscribe, send a message with 'unsubscribe linux-mm' in
+the body to majordomo@kvack.org.  For more info on Linux MM,
+see: http://www.linux-mm.org/ .
+Don't email: <a href=mailto:"dont@kvack.org"> email@kvack.org </a>
