@@ -1,96 +1,75 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH 01/12] mmc: dt-bindings: update Mediatek MMC bindings
-Date: Mon, 2 Oct 2017 08:53:37 +0200
-Message-ID: <CAPDyKFoiJJ=NM8EZ7mh+91Nj=EBYcAJmvZ3Z+xskeU3qB40HEw@mail.gmail.com>
-References: <1505207272-16983-1-git-send-email-chaotian.jing@mediatek.com>
- <1505207272-16983-2-git-send-email-chaotian.jing@mediatek.com>
- <20170913141026.43oh4n4foipmahsk@rob-hp-laptop> <1505355021.8308.4.camel@mhfsdcap03>
- <CAPDyKFrUe-0hEsxVRQSZvujcXY8WrR6m-0DMW=VwDDLvz7Lexw@mail.gmail.com>
- <1506475100.19851.9.camel@mhfsdcap03> <1506650162.19851.12.camel@mhfsdcap03>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [RFC 11/11] hack: Revert "iommu/io-pgtable: Sanitise map/unmap
+ addresses"
+Date: Mon, 2 Oct 2017 10:50:14 +0100
+Message-ID: <8c438c56-b5c1-52ee-bc3b-2d8390cb552c@arm.com>
+References: <1506690553-27357-1-git-send-email-ulrich.hecht+renesas@gmail.com>
+ <1506690553-27357-12-git-send-email-ulrich.hecht+renesas@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1506650162.19851.12.camel@mhfsdcap03>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Heiner Kallweit <hkallweit1@gmail.com>, Phong LE <ple@baylibre.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1506690553-27357-12-git-send-email-ulrich.hecht+renesas@gmail.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Ulrich Hecht <ulrich.hecht+renesas@gmail.com>, magnus.damm@gmail.com, laurent.pinchart@ideasonboard.com, jacopo@jmondi.org
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-mediatek@lists.infradead.org
 
-[...]
-
->> > >> >  Required properties:
->> > >> > -- compatible: Should be "mediatek,mt8173-mmc","mediatek,mt8135-mmc"
->> > >> > +- compatible: value should be either of the following.
->> > >> > +   "mediatek,mt8135-mmc": for mmc host ip compatible with mt8135
->> > >> > +   "mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
->> > >> > +   "mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
->> > >> > +   "mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
->> > >> > +- reg: physical base address of the controller and length
->> > >> >  - interrupts: Should contain MSDC interrupt number
->> > >> > -- clocks: MSDC source clock, HCLK
->> > >> > -- clock-names: "source", "hclk"
->> > >> > +- clocks: MSDC source clock, HCLK, source_cg
->> > >> > +- clock-names: "source", "hclk", "source_cg"
->> > >>
->> > >> All chips support source_cg? That's not backwards compatible for
->> > >> existing compatible strings if the driver requires it.
->> > > Not all chips support source_cg, for chips which do not support
->> > > source_cg, no need source_cg here, and the driver will parse it
->> > > to know if current chip support it.
->> >
->> > In such case you must not add add a required binding for it. I think
->> > that is what Rob is trying to point out for you.
->> >
->> > [...]
->> >
->> > Kind regards
->> > Uffe
->> The source_cg is required(MUST) at MT2712 and future SoCs, but not
->> required(do not have it) at previous SoCs, so that put it at required
->> properties, let the driver to handle it.
-
-Then you must explain that in the binding...
-
-On 29 September 2017 at 03:56, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
-> On Wed, 2017-09-27 at 09:18 +0800, Chaotian Jing wrote:
->> On Wed, 2017-09-27 at 00:33 +0200, Ulf Hansson wrote:
->> > On 14 September 2017 at 04:10, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
->> > > On Wed, 2017-09-13 at 09:10 -0500, Rob Herring wrote:
->> > >> On Tue, Sep 12, 2017 at 05:07:41PM +0800, Chaotian Jing wrote:
->> > >> > Change the comptiable for support of multi-platform
->> > >> > Add description for reg
->> > >> > Add description for source_cg
->> > >> > Add description for mediatek,latch-ck
->> > >>
->> > >> This is at least the 3rd patch with exactly the same vague subject.
->> > >> Please make the subject somewhat unique.
->> > >>
->> > > Thx, will change the subject at next version
->> > >> >
->> > >> > Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
->> > >> > ---
->> > >> >  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 13 ++++++++++---
->> > >> >  1 file changed, 10 insertions(+), 3 deletions(-)
->> > >> >
->> > >> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
->> > >> > index 4182ea3..405cd06 100644
->> > >> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
->> > >> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
->> > >> > @@ -7,10 +7,15 @@ This file documents differences between the core properties in mmc.txt
->> > >> >  and the properties used by the msdc driver.
->> > >> >
->
-> Any other comments about it ? still must not add a required binding for
-> it ? if add a optional binding for it, how to add it ? as cannot
-> duplicate "clocks" & "clock-names" in one node.
->
->
-
-I suggest you keep the description of the new clock name part of the
-"Required properties:" header. However, after each clock name,
-explicit state when the clock is required/optional. Something along
-the lines as sdhci-msm does it.
-Documentation/devicetree/bindings/mmc/sdhci-msm.txt
-
-Kind regards
-Uffe
+SGkgVWxyaWNoLAoKT24gMjkvMDkvMTcgMTQ6MDksIFVscmljaCBIZWNodCB3cm90ZToKPiBUaGlz
+IGNoZWNrIGJyZWFrcyBEUk0gaW5pdGlhbGl6YXRpb24gb24gQWNlciBDaHJvbWVib29rIFIxMywg
+cGFkZHIgaXMgYWJvdmUKPiA0R0IuIEhhdmVuJ3QgbG9va2VkIGludG8gdGhpcyB5ZXQuCgpJIHRo
+aW5rIHlvdSBtZWFuICJEUk0gaW5pdGlhbGlzYXRpb24gd2FzIGhhcHBlbmluZyB0byBzdGlsbCB3
+b3JrIHdpdGgKc2lsZW50bHkgdHJ1bmNhdGVkIGFkZHJlc3Nlcy4uLiIgOykKCkFueXdheSwgdGhl
+IE1lZGlhdGVrLXNwZWNpZmljIGZpeCBpcyBpbiByYzMgbm93IC0gMWZmOWIxN2NlZGIzCigiaW9t
+bXUvbWVkaWF0ZWs6IExpbWl0IHRoZSBwaHlzaWNhbCBhZGRyZXNzIGluIDMyYml0IGZvciB2N3Mi
+KQoKUm9iaW4uCgo+IFRoaXMgcmV2ZXJ0cyBjb21taXQgNzY1NTczOTE0MzNjNzdkMzMwY2VkZTFh
+NTMxYjM1OGQyZjkwZGY2Ni4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBVbHJpY2ggSGVjaHQgPHVscmlj
+aC5oZWNodCtyZW5lc2FzQGdtYWlsLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9pb21tdS9pby1wZ3Rh
+YmxlLWFybS12N3MuYyB8IDYgLS0tLS0tCj4gIGRyaXZlcnMvaW9tbXUvaW8tcGd0YWJsZS1hcm0u
+YyAgICAgfCA3IC0tLS0tLS0KPiAgMiBmaWxlcyBjaGFuZ2VkLCAxMyBkZWxldGlvbnMoLSkKPiAK
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9pb21tdS9pby1wZ3RhYmxlLWFybS12N3MuYyBiL2RyaXZl
+cnMvaW9tbXUvaW8tcGd0YWJsZS1hcm0tdjdzLmMKPiBpbmRleCBkNjY1ZDBkLi5hZjMzMGY1IDEw
+MDY0NAo+IC0tLSBhL2RyaXZlcnMvaW9tbXUvaW8tcGd0YWJsZS1hcm0tdjdzLmMKPiArKysgYi9k
+cml2ZXJzL2lvbW11L2lvLXBndGFibGUtYXJtLXY3cy5jCj4gQEAgLTQ3OSw5ICs0NzksNiBAQCBz
+dGF0aWMgaW50IGFybV92N3NfbWFwKHN0cnVjdCBpb19wZ3RhYmxlX29wcyAqb3BzLCB1bnNpZ25l
+ZCBsb25nIGlvdmEsCj4gIAlpZiAoIShwcm90ICYgKElPTU1VX1JFQUQgfCBJT01NVV9XUklURSkp
+KQo+ICAJCXJldHVybiAwOwo+ICAKPiAtCWlmIChXQVJOX09OKHVwcGVyXzMyX2JpdHMoaW92YSkg
+fHwgdXBwZXJfMzJfYml0cyhwYWRkcikpKQo+IC0JCXJldHVybiAtRVJBTkdFOwo+IC0KPiAgCXJl
+dCA9IF9fYXJtX3Y3c19tYXAoZGF0YSwgaW92YSwgcGFkZHIsIHNpemUsIHByb3QsIDEsIGRhdGEt
+PnBnZCk7Cj4gIAkvKgo+ICAJICogU3luY2hyb25pc2UgYWxsIFBURSB1cGRhdGVzIGZvciB0aGUg
+bmV3IG1hcHBpbmcgYmVmb3JlIHRoZXJlJ3MKPiBAQCAtNjYyLDkgKzY1OSw2IEBAIHN0YXRpYyBp
+bnQgYXJtX3Y3c191bm1hcChzdHJ1Y3QgaW9fcGd0YWJsZV9vcHMgKm9wcywgdW5zaWduZWQgbG9u
+ZyBpb3ZhLAo+ICAJc3RydWN0IGFybV92N3NfaW9fcGd0YWJsZSAqZGF0YSA9IGlvX3BndGFibGVf
+b3BzX3RvX2RhdGEob3BzKTsKPiAgCXNpemVfdCB1bm1hcHBlZDsKPiAgCj4gLQlpZiAoV0FSTl9P
+Tih1cHBlcl8zMl9iaXRzKGlvdmEpKSkKPiAtCQlyZXR1cm4gMDsKPiAtCj4gIAl1bm1hcHBlZCA9
+IF9fYXJtX3Y3c191bm1hcChkYXRhLCBpb3ZhLCBzaXplLCAxLCBkYXRhLT5wZ2QpOwo+ICAJaWYg
+KHVubWFwcGVkKQo+ICAJCWlvX3BndGFibGVfdGxiX3N5bmMoJmRhdGEtPmlvcCk7Cj4gZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvaW9tbXUvaW8tcGd0YWJsZS1hcm0uYyBiL2RyaXZlcnMvaW9tbXUvaW8t
+cGd0YWJsZS1hcm0uYwo+IGluZGV4IGU4MDE4YTMuLmIxODIwMzkgMTAwNjQ0Cj4gLS0tIGEvZHJp
+dmVycy9pb21tdS9pby1wZ3RhYmxlLWFybS5jCj4gKysrIGIvZHJpdmVycy9pb21tdS9pby1wZ3Rh
+YmxlLWFybS5jCj4gQEAgLTQ1MiwxMCArNDUyLDYgQEAgc3RhdGljIGludCBhcm1fbHBhZV9tYXAo
+c3RydWN0IGlvX3BndGFibGVfb3BzICpvcHMsIHVuc2lnbmVkIGxvbmcgaW92YSwKPiAgCWlmICgh
+KGlvbW11X3Byb3QgJiAoSU9NTVVfUkVBRCB8IElPTU1VX1dSSVRFKSkpCj4gIAkJcmV0dXJuIDA7
+Cj4gIAo+IC0JaWYgKFdBUk5fT04oaW92YSA+PSAoMVVMTCA8PCBkYXRhLT5pb3AuY2ZnLmlhcykg
+fHwKPiAtCQkgICAgcGFkZHIgPj0gKDFVTEwgPDwgZGF0YS0+aW9wLmNmZy5vYXMpKSkKPiAtCQly
+ZXR1cm4gLUVSQU5HRTsKPiAtCj4gIAlwcm90ID0gYXJtX2xwYWVfcHJvdF90b19wdGUoZGF0YSwg
+aW9tbXVfcHJvdCk7Cj4gIAlyZXQgPSBfX2FybV9scGFlX21hcChkYXRhLCBpb3ZhLCBwYWRkciwg
+c2l6ZSwgcHJvdCwgbHZsLCBwdGVwKTsKPiAgCS8qCj4gQEAgLTYxNCw5ICs2MTAsNiBAQCBzdGF0
+aWMgaW50IGFybV9scGFlX3VubWFwKHN0cnVjdCBpb19wZ3RhYmxlX29wcyAqb3BzLCB1bnNpZ25l
+ZCBsb25nIGlvdmEsCj4gIAlhcm1fbHBhZV9pb3B0ZSAqcHRlcCA9IGRhdGEtPnBnZDsKPiAgCWlu
+dCBsdmwgPSBBUk1fTFBBRV9TVEFSVF9MVkwoZGF0YSk7Cj4gIAo+IC0JaWYgKFdBUk5fT04oaW92
+YSA+PSAoMVVMTCA8PCBkYXRhLT5pb3AuY2ZnLmlhcykpKQo+IC0JCXJldHVybiAwOwo+IC0KPiAg
+CXVubWFwcGVkID0gX19hcm1fbHBhZV91bm1hcChkYXRhLCBpb3ZhLCBzaXplLCBsdmwsIHB0ZXAp
+Owo+ICAJaWYgKHVubWFwcGVkKQo+ICAJCWlvX3BndGFibGVfdGxiX3N5bmMoJmRhdGEtPmlvcCk7
+Cj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
