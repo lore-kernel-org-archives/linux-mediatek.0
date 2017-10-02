@@ -1,47 +1,79 @@
-From: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH v3] dma-debug: fix incorrect pfn calculation
-Date: Sun, 1 Oct 2017 10:04:49 +0200
-Message-ID: <20171001080449.GB11843@lst.de>
-References: <1506484087-1177-1-git-send-email-miles.chen@mediatek.com> <273077fd-c5ad-82c8-60aa-cde89355e5e8@arm.com>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v3 02/10] arm: dts: mt2701: enable display pwm backlight
+Date: Mon, 2 Oct 2017 09:54:52 +0800
+Message-ID: <0f9441e9fc40e47e94927a3a4c96dd3f7f287d94.1506908511.git.ryder.lee@mediatek.com>
+References: <cover.1506908511.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <owner-linux-mm@kvack.org>
-Content-Disposition: inline
-In-Reply-To: <273077fd-c5ad-82c8-60aa-cde89355e5e8@arm.com>
-Sender: owner-linux-mm@kvack.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: miles.chen@mediatek.com, Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>, Andrew Morton <akpm@linux-foundation.org>, wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org, linux-mm@kvack.org, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <cover.1506908511.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 27, 2017 at 11:23:52AM +0100, Robin Murphy wrote:
-> > I found that debug_dma_alloc_coherent() and debug_dma_free_coherent()
-> > assume that dma_alloc_coherent() always returns a linear address.
-> > However it's possible that dma_alloc_coherent() returns a non-linear
-> > address. In this case, page_to_pfn(virt_to_page(virt)) will return an
-> > incorrect pfn. If the pfn is valid and mapped as a COW page,
-> > we will hit the warning when doing wp_page_copy().
+From: Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Hmm, can the debug code assume anything?  Right now you're just patching
-it from supporting linear and vmalloc.  But what about other
-potential mapping types?
+This patch adds board related config for MT2701 pwm backlight.
 
-> > +	entry->pfn	 = is_vmalloc_addr(virt) ? vmalloc_to_pfn(virt) :
-> > +						page_to_pfn(virt_to_page(virt));
+Signed-off-by: Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ arch/arm/boot/dts/mt2701-evb.dts | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-Please use normal if/else conditionsals:
-
-	if (is_vmalloc_addr(virt))
-		entry->pfn = vmalloc_to_pfn(virt);
-	else
-		entry->pfn = page_to_pfn(virt_to_page(virt));
-
-> > +		.pfn		= is_vmalloc_addr(virt) ? vmalloc_to_pfn(virt) :
-> > +						page_to_pfn(virt_to_page(virt)),
-
-Same here.
+diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
+index f484973..63af4b1 100644
+--- a/arch/arm/boot/dts/mt2701-evb.dts
++++ b/arch/arm/boot/dts/mt2701-evb.dts
+@@ -56,12 +56,29 @@
+ 	bt_sco_codec:bt_sco_codec {
+ 		compatible = "linux,bt-sco";
+ 	};
++
++	backlight_lcd: backlight_lcd {
++		compatible = "pwm-backlight";
++		pwms = <&bls 0 100000>;
++		brightness-levels = <
++			  0  16  32  48  64  80  96 112
++			128 144 160 176 192 208 224 240
++			255
++		>;
++		default-brightness-level = <9>;
++	};
+ };
+ 
+ &auxadc {
+ 	status = "okay";
+ };
+ 
++&bls {
++	status = "okay";
++	pinctrl-names = "default";
++	pinctrl-0 = <&pwm_bls_gpio>;
++};
++
+ &i2c0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c0_pins_a>;
+@@ -111,6 +128,12 @@
+ 		};
+ 	};
+ 
++	pwm_bls_gpio: pwm_bls_gpio {
++		pins_cmd_dat {
++			pinmux = <MT2701_PIN_208_AUD_EXT_CK1__FUNC_DISP_PWM>;
++		};
++	};
++
+ 	spi_pins_a: spi0@0 {
+ 		pins_spi {
+ 			pinmux = <MT2701_PIN_53_SPI0_CSN__FUNC_SPI0_CS>,
+-- 
+1.9.1
 
 --
-To unsubscribe, send a message with 'unsubscribe linux-mm' in
-the body to majordomo@kvack.org.  For more info on Linux MM,
-see: http://www.linux-mm.org/ .
-Don't email: <a href=mailto:"dont@kvack.org"> email@kvack.org </a>
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
