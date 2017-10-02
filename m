@@ -1,82 +1,96 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3 06/10] arm: dts: mt7623: add subsystem clock controller
- nodes
-Date: Mon, 2 Oct 2017 09:54:56 +0800
-Message-ID: <1a6aba8921584fe465bc2138a3aec10c2637f226.1506908511.git.ryder.lee@mediatek.com>
-References: <cover.1506908511.git.ryder.lee@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH 01/12] mmc: dt-bindings: update Mediatek MMC bindings
+Date: Mon, 2 Oct 2017 08:53:37 +0200
+Message-ID: <CAPDyKFoiJJ=NM8EZ7mh+91Nj=EBYcAJmvZ3Z+xskeU3qB40HEw@mail.gmail.com>
+References: <1505207272-16983-1-git-send-email-chaotian.jing@mediatek.com>
+ <1505207272-16983-2-git-send-email-chaotian.jing@mediatek.com>
+ <20170913141026.43oh4n4foipmahsk@rob-hp-laptop> <1505355021.8308.4.camel@mhfsdcap03>
+ <CAPDyKFrUe-0hEsxVRQSZvujcXY8WrR6m-0DMW=VwDDLvz7Lexw@mail.gmail.com>
+ <1506475100.19851.9.camel@mhfsdcap03> <1506650162.19851.12.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <cover.1506908511.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1506650162.19851.12.camel@mhfsdcap03>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Heiner Kallweit <hkallweit1@gmail.com>, Phong LE <ple@baylibre.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds missing susbsystem clock controllers nodes for MT7623.
-(e.g., mmsys, imgsys, vdecsys and bdpsys)
+[...]
 
-Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- arch/arm/boot/dts/mt7623.dtsi | 32 ++++++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+>> > >> >  Required properties:
+>> > >> > -- compatible: Should be "mediatek,mt8173-mmc","mediatek,mt8135-mmc"
+>> > >> > +- compatible: value should be either of the following.
+>> > >> > +   "mediatek,mt8135-mmc": for mmc host ip compatible with mt8135
+>> > >> > +   "mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
+>> > >> > +   "mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
+>> > >> > +   "mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
+>> > >> > +- reg: physical base address of the controller and length
+>> > >> >  - interrupts: Should contain MSDC interrupt number
+>> > >> > -- clocks: MSDC source clock, HCLK
+>> > >> > -- clock-names: "source", "hclk"
+>> > >> > +- clocks: MSDC source clock, HCLK, source_cg
+>> > >> > +- clock-names: "source", "hclk", "source_cg"
+>> > >>
+>> > >> All chips support source_cg? That's not backwards compatible for
+>> > >> existing compatible strings if the driver requires it.
+>> > > Not all chips support source_cg, for chips which do not support
+>> > > source_cg, no need source_cg here, and the driver will parse it
+>> > > to know if current chip support it.
+>> >
+>> > In such case you must not add add a required binding for it. I think
+>> > that is what Rob is trying to point out for you.
+>> >
+>> > [...]
+>> >
+>> > Kind regards
+>> > Uffe
+>> The source_cg is required(MUST) at MT2712 and future SoCs, but not
+>> required(do not have it) at previous SoCs, so that put it at required
+>> properties, let the driver to handle it.
 
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index 0640fb7..a877f9a 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -661,6 +661,30 @@
- 		status = "disabled";
- 	};
- 
-+	mmsys: syscon@14000000 {
-+		compatible = "mediatek,mt7623-mmsys",
-+			     "mediatek,mt2701-mmsys",
-+			     "syscon";
-+		reg = <0 0x14000000 0 0x1000>;
-+		#clock-cells = <1>;
-+	};
-+
-+	imgsys: syscon@15000000 {
-+		compatible = "mediatek,mt7623-imgsys",
-+			     "mediatek,mt2701-imgsys",
-+			     "syscon";
-+		reg = <0 0x15000000 0 0x1000>;
-+		#clock-cells = <1>;
-+	};
-+
-+	vdecsys: syscon@16000000 {
-+		compatible = "mediatek,mt7623-vdecsys",
-+			     "mediatek,mt2701-vdecsys",
-+			     "syscon";
-+		reg = <0 0x16000000 0 0x1000>;
-+		#clock-cells = <1>;
-+	};
-+
- 	hifsys: syscon@1a000000 {
- 		compatible = "mediatek,mt7623-hifsys",
- 			     "mediatek,mt2701-hifsys",
-@@ -799,4 +823,12 @@
- 		power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
- 		status = "disabled";
- 	};
-+
-+	bdpsys: syscon@1c000000 {
-+		compatible = "mediatek,mt7623-bdpsys",
-+			     "mediatek,mt2701-bdpsys",
-+			     "syscon";
-+		reg = <0 0x1c000000 0 0x1000>;
-+		#clock-cells = <1>;
-+	};
- };
--- 
-1.9.1
+Then you must explain that in the binding...
+
+On 29 September 2017 at 03:56, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+> On Wed, 2017-09-27 at 09:18 +0800, Chaotian Jing wrote:
+>> On Wed, 2017-09-27 at 00:33 +0200, Ulf Hansson wrote:
+>> > On 14 September 2017 at 04:10, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+>> > > On Wed, 2017-09-13 at 09:10 -0500, Rob Herring wrote:
+>> > >> On Tue, Sep 12, 2017 at 05:07:41PM +0800, Chaotian Jing wrote:
+>> > >> > Change the comptiable for support of multi-platform
+>> > >> > Add description for reg
+>> > >> > Add description for source_cg
+>> > >> > Add description for mediatek,latch-ck
+>> > >>
+>> > >> This is at least the 3rd patch with exactly the same vague subject.
+>> > >> Please make the subject somewhat unique.
+>> > >>
+>> > > Thx, will change the subject at next version
+>> > >> >
+>> > >> > Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+>> > >> > ---
+>> > >> >  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 13 ++++++++++---
+>> > >> >  1 file changed, 10 insertions(+), 3 deletions(-)
+>> > >> >
+>> > >> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+>> > >> > index 4182ea3..405cd06 100644
+>> > >> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+>> > >> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+>> > >> > @@ -7,10 +7,15 @@ This file documents differences between the core properties in mmc.txt
+>> > >> >  and the properties used by the msdc driver.
+>> > >> >
+>
+> Any other comments about it ? still must not add a required binding for
+> it ? if add a optional binding for it, how to add it ? as cannot
+> duplicate "clocks" & "clock-names" in one node.
+>
+>
+
+I suggest you keep the description of the new clock name part of the
+"Required properties:" header. However, after each clock name,
+explicit state when the clock is required/optional. Something along
+the lines as sdhci-msm does it.
+Documentation/devicetree/bindings/mmc/sdhci-msm.txt
+
+Kind regards
+Uffe
