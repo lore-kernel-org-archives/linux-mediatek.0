@@ -1,62 +1,30 @@
-From: Christoph Hellwig <hch-jcswGhMUV9g@public.gmane.org>
-Subject: Re: [PATCH v3] dma-debug: fix incorrect pfn calculation
-Date: Tue, 3 Oct 2017 09:07:52 +0200
-Message-ID: <20171003070752.GA18928@lst.de>
-References: <1506484087-1177-1-git-send-email-miles.chen@mediatek.com>
-	<273077fd-c5ad-82c8-60aa-cde89355e5e8@arm.com>
-	<20171001080449.GB11843@lst.de>
-	<1506940241.28397.36.camel@mtkswgap22>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/4] dt-bindings: rtc: mediatek: add bindings for
+ MediaTek SoC based RTC
+Date: Tue, 3 Oct 2017 16:58:01 -0500
+Message-ID: <20171003215801.b5cupghaamlid66y@rob-hp-laptop>
+References: <cover.1506049341.git.sean.wang@mediatek.com>
+ <1357cb02adb88a8a2d7c2268b8573c0a9b6f8d0c.1506049341.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1506940241.28397.36.camel@mtkswgap22>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>, Christoph Hellwig <hch-jcswGhMUV9g@public.gmane.org>
+In-Reply-To: <1357cb02adb88a8a2d7c2268b8573c0a9b6f8d0c.1506049341.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: a.zummo@towertech.it, alexandre.belloni@free-electrons.com, mark.rutland@arm.com, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Oct 02, 2017 at 06:30:41PM +0800, Miles Chen wrote:
-> ARCHs like metag and xtensa define their mappings (non-vmalloc and
-> non-linear) for dma allocation.
-
-metag basically is a reimplementation of the vmalloc map mechanism
-that should be easy to consolidate into the common one :(  xtensa
-has a weird remapping into a different segment, something that I
-vaguely remember mips used to support as well.
-
-> These mapping types are architecture-dependent and should not be used
-> outside arch folders. So it is hard to check the mappings and convert
-> a virtual address to a correct pfn in lib/dam-debug.c
+On Fri, Sep 22, 2017 at 11:33:14AM +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> How about recording only vmalloc (by is_vmalloc_addr()) and linear
-> address (by virt_addr_valid()) in lib/dma-debug? Since current 
-> implementation is not correct for those ARCHs.
+> Add device-tree binding for MediaTek SoC based RTC
 > 
-> if (!is_vmalloc_addr(addr) && !virt_addr_valid(addr))
->     return;
-> 
-> or
+> Cc: devicetree@vger.kernel.org
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  .../devicetree/bindings/rtc/rtc-mediatek.txt        | 21 +++++++++++++++++++++
+>  1 file changed, 21 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/rtc/rtc-mediatek.txt
 
-This looks like a good start, although I'm not sure I'd trust
-virt_addr_valid on every little arch.  In the worse case we'll
-have to exclude offenders from supporting dma debug, so let's go
-with that version.
-
-> > > > +	entry->pfn	 = is_vmalloc_addr(virt) ? vmalloc_to_pfn(virt) :
-> > > > +						page_to_pfn(virt_to_page(virt));
-> > 
-> > Please use normal if/else conditionsals:
-> 
-> Is this for better readability? I'll send another patch for this.
-
-Yes.
+Acked-by: Rob Herring <robh@kernel.org>
