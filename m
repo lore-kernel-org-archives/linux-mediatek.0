@@ -1,67 +1,62 @@
 From: <sean.wang@mediatek.com>
-Subject: [PATCH v2] soc: mediatek: place Kconfig for all SoC drivers under menu
-Date: Thu, 5 Oct 2017 11:17:49 +0800
-Message-ID: <41e81ac2998b171ff4715cb2dc17f15aa10b7518.1507173110.git.sean.wang@mediatek.com>
+Subject: [PATCH v2 0/4] add support of clock driver on MediaTek MT7622
+Date: Thu, 5 Oct 2017 11:50:21 +0800
+Message-ID: <cover.1507174350.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, jdelvare@suse.de, arnd@arndb.de
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+To: sboyd@codeaurora.org, mturquette@baylibre.com, robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, p.zabel@pengutronix.de
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Add cleanup for placing all Kconfig for all MediaTek SoC drivers under
-the independent menu as other SoCs vendor usually did. Since the menu
-would be shown depending on "ARCH_MEDIATEK || COMPILE_TEST" selected and
-MTK_PMIC_WRAP is still safe compiling with the case of "COMPILE_TEST"
-only, the superfluous dependency for those items under the menu also is
-also being removed for the sake of simplicity.
+Changes since v1:
+- fix up the makefile target for clk-mt7622-aud.o
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/soc/mediatek/Kconfig | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+Add clock driver required by each function driver on MT7622 SoC with
+adding all clocks exported from every hardware subsystem such as topckgen,
+apmixedsys, infracfg, pericfg , pciessys, ssusbsys, ethsys and audsys.
 
-diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-index 609bb34..a7d0667 100644
---- a/drivers/soc/mediatek/Kconfig
-+++ b/drivers/soc/mediatek/Kconfig
-@@ -1,9 +1,11 @@
- #
- # MediaTek SoC drivers
- #
-+menu "MediaTek SoC drivers"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+
- config MTK_INFRACFG
- 	bool "MediaTek INFRACFG Support"
--	depends on ARCH_MEDIATEK || COMPILE_TEST
- 	select REGMAP
- 	help
- 	  Say yes here to add support for the MediaTek INFRACFG controller. The
-@@ -12,7 +14,6 @@ config MTK_INFRACFG
- 
- config MTK_PMIC_WRAP
- 	tristate "MediaTek PMIC Wrapper Support"
--	depends on ARCH_MEDIATEK
- 	depends on RESET_CONTROLLER
- 	select REGMAP
- 	help
-@@ -22,7 +23,6 @@ config MTK_PMIC_WRAP
- 
- config MTK_SCPSYS
- 	bool "MediaTek SCPSYS Support"
--	depends on ARCH_MEDIATEK || COMPILE_TEST
- 	default ARCH_MEDIATEK
- 	select REGMAP
- 	select MTK_INFRACFG
-@@ -30,3 +30,5 @@ config MTK_SCPSYS
- 	help
- 	  Say yes here to add support for the MediaTek SCPSYS power domain
- 	  driver.
-+
-+endmenu
+Chen Zhong (2):
+  clk: mediatek: add the option for determining PLL source clock
+  clk: mediatek: add clocks dt-bindings required header for MT7622 SoC
+
+Sean Wang (2):
+  dt-bindings: clock: mediatek: document clk bindings for MediaTek
+    MT7622 SoC
+  clk: mediatek: add clock support for MT7622 SoC
+
+ .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |   1 +
+ .../bindings/arm/mediatek/mediatek,audsys.txt      |  22 +
+ .../bindings/arm/mediatek/mediatek,ethsys.txt      |   1 +
+ .../bindings/arm/mediatek/mediatek,hifsys.txt      |   1 +
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    |   1 +
+ .../bindings/arm/mediatek/mediatek,pciesys.txt     |  22 +
+ .../bindings/arm/mediatek/mediatek,pericfg.txt     |   1 +
+ .../bindings/arm/mediatek/mediatek,sgmiisys.txt    |  22 +
+ .../bindings/arm/mediatek/mediatek,ssusbsys.txt    |  22 +
+ .../bindings/arm/mediatek/mediatek,topckgen.txt    |   1 +
+ drivers/clk/mediatek/Kconfig                       |  30 +
+ drivers/clk/mediatek/Makefile                      |   4 +
+ drivers/clk/mediatek/clk-mt7622-aud.c              | 195 ++++++
+ drivers/clk/mediatek/clk-mt7622-eth.c              | 156 +++++
+ drivers/clk/mediatek/clk-mt7622-hif.c              | 169 +++++
+ drivers/clk/mediatek/clk-mt7622.c                  | 780 +++++++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.h                     |   1 +
+ drivers/clk/mediatek/clk-pll.c                     |   5 +-
+ include/dt-bindings/clock/mt7622-clk.h             | 289 ++++++++
+ 19 files changed, 1722 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ssusbsys.txt
+ create mode 100644 drivers/clk/mediatek/clk-mt7622-aud.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7622-eth.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7622-hif.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7622.c
+ create mode 100644 include/dt-bindings/clock/mt7622-clk.h
+
 -- 
 2.7.4
