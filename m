@@ -1,34 +1,28 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 9/9] dt-bindings: usb: mtk-xhci: remove dummy clocks and
- add optional ones
-Date: Thu, 5 Oct 2017 17:20:38 -0500
-Message-ID: <20171005222038.4krmhf7wb6jkl6xp@rob-hp-laptop>
-References: <994382d16d6bdc0f3d7c11b22f1710252e056e34.1506503879.git.chunfeng.yun@mediatek.com>
- <95192dfda40c60cbe24b0f1e0bd6c82d318aa4ed.1506503880.git.chunfeng.yun@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v5 2/6] dt-bindings: input: Add common keyboard document
+ bindings
+Date: Thu, 5 Oct 2017 17:22:24 -0500
+Message-ID: <20171005222224.ffeewebacx7bljx2@rob-hp-laptop>
+References: <1506509048-19032-1-git-send-email-chen.zhong@mediatek.com>
+ <1506509048-19032-3-git-send-email-chen.zhong@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <95192dfda40c60cbe24b0f1e0bd6c82d318aa4ed.1506503880.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+In-Reply-To: <1506509048-19032-3-git-send-email-chen.zhong@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chen Zhong <chen.zhong@mediatek.com>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Lee Jones <lee.jones@linaro.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Linus Walleij <linus.walleij@linaro.org>, Chanwoo Choi <cw00.choi@samsung.com>, Jaechul Lee <jcsing.lee@samsung.com>, Andi Shyti <andi.shyti@samsung.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 27, 2017 at 05:23:05PM +0800, Chunfeng Yun wrote:
-> Remove dummy clocks for usb wakeup and add optional ones for
-> MCU_BUS_CK and DMA_BUS_CK.
+On Wed, Sep 27, 2017 at 06:44:04PM +0800, Chen Zhong wrote:
+> This patch adds the device tree binding documentation for common
+> keyboard.
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
 > ---
->  .../devicetree/bindings/usb/mediatek,mtk-xhci.txt  |   18 ++++++++----------
->  1 file changed, 8 insertions(+), 10 deletions(-)
+>  Documentation/devicetree/bindings/input/keys.txt |    8 ++++++++
+>  1 file changed, 8 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/input/keys.txt
 
-Seems a bit suspicious and not a backwards compatible change, but only 
-affects your platforms, so:
-
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Acked-by: Rob Herring <robh@kernel.org>
