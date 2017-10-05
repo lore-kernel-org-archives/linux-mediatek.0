@@ -1,48 +1,44 @@
-From: Jean Delvare <jdelvare@suse.de>
-Subject: [PATCH] soc: Allow test-building of MediaTek drivers
-Date: Thu, 5 Oct 2017 11:17:43 +0200
-Message-ID: <20171005111743.6367f128@endymion>
+From: <miles.chen@mediatek.com>
+Subject: [PATCH] mm/slob: remove an unnecessary check for __GFP_ZERO
+Date: Thu, 5 Oct 2017 19:32:21 +0800
+Message-ID: <1507203141-11959-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain
+Return-path: <owner-linux-mm@kvack.org>
+Sender: owner-linux-mm@kvack.org
+To: Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew Morton <akpm@linux-foundation.org>
+Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, Miles Chen <miles.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The COMPILE_TEST alternative dependency allows test-building the
-drivers but only as long as the build system itself will look into
-the directory where the drivers reside.
+From: Miles Chen <miles.chen@mediatek.com>
 
-Signed-off-by: Jean Delvare <jdelvare@suse.de>
-Cc: Sean Wang <sean.wang@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Current flow guarantees a valid pointer when handling
+the __GFP_ZERO case. So remove the unnecessary NULL pointer
+check.
+
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/soc/Makefile |    2 +-
+ mm/slob.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- linux-4.14-rc3.orig/drivers/soc/Makefile	2017-09-17 00:47:51.000000000 +0200
-+++ linux-4.14-rc3/drivers/soc/Makefile	2017-10-05 09:44:01.478589469 +0200
-@@ -10,7 +10,7 @@ obj-$(CONFIG_MACH_DOVE)		+= dove/
- obj-y				+= fsl/
- obj-$(CONFIG_ARCH_MXC)		+= imx/
- obj-$(CONFIG_SOC_XWAY)		+= lantiq/
--obj-$(CONFIG_ARCH_MEDIATEK)	+= mediatek/
-+obj-y				+= mediatek/
- obj-$(CONFIG_ARCH_MESON)	+= amlogic/
- obj-$(CONFIG_ARCH_QCOM)		+= qcom/
- obj-y				+= renesas/
-
-
+diff --git a/mm/slob.c b/mm/slob.c
+index a8bd6fa..a72649c 100644
+--- a/mm/slob.c
++++ b/mm/slob.c
+@@ -329,7 +329,7 @@ static void *slob_alloc(size_t size, gfp_t gfp, int align, int node)
+ 		BUG_ON(!b);
+ 		spin_unlock_irqrestore(&slob_lock, flags);
+ 	}
+-	if (unlikely((gfp & __GFP_ZERO) && b))
++	if (unlikely(gfp & __GFP_ZERO))
+ 		memset(b, 0, size);
+ 	return b;
+ }
 -- 
-Jean Delvare
-SUSE L3 Support
+1.9.1
+
+--
+To unsubscribe, send a message with 'unsubscribe linux-mm' in
+the body to majordomo@kvack.org.  For more info on Linux MM,
+see: http://www.linux-mm.org/ .
+Don't email: <a href=mailto:"dont@kvack.org"> email@kvack.org </a>
