@@ -1,75 +1,48 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: [PATCH v2] arm64: dts: mediatek: Add cpuidle support for MT2712
-Date: Fri, 6 Oct 2017 16:09:53 +0800
-Message-ID: <1507277393-30356-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Herbert Xu <herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org>
+Subject: Re: [PATCH v8 01/20] crypto: change transient busy return code to
+ -EAGAIN
+Date: Sat, 7 Oct 2017 11:05:41 +0800
+Message-ID: <20171007030541.GA29421@gondor.apana.org.au>
+References: <1504615144-29770-1-git-send-email-gilad@benyossef.com>
+ <1504615144-29770-2-git-send-email-gilad@benyossef.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, James Liao <jamesjj.liao@mediatek.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-cifs-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1504615144-29770-2-git-send-email-gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org>
+Sender: linux-cifs-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Gilad Ben-Yossef <gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org>
+Cc: "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Jonathan Corbet <corbet-T1hC0tSOHrs@public.gmane.org>, David Howells <dhowells-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Tom Lendacky <thomas.lendacky-5C7GfCeVMHo@public.gmane.org>, Gary Hook <gary.hook-5C7GfCeVMHo@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Arnaud Ebalard <arno-LkuqDEemtHBg9hUCZPvPmw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alasdair Kergon <agk-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Mike Snitzer <snitzer-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, dm-devel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, Shaohua Li <shli-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Steve French <sfrench-eUNUBHrolfbYtjvyW6yDsg@public.gmane.org>, "Theodore Y. Ts'o" <tytso-3s7WtUTddSA@public.gmane.org>, Jaegeuk Kim <jaegeuk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Steffen Klassert <steffen.klassert-opNxpl+3fjRBDgjK7y7TUQ@public.gmane.org>, Alexey Kuznetsov <kuznet-v/Mj1YrvjDBInbfyfbPRSQ@public.gmane.org>, Hideaki YOSHIFUJI <yoshfuji-VfPWfsRibaP+Ru+s062T9g@public.gmane.org>, Mimi Zohar <zohar-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org>, Dmitry Kasatkin <dmitry.kasatkin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add CPU idle state nodes to enable C1/C2 idle states.
+On Tue, Sep 05, 2017 at 03:38:40PM +0300, Gilad Ben-Yossef wrote:
+>
+> diff --git a/crypto/algif_hash.c b/crypto/algif_hash.c
+> index 5e92bd2..3b3c154 100644
+> --- a/crypto/algif_hash.c
+> +++ b/crypto/algif_hash.c
+> @@ -39,6 +39,20 @@ struct algif_hash_tfm {
+>  	bool has_key;
+>  };
+>  
+> +/* Previous versions of crypto_* ops used to return -EBUSY
+> + * rather than -EAGAIN to indicate being tied up. The in
+> + * kernel API changed but we don't want to break the user
+> + * space API. As only the hash user interface exposed this
+> + * error ever to the user, do the translation here.
+> + */
+> +static inline int crypto_user_err(int err)
+> +{
+> +	if (err == -EAGAIN)
+> +		return -EBUSY;
+> +
+> +	return err;
 
-Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
----
+I don't see the need to carry along this baggage.  Does anyone
+in user-space actually rely on EBUSY?
 
-changes since v1:
-- Rebase to 4.14-rc1.
-
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-index 57d0396..5d4e406 100644
---- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-@@ -39,6 +39,7 @@
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a35";
- 			reg = <0x000>;
-+			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
- 		};
- 
- 		cpu1: cpu@1 {
-@@ -46,6 +47,7 @@
- 			compatible = "arm,cortex-a35";
- 			reg = <0x001>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
- 		};
- 
- 		cpu2: cpu@200 {
-@@ -53,6 +55,29 @@
- 			compatible = "arm,cortex-a72";
- 			reg = <0x200>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
-+		};
-+
-+		idle-states {
-+			entry-method = "arm,psci";
-+
-+			CPU_SLEEP_0: cpu-sleep-0 {
-+				compatible = "arm,idle-state";
-+				local-timer-stop;
-+				entry-latency-us = <100>;
-+				exit-latency-us = <80>;
-+				min-residency-us = <2000>;
-+				arm,psci-suspend-param = <0x0010000>;
-+			};
-+
-+			CLUSTER_SLEEP_0: cluster-sleep-0 {
-+				compatible = "arm,idle-state";
-+				local-timer-stop;
-+				entry-latency-us = <350>;
-+				exit-latency-us = <80>;
-+				min-residency-us = <3000>;
-+				arm,psci-suspend-param = <0x1010000>;
-+			};
- 		};
- 	};
- 
+Cheers,
 -- 
-1.9.1
+Email: Herbert Xu <herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
