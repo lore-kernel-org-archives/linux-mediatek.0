@@ -1,58 +1,57 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH 01/12] usb: mtu3: fix error return code in
- ssusb_gadget_init()
-Date: Mon, 9 Oct 2017 09:18:43 +0800
-Message-ID: <1507511923.17567.28.camel@mhfsdcap03>
-References: <fe8df8503f602586bcea4b1598eb09678b1525e3.1506509658.git.chunfeng.yun@mediatek.com>
-         <46f6e8f0-0398-e33e-10fc-d0db6ce06db0@cogentembedded.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 8/9] dt-bindings: usb: mtk-xhci: add a optional property
+ to disable u3ports
+Date: Mon, 9 Oct 2017 10:15:49 +0800
+Message-ID: <1507515349.17567.32.camel@mhfsdcap03>
+References: <994382d16d6bdc0f3d7c11b22f1710252e056e34.1506503879.git.chunfeng.yun@mediatek.com>
+         <fd8b6099192ddee3b277f5ca3a699c20fb273ffe.1506503880.git.chunfeng.yun@mediatek.com>
+         <20171005221650.yfyh72op6azm2nri@rob-hp-laptop>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <46f6e8f0-0398-e33e-10fc-d0db6ce06db0@cogentembedded.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Rob Herring <robh+dt@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20171005221650.yfyh72op6azm2nri@rob-hp-laptop>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 2017-09-30 at 16:00 +0300, Sergei Shtylyov wrote:
-> Hello!
-> 
-> On 9/28/2017 3:17 AM, Chunfeng Yun wrote:
-> 
-> > When fail to get irq number, platform_get_irq() may return
-> 
->     Failing. IRQ. :-)
-I'll modify it, thank you
-
-> 
-> > -EPROBE_DEFER, but we ignore it and always return -ENODEV,
-> > so fix it.
+On Thu, 2017-10-05 at 17:16 -0500, Rob Herring wrote:
+> On Wed, Sep 27, 2017 at 05:23:04PM +0800, Chunfeng Yun wrote:
+> > Add a new optional property to disable u3ports
 > > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > > ---
-> >   drivers/usb/mtu3/mtu3_core.c |    4 ++--
-> >   1 file changed, 2 insertions(+), 2 deletions(-)
+> >  .../devicetree/bindings/usb/mediatek,mtk-xhci.txt  |    2 ++
+> >  1 file changed, 2 insertions(+)
 > > 
-> > diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
-> > index 99c65b0..9475798 100644
-> > --- a/drivers/usb/mtu3/mtu3_core.c
-> > +++ b/drivers/usb/mtu3/mtu3_core.c
-> > @@ -774,9 +774,9 @@ int ssusb_gadget_init(struct ssusb_mtk *ssusb)
-> >   		return -ENOMEM;
-> >   
-> >   	mtu->irq = platform_get_irq(pdev, 0);
-> > -	if (mtu->irq <= 0) {
-> > +	if (mtu->irq < 0) {
+> > diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
+> > index 5611a2e..2d9b459 100644
+> > --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
+> > +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
+> > @@ -38,6 +38,8 @@ Optional properties:
+> >  	mode;
+> >   - mediatek,syscon-wakeup : phandle to syscon used to access USB wakeup
+> >  	control register, it depends on "mediatek,wakeup-src".
+> > + - mediatek,u3p-dis-msk : mask to disable u3ports, bit0 for u3port0,
+> > +	bit1 for u3port1, ... etc;
 > 
->     This is good as the function no longer returns 0 on error. Even when it 
-> did, 0 could mean a valid IRQ as well...
+> I think you should have child nodes for ports and use "status" to 
+> disable them (or omit them). IIRC, the common USB bus binding already 
+> defines ports.
+I survey it to see whether it can replace the current way
+
+thanks
 > 
-> >   		dev_err(dev, "fail to get irq number\n");
-> > -		return -ENODEV;
-> > +		return mtu->irq;
-> >   	}
-> >   	dev_info(dev, "irq %d\n", mtu->irq);
-> >   
-> 
-> MBR, Sergei
+> >   - vbus-supply : reference to the VBUS regulator;
+> >   - usb3-lpm-capable : supports USB3.0 LPM
+> >   - pinctrl-names : a pinctrl state named "default" must be defined
+> > -- 
+> > 1.7.9.5
+> > 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
