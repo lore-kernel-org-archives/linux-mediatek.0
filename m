@@ -1,66 +1,59 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 12/12] dt-bindings: usb: mtu3: remove optional pinctrls
-Date: Mon, 9 Oct 2017 11:25:54 +0800
-Message-ID: <1507519554.17567.65.camel@mhfsdcap03>
-References: <fe8df8503f602586bcea4b1598eb09678b1525e3.1506509658.git.chunfeng.yun@mediatek.com>
-         <ec8e65205c6e0a83850e11c030ed440d7b9be2e8.1506509659.git.chunfeng.yun@mediatek.com>
-         <20171005223325.ryvu6ifjgcj5scf4@rob-hp-laptop>
+From: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 00/13] mmc: mediatek: add support of mt2701/mt2712
+Date: Mon, 9 Oct 2017 19:35:13 +0800
+Message-ID: <1507548926-9555-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20171005223325.ryvu6ifjgcj5scf4@rob-hp-laptop>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, yong mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Heiner Kallweit <hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Phong LE <ple-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-10-05 at 17:33 -0500, Rob Herring wrote:
-> On Thu, Sep 28, 2017 at 08:17:20AM +0800, Chunfeng Yun wrote:
-> > Remove optional pinctrls due to using FORCE/RG_IDDIG to implement
-> > manual switch function.
-> 
-> Another not backwards compatible change. Please explain why that is 
-> okay.
-The old way of manual switch function uses the IDDIG pin (IDPIN) to
-switch mode between device and host indirectly by pulling up or pulling
-down it by driver. But there is a limitation, when the IDDIG pin is
-connected to the ground, the driver can't pull it up anymore, so it will
-fail when the receptacle is micro type.
-And there is no such limitation through FORCE/RG_IDDIG, because when the
-FORCE_IDDIG is set, the staus of RG_IDDIG is given higher priority than
-IDDIG pin. So it is okay no matter whether id_float and id_ground pins
-are provided or not.
- 
-> 
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  .../devicetree/bindings/usb/mediatek,mtu3.txt      |    7 ++++---
-> >  1 file changed, 4 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt b/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
-> > index 49c982b..b2271d8 100644
-> > --- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
-> > +++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
-> > @@ -30,9 +30,10 @@ Optional properties:
-> >  	when supports dual-role mode.
-> >   - vbus-supply : reference to the VBUS regulator, needed when supports
-> >  	dual-role mode.
-> > - - pinctl-names : a pinctrl state named "default" must be defined,
-> > -	"id_float" and "id_ground" are optinal which depends on
-> > -	"mediatek,enable-manual-drd"
-> > + - pinctrl-names : a pinctrl state named "default" is optional, and need be
-> > +	defined if auto drd switch is enabled, that means the property dr_mode
-> > +	is set as "otg", and meanwhile the property "mediatek,enable-manual-drd"
-> > +	is not set.
-> >   - pinctrl-0 : pin control group
-> >  	See: Documentation/devicetree/bindings/pinctrl/pinctrl-bindings.txt
-> >  
-> > -- 
-> > 1.7.9.5
-> > 
+  This serial of patches are adding support of mt2701/mt2712.
+there are many changes and HW improvement between mt8173 and
+mt2701/mt2712, below is a list of these changes:
+  1. enlarge CLKDIV bits from 8 to 12
+  2. remove the PAD_TUNE register and add a new PAD_TUNE0 register
+  3. add data sync and async fifo feature
+  4. add busy_check feature
+  5. add stop_clk fix
+  6. add enhance_rx support
+  7. add a seperate CG of source clock
 
+  mt2712 supports full of these features, mt2701 supports part of it, and
+add a "mediatek,latch-ck" to work-around as it do not support stop-clk fix.
+
+Note: As Pinctrl/CCF are not ready now, so that current patches do not
+include DTS part.
+
+Changed vs 1:
+  based on Ulf/Rob/Matthias's comments of DTS binding file, make the binding
+file clearly and fix probe issue.
+
+
+Chaotian Jing (13):
+  mmc: dt-bindings: Add reg/source_cg/latch-ck for Mediatek MMC bindings
+  mmc: mediatek: add support of mt2701/mt2712
+  mmc: dt-bindings: make compatible explicit
+  arm64: dts: mt8173: remove "mediatek,mt8135-mmc" from mmc nodes
+  mmc: mediatek: make hs400_tune_response only for mt8173
+  mmc: mediatek: add pad_tune0 support
+  mmc: mediatek: add async fifo and data tune support
+  mmc: mediatek: add busy_check support
+  mmc: mediatek: add stop_clk fix and enhance_rx support
+  mmc: mediatek: add support of source_cg clock
+  mmc: mediatek: add latch-ck support
+  mmc: mediatek: improve eMMC hs400 mode read performance
+  mmc: mediatek: perfer to use rise edge latching for cmd line
+
+ Documentation/devicetree/bindings/mmc/mtk-sd.txt |  16 +-
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi         |  12 +-
+ drivers/mmc/host/mtk-sd.c                        | 298 ++++++++++++++++++++---
+ 3 files changed, 278 insertions(+), 48 deletions(-)
+
+-- 
+1.8.1.1.dirty
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
