@@ -1,67 +1,58 @@
-From: Gilad Ben-Yossef <gilad@benyossef.com>
-Subject: Re: [PATCH v8 01/20] crypto: change transient busy return code to -EAGAIN
-Date: Sat, 7 Oct 2017 10:51:42 +0300
-Message-ID: <CAOtvUMd=vtju=VJkCYFRrvANbRRYj+95cdgDoMMfBvmPaPbsAA@mail.gmail.com>
-References: <1504615144-29770-1-git-send-email-gilad@benyossef.com>
- <1504615144-29770-2-git-send-email-gilad@benyossef.com> <20171007030541.GA29421@gondor.apana.org.au>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH 01/12] usb: mtu3: fix error return code in
+ ssusb_gadget_init()
+Date: Mon, 9 Oct 2017 09:18:43 +0800
+Message-ID: <1507511923.17567.28.camel@mhfsdcap03>
+References: <fe8df8503f602586bcea4b1598eb09678b1525e3.1506509658.git.chunfeng.yun@mediatek.com>
+         <46f6e8f0-0398-e33e-10fc-d0db6ce06db0@cogentembedded.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-security-module-owner@vger.kernel.org>
-In-Reply-To: <20171007030541.GA29421@gondor.apana.org.au>
-Sender: owner-linux-security-module@vger.kernel.org
-To: Herbert Xu <herbert@gondor.apana.org.au>
-Cc: "David S. Miller" <davem@davemloft.net>, Jonathan Corbet <corbet@lwn.net>, David Howells <dhowells@redhat.com>, Tom Lendacky <thomas.lendacky@amd.com>, Gary Hook <gary.hook@amd.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Arnaud Ebalard <arno@natisbad.org>, Matthias Brugger <matthias.bgg@gmail.com>, Alasdair Kergon <agk@redhat.com>, Mike Snitzer <snitzer@redhat.com>, device-mapper development <dm-devel@redhat.com>, Shaohua Li <shli@kernel.org>, Steve French <sfrench@samba.org>, "Theodore Y. Ts'o" <tytso@mit.edu>, Jaegeuk Kim <jaegeuk@kernel.org>, Steffen Klassert <steffen.klassert@secunet.com>, Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>, Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>, Mimi Zohar <zohar@linux.vnet.ibm.com>, Dmitry
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <46f6e8f0-0398-e33e-10fc-d0db6ce06db0@cogentembedded.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Rob Herring <robh+dt@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Oct 7, 2017 at 6:05 AM, Herbert Xu <herbert@gondor.apana.org.au> wrote:
-> On Tue, Sep 05, 2017 at 03:38:40PM +0300, Gilad Ben-Yossef wrote:
->>
->> diff --git a/crypto/algif_hash.c b/crypto/algif_hash.c
->> index 5e92bd2..3b3c154 100644
->> --- a/crypto/algif_hash.c
->> +++ b/crypto/algif_hash.c
->> @@ -39,6 +39,20 @@ struct algif_hash_tfm {
->>       bool has_key;
->>  };
->>
->> +/* Previous versions of crypto_* ops used to return -EBUSY
->> + * rather than -EAGAIN to indicate being tied up. The in
->> + * kernel API changed but we don't want to break the user
->> + * space API. As only the hash user interface exposed this
->> + * error ever to the user, do the translation here.
->> + */
->> +static inline int crypto_user_err(int err)
->> +{
->> +     if (err == -EAGAIN)
->> +             return -EBUSY;
->> +
->> +     return err;
->
-> I don't see the need to carry along this baggage.  Does anyone
-> in user-space actually rely on EBUSY?
+On Sat, 2017-09-30 at 16:00 +0300, Sergei Shtylyov wrote:
+> Hello!
+> 
+> On 9/28/2017 3:17 AM, Chunfeng Yun wrote:
+> 
+> > When fail to get irq number, platform_get_irq() may return
+> 
+>     Failing. IRQ. :-)
+I'll modify it, thank you
 
-
-I am not aware of anyone who does. I was just trying to avoid
-changing the user ABI.
-
-Shall I roll a new revision without this patch?
-
-Thanks,
-Gilad
-
->
-> Cheers,
-> --
-> Email: Herbert Xu <herbert@gondor.apana.org.au>
-> Home Page: http://gondor.apana.org.au/~herbert/
-> PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
-
-
-
--- 
-Gilad Ben-Yossef
-Chief Coffee Drinker
-
-"If you take a class in large-scale robotics, can you end up in a
-situation where the homework eats your dog?"
- -- Jean-Baptiste Queru
+> 
+> > -EPROBE_DEFER, but we ignore it and always return -ENODEV,
+> > so fix it.
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> >   drivers/usb/mtu3/mtu3_core.c |    4 ++--
+> >   1 file changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
+> > index 99c65b0..9475798 100644
+> > --- a/drivers/usb/mtu3/mtu3_core.c
+> > +++ b/drivers/usb/mtu3/mtu3_core.c
+> > @@ -774,9 +774,9 @@ int ssusb_gadget_init(struct ssusb_mtk *ssusb)
+> >   		return -ENOMEM;
+> >   
+> >   	mtu->irq = platform_get_irq(pdev, 0);
+> > -	if (mtu->irq <= 0) {
+> > +	if (mtu->irq < 0) {
+> 
+>     This is good as the function no longer returns 0 on error. Even when it 
+> did, 0 could mean a valid IRQ as well...
+> 
+> >   		dev_err(dev, "fail to get irq number\n");
+> > -		return -ENODEV;
+> > +		return mtu->irq;
+> >   	}
+> >   	dev_info(dev, "irq %d\n", mtu->irq);
+> >   
+> 
+> MBR, Sergei
