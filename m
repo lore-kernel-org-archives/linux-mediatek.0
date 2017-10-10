@@ -1,87 +1,83 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: Add cpuidle support for MT2712
-Date: Tue, 10 Oct 2017 19:04:30 +0200
-Message-ID: <6cef95d6-4cc2-8fff-85b0-c55fc79752c3@gmail.com>
-References: <1504158240-12639-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v4 4/7] soc: mediatek: pwrap: update pwrap_init without
+ slave programming
+Date: Tue, 10 Oct 2017 20:00:41 +0200
+Message-ID: <f3a04159-8491-6ca6-d2ad-7df1dfd64331@gmail.com>
+References: <cover.1505980364.git.sean.wang@mediatek.com>
+ <604078485ca9ab04cea5bc531425d6035b27bc88.1505980364.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1504158240-12639-1-git-send-email-jamesjj.liao@mediatek.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <604078485ca9ab04cea5bc531425d6035b27bc88.1505980364.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>, Rob Herring <robh+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 08/31/2017 07:44 AM, James Liao wrote:
-> Add CPU idle state nodes to enable C1/C2 idle states.
+On 09/21/2017 10:26 AM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+> pwrap initialization is highly associated with the base SoC, so
+> update here for allowing pwrap_init without slave program which would be
+> used to those PMICs without extra encryption on bus such as MT6380.
+> 
+> Signed-off-by: Chenglin Xu <chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
-
-pushed to v4.14-next/dts64
-
-Thanks.
-
-> This patch bases on latest Matthias v4.13-next/dts64 branch [1],
-> add CPU idle states for MT2712.
+>   drivers/soc/mediatek/mtk-pmic-wrap.c | 91 +++++++++++++++++++++---------------
+>   1 file changed, 54 insertions(+), 37 deletions(-)
 > 
-> [1] https://github.com/mbgg/linux-mediatek.git
-> 
->   arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 25 +++++++++++++++++++++++++
->   1 file changed, 25 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> index 57d0396..5d4e406 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> @@ -39,6 +39,7 @@
->   			device_type = "cpu";
->   			compatible = "arm,cortex-a35";
->   			reg = <0x000>;
-> +			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
->   		};
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> index 27d7ccc..9c6d855 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -531,6 +531,7 @@ struct pmic_wrapper_type {
+>   	u32 spi_w;
+>   	u32 wdt_src;
+>   	int has_bridge:1;
+> +	int slv_program:1;
+>   	int (*init_reg_clock)(struct pmic_wrapper *wrp);
+>   	int (*init_soc_specific)(struct pmic_wrapper *wrp);
+>   };
+> @@ -999,9 +1000,12 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+>   	}
 >   
->   		cpu1: cpu@1 {
-> @@ -46,6 +47,7 @@
->   			compatible = "arm,cortex-a35";
->   			reg = <0x001>;
->   			enable-method = "psci";
-> +			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
->   		};
+>   	/* Reset SPI slave */
+> -	ret = pwrap_reset_spislave(wrp);
+> -	if (ret)
+> -		return ret;
+> +
+> +	if (wrp->master->slv_program) {
+> +		ret = pwrap_reset_spislave(wrp);
+> +		if (ret)
+> +			return ret;
+> +	}
 >   
->   		cpu2: cpu@200 {
-> @@ -53,6 +55,29 @@
->   			compatible = "arm,cortex-a72";
->   			reg = <0x200>;
->   			enable-method = "psci";
-> +			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
-> +		};
-> +
-> +		idle-states {
-> +			entry-method = "arm,psci";
-> +
-> +			CPU_SLEEP_0: cpu-sleep-0 {
-> +				compatible = "arm,idle-state";
-> +				local-timer-stop;
-> +				entry-latency-us = <100>;
-> +				exit-latency-us = <80>;
-> +				min-residency-us = <2000>;
-> +				arm,psci-suspend-param = <0x0010000>;
-> +			};
-> +
-> +			CLUSTER_SLEEP_0: cluster-sleep-0 {
-> +				compatible = "arm,idle-state";
-> +				local-timer-stop;
-> +				entry-latency-us = <350>;
-> +				exit-latency-us = <80>;
-> +				min-residency-us = <3000>;
-> +				arm,psci-suspend-param = <0x1010000>;
-> +			};
->   		};
->   	};
+>   	pwrap_writel(wrp, 1, PWRAP_WRAP_EN);
 >   
-> 
+> @@ -1013,45 +1017,52 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+>   	if (ret)
+>   		return ret;
+>   
+> -	/* Setup serial input delay */
+> -	ret = pwrap_init_sidly(wrp);
+> -	if (ret)
+> -		return ret;
+> +	if (wrp->master->slv_program) {
+
+This if branch is really long and complex enough to put it into function apart.
+
+Thanks,
+Matthias
+
+PD please take into account the comments I made on v3 of the series.
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
