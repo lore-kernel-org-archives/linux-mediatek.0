@@ -1,328 +1,106 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 6/9] soc: mediatek: extend bus protection API
-Date: Tue, 10 Oct 2017 17:45:02 +0200
-Message-ID: <3cb89b32-2273-9e99-f776-458738a3b71c@gmail.com>
-References: <1503397702-7201-1-git-send-email-weiyi.lu@mediatek.com>
- <1503397702-7201-7-git-send-email-weiyi.lu@mediatek.com>
+From: Julien Thierry <julien.thierry@arm.com>
+Subject: Re: [PATCH v4 05/12] mmc: mediatek: add pad_tune0 support
+Date: Tue, 10 Oct 2017 17:57:26 +0100
+Message-ID: <afac6efe-d721-acae-6c07-adf4cfff962d@arm.com>
+References: <1507627831-29323-1-git-send-email-chaotian.jing@mediatek.com>
+ <1507627831-29323-6-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1503397702-7201-7-git-send-email-weiyi.lu@mediatek.com>
+In-Reply-To: <1507627831-29323-6-git-send-email-chaotian.jing@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Weiyi Lu <weiyi.lu@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
+To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, yong mao <yong.mao@mediatek.com>, Phong LE <ple@baylibre.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org, Heiner Kallweit <hkallweit1@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi,
 
-
-On 08/22/2017 12:28 PM, Weiyi Lu wrote:
-> MT2712 add "set/clear" bus control register to each control register set
-> instead of providing only one "enable" control register, we could avoid
-> the read-modify-write racing by using extend API with such new design.
-> By improving the mtk-infracfg bus protection implementation to
-> support set/clear bus protection control method by IC configuration.
+On 10/10/17 10:30, Chaotian Jing wrote:
+> from mt2701, the register of PAD_TUNE has been phased out,
+> while there is a new register of PAD_TUNE0
 > 
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
 > ---
->   drivers/soc/mediatek/mtk-infracfg.c   | 32 ++++++++++----
->   drivers/soc/mediatek/mtk-scpsys.c     | 81 +++++++++++++++++++++++++++--------
->   include/linux/soc/mediatek/infracfg.h | 12 ++++--
->   3 files changed, 96 insertions(+), 29 deletions(-)
+>   drivers/mmc/host/mtk-sd.c | 69 ++++++++++++++++++++++++++++++++++-------------
+>   1 file changed, 51 insertions(+), 18 deletions(-)
 > 
-> diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
-> index dba3055..f55ceaa 100644
-> --- a/drivers/soc/mediatek/mtk-infracfg.c
-> +++ b/drivers/soc/mediatek/mtk-infracfg.c
-> @@ -17,30 +17,35 @@
->   #include <linux/soc/mediatek/infracfg.h>
->   #include <asm/processor.h>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index ab2fbbb..0dc45b3 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -75,6 +75,7 @@
+>   #define MSDC_PATCH_BIT   0xb0
+>   #define MSDC_PATCH_BIT1  0xb4
+>   #define MSDC_PAD_TUNE    0xec
+> +#define MSDC_PAD_TUNE0   0xf0
+>   #define PAD_DS_TUNE      0x188
+>   #define PAD_CMD_TUNE     0x18c
+>   #define EMMC50_CFG0      0x208
+> @@ -301,6 +302,7 @@ struct msdc_save_para {
+>   struct mtk_mmc_compatible {
+>   	u8 clk_div_bits;
+>   	bool hs400_tune; /* only used for MT8173 */
+> +	bool pad_tune0;
+
+You only use this to decide whether to use MDSC_PAD_TUNE or 
+MSDC_PAD_TUNE0 as tune regs.
+
+Couldn't this field directly be a 'u32' that is either MDSC_PAD_TUNE or 
+MDSC_PAD_TUNE0 rather than a bool?
+
+>   };
 >   
-> -#define INFRA_TOPAXI_PROTECTEN		0x0220
-> -#define INFRA_TOPAXI_PROTECTSTA1	0x0228
-> -
->   /**
->    * mtk_infracfg_set_bus_protection - enable bus protection
->    * @regmap: The infracfg regmap
->    * @mask: The mask containing the protection bits to be enabled.
-> + * @reg_set: The register used to enable protection bits.
-> + * @reg_en: The register used to enable protection bits when there doesn't
-> + *          exist reg_set.
-> + * @reg_sta: The register used to check the protection bits are enabled.
->    *
->    * This function enables the bus protection bits for disabled power
->    * domains so that the system does not hang when some unit accesses the
->    * bus while in power down.
->    */
-> -int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask)
-> +int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
-> +		u32 reg_set, u32 reg_en, u32 reg_sta)
->   {
->   	unsigned long expired;
->   	u32 val;
->   	int ret;
+>   struct msdc_tune_para {
+> @@ -362,21 +364,25 @@ struct msdc_host {
+>   static const struct mtk_mmc_compatible mt8135_compat = {
+>   	.clk_div_bits = 8,
+>   	.hs400_tune = false,
+> +	.pad_tune0 = false,
+
+and here we could have (field could be renamed accordingly of course):
+
+	.pad_tune0 = MDSC_PAD_TUNE,
+
+>   };
 >   
-> -	regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask, mask);
-> +	if (reg_set)
-> +		regmap_write(infracfg, reg_set, mask);
-> +	else
-> +		regmap_update_bits(infracfg, reg_en, mask, mask);
-
-
-This looks to me as if it's slightly over-engineered.
-The reg_set and reg_en and reg_sta are the same on all SoCs, so no need to pass 
-the value to the infra bus protection set and clear functions.
-I think we could just add a boolean overwrite_mask for every SoC and check for this.
-
-Do I miss something?
-
-Regards,
-Matthias
-
-
+>   static const struct mtk_mmc_compatible mt8173_compat = {
+>   	.clk_div_bits = 8,
+>   	.hs400_tune = true,
+> +	.pad_tune0 = false,
+>   };
 >   
->   	expired = jiffies + HZ;
+>   static const struct mtk_mmc_compatible mt2701_compat = {
+>   	.clk_div_bits = 12,
+>   	.hs400_tune = false,
+> +	.pad_tune0 = true,
+
+here:
+	.pad_tune0 = MDSC_PAD_TUNE0,
+
+>   };
 >   
->   	while (1) {
-> -		ret = regmap_read(infracfg, INFRA_TOPAXI_PROTECTSTA1, &val);
-> +		ret = regmap_read(infracfg, reg_sta, &val);
->   		if (ret)
->   			return ret;
+>   static const struct mtk_mmc_compatible mt2712_compat = {
+>   	.clk_div_bits = 12,
+>   	.hs400_tune = false,
+> +	.pad_tune0 = true,
+>   };
 >   
-> @@ -59,23 +64,32 @@ int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask)
->    * mtk_infracfg_clear_bus_protection - disable bus protection
->    * @regmap: The infracfg regmap
->    * @mask: The mask containing the protection bits to be disabled.
-> + * @reg_clr: The register used to disable protection bits.
-> + * @reg_en: The register used to disable protection bits when there doesn't
-> + *          exist reg_clr.
-> + * @reg_sta: The register used to check the protection bits are disabled.
->    *
->    * This function disables the bus protection bits previously enabled with
->    * mtk_infracfg_set_bus_protection.
->    */
-> -int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask)
+>   static const struct of_device_id msdc_of_ids[] = {
+> @@ -581,6 +587,10 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+>   	u32 flags;
+>   	u32 div;
+>   	u32 sclk;
+> +	u32 tune_reg = MSDC_PAD_TUNE;
 > +
-> +int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
-> +		u32 reg_clr, u32 reg_en, u32 reg_sta)
->   {
->   	unsigned long expired;
->   	int ret;
->   
-> -	regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask, 0);
-> +	if (reg_clr)
-> +		regmap_write(infracfg, reg_clr, mask);
-> +	else
-> +		regmap_update_bits(infracfg, reg_en, mask, 0);
->   
->   	expired = jiffies + HZ;
->   
->   	while (1) {
->   		u32 val;
->   
-> -		ret = regmap_read(infracfg, INFRA_TOPAXI_PROTECTSTA1, &val);
-> +		ret = regmap_read(infracfg, reg_sta, &val);
->   		if (ret)
->   			return ret;
->   
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index e1ce8b1..2569390 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -127,13 +127,25 @@ struct scp_ctrl_reg {
->   	int pwr_sta2nd_offs;
->   };
->   
-> +struct bus_prot_reg {
-> +	u32 set_offs;
-> +	u32 clr_offs;
-> +	u32 en_offs;
-> +	u32 sta_offs;
-> +};
-> +
-> +struct soc_reg {
-> +	struct scp_ctrl_reg scp_ctrl;
-> +	struct bus_prot_reg bus_prot;
-> +};
-> +
->   struct scp {
->   	struct scp_domain *domains;
->   	struct genpd_onecell_data pd_data;
->   	struct device *dev;
->   	void __iomem *base;
->   	struct regmap *infracfg;
-> -	struct scp_ctrl_reg ctrl_reg;
-> +	struct soc_reg soc_reg;
->   };
->   
->   struct scp_subdomain {
-> @@ -146,16 +158,16 @@ struct scp_soc_data {
->   	int num_domains;
->   	const struct scp_subdomain *subdomains;
->   	int num_subdomains;
-> -	const struct scp_ctrl_reg regs;
-> +	const struct soc_reg regs;
->   };
->   
->   static int scpsys_domain_is_on(struct scp_domain *scpd)
->   {
->   	struct scp *scp = scpd->scp;
->   
-> -	u32 status = readl(scp->base + scp->ctrl_reg.pwr_sta_offs) &
-> +	u32 status = readl(scp->base + scp->soc_reg.scp_ctrl.pwr_sta_offs) &
->   						scpd->data->sta_mask;
-> -	u32 status2 = readl(scp->base + scp->ctrl_reg.pwr_sta2nd_offs) &
-> +	u32 status2 = readl(scp->base + scp->soc_reg.scp_ctrl.pwr_sta2nd_offs) &
->   						scpd->data->sta_mask;
->   
->   	/*
-> @@ -254,7 +266,10 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->   
->   	if (scpd->data->bus_prot_mask) {
->   		ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
-> -				scpd->data->bus_prot_mask);
-> +				scpd->data->bus_prot_mask,
-> +				scp->soc_reg.bus_prot.clr_offs,
-> +				scp->soc_reg.bus_prot.en_offs,
-> +				scp->soc_reg.bus_prot.sta_offs);
->   		if (ret)
->   			goto err_pwr_ack;
->   	}
-> @@ -289,7 +304,10 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->   
->   	if (scpd->data->bus_prot_mask) {
->   		ret = mtk_infracfg_set_bus_protection(scp->infracfg,
-> -				scpd->data->bus_prot_mask);
-> +				scpd->data->bus_prot_mask,
-> +				scp->soc_reg.bus_prot.set_offs,
-> +				scp->soc_reg.bus_prot.en_offs,
-> +				scp->soc_reg.bus_prot.sta_offs);
->   		if (ret)
->   			goto out;
->   	}
-> @@ -382,7 +400,7 @@ static void init_clks(struct platform_device *pdev, struct clk **clk)
->   
->   static struct scp *init_scp(struct platform_device *pdev,
->   			const struct scp_domain_data *scp_domain_data, int num,
-> -			const struct scp_ctrl_reg *scp_ctrl_reg)
-> +			const struct soc_reg *soc_reg)
->   {
->   	struct genpd_onecell_data *pd_data;
->   	struct resource *res;
-> @@ -394,8 +412,13 @@ static struct scp *init_scp(struct platform_device *pdev,
->   	if (!scp)
->   		return ERR_PTR(-ENOMEM);
->   
-> -	scp->ctrl_reg.pwr_sta_offs = scp_ctrl_reg->pwr_sta_offs;
-> -	scp->ctrl_reg.pwr_sta2nd_offs = scp_ctrl_reg->pwr_sta2nd_offs;
-> +	scp->soc_reg.scp_ctrl.pwr_sta_offs = soc_reg->scp_ctrl.pwr_sta_offs;
-> +	scp->soc_reg.scp_ctrl.pwr_sta2nd_offs =
-> +			soc_reg->scp_ctrl.pwr_sta2nd_offs;
-> +	scp->soc_reg.bus_prot.set_offs = soc_reg->bus_prot.set_offs;
-> +	scp->soc_reg.bus_prot.clr_offs = soc_reg->bus_prot.clr_offs;
-> +	scp->soc_reg.bus_prot.en_offs = soc_reg->bus_prot.en_offs;
-> +	scp->soc_reg.bus_prot.sta_offs = soc_reg->bus_prot.sta_offs;
->   
->   	scp->dev = &pdev->dev;
->   
-> @@ -814,8 +837,14 @@ static void mtk_register_power_domains(struct platform_device *pdev,
->   	.domains = scp_domain_data_mt2701,
->   	.num_domains = ARRAY_SIZE(scp_domain_data_mt2701),
->   	.regs = {
-> -		.pwr_sta_offs = SPM_PWR_STATUS,
-> -		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-> +		.scp_ctrl = {
-> +			.pwr_sta_offs = SPM_PWR_STATUS,
-> +			.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-> +		},
-> +		.bus_prot = {
-> +			.en_offs = INFRA_TOPAXI_PROTECTEN,
-> +			.sta_offs = INFRA_TOPAXI_PROTECTSTA1
-> +		},
->   	}
->   };
->   
-> @@ -825,8 +854,14 @@ static void mtk_register_power_domains(struct platform_device *pdev,
->   	.subdomains = scp_subdomain_mt6797,
->   	.num_subdomains = ARRAY_SIZE(scp_subdomain_mt6797),
->   	.regs = {
-> -		.pwr_sta_offs = SPM_PWR_STATUS_MT6797,
-> -		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND_MT6797
-> +		.scp_ctrl = {
-> +			.pwr_sta_offs = SPM_PWR_STATUS_MT6797,
-> +			.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND_MT6797
-> +		},
-> +		.bus_prot = {
-> +			.en_offs = INFRA_TOPAXI_PROTECTEN,
-> +			.sta_offs = INFRA_TOPAXI_PROTECTSTA1
-> +		},
->   	}
->   };
->   
-> @@ -834,8 +869,14 @@ static void mtk_register_power_domains(struct platform_device *pdev,
->   	.domains = scp_domain_data_mt7622,
->   	.num_domains = ARRAY_SIZE(scp_domain_data_mt7622),
->   	.regs = {
-> -		.pwr_sta_offs = SPM_PWR_STATUS,
-> -		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-> +		.scp_ctrl = {
-> +			.pwr_sta_offs = SPM_PWR_STATUS,
-> +			.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-> +		},
-> +		.bus_prot = {
-> +			.en_offs = INFRA_TOPAXI_PROTECTEN,
-> +			.sta_offs = INFRA_TOPAXI_PROTECTSTA1
-> +		},
->   	}
->   };
->   
-> @@ -845,8 +886,14 @@ static void mtk_register_power_domains(struct platform_device *pdev,
->   	.subdomains = scp_subdomain_mt8173,
->   	.num_subdomains = ARRAY_SIZE(scp_subdomain_mt8173),
->   	.regs = {
-> -		.pwr_sta_offs = SPM_PWR_STATUS,
-> -		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-> +		.scp_ctrl = {
-> +			.pwr_sta_offs = SPM_PWR_STATUS,
-> +			.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-> +		},
-> +		.bus_prot = {
-> +			.en_offs = INFRA_TOPAXI_PROTECTEN,
-> +			.sta_offs = INFRA_TOPAXI_PROTECTSTA1
-> +		},
->   	}
->   };
->   
-> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-> index a0182ec..c704af5 100644
-> --- a/include/linux/soc/mediatek/infracfg.h
-> +++ b/include/linux/soc/mediatek/infracfg.h
-> @@ -1,6 +1,11 @@
->   #ifndef __SOC_MEDIATEK_INFRACFG_H
->   #define __SOC_MEDIATEK_INFRACFG_H
->   
-> +#define INFRA_TOPAXI_PROTECTEN		0x0220
-> +#define INFRA_TOPAXI_PROTECTSTA1	0x0228
-> +#define INFRA_TOPAXI_PROTECTEN_SET	0x0260
-> +#define INFRA_TOPAXI_PROTECTEN_CLR	0x0264
+> +	if (host->dev_comp->pad_tune0)
+> +		tune_reg = MSDC_PAD_TUNE0;
 
-The last two a never used.
+And this would not be needed here nor in the other functions, it could 
+just be replaced by host->dev_comp->pad_tune0.
 
-> +
->   #define MT8173_TOP_AXI_PROT_EN_MCI_M2		BIT(0)
->   #define MT8173_TOP_AXI_PROT_EN_MM_M0		BIT(1)
->   #define MT8173_TOP_AXI_PROT_EN_MM_M1		BIT(2)
-> @@ -27,7 +32,8 @@
->   #define MT7622_TOP_AXI_PROT_EN_WB		(BIT(2) | BIT(6) | \
->   						 BIT(7) | BIT(8))
->   
-> -int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask);
-> -int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask);
-> -
-> +int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
-> +		u32 reg_set, u32 reg_en, u32 reg_sta);
-> +int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
-> +		u32 reg_clr, u32 reg_en, u32 reg_sta);
->   #endif /* __SOC_MEDIATEK_INFRACFG_H */
-> 
+Thanks,
+
+-- 
+Julien Thierry
