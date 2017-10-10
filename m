@@ -1,106 +1,87 @@
-From: Julien Thierry <julien.thierry@arm.com>
-Subject: Re: [PATCH v4 05/12] mmc: mediatek: add pad_tune0 support
-Date: Tue, 10 Oct 2017 17:57:26 +0100
-Message-ID: <afac6efe-d721-acae-6c07-adf4cfff962d@arm.com>
-References: <1507627831-29323-1-git-send-email-chaotian.jing@mediatek.com>
- <1507627831-29323-6-git-send-email-chaotian.jing@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: Add cpuidle support for MT2712
+Date: Tue, 10 Oct 2017 19:04:30 +0200
+Message-ID: <6cef95d6-4cc2-8fff-85b0-c55fc79752c3@gmail.com>
+References: <1504158240-12639-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1507627831-29323-6-git-send-email-chaotian.jing@mediatek.com>
+In-Reply-To: <1504158240-12639-1-git-send-email-jamesjj.liao@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, yong mao <yong.mao@mediatek.com>, Phong LE <ple@baylibre.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org, Heiner Kallweit <hkallweit1@gmail.com>
+To: James Liao <jamesjj.liao@mediatek.com>, Rob Herring <robh+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
 
-On 10/10/17 10:30, Chaotian Jing wrote:
-> from mt2701, the register of PAD_TUNE has been phased out,
-> while there is a new register of PAD_TUNE0
+
+On 08/31/2017 07:44 AM, James Liao wrote:
+> Add CPU idle state nodes to enable C1/C2 idle states.
 > 
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
 > ---
->   drivers/mmc/host/mtk-sd.c | 69 ++++++++++++++++++++++++++++++++++-------------
->   1 file changed, 51 insertions(+), 18 deletions(-)
+
+pushed to v4.14-next/dts64
+
+Thanks.
+
+> This patch bases on latest Matthias v4.13-next/dts64 branch [1],
+> add CPU idle states for MT2712.
 > 
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index ab2fbbb..0dc45b3 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -75,6 +75,7 @@
->   #define MSDC_PATCH_BIT   0xb0
->   #define MSDC_PATCH_BIT1  0xb4
->   #define MSDC_PAD_TUNE    0xec
-> +#define MSDC_PAD_TUNE0   0xf0
->   #define PAD_DS_TUNE      0x188
->   #define PAD_CMD_TUNE     0x18c
->   #define EMMC50_CFG0      0x208
-> @@ -301,6 +302,7 @@ struct msdc_save_para {
->   struct mtk_mmc_compatible {
->   	u8 clk_div_bits;
->   	bool hs400_tune; /* only used for MT8173 */
-> +	bool pad_tune0;
-
-You only use this to decide whether to use MDSC_PAD_TUNE or 
-MSDC_PAD_TUNE0 as tune regs.
-
-Couldn't this field directly be a 'u32' that is either MDSC_PAD_TUNE or 
-MDSC_PAD_TUNE0 rather than a bool?
-
->   };
+> [1] https://github.com/mbgg/linux-mediatek.git
+> 
+>   arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 25 +++++++++++++++++++++++++
+>   1 file changed, 25 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> index 57d0396..5d4e406 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> @@ -39,6 +39,7 @@
+>   			device_type = "cpu";
+>   			compatible = "arm,cortex-a35";
+>   			reg = <0x000>;
+> +			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
+>   		};
 >   
->   struct msdc_tune_para {
-> @@ -362,21 +364,25 @@ struct msdc_host {
->   static const struct mtk_mmc_compatible mt8135_compat = {
->   	.clk_div_bits = 8,
->   	.hs400_tune = false,
-> +	.pad_tune0 = false,
-
-and here we could have (field could be renamed accordingly of course):
-
-	.pad_tune0 = MDSC_PAD_TUNE,
-
->   };
+>   		cpu1: cpu@1 {
+> @@ -46,6 +47,7 @@
+>   			compatible = "arm,cortex-a35";
+>   			reg = <0x001>;
+>   			enable-method = "psci";
+> +			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
+>   		};
 >   
->   static const struct mtk_mmc_compatible mt8173_compat = {
->   	.clk_div_bits = 8,
->   	.hs400_tune = true,
-> +	.pad_tune0 = false,
->   };
->   
->   static const struct mtk_mmc_compatible mt2701_compat = {
->   	.clk_div_bits = 12,
->   	.hs400_tune = false,
-> +	.pad_tune0 = true,
-
-here:
-	.pad_tune0 = MDSC_PAD_TUNE0,
-
->   };
->   
->   static const struct mtk_mmc_compatible mt2712_compat = {
->   	.clk_div_bits = 12,
->   	.hs400_tune = false,
-> +	.pad_tune0 = true,
->   };
->   
->   static const struct of_device_id msdc_of_ids[] = {
-> @@ -581,6 +587,10 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
->   	u32 flags;
->   	u32 div;
->   	u32 sclk;
-> +	u32 tune_reg = MSDC_PAD_TUNE;
+>   		cpu2: cpu@200 {
+> @@ -53,6 +55,29 @@
+>   			compatible = "arm,cortex-a72";
+>   			reg = <0x200>;
+>   			enable-method = "psci";
+> +			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
+> +		};
 > +
-> +	if (host->dev_comp->pad_tune0)
-> +		tune_reg = MSDC_PAD_TUNE0;
-
-And this would not be needed here nor in the other functions, it could 
-just be replaced by host->dev_comp->pad_tune0.
-
-Thanks,
-
--- 
-Julien Thierry
+> +		idle-states {
+> +			entry-method = "arm,psci";
+> +
+> +			CPU_SLEEP_0: cpu-sleep-0 {
+> +				compatible = "arm,idle-state";
+> +				local-timer-stop;
+> +				entry-latency-us = <100>;
+> +				exit-latency-us = <80>;
+> +				min-residency-us = <2000>;
+> +				arm,psci-suspend-param = <0x0010000>;
+> +			};
+> +
+> +			CLUSTER_SLEEP_0: cluster-sleep-0 {
+> +				compatible = "arm,idle-state";
+> +				local-timer-stop;
+> +				entry-latency-us = <350>;
+> +				exit-latency-us = <80>;
+> +				min-residency-us = <3000>;
+> +				arm,psci-suspend-param = <0x1010000>;
+> +			};
+>   		};
+>   	};
+>   
+> 
