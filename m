@@ -1,90 +1,56 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: [PATCH v3 04/12] mmc: mediatek: make hs400_tune_response only for
- mt8173
-Date: Tue, 10 Oct 2017 11:01:12 +0800
-Message-ID: <1507604480-23246-5-git-send-email-chaotian.jing@mediatek.com>
-References: <1507604480-23246-1-git-send-email-chaotian.jing@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v2 03/13] mmc: dt-bindings: make compatible explicit
+Date: Tue, 10 Oct 2017 09:19:14 +0200
+Message-ID: <CAPDyKFpzuctUJ7FB9thMi0h602iJZc=kbs7iaVb+0oNCC4K4ng@mail.gmail.com>
+References: <1507548926-9555-1-git-send-email-chaotian.jing@mediatek.com>
+ <1507548926-9555-4-git-send-email-chaotian.jing@mediatek.com>
+ <e4e5fa8b-b6a5-dc70-fbfc-6328493cd073@gmail.com> <1507599473.19789.1.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1507604480-23246-1-git-send-email-chaotian.jing@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, yong mao <yong.mao@mediatek.com>, Phong LE <ple@baylibre.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org, Chaotian Jing <chaotian.jing@mediatek.com>, Heiner Kallweit <hkallweit1@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1507599473.19789.1.camel@mhfsdcap03>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Heiner Kallweit <hkallweit1@gmail.com>, Phong LE <ple@baylibre.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-the origin design of hs400_tune_response is for mt8173 because of
-mt8173 has a special design. for doing that, we add a new member
-"compatible", by now it's only for mt8173.
+On 10 October 2017 at 03:37, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+> On Mon, 2017-10-09 at 16:54 +0200, Matthias Brugger wrote:
+>>
+>> On 10/09/2017 01:35 PM, Chaotian Jing wrote:
+>> > the driver has updated to have an explicit compatible, so update
+>> > binding file according to the driver change.
+>> >
+>> > Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+>> > ---
+>> >   Documentation/devicetree/bindings/mmc/mtk-sd.txt | 4 ++--
+>> >   1 file changed, 2 insertions(+), 2 deletions(-)
+>> >
+>> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+>> > index 3e0a97c..2bb585b 100644
+>> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+>> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+>> > @@ -8,8 +8,8 @@ and the properties used by the msdc driver.
+>> >
+>> >   Required properties:
+>> >   - compatible: value should be either of the following.
+>> > -   "mediatek,mt8173-mmc","mediatek,mt8135-mmc": for mmc host ip compatible with mt8135
+>> > -   "mediatek,mt8173-mmc","mediatek,mt8135-mmc": for mmc host ip compatible with mt8173
+>> > +   "mediatek,mt8135-mmc": for mmc host ip compatible with mt8135
+>> > +   "mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
+>>
+>> You can merge this with patch 1.
+>
+> OK, will merge it in next patch.
 
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+No, please don't!
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 643c795..ab2fbbb 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -300,6 +300,7 @@ struct msdc_save_para {
- 
- struct mtk_mmc_compatible {
- 	u8 clk_div_bits;
-+	bool hs400_tune; /* only used for MT8173 */
- };
- 
- struct msdc_tune_para {
-@@ -360,18 +361,22 @@ struct msdc_host {
- 
- static const struct mtk_mmc_compatible mt8135_compat = {
- 	.clk_div_bits = 8,
-+	.hs400_tune = false,
- };
- 
- static const struct mtk_mmc_compatible mt8173_compat = {
- 	.clk_div_bits = 8,
-+	.hs400_tune = true,
- };
- 
- static const struct mtk_mmc_compatible mt2701_compat = {
- 	.clk_div_bits = 12,
-+	.hs400_tune = false,
- };
- 
- static const struct mtk_mmc_compatible mt2712_compat = {
- 	.clk_div_bits = 12,
-+	.hs400_tune = false,
- };
- 
- static const struct of_device_id msdc_of_ids[] = {
-@@ -666,7 +671,8 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
- 		       host->base + PAD_CMD_TUNE);
- 	}
- 
--	if (timing == MMC_TIMING_MMC_HS400)
-+	if (timing == MMC_TIMING_MMC_HS400 &&
-+	    host->dev_comp->hs400_tune)
- 		sdr_set_field(host->base + PAD_CMD_TUNE,
- 			      MSDC_PAD_TUNE_CMDRRDLY,
- 			      host->hs400_cmd_int_delay);
-@@ -1594,7 +1600,8 @@ static int msdc_execute_tuning(struct mmc_host *mmc, u32 opcode)
- 	struct msdc_host *host = mmc_priv(mmc);
- 	int ret;
- 
--	if (host->hs400_mode)
-+	if (host->hs400_mode &&
-+	    host->dev_comp->hs400_tune)
- 		ret = hs400_tune_response(mmc, opcode);
- 	else
- 		ret = msdc_tune_response(mmc, opcode);
--- 
-1.8.1.1.dirty
+I would like DT documentation changes to be posted in separate
+patches. Moreover, those should be before driver changes, when you
+order the changes in your series.
+
+In this way, the bindings can be reviewed and acked separately, which
+makes it more convenient.
+
+Kind regards
+Uffe
