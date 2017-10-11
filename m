@@ -1,83 +1,108 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v4 4/7] soc: mediatek: pwrap: update pwrap_init without
- slave programming
-Date: Tue, 10 Oct 2017 20:00:41 +0200
-Message-ID: <f3a04159-8491-6ca6-d2ad-7df1dfd64331@gmail.com>
-References: <cover.1505980364.git.sean.wang@mediatek.com>
- <604078485ca9ab04cea5bc531425d6035b27bc88.1505980364.git.sean.wang@mediatek.com>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: Re: [PATCH v4 05/12] mmc: mediatek: add pad_tune0 support
+Date: Wed, 11 Oct 2017 09:26:57 +0800
+Message-ID: <1507685217.19789.14.camel@mhfsdcap03>
+References: <1507627831-29323-1-git-send-email-chaotian.jing@mediatek.com>
+         <1507627831-29323-6-git-send-email-chaotian.jing@mediatek.com>
+         <afac6efe-d721-acae-6c07-adf4cfff962d@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <604078485ca9ab04cea5bc531425d6035b27bc88.1505980364.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <afac6efe-d721-acae-6c07-adf4cfff962d@arm.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Julien Thierry <julien.thierry@arm.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, yong mao <yong.mao@mediatek.com>, Phong LE <ple@baylibre.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org, Heiner Kallweit <hkallweit1@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 09/21/2017 10:26 AM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Tue, 2017-10-10 at 17:57 +0100, Julien Thierry wrote:
+> Hi,
 > 
-> pwrap initialization is highly associated with the base SoC, so
-> update here for allowing pwrap_init without slave program which would be
-> used to those PMICs without extra encryption on bus such as MT6380.
+> On 10/10/17 10:30, Chaotian Jing wrote:
+> > from mt2701, the register of PAD_TUNE has been phased out,
+> > while there is a new register of PAD_TUNE0
+> > 
+> > Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> > ---
+> >   drivers/mmc/host/mtk-sd.c | 69 ++++++++++++++++++++++++++++++++++-------------
+> >   1 file changed, 51 insertions(+), 18 deletions(-)
+> > 
+> > diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> > index ab2fbbb..0dc45b3 100644
+> > --- a/drivers/mmc/host/mtk-sd.c
+> > +++ b/drivers/mmc/host/mtk-sd.c
+> > @@ -75,6 +75,7 @@
+> >   #define MSDC_PATCH_BIT   0xb0
+> >   #define MSDC_PATCH_BIT1  0xb4
+> >   #define MSDC_PAD_TUNE    0xec
+> > +#define MSDC_PAD_TUNE0   0xf0
+> >   #define PAD_DS_TUNE      0x188
+> >   #define PAD_CMD_TUNE     0x18c
+> >   #define EMMC50_CFG0      0x208
+> > @@ -301,6 +302,7 @@ struct msdc_save_para {
+> >   struct mtk_mmc_compatible {
+> >   	u8 clk_div_bits;
+> >   	bool hs400_tune; /* only used for MT8173 */
+> > +	bool pad_tune0;
 > 
-> Signed-off-by: Chenglin Xu <chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->   drivers/soc/mediatek/mtk-pmic-wrap.c | 91 +++++++++++++++++++++---------------
->   1 file changed, 54 insertions(+), 37 deletions(-)
+> You only use this to decide whether to use MDSC_PAD_TUNE or 
+> MSDC_PAD_TUNE0 as tune regs.
 > 
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index 27d7ccc..9c6d855 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -531,6 +531,7 @@ struct pmic_wrapper_type {
->   	u32 spi_w;
->   	u32 wdt_src;
->   	int has_bridge:1;
-> +	int slv_program:1;
->   	int (*init_reg_clock)(struct pmic_wrapper *wrp);
->   	int (*init_soc_specific)(struct pmic_wrapper *wrp);
->   };
-> @@ -999,9 +1000,12 @@ static int pwrap_init(struct pmic_wrapper *wrp)
->   	}
->   
->   	/* Reset SPI slave */
-> -	ret = pwrap_reset_spislave(wrp);
-> -	if (ret)
-> -		return ret;
-> +
-> +	if (wrp->master->slv_program) {
-> +		ret = pwrap_reset_spislave(wrp);
-> +		if (ret)
-> +			return ret;
-> +	}
->   
->   	pwrap_writel(wrp, 1, PWRAP_WRAP_EN);
->   
-> @@ -1013,45 +1017,52 @@ static int pwrap_init(struct pmic_wrapper *wrp)
->   	if (ret)
->   		return ret;
->   
-> -	/* Setup serial input delay */
-> -	ret = pwrap_init_sidly(wrp);
-> -	if (ret)
-> -		return ret;
-> +	if (wrp->master->slv_program) {
+> Couldn't this field directly be a 'u32' that is either MDSC_PAD_TUNE or 
+> MDSC_PAD_TUNE0 rather than a bool?
+> 
+Thx, will change to "u32 pad_tune_reg;" at next version.
+> >   };
+> >   
+> >   struct msdc_tune_para {
+> > @@ -362,21 +364,25 @@ struct msdc_host {
+> >   static const struct mtk_mmc_compatible mt8135_compat = {
+> >   	.clk_div_bits = 8,
+> >   	.hs400_tune = false,
+> > +	.pad_tune0 = false,
+> 
+> and here we could have (field could be renamed accordingly of course):
+> 
+> 	.pad_tune0 = MDSC_PAD_TUNE,
+> 
+> >   };
+> >   
+> >   static const struct mtk_mmc_compatible mt8173_compat = {
+> >   	.clk_div_bits = 8,
+> >   	.hs400_tune = true,
+> > +	.pad_tune0 = false,
+> >   };
+> >   
+> >   static const struct mtk_mmc_compatible mt2701_compat = {
+> >   	.clk_div_bits = 12,
+> >   	.hs400_tune = false,
+> > +	.pad_tune0 = true,
+> 
+> here:
+> 	.pad_tune0 = MDSC_PAD_TUNE0,
+> 
+> >   };
+> >   
+> >   static const struct mtk_mmc_compatible mt2712_compat = {
+> >   	.clk_div_bits = 12,
+> >   	.hs400_tune = false,
+> > +	.pad_tune0 = true,
+> >   };
+> >   
+> >   static const struct of_device_id msdc_of_ids[] = {
+> > @@ -581,6 +587,10 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+> >   	u32 flags;
+> >   	u32 div;
+> >   	u32 sclk;
+> > +	u32 tune_reg = MSDC_PAD_TUNE;
+> > +
+> > +	if (host->dev_comp->pad_tune0)
+> > +		tune_reg = MSDC_PAD_TUNE0;
+> 
+> And this would not be needed here nor in the other functions, it could 
+> just be replaced by host->dev_comp->pad_tune0.
+> 
+> Thanks,
+> 
 
-This if branch is really long and complex enough to put it into function apart.
 
-Thanks,
-Matthias
-
-PD please take into account the comments I made on v3 of the series.
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
