@@ -1,70 +1,60 @@
-From: Herbert Xu <herbert@gondor.apana.org.au>
-Subject: Re: [PATCH v8 01/20] crypto: change transient busy return code to
- -EAGAIN
-Date: Wed, 11 Oct 2017 14:26:51 +0800
-Message-ID: <20171011062651.GA18664@gondor.apana.org.au>
-References: <1504615144-29770-1-git-send-email-gilad@benyossef.com>
- <1504615144-29770-2-git-send-email-gilad@benyossef.com>
- <20171007030541.GA29421@gondor.apana.org.au>
- <CAOtvUMd=vtju=VJkCYFRrvANbRRYj+95cdgDoMMfBvmPaPbsAA@mail.gmail.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 8/9] dt-bindings: usb: mtk-xhci: add a optional property
+ to disable u3ports
+Date: Wed, 11 Oct 2017 14:37:34 +0800
+Message-ID: <1507703854.17567.77.camel@mhfsdcap03>
+References: <994382d16d6bdc0f3d7c11b22f1710252e056e34.1506503879.git.chunfeng.yun@mediatek.com>
+         <fd8b6099192ddee3b277f5ca3a699c20fb273ffe.1506503880.git.chunfeng.yun@mediatek.com>
+         <20171005221650.yfyh72op6azm2nri@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <CAOtvUMd=vtju=VJkCYFRrvANbRRYj+95cdgDoMMfBvmPaPbsAA@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Gilad Ben-Yossef <gilad@benyossef.com>
-Cc: Mike Snitzer <snitzer@redhat.com>, linux-doc@vger.kernel.org, Gary Hook <gary.hook@amd.com>, David Howells <dhowells@redhat.com>, device-mapper development <dm-devel@redhat.com>, keyrings@vger.kernel.org, linux-ima-devel@lists.sourceforge.net, Alasdair Kergon <agk@redhat.com>, Steffen Klassert <steffen.klassert@secunet.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Jonathan Corbet <corbet@lwn.net>, Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>, Mimi Zohar <zohar@linux.vnet.ibm.com>, "Serge E. Hallyn" <serge@hallyn.com>, Tom Lendacky <thomas.lendacky@amd.com>, linux-cifs@vger.kernel.org, linux-ima-user@lists.sourceforge.net, Arnaud Ebalard <arno@natisbad.org>, linux-raid@vger.kernel.org, linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org, James Morris <james.l.morris@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jaegeuk Kim <jaegeuk@kernel.o>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20171005221650.yfyh72op6azm2nri@rob-hp-laptop>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Oct 07, 2017 at 10:51:42AM +0300, Gilad Ben-Yossef wrote:
-> On Sat, Oct 7, 2017 at 6:05 AM, Herbert Xu <herbert@gondor.apana.org.au> wrote:
-> > On Tue, Sep 05, 2017 at 03:38:40PM +0300, Gilad Ben-Yossef wrote:
-> >>
-> >> diff --git a/crypto/algif_hash.c b/crypto/algif_hash.c
-> >> index 5e92bd2..3b3c154 100644
-> >> --- a/crypto/algif_hash.c
-> >> +++ b/crypto/algif_hash.c
-> >> @@ -39,6 +39,20 @@ struct algif_hash_tfm {
-> >>       bool has_key;
-> >>  };
-> >>
-> >> +/* Previous versions of crypto_* ops used to return -EBUSY
-> >> + * rather than -EAGAIN to indicate being tied up. The in
-> >> + * kernel API changed but we don't want to break the user
-> >> + * space API. As only the hash user interface exposed this
-> >> + * error ever to the user, do the translation here.
-> >> + */
-> >> +static inline int crypto_user_err(int err)
-> >> +{
-> >> +     if (err == -EAGAIN)
-> >> +             return -EBUSY;
-> >> +
-> >> +     return err;
-> >
-> > I don't see the need to carry along this baggage.  Does anyone
-> > in user-space actually rely on EBUSY?
+On Thu, 2017-10-05 at 17:16 -0500, Rob Herring wrote:
+Hi,
+> On Wed, Sep 27, 2017 at 05:23:04PM +0800, Chunfeng Yun wrote:
+> > Add a new optional property to disable u3ports
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  .../devicetree/bindings/usb/mediatek,mtk-xhci.txt  |    2 ++
+> >  1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
+> > index 5611a2e..2d9b459 100644
+> > --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
+> > +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
+> > @@ -38,6 +38,8 @@ Optional properties:
+> >  	mode;
+> >   - mediatek,syscon-wakeup : phandle to syscon used to access USB wakeup
+> >  	control register, it depends on "mediatek,wakeup-src".
+> > + - mediatek,u3p-dis-msk : mask to disable u3ports, bit0 for u3port0,
+> > +	bit1 for u3port1, ... etc;
 > 
-> 
-> I am not aware of anyone who does. I was just trying to avoid
-> changing the user ABI.
-> 
-> Shall I roll a new revision without this patch?
+> I think you should have child nodes for ports and use "status" to 
+> disable them (or omit them). IIRC, the common USB bus binding already 
+> defines ports.
+I find only one common binding document about USB bus, that is
+bindings/usb/usb-device.txt, but it can't be used to disable some ports,
+because in hub_probe() function, hub driver enables all downstream
+ports, but doesn't get any property info from DTS.
 
-Yes please.  I'd rather not carry this around for eternity unless
-it was actually required.
+> 
+> >   - vbus-supply : reference to the VBUS regulator;
+> >   - usb3-lpm-capable : supports USB3.0 LPM
+> >   - pinctrl-names : a pinctrl state named "default" must be defined
+> > -- 
+> > 1.7.9.5
+> > 
 
-Thanks,
--- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
