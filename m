@@ -1,149 +1,70 @@
-From: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v1 2/2] mtd: mtk-nor: add suspend/resume support
-Date: Wed, 11 Oct 2017 11:16:19 +0800
-Message-ID: <1507691779.14979.3.camel@mhfsdcap03>
-References: <1505997906-30921-1-git-send-email-guochun.mao@mediatek.com>
-         <1505997906-30921-3-git-send-email-guochun.mao@mediatek.com>
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Subject: Re: [PATCH v8 01/20] crypto: change transient busy return code to
+ -EAGAIN
+Date: Wed, 11 Oct 2017 14:26:51 +0800
+Message-ID: <20171011062651.GA18664@gondor.apana.org.au>
+References: <1504615144-29770-1-git-send-email-gilad@benyossef.com>
+ <1504615144-29770-2-git-send-email-gilad@benyossef.com>
+ <20171007030541.GA29421@gondor.apana.org.au>
+ <CAOtvUMd=vtju=VJkCYFRrvANbRRYj+95cdgDoMMfBvmPaPbsAA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1505997906-30921-3-git-send-email-guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Cyrille Pitchen <cyrille.pitchen-yU5RGvR974pGWvitb5QawA@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <CAOtvUMd=vtju=VJkCYFRrvANbRRYj+95cdgDoMMfBvmPaPbsAA@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Gilad Ben-Yossef <gilad@benyossef.com>
+Cc: Mike Snitzer <snitzer@redhat.com>, linux-doc@vger.kernel.org, Gary Hook <gary.hook@amd.com>, David Howells <dhowells@redhat.com>, device-mapper development <dm-devel@redhat.com>, keyrings@vger.kernel.org, linux-ima-devel@lists.sourceforge.net, Alasdair Kergon <agk@redhat.com>, Steffen Klassert <steffen.klassert@secunet.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Jonathan Corbet <corbet@lwn.net>, Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>, Mimi Zohar <zohar@linux.vnet.ibm.com>, "Serge E. Hallyn" <serge@hallyn.com>, Tom Lendacky <thomas.lendacky@amd.com>, linux-cifs@vger.kernel.org, linux-ima-user@lists.sourceforge.net, Arnaud Ebalard <arno@natisbad.org>, linux-raid@vger.kernel.org, linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org, James Morris <james.l.morris@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jaegeuk Kim <jaegeuk@kernel.o>
 List-Id: linux-mediatek@lists.infradead.org
 
-gentle ping...
-
-On Thu, 2017-09-21 at 20:45 +0800, Guochun Mao wrote:
-> Abstract functions of clock setting, to avoid duplicated code,
-> these functions been used in new feature.
-> Implement suspend/resume functions.
+On Sat, Oct 07, 2017 at 10:51:42AM +0300, Gilad Ben-Yossef wrote:
+> On Sat, Oct 7, 2017 at 6:05 AM, Herbert Xu <herbert@gondor.apana.org.au> wrote:
+> > On Tue, Sep 05, 2017 at 03:38:40PM +0300, Gilad Ben-Yossef wrote:
+> >>
+> >> diff --git a/crypto/algif_hash.c b/crypto/algif_hash.c
+> >> index 5e92bd2..3b3c154 100644
+> >> --- a/crypto/algif_hash.c
+> >> +++ b/crypto/algif_hash.c
+> >> @@ -39,6 +39,20 @@ struct algif_hash_tfm {
+> >>       bool has_key;
+> >>  };
+> >>
+> >> +/* Previous versions of crypto_* ops used to return -EBUSY
+> >> + * rather than -EAGAIN to indicate being tied up. The in
+> >> + * kernel API changed but we don't want to break the user
+> >> + * space API. As only the hash user interface exposed this
+> >> + * error ever to the user, do the translation here.
+> >> + */
+> >> +static inline int crypto_user_err(int err)
+> >> +{
+> >> +     if (err == -EAGAIN)
+> >> +             return -EBUSY;
+> >> +
+> >> +     return err;
+> >
+> > I don't see the need to carry along this baggage.  Does anyone
+> > in user-space actually rely on EBUSY?
 > 
-> Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/mtd/spi-nor/mtk-quadspi.c |   70 ++++++++++++++++++++++++++++++-------
->  1 file changed, 58 insertions(+), 12 deletions(-)
 > 
-> diff --git a/drivers/mtd/spi-nor/mtk-quadspi.c b/drivers/mtd/spi-nor/mtk-quadspi.c
-> index c258c7a..abe455c 100644
-> --- a/drivers/mtd/spi-nor/mtk-quadspi.c
-> +++ b/drivers/mtd/spi-nor/mtk-quadspi.c
-> @@ -404,6 +404,29 @@ static int mt8173_nor_write_reg(struct spi_nor *nor, u8 opcode, u8 *buf,
->  	return ret;
->  }
->  
-> +static void mt8173_nor_disable_clk(struct mt8173_nor *mt8173_nor)
-> +{
-> +	clk_disable_unprepare(mt8173_nor->spi_clk);
-> +	clk_disable_unprepare(mt8173_nor->nor_clk);
-> +}
-> +
-> +static int mt8173_nor_enable_clk(struct mt8173_nor *mt8173_nor)
-> +{
-> +	int ret;
-> +
-> +	ret = clk_prepare_enable(mt8173_nor->spi_clk);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = clk_prepare_enable(mt8173_nor->nor_clk);
-> +	if (ret) {
-> +		clk_disable_unprepare(mt8173_nor->spi_clk);
-> +		return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
->  static int mtk_nor_init(struct mt8173_nor *mt8173_nor,
->  			struct device_node *flash_node)
->  {
-> @@ -468,15 +491,11 @@ static int mtk_nor_drv_probe(struct platform_device *pdev)
->  		return PTR_ERR(mt8173_nor->nor_clk);
->  
->  	mt8173_nor->dev = &pdev->dev;
-> -	ret = clk_prepare_enable(mt8173_nor->spi_clk);
-> +
-> +	ret = mt8173_nor_enable_clk(mt8173_nor);
->  	if (ret)
->  		return ret;
->  
-> -	ret = clk_prepare_enable(mt8173_nor->nor_clk);
-> -	if (ret) {
-> -		clk_disable_unprepare(mt8173_nor->spi_clk);
-> -		return ret;
-> -	}
->  	/* only support one attached flash */
->  	flash_np = of_get_next_available_child(pdev->dev.of_node, NULL);
->  	if (!flash_np) {
-> @@ -487,10 +506,9 @@ static int mtk_nor_drv_probe(struct platform_device *pdev)
->  	ret = mtk_nor_init(mt8173_nor, flash_np);
->  
->  nor_free:
-> -	if (ret) {
-> -		clk_disable_unprepare(mt8173_nor->spi_clk);
-> -		clk_disable_unprepare(mt8173_nor->nor_clk);
-> -	}
-> +	if (ret)
-> +		mt8173_nor_disable_clk(mt8173_nor);
-> +
->  	return ret;
->  }
->  
-> @@ -498,11 +516,38 @@ static int mtk_nor_drv_remove(struct platform_device *pdev)
->  {
->  	struct mt8173_nor *mt8173_nor = platform_get_drvdata(pdev);
->  
-> -	clk_disable_unprepare(mt8173_nor->spi_clk);
-> -	clk_disable_unprepare(mt8173_nor->nor_clk);
-> +	mt8173_nor_disable_clk(mt8173_nor);
-> +
-> +	return 0;
-> +}
-> +
-> +#ifdef CONFIG_PM_SLEEP
-> +static int mtk_nor_suspend(struct device *dev)
-> +{
-> +	struct mt8173_nor *mt8173_nor = dev_get_drvdata(dev);
-> +
-> +	mt8173_nor_disable_clk(mt8173_nor);
-> +
->  	return 0;
->  }
->  
-> +static int mtk_nor_resume(struct device *dev)
-> +{
-> +	struct mt8173_nor *mt8173_nor = dev_get_drvdata(dev);
-> +
-> +	return mt8173_nor_enable_clk(mt8173_nor);
-> +}
-> +
-> +static const struct dev_pm_ops mtk_nor_dev_pm_ops = {
-> +	.suspend = mtk_nor_suspend,
-> +	.resume = mtk_nor_resume,
-> +};
-> +
-> +#define MTK_NOR_DEV_PM_OPS	(&mtk_nor_dev_pm_ops)
-> +#else
-> +#define MTK_NOR_DEV_PM_OPS	NULL
-> +#endif
-> +
->  static const struct of_device_id mtk_nor_of_ids[] = {
->  	{ .compatible = "mediatek,mt8173-nor"},
->  	{ /* sentinel */ }
-> @@ -514,6 +559,7 @@ static int mtk_nor_drv_remove(struct platform_device *pdev)
->  	.remove = mtk_nor_drv_remove,
->  	.driver = {
->  		.name = "mtk-nor",
-> +		.pm = MTK_NOR_DEV_PM_OPS,
->  		.of_match_table = mtk_nor_of_ids,
->  	},
->  };
+> I am not aware of anyone who does. I was just trying to avoid
+> changing the user ABI.
+> 
+> Shall I roll a new revision without this patch?
 
+Yes please.  I'd rather not carry this around for eternity unless
+it was actually required.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thanks,
+-- 
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
