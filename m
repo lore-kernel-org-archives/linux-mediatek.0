@@ -1,60 +1,129 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH v3 00/10] update MT7623 and MT2701 dts
-Date: Wed, 11 Oct 2017 17:02:31 +0800
-Message-ID: <1507712551.13764.7.camel@mtkswgap22>
-References: <cover.1506908511.git.ryder.lee@mediatek.com>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 5/9] soc: mediatek: pwrap: add pwrap_write32 for
+ writing in 32-bit mode
+Date: Thu, 12 Oct 2017 11:19:55 +0800
+Message-ID: <1507778395.21840.15.camel@mtkswgap22>
+References: <cover.1502779753.git.sean.wang@mediatek.com>
+         <236a04acb383fc655549bc345a16a2d015e5727d.1502779753.git.sean.wang@mediatek.com>
+         <d34460e3-9233-3c31-578d-cf2fe91a4316@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1506908511.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Erin Lo <erin.lo@mediatek.com>, YT Shen <yt.shen@mediatek.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <d34460e3-9233-3c31-578d-cf2fe91a4316-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
+On Tue, 2017-10-10 at 11:38 +0200, Matthias Brugger wrote:
+> 
+> On 08/15/2017 11:09 AM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> > From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > 
+> > Some regulators such as MediaTek MT6380 also has to be written in
+> > 32-bit mode. So the patch adds pwrap_write32, rename old pwrap_write
+> > into pwrap_write16 and one additional function pointer is introduced
+> > for increasing flexibility allowing the determination which mode is
+> > used by the pwrap slave detection through device tree.
+> > 
+> > Signed-off-by: Chenglin Xu <chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > Signed-off-by: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >   drivers/soc/mediatek/mtk-pmic-wrap.c | 63 +++++++++++++++++++++++++++---------
+> >   1 file changed, 47 insertions(+), 16 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > index 7cd581b..9d1f4c6 100644
+> > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > @@ -506,6 +506,7 @@ struct pwrap_slv_type {
+> >   	 * which type is used by the detection through device tree.
+> >   	 */
+> >   	int (*pwrap_read)(struct pmic_wrapper *wrp, u32 adr, u32 *rdata);
+> > +	int (*pwrap_write)(struct pmic_wrapper *wrp, u32 adr, u32 wdata);
+> >   };
+> >   
+> >   struct pmic_wrapper {
+> > @@ -600,22 +601,6 @@ static int pwrap_wait_for_state(struct pmic_wrapper *wrp,
+> >   	} while (1);
+> >   }
+> >   
+> > -static int pwrap_write(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
+> > -{
+> > -	int ret;
+> > -
+> > -	ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
+> > -	if (ret) {
+> > -		pwrap_leave_fsm_vldclr(wrp);
+> > -		return ret;
+> > -	}
+> > -
+> > -	pwrap_writel(wrp, (1 << 31) | ((adr >> 1) << 16) | wdata,
+> > -			PWRAP_WACS2_CMD);
+> > -
+> > -	return 0;
+> > -}
+> > -
+> >   static int pwrap_read16(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
+> >   {
+> >   	int ret;
+> > @@ -672,6 +657,49 @@ static int pwrap_read(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
+> >   	return wrp->slave->pwrap_read(wrp, adr, rdata);
+> >   }
+> >   
+> > +static int pwrap_write16(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
+> > +{
+> > +	int ret;
+> > +
+> > +	ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
+> > +	if (ret) {
+> > +		pwrap_leave_fsm_vldclr(wrp);
+> > +		return ret;
+> > +	}
+> > +
+> > +	pwrap_writel(wrp, (1 << 31) | ((adr >> 1) << 16) | wdata,
+> > +		     PWRAP_WACS2_CMD);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int pwrap_write32(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
+> > +{
+> > +	int ret, msb, rdata;
+> > +
+> > +	for (msb = 0; msb < 2; msb++) {
+> > +		ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
+> > +		if (ret) {
+> > +			pwrap_leave_fsm_vldclr(wrp);
+> > +			return ret;
+> > +		}
+> > +
+> > +		pwrap_writel(wrp, (1 << 31) | (msb << 30) | (adr << 16) |
+> > +			     ((wdata >> (msb * 16)) & 0xffff),
+> > +			     PWRAP_WACS2_CMD);
+> > +
+> > +		if (!msb)
+> > +			pwrap_read(wrp, adr, &rdata);
+> 
+> Just so that I understand, you have to read back the half-written register 
+> before you can write the second part?
+> 
 
-How does this series look to you?
+Yup, the pwrap_read operation is the requirement of hardware used for
+the synchronization between two successive 16-bit pwrap_writel
+operations composing one 32-bit bus writing. Otherwise, we'll find the
+result fails for the lower 16-bit pwrap writing.
 
 
-On Mon, 2017-10-02 at 09:54 +0800, Ryder Lee wrote:
-> Hi Matthias,
+> Other then that it looks fine to me.
 > 
-> This patch series adds/corrects some device nodes for both MT7623 and MT2701.
-> 
-> changes since v3:
-> - revert PIO register space.
-> 
-> changes since v2:
-> - move non-common part and non-display related nodes to different patches.
-> - remove unused wdma node.
-> - add display related nodes for MT2701.
-> 
-> changes since v1:
-> - rebase to v4.14.
-> - sort nodes in alphabetical order
-> 
-> Ryder Lee (7):
->   arm: dts: mediatek: update audio node for mt2701 and mt7623
->   arm: dts: mt7623: update pio, usb and crypto nodes
->   arm: dts: mt7623: add subsystem clock controller nodes
->   arm: dts: mt7623: add iommu and jpecdec nodes
->   arm: dts: mt7623: add display subsystem related nodes
->   arm: dts: mt7623: enable bananapi-r2 display function
->   arm: dts: mt7623: add PCIe related nodes
-> 
-> Weiqing Kong (2):
->   arm: dts: mt2701: add pwm backlight device node
->   arm: dts: mt2701: enable display pwm backlight
-> 
-> YT Shen (1):
->   arm: dts: mt2701: add display subsystem related nodes
-> 
->  arch/arm/boot/dts/mt2701-evb.dts              |  23 ++
->  arch/arm/boot/dts/mt2701.dtsi                 |  88 ++++++-
->  arch/arm/boot/dts/mt7623.dtsi                 | 338 +++++++++++++++++++++++++-
->  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |  71 +++++-
->  include/dt-bindings/pinctrl/mt7623-pinfunc.h  |  12 +
->  5 files changed, 516 insertions(+), 16 deletions(-)
-> 
+> Regards,
+> Matthias
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
