@@ -1,32 +1,49 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v4 0/9] Mediatek MT2712 clock and scpsys support
-Date: Fri, 13 Oct 2017 16:50:43 +0200
-Message-ID: <ac7940d1-e23d-add2-b4b6-bd7cf66fea34@gmail.com>
-References: <1505793630-12590-1-git-send-email-weiyi.lu@mediatek.com>
- <20171012224540.GE18706@codeaurora.org>
+Subject: Re: [PATCH 1/3] ARM: mediatek: Cocci spatch "of_table"
+Date: Fri, 13 Oct 2017 16:57:28 +0200
+Message-ID: <2060754d-293a-5690-38f3-0d1f170d5c11@gmail.com>
+References: <1505974912018-1637125348-0-diffsplit-thomas@m3y3r.de>
+ <1505974912018-1713366490-1-diffsplit-thomas@m3y3r.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171012224540.GE18706@codeaurora.org>
+In-Reply-To: <1505974912018-1713366490-1-diffsplit-thomas@m3y3r.de>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>, Weiyi Lu <weiyi.lu@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
+To: Thomas Meyer <thomas@m3y3r.de>, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 10/13/2017 12:45 AM, Stephen Boyd wrote:
-> On 09/19, Weiyi Lu wrote:
->> This series is based on v4.14-rc1 and composed of
->> clock control (PATCH 1-4) and scpsys control (PATCH 5-9)
+On 09/21/2017 08:24 AM, Thomas Meyer wrote:
+> Make sure (of/i2c/platform)_device_id tables are NULL terminated.
+> Found by coccinelle spatch "misc/of_table.cocci"
 > 
-> What's the merge plan? Can I apply the clk ones to clk tree and
-> ignore the rest?
+> Signed-off-by: Thomas Meyer <thomas@m3y3r.de>
+> ---
 > 
 
-Yes, please do so. I'll take scpsys, which depends on the clock patches.
+Applied to v4.14-next/soc
 
-Regards,
-Matthias
+Thanks!
+
+> diff -u -p a/arch/arm/mach-mediatek/platsmp.c b/arch/arm/mach-mediatek/platsmp.c
+> --- a/arch/arm/mach-mediatek/platsmp.c
+> +++ b/arch/arm/mach-mediatek/platsmp.c
+> @@ -54,12 +54,14 @@ static const struct of_device_id mtk_tz_
+>   	{ .compatible   = "mediatek,mt8135", .data = &mtk_mt8135_tz_boot },
+>   	{ .compatible   = "mediatek,mt8127", .data = &mtk_mt8135_tz_boot },
+>   	{ .compatible   = "mediatek,mt2701", .data = &mtk_mt8135_tz_boot },
+> +	{},
+>   };
+>   
+>   static const struct of_device_id mtk_smp_boot_infos[] __initconst = {
+>   	{ .compatible   = "mediatek,mt6589", .data = &mtk_mt6589_boot },
+>   	{ .compatible   = "mediatek,mt7623", .data = &mtk_mt7623_boot },
+>   	{ .compatible   = "mediatek,mt7623a", .data = &mtk_mt7623_boot },
+> +	{},
+>   };
+>   
+>   static void __iomem *mtk_smp_base;
+> 
