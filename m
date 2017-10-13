@@ -1,105 +1,32 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v4 4/7] soc: mediatek: pwrap: update pwrap_init without
- slave programming
-Date: Fri, 13 Oct 2017 16:07:57 +0200
-Message-ID: <fe0952f1-c018-8492-7336-149f917463e1@gmail.com>
-References: <cover.1505980364.git.sean.wang@mediatek.com>
- <604078485ca9ab04cea5bc531425d6035b27bc88.1505980364.git.sean.wang@mediatek.com>
- <f3a04159-8491-6ca6-d2ad-7df1dfd64331@gmail.com>
- <1507887704.21840.32.camel@mtkswgap22>
+Subject: Re: [PATCH v4 0/9] Mediatek MT2712 clock and scpsys support
+Date: Fri, 13 Oct 2017 16:50:43 +0200
+Message-ID: <ac7940d1-e23d-add2-b4b6-bd7cf66fea34@gmail.com>
+References: <1505793630-12590-1-git-send-email-weiyi.lu@mediatek.com>
+ <20171012224540.GE18706@codeaurora.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1507887704.21840.32.camel@mtkswgap22>
+In-Reply-To: <20171012224540.GE18706@codeaurora.org>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, chen.zhong@mediatek.com, chenglin.xu@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>, Weiyi Lu <weiyi.lu@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 10/13/2017 11:41 AM, Sean Wang wrote:
-> On Tue, 2017-10-10 at 20:00 +0200, Matthias Brugger wrote:
->>
->> On 09/21/2017 10:26 AM, sean.wang@mediatek.com wrote:
->>> From: Sean Wang <sean.wang@mediatek.com>
->>>
->>> pwrap initialization is highly associated with the base SoC, so
->>> update here for allowing pwrap_init without slave program which would be
->>> used to those PMICs without extra encryption on bus such as MT6380.
->>>
->>> Signed-off-by: Chenglin Xu <chenglin.xu@mediatek.com>
->>> Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
->>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->>> ---
->>>    drivers/soc/mediatek/mtk-pmic-wrap.c | 91 +++++++++++++++++++++---------------
->>>    1 file changed, 54 insertions(+), 37 deletions(-)
->>>
->>> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
->>> index 27d7ccc..9c6d855 100644
->>> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
->>> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
->>> @@ -531,6 +531,7 @@ struct pmic_wrapper_type {
->>>    	u32 spi_w;
->>>    	u32 wdt_src;
->>>    	int has_bridge:1;
->>> +	int slv_program:1;
->>>    	int (*init_reg_clock)(struct pmic_wrapper *wrp);
->>>    	int (*init_soc_specific)(struct pmic_wrapper *wrp);
->>>    };
->>> @@ -999,9 +1000,12 @@ static int pwrap_init(struct pmic_wrapper *wrp)
->>>    	}
->>>    
->>>    	/* Reset SPI slave */
->>> -	ret = pwrap_reset_spislave(wrp);
->>> -	if (ret)
->>> -		return ret;
->>> +
->>> +	if (wrp->master->slv_program) {
->>> +		ret = pwrap_reset_spislave(wrp);
->>> +		if (ret)
->>> +			return ret;
->>> +	}
->>>    
->>>    	pwrap_writel(wrp, 1, PWRAP_WRAP_EN);
->>>    
->>> @@ -1013,45 +1017,52 @@ static int pwrap_init(struct pmic_wrapper *wrp)
->>>    	if (ret)
->>>    		return ret;
->>>    
->>> -	/* Setup serial input delay */
->>> -	ret = pwrap_init_sidly(wrp);
->>> -	if (ret)
->>> -		return ret;
->>> +	if (wrp->master->slv_program) {
->>
->> This if branch is really long and complex enough to put it into function apart.
->>
->> Thanks,
->> Matthias
->>
->> PD please take into account the comments I made on v3 of the series.
->>
+On 10/13/2017 12:45 AM, Stephen Boyd wrote:
+> On 09/19, Weiyi Lu wrote:
+>> This series is based on v4.14-rc1 and composed of
+>> clock control (PATCH 1-4) and scpsys control (PATCH 5-9)
 > 
-> I'll try to breakdown the long logic into the short one and use a flag
-> indicating the slave capability decides whether the functions is
-> required being enabled for the slave instead of slv_program which is
-> less meaningful. In this way, pmic_init will be more extensible when
-> more different SoCs and target slaves with various flavors into the
-> driver. And also take into accounts those suggestions you made in v3 in
-> the next version.
-> 
-> 	Sean
+> What's the merge plan? Can I apply the clk ones to clk tree and
+> ignore the rest?
 > 
 
-I totally agree, but I wanted to underline that right now the if branch under
-"if (wrp->master->slv_program)" is around 30 lines, so I think it would be a 
-good candidate to put it into it's own function. For example: 
-pwrap_init_encryption()
-As from what I understand from the commit log, slv_program in the end enables 
-encryption of the communication, right?
+Yes, please do so. I'll take scpsys, which depends on the clock patches.
 
 Regards,
 Matthias
