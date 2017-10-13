@@ -1,25 +1,37 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v4 0/9] Mediatek MT2712 clock and scpsys support
-Date: Thu, 12 Oct 2017 15:45:40 -0700
-Message-ID: <20171012224540.GE18706@codeaurora.org>
-References: <1505793630-12590-1-git-send-email-weiyi.lu@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 1/9] usb: xhci-mtk: use dma_set_mask_and_coherent() in probe function
+Date: Fri, 13 Oct 2017 16:26:33 +0800
+Message-ID: <994382d16d6bdc0f3d7c11b22f1710252e056e34.1507882470.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1505793630-12590-1-git-send-email-weiyi.lu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Weiyi Lu <weiyi.lu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
+Content-Type: text/plain
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 09/19, Weiyi Lu wrote:
-> This series is based on v4.14-rc1 and composed of
-> clock control (PATCH 1-4) and scpsys control (PATCH 5-9)
+This patch uses the simpler dma_set_mask_and_coherent() instead of
+doing these as separate steps
 
-What's the merge plan? Can I apply the clk ones to clk tree and
-ignore the rest?
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/usb/host/xhci-mtk.c |    7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index 8fb6065..c197a6d 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -606,15 +606,10 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	/* Initialize dma_mask and coherent_dma_mask to 32-bits */
+-	ret = dma_set_coherent_mask(dev, DMA_BIT_MASK(32));
++	ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(32));
+ 	if (ret)
+ 		goto disable_clk;
+ 
+-	if (!dev->dma_mask)
+-		dev->dma_mask = &dev->coherent_dma_mask;
+-	else
+-		dma_set_mask(dev, DMA_BIT_MASK(32));
