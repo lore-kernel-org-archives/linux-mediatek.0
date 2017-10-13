@@ -1,81 +1,105 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 9/9] dt-bindings: usb: mtk-xhci: remove dummy clocks
- and add optional ones
-Date: Fri, 13 Oct 2017 15:56:12 +0200
-Message-ID: <7378e644-a44d-d83f-44a4-64b0e7c00e2e@gmail.com>
-References: <994382d16d6bdc0f3d7c11b22f1710252e056e34.1507882470.git.chunfeng.yun@mediatek.com>
- <6a5d01f35d7df6a49d0442c8326c3daa9bcda9d3.1507882470.git.chunfeng.yun@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v4 4/7] soc: mediatek: pwrap: update pwrap_init without
+ slave programming
+Date: Fri, 13 Oct 2017 16:07:57 +0200
+Message-ID: <fe0952f1-c018-8492-7336-149f917463e1@gmail.com>
+References: <cover.1505980364.git.sean.wang@mediatek.com>
+ <604078485ca9ab04cea5bc531425d6035b27bc88.1505980364.git.sean.wang@mediatek.com>
+ <f3a04159-8491-6ca6-d2ad-7df1dfd64331@gmail.com>
+ <1507887704.21840.32.camel@mtkswgap22>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <6a5d01f35d7df6a49d0442c8326c3daa9bcda9d3.1507882470.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1507887704.21840.32.camel@mtkswgap22>
 Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, chen.zhong@mediatek.com, chenglin.xu@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 10/13/2017 10:26 AM, Chunfeng Yun wrote:
-> Remove dummy clocks for usb wakeup and add optional ones for
-> MCU_BUS_CK and DMA_BUS_CK.
+On 10/13/2017 11:41 AM, Sean Wang wrote:
+> On Tue, 2017-10-10 at 20:00 +0200, Matthias Brugger wrote:
+>>
+>> On 09/21/2017 10:26 AM, sean.wang@mediatek.com wrote:
+>>> From: Sean Wang <sean.wang@mediatek.com>
+>>>
+>>> pwrap initialization is highly associated with the base SoC, so
+>>> update here for allowing pwrap_init without slave program which would be
+>>> used to those PMICs without extra encryption on bus such as MT6380.
+>>>
+>>> Signed-off-by: Chenglin Xu <chenglin.xu@mediatek.com>
+>>> Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
+>>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>>> ---
+>>>    drivers/soc/mediatek/mtk-pmic-wrap.c | 91 +++++++++++++++++++++---------------
+>>>    1 file changed, 54 insertions(+), 37 deletions(-)
+>>>
+>>> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+>>> index 27d7ccc..9c6d855 100644
+>>> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+>>> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+>>> @@ -531,6 +531,7 @@ struct pmic_wrapper_type {
+>>>    	u32 spi_w;
+>>>    	u32 wdt_src;
+>>>    	int has_bridge:1;
+>>> +	int slv_program:1;
+>>>    	int (*init_reg_clock)(struct pmic_wrapper *wrp);
+>>>    	int (*init_soc_specific)(struct pmic_wrapper *wrp);
+>>>    };
+>>> @@ -999,9 +1000,12 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+>>>    	}
+>>>    
+>>>    	/* Reset SPI slave */
+>>> -	ret = pwrap_reset_spislave(wrp);
+>>> -	if (ret)
+>>> -		return ret;
+>>> +
+>>> +	if (wrp->master->slv_program) {
+>>> +		ret = pwrap_reset_spislave(wrp);
+>>> +		if (ret)
+>>> +			return ret;
+>>> +	}
+>>>    
+>>>    	pwrap_writel(wrp, 1, PWRAP_WRAP_EN);
+>>>    
+>>> @@ -1013,45 +1017,52 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+>>>    	if (ret)
+>>>    		return ret;
+>>>    
+>>> -	/* Setup serial input delay */
+>>> -	ret = pwrap_init_sidly(wrp);
+>>> -	if (ret)
+>>> -		return ret;
+>>> +	if (wrp->master->slv_program) {
+>>
+>> This if branch is really long and complex enough to put it into function apart.
+>>
+>> Thanks,
+>> Matthias
+>>
+>> PD please take into account the comments I made on v3 of the series.
+>>
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> ---
+> I'll try to breakdown the long logic into the short one and use a flag
+> indicating the slave capability decides whether the functions is
+> required being enabled for the slave instead of slv_program which is
+> less meaningful. In this way, pmic_init will be more extensible when
+> more different SoCs and target slaves with various flavors into the
+> driver. And also take into accounts those suggestions you made in v3 in
+> the next version.
+> 
+> 	Sean
+> 
 
-Reviewed-by: <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+I totally agree, but I wanted to underline that right now the if branch under
+"if (wrp->master->slv_program)" is around 30 lines, so I think it would be a 
+good candidate to put it into it's own function. For example: 
+pwrap_init_encryption()
+As from what I understand from the commit log, slv_program in the end enables 
+encryption of the communication, right?
 
->   .../devicetree/bindings/usb/mediatek,mtk-xhci.txt  |   18 ++++++++----------
->   1 file changed, 8 insertions(+), 10 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
-> index 2d9b459..3059596 100644
-> --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
-> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
-> @@ -26,10 +26,11 @@ Required properties:
->    - clocks : a list of phandle + clock-specifier pairs, one for each
->   	entry in clock-names
->    - clock-names : must contain
-> -	"sys_ck": for clock of xHCI MAC
-> -	"ref_ck": for reference clock of xHCI MAC
-> -	"wakeup_deb_p0": for USB wakeup debounce clock of port0
-> -	"wakeup_deb_p1": for USB wakeup debounce clock of port1
-> +	"sys_ck": controller clock used by normal mode,
-> +	the following ones are optional:
-> +	"ref_ck": reference clock used by low power mode etc,
-> +	"mcu_ck": mcu_bus clock for register access,
-> +	"dma_ck": dma_bus clock for data transfer by DMA
->   
->    - phys : a list of phandle + phy specifier pairs
->   
-> @@ -57,9 +58,7 @@ usb30: usb@11270000 {
->   	clocks = <&topckgen CLK_TOP_USB30_SEL>, <&clk26m>,
->   		 <&pericfg CLK_PERI_USB0>,
->   		 <&pericfg CLK_PERI_USB1>;
-> -	clock-names = "sys_ck", "ref_ck",
-> -		      "wakeup_deb_p0",
-> -		      "wakeup_deb_p1";
-> +	clock-names = "sys_ck", "ref_ck";
->   	phys = <&phy_port0 PHY_TYPE_USB3>,
->   	       <&phy_port1 PHY_TYPE_USB2>;
->   	vusb33-supply = <&mt6397_vusb_reg>;
-> @@ -91,9 +90,8 @@ Required properties:
->   
->    - clocks : a list of phandle + clock-specifier pairs, one for each
->   	entry in clock-names
-> - - clock-names : must be
-> -	"sys_ck": for clock of xHCI MAC
-> -	"ref_ck": for reference clock of xHCI MAC
-> + - clock-names : must contain "sys_ck", and the following ones are optional:
-> +	"ref_ck", "mcu_ck" and "dma_ck"
->   
->   Optional properties:
->    - vbus-supply : reference to the VBUS regulator;
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Regards,
+Matthias
