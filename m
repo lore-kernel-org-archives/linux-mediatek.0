@@ -1,50 +1,89 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 09/13] usb: mtu3: set invalid dr_mode as dual-role mode
-Date: Fri, 13 Oct 2017 17:10:45 +0800
-Message-ID: <64fa4eddb0dc3394e746eb02b5b395ee15626f86.1507885127.git.chunfeng.yun@mediatek.com>
-References: <6dc39e99240f25c83f8c36d23361ec89dcfb33ce.1507885126.git.chunfeng.yun@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v4 4/7] soc: mediatek: pwrap: update pwrap_init without
+ slave programming
+Date: Fri, 13 Oct 2017 17:41:44 +0800
+Message-ID: <1507887704.21840.32.camel@mtkswgap22>
+References: <cover.1505980364.git.sean.wang@mediatek.com>
+         <604078485ca9ab04cea5bc531425d6035b27bc88.1505980364.git.sean.wang@mediatek.com>
+         <f3a04159-8491-6ca6-d2ad-7df1dfd64331@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <6dc39e99240f25c83f8c36d23361ec89dcfb33ce.1507885126.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <f3a04159-8491-6ca6-d2ad-7df1dfd64331@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, chen.zhong@mediatek.com, chenglin.xu@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Treat dr_mode of USB_DR_MODE_UNKNOWN as USB_DR_MODE_OTG to
-enhance functional robustness.
+On Tue, 2017-10-10 at 20:00 +0200, Matthias Brugger wrote:
+> 
+> On 09/21/2017 10:26 AM, sean.wang@mediatek.com wrote:
+> > From: Sean Wang <sean.wang@mediatek.com>
+> > 
+> > pwrap initialization is highly associated with the base SoC, so
+> > update here for allowing pwrap_init without slave program which would be
+> > used to those PMICs without extra encryption on bus such as MT6380.
+> > 
+> > Signed-off-by: Chenglin Xu <chenglin.xu@mediatek.com>
+> > Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
+> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > ---
+> >   drivers/soc/mediatek/mtk-pmic-wrap.c | 91 +++++++++++++++++++++---------------
+> >   1 file changed, 54 insertions(+), 37 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > index 27d7ccc..9c6d855 100644
+> > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > @@ -531,6 +531,7 @@ struct pmic_wrapper_type {
+> >   	u32 spi_w;
+> >   	u32 wdt_src;
+> >   	int has_bridge:1;
+> > +	int slv_program:1;
+> >   	int (*init_reg_clock)(struct pmic_wrapper *wrp);
+> >   	int (*init_soc_specific)(struct pmic_wrapper *wrp);
+> >   };
+> > @@ -999,9 +1000,12 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+> >   	}
+> >   
+> >   	/* Reset SPI slave */
+> > -	ret = pwrap_reset_spislave(wrp);
+> > -	if (ret)
+> > -		return ret;
+> > +
+> > +	if (wrp->master->slv_program) {
+> > +		ret = pwrap_reset_spislave(wrp);
+> > +		if (ret)
+> > +			return ret;
+> > +	}
+> >   
+> >   	pwrap_writel(wrp, 1, PWRAP_WRAP_EN);
+> >   
+> > @@ -1013,45 +1017,52 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+> >   	if (ret)
+> >   		return ret;
+> >   
+> > -	/* Setup serial input delay */
+> > -	ret = pwrap_init_sidly(wrp);
+> > -	if (ret)
+> > -		return ret;
+> > +	if (wrp->master->slv_program) {
+> 
+> This if branch is really long and complex enough to put it into function apart.
+> 
+> Thanks,
+> Matthias
+> 
+> PD please take into account the comments I made on v3 of the series.
+> 
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/usb/mtu3/mtu3_plat.c |    6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+I'll try to breakdown the long logic into the short one and use a flag
+indicating the slave capability decides whether the functions is
+required being enabled for the slave instead of slv_program which is
+less meaningful. In this way, pmic_init will be more extensible when
+more different SoCs and target slaves with various flavors into the
+driver. And also take into accounts those suggestions you made in v3 in
+the next version.
 
-diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-index 7ca81f4e..9ff3357 100644
---- a/drivers/usb/mtu3/mtu3_plat.c
-+++ b/drivers/usb/mtu3/mtu3_plat.c
-@@ -283,10 +283,8 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
- 		return PTR_ERR(ssusb->ippc_base);
- 
- 	ssusb->dr_mode = usb_get_dr_mode(dev);
--	if (ssusb->dr_mode == USB_DR_MODE_UNKNOWN) {
--		dev_err(dev, "dr_mode is error\n");
--		return -EINVAL;
--	}
-+	if (ssusb->dr_mode == USB_DR_MODE_UNKNOWN)
-+		ssusb->dr_mode = USB_DR_MODE_OTG;
- 
- 	if (ssusb->dr_mode == USB_DR_MODE_PERIPHERAL)
- 		return 0;
--- 
-1.7.9.5
+	Sean
