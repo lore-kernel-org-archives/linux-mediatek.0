@@ -1,219 +1,156 @@
-From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 02/12] mmc: mediatek: add support of mt2701/mt2712
-Date: Sun, 15 Oct 2017 16:26:18 +0800
-Message-ID: <1508055978.8978.5.camel@mtksdaap41>
-References: <1507689696-25928-1-git-send-email-chaotian.jing@mediatek.com>
-         <1507689696-25928-3-git-send-email-chaotian.jing@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1507689696-25928-3-git-send-email-chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yong mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Phong LE <ple-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiner Kallweit <hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Gilad Ben-Yossef <gilad@benyossef.com>
+Subject: [PATCH v9 00/20] simplify crypto wait for async op
+Date: Sun, 15 Oct 2017 10:19:45 +0100
+Message-ID: <1508059209-25529-1-git-send-email-gilad@benyossef.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, Jonathan Corbet <corbet@lwn.net>, David Howells <dhowells@redhat.com>, Tom Lendacky <thomas.lendacky@amd.com>, Gary Hook <gary.hook@amd.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Arnaud Ebalard <arno@natisbad.org>, Matthias Brugger <matthias.bgg@gmail.com>, Alasdair Kergon <agk@redhat.com>, Mike Snitzer <snitzer@redhat.com>, dm-devel@redhat.com, Steve French <sfrench@samba.org>, "Theodore Y. Ts'o" <tytso@mit.edu>, Jaegeuk Kim <jaegeuk@kernel.org>, Steffen Klassert <steffen.klassert@secunet.com>, Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>, Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>, Mimi Zohar <zohar@linux.vnet.ibm.com>, Dmitry Kasatkin <dmitry.ka>
+Cc: Ofir Drang <ofir.drang@arm.com>, linux-crypto@vger.kernel.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, keyrings@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-cifs@vger.kernel.org, samba-technical@lists.samba.org, linux-fscrypt@vger.kernel.org, netdev@vger.kernel.org, linux-ima-devel@lists.sourceforge.net, linux-ima-user@lists.sourceforge.net, linux-security-module@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Chaotian:
+Many users of kernel async. crypto services have a pattern of
+starting an async. crypto op and than using a completion
+to wait for it to end.
 
-On Wed, 2017-10-11 at 10:41 +0800, Chaotian Jing wrote:
-> mt2701/mt2712 has 12bit clock div, which is not compatible with
-> mt8135/mt8173. and, some additional features will be added in
-> mt2701/mt2712, so that need distinguish it by comatibale name.
-> 
-> Signed-off-by: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/mmc/host/mtk-sd.c | 82 +++++++++++++++++++++++++++++++++++++++--------
->  1 file changed, 69 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 267f7ab..643c795 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -95,6 +95,9 @@
->  #define MSDC_CFG_CKDIV          (0xff << 8)	/* RW */
->  #define MSDC_CFG_CKMOD          (0x3 << 16)	/* RW */
->  #define MSDC_CFG_HS400_CK_MODE  (0x1 << 18)	/* RW */
-> +#define MSDC_CFG_HS400_CK_MODE_EXTRA  (0x1 << 22)	/* RW */
-> +#define MSDC_CFG_CKDIV_EXTRA    (0xfff << 8)	/* RW */
-> +#define MSDC_CFG_CKMOD_EXTRA    (0x3 << 20)	/* RW */
->  
->  /* MSDC_IOCON mask */
->  #define MSDC_IOCON_SDR104CKS    (0x1 << 0)	/* RW */
-> @@ -295,6 +298,10 @@ struct msdc_save_para {
->  	u32 emmc50_cfg0;
->  };
->  
-> +struct mtk_mmc_compatible {
-> +	u8 clk_div_bits;
-> +};
-> +
->  struct msdc_tune_para {
->  	u32 iocon;
->  	u32 pad_tune;
-> @@ -309,6 +316,7 @@ struct msdc_delay_phase {
->  
->  struct msdc_host {
->  	struct device *dev;
-> +	const struct mtk_mmc_compatible *dev_comp;
->  	struct mmc_host *mmc;	/* mmc structure */
->  	int cmd_rsp;
->  
-> @@ -350,6 +358,31 @@ struct msdc_host {
->  	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
->  };
->  
-> +static const struct mtk_mmc_compatible mt8135_compat = {
-> +	.clk_div_bits = 8,
-> +};
-> +
-> +static const struct mtk_mmc_compatible mt8173_compat = {
-> +	.clk_div_bits = 8,
-> +};
-> +
-> +static const struct mtk_mmc_compatible mt2701_compat = {
-> +	.clk_div_bits = 12,
-> +};
-> +
-> +static const struct mtk_mmc_compatible mt2712_compat = {
-> +	.clk_div_bits = 12,
-> +};
-> +
-> +static const struct of_device_id msdc_of_ids[] = {
-> +	{ .compatible = "mediatek,mt8135-mmc", .data = &mt8135_compat},
-> +	{ .compatible = "mediatek,mt8173-mmc", .data = &mt8173_compat},
+This patch set simplifies this common use case in two ways:
 
-Because mt8135_compat is equal to mt8173_compat, so I think the
-compatible of "mediatek,mt8173-mmc" is redundant. You could just keep
-compatible of "mediatek,mt8135-mmc" in driver, and use
-"mediatek,mt8135-mmc" for both mt8135.dtsi and mt8173.dtsi.
+First, by separating the return codes of the case where a
+request is queued to a backlog due to the provider being
+busy (-EBUSY) from the case the request has failed due
+to the provider being busy and backlogging is not enabled
+(-EAGAIN).
 
-> +	{ .compatible = "mediatek,mt2701-mmc", .data = &mt2701_compat},
-> +	{ .compatible = "mediatek,mt2712-mmc", .data = &mt2712_compat},
+Next, this change is than built on to create a generic API
+to wait for a async. crypto operation to complete.
 
-Ditto.
+The end result is a smaller code base and an API that is
+easier to use and more difficult to get wrong.
 
-Regards,
-CK
+The patch set was boot tested on x86_64 and arm64 which
+at the very least tests the crypto users via testmgr and
+tcrypt but I do note that I do not have access to some
+of the HW whose drivers are modified nor do I claim I was
+able to test all of the corner cases.
 
-> +	{}
-> +};
-> +MODULE_DEVICE_TABLE(of, msdc_of_ids);
-> +
->  static void sdr_set_bits(void __iomem *reg, u32 bs)
->  {
->  	u32 val = readl(reg);
-> @@ -509,7 +542,12 @@ static void msdc_set_timeout(struct msdc_host *host, u32 ns, u32 clks)
->  		timeout = (ns + clk_ns - 1) / clk_ns + clks;
->  		/* in 1048576 sclk cycle unit */
->  		timeout = (timeout + (0x1 << 20) - 1) >> 20;
-> -		sdr_get_field(host->base + MSDC_CFG, MSDC_CFG_CKMOD, &mode);
-> +		if (host->dev_comp->clk_div_bits == 8)
-> +			sdr_get_field(host->base + MSDC_CFG,
-> +				      MSDC_CFG_CKMOD, &mode);
-> +		else
-> +			sdr_get_field(host->base + MSDC_CFG,
-> +				      MSDC_CFG_CKMOD_EXTRA, &mode);
->  		/*DDR mode will double the clk cycles for data timeout */
->  		timeout = mode >= 2 ? timeout * 2 : timeout;
->  		timeout = timeout > 1 ? timeout - 1 : 0;
-> @@ -548,7 +586,11 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
->  
->  	flags = readl(host->base + MSDC_INTEN);
->  	sdr_clr_bits(host->base + MSDC_INTEN, flags);
-> -	sdr_clr_bits(host->base + MSDC_CFG, MSDC_CFG_HS400_CK_MODE);
-> +	if (host->dev_comp->clk_div_bits == 8)
-> +		sdr_clr_bits(host->base + MSDC_CFG, MSDC_CFG_HS400_CK_MODE);
-> +	else
-> +		sdr_clr_bits(host->base + MSDC_CFG,
-> +			     MSDC_CFG_HS400_CK_MODE_EXTRA);
->  	if (timing == MMC_TIMING_UHS_DDR50 ||
->  	    timing == MMC_TIMING_MMC_DDR52 ||
->  	    timing == MMC_TIMING_MMC_HS400) {
-> @@ -568,8 +610,12 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
->  
->  		if (timing == MMC_TIMING_MMC_HS400 &&
->  		    hz >= (host->src_clk_freq >> 1)) {
-> -			sdr_set_bits(host->base + MSDC_CFG,
-> -				     MSDC_CFG_HS400_CK_MODE);
-> +			if (host->dev_comp->clk_div_bits == 8)
-> +				sdr_set_bits(host->base + MSDC_CFG,
-> +					     MSDC_CFG_HS400_CK_MODE);
-> +			else
-> +				sdr_set_bits(host->base + MSDC_CFG,
-> +					     MSDC_CFG_HS400_CK_MODE_EXTRA);
->  			sclk = host->src_clk_freq >> 1;
->  			div = 0; /* div is ignore when bit18 is set */
->  		}
-> @@ -587,8 +633,15 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
->  			sclk = (host->src_clk_freq >> 2) / div;
->  		}
->  	}
-> -	sdr_set_field(host->base + MSDC_CFG, MSDC_CFG_CKMOD | MSDC_CFG_CKDIV,
-> -		      (mode << 8) | div);
-> +	if (host->dev_comp->clk_div_bits == 8)
-> +		sdr_set_field(host->base + MSDC_CFG,
-> +			      MSDC_CFG_CKMOD | MSDC_CFG_CKDIV,
-> +			      (mode << 8) | div);
-> +	else
-> +		sdr_set_field(host->base + MSDC_CFG,
-> +			      MSDC_CFG_CKMOD_EXTRA | MSDC_CFG_CKDIV_EXTRA,
-> +			      (mode << 12) | div);
-> +
->  	sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_CKPDN);
->  	while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
->  		cpu_relax();
-> @@ -1617,12 +1670,17 @@ static int msdc_drv_probe(struct platform_device *pdev)
->  	struct mmc_host *mmc;
->  	struct msdc_host *host;
->  	struct resource *res;
-> +	const struct of_device_id *of_id;
->  	int ret;
->  
->  	if (!pdev->dev.of_node) {
->  		dev_err(&pdev->dev, "No DT found\n");
->  		return -EINVAL;
->  	}
-> +
-> +	of_id = of_match_node(msdc_of_ids, pdev->dev.of_node);
-> +	if (!of_id)
-> +		return -EINVAL;
->  	/* Allocate MMC host for this device */
->  	mmc = mmc_alloc_host(sizeof(struct msdc_host), &pdev->dev);
->  	if (!mmc)
-> @@ -1686,11 +1744,15 @@ static int msdc_drv_probe(struct platform_device *pdev)
->  	msdc_of_property_parse(pdev, host);
->  
->  	host->dev = &pdev->dev;
-> +	host->dev_comp = of_id->data;
->  	host->mmc = mmc;
->  	host->src_clk_freq = clk_get_rate(host->src_clk);
->  	/* Set host parameters to mmc */
->  	mmc->ops = &mt_msdc_ops;
-> -	mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 255);
-> +	if (host->dev_comp->clk_div_bits == 8)
-> +		mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 255);
-> +	else
-> +		mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 4095);
->  
->  	mmc->caps |= MMC_CAP_ERASE | MMC_CAP_CMD23;
->  	/* MMC core transfer sizes tunable parameters */
-> @@ -1839,12 +1901,6 @@ static int msdc_runtime_resume(struct device *dev)
->  	SET_RUNTIME_PM_OPS(msdc_runtime_suspend, msdc_runtime_resume, NULL)
->  };
->  
-> -static const struct of_device_id msdc_of_ids[] = {
-> -	{   .compatible = "mediatek,mt8135-mmc", },
-> -	{}
-> -};
-> -MODULE_DEVICE_TABLE(of, msdc_of_ids);
-> -
->  static struct platform_driver mt_msdc_driver = {
->  	.probe = msdc_drv_probe,
->  	.remove = msdc_drv_remove,
+The patch set is based upon linux-next release tagged
+next-20171013.
 
+Changes from v8:
+- Remove the translation of EAGAIN return code to the
+  previous return code of EBUSY for the user space
+  interface of algif as no one seems to rely on it as
+  requested by Herbert Xu.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Changes from v7:
+- Turn -EBUSY to -EAGAIN also in crypto using net
+  code which I missed before, as has been pointed
+  out by Harsh Jain.
+
+Changes from v6:
+- Fix brown paper bag compile error on marvell/cesa
+  code.
+
+Changes from v5:
+- Remove redundant new line as spotted by Jonathan
+  Cameron.
+- Reworded dm-verity change commit message to better
+  clarify potential issue averted by change as
+  pointed out by Mikulas Patocka.
+
+Changes from v4:
+- Rebase on top of latest algif changes from Stephan
+  Mueller.
+- Fix typo in ccp patch title.
+
+Changes from v3:
+- Instead of changing the return code to indicate
+  backlog queueing, change the return code to indicate
+  transient busy state, as suggested by Herbert Xu.
+
+Changes from v2:
+- Patch title changed from "introduce crypto wait for
+  async op" to better reflect the current state.
+- Rebase on top of latest linux-next.
+- Add a new return code of -EIOCBQUEUED for backlog
+  queueing, as suggested by Herbert Xu.
+- Transform more users to the new API.
+- Update the drbg change to account for new init as
+  indicated by Stephan Muller.
+
+Changes from v1:
+- Address review comments from Eric Biggers.
+- Separated out bug fixes of existing code and rebase
+  on top of that patch set.
+- Rename 'ecr' to 'wait' in fscrypto code.
+- Split patch introducing the new API from the change
+  moving over the algif code which it originated from
+  to the new API.
+- Inline crypto_wait_req().
+- Some code indentation fixes.
+
+Gilad Ben-Yossef (20):
+  crypto: change transient busy return code to -EAGAIN
+  crypto: ccp: use -EAGAIN for transient busy indication
+  net: use -EAGAIN for transient busy indication
+  crypto: remove redundant backlog checks on EBUSY
+  crypto: marvell/cesa: remove redundant backlog checks on EBUSY
+  crypto: introduce crypto wait for async op
+  crypto: move algif to generic async completion
+  crypto: move pub key to generic async completion
+  crypto: move drbg to generic async completion
+  crypto: move gcm to generic async completion
+  crypto: move testmgr to generic async completion
+  fscrypt: move to generic async completion
+  dm: move dm-verity to generic async completion
+  cifs: move to generic async completion
+  ima: move to generic async completion
+  crypto: tcrypt: move to generic async completion
+  crypto: talitos: move to generic async completion
+  crypto: qce: move to generic async completion
+  crypto: mediatek: move to generic async completion
+  crypto: adapt api sample to use async. op wait
+
+ Documentation/crypto/api-samples.rst |  52 ++-------
+ crypto/af_alg.c                      |  27 -----
+ crypto/ahash.c                       |  12 +--
+ crypto/algapi.c                      |   6 +-
+ crypto/algif_aead.c                  |   8 +-
+ crypto/algif_hash.c                  |  30 +++---
+ crypto/algif_skcipher.c              |   9 +-
+ crypto/api.c                         |  13 +++
+ crypto/asymmetric_keys/public_key.c  |  28 +----
+ crypto/cryptd.c                      |   4 +-
+ crypto/cts.c                         |   6 +-
+ crypto/drbg.c                        |  36 ++-----
+ crypto/gcm.c                         |  32 ++----
+ crypto/lrw.c                         |   8 +-
+ crypto/rsa-pkcs1pad.c                |  16 +--
+ crypto/tcrypt.c                      |  84 +++++----------
+ crypto/testmgr.c                     | 204 ++++++++++++-----------------------
+ crypto/xts.c                         |   8 +-
+ drivers/crypto/ccp/ccp-crypto-main.c |   8 +-
+ drivers/crypto/ccp/ccp-dev.c         |   7 +-
+ drivers/crypto/marvell/cesa.c        |   3 +-
+ drivers/crypto/marvell/cesa.h        |   2 +-
+ drivers/crypto/mediatek/mtk-aes.c    |  31 +-----
+ drivers/crypto/qce/sha.c             |  30 +-----
+ drivers/crypto/talitos.c             |  38 +------
+ drivers/md/dm-verity-target.c        |  81 ++++----------
+ drivers/md/dm-verity.h               |   5 -
+ fs/cifs/smb2ops.c                    |  30 +-----
+ fs/crypto/crypto.c                   |  28 +----
+ fs/crypto/fname.c                    |  36 ++-----
+ fs/crypto/fscrypt_private.h          |  10 --
+ fs/crypto/keyinfo.c                  |  21 +---
+ include/crypto/drbg.h                |   3 +-
+ include/crypto/if_alg.h              |  15 +--
+ include/linux/crypto.h               |  40 +++++++
+ net/ipv4/ah4.c                       |   2 +-
+ net/ipv4/esp4.c                      |   2 +-
+ net/ipv6/ah6.c                       |   2 +-
+ net/ipv6/esp6.c                      |   2 +-
+ security/integrity/ima/ima_crypto.c  |  56 +++-------
+ 40 files changed, 297 insertions(+), 738 deletions(-)
+
+-- 
+2.7.4
