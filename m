@@ -1,178 +1,31 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: [PATCH v6 08/12] mmc: mediatek: add stop_clk fix and enhance_rx support
-Date: Mon, 16 Oct 2017 09:46:35 +0800
-Message-ID: <1508118399-21828-9-git-send-email-chaotian.jing@mediatek.com>
-References: <1508118399-21828-1-git-send-email-chaotian.jing@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v2 7/9] usb: host: modify description for MTK xHCI config
+Date: Mon, 16 Oct 2017 11:25:04 +0800
+Message-ID: <1508124304.17567.78.camel@mhfsdcap03>
+References: <994382d16d6bdc0f3d7c11b22f1710252e056e34.1507882470.git.chunfeng.yun@mediatek.com>
+         <37153cd259af6e1fc34b32a2e0dd1a15b8214579.1507882470.git.chunfeng.yun@mediatek.com>
+         <59E0962E.9030508@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1508118399-21828-1-git-send-email-chaotian.jing@mediatek.com>
+In-Reply-To: <59E0962E.9030508@linux.intel.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Chaotian Jing <chaotian.jing@mediatek.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Heiner Kallweit <hkallweit1@gmail.com>, Phong LE <ple@baylibre.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
+To: Mathias Nyman <mathias.nyman@linux.intel.com>
+Cc: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-mt2712 supports stop_clk fix and enhance_rx, which can improve
-host stability.
-
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 47 +++++++++++++++++++++++++++++++++++++++++++----
- 1 file changed, 43 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index eceaee8..94d16a3 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -67,6 +67,7 @@
- #define SDC_RESP2        0x48
- #define SDC_RESP3        0x4c
- #define SDC_BLK_NUM      0x50
-+#define SDC_ADV_CFG0     0x64
- #define EMMC_IOCON       0x7c
- #define SDC_ACMD_RESP    0x80
- #define MSDC_DMA_SA      0x90
-@@ -80,6 +81,7 @@
- #define PAD_DS_TUNE      0x188
- #define PAD_CMD_TUNE     0x18c
- #define EMMC50_CFG0      0x208
-+#define SDC_FIFO_CFG     0x228
- 
- /*--------------------------------------------------------------------------*/
- /* Register Mask                                                            */
-@@ -188,6 +190,9 @@
- #define SDC_STS_CMDBUSY         (0x1 << 1)	/* RW */
- #define SDC_STS_SWR_COMPL       (0x1 << 31)	/* RW */
- 
-+/* SDC_ADV_CFG0 mask */
-+#define SDC_RX_ENHANCE_EN	(0x1 << 20)	/* RW */
-+
- /* MSDC_DMA_CTRL mask */
- #define MSDC_DMA_CTRL_START     (0x1 << 0)	/* W */
- #define MSDC_DMA_CTRL_STOP      (0x1 << 1)	/* W */
-@@ -217,6 +222,8 @@
- #define MSDC_PATCH_BIT_SPCPUSH    (0x1 << 29)	/* RW */
- #define MSDC_PATCH_BIT_DECRCTMO   (0x1 << 30)	/* RW */
- 
-+#define MSDC_PATCH_BIT1_STOP_DLY  (0xf << 8)    /* RW */
-+
- #define MSDC_PATCH_BIT2_CFGRESP   (0x1 << 15)   /* RW */
- #define MSDC_PATCH_BIT2_CFGCRCSTS (0x1 << 28)   /* RW */
- #define MSDC_PB2_RESPWAIT         (0x3 << 2)    /* RW */
-@@ -242,6 +249,9 @@
- #define EMMC50_CFG_CRCSTS_EDGE    (0x1 << 3)   /* RW */
- #define EMMC50_CFG_CFCSTS_SEL     (0x1 << 4)   /* RW */
- 
-+#define SDC_FIFO_CFG_WRVALIDSEL   (0x1 << 24)  /* RW */
-+#define SDC_FIFO_CFG_RDVALIDSEL   (0x1 << 25)  /* RW */
-+
- #define REQ_CMD_EIO  (0x1 << 0)
- #define REQ_CMD_TMO  (0x1 << 1)
- #define REQ_DAT_ERR  (0x1 << 2)
-@@ -308,6 +318,7 @@ struct msdc_save_para {
- 	u32 pad_ds_tune;
- 	u32 pad_cmd_tune;
- 	u32 emmc50_cfg0;
-+	u32 sdc_fifo_cfg;
- };
- 
- struct mtk_mmc_compatible {
-@@ -317,6 +328,8 @@ struct mtk_mmc_compatible {
- 	bool async_fifo;
- 	bool data_tune;
- 	bool busy_check;
-+	bool stop_clk_fix;
-+	bool enhance_rx;
- };
- 
- struct msdc_tune_para {
-@@ -382,6 +395,8 @@ struct msdc_host {
- 	.async_fifo = false,
- 	.data_tune = false,
- 	.busy_check = false,
-+	.stop_clk_fix = false,
-+	.enhance_rx = false,
- };
- 
- static const struct mtk_mmc_compatible mt8173_compat = {
-@@ -391,6 +406,8 @@ struct msdc_host {
- 	.async_fifo = false,
- 	.data_tune = false,
- 	.busy_check = false,
-+	.stop_clk_fix = false,
-+	.enhance_rx = false,
- };
- 
- static const struct mtk_mmc_compatible mt2701_compat = {
-@@ -400,6 +417,8 @@ struct msdc_host {
- 	.async_fifo = true,
- 	.data_tune = true,
- 	.busy_check = false,
-+	.stop_clk_fix = false,
-+	.enhance_rx = false,
- };
- 
- static const struct mtk_mmc_compatible mt2712_compat = {
-@@ -409,6 +428,8 @@ struct msdc_host {
- 	.async_fifo = true,
- 	.data_tune = true,
- 	.busy_check = true,
-+	.stop_clk_fix = true,
-+	.enhance_rx = true,
- };
- 
- static const struct of_device_id msdc_of_ids[] = {
-@@ -1280,15 +1301,31 @@ static void msdc_init_hw(struct msdc_host *host)
- 	sdr_set_field(host->base + MSDC_PATCH_BIT, MSDC_CKGEN_MSDC_DLY_SEL, 1);
- 	writel(0xffff4089, host->base + MSDC_PATCH_BIT1);
- 	sdr_set_bits(host->base + EMMC50_CFG0, EMMC50_CFG_CFCSTS_SEL);
-+
-+	if (host->dev_comp->stop_clk_fix) {
-+		sdr_set_field(host->base + MSDC_PATCH_BIT1,
-+			      MSDC_PATCH_BIT1_STOP_DLY, 3);
-+		sdr_clr_bits(host->base + SDC_FIFO_CFG,
-+			     SDC_FIFO_CFG_WRVALIDSEL);
-+		sdr_clr_bits(host->base + SDC_FIFO_CFG,
-+			     SDC_FIFO_CFG_RDVALIDSEL);
-+	}
-+
- 	if (host->dev_comp->busy_check)
- 		sdr_clr_bits(host->base + MSDC_PATCH_BIT1, (1 << 7));
-+
- 	if (host->dev_comp->async_fifo) {
- 		sdr_set_field(host->base + MSDC_PATCH_BIT2,
- 			      MSDC_PB2_RESPWAIT, 3);
--		sdr_set_field(host->base + MSDC_PATCH_BIT2,
--			      MSDC_PB2_RESPSTSENSEL, 2);
--		sdr_set_field(host->base + MSDC_PATCH_BIT2,
--			      MSDC_PB2_CRCSTSENSEL, 2);
-+		if (host->dev_comp->enhance_rx) {
-+			sdr_set_bits(host->base + SDC_ADV_CFG0,
-+				     SDC_RX_ENHANCE_EN);
-+		} else {
-+			sdr_set_field(host->base + MSDC_PATCH_BIT2,
-+				      MSDC_PB2_RESPSTSENSEL, 2);
-+			sdr_set_field(host->base + MSDC_PATCH_BIT2,
-+				      MSDC_PB2_CRCSTSENSEL, 2);
-+		}
- 		/* use async fifo, then no need tune internal delay */
- 		sdr_clr_bits(host->base + MSDC_PATCH_BIT2,
- 			     MSDC_PATCH_BIT2_CFGRESP);
-@@ -1933,6 +1970,7 @@ static void msdc_save_reg(struct msdc_host *host)
- 	host->save_para.pad_ds_tune = readl(host->base + PAD_DS_TUNE);
- 	host->save_para.pad_cmd_tune = readl(host->base + PAD_CMD_TUNE);
- 	host->save_para.emmc50_cfg0 = readl(host->base + EMMC50_CFG0);
-+	host->save_para.sdc_fifo_cfg = readl(host->base + SDC_FIFO_CFG);
- }
- 
- static void msdc_restore_reg(struct msdc_host *host)
-@@ -1949,6 +1987,7 @@ static void msdc_restore_reg(struct msdc_host *host)
- 	writel(host->save_para.pad_ds_tune, host->base + PAD_DS_TUNE);
- 	writel(host->save_para.pad_cmd_tune, host->base + PAD_CMD_TUNE);
- 	writel(host->save_para.emmc50_cfg0, host->base + EMMC50_CFG0);
-+	writel(host->save_para.sdc_fifo_cfg, host->base + SDC_FIFO_CFG);
- }
- 
- static int msdc_runtime_suspend(struct device *dev)
--- 
-1.8.1.1.dirty
+On Fri, 2017-10-13 at 13:32 +0300, Mathias Nyman wrote:
+> On 13.10.2017 11:26, Chunfeng Yun wrote:
+> > Due to all MediaTek SoCs with xHCI host controller use this
+> > driver, remove limitation for specific SoCs
+> >
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> 
+> xHCI parts of series look good to me, If Rob Herring agrees with the
+> dt changes I can send it forward
+Thanks a lot
+> 
+> -Mathias
+> 
