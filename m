@@ -1,51 +1,81 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH] soc: Allow test-building of MediaTek drivers
-Date: Mon, 16 Oct 2017 15:31:59 +0800
-Message-ID: <1508139119.21840.47.camel@mtkswgap22>
-References: <20171005111743.6367f128@endymion>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v5 02/12] mmc: mediatek: add support of mt2701/mt2712
+Date: Mon, 16 Oct 2017 09:49:33 +0200
+Message-ID: <a506506b-a326-6d54-9827-4fd82680700d@gmail.com>
+References: <1507689696-25928-1-git-send-email-chaotian.jing@mediatek.com>
+ <1507689696-25928-3-git-send-email-chaotian.jing@mediatek.com>
+ <1508055978.8978.5.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20171005111743.6367f128@endymion>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jean Delvare <jdelvare@suse.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1508055978.8978.5.camel@mtksdaap41>
+Content-Language: en-US
+Sender: linux-mmc-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, yong mao <yong.mao@mediatek.com>, Phong LE <ple@baylibre.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-mmc@vger.kernel.org, Heiner Kallweit <hkallweit1@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-10-05 at 11:17 +0200, Jean Delvare wrote:
-> The COMPILE_TEST alternative dependency allows test-building the
-> drivers but only as long as the build system itself will look into
-> the directory where the drivers reside.
-> 
-> Signed-off-by: Jean Delvare <jdelvare@suse.de>
-> Cc: Sean Wang <sean.wang@mediatek.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
 
-Acked-by: Sean Wang <sean.wang@mediatek.com>
 
-> ---
->  drivers/soc/Makefile |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+On 10/15/2017 10:26 AM, CK Hu wrote:
+> Hi, Chaotian:
 > 
-> --- linux-4.14-rc3.orig/drivers/soc/Makefile	2017-09-17 00:47:51.000000000 +0200
-> +++ linux-4.14-rc3/drivers/soc/Makefile	2017-10-05 09:44:01.478589469 +0200
-> @@ -10,7 +10,7 @@ obj-$(CONFIG_MACH_DOVE)		+= dove/
->  obj-y				+= fsl/
->  obj-$(CONFIG_ARCH_MXC)		+= imx/
->  obj-$(CONFIG_SOC_XWAY)		+= lantiq/
-> -obj-$(CONFIG_ARCH_MEDIATEK)	+= mediatek/
-> +obj-y				+= mediatek/
->  obj-$(CONFIG_ARCH_MESON)	+= amlogic/
->  obj-$(CONFIG_ARCH_QCOM)		+= qcom/
->  obj-y				+= renesas/
+> On Wed, 2017-10-11 at 10:41 +0800, Chaotian Jing wrote:
+>> mt2701/mt2712 has 12bit clock div, which is not compatible with
+>> mt8135/mt8173. and, some additional features will be added in
+>> mt2701/mt2712, so that need distinguish it by comatibale name.
+>>
+>> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+>> ---
+>>   drivers/mmc/host/mtk-sd.c | 82 +++++++++++++++++++++++++++++++++++++++--------
+>>   1 file changed, 69 insertions(+), 13 deletions(-)
+>>
+>> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+>> index 267f7ab..643c795 100644
+>> --- a/drivers/mmc/host/mtk-sd.c
+>> +++ b/drivers/mmc/host/mtk-sd.c
+[...]
+>> @@ -350,6 +358,31 @@ struct msdc_host {
+>>   	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
+>>   };
+>>   
+>> +static const struct mtk_mmc_compatible mt8135_compat = {
+>> +	.clk_div_bits = 8,
+>> +};
+>> +
+>> +static const struct mtk_mmc_compatible mt8173_compat = {
+>> +	.clk_div_bits = 8,
+>> +};
+>> +
+>> +static const struct mtk_mmc_compatible mt2701_compat = {
+>> +	.clk_div_bits = 12,
+>> +};
+>> +
+>> +static const struct mtk_mmc_compatible mt2712_compat = {
+>> +	.clk_div_bits = 12,
+>> +};
+>> +
+>> +static const struct of_device_id msdc_of_ids[] = {
+>> +	{ .compatible = "mediatek,mt8135-mmc", .data = &mt8135_compat},
+>> +	{ .compatible = "mediatek,mt8173-mmc", .data = &mt8173_compat},
 > 
+> Because mt8135_compat is equal to mt8173_compat, so I think the
+> compatible of "mediatek,mt8173-mmc" is redundant. You could just keep
+> compatible of "mediatek,mt8135-mmc" in driver, and use
+> "mediatek,mt8135-mmc" for both mt8135.dtsi and mt8173.dtsi.
 > 
+
+Well thing is, that in the follow-up patches, new data types get added to the 
+different compat structures and in the end all four a different.
+
+>> +	{ .compatible = "mediatek,mt2701-mmc", .data = &mt2701_compat},
+>> +	{ .compatible = "mediatek,mt2712-mmc", .data = &mt2712_compat},
+> 
+> Ditto.
+> 
+
+Same here.
+
+Regards,
+Matthias
