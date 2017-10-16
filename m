@@ -1,45 +1,71 @@
-From: Herbert Xu <herbert@gondor.apana.org.au>
-Subject: Re: [PATCH v9 00/20] simplify crypto wait for async op
-Date: Sun, 15 Oct 2017 23:38:31 +0800
-Message-ID: <20171015153831.GA22867@gondor.apana.org.au>
-References: <1508059209-25529-1-git-send-email-gilad@benyossef.com>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: [PATCH v6 00/12] mmc: mediatek: add support of mt2701/mt2712
+Date: Mon, 16 Oct 2017 09:46:27 +0800
+Message-ID: <1508118399-21828-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <dm-devel-bounces@redhat.com>
-Content-Disposition: inline
-In-Reply-To: <1508059209-25529-1-git-send-email-gilad@benyossef.com>
-List-Unsubscribe: <https://www.redhat.com/mailman/options/dm-devel>,
-	<mailto:dm-devel-request@redhat.com?subject=unsubscribe>
-List-Archive: <https://www.redhat.com/archives/dm-devel>
-List-Post: <mailto:dm-devel@redhat.com>
-List-Help: <mailto:dm-devel-request@redhat.com?subject=help>
-List-Subscribe: <https://www.redhat.com/mailman/listinfo/dm-devel>,
-	<mailto:dm-devel-request@redhat.com?subject=subscribe>
-Sender: dm-devel-bounces@redhat.com
-Errors-To: dm-devel-bounces@redhat.com
-To: Gilad Ben-Yossef <gilad@benyossef.com>
-Cc: Mike Snitzer <snitzer@redhat.com>, linux-doc@vger.kernel.org, Gary Hook <gary.hook@amd.com>, David Howells <dhowells@redhat.com>, dm-devel@redhat.com, keyrings@vger.kernel.org, linux-ima-devel@lists.sourceforge.net, Alasdair Kergon <agk@redhat.com>, Steffen Klassert <steffen.klassert@secunet.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Jonathan Corbet <corbet@lwn.net>, Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>, Mimi Zohar <zohar@linux.vnet.ibm.com>, "Serge E. Hallyn" <serge@hallyn.com>, Tom Lendacky <thomas.lendacky@amd.com>, linux-cifs@vger.kernel.org, linux-ima-user@lists.sourceforge.net, Arnaud Ebalard <arno@natisbad.org>, linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org, James Morris <james.l.morris@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jaegeuk Kim <jaegeuk@kernel.org>, linux-arm-kernel@lists.infradead.org, Ofir
+Content-Type: text/plain
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Chaotian Jing <chaotian.jing@mediatek.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Heiner Kallweit <hkallweit1@gmail.com>, Phong LE <ple@baylibre.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Oct 15, 2017 at 10:19:45AM +0100, Gilad Ben-Yossef wrote:
->
-> Changes from v8:
-> - Remove the translation of EAGAIN return code to the
->   previous return code of EBUSY for the user space
->   interface of algif as no one seems to rely on it as
->   requested by Herbert Xu.
+  This serial of patches are adding support of mt2701/mt2712.
+there are many changes and HW improvement between mt8173 and
+mt2701/mt2712, below is a list of these changes:
+  1. enlarge CLKDIV bits from 8 to 12
+  2. remove the PAD_TUNE register and add a new PAD_TUNE0 register
+  3. add data sync and async fifo feature
+  4. add busy_check feature
+  5. add stop_clk fix
+  6. add enhance_rx support
+  7. add a seperate CG of source clock
 
-Sorry, but I forgot to mention that EAGAIN is not a good value
-to use because it's used by the network system calls for other
-meanings (interrupted by a signal).
+  mt2712 supports full of these features, mt2701 supports part of it, and
+add a "mediatek,latch-ck" to work-around as it do not support stop-clk fix.
 
-So if we stop doing the translation then we also need to pick
-a different value, perhaps E2BIG or something similar that have
-no current use within the crypto API or network API.
+Note: As Pinctrl/CCF are not ready now, so that current patches do not
+include DTS part.
 
-Thanks,
+Changed vs v5:
+  based on Rob's comments, explain why MT8173 no longer compatible with
+driver that supports "mediatek,mt8135-mmc", add more clearly description
+of "mediatek,latch-ck".
+
+Changed vs v4:
+  based on Julien's comment, change the "bool pad_tune0" to "u32 pad_tune_reg".
+
+Changed vs v3:
+  based on Ulf's comments, make the bindings change to be the first patch.
+
+Changed vs v2:
+  based on Matthias's comments, merge binding file changes to one patch,
+add "hs400_tune" flag in dev_comp.
+
+Changed vs v1:
+  based on Ulf/Rob/Matthias's comments of DTS binding file, make the binding
+file clearly and fix probe issue.
+
+
+Chaotian Jing (12):
+  mmc: dt-bindings: Add reg/source_cg/latch-ck for Mediatek MMC bindings
+  mmc: mediatek: add support of mt2701/mt2712
+  arm64: dts: mt8173: remove "mediatek,mt8135-mmc" from mmc nodes
+  mmc: mediatek: make hs400_tune_response only for mt8173
+  mmc: mediatek: add pad_tune0 support
+  mmc: mediatek: add async fifo and data tune support
+  mmc: mediatek: add busy_check support
+  mmc: mediatek: add stop_clk fix and enhance_rx support
+  mmc: mediatek: add support of source_cg clock
+  mmc: mediatek: add latch-ck support
+  mmc: mediatek: improve eMMC hs400 mode read performance
+  mmc: mediatek: perfer to use rise edge latching for cmd line
+
+ Documentation/devicetree/bindings/mmc/mtk-sd.txt |  18 +-
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi         |  12 +-
+ drivers/mmc/host/mtk-sd.c                        | 283 ++++++++++++++++++++---
+ 3 files changed, 265 insertions(+), 48 deletions(-)
+
 -- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+1.8.1.1.dirty
+
