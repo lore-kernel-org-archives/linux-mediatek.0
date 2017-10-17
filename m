@@ -1,384 +1,208 @@
-From: Ulrich Hecht <ulrich.hecht+renesas@gmail.com>
-Subject: [RFC v2 7/8] drm/mediatek: Add DRM-based framebuffer device
-Date: Mon, 16 Oct 2017 17:31:39 +0200
-Message-ID: <1508167900-27415-8-git-send-email-ulrich.hecht+renesas@gmail.com>
-References: <1508167900-27415-1-git-send-email-ulrich.hecht+renesas@gmail.com>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/4] rtc: mediatek: add driver for RTC on MT7622 SoC
+Date: Tue, 17 Oct 2017 11:24:21 +0800
+Message-ID: <1508210661.21840.86.camel@mtkswgap22>
+References: <cover.1506049341.git.sean.wang@mediatek.com>
+         <5b2a7e5c9c5bc179f89e48fb614b2ae789be4254.1506049341.git.sean.wang@mediatek.com>
+         <20171012212052.xkhbgdjrghmnvcfe@piout.net>
+         <1508141876.21840.75.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1508167900-27415-1-git-send-email-ulrich.hecht+renesas@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-mediatek@lists.infradead.org
-Cc: jacopo@jmondi.org, YT Shen <yt.shen@mediatek.com>, magnus.damm@gmail.com, Daniel Kurtz <djkurtz@chromium.org>, dri-devel@lists.freedesktop.org, Ulrich Hecht <ulrich.hecht+renesas@gmail.com>, laurent.pinchart@ideasonboard.com, Philipp Zabel <p.zabel@pengutronix.de>, ck.hu@mediatek.com, robin.murphy@arm.com, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1508141876.21840.75.camel@mtkswgap22>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rtc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add fbdev support to the Mediatek DRM driver.
+On Mon, 2017-10-16 at 16:17 +0800, Sean Wang wrote:
+> Hi Alexandre,
+> 
+> Thanks for your valuable suggestions on the driver.
+> 
+> I added comments inline and will have following-ups in the next version
+> 
+> 	Sean
+> 
+> On Thu, 2017-10-12 at 23:20 +0200, Alexandre Belloni wrote:
+> > Hi,
+> > 
+> > On 22/09/2017 at 11:33:15 +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> > > diff --git a/drivers/rtc/rtc-mediatek.c b/drivers/rtc/rtc-mediatek.c
+> > 
+> > I'm pretty sure this should be named rtc-mt7622.c instead of
+> > rtc-mediatek.c, exactly for the same reason you have patch 3/4.
+> > 
+> 
+> It's okay for naming with rtc-mt7622.c at this moment. But if more SoCs
+> support gets into the driver, I will consider again to give a more
+> generic name for the driver.
+> 
+> > > +static void mtk_w32(struct mtk_rtc *rtc, u32 reg, u32 val)
+> > > +{
+> > > +	__raw_writel(val, rtc->base + reg);
+> > 
+> > Do you really need the __raw accessors? What about running your SoC in
+> > BE mode? I guess the _relaxed version are fast enough.
+> > 
+> 
+> SoC runs on LE mode. I also think it's fine and enough to use _relaxed
+> version instead of __raw version.
+> 
+> > > +}
+> > > +
+> > > +static u32 mtk_r32(struct mtk_rtc *rtc, u32 reg)
+> > > +{
+> > > +	return __raw_readl(rtc->base + reg);
+> > > +}
+> > > +
+> > 
+> > 
+> > > +static void mtk_rtc_hw_init(struct mtk_rtc *hw)
+> > > +{
+> > > +	/* The setup of the init sequence is for allowing RTC got to work */
+> > > +	mtk_w32(hw, MTK_RTC_PWRCHK1, RTC_PWRCHK1_MAGIC);
+> > > +	mtk_w32(hw, MTK_RTC_PWRCHK2, RTC_PWRCHK2_MAGIC);
+> > > +	mtk_w32(hw, MTK_RTC_KEY, RTC_KEY_MAGIC);
+> > > +	mtk_w32(hw, MTK_RTC_PROT1, RTC_PROT1_MAGIC);
+> > > +	mtk_w32(hw, MTK_RTC_PROT2, RTC_PROT2_MAGIC);
+> > > +	mtk_w32(hw, MTK_RTC_PROT3, RTC_PROT3_MAGIC);
+> > > +	mtk_w32(hw, MTK_RTC_PROT4, RTC_PROT4_MAGIC);
+> > > +	mtk_rmw(hw, MTK_RTC_DEBNCE, RTC_DEBNCE_MASK, 0);
+> > > +	mtk_clr(hw, MTK_RTC_CTL, RTC_RC_STOP);
+> > > +}
+> > > +
+> > > +static void mtk_rtc_get_alarm_or_time(struct mtk_rtc *hw, struct rtc_time *tm,
+> > > +				      int time_alarm)
+> > > +{
+> > > +	u32 year, mon, mday, wday, hour, min, sec;
+> > > +
+> > > +	/*
+> > > +	 * Read again until all fields are not changed for all fields in the
+> > > +	 * consistent state.
+> > > +	 */
+> > > +	do {
+> > > +		year = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_YEA));
+> > > +		mon = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_MON));
+> > > +		wday = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_DOW));
+> > > +		mday = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_DOM));
+> > > +		hour = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_HOU));
+> > > +		min = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_MIN));
+> > > +		sec = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_SEC));
+> > > +	} while (year != mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_YEA)) ||
+> > > +		 mon != mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_MON))  ||
+> > > +		 mday != mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_DOM))	||
+> > > +		 wday != mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_DOW))	||
+> > > +		 hour != mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_HOU))	||
+> > > +		 min != mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_MIN))	||
+> > > +		 sec != mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_SEC))
+> > > +		);
+> > 
+> > I'm pretty sure only checking sec is enough because it is highly
+> > unlikely that 7 reads take a minute.
+> > 
+> 
+> You're right. I made something stupid here. Only checking on sec is
+> enough and will give simpler and better code.
+> 
+> > > +static irqreturn_t mtk_rtc_alarmirq(int irq, void *id)
+> > > +{
+> > > +	struct mtk_rtc *hw = (struct mtk_rtc *)id;
+> > > +	u32 irq_sta;
+> > > +
+> > > +	/* Stop alarm also implicitly disable the alarm interrupt */
+> > > +	mtk_w32(hw, MTK_RTC_AL_CTL, 0);
+> > 
+> > You stop the alarm here, before testing whether the alarm really
+> > happened.
+> > 
+> 
+> Okay. I will exchange the order for alarm stopping and the examination
+> whether the alarm is really expired. 
+> 
+> > > +	irq_sta = mtk_r32(hw, MTK_RTC_INT);
+> > > +	if (irq_sta & RTC_INT_AL_STA) {
+> > > +		rtc_update_irq(hw->rtc, 1, RTC_IRQF | RTC_AF);
+> > > +
+> > > +		/* Ack alarm interrupt status */
+> > > +		mtk_w32(hw, MTK_RTredundantC_INT, RTC_INT_AL_STA);
+> > > +		return IRQ_HANDLED;
+> > > +	}
+> > > +
+> > > +	return IRQ_NONE;
+> > > +}
+> > > +
+> > > +static int mtk_rtc_gettime(struct device *dev, struct rtc_time *tm)
+> > > +{
+> > > +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> > > +
+> > > +	mtk_rtc_get_alarm_or_time(hw, tm, MTK_TC);
+> > > +
+> > > +	return rtc_valid_tm(tm);
+> > > +}
+> > > +
+> > > +static int mtk_rtc_settime(struct device *dev, struct rtc_time *tm)
+> > > +{
+> > > +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> > > +
+> > > +	/* Stop time counter before setting a new one*/
+> > > +	mtk_set(hw, MTK_RTC_CTL, RTC_RC_STOP);
+> > > +
+> > > +	/* Epoch == 1900 */
+> > > +	if (tm->tm_year < 100 || tm->tm_year > 199)
+> > > +		return -EINVAL;
+> > 
+> > Year is a 32 bits register, what makes the RTC fail in 2100? Is it
+> > because of the leap year handling?
+> > 
+> 
+> I made something stupid again here: rtc hardware doesn't have such the
+> limitation. I just felt alarm set up prior to 2100 is enough in my
+> initial thought, but it seemed I shouldn't do this. I will remove the
+> sanity condition.
+> 
+Sorry for that I gave incorrect information for the RTC in the previous
+reply: After check again the usage of the register, the maximum number
+of the year the RTC can hold is 99 and then wraparound to 0 when
+overflow occurs although the year register is a 32 bits register.
 
-Signed-off-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: YT Shen <yt.shen@mediatek.com>
-Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
-Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
-[uli: Forward-ported from chromeos-3.18 vendor kernel.]
-Signed-off-by: Ulrich Hecht <ulrich.hecht+renesas@gmail.com>
----
- drivers/gpu/drm/mediatek/Makefile        |   2 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c   |   8 ++
- drivers/gpu/drm/mediatek/mtk_drm_drv.h   |   4 +-
- drivers/gpu/drm/mediatek/mtk_drm_fb.c    |  13 +++
- drivers/gpu/drm/mediatek/mtk_drm_fb.h    |   3 +
- drivers/gpu/drm/mediatek/mtk_drm_fbdev.c | 181 +++++++++++++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_fbdev.h |  32 ++++++
- 7 files changed, 242 insertions(+), 1 deletion(-)
- create mode 100644 drivers/gpu/drm/mediatek/mtk_drm_fbdev.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_drm_fbdev.h
+Therefore, the sanity for tm->tm_year is still required for the both
+setup handler on alarm and rtc to ensure the user input data is valid,
+where the current driver assume it's valid when tm->tm_year is between
+2000 and 2099. I'll add more comments for the hardware limitation.
 
-diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
-index e37b55a..8306fb5 100644
---- a/drivers/gpu/drm/mediatek/Makefile
-+++ b/drivers/gpu/drm/mediatek/Makefile
-@@ -12,6 +12,8 @@ mediatek-drm-y := mtk_disp_color.o \
- 		  mtk_mipi_tx.o \
- 		  mtk_dpi.o
- 
-+mediatek-drm-$(CONFIG_DRM_FBDEV_EMULATION) += mtk_drm_fbdev.o
-+
- obj-$(CONFIG_DRM_MEDIATEK) += mediatek-drm.o
- 
- mediatek-drm-hdmi-objs := mtk_cec.o \
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index ce99921..636b8db 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -30,6 +30,7 @@
- #include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_drv.h"
- #include "mtk_drm_fb.h"
-+#include "mtk_drm_fbdev.h"
- #include "mtk_drm_gem.h"
- 
- #define DRIVER_NAME "mediatek"
-@@ -257,8 +258,14 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 	drm_kms_helper_poll_init(drm);
- 	drm_mode_config_reset(drm);
- 
-+	ret = mtk_fbdev_init(drm);
-+	if (ret)
-+		goto err_kms_helper_poll_fini;
-+
- 	return 0;
- 
-+err_kms_helper_poll_fini:
-+	drm_kms_helper_poll_fini(drm);
- err_component_unbind:
- 	component_unbind_all(drm->dev, drm);
- err_config_cleanup:
-@@ -269,6 +276,7 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 
- static void mtk_drm_kms_deinit(struct drm_device *drm)
- {
-+	mtk_fbdev_fini(drm);
- 	drm_kms_helper_poll_fini(drm);
- 
- 	component_unbind_all(drm->dev, drm);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index c3378c4..4edc002 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -14,6 +14,7 @@
- #ifndef MTK_DRM_DRV_H
- #define MTK_DRM_DRV_H
- 
-+#include <drm/drm_fb_helper.h>
- #include <linux/io.h>
- #include "mtk_drm_ddp_comp.h"
- 
-@@ -24,7 +25,6 @@ struct device;
- struct device_node;
- struct drm_crtc;
- struct drm_device;
--struct drm_fb_helper;
- struct drm_property;
- struct regmap;
- 
-@@ -56,6 +56,8 @@ struct mtk_drm_private {
- 	} commit;
- 
- 	struct drm_atomic_state *suspend_state;
-+	struct drm_fb_helper fb_helper;
-+	struct drm_gem_object *fbdev_bo;
- };
- 
- extern struct platform_driver mtk_ddp_driver;
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_fb.c b/drivers/gpu/drm/mediatek/mtk_drm_fb.c
-index 0d8d506..ac8561d 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_fb.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_fb.c
-@@ -96,6 +96,19 @@ static struct mtk_drm_fb *mtk_drm_framebuffer_init(struct drm_device *dev,
- 	return mtk_fb;
- }
- 
-+struct drm_framebuffer *mtk_drm_framebuffer_create(struct drm_device *dev,
-+		const struct drm_mode_fb_cmd2 *mode,
-+		struct drm_gem_object *obj)
-+{
-+	struct mtk_drm_fb *mtk_fb;
-+
-+	mtk_fb = mtk_drm_framebuffer_init(dev, mode, obj);
-+	if (IS_ERR(mtk_fb))
-+		return ERR_CAST(mtk_fb);
-+
-+	return &mtk_fb->base;
-+}
-+
- /*
-  * Wait for any exclusive fence in fb's gem object's reservation object.
-  *
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_fb.h b/drivers/gpu/drm/mediatek/mtk_drm_fb.h
-index 9b2ae34..9ee1ac2 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_fb.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_fb.h
-@@ -19,5 +19,8 @@ int mtk_fb_wait(struct drm_framebuffer *fb);
- struct drm_framebuffer *mtk_drm_mode_fb_create(struct drm_device *dev,
- 					       struct drm_file *file,
- 					       const struct drm_mode_fb_cmd2 *cmd);
-+struct drm_framebuffer *mtk_drm_framebuffer_create(struct drm_device *dev,
-+		const struct drm_mode_fb_cmd2 *mode,
-+		struct drm_gem_object *obj);
- 
- #endif /* MTK_DRM_FB_H */
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_fbdev.c b/drivers/gpu/drm/mediatek/mtk_drm_fbdev.c
-new file mode 100644
-index 0000000..9193647
---- /dev/null
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_fbdev.c
-@@ -0,0 +1,181 @@
-+/*
-+ * Copyright (c) 2016 MediaTek Inc.
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <drm/drmP.h>
-+#include <drm/drm_crtc_helper.h>
-+#include <drm/drm_fb_helper.h>
-+#include <drm/drm_gem.h>
-+
-+#include "mtk_drm_drv.h"
-+#include "mtk_drm_fb.h"
-+#include "mtk_drm_gem.h"
-+
-+#define to_drm_private(x) \
-+		container_of(x, struct mtk_drm_private, fb_helper)
-+
-+#if 1
-+static int mtk_drm_fbdev_mmap(struct fb_info *info, struct vm_area_struct *vma)
-+{
-+	struct drm_fb_helper *helper = info->par;
-+	struct mtk_drm_private *private = helper->dev->dev_private;
-+
-+	return mtk_drm_gem_mmap_buf(private->fbdev_bo, vma);
-+}
-+#endif
-+
-+static struct fb_ops mtk_fbdev_ops = {
-+	.owner = THIS_MODULE,
-+	.fb_fillrect = drm_fb_helper_cfb_fillrect,
-+	.fb_copyarea = drm_fb_helper_cfb_copyarea,
-+	.fb_imageblit = drm_fb_helper_cfb_imageblit,
-+	.fb_check_var = drm_fb_helper_check_var,
-+	.fb_set_par = drm_fb_helper_set_par,
-+	.fb_blank = drm_fb_helper_blank,
-+	.fb_pan_display = drm_fb_helper_pan_display,
-+	.fb_setcmap = drm_fb_helper_setcmap,
-+	.fb_mmap = mtk_drm_fbdev_mmap,
-+};
-+
-+static int mtk_fbdev_probe(struct drm_fb_helper *helper,
-+			   struct drm_fb_helper_surface_size *sizes)
-+{
-+	struct drm_device *dev = helper->dev;
-+	struct mtk_drm_private *private = helper->dev->dev_private;
-+	struct drm_mode_fb_cmd2 mode = { 0 };
-+	struct mtk_drm_gem_obj *mtk_gem;
-+	struct fb_info *info;
-+	struct drm_framebuffer *fb;
-+	unsigned int bytes_per_pixel;
-+	unsigned long offset;
-+	size_t size;
-+	int err;
-+
-+	bytes_per_pixel = DIV_ROUND_UP(sizes->surface_bpp, 8);
-+
-+	mode.width = sizes->surface_width;
-+	mode.height = sizes->surface_height;
-+	mode.pitches[0] = sizes->surface_width * bytes_per_pixel;
-+	mode.pixel_format = drm_mode_legacy_fb_format(sizes->surface_bpp,
-+						      sizes->surface_depth);
-+
-+	size = mode.pitches[0] * mode.height;
-+
-+	mtk_gem = mtk_drm_gem_create(dev, size, true);
-+	if (IS_ERR(mtk_gem))
-+		return PTR_ERR(mtk_gem);
-+
-+	private->fbdev_bo = &mtk_gem->base;
-+
-+	info = drm_fb_helper_alloc_fbi(helper);
-+	if (IS_ERR(info)) {
-+		err = PTR_ERR(info);
-+		dev_err(dev->dev, "failed to allocate framebuffer info, %d\n",
-+			err);
-+		goto err_gem_free_object;
-+	}
-+
-+	fb = mtk_drm_framebuffer_create(dev, &mode, private->fbdev_bo);
-+	if (IS_ERR(fb)) {
-+		err = PTR_ERR(fb);
-+		dev_err(dev->dev, "failed to allocate DRM framebuffer, %d\n",
-+			err);
-+		goto err_release_fbi;
-+	}
-+	helper->fb = fb;
-+
-+	info->par = helper;
-+	info->flags = FBINFO_FLAG_DEFAULT;
-+	info->fbops = &mtk_fbdev_ops;
-+
-+	drm_fb_helper_fill_fix(info, fb->pitches[0], fb->format->depth);
-+	drm_fb_helper_fill_var(info, helper, sizes->fb_width, sizes->fb_height);
-+
-+	offset = info->var.xoffset * bytes_per_pixel;
-+	offset += info->var.yoffset * fb->pitches[0];
-+
-+	dev->mode_config.fb_base = 0;
-+	info->screen_base = mtk_gem->kvaddr + offset;
-+	info->screen_size = size;
-+	info->fix.smem_len = size;
-+
-+	DRM_DEBUG_KMS("FB [%ux%u]-%u offset=%lu size=%zd\n",
-+		      fb->width, fb->height, fb->format->depth, offset, size);
-+
-+	info->skip_vt_switch = true;
-+
-+	return 0;
-+
-+err_release_fbi:
-+err_gem_free_object:
-+	mtk_drm_gem_free_object(&mtk_gem->base);
-+	return err;
-+}
-+
-+static const struct drm_fb_helper_funcs mtk_drm_fb_helper_funcs = {
-+	.fb_probe = mtk_fbdev_probe,
-+};
-+
-+int mtk_fbdev_init(struct drm_device *dev)
-+{
-+	struct mtk_drm_private *priv = dev->dev_private;
-+	struct drm_fb_helper *helper = &priv->fb_helper;
-+	int ret;
-+
-+	if (!dev->mode_config.num_crtc || !dev->mode_config.num_connector)
-+		return -EINVAL;
-+
-+	drm_fb_helper_prepare(dev, helper, &mtk_drm_fb_helper_funcs);
-+
-+	ret = drm_fb_helper_init(dev, helper,
-+				 dev->mode_config.num_connector);
-+	if (ret) {
-+		dev_err(dev->dev, "failed to initialize DRM FB helper, %d\n",
-+			ret);
-+		goto fini;
-+	}
-+
-+	ret = drm_fb_helper_single_add_all_connectors(helper);
-+	if (ret) {
-+		dev_err(dev->dev, "failed to add connectors, %d\n", ret);
-+		goto fini;
-+	}
-+
-+	ret = drm_fb_helper_initial_config(helper, 32);
-+	if (ret) {
-+		dev_err(dev->dev, "failed to set initial configuration, %d\n",
-+			ret);
-+		goto fini;
-+	}
-+
-+	return 0;
-+
-+fini:
-+	drm_fb_helper_fini(helper);
-+
-+	return ret;
-+}
-+
-+void mtk_fbdev_fini(struct drm_device *dev)
-+{
-+	struct mtk_drm_private *priv = dev->dev_private;
-+	struct drm_fb_helper *helper = &priv->fb_helper;
-+
-+	drm_fb_helper_unregister_fbi(helper);
-+
-+	if (helper->fb) {
-+		drm_framebuffer_unregister_private(helper->fb);
-+		drm_framebuffer_remove(helper->fb);
-+	}
-+
-+	drm_fb_helper_fini(helper);
-+}
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_fbdev.h b/drivers/gpu/drm/mediatek/mtk_drm_fbdev.h
-new file mode 100644
-index 0000000..f3e0949
---- /dev/null
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_fbdev.h
-@@ -0,0 +1,32 @@
-+/*
-+ * Copyright (c) 2016 MediaTek Inc.
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#ifndef MTK_DRM_FBDEV_H
-+#define MTK_DRM_FBDEV_H
-+
-+#ifdef CONFIG_DRM_FBDEV_EMULATION
-+int mtk_fbdev_init(struct drm_device *dev);
-+void mtk_fbdev_fini(struct drm_device *dev);
-+#else
-+int mtk_fbdev_init(struct drm_device *dev)
-+{
-+	return 0;
-+}
-+
-+void mtk_fbdev_fini(struct drm_device *dev)
-+{
-+
-+}
-+#endif /* CONFIG_DRM_FBDEV_EMULATION */
-+
-+#endif /* MTK_DRM_FBDEV_H */
--- 
-2.7.4
+	Sean
+> 
+> > > +static int mtk_rtc_setalarm(struct device *dev, struct rtc_wkalrm *wkalrm)
+> > > +{
+> > > +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> > > +	struct rtc_time *alrm_tm = &wkalrm->time;
+> > > +
+> > > +	/* Epoch == 1900 */
+> > > +	if (alrm_tm->tm_year < 100 || alrm_tm->tm_year > 199)
+> > > +		return -EINVAL;
+> > > +
+> > 
+> > Ditto.
+> > 
+> Ditto. those condition will be removed.
+> 
+> > > +
+> > > +	dev_info(&pdev->dev, "MediaTek SoC based RTC enabled\n");
+> > > +
+> > 
+> > I think the rtc core is verbose enough that this message is not needed.
+> > 
+> 
+> Okay. the redundant and specific log prompt would be removed as well.
+> 
+> 
+> > 
+> 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
