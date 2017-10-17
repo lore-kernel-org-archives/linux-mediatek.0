@@ -1,494 +1,226 @@
-From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 2/4] rtc: mediatek: add driver for RTC on MT7622 SoC
-Date: Tue, 17 Oct 2017 17:40:33 +0800
-Message-ID: <2f86eebfd380cf932808df3404e2f4a6f2f0f874.1508231935.git.sean.wang@mediatek.com>
-References: <cover.1508231935.git.sean.wang@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v5 6/7] soc: mediatek: pwrap: add support for MT7622 SoC
+Date: Tue, 17 Oct 2017 17:49:32 +0800
+Message-ID: <1508233772.21840.92.camel@mtkswgap22>
+References: <cover.1508135937.git.sean.wang@mediatek.com>
+         <f828c79152d02ead0431bee17ee349b1a3068d2e.1508135937.git.sean.wang@mediatek.com>
+         <7dcbeb5c-0b7f-839b-3810-78156b7965a4@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <cover.1508231935.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
-Cc: linux-rtc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <7dcbeb5c-0b7f-839b-3810-78156b7965a4@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, chen.zhong@mediatek.com, chenglin.xu@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Mon, 2017-10-16 at 17:00 +0200, Matthias Brugger wrote:
+> 
+> On 10/16/2017 09:07 AM, sean.wang@mediatek.com wrote:
+> > From: Chenglin Xu <chenglin.xu@mediatek.com>
+> > 
+> > Add the registers, callbacks and data structures required to make the
+> > PMIC wrapper work on MT7622.
+> > 
+> > Signed-off-by: Chenglin Xu <chenglin.xu@mediatek.com>
+> > Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
+> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > ---
+> >   drivers/soc/mediatek/mtk-pmic-wrap.c | 180 +++++++++++++++++++++++++++++++++++
+> >   1 file changed, 180 insertions(+)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > index a4cdc5f..9ac304a 100644
+> > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > @@ -214,6 +214,36 @@ enum pwrap_regs {
+> >   	PWRAP_ADC_RDATA_ADDR1,
+> >   	PWRAP_ADC_RDATA_ADDR2,
+> >   
+> > +	/* MT7622 only regs */
+> > +	PWRAP_EINT_STA0_ADR,
+> > +	PWRAP_EINT_STA1_ADR,
+> > +	PWRAP_STA,
+> > +	PWRAP_CLR,
+> > +	PWRAP_DVFS_ADR8,
+> > +	PWRAP_DVFS_WDATA8,
+> > +	PWRAP_DVFS_ADR9,
+> > +	PWRAP_DVFS_WDATA9,
+> > +	PWRAP_DVFS_ADR10,
+> > +	PWRAP_DVFS_WDATA10,
+> > +	PWRAP_DVFS_ADR11,
+> > +	PWRAP_DVFS_WDATA11,
+> > +	PWRAP_DVFS_ADR12,
+> > +	PWRAP_DVFS_WDATA12,
+> > +	PWRAP_DVFS_ADR13,
+> > +	PWRAP_DVFS_WDATA13,
+> > +	PWRAP_DVFS_ADR14,
+> > +	PWRAP_DVFS_WDATA14,
+> > +	PWRAP_DVFS_ADR15,
+> > +	PWRAP_DVFS_WDATA15,
+> > +	PWRAP_EXT_CK,
+> > +	PWRAP_ADC_RDATA_ADDR,
+> > +	PWRAP_GPS_STA,
+> > +	PWRAP_SW_RST,
+> > +	PWRAP_DVFS_STEP_CTRL0,
+> > +	PWRAP_DVFS_STEP_CTRL1,
+> > +	PWRAP_DVFS_STEP_CTRL2,
+> > +	PWRAP_SPI2_CTRL,
+> > +
+> >   	/* MT8135 only regs */
+> >   	PWRAP_CSHEXT,
+> >   	PWRAP_EVENT_IN_EN,
+> > @@ -336,6 +366,118 @@ static int mt2701_regs[] = {
+> >   	[PWRAP_ADC_RDATA_ADDR2] =	0x154,
+> >   };
+> >   
+> > +static int mt7622_regs[] = {
+> > +	[PWRAP_MUX_SEL] =		0x0,
+> > +	[PWRAP_WRAP_EN] =		0x4,
+> > +	[PWRAP_DIO_EN] =		0x8,
+> > +	[PWRAP_SIDLY] =			0xC,
+> > +	[PWRAP_RDDMY] =			0x10,
+> > +	[PWRAP_SI_CK_CON] =		0x14,
+> > +	[PWRAP_CSHEXT_WRITE] =		0x18,
+> > +	[PWRAP_CSHEXT_READ] =		0x1C,
+> > +	[PWRAP_CSLEXT_START] =		0x20,
+> > +	[PWRAP_CSLEXT_END] =		0x24,
+> > +	[PWRAP_STAUPD_PRD] =		0x28,
+> > +	[PWRAP_STAUPD_GRPEN] =		0x2C,
+> > +	[PWRAP_EINT_STA0_ADR] =		0x30,
+> > +	[PWRAP_EINT_STA1_ADR] =		0x34,
+> > +	[PWRAP_STA] =			0x38,
+> > +	[PWRAP_CLR] =			0x3C,
+> > +	[PWRAP_STAUPD_MAN_TRIG] =	0x40,
+> > +	[PWRAP_STAUPD_STA] =		0x44,
+> > +	[PWRAP_WRAP_STA] =		0x48,
+> > +	[PWRAP_HARB_INIT] =		0x4C,
+> > +	[PWRAP_HARB_HPRIO] =		0x50,
+> > +	[PWRAP_HIPRIO_ARB_EN] =		0x54,
+> > +	[PWRAP_HARB_STA0] =		0x58,
+> > +	[PWRAP_HARB_STA1] =		0x5C,
+> > +	[PWRAP_MAN_EN] =		0x60,
+> > +	[PWRAP_MAN_CMD] =		0x64,
+> > +	[PWRAP_MAN_RDATA] =		0x68,
+> > +	[PWRAP_MAN_VLDCLR] =		0x6C,
+> > +	[PWRAP_WACS0_EN] =		0x70,
+> > +	[PWRAP_INIT_DONE0] =		0x74,
+> > +	[PWRAP_WACS0_CMD] =		0x78,
+> > +	[PWRAP_WACS0_RDATA] =		0x7C,
+> > +	[PWRAP_WACS0_VLDCLR] =		0x80,
+> > +	[PWRAP_WACS1_EN] =		0x84,
+> > +	[PWRAP_INIT_DONE1] =		0x88,
+> > +	[PWRAP_WACS1_CMD] =		0x8C,
+> > +	[PWRAP_WACS1_RDATA] =		0x90,
+> > +	[PWRAP_WACS1_VLDCLR] =		0x94,
+> > +	[PWRAP_WACS2_EN] =		0x98,
+> > +	[PWRAP_INIT_DONE2] =		0x9C,
+> > +	[PWRAP_WACS2_CMD] =		0xA0,
+> > +	[PWRAP_WACS2_RDATA] =		0xA4,
+> > +	[PWRAP_WACS2_VLDCLR] =		0xA8,
+> > +	[PWRAP_INT_EN] =		0xAC,
+> > +	[PWRAP_INT_FLG_RAW] =		0xB0,
+> > +	[PWRAP_INT_FLG] =		0xB4,
+> > +	[PWRAP_INT_CLR] =		0xB8,
+> > +	[PWRAP_SIG_ADR] =		0xBC,
+> > +	[PWRAP_SIG_MODE] =		0xC0,
+> > +	[PWRAP_SIG_VALUE] =		0xC4,
+> > +	[PWRAP_SIG_ERRVAL] =		0xC8,
+> > +	[PWRAP_CRC_EN] =		0xCC,
+> > +	[PWRAP_TIMER_EN] =		0xD0,
+> > +	[PWRAP_TIMER_STA] =		0xD4,
+> > +	[PWRAP_WDT_UNIT] =		0xD8,
+> > +	[PWRAP_WDT_SRC_EN] =		0xDC,
+> > +	[PWRAP_WDT_FLG] =		0xE0,
+> > +	[PWRAP_DEBUG_INT_SEL] =		0xE4,
+> > +	[PWRAP_DVFS_ADR0] =		0xE8,
+> > +	[PWRAP_DVFS_WDATA0] =		0xEC,
+> > +	[PWRAP_DVFS_ADR1] =		0xF0,
+> > +	[PWRAP_DVFS_WDATA1] =		0xF4,
+> > +	[PWRAP_DVFS_ADR2] =		0xF8,
+> > +	[PWRAP_DVFS_WDATA2] =		0xFC,
+> > +	[PWRAP_DVFS_ADR3] =		0x100,
+> > +	[PWRAP_DVFS_WDATA3] =		0x104,
+> > +	[PWRAP_DVFS_ADR4] =		0x108,
+> > +	[PWRAP_DVFS_WDATA4] =		0x10C,
+> > +	[PWRAP_DVFS_ADR5] =		0x110,
+> > +	[PWRAP_DVFS_WDATA5] =		0x114,
+> > +	[PWRAP_DVFS_ADR6] =		0x118,
+> > +	[PWRAP_DVFS_WDATA6] =		0x11C,
+> > +	[PWRAP_DVFS_ADR7] =		0x120,
+> > +	[PWRAP_DVFS_WDATA7] =		0x124,
+> > +	[PWRAP_DVFS_ADR8] =		0x128,
+> > +	[PWRAP_DVFS_WDATA8] =		0x12C,
+> > +	[PWRAP_DVFS_ADR9] =		0x130,
+> > +	[PWRAP_DVFS_WDATA9] =		0x134,
+> > +	[PWRAP_DVFS_ADR10] =		0x138,
+> > +	[PWRAP_DVFS_WDATA10] =		0x13C,
+> > +	[PWRAP_DVFS_ADR11] =		0x140,
+> > +	[PWRAP_DVFS_WDATA11] =		0x144,
+> > +	[PWRAP_DVFS_ADR12] =		0x148,
+> > +	[PWRAP_DVFS_WDATA12] =		0x14C,
+> > +	[PWRAP_DVFS_ADR13] =		0x150,
+> > +	[PWRAP_DVFS_WDATA13] =		0x154,
+> > +	[PWRAP_DVFS_ADR14] =		0x158,
+> > +	[PWRAP_DVFS_WDATA14] =		0x15C,
+> > +	[PWRAP_DVFS_ADR15] =		0x160,
+> > +	[PWRAP_DVFS_WDATA15] =		0x164,
+> > +	[PWRAP_SPMINF_STA] =		0x168,
+> > +	[PWRAP_CIPHER_KEY_SEL] =	0x16C,
+> > +	[PWRAP_CIPHER_IV_SEL] =		0x170,
+> > +	[PWRAP_CIPHER_EN] =		0x174,
+> > +	[PWRAP_CIPHER_RDY] =		0x178,
+> > +	[PWRAP_CIPHER_MODE] =		0x17C,
+> > +	[PWRAP_CIPHER_SWRST] =		0x180,
+> > +	[PWRAP_DCM_EN] =		0x184,
+> > +	[PWRAP_DCM_DBC_PRD] =		0x188,
+> > +	[PWRAP_EXT_CK] =		0x18C,
+> > +	[PWRAP_ADC_CMD_ADDR] =		0x190,
+> > +	[PWRAP_PWRAP_ADC_CMD] =		0x194,
+> > +	[PWRAP_ADC_RDATA_ADDR] =	0x198,
+> > +	[PWRAP_GPS_STA] =		0x19C,
+> > +	[PWRAP_SW_RST] =		0x1A0,
+> > +	[PWRAP_DVFS_STEP_CTRL0] =	0x238,
+> > +	[PWRAP_DVFS_STEP_CTRL1] =	0x23C,
+> > +	[PWRAP_DVFS_STEP_CTRL2] =	0x240,
+> > +	[PWRAP_SPI2_CTRL] =		0x244,
+> > +};
+> > +
+> >   static int mt8173_regs[] = {
+> >   	[PWRAP_MUX_SEL] =		0x0,
+> >   	[PWRAP_WRAP_EN] =		0x4,
+> > @@ -499,6 +641,7 @@ enum pmic_type {
+> >   
+> >   enum pwrap_type {
+> >   	PWRAP_MT2701,
+> > +	PWRAP_MT7622,
+> >   	PWRAP_MT8135,
+> >   	PWRAP_MT8173,
+> >   };
+> > @@ -873,6 +1016,16 @@ static int pwrap_mt2701_init_reg_clock(struct pmic_wrapper *wrp)
+> >   	return 0;
+> >   }
+> >   
+> > +static int pwrap_mt7622_init_reg_clock(struct pmic_wrapper *wrp)
+> > +{
+> > +	pwrap_writel(wrp, 0x0, PWRAP_CSHEXT_WRITE);
+> > +	pwrap_writel(wrp, 0x4, PWRAP_CSHEXT_READ);
+> > +	pwrap_writel(wrp, 0x2, PWRAP_CSLEXT_START);
+> > +	pwrap_writel(wrp, 0x2, PWRAP_CSLEXT_END);
+> > +
+> 
+> This is the same function as pwrap_mt8173_init_reg_clock. Can we somehow group 
+> them together to get rid of the code duplication?
+> 
 
-This patch introduces the driver for the RTC on MT7622 SoC.
+It's okay for Chenglin and me. I'll reuse the function call. 
 
-Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/rtc/Kconfig      |  10 ++
- drivers/rtc/Makefile     |   1 +
- drivers/rtc/rtc-mt7622.c | 418 +++++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 429 insertions(+)
- create mode 100644 drivers/rtc/rtc-mt7622.c
+Except for the thing and dropping 7/7 patch, do you have any
+remaining suggestions to enhance the patch set ? I can make
+them altogether in the next version.   
 
-diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
-index e0e58f3..4226295 100644
---- a/drivers/rtc/Kconfig
-+++ b/drivers/rtc/Kconfig
-@@ -1705,6 +1705,16 @@ config RTC_DRV_MOXART
- 	   This driver can also be built as a module. If so, the module
- 	   will be called rtc-moxart
- 
-+config RTC_DRV_MEDIATEK
-+	tristate "MediaTek SoC based RTC"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	help
-+	  This enables support for the real time clock built in the MediaTek
-+	  SoCs.
-+
-+	  This drive can also be built as a module. If so, the module
-+	  will be called rtc-mediatek.
-+
- config RTC_DRV_MT6397
- 	tristate "Mediatek Real Time Clock driver"
- 	depends on MFD_MT6397 || (COMPILE_TEST && IRQ_DOMAIN)
-diff --git a/drivers/rtc/Makefile b/drivers/rtc/Makefile
-index 7230014..593a02c 100644
---- a/drivers/rtc/Makefile
-+++ b/drivers/rtc/Makefile
-@@ -101,6 +101,7 @@ obj-$(CONFIG_RTC_DRV_MOXART)	+= rtc-moxart.o
- obj-$(CONFIG_RTC_DRV_MPC5121)	+= rtc-mpc5121.o
- obj-$(CONFIG_RTC_DRV_VRTC)	+= rtc-mrst.o
- obj-$(CONFIG_RTC_DRV_MSM6242)	+= rtc-msm6242.o
-+obj-$(CONFIG_RTC_DRV_MEDIATEK)	+= rtc-mt7622.o
- obj-$(CONFIG_RTC_DRV_MT6397)	+= rtc-mt6397.o
- obj-$(CONFIG_RTC_DRV_MV)	+= rtc-mv.o
- obj-$(CONFIG_RTC_DRV_MXC)	+= rtc-mxc.o
-diff --git a/drivers/rtc/rtc-mt7622.c b/drivers/rtc/rtc-mt7622.c
-new file mode 100644
-index 0000000..1f00494
---- /dev/null
-+++ b/drivers/rtc/rtc-mt7622.c
-@@ -0,0 +1,418 @@
-+/*
-+ * Driver for MediaTek SoC based RTC
-+ *
-+ * Copyright (C) 2017 Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License as
-+ * published by the Free Software Foundation; either version 2 of
-+ * the License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/interrupt.h>
-+#include <linux/module.h>
-+#include <linux/of_address.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+#include <linux/rtc.h>
-+
-+#define MTK_RTC_DEV KBUILD_MODNAME
-+
-+#define MTK_RTC_PWRCHK1		0x4
-+#define	RTC_PWRCHK1_MAGIC	0xc6
-+
-+#define MTK_RTC_PWRCHK2		0x8
-+#define	RTC_PWRCHK2_MAGIC	0x9a
-+
-+#define MTK_RTC_KEY		0xc
-+#define	RTC_KEY_MAGIC		0x59
-+
-+#define MTK_RTC_PROT1		0x10
-+#define	RTC_PROT1_MAGIC		0xa3
-+
-+#define MTK_RTC_PROT2		0x14
-+#define	RTC_PROT2_MAGIC		0x57
-+
-+#define MTK_RTC_PROT3		0x18
-+#define	RTC_PROT3_MAGIC		0x67
-+
-+#define MTK_RTC_PROT4		0x1c
-+#define	RTC_PROT4_MAGIC		0xd2
-+
-+#define MTK_RTC_CTL		0x20
-+#define	RTC_RC_STOP		BIT(0)
-+
-+#define MTK_RTC_DEBNCE		0x2c
-+#define	RTC_DEBNCE_MASK		GENMASK(2, 0)
-+
-+#define MTK_RTC_INT		0x30
-+#define RTC_INT_AL_STA		BIT(4)
-+
-+/* Ranges from 0x40 to 0x78 provide RTC time setup for year, month,
-+ * day of month, day of week, hour, minute and second.
-+ */
-+#define MTK_RTC_TREG(_t, _f)	(0x40 + (0x4 * (_f)) + ((_t) * 0x20))
-+
-+#define MTK_RTC_AL_CTL		0x7c
-+#define	RTC_AL_EN		BIT(0)
-+#define	RTC_AL_ALL		GENMASK(7, 0)
-+
-+#define MTK_RTC_TM_YR_L		100
-+
-+/* The maximum years the RTC can support is 99, For MT7622 */
-+#define MTK_RTC_HW_YR_LIMIT	100
-+
-+/* Types of the function the RTC provides are time counter and alarm. */
-+enum {
-+	MTK_TC,
-+	MTK_AL,
-+	MTK_TYPE_MAX,
-+};
-+
-+/* Indexes are used for the pointer to relevant registers in MTK_RTC_TREG */
-+enum {
-+	MTK_YEA,
-+	MTK_MON,
-+	MTK_DOM,
-+	MTK_DOW,
-+	MTK_HOU,
-+	MTK_MIN,
-+	MTK_SEC
-+};
-+
-+struct mtk_rtc {
-+	struct rtc_device *rtc;
-+	void __iomem *base;
-+	int irq;
-+	struct clk *clk;
-+	u32 yr_base[MTK_TYPE_MAX];
-+};
-+
-+static void mtk_w32(struct mtk_rtc *rtc, u32 reg, u32 val)
-+{
-+	writel_relaxed(val, rtc->base + reg);
-+}
-+
-+static u32 mtk_r32(struct mtk_rtc *rtc, u32 reg)
-+{
-+	return readl_relaxed(rtc->base + reg);
-+}
-+
-+static void mtk_rmw(struct mtk_rtc *rtc, u32 reg, u32 mask, u32 set)
-+{
-+	u32 val;
-+
-+	val = mtk_r32(rtc, reg);
-+	val &= ~mask;
-+	val |= set;
-+	mtk_w32(rtc, reg, val);
-+}
-+
-+static void mtk_set(struct mtk_rtc *rtc, u32 reg, u32 val)
-+{
-+	mtk_rmw(rtc, reg, 0, val);
-+}
-+
-+static void mtk_clr(struct mtk_rtc *rtc, u32 reg, u32 val)
-+{
-+	mtk_rmw(rtc, reg, val, 0);
-+}
-+
-+static void mtk_rtc_hw_init(struct mtk_rtc *hw)
-+{
-+	/* The setup of the init sequence is for allowing RTC got to work */
-+	mtk_w32(hw, MTK_RTC_PWRCHK1, RTC_PWRCHK1_MAGIC);
-+	mtk_w32(hw, MTK_RTC_PWRCHK2, RTC_PWRCHK2_MAGIC);
-+	mtk_w32(hw, MTK_RTC_KEY, RTC_KEY_MAGIC);
-+	mtk_w32(hw, MTK_RTC_PROT1, RTC_PROT1_MAGIC);
-+	mtk_w32(hw, MTK_RTC_PROT2, RTC_PROT2_MAGIC);
-+	mtk_w32(hw, MTK_RTC_PROT3, RTC_PROT3_MAGIC);
-+	mtk_w32(hw, MTK_RTC_PROT4, RTC_PROT4_MAGIC);
-+	mtk_rmw(hw, MTK_RTC_DEBNCE, RTC_DEBNCE_MASK, 0);
-+	mtk_clr(hw, MTK_RTC_CTL, RTC_RC_STOP);
-+}
-+
-+static void mtk_rtc_get_alarm_or_time(struct mtk_rtc *hw, struct rtc_time *tm,
-+				      int time_alarm)
-+{
-+	u32 year, mon, mday, wday, hour, min, sec;
-+
-+	/*
-+	 * Read again until the field of the second is not changed which
-+	 * ensures all fields in the consistent state.
-+	 */
-+	do {
-+		year = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_YEA));
-+		mon = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_MON));
-+		wday = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_DOW));
-+		mday = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_DOM));
-+		hour = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_HOU));
-+		min = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_MIN));
-+		sec = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_SEC));
-+	} while (sec != mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_SEC)));
-+
-+	tm->tm_sec  = sec;
-+	tm->tm_min  = min;
-+	tm->tm_hour = hour;
-+	tm->tm_wday = wday;
-+	tm->tm_mday = mday;
-+	tm->tm_mon  = mon - 1;
-+
-+	/* Rebase to the absolute year which userspace requires */
-+	tm->tm_year = year + MTK_RTC_TM_YR_L + hw->yr_base[time_alarm];
-+}
-+
-+static void mtk_rtc_set_alarm_or_time(struct mtk_rtc *hw, struct rtc_time *tm,
-+				      int time_alarm)
-+{
-+	u32 year;
-+
-+	/* Rebase to the relative year which RTC hardware requires */
-+	year = tm->tm_year - MTK_RTC_TM_YR_L - hw->yr_base[time_alarm];
-+
-+	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_YEA), year);
-+	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_MON), tm->tm_mon + 1);
-+	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_DOW), tm->tm_wday);
-+	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_DOM), tm->tm_mday);
-+	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_HOU), tm->tm_hour);
-+	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_MIN), tm->tm_min);
-+	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_SEC), tm->tm_sec);
-+}
-+
-+static irqreturn_t mtk_rtc_alarmirq(int irq, void *id)
-+{
-+	struct mtk_rtc *hw = (struct mtk_rtc *)id;
-+	u32 irq_sta;
-+
-+	irq_sta = mtk_r32(hw, MTK_RTC_INT);
-+	if (irq_sta & RTC_INT_AL_STA) {
-+		/* Stop alarm also implicitly disables the alarm interrupt */
-+		mtk_w32(hw, MTK_RTC_AL_CTL, 0);
-+		rtc_update_irq(hw->rtc, 1, RTC_IRQF | RTC_AF);
-+
-+		/* Ack alarm interrupt status */
-+		mtk_w32(hw, MTK_RTC_INT, RTC_INT_AL_STA);
-+		return IRQ_HANDLED;
-+	}
-+
-+	return IRQ_NONE;
-+}
-+
-+static int mtk_rtc_gettime(struct device *dev, struct rtc_time *tm)
-+{
-+	struct mtk_rtc *hw = dev_get_drvdata(dev);
-+
-+	mtk_rtc_get_alarm_or_time(hw, tm, MTK_TC);
-+
-+	return rtc_valid_tm(tm);
-+}
-+
-+static int mtk_rtc_settime(struct device *dev, struct rtc_time *tm)
-+{
-+	struct mtk_rtc *hw = dev_get_drvdata(dev);
-+
-+	/* Epoch == 1900, and the driver assumes that tm->tm_year has to be
-+	 * at least MTK_RTC_TM_YR_L.
-+	 */
-+	if (tm->tm_year <  MTK_RTC_TM_YR_L)
-+		return -EINVAL;
-+
-+	/* Keep yr_base used to calculate the calculate year when userspace
-+	 * queries and extend the maximum year the RTC can count.
-+	 */
-+	hw->yr_base[MTK_TC] = tm->tm_year - MTK_RTC_TM_YR_L -
-+			      (tm->tm_year % MTK_RTC_HW_YR_LIMIT);
-+
-+	/* Stop time counter before setting a new one*/
-+	mtk_set(hw, MTK_RTC_CTL, RTC_RC_STOP);
-+
-+	mtk_rtc_set_alarm_or_time(hw, tm, MTK_TC);
-+
-+	/* Restart the time counter */
-+	mtk_clr(hw, MTK_RTC_CTL, RTC_RC_STOP);
-+
-+	return 0;
-+}
-+
-+static int mtk_rtc_getalarm(struct device *dev, struct rtc_wkalrm *wkalrm)
-+{
-+	struct mtk_rtc *hw = dev_get_drvdata(dev);
-+	struct rtc_time *alrm_tm = &wkalrm->time;
-+
-+	mtk_rtc_get_alarm_or_time(hw, alrm_tm, MTK_AL);
-+
-+	wkalrm->enabled = !!(mtk_r32(hw, MTK_RTC_AL_CTL) & RTC_AL_EN);
-+	wkalrm->pending = !!(mtk_r32(hw, MTK_RTC_INT) & RTC_INT_AL_STA);
-+
-+	return 0;
-+}
-+
-+static int mtk_rtc_setalarm(struct device *dev, struct rtc_wkalrm *wkalrm)
-+{
-+	struct mtk_rtc *hw = dev_get_drvdata(dev);
-+	struct rtc_time *alrm_tm = &wkalrm->time;
-+
-+	/* Epoch == 1900, and the driver assumes that alrm_tm->tm_year has to
-+	 * be at least MTK_RTC_TM_YR_L.
-+	 */
-+	if (alrm_tm->tm_year < MTK_RTC_TM_YR_L)
-+		return -EINVAL;
-+
-+	/* Keep yr_base used to calculate the calculate year when userspace
-+	 * queries and extend the maximum time the alarm can support.
-+	 */
-+	hw->yr_base[MTK_AL] = alrm_tm->tm_year - MTK_RTC_TM_YR_L -
-+			      (alrm_tm->tm_year % MTK_RTC_HW_YR_LIMIT);
-+
-+	/*
-+	 * Stop the alarm also implicitly including disables interrupt before
-+	 * setting a new one.
-+	 */
-+	mtk_clr(hw, MTK_RTC_AL_CTL, RTC_AL_EN);
-+
-+	/*
-+	 * Avoid contention between mtk_rtc_setalarm and IRQ handler so that
-+	 * disabling the interrupt and awaiting for pending IRQ handler to
-+	 * complete.
-+	 */
-+	synchronize_irq(hw->irq);
-+
-+	mtk_rtc_set_alarm_or_time(hw, alrm_tm, MTK_AL);
-+
-+	/* Restart the alarm with the new setup */
-+	mtk_w32(hw, MTK_RTC_AL_CTL, RTC_AL_ALL);
-+
-+	return 0;
-+}
-+
-+static const struct rtc_class_ops mtk_rtc_ops = {
-+	.read_time		= mtk_rtc_gettime,
-+	.set_time		= mtk_rtc_settime,
-+	.read_alarm		= mtk_rtc_getalarm,
-+	.set_alarm		= mtk_rtc_setalarm,
-+};
-+
-+static const struct of_device_id mtk_rtc_match[] = {
-+	{ .compatible = "mediatek,mt7622-rtc" },
-+	{ .compatible = "mediatek,soc-rtc" },
-+	{},
-+};
-+
-+static int mtk_rtc_probe(struct platform_device *pdev)
-+{
-+	struct mtk_rtc *hw;
-+	struct resource *res;
-+	int ret;
-+
-+	hw = devm_kzalloc(&pdev->dev, sizeof(*hw), GFP_KERNEL);
-+	if (!hw)
-+		return -ENOMEM;
-+
-+	platform_set_drvdata(pdev, hw);
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	hw->base = devm_ioremap_resource(&pdev->dev, res);
-+	if (IS_ERR(hw->base))
-+		return PTR_ERR(hw->base);
-+
-+	hw->clk = devm_clk_get(&pdev->dev, "rtc");
-+	if (IS_ERR(hw->clk)) {
-+		dev_err(&pdev->dev, "No clock\n");
-+		return PTR_ERR(hw->clk);
-+	}
-+
-+	ret = clk_prepare_enable(hw->clk);
-+	if (ret)
-+		return ret;
-+
-+	hw->irq = platform_get_irq(pdev, 0);
-+	if (hw->irq < 0) {
-+		dev_err(&pdev->dev, "No IRQ resource\n");
-+		ret = hw->irq;
-+		goto err;
-+	}
-+
-+	ret = devm_request_irq(&pdev->dev, hw->irq, mtk_rtc_alarmirq,
-+			       0, dev_name(&pdev->dev), hw);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Can't request IRQ\n");
-+		goto err;
-+	}
-+
-+	mtk_rtc_hw_init(hw);
-+
-+	device_init_wakeup(&pdev->dev, true);
-+
-+	hw->rtc = devm_rtc_device_register(&pdev->dev, pdev->name,
-+					   &mtk_rtc_ops, THIS_MODULE);
-+	if (IS_ERR(hw->rtc)) {
-+		ret = PTR_ERR(hw->rtc);
-+		dev_err(&pdev->dev, "Unable to register device\n");
-+		goto err;
-+	}
-+
-+	return 0;
-+err:
-+	clk_disable_unprepare(hw->clk);
-+
-+	return ret;
-+}
-+
-+static int mtk_rtc_remove(struct platform_device *pdev)
-+{
-+	struct mtk_rtc *hw = platform_get_drvdata(pdev);
-+
-+	clk_disable_unprepare(hw->clk);
-+
-+	return 0;
-+}
-+
-+#ifdef CONFIG_PM_SLEEP
-+static int mtk_rtc_suspend(struct device *dev)
-+{
-+	struct mtk_rtc *hw = dev_get_drvdata(dev);
-+
-+	if (device_may_wakeup(dev))
-+		enable_irq_wake(hw->irq);
-+
-+	return 0;
-+}
-+
-+static int mtk_rtc_resume(struct device *dev)
-+{
-+	struct mtk_rtc *hw = dev_get_drvdata(dev);
-+
-+	if (device_may_wakeup(dev))
-+		disable_irq_wake(hw->irq);
-+
-+	return 0;
-+}
-+
-+static SIMPLE_DEV_PM_OPS(mtk_rtc_pm_ops, mtk_rtc_suspend, mtk_rtc_resume);
-+
-+#define MTK_RTC_PM_OPS (&mtk_rtc_pm_ops)
-+#else	/* CONFIG_PM */
-+#define MTK_RTC_PM_OPS NULL
-+#endif	/* CONFIG_PM */
-+
-+static struct platform_driver mtk_rtc_driver = {
-+	.probe	= mtk_rtc_probe,
-+	.remove	= mtk_rtc_remove,
-+	.driver = {
-+		.name = MTK_RTC_DEV,
-+		.of_match_table = mtk_rtc_match,
-+		.pm = MTK_RTC_PM_OPS,
-+	},
-+};
-+
-+module_platform_driver(mtk_rtc_driver);
-+
-+MODULE_DESCRIPTION("MediaTek SoC based RTC Driver");
-+MODULE_AUTHOR("Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
-+MODULE_LICENSE("GPL");
--- 
-2.7.4
+	Sean
+
+> Regards,
+> Matthias
