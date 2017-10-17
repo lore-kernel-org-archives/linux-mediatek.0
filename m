@@ -1,117 +1,134 @@
-From: Will Deacon <will.deacon@arm.com>
-Subject: Re: [RFC/PATCH v3] arm64: define MODULES_VADDR by module_alloc_base
-Date: Tue, 17 Oct 2017 15:43:28 +0100
-Message-ID: <20171017144328.GG14051@arm.com>
-References: <1504093593-2586-1-git-send-email-miles.chen@mediatek.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [RFC v2 0/8] Acer Chromebook R13 support
+Date: Tue, 17 Oct 2017 12:05:14 -0400
+Message-ID: <20171017160514.ivmaz6tzicoxewbx@art_vandelay>
+References: <1508167900-27415-1-git-send-email-ulrich.hecht+renesas@gmail.com>
+ <18d36386-d3a0-a81f-6240-9703a3d98fbd@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <1504093593-2586-1-git-send-email-miles.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Miles Chen <miles.chen@mediatek.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+In-Reply-To: <18d36386-d3a0-a81f-6240-9703a3d98fbd@gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: jacopo@jmondi.org, magnus.damm@gmail.com, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Ulrich Hecht <ulrich.hecht+renesas@gmail.com>, robin.murphy@arm.com, linux-arm-kernel@lists.infradead.org, laurent.pinchart@ideasonboard.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Aug 30, 2017 at 07:46:33PM +0800, Miles Chen wrote:
-> After the kernel ASLR, the module virtual address is moved to
-> [module_alloc_base, module_alloc_base + MODULES_VSIZE).
-> However, the MODULES_VADDR is still defined as a constant and functions
-> like is_vmalloc_or_module_addr() or dump functions will not able to
-> use correct module range information.
-> 
-> The patch omits modules information in virtual kenrel memory layout if
-> the modules area is fully mapped whitin vmalloc area.
-> 
-> Use module_alloc_base to define MODULES_VADDR. I tested the patch under
-> three different conditions:
-> 1.CONFIG_RANDOMIZE_BASE=y, seed=0
-> CONFIG_KASAN=n
-> 2.CONFIG_RANDOMIZE_BASE=y, seed=0x2304909023333333
-> CONFIG_KASAN=n
-> 3.CONFIG_RANDOMIZE_BASE=y, seed=0x2304909023333333
-> CONFIG_KASAN=y
-> 
-> test log:
-
-[...]
-
-> diff --git a/arch/arm64/mm/dump.c b/arch/arm64/mm/dump.c
-> index ca74a2a..18be771 100644
-> --- a/arch/arm64/mm/dump.c
-> +++ b/arch/arm64/mm/dump.c
-> @@ -29,15 +29,36 @@
->  #include <asm/pgtable-hwdef.h>
->  #include <asm/ptdump.h>
->  
-> -static const struct addr_marker address_markers[] = {
-> +enum marker {
-> +#ifdef CONFIG_KASAN
-> +	E_KASAN_SHADOW_START,
-> +	E_KASAN_SHADOW_END,
-> +#endif
-> +	E_MODULES_VADDR,
-> +	E_MODULES_END,
-> +	E_VMALLOC_START,
-> +	E_VMALLOC_END,
-> +	E_FIXADDR_START,
-> +	E_FIXADDR_TOP,
-> +	E_PCI_IO_START,
-> +	E_PCI_IO_END,
-> +#ifdef CONFIG_SPARSEMEM_VMEMMAP
-> +	E_VMEMMAP_START,
-> +	E_VMEMMAP_END,
-> +#endif
-> +	E_PAGE_OFFSET,
-> +	E_NR_MARKER,
-> +};
-> +
-> +static struct addr_marker address_markers[] = {
->  #ifdef CONFIG_KASAN
->  	{ KASAN_SHADOW_START,		"Kasan shadow start" },
->  	{ KASAN_SHADOW_END,		"Kasan shadow end" },
->  #endif
-> -	{ MODULES_VADDR,		"Modules start" },
-> -	{ MODULES_END,			"Modules end" },
-> -	{ VMALLOC_START,		"vmalloc() Area" },
-> -	{ VMALLOC_END,			"vmalloc() End" },
-> +	{ -1,				"Modules start" },
-> +	{ -1,				"Modules end" },
-> +	{ -1,				"vmalloc() Area" },
-> +	{ -1,				"vmalloc() End" },
->  	{ FIXADDR_START,		"Fixmap start" },
->  	{ FIXADDR_TOP,			"Fixmap end" },
->  	{ PCI_IO_START,			"PCI I/O start" },
-> @@ -362,10 +383,32 @@ void ptdump_walk_pgd(struct seq_file *m, struct ptdump_info *info)
->  	note_page(&st, 0, 0, 0);
->  }
->  
-> +static void fixup_markers(void)
-> +{
-> +	int i;
-> +
-> +	address_markers[E_MODULES_VADDR].start_address = MODULES_VADDR;
-> +	address_markers[E_MODULES_END].start_address = MODULES_END;
-> +	address_markers[E_VMALLOC_START].start_address = VMALLOC_START;
-> +	address_markers[E_VMALLOC_END].start_address = VMALLOC_END;
-> +
-> +	if (MODULES_VADDR < VMALLOC_START) {
-> +		address_markers[E_MODULES_END].start_address =
-> +			(MODULES_END < VMALLOC_START) ?
-> +			MODULES_END : VMALLOC_START;
-> +	} else {
-> +		/* modules is contains in vamlloc area, don't show them */
-> +		for (i = E_MODULES_VADDR; i <= E_NR_MARKER - 2; i++)
-> +			address_markers[i] = address_markers[i + 2];
-> +	}
-> +}
-
-This all seems a bit over-engineered to me and we end up having to maintain
-enum marker in conjunction with the address_markers array. Fixing the array
-up at runtime also worries me slightly, because we end up with the last two
-entries being duplicated. That doesn't seem to hurt for now, but it's weird
-and I can imagine it causing problems in the future.
-
-Is there not a simpler fix here?
-
-Will
+T24gVHVlLCBPY3QgMTcsIDIwMTcgYXQgMTI6MzM6MDlQTSArMDIwMCwgTWF0dGhpYXMgQnJ1Z2dl
+ciB3cm90ZToKPiBIaSBVbHJpY2gsCj4gCj4gT24gMTAvMTYvMjAxNyAwNTozMSBQTSwgVWxyaWNo
+IEhlY2h0IHdyb3RlOgo+ID4gSGkhCj4gPiAKPiA+IFRoaXMgaXMgYSBuZXcgcmV2aXNpb24gb2Yg
+dGhlIEFjZXIgQ2hyb21lYm9vayBSMTMgc3VwcG9ydCBzZXJpZXMuIEl0IGRvZXMKPiA+IG5vdCBv
+ZmZlciBhbnl0aGluZyBuZXcgaW4gdGVybXMgb2YgZnVuY3Rpb25hbGl0eSwgYnV0IGVsaW1pbmF0
+ZXMgdGhyZWUgb3V0Cj4gPiBvZiBmb3VyIHVnbHkgaGFja3MgYW5kIGFkZHMgYSBmZXcgbWlub3Ig
+Y2xlYW51cHM7IHNlZSBiZWxvdyBmb3IgZGV0YWlscy4KPiA+IFRoYW5rcyB0byBSb2JpbiBNdXJw
+aHkgYW5kIENLIEh1IGZvciB0aGVpciBjb21tZW50cyBhbmQgc3VnZ2VzdGlvbnMhCj4gPiAKPiA+
+IEknbSBzdGlsbCBsb29raW5nIGZvciBhZHZpY2Ugb24gaG93IHRvIGltcGxlbWVudCB0aGUgZHVh
+bC1yb2xlIG1tc3lzIGRldmljZQo+ID4gY29ycmVjdGx5OyBzZWUgImhhY2s6IG1lZGlhdGVrOiBn
+ZXQgbW1zeXMgdG8gcmVnaXN0ZXIgYXMgYm90aCBEUk0gYW5kIGNsb2NrCj4gPiBkZXZpY2UiIGZv
+ciBkZXRhaWxzIG9uIHRoaXMuCj4gPiAKPiA+IExpa2UgdGhlIHByZXZpb3VzIHJldmlzaW9uLCB5
+b3UgY2FuIGZpbmQgdGhpcyBzZXJpZXMgYXQKPiA+IGh0dHBzOi8vZ2l0aHViLmNvbS91bGkva2Vy
+bmVsL3RyZWUvZWxtLXdvcmtpbmcsIHdoaWNoIGFsc28gY29udGFpbnMgYSBjb25maWcKPiA+IGZp
+bGUgYW5kIHNldmVyYWwgYW5jaWxsYXJ5IGJpdHMgdGhhdCBhcmUgcmVxdWlyZWQgdG8gYnVpbGQg
+YSBrZXJuZWwKPiA+IHBhcnRpdGlvbiBmb3IgdGhlIENocm9tZWJvb2suIEluc3RydWN0aW9ucyBv
+biBob3cgdG8gZG8gc28gKGFuZCB2YXJpb3VzCj4gPiBvdGhlciB0aGluZ3MgdGhhdCBoYXZlIHRv
+IGJlIGRvbmUgdG8gZ2V0IGl0IHJ1bm5pbmcgb24geW91ciBkZXZpY2UpIGFyZQo+ID4gYXZhaWxh
+YmxlIGF0Cj4gPiBodHRwczovL3d3dy5lbGludXgub3JnL1VzZXI6VWxpL0FjZXJfQ2hyb21lYm9v
+a19SMTNfR1BVX3Rlc3Rfc3lzdGVtIChUaGVzZQo+ID4gaW5zdHJ1Y3Rpb25zIGhhdmUgYmVlbiB3
+cml0dGVuIGZvciB0aGUgdmVuZG9yIGtlcm5lbCwgYnV0IGFwcGx5IHRvIG1haW5saW5lCj4gPiBh
+cyB3ZWxsLCBleGNlcHQgdGhhdCB5b3Ugd29uJ3QgbmVlZCBhbnkgZXh0cmEgcGF0Y2hlcy4pCj4g
+PiAKPiAKPiBJIGFwcHJlY2lhdGUgeW91ciBlZmZvcnRzIHRvIGdldCB0aGlzIGRvbmUuIAoKQWdy
+ZWVkLCB0aGFua3MgZm9yIGRvaW5nIHRoaXMgd29yayBhbmQgcG9zdGluZyBpdCEgCgo+IEZyb20g
+d2hhdCBJIHVuZGVyc3RhbmQgeW91Cj4gcmViYXNlZCB0aGUgcGF0Y2hlcyBmcm9tIHRoZSBjaHJv
+bWl1bSBrZXJuZWwgdG8gbWFpbmxpbmUuIFNvIHlvdSBzaG91bGQga2VlcAo+IHRoZSBzaWduZWQt
+b2ZmLWJ5IGZyb20gdGhlIG9yaWdpbmFsIGF1dGhvciBhbmQganVzdCBhZGQgeW91IHNpZ25lZC1v
+ZmYtYnkKPiBiZWxvdyB0aGF0Lgo+IEFsc28gaXQgd291bGQgYmUgbmljZSB0byBDQyB0aGVzZSBw
+ZXJzb25zIHNvIHRoYXQgdGhleSBhcmUgYXdhcmUgb2YgeW91ciBlZmZvcnQuCj4gCgpBZGRpdGlv
+bmFsbHksIG1ha2Ugc3VyZSB0aGUgYXV0aG9yIGFuZCBjb21taXQgbWVzc2FnZXMgYXJlIHByZXNl
+cnZlZCB3aGVuIHlvdSBzZW5kCnBhdGNoZXMuIFlvdSBjYW4gYWRkIHlvdXIgb3duIG1lc3NhZ2Ug
+aW4gYWRkaXRpb24gdG8geW91ciBTb0IsIGJ1dCBwbGVhc2UgdHJ5IHRvCnByZXNlcnZlIGhpc3Rv
+cnkuCgpTZWFuCgoKPiA+IENVCj4gPiBVbGkKPiA+IAo+ID4gQ2hhbmdlcyBzaW5jZSBSRkMgdjE6
+Cj4gPiAtIGNtZHE6IHJlbW92ZSBvYnNvbGV0ZSBkcml2ZXI7IG5vdCBjdXJyZW50bHkgdXNlZCBh
+bnl3YXkKPiAKPiBBcmUgeW91IHN1cmUgYWJvdXQgdGhpcz8gSSByZW1lbWJlciB0aGF0IERhbiAo
+Q0MnZWQpIHRvbGQgbWUgdGhhdCB0aGlzIGlzCj4gb25lIG9mIHRoZSByZXF1aXJlbWVudHMgdG8g
+Z2V0IHVwc3RyZWFtIHdvcmtpbmcuCj4gCj4gRGFuLCBjYW4geW91IGNsYXJpZnkgcGxlYXNlPwo+
+IAo+IFJlZ2FyZHMsCj4gTWF0dGhpYXMKPiAKPiA+IC0gZHQ6IHJlbW92ZSBDRCBHUElPIGZyb20g
+bW1jMSwgZG9lcyBub3Qgc2VlbSB0byBiZSBjb3JyZWN0Cj4gPiAtIG1tYzogcmVtb3ZlIG10ay1z
+ZC5jIHJldmVydCBoYWNrICh3b3JrcyBmaW5lIHdpdGhvdXQgdGhlIENEIHBpbikKPiA+IC0gZHNp
+OiBmaXggcG9ydCBudW1iZXIgZm9yIGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZSgpLCByZW1v
+dmUgaGFjawo+ID4gLSBmYmRldjogYWRkIG1pc3NpbmcgU2lnbmVkLW9mZi1ieXMKPiA+IC0gaW9t
+bXU6IHJlbW92ZSBpby1wZ3RhYmxlIHNhbml0eSBjaGVjayBoYWNrLCBoYXMgYmVlbiBwcm9wZXJs
+eSBmaXhlZAo+ID4gLSBtaW5vciBzdHlsZSBmaXhlcwo+ID4gCj4gPiAKPiA+IFVscmljaCBIZWNo
+dCAoOCk6Cj4gPiAgICBkcm0vYnJpZGdlOiBHUElPLWNvbnRyb2xsZWQgZGlzcGxheSBtdWx0aXBs
+ZXhlciBkcml2ZXIKPiA+ICAgIHBsYXRmb3JtL2Nocm9tZTogQ2hyb21lT1MgZmlybXdhcmUgaW50
+ZXJmYWNlIGRyaXZlcgo+ID4gICAgZHJtL2JyaWRnZTogUGFyYWRlIFBTODY0MCBNSVBJIERTSSAt
+PiBlRFAgY29udmVydGVyIGRyaXZlcgo+ID4gICAgZHJtL2JyaWRnZTogQW5hbG9naXggQU5YNzY4
+OCBIRE1JIC0+IERQIGJyaWRnZSBkcml2ZXIKPiA+ICAgIGFybTY0OiBkdHM6IG1lZGlhdGVrOiBB
+ZGQgRWxtIFJldi4gMyBkZXZpY2UgdHJlZQo+ID4gICAgaGFjazogbWVkaWF0ZWs6IGdldCBtbXN5
+cyB0byByZWdpc3RlciBhcyBib3RoIERSTSBhbmQgY2xvY2sgZGV2aWNlCj4gPiAgICBkcm0vbWVk
+aWF0ZWs6IEFkZCBEUk0tYmFzZWQgZnJhbWVidWZmZXIgZGV2aWNlCj4gPiAgICBkcm06IG1lZGlh
+dGVrOiBGaXggZHJtX29mX2ZpbmRfcGFuZWxfb3JfYnJpZGdlIGNvbnZlcnNpb24KPiA+IAo+ID4g
+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL01ha2VmaWxlICAgICAgICAgICAgfCAgICAx
+ICsKPiA+ICAgYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxNzMtZWxtLXJldjMuZHRz
+IHwgICAyMSArCj4gPiAgIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTczLWVsbS5k
+dHNpICAgICB8ICAyMTAgKysrKwo+ID4gICBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210
+ODE3My1vYWsuZHRzaSAgICAgfCAxMDEzICsrKysrKysrKysrKysrKysrKysrCj4gPiAgIGRyaXZl
+cnMvY2xrL21lZGlhdGVrL2Nsay1tdDgxNzMuYyAgICAgICAgICAgICAgICB8ICAgIDQgKy0KPiA+
+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9LY29uZmlnICAgICAgICAgICAgICAgICAgIHwgICAz
+MiArCj4gPiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvTWFrZWZpbGUgICAgICAgICAgICAgICAg
+ICB8ICAgIDUgKwo+ID4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4LWFueDc2ODgu
+YyAgICAgICAgfCAgMjMzICsrKysrCj4gPiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZ2VuZXJp
+Yy1ncGlvLW11eC5jICAgICAgICB8ICAzMTYgKysrKysrKwo+ID4gICBkcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL3BhcmFkZS1wczg2NDAuYyAgICAgICAgICAgfCAxMTA0ICsrKysrKysrKysrKysrKysr
+KysrKysKPiA+ICAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01ha2VmaWxlICAgICAgICAgICAg
+ICAgIHwgICAgMiArCj4gPiAgIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMgICAg
+ICAgICAgICAgICB8ICAgIDUgKy0KPiA+ICAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+cm1fZGRwLmMgICAgICAgICAgIHwgICAgNSArLQo+ID4gICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9kcnYuYyAgICAgICAgICAgfCAgIDE1ICsKPiA+ICAgZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fZHJ2LmggICAgICAgICAgIHwgICAgNCArLQo+ID4gICBkcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9mYi5jICAgICAgICAgICAgfCAgIDEzICsKPiA+ICAg
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuaCAgICAgICAgICAgIHwgICAgMyAr
+Cj4gPiAgIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2ZiZGV2LmMgICAgICAgICB8
+ICAxODEgKysrKwo+ID4gICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9mYmRldi5o
+ICAgICAgICAgfCAgIDMyICsKPiA+ICAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2ku
+YyAgICAgICAgICAgICAgIHwgICAgMiArLQo+ID4gICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2hkbWkuYyAgICAgICAgICAgICAgfCAgICA1ICstCj4gPiAgIGRyaXZlcnMvcGxhdGZvcm0v
+Y2hyb21lL0tjb25maWcgICAgICAgICAgICAgICAgICB8ICAgMTggKwo+ID4gICBkcml2ZXJzL3Bs
+YXRmb3JtL2Nocm9tZS9NYWtlZmlsZSAgICAgICAgICAgICAgICAgfCAgICAyICsKPiA+ICAgZHJp
+dmVycy9wbGF0Zm9ybS9jaHJvbWUvY2hyb21lb3MuYyAgICAgICAgICAgICAgIHwgIDEyMCArKysK
+PiA+ICAgZHJpdmVycy9wbGF0Zm9ybS9jaHJvbWUvY2hyb21lb3MuaCAgICAgICAgICAgICAgIHwg
+ICA2MSArKwo+ID4gICBkcml2ZXJzL3BsYXRmb3JtL2Nocm9tZS9jaHJvbWVvc19hcm0uYyAgICAg
+ICAgICAgfCAgMjY0ICsrKysrKwo+ID4gICBkcml2ZXJzL3BsYXRmb3JtL2Nocm9tZS9lbG9nLmgg
+ICAgICAgICAgICAgICAgICAgfCAgMTg2ICsrKysKPiA+ICAgaW5jbHVkZS9saW51eC9jaHJvbWVv
+c19wbGF0Zm9ybS5oICAgICAgICAgICAgICAgIHwgICAyNyArCj4gPiAgIDI4IGZpbGVzIGNoYW5n
+ZWQsIDM4NzQgaW5zZXJ0aW9ucygrKSwgMTAgZGVsZXRpb25zKC0pCj4gPiAgIGNyZWF0ZSBtb2Rl
+IDEwMDY0NCBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE3My1lbG0tcmV2My5kdHMK
+PiA+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4
+MTczLWVsbS5kdHNpCj4gPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybTY0L2Jvb3QvZHRz
+L21lZGlhdGVrL210ODE3My1vYWsuZHRzaQo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC1hbng3Njg4LmMKPiA+ICAgY3JlYXRlIG1vZGUgMTAw
+NjQ0IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZ2VuZXJpYy1ncGlvLW11eC5jCj4gPiAgIGNyZWF0
+ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3BhcmFkZS1wczg2NDAuYwo+ID4g
+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZmJk
+ZXYuYwo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kcm1fZmJkZXYuaAo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9wbGF0Zm9ybS9j
+aHJvbWUvY2hyb21lb3MuYwo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9wbGF0Zm9y
+bS9jaHJvbWUvY2hyb21lb3MuaAo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9wbGF0
+Zm9ybS9jaHJvbWUvY2hyb21lb3NfYXJtLmMKPiA+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
+cnMvcGxhdGZvcm0vY2hyb21lL2Vsb2cuaAo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgaW5jbHVk
+ZS9saW51eC9jaHJvbWVvc19wbGF0Zm9ybS5oCj4gPiAKPiAKPiBfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBs
+aXN0Cj4gbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCgotLSAKU2Vh
+biBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
+bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
