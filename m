@@ -1,54 +1,117 @@
-From: Russell King - ARM Linux <linux@armlinux.org.uk>
-Subject: Re: [PATCH v9 00/20] simplify crypto wait for async op
-Date: Tue, 17 Oct 2017 15:06:29 +0100
-Message-ID: <20171017140629.GO20805@n2100.armlinux.org.uk>
-References: <1508059209-25529-1-git-send-email-gilad@benyossef.com>
+From: Will Deacon <will.deacon@arm.com>
+Subject: Re: [RFC/PATCH v3] arm64: define MODULES_VADDR by module_alloc_base
+Date: Tue, 17 Oct 2017 15:43:28 +0100
+Message-ID: <20171017144328.GG14051@arm.com>
+References: <1504093593-2586-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-crypto-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1508059209-25529-1-git-send-email-gilad@benyossef.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Gilad Ben-Yossef <gilad@benyossef.com>
-Cc: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, Jonathan Corbet <corbet@lwn.net>, David Howells <dhowells@redhat.com>, Tom Lendacky <thomas.lendacky@amd.com>, Gary Hook <gary.hook@amd.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Arnaud Ebalard <arno@natisbad.org>, Matthias Brugger <matthias.bgg@gmail.com>, Alasdair Kergon <agk@redhat.com>, Mike Snitzer <snitzer@redhat.com>, dm-devel@redhat.com, Steve French <sfrench@samba.org>, "Theodore Y. Ts'o" <tytso@mit.edu>, Jaegeuk Kim <jaegeuk@kernel.org>, Steffen Klassert <steffen.klassert@secunet.com>, Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>, Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>, Mimi Zohar <zohar@linux.vnet.ibm.com>, Dmitry Kasatkin <dmitry.ka>
+In-Reply-To: <1504093593-2586-1-git-send-email-miles.chen@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Miles Chen <miles.chen@mediatek.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Oct 15, 2017 at 10:19:45AM +0100, Gilad Ben-Yossef wrote:
-> Many users of kernel async. crypto services have a pattern of
-> starting an async. crypto op and than using a completion
-> to wait for it to end.
+On Wed, Aug 30, 2017 at 07:46:33PM +0800, Miles Chen wrote:
+> After the kernel ASLR, the module virtual address is moved to
+> [module_alloc_base, module_alloc_base + MODULES_VSIZE).
+> However, the MODULES_VADDR is still defined as a constant and functions
+> like is_vmalloc_or_module_addr() or dump functions will not able to
+> use correct module range information.
 > 
-> This patch set simplifies this common use case in two ways:
+> The patch omits modules information in virtual kenrel memory layout if
+> the modules area is fully mapped whitin vmalloc area.
 > 
-> First, by separating the return codes of the case where a
-> request is queued to a backlog due to the provider being
-> busy (-EBUSY) from the case the request has failed due
-> to the provider being busy and backlogging is not enabled
-> (-EAGAIN).
+> Use module_alloc_base to define MODULES_VADDR. I tested the patch under
+> three different conditions:
+> 1.CONFIG_RANDOMIZE_BASE=y, seed=0
+> CONFIG_KASAN=n
+> 2.CONFIG_RANDOMIZE_BASE=y, seed=0x2304909023333333
+> CONFIG_KASAN=n
+> 3.CONFIG_RANDOMIZE_BASE=y, seed=0x2304909023333333
+> CONFIG_KASAN=y
 > 
-> Next, this change is than built on to create a generic API
-> to wait for a async. crypto operation to complete.
-> 
-> The end result is a smaller code base and an API that is
-> easier to use and more difficult to get wrong.
-> 
-> The patch set was boot tested on x86_64 and arm64 which
-> at the very least tests the crypto users via testmgr and
-> tcrypt but I do note that I do not have access to some
-> of the HW whose drivers are modified nor do I claim I was
-> able to test all of the corner cases.
-> 
-> The patch set is based upon linux-next release tagged
-> next-20171013.
+> test log:
 
-Has there been any performance impact analysis of these changes?  I
-ended up with patches for one of the crypto drivers which converted
-its interrupt handling to threaded interrupts being reverted because
-it caused a performance degredation.
+[...]
 
-Moving code to latest APIs to simplify it is not always beneficial.
+> diff --git a/arch/arm64/mm/dump.c b/arch/arm64/mm/dump.c
+> index ca74a2a..18be771 100644
+> --- a/arch/arm64/mm/dump.c
+> +++ b/arch/arm64/mm/dump.c
+> @@ -29,15 +29,36 @@
+>  #include <asm/pgtable-hwdef.h>
+>  #include <asm/ptdump.h>
+>  
+> -static const struct addr_marker address_markers[] = {
+> +enum marker {
+> +#ifdef CONFIG_KASAN
+> +	E_KASAN_SHADOW_START,
+> +	E_KASAN_SHADOW_END,
+> +#endif
+> +	E_MODULES_VADDR,
+> +	E_MODULES_END,
+> +	E_VMALLOC_START,
+> +	E_VMALLOC_END,
+> +	E_FIXADDR_START,
+> +	E_FIXADDR_TOP,
+> +	E_PCI_IO_START,
+> +	E_PCI_IO_END,
+> +#ifdef CONFIG_SPARSEMEM_VMEMMAP
+> +	E_VMEMMAP_START,
+> +	E_VMEMMAP_END,
+> +#endif
+> +	E_PAGE_OFFSET,
+> +	E_NR_MARKER,
+> +};
+> +
+> +static struct addr_marker address_markers[] = {
+>  #ifdef CONFIG_KASAN
+>  	{ KASAN_SHADOW_START,		"Kasan shadow start" },
+>  	{ KASAN_SHADOW_END,		"Kasan shadow end" },
+>  #endif
+> -	{ MODULES_VADDR,		"Modules start" },
+> -	{ MODULES_END,			"Modules end" },
+> -	{ VMALLOC_START,		"vmalloc() Area" },
+> -	{ VMALLOC_END,			"vmalloc() End" },
+> +	{ -1,				"Modules start" },
+> +	{ -1,				"Modules end" },
+> +	{ -1,				"vmalloc() Area" },
+> +	{ -1,				"vmalloc() End" },
+>  	{ FIXADDR_START,		"Fixmap start" },
+>  	{ FIXADDR_TOP,			"Fixmap end" },
+>  	{ PCI_IO_START,			"PCI I/O start" },
+> @@ -362,10 +383,32 @@ void ptdump_walk_pgd(struct seq_file *m, struct ptdump_info *info)
+>  	note_page(&st, 0, 0, 0);
+>  }
+>  
+> +static void fixup_markers(void)
+> +{
+> +	int i;
+> +
+> +	address_markers[E_MODULES_VADDR].start_address = MODULES_VADDR;
+> +	address_markers[E_MODULES_END].start_address = MODULES_END;
+> +	address_markers[E_VMALLOC_START].start_address = VMALLOC_START;
+> +	address_markers[E_VMALLOC_END].start_address = VMALLOC_END;
+> +
+> +	if (MODULES_VADDR < VMALLOC_START) {
+> +		address_markers[E_MODULES_END].start_address =
+> +			(MODULES_END < VMALLOC_START) ?
+> +			MODULES_END : VMALLOC_START;
+> +	} else {
+> +		/* modules is contains in vamlloc area, don't show them */
+> +		for (i = E_MODULES_VADDR; i <= E_NR_MARKER - 2; i++)
+> +			address_markers[i] = address_markers[i + 2];
+> +	}
+> +}
 
--- 
-RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line in suburbia: sync at 8.8Mbps down 630kbps up
-According to speedtest.net: 8.21Mbps down 510kbps up
+This all seems a bit over-engineered to me and we end up having to maintain
+enum marker in conjunction with the address_markers array. Fixing the array
+up at runtime also worries me slightly, because we end up with the last two
+entries being duplicated. That doesn't seem to hurt for now, but it's weird
+and I can imagine it causing problems in the future.
+
+Is there not a simpler fix here?
+
+Will
