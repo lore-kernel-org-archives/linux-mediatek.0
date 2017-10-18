@@ -1,135 +1,289 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [RFC v2 0/8] Acer Chromebook R13 support
-Date: Wed, 18 Oct 2017 19:07:17 +0300
-Message-ID: <2941483.y22NiLZHxy@avalon>
-References: <1508167900-27415-1-git-send-email-ulrich.hecht+renesas@gmail.com>
- <CAO3366wSii-P+=qzSO13-fqTUnXrx6DJ76+Bt1-wvYPOC8wNDA@mail.gmail.com>
- <26935926.iWbvre9SVm@avalon>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: Re: [RFC 03/12] mtd: nand: use a static data_interface in the
+ nand_chip structure
+Date: Wed, 18 Oct 2017 19:02:55 +0200
+Message-ID: <20171018190255.3b223d7e@bbrezillon>
+References: <20171018143629.29302-1-miquel.raynal@free-electrons.com>
+ <20171018143629.29302-4-miquel.raynal@free-electrons.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <26935926.iWbvre9SVm@avalon>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Ulrich Hecht <ulrich.hecht+renesas@gmail.com>
-Cc: Jacopo Mondi <jacopo@jmondi.org>, Magnus Damm <magnus.damm@gmail.com>, linux-mediatek@lists.infradead.org, DRI Development <dri-devel@lists.freedesktop.org>, Matthias Brugger <matthias.bgg@gmail.com>, robin.murphy@arm.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+In-Reply-To: <20171018143629.29302-4-miquel.raynal@free-electrons.com>
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: Miquel Raynal <miquel.raynal@free-electrons.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Andrew Lunn <andrew@lunn.ch>, Catalin Marinas <catalin.marinas@arm.com>, Hanna Hawa <hannah@marvell.com>, Will Deacon <will.deacon@arm.com>, Stefan Agner <stefan@agner.ch>, Nadav Haklai <nadavh@marvell.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mtd@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, devel@driverdev.osuosl.org, Maxim Levitsky <maximlevitsky@gmail.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Josh Wu <rainyfeeling@outlook.com>, Russell King <linux@armlinux.org.uk>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Ezequiel Garcia <ezequiel.garcia@free-electrons.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Marc Gonzalez <marc_gonzalez@sigma>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgVWxyaWNoLAoKT24gV2VkbmVzZGF5LCAxOCBPY3RvYmVyIDIwMTcgMTg6NTc6MTQgRUVTVCBM
-YXVyZW50IFBpbmNoYXJ0IHdyb3RlOgo+IE9uIFdlZG5lc2RheSwgMTggT2N0b2JlciAyMDE3IDE3
-OjUzOjU0IEVFU1QgVWxyaWNoIEhlY2h0IHdyb3RlOgo+ID4gT24gVHVlLCBPY3QgMTcsIDIwMTcg
-YXQgNjowNSBQTSwgU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+IHdyb3RlOgo+ID4g
-PiBPbiBUdWUsIE9jdCAxNywgMjAxNyBhdCAxMjozMzowOVBNICswMjAwLCBNYXR0aGlhcyBCcnVn
-Z2VyIHdyb3RlOgo+ID4gPj4gRnJvbSB3aGF0IEkgdW5kZXJzdGFuZCB5b3UKPiA+ID4+IHJlYmFz
-ZWQgdGhlIHBhdGNoZXMgZnJvbSB0aGUgY2hyb21pdW0ga2VybmVsIHRvIG1haW5saW5lLiBTbyB5
-b3Ugc2hvdWxkCj4gPiA+PiBrZWVwIHRoZSBzaWduZWQtb2ZmLWJ5IGZyb20gdGhlIG9yaWdpbmFs
-IGF1dGhvciBhbmQganVzdCBhZGQgeW91Cj4gPiA+PiBzaWduZWQtb2ZmLWJ5IGJlbG93IHRoYXQu
-Cj4gPiA+PiBBbHNvIGl0IHdvdWxkIGJlIG5pY2UgdG8gQ0MgdGhlc2UgcGVyc29ucyBzbyB0aGF0
-IHRoZXkgYXJlIGF3YXJlIG9mCj4gPiA+PiB5b3VyCj4gPiA+PiBlZmZvcnQuPgo+ID4gPiAKPiA+
-ID4gQWRkaXRpb25hbGx5LCBtYWtlIHN1cmUgdGhlIGF1dGhvciBhbmQgY29tbWl0IG1lc3NhZ2Vz
-IGFyZSBwcmVzZXJ2ZWQKPiA+ID4gd2hlbgo+ID4gPiB5b3Ugc2VuZCBwYXRjaGVzLiBZb3UgY2Fu
-IGFkZCB5b3VyIG93biBtZXNzYWdlIGluIGFkZGl0aW9uIHRvIHlvdXIgU29CLAo+ID4gPiBidXQg
-cGxlYXNlIHRyeSB0byBwcmVzZXJ2ZSBoaXN0b3J5Lgo+ID4gCj4gPiBGYWlyIGVub3VnaCwgYnV0
-IEknbSBub3Qgc3VyZSB3aGF0IGV4YWN0bHkgdG8gaW5jbHVkZS4gVGhlIGNocm9taXVtCj4gPiBj
-b21taXRzIGluY2x1ZGUsIGFtb25nIG90aGVyIHRoaW5nczoKPiA+IAo+ID4gLSBidWd0cmFja2Vy
-IG51bWJlcnMgYW5kIHRlc3QgY2FzZXMKPiA+IC0gIkNoYW5nZS1JZCIgYW5kICJDb21taXQtUmVh
-ZHkiIChubyBpZGVhIHdoYXQgdGhvc2UgYXJlKQo+ID4gLSAiUmV2aWV3ZWQtb24iLCBjb250YWlu
-aW5nIGxpbmtzIHRvIGNocm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tCj4gPiAKPiA+IFdp
-dGggYWxsIGNoYW5nZXMgdG8gdGhlIFBTODY0MCBkcml2ZXIgY29uY2F0ZW5hdGVkIGFuZCBub24t
-c3RhbmRhcmQKPiA+IHRhZ3MgcmVtb3ZlZCwgdGhlIGNvbW1pdCBtZXNzYWdlIHdvdWxkIGxvb2sg
-bGlrZSB0aGlzOgo+ID4gCj4gPiA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PQo+ID4gCj4g
-PiAgICAgQ0hST01JVU06IGRybS9icmlkZ2U6IEFkZCBJMkMgYmFzZWQgZHJpdmVyIGZvciBwczg2
-NDAgYnJpZGdlCj4gPiAgICAgCj4gPiAgICAgVGhpcyBwYXRjaCBhZGRzIGRybV9icmlkZ2UgZHJp
-dmVyIGZvciBwYXJhZGUgRFNJIHRvIGVEUCBicmlkZ2UgY2hpcC4KPiA+ICAgICAKPiA+ICAgICBT
-aWduZWQtb2ZmLWJ5OiBKaXRhbyBTaGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+Cj4gPiAgICAg
-KGFtIGZyb20gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC84MzU3ODUxLykKPiA+
-ICAgICBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgo+
-ID4gICAgIFRlc3RlZC1ieTogY2F3YSBjaGVuZyA8Y2F3YS5jaGVuZ0BtZWRpYXRlay5jb20+Cj4g
-PiAgICAgVGVzdGVkLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgo+ID4g
-ICAgIFJldmlld2VkLWJ5OiBOaWNvbGFzIEJvaWNoYXQgPGRyaW5rY2F0QGNocm9taXVtLm9yZz4K
-PiA+ICAgICAKPiA+ICAgICAKPiA+ICAgICBGSVhVUDogRlJPTUxJU1Q6IGRybS9icmlkZ2U6IEFk
-ZCBJMkMgYmFzZWQgZHJpdmVyIGZvciBwczg2NDAgYnJpZGdlCj4gPiAgICAgCj4gPiAgICAgY2hy
-b21lb3MtMy4xOCBjdXJyZW50bHkgaGFzIEZST01MSVNUIHYxNSBvZiB0aGUgUFM4NjQwIGRyaXZl
-ci4KPiA+ICAgICBUaGlzIHZlcnNpb24gaXMgaW5jb21wYXRpYmxlIHdpdGggVVBTVFJFQU0gdmVy
-c2lvbiBvZiB0aGUgTWVkaWF0ZWsKPiA+ICAgICBEUk0gZHJpdmVyLgo+ID4gICAgIAo+ID4gICAg
-IFRvIHF1b3RlIFBoaWxpcHAgWmFiZWw6Cj4gPiAgICAgIlRoZSBtYWluIERSTSBkcml2ZXIgbXRr
-X2RybV9kcnYgbm93IGNhbGxzCj4gPiAgICAgZHJtX2Nvbm5lY3Rvcl9yZWdpc3Rlcl9hbGwoKSBh
-ZnRlciBkcm1fZGV2X3JlZ2lzdGVyKCkgaW4gdGhlCj4gPiAgICAgbXRrX2RybV9iaW5kKCkgZnVu
-Y3Rpb24uIFRoYXQgZnVuY3Rpb24gc2hvdWxkIGl0ZXJhdGUgb3ZlciBhbGwKPiA+ICAgICBjb25u
-ZWN0b3JzIGFuZCBjYWxsIGRybV9jb25uZWN0b3JfcmVnaXN0ZXIoKSBmb3IgZWFjaCBvZiB0aGVt
-Lgo+ID4gICAgIFRoZSBjYWxsIHRvIGRybV9jb25uZWN0b3JfaW5pdCgpIGZyb20gbXRrX2hkbWlf
-YnJpZGdlX2F0dGFjaCgpCj4gPiAgICAgc2hvdWxkIGJlIGVub3VnaCB0byBtYWtlIHRoaXMgaGFw
-cGVuLgo+ID4gICAgIAo+ID4gICAgIFRoZSBkcm1fY29ubmVjdG9yXyh1bilyZWdpc3RlciBjYWxs
-cyBhbHNvIGhhdmUgdG8gYmUgcmVtb3ZlZAo+ID4gICAgIGZyb20gdGhlIHBzODY0MCBkcml2ZXIu
-Igo+ID4gICAgIAo+ID4gICAgIFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1l
-ZGlhdGVrLmNvbT4KPiA+ICAgICBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpA
-Y2hyb21pdW0ub3JnPgo+ID4gICAgIFRlc3RlZC1ieTogUEMgTGlhbyA8cGMubGlhb0BtZWRpYXRl
-ay5jb20+Cj4gPiAgICAgVGVzdGVkLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0u
-b3JnPgo+ID4gICAgIFRlc3RlZC1ieTogTmljb2xhcyBCb2ljaGF0IDxkcmlua2NhdEBjaHJvbWl1
-bS5vcmc+Cj4gPiAgICAgUmV2aWV3ZWQtYnk6IERhbmllbCBLdXJ0eiA8ZGprdXJ0ekBjaHJvbWl1
-bS5vcmc+Cj4gPiAgICAgCj4gPiAgICAgCj4gPiAgICAgQ0hST01JVU06IGRybS9icmlkZ2U6IHBz
-ODY0MDogQWRkIGEgMyBtcyBkZWxheSBiZWZvcmUgdW5tdXRpbmcgb3V0cHV0Cj4gPiAgICAgCj4g
-PiAgICAgRm9yIGN1cnJlbnQgcHM4NjQwIGZpcm13YXJlLCB0aGUgUFNfR1BJTzkgc2lnbmFsIG9u
-bHkgaW5kaWNhdGVzIHRoZQo+ID4gCj4gPiBicmlkZ2UgaGFzIHNlZW4gdGhlIGF0dGFjaGVkIHBh
-bmVsJ3MgSFBEIHNpZ25hbCBhbmQgcmVhZCBpdHMgRURJRC4KPiA+IFVuZm9ydHVuYXRlbHksIHRo
-ZSBicmlkZ2UgbWF5IG5vdCB5ZXQgYmUgcmVhZHkgdG8gcHJvcGVybHkgaGFuZGxlIERTSS9lRFAK
-PiA+IHRyYWZmaWMgeWV0Lgo+ID4gCj4gPiAgICAgRm9yIG5vdywgUGFyYWRldGVjaCBoYXMgcmVj
-b21tZW5kZWQgYWRkaW5nIGEgMyBtcyBkZWxheSBhZnRlciBQU19HUElPOQo+ID4gICAgIGJlZm9y
-ZSBzdGFydGluZyB2aWRlbyBzaWduYWwgdHJhbnNtaXNzaW9uLgo+ID4gICAgIAo+ID4gICAgIFNp
-Z25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNvbT4KPiA+ICAgICBT
-aWduZWQtb2ZmLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgo+ID4gICAg
-IAo+ID4gICAgIFRlc3RlZC1ieTogY2F3YSBjaGVuZyA8Y2F3YS5jaGVuZ0BtZWRpYXRlay5jb20+
-Cj4gPiAgICAgVGVzdGVkLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgo+
-ID4gICAgIFRlc3RlZC1ieTogaml0YW8gc2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPgo+ID4g
-ICAgIFJldmlld2VkLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgo+ID4g
-ICAgIFJldmlld2VkLWJ5OiBqaXRhbyBzaGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+Cj4gPiAg
-ICAgCj4gPiAgICAgCj4gPiAgICAgQ0hST01JVU06IGRybS9icmlkZ2U6IHBzODY0MDogZGlzYWJs
-ZSBNSVBJIE1DUwo+ID4gICAgIAo+ID4gICAgIERpc2FibGUgUFM4NjQwIE1JUEkgTUNTIGNvbW1h
-bmRzIHRvIHdvcmthcm91bmQgYW4gaXNzdWUgd2hlcmUgbm9ybWFsCj4gPiAgICAgTUlQSSBEU0kg
-c2lnbmFscyBhcmUgc29tZXRpbWVzIHJlY29nbml6ZWQgYXMgYW4gTVNDIGNvbW1hbmQgdGhhdCBj
-YW4sCj4gPiAgICAgZm9yIGV4YW1wbGUsIGRpc2FibGUgdGhlIGJyaWRnZSBvdXRwdXQuCj4gPiAg
-ICAgCj4gPiAgICAgU2lnbmVkLW9mZi1ieTogSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsu
-Y29tPgo+ID4gICAgIFRlc3RlZC1ieTogRGFuaWVsIEt1cnR6IDxkamt1cnR6QGNocm9taXVtLm9y
-Zz4KPiA+ICAgICBSZXZpZXdlZC1ieTogRGFuaWVsIEt1cnR6IDxkamt1cnR6QGNocm9taXVtLm9y
-Zz4KPiA+ICAgICAKPiA+ICAgICAKPiA+ICAgICBDSFJPTUlVTTogZHJtL2JyaWRnZTogcHM4NjQw
-OiBVc2UgaW5kaXZpZHVhbCByZWd1bGF0b3JzIGluc3RlYWQgb2YKPiA+ICAgICBidWxrCj4gPiAg
-ICAgCj4gPiAgICAgQWNjb3JkaW5nIHRvIHRoZSBsYXRlc3QgaW5mb3JtYXRpb24gZnJvbSBQYXJh
-ZGUsIHRoZSBQUzg2NDAgMS4yIFYKPiA+ICAgICBzdXBwbHkgbXVzdCBiZSBlbmFibGVkIGJlZm9y
-ZSAzLjMgVi4KPiA+ICAgICBTbywgc3BsaXQgdGhlIGJ1bGsgcmVndWxhdG9yIGludG8gc2VwYXJh
-dGUgaW5kaXZpZHVhbCByZWd1bGF0b3JzIHRoYXQKPiA+ICAgICBjYW4gYmUgZW5hYmxlZCBpbmRl
-cGVuZGVudGx5Lgo+ID4gICAgIAo+ID4gICAgIFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0
-YW8uc2hpQG1lZGlhdGVrLmNvbT4KPiA+ICAgICAKPiA+ICAgICBUZXN0ZWQtYnk6IERhbmllbCBL
-dXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+Cj4gPiAgICAgUmV2aWV3ZWQtYnk6IERhbmllbCBL
-dXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+Cj4gPiAgICAgCj4gPiAgICAgCj4gPiAgICAgQ0hS
-T01JVU06IGRybS9icmlkZ2U6IHBzODY0MDogYWRkIDVtcyBkZWxheSBiZXR3ZWVuIHYxMiBhbmQg
-djMzCj4gPiAgICAgCj4gPiAgICAgQWNjb3JkaW5nIHRvIFBhcmFkZSwgdGhlIFBTODY0MCAxLjJW
-IG11c3QgYmUgZW5hYmxlZCA1IG1zIGJlZm9yZSBpdHMKPiA+ICAgICAzLjNWLiBPdGhlcndpc2Us
-IHRoZSBQUzg2NTAgTUNVIG1heSBoYW5nLCBhbmQgaXRzIHNldHRpbmdzIGNhbm5vdCBiZQo+ID4g
-ICAgIHdyaXR0ZW4gY29ycmVjdGx5LCBsZWFkaW5nIHRvIGEgYmxhY2sgc2NyZWVuLgo+ID4gICAg
-IAo+ID4gICAgIFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNv
-bT4KPiA+ICAgICBUZXN0ZWQtYnk6IERhbmllbCBLdXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+
-Cj4gPiAgICAgUmV2aWV3ZWQtYnk6IERhbmllbCBLdXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+
-Cj4gPiAKPiA+ID09PT09PT09PT09PT09PT09PT09PT09PT09PT09Cj4gPiAKPiA+IFRoYXQga2Vl
-cHMgY2hyb25vbG9neSBhbmQgYXR0cmlidXRpb24gaW50YWN0LCBidXQgaXMgc29tZXdoYXQKPiA+
-IHJlZHVuZGFudC4gQW55IHN1Z2dlc3Rpb25zIG9uIGhvdyB0byBkaWdlc3QgaXQ/IE9yIHNob3Vs
-ZCBJIGp1c3QgYWRkCj4gPiBpdCBhcyBpcz8KPiAKPiBJIHdvdWxkIGtlZXAgYWxsIHRoZSBTb0Ig
-bGluZXMsIGJ1dCBhcGFydCBmcm9tIHRoYXQgSSBkb24ndCB0aGluayB0aGVyZSdzIGEKPiBuZWVk
-IHRvIGNvcHkgYWxsIGNvbW1pdCBtZXNzYWdlcy4gWW91IGNhbiBleHRyYWN0IHJlbGV2YW50IGlu
-Zm9ybWF0aW9uIGZvciBhCj4gZGlnZXN0LCBidXQgdGhlcmUncyBubyBwb2ludCBpbiBjb3B5aW5n
-IHRoZSB3aG9sZSBoaXN0b3J5LgoKTXkgY29tbWVudCBvYnZpb3VzbHkgcmVmZXJyZWQgb25seSB0
-byBwYXRjaGVzIHRoYXQgYWRkIGEgbmV3IGRyaXZlci4gRm9yIApmaXhlcywgeW91IHNob3VsZCBp
-bmRlZWQgbm90IHNxdWFzaCB0aGVtIGFsbCBidXQgc3VibWl0IHRoZW0gYXMgaW5kaXZpZHVhbCAK
-cGF0Y2hlcy4gU29tZSBvZiB0aGVtIGNhbiBiZSBzcXVhc2hlZCBhcyBuZWVkZWQsIGZvciBpbnN0
-YW5jZSBhIGNoYW5nZSB0aGF0IGlzIApsYXRlciByZXZlcnRlZCBjYW4gYmUgb21pdHRlZCBjb21w
-bGV0ZWx5LgoKLS0gClJlZ2FyZHMsCgpMYXVyZW50IFBpbmNoYXJ0CgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
-aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Wed, 18 Oct 2017 16:36:20 +0200
+Miquel Raynal <miquel.raynal@free-electrons.com> wrote:
+
+> Change the data_interface field from the nand_chip structure, convert
+> the pointer to a static structure.
+
+You mean "embed a nand_data_interface object". Not sure the static
+specifier can be used to describe what you do.
+
+> 
+> Also remove the nand_get_default_data_interface() function that become
+> useless and rename the onfi_init_data_interface() by
+> nand_fill_data_interface(),
+
+I know I'm the one who suggested to rename this function, but I'm not
+so sure it's a good idea in the end, and I don't like the new prototype
+where you drop the iface_type parameter.
+
+> which is a more appropriate name because
+> applied timings are ONFI, no matter if the NAND actually is one.
+
+Well, this is actually a good reason to keep the onfi_ prefix. A NAND
+driver can decide that its NAND is close to an existing timing mode and
+re-use this onfi_init_data_interface(), but maybe someday we'll have
+drivers filling the nand_data_interface object with their own
+(non-ONFI) timings.
+
+> 
+> This is needed before passing to ->exec_op() to avoid any race that
+
+It's not really a race, it's just that you need some timings during
+NAND detection, and the core is currently creating the
+nand_data_interface object after the detection step (in
+nand_scan_tail()).
+
+> could lead to a panic (null pointer dereference) on the initialization
+> of the timings structure that will be used from the first reset
+> operation if the pointer to data_interface was not referenced yet.
+> 
+> Signed-off-by: Miquel Raynal <miquel.raynal@free-electrons.com>
+> ---
+>  drivers/mtd/nand/nand_base.c    | 35 ++++++++++-------------------------
+>  drivers/mtd/nand/nand_timings.c | 23 ++++++-----------------
+>  include/linux/mtd/rawnand.h     |  9 ++-------
+>  3 files changed, 18 insertions(+), 49 deletions(-)
+> 
+> diff --git a/drivers/mtd/nand/nand_base.c b/drivers/mtd/nand/nand_base.c
+> index 318595c29053..bef20e06f0db 100644
+> --- a/drivers/mtd/nand/nand_base.c
+> +++ b/drivers/mtd/nand/nand_base.c
+> @@ -814,8 +814,8 @@ static void nand_ccs_delay(struct nand_chip *chip)
+>  	 * Wait tCCS_min if it is correctly defined, otherwise wait 500ns
+>  	 * (which should be safe for all NANDs).
+>  	 */
+> -	if (chip->data_interface && chip->data_interface->timings.sdr.tCCS_min)
+> -		ndelay(chip->data_interface->timings.sdr.tCCS_min / 1000);
+> +	if (chip->data_interface.timings.sdr.tCCS_min)
+> +		ndelay(chip->data_interface.timings.sdr.tCCS_min / 1000);
+>  	else
+>  		ndelay(500);
+>  }
+> @@ -1107,7 +1107,6 @@ static int nand_wait(struct mtd_info *mtd, struct nand_chip *chip)
+>  static int nand_reset_data_interface(struct nand_chip *chip, int chipnr)
+>  {
+>  	struct mtd_info *mtd = nand_to_mtd(chip);
+> -	const struct nand_data_interface *conf;
+>  	int ret;
+>  
+>  	if (!chip->setup_data_interface)
+> @@ -1127,8 +1126,8 @@ static int nand_reset_data_interface(struct nand_chip *chip, int chipnr)
+>  	 * timings to timing mode 0.
+>  	 */
+>  
+> -	conf = nand_get_default_data_interface();
+> -	ret = chip->setup_data_interface(mtd, chipnr, conf);
+> +	nand_fill_data_interface(chip, 0);
+> +	ret = chip->setup_data_interface(mtd, chipnr, &chip->data_interface);
+>  	if (ret)
+>  		pr_err("Failed to configure data interface to SDR timing mode 0\n");
+>  
+
+So now you're stuck in timing mode 0 as soon as you have nand_reset()
+called.
+
+Actually, what we should do is:
+
+1/ at the beginning of nand_scan_ident(), call
+   onfi_init_data_interface(chip, &chip->data_interface, NAND_SDR_IFACE, 0)
+   (or a wrapper that does that) so that data_interface is initialized with
+   the appropriate timings for reset/detection operations
+2/ after detection, find the best iface type and timing mode we can use
+   (what's currently done in nand_init_data_interface())
+3/ in nand_reset(), you should save what's in chip->data_interface, in a
+   local variable, then apply SDR+timing-mode-0 and finally restore the
+   previous settings (the one you stored in your local variable) after
+   the RESET op.
+
+This way you're guaranteed to always end up with the best data iface
+settings after a RESET.
+
+> @@ -1153,7 +1152,7 @@ static int nand_setup_data_interface(struct nand_chip *chip, int chipnr)
+>  	struct mtd_info *mtd = nand_to_mtd(chip);
+>  	int ret;
+>  
+> -	if (!chip->setup_data_interface || !chip->data_interface)
+> +	if (!chip->setup_data_interface)
+>  		return 0;
+>  
+>  	/*
+> @@ -1174,7 +1173,7 @@ static int nand_setup_data_interface(struct nand_chip *chip, int chipnr)
+>  			goto err;
+>  	}
+>  
+> -	ret = chip->setup_data_interface(mtd, chipnr, chip->data_interface);
+> +	ret = chip->setup_data_interface(mtd, chipnr, &chip->data_interface);
+>  err:
+>  	return ret;
+>  }
+> @@ -1214,21 +1213,16 @@ static int nand_init_data_interface(struct nand_chip *chip)
+>  		modes = GENMASK(chip->onfi_timing_mode_default, 0);
+>  	}
+>  
+> -	chip->data_interface = kzalloc(sizeof(*chip->data_interface),
+> -				       GFP_KERNEL);
+> -	if (!chip->data_interface)
+> -		return -ENOMEM;
+>  
+>  	for (mode = fls(modes) - 1; mode >= 0; mode--) {
+> -		ret = onfi_init_data_interface(chip, chip->data_interface,
+> -					       NAND_SDR_IFACE, mode);
+> +		ret = nand_fill_data_interface(chip, mode);
+>  		if (ret)
+>  			continue;
+>  
+>  		/* Pass -1 to only */
+>  		ret = chip->setup_data_interface(mtd,
+>  						 NAND_DATA_IFACE_CHECK_ONLY,
+> -						 chip->data_interface);
+> +						 &chip->data_interface);
+>  		if (!ret) {
+>  			chip->onfi_timing_mode_default = mode;
+>  			break;
+> @@ -1238,11 +1232,6 @@ static int nand_init_data_interface(struct nand_chip *chip)
+>  	return 0;
+>  }
+>  
+> -static void nand_release_data_interface(struct nand_chip *chip)
+> -{
+> -	kfree(chip->data_interface);
+> -}
+> -
+>  /**
+>   * nand_read_page_op - Do a READ PAGE operation
+>   * @chip: The NAND chip
+> @@ -5567,7 +5556,7 @@ int nand_scan_tail(struct mtd_info *mtd)
+>  		chip->select_chip(mtd, -1);
+>  
+>  		if (ret)
+> -			goto err_nand_data_iface_cleanup;
+> +			goto err_nand_manuf_cleanup;
+>  	}
+>  
+>  	/* Check, if we should skip the bad block table scan */
+> @@ -5577,12 +5566,10 @@ int nand_scan_tail(struct mtd_info *mtd)
+>  	/* Build bad block table */
+>  	ret = chip->scan_bbt(mtd);
+>  	if (ret)
+> -		goto err_nand_data_iface_cleanup;
+> +		goto err_nand_manuf_cleanup;
+>  
+>  	return 0;
+>  
+> -err_nand_data_iface_cleanup:
+> -	nand_release_data_interface(chip);
+>  
+>  err_nand_manuf_cleanup:
+>  	nand_manufacturer_cleanup(chip);
+> @@ -5641,8 +5628,6 @@ void nand_cleanup(struct nand_chip *chip)
+>  	    chip->ecc.algo == NAND_ECC_BCH)
+>  		nand_bch_free((struct nand_bch_control *)chip->ecc.priv);
+>  
+> -	nand_release_data_interface(chip);
+> -
+>  	/* Free bad block table memory */
+>  	kfree(chip->bbt);
+>  	if (!(chip->options & NAND_OWN_BUFFERS) && chip->buffers) {
+> diff --git a/drivers/mtd/nand/nand_timings.c b/drivers/mtd/nand/nand_timings.c
+> index 5d1533bcc5bd..745b6404c901 100644
+> --- a/drivers/mtd/nand/nand_timings.c
+> +++ b/drivers/mtd/nand/nand_timings.c
+> @@ -283,17 +283,17 @@ const struct nand_sdr_timings *onfi_async_timing_mode_to_sdr_timings(int mode)
+>  EXPORT_SYMBOL(onfi_async_timing_mode_to_sdr_timings);
+>  
+>  /**
+> - * onfi_init_data_interface - [NAND Interface] Initialize a data interface from
+> + * nand_fill_data_interface - [NAND Interface] Initialize a data interface from
+>   * given ONFI mode
+>   * @iface: The data interface to be initialized
+>   * @mode: The ONFI timing mode
+>   */
+> -int onfi_init_data_interface(struct nand_chip *chip,
+> -			     struct nand_data_interface *iface,
+> -			     enum nand_data_interface_type type,
+> +int nand_fill_data_interface(struct nand_chip *chip,
+>  			     int timing_mode)
+>  {
+> -	if (type != NAND_SDR_IFACE)
+> +	struct nand_data_interface *iface = &chip->data_interface;
+> +
+> +	if (iface->type != NAND_SDR_IFACE)
+>  		return -EINVAL;
+>  
+>  	if (timing_mode < 0 || timing_mode >= ARRAY_SIZE(onfi_sdr_timings))
+> @@ -321,15 +321,4 @@ int onfi_init_data_interface(struct nand_chip *chip,
+>  
+>  	return 0;
+>  }
+> -EXPORT_SYMBOL(onfi_init_data_interface);
+> -
+> -/**
+> - * nand_get_default_data_interface - [NAND Interface] Retrieve NAND
+> - * data interface for mode 0. This is used as default timing after
+> - * reset.
+> - */
+> -const struct nand_data_interface *nand_get_default_data_interface(void)
+> -{
+> -	return &onfi_sdr_timings[0];
+> -}
+> -EXPORT_SYMBOL(nand_get_default_data_interface);
+> +EXPORT_SYMBOL(nand_fill_data_interface);
+> diff --git a/include/linux/mtd/rawnand.h b/include/linux/mtd/rawnand.h
+> index 04f4cfbe6c09..1acc26ed0e91 100644
+> --- a/include/linux/mtd/rawnand.h
+> +++ b/include/linux/mtd/rawnand.h
+> @@ -917,7 +917,7 @@ struct nand_chip {
+>  	u16 max_bb_per_die;
+>  	u32 blocks_per_die;
+>  
+> -	struct nand_data_interface *data_interface;
+> +	struct nand_data_interface data_interface;
+>  
+>  	int read_retries;
+>  
+> @@ -1214,10 +1214,7 @@ static inline int onfi_get_sync_timing_mode(struct nand_chip *chip)
+>  	return le16_to_cpu(chip->onfi_params.src_sync_timing_mode);
+>  }
+>  
+> -int onfi_init_data_interface(struct nand_chip *chip,
+> -			     struct nand_data_interface *iface,
+> -			     enum nand_data_interface_type type,
+> -			     int timing_mode);
+> +int nand_fill_data_interface(struct nand_chip *chip, int timing_mode);
+>  
+>  /*
+>   * Check if it is a SLC nand.
+> @@ -1258,8 +1255,6 @@ static inline int jedec_feature(struct nand_chip *chip)
+>  
+>  /* get timing characteristics from ONFI timing mode. */
+>  const struct nand_sdr_timings *onfi_async_timing_mode_to_sdr_timings(int mode);
+> -/* get data interface from ONFI timing mode 0, used after reset. */
+> -const struct nand_data_interface *nand_get_default_data_interface(void);
+>  
+>  int nand_check_erased_ecc_chunk(void *data, int datalen,
+>  				void *ecc, int ecclen,
