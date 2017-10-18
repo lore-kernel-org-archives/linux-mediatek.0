@@ -1,111 +1,585 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v6 5/7] soc: mediatek: pwrap: add MediaTek MT6380 as one slave of pwrap
-Date: Wed, 18 Oct 2017 16:28:46 +0800
-Message-ID: <81b419e1b38a06326aac53bfe0de01fae54805a0.1508313105.git.sean.wang@mediatek.com>
-References: <cover.1508313105.git.sean.wang@mediatek.com>
+From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [RFC 06/11] arm64: dts: mediatek: Add Elm Rev. 3 device tree
+Date: Wed, 18 Oct 2017 16:49:34 +0800
+Message-ID: <1508316574.13340.8.camel@mtksdaap41>
+References: <1506690553-27357-1-git-send-email-ulrich.hecht+renesas@gmail.com>
+ <1506690553-27357-7-git-send-email-ulrich.hecht+renesas@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1508313105.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: matthias.bgg@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: chen.zhong@mediatek.com, chenglin.xu@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1506690553-27357-7-git-send-email-ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: jacopo-AW8dsiIh9cEdnm+yROfE0A@public.gmane.org, magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
 
-Add MediaTek MT6380 regulator becoming one of PMIC wrapper slave
-and also add extra new regmap_config of 32-bit mode for MT6380
-since old regmap_config of 16-bit mode can't be fit into the need.
+Hi,
 
-Signed-off-by: Chenglin Xu <chenglin.xu@mediatek.com>
-Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 24 +++++++++++++++++++++---
- 1 file changed, 21 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index e3398e3..45c3e44 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -507,6 +507,7 @@ struct pmic_wrapper;
- struct pwrap_slv_type {
- 	const u32 *dew_regs;
- 	enum pmic_type type;
-+	const struct regmap_config *regmap;
- 	/* Flags indicating the capability for the target slave */
- 	u32 caps;
- 	/*
-@@ -1149,7 +1150,7 @@ static irqreturn_t pwrap_interrupt(int irqno, void *dev_id)
- 	return IRQ_HANDLED;
- }
- 
--static const struct regmap_config pwrap_regmap_config = {
-+static const struct regmap_config pwrap_regmap_config16 = {
- 	.reg_bits = 16,
- 	.val_bits = 16,
- 	.reg_stride = 2,
-@@ -1158,9 +1159,19 @@ static const struct regmap_config pwrap_regmap_config = {
- 	.max_register = 0xffff,
- };
- 
-+static const struct regmap_config pwrap_regmap_config32 = {
-+	.reg_bits = 32,
-+	.val_bits = 32,
-+	.reg_stride = 4,
-+	.reg_read = pwrap_regmap_read,
-+	.reg_write = pwrap_regmap_write,
-+	.max_register = 0xffff,
-+};
-+
- static const struct pwrap_slv_type pmic_mt6323 = {
- 	.dew_regs = mt6323_regs,
- 	.type = PMIC_MT6323,
-+	.regmap = &pwrap_regmap_config16,
- 	.caps = PWRAP_SLV_CAP_SPI | PWRAP_SLV_CAP_DUALIO |
- 		PWRAP_SLV_CAP_SECURITY,
- 	.pwrap_read = pwrap_read16,
-@@ -1170,6 +1181,7 @@ static const struct pwrap_slv_type pmic_mt6323 = {
- static const struct pwrap_slv_type pmic_mt6380 = {
- 	.dew_regs = NULL,
- 	.type = PMIC_MT6380,
-+	.regmap = &pwrap_regmap_config32,
- 	.caps = 0,
- 	.pwrap_read = pwrap_read32,
- 	.pwrap_write = pwrap_write32,
-@@ -1178,6 +1190,7 @@ static const struct pwrap_slv_type pmic_mt6380 = {
- static const struct pwrap_slv_type pmic_mt6397 = {
- 	.dew_regs = mt6397_regs,
- 	.type = PMIC_MT6397,
-+	.regmap = &pwrap_regmap_config16,
- 	.caps = PWRAP_SLV_CAP_SPI | PWRAP_SLV_CAP_DUALIO |
- 		PWRAP_SLV_CAP_SECURITY,
- 	.pwrap_read = pwrap_read16,
-@@ -1189,9 +1202,14 @@ static const struct of_device_id of_slave_match_tbl[] = {
- 		.compatible = "mediatek,mt6323",
- 		.data = &pmic_mt6323,
- 	}, {
-+		/* The MT6380 PMIC only implements a regulator, so we bind it
-+		 * directly instead of using a MFD.
-+		 */
-+		.compatible = "mediatek,mt6380-regulator",
-+		.data = &pmic_mt6380,
-+	}, {
- 		.compatible = "mediatek,mt6397",
- 		.data = &pmic_mt6397,
--	}, {
- 		/* sentinel */
- 	}
- };
-@@ -1372,7 +1390,7 @@ static int pwrap_probe(struct platform_device *pdev)
- 	if (ret)
- 		goto err_out2;
- 
--	wrp->regmap = devm_regmap_init(wrp->dev, NULL, wrp, &pwrap_regmap_config);
-+	wrp->regmap = devm_regmap_init(wrp->dev, NULL, wrp, wrp->slave->regmap);
- 	if (IS_ERR(wrp->regmap)) {
- 		ret = PTR_ERR(wrp->regmap);
- 		goto err_out2;
--- 
-2.7.4
+On Fri, 2017-09-29 at 15:09 +0200, Ulrich Hecht wrote:
+> Signed-off-by: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+>  arch/arm64/boot/dts/mediatek/Makefile            |    1 +
+>  arch/arm64/boot/dts/mediatek/mt8173-elm-rev3.dts |   21 +
+>  arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi     |  210 +++++
+>  arch/arm64/boot/dts/mediatek/mt8173-oak.dtsi     | 1014 ++++++++++++++++++++++
+>  4 files changed, 1246 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8173-elm-rev3.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8173-oak.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 151723b..0521e29 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -4,6 +4,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-rev3.dtb
+>  
+>  always		:= $(dtb-y)
+>  subdir-y	:= $(dts-dirs)
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm-rev3.dts b/arch/arm64/boot/dts/mediatek/mt8173-elm-rev3.dts
+> new file mode 100644
+> index 0000000..68d4095
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm-rev3.dts
+> @@ -0,0 +1,21 @@
+> +/*
+> + * Copyright 2016 MediaTek Inc.
+> + * Author: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8173-elm.dtsi"
+> +
+> +/ {
+> +	model = "Mediatek Elm rev3 board";
+> +	compatible = "google,elm-rev3", "google,elm", "mediatek,mt8173";
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> new file mode 100644
+> index 0000000..850037f
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> @@ -0,0 +1,210 @@
+> +/*
+> + * Copyright 2016 MediaTek Inc.
+> + * Author: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +#include "mt8173-oak.dtsi"
+> +
+> +/ {
+> +	hdmicon: connector {
+> +		compatible = "hdmi-connector";
+> +		label = "hdmi";
+> +		type = "a";
+> +
+> +		port {
+> +			hdmi_connector_in: endpoint {
+> +				remote-endpoint = <&hdmi_mux_out_hdmi>;
+> +			};
+> +		};
+> +	};
+> +
+> +	hdmi_mux: hdmi_mux {
+> +		compatible = "gpio-display-mux";
+
+Where is the binding for this?
+
+> +		status = "okay";
+> +		detect-gpios = <&pio 36 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&hdmi_mux_pins>;
+
+
+If you use gpio_request or related api, it will set pinmux
+automatically.
+Do we really need this pinctrl?
+
+> +		ddc-i2c-bus = <&hdmiddc0>;
+> +
+> +		ports {
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			port@0 { /* input */
+> +				reg = <0>;
+> +
+> +				hdmi_mux_in: endpoint {
+> +					remote-endpoint = <&hdmi0_out>;
+> +				};
+> +			};
+> +
+> +			port@1 { /* output */
+> +				reg = <1>;
+> +
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +
+> +				hdmi_mux_out_anx: endpoint@0 {
+> +					reg = <0>;
+> +					remote-endpoint = <&anx7688_in>;
+> +				};
+> +
+> +				hdmi_mux_out_hdmi: endpoint@1 {
+> +					reg = <1>;
+> +					remote-endpoint = <&hdmi_connector_in>;
+> +				};
+> +			};
+> +		};
+> +	};
+> +
+> +	sound: sound {
+> +		compatible = "mediatek,mt8173-rt5650";
+> +		mediatek,audio-codec = <&rt5650 &hdmi0>;
+> +		mediatek,mclk = <1>;
+> +		mediatek,platform = <&afe>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&aud_i2s2>;
+> +		codec-capture {
+> +			sound-dai = <&rt5650 1>;
+> +		};
+> +	};
+> +};
+> +
+> +&aud_i2s2 {
+> +	pins1 {
+> +		pinmux = <MT8173_PIN_128_I2S0_LRCK__FUNC_I2S1_WS>,
+> +			 <MT8173_PIN_129_I2S0_BCK__FUNC_I2S1_BCK>,
+> +			 <MT8173_PIN_130_I2S0_MCK__FUNC_I2S1_MCK>,
+> +			 <MT8173_PIN_131_I2S0_DATA0__FUNC_I2S1_DO_1>,
+> +			 <MT8173_PIN_12_EINT12__FUNC_I2S2_WS>,
+> +			 <MT8173_PIN_13_EINT13__FUNC_I2S2_BCK>,
+> +			 <MT8173_PIN_132_I2S0_DATA1__FUNC_I2S2_DI_2>;
+> +		bias-pull-down;
+> +	};
+> +};
+> +
+> +&cpu_thermal {
+> +	sustainable-power = <4500>; /* milliwatts */
+> +	trips {
+> +		threshold: trip-point@0 {
+> +			temperature = <60000>;
+> +		};
+> +
+> +		target: trip-point@1 {
+> +			temperature = <65000>;
+> +		};
+> +	};
+> +};
+> +
+> +&cros_ec {
+> +	i2c_tunnel_b: i2c-tunnel@1 {
+> +		compatible = "google,cros-ec-i2c-tunnel";
+> +		google,remote-bus = <1>;
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		anx7688: anx7688@2c {
+> +			compatible = "analogix,anx7688";
+> +			status = "okay";
+> +			reg = <0x2c>;
+> +
+> +			port {
+> +				anx7688_in: endpoint {
+> +					remote-endpoint = <&hdmi_mux_out_anx>;
+> +				};
+> +			};
+> +		};
+> +	};
+> +};
+> +
+> +&hdmi0 {
+> +	status = "okay";
+> +
+> +	ports {
+> +		port@1 {
+> +			reg = <1>;
+> +			hdmi0_out: endpoint {
+> +				remote-endpoint = <&hdmi_mux_in>;
+> +			};
+> +		};
+> +	};
+> +};
+> +
+> +&hdmi_phy {
+> +	status = "okay";
+> +	mediatek,ibias = <0xc>;
+> +};
+> +
+> +&i2c0 {
+> +	ps8640: edp-bridge@8 {
+> +		compatible = "parade,ps8640";
+
+binding?
+
+> +		reg = <0x8>;
+> +		sleep-gpios = <&pio 127 GPIO_ACTIVE_HIGH>;
+> +		reset-gpios = <&pio 115 GPIO_ACTIVE_HIGH>;
+> +		mode-sel-gpios = <&pio 92 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&ps8640_pins>;
+
+same here.
+Please check all pinctrl nodes that set FUNC to GPIO in this patch.
+
+> +		vdd12-supply = <&ps8640_fixed_1v2>;
+> +		vdd33-supply = <&mt6397_vgp2_reg>;
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		port@0 {
+> +			reg = <0>;
+> +
+> +			ps8640_in: endpoint {
+> +				remote-endpoint = <&dsi0_out>;
+> +			};
+> +		};
+> +
+> +		port@1 {
+> +			reg = <1>;
+> +
+> +			ps8640_out: endpoint {
+> +				remote-endpoint = <&panel_in>;
+> +			};
+> +		};
+> +	};
+> +};
+> +
+> +&gpio_keys {
+> +	lid {
+> +		gpios = <&pio 69 GPIO_ACTIVE_LOW>;
+> +	};
+> +};
+> +
+> +&mt6397_vgp6_reg {
+> +	regulator-always-on;
+> +};
+> +
+> +&pio {
+> +	hdmi_mux_pins: hdmi_mux_pins {
+> +		pins1 {
+> +			pinmux = <MT8173_PIN_36_DAISYNC__FUNC_GPIO36>;
+> +		};
+> +	};
+> +};
+> +
+> +&ps8640_fixed_1v2 {
+> +	regulator-enable-ramp-delay = <2000>;
+> +};
+> +
+> +&rt5650 {
+> +	#sound-dai-cells = <1>;
+> +	realtek,dmic1-data-pin = <2>;
+> +	realtek,jd-mode = <2>;
+> +};
+> +
+> +
+> +&trackpad {
+> +	vcc-supply = <&mt6397_vgp6_reg>;
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-oak.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-oak.dtsi
+> new file mode 100644
+> index 0000000..33a5b07
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-oak.dtsi
+> @@ -0,0 +1,1014 @@
+> +/*
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include "mt8173.dtsi"
+> +#include "mt8173-pinfunc.h"
+> +
+> +/ {
+> +	aliases {
+> +		serial0 = &uart0;
+> +		serial1 = &uart1;
+> +		serial2 = &uart2;
+> +		serial3 = &uart3;
+> +	};
+> +
+> +	memory@40000000 {
+> +		device_type = "memory";
+> +		reg = <0 0x40000000 0 0x80000000>;
+> +	};
+> +
+> +	backlight_lcd: backlight_lcd {
+> +		compatible = "pwm-backlight";
+> +		pwms = <&pwm0 0 1000000>;
+> +		brightness-levels = <
+> +			  0  16  32  48  64  80  96 112
+> +			128 144 160 176 192 208 224 240
+> +			255
+> +		>;
+> +		default-brightness-level = <9>;
+> +		power-supply = <&bl_fixed_reg>;
+> +		enable-gpios = <&pio 95 GPIO_ACTIVE_HIGH>;
+> +
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&disp_pwm0_pins>;
+> +		status = "okay";
+> +	};
+> +
+> +	bl_fixed_reg: fixedregulator@2 {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "bl_fixed";
+> +		regulator-min-microvolt = <1800000>;
+> +		regulator-max-microvolt = <1800000>;
+> +		startup-delay-us = <1000>;
+> +		enable-active-high;
+> +		gpio = <&pio 32 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&bl_fixed_pins>;
+> +	};
+> +
+> +	chosen {
+> +		linux,stdout-path = &uart0;
+> +	};
+> +
+> +	firmware {
+> +		chromeos {
+> +			pinctrl-names = "default";
+> +			pinctrl-0 = <&chromeos_write_protect>;
+> +			write-protect-gpio = <&pio 4 GPIO_ACTIVE_LOW>;
+> +		};
+> +	};
+> +
+> +	gpio_keys: gpio-keys {
+> +		compatible = "gpio-keys";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&gpio_keys_pins>;
+> +
+> +		lid {
+> +			label = "Lid";
+> +			gpios = <&pio 12 GPIO_ACTIVE_LOW>;
+> +			linux,code = <0>; /* SW_LID */
+> +			linux,input-type = <5>; /* EV_SW */
+> +			gpio-key,wakeup;
+> +		};
+> +
+> +		power {
+> +			label = "Power";
+> +			gpios = <&pio 14 GPIO_ACTIVE_HIGH>;
+> +			linux,code = <KEY_POWER>;
+> +			debounce-interval = <30>;
+> +			gpio-key,wakeup;
+> +		};
+> +
+> +		tablet_mode {
+> +			label = "Tablet_mode";
+> +			gpios = <&pio 121 GPIO_ACTIVE_HIGH>;
+> +			linux,code = <1>; /* SW_TABLET_MODE */
+> +			linux,input-type = <5>; /* EV_SW */
+> +			gpio-key,wakeup;
+> +		};
+> +
+> +		volume_down {
+> +			label = "Volume_down";
+> +			gpios = <&pio 123 GPIO_ACTIVE_LOW>;
+> +			linux,code = <KEY_VOLUMEDOWN>;
+> +		};
+> +
+> +		volume_up {
+> +			label = "Volume_up";
+> +			gpios = <&pio 124 GPIO_ACTIVE_LOW>;
+> +			linux,code = <KEY_VOLUMEUP>;
+> +		};
+> +	};
+> +
+> +	panel: panel {
+> +		compatible = "lg,lp120up1";
+> +		power-supply = <&panel_fixed_3v3>;
+> +		ddc-i2c-bus = <&i2c4>;
+> +		backlight = <&backlight_lcd>;
+> +
+> +		port {
+> +			panel_in: endpoint {
+> +				remote-endpoint = <&ps8640_out>;
+> +			};
+> +		};
+> +	};
+> +
+> +	panel_fixed_3v3: regulator@1 {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "PANEL_3V3";
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		enable-active-high;
+> +		gpio = <&pio 41 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&panel_fixed_pins>;
+> +	};
+> +
+> +	ps8640_fixed_1v2: regulator@2 {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "PS8640_1V2";
+> +		regulator-min-microvolt = <1200000>;
+> +		regulator-max-microvolt = <1200000>;
+> +		enable-active-high;
+> +		regulator-boot-on;
+> +		gpio = <&pio 30 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&ps8640_fixed_pins>;
+> +	};
+> +
+> +	sdio_fixed_3v3: fixedregulator@0 {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "3V3";
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		gpio = <&pio 85 GPIO_ACTIVE_HIGH>;
+> +	};
+> +
+> +	usb_p1_vbus: regulator@3 {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "usb_vbus";
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		gpio = <&pio 130 GPIO_ACTIVE_HIGH>;
+> +		enable-active-high;
+> +	};
+> +
+> +	usb_p0_vbus: regulator@4 {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vbus";
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		gpio = <&pio 9 GPIO_ACTIVE_HIGH>;
+> +		enable-active-high;
+> +	};
+> +};
+> +
+> +&cec {
+> +	status = "okay";
+> +};
+> +
+> +&cpu0 {
+> +	proc-supply = <&mt6397_vpca15_reg>;
+> +};
+> +
+> +&cpu1 {
+> +	proc-supply = <&mt6397_vpca15_reg>;
+> +};
+> +
+> +&cpu2 {
+> +	proc-supply = <&da9211_vcpu_reg>;
+> +	sram-supply = <&mt6397_vsramca7_reg>;
+> +};
+> +
+> +&cpu3 {
+> +	proc-supply = <&da9211_vcpu_reg>;
+> +	sram-supply = <&mt6397_vsramca7_reg>;
+> +};
+> +
+> +&cpu_thermal {
+> +	sustainable-power = <5000>; /* milliwatts */
+> +};
+> +
+> +&dsi0 {
+> +	status = "okay";
+> +	ports {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		port@1 {
+> +			reg = <1>;
+> +
+> +			dsi0_out: endpoint {
+> +				remote-endpoint = <&ps8640_in>;
+> +			};
+> +		};
+> +	};
+> +};
+> +
+> +&dpi0 {
+> +	status = "okay";
+> +};
+> +
+> +&hdmi_phy {
+> +	status = "okay";
+> +	mediatek,ibias = <0x3f>;
+> +};
+> +
+> +&i2c0 {
+> +	status = "okay";
+> +
+> +	rt5650: audio-codec@1a {
+> +		compatible = "realtek,rt5650";
+> +		reg = <0x1a>;
+> +		avdd-supply = <&mt6397_vgp1_reg>;
+> +		cpvdd-supply = <&mt6397_vcama_reg>;
+> +		interrupt-parent = <&pio>;
+> +		interrupts = <3 IRQ_TYPE_EDGE_BOTH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&rt5650_irq>;
+> +		realtek,jd-mode = <3>;
+> +	};
+> +};
+> +
+> +&i2c1 {
+> +	clock-frequency = <1500000>;
+> +	status = "okay";
+> +
+> +	da9211: da9211@68 {
+> +		compatible = "dlg,da9211";
+> +		reg = <0x68>;
+> +
+> +		regulators {
+> +			da9211_vcpu_reg: BUCKA {
+> +				regulator-name = "VBUCKA";
+> +				regulator-min-microvolt = < 700000>;
+> +				regulator-max-microvolt = <1310000>;
+> +				regulator-min-microamp  = <2000000>;
+> +				regulator-max-microamp  = <4400000>;
+> +				regulator-ramp-delay = <10000>;
+> +				regulator-always-on;
+> +/*				regulator-supported-modes =
+> +					<REGULATOR_OPERATION_MODE_FAST
+> +					 REGULATOR_OPERATION_MODE_NORMAL>;*/
+
+Please remove unused code.
+Same for all comment out parts in this patch.
+
+
+Joe.C
