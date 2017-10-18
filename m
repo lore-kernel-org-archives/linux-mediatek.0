@@ -1,585 +1,494 @@
-From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RFC 06/11] arm64: dts: mediatek: Add Elm Rev. 3 device tree
-Date: Wed, 18 Oct 2017 16:49:34 +0800
-Message-ID: <1508316574.13340.8.camel@mtksdaap41>
-References: <1506690553-27357-1-git-send-email-ulrich.hecht+renesas@gmail.com>
- <1506690553-27357-7-git-send-email-ulrich.hecht+renesas@gmail.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH v2 2/4] rtc: mediatek: add driver for RTC on MT7622 SoC
+Date: Wed, 18 Oct 2017 17:52:34 +0800
+Message-ID: <1508320354.13340.19.camel@mtksdaap41>
+References: <cover.1508231935.git.sean.wang@mediatek.com>
+         <2f86eebfd380cf932808df3404e2f4a6f2f0f874.1508231935.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1506690553-27357-7-git-send-email-ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: jacopo-AW8dsiIh9cEdnm+yROfE0A@public.gmane.org, magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <2f86eebfd380cf932808df3404e2f4a6f2f0f874.1508231935.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: a.zummo@towertech.it, alexandre.belloni@free-electrons.com, robh+dt@kernel.org, mark.rutland@arm.com, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-Hi,
-
-
-On Fri, 2017-09-29 at 15:09 +0200, Ulrich Hecht wrote:
-> Signed-off-by: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
->  arch/arm64/boot/dts/mediatek/Makefile            |    1 +
->  arch/arm64/boot/dts/mediatek/mt8173-elm-rev3.dts |   21 +
->  arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi     |  210 +++++
->  arch/arm64/boot/dts/mediatek/mt8173-oak.dtsi     | 1014 ++++++++++++++++++++++
->  4 files changed, 1246 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8173-elm-rev3.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8173-oak.dtsi
+On Tue, 2017-10-17 at 17:40 +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index 151723b..0521e29 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -4,6 +4,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-rev3.dtb
+> This patch introduces the driver for the RTC on MT7622 SoC.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  drivers/rtc/Kconfig      |  10 ++
+>  drivers/rtc/Makefile     |   1 +
+>  drivers/rtc/rtc-mt7622.c | 418 +++++++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 429 insertions(+)
+>  create mode 100644 drivers/rtc/rtc-mt7622.c
+> 
+> diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
+> index e0e58f3..4226295 100644
+> --- a/drivers/rtc/Kconfig
+> +++ b/drivers/rtc/Kconfig
+> @@ -1705,6 +1705,16 @@ config RTC_DRV_MOXART
+>  	   This driver can also be built as a module. If so, the module
+>  	   will be called rtc-moxart
 >  
->  always		:= $(dtb-y)
->  subdir-y	:= $(dts-dirs)
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm-rev3.dts b/arch/arm64/boot/dts/mediatek/mt8173-elm-rev3.dts
+> +config RTC_DRV_MEDIATEK
+> +	tristate "MediaTek SoC based RTC"
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	help
+> +	  This enables support for the real time clock built in the MediaTek
+> +	  SoCs.
+> +
+> +	  This drive can also be built as a module. If so, the module
+> +	  will be called rtc-mediatek.
+> +
+>  config RTC_DRV_MT6397
+>  	tristate "Mediatek Real Time Clock driver"
+>  	depends on MFD_MT6397 || (COMPILE_TEST && IRQ_DOMAIN)
+> diff --git a/drivers/rtc/Makefile b/drivers/rtc/Makefile
+> index 7230014..593a02c 100644
+> --- a/drivers/rtc/Makefile
+> +++ b/drivers/rtc/Makefile
+> @@ -101,6 +101,7 @@ obj-$(CONFIG_RTC_DRV_MOXART)	+= rtc-moxart.o
+>  obj-$(CONFIG_RTC_DRV_MPC5121)	+= rtc-mpc5121.o
+>  obj-$(CONFIG_RTC_DRV_VRTC)	+= rtc-mrst.o
+>  obj-$(CONFIG_RTC_DRV_MSM6242)	+= rtc-msm6242.o
+> +obj-$(CONFIG_RTC_DRV_MEDIATEK)	+= rtc-mt7622.o
+>  obj-$(CONFIG_RTC_DRV_MT6397)	+= rtc-mt6397.o
+>  obj-$(CONFIG_RTC_DRV_MV)	+= rtc-mv.o
+>  obj-$(CONFIG_RTC_DRV_MXC)	+= rtc-mxc.o
+> diff --git a/drivers/rtc/rtc-mt7622.c b/drivers/rtc/rtc-mt7622.c
 > new file mode 100644
-> index 0000000..68d4095
+> index 0000000..1f00494
 > --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm-rev3.dts
-> @@ -0,0 +1,21 @@
+> +++ b/drivers/rtc/rtc-mt7622.c
+> @@ -0,0 +1,418 @@
 > +/*
-> + * Copyright 2016 MediaTek Inc.
-> + * Author: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> + * Driver for MediaTek SoC based RTC
 > + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
+> + * Copyright (C) 2017 Sean Wang <sean.wang@mediatek.com>
+> + *
+> + * This program is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU General Public License as
+> + * published by the Free Software Foundation; either version 2 of
+> + * the License, or (at your option) any later version.
 > + *
 > + * This program is distributed in the hope that it will be useful,
 > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 > + * GNU General Public License for more details.
 > + */
 > +
-> +/dts-v1/;
-> +#include "mt8173-elm.dtsi"
+> +#include <linux/clk.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/module.h>
+> +#include <linux/of_address.h>
+> +#include <linux/of_device.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/rtc.h>
 > +
-> +/ {
-> +	model = "Mediatek Elm rev3 board";
-> +	compatible = "google,elm-rev3", "google,elm", "mediatek,mt8173";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> new file mode 100644
-> index 0000000..850037f
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> @@ -0,0 +1,210 @@
-> +/*
-> + * Copyright 2016 MediaTek Inc.
-> + * Author: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
+> +#define MTK_RTC_DEV KBUILD_MODNAME
+> +
+> +#define MTK_RTC_PWRCHK1		0x4
+> +#define	RTC_PWRCHK1_MAGIC	0xc6
+> +
+> +#define MTK_RTC_PWRCHK2		0x8
+> +#define	RTC_PWRCHK2_MAGIC	0x9a
+> +
+> +#define MTK_RTC_KEY		0xc
+> +#define	RTC_KEY_MAGIC		0x59
+> +
+> +#define MTK_RTC_PROT1		0x10
+> +#define	RTC_PROT1_MAGIC		0xa3
+> +
+> +#define MTK_RTC_PROT2		0x14
+> +#define	RTC_PROT2_MAGIC		0x57
+> +
+> +#define MTK_RTC_PROT3		0x18
+> +#define	RTC_PROT3_MAGIC		0x67
+> +
+> +#define MTK_RTC_PROT4		0x1c
+> +#define	RTC_PROT4_MAGIC		0xd2
+> +
+> +#define MTK_RTC_CTL		0x20
+> +#define	RTC_RC_STOP		BIT(0)
+> +
+> +#define MTK_RTC_DEBNCE		0x2c
+> +#define	RTC_DEBNCE_MASK		GENMASK(2, 0)
+> +
+> +#define MTK_RTC_INT		0x30
+> +#define RTC_INT_AL_STA		BIT(4)
+> +
+> +/* Ranges from 0x40 to 0x78 provide RTC time setup for year, month,
+> + * day of month, day of week, hour, minute and second.
 > + */
+> +#define MTK_RTC_TREG(_t, _f)	(0x40 + (0x4 * (_f)) + ((_t) * 0x20))
 > +
-> +#include "mt8173-oak.dtsi"
+> +#define MTK_RTC_AL_CTL		0x7c
+> +#define	RTC_AL_EN		BIT(0)
+> +#define	RTC_AL_ALL		GENMASK(7, 0)
 > +
-> +/ {
-> +	hdmicon: connector {
-> +		compatible = "hdmi-connector";
-> +		label = "hdmi";
-> +		type = "a";
+> +#define MTK_RTC_TM_YR_L		100
 > +
-> +		port {
-> +			hdmi_connector_in: endpoint {
-> +				remote-endpoint = <&hdmi_mux_out_hdmi>;
-> +			};
-> +		};
-> +	};
+> +/* The maximum years the RTC can support is 99, For MT7622 */
+> +#define MTK_RTC_HW_YR_LIMIT	100
 > +
-> +	hdmi_mux: hdmi_mux {
-> +		compatible = "gpio-display-mux";
+> +/* Types of the function the RTC provides are time counter and alarm. */
+> +enum {
+> +	MTK_TC,
+> +	MTK_AL,
+> +	MTK_TYPE_MAX,
+> +};
+> +
+> +/* Indexes are used for the pointer to relevant registers in MTK_RTC_TREG */
+> +enum {
+> +	MTK_YEA,
+> +	MTK_MON,
+> +	MTK_DOM,
+> +	MTK_DOW,
+> +	MTK_HOU,
+> +	MTK_MIN,
+> +	MTK_SEC
+> +};
+> +
+> +struct mtk_rtc {
+> +	struct rtc_device *rtc;
+> +	void __iomem *base;
+> +	int irq;
+> +	struct clk *clk;
+> +	u32 yr_base[MTK_TYPE_MAX];
+> +};
+> +
+> +static void mtk_w32(struct mtk_rtc *rtc, u32 reg, u32 val)
+> +{
+> +	writel_relaxed(val, rtc->base + reg);
+> +}
+> +
+> +static u32 mtk_r32(struct mtk_rtc *rtc, u32 reg)
+> +{
+> +	return readl_relaxed(rtc->base + reg);
+> +}
+> +
+> +static void mtk_rmw(struct mtk_rtc *rtc, u32 reg, u32 mask, u32 set)
+> +{
+> +	u32 val;
+> +
+> +	val = mtk_r32(rtc, reg);
+> +	val &= ~mask;
+> +	val |= set;
+> +	mtk_w32(rtc, reg, val);
+> +}
+> +
+> +static void mtk_set(struct mtk_rtc *rtc, u32 reg, u32 val)
+> +{
+> +	mtk_rmw(rtc, reg, 0, val);
+> +}
+> +
+> +static void mtk_clr(struct mtk_rtc *rtc, u32 reg, u32 val)
+> +{
+> +	mtk_rmw(rtc, reg, val, 0);
+> +}
+> +
+> +static void mtk_rtc_hw_init(struct mtk_rtc *hw)
+> +{
+> +	/* The setup of the init sequence is for allowing RTC got to work */
+> +	mtk_w32(hw, MTK_RTC_PWRCHK1, RTC_PWRCHK1_MAGIC);
+> +	mtk_w32(hw, MTK_RTC_PWRCHK2, RTC_PWRCHK2_MAGIC);
+> +	mtk_w32(hw, MTK_RTC_KEY, RTC_KEY_MAGIC);
+> +	mtk_w32(hw, MTK_RTC_PROT1, RTC_PROT1_MAGIC);
+> +	mtk_w32(hw, MTK_RTC_PROT2, RTC_PROT2_MAGIC);
+> +	mtk_w32(hw, MTK_RTC_PROT3, RTC_PROT3_MAGIC);
+> +	mtk_w32(hw, MTK_RTC_PROT4, RTC_PROT4_MAGIC);
+> +	mtk_rmw(hw, MTK_RTC_DEBNCE, RTC_DEBNCE_MASK, 0);
+> +	mtk_clr(hw, MTK_RTC_CTL, RTC_RC_STOP);
+> +}
+> +
+> +static void mtk_rtc_get_alarm_or_time(struct mtk_rtc *hw, struct rtc_time *tm,
+> +				      int time_alarm)
+> +{
+> +	u32 year, mon, mday, wday, hour, min, sec;
+> +
+> +	/*
+> +	 * Read again until the field of the second is not changed which
+> +	 * ensures all fields in the consistent state.
 
-Where is the binding for this?
+Sean,
 
-> +		status = "okay";
-> +		detect-gpios = <&pio 36 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&hdmi_mux_pins>;
-
-
-If you use gpio_request or related api, it will set pinmux
-automatically.
-Do we really need this pinctrl?
-
-> +		ddc-i2c-bus = <&hdmiddc0>;
-> +
-> +		ports {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			port@0 { /* input */
-> +				reg = <0>;
-> +
-> +				hdmi_mux_in: endpoint {
-> +					remote-endpoint = <&hdmi0_out>;
-> +				};
-> +			};
-> +
-> +			port@1 { /* output */
-> +				reg = <1>;
-> +
-> +				#address-cells = <1>;
-> +				#size-cells = <0>;
-> +
-> +				hdmi_mux_out_anx: endpoint@0 {
-> +					reg = <0>;
-> +					remote-endpoint = <&anx7688_in>;
-> +				};
-> +
-> +				hdmi_mux_out_hdmi: endpoint@1 {
-> +					reg = <1>;
-> +					remote-endpoint = <&hdmi_connector_in>;
-> +				};
-> +			};
-> +		};
-> +	};
-> +
-> +	sound: sound {
-> +		compatible = "mediatek,mt8173-rt5650";
-> +		mediatek,audio-codec = <&rt5650 &hdmi0>;
-> +		mediatek,mclk = <1>;
-> +		mediatek,platform = <&afe>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&aud_i2s2>;
-> +		codec-capture {
-> +			sound-dai = <&rt5650 1>;
-> +		};
-> +	};
-> +};
-> +
-> +&aud_i2s2 {
-> +	pins1 {
-> +		pinmux = <MT8173_PIN_128_I2S0_LRCK__FUNC_I2S1_WS>,
-> +			 <MT8173_PIN_129_I2S0_BCK__FUNC_I2S1_BCK>,
-> +			 <MT8173_PIN_130_I2S0_MCK__FUNC_I2S1_MCK>,
-> +			 <MT8173_PIN_131_I2S0_DATA0__FUNC_I2S1_DO_1>,
-> +			 <MT8173_PIN_12_EINT12__FUNC_I2S2_WS>,
-> +			 <MT8173_PIN_13_EINT13__FUNC_I2S2_BCK>,
-> +			 <MT8173_PIN_132_I2S0_DATA1__FUNC_I2S2_DI_2>;
-> +		bias-pull-down;
-> +	};
-> +};
-> +
-> +&cpu_thermal {
-> +	sustainable-power = <4500>; /* milliwatts */
-> +	trips {
-> +		threshold: trip-point@0 {
-> +			temperature = <60000>;
-> +		};
-> +
-> +		target: trip-point@1 {
-> +			temperature = <65000>;
-> +		};
-> +	};
-> +};
-> +
-> +&cros_ec {
-> +	i2c_tunnel_b: i2c-tunnel@1 {
-> +		compatible = "google,cros-ec-i2c-tunnel";
-> +		google,remote-bus = <1>;
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		anx7688: anx7688@2c {
-> +			compatible = "analogix,anx7688";
-> +			status = "okay";
-> +			reg = <0x2c>;
-> +
-> +			port {
-> +				anx7688_in: endpoint {
-> +					remote-endpoint = <&hdmi_mux_out_anx>;
-> +				};
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&hdmi0 {
-> +	status = "okay";
-> +
-> +	ports {
-> +		port@1 {
-> +			reg = <1>;
-> +			hdmi0_out: endpoint {
-> +				remote-endpoint = <&hdmi_mux_in>;
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&hdmi_phy {
-> +	status = "okay";
-> +	mediatek,ibias = <0xc>;
-> +};
-> +
-> +&i2c0 {
-> +	ps8640: edp-bridge@8 {
-> +		compatible = "parade,ps8640";
-
-binding?
-
-> +		reg = <0x8>;
-> +		sleep-gpios = <&pio 127 GPIO_ACTIVE_HIGH>;
-> +		reset-gpios = <&pio 115 GPIO_ACTIVE_HIGH>;
-> +		mode-sel-gpios = <&pio 92 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&ps8640_pins>;
-
-same here.
-Please check all pinctrl nodes that set FUNC to GPIO in this patch.
-
-> +		vdd12-supply = <&ps8640_fixed_1v2>;
-> +		vdd33-supply = <&mt6397_vgp2_reg>;
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		port@0 {
-> +			reg = <0>;
-> +
-> +			ps8640_in: endpoint {
-> +				remote-endpoint = <&dsi0_out>;
-> +			};
-> +		};
-> +
-> +		port@1 {
-> +			reg = <1>;
-> +
-> +			ps8640_out: endpoint {
-> +				remote-endpoint = <&panel_in>;
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&gpio_keys {
-> +	lid {
-> +		gpios = <&pio 69 GPIO_ACTIVE_LOW>;
-> +	};
-> +};
-> +
-> +&mt6397_vgp6_reg {
-> +	regulator-always-on;
-> +};
-> +
-> +&pio {
-> +	hdmi_mux_pins: hdmi_mux_pins {
-> +		pins1 {
-> +			pinmux = <MT8173_PIN_36_DAISYNC__FUNC_GPIO36>;
-> +		};
-> +	};
-> +};
-> +
-> +&ps8640_fixed_1v2 {
-> +	regulator-enable-ramp-delay = <2000>;
-> +};
-> +
-> +&rt5650 {
-> +	#sound-dai-cells = <1>;
-> +	realtek,dmic1-data-pin = <2>;
-> +	realtek,jd-mode = <2>;
-> +};
-> +
-> +
-> +&trackpad {
-> +	vcc-supply = <&mt6397_vgp6_reg>;
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-oak.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-oak.dtsi
-> new file mode 100644
-> index 0000000..33a5b07
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173-oak.dtsi
-> @@ -0,0 +1,1014 @@
-> +/*
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <dt-bindings/input/input.h>
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include "mt8173.dtsi"
-> +#include "mt8173-pinfunc.h"
-> +
-> +/ {
-> +	aliases {
-> +		serial0 = &uart0;
-> +		serial1 = &uart1;
-> +		serial2 = &uart2;
-> +		serial3 = &uart3;
-> +	};
-> +
-> +	memory@40000000 {
-> +		device_type = "memory";
-> +		reg = <0 0x40000000 0 0x80000000>;
-> +	};
-> +
-> +	backlight_lcd: backlight_lcd {
-> +		compatible = "pwm-backlight";
-> +		pwms = <&pwm0 0 1000000>;
-> +		brightness-levels = <
-> +			  0  16  32  48  64  80  96 112
-> +			128 144 160 176 192 208 224 240
-> +			255
-> +		>;
-> +		default-brightness-level = <9>;
-> +		power-supply = <&bl_fixed_reg>;
-> +		enable-gpios = <&pio 95 GPIO_ACTIVE_HIGH>;
-> +
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&disp_pwm0_pins>;
-> +		status = "okay";
-> +	};
-> +
-> +	bl_fixed_reg: fixedregulator@2 {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "bl_fixed";
-> +		regulator-min-microvolt = <1800000>;
-> +		regulator-max-microvolt = <1800000>;
-> +		startup-delay-us = <1000>;
-> +		enable-active-high;
-> +		gpio = <&pio 32 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&bl_fixed_pins>;
-> +	};
-> +
-> +	chosen {
-> +		linux,stdout-path = &uart0;
-> +	};
-> +
-> +	firmware {
-> +		chromeos {
-> +			pinctrl-names = "default";
-> +			pinctrl-0 = <&chromeos_write_protect>;
-> +			write-protect-gpio = <&pio 4 GPIO_ACTIVE_LOW>;
-> +		};
-> +	};
-> +
-> +	gpio_keys: gpio-keys {
-> +		compatible = "gpio-keys";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&gpio_keys_pins>;
-> +
-> +		lid {
-> +			label = "Lid";
-> +			gpios = <&pio 12 GPIO_ACTIVE_LOW>;
-> +			linux,code = <0>; /* SW_LID */
-> +			linux,input-type = <5>; /* EV_SW */
-> +			gpio-key,wakeup;
-> +		};
-> +
-> +		power {
-> +			label = "Power";
-> +			gpios = <&pio 14 GPIO_ACTIVE_HIGH>;
-> +			linux,code = <KEY_POWER>;
-> +			debounce-interval = <30>;
-> +			gpio-key,wakeup;
-> +		};
-> +
-> +		tablet_mode {
-> +			label = "Tablet_mode";
-> +			gpios = <&pio 121 GPIO_ACTIVE_HIGH>;
-> +			linux,code = <1>; /* SW_TABLET_MODE */
-> +			linux,input-type = <5>; /* EV_SW */
-> +			gpio-key,wakeup;
-> +		};
-> +
-> +		volume_down {
-> +			label = "Volume_down";
-> +			gpios = <&pio 123 GPIO_ACTIVE_LOW>;
-> +			linux,code = <KEY_VOLUMEDOWN>;
-> +		};
-> +
-> +		volume_up {
-> +			label = "Volume_up";
-> +			gpios = <&pio 124 GPIO_ACTIVE_LOW>;
-> +			linux,code = <KEY_VOLUMEUP>;
-> +		};
-> +	};
-> +
-> +	panel: panel {
-> +		compatible = "lg,lp120up1";
-> +		power-supply = <&panel_fixed_3v3>;
-> +		ddc-i2c-bus = <&i2c4>;
-> +		backlight = <&backlight_lcd>;
-> +
-> +		port {
-> +			panel_in: endpoint {
-> +				remote-endpoint = <&ps8640_out>;
-> +			};
-> +		};
-> +	};
-> +
-> +	panel_fixed_3v3: regulator@1 {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "PANEL_3V3";
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		enable-active-high;
-> +		gpio = <&pio 41 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&panel_fixed_pins>;
-> +	};
-> +
-> +	ps8640_fixed_1v2: regulator@2 {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "PS8640_1V2";
-> +		regulator-min-microvolt = <1200000>;
-> +		regulator-max-microvolt = <1200000>;
-> +		enable-active-high;
-> +		regulator-boot-on;
-> +		gpio = <&pio 30 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&ps8640_fixed_pins>;
-> +	};
-> +
-> +	sdio_fixed_3v3: fixedregulator@0 {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "3V3";
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		gpio = <&pio 85 GPIO_ACTIVE_HIGH>;
-> +	};
-> +
-> +	usb_p1_vbus: regulator@3 {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "usb_vbus";
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		gpio = <&pio 130 GPIO_ACTIVE_HIGH>;
-> +		enable-active-high;
-> +	};
-> +
-> +	usb_p0_vbus: regulator@4 {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vbus";
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		gpio = <&pio 9 GPIO_ACTIVE_HIGH>;
-> +		enable-active-high;
-> +	};
-> +};
-> +
-> +&cec {
-> +	status = "okay";
-> +};
-> +
-> +&cpu0 {
-> +	proc-supply = <&mt6397_vpca15_reg>;
-> +};
-> +
-> +&cpu1 {
-> +	proc-supply = <&mt6397_vpca15_reg>;
-> +};
-> +
-> +&cpu2 {
-> +	proc-supply = <&da9211_vcpu_reg>;
-> +	sram-supply = <&mt6397_vsramca7_reg>;
-> +};
-> +
-> +&cpu3 {
-> +	proc-supply = <&da9211_vcpu_reg>;
-> +	sram-supply = <&mt6397_vsramca7_reg>;
-> +};
-> +
-> +&cpu_thermal {
-> +	sustainable-power = <5000>; /* milliwatts */
-> +};
-> +
-> +&dsi0 {
-> +	status = "okay";
-> +	ports {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		port@1 {
-> +			reg = <1>;
-> +
-> +			dsi0_out: endpoint {
-> +				remote-endpoint = <&ps8640_in>;
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&dpi0 {
-> +	status = "okay";
-> +};
-> +
-> +&hdmi_phy {
-> +	status = "okay";
-> +	mediatek,ibias = <0x3f>;
-> +};
-> +
-> +&i2c0 {
-> +	status = "okay";
-> +
-> +	rt5650: audio-codec@1a {
-> +		compatible = "realtek,rt5650";
-> +		reg = <0x1a>;
-> +		avdd-supply = <&mt6397_vgp1_reg>;
-> +		cpvdd-supply = <&mt6397_vcama_reg>;
-> +		interrupt-parent = <&pio>;
-> +		interrupts = <3 IRQ_TYPE_EDGE_BOTH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&rt5650_irq>;
-> +		realtek,jd-mode = <3>;
-> +	};
-> +};
-> +
-> +&i2c1 {
-> +	clock-frequency = <1500000>;
-> +	status = "okay";
-> +
-> +	da9211: da9211@68 {
-> +		compatible = "dlg,da9211";
-> +		reg = <0x68>;
-> +
-> +		regulators {
-> +			da9211_vcpu_reg: BUCKA {
-> +				regulator-name = "VBUCKA";
-> +				regulator-min-microvolt = < 700000>;
-> +				regulator-max-microvolt = <1310000>;
-> +				regulator-min-microamp  = <2000000>;
-> +				regulator-max-microamp  = <4400000>;
-> +				regulator-ramp-delay = <10000>;
-> +				regulator-always-on;
-> +/*				regulator-supported-modes =
-> +					<REGULATOR_OPERATION_MODE_FAST
-> +					 REGULATOR_OPERATION_MODE_NORMAL>;*/
-
-Please remove unused code.
-Same for all comment out parts in this patch.
-
+You need to read sec first for this to work.
+It is possible sec changed from 59 to 00 after you read min.
 
 Joe.C
+
+> +	 */
+> +	do {
+> +		year = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_YEA));
+> +		mon = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_MON));
+> +		wday = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_DOW));
+> +		mday = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_DOM));
+> +		hour = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_HOU));
+> +		min = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_MIN));
+> +		sec = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_SEC));
+> +	} while (sec != mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_SEC)));
+> +
+> +	tm->tm_sec  = sec;
+> +	tm->tm_min  = min;
+> +	tm->tm_hour = hour;
+> +	tm->tm_wday = wday;
+> +	tm->tm_mday = mday;
+> +	tm->tm_mon  = mon - 1;
+> +
+> +	/* Rebase to the absolute year which userspace requires */
+> +	tm->tm_year = year + MTK_RTC_TM_YR_L + hw->yr_base[time_alarm];
+> +}
+> +
+> +static void mtk_rtc_set_alarm_or_time(struct mtk_rtc *hw, struct rtc_time *tm,
+> +				      int time_alarm)
+> +{
+> +	u32 year;
+> +
+> +	/* Rebase to the relative year which RTC hardware requires */
+> +	year = tm->tm_year - MTK_RTC_TM_YR_L - hw->yr_base[time_alarm];
+> +
+> +	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_YEA), year);
+> +	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_MON), tm->tm_mon + 1);
+> +	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_DOW), tm->tm_wday);
+> +	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_DOM), tm->tm_mday);
+> +	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_HOU), tm->tm_hour);
+> +	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_MIN), tm->tm_min);
+> +	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_SEC), tm->tm_sec);
+> +}
+> +
+> +static irqreturn_t mtk_rtc_alarmirq(int irq, void *id)
+> +{
+> +	struct mtk_rtc *hw = (struct mtk_rtc *)id;
+> +	u32 irq_sta;
+> +
+> +	irq_sta = mtk_r32(hw, MTK_RTC_INT);
+> +	if (irq_sta & RTC_INT_AL_STA) {
+> +		/* Stop alarm also implicitly disables the alarm interrupt */
+> +		mtk_w32(hw, MTK_RTC_AL_CTL, 0);
+> +		rtc_update_irq(hw->rtc, 1, RTC_IRQF | RTC_AF);
+> +
+> +		/* Ack alarm interrupt status */
+> +		mtk_w32(hw, MTK_RTC_INT, RTC_INT_AL_STA);
+> +		return IRQ_HANDLED;
+> +	}
+> +
+> +	return IRQ_NONE;
+> +}
+> +
+> +static int mtk_rtc_gettime(struct device *dev, struct rtc_time *tm)
+> +{
+> +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> +
+> +	mtk_rtc_get_alarm_or_time(hw, tm, MTK_TC);
+> +
+> +	return rtc_valid_tm(tm);
+> +}
+> +
+> +static int mtk_rtc_settime(struct device *dev, struct rtc_time *tm)
+> +{
+> +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> +
+> +	/* Epoch == 1900, and the driver assumes that tm->tm_year has to be
+> +	 * at least MTK_RTC_TM_YR_L.
+> +	 */
+> +	if (tm->tm_year <  MTK_RTC_TM_YR_L)
+> +		return -EINVAL;
+> +
+> +	/* Keep yr_base used to calculate the calculate year when userspace
+> +	 * queries and extend the maximum year the RTC can count.
+> +	 */
+> +	hw->yr_base[MTK_TC] = tm->tm_year - MTK_RTC_TM_YR_L -
+> +			      (tm->tm_year % MTK_RTC_HW_YR_LIMIT);
+> +
+> +	/* Stop time counter before setting a new one*/
+> +	mtk_set(hw, MTK_RTC_CTL, RTC_RC_STOP);
+> +
+> +	mtk_rtc_set_alarm_or_time(hw, tm, MTK_TC);
+> +
+> +	/* Restart the time counter */
+> +	mtk_clr(hw, MTK_RTC_CTL, RTC_RC_STOP);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_rtc_getalarm(struct device *dev, struct rtc_wkalrm *wkalrm)
+> +{
+> +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> +	struct rtc_time *alrm_tm = &wkalrm->time;
+> +
+> +	mtk_rtc_get_alarm_or_time(hw, alrm_tm, MTK_AL);
+> +
+> +	wkalrm->enabled = !!(mtk_r32(hw, MTK_RTC_AL_CTL) & RTC_AL_EN);
+> +	wkalrm->pending = !!(mtk_r32(hw, MTK_RTC_INT) & RTC_INT_AL_STA);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_rtc_setalarm(struct device *dev, struct rtc_wkalrm *wkalrm)
+> +{
+> +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> +	struct rtc_time *alrm_tm = &wkalrm->time;
+> +
+> +	/* Epoch == 1900, and the driver assumes that alrm_tm->tm_year has to
+> +	 * be at least MTK_RTC_TM_YR_L.
+> +	 */
+> +	if (alrm_tm->tm_year < MTK_RTC_TM_YR_L)
+> +		return -EINVAL;
+> +
+> +	/* Keep yr_base used to calculate the calculate year when userspace
+> +	 * queries and extend the maximum time the alarm can support.
+> +	 */
+> +	hw->yr_base[MTK_AL] = alrm_tm->tm_year - MTK_RTC_TM_YR_L -
+> +			      (alrm_tm->tm_year % MTK_RTC_HW_YR_LIMIT);
+> +
+> +	/*
+> +	 * Stop the alarm also implicitly including disables interrupt before
+> +	 * setting a new one.
+> +	 */
+> +	mtk_clr(hw, MTK_RTC_AL_CTL, RTC_AL_EN);
+> +
+> +	/*
+> +	 * Avoid contention between mtk_rtc_setalarm and IRQ handler so that
+> +	 * disabling the interrupt and awaiting for pending IRQ handler to
+> +	 * complete.
+> +	 */
+> +	synchronize_irq(hw->irq);
+> +
+> +	mtk_rtc_set_alarm_or_time(hw, alrm_tm, MTK_AL);
+> +
+> +	/* Restart the alarm with the new setup */
+> +	mtk_w32(hw, MTK_RTC_AL_CTL, RTC_AL_ALL);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct rtc_class_ops mtk_rtc_ops = {
+> +	.read_time		= mtk_rtc_gettime,
+> +	.set_time		= mtk_rtc_settime,
+> +	.read_alarm		= mtk_rtc_getalarm,
+> +	.set_alarm		= mtk_rtc_setalarm,
+> +};
+> +
+> +static const struct of_device_id mtk_rtc_match[] = {
+> +	{ .compatible = "mediatek,mt7622-rtc" },
+> +	{ .compatible = "mediatek,soc-rtc" },
+> +	{},
+> +};
+> +
+> +static int mtk_rtc_probe(struct platform_device *pdev)
+> +{
+> +	struct mtk_rtc *hw;
+> +	struct resource *res;
+> +	int ret;
+> +
+> +	hw = devm_kzalloc(&pdev->dev, sizeof(*hw), GFP_KERNEL);
+> +	if (!hw)
+> +		return -ENOMEM;
+> +
+> +	platform_set_drvdata(pdev, hw);
+> +
+> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +	hw->base = devm_ioremap_resource(&pdev->dev, res);
+> +	if (IS_ERR(hw->base))
+> +		return PTR_ERR(hw->base);
+> +
+> +	hw->clk = devm_clk_get(&pdev->dev, "rtc");
+> +	if (IS_ERR(hw->clk)) {
+> +		dev_err(&pdev->dev, "No clock\n");
+> +		return PTR_ERR(hw->clk);
+> +	}
+> +
+> +	ret = clk_prepare_enable(hw->clk);
+> +	if (ret)
+> +		return ret;
+> +
+> +	hw->irq = platform_get_irq(pdev, 0);
+> +	if (hw->irq < 0) {
+> +		dev_err(&pdev->dev, "No IRQ resource\n");
+> +		ret = hw->irq;
+> +		goto err;
+> +	}
+> +
+> +	ret = devm_request_irq(&pdev->dev, hw->irq, mtk_rtc_alarmirq,
+> +			       0, dev_name(&pdev->dev), hw);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Can't request IRQ\n");
+> +		goto err;
+> +	}
+> +
+> +	mtk_rtc_hw_init(hw);
+> +
+> +	device_init_wakeup(&pdev->dev, true);
+> +
+> +	hw->rtc = devm_rtc_device_register(&pdev->dev, pdev->name,
+> +					   &mtk_rtc_ops, THIS_MODULE);
+> +	if (IS_ERR(hw->rtc)) {
+> +		ret = PTR_ERR(hw->rtc);
+> +		dev_err(&pdev->dev, "Unable to register device\n");
+> +		goto err;
+> +	}
+> +
+> +	return 0;
+> +err:
+> +	clk_disable_unprepare(hw->clk);
+> +
+> +	return ret;
+> +}
+> +
+> +static int mtk_rtc_remove(struct platform_device *pdev)
+> +{
+> +	struct mtk_rtc *hw = platform_get_drvdata(pdev);
+> +
+> +	clk_disable_unprepare(hw->clk);
+> +
+> +	return 0;
+> +}
+> +
+> +#ifdef CONFIG_PM_SLEEP
+> +static int mtk_rtc_suspend(struct device *dev)
+> +{
+> +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> +
+> +	if (device_may_wakeup(dev))
+> +		enable_irq_wake(hw->irq);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_rtc_resume(struct device *dev)
+> +{
+> +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> +
+> +	if (device_may_wakeup(dev))
+> +		disable_irq_wake(hw->irq);
+> +
+> +	return 0;
+> +}
+> +
+> +static SIMPLE_DEV_PM_OPS(mtk_rtc_pm_ops, mtk_rtc_suspend, mtk_rtc_resume);
+> +
+> +#define MTK_RTC_PM_OPS (&mtk_rtc_pm_ops)
+> +#else	/* CONFIG_PM */
+> +#define MTK_RTC_PM_OPS NULL
+> +#endif	/* CONFIG_PM */
+> +
+> +static struct platform_driver mtk_rtc_driver = {
+> +	.probe	= mtk_rtc_probe,
+> +	.remove	= mtk_rtc_remove,
+> +	.driver = {
+> +		.name = MTK_RTC_DEV,
+> +		.of_match_table = mtk_rtc_match,
+> +		.pm = MTK_RTC_PM_OPS,
+> +	},
+> +};
+> +
+> +module_platform_driver(mtk_rtc_driver);
+> +
+> +MODULE_DESCRIPTION("MediaTek SoC based RTC Driver");
+> +MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
+> +MODULE_LICENSE("GPL");
