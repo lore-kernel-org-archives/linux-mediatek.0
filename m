@@ -1,72 +1,46 @@
-From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Subject: Re: [PATCH v2 2/4] rtc: mediatek: add driver for RTC on MT7622 SoC
-Date: Wed, 18 Oct 2017 14:57:43 +0200
-Message-ID: <20171018125743.kqna6b4lgng674om@piout.net>
+From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 1/4] dt-bindings: rtc: mediatek: add bindings for
+ MediaTek SoC based RTC
+Date: Wed, 18 Oct 2017 21:32:09 +0800
+Message-ID: <1508333529.13340.26.camel@mtksdaap41>
 References: <cover.1508231935.git.sean.wang@mediatek.com>
- <2f86eebfd380cf932808df3404e2f4a6f2f0f874.1508231935.git.sean.wang@mediatek.com>
- <1508325126.13340.25.camel@mtksdaap41>
+         <235e4bdaa605021facf4ab5c4e8a2ecc5293516d.1508231935.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1508325126.13340.25.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: sean.wang@mediatek.com, a.zummo@towertech.it, robh+dt@kernel.org, mark.rutland@arm.com, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <235e4bdaa605021facf4ab5c4e8a2ecc5293516d.1508231935.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rtc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 18/10/2017 at 19:12:06 +0800, Yingjoe Chen wrote:
-> On Tue, 2017-10-17 at 17:40 +0800, sean.wang@mediatek.com wrote:
-> > From: Sean Wang <sean.wang@mediatek.com>
-> > 
-> > This patch introduces the driver for the RTC on MT7622 SoC.
-> > 
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > ---
-> >  drivers/rtc/Kconfig      |  10 ++
-> >  drivers/rtc/Makefile     |   1 +
-> >  drivers/rtc/rtc-mt7622.c | 418 +++++++++++++++++++++++++++++++++++++++++++++++
-> >  3 files changed, 429 insertions(+)
-> >  create mode 100644 drivers/rtc/rtc-mt7622.c
-> > 
-> > diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
-> > index e0e58f3..4226295 100644
-> > --- a/drivers/rtc/Kconfig
-> > +++ b/drivers/rtc/Kconfig
-> > @@ -1705,6 +1705,16 @@ config RTC_DRV_MOXART
-> >  	   This driver can also be built as a module. If so, the module
-> >  	   will be called rtc-moxart
-> >  
-> > +config RTC_DRV_MEDIATEK
+On Tue, 2017-10-17 at 17:40 +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> How about changing this to RTC_DRV_MT7622 or RTC_DRV_MEDIATEK_SOC?
-> It is confusing to have both RTC_DRV_MEDIATEK & RTC_DRV_MT6397 here.
+> Add device-tree binding for MediaTek SoC based RTC
 > 
+> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> ---
+>  .../devicetree/bindings/rtc/rtc-mediatek.txt        | 21 +++++++++++++++++++++
+>  1 file changed, 21 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/rtc/rtc-mediatek.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/rtc/rtc-mediatek.txt b/Documentation/devicetree/bindings/rtc/rtc-mediatek.txt
+> new file mode 100644
+> index 0000000..09fe8f5
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/rtc/rtc-mediatek.txt
 
-Yes, this has to be RTC_DRV_MT7622. It doesn't matter if it support
-future SoCs named differently, it will be less confusing than using
-anything with only mediatek in it.
 
-> > +		return -EINVAL;
-> > +
-> > +	/* Keep yr_base used to calculate the calculate year when userspace
-> > +	 * queries and extend the maximum year the RTC can count.
-> > +	 */
-> > +	hw->yr_base[MTK_TC] = tm->tm_year - MTK_RTC_TM_YR_L -
-> > +			      (tm->tm_year % MTK_RTC_HW_YR_LIMIT);
-> 
-> 
-> I'm not sure this worth it.
-> If maximum year it can hold is 99, I'd bet it won't support leap year
-> correctly after 2100. This make the RTC useless after that. 
-> 
-> Also, yr_base is lost after power cycle, so you can't get correct year
-> back anyway.
-> 
+How about change this filename to match driver filename change?
 
-I agree, the best you can do here is to only support 2000 to 2099.
+Joe.C
 
--- 
-Alexandre Belloni, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
