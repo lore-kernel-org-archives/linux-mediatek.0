@@ -1,166 +1,135 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Subject: Re: [RFC v2 0/8] Acer Chromebook R13 support
-Date: Wed, 18 Oct 2017 17:58:28 +0200
-Message-ID: <a47fabef-1af8-4787-424b-9ff9cfb32f93@gmail.com>
+Date: Wed, 18 Oct 2017 19:07:17 +0300
+Message-ID: <2941483.y22NiLZHxy@avalon>
 References: <1508167900-27415-1-git-send-email-ulrich.hecht+renesas@gmail.com>
- <18d36386-d3a0-a81f-6240-9703a3d98fbd@gmail.com>
- <20171017160514.ivmaz6tzicoxewbx@art_vandelay>
  <CAO3366wSii-P+=qzSO13-fqTUnXrx6DJ76+Bt1-wvYPOC8wNDA@mail.gmail.com>
+ <26935926.iWbvre9SVm@avalon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAO3366wSii-P+=qzSO13-fqTUnXrx6DJ76+Bt1-wvYPOC8wNDA@mail.gmail.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Ulrich Hecht <ulrich.hecht+renesas@gmail.com>, Sean Paul <seanpaul@chromium.org>
-Cc: Jacopo Mondi <jacopo@jmondi.org>, Magnus Damm <magnus.damm@gmail.com>, DRI Development <dri-devel@lists.freedesktop.org>, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, CK HU <ck.hu@mediatek.com>, robin.murphy@arm.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Laurent <laurent.pinchart@ideasonboard.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <26935926.iWbvre9SVm@avalon>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Ulrich Hecht <ulrich.hecht+renesas@gmail.com>
+Cc: Jacopo Mondi <jacopo@jmondi.org>, Magnus Damm <magnus.damm@gmail.com>, linux-mediatek@lists.infradead.org, DRI Development <dri-devel@lists.freedesktop.org>, Matthias Brugger <matthias.bgg@gmail.com>, robin.murphy@arm.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 10/18/2017 04:53 PM, Ulrich Hecht wrote:
-> On Tue, Oct 17, 2017 at 6:05 PM, Sean Paul <seanpaul@chromium.org> wrote:
->> On Tue, Oct 17, 2017 at 12:33:09PM +0200, Matthias Brugger wrote:
->>>  From what I understand you
->>> rebased the patches from the chromium kernel to mainline. So you should keep
->>> the signed-off-by from the original author and just add you signed-off-by
->>> below that.
->>> Also it would be nice to CC these persons so that they are aware of your effort.
->>>
->> Additionally, make sure the author and commit messages are preserved when you send
->> patches. You can add your own message in addition to your SoB, but please try to
->> preserve history.
-> 
-> Fair enough, but I'm not sure what exactly to include. The chromium
-> commits include, among other things:
-> 
-> - bugtracker numbers and test cases
-> - "Change-Id" and "Commit-Ready" (no idea what those are)
-> - "Reviewed-on", containing links to chromium-review.googlesource.com
-> 
-> With all changes to the PS8640 driver concatenated and non-standard
-> tags removed, the commit message would look like this:
-> 
-> =============================
->      CHROMIUM: drm/bridge: Add I2C based driver for ps8640 bridge
-
-The ones that have a FROMLIST are actually backports taken from the mailinglist, 
-so please search for them. Good starting point is linux-mediatek and 
-linux-arm-kernel newsgroups.
-
-For this patch the latest submission is these:
-https://patchwork.kernel.org/patch/9427541/
-https://patchwork.kernel.org/patch/9427543/
-
-Please take up this patches and resubmit with the comments addressed by the 
-reviewers.
-
-Keep up the good work!
-Matthias
-
-> 
->      This patch adds drm_bridge driver for parade DSI to eDP bridge chip.
-> 
->      Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
->      (am from https://patchwork.kernel.org/patch/8357851/)
->      Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
->      Tested-by: cawa cheng <cawa.cheng@mediatek.com>
->      Tested-by: Daniel Kurtz <djkurtz@chromium.org>
->      Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
-> 
-> 
->      FIXUP: FROMLIST: drm/bridge: Add I2C based driver for ps8640 bridge
-> 
->      chromeos-3.18 currently has FROMLIST v15 of the PS8640 driver.
->      This version is incompatible with UPSTREAM version of the Mediatek
->      DRM driver.
-> 
->      To quote Philipp Zabel:
->      "The main DRM driver mtk_drm_drv now calls
->      drm_connector_register_all() after drm_dev_register() in the
->      mtk_drm_bind() function. That function should iterate over all
->      connectors and call drm_connector_register() for each of them.
->      The call to drm_connector_init() from mtk_hdmi_bridge_attach()
->      should be enough to make this happen.
-> 
->      The drm_connector_(un)register calls also have to be removed
->      from the ps8640 driver."
-> 
->      Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
->      Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
->      Tested-by: PC Liao <pc.liao@mediatek.com>
->      Tested-by: Daniel Kurtz <djkurtz@chromium.org>
->      Tested-by: Nicolas Boichat <drinkcat@chromium.org>
->      Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-> 
-> 
->      CHROMIUM: drm/bridge: ps8640: Add a 3 ms delay before unmuting output
-> 
->      For current ps8640 firmware, the PS_GPIO9 signal only indicates the bridge
->      has seen the attached panel's HPD signal and read its EDID.  Unfortunately,
->      the bridge may not yet be ready to properly handle DSI/eDP traffic yet.
-> 
->      For now, Paradetech has recommended adding a 3 ms delay after PS_GPIO9
->      before starting video signal transmission.
-> 
->      Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
->      Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
-> 
->      Tested-by: cawa cheng <cawa.cheng@mediatek.com>
->      Tested-by: Daniel Kurtz <djkurtz@chromium.org>
->      Tested-by: jitao shi <jitao.shi@mediatek.com>
->      Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
->      Reviewed-by: jitao shi <jitao.shi@mediatek.com>
-> 
-> 
->      CHROMIUM: drm/bridge: ps8640: disable MIPI MCS
-> 
->      Disable PS8640 MIPI MCS commands to workaround an issue where normal
->      MIPI DSI signals are sometimes recognized as an MSC command that can,
->      for example, disable the bridge output.
-> 
->      Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
->      Tested-by: Daniel Kurtz <djkurtz@chromium.org>
->      Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-> 
-> 
->      CHROMIUM: drm/bridge: ps8640: Use individual regulators instead of bulk
-> 
->      According to the latest information from Parade, the PS8640 1.2 V
->      supply must be enabled before 3.3 V.
->      So, split the bulk regulator into separate individual regulators that
->      can be enabled independently.
-> 
->      Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> 
->      Tested-by: Daniel Kurtz <djkurtz@chromium.org>
->      Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-> 
-> 
->      CHROMIUM: drm/bridge: ps8640: add 5ms delay between v12 and v33
-> 
->      According to Parade, the PS8640 1.2V must be enabled 5 ms before its
->      3.3V. Otherwise, the PS8650 MCU may hang, and its settings cannot be
->      written correctly, leading to a black screen.
-> 
->      Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
->      Tested-by: Daniel Kurtz <djkurtz@chromium.org>
->      Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-> =============================
-> 
-> That keeps chronology and attribution intact, but is somewhat
-> redundant. Any suggestions on how to digest it? Or should I just add
-> it as is?
-> 
-> CU
-> Uli
-> 
+SGkgVWxyaWNoLAoKT24gV2VkbmVzZGF5LCAxOCBPY3RvYmVyIDIwMTcgMTg6NTc6MTQgRUVTVCBM
+YXVyZW50IFBpbmNoYXJ0IHdyb3RlOgo+IE9uIFdlZG5lc2RheSwgMTggT2N0b2JlciAyMDE3IDE3
+OjUzOjU0IEVFU1QgVWxyaWNoIEhlY2h0IHdyb3RlOgo+ID4gT24gVHVlLCBPY3QgMTcsIDIwMTcg
+YXQgNjowNSBQTSwgU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+IHdyb3RlOgo+ID4g
+PiBPbiBUdWUsIE9jdCAxNywgMjAxNyBhdCAxMjozMzowOVBNICswMjAwLCBNYXR0aGlhcyBCcnVn
+Z2VyIHdyb3RlOgo+ID4gPj4gRnJvbSB3aGF0IEkgdW5kZXJzdGFuZCB5b3UKPiA+ID4+IHJlYmFz
+ZWQgdGhlIHBhdGNoZXMgZnJvbSB0aGUgY2hyb21pdW0ga2VybmVsIHRvIG1haW5saW5lLiBTbyB5
+b3Ugc2hvdWxkCj4gPiA+PiBrZWVwIHRoZSBzaWduZWQtb2ZmLWJ5IGZyb20gdGhlIG9yaWdpbmFs
+IGF1dGhvciBhbmQganVzdCBhZGQgeW91Cj4gPiA+PiBzaWduZWQtb2ZmLWJ5IGJlbG93IHRoYXQu
+Cj4gPiA+PiBBbHNvIGl0IHdvdWxkIGJlIG5pY2UgdG8gQ0MgdGhlc2UgcGVyc29ucyBzbyB0aGF0
+IHRoZXkgYXJlIGF3YXJlIG9mCj4gPiA+PiB5b3VyCj4gPiA+PiBlZmZvcnQuPgo+ID4gPiAKPiA+
+ID4gQWRkaXRpb25hbGx5LCBtYWtlIHN1cmUgdGhlIGF1dGhvciBhbmQgY29tbWl0IG1lc3NhZ2Vz
+IGFyZSBwcmVzZXJ2ZWQKPiA+ID4gd2hlbgo+ID4gPiB5b3Ugc2VuZCBwYXRjaGVzLiBZb3UgY2Fu
+IGFkZCB5b3VyIG93biBtZXNzYWdlIGluIGFkZGl0aW9uIHRvIHlvdXIgU29CLAo+ID4gPiBidXQg
+cGxlYXNlIHRyeSB0byBwcmVzZXJ2ZSBoaXN0b3J5Lgo+ID4gCj4gPiBGYWlyIGVub3VnaCwgYnV0
+IEknbSBub3Qgc3VyZSB3aGF0IGV4YWN0bHkgdG8gaW5jbHVkZS4gVGhlIGNocm9taXVtCj4gPiBj
+b21taXRzIGluY2x1ZGUsIGFtb25nIG90aGVyIHRoaW5nczoKPiA+IAo+ID4gLSBidWd0cmFja2Vy
+IG51bWJlcnMgYW5kIHRlc3QgY2FzZXMKPiA+IC0gIkNoYW5nZS1JZCIgYW5kICJDb21taXQtUmVh
+ZHkiIChubyBpZGVhIHdoYXQgdGhvc2UgYXJlKQo+ID4gLSAiUmV2aWV3ZWQtb24iLCBjb250YWlu
+aW5nIGxpbmtzIHRvIGNocm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tCj4gPiAKPiA+IFdp
+dGggYWxsIGNoYW5nZXMgdG8gdGhlIFBTODY0MCBkcml2ZXIgY29uY2F0ZW5hdGVkIGFuZCBub24t
+c3RhbmRhcmQKPiA+IHRhZ3MgcmVtb3ZlZCwgdGhlIGNvbW1pdCBtZXNzYWdlIHdvdWxkIGxvb2sg
+bGlrZSB0aGlzOgo+ID4gCj4gPiA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PQo+ID4gCj4g
+PiAgICAgQ0hST01JVU06IGRybS9icmlkZ2U6IEFkZCBJMkMgYmFzZWQgZHJpdmVyIGZvciBwczg2
+NDAgYnJpZGdlCj4gPiAgICAgCj4gPiAgICAgVGhpcyBwYXRjaCBhZGRzIGRybV9icmlkZ2UgZHJp
+dmVyIGZvciBwYXJhZGUgRFNJIHRvIGVEUCBicmlkZ2UgY2hpcC4KPiA+ICAgICAKPiA+ICAgICBT
+aWduZWQtb2ZmLWJ5OiBKaXRhbyBTaGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+Cj4gPiAgICAg
+KGFtIGZyb20gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC84MzU3ODUxLykKPiA+
+ICAgICBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgo+
+ID4gICAgIFRlc3RlZC1ieTogY2F3YSBjaGVuZyA8Y2F3YS5jaGVuZ0BtZWRpYXRlay5jb20+Cj4g
+PiAgICAgVGVzdGVkLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgo+ID4g
+ICAgIFJldmlld2VkLWJ5OiBOaWNvbGFzIEJvaWNoYXQgPGRyaW5rY2F0QGNocm9taXVtLm9yZz4K
+PiA+ICAgICAKPiA+ICAgICAKPiA+ICAgICBGSVhVUDogRlJPTUxJU1Q6IGRybS9icmlkZ2U6IEFk
+ZCBJMkMgYmFzZWQgZHJpdmVyIGZvciBwczg2NDAgYnJpZGdlCj4gPiAgICAgCj4gPiAgICAgY2hy
+b21lb3MtMy4xOCBjdXJyZW50bHkgaGFzIEZST01MSVNUIHYxNSBvZiB0aGUgUFM4NjQwIGRyaXZl
+ci4KPiA+ICAgICBUaGlzIHZlcnNpb24gaXMgaW5jb21wYXRpYmxlIHdpdGggVVBTVFJFQU0gdmVy
+c2lvbiBvZiB0aGUgTWVkaWF0ZWsKPiA+ICAgICBEUk0gZHJpdmVyLgo+ID4gICAgIAo+ID4gICAg
+IFRvIHF1b3RlIFBoaWxpcHAgWmFiZWw6Cj4gPiAgICAgIlRoZSBtYWluIERSTSBkcml2ZXIgbXRr
+X2RybV9kcnYgbm93IGNhbGxzCj4gPiAgICAgZHJtX2Nvbm5lY3Rvcl9yZWdpc3Rlcl9hbGwoKSBh
+ZnRlciBkcm1fZGV2X3JlZ2lzdGVyKCkgaW4gdGhlCj4gPiAgICAgbXRrX2RybV9iaW5kKCkgZnVu
+Y3Rpb24uIFRoYXQgZnVuY3Rpb24gc2hvdWxkIGl0ZXJhdGUgb3ZlciBhbGwKPiA+ICAgICBjb25u
+ZWN0b3JzIGFuZCBjYWxsIGRybV9jb25uZWN0b3JfcmVnaXN0ZXIoKSBmb3IgZWFjaCBvZiB0aGVt
+Lgo+ID4gICAgIFRoZSBjYWxsIHRvIGRybV9jb25uZWN0b3JfaW5pdCgpIGZyb20gbXRrX2hkbWlf
+YnJpZGdlX2F0dGFjaCgpCj4gPiAgICAgc2hvdWxkIGJlIGVub3VnaCB0byBtYWtlIHRoaXMgaGFw
+cGVuLgo+ID4gICAgIAo+ID4gICAgIFRoZSBkcm1fY29ubmVjdG9yXyh1bilyZWdpc3RlciBjYWxs
+cyBhbHNvIGhhdmUgdG8gYmUgcmVtb3ZlZAo+ID4gICAgIGZyb20gdGhlIHBzODY0MCBkcml2ZXIu
+Igo+ID4gICAgIAo+ID4gICAgIFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1l
+ZGlhdGVrLmNvbT4KPiA+ICAgICBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpA
+Y2hyb21pdW0ub3JnPgo+ID4gICAgIFRlc3RlZC1ieTogUEMgTGlhbyA8cGMubGlhb0BtZWRpYXRl
+ay5jb20+Cj4gPiAgICAgVGVzdGVkLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0u
+b3JnPgo+ID4gICAgIFRlc3RlZC1ieTogTmljb2xhcyBCb2ljaGF0IDxkcmlua2NhdEBjaHJvbWl1
+bS5vcmc+Cj4gPiAgICAgUmV2aWV3ZWQtYnk6IERhbmllbCBLdXJ0eiA8ZGprdXJ0ekBjaHJvbWl1
+bS5vcmc+Cj4gPiAgICAgCj4gPiAgICAgCj4gPiAgICAgQ0hST01JVU06IGRybS9icmlkZ2U6IHBz
+ODY0MDogQWRkIGEgMyBtcyBkZWxheSBiZWZvcmUgdW5tdXRpbmcgb3V0cHV0Cj4gPiAgICAgCj4g
+PiAgICAgRm9yIGN1cnJlbnQgcHM4NjQwIGZpcm13YXJlLCB0aGUgUFNfR1BJTzkgc2lnbmFsIG9u
+bHkgaW5kaWNhdGVzIHRoZQo+ID4gCj4gPiBicmlkZ2UgaGFzIHNlZW4gdGhlIGF0dGFjaGVkIHBh
+bmVsJ3MgSFBEIHNpZ25hbCBhbmQgcmVhZCBpdHMgRURJRC4KPiA+IFVuZm9ydHVuYXRlbHksIHRo
+ZSBicmlkZ2UgbWF5IG5vdCB5ZXQgYmUgcmVhZHkgdG8gcHJvcGVybHkgaGFuZGxlIERTSS9lRFAK
+PiA+IHRyYWZmaWMgeWV0Lgo+ID4gCj4gPiAgICAgRm9yIG5vdywgUGFyYWRldGVjaCBoYXMgcmVj
+b21tZW5kZWQgYWRkaW5nIGEgMyBtcyBkZWxheSBhZnRlciBQU19HUElPOQo+ID4gICAgIGJlZm9y
+ZSBzdGFydGluZyB2aWRlbyBzaWduYWwgdHJhbnNtaXNzaW9uLgo+ID4gICAgIAo+ID4gICAgIFNp
+Z25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNvbT4KPiA+ICAgICBT
+aWduZWQtb2ZmLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgo+ID4gICAg
+IAo+ID4gICAgIFRlc3RlZC1ieTogY2F3YSBjaGVuZyA8Y2F3YS5jaGVuZ0BtZWRpYXRlay5jb20+
+Cj4gPiAgICAgVGVzdGVkLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgo+
+ID4gICAgIFRlc3RlZC1ieTogaml0YW8gc2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPgo+ID4g
+ICAgIFJldmlld2VkLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgo+ID4g
+ICAgIFJldmlld2VkLWJ5OiBqaXRhbyBzaGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+Cj4gPiAg
+ICAgCj4gPiAgICAgCj4gPiAgICAgQ0hST01JVU06IGRybS9icmlkZ2U6IHBzODY0MDogZGlzYWJs
+ZSBNSVBJIE1DUwo+ID4gICAgIAo+ID4gICAgIERpc2FibGUgUFM4NjQwIE1JUEkgTUNTIGNvbW1h
+bmRzIHRvIHdvcmthcm91bmQgYW4gaXNzdWUgd2hlcmUgbm9ybWFsCj4gPiAgICAgTUlQSSBEU0kg
+c2lnbmFscyBhcmUgc29tZXRpbWVzIHJlY29nbml6ZWQgYXMgYW4gTVNDIGNvbW1hbmQgdGhhdCBj
+YW4sCj4gPiAgICAgZm9yIGV4YW1wbGUsIGRpc2FibGUgdGhlIGJyaWRnZSBvdXRwdXQuCj4gPiAg
+ICAgCj4gPiAgICAgU2lnbmVkLW9mZi1ieTogSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsu
+Y29tPgo+ID4gICAgIFRlc3RlZC1ieTogRGFuaWVsIEt1cnR6IDxkamt1cnR6QGNocm9taXVtLm9y
+Zz4KPiA+ICAgICBSZXZpZXdlZC1ieTogRGFuaWVsIEt1cnR6IDxkamt1cnR6QGNocm9taXVtLm9y
+Zz4KPiA+ICAgICAKPiA+ICAgICAKPiA+ICAgICBDSFJPTUlVTTogZHJtL2JyaWRnZTogcHM4NjQw
+OiBVc2UgaW5kaXZpZHVhbCByZWd1bGF0b3JzIGluc3RlYWQgb2YKPiA+ICAgICBidWxrCj4gPiAg
+ICAgCj4gPiAgICAgQWNjb3JkaW5nIHRvIHRoZSBsYXRlc3QgaW5mb3JtYXRpb24gZnJvbSBQYXJh
+ZGUsIHRoZSBQUzg2NDAgMS4yIFYKPiA+ICAgICBzdXBwbHkgbXVzdCBiZSBlbmFibGVkIGJlZm9y
+ZSAzLjMgVi4KPiA+ICAgICBTbywgc3BsaXQgdGhlIGJ1bGsgcmVndWxhdG9yIGludG8gc2VwYXJh
+dGUgaW5kaXZpZHVhbCByZWd1bGF0b3JzIHRoYXQKPiA+ICAgICBjYW4gYmUgZW5hYmxlZCBpbmRl
+cGVuZGVudGx5Lgo+ID4gICAgIAo+ID4gICAgIFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0
+YW8uc2hpQG1lZGlhdGVrLmNvbT4KPiA+ICAgICAKPiA+ICAgICBUZXN0ZWQtYnk6IERhbmllbCBL
+dXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+Cj4gPiAgICAgUmV2aWV3ZWQtYnk6IERhbmllbCBL
+dXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+Cj4gPiAgICAgCj4gPiAgICAgCj4gPiAgICAgQ0hS
+T01JVU06IGRybS9icmlkZ2U6IHBzODY0MDogYWRkIDVtcyBkZWxheSBiZXR3ZWVuIHYxMiBhbmQg
+djMzCj4gPiAgICAgCj4gPiAgICAgQWNjb3JkaW5nIHRvIFBhcmFkZSwgdGhlIFBTODY0MCAxLjJW
+IG11c3QgYmUgZW5hYmxlZCA1IG1zIGJlZm9yZSBpdHMKPiA+ICAgICAzLjNWLiBPdGhlcndpc2Us
+IHRoZSBQUzg2NTAgTUNVIG1heSBoYW5nLCBhbmQgaXRzIHNldHRpbmdzIGNhbm5vdCBiZQo+ID4g
+ICAgIHdyaXR0ZW4gY29ycmVjdGx5LCBsZWFkaW5nIHRvIGEgYmxhY2sgc2NyZWVuLgo+ID4gICAg
+IAo+ID4gICAgIFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNv
+bT4KPiA+ICAgICBUZXN0ZWQtYnk6IERhbmllbCBLdXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+
+Cj4gPiAgICAgUmV2aWV3ZWQtYnk6IERhbmllbCBLdXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+
+Cj4gPiAKPiA+ID09PT09PT09PT09PT09PT09PT09PT09PT09PT09Cj4gPiAKPiA+IFRoYXQga2Vl
+cHMgY2hyb25vbG9neSBhbmQgYXR0cmlidXRpb24gaW50YWN0LCBidXQgaXMgc29tZXdoYXQKPiA+
+IHJlZHVuZGFudC4gQW55IHN1Z2dlc3Rpb25zIG9uIGhvdyB0byBkaWdlc3QgaXQ/IE9yIHNob3Vs
+ZCBJIGp1c3QgYWRkCj4gPiBpdCBhcyBpcz8KPiAKPiBJIHdvdWxkIGtlZXAgYWxsIHRoZSBTb0Ig
+bGluZXMsIGJ1dCBhcGFydCBmcm9tIHRoYXQgSSBkb24ndCB0aGluayB0aGVyZSdzIGEKPiBuZWVk
+IHRvIGNvcHkgYWxsIGNvbW1pdCBtZXNzYWdlcy4gWW91IGNhbiBleHRyYWN0IHJlbGV2YW50IGlu
+Zm9ybWF0aW9uIGZvciBhCj4gZGlnZXN0LCBidXQgdGhlcmUncyBubyBwb2ludCBpbiBjb3B5aW5n
+IHRoZSB3aG9sZSBoaXN0b3J5LgoKTXkgY29tbWVudCBvYnZpb3VzbHkgcmVmZXJyZWQgb25seSB0
+byBwYXRjaGVzIHRoYXQgYWRkIGEgbmV3IGRyaXZlci4gRm9yIApmaXhlcywgeW91IHNob3VsZCBp
+bmRlZWQgbm90IHNxdWFzaCB0aGVtIGFsbCBidXQgc3VibWl0IHRoZW0gYXMgaW5kaXZpZHVhbCAK
+cGF0Y2hlcy4gU29tZSBvZiB0aGVtIGNhbiBiZSBzcXVhc2hlZCBhcyBuZWVkZWQsIGZvciBpbnN0
+YW5jZSBhIGNoYW5nZSB0aGF0IGlzIApsYXRlciByZXZlcnRlZCBjYW4gYmUgb21pdHRlZCBjb21w
+bGV0ZWx5LgoKLS0gClJlZ2FyZHMsCgpMYXVyZW50IFBpbmNoYXJ0CgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
