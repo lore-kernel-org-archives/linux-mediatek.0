@@ -1,155 +1,145 @@
-From: Miquel Raynal <miquel.raynal@free-electrons.com>
-Subject: [RFC 12/12] ARM64: dts: marvell: use reworked NAND controller driver
- on Armada 7K/8K
-Date: Wed, 18 Oct 2017 16:36:29 +0200
-Message-ID: <20171018143629.29302-13-miquel.raynal__34850.2413290136$1508337852$gmane$org@free-electrons.com>
-References: <20171018143629.29302-1-miquel.raynal@free-electrons.com>
+From: Ulrich Hecht <ulrich.hecht+renesas@gmail.com>
+Subject: Re: [RFC v2 0/8] Acer Chromebook R13 support
+Date: Wed, 18 Oct 2017 16:53:54 +0200
+Message-ID: <CAO3366wSii-P+=qzSO13-fqTUnXrx6DJ76+Bt1-wvYPOC8wNDA@mail.gmail.com>
+References: <1508167900-27415-1-git-send-email-ulrich.hecht+renesas@gmail.com>
+ <18d36386-d3a0-a81f-6240-9703a3d98fbd@gmail.com>
+ <20171017160514.ivmaz6tzicoxewbx@art_vandelay>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
-In-Reply-To: <20171018143629.29302-1-miquel.raynal@free-electrons.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
-List-Post: <mailto:linux-mtd@lists.infradead.org>
-List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
-Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
-To: Andrew Lunn <andrew@lunn.ch>, bcm-kernel-feedback-list@broadcom.com, Boris Brezillon <boris.brezillon@free-electrons.com>, Brian Norris <computersforpeace@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Chen-Yu Tsai <wens@csie.org>, Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>, Daniel Mack <daniel@zonque.org>, David Woodhouse <dwmw2@infradead.org>, devel@driverdev.osuosl.org, devicetree@vger.kernel.org, Ezequiel Garcia <ezequiel.garcia@free-electrons.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Gregory Clement <gregory.clement@free-electrons.com>, Han Xu <han.xu@nxp.com>, Haojian Zhuang <haojian.zhuang@gmail.com>, Jason Cooper <jason@lakedaemon.net>, Josh Wu <rainyfeeling@outlook.com>, Kamal Dasu <kdasu.kdev@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org
-Cc: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Hanna Hawa <hannah@marvell.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Nadav Haklai <nadavh@marvell.com>, Neta Zur Hershkovits <neta@marvell.com>, Igor Grinberg <grinberg@compulab.co.il>, Miquel Raynal <miquel.raynal@free-electrons.com>, Ofer Heifetz <oferh@marvell.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20171017160514.ivmaz6tzicoxewbx@art_vandelay>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Sean Paul <seanpaul@chromium.org>
+Cc: Jacopo Mondi <jacopo@jmondi.org>, Magnus Damm <magnus.damm@gmail.com>, DRI Development <dri-devel@lists.freedesktop.org>, CK HU <ck.hu@mediatek.com>, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, robin.murphy@arm.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Laurent <laurent.pinchart@ideasonboard.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Change the bindings to use the reworked Marvell NAND controller driver.
-Also adapt the nand controller node organization to distinguish which
-property is relevant for the controller, and which one is NAND chip
-specific. Expose the partitions as a subnode of the NAND chip.
+On Tue, Oct 17, 2017 at 6:05 PM, Sean Paul <seanpaul@chromium.org> wrote:
+> On Tue, Oct 17, 2017 at 12:33:09PM +0200, Matthias Brugger wrote:
+>> From what I understand you
+>> rebased the patches from the chromium kernel to mainline. So you should keep
+>> the signed-off-by from the original author and just add you signed-off-by
+>> below that.
+>> Also it would be nice to CC these persons so that they are aware of your effort.
+>>
+> Additionally, make sure the author and commit messages are preserved when you send
+> patches. You can add your own message in addition to your SoB, but please try to
+> preserve history.
 
-Remove the 'marvell,nand-enable-arbiter' property, inefective with
-Armada boards.
+Fair enough, but I'm not sure what exactly to include. The chromium
+commits include, among other things:
 
-Signed-off-by: Miquel Raynal <miquel.raynal@free-electrons.com>
----
- arch/arm64/boot/dts/marvell/armada-7040-db.dts     | 47 +++++++++++++---------
- .../boot/dts/marvell/armada-cp110-master.dtsi      |  6 +--
- .../arm64/boot/dts/marvell/armada-cp110-slave.dtsi |  6 +--
- 3 files changed, 34 insertions(+), 25 deletions(-)
+- bugtracker numbers and test cases
+- "Change-Id" and "Commit-Ready" (no idea what those are)
+- "Reviewed-on", containing links to chromium-review.googlesource.com
 
-diff --git a/arch/arm64/boot/dts/marvell/armada-7040-db.dts b/arch/arm64/boot/dts/marvell/armada-7040-db.dts
-index 3cb4e81f6415..cd0290613eea 100644
---- a/arch/arm64/boot/dts/marvell/armada-7040-db.dts
-+++ b/arch/arm64/boot/dts/marvell/armada-7040-db.dts
-@@ -144,32 +144,41 @@
- 	};
- };
- 
--&cpm_nand {
-+&cpm_nand_controller {
- 	/*
- 	 * SPI on CPM and NAND have common pins on this board. We can
--	 * use only one at a time. To enable the NAND (whihch will
-+	 * use only one at a time. To enable the NAND (which will
- 	 * disable the SPI), the "status = "okay";" line have to be
- 	 * added here.
- 	 */
--	num-cs = <1>;
- 	pinctrl-0 = <&nand_pins>, <&nand_rb>;
- 	pinctrl-names = "default";
--	nand-ecc-strength = <4>;
--	nand-ecc-step-size = <512>;
--	marvell,nand-enable-arbiter;
--	nand-on-flash-bbt;
--
--	partition@0 {
--		label = "U-Boot";
--		reg = <0 0x200000>;
--	};
--	partition@200000 {
--		label = "Linux";
--		reg = <0x200000 0xe00000>;
--	};
--	partition@1000000 {
--		label = "Filesystem";
--		reg = <0x1000000 0x3f000000>;
-+
-+	nand@0 {
-+		reg = <0>;
-+		marvell,rb = <0>;
-+		nand-on-flash-bbt;
-+		nand-ecc-strength = <4>;
-+		nand-ecc-step-size = <512>;
-+
-+		partitions {
-+
-+			partition@0 {
-+				label = "U-Boot";
-+				reg = <0 0x200000>;
-+			};
-+
-+			partition@200000 {
-+				label = "Linux";
-+				reg = <0x200000 0xe00000>;
-+			};
-+
-+			partition@1000000 {
-+				label = "Filesystem";
-+				reg = <0x1000000 0x3f000000>;
-+			};
-+
-+		};
- 	};
- };
- 
-diff --git a/arch/arm64/boot/dts/marvell/armada-cp110-master.dtsi b/arch/arm64/boot/dts/marvell/armada-cp110-master.dtsi
-index f203f7300194..c209f2f93b6c 100644
---- a/arch/arm64/boot/dts/marvell/armada-cp110-master.dtsi
-+++ b/arch/arm64/boot/dts/marvell/armada-cp110-master.dtsi
-@@ -268,14 +268,14 @@
- 				status = "disabled";
- 			};
- 
--			cpm_nand: nand@720000 {
-+			cpm_nand_controller: nand@720000 {
- 				/*
- 				 * Due to the limiation of the pin available
- 				 * this controller is only usable on the CPM
- 				 * for A7K and on the CPS for A8K.
- 				 */
--				compatible = "marvell,armada-8k-nand",
--					     "marvell,armada370-nand";
-+				compatible = "marvell,armada-8k-nand-controller",
-+					     "marvell,armada370-nand-controller";
- 				reg = <0x720000 0x54>;
- 				#address-cells = <1>;
- 				#size-cells = <1>;
-diff --git a/arch/arm64/boot/dts/marvell/armada-cp110-slave.dtsi b/arch/arm64/boot/dts/marvell/armada-cp110-slave.dtsi
-index 7d78767d3024..22789485d77e 100644
---- a/arch/arm64/boot/dts/marvell/armada-cp110-slave.dtsi
-+++ b/arch/arm64/boot/dts/marvell/armada-cp110-slave.dtsi
-@@ -269,14 +269,14 @@
- 				status = "disabled";
- 			};
- 
--			cps_nand: nand@720000 {
-+			cps_nand_controller: nand@720000 {
- 				/*
- 				 * Due to the limiation of the pin available
- 				 * this controller is only usable on the CPM
- 				 * for A7K and on the CPS for A8K.
- 				 */
--				compatible = "marvell,armada370-nand",
--					     "marvell,armada370-nand";
-+				compatible = "marvell,armada-8k-nand-controller",
-+					     "marvell,armada370-nand-controller";
- 				reg = <0x720000 0x54>;
- 				#address-cells = <1>;
- 				#size-cells = <1>;
--- 
-2.11.0
+With all changes to the PS8640 driver concatenated and non-standard
+tags removed, the commit message would look like this:
+
+=============================
+    CHROMIUM: drm/bridge: Add I2C based driver for ps8640 bridge
+
+    This patch adds drm_bridge driver for parade DSI to eDP bridge chip.
+
+    Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+    (am from https://patchwork.kernel.org/patch/8357851/)
+    Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+    Tested-by: cawa cheng <cawa.cheng@mediatek.com>
+    Tested-by: Daniel Kurtz <djkurtz@chromium.org>
+    Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
 
 
-______________________________________________________
-Linux MTD discussion mailing list
-http://lists.infradead.org/mailman/listinfo/linux-mtd/
+    FIXUP: FROMLIST: drm/bridge: Add I2C based driver for ps8640 bridge
+
+    chromeos-3.18 currently has FROMLIST v15 of the PS8640 driver.
+    This version is incompatible with UPSTREAM version of the Mediatek
+    DRM driver.
+
+    To quote Philipp Zabel:
+    "The main DRM driver mtk_drm_drv now calls
+    drm_connector_register_all() after drm_dev_register() in the
+    mtk_drm_bind() function. That function should iterate over all
+    connectors and call drm_connector_register() for each of them.
+    The call to drm_connector_init() from mtk_hdmi_bridge_attach()
+    should be enough to make this happen.
+
+    The drm_connector_(un)register calls also have to be removed
+    from the ps8640 driver."
+
+    Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+    Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+    Tested-by: PC Liao <pc.liao@mediatek.com>
+    Tested-by: Daniel Kurtz <djkurtz@chromium.org>
+    Tested-by: Nicolas Boichat <drinkcat@chromium.org>
+    Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+
+
+    CHROMIUM: drm/bridge: ps8640: Add a 3 ms delay before unmuting output
+
+    For current ps8640 firmware, the PS_GPIO9 signal only indicates the bridge
+    has seen the attached panel's HPD signal and read its EDID.  Unfortunately,
+    the bridge may not yet be ready to properly handle DSI/eDP traffic yet.
+
+    For now, Paradetech has recommended adding a 3 ms delay after PS_GPIO9
+    before starting video signal transmission.
+
+    Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+    Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+
+    Tested-by: cawa cheng <cawa.cheng@mediatek.com>
+    Tested-by: Daniel Kurtz <djkurtz@chromium.org>
+    Tested-by: jitao shi <jitao.shi@mediatek.com>
+    Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+    Reviewed-by: jitao shi <jitao.shi@mediatek.com>
+
+
+    CHROMIUM: drm/bridge: ps8640: disable MIPI MCS
+
+    Disable PS8640 MIPI MCS commands to workaround an issue where normal
+    MIPI DSI signals are sometimes recognized as an MSC command that can,
+    for example, disable the bridge output.
+
+    Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+    Tested-by: Daniel Kurtz <djkurtz@chromium.org>
+    Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+
+
+    CHROMIUM: drm/bridge: ps8640: Use individual regulators instead of bulk
+
+    According to the latest information from Parade, the PS8640 1.2 V
+    supply must be enabled before 3.3 V.
+    So, split the bulk regulator into separate individual regulators that
+    can be enabled independently.
+
+    Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+
+    Tested-by: Daniel Kurtz <djkurtz@chromium.org>
+    Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+
+
+    CHROMIUM: drm/bridge: ps8640: add 5ms delay between v12 and v33
+
+    According to Parade, the PS8640 1.2V must be enabled 5 ms before its
+    3.3V. Otherwise, the PS8650 MCU may hang, and its settings cannot be
+    written correctly, leading to a black screen.
+
+    Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+    Tested-by: Daniel Kurtz <djkurtz@chromium.org>
+    Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+=============================
+
+That keeps chronology and attribution intact, but is somewhat
+redundant. Any suggestions on how to digest it? Or should I just add
+it as is?
+
+CU
+Uli
