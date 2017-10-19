@@ -1,141 +1,45 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [RFC/PATCH v3] arm64: define MODULES_VADDR by module_alloc_base
-Date: Thu, 19 Oct 2017 19:08:02 +0800
-Message-ID: <1508411282.29778.11.camel@mtkswgap22>
-References: <1504093593-2586-1-git-send-email-miles.chen@mediatek.com>
-         <20171017144328.GG14051@arm.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [RFC resend] arm64: mt8173: Fix Acer Chromebooks mmsys probe problem
+Date: Thu, 19 Oct 2017 13:26:06 +0200
+Message-ID: <20171019112610.13645-1-mbrugger@suse.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171017144328.GG14051@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Will Deacon <will.deacon@arm.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+To: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: linux@armlinux.org.uk, matthias.bgg@gmail.com, catalin.marinas@arm.com, will.deacon@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-10-17 at 15:43 +0100, Will Deacon wrote:
-> On Wed, Aug 30, 2017 at 07:46:33PM +0800, Miles Chen wrote:
-> > After the kernel ASLR, the module virtual address is moved to
-> > [module_alloc_base, module_alloc_base + MODULES_VSIZE).
-> > However, the MODULES_VADDR is still defined as a constant and functions
-> > like is_vmalloc_or_module_addr() or dump functions will not able to
-> > use correct module range information.
-> > 
-> > The patch omits modules information in virtual kenrel memory layout if
-> > the modules area is fully mapped whitin vmalloc area.
-> > 
-> > Use module_alloc_base to define MODULES_VADDR. I tested the patch under
-> > three different conditions:
-> > 1.CONFIG_RANDOMIZE_BASE=y, seed=0
-> > CONFIG_KASAN=n
-> > 2.CONFIG_RANDOMIZE_BASE=y, seed=0x2304909023333333
-> > CONFIG_KASAN=n
-> > 3.CONFIG_RANDOMIZE_BASE=y, seed=0x2304909023333333
-> > CONFIG_KASAN=y
-> > 
-> > test log:
-> 
-> [...]
-> 
-> > diff --git a/arch/arm64/mm/dump.c b/arch/arm64/mm/dump.c
-> > index ca74a2a..18be771 100644
-> > --- a/arch/arm64/mm/dump.c
-> > +++ b/arch/arm64/mm/dump.c
-> > @@ -29,15 +29,36 @@
-> >  #include <asm/pgtable-hwdef.h>
-> >  #include <asm/ptdump.h>
-> >  
-> > -static const struct addr_marker address_markers[] = {
-> > +enum marker {
-> > +#ifdef CONFIG_KASAN
-> > +	E_KASAN_SHADOW_START,
-> > +	E_KASAN_SHADOW_END,
-> > +#endif
-> > +	E_MODULES_VADDR,
-> > +	E_MODULES_END,
-> > +	E_VMALLOC_START,
-> > +	E_VMALLOC_END,
-> > +	E_FIXADDR_START,
-> > +	E_FIXADDR_TOP,
-> > +	E_PCI_IO_START,
-> > +	E_PCI_IO_END,
-> > +#ifdef CONFIG_SPARSEMEM_VMEMMAP
-> > +	E_VMEMMAP_START,
-> > +	E_VMEMMAP_END,
-> > +#endif
-> > +	E_PAGE_OFFSET,
-> > +	E_NR_MARKER,
-> > +};
-> > +
-> > +static struct addr_marker address_markers[] = {
-> >  #ifdef CONFIG_KASAN
-> >  	{ KASAN_SHADOW_START,		"Kasan shadow start" },
-> >  	{ KASAN_SHADOW_END,		"Kasan shadow end" },
-> >  #endif
-> > -	{ MODULES_VADDR,		"Modules start" },
-> > -	{ MODULES_END,			"Modules end" },
-> > -	{ VMALLOC_START,		"vmalloc() Area" },
-> > -	{ VMALLOC_END,			"vmalloc() End" },
-> > +	{ -1,				"Modules start" },
-> > +	{ -1,				"Modules end" },
-> > +	{ -1,				"vmalloc() Area" },
-> > +	{ -1,				"vmalloc() End" },
-> >  	{ FIXADDR_START,		"Fixmap start" },
-> >  	{ FIXADDR_TOP,			"Fixmap end" },
-> >  	{ PCI_IO_START,			"PCI I/O start" },
-> > @@ -362,10 +383,32 @@ void ptdump_walk_pgd(struct seq_file *m, struct ptdump_info *info)
-> >  	note_page(&st, 0, 0, 0);
-> >  }
-> >  
-> > +static void fixup_markers(void)
-> > +{
-> > +	int i;
-> > +
-> > +	address_markers[E_MODULES_VADDR].start_address = MODULES_VADDR;
-> > +	address_markers[E_MODULES_END].start_address = MODULES_END;
-> > +	address_markers[E_VMALLOC_START].start_address = VMALLOC_START;
-> > +	address_markers[E_VMALLOC_END].start_address = VMALLOC_END;
-> > +
-> > +	if (MODULES_VADDR < VMALLOC_START) {
-> > +		address_markers[E_MODULES_END].start_address =
-> > +			(MODULES_END < VMALLOC_START) ?
-> > +			MODULES_END : VMALLOC_START;
-> > +	} else {
-> > +		/* modules is contains in vamlloc area, don't show them */
-> > +		for (i = E_MODULES_VADDR; i <= E_NR_MARKER - 2; i++)
-> > +			address_markers[i] = address_markers[i + 2];
-> > +	}
-> > +}
-> 
-> This all seems a bit over-engineered to me and we end up having to maintain
-> enum marker in conjunction with the address_markers array. Fixing the array
-> up at runtime also worries me slightly, because we end up with the last two
-> entries being duplicated. That doesn't seem to hurt for now, but it's weird
-> and I can imagine it causing problems in the future.
-> 
-> Is there not a simpler fix here?
-> 
-> Will
+In theory the MMSYS device tree identifier is matches twice, by the clk driver 
+and the DRM subsystem. But the kernel only matches the first driver for a 
+device (clk) and discards the second one. This breaks graphics on mt8173 and 
+most probably on mt2701 as well.
 
-Sorry for the late reply.
+MMSYS in Mediatek SoCs has some registers to control clock gates (which is 
+used in the clk driver) and some registers to enable the differnet blocks of 
+the display subsystem. The kernel uses the binding to load the central 
+comoponent of the distplay subsystem, which in place probes all the other 
+components and enables the present ones in the MMSYS.
 
-How about using static defined STATIC_MODULES_VADDR, and
-STATIC_MODULES_END, so we do not need to fixed the address_markers[].
+We found us with the problem, that we need to change and therefor break one 
+of the two bindings, or the DRM one or the clock driver one.
 
--       { MODULES_VADDR,                "Modules start" },
--       { MODULES_END,                  "Modules end" },
-+       { STATIC_MODULES_VADDR,         "Static modules start" },
-+       { STATIC_MODULES_END,           "Static modules end" },
+Apart from that the DRM subysystem does access the MMSYS registers via relaxed 
+reads/writes. But the it should to so via regmap, as the registers are shared.
 
-and for the modules:
-1. set the [STATIC_MODULES_VADDR,STATIC_MODULES_END) as the default
-module area (e.g., KASAN=n + KASLR=y with no random seed; KASLR=y and
-KASN=y or KASLR=n)
+Possible solutions:
+1) We add a new mediatek,mt8173-mmsys-clk node, which lives as a simple-mfd 
+under the actual mmsys node. We change the clock driver to probe on this 
+binding. This would make sense as the clock gate register live completly in 
+the MMSYS configuration registers.
 
-2. with KASAN=n + KASLR=y with valid random seed, kernel modules are
-loaded to vmalloc area. We can still the STATIC_MODULES_* entries in the
-address_markers[]. We should find nothing between
-[STATIC_MODULES_VADDR,STATIC_MODULES_END) in this case.
+2) As the nodes of the DRM subsystem just need some of the registers of MMSYS 
+we add a new binding mediatek,mt8173-dispsys which probes the central 
+component of the DRM system. It has only a handle to mt8173-mmsys to access 
+the registerspace via regmap functions.
 
-Miles
+In this patchset I implemented 2). Please take into account, that this is a 
+RFC. I had no time to actually test the verison on real HW. Some of the 
+register accesses should be done using regmap_update instead of 
+regmap_read + regmap_write.
+
+This RFC shall only show how solution 2) would look like. We can use it as 
+discussion to see how we circumvent the actual situation.
