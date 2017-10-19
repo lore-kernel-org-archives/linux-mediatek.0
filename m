@@ -1,45 +1,60 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v2 1/4] dt-bindings: rtc: mediatek: add bindings for
- MediaTek SoC based RTC
-Date: Thu, 19 Oct 2017 11:00:18 +0800
-Message-ID: <1508382018.21840.124.camel@mtkswgap22>
-References: <cover.1508231935.git.sean.wang@mediatek.com>
-         <235e4bdaa605021facf4ab5c4e8a2ecc5293516d.1508231935.git.sean.wang@mediatek.com>
-         <1508333529.13340.26.camel@mtksdaap41>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: Re: [RFC 06/12] mtd: nand: add reworked Marvell NAND controller driver
+Date: Thu, 19 Oct 2017 09:18:10 +0200
+Message-ID: <20171019091810.13f54c78@bbrezillon>
+References: <20171018143629.29302-1-miquel.raynal@free-electrons.com>
+ <20171018143629.29302-7-miquel.raynal@free-electrons.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1508333529.13340.26.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: a.zummo@towertech.it, alexandre.belloni@free-electrons.com, robh+dt@kernel.org, mark.rutland@arm.com, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+In-Reply-To: <20171018143629.29302-7-miquel.raynal@free-electrons.com>
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: Miquel Raynal <miquel.raynal@free-electrons.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Andrew Lunn <andrew@lunn.ch>, Catalin Marinas <catalin.marinas@arm.com>, Hanna Hawa <hannah@marvell.com>, Will Deacon <will.deacon@arm.com>, Stefan Agner <stefan@agner.ch>, Nadav Haklai <nadavh@marvell.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mtd@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, devel@driverdev.osuosl.org, Maxim Levitsky <maximlevitsky@gmail.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Josh Wu <rainyfeeling@outlook.com>, Russell King <linux@armlinux.org.uk>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Ezequiel Garcia <ezequiel.garcia@free-electrons.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Marc Gonzalez <marc_gonzalez@sigma>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-10-18 at 21:32 +0800, Yingjoe Chen wrote:
-> On Tue, 2017-10-17 at 17:40 +0800, sean.wang@mediatek.com wrote:
-> > From: Sean Wang <sean.wang@mediatek.com>
-> > 
-> > Add device-tree binding for MediaTek SoC based RTC
-> > 
-> > Cc: devicetree@vger.kernel.org
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > Acked-by: Rob Herring <robh@kernel.org>
-> > ---
-> >  .../devicetree/bindings/rtc/rtc-mediatek.txt        | 21 +++++++++++++++++++++
-> >  1 file changed, 21 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/rtc/rtc-mediatek.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/rtc/rtc-mediatek.txt b/Documentation/devicetree/bindings/rtc/rtc-mediatek.txt
-> > new file mode 100644
-> > index 0000000..09fe8f5
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/rtc/rtc-mediatek.txt
-> 
-> 
-> How about change this filename to match driver filename change?
-> 
-> Joe.C
-> 
+On Wed, 18 Oct 2017 16:36:23 +0200
+Miquel Raynal <miquel.raynal@free-electrons.com> wrote:
 
-Will be improved together with the other patches
+
+> +
+> +enum marvell_nfc_variant {
+> +	MARVELL_NFC_VARIANT_PXA3XX,
+> +	MARVELL_NFC_VARIANT_ARMADA370,
+> +	MARVELL_NFC_VARIANT_ARMADA_8K,
+> +};
+> +
+> +/*
+> + * NAND controller capabilities for distinction between compatible strings
+> + *
+> + * @variant:		Board type
+> + * @max_cs_nb:		Number of Chip Select lines available
+> + * @max_rb_nb:		Number of Ready/Busy lines available
+> + * @legacy_of_bindings	Indicates if DT parsing must be done using the old
+> + *			fashion way
+> + */
+> +struct marvell_nfc_caps {
+> +	enum marvell_nfc_variant variant;
+
+Do you really need this variant field. It seems you're only using it to
+detect if you should MUX the NAND pins using the Special Function
+registers on armada8k. Maybe you should just have:
+
+	bool need_system_controller;
+
+and set it to true for the "armada8k" compatible.
+
+> +	unsigned int max_cs_nb;
+> +	unsigned int max_rb_nb;
+> +	bool legacy_of_bindings;
+> +};
+> +
