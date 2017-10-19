@@ -1,60 +1,103 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [RFC 06/12] mtd: nand: add reworked Marvell NAND controller driver
-Date: Thu, 19 Oct 2017 09:18:10 +0200
-Message-ID: <20171019091810.13f54c78@bbrezillon>
-References: <20171018143629.29302-1-miquel.raynal@free-electrons.com>
- <20171018143629.29302-7-miquel.raynal@free-electrons.com>
+From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Subject: Re: [PATCH v2 2/4] rtc: mediatek: add driver for RTC on MT7622 SoC
+Date: Thu, 19 Oct 2017 11:02:19 +0200
+Message-ID: <20171019090219.2odtq3xosqk5ytsb@piout.net>
+References: <cover.1508231935.git.sean.wang@mediatek.com>
+ <2f86eebfd380cf932808df3404e2f4a6f2f0f874.1508231935.git.sean.wang@mediatek.com>
+ <1508325126.13340.25.camel@mtksdaap41>
+ <20171018125743.kqna6b4lgng674om@piout.net>
+ <1508381749.21840.123.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-In-Reply-To: <20171018143629.29302-7-miquel.raynal@free-electrons.com>
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Miquel Raynal <miquel.raynal@free-electrons.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Andrew Lunn <andrew@lunn.ch>, Catalin Marinas <catalin.marinas@arm.com>, Hanna Hawa <hannah@marvell.com>, Will Deacon <will.deacon@arm.com>, Stefan Agner <stefan@agner.ch>, Nadav Haklai <nadavh@marvell.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mtd@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, devel@driverdev.osuosl.org, Maxim Levitsky <maximlevitsky@gmail.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Josh Wu <rainyfeeling@outlook.com>, Russell King <linux@armlinux.org.uk>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Ezequiel Garcia <ezequiel.garcia@free-electrons.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Marc Gonzalez <marc_gonzalez@sigma>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1508381749.21840.123.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, a.zummo@towertech.it, robh+dt@kernel.org, mark.rutland@arm.com, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 18 Oct 2017 16:36:23 +0200
-Miquel Raynal <miquel.raynal@free-electrons.com> wrote:
+On 19/10/2017 at 10:55:49 +0800, Sean Wang wrote:
+> Hi, both
+> 
+> On Wed, 2017-10-18 at 14:57 +0200, Alexandre Belloni wrote:
+> > On 18/10/2017 at 19:12:06 +0800, Yingjoe Chen wrote:
+> > > On Tue, 2017-10-17 at 17:40 +0800, sean.wang@mediatek.com wrote:
+> > > > From: Sean Wang <sean.wang@mediatek.com>
+> > > > 
+> > > > This patch introduces the driver for the RTC on MT7622 SoC.
+> > > > 
+> > > > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > > > ---
+> > > >  drivers/rtc/Kconfig      |  10 ++
+> > > >  drivers/rtc/Makefile     |   1 +
+> > > >  drivers/rtc/rtc-mt7622.c | 418 +++++++++++++++++++++++++++++++++++++++++++++++
+> > > >  3 files changed, 429 insertions(+)
+> > > >  create mode 100644 drivers/rtc/rtc-mt7622.c
+> > > > 
+> > > > diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
+> > > > index e0e58f3..4226295 100644
+> > > > --- a/drivers/rtc/Kconfig
+> > > > +++ b/drivers/rtc/Kconfig
+> > > > @@ -1705,6 +1705,16 @@ config RTC_DRV_MOXART
+> > > >  	   This driver can also be built as a module. If so, the module
+> > > >  	   will be called rtc-moxart
+> > > >  
+> > > > +config RTC_DRV_MEDIATEK
+> > > 
+> > > How about changing this to RTC_DRV_MT7622 or RTC_DRV_MEDIATEK_SOC?
+> > > It is confusing to have both RTC_DRV_MEDIATEK & RTC_DRV_MT6397 here.
+> > > 
+> > 
+> > Yes, this has to be RTC_DRV_MT7622. It doesn't matter if it support
+> > future SoCs named differently, it will be less confusing than using
+> > anything with only mediatek in it.
+> > 
+> 
+> Agreed on. RTC_DRV_MT7622 will be applied instead to align the usage on
+> MT6397 and to get rid of such kind of confusion.
+> 
+> 
+> > > > +		return -EINVAL;
+> > > > +
+> > > > +	/* Keep yr_base used to calculate the calculate year when userspace
+> > > > +	 * queries and extend the maximum year the RTC can count.
+> > > > +	 */
+> > > > +	hw->yr_base[MTK_TC] = tm->tm_year - MTK_RTC_TM_YR_L -
+> > > > +			      (tm->tm_year % MTK_RTC_HW_YR_LIMIT);
+> > > 
+> > > 
+> > > I'm not sure this worth it.
+> > > If maximum year it can hold is 99, I'd bet it won't support leap year
+> > > correctly after 2100. This make the RTC useless after that. 
+> > > 
+> > > Also, yr_base is lost after power cycle, so you can't get correct year
+> > > back anyway.
+> > > 
+> > 
+> > I agree, the best you can do here is to only support 2000 to 2099.
+> > 
+> 
+> O.K. I will remove those yr_base extension and only consider only
+> support from 2000 to 2099 because of no much gain we can get from
+> yr_base.
+> 
+> The only gain is yr_base I thought just allows people have the
+> opportunity to set up rtc after 2100. However, it appears to not much
+> practical to foresee these things after 2100 and rtc must be setup again
+> when either year overflowing or power cycle happens after 2100 as Joe.C
+> mentioned.
+> 
+> In addition, I also found the rtc hardware would take year == 0 as not
+> leap year that works for 2100, 2200, 2300, but not for 2000, 2400,
+> 2800,... and thus 2000 is also needed to be excluded in both set_time
+> and set_alarm if only 2000 to 2099 is supported.
+> 
 
+So you can make it work from 2001 to 2100 but I'm not sure it is worth
+it.
 
-> +
-> +enum marvell_nfc_variant {
-> +	MARVELL_NFC_VARIANT_PXA3XX,
-> +	MARVELL_NFC_VARIANT_ARMADA370,
-> +	MARVELL_NFC_VARIANT_ARMADA_8K,
-> +};
-> +
-> +/*
-> + * NAND controller capabilities for distinction between compatible strings
-> + *
-> + * @variant:		Board type
-> + * @max_cs_nb:		Number of Chip Select lines available
-> + * @max_rb_nb:		Number of Ready/Busy lines available
-> + * @legacy_of_bindings	Indicates if DT parsing must be done using the old
-> + *			fashion way
-> + */
-> +struct marvell_nfc_caps {
-> +	enum marvell_nfc_variant variant;
-
-Do you really need this variant field. It seems you're only using it to
-detect if you should MUX the NAND pins using the Special Function
-registers on armada8k. Maybe you should just have:
-
-	bool need_system_controller;
-
-and set it to true for the "armada8k" compatible.
-
-> +	unsigned int max_cs_nb;
-> +	unsigned int max_rb_nb;
-> +	bool legacy_of_bindings;
-> +};
-> +
+-- 
+Alexandre Belloni, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
