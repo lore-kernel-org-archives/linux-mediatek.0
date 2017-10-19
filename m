@@ -1,167 +1,504 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [RFC 00/12] Marvell NAND controller rework with ->exec_op()
-Date: Thu, 19 Oct 2017 00:29:22 +0200
-Message-ID: <20171019002922.5ab978ed@bbrezillon>
-References: <20171018143629.29302-1-miquel.raynal@free-electrons.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v2 2/4] rtc: mediatek: add driver for RTC on MT7622 SoC
+Date: Thu, 19 Oct 2017 10:18:47 +0800
+Message-ID: <1508379527.21840.94.camel@mtkswgap22>
+References: <cover.1508231935.git.sean.wang@mediatek.com>
+         <2f86eebfd380cf932808df3404e2f4a6f2f0f874.1508231935.git.sean.wang@mediatek.com>
+         <1508320354.13340.19.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-In-Reply-To: <20171018143629.29302-1-miquel.raynal@free-electrons.com>
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Miquel Raynal <miquel.raynal@free-electrons.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Andrew Lunn <andrew@lunn.ch>, Catalin Marinas <catalin.marinas@arm.com>, Hanna Hawa <hannah@marvell.com>, Will Deacon <will.deacon@arm.com>, Stefan Agner <stefan@agner.ch>, Nadav Haklai <nadavh@marvell.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mtd@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, devel@driverdev.osuosl.org, Maxim Levitsky <maximlevitsky@gmail.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Josh Wu <rainyfeeling@outlook.com>, Russell King <linux@armlinux.org.uk>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Ezequiel Garcia <ezequiel.garcia@free-electrons.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Marc Gonzalez <marc_gonzalez@sigma>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1508320354.13340.19.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: a.zummo@towertech.it, alexandre.belloni@free-electrons.com, robh+dt@kernel.org, mark.rutland@arm.com, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgTWlxdWVsLAoKT24gV2VkLCAxOCBPY3QgMjAxNyAxNjozNjoxNyArMDIwMApNaXF1ZWwgUmF5
-bmFsIDxtaXF1ZWwucmF5bmFsQGZyZWUtZWxlY3Ryb25zLmNvbT4gd3JvdGU6Cgo+IEhpLAo+IAo+
-IFRoaXMgc2VyaWVzIGFkZHMgdGhlIGltcGxlbWVudGF0aW9uIG9mIHRoZSBOQU5EIGZyYW1ld29y
-ayAtPmV4ZWNfb3AoKQo+IGludGVyZmFjZSB3aXRoIGFsbCB0aGUgcmVsYXRlZCBob29rcyBhbmQg
-aGVscGVycy4gVGhlIHJlYXNvbnMgZm9yIGFkZGluZwo+IGl0IGFyZSBleHBsYWluZWQgaW4gZGV0
-YWlscyBpbiB0aGUgY29tbWl0IGxvZyAibXRkOiBuYW5kOiBhZGQKPiAgLT5leGVjX29wKCkgaW1w
-bGVtZW50YXRpb24iLCBidXQgbW9zdGx5IGl0IHdpbGwgZWFzZSBsYXRlciBleHBhbnNpb24gb2Yg
-IAo+IHRoZSBmcmFtZXdvcmssIGFzIHdlbGwgYXMgdGhlIGltcGxlbWVudGF0aW9uIG9mIG5ldyB2
-ZW5kb3Igc3BlY2lmaWMKPiBjb21tYW5kcywgYW5kIHNob3VsZCBhbHNvIGVhc2UgZHJpdmVyIGRl
-dmVsb3BtZW50LgoKU3RpbGwgbmVlZCB0byByZXZpZXcgcGF0Y2ggNiwgYnV0IEknZCBsaWtlIHRv
-IHNheSBJJ20gcmVhbGx5IGhhcHB5IHRvCnNlZSB0aGF0IGhhcHBlbiwgZmluYWxseS4gSG9wZWZ1
-bGx5IHRoYXQgd2lsbCBoZWxwIHVzIG1ha2UgdGhlIE5BTkQKZnJhbWV3b3JrIGEgYml0IGVhc2ll
-ciB0byBtYWludGFpbiBhbmQgYWxsb3cgdXMgdG8gc3VwcG9ydCBhZHZhbmNlZApOQU5EIGZlYXR1
-cmVzIHdpdGhvdXQgaGF2aW5nIHRvIHBhdGNoIGFsbCBOQU5EIGNvbnRyb2xsZXIgZHJpdmVycyBl
-dmVyeQp0aW1lIHdlIGFkZCBhIG5ldyB2ZW5kb3Igc3BlY2lmaWMgb3BlcmF0aW9uLiBJIGFsc28g
-aGF2ZSBpbiBtaW5kIGEgZmV3Ck5BTkQgY29udHJvbGxlciBkcml2ZXJzIHRoYXQgaGF2ZSBiZWVu
-IHJlamVjdGVkIGJlY2F1c2UgdGhleSB3ZXJlIG5vdApmaXR0aW5nIGluIHRoZSAtPmNtZF9jdHJs
-KCkgYXBwcm9hY2ggYW5kIEkgZGlkbid0IHdhbnQgdG8gYWRkIG1vcmUKZHJpdmVycyB3aXRoIHRo
-ZWlyIG93biBwYXJ0aWFsbHkgaW1wbGVtZW50ZWQvYnJva2VuIC0+Y21kZnVuYygpIG1ldGhvZC4K
-Ckt1ZG9zIGZvciB0aGUgd29yayB5b3UndmUgZG9uZSwgYW5kIEkgaG9wZSB3ZSdsbCBnZXQgcmV2
-aWV3cyBmcm9tIG90aGVyCmFjdGl2ZSBOQU5EIGRyaXZlciBtYWludGFpbmVycy9jb250cmlidXRv
-cnMuIFRvIGFsbCBOQU5EIGRyaXZlcgptYWludGFpbmVyczogbm90ZSB0aGF0IHRoZSBsb25nIHRl
-cm0gZ29hbCBpcyB0byBnZXQgcmlkIG9mCi0+Y21kX2N0cmwoKS9jbWRmdW5jKCkvcmVhZC93cml0
-ZV9idWYvYnl0ZS93b3JkKCkgZW50aXJlbHkgYW5kIHJlcGxhY2UKdGhlbSB3aXRoIGEgc2luZ2xl
-IC0+ZXhlY19vcCgpIGhvb2suIFBsZWFzZSBsZXQgdXMga25vdyBpZiB5b3UgbmVlZApleHRyYSB0
-aGluZ3MgdGhhdCBhcmUgbm90IHlldCBleHBvc2VkIGluIG5hbmRfb3BfaW5zdHIvbmFuZF9vcF9w
-YXJzZXIKb3IgaWYgeW91IHdvdWxkIGxpa2UgdGhpbmdzIHRvIGJlIGRvbmUgZGlmZmVyZW50bHku
-CgpUaGFua3MsCgpCb3JpcwoKPiAKPiBUaGUgc2VyaWVzIGNvbnRhaW5zIGFzIHdlbGwgdGhlIHJl
-d29ya2VkIE5BTkQgY29udHJvbGxlciBkcml2ZXIgZnJvbQo+IE1hcnZlbGwuCj4gCj4gQSBsb3Qg
-b2YgY29tbWVudHMgYXJlIHdyaXR0ZW4gdG8gZXhwbGFpbiBob3cgdG8gdXNlIHRoZSBuZXcgQVBJ
-IGFuZCB0aGUKPiBNYXJ2ZWxsIGRyaXZlciBzaG93cyBob3cgdG8gaW1wbGVtZW50IGl0LiBBIHBy
-b3BlciBleHRlcm5hbAo+IGRvY3VtZW50YXRpb24gaXMgYmVpbmcgd3JpdHRlbiBhbmQgd2lsbCBs
-YXRlciBiZSBzdWJtaXR0ZWQuCj4gCj4gSXQgYWxzbyBjaGFuZ2VzIHRoZSBkZXZpY2UgdHJlZSBO
-QU5EIG5vZGUgZGVmaW5pdGlvbiBmb3IgYWxsIHBsYXRmb3Jtcwo+IHJlZmVycmluZyB0byB0aGUg
-TWFydmVsbCBkcml2ZXIgdG8gdXNlIHRoZSBuZXcgYmluZGluZ3MuIFRoZXkgYXJlIG1vcmUKPiBo
-aWVyYXJjaGljYWwgYW5kIGZpdCB0aGUgcmVhbCBvcmdhbml6YXRpb24gb2YgdGhlIGhhcmR3YXJl
-LCBieSBoYXZpbmcKPiBOQU5EIHBhcnRpdGlvbnMgdGhhdCBhcmUgcGFydCBvZiBOQU5EIGNoaXAg
-bm9kZXMsIHRoZW1zZWx2ZXMgcGFydCBvZgo+IHRoZSBOQU5EIGNvbnRyb2xsZXIgbm9kZS4KPiAK
-PiBTZWUgdGhlIGNvbW1pdCBsb2cgb2YgIm10ZDogbmFuZDogYWRkIHJld29ya2VkIE1hcnZlbGwg
-TkFORCBjb250cm9sbGVyCj4gZHJpdmVyIiBmb3IgZGV0YWlscyBhYm91dCB3aHkgYSBjb21wbGV0
-ZWx5IG5ldyBkcml2ZXIgaXMgbmVlZGVkLgo+IAo+IEFzIHRoaXMgc2VyaWVzIGNoYW5nZXMgc2V2
-ZXJhbCBjb3JlIGZ1bmN0aW9ucyBhbmQgYWxzbyBkaXJlY3RseSB0b3VjaGVzCj4gbXVsdGlwbGUg
-Y29udHJvbGxlciBkcml2ZXJzLCBpdCB3b3VsZCBiZSBncmVhdCB0byBoYXZlIHJldmlld3MgYW5k
-IHRlc3RzCj4gZnJvbSB0aGUgY29uY2VybmVkIG1haW50YWluZXJzLiBPbmx5IFBYQTN4eCBTb0Nz
-IGFyZSBub3Qgc3VwcG9ydGVkIHlldAo+IChleHBsYWluaW5nIHRoZSBSRkMpIGFzIGhhdmluZyBh
-IGxvY2FsIGJvYXJkIHRvIHRlc3QgaXMgcmVhbGx5IG5lZWRlZC4KPiAKPiBUaGFuayB5b3UsCj4g
-TWlxdcOobAo+IAo+IAo+IEJvcmlzIEJyZXppbGxvbiAoMik6Cj4gICBtdGQ6IG5hbmQ6IHByb3Zp
-ZGUgc2V2ZXJhbCBoZWxwZXJzIHRvIGRvIGNvbW1vbiBOQU5EIG9wZXJhdGlvbnMKPiAgIG10ZDog
-bmFuZDogZm9yY2UgZHJpdmVycyB0byBleHBsaWNpdGx5IHNlbmQgUkVBRC9QUk9HIGNvbW1hbmRz
-Cj4gCj4gTWlxdWVsIFJheW5hbCAoMTApOgo+ICAgbXRkOiBuYW5kOiB1c2UgYSBzdGF0aWMgZGF0
-YV9pbnRlcmZhY2UgaW4gdGhlIG5hbmRfY2hpcCBzdHJ1Y3R1cmUKPiAgIG10ZDogbmFuZDogYWRk
-IC0+ZXhlY19vcCgpIGltcGxlbWVudGF0aW9uCj4gICBkdC1iaW5kaW5nczogbXRkOiBhZGQgTWFy
-dmVsbCBOQU5EIGNvbnRyb2xsZXIgZG9jdW1lbnRhdGlvbgo+ICAgbXRkOiBuYW5kOiBhZGQgcmV3
-b3JrZWQgTWFydmVsbCBOQU5EIGNvbnRyb2xsZXIgZHJpdmVyCj4gICBBUk06IGR0czogYXJtYWRh
-LTM3MC14cDogdXNlIHJld29ya2VkIE5BTkQgY29udHJvbGxlciBkcml2ZXIKPiAgIEFSTTogZHRz
-OiBhcm1hZGEtMzc1OiB1c2UgcmV3b3JrZWQgTkFORCBjb250cm9sbGVyIGRyaXZlcgo+ICAgQVJN
-OiBkdHM6IGFybWFkYS0zOHg6IHVzZSByZXdvcmtlZCBOQU5EIGNvbnRyb2xsZXIgZHJpdmVyCj4g
-ICBBUk06IGR0czogYXJtYWRhLTM5eDogdXNlIHJld29ya2VkIE5BTkQgY29udHJvbGxlciBkcml2
-ZXIKPiAgIEFSTTogZHRzOiBweGE6IHVzZSByZXdvcmtlZCBOQU5EIGNvbnRyb2xsZXIgZHJpdmVy
-Cj4gICBBUk02NDogZHRzOiBtYXJ2ZWxsOiB1c2UgcmV3b3JrZWQgTkFORCBjb250cm9sbGVyIGRy
-aXZlciBvbiBBcm1hZGEKPiAgICAgN0svOEsKPiAKPiAgLi4uL2RldmljZXRyZWUvYmluZGluZ3Mv
-bXRkL21hcnZlbGwtbmFuZC50eHQgICAgICAgfCAgIDk1ICsKPiAgYXJjaC9hcm0vYm9vdC9kdHMv
-YXJtYWRhLTM3MC1kYi5kdHMgICAgICAgICAgICAgICAgfCAgIDU2ICstCj4gIGFyY2gvYXJtL2Jv
-b3QvZHRzL2FybWFkYS0zNzAtZGxpbmstZG5zMzI3bC5kdHMgICAgIHwgIDExOSArLQo+ICBhcmNo
-L2FybS9ib290L2R0cy9hcm1hZGEtMzcwLW1pcmFib3guZHRzICAgICAgICAgICB8ICAgNTAgKy0K
-PiAgYXJjaC9hcm0vYm9vdC9kdHMvYXJtYWRhLTM3MC1uZXRnZWFyLXJuMTAyLmR0cyAgICAgfCAg
-IDg5ICstCj4gIGFyY2gvYXJtL2Jvb3QvZHRzL2FybWFkYS0zNzAtbmV0Z2Vhci1ybjEwNC5kdHMg
-ICAgIHwgICA4OSArLQo+ICBhcmNoL2FybS9ib290L2R0cy9hcm1hZGEtMzcwLXJkLmR0cyAgICAg
-ICAgICAgICAgICB8ICAgNTEgKy0KPiAgYXJjaC9hcm0vYm9vdC9kdHMvYXJtYWRhLTM3MC1zZWFn
-YXRlLW5hcy14YmF5LmR0c2kgfCAgIDYzICstCj4gIGFyY2gvYXJtL2Jvb3QvZHRzL2FybWFkYS0z
-NzAteHAuZHRzaSAgICAgICAgICAgICAgIHwgICAgNiArLQo+ICBhcmNoL2FybS9ib290L2R0cy9h
-cm1hZGEtMzc1LWRiLmR0cyAgICAgICAgICAgICAgICB8ICAgNDkgKy0KPiAgYXJjaC9hcm0vYm9v
-dC9kdHMvYXJtYWRhLTM3NS5kdHNpICAgICAgICAgICAgICAgICAgfCAgICA2ICstCj4gIGFyY2gv
-YXJtL2Jvb3QvZHRzL2FybWFkYS0zODUtZGItYXAuZHRzICAgICAgICAgICAgIHwgICA2OCArLQo+
-ICBhcmNoL2FybS9ib290L2R0cy9hcm1hZGEtMzg1LWxpbmtzeXMtY2FpbWFuLmR0cyAgICB8ICAx
-MjkgKy0KPiAgYXJjaC9hcm0vYm9vdC9kdHMvYXJtYWRhLTM4NS1saW5rc3lzLWNvYnJhLmR0cyAg
-ICAgfCAgMTI5ICstCj4gIGFyY2gvYXJtL2Jvb3QvZHRzL2FybWFkYS0zODUtbGlua3N5cy1yYW5n
-by5kdHMgICAgIHwgIDE0MSArLQo+ICBhcmNoL2FybS9ib290L2R0cy9hcm1hZGEtMzg1LWxpbmtz
-eXMtc2hlbGJ5LmR0cyAgICB8ICAxMjkgKy0KPiAgYXJjaC9hcm0vYm9vdC9kdHMvYXJtYWRhLTM4
-NS1saW5rc3lzLmR0c2kgICAgICAgICAgfCAgIDE1ICstCj4gIGFyY2gvYXJtL2Jvb3QvZHRzL2Fy
-bWFkYS0zODgtZGIuZHRzICAgICAgICAgICAgICAgIHwgICA1NCArLQo+ICBhcmNoL2FybS9ib290
-L2R0cy9hcm1hZGEtMzh4LmR0c2kgICAgICAgICAgICAgICAgICB8ICAgIDYgKy0KPiAgYXJjaC9h
-cm0vYm9vdC9kdHMvYXJtYWRhLTM5MC1kYi5kdHMgICAgICAgICAgICAgICAgfCAgIDY1ICstCj4g
-IGFyY2gvYXJtL2Jvb3QvZHRzL2FybWFkYS0zOTUtZ3AuZHRzICAgICAgICAgICAgICAgIHwgICA3
-MyArLQo+ICBhcmNoL2FybS9ib290L2R0cy9hcm1hZGEtMzk4LWRiLmR0cyAgICAgICAgICAgICAg
-ICB8ICAgNTkgKy0KPiAgYXJjaC9hcm0vYm9vdC9kdHMvYXJtYWRhLTM5eC5kdHNpICAgICAgICAg
-ICAgICAgICAgfCAgICA2ICstCj4gIGFyY2gvYXJtL2Jvb3QvZHRzL2FybWFkYS14cC1kYi1keGJj
-Mi5kdHMgICAgICAgICAgIHwgICAgMSAtCj4gIGFyY2gvYXJtL2Jvb3QvZHRzL2FybWFkYS14cC1k
-Yi14YzMtMjRnNHhnLmR0cyAgICAgIHwgICAgMSAtCj4gIGFyY2gvYXJtL2Jvb3QvZHRzL2FybWFk
-YS14cC1kYi5kdHMgICAgICAgICAgICAgICAgIHwgICAgMSAtCj4gIGFyY2gvYXJtL2Jvb3QvZHRz
-L2FybWFkYS14cC1ncC5kdHMgICAgICAgICAgICAgICAgIHwgICAgMSAtCj4gIGFyY2gvYXJtL2Jv
-b3QvZHRzL2FybWFkYS14cC1sZW5vdm8taXg0LTMwMGQuZHRzICAgIHwgICAgMSAtCj4gIGFyY2gv
-YXJtL2Jvb3QvZHRzL2FybWFkYS14cC1saW5rc3lzLW1hbWJhLmR0cyAgICAgIHwgIDE1NSArLQo+
-ICBhcmNoL2FybS9ib290L2R0cy9hcm1hZGEteHAtbmV0Z2Vhci1ybjIxMjAuZHRzICAgICB8ICAg
-ODkgKy0KPiAgYXJjaC9hcm0vYm9vdC9kdHMvcHhhM3h4LmR0c2kgICAgICAgICAgICAgICAgICAg
-ICAgfCAgICA2ICstCj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWFydmVsbC9hcm1hZGEtNzA0MC1k
-Yi5kdHMgICAgIHwgICA0NyArLQo+ICAuLi4vYm9vdC9kdHMvbWFydmVsbC9hcm1hZGEtY3AxMTAt
-bWFzdGVyLmR0c2kgICAgICB8ICAgIDYgKy0KPiAgLi4uL2FybTY0L2Jvb3QvZHRzL21hcnZlbGwv
-YXJtYWRhLWNwMTEwLXNsYXZlLmR0c2kgfCAgICA2ICstCj4gIGRyaXZlcnMvbXRkL25hbmQvS2Nv
-bmZpZyAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAxMSArCj4gIGRyaXZlcnMvbXRkL25h
-bmQvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgMSArCj4gIGRyaXZlcnMv
-bXRkL25hbmQvYXRtZWwvbmFuZC1jb250cm9sbGVyLmMgICAgICAgICAgIHwgICAgOSArLQo+ICBk
-cml2ZXJzL210ZC9uYW5kL2JmNXh4X25hbmQuYyAgICAgICAgICAgICAgICAgICAgICB8ICAgIDYg
-Ky0KPiAgZHJpdmVycy9tdGQvbmFuZC9icmNtbmFuZC9icmNtbmFuZC5jICAgICAgICAgICAgICAg
-fCAgIDIwICstCj4gIGRyaXZlcnMvbXRkL25hbmQvY2FmZV9uYW5kLmMgICAgICAgICAgICAgICAg
-ICAgICAgIHwgICAyMCArLQo+ICBkcml2ZXJzL210ZC9uYW5kL2RlbmFsaS5jICAgICAgICAgICAg
-ICAgICAgICAgICAgICB8ICAxMDkgKy0KPiAgZHJpdmVycy9tdGQvbmFuZC9kaXNrb25jaGlwLmMg
-ICAgICAgICAgICAgICAgICAgICAgfCAgICA0ICstCj4gIGRyaXZlcnMvbXRkL25hbmQvZG9jZzQu
-YyAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAxOSArLQo+ICBkcml2ZXJzL210ZC9uYW5k
-L2ZzbF9lbGJjX25hbmQuYyAgICAgICAgICAgICAgICAgICB8ICAgIDYgKy0KPiAgZHJpdmVycy9t
-dGQvbmFuZC9mc2xfaWZjX25hbmQuYyAgICAgICAgICAgICAgICAgICAgfCAgICA2ICstCj4gIGRy
-aXZlcnMvbXRkL25hbmQvZnNtY19uYW5kLmMgICAgICAgICAgICAgICAgICAgICAgIHwgICAgNSAr
-LQo+ICBkcml2ZXJzL210ZC9uYW5kL2dwbWktbmFuZC9ncG1pLW5hbmQuYyAgICAgICAgICAgICB8
-ICAgNzYgKy0KPiAgZHJpdmVycy9tdGQvbmFuZC9oaXNpNTA0X25hbmQuYyAgICAgICAgICAgICAg
-ICAgICAgfCAgICA5ICstCj4gIGRyaXZlcnMvbXRkL25hbmQvano0NzQwX25hbmQuYyAgICAgICAg
-ICAgICAgICAgICAgIHwgICAxNiArLQo+ICBkcml2ZXJzL210ZC9uYW5kL2xwYzMyeHhfbWxjLmMg
-ICAgICAgICAgICAgICAgICAgICB8ICAgIDcgKy0KPiAgZHJpdmVycy9tdGQvbmFuZC9scGMzMnh4
-X3NsYy5jICAgICAgICAgICAgICAgICAgICAgfCAgIDMzICstCj4gIGRyaXZlcnMvbXRkL25hbmQv
-bWFydmVsbF9uYW5kLmMgICAgICAgICAgICAgICAgICAgIHwgMjM4NCArKysrKysrKysrKysrKysr
-KysrKwo+ICBkcml2ZXJzL210ZC9uYW5kL210a19uYW5kLmMgICAgICAgICAgICAgICAgICAgICAg
-ICB8ICAgMjEgKy0KPiAgZHJpdmVycy9tdGQvbmFuZC9uYW5kX2Jhc2UuYyAgICAgICAgICAgICAg
-ICAgICAgICAgfCAyMDIwICsrKysrKysrKysrKysrLS0tCj4gIGRyaXZlcnMvbXRkL25hbmQvbmFu
-ZF9oeW5peC5jICAgICAgICAgICAgICAgICAgICAgIHwgIDEwNiArLQo+ICBkcml2ZXJzL210ZC9u
-YW5kL25hbmRfbWljcm9uLmMgICAgICAgICAgICAgICAgICAgICB8ICAgNTAgKy0KPiAgZHJpdmVy
-cy9tdGQvbmFuZC9uYW5kX3RpbWluZ3MuYyAgICAgICAgICAgICAgICAgICAgfCAgIDIzICstCj4g
-IGRyaXZlcnMvbXRkL25hbmQvb21hcDIuYyAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAg
-OCArLQo+ICBkcml2ZXJzL210ZC9uYW5kL3B4YTN4eF9uYW5kLmMgICAgICAgICAgICAgICAgICAg
-ICB8ICAgIDggKy0KPiAgZHJpdmVycy9tdGQvbmFuZC9xY29tX25hbmRjLmMgICAgICAgICAgICAg
-ICAgICAgICAgfCAgIDE2ICstCj4gIGRyaXZlcnMvbXRkL25hbmQvcjg1Mi5jICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHwgICAxMSArLQo+ICBkcml2ZXJzL210ZC9uYW5kL3NoX2ZsY3RsLmMg
-ICAgICAgICAgICAgICAgICAgICAgICB8ICAgIDYgKy0KPiAgZHJpdmVycy9tdGQvbmFuZC9zdW54
-aV9uYW5kLmMgICAgICAgICAgICAgICAgICAgICAgfCAgIDk3ICstCj4gIGRyaXZlcnMvbXRkL25h
-bmQvdGFuZ29fbmFuZC5jICAgICAgICAgICAgICAgICAgICAgIHwgICAyNyArLQo+ICBkcml2ZXJz
-L210ZC9uYW5kL3RtaW9fbmFuZC5jICAgICAgICAgICAgICAgICAgICAgICB8ICAgIDUgKy0KPiAg
-ZHJpdmVycy9tdGQvbmFuZC92ZjYxMF9uZmMuYyAgICAgICAgICAgICAgICAgICAgICAgfCAgICA2
-ICstCj4gIGRyaXZlcnMvc3RhZ2luZy9tdDI5Zl9zcGluYW5kL210MjlmX3NwaW5hbmQuYyAgICAg
-IHwgICAgNyArLQo+ICBpbmNsdWRlL2xpbnV4L210ZC9yYXduYW5kLmggICAgICAgICAgICAgICAg
-ICAgICAgICB8ICAzOTEgKysrLQo+ICA2OCBmaWxlcyBjaGFuZ2VkLCA1OTgwIGluc2VydGlvbnMo
-KyksIDE0MjQgZGVsZXRpb25zKC0pCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9u
-L2RldmljZXRyZWUvYmluZGluZ3MvbXRkL21hcnZlbGwtbmFuZC50eHQKPiAgY3JlYXRlIG1vZGUg
-MTAwNjQ0IGRyaXZlcnMvbXRkL25hbmQvbWFydmVsbF9uYW5kLmMKPiAKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZl
-bEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9q
-ZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Wed, 2017-10-18 at 17:52 +0800, Yingjoe Chen wrote:
+> On Tue, 2017-10-17 at 17:40 +0800, sean.wang@mediatek.com wrote:
+> > From: Sean Wang <sean.wang@mediatek.com>
+> > 
+> > This patch introduces the driver for the RTC on MT7622 SoC.
+> > 
+> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > ---
+> >  drivers/rtc/Kconfig      |  10 ++
+> >  drivers/rtc/Makefile     |   1 +
+> >  drivers/rtc/rtc-mt7622.c | 418 +++++++++++++++++++++++++++++++++++++++++++++++
+> >  3 files changed, 429 insertions(+)
+> >  create mode 100644 drivers/rtc/rtc-mt7622.c
+> > 
+> > diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
+> > index e0e58f3..4226295 100644
+> > --- a/drivers/rtc/Kconfig
+> > +++ b/drivers/rtc/Kconfig
+> > @@ -1705,6 +1705,16 @@ config RTC_DRV_MOXART
+> >  	   This driver can also be built as a module. If so, the module
+> >  	   will be called rtc-moxart
+> >  
+> > +config RTC_DRV_MEDIATEK
+> > +	tristate "MediaTek SoC based RTC"
+> > +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +	help
+> > +	  This enables support for the real time clock built in the MediaTek
+> > +	  SoCs.
+> > +
+> > +	  This drive can also be built as a module. If so, the module
+> > +	  will be called rtc-mediatek.
+> > +
+> >  config RTC_DRV_MT6397
+> >  	tristate "Mediatek Real Time Clock driver"
+> >  	depends on MFD_MT6397 || (COMPILE_TEST && IRQ_DOMAIN)
+> > diff --git a/drivers/rtc/Makefile b/drivers/rtc/Makefile
+> > index 7230014..593a02c 100644
+> > --- a/drivers/rtc/Makefile
+> > +++ b/drivers/rtc/Makefile
+> > @@ -101,6 +101,7 @@ obj-$(CONFIG_RTC_DRV_MOXART)	+= rtc-moxart.o
+> >  obj-$(CONFIG_RTC_DRV_MPC5121)	+= rtc-mpc5121.o
+> >  obj-$(CONFIG_RTC_DRV_VRTC)	+= rtc-mrst.o
+> >  obj-$(CONFIG_RTC_DRV_MSM6242)	+= rtc-msm6242.o
+> > +obj-$(CONFIG_RTC_DRV_MEDIATEK)	+= rtc-mt7622.o
+> >  obj-$(CONFIG_RTC_DRV_MT6397)	+= rtc-mt6397.o
+> >  obj-$(CONFIG_RTC_DRV_MV)	+= rtc-mv.o
+> >  obj-$(CONFIG_RTC_DRV_MXC)	+= rtc-mxc.o
+> > diff --git a/drivers/rtc/rtc-mt7622.c b/drivers/rtc/rtc-mt7622.c
+> > new file mode 100644
+> > index 0000000..1f00494
+> > --- /dev/null
+> > +++ b/drivers/rtc/rtc-mt7622.c
+> > @@ -0,0 +1,418 @@
+> > +/*
+> > + * Driver for MediaTek SoC based RTC
+> > + *
+> > + * Copyright (C) 2017 Sean Wang <sean.wang@mediatek.com>
+> > + *
+> > + * This program is free software; you can redistribute it and/or
+> > + * modify it under the terms of the GNU General Public License as
+> > + * published by the Free Software Foundation; either version 2 of
+> > + * the License, or (at your option) any later version.
+> > + *
+> > + * This program is distributed in the hope that it will be useful,
+> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+> > + * GNU General Public License for more details.
+> > + */
+> > +
+> > +#include <linux/clk.h>
+> > +#include <linux/interrupt.h>
+> > +#include <linux/module.h>
+> > +#include <linux/of_address.h>
+> > +#include <linux/of_device.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/rtc.h>
+> > +
+> > +#define MTK_RTC_DEV KBUILD_MODNAME
+> > +
+> > +#define MTK_RTC_PWRCHK1		0x4
+> > +#define	RTC_PWRCHK1_MAGIC	0xc6
+> > +
+> > +#define MTK_RTC_PWRCHK2		0x8
+> > +#define	RTC_PWRCHK2_MAGIC	0x9a
+> > +
+> > +#define MTK_RTC_KEY		0xc
+> > +#define	RTC_KEY_MAGIC		0x59
+> > +
+> > +#define MTK_RTC_PROT1		0x10
+> > +#define	RTC_PROT1_MAGIC		0xa3
+> > +
+> > +#define MTK_RTC_PROT2		0x14
+> > +#define	RTC_PROT2_MAGIC		0x57
+> > +
+> > +#define MTK_RTC_PROT3		0x18
+> > +#define	RTC_PROT3_MAGIC		0x67
+> > +
+> > +#define MTK_RTC_PROT4		0x1c
+> > +#define	RTC_PROT4_MAGIC		0xd2
+> > +
+> > +#define MTK_RTC_CTL		0x20
+> > +#define	RTC_RC_STOP		BIT(0)
+> > +
+> > +#define MTK_RTC_DEBNCE		0x2c
+> > +#define	RTC_DEBNCE_MASK		GENMASK(2, 0)
+> > +
+> > +#define MTK_RTC_INT		0x30
+> > +#define RTC_INT_AL_STA		BIT(4)
+> > +
+> > +/* Ranges from 0x40 to 0x78 provide RTC time setup for year, month,
+> > + * day of month, day of week, hour, minute and second.
+> > + */
+> > +#define MTK_RTC_TREG(_t, _f)	(0x40 + (0x4 * (_f)) + ((_t) * 0x20))
+> > +
+> > +#define MTK_RTC_AL_CTL		0x7c
+> > +#define	RTC_AL_EN		BIT(0)
+> > +#define	RTC_AL_ALL		GENMASK(7, 0)
+> > +
+> > +#define MTK_RTC_TM_YR_L		100
+> > +
+> > +/* The maximum years the RTC can support is 99, For MT7622 */
+> > +#define MTK_RTC_HW_YR_LIMIT	100
+> > +
+> > +/* Types of the function the RTC provides are time counter and alarm. */
+> > +enum {
+> > +	MTK_TC,
+> > +	MTK_AL,
+> > +	MTK_TYPE_MAX,
+> > +};
+> > +
+> > +/* Indexes are used for the pointer to relevant registers in MTK_RTC_TREG */
+> > +enum {
+> > +	MTK_YEA,
+> > +	MTK_MON,
+> > +	MTK_DOM,
+> > +	MTK_DOW,
+> > +	MTK_HOU,
+> > +	MTK_MIN,
+> > +	MTK_SEC
+> > +};
+> > +
+> > +struct mtk_rtc {
+> > +	struct rtc_device *rtc;
+> > +	void __iomem *base;
+> > +	int irq;
+> > +	struct clk *clk;
+> > +	u32 yr_base[MTK_TYPE_MAX];
+> > +};
+> > +
+> > +static void mtk_w32(struct mtk_rtc *rtc, u32 reg, u32 val)
+> > +{
+> > +	writel_relaxed(val, rtc->base + reg);
+> > +}
+> > +
+> > +static u32 mtk_r32(struct mtk_rtc *rtc, u32 reg)
+> > +{
+> > +	return readl_relaxed(rtc->base + reg);
+> > +}
+> > +
+> > +static void mtk_rmw(struct mtk_rtc *rtc, u32 reg, u32 mask, u32 set)
+> > +{
+> > +	u32 val;
+> > +
+> > +	val = mtk_r32(rtc, reg);
+> > +	val &= ~mask;
+> > +	val |= set;
+> > +	mtk_w32(rtc, reg, val);
+> > +}
+> > +
+> > +static void mtk_set(struct mtk_rtc *rtc, u32 reg, u32 val)
+> > +{
+> > +	mtk_rmw(rtc, reg, 0, val);
+> > +}
+> > +
+> > +static void mtk_clr(struct mtk_rtc *rtc, u32 reg, u32 val)
+> > +{
+> > +	mtk_rmw(rtc, reg, val, 0);
+> > +}
+> > +
+> > +static void mtk_rtc_hw_init(struct mtk_rtc *hw)
+> > +{
+> > +	/* The setup of the init sequence is for allowing RTC got to work */
+> > +	mtk_w32(hw, MTK_RTC_PWRCHK1, RTC_PWRCHK1_MAGIC);
+> > +	mtk_w32(hw, MTK_RTC_PWRCHK2, RTC_PWRCHK2_MAGIC);
+> > +	mtk_w32(hw, MTK_RTC_KEY, RTC_KEY_MAGIC);
+> > +	mtk_w32(hw, MTK_RTC_PROT1, RTC_PROT1_MAGIC);
+> > +	mtk_w32(hw, MTK_RTC_PROT2, RTC_PROT2_MAGIC);
+> > +	mtk_w32(hw, MTK_RTC_PROT3, RTC_PROT3_MAGIC);
+> > +	mtk_w32(hw, MTK_RTC_PROT4, RTC_PROT4_MAGIC);
+> > +	mtk_rmw(hw, MTK_RTC_DEBNCE, RTC_DEBNCE_MASK, 0);
+> > +	mtk_clr(hw, MTK_RTC_CTL, RTC_RC_STOP);
+> > +}
+> > +
+> > +static void mtk_rtc_get_alarm_or_time(struct mtk_rtc *hw, struct rtc_time *tm,
+> > +				      int time_alarm)
+> > +{
+> > +	u32 year, mon, mday, wday, hour, min, sec;
+> > +
+> > +	/*
+> > +	 * Read again until the field of the second is not changed which
+> > +	 * ensures all fields in the consistent state.
+> 
+> Sean,
+> 
+> You need to read sec first for this to work.
+> It is possible sec changed from 59 to 00 after you read min.
+> 
+> Joe.C
+> 
+
+Nice catch. It will be fixed. Thanks for your careful review.
+
+	Sean
+
+
+> > +	 */
+> > +	do {
+> > +		year = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_YEA));
+> > +		mon = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_MON));
+> > +		wday = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_DOW));
+> > +		mday = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_DOM));
+> > +		hour = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_HOU));
+> > +		min = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_MIN));
+> > +		sec = mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_SEC));
+> > +	} while (sec != mtk_r32(hw, MTK_RTC_TREG(time_alarm, MTK_SEC)));
+> > +
+> > +	tm->tm_sec  = sec;
+> > +	tm->tm_min  = min;
+> > +	tm->tm_hour = hour;
+> > +	tm->tm_wday = wday;
+> > +	tm->tm_mday = mday;
+> > +	tm->tm_mon  = mon - 1;
+> > +
+> > +	/* Rebase to the absolute year which userspace requires */
+> > +	tm->tm_year = year + MTK_RTC_TM_YR_L + hw->yr_base[time_alarm];
+> > +}
+> > +
+> > +static void mtk_rtc_set_alarm_or_time(struct mtk_rtc *hw, struct rtc_time *tm,
+> > +				      int time_alarm)
+> > +{
+> > +	u32 year;
+> > +
+> > +	/* Rebase to the relative year which RTC hardware requires */
+> > +	year = tm->tm_year - MTK_RTC_TM_YR_L - hw->yr_base[time_alarm];
+> > +
+> > +	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_YEA), year);
+> > +	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_MON), tm->tm_mon + 1);
+> > +	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_DOW), tm->tm_wday);
+> > +	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_DOM), tm->tm_mday);
+> > +	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_HOU), tm->tm_hour);
+> > +	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_MIN), tm->tm_min);
+> > +	mtk_w32(hw, MTK_RTC_TREG(time_alarm, MTK_SEC), tm->tm_sec);
+> > +}
+> > +
+> > +static irqreturn_t mtk_rtc_alarmirq(int irq, void *id)
+> > +{
+> > +	struct mtk_rtc *hw = (struct mtk_rtc *)id;
+> > +	u32 irq_sta;
+> > +
+> > +	irq_sta = mtk_r32(hw, MTK_RTC_INT);
+> > +	if (irq_sta & RTC_INT_AL_STA) {
+> > +		/* Stop alarm also implicitly disables the alarm interrupt */
+> > +		mtk_w32(hw, MTK_RTC_AL_CTL, 0);
+> > +		rtc_update_irq(hw->rtc, 1, RTC_IRQF | RTC_AF);
+> > +
+> > +		/* Ack alarm interrupt status */
+> > +		mtk_w32(hw, MTK_RTC_INT, RTC_INT_AL_STA);
+> > +		return IRQ_HANDLED;
+> > +	}
+> > +
+> > +	return IRQ_NONE;
+> > +}
+> > +
+> > +static int mtk_rtc_gettime(struct device *dev, struct rtc_time *tm)
+> > +{
+> > +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> > +
+> > +	mtk_rtc_get_alarm_or_time(hw, tm, MTK_TC);
+> > +
+> > +	return rtc_valid_tm(tm);
+> > +}
+> > +
+> > +static int mtk_rtc_settime(struct device *dev, struct rtc_time *tm)
+> > +{
+> > +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> > +
+> > +	/* Epoch == 1900, and the driver assumes that tm->tm_year has to be
+> > +	 * at least MTK_RTC_TM_YR_L.
+> > +	 */
+> > +	if (tm->tm_year <  MTK_RTC_TM_YR_L)
+> > +		return -EINVAL;
+> > +
+> > +	/* Keep yr_base used to calculate the calculate year when userspace
+> > +	 * queries and extend the maximum year the RTC can count.
+> > +	 */
+> > +	hw->yr_base[MTK_TC] = tm->tm_year - MTK_RTC_TM_YR_L -
+> > +			      (tm->tm_year % MTK_RTC_HW_YR_LIMIT);
+> > +
+> > +	/* Stop time counter before setting a new one*/
+> > +	mtk_set(hw, MTK_RTC_CTL, RTC_RC_STOP);
+> > +
+> > +	mtk_rtc_set_alarm_or_time(hw, tm, MTK_TC);
+> > +
+> > +	/* Restart the time counter */
+> > +	mtk_clr(hw, MTK_RTC_CTL, RTC_RC_STOP);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_rtc_getalarm(struct device *dev, struct rtc_wkalrm *wkalrm)
+> > +{
+> > +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> > +	struct rtc_time *alrm_tm = &wkalrm->time;
+> > +
+> > +	mtk_rtc_get_alarm_or_time(hw, alrm_tm, MTK_AL);
+> > +
+> > +	wkalrm->enabled = !!(mtk_r32(hw, MTK_RTC_AL_CTL) & RTC_AL_EN);
+> > +	wkalrm->pending = !!(mtk_r32(hw, MTK_RTC_INT) & RTC_INT_AL_STA);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_rtc_setalarm(struct device *dev, struct rtc_wkalrm *wkalrm)
+> > +{
+> > +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> > +	struct rtc_time *alrm_tm = &wkalrm->time;
+> > +
+> > +	/* Epoch == 1900, and the driver assumes that alrm_tm->tm_year has to
+> > +	 * be at least MTK_RTC_TM_YR_L.
+> > +	 */
+> > +	if (alrm_tm->tm_year < MTK_RTC_TM_YR_L)
+> > +		return -EINVAL;
+> > +
+> > +	/* Keep yr_base used to calculate the calculate year when userspace
+> > +	 * queries and extend the maximum time the alarm can support.
+> > +	 */
+> > +	hw->yr_base[MTK_AL] = alrm_tm->tm_year - MTK_RTC_TM_YR_L -
+> > +			      (alrm_tm->tm_year % MTK_RTC_HW_YR_LIMIT);
+> > +
+> > +	/*
+> > +	 * Stop the alarm also implicitly including disables interrupt before
+> > +	 * setting a new one.
+> > +	 */
+> > +	mtk_clr(hw, MTK_RTC_AL_CTL, RTC_AL_EN);
+> > +
+> > +	/*
+> > +	 * Avoid contention between mtk_rtc_setalarm and IRQ handler so that
+> > +	 * disabling the interrupt and awaiting for pending IRQ handler to
+> > +	 * complete.
+> > +	 */
+> > +	synchronize_irq(hw->irq);
+> > +
+> > +	mtk_rtc_set_alarm_or_time(hw, alrm_tm, MTK_AL);
+> > +
+> > +	/* Restart the alarm with the new setup */
+> > +	mtk_w32(hw, MTK_RTC_AL_CTL, RTC_AL_ALL);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static const struct rtc_class_ops mtk_rtc_ops = {
+> > +	.read_time		= mtk_rtc_gettime,
+> > +	.set_time		= mtk_rtc_settime,
+> > +	.read_alarm		= mtk_rtc_getalarm,
+> > +	.set_alarm		= mtk_rtc_setalarm,
+> > +};
+> > +
+> > +static const struct of_device_id mtk_rtc_match[] = {
+> > +	{ .compatible = "mediatek,mt7622-rtc" },
+> > +	{ .compatible = "mediatek,soc-rtc" },
+> > +	{},
+> > +};
+> > +
+> > +static int mtk_rtc_probe(struct platform_device *pdev)
+> > +{
+> > +	struct mtk_rtc *hw;
+> > +	struct resource *res;
+> > +	int ret;
+> > +
+> > +	hw = devm_kzalloc(&pdev->dev, sizeof(*hw), GFP_KERNEL);
+> > +	if (!hw)
+> > +		return -ENOMEM;
+> > +
+> > +	platform_set_drvdata(pdev, hw);
+> > +
+> > +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > +	hw->base = devm_ioremap_resource(&pdev->dev, res);
+> > +	if (IS_ERR(hw->base))
+> > +		return PTR_ERR(hw->base);
+> > +
+> > +	hw->clk = devm_clk_get(&pdev->dev, "rtc");
+> > +	if (IS_ERR(hw->clk)) {
+> > +		dev_err(&pdev->dev, "No clock\n");
+> > +		return PTR_ERR(hw->clk);
+> > +	}
+> > +
+> > +	ret = clk_prepare_enable(hw->clk);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	hw->irq = platform_get_irq(pdev, 0);
+> > +	if (hw->irq < 0) {
+> > +		dev_err(&pdev->dev, "No IRQ resource\n");
+> > +		ret = hw->irq;
+> > +		goto err;
+> > +	}
+> > +
+> > +	ret = devm_request_irq(&pdev->dev, hw->irq, mtk_rtc_alarmirq,
+> > +			       0, dev_name(&pdev->dev), hw);
+> > +	if (ret) {
+> > +		dev_err(&pdev->dev, "Can't request IRQ\n");
+> > +		goto err;
+> > +	}
+> > +
+> > +	mtk_rtc_hw_init(hw);
+> > +
+> > +	device_init_wakeup(&pdev->dev, true);
+> > +
+> > +	hw->rtc = devm_rtc_device_register(&pdev->dev, pdev->name,
+> > +					   &mtk_rtc_ops, THIS_MODULE);
+> > +	if (IS_ERR(hw->rtc)) {
+> > +		ret = PTR_ERR(hw->rtc);
+> > +		dev_err(&pdev->dev, "Unable to register device\n");
+> > +		goto err;
+> > +	}
+> > +
+> > +	return 0;
+> > +err:
+> > +	clk_disable_unprepare(hw->clk);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static int mtk_rtc_remove(struct platform_device *pdev)
+> > +{
+> > +	struct mtk_rtc *hw = platform_get_drvdata(pdev);
+> > +
+> > +	clk_disable_unprepare(hw->clk);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +#ifdef CONFIG_PM_SLEEP
+> > +static int mtk_rtc_suspend(struct device *dev)
+> > +{
+> > +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> > +
+> > +	if (device_may_wakeup(dev))
+> > +		enable_irq_wake(hw->irq);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_rtc_resume(struct device *dev)
+> > +{
+> > +	struct mtk_rtc *hw = dev_get_drvdata(dev);
+> > +
+> > +	if (device_may_wakeup(dev))
+> > +		disable_irq_wake(hw->irq);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static SIMPLE_DEV_PM_OPS(mtk_rtc_pm_ops, mtk_rtc_suspend, mtk_rtc_resume);
+> > +
+> > +#define MTK_RTC_PM_OPS (&mtk_rtc_pm_ops)
+> > +#else	/* CONFIG_PM */
+> > +#define MTK_RTC_PM_OPS NULL
+> > +#endif	/* CONFIG_PM */
+> > +
+> > +static struct platform_driver mtk_rtc_driver = {
+> > +	.probe	= mtk_rtc_probe,
+> > +	.remove	= mtk_rtc_remove,
+> > +	.driver = {
+> > +		.name = MTK_RTC_DEV,
+> > +		.of_match_table = mtk_rtc_match,
+> > +		.pm = MTK_RTC_PM_OPS,
+> > +	},
+> > +};
+> > +
+> > +module_platform_driver(mtk_rtc_driver);
+> > +
+> > +MODULE_DESCRIPTION("MediaTek SoC based RTC Driver");
+> > +MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
+> > +MODULE_LICENSE("GPL");
+> 
+> 
