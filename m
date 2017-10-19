@@ -1,37 +1,141 @@
-From: Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH v2 2/4] rtc: mediatek: add driver for RTC on MT7622 SoC
-Date: Thu, 19 Oct 2017 12:13:49 +0200
-Message-ID: <20171019101349.bo3wwj7mdfdmkdxs@piout.net>
-References: <cover.1508231935.git.sean.wang@mediatek.com>
- <2f86eebfd380cf932808df3404e2f4a6f2f0f874.1508231935.git.sean.wang@mediatek.com>
- <1508325126.13340.25.camel@mtksdaap41>
- <20171018125743.kqna6b4lgng674om@piout.net>
- <1508381749.21840.123.camel@mtkswgap22>
- <20171019090219.2odtq3xosqk5ytsb@piout.net>
- <1508407479.29850.5.camel@mtkswgap22>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: Re: [RFC/PATCH v3] arm64: define MODULES_VADDR by module_alloc_base
+Date: Thu, 19 Oct 2017 19:08:02 +0800
+Message-ID: <1508411282.29778.11.camel@mtkswgap22>
+References: <1504093593-2586-1-git-send-email-miles.chen@mediatek.com>
+         <20171017144328.GG14051@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1508407479.29850.5.camel@mtkswgap22>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rtc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20171017144328.GG14051@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Will Deacon <will.deacon@arm.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 19/10/2017 at 18:04:39 +0800, Sean Wang wrote:
-> I prefer to 2001 to 2099 only which can be completely handled in the
-> common logic. Extra specific logic simply for 2100 seems not be
-> worthwhile. 
+On Tue, 2017-10-17 at 15:43 +0100, Will Deacon wrote:
+> On Wed, Aug 30, 2017 at 07:46:33PM +0800, Miles Chen wrote:
+> > After the kernel ASLR, the module virtual address is moved to
+> > [module_alloc_base, module_alloc_base + MODULES_VSIZE).
+> > However, the MODULES_VADDR is still defined as a constant and functions
+> > like is_vmalloc_or_module_addr() or dump functions will not able to
+> > use correct module range information.
+> > 
+> > The patch omits modules information in virtual kenrel memory layout if
+> > the modules area is fully mapped whitin vmalloc area.
+> > 
+> > Use module_alloc_base to define MODULES_VADDR. I tested the patch under
+> > three different conditions:
+> > 1.CONFIG_RANDOMIZE_BASE=y, seed=0
+> > CONFIG_KASAN=n
+> > 2.CONFIG_RANDOMIZE_BASE=y, seed=0x2304909023333333
+> > CONFIG_KASAN=n
+> > 3.CONFIG_RANDOMIZE_BASE=y, seed=0x2304909023333333
+> > CONFIG_KASAN=y
+> > 
+> > test log:
 > 
+> [...]
+> 
+> > diff --git a/arch/arm64/mm/dump.c b/arch/arm64/mm/dump.c
+> > index ca74a2a..18be771 100644
+> > --- a/arch/arm64/mm/dump.c
+> > +++ b/arch/arm64/mm/dump.c
+> > @@ -29,15 +29,36 @@
+> >  #include <asm/pgtable-hwdef.h>
+> >  #include <asm/ptdump.h>
+> >  
+> > -static const struct addr_marker address_markers[] = {
+> > +enum marker {
+> > +#ifdef CONFIG_KASAN
+> > +	E_KASAN_SHADOW_START,
+> > +	E_KASAN_SHADOW_END,
+> > +#endif
+> > +	E_MODULES_VADDR,
+> > +	E_MODULES_END,
+> > +	E_VMALLOC_START,
+> > +	E_VMALLOC_END,
+> > +	E_FIXADDR_START,
+> > +	E_FIXADDR_TOP,
+> > +	E_PCI_IO_START,
+> > +	E_PCI_IO_END,
+> > +#ifdef CONFIG_SPARSEMEM_VMEMMAP
+> > +	E_VMEMMAP_START,
+> > +	E_VMEMMAP_END,
+> > +#endif
+> > +	E_PAGE_OFFSET,
+> > +	E_NR_MARKER,
+> > +};
+> > +
+> > +static struct addr_marker address_markers[] = {
+> >  #ifdef CONFIG_KASAN
+> >  	{ KASAN_SHADOW_START,		"Kasan shadow start" },
+> >  	{ KASAN_SHADOW_END,		"Kasan shadow end" },
+> >  #endif
+> > -	{ MODULES_VADDR,		"Modules start" },
+> > -	{ MODULES_END,			"Modules end" },
+> > -	{ VMALLOC_START,		"vmalloc() Area" },
+> > -	{ VMALLOC_END,			"vmalloc() End" },
+> > +	{ -1,				"Modules start" },
+> > +	{ -1,				"Modules end" },
+> > +	{ -1,				"vmalloc() Area" },
+> > +	{ -1,				"vmalloc() End" },
+> >  	{ FIXADDR_START,		"Fixmap start" },
+> >  	{ FIXADDR_TOP,			"Fixmap end" },
+> >  	{ PCI_IO_START,			"PCI I/O start" },
+> > @@ -362,10 +383,32 @@ void ptdump_walk_pgd(struct seq_file *m, struct ptdump_info *info)
+> >  	note_page(&st, 0, 0, 0);
+> >  }
+> >  
+> > +static void fixup_markers(void)
+> > +{
+> > +	int i;
+> > +
+> > +	address_markers[E_MODULES_VADDR].start_address = MODULES_VADDR;
+> > +	address_markers[E_MODULES_END].start_address = MODULES_END;
+> > +	address_markers[E_VMALLOC_START].start_address = VMALLOC_START;
+> > +	address_markers[E_VMALLOC_END].start_address = VMALLOC_END;
+> > +
+> > +	if (MODULES_VADDR < VMALLOC_START) {
+> > +		address_markers[E_MODULES_END].start_address =
+> > +			(MODULES_END < VMALLOC_START) ?
+> > +			MODULES_END : VMALLOC_START;
+> > +	} else {
+> > +		/* modules is contains in vamlloc area, don't show them */
+> > +		for (i = E_MODULES_VADDR; i <= E_NR_MARKER - 2; i++)
+> > +			address_markers[i] = address_markers[i + 2];
+> > +	}
+> > +}
+> 
+> This all seems a bit over-engineered to me and we end up having to maintain
+> enum marker in conjunction with the address_markers array. Fixing the array
+> up at runtime also worries me slightly, because we end up with the last two
+> entries being duplicated. That doesn't seem to hurt for now, but it's weird
+> and I can imagine it causing problems in the future.
+> 
+> Is there not a simpler fix here?
+> 
+> Will
 
-Agreed.
+Sorry for the late reply.
 
--- 
-Alexandre Belloni, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+How about using static defined STATIC_MODULES_VADDR, and
+STATIC_MODULES_END, so we do not need to fixed the address_markers[].
+
+-       { MODULES_VADDR,                "Modules start" },
+-       { MODULES_END,                  "Modules end" },
++       { STATIC_MODULES_VADDR,         "Static modules start" },
++       { STATIC_MODULES_END,           "Static modules end" },
+
+and for the modules:
+1. set the [STATIC_MODULES_VADDR,STATIC_MODULES_END) as the default
+module area (e.g., KASAN=n + KASLR=y with no random seed; KASLR=y and
+KASN=y or KASLR=n)
+
+2. with KASAN=n + KASLR=y with valid random seed, kernel modules are
+loaded to vmalloc area. We can still the STATIC_MODULES_* entries in the
+address_markers[]. We should find nothing between
+[STATIC_MODULES_VADDR,STATIC_MODULES_END) in this case.
+
+Miles
