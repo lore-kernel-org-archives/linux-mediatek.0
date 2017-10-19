@@ -1,127 +1,169 @@
-From: Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>
-Subject: Re: [RFC resend 1/4] dt-bindings: display: mediatek: add drm binding
-Date: Thu, 19 Oct 2017 17:11:04 +0200
-Message-ID: <4160167d-dde5-98d0-7ce7-9895fd107224@suse.com>
-References: <20171019112610.13645-1-mbrugger@suse.com>
- <20171019112610.13645-2-mbrugger@suse.com> <8477650.BPhWpTmuMS@avalon>
- <1508418397.7665.18.camel@pengutronix.de>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v3 05/10] arm: dts: mt7623: update pio, usb and crypto
+ nodes
+Date: Thu, 19 Oct 2017 18:29:52 +0200
+Message-ID: <8c823070-7181-97cc-063e-3ced59c7e17d@gmail.com>
+References: <cover.1506908511.git.ryder.lee@mediatek.com>
+ <08d722e47b83bd70ed4d3c9a4546a3f70df96de4.1506908511.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1508418397.7665.18.camel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+In-Reply-To: <08d722e47b83bd70ed4d3c9a4546a3f70df96de4.1506908511.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Content-Language: en-US
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 10/19/2017 03:06 PM, Philipp Zabel wrote:
-> On Thu, 2017-10-19 at 15:53 +0300, Laurent Pinchart wrote:
->> Hi Matthias,
->>
->> Thank you for the patch.
->>
->> On Thursday, 19 October 2017 14:26:07 EEST Matthias Brugger wrote:
->>> DRM subysystem and clock driver shared the same compatible mmsys.
->>> This stopped does not work, as only the first driver for a compatible
->>> gets probed. We change the comaptible to the new DRM identifier to fix
->>> this.
->>>
->>> Signed-off-by: Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>
->>> ---
->>>  .../devicetree/bindings/display/mediatek/mediatek,disp.txt          | 6 +++
->>>  1 file changed, 6 insertions(+)
->>>
->>> diff --git
->>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
->>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
->>> index 383183a89164..6db652463e64 100644
->>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
->>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
->>> @@ -27,6 +27,7 @@
->>> Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt.
->>>
->>>  Required properties (all function blocks):
->>>  - compatible: "mediatek,<chip>-disp-<function>", one of
->>> +	"mediatek,<chip>-dispsys"    - central component for the DRM system
->>>  	"mediatek,<chip>-disp-ovl"   - overlay (4 layers, blending, csc)
->>>  	"mediatek,<chip>-disp-rdma"  - read DMA / line buffer
->>>  	"mediatek,<chip>-disp-wdma"  - write DMA
->>> @@ -71,6 +72,11 @@ mmsys: clock-controller@14000000 {
->>>  	#clock-cells = <1>;
->>>  };
->>>
->>> +dispsys: display-system {
->>> +	compatible = "mediatek,mt2701-dispsys";
->>> +	mediatek,mmsys = <&mmsys>;
->>> +}
->>
->> So this node doesn't correspond to an IP core but is meant as a top-level 
->> entry point for the operating system. This leads me to three questions.
->>
->> 1. Is there any IP core in the Mediatek display subsystem that could be 
->> considered (or at least used) as a top-level entry point ? That would be my 
->> preferred solution as I'm not fond of DT nodes not describing hardware.
+On 10/02/2017 03:54 AM, Ryder Lee wrote:
+> This patch updates pio, usb and crypto nodes to make them be consistent
+> with the binding documents.
 > 
-> At least on MT8173 that node is MMSYS, which it is currently matching
-> against. The issue, if I understand correctly, is that the clocks
-> provided by this same region were previously created via CLK_OF_DECLARE,
-> and are now changed to a separate clock driver that matches to the same 
-> node.
+> Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/mt7623.dtsi | 26 ++++++++++++++------------
+>  1 file changed, 14 insertions(+), 12 deletions(-)
 > 
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index 381843e..0640fb7 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -227,8 +227,7 @@
+>  	};
+>  
+>  	pio: pinctrl@10005000 {
+> -		compatible = "mediatek,mt7623-pinctrl",
+> -			     "mediatek,mt2701-pinctrl";
+> +		compatible = "mediatek,mt7623-pinctrl";
 
-Exactly that seems to be the problem we hit. I have to setup my chromebook to do
-some changes, but that won't happen before the week after next week.
+Looks good.
 
-So yes, the MMSYS is the top-level-entry point for the display subsystem, the
-clocks in mmsys are just a small part of the whole register block. I will cite
-the cover letter which unfortunately wasn't send, because I broke my email setup:
-"Possible solutions:
-1) We add a new mediatek,mt8173-mmsys-clk node, which lives as a simple-mfd
-under the actual mmsys node. We change the clock driver to probe on this
-binding. This would make sense as the clock gate register live completely in
-the MMSYS configuration registers.
+>  		reg = <0 0x1000b000 0 0x1000>;
+>  		mediatek,pctl-regmap = <&syscfg_pctl_a>;
+>  		pins-are-numbered;
+> @@ -680,7 +679,7 @@
+>  		interrupts = <GIC_SPI 196 IRQ_TYPE_LEVEL_LOW>;
+>  		clocks = <&hifsys CLK_HIFSYS_USB0PHY>,
+>  			 <&topckgen CLK_TOP_ETHIF_SEL>;
+> -		clock-names = "sys_ck", "free_ck";
+> +		clock-names = "sys_ck", "ref_ck";
 
-2) As the nodes of the DRM subsystem just need some of the registers of MMSYS
-we add a new binding mediatek,mt8173-dispsys which probes the central
-component of the DRM system. It has only a handle to mt8173-mmsys to access
-the registerspace via regmap functions."
+This is already merged. Please rebase.
 
-So this patch set implemented solution 2).
+>  		power-domains = <&scpsys MT2701_POWER_DOMAIN_HIF>;
+>  		phys = <&u2port0 PHY_TYPE_USB2>, <&u3port0 PHY_TYPE_USB3>;
+>  		status = "disabled";
+> @@ -690,8 +689,6 @@
+>  		compatible = "mediatek,mt7623-u3phy",
+>  			     "mediatek,mt2701-u3phy";
+>  		reg = <0 0x1a1c4000 0 0x0700>;
+> -		clocks = <&clk26m>;
+> -		clock-names = "u3phya_ref";
 
+Same here.
 
->> 2. If there's no such IP core, are all the display subsystem IP cores grouped 
->> together in one MMIO register range ? If so we could move them as children of 
->> this new display system node which, even if doesn't describe an IP core, would 
->> describe the way the display IP cores are grouped in the hardware, and would 
->> thus be a hardware description.
->>
+>  		#address-cells = <2>;
+>  		#size-cells = <2>;
+>  		ranges;
+> @@ -699,12 +696,16 @@
+>  
+>  		u2port0: usb-phy@1a1c4800 {
+>  			reg = <0 0x1a1c4800 0 0x0100>;
+> +			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
+> +			clock-names = "ref";
 
-They are all mapped somewhere at 140xxxxx. But there are other components which
-are used by other HW blocks smi_common especially. So I'm not sure which impact
-that move would have.
+Same here.
 
-The MMSYS for mt8173 actually enables the overlays and set's the multiplexer for
-the output path. Does this make sense? It's the first time I've a deeper look in
-such a driver, so maybe I don't grasp everything.
+>  			#phy-cells = <1>;
+>  			status = "okay";
+>  		};
+>  
+>  		u3port0: usb-phy@1a1c4900 {
+>  			reg = <0 0x1a1c4900 0 0x0700>;
+> +			clocks = <&clk26m>;
+> +			clock-names = "ref";
+
+Same here.
+
+>  			#phy-cells = <1>;
+>  			status = "okay";
+>  		};
+> @@ -719,7 +720,7 @@
+>  		interrupts = <GIC_SPI 197 IRQ_TYPE_LEVEL_LOW>;
+>  		clocks = <&hifsys CLK_HIFSYS_USB1PHY>,
+>  			 <&topckgen CLK_TOP_ETHIF_SEL>;
+> -		clock-names = "sys_ck", "free_ck";
+> +		clock-names = "sys_ck", "ref_ck";
+
+Same here.
+
+>  		power-domains = <&scpsys MT2701_POWER_DOMAIN_HIF>;
+>  		phys = <&u2port1 PHY_TYPE_USB2>, <&u3port1 PHY_TYPE_USB3>;
+>  		status = "disabled";
+> @@ -729,8 +730,6 @@
+>  		compatible = "mediatek,mt7623-u3phy",
+>  			     "mediatek,mt2701-u3phy";
+>  		reg = <0 0x1a244000 0 0x0700>;
+> -		clocks = <&clk26m>;
+> -		clock-names = "u3phya_ref";
+
+Same here.
+
+>  		#address-cells = <2>;
+>  		#size-cells = <2>;
+>  		ranges;
+> @@ -738,12 +737,16 @@
+>  
+>  		u2port1: usb-phy@1a244800 {
+>  			reg = <0 0x1a244800 0 0x0100>;
+> +			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
+> +			clock-names = "ref";
+
+Same here.
+
+>  			#phy-cells = <1>;
+>  			status = "okay";
+>  		};
+>  
+>  		u3port1: usb-phy@1a244900 {
+>  			reg = <0 0x1a244900 0 0x0700>;
+> +			clocks = <&clk26m>;
+> +			clock-names = "ref";
+
+Same here.
+
+>  			#phy-cells = <1>;
+>  			status = "okay";
+>  		};
+> @@ -784,16 +787,15 @@
+>  	};
+>  
+>  	crypto: crypto@1b240000 {
+> -		compatible = "mediatek,mt7623-crypto";
+> +		compatible = "mediatek,eip97-crypto";
+
+Crypto node is not present in upstream.
 
 Regards,
 Matthias
 
->> 3. If the answer to the second question is also negative, shouldn't this 
->> display system node reference all other display IP DT nodes (through direct 
->> phandles and/or OF graph bindings) ?
->>
->>>  ovl0: ovl@1400c000 {
->>>  	compatible = "mediatek,mt8173-disp-ovl";
->>>  	reg = <0 0x1400c000 0 0x1000>;
->>
-> 
-> regards
-> Philipp
+>  		reg = <0 0x1b240000 0 0x20000>;
+>  		interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_LOW>,
+>  			     <GIC_SPI 83 IRQ_TYPE_LEVEL_LOW>,
+>  			     <GIC_SPI 84 IRQ_TYPE_LEVEL_LOW>,
+>  			     <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>,
+>  			     <GIC_SPI 97 IRQ_TYPE_LEVEL_LOW>;
+> -		clocks = <&topckgen CLK_TOP_ETHIF_SEL>,
+> -			 <&ethsys CLK_ETHSYS_CRYPTO>;
+> -		clock-names = "ethif","cryp";
+> +		clocks = <&ethsys CLK_ETHSYS_CRYPTO>;
+> +		clock-names = "cryp";
+>  		power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
+>  		status = "disabled";
+>  	};
 > 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
