@@ -1,245 +1,163 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v5 6/9] soc: mediatek: extend bus protection API
-Date: Thu, 19 Oct 2017 19:20:15 +0200
-Message-ID: <ca39cefb-7ab2-dc6a-8fd6-04a440cf20bb@gmail.com>
-References: <1508381330-3700-1-git-send-email-weiyi.lu@mediatek.com>
- <1508381330-3700-7-git-send-email-weiyi.lu@mediatek.com>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 05/10] arm: dts: mt7623: update pio, usb and crypto
+ nodes
+Date: Fri, 20 Oct 2017 09:55:39 +0800
+Message-ID: <1508464539.13396.6.camel@mtkswgap22>
+References: <cover.1506908511.git.ryder.lee@mediatek.com>
+         <08d722e47b83bd70ed4d3c9a4546a3f70df96de4.1506908511.git.ryder.lee@mediatek.com>
+         <8c823070-7181-97cc-063e-3ced59c7e17d@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1508381330-3700-7-git-send-email-weiyi.lu@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Weiyi Lu <weiyi.lu@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <8c823070-7181-97cc-063e-3ced59c7e17d-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi
 
-
-On 10/19/2017 04:48 AM, Weiyi Lu wrote:
-> MT2712 add "set/clear" bus control register to each control register set
-> instead of providing only one "enable" control register, we could avoid
-> the read-modify-write racing by using extend API with such new design.
-> By improving the mtk-infracfg bus protection implementation to
-> support set/clear bus protection control method by IC configuration.
+On Thu, 2017-10-19 at 18:29 +0200, Matthias Brugger wrote:
 > 
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
->  drivers/soc/mediatek/mtk-infracfg.c   | 24 ++++++++++++++++++++----
->  drivers/soc/mediatek/mtk-scpsys.c     | 28 ++++++++++++++++++++--------
->  include/linux/soc/mediatek/infracfg.h |  7 ++++---
->  3 files changed, 44 insertions(+), 15 deletions(-)
+> On 10/02/2017 03:54 AM, Ryder Lee wrote:
+> > This patch updates pio, usb and crypto nodes to make them be consistent
+> > with the binding documents.
+> > 
+> > Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  arch/arm/boot/dts/mt7623.dtsi | 26 ++++++++++++++------------
+> >  1 file changed, 14 insertions(+), 12 deletions(-)
+> > 
+> > diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> > index 381843e..0640fb7 100644
+> > --- a/arch/arm/boot/dts/mt7623.dtsi
+> > +++ b/arch/arm/boot/dts/mt7623.dtsi
+> > @@ -227,8 +227,7 @@
+> >  	};
+> >  
+> >  	pio: pinctrl@10005000 {
+> > -		compatible = "mediatek,mt7623-pinctrl",
+> > -			     "mediatek,mt2701-pinctrl";
+> > +		compatible = "mediatek,mt7623-pinctrl";
 > 
-> diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
-> index dba3055..344ffba 100644
-> --- a/drivers/soc/mediatek/mtk-infracfg.c
-> +++ b/drivers/soc/mediatek/mtk-infracfg.c
-> @@ -19,23 +19,32 @@
->  
->  #define INFRA_TOPAXI_PROTECTEN		0x0220
->  #define INFRA_TOPAXI_PROTECTSTA1	0x0228
-> +#define INFRA_TOPAXI_PROTECTEN_SET	0x0260
-> +#define INFRA_TOPAXI_PROTECTEN_CLR	0x0264
->  
->  /**
->   * mtk_infracfg_set_bus_protection - enable bus protection
->   * @regmap: The infracfg regmap
->   * @mask: The mask containing the protection bits to be enabled.
-> + * @use_reg_set: The boolean flag determines to set the protection bits
-> + *               by set register or enable register
-
-Huh, I thought it does or write the whole register or just enables the necessary
-bits.
-
->   *
->   * This function enables the bus protection bits for disabled power
->   * domains so that the system does not hang when some unit accesses the
->   * bus while in power down.
->   */
-> -int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask)
-> +int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
-> +		bool use_reg_set)
-
-Please rename the variable to something that makes you understand what it does.
-Actually I find it easier to swap the if statement and use reg_update as
-variable name.
-
->  {
->  	unsigned long expired;
->  	u32 val;
->  	int ret;
->  
-> -	regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask, mask);
-> +	if (use_reg_set)
-> +		regmap_write(infracfg, INFRA_TOPAXI_PROTECTEN_SET, mask);
-> +	else
-> +		regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask,
-> +				mask);
->  
->  	expired = jiffies + HZ;
->  
-> @@ -59,16 +68,23 @@ int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask)
->   * mtk_infracfg_clear_bus_protection - disable bus protection
->   * @regmap: The infracfg regmap
->   * @mask: The mask containing the protection bits to be disabled.
-> + * @use_reg_clr: The boolean flag determines to clear the protection bits
-> + *               by clear register or enable register
-
-same here.
-
->   *
->   * This function disables the bus protection bits previously enabled with
->   * mtk_infracfg_set_bus_protection.
->   */
-> -int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask)
-> +
-> +int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
-> +		bool use_reg_clr)
-
-same here.
-
->  {
->  	unsigned long expired;
->  	int ret;
->  
-> -	regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask, 0);
-> +	if (use_reg_clr)
-> +		regmap_write(infracfg, INFRA_TOPAXI_PROTECTEN_CLR, mask);
-> +	else
-> +		regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask, 0);
->  
->  	expired = jiffies + HZ;
->  
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index e1ce8b1..ebee3e9 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -134,6 +134,7 @@ struct scp {
->  	void __iomem *base;
->  	struct regmap *infracfg;
->  	struct scp_ctrl_reg ctrl_reg;
-> +	bool bus_prot_use_set_clr_reg;
->  };
->  
->  struct scp_subdomain {
-> @@ -147,6 +148,7 @@ struct scp_soc_data {
->  	const struct scp_subdomain *subdomains;
->  	int num_subdomains;
->  	const struct scp_ctrl_reg regs;
-> +	bool bus_prot_use_set_clr_reg;
-
-bus_prot_reg_update or something like this?
-
-Thanks,
-Matthias
-
->  };
->  
->  static int scpsys_domain_is_on(struct scp_domain *scpd)
-> @@ -254,7 +256,8 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->  
->  	if (scpd->data->bus_prot_mask) {
->  		ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
-> -				scpd->data->bus_prot_mask);
-> +				scpd->data->bus_prot_mask,z
-> +				scp->bus_prot_use_set_clr_reg);
->  		if (ret)
->  			goto err_pwr_ack;
->  	}
-> @@ -289,7 +292,8 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->  
->  	if (scpd->data->bus_prot_mask) {
->  		ret = mtk_infracfg_set_bus_protection(scp->infracfg,
-> -				scpd->data->bus_prot_mask);
-> +				scpd->data->bus_prot_mask,
-> +				scp->bus_prot_use_set_clr_reg);
->  		if (ret)
->  			goto out;
->  	}
-> @@ -382,7 +386,8 @@ static void init_clks(struct platform_device *pdev, struct clk **clk)
->  
->  static struct scp *init_scp(struct platform_device *pdev,
->  			const struct scp_domain_data *scp_domain_data, int num,
-> -			const struct scp_ctrl_reg *scp_ctrl_reg)
-> +			const struct scp_ctrl_reg *scp_ctrl_reg,
-> +			bool bus_prot_use_set_clr_reg)
->  {
->  	struct genpd_onecell_data *pd_data;
->  	struct resource *res;
-> @@ -397,6 +402,8 @@ static struct scp *init_scp(struct platform_device *pdev,
->  	scp->ctrl_reg.pwr_sta_offs = scp_ctrl_reg->pwr_sta_offs;
->  	scp->ctrl_reg.pwr_sta2nd_offs = scp_ctrl_reg->pwr_sta2nd_offs;
->  
-> +	scp->bus_prot_use_set_clr_reg = bus_prot_use_set_clr_reg;
-> +
->  	scp->dev = &pdev->dev;
->  
->  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> @@ -816,7 +823,8 @@ static void mtk_register_power_domains(struct platform_device *pdev,
->  	.regs = {
->  		.pwr_sta_offs = SPM_PWR_STATUS,
->  		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-> -	}
-> +	},
-> +	.bus_prot_use_set_clr_reg = false,
->  };
->  
->  static const struct scp_soc_data mt6797_data = {
-> @@ -827,7 +835,8 @@ static void mtk_register_power_domains(struct platform_device *pdev,
->  	.regs = {
->  		.pwr_sta_offs = SPM_PWR_STATUS_MT6797,
->  		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND_MT6797
-> -	}
-> +	},
-> +	.bus_prot_use_set_clr_reg = false,
->  };
->  
->  static const struct scp_soc_data mt7622_data = {
-> @@ -836,7 +845,8 @@ static void mtk_register_power_domains(struct platform_device *pdev,
->  	.regs = {
->  		.pwr_sta_offs = SPM_PWR_STATUS,
->  		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-> -	}
-> +	},
-> +	.bus_prot_use_set_clr_reg = false,
->  };
->  
->  static const struct scp_soc_data mt8173_data = {
-> @@ -847,7 +857,8 @@ static void mtk_register_power_domains(struct platform_device *pdev,
->  	.regs = {
->  		.pwr_sta_offs = SPM_PWR_STATUS,
->  		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-> -	}
-> +	},
-> +	.bus_prot_use_set_clr_reg = false,
->  };
->  
->  /*
-> @@ -884,7 +895,8 @@ static int scpsys_probe(struct platform_device *pdev)
->  	match = of_match_device(of_scpsys_match_tbl, &pdev->dev);
->  	soc = (const struct scp_soc_data *)match->data;
->  
-> -	scp = init_scp(pdev, soc->domains, soc->num_domains, &soc->regs);
-> +	scp = init_scp(pdev, soc->domains, soc->num_domains, &soc->regs,
-> +			soc->bus_prot_use_set_clr_reg);
->  	if (IS_ERR(scp))
->  		return PTR_ERR(scp);
->  
-> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-> index a0182ec..7df0fc8 100644
-> --- a/include/linux/soc/mediatek/infracfg.h
-> +++ b/include/linux/soc/mediatek/infracfg.h
-> @@ -27,7 +27,8 @@
->  #define MT7622_TOP_AXI_PROT_EN_WB		(BIT(2) | BIT(6) | \
->  						 BIT(7) | BIT(8))
->  
-> -int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask);
-> -int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask);
-> -
-> +int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
-> +		bool use_reg_set);
-> +int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
-> +		bool use_reg_clr);
->  #endif /* __SOC_MEDIATEK_INFRACFG_H */
+> Looks good.
 > 
+> >  		reg = <0 0x1000b000 0 0x1000>;
+> >  		mediatek,pctl-regmap = <&syscfg_pctl_a>;
+> >  		pins-are-numbered;
+> > @@ -680,7 +679,7 @@
+> >  		interrupts = <GIC_SPI 196 IRQ_TYPE_LEVEL_LOW>;
+> >  		clocks = <&hifsys CLK_HIFSYS_USB0PHY>,
+> >  			 <&topckgen CLK_TOP_ETHIF_SEL>;
+> > -		clock-names = "sys_ck", "free_ck";
+> > +		clock-names = "sys_ck", "ref_ck";
+> 
+> This is already merged. Please rebase.
+
+I didn't see any changes in mt7623.dtsi.
+
+> >  		power-domains = <&scpsys MT2701_POWER_DOMAIN_HIF>;
+> >  		phys = <&u2port0 PHY_TYPE_USB2>, <&u3port0 PHY_TYPE_USB3>;
+> >  		status = "disabled";
+> > @@ -690,8 +689,6 @@
+> >  		compatible = "mediatek,mt7623-u3phy",
+> >  			     "mediatek,mt2701-u3phy";
+> >  		reg = <0 0x1a1c4000 0 0x0700>;
+> > -		clocks = <&clk26m>;
+> > -		clock-names = "u3phya_ref";
+> 
+> Same here.
+> 
+> >  		#address-cells = <2>;
+> >  		#size-cells = <2>;
+> >  		ranges;
+> > @@ -699,12 +696,16 @@
+> >  
+> >  		u2port0: usb-phy@1a1c4800 {
+> >  			reg = <0 0x1a1c4800 0 0x0100>;
+> > +			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
+> > +			clock-names = "ref";
+> 
+> Same here.
+> 
+> >  			#phy-cells = <1>;
+> >  			status = "okay";
+> >  		};
+> >  
+> >  		u3port0: usb-phy@1a1c4900 {
+> >  			reg = <0 0x1a1c4900 0 0x0700>;
+> > +			clocks = <&clk26m>;
+> > +			clock-names = "ref";
+> 
+> Same here.
+> 
+> >  			#phy-cells = <1>;
+> >  			status = "okay";
+> >  		};
+> > @@ -719,7 +720,7 @@
+> >  		interrupts = <GIC_SPI 197 IRQ_TYPE_LEVEL_LOW>;
+> >  		clocks = <&hifsys CLK_HIFSYS_USB1PHY>,
+> >  			 <&topckgen CLK_TOP_ETHIF_SEL>;
+> > -		clock-names = "sys_ck", "free_ck";
+> > +		clock-names = "sys_ck", "ref_ck";
+> 
+> Same here.
+> 
+> >  		power-domains = <&scpsys MT2701_POWER_DOMAIN_HIF>;
+> >  		phys = <&u2port1 PHY_TYPE_USB2>, <&u3port1 PHY_TYPE_USB3>;
+> >  		status = "disabled";
+> > @@ -729,8 +730,6 @@
+> >  		compatible = "mediatek,mt7623-u3phy",
+> >  			     "mediatek,mt2701-u3phy";
+> >  		reg = <0 0x1a244000 0 0x0700>;
+> > -		clocks = <&clk26m>;
+> > -		clock-names = "u3phya_ref";
+> 
+> Same here.
+> 
+> >  		#address-cells = <2>;
+> >  		#size-cells = <2>;
+> >  		ranges;
+> > @@ -738,12 +737,16 @@
+> >  
+> >  		u2port1: usb-phy@1a244800 {
+> >  			reg = <0 0x1a244800 0 0x0100>;
+> > +			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
+> > +			clock-names = "ref";
+> 
+> Same here.
+> 
+> >  			#phy-cells = <1>;
+> >  			status = "okay";
+> >  		};
+> >  
+> >  		u3port1: usb-phy@1a244900 {
+> >  			reg = <0 0x1a244900 0 0x0700>;
+> > +			clocks = <&clk26m>;
+> > +			clock-names = "ref";
+> 
+> Same here.
+> 
+> >  			#phy-cells = <1>;
+> >  			status = "okay";
+> >  		};
+> > @@ -784,16 +787,15 @@
+> >  	};
+> >  
+> >  	crypto: crypto@1b240000 {
+> > -		compatible = "mediatek,mt7623-crypto";
+> > +		compatible = "mediatek,eip97-crypto";
+> 
+> Crypto node is not present in upstream.
+
+Crypto driver is already merged. 
+
+See Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
+
+Thanks
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
