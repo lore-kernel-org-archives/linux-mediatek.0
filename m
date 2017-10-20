@@ -1,116 +1,174 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 02/15] drivers, net, ethernet: convert
- mtk_eth.dma_refcnt from atomic_t to refcount_t
-Date: Fri, 20 Oct 2017 16:08:47 +0800
-Message-ID: <1508486927.29850.12.camel@mtkswgap22>
-References: <1508484229-19706-1-git-send-email-elena.reshetova@intel.com>
- <1508484229-19706-3-git-send-email-elena.reshetova@intel.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v3 05/10] arm: dts: mt7623: update pio, usb and crypto
+ nodes
+Date: Fri, 20 Oct 2017 11:12:45 +0200
+Message-ID: <1c26168e-af36-eb1c-22d8-8d4ffdf84d8d@gmail.com>
+References: <cover.1506908511.git.ryder.lee@mediatek.com>
+ <08d722e47b83bd70ed4d3c9a4546a3f70df96de4.1506908511.git.ryder.lee@mediatek.com>
+ <8c823070-7181-97cc-063e-3ced59c7e17d@gmail.com>
+ <1508464539.13396.6.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1508484229-19706-3-git-send-email-elena.reshetova-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Elena Reshetova <elena.reshetova-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, matanb-VPRAkNaXOzVWk0Htik3J/w@public.gmane.org, paulus-eUNUBHrolfbYtjvyW6yDsg@public.gmane.org, zbr-i6C2adt8DTjR7s880joybQ@public.gmane.org, nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, linux-rdma-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, saeedm-VPRAkNaXOzVWk0Htik3J/w@public.gmane.org, ganeshgr-ut6Up61K2wZBDgjK7y7TUQ@public.gmane.org, keescook-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, ajk-iz34hMvxm2Hmj42eshorlhS11BummzK+@public.gmane.org, leonro-VPRAkNaXOzVWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-hams-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yishaih-VPRAkNaXOzVWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-ppp-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, tariqt-VPRAkNaXOzVWk0Htik3J/w@public.gmane.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1508464539.13396.6.camel@mtkswgap22>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2017-10-20 at 10:23 +0300, Elena Reshetova wrote:
-> atomic_t variables are currently used to implement reference
-> counters with the following properties:
->  - counter is initialized to 1 using atomic_set()
->  - a resource is freed upon counter reaching zero
->  - once counter reaches zero, its further
->    increments aren't allowed
->  - counter schema uses basic atomic operations
->    (set, inc, inc_not_zero, dec_and_test, etc.)
-> 
-> Such atomic variables should be converted to a newly provided
-> refcount_t type and API that prevents accidental counter overflows
-> and underflows. This is important since overflows and underflows
-> can lead to use-after-free situation and be exploitable.
-> 
-> The variable mtk_eth.dma_refcnt is used as pure reference counter.
-> Convert it to refcount_t and fix up the operations.
-> 
-> Suggested-by: Kees Cook <keescook-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Reviewed-by: David Windsor <dwindsor-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Reviewed-by: Hans Liljestrand <ishkamiel-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Signed-off-by: Elena Reshetova <elena.reshetova-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 8 +++++---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.h | 4 +++-
->  2 files changed, 8 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 5e81a72..54adfd9 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -1817,7 +1817,7 @@ static int mtk_open(struct net_device *dev)
->  	struct mtk_eth *eth = mac->hw;
->  
->  	/* we run 2 netdevs on the same dma ring so we only bring it up once */
-> -	if (!atomic_read(&eth->dma_refcnt)) {
-> +	if (!refcount_read(&eth->dma_refcnt)) {
->  		int err = mtk_start_dma(eth);
->  
->  		if (err)
-> @@ -1827,8 +1827,10 @@ static int mtk_open(struct net_device *dev)
->  		napi_enable(&eth->rx_napi);
->  		mtk_tx_irq_enable(eth, MTK_TX_DONE_INT);
->  		mtk_rx_irq_enable(eth, MTK_RX_DONE_INT);
-> +		refcount_set(&eth->dma_refcnt, 1);
 
-the existing driver seems to have a missing initial atomic_set for the
-eth->dma_refcnt. 
 
->  	}
-> -	atomic_inc(&eth->dma_refcnt);
-> +	else
-> +		refcount_inc(&eth->dma_refcnt);
->  
+On 10/20/2017 03:55 AM, Ryder Lee wrote:
+> Hi
+> 
+> On Thu, 2017-10-19 at 18:29 +0200, Matthias Brugger wrote:
+>>
+>> On 10/02/2017 03:54 AM, Ryder Lee wrote:
+>>> This patch updates pio, usb and crypto nodes to make them be consistent
+>>> with the binding documents.
+>>>
+>>> Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>> ---
+>>>  arch/arm/boot/dts/mt7623.dtsi | 26 ++++++++++++++------------
+>>>  1 file changed, 14 insertions(+), 12 deletions(-)
+>>>
+>>> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+>>> index 381843e..0640fb7 100644
+>>> --- a/arch/arm/boot/dts/mt7623.dtsi
+>>> +++ b/arch/arm/boot/dts/mt7623.dtsi
+>>> @@ -227,8 +227,7 @@
+>>>  	};
+>>>  
+>>>  	pio: pinctrl@10005000 {
+>>> -		compatible = "mediatek,mt7623-pinctrl",
+>>> -			     "mediatek,mt2701-pinctrl";
+>>> +		compatible = "mediatek,mt7623-pinctrl";
+>>
+>> Looks good.
+>>
+>>>  		reg = <0 0x1000b000 0 0x1000>;
+>>>  		mediatek,pctl-regmap = <&syscfg_pctl_a>;
+>>>  		pins-are-numbered;
+>>> @@ -680,7 +679,7 @@
+>>>  		interrupts = <GIC_SPI 196 IRQ_TYPE_LEVEL_LOW>;
+>>>  		clocks = <&hifsys CLK_HIFSYS_USB0PHY>,
+>>>  			 <&topckgen CLK_TOP_ETHIF_SEL>;
+>>> -		clock-names = "sys_ck", "free_ck";
+>>> +		clock-names = "sys_ck", "ref_ck";
+>>
+>> This is already merged. Please rebase.
+> 
+> I didn't see any changes in mt7623.dtsi.
+> 
 
-how about add the initial refcount_set into probe handler, and keep
-logic else unchanged ? 
+You are right, sorry I didn't noticed this.
 
->  	phy_start(dev->phydev);
->  	netif_start_queue(dev);
-> @@ -1868,7 +1870,7 @@ static int mtk_stop(struct net_device *dev)
->  	phy_stop(dev->phydev);
->  
->  	/* only shutdown DMA if this is the last user */
-> -	if (!atomic_dec_and_test(&eth->dma_refcnt))
-> +	if (!refcount_dec_and_test(&eth->dma_refcnt))
->  		return 0;
->  
->  	mtk_tx_irq_disable(eth, MTK_TX_DONE_INT);
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> index 3d3c24a..a3af466 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> @@ -15,6 +15,8 @@
->  #ifndef MTK_ETH_H
->  #define MTK_ETH_H
->  
-> +#include <linux/refcount.h>
-> +
->  #define MTK_QDMA_PAGE_SIZE	2048
->  #define	MTK_MAX_RX_LENGTH	1536
->  #define MTK_TX_DMA_BUF_LEN	0x3fff
-> @@ -632,7 +634,7 @@ struct mtk_eth {
->  	struct regmap			*pctl;
->  	u32				chip_id;
->  	bool				hwlro;
-> -	atomic_t			dma_refcnt;
-> +	refcount_t			dma_refcnt;
->  	struct mtk_tx_ring		tx_ring;
->  	struct mtk_rx_ring		rx_ring[MTK_MAX_RX_RING_NUM];
->  	struct mtk_rx_ring		rx_ring_qdma;
+>>>  		power-domains = <&scpsys MT2701_POWER_DOMAIN_HIF>;
+>>>  		phys = <&u2port0 PHY_TYPE_USB2>, <&u3port0 PHY_TYPE_USB3>;
+>>>  		status = "disabled";
+>>> @@ -690,8 +689,6 @@
+>>>  		compatible = "mediatek,mt7623-u3phy",
+>>>  			     "mediatek,mt2701-u3phy";
+>>>  		reg = <0 0x1a1c4000 0 0x0700>;
+>>> -		clocks = <&clk26m>;
+>>> -		clock-names = "u3phya_ref";
+>>
+>> Same here.
+>>
+>>>  		#address-cells = <2>;
+>>>  		#size-cells = <2>;
+>>>  		ranges;
+>>> @@ -699,12 +696,16 @@
+>>>  
+>>>  		u2port0: usb-phy@1a1c4800 {
+>>>  			reg = <0 0x1a1c4800 0 0x0100>;
+>>> +			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
+>>> +			clock-names = "ref";
+>>
+>> Same here.
+>>
+>>>  			#phy-cells = <1>;
+>>>  			status = "okay";
+>>>  		};
+>>>  
+>>>  		u3port0: usb-phy@1a1c4900 {
+>>>  			reg = <0 0x1a1c4900 0 0x0700>;
+>>> +			clocks = <&clk26m>;
+>>> +			clock-names = "ref";
+>>
+>> Same here.
+>>
+>>>  			#phy-cells = <1>;
+>>>  			status = "okay";
+>>>  		};
+>>> @@ -719,7 +720,7 @@
+>>>  		interrupts = <GIC_SPI 197 IRQ_TYPE_LEVEL_LOW>;
+>>>  		clocks = <&hifsys CLK_HIFSYS_USB1PHY>,
+>>>  			 <&topckgen CLK_TOP_ETHIF_SEL>;
+>>> -		clock-names = "sys_ck", "free_ck";
+>>> +		clock-names = "sys_ck", "ref_ck";
+>>
+>> Same here.
+>>
+>>>  		power-domains = <&scpsys MT2701_POWER_DOMAIN_HIF>;
+>>>  		phys = <&u2port1 PHY_TYPE_USB2>, <&u3port1 PHY_TYPE_USB3>;
+>>>  		status = "disabled";
+>>> @@ -729,8 +730,6 @@
+>>>  		compatible = "mediatek,mt7623-u3phy",
+>>>  			     "mediatek,mt2701-u3phy";
+>>>  		reg = <0 0x1a244000 0 0x0700>;
+>>> -		clocks = <&clk26m>;
+>>> -		clock-names = "u3phya_ref";
+>>
+>> Same here.
+>>
+>>>  		#address-cells = <2>;
+>>>  		#size-cells = <2>;
+>>>  		ranges;
+>>> @@ -738,12 +737,16 @@
+>>>  
+>>>  		u2port1: usb-phy@1a244800 {
+>>>  			reg = <0 0x1a244800 0 0x0100>;
+>>> +			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
+>>> +			clock-names = "ref";
+>>
+>> Same here.
+>>
+>>>  			#phy-cells = <1>;
+>>>  			status = "okay";
+>>>  		};
+>>>  
+>>>  		u3port1: usb-phy@1a244900 {
+>>>  			reg = <0 0x1a244900 0 0x0700>;
+>>> +			clocks = <&clk26m>;
+>>> +			clock-names = "ref";
+>>
+>> Same here.
+>>
+>>>  			#phy-cells = <1>;
+>>>  			status = "okay";
+>>>  		};
+>>> @@ -784,16 +787,15 @@
+>>>  	};
+>>>  
+>>>  	crypto: crypto@1b240000 {
+>>> -		compatible = "mediatek,mt7623-crypto";
+>>> +		compatible = "mediatek,eip97-crypto";
+>>
+>> Crypto node is not present in upstream.
+> 
+> Crypto driver is already merged. 
+> 
+
+You are right, the node got added. I've overseen this as well :-\
+
+After sleeping over this patch, I would prefer that you split it in three, one
+for each device.
+Thanks,
+Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
