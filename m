@@ -1,98 +1,68 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 2/3] arm: dts: mt7623: update usb related nodes
-Date: Fri, 20 Oct 2017 17:46:46 +0800
-Message-ID: <66237617e8208edc30a0b6cf604eee175b62a9c9.1508492662.git.ryder.lee@mediatek.com>
-References: <4cabb9ad6f59b42cc10ba25a9eb0ce68f77d0a43.1508492662.git.ryder.lee@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v6 0/7] Add PMIC support to MediaTek MT7622 SoC
+Date: Fri, 20 Oct 2017 11:58:47 +0200
+Message-ID: <7facd6aa-6a94-3dc0-1067-b0a4f568dc66@gmail.com>
+References: <cover.1508313105.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4cabb9ad6f59b42cc10ba25a9eb0ce68f77d0a43.1508492662.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <cover.1508313105.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The current usb related nodes are out-of-date, so we make them be
-consistent with the binding documents.
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- arch/arm/boot/dts/mt7623.dtsi | 16 ++++++++++------
- 1 file changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index 6c2c8c8..84a3f27 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -788,7 +788,7 @@
- 		interrupts = <GIC_SPI 196 IRQ_TYPE_LEVEL_LOW>;
- 		clocks = <&hifsys CLK_HIFSYS_USB0PHY>,
- 			 <&topckgen CLK_TOP_ETHIF_SEL>;
--		clock-names = "sys_ck", "free_ck";
-+		clock-names = "sys_ck", "ref_ck";
- 		power-domains = <&scpsys MT2701_POWER_DOMAIN_HIF>;
- 		phys = <&u2port0 PHY_TYPE_USB2>, <&u3port0 PHY_TYPE_USB3>;
- 		status = "disabled";
-@@ -798,8 +798,6 @@
- 		compatible = "mediatek,mt7623-u3phy",
- 			     "mediatek,mt2701-u3phy";
- 		reg = <0 0x1a1c4000 0 0x0700>;
--		clocks = <&clk26m>;
--		clock-names = "u3phya_ref";
- 		#address-cells = <2>;
- 		#size-cells = <2>;
- 		ranges;
-@@ -807,12 +805,16 @@
- 
- 		u2port0: usb-phy@1a1c4800 {
- 			reg = <0 0x1a1c4800 0 0x0100>;
-+			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
-+			clock-names = "ref";
- 			#phy-cells = <1>;
- 			status = "okay";
- 		};
- 
- 		u3port0: usb-phy@1a1c4900 {
- 			reg = <0 0x1a1c4900 0 0x0700>;
-+			clocks = <&clk26m>;
-+			clock-names = "ref";
- 			#phy-cells = <1>;
- 			status = "okay";
- 		};
-@@ -827,7 +829,7 @@
- 		interrupts = <GIC_SPI 197 IRQ_TYPE_LEVEL_LOW>;
- 		clocks = <&hifsys CLK_HIFSYS_USB1PHY>,
- 			 <&topckgen CLK_TOP_ETHIF_SEL>;
--		clock-names = "sys_ck", "free_ck";
-+		clock-names = "sys_ck", "ref_ck";
- 		power-domains = <&scpsys MT2701_POWER_DOMAIN_HIF>;
- 		phys = <&u2port1 PHY_TYPE_USB2>, <&u3port1 PHY_TYPE_USB3>;
- 		status = "disabled";
-@@ -837,8 +839,6 @@
- 		compatible = "mediatek,mt7623-u3phy",
- 			     "mediatek,mt2701-u3phy";
- 		reg = <0 0x1a244000 0 0x0700>;
--		clocks = <&clk26m>;
--		clock-names = "u3phya_ref";
- 		#address-cells = <2>;
- 		#size-cells = <2>;
- 		ranges;
-@@ -846,12 +846,16 @@
- 
- 		u2port1: usb-phy@1a244800 {
- 			reg = <0 0x1a244800 0 0x0100>;
-+			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
-+			clock-names = "ref";
- 			#phy-cells = <1>;
- 			status = "okay";
- 		};
- 
- 		u3port1: usb-phy@1a244900 {
- 			reg = <0 0x1a244900 0 0x0700>;
-+			clocks = <&clk26m>;
-+			clock-names = "ref";
- 			#phy-cells = <1>;
- 			status = "okay";
- 		};
--- 
-1.9.1
+On 10/18/2017 10:28 AM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> Changes since v5:
+> - drop the merged patch
+> - add a patch for common way handling for setup CS timing extension
+> - unify the comment style
+> 
+> Changes since v4:
+> - for patch 1/7 and 5/7, add the description about how to bind pmic wrapper with MT6380.
+> - for patch 3/7, add more comments explaining why additional pwrap_read is 
+> required in the pwrap_write32.
+> - for patch 4/7 and 5/7, refactoring pwrap_init would help the driver to be more extensible 
+> when more various SoC and PMICs join.
+> - for patch 6/7, change pwrap_mt7622 into a const struct.
+> 
+> Changes since v3
+> - rebase into Linux 4.14-rc1
+> - removed those patches already applied
+> 
+> Changes since v2:
+> - for patch 1/2, enhance the document as the suggestions from v2.
+> - for patch 3, constify the table with struct regulator_ops, also fix that
+> regulator doesn't have modesetting facilities it just shouldn't have the ops
+> and finally fix copy+paste mistake in warranty disclaimer.
+> - for patch 7/8, sort the things added for MT7622/MT6380 alphabetically.
+> 
+> Chenglin Xu (1):
+>   soc: mediatek: pwrap: add support for MT7622 SoC
+> 
+> Sean Wang (6):
+>   dt-bindings: arm: mediatek: add MT7622 string to the PMIC wrapper doc
+>   soc: mediatek: pwrap: add pwrap_read32 for reading in 32-bit mode
+>   soc: mediatek: pwrap: add pwrap_write32 for writing in 32-bit mode
+>   soc: mediatek: pwrap: refactor pwrap_init for the various PMIC types
+>   soc: mediatek: pwrap: add MediaTek MT6380 as one slave of pwrap
+>   soc: mediatek: pwrap: add common way for setup CS timing extenstion
+> 
+>  .../devicetree/bindings/soc/mediatek/pwrap.txt     |   6 +-
+>  drivers/soc/mediatek/mtk-pmic-wrap.c               | 490 ++++++++++++++++++---
+>  2 files changed, 422 insertions(+), 74 deletions(-)
+> 
+
+Pushed to v4.14-next/soc
+
+Thanks!
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
