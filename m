@@ -1,163 +1,74 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 05/10] arm: dts: mt7623: update pio, usb and crypto
- nodes
-Date: Fri, 20 Oct 2017 09:55:39 +0800
-Message-ID: <1508464539.13396.6.camel@mtkswgap22>
-References: <cover.1506908511.git.ryder.lee@mediatek.com>
-         <08d722e47b83bd70ed4d3c9a4546a3f70df96de4.1506908511.git.ryder.lee@mediatek.com>
-         <8c823070-7181-97cc-063e-3ced59c7e17d@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <8c823070-7181-97cc-063e-3ced59c7e17d-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+From: Elena Reshetova <elena.reshetova@intel.com>
+Subject: [PATCH 00/15] networking drivers refcount_t conversions
+Date: Fri, 20 Oct 2017 10:23:34 +0300
+Message-ID: <1508484229-19706-1-git-send-email-elena.reshetova@intel.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: davem@davemloft.net
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org, linux-hams@vger.kernel.org, linux-ppp@vger.kernel.org, ganeshgr@chelsio.com, nbd@openwrt.org, john@phrozen.org, sean.wang@mediatek.com, matthias.bgg@gmail.com, yishaih@mellanox.com, saeedm@mellanox.com, matanb@mellanox.com, tariqt@mellanox.com, leonro@mellanox.com, ajk@comnets.uni-bremen.de, paulus@samba.org, zbr@ioremap.net, peterz@infradead.org, keescook@chromium.org, Elena Reshetova <elena.reshetova@intel.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi
+Note: these are the last patches related to networking that perform
+conversion of refcounters from atomic_t to refcount_t.
+In contrast to the core network refcounter conversions that
+were merged earlier, these are much more straightforward ones.
 
-On Thu, 2017-10-19 at 18:29 +0200, Matthias Brugger wrote:
-> 
-> On 10/02/2017 03:54 AM, Ryder Lee wrote:
-> > This patch updates pio, usb and crypto nodes to make them be consistent
-> > with the binding documents.
-> > 
-> > Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  arch/arm/boot/dts/mt7623.dtsi | 26 ++++++++++++++------------
-> >  1 file changed, 14 insertions(+), 12 deletions(-)
-> > 
-> > diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-> > index 381843e..0640fb7 100644
-> > --- a/arch/arm/boot/dts/mt7623.dtsi
-> > +++ b/arch/arm/boot/dts/mt7623.dtsi
-> > @@ -227,8 +227,7 @@
-> >  	};
-> >  
-> >  	pio: pinctrl@10005000 {
-> > -		compatible = "mediatek,mt7623-pinctrl",
-> > -			     "mediatek,mt2701-pinctrl";
-> > +		compatible = "mediatek,mt7623-pinctrl";
-> 
-> Looks good.
-> 
-> >  		reg = <0 0x1000b000 0 0x1000>;
-> >  		mediatek,pctl-regmap = <&syscfg_pctl_a>;
-> >  		pins-are-numbered;
-> > @@ -680,7 +679,7 @@
-> >  		interrupts = <GIC_SPI 196 IRQ_TYPE_LEVEL_LOW>;
-> >  		clocks = <&hifsys CLK_HIFSYS_USB0PHY>,
-> >  			 <&topckgen CLK_TOP_ETHIF_SEL>;
-> > -		clock-names = "sys_ck", "free_ck";
-> > +		clock-names = "sys_ck", "ref_ck";
-> 
-> This is already merged. Please rebase.
+This series, for various networking drivers, replaces atomic_t reference
+counters with the new refcount_t type and API (see include/linux/refcount.h).
+By doing this we prevent intentional or accidental
+underflows or overflows that can led to use-after-free vulnerabilities.
 
-I didn't see any changes in mt7623.dtsi.
+The patches are fully independent and can be cherry-picked separately.
+Patches are based on top of net-next.
+If there are no objections to the patches, please merge them via respective trees
 
-> >  		power-domains = <&scpsys MT2701_POWER_DOMAIN_HIF>;
-> >  		phys = <&u2port0 PHY_TYPE_USB2>, <&u3port0 PHY_TYPE_USB3>;
-> >  		status = "disabled";
-> > @@ -690,8 +689,6 @@
-> >  		compatible = "mediatek,mt7623-u3phy",
-> >  			     "mediatek,mt2701-u3phy";
-> >  		reg = <0 0x1a1c4000 0 0x0700>;
-> > -		clocks = <&clk26m>;
-> > -		clock-names = "u3phya_ref";
-> 
-> Same here.
-> 
-> >  		#address-cells = <2>;
-> >  		#size-cells = <2>;
-> >  		ranges;
-> > @@ -699,12 +696,16 @@
-> >  
-> >  		u2port0: usb-phy@1a1c4800 {
-> >  			reg = <0 0x1a1c4800 0 0x0100>;
-> > +			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
-> > +			clock-names = "ref";
-> 
-> Same here.
-> 
-> >  			#phy-cells = <1>;
-> >  			status = "okay";
-> >  		};
-> >  
-> >  		u3port0: usb-phy@1a1c4900 {
-> >  			reg = <0 0x1a1c4900 0 0x0700>;
-> > +			clocks = <&clk26m>;
-> > +			clock-names = "ref";
-> 
-> Same here.
-> 
-> >  			#phy-cells = <1>;
-> >  			status = "okay";
-> >  		};
-> > @@ -719,7 +720,7 @@
-> >  		interrupts = <GIC_SPI 197 IRQ_TYPE_LEVEL_LOW>;
-> >  		clocks = <&hifsys CLK_HIFSYS_USB1PHY>,
-> >  			 <&topckgen CLK_TOP_ETHIF_SEL>;
-> > -		clock-names = "sys_ck", "free_ck";
-> > +		clock-names = "sys_ck", "ref_ck";
-> 
-> Same here.
-> 
-> >  		power-domains = <&scpsys MT2701_POWER_DOMAIN_HIF>;
-> >  		phys = <&u2port1 PHY_TYPE_USB2>, <&u3port1 PHY_TYPE_USB3>;
-> >  		status = "disabled";
-> > @@ -729,8 +730,6 @@
-> >  		compatible = "mediatek,mt7623-u3phy",
-> >  			     "mediatek,mt2701-u3phy";
-> >  		reg = <0 0x1a244000 0 0x0700>;
-> > -		clocks = <&clk26m>;
-> > -		clock-names = "u3phya_ref";
-> 
-> Same here.
-> 
-> >  		#address-cells = <2>;
-> >  		#size-cells = <2>;
-> >  		ranges;
-> > @@ -738,12 +737,16 @@
-> >  
-> >  		u2port1: usb-phy@1a244800 {
-> >  			reg = <0 0x1a244800 0 0x0100>;
-> > +			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
-> > +			clock-names = "ref";
-> 
-> Same here.
-> 
-> >  			#phy-cells = <1>;
-> >  			status = "okay";
-> >  		};
-> >  
-> >  		u3port1: usb-phy@1a244900 {
-> >  			reg = <0 0x1a244900 0 0x0700>;
-> > +			clocks = <&clk26m>;
-> > +			clock-names = "ref";
-> 
-> Same here.
-> 
-> >  			#phy-cells = <1>;
-> >  			status = "okay";
-> >  		};
-> > @@ -784,16 +787,15 @@
-> >  	};
-> >  
-> >  	crypto: crypto@1b240000 {
-> > -		compatible = "mediatek,mt7623-crypto";
-> > +		compatible = "mediatek,eip97-crypto";
-> 
-> Crypto node is not present in upstream.
+Elena Reshetova (15):
+  drivers, net, ethernet: convert clip_entry.refcnt from atomic_t to
+    refcount_t
+  drivers, net, ethernet: convert mtk_eth.dma_refcnt from atomic_t to
+    refcount_t
+  drivers, net, mlx4: convert mlx4_cq.refcount from atomic_t to
+    refcount_t
+  drivers, net, mlx4: convert mlx4_qp.refcount from atomic_t to
+    refcount_t
+  drivers, net, mlx4: convert mlx4_srq.refcount from atomic_t to
+    refcount_t
+  drivers, net, mlx5: convert mlx5_cq.refcount from atomic_t to
+    refcount_t
+  drivers, net, mlx5: convert fs_node.refcount from atomic_t to
+    refcount_t
+  drivers, net, hamradio: convert sixpack.refcnt from atomic_t to
+    refcount_t
+  drivers, net: convert masces_rx_sa.refcnt from atomic_t to refcount_t
+  drivers, net: convert masces_rx_sc.refcnt from atomic_t to refcount_t
+  drivers, net: convert masces_tx_sa.refcnt from atomic_t to refcount_t
+  drivers, net, ppp: convert asyncppp.refcnt from atomic_t to refcount_t
+  drivers, net, ppp: convert ppp_file.refcnt from atomic_t to refcount_t
+  drivers, net, ppp: convert syncppp.refcnt from atomic_t to refcount_t
+  drivers, connector: convert cn_callback_entry.refcnt from atomic_t to
+    refcount_t
 
-Crypto driver is already merged. 
+ drivers/connector/cn_queue.c                      |  4 ++--
+ drivers/connector/connector.c                     |  2 +-
+ drivers/net/ethernet/chelsio/cxgb4/clip_tbl.c     | 13 +++++------
+ drivers/net/ethernet/chelsio/cxgb4/clip_tbl.h     |  4 +++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c       |  8 ++++---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h       |  4 +++-
+ drivers/net/ethernet/mellanox/mlx4/cq.c           |  8 +++----
+ drivers/net/ethernet/mellanox/mlx4/qp.c           |  8 +++----
+ drivers/net/ethernet/mellanox/mlx4/srq.c          |  8 +++----
+ drivers/net/ethernet/mellanox/mlx5/core/cq.c      | 16 ++++++-------
+ drivers/net/ethernet/mellanox/mlx5/core/fs_core.c | 28 +++++++++++------------
+ drivers/net/ethernet/mellanox/mlx5/core/fs_core.h |  3 ++-
+ drivers/net/hamradio/6pack.c                      | 12 +++++-----
+ drivers/net/macsec.c                              | 25 ++++++++++----------
+ drivers/net/ppp/ppp_async.c                       | 10 ++++----
+ drivers/net/ppp/ppp_generic.c                     | 21 +++++++++--------
+ drivers/net/ppp/ppp_synctty.c                     | 11 +++++----
+ include/linux/connector.h                         |  4 ++--
+ include/linux/mlx4/device.h                       |  8 +++----
+ include/linux/mlx5/cq.h                           |  4 ++--
+ 20 files changed, 105 insertions(+), 96 deletions(-)
 
-See Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
-
-Thanks
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+2.7.4
