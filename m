@@ -1,54 +1,56 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] arm64: mediatek: cleanup message for platform selection
-Date: Fri, 20 Oct 2017 13:13:55 +0200
-Message-ID: <0f9cfd78-17e4-9523-2c6e-1cf0960e6506@gmail.com>
-References: <82b4e4301bb762af59fd76cfe15f0a5773c78bb3.1508406417.git.sean.wang@mediatek.com>
+Subject: Re: [PATCH 1/3] arm: dts: mt7623: update crypto node
+Date: Fri, 20 Oct 2017 13:17:20 +0200
+Message-ID: <f7195796-38c9-746c-55d1-c1056c12826f@gmail.com>
+References: <4cabb9ad6f59b42cc10ba25a9eb0ce68f77d0a43.1508492662.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <82b4e4301bb762af59fd76cfe15f0a5773c78bb3.1508406417.git.sean.wang@mediatek.com>
+In-Reply-To: <4cabb9ad6f59b42cc10ba25a9eb0ce68f77d0a43.1508492662.git.ryder.lee@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com, linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 10/19/2017 11:52 AM, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On 10/20/2017 11:46 AM, Ryder Lee wrote:
+> This patch updates compatible string and clocks for the crypto node.
 > 
-> The latest kernel tree already can support more MediaTek platforms such as
-> MT2712 and MT7622, so additional descriptions for those platforms are added
-> and certain cleanups are also being made here.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 > ---
 
-pushed to the soc branch, thanks.
+All three pushed to v4.14-next/dts32
 
->  arch/arm64/Kconfig.platforms | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+Thanks!
+
+>  arch/arm/boot/dts/mt7623.dtsi | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
 > 
-> diff --git a/arch/arm64/Kconfig.platforms b/arch/arm64/Kconfig.platforms
-> index 6b54ee8..ab69f5f 100644
-> --- a/arch/arm64/Kconfig.platforms
-> +++ b/arch/arm64/Kconfig.platforms
-> @@ -91,12 +91,13 @@ config ARCH_HISI
->  	  This enables support for Hisilicon ARMv8 SoC family
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index d0483f7..6c2c8c8 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -892,16 +892,15 @@
+>  	};
 >  
->  config ARCH_MEDIATEK
-> -	bool "Mediatek MT65xx & MT81xx ARMv8 SoC"
-> +	bool "MediaTek SoC Family"
->  	select ARM_GIC
->  	select PINCTRL
->  	select MTK_TIMER
->  	help
-> -	  Support for Mediatek MT65xx & MT81xx ARMv8 SoCs
-> +	  This enables support for MediaTek MT27xx, MT65xx, MT76xx
-> +	  & MT81xx ARMv8 SoCs
->  
->  config ARCH_MESON
->  	bool "Amlogic Platforms"
+>  	crypto: crypto@1b240000 {
+> -		compatible = "mediatek,mt7623-crypto";
+> +		compatible = "mediatek,eip97-crypto";
+>  		reg = <0 0x1b240000 0 0x20000>;
+>  		interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_LOW>,
+>  			     <GIC_SPI 83 IRQ_TYPE_LEVEL_LOW>,
+>  			     <GIC_SPI 84 IRQ_TYPE_LEVEL_LOW>,
+>  			     <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>,
+>  			     <GIC_SPI 97 IRQ_TYPE_LEVEL_LOW>;
+> -		clocks = <&topckgen CLK_TOP_ETHIF_SEL>,
+> -			 <&ethsys CLK_ETHSYS_CRYPTO>;
+> -		clock-names = "ethif","cryp";
+> +		clocks = <&ethsys CLK_ETHSYS_CRYPTO>;
+> +		clock-names = "cryp";
+>  		power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
+>  		status = "disabled";
+>  	};
 > 
