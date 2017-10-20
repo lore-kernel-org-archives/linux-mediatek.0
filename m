@@ -1,45 +1,79 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 0/8] MT2712 IOMMU SUPPORT
-Date: Fri, 20 Oct 2017 18:12:54 +0800
-Message-ID: <1508494374.15871.6.camel@mhfsdcap03>
-References: <1503313221-26453-1-git-send-email-yong.wu@mediatek.com>
-	<20170822143836.ac3faa7wcwfjtvjc@8bytes.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2] soc: mediatek: place Kconfig for all SoC drivers under
+ menu
+Date: Fri, 20 Oct 2017 12:14:29 +0200
+Message-ID: <dbf36e88-987a-13f8-31d2-8201c3660b34@gmail.com>
+References: <41e81ac2998b171ff4715cb2dc17f15aa10b7518.1507173110.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20170822143836.ac3faa7wcwfjtvjc-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: K Zhang =?UTF-8?Q?=28=E5=BC=A0=E5=87=AF=29?= <K.Zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "arnd-r2nGTMty4D4@public.gmane.org" <arnd-r2nGTMty4D4@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "cloud.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <cloud.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <41e81ac2998b171ff4715cb2dc17f15aa10b7518.1507173110.git.sean.wang@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com, linux-mediatek@lists.infradead.org, jdelvare@suse.de, arnd@arndb.de
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-08-22 at 22:38 +0800, Joerg Roedel wrote:
-> On Mon, Aug 21, 2017 at 07:00:13PM +0800, Yong Wu wrote:
-> > Yong Wu (8):
-> >   dt-bindings: mediatek: Add binding for mt2712 IOMMU and SMI
-> >   iommu/mediatek: Move MTK_M4U_TO_LARB/PORT into mtk_iommu.c
-> >   iommu/mediatek: Add mt2712 IOMMU support
-> >   iommu/mediatek: Merge 2 M4U HWs into one iommu domain
-> >   iommu/mediatek: Move pgtable allocation into domain_alloc
-> >   iommu/mediatek: Disable iommu clock when system suspend
-> >   iommu/mediatek: Enlarge the validate PA range for 4GB mode
-> >   memory: mtk-smi: Degrade SMI init to module_init
+
+
+On 10/05/2017 05:17 AM, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Applied patches 2-7. Patch 1 is something for Matthias.
+> Add cleanup for placing all Kconfig for all MediaTek SoC drivers under
+> the independent menu as other SoCs vendor usually did. Since the menu
+> would be shown depending on "ARCH_MEDIATEK || COMPILE_TEST" selected and
+> MTK_PMIC_WRAP is still safe compiling with the case of "COMPILE_TEST"
+> only, the superfluous dependency for those items under the menu also is
+> also being removed for the sake of simplicity.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
-gentle ping.
+Pushed to v4.14-next/soc
 
-Hi Matthias,
+Thanks!
 
-    Could you help review the binding patch[1/8]? if it's ok for you
-too, Could you help apply it through your branch with Rob's ACK.
-Thanks.
+> ---
+>  drivers/soc/mediatek/Kconfig | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+> index 609bb34..a7d0667 100644
+> --- a/drivers/soc/mediatek/Kconfig
+> +++ b/drivers/soc/mediatek/Kconfig
+> @@ -1,9 +1,11 @@
+>  #
+>  # MediaTek SoC drivers
+>  #
+> +menu "MediaTek SoC drivers"
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +
+>  config MTK_INFRACFG
+>  	bool "MediaTek INFRACFG Support"
+> -	depends on ARCH_MEDIATEK || COMPILE_TEST
+>  	select REGMAP
+>  	help
+>  	  Say yes here to add support for the MediaTek INFRACFG controller. The
+> @@ -12,7 +14,6 @@ config MTK_INFRACFG
+>  
+>  config MTK_PMIC_WRAP
+>  	tristate "MediaTek PMIC Wrapper Support"
+> -	depends on ARCH_MEDIATEK
+>  	depends on RESET_CONTROLLER
+>  	select REGMAP
+>  	help
+> @@ -22,7 +23,6 @@ config MTK_PMIC_WRAP
+>  
+>  config MTK_SCPSYS
+>  	bool "MediaTek SCPSYS Support"
+> -	depends on ARCH_MEDIATEK || COMPILE_TEST
+>  	default ARCH_MEDIATEK
+>  	select REGMAP
+>  	select MTK_INFRACFG
+> @@ -30,3 +30,5 @@ config MTK_SCPSYS
+>  	help
+>  	  Say yes here to add support for the MediaTek SCPSYS power domain
+>  	  driver.
+> +
+> +endmenu
+> 
