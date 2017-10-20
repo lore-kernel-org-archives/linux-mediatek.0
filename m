@@ -1,63 +1,42 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [RFC resend 3/4] arm64: dts: mt8173: Fix drm subsystem
-Date: Fri, 20 Oct 2017 14:49:56 +0200
-Message-ID: <18286792-77dc-3f06-b70b-e06a4c6792a8@gmail.com>
-References: <20171019112610.13645-1-mbrugger@suse.com>
- <20171019112610.13645-4-mbrugger@suse.com>
- <1508491009.23296.2.camel@mtksdaap41>
+From: Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>
+Subject: armv7 boot regression on v4.14-rc1
+Date: Fri, 20 Oct 2017 18:42:47 +0200
+Message-ID: <297ac268-ab26-5172-68f8-d3b4b5883af5@suse.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1508491009.23296.2.camel@mtksdaap41>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, catalin.marinas@arm.com, will.deacon@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ard Biesheuvel <ard.biesheuvel-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Ard,
 
+Today I realized that the Mediatek based Bananapi-R2 [1] stopped booting
+somewhere between v4.13 and v4.14-rc1. Serial console is just quiet, not even
+earlycon is working.
 
-On 10/20/2017 11:16 AM, CK Hu wrote:
-> Hi, Matthias:
-> 
-> On Thu, 2017-10-19 at 13:26 +0200, Matthias Brugger wrote:
->> DRM subysystem and clock driver shared the same compatible mmsys.
->> This stopped does not work, as only the first driver for a compatible
->> gets probed. We change the comaptible to the new DRM identifier to fix
->> this.
->>
->> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
->> ---
->>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 5 +++++
->>  1 file changed, 5 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> index b99a27372965..89db0a3f5950 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> @@ -803,6 +803,11 @@
->>  			#clock-cells = <1>;
->>  		};
->>  
->> +		dispsys: display-system {
->> +			compatible = "mediatek,mt2701-dispsys";
-> 
-> Why do you probe "mediatek,mt2701-dispsys" in mt8173.dtsi?
-> 
+I bisect the issue and got pointed to:
+e4bae4d0b5f3 ("arm/efi: Split zImage code and data into separate PE/COFF sections")
 
-That's actually a copy-paste-error. Thanks for noting!
+After reverting the patch, I was able to boot.
 
+Any clue what went wrong here?
+
+I added Sean, maybe he has an idea if this is a FW issue. Also I doubt the board
+uses EFI.
+
+Best regards,
 Matthias
 
-> Regards,
-> CK
-> 
->> +			mediatek,mmsys = <&mmsys>;
->> +		}
->> +
->>  		mdp_rdma0: rdma@14001000 {
->>  			compatible = "mediatek,mt8173-mdp-rdma",
->>  				     "mediatek,mt8173-mdp";
-> 
-> 
+[1] http://www.banana-pi.org/r2.html
