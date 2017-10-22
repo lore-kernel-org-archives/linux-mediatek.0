@@ -1,71 +1,66 @@
-From: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v1 1/2] dt-bindings: mtd: add new compatible strings and
- improve description
-Date: Sun, 22 Oct 2017 18:30:53 +0800
-Message-ID: <1508668253.14979.5.camel@mhfsdcap03>
-References: <1505997906-30921-1-git-send-email-guochun.mao@mediatek.com>
-         <1505997906-30921-2-git-send-email-guochun.mao@mediatek.com>
-         <1507691713.14979.2.camel@mhfsdcap03>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [GIT PULL] Mediatek: 32-bit DT update for v4.15
+Date: Mon, 23 Oct 2017 00:06:22 +0200
+Message-ID: <c7145c00-b2b9-780c-0bfd-15f7d8a08dd6@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1507691713.14979.2.camel@mhfsdcap03>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Cyrille Pitchen <cyrille.pitchen-yU5RGvR974pGWvitb5QawA@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Cyrille, Marek,
+Hi Arnd and Olof,
 
-Gentle ping...
+Please pull the following commits.
 
+Thanks
+Matthias
 
-On Wed, 2017-10-11 at 11:15 +0800, Guochun Mao wrote:
-> gentle ping...
-> 
-> On Thu, 2017-09-21 at 20:45 +0800, Guochun Mao wrote:
-> > Add "mediatak,mt2712-nor" and "mediatek,mt7622-nor"
-> > for nor flash node's compatible strings.
-> > Explicate the fallback compatible.
-> > 
-> > Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> > Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  .../devicetree/bindings/mtd/mtk-quadspi.txt        |   15 +++++++++------
-> >  1 file changed, 9 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> > index 840f940..56d3668 100644
-> > --- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> > +++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> > @@ -1,13 +1,16 @@
-> >  * Serial NOR flash controller for MTK MT81xx (and similar)
-> >  
-> >  Required properties:
-> > -- compatible: 	  The possible values are:
-> > -		  "mediatek,mt2701-nor"
-> > -		  "mediatek,mt7623-nor"
-> > +- compatible: 	  For mt8173, compatible should be "mediatek,mt8173-nor",
-> > +		  and it's the fallback compatible for other Soc.
-> > +		  For every other SoC, should contain both the SoC-specific compatible
-> > +		  string and "mediatek,mt8173-nor".
-> > +		  The possible values are:
-> > +		  "mediatek,mt2701-nor", "mediatek,mt8173-nor"
-> > +		  "mediatek,mt2712-nor", "mediatek,mt8173-nor"
-> > +		  "mediatek,mt7622-nor", "mediatek,mt8173-nor"
-> > +		  "mediatek,mt7623-nor", "mediatek,mt8173-nor"
-> >  		  "mediatek,mt8173-nor"
-> > -		  For mt8173, compatible should be "mediatek,mt8173-nor".
-> > -		  For every other SoC, should contain both the SoC-specific compatible string
-> > -		  and "mediatek,mt8173-nor".
-> >  - reg: 		  physical base address and length of the controller's register
-> >  - clocks: 	  the phandle of the clocks needed by the nor controller
-> >  - clock-names: 	  the names of the clocks
-> 
+---
+The following changes since commit 2bd6bf03f4c1c59381d62c61d03f6cc3fe71f66e:
 
+  Linux 4.14-rc1 (2017-09-16 15:47:51 -0700)
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+are available in the git repository at:
+
+  https://github.com/mbgg/linux-mediatek.git tags/v4.14-next-dts32
+
+for you to fetch changes up to 355d73e3b2e20d42195268e539a299dedbcc4f59:
+
+  arm: dts: mt7623: remove unused compatible string for pio node (2017-10-20
+13:15:59 +0200)
+
+----------------------------------------------------------------
+- mt76233 add PCIe node
+- mt7623 update nodes to binding description
+- mt2701 add display pwn nodes
+- mt2701 update audio node description
+
+----------------------------------------------------------------
+Ryder Lee (5):
+      arm: dts: mediatek: update audio node for mt2701 and mt7623
+      arm: dts: mt7623: add PCIe related nodes
+      arm: dts: mt7623: update crypto node
+      arm: dts: mt7623: update usb related nodes
+      arm: dts: mt7623: remove unused compatible string for pio node
+
+Weiqing Kong (2):
+      arm: dts: mt2701: add pwm backlight device node
+      arm: dts: mt2701: enable display pwm backlight
+
+ arch/arm/boot/dts/mt2701-evb.dts              |  23 +++++
+ arch/arm/boot/dts/mt2701.dtsi                 |  13 ++-
+ arch/arm/boot/dts/mt7623.dtsi                 | 138 +++++++++++++++++++++++---
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |  30 ++++++
+ 4 files changed, 190 insertions(+), 14 deletions(-)
