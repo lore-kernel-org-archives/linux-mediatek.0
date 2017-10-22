@@ -1,36 +1,46 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH 00/15] networking drivers refcount_t conversions
-Date: Sun, 22 Oct 2017 02:31:32 +0100 (WEST)
-Message-ID: <20171022.023132.2040144937883625039.davem@davemloft.net>
-References: <1508484229-19706-1-git-send-email-elena.reshetova@intel.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 7/9] usb: host: modify description for MTK xHCI config
+Date: Sun, 22 Oct 2017 11:31:22 +0800
+Message-ID: <1508643082.17567.115.camel@mhfsdcap03>
+References: <994382d16d6bdc0f3d7c11b22f1710252e056e34.1507882470.git.chunfeng.yun@mediatek.com>
+         <37153cd259af6e1fc34b32a2e0dd1a15b8214579.1507882470.git.chunfeng.yun@mediatek.com>
+         <59E0962E.9030508@linux.intel.com> <20171017102059.GA17121@kroah.com>
+         <59E5DE7F.1040601@intel.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1508484229-19706-1-git-send-email-elena.reshetova@intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: elena.reshetova@intel.com
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org, linux-hams@vger.kernel.org, linux-ppp@vger.kernel.org, ganeshgr@chelsio.com, nbd@openwrt.org, john@phrozen.org, sean.wang@mediatek.com, matthias.bgg@gmail.com, yishaih@mellanox.com, saeedm@mellanox.com, matanb@mellanox.com, tariqt@mellanox.com, leonro@mellanox.com, ajk@comnets.uni-bremen.de, paulus@samba.org, zbr@ioremap.net, peterz@infradead.org, keescook@chromium.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <59E5DE7F.1040601-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Mathias Nyman <mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Elena Reshetova <elena.reshetova@intel.com>
-Date: Fri, 20 Oct 2017 10:23:34 +0300
+Hi, Greg
+On Tue, 2017-10-17 at 13:42 +0300, Mathias Nyman wrote:
+> On 17.10.2017 13:20, Greg Kroah-Hartman wrote:
+> > On Fri, Oct 13, 2017 at 01:32:14PM +0300, Mathias Nyman wrote:
+> >> On 13.10.2017 11:26, Chunfeng Yun wrote:
+> >>> Due to all MediaTek SoCs with xHCI host controller use this
+> >>> driver, remove limitation for specific SoCs
+> >>>
+> >>> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >>> ---
+> >>
+> >> xHCI parts of series look good to me, If Rob Herring agrees with the
+> >> dt changes I can send it forward
+> >
+> > If you ack them, I can just take the whole series as-is.
+> >
+It would be great if you could take this series when you have time.
 
-> Note: these are the last patches related to networking that perform
-> conversion of refcounters from atomic_t to refcount_t.
-> In contrast to the core network refcounter conversions that
-> were merged earlier, these are much more straightforward ones.
+Thanks a lot
+
 > 
-> This series, for various networking drivers, replaces atomic_t reference
-> counters with the new refcount_t type and API (see include/linux/refcount.h).
-> By doing this we prevent intentional or accidental
-> underflows or overflows that can led to use-after-free vulnerabilities.
+> Acked-by: Mathias Nyman <mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
 > 
-> The patches are fully independent and can be cherry-picked separately.
-> Patches are based on top of net-next.
-> If there are no objections to the patches, please merge them via respective trees
 
-I've applied this entire series to net-next.  If there are any fixups or
-follow-ups please send them as relative patches.
 
-Thank you.
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
