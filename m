@@ -1,37 +1,36 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 2/2] soc: mediatek: pwrap: fix fatal compiler error
-Date: Sat, 21 Oct 2017 10:25:29 +0200
-Message-ID: <20171021082529.31351-2-matthias.bgg@gmail.com>
-References: <20171021082529.31351-1-matthias.bgg@gmail.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH 00/15] networking drivers refcount_t conversions
+Date: Sun, 22 Oct 2017 02:31:32 +0100 (WEST)
+Message-ID: <20171022.023132.2040144937883625039.davem@davemloft.net>
+References: <1508484229-19706-1-git-send-email-elena.reshetova@intel.com>
+Mime-Version: 1.0
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171021082529.31351-1-matthias.bgg@gmail.com>
+In-Reply-To: <1508484229-19706-1-git-send-email-elena.reshetova@intel.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com, chenglin.xu@mediatek.com, chen.zhong@mediatek.com, arvind.yadav.cs@gmail.com, christophe.jaillet@wanadoo.fr, robh@kernel.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>
+To: elena.reshetova@intel.com
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org, linux-hams@vger.kernel.org, linux-ppp@vger.kernel.org, ganeshgr@chelsio.com, nbd@openwrt.org, john@phrozen.org, sean.wang@mediatek.com, matthias.bgg@gmail.com, yishaih@mellanox.com, saeedm@mellanox.com, matanb@mellanox.com, tariqt@mellanox.com, leonro@mellanox.com, ajk@comnets.uni-bremen.de, paulus@samba.org, zbr@ioremap.net, peterz@infradead.org, keescook@chromium.org
 List-Id: linux-mediatek@lists.infradead.org
 
-When adding the MT6380 compatible, the sentinel for of_device_id was
-deleted, which leades to the following compiler error:
-FATAL: drivers/soc/mediatek/mtk-pmic-wrap: struct of_device_id is not terminated with a NULL entry!
+From: Elena Reshetova <elena.reshetova@intel.com>
+Date: Fri, 20 Oct 2017 10:23:34 +0300
 
-Fix this by adding the sentinel again.
+> Note: these are the last patches related to networking that perform
+> conversion of refcounters from atomic_t to refcount_t.
+> In contrast to the core network refcounter conversions that
+> were merged earlier, these are much more straightforward ones.
+> 
+> This series, for various networking drivers, replaces atomic_t reference
+> counters with the new refcount_t type and API (see include/linux/refcount.h).
+> By doing this we prevent intentional or accidental
+> underflows or overflows that can led to use-after-free vulnerabilities.
+> 
+> The patches are fully independent and can be cherry-picked separately.
+> Patches are based on top of net-next.
+> If there are no objections to the patches, please merge them via respective trees
 
-Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 1 +
- 1 file changed, 1 insertion(+)
+I've applied this entire series to net-next.  If there are any fixups or
+follow-ups please send them as relative patches.
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 912edf93c192..e9e054a15b7d 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -1380,6 +1380,7 @@ static const struct of_device_id of_slave_match_tbl[] = {
- 	}, {
- 		.compatible = "mediatek,mt6397",
- 		.data = &pmic_mt6397,
-+	}, {
- 		/* sentinel */
- 	}
- };
--- 
-2.14.2
+Thank you.
