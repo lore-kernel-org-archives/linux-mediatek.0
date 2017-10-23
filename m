@@ -1,171 +1,44 @@
-From: Zhi Mao <zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v4 1/1] pwm: mediatek: add MT2712/MT7622 support
-Date: Mon, 23 Oct 2017 13:27:28 +0800
-Message-ID: <1508736448.12324.3.camel@mhfsdcap03>
-References: <1503367755-6519-1-git-send-email-zhi.mao@mediatek.com>
-         <1503367755-6519-2-git-send-email-zhi.mao@mediatek.com>
-         <1505897312.28692.2.camel@mhfsdcap03>
+From: "Reshetova, Elena" <elena.reshetova@intel.com>
+Subject: RE: [PATCH 00/15] networking drivers refcount_t conversions
+Date: Mon, 23 Oct 2017 06:34:53 +0000
+Message-ID: <2236FBA76BA1254E88B949DDB74E612B802B41C4@IRSMSX102.ger.corp.intel.com>
+References: <1508484229-19706-1-git-send-email-elena.reshetova@intel.com>
+ <20171022.023132.2040144937883625039.davem@davemloft.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1505897312.28692.2.camel@mhfsdcap03>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, zhenbao.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-ppp-owner@vger.kernel.org>
+In-Reply-To: <20171022.023132.2040144937883625039.davem@davemloft.net>
+Content-Language: en-US
+Sender: linux-ppp-owner@vger.kernel.org
+To: David Miller <davem@davemloft.net>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>, "linux-hams@vger.kernel.org" <linux-hams@vger.kernel.org>, "linux-ppp@vger.kernel.org" <linux-ppp@vger.kernel.org>, "ganeshgr@chelsio.com" <ganeshgr@chelsio.com>, "nbd@openwrt.org" <nbd@openwrt.org>, "john@phrozen.org" <john@phrozen.org>, "sean.wang@mediatek.com" <sean.wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "yishaih@mellanox.com" <yishaih@mellanox.com>, "saeedm@mellanox.com" <saeedm@mellanox.com>, matan
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Thierry,
 
-Just have a ping on this issue.
+> From: Elena Reshetova <elena.reshetova@intel.com>
+> Date: Fri, 20 Oct 2017 10:23:34 +0300
+> 
+> > Note: these are the last patches related to networking that perform
+> > conversion of refcounters from atomic_t to refcount_t.
+> > In contrast to the core network refcounter conversions that
+> > were merged earlier, these are much more straightforward ones.
+> >
+> > This series, for various networking drivers, replaces atomic_t reference
+> > counters with the new refcount_t type and API (see include/linux/refcount.h).
+> > By doing this we prevent intentional or accidental
+> > underflows or overflows that can led to use-after-free vulnerabilities.
+> >
+> > The patches are fully independent and can be cherry-picked separately.
+> > Patches are based on top of net-next.
+> > If there are no objections to the patches, please merge them via respective trees
+> 
+> I've applied this entire series to net-next.  If there are any fixups or
+> follow-ups please send them as relative patches.
+> 
+> Thank you.
 
-Regards,
-Zhi
+Thank you very much David! Will send fixups separately.
 
-On Wed, 2017-09-20 at 16:48 +0800, Zhi Mao wrote:
-> Hi Thierry,
-> 
-> Just a gentle ping on this issue.
-> Would you please have a review to this patch?
-> 
-> Regards,
-> Zhi
-> 
-> 
-> On Tue, 2017-08-22 at 10:09 +0800, Zhi Mao wrote:
-> > Add support to MT2712 and MT7622.
-> > Due to register offset address of pwm7 for MT2712 is not fixed 0x40,
-> > add mtk_pwm_reg_offset array for pwm register offset.
-> > 
-> > Signed-off-by: Zhi Mao <zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  drivers/pwm/pwm-mediatek.c |   51 ++++++++++++++++++++++++++++++++++++--------
-> >  1 file changed, 42 insertions(+), 9 deletions(-)
-> > 
-> > diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-> > index 1d78ab1..ccd86e7 100644
-> > --- a/drivers/pwm/pwm-mediatek.c
-> > +++ b/drivers/pwm/pwm-mediatek.c
-> > @@ -16,6 +16,7 @@
-> >  #include <linux/module.h>
-> >  #include <linux/clk.h>
-> >  #include <linux/of.h>
-> > +#include <linux/of_device.h>
-> >  #include <linux/platform_device.h>
-> >  #include <linux/pwm.h>
-> >  #include <linux/slab.h>
-> > @@ -40,11 +41,19 @@ enum {
-> >  	MTK_CLK_PWM3,
-> >  	MTK_CLK_PWM4,
-> >  	MTK_CLK_PWM5,
-> > +	MTK_CLK_PWM6,
-> > +	MTK_CLK_PWM7,
-> > +	MTK_CLK_PWM8,
-> >  	MTK_CLK_MAX,
-> >  };
-> >  
-> > -static const char * const mtk_pwm_clk_name[] = {
-> > -	"main", "top", "pwm1", "pwm2", "pwm3", "pwm4", "pwm5"
-> > +static const char * const mtk_pwm_clk_name[MTK_CLK_MAX] = {
-> > +	"main", "top", "pwm1", "pwm2", "pwm3", "pwm4", "pwm5", "pwm6", "pwm7",
-> > +	"pwm8"
-> > +};
-> > +
-> > +struct mtk_pwm_platform_data {
-> > +	unsigned int num_pwms;
-> >  };
-> >  
-> >  /**
-> > @@ -57,6 +66,11 @@ struct mtk_pwm_chip {
-> >  	struct pwm_chip chip;
-> >  	void __iomem *regs;
-> >  	struct clk *clks[MTK_CLK_MAX];
-> > +	const struct mtk_pwm_platform_data *data;
-> > +};
-> > +
-> > +static const unsigned int mtk_pwm_reg_offset[] = {
-> > +	0x0010, 0x0050, 0x0090, 0x00d0, 0x0110, 0x0150, 0x0190, 0x0220
-> >  };
-> >  
-> >  static inline struct mtk_pwm_chip *to_mtk_pwm_chip(struct pwm_chip *chip)
-> > @@ -103,14 +117,14 @@ static void mtk_pwm_clk_disable(struct pwm_chip *chip, struct pwm_device *pwm)
-> >  static inline u32 mtk_pwm_readl(struct mtk_pwm_chip *chip, unsigned int num,
-> >  				unsigned int offset)
-> >  {
-> > -	return readl(chip->regs + 0x10 + (num * 0x40) + offset);
-> > +	return readl(chip->regs + mtk_pwm_reg_offset[num] + offset);
-> >  }
-> >  
-> >  static inline void mtk_pwm_writel(struct mtk_pwm_chip *chip,
-> >  				  unsigned int num, unsigned int offset,
-> >  				  u32 value)
-> >  {
-> > -	writel(value, chip->regs + 0x10 + (num * 0x40) + offset);
-> > +	writel(value, chip->regs + mtk_pwm_reg_offset[num] + offset);
-> >  }
-> >  
-> >  static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
-> > @@ -194,15 +208,20 @@ static int mtk_pwm_probe(struct platform_device *pdev)
-> >  	if (!pc)
-> >  		return -ENOMEM;
-> >  
-> > +	pc->data = of_device_get_match_data(&pdev->dev);
-> > +
-> >  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> >  	pc->regs = devm_ioremap_resource(&pdev->dev, res);
-> >  	if (IS_ERR(pc->regs))
-> >  		return PTR_ERR(pc->regs);
-> >  
-> > -	for (i = 0; i < MTK_CLK_MAX; i++) {
-> > +	for (i = 0; i < pc->data->num_pwms + 2; i++) {
-> >  		pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
-> > -		if (IS_ERR(pc->clks[i]))
-> > +		if (IS_ERR(pc->clks[i])) {
-> > +			dev_err(&pdev->dev, "clock: %s fail: %ld\n",
-> > +				mtk_pwm_clk_name[i], PTR_ERR(pc->clks[i]));
-> >  			return PTR_ERR(pc->clks[i]);
-> > +		}
-> >  	}
-> >  
-> >  	platform_set_drvdata(pdev, pc);
-> > @@ -210,7 +229,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
-> >  	pc->chip.dev = &pdev->dev;
-> >  	pc->chip.ops = &mtk_pwm_ops;
-> >  	pc->chip.base = -1;
-> > -	pc->chip.npwm = 5;
-> > +	pc->chip.npwm = pc->data->num_pwms;
-> >  
-> >  	ret = pwmchip_add(&pc->chip);
-> >  	if (ret < 0) {
-> > @@ -228,9 +247,23 @@ static int mtk_pwm_remove(struct platform_device *pdev)
-> >  	return pwmchip_remove(&pc->chip);
-> >  }
-> >  
-> > +static const struct mtk_pwm_platform_data mt2712_pwm_data = {
-> > +	.num_pwms = 8,
-> > +};
-> > +
-> > +static const struct mtk_pwm_platform_data mt7622_pwm_data = {
-> > +	.num_pwms = 6,
-> > +};
-> > +
-> > +static const struct mtk_pwm_platform_data mt7623_pwm_data = {
-> > +	.num_pwms = 5,
-> > +};
-> > +
-> >  static const struct of_device_id mtk_pwm_of_match[] = {
-> > -	{ .compatible = "mediatek,mt7623-pwm" },
-> > -	{ }
-> > +	{ .compatible = "mediatek,mt2712-pwm", .data = &mt2712_pwm_data },
-> > +	{ .compatible = "mediatek,mt7622-pwm", .data = &mt7622_pwm_data },
-> > +	{ .compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data },
-> > +	{ },
-> >  };
-> >  MODULE_DEVICE_TABLE(of, mtk_pwm_of_match);
-> >  
-> 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Best Regards,
+Elena.
