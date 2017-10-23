@@ -1,222 +1,171 @@
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v6 6/9] soc: mediatek: extend bus protection API
-Date: Mon, 23 Oct 2017 12:10:37 +0800
-Message-ID: <1508731840-4231-7-git-send-email-weiyi.lu@mediatek.com>
-References: <1508731840-4231-1-git-send-email-weiyi.lu@mediatek.com>
+From: Zhi Mao <zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 1/1] pwm: mediatek: add MT2712/MT7622 support
+Date: Mon, 23 Oct 2017 13:27:28 +0800
+Message-ID: <1508736448.12324.3.camel@mhfsdcap03>
+References: <1503367755-6519-1-git-send-email-zhi.mao@mediatek.com>
+         <1503367755-6519-2-git-send-email-zhi.mao@mediatek.com>
+         <1505897312.28692.2.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1508731840-4231-1-git-send-email-weiyi.lu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Mike Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1505897312.28692.2.camel@mhfsdcap03>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, zhenbao.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-MT2712 add "set/clear" bus control register to each control register set
-instead of providing only one "enable" control register, we could avoid
-the read-modify-write racing by declaring "bus_prot_reg_update" as "false"
-in scp_soc_data or declaring as "true" to use the legacy update method.
-By improving the mtk-infracfg bus protection implementation to
-support set/clear bus protection control method by IC configuration.
+Hi Thierry,
 
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
----
- drivers/soc/mediatek/mtk-infracfg.c   | 26 ++++++++++++++++++++++----
- drivers/soc/mediatek/mtk-scpsys.c     | 28 ++++++++++++++++++++--------
- include/linux/soc/mediatek/infracfg.h |  7 ++++---
- 3 files changed, 46 insertions(+), 15 deletions(-)
+Just have a ping on this issue.
 
-diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
-index dba3055..8c310de 100644
---- a/drivers/soc/mediatek/mtk-infracfg.c
-+++ b/drivers/soc/mediatek/mtk-infracfg.c
-@@ -19,23 +19,33 @@
- 
- #define INFRA_TOPAXI_PROTECTEN		0x0220
- #define INFRA_TOPAXI_PROTECTSTA1	0x0228
-+#define INFRA_TOPAXI_PROTECTEN_SET	0x0260
-+#define INFRA_TOPAXI_PROTECTEN_CLR	0x0264
- 
- /**
-  * mtk_infracfg_set_bus_protection - enable bus protection
-  * @regmap: The infracfg regmap
-  * @mask: The mask containing the protection bits to be enabled.
-+ * @reg_update: The boolean flag determines to set the protection bits
-+ *              by regmap_update_bits with enable register(PROTECTEN) or
-+ *              by regmap_write with set register(PROTECTEN_SET).
-  *
-  * This function enables the bus protection bits for disabled power
-  * domains so that the system does not hang when some unit accesses the
-  * bus while in power down.
-  */
--int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask)
-+int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
-+		bool reg_update)
- {
- 	unsigned long expired;
- 	u32 val;
- 	int ret;
- 
--	regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask, mask);
-+	if (reg_update)
-+		regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask,
-+				mask);
-+	else
-+		regmap_write(infracfg, INFRA_TOPAXI_PROTECTEN_SET, mask);
- 
- 	expired = jiffies + HZ;
- 
-@@ -59,16 +69,24 @@ int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask)
-  * mtk_infracfg_clear_bus_protection - disable bus protection
-  * @regmap: The infracfg regmap
-  * @mask: The mask containing the protection bits to be disabled.
-+ * @reg_update: The boolean flag determines to clear the protection bits
-+ *              by regmap_update_bits with enable register(PROTECTEN) or
-+ *              by regmap_write with clear register(PROTECTEN_CLR).
-  *
-  * This function disables the bus protection bits previously enabled with
-  * mtk_infracfg_set_bus_protection.
-  */
--int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask)
-+
-+int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
-+		bool reg_update)
- {
- 	unsigned long expired;
- 	int ret;
- 
--	regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask, 0);
-+	if (reg_update)
-+		regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask, 0);
-+	else
-+		regmap_write(infracfg, INFRA_TOPAXI_PROTECTEN_CLR, mask);
- 
- 	expired = jiffies + HZ;
- 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index e1ce8b1..ba552de 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -134,6 +134,7 @@ struct scp {
- 	void __iomem *base;
- 	struct regmap *infracfg;
- 	struct scp_ctrl_reg ctrl_reg;
-+	bool bus_prot_reg_update;
- };
- 
- struct scp_subdomain {
-@@ -147,6 +148,7 @@ struct scp_soc_data {
- 	const struct scp_subdomain *subdomains;
- 	int num_subdomains;
- 	const struct scp_ctrl_reg regs;
-+	bool bus_prot_reg_update;
- };
- 
- static int scpsys_domain_is_on(struct scp_domain *scpd)
-@@ -254,7 +256,8 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 
- 	if (scpd->data->bus_prot_mask) {
- 		ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
--				scpd->data->bus_prot_mask);
-+				scpd->data->bus_prot_mask,
-+				scp->bus_prot_reg_update);
- 		if (ret)
- 			goto err_pwr_ack;
- 	}
-@@ -289,7 +292,8 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 
- 	if (scpd->data->bus_prot_mask) {
- 		ret = mtk_infracfg_set_bus_protection(scp->infracfg,
--				scpd->data->bus_prot_mask);
-+				scpd->data->bus_prot_mask,
-+				scp->bus_prot_reg_update);
- 		if (ret)
- 			goto out;
- 	}
-@@ -382,7 +386,8 @@ static void init_clks(struct platform_device *pdev, struct clk **clk)
- 
- static struct scp *init_scp(struct platform_device *pdev,
- 			const struct scp_domain_data *scp_domain_data, int num,
--			const struct scp_ctrl_reg *scp_ctrl_reg)
-+			const struct scp_ctrl_reg *scp_ctrl_reg,
-+			bool bus_prot_reg_update)
- {
- 	struct genpd_onecell_data *pd_data;
- 	struct resource *res;
-@@ -397,6 +402,8 @@ static struct scp *init_scp(struct platform_device *pdev,
- 	scp->ctrl_reg.pwr_sta_offs = scp_ctrl_reg->pwr_sta_offs;
- 	scp->ctrl_reg.pwr_sta2nd_offs = scp_ctrl_reg->pwr_sta2nd_offs;
- 
-+	scp->bus_prot_reg_update = bus_prot_reg_update;
-+
- 	scp->dev = &pdev->dev;
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-@@ -816,7 +823,8 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- 	.regs = {
- 		.pwr_sta_offs = SPM_PWR_STATUS,
- 		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
--	}
-+	},
-+	.bus_prot_reg_update = true,
- };
- 
- static const struct scp_soc_data mt6797_data = {
-@@ -827,7 +835,8 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- 	.regs = {
- 		.pwr_sta_offs = SPM_PWR_STATUS_MT6797,
- 		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND_MT6797
--	}
-+	},
-+	.bus_prot_reg_update = true,
- };
- 
- static const struct scp_soc_data mt7622_data = {
-@@ -836,7 +845,8 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- 	.regs = {
- 		.pwr_sta_offs = SPM_PWR_STATUS,
- 		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
--	}
-+	},
-+	.bus_prot_reg_update = true,
- };
- 
- static const struct scp_soc_data mt8173_data = {
-@@ -847,7 +857,8 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- 	.regs = {
- 		.pwr_sta_offs = SPM_PWR_STATUS,
- 		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
--	}
-+	},
-+	.bus_prot_reg_update = true,
- };
- 
- /*
-@@ -884,7 +895,8 @@ static int scpsys_probe(struct platform_device *pdev)
- 	match = of_match_device(of_scpsys_match_tbl, &pdev->dev);
- 	soc = (const struct scp_soc_data *)match->data;
- 
--	scp = init_scp(pdev, soc->domains, soc->num_domains, &soc->regs);
-+	scp = init_scp(pdev, soc->domains, soc->num_domains, &soc->regs,
-+			soc->bus_prot_reg_update);
- 	if (IS_ERR(scp))
- 		return PTR_ERR(scp);
- 
-diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-index a0182ec..67baca2 100644
---- a/include/linux/soc/mediatek/infracfg.h
-+++ b/include/linux/soc/mediatek/infracfg.h
-@@ -27,7 +27,8 @@
- #define MT7622_TOP_AXI_PROT_EN_WB		(BIT(2) | BIT(6) | \
- 						 BIT(7) | BIT(8))
- 
--int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask);
--int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask);
--
-+int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
-+		bool reg_update);
-+int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
-+		bool reg_update);
- #endif /* __SOC_MEDIATEK_INFRACFG_H */
--- 
-1.9.1
+Regards,
+Zhi
+
+On Wed, 2017-09-20 at 16:48 +0800, Zhi Mao wrote:
+> Hi Thierry,
+> 
+> Just a gentle ping on this issue.
+> Would you please have a review to this patch?
+> 
+> Regards,
+> Zhi
+> 
+> 
+> On Tue, 2017-08-22 at 10:09 +0800, Zhi Mao wrote:
+> > Add support to MT2712 and MT7622.
+> > Due to register offset address of pwm7 for MT2712 is not fixed 0x40,
+> > add mtk_pwm_reg_offset array for pwm register offset.
+> > 
+> > Signed-off-by: Zhi Mao <zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/pwm/pwm-mediatek.c |   51 ++++++++++++++++++++++++++++++++++++--------
+> >  1 file changed, 42 insertions(+), 9 deletions(-)
+> > 
+> > diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+> > index 1d78ab1..ccd86e7 100644
+> > --- a/drivers/pwm/pwm-mediatek.c
+> > +++ b/drivers/pwm/pwm-mediatek.c
+> > @@ -16,6 +16,7 @@
+> >  #include <linux/module.h>
+> >  #include <linux/clk.h>
+> >  #include <linux/of.h>
+> > +#include <linux/of_device.h>
+> >  #include <linux/platform_device.h>
+> >  #include <linux/pwm.h>
+> >  #include <linux/slab.h>
+> > @@ -40,11 +41,19 @@ enum {
+> >  	MTK_CLK_PWM3,
+> >  	MTK_CLK_PWM4,
+> >  	MTK_CLK_PWM5,
+> > +	MTK_CLK_PWM6,
+> > +	MTK_CLK_PWM7,
+> > +	MTK_CLK_PWM8,
+> >  	MTK_CLK_MAX,
+> >  };
+> >  
+> > -static const char * const mtk_pwm_clk_name[] = {
+> > -	"main", "top", "pwm1", "pwm2", "pwm3", "pwm4", "pwm5"
+> > +static const char * const mtk_pwm_clk_name[MTK_CLK_MAX] = {
+> > +	"main", "top", "pwm1", "pwm2", "pwm3", "pwm4", "pwm5", "pwm6", "pwm7",
+> > +	"pwm8"
+> > +};
+> > +
+> > +struct mtk_pwm_platform_data {
+> > +	unsigned int num_pwms;
+> >  };
+> >  
+> >  /**
+> > @@ -57,6 +66,11 @@ struct mtk_pwm_chip {
+> >  	struct pwm_chip chip;
+> >  	void __iomem *regs;
+> >  	struct clk *clks[MTK_CLK_MAX];
+> > +	const struct mtk_pwm_platform_data *data;
+> > +};
+> > +
+> > +static const unsigned int mtk_pwm_reg_offset[] = {
+> > +	0x0010, 0x0050, 0x0090, 0x00d0, 0x0110, 0x0150, 0x0190, 0x0220
+> >  };
+> >  
+> >  static inline struct mtk_pwm_chip *to_mtk_pwm_chip(struct pwm_chip *chip)
+> > @@ -103,14 +117,14 @@ static void mtk_pwm_clk_disable(struct pwm_chip *chip, struct pwm_device *pwm)
+> >  static inline u32 mtk_pwm_readl(struct mtk_pwm_chip *chip, unsigned int num,
+> >  				unsigned int offset)
+> >  {
+> > -	return readl(chip->regs + 0x10 + (num * 0x40) + offset);
+> > +	return readl(chip->regs + mtk_pwm_reg_offset[num] + offset);
+> >  }
+> >  
+> >  static inline void mtk_pwm_writel(struct mtk_pwm_chip *chip,
+> >  				  unsigned int num, unsigned int offset,
+> >  				  u32 value)
+> >  {
+> > -	writel(value, chip->regs + 0x10 + (num * 0x40) + offset);
+> > +	writel(value, chip->regs + mtk_pwm_reg_offset[num] + offset);
+> >  }
+> >  
+> >  static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+> > @@ -194,15 +208,20 @@ static int mtk_pwm_probe(struct platform_device *pdev)
+> >  	if (!pc)
+> >  		return -ENOMEM;
+> >  
+> > +	pc->data = of_device_get_match_data(&pdev->dev);
+> > +
+> >  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> >  	pc->regs = devm_ioremap_resource(&pdev->dev, res);
+> >  	if (IS_ERR(pc->regs))
+> >  		return PTR_ERR(pc->regs);
+> >  
+> > -	for (i = 0; i < MTK_CLK_MAX; i++) {
+> > +	for (i = 0; i < pc->data->num_pwms + 2; i++) {
+> >  		pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
+> > -		if (IS_ERR(pc->clks[i]))
+> > +		if (IS_ERR(pc->clks[i])) {
+> > +			dev_err(&pdev->dev, "clock: %s fail: %ld\n",
+> > +				mtk_pwm_clk_name[i], PTR_ERR(pc->clks[i]));
+> >  			return PTR_ERR(pc->clks[i]);
+> > +		}
+> >  	}
+> >  
+> >  	platform_set_drvdata(pdev, pc);
+> > @@ -210,7 +229,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
+> >  	pc->chip.dev = &pdev->dev;
+> >  	pc->chip.ops = &mtk_pwm_ops;
+> >  	pc->chip.base = -1;
+> > -	pc->chip.npwm = 5;
+> > +	pc->chip.npwm = pc->data->num_pwms;
+> >  
+> >  	ret = pwmchip_add(&pc->chip);
+> >  	if (ret < 0) {
+> > @@ -228,9 +247,23 @@ static int mtk_pwm_remove(struct platform_device *pdev)
+> >  	return pwmchip_remove(&pc->chip);
+> >  }
+> >  
+> > +static const struct mtk_pwm_platform_data mt2712_pwm_data = {
+> > +	.num_pwms = 8,
+> > +};
+> > +
+> > +static const struct mtk_pwm_platform_data mt7622_pwm_data = {
+> > +	.num_pwms = 6,
+> > +};
+> > +
+> > +static const struct mtk_pwm_platform_data mt7623_pwm_data = {
+> > +	.num_pwms = 5,
+> > +};
+> > +
+> >  static const struct of_device_id mtk_pwm_of_match[] = {
+> > -	{ .compatible = "mediatek,mt7623-pwm" },
+> > -	{ }
+> > +	{ .compatible = "mediatek,mt2712-pwm", .data = &mt2712_pwm_data },
+> > +	{ .compatible = "mediatek,mt7622-pwm", .data = &mt7622_pwm_data },
+> > +	{ .compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data },
+> > +	{ },
+> >  };
+> >  MODULE_DEVICE_TABLE(of, mtk_pwm_of_match);
+> >  
+> 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
