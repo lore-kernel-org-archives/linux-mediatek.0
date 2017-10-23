@@ -1,117 +1,77 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [RFC resend] arm64: mt8173: Fix Acer Chromebooks mmsys probe
- problem
-Date: Mon, 23 Oct 2017 09:42:58 +0800
-Message-ID: <1508722978.1108.16.camel@mtksdaap41>
-References: <20171019112610.13645-1-mbrugger@suse.com>
- <1508418114.7665.16.camel@pengutronix.de> <1683149.BjzMD0lNNQ@avalon>
- <1508424856.7665.22.camel@pengutronix.de>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: Re: [PATCH v6 01/12] mmc: dt-bindings: Add reg/source_cg/latch-ck
+ for Mediatek MMC bindings
+Date: Mon, 23 Oct 2017 10:31:44 +0800
+Message-ID: <1508725904.19789.19.camel@mhfsdcap03>
+References: <1508118399-21828-1-git-send-email-chaotian.jing@mediatek.com>
+         <1508118399-21828-2-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1508424856.7665.22.camel@pengutronix.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, catalin.marinas@arm.com, will.deacon@arm.com, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, ulrich.hecht+renesas@gmail.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1508118399-21828-2-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Heiner Kallweit <hkallweit1@gmail.com>, Phong LE <ple@baylibre.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksCgpPbiBUaHUsIDIwMTctMTAtMTkgYXQgMTY6NTQgKzAyMDAsIFBoaWxpcHAgWmFiZWwgd3Jv
-dGU6Cj4gSGkgTGF1cmVudCwKPiAKPiBPbiBUaHUsIDIwMTctMTAtMTkgYXQgMTY6MzkgKzAzMDAs
-IExhdXJlbnQgUGluY2hhcnQgd3JvdGU6Cj4gPiBIaSBQaGlsaXBwLAo+ID4gCj4gPiBPbiBUaHVy
-c2RheSwgMTkgT2N0b2JlciAyMDE3IDE2OjAxOjU0IEVFU1QgUGhpbGlwcCBaYWJlbCB3cm90ZToK
-PiA+ID4gT24gVGh1LCAyMDE3LTEwLTE5IGF0IDEzOjI2ICswMjAwLCBNYXR0aGlhcyBCcnVnZ2Vy
-IHdyb3RlOgo+ID4gPiA+IEluIHRoZW9yeSB0aGUgTU1TWVMgZGV2aWNlIHRyZWUgaWRlbnRpZmll
-ciBpcyBtYXRjaGVzIHR3aWNlLCBieSB0aGUgY2xrCj4gPiA+ID4gZHJpdmVyIGFuZCB0aGUgRFJN
-IHN1YnN5c3RlbS4gQnV0IHRoZSBrZXJuZWwgb25seSBtYXRjaGVzIHRoZSBmaXJzdAo+ID4gPiA+
-IGRyaXZlciBmb3IgYSBkZXZpY2UgKGNsaykgYW5kIGRpc2NhcmRzIHRoZSBzZWNvbmQgb25lLiBU
-aGlzIGJyZWFrcwo+ID4gPiA+IGdyYXBoaWNzIG9uIG10ODE3MyBhbmQgbW9zdCBwcm9iYWJseSBv
-biBtdDI3MDEgYXMgd2VsbC4KPiA+ID4gPiAKPiA+ID4gPiBNTVNZUyBpbiBNZWRpYXRlayBTb0Nz
-IGhhcyBzb21lIHJlZ2lzdGVycyB0byBjb250cm9sIGNsb2NrIGdhdGVzICh3aGljaCBpcwo+ID4g
-PiA+IHVzZWQgaW4gdGhlIGNsayBkcml2ZXIpIGFuZCBzb21lIHJlZ2lzdGVycyB0byBlbmFibGUg
-dGhlIGRpZmZlcm5ldCBibG9ja3MKPiA+ID4gPiBvZiB0aGUgZGlzcGxheSBzdWJzeXN0ZW0uIFRo
-ZSBrZXJuZWwgdXNlcyB0aGUgYmluZGluZyB0byBsb2FkIHRoZSBjZW50cmFsCj4gPiA+ID4gY29t
-b3BvbmVudCBvZiB0aGUgZGlzdHBsYXkgc3Vic3lzdGVtLCB3aGljaCBpbiBwbGFjZSBwcm9iZXMg
-YWxsIHRoZSBvdGhlcgo+ID4gPiA+IGNvbXBvbmVudHMgYW5kIGVuYWJsZXMgdGhlIHByZXNlbnQg
-b25lcyBpbiB0aGUgTU1TWVMuCj4gPiA+ID4gCj4gPiA+ID4gV2UgZm91bmQgdXMgd2l0aCB0aGUg
-cHJvYmxlbSwgdGhhdCB3ZSBuZWVkIHRvIGNoYW5nZSBhbmQgdGhlcmVmb3IgYnJlYWsKPiA+ID4g
-PiBvbmUKPiA+ID4gPiBvZiB0aGUgdHdvIGJpbmRpbmdzLCBvciB0aGUgRFJNIG9uZSBvciB0aGUg
-Y2xvY2sgZHJpdmVyIG9uZS4KPiA+ID4gPiAKPiA+ID4gPiBBcGFydCBmcm9tIHRoYXQgdGhlIERS
-TSBzdWJ5c3lzdGVtIGRvZXMgYWNjZXNzIHRoZSBNTVNZUyByZWdpc3RlcnMgdmlhCj4gPiA+ID4g
-cmVsYXhlZCByZWFkcy93cml0ZXMuIEJ1dCB0aGUgaXQgc2hvdWxkIHRvIHNvIHZpYSByZWdtYXAs
-IGFzIHRoZQo+ID4gPiA+IHJlZ2lzdGVycyBhcmUgc2hhcmVkLgo+ID4gPiA+IAo+ID4gPiA+IFBv
-c3NpYmxlIHNvbHV0aW9uczoKPiA+ID4gPiAxKSBXZSBhZGQgYSBuZXcgbWVkaWF0ZWssbXQ4MTcz
-LW1tc3lzLWNsayBub2RlLCB3aGljaCBsaXZlcyBhcyBhCj4gPiA+ID4gc2ltcGxlLW1mZCB1bmRl
-ciB0aGUgYWN0dWFsIG1tc3lzIG5vZGUuIFdlIGNoYW5nZSB0aGUgY2xvY2sgZHJpdmVyIHRvCj4g
-PiA+ID4gcHJvYmUgb24gdGhpcyBiaW5kaW5nLiBUaGlzIHdvdWxkIG1ha2Ugc2Vuc2UgYXMgdGhl
-IGNsb2NrIGdhdGUgcmVnaXN0ZXIKPiA+ID4gPiBsaXZlIGNvbXBsZXRseSBpbiB0aGUgTU1TWVMg
-Y29uZmlndXJhdGlvbiByZWdpc3RlcnMuCj4gPiA+IAo+ID4gPiBUaGUgcmVhc29uIHdoeSB0aGUg
-ZHJtIGRyaXZlciBtYXRjaGVzIGFnYWluc3QgdGhlIG1tc3lzIG5vZGUgaW4gdGhlCj4gPiA+IGZp
-cnN0IHBsYWNlIGlzIHRoYXQgd2Ugd2FudGVkIHRvIGF2b2lkIDIpLgo+ID4gCj4gPiBXaHkgZGlk
-IHlvdSB3YW50IHRvIGF2b2lkIDIpID8KPiAKPiBCZWNhdXNlIHRoZSAiZGlzcGxheS1zdWJzeXN0
-ZW0iIG5vZGUgZG9lcyBub3QgcmVwcmVzZW50IGEgcmVhbCBkZXZpY2UsCj4gaXQncyBqdXN0IHRo
-ZXJlIHRvIHByb2JlIHRoZSBkcml2ZXIgdGhhdCBzdGl0Y2hlcyBhbGwgdGhlIERJU1AKPiBjb21w
-b25lbnRzIHRvZ2V0aGVyLgo+IAo+ID4gPiBBbHNvLCBtbXN5cyBpcyBub3QgYSBwdXJlIGNsb2Nr
-IGNvbnRyb2xsZXIsIGFzIGl0IGFsc28gY29udGFpbnMgdGhlCj4gPiA+IGRpc3BsYXkgcGF0aCBj
-b25maWd1cmF0aW9uIGluIGl0cyByZWdpc3RlciBzcGFjZS4KPiA+IAo+ID4gV2hpY2ggbWFrZXMg
-dGhlIG1tc3lzIHJlbGF0ZWQgdG8gZGlzcGxheSwgYnV0IG1vcmUgaW4gYSBzeXNjb24gKGNvbWJp
-bmluZyAKPiA+IGNsb2NrcyBhbmQgcm91dGluZywgYW5kIEkgYXNzdW1lIG90aGVyIG1pc2NlbGxh
-bmVvdXMgZmVhdHVyZXMgdGhhdCB3b3VsZG4ndCAKPiA+IGZpdCBuaWNlbHkgaW4gdGhlIG90aGVy
-IGRpc3BsYXktcmVsYXRlZCBJUCBjb3Jlcykgd2F5IHRoYW4gYWN0dWFsbHkgYmVpbmcgcGFydCAK
-PiA+IG9mIHRoZSBkaXNwbGF5IHN1YnN5c3RlbS4gT3IgZG9lcyBtbXN5cyBvbmx5IHByb3ZpZGUg
-ZGlzcGxheS1yZWxhdGVkIGZlYXR1cmVzIAo+ID4gPwo+IAo+IEFsbCBkZXZpY2VzIGluIHRoZSAw
-eDE0MDAwMDAwIC0gMHgxNGZmZmZmZiBtZW1vcnkgcmFuZ2UgYXJlIHBhcnQgb2YgdGhlCj4gTU1T
-WVMgc3lzdGVtLiBUaGF0IGluY2x1ZGVzIHRoZSBNTVNZUyBjb250cm9sIG9yIHN5c3RlbSBjb25m
-aWd1cmF0aW9uCj4gYmxvY2sgYXQgMHgxNDAwMDAwMCAtIDB4MTQwMDBmZmYgYXMgd2VsbCBhcyBh
-bGwgdGhlIHJlbGF0ZWQgTURQIChtZWRpYQo+IGRhdGEgcGF0aCkgYW5kIERJU1AgKGRpc3BsYXkg
-ZGF0YSBwYXRoKSBibG9ja3MgdGhhdCBmb2xsb3cuIFRoZSBESVNQCj4gYmxvY2tzIGFyZSBwdXJl
-bHkgZGlzcGxheSByZWxhdGVkLCB3aGlsZSB0aGUgTURQIGJsb2NrcyBpbXBsZW1lbnQKPiBpbXBs
-ZW1lbnQgbWVtMm1lbSBmdW5jdGlvbnMgbGlrZSBzY2FsaW5nIGFuZCBjb252ZXJzaW9uLgo+IAo+
-ID4gPiA+IDIpIEFzIHRoZSBub2RlcyBvZiB0aGUgRFJNIHN1YnN5c3RlbSBqdXN0IG5lZWQgc29t
-ZSBvZiB0aGUgcmVnaXN0ZXJzIG9mCj4gPiA+ID4gTU1TWVMgd2UgYWRkIGEgbmV3IGJpbmRpbmcg
-bWVkaWF0ZWssbXQ4MTczLWRpc3BzeXMgd2hpY2ggcHJvYmVzIHRoZQo+ID4gPiA+IGNlbnRyYWwg
-Y29tcG9uZW50IG9mIHRoZSBEUk0gc3lzdGVtLiBJdCBoYXMgb25seSBhIGhhbmRsZSB0byBtdDgx
-NzMtbW1zeXMKPiA+ID4gPiB0byBhY2Nlc3MgdGhlIHJlZ2lzdGVyc3BhY2UgdmlhIHJlZ21hcCBm
-dW5jdGlvbnMuCj4gPiA+ID4gCj4gPiA+ID4gSW4gdGhpcyBwYXRjaHNldCBJIGltcGxlbWVudGVk
-IDIpLiBQbGVhc2UgdGFrZSBpbnRvIGFjY291bnQsIHRoYXQgdGhpcyBpcwo+ID4gPiA+IGEgUkZD
-LiBJIGhhZCBubyB0aW1lIHRvIGFjdHVhbGx5IHRlc3QgdGhlIHZlcmlzb24gb24gcmVhbCBIVy4g
-U29tZSBvZiB0aGUKPiA+ID4gPiByZWdpc3RlciBhY2Nlc3NlcyBzaG91bGQgYmUgZG9uZSB1c2lu
-ZyByZWdtYXBfdXBkYXRlIGluc3RlYWQgb2YKPiA+ID4gPiByZWdtYXBfcmVhZCArIHJlZ21hcF93
-cml0ZS4KPiA+ID4gPiAKPiA+ID4gPiBUaGlzIFJGQyBzaGFsbCBvbmx5IHNob3cgaG93IHNvbHV0
-aW9uIDIpIHdvdWxkIGxvb2sgbGlrZS4gV2UgY2FuIHVzZSBpdCBhcwo+ID4gPiA+IGRpc2N1c3Np
-b24gdG8gc2VlIGhvdyB3ZSBjaXJjdW12ZW50IHRoZSBhY3R1YWwgc2l0dWF0aW9uLgo+ID4gPiAK
-PiA+ID4gT3Igd2UgY291bGQgbGVhdmUgdGhlIGJpbmRpbmdzIHVudG91Y2hlZCBhbmQgY3JlYXRl
-IG9uZSBwbGF0Zm9ybSBkZXZpY2UKPiA+ID4gZnJvbSB0aGUgb3RoZXIgb3IgZXZlbiBzZXQgdXAg
-dGhlIGNsb2NrcyBmcm9tIHRoZSBkcm0gZHJpdmVyPwo+ID4gCj4gPiBEb2VzIG1tc3lzIHByb3Zp
-ZGUgZmVhdHVyZXMgKHN1Y2ggYXMgY2xvY2tzKSB0byBub24tZGlzcGxheSBJUCBjb3JlcyA/Cj4g
-Cj4gVGhlIE1NU1lTIGNvbnRyb2wgYmxvY2sgcHJvdmlkZXMgY2xvY2tzIGZvciB0aGUgRElTUCAo
-ZGlzcGxheSBkYXRhIHBhdGgpCj4gYW5kIE1EUCAobXVsdGltZWRpYSBkYXRhIHBhdGgpIGJsb2Nr
-cywgYXMgd2VsbCBhcyB0aGUgcm91dGluZyBiZXR3ZWVuCj4gdGhlbSwgYnV0IG5vdCB0byBhbnl0
-aGluZyBvdXRzaWRlIG9mIHRoZSBNTVNZUyBzeXN0ZW0uCgpBY2NvcmRpbmcgdG8gcmVnaXN0ZXIg
-dGFibGUgb2YgbWVkaWF0ZWsgeDIwIG1tc3lzIFsxXSBhbmQgUGhpbGlwcCdzCnN0YXRlbWVudCwg
-SSB0aGluayBtbXN5cyBpcyBuZWl0aGVyIGNsb2NrLWNvbnRyb2xsZXIgbm9yIGRpc3BsYXkKY29u
-dHJvbGxlci4gSXQncyBhIGNvbWJpbmF0aW9uIG9mIG11bHRpcGxlIGZ1bmN0aW9uLiBUaGUgZm91
-ciBtYWpvcgpmdW5jdGlvbiBpcyBkaXNwbGF5J3MgY2xvY2stY29udHJvbCwgbWRwJ3MgY2xvY2st
-Y29udHJvbCwgZGlzcGxheSdzCnJvdXRpbmcsIGFuZCBtZHAncyByb3V0aW5nLiBTbyB3ZSBoYXZl
-IHR3byBjaG9pY2U6CgoxKSBDZW50cmFsaXplIHRoZXNlIG11bHRpcGxlIGZ1bmN0aW9uIGNvbnRy
-b2wgaW5zaWRlIG1tc3lzIGRldmljZTogVGhpcwptZWFucyB0aGVyZSBpcyBvbmx5IGEgbW1zeXMg
-ZGV2aWNlIHdoaWNoIGNvbnRhaW5zIGZ1bmN0aW9uIG9mCmNsb2NrLWNvbnRyb2wsIGRpc3BsYXks
-IGFuZCBtZHAuCgoyKSBTZXBhcmF0ZSB0aGVzZSBtdWx0aXBsZSBmdW5jdGlvbiB0byBkaWZmZXJl
-bnQgZGV2aWNlOiBtbXN5cyBpcyB0aGUKbWFqb3IgZGV2aWNlIHdoaWNoIG93bnMgdGhlIHJlZ2lz
-dGVyIHJlc291cmNlIGJ1dCBkb2VzIG5vdGhpbmcuIFRoZQpmdW5jdGlvbiBpcyBjb250cm9sbGVk
-IGJ5IHRocmVlIHZpcnR1YWwgZGV2aWNlOiBtbXN5cy1jbG9jay1jb250cm9sbGVyLApkaXNwbGF5
-LWNvbnRyb2xsZXIsIGFuZCBtZHAtY29udHJvbGxlci4KCkkgcHJlZmVyIDIpIGJlY2F1c2UgdGhl
-c2UgZnVuY3Rpb24gc2VlbXMgaW5kZXBlbmRlbnQuIAoKUmVnYXJkcywKQ0sKClsxXQpodHRwczov
-L3d3dy45NmJvYXJkcy5vcmcvZG9jdW1lbnRhdGlvbi9Db25zdW1lckVkaXRpb24vTWVkaWFUZWtY
-MjAvQWRkaXRpb25hbERvY3MvCgo+IAo+IHJlZ2FyZHMKPiBQaGlsaXBwCgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
-dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Rob & Ulf,
+
+Gentle ping...
+Any other comments about this series of patch ?
+On Mon, 2017-10-16 at 09:46 +0800, Chaotian Jing wrote:
+> Change the comptiable for support of multi-platform
+> Make compatible explicit, as MMC host of mt8173 has difference with
+> mt8135(mt8173 supports hs400 and hs400_tune),so that need separate
+> mt8173/mt8135 compatible name.
+> Add description for reg
+> Add description for source_cg
+> Add description for mediatek,latch-ck
+> Note that source_cg and mediatek,latch-ck are optional for some projects,
+> eg, MT2701 do not have source_cg, and MT2712 do not need
+> mediatek,latch-ck
+> 
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 18 +++++++++++++++---
+>  1 file changed, 15 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> index 4182ea3..72d2a73 100644
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> @@ -7,10 +7,18 @@ This file documents differences between the core properties in mmc.txt
+>  and the properties used by the msdc driver.
+>  
+>  Required properties:
+> -- compatible: Should be "mediatek,mt8173-mmc","mediatek,mt8135-mmc"
+> +- compatible: value should be either of the following.
+> +	"mediatek,mt8135-mmc": for mmc host ip compatible with mt8135
+> +	"mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
+> +	"mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
+> +	"mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
+> +- reg: physical base address of the controller and length
+>  - interrupts: Should contain MSDC interrupt number
+> -- clocks: MSDC source clock, HCLK
+> -- clock-names: "source", "hclk"
+> +- clocks: Should contain phandle for the clock feeding the MMC controller
+> +- clock-names: Should contain the following:
+> +	"source" - source clock (required)
+> +	"hclk" - HCLK which used for host (required)
+> +	"source_cg" - independent source clock gate (required for MT2712)
+>  - pinctrl-names: should be "default", "state_uhs"
+>  - pinctrl-0: should contain default/high speed pin ctrl
+>  - pinctrl-1: should contain uhs mode pin ctrl
+> @@ -30,6 +38,10 @@ Optional properties:
+>  - mediatek,hs400-cmd-resp-sel-rising:  HS400 command response sample selection
+>  				       If present,HS400 command responses are sampled on rising edges.
+>  				       If not present,HS400 command responses are sampled on falling edges.
+> +- mediatek,latch-ck: Some SoCs do not support enhance_rx, need set correct latch-ck to avoid data crc
+> +		     error caused by stop clock(fifo full)
+> +		     Valid range = [0:0x7]. if not present, default value is 0.
+> +		     applied to compatible "mediatek,mt2701-mmc".
+>  
+>  Examples:
+>  mmc0: mmc@11230000 {
+
+
