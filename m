@@ -1,94 +1,117 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [GIT PULL] Mediatek: soc driver updates for v4.15
-Date: Mon, 23 Oct 2017 00:12:33 +0200
-Message-ID: <73c28655-6ba7-682b-3b84-b058055ab539@gmail.com>
-References: <1ebc2f2d-033e-e8d6-86c8-32a67ebd55b7@gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [RFC resend] arm64: mt8173: Fix Acer Chromebooks mmsys probe
+ problem
+Date: Mon, 23 Oct 2017 09:42:58 +0800
+Message-ID: <1508722978.1108.16.camel@mtksdaap41>
+References: <20171019112610.13645-1-mbrugger@suse.com>
+ <1508418114.7665.16.camel@pengutronix.de> <1683149.BjzMD0lNNQ@avalon>
+ <1508424856.7665.22.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1ebc2f2d-033e-e8d6-86c8-32a67ebd55b7-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1508424856.7665.22.camel@pengutronix.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, catalin.marinas@arm.com, will.deacon@arm.com, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, ulrich.hecht+renesas@gmail.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-I forgot to add the mailing list in CC for the pull request below.
-
-Matthias
-
--------- Forwarded Message --------
-Subject: [GIT PULL] Mediatek: soc driver updates for v4.15
-Date: Mon, 23 Oct 2017 00:10:44 +0200
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-CC: chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Jean Delvare <jdelvare-l3A5Bk7waGM@public.gmane.org>, Sean Wang
-<sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Thomas Meyer <thomas-VsYtu1Qij5c@public.gmane.org>
-
-Hi Arnd and Olof,
-
-Please pull the following patches.
-
-Thanks a lot,
-Matthias
-
----
-The following changes since commit 2bd6bf03f4c1c59381d62c61d03f6cc3fe71f66e:
-
-  Linux 4.14-rc1 (2017-09-16 15:47:51 -0700)
-
-are available in the git repository at:
-
-  https://github.com/mbgg/linux-mediatek.git tags/v4.14-next-soc
-
-for you to fetch changes up to f32fbbadaf4470e8bac27f6d87bd27441df7167f:
-
-  soc: mediatek: pwrap: fix fatal compiler error (2017-10-21 10:23:28 +0200)
-
-----------------------------------------------------------------
-- add 32 bit read/write support to pwrap
-- add mt7622 support to pwrap
-- test build all mediatek soc drivers
-- fix compiler issues
-- clean up Kconfig description
-
-----------------------------------------------------------------
-Chenglin Xu (1):
-      soc: mediatek: pwrap: add support for MT7622 SoC
-
-Jean Delvare (1):
-      soc: Allow test-building of MediaTek drivers
-
-Matthias Brugger (2):
-      soc: mediatek: pwrap: fix compiler errors
-      soc: mediatek: pwrap: fix fatal compiler error
-
-Sean Wang (9):
-      soc: mediatek: pwrap: fixup warnings from coding style
-      dt-bindings: arm: mediatek: add MT7622 string to the PMIC wrapper doc
-      soc: mediatek: pwrap: add pwrap_read32 for reading in 32-bit mode
-      soc: mediatek: pwrap: add pwrap_write32 for writing in 32-bit mode
-      soc: mediatek: pwrap: refactor pwrap_init for the various PMIC types
-      soc: mediatek: pwrap: add MediaTek MT6380 as one slave of pwrap
-      soc: mediatek: pwrap: add common way for setup CS timing extenstion
-      soc: mediatek: place Kconfig for all SoC drivers under menu
-      arm64: mediatek: cleanup message for platform selection
-
-Thomas Meyer (1):
-      ARM: mediatek: Cocci spatch "of_table"
-
- .../devicetree/bindings/soc/mediatek/pwrap.txt     |   6 +-
- arch/arm/mach-mediatek/platsmp.c                   |   2 +
- arch/arm64/Kconfig.platforms                       |   5 +-
- drivers/soc/Makefile                               |   2 +-
- drivers/soc/mediatek/Kconfig                       |   8 +-
- drivers/soc/mediatek/mtk-pmic-wrap.c               | 511 +++++++++++++++++----
- 6 files changed, 447 insertions(+), 87 deletions(-)
+SGksCgpPbiBUaHUsIDIwMTctMTAtMTkgYXQgMTY6NTQgKzAyMDAsIFBoaWxpcHAgWmFiZWwgd3Jv
+dGU6Cj4gSGkgTGF1cmVudCwKPiAKPiBPbiBUaHUsIDIwMTctMTAtMTkgYXQgMTY6MzkgKzAzMDAs
+IExhdXJlbnQgUGluY2hhcnQgd3JvdGU6Cj4gPiBIaSBQaGlsaXBwLAo+ID4gCj4gPiBPbiBUaHVy
+c2RheSwgMTkgT2N0b2JlciAyMDE3IDE2OjAxOjU0IEVFU1QgUGhpbGlwcCBaYWJlbCB3cm90ZToK
+PiA+ID4gT24gVGh1LCAyMDE3LTEwLTE5IGF0IDEzOjI2ICswMjAwLCBNYXR0aGlhcyBCcnVnZ2Vy
+IHdyb3RlOgo+ID4gPiA+IEluIHRoZW9yeSB0aGUgTU1TWVMgZGV2aWNlIHRyZWUgaWRlbnRpZmll
+ciBpcyBtYXRjaGVzIHR3aWNlLCBieSB0aGUgY2xrCj4gPiA+ID4gZHJpdmVyIGFuZCB0aGUgRFJN
+IHN1YnN5c3RlbS4gQnV0IHRoZSBrZXJuZWwgb25seSBtYXRjaGVzIHRoZSBmaXJzdAo+ID4gPiA+
+IGRyaXZlciBmb3IgYSBkZXZpY2UgKGNsaykgYW5kIGRpc2NhcmRzIHRoZSBzZWNvbmQgb25lLiBU
+aGlzIGJyZWFrcwo+ID4gPiA+IGdyYXBoaWNzIG9uIG10ODE3MyBhbmQgbW9zdCBwcm9iYWJseSBv
+biBtdDI3MDEgYXMgd2VsbC4KPiA+ID4gPiAKPiA+ID4gPiBNTVNZUyBpbiBNZWRpYXRlayBTb0Nz
+IGhhcyBzb21lIHJlZ2lzdGVycyB0byBjb250cm9sIGNsb2NrIGdhdGVzICh3aGljaCBpcwo+ID4g
+PiA+IHVzZWQgaW4gdGhlIGNsayBkcml2ZXIpIGFuZCBzb21lIHJlZ2lzdGVycyB0byBlbmFibGUg
+dGhlIGRpZmZlcm5ldCBibG9ja3MKPiA+ID4gPiBvZiB0aGUgZGlzcGxheSBzdWJzeXN0ZW0uIFRo
+ZSBrZXJuZWwgdXNlcyB0aGUgYmluZGluZyB0byBsb2FkIHRoZSBjZW50cmFsCj4gPiA+ID4gY29t
+b3BvbmVudCBvZiB0aGUgZGlzdHBsYXkgc3Vic3lzdGVtLCB3aGljaCBpbiBwbGFjZSBwcm9iZXMg
+YWxsIHRoZSBvdGhlcgo+ID4gPiA+IGNvbXBvbmVudHMgYW5kIGVuYWJsZXMgdGhlIHByZXNlbnQg
+b25lcyBpbiB0aGUgTU1TWVMuCj4gPiA+ID4gCj4gPiA+ID4gV2UgZm91bmQgdXMgd2l0aCB0aGUg
+cHJvYmxlbSwgdGhhdCB3ZSBuZWVkIHRvIGNoYW5nZSBhbmQgdGhlcmVmb3IgYnJlYWsKPiA+ID4g
+PiBvbmUKPiA+ID4gPiBvZiB0aGUgdHdvIGJpbmRpbmdzLCBvciB0aGUgRFJNIG9uZSBvciB0aGUg
+Y2xvY2sgZHJpdmVyIG9uZS4KPiA+ID4gPiAKPiA+ID4gPiBBcGFydCBmcm9tIHRoYXQgdGhlIERS
+TSBzdWJ5c3lzdGVtIGRvZXMgYWNjZXNzIHRoZSBNTVNZUyByZWdpc3RlcnMgdmlhCj4gPiA+ID4g
+cmVsYXhlZCByZWFkcy93cml0ZXMuIEJ1dCB0aGUgaXQgc2hvdWxkIHRvIHNvIHZpYSByZWdtYXAs
+IGFzIHRoZQo+ID4gPiA+IHJlZ2lzdGVycyBhcmUgc2hhcmVkLgo+ID4gPiA+IAo+ID4gPiA+IFBv
+c3NpYmxlIHNvbHV0aW9uczoKPiA+ID4gPiAxKSBXZSBhZGQgYSBuZXcgbWVkaWF0ZWssbXQ4MTcz
+LW1tc3lzLWNsayBub2RlLCB3aGljaCBsaXZlcyBhcyBhCj4gPiA+ID4gc2ltcGxlLW1mZCB1bmRl
+ciB0aGUgYWN0dWFsIG1tc3lzIG5vZGUuIFdlIGNoYW5nZSB0aGUgY2xvY2sgZHJpdmVyIHRvCj4g
+PiA+ID4gcHJvYmUgb24gdGhpcyBiaW5kaW5nLiBUaGlzIHdvdWxkIG1ha2Ugc2Vuc2UgYXMgdGhl
+IGNsb2NrIGdhdGUgcmVnaXN0ZXIKPiA+ID4gPiBsaXZlIGNvbXBsZXRseSBpbiB0aGUgTU1TWVMg
+Y29uZmlndXJhdGlvbiByZWdpc3RlcnMuCj4gPiA+IAo+ID4gPiBUaGUgcmVhc29uIHdoeSB0aGUg
+ZHJtIGRyaXZlciBtYXRjaGVzIGFnYWluc3QgdGhlIG1tc3lzIG5vZGUgaW4gdGhlCj4gPiA+IGZp
+cnN0IHBsYWNlIGlzIHRoYXQgd2Ugd2FudGVkIHRvIGF2b2lkIDIpLgo+ID4gCj4gPiBXaHkgZGlk
+IHlvdSB3YW50IHRvIGF2b2lkIDIpID8KPiAKPiBCZWNhdXNlIHRoZSAiZGlzcGxheS1zdWJzeXN0
+ZW0iIG5vZGUgZG9lcyBub3QgcmVwcmVzZW50IGEgcmVhbCBkZXZpY2UsCj4gaXQncyBqdXN0IHRo
+ZXJlIHRvIHByb2JlIHRoZSBkcml2ZXIgdGhhdCBzdGl0Y2hlcyBhbGwgdGhlIERJU1AKPiBjb21w
+b25lbnRzIHRvZ2V0aGVyLgo+IAo+ID4gPiBBbHNvLCBtbXN5cyBpcyBub3QgYSBwdXJlIGNsb2Nr
+IGNvbnRyb2xsZXIsIGFzIGl0IGFsc28gY29udGFpbnMgdGhlCj4gPiA+IGRpc3BsYXkgcGF0aCBj
+b25maWd1cmF0aW9uIGluIGl0cyByZWdpc3RlciBzcGFjZS4KPiA+IAo+ID4gV2hpY2ggbWFrZXMg
+dGhlIG1tc3lzIHJlbGF0ZWQgdG8gZGlzcGxheSwgYnV0IG1vcmUgaW4gYSBzeXNjb24gKGNvbWJp
+bmluZyAKPiA+IGNsb2NrcyBhbmQgcm91dGluZywgYW5kIEkgYXNzdW1lIG90aGVyIG1pc2NlbGxh
+bmVvdXMgZmVhdHVyZXMgdGhhdCB3b3VsZG4ndCAKPiA+IGZpdCBuaWNlbHkgaW4gdGhlIG90aGVy
+IGRpc3BsYXktcmVsYXRlZCBJUCBjb3Jlcykgd2F5IHRoYW4gYWN0dWFsbHkgYmVpbmcgcGFydCAK
+PiA+IG9mIHRoZSBkaXNwbGF5IHN1YnN5c3RlbS4gT3IgZG9lcyBtbXN5cyBvbmx5IHByb3ZpZGUg
+ZGlzcGxheS1yZWxhdGVkIGZlYXR1cmVzIAo+ID4gPwo+IAo+IEFsbCBkZXZpY2VzIGluIHRoZSAw
+eDE0MDAwMDAwIC0gMHgxNGZmZmZmZiBtZW1vcnkgcmFuZ2UgYXJlIHBhcnQgb2YgdGhlCj4gTU1T
+WVMgc3lzdGVtLiBUaGF0IGluY2x1ZGVzIHRoZSBNTVNZUyBjb250cm9sIG9yIHN5c3RlbSBjb25m
+aWd1cmF0aW9uCj4gYmxvY2sgYXQgMHgxNDAwMDAwMCAtIDB4MTQwMDBmZmYgYXMgd2VsbCBhcyBh
+bGwgdGhlIHJlbGF0ZWQgTURQIChtZWRpYQo+IGRhdGEgcGF0aCkgYW5kIERJU1AgKGRpc3BsYXkg
+ZGF0YSBwYXRoKSBibG9ja3MgdGhhdCBmb2xsb3cuIFRoZSBESVNQCj4gYmxvY2tzIGFyZSBwdXJl
+bHkgZGlzcGxheSByZWxhdGVkLCB3aGlsZSB0aGUgTURQIGJsb2NrcyBpbXBsZW1lbnQKPiBpbXBs
+ZW1lbnQgbWVtMm1lbSBmdW5jdGlvbnMgbGlrZSBzY2FsaW5nIGFuZCBjb252ZXJzaW9uLgo+IAo+
+ID4gPiA+IDIpIEFzIHRoZSBub2RlcyBvZiB0aGUgRFJNIHN1YnN5c3RlbSBqdXN0IG5lZWQgc29t
+ZSBvZiB0aGUgcmVnaXN0ZXJzIG9mCj4gPiA+ID4gTU1TWVMgd2UgYWRkIGEgbmV3IGJpbmRpbmcg
+bWVkaWF0ZWssbXQ4MTczLWRpc3BzeXMgd2hpY2ggcHJvYmVzIHRoZQo+ID4gPiA+IGNlbnRyYWwg
+Y29tcG9uZW50IG9mIHRoZSBEUk0gc3lzdGVtLiBJdCBoYXMgb25seSBhIGhhbmRsZSB0byBtdDgx
+NzMtbW1zeXMKPiA+ID4gPiB0byBhY2Nlc3MgdGhlIHJlZ2lzdGVyc3BhY2UgdmlhIHJlZ21hcCBm
+dW5jdGlvbnMuCj4gPiA+ID4gCj4gPiA+ID4gSW4gdGhpcyBwYXRjaHNldCBJIGltcGxlbWVudGVk
+IDIpLiBQbGVhc2UgdGFrZSBpbnRvIGFjY291bnQsIHRoYXQgdGhpcyBpcwo+ID4gPiA+IGEgUkZD
+LiBJIGhhZCBubyB0aW1lIHRvIGFjdHVhbGx5IHRlc3QgdGhlIHZlcmlzb24gb24gcmVhbCBIVy4g
+U29tZSBvZiB0aGUKPiA+ID4gPiByZWdpc3RlciBhY2Nlc3NlcyBzaG91bGQgYmUgZG9uZSB1c2lu
+ZyByZWdtYXBfdXBkYXRlIGluc3RlYWQgb2YKPiA+ID4gPiByZWdtYXBfcmVhZCArIHJlZ21hcF93
+cml0ZS4KPiA+ID4gPiAKPiA+ID4gPiBUaGlzIFJGQyBzaGFsbCBvbmx5IHNob3cgaG93IHNvbHV0
+aW9uIDIpIHdvdWxkIGxvb2sgbGlrZS4gV2UgY2FuIHVzZSBpdCBhcwo+ID4gPiA+IGRpc2N1c3Np
+b24gdG8gc2VlIGhvdyB3ZSBjaXJjdW12ZW50IHRoZSBhY3R1YWwgc2l0dWF0aW9uLgo+ID4gPiAK
+PiA+ID4gT3Igd2UgY291bGQgbGVhdmUgdGhlIGJpbmRpbmdzIHVudG91Y2hlZCBhbmQgY3JlYXRl
+IG9uZSBwbGF0Zm9ybSBkZXZpY2UKPiA+ID4gZnJvbSB0aGUgb3RoZXIgb3IgZXZlbiBzZXQgdXAg
+dGhlIGNsb2NrcyBmcm9tIHRoZSBkcm0gZHJpdmVyPwo+ID4gCj4gPiBEb2VzIG1tc3lzIHByb3Zp
+ZGUgZmVhdHVyZXMgKHN1Y2ggYXMgY2xvY2tzKSB0byBub24tZGlzcGxheSBJUCBjb3JlcyA/Cj4g
+Cj4gVGhlIE1NU1lTIGNvbnRyb2wgYmxvY2sgcHJvdmlkZXMgY2xvY2tzIGZvciB0aGUgRElTUCAo
+ZGlzcGxheSBkYXRhIHBhdGgpCj4gYW5kIE1EUCAobXVsdGltZWRpYSBkYXRhIHBhdGgpIGJsb2Nr
+cywgYXMgd2VsbCBhcyB0aGUgcm91dGluZyBiZXR3ZWVuCj4gdGhlbSwgYnV0IG5vdCB0byBhbnl0
+aGluZyBvdXRzaWRlIG9mIHRoZSBNTVNZUyBzeXN0ZW0uCgpBY2NvcmRpbmcgdG8gcmVnaXN0ZXIg
+dGFibGUgb2YgbWVkaWF0ZWsgeDIwIG1tc3lzIFsxXSBhbmQgUGhpbGlwcCdzCnN0YXRlbWVudCwg
+SSB0aGluayBtbXN5cyBpcyBuZWl0aGVyIGNsb2NrLWNvbnRyb2xsZXIgbm9yIGRpc3BsYXkKY29u
+dHJvbGxlci4gSXQncyBhIGNvbWJpbmF0aW9uIG9mIG11bHRpcGxlIGZ1bmN0aW9uLiBUaGUgZm91
+ciBtYWpvcgpmdW5jdGlvbiBpcyBkaXNwbGF5J3MgY2xvY2stY29udHJvbCwgbWRwJ3MgY2xvY2st
+Y29udHJvbCwgZGlzcGxheSdzCnJvdXRpbmcsIGFuZCBtZHAncyByb3V0aW5nLiBTbyB3ZSBoYXZl
+IHR3byBjaG9pY2U6CgoxKSBDZW50cmFsaXplIHRoZXNlIG11bHRpcGxlIGZ1bmN0aW9uIGNvbnRy
+b2wgaW5zaWRlIG1tc3lzIGRldmljZTogVGhpcwptZWFucyB0aGVyZSBpcyBvbmx5IGEgbW1zeXMg
+ZGV2aWNlIHdoaWNoIGNvbnRhaW5zIGZ1bmN0aW9uIG9mCmNsb2NrLWNvbnRyb2wsIGRpc3BsYXks
+IGFuZCBtZHAuCgoyKSBTZXBhcmF0ZSB0aGVzZSBtdWx0aXBsZSBmdW5jdGlvbiB0byBkaWZmZXJl
+bnQgZGV2aWNlOiBtbXN5cyBpcyB0aGUKbWFqb3IgZGV2aWNlIHdoaWNoIG93bnMgdGhlIHJlZ2lz
+dGVyIHJlc291cmNlIGJ1dCBkb2VzIG5vdGhpbmcuIFRoZQpmdW5jdGlvbiBpcyBjb250cm9sbGVk
+IGJ5IHRocmVlIHZpcnR1YWwgZGV2aWNlOiBtbXN5cy1jbG9jay1jb250cm9sbGVyLApkaXNwbGF5
+LWNvbnRyb2xsZXIsIGFuZCBtZHAtY29udHJvbGxlci4KCkkgcHJlZmVyIDIpIGJlY2F1c2UgdGhl
+c2UgZnVuY3Rpb24gc2VlbXMgaW5kZXBlbmRlbnQuIAoKUmVnYXJkcywKQ0sKClsxXQpodHRwczov
+L3d3dy45NmJvYXJkcy5vcmcvZG9jdW1lbnRhdGlvbi9Db25zdW1lckVkaXRpb24vTWVkaWFUZWtY
+MjAvQWRkaXRpb25hbERvY3MvCgo+IAo+IHJlZ2FyZHMKPiBQaGlsaXBwCgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
+dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
