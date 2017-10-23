@@ -1,151 +1,38 @@
-From: Zhi Mao <zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v5 1/1] pwm: mediatek: add MT2712/MT7622 support
-Date: Mon, 23 Oct 2017 19:57:08 +0800
-Message-ID: <1508759828-22974-1-git-send-email-zhi.mao@mediatek.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v6 01/12] mmc: dt-bindings: Add reg/source_cg/latch-ck
+ for Mediatek MMC bindings
+Date: Mon, 23 Oct 2017 17:36:12 -0500
+Message-ID: <20171023223612.uzl52ux26nuujkt3@rob-hp-laptop>
+References: <1508118399-21828-1-git-send-email-chaotian.jing@mediatek.com>
+ <1508118399-21828-2-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1508118399-21828-2-git-send-email-chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, zhenbao.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+To: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, yong mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiner Kallweit <hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Phong LE <ple-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add support to MT2712 and MT7622.
-Due to register offset address of pwm7 for MT2712 is not fixed 0x40,
-add mtk_pwm_reg_offset array for pwm register offset.
-Add NULL pointer checking for "pc->data".
+On Mon, Oct 16, 2017 at 09:46:28AM +0800, Chaotian Jing wrote:
+> Change the comptiable for support of multi-platform
+> Make compatible explicit, as MMC host of mt8173 has difference with
+> mt8135(mt8173 supports hs400 and hs400_tune),so that need separate
+> mt8173/mt8135 compatible name.
+> Add description for reg
+> Add description for source_cg
+> Add description for mediatek,latch-ck
+> Note that source_cg and mediatek,latch-ck are optional for some projects,
+> eg, MT2701 do not have source_cg, and MT2712 do not need
+> mediatek,latch-ck
+> 
+> Signed-off-by: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 18 +++++++++++++++---
+>  1 file changed, 15 insertions(+), 3 deletions(-)
 
-Signed-off-by: Zhi Mao <zhi.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/pwm/pwm-mediatek.c |   53 ++++++++++++++++++++++++++++++++++++--------
- 1 file changed, 44 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-index 1d78ab1..867cc74 100644
---- a/drivers/pwm/pwm-mediatek.c
-+++ b/drivers/pwm/pwm-mediatek.c
-@@ -16,6 +16,7 @@
- #include <linux/module.h>
- #include <linux/clk.h>
- #include <linux/of.h>
-+#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/pwm.h>
- #include <linux/slab.h>
-@@ -40,11 +41,19 @@ enum {
- 	MTK_CLK_PWM3,
- 	MTK_CLK_PWM4,
- 	MTK_CLK_PWM5,
-+	MTK_CLK_PWM6,
-+	MTK_CLK_PWM7,
-+	MTK_CLK_PWM8,
- 	MTK_CLK_MAX,
- };
- 
--static const char * const mtk_pwm_clk_name[] = {
--	"main", "top", "pwm1", "pwm2", "pwm3", "pwm4", "pwm5"
-+static const char * const mtk_pwm_clk_name[MTK_CLK_MAX] = {
-+	"main", "top", "pwm1", "pwm2", "pwm3", "pwm4", "pwm5", "pwm6", "pwm7",
-+	"pwm8"
-+};
-+
-+struct mtk_pwm_platform_data {
-+	unsigned int num_pwms;
- };
- 
- /**
-@@ -57,6 +66,11 @@ struct mtk_pwm_chip {
- 	struct pwm_chip chip;
- 	void __iomem *regs;
- 	struct clk *clks[MTK_CLK_MAX];
-+	const struct mtk_pwm_platform_data *data;
-+};
-+
-+static const unsigned int mtk_pwm_reg_offset[] = {
-+	0x0010, 0x0050, 0x0090, 0x00d0, 0x0110, 0x0150, 0x0190, 0x0220
- };
- 
- static inline struct mtk_pwm_chip *to_mtk_pwm_chip(struct pwm_chip *chip)
-@@ -103,14 +117,14 @@ static void mtk_pwm_clk_disable(struct pwm_chip *chip, struct pwm_device *pwm)
- static inline u32 mtk_pwm_readl(struct mtk_pwm_chip *chip, unsigned int num,
- 				unsigned int offset)
- {
--	return readl(chip->regs + 0x10 + (num * 0x40) + offset);
-+	return readl(chip->regs + mtk_pwm_reg_offset[num] + offset);
- }
- 
- static inline void mtk_pwm_writel(struct mtk_pwm_chip *chip,
- 				  unsigned int num, unsigned int offset,
- 				  u32 value)
- {
--	writel(value, chip->regs + 0x10 + (num * 0x40) + offset);
-+	writel(value, chip->regs + mtk_pwm_reg_offset[num] + offset);
- }
- 
- static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
-@@ -194,15 +208,22 @@ static int mtk_pwm_probe(struct platform_device *pdev)
- 	if (!pc)
- 		return -ENOMEM;
- 
-+	pc->data = of_device_get_match_data(&pdev->dev);
-+	if (pc->data == NULL)
-+		return -EINVAL;
-+
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	pc->regs = devm_ioremap_resource(&pdev->dev, res);
- 	if (IS_ERR(pc->regs))
- 		return PTR_ERR(pc->regs);
- 
--	for (i = 0; i < MTK_CLK_MAX; i++) {
-+	for (i = 0; i < pc->data->num_pwms + 2; i++) {
- 		pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
--		if (IS_ERR(pc->clks[i]))
-+		if (IS_ERR(pc->clks[i])) {
-+			dev_err(&pdev->dev, "clock: %s fail: %ld\n",
-+				mtk_pwm_clk_name[i], PTR_ERR(pc->clks[i]));
- 			return PTR_ERR(pc->clks[i]);
-+		}
- 	}
- 
- 	platform_set_drvdata(pdev, pc);
-@@ -210,7 +231,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
- 	pc->chip.dev = &pdev->dev;
- 	pc->chip.ops = &mtk_pwm_ops;
- 	pc->chip.base = -1;
--	pc->chip.npwm = 5;
-+	pc->chip.npwm = pc->data->num_pwms;
- 
- 	ret = pwmchip_add(&pc->chip);
- 	if (ret < 0) {
-@@ -228,9 +249,23 @@ static int mtk_pwm_remove(struct platform_device *pdev)
- 	return pwmchip_remove(&pc->chip);
- }
- 
-+static const struct mtk_pwm_platform_data mt2712_pwm_data = {
-+	.num_pwms = 8,
-+};
-+
-+static const struct mtk_pwm_platform_data mt7622_pwm_data = {
-+	.num_pwms = 6,
-+};
-+
-+static const struct mtk_pwm_platform_data mt7623_pwm_data = {
-+	.num_pwms = 5,
-+};
-+
- static const struct of_device_id mtk_pwm_of_match[] = {
--	{ .compatible = "mediatek,mt7623-pwm" },
--	{ }
-+	{ .compatible = "mediatek,mt2712-pwm", .data = &mt2712_pwm_data },
-+	{ .compatible = "mediatek,mt7622-pwm", .data = &mt7622_pwm_data },
-+	{ .compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data },
-+	{ },
- };
- MODULE_DEVICE_TABLE(of, mtk_pwm_of_match);
- 
--- 
-1.7.9.5
-
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
