@@ -1,124 +1,186 @@
-From: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
-Subject: Re: [RFC resend] arm64: mt8173: Fix Acer Chromebooks mmsys probe problem
-Date: Mon, 23 Oct 2017 13:23:27 +0300
-Message-ID: <1696751.sPjEUm9ynR@avalon>
-References: <20171019112610.13645-1-mbrugger@suse.com> <1683149.BjzMD0lNNQ@avalon> <1508424856.7665.22.camel@pengutronix.de>
+From: Zhi Mao <zhi.mao@mediatek.com>
+Subject: Re: [PATCH v4 1/1] pwm: mediatek: add MT2712/MT7622 support
+Date: Mon, 23 Oct 2017 19:13:00 +0800
+Message-ID: <1508757180.12324.12.camel@mhfsdcap03>
+References: <1503367755-6519-1-git-send-email-zhi.mao@mediatek.com>
+         <1503367755-6519-2-git-send-email-zhi.mao@mediatek.com>
+         <78c6789f-6f9c-f075-b773-dcf90c2a42da@microchip.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1508424856.7665.22.camel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <78c6789f-6f9c-f075-b773-dcf90c2a42da@microchip.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: m18063 <Claudiu.Beznea@microchip.com>
+Cc: "john@phrozen.org" <john@phrozen.org>, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-pwm@vger.kernel.org" <linux-pwm@vger.kernel.org>, "zhenbao.liu@mediatek.com" <zhenbao.liu@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "srv_heupstream@mediatek.com" <srv_heupstream@mediatek.com>, "sean.wang@mediatek.com" <sean.wang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "yt.shen@mediatek.com" <yt.shen@mediatek.com>, "yingjoe.chen@mediatek.com" <yingjoe.chen@mediatek.com>"linux-arm-kernel@lists.infradead.org" <linux>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Philipp,
+Hi Claudiu
 
-On Thursday, 19 October 2017 17:54:16 EEST Philipp Zabel wrote:
-> On Thu, 2017-10-19 at 16:39 +0300, Laurent Pinchart wrote:
-> > On Thursday, 19 October 2017 16:01:54 EEST Philipp Zabel wrote:
-> >> On Thu, 2017-10-19 at 13:26 +0200, Matthias Brugger wrote:
-> >>> In theory the MMSYS device tree identifier is matches twice, by the
-> >>> clk driver and the DRM subsystem. But the kernel only matches the
-> >>> first driver for a device (clk) and discards the second one. This
-> >>> breaks graphics on mt8173 and most probably on mt2701 as well.
-> >>> 
-> >>> MMSYS in Mediatek SoCs has some registers to control clock gates
-> >>> (which is used in the clk driver) and some registers to enable the
-> >>> differnet blocks of the display subsystem. The kernel uses the binding
-> >>> to load the central comoponent of the distplay subsystem, which in
-> >>> place probes all the other components and enables the present ones in
-> >>> the MMSYS.
-> >>> 
-> >>> We found us with the problem, that we need to change and therefor
-> >>> break one of the two bindings, or the DRM one or the clock driver one.
-> >>> 
-> >>> Apart from that the DRM subysystem does access the MMSYS registers via
-> >>> relaxed reads/writes. But the it should to so via regmap, as the
-> >>> registers are shared.
-> >>> 
-> >>> Possible solutions:
-> >>> 1) We add a new mediatek,mt8173-mmsys-clk node, which lives as a
-> >>> simple-mfd under the actual mmsys node. We change the clock driver to
-> >>> probe on this binding. This would make sense as the clock gate
-> >>> register live completly in the MMSYS configuration registers.
-> >> 
-> >> The reason why the drm driver matches against the mmsys node in the
-> >> first place is that we wanted to avoid 2).
-> > 
-> > Why did you want to avoid 2) ?
+please check the comments as below.
+
+Regards
+Zhi
+
+On Mon, 2017-10-23 at 11:22 +0300, m18063 wrote:
+> Hi Zhi,
 > 
-> Because the "display-subsystem" node does not represent a real device,
-> it's just there to probe the driver that stitches all the DISP components
-> together.
-
-I'm not a big supported of such DT nodes for "logical" devices either. When 
-possible I prefer describing the relationship between display IP cores using 
-OF graph DT bindings.
-
-In some cases (and I don't know if the Mediatek display is one of them) there 
-is no single IP core that can be considered as a master from a display point 
-of view. This is inconvenient for device drivers as there's no clear place for 
-an entry point. I could thus be convinced to accept DT bindings for a logical 
-display DT node when there's really no other good choice.
-
-> >> Also, mmsys is not a pure clock controller, as it also contains the
-> >> display path configuration in its register space.
-> > 
-> > Which makes the mmsys related to display, but more in a syscon (combining
-> > clocks and routing, and I assume other miscellaneous features that
-> > wouldn't fit nicely in the other display-related IP cores) way than
-> > actually being part of the display subsystem. Or does mmsys only provide
-> > display-related features ?
+> I have few comments regarding your patch. Please see them below.
 > 
-> All devices in the 0x14000000 - 0x14ffffff memory range are part of the
-> MMSYS system. That includes the MMSYS control or system configuration
-> block at 0x14000000 - 0x14000fff as well as all the related MDP (media
-> data path) and DISP (display data path) blocks that follow. The DISP
-> blocks are purely display related, while the MDP blocks implement
-> implement mem2mem functions like scaling and conversion.
-
-Without more information about the hardware it's hard to tell whether the DT 
-nodes for the DISP and MDP IP cores should be children of the MMSYS DT node or 
-not. In any case, it looks like the MMSYS is a syscon that provides 
-miscellaneous functions not fitting anywhere else.
-
-On simple solution, which shouldn't require DT changes, would be to merge the 
-MMSYS clock driver into the mediatek DRM driver, and register the MMSYS clocks 
-at probe time instead of using CLK_OF_DECLARE.
-
-Another option would be to handle MMSYS as an MFD. That shouldn't require DT 
-changes either.
-
-> >>> 2) As the nodes of the DRM subsystem just need some of the registers
-> >>> of MMSYS we add a new binding mediatek,mt8173-dispsys which probes the
-> >>> central component of the DRM system. It has only a handle to mt8173-
-> >>> mmsys to access the registerspace via regmap functions.
-> >>> 
-> >>> In this patchset I implemented 2). Please take into account, that this
-> >>> is a RFC. I had no time to actually test the verison on real HW. Some
-> >>> of the register accesses should be done using regmap_update instead of
-> >>> regmap_read + regmap_write.
-> >>> 
-> >>> This RFC shall only show how solution 2) would look like. We can use
-> >>> it as discussion to see how we circumvent the actual situation.
-> >> 
-> >> Or we could leave the bindings untouched and create one platform device
-> >> from the other or even set up the clocks from the drm driver?
-> > 
-> > Does mmsys provide features (such as clocks) to non-display IP cores ?
+> Thanks,
+> Claudiu
 > 
-> The MMSYS control block provides clocks for the DISP (display data path)
-> and MDP (multimedia data path) blocks, as well as the routing between
-> them, but not to anything outside of the MMSYS system.
+> On 22.08.2017 05:09, Zhi Mao wrote:
+> > Add support to MT2712 and MT7622.
+> > Due to register offset address of pwm7 for MT2712 is not fixed 0x40,
+> > add mtk_pwm_reg_offset array for pwm register offset.
+> > 
+> > Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+> > ---
+> >  drivers/pwm/pwm-mediatek.c |   51 ++++++++++++++++++++++++++++++++++++--------
+> >  1 file changed, 42 insertions(+), 9 deletions(-)
+> > 
+> > diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+> > index 1d78ab1..ccd86e7 100644
+> > --- a/drivers/pwm/pwm-mediatek.c
+> > +++ b/drivers/pwm/pwm-mediatek.c
+> > @@ -16,6 +16,7 @@
+> >  #include <linux/module.h>
+> >  #include <linux/clk.h>
+> >  #include <linux/of.h>
+> > +#include <linux/of_device.h>
+> >  #include <linux/platform_device.h>
+> >  #include <linux/pwm.h>
+> >  #include <linux/slab.h>
+> > @@ -40,11 +41,19 @@ enum {
+> >  	MTK_CLK_PWM3,
+> >  	MTK_CLK_PWM4,
+> >  	MTK_CLK_PWM5,
+> > +	MTK_CLK_PWM6,
+> > +	MTK_CLK_PWM7,
+> > +	MTK_CLK_PWM8,
+> >  	MTK_CLK_MAX,
+> >  };
+> >  
+> > -static const char * const mtk_pwm_clk_name[] = {
+> > -	"main", "top", "pwm1", "pwm2", "pwm3", "pwm4", "pwm5"
+> > +static const char * const mtk_pwm_clk_name[MTK_CLK_MAX] = {
+> > +	"main", "top", "pwm1", "pwm2", "pwm3", "pwm4", "pwm5", "pwm6", "pwm7",
+> > +	"pwm8"
+> > +};
+> > +
+> > +struct mtk_pwm_platform_data {
+> > +	unsigned int num_pwms;
+> >  };
+> >  
+> >  /**
+> > @@ -57,6 +66,11 @@ struct mtk_pwm_chip {
+> >  	struct pwm_chip chip;
+> >  	void __iomem *regs;
+> >  	struct clk *clks[MTK_CLK_MAX];
+> > +	const struct mtk_pwm_platform_data *data;
+> I think you can remove this member since you only use it to initialize chip.npwm,
+> in probe function, just before platform_set_drvdata().
+> 
+> 	pc->chip.npwm = pc->data->pwm_nums;
+> 
+> 	platform_set_drvdata(pdev, pc);
+Here, the member of "mtk_pwm_platform_data" is an extension interface of
+pwm information for MTK SOC chips. At present, we use it to initialize
+npwms, and maybe we will have more informations to use, in later. 
+so, we want to keep it and make the interface more flexible. 
 
--- 
-Regards,
+> > +};
+> > +
+> > +static const unsigned int mtk_pwm_reg_offset[] = {
+> > +	0x0010, 0x0050, 0x0090, 0x00d0, 0x0110, 0x0150, 0x0190, 0x0220
+> >  };
+> >  
+> >  static inline struct mtk_pwm_chip *to_mtk_pwm_chip(struct pwm_chip *chip)
+> > @@ -103,14 +117,14 @@ static void mtk_pwm_clk_disable(struct pwm_chip *chip, struct pwm_device *pwm)
+> >  static inline u32 mtk_pwm_readl(struct mtk_pwm_chip *chip, unsigned int num,
+> >  				unsigned int offset)
+> >  {
+> > -	return readl(chip->regs + 0x10 + (num * 0x40) + offset);
+> > +	return readl(chip->regs + mtk_pwm_reg_offset[num] + offset);
+> >  }
+> >  
+> >  static inline void mtk_pwm_writel(struct mtk_pwm_chip *chip,
+> >  				  unsigned int num, unsigned int offset,
+> >  				  u32 value)
+> >  {
+> > -	writel(value, chip->regs + 0x10 + (num * 0x40) + offset);
+> > +	writel(value, chip->regs + mtk_pwm_reg_offset[num] + offset);
+> >  }
+> >  
+> >  static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+> > @@ -194,15 +208,20 @@ static int mtk_pwm_probe(struct platform_device *pdev)
+> >  	if (!pc)
+> >  		return -ENOMEM;
+> >  
+> > +	pc->data = of_device_get_match_data(&pdev->dev);
+> You forgot to check pc->data == NULL (in case device tree inputs are not provided)
+> and you may use here a stack allocated variable to store the number of PWMs returned
+> by of_device_get_match_data(). This is used only for pc->chip.npwm, and anyway, if
+> any, you could get that information from chip.npwm.
+> You could also check here the number of PWMs returned via of_device_get_match_data()
+> to avoid waiting for pwmchip_add() to fail (e.g. if number of PWMs is zero, the
+> pwmchip_add() will fail).
+> 
+Here, I will add the NULL pointer checking for "pc->data", and it will
+be released, soon.
 
-Laurent Pinchart
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > +
+> >  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> >  	pc->regs = devm_ioremap_resource(&pdev->dev, res);
+> >  	if (IS_ERR(pc->regs))
+> >  		return PTR_ERR(pc->regs);
+> >  
+> > -	for (i = 0; i < MTK_CLK_MAX; i++) {
+> > +	for (i = 0; i < pc->data->num_pwms + 2; i++) {
+> >  		pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
+> > -		if (IS_ERR(pc->clks[i]))
+> > +		if (IS_ERR(pc->clks[i])) {
+> > +			dev_err(&pdev->dev, "clock: %s fail: %ld\n",
+> > +				mtk_pwm_clk_name[i], PTR_ERR(pc->clks[i]));
+> >  			return PTR_ERR(pc->clks[i]);
+> > +		}
+> >  	}
+> >  
+> >  	platform_set_drvdata(pdev, pc);
+> > @@ -210,7 +229,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
+> >  	pc->chip.dev = &pdev->dev;
+> >  	pc->chip.ops = &mtk_pwm_ops;
+> >  	pc->chip.base = -1;
+> > -	pc->chip.npwm = 5;
+> > +	pc->chip.npwm = pc->data->num_pwms;
+> >  
+> >  	ret = pwmchip_add(&pc->chip);
+> >  	if (ret < 0) {
+> > @@ -228,9 +247,23 @@ static int mtk_pwm_remove(struct platform_device *pdev)
+> >  	return pwmchip_remove(&pc->chip);
+> >  }
+> >  
+> > +static const struct mtk_pwm_platform_data mt2712_pwm_data = {
+> > +	.num_pwms = 8,
+> > +};
+> > +
+> > +static const struct mtk_pwm_platform_data mt7622_pwm_data = {
+> > +	.num_pwms = 6,
+> > +};
+> > +
+> > +static const struct mtk_pwm_platform_data mt7623_pwm_data = {
+> > +	.num_pwms = 5,
+> > +};
+> > +
+> >  static const struct of_device_id mtk_pwm_of_match[] = {
+> > -	{ .compatible = "mediatek,mt7623-pwm" },
+> > -	{ }
+> > +	{ .compatible = "mediatek,mt2712-pwm", .data = &mt2712_pwm_data },
+> > +	{ .compatible = "mediatek,mt7622-pwm", .data = &mt7622_pwm_data },
+> > +	{ .compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data },
+> > +	{ },
+> >  };
+> >  MODULE_DEVICE_TABLE(of, mtk_pwm_of_match);
+> >  
+> > 
