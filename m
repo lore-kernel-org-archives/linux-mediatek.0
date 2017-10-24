@@ -1,441 +1,253 @@
-From: Chen Zhong <chen.zhong@mediatek.com>
-Subject: Re: [PATCH v5 5/6] input: Add MediaTek PMIC keys support
-Date: Tue, 24 Oct 2017 17:37:32 +0800
-Message-ID: <1508837852.4057.6.camel@mhfsdcap03>
-References: <1506509048-19032-1-git-send-email-chen.zhong@mediatek.com>
-         <1506509048-19032-6-git-send-email-chen.zhong@mediatek.com>
-         <20171024054409.6qbuzenzymkkjdth@dtor-ws>
+From: m18063 <Claudiu.Beznea@microchip.com>
+Subject: Re: [PATCH v4 1/1] pwm: mediatek: add MT2712/MT7622 support
+Date: Tue, 24 Oct 2017 16:25:46 +0300
+Message-ID: <403f3709-a5bf-6d31-9cb0-62364ac596e6@microchip.com>
+References: <1503367755-6519-1-git-send-email-zhi.mao@mediatek.com>
+ <1503367755-6519-2-git-send-email-zhi.mao@mediatek.com>
+ <78c6789f-6f9c-f075-b773-dcf90c2a42da@microchip.com>
+ <1508757180.12324.12.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-input-owner@vger.kernel.org>
-In-Reply-To: <20171024054409.6qbuzenzymkkjdth@dtor-ws>
-Sender: linux-input-owner@vger.kernel.org
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Lee Jones <lee.jones@linaro.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Linus Walleij <linus.walleij@linaro.org>, Chanwoo Choi <cw00.choi@samsung.com>, Jaechul Lee <jcsing.lee@samsung.com>, Andi Shyti <andi.shyti@samsung.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1508757180.12324.12.camel@mhfsdcap03>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Zhi Mao <zhi.mao@mediatek.com>
+Cc: "john@phrozen.org" <john@phrozen.org>, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-pwm@vger.kernel.org" <linux-pwm@vger.kernel.org>, "zhenbao.liu@mediatek.com" <zhenbao.liu@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "srv_heupstream@mediatek.com" <srv_heupstream@mediatek.com>, "sean.wang@mediatek.com" <sean.wang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "yt.shen@mediatek.com" <yt.shen@mediatek.com>, "yingjoe.chen@mediatek.com" <yingjoe.chen@mediatek.com>"linux-arm-kernel@lists.infradead.org" <linux>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2017-10-23 at 22:44 -0700, Dmitry Torokhov wrote:
-> On Wed, Sep 27, 2017 at 06:44:07PM +0800, Chen Zhong wrote:
-> > This patch add support to handle MediaTek PMIC MT6397/MT6323 key
-> > interrupts including pwrkey and homekey, also add setting for
-> > long press key shutdown behavior.
-> > 
-> > Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
-> > ---
-> >  drivers/input/keyboard/Kconfig         |    9 +
-> >  drivers/input/keyboard/Makefile        |    1 +
-> >  drivers/input/keyboard/mtk-pmic-keys.c |  341 ++++++++++++++++++++++++++++++++
-> >  3 files changed, 351 insertions(+)
-> >  create mode 100644 drivers/input/keyboard/mtk-pmic-keys.c
-> > 
-> > diff --git a/drivers/input/keyboard/Kconfig b/drivers/input/keyboard/Kconfig
-> > index 4c4ab1c..bd4e20a 100644
-> > --- a/drivers/input/keyboard/Kconfig
-> > +++ b/drivers/input/keyboard/Kconfig
-> > @@ -756,4 +756,13 @@ config KEYBOARD_BCM
-> >  	  To compile this driver as a module, choose M here: the
-> >  	  module will be called bcm-keypad.
-> >  
-> > +config KEYBOARD_MTK_PMIC
-> > +	tristate "MediaTek PMIC keys support"
-> > +	depends on MFD_MT6397
-> > +	help
-> > +	  Say Y here if you want to use the pmic keys (powerkey/homekey).
-> > +
-> > +	  To compile this driver as a module, choose M here: the
-> > +	  module will be called pmic-keys.
-> > +
-> >  endif
-> > diff --git a/drivers/input/keyboard/Makefile b/drivers/input/keyboard/Makefile
-> > index d2338ba..20c0b98 100644
-> > --- a/drivers/input/keyboard/Makefile
-> > +++ b/drivers/input/keyboard/Makefile
-> > @@ -40,6 +40,7 @@ obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
-> >  obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
-> >  obj-$(CONFIG_KEYBOARD_MCS)		+= mcs_touchkey.o
-> >  obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
-> > +obj-$(CONFIG_KEYBOARD_MTK_PMIC) 	+= mtk-pmic-keys.o
-> >  obj-$(CONFIG_KEYBOARD_NEWTON)		+= newtonkbd.o
-> >  obj-$(CONFIG_KEYBOARD_NOMADIK)		+= nomadik-ske-keypad.o
-> >  obj-$(CONFIG_KEYBOARD_NSPIRE)		+= nspire-keypad.o
-> > diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-> > new file mode 100644
-> > index 0000000..529fd95
-> > --- /dev/null
-> > +++ b/drivers/input/keyboard/mtk-pmic-keys.c
-> > @@ -0,0 +1,341 @@
-> > +/*
-> > + * Copyright (C) 2017 MediaTek, Inc.
-> > + *
-> > + * Author: Chen Zhong <chen.zhong@mediatek.com>
-> > + *
-> > + * This software is licensed under the terms of the GNU General Public
-> > + * License version 2, as published by the Free Software Foundation, and
-> > + * may be copied, distributed, and modified under those terms.
-> > + *
-> > + * This program is distributed in the hope that it will be useful,
-> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + * GNU General Public License for more details.
-> > + *
-> > + */
-> > +
-> > +#include <linux/module.h>
-> > +#include <linux/kernel.h>
-> > +#include <linux/input.h>
-> > +#include <linux/interrupt.h>
-> > +#include <linux/platform_device.h>
-> > +#include <linux/kernel.h>
-> > +#include <linux/of.h>
-> > +#include <linux/of_device.h>
-> > +#include <linux/regmap.h>
-> > +#include <linux/mfd/mt6323/registers.h>
-> > +#include <linux/mfd/mt6397/registers.h>
-> > +#include <linux/mfd/mt6397/core.h>
-> > +
-> > +#define MTK_PMIC_PWRKEY_RST_EN_MASK	0x1
-> > +#define MTK_PMIC_PWRKEY_RST_EN_SHIFT	6
-> > +#define MTK_PMIC_HOMEKEY_RST_EN_MASK	0x1
-> > +#define MTK_PMIC_HOMEKEY_RST_EN_SHIFT	5
-> > +#define MTK_PMIC_RST_DU_MASK		0x3
-> > +#define MTK_PMIC_RST_DU_SHIFT		8
-> > +
-> > +#define MTK_PMIC_PWRKEY_RST		\
-> > +	(MTK_PMIC_PWRKEY_RST_EN_MASK << MTK_PMIC_PWRKEY_RST_EN_SHIFT)
-> > +#define MTK_PMIC_HOMEKEY_RST		\
-> > +	(MTK_PMIC_HOMEKEY_RST_EN_MASK << MTK_PMIC_HOMEKEY_RST_EN_SHIFT)
-> > +
-> > +#define MTK_PMIC_PWRKEY_INDEX	0
-> > +#define MTK_PMIC_HOMEKEY_INDEX	1
-> > +#define MTK_PMIC_MAX_KEY_COUNT	2
-> > +
-> > +struct mtk_pmic_keys_regs {
-> > +	u32 deb_reg;
-> > +	u32 deb_mask;
-> > +	u32 intsel_reg;
-> > +	u32 intsel_mask;
-> > +};
-> > +
-> > +#define MTK_PMIC_KEYS_REGS(_deb_reg, _deb_mask,		\
-> > +	_intsel_reg, _intsel_mask)			\
-> > +{							\
-> > +	.deb_reg		= _deb_reg,		\
-> > +	.deb_mask		= _deb_mask,		\
-> > +	.intsel_reg		= _intsel_reg,		\
-> > +	.intsel_mask		= _intsel_mask,		\
-> > +}
-> > +
-> > +struct mtk_pmic_regs {
-> > +	const struct mtk_pmic_keys_regs keys_regs[MTK_PMIC_MAX_KEY_COUNT];
-> > +	u32 pmic_rst_reg;
-> > +};
-> > +
-> > +static const struct mtk_pmic_regs mt6397_regs = {
-> > +	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
-> > +		MTK_PMIC_KEYS_REGS(MT6397_CHRSTATUS,
-> > +		0x8, MT6397_INT_RSV, 0x10),
-> > +	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
-> > +		MTK_PMIC_KEYS_REGS(MT6397_OCSTATUS2,
-> > +		0x10, MT6397_INT_RSV, 0x8),
-> > +	.pmic_rst_reg = MT6397_TOP_RST_MISC,
-> > +};
-> > +
-> > +static const struct mtk_pmic_regs mt6323_regs = {
-> > +	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
-> > +		MTK_PMIC_KEYS_REGS(MT6323_CHRSTATUS,
-> > +		0x2, MT6323_INT_MISC_CON, 0x10),
-> > +	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
-> > +		MTK_PMIC_KEYS_REGS(MT6323_CHRSTATUS,
-> > +		0x4, MT6323_INT_MISC_CON, 0x8),
-> > +	.pmic_rst_reg = MT6323_TOP_RST_MISC,
-> > +};
-> > +
-> > +struct mtk_pmic_keys_info {
-> > +	struct mtk_pmic_keys *keys;
-> > +	const struct mtk_pmic_keys_regs *regs;
-> > +	unsigned int keycode;
-> > +	int irq;
-> > +	bool wakeup:1;
-> > +};
-> > +
-> > +struct mtk_pmic_keys {
-> > +	struct input_dev *input_dev;
-> > +	struct device *dev;
-> > +	struct regmap *regmap;
-> > +	struct mtk_pmic_keys_info keys[MTK_PMIC_MAX_KEY_COUNT];
-> > +};
-> > +
-> > +enum mtk_pmic_keys_lp_mode {
-> > +	LP_DISABLE,
-> > +	LP_ONEKEY,
-> > +	LP_TWOKEY,
-> > +};
-> > +
-> > +static void mtk_pmic_keys_lp_reset_setup(struct mtk_pmic_keys *keys,
-> > +		u32 pmic_rst_reg)
-> > +{
-> > +	int ret;
-> > +	u32 long_press_mode, long_press_debounce;
-> > +
-> > +	ret = of_property_read_u32(keys->dev->of_node,
-> > +		"power-off-time-sec", &long_press_debounce);
-> > +	if (ret)
-> > +		long_press_debounce = 0;
-> > +
-> > +	regmap_update_bits(keys->regmap, pmic_rst_reg,
-> > +			   MTK_PMIC_RST_DU_MASK << MTK_PMIC_RST_DU_SHIFT,
-> > +			   long_press_debounce << MTK_PMIC_RST_DU_SHIFT);
-> > +
-> > +	ret = of_property_read_u32(keys->dev->of_node,
-> > +		"mediatek,long-press-mode", &long_press_mode);
-> > +	if (ret)
-> > +		long_press_mode = LP_DISABLE;
-> > +
-> > +	switch (long_press_mode) {
-> > +	case LP_ONEKEY:
-> > +		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> > +				   MTK_PMIC_PWRKEY_RST,
-> > +				   MTK_PMIC_PWRKEY_RST);
-> > +		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> > +				   MTK_PMIC_HOMEKEY_RST,
-> > +				   0);
-> > +		break;
-> > +	case LP_TWOKEY:
-> > +		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> > +				   MTK_PMIC_PWRKEY_RST,
-> > +				   MTK_PMIC_PWRKEY_RST);
-> > +		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> > +				   MTK_PMIC_HOMEKEY_RST,
-> > +				   MTK_PMIC_HOMEKEY_RST);
-> > +		break;
-> > +	case LP_DISABLE:
-> > +		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> > +				   MTK_PMIC_PWRKEY_RST,
-> > +				   0);
-> > +		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> > +				   MTK_PMIC_HOMEKEY_RST,
-> > +				   0);
-> > +		break;
-> > +	default:
-> > +		break;
-> > +	}
-> > +}
-> > +
-> > +static irqreturn_t mtk_pmic_keys_irq_handler_thread(int irq, void *data)
-> > +{
-> > +	struct mtk_pmic_keys_info *info = data;
-> > +	u32 key_deb, pressed;
-> > +
-> > +	regmap_read(info->keys->regmap, info->regs->deb_reg, &key_deb);
-> > +
-> > +	key_deb &= info->regs->deb_mask;
-> > +
-> > +	pressed = !key_deb;
-> > +
-> > +	input_report_key(info->keys->input_dev, info->keycode, pressed);
-> > +	input_sync(info->keys->input_dev);
-> > +
-> > +	dev_dbg(info->keys->dev, "(%s) key =%d using PMIC\n",
-> > +		 pressed ? "pressed" : "released", info->keycode);
-> > +
-> > +	return IRQ_HANDLED;
-> > +}
-> > +
-> > +static int mtk_pmic_key_setup(struct mtk_pmic_keys *keys,
-> > +		struct mtk_pmic_keys_info *info)
-> > +{
-> > +	int ret;
-> > +
-> > +	info->keys = keys;
-> > +
-> > +	ret = regmap_update_bits(keys->regmap, info->regs->intsel_reg,
-> > +				 info->regs->intsel_mask,
-> > +				 info->regs->intsel_mask);
-> > +	if (ret < 0)
-> > +		return ret;
-> > +
-> > +	ret = devm_request_threaded_irq(keys->dev, info->irq, NULL,
-> > +					mtk_pmic_keys_irq_handler_thread,
-> > +					IRQF_ONESHOT | IRQF_TRIGGER_HIGH,
-> > +					"mtk-pmic-keys", info);
-> > +	if (ret) {
-> > +		dev_err(keys->dev, "Failed to request IRQ: %d: %d\n",
-> > +			info->irq, ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	input_set_capability(keys->input_dev, EV_KEY, info->keycode);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +#ifdef CONFIG_PM_SLEEP
-> > +static int mtk_pmic_keys_suspend(struct device *dev)
-> 
-> Please use __maybe_unused annotation instead of #ifdef guard.
-> 
-> > +{
-> > +	struct mtk_pmic_keys *keys = dev_get_drvdata(dev);
-> > +	int index;
-> > +
-> > +	for (index = 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
-> > +		if (keys->keys[index].wakeup)
-> > +			enable_irq_wake(keys->keys[index].irq);
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int mtk_pmic_keys_resume(struct device *dev)
-> 
-> __maybe_unused here as well.
-> 
-> > +{
-> > +	struct mtk_pmic_keys *keys = dev_get_drvdata(dev);
-> > +	int index;
-> > +
-> > +	for (index = 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
-> > +		if (keys->keys[index].wakeup)
-> > +			disable_irq_wake(keys->keys[index].irq);
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +#endif
-> > +
-> > +static SIMPLE_DEV_PM_OPS(mtk_pmic_keys_pm_ops, mtk_pmic_keys_suspend,
-> > +			mtk_pmic_keys_resume);
-> > +
-> > +static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
-> > +	{
-> > +		.compatible = "mediatek,mt6397-keys",
-> > +		.data = &mt6397_regs,
-> > +	}, {
-> > +		.compatible = "mediatek,mt6323-keys",
-> > +		.data = &mt6323_regs,
-> > +	}, {
-> > +		/* sentinel */
-> > +	}
-> > +};
-> > +MODULE_DEVICE_TABLE(of, of_mtk_pmic_keys_match_tbl);
-> > +
-> > +static int mtk_pmic_keys_probe(struct platform_device *pdev)
-> > +{
-> > +	int error, index = 0;
-> > +	unsigned int keycount;
-> > +	struct mt6397_chip *pmic_chip = dev_get_drvdata(pdev->dev.parent);
-> > +	struct device_node *node = pdev->dev.of_node, *child;
-> > +	struct mtk_pmic_keys *keys;
-> > +	const struct mtk_pmic_regs *mtk_pmic_regs;
-> > +	struct input_dev *input_dev;
-> > +	const struct of_device_id *of_id =
-> > +		of_match_device(of_mtk_pmic_keys_match_tbl, &pdev->dev);
-> > +
-> > +	keys = devm_kzalloc(&pdev->dev, sizeof(*keys), GFP_KERNEL);
-> > +	if (!keys)
-> > +		return -ENOMEM;
-> > +
-> > +	keys->dev = &pdev->dev;
-> > +	keys->regmap = pmic_chip->regmap;
-> > +	mtk_pmic_regs = of_id->data;
-> > +
-> > +	keys->input_dev = input_dev = devm_input_allocate_device(keys->dev);
-> > +	if (!input_dev) {
-> > +		dev_err(keys->dev, "input allocate device fail.\n");
-> > +		return -ENOMEM;
-> > +	}
-> > +
-> > +	input_dev->name = "mtk-pmic-keys";
-> > +	input_dev->id.bustype = BUS_HOST;
-> > +	input_dev->id.vendor = 0x0001;
-> > +	input_dev->id.product = 0x0001;
-> > +	input_dev->id.version = 0x0001;
-> > +
-> > +	keycount = device_get_child_node_count(keys->dev);
-> 
-> Since you are using of_* API everywhere else I'd rather we used
-> of_get_available_child_count() here.
-> 
-> 
-> Once these 2 issues are fixed please feel free to add 
-> 
-> Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-> 
-> I assume it will all go though MFD tree, right?
+Hi Zhi,
 
-I will fix these 2 issues and send the new version.
+Please see my answer below.
 
-Since patch 2,3,4,5 of this series are all for input driver, could you
-help to merge them with the new version later?
-
-Thank you.
-
+On 23.10.2017 14:13, Zhi Mao wrote:
+> Hi Claudiu
 > 
-> > +	if (keycount > MTK_PMIC_MAX_KEY_COUNT) {
-> > +		dev_err(keys->dev, "too many keys defined (%d)\n", keycount);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	for_each_child_of_node(node, child) {
-> > +		keys->keys[index].regs = &mtk_pmic_regs->keys_regs[index];
-> > +
-> > +		keys->keys[index].irq = platform_get_irq(pdev, index);
-> > +		if (keys->keys[index].irq < 0)
-> > +			return keys->keys[index].irq;
-> > +
-> > +		error = of_property_read_u32(child,
-> > +			"linux,keycodes", &keys->keys[index].keycode);
-> > +		if (error) {
-> > +			dev_err(keys->dev,
-> > +				"failed to read key:%d linux,keycode property: %d\n",
-> > +				index, error);
-> > +			return error;
-> > +		}
-> > +
-> > +		if (of_property_read_bool(child, "wakeup-source"))
-> > +			keys->keys[index].wakeup = true;
-> > +
-> > +		error = mtk_pmic_key_setup(keys, &keys->keys[index]);
-> > +		if (error)
-> > +			return error;
-> > +
-> > +		index++;
-> > +	}
-> > +
-> > +	error = input_register_device(input_dev);
-> > +	if (error) {
-> > +		dev_err(&pdev->dev,
-> > +			"register input device failed (%d)\n", error);
-> > +		return error;
-> > +	}
-> > +
-> > +	mtk_pmic_keys_lp_reset_setup(keys, mtk_pmic_regs->pmic_rst_reg);
-> > +
-> > +	platform_set_drvdata(pdev, keys);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static struct platform_driver pmic_keys_pdrv = {
-> > +	.probe = mtk_pmic_keys_probe,
-> > +	.driver = {
-> > +		   .name = "mtk-pmic-keys",
-> > +		   .of_match_table = of_mtk_pmic_keys_match_tbl,
-> > +		   .pm = &mtk_pmic_keys_pm_ops,
-> > +	},
-> > +};
-> > +
-> > +module_platform_driver(pmic_keys_pdrv);
-> > +
-> > +MODULE_LICENSE("GPL v2");
-> > +MODULE_AUTHOR("Chen Zhong <chen.zhong@mediatek.com>");
-> > +MODULE_DESCRIPTION("MTK pmic-keys driver v0.1");
-> > -- 
-> > 1.7.9.5
-> > 
+> please check the comments as below.
 > 
-> Thanks.
+> Regards
+> Zhi
 > 
+> On Mon, 2017-10-23 at 11:22 +0300, m18063 wrote:
+>> Hi Zhi,
+>>
+>> I have few comments regarding your patch. Please see them below.
+>>
+>> Thanks,
+>> Claudiu
+>>
+>> On 22.08.2017 05:09, Zhi Mao wrote:
+>>> Add support to MT2712 and MT7622.
+>>> Due to register offset address of pwm7 for MT2712 is not fixed 0x40,
+>>> add mtk_pwm_reg_offset array for pwm register offset.
+>>>
+>>> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+>>> ---
+>>>  drivers/pwm/pwm-mediatek.c |   51 ++++++++++++++++++++++++++++++++++++--------
+>>>  1 file changed, 42 insertions(+), 9 deletions(-)
+>>>
+>>> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+>>> index 1d78ab1..ccd86e7 100644
+>>> --- a/drivers/pwm/pwm-mediatek.c
+>>> +++ b/drivers/pwm/pwm-mediatek.c
+>>> @@ -16,6 +16,7 @@
+>>>  #include <linux/module.h>
+>>>  #include <linux/clk.h>
+>>>  #include <linux/of.h>
+>>> +#include <linux/of_device.h>
+>>>  #include <linux/platform_device.h>
+>>>  #include <linux/pwm.h>
+>>>  #include <linux/slab.h>
+>>> @@ -40,11 +41,19 @@ enum {
+>>>  	MTK_CLK_PWM3,
+>>>  	MTK_CLK_PWM4,
+>>>  	MTK_CLK_PWM5,
+>>> +	MTK_CLK_PWM6,
+>>> +	MTK_CLK_PWM7,
+>>> +	MTK_CLK_PWM8,
+>>>  	MTK_CLK_MAX,
+>>>  };
+>>>  
+>>> -static const char * const mtk_pwm_clk_name[] = {
+>>> -	"main", "top", "pwm1", "pwm2", "pwm3", "pwm4", "pwm5"
+>>> +static const char * const mtk_pwm_clk_name[MTK_CLK_MAX] = {
+>>> +	"main", "top", "pwm1", "pwm2", "pwm3", "pwm4", "pwm5", "pwm6", "pwm7",
+>>> +	"pwm8"
+>>> +};
+>>> +
+>>> +struct mtk_pwm_platform_data {
+>>> +	unsigned int num_pwms;
+>>>  };
+>>>  
+>>>  /**
+>>> @@ -57,6 +66,11 @@ struct mtk_pwm_chip {
+>>>  	struct pwm_chip chip;
+>>>  	void __iomem *regs;
+>>>  	struct clk *clks[MTK_CLK_MAX];
+>>> +	const struct mtk_pwm_platform_data *data;
+>> I think you can remove this member since you only use it to initialize chip.npwm,
+>> in probe function, just before platform_set_drvdata().
+>>
+>> 	pc->chip.npwm = pc->data->pwm_nums;
+>>
+>> 	platform_set_drvdata(pdev, pc);
+> Here, the member of "mtk_pwm_platform_data" is an extension interface of
+> pwm information for MTK SOC chips. At present, we use it to initialize
+> npwms,
 
+and maybe we will have more informations to use, in later. 
 
+The use of *maybe* in here suggest me that this will not necessary happen.
+Actually, what I wanted to emphasize is that, for the moment, you are keeping
+same information in both driver private data structure and PWM framework data
+structure. So, even if in future you will add more members to this data structure,
+you will have the number of PWMs stored in both, your driver data structure
+(via "struct mtk_pwm_platform_data *data" member) and PWM framework
+(via "struct pwm_chip chip" member of struct mtk_pwm_chip).
+
+For instance, if you will add more info to this data structure you could do it this way:
+
+struct mtk_pwm_platform_data_other {
+	typex memberx;
+	typey membery;
+	// ...
+};
+
+struct mtk_pwm_platform_data {
+	unsigned int num_pwms;
+	struct mtk_pwm_platform_data_other other_data;
+};
+
+And have struct mtk_pwm_chip as follows:
+struct mtk_pwm_chip {
+	struct pwm_chip chip;
+	void __iomem *regs;
+	struct clk *clks[MTK_CLK_MAX];
+	struct mtk_pwm_platform_data_other *other_data;
+}
+
+and in probe:
+
+static int mtk_pwm_probe(struct platform_device *pdev)
+{
+	struct mtk_pwm_platform_data *data;
+	// ...
+	data = of_device_get_match_data(&pdev->dev);
+	if (data == NULL)
+		return -EINVAL;
+	pc->other_data = data->other_data;
+	// ...
+ 	pc->chip.dev = &pdev->dev;
+ 	pc->chip.ops = &mtk_pwm_ops;
+ 	pc->chip.base = -1;
+	pc->chip.npwm = data->num_pwms; /* Here you store the num_pwms in PWM framework
+					 * data structure and you could use it from here. */
+
+	// ...
+}
+
+At this moment I think there is no need for "const struct mtk_pwm_platform_data" member
+to be part of struct mtk_pwm_chip.
+
+Thanks,
+Claudiu
+
+> so, we want to keep it and make the interface more flexible. 
+> 
+>>> +};
+>>> +
+>>> +static const unsigned int mtk_pwm_reg_offset[] = {
+>>> +	0x0010, 0x0050, 0x0090, 0x00d0, 0x0110, 0x0150, 0x0190, 0x0220
+>>>  };
+>>>  
+>>>  static inline struct mtk_pwm_chip *to_mtk_pwm_chip(struct pwm_chip *chip)
+>>> @@ -103,14 +117,14 @@ static void mtk_pwm_clk_disable(struct pwm_chip *chip, struct pwm_device *pwm)
+>>>  static inline u32 mtk_pwm_readl(struct mtk_pwm_chip *chip, unsigned int num,
+>>>  				unsigned int offset)
+>>>  {
+>>> -	return readl(chip->regs + 0x10 + (num * 0x40) + offset);
+>>> +	return readl(chip->regs + mtk_pwm_reg_offset[num] + offset);
+>>>  }
+>>>  
+>>>  static inline void mtk_pwm_writel(struct mtk_pwm_chip *chip,
+>>>  				  unsigned int num, unsigned int offset,
+>>>  				  u32 value)
+>>>  {
+>>> -	writel(value, chip->regs + 0x10 + (num * 0x40) + offset);
+>>> +	writel(value, chip->regs + mtk_pwm_reg_offset[num] + offset);
+>>>  }
+>>>  
+>>>  static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+>>> @@ -194,15 +208,20 @@ static int mtk_pwm_probe(struct platform_device *pdev)
+>>>  	if (!pc)
+>>>  		return -ENOMEM;
+>>>  
+>>> +	pc->data = of_device_get_match_data(&pdev->dev);
+>> You forgot to check pc->data == NULL (in case device tree inputs are not provided)
+>> and you may use here a stack allocated variable to store the number of PWMs returned
+>> by of_device_get_match_data(). This is used only for pc->chip.npwm, and anyway, if
+>> any, you could get that information from chip.npwm.
+>> You could also check here the number of PWMs returned via of_device_get_match_data()
+>> to avoid waiting for pwmchip_add() to fail (e.g. if number of PWMs is zero, the
+>> pwmchip_add() will fail).
+>>
+> Here, I will add the NULL pointer checking for "pc->data", and it will
+> be released, soon.
+> 
+>>> +
+>>>  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>>>  	pc->regs = devm_ioremap_resource(&pdev->dev, res);
+>>>  	if (IS_ERR(pc->regs))
+>>>  		return PTR_ERR(pc->regs);
+>>>  
+>>> -	for (i = 0; i < MTK_CLK_MAX; i++) {
+>>> +	for (i = 0; i < pc->data->num_pwms + 2; i++) {
+>>>  		pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
+>>> -		if (IS_ERR(pc->clks[i]))
+>>> +		if (IS_ERR(pc->clks[i])) {
+>>> +			dev_err(&pdev->dev, "clock: %s fail: %ld\n",
+>>> +				mtk_pwm_clk_name[i], PTR_ERR(pc->clks[i]));
+>>>  			return PTR_ERR(pc->clks[i]);
+>>> +		}
+>>>  	}
+>>>  
+>>>  	platform_set_drvdata(pdev, pc);
+>>> @@ -210,7 +229,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
+>>>  	pc->chip.dev = &pdev->dev;
+>>>  	pc->chip.ops = &mtk_pwm_ops;
+>>>  	pc->chip.base = -1;
+>>> -	pc->chip.npwm = 5;
+>>> +	pc->chip.npwm = pc->data->num_pwms;
+>>>  
+>>>  	ret = pwmchip_add(&pc->chip);
+>>>  	if (ret < 0) {
+>>> @@ -228,9 +247,23 @@ static int mtk_pwm_remove(struct platform_device *pdev)
+>>>  	return pwmchip_remove(&pc->chip);
+>>>  }
+>>>  
+>>> +static const struct mtk_pwm_platform_data mt2712_pwm_data = {
+>>> +	.num_pwms = 8,
+>>> +};
+>>> +
+>>> +static const struct mtk_pwm_platform_data mt7622_pwm_data = {
+>>> +	.num_pwms = 6,
+>>> +};
+>>> +
+>>> +static const struct mtk_pwm_platform_data mt7623_pwm_data = {
+>>> +	.num_pwms = 5,
+>>> +};
+>>> +
+>>>  static const struct of_device_id mtk_pwm_of_match[] = {
+>>> -	{ .compatible = "mediatek,mt7623-pwm" },
+>>> -	{ }
+>>> +	{ .compatible = "mediatek,mt2712-pwm", .data = &mt2712_pwm_data },
+>>> +	{ .compatible = "mediatek,mt7622-pwm", .data = &mt7622_pwm_data },
+>>> +	{ .compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data },
+>>> +	{ },
+>>>  };
+>>>  MODULE_DEVICE_TABLE(of, mtk_pwm_of_match);
+>>>  
+>>>
+> 
+> 
