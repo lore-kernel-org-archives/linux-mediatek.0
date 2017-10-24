@@ -1,435 +1,235 @@
-From: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v5 5/6] input: Add MediaTek PMIC keys support
-Date: Mon, 23 Oct 2017 22:44:09 -0700
-Message-ID: <20171024054409.6qbuzenzymkkjdth@dtor-ws>
-References: <1506509048-19032-1-git-send-email-chen.zhong@mediatek.com>
- <1506509048-19032-6-git-send-email-chen.zhong@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v6 02/12] mmc: mediatek: add support of mt2701/mt2712
+Date: Tue, 24 Oct 2017 15:58:26 +0800
+Message-ID: <1508831906.29850.42.camel@mtkswgap22>
+References: <1508118399-21828-1-git-send-email-chaotian.jing@mediatek.com>
+         <1508118399-21828-3-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1506509048-19032-6-git-send-email-chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Alessandro Zummo <a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jaechul Lee <jcsing.lee-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andi Shyti <andi.shyti-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rtc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1508118399-21828-3-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, yong mao <yong.mao@mediatek.com>, Phong LE <ple@baylibre.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org, Heiner Kallweit <hkallweit1@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 27, 2017 at 06:44:07PM +0800, Chen Zhong wrote:
-> This patch add support to handle MediaTek PMIC MT6397/MT6323 key
-> interrupts including pwrkey and homekey, also add setting for
-> long press key shutdown behavior.
+Hi, 
+
+I've tested those patches on the bpi-r2 board [1] and so far they work
+fine correctly. The below are some tests using lmdd on the board.
+
+a. emmc with high-speed mode
+
+reading
+# lmdd of=internal if=/dev/mmcblk0p3 count=100000  fsync=1
+819.2000 MB in 34.5092 secs, 23.7386 MB/sec
+
+writing
+# lmdd if=internal of=/dev/mmcblk0p3 count=100000  fsync=1
+819.2000 MB in 42.9084 secs, 19.0918 MB/sec
+
+b. sd card with Apacer 16G, high-speed speed
+
+reading
+# lmdd of=internal if=/dev/mmcblk1p1 count=100000  fsync=1             
+819.2000 MB in 36.8891 secs, 22.2071 MB/sec
+
+writing
+# lmdd if=internal of=/dev/mmcblk1p1 count=100000  fsync=1
+819.2000 MB in 81.7611 secs, 10.0194 MB/sec
+                                                                                                       
+Since mmc on mt7623 is almost identical to to mt2701, once the whole
+series is being applied, I will change all nodes in dts with mt7623 to
+use mt2701-mmc fallbacks instead of mt8135-mmc ones.
+
+Tested-by: Sean Wang <sean.wang@mediatek.com>
+
+[1] http://forum.banana-pi.org/c/Banana-Pi-BPI-R2
+
+
+On Mon, 2017-10-16 at 09:46 +0800, Chaotian Jing wrote:
+> mt2701/mt2712 has 12bit clock div, which is not compatible with
+> mt8135/mt8173. and, some additional features will be added in
+> mt2701/mt2712, so that need distinguish it by comatibale name.
 > 
-> Signed-off-by: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
 > ---
->  drivers/input/keyboard/Kconfig         |    9 +
->  drivers/input/keyboard/Makefile        |    1 +
->  drivers/input/keyboard/mtk-pmic-keys.c |  341 ++++++++++++++++++++++++++++++++
->  3 files changed, 351 insertions(+)
->  create mode 100644 drivers/input/keyboard/mtk-pmic-keys.c
+>  drivers/mmc/host/mtk-sd.c | 82 +++++++++++++++++++++++++++++++++++++++--------
+>  1 file changed, 69 insertions(+), 13 deletions(-)
 > 
-> diff --git a/drivers/input/keyboard/Kconfig b/drivers/input/keyboard/Kconfig
-> index 4c4ab1c..bd4e20a 100644
-> --- a/drivers/input/keyboard/Kconfig
-> +++ b/drivers/input/keyboard/Kconfig
-> @@ -756,4 +756,13 @@ config KEYBOARD_BCM
->  	  To compile this driver as a module, choose M here: the
->  	  module will be called bcm-keypad.
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 267f7ab..643c795 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -95,6 +95,9 @@
+>  #define MSDC_CFG_CKDIV          (0xff << 8)	/* RW */
+>  #define MSDC_CFG_CKMOD          (0x3 << 16)	/* RW */
+>  #define MSDC_CFG_HS400_CK_MODE  (0x1 << 18)	/* RW */
+> +#define MSDC_CFG_HS400_CK_MODE_EXTRA  (0x1 << 22)	/* RW */
+> +#define MSDC_CFG_CKDIV_EXTRA    (0xfff << 8)	/* RW */
+> +#define MSDC_CFG_CKMOD_EXTRA    (0x3 << 20)	/* RW */
 >  
-> +config KEYBOARD_MTK_PMIC
-> +	tristate "MediaTek PMIC keys support"
-> +	depends on MFD_MT6397
-> +	help
-> +	  Say Y here if you want to use the pmic keys (powerkey/homekey).
-> +
-> +	  To compile this driver as a module, choose M here: the
-> +	  module will be called pmic-keys.
-> +
->  endif
-> diff --git a/drivers/input/keyboard/Makefile b/drivers/input/keyboard/Makefile
-> index d2338ba..20c0b98 100644
-> --- a/drivers/input/keyboard/Makefile
-> +++ b/drivers/input/keyboard/Makefile
-> @@ -40,6 +40,7 @@ obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
->  obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
->  obj-$(CONFIG_KEYBOARD_MCS)		+= mcs_touchkey.o
->  obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
-> +obj-$(CONFIG_KEYBOARD_MTK_PMIC) 	+= mtk-pmic-keys.o
->  obj-$(CONFIG_KEYBOARD_NEWTON)		+= newtonkbd.o
->  obj-$(CONFIG_KEYBOARD_NOMADIK)		+= nomadik-ske-keypad.o
->  obj-$(CONFIG_KEYBOARD_NSPIRE)		+= nspire-keypad.o
-> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-> new file mode 100644
-> index 0000000..529fd95
-> --- /dev/null
-> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
-> @@ -0,0 +1,341 @@
-> +/*
-> + * Copyright (C) 2017 MediaTek, Inc.
-> + *
-> + * Author: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> + *
-> + * This software is licensed under the terms of the GNU General Public
-> + * License version 2, as published by the Free Software Foundation, and
-> + * may be copied, distributed, and modified under those terms.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + *
-> + */
-> +
-> +#include <linux/module.h>
-> +#include <linux/kernel.h>
-> +#include <linux/input.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/kernel.h>
-> +#include <linux/of.h>
-> +#include <linux/of_device.h>
-> +#include <linux/regmap.h>
-> +#include <linux/mfd/mt6323/registers.h>
-> +#include <linux/mfd/mt6397/registers.h>
-> +#include <linux/mfd/mt6397/core.h>
-> +
-> +#define MTK_PMIC_PWRKEY_RST_EN_MASK	0x1
-> +#define MTK_PMIC_PWRKEY_RST_EN_SHIFT	6
-> +#define MTK_PMIC_HOMEKEY_RST_EN_MASK	0x1
-> +#define MTK_PMIC_HOMEKEY_RST_EN_SHIFT	5
-> +#define MTK_PMIC_RST_DU_MASK		0x3
-> +#define MTK_PMIC_RST_DU_SHIFT		8
-> +
-> +#define MTK_PMIC_PWRKEY_RST		\
-> +	(MTK_PMIC_PWRKEY_RST_EN_MASK << MTK_PMIC_PWRKEY_RST_EN_SHIFT)
-> +#define MTK_PMIC_HOMEKEY_RST		\
-> +	(MTK_PMIC_HOMEKEY_RST_EN_MASK << MTK_PMIC_HOMEKEY_RST_EN_SHIFT)
-> +
-> +#define MTK_PMIC_PWRKEY_INDEX	0
-> +#define MTK_PMIC_HOMEKEY_INDEX	1
-> +#define MTK_PMIC_MAX_KEY_COUNT	2
-> +
-> +struct mtk_pmic_keys_regs {
-> +	u32 deb_reg;
-> +	u32 deb_mask;
-> +	u32 intsel_reg;
-> +	u32 intsel_mask;
+>  /* MSDC_IOCON mask */
+>  #define MSDC_IOCON_SDR104CKS    (0x1 << 0)	/* RW */
+> @@ -295,6 +298,10 @@ struct msdc_save_para {
+>  	u32 emmc50_cfg0;
+>  };
+>  
+> +struct mtk_mmc_compatible {
+> +	u8 clk_div_bits;
 > +};
 > +
-> +#define MTK_PMIC_KEYS_REGS(_deb_reg, _deb_mask,		\
-> +	_intsel_reg, _intsel_mask)			\
-> +{							\
-> +	.deb_reg		= _deb_reg,		\
-> +	.deb_mask		= _deb_mask,		\
-> +	.intsel_reg		= _intsel_reg,		\
-> +	.intsel_mask		= _intsel_mask,		\
-> +}
-> +
-> +struct mtk_pmic_regs {
-> +	const struct mtk_pmic_keys_regs keys_regs[MTK_PMIC_MAX_KEY_COUNT];
-> +	u32 pmic_rst_reg;
+>  struct msdc_tune_para {
+>  	u32 iocon;
+>  	u32 pad_tune;
+> @@ -309,6 +316,7 @@ struct msdc_delay_phase {
+>  
+>  struct msdc_host {
+>  	struct device *dev;
+> +	const struct mtk_mmc_compatible *dev_comp;
+>  	struct mmc_host *mmc;	/* mmc structure */
+>  	int cmd_rsp;
+>  
+> @@ -350,6 +358,31 @@ struct msdc_host {
+>  	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
+>  };
+>  
+> +static const struct mtk_mmc_compatible mt8135_compat = {
+> +	.clk_div_bits = 8,
 > +};
 > +
-> +static const struct mtk_pmic_regs mt6397_regs = {
-> +	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
-> +		MTK_PMIC_KEYS_REGS(MT6397_CHRSTATUS,
-> +		0x8, MT6397_INT_RSV, 0x10),
-> +	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
-> +		MTK_PMIC_KEYS_REGS(MT6397_OCSTATUS2,
-> +		0x10, MT6397_INT_RSV, 0x8),
-> +	.pmic_rst_reg = MT6397_TOP_RST_MISC,
+> +static const struct mtk_mmc_compatible mt8173_compat = {
+> +	.clk_div_bits = 8,
 > +};
 > +
-> +static const struct mtk_pmic_regs mt6323_regs = {
-> +	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
-> +		MTK_PMIC_KEYS_REGS(MT6323_CHRSTATUS,
-> +		0x2, MT6323_INT_MISC_CON, 0x10),
-> +	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
-> +		MTK_PMIC_KEYS_REGS(MT6323_CHRSTATUS,
-> +		0x4, MT6323_INT_MISC_CON, 0x8),
-> +	.pmic_rst_reg = MT6323_TOP_RST_MISC,
+> +static const struct mtk_mmc_compatible mt2701_compat = {
+> +	.clk_div_bits = 12,
 > +};
 > +
-> +struct mtk_pmic_keys_info {
-> +	struct mtk_pmic_keys *keys;
-> +	const struct mtk_pmic_keys_regs *regs;
-> +	unsigned int keycode;
-> +	int irq;
-> +	bool wakeup:1;
+> +static const struct mtk_mmc_compatible mt2712_compat = {
+> +	.clk_div_bits = 12,
 > +};
 > +
-> +struct mtk_pmic_keys {
-> +	struct input_dev *input_dev;
-> +	struct device *dev;
-> +	struct regmap *regmap;
-> +	struct mtk_pmic_keys_info keys[MTK_PMIC_MAX_KEY_COUNT];
+> +static const struct of_device_id msdc_of_ids[] = {
+> +	{ .compatible = "mediatek,mt8135-mmc", .data = &mt8135_compat},
+> +	{ .compatible = "mediatek,mt8173-mmc", .data = &mt8173_compat},
+> +	{ .compatible = "mediatek,mt2701-mmc", .data = &mt2701_compat},
+> +	{ .compatible = "mediatek,mt2712-mmc", .data = &mt2712_compat},
+> +	{}
 > +};
+> +MODULE_DEVICE_TABLE(of, msdc_of_ids);
 > +
-> +enum mtk_pmic_keys_lp_mode {
-> +	LP_DISABLE,
-> +	LP_ONEKEY,
-> +	LP_TWOKEY,
-> +};
+>  static void sdr_set_bits(void __iomem *reg, u32 bs)
+>  {
+>  	u32 val = readl(reg);
+> @@ -509,7 +542,12 @@ static void msdc_set_timeout(struct msdc_host *host, u32 ns, u32 clks)
+>  		timeout = (ns + clk_ns - 1) / clk_ns + clks;
+>  		/* in 1048576 sclk cycle unit */
+>  		timeout = (timeout + (0x1 << 20) - 1) >> 20;
+> -		sdr_get_field(host->base + MSDC_CFG, MSDC_CFG_CKMOD, &mode);
+> +		if (host->dev_comp->clk_div_bits == 8)
+> +			sdr_get_field(host->base + MSDC_CFG,
+> +				      MSDC_CFG_CKMOD, &mode);
+> +		else
+> +			sdr_get_field(host->base + MSDC_CFG,
+> +				      MSDC_CFG_CKMOD_EXTRA, &mode);
+>  		/*DDR mode will double the clk cycles for data timeout */
+>  		timeout = mode >= 2 ? timeout * 2 : timeout;
+>  		timeout = timeout > 1 ? timeout - 1 : 0;
+> @@ -548,7 +586,11 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+>  
+>  	flags = readl(host->base + MSDC_INTEN);
+>  	sdr_clr_bits(host->base + MSDC_INTEN, flags);
+> -	sdr_clr_bits(host->base + MSDC_CFG, MSDC_CFG_HS400_CK_MODE);
+> +	if (host->dev_comp->clk_div_bits == 8)
+> +		sdr_clr_bits(host->base + MSDC_CFG, MSDC_CFG_HS400_CK_MODE);
+> +	else
+> +		sdr_clr_bits(host->base + MSDC_CFG,
+> +			     MSDC_CFG_HS400_CK_MODE_EXTRA);
+>  	if (timing == MMC_TIMING_UHS_DDR50 ||
+>  	    timing == MMC_TIMING_MMC_DDR52 ||
+>  	    timing == MMC_TIMING_MMC_HS400) {
+> @@ -568,8 +610,12 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+>  
+>  		if (timing == MMC_TIMING_MMC_HS400 &&
+>  		    hz >= (host->src_clk_freq >> 1)) {
+> -			sdr_set_bits(host->base + MSDC_CFG,
+> -				     MSDC_CFG_HS400_CK_MODE);
+> +			if (host->dev_comp->clk_div_bits == 8)
+> +				sdr_set_bits(host->base + MSDC_CFG,
+> +					     MSDC_CFG_HS400_CK_MODE);
+> +			else
+> +				sdr_set_bits(host->base + MSDC_CFG,
+> +					     MSDC_CFG_HS400_CK_MODE_EXTRA);
+>  			sclk = host->src_clk_freq >> 1;
+>  			div = 0; /* div is ignore when bit18 is set */
+>  		}
+> @@ -587,8 +633,15 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+>  			sclk = (host->src_clk_freq >> 2) / div;
+>  		}
+>  	}
+> -	sdr_set_field(host->base + MSDC_CFG, MSDC_CFG_CKMOD | MSDC_CFG_CKDIV,
+> -		      (mode << 8) | div);
+> +	if (host->dev_comp->clk_div_bits == 8)
+> +		sdr_set_field(host->base + MSDC_CFG,
+> +			      MSDC_CFG_CKMOD | MSDC_CFG_CKDIV,
+> +			      (mode << 8) | div);
+> +	else
+> +		sdr_set_field(host->base + MSDC_CFG,
+> +			      MSDC_CFG_CKMOD_EXTRA | MSDC_CFG_CKDIV_EXTRA,
+> +			      (mode << 12) | div);
 > +
-> +static void mtk_pmic_keys_lp_reset_setup(struct mtk_pmic_keys *keys,
-> +		u32 pmic_rst_reg)
-> +{
-> +	int ret;
-> +	u32 long_press_mode, long_press_debounce;
+>  	sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_CKPDN);
+>  	while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
+>  		cpu_relax();
+> @@ -1617,12 +1670,17 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>  	struct mmc_host *mmc;
+>  	struct msdc_host *host;
+>  	struct resource *res;
+> +	const struct of_device_id *of_id;
+>  	int ret;
+>  
+>  	if (!pdev->dev.of_node) {
+>  		dev_err(&pdev->dev, "No DT found\n");
+>  		return -EINVAL;
+>  	}
 > +
-> +	ret = of_property_read_u32(keys->dev->of_node,
-> +		"power-off-time-sec", &long_press_debounce);
-> +	if (ret)
-> +		long_press_debounce = 0;
-> +
-> +	regmap_update_bits(keys->regmap, pmic_rst_reg,
-> +			   MTK_PMIC_RST_DU_MASK << MTK_PMIC_RST_DU_SHIFT,
-> +			   long_press_debounce << MTK_PMIC_RST_DU_SHIFT);
-> +
-> +	ret = of_property_read_u32(keys->dev->of_node,
-> +		"mediatek,long-press-mode", &long_press_mode);
-> +	if (ret)
-> +		long_press_mode = LP_DISABLE;
-> +
-> +	switch (long_press_mode) {
-> +	case LP_ONEKEY:
-> +		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> +				   MTK_PMIC_PWRKEY_RST,
-> +				   MTK_PMIC_PWRKEY_RST);
-> +		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> +				   MTK_PMIC_HOMEKEY_RST,
-> +				   0);
-> +		break;
-> +	case LP_TWOKEY:
-> +		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> +				   MTK_PMIC_PWRKEY_RST,
-> +				   MTK_PMIC_PWRKEY_RST);
-> +		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> +				   MTK_PMIC_HOMEKEY_RST,
-> +				   MTK_PMIC_HOMEKEY_RST);
-> +		break;
-> +	case LP_DISABLE:
-> +		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> +				   MTK_PMIC_PWRKEY_RST,
-> +				   0);
-> +		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> +				   MTK_PMIC_HOMEKEY_RST,
-> +				   0);
-> +		break;
-> +	default:
-> +		break;
-> +	}
-> +}
-> +
-> +static irqreturn_t mtk_pmic_keys_irq_handler_thread(int irq, void *data)
-> +{
-> +	struct mtk_pmic_keys_info *info = data;
-> +	u32 key_deb, pressed;
-> +
-> +	regmap_read(info->keys->regmap, info->regs->deb_reg, &key_deb);
-> +
-> +	key_deb &= info->regs->deb_mask;
-> +
-> +	pressed = !key_deb;
-> +
-> +	input_report_key(info->keys->input_dev, info->keycode, pressed);
-> +	input_sync(info->keys->input_dev);
-> +
-> +	dev_dbg(info->keys->dev, "(%s) key =%d using PMIC\n",
-> +		 pressed ? "pressed" : "released", info->keycode);
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +static int mtk_pmic_key_setup(struct mtk_pmic_keys *keys,
-> +		struct mtk_pmic_keys_info *info)
-> +{
-> +	int ret;
-> +
-> +	info->keys = keys;
-> +
-> +	ret = regmap_update_bits(keys->regmap, info->regs->intsel_reg,
-> +				 info->regs->intsel_mask,
-> +				 info->regs->intsel_mask);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	ret = devm_request_threaded_irq(keys->dev, info->irq, NULL,
-> +					mtk_pmic_keys_irq_handler_thread,
-> +					IRQF_ONESHOT | IRQF_TRIGGER_HIGH,
-> +					"mtk-pmic-keys", info);
-> +	if (ret) {
-> +		dev_err(keys->dev, "Failed to request IRQ: %d: %d\n",
-> +			info->irq, ret);
-> +		return ret;
-> +	}
-> +
-> +	input_set_capability(keys->input_dev, EV_KEY, info->keycode);
-> +
-> +	return 0;
-> +}
-> +
-> +#ifdef CONFIG_PM_SLEEP
-> +static int mtk_pmic_keys_suspend(struct device *dev)
-
-Please use __maybe_unused annotation instead of #ifdef guard.
-
-> +{
-> +	struct mtk_pmic_keys *keys = dev_get_drvdata(dev);
-> +	int index;
-> +
-> +	for (index = 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
-> +		if (keys->keys[index].wakeup)
-> +			enable_irq_wake(keys->keys[index].irq);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_pmic_keys_resume(struct device *dev)
-
-__maybe_unused here as well.
-
-> +{
-> +	struct mtk_pmic_keys *keys = dev_get_drvdata(dev);
-> +	int index;
-> +
-> +	for (index = 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
-> +		if (keys->keys[index].wakeup)
-> +			disable_irq_wake(keys->keys[index].irq);
-> +	}
-> +
-> +	return 0;
-> +}
-> +#endif
-> +
-> +static SIMPLE_DEV_PM_OPS(mtk_pmic_keys_pm_ops, mtk_pmic_keys_suspend,
-> +			mtk_pmic_keys_resume);
-> +
-> +static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
-> +	{
-> +		.compatible = "mediatek,mt6397-keys",
-> +		.data = &mt6397_regs,
-> +	}, {
-> +		.compatible = "mediatek,mt6323-keys",
-> +		.data = &mt6323_regs,
-> +	}, {
-> +		/* sentinel */
-> +	}
-> +};
-> +MODULE_DEVICE_TABLE(of, of_mtk_pmic_keys_match_tbl);
-> +
-> +static int mtk_pmic_keys_probe(struct platform_device *pdev)
-> +{
-> +	int error, index = 0;
-> +	unsigned int keycount;
-> +	struct mt6397_chip *pmic_chip = dev_get_drvdata(pdev->dev.parent);
-> +	struct device_node *node = pdev->dev.of_node, *child;
-> +	struct mtk_pmic_keys *keys;
-> +	const struct mtk_pmic_regs *mtk_pmic_regs;
-> +	struct input_dev *input_dev;
-> +	const struct of_device_id *of_id =
-> +		of_match_device(of_mtk_pmic_keys_match_tbl, &pdev->dev);
-> +
-> +	keys = devm_kzalloc(&pdev->dev, sizeof(*keys), GFP_KERNEL);
-> +	if (!keys)
-> +		return -ENOMEM;
-> +
-> +	keys->dev = &pdev->dev;
-> +	keys->regmap = pmic_chip->regmap;
-> +	mtk_pmic_regs = of_id->data;
-> +
-> +	keys->input_dev = input_dev = devm_input_allocate_device(keys->dev);
-> +	if (!input_dev) {
-> +		dev_err(keys->dev, "input allocate device fail.\n");
-> +		return -ENOMEM;
-> +	}
-> +
-> +	input_dev->name = "mtk-pmic-keys";
-> +	input_dev->id.bustype = BUS_HOST;
-> +	input_dev->id.vendor = 0x0001;
-> +	input_dev->id.product = 0x0001;
-> +	input_dev->id.version = 0x0001;
-> +
-> +	keycount = device_get_child_node_count(keys->dev);
-
-Since you are using of_* API everywhere else I'd rather we used
-of_get_available_child_count() here.
-
-
-Once these 2 issues are fixed please feel free to add 
-
-Acked-by: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-
-I assume it will all go though MFD tree, right?
-
-> +	if (keycount > MTK_PMIC_MAX_KEY_COUNT) {
-> +		dev_err(keys->dev, "too many keys defined (%d)\n", keycount);
+> +	of_id = of_match_node(msdc_of_ids, pdev->dev.of_node);
+> +	if (!of_id)
 > +		return -EINVAL;
-> +	}
-> +
-> +	for_each_child_of_node(node, child) {
-> +		keys->keys[index].regs = &mtk_pmic_regs->keys_regs[index];
-> +
-> +		keys->keys[index].irq = platform_get_irq(pdev, index);
-> +		if (keys->keys[index].irq < 0)
-> +			return keys->keys[index].irq;
-> +
-> +		error = of_property_read_u32(child,
-> +			"linux,keycodes", &keys->keys[index].keycode);
-> +		if (error) {
-> +			dev_err(keys->dev,
-> +				"failed to read key:%d linux,keycode property: %d\n",
-> +				index, error);
-> +			return error;
-> +		}
-> +
-> +		if (of_property_read_bool(child, "wakeup-source"))
-> +			keys->keys[index].wakeup = true;
-> +
-> +		error = mtk_pmic_key_setup(keys, &keys->keys[index]);
-> +		if (error)
-> +			return error;
-> +
-> +		index++;
-> +	}
-> +
-> +	error = input_register_device(input_dev);
-> +	if (error) {
-> +		dev_err(&pdev->dev,
-> +			"register input device failed (%d)\n", error);
-> +		return error;
-> +	}
-> +
-> +	mtk_pmic_keys_lp_reset_setup(keys, mtk_pmic_regs->pmic_rst_reg);
-> +
-> +	platform_set_drvdata(pdev, keys);
-> +
-> +	return 0;
-> +}
-> +
-> +static struct platform_driver pmic_keys_pdrv = {
-> +	.probe = mtk_pmic_keys_probe,
-> +	.driver = {
-> +		   .name = "mtk-pmic-keys",
-> +		   .of_match_table = of_mtk_pmic_keys_match_tbl,
-> +		   .pm = &mtk_pmic_keys_pm_ops,
-> +	},
-> +};
-> +
-> +module_platform_driver(pmic_keys_pdrv);
-> +
-> +MODULE_LICENSE("GPL v2");
-> +MODULE_AUTHOR("Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
-> +MODULE_DESCRIPTION("MTK pmic-keys driver v0.1");
-> -- 
-> 1.7.9.5
-> 
+>  	/* Allocate MMC host for this device */
+>  	mmc = mmc_alloc_host(sizeof(struct msdc_host), &pdev->dev);
+>  	if (!mmc)
+> @@ -1686,11 +1744,15 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>  	msdc_of_property_parse(pdev, host);
+>  
+>  	host->dev = &pdev->dev;
+> +	host->dev_comp = of_id->data;
+>  	host->mmc = mmc;
+>  	host->src_clk_freq = clk_get_rate(host->src_clk);
+>  	/* Set host parameters to mmc */
+>  	mmc->ops = &mt_msdc_ops;
+> -	mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 255);
+> +	if (host->dev_comp->clk_div_bits == 8)
+> +		mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 255);
+> +	else
+> +		mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 4095);
+>  
+>  	mmc->caps |= MMC_CAP_ERASE | MMC_CAP_CMD23;
+>  	/* MMC core transfer sizes tunable parameters */
+> @@ -1839,12 +1901,6 @@ static int msdc_runtime_resume(struct device *dev)
+>  	SET_RUNTIME_PM_OPS(msdc_runtime_suspend, msdc_runtime_resume, NULL)
+>  };
+>  
+> -static const struct of_device_id msdc_of_ids[] = {
+> -	{   .compatible = "mediatek,mt8135-mmc", },
+> -	{}
+> -};
+> -MODULE_DEVICE_TABLE(of, msdc_of_ids);
+> -
+>  static struct platform_driver mt_msdc_driver = {
+>  	.probe = msdc_drv_probe,
+>  	.remove = msdc_drv_remove,
 
-Thanks.
 
--- 
-Dmitry
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
