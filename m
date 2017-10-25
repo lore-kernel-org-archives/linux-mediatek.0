@@ -1,68 +1,77 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v5 0/9] Mediatek MT2712 clock and scpsys support
-Date: Wed, 25 Oct 2017 10:38:03 +0200
-Message-ID: <d8e00869-f6ff-9209-f630-abcb6815e225@gmail.com>
-References: <1508381330-3700-1-git-send-email-weiyi.lu@mediatek.com>
- <e67f2b01-552b-e9b3-6c38-141e3063439d@gmail.com>
- <20171024083830.GD15990@codeaurora.org>
+From: Ji.Zhang <ji.zhang@mediatek.com>
+Subject: Re: [PATCH] arm: fix text section corruption
+Date: Wed, 25 Oct 2017 17:17:30 +0800
+Message-ID: <1508923050.26492.1.camel@mtksdccf07>
+References: <1506050119-2670-1-git-send-email-ji.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20171024083830.GD15990-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: Weiyi Lu <weiyi.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Fan Chen <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1506050119-2670-1-git-send-email-ji.zhang@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Russell King <linux@armlinux.org.uk>
+Cc: wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, shadanji@163.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Dear All sirs,
 
+Is there any suggestion for this patch?
 
-On 10/24/2017 10:38 AM, Stephen Boyd wrote:
-> On 10/19, Matthias Brugger wrote:
->>
->>
->> On 10/19/2017 04:48 AM, Weiyi Lu wrote:
->>> This series is based on v4.14-rc1 and composed of
->>> clock control (PATCH 1-4) and scpsys control (PATCH 5-9)
->>>
->>> changes since v4:
->>> - Refine scpsys and infracfg for bus protection by passing 
->>>   a boolean flag to determine the register update method.
->>>
->>> changes since v3:
->>> - Rebase to v4.14-rc1.
->>>
->>> changes since v2:
->>> - ensure the clocks used by clocksource driver are registered
->>>   before clocksource init() by using CLK_OF_DECLARE()
->>> - correct the frequency of clk32k/clkrtc_ext/clkrtc_int
->>>
->>> changes since v1:
->>> - Rebase to v4.13-next-soc.
->>> - Refine scpsys and infracfg for bus protection.
->>>
->>> Weiyi Lu (9):
->>>   dt-bindings: ARM: Mediatek: Document bindings for MT2712
->>>   clk: mediatek: Add dt-bindings for MT2712 clocks
->>>   clk: mediatek: Add MT2712 clock support
->>
->> Stephen, Mike: are you ok with the patches 1-3 of this series?
->>
->> If so, then I will take the rest through my tree.
->>
+Since we have found that this issue can be reproduced with high repeat
+ratio by some fuzzer tests, we strongly suggest it can be fixed in next
+kernel version.
+
+Thanks a lot.
+
+Ji
+
+On Fri, 2017-09-22 at 11:15 +0800, Ji Zhang wrote:
+> When CONFIG_CPU_SW_DOMAIN_PAN is enabled, there are 9 registers being
+> pushed into stack in save_regs, but in fixup it still consider there are
+> 8 registers in stack, which is the case of CONFIG_CPU_SW_DOMAIN_PAN
+> disabled.
+> When fixup being executed, -EFAULT will be written to the text section.
 > 
-> Do you need a branch for headers? I'm see there's a v6 so I'll
-> review that one.
+> In fixup:
+> mov	r4, #-EFAULT
+> /*
+>  * When CONFIG_CPU_SW_DOMAIN_PAN enabled, r5 will load the value stored by
+>  * lr in save_regs, which is the address of instruction in text section.
+>  */
+> ldr	r5, [sp,#8*4]	@err_ptr
+> /*
+>  * This will write -EFAULT(0xfffffff2) to r5, which points to text section
+>  * now, and when function returns, it will use 0xfffffff2 as an
+>  * instruction, then undefined instruction occurs.
+>  */
+> str	r4, [r5]
 > 
-
-If you plan to merge them to v4.15 then no, otherwise that would be helpfull.
-
-AFAIK no changes between v5 and v6.
-
-Thanks!
-Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Signed-off-by: Ji Zhang <ji.zhang@mediatek.com>
+> ---
+>  arch/arm/lib/csumpartialcopyuser.S | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/arch/arm/lib/csumpartialcopyuser.S b/arch/arm/lib/csumpartialcopyuser.S
+> index 1712f13..b83fdc0 100644
+> --- a/arch/arm/lib/csumpartialcopyuser.S
+> +++ b/arch/arm/lib/csumpartialcopyuser.S
+> @@ -85,7 +85,11 @@
+>  		.pushsection .text.fixup,"ax"
+>  		.align	4
+>  9001:		mov	r4, #-EFAULT
+> +#ifdef CONFIG_CPU_SW_DOMAIN_PAN
+> +		ldr	r5, [sp, #9*4]		@ *err_ptr
+> +#else
+>  		ldr	r5, [sp, #8*4]		@ *err_ptr
+> +#endif
+>  		str	r4, [r5]
+>  		ldmia	sp, {r1, r2}		@ retrieve dst, len
+>  		add	r2, r2, r1
