@@ -1,79 +1,79 @@
-From: Chen Zhong <chen.zhong@mediatek.com>
-Subject: [PATCH v6 1/6] mfd: mt6397: create irq mappings in mfd core driver
-Date: Wed, 25 Oct 2017 21:15:59 +0800
-Message-ID: <1508937364-30054-2-git-send-email-chen.zhong@mediatek.com>
-References: <1508937364-30054-1-git-send-email-chen.zhong@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v6 03/12] arm64: dts: mt8173: remove "mediatek,mt8135-mmc"
+ from mmc nodes
+Date: Wed, 25 Oct 2017 23:11:28 +0200
+Message-ID: <CAPDyKFrRVT8YFXvy3Wuf_jga5oourScOdas34U=YkeLRzHoWMg@mail.gmail.com>
+References: <1508118399-21828-1-git-send-email-chaotian.jing@mediatek.com> <1508118399-21828-4-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1508937364-30054-1-git-send-email-chen.zhong@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, Lee Jones <lee.jones@linaro.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Alessandro Zummo <a.zummo@towertech.it>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Jaechul Lee <jcsing.lee@samsung.com>, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Chen Zhong <chen.zhong@mediatek.com>, Beomho Seo <beomho.seo@samsung.com>, linux-rtc@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1508118399-21828-4-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Heiner Kallweit <hkallweit1@gmail.com>, Phong LE <ple@baylibre.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The core driver should create and manage irq mappings instead of
-leaf drivers. This patch change to pass irq domain to
-devm_mfd_add_devices() and it will create mapping for irq resources
-automatically. And remove irq mapping in rtc driver since this has
-been done in core driver.
+On 16 October 2017 at 03:46, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+> devicetree bindings has been updated to support multi-platforms,
+> so that each platform has its owns compatible name.
+> And, this compatible name may used in driver to distinguish with
+> other platform.
+>
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
 
-Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
-Acked-by: Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
----
- drivers/mfd/mt6397-core.c |    4 ++--
- drivers/rtc/rtc-mt6397.c  |    7 +++----
- 2 files changed, 5 insertions(+), 6 deletions(-)
+Matthias, do you intend to pick this? Else I can do it with your ack...
 
-diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-index 04a601f..6546d7f 100644
---- a/drivers/mfd/mt6397-core.c
-+++ b/drivers/mfd/mt6397-core.c
-@@ -289,7 +289,7 @@ static int mt6397_probe(struct platform_device *pdev)
- 
- 		ret = devm_mfd_add_devices(&pdev->dev, -1, mt6323_devs,
- 					   ARRAY_SIZE(mt6323_devs), NULL,
--					   0, NULL);
-+					   0, pmic->irq_domain);
- 		break;
- 
- 	case MT6397_CID_CODE:
-@@ -304,7 +304,7 @@ static int mt6397_probe(struct platform_device *pdev)
- 
- 		ret = devm_mfd_add_devices(&pdev->dev, -1, mt6397_devs,
- 					   ARRAY_SIZE(mt6397_devs), NULL,
--					   0, NULL);
-+					   0, pmic->irq_domain);
- 		break;
- 
- 	default:
-diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-index 1a61fa5..385f830 100644
---- a/drivers/rtc/rtc-mt6397.c
-+++ b/drivers/rtc/rtc-mt6397.c
-@@ -322,10 +322,9 @@ static int mtk_rtc_probe(struct platform_device *pdev)
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	rtc->addr_base = res->start;
- 
--	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
--	rtc->irq = irq_create_mapping(mt6397_chip->irq_domain, res->start);
--	if (rtc->irq <= 0)
--		return -EINVAL;
-+	rtc->irq = platform_get_irq(pdev, 0);
-+	if (rtc->irq < 0)
-+		return rtc->irq;
- 
- 	rtc->regmap = mt6397_chip->regmap;
- 	rtc->dev = &pdev->dev;
--- 
-1.7.9.5
+Kind regards
+Uffe
+
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 12 ++++--------
+>  1 file changed, 4 insertions(+), 8 deletions(-)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index b99a273..26396ef 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -682,8 +682,7 @@
+>                 };
+>
+>                 mmc0: mmc@11230000 {
+> -                       compatible = "mediatek,mt8173-mmc",
+> -                                    "mediatek,mt8135-mmc";
+> +                       compatible = "mediatek,mt8173-mmc";
+>                         reg = <0 0x11230000 0 0x1000>;
+>                         interrupts = <GIC_SPI 71 IRQ_TYPE_LEVEL_LOW>;
+>                         clocks = <&pericfg CLK_PERI_MSDC30_0>,
+> @@ -693,8 +692,7 @@
+>                 };
+>
+>                 mmc1: mmc@11240000 {
+> -                       compatible = "mediatek,mt8173-mmc",
+> -                                    "mediatek,mt8135-mmc";
+> +                       compatible = "mediatek,mt8173-mmc";
+>                         reg = <0 0x11240000 0 0x1000>;
+>                         interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_LOW>;
+>                         clocks = <&pericfg CLK_PERI_MSDC30_1>,
+> @@ -704,8 +702,7 @@
+>                 };
+>
+>                 mmc2: mmc@11250000 {
+> -                       compatible = "mediatek,mt8173-mmc",
+> -                                    "mediatek,mt8135-mmc";
+> +                       compatible = "mediatek,mt8173-mmc";
+>                         reg = <0 0x11250000 0 0x1000>;
+>                         interrupts = <GIC_SPI 73 IRQ_TYPE_LEVEL_LOW>;
+>                         clocks = <&pericfg CLK_PERI_MSDC30_2>,
+> @@ -715,8 +712,7 @@
+>                 };
+>
+>                 mmc3: mmc@11260000 {
+> -                       compatible = "mediatek,mt8173-mmc",
+> -                                    "mediatek,mt8135-mmc";
+> +                       compatible = "mediatek,mt8173-mmc";
+>                         reg = <0 0x11260000 0 0x1000>;
+>                         interrupts = <GIC_SPI 74 IRQ_TYPE_LEVEL_LOW>;
+>                         clocks = <&pericfg CLK_PERI_MSDC30_3>,
+> --
+> 1.8.1.1.dirty
+>
