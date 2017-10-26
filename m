@@ -1,40 +1,60 @@
-From: Andi Shyti <andi.shyti@samsung.com>
-Subject: Re: [PATCH v5 5/6] input: Add MediaTek PMIC keys support
-Date: Thu, 26 Oct 2017 17:27:44 +0900
-Message-ID: <20171026082744.GA29398@gangnam>
-References: <1506509048-19032-1-git-send-email-chen.zhong@mediatek.com>
- <CGME20170927104421epcas2p190d03c1c6759f394debfc01b23641ece@epcas2p1.samsung.com>
- <1506509048-19032-6-git-send-email-chen.zhong@mediatek.com>
+From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Subject: Re: [PATCH v3 0/4] rtc: mediatek: add support for SoC based RTC on
+ MT7622
+Date: Thu, 26 Oct 2017 11:34:30 +0200
+Message-ID: <20171026093430.aw4rpjffrvrzycga@piout.net>
+References: <cover.1508741262.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-disposition: inline
-In-reply-to: <1506509048-19032-6-git-send-email-chen.zhong@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Chen Zhong <chen.zhong@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Alessandro Zummo <a.zummo@towertech.it>, Jaechul Lee <jcsing.lee@samsung.com>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, linux-input@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-rtc@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <cover.1508741262.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: a.zummo@towertech.it, robh+dt@kernel.org, mark.rutland@arm.com, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi,
 
-On Wed, Sep 27, 2017 at 06:44:07PM +0800, Chen Zhong wrote:
-> This patch add support to handle MediaTek PMIC MT6397/MT6323 key
-> interrupts including pwrkey and homekey, also add setting for
-> long press key shutdown behavior.
+On 23/10/2017 at 15:16:43 +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
+> Changes since v2:
+> - Remove time extension with yr_base 
+> - Add fixup that ensures all time fields in hardware keeping consistency
+> inside the mtk_rtc_get_alarm_or_time call
+> - Add validity for time range should be between 2001 to 2099
+> - Enhance comments with aligned style and explanation for certain limiation in
+> hardware
+> - Rename dt-binding naming from rtc-mediatek.txt to rtc-mt7622.txt
+> - Rename config naming from RTC_DRV_MEDIATEK to RTC_DRV_MT7622
+> 
+> Changes since v1:
+> - Rename to rtc-mt7622.c from rtc-mediatek.c
+> - Use [readl,writel]_relaxed instead of __raw_* version
+> - Remove redundant register reading in mtk_rtc_get_alarm_or_time()
+> - Stop alarm when alarm is really expired in mtk_rtc_alarmirq()
+> - Extend the maximum year the RTC/Alarm can count/support using year rebasing
+> - Remove unnesscary log which is already done in core layer
+> 
+> This patchset introduces support for MediaTek SoC based real time clock
+> (RTC) Currently, the driver is already tested successfully with hwclock
+> and wakealarm on MT7622 SoC. And it should also be workable on other
+> similar MediaTek SoCs. And patch 3 is a distinct patch used to distinguish
+> between either SoC based or PMIC based RTC to avoid confusion for the RTC
+> selection for the target SoC.
+> 
+> Sean Wang (4):
+>   dt-bindings: rtc: mediatek: add bindings for MediaTek SoC based RTC
+>   rtc: mediatek: add driver for RTC on MT7622 SoC
+>   rtc: mediatek: enhance the description for MediaTek PMIC based RTC
+>   rtc: mediatek: update MAINTAINERS entry with MediaTek RTC driver
+> 
 
-if you want you can add:
+All applied, thanks. (I've alphabetically ordered Kconfig and Makefile
+entries in patch 2)
 
-Reviewed-by: Andi Shyti <andi.shyti@samsung.com>
-
-Andi
+-- 
+Alexandre Belloni, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
