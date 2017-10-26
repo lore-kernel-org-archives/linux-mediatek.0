@@ -1,60 +1,157 @@
-From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Subject: Re: [PATCH v3 0/4] rtc: mediatek: add support for SoC based RTC on
- MT7622
-Date: Thu, 26 Oct 2017 11:34:30 +0200
-Message-ID: <20171026093430.aw4rpjffrvrzycga@piout.net>
-References: <cover.1508741262.git.sean.wang@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 3/3] phy: phy-mtk-tphy: fix alignment warning
+Date: Thu, 26 Oct 2017 20:50:28 +0800
+Message-ID: <964f480553791aab43299a8ac06cc44a9430eea2.1509022150.git.chunfeng.yun@mediatek.com>
+References: <f08880e993f05761f0171b83812e940d30a54b05.1509022149.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <cover.1508741262.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: a.zummo@towertech.it, robh+dt@kernel.org, mark.rutland@arm.com, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <f08880e993f05761f0171b83812e940d30a54b05.1509022149.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+Fix alignment warning by checkpatch.pl with --strict
 
-On 23/10/2017 at 15:16:43 +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Changes since v2:
-> - Remove time extension with yr_base 
-> - Add fixup that ensures all time fields in hardware keeping consistency
-> inside the mtk_rtc_get_alarm_or_time call
-> - Add validity for time range should be between 2001 to 2099
-> - Enhance comments with aligned style and explanation for certain limiation in
-> hardware
-> - Rename dt-binding naming from rtc-mediatek.txt to rtc-mt7622.txt
-> - Rename config naming from RTC_DRV_MEDIATEK to RTC_DRV_MT7622
-> 
-> Changes since v1:
-> - Rename to rtc-mt7622.c from rtc-mediatek.c
-> - Use [readl,writel]_relaxed instead of __raw_* version
-> - Remove redundant register reading in mtk_rtc_get_alarm_or_time()
-> - Stop alarm when alarm is really expired in mtk_rtc_alarmirq()
-> - Extend the maximum year the RTC/Alarm can count/support using year rebasing
-> - Remove unnesscary log which is already done in core layer
-> 
-> This patchset introduces support for MediaTek SoC based real time clock
-> (RTC) Currently, the driver is already tested successfully with hwclock
-> and wakealarm on MT7622 SoC. And it should also be workable on other
-> similar MediaTek SoCs. And patch 3 is a distinct patch used to distinguish
-> between either SoC based or PMIC based RTC to avoid confusion for the RTC
-> selection for the target SoC.
-> 
-> Sean Wang (4):
->   dt-bindings: rtc: mediatek: add bindings for MediaTek SoC based RTC
->   rtc: mediatek: add driver for RTC on MT7622 SoC
->   rtc: mediatek: enhance the description for MediaTek PMIC based RTC
->   rtc: mediatek: update MAINTAINERS entry with MediaTek RTC driver
-> 
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/phy/mediatek/Kconfig        |    8 ++++----
+ drivers/phy/mediatek/phy-mtk-tphy.c |   24 ++++++++++++------------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
 
-All applied, thanks. (I've alphabetically ordered Kconfig and Makefile
-entries in patch 2)
-
+diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
+index 88ab4e2..fb4bcd9 100644
+--- a/drivers/phy/mediatek/Kconfig
++++ b/drivers/phy/mediatek/Kconfig
+@@ -8,7 +8,7 @@ config PHY_MTK_TPHY
+     help
+       Say 'Y' here to add support for MediaTek T-PHY driver,
+       it supports multiple usb2.0, usb3.0 ports, PCIe and
+-	  SATA, and meanwhile supports two version T-PHY which have
+-	  different banks layout, the T-PHY with shared banks between
+-	  multi-ports is first version, otherwise is second veriosn,
+-	  so you can easily distinguish them by banks layout.
++      SATA, and meanwhile supports two version T-PHY which have
++      different banks layout, the T-PHY with shared banks between
++      multi-ports is first version, otherwise is second veriosn,
++      so you can easily distinguish them by banks layout.
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index cdd33bf..02b00b7 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -309,7 +309,7 @@ struct mtk_tphy {
+ };
+ 
+ static void hs_slew_rate_calibrate(struct mtk_tphy *tphy,
+-	struct mtk_phy_instance *instance)
++				   struct mtk_phy_instance *instance)
+ {
+ 	struct u2phy_banks *u2_banks = &instance->u2_banks;
+ 	void __iomem *fmreg = u2_banks->fmreg;
+@@ -384,7 +384,7 @@ static void hs_slew_rate_calibrate(struct mtk_tphy *tphy,
+ }
+ 
+ static void u3_phy_instance_init(struct mtk_tphy *tphy,
+-	struct mtk_phy_instance *instance)
++				 struct mtk_phy_instance *instance)
+ {
+ 	struct u3phy_banks *u3_banks = &instance->u3_banks;
+ 	u32 tmp;
+@@ -434,7 +434,7 @@ static void u3_phy_instance_init(struct mtk_tphy *tphy,
+ }
+ 
+ static void u2_phy_instance_init(struct mtk_tphy *tphy,
+-	struct mtk_phy_instance *instance)
++				 struct mtk_phy_instance *instance)
+ {
+ 	struct u2phy_banks *u2_banks = &instance->u2_banks;
+ 	void __iomem *com = u2_banks->com;
+@@ -496,7 +496,7 @@ static void u2_phy_instance_init(struct mtk_tphy *tphy,
+ }
+ 
+ static void u2_phy_instance_power_on(struct mtk_tphy *tphy,
+-	struct mtk_phy_instance *instance)
++				     struct mtk_phy_instance *instance)
+ {
+ 	struct u2phy_banks *u2_banks = &instance->u2_banks;
+ 	void __iomem *com = u2_banks->com;
+@@ -530,7 +530,7 @@ static void u2_phy_instance_power_on(struct mtk_tphy *tphy,
+ }
+ 
+ static void u2_phy_instance_power_off(struct mtk_tphy *tphy,
+-	struct mtk_phy_instance *instance)
++				      struct mtk_phy_instance *instance)
+ {
+ 	struct u2phy_banks *u2_banks = &instance->u2_banks;
+ 	void __iomem *com = u2_banks->com;
+@@ -565,7 +565,7 @@ static void u2_phy_instance_power_off(struct mtk_tphy *tphy,
+ }
+ 
+ static void u2_phy_instance_exit(struct mtk_tphy *tphy,
+-	struct mtk_phy_instance *instance)
++				 struct mtk_phy_instance *instance)
+ {
+ 	struct u2phy_banks *u2_banks = &instance->u2_banks;
+ 	void __iomem *com = u2_banks->com;
+@@ -609,7 +609,7 @@ static void u2_phy_instance_set_mode(struct mtk_tphy *tphy,
+ }
+ 
+ static void pcie_phy_instance_init(struct mtk_tphy *tphy,
+-	struct mtk_phy_instance *instance)
++				   struct mtk_phy_instance *instance)
+ {
+ 	struct u3phy_banks *u3_banks = &instance->u3_banks;
+ 	u32 tmp;
+@@ -682,7 +682,7 @@ static void pcie_phy_instance_init(struct mtk_tphy *tphy,
+ }
+ 
+ static void pcie_phy_instance_power_on(struct mtk_tphy *tphy,
+-	struct mtk_phy_instance *instance)
++				       struct mtk_phy_instance *instance)
+ {
+ 	struct u3phy_banks *bank = &instance->u3_banks;
+ 	u32 tmp;
+@@ -698,7 +698,7 @@ static void pcie_phy_instance_power_on(struct mtk_tphy *tphy,
+ }
+ 
+ static void pcie_phy_instance_power_off(struct mtk_tphy *tphy,
+-	struct mtk_phy_instance *instance)
++					struct mtk_phy_instance *instance)
+ 
+ {
+ 	struct u3phy_banks *bank = &instance->u3_banks;
+@@ -714,7 +714,7 @@ static void pcie_phy_instance_power_off(struct mtk_tphy *tphy,
+ }
+ 
+ static void sata_phy_instance_init(struct mtk_tphy *tphy,
+-	struct mtk_phy_instance *instance)
++				   struct mtk_phy_instance *instance)
+ {
+ 	struct u3phy_banks *u3_banks = &instance->u3_banks;
+ 	void __iomem *phyd = u3_banks->phyd;
+@@ -916,7 +916,7 @@ static int mtk_phy_set_mode(struct phy *phy, enum phy_mode mode)
+ }
+ 
+ static struct phy *mtk_phy_xlate(struct device *dev,
+-					struct of_phandle_args *args)
++				 struct of_phandle_args *args)
+ {
+ 	struct mtk_tphy *tphy = dev_get_drvdata(dev);
+ 	struct mtk_phy_instance *instance = NULL;
+@@ -1015,7 +1015,7 @@ static int mtk_tphy_probe(struct platform_device *pdev)
+ 
+ 	tphy->nphys = of_get_child_count(np);
+ 	tphy->phys = devm_kcalloc(dev, tphy->nphys,
+-				       sizeof(*tphy->phys), GFP_KERNEL);
++				  sizeof(*tphy->phys), GFP_KERNEL);
+ 	if (!tphy->phys)
+ 		return -ENOMEM;
+ 
 -- 
-Alexandre Belloni, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+1.7.9.5
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
