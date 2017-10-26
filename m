@@ -1,79 +1,40 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v6 03/12] arm64: dts: mt8173: remove "mediatek,mt8135-mmc"
- from mmc nodes
-Date: Wed, 25 Oct 2017 23:11:28 +0200
-Message-ID: <CAPDyKFrRVT8YFXvy3Wuf_jga5oourScOdas34U=YkeLRzHoWMg@mail.gmail.com>
-References: <1508118399-21828-1-git-send-email-chaotian.jing@mediatek.com> <1508118399-21828-4-git-send-email-chaotian.jing@mediatek.com>
+From: Andi Shyti <andi.shyti@samsung.com>
+Subject: Re: [PATCH v5 5/6] input: Add MediaTek PMIC keys support
+Date: Thu, 26 Oct 2017 17:27:44 +0900
+Message-ID: <20171026082744.GA29398@gangnam>
+References: <1506509048-19032-1-git-send-email-chen.zhong@mediatek.com>
+ <CGME20170927104421epcas2p190d03c1c6759f394debfc01b23641ece@epcas2p1.samsung.com>
+ <1506509048-19032-6-git-send-email-chen.zhong@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1508118399-21828-4-git-send-email-chaotian.jing@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Heiner Kallweit <hkallweit1@gmail.com>, Phong LE <ple@baylibre.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-disposition: inline
+In-reply-to: <1506509048-19032-6-git-send-email-chen.zhong@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Chen Zhong <chen.zhong@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Alessandro Zummo <a.zummo@towertech.it>, Jaechul Lee <jcsing.lee@samsung.com>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, linux-input@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-rtc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 16 October 2017 at 03:46, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
-> devicetree bindings has been updated to support multi-platforms,
-> so that each platform has its owns compatible name.
-> And, this compatible name may used in driver to distinguish with
-> other platform.
->
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+Hi,
 
-Matthias, do you intend to pick this? Else I can do it with your ack...
+On Wed, Sep 27, 2017 at 06:44:07PM +0800, Chen Zhong wrote:
+> This patch add support to handle MediaTek PMIC MT6397/MT6323 key
+> interrupts including pwrkey and homekey, also add setting for
+> long press key shutdown behavior.
+> 
+> Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
 
-Kind regards
-Uffe
+if you want you can add:
 
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 12 ++++--------
->  1 file changed, 4 insertions(+), 8 deletions(-)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index b99a273..26396ef 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -682,8 +682,7 @@
->                 };
->
->                 mmc0: mmc@11230000 {
-> -                       compatible = "mediatek,mt8173-mmc",
-> -                                    "mediatek,mt8135-mmc";
-> +                       compatible = "mediatek,mt8173-mmc";
->                         reg = <0 0x11230000 0 0x1000>;
->                         interrupts = <GIC_SPI 71 IRQ_TYPE_LEVEL_LOW>;
->                         clocks = <&pericfg CLK_PERI_MSDC30_0>,
-> @@ -693,8 +692,7 @@
->                 };
->
->                 mmc1: mmc@11240000 {
-> -                       compatible = "mediatek,mt8173-mmc",
-> -                                    "mediatek,mt8135-mmc";
-> +                       compatible = "mediatek,mt8173-mmc";
->                         reg = <0 0x11240000 0 0x1000>;
->                         interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_LOW>;
->                         clocks = <&pericfg CLK_PERI_MSDC30_1>,
-> @@ -704,8 +702,7 @@
->                 };
->
->                 mmc2: mmc@11250000 {
-> -                       compatible = "mediatek,mt8173-mmc",
-> -                                    "mediatek,mt8135-mmc";
-> +                       compatible = "mediatek,mt8173-mmc";
->                         reg = <0 0x11250000 0 0x1000>;
->                         interrupts = <GIC_SPI 73 IRQ_TYPE_LEVEL_LOW>;
->                         clocks = <&pericfg CLK_PERI_MSDC30_2>,
-> @@ -715,8 +712,7 @@
->                 };
->
->                 mmc3: mmc@11260000 {
-> -                       compatible = "mediatek,mt8173-mmc",
-> -                                    "mediatek,mt8135-mmc";
-> +                       compatible = "mediatek,mt8173-mmc";
->                         reg = <0 0x11260000 0 0x1000>;
->                         interrupts = <GIC_SPI 74 IRQ_TYPE_LEVEL_LOW>;
->                         clocks = <&pericfg CLK_PERI_MSDC30_3>,
-> --
-> 1.8.1.1.dirty
->
+Reviewed-by: Andi Shyti <andi.shyti@samsung.com>
+
+Andi
