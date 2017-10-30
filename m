@@ -1,112 +1,40 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH v2] mtd: nand: mtk: fix infinite ECC decode IRQ issue
-Date: Mon, 30 Oct 2017 10:27:46 +0100
-Message-ID: <20171030102746.19d18860@bbrezillon>
-References: <1509331196-29412-1-git-send-email-xiaolei.li@mediatek.com>
-        <1509331196-29412-2-git-send-email-xiaolei.li@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <1509331196-29412-2-git-send-email-xiaolei.li@mediatek.com>
-Sender: stable-owner@vger.kernel.org
-To: Xiaolei Li <xiaolei.li@mediatek.com>
-Cc: computersforpeace@gmail.com, dwmw2@infradead.org, linux-mtd@lists.infradead.org, linux-mediatek@lists.infradead.org, rogercc.lin@mediatek.com, srv_heupstream@mediatek.com, stable@vger.kernel.org
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH] iommu/mediatek: Fix driver name
+Date: Mon, 30 Oct 2017 12:37:55 +0100
+Message-ID: <20171030113755.32408-1-matthias.bgg@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: joro@8bytes.org, sean.wang@mediatek.com, honghui.zhang@mediatek.com
+Cc: iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 30 Oct 2017 10:39:56 +0800
-Xiaolei Li <xiaolei.li@mediatek.com> wrote:
+There exist two Mediatek iommu drivers for the two different
+generations of the device. But both drivers have the same name
+"mtk-iommu". This breaks the registration of the second driver:
 
-> For MT2701 NAND Controller, there may generate infinite ECC decode IRQ
-> during long time burn test on some platforms. Once this issue occurred,
-> the ECC decode IRQ status cannot be cleared in the IRQ handler function,
-> and threads cannot be scheduled.
-> 
-> ECC HW generates decode IRQ each sector, so there will have more than one
-> decode IRQ if read one page of large page NAND.
-> 
-> Currently, ECC IRQ handle flow is that we will check whether it is decode
-> IRQ at first by reading the register ECC_DECIRQ_STA. This is a read-clear
-> type register. If this IRQ is decode IRQ, then the ECC IRQ signal will be
-> cleared at the same time.
-> Secondly, we will check whether all sectors are decoded by reading the
-> register ECC_DECDONE. This is because the current IRQ may be not dealed
-> in time, and the next sectors have been decoded before reading the
-> register ECC_DECIRQ_STA. Then, the next sectors's decode IRQs will not
-> be generated.
-> Thirdly, if all sectors are decoded by comparing with ecc->sectors, then we
-> will complete ecc->done, set ecc->sectors as 0, and disable ECC IRQ by
-> programming the register ECC_IRQ_REG(op) as 0. Otherwise, wait for the
-> next ECC IRQ.
-> 
-> But, there is a timing issue between step one and two. When we read the
-> reigster ECC_DECIRQ_STA, all sectors are decoded except the last sector,
-> and the ECC IRQ signal is cleared. But the last sector is decoded before
-> reading ECC_DECDONE, so the ECC IRQ signal is enabled again by ECC HW, and
-> it means we will receive one extra ECC IRQ later. In step three, we will
-> find that all sectors were decoded, then disable ECC IRQ and return.
-> When deal with the extra ECC IRQ, the ECC IRQ status cannot be cleared
-> anymore. That is because the register ECC_DECIRQ_STA can only be cleared
-> when the register ECC_IRQ_REG(op) is enabled. But actually we have
-> disabled ECC IRQ in the previous ECC IRQ handle. So, there will
-> keep receiving ECC decode IRQ.
-> 
-> Now, we read the register ECC_DECIRQ_STA once again before completing the
-> ecc done event. This ensures that there will be no extra ECC decode IRQ.
-> 
-> Also, remove writel(0, ecc->regs + ECC_IRQ_REG(op)) from irq handler,
-> because ECC IRQ is disabled in mtk_ecc_disable(). And clear ECC_DECIRQ_STA
-> in mtk_ecc_disable() in case there is a timeout to wait decode IRQ.
-> 
-> Fixes: 1d6b1e464950 ("mtd: mediatek: driver for MTK Smart Device")
-> Cc: <stable@vger.kernel.org>
-> Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
+Error: Driver 'mtk-iommu' is already registered, aborting...
 
-Applied.
+Fix this by changing the name for first generation to
+"mtk-iommu-v1".
 
-Thanks,
+Fixes: b17336c55d89 ("iommu/mediatek: add support for mtk iommu generation one HW")
+Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
+ drivers/iommu/mtk_iommu_v1.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Boris
-
-> ---
->  drivers/mtd/nand/mtk_ecc.c | 13 +++++++++++--
->  1 file changed, 11 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
-> index 7f3b065..c51d214 100644
-> --- a/drivers/mtd/nand/mtk_ecc.c
-> +++ b/drivers/mtd/nand/mtk_ecc.c
-> @@ -115,6 +115,11 @@ static irqreturn_t mtk_ecc_irq(int irq, void *id)
->  		op = ECC_DECODE;
->  		dec = readw(ecc->regs + ECC_DECDONE);
->  		if (dec & ecc->sectors) {
-> +			/*
-> +			 * Clear decode IRQ status once again to ensure that
-> +			 * there will be no extra IRQ.
-> +			 */
-> +			readw(ecc->regs + ECC_DECIRQ_STA);
->  			ecc->sectors = 0;
->  			complete(&ecc->done);
->  		} else {
-> @@ -130,8 +135,6 @@ static irqreturn_t mtk_ecc_irq(int irq, void *id)
->  		}
->  	}
->  
-> -	writel(0, ecc->regs + ECC_IRQ_REG(op));
-> -
->  	return IRQ_HANDLED;
->  }
->  
-> @@ -307,6 +310,12 @@ void mtk_ecc_disable(struct mtk_ecc *ecc)
->  
->  	/* disable it */
->  	mtk_ecc_wait_idle(ecc, op);
-> +	if (op == ECC_DECODE)
-> +		/*
-> +		 * Clear decode IRQ status in case there is a timeout to wait
-> +		 * decode IRQ.
-> +		 */
-> +		readw(ecc->regs + ECC_DECIRQ_STA);
->  	writew(0, ecc->regs + ECC_IRQ_REG(op));
->  	writew(ECC_OP_DISABLE, ecc->regs + ECC_CTL_REG(op));
->  
+diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+index bc1efbfb9ddf..542930cd183d 100644
+--- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -708,7 +708,7 @@ static struct platform_driver mtk_iommu_driver = {
+ 	.probe	= mtk_iommu_probe,
+ 	.remove	= mtk_iommu_remove,
+ 	.driver	= {
+-		.name = "mtk-iommu",
++		.name = "mtk-iommu-v1",
+ 		.of_match_table = mtk_iommu_of_ids,
+ 		.pm = &mtk_iommu_pm_ops,
+ 	}
+-- 
+2.14.2
