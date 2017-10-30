@@ -1,82 +1,29 @@
-From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v6 00/12] mmc: mediatek: add support of mt2701/mt2712
-Date: Mon, 30 Oct 2017 12:39:59 +0100
-Message-ID: <CAPDyKFr+Zc_u=YYhtzF0tRS0Pp08cKkGrJwoGDQympOF4M=HwA@mail.gmail.com>
-References: <1508118399-21828-1-git-send-email-chaotian.jing@mediatek.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [GIT PULL] Mediatek: 32-bit DT update for v4.15
+Date: Mon, 30 Oct 2017 13:42:58 +0100
+Message-ID: <CAK8P3a3NWwoe0mX45WrFONyiHt9eWTTMziEc+rjqSfr5QZv8xQ@mail.gmail.com>
+References: <c7145c00-b2b9-780c-0bfd-15f7d8a08dd6@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1508118399-21828-1-git-send-email-chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <c7145c00-b2b9-780c-0bfd-15f7d8a08dd6-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, yong mao <yong.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiner Kallweit <hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Phong LE <ple-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, DTML <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 16 October 2017 at 03:46, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->   This serial of patches are adding support of mt2701/mt2712.
-> there are many changes and HW improvement between mt8173 and
-> mt2701/mt2712, below is a list of these changes:
->   1. enlarge CLKDIV bits from 8 to 12
->   2. remove the PAD_TUNE register and add a new PAD_TUNE0 register
->   3. add data sync and async fifo feature
->   4. add busy_check feature
->   5. add stop_clk fix
->   6. add enhance_rx support
->   7. add a seperate CG of source clock
+On Mon, Oct 23, 2017 at 12:06 AM, Matthias Brugger
+<matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
 >
->   mt2712 supports full of these features, mt2701 supports part of it, and
-> add a "mediatek,latch-ck" to work-around as it do not support stop-clk fix.
->
-> Note: As Pinctrl/CCF are not ready now, so that current patches do not
-> include DTS part.
->
-> Changed vs v5:
->   based on Rob's comments, explain why MT8173 no longer compatible with
-> driver that supports "mediatek,mt8135-mmc", add more clearly description
-> of "mediatek,latch-ck".
->
-> Changed vs v4:
->   based on Julien's comment, change the "bool pad_tune0" to "u32 pad_tune_reg".
->
-> Changed vs v3:
->   based on Ulf's comments, make the bindings change to be the first patch.
->
-> Changed vs v2:
->   based on Matthias's comments, merge binding file changes to one patch,
-> add "hs400_tune" flag in dev_comp.
->
-> Changed vs v1:
->   based on Ulf/Rob/Matthias's comments of DTS binding file, make the binding
-> file clearly and fix probe issue.
->
->
-> Chaotian Jing (12):
->   mmc: dt-bindings: Add reg/source_cg/latch-ck for Mediatek MMC bindings
->   mmc: mediatek: add support of mt2701/mt2712
->   arm64: dts: mt8173: remove "mediatek,mt8135-mmc" from mmc nodes
->   mmc: mediatek: make hs400_tune_response only for mt8173
->   mmc: mediatek: add pad_tune0 support
->   mmc: mediatek: add async fifo and data tune support
->   mmc: mediatek: add busy_check support
->   mmc: mediatek: add stop_clk fix and enhance_rx support
->   mmc: mediatek: add support of source_cg clock
->   mmc: mediatek: add latch-ck support
->   mmc: mediatek: improve eMMC hs400 mode read performance
->   mmc: mediatek: perfer to use rise edge latching for cmd line
->
->  Documentation/devicetree/bindings/mmc/mtk-sd.txt |  18 +-
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi         |  12 +-
->  drivers/mmc/host/mtk-sd.c                        | 283 ++++++++++++++++++++---
->  3 files changed, 265 insertions(+), 48 deletions(-)
->
+> ----------------------------------------------------------------
+> - mt76233 add PCIe node
 
-Thanks, applied the hole series on my next branch.
+Could you clarify what the subnodes in the PCI node are for? It seems odd
+to have "interrupt-map" properties in both the pcie controller and its child
+nodes, and I want to ensure this is following the standard PCIe binding before
+I pull it.
 
-If Matthias wants to pick/ack the DT change (patch3), I either add his
-ack or drop that patch from my tree.
-
-Kind regards
-Uffe
+       Arnd
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
