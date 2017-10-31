@@ -1,46 +1,64 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [GIT PULL] Mediatek: 32-bit DT update for v4.15
-Date: Tue, 31 Oct 2017 12:19:39 +0800
-Message-ID: <1509423579.10793.10.camel@mtkswgap22>
-References: <c7145c00-b2b9-780c-0bfd-15f7d8a08dd6@gmail.com>
-         <CAK8P3a3NWwoe0mX45WrFONyiHt9eWTTMziEc+rjqSfr5QZv8xQ@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAK8P3a3NWwoe0mX45WrFONyiHt9eWTTMziEc+rjqSfr5QZv8xQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, DTML <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+Subject: [PATCH v2 4/5] [RFC] soc: rockchip: power-domain: Use GENPD_FLAG_ACTIVE_WAKEUP
+Date: Tue, 31 Oct 2017 19:11:33 +0100
+Message-ID: <1509473494-19740-5-git-send-email-geert+renesas@glider.be>
+References: <1509473494-19740-1-git-send-email-geert+renesas@glider.be>
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1509473494-19740-1-git-send-email-geert+renesas@glider.be>
+Sender: linux-pm-owner@vger.kernel.org
+To: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Ulf Hansson <ulf.hansson@linaro.org>, Kevin Hilman <khilman@kernel.org>
+Cc: Simon Horman <horms@verge.net.au>, Magnus Damm <magnus.damm@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-kernel@vger.kernel.org, Geert Uytterhoeven <geert+renesas@glider.be>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Arnd,
+Set the newly introduced GENPD_FLAG_ACTIVE_WAKEUP, which allows to
+remove the driver's own flag-based callback.
 
-We have 3 root ports in MT7623, but this is a bug in this chip where the
-HW designers wired the IRQs in a nonstandard way. We've tried to
-statically assign the bus portion of the address part in the parent
-interrupt-map before, but this approach cannot handle the case - if we
-attach the device in random order.
+Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+---
+This must not be applied before "PM / Domain: Enable genpd users to
+specify default active wakeup behavior" has landed upstream, hence the
+"RFC".
 
-Thanks.
+Compile-tested only.
 
-On Mon, 2017-10-30 at 13:42 +0100, Arnd Bergmann wrote:
-> On Mon, Oct 23, 2017 at 12:06 AM, Matthias Brugger
-> <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> >
-> > ----------------------------------------------------------------
-> > - mt76233 add PCIe node
-> 
-> Could you clarify what the subnodes in the PCI node are for? It seems odd
-> to have "interrupt-map" properties in both the pcie controller and its child
-> nodes, and I want to ensure this is following the standard PCIe binding before
-> I pull it.
-> 
->        Arnd
-> 
+v2:
+  - New.
+---
+ drivers/soc/rockchip/pm_domains.c | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
 
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+index 40b75748835f552c..5c342167b9db7a16 100644
+--- a/drivers/soc/rockchip/pm_domains.c
++++ b/drivers/soc/rockchip/pm_domains.c
+@@ -358,17 +358,6 @@ static void rockchip_pd_detach_dev(struct generic_pm_domain *genpd,
+ 	pm_clk_destroy(dev);
+ }
+ 
+-static bool rockchip_active_wakeup(struct device *dev)
+-{
+-	struct generic_pm_domain *genpd;
+-	struct rockchip_pm_domain *pd;
+-
+-	genpd = pd_to_genpd(dev->pm_domain);
+-	pd = container_of(genpd, struct rockchip_pm_domain, genpd);
+-
+-	return pd->info->active_wakeup;
+-}
+-
+ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+ 				      struct device_node *node)
+ {
+@@ -489,8 +478,9 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+ 	pd->genpd.power_on = rockchip_pd_power_on;
+ 	pd->genpd.attach_dev = rockchip_pd_attach_dev;
+ 	pd->genpd.detach_dev = rockchip_pd_detach_dev;
+-	pd->genpd.dev_ops.active_wakeup = rockchip_active_wakeup;
+ 	pd->genpd.flags = GENPD_FLAG_PM_CLK;
++	if (pd_info->active_wakeup)
++		pd->genpd.flags |= GENPD_FLAG_ACTIVE_WAKEUP;
+ 	pm_genpd_init(&pd->genpd, NULL, false);
+ 
+ 	pmu->genpd_data.domains[id] = &pd->genpd;
+-- 
+2.7.4
