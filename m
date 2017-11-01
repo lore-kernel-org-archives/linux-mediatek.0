@@ -1,71 +1,90 @@
-From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] mtd: nand: mtk: deselect the chip that was selected in
- resume function
-Date: Wed, 1 Nov 2017 18:07:03 +0800
-Message-ID: <1509530823.19864.41.camel@mhfsdcap03>
-References: <1509517197-60350-1-git-send-email-xiaolei.li@mediatek.com>
- <20171101110021.221fb256@bbrezillon>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v2 0/5] PM / Domains: Remove gpd_dev_ops.active_wakeup() callback
+Date: Wed, 1 Nov 2017 11:10:21 +0100
+Message-ID: <CAPDyKFoVnWKSGncWD6fxNLgbpuz-weJhqjgptEset2S8F2A6AA@mail.gmail.com>
+References: <1509473494-19740-1-git-send-email-geert+renesas@glider.be>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20171101110021.221fb256@bbrezillon>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1509473494-19740-1-git-send-email-geert+renesas@glider.be>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@kernel.org>, Simon Horman <horms@verge.net.au>, Magnus Damm <magnus.damm@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, linux-mediatek@lists.infradead.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux-Renesas <linux-renesas-soc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Boris,
+On 31 October 2017 at 19:11, Geert Uytterhoeven <geert+renesas@glider.be> wrote:
+>         Hi Rafael, Ulf, Kevin,
+>
+> It is quite common for PM Domains to require slave devices to be kept
+> active during system suspend if they are to be used as wakeup sources.
+> To enable this, currently each PM Domain or driver has to provide its
+> own gpd_dev_ops.active_wakeup() callback.
+>
+> All existing callbacks either return always true, or a fixed value
+> depending on the PM Domain.
+>
+> Hence this patch series simplifies active wakeup handling by replacing
+> the callback by a flag:
+>   - Patch 1 adds a new new flag GENPD_FLAG_ACTIVE_WAKEUP, to be set by
+>     PM Domain drivers that want to use the new handling,
+>   - Patches 2-4 convert all existing users of the callback to the new
+>     flag,
+>   - Patch 5 removes the callback.
+>
+> This series was extracted from "[PATCH 00/10] PM / Domain: renesas: Fix
+> active wakeup behavior", and retains only PM Domain changes to existing
+> drivers.
+> Changes compared to v1 (most suggested by Ulf):
+>   - Use the flag in se instead of setting up an "always true" callback,
+>   - Convert the mediatek and rockchip PM Domain drivers,
+>   - Remove the callback.
+>
+> If this idea is accepted, I think it would be good to still queue the first
+> patch for v4.15.  That would allow the changes to the PM Domain drivers
+> to go in through the respective platform trees in v4.16.
+> Then the final patch has to be postponed until v4.17.
+> Alternatively, everything can go in through the PM tree in one shot.
 
-On Wed, 2017-11-01 at 11:00 +0100, Boris Brezillon wrote:
-> Hi Xiaolei,
-> 
-> On Wed, 1 Nov 2017 14:19:57 +0800
-> <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> 
-> > From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > 
-> > It is necessary to deselect the chip if it was selected before.
-> > But now we only select chips when resume nand driver.
-> > So, deselect the chip after doing nand reset.
-> > 
-> > Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  drivers/mtd/nand/mtk_nand.c | 1 +
-> >  1 file changed, 1 insertion(+)
-> > 
-> > diff --git a/drivers/mtd/nand/mtk_nand.c b/drivers/mtd/nand/mtk_nand.c
-> > index d86a7d1..a8bf61a 100644
-> > --- a/drivers/mtd/nand/mtk_nand.c
-> > +++ b/drivers/mtd/nand/mtk_nand.c
-> > @@ -1557,6 +1557,7 @@ static int mtk_nfc_resume(struct device *dev)
-> >  		for (i = 0; i < chip->nsels; i++) {
-> >  			nand->select_chip(mtd, i);
-> >  			nand->cmdfunc(mtd, NAND_CMD_RESET, -1, -1);
-> > +			nand->select_chip(mtd, -1);
-> 
-> Can you use nand_reset() instead of open-coding this sequence?
-> 
-OK. Got it.
-Will update it in PATCH v2.
+For the series:
 
-Thanks,
+Acked-by: Ulf Hansson <ulf.hansson@linaro.org>
 
-Xiaolei
+It's easier if everything goes via Rafael's PM tree. Moreover, this
+series is to me rather trivial, so I would actually recommend to pick
+it all for 4.15. Mainly because, moving too slowly forward, allows new
+users to show up of the callback you remove in patch5.
 
-> Thanks,
-> 
-> Boris
-> 
-> >  		}
-> >  	}
-> >  
-> 
+Kind regards
+Uffe
+
+>
+> Thanks for your comments!
+>
+> Geert Uytterhoeven (5):
+>   PM / Domains: Allow genpd users to specify default active wakeup
+>     behavior
+>   [RFC] ARM: shmobile: pm-rmobile: Use GENPD_FLAG_ACTIVE_WAKEUP
+>   [RFC] soc: mediatek: Use GENPD_FLAG_ACTIVE_WAKEUP
+>   [RFC] soc: rockchip: power-domain: Use GENPD_FLAG_ACTIVE_WAKEUP
+>   [RFC] PM / Domains: Remove gpd_dev_ops.active_wakeup() callback
+>
+>  arch/arm/mach-shmobile/pm-rmobile.c |  8 +-------
+>  drivers/base/power/domain.c         | 13 ++++---------
+>  drivers/soc/mediatek/mtk-scpsys.c   | 14 ++------------
+>  drivers/soc/rockchip/pm_domains.c   | 14 ++------------
+>  include/linux/pm_domain.h           |  8 ++++----
+>  5 files changed, 13 insertions(+), 44 deletions(-)
+>
+> --
+> 2.7.4
+>
+> Gr{oetje,eeting}s,
+>
+>                                                 Geert
+>
+> --
+> Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+>
+> In personal conversations with technical people, I call myself a hacker. But
+> when I'm talking to journalists I just say "programmer" or something like that.
+>                                                             -- Linus Torvalds
