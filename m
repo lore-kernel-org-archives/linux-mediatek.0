@@ -1,35 +1,34 @@
 From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH] clk: mediatek: mark mtk_infrasys_init_early __init
-Date: Thu, 2 Nov 2017 01:06:24 -0700
-Message-ID: <20171102080624.GD11011@codeaurora.org>
-References: <20170915192848.649455-1-arnd@arndb.de>
+Subject: Re: [PATCH v2 4/4] clk: mediatek: add clocks dt-bindings required
+ header for MT7622 SoC
+Date: Thu, 2 Nov 2017 01:11:59 -0700
+Message-ID: <20171102081159.GE11011@codeaurora.org>
+References: <cover.1507174799.git.sean.wang@mediatek.com>
+ <7e2a5ac16547f911b00017ba3fad4076dad4d7d8.1507174799.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20170915192848.649455-1-arnd@arndb.de>
+In-Reply-To: <7e2a5ac16547f911b00017ba3fad4076dad4d7d8.1507174799.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Michael Turquette <mturquette@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Shunli Wang <shunli.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Erin Lo <erin.lo@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Sean Wang <sean.wang@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: sean.wang@mediatek.com
+Cc: mturquette@baylibre.com, robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, p.zabel@pengutronix.de, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Chen Zhong <chen.zhong@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 09/15, Arnd Bergmann wrote:
-> On gcc-4.6, we get a harmless link-time warning:
+On 10/05, sean.wang@mediatek.com wrote:
+> From: Chen Zhong <chen.zhong@mediatek.com>
 > 
-> WARNING: vmlinux.o(.text.unlikely+0x196a0): Section mismatch in reference from the function mtk_infrasys_init_early() to the function .init.text:mtk_clk_register_cpumuxes()
-> The function mtk_infrasys_init_early() references
-> the function __init mtk_clk_register_cpumuxes().
-> This is often because mtk_infrasys_init_early lacks a __init
-> annotation or the annotation of mtk_clk_register_cpumuxes is wrong.
+> Add the required header for the entire clocks dt-bindings exported
+> from topckgen, apmixedsys, infracfg, pericfg, ethsys, pciesys, ssusbsys
+> and audsys which could be found on MT7622 SoC.
 > 
-> Newer compilers inline this function so they don't warn, but
-> marking it __init is the right solution for all versions.
-> 
-> Fixes: e9862118272a ("clk: mediatek: Add MT2701 clock support")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
 
-Applied to clk-next
+This should be patch 3 instead of 4 so that patch 3 compiles...
+
+Applied to clk-next.
 
 -- 
 Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
