@@ -1,69 +1,56 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2] mtd: nand: mtk: use nand_reset() to reset NAND devices
- in resume function
-Date: Thu, 2 Nov 2017 12:41:41 +0100
-Message-ID: <5191916b-3b80-7694-74a3-abdf7b18b0d8@gmail.com>
-References: <1509588307-38511-1-git-send-email-xiaolei.li@mediatek.com>
+Subject: Re: [GIT PULL] Mediatek: 32-bit DT update for v4.15
+Date: Thu, 2 Nov 2017 12:47:05 +0100
+Message-ID: <e8fdd9a9-ce13-8804-aea0-46becc6f9730@gmail.com>
+References: <c7145c00-b2b9-780c-0bfd-15f7d8a08dd6@gmail.com>
+ <CAK8P3a3NWwoe0mX45WrFONyiHt9eWTTMziEc+rjqSfr5QZv8xQ@mail.gmail.com>
+ <1509423579.10793.10.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1509588307-38511-1-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1509423579.10793.10.camel@mtkswgap22>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Cc: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, DTML <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Arnd,
 
+On 10/31/2017 05:19 AM, Ryder Lee wrote:
+> Hi Arnd,
+> 
+> We have 3 root ports in MT7623, but this is a bug in this chip where the
+> HW designers wired the IRQs in a nonstandard way. We've tried to
+> statically assign the bus portion of the address part in the parent
+> interrupt-map before, but this approach cannot handle the case - if we
+> attach the device in random order.
+> 
 
-On 11/02/2017 03:05 AM, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> Previously, we only select chips and then send reset command to a NAND
-> device during resuming nand driver. There is a lack of deselecting chips.
-> It is advised to reset and initialize a NAND device using nand_reset().
-> 
-> Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
+Ryder, please don't top post :)
 
-Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Thanks.
+> 
+> On Mon, 2017-10-30 at 13:42 +0100, Arnd Bergmann wrote:
+>> On Mon, Oct 23, 2017 at 12:06 AM, Matthias Brugger
+>> <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>>>
+>>> ----------------------------------------------------------------
+>>> - mt76233 add PCIe node
+>>
+>> Could you clarify what the subnodes in the PCI node are for? It seems odd
+>> to have "interrupt-map" properties in both the pcie controller and its child
+>> nodes, and I want to ensure this is following the standard PCIe binding before
+>> I pull it.
+>>
 
->  drivers/mtd/nand/mtk_nand.c | 8 ++------
->  1 file changed, 2 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/mtd/nand/mtk_nand.c b/drivers/mtd/nand/mtk_nand.c
-> index d86a7d1..6d0101e 100644
-> --- a/drivers/mtd/nand/mtk_nand.c
-> +++ b/drivers/mtd/nand/mtk_nand.c
-> @@ -1540,7 +1540,6 @@ static int mtk_nfc_resume(struct device *dev)
->  	struct mtk_nfc *nfc = dev_get_drvdata(dev);
->  	struct mtk_nfc_nand_chip *chip;
->  	struct nand_chip *nand;
-> -	struct mtd_info *mtd;
->  	int ret;
->  	u32 i;
->  
-> @@ -1553,11 +1552,8 @@ static int mtk_nfc_resume(struct device *dev)
->  	/* reset NAND chip if VCC was powered off */
->  	list_for_each_entry(chip, &nfc->chips, node) {
->  		nand = &chip->nand;
-> -		mtd = nand_to_mtd(nand);
-> -		for (i = 0; i < chip->nsels; i++) {
-> -			nand->select_chip(mtd, i);
-> -			nand->cmdfunc(mtd, NAND_CMD_RESET, -1, -1);
-> -		}
-> +		for (i = 0; i < chip->nsels; i++)
-> +			nand_reset(nand, i);
->  	}
->  
->  	return 0;
-> 
+Arnd, I didn't found the pull request in your next/dt branch.
+Is there more clarification needed from our side?
+
+Regards,
+Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
