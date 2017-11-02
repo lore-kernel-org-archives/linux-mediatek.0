@@ -1,73 +1,69 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 3/5] [RFC] soc: mediatek: Use GENPD_FLAG_ACTIVE_WAKEUP
-Date: Thu, 2 Nov 2017 12:32:10 +0100
-Message-ID: <81cf254c-66b9-a139-0344-81c5cb560f88@gmail.com>
-References: <1509473494-19740-1-git-send-email-geert+renesas@glider.be>
- <1509473494-19740-4-git-send-email-geert+renesas@glider.be>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2] mtd: nand: mtk: use nand_reset() to reset NAND devices
+ in resume function
+Date: Thu, 2 Nov 2017 12:41:41 +0100
+Message-ID: <5191916b-3b80-7694-74a3-abdf7b18b0d8@gmail.com>
+References: <1509588307-38511-1-git-send-email-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1509473494-19740-4-git-send-email-geert+renesas@glider.be>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1509588307-38511-1-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Content-Language: en-US
-Sender: linux-pm-owner@vger.kernel.org
-To: Geert Uytterhoeven <geert+renesas@glider.be>, "Rafael J . Wysocki" <rjw@rjwysocki.net>, Ulf Hansson <ulf.hansson@linaro.org>, Kevin Hilman <khilman@kernel.org>
-Cc: Simon Horman <horms@verge.net.au>, Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-kernel@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 10/31/2017 07:11 PM, Geert Uytterhoeven wrote:
-> Set the newly introduced GENPD_FLAG_ACTIVE_WAKEUP, which allows to
-> remove the driver's own flag-based callback.
+On 11/02/2017 03:05 AM, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> Previously, we only select chips and then send reset command to a NAND
+> device during resuming nand driver. There is a lack of deselecting chips.
+> It is advised to reset and initialize a NAND device using nand_reset().
+> 
+> Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
-> This must not be applied before "PM / Domain: Enable genpd users to
-> specify default active wakeup behavior" has landed upstream, hence the
-> "RFC".
-> 
-> Compile-tested only.
-> 
-> v2:
->   - New.
-> ---
->  drivers/soc/mediatek/mtk-scpsys.c | 14 ++------------
->  1 file changed, 2 insertions(+), 12 deletions(-)
-> 
 
-Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index e1ce8b1b5090aa0a..e570b6af2e6ffbdd 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -361,17 +361,6 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->  	return ret;
->  }
+>  drivers/mtd/nand/mtk_nand.c | 8 ++------
+>  1 file changed, 2 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/mtd/nand/mtk_nand.c b/drivers/mtd/nand/mtk_nand.c
+> index d86a7d1..6d0101e 100644
+> --- a/drivers/mtd/nand/mtk_nand.c
+> +++ b/drivers/mtd/nand/mtk_nand.c
+> @@ -1540,7 +1540,6 @@ static int mtk_nfc_resume(struct device *dev)
+>  	struct mtk_nfc *nfc = dev_get_drvdata(dev);
+>  	struct mtk_nfc_nand_chip *chip;
+>  	struct nand_chip *nand;
+> -	struct mtd_info *mtd;
+>  	int ret;
+>  	u32 i;
 >  
-> -static bool scpsys_active_wakeup(struct device *dev)
-> -{
-> -	struct generic_pm_domain *genpd;
-> -	struct scp_domain *scpd;
-> -
-> -	genpd = pd_to_genpd(dev->pm_domain);
-> -	scpd = container_of(genpd, struct scp_domain, genpd);
-> -
-> -	return scpd->data->active_wakeup;
-> -}
-> -
->  static void init_clks(struct platform_device *pdev, struct clk **clk)
->  {
->  	int i;
-> @@ -466,7 +455,8 @@ static struct scp *init_scp(struct platform_device *pdev,
->  		genpd->name = data->name;
->  		genpd->power_off = scpsys_power_off;
->  		genpd->power_on = scpsys_power_on;
-> -		genpd->dev_ops.active_wakeup = scpsys_active_wakeup;
-> +		if (scpd->data->active_wakeup)
-> +			genpd->flags |= GENPD_FLAG_ACTIVE_WAKEUP;
+> @@ -1553,11 +1552,8 @@ static int mtk_nfc_resume(struct device *dev)
+>  	/* reset NAND chip if VCC was powered off */
+>  	list_for_each_entry(chip, &nfc->chips, node) {
+>  		nand = &chip->nand;
+> -		mtd = nand_to_mtd(nand);
+> -		for (i = 0; i < chip->nsels; i++) {
+> -			nand->select_chip(mtd, i);
+> -			nand->cmdfunc(mtd, NAND_CMD_RESET, -1, -1);
+> -		}
+> +		for (i = 0; i < chip->nsels; i++)
+> +			nand_reset(nand, i);
 >  	}
 >  
->  	return scp;
+>  	return 0;
 > 
