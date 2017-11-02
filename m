@@ -1,33 +1,32 @@
 From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v6 2/9] clk: mediatek: Add dt-bindings for MT2712 clocks
-Date: Thu, 2 Nov 2017 01:03:30 -0700
-Message-ID: <20171102080330.GB11011@codeaurora.org>
-References: <1508731840-4231-1-git-send-email-weiyi.lu@mediatek.com>
- <1508731840-4231-3-git-send-email-weiyi.lu@mediatek.com>
+Subject: Re: [PATCH] clk: mediatek: mark mtk_infrasys_init_early __init
+Date: Thu, 2 Nov 2017 01:06:24 -0700
+Message-ID: <20171102080624.GD11011@codeaurora.org>
+References: <20170915192848.649455-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1508731840-4231-3-git-send-email-weiyi.lu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Weiyi Lu <weiyi.lu@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, Mike Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20170915192848.649455-1-arnd@arndb.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Michael Turquette <mturquette@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Shunli Wang <shunli.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Erin Lo <erin.lo@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Sean Wang <sean.wang@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 10/23, Weiyi Lu wrote:
-> Add MT2712 clock dt-bindings, include topckgen, apmixedsys,
-> infracfg, pericfg, mcucfg and subsystem clocks.
+On 09/15, Arnd Bergmann wrote:
+> On gcc-4.6, we get a harmless link-time warning:
 > 
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> WARNING: vmlinux.o(.text.unlikely+0x196a0): Section mismatch in reference from the function mtk_infrasys_init_early() to the function .init.text:mtk_clk_register_cpumuxes()
+> The function mtk_infrasys_init_early() references
+> the function __init mtk_clk_register_cpumuxes().
+> This is often because mtk_infrasys_init_early lacks a __init
+> annotation or the annotation of mtk_clk_register_cpumuxes is wrong.
+> 
+> Newer compilers inline this function so they don't warn, but
+> marking it __init is the right solution for all versions.
+> 
+> Fixes: e9862118272a ("clk: mediatek: Add MT2701 clock support")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 > ---
 
 Applied to clk-next
