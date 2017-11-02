@@ -1,41 +1,52 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v6 03/12] arm64: dts: mt8173: remove "mediatek,mt8135-mmc"
- from mmc nodes
-Date: Thu, 2 Nov 2017 15:13:47 +0100
-Message-ID: <CAPDyKFp5Ez_NXWtSeTt+nsgJtesS3t_tbUpgFco8ZVAPj+PgoA@mail.gmail.com>
-References: <1508118399-21828-1-git-send-email-chaotian.jing@mediatek.com>
- <1508118399-21828-4-git-send-email-chaotian.jing@mediatek.com>
- <CAPDyKFrRVT8YFXvy3Wuf_jga5oourScOdas34U=YkeLRzHoWMg@mail.gmail.com> <b24d12e4-251f-6f79-1ed9-5b52f8f39625@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] usb: mtu3: fix dma_addr_t printk output again
+Date: Thu,  2 Nov 2017 15:30:20 +0100
+Message-ID: <20171102143027.775184-1-arnd@arndb.de>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <b24d12e4-251f-6f79-1ed9-5b52f8f39625@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, yong mao <yong.mao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Heiner Kallweit <hkallweit1@gmail.com>, Phong LE <ple@baylibre.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
+To: Felipe Balbi <felipe.balbi@linux.intel.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Sudip Mukherjee <sudipm.mukherjee@gmail.com>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2 November 2017 at 12:50, Matthias Brugger <matthias.bgg@gmail.com> wrote:
->
->
-> On 10/25/2017 11:11 PM, Ulf Hansson wrote:
->> On 16 October 2017 at 03:46, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
->>> devicetree bindings has been updated to support multi-platforms,
->>> so that each platform has its owns compatible name.
->>> And, this compatible name may used in driver to distinguish with
->>> other platform.
->>>
->>> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
->>
->> Matthias, do you intend to pick this? Else I can do it with your ack...
->>
->
-> If it's not too late, feel free to take it. Otherwise I will queue it for the
-> next merge window:
->
-> Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+The support for 36-bit addresses originally came with an incorrect
+printk format for dma addresses. Felipe changed the format string it
+while applying, but the result was still incorrect, since we now have
+to pass a pointer to the address instead of the integer value:
 
-Thanks, I have queued it up for 4.15 and will add your ack.
+drivers/usb/mtu3/mtu3_qmu.c: In function 'mtu3_prepare_tx_gpd':
+drivers/usb/mtu3/mtu3_qmu.c:261:25: error: format '%p' expects argument of type 'void *', but argument 7 has type 'dma_addr_t {aka unsigned int}' [-Werror=format=]
+drivers/usb/mtu3/mtu3_qmu.c: In function 'mtu3_prepare_rx_gpd':
+drivers/usb/mtu3/mtu3_qmu.c:300:25: error: format '%p' expects argument of type 'void *', but argument 7 has type 'dma_addr_t {aka unsigned int}' [-Werror=format=]
 
-Kind regards
-Uffe
+This fixes the printk argument accordingly.
+
+Fixes: 1a46dfea0841 ("usb: mtu3: support 36-bit DMA address")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/usb/mtu3/mtu3_qmu.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/usb/mtu3/mtu3_qmu.c b/drivers/usb/mtu3/mtu3_qmu.c
+index 42145a3f1422..0b4b412b1d0d 100644
+--- a/drivers/usb/mtu3/mtu3_qmu.c
++++ b/drivers/usb/mtu3/mtu3_qmu.c
+@@ -259,7 +259,7 @@ static int mtu3_prepare_tx_gpd(struct mtu3_ep *mep, struct mtu3_request *mreq)
+ 	enq = advance_enq_gpd(ring);
+ 	enq_dma = gpd_virt_to_dma(ring, enq);
+ 	dev_dbg(mep->mtu->dev, "TX-EP%d queue gpd=%p, enq=%p, qdma=%pad\n",
+-		mep->epnum, gpd, enq, enq_dma);
++		mep->epnum, gpd, enq, &enq_dma);
+ 
+ 	enq->flag &= ~GPD_FLAGS_HWO;
+ 	gpd->next_gpd = cpu_to_le32(lower_32_bits(enq_dma));
+@@ -298,7 +298,7 @@ static int mtu3_prepare_rx_gpd(struct mtu3_ep *mep, struct mtu3_request *mreq)
+ 	enq = advance_enq_gpd(ring);
+ 	enq_dma = gpd_virt_to_dma(ring, enq);
+ 	dev_dbg(mep->mtu->dev, "RX-EP%d queue gpd=%p, enq=%p, qdma=%pad\n",
+-		mep->epnum, gpd, enq, enq_dma);
++		mep->epnum, gpd, enq, &enq_dma);
+ 
+ 	enq->flag &= ~GPD_FLAGS_HWO;
+ 	gpd->next_gpd = cpu_to_le32(lower_32_bits(enq_dma));
+-- 
+2.9.0
