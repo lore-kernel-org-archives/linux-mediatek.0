@@ -1,57 +1,60 @@
-From: Herbert Xu <herbert@gondor.apana.org.au>
-Subject: Re: [PATCH v10 00/20] simplify crypto wait for async op
-Date: Fri, 3 Nov 2017 22:25:29 +0800
-Message-ID: <20171103142528.GL9011@gondor.apana.org.au>
-References: <1508310057-25369-1-git-send-email-gilad@benyossef.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [GIT PULL] Mediatek: 32-bit DT update for v4.15
+Date: Fri, 3 Nov 2017 16:21:33 +0100
+Message-ID: <CAK8P3a1oP98K3mzK3MfFvJ27y5fgYsTnOdPpjukQGXOLAQYhyA@mail.gmail.com>
+References: <c7145c00-b2b9-780c-0bfd-15f7d8a08dd6@gmail.com>
+ <CAK8P3a3NWwoe0mX45WrFONyiHt9eWTTMziEc+rjqSfr5QZv8xQ@mail.gmail.com>
+ <1509423579.10793.10.camel@mtkswgap22> <e8fdd9a9-ce13-8804-aea0-46becc6f9730@gmail.com>
+ <CAK8P3a0+9fChSbObS9boR8okHtO8u8_hr2Te+RjfRD0T54QYWQ@mail.gmail.com>
+ <1509673038.19220.19.camel@mtkswgap22> <CAK8P3a1doHCH4ucC1AUR5HiH5qvMXeoqsav-9dsvhM2KPh3FNw@mail.gmail.com>
+ <1509709967.15691.25.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <dm-devel-bounces@redhat.com>
-Content-Disposition: inline
-In-Reply-To: <1508310057-25369-1-git-send-email-gilad@benyossef.com>
-List-Unsubscribe: <https://www.redhat.com/mailman/options/dm-devel>,
-	<mailto:dm-devel-request@redhat.com?subject=unsubscribe>
-List-Archive: <https://www.redhat.com/archives/dm-devel>
-List-Post: <mailto:dm-devel@redhat.com>
-List-Help: <mailto:dm-devel-request@redhat.com?subject=help>
-List-Subscribe: <https://www.redhat.com/mailman/listinfo/dm-devel>,
-	<mailto:dm-devel-request@redhat.com?subject=subscribe>
-Sender: dm-devel-bounces@redhat.com
-Errors-To: dm-devel-bounces@redhat.com
-To: Gilad Ben-Yossef <gilad@benyossef.com>
-Cc: Mike Snitzer <snitzer@redhat.com>, linux-doc@vger.kernel.org, Gary Hook <gary.hook@amd.com>, David Howells <dhowells@redhat.com>, dm-devel@redhat.com, keyrings@vger.kernel.org, linux-ima-devel@lists.sourceforge.net, Alasdair Kergon <agk@redhat.com>, Steffen Klassert <steffen.klassert@secunet.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Jonathan Corbet <corbet@lwn.net>, Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>, Mimi Zohar <zohar@linux.vnet.ibm.com>, "Serge E. Hallyn" <serge@hallyn.com>, Tom Lendacky <thomas.lendacky@amd.com>, linux-cifs@vger.kernel.org, linux-ima-user@lists.sourceforge.net, Arnaud Ebalard <arno@natisbad.org>, linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org, James Morris <james.l.morris@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jaegeuk Kim <jaegeuk@kernel.org>, linux-arm-kernel@lists.infradead.org, Ofir
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1509709967.15691.25.camel@mtkswgap22>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, DTML <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Oct 18, 2017 at 08:00:32AM +0100, Gilad Ben-Yossef wrote:
-> Many users of kernel async. crypto services have a pattern of
-> starting an async. crypto op and than using a completion
-> to wait for it to end.
-> 
-> This patch set simplifies this common use case in two ways:
-> 
-> First, by separating the return codes of the case where a
-> request is queued to a backlog due to the provider being
-> busy (-EBUSY) from the case the request has failed due
-> to the provider being busy and backlogging is not enabled
-> (-ENOSPC).
-> 
-> Next, this change is than built on to create a generic API
-> to wait for a async. crypto operation to complete.
-> 
-> The end result is a smaller code base and an API that is
-> easier to use and more difficult to get wrong.
-> 
-> The patch set was boot tested on x86_64 and arm64 which
-> at the very least tests the crypto users via testmgr and
-> tcrypt but I do note that I do not have access to some
-> of the HW whose drivers are modified nor do I claim I was
-> able to test all of the corner cases.
-> 
-> The patch set is based upon linux-next release tagged
-> next-20171017.
+On Fri, Nov 3, 2017 at 12:52 PM, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> On Fri, 2017-11-03 at 10:40 +0100, Arnd Bergmann wrote:
+>> On Fri, Nov 3, 2017 at 2:37 AM, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 
-All applied.  Thanks.
--- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+>> This should have the exact same effect as what you have in your tree,
+>> but if that works,
+>> we can merge that version and try to figure out why the kernel thinks
+>> they are different.
+>
+> I've tried this approach by using the 4-ports network card and got the
+> result:
+> pcieport 0000:00:01.0: assign IRQ: got 220
+> pcieport 0000:00:01.0: assigning IRQ 220
+> pcieport 0000:00:01.0: enabling device (0140 -> 0142)
+> pcieport 0000:00:01.0: enabling bus mastering
+> pcieport 0000:00:01.0: Signaling PME with IRQ 220
+> ....
+> igb 0000:01:00.0: assign IRQ: got 221
+> igb 0000:01:00.0: assigning IRQ 221
+> igb 0000:01:00.1: assign IRQ: got 221
+> igb 0000:01:00.1: assigning IRQ 221
+> igb 0000:01:00.2: assign IRQ: got 221
+> igb 0000:01:00.2: assigning IRQ 221
+> igb 0000:01:00.3: assign IRQ: got 221
+> igb 0000:01:00.3: assigning IRQ 221
+>
+> I think slot 1 should share its IRQ (220) with every device in the
+> hierarchy below this root port.
+
+Agreed, that is what I expected, too. I've looked at the of_pci_irq.c
+in more detail but couldn't come up with what happened. Can you
+try running with this patch or something like that to figure out where
+it takes the wrong turn?
+
+https://pastebin.com/MrMzwcmw
+
+     Arnd
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
