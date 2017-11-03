@@ -1,85 +1,58 @@
 From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [GIT PULL] Mediatek: 32-bit DT update for v4.15
-Date: Fri, 3 Nov 2017 09:37:18 +0800
-Message-ID: <1509673038.19220.19.camel@mtkswgap22>
-References: <c7145c00-b2b9-780c-0bfd-15f7d8a08dd6@gmail.com>
-         <CAK8P3a3NWwoe0mX45WrFONyiHt9eWTTMziEc+rjqSfr5QZv8xQ@mail.gmail.com>
-         <1509423579.10793.10.camel@mtkswgap22>
-         <e8fdd9a9-ce13-8804-aea0-46becc6f9730@gmail.com>
-         <CAK8P3a0+9fChSbObS9boR8okHtO8u8_hr2Te+RjfRD0T54QYWQ@mail.gmail.com>
+Subject: Re: Problems enabling the PCIe/USB3.0 port on MT7623N
+Date: Fri, 3 Nov 2017 10:13:11 +0800
+Message-ID: <1509675191.20200.18.camel@mtkswgap22>
+References: <CAKfDRXjNJSJZe_QjuE8H+_ZXVWo1NKM7vrqHBhJ-tAMXqsyxwg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAK8P3a0+9fChSbObS9boR8okHtO8u8_hr2Te+RjfRD0T54QYWQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, DTML <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAKfDRXjNJSJZe_QjuE8H+_ZXVWo1NKM7vrqHBhJ-tAMXqsyxwg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi,
 
-On Thu, 2017-11-02 at 17:05 +0100, Arnd Bergmann wrote:
-> On Thu, Nov 2, 2017 at 12:47 PM, Matthias Brugger
-> <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> > Hi Arnd,
-> >
-> > On 10/31/2017 05:19 AM, Ryder Lee wrote:
-> >> Hi Arnd,
-> >>
-> >> We have 3 root ports in MT7623, but this is a bug in this chip where the
-> >> HW designers wired the IRQs in a nonstandard way. We've tried to
-> >> statically assign the bus portion of the address part in the parent
-> >> interrupt-map before, but this approach cannot handle the case - if we
-> >> attach the device in random order.
-> >>
-> >
-> > Ryder, please don't top post :)
-
-Oh. My bad!
-
-> >> Thanks.
-> >>
-> >> On Mon, 2017-10-30 at 13:42 +0100, Arnd Bergmann wrote:
-> >>> On Mon, Oct 23, 2017 at 12:06 AM, Matthias Brugger
-> >>> <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> >>>>
-> >>>> ----------------------------------------------------------------
-> >>>> - mt76233 add PCIe node
-> >>>
-> >>> Could you clarify what the subnodes in the PCI node are for? It seems odd
-> >>> to have "interrupt-map" properties in both the pcie controller and its child
-> >>> nodes, and I want to ensure this is following the standard PCIe binding before
-> >>> I pull it.
-> >>>
-> >
-> > Arnd, I didn't found the pull request in your next/dt branch.
-> > Is there more clarification needed from our side?
+On Thu, 2017-11-02 at 23:25 +0100, Kristian Evensen wrote:
+> Hello,
 > 
-> I'm still unsure about it., this looks like exactly the thing that the top-level
-> interrupt-map is supposed to handle fine.
+> I am working on adding mainline support for an MT7623N-based board.
+> The board uses eMMC for storage, so I have based my work on a DTS-file
+> for the eMMC reference board (from the LEDE repository).
 > 
-> Can you send a pull request for the series without the pci child nodes for the
-> moment while we figure out what the exact problem is? We can take
-> whatever fix we come up with during the v4.15 -rc cycle then.
+> The kernel currently boots just fine to my rootfs, and the switch, usb
+> port and the two "pure" pcie slots are working. However, for the last
+> couple of days I have been banging my head against the wall trying to
+> get the combined pcie/usb3 slot to work. I have tried to add different
+> nodes to the DTS, experimented with GPIOs and analyzed logs of the
+> proprietary firmware (where to slot works), to no good.
 > 
-> I would assume that either the parent interrupt-map is wrong, or something
-> broke the parser, but that it's not actually something that's wrong in the
-> hardware design in a way that we can't already handle in a standard way.
+> Does anyone have any experience with activating this slot or hints or
+> tips on where to look?
+
+Glad to see someone else interested in the MT7623N. In your case you
+need to set extra bit to switch the PCIe/USB function, which is not
+supported in mainline yet...
+
+Please see the below link and search 'HIF_SYSCFG1'.
+
+https://patchwork.kernel.org/patch/9694575/
+
+
+Thanks.
+
 > 
-> Ryder, can you be more specific how the interrupts are wired up?
-> Is there one IRQ per slot that is connected to all of IntA/IntB/IntC/IntD
-> and gets propagated through the bridges like that, or is it something else?
-
-Yes, that's what I mean - we only have one IRQ which is connected to all
-INTx for each slot, and I'm not sure if there is any better way to solve
-this problem. 
-
->      Arnd
-> 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
