@@ -1,60 +1,71 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [GIT PULL] Mediatek: 32-bit DT update for v4.15
-Date: Fri, 3 Nov 2017 16:21:33 +0100
-Message-ID: <CAK8P3a1oP98K3mzK3MfFvJ27y5fgYsTnOdPpjukQGXOLAQYhyA@mail.gmail.com>
-References: <c7145c00-b2b9-780c-0bfd-15f7d8a08dd6@gmail.com>
- <CAK8P3a3NWwoe0mX45WrFONyiHt9eWTTMziEc+rjqSfr5QZv8xQ@mail.gmail.com>
- <1509423579.10793.10.camel@mtkswgap22> <e8fdd9a9-ce13-8804-aea0-46becc6f9730@gmail.com>
- <CAK8P3a0+9fChSbObS9boR8okHtO8u8_hr2Te+RjfRD0T54QYWQ@mail.gmail.com>
- <1509673038.19220.19.camel@mtkswgap22> <CAK8P3a1doHCH4ucC1AUR5HiH5qvMXeoqsav-9dsvhM2KPh3FNw@mail.gmail.com>
- <1509709967.15691.25.camel@mtkswgap22>
+From: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: Problems enabling the PCIe/USB3.0 port on MT7623N
+Date: Fri, 3 Nov 2017 17:20:42 +0100
+Message-ID: <CAKfDRXg=vno2wOL39JAUGnKHEsXVb4XyewEmPR5CHf5k+66xhw@mail.gmail.com>
+References: <CAKfDRXjNJSJZe_QjuE8H+_ZXVWo1NKM7vrqHBhJ-tAMXqsyxwg@mail.gmail.com>
+ <1509675191.20200.18.camel@mtkswgap22>
+ <CAKfDRXjrDPKo-mveCb8o7YFdBbBa53kt8WTPDi1RhMXMcbvMYw@mail.gmail.com>
+ <d9c34106-3a90-1df0-6765-1ab230372468@phrozen.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1509709967.15691.25.camel@mtkswgap22>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, DTML <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <d9c34106-3a90-1df0-6765-1ab230372468-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Cc: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Nov 3, 2017 at 12:52 PM, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> On Fri, 2017-11-03 at 10:40 +0100, Arnd Bergmann wrote:
->> On Fri, Nov 3, 2017 at 2:37 AM, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+Hi all,
 
->> This should have the exact same effect as what you have in your tree,
->> but if that works,
->> we can merge that version and try to figure out why the kernel thinks
->> they are different.
->
-> I've tried this approach by using the 4-ports network card and got the
-> result:
-> pcieport 0000:00:01.0: assign IRQ: got 220
-> pcieport 0000:00:01.0: assigning IRQ 220
-> pcieport 0000:00:01.0: enabling device (0140 -> 0142)
-> pcieport 0000:00:01.0: enabling bus mastering
-> pcieport 0000:00:01.0: Signaling PME with IRQ 220
-> ....
-> igb 0000:01:00.0: assign IRQ: got 221
-> igb 0000:01:00.0: assigning IRQ 221
-> igb 0000:01:00.1: assign IRQ: got 221
-> igb 0000:01:00.1: assigning IRQ 221
-> igb 0000:01:00.2: assign IRQ: got 221
-> igb 0000:01:00.2: assigning IRQ 221
-> igb 0000:01:00.3: assign IRQ: got 221
-> igb 0000:01:00.3: assigning IRQ 221
->
-> I think slot 1 should share its IRQ (220) with every device in the
-> hierarchy below this root port.
+On Fri, Nov 3, 2017 at 1:19 PM, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org> wrote:
+> I managed to get the 2nd USBport working on the LEDE last night and will
+> push a patch today. the usb2 node is simply not getting enabled and the 2nd
+> phys node is missing 2 properties.
 
-Agreed, that is what I expected, too. I've looked at the of_pci_irq.c
-in more detail but couldn't come up with what happened. Can you
-try running with this patch or something like that to figure out where
-it takes the wrong turn?
+Based on this comment from John, I took a second look at the
+mt7623.dtsi file in LEDE and updated the structure of u3phy2 to match
+that of phy1. Now, I can see the hub. I.e., dmesg contains the
+following:
 
-https://pastebin.com/MrMzwcmw
+[    1.095790] xhci-mtk 1a240000.usb: xHCI Host Controller
+[    1.100998] xhci-mtk 1a240000.usb: new USB bus registered, assigned
+bus number 3
+[    1.108643] xhci-mtk 1a240000.usb: hcc params 0x01401198 hci
+version 0x96 quirks 0x00210010
+[    1.117009] xhci-mtk 1a240000.usb: irq 198, io mem 0x1a240000
+[    1.123373] hub 3-0:1.0: USB hub found
+[    1.127154] hub 3-0:1.0: 1 port detected
+[    1.131426] xhci-mtk 1a240000.usb: xHCI Host Controller
+[    1.136646] xhci-mtk 1a240000.usb: new USB bus registered, assigned
+bus number 4
+[    1.144068] usb usb4: We don't know the algorithms for LPM for this
+host, disabling LPM.
+[    1.152707] hub 4-0:1.0: USB hub found
+[    1.156480] hub 4-0:1.0: 1 port detected
 
-     Arnd
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+However, I still can't see the device connected to the slot. I don't
+know if that (in most cases at least) should just work out of the box,
+or if additional steps are required? I suspect the following error
+might be related:
+
+[    1.314407] mediatek-pcie 1a140000.pcie: can't request region for
+resource [mem 0x1a244000-0x1a244fff]
+[    1.353851] mediatek-pcie 1a140000.pcie: Failed to get pcie phy2
+range fffffff0
+[    1.361099] mediatek-pcie 1a140000.pcie: failed to request resources: -16
+[    1.367896] mediatek-pcie: probe of 1a140000.pcie failed with error -16
+
+I have to admit that I don't have so much experience working with
+dts', etc. so apologizes for any stupid questions.
+
+Thanks in advance for all the help so far,
+Kristian
