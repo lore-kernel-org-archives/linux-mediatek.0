@@ -1,107 +1,77 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [GIT PULL] Mediatek: 32-bit DT update for v4.15
-Date: Fri, 3 Nov 2017 19:52:47 +0800
-Message-ID: <1509709967.15691.25.camel@mtkswgap22>
-References: <c7145c00-b2b9-780c-0bfd-15f7d8a08dd6@gmail.com>
-         <CAK8P3a3NWwoe0mX45WrFONyiHt9eWTTMziEc+rjqSfr5QZv8xQ@mail.gmail.com>
-         <1509423579.10793.10.camel@mtkswgap22>
-         <e8fdd9a9-ce13-8804-aea0-46becc6f9730@gmail.com>
-         <CAK8P3a0+9fChSbObS9boR8okHtO8u8_hr2Te+RjfRD0T54QYWQ@mail.gmail.com>
-         <1509673038.19220.19.camel@mtkswgap22>
-         <CAK8P3a1doHCH4ucC1AUR5HiH5qvMXeoqsav-9dsvhM2KPh3FNw@mail.gmail.com>
+From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Subject: Re: Problems enabling the PCIe/USB3.0 port on MT7623N
+Date: Fri, 3 Nov 2017 13:19:15 +0100
+Message-ID: <d9c34106-3a90-1df0-6765-1ab230372468@phrozen.org>
+References: <CAKfDRXjNJSJZe_QjuE8H+_ZXVWo1NKM7vrqHBhJ-tAMXqsyxwg@mail.gmail.com>
+ <1509675191.20200.18.camel@mtkswgap22>
+ <CAKfDRXjrDPKo-mveCb8o7YFdBbBa53kt8WTPDi1RhMXMcbvMYw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAK8P3a1doHCH4ucC1AUR5HiH5qvMXeoqsav-9dsvhM2KPh3FNw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, DTML <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAKfDRXjrDPKo-mveCb8o7YFdBbBa53kt8WTPDi1RhMXMcbvMYw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2017-11-03 at 10:40 +0100, Arnd Bergmann wrote:
-> On Fri, Nov 3, 2017 at 2:37 AM, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> >> Ryder, can you be more specific how the interrupts are wired up?
-> >> Is there one IRQ per slot that is connected to all of IntA/IntB/IntC/IntD
-> >> and gets propagated through the bridges like that, or is it something else?
-> >
-> > Yes, that's what I mean - we only have one IRQ which is connected to all
-> > INTx for each slot, and I'm not sure if there is any better way to solve
-> > this problem.
-> 
-> Ok. Your parent interrupt-map seems entirely reasonable for that case as far
-> as I can tell (maybe someone else can find a problem):
-> 
-> +               interrupt-map-mask = <0xf800 0 0 0>;
-> +               interrupt-map = <0x0000 0 0 0 &sysirq GIC_SPI 193
-> IRQ_TYPE_LEVEL_LOW>,
-> +                               <0x0800 0 0 0 &sysirq GIC_SPI 194
-> IRQ_TYPE_LEVEL_LOW>,
-> +                               <0x1000 0 0 0 &sysirq GIC_SPI 195
-> IRQ_TYPE_LEVEL_LOW>;
-> 
-> However, I can't find any other example of a machine using
-> interrupt-map-mask = <0xf800 0 0 0>; in the kernel tree, so it's possible
-> that we have a parser bug. We do have other boards that list all four
-> interrupts for each slot, and that seems to work fine. Can you try this
-> map in the parent while leaving out the chilren?
-> 
->                interrupt-map-mask = <0xf800 0 0 7>;
->                interrupt-map = <0x0000 0 0 1 &sysirq GIC_SPI 193
-> IRQ_TYPE_LEVEL_LOW>,
->                                         <0x0000 0 0 2 &sysirq GIC_SPI
-> 193 IRQ_TYPE_LEVEL_LOW>,
->                                         <0x0000 0 0 3 &sysirq GIC_SPI
-> 193 IRQ_TYPE_LEVEL_LOW>,
->                                         <0x0000 0 0 4 &sysirq GIC_SPI
-> 193 IRQ_TYPE_LEVEL_LOW>,
->                                         <0x0800 0 0 1 &sysirq GIC_SPI
-> 194 IRQ_TYPE_LEVEL_LOW>,
->                                         <0x0800 0 0 2 &sysirq GIC_SPI
-> 194 IRQ_TYPE_LEVEL_LOW>,
->                                         <0x0800 0 0 3 &sysirq GIC_SPI
-> 194 IRQ_TYPE_LEVEL_LOW>,
->                                         <0x0800 0 0 4 &sysirq GIC_SPI
-> 194 IRQ_TYPE_LEVEL_LOW>,
->                                         <0x1000 0 0 1 &sysirq GIC_SPI
-> 195 IRQ_TYPE_LEVEL_LOW>,
->                                         <0x1000 0 0 2 &sysirq GIC_SPI
-> 195 IRQ_TYPE_LEVEL_LOW>,
->                                         <0x1000 0 0 3 &sysirq GIC_SPI
-> 195 IRQ_TYPE_LEVEL_LOW>,
->                                         <0x1000 0 0 4 &sysirq GIC_SPI
-> 195 IRQ_TYPE_LEVEL_LOW>;
-> 
-> This should have the exact same effect as what you have in your tree,
-> but if that works,
-> we can merge that version and try to figure out why the kernel thinks
-> they are different.
-
-I've tried this approach by using the 4-ports network card and got the
-result:
-pcieport 0000:00:01.0: assign IRQ: got 220
-pcieport 0000:00:01.0: assigning IRQ 220
-pcieport 0000:00:01.0: enabling device (0140 -> 0142)
-pcieport 0000:00:01.0: enabling bus mastering
-pcieport 0000:00:01.0: Signaling PME with IRQ 220
-....
-igb 0000:01:00.0: assign IRQ: got 221
-igb 0000:01:00.0: assigning IRQ 221
-igb 0000:01:00.1: assign IRQ: got 221
-igb 0000:01:00.1: assigning IRQ 221
-igb 0000:01:00.2: assign IRQ: got 221
-igb 0000:01:00.2: assigning IRQ 221
-igb 0000:01:00.3: assign IRQ: got 221
-igb 0000:01:00.3: assigning IRQ 221
-
-I think slot 1 should share its IRQ (220) with every device in the
-hierarchy below this root port.
-
-Ryder.
-
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+CgpPbiAwMy8xMS8xNyAxMjowNywgS3Jpc3RpYW4gRXZlbnNlbiB3cm90ZToKPiBIaSBSeWRlciwK
+Pgo+IFRoYW5rcyBmb3IgdGhlIHF1aWNrIHJlcGx5IQo+Cj4gT24gRnJpLCBOb3YgMywgMjAxNyBh
+dCAzOjEzIEFNLCBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+IHdyb3RlOgo+PiBH
+bGFkIHRvIHNlZSBzb21lb25lIGVsc2UgaW50ZXJlc3RlZCBpbiB0aGUgTVQ3NjIzTi4gSW4geW91
+ciBjYXNlIHlvdQo+PiBuZWVkIHRvIHNldCBleHRyYSBiaXQgdG8gc3dpdGNoIHRoZSBQQ0llL1VT
+QiBmdW5jdGlvbiwgd2hpY2ggaXMgbm90Cj4+IHN1cHBvcnRlZCBpbiBtYWlubGluZSB5ZXQuLi4K
+Pj4KPj4gUGxlYXNlIHNlZSB0aGUgYmVsb3cgbGluayBhbmQgc2VhcmNoICdISUZfU1lTQ0ZHMScu
+Cj4+Cj4+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTY5NDU3NS8KPiBJIGFt
+IGN1cnJlbnRseSBidWlsZGluZyBMRURFIGZvciB0aGUgYm9hcmQgYW5kIG5vdGljZWQgdGhhdCB0
+aGV5IGhhdmUKPiBhIGRpZmZlcmVudCBwYXRjaCBmb3IgUENJZQo+IChodHRwczovL2dpdC5sZWRl
+LXByb2plY3Qub3JnLz9wPXNvdXJjZS5naXQ7YT1ibG9iO2Y9dGFyZ2V0L2xpbnV4L21lZGlhdGVr
+L3BhdGNoZXMtNC45LzAwMDMtUENJLW1lZGlhdGVrLWFkZC1zdXBwb3J0LWZvci1QQ0llLWZvdW5k
+LW9uLU1UNzYyMy1NVC5wYXRjaDtoPTQzZjUxZWY2YjMzNGQ2ZmY4NTlkY2E2MjE4YTk3MTBiYTFi
+OWUzZDU7aGI9SEVBRCkuCj4gVGhpcyBwYXRjaCBkb2VzIHRoZSBzYW1lIHJlZ21hcF91cGRhdGVf
+Yml0cygpIGNhbGwgKHdpdGggdGhlIHNhbWUKPiB2YWx1ZXMpIGFuZCBJIGFkZGVkIHNvbWUgbG9n
+cyB0byBjb25maXJtIHRoYXQgdGhlIGZ1bmN0aW9ucyBpcyBjYWxsZWQuCj4gU28gYXQgbGVhc3Qg
+dGhhdCBwYXJ0IHNob3VsZCBiZSBmaW5lLgo+Cj4gWWVzdGVyZGF5IGV2ZW5pbmcsIEkgaGFkIHNv
+bWUgZGlzY3Vzc2lvbnMgd2l0aCB0aGUgcHJvZHVjZXIgb2YgdGhlCj4gYm9hcmQsIGFzIHRoZXkg
+cHJvdmlkZWQgbWUgd2l0aCB0d28gZmlybXdhcmUgaW1hZ2VzIC0gb25lIHdoZXJlIEkgY2FuCj4g
+c2VlIHRoZSBkZXZpY2UgY29ubmVjdGVkIHRvIHRoZSBzbG90IChwcm92aWRlZCB0byB0aGUgdmVu
+ZG9yIGJ5Cj4gTWVkaWF0ZWspIGFuZCBvbmUgd2hlcmUgdGhlIGRldmljZSBpcyBub3QgYXZhaWxh
+YmxlIChpbWFnZSBjb21waWxlZCBieQo+IHRoZSB2ZW5kb3IpLiBBY2NvcmRpbmcgdG8gdGhlIHZl
+bmRvciwgdGhlIGRpZmZlcmVuY2UgYmV0d2VlbiB0aGUKPiBpbWFnZXMgaXMgdGhhdCB0aGUgaW1h
+Z2UgcHJvdmlkZWQgYnkgTWVkaWF0ZWsgZW5hYmxlcyBVU0IKPiBPVEctZnVuY3Rpb25hbGl0eSBh
+bmQgdGhpcyBpcyByZXF1aXJlZCBmb3IgdGhlIHNsb3QuIEhvd2V2ZXIsIHRoZXkKPiBjb3VsZCBu
+b3QgZ2l2ZSBtZSBhbnkgdGVjaG5pY2FsIGRldGFpbHMgb24gaG93IHRvIGVuYWJsZSBPVEcuIFdo
+ZW4KPiBzZWFyY2hpbmcgdGhlIGxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdCBhcmNoaXZlcywg
+SSBjb3VsZG4ndCBmaW5kCj4gYW55IE9URy1zcGVjaWZpYyBwYXRjaGVzLiBBcmUgdGhlcmUgYW55
+IHNwZWNpZmljIHN0ZXBzIHRoYXQgaGFzIHRvIGJlCj4gdGFrZW4gdG8gZW5hYmxlIE9URz8KPgo+
+IEkgYW0gbm90IHN1cmUgaWYgaXQgbWF0dGVycywgYnV0IHdoZW4gSSBsb29rIGF0IHRoZSBpbWFn
+ZSB3aGVyZSBJIGNhbgo+IHNlZSB0aGUgZGV2aWNlLCB0aGUgY29udGVudCBvZiBVU0IgZGV2aWNl
+cyBpczoKPiAjIGxzIC9zeXMvYnVzL3VzYi9kZXZpY2VzLwo+IDItMDoxLjAgIDEtMDoxLjAgIDMt
+MToxLjAgIHVzYjMgICAgIHVzYjEgICAgIDEtMQo+IDEtMToxLjAgIDMtMToxLjEgIDMtMDoxLjAg
+IHVzYjIgICAgIDMtMQo+Cj4gV2l0aCBMRURFIG9yIHRoZSBvdGhlciB2ZW5kb3ItZmlybXdhcmUs
+IGl0IGNvbnRhaW5zIHRoZSBmb2xsb3dzOgo+IHJvb3RATEVERTovIyBscyAvc3lzL2J1cy91c2Iv
+ZGV2aWNlcy8KPiAxLTA6MS4wICAyLTA6MS4wICB1c2IxICAgICB1c2IyCj4KPiBJIHdhcyBhbHNv
+IHByb3ZpZGVkIHdpdGggdGhlIHRvb2xjaGFpbiB5ZXN0ZXJkYXksIHNvIEkgd2lsbCB0cnkgdG8K
+PiBjb21waWxlIHRoZSBsaW51eC1tZWRpYXRlayBrZXJuZWwgZm9yIHRoZSBib2FyZC4gV2hpY2gg
+YnJhbmNoIGlzIHRoZQo+IGJlc3QgdG8gdXNlPwo+Cj4gVGhhbmtzIGZvciBhbGwgdGhlIGhlbHAg
+c28gZmFyLAo+IEtyaXN0aWFuCj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwo+IExpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdAo+IExpbnV4LW1lZGlh
+dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCgpIaSBLcmlzdGlhbiwKdGhlIHBhdGNoIGluIExF
+REUgaXMgYW4gb2xkIHZlcnNpb24gb2YgdGhlIGRyaXZlciwgZmVlbCBmcmVlIHRvIHNlbmQgYSAK
+cGF0Y2ggYmFja3BvcnRpbmcgbGF0ZXN0IGZyb20gdXBzdHJlYW0uCkkgbWFuYWdlZCB0byBnZXQg
+dGhlIDJuZCBVU0Jwb3J0IHdvcmtpbmcgb24gdGhlIExFREUgbGFzdCBuaWdodCBhbmQgd2lsbCAK
+cHVzaCBhIHBhdGNoIHRvZGF5LiB0aGUgdXNiMiBub2RlIGlzIHNpbXBseSBub3QgZ2V0dGluZyBl
+bmFibGVkIGFuZCB0aGUgCjJuZCBwaHlzIG5vZGUgaXMgbWlzc2luZyAyIHByb3BlcnRpZXMuCiDC
+oMKgwqAgSm9obgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtbWVkaWF0ZWsK
