@@ -1,16 +1,16 @@
-From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+From: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Subject: Re: Problems enabling the PCIe/USB3.0 port on MT7623N
-Date: Fri, 3 Nov 2017 13:19:15 +0100
-Message-ID: <d9c34106-3a90-1df0-6765-1ab230372468@phrozen.org>
+Date: Fri, 3 Nov 2017 13:26:28 +0100
+Message-ID: <CAKfDRXgYpz0akLt8x=P1Br7v5sWmxxy=N+d-5VAaL88McCSpWQ@mail.gmail.com>
 References: <CAKfDRXjNJSJZe_QjuE8H+_ZXVWo1NKM7vrqHBhJ-tAMXqsyxwg@mail.gmail.com>
  <1509675191.20200.18.camel@mtkswgap22>
  <CAKfDRXjrDPKo-mveCb8o7YFdBbBa53kt8WTPDi1RhMXMcbvMYw@mail.gmail.com>
+ <d9c34106-3a90-1df0-6765-1ab230372468@phrozen.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAKfDRXjrDPKo-mveCb8o7YFdBbBa53kt8WTPDi1RhMXMcbvMYw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Content-Language: en-US
+In-Reply-To: <d9c34106-3a90-1df0-6765-1ab230372468-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -20,58 +20,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Cc: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-CgpPbiAwMy8xMS8xNyAxMjowNywgS3Jpc3RpYW4gRXZlbnNlbiB3cm90ZToKPiBIaSBSeWRlciwK
-Pgo+IFRoYW5rcyBmb3IgdGhlIHF1aWNrIHJlcGx5IQo+Cj4gT24gRnJpLCBOb3YgMywgMjAxNyBh
-dCAzOjEzIEFNLCBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+IHdyb3RlOgo+PiBH
-bGFkIHRvIHNlZSBzb21lb25lIGVsc2UgaW50ZXJlc3RlZCBpbiB0aGUgTVQ3NjIzTi4gSW4geW91
-ciBjYXNlIHlvdQo+PiBuZWVkIHRvIHNldCBleHRyYSBiaXQgdG8gc3dpdGNoIHRoZSBQQ0llL1VT
-QiBmdW5jdGlvbiwgd2hpY2ggaXMgbm90Cj4+IHN1cHBvcnRlZCBpbiBtYWlubGluZSB5ZXQuLi4K
-Pj4KPj4gUGxlYXNlIHNlZSB0aGUgYmVsb3cgbGluayBhbmQgc2VhcmNoICdISUZfU1lTQ0ZHMScu
-Cj4+Cj4+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTY5NDU3NS8KPiBJIGFt
-IGN1cnJlbnRseSBidWlsZGluZyBMRURFIGZvciB0aGUgYm9hcmQgYW5kIG5vdGljZWQgdGhhdCB0
-aGV5IGhhdmUKPiBhIGRpZmZlcmVudCBwYXRjaCBmb3IgUENJZQo+IChodHRwczovL2dpdC5sZWRl
-LXByb2plY3Qub3JnLz9wPXNvdXJjZS5naXQ7YT1ibG9iO2Y9dGFyZ2V0L2xpbnV4L21lZGlhdGVr
-L3BhdGNoZXMtNC45LzAwMDMtUENJLW1lZGlhdGVrLWFkZC1zdXBwb3J0LWZvci1QQ0llLWZvdW5k
-LW9uLU1UNzYyMy1NVC5wYXRjaDtoPTQzZjUxZWY2YjMzNGQ2ZmY4NTlkY2E2MjE4YTk3MTBiYTFi
-OWUzZDU7aGI9SEVBRCkuCj4gVGhpcyBwYXRjaCBkb2VzIHRoZSBzYW1lIHJlZ21hcF91cGRhdGVf
-Yml0cygpIGNhbGwgKHdpdGggdGhlIHNhbWUKPiB2YWx1ZXMpIGFuZCBJIGFkZGVkIHNvbWUgbG9n
-cyB0byBjb25maXJtIHRoYXQgdGhlIGZ1bmN0aW9ucyBpcyBjYWxsZWQuCj4gU28gYXQgbGVhc3Qg
-dGhhdCBwYXJ0IHNob3VsZCBiZSBmaW5lLgo+Cj4gWWVzdGVyZGF5IGV2ZW5pbmcsIEkgaGFkIHNv
-bWUgZGlzY3Vzc2lvbnMgd2l0aCB0aGUgcHJvZHVjZXIgb2YgdGhlCj4gYm9hcmQsIGFzIHRoZXkg
-cHJvdmlkZWQgbWUgd2l0aCB0d28gZmlybXdhcmUgaW1hZ2VzIC0gb25lIHdoZXJlIEkgY2FuCj4g
-c2VlIHRoZSBkZXZpY2UgY29ubmVjdGVkIHRvIHRoZSBzbG90IChwcm92aWRlZCB0byB0aGUgdmVu
-ZG9yIGJ5Cj4gTWVkaWF0ZWspIGFuZCBvbmUgd2hlcmUgdGhlIGRldmljZSBpcyBub3QgYXZhaWxh
-YmxlIChpbWFnZSBjb21waWxlZCBieQo+IHRoZSB2ZW5kb3IpLiBBY2NvcmRpbmcgdG8gdGhlIHZl
-bmRvciwgdGhlIGRpZmZlcmVuY2UgYmV0d2VlbiB0aGUKPiBpbWFnZXMgaXMgdGhhdCB0aGUgaW1h
-Z2UgcHJvdmlkZWQgYnkgTWVkaWF0ZWsgZW5hYmxlcyBVU0IKPiBPVEctZnVuY3Rpb25hbGl0eSBh
-bmQgdGhpcyBpcyByZXF1aXJlZCBmb3IgdGhlIHNsb3QuIEhvd2V2ZXIsIHRoZXkKPiBjb3VsZCBu
-b3QgZ2l2ZSBtZSBhbnkgdGVjaG5pY2FsIGRldGFpbHMgb24gaG93IHRvIGVuYWJsZSBPVEcuIFdo
-ZW4KPiBzZWFyY2hpbmcgdGhlIGxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdCBhcmNoaXZlcywg
-SSBjb3VsZG4ndCBmaW5kCj4gYW55IE9URy1zcGVjaWZpYyBwYXRjaGVzLiBBcmUgdGhlcmUgYW55
-IHNwZWNpZmljIHN0ZXBzIHRoYXQgaGFzIHRvIGJlCj4gdGFrZW4gdG8gZW5hYmxlIE9URz8KPgo+
-IEkgYW0gbm90IHN1cmUgaWYgaXQgbWF0dGVycywgYnV0IHdoZW4gSSBsb29rIGF0IHRoZSBpbWFn
-ZSB3aGVyZSBJIGNhbgo+IHNlZSB0aGUgZGV2aWNlLCB0aGUgY29udGVudCBvZiBVU0IgZGV2aWNl
-cyBpczoKPiAjIGxzIC9zeXMvYnVzL3VzYi9kZXZpY2VzLwo+IDItMDoxLjAgIDEtMDoxLjAgIDMt
-MToxLjAgIHVzYjMgICAgIHVzYjEgICAgIDEtMQo+IDEtMToxLjAgIDMtMToxLjEgIDMtMDoxLjAg
-IHVzYjIgICAgIDMtMQo+Cj4gV2l0aCBMRURFIG9yIHRoZSBvdGhlciB2ZW5kb3ItZmlybXdhcmUs
-IGl0IGNvbnRhaW5zIHRoZSBmb2xsb3dzOgo+IHJvb3RATEVERTovIyBscyAvc3lzL2J1cy91c2Iv
-ZGV2aWNlcy8KPiAxLTA6MS4wICAyLTA6MS4wICB1c2IxICAgICB1c2IyCj4KPiBJIHdhcyBhbHNv
-IHByb3ZpZGVkIHdpdGggdGhlIHRvb2xjaGFpbiB5ZXN0ZXJkYXksIHNvIEkgd2lsbCB0cnkgdG8K
-PiBjb21waWxlIHRoZSBsaW51eC1tZWRpYXRlayBrZXJuZWwgZm9yIHRoZSBib2FyZC4gV2hpY2gg
-YnJhbmNoIGlzIHRoZQo+IGJlc3QgdG8gdXNlPwo+Cj4gVGhhbmtzIGZvciBhbGwgdGhlIGhlbHAg
-c28gZmFyLAo+IEtyaXN0aWFuCj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwo+IExpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdAo+IExpbnV4LW1lZGlh
-dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCgpIaSBLcmlzdGlhbiwKdGhlIHBhdGNoIGluIExF
-REUgaXMgYW4gb2xkIHZlcnNpb24gb2YgdGhlIGRyaXZlciwgZmVlbCBmcmVlIHRvIHNlbmQgYSAK
-cGF0Y2ggYmFja3BvcnRpbmcgbGF0ZXN0IGZyb20gdXBzdHJlYW0uCkkgbWFuYWdlZCB0byBnZXQg
-dGhlIDJuZCBVU0Jwb3J0IHdvcmtpbmcgb24gdGhlIExFREUgbGFzdCBuaWdodCBhbmQgd2lsbCAK
-cHVzaCBhIHBhdGNoIHRvZGF5LiB0aGUgdXNiMiBub2RlIGlzIHNpbXBseSBub3QgZ2V0dGluZyBl
-bmFibGVkIGFuZCB0aGUgCjJuZCBwaHlzIG5vZGUgaXMgbWlzc2luZyAyIHByb3BlcnRpZXMuCiDC
-oMKgwqAgSm9obgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtbWVkaWF0ZWsK
+Hi John,
+
+On Fri, Nov 3, 2017 at 1:19 PM, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org> wrote:
+> the patch in LEDE is an old version of the driver, feel free to send a patch
+> backporting latest from upstream.
+> I managed to get the 2nd USBport working on the LEDE last night and will
+> push a patch today. the usb2 node is simply not getting enabled and the 2nd
+> phys node is missing 2 properties.
+
+Thanks for letting me know! Would it be possible to send me the patch
+or share the changes to the dts/dtsi, so that I can test on my board?
+
+ I will give backporting a go. Worst case it will be good exercise and
+an introduction to getting more familiar with the archiecture :)
+
+-Kristian
