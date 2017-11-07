@@ -1,78 +1,76 @@
-From: Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v3 4/5] soc: rockchip: power-domain: Use
- GENPD_FLAG_ACTIVE_WAKEUP
-Date: Tue,  7 Nov 2017 13:48:14 +0100
-Message-ID: <1510058895-21712-5-git-send-email-geert+renesas@glider.be>
-References: <1510058895-21712-1-git-send-email-geert+renesas@glider.be>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [GIT PULL v2] Mediatek: 32-bit DTS updates for v4.15
+Date: Tue, 7 Nov 2017 15:14:31 +0100
+Message-ID: <6fcfb359-6486-3051-1d6a-1eb18e6f0bc4@gmail.com>
+References: <8a52a27e-f930-e873-6803-233dfa48b087@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1510058895-21712-1-git-send-email-geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Rafael J . Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Simon Horman <horms-/R6kz+dDXgpPR4JQBCEnsQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <8a52a27e-f930-e873-6803-233dfa48b087-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Weiqing Kong <weiqing.kong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Set the newly introduced GENPD_FLAG_ACTIVE_WAKEUP, which allows to
-remove the driver's own flag-based callback.
+Hi Arnd,
 
-Signed-off-by: Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>
-Acked-by: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Acked-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
-Compile-tested only.
+On 11/02/2017 07:52 PM, Matthias Brugger wrote:
+> Hi Arnd and Olof,
+> 
+> Please pull the following commits. This is version 2 of the pull request. I
+> dropped the PCI nodes addition as it needs more clarification.
+> 
+> Thanks
+> Matthias
+> 
+> ---
+> 
+> The following changes since commit 2bd6bf03f4c1c59381d62c61d03f6cc3fe71f66e:
+> 
+>   Linux 4.14-rc1 (2017-09-16 15:47:51 -0700)
+> 
+> are available in the git repository at:
+> 
+>   https://github.com/mbgg/linux-mediatek.git tags/v4.14-next-dts32-2
+> 
+> for you to fetch changes up to eb54a522f164f89587381d665307d53acf75f114:
+> 
+>   arm: dts: mt7623: remove unused compatible string for pio node (2017-11-02
+> 19:43:20 +0100)
+> 
+> ----------------------------------------------------------------
+> - mt7623 update nodes to binding description
+> - mt2701 add display pwn nodes
+> - mt2701 update audio node description
+> 
+> ----------------------------------------------------------------
+> Ryder Lee (4):
+>       arm: dts: mediatek: update audio node for mt2701 and mt7623
+>       arm: dts: mt7623: update crypto node
+>       arm: dts: mt7623: update usb related nodes
+>       arm: dts: mt7623: remove unused compatible string for pio node
+> 
+> Weiqing Kong (2):
+>       arm: dts: mt2701: add pwm backlight device node
+>       arm: dts: mt2701: enable display pwm backlight
+> 
+>  arch/arm/boot/dts/mt2701-evb.dts | 23 +++++++++++++++++++++++
+>  arch/arm/boot/dts/mt2701.dtsi    | 13 ++++++++++++-
+>  arch/arm/boot/dts/mt7623.dtsi    | 30 +++++++++++++++++-------------
+>  3 files changed, 52 insertions(+), 14 deletions(-)
+> 
 
-v3:
-  - Add Acked-by,
-  - Drop RFC status,
+I don't see this commits in your repository. Did you forgot to merge them?
 
-v2:
-  - New.
----
- drivers/soc/rockchip/pm_domains.c | 14 ++------------
- 1 file changed, 2 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
-index 40b75748835f552c..5c342167b9db7a16 100644
---- a/drivers/soc/rockchip/pm_domains.c
-+++ b/drivers/soc/rockchip/pm_domains.c
-@@ -358,17 +358,6 @@ static void rockchip_pd_detach_dev(struct generic_pm_domain *genpd,
- 	pm_clk_destroy(dev);
- }
- 
--static bool rockchip_active_wakeup(struct device *dev)
--{
--	struct generic_pm_domain *genpd;
--	struct rockchip_pm_domain *pd;
--
--	genpd = pd_to_genpd(dev->pm_domain);
--	pd = container_of(genpd, struct rockchip_pm_domain, genpd);
--
--	return pd->info->active_wakeup;
--}
--
- static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
- 				      struct device_node *node)
- {
-@@ -489,8 +478,9 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
- 	pd->genpd.power_on = rockchip_pd_power_on;
- 	pd->genpd.attach_dev = rockchip_pd_attach_dev;
- 	pd->genpd.detach_dev = rockchip_pd_detach_dev;
--	pd->genpd.dev_ops.active_wakeup = rockchip_active_wakeup;
- 	pd->genpd.flags = GENPD_FLAG_PM_CLK;
-+	if (pd_info->active_wakeup)
-+		pd->genpd.flags |= GENPD_FLAG_ACTIVE_WAKEUP;
- 	pm_genpd_init(&pd->genpd, NULL, false);
- 
- 	pmu->genpd_data.domains[id] = &pd->genpd;
--- 
-2.7.4
+Best regards,
+Matthias
