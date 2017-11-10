@@ -1,30 +1,51 @@
-From: Christopher Lameter <cl@linux.com>
-Subject: Re: [PATCH] slub: Fix sysfs duplicate filename creation when
- slub_debug=O
-Date: Fri, 10 Nov 2017 10:02:47 -0600 (CST)
-Message-ID: <alpine.DEB.2.20.1711100941030.29707@nuc-kabylake>
-References: <1510023934-17517-1-git-send-email-miles.chen@mediatek.com> <alpine.DEB.2.20.1711070916480.18776@nuc-kabylake> <1510119138.17435.19.camel@mtkswgap22> <alpine.DEB.2.20.1711080903460.6161@nuc-kabylake> <1510217554.32371.17.camel@mtkswgap22>
- <alpine.DEB.2.20.1711090949250.12587@nuc-kabylake> <1510271512.11555.3.camel@mtkswgap22>
+From: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: Frequent TX timeouts on a MT7623 (MT7530)
+Date: Fri, 10 Nov 2017 20:08:48 +0100
+Message-ID: <CAKfDRXg1-z2_OaW_sAWi90nAhDhNVVXavtnriMxOZdhw1_jD9w@mail.gmail.com>
+References: <CAKfDRXjU4wYXBfi=PV5fjsss_-4a2a4M24xKwEOVFXvk9daVTg@mail.gmail.com>
+ <1510283908.20663.27.camel@mtkswgap22>
+ <CAKfDRXjW_7F=hP4-mpn3KOcMYrag+XKWZaNi55FcY905e5XG0A@mail.gmail.com>
+ <1510307742.9363.9.camel@mtkswgap22>
+ <CAKfDRXiuCaZZ8qj1BU23FtYpRBJJHBj8kxJL3hGCC-syLWpabA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Return-path: <owner-linux-mm@kvack.org>
-In-Reply-To: <1510271512.11555.3.camel@mtkswgap22>
-Sender: owner-linux-mm@kvack.org
-To: Miles Chen <miles.chen@mediatek.com>
-Cc: Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew Morton <akpm@linux-foundation.org>, linux-kernel@vger.kernel.org, linux-mm@kvack.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAKfDRXiuCaZZ8qj1BU23FtYpRBJJHBj8kxJL3hGCC-syLWpabA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 10 Nov 2017, Miles Chen wrote:
+Hi,
 
-> By checking disable_higher_order_debug & (slub_debug &
-> SLAB_NEVER_MERGE), we can detect if a cache is unmergeable but become
-> mergeable because the disable_higher_order_debug=1 logic. Those kind of
-> caches should be keep unmergeable.
+Sorry that it took a while before I answered, busy day.
 
-Acked-by: Christoph Lameter <cl@linux.com>
+On Fri, Nov 10, 2017 at 1:20 PM, Kristian Evensen
+<kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> One of my earlier fixes (for MT7621 though) was to disable the pause
+> frame and this did make the switch a lot more stable. I will try to
+> remove the PMCR_RX_FC_EN and see what happens, and let you know. Just
+> out of curiosity, do you know what would be the equivalent
+> bit/register with the mt7621? Then I can test this on more devices.
 
---
-To unsubscribe, send a message with 'unsubscribe linux-mm' in
-the body to majordomo@kvack.org.  For more info on Linux MM,
-see: http://www.linux-mm.org/ .
-Don't email: <a href=mailto:"dont@kvack.org"> email@kvack.org </a>
+I have now done a few more tests.
+
+* If I add a switch between the 7623 and the other router, I do not
+see the tx timeout.
+* When setting up a mirroring port, I see nothing special coming from
+the router that has hung. However, it could be that packets are
+gobbled up by the switch itself. I will see if I can get some other
+capturing equipment, or just try with a hub.
+* Enabling disabling flow control (and pause frames during
+auto-negotiation) has no effect. I can still see the crash.
+
+-Kristian
