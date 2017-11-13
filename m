@@ -1,54 +1,77 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [PATCH] slub: Fix sysfs duplicate filename creation when
- slub_debug=O
-Date: Sun, 12 Nov 2017 09:40:23 +0800
-Message-ID: <1510450823.27196.2.camel@mtkswgap22>
-References: <1510023934-17517-1-git-send-email-miles.chen@mediatek.com>
-         <alpine.DEB.2.20.1711070916480.18776@nuc-kabylake>
-         <1510119138.17435.19.camel@mtkswgap22>
-         <alpine.DEB.2.20.1711080903460.6161@nuc-kabylake>
-         <1510217554.32371.17.camel@mtkswgap22>
-         <alpine.DEB.2.20.1711090949250.12587@nuc-kabylake>
-         <1510271512.11555.3.camel@mtkswgap22>
-         <alpine.DEB.2.20.1711100941030.29707@nuc-kabylake>
+From: Johan Hovold <johan@kernel.org>
+Subject: Broken child-node lookup in sound/soc/mediatek/mt8173
+Date: Mon, 13 Nov 2017 12:32:52 +0100
+Message-ID: <20171113113252.GT11226@localhost>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <alpine.DEB.2.20.1711100941030.29707@nuc-kabylake>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Christopher Lameter <cl@linux.com>
-Cc: Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew Morton <akpm@linux-foundation.org>, linux-kernel@vger.kernel.org, linux-mm@kvack.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>, PC Liao <pc.liao@mediatek.com>
+Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2017-11-10 at 10:02 -0600, Christopher Lameter wrote:
-> On Fri, 10 Nov 2017, Miles Chen wrote:
-> 
-> > By checking disable_higher_order_debug & (slub_debug &
-> > SLAB_NEVER_MERGE), we can detect if a cache is unmergeable but become
-> > mergeable because the disable_higher_order_debug=1 logic. Those kind of
-> > caches should be keep unmergeable.
-> 
-> Acked-by: Christoph Lameter <cl@linux.com>
-> 
+Hi,
 
-Thanks for the ack, I already sent a v2 patch to fix a build warning in
-this patch.(fix a build error: use instead DEBUG_METADATA_FLAGS of
-SLAB_NEVER_MERGE)
+I'm trying to fix up incorrect usage of of_find_node_by_name() to lookup
+child nodes, and found the following code in
+sound/soc/mediatek/mt8173/mt8173-rt5650.c:
 
-diff --git a/mm/slub.c b/mm/slub.c
-index 1efbb812..8e1c027 100644
---- a/mm/slub.c
-+++ b/mm/slub.c
-@@ -5704,6 +5704,10 @@ static int sysfs_slab_add(struct kmem_cache *s)
-                return 0;
-        }
+static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
+{
+	...
 
-+       if (!unmergeable && disable_higher_order_debug &&
-+                       (slub_debug & DEBUG_METADATA_FLAGS))
-+               unmergeable = 1;
-+
-        if (unmergeable) {
-                /*
-                 * Slabcache can never be merged so we can use the name
-proper.
+	platform_node = of_parse_phandle(pdev->dev.of_node,
+					 "mediatek,platform", 0);
+	...
+
+	if (of_find_node_by_name(platform_node, "codec-capture")) {
+		np = of_get_child_by_name(pdev->dev.of_node, "codec-capture");
+		if (!np) {
+			dev_err(&pdev->dev,
+				"%s: Can't find codec-capture DT node\n",
+				__func__);
+			return -EINVAL;
+		}
+		ret = snd_soc_of_get_dai_name(np, &codec_capture_dai);
+		if (ret < 0) {
+			dev_err(&pdev->dev,
+				"%s codec_capture_dai name fail %d\n",
+				__func__, ret);
+			return ret;
+		}
+		mt8173_rt5650_codecs[1].dai_name = codec_capture_dai;
+	}
+
+added by commit d349caeb0510 ("ASoC: mediatek: Add second I2S on
+mt8173-rt5650 machine driver").
+
+First of all the "codec-capture" node is indeed documented as a child
+node of the sound node, so the tree-wide depth-first search from the
+platform_node looks entirely bogus.
+
+Note that of_find_node_by_name() also drops a reference to its first
+argument, in this case the sound node, which could end up being
+prematurely freed. 
+
+And then the reference to any returned codec-capture node (from either
+lookup) is never dropped.
+
+And since support for this second codec was added retrospectively and is
+documented as optional, that -EINVAL in case the node is missing looks
+broken too.
+
+I figured I better just report this one to the author of the patch and
+the maintainers to be straightened out.
+
+Thanks,
+Johan
