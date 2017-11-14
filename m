@@ -1,7 +1,7 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 4/8] clk: mediatek: mt2701-mm: switch to mfd device
-Date: Tue, 14 Nov 2017 22:41:10 +0100
-Message-ID: <20171114214114.15793-5-mbrugger@suse.com>
+Subject: [PATCH 8/8] MAINTAINERS: update Mediatek Soc entry
+Date: Tue, 14 Nov 2017 22:41:14 +0100
+Message-ID: <20171114214114.15793-9-mbrugger@suse.com>
 References: <20171114214114.15793-1-mbrugger@suse.com>
 Return-path: <linux-clk-owner@vger.kernel.org>
 In-Reply-To: <20171114214114.15793-1-mbrugger@suse.com>
@@ -10,55 +10,26 @@ To: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@med
 Cc: davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, pi-cheng.chen@linaro.org, sean.wang@mediatek.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-As the new mfd device is in place, switch probing
-for the MMSYS to support invocation from the mfd device.
+Mediatek SoCs include several soc specific drivers as well
+as a mfd device. Add these to the maintainers file.
 
 Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 ---
- drivers/clk/mediatek/clk-mt2701-mm.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+ MAINTAINERS | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-mt2701-mm.c b/drivers/clk/mediatek/clk-mt2701-mm.c
-index fe1f85072fc5..1725c2c17ca3 100644
---- a/drivers/clk/mediatek/clk-mt2701-mm.c
-+++ b/drivers/clk/mediatek/clk-mt2701-mm.c
-@@ -13,6 +13,7 @@
-  */
- 
- #include <linux/clk-provider.h>
-+#include <linux/mfd/mmsys.h>
- #include <linux/platform_device.h>
- 
- #include "clk-mtk.h"
-@@ -87,16 +88,15 @@ static const struct mtk_gate mm_clks[] = {
- 	GATE_DISP1(CLK_MM_TVE_FMM, "mm_tve_fmm", "mm_sel", 14),
- };
- 
--static const struct of_device_id of_match_clk_mt2701_mm[] = {
--	{ .compatible = "mediatek,mt2701-mmsys", },
--	{}
--};
--
- static int clk_mt2701_mm_probe(struct platform_device *pdev)
- {
- 	struct clk_onecell_data *clk_data;
- 	int r;
--	struct device_node *node = pdev->dev.of_node;
-+	struct device_node *node;
-+	struct mmsys_dev *mmsys_private;
-+
-+	mmsys_private = dev_get_drvdata(pdev->dev.parent);
-+	node = mmsys_private->of_node;
- 
- 	clk_data = mtk_alloc_clk_data(CLK_MM_NR);
- 
-@@ -116,7 +116,6 @@ static struct platform_driver clk_mt2701_mm_drv = {
- 	.probe = clk_mt2701_mm_probe,
- 	.driver = {
- 		.name = "clk-mt2701-mm",
--		.of_match_table = of_match_clk_mt2701_mm,
- 	},
- };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 2811a211632c..586797908865 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1606,6 +1606,8 @@ F:	arch/arm/boot/dts/mt7*
+ F:	arch/arm/boot/dts/mt8*
+ F:	arch/arm/mach-mediatek/
+ F:	arch/arm64/boot/dts/mediatek/
++F:	drivers/soc/mediatek/
++F:	drivers/mfd/mtk-mmsys.c
+ N:	mtk
+ K:	mediatek
  
 -- 
 2.14.2
