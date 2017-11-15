@@ -1,8 +1,7 @@
 From: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [POC 11/16] drm/img-rogue: replace call to obsolete
- drm_platform_init()
-Date: Wed, 15 Nov 2017 16:24:18 +0100
-Message-ID: <1510759463-30201-12-git-send-email-ulrich.hecht+renesas@gmail.com>
+Subject: [POC 13/16] drm/img-rogue: enable img-rogue driver in Kconfig/Makefile
+Date: Wed, 15 Nov 2017 16:24:20 +0100
+Message-ID: <1510759463-30201-14-git-send-email-ulrich.hecht+renesas@gmail.com>
 References: <1510759463-30201-1-git-send-email-ulrich.hecht+renesas@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,115 +21,50 @@ To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, mbrugger-IBi9RG/b67k@public.gmane.org, magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Use drm_dev_alloc(), drm_dev_register() and remove the .load and .unload
-methods from drm_driver.
-
 Signed-off-by: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- drivers/gpu/drm/img-rogue/1.6/mt8173/mtk_module.c | 14 +++++++++++--
- drivers/gpu/drm/img-rogue/1.6/pvr_drm.c           | 24 +----------------------
- 2 files changed, 13 insertions(+), 25 deletions(-)
+ drivers/gpu/drm/Kconfig           | 2 ++
+ drivers/gpu/drm/Makefile          | 2 ++
+ drivers/gpu/drm/img-rogue/Kconfig | 1 +
+ 3 files changed, 5 insertions(+)
 
-diff --git a/drivers/gpu/drm/img-rogue/1.6/mt8173/mtk_module.c b/drivers/gpu/drm/img-rogue/1.6/mt8173/mtk_module.c
-index 5df3a15..1ef75bb 100644
---- a/drivers/gpu/drm/img-rogue/1.6/mt8173/mtk_module.c
-+++ b/drivers/gpu/drm/img-rogue/1.6/mt8173/mtk_module.c
-@@ -109,7 +109,7 @@ static struct platform_driver powervr_driver = {
- *****************************************************************************/
- int PVRSRVSystemInit(struct drm_device *pDrmDevice)
- {
--	struct platform_device *pDevice = pDrmDevice->platformdev;
-+	struct platform_device *pDevice = to_platform_device(pDrmDevice->dev);
- 	PVRSRV_ERROR err;
+diff --git a/drivers/gpu/drm/Kconfig b/drivers/gpu/drm/Kconfig
+index 83cb2a8..492188f 100644
+--- a/drivers/gpu/drm/Kconfig
++++ b/drivers/gpu/drm/Kconfig
+@@ -268,6 +268,8 @@ source "drivers/gpu/drm/hisilicon/Kconfig"
  
- 	PVR_TRACE(("%s (pDevice=%p)", __func__, pDevice));
-@@ -160,8 +160,10 @@ void PVRSRVSystemDeInit(struct platform_device *pDevice)
-  @Return 0 for success or <0 for an error.
+ source "drivers/gpu/drm/mediatek/Kconfig"
  
- *****************************************************************************/
-+int PVRSRVDRMLoad(struct drm_device *dev, unsigned long flags);
- static int PVRSRVDriverProbe(struct platform_device *pDevice)
- {
-+	struct drm_device *drm;
- 	int result;
- 
- 	PVR_TRACE(("%s (pDevice=%p)", __func__, pDevice));
-@@ -172,13 +174,21 @@ static int PVRSRVDriverProbe(struct platform_device *pDevice)
- 			return result;
- 	}
- 
--	result = drm_platform_init(&sPVRDRMDriver, pDevice);
-+	drm = drm_dev_alloc(&sPVRDRMDriver, &pDevice->dev);
-+        if (IS_ERR(drm))
-+		return PTR_ERR(drm);
++source "drivers/gpu/drm/img-rogue/Kconfig"
 +
-+	platform_set_drvdata(pDevice, drm);
-+
-+	result = PVRSRVDRMLoad(drm, 0);
+ source "drivers/gpu/drm/zte/Kconfig"
  
- 	dma_set_mask(&pDevice->dev, DMA_BIT_MASK(33));
- 
- 	if (result == 0)
- 		PVRSRVDeviceInit();
- 
-+	result = drm_dev_register(drm, 0);
-+
- 	return result;
- }
- 
-diff --git a/drivers/gpu/drm/img-rogue/1.6/pvr_drm.c b/drivers/gpu/drm/img-rogue/1.6/pvr_drm.c
-index 7439a6f..36c5a76 100644
---- a/drivers/gpu/drm/img-rogue/1.6/pvr_drm.c
-+++ b/drivers/gpu/drm/img-rogue/1.6/pvr_drm.c
-@@ -107,17 +107,12 @@ DECLARE_WAIT_QUEUE_HEAD(sWaitForInit);
- IMG_BOOL bInitComplete;
- IMG_BOOL bInitFailed;
- 
--static int PVRSRVDRMLoad(struct drm_device *dev, unsigned long flags)
-+int PVRSRVDRMLoad(struct drm_device *dev, unsigned long flags)
- {
- 	int iRes;
- 
- 	PVR_TRACE(("PVRSRVDRMLoad"));
- 
--#if defined(LDM_PLATFORM)
--	/* The equivalent is done for PCI modesetting drivers by drm_get_pci_dev() */
--	platform_set_drvdata(dev->platformdev, dev);
--#endif
--
- 	/* Module initialisation */
- 	iRes = PVRSRVSystemInit(dev);
- 	if (iRes != 0)
-@@ -141,21 +136,6 @@ static int PVRSRVDRMLoad(struct drm_device *dev, unsigned long flags)
- 	return iRes;
- }
- 
--static int PVRSRVDRMUnload(struct drm_device *dev)
--{
--#if defined(LDM_PLATFORM)
--	LDM_DEV *pDevice = dev->platformdev;
--#elif defined(LDM_PCI)
--	LDM_DEV *pDevice = dev->pdev;
--#endif
--
--	PVR_TRACE(("PVRSRVDRMUnload"));
--
--	PVRSRVSystemDeInit(pDevice);
--
--	return 0;
--}
--
- static int PVRSRVDRMOpen(struct drm_device *dev, struct drm_file *file)
- {
- 	while (!bInitComplete)
-@@ -306,8 +286,6 @@ struct drm_driver sPVRDRMDriver =
- 	.driver_features	= DRIVER_MODESET | DRIVER_RENDER,
- 
- 	.dev_priv_size		= 0,
--	.load			= PVRSRVDRMLoad,
--	.unload			= PVRSRVDRMUnload,
- 	.open			= PVRSRVDRMOpen,
- 	.postclose		= PVRSRVRelease,
+ source "drivers/gpu/drm/mxsfb/Kconfig"
+diff --git a/drivers/gpu/drm/Makefile b/drivers/gpu/drm/Makefile
+index 8ce0703..076fa7d 100644
+--- a/drivers/gpu/drm/Makefile
++++ b/drivers/gpu/drm/Makefile
+@@ -89,6 +89,8 @@ obj-$(CONFIG_DRM_STM) += stm/
+ obj-$(CONFIG_DRM_STI) += sti/
+ obj-$(CONFIG_DRM_IMX) += imx/
+ obj-$(CONFIG_DRM_MEDIATEK) += mediatek/
++obj-$(CONFIG_DRM_POWERVR_ROGUE_1_6) += img-rogue/1.6/
++obj-$(CONFIG_DRM_POWERVR_ROGUE) += img-rogue/
+ obj-$(CONFIG_DRM_MESON)	+= meson/
+ obj-y			+= i2c/
+ obj-y			+= panel/
+diff --git a/drivers/gpu/drm/img-rogue/Kconfig b/drivers/gpu/drm/img-rogue/Kconfig
+index 700d89c..78c5110 100644
+--- a/drivers/gpu/drm/img-rogue/Kconfig
++++ b/drivers/gpu/drm/img-rogue/Kconfig
+@@ -24,6 +24,7 @@ config DRM_POWERVR_ROGUE_1_6
+ 	select DEVFREQ_GOV_SIMPLE_ONDEMAND
+ 	select PM_OPP
+ 	select DEVFREQ_THERMAL
++	select THERMAL
+ 	help
+ 	  Driver for PowerVR Rogue graphics hardware, 1.6.
  
 -- 
 2.7.4
