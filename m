@@ -1,7 +1,7 @@
 From: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [POC 08/16] drm/img-rogue: dma_buf_ops .kmap_* are now .map_*
-Date: Wed, 15 Nov 2017 16:24:15 +0100
-Message-ID: <1510759463-30201-9-git-send-email-ulrich.hecht+renesas@gmail.com>
+Subject: [POC 04/16] drm/img-rogue: #include <linux/sched/clock.h> in osfunc.c
+Date: Wed, 15 Nov 2017 16:24:11 +0100
+Message-ID: <1510759463-30201-5-git-send-email-ulrich.hecht+renesas@gmail.com>
 References: <1510759463-30201-1-git-send-email-ulrich.hecht+renesas@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,25 +21,24 @@ To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, mbrugger-IBi9RG/b67k@public.gmane.org, magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Required for sched_clock()
+
 Signed-off-by: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- drivers/gpu/drm/img-rogue/1.6/physmem_dmabuf.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/img-rogue/1.6/osfunc.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/img-rogue/1.6/physmem_dmabuf.c b/drivers/gpu/drm/img-rogue/1.6/physmem_dmabuf.c
-index 406886f..4fb813f 100644
---- a/drivers/gpu/drm/img-rogue/1.6/physmem_dmabuf.c
-+++ b/drivers/gpu/drm/img-rogue/1.6/physmem_dmabuf.c
-@@ -130,8 +130,8 @@ static const struct dma_buf_ops sPVRDmaBufOps =
- 	.map_dma_buf   = PVRDmaBufOpsMap,
- 	.unmap_dma_buf = PVRDmaBufOpsUnmap,
- 	.release       = PVRDmaBufOpsRelease,
--	.kmap_atomic   = PVRDmaBufOpsKMap,
--	.kmap          = PVRDmaBufOpsKMap,
-+	.map_atomic    = PVRDmaBufOpsKMap,
-+	.map           = PVRDmaBufOpsKMap,
- 	.mmap          = PVRDmaBufOpsMMap,
- };
+diff --git a/drivers/gpu/drm/img-rogue/1.6/osfunc.c b/drivers/gpu/drm/img-rogue/1.6/osfunc.c
+index 7a9255b0..4481381 100644
+--- a/drivers/gpu/drm/img-rogue/1.6/osfunc.c
++++ b/drivers/gpu/drm/img-rogue/1.6/osfunc.c
+@@ -69,6 +69,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ #endif
+ #include <linux/kthread.h>
+ #include <asm/atomic.h>
++#include <linux/sched/clock.h>
+ #include <linux/pfn_t.h>
  
+ #include "log2.h"
 -- 
 2.7.4
