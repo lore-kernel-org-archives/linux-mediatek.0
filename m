@@ -1,8 +1,7 @@
 From: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [POC 03/16] drm/img-rogue: change #include <asm/uaccess.h> to
- <linux/uaccess.h>
-Date: Wed, 15 Nov 2017 16:24:10 +0100
-Message-ID: <1510759463-30201-4-git-send-email-ulrich.hecht+renesas@gmail.com>
+Subject: [POC 08/16] drm/img-rogue: dma_buf_ops .kmap_* are now .map_*
+Date: Wed, 15 Nov 2017 16:24:15 +0100
+Message-ID: <1510759463-30201-9-git-send-email-ulrich.hecht+renesas@gmail.com>
 References: <1510759463-30201-1-git-send-email-ulrich.hecht+renesas@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -24,21 +23,23 @@ List-Id: linux-mediatek@lists.infradead.org
 
 Signed-off-by: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- drivers/gpu/drm/img-rogue/1.6/pvr_uaccess.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/img-rogue/1.6/physmem_dmabuf.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/img-rogue/1.6/pvr_uaccess.h b/drivers/gpu/drm/img-rogue/1.6/pvr_uaccess.h
-index 53c8f0a..aab7eba 100644
---- a/drivers/gpu/drm/img-rogue/1.6/pvr_uaccess.h
-+++ b/drivers/gpu/drm/img-rogue/1.6/pvr_uaccess.h
-@@ -50,7 +50,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- #endif
- #endif
+diff --git a/drivers/gpu/drm/img-rogue/1.6/physmem_dmabuf.c b/drivers/gpu/drm/img-rogue/1.6/physmem_dmabuf.c
+index 406886f..4fb813f 100644
+--- a/drivers/gpu/drm/img-rogue/1.6/physmem_dmabuf.c
++++ b/drivers/gpu/drm/img-rogue/1.6/physmem_dmabuf.c
+@@ -130,8 +130,8 @@ static const struct dma_buf_ops sPVRDmaBufOps =
+ 	.map_dma_buf   = PVRDmaBufOpsMap,
+ 	.unmap_dma_buf = PVRDmaBufOpsUnmap,
+ 	.release       = PVRDmaBufOpsRelease,
+-	.kmap_atomic   = PVRDmaBufOpsKMap,
+-	.kmap          = PVRDmaBufOpsKMap,
++	.map_atomic    = PVRDmaBufOpsKMap,
++	.map           = PVRDmaBufOpsKMap,
+ 	.mmap          = PVRDmaBufOpsMMap,
+ };
  
--#include <asm/uaccess.h>
-+#include <linux/uaccess.h>
- 
- static inline unsigned long pvr_copy_to_user(void __user *pvTo, const void *pvFrom, unsigned long ulBytes)
- {
 -- 
 2.7.4
