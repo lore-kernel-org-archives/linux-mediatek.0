@@ -1,7 +1,8 @@
 From: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [POC 14/16] arm64: dts: mt8173: add CPU OPP tables
-Date: Wed, 15 Nov 2017 16:24:21 +0100
-Message-ID: <1510759463-30201-15-git-send-email-ulrich.hecht+renesas@gmail.com>
+Subject: [POC 11/16] drm/img-rogue: replace call to obsolete
+ drm_platform_init()
+Date: Wed, 15 Nov 2017 16:24:18 +0100
+Message-ID: <1510759463-30201-12-git-send-email-ulrich.hecht+renesas@gmail.com>
 References: <1510759463-30201-1-git-send-email-ulrich.hecht+renesas@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,141 +22,115 @@ To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, mbrugger-IBi9RG/b67k@public.gmane.org, magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Adds CPU OPP tables for use with the generic cpufreq driver.
+Use drm_dev_alloc(), drm_dev_register() and remove the .load and .unload
+methods from drm_driver.
 
 Signed-off-by: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 90 ++++++++++++++++++++++++++++++++
- 1 file changed, 90 insertions(+)
+ drivers/gpu/drm/img-rogue/1.6/mt8173/mtk_module.c | 14 +++++++++++--
+ drivers/gpu/drm/img-rogue/1.6/pvr_drm.c           | 24 +----------------------
+ 2 files changed, 13 insertions(+), 25 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index b99a273..f454efa33 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -51,6 +51,80 @@
- 		mdp_wrot1 = &mdp_wrot1;
- 	};
+diff --git a/drivers/gpu/drm/img-rogue/1.6/mt8173/mtk_module.c b/drivers/gpu/drm/img-rogue/1.6/mt8173/mtk_module.c
+index 5df3a15..1ef75bb 100644
+--- a/drivers/gpu/drm/img-rogue/1.6/mt8173/mtk_module.c
++++ b/drivers/gpu/drm/img-rogue/1.6/mt8173/mtk_module.c
+@@ -109,7 +109,7 @@ static struct platform_driver powervr_driver = {
+ *****************************************************************************/
+ int PVRSRVSystemInit(struct drm_device *pDrmDevice)
+ {
+-	struct platform_device *pDevice = pDrmDevice->platformdev;
++	struct platform_device *pDevice = to_platform_device(pDrmDevice->dev);
+ 	PVRSRV_ERROR err;
  
-+	cluster0_opp: opp_table0 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+		opp@507000000 {
-+			opp-hz = /bits/ 64 <507000000>;
-+			opp-microvolt = <859000>;
-+		};
-+		opp@702000000 {
-+			opp-hz = /bits/ 64 <702000000>;
-+			opp-microvolt = <908000>;
-+		};
-+		opp@1001000000 {
-+			opp-hz = /bits/ 64 <1001000000>;
-+			opp-microvolt = <983000>;
-+		};
-+		opp@1105000000 {
-+			opp-hz = /bits/ 64 <1105000000>;
-+			opp-microvolt = <1009000>;
-+		};
-+		opp@1209000000 {
-+			opp-hz = /bits/ 64 <1209000000>;
-+			opp-microvolt = <1034000>;
-+		};
-+		opp@1300000000 {
-+			opp-hz = /bits/ 64 <1300000000>;
-+			opp-microvolt = <1057000>;
-+		};
-+		opp@1508000000 {
-+			opp-hz = /bits/ 64 <1508000000>;
-+			opp-microvolt = <1109000>;
-+		};
-+		opp@1703000000 {
-+			opp-hz = /bits/ 64 <1703000000>;
-+			opp-microvolt = <1125000>;
-+		};
-+	};
+ 	PVR_TRACE(("%s (pDevice=%p)", __func__, pDevice));
+@@ -160,8 +160,10 @@ void PVRSRVSystemDeInit(struct platform_device *pDevice)
+  @Return 0 for success or <0 for an error.
+ 
+ *****************************************************************************/
++int PVRSRVDRMLoad(struct drm_device *dev, unsigned long flags);
+ static int PVRSRVDriverProbe(struct platform_device *pDevice)
+ {
++	struct drm_device *drm;
+ 	int result;
+ 
+ 	PVR_TRACE(("%s (pDevice=%p)", __func__, pDevice));
+@@ -172,13 +174,21 @@ static int PVRSRVDriverProbe(struct platform_device *pDevice)
+ 			return result;
+ 	}
+ 
+-	result = drm_platform_init(&sPVRDRMDriver, pDevice);
++	drm = drm_dev_alloc(&sPVRDRMDriver, &pDevice->dev);
++        if (IS_ERR(drm))
++		return PTR_ERR(drm);
 +
-+	cluster1_opp: opp_table1 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+		opp@507000000 {
-+			opp-hz = /bits/ 64 <507000000>;
-+			opp-microvolt = <828000>;
-+		};
-+		opp@702000000 {
-+			opp-hz = /bits/ 64 <702000000>;
-+			opp-microvolt = <867000>;
-+		};
-+		opp@1001000000 {
-+			opp-hz = /bits/ 64 <1001000000>;
-+			opp-microvolt = <927000>;
-+		};
-+		opp@1209000000 {
-+			opp-hz = /bits/ 64 <1209000000>;
-+			opp-microvolt = <968000>;
-+		};
-+		opp@1404000000 {
-+			opp-hz = /bits/ 64 <1404000000>;
-+			opp-microvolt = <1007000>;
-+		};
-+		opp@1612000000 {
-+			opp-hz = /bits/ 64 <1612000000>;
-+			opp-microvolt = <1049000>;
-+		};
-+		opp@1807000000 {
-+			opp-hz = /bits/ 64 <1807000000>;
-+			opp-microvolt = <1089000>;
-+		};
-+		opp@2106000000 {
-+			opp-hz = /bits/ 64 <2106000000>;
-+			opp-microvolt = <1125000>;
-+		};
-+	};
++	platform_set_drvdata(pDevice, drm);
 +
- 	cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-@@ -81,6 +155,10 @@
- 			reg = <0x000>;
- 			enable-method = "psci";
- 			cpu-idle-states = <&CPU_SLEEP_0>;
-+			operating-points-v2 = <&cluster0_opp>;
-+			#cooling-cells = <2>;
-+			#cooling-min-level = <0>;
-+			#cooling-max-level = <7>;
- 		};
++	result = PVRSRVDRMLoad(drm, 0);
  
- 		cpu1: cpu@1 {
-@@ -89,6 +167,10 @@
- 			reg = <0x001>;
- 			enable-method = "psci";
- 			cpu-idle-states = <&CPU_SLEEP_0>;
-+			operating-points-v2 = <&cluster0_opp>;
-+			#cooling-cells = <2>;
-+			#cooling-min-level = <0>;
-+			#cooling-max-level = <7>;
- 		};
+ 	dma_set_mask(&pDevice->dev, DMA_BIT_MASK(33));
  
- 		cpu2: cpu@100 {
-@@ -97,6 +179,10 @@
- 			reg = <0x100>;
- 			enable-method = "psci";
- 			cpu-idle-states = <&CPU_SLEEP_0>;
-+			operating-points-v2 = <&cluster1_opp>;
-+			#cooling-cells = <2>;
-+			#cooling-min-level = <0>;
-+			#cooling-max-level = <7>;
- 		};
+ 	if (result == 0)
+ 		PVRSRVDeviceInit();
  
- 		cpu3: cpu@101 {
-@@ -105,6 +191,10 @@
- 			reg = <0x101>;
- 			enable-method = "psci";
- 			cpu-idle-states = <&CPU_SLEEP_0>;
-+			operating-points-v2 = <&cluster1_opp>;
-+			#cooling-cells = <2>;
-+			#cooling-min-level = <0>;
-+			#cooling-max-level = <7>;
- 		};
++	result = drm_dev_register(drm, 0);
++
+ 	return result;
+ }
  
- 		idle-states {
+diff --git a/drivers/gpu/drm/img-rogue/1.6/pvr_drm.c b/drivers/gpu/drm/img-rogue/1.6/pvr_drm.c
+index 7439a6f..36c5a76 100644
+--- a/drivers/gpu/drm/img-rogue/1.6/pvr_drm.c
++++ b/drivers/gpu/drm/img-rogue/1.6/pvr_drm.c
+@@ -107,17 +107,12 @@ DECLARE_WAIT_QUEUE_HEAD(sWaitForInit);
+ IMG_BOOL bInitComplete;
+ IMG_BOOL bInitFailed;
+ 
+-static int PVRSRVDRMLoad(struct drm_device *dev, unsigned long flags)
++int PVRSRVDRMLoad(struct drm_device *dev, unsigned long flags)
+ {
+ 	int iRes;
+ 
+ 	PVR_TRACE(("PVRSRVDRMLoad"));
+ 
+-#if defined(LDM_PLATFORM)
+-	/* The equivalent is done for PCI modesetting drivers by drm_get_pci_dev() */
+-	platform_set_drvdata(dev->platformdev, dev);
+-#endif
+-
+ 	/* Module initialisation */
+ 	iRes = PVRSRVSystemInit(dev);
+ 	if (iRes != 0)
+@@ -141,21 +136,6 @@ static int PVRSRVDRMLoad(struct drm_device *dev, unsigned long flags)
+ 	return iRes;
+ }
+ 
+-static int PVRSRVDRMUnload(struct drm_device *dev)
+-{
+-#if defined(LDM_PLATFORM)
+-	LDM_DEV *pDevice = dev->platformdev;
+-#elif defined(LDM_PCI)
+-	LDM_DEV *pDevice = dev->pdev;
+-#endif
+-
+-	PVR_TRACE(("PVRSRVDRMUnload"));
+-
+-	PVRSRVSystemDeInit(pDevice);
+-
+-	return 0;
+-}
+-
+ static int PVRSRVDRMOpen(struct drm_device *dev, struct drm_file *file)
+ {
+ 	while (!bInitComplete)
+@@ -306,8 +286,6 @@ struct drm_driver sPVRDRMDriver =
+ 	.driver_features	= DRIVER_MODESET | DRIVER_RENDER,
+ 
+ 	.dev_priv_size		= 0,
+-	.load			= PVRSRVDRMLoad,
+-	.unload			= PVRSRVDRMUnload,
+ 	.open			= PVRSRVDRMOpen,
+ 	.postclose		= PVRSRVRelease,
+ 
 -- 
 2.7.4
