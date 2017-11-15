@@ -1,257 +1,87 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: [PATCH 3/4] cpu_cooling: Keep only one of_cpufreq*cooling_register() helper
-Date: Wed, 15 Nov 2017 14:49:47 +0530
-Message-ID: <5b7403fc7c511c12e8f81a5a2dc47dca1cb9663c.1510735482.git.viresh.kumar@linaro.org>
-References: <cover.1510735482.git.viresh.kumar@linaro.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1510735482.git.viresh.kumar@linaro.org>
-In-Reply-To: <cover.1510735482.git.viresh.kumar@linaro.org>
-References: <cover.1510735482.git.viresh.kumar@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rafael Wysocki <rjw@rjwysocki.net>, edubezval@gmail.com, Amit Daniel Kachhap <amit.kachhap@gmail.com>, Javi Merino <javi.merino@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Sudeep Holla <sudeep.holla@arm.com>, Zhang Rui <rui.zhang@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, linux-pm@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>, lukasz.luba@arm.com, linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+From: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [POC 00/16] Chromebook R13 GPU driver port
+Date: Wed, 15 Nov 2017 16:24:07 +0100
+Message-ID: <1510759463-30201-1-git-send-email-ulrich.hecht+renesas@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, mbrugger-IBi9RG/b67k@public.gmane.org, magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-of_cpufreq_cooling_register() isn't used by anyone and so can be
-removed, but then we would be left with two routines:
-cpufreq_cooling_register() and of_cpufreq_power_cooling_register() that
-would look odd because of strange names.
+Hi!
 
-Remove current implementation of of_cpufreq_cooling_register() and
-rename of_cpufreq_power_cooling_register() as
-of_cpufreq_cooling_register(). This simplifies lots of stuff.
+Here's a port of the PowerVR Rogue GPU driver for the Acer Chromebook R13,
+taken from the Chrome OS 3.18 vendor kernel. It does not really work ATM,
+but it's not completely dysfunctional either. Run
+https://github.com/uli/bogocube twenty times, and it will work correctly
+once or twice. The most frequent issue is that the driver times out waiting
+for the firmware to boot. I suspect a power management issue, but I have
+not found anything concrete yet.
 
-Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
----
- Documentation/thermal/cpu-cooling-api.txt | 14 ++------
- drivers/cpufreq/arm_big_little.c          |  2 +-
- drivers/cpufreq/cpufreq-dt.c              |  2 +-
- drivers/cpufreq/mediatek-cpufreq.c        |  2 +-
- drivers/cpufreq/qoriq-cpufreq.c           |  2 +-
- drivers/thermal/cpu_cooling.c             | 28 ++--------------
- include/linux/cpu_cooling.h               | 53 ++++++++-----------------------
- 7 files changed, 23 insertions(+), 80 deletions(-)
+Instructions on where to get the binary blobs from can be found at
+https://www.elinux.org/User:Uli/Acer_Chromebook_R13_GPU_test_system.
 
-diff --git a/Documentation/thermal/cpu-cooling-api.txt b/Documentation/thermal/cpu-cooling-api.txt
-index ea61e8bf7e2b..7a1c89db0419 100644
---- a/Documentation/thermal/cpu-cooling-api.txt
-+++ b/Documentation/thermal/cpu-cooling-api.txt
-@@ -26,24 +26,16 @@ the user. The registration APIs returns the cooling device pointer.
-    clip_cpus: cpumask of cpus where the frequency constraints will happen.
- 
- 1.1.2 struct thermal_cooling_device *of_cpufreq_cooling_register(
--	struct device_node *np, const struct cpumask *clip_cpus)
-+					struct cpufreq_policy *policy)
- 
-     This interface function registers the cpufreq cooling device with
-     the name "thermal-cpufreq-%x" linking it with a device tree node, in
-     order to bind it via the thermal DT code. This api can support multiple
-     instances of cpufreq cooling devices.
- 
--    np: pointer to the cooling device device tree node
--    clip_cpus: cpumask of cpus where the frequency constraints will happen.
--
--1.1.3 struct thermal_cooling_device *of_cpufreq_power_cooling_register(
--					struct cpufreq_policy *policy)
--
--Similar to cpufreq_cooling_register, this function register a
--cpufreq cooling device with power extensions using the device tree
--information supplied by the np parameter.
-+    policy: CPUFreq policy.
- 
--1.1.4 void cpufreq_cooling_unregister(struct thermal_cooling_device *cdev)
-+1.1.3 void cpufreq_cooling_unregister(struct thermal_cooling_device *cdev)
- 
-     This interface function unregisters the "thermal-cpufreq-%x" cooling device.
- 
-diff --git a/drivers/cpufreq/arm_big_little.c b/drivers/cpufreq/arm_big_little.c
-index 3d5ed4ef3927..c56b57dcfda5 100644
---- a/drivers/cpufreq/arm_big_little.c
-+++ b/drivers/cpufreq/arm_big_little.c
-@@ -532,7 +532,7 @@ static void bL_cpufreq_ready(struct cpufreq_policy *policy)
- 	if (cur_cluster >= MAX_CLUSTERS)
- 		return;
- 
--	cdev[cur_cluster] = of_cpufreq_power_cooling_register(policy);
-+	cdev[cur_cluster] = of_cpufreq_cooling_register(policy);
- }
- 
- static struct cpufreq_driver bL_cpufreq_driver = {
-diff --git a/drivers/cpufreq/cpufreq-dt.c b/drivers/cpufreq/cpufreq-dt.c
-index 1e7bec7694ab..de3d104c25d7 100644
---- a/drivers/cpufreq/cpufreq-dt.c
-+++ b/drivers/cpufreq/cpufreq-dt.c
-@@ -320,7 +320,7 @@ static void cpufreq_ready(struct cpufreq_policy *policy)
- {
- 	struct private_data *priv = policy->driver_data;
- 
--	priv->cdev = of_cpufreq_power_cooling_register(policy);
-+	priv->cdev = of_cpufreq_cooling_register(policy);
- }
- 
- static struct cpufreq_driver dt_cpufreq_driver = {
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index dd0bc783cb8b..1aa79486a033 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -311,7 +311,7 @@ static void mtk_cpufreq_ready(struct cpufreq_policy *policy)
- {
- 	struct mtk_cpu_dvfs_info *info = policy->driver_data;
- 
--	info->cdev = of_cpufreq_power_cooling_register(policy);
-+	info->cdev = of_cpufreq_cooling_register(policy);
- }
- 
- static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
-diff --git a/drivers/cpufreq/qoriq-cpufreq.c b/drivers/cpufreq/qoriq-cpufreq.c
-index 3a665c18e14e..0562761a3dec 100644
---- a/drivers/cpufreq/qoriq-cpufreq.c
-+++ b/drivers/cpufreq/qoriq-cpufreq.c
-@@ -276,7 +276,7 @@ static void qoriq_cpufreq_ready(struct cpufreq_policy *policy)
- {
- 	struct cpu_data *cpud = policy->driver_data;
- 
--	cpud->cdev = of_cpufreq_power_cooling_register(policy);
-+	cpud->cdev = of_cpufreq_cooling_register(policy);
- }
- 
- static struct cpufreq_driver qoriq_cpufreq_driver = {
-diff --git a/drivers/thermal/cpu_cooling.c b/drivers/thermal/cpu_cooling.c
-index 94ffb4463e22..55d6b9fb909d 100644
---- a/drivers/thermal/cpu_cooling.c
-+++ b/drivers/thermal/cpu_cooling.c
-@@ -819,7 +819,6 @@ EXPORT_SYMBOL_GPL(cpufreq_cooling_register);
- 
- /**
-  * of_cpufreq_cooling_register - function to create cpufreq cooling device.
-- * @np: a valid struct device_node to the cooling device device tree node
-  * @policy: cpufreq policy
-  *
-  * This interface function registers the cpufreq cooling device with the name
-@@ -827,29 +826,6 @@ EXPORT_SYMBOL_GPL(cpufreq_cooling_register);
-  * cooling devices. Using this API, the cpufreq cooling device will be
-  * linked to the device tree node provided.
-  *
-- * Return: a valid struct thermal_cooling_device pointer on success,
-- * on failure, it returns a corresponding ERR_PTR().
-- */
--struct thermal_cooling_device *
--of_cpufreq_cooling_register(struct device_node *np,
--			    struct cpufreq_policy *policy)
--{
--	if (!np)
--		return ERR_PTR(-EINVAL);
--
--	return __cpufreq_cooling_register(np, policy, 0, NULL);
--}
--EXPORT_SYMBOL_GPL(of_cpufreq_cooling_register);
--
--/**
-- * of_cpufreq_power_cooling_register() - create cpufreq cooling device with power extensions
-- * @policy: CPUFreq policy.
-- *
-- * This interface function registers the cpufreq cooling device with
-- * the name "thermal-cpufreq-%x".  This api can support multiple
-- * instances of cpufreq cooling devices.  Using this API, the cpufreq
-- * cooling device will be linked to the device tree node of the provided
-- * policy's CPU.
-  * Using this function, the cooling device will implement the power
-  * extensions by using a simple cpu power model.  The cpus must have
-  * registered their OPPs using the OPP library.
-@@ -861,7 +837,7 @@ EXPORT_SYMBOL_GPL(of_cpufreq_cooling_register);
-  * and NULL on failure.
-  */
- struct thermal_cooling_device *
--of_cpufreq_power_cooling_register(struct cpufreq_policy *policy)
-+of_cpufreq_cooling_register(struct cpufreq_policy *policy)
- {
- 	struct device_node *np = of_get_cpu_node(policy->cpu, NULL);
- 	struct thermal_cooling_device *cdev = NULL;
-@@ -889,7 +865,7 @@ of_cpufreq_power_cooling_register(struct cpufreq_policy *policy)
- 	of_node_put(np);
- 	return cdev;
- }
--EXPORT_SYMBOL(of_cpufreq_power_cooling_register);
-+EXPORT_SYMBOL_GPL(of_cpufreq_cooling_register);
- 
- /**
-  * cpufreq_cooling_unregister - function to remove cpufreq cooling device.
-diff --git a/include/linux/cpu_cooling.h b/include/linux/cpu_cooling.h
-index c35778960a9c..a0204c58d269 100644
---- a/include/linux/cpu_cooling.h
-+++ b/include/linux/cpu_cooling.h
-@@ -41,33 +41,6 @@ typedef int (*get_static_t)(cpumask_t *cpumask, int interval,
- struct thermal_cooling_device *
- cpufreq_cooling_register(struct cpufreq_policy *policy);
- 
--/**
-- * of_cpufreq_cooling_register - create cpufreq cooling device based on DT.
-- * @np: a valid struct device_node to the cooling device device tree node.
-- * @policy: cpufreq policy.
-- */
--#ifdef CONFIG_THERMAL_OF
--struct thermal_cooling_device *
--of_cpufreq_cooling_register(struct device_node *np,
--			    struct cpufreq_policy *policy);
--
--struct thermal_cooling_device *
--of_cpufreq_power_cooling_register(struct cpufreq_policy *policy);
--#else
--static inline struct thermal_cooling_device *
--of_cpufreq_cooling_register(struct device_node *np,
--			    struct cpufreq_policy *policy)
--{
--	return ERR_PTR(-ENOSYS);
--}
--
--static inline struct thermal_cooling_device *
--of_cpufreq_power_cooling_register(struct cpufreq_policy *policy)
--{
--	return NULL;
--}
--#endif
--
- /**
-  * cpufreq_cooling_unregister - function to remove cpufreq cooling device.
-  * @cdev: thermal cooling device pointer.
-@@ -81,24 +54,26 @@ cpufreq_cooling_register(struct cpufreq_policy *policy)
- 	return ERR_PTR(-ENOSYS);
- }
- 
--static inline struct thermal_cooling_device *
--of_cpufreq_cooling_register(struct device_node *np,
--			    struct cpufreq_policy *policy)
-+static inline
-+void cpufreq_cooling_unregister(struct thermal_cooling_device *cdev)
- {
--	return ERR_PTR(-ENOSYS);
-+	return;
- }
-+#endif	/* CONFIG_CPU_THERMAL */
- 
-+#if defined(CONFIG_THERMAL_OF) && defined(CONFIG_CPU_THERMAL)
-+/**
-+ * of_cpufreq_cooling_register - create cpufreq cooling device based on DT.
-+ * @policy: cpufreq policy.
-+ */
-+struct thermal_cooling_device *
-+of_cpufreq_cooling_register(struct cpufreq_policy *policy);
-+#else
- static inline struct thermal_cooling_device *
--of_cpufreq_power_cooling_register(struct cpufreq_policy *policy)
-+of_cpufreq_cooling_register(struct cpufreq_policy *policy);
- {
- 	return NULL;
- }
--
--static inline
--void cpufreq_cooling_unregister(struct thermal_cooling_device *cdev)
--{
--	return;
--}
--#endif	/* CONFIG_CPU_THERMAL */
-+#endif /* defined(CONFIG_THERMAL_OF) && defined(CONFIG_CPU_THERMAL) */
- 
- #endif /* __CPU_COOLING_H__ */
+Because the driver is rather bulky, this series only contains the changes
+vs. the Chrome OS 3.18 kernel version; the full tree can be found at
+https://github.com/uli/kernel in branch elm-gpu.
+
+This driver is not usable in its current state, nor is it in any way
+suitable for upstreaming. I'm just posting it here in case somebody is
+interested.
+
+CU
+Uli
+
+
+Ulrich Hecht (16):
+  drm/img-rogue: fix signatures of struct devfreq_cooling_power ops
+  drm/img-rogue: convert pfn to pfn_t for vm_insert_mixed()
+  drm/img-rogue: change #include <asm/uaccess.h> to <linux/uaccess.h>
+  drm/img-rogue: #include <linux/sched/clock.h> in osfunc.c
+  drm/img-rogue: adapt to changed fence API
+  drm/img-rogue: dma_ops->sync_single_for_*() -> dma_sync_single_for_*()
+  drm/img-rogue: __GFP_WAIT is now __GFP_RECLAIM
+  drm/img-rogue: dma_buf_ops .kmap_* are now .map_*
+  drm/img-rogue: translate pgprot_t to pgprot value for
+    __pgprot_modify()
+  drm/img-rogue: remove .set_busid methods from drm_driver
+  drm/img-rogue: replace call to obsolete drm_platform_init()
+  drm/img-rogue: remove locking around devfreq opp functions
+  drm/img-rogue: enable img-rogue driver in Kconfig/Makefile
+  arm64: dts: mt8173: add CPU OPP tables
+  arm64: dts: mt8173: add GPU device
+  arm64: dts: mt8173-oak: enable GPU
+
+ arch/arm64/boot/dts/mediatek/mt8173-oak.dtsi       |  13 ++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           | 131 +++++++++++++++++++++
+ drivers/gpu/drm/Kconfig                            |   2 +
+ drivers/gpu/drm/Makefile                           |   2 +
+ .../drm/img-rogue/1.6/mt8173/mt8173_sysconfig.c    |   6 +-
+ drivers/gpu/drm/img-rogue/1.6/mt8173/mtk_module.c  |  14 ++-
+ drivers/gpu/drm/img-rogue/1.6/osfunc.c             |   4 +-
+ drivers/gpu/drm/img-rogue/1.6/osfunc_arm64.c       |   8 +-
+ drivers/gpu/drm/img-rogue/1.6/physmem_dmabuf.c     |   4 +-
+ .../gpu/drm/img-rogue/1.6/physmem_osmem_linux.c    |   2 +-
+ drivers/gpu/drm/img-rogue/1.6/pmr_os.c             |   2 +-
+ drivers/gpu/drm/img-rogue/1.6/pvr_buffer_sync.c    |  36 +++---
+ drivers/gpu/drm/img-rogue/1.6/pvr_drm.c            |  34 +-----
+ drivers/gpu/drm/img-rogue/1.6/pvr_dvfs_device.c    |   7 --
+ drivers/gpu/drm/img-rogue/1.6/pvr_fence.c          |  70 +++++------
+ drivers/gpu/drm/img-rogue/1.6/pvr_fence.h          |  20 ++--
+ drivers/gpu/drm/img-rogue/1.6/pvr_uaccess.h        |   2 +-
+ drivers/gpu/drm/img-rogue/Kconfig                  |   1 +
+ 18 files changed, 241 insertions(+), 117 deletions(-)
+
 -- 
-2.15.0.194.g9af6a3dea062
+2.7.4
