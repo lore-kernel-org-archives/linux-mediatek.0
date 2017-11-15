@@ -1,7 +1,8 @@
 From: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [POC 07/16] drm/img-rogue: __GFP_WAIT is now __GFP_RECLAIM
-Date: Wed, 15 Nov 2017 16:24:14 +0100
-Message-ID: <1510759463-30201-8-git-send-email-ulrich.hecht+renesas@gmail.com>
+Subject: [POC 09/16] drm/img-rogue: translate pgprot_t to pgprot value for
+ __pgprot_modify()
+Date: Wed, 15 Nov 2017 16:24:16 +0100
+Message-ID: <1510759463-30201-10-git-send-email-ulrich.hecht+renesas@gmail.com>
 References: <1510759463-30201-1-git-send-email-ulrich.hecht+renesas@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -23,21 +24,21 @@ List-Id: linux-mediatek@lists.infradead.org
 
 Signed-off-by: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- drivers/gpu/drm/img-rogue/1.6/physmem_osmem_linux.c | 2 +-
+ drivers/gpu/drm/img-rogue/1.6/pmr_os.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/img-rogue/1.6/physmem_osmem_linux.c b/drivers/gpu/drm/img-rogue/1.6/physmem_osmem_linux.c
-index f5353e3..7b55904 100644
---- a/drivers/gpu/drm/img-rogue/1.6/physmem_osmem_linux.c
-+++ b/drivers/gpu/drm/img-rogue/1.6/physmem_osmem_linux.c
-@@ -1528,7 +1528,7 @@ _AllocOSPages_Fast(struct _PMR_OSPAGEARRAY_DATA_ *psPageArrayData,
+diff --git a/drivers/gpu/drm/img-rogue/1.6/pmr_os.c b/drivers/gpu/drm/img-rogue/1.6/pmr_os.c
+index 595f772..9526359 100644
+--- a/drivers/gpu/drm/img-rogue/1.6/pmr_os.c
++++ b/drivers/gpu/drm/img-rogue/1.6/pmr_os.c
+@@ -253,7 +253,7 @@ OSMMapPMRGeneric(PMR *psPMR, PMR_MMAP_DATA pOSMMapData)
+ 	ps_vma->vm_flags = ulNewFlags;
  
- 	unsigned int gfp_flags = _GetGFPFlags(psPageArrayData);
- 	IMG_UINT32 ui32GfpFlags;
--	IMG_UINT32 ui32HighOrderGfpFlags = ((gfp_flags & ~__GFP_WAIT) | __GFP_NORETRY);
-+	IMG_UINT32 ui32HighOrderGfpFlags = ((gfp_flags & ~__GFP_RECLAIM) | __GFP_NORETRY);
- 
- 	struct page **ppsPageArray = psPageArrayData->pagearray;
- 
+ #if defined (CONFIG_ARM64)
+-	sPageProt = __pgprot_modify(ps_vma->vm_page_prot, 0, vm_get_page_prot(ulNewFlags));
++	sPageProt = __pgprot_modify(ps_vma->vm_page_prot, 0, pgprot_val(vm_get_page_prot(ulNewFlags)));
+ #elif defined(CONFIG_ARM)
+ 	sPageProt = __pgprot_modify(ps_vma->vm_page_prot, L_PTE_MT_MASK, vm_get_page_prot(ulNewFlags));
+ #elif defined(CONFIG_X86)
 -- 
 2.7.4
