@@ -1,8 +1,8 @@
 From: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [POC 01/16] drm/img-rogue: fix signatures of struct
- devfreq_cooling_power ops
-Date: Wed, 15 Nov 2017 16:24:08 +0100
-Message-ID: <1510759463-30201-2-git-send-email-ulrich.hecht+renesas@gmail.com>
+Subject: [POC 06/16] drm/img-rogue: dma_ops->sync_single_for_*() ->
+ dma_sync_single_for_*()
+Date: Wed, 15 Nov 2017 16:24:13 +0100
+Message-ID: <1510759463-30201-7-git-send-email-ulrich.hecht+renesas@gmail.com>
 References: <1510759463-30201-1-git-send-email-ulrich.hecht+renesas@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,36 +22,43 @@ To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, mbrugger-IBi9RG/b67k@public.gmane.org, magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Has a struct devfreq pointer now.
-
 Signed-off-by: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- drivers/gpu/drm/img-rogue/1.6/mt8173/mt8173_sysconfig.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/img-rogue/1.6/osfunc_arm64.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/img-rogue/1.6/mt8173/mt8173_sysconfig.c b/drivers/gpu/drm/img-rogue/1.6/mt8173/mt8173_sysconfig.c
-index 14f7dcc..bbda6ff 100644
---- a/drivers/gpu/drm/img-rogue/1.6/mt8173/mt8173_sysconfig.c
-+++ b/drivers/gpu/drm/img-rogue/1.6/mt8173/mt8173_sysconfig.c
-@@ -245,7 +245,8 @@ static u32 interpolate(int value, const int *x, const unsigned int *y, int len)
- 	return ret;
+diff --git a/drivers/gpu/drm/img-rogue/1.6/osfunc_arm64.c b/drivers/gpu/drm/img-rogue/1.6/osfunc_arm64.c
+index 84ae224..091806d 100644
+--- a/drivers/gpu/drm/img-rogue/1.6/osfunc_arm64.c
++++ b/drivers/gpu/drm/img-rogue/1.6/osfunc_arm64.c
+@@ -89,8 +89,8 @@ void OSFlushCPUCacheRangeKM(void *pvVirtStart,
+ 							IMG_CPU_PHYADDR sCPUPhysStart,
+ 							IMG_CPU_PHYADDR sCPUPhysEnd)
+ {
+-	dma_ops->sync_single_for_device(NULL, sCPUPhysStart.uiAddr, sCPUPhysEnd.uiAddr - sCPUPhysStart.uiAddr, DMA_TO_DEVICE);
+-	dma_ops->sync_single_for_cpu(NULL, sCPUPhysStart.uiAddr, sCPUPhysEnd.uiAddr - sCPUPhysStart.uiAddr, DMA_FROM_DEVICE);
++	dma_sync_single_for_device(NULL, sCPUPhysStart.uiAddr, sCPUPhysEnd.uiAddr - sCPUPhysStart.uiAddr, DMA_TO_DEVICE);
++	dma_sync_single_for_cpu(NULL, sCPUPhysStart.uiAddr, sCPUPhysEnd.uiAddr - sCPUPhysStart.uiAddr, DMA_FROM_DEVICE);
  }
  
--static unsigned long mtk_mfg_get_static_power(unsigned long voltage)
-+static unsigned long mtk_mfg_get_static_power(struct devfreq *devfreq,
-+					      unsigned long voltage)
+ void OSCleanCPUCacheRangeKM(void *pvVirtStart,
+@@ -98,7 +98,7 @@ void OSCleanCPUCacheRangeKM(void *pvVirtStart,
+ 							IMG_CPU_PHYADDR sCPUPhysStart,
+ 							IMG_CPU_PHYADDR sCPUPhysEnd)
  {
- 	struct mtk_mfg *mfg = gsDevice.hSysData;
- 	struct thermal_zone_device *tz = mfg->tz;
-@@ -299,7 +300,8 @@ static unsigned long mtk_mfg_get_static_power(unsigned long voltage)
- 	return power;
+-	dma_ops->sync_single_for_device(NULL, sCPUPhysStart.uiAddr, sCPUPhysEnd.uiAddr - sCPUPhysStart.uiAddr, DMA_TO_DEVICE);
++	dma_sync_single_for_device(NULL, sCPUPhysStart.uiAddr, sCPUPhysEnd.uiAddr - sCPUPhysStart.uiAddr, DMA_TO_DEVICE);
  }
  
--static unsigned long mtk_mfg_get_dynamic_power(unsigned long freq,
-+static unsigned long mtk_mfg_get_dynamic_power(struct devfreq *devfreq,
-+					       unsigned long freq,
- 					       unsigned long voltage)
+ void OSInvalidateCPUCacheRangeKM(void *pvVirtStart,
+@@ -106,7 +106,7 @@ void OSInvalidateCPUCacheRangeKM(void *pvVirtStart,
+ 								 IMG_CPU_PHYADDR sCPUPhysStart,
+ 								 IMG_CPU_PHYADDR sCPUPhysEnd)
  {
- 	#define NUM_RANGE  ARRAY_SIZE(f_range)
+-	dma_ops->sync_single_for_cpu(NULL, sCPUPhysStart.uiAddr, sCPUPhysEnd.uiAddr - sCPUPhysStart.uiAddr, DMA_FROM_DEVICE);
++	dma_sync_single_for_cpu(NULL, sCPUPhysStart.uiAddr, sCPUPhysEnd.uiAddr - sCPUPhysStart.uiAddr, DMA_FROM_DEVICE);
+ }
+ 
+ void OSUserModeAccessToPerfCountersEn(void)
 -- 
 2.7.4
