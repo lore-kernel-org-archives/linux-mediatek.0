@@ -1,89 +1,107 @@
-From: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [POC 15/16] arm64: dts: mt8173: add GPU device
-Date: Wed, 15 Nov 2017 16:24:22 +0100
-Message-ID: <1510759463-30201-16-git-send-email-ulrich.hecht+renesas@gmail.com>
-References: <1510759463-30201-1-git-send-email-ulrich.hecht+renesas@gmail.com>
+From: <miles.chen@mediatek.com>
+Subject: [PATCH v4] dma-debug: fix incorrect pfn calculation
+Date: Fri, 17 Nov 2017 06:56:12 +0800
+Message-ID: <1510872972-23919-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1510759463-30201-1-git-send-email-ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, mbrugger-IBi9RG/b67k@public.gmane.org, magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Content-Type: text/plain
+Return-path: <owner-linux-mm@kvack.org>
+Sender: owner-linux-mm@kvack.org
+To: Christoph Hellwig <hch@lst.de>, Robin Murphy <robin.murphy@arm.com>, Andrew Morton <akpm@linux-foundation.org>
+Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, iommu@lists.linux-foundation.org, Miles Chen <miles.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Signed-off-by: Ulrich Hecht <ulrich.hecht+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 41 ++++++++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
+From: Miles Chen <miles.chen@mediatek.com>
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index f454efa33..43775a6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -279,6 +279,11 @@
- 					cooling-device = <&cpu2 0 0>;
- 					contribution = <1024>;
- 				};
-+				map@2 {
-+					trip = <&target>;
-+					cooling-device = <&gpu 0 0>;
-+					contribution = <2048>;
-+				};
- 			};
- 		};
- 	};
-@@ -884,6 +889,42 @@
- 			};
- 		};
+dma-debug reports the following warning:
+
+[name:panic&]WARNING: CPU: 3 PID: 298 at kernel-4.4/lib/dma-debug.c:604
+debug _dma_assert_idle+0x1a8/0x230()
+DMA-API: cpu touching an active dma mapped cacheline [cln=0x00000882300]
+CPU: 3 PID: 298 Comm: vold Tainted: G        W  O    4.4.22+ #1
+Hardware name: MT6739 (DT)
+Call trace:
+[<ffffff800808acd0>] dump_backtrace+0x0/0x1d4
+[<ffffff800808affc>] show_stack+0x14/0x1c
+[<ffffff800838019c>] dump_stack+0xa8/0xe0
+[<ffffff80080a0594>] warn_slowpath_common+0xf4/0x11c
+[<ffffff80080a061c>] warn_slowpath_fmt+0x60/0x80
+[<ffffff80083afe24>] debug_dma_assert_idle+0x1a8/0x230
+[<ffffff80081dca9c>] wp_page_copy.isra.96+0x118/0x520
+[<ffffff80081de114>] do_wp_page+0x4fc/0x534
+[<ffffff80081e0a14>] handle_mm_fault+0xd4c/0x1310
+[<ffffff8008098798>] do_page_fault+0x1c8/0x394
+[<ffffff800808231c>] do_mem_abort+0x50/0xec
+
+I found that debug_dma_alloc_coherent() and debug_dma_free_coherent()
+assume that dma_alloc_coherent() always returns a linear address.  However
+it's possible that dma_alloc_coherent() returns a non-linear address.  In
+this case, page_to_pfn(virt_to_page(virt)) will return an incorrect pfn.
+If the pfn is valid and mapped as a COW page, we will hit the warning when
+doing wp_page_copy().
+
+Fix this by calculating pfn for linear and non-linear addresses.
+
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ lib/dma-debug.c | 20 ++++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/lib/dma-debug.c b/lib/dma-debug.c
+index ea4cc3d..1b34d21 100644
+--- a/lib/dma-debug.c
++++ b/lib/dma-debug.c
+@@ -1495,14 +1495,22 @@ void debug_dma_alloc_coherent(struct device *dev, size_t size,
+ 	if (!entry)
+ 		return;
  
-+		mfgsys: mfgsys@13fff000 {
-+			compatible = "mediatek,mt8173-mfgsys", "syscon";
-+			reg = <0 0x13fff000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
++	/* handle vmalloc and linear addresses */
++	if (!is_vmalloc_addr(virt) && !virt_to_page(virt))
++		return;
 +
-+		gpu: mfgsys-gpu@13000000 {
-+			compatible = "mediatek,mt8173-gpu";
-+			reg = <0 0x13000000 0 0xffff>, <0 0x13fff000 0 0x1000>;
-+			power-domains =	<&scpsys MT8173_POWER_DOMAIN_MFG_ASYNC>,
-+					<&scpsys MT8173_POWER_DOMAIN_MFG_2D>,
-+					<&scpsys MT8173_POWER_DOMAIN_MFG>;
-+			clocks = <&apmixedsys CLK_APMIXED_MMPLL>,
-+				 <&topckgen CLK_TOP_MEM_MFG_IN_SEL>,
-+				 <&topckgen CLK_TOP_AXI_MFG_IN_SEL>,
-+				 <&topckgen CLK_TOP_AXI_SEL>,
-+				 <&topckgen CLK_TOP_MEM_SEL>,
-+				 <&topckgen CLK_TOP_MFG_SEL>,
-+				 <&topckgen CLK_TOP_MMPLL>,
-+				 <&clk26m>;
-+			clock-names = "mmpll_clk",
-+				      "mfg_mem_in_sel",
-+				      "mfg_axi_in_sel",
-+				      "top_axi",
-+				      "top_mem",
-+				      "top_mfg",
-+				      "top_mmpll",
-+				      "clk26m";
-+			interrupts = <0 217 IRQ_TYPE_LEVEL_LOW>;
-+			interrupt-names = "RGX";
-+			status = "disabled";
-+			#cooling-cells = <2>;
-+			#cooling-min-level = <0>;
-+			#cooling-max-level = <3>;
-+		};
+ 	entry->type      = dma_debug_coherent;
+ 	entry->dev       = dev;
+-	entry->pfn	 = page_to_pfn(virt_to_page(virt));
+ 	entry->offset	 = offset_in_page(virt);
+ 	entry->size      = size;
+ 	entry->dev_addr  = dma_addr;
+ 	entry->direction = DMA_BIDIRECTIONAL;
+ 
++	if (is_vmalloc_addr(virt))
++		entry->pfn = vmalloc_to_pfn(virt);
++	else
++		entry->pfn = page_to_pfn(virt_to_page(virt));
 +
- 		mmsys: clock-controller@14000000 {
- 			compatible = "mediatek,mt8173-mmsys", "syscon";
- 			reg = <0 0x14000000 0 0x1000>;
+ 	add_dma_entry(entry);
+ }
+ EXPORT_SYMBOL(debug_dma_alloc_coherent);
+@@ -1513,13 +1521,21 @@ void debug_dma_free_coherent(struct device *dev, size_t size,
+ 	struct dma_debug_entry ref = {
+ 		.type           = dma_debug_coherent,
+ 		.dev            = dev,
+-		.pfn		= page_to_pfn(virt_to_page(virt)),
+ 		.offset		= offset_in_page(virt),
+ 		.dev_addr       = addr,
+ 		.size           = size,
+ 		.direction      = DMA_BIDIRECTIONAL,
+ 	};
+ 
++	/* handle vmalloc and linear addresses */
++	if (!is_vmalloc_addr(virt) && !virt_to_page(virt))
++		return;
++
++	if (is_vmalloc_addr(virt))
++		ref.pfn = vmalloc_to_pfn(virt);
++	else
++		ref.pfn = page_to_pfn(virt_to_page(virt));
++
+ 	if (unlikely(dma_debug_disabled()))
+ 		return;
+ 
 -- 
-2.7.4
+1.9.1
+
+--
+To unsubscribe, send a message with 'unsubscribe linux-mm' in
+the body to majordomo@kvack.org.  For more info on Linux MM,
+see: http://www.linux-mm.org/ .
+Don't email: <a href=mailto:"dont@kvack.org"> email@kvack.org </a>
