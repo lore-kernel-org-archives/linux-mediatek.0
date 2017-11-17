@@ -1,7 +1,7 @@
 From: Arvind Yadav <arvind.yadav.cs@gmail.com>
-Subject: [PATCH 5/5] ASoC: intel: mfld: Handle return value of platform_get_irq
-Date: Sat, 18 Nov 2017 01:03:28 +0530
-Message-ID: <1510947208-17134-6-git-send-email-arvind.yadav.cs@gmail.com>
+Subject: [PATCH 4/5] ASoC: intel: sst: Handle return value of platform_get_irq
+Date: Sat, 18 Nov 2017 01:03:27 +0530
+Message-ID: <1510947208-17134-5-git-send-email-arvind.yadav.cs@gmail.com>
 References: <1510947208-17134-1-git-send-email-arvind.yadav.cs@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1510947208-17134-1-git-send-email-arvind.yadav.cs@gmail.com>
@@ -14,21 +14,22 @@ platform_get_irq() can fail here and we must check its return value.
 
 Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
 ---
- sound/soc/intel/boards/mfld_machine.c | 2 ++
- 1 file changed, 2 insertions(+)
+ sound/soc/intel/atom/sst/sst_acpi.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/sound/soc/intel/boards/mfld_machine.c b/sound/soc/intel/boards/mfld_machine.c
-index 6f44acf..77b3162 100644
---- a/sound/soc/intel/boards/mfld_machine.c
-+++ b/sound/soc/intel/boards/mfld_machine.c
-@@ -372,6 +372,8 @@ static int snd_mfld_mc_probe(struct platform_device *pdev)
+diff --git a/sound/soc/intel/atom/sst/sst_acpi.c b/sound/soc/intel/atom/sst/sst_acpi.c
+index 32d6e02..693b970 100644
+--- a/sound/soc/intel/atom/sst/sst_acpi.c
++++ b/sound/soc/intel/atom/sst/sst_acpi.c
+@@ -236,6 +236,9 @@ static int sst_platform_get_resources(struct intel_sst_drv *ctx)
+ 	/* Find the IRQ */
+ 	ctx->irq_num = platform_get_irq(pdev,
+ 				ctx->pdata->res_info->acpi_ipc_irq_index);
++	if (ctx->irq_num < 0)
++		return ctx->irq_num;
++
+ 	return 0;
+ }
  
- 	/* retrive the irq number */
- 	irq = platform_get_irq(pdev, 0);
-+	if (irq < 0)
-+		return irq;
- 
- 	/* audio interrupt base of SRAM location where
- 	 * interrupts are stored by System FW */
 -- 
 2.7.4
