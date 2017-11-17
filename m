@@ -1,7 +1,7 @@
 From: Arvind Yadav <arvind.yadav.cs@gmail.com>
-Subject: [PATCH 3/5] ASoC: nuc900: Fix platform_get_irq's error checking
-Date: Sat, 18 Nov 2017 01:03:26 +0530
-Message-ID: <1510947208-17134-4-git-send-email-arvind.yadav.cs@gmail.com>
+Subject: [PATCH 5/5] ASoC: intel: mfld: Handle return value of platform_get_irq
+Date: Sat, 18 Nov 2017 01:03:28 +0530
+Message-ID: <1510947208-17134-6-git-send-email-arvind.yadav.cs@gmail.com>
 References: <1510947208-17134-1-git-send-email-arvind.yadav.cs@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1510947208-17134-1-git-send-email-arvind.yadav.cs@gmail.com>
@@ -10,29 +10,25 @@ To: lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, mat
 Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The platform_get_irq() function returns negative if an error occurs.
-zero or positive number on success. platform_get_irq() error checking
-for zero is not correct.
+platform_get_irq() can fail here and we must check its return value.
 
 Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
 ---
- sound/soc/nuc900/nuc900-ac97.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ sound/soc/intel/boards/mfld_machine.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/sound/soc/nuc900/nuc900-ac97.c b/sound/soc/nuc900/nuc900-ac97.c
-index b6615af..383627d 100644
---- a/sound/soc/nuc900/nuc900-ac97.c
-+++ b/sound/soc/nuc900/nuc900-ac97.c
-@@ -346,8 +346,8 @@ static int nuc900_ac97_drvprobe(struct platform_device *pdev)
- 	}
+diff --git a/sound/soc/intel/boards/mfld_machine.c b/sound/soc/intel/boards/mfld_machine.c
+index 6f44acf..77b3162 100644
+--- a/sound/soc/intel/boards/mfld_machine.c
++++ b/sound/soc/intel/boards/mfld_machine.c
+@@ -372,6 +372,8 @@ static int snd_mfld_mc_probe(struct platform_device *pdev)
  
- 	nuc900_audio->irq_num = platform_get_irq(pdev, 0);
--	if (!nuc900_audio->irq_num) {
--		ret = -EBUSY;
-+	if (nuc900_audio->irq_num < 0) {
-+		ret = nuc900_audio->irq_num;
- 		goto out;
- 	}
+ 	/* retrive the irq number */
+ 	irq = platform_get_irq(pdev, 0);
++	if (irq < 0)
++		return irq;
  
+ 	/* audio interrupt base of SRAM location where
+ 	 * interrupts are stored by System FW */
 -- 
 2.7.4
