@@ -1,80 +1,38 @@
-From: arvindY <arvind.yadav.cs@gmail.com>
-Subject: Re: [alsa-devel] [PATCH 1/5 v4] ASoC: ep93xx-ac97: Fix
- platform_get_irq's error checking
-Date: Mon, 20 Nov 2017 21:31:40 +0530
-Message-ID: <5A12FC64.3020205@gmail.com>
-References: <082d4479211d425219f4ab275ecc12e1011eca2f.1511062844.git.arvind.yadav.cs@gmail.com>
- <20171120133717.kscrjsb3y7gnvd2t@piout.net>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
+From: Jesse Chan <jc@linux.com>
+Subject: [PATCH] cpufreq: mediatek: add missing MODULE_DESCRIPTION/AUTHOR/LICENSE
+Date: Mon, 20 Nov 2017 13:32:01 -0800
+Message-ID: <20171120213201.52606-1-jc@linux.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171120133717.kscrjsb3y7gnvd2t@piout.net>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Cc: lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux@armlinux.org.uk, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org
+Cc: Jesse Chan <jc@linux.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+This change resolves a new compile-time warning
+when built as a loadable module:
 
-On Monday 20 November 2017 07:07 PM, Alexandre Belloni wrote:
-> On 19/11/2017 at 09:45:00 +0530, Arvind Yadav wrote:
->> The platform_get_irq() function returns negative if an error occurs.
->> zero or positive number on success. platform_get_irq() error checking
->> for zero is not correct.
->>
->> Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
->> ---
->> changes in v2 :
->>                 irq was unsigned. so changed it to signed.
->> changes in v3 :
->>                Add failure case '<= 0' instead of '< 0'. IRQ0 is not valid.
->> changes in v4 :
->>                Return -ENODEV insted of irq.
->>
-> To ensure this doesn't get applied: platform_get_irq can return
-> -EPROBE_DEFER and this must be handled properly.
->
-> (Or maybe this has never caused anything and never failed at all and
-> nobody cares).
-Yes, you are right. We should retry to get an irq for device. But ASoC
-  driver is not retrying. if platfore_get_irq() fail here, Driver is 
-throwing an error.
-and this patch is only to fix error checking which is not correct in 
-Driver.
+WARNING: modpost: missing MODULE_LICENSE() in drivers/cpufreq/mediatek-cpufreq.o
+see include/linux/module.h for more information
 
-~arvind
+This adds the license as "GPL v2", which matches the header of the file.
 
->
->>   sound/soc/cirrus/ep93xx-ac97.c | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/sound/soc/cirrus/ep93xx-ac97.c b/sound/soc/cirrus/ep93xx-ac97.c
->> index bbf7a92..efeecee 100644
->> --- a/sound/soc/cirrus/ep93xx-ac97.c
->> +++ b/sound/soc/cirrus/ep93xx-ac97.c
->> @@ -365,7 +365,7 @@ static int ep93xx_ac97_probe(struct platform_device *pdev)
->>   {
->>   	struct ep93xx_ac97_info *info;
->>   	struct resource *res;
->> -	unsigned int irq;
->> +	int irq;
->>   	int ret;
->>   
->>   	info = devm_kzalloc(&pdev->dev, sizeof(*info), GFP_KERNEL);
->> @@ -378,7 +378,7 @@ static int ep93xx_ac97_probe(struct platform_device *pdev)
->>   		return PTR_ERR(info->regs);
->>   
->>   	irq = platform_get_irq(pdev, 0);
->> -	if (!irq)
->> +	if (irq <= 0)
->>   		return -ENODEV;
->>   
->>   	ret = devm_request_irq(&pdev->dev, irq, ep93xx_ac97_interrupt,
->> -- 
->> 2.7.4
->>
->> _______________________________________________
->> Alsa-devel mailing list
->> Alsa-devel@alsa-project.org
->> http://mailman.alsa-project.org/mailman/listinfo/alsa-devel
+MODULE_DESCRIPTION and MODULE_AUTHOR are also added.
+
+Signed-off-by: Jesse Chan <jc@linux.com>
+---
+ drivers/cpufreq/mediatek-cpufreq.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+index 18c4bd9a5c65..e0d5090b303d 100644
+--- a/drivers/cpufreq/mediatek-cpufreq.c
++++ b/drivers/cpufreq/mediatek-cpufreq.c
+@@ -620,3 +620,7 @@ static int __init mtk_cpufreq_driver_init(void)
+ 	return 0;
+ }
+ device_initcall(mtk_cpufreq_driver_init);
++
++MODULE_DESCRIPTION("MediaTek CPUFreq driver");
++MODULE_AUTHOR("Pi-Cheng Chen <pi-cheng.chen@linaro.org>");
++MODULE_LICENSE("GPL v2");
+-- 
+2.14.1
