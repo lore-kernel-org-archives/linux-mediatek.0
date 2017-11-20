@@ -1,39 +1,84 @@
-From: Jesse Chan <jc@linux.com>
-Subject: [PATCH v3] media: mtk-vcodec: add missing MODULE_LICENSE/DESCRIPTION
-Date: Sun, 19 Nov 2017 23:47:54 -0800
-Message-ID: <20171120074754.67708-1-jc@linux.com>
-References: <20171120063930.82066-1-jc@linux.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171120063930.82066-1-jc@linux.com>
-Sender: linux-kernel-owner@vger.kernel.org
-Cc: Jesse Chan <jc@linux.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Subject: Re: [PATCH 1/5 v4] ASoC: ep93xx-ac97: Fix
+ platform_get_irq's error checking
+Date: Mon, 20 Nov 2017 14:37:17 +0100
+Message-ID: <20171120133717.kscrjsb3y7gnvd2t@piout.net>
+References: <082d4479211d425219f4ab275ecc12e1011eca2f.1511062844.git.arvind.yadav.cs@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+Content-Disposition: inline
+In-Reply-To: <082d4479211d425219f4ab275ecc12e1011eca2f.1511062844.git.arvind.yadav.cs@gmail.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Arvind Yadav <arvind.yadav.cs@gmail.com>
+Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, tiwai@suse.com, lgirdwood@gmail.com, broonie@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This change resolves a new compile-time warning
-when built as a loadable module:
+On 19/11/2017 at 09:45:00 +0530, Arvind Yadav wrote:
+> The platform_get_irq() function returns negative if an error occurs.
+> zero or positive number on success. platform_get_irq() error checking
+> for zero is not correct.
+> 
+> Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
+> ---
+> changes in v2 :
+>                irq was unsigned. so changed it to signed.
+> changes in v3 :
+>               Add failure case '<= 0' instead of '< 0'. IRQ0 is not valid.
+> changes in v4 :
+>               Return -ENODEV insted of irq.
+> 
 
-WARNING: modpost: missing MODULE_LICENSE() in drivers/media/platform/mtk-vcodec/mtk-vcodec-common.o
-see include/linux/module.h for more information
+To ensure this doesn't get applied: platform_get_irq can return
+-EPROBE_DEFER and this must be handled properly.
 
-This adds the license as "GPL v2", which matches the header of the file.
+(Or maybe this has never caused anything and never failed at all and
+nobody cares).
 
-MODULE_DESCRIPTION is also added.
 
-Signed-off-by: Jesse Chan <jc@linux.com>
----
- drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c | 3 +++
- 1 file changed, 3 insertions(+)
+>  sound/soc/cirrus/ep93xx-ac97.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/sound/soc/cirrus/ep93xx-ac97.c b/sound/soc/cirrus/ep93xx-ac97.c
+> index bbf7a92..efeecee 100644
+> --- a/sound/soc/cirrus/ep93xx-ac97.c
+> +++ b/sound/soc/cirrus/ep93xx-ac97.c
+> @@ -365,7 +365,7 @@ static int ep93xx_ac97_probe(struct platform_device *pdev)
+>  {
+>  	struct ep93xx_ac97_info *info;
+>  	struct resource *res;
+> -	unsigned int irq;
+> +	int irq;
+>  	int ret;
+>  
+>  	info = devm_kzalloc(&pdev->dev, sizeof(*info), GFP_KERNEL);
+> @@ -378,7 +378,7 @@ static int ep93xx_ac97_probe(struct platform_device *pdev)
+>  		return PTR_ERR(info->regs);
+>  
+>  	irq = platform_get_irq(pdev, 0);
+> -	if (!irq)
+> +	if (irq <= 0)
+>  		return -ENODEV;
+>  
+>  	ret = devm_request_irq(&pdev->dev, irq, ep93xx_ac97_interrupt,
+> -- 
+> 2.7.4
+> 
+> _______________________________________________
+> Alsa-devel mailing list
+> Alsa-devel@alsa-project.org
+> http://mailman.alsa-project.org/mailman/listinfo/alsa-devel
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c
-index 46768c056193..0c28d0b995cc 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c
-@@ -115,3 +115,6 @@ struct mtk_vcodec_ctx *mtk_vcodec_get_curr_ctx(struct mtk_vcodec_dev *dev)
- 	return ctx;
- }
- EXPORT_SYMBOL(mtk_vcodec_get_curr_ctx);
-+
-+MODULE_LICENSE("GPL v2");
-+MODULE_DESCRIPTION("Mediatek video codec driver");
 -- 
-2.14.1
+Alexandre Belloni, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
