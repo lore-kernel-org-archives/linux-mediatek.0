@@ -1,45 +1,116 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH] drm/mediatek: Use ERR_CAST instead of ERR_PTR(PTR_ERR())
-Date: Thu, 23 Nov 2017 10:31:44 +0100
-Message-ID: <1511429504.7685.12.camel@pengutronix.de>
-References: <1511303493-14897-1-git-send-email-gomonovych@gmail.com>
+From: <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v5] dma-debug: fix incorrect pfn calculation
+Date: Thu, 23 Nov 2017 17:42:09 +0800
+Message-ID: <1511430129-4210-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1511303493-14897-1-git-send-email-gomonovych@gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Vasyl Gomonovych <gomonovych@gmail.com>, ck.hu@mediatek.com, airlied@linux.ie, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Christoph Hellwig <hch-jcswGhMUV9g@public.gmane.org>, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVHVlLCAyMDE3LTExLTIxIGF0IDIzOjMxICswMTAwLCBWYXN5bCBHb21vbm92eWNoIHdyb3Rl
-Ogo+IFVzZSBFUlJfQ0FTVCBpbmxpbmVkIGZ1bmN0aW9uIGluc3RlYWQgb2YgRVJSX1BUUihQVFJf
-RVJSKC4uLikpLgo+IAo+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jOjIy
-Mzo5LTE2OiBXQVJOSU5HOiBFUlJfQ0FTVCBjYW4gYmUgdXNlZCB3aXRoIG10a19nZW0KPiBHZW5l
-cmF0ZWQgYnk6IHNjcmlwdHMvY29jY2luZWxsZS9hcGkvZXJyX2Nhc3QuY29jY2kKPiAKPiBTaWdu
-ZWQtb2ZmLWJ5OiBWYXN5bCBHb21vbm92eWNoIDxnb21vbm92eWNoQGdtYWlsLmNvbT4KPiAtLS0K
-PiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMgfCAyICstCj4gIDEgZmls
-ZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jCj4gaW5kZXggZjU5NWFjODE2YjU1Li41NzY2YjQyZmMx
-NzQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMK
-PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYwo+IEBAIC0yMjAs
-NyArMjIwLDcgQEAgc3RydWN0IGRybV9nZW1fb2JqZWN0ICptdGtfZ2VtX3ByaW1lX2ltcG9ydF9z
-Z190YWJsZShzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICAJbXRrX2dlbSA9IG10a19kcm1fZ2Vt
-X2luaXQoZGV2LCBhdHRhY2gtPmRtYWJ1Zi0+c2l6ZSk7Cj4gIAo+ICAJaWYgKElTX0VSUihtdGtf
-Z2VtKSkKPiAtCQlyZXR1cm4gRVJSX1BUUihQVFJfRVJSKG10a19nZW0pKTsKPiArCQlyZXR1cm4g
-RVJSX0NBU1QobXRrX2dlbSkpOwo+ICAKPiAgCWV4cGVjdGVkID0gc2dfZG1hX2FkZHJlc3Moc2ct
-PnNnbCk7Cj4gIAlmb3JfZWFjaF9zZyhzZy0+c2dsLCBzLCBzZy0+bmVudHMsIGkpIHsKCkFja2Vk
-LWJ5OiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgoKcmVnYXJkcwpQaGls
-aXBwCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+From: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+
+dma-debug reports the following warning:
+
+[name:panic&]WARNING: CPU: 3 PID: 298 at kernel-4.4/lib/dma-debug.c:604
+debug _dma_assert_idle+0x1a8/0x230()
+DMA-API: cpu touching an active dma mapped cacheline [cln=0x00000882300]
+CPU: 3 PID: 298 Comm: vold Tainted: G        W  O    4.4.22+ #1
+Hardware name: MT6739 (DT)
+Call trace:
+[<ffffff800808acd0>] dump_backtrace+0x0/0x1d4
+[<ffffff800808affc>] show_stack+0x14/0x1c
+[<ffffff800838019c>] dump_stack+0xa8/0xe0
+[<ffffff80080a0594>] warn_slowpath_common+0xf4/0x11c
+[<ffffff80080a061c>] warn_slowpath_fmt+0x60/0x80
+[<ffffff80083afe24>] debug_dma_assert_idle+0x1a8/0x230
+[<ffffff80081dca9c>] wp_page_copy.isra.96+0x118/0x520
+[<ffffff80081de114>] do_wp_page+0x4fc/0x534
+[<ffffff80081e0a14>] handle_mm_fault+0xd4c/0x1310
+[<ffffff8008098798>] do_page_fault+0x1c8/0x394
+[<ffffff800808231c>] do_mem_abort+0x50/0xec
+
+I found that debug_dma_alloc_coherent() and debug_dma_free_coherent()
+assume that dma_alloc_coherent() always returns a linear address.  However
+it's possible that dma_alloc_coherent() returns a non-linear address.  In
+this case, page_to_pfn(virt_to_page(virt)) will return an incorrect pfn.
+If the pfn is valid and mapped as a COW page, we will hit the warning when
+doing wp_page_copy().
+
+Fix this by calculating pfn for linear and non-linear addresses.
+
+Some changes are added to this patch according to Christoph's comment
+in patch v3 and a bugfix in patch v4:
+a. use normal if/else statement for better readability
+b. exclude non-linear and non-vmalloc addresses
+c. use virt_addr_valid() to check linear addresses
+
+Signed-off-by: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ lib/dma-debug.c | 20 ++++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/lib/dma-debug.c b/lib/dma-debug.c
+index ea4cc3d..4c08eb6 100644
+--- a/lib/dma-debug.c
++++ b/lib/dma-debug.c
+@@ -1495,14 +1495,22 @@ void debug_dma_alloc_coherent(struct device *dev, size_t size,
+ 	if (!entry)
+ 		return;
+ 
++	/* handle vmalloc and linear addresses */
++	if (!is_vmalloc_addr(virt) && !virt_addr_valid(virt))
++		return;
++
+ 	entry->type      = dma_debug_coherent;
+ 	entry->dev       = dev;
+-	entry->pfn	 = page_to_pfn(virt_to_page(virt));
+ 	entry->offset	 = offset_in_page(virt);
+ 	entry->size      = size;
+ 	entry->dev_addr  = dma_addr;
+ 	entry->direction = DMA_BIDIRECTIONAL;
+ 
++	if (is_vmalloc_addr(virt))
++		entry->pfn = vmalloc_to_pfn(virt);
++	else
++		entry->pfn = page_to_pfn(virt_to_page(virt));
++
+ 	add_dma_entry(entry);
+ }
+ EXPORT_SYMBOL(debug_dma_alloc_coherent);
+@@ -1513,13 +1521,21 @@ void debug_dma_free_coherent(struct device *dev, size_t size,
+ 	struct dma_debug_entry ref = {
+ 		.type           = dma_debug_coherent,
+ 		.dev            = dev,
+-		.pfn		= page_to_pfn(virt_to_page(virt)),
+ 		.offset		= offset_in_page(virt),
+ 		.dev_addr       = addr,
+ 		.size           = size,
+ 		.direction      = DMA_BIDIRECTIONAL,
+ 	};
+ 
++	/* handle vmalloc and linear addresses */
++	if (!is_vmalloc_addr(virt) && !virt_addr_valid(virt))
++		return;
++
++	if (is_vmalloc_addr(virt))
++		ref.pfn = vmalloc_to_pfn(virt);
++	else
++		ref.pfn = page_to_pfn(virt_to_page(virt));
++
+ 	if (unlikely(dma_debug_disabled()))
+ 		return;
+ 
+-- 
+1.9.1
