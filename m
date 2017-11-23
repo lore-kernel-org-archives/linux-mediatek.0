@@ -1,96 +1,74 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 3/8] drm/mediatek: mt2701: switch to mfd probing.
-Date: Thu, 23 Nov 2017 16:47:00 +0800
-Message-ID: <1511426820.8489.2.camel@mtksdaap41>
+Subject: Re: [PATCH 6/8] drm/mediatek: Add mfd support for mt8173
+Date: Thu, 23 Nov 2017 16:51:27 +0800
+Message-ID: <1511427087.8489.4.camel@mtksdaap41>
 References: <20171114214114.15793-1-mbrugger@suse.com>
-         <20171114214114.15793-4-mbrugger@suse.com>
-         <1511416092.20405.4.camel@mtksdaap41>
-         <66be07f1-c084-8db1-c845-86b2057a0d5d@suse.com>
+ <20171114214114.15793-7-mbrugger@suse.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <66be07f1-c084-8db1-c845-86b2057a0d5d@suse.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Matthias Brugger <mbrugger@suse.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, mark.rutland@arm.com, sean.wang@mediatek.com, airlied@linux.ie, gregkh@linuxfoundation.org, mturquette@baylibre.com, rdunlap@infradead.org, sboyd@codeaurora.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, pi-cheng.chen@linaro.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, laurent.pinchart@ideasonboard.com, p.zabel@pengutronix.de, ulrich.hecht+renesas@gmail.com, mchehab@kernel.org, lee.jones@linaro.org, davem@davemloft.net, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20171114214114.15793-7-mbrugger@suse.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: mark.rutland@arm.com, airlied@linux.ie, mturquette@baylibre.com, dri-devel@lists.freedesktop.org, laurent.pinchart@ideasonboard.com, ulrich.hecht+renesas@gmail.com, lee.jones@linaro.org, linux-clk@vger.kernel.org, linux@armlinux.org.uk, sean.wang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>, gregkh@linuxfoundation.org, rdunlap@infradead.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, pi-cheng.chen@linaro.org, davem@davemloft.net
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Matthias:
-
-On Thu, 2017-11-23 at 09:30 +0100, Matthias Brugger wrote:
-> 
-> On 11/23/2017 06:48 AM, CK Hu wrote:
-> > Hi, Matthias:
-> > 
-> > On Tue, 2017-11-14 at 22:41 +0100, Matthias Brugger wrote:
-> >> With the mtk-mmsys MFD device in place, we switch the probing for
-> >> mt2701 from device-tree to mfd.
-> >>
-> >> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-> >> ---
-> >>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 32 +++++++++++++++++++++++++-------
-> >>  1 file changed, 25 insertions(+), 7 deletions(-)
-> >>
-> >> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> >> index dd249cf5121e..5a263aa3ab6e 100644
-> >> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> >> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> >> @@ -21,6 +21,7 @@
-> >>  #include <drm/drm_of.h>
-> >>  #include <linux/component.h>
-> >>  #include <linux/iommu.h>
-> >> +#include <linux/mfd/mmsys.h>
-> >>  #include <linux/mfd/syscon.h>
-> >>  #include <linux/of_address.h>
-> >>  #include <linux/of_platform.h>
-> >> @@ -392,9 +393,10 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
-> >>  
-> >>  static int mtk_drm_probe(struct platform_device *pdev)
-> >>  {
-> >> +	struct mmsys_dev *mmsys_private;
-> >>  	struct device *dev = &pdev->dev;
-> >>  	struct mtk_drm_private *private;
-> >> -	struct device_node *node;
-> >> +	struct device_node *node, *parent_node;
-> >>  	struct component_match *match = NULL;
-> >>  	int ret;
-> >>  	int i;
-> >> @@ -407,12 +409,23 @@ static int mtk_drm_probe(struct platform_device *pdev)
-> >>  	INIT_WORK(&private->commit.work, mtk_atomic_work);
-> >>  	private->data = of_device_get_match_data(dev);
-> >>  
-> >> -	private->config_regs = syscon_node_to_regmap(dev->of_node);
-> >> -	if (IS_ERR(private->config_regs))
-> >> -		return PTR_ERR(private->config_regs);
-> >> +	/* Check if called from mfd */
-> >> +	if (!dev->of_node) {
-> >> +		mmsys_private = dev_get_drvdata(pdev->dev.parent);
-> > 
-> > Why do you directly access parent's driver data? You just need the
-> > device node of mmsys, maybe you could refer to [1].
-> > 
-> > [1]
-> > https://elixir.free-electrons.com/linux/latest/source/drivers/reset/reset-berlin.c#L78
-> > 
-> 
-> The difference is, that the driver you mentioned gets probed via device tree
-> matching, while we get invoked here through the id_table. So there is no device
-> node (the if actually checkes for pdev->dev.of_node to identify exactly this case).
-> 
-> Regards,
-> Matthias
-
-Yes, you are right. So
-
-Acked-by: CK Hu <ck.hu@mediatek.com>
-
-Regards,
-CK
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
-
+SGksIE1hdHRoaWFzOgoKT24gVHVlLCAyMDE3LTExLTE0IGF0IDIyOjQxICswMTAwLCBNYXR0aGlh
+cyBCcnVnZ2VyIHdyb3RlOgo+IFVzZSB0aGUgTUZEIGRldmljZSBmb3IgU29DIG10ODE3My4gUHJv
+YmluZyB2aWEgZGV2aWNldHJlZQo+IGlzIG5vIGxvbmdlciBuZWVkZWQgZm9yIGFueSBTb0MsIHNv
+IGRlbGV0ZSBpdC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBNYXR0aGlhcyBCcnVnZ2VyIDxtYnJ1Z2dl
+ckBzdXNlLmNvbT4KCkFja2VkLWJ5OiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgoKPiAtLS0K
+PiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgfCAyOCArKysrKysrLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA3IGluc2VydGlvbnMoKyksIDIx
+IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4g
+aW5kZXggNWEyNjNhYTNhYjZlLi4xZWIwMmFjZjIyOWEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RybV9kcnYuYwo+IEBAIC00MDksMjAgKzQwOSwxMiBAQCBzdGF0aWMgaW50IG10
+a19kcm1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCUlOSVRfV09SSygm
+cHJpdmF0ZS0+Y29tbWl0LndvcmssIG10a19hdG9taWNfd29yayk7Cj4gIAlwcml2YXRlLT5kYXRh
+ID0gb2ZfZGV2aWNlX2dldF9tYXRjaF9kYXRhKGRldik7Cj4gIAo+IC0JLyogQ2hlY2sgaWYgY2Fs
+bGVkIGZyb20gbWZkICovCj4gLQlpZiAoIWRldi0+b2Zfbm9kZSkgewo+IC0JCW1tc3lzX3ByaXZh
+dGUgPSBkZXZfZ2V0X2RydmRhdGEocGRldi0+ZGV2LnBhcmVudCk7Cj4gLQkJcHJpdmF0ZS0+ZGF0
+YSA9IChzdHJ1Y3QgbXRrX21tc3lzX2RyaXZlcl9kYXRhICopCj4gLQkJCQlwbGF0Zm9ybV9nZXRf
+ZGV2aWNlX2lkKHBkZXYpLT5kcml2ZXJfZGF0YTsKPiAtCQlwcml2YXRlLT5jb25maWdfcmVncyA9
+Cj4gLQkJCXN5c2Nvbl9ub2RlX3RvX3JlZ21hcChtbXN5c19wcml2YXRlLT5vZl9ub2RlKTsKPiAt
+CQlwYXJlbnRfbm9kZSA9IG1tc3lzX3ByaXZhdGUtPm9mX25vZGUtPnBhcmVudDsKPiAtCX0gZWxz
+ZSB7Cj4gLQkJcHJpdmF0ZS0+Y29uZmlnX3JlZ3MgPSBzeXNjb25fbm9kZV90b19yZWdtYXAoZGV2
+LT5vZl9ub2RlKTsKPiAtCQlpZiAoSVNfRVJSKHByaXZhdGUtPmNvbmZpZ19yZWdzKSkKPiAtCQkJ
+cmV0dXJuIFBUUl9FUlIocHJpdmF0ZS0+Y29uZmlnX3JlZ3MpOwo+IC0JCXBhcmVudF9ub2RlID0g
+ZGV2LT5vZl9ub2RlLT5wYXJlbnQ7Cj4gLQl9Cj4gKwltbXN5c19wcml2YXRlID0gZGV2X2dldF9k
+cnZkYXRhKHBkZXYtPmRldi5wYXJlbnQpOwo+ICsJcHJpdmF0ZS0+ZGF0YSA9IChzdHJ1Y3QgbXRr
+X21tc3lzX2RyaXZlcl9kYXRhICopCj4gKwkJCXBsYXRmb3JtX2dldF9kZXZpY2VfaWQocGRldikt
+PmRyaXZlcl9kYXRhOwo+ICsJcHJpdmF0ZS0+Y29uZmlnX3JlZ3MgPQo+ICsJCXN5c2Nvbl9ub2Rl
+X3RvX3JlZ21hcChtbXN5c19wcml2YXRlLT5vZl9ub2RlKTsKPiArCXBhcmVudF9ub2RlID0gbW1z
+eXNfcHJpdmF0ZS0+b2Zfbm9kZS0+cGFyZW50Owo+ICAKPiAgCS8qIEl0ZXJhdGUgb3ZlciBzaWJs
+aW5nIERJU1AgZnVuY3Rpb24gYmxvY2tzICovCj4gIAlmb3JfZWFjaF9jaGlsZF9vZl9ub2RlKHBh
+cmVudF9ub2RlLCBub2RlKSB7Cj4gQEAgLTU2NSwxNCArNTU3LDkgQEAgc3RhdGljIGludCBtdGtf
+ZHJtX3N5c19yZXN1bWUoc3RydWN0IGRldmljZSAqZGV2KQo+ICBzdGF0aWMgU0lNUExFX0RFVl9Q
+TV9PUFMobXRrX2RybV9wbV9vcHMsIG10a19kcm1fc3lzX3N1c3BlbmQsCj4gIAkJCSBtdGtfZHJt
+X3N5c19yZXN1bWUpOwo+ICAKPiAtc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXRr
+X2RybV9vZl9pZHNbXSA9IHsKPiAtCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLW1t
+c3lzIiwKPiAtCSAgLmRhdGEgPSAmbXQ4MTczX21tc3lzX2RyaXZlcl9kYXRhfSwKPiAtCXsgfQo+
+IC19Owo+IC0KPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2VfaWQgbXRrX2Ry
+bV9pZHNbXSA9IHsKPiAgCXsgImRybS1tdDI3MDEtbW0iLCAoa2VybmVsX3Vsb25nX3QpJm10Mjcw
+MV9tbXN5c19kcml2ZXJfZGF0YSB9LAo+ICsJeyAiZHJtLW10ODE3My1tbSIsIChrZXJuZWxfdWxv
+bmdfdCkmbXQ4MTczX21tc3lzX2RyaXZlcl9kYXRhIH0sCj4gIAl7IC8qIHNlbnRpbmVsICovIH0s
+Cj4gIH07Cj4gIE1PRFVMRV9ERVZJQ0VfVEFCTEUocGxhdGZvcm0sIG10a19kcm1faWRzKTsKPiBA
+QCAtNTgyLDcgKzU2OSw2IEBAIHN0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIG10a19kcm1f
+cGxhdGZvcm1fZHJpdmVyID0gewo+ICAJLnJlbW92ZQk9IG10a19kcm1fcmVtb3ZlLAo+ICAJLmRy
+aXZlcgk9IHsKPiAgCQkubmFtZQk9ICJtZWRpYXRlay1kcm0iLAo+IC0JCS5vZl9tYXRjaF90YWJs
+ZSA9IG10a19kcm1fb2ZfaWRzLAo+ICAJCS5wbSAgICAgPSAmbXRrX2RybV9wbV9vcHMsCj4gIAl9
+LAo+ICAJLmlkX3RhYmxlID0gbXRrX2RybV9pZHMsCgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
