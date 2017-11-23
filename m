@@ -1,14 +1,13 @@
 From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH 6/8] drm/mediatek: Add mfd support for mt8173
-Date: Thu, 23 Nov 2017 10:13:08 +0100
-Message-ID: <1511428388.7685.11.camel@pengutronix.de>
-References: <20171114214114.15793-1-mbrugger@suse.com>
- <20171114214114.15793-7-mbrugger@suse.com>
+Subject: Re: [PATCH] drm/mediatek: Use ERR_CAST instead of ERR_PTR(PTR_ERR())
+Date: Thu, 23 Nov 2017 10:31:44 +0100
+Message-ID: <1511429504.7685.12.camel@pengutronix.de>
+References: <1511303493-14897-1-git-send-email-gomonovych@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20171114214114.15793-7-mbrugger@suse.com>
+In-Reply-To: <1511303493-14897-1-git-send-email-gomonovych@gmail.com>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -18,17 +17,29 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>, ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org
-Cc: sean.wang@mediatek.com, gregkh@linuxfoundation.org, rdunlap@infradead.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, mchehab@kernel.org, pi-cheng.chen@linaro.org, davem@davemloft.net, linux-kernel@vger.kernel.org
+To: Vasyl Gomonovych <gomonovych@gmail.com>, ck.hu@mediatek.com, airlied@linux.ie, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVHVlLCAyMDE3LTExLTE0IGF0IDIyOjQxICswMTAwLCBNYXR0aGlhcyBCcnVnZ2VyIHdyb3Rl
-Ogo+IFVzZSB0aGUgTUZEIGRldmljZSBmb3IgU29DIG10ODE3My4gUHJvYmluZyB2aWEgZGV2aWNl
-dHJlZQo+IGlzIG5vIGxvbmdlciBuZWVkZWQgZm9yIGFueSBTb0MsIHNvIGRlbGV0ZSBpdC4KPiAK
-PiBTaWduZWQtb2ZmLWJ5OiBNYXR0aGlhcyBCcnVnZ2VyIDxtYnJ1Z2dlckBzdXNlLmNvbT4KCkFw
-YXJ0IGZyb20gdGhlIG1tc3lzX3ByaXZhdGUgaXNzdWUgbm90ZWQgaW4gcHJldmlvdXMgcGF0Y2hl
-cywKClJldmlld2VkLWJ5OiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgoK
-cmVnYXJkcwpQaGlsaXBwCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
-Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
-ZXZlbAo=
+T24gVHVlLCAyMDE3LTExLTIxIGF0IDIzOjMxICswMTAwLCBWYXN5bCBHb21vbm92eWNoIHdyb3Rl
+Ogo+IFVzZSBFUlJfQ0FTVCBpbmxpbmVkIGZ1bmN0aW9uIGluc3RlYWQgb2YgRVJSX1BUUihQVFJf
+RVJSKC4uLikpLgo+IAo+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jOjIy
+Mzo5LTE2OiBXQVJOSU5HOiBFUlJfQ0FTVCBjYW4gYmUgdXNlZCB3aXRoIG10a19nZW0KPiBHZW5l
+cmF0ZWQgYnk6IHNjcmlwdHMvY29jY2luZWxsZS9hcGkvZXJyX2Nhc3QuY29jY2kKPiAKPiBTaWdu
+ZWQtb2ZmLWJ5OiBWYXN5bCBHb21vbm92eWNoIDxnb21vbm92eWNoQGdtYWlsLmNvbT4KPiAtLS0K
+PiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMgfCAyICstCj4gIDEgZmls
+ZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jCj4gaW5kZXggZjU5NWFjODE2YjU1Li41NzY2YjQyZmMx
+NzQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMK
+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYwo+IEBAIC0yMjAs
+NyArMjIwLDcgQEAgc3RydWN0IGRybV9nZW1fb2JqZWN0ICptdGtfZ2VtX3ByaW1lX2ltcG9ydF9z
+Z190YWJsZShzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICAJbXRrX2dlbSA9IG10a19kcm1fZ2Vt
+X2luaXQoZGV2LCBhdHRhY2gtPmRtYWJ1Zi0+c2l6ZSk7Cj4gIAo+ICAJaWYgKElTX0VSUihtdGtf
+Z2VtKSkKPiAtCQlyZXR1cm4gRVJSX1BUUihQVFJfRVJSKG10a19nZW0pKTsKPiArCQlyZXR1cm4g
+RVJSX0NBU1QobXRrX2dlbSkpOwo+ICAKPiAgCWV4cGVjdGVkID0gc2dfZG1hX2FkZHJlc3Moc2ct
+PnNnbCk7Cj4gIAlmb3JfZWFjaF9zZyhzZy0+c2dsLCBzLCBzZy0+bmVudHMsIGkpIHsKCkFja2Vk
+LWJ5OiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgoKcmVnYXJkcwpQaGls
+aXBwCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
+ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
