@@ -1,75 +1,31 @@
 From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH 3/8] drm/mediatek: mt2701: switch to mfd probing.
-Date: Thu, 23 Nov 2017 10:12:57 +0100
-Message-ID: <1511428377.7685.9.camel@pengutronix.de>
+Subject: Re: [PATCH 5/8] mfd: mtk-mmsys: Add mt8173 nodes
+Date: Thu, 23 Nov 2017 10:13:03 +0100
+Message-ID: <1511428383.7685.10.camel@pengutronix.de>
 References: <20171114214114.15793-1-mbrugger@suse.com>
-         <20171114214114.15793-4-mbrugger@suse.com>
+ <20171114214114.15793-6-mbrugger@suse.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20171114214114.15793-4-mbrugger@suse.com>
-Sender: linux-clk-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20171114214114.15793-6-mbrugger@suse.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>, ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org
-Cc: davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, pi-cheng.chen@linaro.org, sean.wang@mediatek.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
+Cc: sean.wang@mediatek.com, gregkh@linuxfoundation.org, rdunlap@infradead.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, mchehab@kernel.org, pi-cheng.chen@linaro.org, davem@davemloft.net, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-11-14 at 22:41 +0100, Matthias Brugger wrote:
-> With the mtk-mmsys MFD device in place, we switch the probing for
-> mt2701 from device-tree to mfd.
-> 
-> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 32 +++++++++++++++++++++++++-------
->  1 file changed, 25 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index dd249cf5121e..5a263aa3ab6e 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -21,6 +21,7 @@
->  #include <drm/drm_of.h>
->  #include <linux/component.h>
->  #include <linux/iommu.h>
-> +#include <linux/mfd/mmsys.h>
->  #include <linux/mfd/syscon.h>
->  #include <linux/of_address.h>
->  #include <linux/of_platform.h>
-> @@ -392,9 +393,10 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
->  
->  static int mtk_drm_probe(struct platform_device *pdev)
->  {
-> +	struct mmsys_dev *mmsys_private;
->  	struct device *dev = &pdev->dev;
->  	struct mtk_drm_private *private;
-> -	struct device_node *node;
-> +	struct device_node *node, *parent_node;
->  	struct component_match *match = NULL;
->  	int ret;
->  	int i;
-> @@ -407,12 +409,23 @@ static int mtk_drm_probe(struct platform_device *pdev)
->  	INIT_WORK(&private->commit.work, mtk_atomic_work);
->  	private->data = of_device_get_match_data(dev);
->  
-> -	private->config_regs = syscon_node_to_regmap(dev->of_node);
-> -	if (IS_ERR(private->config_regs))
-> -		return PTR_ERR(private->config_regs);
-> +	/* Check if called from mfd */
-> +	if (!dev->of_node) {
-> +		mmsys_private = dev_get_drvdata(pdev->dev.parent);
-> +		private->data = (struct mtk_mmsys_driver_data *)
-> +				platform_get_device_id(pdev)->driver_data;
-> +		private->config_regs =
-> +			syscon_node_to_regmap(mmsys_private->of_node);
-> +		parent_node = mmsys_private->of_node->parent;
-
-I think this could be just:
-
-		mmsys_node = pdev->dev.parent->of_node;
-		private->data = (struct mtk_mmsys_driver_data *)> +	
-			platform_get_device_id(pdev)->driver_data;
-		private->config_regs = syscon_node_to_regmap(mmsys_node);
-		parent_node = mmsys_node->parent;
-
-regards
-Philipp
+T24gVHVlLCAyMDE3LTExLTE0IGF0IDIyOjQxICswMTAwLCBNYXR0aGlhcyBCcnVnZ2VyIHdyb3Rl
+Ogo+IEFkZCBkZXZpY2VzIGZvciB0aGUgbXQ4MTczIFNvQy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBN
+YXR0aGlhcyBCcnVnZ2VyIDxtYnJ1Z2dlckBzdXNlLmNvbT4KClJldmlld2VkLWJ5OiBQaGlsaXBw
+IFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgoKcmVnYXJkcwpQaGlsaXBwCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
