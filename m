@@ -1,93 +1,92 @@
-From: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+From: Adam Wallis <awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
 Subject: Re: [PATCH v1] usb: xhci: allow imod-interval to be configurable
-Date: Tue, 28 Nov 2017 20:35:00 +0100
-Message-ID: <20171128193500.GA30609@kroah.com>
+Date: Tue, 28 Nov 2017 15:32:29 -0500
+Message-ID: <22b57b69-3728-d879-42c6-92e87e7c7955@codeaurora.org>
 References: <1511889106-9239-1-git-send-email-awallis@codeaurora.org>
+ <20171128193500.GA30609@kroah.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1511889106-9239-1-git-send-email-awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+In-Reply-To: <20171128193500.GA30609-U8xfFu+wG4EAvxtiuMwx3w@public.gmane.org>
+Content-Language: en-US
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Adam Wallis <awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, timur-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, timur-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Nov 28, 2017 at 12:11:46PM -0500, Adam Wallis wrote:
-> The xHCI driver currently has the IMOD set to 160, which
-> translates to an IMOD interval of 40,000ns (160 * 250)ns
+On 11/28/2017 2:35 PM, Greg Kroah-Hartman wrote:
+> On Tue, Nov 28, 2017 at 12:11:46PM -0500, Adam Wallis wrote:
+>> The xHCI driver currently has the IMOD set to 160, which
+>> translates to an IMOD interval of 40,000ns (160 * 250)ns
+>>
+[..]
+>> --- a/drivers/usb/host/xhci-plat.c
+>> +++ b/drivers/usb/host/xhci-plat.c
+>> @@ -23,6 +23,7 @@
+>>  #include "xhci-plat.h"
+>>  #include "xhci-mvebu.h"
+>>  #include "xhci-rcar.h"
+>> +#include "xhci-mtk.h"
+>>  
+>>  static struct hc_driver __read_mostly xhci_plat_hc_driver;
+>>  
+>> @@ -269,6 +270,20 @@ static int xhci_plat_probe(struct platform_device *pdev)
+>>  	if (device_property_read_bool(&pdev->dev, "quirk-broken-port-ped"))
+>>  		xhci->quirks |= XHCI_BROKEN_PORT_PED;
+>>  
+>> +	/* imod interval in nanoseconds */
+>> +	if (device_property_read_u32(sysdev,
+>> +		"imod-interval", &xhci->imod_interval))
+>> +		xhci->imod_interval = 40000;
 > 
-> Commit 0cbd4b34cda9 ("xhci: mediatek: support MTK xHCI host controller")
-> introduced a QUIRK for the MTK platform to adjust this interval to 20,
-> which translates to an IMOD interval of 5,000ns (20 * 250)ns. This is
-> due to the fact that the MTK controller IMOD interval is 8 times
-> as much as defined in xHCI spec.
-> 
-> Instead of adding more quirk bits for additional platforms, this patch
-> introduces the ability for vendors to set the IMOD_INTERVAL as is
-> optimal for their platform. By using device_property_read_u32() on
-> "imod-interval", the IMOD INTERVAL can be specified in nano seconds. If
-> no interval is specified, the default of 40,000ns (IMOD=160) will be
-> used.
-> 
-> No bounds checking has been implemented due to the fact that a vendor
-> may have violated the spec and would need to specify a value outside of
-> the max 8,000 IRQs/second limit specified in the xHCI spec.
-> 
-> Backwards compatibility is maintained for MTK_HOSTS through the quirk
-> bit, however, imod_interval should be pushed into device tree at a
-> future point and this quirk should be removed from xhci_plat_probe
-> 
-> Signed-off-by: Adam Wallis <awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/usb/usb-xhci.txt |  1 +
->  drivers/usb/host/xhci-plat.c                       | 15 +++++++++++++++
->  drivers/usb/host/xhci.c                            |  7 ++-----
->  drivers/usb/host/xhci.h                            |  2 ++
->  4 files changed, 20 insertions(+), 5 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/usb/usb-xhci.txt b/Documentation/devicetree/bindings/usb/usb-xhci.txt
-> index ae6e484..3998459 100644
-> --- a/Documentation/devicetree/bindings/usb/usb-xhci.txt
-> +++ b/Documentation/devicetree/bindings/usb/usb-xhci.txt
-> @@ -29,6 +29,7 @@ Optional properties:
->    - usb2-lpm-disable: indicate if we don't want to enable USB2 HW LPM
->    - usb3-lpm-capable: determines if platform is USB3 LPM capable
->    - quirk-broken-port-ped: set if the controller has broken port disable mechanism
-> +  - imod-interval: IMOD_INTERVAL in nano-seconds. Default is 40000
->  
->  Example:
->  	usb@f0931000 {
-> diff --git a/drivers/usb/host/xhci-plat.c b/drivers/usb/host/xhci-plat.c
-> index 09f164f..f7730c8 100644
-> --- a/drivers/usb/host/xhci-plat.c
-> +++ b/drivers/usb/host/xhci-plat.c
-> @@ -23,6 +23,7 @@
->  #include "xhci-plat.h"
->  #include "xhci-mvebu.h"
->  #include "xhci-rcar.h"
-> +#include "xhci-mtk.h"
->  
->  static struct hc_driver __read_mostly xhci_plat_hc_driver;
->  
-> @@ -269,6 +270,20 @@ static int xhci_plat_probe(struct platform_device *pdev)
->  	if (device_property_read_bool(&pdev->dev, "quirk-broken-port-ped"))
->  		xhci->quirks |= XHCI_BROKEN_PORT_PED;
->  
-> +	/* imod interval in nanoseconds */
-> +	if (device_property_read_u32(sysdev,
-> +		"imod-interval", &xhci->imod_interval))
-> +		xhci->imod_interval = 40000;
+> So no matter what value you read, you set it to 40000?  Or am I reading
+> this code incorrectly?
 
-So no matter what value you read, you set it to 40000?  Or am I reading
-this code incorrectly?
+I think you may be reading the code incorrectly. device_property_read_u32()
+returns 0 when the property is found and valid...and stored into
+xhci->imod_interval. When 0 is returned in this case, the default value of
+40,000 is skipped over.
 
-There's a good reason putting function calls inside if() is considered a
-bad coding style :)
+If the property is not found, a number of different errors could be returned,
+but any of them will cause the default value to be used.
 
-thanks,
+> There's a good reason putting function calls inside if() is considered a
+> bad coding style :)
 
-greg k-h
+I do not disagree with you, however, I was trying to maintain style consistency
+with the device property reads with the xhci_plat_probe function.
+
+If I break that consistency, a couple of ways I might write this cleaner
+
+1) set xhci->imod_interval to 40,000 before the call to
+device_property_read_u32. If the property exists in a firmware node, it will
+update the imod_interval value...if it does not exist, it will not update this
+value and the default will be used. In this case, I would not even check the
+return value. This method is used quite a bit in the kernel.
+
+2) use a if (device_property_present()) and check to see if that property is
+even present. If so, call device_property_read_u32() without check return value.
+This has the downside of still using a function call within the if() which you
+have already indicated is not your preference.
+
+3) add a retval and test off of this instead of using the function directly in
+the if()
+
+> thanks,
+> 
+> greg k-h
+
+Thanks for taking time to review my patch. I really have no strong preference on
+how call device_property_read_u32() is tested and I am open to any suggestions.
+Adam
+
+
+-- 
+Adam Wallis
+Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
+Qualcomm Technologies, Inc. is a member of the Code Aurora Forum,
+a Linux Foundation Collaborative Project.
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
