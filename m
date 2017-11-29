@@ -1,83 +1,87 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH 1/5 v4] ASoC: ep93xx-ac97: Fix
- platform_get_irq's error checking
-Date: Wed, 29 Nov 2017 10:53:09 +0000
-Message-ID: <20171129105309.2wqsbzuzjez5272k@sirena.org.uk>
-References: <082d4479211d425219f4ab275ecc12e1011eca2f.1511062844.git.arvind.yadav.cs@gmail.com>
- <20171120133717.kscrjsb3y7gnvd2t@piout.net>
- <5A12FC64.3020205@gmail.com>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============3432626182151049446=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <5A12FC64.3020205@gmail.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: arvindY <arvind.yadav.cs@gmail.com>
-Cc: alsa-devel@alsa-project.org, linux@armlinux.org.uk, tiwai@suse.com, lgirdwood@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, Alexandre Belloni <alexandre.belloni@free-electrons.com>, linux-arm-kernel@lists.infradead.org
+From: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+Subject: [PATCH 5/7] media: venc: don't use kernel-doc for undescribed enums
+Date: Wed, 29 Nov 2017 07:08:08 -0500
+Message-ID: <a4070956e83a5bd5cac48e07e11ed7aa45bb8ade.1511952403.git.mchehab@s-opensource.com>
+References: <c73fcbc4af259923feac19eda4bb5e996b6de0fd.1511952403.git.mchehab@s-opensource.com>
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <c73fcbc4af259923feac19eda4bb5e996b6de0fd.1511952403.git.mchehab@s-opensource.com>
+In-Reply-To: <c73fcbc4af259923feac19eda4bb5e996b6de0fd.1511952403.git.mchehab@s-opensource.com>
+References: <c73fcbc4af259923feac19eda4bb5e996b6de0fd.1511952403.git.mchehab@s-opensource.com>
+Sender: linux-media-owner@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@s-opensource.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hans.verkuil@cisco.com>, Kees Cook <keescook@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+There are no descriptions for some enums, with produces lots
+of warnings:
 
---===============3432626182151049446==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="it7nn7vy6hvysgbj"
-Content-Disposition: inline
+    drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:55: warning: Enum value 'VENC_VP8_VPU_WORK_BUF_LUMA' not described in enum 'venc_vp8_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:55: warning: Enum value 'VENC_VP8_VPU_WORK_BUF_LUMA2' not described in enum 'venc_vp8_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:55: warning: Enum value 'VENC_VP8_VPU_WORK_BUF_LUMA3' not described in enum 'venc_vp8_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:55: warning: Enum value 'VENC_VP8_VPU_WORK_BUF_CHROMA' not described in enum 'venc_vp8_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:55: warning: Enum value 'VENC_VP8_VPU_WORK_BUF_CHROMA2' not described in enum 'venc_vp8_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:55: warning: Enum value 'VENC_VP8_VPU_WORK_BUF_CHROMA3' not described in enum 'venc_vp8_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:55: warning: Enum value 'VENC_VP8_VPU_WORK_BUF_MV_INFO' not described in enum 'venc_vp8_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:55: warning: Enum value 'VENC_VP8_VPU_WORK_BUF_BS_HEADER' not described in enum 'venc_vp8_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:55: warning: Enum value 'VENC_VP8_VPU_WORK_BUF_PROB_BUF' not described in enum 'venc_vp8_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:55: warning: Enum value 'VENC_VP8_VPU_WORK_BUF_RC_INFO' not described in enum 'venc_vp8_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:55: warning: Enum value 'VENC_VP8_VPU_WORK_BUF_RC_CODE' not described in enum 'venc_vp8_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:55: warning: Enum value 'VENC_VP8_VPU_WORK_BUF_RC_CODE2' not described in enum 'venc_vp8_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:55: warning: Enum value 'VENC_VP8_VPU_WORK_BUF_RC_CODE3' not described in enum 'venc_vp8_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:55: warning: Enum value 'VENC_VP8_VPU_WORK_BUF_MAX' not described in enum 'venc_vp8_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:51: warning: Enum value 'VENC_H264_VPU_WORK_BUF_RC_INFO' not described in enum 'venc_h264_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:51: warning: Enum value 'VENC_H264_VPU_WORK_BUF_RC_CODE' not described in enum 'venc_h264_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:51: warning: Enum value 'VENC_H264_VPU_WORK_BUF_REC_LUMA' not described in enum 'venc_h264_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:51: warning: Enum value 'VENC_H264_VPU_WORK_BUF_REC_CHROMA' not described in enum 'venc_h264_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:51: warning: Enum value 'VENC_H264_VPU_WORK_BUF_REF_LUMA' not described in enum 'venc_h264_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:51: warning: Enum value 'VENC_H264_VPU_WORK_BUF_REF_CHROMA' not described in enum 'venc_h264_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:51: warning: Enum value 'VENC_H264_VPU_WORK_BUF_MV_INFO_1' not described in enum 'venc_h264_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:51: warning: Enum value 'VENC_H264_VPU_WORK_BUF_MV_INFO_2' not described in enum 'venc_h264_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:51: warning: Enum value 'VENC_H264_VPU_WORK_BUF_SKIP_FRAME' not described in enum 'venc_h264_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:51: warning: Enum value 'VENC_H264_VPU_WORK_BUF_MAX' not described in enum 'venc_h264_vpu_work_buf'
+    drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:60: warning: Enum value 'H264_BS_MODE_SPS' not described in enum 'venc_h264_bs_mode'
+    drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:60: warning: Enum value 'H264_BS_MODE_PPS' not described in enum 'venc_h264_bs_mode'
+    drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:60: warning: Enum value 'H264_BS_MODE_FRAME' not described in enum 'venc_h264_bs_mode'
 
+Signed-off-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+---
+ drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c | 4 ++--
+ drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c  | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
---it7nn7vy6hvysgbj
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Mon, Nov 20, 2017 at 09:31:40PM +0530, arvindY wrote:
-> On Monday 20 November 2017 07:07 PM, Alexandre Belloni wrote:
-> > On 19/11/2017 at 09:45:00 +0530, Arvind Yadav wrote:
-
-> > To ensure this doesn't get applied: platform_get_irq can return
-> > -EPROBE_DEFER and this must be handled properly.
-
-> Yes, you are right. We should retry to get an irq for device. But ASoC
->  driver is not retrying. if platfore_get_irq() fail here, Driver is throwing
-> an error.
-> and this patch is only to fix error checking which is not correct in Driver.
-
-> > >   	irq = platform_get_irq(pdev, 0);
-> > > -	if (!irq)
-> > > +	if (irq <= 0)
-> > >   		return -ENODEV;
-
-This is just squashing all error codes into -ENODEV, we'd be handling
-probe deferral properly if we just returned the raw error code here.  We
-need separate handling for irq == 0 which is an error but not an error
-code and for cases where we've got an error code.
-
---it7nn7vy6hvysgbj
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAloekZQACgkQJNaLcl1U
-h9B7AQf+MEw+3M8uwNZt0x66Wsy3kExx4cA8WQSWP7Shgi3m2OdalB3RSdmWxjcw
-oPLtT1YCe8bXhC7rSCUMokb2ZYj0lLITuuFDcIaS2GsmrMVPu+WuOOgtQtSUawEx
-9nU1aWPN/t2mZJdSe0zO173MfWF7GsYKLgpcP/6lcQ0l/2qMFCH8mQWnYDQHBPQU
-eztFCIQ2Bt4Or2mPt9764yaZLVzQqvPKXtog2/B63qIeVGPR24OyTO5hlBmiM3pT
-dcR6tz0is6YL7bdLmVt+I8zqeZfLWoB99uDAFQWn1VxdZaFRBqg4VehBOFI3aNON
-Rrp/BI2xUO3hihm6pHiTOPBQedAetQ==
-=sxGi
------END PGP SIGNATURE-----
-
---it7nn7vy6hvysgbj--
-
---===============3432626182151049446==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============3432626182151049446==--
+diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
+index 4eb3be37ba14..6cf31b366aad 100644
+--- a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
++++ b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
+@@ -34,7 +34,7 @@ static const char h264_filler_marker[] = {0x0, 0x0, 0x0, 0x1, 0xc};
+ #define H264_FILLER_MARKER_SIZE ARRAY_SIZE(h264_filler_marker)
+ #define VENC_PIC_BITSTREAM_BYTE_CNT 0x0098
+ 
+-/**
++/*
+  * enum venc_h264_vpu_work_buf - h264 encoder buffer index
+  */
+ enum venc_h264_vpu_work_buf {
+@@ -50,7 +50,7 @@ enum venc_h264_vpu_work_buf {
+ 	VENC_H264_VPU_WORK_BUF_MAX,
+ };
+ 
+-/**
++/*
+  * enum venc_h264_bs_mode - for bs_mode argument in h264_enc_vpu_encode
+  */
+ enum venc_h264_bs_mode {
+diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
+index acb639c4abd2..957420dd60de 100644
+--- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
++++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
+@@ -34,7 +34,7 @@
+ /* This ac_tag is vp8 frame tag. */
+ #define MAX_AC_TAG_SIZE 10
+ 
+-/**
++/*
+  * enum venc_vp8_vpu_work_buf - vp8 encoder buffer index
+  */
+ enum venc_vp8_vpu_work_buf {
+-- 
+2.14.3
