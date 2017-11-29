@@ -1,39 +1,91 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH 1/3] mmc: dt-bindings: add mmc support to MT7623 SoC
-Date: Wed, 29 Nov 2017 18:10:35 +0800
-Message-ID: <3e2c72d18bbe6d7c762fd820195f0fa0b5a45bbf.1511949769.git.sean.wang@mediatek.com>
-References: <cover.1511949769.git.sean.wang@mediatek.com>
+From: RogerCC.Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/3] mtd: nand: mtk: Support different MTK NAND flash
+ controller IP
+Date: Wed, 29 Nov 2017 18:12:39 +0800
+Message-ID: <1511950359.7778.2.camel@mtkswgap22>
+References: <1511947486-7707-1-git-send-email-rogercc.lin@mediatek.com>
+ <1511947486-7707-3-git-send-email-rogercc.lin@mediatek.com>
+ <20171129110441.3c6f1e3a@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1511949769.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20171129110441.3c6f1e3a@bbrezillon>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+Hi, Boris,
 
-Add the devicetree binding for MT7623 SoC using MT2701 as the fallback.
+On Wed, 2017-11-29 at 11:04 +0100, Boris Brezillon wrote:
+> Hi,
+> 
+> On Wed, 29 Nov 2017 17:24:45 +0800
+> RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> 
+> 
+> > diff --git a/drivers/mtd/nand/mtk_ecc.h b/drivers/mtd/nand/mtk_ecc.h
+> > index d245c14..764adb6 100644
+> > --- a/drivers/mtd/nand/mtk_ecc.h
+> > +++ b/drivers/mtd/nand/mtk_ecc.h
+> > @@ -14,8 +14,6 @@
+> >  
+> >  #include <linux/types.h>
+> >  
+> > -#define ECC_PARITY_BITS		(14)
+> > -
+> >  enum mtk_ecc_mode {ECC_DMA_MODE = 0, ECC_NFI_MODE = 1};
+> >  enum mtk_ecc_operation {ECC_ENCODE, ECC_DECODE};
+> >  
+> > @@ -37,6 +35,29 @@ struct mtk_ecc_config {
+> >  	u32 len;
+> >  };
+> >  
+> > +struct mtk_ecc_caps {
+> > +	u32 err_mask;
+> > +	const u8 *ecc_strength;
+> > +	const u32 *ecc_regs;
+> > +	u8 num_ecc_strength;
+> > +	u8 ecc_mode_shift;
+> > +	u8 parity_bits;
+> > +	int pg_irq_sel;
+> > +};
+> > +
+> > +struct mtk_ecc {
+> > +	struct device *dev;
+> > +	const struct mtk_ecc_caps *caps;
+> > +	void __iomem *regs;
+> > +	struct clk *clk;
+> > +
+> > +	struct completion done;
+> > +	struct mutex lock;
+> > +	u32 sectors;
+> > +
+> > +	u8 *eccdata;
+> > +};
+> 
+> Can you please keep these information private and instead provide a
+> helper to query the parity bits info, something like:
+> 
+> unsigned int mtk_ecc_get_parity_bits(struct mtk_ecc *ecc);
 
-Cc: devicetree@vger.kernel.org
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- Documentation/devicetree/bindings/mmc/mtk-sd.txt | 2 ++
- 1 file changed, 2 insertions(+)
+Yes, got it, I will do this in next patch, 
 
-diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-index 72d2a73..1732588 100644
---- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-+++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-@@ -12,6 +12,8 @@ Required properties:
- 	"mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
- 	"mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
- 	"mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
-+	"mediatek,mt7623-mmc",
-+	"mediatek,mt2701-mmc": for mmc host ip compatible with mt7623
- - reg: physical base address of the controller and length
- - interrupts: Should contain MSDC interrupt number
- - clocks: Should contain phandle for the clock feeding the MMC controller
--- 
-2.7.4
+thanks,
+
+Roger
+
+> Regards,
+> 
+> Boris
+> 
+> 
