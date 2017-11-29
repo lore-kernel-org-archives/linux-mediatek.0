@@ -1,43 +1,108 @@
-From: Arvind Yadav <arvind.yadav.cs@gmail.com>
-Subject: [PATCH 5/5 v4] ASoC: intel: mfld: Handle return value of platform_get_irq
-Date: Wed, 29 Nov 2017 21:47:14 +0530
-Message-ID: <3c83856bd9f1f23d1e0f5e8753d3998ae4785e37.1511970158.git.arvind.yadav.cs@gmail.com>
-References: <4ce907b8389af30eb0677e70cf543a2b795cca12.1511970158.git.arvind.yadav.cs@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4ce907b8389af30eb0677e70cf543a2b795cca12.1511970158.git.arvind.yadav.cs@gmail.com>
-In-Reply-To: <4ce907b8389af30eb0677e70cf543a2b795cca12.1511970158.git.arvind.yadav.cs@gmail.com>
-References: <4ce907b8389af30eb0677e70cf543a2b795cca12.1511970158.git.arvind.yadav.cs@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, matthias.bgg@gmail.com
-Cc: linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v2] usb: xhci: allow imod-interval to be configurable
+Date: Wed, 29 Nov 2017 17:46:19 +0000
+Message-ID: <20171129174619.GB22267@kroah.com>
+References: <1511970775-11103-1-git-send-email-awallis@codeaurora.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <1511970775-11103-1-git-send-email-awallis@codeaurora.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Adam Wallis <awallis@codeaurora.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Mathias Nyman <mathias.nyman@intel.com>, timur@codeaurora.org, linux-usb@vger.kernel.org, chunfeng.yun@mediatek.com, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-platform_get_irq() can fail here and we must check its return value.
+On Wed, Nov 29, 2017 at 10:52:55AM -0500, Adam Wallis wrote:
+> The xHCI driver currently has the IMOD set to 160, which
+> translates to an IMOD interval of 40,000ns (160 * 250)ns
+> 
+> Commit 0cbd4b34cda9 ("xhci: mediatek: support MTK xHCI host controller")
+> introduced a QUIRK for the MTK platform to adjust this interval to 20,
+> which translates to an IMOD interval of 5,000ns (20 * 250)ns. This is
+> due to the fact that the MTK controller IMOD interval is 8 times
+> as much as defined in xHCI spec.
+> 
+> Instead of adding more quirk bits for additional platforms, this patch
+> introduces the ability for vendors to set the IMOD_INTERVAL as is
+> optimal for their platform. By using device_property_read_u32() on
+> "imod-interval", the IMOD INTERVAL can be specified in nano seconds. If
+> no interval is specified, the default of 40,000ns (IMOD=160) will be
+> used.
+> 
+> No bounds checking has been implemented due to the fact that a vendor
+> may have violated the spec and would need to specify a value outside of
+> the max 8,000 IRQs/second limit specified in the xHCI spec.
+> 
+> Backwards compatibility is maintained for MTK_HOSTS through the quirk
+> bit, however, imod_interval should be pushed into device tree at a
+> future point and this quirk should be removed from xhci_plat_probe
+> 
+> Signed-off-by: Adam Wallis <awallis@codeaurora.org>
+> ---
+> changes from v1:
+>   * Removed device_property_read_u32() per suggestion from greg k-h
+>   * Used ER_IRQ_INTERVAL_MASK in place of (u16) cast
+> 
+>  Documentation/devicetree/bindings/usb/usb-xhci.txt |  1 +
+>  drivers/usb/host/xhci-plat.c                       | 13 +++++++++++++
+>  drivers/usb/host/xhci.c                            |  7 ++-----
+>  drivers/usb/host/xhci.h                            |  2 ++
+>  4 files changed, 18 insertions(+), 5 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/usb/usb-xhci.txt b/Documentation/devicetree/bindings/usb/usb-xhci.txt
+> index ae6e484..3998459 100644
+> --- a/Documentation/devicetree/bindings/usb/usb-xhci.txt
+> +++ b/Documentation/devicetree/bindings/usb/usb-xhci.txt
+> @@ -29,6 +29,7 @@ Optional properties:
+>    - usb2-lpm-disable: indicate if we don't want to enable USB2 HW LPM
+>    - usb3-lpm-capable: determines if platform is USB3 LPM capable
+>    - quirk-broken-port-ped: set if the controller has broken port disable mechanism
+> +  - imod-interval: IMOD_INTERVAL in nano-seconds. Default is 40000
+>  
+>  Example:
+>  	usb@f0931000 {
+> diff --git a/drivers/usb/host/xhci-plat.c b/drivers/usb/host/xhci-plat.c
+> index 09f164f..3c63de1 100644
+> --- a/drivers/usb/host/xhci-plat.c
+> +++ b/drivers/usb/host/xhci-plat.c
+> @@ -23,6 +23,7 @@
+>  #include "xhci-plat.h"
+>  #include "xhci-mvebu.h"
+>  #include "xhci-rcar.h"
+> +#include "xhci-mtk.h"
+>  
+>  static struct hc_driver __read_mostly xhci_plat_hc_driver;
+>  
+> @@ -269,6 +270,18 @@ static int xhci_plat_probe(struct platform_device *pdev)
+>  	if (device_property_read_bool(&pdev->dev, "quirk-broken-port-ped"))
+>  		xhci->quirks |= XHCI_BROKEN_PORT_PED;
+>  
+> +	/*
+> +	 * imod_interval is the interrupt modulation value in nanoseconds.
+> +	 * The increment interval is 8 times as much as that defined in
+> +	 * the xHCI spec on MTK's controller. This quirk check exists to provide
+> +	 * backwards compatibility, however, this should be pushed into
+> +	 * the device tree files at some point in the future and
+> +	 * checking the quirk should be removed from xhci_plat_probe.
+> +	 */
+> +	xhci->imod_interval = xhci->quirks & XHCI_MTK_HOST ? 5000 : 40000;
 
-Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
----
-changes in v2 :
-              Add failure case '<= 0' instead of '< 0'. IRQ0 is not valid.
-changes in v3 :
-              Return -ENODEV insted of irq.
-changes in v4 :
-              Add separate error for irq == 0 and irq < 0.
+Personally I hate ? : logic, just write the if statement out.  It
+doesn't save anything except make it harder to read.
 
- sound/soc/intel/boards/mfld_machine.c | 2 ++
- 1 file changed, 2 insertions(+)
+Yeah, the original code had it too.  Oh well, I'll leave it up to the
+xhci maintainer, he is the one that has to maintain this, not me :)
 
-diff --git a/sound/soc/intel/boards/mfld_machine.c b/sound/soc/intel/boards/mfld_machine.c
-index 6f44acf..7cb44fd 100644
---- a/sound/soc/intel/boards/mfld_machine.c
-+++ b/sound/soc/intel/boards/mfld_machine.c
-@@ -372,6 +372,8 @@ static int snd_mfld_mc_probe(struct platform_device *pdev)
- 
- 	/* retrive the irq number */
- 	irq = platform_get_irq(pdev, 0);
-+	if (irq <= 0)
-+		return irq < 0 ? irq : -ENODEV;
- 
- 	/* audio interrupt base of SRAM location where
- 	 * interrupts are stored by System FW */
--- 
-2.7.4
+thanks,
+
+greg k-h
