@@ -1,419 +1,432 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH 1/4] dt-bindings: pinctrl: add bindings for MediaTek
- MT7622 SoC
-Date: Wed, 29 Nov 2017 17:14:30 +0800
-Message-ID: <1511946870.28444.7.camel@mtkswgap22>
-References: <cover.1511840374.git.sean.wang@mediatek.com>
-         <6e88d5b34241b32206f95279117afad4bb3d8661.1511840374.git.sean.wang@mediatek.com>
-         <20171128152055.rfhfqi4ucp6bdxsf@rob-hp-laptop>
+From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 2/3] mtd: nand: mtk: Support different MTK NAND flash
+ controller IP
+Date: Wed, 29 Nov 2017 17:24:45 +0800
+Message-ID: <1511947486-7707-3-git-send-email-rogercc.lin@mediatek.com>
+References: <1511947486-7707-1-git-send-email-rogercc.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171128152055.rfhfqi4ucp6bdxsf@rob-hp-laptop>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: mark.rutland@arm.com, linus.walleij@linaro.org, matthias.bgg@gmail.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1511947486-7707-1-git-send-email-rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-11-28 at 09:20 -0600, Rob Herring wrote:
-> On Tue, Nov 28, 2017 at 11:49:59AM +0800, sean.wang@mediatek.com wrote:
-> > From: Sean Wang <sean.wang@mediatek.com>
-> > 
-> > Add devicetree bindings for MediaTek MT7622 pinctrl driver.
-> > 
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/pinctrl/pinctrl-mt7622.txt | 330 +++++++++++++++++++++
-> >  1 file changed, 330 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
-> > new file mode 100644
-> > index 0000000..ce86d45
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
-> > @@ -0,0 +1,330 @@
-> > +== MediaTek MT7622 pinctrl controller ==
-> > +
-> > +Required properties for the root node:
-> > + - compatible: Should be one of the following
-> > +	       "mediatek,mt7622-pinctrl" for MT7622 SoC
-> > + - reg: offset and length of the pinctrl space
-> > +
-> > + - gpio-controller: Marks the device node as a GPIO controller.
-> > + - #gpio-cells: Should be two. The first cell is the pin number and the
-> > +   second is the GPIO flags.
-> > +
-> > +Please refer to pinctrl-bindings.txt in this directory for details of the
-> > +common pinctrl bindings used by client devices, including the meaning of the
-> > +phrase "pin configuration node".
-> > +
-> > +MT7622 pin configuration nodes act as a container for an arbitrary number of
-> > +subnodes. Each of these subnodes represents some desired configuration for a
-> > +pin, a group, or a list of pins or groups. This configuration can include the
-> > +mux function to select on those pin(s)/group(s), and various pin configuration
-> > +parameters, such as pull-up, slew rate, etc.
-> > +
-> > +We support 2 types of configuration nodes. Those nodes can be either pinmux
-> > +nodes or pinconf nodes. Each configuration node can consist of multiple nodes
-> > +describing the pinmux and pinconf options.
-> > +
-> > +The name of each subnode is no matter as long as it is unique; all subnodes
-> 
-> s/is no matter/doesn't matter/
-> 
+From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-will be fixed
+MT7622 uses an MTK's earlier NAND flash controller IP which support
+different sector size, max spare size per sector and paraity bits...,
+some register's offset and definition also been changed in the NAND
+flash controller, this patch is the preparation to support MT7622
+NAND flash controller.
 
-> > +should be enumerated and processed purely based on their content.
-> > +
-> > +== pinmux nodes content ==
-> > +
-> > +The following generic properties as defined in pinctrl-bindings.txt are valid
-> > +to specify in a pinmux subnode:
-> > +
-> > +Required properties are:
-> > + - groups: An array of strings. Each string contains the name of a group.
-> > +  Valid values for these names are listed below.
-> > + - function: A string containing the name of the function to mux to the
-> > +  group. Valid values for function names are listed below.
-> > +
-> > +== pinconf nodes content ==
-> > +
-> > +The following generic properties as defined in pinctrl-bindings.txt are valid
-> > +to specify in a pinconf subnode:
-> > +
-> > +Required properties are:
-> > + - pins: An array of strings. Each string contains the name of a pin.
-> > +  Valid values for these names are listed below.
-> > + - groups: An array of strings. Each string contains the name of a group.
-> > +  Valid values for these names are listed below.
-> > +
-> > +Optional properies are:
-> > + bias-disable, bias-pull, bias-pull-down, input-enable,
-> > + input-schmitt-enable, input-schmitt-disable, output-enable
-> > + output-low, output-high, drive-strength, slew-rate
-> > +
-> > + Valid arguments for 'slew-rate' are '0' and '1' to select between slow and
-> > + fast respectively.
-> > + Valid arguments for 'drive-strength', 4, 8, 12, or 16 in mA.
-> > +
-> > +The following specific properties as defined are valid to specify in a pinconf
-> > +subnode:
-> > +
-> > +Optional properties are:
-> > + - mediatek,tdsel: Valid arguments are from 0 to 15
-> > + - mediatek,rdsel: Valid arguments are from 0 to 63
-> 
-> What are these properties controlling?
-> 
+MT7622 NFC and ECC engine are similar to MT2701's, except below
+differences:
+(1)MT7622 NFC's max sector size(ECC data size) is 512 bytes, and
+   MT2701's is 1024, and MT7622's max sector number is 8.
+(2)The parity bit of MT7622 is 13, MT2701 is 14.
+(3)MT7622 ECC supports less ECC strength, max to 16 bit ecc strength.
+(4)MT7622 supports less spare size per sector(512 bytes), max size is
+   28 bytes per sector.
+(5)Some register's offset are different, include ECC_ENCIRQ_EN,
+   ECC_ENCIRQ_STA, ECC_DECDONE, ECC_DECIRQ_EN and ECC_DECIRQ_STA.
+(6)ENC_MODE of ECC_ENCCNFG register is moved from bit 5-6 to bit 4-5.
 
-okay. these properties will be extended as below
+Signed-off-by: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/mtd/nand/mtk_ecc.c  | 111 ++++++++++++++++++++++++--------------------
+ drivers/mtd/nand/mtk_ecc.h  |  25 +++++++++-
+ drivers/mtd/nand/mtk_nand.c |  27 +++++++----
+ 3 files changed, 102 insertions(+), 61 deletions(-)
 
-Optional properties are:
- - mediatek,tdsel: An integer describing the steps for output level
-shifter duty cycle when asserted (high pulse width adjustment). Valid
-arguments are from 0 to 15.
- - mediatek,rdsel: An integer describing the steps for input level
-shifter duty cycle when asserted (high pulse width adjustment). Valid
-arguments are from 0 to 63.
-
-
-> > +
-> > +== Valid values for pins, function and groups on MT7622 ==
-> > +
-> > +Valid values for pins are:
-> > +pins can be referenced via the pin names as the below table shown and the
-> > +related physical number is also put ahead of those names which helps cross
-> > +references to pins between groups to know whether pins assignment conflict
-> > +happens among devices try to acquire those available pins.
-> > +
-> > +	Pin #:  Valid values for pins
-> > +	-----------------------------
-> > +	PIN 0: "GPIO_A"
-> > +	PIN 1: "I2S1_IN"
-> > +	PIN 2: "I2S1_OUT"
-> > +	PIN 3: "I2S_BCLK"
-> > +	PIN 4: "I2S_WS"
-> > +	PIN 5: "I2S_MCLK"
-> > +	PIN 6: "TXD0"
-> > +	PIN 7: "RXD0"
-> > +	PIN 8: "SPI_WP"
-> > +	PIN 9: "SPI_HOLD"
-> > +	PIN 10: "SPI_CLK"
-> > +	PIN 11: "SPI_MOSI"
-> > +	PIN 12: "SPI_MISO"
-> > +	PIN 13: "SPI_CS"
-> > +	PIN 14: "SPI_SDA"
-> > +	PIN 15: "SPI_SCL"
-> > +	PIN 16: "I2S2_IN"
-> > +	PIN 17: "I2S3_IN"
-> > +	PIN 18: "I2S4_IN"
-> > +	PIN 19: "I2S2_OUT"
-> > +	PIN 20: "I2S3_OUT"
-> > +	PIN 21: "I2S4_OUT"
-> > +	PIN 22: "GPIO_B"
-> > +	PIN 23: "MDC"
-> > +	PIN 24: "MDIO"
-> > +	PIN 25: "G2_TXD0"
-> > +	PIN 26: "G2_TXD1"
-> > +	PIN 27: "G2_TXD2"
-> > +	PIN 28: "G2_TXD3"
-> > +	PIN 29: "G2_TXEN"
-> > +	PIN 30: "G2_TXC"
-> > +	PIN 31: "G2_RXD0"
-> > +	PIN 32: "G2_RXD1"
-> > +	PIN 33: "G2_RXD2"
-> > +	PIN 34: "G2_RXD3"
-> > +	PIN 35: "G2_RXDV"
-> > +	PIN 36: "G2_RXC"
-> > +	PIN 37: "NCEB"
-> > +	PIN 38: "NWEB"
-> > +	PIN 39: "NREB"
-> > +	PIN 40: "NDL4"
-> > +	PIN 41: "NDL5"
-> > +	PIN 42: "NDL6"
-> > +	PIN 43: "NDL7"
-> > +	PIN 44: "NRB"
-> > +	PIN 45: "NCLE"
-> > +	PIN 46: "NALE"
-> > +	PIN 47: "NDL0"
-> > +	PIN 48: "NDL1"
-> > +	PIN 49: "NDL2"
-> > +	PIN 50: "NDL3"
-> > +	PIN 51: "MDI_TP_P0"
-> > +	PIN 52: "MDI_TN_P0"
-> > +	PIN 53: "MDI_RP_P0"
-> > +	PIN 54: "MDI_RN_P0"
-> > +	PIN 55: "MDI_TP_P1"
-> > +	PIN 56: "MDI_TN_P1"
-> > +	PIN 57: "MDI_RP_P1"
-> > +	PIN 58: "MDI_RN_P1"
-> > +	PIN 59: "MDI_RP_P2"
-> > +	PIN 60: "MDI_RN_P2"
-> > +	PIN 61: "MDI_TP_P2"
-> > +	PIN 62: "MDI_TN_P2"
-> > +	PIN 63: "MDI_TP_P3"
-> > +	PIN 64: "MDI_TN_P3"
-> > +	PIN 65: "MDI_RP_P3"
-> > +	PIN 66: "MDI_RN_P3"
-> > +	PIN 67: "MDI_RP_P4"
-> > +	PIN 68: "MDI_RN_P4"
-> > +	PIN 69: "MDI_TP_P4"
-> > +	PIN 70: "MDI_TN_P4"
-> > +	PIN 71: "SPI2_CK"
-> > +	PIN 72: "SPI2_DATA"
-> > +	PIN 73: "SPIC1_CLK"
-> > +	PIN 74: "SPIC1_MOSI"
-> > +	PIN 75: "SPIC1_MISO"
-> > +	PIN 76: "SPIC1_CS"
-> > +	PIN 77: "GPIO_D"
-> > +	PIN 78: "WATCHDOG"
-> > +	PIN 79: "RTS3_N"
-> > +	PIN 80: "CTS3_N"
-> > +	PIN 81: "TXD3"
-> > +	PIN 82: "RXD3"
-> > +	PIN 83: "PERST0_N"
-> > +	PIN 84: "PERST1_N"
-> > +	PIN 85: "WLED_N"
-> > +	PIN 86: "EPHY_LED0_N"
-> > +	PIN 87: "AUXIN0"
-> > +	PIN 88: "AUXIN1"
-> > +	PIN 89: "AUXIN2"
-> > +	PIN 90: "AUXIN3"
-> > +	PIN 91: "TXD4"
-> > +	PIN 92: "RXD4"
-> > +	PIN 93: "RTS4_IN"
-> > +	PIN 94: "CST4_IN"
-> > +	PIN 95: "PWM1"
-> > +	PIN 96: "PWM2"
-> > +	PIN 97: "PWM3"
-> > +	PIN 98: "PWM4"
-> > +	PIN 99: "PWM5"
-> > +	PIN 100: "PWM6"
-> > +	PIN 101: "PWM7"
-> > +	PIN 102: "GPIO_E"
-> > +
-> > +Valid values for function are:
-> > +	"emmc", "eth", "i2c", "i2s", "ir", "led", "flash", "pcie",
-> > +	"pwm", "sd", "spi", "tdm", "uart"
-> > +
-> > +Valid values for groups are:
-> > +additional data is put followingly with valid value allowing us to know which
-> > +applicable function and which relevant pins (in pin#) are able applied for that
-> > +group.
-> > +
-> > +	Valid value			function	pins (in pin#)
-> > +	-------------------------------------------------------------------------
-> > +	"emmc"				"emmc"		40, 41, 42, 43, 44, 45,
-> > +							47, 48, 49, 50
-> > +	"esw"				"eth"		59, 60, 61, 62, 63, 64,
-> > +							65, 66, 67, 68, 69, 70
-> > +	"mdc_mdio"			"eth"		23, 24
-> > +	"gmac1"				"eth"		59, 60, 61, 62, 63, 64,
-> > +							65, 66, 67, 68, 69, 70
-> > +	"gmac2"				"eth"		25, 26, 27, 28, 29, 30,
-> > +							31, 32, 33, 34, 35, 36
-> > +	"i2c0"				"i2c"		14, 15
-> > +	"i2c1_0"			"i2c"		55, 56
-> > +	"i2c1_1"			"i2c"		73, 74
-> > +	"i2c1_2"			"i2c"		87, 88
-> > +	"i2c2_0"			"i2c"		57, 58
-> > +	"i2c2_1"			"i2c"		75, 76
-> > +	"i2c2_2"			"i2c"		89, 90
-> > +	"i2s_in_bclk_ws_mclk"		"i2s"		3, 4, 5
-> > +	"i2s1_in_data"			"i2s"		1
-> > +	"i2s2_in_data"			"i2s"		16
-> > +	"i2s3_in_data"			"i2s"		17
-> > +	"i2s4_in_data"			"i2s"		18
-> > +	"i2s_out_bclk_ws_mclk"		"i2s"		3, 4, 5
-> > +	"i2s1_out_data"			"i2s"		2
-> > +	"i2s2_out_data"			"i2s"		19
-> > +	"i2s3_out_data"			"i2s"		20
-> > +	"i2s4_out_data"			"i2s"		21
-> > +	"ir_0_tx"			"ir"		16
-> > +	"ir_1_tx"			"ir"		59
-> > +	"ir_2_tx"			"ir"		99
-> > +	"ir_0_rx"			"ir"		17
-> > +	"ir_1_rx"			"ir"		60
-> > +	"ir_2_rx"			"ir"		100
-> > +	"ephy0_led"			"led"		86
-> > +	"ephy1_led"			"led"		91
-> > +	"ephy2_led"			"led"		92
-> > +	"ephy3_led"			"led"		93
-> > +	"ephy4_led"			"led"		94
-> > +	"wled"				"led"		85
-> > +	"par_nand"			"flash"		37, 38, 39, 40, 41, 42,
-> > +							43, 44, 45, 46, 47, 48,
-> > +							49, 50
-> > +	"snfi"				"flash"		8, 9, 10, 11, 12, 13
-> > +	"spi_nor"			"flash"		8, 9, 10, 11, 12, 13
-> > +	"pcie0_0_waken_clkreq"		"pcie"		14, 15
-> > +	"pcie0_1_waken_clkreq"		"pcie"		79, 80
-> > +	"pcie1_0_waken_clkreq"		"pcie"		14, 15
-> > +	"pcie0_pad_perst"		"pcie"		83
-> > +	"pcie1_pad_perst"		"pcie"		84
-> > +	"pwm_ch1_0"			"pwm"		51
-> > +	"pwm_ch1_1"			"pwm"		73
-> > +	"pwm_ch1_2"			"pwm"		95
-> > +	"pwm_ch2_0"			"pwm"		52
-> > +	"pwm_ch2_1"			"pwm"		74
-> > +	"pwm_ch2_2"			"pwm"		96
-> > +	"pwm_ch3_0"			"pwm"		53
-> > +	"pwm_ch3_1"			"pwm"		75
-> > +	"pwm_ch3_2"			"pwm"		97
-> > +	"pwm_ch4_0"			"pwm"		54
-> > +	"pwm_ch4_1"			"pwm"		67
-> > +	"pwm_ch4_2"			"pwm"		76
-> > +	"pwm_ch4_3"			"pwm"		98
-> > +	"pwm_ch5_0"			"pwm"		68
-> > +	"pwm_ch5_1"			"pwm"		77
-> > +	"pwm_ch5_2"			"pwm"		99
-> > +	"pwm_ch6_0"			"pwm"		69
-> > +	"pwm_ch6_1"			"pwm"		78
-> > +	"pwm_ch6_2"			"pwm"		81
-> > +	"pwm_ch6_3"			"pwm"		100
-> > +	"pwm_ch7_0"			"pwm"		70
-> > +	"pwm_ch7_1"			"pwm"		82
-> > +	"pwm_ch7_2" 			"pwm"		101
-> 
-> Mixed space and tabs.
-> 
-
-will be fixed
-
-> > +	"sd_0"				"sd"		16, 17, 18, 19, 20, 21
-> > +	"sd_1"				"sd"		25, 26, 27, 28, 29, 30
-> > +	"spic0_0"			"spi"		63, 64, 65, 66
-> > +	"spic0_1"			"spi"		79, 80, 81, 82
-> > +	"spic1_0"			"spi"		67, 68, 69, 70
-> > +	"spic1_1"			"spi"		73, 74, 75, 76
-> > +	"tdm_0_out_mclk_bclk"		"tdm"		8, 9, 10
-> > +	"tdm_0_in_mclk_bclk_ws"		"tdm"		11, 12, 13
-> > +	"tdm_0_out_data"		"tdm"		20
-> > +	"tdm_0_in_data"			"tdm"		21
-> > +	"tdm_1_out_mclk_bclk"		"tdm"		57, 58, 59
-> > +	"tdm_1_in_mclk_bclk_ws"		"tdm"		60, 61, 62
-> > +	"tdm_1_out_data"		"tdm"		55
-> > +	"tdm_1_in_data"			"tdm"		56
-> > +	"uart0_0_tx_rx"			"uart"		6, 7
-> > +	"uart1_0_tx_rx"			"uart"		55, 56
-> > +	"uart1_0_rts_cts"		"uart"		57, 58
-> > +	"uart1_1_tx_rx"			"uart"		73, 74
-> > +	"uart1_1_rts_cts"		"uart"		75, 76
-> > +	"uart2_0_tx_rx"			"uart"		3, 4
-> > +	"uart2_0_rts_cts"		"uart"		1, 2
-> > +	"uart2_1_tx_rx"			"uart"		51, 52
-> > +	"uart2_1_rts_cts"		"uart"		53, 54
-> > +	"uart2_2_tx_rx"			"uart"		59, 60
-> > +	"uart2_2_rts_cts"		"uart"		61, 62
-> > +	"uart2_3_tx_rx"			"uart"		95, 96
-> > +	"uart3_0_tx_rx"			"uart"		57, 58
-> > +	"uart3_1_tx_rx"			"uart"		81, 82
-> > +	"uart3_1_rts_cts"		"uart"		79, 80
-> > +	"uart4_0_tx_rx"			"uart"		61, 62
-> > +	"uart4_1_tx_rx"			"uart"		91, 92
-> > +	"uart4_1_rts_cts"		"uart"		93, 94
-> > +	"uart4_2_tx_rx"			"uart"		97, 98
-> > +	"uart4_2_rts_cts"		"uart"		95, 96
-> > +
-> > +Example:
-> > +
-> > +	pio: pinctrl@10211000 {
-> > +		compatible = "mediatek,mt7622-pinctrl";
-> > +		reg = <0 0x10211000 0 0x1000>;
-> > +		gpio-controller;
-> > +		#gpio-cells = <2>;
-> > +
-> > +		pinctrl_eth_default: eth-default {
-> > +			mux_mdio {
-> 
-> s/_/-/
-> 
-
-will be fixed
-
-> > +				groups = "mdc_mdio";
-> > +				function = "eth";
-> > +				drive-strength = <12>;
-> > +			};
-> > +
-> > +			mux_gmac2 {
-> 
-> ditto
-> 
-
-will be fixed 
-
-> > +				groups = "gmac2";
-> > +				function = "eth";
-> > +				drive-strength = <12>;
-> > +			};
-> > +
-> > +			mux_esw {
-
-
-will be fixed
-
-> > +				groups = "esw";
-> > +				function = "eth";
-> > +				drive-strength = <8>;
-> > +			};
-> > +
-
-
-> > +			conf_mdio {
-
-
-will be fixed
-
-> > +				pins = "MDC";
-> > +				bias-pull-up;
-> > +			};
-> > +		};
-> > +	};
-> > -- 
-> > 2.7.4
-> > 
-> 
+diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
+index c51d214..fa1843e 100644
+--- a/drivers/mtd/nand/mtk_ecc.c
++++ b/drivers/mtd/nand/mtk_ecc.c
+@@ -34,49 +34,20 @@
+ 
+ #define ECC_ENCCON		(0x00)
+ #define ECC_ENCCNFG		(0x04)
+-#define		ECC_MODE_SHIFT		(5)
+ #define		ECC_MS_SHIFT		(16)
+ #define ECC_ENCDIADDR		(0x08)
+ #define ECC_ENCIDLE		(0x0C)
+-#define ECC_ENCIRQ_EN		(0x80)
+-#define ECC_ENCIRQ_STA		(0x84)
+ #define ECC_DECCON		(0x100)
+ #define ECC_DECCNFG		(0x104)
+ #define		DEC_EMPTY_EN		BIT(31)
+ #define		DEC_CNFG_CORRECT	(0x3 << 12)
+ #define ECC_DECIDLE		(0x10C)
+ #define ECC_DECENUM0		(0x114)
+-#define ECC_DECDONE		(0x124)
+-#define ECC_DECIRQ_EN		(0x200)
+-#define ECC_DECIRQ_STA		(0x204)
+ 
+ #define ECC_TIMEOUT		(500000)
+ 
+ #define ECC_IDLE_REG(op)	((op) == ECC_ENCODE ? ECC_ENCIDLE : ECC_DECIDLE)
+ #define ECC_CTL_REG(op)		((op) == ECC_ENCODE ? ECC_ENCCON : ECC_DECCON)
+-#define ECC_IRQ_REG(op)		((op) == ECC_ENCODE ? \
+-					ECC_ENCIRQ_EN : ECC_DECIRQ_EN)
+-
+-struct mtk_ecc_caps {
+-	u32 err_mask;
+-	const u8 *ecc_strength;
+-	u8 num_ecc_strength;
+-	u32 encode_parity_reg0;
+-	int pg_irq_sel;
+-};
+-
+-struct mtk_ecc {
+-	struct device *dev;
+-	const struct mtk_ecc_caps *caps;
+-	void __iomem *regs;
+-	struct clk *clk;
+-
+-	struct completion done;
+-	struct mutex lock;
+-	u32 sectors;
+-
+-	u8 *eccdata;
+-};
+ 
+ /* ecc strength that each IP supports */
+ static const u8 ecc_strength_mt2701[] = {
+@@ -89,6 +60,33 @@ struct mtk_ecc {
+ 	40, 44, 48, 52, 56, 60, 68, 72, 80
+ };
+ 
++enum mtk_ecc_regs {
++	ECC_ENCPAR00,
++	ECC_ENCIRQ_EN,
++	ECC_ENCIRQ_STA,
++	ECC_DECDONE,
++	ECC_DECIRQ_EN,
++	ECC_DECIRQ_STA,
++};
++
++static int mt2701_ecc_regs[] = {
++	[ECC_ENCPAR00] =        0x10,
++	[ECC_ENCIRQ_EN] =       0x80,
++	[ECC_ENCIRQ_STA] =      0x84,
++	[ECC_DECDONE] =         0x124,
++	[ECC_DECIRQ_EN] =       0x200,
++	[ECC_DECIRQ_STA] =      0x204,
++};
++
++static int mt2712_ecc_regs[] = {
++	[ECC_ENCPAR00] =        0x300,
++	[ECC_ENCIRQ_EN] =       0x80,
++	[ECC_ENCIRQ_STA] =      0x84,
++	[ECC_DECDONE] =         0x124,
++	[ECC_DECIRQ_EN] =       0x200,
++	[ECC_DECIRQ_STA] =      0x204,
++};
++
+ static inline void mtk_ecc_wait_idle(struct mtk_ecc *ecc,
+ 				     enum mtk_ecc_operation op)
+ {
+@@ -107,32 +105,30 @@ static inline void mtk_ecc_wait_idle(struct mtk_ecc *ecc,
+ static irqreturn_t mtk_ecc_irq(int irq, void *id)
+ {
+ 	struct mtk_ecc *ecc = id;
+-	enum mtk_ecc_operation op;
+ 	u32 dec, enc;
+ 
+-	dec = readw(ecc->regs + ECC_DECIRQ_STA) & ECC_IRQ_EN;
++	dec = readw(ecc->regs + ecc->caps->ecc_regs[ECC_DECIRQ_STA])
++		    & ECC_IRQ_EN;
+ 	if (dec) {
+-		op = ECC_DECODE;
+-		dec = readw(ecc->regs + ECC_DECDONE);
++		dec = readw(ecc->regs + ecc->caps->ecc_regs[ECC_DECDONE]);
+ 		if (dec & ecc->sectors) {
+ 			/*
+ 			 * Clear decode IRQ status once again to ensure that
+ 			 * there will be no extra IRQ.
+ 			 */
+-			readw(ecc->regs + ECC_DECIRQ_STA);
++			readw(ecc->regs + ecc->caps->ecc_regs[ECC_DECIRQ_STA]);
+ 			ecc->sectors = 0;
+ 			complete(&ecc->done);
+ 		} else {
+ 			return IRQ_HANDLED;
+ 		}
+ 	} else {
+-		enc = readl(ecc->regs + ECC_ENCIRQ_STA) & ECC_IRQ_EN;
+-		if (enc) {
+-			op = ECC_ENCODE;
++		enc = readl(ecc->regs + ecc->caps->ecc_regs[ECC_ENCIRQ_STA])
++		      & ECC_IRQ_EN;
++		if (enc)
+ 			complete(&ecc->done);
+-		} else {
++		else
+ 			return IRQ_NONE;
+-		}
+ 	}
+ 
+ 	return IRQ_HANDLED;
+@@ -160,7 +156,7 @@ static int mtk_ecc_config(struct mtk_ecc *ecc, struct mtk_ecc_config *config)
+ 		/* configure ECC encoder (in bits) */
+ 		enc_sz = config->len << 3;
+ 
+-		reg = ecc_bit | (config->mode << ECC_MODE_SHIFT);
++		reg = ecc_bit | (config->mode << ecc->caps->ecc_mode_shift);
+ 		reg |= (enc_sz << ECC_MS_SHIFT);
+ 		writel(reg, ecc->regs + ECC_ENCCNFG);
+ 
+@@ -171,9 +167,9 @@ static int mtk_ecc_config(struct mtk_ecc *ecc, struct mtk_ecc_config *config)
+ 	} else {
+ 		/* configure ECC decoder (in bits) */
+ 		dec_sz = (config->len << 3) +
+-					config->strength * ECC_PARITY_BITS;
++			 config->strength * ecc->caps->parity_bits;
+ 
+-		reg = ecc_bit | (config->mode << ECC_MODE_SHIFT);
++		reg = ecc_bit | (config->mode << ecc->caps->ecc_mode_shift);
+ 		reg |= (dec_sz << ECC_MS_SHIFT) | DEC_CNFG_CORRECT;
+ 		reg |= DEC_EMPTY_EN;
+ 		writel(reg, ecc->regs + ECC_DECCNFG);
+@@ -291,7 +287,12 @@ int mtk_ecc_enable(struct mtk_ecc *ecc, struct mtk_ecc_config *config)
+ 		 */
+ 		if (ecc->caps->pg_irq_sel && config->mode == ECC_NFI_MODE)
+ 			reg_val |= ECC_PG_IRQ_SEL;
+-		writew(reg_val, ecc->regs + ECC_IRQ_REG(op));
++		if (op == ECC_ENCODE)
++			writew(reg_val, ecc->regs +
++			       ecc->caps->ecc_regs[ECC_ENCIRQ_EN]);
++		else
++			writew(reg_val, ecc->regs +
++			       ecc->caps->ecc_regs[ECC_DECIRQ_EN]);
+ 	}
+ 
+ 	writew(ECC_OP_ENABLE, ecc->regs + ECC_CTL_REG(op));
+@@ -310,13 +311,17 @@ void mtk_ecc_disable(struct mtk_ecc *ecc)
+ 
+ 	/* disable it */
+ 	mtk_ecc_wait_idle(ecc, op);
+-	if (op == ECC_DECODE)
++	if (op == ECC_DECODE) {
+ 		/*
+ 		 * Clear decode IRQ status in case there is a timeout to wait
+ 		 * decode IRQ.
+ 		 */
+-		readw(ecc->regs + ECC_DECIRQ_STA);
+-	writew(0, ecc->regs + ECC_IRQ_REG(op));
++		readw(ecc->regs + ecc->caps->ecc_regs[ECC_DECDONE]);
++		writew(0, ecc->regs + ecc->caps->ecc_regs[ECC_DECIRQ_EN]);
++	} else {
++		writew(0, ecc->regs + ecc->caps->ecc_regs[ECC_ENCIRQ_EN]);
++	}
++
+ 	writew(ECC_OP_DISABLE, ecc->regs + ECC_CTL_REG(op));
+ 
+ 	mutex_unlock(&ecc->lock);
+@@ -367,11 +372,11 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+ 	mtk_ecc_wait_idle(ecc, ECC_ENCODE);
+ 
+ 	/* Program ECC bytes to OOB: per sector oob = FDM + ECC + SPARE */
+-	len = (config->strength * ECC_PARITY_BITS + 7) >> 3;
++	len = (config->strength * ecc->caps->parity_bits + 7) >> 3;
+ 
+ 	/* write the parity bytes generated by the ECC back to temp buffer */
+ 	__ioread32_copy(ecc->eccdata,
+-			ecc->regs + ecc->caps->encode_parity_reg0,
++			ecc->regs + ecc->caps->ecc_regs[ECC_ENCPAR00],
+ 			round_up(len, 4));
+ 
+ 	/* copy into possibly unaligned OOB region with actual length */
+@@ -407,16 +412,20 @@ void mtk_ecc_adjust_strength(struct mtk_ecc *ecc, u32 *p)
+ static const struct mtk_ecc_caps mtk_ecc_caps_mt2701 = {
+ 	.err_mask = 0x3f,
+ 	.ecc_strength = ecc_strength_mt2701,
++	.ecc_regs = mt2701_ecc_regs,
+ 	.num_ecc_strength = 20,
+-	.encode_parity_reg0 = 0x10,
++	.ecc_mode_shift = 5,
++	.parity_bits = 14,
+ 	.pg_irq_sel = 0,
+ };
+ 
+ static const struct mtk_ecc_caps mtk_ecc_caps_mt2712 = {
+ 	.err_mask = 0x7f,
+ 	.ecc_strength = ecc_strength_mt2712,
++	.ecc_regs = mt2712_ecc_regs,
+ 	.num_ecc_strength = 23,
+-	.encode_parity_reg0 = 0x300,
++	.ecc_mode_shift = 5,
++	.parity_bits = 14,
+ 	.pg_irq_sel = 1,
+ };
+ 
+@@ -452,7 +461,7 @@ static int mtk_ecc_probe(struct platform_device *pdev)
+ 
+ 	max_eccdata_size = ecc->caps->num_ecc_strength - 1;
+ 	max_eccdata_size = ecc->caps->ecc_strength[max_eccdata_size];
+-	max_eccdata_size = (max_eccdata_size * ECC_PARITY_BITS + 7) >> 3;
++	max_eccdata_size = (max_eccdata_size * ecc->caps->parity_bits + 7) >> 3;
+ 	max_eccdata_size = round_up(max_eccdata_size, 4);
+ 	ecc->eccdata = devm_kzalloc(dev, max_eccdata_size, GFP_KERNEL);
+ 	if (!ecc->eccdata)
+diff --git a/drivers/mtd/nand/mtk_ecc.h b/drivers/mtd/nand/mtk_ecc.h
+index d245c14..764adb6 100644
+--- a/drivers/mtd/nand/mtk_ecc.h
++++ b/drivers/mtd/nand/mtk_ecc.h
+@@ -14,8 +14,6 @@
+ 
+ #include <linux/types.h>
+ 
+-#define ECC_PARITY_BITS		(14)
+-
+ enum mtk_ecc_mode {ECC_DMA_MODE = 0, ECC_NFI_MODE = 1};
+ enum mtk_ecc_operation {ECC_ENCODE, ECC_DECODE};
+ 
+@@ -37,6 +35,29 @@ struct mtk_ecc_config {
+ 	u32 len;
+ };
+ 
++struct mtk_ecc_caps {
++	u32 err_mask;
++	const u8 *ecc_strength;
++	const u32 *ecc_regs;
++	u8 num_ecc_strength;
++	u8 ecc_mode_shift;
++	u8 parity_bits;
++	int pg_irq_sel;
++};
++
++struct mtk_ecc {
++	struct device *dev;
++	const struct mtk_ecc_caps *caps;
++	void __iomem *regs;
++	struct clk *clk;
++
++	struct completion done;
++	struct mutex lock;
++	u32 sectors;
++
++	u8 *eccdata;
++};
++
+ int mtk_ecc_encode(struct mtk_ecc *, struct mtk_ecc_config *, u8 *, u32);
+ void mtk_ecc_get_stats(struct mtk_ecc *, struct mtk_ecc_stats *, int);
+ int mtk_ecc_wait_done(struct mtk_ecc *, enum mtk_ecc_operation);
+diff --git a/drivers/mtd/nand/mtk_nand.c b/drivers/mtd/nand/mtk_nand.c
+index d86a7d1..641c2be 100644
+--- a/drivers/mtd/nand/mtk_nand.c
++++ b/drivers/mtd/nand/mtk_nand.c
+@@ -97,7 +97,6 @@
+ 
+ #define MTK_TIMEOUT		(500000)
+ #define MTK_RESET_TIMEOUT	(1000000)
+-#define MTK_MAX_SECTOR		(16)
+ #define MTK_NAND_MAX_NSELS	(2)
+ #define MTK_NFC_MIN_SPARE	(16)
+ #define ACCTIMING(tpoecs, tprecs, tc2r, tw2r, twh, twst, trlt) \
+@@ -109,6 +108,8 @@ struct mtk_nfc_caps {
+ 	u8 num_spare_size;
+ 	u8 pageformat_spare_shift;
+ 	u8 nfi_clk_div;
++	u8 max_sector;
++	u32 max_sector_size;
+ };
+ 
+ struct mtk_nfc_bad_mark_ctl {
+@@ -450,7 +451,7 @@ static inline u8 mtk_nfc_read_byte(struct mtd_info *mtd)
+ 		 * set to max sector to allow the HW to continue reading over
+ 		 * unaligned accesses
+ 		 */
+-		reg = (MTK_MAX_SECTOR << CON_SEC_SHIFT) | CON_BRD;
++		reg = (nfc->caps->max_sector << CON_SEC_SHIFT) | CON_BRD;
+ 		nfi_writel(nfc, reg, NFI_CON);
+ 
+ 		/* trigger to fetch data */
+@@ -481,7 +482,7 @@ static void mtk_nfc_write_byte(struct mtd_info *mtd, u8 byte)
+ 		reg = nfi_readw(nfc, NFI_CNFG) | CNFG_BYTE_RW;
+ 		nfi_writew(nfc, reg, NFI_CNFG);
+ 
+-		reg = MTK_MAX_SECTOR << CON_SEC_SHIFT | CON_BWR;
++		reg = nfc->caps->max_sector << CON_SEC_SHIFT | CON_BWR;
+ 		nfi_writel(nfc, reg, NFI_CON);
+ 
+ 		nfi_writew(nfc, STAR_EN, NFI_STRDATA);
+@@ -1126,9 +1127,11 @@ static void mtk_nfc_set_fdm(struct mtk_nfc_fdm *fdm, struct mtd_info *mtd)
+ {
+ 	struct nand_chip *nand = mtd_to_nand(mtd);
+ 	struct mtk_nfc_nand_chip *chip = to_mtk_nand(nand);
++	struct mtk_nfc *nfc = nand_get_controller_data(nand);
+ 	u32 ecc_bytes;
+ 
+-	ecc_bytes = DIV_ROUND_UP(nand->ecc.strength * ECC_PARITY_BITS, 8);
++	ecc_bytes = DIV_ROUND_UP(nand->ecc.strength *
++				 nfc->ecc->caps->parity_bits, 8);
+ 
+ 	fdm->reg_size = chip->spare_per_sector - ecc_bytes;
+ 	if (fdm->reg_size > NFI_FDM_MAX_SIZE)
+@@ -1208,7 +1211,8 @@ static int mtk_nfc_ecc_init(struct device *dev, struct mtd_info *mtd)
+ 		 * this controller only supports 512 and 1024 sizes
+ 		 */
+ 		if (nand->ecc.size < 1024) {
+-			if (mtd->writesize > 512) {
++			if (mtd->writesize > 512 &&
++			    nfc->caps->max_sector_size > 512) {
+ 				nand->ecc.size = 1024;
+ 				nand->ecc.strength <<= 1;
+ 			} else {
+@@ -1223,7 +1227,8 @@ static int mtk_nfc_ecc_init(struct device *dev, struct mtd_info *mtd)
+ 			return ret;
+ 
+ 		/* calculate oob bytes except ecc parity data */
+-		free = ((nand->ecc.strength * ECC_PARITY_BITS) + 7) >> 3;
++		free = ((nand->ecc.strength * nfc->ecc->caps->parity_bits) + 7)
++		       >> 3;
+ 		free = spare - free;
+ 
+ 		/*
+@@ -1233,10 +1238,12 @@ static int mtk_nfc_ecc_init(struct device *dev, struct mtd_info *mtd)
+ 		 */
+ 		if (free > NFI_FDM_MAX_SIZE) {
+ 			spare -= NFI_FDM_MAX_SIZE;
+-			nand->ecc.strength = (spare << 3) / ECC_PARITY_BITS;
++			nand->ecc.strength = (spare << 3) /
++					     nfc->ecc->caps->parity_bits;
+ 		} else if (free < 0) {
+ 			spare -= NFI_FDM_MIN_SIZE;
+-			nand->ecc.strength = (spare << 3) / ECC_PARITY_BITS;
++			nand->ecc.strength = (spare << 3) /
++					     nfc->ecc->caps->parity_bits;
+ 		}
+ 	}
+ 
+@@ -1389,6 +1396,8 @@ static int mtk_nfc_nand_chips_init(struct device *dev, struct mtk_nfc *nfc)
+ 	.num_spare_size = 16,
+ 	.pageformat_spare_shift = 4,
+ 	.nfi_clk_div = 1,
++	.max_sector = 16,
++	.max_sector_size = 1024,
+ };
+ 
+ static const struct mtk_nfc_caps mtk_nfc_caps_mt2712 = {
+@@ -1396,6 +1405,8 @@ static int mtk_nfc_nand_chips_init(struct device *dev, struct mtk_nfc *nfc)
+ 	.num_spare_size = 19,
+ 	.pageformat_spare_shift = 16,
+ 	.nfi_clk_div = 2,
++	.max_sector = 16,
++	.max_sector_size = 1024,
+ };
+ 
+ static const struct of_device_id mtk_nfc_id_table[] = {
+-- 
+1.9.1
