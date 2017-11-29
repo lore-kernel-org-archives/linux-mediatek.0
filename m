@@ -1,129 +1,59 @@
-From: Adam Wallis <awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: [PATCH v2] usb: xhci: allow imod-interval to be configurable
-Date: Wed, 29 Nov 2017 10:52:55 -0500
-Message-ID: <1511970775-11103-1-git-send-email-awallis@codeaurora.org>
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: timur-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+From: Arvind Yadav <arvind.yadav.cs@gmail.com>
+Subject: [PATCH 2/5 v5] ASoC: mt8173: Fix platform_get_irq's error checking
+Date: Wed, 29 Nov 2017 21:47:11 +0530
+Message-ID: <79e17e6083f5142c4707c94519577b6682a76566.1511970158.git.arvind.yadav.cs@gmail.com>
+References: <4ce907b8389af30eb0677e70cf543a2b795cca12.1511970158.git.arvind.yadav.cs@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <4ce907b8389af30eb0677e70cf543a2b795cca12.1511970158.git.arvind.yadav.cs@gmail.com>
+In-Reply-To: <4ce907b8389af30eb0677e70cf543a2b795cca12.1511970158.git.arvind.yadav.cs@gmail.com>
+References: <4ce907b8389af30eb0677e70cf543a2b795cca12.1511970158.git.arvind.yadav.cs@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, matthias.bgg@gmail.com
+Cc: linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The xHCI driver currently has the IMOD set to 160, which
-translates to an IMOD interval of 40,000ns (160 * 250)ns
+The platform_get_irq() function returns negative if an error occurs.
+zero or positive number on success. platform_get_irq() error checking
+for zero is not correct.
 
-Commit 0cbd4b34cda9 ("xhci: mediatek: support MTK xHCI host controller")
-introduced a QUIRK for the MTK platform to adjust this interval to 20,
-which translates to an IMOD interval of 5,000ns (20 * 250)ns. This is
-due to the fact that the MTK controller IMOD interval is 8 times
-as much as defined in xHCI spec.
-
-Instead of adding more quirk bits for additional platforms, this patch
-introduces the ability for vendors to set the IMOD_INTERVAL as is
-optimal for their platform. By using device_property_read_u32() on
-"imod-interval", the IMOD INTERVAL can be specified in nano seconds. If
-no interval is specified, the default of 40,000ns (IMOD=160) will be
-used.
-
-No bounds checking has been implemented due to the fact that a vendor
-may have violated the spec and would need to specify a value outside of
-the max 8,000 IRQs/second limit specified in the xHCI spec.
-
-Backwards compatibility is maintained for MTK_HOSTS through the quirk
-bit, however, imod_interval should be pushed into device tree at a
-future point and this quirk should be removed from xhci_plat_probe
-
-Signed-off-by: Adam Wallis <awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
 ---
-changes from v1:
-  * Removed device_property_read_u32() per suggestion from greg k-h
-  * Used ER_IRQ_INTERVAL_MASK in place of (u16) cast
+changes in v2 :
+               irq was unsigned. so changed it to signed.
+changes in v3 :
+              Add failure case '<= 0' instead of '< 0'. IRQ0 is not valid.
+changes in v4 :
+              Return -ENXIO insted of irq.
+changes in v5 :
+              Add separate error for irq == 0 and irq < 0.
 
- Documentation/devicetree/bindings/usb/usb-xhci.txt |  1 +
- drivers/usb/host/xhci-plat.c                       | 13 +++++++++++++
- drivers/usb/host/xhci.c                            |  7 ++-----
- drivers/usb/host/xhci.h                            |  2 ++
- 4 files changed, 18 insertions(+), 5 deletions(-)
+ sound/soc/mediatek/mt8173/mt8173-afe-pcm.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/usb/usb-xhci.txt b/Documentation/devicetree/bindings/usb/usb-xhci.txt
-index ae6e484..3998459 100644
---- a/Documentation/devicetree/bindings/usb/usb-xhci.txt
-+++ b/Documentation/devicetree/bindings/usb/usb-xhci.txt
-@@ -29,6 +29,7 @@ Optional properties:
-   - usb2-lpm-disable: indicate if we don't want to enable USB2 HW LPM
-   - usb3-lpm-capable: determines if platform is USB3 LPM capable
-   - quirk-broken-port-ped: set if the controller has broken port disable mechanism
-+  - imod-interval: IMOD_INTERVAL in nano-seconds. Default is 40000
+diff --git a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c b/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
+index 8a643a3..c7f7f8a 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
++++ b/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
+@@ -1083,7 +1083,7 @@ static int mt8173_afe_init_audio_clk(struct mtk_base_afe *afe)
+ static int mt8173_afe_pcm_dev_probe(struct platform_device *pdev)
+ {
+ 	int ret, i;
+-	unsigned int irq_id;
++	int irq_id;
+ 	struct mtk_base_afe *afe;
+ 	struct mt8173_afe_private *afe_priv;
+ 	struct resource *res;
+@@ -1105,9 +1105,9 @@ static int mt8173_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	afe->dev = &pdev->dev;
  
- Example:
- 	usb@f0931000 {
-diff --git a/drivers/usb/host/xhci-plat.c b/drivers/usb/host/xhci-plat.c
-index 09f164f..3c63de1 100644
---- a/drivers/usb/host/xhci-plat.c
-+++ b/drivers/usb/host/xhci-plat.c
-@@ -23,6 +23,7 @@
- #include "xhci-plat.h"
- #include "xhci-mvebu.h"
- #include "xhci-rcar.h"
-+#include "xhci-mtk.h"
- 
- static struct hc_driver __read_mostly xhci_plat_hc_driver;
- 
-@@ -269,6 +270,18 @@ static int xhci_plat_probe(struct platform_device *pdev)
- 	if (device_property_read_bool(&pdev->dev, "quirk-broken-port-ped"))
- 		xhci->quirks |= XHCI_BROKEN_PORT_PED;
- 
-+	/*
-+	 * imod_interval is the interrupt modulation value in nanoseconds.
-+	 * The increment interval is 8 times as much as that defined in
-+	 * the xHCI spec on MTK's controller. This quirk check exists to provide
-+	 * backwards compatibility, however, this should be pushed into
-+	 * the device tree files at some point in the future and
-+	 * checking the quirk should be removed from xhci_plat_probe.
-+	 */
-+	xhci->imod_interval = xhci->quirks & XHCI_MTK_HOST ? 5000 : 40000;
-+
-+	device_property_read_u32(sysdev, "imod-interval", &xhci->imod_interval);
-+
- 	hcd->usb_phy = devm_usb_get_phy_by_phandle(sysdev, "usb-phy", 0);
- 	if (IS_ERR(hcd->usb_phy)) {
- 		ret = PTR_ERR(hcd->usb_phy);
-diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
-index 2424d30..0b7755b 100644
---- a/drivers/usb/host/xhci.c
-+++ b/drivers/usb/host/xhci.c
-@@ -586,11 +586,8 @@ int xhci_run(struct usb_hcd *hcd)
- 			"// Set the interrupt modulation register");
- 	temp = readl(&xhci->ir_set->irq_control);
- 	temp &= ~ER_IRQ_INTERVAL_MASK;
--	/*
--	 * the increment interval is 8 times as much as that defined
--	 * in xHCI spec on MTK's controller
--	 */
--	temp |= (u32) ((xhci->quirks & XHCI_MTK_HOST) ? 20 : 160);
-+	temp |= (xhci->imod_interval / 250) & ER_IRQ_INTERVAL_MASK;
-+
- 	writel(temp, &xhci->ir_set->irq_control);
- 
- 	/* Set the HCD state before we enable the irqs */
-diff --git a/drivers/usb/host/xhci.h b/drivers/usb/host/xhci.h
-index 99a014a..2a4177b 100644
---- a/drivers/usb/host/xhci.h
-+++ b/drivers/usb/host/xhci.h
-@@ -1717,6 +1717,8 @@ struct xhci_hcd {
- 	u8		max_interrupters;
- 	u8		max_ports;
- 	u8		isoc_threshold;
-+	/* imod_interval in ns (I * 250ns) */
-+	u32		imod_interval;
- 	int		event_ring_max;
- 	/* 4KB min, 128MB max */
- 	int		page_size;
+ 	irq_id = platform_get_irq(pdev, 0);
+-	if (!irq_id) {
++	if (irq_id <= 0) {
+ 		dev_err(afe->dev, "np %s no irq\n", afe->dev->of_node->name);
+-		return -ENXIO;
++		return irq_id < 0 ? irq_id : -ENXIO;
+ 	}
+ 	ret = devm_request_irq(afe->dev, irq_id, mt8173_afe_irq_handler,
+ 			       0, "Afe_ISR_Handle", (void *)afe);
 -- 
-Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
-Qualcomm Technologies, Inc. is a member of the
-Code Aurora Forum, a Linux Foundation Collaborative Project.
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+2.7.4
