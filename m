@@ -1,272 +1,60 @@
-From: "Frank Wunderlich" <FrankWu-Mmb7MZpHnFY@public.gmane.org>
-Subject: MMC-Patch for mt7623 / Bananapi R2
-Date: Wed, 29 Nov 2017 18:50:59 +0100
-Message-ID: <trinity-e74e6fc5-83cc-4b58-a02c-44dcd4eedcbc-1511977859500@3c-app-gmx-bs37>
+From: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+Subject: [PATCH 10/22] media: vdec: fix some kernel-doc warnings
+Date: Wed, 29 Nov 2017 14:08:28 -0500
+Message-ID: <0ddb6632dd9afa919656e0bd8f0651af82e98a9d.1511982439.git.mchehab@s-opensource.com>
+References: <73497577f67fbb917e40ab4328104ff310a7c356.1511982439.git.mchehab@s-opensource.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <73497577f67fbb917e40ab4328104ff310a7c356.1511982439.git.mchehab@s-opensource.com>
+In-Reply-To: <73497577f67fbb917e40ab4328104ff310a7c356.1511982439.git.mchehab@s-opensource.com>
+References: <73497577f67fbb917e40ab4328104ff310a7c356.1511982439.git.mchehab@s-opensource.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Kees Cook <keescook@chromium.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, Mauro Carvalho Chehab <mchehab@s-opensource.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Tiffany Lin <tiffany.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org, Linux Media Mailing List <linux-media@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Fix those warnings:
+  drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c:69: warning: No description found for parameter 'reserved'
+  drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c:175: warning: Excess struct member 'dev' description in 'vdec_vp8_inst'
 
-Hi,
-finally got the MMC working on BananaPi R2 in 4.14.0
+Signed-off-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+---
+ drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c | 1 +
+ drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c  | 1 -
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
-note this is my first Pull-request, hope its right ;)
-
-merge of:
-1) mmc-patch
-http://lists.infradead.org/pipermail/linux-mediatek/2017-October/010827.html
-2) regulator-patch
-http://forum.banana-pi.org/t/what-s-the-best-practice-to-build-own-kernel/3937/59
-3) fall back to mt2701 instead mt8135 + LOW ACTIVE instead of HIGH ACTIVE
-http://forum.banana-pi.org/t/what-s-the-best-practice-to-build-own-kernel/3937/71
-
-regards Frank
-
-=========================================================================================================
-
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index ec8a074..da35544 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -640,7 +640,8 @@
- 
- 	mmc0: mmc@11230000 {
- 		compatible = "mediatek,mt7623-mmc",
--			     "mediatek,mt8135-mmc";
-+//			     "mediatek,mt8135-mmc";
-+			     "mediatek,mt2701-mmc";
- 		reg = <0 0x11230000 0 0x1000>;
- 		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_LOW>;
- 		clocks = <&pericfg CLK_PERI_MSDC30_0>,
-@@ -651,7 +652,8 @@
- 
- 	mmc1: mmc@11240000 {
- 		compatible = "mediatek,mt7623-mmc",
--			     "mediatek,mt8135-mmc";
-+//			     "mediatek,mt8135-mmc";
-+				 "mediatek,mt2701-mmc";
- 		reg = <0 0x11240000 0 0x1000>;
- 		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_LOW>;
- 		clocks = <&pericfg CLK_PERI_MSDC30_1>,
-diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-index 688a863..890b37f 100644
---- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-+++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-@@ -204,9 +204,10 @@
- 	bus-width = <4>;
- 	max-frequency = <50000000>;
- 	cap-sd-highspeed;
--	cd-gpios = <&pio 261 0>;
-+	cd-gpios = <&pio 261 1>;
- 	vmmc-supply = <&mt6323_vmch_reg>;
--	vqmmc-supply = <&mt6323_vio18_reg>;
-+//	vqmmc-supply = <&mt6323_vio18_reg>;
-+	vqmmc-supply = <&mt6323_vmc_reg>;
- };
- 
- &pio {
-diff --git a/drivers/mmc/Makefile b/drivers/mmc/Makefile
-index 26ab7af..e8403c4 100644
---- a/drivers/mmc/Makefile
-+++ b/drivers/mmc/Makefile
-@@ -1,6 +1,5 @@
- #
- # Makefile for the kernel mmc device drivers.
- #
--
- obj-$(CONFIG_MMC)		+= core/
- obj-$(subst m,y,$(CONFIG_MMC))	+= host/
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 267f7ab..6f43eb7 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -12,6 +12,7 @@
-  * GNU General Public License for more details.
+diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
+index b7731b18ecae..aa3ce41898bc 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
++++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
+@@ -59,6 +59,7 @@ struct h264_fb {
+  * @read_idx  : read index
+  * @write_idx : write index
+  * @count     : buffer count in list
++ * @reserved  : for 8 bytes alignment
   */
- 
-+#define DEBUG
- #include <linux/module.h>
- #include <linux/clk.h>
- #include <linux/delay.h>
-@@ -95,6 +96,9 @@
- #define MSDC_CFG_CKDIV          (0xff << 8)	/* RW */
- #define MSDC_CFG_CKMOD          (0x3 << 16)	/* RW */
- #define MSDC_CFG_HS400_CK_MODE  (0x1 << 18)	/* RW */
-+#define MSDC_CFG_HS400_CK_MODE_EXTRA  (0x1 << 22)	/* RW */
-+#define MSDC_CFG_CKDIV_EXTRA    (0xfff << 8)	/* RW */
-+#define MSDC_CFG_CKMOD_EXTRA    (0x3 << 20)	/* RW */
- 
- /* MSDC_IOCON mask */
- #define MSDC_IOCON_SDR104CKS    (0x1 << 0)	/* RW */
-@@ -295,6 +299,10 @@ struct msdc_save_para {
- 	u32 emmc50_cfg0;
- };
- 
-+struct mtk_mmc_compatible {
-+	u8 clk_div_bits;
-+};
-+
- struct msdc_tune_para {
- 	u32 iocon;
- 	u32 pad_tune;
-@@ -309,6 +317,7 @@ struct msdc_delay_phase {
- 
- struct msdc_host {
- 	struct device *dev;
-+	const struct mtk_mmc_compatible *dev_comp;
- 	struct mmc_host *mmc;	/* mmc structure */
- 	int cmd_rsp;
- 
-@@ -350,6 +359,31 @@ struct msdc_host {
- 	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
- };
- 
-+static const struct mtk_mmc_compatible mt8135_compat = {
-+	.clk_div_bits = 8,
-+};
-+
-+static const struct mtk_mmc_compatible mt8173_compat = {
-+	.clk_div_bits = 8,
-+};
-+
-+static const struct mtk_mmc_compatible mt2701_compat = {
-+	.clk_div_bits = 12,
-+};
-+
-+static const struct mtk_mmc_compatible mt2712_compat = {
-+	.clk_div_bits = 12,
-+};
-+
-+static const struct of_device_id msdc_of_ids[] = {
-+	{ .compatible = "mediatek,mt8135-mmc", .data = &mt8135_compat},
-+	{ .compatible = "mediatek,mt8173-mmc", .data = &mt8173_compat},
-+	{ .compatible = "mediatek,mt2701-mmc", .data = &mt2701_compat},
-+	{ .compatible = "mediatek,mt2712-mmc", .data = &mt2712_compat},
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, msdc_of_ids);
-+
- static void sdr_set_bits(void __iomem *reg, u32 bs)
- {
- 	u32 val = readl(reg);
-@@ -509,7 +543,12 @@ static void msdc_set_timeout(struct msdc_host *host, u32 ns, u32 clks)
- 		timeout = (ns + clk_ns - 1) / clk_ns + clks;
- 		/* in 1048576 sclk cycle unit */
- 		timeout = (timeout + (0x1 << 20) - 1) >> 20;
--		sdr_get_field(host->base + MSDC_CFG, MSDC_CFG_CKMOD, &mode);
-+		if (host->dev_comp->clk_div_bits == 8)
-+			sdr_get_field(host->base + MSDC_CFG,
-+				      MSDC_CFG_CKMOD, &mode);
-+		else
-+			sdr_get_field(host->base + MSDC_CFG,
-+				      MSDC_CFG_CKMOD_EXTRA, &mode);
- 		/*DDR mode will double the clk cycles for data timeout */
- 		timeout = mode >= 2 ? timeout * 2 : timeout;
- 		timeout = timeout > 1 ? timeout - 1 : 0;
-@@ -548,7 +587,11 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
- 
- 	flags = readl(host->base + MSDC_INTEN);
- 	sdr_clr_bits(host->base + MSDC_INTEN, flags);
--	sdr_clr_bits(host->base + MSDC_CFG, MSDC_CFG_HS400_CK_MODE);
-+	if (host->dev_comp->clk_div_bits == 8)
-+		sdr_clr_bits(host->base + MSDC_CFG, MSDC_CFG_HS400_CK_MODE);
-+	else
-+		sdr_clr_bits(host->base + MSDC_CFG,
-+			     MSDC_CFG_HS400_CK_MODE_EXTRA);
- 	if (timing == MMC_TIMING_UHS_DDR50 ||
- 	    timing == MMC_TIMING_MMC_DDR52 ||
- 	    timing == MMC_TIMING_MMC_HS400) {
-@@ -568,8 +611,12 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
- 
- 		if (timing == MMC_TIMING_MMC_HS400 &&
- 		    hz >= (host->src_clk_freq >> 1)) {
--			sdr_set_bits(host->base + MSDC_CFG,
--				     MSDC_CFG_HS400_CK_MODE);
-+			if (host->dev_comp->clk_div_bits == 8)
-+				sdr_set_bits(host->base + MSDC_CFG,
-+					     MSDC_CFG_HS400_CK_MODE);
-+			else
-+				sdr_set_bits(host->base + MSDC_CFG,
-+					     MSDC_CFG_HS400_CK_MODE_EXTRA);
- 			sclk = host->src_clk_freq >> 1;
- 			div = 0; /* div is ignore when bit18 is set */
- 		}
-@@ -587,8 +634,15 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
- 			sclk = (host->src_clk_freq >> 2) / div;
- 		}
- 	}
--	sdr_set_field(host->base + MSDC_CFG, MSDC_CFG_CKMOD | MSDC_CFG_CKDIV,
--		      (mode << 8) | div);
-+	if (host->dev_comp->clk_div_bits == 8)
-+		sdr_set_field(host->base + MSDC_CFG,
-+			      MSDC_CFG_CKMOD | MSDC_CFG_CKDIV,
-+			      (mode << 8) | div);
-+	else
-+		sdr_set_field(host->base + MSDC_CFG,
-+			      MSDC_CFG_CKMOD_EXTRA | MSDC_CFG_CKDIV_EXTRA,
-+			      (mode << 12) | div);
-+
- 	sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_CKPDN);
- 	while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
- 		cpu_relax();
-@@ -1617,12 +1671,17 @@ static int msdc_drv_probe(struct platform_device *pdev)
- 	struct mmc_host *mmc;
- 	struct msdc_host *host;
- 	struct resource *res;
-+	const struct of_device_id *of_id;
- 	int ret;
- 
- 	if (!pdev->dev.of_node) {
- 		dev_err(&pdev->dev, "No DT found\n");
- 		return -EINVAL;
- 	}
-+
-+	of_id = of_match_node(msdc_of_ids, pdev->dev.of_node);
-+	if (!of_id)
-+		return -EINVAL;
- 	/* Allocate MMC host for this device */
- 	mmc = mmc_alloc_host(sizeof(struct msdc_host), &pdev->dev);
- 	if (!mmc)
-@@ -1686,11 +1745,15 @@ static int msdc_drv_probe(struct platform_device *pdev)
- 	msdc_of_property_parse(pdev, host);
- 
- 	host->dev = &pdev->dev;
-+	host->dev_comp = of_id->data;
- 	host->mmc = mmc;
- 	host->src_clk_freq = clk_get_rate(host->src_clk);
- 	/* Set host parameters to mmc */
- 	mmc->ops = &mt_msdc_ops;
--	mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 255);
-+	if (host->dev_comp->clk_div_bits == 8)
-+		mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 255);
-+	else
-+		mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 4095);
- 
- 	mmc->caps |= MMC_CAP_ERASE | MMC_CAP_CMD23;
- 	/* MMC core transfer sizes tunable parameters */
-@@ -1839,12 +1902,6 @@ static int msdc_runtime_resume(struct device *dev)
- 	SET_RUNTIME_PM_OPS(msdc_runtime_suspend, msdc_runtime_resume, NULL)
- };
- 
--static const struct of_device_id msdc_of_ids[] = {
--	{   .compatible = "mediatek,mt8135-mmc", },
--	{}
--};
--MODULE_DEVICE_TABLE(of, msdc_of_ids);
--
- static struct platform_driver mt_msdc_driver = {
- 	.probe = msdc_drv_probe,
- 	.remove = msdc_drv_remove,
+ struct h264_ring_fb_list {
+ 	struct h264_fb fb_list[H264_MAX_FB_NUM];
+diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
+index b9fad6a48879..3e84a761db3a 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
++++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
+@@ -155,7 +155,6 @@ struct vdec_vp8_vpu_inst {
+  * @reg_base		   : HW register base address
+  * @frm_cnt		   : decode frame count
+  * @ctx			   : V4L2 context
+- * @dev			   : platform device
+  * @vpu			   : VPU instance for decoder
+  * @vsi			   : VPU share information
+  */
+-- 
+2.14.3
