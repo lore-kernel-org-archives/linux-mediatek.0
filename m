@@ -1,60 +1,45 @@
 From: Mauro Carvalho Chehab <mchehab@s-opensource.com>
-Subject: [PATCH 10/22] media: vdec: fix some kernel-doc warnings
-Date: Wed, 29 Nov 2017 14:08:28 -0500
-Message-ID: <0ddb6632dd9afa919656e0bd8f0651af82e98a9d.1511982439.git.mchehab@s-opensource.com>
+Subject: [PATCH 11/22] media: mtk-vpu: add description for wdt fields at struct mtk_vpu
+Date: Wed, 29 Nov 2017 14:08:29 -0500
+Message-ID: <51d70fd5c5c5d154674ba93655b4bb333f4cc96e.1511982439.git.mchehab@s-opensource.com>
 References: <73497577f67fbb917e40ab4328104ff310a7c356.1511982439.git.mchehab@s-opensource.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Return-path: <linux-media-owner@vger.kernel.org>
 In-Reply-To: <73497577f67fbb917e40ab4328104ff310a7c356.1511982439.git.mchehab@s-opensource.com>
 In-Reply-To: <73497577f67fbb917e40ab4328104ff310a7c356.1511982439.git.mchehab@s-opensource.com>
 References: <73497577f67fbb917e40ab4328104ff310a7c356.1511982439.git.mchehab@s-opensource.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Kees Cook <keescook@chromium.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, Mauro Carvalho Chehab <mchehab@s-opensource.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Tiffany Lin <tiffany.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org, Linux Media Mailing List <linux-media@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@s-opensource.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Fix those warnings:
-  drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c:69: warning: No description found for parameter 'reserved'
-  drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c:175: warning: Excess struct member 'dev' description in 'vdec_vp8_inst'
+  drivers/media/platform/mtk-vpu/mtk_vpu.c:223: warning: No description found for parameter 'wdt'
+  drivers/media/platform/mtk-vpu/mtk_vpu.c:223: warning: No description found for parameter 'wdt_refcnt'
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
 ---
- drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c | 1 +
- drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c  | 1 -
- 2 files changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/platform/mtk-vpu/mtk_vpu.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-index b7731b18ecae..aa3ce41898bc 100644
---- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-@@ -59,6 +59,7 @@ struct h264_fb {
-  * @read_idx  : read index
-  * @write_idx : write index
-  * @count     : buffer count in list
-+ * @reserved  : for 8 bytes alignment
-  */
- struct h264_ring_fb_list {
- 	struct h264_fb fb_list[H264_MAX_FB_NUM];
-diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-index b9fad6a48879..3e84a761db3a 100644
---- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-@@ -155,7 +155,6 @@ struct vdec_vp8_vpu_inst {
-  * @reg_base		   : HW register base address
-  * @frm_cnt		   : decode frame count
-  * @ctx			   : V4L2 context
-- * @dev			   : platform device
-  * @vpu			   : VPU instance for decoder
-  * @vsi			   : VPU share information
-  */
+diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+index 853d598937f6..1ff6a93262b7 100644
+--- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
++++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+@@ -181,6 +181,7 @@ struct share_obj {
+  * @extmem:		VPU extended memory information
+  * @reg:		VPU TCM and configuration registers
+  * @run:		VPU initialization status
++ * @wdt:		VPU watchdog workqueue
+  * @ipi_desc:		VPU IPI descriptor
+  * @recv_buf:		VPU DTCM share buffer for receiving. The
+  *			receive buffer is only accessed in interrupt context.
+@@ -194,7 +195,7 @@ struct share_obj {
+  *			suppose a client is using VPU to decode VP8.
+  *			If the other client wants to encode VP8,
+  *			it has to wait until VP8 decode completes.
+- * @wdt_refcnt		WDT reference count to make sure the watchdog can be
++ * @wdt_refcnt:		WDT reference count to make sure the watchdog can be
+  *			disabled if no other client is using VPU service
+  * @ack_wq:		The wait queue for each codec and mdp. When sleeping
+  *			processes wake up, they will check the condition
 -- 
 2.14.3
