@@ -1,13 +1,11 @@
 From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 3/3] mtd: nand: mtk: Support MT7622 NAND flash controller.
-Date: Thu, 30 Nov 2017 22:10:45 +0800
-Message-ID: <1512051045-24026-4-git-send-email-rogercc.lin@mediatek.com>
-References: <1512051045-24026-1-git-send-email-rogercc.lin@mediatek.com>
+Subject: [PATCH v2 0/3] Support MT7622 NAND flash controller
+Date: Thu, 30 Nov 2017 22:10:42 +0800
+Message-ID: <1512051045-24026-1-git-send-email-rogercc.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1512051045-24026-1-git-send-email-rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -23,112 +21,26 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Add tables to support MT7622 NAND flash controller.
+MT7622 uses an earlier NAND flash controller IP which is similar to
+MT2701's, it has less sector size, less max sector number and less
+parity bits. This patch can support MT7622 NAND flash controller.
 
-Signed-off-by: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/mtd/nand/mtk_ecc.c  | 26 ++++++++++++++++++++++++++
- drivers/mtd/nand/mtk_nand.c | 16 ++++++++++++++++
- 2 files changed, 42 insertions(+)
+The patch has been verified in UBIFS test, with F59D1G81MB on MT7622
+reference board, it works correctly.
 
-diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
-index 6610eef..40d86a8 100644
---- a/drivers/mtd/nand/mtk_ecc.c
-+++ b/drivers/mtd/nand/mtk_ecc.c
-@@ -83,6 +83,10 @@ struct mtk_ecc {
- 	40, 44, 48, 52, 56, 60, 68, 72, 80
- };
- 
-+static const u8 ecc_strength_mt7622[] = {
-+	4, 6, 8, 10, 12, 14, 16
-+};
-+
- enum mtk_ecc_regs {
- 	ECC_ENCPAR00,
- 	ECC_ENCIRQ_EN,
-@@ -110,6 +114,15 @@ enum mtk_ecc_regs {
- 	[ECC_DECIRQ_STA] =      0x204,
- };
- 
-+static int mt7622_ecc_regs[] = {
-+	[ECC_ENCPAR00] =        0x10,
-+	[ECC_ENCIRQ_EN] =       0x30,
-+	[ECC_ENCIRQ_STA] =      0x34,
-+	[ECC_DECDONE] =         0x11c,
-+	[ECC_DECIRQ_EN] =       0x140,
-+	[ECC_DECIRQ_STA] =      0x144,
-+};
-+
- static inline void mtk_ecc_wait_idle(struct mtk_ecc *ecc,
- 				     enum mtk_ecc_operation op)
- {
-@@ -458,6 +471,16 @@ unsigned int mtk_ecc_get_parity_bits(struct mtk_ecc *ecc)
- 	.pg_irq_sel = 1,
- };
- 
-+static const struct mtk_ecc_caps mtk_ecc_caps_mt7622 = {
-+	.err_mask = 0x3f,
-+	.ecc_strength = ecc_strength_mt7622,
-+	.ecc_regs = mt7622_ecc_regs,
-+	.num_ecc_strength = 7,
-+	.ecc_mode_shift = 4,
-+	.parity_bits = 13,
-+	.pg_irq_sel = 0,
-+};
-+
- static const struct of_device_id mtk_ecc_dt_match[] = {
- 	{
- 		.compatible = "mediatek,mt2701-ecc",
-@@ -465,6 +488,9 @@ unsigned int mtk_ecc_get_parity_bits(struct mtk_ecc *ecc)
- 	}, {
- 		.compatible = "mediatek,mt2712-ecc",
- 		.data = &mtk_ecc_caps_mt2712,
-+	}, {
-+		.compatible = "mediatek,mt7622-ecc",
-+		.data = &mtk_ecc_caps_mt7622,
- 	},
- 	{},
- };
-diff --git a/drivers/mtd/nand/mtk_nand.c b/drivers/mtd/nand/mtk_nand.c
-index 20f4b45..b69681ad 100644
---- a/drivers/mtd/nand/mtk_nand.c
-+++ b/drivers/mtd/nand/mtk_nand.c
-@@ -174,6 +174,10 @@ struct mtk_nfc {
- 	74
- };
- 
-+static const u8 spare_size_mt7622[] = {
-+	16, 26, 27, 28
-+};
-+
- static inline struct mtk_nfc_nand_chip *to_mtk_nand(struct nand_chip *nand)
- {
- 	return container_of(nand, struct mtk_nfc_nand_chip, nand);
-@@ -1409,6 +1413,15 @@ static int mtk_nfc_nand_chips_init(struct device *dev, struct mtk_nfc *nfc)
- 	.max_sector_size = 1024,
- };
- 
-+static const struct mtk_nfc_caps mtk_nfc_caps_mt7622 = {
-+	.spare_size = spare_size_mt7622,
-+	.num_spare_size = 4,
-+	.pageformat_spare_shift = 4,
-+	.nfi_clk_div = 1,
-+	.max_sector = 8,
-+	.max_sector_size = 512,
-+};
-+
- static const struct of_device_id mtk_nfc_id_table[] = {
- 	{
- 		.compatible = "mediatek,mt2701-nfc",
-@@ -1416,6 +1429,9 @@ static int mtk_nfc_nand_chips_init(struct device *dev, struct mtk_nfc *nfc)
- 	}, {
- 		.compatible = "mediatek,mt2712-nfc",
- 		.data = &mtk_nfc_caps_mt2712,
-+	}, {
-+		.compatible = "mediatek,mt7622-nfc",
-+		.data = &mtk_nfc_caps_mt7622,
- 	},
- 	{}
- };
+Change since v1:
+Keep MTK ECC's struct private and add a helper to get parity bits.
+
+RogerCC Lin (3):
+  mtd: nand: mtk: update DT bindings
+  mtd: nand: mtk: Support different MTK NAND flash controller IP
+  mtd: nand: mtk: Support MT7622 NAND flash controller.
+
+ Documentation/devicetree/bindings/mtd/mtk-nand.txt |  11 +-
+ drivers/mtd/nand/mtk_ecc.c                         | 126 ++++++++++++++++-----
+ drivers/mtd/nand/mtk_ecc.h                         |   3 +-
+ drivers/mtd/nand/mtk_nand.c                        |  43 +++++--
+ 4 files changed, 139 insertions(+), 44 deletions(-)
+
 -- 
 1.9.1
