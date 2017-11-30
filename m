@@ -1,11 +1,13 @@
 From: Miquel Raynal <miquel.raynal@free-electrons.com>
-Subject: [PATCH 0/5] Introduce the new NAND core interface: ->exec_op()
-Date: Thu, 30 Nov 2017 18:01:27 +0100
-Message-ID: <20171130170132.27522-1-miquel.raynal@free-electrons.com>
+Subject: [PATCH 1/5] mtd: nand: use usual return values for the ->erase() hook
+Date: Thu, 30 Nov 2017 18:01:28 +0100
+Message-ID: <20171130170132.27522-2-miquel.raynal@free-electrons.com>
+References: <20171130170132.27522-1-miquel.raynal@free-electrons.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+In-Reply-To: <20171130170132.27522-1-miquel.raynal@free-electrons.com>
 List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
 List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
@@ -19,60 +21,67 @@ To: Boris Brezillon <boris.brezillon@free-electrons.com>, Richard Weinberger <ri
 Cc: Hanna Hawa <hannah@marvell.com>, Stefan Agner <stefan@agner.ch>, Nadav Haklai <nadavh@marvell.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Gregory Clement <gregory.clement@free-electrons.com>, devel@driverdev.osuosl.org, Maxim Levitsky <maximlevitsky@gmail.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com, Ezequiel Garcia <ezequiel.garcia@free-electrons.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Marc Gonzalez <marc_gonzalez@sigmadesigns.com>, Vladimir Zapolskiy <vz@mleia.com>, linux-mediatek@lists.infradead.org, Miquel Raynal <miquel.raynal@free-electrons.com>, Matthias Brugger <matthias.bgg@gmail.com>, Han Xu <han.xu@nxp.com>, Ofer Heifetz <oferh@marvell.com>, linux-arm-kernel@lists.infradead.org, Greg Kroah-Hartman <gregkh@linuxfoundati>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksCgpUaGlzIHNlcmllcyBhZGRzIHRoZSBpbXBsZW1lbnRhdGlvbiBvZiB0aGUgTkFORCBmcmFt
-ZXdvcmsgLT5leGVjX29wKCkKaW50ZXJmYWNlIHdpdGggYWxsIHRoZSByZWxhdGVkIGhvb2tzIGFu
-ZCBoZWxwZXJzLiBUaGUgcmVhc29ucyBmb3IgYWRkaW5nCml0IGFyZSBleHBsYWluZWQgaW4gZGV0
-YWlscyBpbiB0aGUgY29tbWl0IGxvZzoKCiAgICAgICAgIm10ZDogbmFuZDogYWRkIC0+ZXhlY19v
-cCgpIGltcGxlbWVudGF0aW9uIgoKTG9uZyBzdG9yeSBzaG9ydDogaXQgd2lsbCBlYXNlIGxhdGVy
-IGV4cGFuc2lvbiBvZiB0aGUgZnJhbWV3b3JrLCBhcyB3ZWxsCmFzIHRoZSBpbXBsZW1lbnRhdGlv
-biBvZiBuZXcgdmVuZG9yIHNwZWNpZmljIGNvbW1hbmRzLCBhbmQgc2hvdWxkIGFsc28KZWFzZSBk
-cml2ZXIgZGV2ZWxvcG1lbnQuCgpBIGxvdCBvZiBjb21tZW50cyBhcmUgd3JpdHRlbiB0byBleHBs
-YWluIGhvdyB0byB1c2UgdGhlIG5ldyBBUEkuIFNldmVyYWwKTkFORCBjb250cm9sbGVyIGRyaXZl
-cnMgYXJlIGFscmVhZHkvYWxtb3N0IGNvbnZlcnRlZCB0byAtPmV4ZWNfb3AoKSwgaW4KcGFydGlj
-dWxhciBhIHJld29yayBvZiB0aGUgTWFydmVsbCBOQU5EIGNvbnRyb2xsZXIgZHJpdmVyLCBhbmQg
-d2lsbApmb2xsb3cuIE9uZSBjYW4gaGF2ZSBhIGxvb2sgYXQgdGhlbSBhcyBleGFtcGxlcyB0byB1
-bmRlcnN0YW5kIGhvdyB0bwppbXBsZW1lbnQgb3IgcmV3b3JrIE5BTkQgY29udHJvbGxlciBkcml2
-ZXJzLiBBIHByb3BlciBleHRlcm5hbApkb2N1bWVudGF0aW9uIGlzIGJlaW5nIHdyaXR0ZW4gYW5k
-IHdpbGwgbGF0ZXIgYmUgc3VibWl0dGVkLgoKVGhhbmsgeW91LApNaXF1w6hsCgoKQm9yaXMgQnJl
-emlsbG9uICgyKToKICBtdGQ6IG5hbmQ6IHByb3ZpZGUgc2V2ZXJhbCBoZWxwZXJzIHRvIGRvIGNv
-bW1vbiBOQU5EIG9wZXJhdGlvbnMKICBtdGQ6IG5hbmQ6IGZvcmNlIGRyaXZlcnMgdG8gZXhwbGlj
-aXRseSBzZW5kIFJFQUQvUFJPRyBjb21tYW5kcwoKTWlxdWVsIFJheW5hbCAoMyk6CiAgbXRkOiBu
-YW5kOiB1c2UgdXN1YWwgcmV0dXJuIHZhbHVlcyBmb3IgdGhlIC0+ZXJhc2UoKSBob29rCiAgbXRk
-OiBuYW5kOiB1c2UgYSBzdGF0aWMgZGF0YV9pbnRlcmZhY2UgaW4gdGhlIG5hbmRfY2hpcCBzdHJ1
-Y3R1cmUKICBtdGQ6IG5hbmQ6IGFkZCAtPmV4ZWNfb3AoKSBpbXBsZW1lbnRhdGlvbgoKIGRyaXZl
-cnMvbXRkL25hbmQvYXRtZWwvbmFuZC1jb250cm9sbGVyLmMgICAgICB8ICAgIDkgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvYmY1eHhfbmFuZC5jICAgICAgICAgICAgICAgICB8ICAgIDYgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvYnJjbW5hbmQvYnJjbW5hbmQuYyAgICAgICAgICB8ICAgMjAgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvY2FmZV9uYW5kLmMgICAgICAgICAgICAgICAgICB8ICAgMjAgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvZGVuYWxpLmMgICAgICAgICAgICAgICAgICAgICB8ICAgNDAgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvZGlza29uY2hpcC5jICAgICAgICAgICAgICAgICB8ICAgIDQgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvZG9jZzQuYyAgICAgICAgICAgICAgICAgICAgICB8ICAgMjEgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvZnNsX2VsYmNfbmFuZC5jICAgICAgICAgICAgICB8ICAgMTAgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvZnNsX2lmY19uYW5kLmMgICAgICAgICAgICAgICB8ICAgIDYgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvZnNtY19uYW5kLmMgICAgICAgICAgICAgICAgICB8ICAgIDUgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvZ3BtaS1uYW5kL2dwbWktbmFuZC5jICAgICAgICB8ICAgNzcgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvaGlzaTUwNF9uYW5kLmMgICAgICAgICAgICAgICB8ICAgIDkgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvano0NzQwX25hbmQuYyAgICAgICAgICAgICAgICB8ICAgMTYgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvbHBjMzJ4eF9tbGMuYyAgICAgICAgICAgICAgICB8ICAgIDcgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvbHBjMzJ4eF9zbGMuYyAgICAgICAgICAgICAgICB8ICAgMzMgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvbXRrX25hbmQuYyAgICAgICAgICAgICAgICAgICB8ICAgMjUgKy0KIGRyaXZl
-cnMvbXRkL25hbmQvbmFuZF9iYXNlLmMgICAgICAgICAgICAgICAgICB8IDIxNjEgKysrKysrKysr
-KysrKysrKysrKysrKy0tLQogZHJpdmVycy9tdGQvbmFuZC9uYW5kX2h5bml4LmMgICAgICAgICAg
-ICAgICAgIHwgIDEyNCArLQogZHJpdmVycy9tdGQvbmFuZC9uYW5kX21pY3Jvbi5jICAgICAgICAg
-ICAgICAgIHwgICA4MyArLQogZHJpdmVycy9tdGQvbmFuZC9uYW5kX3RpbWluZ3MuYyAgICAgICAg
-ICAgICAgIHwgICAyMSArLQogZHJpdmVycy9tdGQvbmFuZC9vbWFwMi5jICAgICAgICAgICAgICAg
-ICAgICAgIHwgICAxOCArLQogZHJpdmVycy9tdGQvbmFuZC9weGEzeHhfbmFuZC5jICAgICAgICAg
-ICAgICAgIHwgICAxNCArLQogZHJpdmVycy9tdGQvbmFuZC9xY29tX25hbmRjLmMgICAgICAgICAg
-ICAgICAgIHwgICAyNyArLQogZHJpdmVycy9tdGQvbmFuZC9yODUyLmMgICAgICAgICAgICAgICAg
-ICAgICAgIHwgICAxMSArLQogZHJpdmVycy9tdGQvbmFuZC9zaF9mbGN0bC5jICAgICAgICAgICAg
-ICAgICAgIHwgICAgNiArLQogZHJpdmVycy9tdGQvbmFuZC9zdW54aV9uYW5kLmMgICAgICAgICAg
-ICAgICAgIHwgICA5NyArLQogZHJpdmVycy9tdGQvbmFuZC90YW5nb19uYW5kLmMgICAgICAgICAg
-ICAgICAgIHwgICAyNyArLQogZHJpdmVycy9tdGQvbmFuZC90bWlvX25hbmQuYyAgICAgICAgICAg
-ICAgICAgIHwgICAgNSArLQogZHJpdmVycy9tdGQvbmFuZC92ZjYxMF9uZmMuYyAgICAgICAgICAg
-ICAgICAgIHwgICAgNiArLQogZHJpdmVycy9zdGFnaW5nL210MjlmX3NwaW5hbmQvbXQyOWZfc3Bp
-bmFuZC5jIHwgICAgNSArLQogaW5jbHVkZS9saW51eC9tdGQvcmF3bmFuZC5oICAgICAgICAgICAg
-ICAgICAgIHwgIDQxNCArKysrLQogMzEgZmlsZXMgY2hhbmdlZCwgMjY3MyBpbnNlcnRpb25zKCsp
-LCA2NTQgZGVsZXRpb25zKC0pCgotLSAKMi4xMS4wCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2
-ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Avoid using specific defined values for checking returned status of the
+->erase() hook. Instead, use usual negative error values on failure,
+zero otherwise.
+
+Signed-off-by: Miquel Raynal <miquel.raynal@free-electrons.com>
+---
+ drivers/mtd/nand/denali.c    | 2 +-
+ drivers/mtd/nand/docg4.c     | 7 ++++++-
+ drivers/mtd/nand/nand_base.c | 2 +-
+ 3 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/mtd/nand/denali.c b/drivers/mtd/nand/denali.c
+index 34008a02ddb0..3e19861a46c6 100644
+--- a/drivers/mtd/nand/denali.c
++++ b/drivers/mtd/nand/denali.c
+@@ -951,7 +951,7 @@ static int denali_erase(struct mtd_info *mtd, int page)
+ 	irq_status = denali_wait_for_irq(denali,
+ 					 INTR__ERASE_COMP | INTR__ERASE_FAIL);
+ 
+-	return irq_status & INTR__ERASE_COMP ? 0 : NAND_STATUS_FAIL;
++	return irq_status & INTR__ERASE_COMP ? 0 : -EIO;
+ }
+ 
+ static int denali_setup_data_interface(struct mtd_info *mtd, int chipnr,
+diff --git a/drivers/mtd/nand/docg4.c b/drivers/mtd/nand/docg4.c
+index 2436cbc71662..45c01b4b34c7 100644
+--- a/drivers/mtd/nand/docg4.c
++++ b/drivers/mtd/nand/docg4.c
+@@ -900,6 +900,7 @@ static int docg4_erase_block(struct mtd_info *mtd, int page)
+ 	struct docg4_priv *doc = nand_get_controller_data(nand);
+ 	void __iomem *docptr = doc->virtadr;
+ 	uint16_t g4_page;
++	int status;
+ 
+ 	dev_dbg(doc->dev, "%s: page %04x\n", __func__, page);
+ 
+@@ -939,7 +940,11 @@ static int docg4_erase_block(struct mtd_info *mtd, int page)
+ 	poll_status(doc);
+ 	write_nop(docptr);
+ 
+-	return nand->waitfunc(mtd, nand);
++	status = nand->waitfunc(mtd, nand);
++	if (status < 0)
++		return status;
++
++	return status & NAND_STATUS_FAIL ? -EIO : 0;
+ }
+ 
+ static int write_page(struct mtd_info *mtd, struct nand_chip *nand,
+diff --git a/drivers/mtd/nand/nand_base.c b/drivers/mtd/nand/nand_base.c
+index 630048f5abdc..4d1f2bda6095 100644
+--- a/drivers/mtd/nand/nand_base.c
++++ b/drivers/mtd/nand/nand_base.c
+@@ -3077,7 +3077,7 @@ int nand_erase_nand(struct mtd_info *mtd, struct erase_info *instr,
+ 		status = chip->erase(mtd, page & chip->pagemask);
+ 
+ 		/* See if block erase succeeded */
+-		if (status & NAND_STATUS_FAIL) {
++		if (status) {
+ 			pr_debug("%s: failed erase, page 0x%08x\n",
+ 					__func__, page);
+ 			instr->state = MTD_ERASE_FAILED;
+-- 
+2.11.0
