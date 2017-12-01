@@ -1,15 +1,17 @@
 From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH 4/5] mtd: nand: use a static data_interface in the
- nand_chip structure
-Date: Fri, 1 Dec 2017 10:38:44 +0100
-Message-ID: <20171201103844.7e4eefd4@bbrezillon>
+Subject: Re: [PATCH 1/5] mtd: nand: use usual return values for the
+ ->erase() hook
+Date: Fri, 1 Dec 2017 10:39:20 +0100
+Message-ID: <20171201103920.1ed36f99@bbrezillon>
 References: <20171130170132.27522-1-miquel.raynal@free-electrons.com>
- <20171130170132.27522-5-miquel.raynal@free-electrons.com>
+ <20171130170132.27522-2-miquel.raynal@free-electrons.com>
+ <20171130215113.458d616f@bbrezillon>
+ <20171130230246.61a9ed19@xps13>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-In-Reply-To: <20171130170132.27522-5-miquel.raynal@free-electrons.com>
+In-Reply-To: <20171130230246.61a9ed19@xps13>
 List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
 List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
@@ -19,274 +21,26 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Miquel Raynal <miquel.raynal@free-electrons.com>
+To: Miquel RAYNAL <miquel.raynal@free-electrons.com>
 Cc: Hanna Hawa <hannah@marvell.com>, Stefan Agner <stefan@agner.ch>, Nadav Haklai <nadavh@marvell.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mtd@lists.infradead.org, Gregory Clement <gregory.clement@free-electrons.com>, devel@driverdev.osuosl.org, Maxim Levitsky <maximlevitsky@gmail.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Richard Weinberger <richard@nod.at>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com, Ezequiel Garcia <ezequiel.garcia@free-electrons.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Marc Gonzalez <marc_gonzalez@sigmadesigns.com>, Vladimir Zapolskiy <vz@mleia.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Han Xu <han.xu@nxp.com>, Ofer Heifetz <oferh@marvell.com>, linux-arm-kernel@lists.infradead.org, Greg Kroah-Hartman <gregkh@linuxfoundation.o>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 30 Nov 2017 18:01:31 +0100
-Miquel Raynal <miquel.raynal@free-electrons.com> wrote:
-
-> Change the nand_chip structure, to embed the nand_data_interface object.
-> 
-> Also remove the nand_get_default_data_interface() function that become
-> useless but add the initialization of the data_interface at the very
-> beginning of nand_scan_ident() to be sure core functions using timings
-> may be used safely.
-> 
-
-It's not really clear why you do that, so I reworded this commit log
-like that:
-
-mtd: nand: provide valid ->data_interface during NAND detection
-
-Right now, the chip->data_interface field is populated in
-nand_scan_tail(), so after the whole NAND detection has taken place.
-This is fine because these timings are not yet used by the core so
-early in the probe process, but the situation is about to change with
-the introduction of ->exec_op().
-
-Also, by convention, nand_scan_ident() is not supposed to allocate
-resources, only nand_scan_tail() can, so this prevent us from
-allocating and initializing the data_interface object in
-nand_scan_ident().
-
-In order to solve this problem, directly embed a data_interface object
-in nand_chip so that we don't have to allocate it, and initialize it to
-ONFI SDR mode 0 at the very beginning of nand_scan_ident().
-
-> Signed-off-by: Miquel Raynal <miquel.raynal@free-electrons.com>
-> ---
->  drivers/mtd/nand/nand_base.c    | 44 ++++++++++++++++++-----------------------
->  drivers/mtd/nand/nand_timings.c | 21 +++++---------------
->  include/linux/mtd/rawnand.h     |  7 ++-----
->  3 files changed, 26 insertions(+), 46 deletions(-)
-> 
-> diff --git a/drivers/mtd/nand/nand_base.c b/drivers/mtd/nand/nand_base.c
-> index ee9825780a6c..52965a8aeb2c 100644
-> --- a/drivers/mtd/nand/nand_base.c
-> +++ b/drivers/mtd/nand/nand_base.c
-> @@ -816,8 +816,8 @@ static void nand_ccs_delay(struct nand_chip *chip)
->  	 * Wait tCCS_min if it is correctly defined, otherwise wait 500ns
->  	 * (which should be safe for all NANDs).
->  	 */
-> -	if (chip->data_interface && chip->data_interface->timings.sdr.tCCS_min)
-> -		ndelay(chip->data_interface->timings.sdr.tCCS_min / 1000);
-> +	if (chip->setup_data_interface)
-> +		ndelay(chip->data_interface.timings.sdr.tCCS_min / 1000);
->  	else
->  		ndelay(500);
->  }
-> @@ -1112,7 +1112,6 @@ static int nand_wait(struct mtd_info *mtd, struct nand_chip *chip)
->  static int nand_reset_data_interface(struct nand_chip *chip, int chipnr)
->  {
->  	struct mtd_info *mtd = nand_to_mtd(chip);
-> -	const struct nand_data_interface *conf;
->  	int ret;
->  
->  	if (!chip->setup_data_interface)
-> @@ -1132,8 +1131,8 @@ static int nand_reset_data_interface(struct nand_chip *chip, int chipnr)
->  	 * timings to timing mode 0.
->  	 */
->  
-> -	conf = nand_get_default_data_interface();
-> -	ret = chip->setup_data_interface(mtd, chipnr, conf);
-> +	onfi_fill_data_interface(chip, NAND_SDR_IFACE, 0);
-> +	ret = chip->setup_data_interface(mtd, chipnr, &chip->data_interface);
->  	if (ret)
->  		pr_err("Failed to configure data interface to SDR timing mode 0\n");
->  
-> @@ -1158,7 +1157,7 @@ static int nand_setup_data_interface(struct nand_chip *chip, int chipnr)
->  	struct mtd_info *mtd = nand_to_mtd(chip);
->  	int ret;
->  
-> -	if (!chip->setup_data_interface || !chip->data_interface)
-> +	if (!chip->setup_data_interface)
->  		return 0;
->  
->  	/*
-> @@ -1179,7 +1178,7 @@ static int nand_setup_data_interface(struct nand_chip *chip, int chipnr)
->  			goto err;
->  	}
->  
-> -	ret = chip->setup_data_interface(mtd, chipnr, chip->data_interface);
-> +	ret = chip->setup_data_interface(mtd, chipnr, &chip->data_interface);
->  err:
->  	return ret;
->  }
-> @@ -1219,21 +1218,16 @@ static int nand_init_data_interface(struct nand_chip *chip)
->  		modes = GENMASK(chip->onfi_timing_mode_default, 0);
->  	}
->  
-> -	chip->data_interface = kzalloc(sizeof(*chip->data_interface),
-> -				       GFP_KERNEL);
-> -	if (!chip->data_interface)
-> -		return -ENOMEM;
->  
->  	for (mode = fls(modes) - 1; mode >= 0; mode--) {
-> -		ret = onfi_init_data_interface(chip, chip->data_interface,
-> -					       NAND_SDR_IFACE, mode);
-> +		ret = onfi_fill_data_interface(chip, NAND_SDR_IFACE, mode);
->  		if (ret)
->  			continue;
->  
->  		/* Pass -1 to only */
->  		ret = chip->setup_data_interface(mtd,
->  						 NAND_DATA_IFACE_CHECK_ONLY,
-> -						 chip->data_interface);
-> +						 &chip->data_interface);
->  		if (!ret) {
->  			chip->onfi_timing_mode_default = mode;
->  			break;
-> @@ -1243,11 +1237,6 @@ static int nand_init_data_interface(struct nand_chip *chip)
->  	return 0;
->  }
->  
-> -static void nand_release_data_interface(struct nand_chip *chip)
-> -{
-> -	kfree(chip->data_interface);
-> -}
-> -
->  /**
->   * nand_read_page_op - Do a READ PAGE operation
->   * @chip: The NAND chip
-> @@ -1763,11 +1752,16 @@ EXPORT_SYMBOL_GPL(nand_write_data_op);
->   * @chip: The NAND chip
->   * @chipnr: Internal die id
->   *
-> + * Save the timings data structure, then apply SDR timings mode 0 (see
-> + * nand_reset_data_interface for details), do the reset operation, and
-> + * apply back the previous timings.
-> + *
->   * Returns 0 for success or negative error code otherwise
->   */
->  int nand_reset(struct nand_chip *chip, int chipnr)
->  {
->  	struct mtd_info *mtd = nand_to_mtd(chip);
-> +	struct nand_data_interface saved_data_intf = chip->data_interface;
->  	int ret;
->  
->  	ret = nand_reset_data_interface(chip, chipnr);
-> @@ -1785,6 +1779,7 @@ int nand_reset(struct nand_chip *chip, int chipnr)
->  		return ret;
->  
->  	chip->select_chip(mtd, chipnr);
-> +	chip->data_interface = saved_data_intf;
->  	ret = nand_setup_data_interface(chip, chipnr);
->  	chip->select_chip(mtd, -1);
->  	if (ret)
-> @@ -4889,6 +4884,9 @@ int nand_scan_ident(struct mtd_info *mtd, int maxchips,
->  	struct nand_chip *chip = mtd_to_nand(mtd);
->  	int ret;
->  
-> +	/* Enforce the right timings for reset/detection */
-> +	onfi_fill_data_interface(chip, NAND_SDR_IFACE, 0);
-> +
->  	ret = nand_dt_init(chip);
->  	if (ret)
->  		return ret;
-> @@ -5629,7 +5627,7 @@ int nand_scan_tail(struct mtd_info *mtd)
->  		chip->select_chip(mtd, -1);
->  
->  		if (ret)
-> -			goto err_nand_data_iface_cleanup;
-> +			goto err_nand_manuf_cleanup;
->  	}
->  
->  	/* Check, if we should skip the bad block table scan */
-> @@ -5639,12 +5637,10 @@ int nand_scan_tail(struct mtd_info *mtd)
->  	/* Build bad block table */
->  	ret = chip->scan_bbt(mtd);
->  	if (ret)
-> -		goto err_nand_data_iface_cleanup;
-> +		goto err_nand_manuf_cleanup;
->  
->  	return 0;
->  
-> -err_nand_data_iface_cleanup:
-> -	nand_release_data_interface(chip);
->  
->  err_nand_manuf_cleanup:
->  	nand_manufacturer_cleanup(chip);
-> @@ -5703,8 +5699,6 @@ void nand_cleanup(struct nand_chip *chip)
->  	    chip->ecc.algo == NAND_ECC_BCH)
->  		nand_bch_free((struct nand_bch_control *)chip->ecc.priv);
->  
-> -	nand_release_data_interface(chip);
-> -
->  	/* Free bad block table memory */
->  	kfree(chip->bbt);
->  	if (!(chip->options & NAND_OWN_BUFFERS) && chip->buffers) {
-> diff --git a/drivers/mtd/nand/nand_timings.c b/drivers/mtd/nand/nand_timings.c
-> index 5d1533bcc5bd..9400d039ddbd 100644
-> --- a/drivers/mtd/nand/nand_timings.c
-> +++ b/drivers/mtd/nand/nand_timings.c
-> @@ -283,16 +283,16 @@ const struct nand_sdr_timings *onfi_async_timing_mode_to_sdr_timings(int mode)
->  EXPORT_SYMBOL(onfi_async_timing_mode_to_sdr_timings);
->  
->  /**
-> - * onfi_init_data_interface - [NAND Interface] Initialize a data interface from
-> + * onfi_fill_data_interface - [NAND Interface] Initialize a data interface from
->   * given ONFI mode
-> - * @iface: The data interface to be initialized
->   * @mode: The ONFI timing mode
->   */
-> -int onfi_init_data_interface(struct nand_chip *chip,
-> -			     struct nand_data_interface *iface,
-> +int onfi_fill_data_interface(struct nand_chip *chip,
->  			     enum nand_data_interface_type type,
->  			     int timing_mode)
->  {
-> +	struct nand_data_interface *iface = &chip->data_interface;
-> +
->  	if (type != NAND_SDR_IFACE)
->  		return -EINVAL;
->  
-> @@ -321,15 +321,4 @@ int onfi_init_data_interface(struct nand_chip *chip,
->  
->  	return 0;
->  }
-> -EXPORT_SYMBOL(onfi_init_data_interface);
-> -
-> -/**
-> - * nand_get_default_data_interface - [NAND Interface] Retrieve NAND
-> - * data interface for mode 0. This is used as default timing after
-> - * reset.
-> - */
-> -const struct nand_data_interface *nand_get_default_data_interface(void)
-> -{
-> -	return &onfi_sdr_timings[0];
-> -}
-> -EXPORT_SYMBOL(nand_get_default_data_interface);
-> +EXPORT_SYMBOL(onfi_fill_data_interface);
-> diff --git a/include/linux/mtd/rawnand.h b/include/linux/mtd/rawnand.h
-> index 831bf91e0c34..0be959a478db 100644
-> --- a/include/linux/mtd/rawnand.h
-> +++ b/include/linux/mtd/rawnand.h
-> @@ -917,7 +917,7 @@ struct nand_chip {
->  	u16 max_bb_per_die;
->  	u32 blocks_per_die;
->  
-> -	struct nand_data_interface *data_interface;
-> +	struct nand_data_interface data_interface;
->  
->  	int read_retries;
->  
-> @@ -1214,8 +1214,7 @@ static inline int onfi_get_sync_timing_mode(struct nand_chip *chip)
->  	return le16_to_cpu(chip->onfi_params.src_sync_timing_mode);
->  }
->  
-> -int onfi_init_data_interface(struct nand_chip *chip,
-> -			     struct nand_data_interface *iface,
-> +int onfi_fill_data_interface(struct nand_chip *chip,
->  			     enum nand_data_interface_type type,
->  			     int timing_mode);
->  
-> @@ -1258,8 +1257,6 @@ static inline int jedec_feature(struct nand_chip *chip)
->  
->  /* get timing characteristics from ONFI timing mode. */
->  const struct nand_sdr_timings *onfi_async_timing_mode_to_sdr_timings(int mode);
-> -/* get data interface from ONFI timing mode 0, used after reset. */
-> -const struct nand_data_interface *nand_get_default_data_interface(void);
->  
->  int nand_check_erased_ecc_chunk(void *data, int datalen,
->  				void *ecc, int ecclen,
+T24gVGh1LCAzMCBOb3YgMjAxNyAyMzowMjo0NiArMDEwMApNaXF1ZWwgUkFZTkFMIDxtaXF1ZWwu
+cmF5bmFsQGZyZWUtZWxlY3Ryb25zLmNvbT4gd3JvdGU6Cgo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9tdGQvbmFuZC9uYW5kX2Jhc2UuYwo+ID4gPiBiL2RyaXZlcnMvbXRkL25hbmQvbmFuZF9i
+YXNlLmMgaW5kZXggNjMwMDQ4ZjVhYmRjLi40ZDFmMmJkYTYwOTUKPiA+ID4gMTAwNjQ0IC0tLSBh
+L2RyaXZlcnMvbXRkL25hbmQvbmFuZF9iYXNlLmMKPiA+ID4gKysrIGIvZHJpdmVycy9tdGQvbmFu
+ZC9uYW5kX2Jhc2UuYwo+ID4gPiBAQCAtMzA3Nyw3ICszMDc3LDcgQEAgaW50IG5hbmRfZXJhc2Vf
+bmFuZChzdHJ1Y3QgbXRkX2luZm8gKm10ZCwKPiA+ID4gc3RydWN0IGVyYXNlX2luZm8gKmluc3Ry
+LCBzdGF0dXMgPSBjaGlwLT5lcmFzZShtdGQsIHBhZ2UgJgo+ID4gPiBjaGlwLT5wYWdlbWFzayk7
+IAo+ID4gPiAgCQkvKiBTZWUgaWYgYmxvY2sgZXJhc2Ugc3VjY2VlZGVkICovCj4gPiA+IC0JCWlm
+IChzdGF0dXMgJiBOQU5EX1NUQVRVU19GQUlMKSB7Cj4gPiA+ICsJCWlmIChzdGF0dXMpIHsKPiA+
+ID4gIAkJCXByX2RlYnVnKCIlczogZmFpbGVkIGVyYXNlLCBwYWdlIDB4JTA4eFxuIiwKPiA+ID4g
+IAkJCQkJX19mdW5jX18sIHBhZ2UpOwo+ID4gPiAgCQkJaW5zdHItPnN0YXRlID0gTVREX0VSQVNF
+X0ZBSUxFRDsgICAgCj4gPiAKPiA+IFlvdSBmb3Jnb3QgdG8gcGF0Y2ggc2luZ2xlX2VyYXNlKCkg
+YWNjb3JkaW5nbHkuICAKPiAKPiBSaWdodCwgc29ycnkgYWJvdXQgdGhhdCwgSSB3aWxsIGZpeCB0
+aGF0LgoKSWYgZml4ZWQgaXQgd2hlbiBhcHBseWluZywgbm8gbmVlZCB0byByZXNlbmQuCgpUaGFu
+a3MsCgpCb3JpcwoKPiAKPiBUaGFua3MsCj4gTWlxdcOobAoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4
+ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
