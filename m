@@ -1,159 +1,94 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2] usb: xhci: allow imod-interval to be configurable
-Date: Fri, 1 Dec 2017 11:32:04 +0800
-Message-ID: <1512099124.17567.156.camel@mhfsdcap03>
-References: <1511970775-11103-1-git-send-email-awallis@codeaurora.org>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: Re: [PATCH 0/5] Introduce the new NAND core interface: ->exec_op()
+Date: Fri, 1 Dec 2017 10:37:48 +0100
+Message-ID: <20171201103748.5bbd8ccc@bbrezillon>
+References: <20171130170132.27522-1-miquel.raynal@free-electrons.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1511970775-11103-1-git-send-email-awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Adam Wallis <awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, timur-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+In-Reply-To: <20171130170132.27522-1-miquel.raynal@free-electrons.com>
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: Miquel Raynal <miquel.raynal@free-electrons.com>
+Cc: Hanna Hawa <hannah@marvell.com>, Stefan Agner <stefan@agner.ch>, Nadav Haklai <nadavh@marvell.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mtd@lists.infradead.org, Gregory Clement <gregory.clement@free-electrons.com>, devel@driverdev.osuosl.org, Maxim Levitsky <maximlevitsky@gmail.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Richard Weinberger <richard@nod.at>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com, Ezequiel Garcia <ezequiel.garcia@free-electrons.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Marc Gonzalez <marc_gonzalez@sigmadesigns.com>, Vladimir Zapolskiy <vz@mleia.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Han Xu <han.xu@nxp.com>, Ofer Heifetz <oferh@marvell.com>, linux-arm-kernel@lists.infradead.org, Greg Kroah-Hartman <gregkh@linuxfoundation.o>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-On Wed, 2017-11-29 at 10:52 -0500, Adam Wallis wrote:
-> The xHCI driver currently has the IMOD set to 160, which
-> translates to an IMOD interval of 40,000ns (160 * 250)ns
-> 
-> Commit 0cbd4b34cda9 ("xhci: mediatek: support MTK xHCI host controller")
-> introduced a QUIRK for the MTK platform to adjust this interval to 20,
-> which translates to an IMOD interval of 5,000ns (20 * 250)ns. This is
-> due to the fact that the MTK controller IMOD interval is 8 times
-> as much as defined in xHCI spec.
-> 
-> Instead of adding more quirk bits for additional platforms, this patch
-> introduces the ability for vendors to set the IMOD_INTERVAL as is
-> optimal for their platform. By using device_property_read_u32() on
-> "imod-interval", the IMOD INTERVAL can be specified in nano seconds. If
-> no interval is specified, the default of 40,000ns (IMOD=160) will be
-> used.
-> 
-> No bounds checking has been implemented due to the fact that a vendor
-> may have violated the spec and would need to specify a value outside of
-> the max 8,000 IRQs/second limit specified in the xHCI spec.
-> 
-> Backwards compatibility is maintained for MTK_HOSTS through the quirk
-> bit, however, imod_interval should be pushed into device tree at a
-> future point and this quirk should be removed from xhci_plat_probe
-> 
-> Signed-off-by: Adam Wallis <awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-> ---
-> changes from v1:
->   * Removed device_property_read_u32() per suggestion from greg k-h
->   * Used ER_IRQ_INTERVAL_MASK in place of (u16) cast
-> 
->  Documentation/devicetree/bindings/usb/usb-xhci.txt |  1 +
->  drivers/usb/host/xhci-plat.c                       | 13 +++++++++++++
->  drivers/usb/host/xhci.c                            |  7 ++-----
->  drivers/usb/host/xhci.h                            |  2 ++
->  4 files changed, 18 insertions(+), 5 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/usb/usb-xhci.txt b/Documentation/devicetree/bindings/usb/usb-xhci.txt
-> index ae6e484..3998459 100644
-> --- a/Documentation/devicetree/bindings/usb/usb-xhci.txt
-> +++ b/Documentation/devicetree/bindings/usb/usb-xhci.txt
-> @@ -29,6 +29,7 @@ Optional properties:
->    - usb2-lpm-disable: indicate if we don't want to enable USB2 HW LPM
->    - usb3-lpm-capable: determines if platform is USB3 LPM capable
->    - quirk-broken-port-ped: set if the controller has broken port disable mechanism
-> +  - imod-interval: IMOD_INTERVAL in nano-seconds. Default is 40000
->  
->  Example:
->  	usb@f0931000 {
-> diff --git a/drivers/usb/host/xhci-plat.c b/drivers/usb/host/xhci-plat.c
-> index 09f164f..3c63de1 100644
-> --- a/drivers/usb/host/xhci-plat.c
-> +++ b/drivers/usb/host/xhci-plat.c
-> @@ -23,6 +23,7 @@
->  #include "xhci-plat.h"
->  #include "xhci-mvebu.h"
->  #include "xhci-rcar.h"
-> +#include "xhci-mtk.h"
-Needn't it, MTK makes use of xhci-mtk.c but not xhci-plat.c
-
->  
->  static struct hc_driver __read_mostly xhci_plat_hc_driver;
->  
-> @@ -269,6 +270,18 @@ static int xhci_plat_probe(struct platform_device *pdev)
->  	if (device_property_read_bool(&pdev->dev, "quirk-broken-port-ped"))
->  		xhci->quirks |= XHCI_BROKEN_PORT_PED;
->  
-> +	/*
-> +	 * imod_interval is the interrupt modulation value in nanoseconds.
-> +	 * The increment interval is 8 times as much as that defined in
-> +	 * the xHCI spec on MTK's controller. This quirk check exists to provide
-> +	 * backwards compatibility, however, this should be pushed into
-> +	 * the device tree files at some point in the future and
-> +	 * checking the quirk should be removed from xhci_plat_probe.
-> +	 */
-> +	xhci->imod_interval = xhci->quirks & XHCI_MTK_HOST ? 5000 : 40000;
-Can be moved into xhci-mtk.c for MTK quirk, like as following:
-
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 2d473e0..a03451b 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -699,6 +699,13 @@ static int xhci_mtk_probe(struct platform_device *pdev)
-                goto power_off_phys;
-        }
-
-+       /*
-+        * the increment interval is 8 times as much as that defined
-+        * in xHCI spec on MTK's controller
-+        */
-+ 	xhci->imod_interval = 5000;
-+       device_property_read_u32(dev, "imod-interval", &xhci->imod_interval);
-+
-        ret = usb_add_hcd(hcd, irq, IRQF_SHARED);
-        if (ret)
-                goto put_usb3_hcd;
-
-Thanks
-
-> +
-> +	device_property_read_u32(sysdev, "imod-interval", &xhci->imod_interval);
-> +
->  	hcd->usb_phy = devm_usb_get_phy_by_phandle(sysdev, "usb-phy", 0);
->  	if (IS_ERR(hcd->usb_phy)) {
->  		ret = PTR_ERR(hcd->usb_phy);
-> diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
-> index 2424d30..0b7755b 100644
-> --- a/drivers/usb/host/xhci.c
-> +++ b/drivers/usb/host/xhci.c
-> @@ -586,11 +586,8 @@ int xhci_run(struct usb_hcd *hcd)
->  			"// Set the interrupt modulation register");
->  	temp = readl(&xhci->ir_set->irq_control);
->  	temp &= ~ER_IRQ_INTERVAL_MASK;
-> -	/*
-> -	 * the increment interval is 8 times as much as that defined
-> -	 * in xHCI spec on MTK's controller
-> -	 */
-> -	temp |= (u32) ((xhci->quirks & XHCI_MTK_HOST) ? 20 : 160);
-> +	temp |= (xhci->imod_interval / 250) & ER_IRQ_INTERVAL_MASK;
-> +
->  	writel(temp, &xhci->ir_set->irq_control);
->  
->  	/* Set the HCD state before we enable the irqs */
-> diff --git a/drivers/usb/host/xhci.h b/drivers/usb/host/xhci.h
-> index 99a014a..2a4177b 100644
-> --- a/drivers/usb/host/xhci.h
-> +++ b/drivers/usb/host/xhci.h
-> @@ -1717,6 +1717,8 @@ struct xhci_hcd {
->  	u8		max_interrupters;
->  	u8		max_ports;
->  	u8		isoc_threshold;
-> +	/* imod_interval in ns (I * 250ns) */
-> +	u32		imod_interval;
->  	int		event_ring_max;
->  	/* 4KB min, 128MB max */
->  	int		page_size;
-
-
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgYWxsLAoKT24gVGh1LCAzMCBOb3YgMjAxNyAxODowMToyNyArMDEwMApNaXF1ZWwgUmF5bmFs
+IDxtaXF1ZWwucmF5bmFsQGZyZWUtZWxlY3Ryb25zLmNvbT4gd3JvdGU6Cgo+IEhpLAo+IAo+IFRo
+aXMgc2VyaWVzIGFkZHMgdGhlIGltcGxlbWVudGF0aW9uIG9mIHRoZSBOQU5EIGZyYW1ld29yayAt
+PmV4ZWNfb3AoKQo+IGludGVyZmFjZSB3aXRoIGFsbCB0aGUgcmVsYXRlZCBob29rcyBhbmQgaGVs
+cGVycy4gVGhlIHJlYXNvbnMgZm9yIGFkZGluZwo+IGl0IGFyZSBleHBsYWluZWQgaW4gZGV0YWls
+cyBpbiB0aGUgY29tbWl0IGxvZzoKPiAKPiAgICAgICAgICJtdGQ6IG5hbmQ6IGFkZCAtPmV4ZWNf
+b3AoKSBpbXBsZW1lbnRhdGlvbiIKPiAKPiBMb25nIHN0b3J5IHNob3J0OiBpdCB3aWxsIGVhc2Ug
+bGF0ZXIgZXhwYW5zaW9uIG9mIHRoZSBmcmFtZXdvcmssIGFzIHdlbGwKPiBhcyB0aGUgaW1wbGVt
+ZW50YXRpb24gb2YgbmV3IHZlbmRvciBzcGVjaWZpYyBjb21tYW5kcywgYW5kIHNob3VsZCBhbHNv
+Cj4gZWFzZSBkcml2ZXIgZGV2ZWxvcG1lbnQuCj4gCj4gQSBsb3Qgb2YgY29tbWVudHMgYXJlIHdy
+aXR0ZW4gdG8gZXhwbGFpbiBob3cgdG8gdXNlIHRoZSBuZXcgQVBJLiBTZXZlcmFsCj4gTkFORCBj
+b250cm9sbGVyIGRyaXZlcnMgYXJlIGFscmVhZHkvYWxtb3N0IGNvbnZlcnRlZCB0byAtPmV4ZWNf
+b3AoKSwgaW4KPiBwYXJ0aWN1bGFyIGEgcmV3b3JrIG9mIHRoZSBNYXJ2ZWxsIE5BTkQgY29udHJv
+bGxlciBkcml2ZXIsIGFuZCB3aWxsCj4gZm9sbG93LiBPbmUgY2FuIGhhdmUgYSBsb29rIGF0IHRo
+ZW0gYXMgZXhhbXBsZXMgdG8gdW5kZXJzdGFuZCBob3cgdG8KPiBpbXBsZW1lbnQgb3IgcmV3b3Jr
+IE5BTkQgY29udHJvbGxlciBkcml2ZXJzLiBBIHByb3BlciBleHRlcm5hbAo+IGRvY3VtZW50YXRp
+b24gaXMgYmVpbmcgd3JpdHRlbiBhbmQgd2lsbCBsYXRlciBiZSBzdWJtaXR0ZWQuCj4gCj4gVGhh
+bmsgeW91LAo+IE1pcXXDqGwKPiAKPiAKPiBCb3JpcyBCcmV6aWxsb24gKDIpOgo+ICAgbXRkOiBu
+YW5kOiBwcm92aWRlIHNldmVyYWwgaGVscGVycyB0byBkbyBjb21tb24gTkFORCBvcGVyYXRpb25z
+Cj4gICBtdGQ6IG5hbmQ6IGZvcmNlIGRyaXZlcnMgdG8gZXhwbGljaXRseSBzZW5kIFJFQUQvUFJP
+RyBjb21tYW5kcwo+IAo+IE1pcXVlbCBSYXluYWwgKDMpOgo+ICAgbXRkOiBuYW5kOiB1c2UgdXN1
+YWwgcmV0dXJuIHZhbHVlcyBmb3IgdGhlIC0+ZXJhc2UoKSBob29rCj4gICBtdGQ6IG5hbmQ6IHVz
+ZSBhIHN0YXRpYyBkYXRhX2ludGVyZmFjZSBpbiB0aGUgbmFuZF9jaGlwIHN0cnVjdHVyZQo+ICAg
+bXRkOiBuYW5kOiBhZGQgLT5leGVjX29wKCkgaW1wbGVtZW50YXRpb24KCkFwcGxpZWQgcGF0Y2hl
+cyAxIHRvIDQgKHdpdGggYSByZXdvcmRpbmcgb2YgcGF0Y2ggNCBjb21taXQgbWVzc2FnZSBhbmQK
+YSBmaXggaW4gcGF0Y2ggMSB0byBtYWtlIHNpbmdsZV9lcmFzZSgpIGNvbXBsaWFudCB3aXRoIHRo
+ZSBuZXcKLT5lcmFzZSgpIHNlbWFudGljKS4KCk5vdGUgdGhhdCBJIHdhcyBwcm9tcHQgdG8gYXBw
+bHkgdGhvc2UgcGF0Y2hlcyBiZWNhdXNlIEkgd2FudCB0aGVtIHRvCnNwZW5kIGFzIG11Y2ggdGlt
+ZSBhcyBwb3NzaWJsZSBpbiBsaW51eC1uZXh0IHNvIHRoYXQgd2UgY2FuIGRldGVjdCBhbmQKZml4
+IHJlZ3Jlc3Npb25zIGJlZm9yZSB0aGUgbWVyZ2Ugd2luZG93LiBTbyBwbGVhc2UgdGVzdCBsaW51
+eC1uZXh0IG9uCnlvdXIgaGFyZHdhcmUuCgpUaGlzIGJlaW5nIHNhaWQsIG5vdGhpbmcgaXMgc2V0
+IGluIHN0b25lLCBhbmQgaWYgdGhlIHNlcmllcyBhcHBlYXJzIHRvCmJyZWFrIGV4aXN0aW5nIHNl
+dHVwcyBhbmQgd2UgY2FuJ3QgZml4IHRoZSBwcm9ibGVtcyBiZWZvcmUgLXJjNiwgSSdsbApkcm9w
+IGl0LgoKVGhhbmtzLAoKQm9yaXMKCj4gCj4gIGRyaXZlcnMvbXRkL25hbmQvYXRtZWwvbmFuZC1j
+b250cm9sbGVyLmMgICAgICB8ICAgIDkgKy0KPiAgZHJpdmVycy9tdGQvbmFuZC9iZjV4eF9uYW5k
+LmMgICAgICAgICAgICAgICAgIHwgICAgNiArLQo+ICBkcml2ZXJzL210ZC9uYW5kL2JyY21uYW5k
+L2JyY21uYW5kLmMgICAgICAgICAgfCAgIDIwICstCj4gIGRyaXZlcnMvbXRkL25hbmQvY2FmZV9u
+YW5kLmMgICAgICAgICAgICAgICAgICB8ICAgMjAgKy0KPiAgZHJpdmVycy9tdGQvbmFuZC9kZW5h
+bGkuYyAgICAgICAgICAgICAgICAgICAgIHwgICA0MCArLQo+ICBkcml2ZXJzL210ZC9uYW5kL2Rp
+c2tvbmNoaXAuYyAgICAgICAgICAgICAgICAgfCAgICA0ICstCj4gIGRyaXZlcnMvbXRkL25hbmQv
+ZG9jZzQuYyAgICAgICAgICAgICAgICAgICAgICB8ICAgMjEgKy0KPiAgZHJpdmVycy9tdGQvbmFu
+ZC9mc2xfZWxiY19uYW5kLmMgICAgICAgICAgICAgIHwgICAxMCArLQo+ICBkcml2ZXJzL210ZC9u
+YW5kL2ZzbF9pZmNfbmFuZC5jICAgICAgICAgICAgICAgfCAgICA2ICstCj4gIGRyaXZlcnMvbXRk
+L25hbmQvZnNtY19uYW5kLmMgICAgICAgICAgICAgICAgICB8ICAgIDUgKy0KPiAgZHJpdmVycy9t
+dGQvbmFuZC9ncG1pLW5hbmQvZ3BtaS1uYW5kLmMgICAgICAgIHwgICA3NyArLQo+ICBkcml2ZXJz
+L210ZC9uYW5kL2hpc2k1MDRfbmFuZC5jICAgICAgICAgICAgICAgfCAgICA5ICstCj4gIGRyaXZl
+cnMvbXRkL25hbmQvano0NzQwX25hbmQuYyAgICAgICAgICAgICAgICB8ICAgMTYgKy0KPiAgZHJp
+dmVycy9tdGQvbmFuZC9scGMzMnh4X21sYy5jICAgICAgICAgICAgICAgIHwgICAgNyArLQo+ICBk
+cml2ZXJzL210ZC9uYW5kL2xwYzMyeHhfc2xjLmMgICAgICAgICAgICAgICAgfCAgIDMzICstCj4g
+IGRyaXZlcnMvbXRkL25hbmQvbXRrX25hbmQuYyAgICAgICAgICAgICAgICAgICB8ICAgMjUgKy0K
+PiAgZHJpdmVycy9tdGQvbmFuZC9uYW5kX2Jhc2UuYyAgICAgICAgICAgICAgICAgIHwgMjE2MSAr
+KysrKysrKysrKysrKysrKysrKysrLS0tCj4gIGRyaXZlcnMvbXRkL25hbmQvbmFuZF9oeW5peC5j
+ICAgICAgICAgICAgICAgICB8ICAxMjQgKy0KPiAgZHJpdmVycy9tdGQvbmFuZC9uYW5kX21pY3Jv
+bi5jICAgICAgICAgICAgICAgIHwgICA4MyArLQo+ICBkcml2ZXJzL210ZC9uYW5kL25hbmRfdGlt
+aW5ncy5jICAgICAgICAgICAgICAgfCAgIDIxICstCj4gIGRyaXZlcnMvbXRkL25hbmQvb21hcDIu
+YyAgICAgICAgICAgICAgICAgICAgICB8ICAgMTggKy0KPiAgZHJpdmVycy9tdGQvbmFuZC9weGEz
+eHhfbmFuZC5jICAgICAgICAgICAgICAgIHwgICAxNCArLQo+ICBkcml2ZXJzL210ZC9uYW5kL3Fj
+b21fbmFuZGMuYyAgICAgICAgICAgICAgICAgfCAgIDI3ICstCj4gIGRyaXZlcnMvbXRkL25hbmQv
+cjg1Mi5jICAgICAgICAgICAgICAgICAgICAgICB8ICAgMTEgKy0KPiAgZHJpdmVycy9tdGQvbmFu
+ZC9zaF9mbGN0bC5jICAgICAgICAgICAgICAgICAgIHwgICAgNiArLQo+ICBkcml2ZXJzL210ZC9u
+YW5kL3N1bnhpX25hbmQuYyAgICAgICAgICAgICAgICAgfCAgIDk3ICstCj4gIGRyaXZlcnMvbXRk
+L25hbmQvdGFuZ29fbmFuZC5jICAgICAgICAgICAgICAgICB8ICAgMjcgKy0KPiAgZHJpdmVycy9t
+dGQvbmFuZC90bWlvX25hbmQuYyAgICAgICAgICAgICAgICAgIHwgICAgNSArLQo+ICBkcml2ZXJz
+L210ZC9uYW5kL3ZmNjEwX25mYy5jICAgICAgICAgICAgICAgICAgfCAgICA2ICstCj4gIGRyaXZl
+cnMvc3RhZ2luZy9tdDI5Zl9zcGluYW5kL210MjlmX3NwaW5hbmQuYyB8ICAgIDUgKy0KPiAgaW5j
+bHVkZS9saW51eC9tdGQvcmF3bmFuZC5oICAgICAgICAgICAgICAgICAgIHwgIDQxNCArKysrLQo+
+ICAzMSBmaWxlcyBjaGFuZ2VkLCAyNjczIGluc2VydGlvbnMoKyksIDY1NCBkZWxldGlvbnMoLSkK
+PiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVs
+IG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJk
+ZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZl
+bAo=
