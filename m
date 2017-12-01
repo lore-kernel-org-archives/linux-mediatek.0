@@ -1,54 +1,61 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/3] mmc: dt-bindings: add mmc support to MT7623 SoC
-Date: Thu, 30 Nov 2017 20:06:04 -0600
-Message-ID: <20171201020604.etfzccuwomxgcwmg@rob-hp-laptop>
-References: <cover.1511949769.git.sean.wang@mediatek.com>
- <3e2c72d18bbe6d7c762fd820195f0fa0b5a45bbf.1511949769.git.sean.wang@mediatek.com>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: Re: [PATCH 1/5] mtd: nand: use usual return values for the ->erase()
+ hook
+Date: Fri, 1 Dec 2017 11:12:08 +0900
+Message-ID: <CAK7LNASxa4GCnutU4LZhVjV4sK3YLZ+RkewvyY0P4rZENpoOwQ@mail.gmail.com>
+References: <20171130170132.27522-1-miquel.raynal@free-electrons.com>
+ <20171130170132.27522-2-miquel.raynal@free-electrons.com>
+ <20171130215113.458d616f@bbrezillon>
+ <20171130230246.61a9ed19@xps13>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <3e2c72d18bbe6d7c762fd820195f0fa0b5a45bbf.1511949769.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20171130230246.61a9ed19@xps13>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Miquel RAYNAL <miquel.raynal@free-electrons.com>
+Cc: Hanna Hawa <hannah@marvell.com>, Stefan Agner <stefan@agner.ch>, Nadav Haklai <nadavh@marvell.com>, Gregory Clement <gregory.clement@free-electrons.com>, linux-mtd <linux-mtd@lists.infradead.org>, devel@driverdev.osuosl.org, Boris Brezillon <boris.brezillon@free-electrons.com>, Maxim Levitsky <maximlevitsky@gmail.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Richard Weinberger <richard@nod.at>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Broadcom Kernel Feedback List <bcm-kernel-feedback-list@broadcom.com>, Ezequiel Garcia <ezequiel.garcia@free-electrons.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Marc Gonzalez <marc_gonzalez@sigmadesigns.com>, Vladimir Zapolskiy <vz@mleia.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Han Xu <han.xu@nxp.com>, Ofer Heifetz <oferh@ma>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Nov 29, 2017 at 06:10:35PM +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Add the devicetree binding for MT7623 SoC using MT2701 as the fallback.
-> 
-> Cc: devicetree@vger.kernel.org
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> index 72d2a73..1732588 100644
-> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> @@ -12,6 +12,8 @@ Required properties:
->  	"mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
->  	"mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
->  	"mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
-> +	"mediatek,mt7623-mmc",
-> +	"mediatek,mt2701-mmc": for mmc host ip compatible with mt7623
+2017-12-01 7:02 GMT+09:00 Miquel RAYNAL <miquel.raynal@free-electrons.com>:
+>> > diff --git a/drivers/mtd/nand/nand_base.c
+>> > b/drivers/mtd/nand/nand_base.c index 630048f5abdc..4d1f2bda6095
+>> > 100644 --- a/drivers/mtd/nand/nand_base.c
+>> > +++ b/drivers/mtd/nand/nand_base.c
+>> > @@ -3077,7 +3077,7 @@ int nand_erase_nand(struct mtd_info *mtd,
+>> > struct erase_info *instr, status = chip->erase(mtd, page &
+>> > chip->pagemask);
+>> >             /* See if block erase succeeded */
+>> > -           if (status & NAND_STATUS_FAIL) {
+>> > +           if (status) {
+>> >                     pr_debug("%s: failed erase, page 0x%08x\n",
+>> >                                     __func__, page);
+>> >                     instr->state = MTD_ERASE_FAILED;
+>>
+>> You forgot to patch single_erase() accordingly.
+>
+> Right, sorry about that, I will fix that.
+>
 
-Those should be on 1 line ideally.
-
-BTW, I find "for mmc host ip compatible with mt7623" to be mostly 
-redundant.
-
-Either way,
-
-Acked-by: Rob Herring <robh@kernel.org>
+Assuming single_erase() will be fixed,
 
 
->  - reg: physical base address of the controller and length
->  - interrupts: Should contain MSDC interrupt number
->  - clocks: Should contain phandle for the clock feeding the MMC controller
-> -- 
-> 2.7.4
-> 
+For denali.c
+
+Acked-by: Masahiro Yamada <yamada.masahiro@socionext.com>
+
+
+
+
+
+-- 
+Best Regards
+Masahiro Yamada
