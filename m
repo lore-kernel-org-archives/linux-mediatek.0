@@ -1,71 +1,159 @@
-From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: Re: [PATCH 3/5] mtd: nand: force drivers to explicitly send READ/PROG
- commands
-Date: Fri, 1 Dec 2017 11:39:57 +0900
-Message-ID: <CAK7LNAQQVEoVXDC6+=O1fDBMouYDjVyTo3ARV_itT69_xtFj+Q@mail.gmail.com>
-References: <20171130170132.27522-1-miquel.raynal@free-electrons.com>
- <20171130170132.27522-4-miquel.raynal@free-electrons.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2] usb: xhci: allow imod-interval to be configurable
+Date: Fri, 1 Dec 2017 11:32:04 +0800
+Message-ID: <1512099124.17567.156.camel@mhfsdcap03>
+References: <1511970775-11103-1-git-send-email-awallis@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-In-Reply-To: <20171130170132.27522-4-miquel.raynal@free-electrons.com>
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Miquel Raynal <miquel.raynal@free-electrons.com>
-Cc: Hanna Hawa <hannah@marvell.com>, Stefan Agner <stefan@agner.ch>, Nadav Haklai <nadavh@marvell.com>, Gregory Clement <gregory.clement@free-electrons.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, devel@driverdev.osuosl.org, Boris Brezillon <boris.brezillon@free-electrons.com>, Maxim Levitsky <maximlevitsky@gmail.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Richard Weinberger <richard@nod.at>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Broadcom Kernel Feedback List <bcm-kernel-feedback-list@broadcom.com>, Ezequiel Garcia <ezequiel.garcia@free-electrons.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Marc Gonzalez <marc_gonzalez@sigmadesigns.com>, Vladimir Zapolskiy <vz@mleia.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Han Xu <han.xu@nxp.com>, Ofer
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1511970775-11103-1-git-send-email-awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Adam Wallis <awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, timur-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-2017-12-01 2:01 GMT+09:00 Miquel Raynal <miquel.raynal@free-electrons.com>:
-> From: Boris Brezillon <boris.brezillon@free-electrons.com>
->
-> The core currently send the READ0 and SEQIN+PAGEPROG commands in
-> nand_do_read/write_ops(). This is inconsistent with
-> ->read/write_oob[_raw]() hooks behavior which are expected to send
-> these commands.
->
-> There's already a flag (NAND_ECC_CUSTOM_PAGE_ACCESS) to inform the core
-> that a specific controller wants to send the READ/SEQIN+PAGEPROG
-> commands on its own, but it's an opt-in flag, and existing drivers are
-> unlikely to be updated to pass it.
->
-> Moreover, some controllers cannot dissociate the READ/PAGEPROG commands
-> from the associated data transfer and ECC engine activation, and
-> developers have to hack things in their ->cmdfunc() implementation to
-> handle such complex cases, or have to accept the perf penalty of sending
-> twice the same command.
-> To address this problem we are planning on adding a new interface which
-> is passed all information about a NAND operation (including the amount
-> of data to transfer) and replacing all calls to ->cmdfunc() to calls to
-> this new ->exec_op() hook. But, in order to do that, we need to have all
-> ->cmdfunc() calls placed near their associated ->read/write_buf/byte()
-> calls.
->
-> Modify the core and relevant drivers to make NAND_ECC_CUSTOM_PAGE_ACCESS
-> the default case, and remove this flag.
->
-> Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
-> [miquel.raynal@free-electrons.com: tested, fixed and rebased on nand/next]
-> Signed-off-by: Miquel Raynal <miquel.raynal@free-electrons.com>
+Hi,
+On Wed, 2017-11-29 at 10:52 -0500, Adam Wallis wrote:
+> The xHCI driver currently has the IMOD set to 160, which
+> translates to an IMOD interval of 40,000ns (160 * 250)ns
+> 
+> Commit 0cbd4b34cda9 ("xhci: mediatek: support MTK xHCI host controller")
+> introduced a QUIRK for the MTK platform to adjust this interval to 20,
+> which translates to an IMOD interval of 5,000ns (20 * 250)ns. This is
+> due to the fact that the MTK controller IMOD interval is 8 times
+> as much as defined in xHCI spec.
+> 
+> Instead of adding more quirk bits for additional platforms, this patch
+> introduces the ability for vendors to set the IMOD_INTERVAL as is
+> optimal for their platform. By using device_property_read_u32() on
+> "imod-interval", the IMOD INTERVAL can be specified in nano seconds. If
+> no interval is specified, the default of 40,000ns (IMOD=160) will be
+> used.
+> 
+> No bounds checking has been implemented due to the fact that a vendor
+> may have violated the spec and would need to specify a value outside of
+> the max 8,000 IRQs/second limit specified in the xHCI spec.
+> 
+> Backwards compatibility is maintained for MTK_HOSTS through the quirk
+> bit, however, imod_interval should be pushed into device tree at a
+> future point and this quirk should be removed from xhci_plat_probe
+> 
+> Signed-off-by: Adam Wallis <awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
 > ---
->  drivers/mtd/nand/atmel/nand-controller.c      |  7 ++-
->  drivers/mtd/nand/bf5xx_nand.c                 |  6 +-
->  drivers/mtd/nand/brcmnand/brcmnand.c          | 13 +++-
->  drivers/mtd/nand/cafe_nand.c                  |  6 +-
->  drivers/mtd/nand/denali.c                     |  1 -
+> changes from v1:
+>   * Removed device_property_read_u32() per suggestion from greg k-h
+>   * Used ER_IRQ_INTERVAL_MASK in place of (u16) cast
+> 
+>  Documentation/devicetree/bindings/usb/usb-xhci.txt |  1 +
+>  drivers/usb/host/xhci-plat.c                       | 13 +++++++++++++
+>  drivers/usb/host/xhci.c                            |  7 ++-----
+>  drivers/usb/host/xhci.h                            |  2 ++
+>  4 files changed, 18 insertions(+), 5 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/usb/usb-xhci.txt b/Documentation/devicetree/bindings/usb/usb-xhci.txt
+> index ae6e484..3998459 100644
+> --- a/Documentation/devicetree/bindings/usb/usb-xhci.txt
+> +++ b/Documentation/devicetree/bindings/usb/usb-xhci.txt
+> @@ -29,6 +29,7 @@ Optional properties:
+>    - usb2-lpm-disable: indicate if we don't want to enable USB2 HW LPM
+>    - usb3-lpm-capable: determines if platform is USB3 LPM capable
+>    - quirk-broken-port-ped: set if the controller has broken port disable mechanism
+> +  - imod-interval: IMOD_INTERVAL in nano-seconds. Default is 40000
+>  
+>  Example:
+>  	usb@f0931000 {
+> diff --git a/drivers/usb/host/xhci-plat.c b/drivers/usb/host/xhci-plat.c
+> index 09f164f..3c63de1 100644
+> --- a/drivers/usb/host/xhci-plat.c
+> +++ b/drivers/usb/host/xhci-plat.c
+> @@ -23,6 +23,7 @@
+>  #include "xhci-plat.h"
+>  #include "xhci-mvebu.h"
+>  #include "xhci-rcar.h"
+> +#include "xhci-mtk.h"
+Needn't it, MTK makes use of xhci-mtk.c but not xhci-plat.c
 
-For denali.c
+>  
+>  static struct hc_driver __read_mostly xhci_plat_hc_driver;
+>  
+> @@ -269,6 +270,18 @@ static int xhci_plat_probe(struct platform_device *pdev)
+>  	if (device_property_read_bool(&pdev->dev, "quirk-broken-port-ped"))
+>  		xhci->quirks |= XHCI_BROKEN_PORT_PED;
+>  
+> +	/*
+> +	 * imod_interval is the interrupt modulation value in nanoseconds.
+> +	 * The increment interval is 8 times as much as that defined in
+> +	 * the xHCI spec on MTK's controller. This quirk check exists to provide
+> +	 * backwards compatibility, however, this should be pushed into
+> +	 * the device tree files at some point in the future and
+> +	 * checking the quirk should be removed from xhci_plat_probe.
+> +	 */
+> +	xhci->imod_interval = xhci->quirks & XHCI_MTK_HOST ? 5000 : 40000;
+Can be moved into xhci-mtk.c for MTK quirk, like as following:
 
-Acked-by: Masahiro Yamada <yamada.masahiro@socionext.com>
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index 2d473e0..a03451b 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -699,6 +699,13 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+                goto power_off_phys;
+        }
+
++       /*
++        * the increment interval is 8 times as much as that defined
++        * in xHCI spec on MTK's controller
++        */
++ 	xhci->imod_interval = 5000;
++       device_property_read_u32(dev, "imod-interval", &xhci->imod_interval);
++
+        ret = usb_add_hcd(hcd, irq, IRQF_SHARED);
+        if (ret)
+                goto put_usb3_hcd;
+
+Thanks
+
+> +
+> +	device_property_read_u32(sysdev, "imod-interval", &xhci->imod_interval);
+> +
+>  	hcd->usb_phy = devm_usb_get_phy_by_phandle(sysdev, "usb-phy", 0);
+>  	if (IS_ERR(hcd->usb_phy)) {
+>  		ret = PTR_ERR(hcd->usb_phy);
+> diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
+> index 2424d30..0b7755b 100644
+> --- a/drivers/usb/host/xhci.c
+> +++ b/drivers/usb/host/xhci.c
+> @@ -586,11 +586,8 @@ int xhci_run(struct usb_hcd *hcd)
+>  			"// Set the interrupt modulation register");
+>  	temp = readl(&xhci->ir_set->irq_control);
+>  	temp &= ~ER_IRQ_INTERVAL_MASK;
+> -	/*
+> -	 * the increment interval is 8 times as much as that defined
+> -	 * in xHCI spec on MTK's controller
+> -	 */
+> -	temp |= (u32) ((xhci->quirks & XHCI_MTK_HOST) ? 20 : 160);
+> +	temp |= (xhci->imod_interval / 250) & ER_IRQ_INTERVAL_MASK;
+> +
+>  	writel(temp, &xhci->ir_set->irq_control);
+>  
+>  	/* Set the HCD state before we enable the irqs */
+> diff --git a/drivers/usb/host/xhci.h b/drivers/usb/host/xhci.h
+> index 99a014a..2a4177b 100644
+> --- a/drivers/usb/host/xhci.h
+> +++ b/drivers/usb/host/xhci.h
+> @@ -1717,6 +1717,8 @@ struct xhci_hcd {
+>  	u8		max_interrupters;
+>  	u8		max_ports;
+>  	u8		isoc_threshold;
+> +	/* imod_interval in ns (I * 250ns) */
+> +	u32		imod_interval;
+>  	int		event_ring_max;
+>  	/* 4KB min, 128MB max */
+>  	int		page_size;
 
 
--- 
-Best Regards
-Masahiro Yamada
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
