@@ -1,116 +1,58 @@
-From: Miquel RAYNAL <miquel.raynal@free-electrons.com>
-Subject: Re: [PATCH 5/5] mtd: nand: add ->exec_op() implementation
-Date: Fri, 1 Dec 2017 10:57:37 +0100
-Message-ID: <20171201105737.4cea4ed9@xps13>
-References: <20171130170132.27522-1-miquel.raynal@free-electrons.com>
- <20171130170132.27522-6-miquel.raynal@free-electrons.com>
- <20171130215025.67f74437@bbrezillon>
- <20171130232538.140f17b1@xps13>
- <20171201105053.25af2267@bbrezillon>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-In-Reply-To: <20171201105053.25af2267@bbrezillon>
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Boris Brezillon <boris.brezillon@free-electrons.com>
-Cc: Hanna Hawa <hannah@marvell.com>, Stefan Agner <stefan@agner.ch>, Nadav Haklai <nadavh@marvell.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Gregory Clement <gregory.clement@free-electrons.com>, devel@driverdev.osuosl.org, Maxim Levitsky <maximlevitsky@gmail.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Richard Weinberger <richard@nod.at>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com, Ezequiel Garcia <ezequiel.garcia@free-electrons.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Marc Gonzalez <marc_gonzalez@sigmadesigns.com>, Vladimir Zapolskiy <vz@mleia.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Han Xu <han.xu@nxp.com>, Ofer Heifetz <oferh@marvell.com>, linux-arm-kernel@lists.infradead.orgGreg
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH 1/2] thermal: mtk: Cleanup unused defines
+Date: Fri,  1 Dec 2017 11:43:21 +0100
+Message-ID: <20171201104321.8410-1-matthias.bgg@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: rui.zhang@intel.com, edubezval@gmail.com
+Cc: matthias.bgg@gmail.com, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgQm9yaXMsCgpPbiBGcmksIDEgRGVjIDIwMTcgMTA6NTA6NTMgKzAxMDAKQm9yaXMgQnJlemls
-bG9uIDxib3Jpcy5icmV6aWxsb25AZnJlZS1lbGVjdHJvbnMuY29tPiB3cm90ZToKCj4gSGkgTWlx
-dWVsLAo+IAo+IE9uIFRodSwgMzAgTm92IDIwMTcgMjM6MjU6MzggKzAxMDAKPiBNaXF1ZWwgUkFZ
-TkFMIDxtaXF1ZWwucmF5bmFsQGZyZWUtZWxlY3Ryb25zLmNvbT4gd3JvdGU6Cj4gCj4gPiA+ID4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvbXRkL25hbmQvbmFuZF9iYXNlLmMKPiA+ID4gPiBiL2RyaXZl
-cnMvbXRkL25hbmQvbmFuZF9iYXNlLmMgaW5kZXggNTI5NjVhOGFlYjJjLi40NmJmMzFhZmY5MDkK
-PiA+ID4gPiAxMDA2NDQgLS0tIGEvZHJpdmVycy9tdGQvbmFuZC9uYW5kX2Jhc2UuYwo+ID4gPiA+
-ICsrKyBiL2RyaXZlcnMvbXRkL25hbmQvbmFuZF9iYXNlLmMKPiA+ID4gPiBAQCAtNjg5LDYgKzY4
-OSw1OSBAQCBzdGF0aWMgdm9pZCBuYW5kX3dhaXRfc3RhdHVzX3JlYWR5KHN0cnVjdAo+ID4gPiA+
-IG10ZF9pbmZvICptdGQsIHVuc2lnbmVkIGxvbmcgdGltZW8pIH07Cj4gPiA+ID4gIAo+ID4gPiA+
-ICAvKioKPiA+ID4gPiArICogbmFuZF9zb2Z0X3dhaXRyZHkgLSBSZWFkIHRoZSBzdGF0dXMgd2Fp
-dGluZyBmb3IgaXQgdG8gYmUKPiA+ID4gPiByZWFkeQo+ID4gPiA+ICsgKiBAY2hpcDogTkFORCBj
-aGlwIHN0cnVjdHVyZQo+ID4gPiA+ICsgKiBAdGltZW91dF9tczogVGltZW91dCBpbiBtcwo+ID4g
-PiA+ICsgKgo+ID4gPiA+ICsgKiBQb2xsIHRoZSBzdGF0dXMgdXNpbmcgLT5leGVjX29wKCkgdW50
-aWwgaXQgaXMgcmVhZHkgdW5sZXNzCj4gPiA+ID4gaXQgdGFrZXMgdG9vCj4gPiA+ID4gKyAqIG11
-Y2ggdGltZS4KPiA+ID4gPiArICoKPiA+ID4gPiArICogVGhpcyBoZWxwZXIgaXMgaW50ZW5kZWQg
-dG8gYmUgdXNlZCBieSBkcml2ZXJzIHdpdGhvdXQgUi9CCj4gPiA+ID4gcGluIGF2YWlsYWJsZSB0
-bwo+ID4gPiA+ICsgKiBwb2xsIGZvciB0aGUgY2hpcCBzdGF0dXMgdW50aWwgcmVhZHkgYW5kIG1h
-eSBiZSBjYWxsZWQgYXQKPiA+ID4gPiBhbnkgdGltZSBpbiB0aGUKPiA+ID4gPiArICogbWlkZGxl
-IG9mIGFueSBzZXQgb2YgaW5zdHJ1Y3Rpb24uIFRoZSBSRUFEX1NUQVRVUyBqdXN0IG5lZWQKPiA+
-ID4gPiB0byBhc2sgYSBzaW5nbGUKPiA+ID4gPiArICogdGltZSBmb3IgaXQgYW5kIHRoZW4gYW55
-IHJlYWQgd2lsbCByZXR1cm4gdGhlIHN0YXR1cy4gT25jZQo+ID4gPiA+IHRoZSBSRUFEX1NUQVRV
-Uwo+ID4gPiA+ICsgKiBjeWNsZXMgYXJlIGRvbmUsIHRoZSBmdW5jdGlvbiB3aWxsIHNlbmQgYSBS
-RUFEMCBjb21tYW5kIHRvCj4gPiA+ID4gY2FuY2VsIHRoZQo+ID4gPiA+ICsgKiAiUkVBRF9TVEFU
-VVMgc3RhdGUiIGFuZCBsZXQgdGhlIG5vcm1hbCBmbG93IG9mIG9wZXJhdGlvbiB0bwo+ID4gPiA+
-IGNvbnRpbnVlLgo+ID4gPiA+ICsgKgo+ID4gPiA+ICsgKiBUaGlzIGhlbHBlciAqY2Fubm90KiBz
-ZW5kIGEgV0FJVFJEWSBjb21tYW5kIG9yIC0+ZXhlY19vcCgpCj4gPiA+ID4gaW1wbGVtZW50YXRp
-b25zICAgICAgCj4gPiA+IAo+ID4gPiAJCQkJCSAgXiBpbnN0cnVjdGlvbgo+ID4gPiAgICAgCj4g
-PiA+ID4gKyAqIHVzaW5nIGl0IHdpbGwgZW50ZXIgYW4gaW5maW5pdGUgbG9vcC4gICAgICAKPiA+
-ID4gCj4gPiA+IEhtLCBub3Qgc3VyZSB3aHkgdGhpcyB3b3VsZCBiZSB0aGUgY2FzZSwgYnV0IG9r
-YXkuIE1heWJlIHlvdQo+ID4gPiBzaG91bGQgbW92ZSB0aGlzIGNvbW1lbnQgb3V0c2lkZSB0aGUg
-a2VybmVsIGRvYyBoZWFkZXIsIHNpbmNlCj4gPiA+IHRoaXMgaXMgYW4gaW1wbGVtZW50YXRpb24g
-ZGV0YWlsLCBub3Qgc29tZXRoaW5nIHRoZSBjYWxsZXIvdXNlcgo+ID4gPiBzaG91bGQgYmUgYXdh
-cmUgb2YuICAgIAo+ID4gCj4gPiBSaWdodC4KPiA+ICAgCj4gPiA+IAo+ID4gPiBUaGVyZSdzIGFu
-b3RoZXIgaW1wb3J0YW50IGFzcGVjdCB0byBtZW50aW9uIGhlcmU6IHRoaXMgZnVuY3Rpb24KPiA+
-ID4gY2FuIG9ubHkgYmUgY2FsbGVkIGZyb20gYW4gLT5leGVjX29wKCkgaW1wbGVtZW50YXRpb24g
-aWYgdGhpcwo+ID4gPiBpbXBsZW1lbnRhdGlvbiBpcyByZS1lbnRyYW50LiAgICAKPiA+IAo+ID4g
-SSBkbyBub3QgYWdyZWUgd2l0aCB0aGlzIHN0YXRlbWVudDogdGhpcyBmdW5jdGlvbiBjYW4gYmUg
-Y2FsbGVkCj4gPiBmcm9tIGFuIC0+ZXhlY19vcCgpIGltcGxlbWVudGF0aW9uIGV2ZW4gaWYgaXQg
-aXMgbm90IHJlZW50cmFudCBhcwo+ID4gbG9uZyBhcyBpdCBkb2VzIG5vdCBzZW5kIGEgV0FJVFJE
-WSBpbnN0cnVjdGlvbiBpdHNlbGYuIE5vPyAgCj4gCj4gSWYgdGhlIC0+ZXhlY19vcCgpIGltcGxl
-bWVudGF0aW9uIGlzIG5vdCByZS1lbnRyYW50LCBubywKPiBuYW5kX3NvZnRfd2FpdHJkeSgpIGNh
-bid0IGJlIGNhbGxlZCBmcm9tIC0+ZXhlY19vcCgpLCBiZWNhdXNlIHRoZW4KPiB5b3Ugd2lsbCBy
-ZS1lbnRlciAtPmV4ZWNfb3AoKSB0byBleGVjdXRlIHRoZSByZWFkX3N0YXR1c19vcCgpLCBhbmQK
-PiBCT09NIQo+IAo+ID4gCj4gPiBPciBtYXliZSB5b3Ugd2FudGVkIHRvIHBvaW50IHRoYXQgdGhl
-IGVudGlyZSAtPmV4ZWNfb3AoKQo+ID4gaW1wbGVtZW50YXRpb24gbXVzdCBiZSByZWVudHJhbnQg
-aW4gb3JkZXIgdG8gdXNlIHRoaXMgZnVuY3Rpb24gaW4KPiA+IGl0PyAgCj4gCj4gWWVzLCB3aGF0
-IGRpZCB5b3UgdW5kZXJzdGFuZD8KCk9rLCBJIHRoaW5rIEkgbWlzdW5kZXJzdG9vZCB0aGUgImlm
-IHRoaXMgaW1wbGVtZW50YXRpb24gaXMgcmUtZW50cmFudCIuClRoZSBpbXBsZW1lbnRhdGlvbiB5
-b3Ugd2VyZSByZWZlcnJpbmcgdG8gd2FzIC0+ZXhlY19vcCgpJ3MKaW1wbGVtZW50YXRpb24sIG5v
-dCBuYW5kX3NvZnRfd2FpdHJkeSgpJ3MuCgo+IAo+ID4gICAKPiA+ID4gICAgIAo+ID4gPiA+ICsg
-Kgo+ID4gPiA+ICsgKiBSZXR1cm4gMCBpZiB0aGUgTkFORCBjaGlwIGlzIHJlYWR5LCBhIG5lZ2F0
-aXZlIGVycm9yCj4gPiA+ID4gb3RoZXJ3aXNlLgo+ID4gPiA+ICsgKi8KPiA+ID4gPiAraW50IG5h
-bmRfc29mdF93YWl0cmR5KHN0cnVjdCBuYW5kX2NoaXAgKmNoaXAsIHVuc2lnbmVkIGxvbmcKPiA+
-ID4gPiB0aW1lb3V0X21zKSArewo+ID4gPiA+ICsJdTggc3RhdHVzID0gMDsKPiA+ID4gPiArCWlu
-dCByZXQ7Cj4gPiA+ID4gKwo+ID4gPiA+ICsJaWYgKCFjaGlwLT5leGVjX29wKQo+ID4gPiA+ICsJ
-CXJldHVybiAtRU5PVFNVUFA7Cj4gPiA+ID4gKwo+ID4gPiA+ICsJcmV0ID0gbmFuZF9zdGF0dXNf
-b3AoY2hpcCwgTlVMTCk7Cj4gPiA+ID4gKwlpZiAocmV0KQo+ID4gPiA+ICsJCXJldHVybiByZXQ7
-Cj4gPiA+ID4gKwo+ID4gPiA+ICsJdGltZW91dF9tcyA9IGppZmZpZXMgKyBtc2Vjc190b19qaWZm
-aWVzKHRpbWVvdXRfbXMpOwo+ID4gPiA+ICsJZG8gewo+ID4gPiA+ICsJCXJldCA9IG5hbmRfcmVh
-ZF9kYXRhX29wKGNoaXAsICZzdGF0dXMsCj4gPiA+ID4gc2l6ZW9mKHN0YXR1cyksIHRydWUpOwo+
-ID4gPiA+ICsJCWlmIChyZXQpCj4gPiA+ID4gKwkJCWJyZWFrOwo+ID4gPiA+ICsKPiA+ID4gPiAr
-CQlpZiAoc3RhdHVzICYgTkFORF9TVEFUVVNfUkVBRFkpCj4gPiA+ID4gKwkJCWJyZWFrOwo+ID4g
-PiA+ICsKPiA+ID4gPiArCQl1ZGVsYXkoMTAwKTsgICAgICAKPiA+ID4gCj4gPiA+IFNvdW5kcyBh
-IGJpdCBoaWdoLCBlc3BlY2lhbGx5IGZvciBhIHJlYWQgcGFnZSB3aGljaCB0YWtlcyBhcm91bmQK
-PiA+ID4gMjB1cy4gICAgCj4gPiAKPiA+IFdlbGwsIHRoaXMgdmFsdWUgaXMgYXJiaXRyYXJ5IGJ1
-dCBncmVwaW5nIGZvciBOQU5EX09QX1dBSVRfUkRZCj4gPiB0ZWxscyB1cyB0aGUgZGlmZmVyZW50
-IHRpbWVvdXRzIHdpdGggd2hpY2ggdGhpcyBmdW5jdGlvbiBpcyB1c3VhbGx5Cj4gPiBjYWxsZWQs
-IHRvIGdldCBhbiBpZGVhIG9mIHRoZSBwb3NzaWJsZSB3YWl0IHBlcmlvZHM6IHRSLCB0QkVSUywK
-PiA+IHRGRUFULCB0UFJPRywgdFJTVC4KPiA+IAo+ID4gV2hpbGUgYSB0Ul9tYXggaXMgMjAwdXMs
-IGEgdFJTVF9tYXggaXMgMjUwMDAwdXMuIFRoYXQgaXMgd2h5IEkKPiA+IGNob29zZSAxMDB1cyBh
-cyBwZXJpb2QsIHdoaWNoIEkgZm91bmQgc29tZWhvdyB3ZWxsIHR1bmVkIGZvciBldmVyeQo+ID4g
-dGltZW91dC4gIAo+IAo+IEEgdGltZW91dCBpcyBkaWZmZXJlbnQgZnJvbSBhIHR5cGljYWwgZXhl
-Y3V0aW9uIHRpbWUuIFRoZSB0aW1lb3V0IGlzCj4gaGVyZSBhcyBhIGJvdW5kYXJ5IHRvIGRldGVj
-dCB3aGVuIHRoZSBkZXZpY2UvY29udHJvbGxlciBpcyBub3QKPiByZXNwb25kaW5nLCBzbyBpZiB5
-b3UgcG9sbCB0aGUgc3RhdHVzIGF0IHRoZSBwZXJpb2RpY2l0eSBvZiB0aGUKPiB0aW1lb3V0LCB5
-b3UncmUgbGlrZWx5IHRvIHdhaXQgbXVjaCBtb3JlIHRoYW4geW91IHNob3VsZCBoYXZlLgo+IAo+
-ID4gQnV0Cj4gPiBpZiB5b3UgdGhpbmsgbW9zdCBvZiB0aGUgdGltZSB0aGUgZGVsYXkgd2lsbCBi
-ZSBzbWFsbGVyLCBJIHdpbGwKPiA+IHVwZGF0ZSB0aGUgdmFsdWUgdG8gcmVwZWF0IHRoZSBvcGVy
-YXRpb24gZXZlcnkgMjB1cy4gIAo+IAo+IFdlbGwsIGVpdGhlciB5b3UgZG8gc29tZXRoaW5nIHNt
-YXJ0IHRoYXQgY2FsY3VsYXRlcyBhIHBvbGxpbmcgcGVyaW9kCj4gYmFzZWQgb24gdGhlIHRpbWVv
-dXQgdmFsICh0aW1lb3V0IC8gcmF0aW8pLCBvciB5b3UgcGljayBzb21ldGhpbmcKPiBjbG9zZSB0
-byB0aGUgbG93ZXN0IHR5cGljYWwgdmFsdWUuIFNvLCBpbiBvdXIgY2FzZSwgc29tZXRoaW5nIGxp
-a2UKPiAxMHVzLCB3aGljaCBzaG91bGQgbm90IGJlIGZhciBmcm9tIHRoZSB0eXBpY2FsIHRSIHZh
-bHVlIG9uIG1vc3QgTkFORHMuCgpGb3IgdGhlIHNha2Ugb2Ygc2ltcGxpY2l0eSwgSSB3aWxsIHRo
-ZW4gdXNlIDEwdXMgcG9sbGluZyBwZXJpb2QgaGVyZS4KClRoYW5rcywKTWlxdcOobApfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxp
-c3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJp
-dmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+The mtk_thermal has some defiens which are never used within the driver.
+This patch delets them.
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ drivers/thermal/mtk_thermal.c | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index 1e61c09153c9..c75661a3801a 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -32,15 +32,10 @@
+ #include <linux/types.h>
+ 
+ /* AUXADC Registers */
+-#define AUXADC_CON0_V		0x000
+-#define AUXADC_CON1_V		0x004
+ #define AUXADC_CON1_SET_V	0x008
+ #define AUXADC_CON1_CLR_V	0x00c
+ #define AUXADC_CON2_V		0x010
+ #define AUXADC_DATA(channel)	(0x14 + (channel) * 4)
+-#define AUXADC_MISC_V		0x094
+-
+-#define AUXADC_CON1_CHANNEL(x)	BIT(x)
+ 
+ #define APMIXED_SYS_TS_CON1	0x604
+ 
+@@ -158,8 +153,6 @@
+ /* The number of sensing points per bank */
+ #define MT2712_NUM_SENSORS_PER_ZONE	4
+ 
+-#define THERMAL_NAME    "mtk-thermal"
+-
+ struct mtk_thermal;
+ 
+ struct thermal_bank_cfg {
+@@ -765,7 +758,7 @@ static struct platform_driver mtk_thermal_driver = {
+ 	.probe = mtk_thermal_probe,
+ 	.remove = mtk_thermal_remove,
+ 	.driver = {
+-		.name = THERMAL_NAME,
++		.name = "mtk-thermal",
+ 		.of_match_table = mtk_thermal_of_match,
+ 	},
+ };
+-- 
+2.12.3
