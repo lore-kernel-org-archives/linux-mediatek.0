@@ -1,14 +1,14 @@
 From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Subject: Re: [PATCH v3] usb: xhci: allow imod-interval to be configurable
-Date: Sun, 3 Dec 2017 11:22:54 +0800
-Message-ID: <1512271374.17567.164.camel@mhfsdcap03>
+Date: Sun, 3 Dec 2017 11:51:03 +0800
+Message-ID: <1512273063.17567.167.camel@mhfsdcap03>
 References: <1512143059-25674-1-git-send-email-awallis@codeaurora.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1512143059-25674-1-git-send-email-awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Adam Wallis <awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
 Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, timur-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
@@ -64,10 +64,6 @@ On Fri, 2017-12-01 at 10:44 -0500, Adam Wallis wrote:
 >   - pinctrl-0 : pin control group
 >  	See: Documentation/devicetree/bindings/pinctrl/pinctrl-bindings.txt
 > + - imod-interval: Default interval is 5000ns
-I think, as Rob suggested before, recommend to have a unit suffix
-appended to the property name.
-s/imod-interval/imod-interval-ns
- 
 >  
 >  Example:
 >  usb30: usb@11270000 {
@@ -172,8 +168,13 @@ s/imod-interval/imod-interval-ns
 >  	/* 4KB min, 128MB max */
 >  	int		page_size;
 
+Tested-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+
+Thanks
+
+
 
 --
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
