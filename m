@@ -1,30 +1,27 @@
-From: Tejun Heo <tj@kernel.org>
-Subject: Re: [PATCH 2/2] ahci: mtk: Change driver name to ahci-mtk
-Date: Mon, 4 Dec 2017 12:35:52 -0800
-Message-ID: <20171204203552.GI2421075@devbig577.frc2.facebook.com>
-References: <20171201104722.17353-1-matthias.bgg@gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/3] dt-bindings: ARM: Mediatek: Fix ethsys documentation
+Date: Mon, 4 Dec 2017 15:48:41 -0600
+Message-ID: <20171204214841.mkkrms5fya4pnnwz@rob-hp-laptop>
+References: <20171201120708.30129-1-matthias.bgg@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20171201104722.17353-1-matthias.bgg@gmail.com>
+In-Reply-To: <20171201120708.30129-1-matthias.bgg@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-ide@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>
+Cc: mark.rutland@arm.com, linux@armlinux.org.uk, sboyd@codeaurora.org, sean.wang@mediatek.com, chen.zhong@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Dec 01, 2017 at 11:47:22AM +0100, Matthias Brugger wrote:
-> The driver name "ahci" is already used by the ahci platform driver.
-> This leads to the following error:
-> Error: Driver 'ahci' is already registered, aborting...
+On Fri, Dec 01, 2017 at 01:07:06PM +0100, Matthias Brugger wrote:
+> The ethsys registers a reset controller, so we need to specify a
+> reset cell. This patch fixes the documentation.
 > 
-> Change the name to ahci-mtk to fix this.
-> 
-> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt | 1 +
+>  1 file changed, 1 insertion(+)
 
-Applied to libata/for-4.15-fixes.
+For all 3,
 
-Thanks.
-
--- 
-tejun
+Reviewed-by: Rob Herring <robh@kernel.org>
