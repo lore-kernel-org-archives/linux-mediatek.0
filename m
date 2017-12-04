@@ -1,33 +1,30 @@
-From: Timur Tabi <timur-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH v4] usb: xhci: allow imod-interval to be configurable
-Date: Mon, 4 Dec 2017 09:49:41 -0600
-Message-ID: <674b566f-bc82-8b07-a632-a9705e1db96f@codeaurora.org>
-References: <1512397671-28733-1-git-send-email-awallis@codeaurora.org>
- <9cb2e5fc-1bec-c19c-c04e-fe56e5c1bc16@codeaurora.org>
- <2b252975-bf1f-7468-071e-f4a4aa2430a0@codeaurora.org>
+From: Tejun Heo <tj@kernel.org>
+Subject: Re: [PATCH 2/2] ahci: mtk: Change driver name to ahci-mtk
+Date: Mon, 4 Dec 2017 12:35:52 -0800
+Message-ID: <20171204203552.GI2421075@devbig577.frc2.facebook.com>
+References: <20171201104722.17353-1-matthias.bgg@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <2b252975-bf1f-7468-071e-f4a4aa2430a0-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Adam Wallis <awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20171201104722.17353-1-matthias.bgg@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-ide@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 12/04/2017 09:48 AM, Adam Wallis wrote:
-> As noted in the patch description, xhci-plat devices will use a default of
-> 40,000, while MTK devices will use a default of 5,000. This is also documented
-> in the probe for each relevant driver. This is further confirmed in the
-> description for each driver's binding TXT file.
+On Fri, Dec 01, 2017 at 11:47:22AM +0100, Matthias Brugger wrote:
+> The driver name "ahci" is already used by the ahci platform driver.
+> This leads to the following error:
+> Error: Driver 'ahci' is already registered, aborting...
+> 
+> Change the name to ahci-mtk to fix this.
+> 
+> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 
-Serves me right for reviewing patches before I've had my morning coffee.
+Applied to libata/for-4.15-fixes.
+
+Thanks.
 
 -- 
-Qualcomm Datacenter Technologies, Inc. as an affiliate of Qualcomm
-Technologies, Inc.  Qualcomm Technologies, Inc. is a member of the
-Code Aurora Forum, a Linux Foundation Collaborative Project.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+tejun
