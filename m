@@ -1,45 +1,55 @@
-From: Daniel Stone <daniel@fooishbar.org>
-Subject: Re: [RFC PATCH 1/6] drm: Add Content Protection property
-Date: Tue, 5 Dec 2017 20:14:03 +0000
-Message-ID: <CAPj87rOiUM93c_-ZYK6pf-56bs_=hjK8Kkn8fz1ZH_wQTvV_xg@mail.gmail.com>
-References: <20171130030907.26848-1-seanpaul@chromium.org>
- <20171130030907.26848-2-seanpaul@chromium.org>
- <20171205102840.GB12982@amd>
- <20171205104538.b4fxdjad3c46koas@phenom.ffwll.local>
- <20171205173408.GA18425@amd>
+From: Adam Wallis <awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH v4] usb: xhci: allow imod-interval to be configurable
+Date: Tue, 5 Dec 2017 18:50:01 -0500
+Message-ID: <7df62698-d27f-a7fc-f61e-60586c16f14b@codeaurora.org>
+References: <1512397671-28733-1-git-send-email-awallis@codeaurora.org>
+ <1512440100.17567.172.camel@mhfsdcap03>
+ <99ea0ee4-1fff-73df-d9b5-0f756dfc5635@codeaurora.org>
+ <f5ca26d2-9432-2ae3-7501-5b3dcf1e1486@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <20171205173408.GA18425@amd>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Pavel Machek <pavel@ucw.cz>
-Cc: David Airlie <airlied@linux.ie>, intel-gfx <intel-gfx@lists.freedesktop.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel.vetter@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <f5ca26d2-9432-2ae3-7501-5b3dcf1e1486-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mathias Nyman <mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, timur-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgUGF2ZWwsCgpPbiA1IERlY2VtYmVyIDIwMTcgYXQgMTc6MzQsIFBhdmVsIE1hY2hlayA8cGF2
-ZWxAdWN3LmN6PiB3cm90ZToKPiBZZXMsIHNvLi4uIFRoaXMgcGF0Y2ggbWFrZXMgaXQgbW9yZSBs
-aWtlbHkgdG8gc2VlIG1hY2hpbmVzIHdpdGggbG9ja2VkCj4gZG93biBrZXJuZWxzLCBwcmV2ZW50
-aW5nIGRldmVsb3BlcnMgZnJvbSB3b3JraW5nIHdpdGggc3lzdGVtcyB0aGVpcgo+IG93biwgcnVu
-bmluZyBoYXJkd2FyZS4gVGhhdCBpcyBldmlsLCBhbmQgZGlyZWN0IHRocmVhdCB0byBGcmVlCj4g
-c29mdHdhcmUgbW92ZW1lbnQuCj4KPiBVc2VycyBjb21waWxpbmcgdGhlaXIgb3duIGtlcm5lbHMg
-Z2V0IG5vIGJlbmVmaXQgZnJvbSBpdC4gQWN0dWFsbHkgaXQKPiBsb29rcyBsaWtlIHRoaXMgb25s
-eSBiZW5lZml0cyBJbnRlbCBhbmQgRGlzbmV5LiBXZSBkb24ndCB3YW50IHRoYXQuCgpXaXRoIGFs
-bCBkdWUgcmVzcGVjdCwgeW91IGNhbid0IGNsYWltIHRvIHNwZWFrIGZvciB0aGUgZW50aXJlIGtl
-cm5lbAphbmQgRkxPU1MgY29tbXVuaXR5IG9mIHVzZXJzIGFuZCBkZXZlbG9wZXJzLgoKVGhlIGZl
-YXR1cmUgaXMgb3B0aW9uYWw6IGl0IGRvZXMgbm90IGVuZm9yY2UgYWRkaXRpb25hbCBjb25zdHJh
-aW50cyBvbgp1c2VycywgYnV0IGV4cG9zZXMgYWRkaXRpb25hbCBmdW5jdGlvbmFsaXR5IGFscmVh
-ZHkgcHJlc2VudCBpbgpoYXJkd2FyZSwgZm9yIHRob3NlIHdobyB3aXNoIHRvIG9wdCBpbiB0byBp
-dC4gVGhvc2Ugd2hvIHdpc2ggdG8gYXZvaWQKaXQgY2FuIGRvIHNvLCBieSBzaW1wbHkgbm90IG1h
-a2luZyBhY3RpdmUgdXNlIG9mIGl0LgoKQ2hlZXJzLApEYW5pZWwKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4IG1haWxpbmcgbGlzdApJbnRl
-bC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ2Z4Cg==
+Rob,
+
+On 12/5/2017 3:48 AM, Mathias Nyman wrote:
+> On 05.12.2017 04:54, Adam Wallis wrote:
+>> On 12/4/2017 9:15 PM, Chunfeng Yun wrote:
+>>> On Mon, 2017-12-04 at 09:27 -0500, Adam Wallis wrote:
+>>>> The xHCI driver currently has the IMOD set to 160, which
+[..]
+> 
+> If Rob Acks this version I'll apply it and remove that blank line.
+> 
+> -Mathias
+> 
+
+Let me know if you have any other issues with this patch, otherwise with your
+ACK, we are done.
+
+Thanks
+
+Adam
+
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+
+-- 
+Adam Wallis
+Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
+Qualcomm Technologies, Inc. is a member of the Code Aurora Forum,
+a Linux Foundation Collaborative Project.
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
