@@ -1,116 +1,98 @@
-From: Pavel Machek <pavel@ucw.cz>
+From: Sean Paul <seanpaul@chromium.org>
 Subject: Re: [RFC PATCH 1/6] drm: Add Content Protection property
-Date: Tue, 5 Dec 2017 19:01:07 +0100
-Message-ID: <20171205180107.GA22672@amd>
+Date: Tue, 5 Dec 2017 14:03:15 -0500
+Message-ID: <CAOw6vbJ7fwQoc6fmwms3rbB9k1Zf22NJHe9g_sBf=ouG5mZwyA@mail.gmail.com>
 References: <20171130030907.26848-1-seanpaul@chromium.org>
  <20171130030907.26848-2-seanpaul@chromium.org>
  <20171205102840.GB12982@amd>
  <20171205104538.b4fxdjad3c46koas@phenom.ffwll.local>
  <20171205173408.GA18425@amd>
- <CADnq5_PcbBeGL+3CxOpNgRiih4czU9SnmjNbRyyRHOn-OZvy5Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1401438999=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CADnq5_PcbBeGL+3CxOpNgRiih4czU9SnmjNbRyyRHOn-OZvy5Q@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Alex Deucher <alexdeucher@gmail.com>
-Cc: David Airlie <airlied@linux.ie>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, LKML <linux-kernel@vger.kernel.org>, Maling list - DRI developers <dri-devel@lists.freedesktop.org>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel.vetter@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
+In-Reply-To: <20171205173408.GA18425@amd>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: Pavel Machek <pavel@ucw.cz>
+Cc: David Airlie <airlied@linux.ie>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel.vetter@intel.com>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-
---===============1401438999==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="NzB8fVQJ5HfG6fxh"
-Content-Disposition: inline
-
-
---NzB8fVQJ5HfG6fxh
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi!
-
-> >> > Why would user of the machine want this to be something else than
-> >> > 'OFF'?
-> >> >
-> >> > If kernel implements this, will it mean hardware vendors will have to
-> >> > prevent user from updating kernel on machines they own?
-> >> >
-> >> > If this is merged, does it open kernel developers to DMCA threats if
-> >> > they try to change it?
-> >>
-> >> Because this just implements one part of the content protection scheme.
-> >> This only gives you an option to enable HDCP (aka encryption, it's rea=
-lly
-> >> nothing else) on the cable. Just because it has Content Protection in =
-the
-> >> name does _not_ mean it is (stand-alone) an effective nor complete con=
-tent
-> >> protection scheme. It's simply encrypting data, that's all.
-> >
-> > Yep. So my first question was: why would user of the machine ever want
-> > encryption "ENABLED" or "DESIRED"? Could you answer it?
->=20
-> How about for sensitive video streams in government offices where you
-> want to avoid a spy potentially tapping the cable to see the video
-> stream?
-
-Except that spies already have the keys, as every monitor
-manufacturer has them?
-
-> >> kernels and be able to exercise their software freedoms already know to
-> >> avoid such locked down systems.
-> >>
-> >> So yeah it would be better to call this the "HDMI/DP cable encryption
-> >> support", but well, it's not what it's called really.
-> >
-> > Well, it does not belong in kernel, no matter what is the name.
->=20
-> Should we remove support for encrypted file systems and encrypted
-> virtual machines?  Just like them the option is there is you want to
-> use it.  If you don't want to, you don't have to.
-
-Encrypted file systems benefit users. Encrypted video is designed to
-work against users. In particular, users don't have encryption keys
-for video they generate. I'd have nothing against feature that would
-let users encrypt video with keys they control.
-								Pavel
---=20
-(english) http://www.livejournal.com/~pavelmachek
-(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
-g.html
-
---NzB8fVQJ5HfG6fxh
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iEYEARECAAYFAlom3uMACgkQMOfwapXb+vJypQCeJ1UqmMUB7ENbOT0y9upXV+pP
-iBMAmwXGhltjHelMc08wlcuPXrCawQtK
-=OiP4
------END PGP SIGNATURE-----
-
---NzB8fVQJ5HfG6fxh--
-
---===============1401438999==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
-
---===============1401438999==--
+T24gVHVlLCBEZWMgNSwgMjAxNyBhdCAxMjozNCBQTSwgUGF2ZWwgTWFjaGVrIDxwYXZlbEB1Y3cu
+Y3o+IHdyb3RlOgo+IE9uIFR1ZSAyMDE3LTEyLTA1IDExOjQ1OjM4LCBEYW5pZWwgVmV0dGVyIHdy
+b3RlOgo+PiBPbiBUdWUsIERlYyAwNSwgMjAxNyBhdCAxMToyODo0MEFNICswMTAwLCBQYXZlbCBN
+YWNoZWsgd3JvdGU6Cj4+ID4gT24gV2VkIDIwMTctMTEtMjkgMjI6MDg6NTYsIFNlYW4gUGF1bCB3
+cm90ZToKPj4gPiA+IFRoaXMgcGF0Y2ggYWRkcyBhIG5ldyBvcHRpb25hbCBjb25uZWN0b3IgcHJv
+cGVydHkgdG8gYWxsb3cgdXNlcnNwYWNlIHRvIGVuYWJsZQo+PiA+ID4gcHJvdGVjdGlvbiBvdmVy
+IHRoZSBjb250ZW50IGl0IGlzIGRpc3BsYXlpbmcuIFRoaXMgd2lsbCB0eXBpY2FsbHkgYmUgaW1w
+bGVtZW50ZWQKPj4gPiA+IGJ5IHRoZSBkcml2ZXIgdXNpbmcgSERDUC4KPj4gPiA+Cj4+ID4gPiBU
+aGUgcHJvcGVydHkgaXMgYSB0cmktc3RhdGUgd2l0aCB0aGUgZm9sbG93aW5nIHZhbHVlczoKPj4g
+PiA+IC0gT0ZGOiBTZWxmIGV4cGxhbmF0b3J5LCBubyBjb250ZW50IHByb3RlY3Rpb24KPj4gPiA+
+IC0gREVTSVJFRDogVXNlcnNwYWNlIHJlcXVlc3RzIHRoYXQgdGhlIGRyaXZlciBlbmFibGUgcHJv
+dGVjdGlvbgo+PiA+ID4gLSBFTkFCTEVEOiBPbmNlIHRoZSBkcml2ZXIgaGFzIGF1dGhlbnRpY2F0
+ZWQgdGhlIGxpbmssIGl0IHNldHMgdGhpcyB2YWx1ZQo+PiA+ID4KPj4gPiA+IFRoZSBkcml2ZXIg
+aXMgcmVzcG9uc2libGUgZm9yIGRvd25ncmFkaW5nIEVOQUJMRUQgdG8gREVTSVJFRCBpZiB0aGUg
+bGluayBiZWNvbWVzCj4+ID4gPiB1bnByb3RlY3RlZC4gVGhlIGRyaXZlciBzaG91bGQgYWxzbyBt
+YWludGFpbiB0aGUgZGVzaXJlZG5lc3Mgb2YgcHJvdGVjdGlvbgo+PiA+ID4gYWNyb3NzIGhvdHBs
+dWcvZHBtcy9zdXNwZW5kLgo+PiA+Cj4+ID4gV2h5IHdvdWxkIHVzZXIgb2YgdGhlIG1hY2hpbmUg
+d2FudCB0aGlzIHRvIGJlIHNvbWV0aGluZyBlbHNlIHRoYW4KPj4gPiAnT0ZGJz8KPj4gPgo+PiA+
+IElmIGtlcm5lbCBpbXBsZW1lbnRzIHRoaXMsIHdpbGwgaXQgbWVhbiBoYXJkd2FyZSB2ZW5kb3Jz
+IHdpbGwgaGF2ZSB0bwo+PiA+IHByZXZlbnQgdXNlciBmcm9tIHVwZGF0aW5nIGtlcm5lbCBvbiBt
+YWNoaW5lcyB0aGV5IG93bj8KPj4gPgo+PiA+IElmIHRoaXMgaXMgbWVyZ2VkLCBkb2VzIGl0IG9w
+ZW4ga2VybmVsIGRldmVsb3BlcnMgdG8gRE1DQSB0aHJlYXRzIGlmCj4+ID4gdGhleSB0cnkgdG8g
+Y2hhbmdlIGl0Pwo+Pgo+PiBCZWNhdXNlIHRoaXMganVzdCBpbXBsZW1lbnRzIG9uZSBwYXJ0IG9m
+IHRoZSBjb250ZW50IHByb3RlY3Rpb24gc2NoZW1lLgo+PiBUaGlzIG9ubHkgZ2l2ZXMgeW91IGFu
+IG9wdGlvbiB0byBlbmFibGUgSERDUCAoYWthIGVuY3J5cHRpb24sIGl0J3MgcmVhbGx5Cj4+IG5v
+dGhpbmcgZWxzZSkgb24gdGhlIGNhYmxlLiBKdXN0IGJlY2F1c2UgaXQgaGFzIENvbnRlbnQgUHJv
+dGVjdGlvbiBpbiB0aGUKPj4gbmFtZSBkb2VzIF9ub3RfIG1lYW4gaXQgaXMgKHN0YW5kLWFsb25l
+KSBhbiBlZmZlY3RpdmUgbm9yIGNvbXBsZXRlIGNvbnRlbnQKPj4gcHJvdGVjdGlvbiBzY2hlbWUu
+IEl0J3Mgc2ltcGx5IGVuY3J5cHRpbmcgZGF0YSwgdGhhdCdzIGFsbC4KPgo+IFllcC4gU28gbXkg
+Zmlyc3QgcXVlc3Rpb24gd2FzOiB3aHkgd291bGQgdXNlciBvZiB0aGUgbWFjaGluZSBldmVyIHdh
+bnQKPiBlbmNyeXB0aW9uICJFTkFCTEVEIiBvciAiREVTSVJFRCI/IENvdWxkIHlvdSBhbnN3ZXIg
+aXQ/Cj4KClN1cmUuIFdlIGhhdmUgYSBsb3Qgb2YgQ2hyb21lIE9TIHVzZXJzIHdobyB3b3VsZCBy
+ZWFsbHkgbGlrZSB0byBlbmpveQpwcmVtaXVtIGhkIGNvbnRlbnQgb24gdGhlaXIgdHZzLgoKCj4+
+IElmIHlvdSB3YW50IHRvIGFjdHVhbGx5IGxvY2sgZG93biBhIG1hY2hpbmUgdG8gaW1wbGVtZW50
+IGNvbnRlbnQKPj4gcHJvdGVjdGlvbiwgdGhlbiB5b3UgbmVlZCBzZWN1cmUgYm9vdCB3aXRob3V0
+IHVubG9ja2FibGUgYm9vdC1sb2FkZXIgYW5kIGEKPj4gcGlsZSBtb3JlIGJpdHMgaW4gdXNlcnNw
+YWNlLiAgSWYgeW91IGRvIGFsbCB0aGF0LCBvbmx5IHRoZW4gZG8geW91IGhhdmUKPj4gZnVsbCBj
+b250ZW50IHByb3RlY3Rpb24uIEFuZCB5ZXMsIHRoZW4geW91IGRvbid0IHJlYWxseSBvd24gdGhl
+IG1hY2hpbmUKPj4gZnVsbHksIGFuZCBJIHRoaW5rIHVzZXJzIHdobyBhcmUgY29uY2VybmVkIHdp
+dGggYmVpbmcgYWJsZSB0byB1cGRhdGUKPj4gdGhlaXIKPgo+IFllcywgc28uLi4gVGhpcyBwYXRj
+aCBtYWtlcyBpdCBtb3JlIGxpa2VseSB0byBzZWUgbWFjaGluZXMgd2l0aCBsb2NrZWQKPiBkb3du
+IGtlcm5lbHMsIHByZXZlbnRpbmcgZGV2ZWxvcGVycyBmcm9tIHdvcmtpbmcgd2l0aCBzeXN0ZW1z
+IHRoZWlyCj4gb3duLCBydW5uaW5nIGhhcmR3YXJlLiBUaGF0IGlzIGV2aWwsIGFuZCBkaXJlY3Qg
+dGhyZWF0IHRvIEZyZWUKPiBzb2Z0d2FyZSBtb3ZlbWVudC4KPgo+IFVzZXJzIGNvbXBpbGluZyB0
+aGVpciBvd24ga2VybmVscyBnZXQgbm8gYmVuZWZpdCBmcm9tIGl0LiBBY3R1YWxseSBpdAo+IGxv
+b2tzIGxpa2UgdGhpcyBvbmx5IGJlbmVmaXRzIEludGVsIGFuZCBEaXNuZXkuIFdlIGRvbid0IHdh
+bnQgdGhhdC4KPgoKTWFqb3IgY2l0YXRpb24gbmVlZGVkIGhlcmUuIERpZCB5b3UgYWN0dWFsbHkg
+cmVhZCB0aGUgY29kZT8gSWYgeW91CmRpZCwgeW91IHdvdWxkIHJlYWxpemUgdGhhdCB0aGUgZmVh
+dHVyZSBpcyBhbHJlYWR5IGxhdGVudCBpbiB5b3VyCmNvbXB1dGVyLiBUaGlzIHBhdGNoc2V0IG1l
+cmVseSBleHBvc2VzIGhvdyB0aGF0IGhhcmR3YXJlIGNhbiBiZQplbmFibGVkIHRvIGVuY3J5cHQg
+eW91ciB2aWRlbyBsaW5rLiBXb3VsZCB5b3UgaGF2ZSB0aGUgc2FtZSBwcm9ibGVtcwp3aXRoIGEg
+bmV3IHdoaXp6YmFuZyB2aWRlbyBlbmNvZGluZyBmb3JtYXQsIG9yIGlzIGl0IGp1c3QgdGhlICJD
+b250ZW50ClByb3RlY3Rpb24iIG5hbWU/IFBlcmhhcHMgeW91J2QgcHJlZmVyIHRoaXMgZmVhdHVy
+ZSB3YXMgaW1wbGVtZW50ZWQgaW4KSW50ZWwncyBmaXJtd2FyZSwgb3IgYSB1c2Vyc3BhY2UgYmxv
+Yj8gSXQgd291bGRuJ3QgY2hhbmdlIHRoZSBmYWN0CnRoYXQgdGhvc2UgcmVnaXN0ZXJzIGV4aXN0
+IGFuZCBfY2FuXyBiZSB1c2VkIGZvciBIRENQLCBpdCdzIGp1c3QgdGhhdApub3cgeW91IGtub3cg
+YWJvdXQgaXQuCgpIYXZpbmcgYWxsIG9mIHRoZSBjb2RlIGluIHRoZSBvcGVuIGFsbG93cyB1c2Vy
+cyB0byBzZWUgd2hhdCBpcwpoYXBwZW5pbmcgd2l0aCB0aGVpciBoYXJkd2FyZSwgaG93IGlzIHRo
+aXMgYSBiYWQgdGhpbmc/CgpTZWFuCgoKPj4ga2VybmVscyBhbmQgYmUgYWJsZSB0byBleGVyY2lz
+ZSB0aGVpciBzb2Z0d2FyZSBmcmVlZG9tcyBhbHJlYWR5IGtub3cgdG8KPj4gYXZvaWQgc3VjaCBs
+b2NrZWQgZG93biBzeXN0ZW1zLgo+Pgo+PiBTbyB5ZWFoIGl0IHdvdWxkIGJlIGJldHRlciB0byBj
+YWxsIHRoaXMgdGhlICJIRE1JL0RQIGNhYmxlIGVuY3J5cHRpb24KPj4gc3VwcG9ydCIsIGJ1dCB3
+ZWxsLCBpdCdzIG5vdCB3aGF0IGl0J3MgY2FsbGVkIHJlYWxseS4KPgo+IFdlbGwsIGl0IGRvZXMg
+bm90IGJlbG9uZyBpbiBrZXJuZWwsIG5vIG1hdHRlciB3aGF0IGlzIHRoZSBuYW1lLgo+Cj4gICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgUGF2ZWwKPiAtLQo+IChlbmdsaXNoKSBodHRwOi8vd3d3LmxpdmVqb3VybmFs
+LmNvbS9+cGF2ZWxtYWNoZWsKPiAoY2Vza3ksIHBpY3R1cmVzKSBodHRwOi8vYXRyZXkua2FybGlu
+Lm1mZi5jdW5pLmN6L35wYXZlbC9waWN0dXJlL2hvcnNlcy9ibG9nLmh0bWwKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4IG1haWxpbmcgbGlz
+dApJbnRlbC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ2Z4Cg==
