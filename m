@@ -1,71 +1,129 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 1/3] mtd: nand: mtk: update DT bindings
-Date: Tue, 5 Dec 2017 14:44:20 +0100
-Message-ID: <9172e2c4-5aee-12d0-222c-c0f11e112cd7@gmail.com>
-References: <1512051045-24026-1-git-send-email-rogercc.lin@mediatek.com>
- <1512051045-24026-2-git-send-email-rogercc.lin@mediatek.com>
+From: Pavel Machek <pavel@ucw.cz>
+Subject: Re: [RFC PATCH 1/6] drm: Add Content Protection property
+Date: Tue, 5 Dec 2017 18:34:08 +0100
+Message-ID: <20171205173408.GA18425@amd>
+References: <20171130030907.26848-1-seanpaul@chromium.org>
+ <20171130030907.26848-2-seanpaul@chromium.org>
+ <20171205102840.GB12982@amd>
+ <20171205104538.b4fxdjad3c46koas@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1512051045-24026-2-git-send-email-rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org
+Content-Type: multipart/mixed; boundary="===============0767536170=="
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
+In-Reply-To: <20171205104538.b4fxdjad3c46koas@phenom.ffwll.local>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
-
-On 11/30/2017 03:10 PM, RogerCC Lin wrote:
-> From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> Add MT7622 NAND Flash Controller dt bindings documentation.
-> 
-> Signed-off-by: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
-
-Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+--===============0767536170==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="J/dobhs11T7y2rNN"
+Content-Disposition: inline
 
 
->   Documentation/devicetree/bindings/mtd/mtk-nand.txt | 11 ++++++++---
->   1 file changed, 8 insertions(+), 3 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/mtd/mtk-nand.txt b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> index dbf9e05..0025bc4 100644
-> --- a/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> +++ b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> @@ -12,8 +12,10 @@ tree nodes.
->   
->   The first part of NFC is NAND Controller Interface (NFI) HW.
->   Required NFI properties:
-> -- compatible:			Should be one of "mediatek,mt2701-nfc",
-> -				"mediatek,mt2712-nfc".
-> +- compatible:			Should be one of
-> +				"mediatek,mt2701-nfc",
-> +				"mediatek,mt2712-nfc",
-> +				"mediatek,mt7622-nfc".
->   - reg:				Base physical address and size of NFI.
->   - interrupts:			Interrupts of NFI.
->   - clocks:			NFI required clocks.
-> @@ -142,7 +144,10 @@ Example:
->   ==============
->   
->   Required BCH properties:
-> -- compatible:	Should be one of "mediatek,mt2701-ecc", "mediatek,mt2712-ecc".
-> +- compatible:	Should be one of
-> +		"mediatek,mt2701-ecc",
-> +		"mediatek,mt2712-ecc",
-> +		"mediatek,mt7622-ecc".
->   - reg:		Base physical address and size of ECC.
->   - interrupts:	Interrupts of ECC.
->   - clocks:	ECC required clocks.
-> 
+--J/dobhs11T7y2rNN
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue 2017-12-05 11:45:38, Daniel Vetter wrote:
+> On Tue, Dec 05, 2017 at 11:28:40AM +0100, Pavel Machek wrote:
+> > On Wed 2017-11-29 22:08:56, Sean Paul wrote:
+> > > This patch adds a new optional connector property to allow userspace =
+to enable
+> > > protection over the content it is displaying. This will typically be =
+implemented
+> > > by the driver using HDCP.
+> > >=20
+> > > The property is a tri-state with the following values:
+> > > - OFF: Self explanatory, no content protection
+> > > - DESIRED: Userspace requests that the driver enable protection
+> > > - ENABLED: Once the driver has authenticated the link, it sets this v=
+alue
+> > >=20
+> > > The driver is responsible for downgrading ENABLED to DESIRED if the l=
+ink becomes
+> > > unprotected. The driver should also maintain the desiredness of prote=
+ction
+> > > across hotplug/dpms/suspend.
+> >=20
+> > Why would user of the machine want this to be something else than
+> > 'OFF'?
+> >=20
+> > If kernel implements this, will it mean hardware vendors will have to
+> > prevent user from updating kernel on machines they own?
+> >=20
+> > If this is merged, does it open kernel developers to DMCA threats if
+> > they try to change it?
+>=20
+> Because this just implements one part of the content protection scheme.
+> This only gives you an option to enable HDCP (aka encryption, it's really
+> nothing else) on the cable. Just because it has Content Protection in the
+> name does _not_ mean it is (stand-alone) an effective nor complete content
+> protection scheme. It's simply encrypting data, that's all.
+
+Yep. So my first question was: why would user of the machine ever want
+encryption "ENABLED" or "DESIRED"? Could you answer it?
+
+> If you want to actually lock down a machine to implement content
+> protection, then you need secure boot without unlockable boot-loader and a
+> pile more bits in userspace.  If you do all that, only then do you have
+> full content protection. And yes, then you don't really own the machine
+> fully, and I think users who are concerned with being able to update
+> their
+
+Yes, so... This patch makes it more likely to see machines with locked
+down kernels, preventing developers from working with systems their
+own, running hardware. That is evil, and direct threat to Free
+software movement.
+
+Users compiling their own kernels get no benefit from it. Actually it
+looks like this only benefits Intel and Disney. We don't want that.
+
+> kernels and be able to exercise their software freedoms already know to
+> avoid such locked down systems.
+>=20
+> So yeah it would be better to call this the "HDMI/DP cable encryption
+> support", but well, it's not what it's called really.
+
+Well, it does not belong in kernel, no matter what is the name.
+
+									Pavel
+--=20
+(english) http://www.livejournal.com/~pavelmachek
+(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
+g.html
+
+--J/dobhs11T7y2rNN
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iEYEARECAAYFAlom2JAACgkQMOfwapXb+vJ+2wCgiz49231c4gvT55SQNQp4yPum
++rwAn0TURpxXzFqV3S4N+Ml4xmGM4PFf
+=MpZJ
+-----END PGP SIGNATURE-----
+
+--J/dobhs11T7y2rNN--
+
+--===============0767536170==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4
+IG1haWxpbmcgbGlzdApJbnRlbC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ2Z4Cg==
+
+--===============0767536170==--
