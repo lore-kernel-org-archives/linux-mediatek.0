@@ -1,60 +1,84 @@
-From: Mathias Nyman <mathias.nyman@linux.intel.com>
-Subject: Re: [PATCH] usb: xhci: fix TDS for MTK xHCI1.1
-Date: Thu, 7 Dec 2017 08:55:56 +0200
-Message-ID: <27d72801-417e-5726-561a-dd521795bc23@linux.intel.com>
-References: <035626be9cb863b145b02369fe517d1c80335398.1512542108.git.chunfeng.yun@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH 1/3] phy: phy-mtk-tphy: use auto instead of force to bypass utmi signals
+Date: Thu, 7 Dec 2017 19:53:34 +0800
+Message-ID: <ff2797a0487a0b30a2292c2685dedcbbfeead293.1512647458.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <035626be9cb863b145b02369fe517d1c80335398.1512542108.git.chunfeng.yun@mediatek.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 06.12.2017 08:42, Chunfeng Yun wrote:
-> For MTK's xHCI 1.0 or latter, TD size is the number of max
-> packet sized packets remaining in the TD, not including
-> this TRB (following spec).
-> 
-> For MTK's xHCI 0.96 and older, TD size is the number of max
-> packet sized packets remaining in the TD, including this TRB
-> (not following spec).
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->   drivers/usb/host/xhci-ring.c | 6 +++---
->   1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/usb/host/xhci-ring.c b/drivers/usb/host/xhci-ring.c
-> index c239c68..0619869 100644
-> --- a/drivers/usb/host/xhci-ring.c
-> +++ b/drivers/usb/host/xhci-ring.c
-> @@ -3108,7 +3108,7 @@ static u32 xhci_td_remainder(struct xhci_hcd *xhci, int transferred,
->   {
->   	u32 maxp, total_packet_count;
->   
-> -	/* MTK xHCI is mostly 0.97 but contains some features from 1.0 */
-> +	/* MTK xHCI 0.96 contains some features from 1.0 */
->   	if (xhci->hci_version < 0x100 && !(xhci->quirks & XHCI_MTK_HOST))
->   		return ((td_total_len - transferred) >> 10);
->   
-> @@ -3117,8 +3117,8 @@ static u32 xhci_td_remainder(struct xhci_hcd *xhci, int transferred,
->   	    trb_buff_len == td_total_len)
->   		return 0;
->   
-> -	/* for MTK xHCI, TD size doesn't include this TRB */
-> -	if (xhci->quirks & XHCI_MTK_HOST)
-> +	/* for MTK xHCI 0.96, TD size include this TRB, but not in 1.x */
-> +	if ((xhci->quirks & XHCI_MTK_HOST) && (xhci->hci_version < 0x100))
->   		trb_buff_len = 0;
->   
->   	maxp = usb_endpoint_maxp(&urb->ep->desc);
-> 
+When system is running, if usb2 phy is forced to bypass utmi signals,
+all PLL will be turned off, and it can't detect device connection
+anymore, so replace force mode with auto mode which can bypass utmi
+signals automatically if no device attached for normal flow.
+But keep the force mode to fix RX sensitivity degradation issue.
 
-Thanks, adding.
-Adding stable tag as well
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/phy/mediatek/phy-mtk-tphy.c | 19 +++++++------------
+ 1 file changed, 7 insertions(+), 12 deletions(-)
 
--Mathias
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index fb8aba4..5d9d7f3 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -440,9 +440,9 @@ static void u2_phy_instance_init(struct mtk_tphy *tphy,
+ 	u32 index = instance->index;
+ 	u32 tmp;
+ 
+-	/* switch to USB function. (system register, force ip into usb mode) */
++	/* switch to USB function, and enable usb pll */
+ 	tmp = readl(com + U3P_U2PHYDTM0);
+-	tmp &= ~P2C_FORCE_UART_EN;
++	tmp &= ~(P2C_FORCE_UART_EN | P2C_FORCE_SUSPENDM);
+ 	tmp |= P2C_RG_XCVRSEL_VAL(1) | P2C_RG_DATAIN_VAL(0);
+ 	writel(tmp, com + U3P_U2PHYDTM0);
+ 
+@@ -502,10 +502,8 @@ static void u2_phy_instance_power_on(struct mtk_tphy *tphy,
+ 	u32 index = instance->index;
+ 	u32 tmp;
+ 
+-	/* (force_suspendm=0) (let suspendm=1, enable usb 480MHz pll) */
+ 	tmp = readl(com + U3P_U2PHYDTM0);
+-	tmp &= ~(P2C_FORCE_SUSPENDM | P2C_RG_XCVRSEL);
+-	tmp &= ~(P2C_RG_DATAIN | P2C_DTM0_PART_MASK);
++	tmp &= ~(P2C_RG_XCVRSEL | P2C_RG_DATAIN | P2C_DTM0_PART_MASK);
+ 	writel(tmp, com + U3P_U2PHYDTM0);
+ 
+ 	/* OTG Enable */
+@@ -540,7 +538,6 @@ static void u2_phy_instance_power_off(struct mtk_tphy *tphy,
+ 
+ 	tmp = readl(com + U3P_U2PHYDTM0);
+ 	tmp &= ~(P2C_RG_XCVRSEL | P2C_RG_DATAIN);
+-	tmp |= P2C_FORCE_SUSPENDM;
+ 	writel(tmp, com + U3P_U2PHYDTM0);
+ 
+ 	/* OTG Disable */
+@@ -548,18 +545,16 @@ static void u2_phy_instance_power_off(struct mtk_tphy *tphy,
+ 	tmp &= ~PA6_RG_U2_OTG_VBUSCMP_EN;
+ 	writel(tmp, com + U3P_USBPHYACR6);
+ 
+-	/* let suspendm=0, set utmi into analog power down */
+-	tmp = readl(com + U3P_U2PHYDTM0);
+-	tmp &= ~P2C_RG_SUSPENDM;
+-	writel(tmp, com + U3P_U2PHYDTM0);
+-	udelay(1);
+-
+ 	tmp = readl(com + U3P_U2PHYDTM1);
+ 	tmp &= ~(P2C_RG_VBUSVALID | P2C_RG_AVALID);
+ 	tmp |= P2C_RG_SESSEND;
+ 	writel(tmp, com + U3P_U2PHYDTM1);
+ 
+ 	if (tphy->pdata->avoid_rx_sen_degradation && index) {
++		tmp = readl(com + U3P_U2PHYDTM0);
++		tmp &= ~(P2C_RG_SUSPENDM | P2C_FORCE_SUSPENDM);
++		writel(tmp, com + U3P_U2PHYDTM0);
++
+ 		tmp = readl(com + U3D_U2PHYDCR0);
+ 		tmp &= ~P2C_RG_SIF_U2PLL_FORCE_ON;
+ 		writel(tmp, com + U3D_U2PHYDCR0);
+-- 
+1.9.1
