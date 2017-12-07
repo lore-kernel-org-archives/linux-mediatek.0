@@ -1,50 +1,29 @@
 From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [PATCH net-next 2/3] net: dsa: mediatek: combine MediaTek tag
- with VLAN tag
-Date: Thu, 7 Dec 2017 16:30:16 +0100
-Message-ID: <20171207153016.GC24750@lunn.ch>
+Subject: Re: [PATCH net-next 3/3] net: dsa: mediatek: update MAINTAINERS
+ entry with MediaTek switch driver
+Date: Thu, 7 Dec 2017 16:31:07 +0100
+Message-ID: <20171207153107.GD24750@lunn.ch>
 References: <cover.1512625814.git.sean.wang@mediatek.com>
- <dffc711dc88898f8a5f5387d1fa7d14e0faf9ed5.1512625814.git.sean.wang@mediatek.com>
+ <9462ddd33c2f34839c68b73f76017487d4b5cb21.1512625814.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <dffc711dc88898f8a5f5387d1fa7d14e0faf9ed5.1512625814.git.sean.wang@mediatek.com>
+In-Reply-To: <9462ddd33c2f34839c68b73f76017487d4b5cb21.1512625814.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: sean.wang@mediatek.com
 Cc: davem@davemloft.net, f.fainelli@gmail.com, vivien.didelot@savoirfairelinux.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-> @@ -25,20 +28,37 @@ static struct sk_buff *mtk_tag_xmit(struct sk_buff *skb,
->  {
->  	struct dsa_port *dp = dsa_slave_to_port(dev);
->  	u8 *mtk_tag;
-> +	bool is_vlan_skb = true;
+On Thu, Dec 07, 2017 at 02:06:12PM +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> I work for MediaTek and maintain SoC targeting to home gateway and
+> also will keep extending and testing the function from MediaTek
+> switch.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
-..
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-> +	/* Mark tag attribute on special tag insertion to notify hardware
-> +	 * whether that's a combined special tag with 802.1Q header.
-> +	 */
-> +	mtk_tag[0] = is_vlan_skb ? MTK_HDR_XMIT_TAGGED_TPID_8100 :
-> +		     MTK_HDR_XMIT_UNTAGGED;
->  	mtk_tag[1] = (1 << dp->index) & MTK_HDR_XMIT_DP_BIT_MASK;
-> -	mtk_tag[2] = 0;
-> -	mtk_tag[3] = 0;
-> +
-> +	/* Tag control information is kept for 802.1Q */
-> +	if (!is_vlan_skb) {
-> +		mtk_tag[2] = 0;
-> +		mtk_tag[3] = 0;
-> +	}
->  
->  	return skb;
->  }
-
-Hi Sean
-
-So you can mark a packet for egress. What about ingress? How do you
-know the VLAN/PORT combination for packets the CPU receives? I would
-of expected a similar change to mtk_tag_rcv().
-
-   Andrew
+    Andrew
