@@ -1,67 +1,92 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4] usb: xhci: allow imod-interval to be configurable
-Date: Wed, 6 Dec 2017 15:21:02 -0600
-Message-ID: <20171206212102.w7joyecp25v6nw5v@rob-hp-laptop>
-References: <1512397671-28733-1-git-send-email-awallis@codeaurora.org>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH net-next 2/3] net: dsa: mediatek: combine MediaTek tag with VLAN tag
+Date: Thu, 7 Dec 2017 14:06:11 +0800
+Message-ID: <dffc711dc88898f8a5f5387d1fa7d14e0faf9ed5.1512625814.git.sean.wang@mediatek.com>
+References: <cover.1512625814.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1512397671-28733-1-git-send-email-awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Adam Wallis <awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, timur-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1512625814.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: davem@davemloft.net, andrew@lunn.ch, f.fainelli@gmail.com, vivien.didelot@savoirfairelinux.com
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Dec 04, 2017 at 09:27:51AM -0500, Adam Wallis wrote:
-> The xHCI driver currently has the IMOD set to 160, which
-> translates to an IMOD interval of 40,000ns (160 * 250)ns
-> 
-> Commit 0cbd4b34cda9 ("xhci: mediatek: support MTK xHCI host controller")
-> introduced a QUIRK for the MTK platform to adjust this interval to 20,
-> which translates to an IMOD interval of 5,000ns (20 * 250)ns. This is
-> due to the fact that the MTK controller IMOD interval is 8 times
-> as much as defined in xHCI spec.
-> 
-> Instead of adding more quirk bits for additional platforms, this patch
-> introduces the ability for vendors to set the IMOD_INTERVAL as is
-> optimal for their platform. By using device_property_read_u32() on
-> "imod-interval-ns", the IMOD INTERVAL can be specified in nano seconds.
-> If no interval is specified, the default of 40,000ns (IMOD=160) will be
-> used.
-> 
-> No bounds checking has been implemented due to the fact that a vendor
-> may have violated the spec and would need to specify a value outside of
-> the max 8,000 IRQs/second limit specified in the xHCI spec.
-> 
-> Tested-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Adam Wallis <awallis-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-> ---
-> changes from v3:
->   * Changed imod-interval to imod-interval-ns [Rob Herring/Chunfeng]
->   * Changed "modulation" to "moderation" throughout patch [Mathias]
-> changes from v2:
->   * Added PCI default value [Mathias]
->   * Removed xhci-mtk.h from xhci-plat.c [Chunfeng Yun]
->   * Removed MTK quirk from xhci-plat and moved logic to xhci-mtk [Chunfeng]
->   * Updated bindings Documentation to use proper units [Rob Herring]
->   * Added imod-interval description and example to MTK binding documentation
-> changes from v1:
->   * Removed device_property_read_u32() per suggestion from greg k-h
->   * Used ER_IRQ_INTERVAL_MASK in place of (u16) cast
-> 
->  Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt | 2 ++
->  Documentation/devicetree/bindings/usb/usb-xhci.txt          | 1 +
->  drivers/usb/host/xhci-mtk.c                                 | 9 +++++++++
->  drivers/usb/host/xhci-pci.c                                 | 3 +++
->  drivers/usb/host/xhci-plat.c                                | 5 +++++
->  drivers/usb/host/xhci.c                                     | 7 ++-----
->  drivers/usb/host/xhci.h                                     | 2 ++
->  7 files changed, 24 insertions(+), 5 deletions(-)
+From: Sean Wang <sean.wang@mediatek.com>
 
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+In order to let MT7530 switch can recognize well those packets
+having both special tag and VLAN tag, the information about
+the special tag should be carried on the existing VLAN tag.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ net/dsa/tag_mtk.c | 38 +++++++++++++++++++++++++++++---------
+ 1 file changed, 29 insertions(+), 9 deletions(-)
+
+diff --git a/net/dsa/tag_mtk.c b/net/dsa/tag_mtk.c
+index 8475434..11535bc 100644
+--- a/net/dsa/tag_mtk.c
++++ b/net/dsa/tag_mtk.c
+@@ -13,10 +13,13 @@
+  */
+ 
+ #include <linux/etherdevice.h>
++#include <linux/if_vlan.h>
+ 
+ #include "dsa_priv.h"
+ 
+ #define MTK_HDR_LEN		4
++#define MTK_HDR_XMIT_UNTAGGED		0
++#define MTK_HDR_XMIT_TAGGED_TPID_8100	1
+ #define MTK_HDR_RECV_SOURCE_PORT_MASK	GENMASK(2, 0)
+ #define MTK_HDR_XMIT_DP_BIT_MASK	GENMASK(5, 0)
+ 
+@@ -25,20 +28,37 @@ static struct sk_buff *mtk_tag_xmit(struct sk_buff *skb,
+ {
+ 	struct dsa_port *dp = dsa_slave_to_port(dev);
+ 	u8 *mtk_tag;
++	bool is_vlan_skb = true;
+ 
+-	if (skb_cow_head(skb, MTK_HDR_LEN) < 0)
+-		return NULL;
+-
+-	skb_push(skb, MTK_HDR_LEN);
++	/* Build the special tag after the MAC Source Address. If VLAN header
++	 * is present, it's required that VLAN header and special tag is
++	 * being combined. Only in this way we can allow the switch can parse
++	 * the both special and VLAN tag at the same time and then look up VLAN
++	 * table with VID.
++	 */
++	if (!skb_vlan_tagged(skb)) {
++		if (skb_cow_head(skb, MTK_HDR_LEN) < 0)
++			return NULL;
+ 
+-	memmove(skb->data, skb->data + MTK_HDR_LEN, 2 * ETH_ALEN);
++		skb_push(skb, MTK_HDR_LEN);
++		memmove(skb->data, skb->data + MTK_HDR_LEN, 2 * ETH_ALEN);
++		is_vlan_skb = false;
++	}
+ 
+-	/* Build the tag after the MAC Source Address */
+ 	mtk_tag = skb->data + 2 * ETH_ALEN;
+-	mtk_tag[0] = 0;
++
++	/* Mark tag attribute on special tag insertion to notify hardware
++	 * whether that's a combined special tag with 802.1Q header.
++	 */
++	mtk_tag[0] = is_vlan_skb ? MTK_HDR_XMIT_TAGGED_TPID_8100 :
++		     MTK_HDR_XMIT_UNTAGGED;
+ 	mtk_tag[1] = (1 << dp->index) & MTK_HDR_XMIT_DP_BIT_MASK;
+-	mtk_tag[2] = 0;
+-	mtk_tag[3] = 0;
++
++	/* Tag control information is kept for 802.1Q */
++	if (!is_vlan_skb) {
++		mtk_tag[2] = 0;
++		mtk_tag[3] = 0;
++	}
+ 
+ 	return skb;
+ }
+-- 
+2.7.4
