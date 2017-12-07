@@ -1,55 +1,49 @@
-From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH net-next 3/3] net: dsa: mediatek: update MAINTAINERS entry
- with MediaTek switch driver
-Date: Thu, 7 Dec 2017 14:06:12 +0800
-Message-ID: <9462ddd33c2f34839c68b73f76017487d4b5cb21.1512625814.git.sean.wang@mediatek.com>
-References: <cover.1512625814.git.sean.wang@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v2 2/3] arm: dts: mt7623: update mmc related nodes with the appropriate fallback
+Date: Thu, 7 Dec 2017 14:43:23 +0800
+Message-ID: <134d7930a10387749cba9a630185c67912c924c8.1512628593.git.sean.wang@mediatek.com>
+References: <cover.1512628593.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <cover.1512625814.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, andrew-g2DYL2Zd6BY@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, vivien.didelot-4ysUXcep3aM1wj+D4I0NRVaTQe2KTcn/@public.gmane.org
-Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1512628593.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+From: Sean Wang <sean.wang@mediatek.com>
 
-I work for MediaTek and maintain SoC targeting to home gateway and
-also will keep extending and testing the function from MediaTek
-switch.
+The current mmc related nodes should be falling back to MT2701
+as the dt-binding defines and which has more appropriate setup
+for MT7623.
 
-Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- MAINTAINERS | 7 +++++++
- 1 file changed, 7 insertions(+)
+ arch/arm/boot/dts/mt7623.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c0edf30..070fd91 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -8723,6 +8723,13 @@ L:	netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
- S:	Maintained
- F:	drivers/net/ethernet/mediatek/
+diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+index 0640fb7..343d3b1 100644
+--- a/arch/arm/boot/dts/mt7623.dtsi
++++ b/arch/arm/boot/dts/mt7623.dtsi
+@@ -641,7 +641,7 @@
  
-+MEDIATEK SWITCH DRIVER
-+M:	Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+L:	netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-+S:	Maintained
-+F:	drivers/net/dsa/mt7530.*
-+F:	net/dsa/tag_mtk.c
-+
- MEDIATEK JPEG DRIVER
- M:	Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
- M:	Bin Liu <bin.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+ 	mmc0: mmc@11230000 {
+ 		compatible = "mediatek,mt7623-mmc",
+-			     "mediatek,mt8135-mmc";
++			     "mediatek,mt2701-mmc";
+ 		reg = <0 0x11230000 0 0x1000>;
+ 		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&pericfg CLK_PERI_MSDC30_0>,
+@@ -652,7 +652,7 @@
+ 
+ 	mmc1: mmc@11240000 {
+ 		compatible = "mediatek,mt7623-mmc",
+-			     "mediatek,mt8135-mmc";
++			     "mediatek,mt2701-mmc";
+ 		reg = <0 0x11240000 0 0x1000>;
+ 		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&pericfg CLK_PERI_MSDC30_1>,
 -- 
 2.7.4
