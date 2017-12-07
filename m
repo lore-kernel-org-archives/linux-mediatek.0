@@ -1,42 +1,60 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v2 3/3] arm: dts: mt7623: fix card detection issue on bananapi-r2
-Date: Thu, 7 Dec 2017 14:43:24 +0800
-Message-ID: <e71b755467ce9a1f8bf78e2b6cd2e1b63e8338cd.1512628593.git.sean.wang@mediatek.com>
-References: <cover.1512628593.git.sean.wang@mediatek.com>
+From: Mathias Nyman <mathias.nyman@linux.intel.com>
+Subject: Re: [PATCH] usb: xhci: fix TDS for MTK xHCI1.1
+Date: Thu, 7 Dec 2017 08:55:56 +0200
+Message-ID: <27d72801-417e-5726-561a-dd521795bc23@linux.intel.com>
+References: <035626be9cb863b145b02369fe517d1c80335398.1512542108.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <cover.1512628593.git.sean.wang@mediatek.com>
-Sender: stable-owner@vger.kernel.org
-To: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, stable@vger.kernel.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <035626be9cb863b145b02369fe517d1c80335398.1512542108.git.chunfeng.yun@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On 06.12.2017 08:42, Chunfeng Yun wrote:
+> For MTK's xHCI 1.0 or latter, TD size is the number of max
+> packet sized packets remaining in the TD, not including
+> this TRB (following spec).
+> 
+> For MTK's xHCI 0.96 and older, TD size is the number of max
+> packet sized packets remaining in the TD, including this TRB
+> (not following spec).
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>   drivers/usb/host/xhci-ring.c | 6 +++---
+>   1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/usb/host/xhci-ring.c b/drivers/usb/host/xhci-ring.c
+> index c239c68..0619869 100644
+> --- a/drivers/usb/host/xhci-ring.c
+> +++ b/drivers/usb/host/xhci-ring.c
+> @@ -3108,7 +3108,7 @@ static u32 xhci_td_remainder(struct xhci_hcd *xhci, int transferred,
+>   {
+>   	u32 maxp, total_packet_count;
+>   
+> -	/* MTK xHCI is mostly 0.97 but contains some features from 1.0 */
+> +	/* MTK xHCI 0.96 contains some features from 1.0 */
+>   	if (xhci->hci_version < 0x100 && !(xhci->quirks & XHCI_MTK_HOST))
+>   		return ((td_total_len - transferred) >> 10);
+>   
+> @@ -3117,8 +3117,8 @@ static u32 xhci_td_remainder(struct xhci_hcd *xhci, int transferred,
+>   	    trb_buff_len == td_total_len)
+>   		return 0;
+>   
+> -	/* for MTK xHCI, TD size doesn't include this TRB */
+> -	if (xhci->quirks & XHCI_MTK_HOST)
+> +	/* for MTK xHCI 0.96, TD size include this TRB, but not in 1.x */
+> +	if ((xhci->quirks & XHCI_MTK_HOST) && (xhci->hci_version < 0x100))
+>   		trb_buff_len = 0;
+>   
+>   	maxp = usb_endpoint_maxp(&urb->ep->desc);
+> 
 
-Fix that bananapi-r2 booting from SD-card would fail since incorrect
-polarity is applied to the previous setup with GPIO_ACTIVE_HIGH.
+Thanks, adding.
+Adding stable tag as well
 
-Cc: stable@vger.kernel.org
-Fixes: 0eed8d097612 ("arm: dts: mt7623: Add SD-card and EMMC to bananapi-r2")
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Tested-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-index 688a863..7bf5aa2 100644
---- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-+++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-@@ -204,7 +204,7 @@
- 	bus-width = <4>;
- 	max-frequency = <50000000>;
- 	cap-sd-highspeed;
--	cd-gpios = <&pio 261 0>;
-+	cd-gpios = <&pio 261 GPIO_ACTIVE_LOW>;
- 	vmmc-supply = <&mt6323_vmch_reg>;
- 	vqmmc-supply = <&mt6323_vio18_reg>;
- };
--- 
-2.7.4
+-Mathias
