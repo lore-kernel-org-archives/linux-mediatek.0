@@ -1,152 +1,52 @@
-From: Andrew-sh Cheng <andrew-sh.cheng@mediatek.com>
-Subject: [PATCH v1 4/4] arm64: dts: mediatek: add mt2712 cpufreq related device nodes
-Date: Fri, 8 Dec 2017 14:07:58 +0800
-Message-ID: <1512713278-17807-5-git-send-email-andrew-sh.cheng@mediatek.com>
-References: <1512713278-17807-1-git-send-email-andrew-sh.cheng@mediatek.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [RFC PATCH 1/6] drm: Add Content Protection property
+Date: Fri, 8 Dec 2017 09:55:33 +0100
+Message-ID: <20171208085533.ekzgow4svhw7xnqz@phenom.ffwll.local>
+References: <20171130030907.26848-1-seanpaul@chromium.org>
+ <20171130030907.26848-2-seanpaul@chromium.org>
+ <20171205102840.GB12982@amd>
+ <20171205104538.b4fxdjad3c46koas@phenom.ffwll.local>
+ <20171207143052.533e1e94@alans-desktop>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1512713278-17807-1-git-send-email-andrew-sh.cheng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: rjw@rjwysocki.net, viresh.kumar@linaro.org, matthias.bgg@gmail.com, mark.rutland@arm.com
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, robh+dt@kernel.org, devicetree@vger.kernel.org, Andrew-sh Cheng <andrew-sh.cheng@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20171207143052.533e1e94@alans-desktop>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: Alan Cox <gnomes@lxorguk.ukuu.org.uk>
+Cc: David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Pavel Machek <pavel@ucw.cz>, Daniel Vetter <daniel.vetter@intel.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add opp v2 information,
-and also add clocks, regulators and opp information into cpu nodes
-
-Signed-off-by: Andrew-sh Cheng <andrew-sh.cheng@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt2712-evb.dts | 27 ++++++++++++++
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi   | 57 +++++++++++++++++++++++++++++
- 2 files changed, 84 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-index 14163b9..d47f3c7 100644
---- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-@@ -26,6 +26,33 @@
- 		linux,initrd-start = <0x45000000>;
- 		linux,initrd-end   = <0x4a000000>;
- 	};
-+
-+	cpus_fixed_vproc0: fixedregulator@0 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vproc_buck0";
-+		regulator-min-microvolt = <1000000>;
-+		regulator-max-microvolt = <1000000>;
-+	};
-+
-+	cpus_fixed_vproc1: fixedregulator@1 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vproc_buck1";
-+		regulator-min-microvolt = <1000000>;
-+		regulator-max-microvolt = <1000000>;
-+	};
-+
-+};
-+
-+&cpu0 {
-+	proc-supply = <&cpus_fixed_vproc0>;
-+};
-+
-+&cpu1 {
-+	proc-supply = <&cpus_fixed_vproc0>;
-+};
-+
-+&cpu2 {
-+	proc-supply = <&cpus_fixed_vproc1>;
- };
- 
- &uart0 {
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-index 61dd763..fdf66f4 100644
---- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-@@ -16,6 +16,48 @@
- 	#address-cells = <2>;
- 	#size-cells = <2>;
- 
-+	cluster0_opp: opp_table0 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+		opp00 {
-+			opp-hz = /bits/ 64 <598000000>;
-+			opp-microvolt = <1000000>;
-+		};
-+		opp01 {
-+			opp-hz = /bits/ 64 <702000000>;
-+			opp-microvolt = <1000000>;
-+		};
-+		opp02 {
-+			opp-hz = /bits/ 64 <793000000>;
-+			opp-microvolt = <1000000>;
-+		};
-+	};
-+
-+	cluster1_opp: opp_table1 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+		opp00 {
-+			opp-hz = /bits/ 64 <598000000>;
-+			opp-microvolt = <1000000>;
-+		};
-+		opp01 {
-+			opp-hz = /bits/ 64 <702000000>;
-+			opp-microvolt = <1000000>;
-+		};
-+		opp02 {
-+			opp-hz = /bits/ 64 <793000000>;
-+			opp-microvolt = <1000000>;
-+		};
-+		opp03 {
-+			opp-hz = /bits/ 64 <897000000>;
-+			opp-microvolt = <1000000>;
-+		};
-+		opp04 {
-+			opp-hz = /bits/ 64 <1001000000>;
-+			opp-microvolt = <1000000>;
-+		};
-+	};
-+
- 	cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-@@ -41,6 +83,11 @@
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a35";
- 			reg = <0x000>;
-+			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
-+				<&topckgen CLK_TOP_F_MP0_PLL1>;
-+			clock-names = "cpu", "intermediate";
-+			proc-supply = <&cpus_fixed_vproc0>;
-+			operating-points-v2 = <&cluster0_opp>;
- 			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
- 		};
- 
-@@ -49,6 +96,11 @@
- 			compatible = "arm,cortex-a35";
- 			reg = <0x001>;
- 			enable-method = "psci";
-+			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
-+				<&topckgen CLK_TOP_F_MP0_PLL1>;
-+			clock-names = "cpu", "intermediate";
-+			proc-supply = <&cpus_fixed_vproc0>;
-+			operating-points-v2 = <&cluster0_opp>;
- 			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
- 		};
- 
-@@ -57,6 +109,11 @@
- 			compatible = "arm,cortex-a72";
- 			reg = <0x200>;
- 			enable-method = "psci";
-+			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
-+				<&topckgen CLK_TOP_F_BIG_PLL1>;
-+			clock-names = "cpu", "intermediate";
-+			proc-supply = <&cpus_fixed_vproc1>;
-+			operating-points-v2 = <&cluster1_opp>;
- 			cpu-idle-states = <&CPU_SLEEP_0 &CLUSTER_SLEEP_0>;
- 		};
- 
--- 
-2.6.4
+T24gVGh1LCBEZWMgMDcsIDIwMTcgYXQgMDI6MzA6NTJQTSArMDAwMCwgQWxhbiBDb3ggd3JvdGU6
+Cj4gPiBJZiB5b3Ugd2FudCB0byBhY3R1YWxseSBsb2NrIGRvd24gYSBtYWNoaW5lIHRvIGltcGxl
+bWVudCBjb250ZW50Cj4gPiBwcm90ZWN0aW9uLCB0aGVuIHlvdSBuZWVkIHNlY3VyZSBib290IHdp
+dGhvdXQgdW5sb2NrYWJsZSBib290LWxvYWRlciBhbmQgYQo+ID4gcGlsZSBtb3JlIGJpdHMgaW4g
+dXNlcnNwYWNlLiAKPiAKPiBTbyBsZXQgbWUgdGFrZSBteSBJbnRlbCBoYXQgb2ZmIGZvciBhIG1v
+bWVudC4KPiAKPiBUaGUgdXBzdHJlYW0gcG9saWN5IGhhcyBhbHdheXMgYmVlbiB0aGF0IHdlIGRv
+bid0IG1lcmdlIHRoaW5ncyB3aGljaAo+IGRvbid0IGhhdmUgYW4gb3BlbiB1c2FibGUgdXNlciBz
+cGFjZS4gSXMgdGhlIEhEQ1AgZW5jcnlwdGlvbiBmZWF0dXJlCj4gdXNlZnVsIG9uIGl0cyBvd24g
+PyBXaGF0IGRvIHVzZXJzIGdldCBmcm9tIGl0ID8KPiAKPiBJZiB0aGlzIGlzIGp1c3QgYW4gZW5h
+YmxlciBmb3IgYSBsdW1wIG9mIGJpbmFyeSBzdHVmZiBpbiBDaHJvbWVPUyB0aGVuIEkKPiBkb24n
+dCB0aGluayBpdCBiZWxvbmdzLCBpZiBpdCBpcyB1c2VmdWwgc3RhbmRhbG9uZSB0aGVuIGl0IHNl
+ZW1zIGl0IGRvZXMKPiBiZWxvbmcgPwoKVGhlIGNyb3Mgc2lkZSBpcyBvZmMgYWxsIG9wZW4gc291
+cmNlLiBkcmktZGV2ZWwgaXMgZXh0cmVtZWx5IHN0cmljdCB3aXRoCm5vdCB0YWtpbmcgYW55dGhp
+bmcgdGhhdCBkb2Vzbid0IGZ1bGxmaWwgdGhpcyByZXF1aXJlbWVudCwgcHJvYmFibHkgbW9yZQpz
+dHJpY3QgdGhhbiBhbnlvbmUgZWxzZS4gU2VhbiBoYXMgdGhlIGxpbmsgaW4gdGhlIGNvdmVyIGxl
+dHRlciBvZiBoaXMKcGF0Y2ggc2VyaWVzLgoKRm9yIG1vcmUgY29udGV4dCwgaGVyZSdzIG91ciBk
+b2N1bWVudGVkIGV4cGVjdGF0aW9ucyBhYm91dCB0aGUgdXNlcnNwYWNlCnNpZGUgb2YgYW55IHVh
+cGkgYWRkaXRpb24gdG8gZHJtOgoKaHR0cHM6Ly9kcmkuZnJlZWRlc2t0b3Aub3JnL2RvY3MvZHJt
+L2dwdS9kcm0tdWFwaS5odG1sI29wZW4tc291cmNlLXVzZXJzcGFjZS1yZXF1aXJlbWVudHMKCkNo
+ZWVycywgRGFuaWVsCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBD
+b3Jwb3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC1nZnggbWFpbGluZyBsaXN0CkludGVsLWdmeEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9pbnRlbC1nZngK
