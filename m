@@ -1,113 +1,41 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH 4/7] usb: mtu3: use APIs of mtu_wakeup to support remote wakeup
-Date: Sat, 9 Dec 2017 16:45:33 +0800
-Message-ID: <1512809136-2779-5-git-send-email-chunfeng.yun@mediatek.com>
-References: <1512809136-2779-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH v1 1/4] cpufreq: mediatek: add mt2712 into compatible list
+Date: Mon, 11 Dec 2017 13:24:46 +0530
+Message-ID: <20171211075446.GA25177@vireshk-i7>
+References: <1512713278-17807-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <1512713278-17807-2-git-send-email-andrew-sh.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1512809136-2779-1-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mathias Nyman <mathias.nyman@intel.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Jean Delvare <jdelvare@suse.de>, Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1512713278-17807-2-git-send-email-andrew-sh.cheng@mediatek.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Andrew-sh Cheng <andrew-sh.cheng@mediatek.com>
+Cc: rjw@rjwysocki.net, matthias.bgg@gmail.com, mark.rutland@arm.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, robh+dt@kernel.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On some platforms, there are two SSUSB IPs, but the old way of
-usb wakeup doesn't support it, so use the new APIs of mtu_wakeup
-to support it.
+On 08-12-17, 14:07, Andrew-sh Cheng wrote:
+> Support mt2712 in mediatek-cpufreq.c
+> 
+> Signed-off-by: Andrew-sh Cheng <andrew-sh.cheng@mediatek.com>
+> ---
+>  drivers/cpufreq/mediatek-cpufreq.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+> index 18c4bd9..62aec5c 100644
+> --- a/drivers/cpufreq/mediatek-cpufreq.c
+> +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> @@ -574,6 +574,7 @@ static struct platform_driver mtk_cpufreq_platdrv = {
+>  /* List of machines supported by this driver */
+>  static const struct of_device_id mtk_cpufreq_machines[] __initconst = {
+>  	{ .compatible = "mediatek,mt2701", },
+> +	{ .compatible = "mediatek,mt2712", },
+>  	{ .compatible = "mediatek,mt7622", },
+>  	{ .compatible = "mediatek,mt7623", },
+>  	{ .compatible = "mediatek,mt817x", },
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/mtu3/mtu3.h      |  2 ++
- drivers/usb/mtu3/mtu3_host.c | 39 +++++++++++++++++++++++----------------
- 2 files changed, 25 insertions(+), 16 deletions(-)
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 
-diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
-index 3c888d9..9f3eb79 100644
---- a/drivers/usb/mtu3/mtu3.h
-+++ b/drivers/usb/mtu3/mtu3.h
-@@ -255,6 +255,8 @@ struct ssusb_mtk {
- 	/* usb wakeup for host mode */
- 	bool wakeup_en;
- 	struct regmap *pericfg;
-+	struct mtu_wakeup *uwk;
-+	bool new_wakeup;
- };
- 
- /**
-diff --git a/drivers/usb/mtu3/mtu3_host.c b/drivers/usb/mtu3/mtu3_host.c
-index 7e948c0..f769b65 100644
---- a/drivers/usb/mtu3/mtu3_host.c
-+++ b/drivers/usb/mtu3/mtu3_host.c
-@@ -14,6 +14,7 @@
- #include <linux/mfd/syscon.h>
- #include <linux/of_device.h>
- #include <linux/regmap.h>
-+#include <linux/soc/mediatek/usb-wakeup.h>
- 
- #include "mtu3.h"
- #include "mtu3_dr.h"
-@@ -56,24 +57,26 @@ static void ssusb_wakeup_ip_sleep_dis(struct ssusb_mtk *ssusb)
- int ssusb_wakeup_of_property_parse(struct ssusb_mtk *ssusb,
- 				struct device_node *dn)
- {
--	struct device *dev = ssusb->dev;
-+	/* try the new way first */
-+	ssusb->new_wakeup = of_property_read_bool(dn, "wakeup-source");
-+	if (ssusb->new_wakeup) {
-+		ssusb->uwk = devm_of_uwk_get_by_index(ssusb->dev, dn, 0);
-+		if (IS_ERR(ssusb->uwk))
-+			dev_err(ssusb->dev, "fail to get mtu_wakeup\n");
-+
-+		return PTR_ERR_OR_ZERO(ssusb->uwk);
-+	}
- 
--	/*
--	 * Wakeup function is optional, so it is not an error if this property
--	 * does not exist, and in such case, no need to get relative
--	 * properties anymore.
--	 */
-+	/* Wakeup function is optional. (deprecated, use the new way instead) */
- 	ssusb->wakeup_en = of_property_read_bool(dn, "mediatek,enable-wakeup");
--	if (!ssusb->wakeup_en)
--		return 0;
--
--	ssusb->pericfg = syscon_regmap_lookup_by_phandle(dn,
-+	if (ssusb->wakeup_en) {
-+		ssusb->pericfg = syscon_regmap_lookup_by_phandle(dn,
- 						"mediatek,syscon-wakeup");
--	if (IS_ERR(ssusb->pericfg)) {
--		dev_err(dev, "fail to get pericfg regs\n");
--		return PTR_ERR(ssusb->pericfg);
-+		if (IS_ERR(ssusb->pericfg)) {
-+			dev_err(ssusb->dev, "fail to get pericfg regs\n");
-+			return PTR_ERR(ssusb->pericfg);
-+		}
- 	}
--
- 	return 0;
- }
- 
-@@ -235,7 +238,9 @@ void ssusb_host_exit(struct ssusb_mtk *ssusb)
- 
- int ssusb_wakeup_enable(struct ssusb_mtk *ssusb)
- {
--	if (ssusb->wakeup_en)
-+	if (ssusb->new_wakeup)
-+		mtu_wakeup_enable(ssusb->uwk);
-+	else if (ssusb->wakeup_en)
- 		ssusb_wakeup_ip_sleep_en(ssusb);
- 
- 	return 0;
-@@ -243,6 +248,8 @@ int ssusb_wakeup_enable(struct ssusb_mtk *ssusb)
- 
- void ssusb_wakeup_disable(struct ssusb_mtk *ssusb)
- {
--	if (ssusb->wakeup_en)
-+	if (ssusb->new_wakeup)
-+		mtu_wakeup_disable(ssusb->uwk);
-+	else if (ssusb->wakeup_en)
- 		ssusb_wakeup_ip_sleep_dis(ssusb);
- }
 -- 
-1.9.1
+viresh
