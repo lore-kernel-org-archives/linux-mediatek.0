@@ -1,33 +1,59 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 1/2] thermal: mtk: Cleanup unused defines
-Date: Thu, 14 Dec 2017 12:26:13 +0100
-Message-ID: <af532d92-9443-15e9-607b-fc7f5cbab88f@linaro.org>
-References: <20171201104321.8410-1-matthias.bgg@gmail.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v2 1/3] mmc: dt-bindings: add mmc support to MT7623 SoC
+Date: Thu, 14 Dec 2017 22:20:29 +0800
+Message-ID: <1513261229.28444.33.camel@mtkswgap22>
+References: <cover.1512628593.git.sean.wang@mediatek.com>
+         <4f06b509e1e3d4cf5578841cfcf7ec966afd2d48.1512628593.git.sean.wang@mediatek.com>
+         <86e53802-9bb4-35eb-66e1-f9a401e31863@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171201104321.8410-1-matthias.bgg@gmail.com>
-Content-Language: en-US
+In-Reply-To: <86e53802-9bb4-35eb-66e1-f9a401e31863@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, rui.zhang@intel.com, edubezval@gmail.com
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 01/12/2017 11:43, Matthias Brugger wrote:
-> The mtk_thermal has some defiens which are never used within the driver.
-> This patch delets them.
+On Thu, 2017-12-14 at 12:16 +0100, Matthias Brugger wrote:
+> Hi Ulf,
 > 
-> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+> On 12/07/2017 07:43 AM, sean.wang@mediatek.com wrote:
+> > From: Sean Wang <sean.wang@mediatek.com>
+> > 
+> > Add the devicetree binding for MT7623 SoC using MT2701 as the fallback.
+> > 
+> > Cc: devicetree@vger.kernel.org
+> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > Acked-by: Rob Herring <robh@kernel.org>
+> > ---
+> >  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 2 ++
+> >  1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> > index 72d2a73..9b80176 100644
+> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> > @@ -12,6 +12,8 @@ Required properties:
+> >  	"mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
+> >  	"mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
+> >  	"mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
+> > +	"mediatek,mt7623-mmc", "mediatek,mt2701-mmc": for MT7623 SoC
+> > +
+> >  - reg: physical base address of the controller and length
+> >  - interrupts: Should contain MSDC interrupt number
+> >  - clocks: Should contain phandle for the clock feeding the MMC controller
+> > 
+> 
+> Are you fine to take this patch through your branch, or shall I take it through
+> mine?
+> 
+> @Sean it seems you forgot to send this patch to Ulf as well. In the future
+> please take care to send the patch to all relevant people and mailinglist.
+> 
 
-Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+Okay. I'll be. really sorry for the inconvenience
 
-
-
-
--- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+> Thanks,
+> Matthias
+> 
