@@ -1,36 +1,42 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] arm64: dts: Remove leading 0x and 0s from bindings
- notation
-Date: Thu, 14 Dec 2017 19:03:46 +0100
-Message-ID: <98a7dc30-e736-eaf8-204f-2ac2b3ea79b9@gmail.com>
-References: <20171214165352.27902-1-malat@debian.org>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH v2 net-next 0/3] add VLAN support to DSA MT7530
+Date: Thu, 14 Dec 2017 13:30:03 -0500 (EST)
+Message-ID: <20171214.133003.2081913730304316242.davem@davemloft.net>
+References: <cover.1513136754.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-msm-owner@vger.kernel.org>
-In-Reply-To: <20171214165352.27902-1-malat@debian.org>
-Content-Language: en-US
-Sender: linux-arm-msm-owner@vger.kernel.org
-To: Mathieu Malaterre <malat@debian.org>, Rob Herring <robh+dt@kernel.org>
-Cc: Wei Xu <xuwei5@hisilicon.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Kees Cook <keescook@chromium.org>, Anton Vorontsov <anton@enomsg.org>, Colin Cross <ccross@android.com>, Tony Luck <tony.luck@intel.com>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-soc@vger.kernel.org
+Content-Type: Text/Plain; charset=iso-8859-7
+Content-Transfer-Encoding: base64
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1513136754.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: andrew@lunn.ch, f.fainelli@gmail.com, vivien.didelot@savoirfairelinux.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 12/14/2017 05:53 PM, Mathieu Malaterre wrote:
-[...]
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index 26396ef53bde..0446b122a6e2 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -249,7 +249,7 @@
->  			reg = <0 0x10005000 0 0x1000>;
->  		};
->  
-> -		pio: pinctrl@0x10005000 {
-> +		pio: pinctrl@10005000 {
->  			compatible = "mediatek,mt8173-pinctrl";
->  			reg = <0 0x1000b000 0 0x1000>;
->  			mediatek,pctl-regmap = <&syscfg_pctl_a>;
-
-Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+RnJvbTogPHNlYW4ud2FuZ0BtZWRpYXRlay5jb20+DQpEYXRlOiBXZWQsIDEzIERlYyAyMDE3IDEy
+OjAxOjEwICswODAwDQoNCj4gRnJvbTogU2VhbiBXYW5nIDxzZWFuLndhbmdAbWVkaWF0ZWsuY29t
+Pg0KPiANCj4gQ2hhbmdlcyBzaW5jZSB2MToNCj4gLSBmaXggdXAgdGhlIHR5cG8NCj4gLSBwcmVm
+ZXIgb3JkZXJpbmcgZGVjbGFyYXRpb25zIGxvbmdlc3QgdG8gc2hvcnRlc3QNCj4gLSB1cGRhdGUg
+dGhhdCB2bGFuX3ByZXBhcmUgY2FsbGJhY2sgc2hvdWxkIG5vdCBjaGFuZ2UgYW55IHN0YXRlDQo+
+IC0gdXNlIGxvd2VyIGNhc2UgbGV0dGVyIGZvciBmdW5jdGlvbiBuYW1pbmcNCj4gDQo+IFRoZSBw
+YXRjaHNldCBleHRlbmRzIERTQSBNVDc1MzAgdG8gVkxBTiBzdXBwb3J0IHRocm91Z2ggZmlsbGlu
+ZyByZXF1aXJlZA0KPiBjYWxsYmFja3MgaW4gcGF0Y2ggMSBhbmQgbWVyZ2luZyB0aGUgc3BlY2lh
+bCB0YWcgd2l0aCBWTEFOIHRhZyBpbiBwYXRjaCAyDQo+IGZvciBhbGxvd2luZyB0aGF0IHRoZSBo
+YXJkd2FyZSBjYW4gaGFuZGxlIHRoZXNlIHBhY2tldHMgd2l0aCBWSUQgZnJvbSB0aGUNCj4gQ1BV
+IHBvcnQuDQoNClRoaXMgZG9lc24ndCBldmVuIGNvbXBpbGU6DQoNCmRyaXZlcnMvbmV0L2RzYS9t
+dDc1MzAuYzogSW4gZnVuY3Rpb24goW10NzUzMF9wb3J0X3ZsYW5fYWRkojoNCmRyaXZlcnMvbmV0
+L2RzYS9tdDc1MzAuYzoxMTMxOjY6IHdhcm5pbmc6IHVudXNlZCB2YXJpYWJsZSChcmV0oiBbLVd1
+bnVzZWQtdmFyaWFibGVdDQogIGludCByZXQ7DQogICAgICBefn4NCmRyaXZlcnMvbmV0L2RzYS9t
+dDc1MzAuYzogQXQgdG9wIGxldmVsOg0KZHJpdmVycy9uZXQvZHNhL210NzUzMC5jOjEzMjQ6MjM6
+IGVycm9yOiBpbml0aWFsaXphdGlvbiBmcm9tIGluY29tcGF0aWJsZSBwb2ludGVyIHR5cGUgWy1X
+ZXJyb3I9aW5jb21wYXRpYmxlLXBvaW50ZXItdHlwZXNdDQogIC5wb3J0X3ZsYW5fcHJlcGFyZSA9
+IG10NzUzMF9wb3J0X3ZsYW5fcHJlcGFyZSwNCiAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+
+fn5+fn5+fn5+fn5+fn5+fn5+DQpkcml2ZXJzL25ldC9kc2EvbXQ3NTMwLmM6MTMyNDoyMzogbm90
+ZTogKG5lYXIgaW5pdGlhbGl6YXRpb24gZm9yIKFtdDc1MzBfc3dpdGNoX29wcy5wb3J0X3ZsYW5f
+cHJlcGFyZaIpDQpkcml2ZXJzL25ldC9kc2EvbXQ3NTMwLmM6MTMyNToyMDogZXJyb3I6IGluaXRp
+YWxpemF0aW9uIGZyb20gaW5jb21wYXRpYmxlIHBvaW50ZXIgdHlwZSBbLVdlcnJvcj1pbmNvbXBh
+dGlibGUtcG9pbnRlci10eXBlc10NCiAgLnBvcnRfdmxhbl9hZGQgID0gbXQ3NTMwX3BvcnRfdmxh
+bl9hZGQsDQogICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+DQpkcml2ZXJz
+L25ldC9kc2EvbXQ3NTMwLmM6MTMyNToyMDogbm90ZTogKG5lYXIgaW5pdGlhbGl6YXRpb24gZm9y
+IKFtdDc1MzBfc3dpdGNoX29wcy5wb3J0X3ZsYW5fYWRkoikNCmNjMTogc29tZSB3YXJuaW5ncyBi
+ZWluZyB0cmVhdGVkIGFzIGVycm9ycw0K
