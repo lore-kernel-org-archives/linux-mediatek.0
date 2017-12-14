@@ -1,21 +1,45 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [PATCH v2 net-next 0/3] add VLAN support to DSA MT7530
-Date: Wed, 13 Dec 2017 17:50:41 +0100
-Message-ID: <20171213165041.GC28466@lunn.ch>
-References: <cover.1513136754.git.sean.wang@mediatek.com>
+From: Colin King <colin.king@canonical.com>
+Subject: [PATCH] mt76: fix memcpy to potential null pointer on failed allocation
+Date: Thu, 14 Dec 2017 10:13:22 +0000
+Message-ID: <20171214101322.10178-1-colin.king@canonical.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <cover.1513136754.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: davem@davemloft.net, f.fainelli@gmail.com, vivien.didelot@savoirfairelinux.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Kalle Valo <kvalo@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Felix Fietkau <nbd@nbd.name>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Dec 13, 2017 at 12:01:10PM +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+From: Colin Ian King <colin.king@canonical.com>
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+Currently if the allocation of skb fails and returns NULL then the
+call to skb_put will cause a null pointer dereference. Fix this by
+checking for a null skb and returning NULL.  Note that calls to
+function mt76x2_mcu_msg_alloc don't directly check the null return
+but instead pass the NULL pointer to mt76x2_mcu_msg_send which
+checks for the NULL and returns ENOMEM in this case.
 
-    Andrew
+Detected by CoverityScan, CID#1462624 ("Dereference null return value")
+
+Fixes: 7bc04215a66b ("mt76: add driver code for MT76x2e")
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt76x2_mcu.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76x2_mcu.c
+index d45737ee1412..15820b11f9db 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_mcu.c
+@@ -45,6 +45,8 @@ static struct sk_buff *mt76x2_mcu_msg_alloc(const void *data, int len)
+ 	struct sk_buff *skb;
+ 
+ 	skb = alloc_skb(len, GFP_KERNEL);
++	if (!skb)
++		return NULL;
+ 	memcpy(skb_put(skb, len), data, len);
+ 
+ 	return skb;
+-- 
+2.14.1
