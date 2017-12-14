@@ -1,32 +1,48 @@
-From: Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH] mt76: fix memcpy to potential null pointer on failed
- allocation
-Date: Thu, 14 Dec 2017 11:17:50 +0100
-Message-ID: <946512c8-0a56-5714-5411-279830701283@nbd.name>
-References: <20171214101322.10178-1-colin.king@canonical.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 1/3] dt-bindings: ARM: Mediatek: Fix ethsys documentation
+Date: Thu, 14 Dec 2017 12:10:07 +0100
+Message-ID: <b92fd3bd-c61a-ae58-49ef-8727af065ec1@gmail.com>
+References: <20171201120708.30129-1-matthias.bgg@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171214101322.10178-1-colin.king@canonical.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20171201120708.30129-1-matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Colin King <colin.king@canonical.com>, Kalle Valo <kvalo@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org
+Cc: sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2017-12-14 11:13, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
+Hi Stephen, Michael,
+
+On 12/01/2017 01:07 PM, Matthias Brugger wrote:
+> The ethsys registers a reset controller, so we need to specify a
+> reset cell. This patch fixes the documentation.
 > 
-> Currently if the allocation of skb fails and returns NULL then the
-> call to skb_put will cause a null pointer dereference. Fix this by
-> checking for a null skb and returning NULL.  Note that calls to
-> function mt76x2_mcu_msg_alloc don't directly check the null return
-> but instead pass the NULL pointer to mt76x2_mcu_msg_send which
-> checks for the NULL and returns ENOMEM in this case.
+> Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> Detected by CoverityScan, CID#1462624 ("Dereference null return value")
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+> index 7aa3fa167668..6cc7840ff37a 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+> @@ -20,4 +20,5 @@ ethsys: clock-controller@1b000000 {
+>  	compatible = "mediatek,mt2701-ethsys", "syscon";
+>  	reg = <0 0x1b000000 0 0x1000>;
+>  	#clock-cells = <1>;
+> +	#reset-cells = <1>;
+>  };
 > 
-> Fixes: 7bc04215a66b ("mt76: add driver code for MT76x2e")
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
-Acked-by: Felix Fietkau <nbd@nbd.name>
+
+Will you take this patch through the clk tree, or shall I take it through my SoC
+tree?
+
+Regards,
+Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
