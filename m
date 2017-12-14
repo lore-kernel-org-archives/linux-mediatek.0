@@ -1,68 +1,33 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
 Subject: Re: [PATCH 1/2] thermal: mtk: Cleanup unused defines
-Date: Thu, 14 Dec 2017 12:21:33 +0100
-Message-ID: <e7158dac-5d29-5c89-518f-cbedaeb10df8@gmail.com>
+Date: Thu, 14 Dec 2017 12:26:13 +0100
+Message-ID: <af532d92-9443-15e9-607b-fc7f5cbab88f@linaro.org>
 References: <20171201104321.8410-1-matthias.bgg@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20171201104321.8410-1-matthias.bgg@gmail.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: rui.zhang@intel.com, edubezval@gmail.com
+To: Matthias Brugger <matthias.bgg@gmail.com>, rui.zhang@intel.com, edubezval@gmail.com
 Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 12/01/2017 11:43 AM, Matthias Brugger wrote:
+On 01/12/2017 11:43, Matthias Brugger wrote:
 > The mtk_thermal has some defiens which are never used within the driver.
 > This patch delets them.
 > 
 > Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-> ---
->  drivers/thermal/mtk_thermal.c | 9 +--------
->  1 file changed, 1 insertion(+), 8 deletions(-)
-> 
-> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-> index 1e61c09153c9..c75661a3801a 100644
-> --- a/drivers/thermal/mtk_thermal.c
-> +++ b/drivers/thermal/mtk_thermal.c
-> @@ -32,15 +32,10 @@
->  #include <linux/types.h>
->  
->  /* AUXADC Registers */
-> -#define AUXADC_CON0_V		0x000
-> -#define AUXADC_CON1_V		0x004
->  #define AUXADC_CON1_SET_V	0x008
->  #define AUXADC_CON1_CLR_V	0x00c
->  #define AUXADC_CON2_V		0x010
->  #define AUXADC_DATA(channel)	(0x14 + (channel) * 4)
-> -#define AUXADC_MISC_V		0x094
-> -
-> -#define AUXADC_CON1_CHANNEL(x)	BIT(x)
->  
->  #define APMIXED_SYS_TS_CON1	0x604
->  
-> @@ -158,8 +153,6 @@
->  /* The number of sensing points per bank */
->  #define MT2712_NUM_SENSORS_PER_ZONE	4
->  
-> -#define THERMAL_NAME    "mtk-thermal"
-> -
->  struct mtk_thermal;
->  
->  struct thermal_bank_cfg {
-> @@ -765,7 +758,7 @@ static struct platform_driver mtk_thermal_driver = {
->  	.probe = mtk_thermal_probe,
->  	.remove = mtk_thermal_remove,
->  	.driver = {
-> -		.name = THERMAL_NAME,
-> +		.name = "mtk-thermal",
->  		.of_match_table = mtk_thermal_of_match,
->  	},
->  };
-> 
 
-Kind ping.
+Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+
+
+
+
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
