@@ -1,62 +1,40 @@
-From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 1/3] mmc: dt-bindings: add mmc support to MT7623 SoC
-Date: Fri, 15 Dec 2017 08:11:43 +0100
-Message-ID: <CAPDyKFpd1jH1WHxF9CpKOnsDnDHubCt2pHpeg7qn5CQsVA9G3g@mail.gmail.com>
-References: <cover.1512628593.git.sean.wang@mediatek.com> <4f06b509e1e3d4cf5578841cfcf7ec966afd2d48.1512628593.git.sean.wang@mediatek.com>
- <86e53802-9bb4-35eb-66e1-f9a401e31863@gmail.com>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [net-next] phylib: Add device reset GPIO support causes DSA
+ MT7530 acquires reset-gpios fails
+Date: Fri, 15 Dec 2017 11:10:14 +0100
+Message-ID: <20171215101014.GB4213@lunn.ch>
+References: <1513320903.28444.65.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <86e53802-9bb4-35eb-66e1-f9a401e31863-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1513320903.28444.65.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: sergei.shtylyov@cogentembedded.com, f.fainelli@gmail.com, vivien.didelot@savoirfairelinux.com, davem@davemloft.net, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, richard.leitner@skidata.com, geert+renesas@glider.be
 List-Id: linux-mediatek@lists.infradead.org
 
-On 14 December 2017 at 12:16, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> Hi Ulf,
->
-> On 12/07/2017 07:43 AM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
->> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>
->> Add the devicetree binding for MT7623 SoC using MT2701 as the fallback.
->>
->> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
->> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
->> ---
->>  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 2 ++
->>  1 file changed, 2 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
->> index 72d2a73..9b80176 100644
->> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
->> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
->> @@ -12,6 +12,8 @@ Required properties:
->>       "mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
->>       "mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
->>       "mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
->> +     "mediatek,mt7623-mmc", "mediatek,mt2701-mmc": for MT7623 SoC
->> +
->>  - reg: physical base address of the controller and length
->>  - interrupts: Should contain MSDC interrupt number
->>  - clocks: Should contain phandle for the clock feeding the MMC controller
->>
->
-> Are you fine to take this patch through your branch, or shall I take it through
-> mine?
+On Fri, Dec 15, 2017 at 02:55:03PM +0800, Sean Wang wrote:
+> Hi Sergei,
+> 
+> Recently I found the patch commit bafbdd527d56 (phylib: Add device reset
+> GPIO support) would have the impact on MT7530 driver. Which causes the
+> DSA MT7530 device (it's the child node under mdio bus) gets the
+> reset-gpios fails because the same GPIO seems already be held in the
+> earlier mdiobus_register_device call patched through the commit.
+> 
+> do you have any idea how the commits also considers DSA case ?
+> 
+> I guessed the DSA lan9303, mv88e8 switch should have the same issue
+> since they have the same GPIO name as mdiobus_register_device required.
 
-I have pick it up, thanks!
+Hi Sean
 
->
-> @Sean it seems you forgot to send this patch to Ulf as well. In the future
-> please take care to send the patch to all relevant people and mailinglist.
+Ah, not good :-(
 
-Yeah, thanks for looping me in this time!
+I _think_ for the mv88e6xxx, we can remove the gpio reset code from
+the driver, and let the mdio core do it. I need to test to be sure.
 
-Kind regards
-Uffe
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Would that work for you?
+
+      Andrew
