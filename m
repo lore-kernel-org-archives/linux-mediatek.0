@@ -1,40 +1,59 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [net-next] phylib: Add device reset GPIO support causes DSA
- MT7530 acquires reset-gpios fails
-Date: Fri, 15 Dec 2017 11:10:14 +0100
-Message-ID: <20171215101014.GB4213@lunn.ch>
-References: <1513320903.28444.65.camel@mtkswgap22>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: Mathieu Malaterre <malat@debian.org>
+Subject: [PATCH 19/25] arm: mt7: dts: Remove leading 0x and 0s from bindings notation
+Date: Fri, 15 Dec 2017 13:46:52 +0100
+Message-ID: <20171215124652.30852-1-malat@debian.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1513320903.28444.65.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: sergei.shtylyov@cogentembedded.com, f.fainelli@gmail.com, vivien.didelot@savoirfairelinux.com, davem@davemloft.net, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, richard.leitner@skidata.com, geert+renesas@glider.be
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Mathieu Malaterre <malat@debian.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Dec 15, 2017 at 02:55:03PM +0800, Sean Wang wrote:
-> Hi Sergei,
-> 
-> Recently I found the patch commit bafbdd527d56 (phylib: Add device reset
-> GPIO support) would have the impact on MT7530 driver. Which causes the
-> DSA MT7530 device (it's the child node under mdio bus) gets the
-> reset-gpios fails because the same GPIO seems already be held in the
-> earlier mdiobus_register_device call patched through the commit.
-> 
-> do you have any idea how the commits also considers DSA case ?
-> 
-> I guessed the DSA lan9303, mv88e8 switch should have the same issue
-> since they have the same GPIO name as mdiobus_register_device required.
+Improve the DTS files by removing all the leading "0x" and zeros to fix the
+following dtc warnings:
 
-Hi Sean
+Warning (unit_address_format): Node /XXX unit name should not have leading "0x"
 
-Ah, not good :-(
+and
 
-I _think_ for the mv88e6xxx, we can remove the gpio reset code from
-the driver, and let the mdio core do it. I need to test to be sure.
+Warning (unit_address_format): Node /XXX unit name should not have leading 0s
 
-Would that work for you?
+Converted using the following command:
 
-      Andrew
+find . -type f \( -iname *.dts -o -iname *.dtsi \) -exec sed -i -e "s/@\([0-9a-fA-FxX\.;:#]+\)\s*{/@\L\1 {/g" -e "s/@0x\(.*\) {/@\1 {/g" -e "s/@0+\(.*\) {/@\1 {/g" {} +^C
+
+For simplicity, two sed expressions were used to solve each warnings separately.
+
+To make the regex expression more robust a few other issues were resolved,
+namely setting unit-address to lower case, and adding a whitespace before the
+the opening curly brace:
+
+https://elinux.org/Device_Tree_Linux#Linux_conventions
+
+This will solve as a side effect warning:
+
+Warning (simple_bus_reg): Node /XXX@<UPPER> simple-bus unit address format error, expected "<lower>"
+
+This is a follow up to commit 4c9847b7375a ("dt-bindings: Remove leading 0x from bindings notation")
+
+Reported-by: David Daney <ddaney@caviumnetworks.com>
+Suggested-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Mathieu Malaterre <malat@debian.org>
+---
+ arch/arm/boot/dts/mt7623n-rfb-nand.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/mt7623n-rfb-nand.dts b/arch/arm/boot/dts/mt7623n-rfb-nand.dts
+index 17c578f0d261..e66de8611650 100644
+--- a/arch/arm/boot/dts/mt7623n-rfb-nand.dts
++++ b/arch/arm/boot/dts/mt7623n-rfb-nand.dts
+@@ -51,7 +51,7 @@
+ 				reg = <0x40000 0x80000>;
+ 			};
+ 
+-			partition@C0000 {
++			partition@c0000 {
+ 				label = "uboot-env";
+ 				reg = <0xC0000 0x40000>;
+ 			};
+-- 
+2.11.0
