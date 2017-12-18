@@ -1,54 +1,51 @@
-From: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>
-Subject: Re: [net-next] phylib: Add device reset GPIO support causes DSA
- MT7530 acquires reset-gpios fails
-Date: Mon, 18 Dec 2017 09:01:20 +0100
-Message-ID: <20171218080120.GD30815@lunn.ch>
-References: <1513320903.28444.65.camel@mtkswgap22>
- <20171215101014.GB4213@lunn.ch>
- <1513569684.24235.12.camel@mtkswgap22>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH net] net: mediatek: setup proper state for disabled GMAC on the default
+Date: Mon, 18 Dec 2017 17:00:17 +0800
+Message-ID: <1ce99b9e64c6212eac501b98ee982b2e37fd7962.1513587298.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1513569684.24235.12.camel@mtkswgap22>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, vivien.didelot-4ysUXcep3aM1wj+D4I0NRVaTQe2KTcn/@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, richard.leitner-WcANXNA0UjBBDgjK7y7TUQ@public.gmane.org
+Content-Type: text/plain
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: john@phrozen.org, davem@davemloft.net
+Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sean
+From: Sean Wang <sean.wang@mediatek.com>
 
-> It probably can't. Because before the GPIO line is manipulated to reset,
-> certain power control should be handled such as power sources from
-> external PMIC to let devices actually enter the proper state.
-> 
-> So, I thought the kind of reset should be better controlled by the
-> specific driver, not by generic core.
+The current solution would setup fixed and force link of 1Gbps to the both
+GMAC on the default. However, The GMAC should always be put to link down
+state when the GMAC is disabled on certain target boards. Otherwise,
+the driver possibly receives unexpected data from the floating hardware
+connection through the unused GMAC. Although the driver had been added
+certain protection in RX path to get rid of such kind of unexpected data
+sent to the upper stack.
 
-Yes, the driver should do it in that case.
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-So we have a few choices:
-
-1) Change the name of one of the properties
-
-2) Make the new code look at the compatible string, any only apply a
-   reset if it is a PHY.
-
-3) Make the new code only hold the gpio when it needs it. Same for the
-   driver, so that they both can reset the device.
-
-Any other ideas? Any preferences? 2) and 3) are probably simpler to
-do, less backwards compatibility issues. 3) potentially could cause
-issues when a device is reset in the wrong context, because of
-external PMIC etc. So i'm thinking 2).
-
-	 Andrew
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 54adfd9..fc67e35 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1961,11 +1961,12 @@ static int mtk_hw_init(struct mtk_eth *eth)
+ 	/* set GE2 TUNE */
+ 	regmap_write(eth->pctl, GPIO_BIAS_CTRL, 0x0);
+ 
+-	/* GE1, Force 1000M/FD, FC ON */
+-	mtk_w32(eth, MAC_MCR_FIXED_LINK, MTK_MAC_MCR(0));
+-
+-	/* GE2, Force 1000M/FD, FC ON */
+-	mtk_w32(eth, MAC_MCR_FIXED_LINK, MTK_MAC_MCR(1));
++	/* Set linkdown as the default for each GMAC. Its own MCR would be set
++	 * up with the more appropriate value when mtk_phy_link_adjust call is
++	 * being invoked.
++	 */
++	for (i = 0; i < MTK_MAC_COUNT; i++)
++		mtk_w32(eth, 0, MTK_MAC_MCR(i));
+ 
+ 	/* Indicates CDM to parse the MTK special tag from CPU
+ 	 * which also is working out for untag packets.
+-- 
+2.7.4
