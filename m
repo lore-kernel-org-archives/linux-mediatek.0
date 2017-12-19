@@ -1,52 +1,59 @@
-From: Florian Fainelli <f.fainelli@gmail.com>
-Subject: Re: [net-next] phylib: Add device reset GPIO support causes DSA
- MT7530 acquires reset-gpios fails
-Date: Mon, 18 Dec 2017 11:21:29 -0800
-Message-ID: <5cf08589-b4e4-3b4c-cc3e-c6100492155f@gmail.com>
-References: <1513320903.28444.65.camel@mtkswgap22>
- <20171215101014.GB4213@lunn.ch> <1513569684.24235.12.camel@mtkswgap22>
- <20171218080120.GD30815@lunn.ch>
+From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH 1/3] dt-bindings: ARM: Mediatek: Fix ethsys documentation
+Date: Mon, 18 Dec 2017 17:32:22 -0800
+Message-ID: <20171219013222.GZ7997@codeaurora.org>
+References: <20171201120708.30129-1-matthias.bgg@gmail.com>
+ <b92fd3bd-c61a-ae58-49ef-8727af065ec1@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171218080120.GD30815@lunn.ch>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew Lunn <andrew@lunn.ch>, Sean Wang <sean.wang@mediatek.com>
-Cc: sergei.shtylyov@cogentembedded.com, vivien.didelot@savoirfairelinux.com, davem@davemloft.net, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, richard.leitner@skidata.com, geert+renesas@glider.be
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <b92fd3bd-c61a-ae58-49ef-8727af065ec1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 12/18/2017 12:01 AM, Andrew Lunn wrote:
-> Hi Sean
+On 12/14, Matthias Brugger wrote:
+> Hi Stephen, Michael,
 > 
->> It probably can't. Because before the GPIO line is manipulated to reset,
->> certain power control should be handled such as power sources from
->> external PMIC to let devices actually enter the proper state.
->>
->> So, I thought the kind of reset should be better controlled by the
->> specific driver, not by generic core.
+> On 12/01/2017 01:07 PM, Matthias Brugger wrote:
+> > The ethsys registers a reset controller, so we need to specify a
+> > reset cell. This patch fixes the documentation.
+> > 
+> > Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> > ---
+> >  Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt | 1 +
+> >  1 file changed, 1 insertion(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+> > index 7aa3fa167668..6cc7840ff37a 100644
+> > --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+> > @@ -20,4 +20,5 @@ ethsys: clock-controller@1b000000 {
+> >  	compatible = "mediatek,mt2701-ethsys", "syscon";
+> >  	reg = <0 0x1b000000 0 0x1000>;
+> >  	#clock-cells = <1>;
+> > +	#reset-cells = <1>;
+> >  };
+> > 
 > 
-> Yes, the driver should do it in that case.
+> Will you take this patch through the clk tree, or shall I take it through my SoC
+> tree?
 > 
-> So we have a few choices:
-> 
-> 1) Change the name of one of the properties
-> 
-> 2) Make the new code look at the compatible string, any only apply a
->    reset if it is a PHY.
-> 
-> 3) Make the new code only hold the gpio when it needs it. Same for the
->    driver, so that they both can reset the device.
-> 
-> Any other ideas? Any preferences? 2) and 3) are probably simpler to
-> do, less backwards compatibility issues. 3) potentially could cause
-> issues when a device is reset in the wrong context, because of
-> external PMIC etc. So i'm thinking 2).
 
-We could also add some sort of flag that indicates whether the reset
-should be managed by the core, or the driver, I would have to double
-check there is not a chicken and egg problem and that the driver probe
-is early enough this can happen...
+It's resets, we are clk maintainers. I'm clkfused.
+
+You can take it, along with my
+
+Acked-by: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+
+if you like/expect conflicts.
+
 -- 
-Florian
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
