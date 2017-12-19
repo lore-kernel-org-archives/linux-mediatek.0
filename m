@@ -1,26 +1,32 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [net-next] phylib: Add device reset GPIO support causes DSA
- MT7530 acquires reset-gpios fails
-Date: Tue, 19 Dec 2017 12:06:20 +0300
-Message-ID: <ab0c1eb9-a0b1-6062-2b34-6f31e0c07e36@cogentembedded.com>
-References: <1513320903.28444.65.camel@mtkswgap22>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH net] net: mediatek: setup proper state for disabled
+ GMAC on the default
+Date: Tue, 19 Dec 2017 13:21:50 -0500 (EST)
+Message-ID: <20171219.132150.57249791249142933.davem@davemloft.net>
+References: <1ce99b9e64c6212eac501b98ee982b2e37fd7962.1513587298.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1513320903.28444.65.camel@mtkswgap22>
-Content-Language: en-US
+In-Reply-To: <1ce99b9e64c6212eac501b98ee982b2e37fd7962.1513587298.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>, andrew@lunn.ch, f.fainelli@gmail.com, vivien.didelot@savoirfairelinux.com
-Cc: davem@davemloft.net, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, richard.leitner@skidata.com, geert+renesas@glider.be
+To: sean.wang@mediatek.com
+Cc: john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 12/15/2017 9:55 AM, Sean Wang wrote:
+From: <sean.wang@mediatek.com>
+Date: Mon, 18 Dec 2017 17:00:17 +0800
 
-> Hi Sergei,
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> The current solution would setup fixed and force link of 1Gbps to the both
+> GMAC on the default. However, The GMAC should always be put to link down
+> state when the GMAC is disabled on certain target boards. Otherwise,
+> the driver possibly receives unexpected data from the floating hardware
+> connection through the unused GMAC. Although the driver had been added
+> certain protection in RX path to get rid of such kind of unexpected data
+> sent to the upper stack.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
-    Note that I'm no longer responsible for the patch in question -- it was 
-abandoned by me back in 2016. Geert has somewhat reworked it and pushed into 
-net-next.
-
-MBR, Sergei
+Applied, thanks.
