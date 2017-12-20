@@ -1,235 +1,49 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH 1/2] clk: mediatek: group drivers under indpendent menu
-Date: Wed, 20 Dec 2017 14:42:58 +0800
-Message-ID: <971cc0e25dcf32e19bdc93a2bb0dec4cbda2fce7.1513741266.git.sean.wang@mediatek.com>
+From: Andy Gross <andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: Remove leading 0x and 0s from bindings
+ notation
+Date: Wed, 20 Dec 2017 00:49:57 -0600
+Message-ID: <20171220064957.GA17982@hector.attlocal.net>
+References: <20171214165352.27902-1-malat@debian.org>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sboyd@codeaurora.org, mturquette@baylibre.com, matthias.bgg@gmail.com
-Cc: jdelvare@suse.de, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20171214165352.27902-1-malat-8fiUuRrzOP0dnm+yROfE0A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mathieu Malaterre <malat-8fiUuRrzOP0dnm+yROfE0A@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kees Cook <keescook-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Anton Vorontsov <anton-9xeibp6oKSgdnm+yROfE0A@public.gmane.org>, Colin Cross <ccross-z5hGa2qSFaRBDgjK7y7TUQ@public.gmane.org>, Tony Luck <tony.luck-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Thu, Dec 14, 2017 at 05:53:52PM +0100, Mathieu Malaterre wrote:
+> Improve the DTS files by removing all the leading "0x" and zeros to fix the
+> following dtc warnings:
+> 
+> Warning (unit_address_format): Node /XXX unit name should not have leading "0x"
+> 
+> and
+> 
+> Warning (unit_address_format): Node /XXX unit name should not have leading 0s
+> 
+> Converted using the following command:
+> 
+> find . -type f \( -iname *.dts -o -iname *.dtsi \) -exec sed -E -i -e "s/@0x([0-9a-fA-F\.]+)\s?\{/@\L\1 \{/g" -e "s/@0+([0-9a-fA-F\.]+)\s?\{/@\L\1 \{/g" {} +
+> 
+> For simplicity, two sed expressions were used to solve each warnings separately.
+> 
+> To make the regex expression more robust a few other issues were resolved,
+> namely setting unit-address to lower case, and adding a whitespace before the
+> the opening curly brace:
+> 
+> https://elinux.org/Device_Tree_Linux#Linux_conventions
+> 
+> This is a follow up to commit 4c9847b7375a ("dt-bindings: Remove leading 0x from bindings notation")
+> 
+> Reported-by: David Daney <ddaney-M3mlKVOIwJVv6pq1l3V1OdBPR1lH4CV8@public.gmane.org>
+> Suggested-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Signed-off-by: Mathieu Malaterre <malat-8fiUuRrzOP0dnm+yROfE0A@public.gmane.org>
 
-Getting much MediaTek clock driver have been added to CCF, so it's
-better adding the cleanup for grouping drivers under the independent
-menu to simplify configuration selection. In addition, really trivial
-fixups for typos are added in the same patch.
-
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/clk/mediatek/Kconfig | 96 +++++++++++++++++++++++---------------------
- 1 file changed, 50 insertions(+), 46 deletions(-)
-
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 59dc0aa..7338f81 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -1,136 +1,139 @@
- #
--# MediaTek SoC drivers
-+# MediaTek Clock Drivers
- #
-+menu "Clock driver for MediaTek SoC"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+
- config COMMON_CLK_MEDIATEK
- 	bool
- 	---help---
--	  Mediatek SoCs' clock support.
-+	  MediaTek SoCs' clock support.
- 
- config COMMON_CLK_MT2701
--	bool "Clock driver for Mediatek MT2701"
-+	bool "Clock driver for MediaTek MT2701"
- 	depends on (ARCH_MEDIATEK && ARM) || COMPILE_TEST
- 	select COMMON_CLK_MEDIATEK
- 	default ARCH_MEDIATEK && ARM
- 	---help---
--	  This driver supports Mediatek MT2701 basic clocks.
-+	  This driver supports MediaTek MT2701 basic clocks.
- 
- config COMMON_CLK_MT2701_MMSYS
--	bool "Clock driver for Mediatek MT2701 mmsys"
-+	bool "Clock driver for MediaTek MT2701 mmsys"
- 	depends on COMMON_CLK_MT2701
- 	---help---
--	  This driver supports Mediatek MT2701 mmsys clocks.
-+	  This driver supports MediaTek MT2701 mmsys clocks.
- 
- config COMMON_CLK_MT2701_IMGSYS
--	bool "Clock driver for Mediatek MT2701 imgsys"
-+	bool "Clock driver for MediaTek MT2701 imgsys"
- 	depends on COMMON_CLK_MT2701
- 	---help---
--	  This driver supports Mediatek MT2701 imgsys clocks.
-+	  This driver supports MediaTek MT2701 imgsys clocks.
- 
- config COMMON_CLK_MT2701_VDECSYS
--	bool "Clock driver for Mediatek MT2701 vdecsys"
-+	bool "Clock driver for MediaTek MT2701 vdecsys"
- 	depends on COMMON_CLK_MT2701
- 	---help---
--	  This driver supports Mediatek MT2701 vdecsys clocks.
-+	  This driver supports MediaTek MT2701 vdecsys clocks.
- 
- config COMMON_CLK_MT2701_HIFSYS
--	bool "Clock driver for Mediatek MT2701 hifsys"
-+	bool "Clock driver for MediaTek MT2701 hifsys"
- 	depends on COMMON_CLK_MT2701
- 	---help---
--	  This driver supports Mediatek MT2701 hifsys clocks.
-+	  This driver supports MediaTek MT2701 hifsys clocks.
- 
- config COMMON_CLK_MT2701_ETHSYS
--	bool "Clock driver for Mediatek MT2701 ethsys"
-+	bool "Clock driver for MediaTek MT2701 ethsys"
- 	depends on COMMON_CLK_MT2701
- 	---help---
--	  This driver supports Mediatek MT2701 ethsys clocks.
-+	  This driver supports MediaTek MT2701 ethsys clocks.
- 
- config COMMON_CLK_MT2701_BDPSYS
--	bool "Clock driver for Mediatek MT2701 bdpsys"
-+	bool "Clock driver for MediaTek MT2701 bdpsys"
- 	depends on COMMON_CLK_MT2701
- 	---help---
--	  This driver supports Mediatek MT2701 bdpsys clocks.
-+	  This driver supports MediaTek MT2701 bdpsys clocks.
- 
- config COMMON_CLK_MT2712
--	bool "Clock driver for Mediatek MT2712"
-+	bool "Clock driver for MediaTek MT2712"
- 	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
- 	select COMMON_CLK_MEDIATEK
- 	default ARCH_MEDIATEK && ARM64
- 	---help---
--	  This driver supports Mediatek MT2712 basic clocks.
-+	  This driver supports MediaTek MT2712 basic clocks.
- 
- config COMMON_CLK_MT2712_BDPSYS
--	bool "Clock driver for Mediatek MT2712 bdpsys"
-+	bool "Clock driver for MediaTek MT2712 bdpsys"
- 	depends on COMMON_CLK_MT2712
- 	---help---
--	  This driver supports Mediatek MT2712 bdpsys clocks.
-+	  This driver supports MediaTek MT2712 bdpsys clocks.
- 
- config COMMON_CLK_MT2712_IMGSYS
--	bool "Clock driver for Mediatek MT2712 imgsys"
-+	bool "Clock driver for MediaTek MT2712 imgsys"
- 	depends on COMMON_CLK_MT2712
- 	---help---
--	  This driver supports Mediatek MT2712 imgsys clocks.
-+	  This driver supports MediaTek MT2712 imgsys clocks.
- 
- config COMMON_CLK_MT2712_JPGDECSYS
--	bool "Clock driver for Mediatek MT2712 jpgdecsys"
-+	bool "Clock driver for MediaTek MT2712 jpgdecsys"
- 	depends on COMMON_CLK_MT2712
- 	---help---
--	  This driver supports Mediatek MT2712 jpgdecsys clocks.
-+	  This driver supports MediaTek MT2712 jpgdecsys clocks.
- 
- config COMMON_CLK_MT2712_MFGCFG
--	bool "Clock driver for Mediatek MT2712 mfgcfg"
-+	bool "Clock driver for MediaTek MT2712 mfgcfg"
- 	depends on COMMON_CLK_MT2712
- 	---help---
--	  This driver supports Mediatek MT2712 mfgcfg clocks.
-+	  This driver supports MediaTek MT2712 mfgcfg clocks.
- 
- config COMMON_CLK_MT2712_MMSYS
--	bool "Clock driver for Mediatek MT2712 mmsys"
-+	bool "Clock driver for MediaTek MT2712 mmsys"
- 	depends on COMMON_CLK_MT2712
- 	---help---
--	  This driver supports Mediatek MT2712 mmsys clocks.
-+	  This driver supports MediaTek MT2712 mmsys clocks.
- 
- config COMMON_CLK_MT2712_VDECSYS
--	bool "Clock driver for Mediatek MT2712 vdecsys"
-+	bool "Clock driver for MediaTek MT2712 vdecsys"
- 	depends on COMMON_CLK_MT2712
- 	---help---
--	  This driver supports Mediatek MT2712 vdecsys clocks.
-+	  This driver supports MediaTek MT2712 vdecsys clocks.
- 
- config COMMON_CLK_MT2712_VENCSYS
--	bool "Clock driver for Mediatek MT2712 vencsys"
-+	bool "Clock driver for MediaTek MT2712 vencsys"
- 	depends on COMMON_CLK_MT2712
- 	---help---
--	  This driver supports Mediatek MT2712 vencsys clocks.
-+	  This driver supports MediaTek MT2712 vencsys clocks.
- 
- config COMMON_CLK_MT6797
--       bool "Clock driver for Mediatek MT6797"
-+       bool "Clock driver for MediaTek MT6797"
-        depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
-        select COMMON_CLK_MEDIATEK
-        default ARCH_MEDIATEK && ARM64
-        ---help---
--         This driver supports Mediatek MT6797 basic clocks.
-+         This driver supports MediaTek MT6797 basic clocks.
- 
- config COMMON_CLK_MT6797_MMSYS
--       bool "Clock driver for Mediatek MT6797 mmsys"
-+       bool "Clock driver for MediaTek MT6797 mmsys"
-        depends on COMMON_CLK_MT6797
-        ---help---
--         This driver supports Mediatek MT6797 mmsys clocks.
-+         This driver supports MediaTek MT6797 mmsys clocks.
- 
- config COMMON_CLK_MT6797_IMGSYS
--       bool "Clock driver for Mediatek MT6797 imgsys"
-+       bool "Clock driver for MediaTek MT6797 imgsys"
-        depends on COMMON_CLK_MT6797
-        ---help---
--         This driver supports Mediatek MT6797 imgsys clocks.
-+         This driver supports MediaTek MT6797 imgsys clocks.
- 
- config COMMON_CLK_MT6797_VDECSYS
--       bool "Clock driver for Mediatek MT6797 vdecsys"
-+       bool "Clock driver for MediaTek MT6797 vdecsys"
-        depends on COMMON_CLK_MT6797
-        ---help---
--         This driver supports Mediatek MT6797 vdecsys clocks.
-+         This driver supports MediaTek MT6797 vdecsys clocks.
- 
- config COMMON_CLK_MT6797_VENCSYS
--       bool "Clock driver for Mediatek MT6797 vencsys"
-+       bool "Clock driver for MediaTek MT6797 vencsys"
-        depends on COMMON_CLK_MT6797
-        ---help---
--         This driver supports Mediatek MT6797 vencsys clocks.
-+         This driver supports MediaTek MT6797 vencsys clocks.
- 
- config COMMON_CLK_MT7622
- 	bool "Clock driver for MediaTek MT7622"
-@@ -163,17 +166,18 @@ config COMMON_CLK_MT7622_AUDSYS
- 	  to audio consumers such as I2S and TDM.
- 
- config COMMON_CLK_MT8135
--	bool "Clock driver for Mediatek MT8135"
-+	bool "Clock driver for MediaTek MT8135"
- 	depends on (ARCH_MEDIATEK && ARM) || COMPILE_TEST
- 	select COMMON_CLK_MEDIATEK
- 	default ARCH_MEDIATEK && ARM
- 	---help---
--	  This driver supports Mediatek MT8135 clocks.
-+	  This driver supports MediaTek MT8135 clocks.
- 
- config COMMON_CLK_MT8173
--	bool "Clock driver for Mediatek MT8173"
-+	bool "Clock driver for MediaTek MT8173"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
- 	select COMMON_CLK_MEDIATEK
- 	default ARCH_MEDIATEK
- 	---help---
--	  This driver supports Mediatek MT8173 clocks.
-+	  This driver supports MediaTek MT8173 clocks.
-+endmenu
--- 
-2.7.4
+Acked-by: Andy Gross <andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
