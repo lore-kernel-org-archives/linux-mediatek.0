@@ -1,67 +1,77 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 1/3] dt-bindings: ARM: Mediatek: Fix ethsys documentation
-Date: Wed, 20 Dec 2017 18:13:12 +0100
-Message-ID: <06b927e4-ed1b-9e1a-becf-e2818e7efe6d@gmail.com>
-References: <20171201120708.30129-1-matthias.bgg@gmail.com>
- <b92fd3bd-c61a-ae58-49ef-8727af065ec1@gmail.com>
- <20171219013222.GZ7997@codeaurora.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v7 0/6] Mediatek MT2712 clock and scpsys support
+Date: Wed, 20 Dec 2017 19:02:27 +0100
+Message-ID: <a6689fc4-4415-8878-7e98-d182a755c3dd@gmail.com>
+References: <1511854102-23195-1-git-send-email-weiyi.lu@mediatek.com>
+ <1511854102-23195-2-git-send-email-weiyi.lu@mediatek.com>
+ <1513317052.30745.1.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20171219013222.GZ7997-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1513317052.30745.1.camel@mtksdaap41>
 Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Weiyi Lu <weiyi.lu@mediatek.com>
+Cc: Stephen Boyd <sboyd@codeaurora.org>, Mike Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 12/19/2017 02:32 AM, Stephen Boyd wrote:
-> On 12/14, Matthias Brugger wrote:
->> Hi Stephen, Michael,
->>
->> On 12/01/2017 01:07 PM, Matthias Brugger wrote:
->>> The ethsys registers a reset controller, so we need to specify a
->>> reset cell. This patch fixes the documentation.
->>>
->>> Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->>> ---
->>>  Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt | 1 +
->>>  1 file changed, 1 insertion(+)
->>>
->>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
->>> index 7aa3fa167668..6cc7840ff37a 100644
->>> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
->>> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
->>> @@ -20,4 +20,5 @@ ethsys: clock-controller@1b000000 {
->>>  	compatible = "mediatek,mt2701-ethsys", "syscon";
->>>  	reg = <0 0x1b000000 0 0x1000>;
->>>  	#clock-cells = <1>;
->>> +	#reset-cells = <1>;
->>>  };
->>>
->>
->> Will you take this patch through the clk tree, or shall I take it through my SoC
->> tree?
->>
+On 12/15/2017 06:50 AM, Weiyi Lu wrote:
+> On Tue, 2017-11-28 at 15:28 +0800, Weiyi Lu wrote:
 > 
-> It's resets, we are clk maintainers. I'm clkfused.
-> 
-> You can take it, along with my
-> 
-> Acked-by: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-> 
-> if you like/expect conflicts.
+> Hi Matthias,
+> Just gentle ping. Many thanks.
 > 
 
-These are resets in the clock IP-block. I'll take it through my branch, I don't
-expect any conflicts.
+Now pushed to v4.15-next thanks
 
-Regards,
-Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+>> This series is based on v4.15-rc1 and composed of
+>> scpsys control (PATCH 1-4) and device tree (PATCH 5-6)
+>>
+>> changes since v6:
+>> - Rebase to v4.15-rc1.
+>>
+>> changes since v5:
+>> - Refine bus protection with proper variable name
+>>   and better implementation for the if statement.
+>>
+>> changes since v4:
+>> - Refine scpsys and infracfg for bus protection by passing
+>>   a boolean flag to determine the register update method
+>>
+>> changes since v3:
+>> - Rebase to v4.14-rc1.
+>>
+>> changes since v2:
+>> - ensure the clocks used by clocksource driver are registered
+>>   before clocksource init() by using CLK_OF_DECLARE()
+>> - correct the frequency of clk32k/clkrtc_ext/clkrtc_int
+>>
+>> changes since v1:
+>> - Rebase to v4.13-next-soc.
+>> - Refine scpsys and infracfg for bus protection.
+>>
+>> *** BLURB HERE ***
+>>
+>> Weiyi Lu (6):
+>>   dt-bindings: soc: add MT2712 power dt-bindings
+>>   soc: mediatek: extend bus protection API
+>>   soc: mediatek: add dependent clock jpgdec/audio for scpsys
+>>   soc: mediatek: add MT2712 scpsys support
+>>   arm: dts: mt2712: Add clock controller device nodes
+>>   arm: dts: Add power controller device node of MT2712
+>>
+>>  .../devicetree/bindings/soc/mediatek/scpsys.txt    |   3 +
+>>  arch/arm64/boot/dts/mediatek/mt2712e.dtsi          | 131 +++++++++++++++++++
+>>  drivers/soc/mediatek/mtk-infracfg.c                |  26 +++-
+>>  drivers/soc/mediatek/mtk-scpsys.c                  | 140 ++++++++++++++++++---
+>>  include/dt-bindings/power/mt2712-power.h           |  26 ++++
+>>  include/linux/soc/mediatek/infracfg.h              |   7 +-
+>>  6 files changed, 311 insertions(+), 22 deletions(-)
+>>  create mode 100644 include/dt-bindings/power/mt2712-power.h
+>>
+> 
+> 
