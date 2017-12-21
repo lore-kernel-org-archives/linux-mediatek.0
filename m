@@ -1,82 +1,47 @@
-From: Zhang Rui <rui.zhang@intel.com>
-Subject: Re: [PATCH 1/2] thermal: mtk: Cleanup unused defines
-Date: Thu, 21 Dec 2017 21:40:13 +0800
-Message-ID: <1513863613.2785.6.camel@intel.com>
-References: <20171201104321.8410-1-matthias.bgg@gmail.com>
-         <feb1e2bd-bee8-0950-7ecf-8e8c0e157f57@gmail.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL v2] arm: Updates of armv7 DTS for v4.15-next
+Date: Thu, 21 Dec 2017 18:09:16 +0100
+Message-ID: <CAK8P3a2qtezVL1EX0E6Oe+FjU5PuwOFpBXrvqNhHYoJ5HRBHpg@mail.gmail.com>
+References: <938d913c-02c2-e44c-1c03-e620276ce35e@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <feb1e2bd-bee8-0950-7ecf-8e8c0e157f57@gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, edubezval@gmail.com
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <938d913c-02c2-e44c-1c03-e620276ce35e@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Mathieu Malaterre <malat@debian.org>, arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-12-21 at 11:01 +0100, Matthias Brugger wrote:
-> 
-> On 12/01/2017 11:43 AM, Matthias Brugger wrote:
-> > 
-> > The mtk_thermal has some defiens which are never used within the
-> > driver.
-> > This patch delets them.
-> > 
-> > Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-> > ---
-> Rui, Eduardo, do you have any comments on this patch?
-> 
-No, I don't have any.
-I suppose Eduardo will review them soon as I need the thermal soc
-material for next merge window.
+On Thu, Dec 21, 2017 at 12:45 PM, Matthias Brugger
+<matthias.bgg@gmail.com> wrote:
+> The following changes since commit 4fbd8d194f06c8a3fd2af1ce560ddb31f7ec8323:
+>
+>   Linux 4.15-rc1 (2017-11-26 16:01:47 -0800)
+>
+> are available in the Git repository at:
+>
+>   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git
+> tags/v4.15-next-dts32
+>
+> for you to fetch changes up to a227cf4dfd74a873857c9cc017100168d01539ed:
+>
+>   dt-bindings: ARM: Mediatek: Fix ethsys documentation (2017-12-20 18:10:12 +0100)
+>
+> ----------------------------------------------------------------
+> - add reset cells mt2701 and mt7623 ethsys
+> - update mmc nodes for mt7623
+> - mt7623 change mmc card detection pin to active low
+> - mt7623 set unit address to lower case
 
-thanks,
-rui
-> Regards,
-> Matthias
-> 
-> > 
-> >  drivers/thermal/mtk_thermal.c | 9 +--------
-> >  1 file changed, 1 insertion(+), 8 deletions(-)
-> > 
-> > diff --git a/drivers/thermal/mtk_thermal.c
-> > b/drivers/thermal/mtk_thermal.c
-> > index 1e61c09153c9..c75661a3801a 100644
-> > --- a/drivers/thermal/mtk_thermal.c
-> > +++ b/drivers/thermal/mtk_thermal.c
-> > @@ -32,15 +32,10 @@
-> >  #include <linux/types.h>
-> >  
-> >  /* AUXADC Registers */
-> > -#define AUXADC_CON0_V		0x000
-> > -#define AUXADC_CON1_V		0x004
-> >  #define AUXADC_CON1_SET_V	0x008
-> >  #define AUXADC_CON1_CLR_V	0x00c
-> >  #define AUXADC_CON2_V		0x010
-> >  #define AUXADC_DATA(channel)	(0x14 + (channel) * 4)
-> > -#define AUXADC_MISC_V		0x094
-> > -
-> > -#define AUXADC_CON1_CHANNEL(x)	BIT(x)
-> >  
-> >  #define APMIXED_SYS_TS_CON1	0x604
-> >  
-> > @@ -158,8 +153,6 @@
-> >  /* The number of sensing points per bank */
-> >  #define MT2712_NUM_SENSORS_PER_ZONE	4
-> >  
-> > -#define THERMAL_NAME    "mtk-thermal"
-> > -
-> >  struct mtk_thermal;
-> >  
-> >  struct thermal_bank_cfg {
-> > @@ -765,7 +758,7 @@ static struct platform_driver
-> > mtk_thermal_driver = {
-> >  	.probe = mtk_thermal_probe,
-> >  	.remove = mtk_thermal_remove,
-> >  	.driver = {
-> > -		.name = THERMAL_NAME,
-> > +		.name = "mtk-thermal",
-> >  		.of_match_table = mtk_thermal_of_match,
-> >  	},
-> >  };
-> > 
+Pulled into next/dt, thanks!
+
+       Arnd
