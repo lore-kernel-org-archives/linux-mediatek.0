@@ -1,7 +1,7 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [GIT PULL v2] arm: Updates of armv7 DTS for v4.15-next
-Date: Thu, 21 Dec 2017 12:45:24 +0100
-Message-ID: <938d913c-02c2-e44c-1c03-e620276ce35e@gmail.com>
+Subject: [GIT PULL v2] arm64: Updates of aarch64 DTS for v4.15-next
+Date: Thu, 21 Dec 2017 12:47:08 +0100
+Message-ID: <9bcf1c0b-b60a-fff1-d259-02d791bf561b@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -17,10 +17,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Mathieu Malaterre <malat-8fiUuRrzOP0dnm+yROfE0A@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Cc: "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Andrew-sh Cheng <andrew-sh.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Weiyi Lu <weiyi.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Olof, hi Arnd,
+Hi Anrd, hi Olof,
 
 Please have a look on the following patches.
 
@@ -35,34 +35,43 @@ The following changes since commit 4fbd8d194f06c8a3fd2af1ce560ddb31f7ec8323:
 are available in the Git repository at:
 
   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git
-tags/v4.15-next-dts32
+tags/v4.15-next-dts64
 
-for you to fetch changes up to a227cf4dfd74a873857c9cc017100168d01539ed:
+for you to fetch changes up to ca977a4cae1655d0dac37a9d85455a3a3afe55eb:
 
-  dt-bindings: ARM: Mediatek: Fix ethsys documentation (2017-12-20 18:10:12 +0100)
-
-----------------------------------------------------------------
-- add reset cells mt2701 and mt7623 ethsys
-- update mmc nodes for mt7623
-- mt7623 change mmc card detection pin to active low
-- mt7623 set unit address to lower case
+  arm64: dts: Add power controller device node of MT2712 (2017-12-21 11:35:18 +0100)
 
 ----------------------------------------------------------------
-Mathieu Malaterre (1):
-      arm: mt7: dts: Remove leading 0x and 0s from bindings notation
+- mt8173 add cpufreq related nodes
+  supply nodes
+  frequency/voltage operation table
 
-Matthias Brugger (3):
-      arm: dts: mt7623: Update ethsys binding
-      arm: dts: mt2701: Add reset-cells
-      dt-bindings: ARM: Mediatek: Fix ethsys documentation
+- mt2712 add cpufreq related nodes
+  fixed regulator
+  supply nodes
+  frequency/voltage operation table
+- mt2712 add clock contoller nodes
+- mt2712 add scpsys node
 
-Sean Wang (2):
-      arm: dts: mt7623: update mmc related nodes with the appropriate fallback
-      arm: dts: mt7623: fix card detection issue on bananapi-r2
+----------------------------------------------------------------
+Andrew-sh Cheng (2):
+      arm64: dts: mediatek: add mt8173 cpufreq related device nodes
+      arm64: dts: mediatek: add mt2712 cpufreq related device nodes
 
- Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt | 1 +
- arch/arm/boot/dts/mt2701.dtsi                                      | 2 ++
- arch/arm/boot/dts/mt7623.dtsi                                      | 5 +++--
- arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts                      | 2 +-
- arch/arm/boot/dts/mt7623n-rfb-nand.dts                             | 2 +-
- 5 files changed, 8 insertions(+), 4 deletions(-)
+Matthias Brugger (1):
+      Merge remote-tracking branch 'mainline-kernel/v4.15-next/pdids' into
+v4.15-next/dts64
+
+weiyi.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org (3):
+      dt-bindings: soc: add MT2712 power dt-bindings
+      arm64: dts: mt2712: Add clock controller device nodes
+      arm64: dts: Add power controller device node of MT2712
+
+ .../devicetree/bindings/soc/mediatek/scpsys.txt    |   3 +
+ arch/arm64/boot/dts/mediatek/mt2712-evb.dts        |  27 +++
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi          | 188 +++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts        |  18 ++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  90 ++++++++++
+ include/dt-bindings/power/mt2712-power.h           |  26 +++
+ 6 files changed, 352 insertions(+)
+ create mode 100644 include/dt-bindings/power/mt2712-power.h
