@@ -1,46 +1,68 @@
-From: <honghui.zhang@mediatek.com>
-Subject: [PATCH v3 2/2] PCI: mediatek: Fixup class type for MT7622
-Date: Thu, 21 Dec 2017 19:38:45 +0800
-Message-ID: <1513856325-28813-3-git-send-email-honghui.zhang@mediatek.com>
-References: <1513856325-28813-1-git-send-email-honghui.zhang@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [GIT PULL v2] arm: Updates of armv7 DTS for v4.15-next
+Date: Thu, 21 Dec 2017 12:45:24 +0100
+Message-ID: <938d913c-02c2-e44c-1c03-e620276ce35e@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1513856325-28813-1-git-send-email-honghui.zhang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, lorenzo.pieralisi@arm.com
-Cc: honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mathieu Malaterre <malat-8fiUuRrzOP0dnm+yROfE0A@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+Hi Olof, hi Arnd,
 
-The host bridge of MT7622 has hardware code the class code to an
-arbitrary, meaningless value, fix that.
+Please have a look on the following patches.
 
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+Thanks a lot,
+Matthias
+
 ---
- drivers/pci/host/pcie-mediatek.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+The following changes since commit 4fbd8d194f06c8a3fd2af1ce560ddb31f7ec8323:
 
-diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-index fc29a9a..dcafeac 100644
---- a/drivers/pci/host/pcie-mediatek.c
-+++ b/drivers/pci/host/pcie-mediatek.c
-@@ -1175,3 +1175,15 @@ static struct platform_driver mtk_pcie_driver = {
- 	},
- };
- builtin_platform_driver(mtk_pcie_driver);
-+
-+/* The host bridge of MT7622 advertises the wrong device class. */
-+static void mtk_fixup_class(struct pci_dev *dev)
-+{
-+	dev->class = PCI_CLASS_BRIDGE_PCI << 8;
-+}
-+
-+/*
-+ * The HW default value of vendor id and device id for mt7622 are 0x0e8d,
-+ * 0x3258, which are arbitrary, meaningless values.
-+ */
-+DECLARE_PCI_FIXUP_EARLY(0x0e8d, 0x3258, mtk_fixup_class);
--- 
-2.6.4
+  Linux 4.15-rc1 (2017-11-26 16:01:47 -0800)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git
+tags/v4.15-next-dts32
+
+for you to fetch changes up to a227cf4dfd74a873857c9cc017100168d01539ed:
+
+  dt-bindings: ARM: Mediatek: Fix ethsys documentation (2017-12-20 18:10:12 +0100)
+
+----------------------------------------------------------------
+- add reset cells mt2701 and mt7623 ethsys
+- update mmc nodes for mt7623
+- mt7623 change mmc card detection pin to active low
+- mt7623 set unit address to lower case
+
+----------------------------------------------------------------
+Mathieu Malaterre (1):
+      arm: mt7: dts: Remove leading 0x and 0s from bindings notation
+
+Matthias Brugger (3):
+      arm: dts: mt7623: Update ethsys binding
+      arm: dts: mt2701: Add reset-cells
+      dt-bindings: ARM: Mediatek: Fix ethsys documentation
+
+Sean Wang (2):
+      arm: dts: mt7623: update mmc related nodes with the appropriate fallback
+      arm: dts: mt7623: fix card detection issue on bananapi-r2
+
+ Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt | 1 +
+ arch/arm/boot/dts/mt2701.dtsi                                      | 2 ++
+ arch/arm/boot/dts/mt7623.dtsi                                      | 5 +++--
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts                      | 2 +-
+ arch/arm/boot/dts/mt7623n-rfb-nand.dts                             | 2 +-
+ 5 files changed, 8 insertions(+), 4 deletions(-)
