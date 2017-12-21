@@ -1,89 +1,99 @@
-From: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 1/3] dt-bindings: ARM: Mediatek: Fix ethsys documentation
-Date: Wed, 20 Dec 2017 11:26:55 -0800
-Message-ID: <151379801537.37313.10157953819670256557@resonance>
-References: <20171201120708.30129-1-matthias.bgg@gmail.com>
- <b92fd3bd-c61a-ae58-49ef-8727af065ec1@gmail.com>
- <20171219013222.GZ7997@codeaurora.org>
- <06b927e4-ed1b-9e1a-becf-e2818e7efe6d@gmail.com>
+From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] PCI: Mediatek: clear irq status after irq dispathed to
+ avoid reentry
+Date: Wed, 20 Dec 2017 18:52:41 -0600
+Message-ID: <20171221005240.GC30595@bhelgaas-glaptop.roam.corp.google.com>
+References: <1513738334-26213-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <06b927e4-ed1b-9e1a-becf-e2818e7efe6d-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1513738334-26213-1-git-send-email-honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Matthias Brugger (2017-12-20 09:13:12)
-> =
+[+cc Lorenzo, please cc him on all drivers/{host,dwc,endpoint} material]
 
-> =
+Please run "git log --oneline drivers/pci/host/pcie-mediatek.c" and
+make yours match.  Same capitalization, same sentence structure, etc.,
+e.g.,
 
-> On 12/19/2017 02:32 AM, Stephen Boyd wrote:
-> > On 12/14, Matthias Brugger wrote:
-> >> Hi Stephen, Michael,
-> >>
-> >> On 12/01/2017 01:07 PM, Matthias Brugger wrote:
-> >>> The ethsys registers a reset controller, so we need to specify a
-> >>> reset cell. This patch fixes the documentation.
-> >>>
-> >>> Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> >>> ---
-> >>>  Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt |=
- 1 +
-> >>>  1 file changed, 1 insertion(+)
-> >>>
-> >>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,=
-ethsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys=
-.txt
-> >>> index 7aa3fa167668..6cc7840ff37a 100644
-> >>> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.=
-txt
-> >>> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.=
-txt
-> >>> @@ -20,4 +20,5 @@ ethsys: clock-controller@1b000000 {
-> >>>     compatible =3D "mediatek,mt2701-ethsys", "syscon";
-> >>>     reg =3D <0 0x1b000000 0 0x1000>;
-> >>>     #clock-cells =3D <1>;
-> >>> +   #reset-cells =3D <1>;
-> >>>  };
-> >>>
-> >>
-> >> Will you take this patch through the clk tree, or shall I take it thro=
-ugh my SoC
-> >> tree?
-> >>
-> > =
+  PCI: mediatek: Clear IRQ status ...
 
-> > It's resets, we are clk maintainers. I'm clkfused.
-> > =
+s/dispathed/dispatched/
 
-> > You can take it, along with my
-> > =
+s/irq/IRQ/ in the summary and all the English text below.
 
-> > Acked-by: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-> > =
+On Wed, Dec 20, 2017 at 10:52:14AM +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> There maybe a same irq reentry scenario after irq received in current
+> irq handle flow:
+> 	EP device		PCIe host driver	EP driver
+> 1. issue an irq
+> 			2. received irq
+> 			3. clear irq status
+> 			4. dispatch irq
+> 						5. clear irq source
+> The irq status was not successfully cleared at step 2 since the irq
+> source was not cleared yet. So the PCIe host driver may receive the
+> same irq after step 5. Then there's an irq reentry occurred.
+> Even worse, if the reentry irq was not an irq that EP driver expected,
+> it may not handle the irq. Then we may run into the dead loop from
 
-> > if you like/expect conflicts.
-> > =
+By "dead loop" I assume you mean "infinite loop"?  I don't think it's
+a deadlock since nothing is waiting.
 
-> =
-
-> These are resets in the clock IP-block. I'll take it through my branch, I=
- don't
-> expect any conflicts.
-
-Sounds good to me.
-
-Best regards,
-Mike
-
-> =
-
-> Regards,
-> Matthias
+> step 2 to step 4.
+> Clear the irq status after irq have been dispatched to avoid the irq
+> reentry.
+> 
+> Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/pci/host/pcie-mediatek.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+> index db93efd..3248771 100644
+> --- a/drivers/pci/host/pcie-mediatek.c
+> +++ b/drivers/pci/host/pcie-mediatek.c
+> @@ -605,11 +605,11 @@ static irqreturn_t mtk_pcie_intr_handler(int irq, void *data)
+>  
+>  	while ((status = readl(port->base + PCIE_INT_STATUS)) & INTX_MASK) {
+>  		for_each_set_bit_from(bit, &status, PCI_NUM_INTX + INTX_SHIFT) {
+> -			/* Clear the INTx */
+> -			writel(1 << bit, port->base + PCIE_INT_STATUS);
+>  			virq = irq_find_mapping(port->irq_domain,
+>  						bit - INTX_SHIFT);
+>  			generic_handle_irq(virq);
+> +			/* Clear the INTx */
+> +			writel(1 << bit, port->base + PCIE_INT_STATUS);
+>  		}
+>  	}
+>  
+> @@ -619,10 +619,10 @@ static irqreturn_t mtk_pcie_intr_handler(int irq, void *data)
+>  
+>  			while ((imsi_status = readl(port->base + PCIE_IMSI_STATUS))) {
+>  				for_each_set_bit(bit, &imsi_status, MTK_MSI_IRQS_NUM) {
+> -					/* Clear the MSI */
+> -					writel(1 << bit, port->base + PCIE_IMSI_STATUS);
+>  					virq = irq_find_mapping(port->msi_domain, bit);
+>  					generic_handle_irq(virq);
+> +					/* Clear the MSI */
+> +					writel(1 << bit, port->base + PCIE_IMSI_STATUS);
+>  				}
+>  			}
+>  			/* Clear MSI interrupt status */
+> -- 
+> 2.6.4
+> 
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
