@@ -1,81 +1,85 @@
-From: <honghui.zhang@mediatek.com>
-Subject: [PATCH v4 2/2] PCI: mediatek: Set up class type and vendor ID for
- MT7622
-Date: Fri, 22 Dec 2017 13:39:38 +0800
-Message-ID: <1513921178-16148-3-git-send-email-honghui.zhang@mediatek.com>
-References: <1513921178-16148-1-git-send-email-honghui.zhang@mediatek.com>
+From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] arm: dts: mt7623: enable all four available UARTs on bananapi-r2
+Date: Fri, 22 Dec 2017 14:06:33 +0800
+Message-ID: <b4e84a68da76c1ca538150a730777ff530c1db5a.1513922513.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1513921178-16148-1-git-send-email-honghui.zhang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, lorenzo.pieralisi@arm.com
-Cc: youlin.pei@mediatek.com, hongkun.cao@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com, honghui.zhang@mediatek.com, yt.shen@mediatek.com, yong.wu@mediatek.com
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-The hardware default value of IDs and class type is not correct,
-fix that by setup the correct values before start up.
+On bpi-r2 board, totally there're four uarts which we usually called
+uart[0-3] helpful to extend slow I/O devices. Among those ones, uart2 has
+dedicated pin slot which is used to conolse log. uart[0-1] appear at the
+40-pins connector and uart3 has no pinout, but just has test points (TP47
+for TX and TP48 for RX, respectively) nearby uart2. Also, some missing
+pinctrl is being complemented for those devices.
 
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/pci/host/pcie-mediatek.c | 12 ++++++++++++
- include/linux/pci_ids.h          |  3 +++
- 2 files changed, 15 insertions(+)
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 26 ++++++++++++++++++++++++--
+ 1 file changed, 24 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-index fc29a9a..0ef33e4 100644
---- a/drivers/pci/host/pcie-mediatek.c
-+++ b/drivers/pci/host/pcie-mediatek.c
-@@ -74,6 +74,10 @@
+diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+index 7bf5aa2..64bf5db 100644
+--- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
++++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+@@ -409,6 +409,20 @@
+ 				 <MT7623_PIN_82_UTXD1_FUNC_UTXD1>;
+ 		};
+ 	};
++
++	uart2_pins_a: uart@2 {
++		pins_dat {
++			pinmux = <MT7623_PIN_14_GPIO14_FUNC_URXD2>,
++				 <MT7623_PIN_15_GPIO15_FUNC_UTXD2>;
++		};
++	};
++
++	uart3_pins_a: uart@3 {
++		pins_dat {
++			pinmux = <MT7623_PIN_242_URTS2_FUNC_URTS2>,
++				 <MT7623_PIN_243_UCTS2_FUNC_UTXD3>;
++		};
++	};
+ };
  
- /* PCIe V2 per-port registers */
- #define PCIE_MSI_VECTOR		0x0c0
-+
-+#define PCIE_CONF_ID		0x100
-+#define PCIE_CONF_CLASS		0x104
-+
- #define PCIE_INT_MASK		0x420
- #define INTX_MASK		GENMASK(19, 16)
- #define INTX_SHIFT		16
-@@ -393,6 +397,14 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
- 		val |= PCIE_CSR_LTSSM_EN(port->slot) |
- 		       PCIE_CSR_ASPM_L1_EN(port->slot);
- 		writel(val, pcie->base + PCIE_SYS_CFG_V2);
-+
-+		/* Set up vendor ID and device ID for MT7622*/
-+		val = PCI_VENDOR_ID_MEDIATEK | (PCI_DEVICE_ID_MT7622 << 16);
-+		writel(val, port->base + PCIE_CONF_ID);
-+
-+		/* Set up class code for MT7622 */
-+		val = PCI_CLASS_BRIDGE_PCI << 16;
-+		writel(val, port->base + PCIE_CONF_CLASS);
- 	}
+ &pwm {
+@@ -454,16 +468,24 @@
+ &uart0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0_pins_a>;
+-	status = "disabled";
++	status = "okay";
+ };
  
- 	/* Assert all reset signals */
-diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
-index ab20dc5..000c5df 100644
---- a/include/linux/pci_ids.h
-+++ b/include/linux/pci_ids.h
-@@ -2113,6 +2113,9 @@
+ &uart1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart1_pins_a>;
+-	status = "disabled";
++	status = "okay";
+ };
  
- #define PCI_VENDOR_ID_MYRICOM		0x14c1
- 
-+#define PCI_VENDOR_ID_MEDIATEK		0x14c3
-+#define PCI_DEVICE_ID_MT7622		0x5396
+ &uart2 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart2_pins_a>;
++	status = "okay";
++};
 +
- #define PCI_VENDOR_ID_TITAN		0x14D2
- #define PCI_DEVICE_ID_TITAN_010L	0x8001
- #define PCI_DEVICE_ID_TITAN_100L	0x8010
++&uart3 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart3_pins_a>;
+ 	status = "okay";
+ };
+ 
 -- 
-2.6.4
+2.7.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
