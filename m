@@ -1,115 +1,46 @@
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 Subject: Re: [PATCH v2 2/2] PCI: mediatek: Fixup class type for MT7622
-Date: Fri, 22 Dec 2017 08:56:34 +0800
-Message-ID: <1513904194.25872.23.camel@mhfsdcap03>
+Date: Thu, 21 Dec 2017 21:15:47 -0600
+Message-ID: <20171222031546.GF30595@bhelgaas-glaptop.roam.corp.google.com>
 References: <1513822277-18329-1-git-send-email-honghui.zhang@mediatek.com>
-         <1513822277-18329-3-git-send-email-honghui.zhang@mediatek.com>
-         <1513838476.23174.3.camel@mhfsdcap03>
-         <1513839672.25872.13.camel@mhfsdcap03>
-         <20171222002712.GE30595@bhelgaas-glaptop.roam.corp.google.com>
+ <1513822277-18329-3-git-send-email-honghui.zhang@mediatek.com>
+ <1513838476.23174.3.camel@mhfsdcap03>
+ <1513839672.25872.13.camel@mhfsdcap03>
+ <20171222002712.GE30595@bhelgaas-glaptop.roam.corp.google.com>
+ <1513904194.25872.23.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20171222002712.GE30595@bhelgaas-glaptop.roam.corp.google.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Yong Wu <yong.wu@mediatek.com>, youlin.pei@mediatek.com, devicetree@vger.kernel.org, hongkun.cao@mediatek.com, ryder.lee@mediatek.com, yu.yu@mediatek.com, linux-pci@vger.kernel.org, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, yt.shen@mediatek.com, matthias.bgg@gmail.com, lorenzo.pieralisi@arm.com, linux-mediatek@lists.infradead.org, xinping.qian@mediatek.com, bhelgaas@google.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1513904194.25872.23.camel@mhfsdcap03>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yu.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-12-21 at 18:27 -0600, Bjorn Helgaas wrote:
-> On Thu, Dec 21, 2017 at 03:01:12PM +0800, Honghui Zhang wrote:
-> > On Thu, 2017-12-21 at 14:41 +0800, Yong Wu wrote:
-> > > On Thu, 2017-12-21 at 10:11 +0800, honghui.zhang@mediatek.com wrote:
-> > > > From: Honghui Zhang <honghui.zhang@mediatek.com>
-> > > > 
-> > > > The host bridge of MT7622 has hardware code the class code to an
-> > > > arbitrary, meaningless value, fix that.
-> > > > 
-> > > > Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> > > > ---
-> > > >  drivers/pci/host/pcie-mediatek.c | 12 ++++++++++++
-> > > >  1 file changed, 12 insertions(+)
-> > > > 
-> > > > diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-> > > > index 3248771..ae8d367 100644
-> > > > --- a/drivers/pci/host/pcie-mediatek.c
-> > > > +++ b/drivers/pci/host/pcie-mediatek.c
-> > > > @@ -1174,3 +1174,15 @@ static struct platform_driver mtk_pcie_driver = {
-> > > >  	},
-> > > >  };
-> > > >  builtin_platform_driver(mtk_pcie_driver);
-> > > > +
-> > > > +/* The host bridge of MT7622 advertises the wrong device class. */
-> > > > +static void mtk_fixup_class(struct pci_dev *dev)
-> > > > +{
-> > > > +	dev->class = PCI_CLASS_BRIDGE_PCI << 8;
-> > > > +}
-> > > > +
-> > > > +/*
-> > > > + * The HW default value of vendor id and device id for mt7622 are 0x0e8d,
-> > > > + * 0x3258, which are arbitrary, meaningless values.
-> 
-> They may be arbitrary but they are certainly not meaningless.
-> 
-> > > What's the right vendor id and device id? is it possible to fix them
-> > > too?
-> > 
-> > Vendor ID is managed by PCI-SIG, you may get the assigned vendor ID
-> > from:
-> > https://pci-ids.ucw.cz/read/PC?restrict=
-> 
-> It's true that Vendor IDs are managed by the PCI-SIG.  The link above
-> is not managed by the PCI-SIG and is not the official list of assigned
-> Vendor IDs.
-> 
-> > The vendor ID for Mediatek Corp. should be 14c3.
-> > Device ID is something like vendor-defined.
-> > Those values are in the configuration space and are read-only defined by
-> > spec, it's been stored at the pci_dev, we may change the vendor and
-> > device values in pci_dev, but I don't think it's necessary to change
-> > that.
-> > BTW, Does anyone really cares about the vendor ID and device ID except
-> > the device's driver?
-> 
-> Yes.  This is a fundamental misunderstanding of how Vendor and Device
-> IDs work.  The *driver* really doesn't care about the IDs.  The PCI
-> *core* cares about them because it uses the IDs to select the
-> appropriate driver to bind to the device.
-> 
-Thanks, I was wrong about this, I had not seen that the Vendor IDs may
-be assigned to another company in the future. I should try another way
-to fix this.
+On Fri, Dec 22, 2017 at 08:56:34AM +0800, Honghui Zhang wrote:
+> There's an internal control register that control the Vendor ID and
+> device ID values, our designer leave the default value un-touched. I
+> will set these values in that way for the next version of fix.
 
-> > > > +DECLARE_PCI_FIXUP_EARLY(0x0e8d, 0x3258, mtk_fixup_class);
-> 
-> This is absolutely not OK.  You cannot take over Vendor ID 0x0e8d
-> unless it has been assigned to you by the PCI-SIG.
-> 
-> To my knowledge, 0x0e8d has not been assigned to any company yet, but
-> the PCI-SIG could assign it to some new company X tomorrow.  Company X
-> may then build a device with Device ID 0x3258.  Now we cannot tell the
-> difference between the Company X device that is correctly designed and
-> this Mediatek device that is broken.
-> 
-> This quirk would improperly overwrite dev->class for the Company X
-> device, and we would not be able to bind the correct driver to either
-> device.
-> 
+Then there's no problem.  The mtk_pcie driver is a platform driver
+that claims the host controller based on an of_device_id from a device
+tree.
 
-I will try another way to fix this, thanks very much for your explain.
+Apparently the bridge is also materialized in PCI config space, which
+is typical for x86 host bridges, and makes the bridge appear in
+"lspci".  But drivers generally don't claim bridges that way.
 
-> I am amazed that somebody could build a device that claims to be a PCI
-> device and get the Vendor ID wrong.  That should be literally the
-> first thing the hardware designer does.  If you have hardware in the
-> field that uses the wrong Vendor ID, it is definitely not
-> PCI-compliant.
+You can just program the Vendor and Device IDs by writing the internal
+control registers somewhere in the mtk_pci_probe() path.
 
-There's an internal control register that control the Vendor ID and
-device ID values, our designer leave the default value un-touched. I
-will set these values in that way for the next version of fix.
+Then you can set the class code the same way, using an internal
+control register (if that's possible), or using a quirk with the
+correct Mediatek Vendor ID (if there is no internal writable
+register).
 
-Thanks.
-
-> 
-> Bjorn
+Bjorn
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
