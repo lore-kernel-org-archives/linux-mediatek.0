@@ -1,96 +1,71 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] arm: dts: mt7623: enable all four available UARTs on
- bananapi-r2
-Date: Sat, 23 Dec 2017 08:52:02 +0100
-Message-ID: <dc3c28c7-03c3-f1c6-39c1-b8df8be4fac3@gmail.com>
-References: <b4e84a68da76c1ca538150a730777ff530c1db5a.1513922513.git.sean.wang@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH] clk: mediatek: Fix all warnings for missing struct clk_onecell_data
+Date: Sat, 23 Dec 2017 15:56:36 +0800
+Message-ID: <a7e0a625fb6a71b7fab810f1cc8ec196b1732305.1514015506.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <b4e84a68da76c1ca538150a730777ff530c1db5a.1513922513.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: sboyd@codeaurora.org, mturquette@baylibre.com, matthias.bgg@gmail.com
+Cc: jdelvare@suse.de, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, kbuild-all@01.org
 List-Id: linux-mediatek@lists.infradead.org
 
+From: Sean Wang <sean.wang@mediatek.com>
 
+In fact, the clk-mtk.h header is unnecessary for reset.c and thus it's
+safe to remove it from the file to get rid of below build warnings.
 
-On 12/22/2017 07:06 AM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> On bpi-r2 board, totally there're four uarts which we usually called
-> uart[0-3] helpful to extend slow I/O devices. Among those ones, uart2 has
-> dedicated pin slot which is used to conolse log. uart[0-1] appear at the
-> 40-pins connector and uart3 has no pinout, but just has test points (TP47
-> for TX and TP48 for RX, respectively) nearby uart2. Also, some missing
-> pinctrl is being complemented for those devices.
-> 
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 26 ++++++++++++++++++++++++--
->  1 file changed, 24 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> index 7bf5aa2..64bf5db 100644
-> --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> @@ -409,6 +409,20 @@
->  				 <MT7623_PIN_82_UTXD1_FUNC_UTXD1>;
->  		};
->  	};
-> +
-> +	uart2_pins_a: uart@2 {
-> +		pins_dat {
-> +			pinmux = <MT7623_PIN_14_GPIO14_FUNC_URXD2>,
-> +				 <MT7623_PIN_15_GPIO15_FUNC_UTXD2>;
-> +		};
-> +	};
-> +
-> +	uart3_pins_a: uart@3 {
-> +		pins_dat {
-> +			pinmux = <MT7623_PIN_242_URTS2_FUNC_URTS2>,
-> +				 <MT7623_PIN_243_UCTS2_FUNC_UTXD3>;
-> +		};
-> +	};
->  };
->  
->  &pwm {
-> @@ -454,16 +468,24 @@
->  &uart0 {
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&uart0_pins_a>;
-> -	status = "disabled";
-> +	status = "okay";
->  };
->  
->  &uart1 {
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&uart1_pins_a>;
-> -	status = "disabled";
-> +	status = "okay";
->  };
->  
->  &uart2 {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&uart2_pins_a>;
-> +	status = "okay";
-> +};
-> +
-> +&uart3 {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&uart3_pins_a>;
->  	status = "okay";
->  };
->  
+All warnings (new ones prefixed by >>):
 
-Why do we want to enable uart3 when there are only test points?
-It is not very useful, or do I oversee something?
+   In file included from drivers/clk/mediatek/reset.c:22:0:
+>>drivers/clk/mediatek/clk-mtk.h:44:19: warning: 'struct clk_onecell_data'
+declared inside parameter list will not be visible outside of
+this definition or declaration
+      int num, struct clk_onecell_data *clk_data);
+                      ^~~~~~~~~~~~~~~~
+drivers/clk/mediatek/clk-mtk.h:63:19: warning: 'struct clk_onecell_data'
+declared inside parameter list will not be visible outside of
+this definition or declaration
+      int num, struct clk_onecell_data *clk_data);
+                      ^~~~~~~~~~~~~~~~
+drivers/clk/mediatek/clk-mtk.h:145:10: warning: 'struct clk_onecell_data'
+declared inside parameter list will not be visible outside of
+this definition or declaration
+      struct clk_onecell_data *clk_data);
+             ^~~~~~~~~~~~~~~~
+drivers/clk/mediatek/clk-mtk.h:164:11: warning: 'struct clk_onecell_data'
+declared inside parameter list will not be visible outside of
+this definition or declaration
+       struct clk_onecell_data *clk_data);
+              ^~~~~~~~~~~~~~~~
+drivers/clk/mediatek/clk-mtk.h:190:12: warning: 'struct clk_onecell_data'
+declared inside parameter list will not be visible outside of this
+definition or declaration
+        struct clk_onecell_data *clk_data);
+               ^~~~~~~~~~~~~~~~
 
-Regards,
-Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Reported-by: kbuild test robot <fengguang.wu@intel.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Cc: kbuild-all@01.org
+Cc: Stephen Boyd <sboyd@codeaurora.org>
+Cc: linux-clk@vger.kernel.org
+---
+ drivers/clk/mediatek/reset.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+index d3551d5..70ebb2e 100644
+--- a/drivers/clk/mediatek/reset.c
++++ b/drivers/clk/mediatek/reset.c
+@@ -19,8 +19,6 @@
+ #include <linux/reset-controller.h>
+ #include <linux/slab.h>
+ 
+-#include "clk-mtk.h"
+-
+ struct mtk_reset {
+ 	struct regmap *regmap;
+ 	int regofs;
+-- 
+2.7.4
+
