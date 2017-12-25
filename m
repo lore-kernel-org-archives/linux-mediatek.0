@@ -1,76 +1,79 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH v4 2/2] PCI: mediatek: Set up class type and vendor ID
- for MT7622
-Date: Mon, 25 Dec 2017 18:27:41 +0800
-Message-ID: <1514197661.25015.9.camel@mtkswgap22>
-References: <1513921178-16148-1-git-send-email-honghui.zhang@mediatek.com>
-         <1513921178-16148-3-git-send-email-honghui.zhang@mediatek.com>
+From: Philippe Ombredanne <pombredanne@nexb.com>
+Subject: Re: [PATCH 2/2] clk: mediatek: add audsys for MT2701 SoC
+Date: Mon, 25 Dec 2017 15:26:20 +0100
+Message-ID: <CAOFm3uE8b+HzjybV-9kNOnRxmCjvFQMwPcoT6EWHdGQ2m5zSug@mail.gmail.com>
+References: <b36f38f4b9f780529046a3c2c76a1e59561e9ff1.1514190088.git.ryder.lee@mediatek.com>
+ <cccf26cd2fe1f788257ff2d2b141fdaf868bf2e2.1514190088.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <1513921178-16148-3-git-send-email-honghui.zhang@mediatek.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com
-Cc: bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, lorenzo.pieralisi@arm.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cccf26cd2fe1f788257ff2d2b141fdaf868bf2e2.1514190088.git.ryder.lee@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Stephen Boyd <sboyd@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2017-12-22 at 13:39 +0800, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
-> 
-> The hardware default value of IDs and class type is not correct,
-> fix that by setup the correct values before start up.
-> 
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+On Mon, Dec 25, 2017 at 9:27 AM, Ryder Lee <ryder.lee@mediatek.com> wrote:
+> Add clock driver support for MT2701 audio subsystem.
+>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 > ---
->  drivers/pci/host/pcie-mediatek.c | 12 ++++++++++++
->  include/linux/pci_ids.h          |  3 +++
->  2 files changed, 15 insertions(+)
-> 
-> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-> index fc29a9a..0ef33e4 100644
-> --- a/drivers/pci/host/pcie-mediatek.c
-> +++ b/drivers/pci/host/pcie-mediatek.c
-> @@ -74,6 +74,10 @@
->  
->  /* PCIe V2 per-port registers */
->  #define PCIE_MSI_VECTOR		0x0c0
+>  drivers/clk/mediatek/Kconfig          |   6 +
+>  drivers/clk/mediatek/Makefile         |   1 +
+>  drivers/clk/mediatek/clk-mt2701-aud.c | 204 ++++++++++++++++++++++++++++++++++
+>  3 files changed, 211 insertions(+)
+>  create mode 100644 drivers/clk/mediatek/clk-mt2701-aud.c
+>
+> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+> index 59dc0aa..efb6f58 100644
+> --- a/drivers/clk/mediatek/Kconfig
+> +++ b/drivers/clk/mediatek/Kconfig
+> @@ -50,6 +50,12 @@ config COMMON_CLK_MT2701_BDPSYS
+>         ---help---
+>           This driver supports Mediatek MT2701 bdpsys clocks.
+>
+> +config COMMON_CLK_MT2701_AUDSYS
+> +       bool "Clock driver for Mediatek MT2701 audsys"
+> +       depends on COMMON_CLK_MT2701
+> +       ---help---
+> +         This driver supports Mediatek MT2701 audsys clocks.
 > +
-> +#define PCIE_CONF_ID		0x100
-> +#define PCIE_CONF_CLASS		0x104
-> +
->  #define PCIE_INT_MASK		0x420
->  #define INTX_MASK		GENMASK(19, 16)
->  #define INTX_SHIFT		16
-> @@ -393,6 +397,14 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
->  		val |= PCIE_CSR_LTSSM_EN(port->slot) |
->  		       PCIE_CSR_ASPM_L1_EN(port->slot);
->  		writel(val, pcie->base + PCIE_SYS_CFG_V2);
-> +
-> +		/* Set up vendor ID and device ID for MT7622*/
-> +		val = PCI_VENDOR_ID_MEDIATEK | (PCI_DEVICE_ID_MT7622 << 16);
-> +		writel(val, port->base + PCIE_CONF_ID);
+>  config COMMON_CLK_MT2712
+>         bool "Clock driver for Mediatek MT2712"
+>         depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
+> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+> index c421ffc..c4ab7d3 100644
+> --- a/drivers/clk/mediatek/Makefile
+> +++ b/drivers/clk/mediatek/Makefile
+> @@ -7,6 +7,7 @@ obj-$(CONFIG_COMMON_CLK_MT6797_MMSYS) += clk-mt6797-mm.o
+>  obj-$(CONFIG_COMMON_CLK_MT6797_VDECSYS) += clk-mt6797-vdec.o
+>  obj-$(CONFIG_COMMON_CLK_MT6797_VENCSYS) += clk-mt6797-venc.o
+>  obj-$(CONFIG_COMMON_CLK_MT2701) += clk-mt2701.o
+> +obj-$(CONFIG_COMMON_CLK_MT2701_AUDSYS) += clk-mt2701-aud.o
+>  obj-$(CONFIG_COMMON_CLK_MT2701_BDPSYS) += clk-mt2701-bdp.o
+>  obj-$(CONFIG_COMMON_CLK_MT2701_ETHSYS) += clk-mt2701-eth.o
+>  obj-$(CONFIG_COMMON_CLK_MT2701_HIFSYS) += clk-mt2701-hif.o
+> diff --git a/drivers/clk/mediatek/clk-mt2701-aud.c b/drivers/clk/mediatek/clk-mt2701-aud.c
+> new file mode 100644
+> index 0000000..058738e
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt2701-aud.c
+> @@ -0,0 +1,204 @@
+> +/*
+> + * Copyright (c) 2017 MediaTek Inc.
+> + * Author: Ryder Lee <ryder.lee@mediatek.com>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
 
-IMHO, this is a general function so you can ignore "device ID for
-MT7622" here, but just make sure class code/vendor ID correct.
-
-> +		/* Set up class code for MT7622 */
-> +		val = PCI_CLASS_BRIDGE_PCI << 16;
-> +		writel(val, port->base + PCIE_CONF_CLASS);
->  	}
->  
->  	/* Assert all reset signals */
-> diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
-> index ab20dc5..000c5df 100644
-> --- a/include/linux/pci_ids.h
-> +++ b/include/linux/pci_ids.h
-> @@ -2113,6 +2113,9 @@
->  
->  #define PCI_VENDOR_ID_MYRICOM		0x14c1
->  
-> +#define PCI_VENDOR_ID_MEDIATEK		0x14c3
-> +#define PCI_DEVICE_ID_MT7622		0x5396
-> +
->  #define PCI_VENDOR_ID_TITAN		0x14D2
->  #define PCI_DEVICE_ID_TITAN_010L	0x8001
->  #define PCI_DEVICE_ID_TITAN_100L	0x8010
+Could you use SPDX tags instead of this long legalese?
+-- 
+Cordially
+Philippe Ombredanne
