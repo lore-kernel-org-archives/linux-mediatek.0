@@ -1,120 +1,80 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH] clk: mediatek: Fix all warnings for missing struct
- clk_onecell_data
-Date: Sat, 23 Dec 2017 23:47:21 +0800
-Message-ID: <1514044041.30687.16.camel@mtkswgap22>
-References: <a7e0a625fb6a71b7fab810f1cc8ec196b1732305.1514015506.git.sean.wang@mediatek.com>
-         <20171223122002.2cb629d1@endymion>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v2] clk: mediatek: Fix all warnings for missing struct clk_onecell_data
+Date: Mon, 25 Dec 2017 16:03:57 +0800
+Message-ID: <2a2569d80e92a45e8eef2b431abfb951853ab6e0.1514188437.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20171223122002.2cb629d1@endymion>
 Sender: linux-clk-owner@vger.kernel.org
-To: Jean Delvare <jdelvare@suse.de>
-Cc: sboyd@codeaurora.org, mturquette@baylibre.com, matthias.bgg@gmail.com, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, kbuild-all@01.org
+To: sboyd@codeaurora.org, mturquette@baylibre.com, matthias.bgg@gmail.com
+Cc: linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, kbuild-all@01.org, Jean Delvare <jdelvare@suse.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 2017-12-23 at 12:20 +0100, Jean Delvare wrote:
-> Hi Sean,
-> 
-> On Sat, 23 Dec 2017 15:56:36 +0800, sean.wang@mediatek.com wrote:
-> > From: Sean Wang <sean.wang@mediatek.com>
-> > 
-> > In fact, the clk-mtk.h header is unnecessary for reset.c and thus it's
-> > safe to remove it from the file to get rid of below build warnings.
-> > 
-> > All warnings (new ones prefixed by >>):
-> > 
-> >    In file included from drivers/clk/mediatek/reset.c:22:0:
-> > >>drivers/clk/mediatek/clk-mtk.h:44:19: warning: 'struct clk_onecell_data'  
-> > declared inside parameter list will not be visible outside of
-> > this definition or declaration
-> >       int num, struct clk_onecell_data *clk_data);
-> >                       ^~~~~~~~~~~~~~~~
-> > drivers/clk/mediatek/clk-mtk.h:63:19: warning: 'struct clk_onecell_data'
-> > declared inside parameter list will not be visible outside of
-> > this definition or declaration
-> >       int num, struct clk_onecell_data *clk_data);
-> >                       ^~~~~~~~~~~~~~~~
-> > drivers/clk/mediatek/clk-mtk.h:145:10: warning: 'struct clk_onecell_data'
-> > declared inside parameter list will not be visible outside of
-> > this definition or declaration
-> >       struct clk_onecell_data *clk_data);
-> >              ^~~~~~~~~~~~~~~~
-> > drivers/clk/mediatek/clk-mtk.h:164:11: warning: 'struct clk_onecell_data'
-> > declared inside parameter list will not be visible outside of
-> > this definition or declaration
-> >        struct clk_onecell_data *clk_data);
-> >               ^~~~~~~~~~~~~~~~
-> > drivers/clk/mediatek/clk-mtk.h:190:12: warning: 'struct clk_onecell_data'
-> > declared inside parameter list will not be visible outside of this
-> > definition or declaration
-> >         struct clk_onecell_data *clk_data);
-> >                ^~~~~~~~~~~~~~~~
-> 
-> That's not the proper fix. The actual problem here is in clk-mtk.h,
-> which declares functions which need struct clk_onecell_data without
-> declaring that structure first. This can be fixed in 2 ways:
-> 
-> 1* #Include whatever header file provides the definition of struct
->    clk_onecell_data (I think <linux/clk-provider.h>) in clk-mtk.h
->    itself.
-> 
-> 2* As you only manipulate pointers and not the structure itself, you
->    could simply declare that this struct exists, without defining it,
->    prior to referencing it in clk-mtk.h. As easy as:
-> 
->    struct clk_onecell_data;
-> 
-> In this case option 1 seems preferable.
-> 
-> The reason why the problem is only visible in reset.c is because other
-> source files under drivers/clk/mediatek #include <linux/clk-provider.h>
-> explicitly before #including clk-mtk.h. But it only works "by
-> accident". Ideally header files should be self-sufficient, so you don't
-> depend on #include order.
-> 
+From: Sean Wang <sean.wang@mediatek.com>
 
-agreed on above. I also prefer using option 1 to solve original issue.
+Even though the header file linux/clk-provider.h is already being properly
+included in clk-mtk.h, the definition of struct clk_onecell_data still
+must depend on CONFIG_COMMON_CLK defined and thus it's possible that
+below build warnings occur when CONFIG_COMMON_CLK is not being selected.
 
-> > Reported-by: kbuild test robot <fengguang.wu@intel.com>
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > Cc: kbuild-all@01.org
-> > Cc: Stephen Boyd <sboyd@codeaurora.org>
-> > Cc: linux-clk@vger.kernel.org
-> > ---
-> >  drivers/clk/mediatek/reset.c | 2 --
-> >  1 file changed, 2 deletions(-)
-> > 
-> > diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
-> > index d3551d5..70ebb2e 100644
-> > --- a/drivers/clk/mediatek/reset.c
-> > +++ b/drivers/clk/mediatek/reset.c
-> > @@ -19,8 +19,6 @@
-> >  #include <linux/reset-controller.h>
-> >  #include <linux/slab.h>
-> >  
-> > -#include "clk-mtk.h"
-> > -
-> >  struct mtk_reset {
-> >  	struct regmap *regmap;
-> >  	int regofs;
-> 
-> If the header file is indeed not needed then that's still a good
-> change, even if it doesn't fix the problem, so:
-> 
-> Reviewed-by: Jean Delvare <jdelvare@suse.de>
+Therefore, these functions which need struct clk_onecell_data without
+declaring that structure first requires simply declaring that this struct
+exists prior to referencing it in clk-mtk.h
 
-> However the patch description should be adjusted accordingly.
+Changes from v1->v2:
+enhance v1 based on two useful solutions Jean Delvare kindly suggested.
 
+All warnings (new ones prefixed by >>):
 
-I will use another patch to remove the indeed not needed header 
+In file included from drivers/clk/mediatek/reset.c:22:0:
+>>drivers/clk/mediatek/clk-mtk.h:44:19: warning: 'struct clk_onecell_data'
+declared inside parameter list will not be visible outside of
+this definition or declaration
+  int num, struct clk_onecell_data *clk_data);
+		  ^~~~~~~~~~~~~~~~
+drivers/clk/mediatek/clk-mtk.h:63:19: warning: 'struct clk_onecell_data'
+declared inside parameter list will not be visible outside of
+this definition or declaration
+  int num, struct clk_onecell_data *clk_data);
+		  ^~~~~~~~~~~~~~~~
+drivers/clk/mediatek/clk-mtk.h:145:10: warning: 'struct clk_onecell_data'
+declared inside parameter list will not be visible outside of
+this definition or declaration
+  struct clk_onecell_data *clk_data);
+	 ^~~~~~~~~~~~~~~~
+drivers/clk/mediatek/clk-mtk.h:164:11: warning: 'struct clk_onecell_data'
+declared inside parameter list will not be visible outside of
+this definition or declaration
+   struct clk_onecell_data *clk_data);
+	  ^~~~~~~~~~~~~~~~
+drivers/clk/mediatek/clk-mtk.h:190:12: warning: 'struct clk_onecell_data'
+declared inside parameter list will not be visible outside of this
+definition or declaration
+    struct clk_onecell_data *clk_data);
+	   ^~~~~~~~~~~~~~~~
 
-thanks a lot for your detailed explanation and help
+Reported-by: kbuild test robot <fengguang.wu@intel.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Cc: kbuild-all@01.org
+Cc: Stephen Boyd <sboyd@codeaurora.org>
+Cc: Jean Delvare <jdelvare@suse.de>
+Cc: linux-clk@vger.kernel.org
+---
+ drivers/clk/mediatek/clk-mtk.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-	Sean
-
-
-
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index f10250d..bf8006d 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -20,6 +20,7 @@
+ #include <linux/clk-provider.h>
+ 
+ struct clk;
++struct clk_onecell_data;
+ 
+ #define MAX_MUX_GATE_BIT	31
+ #define INVALID_MUX_GATE_BIT	(MAX_MUX_GATE_BIT + 1)
+-- 
+2.7.4
 
