@@ -1,80 +1,49 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v2] clk: mediatek: Fix all warnings for missing struct clk_onecell_data
-Date: Mon, 25 Dec 2017 16:03:57 +0800
-Message-ID: <2a2569d80e92a45e8eef2b431abfb951853ab6e0.1514188437.git.sean.wang@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 1/2] clk: mediatek: update clock data for MT7622 audsys
+Date: Mon, 25 Dec 2017 16:27:51 +0800
+Message-ID: <b36f38f4b9f780529046a3c2c76a1e59561e9ff1.1514190088.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-clk-owner@vger.kernel.org>
 Sender: linux-clk-owner@vger.kernel.org
-To: sboyd@codeaurora.org, mturquette@baylibre.com, matthias.bgg@gmail.com
-Cc: linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, kbuild-all@01.org, Jean Delvare <jdelvare@suse.de>
+To: Stephen Boyd <sboyd@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+Add missing clock gate "CLK_AUDIO_AFE_CONN" for MT7622 audsys.
 
-Even though the header file linux/clk-provider.h is already being properly
-included in clk-mtk.h, the definition of struct clk_onecell_data still
-must depend on CONFIG_COMMON_CLK defined and thus it's possible that
-below build warnings occur when CONFIG_COMMON_CLK is not being selected.
-
-Therefore, these functions which need struct clk_onecell_data without
-declaring that structure first requires simply declaring that this struct
-exists prior to referencing it in clk-mtk.h
-
-Changes from v1->v2:
-enhance v1 based on two useful solutions Jean Delvare kindly suggested.
-
-All warnings (new ones prefixed by >>):
-
-In file included from drivers/clk/mediatek/reset.c:22:0:
->>drivers/clk/mediatek/clk-mtk.h:44:19: warning: 'struct clk_onecell_data'
-declared inside parameter list will not be visible outside of
-this definition or declaration
-  int num, struct clk_onecell_data *clk_data);
-		  ^~~~~~~~~~~~~~~~
-drivers/clk/mediatek/clk-mtk.h:63:19: warning: 'struct clk_onecell_data'
-declared inside parameter list will not be visible outside of
-this definition or declaration
-  int num, struct clk_onecell_data *clk_data);
-		  ^~~~~~~~~~~~~~~~
-drivers/clk/mediatek/clk-mtk.h:145:10: warning: 'struct clk_onecell_data'
-declared inside parameter list will not be visible outside of
-this definition or declaration
-  struct clk_onecell_data *clk_data);
-	 ^~~~~~~~~~~~~~~~
-drivers/clk/mediatek/clk-mtk.h:164:11: warning: 'struct clk_onecell_data'
-declared inside parameter list will not be visible outside of
-this definition or declaration
-   struct clk_onecell_data *clk_data);
-	  ^~~~~~~~~~~~~~~~
-drivers/clk/mediatek/clk-mtk.h:190:12: warning: 'struct clk_onecell_data'
-declared inside parameter list will not be visible outside of this
-definition or declaration
-    struct clk_onecell_data *clk_data);
-	   ^~~~~~~~~~~~~~~~
-
-Reported-by: kbuild test robot <fengguang.wu@intel.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Cc: kbuild-all@01.org
-Cc: Stephen Boyd <sboyd@codeaurora.org>
-Cc: Jean Delvare <jdelvare@suse.de>
-Cc: linux-clk@vger.kernel.org
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mtk.h | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/clk/mediatek/clk-mt7622-aud.c  | 1 +
+ include/dt-bindings/clock/mt7622-clk.h | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index f10250d..bf8006d 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -20,6 +20,7 @@
- #include <linux/clk-provider.h>
+diff --git a/drivers/clk/mediatek/clk-mt7622-aud.c b/drivers/clk/mediatek/clk-mt7622-aud.c
+index fad7d9f..13f752d 100644
+--- a/drivers/clk/mediatek/clk-mt7622-aud.c
++++ b/drivers/clk/mediatek/clk-mt7622-aud.c
+@@ -106,6 +106,7 @@
+ 	GATE_AUDIO1(CLK_AUDIO_INTDIR, "audio_intdir", "intdir_sel", 20),
+ 	GATE_AUDIO1(CLK_AUDIO_A1SYS, "audio_a1sys", "a1sys_hp_sel", 21),
+ 	GATE_AUDIO1(CLK_AUDIO_A2SYS, "audio_a2sys", "a2sys_hp_sel", 22),
++	GATE_AUDIO1(CLK_AUDIO_AFE_CONN, "audio_afe_conn", "a1sys_hp_sel", 23),
+ 	/* AUDIO2 */
+ 	GATE_AUDIO2(CLK_AUDIO_UL1, "audio_ul1", "a1sys_hp_sel", 0),
+ 	GATE_AUDIO2(CLK_AUDIO_UL2, "audio_ul2", "a1sys_hp_sel", 1),
+diff --git a/include/dt-bindings/clock/mt7622-clk.h b/include/dt-bindings/clock/mt7622-clk.h
+index 3e514ed..e9d77f0 100644
+--- a/include/dt-bindings/clock/mt7622-clk.h
++++ b/include/dt-bindings/clock/mt7622-clk.h
+@@ -235,7 +235,8 @@
+ #define CLK_AUDIO_MEM_ASRC3		43
+ #define CLK_AUDIO_MEM_ASRC4		44
+ #define CLK_AUDIO_MEM_ASRC5		45
+-#define CLK_AUDIO_NR_CLK		46
++#define CLK_AUDIO_AFE_CONN		46
++#define CLK_AUDIO_NR_CLK		47
  
- struct clk;
-+struct clk_onecell_data;
+ /* SSUSBSYS */
  
- #define MAX_MUX_GATE_BIT	31
- #define INVALID_MUX_GATE_BIT	(MAX_MUX_GATE_BIT + 1)
 -- 
-2.7.4
+1.9.1
 
