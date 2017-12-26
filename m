@@ -1,81 +1,79 @@
-From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v4 2/2] PCI: mediatek: Set up class type and vendor ID
- for MT7622
-Date: Tue, 26 Dec 2017 09:41:12 +0800
-Message-ID: <1514252472.25872.29.camel@mhfsdcap03>
-References: <1513921178-16148-1-git-send-email-honghui.zhang@mediatek.com>
-         <1513921178-16148-3-git-send-email-honghui.zhang@mediatek.com>
-         <1514197661.25015.9.camel@mtkswgap22>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH] clk: mediatek: adjust dependency of reset.c to avoid unexpectedly being built
+Date: Tue, 26 Dec 2017 11:52:31 +0800
+Message-ID: <5a6347a5196a5eba85dce9ac7c3b9392b832f1f8.1514259933.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1514197661.25015.9.camel@mtkswgap22>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: sboyd@codeaurora.org, mturquette@baylibre.com, matthias.bgg@gmail.com
+Cc: jdelvare@suse.de, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, kevin-cw.chen@mediatek.com, shunli.wang@mediatek.com, chen.zhong@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2017-12-25 at 18:27 +0800, Ryder Lee wrote:
-> On Fri, 2017-12-22 at 13:39 +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> > From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > 
-> > The hardware default value of IDs and class type is not correct,
-> > fix that by setup the correct values before start up.
-> > 
-> > Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  drivers/pci/host/pcie-mediatek.c | 12 ++++++++++++
-> >  include/linux/pci_ids.h          |  3 +++
-> >  2 files changed, 15 insertions(+)
-> > 
-> > diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-> > index fc29a9a..0ef33e4 100644
-> > --- a/drivers/pci/host/pcie-mediatek.c
-> > +++ b/drivers/pci/host/pcie-mediatek.c
-> > @@ -74,6 +74,10 @@
-> >  
-> >  /* PCIe V2 per-port registers */
-> >  #define PCIE_MSI_VECTOR		0x0c0
-> > +
-> > +#define PCIE_CONF_ID		0x100
-> > +#define PCIE_CONF_CLASS		0x104
-> > +
-> >  #define PCIE_INT_MASK		0x420
-> >  #define INTX_MASK		GENMASK(19, 16)
-> >  #define INTX_SHIFT		16
-> > @@ -393,6 +397,14 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
-> >  		val |= PCIE_CSR_LTSSM_EN(port->slot) |
-> >  		       PCIE_CSR_ASPM_L1_EN(port->slot);
-> >  		writel(val, pcie->base + PCIE_SYS_CFG_V2);
-> > +
-> > +		/* Set up vendor ID and device ID for MT7622*/
-> > +		val = PCI_VENDOR_ID_MEDIATEK | (PCI_DEVICE_ID_MT7622 << 16);
-> > +		writel(val, port->base + PCIE_CONF_ID);
-> 
-> IMHO, this is a general function so you can ignore "device ID for
-> MT7622" here, but just make sure class code/vendor ID correct.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Hmm, this condition is only for MT7622 for now.
-Well, host driver and framework does not cares about the device ID for
-host bridge. I guess I can bypass the setting of device ID.
+commit 74cb0d6dde8 ("clk: mediatek: fixup test-building of MediaTek clock
+drivers") can let the build system looking into the directory where the
+clock drivers resides and then allow test-building the drivers.
 
-thanks.
+But the change also gives rise to certain incorrect behavior which is
+reset.c being built even not depending on either COMPILE_TEST or
+ARCH_MEDIATEK alternative dependency. To get rid of reset.c being built
+unexpectedly on the other platforms, it would be a good change that the
+file should be built depending on its own specific configuration rather
+than just on generic RESET_CONTROLLER one.
 
-> 
-> > +		/* Set up class code for MT7622 */
-> > +		val = PCI_CLASS_BRIDGE_PCI << 16;
-> > +		writel(val, port->base + PCIE_CONF_CLASS);
-> >  	}
-> >  
-> >  	/* Assert all reset signals */
-> > diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
-> > index ab20dc5..000c5df 100644
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Cc: Jean Delvare <jdelvare@suse.de>
+---
+ drivers/clk/mediatek/Kconfig   | 7 +++++++
+ drivers/clk/mediatek/Makefile  | 2 +-
+ drivers/clk/mediatek/clk-mtk.h | 2 +-
+ 3 files changed, 9 insertions(+), 2 deletions(-)
 
-> 
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index 7338f81..52d880a 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -9,6 +9,13 @@ config COMMON_CLK_MEDIATEK
+ 	---help---
+ 	  MediaTek SoCs' clock support.
+ 
++config RESET_MEDIATEK
++	bool "MediaTek Reset Driver"
++	depends on ARCH_MEDIATEK || COMPILE_TEST
++	depends on RESET_CONTROLLER
++	help
++	  This enables the reset controller driver used on MediaTek SoCs.
++
+ config COMMON_CLK_MT2701
+ 	bool "Clock driver for MediaTek MT2701"
+ 	depends on (ARCH_MEDIATEK && ARM) || COMPILE_TEST
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index c421ffc..2a48006 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -1,6 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o
+-obj-$(CONFIG_RESET_CONTROLLER) += reset.o
++obj-$(CONFIG_RESET_MEDIATEK) += reset.o
+ obj-$(CONFIG_COMMON_CLK_MT6797) += clk-mt6797.o
+ obj-$(CONFIG_COMMON_CLK_MT6797_IMGSYS) += clk-mt6797-img.o
+ obj-$(CONFIG_COMMON_CLK_MT6797_MMSYS) += clk-mt6797-mm.o
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index bf8006d..0322dec 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -229,7 +229,7 @@ void mtk_clk_register_plls(struct device_node *node,
+ struct clk *mtk_clk_register_ref2usb_tx(const char *name,
+ 			const char *parent_name, void __iomem *reg);
+ 
+-#ifdef CONFIG_RESET_CONTROLLER
++#ifdef CONFIG_RESET_MEDIATEK
+ void mtk_register_reset_controller(struct device_node *np,
+ 			unsigned int num_regs, int regofs);
+ #else
+-- 
+2.7.4
 
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
