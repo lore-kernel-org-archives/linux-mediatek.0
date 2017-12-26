@@ -1,116 +1,81 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH] pwm: mediatek: fix up PWM4 and PWM5 malfunction on MT7623
-Date: Mon, 25 Dec 2017 22:59:54 +0800
-Message-ID: <7ddf36f5b9400b29578d4897ddea72c57c1c8d11.1514213639.git.sean.wang@mediatek.com>
+From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 2/2] PCI: mediatek: Set up class type and vendor ID
+ for MT7622
+Date: Tue, 26 Dec 2017 09:41:12 +0800
+Message-ID: <1514252472.25872.29.camel@mhfsdcap03>
+References: <1513921178-16148-1-git-send-email-honghui.zhang@mediatek.com>
+         <1513921178-16148-3-git-send-email-honghui.zhang@mediatek.com>
+         <1514197661.25015.9.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-pwm-owner@vger.kernel.org>
-Sender: linux-pwm-owner@vger.kernel.org
-To: thierry.reding@gmail.com, matthias.bgg@gmail.com
-Cc: linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Zhi Mao <zhi.mao@mediatek.com>, John Crispin <john@phrozen.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1514197661.25015.9.camel@mtkswgap22>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Mon, 2017-12-25 at 18:27 +0800, Ryder Lee wrote:
+> On Fri, 2017-12-22 at 13:39 +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> > From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > 
+> > The hardware default value of IDs and class type is not correct,
+> > fix that by setup the correct values before start up.
+> > 
+> > Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/pci/host/pcie-mediatek.c | 12 ++++++++++++
+> >  include/linux/pci_ids.h          |  3 +++
+> >  2 files changed, 15 insertions(+)
+> > 
+> > diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+> > index fc29a9a..0ef33e4 100644
+> > --- a/drivers/pci/host/pcie-mediatek.c
+> > +++ b/drivers/pci/host/pcie-mediatek.c
+> > @@ -74,6 +74,10 @@
+> >  
+> >  /* PCIe V2 per-port registers */
+> >  #define PCIE_MSI_VECTOR		0x0c0
+> > +
+> > +#define PCIE_CONF_ID		0x100
+> > +#define PCIE_CONF_CLASS		0x104
+> > +
+> >  #define PCIE_INT_MASK		0x420
+> >  #define INTX_MASK		GENMASK(19, 16)
+> >  #define INTX_SHIFT		16
+> > @@ -393,6 +397,14 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+> >  		val |= PCIE_CSR_LTSSM_EN(port->slot) |
+> >  		       PCIE_CSR_ASPM_L1_EN(port->slot);
+> >  		writel(val, pcie->base + PCIE_SYS_CFG_V2);
+> > +
+> > +		/* Set up vendor ID and device ID for MT7622*/
+> > +		val = PCI_VENDOR_ID_MEDIATEK | (PCI_DEVICE_ID_MT7622 << 16);
+> > +		writel(val, port->base + PCIE_CONF_ID);
+> 
+> IMHO, this is a general function so you can ignore "device ID for
+> MT7622" here, but just make sure class code/vendor ID correct.
 
-Since the offset for both registers, PWMDWIDTH and PWMTHRES, used to
-control PWM4 or PWM5 are distinct from the other PWMs, whose wrong
-programming on PWM hardware causes waveform cannot be output as expected.
-Thus, the patch adds the extra condition for fixing up the weird case to
-let PWM4 or PWM5 able to work on MT7623.
+Hmm, this condition is only for MT7622 for now.
+Well, host driver and framework does not cares about the device ID for
+host bridge. I guess I can bypass the setting of device ID.
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Cc: Zhi Mao <zhi.mao@mediatek.com>
-Cc: John Crispin <john@phrozen.org>
----
- drivers/pwm/pwm-mediatek.c | 24 +++++++++++++++++++++---
- 1 file changed, 21 insertions(+), 3 deletions(-)
+thanks.
 
-diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-index f5d97e0..9311574 100644
---- a/drivers/pwm/pwm-mediatek.c
-+++ b/drivers/pwm/pwm-mediatek.c
-@@ -29,7 +29,9 @@
- #define PWMGDUR			0x0c
- #define PWMWAVENUM		0x28
- #define PWMDWIDTH		0x2c
-+#define PWM45DWIDTH_QUIRK	0x30
- #define PWMTHRES		0x30
-+#define PWM45THRES_QUIRK	0x34
- 
- #define PWM_CLK_DIV_MAX		7
- 
-@@ -54,6 +56,7 @@ static const char * const mtk_pwm_clk_name[MTK_CLK_MAX] = {
- 
- struct mtk_pwm_platform_data {
- 	unsigned int num_pwms;
-+	bool pwm45_quirk;
- };
- 
- /**
-@@ -66,6 +69,7 @@ struct mtk_pwm_chip {
- 	struct pwm_chip chip;
- 	void __iomem *regs;
- 	struct clk *clks[MTK_CLK_MAX];
-+	const struct mtk_pwm_platform_data *soc;
- };
- 
- static const unsigned int mtk_pwm_reg_offset[] = {
-@@ -131,7 +135,8 @@ static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- {
- 	struct mtk_pwm_chip *pc = to_mtk_pwm_chip(chip);
- 	struct clk *clk = pc->clks[MTK_CLK_PWM1 + pwm->hwpwm];
--	u32 resolution, clkdiv = 0;
-+	u32 resolution, clkdiv = 0, reg_width = PWMDWIDTH,
-+	    reg_thres = PWMTHRES;
- 	int ret;
- 
- 	ret = mtk_pwm_clk_enable(chip, pwm);
-@@ -151,9 +156,18 @@ static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 		return -EINVAL;
- 	}
- 
-+	if (pc->soc->pwm45_quirk && pwm->hwpwm > 2) {
-+		/*
-+		 * PWM[4,5] has distinct offset for PWMDWIDTH and PWMTHRES
-+		 * from the other PWMs on MT7623.
-+		 */
-+		reg_width = PWM45DWIDTH_QUIRK;
-+		reg_thres = PWM45THRES_QUIRK;
-+	}
-+
- 	mtk_pwm_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
--	mtk_pwm_writel(pc, pwm->hwpwm, PWMDWIDTH, period_ns / resolution);
--	mtk_pwm_writel(pc, pwm->hwpwm, PWMTHRES, duty_ns / resolution);
-+	mtk_pwm_writel(pc, pwm->hwpwm, reg_width, period_ns / resolution);
-+	mtk_pwm_writel(pc, pwm->hwpwm, reg_thres, duty_ns / resolution);
- 
- 	mtk_pwm_clk_disable(chip, pwm);
- 
-@@ -211,6 +225,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
- 	data = of_device_get_match_data(&pdev->dev);
- 	if (data == NULL)
- 		return -EINVAL;
-+	pc->soc = data;
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	pc->regs = devm_ioremap_resource(&pdev->dev, res);
-@@ -251,14 +266,17 @@ static int mtk_pwm_remove(struct platform_device *pdev)
- 
- static const struct mtk_pwm_platform_data mt2712_pwm_data = {
- 	.num_pwms = 8,
-+	.pwm45_quirk = false,
- };
- 
- static const struct mtk_pwm_platform_data mt7622_pwm_data = {
- 	.num_pwms = 6,
-+	.pwm45_quirk = false,
- };
- 
- static const struct mtk_pwm_platform_data mt7623_pwm_data = {
- 	.num_pwms = 5,
-+	.pwm45_quirk = true,
- };
- 
- static const struct of_device_id mtk_pwm_of_match[] = {
--- 
-2.7.4
+> 
+> > +		/* Set up class code for MT7622 */
+> > +		val = PCI_CLASS_BRIDGE_PCI << 16;
+> > +		writel(val, port->base + PCIE_CONF_CLASS);
+> >  	}
+> >  
+> >  	/* Assert all reset signals */
+> > diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
+> > index ab20dc5..000c5df 100644
+
+> 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
