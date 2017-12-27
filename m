@@ -1,30 +1,47 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH net 2/2] net: mediatek: remove superfluous pin setup
- for MT7622 SoC
-Date: Tue, 26 Dec 2017 12:06:10 -0500 (EST)
-Message-ID: <20171226.120610.873465773072675214.davem@davemloft.net>
-References: <e366efc29985d3292c8a1afb1389b5eac57c9037.1513762066.git.sean.wang@mediatek.com>
-        <e3bd43a5337df719e791bc9902135a0916a951ff.1513762066.git.sean.wang@mediatek.com>
+From: <honghui.zhang@mediatek.com>
+Subject: [PATCH v5 0/2] PCI: mediatek: Fixups for the IRQ handle routine and MT7622's class code
+Date: Wed, 27 Dec 2017 08:59:52 +0800
+Message-ID: <1514336394-17747-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e3bd43a5337df719e791bc9902135a0916a951ff.1513762066.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, john@phrozen.org, nbd@openwrt.org, nelson.chang@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, lorenzo.pieralisi@arm.com
+Cc: honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: <sean.wang@mediatek.com>
-Date: Wed, 20 Dec 2017 17:47:06 +0800
+From: Honghui Zhang <honghui.zhang@mediatek.com>
 
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Remove superfluous pin setup to get out of accessing invalid I/O pin
-> registers because the way for pin configuring tends to be different from
-> various SoCs and thus it should be better being managed and controlled by
-> the pinctrl driver which MT7622 already can support.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Two fixups for mediatek's host bridge:
+The first patch fixup the IRQ handle routine to avoid IRQ reentry which
+may exist for both MT2712 and MT7622.
+The second patch fixup class type for MT7622.
 
-Applied to net-next.
+Change since v4:
+ - Only setup vendor ID for MT7622, igorning the device ID since mediatek's
+   host bridge driver does not cares about the device ID.
+
+Change since v3:
+ - Setup the class type and vendor ID at the beginning of startup instead
+   of in a quirk.
+ - Add mediatek's vendor ID, it could be found in:
+   https://pcisig.com/membership/member-companies?combine=&page=4
+
+Change since v2:
+ - Move the initialize of the iterate before the loop to fix an
+   INTx IRQ issue in the first patch
+
+Change since v1:
+ - Add the second patch.
+ - Make the first patch's commit message more standard.
+
+Honghui Zhang (2):
+  PCI: mediatek: Clear IRQ status after IRQ dispatched to avoid reentry
+  PCI: mediatek: Set up class type and vendor ID for MT7622
+
+ drivers/pci/host/pcie-mediatek.c | 23 ++++++++++++++++++-----
+ include/linux/pci_ids.h          |  2 ++
+ 2 files changed, 20 insertions(+), 5 deletions(-)
+
+-- 
+2.6.4
