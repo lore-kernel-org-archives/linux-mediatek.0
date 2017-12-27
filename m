@@ -1,113 +1,68 @@
-From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v5 2/2] PCI: mediatek: Set up class type and vendor ID
- for MT7622
-Date: Wed, 27 Dec 2017 12:45:42 -0600
-Message-ID: <20171227184542.GA79892@bhelgaas-glaptop.roam.corp.google.com>
-References: <1514336394-17747-1-git-send-email-honghui.zhang@mediatek.com>
- <1514336394-17747-3-git-send-email-honghui.zhang@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1514336394-17747-3-git-send-email-honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Subject: [PATCH 00/20] Verbatim device names and devm_nvmem_(un)register()
+Date: Wed, 27 Dec 2017 14:59:36 -0800
+Message-ID: <20171227225956.14442-1-andrew.smirnov@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Joachim Eastwood <manabian@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Dec 27, 2017 at 08:59:54AM +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> The hardware default value of IDs and class type is not correct,
-> fix that by setup the correct values before start up.
-> 
-> Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/pci/host/pcie-mediatek.c | 12 ++++++++++++
->  include/linux/pci_ids.h          |  2 ++
->  2 files changed, 14 insertions(+)
-> 
-> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-> index fc29a9a..62aac0ea 100644
-> --- a/drivers/pci/host/pcie-mediatek.c
-> +++ b/drivers/pci/host/pcie-mediatek.c
-> @@ -74,6 +74,10 @@
->  
->  /* PCIe V2 per-port registers */
->  #define PCIE_MSI_VECTOR		0x0c0
-> +
-> +#define PCIE_CONF_ID		0x100
-> +#define PCIE_CONF_CLASS		0x104
-> +
->  #define PCIE_INT_MASK		0x420
->  #define INTX_MASK		GENMASK(19, 16)
->  #define INTX_SHIFT		16
-> @@ -393,6 +397,14 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
->  		val |= PCIE_CSR_LTSSM_EN(port->slot) |
->  		       PCIE_CSR_ASPM_L1_EN(port->slot);
->  		writel(val, pcie->base + PCIE_SYS_CFG_V2);
-> +
-> +		/* Set up vendor ID and device ID for MT7622*/
-> +		val = PCI_VENDOR_ID_MEDIATEK;
-> +		writel(val, port->base + PCIE_CONF_ID);
-> +
-> +		/* Set up class code for MT7622 */
-> +		val = PCI_CLASS_BRIDGE_PCI << 16;
-> +		writel(val, port->base + PCIE_CONF_CLASS);
+Srinivas, all:
 
-1) Your comments mention MT7622 specifically, but this code is run for
-both mt2712-pcie and mt7622-pcie.  If this code is safe and necessary
-for both mt2712-pcie and mt7622-pcie, please remove the mention of
-MT7622.
+This patchset contains various small changes that I recently made to
+NVMEM, more specifically:
 
-2) The first comment mentions both "vendor ID and device ID" but you
-don't write the device ID.  Since this code applies to both
-mt2712-pcie and mt7622-pcie, my guess is that you don't *want* to
-write the device ID.  If that's the case, please fix the comment.
+ - Patches 1 and 2 are two changes I am hoping are acceptable upstream
 
-3) If you only need to set the vendor ID, you're performing a 32-bit
-write (writel()) to update a 16-bit value.  Please use writew()
-instead.
+ - Patches 3 to 14 are a follow up to patch 2
 
-4) If you only need to set the vendor ID, please use a definition like
-"PCIE_CONF_VENDOR_ID" instead of the ambiguous "PCIE_CONF_ID".
+ - Patches 15 to 20 are just trivial fixups and I am more than happy
+   to drop them if they seem to add more pointless churn rather then
+   value.
 
-5) If you only need to set the vendor ID, please update the changelog
-to mention "vendor ID" specifically instead of the ambiguous "IDs".
+Feedback is appreciated!
 
-6) Please add a space before the closing "*/" of the first comment.
+Thanks,
+Andrey Smirnov
 
-7) PCI_CLASS_BRIDGE_PCI is for a PCI-to-PCI bridge, i.e., one that has
-PCI on both the primary (upstream) side and the secondary (downstream)
-side.  That kind of bridge has a type 1 config header (see
-PCI_HEADER_TYPE) and the PCI_PRIMARY_BUS and PCI_SECONDARY_BUS
-registers tell us the bus number of the primary and secondary sides.
+Andrey Smirnov (20):
+  nvmem: core: Allow specifying device name verbatim
+  nvmem: Introduce devm_nvmem_(un)register()
+  nvmem: vf610-ocotp: Convert to use devm_nvmem_register()
+  nvmem: imx-ocotp: Convert to use devm_nvmem_register()
+  nvmem: uniphier-efuse: Convert to use devm_nvmem_register()
+  nvmem: snvs_lgpr: Convert to use devm_nvmem_register()
+  nvmem: rockchip-efuse: Convert to use devm_nvmem_register()
+  nvmem: qfprom: Convert to use devm_nvmem_register()
+  nvmem: mtk-efuse: Convert to use devm_nvmem_register()
+  nvmem: meson-mx-efuse: Convert to use devm_nvmem_register()
+  nvmem: meson-efuse: Convert to use devm_nvmem_register()
+  nvmem: lpc18xx_otp: Convert to use devm_nvmem_register()
+  nvmem: imx-iim: Convert to use devm_nvmem_register()
+  nvmem: bcm-ocotp: Convert to use devm_nvmem_register()
+  nvmem: snvs_lpgpr: Convert commas to semicolons
+  nvmem: rockchip-efuse: Make use of of_device_get_match_data()
+  nvmem: vf610-ocotp: Do not use "&pdev->dev" explicitly
+  nvmem: rockchip-efuse: Do not use "&pdev->dev" explicitly
+  nvmem: imx-iim: Do not use "&pdev->dev" explicitly
+  nvmem: bcm-ocotp: Do not use "&pdev->dev" explicitly
 
-I don't believe this device is a PCI-to-PCI bridge.  I think it's a
-*host* bridge that has some non-PCI interface on the upstream side and
-should have a type 0 config header.  If that's the case you should use
-PCI_CLASS_BRIDGE_HOST instead.
+ drivers/nvmem/bcm-ocotp.c      | 15 ++----------
+ drivers/nvmem/core.c           | 52 +++++++++++++++++++++++++++++++++++++++---
+ drivers/nvmem/imx-iim.c        | 14 ++----------
+ drivers/nvmem/imx-ocotp.c      | 12 +---------
+ drivers/nvmem/lpc18xx_otp.c    | 12 +---------
+ drivers/nvmem/meson-efuse.c    | 11 +--------
+ drivers/nvmem/meson-mx-efuse.c | 12 +---------
+ drivers/nvmem/mtk-efuse.c      | 12 +---------
+ drivers/nvmem/qfprom.c         | 12 +---------
+ drivers/nvmem/rockchip-efuse.c | 28 ++++++++---------------
+ drivers/nvmem/snvs_lpgpr.c     | 26 +++++++--------------
+ drivers/nvmem/uniphier-efuse.c | 12 +---------
+ drivers/nvmem/vf610-ocotp.c    | 15 ++----------
+ include/linux/nvmem-provider.h | 17 ++++++++++++++
+ 14 files changed, 96 insertions(+), 154 deletions(-)
 
->  	}
->  
->  	/* Assert all reset signals */
-> diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
-> index ab20dc5..2480b0e 100644
-> --- a/include/linux/pci_ids.h
-> +++ b/include/linux/pci_ids.h
-> @@ -2113,6 +2113,8 @@
->  
->  #define PCI_VENDOR_ID_MYRICOM		0x14c1
->  
-> +#define PCI_VENDOR_ID_MEDIATEK		0x14c3
-> +
->  #define PCI_VENDOR_ID_TITAN		0x14D2
->  #define PCI_DEVICE_ID_TITAN_010L	0x8001
->  #define PCI_DEVICE_ID_TITAN_100L	0x8010
-> -- 
-> 2.6.4
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+2.14.3
