@@ -1,64 +1,46 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH] clk: mediatek: adjust dependency of reset.c to avoid
- unexpectedly being built
-Date: Wed, 27 Dec 2017 17:43:37 +0800
-Message-ID: <1514367817.30687.59.camel@mtkswgap22>
-References: <5a6347a5196a5eba85dce9ac7c3b9392b832f1f8.1514259933.git.sean.wang@mediatek.com>
-         <20171227011936.GT7997@codeaurora.org>
+From: Jean Delvare <jdelvare@suse.de>
+Subject: Re: [PATCH] clk: mediatek: remove unnecessary include header from
+ reset.c
+Date: Wed, 27 Dec 2017 13:15:50 +0100
+Message-ID: <20171227131550.2c65c6ff@endymion>
+References: <b5937ad5c068eeec19005d40dbddb97e09c1b3d0.1514190227.git.sean.wang@mediatek.com>
+        <20171227011021.GQ7997@codeaurora.org>
+        <1514345580.30687.27.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171227011936.GT7997@codeaurora.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, jdelvare@suse.de, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, kevin-cw.chen@mediatek.com, shunli.wang@mediatek.com, chen.zhong@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1514345580.30687.27.camel@mtkswgap22>
+Sender: linux-clk-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com, matthias.bgg@gmail.com, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-12-26 at 17:19 -0800, Stephen Boyd wrote:
-> On 12/26, sean.wang@mediatek.com wrote:
-> > From: Sean Wang <sean.wang@mediatek.com>
-> > 
-> > commit 74cb0d6dde8 ("clk: mediatek: fixup test-building of MediaTek clock
-> > drivers") can let the build system looking into the directory where the
-> > clock drivers resides and then allow test-building the drivers.
-> > 
-> > But the change also gives rise to certain incorrect behavior which is
-> > reset.c being built even not depending on either COMPILE_TEST or
-> > ARCH_MEDIATEK alternative dependency. To get rid of reset.c being built
-> > unexpectedly on the other platforms, it would be a good change that the
-> > file should be built depending on its own specific configuration rather
-> > than just on generic RESET_CONTROLLER one.
-> > 
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > Cc: Jean Delvare <jdelvare@suse.de>
+Hi Sean, Stephen,
+
+On Wed, 27 Dec 2017 11:33:00 +0800, Sean Wang wrote:
+> On Tue, 2017-12-26 at 17:10 -0800, Stephen Boyd wrote:
+> > drivers/clk/mediatek/reset.c:64:6: warning: symbol 'mtk_register_reset_controller' was not declared. Should it be static?
 > 
-> I've typically seen vendor Kconfigs select the RESET_CONTROLLER
-> framework if the vendor Kconfig is enabled. Any reason that same
-> method isn't followed here?
+> It cannot be static since the function would be referenced in other
+> files under the same folder
 > 
+> 
+> One point I felt confused which is I didn't see the warning complains
+> when I did these build test, even I also added -Werror and -Wall to
+> build all files under driver/clk/mediatek. My toolchain is based on gcc
+> version 5.2.0 (GCC).
 
-I just thought explicit dependency added in Kconfig seems a little good
-no matter how the vendor Kconfig forces to select.
+I tested and I get the warning here (gcc 4.8.5 on SUSE) but only after
+setting CONFIG_RESET_CONTROLLER=y. Without it,
+drivers/clk/mediatek/reset.o is never built, so no warning can be
+generated.
 
-But, I believe reset controller is always present on every mediatek SoC,
-at least it can be found on infracfg and pericfg subsystem, which is
-really fundamental hardware block. So, it's still quite reasonable to
-add "RESET_CONTROLLER" to vendor Kconfig.
+> If the warning still is, the include "clk-mtk.h" should be good to stay
+> there because the declaration it needs is in the clk-mtk.h
 
-Once we did it in vendor Kconfig, the Kconfig maybe could become
-something like that.
+Agreed.
 
-config RESET_MEDIATEK
-       bool "MediaTek Reset Driver"
-       depends on ARCH_MEDIATEK || (RESET_CONTROLLER && COMPILE_TEST)
-       help
-         This enables the reset controller driver used on MediaTek SoCs.
-
-where COMPILE_TEST still has to depend on RESET_CONTROLLER to avoid any
-compiling error.
-
-I'll make the next version based on above and relevant vendor Kconfig
-changes
-
-	Sean
+-- 
+Jean Delvare
+SUSE L3 Support
