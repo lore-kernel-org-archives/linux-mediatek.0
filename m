@@ -1,50 +1,64 @@
 From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH] clk: mediatek: remove superfluous line including
- linux/clk-provider.h
-Date: Wed, 27 Dec 2017 12:01:09 +0800
-Message-ID: <1514347269.30687.39.camel@mtkswgap22>
-References: <96d2fcd536d75dbbfde0aa0ad0797e80da89117b.1514191770.git.sean.wang@mediatek.com>
-         <20171227011507.GR7997@codeaurora.org>
+Subject: Re: [PATCH] clk: mediatek: adjust dependency of reset.c to avoid
+ unexpectedly being built
+Date: Wed, 27 Dec 2017 17:43:37 +0800
+Message-ID: <1514367817.30687.59.camel@mtkswgap22>
+References: <5a6347a5196a5eba85dce9ac7c3b9392b832f1f8.1514259933.git.sean.wang@mediatek.com>
+         <20171227011936.GT7997@codeaurora.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20171227011507.GR7997@codeaurora.org>
-Sender: linux-clk-owner@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20171227011936.GT7997@codeaurora.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Stephen Boyd <sboyd@codeaurora.org>
 Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, jdelvare@suse.de, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, kevin-cw.chen@mediatek.com, shunli.wang@mediatek.com, chen.zhong@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-12-26 at 17:15 -0800, Stephen Boyd wrote:
-> On 12/25, sean.wang@mediatek.com wrote:
+On Tue, 2017-12-26 at 17:19 -0800, Stephen Boyd wrote:
+> On 12/26, sean.wang@mediatek.com wrote:
 > > From: Sean Wang <sean.wang@mediatek.com>
 > > 
-> > clk-mtk.h has already included linux/clk-provider.h inside, so remove
-> > the superfluous line including linux/clk-provider.h from these files which
-> > also included clk-mtk.h.
+> > commit 74cb0d6dde8 ("clk: mediatek: fixup test-building of MediaTek clock
+> > drivers") can let the build system looking into the directory where the
+> > clock drivers resides and then allow test-building the drivers.
+> > 
+> > But the change also gives rise to certain incorrect behavior which is
+> > reset.c being built even not depending on either COMPILE_TEST or
+> > ARCH_MEDIATEK alternative dependency. To get rid of reset.c being built
+> > unexpectedly on the other platforms, it would be a good change that the
+> > file should be built depending on its own specific configuration rather
+> > than just on generic RESET_CONTROLLER one.
 > > 
 > > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > > Cc: Jean Delvare <jdelvare@suse.de>
-> > ---
 > 
-> Please don't do this. If anything, I would remove as many
-> includes from clk-mtk.h as possible and forward declare the
-> structures used in there so there isn't any header dependency.
-> Then it becomes clear which C files are clk-provider drivers
-> almost immediately because we have the include in the driver, and
-> we also avoid any header dependency chains where we must include
-> some header file if we want to get another header file's
-> definitions.
+> I've typically seen vendor Kconfigs select the RESET_CONTROLLER
+> framework if the vendor Kconfig is enabled. Any reason that same
+> method isn't followed here?
 > 
 
-Agreed on above. 
+I just thought explicit dependency added in Kconfig seems a little good
+no matter how the vendor Kconfig forces to select.
 
-It really becomes clearer to know which c files belong
-to clock provider driver, not only just considering header dependency.
-For these points, it should be kept there.
+But, I believe reset controller is always present on every mediatek SoC,
+at least it can be found on infracfg and pericfg subsystem, which is
+really fundamental hardware block. So, it's still quite reasonable to
+add "RESET_CONTROLLER" to vendor Kconfig.
 
-Thanks for your detailed explanation
+Once we did it in vendor Kconfig, the Kconfig maybe could become
+something like that.
+
+config RESET_MEDIATEK
+       bool "MediaTek Reset Driver"
+       depends on ARCH_MEDIATEK || (RESET_CONTROLLER && COMPILE_TEST)
+       help
+         This enables the reset controller driver used on MediaTek SoCs.
+
+where COMPILE_TEST still has to depend on RESET_CONTROLLER to avoid any
+compiling error.
+
+I'll make the next version based on above and relevant vendor Kconfig
+changes
 
 	Sean
-
-
