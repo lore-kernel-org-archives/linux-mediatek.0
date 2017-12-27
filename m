@@ -1,72 +1,39 @@
 From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v2] clk: mediatek: Fix all warnings for missing struct
- clk_onecell_data
-Date: Tue, 26 Dec 2017 17:16:06 -0800
-Message-ID: <20171227011606.GS7997@codeaurora.org>
-References: <2a2569d80e92a45e8eef2b431abfb951853ab6e0.1514188437.git.sean.wang@mediatek.com>
+Subject: Re: [PATCH] clk: mediatek: adjust dependency of reset.c to avoid
+ unexpectedly being built
+Date: Tue, 26 Dec 2017 17:19:36 -0800
+Message-ID: <20171227011936.GT7997@codeaurora.org>
+References: <5a6347a5196a5eba85dce9ac7c3b9392b832f1f8.1514259933.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-clk-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <2a2569d80e92a45e8eef2b431abfb951853ab6e0.1514188437.git.sean.wang@mediatek.com>
+In-Reply-To: <5a6347a5196a5eba85dce9ac7c3b9392b832f1f8.1514259933.git.sean.wang@mediatek.com>
 Sender: linux-clk-owner@vger.kernel.org
 To: sean.wang@mediatek.com
-Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, kbuild-all@01.org, Jean Delvare <jdelvare@suse.de>
+Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, jdelvare@suse.de, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, kevin-cw.chen@mediatek.com, shunli.wang@mediatek.com, chen.zhong@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 12/25, sean.wang@mediatek.com wrote:
+On 12/26, sean.wang@mediatek.com wrote:
 > From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Even though the header file linux/clk-provider.h is already being properly
-> included in clk-mtk.h, the definition of struct clk_onecell_data still
-> must depend on CONFIG_COMMON_CLK defined and thus it's possible that
-> below build warnings occur when CONFIG_COMMON_CLK is not being selected.
+> commit 74cb0d6dde8 ("clk: mediatek: fixup test-building of MediaTek clock
+> drivers") can let the build system looking into the directory where the
+> clock drivers resides and then allow test-building the drivers.
 > 
-> Therefore, these functions which need struct clk_onecell_data without
-> declaring that structure first requires simply declaring that this struct
-> exists prior to referencing it in clk-mtk.h
+> But the change also gives rise to certain incorrect behavior which is
+> reset.c being built even not depending on either COMPILE_TEST or
+> ARCH_MEDIATEK alternative dependency. To get rid of reset.c being built
+> unexpectedly on the other platforms, it would be a good change that the
+> file should be built depending on its own specific configuration rather
+> than just on generic RESET_CONTROLLER one.
 > 
-> Changes from v1->v2:
-> enhance v1 based on two useful solutions Jean Delvare kindly suggested.
-> 
-> All warnings (new ones prefixed by >>):
-> 
-> In file included from drivers/clk/mediatek/reset.c:22:0:
-> >>drivers/clk/mediatek/clk-mtk.h:44:19: warning: 'struct clk_onecell_data'
-> declared inside parameter list will not be visible outside of
-> this definition or declaration
->   int num, struct clk_onecell_data *clk_data);
-> 		  ^~~~~~~~~~~~~~~~
-> drivers/clk/mediatek/clk-mtk.h:63:19: warning: 'struct clk_onecell_data'
-> declared inside parameter list will not be visible outside of
-> this definition or declaration
->   int num, struct clk_onecell_data *clk_data);
-> 		  ^~~~~~~~~~~~~~~~
-> drivers/clk/mediatek/clk-mtk.h:145:10: warning: 'struct clk_onecell_data'
-> declared inside parameter list will not be visible outside of
-> this definition or declaration
->   struct clk_onecell_data *clk_data);
-> 	 ^~~~~~~~~~~~~~~~
-> drivers/clk/mediatek/clk-mtk.h:164:11: warning: 'struct clk_onecell_data'
-> declared inside parameter list will not be visible outside of
-> this definition or declaration
->    struct clk_onecell_data *clk_data);
-> 	  ^~~~~~~~~~~~~~~~
-> drivers/clk/mediatek/clk-mtk.h:190:12: warning: 'struct clk_onecell_data'
-> declared inside parameter list will not be visible outside of this
-> definition or declaration
->     struct clk_onecell_data *clk_data);
-> 	   ^~~~~~~~~~~~~~~~
-> 
-> Reported-by: kbuild test robot <fengguang.wu@intel.com>
 > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Cc: kbuild-all@01.org
-> Cc: Stephen Boyd <sboyd@codeaurora.org>
 > Cc: Jean Delvare <jdelvare@suse.de>
-> Cc: linux-clk@vger.kernel.org
-> ---
 
-Applied to clk-next
+I've typically seen vendor Kconfigs select the RESET_CONTROLLER
+framework if the vendor Kconfig is enabled. Any reason that same
+method isn't followed here?
 
 -- 
 Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
