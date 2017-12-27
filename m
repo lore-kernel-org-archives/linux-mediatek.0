@@ -1,28 +1,17 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH 02/20] nvmem: Introduce devm_nvmem_(un)register()
-Date: Wed, 27 Dec 2017 14:59:38 -0800
-Message-ID: <20171227225956.14442-3-andrew.smirnov@gmail.com>
+Subject: [PATCH 11/20] nvmem: meson-efuse: Convert to use devm_nvmem_register()
+Date: Wed, 27 Dec 2017 14:59:47 -0800
+Message-ID: <20171227225956.14442-12-andrew.smirnov@gmail.com>
 References: <20171227225956.14442-1-andrew.smirnov@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20171227225956.14442-1-andrew.smirnov@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Andrey Smirnov <andrew.smirnov@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Joachim Eastwood <manabian@gmail.com>, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org, Carlo Caione <carlo@caione.org>, cphealy@gmail.com
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Joachim Eastwood <manabian@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Introduce devm_nvmem_register()/devm_nvmem_unregister() to make
-.remove() unnecessary in trivial drivers.
+Drop all of the code related to .remove hook and make use of
+devm_nvmem_register() instead.
 
 Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Heiko Stuebner <heiko@sntech.de>
@@ -39,95 +28,36 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/core.c           | 41 +++++++++++++++++++++++++++++++++++++++++
- include/linux/nvmem-provider.h | 17 +++++++++++++++++
- 2 files changed, 58 insertions(+)
+ drivers/nvmem/meson-efuse.c | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
 
-diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
-index 57cbeacfbeb2..84f07ba1f36d 100644
---- a/drivers/nvmem/core.c
-+++ b/drivers/nvmem/core.c
-@@ -551,6 +551,47 @@ int nvmem_unregister(struct nvmem_device *nvmem)
- }
- EXPORT_SYMBOL_GPL(nvmem_unregister);
+diff --git a/drivers/nvmem/meson-efuse.c b/drivers/nvmem/meson-efuse.c
+index a43c68f90937..02ec2873e583 100644
+--- a/drivers/nvmem/meson-efuse.c
++++ b/drivers/nvmem/meson-efuse.c
+@@ -60,22 +60,13 @@ static int meson_efuse_probe(struct platform_device *pdev)
+ 	econfig.reg_read = meson_efuse_read;
+ 	econfig.size = size;
  
-+static void devm_nvmem_release(struct device *dev, void *res)
-+{
-+	WARN_ON(nvmem_unregister(*(struct nvmem_device **)res));
-+}
-+
-+struct nvmem_device *devm_nvmem_register(struct device *dev,
-+					 const struct nvmem_config *config)
-+{
-+	struct nvmem_device **ptr, *nvmem;
-+
-+	ptr = devres_alloc(devm_nvmem_release, sizeof(*ptr), GFP_KERNEL);
-+	if (!ptr)
-+		return ERR_PTR(-ENOMEM);
-+
-+	nvmem = nvmem_register(config);
-+
-+	if (!IS_ERR(nvmem)) {
-+		*ptr = nvmem;
-+		devres_add(dev, ptr);
-+	} else {
-+		devres_free(ptr);
-+	}
-+
-+	return nvmem;
-+}
-+EXPORT_SYMBOL_GPL(devm_nvmem_register);
-+
-+static int devm_nvmem_match(struct device *dev, void *res, void *data)
-+{
-+	struct nvmem_device **r = res;
-+
-+	return *r == data;
-+}
-+
-+int devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem)
-+{
-+	return devres_release(dev, devm_nvmem_release, devm_nvmem_match, nvmem);
-+}
-+EXPORT_SYMBOL(devm_nvmem_unregister);
-+
-+
- static struct nvmem_device *__nvmem_device_get(struct device_node *np,
- 					       struct nvmem_cell **cellp,
- 					       const char *cell_id)
-diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
-index 497706f5adca..493f2f529f00 100644
---- a/include/linux/nvmem-provider.h
-+++ b/include/linux/nvmem-provider.h
-@@ -47,6 +47,11 @@ struct nvmem_config {
- struct nvmem_device *nvmem_register(const struct nvmem_config *cfg);
- int nvmem_unregister(struct nvmem_device *nvmem);
+-	nvmem = nvmem_register(&econfig);
++	nvmem = devm_nvmem_register(&pdev->dev, &econfig);
+ 	if (IS_ERR(nvmem))
+ 		return PTR_ERR(nvmem);
  
-+struct nvmem_device *devm_nvmem_register(struct device *dev,
-+					 const struct nvmem_config *cfg);
-+
-+int devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem);
-+
- #else
- 
- static inline struct nvmem_device *nvmem_register(const struct nvmem_config *c)
-@@ -59,5 +64,17 @@ static inline int nvmem_unregister(struct nvmem_device *nvmem)
- 	return -ENOSYS;
+-	platform_set_drvdata(pdev, nvmem);
+-
+ 	return 0;
  }
  
-+static inline struct nvmem_device *
-+devm_nvmem_register(struct device *dev, const struct nvmem_config *c)
-+{
-+	return nvmem_register(c);
-+}
-+
-+static inline int
-+devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem)
-+{
-+	return nvmem_unregister(nvmem);
-+}
-+
- #endif /* CONFIG_NVMEM */
- #endif  /* ifndef _LINUX_NVMEM_PROVIDER_H */
+-static int meson_efuse_remove(struct platform_device *pdev)
+-{
+-	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
+-
+-	return nvmem_unregister(nvmem);
+-}
+-
+ static struct platform_driver meson_efuse_driver = {
+ 	.probe = meson_efuse_probe,
+ 	.remove = meson_efuse_remove,
 -- 
 2.14.3
