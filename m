@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH 05/20] nvmem: uniphier-efuse: Convert to use devm_nvmem_register()
-Date: Wed, 27 Dec 2017 14:59:41 -0800
-Message-ID: <20171227225956.14442-6-andrew.smirnov@gmail.com>
+Subject: [PATCH 10/20] nvmem: meson-mx-efuse: Convert to use devm_nvmem_register()
+Date: Wed, 27 Dec 2017 14:59:46 -0800
+Message-ID: <20171227225956.14442-11-andrew.smirnov@gmail.com>
 References: <20171227225956.14442-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20171227225956.14442-1-andrew.smirnov@gmail.com>
@@ -28,44 +28,39 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/uniphier-efuse.c | 12 +-----------
+ drivers/nvmem/meson-mx-efuse.c | 12 +-----------
  1 file changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/drivers/nvmem/uniphier-efuse.c b/drivers/nvmem/uniphier-efuse.c
-index 9d278b4e1dc7..7ddc6fc012c9 100644
---- a/drivers/nvmem/uniphier-efuse.c
-+++ b/drivers/nvmem/uniphier-efuse.c
-@@ -60,22 +60,13 @@ static int uniphier_efuse_probe(struct platform_device *pdev)
- 	econfig.size = resource_size(res);
- 	econfig.priv = priv;
- 	econfig.dev = dev;
--	nvmem = nvmem_register(&econfig);
-+	nvmem = devm_nvmem_register(dev, &econfig);
- 	if (IS_ERR(nvmem))
- 		return PTR_ERR(nvmem);
+diff --git a/drivers/nvmem/meson-mx-efuse.c b/drivers/nvmem/meson-mx-efuse.c
+index a346b4923550..f8e0b92e40ba 100644
+--- a/drivers/nvmem/meson-mx-efuse.c
++++ b/drivers/nvmem/meson-mx-efuse.c
+@@ -233,25 +233,15 @@ static int meson_mx_efuse_probe(struct platform_device *pdev)
+ 		return PTR_ERR(efuse->core_clk);
+ 	}
  
--	platform_set_drvdata(pdev, nvmem);
+-	efuse->nvmem = nvmem_register(&efuse->config);
++	efuse->nvmem = devm_nvmem_register(&pdev->dev, &efuse->config);
+ 	if (IS_ERR(efuse->nvmem))
+ 		return PTR_ERR(efuse->nvmem);
+ 
+-	platform_set_drvdata(pdev, efuse);
 -
  	return 0;
  }
  
--static int uniphier_efuse_remove(struct platform_device *pdev)
+-static int meson_mx_efuse_remove(struct platform_device *pdev)
 -{
--	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
+-	struct meson_mx_efuse *efuse = platform_get_drvdata(pdev);
 -
--	return nvmem_unregister(nvmem);
+-	return nvmem_unregister(efuse->nvmem);
 -}
 -
- static const struct of_device_id uniphier_efuse_of_match[] = {
- 	{ .compatible = "socionext,uniphier-efuse",},
- 	{/* sentinel */},
-@@ -84,7 +75,6 @@ MODULE_DEVICE_TABLE(of, uniphier_efuse_of_match);
- 
- static struct platform_driver uniphier_efuse_driver = {
- 	.probe = uniphier_efuse_probe,
--	.remove = uniphier_efuse_remove,
+ static struct platform_driver meson_mx_efuse_driver = {
+ 	.probe = meson_mx_efuse_probe,
+-	.remove = meson_mx_efuse_remove,
  	.driver = {
- 		.name = "uniphier-efuse",
- 		.of_match_table = uniphier_efuse_of_match,
+ 		.name = "meson-mx-efuse",
+ 		.of_match_table = meson_mx_efuse_match,
 -- 
 2.14.3
