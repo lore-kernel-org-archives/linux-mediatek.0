@@ -1,70 +1,45 @@
-From: <honghui.zhang@mediatek.com>
-Subject: [PATCH v5 2/2] PCI: mediatek: Set up class type and vendor ID for MT7622
-Date: Wed, 27 Dec 2017 08:59:54 +0800
-Message-ID: <1514336394-17747-3-git-send-email-honghui.zhang@mediatek.com>
-References: <1514336394-17747-1-git-send-email-honghui.zhang@mediatek.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH] clk: mediatek: remove unnecessary include header from
+ reset.c
+Date: Tue, 26 Dec 2017 17:10:21 -0800
+Message-ID: <20171227011021.GQ7997@codeaurora.org>
+References: <b5937ad5c068eeec19005d40dbddb97e09c1b3d0.1514190227.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1514336394-17747-1-git-send-email-honghui.zhang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, lorenzo.pieralisi@arm.com
-Cc: honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <b5937ad5c068eeec19005d40dbddb97e09c1b3d0.1514190227.git.sean.wang@mediatek.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, jdelvare@suse.de, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+On 12/25, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> In fact, the clk-mtk.h header is indeed not needed for reset.c and thus
+> it's safe and good change to remove it from the file.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Reviewed-by: Jean Delvare <jdelvare@suse.de>
+> Cc: Jean Delvare <jdelvare@suse.de>
+> ---
+>  drivers/clk/mediatek/reset.c | 2 --
+>  1 file changed, 2 deletions(-)
+> 
+> diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+> index d3551d5..70ebb2e 100644
+> --- a/drivers/clk/mediatek/reset.c
+> +++ b/drivers/clk/mediatek/reset.c
+> @@ -19,8 +19,6 @@
+>  #include <linux/reset-controller.h>
+>  #include <linux/slab.h>
+>  
+> -#include "clk-mtk.h"
+> -
 
-The hardware default value of IDs and class type is not correct,
-fix that by setup the correct values before start up.
+drivers/clk/mediatek/reset.c:64:6: warning: symbol 'mtk_register_reset_controller' was not declared. Should it be static?
 
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
----
- drivers/pci/host/pcie-mediatek.c | 12 ++++++++++++
- include/linux/pci_ids.h          |  2 ++
- 2 files changed, 14 insertions(+)
-
-diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-index fc29a9a..62aac0ea 100644
---- a/drivers/pci/host/pcie-mediatek.c
-+++ b/drivers/pci/host/pcie-mediatek.c
-@@ -74,6 +74,10 @@
- 
- /* PCIe V2 per-port registers */
- #define PCIE_MSI_VECTOR		0x0c0
-+
-+#define PCIE_CONF_ID		0x100
-+#define PCIE_CONF_CLASS		0x104
-+
- #define PCIE_INT_MASK		0x420
- #define INTX_MASK		GENMASK(19, 16)
- #define INTX_SHIFT		16
-@@ -393,6 +397,14 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
- 		val |= PCIE_CSR_LTSSM_EN(port->slot) |
- 		       PCIE_CSR_ASPM_L1_EN(port->slot);
- 		writel(val, pcie->base + PCIE_SYS_CFG_V2);
-+
-+		/* Set up vendor ID and device ID for MT7622*/
-+		val = PCI_VENDOR_ID_MEDIATEK;
-+		writel(val, port->base + PCIE_CONF_ID);
-+
-+		/* Set up class code for MT7622 */
-+		val = PCI_CLASS_BRIDGE_PCI << 16;
-+		writel(val, port->base + PCIE_CONF_CLASS);
- 	}
- 
- 	/* Assert all reset signals */
-diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
-index ab20dc5..2480b0e 100644
---- a/include/linux/pci_ids.h
-+++ b/include/linux/pci_ids.h
-@@ -2113,6 +2113,8 @@
- 
- #define PCI_VENDOR_ID_MYRICOM		0x14c1
- 
-+#define PCI_VENDOR_ID_MEDIATEK		0x14c3
-+
- #define PCI_VENDOR_ID_TITAN		0x14D2
- #define PCI_DEVICE_ID_TITAN_010L	0x8001
- #define PCI_DEVICE_ID_TITAN_100L	0x8010
 -- 
-2.6.4
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
