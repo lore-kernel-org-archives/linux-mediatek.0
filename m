@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH 14/20] nvmem: bcm-ocotp: Convert to use devm_nvmem_register()
-Date: Wed, 27 Dec 2017 14:59:50 -0800
-Message-ID: <20171227225956.14442-15-andrew.smirnov@gmail.com>
+Subject: [PATCH 18/20] nvmem: rockchip-efuse: Do not use "&pdev->dev" explicitly
+Date: Wed, 27 Dec 2017 14:59:54 -0800
+Message-ID: <20171227225956.14442-19-andrew.smirnov@gmail.com>
 References: <20171227225956.14442-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20171227225956.14442-1-andrew.smirnov@gmail.com>
@@ -10,8 +10,7 @@ To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Joachim Eastwood <manabian@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Drop all of the code related to .remove hook and make use of
-devm_nvmem_register() instead.
+There's "dev" variable for this already. Use it.
 
 Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Heiko Stuebner <heiko@sntech.de>
@@ -28,41 +27,38 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/bcm-ocotp.c | 12 +-----------
- 1 file changed, 1 insertion(+), 11 deletions(-)
+ drivers/nvmem/rockchip-efuse.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/nvmem/bcm-ocotp.c b/drivers/nvmem/bcm-ocotp.c
-index 5e9e324427f9..24c30fa475cc 100644
---- a/drivers/nvmem/bcm-ocotp.c
-+++ b/drivers/nvmem/bcm-ocotp.c
-@@ -302,27 +302,17 @@ static int bcm_otpc_probe(struct platform_device *pdev)
- 
- 	priv->config = &bcm_otpc_nvmem_config;
- 
--	nvmem = nvmem_register(&bcm_otpc_nvmem_config);
-+	nvmem = devm_nvmem_register(dev, &bcm_otpc_nvmem_config);
- 	if (IS_ERR(nvmem)) {
- 		dev_err(dev, "error registering nvmem config\n");
- 		return PTR_ERR(nvmem);
+diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
+index 979ba0a376a0..3120329aea94 100644
+--- a/drivers/nvmem/rockchip-efuse.c
++++ b/drivers/nvmem/rockchip-efuse.c
+@@ -202,21 +202,21 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
+ 		return -EINVAL;
  	}
  
--	platform_set_drvdata(pdev, nvmem);
--
- 	return 0;
- }
+-	efuse = devm_kzalloc(&pdev->dev, sizeof(struct rockchip_efuse_chip),
++	efuse = devm_kzalloc(dev, sizeof(struct rockchip_efuse_chip),
+ 			     GFP_KERNEL);
+ 	if (!efuse)
+ 		return -ENOMEM;
  
--static int bcm_otpc_remove(struct platform_device *pdev)
--{
--	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
--
--	return nvmem_unregister(nvmem);
--}
--
- static struct platform_driver bcm_otpc_driver = {
- 	.probe	= bcm_otpc_probe,
--	.remove	= bcm_otpc_remove,
- 	.driver = {
- 		.name	= "brcm-otpc",
- 		.of_match_table = bcm_otpc_dt_ids,
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	efuse->base = devm_ioremap_resource(&pdev->dev, res);
++	efuse->base = devm_ioremap_resource(dev, res);
+ 	if (IS_ERR(efuse->base))
+ 		return PTR_ERR(efuse->base);
+ 
+-	efuse->clk = devm_clk_get(&pdev->dev, "pclk_efuse");
++	efuse->clk = devm_clk_get(dev, "pclk_efuse");
+ 	if (IS_ERR(efuse->clk))
+ 		return PTR_ERR(efuse->clk);
+ 
+-	efuse->dev = &pdev->dev;
++	efuse->dev = dev;
+ 	econfig.size = resource_size(res);
+ 	econfig.reg_read = data;
+ 	econfig.priv = efuse;
 -- 
 2.14.3
