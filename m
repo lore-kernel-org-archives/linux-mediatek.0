@@ -1,70 +1,113 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH] clk: mediatek: adjust dependency of reset.c to avoid
- unexpectedly being built
-Date: Wed, 27 Dec 2017 10:19:03 -0800
-Message-ID: <20171227181903.GD7997@codeaurora.org>
-References: <5a6347a5196a5eba85dce9ac7c3b9392b832f1f8.1514259933.git.sean.wang@mediatek.com>
- <20171227011936.GT7997@codeaurora.org>
- <1514367817.30687.59.camel@mtkswgap22>
+From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v5 2/2] PCI: mediatek: Set up class type and vendor ID
+ for MT7622
+Date: Wed, 27 Dec 2017 12:45:42 -0600
+Message-ID: <20171227184542.GA79892@bhelgaas-glaptop.roam.corp.google.com>
+References: <1514336394-17747-1-git-send-email-honghui.zhang@mediatek.com>
+ <1514336394-17747-3-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-clk-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1514367817.30687.59.camel@mtkswgap22>
-Sender: linux-clk-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, jdelvare@suse.de, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, kevin-cw.chen@mediatek.com, shunli.wang@mediatek.com, chen.zhong@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
+In-Reply-To: <1514336394-17747-3-git-send-email-honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 12/27, Sean Wang wrote:
-> On Tue, 2017-12-26 at 17:19 -0800, Stephen Boyd wrote:
-> > On 12/26, sean.wang@mediatek.com wrote:
-> > > From: Sean Wang <sean.wang@mediatek.com>
-> > > 
-> > > commit 74cb0d6dde8 ("clk: mediatek: fixup test-building of MediaTek clock
-> > > drivers") can let the build system looking into the directory where the
-> > > clock drivers resides and then allow test-building the drivers.
-> > > 
-> > > But the change also gives rise to certain incorrect behavior which is
-> > > reset.c being built even not depending on either COMPILE_TEST or
-> > > ARCH_MEDIATEK alternative dependency. To get rid of reset.c being built
-> > > unexpectedly on the other platforms, it would be a good change that the
-> > > file should be built depending on its own specific configuration rather
-> > > than just on generic RESET_CONTROLLER one.
-> > > 
-> > > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > > Cc: Jean Delvare <jdelvare@suse.de>
-> > 
-> > I've typically seen vendor Kconfigs select the RESET_CONTROLLER
-> > framework if the vendor Kconfig is enabled. Any reason that same
-> > method isn't followed here?
-> > 
+On Wed, Dec 27, 2017 at 08:59:54AM +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> I just thought explicit dependency added in Kconfig seems a little good
-> no matter how the vendor Kconfig forces to select.
+> The hardware default value of IDs and class type is not correct,
+> fix that by setup the correct values before start up.
 > 
-> But, I believe reset controller is always present on every mediatek SoC,
-> at least it can be found on infracfg and pericfg subsystem, which is
-> really fundamental hardware block. So, it's still quite reasonable to
-> add "RESET_CONTROLLER" to vendor Kconfig.
+> Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/pci/host/pcie-mediatek.c | 12 ++++++++++++
+>  include/linux/pci_ids.h          |  2 ++
+>  2 files changed, 14 insertions(+)
 > 
-> Once we did it in vendor Kconfig, the Kconfig maybe could become
-> something like that.
-> 
-> config RESET_MEDIATEK
->        bool "MediaTek Reset Driver"
->        depends on ARCH_MEDIATEK || (RESET_CONTROLLER && COMPILE_TEST)
->        help
->          This enables the reset controller driver used on MediaTek SoCs.
-> 
-> where COMPILE_TEST still has to depend on RESET_CONTROLLER to avoid any
-> compiling error.
-> 
+> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+> index fc29a9a..62aac0ea 100644
+> --- a/drivers/pci/host/pcie-mediatek.c
+> +++ b/drivers/pci/host/pcie-mediatek.c
+> @@ -74,6 +74,10 @@
+>  
+>  /* PCIe V2 per-port registers */
+>  #define PCIE_MSI_VECTOR		0x0c0
+> +
+> +#define PCIE_CONF_ID		0x100
+> +#define PCIE_CONF_CLASS		0x104
+> +
+>  #define PCIE_INT_MASK		0x420
+>  #define INTX_MASK		GENMASK(19, 16)
+>  #define INTX_SHIFT		16
+> @@ -393,6 +397,14 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+>  		val |= PCIE_CSR_LTSSM_EN(port->slot) |
+>  		       PCIE_CSR_ASPM_L1_EN(port->slot);
+>  		writel(val, pcie->base + PCIE_SYS_CFG_V2);
+> +
+> +		/* Set up vendor ID and device ID for MT7622*/
+> +		val = PCI_VENDOR_ID_MEDIATEK;
+> +		writel(val, port->base + PCIE_CONF_ID);
+> +
+> +		/* Set up class code for MT7622 */
+> +		val = PCI_CLASS_BRIDGE_PCI << 16;
+> +		writel(val, port->base + PCIE_CONF_CLASS);
 
-Why can't we have 'select RESET_CONTROLLER' under
-COMMON_CLK_MEDIATEK? Is there something that RESET_CONTROLLER
-depends on that may not be enabled?
+1) Your comments mention MT7622 specifically, but this code is run for
+both mt2712-pcie and mt7622-pcie.  If this code is safe and necessary
+for both mt2712-pcie and mt7622-pcie, please remove the mention of
+MT7622.
 
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+2) The first comment mentions both "vendor ID and device ID" but you
+don't write the device ID.  Since this code applies to both
+mt2712-pcie and mt7622-pcie, my guess is that you don't *want* to
+write the device ID.  If that's the case, please fix the comment.
+
+3) If you only need to set the vendor ID, you're performing a 32-bit
+write (writel()) to update a 16-bit value.  Please use writew()
+instead.
+
+4) If you only need to set the vendor ID, please use a definition like
+"PCIE_CONF_VENDOR_ID" instead of the ambiguous "PCIE_CONF_ID".
+
+5) If you only need to set the vendor ID, please update the changelog
+to mention "vendor ID" specifically instead of the ambiguous "IDs".
+
+6) Please add a space before the closing "*/" of the first comment.
+
+7) PCI_CLASS_BRIDGE_PCI is for a PCI-to-PCI bridge, i.e., one that has
+PCI on both the primary (upstream) side and the secondary (downstream)
+side.  That kind of bridge has a type 1 config header (see
+PCI_HEADER_TYPE) and the PCI_PRIMARY_BUS and PCI_SECONDARY_BUS
+registers tell us the bus number of the primary and secondary sides.
+
+I don't believe this device is a PCI-to-PCI bridge.  I think it's a
+*host* bridge that has some non-PCI interface on the upstream side and
+should have a type 0 config header.  If that's the case you should use
+PCI_CLASS_BRIDGE_HOST instead.
+
+>  	}
+>  
+>  	/* Assert all reset signals */
+> diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
+> index ab20dc5..2480b0e 100644
+> --- a/include/linux/pci_ids.h
+> +++ b/include/linux/pci_ids.h
+> @@ -2113,6 +2113,8 @@
+>  
+>  #define PCI_VENDOR_ID_MYRICOM		0x14c1
+>  
+> +#define PCI_VENDOR_ID_MEDIATEK		0x14c3
+> +
+>  #define PCI_VENDOR_ID_TITAN		0x14D2
+>  #define PCI_DEVICE_ID_TITAN_010L	0x8001
+>  #define PCI_DEVICE_ID_TITAN_100L	0x8010
+> -- 
+> 2.6.4
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
