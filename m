@@ -1,17 +1,28 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH 13/20] nvmem: imx-iim: Convert to use devm_nvmem_register()
-Date: Wed, 27 Dec 2017 14:59:49 -0800
-Message-ID: <20171227225956.14442-14-andrew.smirnov@gmail.com>
+Subject: [PATCH 02/20] nvmem: Introduce devm_nvmem_(un)register()
+Date: Wed, 27 Dec 2017 14:59:38 -0800
+Message-ID: <20171227225956.14442-3-andrew.smirnov@gmail.com>
 References: <20171227225956.14442-1-andrew.smirnov@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20171227225956.14442-1-andrew.smirnov@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Joachim Eastwood <manabian@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Andrey Smirnov <andrew.smirnov@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Joachim Eastwood <manabian@gmail.com>, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org, Carlo Caione <carlo@caione.org>, cphealy@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Drop all of the code related to .remove hook and make use of
-devm_nvmem_register() instead.
+Introduce devm_nvmem_register()/devm_nvmem_unregister() to make
+.remove() unnecessary in trivial drivers.
 
 Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Heiko Stuebner <heiko@sntech.de>
@@ -28,39 +39,95 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/imx-iim.c | 12 +-----------
- 1 file changed, 1 insertion(+), 11 deletions(-)
+ drivers/nvmem/core.c           | 41 +++++++++++++++++++++++++++++++++++++++++
+ include/linux/nvmem-provider.h | 17 +++++++++++++++++
+ 2 files changed, 58 insertions(+)
 
-diff --git a/drivers/nvmem/imx-iim.c b/drivers/nvmem/imx-iim.c
-index 52cfe91d9762..635561a441bd 100644
---- a/drivers/nvmem/imx-iim.c
-+++ b/drivers/nvmem/imx-iim.c
-@@ -138,25 +138,15 @@ static int imx_iim_probe(struct platform_device *pdev)
- 	cfg.size = drvdata->nregs;
- 	cfg.priv = iim;
+diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
+index 57cbeacfbeb2..84f07ba1f36d 100644
+--- a/drivers/nvmem/core.c
++++ b/drivers/nvmem/core.c
+@@ -551,6 +551,47 @@ int nvmem_unregister(struct nvmem_device *nvmem)
+ }
+ EXPORT_SYMBOL_GPL(nvmem_unregister);
  
--	nvmem = nvmem_register(&cfg);
-+	nvmem = devm_nvmem_register(dev, &cfg);
- 	if (IS_ERR(nvmem))
- 		return PTR_ERR(nvmem);
++static void devm_nvmem_release(struct device *dev, void *res)
++{
++	WARN_ON(nvmem_unregister(*(struct nvmem_device **)res));
++}
++
++struct nvmem_device *devm_nvmem_register(struct device *dev,
++					 const struct nvmem_config *config)
++{
++	struct nvmem_device **ptr, *nvmem;
++
++	ptr = devres_alloc(devm_nvmem_release, sizeof(*ptr), GFP_KERNEL);
++	if (!ptr)
++		return ERR_PTR(-ENOMEM);
++
++	nvmem = nvmem_register(config);
++
++	if (!IS_ERR(nvmem)) {
++		*ptr = nvmem;
++		devres_add(dev, ptr);
++	} else {
++		devres_free(ptr);
++	}
++
++	return nvmem;
++}
++EXPORT_SYMBOL_GPL(devm_nvmem_register);
++
++static int devm_nvmem_match(struct device *dev, void *res, void *data)
++{
++	struct nvmem_device **r = res;
++
++	return *r == data;
++}
++
++int devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem)
++{
++	return devres_release(dev, devm_nvmem_release, devm_nvmem_match, nvmem);
++}
++EXPORT_SYMBOL(devm_nvmem_unregister);
++
++
+ static struct nvmem_device *__nvmem_device_get(struct device_node *np,
+ 					       struct nvmem_cell **cellp,
+ 					       const char *cell_id)
+diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
+index 497706f5adca..493f2f529f00 100644
+--- a/include/linux/nvmem-provider.h
++++ b/include/linux/nvmem-provider.h
+@@ -47,6 +47,11 @@ struct nvmem_config {
+ struct nvmem_device *nvmem_register(const struct nvmem_config *cfg);
+ int nvmem_unregister(struct nvmem_device *nvmem);
  
--	platform_set_drvdata(pdev, nvmem);
--
- 	return 0;
++struct nvmem_device *devm_nvmem_register(struct device *dev,
++					 const struct nvmem_config *cfg);
++
++int devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem);
++
+ #else
+ 
+ static inline struct nvmem_device *nvmem_register(const struct nvmem_config *c)
+@@ -59,5 +64,17 @@ static inline int nvmem_unregister(struct nvmem_device *nvmem)
+ 	return -ENOSYS;
  }
  
--static int imx_iim_remove(struct platform_device *pdev)
--{
--	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
--
--	return nvmem_unregister(nvmem);
--}
--
- static struct platform_driver imx_iim_driver = {
- 	.probe	= imx_iim_probe,
--	.remove	= imx_iim_remove,
- 	.driver = {
- 		.name	= "imx-iim",
- 		.of_match_table = imx_iim_dt_ids,
++static inline struct nvmem_device *
++devm_nvmem_register(struct device *dev, const struct nvmem_config *c)
++{
++	return nvmem_register(c);
++}
++
++static inline int
++devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem)
++{
++	return nvmem_unregister(nvmem);
++}
++
+ #endif /* CONFIG_NVMEM */
+ #endif  /* ifndef _LINUX_NVMEM_PROVIDER_H */
 -- 
 2.14.3
