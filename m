@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH 01/20] nvmem: core: Allow specifying device name verbatim
-Date: Wed, 27 Dec 2017 14:59:37 -0800
-Message-ID: <20171227225956.14442-2-andrew.smirnov@gmail.com>
+Subject: [PATCH 08/20] nvmem: qfprom: Convert to use devm_nvmem_register()
+Date: Wed, 27 Dec 2017 14:59:44 -0800
+Message-ID: <20171227225956.14442-9-andrew.smirnov@gmail.com>
 References: <20171227225956.14442-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20171227225956.14442-1-andrew.smirnov@gmail.com>
@@ -10,8 +10,8 @@ To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Joachim Eastwood <manabian@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add code to allow avoid having nvmem core append a numeric suffix to
-the end of the name by passing config->id of -1.
+Drop all of the code related to .remove hook and make use of
+devm_nvmem_register() instead.
 
 Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Heiko Stuebner <heiko@sntech.de>
@@ -28,30 +28,48 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/core.c | 11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
+ drivers/nvmem/qfprom.c | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
-index 5a5cefd12153..57cbeacfbeb2 100644
---- a/drivers/nvmem/core.c
-+++ b/drivers/nvmem/core.c
-@@ -475,9 +475,14 @@ struct nvmem_device *nvmem_register(const struct nvmem_config *config)
- 	nvmem->reg_write = config->reg_write;
- 	np = config->dev->of_node;
- 	nvmem->dev.of_node = np;
--	dev_set_name(&nvmem->dev, "%s%d",
--		     config->name ? : "nvmem",
--		     config->name ? config->id : nvmem->id);
-+
-+	if (config->id == -1 && config->name) {
-+		dev_set_name(&nvmem->dev, "%s", config->name);
-+	} else {
-+		dev_set_name(&nvmem->dev, "%s%d",
-+			     config->name ? : "nvmem",
-+			     config->name ? config->id : nvmem->id);
-+	}
+diff --git a/drivers/nvmem/qfprom.c b/drivers/nvmem/qfprom.c
+index cb3b48b47d64..13bf43c84bd4 100644
+--- a/drivers/nvmem/qfprom.c
++++ b/drivers/nvmem/qfprom.c
+@@ -47,13 +47,6 @@ static int qfprom_reg_write(void *context,
+ 	return 0;
+ }
  
- 	nvmem->read_only = of_property_read_bool(np, "read-only") |
- 			   config->read_only;
+-static int qfprom_remove(struct platform_device *pdev)
+-{
+-	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
+-
+-	return nvmem_unregister(nvmem);
+-}
+-
+ static struct nvmem_config econfig = {
+ 	.name = "qfprom",
+ 	.stride = 1,
+@@ -82,12 +75,10 @@ static int qfprom_probe(struct platform_device *pdev)
+ 	econfig.dev = dev;
+ 	econfig.priv = priv;
+ 
+-	nvmem = nvmem_register(&econfig);
++	nvmem = devm_nvmem_register(dev, &econfig);
+ 	if (IS_ERR(nvmem))
+ 		return PTR_ERR(nvmem);
+ 
+-	platform_set_drvdata(pdev, nvmem);
+-
+ 	return 0;
+ }
+ 
+@@ -99,7 +90,6 @@ MODULE_DEVICE_TABLE(of, qfprom_of_match);
+ 
+ static struct platform_driver qfprom_driver = {
+ 	.probe = qfprom_probe,
+-	.remove = qfprom_remove,
+ 	.driver = {
+ 		.name = "qcom,qfprom",
+ 		.of_match_table = qfprom_of_match,
 -- 
 2.14.3
