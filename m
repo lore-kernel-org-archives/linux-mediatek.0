@@ -1,65 +1,50 @@
 From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH] clk: mediatek: remove unnecessary include header from
- reset.c
-Date: Wed, 27 Dec 2017 11:33:00 +0800
-Message-ID: <1514345580.30687.27.camel@mtkswgap22>
-References: <b5937ad5c068eeec19005d40dbddb97e09c1b3d0.1514190227.git.sean.wang@mediatek.com>
-         <20171227011021.GQ7997@codeaurora.org>
+Subject: Re: [PATCH] clk: mediatek: remove superfluous line including
+ linux/clk-provider.h
+Date: Wed, 27 Dec 2017 12:01:09 +0800
+Message-ID: <1514347269.30687.39.camel@mtkswgap22>
+References: <96d2fcd536d75dbbfde0aa0ad0797e80da89117b.1514191770.git.sean.wang@mediatek.com>
+         <20171227011507.GR7997@codeaurora.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20171227011021.GQ7997@codeaurora.org>
+In-Reply-To: <20171227011507.GR7997@codeaurora.org>
 Sender: linux-clk-owner@vger.kernel.org
 To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, jdelvare@suse.de, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, jdelvare@suse.de, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, kevin-cw.chen@mediatek.com, shunli.wang@mediatek.com, chen.zhong@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-12-26 at 17:10 -0800, Stephen Boyd wrote:
+On Tue, 2017-12-26 at 17:15 -0800, Stephen Boyd wrote:
 > On 12/25, sean.wang@mediatek.com wrote:
 > > From: Sean Wang <sean.wang@mediatek.com>
 > > 
-> > In fact, the clk-mtk.h header is indeed not needed for reset.c and thus
-> > it's safe and good change to remove it from the file.
+> > clk-mtk.h has already included linux/clk-provider.h inside, so remove
+> > the superfluous line including linux/clk-provider.h from these files which
+> > also included clk-mtk.h.
 > > 
 > > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > Reviewed-by: Jean Delvare <jdelvare@suse.de>
 > > Cc: Jean Delvare <jdelvare@suse.de>
 > > ---
-> >  drivers/clk/mediatek/reset.c | 2 --
-> >  1 file changed, 2 deletions(-)
-> > 
-> > diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
-> > index d3551d5..70ebb2e 100644
-> > --- a/drivers/clk/mediatek/reset.c
-> > +++ b/drivers/clk/mediatek/reset.c
-> > @@ -19,8 +19,6 @@
-> >  #include <linux/reset-controller.h>
-> >  #include <linux/slab.h>
-> >  
-> > -#include "clk-mtk.h"
-> > -
 > 
-> drivers/clk/mediatek/reset.c:64:6: warning: symbol 'mtk_register_reset_controller' was not declared. Should it be static?
+> Please don't do this. If anything, I would remove as many
+> includes from clk-mtk.h as possible and forward declare the
+> structures used in there so there isn't any header dependency.
+> Then it becomes clear which C files are clk-provider drivers
+> almost immediately because we have the include in the driver, and
+> we also avoid any header dependency chains where we must include
+> some header file if we want to get another header file's
+> definitions.
 > 
 
-It cannot be static since the function would be referenced in other
-files under the same folder
+Agreed on above. 
 
+It really becomes clearer to know which c files belong
+to clock provider driver, not only just considering header dependency.
+For these points, it should be kept there.
 
-One point I felt confused which is I didn't see the warning complains
-when I did these build test, even I also added -Werror and -Wall to
-build all files under driver/clk/mediatek. My toolchain is based on gcc
-version 5.2.0 (GCC).
+Thanks for your detailed explanation
 
-
-If the warning still is, the include "clk-mtk.h" should be good to stay
-there because the declaration it needs is in the clk-mtk.h
-
-
-
-
-
-
+	Sean
 
 
