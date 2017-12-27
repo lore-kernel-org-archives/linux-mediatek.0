@@ -1,40 +1,65 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH] clk: mediatek: adjust dependency of reset.c to avoid
- unexpectedly being built
-Date: Tue, 26 Dec 2017 17:19:36 -0800
-Message-ID: <20171227011936.GT7997@codeaurora.org>
-References: <5a6347a5196a5eba85dce9ac7c3b9392b832f1f8.1514259933.git.sean.wang@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH] clk: mediatek: remove unnecessary include header from
+ reset.c
+Date: Wed, 27 Dec 2017 11:33:00 +0800
+Message-ID: <1514345580.30687.27.camel@mtkswgap22>
+References: <b5937ad5c068eeec19005d40dbddb97e09c1b3d0.1514190227.git.sean.wang@mediatek.com>
+         <20171227011021.GQ7997@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-clk-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5a6347a5196a5eba85dce9ac7c3b9392b832f1f8.1514259933.git.sean.wang@mediatek.com>
+In-Reply-To: <20171227011021.GQ7997@codeaurora.org>
 Sender: linux-clk-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, jdelvare@suse.de, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, kevin-cw.chen@mediatek.com, shunli.wang@mediatek.com, chen.zhong@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>
+Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, jdelvare@suse.de, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 12/26, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On Tue, 2017-12-26 at 17:10 -0800, Stephen Boyd wrote:
+> On 12/25, sean.wang@mediatek.com wrote:
+> > From: Sean Wang <sean.wang@mediatek.com>
+> > 
+> > In fact, the clk-mtk.h header is indeed not needed for reset.c and thus
+> > it's safe and good change to remove it from the file.
+> > 
+> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > Reviewed-by: Jean Delvare <jdelvare@suse.de>
+> > Cc: Jean Delvare <jdelvare@suse.de>
+> > ---
+> >  drivers/clk/mediatek/reset.c | 2 --
+> >  1 file changed, 2 deletions(-)
+> > 
+> > diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+> > index d3551d5..70ebb2e 100644
+> > --- a/drivers/clk/mediatek/reset.c
+> > +++ b/drivers/clk/mediatek/reset.c
+> > @@ -19,8 +19,6 @@
+> >  #include <linux/reset-controller.h>
+> >  #include <linux/slab.h>
+> >  
+> > -#include "clk-mtk.h"
+> > -
 > 
-> commit 74cb0d6dde8 ("clk: mediatek: fixup test-building of MediaTek clock
-> drivers") can let the build system looking into the directory where the
-> clock drivers resides and then allow test-building the drivers.
+> drivers/clk/mediatek/reset.c:64:6: warning: symbol 'mtk_register_reset_controller' was not declared. Should it be static?
 > 
-> But the change also gives rise to certain incorrect behavior which is
-> reset.c being built even not depending on either COMPILE_TEST or
-> ARCH_MEDIATEK alternative dependency. To get rid of reset.c being built
-> unexpectedly on the other platforms, it would be a good change that the
-> file should be built depending on its own specific configuration rather
-> than just on generic RESET_CONTROLLER one.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Cc: Jean Delvare <jdelvare@suse.de>
 
-I've typically seen vendor Kconfigs select the RESET_CONTROLLER
-framework if the vendor Kconfig is enabled. Any reason that same
-method isn't followed here?
+It cannot be static since the function would be referenced in other
+files under the same folder
 
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+
+One point I felt confused which is I didn't see the warning complains
+when I did these build test, even I also added -Werror and -Wall to
+build all files under driver/clk/mediatek. My toolchain is based on gcc
+version 5.2.0 (GCC).
+
+
+If the warning still is, the include "clk-mtk.h" should be good to stay
+there because the declaration it needs is in the clk-mtk.h
+
+
+
+
+
+
+
+
