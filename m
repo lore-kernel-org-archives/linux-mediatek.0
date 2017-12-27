@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH 12/20] nvmem: lpc18xx_otp: Convert to use devm_nvmem_register()
-Date: Wed, 27 Dec 2017 14:59:48 -0800
-Message-ID: <20171227225956.14442-13-andrew.smirnov@gmail.com>
+Subject: [PATCH 14/20] nvmem: bcm-ocotp: Convert to use devm_nvmem_register()
+Date: Wed, 27 Dec 2017 14:59:50 -0800
+Message-ID: <20171227225956.14442-15-andrew.smirnov@gmail.com>
 References: <20171227225956.14442-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20171227225956.14442-1-andrew.smirnov@gmail.com>
@@ -28,44 +28,41 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/lpc18xx_otp.c | 12 +-----------
+ drivers/nvmem/bcm-ocotp.c | 12 +-----------
  1 file changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/drivers/nvmem/lpc18xx_otp.c b/drivers/nvmem/lpc18xx_otp.c
-index 95268db155e9..74777bfe2dcd 100644
---- a/drivers/nvmem/lpc18xx_otp.c
-+++ b/drivers/nvmem/lpc18xx_otp.c
-@@ -86,22 +86,13 @@ static int lpc18xx_otp_probe(struct platform_device *pdev)
- 	lpc18xx_otp_nvmem_config.dev = &pdev->dev;
- 	lpc18xx_otp_nvmem_config.priv = otp;
+diff --git a/drivers/nvmem/bcm-ocotp.c b/drivers/nvmem/bcm-ocotp.c
+index 5e9e324427f9..24c30fa475cc 100644
+--- a/drivers/nvmem/bcm-ocotp.c
++++ b/drivers/nvmem/bcm-ocotp.c
+@@ -302,27 +302,17 @@ static int bcm_otpc_probe(struct platform_device *pdev)
  
--	nvmem = nvmem_register(&lpc18xx_otp_nvmem_config);
-+	nvmem = devm_nvmem_register(&pdev->dev, &lpc18xx_otp_nvmem_config);
- 	if (IS_ERR(nvmem))
+ 	priv->config = &bcm_otpc_nvmem_config;
+ 
+-	nvmem = nvmem_register(&bcm_otpc_nvmem_config);
++	nvmem = devm_nvmem_register(dev, &bcm_otpc_nvmem_config);
+ 	if (IS_ERR(nvmem)) {
+ 		dev_err(dev, "error registering nvmem config\n");
  		return PTR_ERR(nvmem);
+ 	}
  
 -	platform_set_drvdata(pdev, nvmem);
 -
  	return 0;
  }
  
--static int lpc18xx_otp_remove(struct platform_device *pdev)
+-static int bcm_otpc_remove(struct platform_device *pdev)
 -{
 -	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
 -
 -	return nvmem_unregister(nvmem);
 -}
 -
- static const struct of_device_id lpc18xx_otp_dt_ids[] = {
- 	{ .compatible = "nxp,lpc1850-otp" },
- 	{ },
-@@ -110,7 +101,6 @@ MODULE_DEVICE_TABLE(of, lpc18xx_otp_dt_ids);
- 
- static struct platform_driver lpc18xx_otp_driver = {
- 	.probe	= lpc18xx_otp_probe,
--	.remove	= lpc18xx_otp_remove,
+ static struct platform_driver bcm_otpc_driver = {
+ 	.probe	= bcm_otpc_probe,
+-	.remove	= bcm_otpc_remove,
  	.driver = {
- 		.name	= "lpc18xx_otp",
- 		.of_match_table = lpc18xx_otp_dt_ids,
+ 		.name	= "brcm-otpc",
+ 		.of_match_table = bcm_otpc_dt_ids,
 -- 
 2.14.3
