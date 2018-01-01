@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH v2 19/21] nvmem: rockchip-efuse: Do not use "&pdev->dev" explicitly
-Date: Mon,  1 Jan 2018 15:23:08 -0800
-Message-ID: <20180101232310.30420-20-andrew.smirnov@gmail.com>
+Subject: [PATCH v2 17/21] nvmem: rockchip-efuse: Make use of of_device_get_match_data()
+Date: Mon,  1 Jan 2018 15:23:06 -0800
+Message-ID: <20180101232310.30420-18-andrew.smirnov@gmail.com>
 References: <20180101232310.30420-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180101232310.30420-1-andrew.smirnov@gmail.com>
@@ -10,7 +10,8 @@ To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-There's "dev" variable for this already. Use it.
+Simplify code a bit by using of_device_get_match_data() instead of
+of_match_device().
 
 Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Heiko Stuebner <heiko@sntech.de>
@@ -30,34 +31,32 @@ Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-index 979ba0a376a0..3120329aea94 100644
+index d6dc1330f895..979ba0a376a0 100644
 --- a/drivers/nvmem/rockchip-efuse.c
 +++ b/drivers/nvmem/rockchip-efuse.c
-@@ -202,21 +202,21 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
+@@ -193,11 +193,11 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
+ 	struct resource *res;
+ 	struct nvmem_device *nvmem;
+ 	struct rockchip_efuse_chip *efuse;
+-	const struct of_device_id *match;
++	const void *data;
+ 	struct device *dev = &pdev->dev;
+ 
+-	match = of_match_device(dev->driver->of_match_table, dev);
+-	if (!match || !match->data) {
++	data = of_device_get_match_data(dev);
++	if (!data) {
+ 		dev_err(dev, "failed to get match data\n");
  		return -EINVAL;
  	}
+@@ -218,7 +218,7 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
  
--	efuse = devm_kzalloc(&pdev->dev, sizeof(struct rockchip_efuse_chip),
-+	efuse = devm_kzalloc(dev, sizeof(struct rockchip_efuse_chip),
- 			     GFP_KERNEL);
- 	if (!efuse)
- 		return -ENOMEM;
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	efuse->base = devm_ioremap_resource(&pdev->dev, res);
-+	efuse->base = devm_ioremap_resource(dev, res);
- 	if (IS_ERR(efuse->base))
- 		return PTR_ERR(efuse->base);
- 
--	efuse->clk = devm_clk_get(&pdev->dev, "pclk_efuse");
-+	efuse->clk = devm_clk_get(dev, "pclk_efuse");
- 	if (IS_ERR(efuse->clk))
- 		return PTR_ERR(efuse->clk);
- 
--	efuse->dev = &pdev->dev;
-+	efuse->dev = dev;
+ 	efuse->dev = &pdev->dev;
  	econfig.size = resource_size(res);
- 	econfig.reg_read = data;
+-	econfig.reg_read = match->data;
++	econfig.reg_read = data;
  	econfig.priv = efuse;
+ 	econfig.dev = efuse->dev;
+ 	nvmem = devm_nvmem_register(dev, &econfig);
 -- 
 2.14.3
