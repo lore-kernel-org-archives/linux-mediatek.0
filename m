@@ -1,49 +1,121 @@
-From: SF Markus Elfring <elfring@users.sourceforge.net>
-Subject: [PATCH] ethernet/mediatek: Delete an error message for a failed
- memory allocation in mtk_add_mac()
-Date: Mon, 1 Jan 2018 21:15:03 +0100
-Message-ID: <c536cac3-0902-5555-8c4f-0038f3609dc8@users.sourceforge.net>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, Felix Fietkau <nbd@openwrt.org>, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, Nelson Chang <nelson.chang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>
-Cc: kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Subject: [PATCH v2 02/21] nvmem: Introduce devm_nvmem_(un)register()
+Date: Mon,  1 Jan 2018 15:22:51 -0800
+Message-ID: <20180101232310.30420-3-andrew.smirnov@gmail.com>
+References: <20180101232310.30420-1-andrew.smirnov@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180101232310.30420-1-andrew.smirnov@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Markus Elfring <elfring@users.sourceforge.net>
-Date: Mon, 1 Jan 2018 21:06:50 +0100
+Introduce devm_nvmem_register()/devm_nvmem_unregister() to make
+.remove() unnecessary in trivial drivers.
 
-Omit an extra message for a memory allocation failure in this function.
-
-This issue was detected by using the Coccinelle software.
-
-Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+Cc: Carlo Caione <carlo@caione.org>
+Cc: Kevin Hilman <khilman@baylibre.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: cphealy@gmail.com
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-amlogic@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/nvmem/core.c           | 41 +++++++++++++++++++++++++++++++++++++++++
+ include/linux/nvmem-provider.h | 17 +++++++++++++++++
+ 2 files changed, 58 insertions(+)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 54adfd967858..52d489c1ceae 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -2427,7 +2427,6 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
- 				     sizeof(*mac->hw_stats),
- 				     GFP_KERNEL);
- 	if (!mac->hw_stats) {
--		dev_err(eth->dev, "failed to allocate counter memory\n");
- 		err = -ENOMEM;
- 		goto free_netdev;
- 	}
+diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
+index 57cbeacfbeb2..84f07ba1f36d 100644
+--- a/drivers/nvmem/core.c
++++ b/drivers/nvmem/core.c
+@@ -551,6 +551,47 @@ int nvmem_unregister(struct nvmem_device *nvmem)
+ }
+ EXPORT_SYMBOL_GPL(nvmem_unregister);
+ 
++static void devm_nvmem_release(struct device *dev, void *res)
++{
++	WARN_ON(nvmem_unregister(*(struct nvmem_device **)res));
++}
++
++struct nvmem_device *devm_nvmem_register(struct device *dev,
++					 const struct nvmem_config *config)
++{
++	struct nvmem_device **ptr, *nvmem;
++
++	ptr = devres_alloc(devm_nvmem_release, sizeof(*ptr), GFP_KERNEL);
++	if (!ptr)
++		return ERR_PTR(-ENOMEM);
++
++	nvmem = nvmem_register(config);
++
++	if (!IS_ERR(nvmem)) {
++		*ptr = nvmem;
++		devres_add(dev, ptr);
++	} else {
++		devres_free(ptr);
++	}
++
++	return nvmem;
++}
++EXPORT_SYMBOL_GPL(devm_nvmem_register);
++
++static int devm_nvmem_match(struct device *dev, void *res, void *data)
++{
++	struct nvmem_device **r = res;
++
++	return *r == data;
++}
++
++int devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem)
++{
++	return devres_release(dev, devm_nvmem_release, devm_nvmem_match, nvmem);
++}
++EXPORT_SYMBOL(devm_nvmem_unregister);
++
++
+ static struct nvmem_device *__nvmem_device_get(struct device_node *np,
+ 					       struct nvmem_cell **cellp,
+ 					       const char *cell_id)
+diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
+index 497706f5adca..493f2f529f00 100644
+--- a/include/linux/nvmem-provider.h
++++ b/include/linux/nvmem-provider.h
+@@ -47,6 +47,11 @@ struct nvmem_config {
+ struct nvmem_device *nvmem_register(const struct nvmem_config *cfg);
+ int nvmem_unregister(struct nvmem_device *nvmem);
+ 
++struct nvmem_device *devm_nvmem_register(struct device *dev,
++					 const struct nvmem_config *cfg);
++
++int devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem);
++
+ #else
+ 
+ static inline struct nvmem_device *nvmem_register(const struct nvmem_config *c)
+@@ -59,5 +64,17 @@ static inline int nvmem_unregister(struct nvmem_device *nvmem)
+ 	return -ENOSYS;
+ }
+ 
++static inline struct nvmem_device *
++devm_nvmem_register(struct device *dev, const struct nvmem_config *c)
++{
++	return nvmem_register(c);
++}
++
++static inline int
++devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem)
++{
++	return nvmem_unregister(nvmem);
++}
++
+ #endif /* CONFIG_NVMEM */
+ #endif  /* ifndef _LINUX_NVMEM_PROVIDER_H */
 -- 
-2.15.1
+2.14.3
