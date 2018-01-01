@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH v2 13/21] nvmem: imx-iim: Convert to use devm_nvmem_register()
-Date: Mon,  1 Jan 2018 15:23:02 -0800
-Message-ID: <20180101232310.30420-14-andrew.smirnov@gmail.com>
+Subject: [PATCH v2 07/21] nvmem: rockchip-efuse: Convert to use devm_nvmem_register()
+Date: Mon,  1 Jan 2018 15:22:56 -0800
+Message-ID: <20180101232310.30420-8-andrew.smirnov@gmail.com>
 References: <20180101232310.30420-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180101232310.30420-1-andrew.smirnov@gmail.com>
@@ -27,19 +27,19 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/imx-iim.c | 12 +-----------
+ drivers/nvmem/rockchip-efuse.c | 12 +-----------
  1 file changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/drivers/nvmem/imx-iim.c b/drivers/nvmem/imx-iim.c
-index 52cfe91d9762..635561a441bd 100644
---- a/drivers/nvmem/imx-iim.c
-+++ b/drivers/nvmem/imx-iim.c
-@@ -138,25 +138,15 @@ static int imx_iim_probe(struct platform_device *pdev)
- 	cfg.size = drvdata->nregs;
- 	cfg.priv = iim;
- 
--	nvmem = nvmem_register(&cfg);
-+	nvmem = devm_nvmem_register(dev, &cfg);
+diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
+index 123de77ca5d6..d6dc1330f895 100644
+--- a/drivers/nvmem/rockchip-efuse.c
++++ b/drivers/nvmem/rockchip-efuse.c
+@@ -221,25 +221,15 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
+ 	econfig.reg_read = match->data;
+ 	econfig.priv = efuse;
+ 	econfig.dev = efuse->dev;
+-	nvmem = nvmem_register(&econfig);
++	nvmem = devm_nvmem_register(dev, &econfig);
  	if (IS_ERR(nvmem))
  		return PTR_ERR(nvmem);
  
@@ -48,18 +48,18 @@ index 52cfe91d9762..635561a441bd 100644
  	return 0;
  }
  
--static int imx_iim_remove(struct platform_device *pdev)
+-static int rockchip_efuse_remove(struct platform_device *pdev)
 -{
 -	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
 -
 -	return nvmem_unregister(nvmem);
 -}
 -
- static struct platform_driver imx_iim_driver = {
- 	.probe	= imx_iim_probe,
--	.remove	= imx_iim_remove,
+ static struct platform_driver rockchip_efuse_driver = {
+ 	.probe = rockchip_efuse_probe,
+-	.remove = rockchip_efuse_remove,
  	.driver = {
- 		.name	= "imx-iim",
- 		.of_match_table = imx_iim_dt_ids,
+ 		.name = "rockchip-efuse",
+ 		.of_match_table = rockchip_efuse_match,
 -- 
 2.14.3
