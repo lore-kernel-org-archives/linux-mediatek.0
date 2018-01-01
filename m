@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH v2 05/21] nvmem: uniphier-efuse: Convert to use devm_nvmem_register()
-Date: Mon,  1 Jan 2018 15:22:54 -0800
-Message-ID: <20180101232310.30420-6-andrew.smirnov@gmail.com>
+Subject: [PATCH v2 12/21] nvmem: lpc18xx_otp: Convert to use devm_nvmem_register()
+Date: Mon,  1 Jan 2018 15:23:01 -0800
+Message-ID: <20180101232310.30420-13-andrew.smirnov@gmail.com>
 References: <20180101232310.30420-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180101232310.30420-1-andrew.smirnov@gmail.com>
@@ -27,19 +27,19 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/uniphier-efuse.c | 12 +-----------
+ drivers/nvmem/lpc18xx_otp.c | 12 +-----------
  1 file changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/drivers/nvmem/uniphier-efuse.c b/drivers/nvmem/uniphier-efuse.c
-index 9d278b4e1dc7..7ddc6fc012c9 100644
---- a/drivers/nvmem/uniphier-efuse.c
-+++ b/drivers/nvmem/uniphier-efuse.c
-@@ -60,22 +60,13 @@ static int uniphier_efuse_probe(struct platform_device *pdev)
- 	econfig.size = resource_size(res);
- 	econfig.priv = priv;
- 	econfig.dev = dev;
--	nvmem = nvmem_register(&econfig);
-+	nvmem = devm_nvmem_register(dev, &econfig);
+diff --git a/drivers/nvmem/lpc18xx_otp.c b/drivers/nvmem/lpc18xx_otp.c
+index 95268db155e9..74777bfe2dcd 100644
+--- a/drivers/nvmem/lpc18xx_otp.c
++++ b/drivers/nvmem/lpc18xx_otp.c
+@@ -86,22 +86,13 @@ static int lpc18xx_otp_probe(struct platform_device *pdev)
+ 	lpc18xx_otp_nvmem_config.dev = &pdev->dev;
+ 	lpc18xx_otp_nvmem_config.priv = otp;
+ 
+-	nvmem = nvmem_register(&lpc18xx_otp_nvmem_config);
++	nvmem = devm_nvmem_register(&pdev->dev, &lpc18xx_otp_nvmem_config);
  	if (IS_ERR(nvmem))
  		return PTR_ERR(nvmem);
  
@@ -48,23 +48,23 @@ index 9d278b4e1dc7..7ddc6fc012c9 100644
  	return 0;
  }
  
--static int uniphier_efuse_remove(struct platform_device *pdev)
+-static int lpc18xx_otp_remove(struct platform_device *pdev)
 -{
 -	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
 -
 -	return nvmem_unregister(nvmem);
 -}
 -
- static const struct of_device_id uniphier_efuse_of_match[] = {
- 	{ .compatible = "socionext,uniphier-efuse",},
- 	{/* sentinel */},
-@@ -84,7 +75,6 @@ MODULE_DEVICE_TABLE(of, uniphier_efuse_of_match);
+ static const struct of_device_id lpc18xx_otp_dt_ids[] = {
+ 	{ .compatible = "nxp,lpc1850-otp" },
+ 	{ },
+@@ -110,7 +101,6 @@ MODULE_DEVICE_TABLE(of, lpc18xx_otp_dt_ids);
  
- static struct platform_driver uniphier_efuse_driver = {
- 	.probe = uniphier_efuse_probe,
--	.remove = uniphier_efuse_remove,
+ static struct platform_driver lpc18xx_otp_driver = {
+ 	.probe	= lpc18xx_otp_probe,
+-	.remove	= lpc18xx_otp_remove,
  	.driver = {
- 		.name = "uniphier-efuse",
- 		.of_match_table = uniphier_efuse_of_match,
+ 		.name	= "lpc18xx_otp",
+ 		.of_match_table = lpc18xx_otp_dt_ids,
 -- 
 2.14.3
