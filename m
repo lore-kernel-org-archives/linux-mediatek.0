@@ -1,135 +1,73 @@
-From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Subject: Re: [PATCH v2 02/21] nvmem: Introduce devm_nvmem_(un)register()
-Date: Tue, 2 Jan 2018 11:44:55 +0000
-Message-ID: <f3ffb0f7-2d27-9c58-549f-dc44209f27c6@linaro.org>
-References: <20180101232310.30420-1-andrew.smirnov@gmail.com>
- <20180101232310.30420-3-andrew.smirnov@gmail.com>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 00/12] mediatek: rework audio subsystem driver
+Date: Tue, 2 Jan 2018 19:47:09 +0800
+Message-ID: <cover.1514881870.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180101232310.30420-3-andrew.smirnov@gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andrey Smirnov <andrew.smirnov@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Thanks for the patch,
+Hi all,
 
-On 01/01/18 23:22, Andrey Smirnov wrote:
-> Introduce devm_nvmem_register()/devm_nvmem_unregister() to make
-> .remove() unnecessary in trivial drivers.
-> 
-> Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
-> Cc: Carlo Caione <carlo@caione.org>
-> Cc: Kevin Hilman <khilman@baylibre.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: cphealy@gmail.com
-> Cc: linux-kernel@vger.kernel.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-amlogic@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
-> ---
->   drivers/nvmem/core.c           | 41 +++++++++++++++++++++++++++++++++++++++++
->   include/linux/nvmem-provider.h | 17 +++++++++++++++++
->   2 files changed, 58 insertions(+)
-> 
-Patch looks good, kernel doc for these exported symbols are missing, you 
-should add them in next version!
+This patch series mainly adds a common driver [5][6] for the top block of
+the MediaTek audio subsystem, which includes clock part and audio components.
+This is a minimal driver that manages shared resources like shared registers,
+and expose a regmap to its sub-nodes. It was tested on the bananapi-r2 and
+the MT2701 EVB.
 
+Also, this driver can be reused by other subsystems (e.g. MMSYS, ETHSYS) in
+future patch.
 
-Thanks,
-Srini
+Patch[1]-[4]: rework for audio enable/disable sequences and update some part of
+			  code to make them more generic.
+Patch[7]~[12]: modify both drivers, audio and clock to adapt the new subsystem.
 
-> diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
-> index 57cbeacfbeb2..84f07ba1f36d 100644
-> --- a/drivers/nvmem/core.c
-> +++ b/drivers/nvmem/core.c
-> @@ -551,6 +551,47 @@ int nvmem_unregister(struct nvmem_device *nvmem)
->   }
->   EXPORT_SYMBOL_GPL(nvmem_unregister);
->   
-> +static void devm_nvmem_release(struct device *dev, void *res)
-> +{
-> +	WARN_ON(nvmem_unregister(*(struct nvmem_device **)res));
-> +}
-> +
-> +struct nvmem_device *devm_nvmem_register(struct device *dev,
-> +					 const struct nvmem_config *config)
-> +{
-> +	struct nvmem_device **ptr, *nvmem;
-> +
-> +	ptr = devres_alloc(devm_nvmem_release, sizeof(*ptr), GFP_KERNEL);
-> +	if (!ptr)
-> +		return ERR_PTR(-ENOMEM);
-> +
-> +	nvmem = nvmem_register(config);
-> +
-> +	if (!IS_ERR(nvmem)) {
-> +		*ptr = nvmem;
-> +		devres_add(dev, ptr);
-> +	} else {
-> +		devres_free(ptr);
-> +	}
-> +
-> +	return nvmem;
-> +}
-> +EXPORT_SYMBOL_GPL(devm_nvmem_register);
-> +
-> +static int devm_nvmem_match(struct device *dev, void *res, void *data)
-> +{./drivers/base/devres.c
-> +	struct nvmem_device **r = res;
-> +
-> +	return *r == data;
-> +}
-> +
-> +int devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem)
-> +{
-> +	return devres_release(dev, devm_nvmem_release, devm_nvmem_match, nvmem);
-> +}
-> +EXPORT_SYMBOL(devm_nvmem_unregister);
-> +
-> +
->   static struct nvmem_device *__nvmem_device_get(struct device_node *np,
->   					       struct nvmem_cell **cellp,
->   					       const char *cell_id)
-> diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
-> index 497706f5adca..493f2f529f00 100644
-> --- a/include/linux/nvmem-provider.h
-> +++ b/include/linux/nvmem-provider.h
-> @@ -47,6 +47,11 @@ struct nvmem_config {
->   struct nvmem_device *nvmem_register(const struct nvmem_config *cfg);
->   int nvmem_unregister(struct nvmem_device *nvmem);
->   
-> +struct nvmem_device *devm_nvmem_register(struct device *dev,
-> +					 const struct nvmem_config *cfg);
-> +
-> +int devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem);
-> +
->   #else
->   
->   static inline struct nvmem_device *nvmem_register(const struct nvmem_config *c)
-> @@ -59,5 +64,17 @@ static inline int nvmem_unregister(struct nvmem_device *nvmem)
->   	return -ENOSYS;
->   }
->   
-> +static inline struct nvmem_device *
-> +devm_nvmem_register(struct device *dev, const struct nvmem_config *c)
-> +{
-> +	return nvmem_register(c);
-> +}
-> +
-> +static inline int
-> +devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem)
-> +{
-> +	return nvmem_unregister(nvmem);
-> +}
-> +
->   #endif /* CONFIG_NVMEM */
->   #endif  /* ifndef _LINUX_NVMEM_PROVIDER_H */
-> 
+Ryder Lee (12):
+  ASoC: mediatek: fix error handling in mt2701_afe_pcm_dev_probe()
+  ASoC: mediatek: rework clock functions for MT2701
+  ASoC: mediatek: cleanup audio driver for MT2701
+  ASoC: mediatek: update clock related properties of MT2701 AFE
+  mfd: mtk-audsys: add MediaTek audio subsystem driver
+  mfd: add DT bindings for MedaiTek audio subsystem
+  ASoC: mediatek: modify MT2701 AFE driver to adapt subsystem wrapper
+  ASoC: mediatek: modify documentation to adapt subsystem wrapper
+  clk: mediatek: move part of mtk_clk_register_gates() to the new
+    function
+  clk: mediatek: switch to use dev_get_regmap() for MT7622 audsys
+  clk: mediatek: add audsys support for MT2701
+  dt-bindings: clock: mediatek: update audsys bindings to adapt the
+    wrapper
+
+ .../bindings/arm/mediatek/mediatek,audsys.txt      |  19 +-
+ .../devicetree/bindings/mfd/mtk-audsys.txt         | 109 +++++
+ .../devicetree/bindings/sound/mt2701-afe-pcm.txt   | 257 +++++-----
+ drivers/clk/mediatek/Kconfig                       |   6 +
+ drivers/clk/mediatek/Makefile                      |   1 +
+ drivers/clk/mediatek/clk-mt2701-aud.c              | 180 +++++++
+ drivers/clk/mediatek/clk-mt7622-aud.c              |  11 +-
+ drivers/clk/mediatek/clk-mtk.c                     |  26 +-
+ drivers/clk/mediatek/clk-mtk.h                     |   4 +
+ drivers/mfd/Kconfig                                |   9 +
+ drivers/mfd/Makefile                               |   2 +
+ drivers/mfd/mtk-audsys.c                           | 138 ++++++
+ include/dt-bindings/clock/mt7622-clk.h             |   3 +-
+ sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c  | 526 +++++++--------------
+ sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.h  |  15 +-
+ sound/soc/mediatek/mt2701/mt2701-afe-common.h      |  84 +---
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c         | 212 +++------
+ sound/soc/mediatek/mt2701/mt2701-reg.h             |  42 +-
+ 18 files changed, 860 insertions(+), 784 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mfd/mtk-audsys.txt
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-aud.c
+ create mode 100644 drivers/mfd/mtk-audsys.c
+
+-- 
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
