@@ -1,82 +1,97 @@
-From: Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v2 06/21] nvmem: snvs_lgpr: Convert to use
- devm_nvmem_register()
-Date: Mon,  1 Jan 2018 15:22:55 -0800
-Message-ID: <20180101232310.30420-7-andrew.smirnov@gmail.com>
-References: <20180101232310.30420-1-andrew.smirnov@gmail.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH 1/3] phy: phy-mtk-tphy: use auto instead of force to
+ bypass utmi signals
+Date: Tue, 2 Jan 2018 09:41:38 +0800
+Message-ID: <1514857298.17567.180.camel@mhfsdcap03>
+References: <ff2797a0487a0b30a2292c2685dedcbbfeead293.1512647458.git.chunfeng.yun@mediatek.com>
+         <3eb63ed0-5e56-d664-4953-b1998d7bd19f@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180101232310.30420-1-andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>, cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <3eb63ed0-5e56-d664-4953-b1998d7bd19f@ti.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Drop all of the code related to .remove hook and make use of
-devm_nvmem_register() instead.
-
-Cc: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Cc: Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>
-Cc: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Signed-off-by: Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- drivers/nvmem/snvs_lpgpr.c | 12 +-----------
- 1 file changed, 1 insertion(+), 11 deletions(-)
-
-diff --git a/drivers/nvmem/snvs_lpgpr.c b/drivers/nvmem/snvs_lpgpr.c
-index e5c2a4a17f03..6a2fdd09e74a 100644
---- a/drivers/nvmem/snvs_lpgpr.c
-+++ b/drivers/nvmem/snvs_lpgpr.c
-@@ -117,22 +117,13 @@ static int snvs_lpgpr_probe(struct platform_device *pdev)
- 	cfg->reg_read  = snvs_lpgpr_read,
- 	cfg->reg_write = snvs_lpgpr_write,
- 
--	nvmem = nvmem_register(cfg);
-+	nvmem = devm_nvmem_register(dev, cfg);
- 	if (IS_ERR(nvmem))
- 		return PTR_ERR(nvmem);
- 
--	platform_set_drvdata(pdev, nvmem);
--
- 	return 0;
- }
- 
--static int snvs_lpgpr_remove(struct platform_device *pdev)
--{
--	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
--
--	return nvmem_unregister(nvmem);
--}
--
- static const struct of_device_id snvs_lpgpr_dt_ids[] = {
- 	{ .compatible = "fsl,imx6q-snvs-lpgpr", .data = &snvs_lpgpr_cfg_imx6q },
- 	{ .compatible = "fsl,imx6ul-snvs-lpgpr",
-@@ -143,7 +134,6 @@ MODULE_DEVICE_TABLE(of, snvs_lpgpr_dt_ids);
- 
- static struct platform_driver snvs_lpgpr_driver = {
- 	.probe	= snvs_lpgpr_probe,
--	.remove	= snvs_lpgpr_remove,
- 	.driver = {
- 		.name	= "snvs_lpgpr",
- 		.of_match_table = snvs_lpgpr_dt_ids,
--- 
-2.14.3
+On Thu, 2017-12-28 at 16:44 +0530, Kishon Vijay Abraham I wrote:
+> 
+> On Thursday 07 December 2017 05:23 PM, Chunfeng Yun wrote:
+> > When system is running, if usb2 phy is forced to bypass utmi signals,
+> > all PLL will be turned off, and it can't detect device connection
+> > anymore, so replace force mode with auto mode which can bypass utmi
+> > signals automatically if no device attached for normal flow.
+> > But keep the force mode to fix RX sensitivity degradation issue.
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> 
+> merged this series.
+Thanks a lot
+> 
+> Thanks
+> Kishon
+> > ---
+> >  drivers/phy/mediatek/phy-mtk-tphy.c | 19 +++++++------------
+> >  1 file changed, 7 insertions(+), 12 deletions(-)
+> > 
+> > diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+> > index fb8aba4..5d9d7f3 100644
+> > --- a/drivers/phy/mediatek/phy-mtk-tphy.c
+> > +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+> > @@ -440,9 +440,9 @@ static void u2_phy_instance_init(struct mtk_tphy *tphy,
+> >  	u32 index = instance->index;
+> >  	u32 tmp;
+> >  
+> > -	/* switch to USB function. (system register, force ip into usb mode) */
+> > +	/* switch to USB function, and enable usb pll */
+> >  	tmp = readl(com + U3P_U2PHYDTM0);
+> > -	tmp &= ~P2C_FORCE_UART_EN;
+> > +	tmp &= ~(P2C_FORCE_UART_EN | P2C_FORCE_SUSPENDM);
+> >  	tmp |= P2C_RG_XCVRSEL_VAL(1) | P2C_RG_DATAIN_VAL(0);
+> >  	writel(tmp, com + U3P_U2PHYDTM0);
+> >  
+> > @@ -502,10 +502,8 @@ static void u2_phy_instance_power_on(struct mtk_tphy *tphy,
+> >  	u32 index = instance->index;
+> >  	u32 tmp;
+> >  
+> > -	/* (force_suspendm=0) (let suspendm=1, enable usb 480MHz pll) */
+> >  	tmp = readl(com + U3P_U2PHYDTM0);
+> > -	tmp &= ~(P2C_FORCE_SUSPENDM | P2C_RG_XCVRSEL);
+> > -	tmp &= ~(P2C_RG_DATAIN | P2C_DTM0_PART_MASK);
+> > +	tmp &= ~(P2C_RG_XCVRSEL | P2C_RG_DATAIN | P2C_DTM0_PART_MASK);
+> >  	writel(tmp, com + U3P_U2PHYDTM0);
+> >  
+> >  	/* OTG Enable */
+> > @@ -540,7 +538,6 @@ static void u2_phy_instance_power_off(struct mtk_tphy *tphy,
+> >  
+> >  	tmp = readl(com + U3P_U2PHYDTM0);
+> >  	tmp &= ~(P2C_RG_XCVRSEL | P2C_RG_DATAIN);
+> > -	tmp |= P2C_FORCE_SUSPENDM;
+> >  	writel(tmp, com + U3P_U2PHYDTM0);
+> >  
+> >  	/* OTG Disable */
+> > @@ -548,18 +545,16 @@ static void u2_phy_instance_power_off(struct mtk_tphy *tphy,
+> >  	tmp &= ~PA6_RG_U2_OTG_VBUSCMP_EN;
+> >  	writel(tmp, com + U3P_USBPHYACR6);
+> >  
+> > -	/* let suspendm=0, set utmi into analog power down */
+> > -	tmp = readl(com + U3P_U2PHYDTM0);
+> > -	tmp &= ~P2C_RG_SUSPENDM;
+> > -	writel(tmp, com + U3P_U2PHYDTM0);
+> > -	udelay(1);
+> > -
+> >  	tmp = readl(com + U3P_U2PHYDTM1);
+> >  	tmp &= ~(P2C_RG_VBUSVALID | P2C_RG_AVALID);
+> >  	tmp |= P2C_RG_SESSEND;
+> >  	writel(tmp, com + U3P_U2PHYDTM1);
+> >  
+> >  	if (tphy->pdata->avoid_rx_sen_degradation && index) {
+> > +		tmp = readl(com + U3P_U2PHYDTM0);
+> > +		tmp &= ~(P2C_RG_SUSPENDM | P2C_FORCE_SUSPENDM);
+> > +		writel(tmp, com + U3P_U2PHYDTM0);
+> > +
+> >  		tmp = readl(com + U3D_U2PHYDCR0);
+> >  		tmp &= ~P2C_RG_SIF_U2PLL_FORCE_ON;
+> >  		writel(tmp, com + U3D_U2PHYDCR0);
+> > 
