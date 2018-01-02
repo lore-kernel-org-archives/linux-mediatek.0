@@ -1,14 +1,16 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 05/12] mfd: mtk-audsys: add MediaTek audio
-	subsystem driver
-Date: Tue, 2 Jan 2018 19:47:30 +0800
-Message-ID: <fbe22b0d78c41b121f04202dcbfcd0cc23a7590d.1514881870.git.ryder.lee@mediatek.com>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH 05/12] mfd: mtk-audsys: add MediaTek audio
+ subsystem driver
+Date: Tue, 2 Jan 2018 16:31:03 +0000
+Message-ID: <20180102163103.dqxsl4bylqwn6o5b@dell>
 References: <cover.1514881870.git.ryder.lee@mediatek.com>
+ <fbe22b0d78c41b121f04202dcbfcd0cc23a7590d.1514881870.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <cover.1514881870.git.ryder.lee@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <fbe22b0d78c41b121f04202dcbfcd0cc23a7590d.1514881870.git.ryder.lee@mediatek.com>
 List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
 List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
@@ -18,197 +20,118 @@ List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
 Errors-To: alsa-devel-bounces@alsa-project.org
 Sender: alsa-devel-bounces@alsa-project.org
-To: Mark Brown <broonie@kernel.org>, Lee Jones <lee.jones@linaro.org>
-Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Ryder Lee <ryder.lee@mediatek.com>, Garlic Tseng <garlic.tseng@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Garlic Tseng <garlic.tseng@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add a common driver for the top block of the MediaTek audio subsystem.
-This is a wrapper which manages resources for audio components.
-
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/mfd/Kconfig      |   9 ++++
- drivers/mfd/Makefile     |   2 +
- drivers/mfd/mtk-audsys.c | 138 +++++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 149 insertions(+)
- create mode 100644 drivers/mfd/mtk-audsys.c
-
-diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
-index 1d20a80..ea50b51 100644
---- a/drivers/mfd/Kconfig
-+++ b/drivers/mfd/Kconfig
-@@ -368,6 +368,15 @@ config MFD_MC13XXX_I2C
- 	help
- 	  Select this if your MC13xxx is connected via an I2C bus.
- 
-+config MFD_MEDIATEK_AUDSYS
-+	tristate "MediaTek audio subsystem interface"
-+	select MDF_CORE
-+	select REGMAP_MMIO
-+	help
-+	  Select this if you have a audio subsystem in MediaTek SoC.
-+	  The audio subsystem has at least a clock driver part and some
-+	  audio components.
-+
- config MFD_MXS_LRADC
- 	tristate "Freescale i.MX23/i.MX28 LRADC"
- 	depends on ARCH_MXS || COMPILE_TEST
-diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
-index d9474ad..3e20927 100644
---- a/drivers/mfd/Makefile
-+++ b/drivers/mfd/Makefile
-@@ -101,6 +101,8 @@ obj-$(CONFIG_MFD_MC13XXX)	+= mc13xxx-core.o
- obj-$(CONFIG_MFD_MC13XXX_SPI)	+= mc13xxx-spi.o
- obj-$(CONFIG_MFD_MC13XXX_I2C)	+= mc13xxx-i2c.o
- 
-+obj-$(CONFIG_MFD_MEDIATEK_AUDSYS) += mtk-audsys.o
-+
- obj-$(CONFIG_MFD_CORE)		+= mfd-core.o
- 
- obj-$(CONFIG_EZX_PCAP)		+= ezx-pcap.o
-diff --git a/drivers/mfd/mtk-audsys.c b/drivers/mfd/mtk-audsys.c
-new file mode 100644
-index 0000000..89399e1
---- /dev/null
-+++ b/drivers/mfd/mtk-audsys.c
-@@ -0,0 +1,138 @@
-+/*
-+ * Mediatek audio subsystem core driver
-+ *
-+ *  Copyright (c) 2017 MediaTek Inc.
-+ *
-+ * Author: Ryder Lee <ryder.lee@mediatek.com>
-+ *
-+ * For licencing details see kernel-base/COPYING
-+ *
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/module.h>
-+#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+
-+#define AUDSYS_MAX_CLK_NUM 3
-+
-+struct sys_dev {
-+	struct device *dev;
-+	struct regmap *regmap;
-+	int clk_num;
-+	struct clk *clks[];
-+};
-+
-+static const struct regmap_config aud_regmap_config = {
-+	.reg_bits = 32,
-+	.reg_stride = 4,
-+	.val_bits = 32,
-+	.max_register = 0x15e0,
-+	.cache_type = REGCACHE_NONE,
-+};
-+
-+static int mtk_subsys_enable(struct sys_dev *sys)
-+{
-+	struct device *dev = sys->dev;
-+	struct clk *clk;
-+	int i, ret;
-+
-+	for (i = 0; i < sys->clk_num; i++) {
-+		clk = of_clk_get(dev->of_node, i);
-+		if (IS_ERR(clk)) {
-+			if (PTR_ERR(clk) == -EPROBE_DEFER)
-+				return -EPROBE_DEFER;
-+			break;
-+		}
-+		sys->clks[i] = clk;
-+	}
-+
-+	for (i = 0; i < sys->clk_num && sys->clks[i]; i++) {
-+		ret = clk_prepare_enable(sys->clks[i]);
-+		if (ret)
-+			goto err_enable_clks;
-+	}
-+
-+	return 0;
-+
-+err_enable_clks:
-+	while (--i >= 0)
-+		clk_disable_unprepare(sys->clks[i]);
-+
-+	return ret;
-+}
-+
-+static int mtk_subsys_probe(struct platform_device *pdev)
-+{
-+	struct sys_dev *sys;
-+	struct resource *res;
-+	void __iomem *mmio;
-+	int num, ret;
-+
-+	num = (int)of_device_get_match_data(&pdev->dev);
-+	if (!num)
-+		return -EINVAL;
-+
-+	sys = devm_kzalloc(&pdev->dev, sizeof(*sys) +
-+			   sizeof(struct clk *) * num, GFP_KERNEL);
-+	if (!sys)
-+		return -ENOMEM;
-+
-+	sys->clk_num = num;
-+	sys->dev = &pdev->dev;
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	mmio = devm_ioremap_resource(sys->dev, res);
-+	if (IS_ERR(mmio))
-+		return PTR_ERR(mmio);
-+
-+	sys->regmap = devm_regmap_init_mmio(sys->dev, mmio,
-+					    &aud_regmap_config);
-+	if (IS_ERR(sys->regmap))
-+		return PTR_ERR(sys->regmap);
-+
-+	platform_set_drvdata(pdev, sys);
-+
-+	/* Enable top level clocks */
-+	ret = mtk_subsys_enable(sys);
-+	if (ret)
-+		return ret;
-+
-+	return devm_of_platform_populate(sys->dev);
-+};
-+
-+static int mtk_subsys_remove(struct platform_device *pdev)
-+{
-+	struct sys_dev *sys = platform_get_drvdata(pdev);
-+	int i;
-+
-+	for (i = sys->clk_num - 1; i >= 0; i--)
-+		if (sys->clks[i])
-+			clk_disable_unprepare(sys->clks[i]);
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id of_match_audsys[] = {
-+	{
-+	  .compatible = "mediatek,mt2701-audsys-core",
-+	  .data = (void *)AUDSYS_MAX_CLK_NUM,
-+	},
-+	{},
-+};
-+MODULE_DEVICE_TABLE(platform, of_match_audsys);
-+
-+static struct platform_driver audsys_drv = {
-+	.probe = mtk_subsys_probe,
-+	.remove	= mtk_subsys_remove,
-+	.driver = {
-+		.name = "mediatek-audsys-core",
-+		.of_match_table = of_match_ptr(of_match_audsys),
-+	},
-+};
-+
-+builtin_platform_driver(audsys_drv);
-+
-+MODULE_DESCRIPTION("Mediatek audio subsystem core driver");
-+MODULE_LICENSE("GPL");
--- 
-1.9.1
+T24gVHVlLCAwMiBKYW4gMjAxOCwgUnlkZXIgTGVlIHdyb3RlOgoKPiBBZGQgYSBjb21tb24gZHJp
+dmVyIGZvciB0aGUgdG9wIGJsb2NrIG9mIHRoZSBNZWRpYVRlayBhdWRpbyBzdWJzeXN0ZW0uCj4g
+VGhpcyBpcyBhIHdyYXBwZXIgd2hpY2ggbWFuYWdlcyByZXNvdXJjZXMgZm9yIGF1ZGlvIGNvbXBv
+bmVudHMuCj4gCj4gU2lnbmVkLW9mZi1ieTogUnlkZXIgTGVlIDxyeWRlci5sZWVAbWVkaWF0ZWsu
+Y29tPgo+IC0tLQo+ICBkcml2ZXJzL21mZC9LY29uZmlnICAgICAgfCAgIDkgKysrKwo+ICBkcml2
+ZXJzL21mZC9NYWtlZmlsZSAgICAgfCAgIDIgKwo+ICBkcml2ZXJzL21mZC9tdGstYXVkc3lzLmMg
+fCAxMzggKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiAg
+MyBmaWxlcyBjaGFuZ2VkLCAxNDkgaW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQg
+ZHJpdmVycy9tZmQvbXRrLWF1ZHN5cy5jCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWZkL0tj
+b25maWcgYi9kcml2ZXJzL21mZC9LY29uZmlnCj4gaW5kZXggMWQyMGE4MC4uZWE1MGI1MSAxMDA2
+NDQKPiAtLS0gYS9kcml2ZXJzL21mZC9LY29uZmlnCj4gKysrIGIvZHJpdmVycy9tZmQvS2NvbmZp
+Zwo+IEBAIC0zNjgsNiArMzY4LDE1IEBAIGNvbmZpZyBNRkRfTUMxM1hYWF9JMkMKPiAgCWhlbHAK
+PiAgCSAgU2VsZWN0IHRoaXMgaWYgeW91ciBNQzEzeHh4IGlzIGNvbm5lY3RlZCB2aWEgYW4gSTJD
+IGJ1cy4KPiAgCj4gK2NvbmZpZyBNRkRfTUVESUFURUtfQVVEU1lTCj4gKwl0cmlzdGF0ZSAiTWVk
+aWFUZWsgYXVkaW8gc3Vic3lzdGVtIGludGVyZmFjZSIKPiArCXNlbGVjdCBNREZfQ09SRQo+ICsJ
+c2VsZWN0IFJFR01BUF9NTUlPCj4gKwloZWxwCj4gKwkgIFNlbGVjdCB0aGlzIGlmIHlvdSBoYXZl
+IGEgYXVkaW8gc3Vic3lzdGVtIGluIE1lZGlhVGVrIFNvQy4KPiArCSAgVGhlIGF1ZGlvIHN1YnN5
+c3RlbSBoYXMgYXQgbGVhc3QgYSBjbG9jayBkcml2ZXIgcGFydCBhbmQgc29tZQo+ICsJICBhdWRp
+byBjb21wb25lbnRzLgo+ICsKPiAgY29uZmlnIE1GRF9NWFNfTFJBREMKPiAgCXRyaXN0YXRlICJG
+cmVlc2NhbGUgaS5NWDIzL2kuTVgyOCBMUkFEQyIKPiAgCWRlcGVuZHMgb24gQVJDSF9NWFMgfHwg
+Q09NUElMRV9URVNUCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWZkL01ha2VmaWxlIGIvZHJpdmVy
+cy9tZmQvTWFrZWZpbGUKPiBpbmRleCBkOTQ3NGFkLi4zZTIwOTI3IDEwMDY0NAo+IC0tLSBhL2Ry
+aXZlcnMvbWZkL01ha2VmaWxlCj4gKysrIGIvZHJpdmVycy9tZmQvTWFrZWZpbGUKPiBAQCAtMTAx
+LDYgKzEwMSw4IEBAIG9iai0kKENPTkZJR19NRkRfTUMxM1hYWCkJKz0gbWMxM3h4eC1jb3JlLm8K
+PiAgb2JqLSQoQ09ORklHX01GRF9NQzEzWFhYX1NQSSkJKz0gbWMxM3h4eC1zcGkubwo+ICBvYmot
+JChDT05GSUdfTUZEX01DMTNYWFhfSTJDKQkrPSBtYzEzeHh4LWkyYy5vCj4gIAo+ICtvYmotJChD
+T05GSUdfTUZEX01FRElBVEVLX0FVRFNZUykgKz0gbXRrLWF1ZHN5cy5vCj4gKwo+ICBvYmotJChD
+T05GSUdfTUZEX0NPUkUpCQkrPSBtZmQtY29yZS5vCj4gIAo+ICBvYmotJChDT05GSUdfRVpYX1BD
+QVApCQkrPSBlengtcGNhcC5vCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWZkL210ay1hdWRzeXMu
+YyBiL2RyaXZlcnMvbWZkL210ay1hdWRzeXMuYwo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5k
+ZXggMDAwMDAwMC4uODkzOTllMQo+IC0tLSAvZGV2L251bGwKPiArKysgYi9kcml2ZXJzL21mZC9t
+dGstYXVkc3lzLmMKPiBAQCAtMCwwICsxLDEzOCBAQAo+ICsvKgo+ICsgKiBNZWRpYXRlayBhdWRp
+byBzdWJzeXN0ZW0gY29yZSBkcml2ZXIKPiArICoKPiArICogIENvcHlyaWdodCAoYykgMjAxNyBN
+ZWRpYVRlayBJbmMuCj4gKyAqCj4gKyAqIEF1dGhvcjogUnlkZXIgTGVlIDxyeWRlci5sZWVAbWVk
+aWF0ZWsuY29tPgo+ICsgKgo+ICsgKiBGb3IgbGljZW5jaW5nIGRldGFpbHMgc2VlIGtlcm5lbC1i
+YXNlL0NPUFlJTkcKCllvdSBjYW4ndCBkbyB0aGF0LgoKR3JlcCBmb3IgU1BEWCB0byBzZWUgd2hh
+dCBpcyBleHBlY3RlZC4KCj4gKyAqCj4gKyAqLwo+ICsKPiArI2luY2x1ZGUgPGxpbnV4L2Nsay5o
+Pgo+ICsjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9vZl9wbGF0
+Zm9ybS5oPgo+ICsjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gKyNpbmNsdWRl
+IDxsaW51eC9yZWdtYXAuaD4KPiArCj4gKyNkZWZpbmUgQVVEU1lTX01BWF9DTEtfTlVNIDMKCldo
+ZW4gaXMgdGhpcyBub3QgMz8KCj4gK3N0cnVjdCBzeXNfZGV2IHsKPiArCXN0cnVjdCBkZXZpY2Ug
+KmRldjsKPiArCXN0cnVjdCByZWdtYXAgKnJlZ21hcDsKPiArCWludCBjbGtfbnVtOwo+ICsJc3Ry
+dWN0IGNsayAqY2xrc1tdOwo+ICt9Owo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCByZWdtYXBf
+Y29uZmlnIGF1ZF9yZWdtYXBfY29uZmlnID0gewo+ICsJLnJlZ19iaXRzID0gMzIsCj4gKwkucmVn
+X3N0cmlkZSA9IDQsCj4gKwkudmFsX2JpdHMgPSAzMiwKPiArCS5tYXhfcmVnaXN0ZXIgPSAweDE1
+ZTAsCj4gKwkuY2FjaGVfdHlwZSA9IFJFR0NBQ0hFX05PTkUsCj4gK307Cj4gKwo+ICtzdGF0aWMg
+aW50IG10a19zdWJzeXNfZW5hYmxlKHN0cnVjdCBzeXNfZGV2ICpzeXMpCj4gK3sKPiArCXN0cnVj
+dCBkZXZpY2UgKmRldiA9IHN5cy0+ZGV2OwoKSSB3b3VsZCByZW1vdmUgZGV2IGFuZCByZWdtYXAg
+ZnJvbSB0aGUgc3lzX2RldiBzdHJ1Y3QgYW5kIHBhc3MgaW4gcGRldgpkaXJlY3RseSBpbnRvIHRo
+aXMgZnVuY3Rpb24uICBUaGVuIHVzZSBwbGF0Zm9ybV9nZXRfZHJ2ZGF0YSgpIGFzIHlvdQpkaWQg
+aW4gLnJlbW92ZSgpLgoKPiArCXN0cnVjdCBjbGsgKmNsazsKPiArCWludCBpLCByZXQ7Cj4gKwo+
+ICsJZm9yIChpID0gMDsgaSA8IHN5cy0+Y2xrX251bTsgaSsrKSB7Cj4gKwkJY2xrID0gb2ZfY2xr
+X2dldChkZXYtPm9mX25vZGUsIGkpOwo+ICsJCWlmIChJU19FUlIoY2xrKSkgewo+ICsJCQlpZiAo
+UFRSX0VSUihjbGspID09IC1FUFJPQkVfREVGRVIpCj4gKwkJCQlyZXR1cm4gLUVQUk9CRV9ERUZF
+UjsKPiArCQkJYnJlYWs7Cj4gKwkJfQo+ICsJCXN5cy0+Y2xrc1tpXSA9IGNsazsKPiArCX0KPiAr
+Cj4gKwlmb3IgKGkgPSAwOyBpIDwgc3lzLT5jbGtfbnVtICYmIHN5cy0+Y2xrc1tpXTsgaSsrKSB7
+CgpXaHkgZG8geW91IG5lZWQgYSBzZXBhcmF0ZSBsb29wIGZvciB0aGlzPwoKSnVzdCBwcmVwYXJl
+IGFuZCBlbmFibGUgdmFsaWQgY2xvY2tzIGluIHRoZSBmb3IoKSBsb29wIGFib3ZlLgoKPiArCQly
+ZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoc3lzLT5jbGtzW2ldKTsKPiArCQlpZiAocmV0KQo+ICsJ
+CQlnb3RvIGVycl9lbmFibGVfY2xrczsKPiArCX0KPiArCj4gKwlyZXR1cm4gMDsKPiArCj4gK2Vy
+cl9lbmFibGVfY2xrczoKPiArCXdoaWxlICgtLWkgPj0gMCkKPiArCQljbGtfZGlzYWJsZV91bnBy
+ZXBhcmUoc3lzLT5jbGtzW2ldKTsKPiArCj4gKwlyZXR1cm4gcmV0Owo+ICt9Cj4gKwo+ICtzdGF0
+aWMgaW50IG10a19zdWJzeXNfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAr
+ewo+ICsJc3RydWN0IHN5c19kZXYgKnN5czsKPiArCXN0cnVjdCByZXNvdXJjZSAqcmVzOwo+ICsJ
+dm9pZCBfX2lvbWVtICptbWlvOwo+ICsJaW50IG51bSwgcmV0Owo+ICsKPiArCW51bSA9IChpbnQp
+b2ZfZGV2aWNlX2dldF9tYXRjaF9kYXRhKCZwZGV2LT5kZXYpOwo+ICsJaWYgKCFudW0pCj4gKwkJ
+cmV0dXJuIC1FSU5WQUw7CgpUaGlzIGlzIGEgdmVyeSByaWdpZCBtZXRob2Qgb2YgYWNoaWV2aW5n
+IHlvdXIgYWltLiAgUGxlYXNlIGZpbmQgYSB3YXkKdG8gbWFrZSB0aGlzIG1vcmUgZHluYW1pYy4g
+IFlvdSdyZSBwcm9iYWJseSBiZXR0ZXIgb2ZmIGNvdW50aW5nIHRoZQplbGVtZW50cyB3aXRoaW4g
+dGhlIHByb3BlcnR5LCBjaGVja2luZyB0byBlbnN1cmUgdGhlcmUgYXJlbid0IG1vcmUKdGhhbiB0
+aGUgbWF4aW11bSBwcmUtYWxsb2NhdGVkL2FsbG93ZWQgY2xvY2tzLCB0aGVuIHVzaW5nIHRoZSBu
+dW1iZXIKZ2xlYW5lZCBkaXJlY3RseSBmcm9tIHRoZSBEZXZpY2UgVHJlZS4KCj4gKwlzeXMgPSBk
+ZXZtX2t6YWxsb2MoJnBkZXYtPmRldiwgc2l6ZW9mKCpzeXMpICsKPiArCQkJICAgc2l6ZW9mKHN0
+cnVjdCBjbGsgKikgKiBudW0sIEdGUF9LRVJORUwpOwoKWW91IG5lZWQgdG8gYWRkIGJyYWNrZXRp
+bmcgaGVyZSBmb3IgY2xhcml0eS4KCj4gKwlpZiAoIXN5cykKPiArCQlyZXR1cm4gLUVOT01FTTsK
+PiArCj4gKwlzeXMtPmNsa19udW0gPSBudW07Cj4gKwlzeXMtPmRldiA9ICZwZGV2LT5kZXY7CgpX
+aHkgYXJlIHlvdSBzYXZpbmcgdGhlIGRldmljZSBwb2ludGVyPwoKPiArCXJlcyA9IHBsYXRmb3Jt
+X2dldF9yZXNvdXJjZShwZGV2LCBJT1JFU09VUkNFX01FTSwgMCk7Cj4gKwltbWlvID0gZGV2bV9p
+b3JlbWFwX3Jlc291cmNlKHN5cy0+ZGV2LCByZXMpOwo+ICsJaWYgKElTX0VSUihtbWlvKSkKPiAr
+CQlyZXR1cm4gUFRSX0VSUihtbWlvKTsKPiArCj4gKwlzeXMtPnJlZ21hcCA9IGRldm1fcmVnbWFw
+X2luaXRfbW1pbyhzeXMtPmRldiwgbW1pbywKPiArCQkJCQkgICAgJmF1ZF9yZWdtYXBfY29uZmln
+KTsKCldoeSBhcmUgeW91IHNhdmluZyBhIGRldm0nZWQgcmVnbWFwIHBvaW50ZXI/Cgo+ICsJaWYg
+KElTX0VSUihzeXMtPnJlZ21hcCkpCj4gKwkJcmV0dXJuIFBUUl9FUlIoc3lzLT5yZWdtYXApOwo+
+ICsKPiArCXBsYXRmb3JtX3NldF9kcnZkYXRhKHBkZXYsIHN5cyk7Cj4gKwo+ICsJLyogRW5hYmxl
+IHRvcCBsZXZlbCBjbG9ja3MgKi8KPiArCXJldCA9IG10a19zdWJzeXNfZW5hYmxlKHN5cyk7Cgpt
+dGtfc3Vic3lzX2VuYWJsZV9jbGtzKCkKCj4gKwlpZiAocmV0KQo+ICsJCXJldHVybiByZXQ7Cj4g
+Kwo+ICsJcmV0dXJuIGRldm1fb2ZfcGxhdGZvcm1fcG9wdWxhdGUoc3lzLT5kZXYpOwo+ICt9Owo+
+ICsKPiArc3RhdGljIGludCBtdGtfc3Vic3lzX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNl
+ICpwZGV2KQo+ICt7Cj4gKwlzdHJ1Y3Qgc3lzX2RldiAqc3lzID0gcGxhdGZvcm1fZ2V0X2RydmRh
+dGEocGRldik7Cj4gKwlpbnQgaTsKPiArCj4gKwlmb3IgKGkgPSBzeXMtPmNsa19udW0gLSAxOyBp
+ID49IDA7IGktLSkKPiArCQlpZiAoc3lzLT5jbGtzW2ldKQoKVGhpcyBjaGVjayBpcyBzdXBlcmZs
+dW91cyBhcyB0aGUgY2xrIHN1YnN5c3RlbSBkb2VzIHRoaXMgZm9yIHlvdS4KCj4gKwkJCWNsa19k
+aXNhYmxlX3VucHJlcGFyZShzeXMtPmNsa3NbaV0pOwo+ICsKPiArCXJldHVybiAwOwo+ICt9Cj4g
+Kwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBvZl9tYXRjaF9hdWRzeXNbXSA9
+IHsKPiArCXsKPiArCSAgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWF1ZHN5cy1jb3Jl
+IiwKPiArCSAgLmRhdGEgPSAodm9pZCAqKUFVRFNZU19NQVhfQ0xLX05VTSwKCllvdSBjYW4gcmVt
+b3ZlIHRoaXMgbGluZS4KCj4gKwl9LAo+ICsJe30sCj4gK307Cj4gK01PRFVMRV9ERVZJQ0VfVEFC
+TEUocGxhdGZvcm0sIG9mX21hdGNoX2F1ZHN5cyk7Cj4gKwo+ICtzdGF0aWMgc3RydWN0IHBsYXRm
+b3JtX2RyaXZlciBhdWRzeXNfZHJ2ID0gewo+ICsJLnByb2JlID0gbXRrX3N1YnN5c19wcm9iZSwK
+PiArCS5yZW1vdmUJPSBtdGtfc3Vic3lzX3JlbW92ZSwKPiArCS5kcml2ZXIgPSB7Cj4gKwkJLm5h
+bWUgPSAibWVkaWF0ZWstYXVkc3lzLWNvcmUiLAo+ICsJCS5vZl9tYXRjaF90YWJsZSA9IG9mX21h
+dGNoX3B0cihvZl9tYXRjaF9hdWRzeXMpLAo+ICsJfSwKPiArfTsKPiArCj4gK2J1aWx0aW5fcGxh
+dGZvcm1fZHJpdmVyKGF1ZHN5c19kcnYpOwo+ICsKPiArTU9EVUxFX0RFU0NSSVBUSU9OKCJNZWRp
+YXRlayBhdWRpbyBzdWJzeXN0ZW0gY29yZSBkcml2ZXIiKTsKCj4gK01PRFVMRV9MSUNFTlNFKCJH
+UEwiKTsKCjxqdXN0X2NoZWNraW5nPgogIEFyZSB5b3Ugc3VyZSB0aGlzIGlzIHdoYXQgeW91IHdh
+bnQ/CjwvanVzdF9jaGVja2luZz4KCi0tIApMZWUgSm9uZXMKTGluYXJvIFNlcnZpY2VzIFRlY2hu
+aWNhbCBMZWFkCkxpbmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29D
+cwpGb2xsb3cgTGluYXJvOiBGYWNlYm9vayB8IFR3aXR0ZXIgfCBCbG9nCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkFsc2EtZGV2ZWwgbWFpbGluZyBsaXN0
+CkFsc2EtZGV2ZWxAYWxzYS1wcm9qZWN0Lm9yZwpodHRwOi8vbWFpbG1hbi5hbHNhLXByb2plY3Qu
+b3JnL21haWxtYW4vbGlzdGluZm8vYWxzYS1kZXZlbAo=
