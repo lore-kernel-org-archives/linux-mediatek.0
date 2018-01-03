@@ -1,144 +1,248 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH v5 2/2] PCI: mediatek: Set up class type and vendor ID
- for MT7622
-Date: Wed, 3 Jan 2018 12:15:20 +0000
-Message-ID: <20180103121520.GC26554@red-moon>
-References: <1514336394-17747-1-git-send-email-honghui.zhang@mediatek.com>
- <1514336394-17747-3-git-send-email-honghui.zhang@mediatek.com>
- <20171227184542.GA79892@bhelgaas-glaptop.roam.corp.google.com>
- <1514425152.25872.39.camel@mhfsdcap03>
- <20180102105659.GB10536@red-moon>
- <1514961544.25872.49.camel@mhfsdcap03>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 05/12] mfd: mtk-audsys: add MediaTek audio subsystem
+ driver
+Date: Wed, 3 Jan 2018 20:24:27 +0800
+Message-ID: <1514982267.23243.40.camel@mtkswgap22>
+References: <cover.1514881870.git.ryder.lee@mediatek.com>
+         <fbe22b0d78c41b121f04202dcbfcd0cc23a7590d.1514881870.git.ryder.lee@mediatek.com>
+         <20180102163103.dqxsl4bylqwn6o5b@dell>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1514961544.25872.49.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Honghui Zhang <honghui.zhang@mediatek.com>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20180102163103.dqxsl4bylqwn6o5b@dell>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 03, 2018 at 02:39:04PM +0800, Honghui Zhang wrote:
-> On Tue, 2018-01-02 at 10:56 +0000, Lorenzo Pieralisi wrote:
-> > On Thu, Dec 28, 2017 at 09:39:12AM +0800, Honghui Zhang wrote:
-> > > On Wed, 2017-12-27 at 12:45 -0600, Bjorn Helgaas wrote:
-> > > > On Wed, Dec 27, 2017 at 08:59:54AM +0800, honghui.zhang@mediatek.com wrote:
-> > > > > From: Honghui Zhang <honghui.zhang@mediatek.com>
-> > > > > 
+On Tue, 2018-01-02 at 16:31 +0000, Lee Jones wrote:
+> On Tue, 02 Jan 2018, Ryder Lee wrote:
 > 
-> > > > > +		/* Set up class code for MT7622 */
-> > > > > +		val = PCI_CLASS_BRIDGE_PCI << 16;
-> > > > > +		writel(val, port->base + PCIE_CONF_CLASS);
-> > > > 
-> > > > 1) Your comments mention MT7622 specifically, but this code is run for
-> > > > both mt2712-pcie and mt7622-pcie.  If this code is safe and necessary
-> > > > for both mt2712-pcie and mt7622-pcie, please remove the mention of
-> > > > MT7622.
-> > > 
-> > > Hmm, the code snippet added here will only be executed by MT7622, since
-> > > MT2712 will not enter this  "if (pcie->base) {"  condition.
-> > > Should the mention of MT7622 must be removed in this case?
+> > Add a common driver for the top block of the MediaTek audio subsystem.
+> > This is a wrapper which manages resources for audio components.
 > > 
-> > You should add an explicit way (eg of_device_is_compatible() match for
-> > instance) to apply the quirk just on the platform that requires it.
-> > 
-> > Checking for "if (pcie->base)" is really not the way to do it.
-> > 
-> 
-> hi, Lorenzo,
-> Thanks very much for your advise.
-> Passing the compatible string or platform data into this function needed
-> to add some new field in the struct mtk_pcie_port, then I guess both set
-> it for MT2712 and MT7622 is an easy way, since re-setting those values
-> for MT2712 is safe.
+> > Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-You have a pointer to the host bridge DT node through the
-mtk_pcie_port.pcie->dev pointer, use it to carry out the compatible
-match, you have to apply quirks only if needed - I do not want to
-guess it.
+> > diff --git a/drivers/mfd/mtk-audsys.c b/drivers/mfd/mtk-audsys.c
+> > new file mode 100644
+> > index 0000000..89399e1
+> > --- /dev/null
+> > +++ b/drivers/mfd/mtk-audsys.c
+> > @@ -0,0 +1,138 @@
+> > +/*
+> > + * Mediatek audio subsystem core driver
+> > + *
+> > + *  Copyright (c) 2017 MediaTek Inc.
+> > + *
+> > + * Author: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > + *
+> > + * For licencing details see kernel-base/COPYING
+> 
+> You can't do that.
+> 
+> Grep for SPDX to see what is expected.
 
-Lorenzo
+Okay.
+> > + *
+> > + */
+> > +
+> > +#include <linux/clk.h>
+> > +#include <linux/module.h>
+> > +#include <linux/of_platform.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/regmap.h>
+> > +
+> > +#define AUDSYS_MAX_CLK_NUM 3
+> 
+> When is this not 3?
 
-> > > > 2) The first comment mentions both "vendor ID and device ID" but you
-> > > > don't write the device ID.  Since this code applies to both
-> > > > mt2712-pcie and mt7622-pcie, my guess is that you don't *want* to
-> > > > write the device ID.  If that's the case, please fix the comment.
-> > > > 
-> > > 
-> > > My bad, I did not check the comments carefully.
-> > > Thanks.
-> > > 
-> > > > 3) If you only need to set the vendor ID, you're performing a 32-bit
-> > > > write (writel()) to update a 16-bit value.  Please use writew()
-> > > > instead.
-> > > > 
-> > > 
-> > > Ok, thanks, I guess I could use the following code snippet in the next
-> > > version:
-> > > val = readl(port->base + PCIE_CONF_VENDOR_ID)
-> > > val &= ~GENMASK(15, 0);
-> > > val |= PCI_VENDOR_ID_MEDIATEK;
-> > > writel(val, port->base + PCIE_CONF_VENDOR_ID);
-> > 
-> > Have you read Bjorn's comment ? Or there is a problem with using
-> > a writew() ?
-> > 
+If other subsystems have different clocks numbers.
+
+> > +struct sys_dev {
+> > +	struct device *dev;
+> > +	struct regmap *regmap;
+> > +	int clk_num;
+> > +	struct clk *clks[];
+> > +};
+> > +
+> > +static const struct regmap_config aud_regmap_config = {
+> > +	.reg_bits = 32,
+> > +	.reg_stride = 4,
+> > +	.val_bits = 32,
+> > +	.max_register = 0x15e0,
+> > +	.cache_type = REGCACHE_NONE,
+> > +};
+> > +
+> > +static int mtk_subsys_enable(struct sys_dev *sys)
+> > +{
+> > +	struct device *dev = sys->dev;
 > 
-> This control register is a 32bit register, I'm not sure whether the apb
-> bus support write an 16bit value with 16bit but not 32bit address
-> alignment. I prefer the more safety old way of writel.
+> I would remove dev and regmap from the sys_dev struct and pass in pdev
+> directly into this function.  Then use platform_get_drvdata() as you
+> did in .remove().
 > 
-> I need to do more test about the writew if the code elegant is more
-> important.
+> > +	struct clk *clk;
+> > +	int i, ret;
+> > +
+> > +	for (i = 0; i < sys->clk_num; i++) {
+> > +		clk = of_clk_get(dev->of_node, i);
+> > +		if (IS_ERR(clk)) {
+> > +			if (PTR_ERR(clk) == -EPROBE_DEFER)
+> > +				return -EPROBE_DEFER;
+> > +			break;
+> > +		}
+> > +		sys->clks[i] = clk;
+> > +	}
+> > +
+> > +	for (i = 0; i < sys->clk_num && sys->clks[i]; i++) {
 > 
-> thanks.
+> Why do you need a separate loop for this?
 > 
-> > Lorenzo
-> > 
-> > > > 4) If you only need to set the vendor ID, please use a definition like
-> > > > "PCIE_CONF_VENDOR_ID" instead of the ambiguous "PCIE_CONF_ID".
-> > > > 
-> > > > 5) If you only need to set the vendor ID, please update the changelog
-> > > > to mention "vendor ID" specifically instead of the ambiguous "IDs".
-> > > 
-> > > > 6) Please add a space before the closing "*/" of the first comment.
-> > > > 
-> > > > 7) PCI_CLASS_BRIDGE_PCI is for a PCI-to-PCI bridge, i.e., one that has
-> > > > PCI on both the primary (upstream) side and the secondary (downstream)
-> > > > side.  That kind of bridge has a type 1 config header (see
-> > > > PCI_HEADER_TYPE) and the PCI_PRIMARY_BUS and PCI_SECONDARY_BUS
-> > > > registers tell us the bus number of the primary and secondary sides.
-> > > > 
-> > > > I don't believe this device is a PCI-to-PCI bridge.  I think it's a
-> > > > *host* bridge that has some non-PCI interface on the upstream side and
-> > > > should have a type 0 config header.  If that's the case you should use
-> > > > PCI_CLASS_BRIDGE_HOST instead.
-> > > > 
-> > > 
-> > > Thanks very much for your help with the review, I will fix the other
-> > > issue in the next version.
-> > > 
-> > > > >  	}
-> > > > >  
-> > > > >  	/* Assert all reset signals */
-> > > > > diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
-> > > > > index ab20dc5..2480b0e 100644
-> > > > > --- a/include/linux/pci_ids.h
-> > > > > +++ b/include/linux/pci_ids.h
-> > > > > @@ -2113,6 +2113,8 @@
-> > > > >  
-> > > > >  #define PCI_VENDOR_ID_MYRICOM		0x14c1
-> > > > >  
-> > > > > +#define PCI_VENDOR_ID_MEDIATEK		0x14c3
-> > > > > +
-> > > > >  #define PCI_VENDOR_ID_TITAN		0x14D2
-> > > > >  #define PCI_DEVICE_ID_TITAN_010L	0x8001
-> > > > >  #define PCI_DEVICE_ID_TITAN_100L	0x8010
-> > > > > -- 
-> > > > > 2.6.4
-> > > > > 
-> > > 
-> > > 
+> Just prepare and enable valid clocks in the for() loop above.
+
+Ohh, it's a mistake. Thanks for reminding me.
+
+> > +		ret = clk_prepare_enable(sys->clks[i]);
+> > +		if (ret)
+> > +			goto err_enable_clks;
+> > +	}
+> > +
+> > +	return 0;
+> > +
+> > +err_enable_clks:
+> > +	while (--i >= 0)
+> > +		clk_disable_unprepare(sys->clks[i]);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static int mtk_subsys_probe(struct platform_device *pdev)
+> > +{
+> > +	struct sys_dev *sys;
+> > +	struct resource *res;
+> > +	void __iomem *mmio;
+> > +	int num, ret;
+> > +
+> > +	num = (int)of_device_get_match_data(&pdev->dev);
+> > +	if (!num)
+> > +		return -EINVAL;
 > 
+> This is a very rigid method of achieving your aim.  Please find a way
+> to make this more dynamic.  You're probably better off counting the
+> elements within the property, checking to ensure there aren't more
+> than the maximum pre-allocated/allowed clocks, then using the number
+> gleaned directly from the Device Tree.
+
+Just in case other MTK subsystems can reuse this driver and set their
+own clock numbers in SoC data table, but yes, it's too rigid.
+
+> > +	sys = devm_kzalloc(&pdev->dev, sizeof(*sys) +
+> > +			   sizeof(struct clk *) * num, GFP_KERNEL);
 > 
+> You need to add bracketing here for clarity.
+
+Okay.
+
+> > +	if (!sys)
+> > +		return -ENOMEM;
+> > +
+> > +	sys->clk_num = num;
+> > +	sys->dev = &pdev->dev;
+> 
+> Why are you saving the device pointer?
+
+will remove it.
+
+> > +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > +	mmio = devm_ioremap_resource(sys->dev, res);
+> > +	if (IS_ERR(mmio))
+> > +		return PTR_ERR(mmio);
+> > +
+> > +	sys->regmap = devm_regmap_init_mmio(sys->dev, mmio,
+> > +					    &aud_regmap_config);
+> 
+> Why are you saving a devm'ed regmap pointer?
+
+We don't really need this 'sys->regmap" in driver, but need to
+initialize mmio so that its subnodes can obtain regmap through
+dev_get_regmap().
+
+> > +	if (IS_ERR(sys->regmap))
+> > +		return PTR_ERR(sys->regmap);
+> > +
+> > +	platform_set_drvdata(pdev, sys);
+> > +
+> > +	/* Enable top level clocks */
+> > +	ret = mtk_subsys_enable(sys);
+> 
+> mtk_subsys_enable_clks()
+
+Okay.
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	return devm_of_platform_populate(sys->dev);
+> > +};
+> > +
+> > +static int mtk_subsys_remove(struct platform_device *pdev)
+> > +{
+> > +	struct sys_dev *sys = platform_get_drvdata(pdev);
+> > +	int i;
+> > +
+> > +	for (i = sys->clk_num - 1; i >= 0; i--)
+> > +		if (sys->clks[i])
+> 
+> This check is superfluous as the clk subsystem does this for you.
+> 
+> > +			clk_disable_unprepare(sys->clks[i]);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static const struct of_device_id of_match_audsys[] = {
+> > +	{
+> > +	  .compatible = "mediatek,mt2701-audsys-core",
+> > +	  .data = (void *)AUDSYS_MAX_CLK_NUM,
+> 
+> You can remove this line.
+
+Okay
+> > +	},
+> > +	{},
+> > +};
+> > +MODULE_DEVICE_TABLE(platform, of_match_audsys);
+> > +
+> > +static struct platform_driver audsys_drv = {
+> > +	.probe = mtk_subsys_probe,
+> > +	.remove	= mtk_subsys_remove,
+> > +	.driver = {
+> > +		.name = "mediatek-audsys-core",
+> > +		.of_match_table = of_match_ptr(of_match_audsys),
+> > +	},
+> > +};
+> > +
+> > +builtin_platform_driver(audsys_drv);
+> > +
+> > +MODULE_DESCRIPTION("Mediatek audio subsystem core driver");
+> 
+> > +MODULE_LICENSE("GPL");
+> 
+> <just_checking>
+>   Are you sure this is what you want?
+> </just_checking>
+> 
+
+The reason to add this driver is some MTK subsystem blocks expose more
+than a single functionality but register those in different kernel
+subsystems (e.g., AUDSYS includes audio components and clock part).
+
+But I think I should just add a property "simple-mfd" in DTS instead of
+adding this driver.
+
+Thanks.
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
