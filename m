@@ -1,74 +1,58 @@
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH v3 09/22] nvmem: qfprom: Convert to use devm_nvmem_register()
-Date: Wed,  3 Jan 2018 12:01:01 -0800
-Message-ID: <20180103200114.23922-10-andrew.smirnov@gmail.com>
-References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180103200114.23922-1-andrew.smirnov@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH 1/3] dt-bindings: i2c: Add MediaTek MT2712 i2c binding
+Date: Thu, 4 Jan 2018 00:55:50 +0100
+Message-ID: <20180103235550.vh6adlqtkb4zmpsu@ninjato>
+References: <1513666263-6443-1-git-send-email-jun.gao@mediatek.com>
+ <1513666263-6443-2-git-send-email-jun.gao@mediatek.com>
+Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="x4cdoa5faojlax7k"
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1513666263-6443-2-git-send-email-jun.gao@mediatek.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Jun Gao <jun.gao@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Drop all of the code related to .remove hook and make use of
-devm_nvmem_register() instead.
 
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
-Cc: Carlo Caione <carlo@caione.org>
-Cc: Kevin Hilman <khilman@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: cphealy@gmail.com
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-amlogic@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org
-Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
----
- drivers/nvmem/qfprom.c | 12 +-----------
- 1 file changed, 1 insertion(+), 11 deletions(-)
+--x4cdoa5faojlax7k
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/nvmem/qfprom.c b/drivers/nvmem/qfprom.c
-index cb3b48b47d64..13bf43c84bd4 100644
---- a/drivers/nvmem/qfprom.c
-+++ b/drivers/nvmem/qfprom.c
-@@ -47,13 +47,6 @@ static int qfprom_reg_write(void *context,
- 	return 0;
- }
- 
--static int qfprom_remove(struct platform_device *pdev)
--{
--	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
--
--	return nvmem_unregister(nvmem);
--}
--
- static struct nvmem_config econfig = {
- 	.name = "qfprom",
- 	.stride = 1,
-@@ -82,12 +75,10 @@ static int qfprom_probe(struct platform_device *pdev)
- 	econfig.dev = dev;
- 	econfig.priv = priv;
- 
--	nvmem = nvmem_register(&econfig);
-+	nvmem = devm_nvmem_register(dev, &econfig);
- 	if (IS_ERR(nvmem))
- 		return PTR_ERR(nvmem);
- 
--	platform_set_drvdata(pdev, nvmem);
--
- 	return 0;
- }
- 
-@@ -99,7 +90,6 @@ MODULE_DEVICE_TABLE(of, qfprom_of_match);
- 
- static struct platform_driver qfprom_driver = {
- 	.probe = qfprom_probe,
--	.remove = qfprom_remove,
- 	.driver = {
- 		.name = "qcom,qfprom",
- 		.of_match_table = qfprom_of_match,
--- 
-2.14.3
+On Tue, Dec 19, 2017 at 02:51:01PM +0800, Jun Gao wrote:
+> From: Jun Gao <jun.gao@mediatek.com>
+>=20
+> Add MT2712 i2c binding to binding file. Compare to MT8173 i2c
+> controller, MT2712 has timing adjust registers which can adjust
+> the internal divider of i2c source clock, SCL duty cycle, SCL
+> compare point, start(repeated start) and stop time, SDA change
+> time.
+>=20
+> Signed-off-by: Jun Gao <jun.gao@mediatek.com>
+
+Applied to for-next, thanks!
+
+
+--x4cdoa5faojlax7k
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlpNbYIACgkQFA3kzBSg
+KbbWPhAAtjuUknLUJKKCHQ/nN+RxtslbEnrUWILgsC8/o4+X7uU6e/deREsWA1A6
+jzs4h/Yu5eWNlnMnBaeQcWjEExKx9byxB75x6KrIFzuAmyz1+m/HblVCgHPoUR0z
+ggcFK1P07EImhy+FxcTS2+9hVCbnRlk2TynAC8V1PLHFDoql7EbadUmg1HnmN2QP
+Xfzco5urRFqZqoJKcyvsY792WXAKr7AjQaqm0DeqXjVJoVTGHDDkuCpwfW06Az0D
+D4CJaBOsjqqk2g44/3H/r72tt/qQJW+h8hrAGwP5ph51YlcFS1Qa/r1w94Bv6kBk
+bD9EKtGiNJm+7QUmxk+JGH2sTFg/WfmvW95MAsa7kp3+bptYURQi5MxkT5RPuyb4
+7eTH4hDaMExyca+l4fgGFDsu0+F1FhqqVbNMA6nNQib6y8+89O9DX6t5YlGEFMKn
+SI2CXXHMdjSdwzC2TtOUUuPqV1B39aacEbFFzK0+S4NP930ozr4r9qlRKXHXrmnS
+Nr/Np5apemwD1P2hizLR7NvJk6NDU8yaLYjirlSRdvYY+w7s9PX7q0aJzCQA8zgi
+fAXPca/ZeJH+0RZaw1y9r15FImieKhSjMfZP1xQ8EmzyeGwwODAcPZu3bdsbs3dg
+37avtiahRjUO9mrg08wkPf54lMnaYhQgt0BBYOMelwL9LGGPiEw=
+=L+ij
+-----END PGP SIGNATURE-----
+
+--x4cdoa5faojlax7k--
