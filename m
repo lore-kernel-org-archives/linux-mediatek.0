@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH v3 17/22] nvmem: snvs_lpgpr: Convert commas to semicolons
-Date: Wed,  3 Jan 2018 12:01:09 -0800
-Message-ID: <20180103200114.23922-18-andrew.smirnov@gmail.com>
+Subject: [PATCH v3 20/22] nvmem: rockchip-efuse: Do not use "&pdev->dev" explicitly
+Date: Wed,  3 Jan 2018 12:01:12 -0800
+Message-ID: <20180103200114.23922-21-andrew.smirnov@gmail.com>
 References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180103200114.23922-1-andrew.smirnov@gmail.com>
@@ -10,8 +10,7 @@ To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Looks like commas were accidentally used where semicolons were
-supposed to be. Fix that.
+There's "dev" variable for this already. Use it.
 
 Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Heiko Stuebner <heiko@sntech.de>
@@ -27,31 +26,38 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/snvs_lpgpr.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/nvmem/rockchip-efuse.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/nvmem/snvs_lpgpr.c b/drivers/nvmem/snvs_lpgpr.c
-index 6a2fdd09e74a..90aaf818563b 100644
---- a/drivers/nvmem/snvs_lpgpr.c
-+++ b/drivers/nvmem/snvs_lpgpr.c
-@@ -110,12 +110,12 @@ static int snvs_lpgpr_probe(struct platform_device *pdev)
- 	cfg->priv = priv;
- 	cfg->name = dev_name(dev);
- 	cfg->dev = dev;
--	cfg->stride = 4,
--	cfg->word_size = 4,
--	cfg->size = 4,
--	cfg->owner = THIS_MODULE,
--	cfg->reg_read  = snvs_lpgpr_read,
--	cfg->reg_write = snvs_lpgpr_write,
-+	cfg->stride = 4;
-+	cfg->word_size = 4;
-+	cfg->size = 4;
-+	cfg->owner = THIS_MODULE;
-+	cfg->reg_read  = snvs_lpgpr_read;
-+	cfg->reg_write = snvs_lpgpr_write;
+diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
+index 979ba0a376a0..3120329aea94 100644
+--- a/drivers/nvmem/rockchip-efuse.c
++++ b/drivers/nvmem/rockchip-efuse.c
+@@ -202,21 +202,21 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 	}
  
- 	nvmem = devm_nvmem_register(dev, cfg);
- 	if (IS_ERR(nvmem))
+-	efuse = devm_kzalloc(&pdev->dev, sizeof(struct rockchip_efuse_chip),
++	efuse = devm_kzalloc(dev, sizeof(struct rockchip_efuse_chip),
+ 			     GFP_KERNEL);
+ 	if (!efuse)
+ 		return -ENOMEM;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	efuse->base = devm_ioremap_resource(&pdev->dev, res);
++	efuse->base = devm_ioremap_resource(dev, res);
+ 	if (IS_ERR(efuse->base))
+ 		return PTR_ERR(efuse->base);
+ 
+-	efuse->clk = devm_clk_get(&pdev->dev, "pclk_efuse");
++	efuse->clk = devm_clk_get(dev, "pclk_efuse");
+ 	if (IS_ERR(efuse->clk))
+ 		return PTR_ERR(efuse->clk);
+ 
+-	efuse->dev = &pdev->dev;
++	efuse->dev = dev;
+ 	econfig.size = resource_size(res);
+ 	econfig.reg_read = data;
+ 	econfig.priv = efuse;
 -- 
 2.14.3
