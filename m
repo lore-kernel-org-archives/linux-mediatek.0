@@ -1,49 +1,124 @@
-From: Mauro Carvalho Chehab <mchehab@s-opensource.com>
-Subject: Re: [PATCH v3 01/34] clk_ops: change round_rate() to return
- unsigned long
-Date: Wed, 3 Jan 2018 08:07:42 -0200
-Message-ID: <20180103080742.6ad76c2d@vento.lan>
-References: <1514835793-1104-1-git-send-email-pure.logic@nexus-software.ie>
-        <1514835793-1104-2-git-send-email-pure.logic@nexus-software.ie>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-msm-owner@vger.kernel.org>
-In-Reply-To: <1514835793-1104-2-git-send-email-pure.logic@nexus-software.ie>
-Sender: linux-arm-msm-owner@vger.kernel.org
-To: Bryan O'Donoghue <pure.logic@nexus-software.ie>
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mips@linux-mips.org, linux-rpi-kernel@lists.infradead.org, patches@opensource.cirrus.com, uclinux-h8-devel@lists.sourceforge.jp, linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-soc@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org, linux-media@vger.kernel.org, linux-rtc@vger.kernel.org
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: mediatek: fix error handling in mt2701_afe_pcm_dev_probe()" to the asoc tree
+Date: Wed, 03 Jan 2018 12:12:44 +0000
+Message-ID: <E1eWhuW-0001Yu-G4@debutante>
+References: <6081b70610c31f2c92ae1b83decb887a3f690f80.1514881870.git.ryder.lee@mediatek.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <6081b70610c31f2c92ae1b83decb887a3f690f80.1514881870.git.ryder.lee@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Garlic Tseng <garlic.tseng@mediatek.com>, Mark Brown <broonie@kernel.org>Mark Brown <broonie@kernel.org>, devicetree@vger.kernel.org, alsa-devel@alsa-project.orgGarlic Tseng <garlic.tseng@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Em Mon,  1 Jan 2018 19:42:40 +0000
-Bryan O'Donoghue <pure.logic@nexus-software.ie> escreveu:
+The patch
 
-> Right now it is not possible to return a value larger than LONG_MAX on 32
-> bit systems. You can pass a rate of ULONG_MAX but can't return anything
-> past LONG_MAX due to the fact both the rounded_rate and negative error
-> codes are represented in the return value of round_rate().
-> 
-> Most implementations either return zero on error or don't return error
-> codes at all. A minority of implementations do return a negative number -
-> typically -EINVAL or -ENODEV.
-> 
-> At the higher level then callers of round_rate() typically and rightly
-> check for a value of <= 0.
-> 
-> It is possible then to convert round_rate() to an unsigned long return
-> value and change error code indication for the minority from -ERRORCODE to
-> a simple 0.
-> 
-> This patch is the first step in making it possible to scale round_rate past
-> LONG_MAX, later patches will change the previously mentioned minority of
-> round_rate() implementations to return zero only on error if those
-> implementations currently return a negative error number. Implementations
-> that do not return an error code of < 0 will be left as-is.
-> 
+   ASoC: mediatek: fix error handling in mt2701_afe_pcm_dev_probe()
 
->  drivers/media/platform/omap3isp/isp.c           |  4 ++--
+has been applied to the asoc tree at
 
-Acked-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
 Thanks,
-Mauro
+Mark
+
+>From dd6bb9b16f23f9b95b77713c45bd6182336c5b2e Mon Sep 17 00:00:00 2001
+From: Ryder Lee <ryder.lee@mediatek.com>
+Date: Tue, 2 Jan 2018 19:47:18 +0800
+Subject: [PATCH] ASoC: mediatek: fix error handling in
+ mt2701_afe_pcm_dev_probe()
+
+Fix unbalanced error handling path which will get incorrect counts
+if probe failed. The .remove() should be adjusted accordingly.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Tested-by: Garlic Tseng <garlic.tseng@mediatek.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c | 31 ++++++++++++++----------------
+ 1 file changed, 14 insertions(+), 17 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+index 8fda182f849b..a7362d1cda1b 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+@@ -1590,12 +1590,16 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	platform_set_drvdata(pdev, afe);
+-	pm_runtime_enable(&pdev->dev);
+-	if (!pm_runtime_enabled(&pdev->dev))
+-		goto err_pm_disable;
+-	pm_runtime_get_sync(&pdev->dev);
+ 
+-	ret = snd_soc_register_platform(&pdev->dev, &mtk_afe_pcm_platform);
++	pm_runtime_enable(dev);
++	if (!pm_runtime_enabled(dev)) {
++		ret = mt2701_afe_runtime_resume(dev);
++		if (ret)
++			goto err_pm_disable;
++	}
++	pm_runtime_get_sync(dev);
++
++	ret = snd_soc_register_platform(dev, &mtk_afe_pcm_platform);
+ 	if (ret) {
+ 		dev_warn(dev, "err_platform\n");
+ 		goto err_platform;
+@@ -1610,35 +1614,28 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ 		goto err_dai_component;
+ 	}
+ 
+-	mt2701_afe_runtime_resume(&pdev->dev);
+-
+ 	return 0;
+ 
+ err_dai_component:
+-	snd_soc_unregister_component(&pdev->dev);
+-
++	snd_soc_unregister_platform(dev);
+ err_platform:
+-	snd_soc_unregister_platform(&pdev->dev);
+-
++	pm_runtime_put_sync(dev);
+ err_pm_disable:
+-	pm_runtime_disable(&pdev->dev);
++	pm_runtime_disable(dev);
+ 
+ 	return ret;
+ }
+ 
+ static int mt2701_afe_pcm_dev_remove(struct platform_device *pdev)
+ {
+-	struct mtk_base_afe *afe = platform_get_drvdata(pdev);
+-
++	pm_runtime_put_sync(&pdev->dev);
+ 	pm_runtime_disable(&pdev->dev);
+ 	if (!pm_runtime_status_suspended(&pdev->dev))
+ 		mt2701_afe_runtime_suspend(&pdev->dev);
+-	pm_runtime_put_sync(&pdev->dev);
+ 
+ 	snd_soc_unregister_component(&pdev->dev);
+ 	snd_soc_unregister_platform(&pdev->dev);
+-	/* disable afe clock */
+-	mt2701_afe_disable_clock(afe);
++
+ 	return 0;
+ }
+ 
+-- 
+2.15.1
