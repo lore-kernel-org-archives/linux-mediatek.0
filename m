@@ -1,246 +1,480 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 05/12] mfd: mtk-audsys: add MediaTek audio subsystem
- driver
-Date: Wed, 3 Jan 2018 20:24:27 +0800
-Message-ID: <1514982267.23243.40.camel@mtkswgap22>
-References: <cover.1514881870.git.ryder.lee@mediatek.com>
-         <fbe22b0d78c41b121f04202dcbfcd0cc23a7590d.1514881870.git.ryder.lee@mediatek.com>
-         <20180102163103.dqxsl4bylqwn6o5b@dell>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Applied "ASoC: mediatek: cleanup audio driver for MT2701" to the asoc tree
+Date: Wed, 03 Jan 2018 15:42:57 +0000
+Message-ID: <E1eWlBx-0000QX-KT@debutante>
+References: <eadb3c22b52b8631319b1aae53d9282bc3bdf328.1514881870.git.ryder.lee@mediatek.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180102163103.dqxsl4bylqwn6o5b@dell>
+In-Reply-To: <eadb3c22b52b8631319b1aae53d9282bc3bdf328.1514881870.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.orgalsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-01-02 at 16:31 +0000, Lee Jones wrote:
-> On Tue, 02 Jan 2018, Ryder Lee wrote:
-> 
-> > Add a common driver for the top block of the MediaTek audio subsystem.
-> > This is a wrapper which manages resources for audio components.
-> > 
-> > Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+The patch
 
-> > diff --git a/drivers/mfd/mtk-audsys.c b/drivers/mfd/mtk-audsys.c
-> > new file mode 100644
-> > index 0000000..89399e1
-> > --- /dev/null
-> > +++ b/drivers/mfd/mtk-audsys.c
-> > @@ -0,0 +1,138 @@
-> > +/*
-> > + * Mediatek audio subsystem core driver
-> > + *
-> > + *  Copyright (c) 2017 MediaTek Inc.
-> > + *
-> > + * Author: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > + *
-> > + * For licencing details see kernel-base/COPYING
-> 
-> You can't do that.
-> 
-> Grep for SPDX to see what is expected.
+   ASoC: mediatek: cleanup audio driver for MT2701
 
-Okay.
-> > + *
-> > + */
-> > +
-> > +#include <linux/clk.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of_platform.h>
-> > +#include <linux/platform_device.h>
-> > +#include <linux/regmap.h>
-> > +
-> > +#define AUDSYS_MAX_CLK_NUM 3
-> 
-> When is this not 3?
+has been applied to the asoc tree at
 
-If other subsystems have different clocks numbers.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-> > +struct sys_dev {
-> > +	struct device *dev;
-> > +	struct regmap *regmap;
-> > +	int clk_num;
-> > +	struct clk *clks[];
-> > +};
-> > +
-> > +static const struct regmap_config aud_regmap_config = {
-> > +	.reg_bits = 32,
-> > +	.reg_stride = 4,
-> > +	.val_bits = 32,
-> > +	.max_register = 0x15e0,
-> > +	.cache_type = REGCACHE_NONE,
-> > +};
-> > +
-> > +static int mtk_subsys_enable(struct sys_dev *sys)
-> > +{
-> > +	struct device *dev = sys->dev;
-> 
-> I would remove dev and regmap from the sys_dev struct and pass in pdev
-> directly into this function.  Then use platform_get_drvdata() as you
-> did in .remove().
-> 
-> > +	struct clk *clk;
-> > +	int i, ret;
-> > +
-> > +	for (i = 0; i < sys->clk_num; i++) {
-> > +		clk = of_clk_get(dev->of_node, i);
-> > +		if (IS_ERR(clk)) {
-> > +			if (PTR_ERR(clk) == -EPROBE_DEFER)
-> > +				return -EPROBE_DEFER;
-> > +			break;
-> > +		}
-> > +		sys->clks[i] = clk;
-> > +	}
-> > +
-> > +	for (i = 0; i < sys->clk_num && sys->clks[i]; i++) {
-> 
-> Why do you need a separate loop for this?
-> 
-> Just prepare and enable valid clocks in the for() loop above.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
-Ohh, it's a mistake. Thanks for reminding me.
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-> > +		ret = clk_prepare_enable(sys->clks[i]);
-> > +		if (ret)
-> > +			goto err_enable_clks;
-> > +	}
-> > +
-> > +	return 0;
-> > +
-> > +err_enable_clks:
-> > +	while (--i >= 0)
-> > +		clk_disable_unprepare(sys->clks[i]);
-> > +
-> > +	return ret;
-> > +}
-> > +
-> > +static int mtk_subsys_probe(struct platform_device *pdev)
-> > +{
-> > +	struct sys_dev *sys;
-> > +	struct resource *res;
-> > +	void __iomem *mmio;
-> > +	int num, ret;
-> > +
-> > +	num = (int)of_device_get_match_data(&pdev->dev);
-> > +	if (!num)
-> > +		return -EINVAL;
-> 
-> This is a very rigid method of achieving your aim.  Please find a way
-> to make this more dynamic.  You're probably better off counting the
-> elements within the property, checking to ensure there aren't more
-> than the maximum pre-allocated/allowed clocks, then using the number
-> gleaned directly from the Device Tree.
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-Just in case other MTK subsystems can reuse this driver and set their
-own clock numbers in SoC data table, but yes, it's too rigid.
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-> > +	sys = devm_kzalloc(&pdev->dev, sizeof(*sys) +
-> > +			   sizeof(struct clk *) * num, GFP_KERNEL);
-> 
-> You need to add bracketing here for clarity.
+Thanks,
+Mark
 
-Okay.
+>From 600b2fd4f0f7ae5ebcb604c39c9a97e573f9d23e Mon Sep 17 00:00:00 2001
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Date: Tue, 2 Jan 2018 19:47:20 +0800
+Subject: [PATCH] ASoC: mediatek: cleanup audio driver for MT2701
 
-> > +	if (!sys)
-> > +		return -ENOMEM;
-> > +
-> > +	sys->clk_num = num;
-> > +	sys->dev = &pdev->dev;
-> 
-> Why are you saving the device pointer?
+Cleanup unused code such as 'i2s_num' guard, headers, indentation
+and some defines.
 
-will remove it.
+Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+ sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c | 14 +---
+ sound/soc/mediatek/mt2701/mt2701-afe-common.h     | 20 +----
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c        | 94 ++++-------------------
+ sound/soc/mediatek/mt2701/mt2701-reg.h            | 41 +---------
+ 4 files changed, 24 insertions(+), 145 deletions(-)
 
-> > +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> > +	mmio = devm_ioremap_resource(sys->dev, res);
-> > +	if (IS_ERR(mmio))
-> > +		return PTR_ERR(mmio);
-> > +
-> > +	sys->regmap = devm_regmap_init_mmio(sys->dev, mmio,
-> > +					    &aud_regmap_config);
-> 
-> Why are you saving a devm'ed regmap pointer?
-
-We don't really need this 'sys->regmap" in driver, but need to
-initialize mmio so that its subnodes can obtain regmap through
-dev_get_regmap().
-
-> > +	if (IS_ERR(sys->regmap))
-> > +		return PTR_ERR(sys->regmap);
-> > +
-> > +	platform_set_drvdata(pdev, sys);
-> > +
-> > +	/* Enable top level clocks */
-> > +	ret = mtk_subsys_enable(sys);
-> 
-> mtk_subsys_enable_clks()
-
-Okay.
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	return devm_of_platform_populate(sys->dev);
-> > +};
-> > +
-> > +static int mtk_subsys_remove(struct platform_device *pdev)
-> > +{
-> > +	struct sys_dev *sys = platform_get_drvdata(pdev);
-> > +	int i;
-> > +
-> > +	for (i = sys->clk_num - 1; i >= 0; i--)
-> > +		if (sys->clks[i])
-> 
-> This check is superfluous as the clk subsystem does this for you.
-> 
-> > +			clk_disable_unprepare(sys->clks[i]);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static const struct of_device_id of_match_audsys[] = {
-> > +	{
-> > +	  .compatible = "mediatek,mt2701-audsys-core",
-> > +	  .data = (void *)AUDSYS_MAX_CLK_NUM,
-> 
-> You can remove this line.
-
-Okay
-> > +	},
-> > +	{},
-> > +};
-> > +MODULE_DEVICE_TABLE(platform, of_match_audsys);
-> > +
-> > +static struct platform_driver audsys_drv = {
-> > +	.probe = mtk_subsys_probe,
-> > +	.remove	= mtk_subsys_remove,
-> > +	.driver = {
-> > +		.name = "mediatek-audsys-core",
-> > +		.of_match_table = of_match_ptr(of_match_audsys),
-> > +	},
-> > +};
-> > +
-> > +builtin_platform_driver(audsys_drv);
-> > +
-> > +MODULE_DESCRIPTION("Mediatek audio subsystem core driver");
-> 
-> > +MODULE_LICENSE("GPL");
-> 
-> <just_checking>
->   Are you sure this is what you want?
-> </just_checking>
-> 
-
-The reason to add this driver is some MTK subsystem blocks expose more
-than a single functionality but register those in different kernel
-subsystems (e.g., AUDSYS includes audio components and clock part).
-
-But I think I should just add a property "simple-mfd" in DTS instead of
-adding this driver.
-
-Thanks.
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
+index 75ccdca5811d..56a057c78c9a 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
+@@ -14,10 +14,6 @@
+  * GNU General Public License for more details.
+  */
+ 
+-#include <sound/soc.h>
+-#include <linux/regmap.h>
+-#include <linux/pm_runtime.h>
+-
+ #include "mt2701-afe-common.h"
+ #include "mt2701-afe-clock-ctrl.h"
+ 
+@@ -223,8 +219,8 @@ int mt2701_afe_enable_clock(struct mtk_base_afe *afe)
+ 	}
+ 
+ 	regmap_update_bits(afe->regmap, ASYS_TOP_CON,
+-			   AUDIO_TOP_CON0_A1SYS_A2SYS_ON,
+-			   AUDIO_TOP_CON0_A1SYS_A2SYS_ON);
++			   ASYS_TOP_CON_ASYS_TIMING_ON,
++			   ASYS_TOP_CON_ASYS_TIMING_ON);
+ 	regmap_update_bits(afe->regmap, AFE_DAC_CON0,
+ 			   AFE_DAC_CON0_AFE_ON,
+ 			   AFE_DAC_CON0_AFE_ON);
+@@ -239,7 +235,7 @@ int mt2701_afe_enable_clock(struct mtk_base_afe *afe)
+ int mt2701_afe_disable_clock(struct mtk_base_afe *afe)
+ {
+ 	regmap_update_bits(afe->regmap, ASYS_TOP_CON,
+-			   AUDIO_TOP_CON0_A1SYS_A2SYS_ON, 0);
++			   ASYS_TOP_CON_ASYS_TIMING_ON, 0);
+ 	regmap_update_bits(afe->regmap, AFE_DAC_CON0,
+ 			   AFE_DAC_CON0_AFE_ON, 0);
+ 
+@@ -272,7 +268,3 @@ void mt2701_mclk_configuration(struct mtk_base_afe *afe, int id, int domain,
+ 	if (ret)
+ 		dev_err(afe->dev, "failed to set mclk divider %d\n", ret);
+ }
+-
+-MODULE_DESCRIPTION("MT2701 afe clock control");
+-MODULE_AUTHOR("Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
+-MODULE_LICENSE("GPL v2");
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-common.h b/sound/soc/mediatek/mt2701/mt2701-afe-common.h
+index ce5bd4dc864d..9a2b301a4c21 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-common.h
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-common.h
+@@ -16,6 +16,7 @@
+ 
+ #ifndef _MT_2701_AFE_COMMON_H_
+ #define _MT_2701_AFE_COMMON_H_
++
+ #include <sound/soc.h>
+ #include <linux/clk.h>
+ #include <linux/regmap.h>
+@@ -25,16 +26,7 @@
+ #define MT2701_STREAM_DIR_NUM (SNDRV_PCM_STREAM_LAST + 1)
+ #define MT2701_PLL_DOMAIN_0_RATE	98304000
+ #define MT2701_PLL_DOMAIN_1_RATE	90316800
+-#define MT2701_AUD_AUD_MUX1_DIV_RATE (MT2701_PLL_DOMAIN_0_RATE / 2)
+-#define MT2701_AUD_AUD_MUX2_DIV_RATE (MT2701_PLL_DOMAIN_1_RATE / 2)
+-
+-enum {
+-	MT2701_I2S_1,
+-	MT2701_I2S_2,
+-	MT2701_I2S_3,
+-	MT2701_I2S_4,
+-	MT2701_I2S_NUM,
+-};
++#define MT2701_I2S_NUM	4
+ 
+ enum {
+ 	MT2701_MEMIF_DL1,
+@@ -62,8 +54,7 @@ enum {
+ };
+ 
+ enum {
+-	MT2701_IRQ_ASYS_START,
+-	MT2701_IRQ_ASYS_IRQ1 = MT2701_IRQ_ASYS_START,
++	MT2701_IRQ_ASYS_IRQ1,
+ 	MT2701_IRQ_ASYS_IRQ2,
+ 	MT2701_IRQ_ASYS_IRQ3,
+ 	MT2701_IRQ_ASYS_END,
+@@ -100,9 +91,6 @@ static const unsigned int mt2701_afe_backup_list[] = {
+ 	AFE_MEMIF_PBUF_SIZE,
+ };
+ 
+-struct snd_pcm_substream;
+-struct mtk_base_irq_data;
+-
+ struct mt2701_i2s_data {
+ 	int i2s_ctrl_reg;
+ 	int i2s_asrc_fs_shift;
+@@ -120,7 +108,7 @@ struct mt2701_i2s_path {
+ 	int mclk_rate;
+ 	int on[I2S_DIR_NUM];
+ 	int occupied[I2S_DIR_NUM];
+-	const struct mt2701_i2s_data *i2s_data[2];
++	const struct mt2701_i2s_data *i2s_data[I2S_DIR_NUM];
+ 	struct clk *hop_ck[I2S_DIR_NUM];
+ 	struct clk *sel_ck;
+ 	struct clk *div_ck;
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+index 33f809228f25..0edadca12a5e 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+@@ -20,16 +20,12 @@
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+ #include <linux/pm_runtime.h>
+-#include <sound/soc.h>
+ 
+ #include "mt2701-afe-common.h"
+-
+ #include "mt2701-afe-clock-ctrl.h"
+ #include "../common/mtk-afe-platform-driver.h"
+ #include "../common/mtk-afe-fe-dai.h"
+ 
+-#define AFE_IRQ_STATUS_BITS	0xff
+-
+ static const struct snd_pcm_hardware mt2701_afe_hardware = {
+ 	.info = SNDRV_PCM_INFO_MMAP | SNDRV_PCM_INFO_INTERLEAVED
+ 		| SNDRV_PCM_INFO_RESUME | SNDRV_PCM_INFO_MMAP_VALID,
+@@ -107,21 +103,16 @@ static int mt2701_afe_i2s_startup(struct snd_pcm_substream *substream,
+ 
+ static int mt2701_afe_i2s_path_shutdown(struct snd_pcm_substream *substream,
+ 					struct snd_soc_dai *dai,
++					int i2s_num,
+ 					int dir_invert)
+ {
+ 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+ 	struct mtk_base_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
+ 	struct mt2701_afe_private *afe_priv = afe->platform_priv;
+-	int i2s_num = mt2701_dai_num_to_i2s(afe, dai->id);
+-	struct mt2701_i2s_path *i2s_path;
++	struct mt2701_i2s_path *i2s_path = &afe_priv->i2s_path[i2s_num];
+ 	const struct mt2701_i2s_data *i2s_data;
+ 	int stream_dir = substream->stream;
+ 
+-	if (i2s_num < 0)
+-		return i2s_num;
+-
+-	i2s_path = &afe_priv->i2s_path[i2s_num];
+-
+ 	if (dir_invert)	{
+ 		if (stream_dir == SNDRV_PCM_STREAM_PLAYBACK)
+ 			stream_dir = SNDRV_PCM_STREAM_CAPTURE;
+@@ -167,11 +158,11 @@ static void mt2701_afe_i2s_shutdown(struct snd_pcm_substream *substream,
+ 	else
+ 		goto I2S_UNSTART;
+ 
+-	mt2701_afe_i2s_path_shutdown(substream, dai, 0);
++	mt2701_afe_i2s_path_shutdown(substream, dai, i2s_num, 0);
+ 
+ 	/* need to disable i2s-out path when disable i2s-in */
+ 	if (substream->stream == SNDRV_PCM_STREAM_CAPTURE)
+-		mt2701_afe_i2s_path_shutdown(substream, dai, 1);
++		mt2701_afe_i2s_path_shutdown(substream, dai, i2s_num, 1);
+ 
+ I2S_UNSTART:
+ 	/* disable mclk */
+@@ -180,24 +171,19 @@ static void mt2701_afe_i2s_shutdown(struct snd_pcm_substream *substream,
+ 
+ static int mt2701_i2s_path_prepare_enable(struct snd_pcm_substream *substream,
+ 					  struct snd_soc_dai *dai,
++					  int i2s_num,
+ 					  int dir_invert)
+ {
+ 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+ 	struct mtk_base_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
+ 	struct mt2701_afe_private *afe_priv = afe->platform_priv;
+-	int i2s_num = mt2701_dai_num_to_i2s(afe, dai->id);
+-	struct mt2701_i2s_path *i2s_path;
++	struct mt2701_i2s_path *i2s_path = &afe_priv->i2s_path[i2s_num];
+ 	const struct mt2701_i2s_data *i2s_data;
+ 	struct snd_pcm_runtime * const runtime = substream->runtime;
+ 	int reg, fs, w_len = 1; /* now we support bck 64bits only */
+ 	int stream_dir = substream->stream;
+ 	unsigned int mask = 0, val = 0;
+ 
+-	if (i2s_num < 0)
+-		return i2s_num;
+-
+-	i2s_path = &afe_priv->i2s_path[i2s_num];
+-
+ 	if (dir_invert) {
+ 		if (stream_dir == SNDRV_PCM_STREAM_PLAYBACK)
+ 			stream_dir = SNDRV_PCM_STREAM_CAPTURE;
+@@ -288,13 +274,13 @@ static int mt2701_afe_i2s_prepare(struct snd_pcm_substream *substream,
+ 	mt2701_mclk_configuration(afe, i2s_num, clk_domain, mclk_rate);
+ 
+ 	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
+-		mt2701_i2s_path_prepare_enable(substream, dai, 0);
++		mt2701_i2s_path_prepare_enable(substream, dai, i2s_num, 0);
+ 	} else {
+ 		/* need to enable i2s-out path when enable i2s-in */
+ 		/* prepare for another direction "out" */
+-		mt2701_i2s_path_prepare_enable(substream, dai, 1);
++		mt2701_i2s_path_prepare_enable(substream, dai, i2s_num, 1);
+ 		/* prepare for "in" */
+-		mt2701_i2s_path_prepare_enable(substream, dai, 0);
++		mt2701_i2s_path_prepare_enable(substream, dai, i2s_num, 0);
+ 	}
+ 
+ 	return 0;
+@@ -562,7 +548,6 @@ static const struct snd_soc_dai_ops mt2701_single_memif_dai_ops = {
+ 	.hw_free	= mtk_afe_fe_hw_free,
+ 	.prepare	= mtk_afe_fe_prepare,
+ 	.trigger	= mtk_afe_fe_trigger,
+-
+ };
+ 
+ static const struct snd_soc_dai_ops mt2701_dlm_memif_dai_ops = {
+@@ -903,31 +888,6 @@ static const struct snd_kcontrol_new mt2701_afe_multi_ch_out_i2s4[] = {
+ 				    PWR2_TOP_CON, 19, 1, 0),
+ };
+ 
+-static const struct snd_kcontrol_new mt2701_afe_multi_ch_out_asrc0[] = {
+-	SOC_DAPM_SINGLE_AUTODISABLE("Asrc0 out Switch", AUDIO_TOP_CON4, 14, 1,
+-				    1),
+-};
+-
+-static const struct snd_kcontrol_new mt2701_afe_multi_ch_out_asrc1[] = {
+-	SOC_DAPM_SINGLE_AUTODISABLE("Asrc1 out Switch", AUDIO_TOP_CON4, 15, 1,
+-				    1),
+-};
+-
+-static const struct snd_kcontrol_new mt2701_afe_multi_ch_out_asrc2[] = {
+-	SOC_DAPM_SINGLE_AUTODISABLE("Asrc2 out Switch", PWR2_TOP_CON, 6, 1,
+-				    1),
+-};
+-
+-static const struct snd_kcontrol_new mt2701_afe_multi_ch_out_asrc3[] = {
+-	SOC_DAPM_SINGLE_AUTODISABLE("Asrc3 out Switch", PWR2_TOP_CON, 7, 1,
+-				    1),
+-};
+-
+-static const struct snd_kcontrol_new mt2701_afe_multi_ch_out_asrc4[] = {
+-	SOC_DAPM_SINGLE_AUTODISABLE("Asrc4 out Switch", PWR2_TOP_CON, 8, 1,
+-				    1),
+-};
+-
+ static const struct snd_soc_dapm_widget mt2701_afe_pcm_widgets[] = {
+ 	/* inter-connections */
+ 	SND_SOC_DAPM_MIXER("I00", SND_SOC_NOPM, 0, 0, NULL, 0),
+@@ -987,19 +947,6 @@ static const struct snd_soc_dapm_widget mt2701_afe_pcm_widgets[] = {
+ 	SND_SOC_DAPM_MIXER("I18I19", SND_SOC_NOPM, 0, 0,
+ 			   mt2701_afe_multi_ch_out_i2s3,
+ 			   ARRAY_SIZE(mt2701_afe_multi_ch_out_i2s3)),
+-
+-	SND_SOC_DAPM_MIXER("ASRC_O0", SND_SOC_NOPM, 0, 0,
+-			   mt2701_afe_multi_ch_out_asrc0,
+-			   ARRAY_SIZE(mt2701_afe_multi_ch_out_asrc0)),
+-	SND_SOC_DAPM_MIXER("ASRC_O1", SND_SOC_NOPM, 0, 0,
+-			   mt2701_afe_multi_ch_out_asrc1,
+-			   ARRAY_SIZE(mt2701_afe_multi_ch_out_asrc1)),
+-	SND_SOC_DAPM_MIXER("ASRC_O2", SND_SOC_NOPM, 0, 0,
+-			   mt2701_afe_multi_ch_out_asrc2,
+-			   ARRAY_SIZE(mt2701_afe_multi_ch_out_asrc2)),
+-	SND_SOC_DAPM_MIXER("ASRC_O3", SND_SOC_NOPM, 0, 0,
+-			   mt2701_afe_multi_ch_out_asrc3,
+-			   ARRAY_SIZE(mt2701_afe_multi_ch_out_asrc3)),
+ };
+ 
+ static const struct snd_soc_dapm_route mt2701_afe_pcm_routes[] = {
+@@ -1009,7 +956,6 @@ static const struct snd_soc_dapm_route mt2701_afe_pcm_routes[] = {
+ 
+ 	{"I2S0 Playback", NULL, "O15"},
+ 	{"I2S0 Playback", NULL, "O16"},
+-
+ 	{"I2S1 Playback", NULL, "O17"},
+ 	{"I2S1 Playback", NULL, "O18"},
+ 	{"I2S2 Playback", NULL, "O19"},
+@@ -1026,7 +972,6 @@ static const struct snd_soc_dapm_route mt2701_afe_pcm_routes[] = {
+ 
+ 	{"I00", NULL, "I2S0 Capture"},
+ 	{"I01", NULL, "I2S0 Capture"},
+-
+ 	{"I02", NULL, "I2S1 Capture"},
+ 	{"I03", NULL, "I2S1 Capture"},
+ 	/* I02,03 link to UL2, also need to open I2S0 */
+@@ -1034,15 +979,10 @@ static const struct snd_soc_dapm_route mt2701_afe_pcm_routes[] = {
+ 
+ 	{"I26", NULL, "BT Capture"},
+ 
+-	{"ASRC_O0", "Asrc0 out Switch", "DLM"},
+-	{"ASRC_O1", "Asrc1 out Switch", "DLM"},
+-	{"ASRC_O2", "Asrc2 out Switch", "DLM"},
+-	{"ASRC_O3", "Asrc3 out Switch", "DLM"},
+-
+-	{"I12I13", "Multich I2S0 Out Switch", "ASRC_O0"},
+-	{"I14I15", "Multich I2S1 Out Switch", "ASRC_O1"},
+-	{"I16I17", "Multich I2S2 Out Switch", "ASRC_O2"},
+-	{"I18I19", "Multich I2S3 Out Switch", "ASRC_O3"},
++	{"I12I13", "Multich I2S0 Out Switch", "DLM"},
++	{"I14I15", "Multich I2S1 Out Switch", "DLM"},
++	{"I16I17", "Multich I2S2 Out Switch", "DLM"},
++	{"I18I19", "Multich I2S3 Out Switch", "DLM"},
+ 
+ 	{ "I12", NULL, "I12I13" },
+ 	{ "I13", NULL, "I12I13" },
+@@ -1067,7 +1007,6 @@ static const struct snd_soc_dapm_route mt2701_afe_pcm_routes[] = {
+ 	{ "O21", "I18 Switch", "I18" },
+ 	{ "O22", "I19 Switch", "I19" },
+ 	{ "O31", "I35 Switch", "I35" },
+-
+ };
+ 
+ static const struct snd_soc_component_driver mt2701_afe_pcm_dai_component = {
+@@ -1484,12 +1423,13 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	afe = devm_kzalloc(&pdev->dev, sizeof(*afe), GFP_KERNEL);
+ 	if (!afe)
+ 		return -ENOMEM;
++
+ 	afe->platform_priv = devm_kzalloc(&pdev->dev, sizeof(*afe_priv),
+ 					  GFP_KERNEL);
+ 	if (!afe->platform_priv)
+ 		return -ENOMEM;
+-	afe_priv = afe->platform_priv;
+ 
++	afe_priv = afe->platform_priv;
+ 	afe->dev = &pdev->dev;
+ 	dev = afe->dev;
+ 
+@@ -1524,7 +1464,6 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	afe->memif_size = MT2701_MEMIF_NUM;
+ 	afe->memif = devm_kcalloc(dev, afe->memif_size, sizeof(*afe->memif),
+ 				  GFP_KERNEL);
+-
+ 	if (!afe->memif)
+ 		return -ENOMEM;
+ 
+@@ -1537,7 +1476,6 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	afe->irqs_size = MT2701_IRQ_ASYS_END;
+ 	afe->irqs = devm_kcalloc(dev, afe->irqs_size, sizeof(*afe->irqs),
+ 				 GFP_KERNEL);
+-
+ 	if (!afe->irqs)
+ 		return -ENOMEM;
+ 
+@@ -1555,7 +1493,6 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	afe->mtk_afe_hardware = &mt2701_afe_hardware;
+ 	afe->memif_fs = mt2701_memif_fs;
+ 	afe->irq_fs = mt2701_irq_fs;
+-
+ 	afe->reg_back_up_list = mt2701_afe_backup_list;
+ 	afe->reg_back_up_list_num = ARRAY_SIZE(mt2701_afe_backup_list);
+ 	afe->runtime_resume = mt2701_afe_runtime_resume;
+@@ -1646,4 +1583,3 @@ module_platform_driver(mt2701_afe_pcm_driver);
+ MODULE_DESCRIPTION("Mediatek ALSA SoC AFE platform driver for 2701");
+ MODULE_AUTHOR("Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
+ MODULE_LICENSE("GPL v2");
+-
+diff --git a/sound/soc/mediatek/mt2701/mt2701-reg.h b/sound/soc/mediatek/mt2701/mt2701-reg.h
+index bb62b1c55957..f17c76f37b5f 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-reg.h
++++ b/sound/soc/mediatek/mt2701/mt2701-reg.h
+@@ -17,17 +17,6 @@
+ #ifndef _MT2701_REG_H_
+ #define _MT2701_REG_H_
+ 
+-#include <linux/delay.h>
+-#include <linux/module.h>
+-#include <linux/of.h>
+-#include <linux/of_address.h>
+-#include <linux/pm_runtime.h>
+-#include <sound/soc.h>
+-#include "mt2701-afe-common.h"
+-
+-/*****************************************************************************
+- *                  R E G I S T E R       D E F I N I T I O N
+- *****************************************************************************/
+ #define AUDIO_TOP_CON0 0x0000
+ #define AUDIO_TOP_CON4 0x0010
+ #define AUDIO_TOP_CON5 0x0014
+@@ -109,18 +98,6 @@
+ #define AFE_DAI_BASE 0x1370
+ #define AFE_DAI_CUR 0x137c
+ 
+-/* AUDIO_TOP_CON0 (0x0000) */
+-#define AUDIO_TOP_CON0_A1SYS_A2SYS_ON	(0x3 << 0)
+-#define AUDIO_TOP_CON0_PDN_AFE		(0x1 << 2)
+-#define AUDIO_TOP_CON0_PDN_APLL_CK	(0x1 << 23)
+-
+-/* AUDIO_TOP_CON4 (0x0010) */
+-#define AUDIO_TOP_CON4_I2SO1_PWN	(0x1 << 6)
+-#define AUDIO_TOP_CON4_PDN_A1SYS	(0x1 << 21)
+-#define AUDIO_TOP_CON4_PDN_A2SYS	(0x1 << 22)
+-#define AUDIO_TOP_CON4_PDN_AFE_CONN	(0x1 << 23)
+-#define AUDIO_TOP_CON4_PDN_MRGIF	(0x1 << 25)
+-
+ /* AFE_DAIBT_CON0 (0x001c) */
+ #define AFE_DAIBT_CON0_DAIBT_EN		(0x1 << 0)
+ #define AFE_DAIBT_CON0_BT_FUNC_EN	(0x1 << 1)
+@@ -137,22 +114,8 @@
+ #define AFE_MRGIF_CON_I2S_MODE_MASK	(0xf << 20)
+ #define AFE_MRGIF_CON_I2S_MODE_32K	(0x4 << 20)
+ 
+-/* ASYS_I2SO1_CON (0x061c) */
+-#define ASYS_I2SO1_CON_FS		(0x1f << 8)
+-#define ASYS_I2SO1_CON_FS_SET(x)	((x) << 8)
+-#define ASYS_I2SO1_CON_MULTI_CH		(0x1 << 16)
+-#define ASYS_I2SO1_CON_SIDEGEN		(0x1 << 30)
+-#define ASYS_I2SO1_CON_I2S_EN		(0x1 << 0)
+-/* 0:EIAJ 1:I2S */
+-#define ASYS_I2SO1_CON_I2S_MODE		(0x1 << 3)
+-#define ASYS_I2SO1_CON_WIDE_MODE	(0x1 << 1)
+-#define ASYS_I2SO1_CON_WIDE_MODE_SET(x)	((x) << 1)
+-
+-/* PWR2_TOP_CON (0x0634) */
+-#define PWR2_TOP_CON_INIT_VAL		(0xffe1ffff)
+-
+-/* ASYS_IRQ_CLR (0x07c0) */
+-#define ASYS_IRQ_CLR_ALL		(0xffffffff)
++/* ASYS_TOP_CON (0x0600) */
++#define ASYS_TOP_CON_ASYS_TIMING_ON		(0x3 << 0)
+ 
+ /* PWR2_ASM_CON1 (0x1070) */
+ #define PWR2_ASM_CON1_INIT_VAL		(0x492492)
+-- 
+2.15.1
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
