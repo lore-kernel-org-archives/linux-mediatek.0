@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH v3 11/22] nvmem: meson-mx-efuse: Convert to use devm_nvmem_register()
-Date: Wed,  3 Jan 2018 12:01:03 -0800
-Message-ID: <20180103200114.23922-12-andrew.smirnov@gmail.com>
+Subject: [PATCH v3 08/22] nvmem: rockchip-efuse: Convert to use devm_nvmem_register()
+Date: Wed,  3 Jan 2018 12:01:00 -0800
+Message-ID: <20180103200114.23922-9-andrew.smirnov@gmail.com>
 References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180103200114.23922-1-andrew.smirnov@gmail.com>
@@ -27,39 +27,39 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/meson-mx-efuse.c | 12 +-----------
+ drivers/nvmem/rockchip-efuse.c | 12 +-----------
  1 file changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/drivers/nvmem/meson-mx-efuse.c b/drivers/nvmem/meson-mx-efuse.c
-index a346b4923550..f8e0b92e40ba 100644
---- a/drivers/nvmem/meson-mx-efuse.c
-+++ b/drivers/nvmem/meson-mx-efuse.c
-@@ -233,25 +233,15 @@ static int meson_mx_efuse_probe(struct platform_device *pdev)
- 		return PTR_ERR(efuse->core_clk);
- 	}
+diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
+index 123de77ca5d6..d6dc1330f895 100644
+--- a/drivers/nvmem/rockchip-efuse.c
++++ b/drivers/nvmem/rockchip-efuse.c
+@@ -221,25 +221,15 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
+ 	econfig.reg_read = match->data;
+ 	econfig.priv = efuse;
+ 	econfig.dev = efuse->dev;
+-	nvmem = nvmem_register(&econfig);
++	nvmem = devm_nvmem_register(dev, &econfig);
+ 	if (IS_ERR(nvmem))
+ 		return PTR_ERR(nvmem);
  
--	efuse->nvmem = nvmem_register(&efuse->config);
-+	efuse->nvmem = devm_nvmem_register(&pdev->dev, &efuse->config);
- 	if (IS_ERR(efuse->nvmem))
- 		return PTR_ERR(efuse->nvmem);
- 
--	platform_set_drvdata(pdev, efuse);
+-	platform_set_drvdata(pdev, nvmem);
 -
  	return 0;
  }
  
--static int meson_mx_efuse_remove(struct platform_device *pdev)
+-static int rockchip_efuse_remove(struct platform_device *pdev)
 -{
--	struct meson_mx_efuse *efuse = platform_get_drvdata(pdev);
+-	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
 -
--	return nvmem_unregister(efuse->nvmem);
+-	return nvmem_unregister(nvmem);
 -}
 -
- static struct platform_driver meson_mx_efuse_driver = {
- 	.probe = meson_mx_efuse_probe,
--	.remove = meson_mx_efuse_remove,
+ static struct platform_driver rockchip_efuse_driver = {
+ 	.probe = rockchip_efuse_probe,
+-	.remove = rockchip_efuse_remove,
  	.driver = {
- 		.name = "meson-mx-efuse",
- 		.of_match_table = meson_mx_efuse_match,
+ 		.name = "rockchip-efuse",
+ 		.of_match_table = rockchip_efuse_match,
 -- 
 2.14.3
