@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH v3 20/22] nvmem: rockchip-efuse: Do not use "&pdev->dev" explicitly
-Date: Wed,  3 Jan 2018 12:01:12 -0800
-Message-ID: <20180103200114.23922-21-andrew.smirnov@gmail.com>
+Subject: [PATCH v3 22/22] nvmem: bcm-ocotp: Do not use "&pdev->dev" explicitly
+Date: Wed,  3 Jan 2018 12:01:14 -0800
+Message-ID: <20180103200114.23922-23-andrew.smirnov@gmail.com>
 References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180103200114.23922-1-andrew.smirnov@gmail.com>
@@ -26,38 +26,22 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/rockchip-efuse.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/nvmem/bcm-ocotp.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-index 979ba0a376a0..3120329aea94 100644
---- a/drivers/nvmem/rockchip-efuse.c
-+++ b/drivers/nvmem/rockchip-efuse.c
-@@ -202,21 +202,21 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
+diff --git a/drivers/nvmem/bcm-ocotp.c b/drivers/nvmem/bcm-ocotp.c
+index 24c30fa475cc..4159b3f41d79 100644
+--- a/drivers/nvmem/bcm-ocotp.c
++++ b/drivers/nvmem/bcm-ocotp.c
+@@ -262,8 +262,7 @@ static int bcm_otpc_probe(struct platform_device *pdev)
+ 	else if (of_device_is_compatible(dev->of_node, "brcm,ocotp-v2"))
+ 		priv->map = &otp_map_v2;
+ 	else {
+-		dev_err(&pdev->dev,
+-			"%s otpc config map not defined\n", __func__);
++		dev_err(dev, "%s otpc config map not defined\n", __func__);
  		return -EINVAL;
  	}
  
--	efuse = devm_kzalloc(&pdev->dev, sizeof(struct rockchip_efuse_chip),
-+	efuse = devm_kzalloc(dev, sizeof(struct rockchip_efuse_chip),
- 			     GFP_KERNEL);
- 	if (!efuse)
- 		return -ENOMEM;
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	efuse->base = devm_ioremap_resource(&pdev->dev, res);
-+	efuse->base = devm_ioremap_resource(dev, res);
- 	if (IS_ERR(efuse->base))
- 		return PTR_ERR(efuse->base);
- 
--	efuse->clk = devm_clk_get(&pdev->dev, "pclk_efuse");
-+	efuse->clk = devm_clk_get(dev, "pclk_efuse");
- 	if (IS_ERR(efuse->clk))
- 		return PTR_ERR(efuse->clk);
- 
--	efuse->dev = &pdev->dev;
-+	efuse->dev = dev;
- 	econfig.size = resource_size(res);
- 	econfig.reg_read = data;
- 	econfig.priv = efuse;
 -- 
 2.14.3
