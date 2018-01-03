@@ -1,87 +1,65 @@
-From: Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v3 04/22] nvmem: vf610-ocotp: Convert to use
- devm_nvmem_register()
-Date: Wed,  3 Jan 2018 12:00:56 -0800
-Message-ID: <20180103200114.23922-5-andrew.smirnov@gmail.com>
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Subject: [PATCH v3 14/22] nvmem: imx-iim: Convert to use devm_nvmem_register()
+Date: Wed,  3 Jan 2018 12:01:06 -0800
+Message-ID: <20180103200114.23922-15-andrew.smirnov@gmail.com>
 References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180103200114.23922-1-andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>, cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180103200114.23922-1-andrew.smirnov@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Drop all of the code related to .remove hook and make use of
 devm_nvmem_register() instead.
 
-Cc: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Cc: Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>
-Cc: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Signed-off-by: Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+Cc: Carlo Caione <carlo@caione.org>
+Cc: Kevin Hilman <khilman@baylibre.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: cphealy@gmail.com
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-amlogic@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/vf610-ocotp.c | 12 +-----------
+ drivers/nvmem/imx-iim.c | 12 +-----------
  1 file changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/drivers/nvmem/vf610-ocotp.c b/drivers/nvmem/vf610-ocotp.c
-index 5ae9e002f195..752a0983e7fb 100644
---- a/drivers/nvmem/vf610-ocotp.c
-+++ b/drivers/nvmem/vf610-ocotp.c
-@@ -217,13 +217,6 @@ static const struct of_device_id ocotp_of_match[] = {
- };
- MODULE_DEVICE_TABLE(of, ocotp_of_match);
+diff --git a/drivers/nvmem/imx-iim.c b/drivers/nvmem/imx-iim.c
+index 52cfe91d9762..635561a441bd 100644
+--- a/drivers/nvmem/imx-iim.c
++++ b/drivers/nvmem/imx-iim.c
+@@ -138,25 +138,15 @@ static int imx_iim_probe(struct platform_device *pdev)
+ 	cfg.size = drvdata->nregs;
+ 	cfg.priv = iim;
  
--static int vf610_ocotp_remove(struct platform_device *pdev)
--{
--	struct vf610_ocotp *ocotp_dev = platform_get_drvdata(pdev);
+-	nvmem = nvmem_register(&cfg);
++	nvmem = devm_nvmem_register(dev, &cfg);
+ 	if (IS_ERR(nvmem))
+ 		return PTR_ERR(nvmem);
+ 
+-	platform_set_drvdata(pdev, nvmem);
 -
--	return nvmem_unregister(ocotp_dev->nvmem);
+ 	return 0;
+ }
+ 
+-static int imx_iim_remove(struct platform_device *pdev)
+-{
+-	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
+-
+-	return nvmem_unregister(nvmem);
 -}
 -
- static int vf610_ocotp_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -251,13 +244,11 @@ static int vf610_ocotp_probe(struct platform_device *pdev)
- 	ocotp_config.priv = ocotp_dev;
- 	ocotp_config.dev = dev;
- 
--	ocotp_dev->nvmem = nvmem_register(&ocotp_config);
-+	ocotp_dev->nvmem = devm_nvmem_register(dev, &ocotp_config);
- 	if (IS_ERR(ocotp_dev->nvmem))
- 		return PTR_ERR(ocotp_dev->nvmem);
- 
- 	ocotp_dev->dev = dev;
--	platform_set_drvdata(pdev, ocotp_dev);
--
- 	ocotp_dev->timing = vf610_ocotp_calculate_timing(ocotp_dev);
- 
- 	return 0;
-@@ -265,7 +256,6 @@ static int vf610_ocotp_probe(struct platform_device *pdev)
- 
- static struct platform_driver vf610_ocotp_driver = {
- 	.probe = vf610_ocotp_probe,
--	.remove = vf610_ocotp_remove,
+ static struct platform_driver imx_iim_driver = {
+ 	.probe	= imx_iim_probe,
+-	.remove	= imx_iim_remove,
  	.driver = {
- 		.name = "vf610-ocotp",
- 		.of_match_table = ocotp_of_match,
+ 		.name	= "imx-iim",
+ 		.of_match_table = imx_iim_dt_ids,
 -- 
 2.14.3
