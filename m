@@ -1,67 +1,49 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [v2 PATCH 3/6] dt-bindings: usb: mtu3: update USB wakeup properties
-Date: Wed, 3 Jan 2018 16:53:19 +0800
-Message-ID: <9ded06bb1264f2c05ba7f52ecf1619d5e595d80f.1514967463.git.chunfeng.yun@mediatek.com>
-References: <41c6b0f2e959c07eff261060e57fd180a750071a.1514967463.git.chunfeng.yun@mediatek.com>
+From: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+Subject: Re: [PATCH v3 01/34] clk_ops: change round_rate() to return
+ unsigned long
+Date: Wed, 3 Jan 2018 08:07:42 -0200
+Message-ID: <20180103080742.6ad76c2d@vento.lan>
+References: <1514835793-1104-1-git-send-email-pure.logic@nexus-software.ie>
+        <1514835793-1104-2-git-send-email-pure.logic@nexus-software.ie>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <41c6b0f2e959c07eff261060e57fd180a750071a.1514967463.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-msm-owner@vger.kernel.org>
+In-Reply-To: <1514835793-1104-2-git-send-email-pure.logic@nexus-software.ie>
+Sender: linux-arm-msm-owner@vger.kernel.org
+To: Bryan O'Donoghue <pure.logic@nexus-software.ie>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mips@linux-mips.org, linux-rpi-kernel@lists.infradead.org, patches@opensource.cirrus.com, uclinux-h8-devel@lists.sourceforge.jp, linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-soc@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org, linux-media@vger.kernel.org, linux-rtc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add two arguments in "mediatek,syscon-wakeup" to support multi
-wakeup glue layer between SSUSB and SPM, and use standard property
-"wakeup-source" to replace the private "mediatek,enable-wakeup"
+Em Mon,  1 Jan 2018 19:42:40 +0000
+Bryan O'Donoghue <pure.logic@nexus-software.ie> escreveu:
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- Documentation/devicetree/bindings/usb/mediatek,mtu3.txt | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+> Right now it is not possible to return a value larger than LONG_MAX on 32
+> bit systems. You can pass a rate of ULONG_MAX but can't return anything
+> past LONG_MAX due to the fact both the rounded_rate and negative error
+> codes are represented in the return value of round_rate().
+> 
+> Most implementations either return zero on error or don't return error
+> codes at all. A minority of implementations do return a negative number -
+> typically -EINVAL or -ENODEV.
+> 
+> At the higher level then callers of round_rate() typically and rightly
+> check for a value of <= 0.
+> 
+> It is possible then to convert round_rate() to an unsigned long return
+> value and change error code indication for the minority from -ERRORCODE to
+> a simple 0.
+> 
+> This patch is the first step in making it possible to scale round_rate past
+> LONG_MAX, later patches will change the previously mentioned minority of
+> round_rate() implementations to return zero only on error if those
+> implementations currently return a negative error number. Implementations
+> that do not return an error code of < 0 will be left as-is.
+> 
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt b/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
-index b2271d8..d589a1e 100644
---- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
-@@ -42,9 +42,14 @@ Optional properties:
-  - enable-manual-drd : supports manual dual-role switch via debugfs; usually
- 	used when receptacle is TYPE-A and also wants to support dual-role
- 	mode.
-- - mediatek,enable-wakeup : supports ip sleep wakeup used by host mode
-- - mediatek,syscon-wakeup : phandle to syscon used to access USB wakeup
--	control register, it depends on "mediatek,enable-wakeup".
-+ - wakeup-source: enable USB remote wakeup of host mode.
-+ - mediatek,syscon-wakeup : phandle to syscon used to access the register
-+	of the USB wakeup glue layer between SSUSB and SPM; it depends on
-+	"wakeup-source", and has two arguments:
-+	- the first one : register base address of the glue layer in syscon;
-+	- the second one : hardware version of the glue layer
-+		- 1 : used by mt8173 etc
-+		- 2 : used by mt2712 etc
-  - mediatek,u3p-dis-msk : mask to disable u3ports, bit0 for u3port0,
- 	bit1 for u3port1, ... etc;
- 
-@@ -71,8 +76,8 @@ ssusb: usb@11271000 {
- 	vbus-supply = <&usb_p0_vbus>;
- 	extcon = <&extcon_usb>;
- 	dr_mode = "otg";
--	mediatek,enable-wakeup;
--	mediatek,syscon-wakeup = <&pericfg>;
-+	wakeup-source;
-+	mediatek,syscon-wakeup = <&pericfg 0x400 1>;
- 	#address-cells = <2>;
- 	#size-cells = <2>;
- 	ranges;
--- 
-1.9.1
+>  drivers/media/platform/omap3isp/isp.c           |  4 ++--
+
+Acked-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+
+Thanks,
+Mauro
