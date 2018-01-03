@@ -1,148 +1,70 @@
-From: Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v3 03/22] nvmem: Introduce devm_nvmem_(un)register()
-Date: Wed,  3 Jan 2018 12:00:55 -0800
-Message-ID: <20180103200114.23922-4-andrew.smirnov@gmail.com>
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Subject: [PATCH v3 13/22] nvmem: lpc18xx_otp: Convert to use devm_nvmem_register()
+Date: Wed,  3 Jan 2018 12:01:05 -0800
+Message-ID: <20180103200114.23922-14-andrew.smirnov@gmail.com>
 References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180103200114.23922-1-andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>, cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180103200114.23922-1-andrew.smirnov@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Introduce devm_nvmem_register()/devm_nvmem_unregister() to make
-.remove() unnecessary in trivial drivers.
+Drop all of the code related to .remove hook and make use of
+devm_nvmem_register() instead.
 
-Cc: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Cc: Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>
-Cc: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Signed-off-by: Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+Cc: Carlo Caione <carlo@caione.org>
+Cc: Kevin Hilman <khilman@baylibre.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: cphealy@gmail.com
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-amlogic@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/core.c           | 57 ++++++++++++++++++++++++++++++++++++++++++
- include/linux/nvmem-provider.h | 17 +++++++++++++
- 2 files changed, 74 insertions(+)
+ drivers/nvmem/lpc18xx_otp.c | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
-index 57cbeacfbeb2..1f387a2d915f 100644
---- a/drivers/nvmem/core.c
-+++ b/drivers/nvmem/core.c
-@@ -551,6 +551,63 @@ int nvmem_unregister(struct nvmem_device *nvmem)
- }
- EXPORT_SYMBOL_GPL(nvmem_unregister);
+diff --git a/drivers/nvmem/lpc18xx_otp.c b/drivers/nvmem/lpc18xx_otp.c
+index 95268db155e9..74777bfe2dcd 100644
+--- a/drivers/nvmem/lpc18xx_otp.c
++++ b/drivers/nvmem/lpc18xx_otp.c
+@@ -86,22 +86,13 @@ static int lpc18xx_otp_probe(struct platform_device *pdev)
+ 	lpc18xx_otp_nvmem_config.dev = &pdev->dev;
+ 	lpc18xx_otp_nvmem_config.priv = otp;
  
-+static void devm_nvmem_release(struct device *dev, void *res)
-+{
-+	WARN_ON(nvmem_unregister(*(struct nvmem_device **)res));
-+}
-+
-+/**
-+ * devm_nvmem_register() - Register a managed nvmem device for given nvmem_config.
-+ * Also creates an binary entry in /sys/bus/nvmem/devices/dev-name/nvmem
-+ *
-+ * @config: nvmem device configuration with which nvmem device is created.
-+ *
-+ * Return: Will be an ERR_PTR() on error or a valid pointer to nvmem_device
-+ * on success.
-+ */
-+struct nvmem_device *devm_nvmem_register(struct device *dev,
-+					 const struct nvmem_config *config)
-+{
-+	struct nvmem_device **ptr, *nvmem;
-+
-+	ptr = devres_alloc(devm_nvmem_release, sizeof(*ptr), GFP_KERNEL);
-+	if (!ptr)
-+		return ERR_PTR(-ENOMEM);
-+
-+	nvmem = nvmem_register(config);
-+
-+	if (!IS_ERR(nvmem)) {
-+		*ptr = nvmem;
-+		devres_add(dev, ptr);
-+	} else {
-+		devres_free(ptr);
-+	}
-+
-+	return nvmem;
-+}
-+EXPORT_SYMBOL_GPL(devm_nvmem_register);
-+
-+static int devm_nvmem_match(struct device *dev, void *res, void *data)
-+{
-+	struct nvmem_device **r = res;
-+
-+	return *r == data;
-+}
-+
-+/**
-+ * devm_nvmem_unregister() - Unregister previously registered managed nvmem device
-+ *
-+ * @nvmem: Pointer to previously registered nvmem device.
-+ *
-+ * Return: Will be an negative on error or a zero on success.
-+ */
-+int devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem)
-+{
-+	return devres_release(dev, devm_nvmem_release, devm_nvmem_match, nvmem);
-+}
-+EXPORT_SYMBOL(devm_nvmem_unregister);
-+
-+
- static struct nvmem_device *__nvmem_device_get(struct device_node *np,
- 					       struct nvmem_cell **cellp,
- 					       const char *cell_id)
-diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
-index 4889a6c62a81..7f2f610c6eea 100644
---- a/include/linux/nvmem-provider.h
-+++ b/include/linux/nvmem-provider.h
-@@ -72,6 +72,11 @@ struct nvmem_config {
- struct nvmem_device *nvmem_register(const struct nvmem_config *cfg);
- int nvmem_unregister(struct nvmem_device *nvmem);
+-	nvmem = nvmem_register(&lpc18xx_otp_nvmem_config);
++	nvmem = devm_nvmem_register(&pdev->dev, &lpc18xx_otp_nvmem_config);
+ 	if (IS_ERR(nvmem))
+ 		return PTR_ERR(nvmem);
  
-+struct nvmem_device *devm_nvmem_register(struct device *dev,
-+					 const struct nvmem_config *cfg);
-+
-+int devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem);
-+
- #else
- 
- static inline struct nvmem_device *nvmem_register(const struct nvmem_config *c)
-@@ -84,5 +89,17 @@ static inline int nvmem_unregister(struct nvmem_device *nvmem)
- 	return -ENOSYS;
+-	platform_set_drvdata(pdev, nvmem);
+-
+ 	return 0;
  }
  
-+static inline struct nvmem_device *
-+devm_nvmem_register(struct device *dev, const struct nvmem_config *c)
-+{
-+	return nvmem_register(c);
-+}
-+
-+static inline int
-+devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem)
-+{
-+	return nvmem_unregister(nvmem);
-+}
-+
- #endif /* CONFIG_NVMEM */
- #endif  /* ifndef _LINUX_NVMEM_PROVIDER_H */
+-static int lpc18xx_otp_remove(struct platform_device *pdev)
+-{
+-	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
+-
+-	return nvmem_unregister(nvmem);
+-}
+-
+ static const struct of_device_id lpc18xx_otp_dt_ids[] = {
+ 	{ .compatible = "nxp,lpc1850-otp" },
+ 	{ },
+@@ -110,7 +101,6 @@ MODULE_DEVICE_TABLE(of, lpc18xx_otp_dt_ids);
+ 
+ static struct platform_driver lpc18xx_otp_driver = {
+ 	.probe	= lpc18xx_otp_probe,
+-	.remove	= lpc18xx_otp_remove,
+ 	.driver = {
+ 		.name	= "lpc18xx_otp",
+ 		.of_match_table = lpc18xx_otp_dt_ids,
 -- 
 2.14.3
