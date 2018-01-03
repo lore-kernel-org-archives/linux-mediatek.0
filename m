@@ -1,93 +1,82 @@
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH v3 00/22] Verbatim device names and devm_nvmem_(un)register()
-Date: Wed,  3 Jan 2018 12:00:52 -0800
-Message-ID: <20180103200114.23922-1-andrew.smirnov@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v3 07/22] nvmem: snvs_lgpr: Convert to use
+ devm_nvmem_register()
+Date: Wed,  3 Jan 2018 12:00:59 -0800
+Message-ID: <20180103200114.23922-8-andrew.smirnov@gmail.com>
+References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180103200114.23922-1-andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>, cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Srinivas, all:
+Drop all of the code related to .remove hook and make use of
+devm_nvmem_register() instead.
 
-This patchset contains various small changes that I recently made to
-NVMEM, more specifically:
+Cc: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+Cc: Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>
+Cc: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Signed-off-by: Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ drivers/nvmem/snvs_lpgpr.c | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
 
- - Patches 1 and 3 are two changes I am hoping are acceptable upstream
-
- - Patches 4 to 15 are a follow up to patch 2
-
- - Patches 16 to 22 are just trivial fixups and I am more than happy
-   to drop them if they seem to add more pointless churn rather then
-   value.
-
-Feedback is appreciated!
-
-Thanks,
-Andrey Smirnov
-
-Changes since [v2]:
-
- - Added a patch with kerenl doc for struct nvmem_config as a
-   prerequsite for patch #2
-
- - Documented behaviour of nvmem_register() when id is set to -1
-
- - Added kernel doc for devm_nvmem_(un)register()
-
-
-Changes since [v1]:
-
- - Fixed a build break detected by kbuild test robot
-
- - Added a patch to unconditionally enable COMPILE_TEST for meson-efuse
-
- - Dropped Joachim Eastwood from CC list due to bouncing e-mail
-
-[v2] lkml.kernel.org/r/20180101232310.30420-1-andrew.smirnov@gmail.com
-[v1] lkml.kernel.org/r/20171227225956.14442-1-andrew.smirnov@gmail.com
-
-
-Andrey Smirnov (22):
-  nvmem: Document struct nvmem_config
-  nvmem: core: Allow specifying device name verbatim
-  nvmem: Introduce devm_nvmem_(un)register()
-  nvmem: vf610-ocotp: Convert to use devm_nvmem_register()
-  nvmem: imx-ocotp: Convert to use devm_nvmem_register()
-  nvmem: uniphier-efuse: Convert to use devm_nvmem_register()
-  nvmem: snvs_lgpr: Convert to use devm_nvmem_register()
-  nvmem: rockchip-efuse: Convert to use devm_nvmem_register()
-  nvmem: qfprom: Convert to use devm_nvmem_register()
-  nvmem: mtk-efuse: Convert to use devm_nvmem_register()
-  nvmem: meson-mx-efuse: Convert to use devm_nvmem_register()
-  nvmem: meson-efuse: Convert to use devm_nvmem_register()
-  nvmem: lpc18xx_otp: Convert to use devm_nvmem_register()
-  nvmem: imx-iim: Convert to use devm_nvmem_register()
-  nvmem: bcm-ocotp: Convert to use devm_nvmem_register()
-  nvmem: meson-efuse: Do no gate COMPILE_TEST with MESON_SM
-  nvmem: snvs_lpgpr: Convert commas to semicolons
-  nvmem: rockchip-efuse: Make use of of_device_get_match_data()
-  nvmem: vf610-ocotp: Do not use "&pdev->dev" explicitly
-  nvmem: rockchip-efuse: Do not use "&pdev->dev" explicitly
-  nvmem: imx-iim: Do not use "&pdev->dev" explicitly
-  nvmem: bcm-ocotp: Do not use "&pdev->dev" explicitly
-
- drivers/nvmem/Kconfig          |  2 +-
- drivers/nvmem/bcm-ocotp.c      | 15 ++--------
- drivers/nvmem/core.c           | 68 ++++++++++++++++++++++++++++++++++++++++--
- drivers/nvmem/imx-iim.c        | 14 ++-------
- drivers/nvmem/imx-ocotp.c      | 12 +-------
- drivers/nvmem/lpc18xx_otp.c    | 12 +-------
- drivers/nvmem/meson-efuse.c    | 12 +-------
- drivers/nvmem/meson-mx-efuse.c | 12 +-------
- drivers/nvmem/mtk-efuse.c      | 12 +-------
- drivers/nvmem/qfprom.c         | 12 +-------
- drivers/nvmem/rockchip-efuse.c | 28 ++++++-----------
- drivers/nvmem/snvs_lpgpr.c     | 26 +++++-----------
- drivers/nvmem/uniphier-efuse.c | 12 +-------
- drivers/nvmem/vf610-ocotp.c    | 15 ++--------
- include/linux/nvmem-provider.h | 42 ++++++++++++++++++++++++++
- 15 files changed, 138 insertions(+), 156 deletions(-)
-
+diff --git a/drivers/nvmem/snvs_lpgpr.c b/drivers/nvmem/snvs_lpgpr.c
+index e5c2a4a17f03..6a2fdd09e74a 100644
+--- a/drivers/nvmem/snvs_lpgpr.c
++++ b/drivers/nvmem/snvs_lpgpr.c
+@@ -117,22 +117,13 @@ static int snvs_lpgpr_probe(struct platform_device *pdev)
+ 	cfg->reg_read  = snvs_lpgpr_read,
+ 	cfg->reg_write = snvs_lpgpr_write,
+ 
+-	nvmem = nvmem_register(cfg);
++	nvmem = devm_nvmem_register(dev, cfg);
+ 	if (IS_ERR(nvmem))
+ 		return PTR_ERR(nvmem);
+ 
+-	platform_set_drvdata(pdev, nvmem);
+-
+ 	return 0;
+ }
+ 
+-static int snvs_lpgpr_remove(struct platform_device *pdev)
+-{
+-	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
+-
+-	return nvmem_unregister(nvmem);
+-}
+-
+ static const struct of_device_id snvs_lpgpr_dt_ids[] = {
+ 	{ .compatible = "fsl,imx6q-snvs-lpgpr", .data = &snvs_lpgpr_cfg_imx6q },
+ 	{ .compatible = "fsl,imx6ul-snvs-lpgpr",
+@@ -143,7 +134,6 @@ MODULE_DEVICE_TABLE(of, snvs_lpgpr_dt_ids);
+ 
+ static struct platform_driver snvs_lpgpr_driver = {
+ 	.probe	= snvs_lpgpr_probe,
+-	.remove	= snvs_lpgpr_remove,
+ 	.driver = {
+ 		.name	= "snvs_lpgpr",
+ 		.of_match_table = snvs_lpgpr_dt_ids,
 -- 
 2.14.3
