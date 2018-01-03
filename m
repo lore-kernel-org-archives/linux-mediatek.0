@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH v3 22/22] nvmem: bcm-ocotp: Do not use "&pdev->dev" explicitly
-Date: Wed,  3 Jan 2018 12:01:14 -0800
-Message-ID: <20180103200114.23922-23-andrew.smirnov@gmail.com>
+Subject: [PATCH v3 19/22] nvmem: vf610-ocotp: Do not use "&pdev->dev" explicitly
+Date: Wed,  3 Jan 2018 12:01:11 -0800
+Message-ID: <20180103200114.23922-20-andrew.smirnov@gmail.com>
 References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180103200114.23922-1-andrew.smirnov@gmail.com>
@@ -10,7 +10,7 @@ To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-There's "dev" variable for this already. Use it.
+There already a "dev" variable for that. Use it.
 
 Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Heiko Stuebner <heiko@sntech.de>
@@ -26,22 +26,22 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/bcm-ocotp.c | 3 +--
+ drivers/nvmem/vf610-ocotp.c | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/nvmem/bcm-ocotp.c b/drivers/nvmem/bcm-ocotp.c
-index 24c30fa475cc..4159b3f41d79 100644
---- a/drivers/nvmem/bcm-ocotp.c
-+++ b/drivers/nvmem/bcm-ocotp.c
-@@ -262,8 +262,7 @@ static int bcm_otpc_probe(struct platform_device *pdev)
- 	else if (of_device_is_compatible(dev->of_node, "brcm,ocotp-v2"))
- 		priv->map = &otp_map_v2;
- 	else {
--		dev_err(&pdev->dev,
--			"%s otpc config map not defined\n", __func__);
-+		dev_err(dev, "%s otpc config map not defined\n", __func__);
- 		return -EINVAL;
- 	}
+diff --git a/drivers/nvmem/vf610-ocotp.c b/drivers/nvmem/vf610-ocotp.c
+index 752a0983e7fb..6e6bf7987d9d 100644
+--- a/drivers/nvmem/vf610-ocotp.c
++++ b/drivers/nvmem/vf610-ocotp.c
+@@ -223,8 +223,7 @@ static int vf610_ocotp_probe(struct platform_device *pdev)
+ 	struct resource *res;
+ 	struct vf610_ocotp *ocotp_dev;
+ 
+-	ocotp_dev = devm_kzalloc(&pdev->dev,
+-			sizeof(struct vf610_ocotp), GFP_KERNEL);
++	ocotp_dev = devm_kzalloc(dev, sizeof(struct vf610_ocotp), GFP_KERNEL);
+ 	if (!ocotp_dev)
+ 		return -ENOMEM;
  
 -- 
 2.14.3
