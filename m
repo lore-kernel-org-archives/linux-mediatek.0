@@ -1,95 +1,138 @@
-From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH 01/33] clk_ops: change round_rate() to
- return unsigned long
-Date: Tue, 2 Jan 2018 15:28:11 -0800
-Message-ID: <20180102232811.GN7997@codeaurora.org>
-References: <1514596392-22270-1-git-send-email-pure.logic@nexus-software.ie>
- <1514596392-22270-2-git-send-email-pure.logic@nexus-software.ie>
- <9f4bef5a-8a71-6f30-5cfb-5e8fe133e3d3@kapsi.fi>
- <6d83a5c3-6589-24bc-4ca5-4d1bbca47432@nexus-software.ie>
- <20180102190159.GH7997@codeaurora.org>
- <c2212d56-a8b5-cba5-46a7-c2c7f66e752b@nexus-software.ie>
+From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v5 2/2] PCI: mediatek: Set up class type and vendor ID
+ for MT7622
+Date: Wed, 3 Jan 2018 14:39:04 +0800
+Message-ID: <1514961544.25872.49.camel@mhfsdcap03>
+References: <1514336394-17747-1-git-send-email-honghui.zhang@mediatek.com>
+         <1514336394-17747-3-git-send-email-honghui.zhang@mediatek.com>
+         <20171227184542.GA79892@bhelgaas-glaptop.roam.corp.google.com>
+         <1514425152.25872.39.camel@mhfsdcap03> <20180102105659.GB10536@red-moon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <c2212d56-a8b5-cba5-46a7-c2c7f66e752b-SyKdqv6vbfZdzvEItQ6vdLNAH6kLmebB@public.gmane.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/freedreno>
-List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: Bryan O'Donoghue <pure.logic-SyKdqv6vbfZdzvEItQ6vdLNAH6kLmebB@public.gmane.org>
-Cc: linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rtc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mikko Perttunen <cyndis-/1wQRMveznE@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, uclinux-h8-devel-5NWGOfrQmneRv+LV9MX5uooqe+aC9MnS@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, patches-yzvPICuk2AA4QjBA90+/kJqQE7yCjDx5@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20180102105659.GB10536@red-moon>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
+Cc: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gMDEvMDIsIEJyeWFuIE8nRG9ub2dodWUgd3JvdGU6Cj4gT24gMDIvMDEvMTggMTk6MDEsIFN0
-ZXBoZW4gQm95ZCB3cm90ZToKPiA+T24gMTIvMzEsIEJyeWFuIE8nRG9ub2dodWUgd3JvdGU6Cj4g
-Pj5PbiAzMC8xMi8xNyAxNjozNiwgTWlra28gUGVydHR1bmVuIHdyb3RlOgo+ID4+PkZXSVcsIHdl
-IGhhZCB0aGlzIHByb2JsZW0gc29tZSB5ZWFycyBhZ28gd2l0aCB0aGUgVGVncmEgQ1BVIGNsb2Nr
-Cj4gPj4+LSB0aGVuIGl0IHdhcyBkZXRlcm1pbmVkIHRoYXQgYSBzaW1wbGVyIHNvbHV0aW9uIHdh
-cyB0byBoYXZlIHRoZQo+ID4+PmRldGVybWluZV9yYXRlIGNhbGxiYWNrIHN1cHBvcnQgdW5zaWdu
-ZWQgbG9uZyByYXRlcyAtIHNvIGNsb2NrCj4gPj4+ZHJpdmVycyB0aGF0IG5lZWQgdG8gcmV0dXJu
-IHJhdGVzIGhpZ2hlciB0aGFuIDJeMzEgY2FuIGluc3RlYWQKPiA+Pj5pbXBsZW1lbnQgdGhlIGRl
-dGVybWluZV9yYXRlIGNhbGxiYWNrLiBUaGF0IGlzIHdoYXQncyBjdXJyZW50bHkKPiA+Pj5pbXBs
-ZW1lbnRlZC4KPiA+Pj4KPiA+Pj5NaWtrbwo+ID4+Cj4gPj5HcmFudGVkIHdlIGNvdWxkIHdvcmsg
-YXJvdW5kIGl0IGJ1dCwgaGF2aW5nIGJvdGggemVybyBhbmQgbGVzcyB0aGFuCj4gPj56ZXJvIGlu
-ZGljYXRlIGVycm9yIG1lYW5zIHlvdSBjYW4ndCBzdXBwb3J0IGxhcmdlciB0aGFuIExPTkdfTUFY
-Cj4gPj53aGljaCBpcyBJIHRoaW5rIHdvcnRoIGZpeGluZy4KPiA+Pgo+ID4KPiA+T2suIEJ1dCBj
-YW4geW91IGltcGxlbWVudCB0aGUgZGV0ZXJtaW5lX3JhdGUgb3AgaW5zdGVhZCBvZiB0aGUKPiA+
-cm91bmRfcmF0ZSBvcCBmb3IgeW91ciBjbGs/Cj4gCj4gRG9uJ3Qga25vdyAuCgpQbGVhc2UgdHJ5
-LgoKPiAKPiA+SXQncyBub3QgYSB3b3JrLWFyb3VuZCwgaXQncyB0aGUKPiA+cHJlZmVycmVkIHNv
-bHV0aW9uLiBUaGF0IHdvdWxkIGFsbG93IHJhdGVzIGxhcmdlciB0aGFuIDJeMzEgZm9yCj4gPnRo
-ZSBjbGsgd2l0aG91dCBwdXNoaW5nIHRocm91Z2ggYSBjaGFuZ2UgdG8gYWxsIHRoZSBkcml2ZXJz
-IHRvCj4gPmV4cHJlc3MgemVybyBhcyAiZXJyb3IiIGFuZCBub24temVybyBhcyB0aGUgcm91bmRl
-ZCByYXRlLgo+ID4KPiA+SSdtIG5vdCBlbnRpcmVseSBvcHBvc2VkIHRvIHRoaXMgYXBwcm9hY2gs
-IGJlY2F1c2Ugd2UgcHJvYmFibHkKPiA+ZG9uJ3QgY2FyZSB0byBwYXNzIHRoZSBwYXJ0aWN1bGFy
-IGVycm9yIHZhbHVlIGZyb20gYSBjbGsgcHJvdmlkZXIKPiA+dG8gYSBjbGsgY29uc3VtZXIgYWJv
-dXQgd2hhdCB0aGUgZXJyb3IgaXMuCj4gCj4gV2hpY2ggd2FzIG15IHRob3VnaHQuIFRoZSByZXR1
-cm4gdmFsdWUgb2YgY2xrX29wcy0+cm91bmRfcmF0ZSgpCj4gYXBwZWFycyBub3QgdG8gZ2V0IHB1
-c2hlZCB1cCB0aGUgc3RhY2ssIHdoaWNoIGlzIHdoYXQgdGhlIGxhc3QgcGF0Y2gKPiBpbiB0aGlz
-IHNlcmllcyBkZWFscyB3aXRoLgo+IAo+IFtQQVRDSCAzMy8zM10gY2xrOiBjaGFuZ2UgaGFuZGxp
-bmcgb2Ygcm91bmRfcmF0ZSgpIHN1Y2ggdGhhdCBvbmx5Cj4gemVybyBpcyBhbiBlcnJvcgoKSG1t
-PyBjbGtfY29yZV9kZXRlcm1pbmVfcm91bmRfbm9sb2NrKCkgcmV0dXJucyAncmF0ZScgaWYgcmF0
-ZSA8IDAKZnJvbSB0aGUgcm91bmRfcmF0ZSBvcC4gY2xrX2NvcmVfcm91bmRfcmF0ZV9ub2xvY2so
-KSByZXR1cm5zIHRoYXQKdmFsdWUgdG8gY2xrX3JvdW5kX3JhdGUoKSB3aGljaCByZXR1cm5zIGl0
-IHRvIHRoZSBjb25zdW1lci4KCj4gCj4gPkl0J3MgYWN0dWFsbHkgd2hhdCB3ZQo+ID5wcm9wb3Nl
-ZCBhcyB0aGUgc29sdXRpb24gZm9yIGNsa19yb3VuZF9yYXRlKCkgdG8gcmV0dXJuIHZhbHVlcwo+
-ID5sYXJnZXIgdGhhbiBMT05HX01BWCB0byBjb25zdW1lcnMuIEJ1dCBkb2luZyB0aGF0IGNvbnN1
-bWVyIEFQSQo+ID5jaGFuZ2Ugb3IgdGhpcyBwcm92aWRlciBzaWRlIGNoYW5nZSBpcyBnb2luZyB0
-byByZXF1aXJlIHVzIHRvCj4gPmV2YWx1YXRlIGFsbCB0aGUgY29uc3VtZXJzIG9mIHRoZXNlIGNs
-a3MgdG8gbWFrZSBzdXJlIHRoZXkgZG9uJ3QKPiA+Y2hlY2sgZm9yIHNvbWUgZXJyb3IgdmFsdWUg
-dGhhdCdzIGxlc3MgdGhhbiB6ZXJvLiBUaGlzIHNlcmllcwo+ID5kb2VzIGhhbGYgdGhlIHdvcmss
-Cj4gCj4gRG8geW91IG1lYW4gdXNlcnMgb2YgY2xrX3JvdW5kYV9yYXRlKCkgPyBJIGhhdmUgYSBz
-ZXQgb2YgcGF0Y2hlcyBmb3IKPiB0aGF0IGJ1dCB3YW50ZWQgdG8gc2VwYXJhdGUgdGhhdCBmcm9t
-IGNsa19vcHMtPnJvdW5kX3JhdGUoKSBzbyBhcwo+IG5vdCB0byBzZW5kIH43MCBwYXRjaGVzIG91
-dCB0byBMS01MIGF0IG9uY2UgLSBldmVuIGlmIHRoZXkgYXJlIGluCj4gdHdvIGJsb2Nrcy4KCk9r
-LiBXaGF0IGhhdmUgeW91IGRvbmUgdG8gdGhlIGNvbnN1bWVycyBvZiBjbGtfcm91bmRfcmF0ZSgp
-PwpNYWRlIHRoZW0gdHJlYXQgMCBhcyBhbiBlcnJvciBpbnN0ZWFkIG9mIGxlc3MgdGhhbiB6ZXJv
-PyBUaGUKZG9jdW1lbnRhdGlvbiBpbiBjbGsuaCBuZWVkcyB0byBiZSB1cGRhdGVkLiBTZWUgdGhp
-cyBwYXRjaCBmcm9tClBhdWwgV2Ftc2xleVsxXSBmb3Igb25lIHByb3Bvc2VkIHBhdGNoIHRoYXQg
-d2VudCBub3doZXJlLiBBbHNvCmluY2x1ZGUgUnVzc2VsbCBLaW5nIHBsZWFzZS4gSXQgd2FzIGFs
-c28gcHJvcG9zZWQgdG8gY2hhbmdlIHRoZQpmdW5jdGlvbiBzaWduYXR1cmUgb2YgY2xrX3JvdW5k
-X3JhdGUoKSB0byByZXR1cm4gdW5zaWduZWQgbG9uZywKYnV0IHRoYXQgZGlkbid0IGdvIGFueXdo
-ZXJlIGVpdGhlci4KCj4gCj4gSWYgc28sIEkgY2FuIHB1Ymxpc2ggdGhhdCBzZXQgdG9vIGZvciBy
-ZWZlcmVuY2UuCj4gCj4gQUZBSUNUIG9uIGNsa19vcHMtPnJvdW5kX3JhdGUgdGhlIGxhc3QgcGF0
-Y2ggIzMzIG91Z2h0IHRvIGNvdmVyIHRoZQo+IHVzYWdlIG9mIHRoZSByZXR1cm4gdmFsdWUgb2Yg
-Y2xrX29wcy0+cm91bmRfcmF0ZSgpLgo+IAo+IEhhdmUgSSBtaXNzZWQgc29tZXRoaW5nID8KCkhv
-cGVmdWxseSBub3QhCgo+IAo+ID5ieSBjaGFuZ2luZyB0aGUgcHJvdmlkZXIgc2lkZSwgd2hpbGUg
-aWdub3JpbmcKPiA+dGhlIGNvbnN1bWVyIHNpZGUgYW5kIGFueSBwb3RlbnRpYWwgZmFsbG91dCBv
-ZiB0aGUgbGVzcyB0aGFuIHplcm8KPiA+dG8gemVybyByZXR1cm4gdmFsdWUgY2hhbmdlLgo+ID4K
-PiAKPiBDYW4geW91IGxvb2sgYXQgIzMzID8gSSdtIG5vdCBzdXJlIGlmIHlvdSBzYXcgdGhhdCBv
-bmUuCj4gCgpZZWFoIEkgbG9va2VkIGF0IGl0LiBGcm9tIHdoYXQgSSBjYW4gdGVsbCBpdCBtYWtl
-cwpjbGtfcm91bmRfcmF0ZSgpIHJldHVybiAwIG5vdyBpbnN0ZWFkIG9mIHdoYXRldmVyIG5lZ2F0
-aXZlIHZhbHVlCnRoZSBjbGtfb3BzOjpyb3VuZF9yYXRlIGZ1bmN0aW9uIHJldHVybnMuCgpbMV0g
-aHR0cHM6Ly9sa21sLmtlcm5lbC5vcmcvci9hbHBpbmUuREVCLjIuMDIuMTMxMTI1MTYwMzMxMC4y
-MzA5MEB0YW1pZW4KCi0tIApRdWFsY29tbSBJbm5vdmF0aW9uIENlbnRlciwgSW5jLiBpcyBhIG1l
-bWJlciBvZiBDb2RlIEF1cm9yYSBGb3J1bSwKYSBMaW51eCBGb3VuZGF0aW9uIENvbGxhYm9yYXRp
-dmUgUHJvamVjdApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpGcmVlZHJlbm8gbWFpbGluZyBsaXN0CkZyZWVkcmVub0BsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9mcmVlZHJlbm8K
+On Tue, 2018-01-02 at 10:56 +0000, Lorenzo Pieralisi wrote:
+> On Thu, Dec 28, 2017 at 09:39:12AM +0800, Honghui Zhang wrote:
+> > On Wed, 2017-12-27 at 12:45 -0600, Bjorn Helgaas wrote:
+> > > On Wed, Dec 27, 2017 at 08:59:54AM +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> > > > From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > > > 
+
+> > > > +		/* Set up class code for MT7622 */
+> > > > +		val = PCI_CLASS_BRIDGE_PCI << 16;
+> > > > +		writel(val, port->base + PCIE_CONF_CLASS);
+> > > 
+> > > 1) Your comments mention MT7622 specifically, but this code is run for
+> > > both mt2712-pcie and mt7622-pcie.  If this code is safe and necessary
+> > > for both mt2712-pcie and mt7622-pcie, please remove the mention of
+> > > MT7622.
+> > 
+> > Hmm, the code snippet added here will only be executed by MT7622, since
+> > MT2712 will not enter this  "if (pcie->base) {"  condition.
+> > Should the mention of MT7622 must be removed in this case?
+> 
+> You should add an explicit way (eg of_device_is_compatible() match for
+> instance) to apply the quirk just on the platform that requires it.
+> 
+> Checking for "if (pcie->base)" is really not the way to do it.
+> 
+
+hi, Lorenzo,
+Thanks very much for your advise.
+Passing the compatible string or platform data into this function needed
+to add some new field in the struct mtk_pcie_port, then I guess both set
+it for MT2712 and MT7622 is an easy way, since re-setting those values
+for MT2712 is safe.
+
+> > > 2) The first comment mentions both "vendor ID and device ID" but you
+> > > don't write the device ID.  Since this code applies to both
+> > > mt2712-pcie and mt7622-pcie, my guess is that you don't *want* to
+> > > write the device ID.  If that's the case, please fix the comment.
+> > > 
+> > 
+> > My bad, I did not check the comments carefully.
+> > Thanks.
+> > 
+> > > 3) If you only need to set the vendor ID, you're performing a 32-bit
+> > > write (writel()) to update a 16-bit value.  Please use writew()
+> > > instead.
+> > > 
+> > 
+> > Ok, thanks, I guess I could use the following code snippet in the next
+> > version:
+> > val = readl(port->base + PCIE_CONF_VENDOR_ID)
+> > val &= ~GENMASK(15, 0);
+> > val |= PCI_VENDOR_ID_MEDIATEK;
+> > writel(val, port->base + PCIE_CONF_VENDOR_ID);
+> 
+> Have you read Bjorn's comment ? Or there is a problem with using
+> a writew() ?
+> 
+
+This control register is a 32bit register, I'm not sure whether the apb
+bus support write an 16bit value with 16bit but not 32bit address
+alignment. I prefer the more safety old way of writel.
+
+I need to do more test about the writew if the code elegant is more
+important.
+
+thanks.
+
+> Lorenzo
+> 
+> > > 4) If you only need to set the vendor ID, please use a definition like
+> > > "PCIE_CONF_VENDOR_ID" instead of the ambiguous "PCIE_CONF_ID".
+> > > 
+> > > 5) If you only need to set the vendor ID, please update the changelog
+> > > to mention "vendor ID" specifically instead of the ambiguous "IDs".
+> > 
+> > > 6) Please add a space before the closing "*/" of the first comment.
+> > > 
+> > > 7) PCI_CLASS_BRIDGE_PCI is for a PCI-to-PCI bridge, i.e., one that has
+> > > PCI on both the primary (upstream) side and the secondary (downstream)
+> > > side.  That kind of bridge has a type 1 config header (see
+> > > PCI_HEADER_TYPE) and the PCI_PRIMARY_BUS and PCI_SECONDARY_BUS
+> > > registers tell us the bus number of the primary and secondary sides.
+> > > 
+> > > I don't believe this device is a PCI-to-PCI bridge.  I think it's a
+> > > *host* bridge that has some non-PCI interface on the upstream side and
+> > > should have a type 0 config header.  If that's the case you should use
+> > > PCI_CLASS_BRIDGE_HOST instead.
+> > > 
+> > 
+> > Thanks very much for your help with the review, I will fix the other
+> > issue in the next version.
+> > 
+> > > >  	}
+> > > >  
+> > > >  	/* Assert all reset signals */
+> > > > diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
+> > > > index ab20dc5..2480b0e 100644
+> > > > --- a/include/linux/pci_ids.h
+> > > > +++ b/include/linux/pci_ids.h
+> > > > @@ -2113,6 +2113,8 @@
+> > > >  
+> > > >  #define PCI_VENDOR_ID_MYRICOM		0x14c1
+> > > >  
+> > > > +#define PCI_VENDOR_ID_MEDIATEK		0x14c3
+> > > > +
+> > > >  #define PCI_VENDOR_ID_TITAN		0x14D2
+> > > >  #define PCI_DEVICE_ID_TITAN_010L	0x8001
+> > > >  #define PCI_DEVICE_ID_TITAN_100L	0x8010
+> > > > -- 
+> > > > 2.6.4
+> > > > 
+> > 
+> > 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
