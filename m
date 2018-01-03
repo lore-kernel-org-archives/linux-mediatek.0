@@ -1,138 +1,69 @@
-From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 2/2] PCI: mediatek: Set up class type and vendor ID
- for MT7622
-Date: Wed, 3 Jan 2018 14:39:04 +0800
-Message-ID: <1514961544.25872.49.camel@mhfsdcap03>
-References: <1514336394-17747-1-git-send-email-honghui.zhang@mediatek.com>
-         <1514336394-17747-3-git-send-email-honghui.zhang@mediatek.com>
-         <20171227184542.GA79892@bhelgaas-glaptop.roam.corp.google.com>
-         <1514425152.25872.39.camel@mhfsdcap03> <20180102105659.GB10536@red-moon>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [v2 PATCH 5/6] dt-bindings: usb: mtk-xhci: update USB wakeup
+ properties
+Date: Wed, 3 Jan 2018 16:53:21 +0800
+Message-ID: <7c7f69a3981b5117f7c8cc14b19c3459a50403ef.1514967463.git.chunfeng.yun@mediatek.com>
+References: <41c6b0f2e959c07eff261060e57fd180a750071a.1514967463.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180102105659.GB10536@red-moon>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
-Cc: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <41c6b0f2e959c07eff261060e57fd180a750071a.1514967463.git.chunfeng.yun@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Mathias Nyman <mathias.nyman@intel.com>, Rob Herring <robh+dt@kernel.org>, Felipe Balbi <felipe.balbi@linux.intel.com>
+Cc: devicetree@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>, Alan Stern <stern@rowland.harvard.edu>, Catalin Marinas <catalin.marinas@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-01-02 at 10:56 +0000, Lorenzo Pieralisi wrote:
-> On Thu, Dec 28, 2017 at 09:39:12AM +0800, Honghui Zhang wrote:
-> > On Wed, 2017-12-27 at 12:45 -0600, Bjorn Helgaas wrote:
-> > > On Wed, Dec 27, 2017 at 08:59:54AM +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> > > > From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > > 
+Add two arguments in "mediatek,syscon-wakeup" to support multi
+wakeup glue layer between SSUSB and SPM, and use standard property
+"wakeup-source" to replace the private "mediatek,wakeup-src"
 
-> > > > +		/* Set up class code for MT7622 */
-> > > > +		val = PCI_CLASS_BRIDGE_PCI << 16;
-> > > > +		writel(val, port->base + PCIE_CONF_CLASS);
-> > > 
-> > > 1) Your comments mention MT7622 specifically, but this code is run for
-> > > both mt2712-pcie and mt7622-pcie.  If this code is safe and necessary
-> > > for both mt2712-pcie and mt7622-pcie, please remove the mention of
-> > > MT7622.
-> > 
-> > Hmm, the code snippet added here will only be executed by MT7622, since
-> > MT2712 will not enter this  "if (pcie->base) {"  condition.
-> > Should the mention of MT7622 must be removed in this case?
-> 
-> You should add an explicit way (eg of_device_is_compatible() match for
-> instance) to apply the quirk just on the platform that requires it.
-> 
-> Checking for "if (pcie->base)" is really not the way to do it.
-> 
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ .../devicetree/bindings/usb/mediatek,mtk-xhci.txt        | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
 
-hi, Lorenzo,
-Thanks very much for your advise.
-Passing the compatible string or platform data into this function needed
-to add some new field in the struct mtk_pcie_port, then I guess both set
-it for MT2712 and MT7622 is an easy way, since re-setting those values
-for MT2712 is safe.
-
-> > > 2) The first comment mentions both "vendor ID and device ID" but you
-> > > don't write the device ID.  Since this code applies to both
-> > > mt2712-pcie and mt7622-pcie, my guess is that you don't *want* to
-> > > write the device ID.  If that's the case, please fix the comment.
-> > > 
-> > 
-> > My bad, I did not check the comments carefully.
-> > Thanks.
-> > 
-> > > 3) If you only need to set the vendor ID, you're performing a 32-bit
-> > > write (writel()) to update a 16-bit value.  Please use writew()
-> > > instead.
-> > > 
-> > 
-> > Ok, thanks, I guess I could use the following code snippet in the next
-> > version:
-> > val = readl(port->base + PCIE_CONF_VENDOR_ID)
-> > val &= ~GENMASK(15, 0);
-> > val |= PCI_VENDOR_ID_MEDIATEK;
-> > writel(val, port->base + PCIE_CONF_VENDOR_ID);
-> 
-> Have you read Bjorn's comment ? Or there is a problem with using
-> a writew() ?
-> 
-
-This control register is a 32bit register, I'm not sure whether the apb
-bus support write an 16bit value with 16bit but not 32bit address
-alignment. I prefer the more safety old way of writel.
-
-I need to do more test about the writew if the code elegant is more
-important.
-
-thanks.
-
-> Lorenzo
-> 
-> > > 4) If you only need to set the vendor ID, please use a definition like
-> > > "PCIE_CONF_VENDOR_ID" instead of the ambiguous "PCIE_CONF_ID".
-> > > 
-> > > 5) If you only need to set the vendor ID, please update the changelog
-> > > to mention "vendor ID" specifically instead of the ambiguous "IDs".
-> > 
-> > > 6) Please add a space before the closing "*/" of the first comment.
-> > > 
-> > > 7) PCI_CLASS_BRIDGE_PCI is for a PCI-to-PCI bridge, i.e., one that has
-> > > PCI on both the primary (upstream) side and the secondary (downstream)
-> > > side.  That kind of bridge has a type 1 config header (see
-> > > PCI_HEADER_TYPE) and the PCI_PRIMARY_BUS and PCI_SECONDARY_BUS
-> > > registers tell us the bus number of the primary and secondary sides.
-> > > 
-> > > I don't believe this device is a PCI-to-PCI bridge.  I think it's a
-> > > *host* bridge that has some non-PCI interface on the upstream side and
-> > > should have a type 0 config header.  If that's the case you should use
-> > > PCI_CLASS_BRIDGE_HOST instead.
-> > > 
-> > 
-> > Thanks very much for your help with the review, I will fix the other
-> > issue in the next version.
-> > 
-> > > >  	}
-> > > >  
-> > > >  	/* Assert all reset signals */
-> > > > diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
-> > > > index ab20dc5..2480b0e 100644
-> > > > --- a/include/linux/pci_ids.h
-> > > > +++ b/include/linux/pci_ids.h
-> > > > @@ -2113,6 +2113,8 @@
-> > > >  
-> > > >  #define PCI_VENDOR_ID_MYRICOM		0x14c1
-> > > >  
-> > > > +#define PCI_VENDOR_ID_MEDIATEK		0x14c3
-> > > > +
-> > > >  #define PCI_VENDOR_ID_TITAN		0x14D2
-> > > >  #define PCI_DEVICE_ID_TITAN_010L	0x8001
-> > > >  #define PCI_DEVICE_ID_TITAN_100L	0x8010
-> > > > -- 
-> > > > 2.6.4
-> > > > 
-> > 
-> > 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
+index 3059596..5842868 100644
+--- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
++++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
+@@ -35,10 +35,14 @@ Required properties:
+  - phys : a list of phandle + phy specifier pairs
+ 
+ Optional properties:
+- - mediatek,wakeup-src : 1: ip sleep wakeup mode; 2: line state wakeup
+-	mode;
+- - mediatek,syscon-wakeup : phandle to syscon used to access USB wakeup
+-	control register, it depends on "mediatek,wakeup-src".
++ - wakeup-source : enable USB remote wakeup;
++ - mediatek,syscon-wakeup : phandle to syscon used to access the register
++	of the USB wakeup glue layer between xHCI and SPM; it depends on
++	"wakeup-source", and has two arguments:
++	- the first one : register base address of the glue layer in syscon;
++	- the second one : hardware version of the glue layer
++		- 1 : used by mt8173 etc
++		- 2 : used by mt2712 etc
+  - mediatek,u3p-dis-msk : mask to disable u3ports, bit0 for u3port0,
+ 	bit1 for u3port1, ... etc;
+  - vbus-supply : reference to the VBUS regulator;
+@@ -64,8 +68,8 @@ usb30: usb@11270000 {
+ 	vusb33-supply = <&mt6397_vusb_reg>;
+ 	vbus-supply = <&usb_p1_vbus>;
+ 	usb3-lpm-capable;
+-	mediatek,syscon-wakeup = <&pericfg>;
+-	mediatek,wakeup-src = <1>;
++	mediatek,syscon-wakeup = <&pericfg 0x400 1>;
++	wakeup-source;
+ };
+ 
+ 2nd: dual-role mode with xHCI driver
+-- 
+1.9.1
