@@ -1,68 +1,34 @@
-From: Philippe Ombredanne <pombredanne-od1rfyK75/E@public.gmane.org>
-Subject: Re: [PATCH 05/12] arm64: dts: mt7622: add PMIC MT6380 related nodes
-Date: Thu, 4 Jan 2018 11:27:16 +0100
-Message-ID: <CAOFm3uF0WHO6_Y6dKu3DnAd759tA2hNQs=0-P86s1A0e==27Ow@mail.gmail.com>
-References: <cover.1515057696.git.sean.wang@mediatek.com> <0109846a8a501ca3cae33acfceb919960fddfcbf.1515057696.git.sean.wang@mediatek.com>
+From: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>
+Subject: Re: [PATCH] fbdev: arm64 use __raw I/O memory api
+Date: Thu, 04 Jan 2018 15:40:38 +0100
+Message-ID: <8828134.HyumoOyT0m@amdc3058>
+References: <CGME20171130081731epcas1p1bdd2f9a3e55307bf732ba4c7cbbd8f01@epcas1p1.samsung.com>
+ <1512029842-10939-1-git-send-email-ji.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <0109846a8a501ca3cae33acfceb919960fddfcbf.1515057696.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-reply-to: <1512029842-10939-1-git-send-email-ji.zhang@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Ji Zhang <ji.zhang@mediatek.com>
+Cc: linux-fbdev@vger.kernel.org, wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, shadanji@163.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Sean,
-
-On Thu, Jan 4, 2018 at 10:40 AM,  <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->
-> Enable pwrap and MT6380 on mt7622-rfb1 board. Also add all mt6380
-> regulator nodes in an alone file to allow similar boards using MT6380
-> able to resue the configuration.
->
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
->  arch/arm64/boot/dts/mediatek/mt6380.dtsi     | 91 ++++++++++++++++++++++++++++
->  arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts |  8 +++
->  arch/arm64/boot/dts/mediatek/mt7622.dtsi     | 12 ++++
->  3 files changed, 111 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt6380.dtsi
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6380.dtsi b/arch/arm64/boot/dts/mediatek/mt6380.dtsi
-> new file mode 100644
-> index 0000000..7eb7dc2
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt6380.dtsi
-> @@ -0,0 +1,91 @@
-> +/*
-> + * Copyright (c) 2018 MediaTek Inc.
-> + * Author: Chenglin Xu <chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> + *        Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-
-Would you mind using SPDX tags instead of this fine but long legalese?
-This is documented in Thomas patches [1].
-
-Also if you could spread the word in your team, this would earn you
-good karma points.
-Thank you!
-
-[1] https://lkml.org/lkml/2017/12/28/323
--- 
-Cordially
-Philippe Ombredanne
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gVGh1cnNkYXksIE5vdmVtYmVyIDMwLCAyMDE3IDA0OjE3OjIyIFBNIEppIFpoYW5nIHdyb3Rl
+Ogo+IFNpbmNlIGFybTY0IGFsc28gaGFzIF9fcmF3IEkvTyBhY2Nlc3NvcnMsIGFkZCBfX2FhcmNo
+NjRfXyBpbiBmYi5oLgo+IFRoaXMgaXMgYSBzdXBwbGVtZW50IGZvciBjb21tbWl0Cj4gOTgxNDA5
+YjI1ZTJhOTk0MDliMjZkYWE2NzI5M2NhMWNmZDVlYTBhMAo+IAo+IFNpZ25lZC1vZmYtYnk6IEpp
+IFpoYW5nIDxqaS56aGFuZ0BtZWRpYXRlay5jb20+CgpQYXRjaCBxdWV1ZWQgZm9yIDQuMTYsIHRo
+YW5rcy4KCkJlc3QgcmVnYXJkcywKLS0KQmFydGxvbWllaiBab2xuaWVya2lld2ljegpTYW1zdW5n
+IFImRCBJbnN0aXR1dGUgUG9sYW5kClNhbXN1bmcgRWxlY3Ryb25pY3MKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
+ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
