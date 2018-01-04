@@ -1,82 +1,54 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH 2/3] i2c: mediatek: Add i2c compatible for MediaTek MT2712
-Date: Thu, 4 Jan 2018 00:55:54 +0100
-Message-ID: <20180103235554.euwpwsaayx4qnsao@ninjato>
-References: <1513666263-6443-1-git-send-email-jun.gao@mediatek.com>
- <1513666263-6443-3-git-send-email-jun.gao@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v1 0/6] add "simple-mfd" support for MediaTek audio subsystem
+Date: Thu, 4 Jan 2018 15:44:02 +0800
+Message-ID: <cover.1515038387.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============2347089293396977800=="
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1513666263-6443-3-git-send-email-jun.gao@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jun Gao <jun.gao@mediatek.com>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org, linux-clk@vger.kernel.org, Garlic Tseng <garlic.tseng@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi,
 
---===============2347089293396977800==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="6o2m37ld6rzajrik"
-Content-Disposition: inline
+The reason for this series is that MediaTek audio hardware block expose more than
+a single functionality, but register those in different kernel subsystems.
+Same issue could also be found in MMSYS: https://lkml.org/lkml/2017/11/14/669
 
+Hence use "simple-mfd" to handle this kind of situation, that will make sure all
+children are registered - and we don't need to write an MFD driver specially.
+It was tested on the bananapi-r2 and the MT2701/MT7622 EVB.
 
---6o2m37ld6rzajrik
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+[1]~[3]: modify the current audio driver accordingly.
+[5][6]: add clock driver for MT2701 and add missing data for MT7622.
 
-On Tue, Dec 19, 2017 at 02:51:02PM +0800, Jun Gao wrote:
-> From: Jun Gao <jun.gao@mediatek.com>
->=20
-> Add i2c compatible for MT2712. Compare to MT8173 i2c controller,
-> internal divider of i2c source clock need to be configured for
-> MT2712 i2c speed calculation.
->=20
-> Signed-off-by: Jun Gao <jun.gao@mediatek.com>
+changes since v1:
+ - To avoid writing an MFD driver, we add "simple-mfd" in the audsys binding.
+ - Move three top clocks to audio driver [1] as we remove mfd/mtk-audsys.c in v1.
 
-Applied to for-next, thanks!
+Ryder Lee (6):
+  ASoC: mediatek: add some core clocks for MT2701 AFE
+  ASoC: mediatek: modify MT2701 AFE driver to adapt mfd device
+  ASoC: mediatek: update MT2701 AFE documentation to adapt mfd device
+  dt-bindings: clock: mediatek: add "simple-mfd" in audsys documentation
+  clk: mediatek: update missing clock data for MT7622 audsys
+  clk: mediatek: add audsys support for MT2701
 
+ .../bindings/arm/mediatek/mediatek,audsys.txt      |  21 ++-
+ .../devicetree/bindings/sound/mt2701-afe-pcm.txt   | 171 +++++++++++---------
+ drivers/clk/mediatek/Kconfig                       |   6 +
+ drivers/clk/mediatek/Makefile                      |   1 +
+ drivers/clk/mediatek/clk-mt2701-aud.c              | 174 +++++++++++++++++++++
+ drivers/clk/mediatek/clk-mt7622-aud.c              |   3 +-
+ include/dt-bindings/clock/mt7622-clk.h             |   3 +-
+ sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c  |  30 +++-
+ sound/soc/mediatek/mt2701/mt2701-afe-common.h      |   3 +
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c         |  45 +++---
+ sound/soc/mediatek/mt2701/mt2701-reg.h             |   1 -
+ 11 files changed, 345 insertions(+), 113 deletions(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-aud.c
 
---6o2m37ld6rzajrik
-Content-Type: application/pgp-signature; name="signature.asc"
+-- 
+1.9.1
 
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlpNbYoACgkQFA3kzBSg
-KbZRaxAAmL5Clq4EqhkfuPEFJVg9egdayPWRO9JupJaLWgsaA7gnJKrTrg4DTnbA
-d3HzvpXFBLNcchAGUkQwFwNqQB9QNkpYAaAOXGi3ltSu1TJf+cRY2TFzrYBY0X7A
-F6hnO4hxlw00ywHgbhiDKEMeOehlo3E+wJd9/yjNJUrI0rT/ZDJk9AGaAJdx/WVs
-7GBUkyyaIUO0CRv7OHRQ3wobSyrKxcTAFPlkNOScb/ZjLbTNd4YNhw940glJUS0x
-M6qWB9zB8mO1EV3ZwLOVWOUAJg5raTweXishcvcpAB3X4vfuF1SG+AvQoAmd7NOG
-GO0BnL2GEfjdQyrcTp8E56Dxs6JaAYMfeJ9/icWFyImUvhRBPimeXcOoHC3k8N0z
-KG5tVpybYJt1A/1LNLmphGoAMSKguxZhvfLIjVYr/rPIAZnmRbiTZg0kacPoXYof
-r5OuJ8AC6dVVvrBFhQ0l3Q/b2a0HqosJihKkd72jqRklhVwZmKvt+sDFwKbXJjvp
-4XG/YYrWJylMtddZVXsC5ZJwozgyQPCzslO6fzm4OUyZFO6jAq40RT8I1OgSgDu/
-a6SnTrhMYwCKVCtBXwLYCbexmR7OLnOI9+R2RJ/GHpZAnIou2jZ3AhuapdDnJNBx
-khfQvTZmY2NQQiSw2EQwA1zrGn+X2TQ9AZjPv85p/AoUFEuHUcQ=
-=HKHU
------END PGP SIGNATURE-----
-
---6o2m37ld6rzajrik--
-
-
---===============2347089293396977800==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-linux-arm-kernel mailing list
-linux-arm-kernel@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
---===============2347089293396977800==--
