@@ -1,59 +1,48 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v1 5/6] clk: mediatek: update missing clock data for MT7622 audsys
-Date: Thu, 4 Jan 2018 15:44:21 +0800
-Message-ID: <296e97ad8720d575918657e821bb2a01a2d31c49.1515038387.git.ryder.lee@mediatek.com>
-References: <cover.1515038387.git.ryder.lee@mediatek.com>
+From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 00/12] add dts nodes to MT7622 SoC
+Date: Thu, 4 Jan 2018 17:40:50 +0800
+Message-ID: <cover.1515057696.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1515038387.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: Mark Brown <broonie@kernel.org>, Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, Garlic Tseng <garlic.tseng@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add missing clock data 'CLK_AUDIO_AFE_CONN' for MT7622 audsys.
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/clk/mediatek/clk-mt7622-aud.c  | 3 ++-
- include/dt-bindings/clock/mt7622-clk.h | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+add dts nodes to MT7622 SoC and related rfb1 board
 
-diff --git a/drivers/clk/mediatek/clk-mt7622-aud.c b/drivers/clk/mediatek/clk-mt7622-aud.c
-index fad7d9f..96959ad 100644
---- a/drivers/clk/mediatek/clk-mt7622-aud.c
-+++ b/drivers/clk/mediatek/clk-mt7622-aud.c
-@@ -106,6 +106,7 @@
- 	GATE_AUDIO1(CLK_AUDIO_INTDIR, "audio_intdir", "intdir_sel", 20),
- 	GATE_AUDIO1(CLK_AUDIO_A1SYS, "audio_a1sys", "a1sys_hp_sel", 21),
- 	GATE_AUDIO1(CLK_AUDIO_A2SYS, "audio_a2sys", "a2sys_hp_sel", 22),
-+	GATE_AUDIO1(CLK_AUDIO_AFE_CONN, "audio_afe_conn", "a1sys_hp_sel", 23),
- 	/* AUDIO2 */
- 	GATE_AUDIO2(CLK_AUDIO_UL1, "audio_ul1", "a1sys_hp_sel", 0),
- 	GATE_AUDIO2(CLK_AUDIO_UL2, "audio_ul2", "a1sys_hp_sel", 1),
-@@ -146,7 +147,7 @@ static int clk_mt7622_audiosys_init(struct platform_device *pdev)
- 	clk_data = mtk_alloc_clk_data(CLK_AUDIO_NR_CLK);
- 
- 	mtk_clk_register_gates(node, audio_clks, ARRAY_SIZE(audio_clks),
--			       clk_data);
-+				   clk_data);
- 
- 	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
- 	if (r)
-diff --git a/include/dt-bindings/clock/mt7622-clk.h b/include/dt-bindings/clock/mt7622-clk.h
-index 3e514ed..e9d77f0 100644
---- a/include/dt-bindings/clock/mt7622-clk.h
-+++ b/include/dt-bindings/clock/mt7622-clk.h
-@@ -235,7 +235,8 @@
- #define CLK_AUDIO_MEM_ASRC3		43
- #define CLK_AUDIO_MEM_ASRC4		44
- #define CLK_AUDIO_MEM_ASRC5		45
--#define CLK_AUDIO_NR_CLK		46
-+#define CLK_AUDIO_AFE_CONN		46
-+#define CLK_AUDIO_NR_CLK		47
- 
- /* SSUSBSYS */
- 
+Ryder Lee (2):
+  arm64: dts: mt7622: add PCIe device nodes
+  arm64: dts: mt7622: add SATA device nodes
+
+Sean Wang (10):
+  dt-bindings: clock: mediatek: add missing required #reset-cells
+  arm64: dts: mt7622: add clock controller device nodes
+  arm64: dts: mt7622: add power domain controller device nodes
+  arm64: dts: mt7622: add pinctrl related device nodes
+  arm64: dts: mt7622: add PMIC MT6380 related nodes
+  arm64: dts: mt7622: add cpufreq related device nodes
+  arm64: dts: mt7622: turn uart0 clock to real ones
+  arm64: dts: mt7622: add SoC and peripheral related device nodes
+  arm64: dts: mt7622: add flash related device nodes
+  arm64: dts: mt7622: add ethernet device nodes
+
+ .../bindings/arm/mediatek/mediatek,ethsys.txt      |   2 +
+ .../bindings/arm/mediatek/mediatek,pciesys.txt     |   2 +
+ .../bindings/arm/mediatek/mediatek,ssusbsys.txt    |   2 +
+ arch/arm64/boot/dts/mediatek/mt6380.dtsi           |  91 ++++
+ arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts       | 337 +++++++++++++
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi           | 533 ++++++++++++++++++++-
+ 6 files changed, 962 insertions(+), 5 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6380.dtsi
+
 -- 
-1.9.1
+2.7.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
