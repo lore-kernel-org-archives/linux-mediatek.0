@@ -1,150 +1,125 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Applied "ASoC: mediatek: add some core clocks for MT2701 AFE" to the
- asoc tree
-Date: Thu, 04 Jan 2018 17:42:55 +0000
-Message-ID: <E1eX9Xb-00068V-3K@debutante>
-References: <d93643da906e25360a7dbbdcbfaa2228dfd688bf.1515038387.git.ryder.lee@mediatek.com>
+From: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH v5 1/2] PCI: mediatek: Clear IRQ status after IRQ
+ dispatched to avoid reentry
+Date: Thu, 4 Jan 2018 18:40:40 +0000
+Message-ID: <20180104184040.GE12239@red-moon>
+References: <1514336394-17747-1-git-send-email-honghui.zhang@mediatek.com>
+ <1514336394-17747-2-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <d93643da906e25360a7dbbdcbfaa2228dfd688bf.1515038387.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1514336394-17747-2-git-send-email-honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, marc.zyngier-5wv7dgnIgG8@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+[+Marc]
 
-   ASoC: mediatek: add some core clocks for MT2701 AFE
+On Wed, Dec 27, 2017 at 08:59:53AM +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> There maybe a same IRQ reentry scenario after IRQ received in current
+> IRQ handle flow:
+> 	EP device		PCIe host driver	EP driver
+> 1. issue an IRQ
+> 			2. received IRQ
+> 			3. clear IRQ status
+> 			4. dispatch IRQ
+> 						5. clear IRQ source
+> The IRQ status was not successfully cleared at step 2 since the IRQ
+> source was not cleared yet. So the PCIe host driver may receive the
+> same IRQ after step 5. Then there's an IRQ reentry occurred.
+> Even worse, if the reentry IRQ was not an IRQ that EP driver expected,
+> it may not handle the IRQ. Then we may run into the infinite loop from
+> step 2 to step 4.
+> Clear the IRQ status after IRQ have been dispatched to avoid the IRQ
+> reentry.
+> This patch also fix another INTx IRQ issue by initialize the iterate
+> before the loop. If an INTx IRQ re-occurred while we are dispatching
+> the INTx IRQ, then iterate may start from PCI_NUM_INTX + INTX_SHIFT
+> instead of INTX_SHIFT for the second time entering the
+> for_each_set_bit_from() loop.
 
-has been applied to the asoc tree at
+This looks like two different issues that should be fixed with two
+patches.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+> Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Acked-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/pci/host/pcie-mediatek.c | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+For the sake of uniformity, I first want to understand why this
+driver does not call:
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+chained_irq_enter/exit()
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+in the primary handler (mtk_pcie_intr_handler()).
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+With the GIC as a primary interrupt controller we have not
+even figured out how current code can actually work without
+calling the chained_* API.
+
+I want to come up with a consistent handling of IRQ domains for
+all host bridges and any discrepancy should be explained.
+
+> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+> index db93efd..fc29a9a 100644
+> --- a/drivers/pci/host/pcie-mediatek.c
+> +++ b/drivers/pci/host/pcie-mediatek.c
+> @@ -601,15 +601,16 @@ static irqreturn_t mtk_pcie_intr_handler(int irq, void *data)
+>  	struct mtk_pcie_port *port = (struct mtk_pcie_port *)data;
+>  	unsigned long status;
+>  	u32 virq;
+> -	u32 bit = INTX_SHIFT;
+> +	u32 bit;
+>  
+>  	while ((status = readl(port->base + PCIE_INT_STATUS)) & INTX_MASK) {
+> +		bit = INTX_SHIFT;
+>  		for_each_set_bit_from(bit, &status, PCI_NUM_INTX + INTX_SHIFT) {
+> -			/* Clear the INTx */
+> -			writel(1 << bit, port->base + PCIE_INT_STATUS);
+>  			virq = irq_find_mapping(port->irq_domain,
+>  						bit - INTX_SHIFT);
+>  			generic_handle_irq(virq);
+> +			/* Clear the INTx */
+> +			writel(1 << bit, port->base + PCIE_INT_STATUS);
+
+I think that these masking/acking should actually be done through
+the irq_chip hooks (see for instance pci-ftpci100.c) - that would
+make this kind of bugs much easier to prevent (because the IRQ
+layer does the sequencing for you).
+
+Marc (CC'ed) has a more comprehensive view on this than me - I would
+like to get to a point where all host bridges uses a consistent
+approach for chained IRQ handling and I hope this bug fix can be
+a starting point.
 
 Thanks,
-Mark
+Lorenzo
 
->From 96365d9fdb2f0d81bfc010298289a8c168931cd0 Mon Sep 17 00:00:00 2001
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Date: Thu, 4 Jan 2018 15:44:07 +0800
-Subject: [PATCH] ASoC: mediatek: add some core clocks for MT2701 AFE
-
-Add three core clocks for MT2701 AFE.
-
-Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c | 30 ++++++++++++++++++++++-
- sound/soc/mediatek/mt2701/mt2701-afe-common.h     |  3 +++
- 2 files changed, 32 insertions(+), 1 deletion(-)
-
-diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
-index 56a057c78c9a..949fc3a1d025 100644
---- a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
-+++ b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
-@@ -18,8 +18,11 @@
- #include "mt2701-afe-clock-ctrl.h"
- 
- static const char *const base_clks[] = {
-+	[MT2701_INFRA_SYS_AUDIO] = "infra_sys_audio_clk",
- 	[MT2701_TOP_AUD_MCLK_SRC0] = "top_audio_mux1_sel",
- 	[MT2701_TOP_AUD_MCLK_SRC1] = "top_audio_mux2_sel",
-+	[MT2701_TOP_AUD_A1SYS] = "top_audio_a1sys_hp",
-+	[MT2701_TOP_AUD_A2SYS] = "top_audio_a2sys_hp",
- 	[MT2701_AUDSYS_AFE] = "audio_afe_pd",
- 	[MT2701_AUDSYS_AFE_CONN] = "audio_afe_conn_pd",
- 	[MT2701_AUDSYS_A1SYS] = "audio_a1sys_pd",
-@@ -169,10 +172,26 @@ static int mt2701_afe_enable_audsys(struct mtk_base_afe *afe)
- 	struct mt2701_afe_private *afe_priv = afe->platform_priv;
- 	int ret;
- 
--	ret = clk_prepare_enable(afe_priv->base_ck[MT2701_AUDSYS_AFE]);
-+	/* Enable infra clock gate */
-+	ret = clk_prepare_enable(afe_priv->base_ck[MT2701_INFRA_SYS_AUDIO]);
- 	if (ret)
- 		return ret;
- 
-+	/* Enable top a1sys clock gate */
-+	ret = clk_prepare_enable(afe_priv->base_ck[MT2701_TOP_AUD_A1SYS]);
-+	if (ret)
-+		goto err_a1sys;
-+
-+	/* Enable top a2sys clock gate */
-+	ret = clk_prepare_enable(afe_priv->base_ck[MT2701_TOP_AUD_A2SYS]);
-+	if (ret)
-+		goto err_a2sys;
-+
-+	/* Internal clock gates */
-+	ret = clk_prepare_enable(afe_priv->base_ck[MT2701_AUDSYS_AFE]);
-+	if (ret)
-+		goto err_afe;
-+
- 	ret = clk_prepare_enable(afe_priv->base_ck[MT2701_AUDSYS_A1SYS]);
- 	if (ret)
- 		goto err_audio_a1sys;
-@@ -193,6 +212,12 @@ static int mt2701_afe_enable_audsys(struct mtk_base_afe *afe)
- 	clk_disable_unprepare(afe_priv->base_ck[MT2701_AUDSYS_A1SYS]);
- err_audio_a1sys:
- 	clk_disable_unprepare(afe_priv->base_ck[MT2701_AUDSYS_AFE]);
-+err_afe:
-+	clk_disable_unprepare(afe_priv->base_ck[MT2701_TOP_AUD_A2SYS]);
-+err_a2sys:
-+	clk_disable_unprepare(afe_priv->base_ck[MT2701_TOP_AUD_A1SYS]);
-+err_a1sys:
-+	clk_disable_unprepare(afe_priv->base_ck[MT2701_INFRA_SYS_AUDIO]);
- 
- 	return ret;
- }
-@@ -205,6 +230,9 @@ static void mt2701_afe_disable_audsys(struct mtk_base_afe *afe)
- 	clk_disable_unprepare(afe_priv->base_ck[MT2701_AUDSYS_A2SYS]);
- 	clk_disable_unprepare(afe_priv->base_ck[MT2701_AUDSYS_A1SYS]);
- 	clk_disable_unprepare(afe_priv->base_ck[MT2701_AUDSYS_AFE]);
-+	clk_disable_unprepare(afe_priv->base_ck[MT2701_TOP_AUD_A1SYS]);
-+	clk_disable_unprepare(afe_priv->base_ck[MT2701_TOP_AUD_A2SYS]);
-+	clk_disable_unprepare(afe_priv->base_ck[MT2701_INFRA_SYS_AUDIO]);
- }
- 
- int mt2701_afe_enable_clock(struct mtk_base_afe *afe)
-diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-common.h b/sound/soc/mediatek/mt2701/mt2701-afe-common.h
-index 9a2b301a4c21..ae8ddeacfbfe 100644
---- a/sound/soc/mediatek/mt2701/mt2701-afe-common.h
-+++ b/sound/soc/mediatek/mt2701/mt2701-afe-common.h
-@@ -61,8 +61,11 @@ enum {
- };
- 
- enum audio_base_clock {
-+	MT2701_INFRA_SYS_AUDIO,
- 	MT2701_TOP_AUD_MCLK_SRC0,
- 	MT2701_TOP_AUD_MCLK_SRC1,
-+	MT2701_TOP_AUD_A1SYS,
-+	MT2701_TOP_AUD_A2SYS,
- 	MT2701_AUDSYS_AFE,
- 	MT2701_AUDSYS_AFE_CONN,
- 	MT2701_AUDSYS_A1SYS,
--- 
-2.15.1
+>  		}
+>  	}
+>  
+> @@ -619,10 +620,10 @@ static irqreturn_t mtk_pcie_intr_handler(int irq, void *data)
+>  
+>  			while ((imsi_status = readl(port->base + PCIE_IMSI_STATUS))) {
+>  				for_each_set_bit(bit, &imsi_status, MTK_MSI_IRQS_NUM) {
+> -					/* Clear the MSI */
+> -					writel(1 << bit, port->base + PCIE_IMSI_STATUS);
+>  					virq = irq_find_mapping(port->msi_domain, bit);
+>  					generic_handle_irq(virq);
+> +					/* Clear the MSI */
+> +					writel(1 << bit, port->base + PCIE_IMSI_STATUS);
+>  				}
+>  			}
+>  			/* Clear MSI interrupt status */
+> -- 
+> 2.6.4
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
