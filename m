@@ -1,90 +1,144 @@
-From: Philippe Ombredanne <pombredanne-od1rfyK75/E@public.gmane.org>
-Subject: Re: [PATCH 05/12] arm64: dts: mt7622: add PMIC MT6380 related nodes
-Date: Fri, 5 Jan 2018 09:21:11 +0100
-Message-ID: <CAOFm3uEkqKGhsziwf6o3i2o0Ua=ah4CHgh-Hr+aC4zHxH3mZzQ@mail.gmail.com>
-References: <cover.1515057696.git.sean.wang@mediatek.com> <0109846a8a501ca3cae33acfceb919960fddfcbf.1515057696.git.sean.wang@mediatek.com>
- <CAOFm3uF0WHO6_Y6dKu3DnAd759tA2hNQs=0-P86s1A0e==27Ow@mail.gmail.com> <1515123759.30687.71.camel@mtkswgap22>
+From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v5 1/2] PCI: mediatek: Clear IRQ status after IRQ
+ dispatched to avoid reentry
+Date: Fri, 5 Jan 2018 19:51:47 +0800
+Message-ID: <1515153107.25872.57.camel@mhfsdcap03>
+References: <1514336394-17747-1-git-send-email-honghui.zhang@mediatek.com>
+         <1514336394-17747-2-git-send-email-honghui.zhang@mediatek.com>
+         <20180104184040.GE12239@red-moon>
+         <88c84a3e-17ea-08f2-e5fc-4799b41de267@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1515123759.30687.71.camel@mtkswgap22>
+In-Reply-To: <88c84a3e-17ea-08f2-e5fc-4799b41de267-5wv7dgnIgG8@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Sean,
+On Thu, 2018-01-04 at 19:04 +0000, Marc Zyngier wrote:
+> On 04/01/18 18:40, Lorenzo Pieralisi wrote:
+> > [+Marc]
+> > 
+> > On Wed, Dec 27, 2017 at 08:59:53AM +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> >> From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >>
+> >> There maybe a same IRQ reentry scenario after IRQ received in current
+> >> IRQ handle flow:
+> >> 	EP device		PCIe host driver	EP driver
+> >> 1. issue an IRQ
+> >> 			2. received IRQ
+> >> 			3. clear IRQ status
+> >> 			4. dispatch IRQ
+> >> 						5. clear IRQ source
+> >> The IRQ status was not successfully cleared at step 2 since the IRQ
+> >> source was not cleared yet. So the PCIe host driver may receive the
+> >> same IRQ after step 5. Then there's an IRQ reentry occurred.
+> >> Even worse, if the reentry IRQ was not an IRQ that EP driver expected,
+> >> it may not handle the IRQ. Then we may run into the infinite loop from
+> >> step 2 to step 4.
+> >> Clear the IRQ status after IRQ have been dispatched to avoid the IRQ
+> >> reentry.
+> >> This patch also fix another INTx IRQ issue by initialize the iterate
+> >> before the loop. If an INTx IRQ re-occurred while we are dispatching
+> >> the INTx IRQ, then iterate may start from PCI_NUM_INTX + INTX_SHIFT
+> >> instead of INTX_SHIFT for the second time entering the
+> >> for_each_set_bit_from() loop.
+> > 
+> > This looks like two different issues that should be fixed with two
+> > patches.
 
-On Fri, Jan 5, 2018 at 4:42 AM, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> On Thu, 2018-01-04 at 11:27 +0100, Philippe Ombredanne wrote:
->> Sean,
->>
->> On Thu, Jan 4, 2018 at 10:40 AM,  <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->> > From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> >
->> > Enable pwrap and MT6380 on mt7622-rfb1 board. Also add all mt6380
->> > regulator nodes in an alone file to allow similar boards using MT6380
->> > able to resue the configuration.
->> >
->> > Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> > Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
->> > Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->> > ---
->> >  arch/arm64/boot/dts/mediatek/mt6380.dtsi     | 91 ++++++++++++++++++++++++++++
->> >  arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts |  8 +++
->> >  arch/arm64/boot/dts/mediatek/mt7622.dtsi     | 12 ++++
->> >  3 files changed, 111 insertions(+)
->> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt6380.dtsi
->> >
->> > diff --git a/arch/arm64/boot/dts/mediatek/mt6380.dtsi b/arch/arm64/boot/dts/mediatek/mt6380.dtsi
->> > new file mode 100644
->> > index 0000000..7eb7dc2
->> > --- /dev/null
->> > +++ b/arch/arm64/boot/dts/mediatek/mt6380.dtsi
->> > @@ -0,0 +1,91 @@
->> > +/*
->> > + * Copyright (c) 2018 MediaTek Inc.
->> > + * Author: Chenglin Xu <chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> > + *        Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> > + *
->> > + * This program is free software; you can redistribute it and/or modify
->> > + * it under the terms of the GNU General Public License version 2 as
->> > + * published by the Free Software Foundation.
->> > + *
->> > + * This program is distributed in the hope that it will be useful,
->> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> > + * GNU General Public License for more details.
->> > + */
->>
->> Would you mind using SPDX tags instead of this fine but long legalese?
->> This is documented in Thomas patches [1].
->
->> Also if you could spread the word in your team, this would earn you
->> good karma points.
->> Thank you!
->>
->> [1] https://lkml.org/lkml/2017/12/28/323
->
->
-> Hi, Philippe
->
-> thanks for your suggestion
->
-> Certainly, this can be replaced with
->
-> SPDX-License-Identifier: GPL-2.0
->
-> most drivers from MediaTek use the similar disclaimer, it should be fine
-> to use SPDX tags instead.
->
->         Sean
->
+Ok, I split this into two patches and figure out a more reasonable
+approach by using irq_chip solution.
 
-Thank you! that's great.
+> > 
+> >> Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >> Acked-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >> ---
+> >>  drivers/pci/host/pcie-mediatek.c | 11 ++++++-----
+> >>  1 file changed, 6 insertions(+), 5 deletions(-)
+> > 
+> > For the sake of uniformity, I first want to understand why this
+> > driver does not call:
+> > 
+> > chained_irq_enter/exit()
+> > 
+> > in the primary handler (mtk_pcie_intr_handler()).
+> > 
+> > With the GIC as a primary interrupt controller we have not
+> > even figured out how current code can actually work without
+> > calling the chained_* API.
+> > 
+> > I want to come up with a consistent handling of IRQ domains for
+> > all host bridges and any discrepancy should be explained.
+> 
+> That's because this driver is a huge hack, see below:
+> 
+> > 
+> >> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+> >> index db93efd..fc29a9a 100644
+> >> --- a/drivers/pci/host/pcie-mediatek.c
+> >> +++ b/drivers/pci/host/pcie-mediatek.c
+> >> @@ -601,15 +601,16 @@ static irqreturn_t mtk_pcie_intr_handler(int irq, void *data)
+> 
+> This function is not a chained irqchip, but an interrupt handler...
+> 
+> >>  	struct mtk_pcie_port *port = (struct mtk_pcie_port *)data;
+> >>  	unsigned long status;
+> >>  	u32 virq;
+> >> -	u32 bit = INTX_SHIFT;
+> >> +	u32 bit;
+> >>  
+> >>  	while ((status = readl(port->base + PCIE_INT_STATUS)) & INTX_MASK) {
+> >> +		bit = INTX_SHIFT;
+> >>  		for_each_set_bit_from(bit, &status, PCI_NUM_INTX + INTX_SHIFT) {
+> >> -			/* Clear the INTx */
+> >> -			writel(1 << bit, port->base + PCIE_INT_STATUS);
+> >>  			virq = irq_find_mapping(port->irq_domain,
+> >>  						bit - INTX_SHIFT);
+> >>  			generic_handle_irq(virq);
+> 
+> and nonetheless, this calls into generic_handle_irq(). That's a complete
+> violation of the interrupt layering. Maybe there is a good reason for
+> it, but I'd like to know which one.
+> 
+> Which means that all of the ack/mask has to be done outside of the
+> irqchip framework too... Disgusting.
+> 
+> >> +			/* Clear the INTx */
+> >> +			writel(1 << bit, port->base + PCIE_INT_STATUS);
+> > 
+> > I think that these masking/acking should actually be done through
+> > the irq_chip hooks (see for instance pci-ftpci100.c) - that would
+> > make this kind of bugs much easier to prevent (because the IRQ
+> > layer does the sequencing for you).
+> 
+> +1.
+> 
 
--- 
-Cordially
-Philippe Ombredanne
+Thanks for your advice, I need to do some homework to have a better
+understanding of the irq_chip approach.
+
+> > Marc (CC'ed) has a more comprehensive view on this than me - I would
+> > like to get to a point where all host bridges uses a consistent
+> > approach for chained IRQ handling and I hope this bug fix can be
+> > a starting point.
+> 
+> +1 again. We definitely need to come up with some form of common
+> approach for all these host drivers, and maybe turn that into a library...
+> 
+
+Well, this is beyond my knowledge now, I guess I can figure out how to
+using irq_chip for the first step, then I may following this "common
+approach" after we have a solution for that?
+
+thanks.
+> Thanks,
+> 
+> 	M.
+
+
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
