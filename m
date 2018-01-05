@@ -1,144 +1,163 @@
-From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 1/2] PCI: mediatek: Clear IRQ status after IRQ
- dispatched to avoid reentry
-Date: Fri, 5 Jan 2018 19:51:47 +0800
-Message-ID: <1515153107.25872.57.camel@mhfsdcap03>
-References: <1514336394-17747-1-git-send-email-honghui.zhang@mediatek.com>
-         <1514336394-17747-2-git-send-email-honghui.zhang@mediatek.com>
-         <20180104184040.GE12239@red-moon>
-         <88c84a3e-17ea-08f2-e5fc-4799b41de267@arm.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 06/12] mfd: add DT bindings for MedaiTek audio subsystem
+Date: Fri, 5 Jan 2018 09:45:48 -0600
+Message-ID: <20180105154548.gn5pj4ztefnr656q@rob-hp-laptop>
+References: <cover.1514881870.git.ryder.lee@mediatek.com>
+ <9ae24121a9cea18046428afd1d92c1b8601c0e05.1514881870.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <88c84a3e-17ea-08f2-e5fc-4799b41de267-5wv7dgnIgG8@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <9ae24121a9cea18046428afd1d92c1b8601c0e05.1514881870.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xinping.qian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2018-01-04 at 19:04 +0000, Marc Zyngier wrote:
-> On 04/01/18 18:40, Lorenzo Pieralisi wrote:
-> > [+Marc]
-> > 
-> > On Wed, Dec 27, 2017 at 08:59:53AM +0800, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> >> From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >>
-> >> There maybe a same IRQ reentry scenario after IRQ received in current
-> >> IRQ handle flow:
-> >> 	EP device		PCIe host driver	EP driver
-> >> 1. issue an IRQ
-> >> 			2. received IRQ
-> >> 			3. clear IRQ status
-> >> 			4. dispatch IRQ
-> >> 						5. clear IRQ source
-> >> The IRQ status was not successfully cleared at step 2 since the IRQ
-> >> source was not cleared yet. So the PCIe host driver may receive the
-> >> same IRQ after step 5. Then there's an IRQ reentry occurred.
-> >> Even worse, if the reentry IRQ was not an IRQ that EP driver expected,
-> >> it may not handle the IRQ. Then we may run into the infinite loop from
-> >> step 2 to step 4.
-> >> Clear the IRQ status after IRQ have been dispatched to avoid the IRQ
-> >> reentry.
-> >> This patch also fix another INTx IRQ issue by initialize the iterate
-> >> before the loop. If an INTx IRQ re-occurred while we are dispatching
-> >> the INTx IRQ, then iterate may start from PCI_NUM_INTX + INTX_SHIFT
-> >> instead of INTX_SHIFT for the second time entering the
-> >> for_each_set_bit_from() loop.
-> > 
-> > This looks like two different issues that should be fixed with two
-> > patches.
+On Tue, Jan 02, 2018 at 07:47:31PM +0800, Ryder Lee wrote:
+> This patch adds documentation of the DT bindings for the MediaTek
+> audio subsystem wrapper.
+> 
+> Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  .../devicetree/bindings/mfd/mtk-audsys.txt         | 109 +++++++++++++++++++++
+>  1 file changed, 109 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mfd/mtk-audsys.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/mtk-audsys.txt b/Documentation/devicetree/bindings/mfd/mtk-audsys.txt
+> new file mode 100644
+> index 0000000..7739580
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/mtk-audsys.txt
+> @@ -0,0 +1,109 @@
+> +MediaTek Audio Subsystem Wrapper
+> +
+> +Required properties:
+> +- compatible: Should be "mediatek,mt2701-audsys-core".
+> +- reg: Should contain the device's region location and size.
 
-Ok, I split this into two patches and figure out a more reasonable
-approach by using irq_chip solution.
+The example shows 2 regions. What are they?
 
-> > 
-> >> Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >> Acked-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >> ---
-> >>  drivers/pci/host/pcie-mediatek.c | 11 ++++++-----
-> >>  1 file changed, 6 insertions(+), 5 deletions(-)
-> > 
-> > For the sake of uniformity, I first want to understand why this
-> > driver does not call:
-> > 
-> > chained_irq_enter/exit()
-> > 
-> > in the primary handler (mtk_pcie_intr_handler()).
-> > 
-> > With the GIC as a primary interrupt controller we have not
-> > even figured out how current code can actually work without
-> > calling the chained_* API.
-> > 
-> > I want to come up with a consistent handling of IRQ domains for
-> > all host bridges and any discrepancy should be explained.
-> 
-> That's because this driver is a huge hack, see below:
-> 
-> > 
-> >> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-> >> index db93efd..fc29a9a 100644
-> >> --- a/drivers/pci/host/pcie-mediatek.c
-> >> +++ b/drivers/pci/host/pcie-mediatek.c
-> >> @@ -601,15 +601,16 @@ static irqreturn_t mtk_pcie_intr_handler(int irq, void *data)
-> 
-> This function is not a chained irqchip, but an interrupt handler...
-> 
-> >>  	struct mtk_pcie_port *port = (struct mtk_pcie_port *)data;
-> >>  	unsigned long status;
-> >>  	u32 virq;
-> >> -	u32 bit = INTX_SHIFT;
-> >> +	u32 bit;
-> >>  
-> >>  	while ((status = readl(port->base + PCIE_INT_STATUS)) & INTX_MASK) {
-> >> +		bit = INTX_SHIFT;
-> >>  		for_each_set_bit_from(bit, &status, PCI_NUM_INTX + INTX_SHIFT) {
-> >> -			/* Clear the INTx */
-> >> -			writel(1 << bit, port->base + PCIE_INT_STATUS);
-> >>  			virq = irq_find_mapping(port->irq_domain,
-> >>  						bit - INTX_SHIFT);
-> >>  			generic_handle_irq(virq);
-> 
-> and nonetheless, this calls into generic_handle_irq(). That's a complete
-> violation of the interrupt layering. Maybe there is a good reason for
-> it, but I'd like to know which one.
-> 
-> Which means that all of the ack/mask has to be done outside of the
-> irqchip framework too... Disgusting.
-> 
-> >> +			/* Clear the INTx */
-> >> +			writel(1 << bit, port->base + PCIE_INT_STATUS);
-> > 
-> > I think that these masking/acking should actually be done through
-> > the irq_chip hooks (see for instance pci-ftpci100.c) - that would
-> > make this kind of bugs much easier to prevent (because the IRQ
-> > layer does the sequencing for you).
-> 
-> +1.
-> 
+> +- clocks: Must contain an entry for each entry in clock-names.
+> +  See ../clocks/clock-bindings.txt for details.
+> +- clock-names: Should contain "infra_aud", "top_a1sys", "top_a2sys".
+> +
+> +Required subnodes are described in:
+> +- ../sound/mt2701-afe-pcm.txt.
+> +- ../arm/mediatek/mediatek,audsys.txt.
+> +
+> +Example:
+> +
+> +	audio-subsystm@11220000 {
+> +		compatible = "mediatek,mt2701-audsys-core";
+> +		reg = <0 0x11220000 0 0x2000>,
+> +		      <0 0x112a0000 0 0x20000>;
+> +		clocks = <&infracfg CLK_INFRA_AUDIO>,
+> +			 <&topckgen CLK_TOP_AUD_48K_TIMING>,
+> +			 <&topckgen CLK_TOP_AUD_44K_TIMING>;
+> +		clock-names = "infra_aud", "top_a1sys", "top_a2sys";
+> +
+> +		audsys: clock {
+> +			compatible = "mediatek,mt2701-audsys";
+> +			#clock-cells = <1>;
 
-Thanks for your advice, I need to do some homework to have a better
-understanding of the irq_chip approach.
+There's no need for a node here. Just put #clock-cells in the parent.
 
-> > Marc (CC'ed) has a more comprehensive view on this than me - I would
-> > like to get to a point where all host bridges uses a consistent
-> > approach for chained IRQ handling and I hope this bug fix can be
-> > a starting point.
+> +		};
+> +
+> +		afe: audio {
+> +			compatible = "mediatek,mt2701-audio";
+
+No registers associated with this?
+
+Looks to me like you are creating nodes just to instantiate drivers. 
+Describe h/w blocks. DT is not the only way to instantiate drivers.
+
+> +			interrupts =  <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
+> +				      <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
+> +			interrupt-names	= "afe", "asys";
+> +			power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+> +
+> +			clocks = <&topckgen CLK_TOP_AUD_MUX1_SEL>,
+> +				 <&topckgen CLK_TOP_AUD_MUX2_SEL>,
+> +				 <&topckgen CLK_TOP_AUD_K1_SRC_SEL>,
+> +				 <&topckgen CLK_TOP_AUD_K2_SRC_SEL>,
+> +				 <&topckgen CLK_TOP_AUD_K3_SRC_SEL>,
+> +				 <&topckgen CLK_TOP_AUD_K4_SRC_SEL>,
+> +				 <&topckgen CLK_TOP_AUD_K1_SRC_DIV>,
+> +				 <&topckgen CLK_TOP_AUD_K2_SRC_DIV>,
+> +				 <&topckgen CLK_TOP_AUD_K3_SRC_DIV>,
+> +				 <&topckgen CLK_TOP_AUD_K4_SRC_DIV>,
+> +				 <&topckgen CLK_TOP_AUD_I2S1_MCLK>,
+> +				 <&topckgen CLK_TOP_AUD_I2S2_MCLK>,
+> +				 <&topckgen CLK_TOP_AUD_I2S3_MCLK>,
+> +				 <&topckgen CLK_TOP_AUD_I2S4_MCLK>,
+> +				 <&audsys CLK_AUD_I2SO1>,
+> +				 <&audsys CLK_AUD_I2SO2>,
+> +				 <&audsys CLK_AUD_I2SO3>,
+> +				 <&audsys CLK_AUD_I2SO4>,
+> +				 <&audsys CLK_AUD_I2SIN1>,
+> +				 <&audsys CLK_AUD_I2SIN2>,
+> +				 <&audsys CLK_AUD_I2SIN3>,
+> +				 <&audsys CLK_AUD_I2SIN4>,
+> +				 <&audsys CLK_AUD_ASRCO1>,
+> +				 <&audsys CLK_AUD_ASRCO2>,
+> +				 <&audsys CLK_AUD_ASRCO3>,
+> +				 <&audsys CLK_AUD_ASRCO4>,
+> +				 <&audsys CLK_AUD_AFE>,
+> +				 <&audsys CLK_AUD_AFE_CONN>,
+> +				 <&audsys CLK_AUD_A1SYS>,
+> +				 <&audsys CLK_AUD_A2SYS>,
+> +				 <&audsys CLK_AUD_AFE_MRGIF>;
+> +
+> +			clock-names = "top_audio_mux1_sel",
+> +				      "top_audio_mux2_sel",
+> +				      "i2s0_src_sel",
+> +				      "i2s1_src_sel",
+> +				      "i2s2_src_sel",
+> +				      "i2s3_src_sel",
+> +				      "i2s0_src_div",
+> +				      "i2s1_src_div",
+> +				      "i2s2_src_div",
+> +				      "i2s3_src_div",
+> +				      "i2s0_mclk_en",
+> +				      "i2s1_mclk_en",
+> +				      "i2s2_mclk_en",
+> +				      "i2s3_mclk_en",
+> +				      "i2so0_hop_ck",
+> +				      "i2so1_hop_ck",
+> +				      "i2so2_hop_ck",
+> +				      "i2so3_hop_ck",
+> +				      "i2si0_hop_ck",
+> +				      "i2si1_hop_ck",
+> +				      "i2si2_hop_ck",
+> +				      "i2si3_hop_ck",
+> +				      "asrc0_out_ck",
+> +				      "asrc1_out_ck",
+> +				      "asrc2_out_ck",
+> +				      "asrc3_out_ck",
+> +				      "audio_afe_pd",
+> +				      "audio_afe_conn_pd",
+> +				      "audio_a1sys_pd",
+> +				      "audio_a2sys_pd",
+> +				      "audio_mrgif_pd";
+> +
+> +			assigned-clocks = <&topckgen CLK_TOP_AUD_MUX1_SEL>,
+> +					  <&topckgen CLK_TOP_AUD_MUX2_SEL>,
+> +					  <&topckgen CLK_TOP_AUD_MUX1_DIV>,
+> +					  <&topckgen CLK_TOP_AUD_MUX2_DIV>;
+> +			assigned-clock-parents = <&topckgen CLK_TOP_AUD1PLL_98M>,
+> +						 <&topckgen CLK_TOP_AUD2PLL_90M>;
+> +			assigned-clock-rates = <0>, <0>, <49152000>, <45158400>;
+> +		};
+> +	};
+> -- 
+> 1.9.1
 > 
-> +1 again. We definitely need to come up with some form of common
-> approach for all these host drivers, and maybe turn that into a library...
-> 
-
-Well, this is beyond my knowledge now, I guess I can figure out how to
-using irq_chip for the first step, then I may following this "common
-approach" after we have a solution for that?
-
-thanks.
-> Thanks,
-> 
-> 	M.
-
-
+> --
+> To unsubscribe from this list: send the line "unsubscribe devicetree" in
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
