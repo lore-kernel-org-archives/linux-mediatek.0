@@ -1,7 +1,7 @@
 From: David Lechner <david@lechnology.com>
-Subject: [PATCH 5/7] clk: rockchip: make use of clk_alloc_onecell_data()
-Date: Thu,  4 Jan 2018 18:38:10 -0600
-Message-ID: <1515112695-3160-6-git-send-email-david@lechnology.com>
+Subject: [PATCH 6/7] clk: st: make use of clk_alloc_onecell_data()
+Date: Thu,  4 Jan 2018 18:38:11 -0600
+Message-ID: <1515112695-3160-7-git-send-email-david@lechnology.com>
 References: <1515112695-3160-1-git-send-email-david@lechnology.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1515112695-3160-1-git-send-email-david@lechnology.com>
@@ -15,42 +15,116 @@ clk_onecell_data.
 
 Signed-off-by: David Lechner <david@lechnology.com>
 ---
- drivers/clk/rockchip/clk-rockchip.c | 11 +----------
- 1 file changed, 1 insertion(+), 10 deletions(-)
+ drivers/clk/st/clk-flexgen.c | 17 +++++------------
+ drivers/clk/st/clkgen-fsyn.c | 11 +----------
+ drivers/clk/st/clkgen-pll.c  | 12 ++----------
+ 3 files changed, 8 insertions(+), 32 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-rockchip.c b/drivers/clk/rockchip/clk-rockchip.c
-index 2c9bb81..499af3a 100644
---- a/drivers/clk/rockchip/clk-rockchip.c
-+++ b/drivers/clk/rockchip/clk-rockchip.c
-@@ -52,19 +52,12 @@ static void __init rk2928_gate_clk_init(struct device_node *node)
- 	if (!reg)
- 		return;
- 
--	clk_data = kzalloc(sizeof(struct clk_onecell_data), GFP_KERNEL);
-+	clk_data = clk_alloc_onecell_data(qty);
- 	if (!clk_data) {
- 		iounmap(reg);
- 		return;
+diff --git a/drivers/clk/st/clk-flexgen.c b/drivers/clk/st/clk-flexgen.c
+index 918ba31..29ff00d 100644
+--- a/drivers/clk/st/clk-flexgen.c
++++ b/drivers/clk/st/clk-flexgen.c
+@@ -310,7 +310,7 @@ static void __init st_of_flexgen_setup(struct device_node *np)
+ {
+ 	struct device_node *pnode;
+ 	void __iomem *reg;
+-	struct clk_onecell_data *clk_data;
++	struct clk_onecell_data *clk_data = NULL;
+ 	const char **parents;
+ 	int num_parents, i;
+ 	spinlock_t *rlock = NULL;
+@@ -341,21 +341,15 @@ static void __init st_of_flexgen_setup(struct device_node *np)
+ 		clk_mode = data->mode;
  	}
  
--	clk_data->clks = kzalloc(qty * sizeof(struct clk *), GFP_KERNEL);
+-	clk_data = kzalloc(sizeof(*clk_data), GFP_KERNEL);
+-	if (!clk_data)
+-		goto err;
+-
+ 	ret = of_property_count_strings(np, "clock-output-names");
+ 	if (ret <= 0) {
+ 		pr_err("%s: Failed to get number of output clocks (%d)",
+-				__func__, clk_data->clk_num);
++				__func__, ret);
+ 		goto err;
+ 	}
+-	clk_data->clk_num = ret;
+ 
+-	clk_data->clks = kcalloc(clk_data->clk_num, sizeof(struct clk *),
+-			GFP_KERNEL);
+-	if (!clk_data->clks)
++	clk_data = clk_alloc_onecell_data(ret);
++	if (!clk_data)
+ 		goto err;
+ 
+ 	rlock = kzalloc(sizeof(spinlock_t), GFP_KERNEL);
+@@ -397,8 +391,7 @@ static void __init st_of_flexgen_setup(struct device_node *np)
+ 
+ err:
+ 	iounmap(reg);
+-	if (clk_data)
+-		kfree(clk_data->clks);
++	clk_free_onecell_data(clk_data);
+ 	kfree(clk_data);
+ 	kfree(parents);
+ 	kfree(rlock);
+diff --git a/drivers/clk/st/clkgen-fsyn.c b/drivers/clk/st/clkgen-fsyn.c
+index 14819d9..48e6bff 100644
+--- a/drivers/clk/st/clkgen-fsyn.c
++++ b/drivers/clk/st/clkgen-fsyn.c
+@@ -869,19 +869,10 @@ static void __init st_of_create_quadfs_fsynths(
+ 	struct clk_onecell_data *clk_data;
+ 	int fschan;
+ 
+-	clk_data = kzalloc(sizeof(*clk_data), GFP_KERNEL);
++	clk_data = clk_alloc_onecell_data(QUADFS_MAX_CHAN);
+ 	if (!clk_data)
+ 		return;
+ 
+-	clk_data->clk_num = QUADFS_MAX_CHAN;
+-	clk_data->clks = kzalloc(QUADFS_MAX_CHAN * sizeof(struct clk *),
+-				 GFP_KERNEL);
+-
 -	if (!clk_data->clks) {
 -		kfree(clk_data);
--		iounmap(reg);
 -		return;
 -	}
 -
- 	flags = CLK_GATE_HIWORD_MASK | CLK_GATE_SET_TO_DISABLE;
+ 	for (fschan = 0; fschan < QUADFS_MAX_CHAN; fschan++) {
+ 		struct clk *clk;
+ 		const char *clk_name;
+diff --git a/drivers/clk/st/clkgen-pll.c b/drivers/clk/st/clkgen-pll.c
+index 25bda48..07795ee 100644
+--- a/drivers/clk/st/clkgen-pll.c
++++ b/drivers/clk/st/clkgen-pll.c
+@@ -733,17 +733,10 @@ static void __init clkgen_c32_pll_setup(struct device_node *np,
  
- 	for (i = 0; i < qty; i++) {
-@@ -91,8 +84,6 @@ static void __init rk2928_gate_clk_init(struct device_node *node)
- 		WARN_ON(IS_ERR(clk_data->clks[i]));
- 	}
+ 	num_odfs = data->num_odfs;
  
--	clk_data->clk_num = qty;
+-	clk_data = kzalloc(sizeof(*clk_data), GFP_KERNEL);
++	clk_data = clk_alloc_onecell_data(num_odfs);
+ 	if (!clk_data)
+ 		return;
+ 
+-	clk_data->clk_num = num_odfs;
+-	clk_data->clks = kzalloc(clk_data->clk_num * sizeof(struct clk *),
+-				 GFP_KERNEL);
 -
- 	of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+-	if (!clk_data->clks)
+-		goto err;
+-
+ 	for (odf = 0; odf < num_odfs; odf++) {
+ 		struct clk *clk;
+ 		const char *clk_name;
+@@ -768,8 +761,7 @@ static void __init clkgen_c32_pll_setup(struct device_node *np,
+ 
+ err:
+ 	kfree(pll_name);
+-	kfree(clk_data->clks);
+-	kfree(clk_data);
++	clk_free_onecell_data(clk_data);
  }
- CLK_OF_DECLARE(rk2928_gate, "rockchip,rk2928-gate-clk", rk2928_gate_clk_init);
+ static void __init clkgen_c32_pll0_setup(struct device_node *np)
+ {
 -- 
 2.7.4
