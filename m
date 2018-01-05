@@ -1,126 +1,72 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: Re: [PATCH v5 1/2] PCI: mediatek: Clear IRQ status after IRQ
- dispatched to avoid reentry
-Date: Thu, 4 Jan 2018 19:04:01 +0000
-Message-ID: <88c84a3e-17ea-08f2-e5fc-4799b41de267@arm.com>
-References: <1514336394-17747-1-git-send-email-honghui.zhang@mediatek.com>
- <1514336394-17747-2-git-send-email-honghui.zhang@mediatek.com>
- <20180104184040.GE12239@red-moon>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180104184040.GE12239@red-moon>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, honghui.zhang@mediatek.com
-Cc: bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+From: David Lechner <david@lechnology.com>
+Subject: [PATCH 0/7] clk: add helper functions for managing clk_onecell_data
+Date: Thu,  4 Jan 2018 18:38:05 -0600
+Message-ID: <1515112695-3160-1-git-send-email-david@lechnology.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux-clk@vger.kernel.org
+Cc: David Lechner <david@lechnology.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, =?UTF-8?q?Emilio=20L=C3=B3pez?= <emilio@elopez.com.ar>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 04/01/18 18:40, Lorenzo Pieralisi wrote:
-> [+Marc]
-> 
-> On Wed, Dec 27, 2017 at 08:59:53AM +0800, honghui.zhang@mediatek.com wrote:
->> From: Honghui Zhang <honghui.zhang@mediatek.com>
->>
->> There maybe a same IRQ reentry scenario after IRQ received in current
->> IRQ handle flow:
->> 	EP device		PCIe host driver	EP driver
->> 1. issue an IRQ
->> 			2. received IRQ
->> 			3. clear IRQ status
->> 			4. dispatch IRQ
->> 						5. clear IRQ source
->> The IRQ status was not successfully cleared at step 2 since the IRQ
->> source was not cleared yet. So the PCIe host driver may receive the
->> same IRQ after step 5. Then there's an IRQ reentry occurred.
->> Even worse, if the reentry IRQ was not an IRQ that EP driver expected,
->> it may not handle the IRQ. Then we may run into the infinite loop from
->> step 2 to step 4.
->> Clear the IRQ status after IRQ have been dispatched to avoid the IRQ
->> reentry.
->> This patch also fix another INTx IRQ issue by initialize the iterate
->> before the loop. If an INTx IRQ re-occurred while we are dispatching
->> the INTx IRQ, then iterate may start from PCI_NUM_INTX + INTX_SHIFT
->> instead of INTX_SHIFT for the second time entering the
->> for_each_set_bit_from() loop.
-> 
-> This looks like two different issues that should be fixed with two
-> patches.
-> 
->> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
->> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
->> ---
->>  drivers/pci/host/pcie-mediatek.c | 11 ++++++-----
->>  1 file changed, 6 insertions(+), 5 deletions(-)
-> 
-> For the sake of uniformity, I first want to understand why this
-> driver does not call:
-> 
-> chained_irq_enter/exit()
-> 
-> in the primary handler (mtk_pcie_intr_handler()).
-> 
-> With the GIC as a primary interrupt controller we have not
-> even figured out how current code can actually work without
-> calling the chained_* API.
-> 
-> I want to come up with a consistent handling of IRQ domains for
-> all host bridges and any discrepancy should be explained.
+I am writing some clock drivers that use struct clk_onecell_data a few
+times, so I decided to write a helper function to allocate the memory
+since it is a two step process and can be tedious. Then I noticed that
+mediatek already had such a helper function, so I have moved that to the
+clk core and made use of it in other drivers where possible.
 
-That's because this driver is a huge hack, see below:
+David Lechner (7):
+  clk: add helper function for allocating clk_onecell_data
+  clk: mediatek: make use of clk_alloc_onecell_data()
+  clk: qoriq: make use of clk_alloc_onecell_data()
+  clk: hisilicon: make use of clk_alloc_onecell_data()
+  clk: rockchip: make use of clk_alloc_onecell_data()
+  clk: st: make use of clk_alloc_onecell_data()
+  clk: sunxi: make use of clk_alloc_onecell_data()
 
-> 
->> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
->> index db93efd..fc29a9a 100644
->> --- a/drivers/pci/host/pcie-mediatek.c
->> +++ b/drivers/pci/host/pcie-mediatek.c
->> @@ -601,15 +601,16 @@ static irqreturn_t mtk_pcie_intr_handler(int irq, void *data)
+ drivers/clk/clk-qoriq.c                  | 13 +++------
+ drivers/clk/clk.c                        | 49 ++++++++++++++++++++++++++++++++
+ drivers/clk/hisilicon/clk-hi3620.c       |  7 +----
+ drivers/clk/mediatek/clk-mt2701-bdp.c    |  2 +-
+ drivers/clk/mediatek/clk-mt2701-eth.c    |  2 +-
+ drivers/clk/mediatek/clk-mt2701-hif.c    |  2 +-
+ drivers/clk/mediatek/clk-mt2701-img.c    |  2 +-
+ drivers/clk/mediatek/clk-mt2701-mm.c     |  2 +-
+ drivers/clk/mediatek/clk-mt2701-vdec.c   |  2 +-
+ drivers/clk/mediatek/clk-mt2701.c        | 10 +++----
+ drivers/clk/mediatek/clk-mt2712-bdp.c    |  2 +-
+ drivers/clk/mediatek/clk-mt2712-img.c    |  2 +-
+ drivers/clk/mediatek/clk-mt2712-jpgdec.c |  2 +-
+ drivers/clk/mediatek/clk-mt2712-mfg.c    |  2 +-
+ drivers/clk/mediatek/clk-mt2712-mm.c     |  2 +-
+ drivers/clk/mediatek/clk-mt2712-vdec.c   |  2 +-
+ drivers/clk/mediatek/clk-mt2712-venc.c   |  2 +-
+ drivers/clk/mediatek/clk-mt2712.c        | 12 ++++----
+ drivers/clk/mediatek/clk-mt6797-img.c    |  2 +-
+ drivers/clk/mediatek/clk-mt6797-mm.c     |  2 +-
+ drivers/clk/mediatek/clk-mt6797-vdec.c   |  2 +-
+ drivers/clk/mediatek/clk-mt6797-venc.c   |  2 +-
+ drivers/clk/mediatek/clk-mt6797.c        |  8 +++---
+ drivers/clk/mediatek/clk-mt7622-aud.c    |  2 +-
+ drivers/clk/mediatek/clk-mt7622-eth.c    |  4 +--
+ drivers/clk/mediatek/clk-mt7622-hif.c    |  4 +--
+ drivers/clk/mediatek/clk-mt7622.c        |  8 +++---
+ drivers/clk/mediatek/clk-mt8135.c        |  8 +++---
+ drivers/clk/mediatek/clk-mt8173.c        | 18 ++++++------
+ drivers/clk/mediatek/clk-mtk.c           | 25 ----------------
+ drivers/clk/mediatek/clk-mtk.h           |  2 --
+ drivers/clk/rockchip/clk-rockchip.c      | 11 +------
+ drivers/clk/st/clk-flexgen.c             | 17 ++++-------
+ drivers/clk/st/clkgen-fsyn.c             | 11 +------
+ drivers/clk/st/clkgen-pll.c              | 12 ++------
+ drivers/clk/sunxi/clk-a10-pll2.c         | 14 +++------
+ drivers/clk/sunxi/clk-mod0.c             | 13 ++-------
+ drivers/clk/sunxi/clk-simple-gates.c     | 13 ++-------
+ drivers/clk/sunxi/clk-sun8i-bus-gates.c  | 13 ++-------
+ drivers/clk/sunxi/clk-sunxi.c            | 14 +++------
+ drivers/clk/sunxi/clk-usb.c              |  8 +-----
+ include/linux/clk-provider.h             |  3 ++
+ 42 files changed, 138 insertions(+), 195 deletions(-)
 
-This function is not a chained irqchip, but an interrupt handler...
-
->>  	struct mtk_pcie_port *port = (struct mtk_pcie_port *)data;
->>  	unsigned long status;
->>  	u32 virq;
->> -	u32 bit = INTX_SHIFT;
->> +	u32 bit;
->>  
->>  	while ((status = readl(port->base + PCIE_INT_STATUS)) & INTX_MASK) {
->> +		bit = INTX_SHIFT;
->>  		for_each_set_bit_from(bit, &status, PCI_NUM_INTX + INTX_SHIFT) {
->> -			/* Clear the INTx */
->> -			writel(1 << bit, port->base + PCIE_INT_STATUS);
->>  			virq = irq_find_mapping(port->irq_domain,
->>  						bit - INTX_SHIFT);
->>  			generic_handle_irq(virq);
-
-and nonetheless, this calls into generic_handle_irq(). That's a complete
-violation of the interrupt layering. Maybe there is a good reason for
-it, but I'd like to know which one.
-
-Which means that all of the ack/mask has to be done outside of the
-irqchip framework too... Disgusting.
-
->> +			/* Clear the INTx */
->> +			writel(1 << bit, port->base + PCIE_INT_STATUS);
-> 
-> I think that these masking/acking should actually be done through
-> the irq_chip hooks (see for instance pci-ftpci100.c) - that would
-> make this kind of bugs much easier to prevent (because the IRQ
-> layer does the sequencing for you).
-
-+1.
-
-> Marc (CC'ed) has a more comprehensive view on this than me - I would
-> like to get to a point where all host bridges uses a consistent
-> approach for chained IRQ handling and I hope this bug fix can be
-> a starting point.
-
-+1 again. We definitely need to come up with some form of common
-approach for all these host drivers, and maybe turn that into a library...
-
-Thanks,
-
-	M.
 -- 
-Jazz is not dead. It just smells funny...
+2.7.4
+
