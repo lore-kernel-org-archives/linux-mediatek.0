@@ -1,71 +1,39 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v1 5/6] clk: mediatek: update missing clock data for
- MT7622 audsys
-Date: Fri, 5 Jan 2018 13:04:04 -0600
-Message-ID: <20180105190404.37c5gyjgoboibbrl@rob-hp-laptop>
-References: <cover.1515038387.git.ryder.lee@mediatek.com>
- <296e97ad8720d575918657e821bb2a01a2d31c49.1515038387.git.ryder.lee@mediatek.com>
+From: Wei Yongjun <weiyongjun1@huawei.com>
+Subject: [PATCH -next] ASoC: mediatek: mt2701: fix return value check in mt2701_afe_pcm_dev_probe()
+Date: Mon, 8 Jan 2018 02:15:01 +0000
+Message-ID: <1515377701-37553-1-git-send-email-weiyongjun1@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <296e97ad8720d575918657e821bb2a01a2d31c49.1515038387.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Stephen Boyd <sboyd@codeaurora.org>, Mark Brown <broonie@kernel.org>, Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, Garlic Tseng <garlic.tseng@mediatek.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Garlic Tseng <garlic.tseng@mediatek.com>, "Gustavo A. R. Silva" <garsilva@embeddedor.com>
+Cc: Wei Yongjun <weiyongjun1@huawei.com>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jan 04, 2018 at 03:44:21PM +0800, Ryder Lee wrote:
-> Add missing clock data 'CLK_AUDIO_AFE_CONN' for MT7622 audsys.
-> 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> ---
->  drivers/clk/mediatek/clk-mt7622-aud.c  | 3 ++-
->  include/dt-bindings/clock/mt7622-clk.h | 3 ++-
->  2 files changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/clk/mediatek/clk-mt7622-aud.c b/drivers/clk/mediatek/clk-mt7622-aud.c
-> index fad7d9f..96959ad 100644
-> --- a/drivers/clk/mediatek/clk-mt7622-aud.c
-> +++ b/drivers/clk/mediatek/clk-mt7622-aud.c
-> @@ -106,6 +106,7 @@
->  	GATE_AUDIO1(CLK_AUDIO_INTDIR, "audio_intdir", "intdir_sel", 20),
->  	GATE_AUDIO1(CLK_AUDIO_A1SYS, "audio_a1sys", "a1sys_hp_sel", 21),
->  	GATE_AUDIO1(CLK_AUDIO_A2SYS, "audio_a2sys", "a2sys_hp_sel", 22),
-> +	GATE_AUDIO1(CLK_AUDIO_AFE_CONN, "audio_afe_conn", "a1sys_hp_sel", 23),
->  	/* AUDIO2 */
->  	GATE_AUDIO2(CLK_AUDIO_UL1, "audio_ul1", "a1sys_hp_sel", 0),
->  	GATE_AUDIO2(CLK_AUDIO_UL2, "audio_ul2", "a1sys_hp_sel", 1),
-> @@ -146,7 +147,7 @@ static int clk_mt7622_audiosys_init(struct platform_device *pdev)
->  	clk_data = mtk_alloc_clk_data(CLK_AUDIO_NR_CLK);
->  
->  	mtk_clk_register_gates(node, audio_clks, ARRAY_SIZE(audio_clks),
-> -			       clk_data);
-> +				   clk_data);
+In case of error, the function syscon_node_to_regmap() returns ERR_PTR()
+and never returns NULL. The NULL test in the return value check should
+be replaced with IS_ERR().
 
-Drop this unrelated change.
+Fixes: dfa3cbb83e09 ("ASoC: mediatek: modify MT2701 AFE driver to adapt mfd device")
+Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
+---
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
->  
->  	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
->  	if (r)
-> diff --git a/include/dt-bindings/clock/mt7622-clk.h b/include/dt-bindings/clock/mt7622-clk.h
-> index 3e514ed..e9d77f0 100644
-> --- a/include/dt-bindings/clock/mt7622-clk.h
-> +++ b/include/dt-bindings/clock/mt7622-clk.h
-> @@ -235,7 +235,8 @@
->  #define CLK_AUDIO_MEM_ASRC3		43
->  #define CLK_AUDIO_MEM_ASRC4		44
->  #define CLK_AUDIO_MEM_ASRC5		45
-> -#define CLK_AUDIO_NR_CLK		46
-> +#define CLK_AUDIO_AFE_CONN		46
-> +#define CLK_AUDIO_NR_CLK		47
->  
->  /* SSUSBSYS */
->  
-> -- 
-> 1.9.1
-> 
-> --
-> To unsubscribe from this list: send the line "unsubscribe devicetree" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+index f0cd08f..5bc4e00 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+@@ -1440,9 +1440,9 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	afe->regmap = syscon_node_to_regmap(dev->parent->of_node);
+-	if (!afe->regmap) {
++	if (IS_ERR(afe->regmap)) {
+ 		dev_err(dev, "could not get regmap from parent\n");
+-		return -ENODEV;
++		return PTR_ERR(afe->regmap);
+ 	}
+ 
+ 	mutex_init(&afe->irq_alloc_lock);
