@@ -1,117 +1,74 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v1 4/6] dt-bindings: clock: mediatek: add "simple-mfd"
- in audsys documentation
-Date: Mon, 8 Jan 2018 11:01:48 +0800
-Message-ID: <1515380508.2984.31.camel@mtkswgap22>
-References: <cover.1515038387.git.ryder.lee@mediatek.com>
-         <bd1cb0aeaf07b4bf2cedbf00ef8fedc6ba01f9cb.1515038387.git.ryder.lee@mediatek.com>
-         <20180105190236.bapetnwxd6dii7re@rob-hp-laptop>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180105190236.bapetnwxd6dii7re@rob-hp-laptop>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: mediatek: mt2701: fix return value check in mt2701_afe_pcm_dev_probe()" to the asoc tree
+Date: Mon, 08 Jan 2018 12:35:35 +0000
+Message-ID: <E1eYWeN-0003J4-DW@debutante>
+References: <1515377701-37553-1-git-send-email-weiyongjun1@huawei.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1515377701-37553-1-git-send-email-weiyongjun1@huawei.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wei Yongjun <weiyongjun1@huawei.com>
+Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Matthias@sirena.org.uk, Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Garlic Tseng <garlic.tseng@mediatek.com>, "Gustavo A. R. Silva" <garsilva@embeddedor.com>, linux-mediatek@lists.infradead.org, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2018-01-05 at 13:02 -0600, Rob Herring wrote:
-> On Thu, Jan 04, 2018 at 03:44:20PM +0800, Ryder Lee wrote:
-> > Add "simple-mfd" to support MFD device and add a compatible string for MT2701.
-> > 
-> > Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  .../bindings/arm/mediatek/mediatek,audsys.txt       | 21 +++++++++++++++------
-> >  1 file changed, 15 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-> > index 9b8f578..6e97552 100644
-> > --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-> > @@ -6,17 +6,25 @@ The MediaTek AUDSYS controller provides various clocks to the system.
-> >  Required Properties:
-> >  
-> >  - compatible: Should be one of:
-> > -	- "mediatek,mt7622-audsys", "syscon"
-> > +	- "mediatek,mt2701-audsys", "syscon", "simple-mfd"
-> > +	- "mediatek,mt7622-audsys", "syscon", "simple-mfd"
-> >  - #clock-cells: Must be 1
-> 
-> I don't think this is a simple-mfd. The AFE uses clocks created by its 
-> parent, right? So the parent should be probed first. You should have 
-> the parent instantiate the child nodes.
+The patch
 
-The reason I add simple-mfd here is to make sure all drivers are probed.
-We don't need to know the probing sequence but let *deferred probing* to
-handle that. Otherwise, I think there is no difference between audsys
-and other clock nodes (the only difference is audsys shares its register
-regions with AFE).
+   ASoC: mediatek: mt2701: fix return value check in mt2701_afe_pcm_dev_probe()
 
-But yes, parent should be probed first in general. How about this:
+has been applied to the asoc tree at
 
-audio-subsystem@11220000 {
-		compatible = "syscon", "simple-mfd";
-		reg = <0 0x11220000 0 0x2000>;
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-		audsys: clock-controller {
-			compatible = "mediatek,mt2701-audsys";
-			#clock-cells = <1>;
-		};
-	
-		afe: audio-controller {
-			compatible = "mediatek,mt2701-audio";
-			.....
-			<&topckgen CLK_TOP_AUD_I2S4_MCLK>,
-			<&audsys CLK_AUD_I2SO1>,
-			....
-		};
-	};
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-I prefer to separate these nodes as we could see them as unrelated
-functions. Or, alternatively, I could add a MFD driver to instantiate
-both audsys and AFE driver.
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-The similar discussion thread could be found in other subsystem:
-http://lists.infradead.org/pipermail/linux-mediatek/2017-October/011035.html
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-I want to come up with a consistent approach to handle this kind of
-situation.
+Thanks,
+Mark
 
-> >  The AUDSYS controller uses the common clk binding from
-> >  Documentation/devicetree/bindings/clock/clock-bindings.txt
-> >  The available clocks are defined in dt-bindings/clock/mt*-clk.h.
-> >  
-> > +See ../sound/mt2701-afe-pcm.txt for details about required subnode.
-> > +
-> >  Example:
-> >  
-> > -audsys: audsys@11220000 {
-> > -	compatible = "mediatek,mt7622-audsys", "syscon";
-> > -	reg = <0 0x11220000 0 0x1000>;
-> > -	#clock-cells = <1>;
-> > -};
-> > +	audsys: audio-subsystem@11220000 {
-> > +		compatible = "mediatek,mt2701-audsys", "syscon", "simple-mfd";
-> > +		reg = <0 0x11220000 0 0x1000>;
-> > +		#clock-cells = <1>;
-> > +
-> > +		afe: audio-controller {
-> > +			compatible = "mediatek,mt2701-audio";
-> > +			...
-> > +		};
-> > +	};
-> > -- 
-> > 1.9.1
-> > 
-> > --
-> > To unsubscribe from this list: send the line "unsubscribe devicetree" in
-> > the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>From 3e8052d90d24320a1edb556c20523f3b17195985 Mon Sep 17 00:00:00 2001
+From: Wei Yongjun <weiyongjun1@huawei.com>
+Date: Mon, 8 Jan 2018 02:15:01 +0000
+Subject: [PATCH] ASoC: mediatek: mt2701: fix return value check in
+ mt2701_afe_pcm_dev_probe()
 
+In case of error, the function syscon_node_to_regmap() returns ERR_PTR()
+and never returns NULL. The NULL test in the return value check should
+be replaced with IS_ERR().
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Fixes: dfa3cbb83e09 ("ASoC: mediatek: modify MT2701 AFE driver to adapt mfd device")
+Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+index f0cd08fa5c5d..5bc4e00a4a29 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+@@ -1440,9 +1440,9 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	afe->regmap = syscon_node_to_regmap(dev->parent->of_node);
+-	if (!afe->regmap) {
++	if (IS_ERR(afe->regmap)) {
+ 		dev_err(dev, "could not get regmap from parent\n");
+-		return -ENODEV;
++		return PTR_ERR(afe->regmap);
+ 	}
+ 
+ 	mutex_init(&afe->irq_alloc_lock);
+-- 
+2.15.1
