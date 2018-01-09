@@ -1,38 +1,36 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 01/12] dt-bindings: clock: mediatek: add missing required
- #reset-cells
-Date: Mon, 8 Jan 2018 21:34:02 -0600
-Message-ID: <20180109033402.bxk6ukd5zyzemnya@rob-hp-laptop>
-References: <cover.1515057696.git.sean.wang@mediatek.com>
- <084288e2520f9bd3ccdb3cf7aeef8ebcae48e6d7.1515057696.git.sean.wang@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <084288e2520f9bd3ccdb3cf7aeef8ebcae48e6d7.1515057696.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: [PATCH] media: mtk-vcodec: Always signal source change event on format change
+Date: Tue,  9 Jan 2018 17:42:47 +0900
+Message-ID: <20180109084247.104601-1-tfiga@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-media@vger.kernel.org
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, =?UTF-8?q?Pawe=C5=82=20O=C5=9Bciak?= <posciak@chromium.org>, Wu-Cheng Li <wuchengli@chromium.org>, Tomasz Figa <tfiga@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jan 04, 2018 at 05:40:51PM +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> All ethsys, pciesys and ssusbsys internally include reset controller, so
-> explicitly add back these missing cell definitions to related bindings
-> and examples.
-> 
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> Cc: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt   | 2 ++
->  Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt  | 2 ++
->  Documentation/devicetree/bindings/arm/mediatek/mediatek,ssusbsys.txt | 2 ++
->  3 files changed, 6 insertions(+)
+Currently the driver signals the source change event only in case of
+a midstream resolution change, however the initial format detection
+is also defined as a source change by the V4L2 codec API specification.
+Fix this by signaling the event after the initial header is parsed as
+well.
 
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+index 843510979ad8..86f0a7134365 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+@@ -1224,6 +1224,8 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
+ 	ctx->dpb_size = dpbsize;
+ 	ctx->state = MTK_STATE_HEADER;
+ 	mtk_v4l2_debug(1, "[%d] dpbsize=%d", ctx->id, ctx->dpb_size);
++
++	mtk_vdec_queue_res_chg_event(ctx);
+ }
+ 
+ static void vb2ops_vdec_buf_finish(struct vb2_buffer *vb)
+-- 
+2.16.0.rc0.223.g4a4ac83678-goog
