@@ -1,62 +1,69 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [RFC PATCH] of_pci_irq: add a check to fallback to device tree parsing
-Date: Wed, 10 Jan 2018 16:04:28 +0800
-Message-ID: <3fcf63d1ac22f1ed5f53cc16cd2d06a849684e08.1515570774.git.ryder.lee@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 1/2] pinctrl: mediatek: mt7622: fix potential
+ uninitialized value being returned
+Date: Wed, 10 Jan 2018 10:00:49 +0100
+Message-ID: <99978b09-cc80-d2cd-7d72-0b34380f6130@gmail.com>
+References: <a26c40a8ad2af3cf81b31ae34bc82c1ef80d9279.1515514758.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <a26c40a8ad2af3cf81b31ae34bc82c1ef80d9279.1515514758.git.sean.wang@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
+To: sean.wang@mediatek.com, linus.walleij@linaro.org, linux-mediatek@lists.infradead.org, dan.carpenter@oracle.com
+Cc: linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-A root complex normally consist of a host/PCI bridge and multiple P2P bridges.
 
-It will get mismatched results if we implement the bindings in the form of
-a root node with multiple subnodes (P2P bridge) and list all interrupt-map
-properties for each slot in the parent - It maens that we want to propagate
-IRQs from a root port to the devices in the hierarchy below it.
 
-If we have a PCIe device which is connected to slot 1, and will get something
-like this:
-pcieport 0000:00:01.0: assign IRQ: got 213
-	--> igb 0000:01:00.0: assign IRQ: got 212
+On 01/09/2018 05:28 PM, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> commit d6ed93551320 ("pinctrl: mediatek: add pinctrl driver for MT7622
+> SoC") leads to the following static checker warning:
+> 
+> drivers/pinctrl/mediatek/pinctrl-mt7622.c:1419 mtk_gpio_get()
+> error: uninitialized symbol 'value'.
+> 1412  static int mtk_gpio_get(struct gpio_chip *chip, unsigned int gpio)
+> 1413  {
+> 1414          struct mtk_pinctrl *hw = dev_get_drvdata(chip->parent);
+> 1415          int value;
+> 1416
+> 1417          mtk_hw_get_value(hw, gpio, PINCTRL_PIN_REG_DI, &value);
+> ^^^^^^^^^^^^^^^^
+> 1418
+> 1419          return !!value;
+> 1420  }
+> 
+> The appropriate error handling must be added to avoid the potential error
+> caused by uninitialized value being returned.
+> 
+> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-mt7622.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
 
-The reason is that we use the subordinate 'devfn' but didn't obtain the actual
-slot numbers from device tree, this patch add a check to fallback to use device
-tree parsing if needed.
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-Discussion thread: https://patchwork.ozlabs.org/patch/829108/
----
- drivers/of/of_pci_irq.c | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/of/of_pci_irq.c b/drivers/of/of_pci_irq.c
-index 3a05568..e445866 100644
---- a/drivers/of/of_pci_irq.c
-+++ b/drivers/of/of_pci_irq.c
-@@ -86,8 +86,18 @@ int of_irq_parse_pci(const struct pci_dev *pdev, struct of_phandle_args *out_irq
- 	out_irq->np = ppnode;
- 	out_irq->args_count = 1;
- 	out_irq->args[0] = pin;
--	laddr[0] = cpu_to_be32((pdev->bus->number << 16) | (pdev->devfn << 8));
--	laddr[1] = laddr[2] = cpu_to_be32(0);
-+
-+	if (!dn && ppnode) {
-+		const __be32 *addr;
-+
-+		addr = of_get_property(ppnode, "reg", NULL);
-+		if (addr)
-+			memcpy(laddr, addr, 3);
-+	} else {
-+		laddr[0] = cpu_to_be32((pdev->bus->number << 16) | (pdev->devfn << 8));
-+		laddr[1] = laddr[2] = cpu_to_be32(0);
-+	}
-+
- 	rc = of_irq_parse_raw(laddr, out_irq);
- 	if (rc)
- 		goto err;
--- 
-1.9.1
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7622.c b/drivers/pinctrl/mediatek/pinctrl-mt7622.c
+> index 3824d82..dc32e3c 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mt7622.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mt7622.c
+> @@ -1412,9 +1412,11 @@ static struct pinctrl_desc mtk_desc = {
+>  static int mtk_gpio_get(struct gpio_chip *chip, unsigned int gpio)
+>  {
+>  	struct mtk_pinctrl *hw = dev_get_drvdata(chip->parent);
+> -	int value;
+> +	int value, err;
+>  
+> -	mtk_hw_get_value(hw, gpio, PINCTRL_PIN_REG_DI, &value);
+> +	err = mtk_hw_get_value(hw, gpio, PINCTRL_PIN_REG_DI, &value);
+> +	if (err)
+> +		return err;
+>  
+>  	return !!value;
+>  }
+> 
