@@ -1,37 +1,62 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH] hw_random: mediatek: Setup default RNG quality
-Date: Wed, 10 Jan 2018 12:02:46 +0800
-Message-ID: <134f98ae3270cc6040121cf75d50c916adfe58dc.1515556571.git.sean.wang@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [RFC PATCH] of_pci_irq: add a check to fallback to device tree parsing
+Date: Wed, 10 Jan 2018 16:04:28 +0800
+Message-ID: <3fcf63d1ac22f1ed5f53cc16cd2d06a849684e08.1515570774.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-crypto-owner@vger.kernel.org>
-Sender: linux-crypto-owner@vger.kernel.org
-To: herbert@gondor.apana.org.au, mpm@selenic.com, clabbe.montjoie@gmail.com, prasannatsmkumar@gmail.com, romain.perier@free-electrons.com, shannon.nelson@oracle.com
-Cc: weiyongjun1@huawei.com, linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+A root complex normally consist of a host/PCI bridge and multiple P2P bridges.
 
-When hw_random device's quality is non-zero, it will automatically fill
-the kernel's entropy pool at boot.  For the purpose, one conservative
-quality value is being picked up as the default value.
+It will get mismatched results if we implement the bindings in the form of
+a root node with multiple subnodes (P2P bridge) and list all interrupt-map
+properties for each slot in the parent - It maens that we want to propagate
+IRQs from a root port to the devices in the hierarchy below it.
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+If we have a PCIe device which is connected to slot 1, and will get something
+like this:
+pcieport 0000:00:01.0: assign IRQ: got 213
+	--> igb 0000:01:00.0: assign IRQ: got 212
+
+The reason is that we use the subordinate 'devfn' but didn't obtain the actual
+slot numbers from device tree, this patch add a check to fallback to use device
+tree parsing if needed.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/char/hw_random/mtk-rng.c | 1 +
- 1 file changed, 1 insertion(+)
+Discussion thread: https://patchwork.ozlabs.org/patch/829108/
+---
+ drivers/of/of_pci_irq.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/char/hw_random/mtk-rng.c b/drivers/char/hw_random/mtk-rng.c
-index 8da7bcf..7f99cd5 100644
---- a/drivers/char/hw_random/mtk-rng.c
-+++ b/drivers/char/hw_random/mtk-rng.c
-@@ -135,6 +135,7 @@ static int mtk_rng_probe(struct platform_device *pdev)
- #endif
- 	priv->rng.read = mtk_rng_read;
- 	priv->rng.priv = (unsigned long)&pdev->dev;
-+	priv->rng.quality = 900;
- 
- 	priv->clk = devm_clk_get(&pdev->dev, "rng");
- 	if (IS_ERR(priv->clk)) {
+diff --git a/drivers/of/of_pci_irq.c b/drivers/of/of_pci_irq.c
+index 3a05568..e445866 100644
+--- a/drivers/of/of_pci_irq.c
++++ b/drivers/of/of_pci_irq.c
+@@ -86,8 +86,18 @@ int of_irq_parse_pci(const struct pci_dev *pdev, struct of_phandle_args *out_irq
+ 	out_irq->np = ppnode;
+ 	out_irq->args_count = 1;
+ 	out_irq->args[0] = pin;
+-	laddr[0] = cpu_to_be32((pdev->bus->number << 16) | (pdev->devfn << 8));
+-	laddr[1] = laddr[2] = cpu_to_be32(0);
++
++	if (!dn && ppnode) {
++		const __be32 *addr;
++
++		addr = of_get_property(ppnode, "reg", NULL);
++		if (addr)
++			memcpy(laddr, addr, 3);
++	} else {
++		laddr[0] = cpu_to_be32((pdev->bus->number << 16) | (pdev->devfn << 8));
++		laddr[1] = laddr[2] = cpu_to_be32(0);
++	}
++
+ 	rc = of_irq_parse_raw(laddr, out_irq);
+ 	if (rc)
+ 		goto err;
 -- 
-2.7.4
+1.9.1
