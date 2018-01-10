@@ -1,54 +1,47 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: [PATCH] arm64: dts: add #cooling-cells to CPU nodes
-Date: Wed, 10 Jan 2018 22:06:48 +0100
-Message-ID: <20180110210706.2331225-1-arnd@arndb.de>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andrew-sh Cheng <andrew-sh.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v2] clk: mediatek: adjust dependency of reset.c to avoid
+ unexpectedly being built
+Date: Wed, 10 Jan 2018 13:45:21 -0800
+Message-ID: <20180110214521.GE28313@codeaurora.org>
+References: <0a88c7902606e819438ef0f1fc5968960e718620.1515139760.git.sean.wang@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <0a88c7902606e819438ef0f1fc5968960e718620.1515139760.git.sean.wang@mediatek.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, jdelvare@suse.de, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, kevin-cw.chen@mediatek.com, shunli.wang@mediatek.com, chen.zhong@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-dtc complains about the lack of #coolin-cells properties for the
-CPU nodes that are referred to as "cooling-device":
+On 01/05, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> Changes from v1->v2:
+> Add 'select RESET_CONTROLLER' under COMMON_CLK_MEDIATEK and enable
+> reset.c to be built when COMMON_CLK_MEDIATEK is selected. That should
+> be quite reasonable because the reset controller is tightly embedded
+> inside and exported from these clock subsystems. At least it can be found
+> on infracfg and pericfg subsystem that both are really fundamental block
+> lots of devices must depend on.
+> 
+> commit 74cb0d6dde8 ("clk: mediatek: fixup test-building of MediaTek clock
+> drivers") can let the build system looking into the directory where the
+> clock drivers resides and then allow test-building the drivers.
+> 
+> But the change also gives rise to certain incorrect behavior which is
+> reset.c being built even not depending on either COMPILE_TEST or
+> ARCH_MEDIATEK alternative dependency. To get rid of reset.c being built
+> unexpectedly on the other platforms, it would be a good change that the
+> file should be built depending on its own specific configuration rather
+> than just on generic RESET_CONTROLLER one.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Cc: Jean Delvare <jdelvare@suse.de>
+> ---
 
-arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: Warning (cooling_device_property): Missing property '#cooling-cells' in node /cpus/cpu@0 or bad phandle (referred from /thermal-zones/cpu_thermal/cooling-maps/map@0:cooling-device[0])
-arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: Warning (cooling_device_property): Missing property '#cooling-cells' in node /cpus/cpu@100 or bad phandle (referred from /thermal-zones/cpu_thermal/cooling-maps/map@1:cooling-device[0])
+Applied to clk-next
 
-Apparently this property must be '<2>' to match the binding.
-
-Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
----
-If this looks ok, I'd apply it directly to the fixes branch
-for 4.15, as the warning is one that was introduced in this
-release.
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index b477ad790071..9fbe4705ee88 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -155,6 +155,7 @@
- 			reg = <0x000>;
- 			enable-method = "psci";
- 			cpu-idle-states = <&CPU_SLEEP_0>;
-+			#cooling-cells = <2>;
- 			clocks = <&infracfg CLK_INFRA_CA53SEL>,
- 				 <&apmixedsys CLK_APMIXED_MAINPLL>;
- 			clock-names = "cpu", "intermediate";
-@@ -179,6 +180,7 @@
- 			reg = <0x100>;
- 			enable-method = "psci";
- 			cpu-idle-states = <&CPU_SLEEP_0>;
-+			#cooling-cells = <2>;
- 			clocks = <&infracfg CLK_INFRA_CA57SEL>,
- 				 <&apmixedsys CLK_APMIXED_MAINPLL>;
- 			clock-names = "cpu", "intermediate";
 -- 
-2.9.0
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
