@@ -1,62 +1,37 @@
 From: <sean.wang@mediatek.com>
-Subject: [PATCH 2/2] pinctrl: mediatek: mt7622: align error handling of mtk_hw_get_value call
-Date: Wed, 10 Jan 2018 00:28:25 +0800
-Message-ID: <0eb8fd904f9b49d0e992bc2ee725d057f94cf735.1515514758.git.sean.wang@mediatek.com>
-References: <a26c40a8ad2af3cf81b31ae34bc82c1ef80d9279.1515514758.git.sean.wang@mediatek.com>
+Subject: [PATCH] hw_random: mediatek: Setup default RNG quality
+Date: Wed, 10 Jan 2018 12:02:46 +0800
+Message-ID: <134f98ae3270cc6040121cf75d50c916adfe58dc.1515556571.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <a26c40a8ad2af3cf81b31ae34bc82c1ef80d9279.1515514758.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linus.walleij@linaro.org, linux-mediatek@lists.infradead.org, dan.carpenter@oracle.com, matthias.bgg@gmail.com
-Cc: linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+Return-path: <linux-crypto-owner@vger.kernel.org>
+Sender: linux-crypto-owner@vger.kernel.org
+To: herbert@gondor.apana.org.au, mpm@selenic.com, clabbe.montjoie@gmail.com, prasannatsmkumar@gmail.com, romain.perier@free-electrons.com, shannon.nelson@oracle.com
+Cc: weiyongjun1@huawei.com, linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Make consistent error handling of all mtk_hw_get_value occurrences using
-propagating error code from the internal instead of creating a new one.
+When hw_random device's quality is non-zero, it will automatically fill
+the kernel's entropy pool at boot.  For the purpose, one conservative
+quality value is being picked up as the default value.
 
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/pinctrl/mediatek/pinctrl-mt7622.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/char/hw_random/mtk-rng.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7622.c b/drivers/pinctrl/mediatek/pinctrl-mt7622.c
-index dc32e3c..06e8406 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7622.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7622.c
-@@ -1160,7 +1160,7 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
- 	case PIN_CONFIG_OUTPUT_ENABLE:
- 		err = mtk_hw_get_value(hw, pin, PINCTRL_PIN_REG_DIR, &val);
- 		if (err)
--			return -EINVAL;
-+			return err;
+diff --git a/drivers/char/hw_random/mtk-rng.c b/drivers/char/hw_random/mtk-rng.c
+index 8da7bcf..7f99cd5 100644
+--- a/drivers/char/hw_random/mtk-rng.c
++++ b/drivers/char/hw_random/mtk-rng.c
+@@ -135,6 +135,7 @@ static int mtk_rng_probe(struct platform_device *pdev)
+ #endif
+ 	priv->rng.read = mtk_rng_read;
+ 	priv->rng.priv = (unsigned long)&pdev->dev;
++	priv->rng.quality = 900;
  
- 		/* HW takes input mode as zero; output mode as non-zero */
- 		if ((val && param == PIN_CONFIG_INPUT_ENABLE) ||
-@@ -1184,11 +1184,11 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
- 	case PIN_CONFIG_DRIVE_STRENGTH:
- 		err = mtk_hw_get_value(hw, pin, PINCTRL_PIN_REG_E4, &val);
- 		if (err)
--			return -EINVAL;
-+			return err;
- 
- 		err = mtk_hw_get_value(hw, pin, PINCTRL_PIN_REG_E8, &val2);
- 		if (err)
--			return -EINVAL;
-+			return err;
- 
- 		/* 4mA when (e8, e4) = (0, 0); 8mA when (e8, e4) = (0, 1)
- 		 * 12mA when (e8, e4) = (1, 0); 16mA when (e8, e4) = (1, 1)
-@@ -1203,7 +1203,7 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
- 
- 		err = mtk_hw_get_value(hw, pin, reg, &val);
- 		if (err)
--			return -EINVAL;
-+			return err;
- 
- 		ret = val;
- 
+ 	priv->clk = devm_clk_get(&pdev->dev, "rng");
+ 	if (IS_ERR(priv->clk)) {
 -- 
 2.7.4
