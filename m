@@ -1,47 +1,55 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v2] clk: mediatek: adjust dependency of reset.c to avoid
- unexpectedly being built
-Date: Wed, 10 Jan 2018 13:45:21 -0800
-Message-ID: <20180110214521.GE28313@codeaurora.org>
-References: <0a88c7902606e819438ef0f1fc5968960e718620.1515139760.git.sean.wang@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH] usb: mtu3: fix ssusb_wakeup_set dummy
+Date: Thu, 11 Jan 2018 08:35:44 +0800
+Message-ID: <1515630944.19513.2.camel@mhfsdcap03>
+References: <20180110164530.1399750-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-clk-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <0a88c7902606e819438ef0f1fc5968960e718620.1515139760.git.sean.wang@mediatek.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, jdelvare@suse.de, jamesjj.liao@mediatek.com, weiyi.lu@mediatek.com, kevin-cw.chen@mediatek.com, shunli.wang@mediatek.com, chen.zhong@mediatek.com, arnd@arndb.de, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180110164530.1399750-1-arnd@arndb.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Johan Hovold <johan@kernel.org>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 01/05, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On Wed, 2018-01-10 at 17:45 +0100, Arnd Bergmann wrote:
+> Changing from ssusb_wakeup_enable/disable to ssusb_wakeup_set was done
+> in only one of two places in the kernel, the other one now causes a
+> build failure:
 > 
-> Changes from v1->v2:
-> Add 'select RESET_CONTROLLER' under COMMON_CLK_MEDIATEK and enable
-> reset.c to be built when COMMON_CLK_MEDIATEK is selected. That should
-> be quite reasonable because the reset controller is tightly embedded
-> inside and exported from these clock subsystems. At least it can be found
-> on infracfg and pericfg subsystem that both are really fundamental block
-> lots of devices must depend on.
+> drivers/usb/mtu3/mtu3_plat.c: In function 'mtu3_suspend':
+> drivers/usb/mtu3/mtu3_plat.c:462:2: error: implicit declaration of function 'ssusb_wakeup_set'; did you mean 'ssusb_wakeup_disable'? [-Werror=implicit-function-declaration]
 > 
-> commit 74cb0d6dde8 ("clk: mediatek: fixup test-building of MediaTek clock
-> drivers") can let the build system looking into the directory where the
-> clock drivers resides and then allow test-building the drivers.
+> This adapts the dummy helpers the same way that the extern declarations
+> were.
 > 
-> But the change also gives rise to certain incorrect behavior which is
-> reset.c being built even not depending on either COMPILE_TEST or
-> ARCH_MEDIATEK alternative dependency. To get rid of reset.c being built
-> unexpectedly on the other platforms, it would be a good change that the
-> file should be built depending on its own specific configuration rather
-> than just on generic RESET_CONTROLLER one.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Cc: Jean Delvare <jdelvare@suse.de>
+> Fixes: f0ede2c6282b ("usb: mtu3: supports remote wakeup for mt2712 with two SSUSB IPs")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 > ---
+>  drivers/usb/mtu3/mtu3_dr.h | 7 +------
+>  1 file changed, 1 insertion(+), 6 deletions(-)
+> 
+> diff --git a/drivers/usb/mtu3/mtu3_dr.h b/drivers/usb/mtu3/mtu3_dr.h
+> index ae1598d76e02..50702fdcde28 100644
+> --- a/drivers/usb/mtu3/mtu3_dr.h
+> +++ b/drivers/usb/mtu3/mtu3_dr.h
+> @@ -48,12 +48,7 @@ static inline int ssusb_host_disable(struct ssusb_mtk *ssusb, bool suspend)
+>  	return 0;
+>  }
+>  
+> -static inline int ssusb_wakeup_enable(struct ssusb_mtk *ssusb)
+> -{
+> -	return 0;
+> -}
+> -
+> -static inline void ssusb_wakeup_disable(struct ssusb_mtk *ssusb)
+> +static inline void ssusb_wakeup_set(struct ssusb_mtk *ssusb, bool enable)
+>  {}
+>  
+>  #endif
+Forgot to make it change,
 
-Applied to clk-next
+Acked-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+Thanks a lot
