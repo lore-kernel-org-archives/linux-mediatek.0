@@ -1,73 +1,29 @@
-From: houlong wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: FW: [PATCH v20 2/4] mailbox: mediatek: Add Mediatek CMDQ driver
-Date: Thu, 18 Jan 2018 16:31:53 +0800
-Message-ID: <1516264313.16602.30.camel@mhfsdcap03>
-References: <1483499169-16329-1-git-send-email-hs.liao@mediatek.com>
-         <1483499169-16329-3-git-send-email-hs.liao@mediatek.com>
-         <CABb+yY23TUB8NpmpiO=cCmVFAVJMqKPfGgX14j+_Yj7tJvMOuQ@mail.gmail.com>
-         <1485419833.990.1.camel@mtksdaap41>
-         <CABb+yY13VaFpYz6EExvAXLpAqEWDJ4R50WG0DYbXO6iCESbA5A@mail.gmail.com>
-         <1486359476.11424.33.camel@mtksdaap41>
-         <CABb+yY0jCGqnrMLkkTNoEmLX4jDstWh7-UYhDyKjV-gFOnxpsg@mail.gmail.com>
-         <1487733150.15869.11.camel@mtksdaap41>
-         <CABb+yY2dzcR4fYvrSQK5jemwUSkYVJ8aWEmiE6wstw-Yyqy7bw@mail.gmail.com>
-         <1487854104.17813.1.camel@mtksdaap41>
-         <497f8e4ef7ae4c8a9b7b4ab259801306@mtkmbs01n1.mediatek.inc>
-         <1515400735.21044.35.camel@mhfsdcap03>
-         <CABb+yY02S=+00mY-NTkJUBPiVruYdf0xuovKomehUxLNOQPLuA@mail.gmail.com>
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Subject: Re: [PATCH] hw_random: mediatek: Setup default RNG quality
+Date: Thu, 18 Jan 2018 23:02:13 +1100
+Message-ID: <20180118120213.GC20717@gondor.apana.org.au>
+References: <134f98ae3270cc6040121cf75d50c916adfe58dc.1515556571.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CABb+yY02S=+00mY-NTkJUBPiVruYdf0xuovKomehUxLNOQPLuA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jassi Brar <jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Devicetree List <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Cawa Cheng =?UTF-8?Q?=28=E9=84=AD=E6=9B=84=E7=A6=A7=29?= <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh =?UTF-8?Q?=28=E8=AC=9D=E6=BF=9F=E9=81=A0=29?= <Bibby.Hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>Y
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-crypto-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <134f98ae3270cc6040121cf75d50c916adfe58dc.1515556571.git.sean.wang@mediatek.com>
+Sender: linux-crypto-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: mpm@selenic.com, clabbe.montjoie@gmail.com, prasannatsmkumar@gmail.com, romain.perier@free-electrons.com, shannon.nelson@oracle.com, weiyongjun1@huawei.com, linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jassi,
-
-There is one request for one GCE h/w buffer which contains a list of
-registers operation.
-I will resubmit a version and please review again.
-
-Thanks,
-Houlong
-
-On Thu, 2018-01-18 at 16:01 +0800, Jassi Brar wrote:
-> On Mon, Jan 8, 2018 at 2:08 PM, houlong wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > Hi Jassi,
-> >
-> > Sorry for reply so late.
-> > According to previous discussion, there are two methods to move
-> > dma_map_single() outside of spin_lock.
-> > (1) put in mtk-cmdq-helper.c, as described by HS on 2017-02-09.
-> >   > I think a trade-off solution is to put in mtk-cmdq-helper.c.
-> >   > Although it is a mailbox client, it is not a CMDQ client.
-> >   > We can include mailbox_controller.h in mtk-cmdq-helper.c (instead of
-> > mtk-cmdq.h), and then map dma at cmdq_pkt_flush_async before
-> > mbox_send_message.
-> >
-> >   > pkt->pa_base = dma_map_single(client->chan->mbox->dev, pkt->va_base,
-> >   >                              pkt->cmd_buf_size, DMA_TO_DEVICE);
-> > (2) schedule a tasklet in send_data().
-> >
-> > After internal discussion with HS and other experts, now we prefer
-> > method (1).
-> > How do you think about it?
-> >
-> I don't exactly see how you mean but please remember send_data()
-> callback is supposed to be atomic ... it is protected by
-> spin_lock_irqsave/restore in drivers/mailbox/mailbox.c:msg_submit()
+On Wed, Jan 10, 2018 at 12:02:46PM +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> BTW, how many requests max can be queued in the GCE h/w buffer?
-> And since it's been over a year now, could you please resubmit after
-> checking for checkpatch with the --strict option?
+> When hw_random device's quality is non-zero, it will automatically fill
+> the kernel's entropy pool at boot.  For the purpose, one conservative
+> quality value is being picked up as the default value.
 > 
-> Thanks.
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Patch applied.  Thanks.
+-- 
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
