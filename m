@@ -1,54 +1,36 @@
-From: Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH] [wireless-next] mt76: fix building without
- CONFIG_LEDS_CLASS
-Date: Thu, 18 Jan 2018 18:31:36 +0100
-Message-ID: <f5b35785-2c80-da12-607c-02c253c22f39@nbd.name>
-References: <20180118131524.817297-1-arnd@arndb.de>
+From: Josh Boyer <jwboyer@kernel.org>
+Subject: Re: pull request: linux-firmware: Update Mediatek MT8173 VPU firmware
+Date: Fri, 19 Jan 2018 07:11:19 -0500
+Message-ID: <CA+5PVA6np4ZCCxE6Qk9s7UpN3By-3g1sqSg90xrD7BVjKu8ubw@mail.gmail.com>
+References: <1516196123-24327-1-git-send-email-pochun.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20180118131524.817297-1-arnd@arndb.de>
-Content-Language: en-US
-Sender: netdev-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>, Kalle Valo <kvalo@codeaurora.org>
-Cc: Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <1516196123-24327-1-git-send-email-pochun.lin@mediatek.com>
+Sender: linux-media-owner@vger.kernel.org
+To: pochun.lin@mediatek.com
+Cc: Linux Firmware <linux-firmware@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Linux Media Mailing List <linux-media@vger.kernel.org>, tiffany.lin@mediatek.com, eddie.huang@mediatek.com, wuchengli@google.com, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2018-01-18 14:14, Arnd Bergmann wrote:
-> When CONFIG_LEDS_CLASS is disabled, or it is a loadable module while
-> mt76 is built-in, we run into a link error:
-> 
-> drivers/net/wireless/mediatek/mt76/mac80211.o: In function `mt76_register_device':
-> mac80211.c:(.text+0xb78): relocation truncated to fit: R_AARCH64_CALL26 against undefined symbol `devm_of_led_classdev_register'
-> 
-> We don't really need a hard dependency here as the driver can presumably
-> work just fine without LEDs, so this follows the iwlwifi example and
-> adds a separate Kconfig option for the LED support, this will be available
-> whenever it will link, and otherwise the respective code gets left out from
-> the driver object.
-> 
-> Fixes: 17f1de56df05 ("mt76: add common code shared between multiple chipsets")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
->  drivers/net/wireless/mediatek/mt76/Kconfig       | 5 +++++
->  drivers/net/wireless/mediatek/mt76/mac80211.c    | 8 +++++---
->  drivers/net/wireless/mediatek/mt76/mt76x2_init.c | 6 ++++--
->  3 files changed, 14 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wireless/mediatek/mt76/Kconfig
-> index fc05d79c80d0..9d12c1f5284e 100644
-> --- a/drivers/net/wireless/mediatek/mt76/Kconfig
-> +++ b/drivers/net/wireless/mediatek/mt76/Kconfig
-> @@ -8,3 +8,8 @@ config MT76x2E
->  	depends on PCI
->  	---help---
->  	  This adds support for MT7612/MT7602/MT7662-based wireless PCIe devices.
-> +
-> +config MT76_LEDS
-> +	bool "LED support for MT76"
-> +	depends on MT76_CORE
-> +	depends on LEDS_CLASS=y || MT76_CORE=LEDS_CLASS
-I think this should have a 'default y'
+On Wed, Jan 17, 2018 at 8:35 AM,  <pochun.lin@mediatek.com> wrote:
+> The following changes since commit 65b1c68c63f974d72610db38dfae49861117cae2:
+>
+>   wl18xx: update firmware file 8.9.0.0.76 (2018-01-04 10:06:01 -0500)
+>
+> are available in the git repository at:
+>
+>   https://github.com/pochun-lin/linux_fw_vpu_v1.0.8.git v1.0.8
+>
+> for you to fetch changes up to e72c23c9ff2ceeb3509cb6441cc81f0227edf06d:
+>
+>   mediatek: update MT8173 VPU firmware to 1.0.8 (2018-01-17 20:19:56 +0800)
+>
+> ----------------------------------------------------------------
+> pochun.lin (1):
+>       mediatek: update MT8173 VPU firmware to 1.0.8
 
-- Felix
+Pulled and pushed out.  If the firmware is versioned, perhaps that
+version should be listed in the WHENCE file?  You might want to add
+that in a future patch.
+
+josh
