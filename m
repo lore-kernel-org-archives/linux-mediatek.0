@@ -1,74 +1,36 @@
-From: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: [bug report] ASoC: mediatek: modify MT2701 AFE driver
- to adapt mfd device
-Date: Mon, 22 Jan 2018 13:01:38 +0300
-Message-ID: <20180122100138.GA20468@mwanda>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH v1 2/4] cpufreq: mediatek: Add mediatek related projects
+ into blacklist
+Date: Mon, 22 Jan 2018 15:46:45 +0530
+Message-ID: <20180122101645.GG2421@vireshk-i7>
+References: <1512713278-17807-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <1512713278-17807-3-git-send-email-andrew-sh.cheng@mediatek.com>
+ <20171211075532.GB25177@vireshk-i7>
+ <1516610369.12197.20.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
 Content-Disposition: inline
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: ryder.lee@mediatek.com
-Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <1516610369.12197.20.camel@mtkswgap22>
+Sender: linux-pm-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: rjw@rjwysocki.net, Andrew-sh Cheng <andrew-sh.cheng@mediatek.com>, mark.rutland@arm.com, khilman@baylibre.com, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, steven.liu@mediatek.com, Ryder.Lee@mediatek.com, Mark-MC.Lee@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello Ryder Lee,
+On 22-01-18, 16:39, Sean Wang wrote:
+> Hi, Rafael and Viresh
+> 
+> Can you kindly guide me how to let the patch also be applied to 4.14 and
+> 4.15 tree? Do I need to submit another patches for them?
+> 
+> These trees really need them. Otherwise, multi_v7_defconfig setup will
+> cause an occasional hang or unexpected behaviors on related boards as
+> [1] kernelci reported :-(
 
-The patch dfa3cbb83e09: "ASoC: mediatek: modify MT2701 AFE driver to
-adapt mfd device" from Jan 4, 2018, leads to the following static
-checker warning:
+You need to send them for stable kernels, just follow the following doc on how
+to send patches for stable kernels.
 
-	sound/soc/mediatek/mt2701/mt2701-afe-pcm.c:1535 mt2701_afe_pcm_dev_probe()
-	error: double free of 'component'
+Documentation/process/stable-kernel-rules.rst
 
-sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-  1509          pm_runtime_get_sync(dev);
-  1510  
-  1511          ret = snd_soc_register_platform(dev, &mtk_afe_pcm_platform);
-  1512          if (ret) {
-  1513                  dev_warn(dev, "err_platform\n");
-  1514                  goto err_platform;
-  1515          }
-  1516  
-  1517          ret = snd_soc_add_component(dev, component,
-                                                 ^^^^^^^^^
-snd_soc_add_component() frees "component" on error.  This seems like a
-layering violation to me, and it naturally leads to bugs like this.
-
-  1518                                      &mt2701_afe_pcm_dai_component,
-  1519                                      mt2701_afe_pcm_dais,
-  1520                                      ARRAY_SIZE(mt2701_afe_pcm_dais));
-  1521          if (ret) {
-  1522                  dev_warn(dev, "err_dai_component\n");
-  1523                  goto err_dai_component;
-  1524          }
-  1525  
-  1526          return 0;
-  1527  
-  1528  err_dai_component:
-  1529          snd_soc_unregister_platform(dev);
-  1530  err_platform:
-  1531          pm_runtime_put_sync(dev);
-  1532  err_pm_disable:
-  1533          pm_runtime_disable(dev);
-  1534  err_init_clock:
-  1535          kfree(component);
-                      ^^^^^^^^^
-Double free
-
-  1536  
-  1537          return ret;
-  1538  }
-
-
-regards,
-dan carpenter
+-- 
+viresh
