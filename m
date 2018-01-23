@@ -1,51 +1,57 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 1/3] dt-bindings: pwrap: mediatek: add MT6351 PMIC
- support for MT6797
-Date: Tue, 23 Jan 2018 15:55:49 +0800
-Message-ID: <1516694149.12197.25.camel@mtkswgap22>
-References: <20180123033659.11401-1-argus.lin@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH] cpufreq: mediatek: Add mediatek related projects into blacklist
+Date: Tue, 23 Jan 2018 16:31:11 +0800
+Message-ID: <8193c5fd73ee34b59799fdf5c6cc24ca60971d6e.1516693333.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180123033659.11401-1-argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Chenglin Xu <chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, flora.fu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Christophe Jaillet <christophe.jaillet-39ZsbGIQGT5GWvitb5QawA@public.gmane.org>, "shailendra . v" <shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: stable@vger.kernel.org, rjw@rjwysocki.net, viresh.kumar@linaro.org
+Cc: matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Andrew-sh Cheng <andrew-sh.cheng@mediatek.com>, Kevin Hilman <khilman@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-01-23 at 11:36 +0800, argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Argus Lin <argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> We add MT6351 PMIC support for MT6797 SoCs.
-> 
-> Change-Id: I362b2305f674813ffb03ce6f54f7fc4c378b8fd2
+From: Sean Wang <sean.wang@mediatek.com>
 
-should remove change-id, also in the other patches
+commit 6066998cbd2b1012a8d5bc9a2957cfd0ad53150e upstream.
 
-> Signed-off-by: Argus Lin <argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-> index bf80e3f96f8c..dd573ba5d9a7 100644
-> --- a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-> @@ -22,6 +22,7 @@ Required properties in pwrap device node.
->  	"mediatek,mt7622-pwrap" for MT7622 SoCs
->  	"mediatek,mt8135-pwrap" for MT8135 SoCs
->  	"mediatek,mt8173-pwrap" for MT8173 SoCs
-> +	"mediatek,mt6797-pwrap" for MT6797 SoCs
+commit edeec420de24 ("cpufreq: dt-platdev: Automatically create cpufreq
+device with OPP v2") not added MediaTek SoCs to the blacklist that would
+lead to cause an occasional hang or unexpected behaviors on related boards
+as kernelci reported and complained on [1] specifically for 4.14 and 4.15
+tree.
 
-should be better if add it in alphabetical order
+For those reasons, add MediaTek SoCs into cpufreq-dt blacklist and wish
+the patch be applied to 4.14 and 4.15 tree to allow kernelci able to
+complete following automated kernel testing.
 
->  - interrupts: IRQ for pwrap in SOC
->  - reg-names: Must include the following entries:
->    "pwrap": Main registers base
+[1] https://kernelci.org/boot/mt7623n-bananapi-bpi-r2/
 
+Fixes: edeec420de24 (cpufreq: dt-cpufreq: platdev Automatically create device with OPP v2)
+Signed-off-by: Andrew-sh Cheng <andrew-sh.cheng@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Cc: Kevin Hilman <khilman@baylibre.com>
+---
+ drivers/cpufreq/cpufreq-dt-platdev.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/cpufreq/cpufreq-dt-platdev.c b/drivers/cpufreq/cpufreq-dt-platdev.c
+index a753c50..9e0aa76 100644
+--- a/drivers/cpufreq/cpufreq-dt-platdev.c
++++ b/drivers/cpufreq/cpufreq-dt-platdev.c
+@@ -111,6 +111,14 @@ static const struct of_device_id blacklist[] __initconst = {
+ 
+ 	{ .compatible = "marvell,armadaxp", },
+ 
++	{ .compatible = "mediatek,mt2701", },
++	{ .compatible = "mediatek,mt2712", },
++	{ .compatible = "mediatek,mt7622", },
++	{ .compatible = "mediatek,mt7623", },
++	{ .compatible = "mediatek,mt817x", },
++	{ .compatible = "mediatek,mt8173", },
++	{ .compatible = "mediatek,mt8176", },
++
+ 	{ .compatible = "nvidia,tegra124", },
+ 
+ 	{ .compatible = "st,stih407", },
+-- 
+2.7.4
