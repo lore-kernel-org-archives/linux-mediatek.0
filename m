@@ -1,76 +1,63 @@
-From: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] cpufreq: mediatek: Add mediatek related projects into
- blacklist
-Date: Tue, 23 Jan 2018 10:42:05 +0100
-Message-ID: <20180123094205.GA14587@kroah.com>
-References: <8193c5fd73ee34b59799fdf5c6cc24ca60971d6e.1516693333.git.sean.wang@mediatek.com>
- <20180123084651.GA26581@kroah.com>
- <1516700314.12197.48.camel@mtkswgap22>
+From: Philippe Ombredanne <pombredanne@nexb.com>
+Subject: Re: [PATCH 05/12] arm64: dts: mt7622: add PMIC MT6380 related nodes
+Date: Tue, 23 Jan 2018 11:46:30 +0100
+Message-ID: <CAOFm3uHnUk8BwDVR0F+5VqTB+8qFKz23ooX3o9G_RCbVqpbQPw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1516700314.12197.48.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Sean Wang <sean.wang@mediatek.com>
-Cc: stable@vger.kernel.org, rjw@rjwysocki.net, viresh.kumar@linaro.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Andrew-sh Cheng <andrew-sh.cheng@mediatek.com>, Kevin Hilman <khilman@baylibre.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, linux-mediatek@lists.infradead.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, Mark Brown <broonie@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jan 23, 2018 at 05:38:34PM +0800, Sean Wang wrote:
-> On Tue, 2018-01-23 at 09:46 +0100, Greg KH wrote:
-> > On Tue, Jan 23, 2018 at 04:31:11PM +0800, sean.wang@mediatek.com wrote:
-> > > From: Sean Wang <sean.wang@mediatek.com>
-> > > 
-> > > commit 6066998cbd2b1012a8d5bc9a2957cfd0ad53150e upstream.
-> > > 
-> > > commit edeec420de24 ("cpufreq: dt-platdev: Automatically create cpufreq
-> > > device with OPP v2") not added MediaTek SoCs to the blacklist that would
-> > > lead to cause an occasional hang or unexpected behaviors on related boards
-> > > as kernelci reported and complained on [1] specifically for 4.14 and 4.15
-> > > tree.
-> > > 
-> > > For those reasons, add MediaTek SoCs into cpufreq-dt blacklist and wish
-> > > the patch be applied to 4.14 and 4.15 tree to allow kernelci able to
-> > > complete following automated kernel testing.
-> > > 
-> > > [1] https://kernelci.org/boot/mt7623n-bananapi-bpi-r2/
-> > > 
-> > > Fixes: edeec420de24 (cpufreq: dt-cpufreq: platdev Automatically create device with OPP v2)
-> > > Signed-off-by: Andrew-sh Cheng <andrew-sh.cheng@mediatek.com>
-> > > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > > Cc: Kevin Hilman <khilman@baylibre.com>
-> > > ---
-> > >  drivers/cpufreq/cpufreq-dt-platdev.c | 8 ++++++++
-> > >  1 file changed, 8 insertions(+)
-> > 
-> > What stable kernel tree(s) are you wanting this backported to?
-> > 
-> > thanks,
-> > 
-> > greg k-h
-> 
-> Hi, Greg,
-> 
-> thanks for your help!
-> 
-> stable and stable-rc are those trees I want this backported to 
+Sean,
+sorry for the late reply and thanks you for this research.
 
-I don't understand, what exactly do you mean by this?
+On Fri, Jan 12, 2018 at 4:33 AM, Sean Wang <sean.wang@mediatek.com> wrote:
+> Currently, I'm really confused about what usage STYLE of SPDX license
+> identifier I should use for each type of file.
+>
+> could you point me where I can find the related document describing SPDX
+> usage style for those files expected by the community in the future?
 
-Have you read:
-    https://www.kernel.org/doc/html/latest/process/stable-kernel-rules.html
-for how to do this properly?
+The doc is in this patchset [1]
 
-> Hi, Viresh
-> 
-> currently, can the patch be permitted to go through tree linux-pm branch
-> master to be part of mainline? 
+[1] https://lkml.org/lkml/2017/12/28/326
 
-Wait, this is not in Linus's tree already?  If not, what is that big
-"commit XXXX upstream" in the changelog for?
 
-I don't see that commit in Linus's tree at all.
+> I found more than one way STYLE of SPDX present at current code, for
+> example as below. If there's no absolute definition for them, and then
+> which way that is better?
+> 1)
+> for *.dts, applied with "// " at head or within " /* */ " not at head
+> such as
+>
+> arch/arm/boot/dts/bcm953012hr.dts:2: *  SPDX-License-Identifier:
+> BSD-3-Clause
 
-totally confused,
+This is a "style bug". The comment style for .dts should be //
 
-greg k-h
+> 2)
+> for *.c, applied with "// " at head or within " /* */ " not at head
+> such as
+> drivers/soc/xilinx/zynqmp/pm.c:10: * SPDX-License-Identifier:   GPL-2.0+
+
+This is a "style bug". The comment style for .c should be //
+
+> 3)
+> for *.h, applied with "// " at head or within " /* */ " at head
+> such as
+> drivers/usb/dwc3/gadget.h:1:// SPDX-License-Identifier: GPL-2.0
+
+This is a "style bug". The comment style for .h should be /**/
+
+> 4)
+> no issue, Makefile, or Kconfig, definitely applied with "# " at head
+
+That's the correct way.
+
+So the net-net is that these "style bugs" should be fixed.
+
+-- 
+Cordially
+Philippe Ombredanne
