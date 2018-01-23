@@ -1,135 +1,51 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: mediatek: fix double free in mt2701_afe_pcm_dev_probe()" to the asoc tree
-Date: Mon, 22 Jan 2018 12:26:34 +0000
-Message-ID: <E1edbBK-0004dh-Ku@debutante>
-References: <2fd34b71f3c940186b99f799c3ed14a83ccc4bba.1516620578.git.ryder.lee@mediatek.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2fd34b71f3c940186b99f799c3ed14a83ccc4bba.1516620578.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Dan Carpenter <dan.carpenter@oracle.com>, Mark Brown <broonie@kernel.org>Mark Brown <broonie@kernel.org>, alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 1/3] dt-bindings: pwrap: mediatek: add MT6351 PMIC
+ support for MT6797
+Date: Tue, 23 Jan 2018 15:55:49 +0800
+Message-ID: <1516694149.12197.25.camel@mtkswgap22>
+References: <20180123033659.11401-1-argus.lin@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20180123033659.11401-1-argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Chenglin Xu <chenglin.xu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, flora.fu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Christophe Jaillet <christophe.jaillet-39ZsbGIQGT5GWvitb5QawA@public.gmane.org>, "shailendra . v" <shailendra.v-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+On Tue, 2018-01-23 at 11:36 +0800, argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Argus Lin <argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> We add MT6351 PMIC support for MT6797 SoCs.
+> 
+> Change-Id: I362b2305f674813ffb03ce6f54f7fc4c378b8fd2
 
-   ASoC: mediatek: fix double free in mt2701_afe_pcm_dev_probe()
+should remove change-id, also in the other patches
 
-has been applied to the asoc tree at
+> Signed-off-by: Argus Lin <argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> index bf80e3f96f8c..dd573ba5d9a7 100644
+> --- a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> @@ -22,6 +22,7 @@ Required properties in pwrap device node.
+>  	"mediatek,mt7622-pwrap" for MT7622 SoCs
+>  	"mediatek,mt8135-pwrap" for MT8135 SoCs
+>  	"mediatek,mt8173-pwrap" for MT8173 SoCs
+> +	"mediatek,mt6797-pwrap" for MT6797 SoCs
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+should be better if add it in alphabetical order
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+>  - interrupts: IRQ for pwrap in SOC
+>  - reg-names: Must include the following entries:
+>    "pwrap": Main registers base
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From dc2a17f4f074c434757e2cef5026d4747fe22955 Mon Sep 17 00:00:00 2001
-From: Ryder Lee <ryder.lee@mediatek.com>
-Date: Mon, 22 Jan 2018 19:33:05 +0800
-Subject: [PATCH] ASoC: mediatek: fix double free in mt2701_afe_pcm_dev_probe()
-
-The commit dfa3cbb8(ASoC: mediatek: modify MT2701 AFE driver to adapt mfd device)
-leads to the following static checker warning:
-
-	sound/soc/mediatek/mt2701/mt2701-afe-pcm.c:1535 mt2701_afe_pcm_dev_probe()
-	error: double free of 'component'
-
-This patch fixes that and adds a helper mt2701_afe_add_component() to setup
-component.
-
-Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/mediatek/mt2701/mt2701-afe-pcm.c | 32 +++++++++++++++++-------------
- 1 file changed, 18 insertions(+), 14 deletions(-)
-
-diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-index 5bc4e00a4a29..d68b53f7cefe 100644
---- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-+++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-@@ -1405,9 +1405,24 @@ static int mt2701_afe_runtime_resume(struct device *dev)
- 	return mt2701_afe_enable_clock(afe);
- }
- 
--static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
-+static int mt2701_afe_add_component(struct mtk_base_afe *afe)
- {
- 	struct snd_soc_component *component;
-+
-+	component = kzalloc(sizeof(*component), GFP_KERNEL);
-+	if (!component)
-+		return -ENOMEM;
-+
-+	component->regmap = afe->regmap;
-+
-+	return snd_soc_add_component(afe->dev, component,
-+				     &mt2701_afe_pcm_dai_component,
-+				     mt2701_afe_pcm_dais,
-+				     ARRAY_SIZE(mt2701_afe_pcm_dais));
-+}
-+
-+static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
-+{
- 	struct mtk_base_afe *afe;
- 	struct mt2701_afe_private *afe_priv;
- 	struct device *dev;
-@@ -1477,12 +1492,6 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
- 			= &mt2701_i2s_data[i][I2S_IN];
- 	}
- 
--	component = kzalloc(sizeof(*component), GFP_KERNEL);
--	if (!component)
--		return -ENOMEM;
--
--	component->regmap = afe->regmap;
--
- 	afe->mtk_afe_hardware = &mt2701_afe_hardware;
- 	afe->memif_fs = mt2701_memif_fs;
- 	afe->irq_fs = mt2701_irq_fs;
-@@ -1495,7 +1504,7 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
- 	ret = mt2701_init_clock(afe);
- 	if (ret) {
- 		dev_err(dev, "init clock error\n");
--		goto err_init_clock;
-+		return ret;
- 	}
- 
- 	platform_set_drvdata(pdev, afe);
-@@ -1514,10 +1523,7 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
- 		goto err_platform;
- 	}
- 
--	ret = snd_soc_add_component(dev, component,
--				    &mt2701_afe_pcm_dai_component,
--				    mt2701_afe_pcm_dais,
--				    ARRAY_SIZE(mt2701_afe_pcm_dais));
-+	ret = mt2701_afe_add_component(afe);
- 	if (ret) {
- 		dev_warn(dev, "err_dai_component\n");
- 		goto err_dai_component;
-@@ -1531,8 +1537,6 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
- 	pm_runtime_put_sync(dev);
- err_pm_disable:
- 	pm_runtime_disable(dev);
--err_init_clock:
--	kfree(component);
- 
- 	return ret;
- }
--- 
-2.15.1
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
