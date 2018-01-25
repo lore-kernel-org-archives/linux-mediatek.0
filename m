@@ -1,7 +1,7 @@
 From: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Subject: [RFC/RFT usb-next v1 6/6] usb: core: hcd: remove support for initializing a single PHY
-Date: Thu, 25 Jan 2018 01:16:39 +0100
-Message-ID: <20180125001639.14681-7-martin.blumenstingl@googlemail.com>
+Subject: [RFC/RFT usb-next v1 4/6] usb: host: ohci-platform: remove custom USB PHY handling
+Date: Thu, 25 Jan 2018 01:16:37 +0100
+Message-ID: <20180125001639.14681-5-martin.blumenstingl@googlemail.com>
 References: <20180125001639.14681-1-martin.blumenstingl@googlemail.com>
 Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <20180125001639.14681-1-martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
@@ -10,95 +10,119 @@ To: linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJW
 Cc: mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-With the new PHY wrapper in place we can now handle multiple PHYs.
-Remove the code which handles only one generic PHY as this is now
-covered (with support for multiple PHYs as well as suspend/resume
-support) by the new PHY wrapper.
+The new PHY wrapper is now wired up in the core HCD code. This means
+that PHYs are now controlled (initialized, enabled, disabled, exited)
+without requiring any host-driver specific code.
+Remove the custom USB PHY handling from the ohci-platform driver as the
+core HCD code now handles this.
 
 Signed-off-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
 ---
- drivers/usb/core/hcd.c  | 37 -------------------------------------
- include/linux/usb/hcd.h |  1 -
- 2 files changed, 38 deletions(-)
+ drivers/usb/host/ohci-platform.c | 56 ++++------------------------------------
+ 1 file changed, 5 insertions(+), 51 deletions(-)
 
-diff --git a/drivers/usb/core/hcd.c b/drivers/usb/core/hcd.c
-index fc99cddc117e..5d59e0b4d463 100644
---- a/drivers/usb/core/hcd.c
-+++ b/drivers/usb/core/hcd.c
-@@ -2757,30 +2757,6 @@ int usb_add_hcd(struct usb_hcd *hcd,
- 		}
+diff --git a/drivers/usb/host/ohci-platform.c b/drivers/usb/host/ohci-platform.c
+index 1e6c954f4b3f..65a1c3fdc88c 100644
+--- a/drivers/usb/host/ohci-platform.c
++++ b/drivers/usb/host/ohci-platform.c
+@@ -21,7 +21,7 @@
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+ #include <linux/err.h>
+-#include <linux/phy/phy.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/reset.h>
+@@ -38,8 +38,6 @@
+ struct ohci_platform_priv {
+ 	struct clk *clks[OHCI_MAX_CLKS];
+ 	struct reset_control *resets;
+-	struct phy **phys;
+-	int num_phys;
+ };
+ 
+ static const char hcd_name[] = "ohci-platform";
+@@ -48,7 +46,7 @@ static int ohci_platform_power_on(struct platform_device *dev)
+ {
+ 	struct usb_hcd *hcd = platform_get_drvdata(dev);
+ 	struct ohci_platform_priv *priv = hcd_to_ohci_priv(hcd);
+-	int clk, ret, phy_num;
++	int clk, ret;
+ 
+ 	for (clk = 0; clk < OHCI_MAX_CLKS && priv->clks[clk]; clk++) {
+ 		ret = clk_prepare_enable(priv->clks[clk]);
+@@ -56,24 +54,8 @@ static int ohci_platform_power_on(struct platform_device *dev)
+ 			goto err_disable_clks;
  	}
  
--	if (IS_ENABLED(CONFIG_GENERIC_PHY) && !hcd->phy) {
--		struct phy *phy = phy_get(hcd->self.sysdev, "usb");
--
--		if (IS_ERR(phy)) {
--			retval = PTR_ERR(phy);
--			if (retval == -EPROBE_DEFER)
--				goto err_phy;
--		} else {
--			retval = phy_init(phy);
--			if (retval) {
--				phy_put(phy);
--				goto err_phy;
--			}
--			retval = phy_power_on(phy);
--			if (retval) {
--				phy_exit(phy);
--				phy_put(phy);
--				goto err_phy;
--			}
--			hcd->phy = phy;
--			hcd->remove_phy = 1;
+-	for (phy_num = 0; phy_num < priv->num_phys; phy_num++) {
+-		ret = phy_init(priv->phys[phy_num]);
+-		if (ret)
+-			goto err_exit_phy;
+-		ret = phy_power_on(priv->phys[phy_num]);
+-		if (ret) {
+-			phy_exit(priv->phys[phy_num]);
+-			goto err_exit_phy;
 -		}
 -	}
 -
- 	hcd->phy_roothub = usb_phy_roothub_init(hcd->self.sysdev);
- 	if (IS_ERR(hcd->phy_roothub)) {
- 		retval = PTR_ERR(hcd->phy_roothub);
-@@ -2959,13 +2935,6 @@ int usb_add_hcd(struct usb_hcd *hcd,
- err_usb_phy_roothub_power_on:
- 	usb_phy_roothub_exit(hcd->phy_roothub);
- err_phy_roothub_init:
--	if (IS_ENABLED(CONFIG_GENERIC_PHY) && hcd->remove_phy && hcd->phy) {
--		phy_power_off(hcd->phy);
--		phy_exit(hcd->phy);
--		phy_put(hcd->phy);
--		hcd->phy = NULL;
--	}
--err_phy:
- 	if (hcd->remove_phy && hcd->usb_phy) {
- 		usb_phy_shutdown(hcd->usb_phy);
- 		usb_put_phy(hcd->usb_phy);
-@@ -3046,12 +3015,6 @@ void usb_remove_hcd(struct usb_hcd *hcd)
- 	usb_phy_roothub_power_off(hcd->phy_roothub);
- 	usb_phy_roothub_exit(hcd->phy_roothub);
+ 	return 0;
  
--	if (IS_ENABLED(CONFIG_GENERIC_PHY) && hcd->remove_phy && hcd->phy) {
--		phy_power_off(hcd->phy);
--		phy_exit(hcd->phy);
--		phy_put(hcd->phy);
--		hcd->phy = NULL;
+-err_exit_phy:
+-	while (--phy_num >= 0) {
+-		phy_power_off(priv->phys[phy_num]);
+-		phy_exit(priv->phys[phy_num]);
 -	}
- 	if (hcd->remove_phy && hcd->usb_phy) {
- 		usb_phy_shutdown(hcd->usb_phy);
- 		usb_put_phy(hcd->usb_phy);
-diff --git a/include/linux/usb/hcd.h b/include/linux/usb/hcd.h
-index 9e8fc9c5f394..e464c7384bd5 100644
---- a/include/linux/usb/hcd.h
-+++ b/include/linux/usb/hcd.h
-@@ -103,7 +103,6 @@ struct usb_hcd {
- 	 * other external phys should be software-transparent
- 	 */
- 	struct usb_phy		*usb_phy;
--	struct phy		*phy;
- 	struct usb_phy_roothub	*phy_roothub;
+ err_disable_clks:
+ 	while (--clk >= 0)
+ 		clk_disable_unprepare(priv->clks[clk]);
+@@ -85,12 +67,7 @@ static void ohci_platform_power_off(struct platform_device *dev)
+ {
+ 	struct usb_hcd *hcd = platform_get_drvdata(dev);
+ 	struct ohci_platform_priv *priv = hcd_to_ohci_priv(hcd);
+-	int clk, phy_num;
+-
+-	for (phy_num = 0; phy_num < priv->num_phys; phy_num++) {
+-		phy_power_off(priv->phys[phy_num]);
+-		phy_exit(priv->phys[phy_num]);
+-	}
++	int clk;
  
- 	/* Flags that need to be manipulated atomically because they can
--- 
-2.16.1
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+ 	for (clk = OHCI_MAX_CLKS - 1; clk >= 0; clk--)
+ 		if (priv->clks[clk])
+@@ -117,7 +94,7 @@ static int ohci_platform_probe(struct platform_device *dev)
+ 	struct usb_ohci_pdata *pdata = dev_get_platdata(&dev->dev);
+ 	struct ohci_platform_priv *priv;
+ 	struct ohci_hcd *ohci;
+-	int err, irq, phy_num, clk = 0;
++	int err, irq, clk = 0;
+ 
+ 	if (usb_disabled())
+ 		return -ENODEV;
+@@ -169,29 +146,6 @@ static int ohci_platform_probe(struct platform_device *dev)
+ 		of_property_read_u32(dev->dev.of_node, "num-ports",
+ 				     &ohci->num_ports);
+ 
+-		priv->num_phys = of_count_phandle_with_args(dev->dev.of_node,
+-				"phys", "#phy-cells");
+-
+-		if (priv->num_phys > 0) {
+-			priv->phys = devm_kcalloc(&dev->dev, priv->num_phys,
+-					    sizeof(struct phy *), GFP_KERNEL);
+-			if (!priv->phys)
+-				return -ENOMEM;
+-		} else
+-			priv->num_phys = 0;
+-
+-		for (phy_num = 0; phy_num < priv->num_phys; phy_num++) {
+-			priv->phys[phy_num] = devm_of_phy_get_by_index(
+-					&dev->dev, dev->dev.of_node, phy_num);
+-			if (IS_ERR(priv->phys[phy_num])) {
+-				err = PTR_ERR(priv->phys[phy_num]);
+-				goto err_put_hcd;
+-			} else if (!hcd->phy) {
+-				/* Avoiding phy_get() in usb_add_hcd() */
+-				hcd->phy = priv->phys[phy_num];
+-			}
+-		}
