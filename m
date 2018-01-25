@@ -1,72 +1,196 @@
 From: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Subject: [RFC/RFT usb-next v1 0/6] remove driver-specific "multiple PHY" handling
-Date: Thu, 25 Jan 2018 01:16:33 +0100
-Message-ID: <20180125001639.14681-1-martin.blumenstingl@googlemail.com>
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Subject: [RFC/RFT usb-next v1 1/6] usb: mtu3: remove custom USB PHY handling
+Date: Thu, 25 Jan 2018 01:16:34 +0100
+Message-ID: <20180125001639.14681-2-martin.blumenstingl@googlemail.com>
+References: <20180125001639.14681-1-martin.blumenstingl@googlemail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180125001639.14681-1-martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-ci5G2KO2hbZ+pU9mqzGVBQ@public.gmane.org, Peter.Chen-3arQi8VN3Tc@public.gmane.org
-Cc: mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+Cc: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-(this is the follow-up to my "initialize (multiple) PHYs for a HCD"
-series from [0])
+The new PHY wrapper is now wired up in the core HCD code. This means
+that PHYs are now controlled (initialized, enabled, disabled, exited)
+without requiring any host-driver specific code.
+Remove the custom USB PHY handling from the mtu3 driver as the core HCD
+code now handles this.
 
-Various USB controller drivers parse the "phys" device-tree property and
-grab all listed PHYs.
-There is a lot of duplicate code around this in the various drivers:
-- parse the "phys" property during .probe and save all PHYs in an array
-- call phy_init and phy_power_on on all PHYs
-- (where supported by the driver) call phy_power_off during .suspend and
-  phy_power_on during .resume
-- call phy_power_off and phy_exit during .remove
+Signed-off-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+---
+ drivers/usb/mtu3/mtu3_plat.c | 101 -------------------------------------------
+ 1 file changed, 101 deletions(-)
 
-With [0] this functionality was moved to the core HCD driver, meaning
-that all USB controller drivers now support this without having to
-implement custom code for it.
-
-Thus this series removes this code duplication.
-
-The last two patches are a bit special:
-- after patches #1-4 the chipidea driver is the last driver which sets
-  the "phy" field of struct usb_hcd. remove this logic as the PHY
-  wrapper (which is now part of the core HCD driver) manages the state
-  of all PHYs anyways.
-- the last patch removes the "phy" field from struct usb_hcd because
-  nothing uses it anymore after the previous patches. it also removes
-  the parsing and managing of a single PHY with the name "usb" as the
-  new PHY wrapper parses all PHYs from the device-tree "phys" property
-  anyways (so the PHY wrapper has the same functionality, except that it
-  doesn't need the phy-name "usb" and it can manage more than one PHY)
-
-preconditions for testing this series: all patches from [0] need to be
-applied.
-disclaimer: I don't have any hardware that uses any of the affected
-drivers!
-
-
-[0] http://lists.infradead.org/pipermail/linux-amlogic/2018-January/006274.html
-
-Martin Blumenstingl (6):
-  usb: mtu3: remove custom USB PHY handling
-  usb: host: xhci-mtk: remove custom USB PHY handling
-  usb: host: ehci-platform: remove custom USB PHY handling
-  usb: host: ohci-platform: remove custom USB PHY handling
-  usb: chipidea: do not set the "phy" field in struct usb_hcd
-  usb: core: hcd: remove support for initializing a single PHY
-
- drivers/usb/chipidea/host.c      |   4 +-
- drivers/usb/core/hcd.c           |  37 --------------
- drivers/usb/host/ehci-platform.c |  55 ++-------------------
- drivers/usb/host/ohci-platform.c |  56 ++--------------------
- drivers/usb/host/xhci-mtk.c      |  98 +------------------------------------
- drivers/usb/mtu3/mtu3_plat.c     | 101 ---------------------------------------
- include/linux/usb/hcd.h          |   1 -
- 7 files changed, 12 insertions(+), 340 deletions(-)
-
+diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+index 628d5ce356ca..a894ddf25bcd 100644
+--- a/drivers/usb/mtu3/mtu3_plat.c
++++ b/drivers/usb/mtu3/mtu3_plat.c
+@@ -44,62 +44,6 @@ int ssusb_check_clocks(struct ssusb_mtk *ssusb, u32 ex_clks)
+ 	return 0;
+ }
+ 
+-static int ssusb_phy_init(struct ssusb_mtk *ssusb)
+-{
+-	int i;
+-	int ret;
+-
+-	for (i = 0; i < ssusb->num_phys; i++) {
+-		ret = phy_init(ssusb->phys[i]);
+-		if (ret)
+-			goto exit_phy;
+-	}
+-	return 0;
+-
+-exit_phy:
+-	for (; i > 0; i--)
+-		phy_exit(ssusb->phys[i - 1]);
+-
+-	return ret;
+-}
+-
+-static int ssusb_phy_exit(struct ssusb_mtk *ssusb)
+-{
+-	int i;
+-
+-	for (i = 0; i < ssusb->num_phys; i++)
+-		phy_exit(ssusb->phys[i]);
+-
+-	return 0;
+-}
+-
+-static int ssusb_phy_power_on(struct ssusb_mtk *ssusb)
+-{
+-	int i;
+-	int ret;
+-
+-	for (i = 0; i < ssusb->num_phys; i++) {
+-		ret = phy_power_on(ssusb->phys[i]);
+-		if (ret)
+-			goto power_off_phy;
+-	}
+-	return 0;
+-
+-power_off_phy:
+-	for (; i > 0; i--)
+-		phy_power_off(ssusb->phys[i - 1]);
+-
+-	return ret;
+-}
+-
+-static void ssusb_phy_power_off(struct ssusb_mtk *ssusb)
+-{
+-	unsigned int i;
+-
+-	for (i = 0; i < ssusb->num_phys; i++)
+-		phy_power_off(ssusb->phys[i]);
+-}
+-
+ static int ssusb_clks_enable(struct ssusb_mtk *ssusb)
+ {
+ 	int ret;
+@@ -162,24 +106,8 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
+ 	if (ret)
+ 		goto clks_err;
+ 
+-	ret = ssusb_phy_init(ssusb);
+-	if (ret) {
+-		dev_err(ssusb->dev, "failed to init phy\n");
+-		goto phy_init_err;
+-	}
+-
+-	ret = ssusb_phy_power_on(ssusb);
+-	if (ret) {
+-		dev_err(ssusb->dev, "failed to power on phy\n");
+-		goto phy_err;
+-	}
+-
+ 	return 0;
+ 
+-phy_err:
+-	ssusb_phy_exit(ssusb);
+-phy_init_err:
+-	ssusb_clks_disable(ssusb);
+ clks_err:
+ 	regulator_disable(ssusb->vusb33);
+ vusb33_err:
+@@ -190,8 +118,6 @@ static void ssusb_rscs_exit(struct ssusb_mtk *ssusb)
+ {
+ 	ssusb_clks_disable(ssusb);
+ 	regulator_disable(ssusb->vusb33);
+-	ssusb_phy_power_off(ssusb);
+-	ssusb_phy_exit(ssusb);
+ }
+ 
+ static void ssusb_ip_sw_reset(struct ssusb_mtk *ssusb)
+@@ -222,7 +148,6 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
+ 	struct device *dev = &pdev->dev;
+ 	struct regulator *vbus;
+ 	struct resource *res;
+-	int i;
+ 	int ret;
+ 
+ 	ssusb->vusb33 = devm_regulator_get(&pdev->dev, "vusb33");
+@@ -249,25 +174,6 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
+ 	if (IS_ERR(ssusb->dma_clk))
+ 		return PTR_ERR(ssusb->dma_clk);
+ 
+-	ssusb->num_phys = of_count_phandle_with_args(node,
+-			"phys", "#phy-cells");
+-	if (ssusb->num_phys > 0) {
+-		ssusb->phys = devm_kcalloc(dev, ssusb->num_phys,
+-					sizeof(*ssusb->phys), GFP_KERNEL);
+-		if (!ssusb->phys)
+-			return -ENOMEM;
+-	} else {
+-		ssusb->num_phys = 0;
+-	}
+-
+-	for (i = 0; i < ssusb->num_phys; i++) {
+-		ssusb->phys[i] = devm_of_phy_get_by_index(dev, node, i);
+-		if (IS_ERR(ssusb->phys[i])) {
+-			dev_err(dev, "failed to get phy-%d\n", i);
+-			return PTR_ERR(ssusb->phys[i]);
+-		}
+-	}
+-
+ 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "ippc");
+ 	ssusb->ippc_base = devm_ioremap_resource(dev, res);
+ 	if (IS_ERR(ssusb->ippc_base))
+@@ -457,7 +363,6 @@ static int __maybe_unused mtu3_suspend(struct device *dev)
+ 		return 0;
+ 
+ 	ssusb_host_disable(ssusb, true);
+-	ssusb_phy_power_off(ssusb);
+ 	ssusb_clks_disable(ssusb);
+ 	ssusb_wakeup_set(ssusb, true);
+ 
+@@ -480,16 +385,10 @@ static int __maybe_unused mtu3_resume(struct device *dev)
+ 	if (ret)
+ 		goto clks_err;
+ 
+-	ret = ssusb_phy_power_on(ssusb);
+-	if (ret)
+-		goto phy_err;
+-
+ 	ssusb_host_enable(ssusb);
+ 
+ 	return 0;
+ 
+-phy_err:
+-	ssusb_clks_disable(ssusb);
+ clks_err:
+ 	return ret;
+ }
 -- 
 2.16.1
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
