@@ -1,78 +1,76 @@
-From: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Subject: Re: [RFC/RFT usb-next v1 5/6] usb: chipidea: do not set the "phy"
+From: Peter Chen <peter.chen-3arQi8VN3Tc@public.gmane.org>
+Subject: RE: [RFC/RFT usb-next v1 5/6] usb: chipidea: do not set the "phy"
  field in struct usb_hcd
-Date: Fri, 26 Jan 2018 22:05:42 +0100
-Message-ID: <CAFBinCCzghJxHe-1Jzwa1ohHYYytn53QAsXYue229dVu7tB7UQ@mail.gmail.com>
+Date: Mon, 29 Jan 2018 03:30:41 +0000
+Message-ID: <HE1PR04MB14504462F7C7A247E1CF9F308BE50@HE1PR04MB1450.eurprd04.prod.outlook.com>
 References: <20180125001639.14681-1-martin.blumenstingl@googlemail.com>
- <20180125001639.14681-6-martin.blumenstingl@googlemail.com> <HE1PR04MB145071FCFAF041E0A9252FF08BE00@HE1PR04MB1450.eurprd04.prod.outlook.com>
+ <20180125001639.14681-6-martin.blumenstingl@googlemail.com>
+ <HE1PR04MB145071FCFAF041E0A9252FF08BE00@HE1PR04MB1450.eurprd04.prod.outlook.com>
+ <CAFBinCCzghJxHe-1Jzwa1ohHYYytn53QAsXYue229dVu7tB7UQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <HE1PR04MB145071FCFAF041E0A9252FF08BE00-6LN7OEpIatVC+P/YwrXEHc9NdZoXdze2vxpqHgZTriW3zl9H0oFU5g@public.gmane.org>
+In-Reply-To: <CAFBinCCzghJxHe-1Jzwa1ohHYYytn53QAsXYue229dVu7tB7UQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
 Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Peter Chen <peter.chen-3arQi8VN3Tc@public.gmane.org>
+To: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
 Cc: "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-ci5G2KO2hbZ+pU9mqzGVBQ@public.gmane.org" <linux-ci5G2KO2hbZ+pU9mqzGVBQ@public.gmane.org>, "mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org" <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org" <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Peter,
-
-On Fri, Jan 26, 2018 at 10:06 AM, Peter Chen <peter.chen-3arQi8VN3Tc@public.gmane.org> wrote:
->
->>
->> Now that usb_add_hcd parses all generic PHYs anyways the code which skips
->> initialization of a single PHY will go away.
->> Remove the code which sets struct usb_hcd's phy field from the chipidea driver as
->> this field will go away soon.
->>
->> Signed-off-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
->> ---
->>  drivers/usb/chipidea/host.c | 4 +---
->>  1 file changed, 1 insertion(+), 3 deletions(-)
->>
->> diff --git a/drivers/usb/chipidea/host.c b/drivers/usb/chipidea/host.c index
->> 19d60ed7e41f..fc324767cb0f 100644
->> --- a/drivers/usb/chipidea/host.c
->> +++ b/drivers/usb/chipidea/host.c
->> @@ -124,9 +124,7 @@ static int host_start(struct ci_hdrc *ci)
->>
->>       hcd->power_budget = ci->platdata->power_budget;
->>       hcd->tpl_support = ci->platdata->tpl_support;
->> -     if (ci->phy)
->> -             hcd->phy = ci->phy;
->> -     else
->> +     if (!ci->phy)
->>               hcd->usb_phy = ci->usb_phy;
->>
->
-> The reason hcd->phy is initialized by chipidea core is we do not need HCD core to
-> touch PHY, and PHY operation is shared for both device and host mode for chipidea.
-Chunfeng wanted me to drop the mtu3 patch because I forgot about
-device mode in the mtu3 driver.
-however, the chipidea driver seems to be different because I'm not
-dropping the whole phy_{init,power_on,power_off,exit} code from it,
-but only a "flag" that tells the HCD core to skip managing the USB PHY
-
-> If I understand correct, your HCD core PHY wrapper patch set will do PHY operation if
-> there is a "phy" node under controller's? If it is correct, you may supply one way to let
-> the HCD core bypass phy operations for some USB controllers, eg dual-role controllers.
-> Thanks.
-could you please explain why the HCD core should not manage the the
-PHYs when the chipidea driver is used?
-
-my understanding is that all phy_{init,power_on,power_off,exit}
-operations are ref-counted internally in the PHY framework
-this means that if the chipidea driver calls phy_{init,power_on} first
-then the same functions called from within the HCD core are no-ops
-(except for the ref-counting)
-so I think it should not change anything - however, I have no hardware
-to actually prove that.
-it would be great if you could explain the issue behind this (and
-thereby answer the question: why we would not want the HCD core to
-manage the PHY states)!
-
-
-Regards
-Martin
+IA0KPiA+DQo+ID4+DQo+ID4+IE5vdyB0aGF0IHVzYl9hZGRfaGNkIHBhcnNlcyBhbGwgZ2VuZXJp
+YyBQSFlzIGFueXdheXMgdGhlIGNvZGUgd2hpY2gNCj4gPj4gc2tpcHMgaW5pdGlhbGl6YXRpb24g
+b2YgYSBzaW5nbGUgUEhZIHdpbGwgZ28gYXdheS4NCj4gPj4gUmVtb3ZlIHRoZSBjb2RlIHdoaWNo
+IHNldHMgc3RydWN0IHVzYl9oY2QncyBwaHkgZmllbGQgZnJvbSB0aGUNCj4gPj4gY2hpcGlkZWEg
+ZHJpdmVyIGFzIHRoaXMgZmllbGQgd2lsbCBnbyBhd2F5IHNvb24uDQo+ID4+DQo+ID4+IFNpZ25l
+ZC1vZmYtYnk6IE1hcnRpbiBCbHVtZW5zdGluZ2wNCj4gPj4gPG1hcnRpbi5ibHVtZW5zdGluZ2xA
+Z29vZ2xlbWFpbC5jb20+DQo+ID4+IC0tLQ0KPiA+PiAgZHJpdmVycy91c2IvY2hpcGlkZWEvaG9z
+dC5jIHwgNCArLS0tDQo+ID4+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDMgZGVs
+ZXRpb25zKC0pDQo+ID4+DQo+ID4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3VzYi9jaGlwaWRlYS9o
+b3N0LmMNCj4gPj4gYi9kcml2ZXJzL3VzYi9jaGlwaWRlYS9ob3N0LmMgaW5kZXggMTlkNjBlZDdl
+NDFmLi5mYzMyNDc2N2NiMGYgMTAwNjQ0DQo+ID4+IC0tLSBhL2RyaXZlcnMvdXNiL2NoaXBpZGVh
+L2hvc3QuYw0KPiA+PiArKysgYi9kcml2ZXJzL3VzYi9jaGlwaWRlYS9ob3N0LmMNCj4gPj4gQEAg
+LTEyNCw5ICsxMjQsNyBAQCBzdGF0aWMgaW50IGhvc3Rfc3RhcnQoc3RydWN0IGNpX2hkcmMgKmNp
+KQ0KPiA+Pg0KPiA+PiAgICAgICBoY2QtPnBvd2VyX2J1ZGdldCA9IGNpLT5wbGF0ZGF0YS0+cG93
+ZXJfYnVkZ2V0Ow0KPiA+PiAgICAgICBoY2QtPnRwbF9zdXBwb3J0ID0gY2ktPnBsYXRkYXRhLT50
+cGxfc3VwcG9ydDsNCj4gPj4gLSAgICAgaWYgKGNpLT5waHkpDQo+ID4+IC0gICAgICAgICAgICAg
+aGNkLT5waHkgPSBjaS0+cGh5Ow0KPiA+PiAtICAgICBlbHNlDQo+ID4+ICsgICAgIGlmICghY2kt
+PnBoeSkNCj4gPj4gICAgICAgICAgICAgICBoY2QtPnVzYl9waHkgPSBjaS0+dXNiX3BoeTsNCj4g
+Pj4NCj4gPg0KPiA+IFRoZSByZWFzb24gaGNkLT5waHkgaXMgaW5pdGlhbGl6ZWQgYnkgY2hpcGlk
+ZWEgY29yZSBpcyB3ZSBkbyBub3QgbmVlZA0KPiA+IEhDRCBjb3JlIHRvIHRvdWNoIFBIWSwgYW5k
+IFBIWSBvcGVyYXRpb24gaXMgc2hhcmVkIGZvciBib3RoIGRldmljZSBhbmQgaG9zdA0KPiBtb2Rl
+IGZvciBjaGlwaWRlYS4NCj4gQ2h1bmZlbmcgd2FudGVkIG1lIHRvIGRyb3AgdGhlIG10dTMgcGF0
+Y2ggYmVjYXVzZSBJIGZvcmdvdCBhYm91dCBkZXZpY2UgbW9kZSBpbg0KPiB0aGUgbXR1MyBkcml2
+ZXIuDQo+IGhvd2V2ZXIsIHRoZSBjaGlwaWRlYSBkcml2ZXIgc2VlbXMgdG8gYmUgZGlmZmVyZW50
+IGJlY2F1c2UgSSdtIG5vdCBkcm9wcGluZyB0aGUNCj4gd2hvbGUgcGh5X3tpbml0LHBvd2VyX29u
+LHBvd2VyX29mZixleGl0fSBjb2RlIGZyb20gaXQsIGJ1dCBvbmx5IGEgImZsYWciIHRoYXQgdGVs
+bHMgdGhlDQo+IEhDRCBjb3JlIHRvIHNraXAgbWFuYWdpbmcgdGhlIFVTQiBQSFkNCj4gDQo+ID4g
+SWYgSSB1bmRlcnN0YW5kIGNvcnJlY3QsIHlvdXIgSENEIGNvcmUgUEhZIHdyYXBwZXIgcGF0Y2gg
+c2V0IHdpbGwgZG8NCj4gPiBQSFkgb3BlcmF0aW9uIGlmIHRoZXJlIGlzIGEgInBoeSIgbm9kZSB1
+bmRlciBjb250cm9sbGVyJ3M/IElmIGl0IGlzDQo+ID4gY29ycmVjdCwgeW91IG1heSBzdXBwbHkg
+b25lIHdheSB0byBsZXQgdGhlIEhDRCBjb3JlIGJ5cGFzcyBwaHkgb3BlcmF0aW9ucyBmb3INCj4g
+c29tZSBVU0IgY29udHJvbGxlcnMsIGVnIGR1YWwtcm9sZSBjb250cm9sbGVycy4NCj4gPiBUaGFu
+a3MuDQo+IGNvdWxkIHlvdSBwbGVhc2UgZXhwbGFpbiB3aHkgdGhlIEhDRCBjb3JlIHNob3VsZCBu
+b3QgbWFuYWdlIHRoZSB0aGUgUEhZcyB3aGVuDQo+IHRoZSBjaGlwaWRlYSBkcml2ZXIgaXMgdXNl
+ZD8NCj4gDQo+IG15IHVuZGVyc3RhbmRpbmcgaXMgdGhhdCBhbGwgcGh5X3tpbml0LHBvd2VyX29u
+LHBvd2VyX29mZixleGl0fQ0KPiBvcGVyYXRpb25zIGFyZSByZWYtY291bnRlZCBpbnRlcm5hbGx5
+IGluIHRoZSBQSFkgZnJhbWV3b3JrIHRoaXMgbWVhbnMgdGhhdCBpZiB0aGUNCj4gY2hpcGlkZWEg
+ZHJpdmVyIGNhbGxzIHBoeV97aW5pdCxwb3dlcl9vbn0gZmlyc3QgdGhlbiB0aGUgc2FtZSBmdW5j
+dGlvbnMgY2FsbGVkIGZyb20NCj4gd2l0aGluIHRoZSBIQ0QgY29yZSBhcmUgbm8tb3BzIChleGNl
+cHQgZm9yIHRoZSByZWYtY291bnRpbmcpIHNvIEkgdGhpbmsgaXQgc2hvdWxkIG5vdA0KPiBjaGFu
+Z2UgYW55dGhpbmcgLSBob3dldmVyLCBJIGhhdmUgbm8gaGFyZHdhcmUgdG8gYWN0dWFsbHkgcHJv
+dmUgdGhhdC4NCg0KTWFydGluLCB5b3UgZGVzaWduIGhhcyBubyBwcm9ibGVtIGZvciBtb3N0IG9m
+IGNhc2VzLCBidXQgc29tZSBoYXJkd2FyZSBuZWVkcyBzcGVjaWFsDQpzZXF1ZW5jZSBmb3IgcGh5
+IGNvbnRyb2wuIEkgd2lsbCBnaXZlIGFuIGV4YW1wbGUgYmVsb3cuDQoNCj4gaXQgd291bGQgYmUg
+Z3JlYXQgaWYgeW91IGNvdWxkIGV4cGxhaW4gdGhlIGlzc3VlIGJlaGluZCB0aGlzIChhbmQgdGhl
+cmVieSBhbnN3ZXIgdGhlDQo+IHF1ZXN0aW9uOiB3aHkgd2Ugd291bGQgbm90IHdhbnQgdGhlIEhD
+RCBjb3JlIHRvIG1hbmFnZSB0aGUgUEhZIHN0YXRlcykhDQo+IA0KPiANCkVnLCB0YWtpbmcgUXVh
+bGNvbW0gVVNCMiBjb250cm9sbGVyIGFzIGFuIGV4YW1wbGUsIGl0IGV2ZW4gZG9lcyBub3QgYWxs
+b3cgY2hpcGlkZWEgY29yZQ0KdG8gbWFuYWdlIGl0cyBwb3dlciBvcGVyYXRpb24sIHNlZSBDSV9I
+RFJDX09WRVJSSURFX1BIWV9DT05UUk9MIGF0IGNoaXBpZGVhIGRyaXZlcg0KKHVzYi9jaGlwaWRl
+YS9jb3JlLmMpLiBJdHMgcGh5X3Bvd2VyX29uIGlzIGNhbGxlZCBhZnRlciBlaGNpIGNvbnRyb2xs
+ZXIgcmVzZXQgaGFzIGZpbmlzaGVkLiANCih1c2IvY2hpcGlkZWEvY2lfaGRyY19tc20uYykuDQoN
+ClBldGVyDQoNCg0KDQo=
 --
 To unsubscribe from this list: send the line "unsubscribe linux-usb" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
