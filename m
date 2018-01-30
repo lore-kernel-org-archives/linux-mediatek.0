@@ -1,77 +1,103 @@
-From: Peter Chen <peter.chen-3arQi8VN3Tc@public.gmane.org>
-Subject: RE: [RFC/RFT usb-next v1 5/6] usb: chipidea: do not set the "phy"
- field in struct usb_hcd
-Date: Mon, 29 Jan 2018 03:30:41 +0000
-Message-ID: <HE1PR04MB14504462F7C7A247E1CF9F308BE50@HE1PR04MB1450.eurprd04.prod.outlook.com>
-References: <20180125001639.14681-1-martin.blumenstingl@googlemail.com>
- <20180125001639.14681-6-martin.blumenstingl@googlemail.com>
- <HE1PR04MB145071FCFAF041E0A9252FF08BE00@HE1PR04MB1450.eurprd04.prod.outlook.com>
- <CAFBinCCzghJxHe-1Jzwa1ohHYYytn53QAsXYue229dVu7tB7UQ@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 3/5] soc: mediatek: pwrap: add int1_en_all and
+ capability flag
+Date: Tue, 30 Jan 2018 13:55:47 +0100
+Message-ID: <3f4ce745-32e0-2ae6-1463-af041d608d8c@gmail.com>
+References: <20180129090944.28687-1-argus.lin@mediatek.com>
+ <20180129090944.28687-3-argus.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAFBinCCzghJxHe-1Jzwa1ohHYYytn53QAsXYue229dVu7tB7UQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180129090944.28687-3-argus.lin@mediatek.com>
 Content-Language: en-US
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Cc: "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-ci5G2KO2hbZ+pU9mqzGVBQ@public.gmane.org" <linux-ci5G2KO2hbZ+pU9mqzGVBQ@public.gmane.org>, "mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org" <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org" <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: argus.lin@mediatek.com, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
+Cc: Chenglin Xu <chenglin.xu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, wsd_upstream@mediatek.com, henryc.chen@mediatek.com, flora.fu@mediatek.com, Chen Zhong <chen.zhong@mediatek.com>, Christophe Jaillet <christophe.jaillet@wanadoo.fr>, "shailendra . v" <shailendra.v@samsung.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-IA0KPiA+DQo+ID4+DQo+ID4+IE5vdyB0aGF0IHVzYl9hZGRfaGNkIHBhcnNlcyBhbGwgZ2VuZXJp
-YyBQSFlzIGFueXdheXMgdGhlIGNvZGUgd2hpY2gNCj4gPj4gc2tpcHMgaW5pdGlhbGl6YXRpb24g
-b2YgYSBzaW5nbGUgUEhZIHdpbGwgZ28gYXdheS4NCj4gPj4gUmVtb3ZlIHRoZSBjb2RlIHdoaWNo
-IHNldHMgc3RydWN0IHVzYl9oY2QncyBwaHkgZmllbGQgZnJvbSB0aGUNCj4gPj4gY2hpcGlkZWEg
-ZHJpdmVyIGFzIHRoaXMgZmllbGQgd2lsbCBnbyBhd2F5IHNvb24uDQo+ID4+DQo+ID4+IFNpZ25l
-ZC1vZmYtYnk6IE1hcnRpbiBCbHVtZW5zdGluZ2wNCj4gPj4gPG1hcnRpbi5ibHVtZW5zdGluZ2xA
-Z29vZ2xlbWFpbC5jb20+DQo+ID4+IC0tLQ0KPiA+PiAgZHJpdmVycy91c2IvY2hpcGlkZWEvaG9z
-dC5jIHwgNCArLS0tDQo+ID4+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDMgZGVs
-ZXRpb25zKC0pDQo+ID4+DQo+ID4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3VzYi9jaGlwaWRlYS9o
-b3N0LmMNCj4gPj4gYi9kcml2ZXJzL3VzYi9jaGlwaWRlYS9ob3N0LmMgaW5kZXggMTlkNjBlZDdl
-NDFmLi5mYzMyNDc2N2NiMGYgMTAwNjQ0DQo+ID4+IC0tLSBhL2RyaXZlcnMvdXNiL2NoaXBpZGVh
-L2hvc3QuYw0KPiA+PiArKysgYi9kcml2ZXJzL3VzYi9jaGlwaWRlYS9ob3N0LmMNCj4gPj4gQEAg
-LTEyNCw5ICsxMjQsNyBAQCBzdGF0aWMgaW50IGhvc3Rfc3RhcnQoc3RydWN0IGNpX2hkcmMgKmNp
-KQ0KPiA+Pg0KPiA+PiAgICAgICBoY2QtPnBvd2VyX2J1ZGdldCA9IGNpLT5wbGF0ZGF0YS0+cG93
-ZXJfYnVkZ2V0Ow0KPiA+PiAgICAgICBoY2QtPnRwbF9zdXBwb3J0ID0gY2ktPnBsYXRkYXRhLT50
-cGxfc3VwcG9ydDsNCj4gPj4gLSAgICAgaWYgKGNpLT5waHkpDQo+ID4+IC0gICAgICAgICAgICAg
-aGNkLT5waHkgPSBjaS0+cGh5Ow0KPiA+PiAtICAgICBlbHNlDQo+ID4+ICsgICAgIGlmICghY2kt
-PnBoeSkNCj4gPj4gICAgICAgICAgICAgICBoY2QtPnVzYl9waHkgPSBjaS0+dXNiX3BoeTsNCj4g
-Pj4NCj4gPg0KPiA+IFRoZSByZWFzb24gaGNkLT5waHkgaXMgaW5pdGlhbGl6ZWQgYnkgY2hpcGlk
-ZWEgY29yZSBpcyB3ZSBkbyBub3QgbmVlZA0KPiA+IEhDRCBjb3JlIHRvIHRvdWNoIFBIWSwgYW5k
-IFBIWSBvcGVyYXRpb24gaXMgc2hhcmVkIGZvciBib3RoIGRldmljZSBhbmQgaG9zdA0KPiBtb2Rl
-IGZvciBjaGlwaWRlYS4NCj4gQ2h1bmZlbmcgd2FudGVkIG1lIHRvIGRyb3AgdGhlIG10dTMgcGF0
-Y2ggYmVjYXVzZSBJIGZvcmdvdCBhYm91dCBkZXZpY2UgbW9kZSBpbg0KPiB0aGUgbXR1MyBkcml2
-ZXIuDQo+IGhvd2V2ZXIsIHRoZSBjaGlwaWRlYSBkcml2ZXIgc2VlbXMgdG8gYmUgZGlmZmVyZW50
-IGJlY2F1c2UgSSdtIG5vdCBkcm9wcGluZyB0aGUNCj4gd2hvbGUgcGh5X3tpbml0LHBvd2VyX29u
-LHBvd2VyX29mZixleGl0fSBjb2RlIGZyb20gaXQsIGJ1dCBvbmx5IGEgImZsYWciIHRoYXQgdGVs
-bHMgdGhlDQo+IEhDRCBjb3JlIHRvIHNraXAgbWFuYWdpbmcgdGhlIFVTQiBQSFkNCj4gDQo+ID4g
-SWYgSSB1bmRlcnN0YW5kIGNvcnJlY3QsIHlvdXIgSENEIGNvcmUgUEhZIHdyYXBwZXIgcGF0Y2gg
-c2V0IHdpbGwgZG8NCj4gPiBQSFkgb3BlcmF0aW9uIGlmIHRoZXJlIGlzIGEgInBoeSIgbm9kZSB1
-bmRlciBjb250cm9sbGVyJ3M/IElmIGl0IGlzDQo+ID4gY29ycmVjdCwgeW91IG1heSBzdXBwbHkg
-b25lIHdheSB0byBsZXQgdGhlIEhDRCBjb3JlIGJ5cGFzcyBwaHkgb3BlcmF0aW9ucyBmb3INCj4g
-c29tZSBVU0IgY29udHJvbGxlcnMsIGVnIGR1YWwtcm9sZSBjb250cm9sbGVycy4NCj4gPiBUaGFu
-a3MuDQo+IGNvdWxkIHlvdSBwbGVhc2UgZXhwbGFpbiB3aHkgdGhlIEhDRCBjb3JlIHNob3VsZCBu
-b3QgbWFuYWdlIHRoZSB0aGUgUEhZcyB3aGVuDQo+IHRoZSBjaGlwaWRlYSBkcml2ZXIgaXMgdXNl
-ZD8NCj4gDQo+IG15IHVuZGVyc3RhbmRpbmcgaXMgdGhhdCBhbGwgcGh5X3tpbml0LHBvd2VyX29u
-LHBvd2VyX29mZixleGl0fQ0KPiBvcGVyYXRpb25zIGFyZSByZWYtY291bnRlZCBpbnRlcm5hbGx5
-IGluIHRoZSBQSFkgZnJhbWV3b3JrIHRoaXMgbWVhbnMgdGhhdCBpZiB0aGUNCj4gY2hpcGlkZWEg
-ZHJpdmVyIGNhbGxzIHBoeV97aW5pdCxwb3dlcl9vbn0gZmlyc3QgdGhlbiB0aGUgc2FtZSBmdW5j
-dGlvbnMgY2FsbGVkIGZyb20NCj4gd2l0aGluIHRoZSBIQ0QgY29yZSBhcmUgbm8tb3BzIChleGNl
-cHQgZm9yIHRoZSByZWYtY291bnRpbmcpIHNvIEkgdGhpbmsgaXQgc2hvdWxkIG5vdA0KPiBjaGFu
-Z2UgYW55dGhpbmcgLSBob3dldmVyLCBJIGhhdmUgbm8gaGFyZHdhcmUgdG8gYWN0dWFsbHkgcHJv
-dmUgdGhhdC4NCg0KTWFydGluLCB5b3UgZGVzaWduIGhhcyBubyBwcm9ibGVtIGZvciBtb3N0IG9m
-IGNhc2VzLCBidXQgc29tZSBoYXJkd2FyZSBuZWVkcyBzcGVjaWFsDQpzZXF1ZW5jZSBmb3IgcGh5
-IGNvbnRyb2wuIEkgd2lsbCBnaXZlIGFuIGV4YW1wbGUgYmVsb3cuDQoNCj4gaXQgd291bGQgYmUg
-Z3JlYXQgaWYgeW91IGNvdWxkIGV4cGxhaW4gdGhlIGlzc3VlIGJlaGluZCB0aGlzIChhbmQgdGhl
-cmVieSBhbnN3ZXIgdGhlDQo+IHF1ZXN0aW9uOiB3aHkgd2Ugd291bGQgbm90IHdhbnQgdGhlIEhD
-RCBjb3JlIHRvIG1hbmFnZSB0aGUgUEhZIHN0YXRlcykhDQo+IA0KPiANCkVnLCB0YWtpbmcgUXVh
-bGNvbW0gVVNCMiBjb250cm9sbGVyIGFzIGFuIGV4YW1wbGUsIGl0IGV2ZW4gZG9lcyBub3QgYWxs
-b3cgY2hpcGlkZWEgY29yZQ0KdG8gbWFuYWdlIGl0cyBwb3dlciBvcGVyYXRpb24sIHNlZSBDSV9I
-RFJDX09WRVJSSURFX1BIWV9DT05UUk9MIGF0IGNoaXBpZGVhIGRyaXZlcg0KKHVzYi9jaGlwaWRl
-YS9jb3JlLmMpLiBJdHMgcGh5X3Bvd2VyX29uIGlzIGNhbGxlZCBhZnRlciBlaGNpIGNvbnRyb2xs
-ZXIgcmVzZXQgaGFzIGZpbmlzaGVkLiANCih1c2IvY2hpcGlkZWEvY2lfaGRyY19tc20uYykuDQoN
-ClBldGVyDQoNCg0KDQo=
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+
+On 01/29/2018 10:09 AM, argus.lin@mediatek.com wrote:
+> From: Argus Lin <argus.lin@mediatek.com>
+> 
+> New pwrap support int1_en flag for starvation and channel
+> request exception. We need to register it for interrupt
+> handler.
+> We also add pwrap capability flag used to declare if we
+
+"We also" wording is nearly always a hint, that this should be done
+in two independent patches.
+
+> support BRIDGE, RESET, DCM, PRIORITY_SEL and INT1_EN
+> or not.
+> 
+> Signed-off-by: Argus Lin <argus.lin@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mtk-pmic-wrap.c | 11 ++++++++++-
+>  1 file changed, 10 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> index e9e054a15b7d..9f924d3f8645 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -76,6 +76,13 @@
+>  #define PWRAP_SLV_CAP_SECURITY	BIT(2)
+>  #define HAS_CAP(_c, _x)	(((_c) & (_x)) == (_x))
+>  
+> +/* Group of bits used for shown pwrap capability */
+> +#define PWRAP_CAP_BRIDGE	BIT(0)
+> +#define PWRAP_CAP_RESET		BIT(1)
+> +#define PWRAP_CAP_DCM		BIT(2)
+
+As you told me the driver will be upstreamed in April, please add this flag when
+you upstream the driver, as this will be in a different kernel version.
+
+> +#define PWRAP_CAP_PRIORITY_SEL	BIT(3)
+> +#define PWRAP_CAP_INT1_EN	BIT(4)
+> +
+
+Add each flag when you add the user of the flag.
+
+>  /* defines for slave device wrapper registers */
+>  enum dew_regs {
+>  	PWRAP_DEW_BASE,
+> @@ -681,9 +688,11 @@ struct pmic_wrapper_type {
+>  	enum pwrap_type type;
+>  	u32 arb_en_all;
+>  	u32 int_en_all;
+> +	u32 int1_en_all;
+>  	u32 spi_w;
+>  	u32 wdt_src;
+> -	unsigned int has_bridge:1;
+> +	/* Flags indicating the capability for the target pwrap */
+> +	u32 caps;
+
+NAK, this will not compile. Please make sure that every patch on it's own does
+not break compilation.
+
+Regards,
+Matthias
+
+>  	int (*init_reg_clock)(struct pmic_wrapper *wrp);
+>  	int (*init_soc_specific)(struct pmic_wrapper *wrp);
+>  };
+> -- 
+> 2.12.5
+> 
+> ************* Email Confidentiality Notice
+>  ********************
+> The information contained in this e-mail message (including any 
+> attachments) may be confidential, proprietary, privileged, or otherwise
+> exempt from disclosure under applicable laws. It is intended to be 
+> conveyed only to the designated recipient(s). Any use, dissemination, 
+> distribution, printing, retaining or copying of this e-mail (including its 
+> attachments) by unintended recipient(s) is strictly prohibited and may 
+> be unlawful. If you are not an intended recipient of this e-mail, or believe
+>  
+> that you have received this e-mail in error, please notify the sender 
+> immediately (by replying to this e-mail), delete any and all copies of 
+> this e-mail (including any attachments) from your system, and do not
+> disclose the content of this e-mail to any other person. Thank
+>  you!
+> 
