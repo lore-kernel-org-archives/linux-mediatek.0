@@ -1,46 +1,41 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 2/5] clk: mediatek: modify MT7622 audsys to adapt MFD device
-Date: Wed, 31 Jan 2018 15:42:42 +0800
-Message-ID: <d6669277f5232446b4798a6b724074b18d5c21aa.1515639336.git.ryder.lee@mediatek.com>
-References: <cover.1515639336.git.ryder.lee@mediatek.com>
+From: <miles.chen@mediatek.com>
+Subject: [PATCH] mm: Remove PG_highmem description
+Date: Wed, 31 Jan 2018 17:33:32 +0800
+Message-ID: <1517391212-2950-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <cover.1515639336.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Huang Ying <ying.huang@intel.com>, Kate Stewart <kstewart@linuxfoundation.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Thomas Gleixner <tglx@linutronix.de>, Michal Hocko <mhocko@suse.com>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-As the new MFD parent is in place, switch probing method to adapt it.
+From: Miles Chen <miles.chen@mediatek.com>
 
-Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+The commit cbe37d093707 ("[PATCH] mm: remove PG_highmem") has removed
+PG_highmem to save a page flag. So the description of PG_highmem
+is no longer needed, remove it.
+
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mt7622-aud.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ include/linux/page-flags.h | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt7622-aud.c b/drivers/clk/mediatek/clk-mt7622-aud.c
-index 13f752d..8c18536 100644
---- a/drivers/clk/mediatek/clk-mt7622-aud.c
-+++ b/drivers/clk/mediatek/clk-mt7622-aud.c
-@@ -142,11 +142,12 @@ static int clk_mt7622_audiosys_init(struct platform_device *pdev)
- {
- 	struct clk_onecell_data *clk_data;
- 	struct device_node *node = pdev->dev.of_node;
-+	struct device_node *pnode = pdev->dev.parent->of_node;
- 	int r;
- 
- 	clk_data = mtk_alloc_clk_data(CLK_AUDIO_NR_CLK);
- 
--	mtk_clk_register_gates(node, audio_clks, ARRAY_SIZE(audio_clks),
-+	mtk_clk_register_gates(pnode, audio_clks, ARRAY_SIZE(audio_clks),
- 			       clk_data);
- 
- 	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+diff --git a/include/linux/page-flags.h b/include/linux/page-flags.h
+index 3ec44e27aa9d..50c2b8786831 100644
+--- a/include/linux/page-flags.h
++++ b/include/linux/page-flags.h
+@@ -46,11 +46,6 @@
+  * guarantees that this bit is cleared for a page when it first is entered into
+  * the page cache.
+  *
+- * PG_highmem pages are not permanently mapped into the kernel virtual address
+- * space, they need to be kmapped separately for doing IO on the pages.  The
+- * struct page (these bits with information) are always mapped into kernel
+- * address space...
+- *
+  * PG_hwpoison indicates that a page got corrupted in hardware and contains
+  * data with incorrect ECC bits that triggered a machine check. Accessing is
+  * not safe since it may cause another machine check. Don't touch!
 -- 
-1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+2.12.5
