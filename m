@@ -1,60 +1,50 @@
-From: Johan Hovold <johan@kernel.org>
-Subject: [PATCH] ASoC: mt8173-rt5650: fix child-node lookup
-Date: Wed, 31 Jan 2018 16:59:21 +1100
-Message-ID: <20180131055921.25574-1-johan@kernel.org>
+From: <houlong.wei@mediatek.com>
+Subject: [PATCH v21 0/4] Mediatek MT8173 CMDQ support
+Date: Wed, 31 Jan 2018 15:28:09 +0800
+Message-ID: <1517383693-25591-1-git-send-email-houlong.wei@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Johan Hovold <johan@kernel.org>, PC Liao <pc.liao@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh-YC Liu <josh-yc.liu@mediatek.com>, Glory Hung <glory.hung@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.co>
 List-Id: linux-mediatek@lists.infradead.org
 
-This driver used the wrong OF-helper when looking up the optional
-capture-codec child node during probe. Instead of searching just
-children of the sound node, a tree-wide depth-first search starting at
-the unrelated platform node was done. Not only could this end up
-matching an unrelated node or no node at all; the platform node could
-also be prematurely freed since of_find_node_by_name() drops a reference
-to its first argument. This particular pattern has been observed leading
-to crashes after probe deferrals in other drivers.
+Hi,
 
-Fix this by dropping the broken call to of_find_node_by_name() and
-keeping only the second, correct lookup using of_get_child_by_name()
-while taking care not to bail out if the optional node is missing.
-
-Note that this also addresses two capture-codec node-reference leaks
-(one for each of the original helper calls).
-
-Compile tested only.
-
-Fixes: d349caeb0510 ("ASoC: mediatek: Add second I2S on mt8173-rt5650 machine driver")
-Cc: PC Liao <pc.liao@mediatek.com>
-Signed-off-by: Johan Hovold <johan@kernel.org>
----
- sound/soc/mediatek/mt8173/mt8173-rt5650.c | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
-
-diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650.c b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-index 40ebefd625c1..679fc8bea0a3 100644
---- a/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-+++ b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-@@ -272,15 +272,10 @@ static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
- 	}
- 	mt8173_rt5650_codecs[1].of_node = mt8173_rt5650_codecs[0].of_node;
+This is Mediatek MT8173 Command Queue(CMDQ) driver. The CMDQ is used
+to help write registers with critical time limitation, such as
+updating display configuration during the vblank. It controls Global
+Command Engine (GCE) hardware to achieve this requirement.
  
--	if (of_find_node_by_name(platform_node, "codec-capture")) {
--		np = of_get_child_by_name(pdev->dev.of_node, "codec-capture");
--		if (!np) {
--			dev_err(&pdev->dev,
--				"%s: Can't find codec-capture DT node\n",
--				__func__);
--			return -EINVAL;
--		}
-+	np = of_get_child_by_name(pdev->dev.of_node, "codec-capture");
-+	if (np) {
- 		ret = snd_soc_of_get_dai_name(np, &codec_capture_dai);
-+		of_node_put(np);
- 		if (ret < 0) {
- 			dev_err(&pdev->dev,
- 				"%s codec_capture_dai name fail %d\n",
+Changes since v20:
+ -rebase to v4.15-rc1
+ -move dma_map_single outside of spinlock
+Changes since v19:
+ -rebase to v4.10-rc2
+
+hs.liao@mediatek.com (4):
+  dt-bindings: soc: Add documentation for the MediaTek GCE unit
+  mailbox: mediatek: Add Mediatek CMDQ driver
+  arm64: dts: mt8173: Add GCE node
+  soc: mediatek: Add Mediatek CMDQ helper
+
+ .../devicetree/bindings/mailbox/mtk-gce.txt        |   43 ++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   10 +
+ drivers/mailbox/Kconfig                            |   10 +
+ drivers/mailbox/Makefile                           |    2 +
+ drivers/mailbox/mtk-cmdq-mailbox.c                 |  594 ++++++++++++++++++++
+ drivers/soc/mediatek/Kconfig                       |   12 +
+ drivers/soc/mediatek/Makefile                      |    1 +
+ drivers/soc/mediatek/mtk-cmdq-helper.c             |  322 +++++++++++
+ include/linux/mailbox/mtk-cmdq-mailbox.h           |   77 +++
+ include/linux/soc/mediatek/mtk-cmdq.h              |  174 ++++++
+ 10 files changed, 1245 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+ create mode 100644 drivers/mailbox/mtk-cmdq-mailbox.c
+ create mode 100644 drivers/soc/mediatek/mtk-cmdq-helper.c
+ create mode 100644 include/linux/mailbox/mtk-cmdq-mailbox.h
+ create mode 100644 include/linux/soc/mediatek/mtk-cmdq.h
+
 -- 
-2.13.6
+1.7.9.5 
