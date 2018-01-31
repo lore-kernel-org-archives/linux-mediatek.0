@@ -1,84 +1,55 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 2/2] dt-bindings: PCI: MediaTek: Correct the interrupt-map properties
-Date: Wed, 31 Jan 2018 15:41:50 +0800
-Message-ID: <9d247a4fba54ba90d07df32fd89a8bb2c8bdb0f9.1516961656.git.ryder.lee@mediatek.com>
-References: <31c765c53e85e41bfc001d110d69e46c9967f4e7.1516961656.git.ryder.lee@mediatek.com>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 0/5] add MFD support for MediaTek audio subsystem
+Date: Wed, 31 Jan 2018 15:42:40 +0800
+Message-ID: <cover.1515639336.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <31c765c53e85e41bfc001d110d69e46c9967f4e7.1516961656.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>, Rob Herring <robh+dt@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>
-Cc: Frank Rowand <frowand.list@gmail.com>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Move the interrupt-map properties from the child nodes to the root node
-and update each entry accordingly.
+Hi,
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- .../devicetree/bindings/pci/mediatek-pcie.txt      | 28 ++++++++++++----------
- 1 file changed, 15 insertions(+), 13 deletions(-)
+This is the 2nd version of the patch sets which modify clock driver to adapt
+audio subsystem.  I still keeping 'simple-mfd' in the binding for discussion.
+Rob, let me know if there is any problem with this.
 
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-index 3a6ce55..b15ea2d 100644
---- a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-@@ -89,10 +89,21 @@ Examples for MT7623:
- 		#address-cells = <3>;
- 		#size-cells = <2>;
- 		#interrupt-cells = <1>;
--		interrupt-map-mask = <0xf800 0 0 0>;
--		interrupt-map = <0x0000 0 0 0 &sysirq GIC_SPI 193 IRQ_TYPE_LEVEL_LOW>,
--				<0x0800 0 0 0 &sysirq GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>,
--				<0x1000 0 0 0 &sysirq GIC_SPI 195 IRQ_TYPE_LEVEL_LOW>;
-+		interrupt-map-mask = <0xf800 0 0 7>;
-+		interrupt-map = <0x0000 0 0 1 &sysirq GIC_SPI 193 IRQ_TYPE_LEVEL_LOW
-+				0x0000 0 0 2 &sysirq GIC_SPI 193 IRQ_TYPE_LEVEL_LOW
-+				0x0000 0 0 3 &sysirq GIC_SPI 193 IRQ_TYPE_LEVEL_LOW
-+				0x0000 0 0 4 &sysirq GIC_SPI 193 IRQ_TYPE_LEVEL_LOW
-+
-+				0x0800 0 0 1 &sysirq GIC_SPI 194 IRQ_TYPE_LEVEL_LOW
-+				0x0800 0 0 2 &sysirq GIC_SPI 194 IRQ_TYPE_LEVEL_LOW
-+				0x0800 0 0 3 &sysirq GIC_SPI 194 IRQ_TYPE_LEVEL_LOW
-+				0x0800 0 0 4 &sysirq GIC_SPI 194 IRQ_TYPE_LEVEL_LOW
-+
-+				0x1000 0 0 1 &sysirq GIC_SPI 195 IRQ_TYPE_LEVEL_LOW
-+				0x1000 0 0 2 &sysirq GIC_SPI 195 IRQ_TYPE_LEVEL_LOW
-+				0x1000 0 0 3 &sysirq GIC_SPI 195 IRQ_TYPE_LEVEL_LOW
-+				0x1000 0 0 4 &sysirq GIC_SPI 195 IRQ_TYPE_LEVEL_LOW>;
- 		clocks = <&topckgen CLK_TOP_ETHIF_SEL>,
- 			 <&hifsys CLK_HIFSYS_PCIE0>,
- 			 <&hifsys CLK_HIFSYS_PCIE1>,
-@@ -115,9 +126,6 @@ Examples for MT7623:
- 			reg = <0x0000 0 0 0 0>;
- 			#address-cells = <3>;
- 			#size-cells = <2>;
--			#interrupt-cells = <1>;
--			interrupt-map-mask = <0 0 0 0>;
--			interrupt-map = <0 0 0 0 &sysirq GIC_SPI 193 IRQ_TYPE_LEVEL_LOW>;
- 			ranges;
- 			num-lanes = <1>;
- 		};
-@@ -127,9 +135,6 @@ Examples for MT7623:
- 			reg = <0x0800 0 0 0 0>;
- 			#address-cells = <3>;
- 			#size-cells = <2>;
--			#interrupt-cells = <1>;
--			interrupt-map-mask = <0 0 0 0>;
--			interrupt-map = <0 0 0 0 &sysirq GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
- 			ranges;
- 			num-lanes = <1>;
- 		};
-@@ -139,9 +144,6 @@ Examples for MT7623:
- 			reg = <0x1000 0 0 0 0>;
- 			#address-cells = <3>;
- 			#size-cells = <2>;
--			#interrupt-cells = <1>;
--			interrupt-map-mask = <0 0 0 0>;
--			interrupt-map = <0 0 0 0 &sysirq GIC_SPI 195 IRQ_TYPE_LEVEL_LOW>;
- 			ranges;
- 			num-lanes = <1>;
- 		};
+changes since v2:
+ - Drop useless changes in clk-mt7622-aud.c.
+ - Revise binding text: 
+	- Add more information about audio subsystem.
+	- Separate clock node and AFE node.
+ - Update license header.
+changes since v1:
+ - To avoid writing an MFD driver, we add "simple-mfd" in the audsys binding.
+ - Move three top clocks to audio driver [1] as we remove mfd/mtk-audsys.c in v1.
+
+Ryder Lee (5):
+  clk: mediatek: update missing clock data for MT7622 audsys
+  clk: mediatek: modify MT7622 audsys to adapt MFD device
+  clk: mediatek: add audsys support for MT2701
+  dt-bindings: clock: mediatek: update audsys documentation to adapt MFD
+    device
+  arm: dts: mediatek: add audio-subsystem node for both MT2701 and
+    MT7623
+
+ .../bindings/arm/mediatek/mediatek,audsys.txt      |  37 +++-
+ arch/arm/boot/dts/mt2701.dtsi                      | 192 ++++++++++----------
+ arch/arm/boot/dts/mt7623.dtsi                      | 193 ++++++++++-----------
+ drivers/clk/mediatek/Kconfig                       |   6 +
+ drivers/clk/mediatek/Makefile                      |   1 +
+ drivers/clk/mediatek/clk-mt2701-aud.c              | 175 +++++++++++++++++++
+ drivers/clk/mediatek/clk-mt7622-aud.c              |   4 +-
+ include/dt-bindings/clock/mt7622-clk.h             |   3 +-
+ 8 files changed, 406 insertions(+), 205 deletions(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-aud.c
+
 -- 
 1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
