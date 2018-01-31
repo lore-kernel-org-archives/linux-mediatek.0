@@ -1,53 +1,106 @@
-From: Michal Hocko <mhocko@kernel.org>
-Subject: Re: [PATCH] mm: Remove PG_highmem description
-Date: Wed, 31 Jan 2018 14:05:51 +0100
-Message-ID: <20180131130551.GS21609@dhcp22.suse.cz>
-References: <1517391212-2950-1-git-send-email-miles.chen@mediatek.com>
+From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] of_pci_irq: add a check to fallback to standard
+ device tree parsing
+Date: Wed, 31 Jan 2018 10:02:43 -0600
+Message-ID: <CAL_JsqLZqrxxpuEnoWEGkT2WCuyjqn0bM1DP8PdAwnQsso8kOA@mail.gmail.com>
+References: <31c765c53e85e41bfc001d110d69e46c9967f4e7.1516961656.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1517391212-2950-1-git-send-email-miles.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: miles.chen@mediatek.com
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Huang Ying <ying.huang@intel.com>, Kate Stewart <kstewart@linuxfoundation.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Thomas Gleixner <tglx@linutronix.de>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <31c765c53e85e41bfc001d110d69e46c9967f4e7.1516961656.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Frank Rowand <frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Benjamin Herrenschmidt <benh-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed 31-01-18 17:33:32, miles.chen@mediatek.com wrote:
-> From: Miles Chen <miles.chen@mediatek.com>
-> 
-> The commit cbe37d093707 ("[PATCH] mm: remove PG_highmem") has removed
-> PG_highmem to save a page flag. So the description of PG_highmem
-> is no longer needed, remove it.
-> 
-> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-
-Acked-by: Michal Hocko <mhocko@suse.com>
-
+On Wed, Jan 31, 2018 at 1:41 AM, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> A root complex usually consist of a host bridge and multiple P2P bridges,
+> and someone may express that in the form of a root node with many subnodes
+> and list all four interrupts for each slot (child node) in the root node
+> like this:
+>
+>         pcie-controller {
+>                 ...
+>                 interrupt-map-mask = <0xf800 0 0 7>;
+>                 interrupt-map = <0x0000 0 0 {INTx} &{interrupt parent} ...>
+>                                  0x0800 0 0 {INTx} &{interrupt parent} ...>;
+>
+>                 pcie@0,0 {
+>                         reg = <0x0000 0 0 0 0>;
+>                         ...
+>                 };
+>
+>                 pcie@1,0 {
+>                         reg = <0x0800 0 0 0 0>;
+>                         ...
+>                 };
+>         };
+>
+> As shown above, we'd like to propagate IRQs from a root port to the devices
+> in the hierarchy below it in this way.  However, it seems that the current
+> parser couldn't handle such cases and will get something unexpected below:
+>
+>         pcieport 0000:00:01.0: assign IRQ: got 213
+>         igb 0000:01:00.0: assign IRQ: got 212
+>
+> There is a device which is connected to 2nd slot, but the port doesn't share
+> the same IRQ with its downstream devices.  The problem here is that, if the
+> loop found a P2P bridge, it wouldn't check whether the reg property exists
+> in ppnode or not but just pass the subordinate devfn to of_irq_parse_raw(),
+> thus the subsequent flow couldn't correctly resolve them.
+>
+> Fix this by adding a check to fallback to standard device tree parsing.
+>
+> Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
->  include/linux/page-flags.h | 5 -----
->  1 file changed, 5 deletions(-)
-> 
-> diff --git a/include/linux/page-flags.h b/include/linux/page-flags.h
-> index 3ec44e27aa9d..50c2b8786831 100644
-> --- a/include/linux/page-flags.h
-> +++ b/include/linux/page-flags.h
-> @@ -46,11 +46,6 @@
->   * guarantees that this bit is cleared for a page when it first is entered into
->   * the page cache.
->   *
-> - * PG_highmem pages are not permanently mapped into the kernel virtual address
-> - * space, they need to be kmapped separately for doing IO on the pages.  The
-> - * struct page (these bits with information) are always mapped into kernel
-> - * address space...
-> - *
->   * PG_hwpoison indicates that a page got corrupted in hardware and contains
->   * data with incorrect ECC bits that triggered a machine check. Accessing is
->   * not safe since it may cause another machine check. Don't touch!
-> -- 
-> 2.12.5
-> 
+> Please refer to the previous discussion thread: https://patchwork.ozlabs.org/patch/829108/
+> ---
+>  drivers/of/of_pci_irq.c | 14 ++++++++++++--
+>  1 file changed, 12 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/of/of_pci_irq.c b/drivers/of/of_pci_irq.c
+> index 3a05568..e445866 100644
+> --- a/drivers/of/of_pci_irq.c
+> +++ b/drivers/of/of_pci_irq.c
+> @@ -86,8 +86,18 @@ int of_irq_parse_pci(const struct pci_dev *pdev, struct of_phandle_args *out_irq
+>         out_irq->np = ppnode;
+>         out_irq->args_count = 1;
+>         out_irq->args[0] = pin;
+> -       laddr[0] = cpu_to_be32((pdev->bus->number << 16) | (pdev->devfn << 8));
+> -       laddr[1] = laddr[2] = cpu_to_be32(0);
+> +
+> +       if (!dn && ppnode) {
 
--- 
-Michal Hocko
-SUSE Labs
+I would think whether you have a child device in DT or not is
+irrelevant. If it's the bridge address you need to look at for
+resolving interrupts, that would be true regardless.
+
+> +               const __be32 *addr;
+> +
+> +               addr = of_get_property(ppnode, "reg", NULL);
+> +               if (addr)
+> +                       memcpy(laddr, addr, 3);
+
+Can't you just adjust pdev to be ppdev in this case and then use the
+existing code to set laddr?
+
+Please copy the powerpc list on this. I worry that touching this
+function will break something.
+
+BTW, this code is moving to drivers/pci/ in 4.16.
+
+> +       } else {
+> +               laddr[0] = cpu_to_be32((pdev->bus->number << 16) | (pdev->devfn << 8));
+> +               laddr[1] = laddr[2] = cpu_to_be32(0);
+> +       }
+> +
+>         rc = of_irq_parse_raw(laddr, out_irq);
+>         if (rc)
+>                 goto err;
+> --
+> 1.9.1
+>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
