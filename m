@@ -1,67 +1,60 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 1/5] dt-bindings: pwrap: mediatek: add pwrap support
- for MT6797
-Date: Tue, 30 Jan 2018 13:58:28 +0100
-Message-ID: <ffcadc29-c6f2-eb8c-b662-1c0016648cbc@gmail.com>
-References: <20180129090944.28687-1-argus.lin@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+From: Johan Hovold <johan@kernel.org>
+Subject: [PATCH] ASoC: mt8173-rt5650: fix child-node lookup
+Date: Wed, 31 Jan 2018 16:59:21 +1100
+Message-ID: <20180131055921.25574-1-johan@kernel.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180129090944.28687-1-argus.lin@mediatek.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: argus.lin@mediatek.com, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
-Cc: Chenglin Xu <chenglin.xu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, wsd_upstream@mediatek.com, henryc.chen@mediatek.com, flora.fu@mediatek.com, Chen Zhong <chen.zhong@mediatek.com>, Christophe Jaillet <christophe.jaillet@wanadoo.fr>, "shailendra . v" <shailendra.v@samsung.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Johan Hovold <johan@kernel.org>, PC Liao <pc.liao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+This driver used the wrong OF-helper when looking up the optional
+capture-codec child node during probe. Instead of searching just
+children of the sound node, a tree-wide depth-first search starting at
+the unrelated platform node was done. Not only could this end up
+matching an unrelated node or no node at all; the platform node could
+also be prematurely freed since of_find_node_by_name() drops a reference
+to its first argument. This particular pattern has been observed leading
+to crashes after probe deferrals in other drivers.
 
+Fix this by dropping the broken call to of_find_node_by_name() and
+keeping only the second, correct lookup using of_get_child_by_name()
+while taking care not to bail out if the optional node is missing.
 
-On 01/29/2018 10:09 AM, argus.lin@mediatek.com wrote:
-> From: Argus Lin <argus.lin@mediatek.com>
-> 
-> We add pwrap support for MT6797 SoCs.
-> 
-> Signed-off-by: Argus Lin <argus.lin@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-> index bf80e3f96f8c..f9987c30f0d5 100644
-> --- a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-> @@ -19,6 +19,7 @@ IP Pairing
->  Required properties in pwrap device node.
->  - compatible:
->  	"mediatek,mt2701-pwrap" for MT2701/7623 SoCs
-> +	"mediatek,mt6797-pwrap" for MT6797 SoCs
+Note that this also addresses two capture-codec node-reference leaks
+(one for each of the original helper calls).
 
-Looks good to me. When you send the new series, would you mind to add a cover
-letter in which you describe which changes you made in every version of the
-patch series? That makes the reviewing for me much easier :)
+Compile tested only.
 
-Thanks!
+Fixes: d349caeb0510 ("ASoC: mediatek: Add second I2S on mt8173-rt5650 machine driver")
+Cc: PC Liao <pc.liao@mediatek.com>
+Signed-off-by: Johan Hovold <johan@kernel.org>
+---
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
 
->  	"mediatek,mt7622-pwrap" for MT7622 SoCs
->  	"mediatek,mt8135-pwrap" for MT8135 SoCs
->  	"mediatek,mt8173-pwrap" for MT8173 SoCs
-> -- 
-> 2.12.5
-> 
-> ************* Email Confidentiality Notice
->  ********************
-> The information contained in this e-mail message (including any 
-> attachments) may be confidential, proprietary, privileged, or otherwise
-> exempt from disclosure under applicable laws. It is intended to be 
-> conveyed only to the designated recipient(s). Any use, dissemination, 
-> distribution, printing, retaining or copying of this e-mail (including its 
-> attachments) by unintended recipient(s) is strictly prohibited and may 
-> be unlawful. If you are not an intended recipient of this e-mail, or believe
->  
-> that you have received this e-mail in error, please notify the sender 
-> immediately (by replying to this e-mail), delete any and all copies of 
-> this e-mail (including any attachments) from your system, and do not
-> disclose the content of this e-mail to any other person. Thank
->  you!
-> 
+diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650.c b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+index 40ebefd625c1..679fc8bea0a3 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-rt5650.c
++++ b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+@@ -272,15 +272,10 @@ static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
+ 	}
+ 	mt8173_rt5650_codecs[1].of_node = mt8173_rt5650_codecs[0].of_node;
+ 
+-	if (of_find_node_by_name(platform_node, "codec-capture")) {
+-		np = of_get_child_by_name(pdev->dev.of_node, "codec-capture");
+-		if (!np) {
+-			dev_err(&pdev->dev,
+-				"%s: Can't find codec-capture DT node\n",
+-				__func__);
+-			return -EINVAL;
+-		}
++	np = of_get_child_by_name(pdev->dev.of_node, "codec-capture");
++	if (np) {
+ 		ret = snd_soc_of_get_dai_name(np, &codec_capture_dai);
++		of_node_put(np);
+ 		if (ret < 0) {
+ 			dev_err(&pdev->dev,
+ 				"%s codec_capture_dai name fail %d\n",
+-- 
+2.13.6
