@@ -1,84 +1,192 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH] soc: mediatek: Handle return of of_match_device function
-Date: Thu, 1 Feb 2018 15:16:03 +0000
-Message-ID: <5fe8a04b-de13-87fb-2916-f3d26e320c4d@arm.com>
-References: <1517482822-28758-1-git-send-email-himanshujha199640@gmail.com>
- <b8265d37-0ef0-9d24-8ace-8fae7f67477d@arm.com>
- <CAMuHMdWxH9kQ7Zq5jCHL0hkA3Oin17f75TAq9dPC7FQMagT-vA@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/2] soc: mediatek: add SCPSYS power domain driver for
+ MediaTek MT7623A SoC
+Date: Thu, 1 Feb 2018 16:19:10 +0100
+Message-ID: <f0675124-c5c7-0f98-9762-c0778d7f5807@gmail.com>
+References: <975fb80e1cdbe7f6d4a1d04fd3a2a21b619a193d.1517479588.git.sean.wang@mediatek.com>
+ <de07c071f968ae9da84543bb33cc5658ed184801.1517479588.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAMuHMdWxH9kQ7Zq5jCHL0hkA3Oin17f75TAq9dPC7FQMagT-vA@mail.gmail.com>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Weiyi Lu <weiyi.lu@mediatek.com>, Geert Uytterhoeven <geert+renesas@glider.be>, sean.wang@mediatek.com, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, kevin-cw.chen@mediatek.com, Cheng Mars <mars.cheng@mediatek.com>, Himanshu Jha <himanshujha199640@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <de07c071f968ae9da84543bb33cc5658ed184801.1517479588.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
+Cc: ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 01/02/18 15:09, Geert Uytterhoeven wrote:
-> On Thu, Feb 1, 2018 at 4:02 PM, Robin Murphy <robin.murphy@arm.com> wrote:
->> On 01/02/18 11:00, Himanshu Jha wrote:
->>> In scpsys_probe function, return value of of_match_device function which
->>> returns null is dereferenced without checking. Therefore, add a check for
->>> potential null dereference.
->>>
->>> Detected by CoverityScan, CID#1424087 "Dereference null return value"
->>>
->>> Fixes: commit 53fddb1a66dd ("soc: mediatek: reduce code duplication of
->>> scpsys_probe across all SoCs")
->>> Signed-off-by: Himanshu Jha <himanshujha199640@gmail.com>
->>> ---
->>>    drivers/soc/mediatek/mtk-scpsys.c | 3 +++
->>>    1 file changed, 3 insertions(+)
->>>
->>> diff --git a/drivers/soc/mediatek/mtk-scpsys.c
->>> b/drivers/soc/mediatek/mtk-scpsys.c
->>> index 435ce5e..6e7f196 100644
->>> --- a/drivers/soc/mediatek/mtk-scpsys.c
->>> +++ b/drivers/soc/mediatek/mtk-scpsys.c
->>> @@ -981,6 +981,9 @@ static int scpsys_probe(struct platform_device *pdev)
->>>          int i, ret;
->>>          match = of_match_device(of_scpsys_match_tbl, &pdev->dev);
->>> +       if (!match)
->>> +               return -EINVAL;
->>> +
->>>          soc = (const struct scp_soc_data *)match->data;
->>
->> You could of course replace the whole sequence with an
->> of_device_get_match_data() call, which happens to be inherently safe against
->> the no-match case even when that *is* impossible by design.
-> 
-> +1
-> 
->>>          scp = init_scp(pdev, soc->domains, soc->num_domains, &soc->regs,
-> 
-> ... followed by the static analyser gang complaining we may dereference
-> NULL pointer soc...
 
-Well, if the static analysers can't track the provenance of 
-dev->driver->of_match_table, let's keep ignoring them until they get 
-cleverer :P
 
-Robin.
+On 02/01/2018 11:12 AM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> Add SCPSYS power domain driver for MT7623A SoC. The MT7623A's power
+> domains are the subset of MT7623 SoC's ones. As MT7623 SoC has full
+> features whereas MT7623A is being designed just for router applications.
+> Thus, MT7623A doesn't include those power domains multimedia function
+> belongs to. In order to avoid certain errors undoubtedly happening at
+> registering those power domains on MT7623A SoC using the existing MT7623
+> SCPSYS driver, it's required to define another setup specifically for
+> MT7623A SoC. Also, use a meaningful definition for bus_prot_mask instead
+> of just hardcoded for it.
+
+Also is nearly always a indicator to put it in a different patch. Could you
+please do so?
+
+Otherwise the series look good.
+
+Regards,
+Matthias
 
 > 
-> Gr{oetje,eeting}s,
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/soc/mediatek/mtk-scpsys.c         | 60 +++++++++++++++++++++++++++++--
+>  include/dt-bindings/power/mt7623a-power.h | 10 ++++++
+>  include/linux/soc/mediatek/infracfg.h     |  4 +++
+>  3 files changed, 72 insertions(+), 2 deletions(-)
+>  create mode 100644 include/dt-bindings/power/mt7623a-power.h
 > 
->                          Geert
+> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> index 435ce5e..fc55faa 100644
+> --- a/drivers/soc/mediatek/mtk-scpsys.c
+> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> @@ -24,6 +24,7 @@
+>  #include <dt-bindings/power/mt2712-power.h>
+>  #include <dt-bindings/power/mt6797-power.h>
+>  #include <dt-bindings/power/mt7622-power.h>
+> +#include <dt-bindings/power/mt7623a-power.h>
+>  #include <dt-bindings/power/mt8173-power.h>
+>  
+>  #define SPM_VDE_PWR_CON			0x0210
+> @@ -518,7 +519,8 @@ static const struct scp_domain_data scp_domain_data_mt2701[] = {
+>  		.name = "conn",
+>  		.sta_mask = PWR_STATUS_CONN,
+>  		.ctl_offs = SPM_CONN_PWR_CON,
+> -		.bus_prot_mask = 0x0104,
+> +		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_CONN_M |
+> +				 MT2701_TOP_AXI_PROT_EN_CONN_S,
+>  		.clk_id = {CLK_NONE},
+>  		.active_wakeup = true,
+>  	},
+> @@ -528,7 +530,7 @@ static const struct scp_domain_data scp_domain_data_mt2701[] = {
+>  		.ctl_offs = SPM_DIS_PWR_CON,
+>  		.sram_pdn_bits = GENMASK(11, 8),
+>  		.clk_id = {CLK_MM},
+> -		.bus_prot_mask = 0x0002,
+> +		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_MM_M0,
+>  		.active_wakeup = true,
+>  	},
+>  	[MT2701_POWER_DOMAIN_MFG] = {
+> @@ -794,6 +796,47 @@ static const struct scp_domain_data scp_domain_data_mt7622[] = {
+>  };
+>  
+>  /*
+> + * MT7623A power domain support
+> + */
+> +
+> +static const struct scp_domain_data scp_domain_data_mt7623a[] = {
+> +	[MT7623A_POWER_DOMAIN_CONN] = {
+> +		.name = "conn",
+> +		.sta_mask = PWR_STATUS_CONN,
+> +		.ctl_offs = SPM_CONN_PWR_CON,
+> +		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_CONN_M |
+> +				 MT2701_TOP_AXI_PROT_EN_CONN_S,
+> +		.clk_id = {CLK_NONE},
+> +		.active_wakeup = true,
+> +	},
+> +	[MT7623A_POWER_DOMAIN_ETH] = {
+> +		.name = "eth",
+> +		.sta_mask = PWR_STATUS_ETH,
+> +		.ctl_offs = SPM_ETH_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(11, 8),
+> +		.sram_pdn_ack_bits = GENMASK(15, 12),
+> +		.clk_id = {CLK_ETHIF},
+> +		.active_wakeup = true,
+> +	},
+> +	[MT7623A_POWER_DOMAIN_HIF] = {
+> +		.name = "hif",
+> +		.sta_mask = PWR_STATUS_HIF,
+> +		.ctl_offs = SPM_HIF_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(11, 8),
+> +		.sram_pdn_ack_bits = GENMASK(15, 12),
+> +		.clk_id = {CLK_ETHIF},
+> +		.active_wakeup = true,
+> +	},
+> +	[MT7623A_POWER_DOMAIN_IFR_MSC] = {
+> +		.name = "ifr_msc",
+> +		.sta_mask = PWR_STATUS_IFR_MSC,
+> +		.ctl_offs = SPM_IFR_MSC_PWR_CON,
+> +		.clk_id = {CLK_NONE},
+> +		.active_wakeup = true,
+> +	},
+> +};
+> +
+> +/*
+>   * MT8173 power domain support
+>   */
+>  
+> @@ -934,6 +977,16 @@ static const struct scp_soc_data mt7622_data = {
+>  	.bus_prot_reg_update = true,
+>  };
+>  
+> +static const struct scp_soc_data mt7623a_data = {
+> +	.domains = scp_domain_data_mt7623a,
+> +	.num_domains = ARRAY_SIZE(scp_domain_data_mt7623a),
+> +	.regs = {
+> +		.pwr_sta_offs = SPM_PWR_STATUS,
+> +		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
+> +	},
+> +	.bus_prot_reg_update = true,
+> +};
+> +
+>  static const struct scp_soc_data mt8173_data = {
+>  	.domains = scp_domain_data_mt8173,
+>  	.num_domains = ARRAY_SIZE(scp_domain_data_mt8173),
+> @@ -964,6 +1017,9 @@ static const struct of_device_id of_scpsys_match_tbl[] = {
+>  		.compatible = "mediatek,mt7622-scpsys",
+>  		.data = &mt7622_data,
+>  	}, {
+> +		.compatible = "mediatek,mt7623a-scpsys",
+> +		.data = &mt7623a_data,
+> +	}, {
+>  		.compatible = "mediatek,mt8173-scpsys",
+>  		.data = &mt8173_data,
+>  	}, {
+> diff --git a/include/dt-bindings/power/mt7623a-power.h b/include/dt-bindings/power/mt7623a-power.h
+> new file mode 100644
+> index 0000000..ac15b5d
+> --- /dev/null
+> +++ b/include/dt-bindings/power/mt7623a-power.h
+> @@ -0,0 +1,10 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +#ifndef _DT_BINDINGS_POWER_MT7623A_POWER_H
+> +#define _DT_BINDINGS_POWER_MT7623A_POWER_H
+> +
+> +#define MT7623A_POWER_DOMAIN_CONN	0
+> +#define MT7623A_POWER_DOMAIN_ETH	1
+> +#define MT7623A_POWER_DOMAIN_HIF	2
+> +#define MT7623A_POWER_DOMAIN_IFR_MSC	3
+> +
+> +#endif /* _DT_BINDINGS_POWER_MT2701_POWER_H */
+> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
+> index b0a507d..fd25f01 100644
+> --- a/include/linux/soc/mediatek/infracfg.h
+> +++ b/include/linux/soc/mediatek/infracfg.h
+> @@ -21,6 +21,10 @@
+>  #define MT8173_TOP_AXI_PROT_EN_MFG_M1		BIT(22)
+>  #define MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT	BIT(23)
+>  
+> +#define MT2701_TOP_AXI_PROT_EN_MM_M0		BIT(1)
+> +#define MT2701_TOP_AXI_PROT_EN_CONN_M		BIT(2)
+> +#define MT2701_TOP_AXI_PROT_EN_CONN_S		BIT(8)
+> +
+>  #define MT7622_TOP_AXI_PROT_EN_ETHSYS		(BIT(3) | BIT(17))
+>  #define MT7622_TOP_AXI_PROT_EN_HIF0		(BIT(24) | BIT(25))
+>  #define MT7622_TOP_AXI_PROT_EN_HIF1		(BIT(26) | BIT(27) | \
 > 
-> --
-> Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-> 
-> In personal conversations with technical people, I call myself a hacker. But
-> when I'm talking to journalists I just say "programmer" or something like that.
->                                  -- Linus Torvalds
-> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
