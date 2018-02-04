@@ -1,71 +1,109 @@
-From: Julia Lawall <julia.lawall-L2FTfq7BK8M@public.gmane.org>
-Subject: Re: [PATCH] dmaengine: mediatek: fix zalloc-simple.cocci warnings
-Date: Sat, 3 Feb 2018 17:41:28 +0100 (CET)
-Message-ID: <alpine.DEB.2.20.1802031740370.7608@hadrien>
-References: <alpine.DEB.2.20.1802031658280.3390@hadrien>
+From: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+Subject: Re: [RFC/RFT usb-next v1 5/6] usb: chipidea: do not set the "phy"
+ field in struct usb_hcd
+Date: Sun, 4 Feb 2018 22:39:42 +0100
+Message-ID: <CAFBinCC_GN7UKQZseLdyVcOsfCMfsvcdC92tRx=jBe68HO+B+w@mail.gmail.com>
+References: <20180125001639.14681-1-martin.blumenstingl@googlemail.com>
+ <20180125001639.14681-6-martin.blumenstingl@googlemail.com>
+ <HE1PR04MB145071FCFAF041E0A9252FF08BE00@HE1PR04MB1450.eurprd04.prod.outlook.com>
+ <CAFBinCCzghJxHe-1Jzwa1ohHYYytn53QAsXYue229dVu7tB7UQ@mail.gmail.com> <HE1PR04MB14504462F7C7A247E1CF9F308BE50@HE1PR04MB1450.eurprd04.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <alpine.DEB.2.20.1802031658280.3390@hadrien>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Julia Lawall <julia.lawall-L2FTfq7BK8M@public.gmane.org>
-Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kbuild-all-JC7UmRfGjtg@public.gmane.org, himanshujha199640-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <HE1PR04MB14504462F7C7A247E1CF9F308BE50-6LN7OEpIatVC+P/YwrXEHc9NdZoXdze2vxpqHgZTriW3zl9H0oFU5g@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Peter Chen <peter.chen-3arQi8VN3Tc@public.gmane.org>
+Cc: "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-ci5G2KO2hbZ+pU9mqzGVBQ@public.gmane.org" <linux-ci5G2KO2hbZ+pU9mqzGVBQ@public.gmane.org>, "mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org" <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org" <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Peter,
+
+On Mon, Jan 29, 2018 at 4:30 AM, Peter Chen <peter.chen-3arQi8VN3Tc@public.gmane.org> wrote:
+>
+>> >
+>> >>
+>> >> Now that usb_add_hcd parses all generic PHYs anyways the code which
+>> >> skips initialization of a single PHY will go away.
+>> >> Remove the code which sets struct usb_hcd's phy field from the
+>> >> chipidea driver as this field will go away soon.
+>> >>
+>> >> Signed-off-by: Martin Blumenstingl
+>> >> <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+>> >> ---
+>> >>  drivers/usb/chipidea/host.c | 4 +---
+>> >>  1 file changed, 1 insertion(+), 3 deletions(-)
+>> >>
+>> >> diff --git a/drivers/usb/chipidea/host.c
+>> >> b/drivers/usb/chipidea/host.c index 19d60ed7e41f..fc324767cb0f 100644
+>> >> --- a/drivers/usb/chipidea/host.c
+>> >> +++ b/drivers/usb/chipidea/host.c
+>> >> @@ -124,9 +124,7 @@ static int host_start(struct ci_hdrc *ci)
+>> >>
+>> >>       hcd->power_budget = ci->platdata->power_budget;
+>> >>       hcd->tpl_support = ci->platdata->tpl_support;
+>> >> -     if (ci->phy)
+>> >> -             hcd->phy = ci->phy;
+>> >> -     else
+>> >> +     if (!ci->phy)
+>> >>               hcd->usb_phy = ci->usb_phy;
+>> >>
+>> >
+>> > The reason hcd->phy is initialized by chipidea core is we do not need
+>> > HCD core to touch PHY, and PHY operation is shared for both device and host
+>> mode for chipidea.
+>> Chunfeng wanted me to drop the mtu3 patch because I forgot about device mode in
+>> the mtu3 driver.
+>> however, the chipidea driver seems to be different because I'm not dropping the
+>> whole phy_{init,power_on,power_off,exit} code from it, but only a "flag" that tells the
+>> HCD core to skip managing the USB PHY
+>>
+>> > If I understand correct, your HCD core PHY wrapper patch set will do
+>> > PHY operation if there is a "phy" node under controller's? If it is
+>> > correct, you may supply one way to let the HCD core bypass phy operations for
+>> some USB controllers, eg dual-role controllers.
+>> > Thanks.
+>> could you please explain why the HCD core should not manage the the PHYs when
+>> the chipidea driver is used?
+>>
+>> my understanding is that all phy_{init,power_on,power_off,exit}
+>> operations are ref-counted internally in the PHY framework this means that if the
+>> chipidea driver calls phy_{init,power_on} first then the same functions called from
+>> within the HCD core are no-ops (except for the ref-counting) so I think it should not
+>> change anything - however, I have no hardware to actually prove that.
+>
+> Martin, you design has no problem for most of cases, but some hardware needs special
+> sequence for phy control. I will give an example below.
+great to hear that this should work for most devices!
+
+>> it would be great if you could explain the issue behind this (and thereby answer the
+>> question: why we would not want the HCD core to manage the PHY states)!
+>>
+>>
+> Eg, taking Qualcomm USB2 controller as an example, it even does not allow chipidea core
+> to manage its power operation, see CI_HDRC_OVERRIDE_PHY_CONTROL at chipidea driver
+> (usb/chipidea/core.c). Its phy_power_on is called after ehci controller reset has finished.
+> (usb/chipidea/ci_hdrc_msm.c).
+I see, thank you for explaining this!
+
+what do you think about replacing the two following fields from struct usb_hcd:
+  struct usb_phy *usb_phy;
+  struct phy *phy;
+with:
+  /*
+   * do not manage the PHY state in the HCD core, instead let the driver handle
+   * this (for example if the PHY can only be turned on after a specific event)
+   */
+  bool skip_phy_initialization;
+
+maybe I should also do this together with my other series which adds
+the PHY wrapper to the HCD core (or even as a separate series, which
+would be merged before this and the PHY wrapper series). what do you
+think?
 
 
-On Sat, 3 Feb 2018, Julia Lawall wrote:
-
-> From: Fengguang Wu <fengguang.wu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
->
->  Use zeroing allocator rather than allocator followed by memset with 0
->
-> Generated by: scripts/coccinelle/api/alloc/zalloc-simple.cocci
->
-> Fixes: 73006a033ef0 ("dmaengine: mediatek: Add MediaTek High-Speed DMA controller for MT7622 and MT7623 SoC")
-> CC: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Fengguang Wu <fengguang.wu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-> Signed-off-by: Julia Lawall <julia.lawall-L2FTfq7BK8M@public.gmane.org>
-> ---
->
-> [auto build test WARNING on linus/master]
-> [also build test WARNING on v4.15 next-20180202]
-> [if your patch is applied to the wrong git tree, please drop us a note to
-> help improve the system]
->
-> url:
-> https://github.com/0day-ci/linux/commits/sean-wang-mediatek-com/dt-bindings-dmaengine-Add-MediaTek-High-Speed-DMA-controller-bindings/20180203-203814
->
-> Please take the patch only if it's a positive warning. Thanks!
->
->  mtk-hsdma.c |    6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
->
-> --- a/drivers/dma/mediatek/mtk-hsdma.c
-> +++ b/drivers/dma/mediatek/mtk-hsdma.c
-> @@ -325,13 +325,11 @@ static int mtk_hsdma_alloc_pchan(struct
->  	 * and [MTK_DMA_SIZE ... 2 * MTK_DMA_SIZE - 1] is for RX ring.
->  	 */
->  	pc->sz_ring = 2 * MTK_DMA_SIZE * sizeof(*ring->txd);
-> -	ring->txd = dma_alloc_coherent(hsdma2dev(hsdma),
-> -				       pc->sz_ring, &ring->tphys,
-> -				       GFP_ATOMIC | __GFP_ZERO);
-> +	ring->txd = dma_zalloc_coherent(hsdma2dev(hsdma), pc->sz_ring,
-> +					&ring->tphys, GFP_ATOMIC | __GFP_ZERO);
-
-Actually, __GFP_ZERO could be dropped as well.
-
-julia
-
->  	if (!ring->txd)
->  		return -ENOMEM;
->
-> -	memset(ring->txd, 0, pc->sz_ring);
->  	ring->rxd = &ring->txd[MTK_DMA_SIZE];
->  	ring->rphys = ring->tphys + MTK_DMA_SIZE * sizeof(*ring->txd);
->  	ring->cur_tptr = 0;
->
+Regards
+Martin
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
