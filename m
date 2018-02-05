@@ -1,56 +1,57 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH v2 2/5] clk: mediatek: modify MT7622 audsys to adapt MFD
- device
-Date: Mon, 5 Feb 2018 12:07:35 +0800
-Message-ID: <1517803655.1173.12.camel@mtkswgap22>
-References: <cover.1515639336.git.ryder.lee@mediatek.com>
-         <d6669277f5232446b4798a6b724074b18d5c21aa.1515639336.git.ryder.lee@mediatek.com>
-         <72058f8d-c83d-d0e6-dc07-83c9f5fc2710@gmail.com>
+From: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Subject: [PATCH v2] ASoC: dapm: fix debugfs read using
+	path->connected
+Date: Mon, 5 Feb 2018 13:00:00 +0800
+Message-ID: <1517806800-4210-1-git-send-email-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <72058f8d-c83d-d0e6-dc07-83c9f5fc2710@gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>, Lee Jones <lee.jones@linaro.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, Garlic Tseng <garlic.tseng@mediatek.com>
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: broonie@kernel.org
+Cc: alsa-devel@alsa-project.org, wsd_upstream@mediatek.com, chipeng.chang@mediatek.com, garlic.tseng@mediatek.com, shane.chien@mediatek.com, linux-mediatek@lists.infradead.org, kaichieh.chuang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 2018-02-03 at 15:26 +0100, Matthias Brugger wrote:
-> 
-> On 01/31/2018 08:42 AM, Ryder Lee wrote:
-> > As the new MFD parent is in place, switch probing method to adapt it.
-> > 
-> > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> > ---
-> >  drivers/clk/mediatek/clk-mt7622-aud.c | 3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/clk/mediatek/clk-mt7622-aud.c b/drivers/clk/mediatek/clk-mt7622-aud.c
-> > index 13f752d..8c18536 100644
-> > --- a/drivers/clk/mediatek/clk-mt7622-aud.c
-> > +++ b/drivers/clk/mediatek/clk-mt7622-aud.c
-> > @@ -142,11 +142,12 @@ static int clk_mt7622_audiosys_init(struct platform_device *pdev)
-> >  {
-> >  	struct clk_onecell_data *clk_data;
-> >  	struct device_node *node = pdev->dev.of_node;
-> > +	struct device_node *pnode = pdev->dev.parent->of_node;
-> >  	int r;
-> >  
-> >  	clk_data = mtk_alloc_clk_data(CLK_AUDIO_NR_CLK);
-> >  
-> > -	mtk_clk_register_gates(node, audio_clks, ARRAY_SIZE(audio_clks),
-> > +	mtk_clk_register_gates(pnode, audio_clks, ARRAY_SIZE(audio_clks),
-> 
-> We will need a fallback here for older device tree bindings.
-> 
-> Regards,
-> Matthias
+This fix a bug in dapm_widget_power_read_file(),
+where it may sent opposite order of source/sink widget
+into the p->connected().
 
-Up to now, I didn't see both driver and bindings are used anywhere.
-Should I still care about that?
+for example,
+static int connected_check(source, sink);
+{"w_sink", NULL, "w_source", connected_check}
 
-Thanks.
+the dapm_widget_power_read_file() will query p->connected()
+in following case
+	p->conneted("w_source", "w_sink")
+	p->conneted("w_sink", "w_source")
+we should avoid the last case, since it's the wrong order (source/sink)
+as declared in snd_soc_dapm_route.
 
+Signed-off-by: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+---
+ sound/soc/soc-dapm.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-
+diff --git a/sound/soc/soc-dapm.c b/sound/soc/soc-dapm.c
+index a10b21c..ee6d9d9a 100644
+--- a/sound/soc/soc-dapm.c
++++ b/sound/soc/soc-dapm.c
+@@ -2026,7 +2026,7 @@ static ssize_t dapm_widget_power_read_file(struct file *file,
+ 	snd_soc_dapm_for_each_direction(dir) {
+ 		rdir = SND_SOC_DAPM_DIR_REVERSE(dir);
+ 		snd_soc_dapm_widget_for_each_path(w, dir, p) {
+-			if (p->connected && !p->connected(w, p->node[rdir]))
++			if (p->connected && !p->connected(p->source, p->sink))
+ 				continue;
+ 
+ 			if (!p->connect)
+-- 
+1.7.9.5
