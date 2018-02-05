@@ -1,109 +1,56 @@
-From: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Subject: Re: [RFC/RFT usb-next v1 5/6] usb: chipidea: do not set the "phy"
- field in struct usb_hcd
-Date: Sun, 4 Feb 2018 22:39:42 +0100
-Message-ID: <CAFBinCC_GN7UKQZseLdyVcOsfCMfsvcdC92tRx=jBe68HO+B+w@mail.gmail.com>
-References: <20180125001639.14681-1-martin.blumenstingl@googlemail.com>
- <20180125001639.14681-6-martin.blumenstingl@googlemail.com>
- <HE1PR04MB145071FCFAF041E0A9252FF08BE00@HE1PR04MB1450.eurprd04.prod.outlook.com>
- <CAFBinCCzghJxHe-1Jzwa1ohHYYytn53QAsXYue229dVu7tB7UQ@mail.gmail.com> <HE1PR04MB14504462F7C7A247E1CF9F308BE50@HE1PR04MB1450.eurprd04.prod.outlook.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: Re: [PATCH v2 2/5] clk: mediatek: modify MT7622 audsys to adapt MFD
+ device
+Date: Mon, 5 Feb 2018 12:07:35 +0800
+Message-ID: <1517803655.1173.12.camel@mtkswgap22>
+References: <cover.1515639336.git.ryder.lee@mediatek.com>
+         <d6669277f5232446b4798a6b724074b18d5c21aa.1515639336.git.ryder.lee@mediatek.com>
+         <72058f8d-c83d-d0e6-dc07-83c9f5fc2710@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <HE1PR04MB14504462F7C7A247E1CF9F308BE50-6LN7OEpIatVC+P/YwrXEHc9NdZoXdze2vxpqHgZTriW3zl9H0oFU5g@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Peter Chen <peter.chen-3arQi8VN3Tc@public.gmane.org>
-Cc: "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-ci5G2KO2hbZ+pU9mqzGVBQ@public.gmane.org" <linux-ci5G2KO2hbZ+pU9mqzGVBQ@public.gmane.org>, "mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org" <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org" <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <72058f8d-c83d-d0e6-dc07-83c9f5fc2710@gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>, Lee Jones <lee.jones@linaro.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, Garlic Tseng <garlic.tseng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Peter,
+On Sat, 2018-02-03 at 15:26 +0100, Matthias Brugger wrote:
+> 
+> On 01/31/2018 08:42 AM, Ryder Lee wrote:
+> > As the new MFD parent is in place, switch probing method to adapt it.
+> > 
+> > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> > ---
+> >  drivers/clk/mediatek/clk-mt7622-aud.c | 3 ++-
+> >  1 file changed, 2 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/clk/mediatek/clk-mt7622-aud.c b/drivers/clk/mediatek/clk-mt7622-aud.c
+> > index 13f752d..8c18536 100644
+> > --- a/drivers/clk/mediatek/clk-mt7622-aud.c
+> > +++ b/drivers/clk/mediatek/clk-mt7622-aud.c
+> > @@ -142,11 +142,12 @@ static int clk_mt7622_audiosys_init(struct platform_device *pdev)
+> >  {
+> >  	struct clk_onecell_data *clk_data;
+> >  	struct device_node *node = pdev->dev.of_node;
+> > +	struct device_node *pnode = pdev->dev.parent->of_node;
+> >  	int r;
+> >  
+> >  	clk_data = mtk_alloc_clk_data(CLK_AUDIO_NR_CLK);
+> >  
+> > -	mtk_clk_register_gates(node, audio_clks, ARRAY_SIZE(audio_clks),
+> > +	mtk_clk_register_gates(pnode, audio_clks, ARRAY_SIZE(audio_clks),
+> 
+> We will need a fallback here for older device tree bindings.
+> 
+> Regards,
+> Matthias
 
-On Mon, Jan 29, 2018 at 4:30 AM, Peter Chen <peter.chen-3arQi8VN3Tc@public.gmane.org> wrote:
->
->> >
->> >>
->> >> Now that usb_add_hcd parses all generic PHYs anyways the code which
->> >> skips initialization of a single PHY will go away.
->> >> Remove the code which sets struct usb_hcd's phy field from the
->> >> chipidea driver as this field will go away soon.
->> >>
->> >> Signed-off-by: Martin Blumenstingl
->> >> <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
->> >> ---
->> >>  drivers/usb/chipidea/host.c | 4 +---
->> >>  1 file changed, 1 insertion(+), 3 deletions(-)
->> >>
->> >> diff --git a/drivers/usb/chipidea/host.c
->> >> b/drivers/usb/chipidea/host.c index 19d60ed7e41f..fc324767cb0f 100644
->> >> --- a/drivers/usb/chipidea/host.c
->> >> +++ b/drivers/usb/chipidea/host.c
->> >> @@ -124,9 +124,7 @@ static int host_start(struct ci_hdrc *ci)
->> >>
->> >>       hcd->power_budget = ci->platdata->power_budget;
->> >>       hcd->tpl_support = ci->platdata->tpl_support;
->> >> -     if (ci->phy)
->> >> -             hcd->phy = ci->phy;
->> >> -     else
->> >> +     if (!ci->phy)
->> >>               hcd->usb_phy = ci->usb_phy;
->> >>
->> >
->> > The reason hcd->phy is initialized by chipidea core is we do not need
->> > HCD core to touch PHY, and PHY operation is shared for both device and host
->> mode for chipidea.
->> Chunfeng wanted me to drop the mtu3 patch because I forgot about device mode in
->> the mtu3 driver.
->> however, the chipidea driver seems to be different because I'm not dropping the
->> whole phy_{init,power_on,power_off,exit} code from it, but only a "flag" that tells the
->> HCD core to skip managing the USB PHY
->>
->> > If I understand correct, your HCD core PHY wrapper patch set will do
->> > PHY operation if there is a "phy" node under controller's? If it is
->> > correct, you may supply one way to let the HCD core bypass phy operations for
->> some USB controllers, eg dual-role controllers.
->> > Thanks.
->> could you please explain why the HCD core should not manage the the PHYs when
->> the chipidea driver is used?
->>
->> my understanding is that all phy_{init,power_on,power_off,exit}
->> operations are ref-counted internally in the PHY framework this means that if the
->> chipidea driver calls phy_{init,power_on} first then the same functions called from
->> within the HCD core are no-ops (except for the ref-counting) so I think it should not
->> change anything - however, I have no hardware to actually prove that.
->
-> Martin, you design has no problem for most of cases, but some hardware needs special
-> sequence for phy control. I will give an example below.
-great to hear that this should work for most devices!
+Up to now, I didn't see both driver and bindings are used anywhere.
+Should I still care about that?
 
->> it would be great if you could explain the issue behind this (and thereby answer the
->> question: why we would not want the HCD core to manage the PHY states)!
->>
->>
-> Eg, taking Qualcomm USB2 controller as an example, it even does not allow chipidea core
-> to manage its power operation, see CI_HDRC_OVERRIDE_PHY_CONTROL at chipidea driver
-> (usb/chipidea/core.c). Its phy_power_on is called after ehci controller reset has finished.
-> (usb/chipidea/ci_hdrc_msm.c).
-I see, thank you for explaining this!
-
-what do you think about replacing the two following fields from struct usb_hcd:
-  struct usb_phy *usb_phy;
-  struct phy *phy;
-with:
-  /*
-   * do not manage the PHY state in the HCD core, instead let the driver handle
-   * this (for example if the PHY can only be turned on after a specific event)
-   */
-  bool skip_phy_initialization;
-
-maybe I should also do this together with my other series which adds
-the PHY wrapper to the HCD core (or even as a separate series, which
-would be merged before this and the PHY wrapper series). what do you
-think?
+Thanks.
 
 
-Regards
-Martin
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
