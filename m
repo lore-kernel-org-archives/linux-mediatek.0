@@ -1,97 +1,42 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 4/5] dt-bindings: clock: mediatek: update audsys
- documentation to adapt MFD device
-Date: Mon, 5 Feb 2018 00:08:33 -0600
-Message-ID: <20180205060833.p56dun5i4bvs3jye@rob-hp-laptop>
-References: <cover.1515639336.git.ryder.lee@mediatek.com>
- <8651585c91ee40f6ab3e30b893bcfb90fe5c2c25.1515639336.git.ryder.lee@mediatek.com>
+Subject: Re: [PATCH 2/2] soc: mediatek: add SCPSYS power domain driver for
+ MediaTek MT7623A SoC
+Date: Mon, 5 Feb 2018 00:09:13 -0600
+Message-ID: <20180205060913.ak62ammdposybdsf@rob-hp-laptop>
+References: <975fb80e1cdbe7f6d4a1d04fd3a2a21b619a193d.1517479588.git.sean.wang@mediatek.com>
+ <de07c071f968ae9da84543bb33cc5658ed184801.1517479588.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <8651585c91ee40f6ab3e30b893bcfb90fe5c2c25.1515639336.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Stephen Boyd <sboyd@codeaurora.org>, Mark Brown <broonie@kernel.org>, Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, Garlic Tseng <garlic.tseng@mediatek.com>
+In-Reply-To: <de07c071f968ae9da84543bb33cc5658ed184801.1517479588.git.sean.wang@mediatek.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: matthias.bgg@gmail.com, rjw@rjwysocki.net, khilman@baylibre.com, ulf.hansson@linaro.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 31, 2018 at 03:42:44PM +0800, Ryder Lee wrote:
-> As the MediaTek audio hardware block that expose functionalities that are
-> handled by separate subsystems in the kernel, and there are registers that
-> are shared between related drivers.
+On Thu, Feb 01, 2018 at 06:12:48PM +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Switch the current device to an MFD device, add more descriptions about the
-> subsystem and modify example accordingly.
+> Add SCPSYS power domain driver for MT7623A SoC. The MT7623A's power
+> domains are the subset of MT7623 SoC's ones. As MT7623 SoC has full
+> features whereas MT7623A is being designed just for router applications.
+> Thus, MT7623A doesn't include those power domains multimedia function
+> belongs to. In order to avoid certain errors undoubtedly happening at
+> registering those power domains on MT7623A SoC using the existing MT7623
+> SCPSYS driver, it's required to define another setup specifically for
+> MT7623A SoC. Also, use a meaningful definition for bus_prot_mask instead
+> of just hardcoded for it.
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
->  .../bindings/arm/mediatek/mediatek,audsys.txt      | 37 ++++++++++++++++++----
->  1 file changed, 30 insertions(+), 7 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-> index 9b8f578..677af40 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-> @@ -1,22 +1,45 @@
-> -MediaTek AUDSYS controller
-> +MediaTek Audio Subsystem
->  ============================
-> +The audio subsystem is one of the multi-function blocks of MediaTek SoCs.
-> +It contains a system controller, which provides a number registers giving
-> +access to two features: AUDSYS clocks and Audio Front End (AFE) components.
->  
-> +For the top level node:
-> +- compatible: must be: "syscon", "simple-mfd";
+>  drivers/soc/mediatek/mtk-scpsys.c         | 60 +++++++++++++++++++++++++++++--
 
-This should have some SoC specific compatible.
+>  include/dt-bindings/power/mt7623a-power.h | 10 ++++++
 
-> +- reg: register area of the Audio Subsystem
-> +
-> +Required sub-nodes:
-> +
-> +AUDSYS clocks:
-> +-------
->  The MediaTek AUDSYS controller provides various clocks to the system.
->  
->  Required Properties:
->  
->  - compatible: Should be one of:
-> -	- "mediatek,mt7622-audsys", "syscon"
-> +	- "mediatek,mt2701-audsys";
-> +	- "mediatek,mt7622-audsys";
->  - #clock-cells: Must be 1
->  
->  The AUDSYS controller uses the common clk binding from
->  Documentation/devicetree/bindings/clock/clock-bindings.txt
->  The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+This belongs in the binding patch.
 
-There's no register range associated with the clocks? If there is, add a 
-reg property.
-
->  
-> +AFE components:
-> +-------
-> +For common binding part and usage, refer to
-> +../sonud/mt2701-afe-pcm.txt.
-> +
->  Example:
->  
-> -audsys: audsys@11220000 {
-> -	compatible = "mediatek,mt7622-audsys", "syscon";
-> -	reg = <0 0x11220000 0 0x1000>;
-> -	#clock-cells = <1>;
-> -};
-> +	audio-subsystem@11220000 {
-> +		compatible = "syscon", "simple-mfd";
-> +		reg = <0 0x11220000 0 0x2000>;
-> +
-> +		audsys: clock {
-> +			compatible = "mediatek,mt2701-audsys";
-> +			#clock-cells = <1>;
-> +		};
-> +
-> +		...
-> +	};
-> -- 
-> 1.9.1
+>  include/linux/soc/mediatek/infracfg.h     |  4 +++
+>  3 files changed, 72 insertions(+), 2 deletions(-)
+>  create mode 100644 include/dt-bindings/power/mt7623a-power.h
 > 
