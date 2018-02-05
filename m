@@ -1,118 +1,91 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH v2 4/5] dt-bindings: clock: mediatek: update audsys
- documentation to adapt MFD device
-Date: Mon, 5 Feb 2018 17:11:32 +0800
-Message-ID: <1517821892.12510.32.camel@mtkswgap22>
-References: <cover.1515639336.git.ryder.lee@mediatek.com>
-         <8651585c91ee40f6ab3e30b893bcfb90fe5c2c25.1515639336.git.ryder.lee@mediatek.com>
-         <20180205060833.p56dun5i4bvs3jye@rob-hp-laptop>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: dapm: fix debugfs read using
+	path->connected" to the asoc tree
+Date: Mon, 05 Feb 2018 15:20:07 +0000
+Message-ID: <E1eiiYx-0007GX-U8@debutante>
+References: <1517806800-4210-1-git-send-email-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20180205060833.p56dun5i4bvs3jye@rob-hp-laptop>
-Sender: linux-clk-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, Garlic Tseng <garlic.tseng@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1517806800-4210-1-git-send-email-kaichieh.chuang@mediatek.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+Cc: alsa-devel@alsa-project.org, wsd_upstream@mediatek.com, chipeng.chang@mediatek.com, garlic.tseng@mediatek.com, shane.chien@mediatek.com, broonie@kernel.org, linux-mediatek@lists.infradead.org, kaichieh.chuang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-02-05 at 00:08 -0600, Rob Herring wrote:
-> On Wed, Jan 31, 2018 at 03:42:44PM +0800, Ryder Lee wrote:
-> > As the MediaTek audio hardware block that expose functionalities that are
-> > handled by separate subsystems in the kernel, and there are registers that
-> > are shared between related drivers.
-> > 
-> > Switch the current device to an MFD device, add more descriptions about the
-> > subsystem and modify example accordingly.
-> > 
-> > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> > ---
-> >  .../bindings/arm/mediatek/mediatek,audsys.txt      | 37 ++++++++++++++++++----
-> >  1 file changed, 30 insertions(+), 7 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-> > index 9b8f578..677af40 100644
-> > --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-> > @@ -1,22 +1,45 @@
-> > -MediaTek AUDSYS controller
-> > +MediaTek Audio Subsystem
-> >  ============================
-> > +The audio subsystem is one of the multi-function blocks of MediaTek SoCs.
-> > +It contains a system controller, which provides a number registers giving
-> > +access to two features: AUDSYS clocks and Audio Front End (AFE) components.
-> >  
-> > +For the top level node:
-> > +- compatible: must be: "syscon", "simple-mfd";
-> 
-> This should have some SoC specific compatible.
+The patch
 
-As we don't have a specific driver (compatible string) for it and if we
-need to add that I think the term '*-audsys' is very suitable here, but
-unfortunately, it has already picked for clock driver (see child node).
+   ASoC: dapm: fix debugfs read using path->connected
 
-I also took ../../marvell/*-system-controller.txt as examples for my
-case. Thus, I'm not sure should we still need a new one here?
+has been applied to the asoc tree at
 
-> > +- reg: register area of the Audio Subsystem
-> > +
-> > +Required sub-nodes:
-> > +
-> > +AUDSYS clocks:
-> > +-------
-> >  The MediaTek AUDSYS controller provides various clocks to the system.
-> >  
-> >  Required Properties:
-> >  
-> >  - compatible: Should be one of:
-> > -	- "mediatek,mt7622-audsys", "syscon"
-> > +	- "mediatek,mt2701-audsys";
-> > +	- "mediatek,mt7622-audsys";
-> >  - #clock-cells: Must be 1
-> >  
-> >  The AUDSYS controller uses the common clk binding from
-> >  Documentation/devicetree/bindings/clock/clock-bindings.txt
-> >  The available clocks are defined in dt-bindings/clock/mt*-clk.h.
-> 
-> There's no register range associated with the clocks? If there is, add a 
-> reg property.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-No, we don't need reg property here, as the two sub-drivers will obtain
-the regmap  which is propagated from the parent.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
-Thanks
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-> >  
-> > +AFE components:
-> > +-------
-> > +For common binding part and usage, refer to
-> > +../sonud/mt2701-afe-pcm.txt.
-> > +
-> >  Example:
-> >  
-> > -audsys: audsys@11220000 {
-> > -	compatible = "mediatek,mt7622-audsys", "syscon";
-> > -	reg = <0 0x11220000 0 0x1000>;
-> > -	#clock-cells = <1>;
-> > -};
-> > +	audio-subsystem@11220000 {
-> > +		compatible = "syscon", "simple-mfd";
-> > +		reg = <0 0x11220000 0 0x2000>;
-> > +
-> > +		audsys: clock {
-> > +			compatible = "mediatek,mt2701-audsys";
-> > +			#clock-cells = <1>;
-> > +		};
-> > +
-> > +		...
-> > +	};
-> > -- 
-> > 1.9.1
-> > 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
+Thanks,
+Mark
+
+>From 7a32c89e89c5529f3d436b7cc6bc8d4447819669 Mon Sep 17 00:00:00 2001
+From: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Date: Mon, 5 Feb 2018 13:00:00 +0800
+Subject: [PATCH] ASoC: dapm: fix debugfs read using path->connected
+
+This fix a bug in dapm_widget_power_read_file(),
+where it may sent opposite order of source/sink widget
+into the p->connected().
+
+for example,
+static int connected_check(source, sink);
+{"w_sink", NULL, "w_source", connected_check}
+
+the dapm_widget_power_read_file() will query p->connected()
+in following case
+	p->conneted("w_source", "w_sink")
+	p->conneted("w_sink", "w_source")
+we should avoid the last case, since it's the wrong order (source/sink)
+as declared in snd_soc_dapm_route.
+
+Signed-off-by: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/soc-dapm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sound/soc/soc-dapm.c b/sound/soc/soc-dapm.c
+index a10b21cfc31e..ee6d9d9a3c5e 100644
+--- a/sound/soc/soc-dapm.c
++++ b/sound/soc/soc-dapm.c
+@@ -2026,7 +2026,7 @@ static ssize_t dapm_widget_power_read_file(struct file *file,
+ 	snd_soc_dapm_for_each_direction(dir) {
+ 		rdir = SND_SOC_DAPM_DIR_REVERSE(dir);
+ 		snd_soc_dapm_widget_for_each_path(w, dir, p) {
+-			if (p->connected && !p->connected(w, p->node[rdir]))
++			if (p->connected && !p->connected(p->source, p->sink))
+ 				continue;
+ 
+ 			if (!p->connect)
+-- 
+2.15.1
