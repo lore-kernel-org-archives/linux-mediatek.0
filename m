@@ -1,67 +1,126 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 2/5] clk: mediatek: modify MT7622 audsys to adapt MFD
- device
-Date: Wed, 7 Feb 2018 16:18:59 +0100
-Message-ID: <0e0e703c-0ac9-06ad-91c5-abdf16de1ee9@gmail.com>
-References: <cover.1515639336.git.ryder.lee@mediatek.com>
- <d6669277f5232446b4798a6b724074b18d5c21aa.1515639336.git.ryder.lee@mediatek.com>
- <72058f8d-c83d-d0e6-dc07-83c9f5fc2710@gmail.com>
- <1517803655.1173.12.camel@mtkswgap22>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] arm: dts: mt7623: enable all four available UARTs on
+ bananapi-r2
+Date: Wed, 7 Feb 2018 17:01:01 +0100
+Message-ID: <cd1df7f9-89f4-06d5-5384-9f3b9f7ade48@gmail.com>
+References: <b4e84a68da76c1ca538150a730777ff530c1db5a.1513922513.git.sean.wang@mediatek.com>
+ <dc3c28c7-03c3-f1c6-39c1-b8df8be4fac3@gmail.com>
+ <1514043318.30687.10.camel@mtkswgap22> <1516697505.12197.30.camel@mtkswgap22>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1517803655.1173.12.camel@mtkswgap22>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1516697505.12197.30.camel@mtkswgap22>
 Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 02/05/2018 05:07 AM, Ryder Lee wrote:
-> On Sat, 2018-02-03 at 15:26 +0100, Matthias Brugger wrote:
->>
->> On 01/31/2018 08:42 AM, Ryder Lee wrote:
->>> As the new MFD parent is in place, switch probing method to adapt it.
+On 01/23/2018 09:51 AM, Sean Wang wrote:
+> On Sat, 2017-12-23 at 23:35 +0800, Sean Wang wrote:
+>> On Sat, 2017-12-23 at 08:52 +0100, Matthias Brugger wrote:
 >>>
->>> Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>> ---
->>>  drivers/clk/mediatek/clk-mt7622-aud.c | 3 ++-
->>>  1 file changed, 2 insertions(+), 1 deletion(-)
+>>> On 12/22/2017 07:06 AM, sean.wang@mediatek.com wrote:
+>>>> From: Sean Wang <sean.wang@mediatek.com>
+>>>>
+>>>> On bpi-r2 board, totally there're four uarts which we usually called
+>>>> uart[0-3] helpful to extend slow I/O devices. Among those ones, uart2 has
+>>>> dedicated pin slot which is used to conolse log. uart[0-1] appear at the
+>>>> 40-pins connector and uart3 has no pinout, but just has test points (TP47
+>>>> for TX and TP48 for RX, respectively) nearby uart2. Also, some missing
+>>>> pinctrl is being complemented for those devices.
+>>>>
+>>>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>>>> ---
+>>>>  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 26 ++++++++++++++++++++++++--
+>>>>  1 file changed, 24 insertions(+), 2 deletions(-)
+>>>>
+>>>> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+>>>> index 7bf5aa2..64bf5db 100644
+>>>> --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+>>>> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+>>>> @@ -409,6 +409,20 @@
+>>>>  				 <MT7623_PIN_82_UTXD1_FUNC_UTXD1>;
+>>>>  		};do you like it or quite want me to remove the uart3 node?
+>>>>  	};
+>>>> +
+>>>> +	uart2_pins_a: uart@2 {
+>>>> +		pins_dat {
+>>>> +			pinmux = <MT7623_PIN_14_GPIO14_FUNC_URXD2>,
+>>>> +				 <MT7623_PIN_15_GPIO15_FUNC_UTXD2>;
+>>>> +		};
+>>>> +	};
+>>>> +
+>>>> +	uart3_pins_a: uart@3 {
+>>>> +		pins_dat {
+>>>> +			pinmux = <MT7623_PIN_242_URTS2_FUNC_URTS2>,
+>>>> +				 <MT7623_PIN_243_UCTS2_FUNC_UTXD3>;
+>>>> +		};
+>>>> +	};
+>>>>  };
+>>>>  
+>>>>  &pwm {
+>>>> @@ -454,16 +468,24 @@
+>>>>  &uart0 {
+>>>>  	pinctrl-names = "default";
+>>>>  	pinctrl-0 = <&uart0_pins_a>;
+>>>> -	status = "disabled";
+>>>> +	status = "okay";
+>>>>  };
+>>>>  
+>>>>  &uart1 {
+>>>>  	pinctrl-names = "default";
+>>>>  	pinctrl-0 = <&uart1_pins_a>;
+>>>> -	status = "disabled";
+>>>> +	status = "okay";
+>>>>  };
+>>>>  
+>>>>  &uart2 {
+>>>> +	pinctrl-names = "default";
+>>>> +	pinctrl-0 = <&uart2_pins_a>;
+>>>> +	status = "okay";
+>>>> +};
+>>>> +
+>>>> +&uart3 {
+>>>> +	pinctrl-names = "default";
+>>>> +	pinctrl-0 = <&uart3_pins_a>;
+>>>>  	status = "okay";
+>>>>  };
+>>>>  
 >>>
->>> diff --git a/drivers/clk/mediatek/clk-mt7622-aud.c b/drivers/clk/mediatek/clk-mt7622-aud.c
->>> index 13f752d..8c18536 100644
->>> --- a/drivers/clk/mediatek/clk-mt7622-aud.c
->>> +++ b/drivers/clk/mediatek/clk-mt7622-aud.c
->>> @@ -142,11 +142,12 @@ static int clk_mt7622_audiosys_init(struct platform_device *pdev)
->>>  {
->>>  	struct clk_onecell_data *clk_data;
->>>  	struct device_node *node = pdev->dev.of_node;
->>> +	struct device_node *pnode = pdev->dev.parent->of_node;
->>>  	int r;
->>>  
->>>  	clk_data = mtk_alloc_clk_data(CLK_AUDIO_NR_CLK);
->>>  
->>> -	mtk_clk_register_gates(node, audio_clks, ARRAY_SIZE(audio_clks),
->>> +	mtk_clk_register_gates(pnode, audio_clks, ARRAY_SIZE(audio_clks),
->>
->> We will need a fallback here for older device tree bindings.
->>
->> Regards,
->> Matthias
+>>> Why do we want to enable uart3 when there are only test points?
+>>> It is not very useful, or do I oversee something?
+>>>
 > 
-> Up to now, I didn't see both driver and bindings are used anywhere.
-> Should I still care about that?
+>> I have been listening to the sound from potential users of bpi-r2 to
+>> understand what assistance I have to provide to them. Something could
+>> be seen through [1] in the forum to know they had been trying hard to
+>> explore all available UARTs from the SoC in the last weeks. The patch
+>> should be really useful for these people and for the extra soldering
+>> it shouldn't become a problem for these makers.
+>>
+>> [1] http://forum.banana-pi.org/t/gpio-uart-not-the-debug-port/3748
+>>
+>> 	Sean 
+>>
+> 
+> Hi, Matthias
+> 
+> do you like it or quite want me to remove the uart3 node?
+> 
+> I can take it into account along with other pending dts changes in my
+> queue.
 > 
 
-Yes please, we have to ensure that newer kernel work with older bindings and
-vice-versa.
+Sorry for the late answer.
+Do I understand correctly that uart3 is routed to TP47 and TP48, and these test
+points are accessible through the SATA connector? Doesn't they break SATA then?
 
-Thanks,
+I think as they are only available through a non-documented test point, we
+shouldn't enable it.
+
+Regards,
 Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
