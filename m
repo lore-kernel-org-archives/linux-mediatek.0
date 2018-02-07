@@ -1,126 +1,65 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] arm: dts: mt7623: enable all four available UARTs on
- bananapi-r2
-Date: Wed, 7 Feb 2018 17:01:01 +0100
-Message-ID: <cd1df7f9-89f4-06d5-5384-9f3b9f7ade48@gmail.com>
-References: <b4e84a68da76c1ca538150a730777ff530c1db5a.1513922513.git.sean.wang@mediatek.com>
- <dc3c28c7-03c3-f1c6-39c1-b8df8be4fac3@gmail.com>
- <1514043318.30687.10.camel@mtkswgap22> <1516697505.12197.30.camel@mtkswgap22>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v2 1/4] dt-bindings: soc: add SCPSYS binding for MT7623
+ and MT7623A SoC
+Date: Wed, 7 Feb 2018 21:19:51 +0100
+Message-ID: <CAPDyKFpYLm2vVVsAkE2r5HVF4uzgHS404dUzPcEsxJiawEf7Aw@mail.gmail.com>
+References: <ecfc548fc3d22aa335b50e552ad2ad88427a0bb2.1517998367.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1516697505.12197.30.camel@mtkswgap22>
-Content-Language: en-US
+In-Reply-To: <ecfc548fc3d22aa335b50e552ad2ad88427a0bb2.1517998367.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@baylibre.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Linux PM <linux-pm@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+On 7 February 2018 at 11:22,  <sean.wang@mediatek.com> wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+>
+> document the binding for enabling SCPSYS on MediaTek MT7623 and MT7623A
+> SoC. Where MT7623 SoC has the same definition about power domains with
+> MT2701, so it's fine to using MT2701 ones as MT7623's fallback.
+>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 
+For the series:
 
-On 01/23/2018 09:51 AM, Sean Wang wrote:
-> On Sat, 2017-12-23 at 23:35 +0800, Sean Wang wrote:
->> On Sat, 2017-12-23 at 08:52 +0100, Matthias Brugger wrote:
->>>
->>> On 12/22/2017 07:06 AM, sean.wang@mediatek.com wrote:
->>>> From: Sean Wang <sean.wang@mediatek.com>
->>>>
->>>> On bpi-r2 board, totally there're four uarts which we usually called
->>>> uart[0-3] helpful to extend slow I/O devices. Among those ones, uart2 has
->>>> dedicated pin slot which is used to conolse log. uart[0-1] appear at the
->>>> 40-pins connector and uart3 has no pinout, but just has test points (TP47
->>>> for TX and TP48 for RX, respectively) nearby uart2. Also, some missing
->>>> pinctrl is being complemented for those devices.
->>>>
->>>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->>>> ---
->>>>  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 26 ++++++++++++++++++++++++--
->>>>  1 file changed, 24 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
->>>> index 7bf5aa2..64bf5db 100644
->>>> --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
->>>> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
->>>> @@ -409,6 +409,20 @@
->>>>  				 <MT7623_PIN_82_UTXD1_FUNC_UTXD1>;
->>>>  		};do you like it or quite want me to remove the uart3 node?
->>>>  	};
->>>> +
->>>> +	uart2_pins_a: uart@2 {
->>>> +		pins_dat {
->>>> +			pinmux = <MT7623_PIN_14_GPIO14_FUNC_URXD2>,
->>>> +				 <MT7623_PIN_15_GPIO15_FUNC_UTXD2>;
->>>> +		};
->>>> +	};
->>>> +
->>>> +	uart3_pins_a: uart@3 {
->>>> +		pins_dat {
->>>> +			pinmux = <MT7623_PIN_242_URTS2_FUNC_URTS2>,
->>>> +				 <MT7623_PIN_243_UCTS2_FUNC_UTXD3>;
->>>> +		};
->>>> +	};
->>>>  };
->>>>  
->>>>  &pwm {
->>>> @@ -454,16 +468,24 @@
->>>>  &uart0 {
->>>>  	pinctrl-names = "default";
->>>>  	pinctrl-0 = <&uart0_pins_a>;
->>>> -	status = "disabled";
->>>> +	status = "okay";
->>>>  };
->>>>  
->>>>  &uart1 {
->>>>  	pinctrl-names = "default";
->>>>  	pinctrl-0 = <&uart1_pins_a>;
->>>> -	status = "disabled";
->>>> +	status = "okay";
->>>>  };
->>>>  
->>>>  &uart2 {
->>>> +	pinctrl-names = "default";
->>>> +	pinctrl-0 = <&uart2_pins_a>;
->>>> +	status = "okay";
->>>> +};
->>>> +
->>>> +&uart3 {
->>>> +	pinctrl-names = "default";
->>>> +	pinctrl-0 = <&uart3_pins_a>;
->>>>  	status = "okay";
->>>>  };
->>>>  
->>>
->>> Why do we want to enable uart3 when there are only test points?
->>> It is not very useful, or do I oversee something?
->>>
-> 
->> I have been listening to the sound from potential users of bpi-r2 to
->> understand what assistance I have to provide to them. Something could
->> be seen through [1] in the forum to know they had been trying hard to
->> explore all available UARTs from the SoC in the last weeks. The patch
->> should be really useful for these people and for the extra soldering
->> it shouldn't become a problem for these makers.
->>
->> [1] http://forum.banana-pi.org/t/gpio-uart-not-the-debug-port/3748
->>
->> 	Sean 
->>
-> 
-> Hi, Matthias
-> 
-> do you like it or quite want me to remove the uart3 node?
-> 
-> I can take it into account along with other pending dts changes in my
-> queue.
-> 
+Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
 
-Sorry for the late answer.
-Do I understand correctly that uart3 is routed to TP47 and TP48, and these test
-points are accessible through the SATA connector? Doesn't they break SATA then?
+Kind regards
+Uffe
 
-I think as they are only available through a non-documented test point, we
-shouldn't enable it.
-
-Regards,
-Matthias
+> ---
+>  Documentation/devicetree/bindings/soc/mediatek/scpsys.txt | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+>
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+> index 76bf45b..d6fe16f 100644
+> --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+> @@ -21,6 +21,8 @@ Required properties:
+>         - "mediatek,mt2712-scpsys"
+>         - "mediatek,mt6797-scpsys"
+>         - "mediatek,mt7622-scpsys"
+> +       - "mediatek,mt7623-scpsys", "mediatek,mt2701-scpsys": For MT7623 SoC
+> +       - "mediatek,mt7623a-scpsys": For MT7623A SoC
+>         - "mediatek,mt8173-scpsys"
+>  - #power-domain-cells: Must be 1
+>  - reg: Address range of the SCPSYS unit
+> @@ -28,10 +30,11 @@ Required properties:
+>  - clock, clock-names: clocks according to the common clock binding.
+>                        These are clocks which hardware needs to be
+>                        enabled before enabling certain power domains.
+> -       Required clocks for MT2701: "mm", "mfg", "ethif"
+> +       Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
+>         Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
+>         Required clocks for MT6797: "mm", "mfg", "vdec"
+>         Required clocks for MT7622: "hif_sel"
+> +       Required clocks for MT7622A: "ethif"
+>         Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
+>
+>  Optional properties:
+> --
+> 2.7.4
+>
