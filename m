@@ -1,52 +1,66 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v2 1/4] dt-bindings: soc: add SCPSYS binding for MT7623 and MT7623A SoC
-Date: Wed, 7 Feb 2018 18:22:47 +0800
-Message-ID: <ecfc548fc3d22aa335b50e552ad2ad88427a0bb2.1517998367.git.sean.wang@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 01/16] dt-bindings: clock: mediatek: add missing
+ required #reset-cells
+Date: Wed, 7 Feb 2018 11:45:38 +0100
+Message-ID: <391278e5-9b72-1142-0262-5d286fe17d8d@gmail.com>
+References: <cover.1517910489.git.sean.wang@mediatek.com>
+ <d58fcf36319254d6de4c7fe100cbdca1bbec27a5.1517910489.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, matthias.bgg@gmail.com, rjw@rjwysocki.net, khilman@baylibre.com
-Cc: ulf.hansson@linaro.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <d58fcf36319254d6de4c7fe100cbdca1bbec27a5.1517910489.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
 
-document the binding for enabling SCPSYS on MediaTek MT7623 and MT7623A
-SoC. Where MT7623 SoC has the same definition about power domains with
-MT2701, so it's fine to using MT2701 ones as MT7623's fallback.
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
----
- Documentation/devicetree/bindings/soc/mediatek/scpsys.txt | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+On 02/06/2018 10:52 AM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> All ethsys, pciesys and ssusbsys internally include reset controller, so
+> explicitly add back these missing cell definitions to related bindings
+> and examples.
+> 
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Cc: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+> Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt   | 2 ++
+>  Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt  | 2 ++
+>  Documentation/devicetree/bindings/arm/mediatek/mediatek,ssusbsys.txt | 2 ++
+>  3 files changed, 6 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+> index 7aa3fa1..8f5335b 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+> @@ -9,6 +9,7 @@ Required Properties:
+>  	- "mediatek,mt2701-ethsys", "syscon"
+>  	- "mediatek,mt7622-ethsys", "syscon"
+>  - #clock-cells: Must be 1
+> +- #reset-cells: Must be 1
+>  
+>  The ethsys controller uses the common clk binding from
+>  Documentation/devicetree/bindings/clock/clock-bindings.txt
+> @@ -20,4 +21,5 @@ ethsys: clock-controller@1b000000 {
+>  	compatible = "mediatek,mt2701-ethsys", "syscon";
+>  	reg = <0 0x1b000000 0 0x1000>;
+>  	#clock-cells = <1>;
+> +	#reset-cells = <1>;
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-index 76bf45b..d6fe16f 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-+++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-@@ -21,6 +21,8 @@ Required properties:
- 	- "mediatek,mt2712-scpsys"
- 	- "mediatek,mt6797-scpsys"
- 	- "mediatek,mt7622-scpsys"
-+	- "mediatek,mt7623-scpsys", "mediatek,mt2701-scpsys": For MT7623 SoC
-+	- "mediatek,mt7623a-scpsys": For MT7623A SoC
- 	- "mediatek,mt8173-scpsys"
- - #power-domain-cells: Must be 1
- - reg: Address range of the SCPSYS unit
-@@ -28,10 +30,11 @@ Required properties:
- - clock, clock-names: clocks according to the common clock binding.
-                       These are clocks which hardware needs to be
-                       enabled before enabling certain power domains.
--	Required clocks for MT2701: "mm", "mfg", "ethif"
-+	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
- 	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
- 	Required clocks for MT6797: "mm", "mfg", "vdec"
- 	Required clocks for MT7622: "hif_sel"
-+	Required clocks for MT7622A: "ethif"
- 	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
- 
- Optional properties:
--- 
-2.7.4
+The example is already fixed upstream, but I forgot the binding description,
+please rebase this patch.
+
+And please don't forget to add all clock maintainers.
+
+Regards,
+Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
