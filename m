@@ -1,52 +1,53 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 1/2] of_pci_irq: add a check to fallback to standard
- device tree parsing
-Date: Wed, 7 Feb 2018 09:58:08 +0800
-Message-ID: <1517968688.31641.12.camel@mtkswgap22>
-References: <31c765c53e85e41bfc001d110d69e46c9967f4e7.1516961656.git.ryder.lee@mediatek.com>
-         <CAL_JsqLZqrxxpuEnoWEGkT2WCuyjqn0bM1DP8PdAwnQsso8kOA@mail.gmail.com>
-         <1517563970.24622.9.camel@mtkswgap22>
-         <1517866584.2312.140.camel@kernel.crashing.org>
-         <1517884738.16010.27.camel@mtkswgap22>
-         <1517889903.2312.151.camel@kernel.crashing.org>
-         <1517891471.20869.6.camel@mtkswgap22>
-         <1517892624.2312.167.camel@kernel.crashing.org>
-         <1517895732.23319.21.camel@mtkswgap22>
-         <1517956309.2312.172.camel@kernel.crashing.org>
+From: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 06/16] arm64: dts: mt7622: add cpufreq related device
+ nodes
+Date: Wed, 7 Feb 2018 09:03:31 +0530
+Message-ID: <20180207033331.GK28462@vireshk-i7>
+References: <cover.1517910489.git.sean.wang@mediatek.com>
+ <fc5bdf53b92bd7a96e94b714d8d13deebca95c28.1517910489.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1517956309.2312.172.camel-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <fc5bdf53b92bd7a96e94b714d8d13deebca95c28.1517910489.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Benjamin Herrenschmidt <benh-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>
-Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Frank Rowand <frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Arnd
+On 06-02-18, 17:52, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+>  	cpus {
+>  		#address-cells = <2>;
+>  		#size-cells = <0>;
+> @@ -26,6 +70,10 @@
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a53", "arm,armv8";
+>  			reg = <0x0 0x0>;
+> +			clocks = <&infracfg CLK_INFRA_MUX1_SEL>,
+> +				 <&apmixedsys CLK_APMIXED_MAIN_CORE_EN>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cpu_opp_table>;
+>  			enable-method = "psci";
+>  			clock-frequency = <1300000000>;
+>  		};
+> @@ -34,6 +82,7 @@
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a53", "arm,armv8";
+>  			reg = <0x0 0x1>;
+> +			operating-points-v2 = <&cpu_opp_table>;
+>  			enable-method = "psci";
+>  			clock-frequency = <1300000000>;
+>  		};
 
-On Wed, 2018-02-07 at 09:31 +1100, Benjamin Herrenschmidt wrote:
-> On Tue, 2018-02-06 at 13:42 +0800, Ryder Lee wrote:
-> > Thanks for explanation.
-> > 
-> > So I guess the better way to achieve my aim - one IRQ per slot that is
-> > connected to all INTx and get propagated through the bridges (and for
-> > those root ports own interrupts (PME ..)} is to add interrupt-map
-> > properties in both parent and root port nodes.
-> > 
-> > Something like this: https://patchwork.kernel.org/patch/9970923// ,right?
-> 
-> Yup.
-> 
-> Cheers,
-> Ben.
-> 
+Sorry for not picking this earlier, but you should probably add the same clock
+related properties for both cpu nodes here. Things will break if CPU1 is used by
+the cpufreq core to bring the cpufreq policy online.
 
-Do you have any thoughts on the original approach? If you are okay with
-it, I will resend the DT patch.
+This can happen if cpufreq driver is a module, CPU0 is hotplugged out and then
+the cpufreq driver is inserted.
 
-Thanks.
-
+-- 
+viresh
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
