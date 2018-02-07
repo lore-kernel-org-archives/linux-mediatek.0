@@ -1,78 +1,119 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 06/16] arm64: dts: mt7622: add cpufreq related device
- nodes
-Date: Wed, 7 Feb 2018 16:34:58 +0800
-Message-ID: <1517992498.9025.8.camel@mtkswgap22>
-References: <cover.1517910489.git.sean.wang@mediatek.com>
-         <fc5bdf53b92bd7a96e94b714d8d13deebca95c28.1517910489.git.sean.wang@mediatek.com>
-         <20180207033331.GK28462@vireshk-i7> <1517984178.9025.2.camel@mtkswgap22>
-         <20180207061837.GM28462@vireshk-i7>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v2] pwm: mediatek: fix up PWM4 and PWM5 malfunction on MT7623
+Date: Wed, 7 Feb 2018 17:14:17 +0800
+Message-ID: <f94b2d4146ebe0f8eaae02b0dd951f39af0972d4.1517994540.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180207061837.GM28462@vireshk-i7>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-pwm-owner@vger.kernel.org>
+Sender: linux-pwm-owner@vger.kernel.org
+To: thierry.reding@gmail.com, matthias.bgg@gmail.com
+Cc: linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Zhi Mao <zhi.mao@mediatek.com>, John Crispin <john@phrozen.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-02-07 at 11:48 +0530, Viresh Kumar wrote:
-> On 07-02-18, 14:16, Sean Wang wrote:
-> > On Wed, 2018-02-07 at 09:03 +0530, Viresh Kumar wrote:
-> > > On 06-02-18, 17:52, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> > > >  	cpus {
-> > > >  		#address-cells = <2>;
-> > > >  		#size-cells = <0>;
-> > > > @@ -26,6 +70,10 @@
-> > > >  			device_type = "cpu";
-> > > >  			compatible = "arm,cortex-a53", "arm,armv8";
-> > > >  			reg = <0x0 0x0>;
-> > > > +			clocks = <&infracfg CLK_INFRA_MUX1_SEL>,
-> > > > +				 <&apmixedsys CLK_APMIXED_MAIN_CORE_EN>;
-> > > > +			clock-names = "cpu", "intermediate";
-> > > > +			operating-points-v2 = <&cpu_opp_table>;
-> > > >  			enable-method = "psci";
-> > > >  			clock-frequency = <1300000000>;
-> > > >  		};
-> > > > @@ -34,6 +82,7 @@
-> > > >  			device_type = "cpu";
-> > > >  			compatible = "arm,cortex-a53", "arm,armv8";
-> > > >  			reg = <0x0 0x1>;
-> > > > +			operating-points-v2 = <&cpu_opp_table>;
-> > > >  			enable-method = "psci";
-> > > >  			clock-frequency = <1300000000>;
-> > > >  		};
-> > > 
-> > > Sorry for not picking this earlier, but you should probably add the same clock
-> > > related properties for both cpu nodes here. Things will break if CPU1 is used by
-> > > the cpufreq core to bring the cpufreq policy online.
-> > > 
-> > > This can happen if cpufreq driver is a module, CPU0 is hotplugged out and then
-> > > the cpufreq driver is inserted.
-> > > 
-> > 
-> > mt7622 cpu0 does not support hotplug. do I still need to add same clock
-> > related properties for both cpu nodes here?
-> 
-> Normally we should always add these properties to all the CPUs, as that's the
-> real scenario hardware configuration wise.
-> 
+From: Sean Wang <sean.wang@mediatek.com>
 
-Agree on, I will add these missing clock properties also into the cpu1
-node to reflect the hardware actually should have. 
+Since the offset for both registers, PWMDWIDTH and PWMTHRES, used to
+control PWM4 or PWM5 are distinct from the other PWMs, whose wrong
+programming on PWM hardware causes waveform cannot be output as expected.
+Thus, the patch adds the extra condition for fixing up the weird case to
+let PWM4 or PWM5 able to work on MT7623.
 
-That also is devicetree wants us to do to describe the device more
-closely.
+v1 -> v2: use pwm45_fixup naming instead of pwm45_quirk
 
-> But I am not sure if something else will break if you don't provide clocks in
-> CPU1.
-> 
-> @Rob @Mark: What do you suggest ?
-> 
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Cc: Zhi Mao <zhi.mao@mediatek.com>
+Cc: John Crispin <john@phrozen.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+---
+ drivers/pwm/pwm-mediatek.c | 24 +++++++++++++++++++++---
+ 1 file changed, 21 insertions(+), 3 deletions(-)
 
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+index f5d97e0..796baea 100644
+--- a/drivers/pwm/pwm-mediatek.c
++++ b/drivers/pwm/pwm-mediatek.c
+@@ -29,7 +29,9 @@
+ #define PWMGDUR			0x0c
+ #define PWMWAVENUM		0x28
+ #define PWMDWIDTH		0x2c
++#define PWM45DWIDTH_FIXUP	0x30
+ #define PWMTHRES		0x30
++#define PWM45THRES_FIXUP	0x34
+ 
+ #define PWM_CLK_DIV_MAX		7
+ 
+@@ -54,6 +56,7 @@ static const char * const mtk_pwm_clk_name[MTK_CLK_MAX] = {
+ 
+ struct mtk_pwm_platform_data {
+ 	unsigned int num_pwms;
++	bool pwm45_fixup;
+ };
+ 
+ /**
+@@ -66,6 +69,7 @@ struct mtk_pwm_chip {
+ 	struct pwm_chip chip;
+ 	void __iomem *regs;
+ 	struct clk *clks[MTK_CLK_MAX];
++	const struct mtk_pwm_platform_data *soc;
+ };
+ 
+ static const unsigned int mtk_pwm_reg_offset[] = {
+@@ -131,7 +135,8 @@ static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ {
+ 	struct mtk_pwm_chip *pc = to_mtk_pwm_chip(chip);
+ 	struct clk *clk = pc->clks[MTK_CLK_PWM1 + pwm->hwpwm];
+-	u32 resolution, clkdiv = 0;
++	u32 resolution, clkdiv = 0, reg_width = PWMDWIDTH,
++	    reg_thres = PWMTHRES;
+ 	int ret;
+ 
+ 	ret = mtk_pwm_clk_enable(chip, pwm);
+@@ -151,9 +156,18 @@ static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 		return -EINVAL;
+ 	}
+ 
++	if (pc->soc->pwm45_fixup && pwm->hwpwm > 2) {
++		/*
++		 * PWM[4,5] has distinct offset for PWMDWIDTH and PWMTHRES
++		 * from the other PWMs on MT7623.
++		 */
++		reg_width = PWM45DWIDTH_FIXUP;
++		reg_thres = PWM45THRES_FIXUP;
++	}
++
+ 	mtk_pwm_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
+-	mtk_pwm_writel(pc, pwm->hwpwm, PWMDWIDTH, period_ns / resolution);
+-	mtk_pwm_writel(pc, pwm->hwpwm, PWMTHRES, duty_ns / resolution);
++	mtk_pwm_writel(pc, pwm->hwpwm, reg_width, period_ns / resolution);
++	mtk_pwm_writel(pc, pwm->hwpwm, reg_thres, duty_ns / resolution);
+ 
+ 	mtk_pwm_clk_disable(chip, pwm);
+ 
+@@ -211,6 +225,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
+ 	data = of_device_get_match_data(&pdev->dev);
+ 	if (data == NULL)
+ 		return -EINVAL;
++	pc->soc = data;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	pc->regs = devm_ioremap_resource(&pdev->dev, res);
+@@ -251,14 +266,17 @@ static int mtk_pwm_remove(struct platform_device *pdev)
+ 
+ static const struct mtk_pwm_platform_data mt2712_pwm_data = {
+ 	.num_pwms = 8,
++	.pwm45_fixup = false,
+ };
+ 
+ static const struct mtk_pwm_platform_data mt7622_pwm_data = {
+ 	.num_pwms = 6,
++	.pwm45_fixup = false,
+ };
+ 
+ static const struct mtk_pwm_platform_data mt7623_pwm_data = {
+ 	.num_pwms = 5,
++	.pwm45_fixup = true,
+ };
+ 
+ static const struct of_device_id mtk_pwm_of_match[] = {
+-- 
+2.7.4
