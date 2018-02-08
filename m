@@ -1,65 +1,94 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v2 1/4] dt-bindings: soc: add SCPSYS binding for MT7623
- and MT7623A SoC
-Date: Wed, 7 Feb 2018 21:19:51 +0100
-Message-ID: <CAPDyKFpYLm2vVVsAkE2r5HVF4uzgHS404dUzPcEsxJiawEf7Aw@mail.gmail.com>
-References: <ecfc548fc3d22aa335b50e552ad2ad88427a0bb2.1517998367.git.sean.wang@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 4/5] dt-bindings: clock: mediatek: update audsys
+ documentation to adapt MFD device
+Date: Wed, 7 Feb 2018 18:49:34 -0600
+Message-ID: <CAL_Jsq+kM19=+cMzfgvE3j01L9ahbf6PNh2eJJOkwd096RcFhg@mail.gmail.com>
+References: <cover.1515639336.git.ryder.lee@mediatek.com> <8651585c91ee40f6ab3e30b893bcfb90fe5c2c25.1515639336.git.ryder.lee@mediatek.com>
+ <20180205060833.p56dun5i4bvs3jye@rob-hp-laptop> <1517821892.12510.32.camel@mtkswgap22>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <ecfc548fc3d22aa335b50e552ad2ad88427a0bb2.1517998367.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@baylibre.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Linux PM <linux-pm@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1517821892.12510.32.camel@mtkswgap22>
+Sender: linux-clk-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: devicetree@vger.kernel.org, Garlic Tseng <garlic.tseng@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-clk <linux-clk@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 7 February 2018 at 11:22,  <sean.wang@mediatek.com> wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On Mon, Feb 5, 2018 at 3:11 AM, Ryder Lee <ryder.lee@mediatek.com> wrote:
+> On Mon, 2018-02-05 at 00:08 -0600, Rob Herring wrote:
+>> On Wed, Jan 31, 2018 at 03:42:44PM +0800, Ryder Lee wrote:
+>> > As the MediaTek audio hardware block that expose functionalities that are
+>> > handled by separate subsystems in the kernel, and there are registers that
+>> > are shared between related drivers.
+>> >
+>> > Switch the current device to an MFD device, add more descriptions about the
+>> > subsystem and modify example accordingly.
+>> >
+>> > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+>> > ---
+>> >  .../bindings/arm/mediatek/mediatek,audsys.txt      | 37 ++++++++++++++++++----
+>> >  1 file changed, 30 insertions(+), 7 deletions(-)
+>> >
+>> > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
+>> > index 9b8f578..677af40 100644
+>> > --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
+>> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
+>> > @@ -1,22 +1,45 @@
+>> > -MediaTek AUDSYS controller
+>> > +MediaTek Audio Subsystem
+>> >  ============================
+>> > +The audio subsystem is one of the multi-function blocks of MediaTek SoCs.
+>> > +It contains a system controller, which provides a number registers giving
+>> > +access to two features: AUDSYS clocks and Audio Front End (AFE) components.
+>> >
+>> > +For the top level node:
+>> > +- compatible: must be: "syscon", "simple-mfd";
+>>
+>> This should have some SoC specific compatible.
 >
-> document the binding for enabling SCPSYS on MediaTek MT7623 and MT7623A
-> SoC. Where MT7623 SoC has the same definition about power domains with
-> MT2701, so it's fine to using MT2701 ones as MT7623's fallback.
->
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
+> As we don't have a specific driver (compatible string) for it and if we
+> need to add that I think the term '*-audsys' is very suitable here, but
+> unfortunately, it has already picked for clock driver (see child node).
 
-For the series:
+Perhaps the clocks block should have "-clk" on the end or something.
 
-Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
+Why do you really need to change this in the first place? You don't
+have to have DT child nodes to create child (struct) devices and child
+drivers.
 
-Kind regards
-Uffe
+>
+> I also took ../../marvell/*-system-controller.txt as examples for my
+> case. Thus, I'm not sure should we still need a new one here?
+>
+>> > +- reg: register area of the Audio Subsystem
+>> > +
+>> > +Required sub-nodes:
+>> > +
+>> > +AUDSYS clocks:
+>> > +-------
+>> >  The MediaTek AUDSYS controller provides various clocks to the system.
+>> >
+>> >  Required Properties:
+>> >
+>> >  - compatible: Should be one of:
+>> > -   - "mediatek,mt7622-audsys", "syscon"
+>> > +   - "mediatek,mt2701-audsys";
+>> > +   - "mediatek,mt7622-audsys";
+>> >  - #clock-cells: Must be 1
+>> >
+>> >  The AUDSYS controller uses the common clk binding from
+>> >  Documentation/devicetree/bindings/clock/clock-bindings.txt
+>> >  The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+>>
+>> There's no register range associated with the clocks? If there is, add a
+>> reg property.
+>
+> No, we don't need reg property here, as the two sub-drivers will obtain
+> the regmap  which is propagated from the parent.
 
-> ---
->  Documentation/devicetree/bindings/soc/mediatek/scpsys.txt | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> index 76bf45b..d6fe16f 100644
-> --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> @@ -21,6 +21,8 @@ Required properties:
->         - "mediatek,mt2712-scpsys"
->         - "mediatek,mt6797-scpsys"
->         - "mediatek,mt7622-scpsys"
-> +       - "mediatek,mt7623-scpsys", "mediatek,mt2701-scpsys": For MT7623 SoC
-> +       - "mediatek,mt7623a-scpsys": For MT7623A SoC
->         - "mediatek,mt8173-scpsys"
->  - #power-domain-cells: Must be 1
->  - reg: Address range of the SCPSYS unit
-> @@ -28,10 +30,11 @@ Required properties:
->  - clock, clock-names: clocks according to the common clock binding.
->                        These are clocks which hardware needs to be
->                        enabled before enabling certain power domains.
-> -       Required clocks for MT2701: "mm", "mfg", "ethif"
-> +       Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
->         Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
->         Required clocks for MT6797: "mm", "mfg", "vdec"
->         Required clocks for MT7622: "hif_sel"
-> +       Required clocks for MT7622A: "ethif"
->         Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
->
->  Optional properties:
-> --
-> 2.7.4
->
+I know regmap doesn't need it. That's not what I asked. If you have a
+range of registers for the clocks, then define that in reg. Only if
+the clock control bits are mixed up with other functions within the
+same registers, then you can omit it.
+
+Rob
