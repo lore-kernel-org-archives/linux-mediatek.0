@@ -1,140 +1,76 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] arm: dts: mt7623: enable all four available UARTs on
- bananapi-r2
-Date: Fri, 9 Feb 2018 11:55:46 +0800
-Message-ID: <1518148546.9025.20.camel@mtkswgap22>
-References: <b4e84a68da76c1ca538150a730777ff530c1db5a.1513922513.git.sean.wang@mediatek.com>
-         <dc3c28c7-03c3-f1c6-39c1-b8df8be4fac3@gmail.com>
-         <1514043318.30687.10.camel@mtkswgap22>
-         <1516697505.12197.30.camel@mtkswgap22>
-         <cd1df7f9-89f4-06d5-5384-9f3b9f7ade48@gmail.com>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: [PATCH 00/10] thermal: Remove "cooling-{min|max}-level" properties
+Date: Fri,  9 Feb 2018 14:28:00 +0530
+Message-ID: <cover.1518166039.git.viresh.kumar@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <cd1df7f9-89f4-06d5-5384-9f3b9f7ade48-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rafael Wysocki <rjw@rjwysocki.net>, =?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>, Carlo Caione <carlo@caione.org>, Chen-Yu Tsai <wens@csie.org>, Eduardo Valentin <edubezval@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, Rob Herring <robh+dt@kernel.org>, Tony Lindgren <tony@atomide.com>, Wei Xu <xuwei5@hisilicon.com>, Zhang Rui <rui.zhang@intel.com>
+Cc: devicetree@vger.kernel.org, linux-samsung-soc@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>, linux-pm@vger.kernel.org, Viresh Kumar <viresh.kumar@linaro.org>, daniel.lezcano@linaro.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-02-07 at 17:01 +0100, Matthias Brugger wrote:
-> 
-> On 01/23/2018 09:51 AM, Sean Wang wrote:
-> > On Sat, 2017-12-23 at 23:35 +0800, Sean Wang wrote:
-> >> On Sat, 2017-12-23 at 08:52 +0100, Matthias Brugger wrote:
-> >>>
-> >>> On 12/22/2017 07:06 AM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> >>>> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >>>>
-> >>>> On bpi-r2 board, totally there're four uarts which we usually called
-> >>>> uart[0-3] helpful to extend slow I/O devices. Among those ones, uart2 has
-> >>>> dedicated pin slot which is used to conolse log. uart[0-1] appear at the
-> >>>> 40-pins connector and uart3 has no pinout, but just has test points (TP47
-> >>>> for TX and TP48 for RX, respectively) nearby uart2. Also, some missing
-> >>>> pinctrl is being complemented for those devices.
-> >>>>
-> >>>> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >>>> ---
-> >>>>  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 26 ++++++++++++++++++++++++--
-> >>>>  1 file changed, 24 insertions(+), 2 deletions(-)
-> >>>>
-> >>>> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> >>>> index 7bf5aa2..64bf5db 100644
-> >>>> --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> >>>> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> >>>> @@ -409,6 +409,20 @@
-> >>>>  				 <MT7623_PIN_82_UTXD1_FUNC_UTXD1>;
-> >>>>  		};do you like it or quite want me to remove the uart3 node?
-> >>>>  	};
-> >>>> +
-> >>>> +	uart2_pins_a: uart@2 {
-> >>>> +		pins_dat {
-> >>>> +			pinmux = <MT7623_PIN_14_GPIO14_FUNC_URXD2>,
-> >>>> +				 <MT7623_PIN_15_GPIO15_FUNC_UTXD2>;
-> >>>> +		};
-> >>>> +	};
-> >>>> +
-> >>>> +	uart3_pins_a: uart@3 {
-> >>>> +		pins_dat {
-> >>>> +			pinmux = <MT7623_PIN_242_URTS2_FUNC_URTS2>,
-> >>>> +				 <MT7623_PIN_243_UCTS2_FUNC_UTXD3>;
-> >>>> +		};
-> >>>> +	};
-> >>>>  };
-> >>>>  
-> >>>>  &pwm {
-> >>>> @@ -454,16 +468,24 @@
-> >>>>  &uart0 {
-> >>>>  	pinctrl-names = "default";
-> >>>>  	pinctrl-0 = <&uart0_pins_a>;
-> >>>> -	status = "disabled";
-> >>>> +	status = "okay";
-> >>>>  };
-> >>>>  
-> >>>>  &uart1 {
-> >>>>  	pinctrl-names = "default";
-> >>>>  	pinctrl-0 = <&uart1_pins_a>;
-> >>>> -	status = "disabled";
-> >>>> +	status = "okay";
-> >>>>  };
-> >>>>  
-> >>>>  &uart2 {
-> >>>> +	pinctrl-names = "default";
-> >>>> +	pinctrl-0 = <&uart2_pins_a>;
-> >>>> +	status = "okay";
-> >>>> +};
-> >>>> +
-> >>>> +&uart3 {
-> >>>> +	pinctrl-names = "default";
-> >>>> +	pinctrl-0 = <&uart3_pins_a>;
-> >>>>  	status = "okay";
-> >>>>  };
-> >>>>  
-> >>>
-> >>> Why do we want to enable uart3 when there are only test points?
-> >>> It is not very useful, or do I oversee something?
-> >>>
-> > 
-> >> I have been listening to the sound from potential users of bpi-r2 to
-> >> understand what assistance I have to provide to them. Something could
-> >> be seen through [1] in the forum to know they had been trying hard to
-> >> explore all available UARTs from the SoC in the last weeks. The patch
-> >> should be really useful for these people and for the extra soldering
-> >> it shouldn't become a problem for these makers.
-> >>
-> >> [1] http://forum.banana-pi.org/t/gpio-uart-not-the-debug-port/3748
-> >>
-> >> 	Sean 
-> >>
-> > 
-> > Hi, Matthias
-> > 
-> > do you like it or quite want me to remove the uart3 node?
-> > 
-> > I can take it into account along with other pending dts changes in my
-> > queue.
-> > 
-> 
-> Sorry for the late answer.
-> Do I understand correctly that uart3 is routed to TP47 and TP48, and these test
-> points are accessible through the SATA connector? Doesn't they break SATA then?
-> 
+The "cooling-min-level" and "cooling-max-level" properties are not
+parsed by any part of the kernel currently and the max cooling state of
+a cooling devices is found by cooling-device's driver itself.
 
-TP47 and TP48 are directly pins out from SoC, not through the SATA
-connector.
+Also note that a very small number of platforms that support cooling
+devices currently contain these properties in their dts files. Most of
+them don't specify them (as no one is going to use them anyway).
 
-> I think as they are only available through a non-documented test point, we
-> shouldn't enable it.
-> 
+Only two type of cooling devices are using these properties currently:
+cpu-cooling and gpio-fan. This series first updates all the dts files to
+not specify the min/max cooling states and then removes the bindings.
 
-Okay, let's drop uart 3 setting here.
-
-> Regards,
-> Matthias
-
+The maintainers are requested to apply the relevant patches to their
+trees directly as there is no dependency between the patches.
 
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+viresh
+
+Viresh Kumar (10):
+  ARM: dts: exynos: Remove "cooling-{min|max}-level" for CPU nodes
+  ARM: dts: omap: Remove "cooling-{min|max}-level" for CPU nodes
+  ARM: dts: mt7623: Remove "cooling-{min|max}-level" for CPU nodes
+  ARM: dts: sun[4-7]i: Remove "cooling-{min|max}-level" for CPU nodes
+  ARM64: dts: hi6220: Remove "cooling-{min|max}-level" for CPU nodes
+  ARM64: dts: meson: Remove "cooling-{min|max}-level" for CPU nodes
+  ARM: dts: gemini: Remove "cooling-{min|max}-level" for gpio-fan node
+  ARM64: dts: meson: Remove "cooling-{min|max}-level" for gpio-fan node
+  dt-bindings: cpufreq-dt: Remove "cooling-{min|max}-level" properties
+  dt-bindings: thermal: Remove "cooling-{min|max}-level" properties
+
+ Documentation/devicetree/bindings/cpufreq/cpufreq-dt.txt |  4 ----
+ .../devicetree/bindings/cpufreq/cpufreq-mediatek.txt     |  4 ----
+ Documentation/devicetree/bindings/thermal/thermal.txt    | 16 +---------------
+ arch/arm/boot/dts/dra7.dtsi                              |  2 --
+ arch/arm/boot/dts/exynos4210.dtsi                        |  2 --
+ arch/arm/boot/dts/exynos4412.dtsi                        |  2 --
+ arch/arm/boot/dts/exynos5250.dtsi                        |  2 --
+ arch/arm/boot/dts/exynos5420-cpus.dtsi                   | 16 ----------------
+ arch/arm/boot/dts/exynos5422-cpus.dtsi                   | 16 ----------------
+ arch/arm/boot/dts/gemini-dlink-dns-313.dts               |  2 --
+ arch/arm/boot/dts/mt7623.dtsi                            |  2 --
+ arch/arm/boot/dts/omap443x.dtsi                          |  2 --
+ arch/arm/boot/dts/omap4460.dtsi                          |  2 --
+ arch/arm/boot/dts/omap5.dtsi                             |  2 --
+ arch/arm/boot/dts/sun4i-a10-olinuxino-lime.dts           |  1 -
+ arch/arm/boot/dts/sun4i-a10.dtsi                         |  2 --
+ arch/arm/boot/dts/sun5i-a13.dtsi                         |  2 --
+ arch/arm/boot/dts/sun6i-a31.dtsi                         |  2 --
+ arch/arm/boot/dts/sun7i-a20.dtsi                         |  2 --
+ arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts    |  6 ------
+ arch/arm64/boot/dts/hisilicon/hi6220.dtsi                |  2 --
+ 21 files changed, 1 insertion(+), 90 deletions(-)
+
+-- 
+2.15.0.194.g9af6a3dea062
