@@ -1,160 +1,67 @@
-From: Marcus Folkesson <marcus.folkesson@gmail.com>
-Subject: Re: [PATCH v2 5/7] watchdog: mtk: allow setting timeout in devicetree
-Date: Sat, 10 Feb 2018 21:12:07 +0100
-Message-ID: <20180210201207.GC744@gmail.com>
-References: <20180210091911.3644-1-marcus.folkesson@gmail.com>
- <20180210091911.3644-5-marcus.folkesson@gmail.com>
- <1518261002.9025.36.camel@mtkswgap22>
- <20180210124328.GB744@gmail.com>
+From: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Questions about bringing up MT7623 board
+Date: Sat, 10 Feb 2018 23:02:39 +0100
+Message-ID: <CAKfDRXhhrndoKMidZYsw=E8BmS7AFsTJHbS4dcYbEoADhjD44Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="w7PDEPdKQumQfZlR"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180210124328.GB744@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: Wim Van Sebroeck <wim@iguana.be>, Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Barry Song <baohua@kernel.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Linus Walleij <linus.walleij@linaro.org>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, devicetree@vger.kernel.org, linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.orgli
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hello,
 
---w7PDEPdKQumQfZlR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I am currently working on trying to add mainline support for an MT7623
+board I have received (Unielec U7623). I sent some initial questions
+about the board in the autumn, and I got OpenWRT running in a
+semi-stable state (with 4.9), but adding mainline support has proven
+tricker than I thought. After spending some days banging my head
+against the wall, I am starting to run out of ideas, so any pointers
+or tips would be greatly appreciated.
 
-Hello Sean,
+With OpenWRT, I based the dts for the U7623 on mt7623-eMMC.dts. Since
+this file is not available in the mainline kernel, I decided to use
+the DTS for Banana Pi R2 as the boards seem fairly similar (and the
+initial goal is just to have a kernel that boots). I got a 4.14 config
+from a repo I found on the BPI-forum
+(https://github.com/frank-w/BPI-R2-4.14), added missing config symbols
+for 4.15, compiled a kernel and appended the dtb to the uImage. So
+far, so good and the kernel compiles just fine.
 
-On Sat, Feb 10, 2018 at 01:43:28PM +0100, Marcus Folkesson wrote:
-> Hello Sean,
->=20
-> On Sat, Feb 10, 2018 at 07:10:02PM +0800, Sean Wang wrote:
-> >=20
-> > Hi, Marcus
-> >=20
-> > The changes you made for dt-bindings and driver should be put into
-> > separate patches.
->=20
-> I actually thought about it but chose to have it in the same patch becaus=
-e I
-> did not see any direct advantage to separating them.
->=20
-> But I can do that.
-> I will come up with a v3 with this change if no one thinks differently.
->=20
+When booting the kernel (from the eMMC), the trouble starts. The
+kernel seems to be loaded just fine, but after "Starting kernel ..."
+nothing more is written to the screen. I.e., I see the following:
 
-When looking at the git log, I'm not that convinced it should be
-separate patches.
+bootm flag=0, states=70f
+## Booting kernel from Legacy Image at 84000000 ...
+   Image Name:   Linux Kernel 4.14.18-main
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    5891369 Bytes = 5.6 MiB
+   Load Address: 80008000
+   Entry Point:  80008000
+   Verifying Checksum ... OK
+   Loading Kernel Image ... OK
 
-For example, I found a4f741e3e157c3a5c8aea5f2ea62b692fbf17338 that is
-doing the exact same thing as this patch.
+Starting kernel ...
 
-There is plenty of patches that mixes the code change and dt bindings
-updates.
-Could it not be useful to overview both the implementation and
-dt-mapping change in one view?
+I had a similar error when working on getting OpenWRT to run on the
+board, but then it was caused by the dtb not being appended to the
+kernel. When looking around online for reasons for this error, missing
+dtb or config-mistakes seems to be the two main reasons. I have
+checked for misses and errors in dts and config (both compared to the
+datasheet and my working 4.9 kernel), but haven't really found
+anything. And the changes I have made have had no effect.
 
-If you or anyone else still think it should be separated, please let me kno=
-w and I will
-come up with a v3.
+Does anyone have any idea about what could be wrong or where I should look?
 
-
-> >=20
-> > And the property timeout-sec seems to be generic enough to all devices,
-> > so why not add a common document to describe it and allow those devices
-> > to refer to, like other dt-bindings for other kinds of devices usually
-> > did.
->=20
-> It should be, but it requires that the driver is using
-> watchdog_init_timeout() to set timeout, most of the drivers does not.
-> Most drivers does not even use the watchdog API but register itself as
-> misc devices.
->=20
-> When we have all wdt drivers using the watchdog API, we should probably
-> move the dt-binding to a common document.
->=20
-> >=20
-> > 	Sean
-> >=20
->=20
-> Thanks,
->=20
-> Best regards
-> Marcus Folkesson
->=20
-> > On Sat, 2018-02-10 at 10:19 +0100, Marcus Folkesson wrote:
-> > > watchdog_init_timeout() will allways pick timeout_param since it
-> > > defaults to a valid timeout.
-> > >=20
-> > > By following best practice described in
-> > > Documentation/watchdog/watchdog-kernel-api.txt, it also
-> > > let us to set timout-sec property in devicetree.
-> > >=20
-> > > Signed-off-by: Marcus Folkesson <marcus.folkesson@gmail.com>
-> > > Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-> > > ---
-> > >  Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 4 ++++
-> > >  drivers/watchdog/mtk_wdt.c                             | 2 +-
-> > >  2 files changed, 5 insertions(+), 1 deletion(-)
-> > >=20
-> > > diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b=
-/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> > > index 5b38a30e608c..859dee167b91 100644
-> > > --- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> > > +++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> > > @@ -11,9 +11,13 @@ Required properties:
-> > > =20
-> > >  - reg : Specifies base physical address and size of the registers.
-> > > =20
-> > > +Optional properties:
-> > > +- timeout-sec: contains the watchdog timeout in seconds.
-> > > +
-> > >  Example:
-> > > =20
-> > >  wdt: watchdog@10000000 {
-> > >  	compatible =3D "mediatek,mt6589-wdt";
-> > >  	reg =3D <0x10000000 0x18>;
-> > > +	timeout-sec =3D <10>;
-> > >  };
-> > > diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> > > index 7ed417a765c7..fcdc10ec28a3 100644
-> > > --- a/drivers/watchdog/mtk_wdt.c
-> > > +++ b/drivers/watchdog/mtk_wdt.c
-> > > @@ -57,7 +57,7 @@
-> > >  #define DRV_VERSION		"1.0"
-> > > =20
-> > >  static bool nowayout =3D WATCHDOG_NOWAYOUT;
-> > > -static unsigned int timeout =3D WDT_MAX_TIMEOUT;
-> > > +static unsigned int timeout;
-> > > =20
-> > >  struct mtk_wdt_dev {
-> > >  	struct watchdog_device wdt_dev;
-> >=20
-> >=20
-
-Best regards
-Marcus Folkesson
-
-
-
---w7PDEPdKQumQfZlR
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEBVGi6LZstU1kwSxliIBOb1ldUjIFAlp/UhIACgkQiIBOb1ld
-UjLTSg//Y1Wdm+EzphVBNcQEOVuer5HfbnXLStbtYpcKsmz4gwjdx7vMhdmebUZg
-//6LIc3NBl/EowXi1zqR7/Eo57Xxd1iw5WxoRDHOqGeZtZ6BqdD3Rte240QhKnZX
-gFBNfeUgSjnCrzbdAOrKz2g6M4W9Bqb6C5XwTrO3KXp7eUPxffIQYCSkwt2FKlKy
-5MMEonSISxDhgUXvB7p29BnZqCtAlrnwo/wgkug7kmON4059RaFBoRmAiJxO0GuE
-Z9ksVOFiOaUlM0zZpoCGoQAseFFv169s7JkVC9nphx3qu53i6/NqadyYdKqS6Dpz
-L8gCOZKSt93rILxYANfaUnec07oxQNOxrOLF8BfKaJJiKlkI+k/w5c3DijvEngbj
-8KxtttCgVMxrwc7IQg3Mw5zlG7Z2go08JbSBrxyHWt0DE2k2VpBLDPaXFKPIMufg
-AyVsKPMfzms53w9sRtm8UMALc9fv7C4UIOKL9HHWIiicj6AHeUYU/0rpzyIJVPWU
-whIoLZWasSkke3vxVQkR61MX7/6S07L52sKGQAGI6I65oSeAsfT4lAA0PyydU5y6
-Iuoqc2MvGw4jm8n0xVsrwBC/NVHweMejksZYhOgpPlRzY05qxce8KlVPX/s58w7E
-CxtbaDQNUTFCYa2B63fPqJqWR3jUR6y03caL3laEwEX4ZOvGd08=
-=6wc6
------END PGP SIGNATURE-----
-
---w7PDEPdKQumQfZlR--
+Thanks in advance for any help,
+Kristian
