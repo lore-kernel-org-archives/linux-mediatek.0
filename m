@@ -1,13 +1,15 @@
-From: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 Subject: Re: Questions about bringing up MT7623 board
-Date: Sun, 11 Feb 2018 11:33:57 +0100
-Message-ID: <CAKfDRXg0jeHP9xZRGDNm5tfW1afZd-TPfwbwUzEPiWsy_bfuUQ@mail.gmail.com>
+Date: Sun, 11 Feb 2018 11:36:09 +0100
+Message-ID: <fc2bf32a-eb81-6cd1-9085-b8786ddf0f9c@phrozen.org>
 References: <CAKfDRXhhrndoKMidZYsw=E8BmS7AFsTJHbS4dcYbEoADhjD44Q@mail.gmail.com>
+ <CAKfDRXg0jeHP9xZRGDNm5tfW1afZd-TPfwbwUzEPiWsy_bfuUQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAKfDRXhhrndoKMidZYsw=E8BmS7AFsTJHbS4dcYbEoADhjD44Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <CAKfDRXg0jeHP9xZRGDNm5tfW1afZd-TPfwbwUzEPiWsy_bfuUQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -17,31 +19,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Feb 10, 2018 at 11:02 PM, Kristian Evensen
-<kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> Hello,
->
-> With OpenWRT, I based the dts for the U7623 on mt7623-eMMC.dts. Since
-> this file is not available in the mainline kernel, I decided to use
-> the DTS for Banana Pi R2 as the boards seem fairly similar (and the
-> initial goal is just to have a kernel that boots). I got a 4.14 config
-> from a repo I found on the BPI-forum
-> (https://github.com/frank-w/BPI-R2-4.14), added missing config symbols
-> for 4.15, compiled a kernel and appended the dtb to the uImage. So
-> far, so good and the kernel compiles just fine.
-
-I see that I made some mistakes and missed some details in the
-description. Sorry about that, I blame the lack of coffee :)
-
-I did not use the DTS for the R2, as I had already seen that 4.9
-failed to boot with the R2 DTS (also the no output-error). What I did
-was that I took the mt7623-eMMC.dts and updated it (basically
-uncommenting the switch-section) so that the compiler would not hit
-any errors/warnings. I also reduced the amount of memory, as my board
-only has 512MB RAM.
-
-BR,
-Kristian
+CgpPbiAxMS8wMi8xOCAxMTozMywgS3Jpc3RpYW4gRXZlbnNlbiB3cm90ZToKPiBPbiBTYXQsIEZl
+YiAxMCwgMjAxOCBhdCAxMTowMiBQTSwgS3Jpc3RpYW4gRXZlbnNlbgo+IDxrcmlzdGlhbi5ldmVu
+c2VuQGdtYWlsLmNvbT4gd3JvdGU6Cj4+IEhlbGxvLAo+Pgo+PiBXaXRoIE9wZW5XUlQsIEkgYmFz
+ZWQgdGhlIGR0cyBmb3IgdGhlIFU3NjIzIG9uIG10NzYyMy1lTU1DLmR0cy4gU2luY2UKPj4gdGhp
+cyBmaWxlIGlzIG5vdCBhdmFpbGFibGUgaW4gdGhlIG1haW5saW5lIGtlcm5lbCwgSSBkZWNpZGVk
+IHRvIHVzZQo+PiB0aGUgRFRTIGZvciBCYW5hbmEgUGkgUjIgYXMgdGhlIGJvYXJkcyBzZWVtIGZh
+aXJseSBzaW1pbGFyIChhbmQgdGhlCj4+IGluaXRpYWwgZ29hbCBpcyBqdXN0IHRvIGhhdmUgYSBr
+ZXJuZWwgdGhhdCBib290cykuIEkgZ290IGEgNC4xNCBjb25maWcKPj4gZnJvbSBhIHJlcG8gSSBm
+b3VuZCBvbiB0aGUgQlBJLWZvcnVtCj4+IChodHRwczovL2dpdGh1Yi5jb20vZnJhbmstdy9CUEkt
+UjItNC4xNCksIGFkZGVkIG1pc3NpbmcgY29uZmlnIHN5bWJvbHMKPj4gZm9yIDQuMTUsIGNvbXBp
+bGVkIGEga2VybmVsIGFuZCBhcHBlbmRlZCB0aGUgZHRiIHRvIHRoZSB1SW1hZ2UuIFNvCj4+IGZh
+ciwgc28gZ29vZCBhbmQgdGhlIGtlcm5lbCBjb21waWxlcyBqdXN0IGZpbmUuCj4gSSBzZWUgdGhh
+dCBJIG1hZGUgc29tZSBtaXN0YWtlcyBhbmQgbWlzc2VkIHNvbWUgZGV0YWlscyBpbiB0aGUKPiBk
+ZXNjcmlwdGlvbi4gU29ycnkgYWJvdXQgdGhhdCwgSSBibGFtZSB0aGUgbGFjayBvZiBjb2ZmZWUg
+OikKPgo+IEkgZGlkIG5vdCB1c2UgdGhlIERUUyBmb3IgdGhlIFIyLCBhcyBJIGhhZCBhbHJlYWR5
+IHNlZW4gdGhhdCA0LjkKPiBmYWlsZWQgdG8gYm9vdCB3aXRoIHRoZSBSMiBEVFMgKGFsc28gdGhl
+IG5vIG91dHB1dC1lcnJvcikuIFdoYXQgSSBkaWQKPiB3YXMgdGhhdCBJIHRvb2sgdGhlIG10NzYy
+My1lTU1DLmR0cyBhbmQgdXBkYXRlZCBpdCAoYmFzaWNhbGx5Cj4gdW5jb21tZW50aW5nIHRoZSBz
+d2l0Y2gtc2VjdGlvbikgc28gdGhhdCB0aGUgY29tcGlsZXIgd291bGQgbm90IGhpdAo+IGFueSBl
+cnJvcnMvd2FybmluZ3MuIEkgYWxzbyByZWR1Y2VkIHRoZSBhbW91bnQgb2YgbWVtb3J5LCBhcyBt
+eSBib2FyZAo+IG9ubHkgaGFzIDUxMk1CIFJBTS4KPgo+IEJSLAo+IEtyaXN0aWFuCkhhdmUgeW91
+IHRyaWVkIHR1cm5pbmcgb24gZWFybHkgcHJpbnRrID8KCiDCoMKgwqAgSm9obgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFp
+bGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
