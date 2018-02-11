@@ -1,145 +1,90 @@
-From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-Subject: Re: Questions about bringing up MT7623 board
-Date: Sun, 11 Feb 2018 15:46:32 +0100
-Message-ID: <c02d6132-4f95-d781-db5d-4cdb947a2e53@phrozen.org>
-References: <CAKfDRXhhrndoKMidZYsw=E8BmS7AFsTJHbS4dcYbEoADhjD44Q@mail.gmail.com>
- <CAKfDRXg0jeHP9xZRGDNm5tfW1afZd-TPfwbwUzEPiWsy_bfuUQ@mail.gmail.com>
- <fc2bf32a-eb81-6cd1-9085-b8786ddf0f9c@phrozen.org>
- <CAKfDRXjpG4CNeHfKC1Kg=6mrqUTZ8A7bD1aivLkSQ2L0eK755Q@mail.gmail.com>
- <6ae4103b-45bf-c427-d0d9-87f6f4eb83b5@phrozen.org>
- <CAKfDRXiJCMpA+qj4HmoSg0F_Yt4LnjQ=Dvy_tkxa=Dnh_pN13g@mail.gmail.com>
- <12343512-196f-c89f-e7dc-2e35cad49fc8@phrozen.org>
- <CAKfDRXg66Un3c7U=WTSUYoduDkAD+jsL-tzxnYUSLHKrmFKiOg@mail.gmail.com>
- <CAKfDRXiQb3LMSdjfE=CkfJE5bj9H+GAVD2Kj4syNfQD-eUPmWg@mail.gmail.com>
+From: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+Subject: Re: [v2, 7/7] watchdog: coh901327: make use of timeout-secs provided
+ in devicetree
+Date: Sun, 11 Feb 2018 09:33:56 -0800
+Message-ID: <20180211173356.GA18292@roeck-us.net>
+References: <20180210091911.3644-7-marcus.folkesson@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAKfDRXiQb3LMSdjfE=CkfJE5bj9H+GAVD2Kj4syNfQD-eUPmWg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180210091911.3644-7-marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Marcus Folkesson <marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Wim Van Sebroeck <wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Barry Song <baohua-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Vladimir Zapolskiy <vz-ChpfBGZJDbMAvxtiuMwx3w@public.gmane.org>, Sylvain Lemieux <slemieux.tyco-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Nicolas Ferre <nicolas.ferre-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-CgpPbiAxMS8wMi8xOCAxNTowMSwgS3Jpc3RpYW4gRXZlbnNlbiB3cm90ZToKPiBIaSwKPgo+IEl0
-IHR1cm5zIG91dCB0aGF0IGVuYWJsaW5nIGVhcmx5IHByaW50ayBpbiB0aGUga2VybmVsIGNvbmZp
-ZyBkaWQgdGhlCj4gdHJpY2ssIHRoYW5rIHlvdSB2ZXJ5IG11Y2ggZm9yIHBvaW50aW5nIG1lIHRv
-IHRoaXMgZXJyb3IuIEkgYWxzbwo+IGNoYW5nZWQgbXkgZGVmY29uZmlnIGEgYml0LCBJIG1lcmdl
-ZCB0aGUgdHdvIE9wZW5XUlQgNC45IGNvbmZpZ3MKPiAoZ2VuZXJpYyBhbmQgbWVkaWF0ZWspLCBj
-cmVhdGVkIGEgbmV3IGRlZmNvbmZpZyBhbmQgdXNlZCB0aGF0IGFzIGEKPiBzdGFydGluZyBwb2lu
-dCAobWFrZSAuLi5fZGVmY29uZmlnKS4gTm93IEkgY2FuIGZpbmFsbHkgc2VlIHdoYXQgaXMKPiBn
-b2luZyBvbiBhbmQgSSBzZWUgdGhhdCB0aGUgYm9vdCBwcm9ncmVzc2VzIHF1aXRlIGZhci4gTXkg
-Ym9vdCBub3cKPiBnZXRzIHRvIHRoZSBwb2ludCB3aGVyZSBpdCBsb29rcyBmb3IgdGhlIHJvb3Qg
-ZmlsZXN5c3RlbSwgYnV0IGhlcmUgSQo+IGhhdmUgaGl0IGFub3RoZXIgcHJvYmxlbS4gVGhlIGtl
-cm5lbCBvbmx5IHByb2R1Y2VzIHRoZSBmb2xsb3dpbmcKPiBlcnJvcjoKPgo+IFsgICAgMi4wMzcz
-NTRdIG1tYzA6IG5ldyBoaWdoIHNwZWVkIE1NQyBjYXJkIGF0IGFkZHJlc3MgMDAwMQo+IFsgICAg
-Mi4wNDUyNTJdIG1tY2JsazA6IG1tYzA6MDAwMSAwMDhHNzAgNy4yOCBHaUIKPiBbICAgIDIuMDUz
-NTMzXSBtbWNibGswYm9vdDA6IG1tYzA6MDAwMSAwMDhHNzAgcGFydGl0aW9uIDEgNC4wMCBNaUIK
-PiBbICAgIDIuMDUzNzIzXSBtbWNibGswYm9vdDE6IG1tYzA6MDAwMSAwMDhHNzAgcGFydGl0aW9u
-IDIgNC4wMCBNaUIKPiBbICAgIDIuMDUzOTEwXSBtbWNibGswcnBtYjogbW1jMDowMDAxIDAwOEc3
-MCBwYXJ0aXRpb24gMyA0LjAwIE1pQgo+IFsgICAgMi4wNTU0NTZdICBtbWNibGswOiBwMiBwMwo+
-IFsgICAgMi4wNTY5ODZdIHhoY2ktbXRrIDFhMWMwMDAwLnVzYjogMWExYzAwMDAudXNiIHN1cHBs
-eSB2YnVzIG5vdAo+IGZvdW5kLCB1c2luZyBkdW1teSByZWd1bGF0b3IKPiBbICAgIDIuMTUzODk0
-XSB2cGE6IGRpc2FibGluZwo+IFsgICAgMi4xNTY2MDhdIHZtYzogZGlzYWJsaW5nCj4gWyAgICAy
-LjE1OTI5Nl0gdm1jaDogZGlzYWJsaW5nCj4gWyAgICAyLjE2MjEwM10gdmdwMTogZGlzYWJsaW5n
-Cj4gWyAgICAyLjE2NDg5N10gdmNhbWFmOiBkaXNhYmxpbmcKPiBbICAgIDIuMTY4MjQxXSBWRlM6
-IENhbm5vdCBvcGVuIHJvb3QgZGV2aWNlICIobnVsbCkiIG9yCj4gdW5rbm93bi1ibG9jaygwLDAp
-OiBlcnJvciAtNgo+IFsgICAgMi4xNzU3MTJdIFBsZWFzZSBhcHBlbmQgYSBjb3JyZWN0ICJyb290
-PSIgYm9vdCBvcHRpb247IGhlcmUgYXJlCj4gdGhlIGF2YWlsYWJsZSBwYXJ0aXRpb25zOgo+IFsg
-ICAgMi4xODQwMzFdIGIzMDAgICAgICAgICA3NjM0OTQ0IG1tY2JsazAKPiBbICAgIDIuMTg0MDM2
-XSAgZHJpdmVyOiBtbWNibGsKPiBbICAgIDIuMTkwNzc1XSAgIGIzMDIgICAgICAgICAxMDQ4NTc2
-IG1tY2JsazBwMiAwMDAwMDAwMC0wMgo+IFsgICAgMi4xOTA3NzldCj4gWyAgICAyLjE5NzU2M10g
-ICBiMzAzICAgICAgICAgMjA5NzE1MiBtbWNibGswcDMgMDAwMDAwMDAtMDMKPiBbICAgIDIuMTk3
-NTY2XQo+IFsgICAgMi4yMDQzMzJdIGIzMTggICAgICAgICAgICA0MDk2IG1tY2JsazBycG1iCj4g
-WyAgICAyLjIwNDMzNV0gIChkcml2ZXI/KQo+IFsgICAgMi4yMTA5ODhdIGIzMTAgICAgICAgICAg
-ICA0MDk2IG1tY2JsazBib290MQo+IFsgICAgMi4yMTA5OTJdICAoZHJpdmVyPykKPiBbICAgIDIu
-MjE3NzQ3XSBiMzA4ICAgICAgICAgICAgNDA5NiBtbWNibGswYm9vdDAKPiBbICAgIDIuMjE3NzUw
-XSAgKGRyaXZlcj8pCj4gWyAgICAyLjIyNDUwNF0gS2VybmVsIHBhbmljIC0gbm90IHN5bmNpbmc6
-IFZGUzogVW5hYmxlIHRvIG1vdW50IHJvb3QKPiBmcyBvbiB1bmtub3duLWJsb2NrKDAsMCkKPgo+
-IE15IHJvb3RmcywgZXRjLCBpcyBzdG9yZWQgb24gbW1jYmxrMCBhbmQgdGhlIHBhcnRpdGlvbmlu
-ZyBpcyBzcGVjaWZpZWQKPiBpbiB0aGUgYm9vdCBhcmd1bWVudHMgKHdoaWNoIGFyZToKPiBibG9j
-azJtdGQuYmxvY2sybXRkPS9kZXYvbW1jYmxrMCw2NTUzNixlTU1DLDUKPiBtdGRwYXJ0cz1lTU1D
-OjI1NmsobWJyKXJvLDUxMmsodWJvb3Qpcm8sMjU2ayhjb25maWcpcm8sMjU2ayhmYWN0b3J5KXJv
-LDMyTShrZXJuZWwpLDMyTShyZWNvdmVyeSksMTAyNE0ocm9vdGZzKSwyMDQ4TSh1c3JkYXRhKSwt
-KGJtdHBvb2wpCj4gICByb290ZnN0eXBlPXNxdWFzaGZzLGpmZnMyKS4gSSBoYXZlIGRvdWJsZWNo
-ZWtlZCwgYW5kIEkgY2FuJ3QgZmluZCBhbnkKPiBtaXNzaW5nIE1URC1vcHRpb25zIGNvbXBhcmVk
-IHRvIHRoZSA0LjkgY29uZmlnLiBDb3VsZCBpdCBiZSB0aGF0IG5ldwo+IG9wdGlvbnMgaGF2ZSBi
-ZWVuIGFkZGVkIGFuZCBoYXZlIHRvIGJlIHNwZWNpZmllZD8gRm9yIGV4YW1wbGUsCj4gTVREX0JM
-T0NLMk1URCBhbmQgTVREX0NNRExJTkVfUEFSVFMgaXMgc2V0LgoKYmxvY2sybXRkIGlzIGEgb3dy
-dCBzcGVjaWZpYyBkcml2ZXIsIGl0IHdvbnQgd29yayBvbiBvbiB2YW5pbGxhLgoKIMKgwqDCoCBK
-b2huCgo+IFRoZSBsb2cgYXJlIGFsc28gY29udGFpbnMgdGhlIGZvbGxvd2luZyB3YXJuaW5nczoK
-Pgo+IFsgICAgMS44NDUyODBdIC0tLS0tLS0tLS0tLVsgY3V0IGhlcmUgXS0tLS0tLS0tLS0tLQo+
-IFsgICAgMS44NDUyOTZdIFdBUk5JTkc6IENQVTogMCBQSUQ6IDcwIGF0IGRyaXZlcnMvY2xrL2Ns
-ay5jOjU5NAo+IGNsa19jb3JlX2Rpc2FibGVfbG9jaysweDE4LzB4MjQKPiBbICAgIDEuODQ1Mjk5
-XSBNb2R1bGVzIGxpbmtlZCBpbjoKPiBbICAgIDEuODQ1MzEwXSBDUFU6IDAgUElEOiA3MCBDb21t
-OiBrd29ya2VyLzA6MiBOb3QgdGFpbnRlZAo+IDQuMTQuMTgtZnQtdHJ5LW93cnQtY29uZmlnICMy
-MAo+IFsgICAgMS44NDUzMTNdIEhhcmR3YXJlIG5hbWU6IE1lZGlhdGVrIENvcnRleC1BNyAoRGV2
-aWNlIFRyZWUpCj4gWyAgICAxLjg0NTMyM10gV29ya3F1ZXVlOiBwbSBnZW5wZF9wb3dlcl9vZmZf
-d29ya19mbgo+IFsgICAgMS44NDUzNDddIFs8YzAxMGRjODA+XSAodW53aW5kX2JhY2t0cmFjZSkg
-ZnJvbSBbPGMwMTBhNzM0Pl0KPiAoc2hvd19zdGFjaysweDEwLzB4MTQpCj4gWyAgICAxLjg0NTM2
-MV0gWzxjMDEwYTczND5dIChzaG93X3N0YWNrKSBmcm9tIFs8YzA0OWE0MjA+XQo+IChkdW1wX3N0
-YWNrKzB4NzAvMHg4YykKPiBbICAgIDEuODQ1MzczXSBbPGMwNDlhNDIwPl0gKGR1bXBfc3RhY2sp
-IGZyb20gWzxjMDExNThiOD5dIChfX3dhcm4rMHhkOC8weGY4KQo+IFsgICAgMS44NDUzODRdIFs8
-YzAxMTU4Yjg+XSAoX193YXJuKSBmcm9tIFs8YzAxMTU5N2M+XQo+ICh3YXJuX3Nsb3dwYXRoX251
-bGwrMHgxYy8weDI0KQo+IFsgICAgMS44NDUzOTNdIFs8YzAxMTU5N2M+XSAod2Fybl9zbG93cGF0
-aF9udWxsKSBmcm9tIFs8YzAyZWVkNDg+XQo+IChjbGtfY29yZV9kaXNhYmxlX2xvY2srMHgxOC8w
-eDI0KQo+IFsgICAgMS44NDU0MDRdIFs8YzAyZWVkNDg+XSAoY2xrX2NvcmVfZGlzYWJsZV9sb2Nr
-KSBmcm9tIFs8YzAyZjdhNzA+XQo+IChzY3BzeXNfcG93ZXJfb2ZmKzB4ZDgvMHgxODgpCj4gWyAg
-ICAxLjg0NTQxNl0gWzxjMDJmN2E3MD5dIChzY3BzeXNfcG93ZXJfb2ZmKSBmcm9tIFs8YzAzMmFm
-YjA+XQo+IChnZW5wZF9wb3dlcl9vZmYrMHgxZDQvMHgyMzgpCj4gWyAgICAxLjg0NTQyN10gWzxj
-MDMyYWZiMD5dIChnZW5wZF9wb3dlcl9vZmYpIGZyb20gWzxjMDMyYjA0MD5dCj4gKGdlbnBkX3Bv
-d2VyX29mZl93b3JrX2ZuKzB4MmMvMHg0MCkKPiBbICAgIDEuODQ1NDM3XSBbPGMwMzJiMDQwPl0g
-KGdlbnBkX3Bvd2VyX29mZl93b3JrX2ZuKSBmcm9tCj4gWzxjMDEyOThkOD5dIChwcm9jZXNzX29u
-ZV93b3JrKzB4MWMwLzB4MzEwKQo+IFsgICAgMS44NDU0NDhdIFs8YzAxMjk4ZDg+XSAocHJvY2Vz
-c19vbmVfd29yaykgZnJvbSBbPGMwMTJhNzljPl0KPiAod29ya2VyX3RocmVhZCsweDJhMC8weDQw
-MCkKPiBbICAgIDEuODQ1NDYwXSBbPGMwMTJhNzljPl0gKHdvcmtlcl90aHJlYWQpIGZyb20gWzxj
-MDEyZWFiND5dCj4gKGt0aHJlYWQrMHgxMTQvMHgxMmMpCj4gWyAgICAxLjg0NTQ3MV0gWzxjMDEy
-ZWFiND5dIChrdGhyZWFkKSBmcm9tIFs8YzAxMDcwYTg+XQo+IChyZXRfZnJvbV9mb3JrKzB4MTQv
-MHgyYykKPiBbICAgIDEuODQ1NDc2XSAtLS1bIGVuZCB0cmFjZSA1ZWNmZjNmYjY1ZjYxMGJiIF0t
-LS0KPiBbICAgIDEuODQ1NTE4XSAtLS0tLS0tLS0tLS1bIGN1dCBoZXJlIF0tLS0tLS0tLS0tLS0K
-PiBbICAgIDEuODQ1NTI3XSBXQVJOSU5HOiBDUFU6IDAgUElEOiA3MCBhdCBkcml2ZXJzL2Nsay9j
-bGsuYzo0NzYKPiBjbGtfdW5wcmVwYXJlKzB4MjQvMHgyYwo+IFsgICAgMS44NDU1MjldIE1vZHVs
-ZXMgbGlua2VkIGluOgo+IFsgICAgMS44NDU1MzhdIENQVTogMCBQSUQ6IDcwIENvbW06IGt3b3Jr
-ZXIvMDoyIFRhaW50ZWQ6IEcgICAgICAgIFcKPiAgICAgNC4xNC4xOC1mdC10cnktb3dydC1jb25m
-aWcgIzIwCj4gWyAgICAxLjg0NTU0MV0gSGFyZHdhcmUgbmFtZTogTWVkaWF0ZWsgQ29ydGV4LUE3
-IChEZXZpY2UgVHJlZSkKPiBbICAgIDEuODQ1NTQ3XSBXb3JrcXVldWU6IHBtIGdlbnBkX3Bvd2Vy
-X29mZl93b3JrX2ZuCj4gWyAgICAxLjg0NTU2MV0gWzxjMDEwZGM4MD5dICh1bndpbmRfYmFja3Ry
-YWNlKSBmcm9tIFs8YzAxMGE3MzQ+XQo+IChzaG93X3N0YWNrKzB4MTAvMHgxNCkKPiBbICAgIDEu
-ODQ1NTc0XSBbPGMwMTBhNzM0Pl0gKHNob3dfc3RhY2spIGZyb20gWzxjMDQ5YTQyMD5dCj4gKGR1
-bXBfc3RhY2srMHg3MC8weDhjKQo+IFsgICAgMS44NDU1ODRdIFs8YzA0OWE0MjA+XSAoZHVtcF9z
-dGFjaykgZnJvbSBbPGMwMTE1OGI4Pl0gKF9fd2FybisweGQ4LzB4ZjgpCj4gWyAgICAxLjg0NTU5
-NF0gWzxjMDExNThiOD5dIChfX3dhcm4pIGZyb20gWzxjMDExNTk3Yz5dCj4gKHdhcm5fc2xvd3Bh
-dGhfbnVsbCsweDFjLzB4MjQpCj4gWyAgICAxLjg0NTYwM10gWzxjMDExNTk3Yz5dICh3YXJuX3Ns
-b3dwYXRoX251bGwpIGZyb20gWzxjMDJlZWYzOD5dCj4gKGNsa191bnByZXBhcmUrMHgyNC8weDJj
-KQo+IFsgICAgMS44NDU2MTJdIFs8YzAyZWVmMzg+XSAoY2xrX3VucHJlcGFyZSkgZnJvbSBbPGMw
-MmY3YTc4Pl0KPiAoc2Nwc3lzX3Bvd2VyX29mZisweGUwLzB4MTg4KQo+IFsgICAgMS44NDU2MjNd
-IFs8YzAyZjdhNzg+XSAoc2Nwc3lzX3Bvd2VyX29mZikgZnJvbSBbPGMwMzJhZmIwPl0KPiAoZ2Vu
-cGRfcG93ZXJfb2ZmKzB4MWQ0LzB4MjM4KQo+IFsgICAgMS44NDU2MzNdIFs8YzAzMmFmYjA+XSAo
-Z2VucGRfcG93ZXJfb2ZmKSBmcm9tIFs8YzAzMmIwNDA+XQo+IChnZW5wZF9wb3dlcl9vZmZfd29y
-a19mbisweDJjLzB4NDApCj4gWyAgICAxLjg0NTY0M10gWzxjMDMyYjA0MD5dIChnZW5wZF9wb3dl
-cl9vZmZfd29ya19mbikgZnJvbQo+IFs8YzAxMjk4ZDg+XSAocHJvY2Vzc19vbmVfd29yaysweDFj
-MC8weDMxMCkKPiBbICAgIDEuODQ1NjUzXSBbPGMwMTI5OGQ4Pl0gKHByb2Nlc3Nfb25lX3dvcmsp
-IGZyb20gWzxjMDEyYTc5Yz5dCj4gKHdvcmtlcl90aHJlYWQrMHgyYTAvMHg0MDApCj4gWyAgICAx
-Ljg0NTY2NF0gWzxjMDEyYTc5Yz5dICh3b3JrZXJfdGhyZWFkKSBmcm9tIFs8YzAxMmVhYjQ+XQo+
-IChrdGhyZWFkKzB4MTE0LzB4MTJjKQo+IFsgICAgMS44NDU2NzVdIFs8YzAxMmVhYjQ+XSAoa3Ro
-cmVhZCkgZnJvbSBbPGMwMTA3MGE4Pl0KPiAocmV0X2Zyb21fZm9yaysweDE0LzB4MmMpCj4gWyAg
-ICAxLjg0NTY3OV0gLS0tWyBlbmQgdHJhY2UgNWVjZmYzZmI2NWY2MTBiYyBdLS0tCj4KPiBCYXNl
-ZCBvbiBzb21lIHNlYXJjaGluZywgdGhlc2UgZXJyb3JzIHNlZW1zIHRvIGJlIHJlbGF0ZWQgdG8g
-bWlzc2luZwo+IFBJTkNUUkwuIEhvd2V2ZXIsIE1UMjcwMSBpcyBlbmFibGVkLgo+Cj4gRG9lcyBh
-bnlvbmUgaGF2ZSBhbnkgKG1vcmUgOikpIHRpcHMgb24gd2hhdCBjb3VsZCBiZSB3cm9uZyBvciB3
-aGVyZSB0byBsb29rPwo+Cj4gQlIsCj4gS3Jpc3RpYW4KPgo+IF9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0
-Cj4gTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5n
-IGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Sat, Feb 10, 2018 at 10:19:11AM +0100, Marcus Folkesson wrote:
+> watchdog_init_timeout() will allways pick timeout_param since it
+> defaults to a valid timeout.
+> 
+> Following best practice described in
+> Documentation/watchdog/watchdog-kernel-api.txt to make use of
+> the parameter logic.
+> 
+> Signed-off-by: Marcus Folkesson <marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+> 
+> v2:
+> 	- Set .timeout in coh901327_wdt structure declaration.
+> 	- Set .min_timeout to 1 instead of 0. I could not find a datasheet
+> 	  for coh901327, so I'm not sure if 0 is valid. However, 0 seems
+> 		  wrong to me and most driver has 1 as min value. If it should
+> 		  be 0, please let me know and I have to set another initial
+> 		  value for margin.
+
+Makes sense to me.
+
+> 
+>  drivers/watchdog/coh901327_wdt.c | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/watchdog/coh901327_wdt.c b/drivers/watchdog/coh901327_wdt.c
+> index 4410337f4f7f..5d8eb9a30879 100644
+> --- a/drivers/watchdog/coh901327_wdt.c
+> +++ b/drivers/watchdog/coh901327_wdt.c
+> @@ -67,7 +67,9 @@
+>  #define U300_WDOG_IFR_WILL_BARK_IRQ_FORCE_ENABLE			0x0001U
+>  
+>  /* Default timeout in seconds = 1 minute */
+> -static unsigned int margin = 60;
+> +#define U300_WDOG_DEFAULT_TIMEOUT					60
+> +
+> +static unsigned int margin;
+
+I just realized that 'margin' instead of the actual timeout is used
+at the end of the probe function to display the selected timeout.
+This will have to change as well (and I'll have to go back to the
+other patches to make sure that this doesn't happen there as well).
+
+Guenter
+
+>  static int irq;
+>  static void __iomem *virtbase;
+>  static struct device *parent;
+> @@ -235,8 +237,9 @@ static struct watchdog_device coh901327_wdt = {
+>  	 * timeout register is max
+>  	 * 0x7FFF = 327670ms ~= 327s.
+>  	 */
+> -	.min_timeout = 0,
+> +	.min_timeout = 1,
+>  	.max_timeout = 327,
+> +	.timeout = U300_WDOG_DEFAULT_TIMEOUT,
+>  };
+>  
+>  static int __exit coh901327_remove(struct platform_device *pdev)
+> @@ -315,9 +318,7 @@ static int __init coh901327_probe(struct platform_device *pdev)
+>  		goto out_no_irq;
+>  	}
+>  
+> -	ret = watchdog_init_timeout(&coh901327_wdt, margin, dev);
+> -	if (ret < 0)
+> -		coh901327_wdt.timeout = 60;
+> +	watchdog_init_timeout(&coh901327_wdt, margin, dev);
+>  
+>  	coh901327_wdt.parent = dev;
+>  	ret = watchdog_register_device(&coh901327_wdt);
+--
+To unsubscribe from this list: send the line "unsubscribe linux-watchdog" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
