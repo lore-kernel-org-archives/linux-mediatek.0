@@ -1,127 +1,66 @@
-From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-Subject: Re: Questions about bringing up MT7623 board
-Date: Sun, 11 Feb 2018 18:56:20 +0100
-Message-ID: <ba2e3623-dd21-9802-9ae6-12cd8baaac1e@phrozen.org>
-References: <CAKfDRXhhrndoKMidZYsw=E8BmS7AFsTJHbS4dcYbEoADhjD44Q@mail.gmail.com>
- <CAKfDRXg0jeHP9xZRGDNm5tfW1afZd-TPfwbwUzEPiWsy_bfuUQ@mail.gmail.com>
- <fc2bf32a-eb81-6cd1-9085-b8786ddf0f9c@phrozen.org>
- <CAKfDRXjpG4CNeHfKC1Kg=6mrqUTZ8A7bD1aivLkSQ2L0eK755Q@mail.gmail.com>
- <6ae4103b-45bf-c427-d0d9-87f6f4eb83b5@phrozen.org>
- <CAKfDRXiJCMpA+qj4HmoSg0F_Yt4LnjQ=Dvy_tkxa=Dnh_pN13g@mail.gmail.com>
- <12343512-196f-c89f-e7dc-2e35cad49fc8@phrozen.org>
- <CAKfDRXg66Un3c7U=WTSUYoduDkAD+jsL-tzxnYUSLHKrmFKiOg@mail.gmail.com>
- <CAKfDRXiQb3LMSdjfE=CkfJE5bj9H+GAVD2Kj4syNfQD-eUPmWg@mail.gmail.com>
- <c02d6132-4f95-d781-db5d-4cdb947a2e53@phrozen.org>
- <CAKfDRXjVSsYke-d2Bww+SrqRepfgVXzHBbeyfahOhc9Tr5Zmbw@mail.gmail.com>
- <6fce7e74-04ad-c00c-150b-b87ef4aef885@phrozen.org>
- <CAKfDRXiirPhTbaUTcxseS7UuAiFDR_oY-QdvwvYc6Ua2vwuLSw@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAKfDRXiirPhTbaUTcxseS7UuAiFDR_oY-QdvwvYc6Ua2vwuLSw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Marcus Folkesson <marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v3 1/7] watchdog: sama5d4: make use of timeout-secs provided in devicetree
+Date: Sun, 11 Feb 2018 21:08:41 +0100
+Message-ID: <20180211200847.25000-1-marcus.folkesson@gmail.com>
+Return-path: <linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Wim Van Sebroeck <wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Barry Song <baohua-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Vladimir Zapolskiy <vz-ChpfBGZJDbMAvxtiuMwx3w@public.gmane.org>, Sylvain Lemieux <slemieux.tyco-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Nicolas Ferre <nicolas.ferre-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Marcus Folkesson <marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-CgpPbiAxMS8wMi8xOCAxODo1NCwgS3Jpc3RpYW4gRXZlbnNlbiB3cm90ZToKPiBIaSwKPgo+Cj4g
-T24gU3VuLCAxMSBGZWIgMjAxOCBhdCAxODo0NSwgSm9obiBDcmlzcGluIDxqb2huQHBocm96ZW4u
-b3JnIAo+IDxtYWlsdG86am9obkBwaHJvemVuLm9yZz4+IHdyb3RlOgo+Cj4KPgo+ICAgICBPbiAx
-MS8wMi8xOCAxNzowOSwgS3Jpc3RpYW4gRXZlbnNlbiB3cm90ZToKPiAgICAgPiBIaSwKPiAgICAg
-Pgo+ICAgICA+IE9uIFN1biwgMTEgRmViIDIwMTggYXQgMTU6NDYsIEpvaG4gQ3Jpc3BpbiA8am9o
-bkBwaHJvemVuLm9yZwo+ICAgICA8bWFpbHRvOmpvaG5AcGhyb3plbi5vcmc+Cj4gICAgID4gPG1h
-aWx0bzpqb2huQHBocm96ZW4ub3JnIDxtYWlsdG86am9obkBwaHJvemVuLm9yZz4+PiB3cm90ZToK
-PiAgICAgPgo+ICAgICA+Cj4gICAgID4KPiAgICAgPsKgIMKgIMKgT24gMTEvMDIvMTggMTU6MDEs
-IEtyaXN0aWFuIEV2ZW5zZW4gd3JvdGU6Cj4gICAgID7CoCDCoCDCoD4gSGksCj4gICAgID7CoCDC
-oCDCoD4KPiAgICAgPsKgIMKgIMKgPiBJdCB0dXJucyBvdXQgdGhhdCBlbmFibGluZyBlYXJseSBw
-cmludGsgaW4gdGhlIGtlcm5lbAo+ICAgICBjb25maWcgZGlkIHRoZQo+ICAgICA+wqAgwqAgwqA+
-IHRyaWNrLCB0aGFuayB5b3UgdmVyeSBtdWNoIGZvciBwb2ludGluZyBtZSB0byB0aGlzIGVycm9y
-Lgo+ICAgICBJIGFsc28KPiAgICAgPsKgIMKgIMKgPiBjaGFuZ2VkIG15IGRlZmNvbmZpZyBhIGJp
-dCwgSSBtZXJnZWQgdGhlIHR3byBPcGVuV1JUIDQuOQo+ICAgICBjb25maWdzCj4gICAgID7CoCDC
-oCDCoD4gKGdlbmVyaWMgYW5kIG1lZGlhdGVrKSwgY3JlYXRlZCBhIG5ldyBkZWZjb25maWcgYW5k
-IHVzZWQKPiAgICAgdGhhdCBhcyBhCj4gICAgID7CoCDCoCDCoD4gc3RhcnRpbmcgcG9pbnQgKG1h
-a2UgLi4uX2RlZmNvbmZpZykuIE5vdyBJIGNhbiBmaW5hbGx5IHNlZQo+ICAgICB3aGF0IGlzCj4g
-ICAgID7CoCDCoCDCoD4gZ29pbmcgb24gYW5kIEkgc2VlIHRoYXQgdGhlIGJvb3QgcHJvZ3Jlc3Nl
-cyBxdWl0ZSBmYXIuIE15Cj4gICAgIGJvb3Qgbm93Cj4gICAgID7CoCDCoCDCoD4gZ2V0cyB0byB0
-aGUgcG9pbnQgd2hlcmUgaXQgbG9va3MgZm9yIHRoZSByb290IGZpbGVzeXN0ZW0sCj4gICAgIGJ1
-dCBoZXJlIEkKPiAgICAgPsKgIMKgIMKgPiBoYXZlIGhpdCBhbm90aGVyIHByb2JsZW0uIFRoZSBr
-ZXJuZWwgb25seSBwcm9kdWNlcyB0aGUKPiAgICAgZm9sbG93aW5nCj4gICAgID7CoCDCoCDCoD4g
-ZXJyb3I6Cj4gICAgID7CoCDCoCDCoD4KPiAgICAgPsKgIMKgIMKgPiBbwqAgwqAgMi4wMzczNTRd
-IG1tYzA6IG5ldyBoaWdoIHNwZWVkIE1NQyBjYXJkIGF0IGFkZHJlc3MgMDAwMQo+ICAgICA+wqAg
-wqAgwqA+IFvCoCDCoCAyLjA0NTI1Ml0gbW1jYmxrMDogbW1jMDowMDAxIDAwOEc3MCA3LjI4IEdp
-Qgo+ICAgICA+wqAgwqAgwqA+IFvCoCDCoCAyLjA1MzUzM10gbW1jYmxrMGJvb3QwOiBtbWMwOjAw
-MDEgMDA4RzcwIHBhcnRpdGlvbiAxCj4gICAgIDQuMDAgTWlCCj4gICAgID7CoCDCoCDCoD4gW8Kg
-IMKgIDIuMDUzNzIzXSBtbWNibGswYm9vdDE6IG1tYzA6MDAwMSAwMDhHNzAgcGFydGl0aW9uIDIK
-PiAgICAgNC4wMCBNaUIKPiAgICAgPsKgIMKgIMKgPiBbwqAgwqAgMi4wNTM5MTBdIG1tY2JsazBy
-cG1iOiBtbWMwOjAwMDEgMDA4RzcwIHBhcnRpdGlvbiAzCj4gICAgIDQuMDAgTWlCCj4gICAgID7C
-oCDCoCDCoD4gW8KgIMKgIDIuMDU1NDU2XcKgIG1tY2JsazA6IHAyIHAzCj4gICAgID7CoCDCoCDC
-oD4gW8KgIMKgIDIuMDU2OTg2XSB4aGNpLW10ayAxYTFjMDAwMC51c2I6IDFhMWMwMDAwLnVzYiBz
-dXBwbHkKPiAgICAgdmJ1cyBub3QKPiAgICAgPsKgIMKgIMKgPiBmb3VuZCwgdXNpbmcgZHVtbXkg
-cmVndWxhdG9yCj4gICAgID7CoCDCoCDCoD4gW8KgIMKgIDIuMTUzODk0XSB2cGE6IGRpc2FibGlu
-Zwo+ICAgICA+wqAgwqAgwqA+IFvCoCDCoCAyLjE1NjYwOF0gdm1jOiBkaXNhYmxpbmcKPiAgICAg
-PsKgIMKgIMKgPiBbwqAgwqAgMi4xNTkyOTZdIHZtY2g6IGRpc2FibGluZwo+ICAgICA+wqAgwqAg
-wqA+IFvCoCDCoCAyLjE2MjEwM10gdmdwMTogZGlzYWJsaW5nCj4gICAgID7CoCDCoCDCoD4gW8Kg
-IMKgIDIuMTY0ODk3XSB2Y2FtYWY6IGRpc2FibGluZwo+ICAgICA+wqAgwqAgwqA+IFvCoCDCoCAy
-LjE2ODI0MV0gVkZTOiBDYW5ub3Qgb3BlbiByb290IGRldmljZSAiKG51bGwpIiBvcgo+ICAgICA+
-wqAgwqAgwqA+IHVua25vd24tYmxvY2soMCwwKTogZXJyb3IgLTYKPiAgICAgPsKgIMKgIMKgPiBb
-wqAgwqAgMi4xNzU3MTJdIFBsZWFzZSBhcHBlbmQgYSBjb3JyZWN0ICJyb290PSIgYm9vdAo+ICAg
-ICBvcHRpb247IGhlcmUgYXJlCj4gICAgID7CoCDCoCDCoD4gdGhlIGF2YWlsYWJsZSBwYXJ0aXRp
-b25zOgo+ICAgICA+wqAgwqAgwqA+IFvCoCDCoCAyLjE4NDAzMV0gYjMwMMKgIMKgIMKgIMKgIMKg
-NzYzNDk0NCBtbWNibGswCj4gICAgID7CoCDCoCDCoD4gW8KgIMKgIDIuMTg0MDM2XcKgIGRyaXZl
-cjogbW1jYmxrCj4gICAgID7CoCDCoCDCoD4gW8KgIMKgIDIuMTkwNzc1XcKgIMKgYjMwMsKgIMKg
-IMKgIMKgIMKgMTA0ODU3NiBtbWNibGswcDIgMDAwMDAwMDAtMDIKPiAgICAgPsKgIMKgIMKgPiBb
-wqAgwqAgMi4xOTA3NzldCj4gICAgID7CoCDCoCDCoD4gW8KgIMKgIDIuMTk3NTYzXcKgIMKgYjMw
-M8KgIMKgIMKgIMKgIMKgMjA5NzE1MiBtbWNibGswcDMgMDAwMDAwMDAtMDMKPiAgICAgPsKgIMKg
-IMKgPiBbwqAgwqAgMi4xOTc1NjZdCj4gICAgID7CoCDCoCDCoD4gW8KgIMKgIDIuMjA0MzMyXSBi
-MzE4wqAgwqAgwqAgwqAgwqAgwqAgNDA5NiBtbWNibGswcnBtYgo+ICAgICA+wqAgwqAgwqA+IFvC
-oCDCoCAyLjIwNDMzNV3CoCAoZHJpdmVyPykKPiAgICAgPsKgIMKgIMKgPiBbwqAgwqAgMi4yMTA5
-ODhdIGIzMTDCoCDCoCDCoCDCoCDCoCDCoCA0MDk2IG1tY2JsazBib290MQo+ICAgICA+wqAgwqAg
-wqA+IFvCoCDCoCAyLjIxMDk5Ml3CoCAoZHJpdmVyPykKPiAgICAgPsKgIMKgIMKgPiBbwqAgwqAg
-Mi4yMTc3NDddIGIzMDjCoCDCoCDCoCDCoCDCoCDCoCA0MDk2IG1tY2JsazBib290MAo+ICAgICA+
-wqAgwqAgwqA+IFvCoCDCoCAyLjIxNzc1MF3CoCAoZHJpdmVyPykKPiAgICAgPsKgIMKgIMKgPiBb
-wqAgwqAgMi4yMjQ1MDRdIEtlcm5lbCBwYW5pYyAtIG5vdCBzeW5jaW5nOiBWRlM6IFVuYWJsZSB0
-bwo+ICAgICBtb3VudCByb290Cj4gICAgID7CoCDCoCDCoD4gZnMgb24gdW5rbm93bi1ibG9jaygw
-LDApCj4gICAgID7CoCDCoCDCoD4KPiAgICAgPsKgIMKgIMKgPiBNeSByb290ZnMsIGV0YywgaXMg
-c3RvcmVkIG9uIG1tY2JsazAgYW5kIHRoZSBwYXJ0aXRpb25pbmcgaXMKPiAgICAgPsKgIMKgIMKg
-c3BlY2lmaWVkCj4gICAgID7CoCDCoCDCoD4gaW4gdGhlIGJvb3QgYXJndW1lbnRzICh3aGljaCBh
-cmU6Cj4gICAgID7CoCDCoCDCoD4gYmxvY2sybXRkLmJsb2NrMm10ZD0vZGV2L21tY2JsazAsNjU1
-MzYsZU1NQyw1Cj4gICAgID7CoCDCoCDCoD4KPiAgICAgPgo+ICAgICDCoG10ZHBhcnRzPWVNTUM6
-MjU2ayhtYnIpcm8sNTEyayh1Ym9vdClybywyNTZrKGNvbmZpZylybywyNTZrKGZhY3Rvcnkpcm8s
-MzJNKGtlcm5lbCksMzJNKHJlY292ZXJ5KSwxMDI0TShyb290ZnMpLDIwNDhNKHVzcmRhdGEpLC0o
-Ym10cG9vbCkKPiAgICAgPsKgIMKgIMKgPsKgIMKgcm9vdGZzdHlwZT1zcXVhc2hmcyxqZmZzMiku
-IEkgaGF2ZSBkb3VibGVjaGVrZWQsIGFuZCBJIGNhbid0Cj4gICAgID7CoCDCoCDCoGZpbmQgYW55
-Cj4gICAgID7CoCDCoCDCoD4gbWlzc2luZyBNVEQtb3B0aW9ucyBjb21wYXJlZCB0byB0aGUgNC45
-IGNvbmZpZy4gQ291bGQgaXQKPiAgICAgYmUgdGhhdCBuZXcKPiAgICAgPsKgIMKgIMKgPiBvcHRp
-b25zIGhhdmUgYmVlbiBhZGRlZCBhbmQgaGF2ZSB0byBiZSBzcGVjaWZpZWQ/IEZvciBleGFtcGxl
-LAo+ICAgICA+wqAgwqAgwqA+IE1URF9CTE9DSzJNVEQgYW5kIE1URF9DTURMSU5FX1BBUlRTIGlz
-IHNldC4KPiAgICAgPgo+ICAgICA+wqAgwqAgwqBibG9jazJtdGQgaXMgYSBvd3J0IHNwZWNpZmlj
-IGRyaXZlciwgaXQgd29udCB3b3JrIG9uIG9uIHZhbmlsbGEuCj4gICAgID4KPiAgICAgPgo+ICAg
-ICA+IFRoYW5rcyBmb3IgbGV0dGluZyBtZSBrbm93LiBJIHdhcyBub3QgYXdhcmUgYW5kIGp1c3Qg
-YXNzdW1lZCB0aGUKPiAgICAgPiBibG9jazJtdGQgd291bGQgd29yayBhcyBpbiBvd3J0LiBQZXJo
-YXBzIGEgYmV0dGVyIHN0YXJ0aW5nIHBvaW50IGZvcgo+ICAgICA+IG15IHdvcmsgd291bGQgYmUg
-dG8gdHJ5IHRvIGhhY2sgdG9nZXRoZXIgNC4xNCBzdXBwb3J0IGZvcgo+ICAgICBtZWRpYXRlayBp
-bgo+ICAgICA+IE9wZW5XUlQuIEluc3RhbGxpbmcgYSDCq25vcm1hbMK7IHJvb3RmcyBpcyBhIGJp
-dCBvZiBhIHBhaW4gb24gdGhpcwo+ICAgICA+IGJvYXJkLiBBbm90aGVyIG9wdGlvbiB3b3VsZCBi
-ZSB0byBtb3ZlIHRoZSBtdGQtcGF0Y2hlcyBJIGd1ZXNzLiBXaWxsCj4gICAgID4gdHJ5IGJvdGgg
-YW5kIHNlZSBob3cgaXQgZ29lcyA6KQo+ICAgICA+Cj4gICAgID4gQlIsCj4gICAgID4gS3Jpc3Rp
-YW4KPiAgICAgPgo+Cj4gICAgIEkgaGF2ZSA0LjE0IHN1cHBvcnQgaW4gbXkgc3RhZ2luZyB0cmVl
-IGFscmVhZCwgaSdsbCBwc2ggaXQgdG8gb3dydCB0aGUKPiAgICAgbmV4dCBjb3VwbGUgb2YgZGF5
-cwo+Cj4gICAgIMKgwqDCoMKgIEpvaG4KPgo+Cj4gR3JlYXQgbmV3cywgdGhhbmtzIGZvciB5b3Vy
-IGVmZm9ydCEgV291bGQgaXQgYmUgcG9zc2libGUgZm9yIHlvdSB0byAKPiBwdXNoIGl0IHRvIHlv
-dXIgc3RhZ2luZyB0cmVlIG9uIG9wZW53cnQub3JnIDxodHRwOi8vb3BlbndydC5vcmc+LCBzbyAK
-PiB0aGF0IEkgY2FuIHB1bGwgYW5kIHN0YXJ0IHRlc3Rpbmcgd2l0aCBteSBib2FyZD8KPgo+IEJS
-LAo+IEtyaXN0aWFuCj4KPgoKCndpbGwgZG8gaW4gdGhlIG1vcm5pbmcgLi4uLgogwqDCoMKgIEpv
-aG4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlh
-dGVrCg==
+watchdog_init_timeout() will allways pick timeout_param since it
+defaults to a valid timeout.
+
+Following best practice described in
+Documentation/watchdog/watchdog-kernel-api.txt to make use of
+the parameter logic.
+
+Signed-off-by: Marcus Folkesson <marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+
+Notes:
+    v3:
+    	- Use wdd->timeout instead of wdt_timeout when print out
+    	  timout in probe function.
+
+ drivers/watchdog/sama5d4_wdt.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/watchdog/sama5d4_wdt.c b/drivers/watchdog/sama5d4_wdt.c
+index 0ae947c3d7bc..255169916dbb 100644
+--- a/drivers/watchdog/sama5d4_wdt.c
++++ b/drivers/watchdog/sama5d4_wdt.c
+@@ -33,7 +33,7 @@ struct sama5d4_wdt {
+ 	unsigned long		last_ping;
+ };
+ 
+-static int wdt_timeout = WDT_DEFAULT_TIMEOUT;
++static int wdt_timeout;
+ static bool nowayout = WATCHDOG_NOWAYOUT;
+ 
+ module_param(wdt_timeout, int, 0);
+@@ -212,7 +212,7 @@ static int sama5d4_wdt_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	wdd = &wdt->wdd;
+-	wdd->timeout = wdt_timeout;
++	wdd->timeout = WDT_DEFAULT_TIMEOUT;
+ 	wdd->info = &sama5d4_wdt_info;
+ 	wdd->ops = &sama5d4_wdt_ops;
+ 	wdd->min_timeout = MIN_WDT_TIMEOUT;
+@@ -273,7 +273,7 @@ static int sama5d4_wdt_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, wdt);
+ 
+ 	dev_info(&pdev->dev, "initialized (timeout = %d sec, nowayout = %d)\n",
+-		 wdt_timeout, nowayout);
++		 wdd->timeout, nowayout);
+ 
+ 	return 0;
+ }
+-- 
+2.15.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-watchdog" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
