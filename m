@@ -1,63 +1,103 @@
-From: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Subject: Re: [1/7] watchdog: sama5d4: make use of timeout-secs provided in
- devicetree
-Date: Sun, 11 Feb 2018 09:38:37 -0800
-Message-ID: <20180211173837.GA18566@roeck-us.net>
-References: <20180209192724.1227-2-marcus.folkesson@gmail.com>
+From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Subject: Re: Questions about bringing up MT7623 board
+Date: Sun, 11 Feb 2018 18:45:49 +0100
+Message-ID: <6fce7e74-04ad-c00c-150b-b87ef4aef885@phrozen.org>
+References: <CAKfDRXhhrndoKMidZYsw=E8BmS7AFsTJHbS4dcYbEoADhjD44Q@mail.gmail.com>
+ <CAKfDRXg0jeHP9xZRGDNm5tfW1afZd-TPfwbwUzEPiWsy_bfuUQ@mail.gmail.com>
+ <fc2bf32a-eb81-6cd1-9085-b8786ddf0f9c@phrozen.org>
+ <CAKfDRXjpG4CNeHfKC1Kg=6mrqUTZ8A7bD1aivLkSQ2L0eK755Q@mail.gmail.com>
+ <6ae4103b-45bf-c427-d0d9-87f6f4eb83b5@phrozen.org>
+ <CAKfDRXiJCMpA+qj4HmoSg0F_Yt4LnjQ=Dvy_tkxa=Dnh_pN13g@mail.gmail.com>
+ <12343512-196f-c89f-e7dc-2e35cad49fc8@phrozen.org>
+ <CAKfDRXg66Un3c7U=WTSUYoduDkAD+jsL-tzxnYUSLHKrmFKiOg@mail.gmail.com>
+ <CAKfDRXiQb3LMSdjfE=CkfJE5bj9H+GAVD2Kj4syNfQD-eUPmWg@mail.gmail.com>
+ <c02d6132-4f95-d781-db5d-4cdb947a2e53@phrozen.org>
+ <CAKfDRXjVSsYke-d2Bww+SrqRepfgVXzHBbeyfahOhc9Tr5Zmbw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20180209192724.1227-2-marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Marcus Folkesson <marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Wim Van Sebroeck <wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Barry Song <baohua-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Vladimir Zapolskiy <vz-ChpfBGZJDbMAvxtiuMwx3w@public.gmane.org>, Sylvain Lemieux <slemieux.tyco-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Nicolas Ferre <nicolas.ferre-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAKfDRXjVSsYke-d2Bww+SrqRepfgVXzHBbeyfahOhc9Tr5Zmbw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Feb 09, 2018 at 08:27:18PM +0100, Marcus Folkesson wrote:
-> watchdog_init_timeout() will allways pick timeout_param since it
-> defaults to a valid timeout.
-> 
-> Following best practice described in
-> Documentation/watchdog/watchdog-kernel-api.txt to make use of
-> the parameter logic.
-> 
-> Signed-off-by: Marcus Folkesson <marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Reviewed-by: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-
-Unfortunately I'll have to withdraw the Reviewed-by:. wdt_timeout is used at
-the end of the probe function to display the selected timeout. This will have
-to be changed to display the actual timeout.
-
-Guenter
-
-> ---
->  drivers/watchdog/sama5d4_wdt.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/watchdog/sama5d4_wdt.c b/drivers/watchdog/sama5d4_wdt.c
-> index 0ae947c3d7bc..e6c679383734 100644
-> --- a/drivers/watchdog/sama5d4_wdt.c
-> +++ b/drivers/watchdog/sama5d4_wdt.c
-> @@ -33,7 +33,7 @@ struct sama5d4_wdt {
->  	unsigned long		last_ping;
->  };
->  
-> -static int wdt_timeout = WDT_DEFAULT_TIMEOUT;
-> +static int wdt_timeout;
->  static bool nowayout = WATCHDOG_NOWAYOUT;
->  
->  module_param(wdt_timeout, int, 0);
-> @@ -212,7 +212,7 @@ static int sama5d4_wdt_probe(struct platform_device *pdev)
->  		return -ENOMEM;
->  
->  	wdd = &wdt->wdd;
-> -	wdd->timeout = wdt_timeout;
-> +	wdd->timeout = WDT_DEFAULT_TIMEOUT;
->  	wdd->info = &sama5d4_wdt_info;
->  	wdd->ops = &sama5d4_wdt_ops;
->  	wdd->min_timeout = MIN_WDT_TIMEOUT;
---
-To unsubscribe from this list: send the line "unsubscribe linux-watchdog" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+CgpPbiAxMS8wMi8xOCAxNzowOSwgS3Jpc3RpYW4gRXZlbnNlbiB3cm90ZToKPiBIaSwKPgo+IE9u
+IFN1biwgMTEgRmViIDIwMTggYXQgMTU6NDYsIEpvaG4gQ3Jpc3BpbiA8am9obkBwaHJvemVuLm9y
+ZyAKPiA8bWFpbHRvOmpvaG5AcGhyb3plbi5vcmc+PiB3cm90ZToKPgo+Cj4KPiAgICAgT24gMTEv
+MDIvMTggMTU6MDEsIEtyaXN0aWFuIEV2ZW5zZW4gd3JvdGU6Cj4gICAgID4gSGksCj4gICAgID4K
+PiAgICAgPiBJdCB0dXJucyBvdXQgdGhhdCBlbmFibGluZyBlYXJseSBwcmludGsgaW4gdGhlIGtl
+cm5lbCBjb25maWcgZGlkIHRoZQo+ICAgICA+IHRyaWNrLCB0aGFuayB5b3UgdmVyeSBtdWNoIGZv
+ciBwb2ludGluZyBtZSB0byB0aGlzIGVycm9yLiBJIGFsc28KPiAgICAgPiBjaGFuZ2VkIG15IGRl
+ZmNvbmZpZyBhIGJpdCwgSSBtZXJnZWQgdGhlIHR3byBPcGVuV1JUIDQuOSBjb25maWdzCj4gICAg
+ID4gKGdlbmVyaWMgYW5kIG1lZGlhdGVrKSwgY3JlYXRlZCBhIG5ldyBkZWZjb25maWcgYW5kIHVz
+ZWQgdGhhdCBhcyBhCj4gICAgID4gc3RhcnRpbmcgcG9pbnQgKG1ha2UgLi4uX2RlZmNvbmZpZyku
+IE5vdyBJIGNhbiBmaW5hbGx5IHNlZSB3aGF0IGlzCj4gICAgID4gZ29pbmcgb24gYW5kIEkgc2Vl
+IHRoYXQgdGhlIGJvb3QgcHJvZ3Jlc3NlcyBxdWl0ZSBmYXIuIE15IGJvb3Qgbm93Cj4gICAgID4g
+Z2V0cyB0byB0aGUgcG9pbnQgd2hlcmUgaXQgbG9va3MgZm9yIHRoZSByb290IGZpbGVzeXN0ZW0s
+IGJ1dCBoZXJlIEkKPiAgICAgPiBoYXZlIGhpdCBhbm90aGVyIHByb2JsZW0uIFRoZSBrZXJuZWwg
+b25seSBwcm9kdWNlcyB0aGUgZm9sbG93aW5nCj4gICAgID4gZXJyb3I6Cj4gICAgID4KPiAgICAg
+PiBbwqAgwqAgMi4wMzczNTRdIG1tYzA6IG5ldyBoaWdoIHNwZWVkIE1NQyBjYXJkIGF0IGFkZHJl
+c3MgMDAwMQo+ICAgICA+IFvCoCDCoCAyLjA0NTI1Ml0gbW1jYmxrMDogbW1jMDowMDAxIDAwOEc3
+MCA3LjI4IEdpQgo+ICAgICA+IFvCoCDCoCAyLjA1MzUzM10gbW1jYmxrMGJvb3QwOiBtbWMwOjAw
+MDEgMDA4RzcwIHBhcnRpdGlvbiAxIDQuMDAgTWlCCj4gICAgID4gW8KgIMKgIDIuMDUzNzIzXSBt
+bWNibGswYm9vdDE6IG1tYzA6MDAwMSAwMDhHNzAgcGFydGl0aW9uIDIgNC4wMCBNaUIKPiAgICAg
+PiBbwqAgwqAgMi4wNTM5MTBdIG1tY2JsazBycG1iOiBtbWMwOjAwMDEgMDA4RzcwIHBhcnRpdGlv
+biAzIDQuMDAgTWlCCj4gICAgID4gW8KgIMKgIDIuMDU1NDU2XcKgIG1tY2JsazA6IHAyIHAzCj4g
+ICAgID4gW8KgIMKgIDIuMDU2OTg2XSB4aGNpLW10ayAxYTFjMDAwMC51c2I6IDFhMWMwMDAwLnVz
+YiBzdXBwbHkgdmJ1cyBub3QKPiAgICAgPiBmb3VuZCwgdXNpbmcgZHVtbXkgcmVndWxhdG9yCj4g
+ICAgID4gW8KgIMKgIDIuMTUzODk0XSB2cGE6IGRpc2FibGluZwo+ICAgICA+IFvCoCDCoCAyLjE1
+NjYwOF0gdm1jOiBkaXNhYmxpbmcKPiAgICAgPiBbwqAgwqAgMi4xNTkyOTZdIHZtY2g6IGRpc2Fi
+bGluZwo+ICAgICA+IFvCoCDCoCAyLjE2MjEwM10gdmdwMTogZGlzYWJsaW5nCj4gICAgID4gW8Kg
+IMKgIDIuMTY0ODk3XSB2Y2FtYWY6IGRpc2FibGluZwo+ICAgICA+IFvCoCDCoCAyLjE2ODI0MV0g
+VkZTOiBDYW5ub3Qgb3BlbiByb290IGRldmljZSAiKG51bGwpIiBvcgo+ICAgICA+IHVua25vd24t
+YmxvY2soMCwwKTogZXJyb3IgLTYKPiAgICAgPiBbwqAgwqAgMi4xNzU3MTJdIFBsZWFzZSBhcHBl
+bmQgYSBjb3JyZWN0ICJyb290PSIgYm9vdCBvcHRpb247IGhlcmUgYXJlCj4gICAgID4gdGhlIGF2
+YWlsYWJsZSBwYXJ0aXRpb25zOgo+ICAgICA+IFvCoCDCoCAyLjE4NDAzMV0gYjMwMMKgIMKgIMKg
+IMKgIMKgNzYzNDk0NCBtbWNibGswCj4gICAgID4gW8KgIMKgIDIuMTg0MDM2XcKgIGRyaXZlcjog
+bW1jYmxrCj4gICAgID4gW8KgIMKgIDIuMTkwNzc1XcKgIMKgYjMwMsKgIMKgIMKgIMKgIMKgMTA0
+ODU3NiBtbWNibGswcDIgMDAwMDAwMDAtMDIKPiAgICAgPiBbwqAgwqAgMi4xOTA3NzldCj4gICAg
+ID4gW8KgIMKgIDIuMTk3NTYzXcKgIMKgYjMwM8KgIMKgIMKgIMKgIMKgMjA5NzE1MiBtbWNibGsw
+cDMgMDAwMDAwMDAtMDMKPiAgICAgPiBbwqAgwqAgMi4xOTc1NjZdCj4gICAgID4gW8KgIMKgIDIu
+MjA0MzMyXSBiMzE4wqAgwqAgwqAgwqAgwqAgwqAgNDA5NiBtbWNibGswcnBtYgo+ICAgICA+IFvC
+oCDCoCAyLjIwNDMzNV3CoCAoZHJpdmVyPykKPiAgICAgPiBbwqAgwqAgMi4yMTA5ODhdIGIzMTDC
+oCDCoCDCoCDCoCDCoCDCoCA0MDk2IG1tY2JsazBib290MQo+ICAgICA+IFvCoCDCoCAyLjIxMDk5
+Ml3CoCAoZHJpdmVyPykKPiAgICAgPiBbwqAgwqAgMi4yMTc3NDddIGIzMDjCoCDCoCDCoCDCoCDC
+oCDCoCA0MDk2IG1tY2JsazBib290MAo+ICAgICA+IFvCoCDCoCAyLjIxNzc1MF3CoCAoZHJpdmVy
+PykKPiAgICAgPiBbwqAgwqAgMi4yMjQ1MDRdIEtlcm5lbCBwYW5pYyAtIG5vdCBzeW5jaW5nOiBW
+RlM6IFVuYWJsZSB0byBtb3VudCByb290Cj4gICAgID4gZnMgb24gdW5rbm93bi1ibG9jaygwLDAp
+Cj4gICAgID4KPiAgICAgPiBNeSByb290ZnMsIGV0YywgaXMgc3RvcmVkIG9uIG1tY2JsazAgYW5k
+IHRoZSBwYXJ0aXRpb25pbmcgaXMKPiAgICAgc3BlY2lmaWVkCj4gICAgID4gaW4gdGhlIGJvb3Qg
+YXJndW1lbnRzICh3aGljaCBhcmU6Cj4gICAgID4gYmxvY2sybXRkLmJsb2NrMm10ZD0vZGV2L21t
+Y2JsazAsNjU1MzYsZU1NQyw1Cj4gICAgID4KPiAgICAgbXRkcGFydHM9ZU1NQzoyNTZrKG1icily
+byw1MTJrKHVib290KXJvLDI1NmsoY29uZmlnKXJvLDI1NmsoZmFjdG9yeSlybywzMk0oa2VybmVs
+KSwzMk0ocmVjb3ZlcnkpLDEwMjRNKHJvb3RmcyksMjA0OE0odXNyZGF0YSksLShibXRwb29sKQo+
+ICAgICA+wqAgwqByb290ZnN0eXBlPXNxdWFzaGZzLGpmZnMyKS4gSSBoYXZlIGRvdWJsZWNoZWtl
+ZCwgYW5kIEkgY2FuJ3QKPiAgICAgZmluZCBhbnkKPiAgICAgPiBtaXNzaW5nIE1URC1vcHRpb25z
+IGNvbXBhcmVkIHRvIHRoZSA0LjkgY29uZmlnLiBDb3VsZCBpdCBiZSB0aGF0IG5ldwo+ICAgICA+
+IG9wdGlvbnMgaGF2ZSBiZWVuIGFkZGVkIGFuZCBoYXZlIHRvIGJlIHNwZWNpZmllZD8gRm9yIGV4
+YW1wbGUsCj4gICAgID4gTVREX0JMT0NLMk1URCBhbmQgTVREX0NNRExJTkVfUEFSVFMgaXMgc2V0
+Lgo+Cj4gICAgIGJsb2NrMm10ZCBpcyBhIG93cnQgc3BlY2lmaWMgZHJpdmVyLCBpdCB3b250IHdv
+cmsgb24gb24gdmFuaWxsYS4KPgo+Cj4gVGhhbmtzIGZvciBsZXR0aW5nIG1lIGtub3cuIEkgd2Fz
+IG5vdCBhd2FyZSBhbmQganVzdCBhc3N1bWVkIHRoZSAKPiBibG9jazJtdGQgd291bGQgd29yayBh
+cyBpbiBvd3J0LiBQZXJoYXBzIGEgYmV0dGVyIHN0YXJ0aW5nIHBvaW50IGZvciAKPiBteSB3b3Jr
+IHdvdWxkIGJlIHRvIHRyeSB0byBoYWNrIHRvZ2V0aGVyIDQuMTQgc3VwcG9ydCBmb3IgbWVkaWF0
+ZWsgaW4gCj4gT3BlbldSVC4gSW5zdGFsbGluZyBhIMKrbm9ybWFswrsgcm9vdGZzIGlzIGEgYml0
+IG9mIGEgcGFpbiBvbiB0aGlzIAo+IGJvYXJkLiBBbm90aGVyIG9wdGlvbiB3b3VsZCBiZSB0byBt
+b3ZlIHRoZSBtdGQtcGF0Y2hlcyBJIGd1ZXNzLiBXaWxsIAo+IHRyeSBib3RoIGFuZCBzZWUgaG93
+IGl0IGdvZXMgOikKPgo+IEJSLAo+IEtyaXN0aWFuCj4KCkkgaGF2ZSA0LjE0IHN1cHBvcnQgaW4g
+bXkgc3RhZ2luZyB0cmVlIGFscmVhZCwgaSdsbCBwc2ggaXQgdG8gb3dydCB0aGUgCm5leHQgY291
+cGxlIG9mIGRheXMKCiDCoMKgwqAgSm9obgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
+dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
