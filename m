@@ -1,7 +1,7 @@
-From: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 Subject: Re: Questions about bringing up MT7623 board
-Date: Sun, 11 Feb 2018 15:01:25 +0100
-Message-ID: <CAKfDRXiQb3LMSdjfE=CkfJE5bj9H+GAVD2Kj4syNfQD-eUPmWg@mail.gmail.com>
+Date: Sun, 11 Feb 2018 15:46:32 +0100
+Message-ID: <c02d6132-4f95-d781-db5d-4cdb947a2e53@phrozen.org>
 References: <CAKfDRXhhrndoKMidZYsw=E8BmS7AFsTJHbS4dcYbEoADhjD44Q@mail.gmail.com>
  <CAKfDRXg0jeHP9xZRGDNm5tfW1afZd-TPfwbwUzEPiWsy_bfuUQ@mail.gmail.com>
  <fc2bf32a-eb81-6cd1-9085-b8786ddf0f9c@phrozen.org>
@@ -10,11 +10,13 @@ References: <CAKfDRXhhrndoKMidZYsw=E8BmS7AFsTJHbS4dcYbEoADhjD44Q@mail.gmail.com>
  <CAKfDRXiJCMpA+qj4HmoSg0F_Yt4LnjQ=Dvy_tkxa=Dnh_pN13g@mail.gmail.com>
  <12343512-196f-c89f-e7dc-2e35cad49fc8@phrozen.org>
  <CAKfDRXg66Un3c7U=WTSUYoduDkAD+jsL-tzxnYUSLHKrmFKiOg@mail.gmail.com>
+ <CAKfDRXiQb3LMSdjfE=CkfJE5bj9H+GAVD2Kj4syNfQD-eUPmWg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAKfDRXg66Un3c7U=WTSUYoduDkAD+jsL-tzxnYUSLHKrmFKiOg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <CAKfDRXiQb3LMSdjfE=CkfJE5bj9H+GAVD2Kj4syNfQD-eUPmWg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -24,134 +26,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+To: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-
-It turns out that enabling early printk in the kernel config did the
-trick, thank you very much for pointing me to this error. I also
-changed my defconfig a bit, I merged the two OpenWRT 4.9 configs
-(generic and mediatek), created a new defconfig and used that as a
-starting point (make ..._defconfig). Now I can finally see what is
-going on and I see that the boot progresses quite far. My boot now
-gets to the point where it looks for the root filesystem, but here I
-have hit another problem. The kernel only produces the following
-error:
-
-[    2.037354] mmc0: new high speed MMC card at address 0001
-[    2.045252] mmcblk0: mmc0:0001 008G70 7.28 GiB
-[    2.053533] mmcblk0boot0: mmc0:0001 008G70 partition 1 4.00 MiB
-[    2.053723] mmcblk0boot1: mmc0:0001 008G70 partition 2 4.00 MiB
-[    2.053910] mmcblk0rpmb: mmc0:0001 008G70 partition 3 4.00 MiB
-[    2.055456]  mmcblk0: p2 p3
-[    2.056986] xhci-mtk 1a1c0000.usb: 1a1c0000.usb supply vbus not
-found, using dummy regulator
-[    2.153894] vpa: disabling
-[    2.156608] vmc: disabling
-[    2.159296] vmch: disabling
-[    2.162103] vgp1: disabling
-[    2.164897] vcamaf: disabling
-[    2.168241] VFS: Cannot open root device "(null)" or
-unknown-block(0,0): error -6
-[    2.175712] Please append a correct "root=" boot option; here are
-the available partitions:
-[    2.184031] b300         7634944 mmcblk0
-[    2.184036]  driver: mmcblk
-[    2.190775]   b302         1048576 mmcblk0p2 00000000-02
-[    2.190779]
-[    2.197563]   b303         2097152 mmcblk0p3 00000000-03
-[    2.197566]
-[    2.204332] b318            4096 mmcblk0rpmb
-[    2.204335]  (driver?)
-[    2.210988] b310            4096 mmcblk0boot1
-[    2.210992]  (driver?)
-[    2.217747] b308            4096 mmcblk0boot0
-[    2.217750]  (driver?)
-[    2.224504] Kernel panic - not syncing: VFS: Unable to mount root
-fs on unknown-block(0,0)
-
-My rootfs, etc, is stored on mmcblk0 and the partitioning is specified
-in the boot arguments (which are:
-block2mtd.block2mtd=/dev/mmcblk0,65536,eMMC,5
-mtdparts=eMMC:256k(mbr)ro,512k(uboot)ro,256k(config)ro,256k(factory)ro,32M(kernel),32M(recovery),1024M(rootfs),2048M(usrdata),-(bmtpool)
- rootfstype=squashfs,jffs2). I have doublecheked, and I can't find any
-missing MTD-options compared to the 4.9 config. Could it be that new
-options have been added and have to be specified? For example,
-MTD_BLOCK2MTD and MTD_CMDLINE_PARTS is set.
-
-The log are also contains the following warnings:
-
-[    1.845280] ------------[ cut here ]------------
-[    1.845296] WARNING: CPU: 0 PID: 70 at drivers/clk/clk.c:594
-clk_core_disable_lock+0x18/0x24
-[    1.845299] Modules linked in:
-[    1.845310] CPU: 0 PID: 70 Comm: kworker/0:2 Not tainted
-4.14.18-ft-try-owrt-config #20
-[    1.845313] Hardware name: Mediatek Cortex-A7 (Device Tree)
-[    1.845323] Workqueue: pm genpd_power_off_work_fn
-[    1.845347] [<c010dc80>] (unwind_backtrace) from [<c010a734>]
-(show_stack+0x10/0x14)
-[    1.845361] [<c010a734>] (show_stack) from [<c049a420>]
-(dump_stack+0x70/0x8c)
-[    1.845373] [<c049a420>] (dump_stack) from [<c01158b8>] (__warn+0xd8/0xf8)
-[    1.845384] [<c01158b8>] (__warn) from [<c011597c>]
-(warn_slowpath_null+0x1c/0x24)
-[    1.845393] [<c011597c>] (warn_slowpath_null) from [<c02eed48>]
-(clk_core_disable_lock+0x18/0x24)
-[    1.845404] [<c02eed48>] (clk_core_disable_lock) from [<c02f7a70>]
-(scpsys_power_off+0xd8/0x188)
-[    1.845416] [<c02f7a70>] (scpsys_power_off) from [<c032afb0>]
-(genpd_power_off+0x1d4/0x238)
-[    1.845427] [<c032afb0>] (genpd_power_off) from [<c032b040>]
-(genpd_power_off_work_fn+0x2c/0x40)
-[    1.845437] [<c032b040>] (genpd_power_off_work_fn) from
-[<c01298d8>] (process_one_work+0x1c0/0x310)
-[    1.845448] [<c01298d8>] (process_one_work) from [<c012a79c>]
-(worker_thread+0x2a0/0x400)
-[    1.845460] [<c012a79c>] (worker_thread) from [<c012eab4>]
-(kthread+0x114/0x12c)
-[    1.845471] [<c012eab4>] (kthread) from [<c01070a8>]
-(ret_from_fork+0x14/0x2c)
-[    1.845476] ---[ end trace 5ecff3fb65f610bb ]---
-[    1.845518] ------------[ cut here ]------------
-[    1.845527] WARNING: CPU: 0 PID: 70 at drivers/clk/clk.c:476
-clk_unprepare+0x24/0x2c
-[    1.845529] Modules linked in:
-[    1.845538] CPU: 0 PID: 70 Comm: kworker/0:2 Tainted: G        W
-   4.14.18-ft-try-owrt-config #20
-[    1.845541] Hardware name: Mediatek Cortex-A7 (Device Tree)
-[    1.845547] Workqueue: pm genpd_power_off_work_fn
-[    1.845561] [<c010dc80>] (unwind_backtrace) from [<c010a734>]
-(show_stack+0x10/0x14)
-[    1.845574] [<c010a734>] (show_stack) from [<c049a420>]
-(dump_stack+0x70/0x8c)
-[    1.845584] [<c049a420>] (dump_stack) from [<c01158b8>] (__warn+0xd8/0xf8)
-[    1.845594] [<c01158b8>] (__warn) from [<c011597c>]
-(warn_slowpath_null+0x1c/0x24)
-[    1.845603] [<c011597c>] (warn_slowpath_null) from [<c02eef38>]
-(clk_unprepare+0x24/0x2c)
-[    1.845612] [<c02eef38>] (clk_unprepare) from [<c02f7a78>]
-(scpsys_power_off+0xe0/0x188)
-[    1.845623] [<c02f7a78>] (scpsys_power_off) from [<c032afb0>]
-(genpd_power_off+0x1d4/0x238)
-[    1.845633] [<c032afb0>] (genpd_power_off) from [<c032b040>]
-(genpd_power_off_work_fn+0x2c/0x40)
-[    1.845643] [<c032b040>] (genpd_power_off_work_fn) from
-[<c01298d8>] (process_one_work+0x1c0/0x310)
-[    1.845653] [<c01298d8>] (process_one_work) from [<c012a79c>]
-(worker_thread+0x2a0/0x400)
-[    1.845664] [<c012a79c>] (worker_thread) from [<c012eab4>]
-(kthread+0x114/0x12c)
-[    1.845675] [<c012eab4>] (kthread) from [<c01070a8>]
-(ret_from_fork+0x14/0x2c)
-[    1.845679] ---[ end trace 5ecff3fb65f610bc ]---
-
-Based on some searching, these errors seems to be related to missing
-PINCTRL. However, MT2701 is enabled.
-
-Does anyone have any (more :)) tips on what could be wrong or where to look?
-
-BR,
-Kristian
+CgpPbiAxMS8wMi8xOCAxNTowMSwgS3Jpc3RpYW4gRXZlbnNlbiB3cm90ZToKPiBIaSwKPgo+IEl0
+IHR1cm5zIG91dCB0aGF0IGVuYWJsaW5nIGVhcmx5IHByaW50ayBpbiB0aGUga2VybmVsIGNvbmZp
+ZyBkaWQgdGhlCj4gdHJpY2ssIHRoYW5rIHlvdSB2ZXJ5IG11Y2ggZm9yIHBvaW50aW5nIG1lIHRv
+IHRoaXMgZXJyb3IuIEkgYWxzbwo+IGNoYW5nZWQgbXkgZGVmY29uZmlnIGEgYml0LCBJIG1lcmdl
+ZCB0aGUgdHdvIE9wZW5XUlQgNC45IGNvbmZpZ3MKPiAoZ2VuZXJpYyBhbmQgbWVkaWF0ZWspLCBj
+cmVhdGVkIGEgbmV3IGRlZmNvbmZpZyBhbmQgdXNlZCB0aGF0IGFzIGEKPiBzdGFydGluZyBwb2lu
+dCAobWFrZSAuLi5fZGVmY29uZmlnKS4gTm93IEkgY2FuIGZpbmFsbHkgc2VlIHdoYXQgaXMKPiBn
+b2luZyBvbiBhbmQgSSBzZWUgdGhhdCB0aGUgYm9vdCBwcm9ncmVzc2VzIHF1aXRlIGZhci4gTXkg
+Ym9vdCBub3cKPiBnZXRzIHRvIHRoZSBwb2ludCB3aGVyZSBpdCBsb29rcyBmb3IgdGhlIHJvb3Qg
+ZmlsZXN5c3RlbSwgYnV0IGhlcmUgSQo+IGhhdmUgaGl0IGFub3RoZXIgcHJvYmxlbS4gVGhlIGtl
+cm5lbCBvbmx5IHByb2R1Y2VzIHRoZSBmb2xsb3dpbmcKPiBlcnJvcjoKPgo+IFsgICAgMi4wMzcz
+NTRdIG1tYzA6IG5ldyBoaWdoIHNwZWVkIE1NQyBjYXJkIGF0IGFkZHJlc3MgMDAwMQo+IFsgICAg
+Mi4wNDUyNTJdIG1tY2JsazA6IG1tYzA6MDAwMSAwMDhHNzAgNy4yOCBHaUIKPiBbICAgIDIuMDUz
+NTMzXSBtbWNibGswYm9vdDA6IG1tYzA6MDAwMSAwMDhHNzAgcGFydGl0aW9uIDEgNC4wMCBNaUIK
+PiBbICAgIDIuMDUzNzIzXSBtbWNibGswYm9vdDE6IG1tYzA6MDAwMSAwMDhHNzAgcGFydGl0aW9u
+IDIgNC4wMCBNaUIKPiBbICAgIDIuMDUzOTEwXSBtbWNibGswcnBtYjogbW1jMDowMDAxIDAwOEc3
+MCBwYXJ0aXRpb24gMyA0LjAwIE1pQgo+IFsgICAgMi4wNTU0NTZdICBtbWNibGswOiBwMiBwMwo+
+IFsgICAgMi4wNTY5ODZdIHhoY2ktbXRrIDFhMWMwMDAwLnVzYjogMWExYzAwMDAudXNiIHN1cHBs
+eSB2YnVzIG5vdAo+IGZvdW5kLCB1c2luZyBkdW1teSByZWd1bGF0b3IKPiBbICAgIDIuMTUzODk0
+XSB2cGE6IGRpc2FibGluZwo+IFsgICAgMi4xNTY2MDhdIHZtYzogZGlzYWJsaW5nCj4gWyAgICAy
+LjE1OTI5Nl0gdm1jaDogZGlzYWJsaW5nCj4gWyAgICAyLjE2MjEwM10gdmdwMTogZGlzYWJsaW5n
+Cj4gWyAgICAyLjE2NDg5N10gdmNhbWFmOiBkaXNhYmxpbmcKPiBbICAgIDIuMTY4MjQxXSBWRlM6
+IENhbm5vdCBvcGVuIHJvb3QgZGV2aWNlICIobnVsbCkiIG9yCj4gdW5rbm93bi1ibG9jaygwLDAp
+OiBlcnJvciAtNgo+IFsgICAgMi4xNzU3MTJdIFBsZWFzZSBhcHBlbmQgYSBjb3JyZWN0ICJyb290
+PSIgYm9vdCBvcHRpb247IGhlcmUgYXJlCj4gdGhlIGF2YWlsYWJsZSBwYXJ0aXRpb25zOgo+IFsg
+ICAgMi4xODQwMzFdIGIzMDAgICAgICAgICA3NjM0OTQ0IG1tY2JsazAKPiBbICAgIDIuMTg0MDM2
+XSAgZHJpdmVyOiBtbWNibGsKPiBbICAgIDIuMTkwNzc1XSAgIGIzMDIgICAgICAgICAxMDQ4NTc2
+IG1tY2JsazBwMiAwMDAwMDAwMC0wMgo+IFsgICAgMi4xOTA3NzldCj4gWyAgICAyLjE5NzU2M10g
+ICBiMzAzICAgICAgICAgMjA5NzE1MiBtbWNibGswcDMgMDAwMDAwMDAtMDMKPiBbICAgIDIuMTk3
+NTY2XQo+IFsgICAgMi4yMDQzMzJdIGIzMTggICAgICAgICAgICA0MDk2IG1tY2JsazBycG1iCj4g
+WyAgICAyLjIwNDMzNV0gIChkcml2ZXI/KQo+IFsgICAgMi4yMTA5ODhdIGIzMTAgICAgICAgICAg
+ICA0MDk2IG1tY2JsazBib290MQo+IFsgICAgMi4yMTA5OTJdICAoZHJpdmVyPykKPiBbICAgIDIu
+MjE3NzQ3XSBiMzA4ICAgICAgICAgICAgNDA5NiBtbWNibGswYm9vdDAKPiBbICAgIDIuMjE3NzUw
+XSAgKGRyaXZlcj8pCj4gWyAgICAyLjIyNDUwNF0gS2VybmVsIHBhbmljIC0gbm90IHN5bmNpbmc6
+IFZGUzogVW5hYmxlIHRvIG1vdW50IHJvb3QKPiBmcyBvbiB1bmtub3duLWJsb2NrKDAsMCkKPgo+
+IE15IHJvb3RmcywgZXRjLCBpcyBzdG9yZWQgb24gbW1jYmxrMCBhbmQgdGhlIHBhcnRpdGlvbmlu
+ZyBpcyBzcGVjaWZpZWQKPiBpbiB0aGUgYm9vdCBhcmd1bWVudHMgKHdoaWNoIGFyZToKPiBibG9j
+azJtdGQuYmxvY2sybXRkPS9kZXYvbW1jYmxrMCw2NTUzNixlTU1DLDUKPiBtdGRwYXJ0cz1lTU1D
+OjI1NmsobWJyKXJvLDUxMmsodWJvb3Qpcm8sMjU2ayhjb25maWcpcm8sMjU2ayhmYWN0b3J5KXJv
+LDMyTShrZXJuZWwpLDMyTShyZWNvdmVyeSksMTAyNE0ocm9vdGZzKSwyMDQ4TSh1c3JkYXRhKSwt
+KGJtdHBvb2wpCj4gICByb290ZnN0eXBlPXNxdWFzaGZzLGpmZnMyKS4gSSBoYXZlIGRvdWJsZWNo
+ZWtlZCwgYW5kIEkgY2FuJ3QgZmluZCBhbnkKPiBtaXNzaW5nIE1URC1vcHRpb25zIGNvbXBhcmVk
+IHRvIHRoZSA0LjkgY29uZmlnLiBDb3VsZCBpdCBiZSB0aGF0IG5ldwo+IG9wdGlvbnMgaGF2ZSBi
+ZWVuIGFkZGVkIGFuZCBoYXZlIHRvIGJlIHNwZWNpZmllZD8gRm9yIGV4YW1wbGUsCj4gTVREX0JM
+T0NLMk1URCBhbmQgTVREX0NNRExJTkVfUEFSVFMgaXMgc2V0LgoKYmxvY2sybXRkIGlzIGEgb3dy
+dCBzcGVjaWZpYyBkcml2ZXIsIGl0IHdvbnQgd29yayBvbiBvbiB2YW5pbGxhLgoKIMKgwqDCoCBK
+b2huCgo+IFRoZSBsb2cgYXJlIGFsc28gY29udGFpbnMgdGhlIGZvbGxvd2luZyB3YXJuaW5nczoK
+Pgo+IFsgICAgMS44NDUyODBdIC0tLS0tLS0tLS0tLVsgY3V0IGhlcmUgXS0tLS0tLS0tLS0tLQo+
+IFsgICAgMS44NDUyOTZdIFdBUk5JTkc6IENQVTogMCBQSUQ6IDcwIGF0IGRyaXZlcnMvY2xrL2Ns
+ay5jOjU5NAo+IGNsa19jb3JlX2Rpc2FibGVfbG9jaysweDE4LzB4MjQKPiBbICAgIDEuODQ1Mjk5
+XSBNb2R1bGVzIGxpbmtlZCBpbjoKPiBbICAgIDEuODQ1MzEwXSBDUFU6IDAgUElEOiA3MCBDb21t
+OiBrd29ya2VyLzA6MiBOb3QgdGFpbnRlZAo+IDQuMTQuMTgtZnQtdHJ5LW93cnQtY29uZmlnICMy
+MAo+IFsgICAgMS44NDUzMTNdIEhhcmR3YXJlIG5hbWU6IE1lZGlhdGVrIENvcnRleC1BNyAoRGV2
+aWNlIFRyZWUpCj4gWyAgICAxLjg0NTMyM10gV29ya3F1ZXVlOiBwbSBnZW5wZF9wb3dlcl9vZmZf
+d29ya19mbgo+IFsgICAgMS44NDUzNDddIFs8YzAxMGRjODA+XSAodW53aW5kX2JhY2t0cmFjZSkg
+ZnJvbSBbPGMwMTBhNzM0Pl0KPiAoc2hvd19zdGFjaysweDEwLzB4MTQpCj4gWyAgICAxLjg0NTM2
+MV0gWzxjMDEwYTczND5dIChzaG93X3N0YWNrKSBmcm9tIFs8YzA0OWE0MjA+XQo+IChkdW1wX3N0
+YWNrKzB4NzAvMHg4YykKPiBbICAgIDEuODQ1MzczXSBbPGMwNDlhNDIwPl0gKGR1bXBfc3RhY2sp
+IGZyb20gWzxjMDExNThiOD5dIChfX3dhcm4rMHhkOC8weGY4KQo+IFsgICAgMS44NDUzODRdIFs8
+YzAxMTU4Yjg+XSAoX193YXJuKSBmcm9tIFs8YzAxMTU5N2M+XQo+ICh3YXJuX3Nsb3dwYXRoX251
+bGwrMHgxYy8weDI0KQo+IFsgICAgMS44NDUzOTNdIFs8YzAxMTU5N2M+XSAod2Fybl9zbG93cGF0
+aF9udWxsKSBmcm9tIFs8YzAyZWVkNDg+XQo+IChjbGtfY29yZV9kaXNhYmxlX2xvY2srMHgxOC8w
+eDI0KQo+IFsgICAgMS44NDU0MDRdIFs8YzAyZWVkNDg+XSAoY2xrX2NvcmVfZGlzYWJsZV9sb2Nr
+KSBmcm9tIFs8YzAyZjdhNzA+XQo+IChzY3BzeXNfcG93ZXJfb2ZmKzB4ZDgvMHgxODgpCj4gWyAg
+ICAxLjg0NTQxNl0gWzxjMDJmN2E3MD5dIChzY3BzeXNfcG93ZXJfb2ZmKSBmcm9tIFs8YzAzMmFm
+YjA+XQo+IChnZW5wZF9wb3dlcl9vZmYrMHgxZDQvMHgyMzgpCj4gWyAgICAxLjg0NTQyN10gWzxj
+MDMyYWZiMD5dIChnZW5wZF9wb3dlcl9vZmYpIGZyb20gWzxjMDMyYjA0MD5dCj4gKGdlbnBkX3Bv
+d2VyX29mZl93b3JrX2ZuKzB4MmMvMHg0MCkKPiBbICAgIDEuODQ1NDM3XSBbPGMwMzJiMDQwPl0g
+KGdlbnBkX3Bvd2VyX29mZl93b3JrX2ZuKSBmcm9tCj4gWzxjMDEyOThkOD5dIChwcm9jZXNzX29u
+ZV93b3JrKzB4MWMwLzB4MzEwKQo+IFsgICAgMS44NDU0NDhdIFs8YzAxMjk4ZDg+XSAocHJvY2Vz
+c19vbmVfd29yaykgZnJvbSBbPGMwMTJhNzljPl0KPiAod29ya2VyX3RocmVhZCsweDJhMC8weDQw
+MCkKPiBbICAgIDEuODQ1NDYwXSBbPGMwMTJhNzljPl0gKHdvcmtlcl90aHJlYWQpIGZyb20gWzxj
+MDEyZWFiND5dCj4gKGt0aHJlYWQrMHgxMTQvMHgxMmMpCj4gWyAgICAxLjg0NTQ3MV0gWzxjMDEy
+ZWFiND5dIChrdGhyZWFkKSBmcm9tIFs8YzAxMDcwYTg+XQo+IChyZXRfZnJvbV9mb3JrKzB4MTQv
+MHgyYykKPiBbICAgIDEuODQ1NDc2XSAtLS1bIGVuZCB0cmFjZSA1ZWNmZjNmYjY1ZjYxMGJiIF0t
+LS0KPiBbICAgIDEuODQ1NTE4XSAtLS0tLS0tLS0tLS1bIGN1dCBoZXJlIF0tLS0tLS0tLS0tLS0K
+PiBbICAgIDEuODQ1NTI3XSBXQVJOSU5HOiBDUFU6IDAgUElEOiA3MCBhdCBkcml2ZXJzL2Nsay9j
+bGsuYzo0NzYKPiBjbGtfdW5wcmVwYXJlKzB4MjQvMHgyYwo+IFsgICAgMS44NDU1MjldIE1vZHVs
+ZXMgbGlua2VkIGluOgo+IFsgICAgMS44NDU1MzhdIENQVTogMCBQSUQ6IDcwIENvbW06IGt3b3Jr
+ZXIvMDoyIFRhaW50ZWQ6IEcgICAgICAgIFcKPiAgICAgNC4xNC4xOC1mdC10cnktb3dydC1jb25m
+aWcgIzIwCj4gWyAgICAxLjg0NTU0MV0gSGFyZHdhcmUgbmFtZTogTWVkaWF0ZWsgQ29ydGV4LUE3
+IChEZXZpY2UgVHJlZSkKPiBbICAgIDEuODQ1NTQ3XSBXb3JrcXVldWU6IHBtIGdlbnBkX3Bvd2Vy
+X29mZl93b3JrX2ZuCj4gWyAgICAxLjg0NTU2MV0gWzxjMDEwZGM4MD5dICh1bndpbmRfYmFja3Ry
+YWNlKSBmcm9tIFs8YzAxMGE3MzQ+XQo+IChzaG93X3N0YWNrKzB4MTAvMHgxNCkKPiBbICAgIDEu
+ODQ1NTc0XSBbPGMwMTBhNzM0Pl0gKHNob3dfc3RhY2spIGZyb20gWzxjMDQ5YTQyMD5dCj4gKGR1
+bXBfc3RhY2srMHg3MC8weDhjKQo+IFsgICAgMS44NDU1ODRdIFs8YzA0OWE0MjA+XSAoZHVtcF9z
+dGFjaykgZnJvbSBbPGMwMTE1OGI4Pl0gKF9fd2FybisweGQ4LzB4ZjgpCj4gWyAgICAxLjg0NTU5
+NF0gWzxjMDExNThiOD5dIChfX3dhcm4pIGZyb20gWzxjMDExNTk3Yz5dCj4gKHdhcm5fc2xvd3Bh
+dGhfbnVsbCsweDFjLzB4MjQpCj4gWyAgICAxLjg0NTYwM10gWzxjMDExNTk3Yz5dICh3YXJuX3Ns
+b3dwYXRoX251bGwpIGZyb20gWzxjMDJlZWYzOD5dCj4gKGNsa191bnByZXBhcmUrMHgyNC8weDJj
+KQo+IFsgICAgMS44NDU2MTJdIFs8YzAyZWVmMzg+XSAoY2xrX3VucHJlcGFyZSkgZnJvbSBbPGMw
+MmY3YTc4Pl0KPiAoc2Nwc3lzX3Bvd2VyX29mZisweGUwLzB4MTg4KQo+IFsgICAgMS44NDU2MjNd
+IFs8YzAyZjdhNzg+XSAoc2Nwc3lzX3Bvd2VyX29mZikgZnJvbSBbPGMwMzJhZmIwPl0KPiAoZ2Vu
+cGRfcG93ZXJfb2ZmKzB4MWQ0LzB4MjM4KQo+IFsgICAgMS44NDU2MzNdIFs8YzAzMmFmYjA+XSAo
+Z2VucGRfcG93ZXJfb2ZmKSBmcm9tIFs8YzAzMmIwNDA+XQo+IChnZW5wZF9wb3dlcl9vZmZfd29y
+a19mbisweDJjLzB4NDApCj4gWyAgICAxLjg0NTY0M10gWzxjMDMyYjA0MD5dIChnZW5wZF9wb3dl
+cl9vZmZfd29ya19mbikgZnJvbQo+IFs8YzAxMjk4ZDg+XSAocHJvY2Vzc19vbmVfd29yaysweDFj
+MC8weDMxMCkKPiBbICAgIDEuODQ1NjUzXSBbPGMwMTI5OGQ4Pl0gKHByb2Nlc3Nfb25lX3dvcmsp
+IGZyb20gWzxjMDEyYTc5Yz5dCj4gKHdvcmtlcl90aHJlYWQrMHgyYTAvMHg0MDApCj4gWyAgICAx
+Ljg0NTY2NF0gWzxjMDEyYTc5Yz5dICh3b3JrZXJfdGhyZWFkKSBmcm9tIFs8YzAxMmVhYjQ+XQo+
+IChrdGhyZWFkKzB4MTE0LzB4MTJjKQo+IFsgICAgMS44NDU2NzVdIFs8YzAxMmVhYjQ+XSAoa3Ro
+cmVhZCkgZnJvbSBbPGMwMTA3MGE4Pl0KPiAocmV0X2Zyb21fZm9yaysweDE0LzB4MmMpCj4gWyAg
+ICAxLjg0NTY3OV0gLS0tWyBlbmQgdHJhY2UgNWVjZmYzZmI2NWY2MTBiYyBdLS0tCj4KPiBCYXNl
+ZCBvbiBzb21lIHNlYXJjaGluZywgdGhlc2UgZXJyb3JzIHNlZW1zIHRvIGJlIHJlbGF0ZWQgdG8g
+bWlzc2luZwo+IFBJTkNUUkwuIEhvd2V2ZXIsIE1UMjcwMSBpcyBlbmFibGVkLgo+Cj4gRG9lcyBh
+bnlvbmUgaGF2ZSBhbnkgKG1vcmUgOikpIHRpcHMgb24gd2hhdCBjb3VsZCBiZSB3cm9uZyBvciB3
+aGVyZSB0byBsb29rPwo+Cj4gQlIsCj4gS3Jpc3RpYW4KPgo+IF9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0
+Cj4gTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5n
+IGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
