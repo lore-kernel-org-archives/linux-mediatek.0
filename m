@@ -1,87 +1,48 @@
-From: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Subject: Re: [PATCH v2 5/7] watchdog: mtk: allow setting timeout in devicetree
-Date: Sun, 11 Feb 2018 03:17:16 -0800
-Message-ID: <80a95963-7bd9-a350-d899-3b0cf2d646fc@roeck-us.net>
-References: <20180210091911.3644-1-marcus.folkesson@gmail.com>
- <20180210091911.3644-5-marcus.folkesson@gmail.com>
- <1518261002.9025.36.camel@mtkswgap22> <20180210124328.GB744@gmail.com>
- <20180210201207.GC744@gmail.com>
- <5449674d-2812-c9b5-9c06-af2fbfa72737@roeck-us.net>
- <1518335184.9025.43.camel@mtkswgap22>
+From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Subject: Re: Questions about bringing up MT7623 board
+Date: Sun, 11 Feb 2018 12:11:00 +0100
+Message-ID: <12343512-196f-c89f-e7dc-2e35cad49fc8@phrozen.org>
+References: <CAKfDRXhhrndoKMidZYsw=E8BmS7AFsTJHbS4dcYbEoADhjD44Q@mail.gmail.com>
+ <CAKfDRXg0jeHP9xZRGDNm5tfW1afZd-TPfwbwUzEPiWsy_bfuUQ@mail.gmail.com>
+ <fc2bf32a-eb81-6cd1-9085-b8786ddf0f9c@phrozen.org>
+ <CAKfDRXjpG4CNeHfKC1Kg=6mrqUTZ8A7bD1aivLkSQ2L0eK755Q@mail.gmail.com>
+ <6ae4103b-45bf-c427-d0d9-87f6f4eb83b5@phrozen.org>
+ <CAKfDRXiJCMpA+qj4HmoSg0F_Yt4LnjQ=Dvy_tkxa=Dnh_pN13g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1518335184.9025.43.camel@mtkswgap22>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAKfDRXiJCMpA+qj4HmoSg0F_Yt4LnjQ=Dvy_tkxa=Dnh_pN13g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Marcus Folkesson <marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Wim Van Sebroeck <wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Barry Song <baohua-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Vladimir Zapolskiy <vz-ChpfBGZJDbMAvxtiuMwx3w@public.gmane.org>, Sylvain Lemieux <slemieux.tyco-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Nicolas Ferre <nicolas.ferre-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 02/10/2018 11:46 PM, Sean Wang wrote:
-> On Sat, 2018-02-10 at 17:52 -0800, Guenter Roeck wrote:
->> On 02/10/2018 12:12 PM, Marcus Folkesson wrote:
->>> Hello Sean,
->>>
->>> On Sat, Feb 10, 2018 at 01:43:28PM +0100, Marcus Folkesson wrote:
->>>> Hello Sean,
->>>>
->>>> On Sat, Feb 10, 2018 at 07:10:02PM +0800, Sean Wang wrote:
->>>>>
->>>>> Hi, Marcus
->>>>>
->>>>> The changes you made for dt-bindings and driver should be put into
->>>>> separate patches.
->>>>
->>>> I actually thought about it but chose to have it in the same patch because I
->>>> did not see any direct advantage to separating them.
->>>>
->>>> But I can do that.
->>>> I will come up with a v3 with this change if no one thinks differently.
->>>>
->>>
->>> When looking at the git log, I'm not that convinced it should be
->>> separate patches.
->>>
->>> For example, I found a4f741e3e157c3a5c8aea5f2ea62b692fbf17338 that is
->>> doing the exact same thing as this patch.
->>>
->>> There is plenty of patches that mixes the code change and dt bindings
->>> updates.
->>> Could it not be useful to overview both the implementation and
->>> dt-mapping change in one view?
->>>
->>> If you or anyone else still think it should be separated, please let me know and I will
->>> come up with a v3.
->>>
->>
->> If we were talking about something new, specifically new and unapproved DT bindings,
->> it should be separate patches. However, that is not the case here. The DT bindings
->> are well established. Sure, we could be pedantic and request a split into two
->> patches. However, the only benefit of that would be more work for the maintainers,
->> ie Wim and myself (including me having to send this e-mail). I don't really see
->> the point of that.
->>
->> I have already sent my Reviewed-by:, and I don't intend to withdraw it.
->>
-> Hi, both
-> 
-> Sorry for that if I caused any inconvenience to you. I didn't really
-> insist on if the patch is needed to split into two, which totally
-> depends on whether dt maintainers like it.
-> 
-> The change for dt-binding is usually added as a split patch with
-> dt-bindings as a prefix. This way I thought dt maintainers is not
-> easy to miss those patches and also can give some useful feedback
-> for them.
-> 
-
-With all the trouble this one-line change is making, I feel inclined to drop
-the patch for this driver.
-
-Guenter
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+CgpPbiAxMS8wMi8xOCAxMTo1NSwgS3Jpc3RpYW4gRXZlbnNlbiB3cm90ZToKPiBIaSwKPgo+IE9u
+IFN1biwgRmViIDExLCAyMDE4IGF0IDExOjQxIEFNLCBKb2huIENyaXNwaW4gPGpvaG5AcGhyb3pl
+bi5vcmc+IHdyb3RlOgo+PiBJcyBFYXJseXByaW5rdCBlbmFibGVkIGluIHRoZSBrZXJuZWwgLmNv
+bmZpZyA/Cj4gTm8sIHR1cm5zIG91dCBDT05GSUdfRUFSTFlfUFJJTlRLIHdhcyBub3QgZW5hYmxl
+ZC4gVGhpcyBpcyB0aGUgZmlyc3QKPiB0aW1lIEkgYW0gdHJ5aW5nIHRvIGFkZCBzdXBwb3J0IGZv
+ciBhIGJvYXJkIG91dGlzZGUgdGhlIHNhZmUgd2FsbHMgb2YKPiBPcGVuV1JULCBzbyBzb3JyeSBm
+b3Igc3VjaCBhIHJvb2tpZSBtaXN0YWtlLgo+Cj4gVW5mb3J0dW5hdGVseSwgZW5hYmxpbmcgQ09O
+RklHX0VBUkxZX1BSSU5USyBoYWQgbm8gZWZmZWN0LiBJIHN0aWxsCj4gaGF2ZSBub3Qgb3V0cHV0
+IGFmdGVyICJTdGFydGluZyBrZXJuZWwiLgo+Cj4gQlIsCj4gS3Jpc3RpYW4KWW91J2xsIGFsc28g
+bmVlZCB0byB0ZWxsIHRoZSBrZXJuZWwgYWJvdXQgdGhlIHVhcnQsIGxvb2tpbmcgYXQgdGhlIG93
+cnQgCmNvbmZpZyB5b3UnbGwgZmluZCAuLi4KCmdyZXAgREVCVUdfVUFSVCB0YXJnZXQvbGludXgv
+bWVkaWF0ZWsvY29uZmlnLTQuOQpDT05GSUdfREVCVUdfVUFSVF84MjUwPXkKIyBDT05GSUdfREVC
+VUdfVUFSVF84MjUwX0ZMT1dfQ09OVFJPTCBpcyBub3Qgc2V0CkNPTkZJR19ERUJVR19VQVJUXzgy
+NTBfU0hJRlQ9MgojIENPTkZJR19ERUJVR19VQVJUXzgyNTBfV09SRCBpcyBub3Qgc2V0CkNPTkZJ
+R19ERUJVR19VQVJUX1BIWVM9MHgxMTAwNDAwMApDT05GSUdfREVCVUdfVUFSVF9WSVJUPTB4ZjEw
+MDQwMDAKCiDCoMKgwqAgSm9obgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1tZWRpYXRlawo=
