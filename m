@@ -1,137 +1,62 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 14/16] arm64: dts: mt7622: add thermal and related
- nodes
-Date: Mon, 12 Feb 2018 12:55:44 +0100
-Message-ID: <b7d74cbb-9ad8-23cb-aa3c-e9704aafa107@gmail.com>
-References: <cover.1517910489.git.sean.wang@mediatek.com>
- <687a7c43e3e3260ebdf004a96d2cde143f563250.1517910489.git.sean.wang@mediatek.com>
- <4db5c81b-0e55-3676-d7c8-d1b6aefb99c4@gmail.com>
- <1518148312.9025.17.camel@mtkswgap22>
+From: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: Questions about bringing up MT7623 board
+Date: Mon, 12 Feb 2018 13:02:57 +0100
+Message-ID: <CAKfDRXgNGRHu9JMs-9vb4n72w+PmR8buqDnz8ObEQNXtP1pM4w@mail.gmail.com>
+References: <CAKfDRXhhrndoKMidZYsw=E8BmS7AFsTJHbS4dcYbEoADhjD44Q@mail.gmail.com>
+ <CAKfDRXg0jeHP9xZRGDNm5tfW1afZd-TPfwbwUzEPiWsy_bfuUQ@mail.gmail.com>
+ <fc2bf32a-eb81-6cd1-9085-b8786ddf0f9c@phrozen.org>
+ <CAKfDRXjpG4CNeHfKC1Kg=6mrqUTZ8A7bD1aivLkSQ2L0eK755Q@mail.gmail.com>
+ <6ae4103b-45bf-c427-d0d9-87f6f4eb83b5@phrozen.org>
+ <CAKfDRXiJCMpA+qj4HmoSg0F_Yt4LnjQ=Dvy_tkxa=Dnh_pN13g@mail.gmail.com>
+ <a594ffaa-4098-4171-f824-1aa3f332c9fc@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1518148312.9025.17.camel@mtkswgap22>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <a594ffaa-4098-4171-f824-1aa3f332c9fc-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi,
 
-
-On 02/09/2018 04:51 AM, Sean Wang wrote:
-> On Wed, 2018-02-07 at 12:43 +0100, Matthias Brugger wrote:
+On Mon, Feb 12, 2018 at 12:08 PM, Matthias Brugger
+<matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>
+>
+> On 02/11/2018 11:55 AM, Kristian Evensen wrote:
+>> Hi,
 >>
->> On 02/06/2018 10:53 AM, sean.wang@mediatek.com wrote:
->>> From: Sean Wang <sean.wang@mediatek.com>
->>>
->>> add nodes for the thermal controller and associated thermal zone using
->>> CPU as the cooling device for each trip point. In addition, add a fixup
->>> for thermal_calibration on nvmem should be 12 bytes as the minimal
->>> requirement.
->>>
->>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->>> ---
->>>  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 72 +++++++++++++++++++++++++++++++-
->>>  1 file changed, 71 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
->>> index e6dd4f6..6cf67dd 100644
->>> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
->>> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
->>> @@ -12,6 +12,7 @@
->>>  #include <dt-bindings/phy/phy.h>
->>>  #include <dt-bindings/power/mt7622-power.h>
->>>  #include <dt-bindings/reset/mt7622-reset.h>
->>> +#include <dt-bindings/thermal/thermal.h>
->>>  
->>>  / {
->>>  	compatible = "mediatek,mt7622";
->>> @@ -75,6 +76,7 @@
->>>  				 <&apmixedsys CLK_APMIXED_MAIN_CORE_EN>;
->>>  			clock-names = "cpu", "intermediate";
->>>  			operating-points-v2 = <&cpu_opp_table>;
->>> +			#cooling-cells = <2>;
->>>  			enable-method = "psci";
->>>  			clock-frequency = <1300000000>;
->>>  		};
->>> @@ -119,6 +121,58 @@
->>>  		};
->>>  	};
->>>  
->>> +	thermal-zones {
->>> +		cpu_thermal: cpu-thermal {
->>> +			polling-delay-passive = <1000>;
->>> +			polling-delay = <1000>;
->>> +
->>> +			thermal-sensors = <&thermal 0>;
->>> +
->>> +			trips {
->>> +				cpu_passive: cpu-passive {
->>> +					temperature = <47000>;
->>> +					hysteresis = <2000>;
->>> +					type = "passive";
->>> +				};
->>> +
->>> +				cpu_active: cpu-active {
->>> +					temperature = <67000>;
->>> +					hysteresis = <2000>;
->>> +					type = "active";
->>> +				};
->>> +
->>> +				cpu_hot: cpu-hot {
->>> +					temperature = <87000>;
->>> +					hysteresis = <2000>;
->>> +					type = "hot";
->>> +				};
->>> +
->>> +				cpu-crit {
->>> +					temperature = <107000>;
->>> +					hysteresis = <2000>;
->>> +					type = "critical";
->>> +				};
->>> +			};
->>> +
->>> +			cooling-maps {
->>> +				map0 {
->>> +					trip = <&cpu_passive>;
->>> +					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
->>> +				};
->>> +
->>> +				map1 {
->>> +					trip = <&cpu_active>;
->>> +					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
->>> +				};
->>> +
->>> +				map2 {
->>> +					trip = <&cpu_hot>;
->>> +					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
->>> +				};
->>> +			};
->>> +		};
->>> +	};
->>> +
->>>  	timer {
->>>  		compatible = "arm,armv8-timer";
->>>  		interrupt-parent = <&gic>;
->>> @@ -201,7 +255,7 @@
->>>  		#size-cells = <1>;
->>>  
->>>  		thermal_calibration: calib@198 {
->>> -			reg = <0x198 0x8>;
->>> +			reg = <0x198 0xc>;
+>> On Sun, Feb 11, 2018 at 11:41 AM, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org> wrote:
+>>> Is Earlyprinkt enabled in the kernel .config ?
 >>
->> Any reason why this is not part of patch 8/16?
+>> No, turns out CONFIG_EARLY_PRINTK was not enabled. This is the first
+>> time I am trying to add support for a board outisde the safe walls of
+>> OpenWRT, so sorry for such a rookie mistake.
 >>
-> 
-> There's no strong reason wanting me to do that. patch 8 has contained a
-> lot of nodes and patch 16 is present just in v2. So, I felt it should be
-> a little bit easy that people reviews those patches if they are put into
-> separate patches. But, It's still fine to make them into one in the next
-> version.
-> 
+>
+> More then a rookie mistake for me it's kind of an overlook which can cost you
+> half a day. This kind of errors at least to me they happens on a semi-regular
+> basis :)
 
-Please add it to 8/16 as this is where you define the node in the first place.
+Good to know I am not the only one that has made this mistake :)
 
-Thanks!
+My plan now is to start with John's 4.14 mediatek support when
+available and getting my board up with OpenWRT, then sending an RFC
+with the DTS to the list. Once all of that is ready, I will look into
+how I can partition the eMMC on my board so that I can install a
+"normal" rootfs and make the board work with the mainline kernel. I am
+sure I will have lots of questions, so this is probably not my last
+email :)
+
+BR,
+Kristian
