@@ -1,195 +1,137 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] arm: dts: mt7623: add PCIe related nodes
-Date: Mon, 12 Feb 2018 19:32:37 +0800
-Message-ID: <3b3a4d73d7b33a9318b8db1033d2f7e4c32b0136.1518400130.git.ryder.lee@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 14/16] arm64: dts: mt7622: add thermal and related
+ nodes
+Date: Mon, 12 Feb 2018 12:55:44 +0100
+Message-ID: <b7d74cbb-9ad8-23cb-aa3c-e9704aafa107@gmail.com>
+References: <cover.1517910489.git.sean.wang@mediatek.com>
+ <687a7c43e3e3260ebdf004a96d2cde143f563250.1517910489.git.sean.wang@mediatek.com>
+ <4db5c81b-0e55-3676-d7c8-d1b6aefb99c4@gmail.com>
+ <1518148312.9025.17.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Benjamin Herrenschmidt <benh-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1518148312.9025.17.camel@mtkswgap22>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds some device nodes for the PCIe function block and updates
-related pinmux.
 
-Moreover, we add interrupt-map properties in both parent and children as
-the chip only has one IRQ per slot that is connected to all INTx and get
-propagated through the bridges and it also represents the root ports own
-interrupts.
 
-Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Benjamin Herrenschmidt <benh-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>
-Cc: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
----
-Please refer to the previous discussion:
-https://patchwork.ozlabs.org/patch/829108/
-https://patchwork.kernel.org/patch/10193391/
----
- arch/arm/boot/dts/mt7623.dtsi                 | 105 ++++++++++++++++++++++++++
- arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |  22 ++++++
- 2 files changed, 127 insertions(+)
+On 02/09/2018 04:51 AM, Sean Wang wrote:
+> On Wed, 2018-02-07 at 12:43 +0100, Matthias Brugger wrote:
+>>
+>> On 02/06/2018 10:53 AM, sean.wang@mediatek.com wrote:
+>>> From: Sean Wang <sean.wang@mediatek.com>
+>>>
+>>> add nodes for the thermal controller and associated thermal zone using
+>>> CPU as the cooling device for each trip point. In addition, add a fixup
+>>> for thermal_calibration on nvmem should be 12 bytes as the minimal
+>>> requirement.
+>>>
+>>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>>> ---
+>>>  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 72 +++++++++++++++++++++++++++++++-
+>>>  1 file changed, 71 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+>>> index e6dd4f6..6cf67dd 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+>>> @@ -12,6 +12,7 @@
+>>>  #include <dt-bindings/phy/phy.h>
+>>>  #include <dt-bindings/power/mt7622-power.h>
+>>>  #include <dt-bindings/reset/mt7622-reset.h>
+>>> +#include <dt-bindings/thermal/thermal.h>
+>>>  
+>>>  / {
+>>>  	compatible = "mediatek,mt7622";
+>>> @@ -75,6 +76,7 @@
+>>>  				 <&apmixedsys CLK_APMIXED_MAIN_CORE_EN>;
+>>>  			clock-names = "cpu", "intermediate";
+>>>  			operating-points-v2 = <&cpu_opp_table>;
+>>> +			#cooling-cells = <2>;
+>>>  			enable-method = "psci";
+>>>  			clock-frequency = <1300000000>;
+>>>  		};
+>>> @@ -119,6 +121,58 @@
+>>>  		};
+>>>  	};
+>>>  
+>>> +	thermal-zones {
+>>> +		cpu_thermal: cpu-thermal {
+>>> +			polling-delay-passive = <1000>;
+>>> +			polling-delay = <1000>;
+>>> +
+>>> +			thermal-sensors = <&thermal 0>;
+>>> +
+>>> +			trips {
+>>> +				cpu_passive: cpu-passive {
+>>> +					temperature = <47000>;
+>>> +					hysteresis = <2000>;
+>>> +					type = "passive";
+>>> +				};
+>>> +
+>>> +				cpu_active: cpu-active {
+>>> +					temperature = <67000>;
+>>> +					hysteresis = <2000>;
+>>> +					type = "active";
+>>> +				};
+>>> +
+>>> +				cpu_hot: cpu-hot {
+>>> +					temperature = <87000>;
+>>> +					hysteresis = <2000>;
+>>> +					type = "hot";
+>>> +				};
+>>> +
+>>> +				cpu-crit {
+>>> +					temperature = <107000>;
+>>> +					hysteresis = <2000>;
+>>> +					type = "critical";
+>>> +				};
+>>> +			};
+>>> +
+>>> +			cooling-maps {
+>>> +				map0 {
+>>> +					trip = <&cpu_passive>;
+>>> +					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+>>> +				};
+>>> +
+>>> +				map1 {
+>>> +					trip = <&cpu_active>;
+>>> +					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+>>> +				};
+>>> +
+>>> +				map2 {
+>>> +					trip = <&cpu_hot>;
+>>> +					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+>>> +				};
+>>> +			};
+>>> +		};
+>>> +	};
+>>> +
+>>>  	timer {
+>>>  		compatible = "arm,armv8-timer";
+>>>  		interrupt-parent = <&gic>;
+>>> @@ -201,7 +255,7 @@
+>>>  		#size-cells = <1>;
+>>>  
+>>>  		thermal_calibration: calib@198 {
+>>> -			reg = <0x198 0x8>;
+>>> +			reg = <0x198 0xc>;
+>>
+>> Any reason why this is not part of patch 8/16?
+>>
+> 
+> There's no strong reason wanting me to do that. patch 8 has contained a
+> lot of nodes and patch 16 is present just in v2. So, I felt it should be
+> a little bit easy that people reviews those patches if they are put into
+> separate patches. But, It's still fine to make them into one in the next
+> version.
+> 
 
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index b750da5..c2541a0 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -670,6 +670,111 @@
- 		#reset-cells = <1>;
- 	};
- 
-+	pcie: pcie-controller@1a140000 {
-+		compatible = "mediatek,mt7623-pcie";
-+		device_type = "pci";
-+		reg = <0 0x1a140000 0 0x1000>, /* PCIe shared registers */
-+		      <0 0x1a142000 0 0x1000>, /* Port0 registers */
-+		      <0 0x1a143000 0 0x1000>, /* Port1 registers */
-+		      <0 0x1a144000 0 0x1000>; /* Port2 registers */
-+		reg-names = "subsys", "port0", "port1", "port2";
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0xf800 0 0 0>;
-+		interrupt-map = <0x0000 0 0 0 &sysirq GIC_SPI 193 IRQ_TYPE_LEVEL_LOW>,
-+				<0x0800 0 0 0 &sysirq GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>,
-+				<0x1000 0 0 0 &sysirq GIC_SPI 195 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&topckgen CLK_TOP_ETHIF_SEL>,
-+			 <&hifsys CLK_HIFSYS_PCIE0>,
-+			 <&hifsys CLK_HIFSYS_PCIE1>,
-+			 <&hifsys CLK_HIFSYS_PCIE2>;
-+		clock-names = "free_ck", "sys_ck0", "sys_ck1", "sys_ck2";
-+		resets = <&hifsys MT2701_HIFSYS_PCIE0_RST>,
-+			 <&hifsys MT2701_HIFSYS_PCIE1_RST>,
-+			 <&hifsys MT2701_HIFSYS_PCIE2_RST>;
-+		reset-names = "pcie-rst0", "pcie-rst1", "pcie-rst2";
-+		phys = <&pcie0_port PHY_TYPE_PCIE>,
-+		       <&pcie1_port PHY_TYPE_PCIE>,
-+		       <&u3port1 PHY_TYPE_PCIE>;
-+		phy-names = "pcie-phy0", "pcie-phy1", "pcie-phy2";
-+		power-domains = <&scpsys MT2701_POWER_DOMAIN_HIF>;
-+		bus-range = <0x00 0xff>;
-+		status = "disabled";
-+		ranges = <0x81000000 0 0x1a160000 0 0x1a160000 0 0x00010000
-+			  0x83000000 0 0x60000000 0 0x60000000 0 0x10000000>;
-+
-+		pcie@0,0 {
-+			reg = <0x0000 0 0 0 0>;
-+			#address-cells = <3>;
-+			#size-cells = <2>;
-+			#interrupt-cells = <1>;
-+			interrupt-map-mask = <0 0 0 0>;
-+			interrupt-map = <0 0 0 0 &sysirq GIC_SPI 193 IRQ_TYPE_LEVEL_LOW>;
-+			ranges;
-+			num-lanes = <1>;
-+			status = "disabled";
-+		};
-+
-+		pcie@1,0 {
-+			reg = <0x0800 0 0 0 0>;
-+			#address-cells = <3>;
-+			#size-cells = <2>;
-+			#interrupt-cells = <1>;
-+			interrupt-map-mask = <0 0 0 0>;
-+			interrupt-map = <0 0 0 0 &sysirq GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
-+			ranges;
-+			num-lanes = <1>;
-+			status = "disabled";
-+		};
-+
-+		pcie@2,0 {
-+			reg = <0x1000 0 0 0 0>;
-+			#address-cells = <3>;
-+			#size-cells = <2>;
-+			#interrupt-cells = <1>;
-+			interrupt-map-mask = <0 0 0 0>;
-+			interrupt-map = <0 0 0 0 &sysirq GIC_SPI 195 IRQ_TYPE_LEVEL_LOW>;
-+			ranges;
-+			num-lanes = <1>;
-+			status = "disabled";
-+		};
-+	};
-+
-+	pcie0_phy: pcie-phy@1a149000 {
-+		compatible = "mediatek,generic-tphy-v1";
-+		reg = <0 0x1a149000 0 0x0700>;
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		status = "disabled";
-+
-+		pcie0_port: pcie-phy@1a149900 {
-+			reg = <0 0x1a149900 0 0x0700>;
-+			clocks = <&clk26m>;
-+			clock-names = "ref";
-+			#phy-cells = <1>;
-+			status = "okay";
-+		};
-+	};
-+
-+	pcie1_phy: pcie-phy@1a14a000 {
-+		compatible = "mediatek,generic-tphy-v1";
-+		reg = <0 0x1a14a000 0 0x0700>;
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		status = "disabled";
-+
-+		pcie1_port: pcie-phy@1a14a900 {
-+			reg = <0 0x1a14a900 0 0x0700>;
-+			clocks = <&clk26m>;
-+			clock-names = "ref";
-+			#phy-cells = <1>;
-+			status = "okay";
-+		};
-+	};
-+
- 	usb1: usb@1a1c0000 {
- 		compatible = "mediatek,mt7623-xhci",
- 			     "mediatek,mt8173-xhci";
-diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-index 7bf5aa2..b077808 100644
---- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-+++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-@@ -209,6 +209,20 @@
- 	vqmmc-supply = <&mt6323_vio18_reg>;
- };
- 
-+&pcie {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_default>;
-+	status = "okay";
-+
-+	pcie@0,0 {
-+		status = "okay";
-+	};
-+
-+	pcie@1,0 {
-+		status = "okay";
-+	};
-+};
-+
- &pio {
- 	cir_pins_a:cir@0 {
- 		pins_cir {
-@@ -376,6 +390,14 @@
- 		};
- 	};
- 
-+	pcie_default: pcie_pin_default {
-+		pins_cmd_dat {
-+			pinmux = <MT7623_PIN_208_AUD_EXT_CK1_FUNC_PCIE0_PERST_N>,
-+				 <MT7623_PIN_209_AUD_EXT_CK2_FUNC_PCIE1_PERST_N>;
-+			bias-disable;
-+		};
-+	};
-+
- 	pwm_pins_a: pwm@0 {
- 		pins_pwm {
- 			pinmux = <MT7623_PIN_203_PWM0_FUNC_PWM0>,
--- 
-1.9.1
+Please add it to 8/16 as this is where you define the node in the first place.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thanks!
