@@ -1,58 +1,22 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v3 2/5] clk: mediatek: modify MT7622 audsys to adapt MFD
- device
-Date: Tue, 13 Feb 2018 10:24:47 +0100
-Message-ID: <cb75cdaa-eb84-d01e-60bd-21a928ddc090@gmail.com>
-References: <cover.1518424204.git.ryder.lee@mediatek.com>
- <f8e87179bd7700130e294393592719fac8590c59.1518424204.git.ryder.lee@mediatek.com>
+From: Joerg Roedel <joro@8bytes.org>
+Subject: Re: [PATCH v4] iommu/mediatek: Move attach_device after iommu-group
+ is ready for M4Uv1
+Date: Tue, 13 Feb 2018 14:41:28 +0100
+Message-ID: <20180213134128.nki33e2yljv7scis@8bytes.org>
+References: <1516950688-28405-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f8e87179bd7700130e294393592719fac8590c59.1518424204.git.ryder.lee@mediatek.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1516950688-28405-1-git-send-email-yong.wu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh+dt@kernel.org>
-Cc: Mark Brown <broonie@kernel.org>, Lee Jones <lee.jones@linaro.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, Garlic Tseng <garlic.tseng@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will.deacon@arm.com>, Alex Williamson <alex.williamson@redhat.com>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, arnd@arndb.de, honghui.zhang@mediatek.com, Bibby Hsieh <bibby.hsieh@mediatek.com>, youlin.pei@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 02/12/2018 12:28 PM, Ryder Lee wrote:
-> As the new MFD device is in place, switch probing method to adapt it.
-> 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+On Fri, Jan 26, 2018 at 03:11:28PM +0800, Yong Wu wrote:
 > ---
->  drivers/clk/mediatek/clk-mt7622-aud.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/clk/mediatek/clk-mt7622-aud.c b/drivers/clk/mediatek/clk-mt7622-aud.c
-> index 13f752d..68c52a9 100644
-> --- a/drivers/clk/mediatek/clk-mt7622-aud.c
-> +++ b/drivers/clk/mediatek/clk-mt7622-aud.c
-> @@ -142,11 +142,16 @@ static int clk_mt7622_audiosys_init(struct platform_device *pdev)
->  {
->  	struct clk_onecell_data *clk_data;
->  	struct device_node *node = pdev->dev.of_node;
-> +	struct device_node *pnode = pdev->dev.parent->of_node;
->  	int r;
->  
->  	clk_data = mtk_alloc_clk_data(CLK_AUDIO_NR_CLK);
->  
-> -	mtk_clk_register_gates(node, audio_clks, ARRAY_SIZE(audio_clks),
-> +	/* Check if called from MFD */
-> +	if (!pnode)
-> +		pnode = node;
+>  drivers/iommu/mtk_iommu_v1.c | 54 +++++++++++++++++---------------------------
+>  1 file changed, 21 insertions(+), 33 deletions(-)
 
-This is needed for backwards compatibility, correct?
-Please change the comment accordingly. The same holds for mt2701 driver.
-
-Thanks,
-Matthias
-
-> +
-> +	mtk_clk_register_gates(pnode, audio_clks, ARRAY_SIZE(audio_clks),
->  			       clk_data);
->  
->  	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> 
+Applied, thanks.
