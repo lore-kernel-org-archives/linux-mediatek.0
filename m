@@ -1,58 +1,201 @@
-From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: Remove leading 0x and 0s from bindings notation
-Date: Tue, 13 Feb 2018 09:32:55 -0600
-Message-ID: <CAL_JsqLyv5io+iXWnzmUhZ1r=PBnA=MdZet8idJDmL8XphxThA@mail.gmail.com>
-References: <20171214165352.27902-1-malat@debian.org>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v1] arm: dts: mt7623: add PCIe related nodes
+Date: Wed, 14 Feb 2018 11:27:34 +0800
+Message-ID: <4e567be2546f90ef62a5df0e957e8a014e460cde.1518576282.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20171214165352.27902-1-malat-8fiUuRrzOP0dnm+yROfE0A@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mathieu Malaterre <malat-8fiUuRrzOP0dnm+yROfE0A@public.gmane.org>, ARM-SoC Maintainers <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Andy Gross <andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kees Cook <keescook-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Anton Vorontsov <anton-9xeibp6oKSgdnm+yROfE0A@public.gmane.org>, Colin Cross <ccross-z5hGa2qSFaRBDgjK7y7TUQ@public.gmane.org>, Tony Luck <tony.luck-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-msm <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/QUALCOMM SUPPORT" <linux-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Arnd Bergmann <arnd@arndb.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Dec 14, 2017 at 10:53 AM, Mathieu Malaterre <malat-8fiUuRrzOP0dnm+yROfE0A@public.gmane.org> wrote:
-> Improve the DTS files by removing all the leading "0x" and zeros to fix the
-> following dtc warnings:
->
-> Warning (unit_address_format): Node /XXX unit name should not have leading "0x"
->
-> and
->
-> Warning (unit_address_format): Node /XXX unit name should not have leading 0s
->
-> Converted using the following command:
->
-> find . -type f \( -iname *.dts -o -iname *.dtsi \) -exec sed -E -i -e "s/@0x([0-9a-fA-F\.]+)\s?\{/@\L\1 \{/g" -e "s/@0+([0-9a-fA-F\.]+)\s?\{/@\L\1 \{/g" {} +
->
-> For simplicity, two sed expressions were used to solve each warnings separately.
->
-> To make the regex expression more robust a few other issues were resolved,
-> namely setting unit-address to lower case, and adding a whitespace before the
-> the opening curly brace:
->
-> https://elinux.org/Device_Tree_Linux#Linux_conventions
->
-> This is a follow up to commit 4c9847b7375a ("dt-bindings: Remove leading 0x from bindings notation")
->
-> Reported-by: David Daney <ddaney-M3mlKVOIwJVv6pq1l3V1OdBPR1lH4CV8@public.gmane.org>
-> Suggested-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> Signed-off-by: Mathieu Malaterre <malat-8fiUuRrzOP0dnm+yROfE0A@public.gmane.org>
-> ---
->  arch/arm64/boot/dts/hisilicon/hi6220-hikey.dts | 2 +-
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi       | 2 +-
->  arch/arm64/boot/dts/qcom/apq8096-db820c.dtsi   | 6 +++---
->  arch/arm64/boot/dts/qcom/msm8996.dtsi          | 6 +++---
->  4 files changed, 8 insertions(+), 8 deletions(-)
+This patch adds some device nodes for the PCIe function block and updates
+related pinmux.
 
-Arnd, Olof, Looks like this got missed. Can you pick up for 4.16.
+Moreover, we add interrupt-map properties in both parent and children as
+the chip only has one IRQ per slot that is connected to all INTx and get
+propagated through the bridges and it also represents the root ports own
+interrupts.
 
-There's some arm32 ones too, but most of them need to be respun to
-mention upper to lower case fixes.
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+Cc: Arnd Bergmann <arnd@arndb.de>
+---
 
-Rob
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Sorry to send v1 in such a rush. Somehow I forgot to add something in previous version.
+
+changes since v1:
+ - enable device nodes - pcie0_phy & pcie2_phy
+ - fix dtc warning: Warning (pci_bridge): Node /pcie-controller@1a140000 node name is not "pci" or "pcie"
+---
+ arch/arm/boot/dts/mt7623.dtsi                 | 105 ++++++++++++++++++++++++++
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |  30 ++++++++
+ 2 files changed, 135 insertions(+)
+
+diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+index 629c92b..137ce99 100644
+--- a/arch/arm/boot/dts/mt7623.dtsi
++++ b/arch/arm/boot/dts/mt7623.dtsi
+@@ -667,6 +667,111 @@
+ 		#reset-cells = <1>;
+ 	};
+ 
++	pcie: pcie@1a140000 {
++		compatible = "mediatek,mt7623-pcie";
++		device_type = "pci";
++		reg = <0 0x1a140000 0 0x1000>, /* PCIe shared registers */
++		      <0 0x1a142000 0 0x1000>, /* Port0 registers */
++		      <0 0x1a143000 0 0x1000>, /* Port1 registers */
++		      <0 0x1a144000 0 0x1000>; /* Port2 registers */
++		reg-names = "subsys", "port0", "port1", "port2";
++		#address-cells = <3>;
++		#size-cells = <2>;
++		#interrupt-cells = <1>;
++		interrupt-map-mask = <0xf800 0 0 0>;
++		interrupt-map = <0x0000 0 0 0 &sysirq GIC_SPI 193 IRQ_TYPE_LEVEL_LOW>,
++				<0x0800 0 0 0 &sysirq GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>,
++				<0x1000 0 0 0 &sysirq GIC_SPI 195 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&topckgen CLK_TOP_ETHIF_SEL>,
++			 <&hifsys CLK_HIFSYS_PCIE0>,
++			 <&hifsys CLK_HIFSYS_PCIE1>,
++			 <&hifsys CLK_HIFSYS_PCIE2>;
++		clock-names = "free_ck", "sys_ck0", "sys_ck1", "sys_ck2";
++		resets = <&hifsys MT2701_HIFSYS_PCIE0_RST>,
++			 <&hifsys MT2701_HIFSYS_PCIE1_RST>,
++			 <&hifsys MT2701_HIFSYS_PCIE2_RST>;
++		reset-names = "pcie-rst0", "pcie-rst1", "pcie-rst2";
++		phys = <&pcie0_port PHY_TYPE_PCIE>,
++		       <&pcie1_port PHY_TYPE_PCIE>,
++		       <&u3port1 PHY_TYPE_PCIE>;
++		phy-names = "pcie-phy0", "pcie-phy1", "pcie-phy2";
++		power-domains = <&scpsys MT2701_POWER_DOMAIN_HIF>;
++		bus-range = <0x00 0xff>;
++		status = "disabled";
++		ranges = <0x81000000 0 0x1a160000 0 0x1a160000 0 0x00010000
++			  0x83000000 0 0x60000000 0 0x60000000 0 0x10000000>;
++
++		pcie@0,0 {
++			reg = <0x0000 0 0 0 0>;
++			#address-cells = <3>;
++			#size-cells = <2>;
++			#interrupt-cells = <1>;
++			interrupt-map-mask = <0 0 0 0>;
++			interrupt-map = <0 0 0 0 &sysirq GIC_SPI 193 IRQ_TYPE_LEVEL_LOW>;
++			ranges;
++			num-lanes = <1>;
++			status = "disabled";
++		};
++
++		pcie@1,0 {
++			reg = <0x0800 0 0 0 0>;
++			#address-cells = <3>;
++			#size-cells = <2>;
++			#interrupt-cells = <1>;
++			interrupt-map-mask = <0 0 0 0>;
++			interrupt-map = <0 0 0 0 &sysirq GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
++			ranges;
++			num-lanes = <1>;
++			status = "disabled";
++		};
++
++		pcie@2,0 {
++			reg = <0x1000 0 0 0 0>;
++			#address-cells = <3>;
++			#size-cells = <2>;
++			#interrupt-cells = <1>;
++			interrupt-map-mask = <0 0 0 0>;
++			interrupt-map = <0 0 0 0 &sysirq GIC_SPI 195 IRQ_TYPE_LEVEL_LOW>;
++			ranges;
++			num-lanes = <1>;
++			status = "disabled";
++		};
++	};
++
++	pcie0_phy: pcie-phy@1a149000 {
++		compatible = "mediatek,generic-tphy-v1";
++		reg = <0 0x1a149000 0 0x0700>;
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++		status = "disabled";
++
++		pcie0_port: pcie-phy@1a149900 {
++			reg = <0 0x1a149900 0 0x0700>;
++			clocks = <&clk26m>;
++			clock-names = "ref";
++			#phy-cells = <1>;
++			status = "okay";
++		};
++	};
++
++	pcie1_phy: pcie-phy@1a14a000 {
++		compatible = "mediatek,generic-tphy-v1";
++		reg = <0 0x1a14a000 0 0x0700>;
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++		status = "disabled";
++
++		pcie1_port: pcie-phy@1a14a900 {
++			reg = <0 0x1a14a900 0 0x0700>;
++			clocks = <&clk26m>;
++			clock-names = "ref";
++			#phy-cells = <1>;
++			status = "okay";
++		};
++	};
++
+ 	usb1: usb@1a1c0000 {
+ 		compatible = "mediatek,mt7623-xhci",
+ 			     "mediatek,mt8173-xhci";
+diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+index 7bf5aa2..3efecc5 100644
+--- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
++++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+@@ -209,6 +209,28 @@
+ 	vqmmc-supply = <&mt6323_vio18_reg>;
+ };
+ 
++&pcie {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie_default>;
++	status = "okay";
++
++	pcie@0,0 {
++		status = "okay";
++	};
++
++	pcie@1,0 {
++		status = "okay";
++	};
++};
++
++&pcie0_phy {
++	status = "okay";
++};
++
++&pcie1_phy {
++	status = "okay";
++};
++
+ &pio {
+ 	cir_pins_a:cir@0 {
+ 		pins_cir {
+@@ -376,6 +398,14 @@
+ 		};
+ 	};
+ 
++	pcie_default: pcie_pin_default {
++		pins_cmd_dat {
++			pinmux = <MT7623_PIN_208_AUD_EXT_CK1_FUNC_PCIE0_PERST_N>,
++				 <MT7623_PIN_209_AUD_EXT_CK2_FUNC_PCIE1_PERST_N>;
++			bias-disable;
++		};
++	};
++
+ 	pwm_pins_a: pwm@0 {
+ 		pins_pwm {
+ 			pinmux = <MT7623_PIN_203_PWM0_FUNC_PWM0>,
+-- 
+1.9.1
