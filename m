@@ -1,113 +1,39 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH] dt-bindings: PCI: MediaTek: fix dtc warnings
-Date: Wed, 14 Feb 2018 11:27:58 +0800
-Message-ID: <9940757fe2889f46d0de214c5f277bf3c2074205.1518577579.git.ryder.lee@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v2 1/2] dt-bindings: thermal: add binding for MT7622 SoC
+Date: Sat, 17 Feb 2018 16:49:01 +0800
+Message-ID: <c72262a17332a227aa2db39b682db50e2324821a.1518856935.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: robh+dt@kernel.org, rui.zhang@intel.com, edubezval@gmail.com
+Cc: devicetree@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Shunli Wang <shunli.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-dtc recently added PCI bus checks. Fix these warnings:
+From: Sean Wang <sean.wang@mediatek.com>
 
-Warning (pci_bridge): Node /pcie@1a140000/pcie@0,0 missing bus-range for PCI bridge
-Warning (pci_bridge): Node /pcie@1a140000/pcie@1,0 missing bus-range for PCI bridge
-Warning (pci_bridge): Node /pcie@1a140000/pcie@2,0 missing bus-range for PCI bridge
-Warning (unit_address_format): Failed prerequisite 'pci_bridge'
-Warning (pci_device_reg): Failed prerequisite 'pci_bridge'
-Warning (pci_device_bus_num): Failed prerequisite 'pci_bridge'
+Add devicetree bindings for MediaTek MT7622 thermal controller
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Changes v1 -> v2: add tag from Rob
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Shunli Wang <shunli.wang@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- Documentation/devicetree/bindings/pci/mediatek-pcie.txt | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
+ Documentation/devicetree/bindings/thermal/mediatek-thermal.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-index 3a6ce55..20227a8 100644
---- a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-@@ -78,7 +78,7 @@ Examples for MT7623:
- 		#reset-cells = <1>;
- 	};
- 
--	pcie: pcie-controller@1a140000 {
-+	pcie: pcie@1a140000 {
- 		compatible = "mediatek,mt7623-pcie";
- 		device_type = "pci";
- 		reg = <0 0x1a140000 0 0x1000>, /* PCIe shared registers */
-@@ -111,7 +111,6 @@ Examples for MT7623:
- 			  0x83000000 0 0x60000000 0 0x60000000 0 0x10000000>;	/* memory space */
- 
- 		pcie@0,0 {
--			device_type = "pci";
- 			reg = <0x0000 0 0 0 0>;
- 			#address-cells = <3>;
- 			#size-cells = <2>;
-@@ -123,7 +122,6 @@ Examples for MT7623:
- 		};
- 
- 		pcie@1,0 {
--			device_type = "pci";
- 			reg = <0x0800 0 0 0 0>;
- 			#address-cells = <3>;
- 			#size-cells = <2>;
-@@ -135,7 +133,6 @@ Examples for MT7623:
- 		};
- 
- 		pcie@2,0 {
--			device_type = "pci";
- 			reg = <0x1000 0 0 0 0>;
- 			#address-cells = <3>;
- 			#size-cells = <2>;
-@@ -148,6 +145,7 @@ Examples for MT7623:
- 	};
- 
- Examples for MT2712:
-+
- 	pcie: pcie@11700000 {
- 		compatible = "mediatek,mt2712-pcie";
- 		device_type = "pci";
-@@ -169,7 +167,6 @@ Examples for MT2712:
- 		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x10000000>;
- 
- 		pcie0: pcie@0,0 {
--			device_type = "pci";
- 			reg = <0x0000 0 0 0 0>;
- 			#address-cells = <3>;
- 			#size-cells = <2>;
-@@ -189,7 +186,6 @@ Examples for MT2712:
- 		};
- 
- 		pcie1: pcie@1,0 {
--			device_type = "pci";
- 			reg = <0x0800 0 0 0 0>;
- 			#address-cells = <3>;
- 			#size-cells = <2>;
-@@ -210,6 +206,7 @@ Examples for MT2712:
- 	};
- 
- Examples for MT7622:
-+
- 	pcie: pcie@1a140000 {
- 		compatible = "mediatek,mt7622-pcie";
- 		device_type = "pci";
-@@ -243,7 +240,6 @@ Examples for MT7622:
- 		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x10000000>;
- 
- 		pcie0: pcie@0,0 {
--			device_type = "pci";
- 			reg = <0x0000 0 0 0 0>;
- 			#address-cells = <3>;
- 			#size-cells = <2>;
-@@ -263,7 +259,6 @@ Examples for MT7622:
- 		};
- 
- 		pcie1: pcie@1,0 {
--			device_type = "pci";
- 			reg = <0x0800 0 0 0 0>;
- 			#address-cells = <3>;
- 			#size-cells = <2>;
+diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+index 0d73ea5..41d6a44 100644
+--- a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
++++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+@@ -12,6 +12,7 @@ Required properties:
+   - "mediatek,mt8173-thermal" : For MT8173 family of SoCs
+   - "mediatek,mt2701-thermal" : For MT2701 family of SoCs
+   - "mediatek,mt2712-thermal" : For MT2712 family of SoCs
++  - "mediatek,mt7622-thermal" : For MT7622 SoC
+ - reg: Address range of the thermal controller
+ - interrupts: IRQ for the thermal controller
+ - clocks, clock-names: Clocks needed for the thermal controller. required
 -- 
-1.9.1
+2.7.4
