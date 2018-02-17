@@ -1,96 +1,75 @@
 From: <sean.wang@mediatek.com>
-Subject: [PATCH v2 2/2] thermal: mediatek: add support for MT7622 SoC
-Date: Sat, 17 Feb 2018 16:49:02 +0800
-Message-ID: <5030064e79d65b812e3c71118bf10aa197928418.1518856935.git.sean.wang@mediatek.com>
-References: <c72262a17332a227aa2db39b682db50e2324821a.1518856935.git.sean.wang@mediatek.com>
+Subject: [PATCH v5 0/3] add support for Mediatek High-Speed DMA controller on MT7622 and MT7623 SoC
+Date: Sun, 18 Feb 2018 03:08:28 +0800
+Message-ID: <cover.1518857746.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <c72262a17332a227aa2db39b682db50e2324821a.1518856935.git.sean.wang@mediatek.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: robh+dt@kernel.org, rui.zhang@intel.com, edubezval@gmail.com
-Cc: devicetree@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Shunli Wang <shunli.wang@mediatek.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: vinod.koul@intel.com, dan.j.williams@intel.com, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-MT7622 SoC has built-in thermal controller with one sensing point, the
-patch just is to extend the functionality of the existing logic.
+Changes since v4:
+- rebase to 4.16-rc1
+- fold back patch 4 and 5 in v4 into the original commit
+- add the missing header included
+- fix typo and add more explanation in existing comments
+- fix the comments with kernel-doc style which uses /** as the begin
+- begin the multi-line comments with /*
 
-Changes v1 -> v2: rebase to 4.16-rc1
+Changes since v3:
+- enhance dt-binding documents based on Rob's comments
+- make consistent among all comments
+- perfer ordering declarations longest to shortest
+- fix warning reported from kbuild test robot
+- add patch 4 and 5 to keep Fengguang and Julia's effort
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Shunli Wang <shunli.wang@mediatek.com>
----
- drivers/thermal/mtk_thermal.c | 35 +++++++++++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+Changes since v2:
+- remove extra tasklets and refactor driver for letting descriptors being processed ASAP.
+- add more comments stating the relevant logic
+- remove unused macro and variables
+- change to use the disclaimer with SPDX identifier
+- add mt7622 support
+- refine hardware initialization sequence
+- add tx_status support for DMA_RESIDUE_GRANULARITY_SEGMENT
+- refine remove handler with killing vc's tasklet
 
-diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-index c75661a..e709acb 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mtk_thermal.c
-@@ -153,6 +153,12 @@
- /* The number of sensing points per bank */
- #define MT2712_NUM_SENSORS_PER_ZONE	4
- 
-+#define MT7622_TEMP_AUXADC_CHANNEL	11
-+#define MT7622_NUM_SENSORS		1
-+#define MT7622_NUM_ZONES		1
-+#define MT7622_NUM_SENSORS_PER_ZONE	1
-+#define MT7622_TS1	0
-+
- struct mtk_thermal;
- 
- struct thermal_bank_cfg {
-@@ -242,6 +248,12 @@ static const int mt2712_adcpnp[MT2712_NUM_SENSORS_PER_ZONE] = {
- 
- static const int mt2712_mux_values[MT2712_NUM_SENSORS] = { 0, 1, 2, 3 };
- 
-+/* MT7622 thermal sensor data */
-+static const int mt7622_bank_data[MT7622_NUM_SENSORS] = { MT7622_TS1, };
-+static const int mt7622_msr[MT7622_NUM_SENSORS_PER_ZONE] = { TEMP_MSR0, };
-+static const int mt7622_adcpnp[MT7622_NUM_SENSORS_PER_ZONE] = { TEMP_ADCPNP0, };
-+static const int mt7622_mux_values[MT7622_NUM_SENSORS] = { 0, };
-+
- /**
-  * The MT8173 thermal controller has four banks. Each bank can read up to
-  * four temperature sensors simultaneously. The MT8173 has a total of 5
-@@ -329,6 +341,25 @@ static const struct mtk_thermal_data mt2712_thermal_data = {
- 	.sensor_mux_values = mt2712_mux_values,
- };
- 
-+/*
-+ * MT7622 have only one sensing point which uses AUXADC Channel 11 for raw data
-+ * access.
-+ */
-+static const struct mtk_thermal_data mt7622_thermal_data = {
-+	.auxadc_channel = MT7622_TEMP_AUXADC_CHANNEL,
-+	.num_banks = MT7622_NUM_ZONES,
-+	.num_sensors = MT7622_NUM_SENSORS,
-+	.bank_data = {
-+		{
-+			.num_sensors = 1,
-+			.sensors = mt7622_bank_data,
-+		},
-+	},
-+	.msr = mt7622_msr,
-+	.adcpnp = mt7622_adcpnp,
-+	.sensor_mux_values = mt7622_mux_values,
-+};
-+
- /**
-  * raw_to_mcelsius - convert a raw ADC value to mcelsius
-  * @mt:		The thermal controller
-@@ -631,6 +662,10 @@ static const struct of_device_id mtk_thermal_of_match[] = {
- 	{
- 		.compatible = "mediatek,mt2712-thermal",
- 		.data = (void *)&mt2712_thermal_data,
-+	},
-+	{
-+		.compatible = "mediatek,mt7622-thermal",
-+		.data = (void *)&mt7622_thermal_data,
- 	}, {
- 	},
- };
+Changes since v1:
+- fix typo in the commit message.
+- delete status shown in the dt-binding example.
+
+This patchset introduces support for MediaTek High-Speed DMA controller
+(MTK-HSDMA) Currently, the driver is already tested successfully with
+dmatest module on MT7622 and MT7623 SoC. 
+
+MTK-HSDMA on MT7622/23 SoC has a single ring which is dedicated for
+doing memory-to-memory transfer through ring-based descriptor management.
+Even though there is only a single ring available inside HSDMA, the
+driver is being extended to the support for multiple virtual channels
+processing simultaneously by means of DMA_VIRTUAL_CHANNELS.
+
+Sean Wang (3):
+  dt-bindings: dmaengine: Add MediaTek High-Speed DMA controller
+    bindings
+  dmaengine: mediatek: Add MediaTek High-Speed DMA controller for MT7622
+    and MT7623 SoC
+  dmaengine: mediatek: update MAINTAINERS entry with MediaTek DMA driver
+
+ .../devicetree/bindings/dma/mtk-hsdma.txt          |   33 +
+ MAINTAINERS                                        |    9 +
+ drivers/dma/Kconfig                                |    2 +
+ drivers/dma/Makefile                               |    1 +
+ drivers/dma/mediatek/Kconfig                       |   13 +
+ drivers/dma/mediatek/Makefile                      |    1 +
+ drivers/dma/mediatek/mtk-hsdma.c                   | 1054 ++++++++++++++++++++
+ 7 files changed, 1113 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/dma/mtk-hsdma.txt
+ create mode 100644 drivers/dma/mediatek/Kconfig
+ create mode 100644 drivers/dma/mediatek/Makefile
+ create mode 100644 drivers/dma/mediatek/mtk-hsdma.c
+
 -- 
 2.7.4
