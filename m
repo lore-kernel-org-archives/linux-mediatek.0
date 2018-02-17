@@ -1,56 +1,54 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v5 3/3] dmaengine: mediatek: update MAINTAINERS entry with
- MediaTek DMA driver
-Date: Sun, 18 Feb 2018 03:08:31 +0800
-Message-ID: <4ebffd841fc3b2093fb35c3d10b8b167a9e42bcc.1518857747.git.sean.wang@mediatek.com>
-References: <cover.1518857746.git.sean.wang@mediatek.com>
+From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
+Subject: Re: Questions about bringing up MT7623 board
+Date: Sat, 17 Feb 2018 20:10:36 +0100
+Message-ID: <186a59b8-6be1-cb48-8682-c795947bfde5@suse.de>
+References: <CAKfDRXhhrndoKMidZYsw=E8BmS7AFsTJHbS4dcYbEoADhjD44Q@mail.gmail.com>
+ <CAKfDRXg0jeHP9xZRGDNm5tfW1afZd-TPfwbwUzEPiWsy_bfuUQ@mail.gmail.com>
+ <fc2bf32a-eb81-6cd1-9085-b8786ddf0f9c@phrozen.org>
+ <CAKfDRXjpG4CNeHfKC1Kg=6mrqUTZ8A7bD1aivLkSQ2L0eK755Q@mail.gmail.com>
+ <6ae4103b-45bf-c427-d0d9-87f6f4eb83b5@phrozen.org>
+ <CAKfDRXiJCMpA+qj4HmoSg0F_Yt4LnjQ=Dvy_tkxa=Dnh_pN13g@mail.gmail.com>
+ <a594ffaa-4098-4171-f824-1aa3f332c9fc@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <cover.1518857746.git.sean.wang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: vinod.koul@intel.com, dan.j.williams@intel.com, robh+dt@kernel.org, mark.rutland@arm.com
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <a594ffaa-4098-4171-f824-1aa3f332c9fc-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
-
-I work for MediaTek and maintain SoC targeting to home gateway and
-also will keep extending and testing the function.
-
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- MAINTAINERS | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 3bdc260..d3c33d7 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -8785,6 +8785,15 @@ M:	Sean Wang <sean.wang@mediatek.com>
- S:	Maintained
- F:	drivers/media/rc/mtk-cir.c
- 
-+MEDIATEK DMA DRIVER
-+M:	Sean Wang <sean.wang@mediatek.com>
-+L:	dmaengine@vger.kernel.org
-+L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
-+L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
-+S:	Maintained
-+F:	Documentation/devicetree/bindings/dma/mtk-*
-+F:	drivers/dma/mediatek/
-+
- MEDIATEK PMIC LED DRIVER
- M:	Sean Wang <sean.wang@mediatek.com>
- S:	Maintained
--- 
-2.7.4
+SGkgTWF0dGhpYXMsCgpBbSAxMi4wMi4yMDE4IHVtIDEyOjA4IHNjaHJpZWIgTWF0dGhpYXMgQnJ1
+Z2dlcjoKPiBPbiAwMi8xMS8yMDE4IDExOjU1IEFNLCBLcmlzdGlhbiBFdmVuc2VuIHdyb3RlOgo+
+PiBPbiBTdW4sIEZlYiAxMSwgMjAxOCBhdCAxMTo0MSBBTSwgSm9obiBDcmlzcGluIDxqb2huQHBo
+cm96ZW4ub3JnPiB3cm90ZToKPj4+IElzIEVhcmx5cHJpbmt0IGVuYWJsZWQgaW4gdGhlIGtlcm5l
+bCAuY29uZmlnID8KPj4KPj4gTm8sIHR1cm5zIG91dCBDT05GSUdfRUFSTFlfUFJJTlRLIHdhcyBu
+b3QgZW5hYmxlZC4gVGhpcyBpcyB0aGUgZmlyc3QKPj4gdGltZSBJIGFtIHRyeWluZyB0byBhZGQg
+c3VwcG9ydCBmb3IgYSBib2FyZCBvdXRpc2RlIHRoZSBzYWZlIHdhbGxzIG9mCj4+IE9wZW5XUlQs
+IHNvIHNvcnJ5IGZvciBzdWNoIGEgcm9va2llIG1pc3Rha2UuCj4+Cj4gCj4gTW9yZSB0aGVuIGEg
+cm9va2llIG1pc3Rha2UgZm9yIG1lIGl0J3Mga2luZCBvZiBhbiBvdmVybG9vayB3aGljaCBjYW4g
+Y29zdCB5b3UKPiBoYWxmIGEgZGF5LiBUaGlzIGtpbmQgb2YgZXJyb3JzIGF0IGxlYXN0IHRvIG1l
+IHRoZXkgaGFwcGVucyBvbiBhIHNlbWktcmVndWxhcgo+IGJhc2lzIDopCgpJcyB0aGVyZSBzb21l
+IHByb2JsZW0gd2l0aCB1c2luZyBlYXJseWNvbiBvbiBNZWRpYXRlaz8gVGhhdCBzaG91bGQgYXZv
+aWQKdGlua2VyaW5nIHdpdGggZWFybHlwcmludGsgS2NvbmZpZyBvcHRpb25zLgoKaHR0cHM6Ly9n
+aXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMvbGludXguZ2l0
+L3RyZWUvZHJpdmVycy90dHkvc2VyaWFsLzgyNTAvODI1MF9tdGsuYwoKVGhlIG10azgyNTAgZWFy
+bHljb24gb3B0aW9uIGlzIG5vdCBkb2N1bWVudGVkIGZvciB1c2VyczoKCmh0dHBzOi8vZ2l0Lmtl
+cm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC9wbGFp
+bi9Eb2N1bWVudGF0aW9uL2FkbWluLWd1aWRlL2tlcm5lbC1wYXJhbWV0ZXJzLnR4dAoKUmVnYXJk
+cywKQW5kcmVhcwoKLS0gClNVU0UgTGludXggR21iSCwgTWF4ZmVsZHN0ci4gNSwgOTA0MDkgTsO8
+cm5iZXJnLCBHZXJtYW55CkdGOiBGZWxpeCBJbWVuZMO2cmZmZXIsIEphbmUgU21pdGhhcmQsIEdy
+YWhhbSBOb3J0b24KSFJCIDIxMjg0IChBRyBOw7xybmJlcmcpCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QK
+TGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
