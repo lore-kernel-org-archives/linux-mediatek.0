@@ -1,14 +1,16 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH] dt-bindings: PCI: MediaTek: fix dtc warnings
-Date: Sun, 18 Feb 2018 21:10:59 -0600
-Message-ID: <20180219031059.jdv3q4big6c4ra7p@rob-hp-laptop>
-References: <9940757fe2889f46d0de214c5f277bf3c2074205.1518577579.git.ryder.lee@mediatek.com>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH v3 06/15] arm64: dts: mt7622: add cpufreq related device
+ nodes
+Date: Mon, 19 Feb 2018 09:08:33 +0530
+Message-ID: <20180219033833.GG28462@vireshk-i7>
+References: <cover.1518895232.git.sean.wang@mediatek.com>
+ <2cf761c2a20a8ff8a9208ddf3872f10f6f3198f5.1518895232.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <9940757fe2889f46d0de214c5f277bf3c2074205.1518577579.git.ryder.lee@mediatek.com>
+In-Reply-To: <2cf761c2a20a8ff8a9208ddf3872f10f6f3198f5.1518895232.git.sean.wang@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -18,23 +20,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
+To: sean.wang@mediatek.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Feb 14, 2018 at 11:27:58AM +0800, Ryder Lee wrote:
-> dtc recently added PCI bus checks. Fix these warnings:
+On 18-02-18, 03:54, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Warning (pci_bridge): Node /pcie@1a140000/pcie@0,0 missing bus-range for PCI bridge
-> Warning (pci_bridge): Node /pcie@1a140000/pcie@1,0 missing bus-range for PCI bridge
-> Warning (pci_bridge): Node /pcie@1a140000/pcie@2,0 missing bus-range for PCI bridge
-> Warning (unit_address_format): Failed prerequisite 'pci_bridge'
-> Warning (pci_device_reg): Failed prerequisite 'pci_bridge'
-> Warning (pci_device_bus_num): Failed prerequisite 'pci_bridge'
+> Add clocks, regulators and opp information into cpu nodes.
+> In addition, the power supply for cpu nodes is deployed on
+> mt7622-rfb1 board.
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Cc: Viresh Kumar <viresh.kumar@linaro.org>
 > ---
->  Documentation/devicetree/bindings/pci/mediatek-pcie.txt | 11 +++--------
->  1 file changed, 3 insertions(+), 8 deletions(-)
+>  arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts | 12 +++++++
+>  arch/arm64/boot/dts/mediatek/mt7622.dtsi     | 52 ++++++++++++++++++++++++++++
+>  2 files changed, 64 insertions(+)
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+
+-- 
+viresh
