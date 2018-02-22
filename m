@@ -1,85 +1,55 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH] lib/dma-debug.c: fix memory leakage
-Date: Thu, 22 Feb 2018 14:04:17 +0000
-Message-ID: <6df7e9bd-2203-0692-97e4-8c6434304b0f@arm.com>
-References: <1519298540-3071-1-git-send-email-miles.chen@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v3 7/7] watchdog: coh901327: make use of timeout-secs
+ provided in devicetree
+Date: Thu, 22 Feb 2018 15:01:30 +0100
+Message-ID: <CACRpkdZzw+3DPvS7VOUzghmSgDTgDeCZ2i+FE=DCE+R5i1qycQ@mail.gmail.com>
+References: <20180211200847.25000-1-marcus.folkesson@gmail.com>
+ <20180211200847.25000-7-marcus.folkesson@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1519298540-3071-1-git-send-email-miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-GB
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Christoph Hellwig <hch-jcswGhMUV9g@public.gmane.org>, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180211200847.25000-7-marcus.folkesson@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Marcus Folkesson <marcus.folkesson@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Barry Song <baohua@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, LINUXWATCHDOG <linux-watchdog@vger.kernel.org>, Kevin Hilman <khilman@baylibre.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Chen-Yu Tsai <wens@csie.org>, Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>, Wim Van Sebroeck <wim@iguana.be>, Rob Herring <robh+dt@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Carlo Caione <carlo@caione.org>, "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, Guenter
 List-Id: linux-mediatek@lists.infradead.org
 
-On 22/02/18 11:22, miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> Marty reported a memory leakage introduced by commit 3aaabbf1c39e
-> ("lib/dma-debug.c: fix incorrect pfn calculation"). Fix it
-> by checking the virtual address before allocating the entry.
+On Sun, Feb 11, 2018 at 9:08 PM, Marcus Folkesson
+<marcus.folkesson@gmail.com> wrote:
 
-Oops, seems I failed to look closely enough at the surrounding diff 
-context when I reviewed the original patch... :(
-
-> This patch also use virt_addr_valid() instead of virt_to_page()
-> to check if a virtual address is linear.
-
-That's an area I happen to have been looking at lately and now 
-understand a lot better, so fully agreed there as well.
-
-Acked-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-
-Maybe also worth having a proper Fixes: tag instead of just naming the 
-commit in prose?
-
-Thanks,
-Robin.
-
-> Reported-by: Marty Faltesek <mfaltesek-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-> Signed-off-by: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> watchdog_init_timeout() will allways pick timeout_param since it
+> defaults to a valid timeout.
+>
+> Following best practice described in
+> Documentation/watchdog/watchdog-kernel-api.txt to make use of
+> the parameter logic.
+>
+> Signed-off-by: Marcus Folkesson <marcus.folkesson@gmail.com>
 > ---
->   lib/dma-debug.c | 10 +++++-----
->   1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/lib/dma-debug.c b/lib/dma-debug.c
-> index 1b34d210452c..7f5cdc1e6b29 100644
-> --- a/lib/dma-debug.c
-> +++ b/lib/dma-debug.c
-> @@ -1491,12 +1491,12 @@ void debug_dma_alloc_coherent(struct device *dev, size_t size,
->   	if (unlikely(virt == NULL))
->   		return;
->   
-> -	entry = dma_entry_alloc();
-> -	if (!entry)
-> +	/* handle vmalloc and linear addresses */
-> +	if (!is_vmalloc_addr(virt) && !virt_addr_valid(virt))
->   		return;
->   
-> -	/* handle vmalloc and linear addresses */
-> -	if (!is_vmalloc_addr(virt) && !virt_to_page(virt))
-> +	entry = dma_entry_alloc();
-> +	if (!entry)
->   		return;
->   
->   	entry->type      = dma_debug_coherent;
-> @@ -1528,7 +1528,7 @@ void debug_dma_free_coherent(struct device *dev, size_t size,
->   	};
->   
->   	/* handle vmalloc and linear addresses */
-> -	if (!is_vmalloc_addr(virt) && !virt_to_page(virt))
-> +	if (!is_vmalloc_addr(virt) && !virt_addr_valid(virt))
->   		return;
->   
->   	if (is_vmalloc_addr(virt))
-> 
+>
+> Notes:
+>     v3:
+>         - Reformat and use coh901327_wdt.timeout instead of margin when print out
+>           timout in probe function.
+>
+>     v2:
+>         - Set .timeout in coh901327_wdt structure declaration.
+>         - Set .min_timeout to 1 instead of 0. I could not find a datasheet
+>           for coh901327, so I'm not sure if 0 is valid. However, 0 seems
+>           wrong to me and most driver has 1 as min value. If it should
+>           be 0, please let me know and I have to set another initial
+>           value for margin.
+
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+
+Yours,
+Linus Walleij
