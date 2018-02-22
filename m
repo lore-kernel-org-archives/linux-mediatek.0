@@ -1,44 +1,68 @@
-From: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: [PATCH] cpufreq: mediatek: Convert pr_warn() to pr_debug()
-Date: Thu, 22 Feb 2018 11:26:31 +0530
-Message-ID: <5bc4db542fa521c32d295f490a1ad1dadf715098.1519278976.git.viresh.kumar@linaro.org>
+From: <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] lib/dma-debug.c: fix memory leakage
+Date: Thu, 22 Feb 2018 19:22:20 +0800
+Message-ID: <1519298540-3071-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rafael Wysocki <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Vincent Guittot <vincent.guittot-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Christoph Hellwig <hch-jcswGhMUV9g@public.gmane.org>, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-With multi-platform build images, this shows a message on non mediatek
-platforms, which is unnecessary. Convert pr_warn() to pr_debug() here.
+From: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Signed-off-by: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Marty reported a memory leakage introduced by commit 3aaabbf1c39e
+("lib/dma-debug.c: fix incorrect pfn calculation"). Fix it
+by checking the virtual address before allocating the entry.
+
+This patch also use virt_addr_valid() instead of virt_to_page()
+to check if a virtual address is linear.
+
+Reported-by: Marty Faltesek <mfaltesek-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Signed-off-by: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/cpufreq/mediatek-cpufreq.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ lib/dma-debug.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index 8c04dddd3c28..84d658d57029 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -578,7 +578,7 @@ static int __init mtk_cpufreq_driver_init(void)
- 	match = of_match_node(mtk_cpufreq_machines, np);
- 	of_node_put(np);
- 	if (!match) {
--		pr_warn("Machine is not compatible with mtk-cpufreq\n");
-+		pr_debug("Machine is not compatible with mtk-cpufreq\n");
- 		return -ENODEV;
- 	}
+diff --git a/lib/dma-debug.c b/lib/dma-debug.c
+index 1b34d210452c..7f5cdc1e6b29 100644
+--- a/lib/dma-debug.c
++++ b/lib/dma-debug.c
+@@ -1491,12 +1491,12 @@ void debug_dma_alloc_coherent(struct device *dev, size_t size,
+ 	if (unlikely(virt == NULL))
+ 		return;
  
+-	entry = dma_entry_alloc();
+-	if (!entry)
++	/* handle vmalloc and linear addresses */
++	if (!is_vmalloc_addr(virt) && !virt_addr_valid(virt))
+ 		return;
+ 
+-	/* handle vmalloc and linear addresses */
+-	if (!is_vmalloc_addr(virt) && !virt_to_page(virt))
++	entry = dma_entry_alloc();
++	if (!entry)
+ 		return;
+ 
+ 	entry->type      = dma_debug_coherent;
+@@ -1528,7 +1528,7 @@ void debug_dma_free_coherent(struct device *dev, size_t size,
+ 	};
+ 
+ 	/* handle vmalloc and linear addresses */
+-	if (!is_vmalloc_addr(virt) && !virt_to_page(virt))
++	if (!is_vmalloc_addr(virt) && !virt_addr_valid(virt))
+ 		return;
+ 
+ 	if (is_vmalloc_addr(virt))
 -- 
-2.15.0.194.g9af6a3dea062
+2.12.5
