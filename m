@@ -1,62 +1,101 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: [PATCH] [v4.15-stable] arm64: dts: add #cooling-cells to CPU nodes
-Date: Wed, 21 Feb 2018 17:29:19 +0100
-Message-ID: <20180221162934.2728048-1-arnd@arndb.de>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v3 3/7] watchdog: sirfsoc: allow setting timeout in
+ devicetree
+Date: Wed, 21 Feb 2018 18:02:02 -0600
+Message-ID: <CAL_Jsq+kQza8ouKCreOapno42iSBiG0SwLjJqziv_23cmFxJxw@mail.gmail.com>
+References: <20180211200847.25000-1-marcus.folkesson@gmail.com>
+ <20180211200847.25000-3-marcus.folkesson@gmail.com>
+ <20180219000735.i5i3gne4idzzhxot@rob-hp-laptop>
+ <e318fd7a-f855-d0c0-ae6f-86bd48f58e1f@roeck-us.net>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <e318fd7a-f855-d0c0-ae6f-86bd48f58e1f@roeck-us.net>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Guenter Roeck <linux@roeck-us.net>, Marcus Folkesson <marcus.folkesson@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Barry Song <baohua@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, LINUX-WATCHDOG <linux-watchdog@vger.kernel.org>, Kevin Hilman <khilman@baylibre.com>, Linus Walleij <linus.walleij@linaro.org>, linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>, Wim Van Sebroeck <wim@iguana.be>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Carlo Caione <carlo@caione.org>, linux-amlogic@lists.infradead.org, Maxime Ripard <maxime.ripard@free-electrons.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-commit acbf76ee05067c3942852019993f7beb69a0f45f upstream.
+On Sun, Feb 18, 2018 at 7:07 PM, Guenter Roeck <linux@roeck-us.net> wrote:
+> On 02/18/2018 04:07 PM, Rob Herring wrote:
+>>
+>> On Sun, Feb 11, 2018 at 09:08:43PM +0100, Marcus Folkesson wrote:
+>>>
+>>> watchdog_init_timeout() will allways pick timeout_param since it
+>>> defaults to a valid timeout.
+>>>
+>>> By following best practice described in
+>>> Documentation/watchdog/watchdog-kernel-api.txt, it also
+>>> let us to set timout-sec property in devicetree.
+>>
+>>
+>> typo
+>>
+>>>
+>>> Signed-off-by: Marcus Folkesson <marcus.folkesson@gmail.com>
+>>> Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+>>> ---
+>>>   Documentation/devicetree/bindings/watchdog/sirfsoc_wdt.txt | 4 ++++
+>>>   drivers/watchdog/sirfsoc_wdt.c                             | 2 +-
+>>>   2 files changed, 5 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/watchdog/sirfsoc_wdt.txt
+>>> b/Documentation/devicetree/bindings/watchdog/sirfsoc_wdt.txt
+>>> index 9cbc76c89b2b..0dce5e3100b4 100644
+>>> --- a/Documentation/devicetree/bindings/watchdog/sirfsoc_wdt.txt
+>>> +++ b/Documentation/devicetree/bindings/watchdog/sirfsoc_wdt.txt
+>>> @@ -5,10 +5,14 @@ Required properties:
+>>>   - reg: Address range of tick timer/WDT register set
+>>>   - interrupts: interrupt number to the cpu
+>>>   +Optional properties:
+>>> +- timeout-sec : Contains the watchdog timeout in seconds
+>>> +
+>>>   Example:
+>>>     timer@b0020000 {
+>>>         compatible = "sirf,prima2-tick";
+>>>         reg = <0xb0020000 0x1000>;
+>>>         interrupts = <0>;
+>>> +       timeout-sec = <30>;
+>>>   };
+>>> diff --git a/drivers/watchdog/sirfsoc_wdt.c
+>>> b/drivers/watchdog/sirfsoc_wdt.c
+>>> index 4eea351e09b0..ac0c9d2c4aee 100644
+>>> --- a/drivers/watchdog/sirfsoc_wdt.c
+>>> +++ b/drivers/watchdog/sirfsoc_wdt.c
+>>> @@ -29,7 +29,7 @@
+>>>   #define SIRFSOC_WDT_MAX_TIMEOUT               (10 * 60)       /* 10
+>>> mins */
+>>>   #define SIRFSOC_WDT_DEFAULT_TIMEOUT   30              /* 30 secs */
+>>>   -static unsigned int timeout = SIRFSOC_WDT_DEFAULT_TIMEOUT;
+>>> +static unsigned int timeout;
+>>
+>>
+>> If you have an old dtb, then you still need the default.
+>>
+>
+> No. It is optional to start with, and the driver already has
+>
+> static struct watchdog_device sirfsoc_wdd = {
+>         .info = &sirfsoc_wdt_ident,
+>         .ops = &sirfsoc_wdt_ops,
+>         .timeout = SIRFSOC_WDT_DEFAULT_TIMEOUT,                 <------
+>         .min_timeout = SIRFSOC_WDT_MIN_TIMEOUT,
+>         .max_timeout = SIRFSOC_WDT_MAX_TIMEOUT,
+> };
 
-dtc complains about the lack of #coolin-cells properties for the
-CPU nodes that are referred to as "cooling-device":
+Okay, then:
 
-arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: Warning (cooling_device_property): Missing property '#cooling-cells' in node /cpus/cpu@0 or bad phandle (referred from /thermal-zones/cpu_thermal/cooling-maps/map@0:cooling-device[0])
-arch/arm64/boot/dts/mediatek/mt8173-evb.dtb: Warning (cooling_device_property): Missing property '#cooling-cells' in node /cpus/cpu@100 or bad phandle (referred from /thermal-zones/cpu_thermal/cooling-maps/map@1:cooling-device[0])
+Reviewed-by: Rob Herring <robh@kernel.org>
 
-Apparently this property must be '<2>' to match the binding.
+for the lot.
 
-Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Tested-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-[arnd: backported to 4.15]
-Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 26396ef53bde..ea407aff1251 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -81,6 +81,7 @@
- 			reg = <0x000>;
- 			enable-method = "psci";
- 			cpu-idle-states = <&CPU_SLEEP_0>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		cpu1: cpu@1 {
-@@ -97,6 +98,7 @@
- 			reg = <0x100>;
- 			enable-method = "psci";
- 			cpu-idle-states = <&CPU_SLEEP_0>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		cpu3: cpu@101 {
--- 
-2.9.0
+Rob
