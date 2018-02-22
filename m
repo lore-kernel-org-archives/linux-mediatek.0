@@ -1,17 +1,18 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 3/7] watchdog: sirfsoc: allow setting timeout in
- devicetree
-Date: Wed, 21 Feb 2018 18:02:02 -0600
-Message-ID: <CAL_Jsq+kQza8ouKCreOapno42iSBiG0SwLjJqziv_23cmFxJxw@mail.gmail.com>
-References: <20180211200847.25000-1-marcus.folkesson@gmail.com>
- <20180211200847.25000-3-marcus.folkesson@gmail.com>
- <20180219000735.i5i3gne4idzzhxot@rob-hp-laptop>
- <e318fd7a-f855-d0c0-ae6f-86bd48f58e1f@roeck-us.net>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: Re: [SPAM]Re: [PATCH v3 4/5] dt-bindings: clock: mediatek: update
+ audsys documentation to adapt MFD device
+Date: Thu, 22 Feb 2018 12:14:38 +0800
+Message-ID: <1519272878.1907.87.camel@mtkswgap22>
+References: <cover.1518424204.git.ryder.lee@mediatek.com>
+ <61928ad523a7aeffb8f16d4caad56836b65ae407.1518424204.git.ryder.lee@mediatek.com>
+ <CAL_JsqJgo0pKJjrs2fdw+q=DJYwht0X5L3Bomz8gf98mEN7hkg@mail.gmail.com>
+ <1519193048.18794.42.camel@mtkswgap22>
+ <CAL_JsqLjcMpS=bLzAV0arLJY143O1XefjSR0djM73E8uC4oJHg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <e318fd7a-f855-d0c0-ae6f-86bd48f58e1f@roeck-us.net>
+In-Reply-To: <CAL_JsqLjcMpS=bLzAV0arLJY143O1XefjSR0djM73E8uC4oJHg@mail.gmail.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -21,81 +22,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Guenter Roeck <linux@roeck-us.net>, Marcus Folkesson <marcus.folkesson@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Barry Song <baohua@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, LINUX-WATCHDOG <linux-watchdog@vger.kernel.org>, Kevin Hilman <khilman@baylibre.com>, Linus Walleij <linus.walleij@linaro.org>, linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>, Wim Van Sebroeck <wim@iguana.be>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Carlo Caione <carlo@caione.org>, linux-amlogic@lists.infradead.org, Maxime Ripard <maxime.ripard@free-electrons.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
+To: Rob Herring <robh+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, Garlic Tseng <garlic.tseng@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-clk <linux-clk@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM
+ ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Feb 18, 2018 at 7:07 PM, Guenter Roeck <linux@roeck-us.net> wrote:
-> On 02/18/2018 04:07 PM, Rob Herring wrote:
->>
->> On Sun, Feb 11, 2018 at 09:08:43PM +0100, Marcus Folkesson wrote:
->>>
->>> watchdog_init_timeout() will allways pick timeout_param since it
->>> defaults to a valid timeout.
->>>
->>> By following best practice described in
->>> Documentation/watchdog/watchdog-kernel-api.txt, it also
->>> let us to set timout-sec property in devicetree.
->>
->>
->> typo
->>
->>>
->>> Signed-off-by: Marcus Folkesson <marcus.folkesson@gmail.com>
->>> Reviewed-by: Guenter Roeck <linux@roeck-us.net>
->>> ---
->>>   Documentation/devicetree/bindings/watchdog/sirfsoc_wdt.txt | 4 ++++
->>>   drivers/watchdog/sirfsoc_wdt.c                             | 2 +-
->>>   2 files changed, 5 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/Documentation/devicetree/bindings/watchdog/sirfsoc_wdt.txt
->>> b/Documentation/devicetree/bindings/watchdog/sirfsoc_wdt.txt
->>> index 9cbc76c89b2b..0dce5e3100b4 100644
->>> --- a/Documentation/devicetree/bindings/watchdog/sirfsoc_wdt.txt
->>> +++ b/Documentation/devicetree/bindings/watchdog/sirfsoc_wdt.txt
->>> @@ -5,10 +5,14 @@ Required properties:
->>>   - reg: Address range of tick timer/WDT register set
->>>   - interrupts: interrupt number to the cpu
->>>   +Optional properties:
->>> +- timeout-sec : Contains the watchdog timeout in seconds
->>> +
->>>   Example:
->>>     timer@b0020000 {
->>>         compatible = "sirf,prima2-tick";
->>>         reg = <0xb0020000 0x1000>;
->>>         interrupts = <0>;
->>> +       timeout-sec = <30>;
->>>   };
->>> diff --git a/drivers/watchdog/sirfsoc_wdt.c
->>> b/drivers/watchdog/sirfsoc_wdt.c
->>> index 4eea351e09b0..ac0c9d2c4aee 100644
->>> --- a/drivers/watchdog/sirfsoc_wdt.c
->>> +++ b/drivers/watchdog/sirfsoc_wdt.c
->>> @@ -29,7 +29,7 @@
->>>   #define SIRFSOC_WDT_MAX_TIMEOUT               (10 * 60)       /* 10
->>> mins */
->>>   #define SIRFSOC_WDT_DEFAULT_TIMEOUT   30              /* 30 secs */
->>>   -static unsigned int timeout = SIRFSOC_WDT_DEFAULT_TIMEOUT;
->>> +static unsigned int timeout;
->>
->>
->> If you have an old dtb, then you still need the default.
->>
->
-> No. It is optional to start with, and the driver already has
->
-> static struct watchdog_device sirfsoc_wdd = {
->         .info = &sirfsoc_wdt_ident,
->         .ops = &sirfsoc_wdt_ops,
->         .timeout = SIRFSOC_WDT_DEFAULT_TIMEOUT,                 <------
->         .min_timeout = SIRFSOC_WDT_MIN_TIMEOUT,
->         .max_timeout = SIRFSOC_WDT_MAX_TIMEOUT,
-> };
+On Wed, 2018-02-21 at 08:10 -0600, Rob Herring wrote:
+> On Wed, Feb 21, 2018 at 12:04 AM, Ryder Lee <ryder.lee@mediatek.com> wrote:
+> > On Mon, 2018-02-19 at 12:29 -0600, Rob Herring wrote:
+> >> On Mon, Feb 12, 2018 at 5:28 AM, Ryder Lee <ryder.lee@mediatek.com> wrote:
+> >> > The MediaTek audio hardware block that exposes functionalities that are
+> >> > handled by separate subsystems in the kernel.  These functions are all
+> >> > mapped somewhere at 0x112xxxxx, and there are some control bits are mixed
+> >> > up with other functions within the same registers.
+> >>
+> >> I still don't think this change is necessary.
+> >>
+> >> Just because a hardware block in DT maps to different subsystems in a
+> >> particular OS doesn't mean you need a DT node for each OS subsystem.
+> >> What we have subsystems for changes over time and DT shouldn't really
+> >> be changing based on that. And DT is not the only way to instantiate
+> >> drivers.
+> >>
+> >
+> > Apart right now we have the definition of both functions. The other
+> > location is here:../sonud/mt2701-afe-pcm.txt. The ways I could come up
+> > with are:
+> 
+> There are several problems you need to fix. First,
+> "mediatek,mt2701-audsys" is not documented. It is only used in the
+> example. Second, bindings/arm/mediatek/mediatek,audsys.txt should move
+> to bindings/sound/ if it is only audio related functions. Or perhaps
+> just combine the 2 documents because it is all inconsistent currently.
 
-Okay, then:
+Because the series crossed subsystems but didn't apply at the same time.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+> The 2 documents are inconsistent as to what is the relationship of
+> -audsys and -audio (afe) nodes. mt2701-afe-pcm.txt shows that the AFE
+> is already a child of -audsys. The -audsys node should have
+> #clock-cells. It should also not be a simple-mfd (another
+> inconsistency in the binding) because it needs to probe first to
+> provide clocks to child nodes, and then trigger probing the child
+> nodes.
 
-for the lot.
+This is the 1st version I sent before, and the clock parts still under
+review :( .  But yes, the 2 inconsistent documents should be fixed -
+this may depend on what we end up doing with the DT appearance.
 
-Rob
+IMHO, apart from overlapping regions with other functions I didn't see
+any difference between audsys and other clock drivers (providers).
+
+For the sake of uniformity, I make the 2 sub-devices parallel and move
+"simple-mfd" to the top, and the sequences should actually be handled
+through "probe deferral mechanism" - that would make this kind of
+situations much easier to manage.
+
+BTW, I could make the AFE driver be instantiated/probed from the clock
+driver but this seems superfluous to me.  Just make sure is this what
+you want?
+
+Ryder
