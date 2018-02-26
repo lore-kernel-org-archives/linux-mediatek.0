@@ -1,45 +1,69 @@
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: Re: [PATCH v3 00/22] Verbatim device names and devm_nvmem_(un)register()
-Date: Sun, 25 Feb 2018 19:45:48 -0800
-Message-ID: <CAHQ1cqGp3jPvb1FNd9SoP_t-hzAHZazAOobrgM2yustrZ5ja6w@mail.gmail.com>
-References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
- <CAMRc=Mct60LMcr-CGJue1dTK+XNwz=dmkm2arTGeN1czeN9JoA@mail.gmail.com> <61e56a69-5722-138e-481e-44473a79b388@linaro.org>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH v1 09/19] arm: dts: mt7623: add related clock properties
+ to cpu[1-3] nodes
+Date: Mon, 26 Feb 2018 09:43:07 +0530
+Message-ID: <20180226041307.GI26947@vireshk-i7>
+References: <cover.1519378871.git.sean.wang@mediatek.com>
+ <8cfae2c1d9464cf82e431a6e0c7c275c46133578.1519378872.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <61e56a69-5722-138e-481e-44473a79b388@linaro.org>
+Content-Disposition: inline
+In-Reply-To: <8cfae2c1d9464cf82e431a6e0c7c275c46133578.1519378872.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Bartosz Golaszewski <brgl@bgdev.pl>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Chris Healy <cphealy@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+To: sean.wang@mediatek.com
+Cc: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-pm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jan 25, 2018 at 1:17 AM, Srinivas Kandagatla
-<srinivas.kandagatla@linaro.org> wrote:
->
->
-> On 24/01/18 11:13, Bartosz Golaszewski wrote:
->>>
->>>
->> Hi Srinivas,
->>
->> I don't see this series in next - is it going to miss this merge window?
->>
->
-> Thanks for your patience.
->
-> In general, I pick stuff which are sent before rc5-rc6 and send it to Greg
-> KH for inclusion in char-misc tree.
->
-> These patches will be queued for next release cycle..
->
+On 23-02-18, 18:16, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> Complement the missing clock properties cpu[1-3] should depend on.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+> Cc: Viresh Kumar <viresh.kumar@linaro.org>
+> Cc: linux-pm@vger.kernel.org
+> ---
+>  arch/arm/boot/dts/mt7623.dtsi | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index da56c54..5cf93a4 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -94,6 +94,9 @@
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a7";
+>  			reg = <0x1>;
+> +			clocks = <&infracfg CLK_INFRA_CPUSEL>,
+> +				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+> +			clock-names = "cpu", "intermediate";
+>  			operating-points-v2 = <&cpu_opp_table>;
+>  			clock-frequency = <1300000000>;
+>  		};
+> @@ -102,6 +105,9 @@
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a7";
+>  			reg = <0x2>;
+> +			clocks = <&infracfg CLK_INFRA_CPUSEL>,
+> +				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+> +			clock-names = "cpu", "intermediate";
+>  			operating-points-v2 = <&cpu_opp_table>;
+>  			clock-frequency = <1300000000>;
+>  		};
+> @@ -110,6 +116,9 @@
+>  			device_type = "cpu";
+>  			compatible = "arm,cortex-a7";
+>  			reg = <0x3>;
+> +			clocks = <&infracfg CLK_INFRA_CPUSEL>,
+> +				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+> +			clock-names = "cpu", "intermediate";
+>  			operating-points-v2 = <&cpu_opp_table>;
+>  			clock-frequency = <1300000000>;
+>  		};
 
-Srinivas:
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 
-Correct me if I am wrong, but doesn't seem like these patches made it
-to char-misc tree yet. I was recently rebasing them on top of Linus'
-master and ended up having to resolve a couple of merge conflicts, so
-would you like me to re-spin v4 on top of 4.16-rc1 (or any other
-version) and re-submit the series?
-
-Thanks,
-Andrey Smirnov
+-- 
+viresh
