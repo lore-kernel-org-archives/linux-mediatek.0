@@ -1,67 +1,45 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: [PATCH 12/27] cpufreq: mediatek: Don't validate the frequency table
- twice
-Date: Mon, 26 Feb 2018 10:38:55 +0530
-Message-ID: <19a79fac3ea680f23690e4d995539f4b21213275.1519620578.git.viresh.kumar@linaro.org>
-References: <cover.1519620578.git.viresh.kumar@linaro.org>
+From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Subject: [PATCH v2 0/4] PINCTRL: Mediatek pinctrl driver for mt2712
+Date: Mon, 26 Feb 2018 16:33:58 +0800
+Message-ID: <1519634042-12063-1-git-send-email-zhiyong.tao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <cover.1519620578.git.viresh.kumar@linaro.org>
-In-Reply-To: <cover.1519620578.git.viresh.kumar@linaro.org>
-References: <cover.1519620578.git.viresh.kumar@linaro.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rafael Wysocki <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, linux-mediatek@lists.infradead.org, Vincent Guittot <vincent.guittot@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, linus.walleij@linaro.org, mark.rutland@arm.com, matthias.bgg@gmail.com
+Cc: srv_heupstream@mediatek.com, liguo.zhang@mediatek.com, yingjoe.chen@mediatek.com, hongkun.cao@mediatek.com, biao.huang@mediatek.com, yt.shen@mediatek.com, hongzhou.yang@mediatek.com, erin.lo@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The cpufreq core is already validating the CPU frequency table after
-calling the ->init() callback of the cpufreq drivers and the drivers
-don't need to do the same anymore. Though they need to set the
-policy->freq_table field directly from the ->init() callback now.
+This series includes four patches:
+1.Add mt2712 pintcrl head file
+2.Add mt2712 pinctrl device node.
+3.Add mt2712 pinctrl driver.
+4.Support bias-disable of generic and special pins simultaneously
 
-Stop validating the frequency table from mediatek driver.
+Changes in patch v2:
+1)Separate patch4 for supporting bias-disable of generic and special pins.
+2)GPIO16~17 direction setting is changed as generic pins in mt2712 E2,
+  So remove GPIO16~17 special direction setting and remove apmixedsys node in pinctrl device node.
+3)Add pinmux define in "mt2712-pinfunc.h" and "pinctrl-mtk-mt2712.h" for mt2712 E2 design.
 
-Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
----
- drivers/cpufreq/mediatek-cpufreq.c | 11 +----------
- 1 file changed, 1 insertion(+), 10 deletions(-)
+Zhiyong Tao (4):
+  arm64: dts: mt2712: add pintcrl file
+  arm64: dts: mt2712: add pintcrl device node.
+  pinctrl: add mt2712 pinctrl driver
+  pintcrl: support bias-disable of generic and special pins
+    simultaneously
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index 84d658d57029..eb8920d39818 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -460,21 +460,12 @@ static int mtk_cpufreq_init(struct cpufreq_policy *policy)
- 		return ret;
- 	}
- 
--	ret = cpufreq_table_validate_and_show(policy, freq_table);
--	if (ret) {
--		pr_err("%s: invalid frequency table: %d\n", __func__, ret);
--		goto out_free_cpufreq_table;
--	}
--
- 	cpumask_copy(policy->cpus, &info->cpus);
-+	policy->freq_table = freq_table;
- 	policy->driver_data = info;
- 	policy->clk = info->cpu_clk;
- 
- 	return 0;
--
--out_free_cpufreq_table:
--	dev_pm_opp_free_cpufreq_table(info->cpu_dev, &freq_table);
--	return ret;
- }
- 
- static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
--- 
-2.15.0.194.g9af6a3dea062
+ arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h | 1129 ++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |   18 +
+ drivers/pinctrl/mediatek/Kconfig              |    7 +
+ drivers/pinctrl/mediatek/Makefile             |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt2712.c     |  639 ++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   13 +-
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt2712.h | 1973 +++++++++++++++++++++++++
+ 7 files changed, 3778 insertions(+), 2 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt2712.c
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt2712.h
+
+--
+1.8.1.1.dirty
