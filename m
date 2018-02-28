@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH v4 13/22] nvmem: lpc18xx_otp: Convert to use devm_nvmem_register()
-Date: Wed, 28 Feb 2018 06:40:57 -0800
-Message-ID: <20180228144106.16363-14-andrew.smirnov@gmail.com>
+Subject: [PATCH v4 12/22] nvmem: meson-efuse: Convert to use devm_nvmem_register()
+Date: Wed, 28 Feb 2018 06:40:56 -0800
+Message-ID: <20180228144106.16363-13-andrew.smirnov@gmail.com>
 References: <20180228144106.16363-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180228144106.16363-1-andrew.smirnov@gmail.com>
@@ -27,19 +27,19 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/lpc18xx_otp.c | 12 +-----------
+ drivers/nvmem/meson-efuse.c | 12 +-----------
  1 file changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/drivers/nvmem/lpc18xx_otp.c b/drivers/nvmem/lpc18xx_otp.c
-index 95268db155e9..74777bfe2dcd 100644
---- a/drivers/nvmem/lpc18xx_otp.c
-+++ b/drivers/nvmem/lpc18xx_otp.c
-@@ -86,22 +86,13 @@ static int lpc18xx_otp_probe(struct platform_device *pdev)
- 	lpc18xx_otp_nvmem_config.dev = &pdev->dev;
- 	lpc18xx_otp_nvmem_config.priv = otp;
+diff --git a/drivers/nvmem/meson-efuse.c b/drivers/nvmem/meson-efuse.c
+index a43c68f90937..66029fc85ba9 100644
+--- a/drivers/nvmem/meson-efuse.c
++++ b/drivers/nvmem/meson-efuse.c
+@@ -60,25 +60,15 @@ static int meson_efuse_probe(struct platform_device *pdev)
+ 	econfig.reg_read = meson_efuse_read;
+ 	econfig.size = size;
  
--	nvmem = nvmem_register(&lpc18xx_otp_nvmem_config);
-+	nvmem = devm_nvmem_register(&pdev->dev, &lpc18xx_otp_nvmem_config);
+-	nvmem = nvmem_register(&econfig);
++	nvmem = devm_nvmem_register(&pdev->dev, &econfig);
  	if (IS_ERR(nvmem))
  		return PTR_ERR(nvmem);
  
@@ -48,23 +48,18 @@ index 95268db155e9..74777bfe2dcd 100644
  	return 0;
  }
  
--static int lpc18xx_otp_remove(struct platform_device *pdev)
+-static int meson_efuse_remove(struct platform_device *pdev)
 -{
 -	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
 -
 -	return nvmem_unregister(nvmem);
 -}
 -
- static const struct of_device_id lpc18xx_otp_dt_ids[] = {
- 	{ .compatible = "nxp,lpc1850-otp" },
- 	{ },
-@@ -110,7 +101,6 @@ MODULE_DEVICE_TABLE(of, lpc18xx_otp_dt_ids);
- 
- static struct platform_driver lpc18xx_otp_driver = {
- 	.probe	= lpc18xx_otp_probe,
--	.remove	= lpc18xx_otp_remove,
+ static struct platform_driver meson_efuse_driver = {
+ 	.probe = meson_efuse_probe,
+-	.remove = meson_efuse_remove,
  	.driver = {
- 		.name	= "lpc18xx_otp",
- 		.of_match_table = lpc18xx_otp_dt_ids,
+ 		.name = "meson-efuse",
+ 		.of_match_table = meson_efuse_match,
 -- 
 2.14.3
