@@ -1,96 +1,65 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [SPAM]Re: [PATCH v3 4/5] dt-bindings: clock: mediatek: update
- audsys documentation to adapt MFD device
-Date: Wed, 28 Feb 2018 09:13:21 -0600
-Message-ID: <CAL_Jsq+NK-sUY-qOZ2Xv1ZfWVm-vG0tyAgN_auKeaQxMq58vkw@mail.gmail.com>
-References: <cover.1518424204.git.ryder.lee@mediatek.com>
- <61928ad523a7aeffb8f16d4caad56836b65ae407.1518424204.git.ryder.lee@mediatek.com>
- <CAL_JsqJgo0pKJjrs2fdw+q=DJYwht0X5L3Bomz8gf98mEN7hkg@mail.gmail.com>
- <1519193048.18794.42.camel@mtkswgap22>
- <CAL_JsqLjcMpS=bLzAV0arLJY143O1XefjSR0djM73E8uC4oJHg@mail.gmail.com>
- <1519272878.1907.87.camel@mtkswgap22>
+From: Samuel Holland <samuel@sholland.org>
+Subject: Re: [PATCH 3/3] mailbox: sunxi-msgbox: Add a new mailbox driver
+Date: Wed, 28 Feb 2018 11:51:59 -0600
+Message-ID: <d9e14058-6ffb-e54a-1565-f228342ee1f0@sholland.org>
+References: <20180228022714.30068-1-samuel@sholland.org>
+ <20180228022714.30068-4-samuel@sholland.org>
+ <CABb+yY2uueAK9kzXzU9DT2a4NtV3kK2dc_wtyFWTBn8=Z6Vi7Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1519272878.1907.87.camel@mtkswgap22>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: devicetree@vger.kernel.org, Garlic Tseng <garlic.tseng@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-clk <linux-clk@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CABb+yY2uueAK9kzXzU9DT2a4NtV3kK2dc_wtyFWTBn8=Z6Vi7Q@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jassi Brar <jassisinghbrar@gmail.com>
+Cc: Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Rob Herring <robh+dt@kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, ", linux-arm-kernel"@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream <linux-arm-kernel@lists.infradead.org>, Devicetree List <devicetree@vger.kernel.org>, Andre Przywara <andre.przywara@arm.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Feb 21, 2018 at 10:14 PM, Ryder Lee <ryder.lee@mediatek.com> wrote:
-> On Wed, 2018-02-21 at 08:10 -0600, Rob Herring wrote:
->> On Wed, Feb 21, 2018 at 12:04 AM, Ryder Lee <ryder.lee@mediatek.com> wrote:
->> > On Mon, 2018-02-19 at 12:29 -0600, Rob Herring wrote:
->> >> On Mon, Feb 12, 2018 at 5:28 AM, Ryder Lee <ryder.lee@mediatek.com> wrote:
->> >> > The MediaTek audio hardware block that exposes functionalities that are
->> >> > handled by separate subsystems in the kernel.  These functions are all
->> >> > mapped somewhere at 0x112xxxxx, and there are some control bits are mixed
->> >> > up with other functions within the same registers.
->> >>
->> >> I still don't think this change is necessary.
->> >>
->> >> Just because a hardware block in DT maps to different subsystems in a
->> >> particular OS doesn't mean you need a DT node for each OS subsystem.
->> >> What we have subsystems for changes over time and DT shouldn't really
->> >> be changing based on that. And DT is not the only way to instantiate
->> >> drivers.
->> >>
->> >
->> > Apart right now we have the definition of both functions. The other
->> > location is here:../sonud/mt2701-afe-pcm.txt. The ways I could come up
->> > with are:
+Hi,
+
+On 02/28/18 03:16, Jassi Brar wrote:
+> On Wed, Feb 28, 2018 at 7:57 AM, Samuel Holland <samuel@sholland.org> wrote:
+> ....
+> 
+>> +/*
+>> + * The message box hardware provides 8 unidirectional channels. As the mailbox
+>> + * framework expects them to be bidirectional
 >>
->> There are several problems you need to fix. First,
->> "mediatek,mt2701-audsys" is not documented. It is only used in the
->> example. Second, bindings/arm/mediatek/mediatek,audsys.txt should move
->> to bindings/sound/ if it is only audio related functions. Or perhaps
->> just combine the 2 documents because it is all inconsistent currently.
->
-> Because the series crossed subsystems but didn't apply at the same time.
->
->> The 2 documents are inconsistent as to what is the relationship of
->> -audsys and -audio (afe) nodes. mt2701-afe-pcm.txt shows that the AFE
->> is already a child of -audsys. The -audsys node should have
->> #clock-cells. It should also not be a simple-mfd (another
->> inconsistency in the binding) because it needs to probe first to
->> provide clocks to child nodes, and then trigger probing the child
->> nodes.
->
-> This is the 1st version I sent before, and the clock parts still under
-> review :( .  But yes, the 2 inconsistent documents should be fixed -
-> this may depend on what we end up doing with the DT appearance.
->
-> IMHO, apart from overlapping regions with other functions I didn't see
-> any difference between audsys and other clock drivers (providers).
->
-> For the sake of uniformity, I make the 2 sub-devices parallel and move
-> "simple-mfd" to the top, and the sequences should actually be handled
-> through "probe deferral mechanism" - that would make this kind of
-> situations much easier to manage.
+> That is incorrect. Mailbox framework does not require a channel to be
+> TX and RX capable.
 
-If a child node has a dependency on the parent, probe deferral is not
-the correct solution. The parent should probe first and control
-probing of the chlidren. "simple-mfd" is intended for cases where
-there is no dependency on the parent node.
+Sorry, it would be more accurate to say that the intended mailbox _client_
+expects the channels to be bidirectional.
 
-> BTW, I could make the AFE driver be instantiated/probed from the clock
-> driver but this seems superfluous to me.  Just make sure is this what
-> you want?
+> You should expose each channel as per its physical capability, let the
+> client configure it for direction (if its bidirectional) and acquire
+> separate channels for RX and TX if it needs to.
 
-I would think it would be the other way around. The AFE driver creates
-some clocks. Whether that's a separate driver or a single driver is a
-kernel issue that has nothing to do with the binding. IIRC, there's
-several examples in display controllers and camera interfaces where
-those drivers are also clock providers.
+Is there any way for the mailbox framework to inform the client that a channel
+is uni/bidirectional? Or if the channel supports RX/TX specifically? I couldn't
+find any.
 
-Rob
+It looks like all of the clients assume one case or the other, based on the
+hardware they were initially designed to support. For example arm_scpi expects
+one channel per client, while ti_sci and st_remoteproc expect two separate RX
+and TX channels per client.
+
+Since there's no API for the client to know the hardware properties, modifying
+arm_scpi to support unidirectional mailbox channels would break support for all
+existing bidirectional mailboxes.
+
+To expose the physical channels individually, there would need to be an API to:
+a) Determine if a mailbox channel supports unidirectional or bidirectional
+   operation.
+b) If a channel is unidirectional, determine which direction(s) it supports.
+c) If a unidirectional channel supports both directions, configure which
+   direction it should run in.
+
+Since that API doesn't currently exist, I wrote the driver to match what the
+intended client expected (as all other mailbox controller drivers currently do).
+
+> Cheers!
+
+Regards,
+Samuel
