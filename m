@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH v4 11/22] nvmem: meson-mx-efuse: Convert to use devm_nvmem_register()
-Date: Wed, 28 Feb 2018 06:40:55 -0800
-Message-ID: <20180228144106.16363-12-andrew.smirnov@gmail.com>
+Subject: [PATCH v4 14/22] nvmem: imx-iim: Convert to use devm_nvmem_register()
+Date: Wed, 28 Feb 2018 06:40:58 -0800
+Message-ID: <20180228144106.16363-15-andrew.smirnov@gmail.com>
 References: <20180228144106.16363-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180228144106.16363-1-andrew.smirnov@gmail.com>
@@ -27,39 +27,39 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/meson-mx-efuse.c | 12 +-----------
+ drivers/nvmem/imx-iim.c | 12 +-----------
  1 file changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/drivers/nvmem/meson-mx-efuse.c b/drivers/nvmem/meson-mx-efuse.c
-index 41d3a3c1104e..db1e8b072034 100644
---- a/drivers/nvmem/meson-mx-efuse.c
-+++ b/drivers/nvmem/meson-mx-efuse.c
-@@ -233,25 +233,15 @@ static int meson_mx_efuse_probe(struct platform_device *pdev)
- 		return PTR_ERR(efuse->core_clk);
- 	}
+diff --git a/drivers/nvmem/imx-iim.c b/drivers/nvmem/imx-iim.c
+index 52cfe91d9762..635561a441bd 100644
+--- a/drivers/nvmem/imx-iim.c
++++ b/drivers/nvmem/imx-iim.c
+@@ -138,25 +138,15 @@ static int imx_iim_probe(struct platform_device *pdev)
+ 	cfg.size = drvdata->nregs;
+ 	cfg.priv = iim;
  
--	efuse->nvmem = nvmem_register(&efuse->config);
-+	efuse->nvmem = devm_nvmem_register(&pdev->dev, &efuse->config);
- 	if (IS_ERR(efuse->nvmem))
- 		return PTR_ERR(efuse->nvmem);
+-	nvmem = nvmem_register(&cfg);
++	nvmem = devm_nvmem_register(dev, &cfg);
+ 	if (IS_ERR(nvmem))
+ 		return PTR_ERR(nvmem);
  
--	platform_set_drvdata(pdev, efuse);
+-	platform_set_drvdata(pdev, nvmem);
 -
  	return 0;
  }
  
--static int meson_mx_efuse_remove(struct platform_device *pdev)
+-static int imx_iim_remove(struct platform_device *pdev)
 -{
--	struct meson_mx_efuse *efuse = platform_get_drvdata(pdev);
+-	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
 -
--	return nvmem_unregister(efuse->nvmem);
+-	return nvmem_unregister(nvmem);
 -}
 -
- static struct platform_driver meson_mx_efuse_driver = {
- 	.probe = meson_mx_efuse_probe,
--	.remove = meson_mx_efuse_remove,
+ static struct platform_driver imx_iim_driver = {
+ 	.probe	= imx_iim_probe,
+-	.remove	= imx_iim_remove,
  	.driver = {
- 		.name = "meson-mx-efuse",
- 		.of_match_table = meson_mx_efuse_match,
+ 		.name	= "imx-iim",
+ 		.of_match_table = imx_iim_dt_ids,
 -- 
 2.14.3
