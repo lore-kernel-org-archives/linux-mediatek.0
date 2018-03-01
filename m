@@ -1,96 +1,77 @@
-From: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Subject: Re: [PATCH v2 4/4] pintcrl: support bias-disable of generic and
- special pins simultaneously
-Date: Thu, 1 Mar 2018 11:47:52 +0800
-Message-ID: <1519876072.23198.17.camel@mhfsdcap03>
-References: <1519634042-12063-1-git-send-email-zhiyong.tao@mediatek.com>
-         <1519634042-12063-5-git-send-email-zhiyong.tao@mediatek.com>
-         <1519803217.8089.31.camel@mtkswgap22> <1519804157.23198.9.camel@mhfsdcap03>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Subject: Re: [PATCH 3/3] mailbox: sunxi-msgbox: Add a new mailbox driver
+Date: Thu, 1 Mar 2018 10:52:42 +0530
+Message-ID: <CABb+yY0PZCFtud0qYFNV4LO5A38f=JE=ZwoN2N89c0LiX9zV-Q@mail.gmail.com>
+References: <20180228022714.30068-1-samuel@sholland.org> <20180228022714.30068-4-samuel@sholland.org>
+ <CABb+yY2uueAK9kzXzU9DT2a4NtV3kK2dc_wtyFWTBn8=Z6Vi7Q@mail.gmail.com>
+ <d9e14058-6ffb-e54a-1565-f228342ee1f0@sholland.org> <CABb+yY3nfVxoA9wy1ym4mtCTKCZtJjepUTr7OP1uUPmzOEzniA@mail.gmail.com>
+ <e52b48cb-ce06-f4c4-ce20-9b893139e54d@sholland.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1519804157.23198.9.camel@mhfsdcap03>
+In-Reply-To: <e52b48cb-ce06-f4c4-ce20-9b893139e54d@sholland.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: robh+dt@kernel.org, linus.walleij@linaro.org, mark.rutland@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, hongkun.cao@mediatek.com, srv_heupstream@mediatek.com, linux-gpio@vger.kernel.org, biao.huang@mediatek.com, erin.lo@mediatek.com, liguo.zhang@mediatek.com, linux-kernel@vger.kernel.org, hongzhou.yang@mediatek.com, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
+To: Samuel Holland <samuel@sholland.org>
+Cc: Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Rob Herring <robh+dt@kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, ", linux-arm-kernel"@lists.infradead.org, srv_heupstream <linux-mediatek@lists.infradead.org>, srv_heupstream <linux-arm-kernel@lists.infradead.org>, Devicetree List <devicetree@vger.kernel.org>, Andre Przywara <andre.przywara@arm.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-02-28 at 15:49 +0800, Zhiyong Tao wrote:
-> On Wed, 2018-02-28 at 15:33 +0800, Sean Wang wrote:
-> > On Mon, 2018-02-26 at 16:34 +0800, Zhiyong Tao wrote:
-> > > For generic pins, parameter "arg" is 0 or 1.
-> > > For special pins, bias-disable is set by R0R1,
-> > > so we need transmited "00" to set bias-disable
-> > > When we set "bias-disable" as high-z property,
-> > > the parameter should be "MTK_PUPD_SET_R1R0_00".
-> > > 
-> > > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> > > ---
-> > >  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 13 +++++++++++--
-> > >  1 file changed, 11 insertions(+), 2 deletions(-)
-> > > 
-> > > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> > > index 3cf384f..e88ba04 100644
-> > > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> > > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> > > @@ -301,8 +301,17 @@ static int mtk_pconf_set_pull_select(struct mtk_pinctrl *pctl,
-> > >  	 * resistor bit, so we need this special handle.
-> > >  	 */
-> > >  	if (pctl->devdata->spec_pull_set) {
-> > > -		ret = pctl->devdata->spec_pull_set(mtk_get_regmap(pctl, pin),
-> > > -			pin, pctl->devdata->port_align, isup, arg);
-> > > +		if (enable) {
-> > > +			ret = pctl->devdata->spec_pull_set(
-> > > +				mtk_get_regmap(pctl, pin), pin,
-> > > +				pctl->devdata->port_align, isup,
-> > > +				arg);
-> > > +		} else {
-> > > +			ret = pctl->devdata->spec_pull_set(
-> > > +				mtk_get_regmap(pctl, pin), pin,
-> > > +				pctl->devdata->port_align, isup,
-> > > +				MTK_PUPD_SET_R1R0_00);
-> > > +		}
-> > 
-> > 
-> > it looks like you can use as following snippet with reusing original
-> > logic and less effort on maintaining these common code (?)
-> ==> Thanks for your suggestion very much. It seems better.
-> I will change it in v3.
+On Thu, Mar 1, 2018 at 12:26 AM, Samuel Holland <samuel@sholland.org> wrote:
+> On 02/28/18 12:14, Jassi Brar wrote:
+>> On Wed, Feb 28, 2018 at 11:21 PM, Samuel Holland <samuel@sholland.org> wrote:
+>>> Hi,
+>>>
+>>> On 02/28/18 03:16, Jassi Brar wrote:
+>>>> On Wed, Feb 28, 2018 at 7:57 AM, Samuel Holland <samuel@sholland.org> wrote:
+>>>> ....
+>>>>
+>>>>> +/*
+>>>>> + * The message box hardware provides 8 unidirectional channels. As the mailbox
+>>>>> + * framework expects them to be bidirectional
+>>>>>
+>>>> That is incorrect. Mailbox framework does not require a channel to be
+>>>> TX and RX capable.
+>>>
+>>> Sorry, it would be more accurate to say that the intended mailbox _client_
+>>> expects the channels to be bidirectional.
+>>>
+>> Mailbox clients are very mailbox provider specific. Your client driver
+>> is unlikely to be reuseable over another controller+remote combo.
+>> Your client has to know already what a physical channel can do (RX, TX
+>> or RXTX). There is no api to provide that info.
+>
+> There's a public specification for SCPI available[1]. I'm writing the remote
+> endpoint to follow that protocol specification. (There's even an explicitly
+> platform-agnostic update to the protocol called SCMI[2]). Ideally, I should be
+> able to reuse the existing Linux client drivers for that protocol.
+>
+Thanks, I have already read those specs. Please note there are two
+parts of the spec - Chapter-4-Protocol and Chapter-5-Transport.
 
-==>
- Hi sean,
+You should definitely be able to reuse the Protocol implementation.
 
-we try it in our site. we can't change like this.
-Because we will check "arg" after setting "arg = MTK_PUPD_SET_R1R0_00;".
-following snippet which check "arg" value is o or 1. If it not, which
-will print error. so we can't change like this.
-/* For generic pull config, default arg value should be 0 or 1. */
-if (arg != 0 && arg != 1) {
-	dev_err(pctl->dev, "invalid pull-up argument %d on pin %d .\n", arg,
-pin);
-	return -EINVAL;
-}
+However, transport can vary with platform - that is why it is
+separated out from Protocol. And mailbox is but one instance of
+transport.
+  Consider a platform with "power manager" chip connected via, say,
+I2C - one could still make use of SCMI protocol. Or consider another
+platform that does have mailbox link to the "power manager" but there
+is no shared memory between them - you could then pass packets via the
+mailbox FIFOs.
+  So no, we can't have common transport implementation for every platform.
 
-Thanks.
-> > 
-> > 
-> > if (pctl->devdata->spec_pull_set) {
-> > 	+ if (!enable)
-> > 	+ 	arg = MTK_PUPD_SET_R1R0_00;
-> > 
-> > 	ret = pctl->devdata->spec_pull_set(mtk_get_regmap(pctl, pin),
-> > 		pin, pctl->devdata->port_align, isup, arg);
-> > 
-> > 
-> > Also, it's better to add more comments to such kind of special path for
-> > allowing future SoCs to follow and extend more easily.
-> 
-> ==> Thanks for your suggestion very much. I will add more comments here.
-> > 
-> > >  		if (!ret)
-> > >  			return 0;
-> > >  	}
-> > 
-> > 
-> 
+> Are you
+> suggesting that I need to write a copy of the arm_scpi driver, completely
+> identical except that it requests two mailbox channels per client (sending on
+> one and receiving on the other) instead of one? In the >1000 line file, this is
+> all that I would need to change:
+>
+I did unsuccessfully try to convince Sudeep to break the
+implementation into platform-agnostic protocol and platform-specific
+transport drivers. That way there would be no duplication of code.
+
+Also please realise that you should not be writing controller driver,
+keeping just one client driver (SCMI/SCPI) in mind. What if another
+platform with same mailbox controller needs 8 TX "broadcast" links?
+The h/w supports the usecase, but your driver wouldn't.
+
+Thanks
