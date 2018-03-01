@@ -1,88 +1,128 @@
-From: Marcus Folkesson <marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v4] watchdog: add SPDX identifiers for watchdog subsystem
-Date: Thu, 1 Mar 2018 08:24:42 +0100
-Message-ID: <20180301072432.GA8901@gmail.com>
-References: <20180228150209.2525-1-marcus.folkesson@gmail.com>
- <786d740d-f29c-8f09-4648-95244c06e59b@gmail.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v2 4/4] pintcrl: support bias-disable of generic and
+ special pins simultaneously
+Date: Thu, 1 Mar 2018 15:43:03 +0800
+Message-ID: <1519890183.8089.114.camel@mtkswgap22>
+References: <1519634042-12063-1-git-send-email-zhiyong.tao@mediatek.com>
+         <1519634042-12063-5-git-send-email-zhiyong.tao@mediatek.com>
+         <1519803217.8089.31.camel@mtkswgap22> <1519804157.23198.9.camel@mhfsdcap03>
+         <1519876072.23198.17.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <786d740d-f29c-8f09-4648-95244c06e59b-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, Alexandre Belloni <alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Mans Rullgard <mans-2StjZFpD7GcAvxtiuMwx3w@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Benjamin Herrenschmidt <benh-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>, Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>, adi-buildroot-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Paul Mackerras <paulus-eUNUBHrolfbYtjvyW6yDsg@public.gmane.org>, Michael Ellerman <mpe-Gsx/Oe8HsFggBc27wqDAHg@public.gmane.org>, Baoyou Xie <baoyou.xie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Joel Stanley <joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org>, Sylvain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1519876072.23198.17.camel@mhfsdcap03>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Cc: robh+dt@kernel.org, linus.walleij@linaro.org, mark.rutland@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, hongkun.cao@mediatek.com, srv_heupstream@mediatek.com, linux-gpio@vger.kernel.org, biao.huang@mediatek.com, erin.lo@mediatek.com, liguo.zhang@mediatek.com, linux-kernel@vger.kernel.org, hongzhou.yang@mediatek.com, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Florian,
+On Thu, 2018-03-01 at 11:47 +0800, Zhiyong Tao wrote:
+> On Wed, 2018-02-28 at 15:49 +0800, Zhiyong Tao wrote:
+> > On Wed, 2018-02-28 at 15:33 +0800, Sean Wang wrote:
+> > > On Mon, 2018-02-26 at 16:34 +0800, Zhiyong Tao wrote:
+> > > > For generic pins, parameter "arg" is 0 or 1.
+> > > > For special pins, bias-disable is set by R0R1,
+> > > > so we need transmited "00" to set bias-disable
+> > > > When we set "bias-disable" as high-z property,
+> > > > the parameter should be "MTK_PUPD_SET_R1R0_00".
+> > > > 
+> > > > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> > > > ---
+> > > >  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 13 +++++++++++--
+> > > >  1 file changed, 11 insertions(+), 2 deletions(-)
+> > > > 
+> > > > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> > > > index 3cf384f..e88ba04 100644
+> > > > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> > > > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> > > > @@ -301,8 +301,17 @@ static int mtk_pconf_set_pull_select(struct mtk_pinctrl *pctl,
+> > > >  	 * resistor bit, so we need this special handle.
+> > > >  	 */
+> > > >  	if (pctl->devdata->spec_pull_set) {
+> > > > -		ret = pctl->devdata->spec_pull_set(mtk_get_regmap(pctl, pin),
+> > > > -			pin, pctl->devdata->port_align, isup, arg);
+> > > > +		if (enable) {
+> > > > +			ret = pctl->devdata->spec_pull_set(
+> > > > +				mtk_get_regmap(pctl, pin), pin,
+> > > > +				pctl->devdata->port_align, isup,
+> > > > +				arg);
+> > > > +		} else {
+> > > > +			ret = pctl->devdata->spec_pull_set(
+> > > > +				mtk_get_regmap(pctl, pin), pin,
+> > > > +				pctl->devdata->port_align, isup,
+> > > > +				MTK_PUPD_SET_R1R0_00);
+> > > > +		}
+> > > 
+> > > 
+> > > it looks like you can use as following snippet with reusing original
+> > > logic and less effort on maintaining these common code (?)
+> > ==> Thanks for your suggestion very much. It seems better.
+> > I will change it in v3.
+> 
+> ==>
+>  Hi sean,
+> 
+> we try it in our site. we can't change like this.
+> Because we will check "arg" after setting "arg = MTK_PUPD_SET_R1R0_00;".
+> following snippet which check "arg" value is o or 1. If it not, which
+> will print error. so we can't change like this.
+> /* For generic pull config, default arg value should be 0 or 1. */
+> if (arg != 0 && arg != 1) {
+> 	dev_err(pctl->dev, "invalid pull-up argument %d on pin %d .\n", arg,
+> pin);
+> 	return -EINVAL;
+> }
+> 
+> Thanks.
 
-On Wed, Feb 28, 2018 at 03:45:43PM -0800, Florian Fainelli wrote:
-> On 02/28/2018 07:01 AM, Marcus Folkesson wrote:
-> > - Add SPDX identifier
-> > - Remove boiler plate license text
-> > - If MODULE_LICENSE and boiler plate does not match, go for boiler plate
-> >   license
+why not rewrite it with
+
+@@ -301,8 +301,10 @@ static int mtk_pconf_set_pull_select(struct
+mtk_pinctrl *pctl,
+         * resistor bit, so we need this special handle.
+         */
+        if (pctl->devdata->spec_pull_set) {
++               unsigned int r1r0 = enable ? arg : MTK_PUPD_SET_R1R0_00;
++
+                ret = pctl->devdata->spec_pull_set(mtk_get_regmap(pctl,
+pin),
+-                       pin, pctl->devdata->port_align, isup, arg);
++                       pin, pctl->devdata->port_align, isup, r1r0);
+                if (!ret)
+                        return 0;
+        }
+
+and also I appeared to find another bug in the original code when I had
+a close look at the code path, but it's not related to the patch: 
+
+a special pin would still go through the code path to handle
+generic pin when the special pin uses an invalid argument.
+
+It looks like err-code from pctl->devdata->spec_pull_set cannot be
+used directly to judge its pin type. It's also possible to use it as an
+indication of the real failure during special pin is being set up.
+
+> > > 
+> > > 
+> > > if (pctl->devdata->spec_pull_set) {
+> > > 	+ if (!enable)
+> > > 	+ 	arg = MTK_PUPD_SET_R1R0_00;
+> > > 
+> > > 	ret = pctl->devdata->spec_pull_set(mtk_get_regmap(pctl, pin),
+> > > 		pin, pctl->devdata->port_align, isup, arg);
+> > > 
+> > > 
+> > > Also, it's better to add more comments to such kind of special path for
+> > > allowing future SoCs to follow and extend more easily.
 > > 
-> > Signed-off-by: Marcus Folkesson <marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > Acked-by: Adam Thomson <Adam.Thomson.Opensource-WBD+wuPFNBhBDgjK7y7TUQ@public.gmane.org>
-> > Acked-by: Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>
-> > Acked-by: Charles Keepax <ckeepax-yzvPICuk2AA4QjBA90+/kJqQE7yCjDx5@public.gmane.org>
-> > Acked-by: Keiji Hayashibara <hayashibara.keiji-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-> > Acked-by: Johannes Thumshirn <jth-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> > Acked-by: Mans Rullgard <mans-2StjZFpD7GcAvxtiuMwx3w@public.gmane.org>
-> > Acked-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > Acked-by: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
-> > Acked-by: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-> > Acked-by: Nicolas Ferre <nicolas.ferre-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>
-> > Acked-by: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-> > Acked-by: Tomas Winkler <tomas.winkler-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-> > Acked-by: Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>
-> > Acked-by: William Breathitt Gray <vilhelm.gray-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > Reviewed-by: Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>
-> > ---
-> > 
-> > Notes:
-> >     v4:
-> >     	- Drop coh901327_wdt since it allready is a pending patch
-> >     v3:
-> >     	- Keep license text for ebc-c384_wdt
-> >     v2:
-> >     	- Put back removed copyright texts for meson_gxbb_wdt and coh901327_wdt
-> >     	- Change to BSD-3-Clause for meson_gxbb_wdt
-> >     v1: Please have an extra look at meson_gxbb_wdt.c
+> > ==> Thanks for your suggestion very much. I will add more comments here.
+> > > 
+> > > >  		if (!ret)
+> > > >  			return 0;
+> > > >  	}
+> > > 
+> > > 
 > > 
 > 
-> >  drivers/watchdog/ar7_wdt.c             | 14 +---------
 > 
-> >  drivers/watchdog/bcm2835_wdt.c         |  5 +---
-> >  drivers/watchdog/bcm47xx_wdt.c         |  5 +---
-> >  drivers/watchdog/bcm63xx_wdt.c         |  5 +---
-> >  drivers/watchdog/bcm7038_wdt.c         | 12 ++------
-> >  drivers/watchdog/bcm_kona_wdt.c        |  9 +-----
-> 
-> >  drivers/watchdog/mtx-1_wdt.c           | 11 +-------
-> 
-> For these drivers above:
-> 
-> Acked-by: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> 
-> and it looks like you missed rdc321x_wdt.c, is there a specific reason?
-
-Good catch!
-I will fix that, thank you.
-
-> -- 
-> Florian
-
-
-Best regards
-Marcus Folkesson
