@@ -1,77 +1,88 @@
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Subject: Re: [PATCH 3/3] mailbox: sunxi-msgbox: Add a new mailbox driver
-Date: Thu, 1 Mar 2018 10:52:42 +0530
-Message-ID: <CABb+yY0PZCFtud0qYFNV4LO5A38f=JE=ZwoN2N89c0LiX9zV-Q@mail.gmail.com>
-References: <20180228022714.30068-1-samuel@sholland.org> <20180228022714.30068-4-samuel@sholland.org>
- <CABb+yY2uueAK9kzXzU9DT2a4NtV3kK2dc_wtyFWTBn8=Z6Vi7Q@mail.gmail.com>
- <d9e14058-6ffb-e54a-1565-f228342ee1f0@sholland.org> <CABb+yY3nfVxoA9wy1ym4mtCTKCZtJjepUTr7OP1uUPmzOEzniA@mail.gmail.com>
- <e52b48cb-ce06-f4c4-ce20-9b893139e54d@sholland.org>
+From: Marcus Folkesson <marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v4] watchdog: add SPDX identifiers for watchdog subsystem
+Date: Thu, 1 Mar 2018 08:24:42 +0100
+Message-ID: <20180301072432.GA8901@gmail.com>
+References: <20180228150209.2525-1-marcus.folkesson@gmail.com>
+ <786d740d-f29c-8f09-4648-95244c06e59b@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e52b48cb-ce06-f4c4-ce20-9b893139e54d@sholland.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Samuel Holland <samuel@sholland.org>
-Cc: Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Rob Herring <robh+dt@kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, ", linux-arm-kernel"@lists.infradead.org, srv_heupstream <linux-mediatek@lists.infradead.org>, srv_heupstream <linux-arm-kernel@lists.infradead.org>, Devicetree List <devicetree@vger.kernel.org>, Andre Przywara <andre.przywara@arm.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <786d740d-f29c-8f09-4648-95244c06e59b-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, Alexandre Belloni <alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Mans Rullgard <mans-2StjZFpD7GcAvxtiuMwx3w@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Benjamin Herrenschmidt <benh-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>, Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>, adi-buildroot-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Paul Mackerras <paulus-eUNUBHrolfbYtjvyW6yDsg@public.gmane.org>, Michael Ellerman <mpe-Gsx/Oe8HsFggBc27wqDAHg@public.gmane.org>, Baoyou Xie <baoyou.xie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Joel Stanley <joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org>, Sylvain
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Mar 1, 2018 at 12:26 AM, Samuel Holland <samuel@sholland.org> wrote:
-> On 02/28/18 12:14, Jassi Brar wrote:
->> On Wed, Feb 28, 2018 at 11:21 PM, Samuel Holland <samuel@sholland.org> wrote:
->>> Hi,
->>>
->>> On 02/28/18 03:16, Jassi Brar wrote:
->>>> On Wed, Feb 28, 2018 at 7:57 AM, Samuel Holland <samuel@sholland.org> wrote:
->>>> ....
->>>>
->>>>> +/*
->>>>> + * The message box hardware provides 8 unidirectional channels. As the mailbox
->>>>> + * framework expects them to be bidirectional
->>>>>
->>>> That is incorrect. Mailbox framework does not require a channel to be
->>>> TX and RX capable.
->>>
->>> Sorry, it would be more accurate to say that the intended mailbox _client_
->>> expects the channels to be bidirectional.
->>>
->> Mailbox clients are very mailbox provider specific. Your client driver
->> is unlikely to be reuseable over another controller+remote combo.
->> Your client has to know already what a physical channel can do (RX, TX
->> or RXTX). There is no api to provide that info.
->
-> There's a public specification for SCPI available[1]. I'm writing the remote
-> endpoint to follow that protocol specification. (There's even an explicitly
-> platform-agnostic update to the protocol called SCMI[2]). Ideally, I should be
-> able to reuse the existing Linux client drivers for that protocol.
->
-Thanks, I have already read those specs. Please note there are two
-parts of the spec - Chapter-4-Protocol and Chapter-5-Transport.
+Florian,
 
-You should definitely be able to reuse the Protocol implementation.
+On Wed, Feb 28, 2018 at 03:45:43PM -0800, Florian Fainelli wrote:
+> On 02/28/2018 07:01 AM, Marcus Folkesson wrote:
+> > - Add SPDX identifier
+> > - Remove boiler plate license text
+> > - If MODULE_LICENSE and boiler plate does not match, go for boiler plate
+> >   license
+> > 
+> > Signed-off-by: Marcus Folkesson <marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> > Acked-by: Adam Thomson <Adam.Thomson.Opensource-WBD+wuPFNBhBDgjK7y7TUQ@public.gmane.org>
+> > Acked-by: Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>
+> > Acked-by: Charles Keepax <ckeepax-yzvPICuk2AA4QjBA90+/kJqQE7yCjDx5@public.gmane.org>
+> > Acked-by: Keiji Hayashibara <hayashibara.keiji-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+> > Acked-by: Johannes Thumshirn <jth-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> > Acked-by: Mans Rullgard <mans-2StjZFpD7GcAvxtiuMwx3w@public.gmane.org>
+> > Acked-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> > Acked-by: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
+> > Acked-by: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+> > Acked-by: Nicolas Ferre <nicolas.ferre-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>
+> > Acked-by: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+> > Acked-by: Tomas Winkler <tomas.winkler-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+> > Acked-by: Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>
+> > Acked-by: William Breathitt Gray <vilhelm.gray-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> > Reviewed-by: Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>
+> > ---
+> > 
+> > Notes:
+> >     v4:
+> >     	- Drop coh901327_wdt since it allready is a pending patch
+> >     v3:
+> >     	- Keep license text for ebc-c384_wdt
+> >     v2:
+> >     	- Put back removed copyright texts for meson_gxbb_wdt and coh901327_wdt
+> >     	- Change to BSD-3-Clause for meson_gxbb_wdt
+> >     v1: Please have an extra look at meson_gxbb_wdt.c
+> > 
+> 
+> >  drivers/watchdog/ar7_wdt.c             | 14 +---------
+> 
+> >  drivers/watchdog/bcm2835_wdt.c         |  5 +---
+> >  drivers/watchdog/bcm47xx_wdt.c         |  5 +---
+> >  drivers/watchdog/bcm63xx_wdt.c         |  5 +---
+> >  drivers/watchdog/bcm7038_wdt.c         | 12 ++------
+> >  drivers/watchdog/bcm_kona_wdt.c        |  9 +-----
+> 
+> >  drivers/watchdog/mtx-1_wdt.c           | 11 +-------
+> 
+> For these drivers above:
+> 
+> Acked-by: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> 
+> and it looks like you missed rdc321x_wdt.c, is there a specific reason?
 
-However, transport can vary with platform - that is why it is
-separated out from Protocol. And mailbox is but one instance of
-transport.
-  Consider a platform with "power manager" chip connected via, say,
-I2C - one could still make use of SCMI protocol. Or consider another
-platform that does have mailbox link to the "power manager" but there
-is no shared memory between them - you could then pass packets via the
-mailbox FIFOs.
-  So no, we can't have common transport implementation for every platform.
+Good catch!
+I will fix that, thank you.
 
-> Are you
-> suggesting that I need to write a copy of the arm_scpi driver, completely
-> identical except that it requests two mailbox channels per client (sending on
-> one and receiving on the other) instead of one? In the >1000 line file, this is
-> all that I would need to change:
->
-I did unsuccessfully try to convince Sudeep to break the
-implementation into platform-agnostic protocol and platform-specific
-transport drivers. That way there would be no duplication of code.
+> -- 
+> Florian
 
-Also please realise that you should not be writing controller driver,
-keeping just one client driver (SCMI/SCPI) in mind. What if another
-platform with same mailbox controller needs 8 TX "broadcast" links?
-The h/w supports the usecase, but your driver wouldn't.
 
-Thanks
+Best regards
+Marcus Folkesson
