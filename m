@@ -1,120 +1,123 @@
-From: Vinod Koul <vinod.koul@intel.com>
-Subject: Re: [PATCH v5 2/3] dmaengine: mediatek: Add MediaTek High-Speed DMA
- controller for MT7622 and MT7623 SoC
-Date: Thu, 1 Mar 2018 18:26:49 +0530
-Message-ID: <20180301125649.GH15443@localhost>
-References: <cover.1518857746.git.sean.wang@mediatek.com>
- <de4177cb2269c99f8d7c5738ac8a64f512122dfd.1518857747.git.sean.wang@mediatek.com>
- <20180301082329.GD15443@localhost>
- <1519900021.8089.136.camel@mtkswgap22>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH] dt-bindings: PCI: MediaTek: fix dtc warnings
+Date: Thu, 1 Mar 2018 14:50:18 +0000
+Message-ID: <20180301145018.GA2516@e107981-ln.cambridge.arm.com>
+References: <9940757fe2889f46d0de214c5f277bf3c2074205.1518577579.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1519900021.8089.136.camel@mtkswgap22>
+In-Reply-To: <9940757fe2889f46d0de214c5f277bf3c2074205.1518577579.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: dan.j.williams@intel.com, robh+dt@kernel.org, mark.rutland@arm.com, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Randy Dunlap <rdunlap@infradead.org>, Fengguang Wu <fengguang.wu@intel.com>, Julia Lawall <julia.lawall@lip6.fr>
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Mar 01, 2018 at 06:27:01PM +0800, Sean Wang wrote:
-> On Thu, 2018-03-01 at 13:53 +0530, Vinod Koul wrote:
-> > On Sun, Feb 18, 2018 at 03:08:30AM +0800, sean.wang@mediatek.com wrote:
-> > 
-> > > @@ -0,0 +1,1054 @@
-> > > +// SPDX-License-Identifier: GPL-2.0
-> > // Copyright ...
-> > 
-> > The copyright line needs to follow SPDX tag line
-> > 
+On Wed, Feb 14, 2018 at 11:27:58AM +0800, Ryder Lee wrote:
+> dtc recently added PCI bus checks. Fix these warnings:
 > 
-> okay, I will make it reorder and be something like that
+> Warning (pci_bridge): Node /pcie@1a140000/pcie@0,0 missing bus-range for PCI bridge
+> Warning (pci_bridge): Node /pcie@1a140000/pcie@1,0 missing bus-range for PCI bridge
+> Warning (pci_bridge): Node /pcie@1a140000/pcie@2,0 missing bus-range for PCI bridge
+> Warning (unit_address_format): Failed prerequisite 'pci_bridge'
+> Warning (pci_device_reg): Failed prerequisite 'pci_bridge'
+> Warning (pci_device_bus_num): Failed prerequisite 'pci_bridge'
 > 
-> // SPDX-License-Identifier: GPL-2.0
-> /*
->  * Copyright (c) 2017-2018 MediaTek Inc.
->  * Author: Sean Wang <sean.wang@mediatek.com>
->  *
->  * Driver for MediaTek High-Speed DMA Controller
->  *
->  */
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/pci/mediatek-pcie.txt | 11 +++--------
+>  1 file changed, 3 insertions(+), 8 deletions(-)
 
-It needs to be:
+Given that changes to these bindings always went through the PCI tree,
+I've applied this patch to pci/mediatek for v4.17, thanks.
 
-// SPDX-License-Identifier: GPL-2.0
-// Copyright (c) 2017-2018 MediaTek Inc.
+Lorenzo
 
-/*
- * whatever else you want
- */
-
-The first two lines are in C99 style comment and need to have SPDX tag and
-Copyright info
-
-> the point is I learned from other subsystem makes the driver name be
-> same with the module name with KBUILD_MODNAME.
+> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
+> index 3a6ce55..20227a8 100644
+> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
+> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
+> @@ -78,7 +78,7 @@ Examples for MT7623:
+>  		#reset-cells = <1>;
+>  	};
+>  
+> -	pcie: pcie-controller@1a140000 {
+> +	pcie: pcie@1a140000 {
+>  		compatible = "mediatek,mt7623-pcie";
+>  		device_type = "pci";
+>  		reg = <0 0x1a140000 0 0x1000>, /* PCIe shared registers */
+> @@ -111,7 +111,6 @@ Examples for MT7623:
+>  			  0x83000000 0 0x60000000 0 0x60000000 0 0x10000000>;	/* memory space */
+>  
+>  		pcie@0,0 {
+> -			device_type = "pci";
+>  			reg = <0x0000 0 0 0 0>;
+>  			#address-cells = <3>;
+>  			#size-cells = <2>;
+> @@ -123,7 +122,6 @@ Examples for MT7623:
+>  		};
+>  
+>  		pcie@1,0 {
+> -			device_type = "pci";
+>  			reg = <0x0800 0 0 0 0>;
+>  			#address-cells = <3>;
+>  			#size-cells = <2>;
+> @@ -135,7 +133,6 @@ Examples for MT7623:
+>  		};
+>  
+>  		pcie@2,0 {
+> -			device_type = "pci";
+>  			reg = <0x1000 0 0 0 0>;
+>  			#address-cells = <3>;
+>  			#size-cells = <2>;
+> @@ -148,6 +145,7 @@ Examples for MT7623:
+>  	};
+>  
+>  Examples for MT2712:
+> +
+>  	pcie: pcie@11700000 {
+>  		compatible = "mediatek,mt2712-pcie";
+>  		device_type = "pci";
+> @@ -169,7 +167,6 @@ Examples for MT2712:
+>  		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x10000000>;
+>  
+>  		pcie0: pcie@0,0 {
+> -			device_type = "pci";
+>  			reg = <0x0000 0 0 0 0>;
+>  			#address-cells = <3>;
+>  			#size-cells = <2>;
+> @@ -189,7 +186,6 @@ Examples for MT2712:
+>  		};
+>  
+>  		pcie1: pcie@1,0 {
+> -			device_type = "pci";
+>  			reg = <0x0800 0 0 0 0>;
+>  			#address-cells = <3>;
+>  			#size-cells = <2>;
+> @@ -210,6 +206,7 @@ Examples for MT2712:
+>  	};
+>  
+>  Examples for MT7622:
+> +
+>  	pcie: pcie@1a140000 {
+>  		compatible = "mediatek,mt7622-pcie";
+>  		device_type = "pci";
+> @@ -243,7 +240,6 @@ Examples for MT7622:
+>  		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x10000000>;
+>  
+>  		pcie0: pcie@0,0 {
+> -			device_type = "pci";
+>  			reg = <0x0000 0 0 0 0>;
+>  			#address-cells = <3>;
+>  			#size-cells = <2>;
+> @@ -263,7 +259,6 @@ Examples for MT7622:
+>  		};
+>  
+>  		pcie1: pcie@1,0 {
+> -			device_type = "pci";
+>  			reg = <0x0800 0 0 0 0>;
+>  			#address-cells = <3>;
+>  			#size-cells = <2>;
+> -- 
+> 1.9.1
 > 
-> If you really don't like it, I can just change it into 
-> 
-> #define MTK_DMA_DEV "mtk-hsdma"
-
-It is used only once, why not use KBUILD_MODNAME directly?
-
-> 
-> > > +
-> > > +#define MTK_HSDMA_USEC_POLL		20
-> > > +#define MTK_HSDMA_TIMEOUT_POLL		200000
-> > > +#define MTK_HSDMA_DMA_BUSWIDTHS		BIT(DMA_SLAVE_BUSWIDTH_UNDEFINED)
-> > 
-> > Undefined buswidth??
-
-??
-
-> > > +/**
-> > > + * struct mtk_hsdma_pdesc - This is the struct holding info describing physical
-> > > + *			    descriptor (PD) and its placement must be kept at
-> > > + *			    4-bytes alignment in little endian order.
-> > > + * @desc[1-4]:		    The control pad used to indicate hardware how to
-> > 
-> > pls align to 80char or lesser
-> > 
-> 
-> weird, it seems the line is already with 80 char and pass the
-> checkpatch.pl. or do I misunderstand something ?
-
-Okay please check. With text it helps to wrap before that
-
-> > > +	/*
-> > > +	 * Updating into hardware the pointer of TX ring lets HSDMA to take
-> > > +	 * action for those pending PDs.
-> > > +	 */
-> > > +	mtk_dma_write(hsdma, MTK_HSDMA_TX_CPU, ring->cur_tptr);
-> > > +
-> > > +	spin_unlock_irqrestore(&hsdma->lock, flags);
-> > > +
-> > > +	return !hvd->len ? 0 : -ENOSPC;
-> > 
-> > you already wrote and started txn, so why this?
-> > 
-> 
-> it's possible just partial virtual descriptor fits into hardware and
-> then return -ENOSPC. And it will start it to complete the remaining part
-> as soon as possible when some rooms is being freed.
-
-Either ways you have issued the descriptor, so you succeed right?
-
-> > shouldn't we check if next is in range, we can crash if we get bad value
-> > from hardware..
-> 
-> okay, there are checks for next with ddone bit check and null check in
-> the corresponding descriptor as the following.
-
-what if you get bad next value
-
-> 
-> > > +		rxd = &pc->ring.rxd[next];
-
-resulting in bad ref here
-
--- 
-~Vinod
