@@ -1,128 +1,123 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v2 4/4] pintcrl: support bias-disable of generic and
- special pins simultaneously
-Date: Thu, 1 Mar 2018 15:43:03 +0800
-Message-ID: <1519890183.8089.114.camel@mtkswgap22>
-References: <1519634042-12063-1-git-send-email-zhiyong.tao@mediatek.com>
-         <1519634042-12063-5-git-send-email-zhiyong.tao@mediatek.com>
-         <1519803217.8089.31.camel@mtkswgap22> <1519804157.23198.9.camel@mhfsdcap03>
-         <1519876072.23198.17.camel@mhfsdcap03>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v3] pwm: mediatek: fix up PWM4 and PWM5 malfunction on MT7623
+Date: Thu, 1 Mar 2018 16:19:12 +0800
+Message-ID: <051f401bcca48ece188023ccf10b2cedc7a25a64.1519891948.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1519876072.23198.17.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Cc: robh+dt@kernel.org, linus.walleij@linaro.org, mark.rutland@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, hongkun.cao@mediatek.com, srv_heupstream@mediatek.com, linux-gpio@vger.kernel.org, biao.huang@mediatek.com, erin.lo@mediatek.com, liguo.zhang@mediatek.com, linux-kernel@vger.kernel.org, hongzhou.yang@mediatek.com, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <stable-owner@vger.kernel.org>
+Sender: stable-owner@vger.kernel.org
+To: thierry.reding@gmail.com, matthias.bgg@gmail.com
+Cc: linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, stable@vger.kernel.org, Zhi Mao <zhi.mao@mediatek.com>, John Crispin <john@phrozen.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2018-03-01 at 11:47 +0800, Zhiyong Tao wrote:
-> On Wed, 2018-02-28 at 15:49 +0800, Zhiyong Tao wrote:
-> > On Wed, 2018-02-28 at 15:33 +0800, Sean Wang wrote:
-> > > On Mon, 2018-02-26 at 16:34 +0800, Zhiyong Tao wrote:
-> > > > For generic pins, parameter "arg" is 0 or 1.
-> > > > For special pins, bias-disable is set by R0R1,
-> > > > so we need transmited "00" to set bias-disable
-> > > > When we set "bias-disable" as high-z property,
-> > > > the parameter should be "MTK_PUPD_SET_R1R0_00".
-> > > > 
-> > > > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> > > > ---
-> > > >  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 13 +++++++++++--
-> > > >  1 file changed, 11 insertions(+), 2 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> > > > index 3cf384f..e88ba04 100644
-> > > > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> > > > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> > > > @@ -301,8 +301,17 @@ static int mtk_pconf_set_pull_select(struct mtk_pinctrl *pctl,
-> > > >  	 * resistor bit, so we need this special handle.
-> > > >  	 */
-> > > >  	if (pctl->devdata->spec_pull_set) {
-> > > > -		ret = pctl->devdata->spec_pull_set(mtk_get_regmap(pctl, pin),
-> > > > -			pin, pctl->devdata->port_align, isup, arg);
-> > > > +		if (enable) {
-> > > > +			ret = pctl->devdata->spec_pull_set(
-> > > > +				mtk_get_regmap(pctl, pin), pin,
-> > > > +				pctl->devdata->port_align, isup,
-> > > > +				arg);
-> > > > +		} else {
-> > > > +			ret = pctl->devdata->spec_pull_set(
-> > > > +				mtk_get_regmap(pctl, pin), pin,
-> > > > +				pctl->devdata->port_align, isup,
-> > > > +				MTK_PUPD_SET_R1R0_00);
-> > > > +		}
-> > > 
-> > > 
-> > > it looks like you can use as following snippet with reusing original
-> > > logic and less effort on maintaining these common code (?)
-> > ==> Thanks for your suggestion very much. It seems better.
-> > I will change it in v3.
-> 
-> ==>
->  Hi sean,
-> 
-> we try it in our site. we can't change like this.
-> Because we will check "arg" after setting "arg = MTK_PUPD_SET_R1R0_00;".
-> following snippet which check "arg" value is o or 1. If it not, which
-> will print error. so we can't change like this.
-> /* For generic pull config, default arg value should be 0 or 1. */
-> if (arg != 0 && arg != 1) {
-> 	dev_err(pctl->dev, "invalid pull-up argument %d on pin %d .\n", arg,
-> pin);
-> 	return -EINVAL;
-> }
-> 
-> Thanks.
+From: Sean Wang <sean.wang@mediatek.com>
 
-why not rewrite it with
+Since the offset for both registers, PWMDWIDTH and PWMTHRES, used to
+control PWM4 or PWM5 are distinct from the other PWMs, whose wrong
+programming on PWM hardware causes waveform cannot be output as expected.
+Thus, the patch adds the extra condition for fixing up the weird case to
+let PWM4 or PWM5 able to work on MT7623.
 
-@@ -301,8 +301,10 @@ static int mtk_pconf_set_pull_select(struct
-mtk_pinctrl *pctl,
-         * resistor bit, so we need this special handle.
-         */
-        if (pctl->devdata->spec_pull_set) {
-+               unsigned int r1r0 = enable ? arg : MTK_PUPD_SET_R1R0_00;
+v1 -> v2: use pwm45_fixup naming instead of pwm45_quirk
+v2 -> v3: add more tags for Reviewed-by, Fixes, and Cc stable
+
+Cc: stable@vger.kernel.org
+Fixes: caf065f8fd58 ("pwm: Add MediaTek PWM support")
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Zhi Mao <zhi.mao@mediatek.com>
+Cc: John Crispin <john@phrozen.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+---
+ drivers/pwm/pwm-mediatek.c | 24 +++++++++++++++++++++---
+ 1 file changed, 21 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+index f5d97e0..796baea 100644
+--- a/drivers/pwm/pwm-mediatek.c
++++ b/drivers/pwm/pwm-mediatek.c
+@@ -29,7 +29,9 @@
+ #define PWMGDUR			0x0c
+ #define PWMWAVENUM		0x28
+ #define PWMDWIDTH		0x2c
++#define PWM45DWIDTH_FIXUP	0x30
+ #define PWMTHRES		0x30
++#define PWM45THRES_FIXUP	0x34
+ 
+ #define PWM_CLK_DIV_MAX		7
+ 
+@@ -54,6 +56,7 @@ static const char * const mtk_pwm_clk_name[MTK_CLK_MAX] = {
+ 
+ struct mtk_pwm_platform_data {
+ 	unsigned int num_pwms;
++	bool pwm45_fixup;
+ };
+ 
+ /**
+@@ -66,6 +69,7 @@ struct mtk_pwm_chip {
+ 	struct pwm_chip chip;
+ 	void __iomem *regs;
+ 	struct clk *clks[MTK_CLK_MAX];
++	const struct mtk_pwm_platform_data *soc;
+ };
+ 
+ static const unsigned int mtk_pwm_reg_offset[] = {
+@@ -131,7 +135,8 @@ static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ {
+ 	struct mtk_pwm_chip *pc = to_mtk_pwm_chip(chip);
+ 	struct clk *clk = pc->clks[MTK_CLK_PWM1 + pwm->hwpwm];
+-	u32 resolution, clkdiv = 0;
++	u32 resolution, clkdiv = 0, reg_width = PWMDWIDTH,
++	    reg_thres = PWMTHRES;
+ 	int ret;
+ 
+ 	ret = mtk_pwm_clk_enable(chip, pwm);
+@@ -151,9 +156,18 @@ static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 		return -EINVAL;
+ 	}
+ 
++	if (pc->soc->pwm45_fixup && pwm->hwpwm > 2) {
++		/*
++		 * PWM[4,5] has distinct offset for PWMDWIDTH and PWMTHRES
++		 * from the other PWMs on MT7623.
++		 */
++		reg_width = PWM45DWIDTH_FIXUP;
++		reg_thres = PWM45THRES_FIXUP;
++	}
 +
-                ret = pctl->devdata->spec_pull_set(mtk_get_regmap(pctl,
-pin),
--                       pin, pctl->devdata->port_align, isup, arg);
-+                       pin, pctl->devdata->port_align, isup, r1r0);
-                if (!ret)
-                        return 0;
-        }
-
-and also I appeared to find another bug in the original code when I had
-a close look at the code path, but it's not related to the patch: 
-
-a special pin would still go through the code path to handle
-generic pin when the special pin uses an invalid argument.
-
-It looks like err-code from pctl->devdata->spec_pull_set cannot be
-used directly to judge its pin type. It's also possible to use it as an
-indication of the real failure during special pin is being set up.
-
-> > > 
-> > > 
-> > > if (pctl->devdata->spec_pull_set) {
-> > > 	+ if (!enable)
-> > > 	+ 	arg = MTK_PUPD_SET_R1R0_00;
-> > > 
-> > > 	ret = pctl->devdata->spec_pull_set(mtk_get_regmap(pctl, pin),
-> > > 		pin, pctl->devdata->port_align, isup, arg);
-> > > 
-> > > 
-> > > Also, it's better to add more comments to such kind of special path for
-> > > allowing future SoCs to follow and extend more easily.
-> > 
-> > ==> Thanks for your suggestion very much. I will add more comments here.
-> > > 
-> > > >  		if (!ret)
-> > > >  			return 0;
-> > > >  	}
-> > > 
-> > > 
-> > 
-> 
-> 
+ 	mtk_pwm_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
+-	mtk_pwm_writel(pc, pwm->hwpwm, PWMDWIDTH, period_ns / resolution);
+-	mtk_pwm_writel(pc, pwm->hwpwm, PWMTHRES, duty_ns / resolution);
++	mtk_pwm_writel(pc, pwm->hwpwm, reg_width, period_ns / resolution);
++	mtk_pwm_writel(pc, pwm->hwpwm, reg_thres, duty_ns / resolution);
+ 
+ 	mtk_pwm_clk_disable(chip, pwm);
+ 
+@@ -211,6 +225,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
+ 	data = of_device_get_match_data(&pdev->dev);
+ 	if (data == NULL)
+ 		return -EINVAL;
++	pc->soc = data;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	pc->regs = devm_ioremap_resource(&pdev->dev, res);
+@@ -251,14 +266,17 @@ static int mtk_pwm_remove(struct platform_device *pdev)
+ 
+ static const struct mtk_pwm_platform_data mt2712_pwm_data = {
+ 	.num_pwms = 8,
++	.pwm45_fixup = false,
+ };
+ 
+ static const struct mtk_pwm_platform_data mt7622_pwm_data = {
+ 	.num_pwms = 6,
++	.pwm45_fixup = false,
+ };
+ 
+ static const struct mtk_pwm_platform_data mt7623_pwm_data = {
+ 	.num_pwms = 5,
++	.pwm45_fixup = true,
+ };
+ 
+ static const struct of_device_id mtk_pwm_of_match[] = {
+-- 
+2.7.4
