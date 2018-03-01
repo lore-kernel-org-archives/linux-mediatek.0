@@ -1,66 +1,96 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH 2/2] clk: mediatek: fix PWM clock source by adding a fixed-factor clock
-Date: Thu, 1 Mar 2018 11:27:51 +0800
-Message-ID: <b6eafb38f8d697bd8d00c8d86a0b22be809f8062.1519874655.git.sean.wang@mediatek.com>
-References: <cd26a3bdc9f29e237089395fbba93e28549ddf25.1519874655.git.sean.wang@mediatek.com>
+From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Subject: Re: [PATCH v2 4/4] pintcrl: support bias-disable of generic and
+ special pins simultaneously
+Date: Thu, 1 Mar 2018 11:47:52 +0800
+Message-ID: <1519876072.23198.17.camel@mhfsdcap03>
+References: <1519634042-12063-1-git-send-email-zhiyong.tao@mediatek.com>
+         <1519634042-12063-5-git-send-email-zhiyong.tao@mediatek.com>
+         <1519803217.8089.31.camel@mtkswgap22> <1519804157.23198.9.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <cd26a3bdc9f29e237089395fbba93e28549ddf25.1519874655.git.sean.wang@mediatek.com>
-Sender: stable-owner@vger.kernel.org
-To: sboyd@codeaurora.org, mturquette@baylibre.com, robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, p.zabel@pengutronix.de
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1519804157.23198.9.camel@mhfsdcap03>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: robh+dt@kernel.org, linus.walleij@linaro.org, mark.rutland@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, hongkun.cao@mediatek.com, srv_heupstream@mediatek.com, linux-gpio@vger.kernel.org, biao.huang@mediatek.com, erin.lo@mediatek.com, liguo.zhang@mediatek.com, linux-kernel@vger.kernel.org, hongzhou.yang@mediatek.com, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Wed, 2018-02-28 at 15:49 +0800, Zhiyong Tao wrote:
+> On Wed, 2018-02-28 at 15:33 +0800, Sean Wang wrote:
+> > On Mon, 2018-02-26 at 16:34 +0800, Zhiyong Tao wrote:
+> > > For generic pins, parameter "arg" is 0 or 1.
+> > > For special pins, bias-disable is set by R0R1,
+> > > so we need transmited "00" to set bias-disable
+> > > When we set "bias-disable" as high-z property,
+> > > the parameter should be "MTK_PUPD_SET_R1R0_00".
+> > > 
+> > > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> > > ---
+> > >  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 13 +++++++++++--
+> > >  1 file changed, 11 insertions(+), 2 deletions(-)
+> > > 
+> > > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> > > index 3cf384f..e88ba04 100644
+> > > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> > > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> > > @@ -301,8 +301,17 @@ static int mtk_pconf_set_pull_select(struct mtk_pinctrl *pctl,
+> > >  	 * resistor bit, so we need this special handle.
+> > >  	 */
+> > >  	if (pctl->devdata->spec_pull_set) {
+> > > -		ret = pctl->devdata->spec_pull_set(mtk_get_regmap(pctl, pin),
+> > > -			pin, pctl->devdata->port_align, isup, arg);
+> > > +		if (enable) {
+> > > +			ret = pctl->devdata->spec_pull_set(
+> > > +				mtk_get_regmap(pctl, pin), pin,
+> > > +				pctl->devdata->port_align, isup,
+> > > +				arg);
+> > > +		} else {
+> > > +			ret = pctl->devdata->spec_pull_set(
+> > > +				mtk_get_regmap(pctl, pin), pin,
+> > > +				pctl->devdata->port_align, isup,
+> > > +				MTK_PUPD_SET_R1R0_00);
+> > > +		}
+> > 
+> > 
+> > it looks like you can use as following snippet with reusing original
+> > logic and less effort on maintaining these common code (?)
+> ==> Thanks for your suggestion very much. It seems better.
+> I will change it in v3.
 
-The clock for which all PWM devices on MT7623 or MT2701 actually depending
-on has to be divided by four from its parent clock axi_sel in the clock
-path prior to PWM devices.
+==>
+ Hi sean,
 
-Consequently, adding a fixed-factor clock axisel_d4 as one-fourth of
-clock axi_sel allows that PWM devices can have the correct resolution
-calculation.
+we try it in our site. we can't change like this.
+Because we will check "arg" after setting "arg = MTK_PUPD_SET_R1R0_00;".
+following snippet which check "arg" value is o or 1. If it not, which
+will print error. so we can't change like this.
+/* For generic pull config, default arg value should be 0 or 1. */
+if (arg != 0 && arg != 1) {
+	dev_err(pctl->dev, "invalid pull-up argument %d on pin %d .\n", arg,
+pin);
+	return -EINVAL;
+}
 
-Cc: stable@vger.kernel.org
-Fixes: e9862118272a ("clk: mediatek: Add MT2701 clock support")
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/clk/mediatek/clk-mt2701.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/clk/mediatek/clk-mt2701.c b/drivers/clk/mediatek/clk-mt2701.c
-index 8e7f16f..deca752 100644
---- a/drivers/clk/mediatek/clk-mt2701.c
-+++ b/drivers/clk/mediatek/clk-mt2701.c
-@@ -148,6 +148,7 @@ static const struct mtk_fixed_factor top_fixed_divs[] = {
- 	FACTOR(CLK_TOP_CLK26M_D8, "clk26m_d8", "clk26m", 1, 8),
- 	FACTOR(CLK_TOP_32K_INTERNAL, "32k_internal", "clk26m", 1, 793),
- 	FACTOR(CLK_TOP_32K_EXTERNAL, "32k_external", "rtc32k", 1, 1),
-+	FACTOR(CLK_TOP_AXISEL_D4, "axisel_d4", "axi_sel", 1, 4),
- };
- 
- static const char * const axi_parents[] = {
-@@ -857,13 +858,13 @@ static const struct mtk_gate peri_clks[] = {
- 	GATE_PERI0(CLK_PERI_USB1, "usb1_ck", "usb20_sel", 11),
- 	GATE_PERI0(CLK_PERI_USB0, "usb0_ck", "usb20_sel", 10),
- 	GATE_PERI0(CLK_PERI_PWM, "pwm_ck", "axi_sel", 9),
--	GATE_PERI0(CLK_PERI_PWM7, "pwm7_ck", "axi_sel", 8),
--	GATE_PERI0(CLK_PERI_PWM6, "pwm6_ck", "axi_sel", 7),
--	GATE_PERI0(CLK_PERI_PWM5, "pwm5_ck", "axi_sel", 6),
--	GATE_PERI0(CLK_PERI_PWM4, "pwm4_ck", "axi_sel", 5),
--	GATE_PERI0(CLK_PERI_PWM3, "pwm3_ck", "axi_sel", 4),
--	GATE_PERI0(CLK_PERI_PWM2, "pwm2_ck", "axi_sel", 3),
--	GATE_PERI0(CLK_PERI_PWM1, "pwm1_ck", "axi_sel", 2),
-+	GATE_PERI0(CLK_PERI_PWM7, "pwm7_ck", "axisel_d4", 8),
-+	GATE_PERI0(CLK_PERI_PWM6, "pwm6_ck", "axisel_d4", 7),
-+	GATE_PERI0(CLK_PERI_PWM5, "pwm5_ck", "axisel_d4", 6),
-+	GATE_PERI0(CLK_PERI_PWM4, "pwm4_ck", "axisel_d4", 5),
-+	GATE_PERI0(CLK_PERI_PWM3, "pwm3_ck", "axisel_d4", 4),
-+	GATE_PERI0(CLK_PERI_PWM2, "pwm2_ck", "axisel_d4", 3),
-+	GATE_PERI0(CLK_PERI_PWM1, "pwm1_ck", "axisel_d4", 2),
- 	GATE_PERI0(CLK_PERI_THERM, "therm_ck", "axi_sel", 1),
- 	GATE_PERI0(CLK_PERI_NFI, "nfi_ck", "nfi2x_sel", 0),
- 
--- 
-2.7.4
+Thanks.
+> > 
+> > 
+> > if (pctl->devdata->spec_pull_set) {
+> > 	+ if (!enable)
+> > 	+ 	arg = MTK_PUPD_SET_R1R0_00;
+> > 
+> > 	ret = pctl->devdata->spec_pull_set(mtk_get_regmap(pctl, pin),
+> > 		pin, pctl->devdata->port_align, isup, arg);
+> > 
+> > 
+> > Also, it's better to add more comments to such kind of special path for
+> > allowing future SoCs to follow and extend more easily.
+> 
+> ==> Thanks for your suggestion very much. I will add more comments here.
+> > 
+> > >  		if (!ret)
+> > >  			return 0;
+> > >  	}
+> > 
+> > 
+> 
