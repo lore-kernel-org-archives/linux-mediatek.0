@@ -1,36 +1,32 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v1 02/19] dt-bindings: cpufreq: mediatek: use - instead
- of _ in examples
-Date: Fri, 2 Mar 2018 09:53:19 -0600
-Message-ID: <20180302155319.xvp2awguosm7kyyo@rob-hp-laptop>
+Subject: Re: [PATCH v1 04/19] dt-bindings: arm: mediatek: add support for
+ more mt7623 reference boards
+Date: Fri, 2 Mar 2018 10:00:22 -0600
+Message-ID: <20180302160022.ub6vinw6br3l2dyb@rob-hp-laptop>
 References: <cover.1519378871.git.sean.wang@mediatek.com>
- <fd1fc4c6760ab8fcbf7518df1cecf3837ab18d2c.1519378871.git.sean.wang@mediatek.com>
+ <e77690ea7f7332e9e1ee64204a4e72c759c41aa9.1519378871.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <fd1fc4c6760ab8fcbf7518df1cecf3837ab18d2c.1519378871.git.sean.wang@mediatek.com>
+In-Reply-To: <e77690ea7f7332e9e1ee64204a4e72c759c41aa9.1519378871.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: sean.wang@mediatek.com
-Cc: matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>, linux-pm@vger.kernel.org
+Cc: matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Feb 23, 2018 at 06:16:22PM +0800, sean.wang@mediatek.com wrote:
+On Fri, Feb 23, 2018 at 06:16:24PM +0800, sean.wang@mediatek.com wrote:
 > From: Sean Wang <sean.wang@mediatek.com>
 > 
-> It should be good that no use "_" is in examples. Consequently,
-> those nodes in certain files which have an inappropriate name containing
-> "_" are all being replaced with "-".
+> Update binding document for more mt7623[A,N] reference boards being
+> supported.
 > 
 > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>
-> Cc: Viresh Kumar <viresh.kumar@linaro.org>
 > Cc: Rob Herring <robh+dt@kernel.org>
 > Cc: Mark Rutland <mark.rutland@arm.com>
-> Cc: linux-pm@vger.kernel.org
 > Cc: devicetree@vger.kernel.org
 > ---
->  Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  Documentation/devicetree/bindings/arm/mediatek.txt | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 
 Reviewed-by: Rob Herring <robh@kernel.org>
