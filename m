@@ -1,33 +1,108 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v1 03/19] dt-bindings: pinctrl: mediatek: add bindings for
- I2C2 and SPI2 on MT7623
-Date: Fri, 2 Mar 2018 08:44:48 +0100
-Message-ID: <CACRpkdYZmx-jxbjJDPpJ_wn0xszdKBPQiEa=tnCr2KVn1QBz6g@mail.gmail.com>
-References: <cover.1519378871.git.sean.wang@mediatek.com> <607af13d88f733057df2ea057228e1cdbf77262a.1519378871.git.sean.wang@mediatek.com>
+From: Vinod Koul <vinod.koul@intel.com>
+Subject: Re: [PATCH v5 2/3] dmaengine: mediatek: Add MediaTek High-Speed DMA
+ controller for MT7622 and MT7623 SoC
+Date: Fri, 2 Mar 2018 13:47:06 +0530
+Message-ID: <20180302081706.GL15443@localhost>
+References: <cover.1518857746.git.sean.wang@mediatek.com>
+ <de4177cb2269c99f8d7c5738ac8a64f512122dfd.1518857747.git.sean.wang@mediatek.com>
+ <20180301082329.GD15443@localhost>
+ <1519900021.8089.136.camel@mtkswgap22>
+ <20180301125649.GH15443@localhost>
+ <1519973271.8089.166.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <607af13d88f733057df2ea057228e1cdbf77262a.1519378871.git.sean.wang@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1519973271.8089.166.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: dan.j.williams@intel.com, robh+dt@kernel.org, mark.rutland@arm.com, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Randy Dunlap <rdunlap@infradead.org>, Fengguang Wu <fengguang.wu@intel.com>, Julia Lawall <julia.lawall@lip6.fr>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Feb 23, 2018 at 11:16 AM,  <sean.wang@mediatek.com> wrote:
+On Fri, Mar 02, 2018 at 02:47:51PM +0800, Sean Wang wrote:
+> Hi, Vinod
+> 
+> On Thu, 2018-03-01 at 18:26 +0530, Vinod Koul wrote:
+> > On Thu, Mar 01, 2018 at 06:27:01PM +0800, Sean Wang wrote:
+> > > On Thu, 2018-03-01 at 13:53 +0530, Vinod Koul wrote:
+> > > > On Sun, Feb 18, 2018 at 03:08:30AM +0800, sean.wang@mediatek.com wrote:
+> > > > 
+> > > > > @@ -0,0 +1,1054 @@
+> > > > > +// SPDX-License-Identifier: GPL-2.0
+> > > > // Copyright ...
+> > > > 
+> > > > The copyright line needs to follow SPDX tag line
+> > > > 
+> > > 
+> > > okay, I will make it reorder and be something like that
+> > > 
+> > > // SPDX-License-Identifier: GPL-2.0
+> > > /*
+> > >  * Copyright (c) 2017-2018 MediaTek Inc.
+> > >  * Author: Sean Wang <sean.wang@mediatek.com>
+> > >  *
+> > >  * Driver for MediaTek High-Speed DMA Controller
+> > >  *
+> > >  */
+> > 
+> > It needs to be:
+> > 
+> > // SPDX-License-Identifier: GPL-2.0
+> > // Copyright (c) 2017-2018 MediaTek Inc.
+> > 
+> > /*
+> >  * whatever else you want
+> >  */
+> > 
+> > The first two lines are in C99 style comment and need to have SPDX tag and
+> > Copyright info
+> 
+> Sure, I can do it using C99 style comments at the first two lines.
+> 
+> In addition, I'm really curious where we can find a reference to the
+> rule and if it 's a strict rule for all the drivers.
+> 
+> Because I'm considering whether I should turn other driver into using
+> the same rule.
 
-> From: Sean Wang <sean.wang@mediatek.com>
->
-> Add missing pinctrl binding about I2C2 and SPI2 which would be used in
-> devicetree related files.
->
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Cc: Rob Herring <robh+dt@kernel.org>
-> Cc: Mark Rutland <mark.rutland@arm.com>
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Cc: linux-gpio@vger.kernel.org
-> Cc: devicetree@vger.kernel.org
+Yes that seems to be the rule now https://lkml.org/lkml/2017/11/2/715
 
-Patch applied.
+> > > > > +#define MTK_HSDMA_USEC_POLL		20
+> > > > > +#define MTK_HSDMA_TIMEOUT_POLL		200000
+> > > > > +#define MTK_HSDMA_DMA_BUSWIDTHS		BIT(DMA_SLAVE_BUSWIDTH_UNDEFINED)
+> > > > 
+> > > > Undefined buswidth??
+> > 
+> > ??
+> 
+> Sorry for I didn't answer the question in the short time.
+> 
+> After spending some time on a confirmation with design, it is
+> DMA_SLAVE_BUSWIDTH_4_BYTES and not be configurable. 
 
-Yours,
-Linus Walleij
+Then it should be DMA_SLAVE_BUSWIDTH_4_BYTES and not
+DMA_SLAVE_BUSWIDTH_UNDEFINED...
+
+> > > > shouldn't we check if next is in range, we can crash if we get bad value
+> > > > from hardware..
+> > > 
+> > > okay, there are checks for next with ddone bit check and null check in
+> > > the corresponding descriptor as the following.
+> > 
+> > what if you get bad next value
+> > 
+> 
+> next is not hardware value. it's maintained by software which is always
+> between 0 to MTK_DMA_SIZE - 1, and definitely doesn't get a bad value.
+> 
+> > > 
+> > > > > +		rxd = &pc->ring.rxd[next];
+> > 
+> > resulting in bad ref here
+> 
+> rxd is also definitely a good ref
+
+not if next is out of range, say you read -1 or 200000?
+
+-- 
+~Vinod
