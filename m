@@ -1,108 +1,79 @@
-From: Vinod Koul <vinod.koul@intel.com>
-Subject: Re: [PATCH v5 2/3] dmaengine: mediatek: Add MediaTek High-Speed DMA
- controller for MT7622 and MT7623 SoC
-Date: Fri, 2 Mar 2018 13:47:06 +0530
-Message-ID: <20180302081706.GL15443@localhost>
-References: <cover.1518857746.git.sean.wang@mediatek.com>
- <de4177cb2269c99f8d7c5738ac8a64f512122dfd.1518857747.git.sean.wang@mediatek.com>
- <20180301082329.GD15443@localhost>
- <1519900021.8089.136.camel@mtkswgap22>
- <20180301125649.GH15443@localhost>
- <1519973271.8089.166.camel@mtkswgap22>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v1] pwm: mediatek: improve precision in rate calculation
+Date: Fri, 2 Mar 2018 16:49:14 +0800
+Message-ID: <72b74a30ced1c7e7549dcbb56d6123fc27fac405.1519980119.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1519973271.8089.166.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: dan.j.williams@intel.com, robh+dt@kernel.org, mark.rutland@arm.com, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Randy Dunlap <rdunlap@infradead.org>, Fengguang Wu <fengguang.wu@intel.com>, Julia Lawall <julia.lawall@lip6.fr>
+To: thierry.reding@gmail.com, matthias.bgg@gmail.com
+Cc: linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, stable@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Mar 02, 2018 at 02:47:51PM +0800, Sean Wang wrote:
-> Hi, Vinod
-> 
-> On Thu, 2018-03-01 at 18:26 +0530, Vinod Koul wrote:
-> > On Thu, Mar 01, 2018 at 06:27:01PM +0800, Sean Wang wrote:
-> > > On Thu, 2018-03-01 at 13:53 +0530, Vinod Koul wrote:
-> > > > On Sun, Feb 18, 2018 at 03:08:30AM +0800, sean.wang@mediatek.com wrote:
-> > > > 
-> > > > > @@ -0,0 +1,1054 @@
-> > > > > +// SPDX-License-Identifier: GPL-2.0
-> > > > // Copyright ...
-> > > > 
-> > > > The copyright line needs to follow SPDX tag line
-> > > > 
-> > > 
-> > > okay, I will make it reorder and be something like that
-> > > 
-> > > // SPDX-License-Identifier: GPL-2.0
-> > > /*
-> > >  * Copyright (c) 2017-2018 MediaTek Inc.
-> > >  * Author: Sean Wang <sean.wang@mediatek.com>
-> > >  *
-> > >  * Driver for MediaTek High-Speed DMA Controller
-> > >  *
-> > >  */
-> > 
-> > It needs to be:
-> > 
-> > // SPDX-License-Identifier: GPL-2.0
-> > // Copyright (c) 2017-2018 MediaTek Inc.
-> > 
-> > /*
-> >  * whatever else you want
-> >  */
-> > 
-> > The first two lines are in C99 style comment and need to have SPDX tag and
-> > Copyright info
-> 
-> Sure, I can do it using C99 style comments at the first two lines.
-> 
-> In addition, I'm really curious where we can find a reference to the
-> rule and if it 's a strict rule for all the drivers.
-> 
-> Because I'm considering whether I should turn other driver into using
-> the same rule.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Yes that seems to be the rule now https://lkml.org/lkml/2017/11/2/715
+Add a way that turning resolution from in nanosecond into in picosecond
+to improve noticeably almost 4.5% precision.
 
-> > > > > +#define MTK_HSDMA_USEC_POLL		20
-> > > > > +#define MTK_HSDMA_TIMEOUT_POLL		200000
-> > > > > +#define MTK_HSDMA_DMA_BUSWIDTHS		BIT(DMA_SLAVE_BUSWIDTH_UNDEFINED)
-> > > > 
-> > > > Undefined buswidth??
-> > 
-> > ??
-> 
-> Sorry for I didn't answer the question in the short time.
-> 
-> After spending some time on a confirmation with design, it is
-> DMA_SLAVE_BUSWIDTH_4_BYTES and not be configurable. 
+It's necessary to hold the new resolution with type u64 and thus related
+operations on u64 are applied instead in those rate calculations.
 
-Then it should be DMA_SLAVE_BUSWIDTH_4_BYTES and not
-DMA_SLAVE_BUSWIDTH_UNDEFINED...
+And the patch has a dependency on [1].
 
-> > > > shouldn't we check if next is in range, we can crash if we get bad value
-> > > > from hardware..
-> > > 
-> > > okay, there are checks for next with ddone bit check and null check in
-> > > the corresponding descriptor as the following.
-> > 
-> > what if you get bad next value
-> > 
-> 
-> next is not hardware value. it's maintained by software which is always
-> between 0 to MTK_DMA_SIZE - 1, and definitely doesn't get a bad value.
-> 
-> > > 
-> > > > > +		rxd = &pc->ring.rxd[next];
-> > 
-> > resulting in bad ref here
-> 
-> rxd is also definitely a good ref
+[1] http://lists.infradead.org/pipermail/linux-mediatek/2018-March/012225.html
 
-not if next is out of range, say you read -1 or 200000?
+Cc: stable@vger.kernel.org
+Fixes: caf065f8fd58 ("pwm: Add MediaTek PWM support")
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/pwm/pwm-mediatek.c | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
 
+diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+index 796baea..98b0a93 100644
+--- a/drivers/pwm/pwm-mediatek.c
++++ b/drivers/pwm/pwm-mediatek.c
+@@ -135,19 +135,25 @@ static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ {
+ 	struct mtk_pwm_chip *pc = to_mtk_pwm_chip(chip);
+ 	struct clk *clk = pc->clks[MTK_CLK_PWM1 + pwm->hwpwm];
+-	u32 resolution, clkdiv = 0, reg_width = PWMDWIDTH,
++	u32 clkdiv = 0, cnt_period, cnt_duty, reg_width = PWMDWIDTH,
+ 	    reg_thres = PWMTHRES;
++	u64 resolution;
+ 	int ret;
+ 
+ 	ret = mtk_pwm_clk_enable(chip, pwm);
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	resolution = NSEC_PER_SEC / clk_get_rate(clk);
++	/* Using resolution in picosecond gets accuracy higher */
++	resolution = (u64)NSEC_PER_SEC * 1000;
++	do_div(resolution, clk_get_rate(clk));
+ 
+-	while (period_ns / resolution > 8191) {
++	cnt_period = DIV_ROUND_CLOSEST_ULL((u64)period_ns * 1000, resolution);
++	while (cnt_period > 8191) {
+ 		resolution *= 2;
+ 		clkdiv++;
++		cnt_period = DIV_ROUND_CLOSEST_ULL((u64)period_ns * 1000,
++						   resolution);
+ 	}
+ 
+ 	if (clkdiv > PWM_CLK_DIV_MAX) {
+@@ -165,9 +171,10 @@ static int mtk_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 		reg_thres = PWM45THRES_FIXUP;
+ 	}
+ 
++	cnt_duty = DIV_ROUND_CLOSEST_ULL((u64)duty_ns * 1000, resolution);
+ 	mtk_pwm_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
+-	mtk_pwm_writel(pc, pwm->hwpwm, reg_width, period_ns / resolution);
+-	mtk_pwm_writel(pc, pwm->hwpwm, reg_thres, duty_ns / resolution);
++	mtk_pwm_writel(pc, pwm->hwpwm, reg_width, cnt_period);
++	mtk_pwm_writel(pc, pwm->hwpwm, reg_thres, cnt_duty);
+ 
+ 	mtk_pwm_clk_disable(chip, pwm);
+ 
 -- 
-~Vinod
+2.7.4
