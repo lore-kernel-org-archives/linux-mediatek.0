@@ -1,40 +1,157 @@
-From: Joel Stanley <joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org>
-Subject: Re: [PATCH v4] watchdog: add SPDX identifiers for watchdog subsystem
-Date: Fri, 2 Mar 2018 14:09:31 +1030
-Message-ID: <CACPK8Xd2W1559soSAfviY6AS0uMRCxYEmOrhHAof5gX6y_63Cg@mail.gmail.com>
-References: <20180228150209.2525-1-marcus.folkesson@gmail.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v5 2/3] dmaengine: mediatek: Add MediaTek High-Speed DMA
+ controller for MT7622 and MT7623 SoC
+Date: Fri, 2 Mar 2018 14:47:51 +0800
+Message-ID: <1519973271.8089.166.camel@mtkswgap22>
+References: <cover.1518857746.git.sean.wang@mediatek.com>
+         <de4177cb2269c99f8d7c5738ac8a64f512122dfd.1518857747.git.sean.wang@mediatek.com>
+         <20180301082329.GD15443@localhost> <1519900021.8089.136.camel@mtkswgap22>
+         <20180301125649.GH15443@localhost>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180228150209.2525-1-marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Marcus Folkesson <marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, Alexandre Belloni <alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Mans Rullgard <mans-2StjZFpD7GcAvxtiuMwx3w@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Benjamin Herrenschmidt <benh-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>, Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>, adi-buildroot-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Paul Mackerras <paulus-eUNUBHrolfbYtjvyW6yDsg@public.gmane.org>, Michael Ellerman <mpe-Gsx/Oe8HsFggBc27wqDAHg@public.gmane.org>, Baoyou Xie <baoyou.xie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Sylvain Lemieux <slemieux.tyco-Re5JQEeQqe8@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180301125649.GH15443@localhost>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Vinod Koul <vinod.koul@intel.com>
+Cc: dan.j.williams@intel.com, robh+dt@kernel.org, mark.rutland@arm.com, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Randy Dunlap <rdunlap@infradead.org>, Fengguang Wu <fengguang.wu@intel.com>, Julia Lawall <julia.lawall@lip6.fr>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Mar 1, 2018 at 1:31 AM, Marcus Folkesson
-<marcus.folkesson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> - Add SPDX identifier
-> - Remove boiler plate license text
-> - If MODULE_LICENSE and boiler plate does not match, go for boiler plate
->   license
->
+Hi, Vinod
 
-For this one:
+On Thu, 2018-03-01 at 18:26 +0530, Vinod Koul wrote:
+> On Thu, Mar 01, 2018 at 06:27:01PM +0800, Sean Wang wrote:
+> > On Thu, 2018-03-01 at 13:53 +0530, Vinod Koul wrote:
+> > > On Sun, Feb 18, 2018 at 03:08:30AM +0800, sean.wang@mediatek.com wrote:
+> > > 
+> > > > @@ -0,0 +1,1054 @@
+> > > > +// SPDX-License-Identifier: GPL-2.0
+> > > // Copyright ...
+> > > 
+> > > The copyright line needs to follow SPDX tag line
+> > > 
+> > 
+> > okay, I will make it reorder and be something like that
+> > 
+> > // SPDX-License-Identifier: GPL-2.0
+> > /*
+> >  * Copyright (c) 2017-2018 MediaTek Inc.
+> >  * Author: Sean Wang <sean.wang@mediatek.com>
+> >  *
+> >  * Driver for MediaTek High-Speed DMA Controller
+> >  *
+> >  */
+> 
+> It needs to be:
+> 
+> // SPDX-License-Identifier: GPL-2.0
+> // Copyright (c) 2017-2018 MediaTek Inc.
+> 
+> /*
+>  * whatever else you want
+>  */
+> 
+> The first two lines are in C99 style comment and need to have SPDX tag and
+> Copyright info
 
->  drivers/watchdog/aspeed_wdt.c          |  5 +---
+Sure, I can do it using C99 style comments at the first two lines.
 
-Acked-by: Joel Stanley <joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org>
+In addition, I'm really curious where we can find a reference to the
+rule and if it 's a strict rule for all the drivers.
 
-Cheers,
+Because I'm considering whether I should turn other driver into using
+the same rule.
 
-Joel
+> > the point is I learned from other subsystem makes the driver name be
+> > same with the module name with KBUILD_MODNAME.
+> > 
+> > If you really don't like it, I can just change it into 
+> > 
+> > #define MTK_DMA_DEV "mtk-hsdma"
+> 
+> It is used only once, why not use KBUILD_MODNAME directly?
+> 
+
+Yup, it can use KBUILD_MODNAME directly.
+
+> > 
+> > > > +
+> > > > +#define MTK_HSDMA_USEC_POLL		20
+> > > > +#define MTK_HSDMA_TIMEOUT_POLL		200000
+> > > > +#define MTK_HSDMA_DMA_BUSWIDTHS		BIT(DMA_SLAVE_BUSWIDTH_UNDEFINED)
+> > > 
+> > > Undefined buswidth??
+> 
+> ??
+
+Sorry for I didn't answer the question in the short time.
+
+After spending some time on a confirmation with design, it is
+DMA_SLAVE_BUSWIDTH_4_BYTES and not be configurable. 
+
+> 
+> > > > +/**
+> > > > + * struct mtk_hsdma_pdesc - This is the struct holding info describing physical
+> > > > + *			    descriptor (PD) and its placement must be kept at
+> > > > + *			    4-bytes alignment in little endian order.
+> > > > + * @desc[1-4]:		    The control pad used to indicate hardware how to
+> > > 
+> > > pls align to 80char or lesser
+> > > 
+> > 
+> > weird, it seems the line is already with 80 char and pass the
+> > checkpatch.pl. or do I misunderstand something ?
+> 
+> Okay please check. With text it helps to wrap before that
+> 
+
+After check again, these lines are all already aligned to 80 chars
+
+> > > > +	/*
+> > > > +	 * Updating into hardware the pointer of TX ring lets HSDMA to take
+> > > > +	 * action for those pending PDs.
+> > > > +	 */
+> > > > +	mtk_dma_write(hsdma, MTK_HSDMA_TX_CPU, ring->cur_tptr);
+> > > > +
+> > > > +	spin_unlock_irqrestore(&hsdma->lock, flags);
+> > > > +
+> > > > +	return !hvd->len ? 0 : -ENOSPC;
+> > > 
+> > > you already wrote and started txn, so why this?
+> > > 
+> > 
+> > it's possible just partial virtual descriptor fits into hardware and
+> > then return -ENOSPC. And it will start it to complete the remaining part
+> > as soon as possible when some rooms is being freed.
+> 
+> Either ways you have issued the descriptor, so you succeed right?
+> 
+
+I think I should get your points.
+
+I guessed what you meant is that it should be returning 0 instead of
+-ENOSPC for all successful descriptor issuing either in part or in full
+
+I will refine this flow based on the thought.
+
+> > > shouldn't we check if next is in range, we can crash if we get bad value
+> > > from hardware..
+> > 
+> > okay, there are checks for next with ddone bit check and null check in
+> > the corresponding descriptor as the following.
+> 
+> what if you get bad next value
+> 
+
+next is not hardware value. it's maintained by software which is always
+between 0 to MTK_DMA_SIZE - 1, and definitely doesn't get a bad value.
+
+> > 
+> > > > +		rxd = &pc->ring.rxd[next];
+> 
+> resulting in bad ref here
+
+rxd is also definitely a good ref
+
+
+> 
