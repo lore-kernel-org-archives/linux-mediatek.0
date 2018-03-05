@@ -1,105 +1,56 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v1 16/19] arm: dts: mt7623: fixup available memory size
- on bananapi-r2
-Date: Mon, 5 Mar 2018 23:46:48 +0800
-Message-ID: <1520264808.8089.261.camel@mtkswgap22>
-References: <cover.1519378871.git.sean.wang@mediatek.com>
-         <e49485aac14bec85c14514c1953f8d7ea5401695.1519378872.git.sean.wang@mediatek.com>
-         <20180302154215.xr3b2zlmuojw5i6l@rob-hp-laptop>
-         <1520033229.8089.198.camel@mtkswgap22>
-         <CAL_JsqLO7YG+6LKa-5nvQzxpvU9MF5Y=1gZKogeCqGiW-dV3zw@mail.gmail.com>
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Subject: [PATCH] pinctrl: mediatek: mtk-common: use true and false for
+ boolean values
+Date: Mon, 5 Mar 2018 17:49:06 -0600
+Message-ID: <20180305234906.GA32058@embeddedgus>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqLO7YG+6LKa-5nvQzxpvU9MF5Y=1gZKogeCqGiW-dV3zw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Sean Wang <sean.wang@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, "Gustavo A. R. Silva" <garsilva@embeddedor.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-03-05 at 08:16 -0600, Rob Herring wrote:
-> On Fri, Mar 2, 2018 at 5:27 PM, Sean Wang <sean.wang@mediatek.com> wrote:
-> > On Fri, 2018-03-02 at 09:42 -0600, Rob Herring wrote:
-> >> On Fri, Feb 23, 2018 at 06:16:36PM +0800, sean.wang@mediatek.com wrote:
-> >> > From: Sean Wang <sean.wang@mediatek.com>
-> >> >
-> >> > There is 2GB DDR3 available on bananapi-r2 board as [1] specified.
-> >> >
-> >> > [1] http://www.banana-pi.org/r2.html
-> >> >
-> >> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> >> > ---
-> >> >  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 5 +++++
-> >> >  1 file changed, 5 insertions(+)
-> >> >
-> >> > diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> >> > index 140ff78..3e8d02c 100644
-> >> > --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> >> > +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> >> > @@ -38,6 +38,11 @@
-> >> >                     default-state = "off";
-> >> >             };
-> >> >     };
-> >> > +
-> >> > +   memory {
-> >>
-> >> Unit address?
-> >>
-> >
-> > If I did it with adding unit address
-> >
-> > -       memory {
-> > +       memory@80000000 {
-> >                 device_type = "memory";
-> >                 reg = <0 0x80000000 0 0x80000000>;
-> >         };
-> >
-> >
-> > bad dtc blob is being generated and contains two memory nodes, one is
-> > memory and the other is memory@80000000 whose blob disassembly detail is
-> > as the following.
-> >
-> >       memory {
-> >                 device_type = "memory";
-> >                 reg = <0x0 0x0 0x0 0x0>;
-> >         };
-> >
-> >
-> >
-> >       memory@80000000 {
-> >                 device_type = "memory";
-> >                 reg = <0x0 0x80000000 0x0 0x80000000>;
-> >         };
-> >
-> >
-> > and bad memory node with size 0 would cause the boot fails.
-> >
-> >
-> > is it a dtc compiler problem ?
-> 
-> No, you are declaring "memory" node somewhere else. Perhaps using
-> skeleton.dtsi which we are trying to remove or you have some default.
-> 
+Assign true or false to boolean variables instead of an integer value.
 
-Yes, your guess is right. the DTS explicitly includes skeleton64.dtsi so
-two memory node is being generated.
+This issue was detected with the help of Coccinelle.
 
-> Using just 'memory' is fine if the base address is variable and
-> determined at boot time or you have a bootloader that expects just
-> 'memory'. Otherwise, this should be fixed, but you can do that after
-> this patch if you want.
-> 
+Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-The address where memory is located at is fixed so I should insert a
-patch removing skeleton64.dtsi before adding a unit address to each
-memory node.
-
-Furthermore, the original DTS including skeleton64.dtsi seems to be a
-little improper as CPU uses 32-bit addressing way to access all hardware
-devices on MT7623 SoC. Thus, it seems to be better even necessary to
-explicitly set both #address-cells and #size-cells to 1 at the root node
-and change reg property for following the child nodes when
-skeleton64.dtsi is being removed.
-
-> Rob
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index 3cf384f..e161561 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -501,7 +501,7 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+ 	int num_pins, num_funcs, maps_per_pin;
+ 	unsigned long *configs;
+ 	unsigned int num_configs;
+-	bool has_config = 0;
++	bool has_config = false;
+ 	int i, err;
+ 	unsigned reserve = 0;
+ 	struct mtk_pinctrl_group *grp;
+@@ -520,7 +520,7 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+ 		return err;
+ 
+ 	if (num_configs)
+-		has_config = 1;
++		has_config = true;
+ 
+ 	num_pins = pins->length / sizeof(u32);
+ 	num_funcs = num_pins;
+-- 
+2.7.4
