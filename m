@@ -1,66 +1,86 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH 2/2] mmc: mediatek: add support for MT7622 SoC
-Date: Mon, 5 Mar 2018 09:45:59 +0100
-Message-ID: <CAPDyKFq6kPXsxHMCkCfvmm1t1ccs-ZgFY=z6YhuKdza5+WuLLw@mail.gmail.com>
-References: <6cb1d6d4ee40a61f7b33aed1711753342590d0dd.1520232933.git.sean.wang@mediatek.com>
- <83a3ee9471cc7312b9cc43bcf692939e90af34ba.1520232933.git.sean.wang@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: Re: [SPAM]Re: [PATCH v3 4/5] dt-bindings: clock: mediatek: update
+ audsys documentation to adapt MFD device
+Date: Mon, 5 Mar 2018 17:23:45 +0800
+Message-ID: <1520241825.2798.36.camel@mtkswgap22>
+References: <cover.1518424204.git.ryder.lee@mediatek.com>
+ <61928ad523a7aeffb8f16d4caad56836b65ae407.1518424204.git.ryder.lee@mediatek.com>
+ <CAL_JsqJgo0pKJjrs2fdw+q=DJYwht0X5L3Bomz8gf98mEN7hkg@mail.gmail.com>
+ <1519193048.18794.42.camel@mtkswgap22>
+ <CAL_JsqLjcMpS=bLzAV0arLJY143O1XefjSR0djM73E8uC4oJHg@mail.gmail.com>
+ <1519272878.1907.87.camel@mtkswgap22>
+ <CAL_Jsq+NK-sUY-qOZ2Xv1ZfWVm-vG0tyAgN_auKeaQxMq58vkw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <83a3ee9471cc7312b9cc43bcf692939e90af34ba.1520232933.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CAL_Jsq+NK-sUY-qOZ2Xv1ZfWVm-vG0tyAgN_auKeaQxMq58vkw@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, Garlic Tseng <garlic.tseng@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-clk <linux-clk@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM
+ ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 5 March 2018 at 08:03,  <sean.wang@mediatek.com> wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
->
-> Just applying the existing logic and adding its own characteristics into
-> the space pointed by an extra entry of struct of_device_id to have support
-> of MT7622 SoC.
->
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Tested-by: Jumin Li <jumin.li@mediatek.com>
+On Wed, 2018-02-28 at 09:13 -0600, Rob Herring wrote:
+> >> There are several problems you need to fix. First,
+> >> "mediatek,mt2701-audsys" is not documented. It is only used in the
+> >> example. Second, bindings/arm/mediatek/mediatek,audsys.txt should move
+> >> to bindings/sound/ if it is only audio related functions. Or perhaps
+> >> just combine the 2 documents because it is all inconsistent currently.
+> >
+> > Because the series crossed subsystems but didn't apply at the same time.
+> >
+> >> The 2 documents are inconsistent as to what is the relationship of
+> >> -audsys and -audio (afe) nodes. mt2701-afe-pcm.txt shows that the AFE
+> >> is already a child of -audsys. The -audsys node should have
+> >> #clock-cells. It should also not be a simple-mfd (another
+> >> inconsistency in the binding) because it needs to probe first to
+> >> provide clocks to child nodes, and then trigger probing the child
+> >> nodes.
+> >
+> > This is the 1st version I sent before, and the clock parts still under
+> > review :( .  But yes, the 2 inconsistent documents should be fixed -
+> > this may depend on what we end up doing with the DT appearance.
+> >
+> > IMHO, apart from overlapping regions with other functions I didn't see
+> > any difference between audsys and other clock drivers (providers).
+> >
+> > For the sake of uniformity, I make the 2 sub-devices parallel and move
+> > "simple-mfd" to the top, and the sequences should actually be handled
+> > through "probe deferral mechanism" - that would make this kind of
+> > situations much easier to manage.
+> 
+> If a child node has a dependency on the parent, probe deferral is not
+> the correct solution. The parent should probe first and control
+> probing of the chlidren. "simple-mfd" is intended for cases where
+> there is no dependency on the parent node.
 
-Thanks, applied for next!
+In my opinion, they are just the provider-consumer relationship not the
+parent-child relationship, and we leverage this mechanism for most CCF
+users.  Please correct me if I'm wrong.  
 
-Kind regards
-Uffe
+That's why I sent the a new one to separate them (but I forgot to modify
+mt2701-afe-pcm.txt).
 
-> ---
->  drivers/mmc/host/mtk-sd.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 6457a7d..cb274e8 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -438,11 +438,23 @@ static const struct mtk_mmc_compatible mt2712_compat = {
->         .enhance_rx = true,
->  };
->
-> +static const struct mtk_mmc_compatible mt7622_compat = {
-> +       .clk_div_bits = 12,
-> +       .hs400_tune = false,
-> +       .pad_tune_reg = MSDC_PAD_TUNE0,
-> +       .async_fifo = true,
-> +       .data_tune = true,
-> +       .busy_check = true,
-> +       .stop_clk_fix = true,
-> +       .enhance_rx = true,
-> +};
-> +
->  static const struct of_device_id msdc_of_ids[] = {
->         { .compatible = "mediatek,mt8135-mmc", .data = &mt8135_compat},
->         { .compatible = "mediatek,mt8173-mmc", .data = &mt8173_compat},
->         { .compatible = "mediatek,mt2701-mmc", .data = &mt2701_compat},
->         { .compatible = "mediatek,mt2712-mmc", .data = &mt2712_compat},
-> +       { .compatible = "mediatek,mt7622-mmc", .data = &mt7622_compat},
->         {}
->  };
->  MODULE_DEVICE_TABLE(of, msdc_of_ids);
-> --
-> 2.7.4
->
+> > BTW, I could make the AFE driver be instantiated/probed from the clock
+> > driver but this seems superfluous to me.  Just make sure is this what
+> > you want?
+> 
+> I would think it would be the other way around. The AFE driver creates
+> some clocks. Whether that's a separate driver or a single driver is a
+> kernel issue that has nothing to do with the binding. IIRC, there's
+> several examples in display controllers and camera interfaces where
+> those drivers are also clock providers.
+
+I've look at some display drivers, but couldn't find a good case. The
+different is, that the driver I saw provides clocks to other submodules,
+while the AFE is just a user. So it's odd if we register AFE itself as a
+clock provider (and use the clocks it generates).
