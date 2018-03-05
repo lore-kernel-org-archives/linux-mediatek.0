@@ -1,120 +1,105 @@
 From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v1 18/19] arm: dts: mt7623: add MT7623A reference boards
-Date: Mon, 5 Mar 2018 23:10:50 +0800
-Message-ID: <1520262650.8089.233.camel@mtkswgap22>
+Subject: Re: [PATCH v1 16/19] arm: dts: mt7623: fixup available memory size
+ on bananapi-r2
+Date: Mon, 5 Mar 2018 23:46:48 +0800
+Message-ID: <1520264808.8089.261.camel@mtkswgap22>
 References: <cover.1519378871.git.sean.wang@mediatek.com>
-         <ddffdff293734954ba368be8a54edd3c84a4f4e6.1519378872.git.sean.wang@mediatek.com>
-         <20180302154547.xq5nkmkdk3oenbta@rob-hp-laptop>
-         <1520043343.8089.216.camel@mtkswgap22>
-         <CAL_JsqKLYVN8G28GNYVQc=Kduij+0b82ydKG1D=7hh8sPE4GYA@mail.gmail.com>
+         <e49485aac14bec85c14514c1953f8d7ea5401695.1519378872.git.sean.wang@mediatek.com>
+         <20180302154215.xr3b2zlmuojw5i6l@rob-hp-laptop>
+         <1520033229.8089.198.camel@mtkswgap22>
+         <CAL_JsqLO7YG+6LKa-5nvQzxpvU9MF5Y=1gZKogeCqGiW-dV3zw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqKLYVN8G28GNYVQc=Kduij+0b82ydKG1D=7hh8sPE4GYA@mail.gmail.com>
+In-Reply-To: <CAL_JsqLO7YG+6LKa-5nvQzxpvU9MF5Y=1gZKogeCqGiW-dV3zw@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-03-05 at 08:10 -0600, Rob Herring wrote:
-> On Fri, Mar 2, 2018 at 8:15 PM, Sean Wang <sean.wang@mediatek.com> wrote:
-> > On Fri, 2018-03-02 at 09:45 -0600, Rob Herring wrote:
-> >> On Fri, Feb 23, 2018 at 06:16:38PM +0800, sean.wang@mediatek.com wrote:
+On Mon, 2018-03-05 at 08:16 -0600, Rob Herring wrote:
+> On Fri, Mar 2, 2018 at 5:27 PM, Sean Wang <sean.wang@mediatek.com> wrote:
+> > On Fri, 2018-03-02 at 09:42 -0600, Rob Herring wrote:
+> >> On Fri, Feb 23, 2018 at 06:16:36PM +0800, sean.wang@mediatek.com wrote:
 > >> > From: Sean Wang <sean.wang@mediatek.com>
 > >> >
-> >> > Add mt7623a-rfb.dtsi where most nodes can be inherited from
-> >> > mt7623n-rfb.dtsi and keep these distinctions from MT7623A boards in
-> >> > mt7623a-rfb.dtsi for most definition can be reused among MT7623A board
-> >> > variants.
+> >> > There is 2GB DDR3 available on bananapi-r2 board as [1] specified.
 > >> >
-> >> > MT7623A has its specific definition of power domain and thus we need
-> >> > to change related devices such as audio, ethernet, crypto, high-speed
-> >> > DMA, NAND, and USB controller to the power domain they specifically
-> >> > belong to. In addition, MT7530 exists as built-in module inside MT7623A
-> >> > SoC and I2C2 and UART[0-1] get being removed and UART2 have distinct pin
-> >> > usage. Those all differences can be totally seen in mt7623a-rfb.dtsi.
+> >> > [1] http://www.banana-pi.org/r2.html
 > >> >
 > >> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > >> > ---
-> >> >  arch/arm/boot/dts/Makefile             |  2 +
-> >> >  arch/arm/boot/dts/mt7623a-rfb-emmc.dts | 22 +++++++++
-> >> >  arch/arm/boot/dts/mt7623a-rfb-nand.dts | 26 +++++++++++
-> >> >  arch/arm/boot/dts/mt7623a-rfb.dtsi     | 84 ++++++++++++++++++++++++++++++++++
-> >> >  arch/arm/boot/dts/mt7623n-rfb.dtsi     | 15 ++++++
-> >> >  5 files changed, 149 insertions(+)
-> >> >  create mode 100644 arch/arm/boot/dts/mt7623a-rfb-emmc.dts
-> >> >  create mode 100644 arch/arm/boot/dts/mt7623a-rfb-nand.dts
-> >> >  create mode 100644 arch/arm/boot/dts/mt7623a-rfb.dtsi
+> >> >  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 5 +++++
+> >> >  1 file changed, 5 insertions(+)
 > >> >
-> >> > diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-> >> > index 5af6fce..818817c 100644
-> >> > --- a/arch/arm/boot/dts/Makefile
-> >> > +++ b/arch/arm/boot/dts/Makefile
-> >> > @@ -1122,6 +1122,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += \
-> >> >     mt6580-evbp1.dtb \
-> >> >     mt6589-aquaris5.dtb \
-> >> >     mt6592-evb.dtb \
-> >> > +   mt7623a-rfb-emmc.dtb \
-> >> > +   mt7623a-rfb-nand.dtb \
-> >> >     mt7623n-rfb-emmc.dtb \
-> >> >     mt7623n-rfb-nand.dtb \
-> >> >     mt7623n-bananapi-bpi-r2.dtb \
-> >> > diff --git a/arch/arm/boot/dts/mt7623a-rfb-emmc.dts b/arch/arm/boot/dts/mt7623a-rfb-emmc.dts
-> >> > new file mode 100644
-> >> > index 0000000..ef6398e
-> >> > --- /dev/null
-> >> > +++ b/arch/arm/boot/dts/mt7623a-rfb-emmc.dts
-> >> > @@ -0,0 +1,22 @@
-> >> > +// SPDX-License-Identifier: GPL-2.0
-> >> > +/*
-> >> > + * Copyright (c) 2017-2018 MediaTek Inc.
-> >> > + * Author: Sean Wang <sean.wang@mediatek.com>
-> >> > + *
-> >> > + */
+> >> > diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+> >> > index 140ff78..3e8d02c 100644
+> >> > --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+> >> > +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+> >> > @@ -38,6 +38,11 @@
+> >> >                     default-state = "off";
+> >> >             };
+> >> >     };
 > >> > +
-> >> > +/dts-v1/;
-> >> > +#include "mt7623a-rfb.dtsi"
-> >> > +
-> >> > +/ {
-> >> > +   model = "MediaTek MT7623A with eMMC reference board";
-> >> > +   compatible = "mediatek,mt7623a-rfb-emmc", "mediatek,mt7623";
-> >> > +
-> >> > +   chosen {
-> >> > +           bootargs = "console=ttyS0,115200n8 earlyprintk";
+> >> > +   memory {
 > >>
-> >> Use stdout-path instead. earlyprintk option only works for a kernel
-> >> built with a debug uart at a fixed address, so drop it.
+> >> Unit address?
 > >>
 > >
-> > thanks, I will try and have stdout-path instead.
+> > If I did it with adding unit address
 > >
-> > But for earlyprintk, our kernel can support and be built with a debug
-> > uart at a fixed address and it is greatly useful to know what's going
-> > on when a system hang happens on certain device's initialization prior
-> > to uart initialization such as PCI device.
+> > -       memory {
+> > +       memory@80000000 {
+> >                 device_type = "memory";
+> >                 reg = <0 0x80000000 0 0x80000000>;
+> >         };
+> >
+> >
+> > bad dtc blob is being generated and contains two memory nodes, one is
+> > memory and the other is memory@80000000 whose blob disassembly detail is
+> > as the following.
+> >
+> >       memory {
+> >                 device_type = "memory";
+> >                 reg = <0x0 0x0 0x0 0x0>;
+> >         };
+> >
+> >
+> >
+> >       memory@80000000 {
+> >                 device_type = "memory";
+> >                 reg = <0x0 0x80000000 0x0 0x80000000>;
+> >         };
+> >
+> >
+> > and bad memory node with size 0 would cause the boot fails.
+> >
+> >
+> > is it a dtc compiler problem ?
 > 
-> These days, you only need earlyprintk for *really* early console like
-> in the assembly boot entry code and before the DT is unflattened. For
-> anything else, use earlycon instead because earlycon is a runtime
-> option.
+> No, you are declaring "memory" node somewhere else. Perhaps using
+> skeleton.dtsi which we are trying to remove or you have some default.
 > 
-> > Thus, I consider to keep it there in special on such kinds of
-> > development boards for debugging purpose.
+
+Yes, your guess is right. the DTS explicitly includes skeleton64.dtsi so
+two memory node is being generated.
+
+> Using just 'memory' is fine if the base address is variable and
+> determined at boot time or you have a bootloader that expects just
+> 'memory'. Otherwise, this should be fixed, but you can do that after
+> this patch if you want.
 > 
-> Then add this option when you are doing debug. But for what's
-> "shipped" in mainline, you should not have this enabled.
-> 
+
+The address where memory is located at is fixed so I should insert a
+patch removing skeleton64.dtsi before adding a unit address to each
+memory node.
+
+Furthermore, the original DTS including skeleton64.dtsi seems to be a
+little improper as CPU uses 32-bit addressing way to access all hardware
+devices on MT7623 SoC. Thus, it seems to be better even necessary to
+explicitly set both #address-cells and #size-cells to 1 at the root node
+and change reg property for following the child nodes when
+skeleton64.dtsi is being removed.
+
 > Rob
-
-Okay, for these reasons, I will remove earlyprintk usage here
-and try to use earlycon instead in the future.
-
-Really thanks for your detailed explanation!
-
-	Sean
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
