@@ -1,26 +1,67 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 1/4] arm64: dts: mt2712: add pintcrl file
-Date: Wed, 7 Mar 2018 16:28:22 -0600
-Message-ID: <20180307222822.7uxuibviglidhp4j@rob-hp-laptop>
-References: <1520249745-6757-1-git-send-email-zhiyong.tao@mediatek.com>
- <1520249745-6757-2-git-send-email-zhiyong.tao@mediatek.com>
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Subject: Re: [PATCH v3 01/22] nvmem: Document struct nvmem_config
+Date: Thu, 8 Mar 2018 10:22:09 -0800
+Message-ID: <CAHQ1cqGCX8eFt4x-G=V6YnM64kr8cHXauVjepFi47uaX_hn6Vw@mail.gmail.com>
+References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
+ <20180103200114.23922-2-andrew.smirnov@gmail.com> <1519842888.8089.88.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1520249745-6757-2-git-send-email-zhiyong.tao@mediatek.com>
+In-Reply-To: <1519842888.8089.88.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Cc: linus.walleij@linaro.org, mark.rutland@arm.com, matthias.bgg@gmail.com, srv_heupstream@mediatek.com, liguo.zhang@mediatek.com, yingjoe.chen@mediatek.com, hongkun.cao@mediatek.com, biao.huang@mediatek.com, yt.shen@mediatek.com, hongzhou.yang@mediatek.com, erin.lo@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Kevin Hilman <khilman@baylibre.com>, linux-kernel <linux-kernel@vger.kernel.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org, Carlo Caione <carlo@caione.org>, Chris Healy <cphealy@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Mar 05, 2018 at 07:35:42PM +0800, Zhiyong Tao wrote:
-> This patch adds pinctrl file for mt2712.
-> 
-> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h | 1123 +++++++++++++++++++++++++
->  1 file changed, 1123 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h
+On Wed, Feb 28, 2018 at 10:34 AM, Sean Wang <sean.wang@mediatek.com> wrote:
+> On Wed, 2018-01-03 at 12:00 -0800, Andrey Smirnov wrote:
+>> Add a simple description of struct nvmem_config and its fields.
+>>
+>> Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+>> Cc: Heiko Stuebner <heiko@sntech.de>
+>> Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+>> Cc: Carlo Caione <carlo@caione.org>
+>> Cc: Kevin Hilman <khilman@baylibre.com>
+>> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+>> Cc: cphealy@gmail.com
+>> Cc: linux-kernel@vger.kernel.org
+>> Cc: linux-mediatek@lists.infradead.org
+>> Cc: linux-rockchip@lists.infradead.org
+>> Cc: linux-amlogic@lists.infradead.org
+>> Cc: linux-arm-kernel@lists.infradead.org
+>> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+>> ---
+>>  include/linux/nvmem-provider.h | 22 ++++++++++++++++++++++
+>>  1 file changed, 22 insertions(+)
+>>
+>> diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
+>> index 497706f5adca..27e599222ec1 100644
+>> --- a/include/linux/nvmem-provider.h
+>> +++ b/include/linux/nvmem-provider.h
+>> @@ -22,6 +22,28 @@ typedef int (*nvmem_reg_read_t)(void *priv, unsigned int offset,
+>>  typedef int (*nvmem_reg_write_t)(void *priv, unsigned int offset,
+>>                                void *val, size_t bytes);
+>>
+>> +/**
+>> + * struct nvmem_config - NVMEM device configuration
+>> + *
+>> + * @dev:     Parent device.
+>> + * @name:    Optional name.
+>> + * @id:              Optional device ID used in full name. Ignored if name is NULL.
+>> + * @owner:   Pointer to exporter module. Used for refcounting.
+>> + * @cells:   Optional array of pre-defined NVMEM cells.
+>> + * @ncells:  Number of elements in cells.
+>> + * @read_only:       Device is read-only.
+>> + * @root_only:       Device is accessibly to root only.
+>> + * @reg_read:        Callback to read data.
+>> + * @reg_write:       Callback to write data.
+>> + * @size:    Device size.
+>> + * @word_size:       Minimum read/write access granularity.
+>> + * @stride:  Minimum read/write access stide.
+>
+> typo on stide ?
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Definitely, will fix in next version.
+
+Thanks,
+Andrey Smirnov
