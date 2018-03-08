@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH v5 01/21] nvmem: Document struct nvmem_config
-Date: Thu,  8 Mar 2018 11:11:45 -0800
-Message-ID: <20180308191205.26943-2-andrew.smirnov@gmail.com>
+Subject: [PATCH v5 04/21] nvmem: vf610-ocotp: Convert to use devm_nvmem_register()
+Date: Thu,  8 Mar 2018 11:11:48 -0800
+Message-ID: <20180308191205.26943-5-andrew.smirnov@gmail.com>
 References: <20180308191205.26943-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180308191205.26943-1-andrew.smirnov@gmail.com>
@@ -10,7 +10,8 @@ To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add a simple description of struct nvmem_config and its fields.
+Drop all of the code related to .remove hook and make use of
+devm_nvmem_register() instead.
 
 Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Heiko Stuebner <heiko@sntech.de>
@@ -26,41 +27,57 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- include/linux/nvmem-provider.h | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ drivers/nvmem/vf610-ocotp.c | 21 ++++-----------------
+ 1 file changed, 4 insertions(+), 17 deletions(-)
 
-diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
-index 497706f5adca..a39f76ff2ccd 100644
---- a/include/linux/nvmem-provider.h
-+++ b/include/linux/nvmem-provider.h
-@@ -22,6 +22,28 @@ typedef int (*nvmem_reg_read_t)(void *priv, unsigned int offset,
- typedef int (*nvmem_reg_write_t)(void *priv, unsigned int offset,
- 				 void *val, size_t bytes);
+diff --git a/drivers/nvmem/vf610-ocotp.c b/drivers/nvmem/vf610-ocotp.c
+index 5ae9e002f195..5a395ffb2ca8 100644
+--- a/drivers/nvmem/vf610-ocotp.c
++++ b/drivers/nvmem/vf610-ocotp.c
+@@ -217,13 +217,6 @@ static const struct of_device_id ocotp_of_match[] = {
+ };
+ MODULE_DEVICE_TABLE(of, ocotp_of_match);
  
-+/**
-+ * struct nvmem_config - NVMEM device configuration
-+ *
-+ * @dev:	Parent device.
-+ * @name:	Optional name.
-+ * @id:		Optional device ID used in full name. Ignored if name is NULL.
-+ * @owner:	Pointer to exporter module. Used for refcounting.
-+ * @cells:	Optional array of pre-defined NVMEM cells.
-+ * @ncells:	Number of elements in cells.
-+ * @read_only:	Device is read-only.
-+ * @root_only:	Device is accessibly to root only.
-+ * @reg_read:	Callback to read data.
-+ * @reg_write:	Callback to write data.
-+ * @size:	Device size.
-+ * @word_size:	Minimum read/write access granularity.
-+ * @stride:	Minimum read/write access stride.
-+ * @priv:	User context passed to read/write callbacks.
-+ *
-+ * Note: A default "nvmem<id>" name will be assigned to the device if
-+ * no name is specified in its configuration. In such case "<id>" is
-+ * generated with ida_simple_get() and provided id field is ignored.
-+ */
- struct nvmem_config {
- 	struct device		*dev;
- 	const char		*name;
+-static int vf610_ocotp_remove(struct platform_device *pdev)
+-{
+-	struct vf610_ocotp *ocotp_dev = platform_get_drvdata(pdev);
+-
+-	return nvmem_unregister(ocotp_dev->nvmem);
+-}
+-
+ static int vf610_ocotp_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -246,26 +239,20 @@ static int vf610_ocotp_probe(struct platform_device *pdev)
+ 			PTR_ERR(ocotp_dev->clk));
+ 		return PTR_ERR(ocotp_dev->clk);
+ 	}
++	ocotp_dev->dev = dev;
++	ocotp_dev->timing = vf610_ocotp_calculate_timing(ocotp_dev);
+ 
+ 	ocotp_config.size = resource_size(res);
+ 	ocotp_config.priv = ocotp_dev;
+ 	ocotp_config.dev = dev;
+ 
+-	ocotp_dev->nvmem = nvmem_register(&ocotp_config);
+-	if (IS_ERR(ocotp_dev->nvmem))
+-		return PTR_ERR(ocotp_dev->nvmem);
++	ocotp_dev->nvmem = devm_nvmem_register(dev, &ocotp_config);
+ 
+-	ocotp_dev->dev = dev;
+-	platform_set_drvdata(pdev, ocotp_dev);
+-
+-	ocotp_dev->timing = vf610_ocotp_calculate_timing(ocotp_dev);
+-
+-	return 0;
++	return PTR_ERR_OR_ZERO(ocotp_dev->nvmem);
+ }
+ 
+ static struct platform_driver vf610_ocotp_driver = {
+ 	.probe = vf610_ocotp_probe,
+-	.remove = vf610_ocotp_remove,
+ 	.driver = {
+ 		.name = "vf610-ocotp",
+ 		.of_match_table = ocotp_of_match,
 -- 
 2.14.3
