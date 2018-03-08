@@ -1,74 +1,118 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v6 1/3] dt-bindings: dmaengine: Add MediaTek High-Speed
- DMA controller bindings
-Date: Wed, 7 Mar 2018 13:28:49 -0600
-Message-ID: <20180307192849.bdedrzqmpmwprpc2@rob-hp-laptop>
-References: <cover.1520407882.git.sean.wang@mediatek.com>
- <1ae80ef14cac41dea35dca49e8071d67c955f5e7.1520407882.git.sean.wang@mediatek.com>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 0/4] PINCTRL: Mediatek pinctrl driver for mt2712
+Date: Thu, 8 Mar 2018 11:08:50 +0800
+Message-ID: <1520478530.4049.3.camel@mtkswgap22>
+References: <1520249745-6757-1-git-send-email-zhiyong.tao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1ae80ef14cac41dea35dca49e8071d67c955f5e7.1520407882.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: vinod.koul@intel.com, dan.j.williams@intel.com, mark.rutland@arm.com, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1520249745-6757-1-git-send-email-zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Mar 07, 2018 at 04:16:26PM +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Document the devicetree bindings for MediaTek High-Speed DMA controller
-> which could be found on MT7623 SoC or other similar Mediatek SoCs.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  .../devicetree/bindings/dma/mtk-hsdma.txt          | 33 ++++++++++++++++++++++
->  1 file changed, 33 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/dma/mtk-hsdma.txt
+Hi, Zhiyong
 
-Please add reviewed-by's when posting new versions.
+you should checkpatch every patch before sending them out
 
+because I saw tons of check messages like below result for scanning v3
+3/4
+
+CHECK:PARENTHESIS_ALIGNMENT: Alignment should match open parenthesis
+#152: FILE: drivers/pinctrl/mediatek/pinctrl-mt2712.c:85:
++static int mt2712_spec_pull_set(struct regmap *regmap, unsigned int
+pin,
++               unsigned char align, bool isup, unsigned int r1r0)
+
+CHECK:PARENTHESIS_ALIGNMENT: Alignment should match open parenthesis
+#353: FILE: drivers/pinctrl/mediatek/pinctrl-mt2712.c:286:
++static int mt2712_ies_smt_set(struct regmap *regmap, unsigned int pin,
++               unsigned char align, int value, enum pin_config_param
+arg)
+
+CHECK:LINE_SPACING: Please don't use multiple blank lines
+#423: FILE: drivers/pinctrl/mediatek/pinctrl-mt2712.c:356:
++
++
+
+CHECK:LINE_SPACING: Please don't use multiple blank lines
+#473: FILE: drivers/pinctrl/mediatek/pinctrl-mt2712.c:406:
++
++
+
+CHECK:OPEN_ENDED_LINE: Lines should not end with a '('
+#719: FILE: drivers/pinctrl/mediatek/pinctrl-mtk-mt2712.h:14:
++       MTK_PIN(
+
+CHECK:OPEN_ENDED_LINE: Lines should not end with a '('
+#731: FILE: drivers/pinctrl/mediatek/pinctrl-mtk-mt2712.h:26:
++       MTK_PIN(
+
+CHECK:OPEN_ENDED_LINE: Lines should not end with a '('
+#742: FILE: drivers/pinctrl/mediatek/pinctrl-mtk-mt2712.h:37:
++       MTK_PIN(
+
+....
+
+total: 0 errors, 1 warnings, 214 checks, 2619 lines checked
+
+
+
+
+On Mon, 2018-03-05 at 19:35 +0800, Zhiyong Tao wrote:
+> This series includes four patches:
+> 1.Add mt2712 pintcrl head file.
+> 2.Add mt2712 pinctrl device node.
+> 3.Add mt2712 pinctrl driver.
+> 4.Support bias-disable of generic and special pins simultaneously.
 > 
-> diff --git a/Documentation/devicetree/bindings/dma/mtk-hsdma.txt b/Documentation/devicetree/bindings/dma/mtk-hsdma.txt
-> new file mode 100644
-> index 0000000..4bb31735
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/dma/mtk-hsdma.txt
-> @@ -0,0 +1,33 @@
-> +MediaTek High-Speed DMA Controller
-> +==================================
-> +
-> +This device follows the generic DMA bindings defined in dma/dma.txt.
-> +
-> +Required properties:
-> +
-> +- compatible:	Must be one of
-> +		  "mediatek,mt7622-hsdma": for MT7622 SoC
-> +		  "mediatek,mt7623-hsdma": for MT7623 SoC
-> +- reg:		Should contain the register's base address and length.
-> +- interrupts:	Should contain a reference to the interrupt used by this
-> +		device.
-> +- clocks:	Should be the clock specifiers corresponding to the entry in
-> +		clock-names property.
-> +- clock-names:	Should contain "hsdma" entries.
-> +- power-domains: Phandle to the power domain that the device is part of
-> +- #dma-cells: 	The length of the DMA specifier, must be <1>. This one cell
-> +		in dmas property of a client device represents the channel
-> +		number.
-> +Example:
-> +
-> +        hsdma: dma-controller@1b007000 {
-> +		compatible = "mediatek,mt7623-hsdma";
-> +		reg = <0 0x1b007000 0 0x1000>;
-> +		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&ethsys CLK_ETHSYS_HSDMA>;
-> +		clock-names = "hsdma";
-> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
-> +		#dma-cells = <1>;
-> +	};
-> +
-> +DMA clients must use the format described in dma/dma.txt file.
-> -- 
-> 2.7.4
+> Changes in patch v3:
+> 1)Use SPDX identifiers for all new files.
+> 2)Use right data for Copyright and Author.
+> 3)Correct some spelling mistake.
+> 4)Reusing original logic and change solution to support bias-disable of generic and special pins simultaneously.
+> 5)Add some comments for the speical path of special pins bias-disable.
 > 
+> Changes in patch v2:
+> 1)Separate patch4 for supporting bias-disable of generic and special pins.
+> 2)GPIO16~17 direction setting is changed as generic pins in mt2712 E2,
+>   So remove GPIO16~17 special direction setting and remove apmixedsys node in pinctrl device node.
+> 3)Add pinmux define in "mt2712-pinfunc.h" and "pinctrl-mtk-mt2712.h" for mt2712 E2 design.
+> 
+> Zhiyong Tao (4):
+>   arm64: dts: mt2712: add pintcrl file
+>   arm64: dts: mt2712: add pintcrl device node.
+>   pinctrl: add mt2712 pinctrl driver
+>   pintcrl: support bias-disable of generic and special pins
+>     simultaneously
+> 
+>  arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h | 1123 ++++++++++++++
+>  arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |   18 +
+>  drivers/pinctrl/mediatek/Kconfig              |    7 +
+>  drivers/pinctrl/mediatek/Makefile             |    1 +
+>  drivers/pinctrl/mediatek/pinctrl-mt2712.c     |  632 ++++++++
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c |    6 +
+>  drivers/pinctrl/mediatek/pinctrl-mtk-mt2712.h | 1967 +++++++++++++++++++++++++
+>  7 files changed, 3754 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h
+>  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt2712.c
+>  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt2712.h
+> 
+> --
+> 2.6.4 
+> 
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
