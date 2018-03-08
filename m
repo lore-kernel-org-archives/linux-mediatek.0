@@ -1,7 +1,7 @@
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH v5 14/21] nvmem: bcm-ocotp: Convert to use devm_nvmem_register()
-Date: Thu,  8 Mar 2018 11:11:58 -0800
-Message-ID: <20180308191205.26943-15-andrew.smirnov@gmail.com>
+Subject: [PATCH v5 11/21] nvmem: meson-efuse: Convert to use devm_nvmem_register()
+Date: Thu,  8 Mar 2018 11:11:55 -0800
+Message-ID: <20180308191205.26943-12-andrew.smirnov@gmail.com>
 References: <20180308191205.26943-1-andrew.smirnov@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180308191205.26943-1-andrew.smirnov@gmail.com>
@@ -27,41 +27,40 @@ Cc: linux-amlogic@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- drivers/nvmem/bcm-ocotp.c | 12 +-----------
- 1 file changed, 1 insertion(+), 11 deletions(-)
+ drivers/nvmem/meson-efuse.c | 16 ++--------------
+ 1 file changed, 2 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/nvmem/bcm-ocotp.c b/drivers/nvmem/bcm-ocotp.c
-index 5e9e324427f9..24c30fa475cc 100644
---- a/drivers/nvmem/bcm-ocotp.c
-+++ b/drivers/nvmem/bcm-ocotp.c
-@@ -302,27 +302,17 @@ static int bcm_otpc_probe(struct platform_device *pdev)
+diff --git a/drivers/nvmem/meson-efuse.c b/drivers/nvmem/meson-efuse.c
+index a43c68f90937..71823d1403c5 100644
+--- a/drivers/nvmem/meson-efuse.c
++++ b/drivers/nvmem/meson-efuse.c
+@@ -60,25 +60,13 @@ static int meson_efuse_probe(struct platform_device *pdev)
+ 	econfig.reg_read = meson_efuse_read;
+ 	econfig.size = size;
  
- 	priv->config = &bcm_otpc_nvmem_config;
- 
--	nvmem = nvmem_register(&bcm_otpc_nvmem_config);
-+	nvmem = devm_nvmem_register(dev, &bcm_otpc_nvmem_config);
- 	if (IS_ERR(nvmem)) {
- 		dev_err(dev, "error registering nvmem config\n");
- 		return PTR_ERR(nvmem);
- 	}
+-	nvmem = nvmem_register(&econfig);
+-	if (IS_ERR(nvmem))
+-		return PTR_ERR(nvmem);
++	nvmem = devm_nvmem_register(&pdev->dev, &econfig);
  
 -	platform_set_drvdata(pdev, nvmem);
 -
- 	return 0;
- }
- 
--static int bcm_otpc_remove(struct platform_device *pdev)
+-	return 0;
+-}
+-
+-static int meson_efuse_remove(struct platform_device *pdev)
 -{
 -	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
 -
 -	return nvmem_unregister(nvmem);
--}
--
- static struct platform_driver bcm_otpc_driver = {
- 	.probe	= bcm_otpc_probe,
--	.remove	= bcm_otpc_remove,
++	return PTR_ERR_OR_ZERO(nvmem);
+ }
+ 
+ static struct platform_driver meson_efuse_driver = {
+ 	.probe = meson_efuse_probe,
+-	.remove = meson_efuse_remove,
  	.driver = {
- 		.name	= "brcm-otpc",
- 		.of_match_table = bcm_otpc_dt_ids,
+ 		.name = "meson-efuse",
+ 		.of_match_table = meson_efuse_match,
 -- 
 2.14.3
