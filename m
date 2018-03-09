@@ -1,7 +1,7 @@
 From: srinivas.kandagatla@linaro.org
-Subject: [PATCH 09/25] nvmem: mtk-efuse: Convert to use devm_nvmem_register()
-Date: Fri,  9 Mar 2018 14:47:03 +0000
-Message-ID: <20180309144719.29904-10-srinivas.kandagatla@linaro.org>
+Subject: [PATCH 08/25] nvmem: rockchip-efuse: Convert to use devm_nvmem_register()
+Date: Fri,  9 Mar 2018 14:47:02 +0000
+Message-ID: <20180309144719.29904-9-srinivas.kandagatla@linaro.org>
 References: <20180309144719.29904-1-srinivas.kandagatla@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180309144719.29904-1-srinivas.kandagatla@linaro.org>
@@ -30,17 +30,17 @@ Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 Signed-off-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 ---
- drivers/nvmem/mtk-efuse.c | 16 ++--------------
+ drivers/nvmem/rockchip-efuse.c | 16 ++--------------
  1 file changed, 2 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
-index 9ee3479cfc7b..e66adf17a747 100644
---- a/drivers/nvmem/mtk-efuse.c
-+++ b/drivers/nvmem/mtk-efuse.c
-@@ -72,20 +72,9 @@ static int mtk_efuse_probe(struct platform_device *pdev)
- 	econfig.size = resource_size(res);
- 	econfig.priv = priv;
- 	econfig.dev = dev;
+diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
+index f13a8335f364..fec6e4c48b9a 100644
+--- a/drivers/nvmem/rockchip-efuse.c
++++ b/drivers/nvmem/rockchip-efuse.c
+@@ -289,25 +289,13 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
+ 	econfig.reg_read = match->data;
+ 	econfig.priv = efuse;
+ 	econfig.dev = efuse->dev;
 -	nvmem = nvmem_register(&econfig);
 -	if (IS_ERR(nvmem))
 -		return PTR_ERR(nvmem);
@@ -51,7 +51,7 @@ index 9ee3479cfc7b..e66adf17a747 100644
 -	return 0;
 -}
 -
--static int mtk_efuse_remove(struct platform_device *pdev)
+-static int rockchip_efuse_remove(struct platform_device *pdev)
 -{
 -	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
 -
@@ -59,14 +59,11 @@ index 9ee3479cfc7b..e66adf17a747 100644
 +	return PTR_ERR_OR_ZERO(nvmem);
  }
  
- static const struct of_device_id mtk_efuse_of_match[] = {
-@@ -97,7 +86,6 @@ MODULE_DEVICE_TABLE(of, mtk_efuse_of_match);
- 
- static struct platform_driver mtk_efuse_driver = {
- 	.probe = mtk_efuse_probe,
--	.remove = mtk_efuse_remove,
+ static struct platform_driver rockchip_efuse_driver = {
+ 	.probe = rockchip_efuse_probe,
+-	.remove = rockchip_efuse_remove,
  	.driver = {
- 		.name = "mediatek,efuse",
- 		.of_match_table = mtk_efuse_of_match,
+ 		.name = "rockchip-efuse",
+ 		.of_match_table = rockchip_efuse_match,
 -- 
 2.15.1
