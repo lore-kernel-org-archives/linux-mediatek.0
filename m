@@ -1,7 +1,7 @@
 From: srinivas.kandagatla@linaro.org
-Subject: [PATCH 14/25] nvmem: bcm-ocotp: Convert to use devm_nvmem_register()
-Date: Fri,  9 Mar 2018 14:47:08 +0000
-Message-ID: <20180309144719.29904-15-srinivas.kandagatla@linaro.org>
+Subject: [PATCH 20/25] nvmem: imx-iim: Do not use "&pdev->dev" explicitly
+Date: Fri,  9 Mar 2018 14:47:14 +0000
+Message-ID: <20180309144719.29904-21-srinivas.kandagatla@linaro.org>
 References: <20180309144719.29904-1-srinivas.kandagatla@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180309144719.29904-1-srinivas.kandagatla@linaro.org>
@@ -12,8 +12,7 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 
-Drop all of the code related to .remove hook and make use of
-devm_nvmem_register() instead.
+There's already "dev" variable for that. Use it.
 
 Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Heiko Stuebner <heiko@sntech.de>
@@ -30,41 +29,21 @@ Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 Signed-off-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 ---
- drivers/nvmem/bcm-ocotp.c | 12 +-----------
- 1 file changed, 1 insertion(+), 11 deletions(-)
+ drivers/nvmem/imx-iim.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/nvmem/bcm-ocotp.c b/drivers/nvmem/bcm-ocotp.c
-index 5e9e324427f9..24c30fa475cc 100644
---- a/drivers/nvmem/bcm-ocotp.c
-+++ b/drivers/nvmem/bcm-ocotp.c
-@@ -302,27 +302,17 @@ static int bcm_otpc_probe(struct platform_device *pdev)
+diff --git a/drivers/nvmem/imx-iim.c b/drivers/nvmem/imx-iim.c
+index b98d76ac7790..6651e4cdc002 100644
+--- a/drivers/nvmem/imx-iim.c
++++ b/drivers/nvmem/imx-iim.c
+@@ -125,7 +125,7 @@ static int imx_iim_probe(struct platform_device *pdev)
  
- 	priv->config = &bcm_otpc_nvmem_config;
+ 	drvdata = of_id->data;
  
--	nvmem = nvmem_register(&bcm_otpc_nvmem_config);
-+	nvmem = devm_nvmem_register(dev, &bcm_otpc_nvmem_config);
- 	if (IS_ERR(nvmem)) {
- 		dev_err(dev, "error registering nvmem config\n");
- 		return PTR_ERR(nvmem);
- 	}
+-	iim->clk = devm_clk_get(&pdev->dev, NULL);
++	iim->clk = devm_clk_get(dev, NULL);
+ 	if (IS_ERR(iim->clk))
+ 		return PTR_ERR(iim->clk);
  
--	platform_set_drvdata(pdev, nvmem);
--
- 	return 0;
- }
- 
--static int bcm_otpc_remove(struct platform_device *pdev)
--{
--	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
--
--	return nvmem_unregister(nvmem);
--}
--
- static struct platform_driver bcm_otpc_driver = {
- 	.probe	= bcm_otpc_probe,
--	.remove	= bcm_otpc_remove,
- 	.driver = {
- 		.name	= "brcm-otpc",
- 		.of_match_table = bcm_otpc_dt_ids,
 -- 
 2.15.1
