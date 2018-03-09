@@ -1,7 +1,7 @@
 From: srinivas.kandagatla@linaro.org
-Subject: [PATCH 13/25] nvmem: imx-iim: Convert to use devm_nvmem_register()
-Date: Fri,  9 Mar 2018 14:47:07 +0000
-Message-ID: <20180309144719.29904-14-srinivas.kandagatla@linaro.org>
+Subject: [PATCH 18/25] nvmem: vf610-ocotp: Do not use "&pdev->dev" explicitly
+Date: Fri,  9 Mar 2018 14:47:12 +0000
+Message-ID: <20180309144719.29904-19-srinivas.kandagatla@linaro.org>
 References: <20180309144719.29904-1-srinivas.kandagatla@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180309144719.29904-1-srinivas.kandagatla@linaro.org>
@@ -12,8 +12,7 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 
-Drop all of the code related to .remove hook and make use of
-devm_nvmem_register() instead.
+There already a "dev" variable for that. Use it.
 
 Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Heiko Stuebner <heiko@sntech.de>
@@ -30,40 +29,22 @@ Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 Signed-off-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 ---
- drivers/nvmem/imx-iim.c | 16 ++--------------
- 1 file changed, 2 insertions(+), 14 deletions(-)
+ drivers/nvmem/vf610-ocotp.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/nvmem/imx-iim.c b/drivers/nvmem/imx-iim.c
-index 52cfe91d9762..b98d76ac7790 100644
---- a/drivers/nvmem/imx-iim.c
-+++ b/drivers/nvmem/imx-iim.c
-@@ -138,25 +138,13 @@ static int imx_iim_probe(struct platform_device *pdev)
- 	cfg.size = drvdata->nregs;
- 	cfg.priv = iim;
+diff --git a/drivers/nvmem/vf610-ocotp.c b/drivers/nvmem/vf610-ocotp.c
+index 5a395ffb2ca8..4662309489db 100644
+--- a/drivers/nvmem/vf610-ocotp.c
++++ b/drivers/nvmem/vf610-ocotp.c
+@@ -223,8 +223,7 @@ static int vf610_ocotp_probe(struct platform_device *pdev)
+ 	struct resource *res;
+ 	struct vf610_ocotp *ocotp_dev;
  
--	nvmem = nvmem_register(&cfg);
--	if (IS_ERR(nvmem))
--		return PTR_ERR(nvmem);
-+	nvmem = devm_nvmem_register(dev, &cfg);
+-	ocotp_dev = devm_kzalloc(&pdev->dev,
+-			sizeof(struct vf610_ocotp), GFP_KERNEL);
++	ocotp_dev = devm_kzalloc(dev, sizeof(struct vf610_ocotp), GFP_KERNEL);
+ 	if (!ocotp_dev)
+ 		return -ENOMEM;
  
--	platform_set_drvdata(pdev, nvmem);
--
--	return 0;
--}
--
--static int imx_iim_remove(struct platform_device *pdev)
--{
--	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
--
--	return nvmem_unregister(nvmem);
-+	return PTR_ERR_OR_ZERO(nvmem);
- }
- 
- static struct platform_driver imx_iim_driver = {
- 	.probe	= imx_iim_probe,
--	.remove	= imx_iim_remove,
- 	.driver = {
- 		.name	= "imx-iim",
- 		.of_match_table = imx_iim_dt_ids,
 -- 
 2.15.1
