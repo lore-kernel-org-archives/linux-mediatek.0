@@ -1,7 +1,7 @@
 From: srinivas.kandagatla@linaro.org
-Subject: [PATCH 16/25] nvmem: snvs_lpgpr: Convert commas to semicolons
-Date: Fri,  9 Mar 2018 14:47:10 +0000
-Message-ID: <20180309144719.29904-17-srinivas.kandagatla@linaro.org>
+Subject: [PATCH 15/25] nvmem: qfprom: Convert to use devm_nvmem_register()
+Date: Fri,  9 Mar 2018 14:47:09 +0000
+Message-ID: <20180309144719.29904-16-srinivas.kandagatla@linaro.org>
 References: <20180309144719.29904-1-srinivas.kandagatla@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180309144719.29904-1-srinivas.kandagatla@linaro.org>
@@ -12,8 +12,8 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 
-Looks like commas were accidentally used where semicolons were
-supposed to be. Fix that.
+Drop all of the code related to .remove hook and make use of
+devm_nvmem_register() instead.
 
 Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 Cc: Heiko Stuebner <heiko@sntech.de>
@@ -30,31 +30,50 @@ Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 Signed-off-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 ---
- drivers/nvmem/snvs_lpgpr.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/nvmem/qfprom.c | 16 ++--------------
+ 1 file changed, 2 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/nvmem/snvs_lpgpr.c b/drivers/nvmem/snvs_lpgpr.c
-index cb471d5e8e86..92e1e41d128e 100644
---- a/drivers/nvmem/snvs_lpgpr.c
-+++ b/drivers/nvmem/snvs_lpgpr.c
-@@ -110,12 +110,12 @@ static int snvs_lpgpr_probe(struct platform_device *pdev)
- 	cfg->priv = priv;
- 	cfg->name = dev_name(dev);
- 	cfg->dev = dev;
--	cfg->stride = 4,
--	cfg->word_size = 4,
--	cfg->size = 4,
--	cfg->owner = THIS_MODULE,
--	cfg->reg_read  = snvs_lpgpr_read,
--	cfg->reg_write = snvs_lpgpr_write,
-+	cfg->stride = 4;
-+	cfg->word_size = 4;
-+	cfg->size = 4;
-+	cfg->owner = THIS_MODULE;
-+	cfg->reg_read  = snvs_lpgpr_read;
-+	cfg->reg_write = snvs_lpgpr_write;
+diff --git a/drivers/nvmem/qfprom.c b/drivers/nvmem/qfprom.c
+index cb3b48b47d64..4f650baad983 100644
+--- a/drivers/nvmem/qfprom.c
++++ b/drivers/nvmem/qfprom.c
+@@ -47,13 +47,6 @@ static int qfprom_reg_write(void *context,
+ 	return 0;
+ }
  
- 	nvmem = devm_nvmem_register(dev, cfg);
+-static int qfprom_remove(struct platform_device *pdev)
+-{
+-	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
+-
+-	return nvmem_unregister(nvmem);
+-}
+-
+ static struct nvmem_config econfig = {
+ 	.name = "qfprom",
+ 	.stride = 1,
+@@ -82,13 +75,9 @@ static int qfprom_probe(struct platform_device *pdev)
+ 	econfig.dev = dev;
+ 	econfig.priv = priv;
  
+-	nvmem = nvmem_register(&econfig);
+-	if (IS_ERR(nvmem))
+-		return PTR_ERR(nvmem);
+-
+-	platform_set_drvdata(pdev, nvmem);
++	nvmem = devm_nvmem_register(dev, &econfig);
+ 
+-	return 0;
++	return PTR_ERR_OR_ZERO(nvmem);
+ }
+ 
+ static const struct of_device_id qfprom_of_match[] = {
+@@ -99,7 +88,6 @@ MODULE_DEVICE_TABLE(of, qfprom_of_match);
+ 
+ static struct platform_driver qfprom_driver = {
+ 	.probe = qfprom_probe,
+-	.remove = qfprom_remove,
+ 	.driver = {
+ 		.name = "qcom,qfprom",
+ 		.of_match_table = qfprom_of_match,
 -- 
 2.15.1
