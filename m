@@ -1,7 +1,7 @@
 From: srinivas.kandagatla@linaro.org
-Subject: [PATCH 21/25] nvmem: bcm-ocotp: Do not use "&pdev->dev" explicitly
-Date: Fri,  9 Mar 2018 14:47:15 +0000
-Message-ID: <20180309144719.29904-22-srinivas.kandagatla@linaro.org>
+Subject: [PATCH 19/25] nvmem: rockchip-efuse: Do not use "&pdev->dev" explicitly
+Date: Fri,  9 Mar 2018 14:47:13 +0000
+Message-ID: <20180309144719.29904-20-srinivas.kandagatla@linaro.org>
 References: <20180309144719.29904-1-srinivas.kandagatla@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180309144719.29904-1-srinivas.kandagatla@linaro.org>
@@ -29,22 +29,38 @@ Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 Signed-off-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 ---
- drivers/nvmem/bcm-ocotp.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/nvmem/rockchip-efuse.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/nvmem/bcm-ocotp.c b/drivers/nvmem/bcm-ocotp.c
-index 24c30fa475cc..4159b3f41d79 100644
---- a/drivers/nvmem/bcm-ocotp.c
-+++ b/drivers/nvmem/bcm-ocotp.c
-@@ -262,8 +262,7 @@ static int bcm_otpc_probe(struct platform_device *pdev)
- 	else if (of_device_is_compatible(dev->of_node, "brcm,ocotp-v2"))
- 		priv->map = &otp_map_v2;
- 	else {
--		dev_err(&pdev->dev,
--			"%s otpc config map not defined\n", __func__);
-+		dev_err(dev, "%s otpc config map not defined\n", __func__);
+diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
+index ade8848adf82..b3b0b648be62 100644
+--- a/drivers/nvmem/rockchip-efuse.c
++++ b/drivers/nvmem/rockchip-efuse.c
+@@ -268,21 +268,21 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
  		return -EINVAL;
  	}
  
+-	efuse = devm_kzalloc(&pdev->dev, sizeof(struct rockchip_efuse_chip),
++	efuse = devm_kzalloc(dev, sizeof(struct rockchip_efuse_chip),
+ 			     GFP_KERNEL);
+ 	if (!efuse)
+ 		return -ENOMEM;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	efuse->base = devm_ioremap_resource(&pdev->dev, res);
++	efuse->base = devm_ioremap_resource(dev, res);
+ 	if (IS_ERR(efuse->base))
+ 		return PTR_ERR(efuse->base);
+ 
+-	efuse->clk = devm_clk_get(&pdev->dev, "pclk_efuse");
++	efuse->clk = devm_clk_get(dev, "pclk_efuse");
+ 	if (IS_ERR(efuse->clk))
+ 		return PTR_ERR(efuse->clk);
+ 
+-	efuse->dev = &pdev->dev;
++	efuse->dev = dev;
+ 	if (of_property_read_u32(dev->of_node, "rockchip,efuse-size",
+ 				 &econfig.size))
+ 		econfig.size = resource_size(res);
 -- 
 2.15.1
