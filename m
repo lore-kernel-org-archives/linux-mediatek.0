@@ -1,72 +1,91 @@
-From: srinivas.kandagatla@linaro.org
-Subject: [PATCH 07/25] nvmem: snvs_lgpr: Convert to use devm_nvmem_register()
-Date: Fri,  9 Mar 2018 14:47:01 +0000
-Message-ID: <20180309144719.29904-8-srinivas.kandagatla@linaro.org>
-References: <20180309144719.29904-1-srinivas.kandagatla@linaro.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3 01/15] dt-bindings: clock: mediatek: add missing
+ required #reset-cells
+Date: Sun, 11 Mar 2018 20:07:37 +0100
+Message-ID: <6e155672-2544-3148-e664-72b830d1cdc2@gmail.com>
+References: <cover.1518895232.git.sean.wang@mediatek.com>
+ <7365f2286ff2cebcfb590715cb4a15dedd089046.1518895232.git.sean.wang@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180309144719.29904-1-srinivas.kandagatla@linaro.org>
+In-Reply-To: <7365f2286ff2cebcfb590715cb4a15dedd089046.1518895232.git.sean.wang@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: gregkh@linuxfoundation.org
-Cc: linux-kernel@vger.kernel.org, srinivas.kandagatla@linaro.org, Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: sean.wang@mediatek.com, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
 
-Drop all of the code related to .remove hook and make use of
-devm_nvmem_register() instead.
 
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
-Cc: Carlo Caione <carlo@caione.org>
-Cc: Kevin Hilman <khilman@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: cphealy@gmail.com
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-amlogic@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org
-Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
-Signed-off-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
----
- drivers/nvmem/snvs_lpgpr.c | 16 ++--------------
- 1 file changed, 2 insertions(+), 14 deletions(-)
+On 02/17/2018 08:54 PM, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> All ethsys, pciesys and ssusbsys internally include reset controller, so
+> explicitly add back these missing cell definitions to related bindings
+> and examples.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Cc: Rob Herring <robh@kernel.org>
+> Cc: Michael Turquette <mturquette@baylibre.com>
+> Cc: Stephen Boyd <sboyd@codeaurora.org>
+> Cc: linux-clk@vger.kernel.org
+> Reviewed-by: Rob Herring <robh@kernel.org>
 
-diff --git a/drivers/nvmem/snvs_lpgpr.c b/drivers/nvmem/snvs_lpgpr.c
-index e5c2a4a17f03..cb471d5e8e86 100644
---- a/drivers/nvmem/snvs_lpgpr.c
-+++ b/drivers/nvmem/snvs_lpgpr.c
-@@ -117,20 +117,9 @@ static int snvs_lpgpr_probe(struct platform_device *pdev)
- 	cfg->reg_read  = snvs_lpgpr_read,
- 	cfg->reg_write = snvs_lpgpr_write,
- 
--	nvmem = nvmem_register(cfg);
--	if (IS_ERR(nvmem))
--		return PTR_ERR(nvmem);
-+	nvmem = devm_nvmem_register(dev, cfg);
- 
--	platform_set_drvdata(pdev, nvmem);
--
--	return 0;
--}
--
--static int snvs_lpgpr_remove(struct platform_device *pdev)
--{
--	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
--
--	return nvmem_unregister(nvmem);
-+	return PTR_ERR_OR_ZERO(nvmem);
- }
- 
- static const struct of_device_id snvs_lpgpr_dt_ids[] = {
-@@ -143,7 +132,6 @@ MODULE_DEVICE_TABLE(of, snvs_lpgpr_dt_ids);
- 
- static struct platform_driver snvs_lpgpr_driver = {
- 	.probe	= snvs_lpgpr_probe,
--	.remove	= snvs_lpgpr_remove,
- 	.driver = {
- 		.name	= "snvs_lpgpr",
- 		.of_match_table = snvs_lpgpr_dt_ids,
--- 
-2.15.1
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt   | 1 +
+>  Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt  | 2 ++
+>  Documentation/devicetree/bindings/arm/mediatek/mediatek,ssusbsys.txt | 2 ++
+>  3 files changed, 5 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+> index 6cc7840..8f5335b 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+> @@ -9,6 +9,7 @@ Required Properties:
+>  	- "mediatek,mt2701-ethsys", "syscon"
+>  	- "mediatek,mt7622-ethsys", "syscon"
+>  - #clock-cells: Must be 1
+> +- #reset-cells: Must be 1
+>  
+>  The ethsys controller uses the common clk binding from
+>  Documentation/devicetree/bindings/clock/clock-bindings.txt
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
+> index d5d5f12..7fe5dc6 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
+> @@ -8,6 +8,7 @@ Required Properties:
+>  - compatible: Should be:
+>  	- "mediatek,mt7622-pciesys", "syscon"
+>  - #clock-cells: Must be 1
+> +- #reset-cells: Must be 1
+>  
+>  The PCIESYS controller uses the common clk binding from
+>  Documentation/devicetree/bindings/clock/clock-bindings.txt
+> @@ -19,4 +20,5 @@ pciesys: pciesys@1a100800 {
+>  	compatible = "mediatek,mt7622-pciesys", "syscon";
+>  	reg = <0 0x1a100800 0 0x1000>;
+>  	#clock-cells = <1>;
+> +	#reset-cells = <1>;
+>  };
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ssusbsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ssusbsys.txt
+> index 00760019..b8184da 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ssusbsys.txt
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ssusbsys.txt
+> @@ -8,6 +8,7 @@ Required Properties:
+>  - compatible: Should be:
+>  	- "mediatek,mt7622-ssusbsys", "syscon"
+>  - #clock-cells: Must be 1
+> +- #reset-cells: Must be 1
+>  
+>  The SSUSBSYS controller uses the common clk binding from
+>  Documentation/devicetree/bindings/clock/clock-bindings.txt
+> @@ -19,4 +20,5 @@ ssusbsys: ssusbsys@1a000000 {
+>  	compatible = "mediatek,mt7622-ssusbsys", "syscon";
+>  	reg = <0 0x1a000000 0 0x1000>;
+>  	#clock-cells = <1>;
+> +	#reset-cells = <1>;
+>  };
+> 
