@@ -1,42 +1,73 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v1 3/5] dt-bindings: clock: add clocks for MT2712
-Date: Sun, 11 Mar 2018 23:27:41 +0100
-Message-ID: <d1f7b0e7-fa9b-cc87-80df-3479db8b9281@gmail.com>
-References: <20180222054851.26096-1-weiyi.lu@mediatek.com>
- <20180222054851.26096-5-weiyi.lu@mediatek.com>
- <20180301224555.44pvl67l5oqibbkg@rob-hp-laptop>
- <1519957404.14513.5.camel@mtksdaap41>
+Subject: Re: [PATCH v2 1/4] dt-bindings: soc: add SCPSYS binding for MT7623
+ and MT7623A SoC
+Date: Sun, 11 Mar 2018 23:44:39 +0100
+Message-ID: <25eceb5d-7f5e-8bac-0bfd-ad547520a9b5@gmail.com>
+References: <ecfc548fc3d22aa335b50e552ad2ad88427a0bb2.1517998367.git.sean.wang@mediatek.com>
+ <1520414224.677.2.camel@mtkswgap22>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1519957404.14513.5.camel@mtksdaap41>
+In-Reply-To: <1520414224.677.2.camel@mtkswgap22>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Weiyi Lu <weiyi.lu@mediatek.com>, Rob Herring <robh@kernel.org>
-Cc: Stephen Boyd <sboyd@codeaurora.org>, Mike Turquette <mturquette@baylibre.com>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
+To: Sean Wang <sean.wang@mediatek.com>, robh+dt@kernel.org
+Cc: rjw@rjwysocki.net, khilman@baylibre.com, ulf.hansson@linaro.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 03/02/2018 03:23 AM, Weiyi Lu wrote:
-> On Thu, 2018-03-01 at 16:45 -0600, Rob Herring wrote:
->> On Thu, Feb 22, 2018 at 01:48:49PM +0800, Weiyi Lu wrote:
->>> add new clocks according to ECO design change
->>>
->>> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
->>> ---
->>>  include/dt-bindings/clock/mt2712-clk.h | 294 +++++++++++++++++----------------
->>>  1 file changed, 151 insertions(+), 143 deletions(-)
->>
->> You can't just renumber your clocks. They are an ABI. Plus, for an ECO 
->> there can't have been that much change.
->>
-> Hi Rob,
-> Got it! Is it correct if I append those new added clocks at the bottom
-> of each own subsystem? If the answer is yes, I'll resend a new version.
+On 03/07/2018 10:17 AM, Sean Wang wrote:
+> Hi, Matthias
+> 
+> just a gentle ping to the four related patches
+> 
 
-Yes, that will work. Please do that and resubmit.
+All four pushed with Ulf's reviewed-by to v4.16-next/soc
 
-Thanks,
-Matthias
+Thanks a lot!
+
+> 	Sean
+> 
+> On Wed, 2018-02-07 at 18:22 +0800, sean.wang@mediatek.com wrote:
+>> From: Sean Wang <sean.wang@mediatek.com>
+>>
+>> document the binding for enabling SCPSYS on MediaTek MT7623 and MT7623A
+>> SoC. Where MT7623 SoC has the same definition about power domains with
+>> MT2701, so it's fine to using MT2701 ones as MT7623's fallback.
+>>
+>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>> Reviewed-by: Rob Herring <robh@kernel.org>
+>> ---
+>>  Documentation/devicetree/bindings/soc/mediatek/scpsys.txt | 5 ++++-
+>>  1 file changed, 4 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+>> index 76bf45b..d6fe16f 100644
+>> --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+>> +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+>> @@ -21,6 +21,8 @@ Required properties:
+>>  	- "mediatek,mt2712-scpsys"
+>>  	- "mediatek,mt6797-scpsys"
+>>  	- "mediatek,mt7622-scpsys"
+>> +	- "mediatek,mt7623-scpsys", "mediatek,mt2701-scpsys": For MT7623 SoC
+>> +	- "mediatek,mt7623a-scpsys": For MT7623A SoC
+>>  	- "mediatek,mt8173-scpsys"
+>>  - #power-domain-cells: Must be 1
+>>  - reg: Address range of the SCPSYS unit
+>> @@ -28,10 +30,11 @@ Required properties:
+>>  - clock, clock-names: clocks according to the common clock binding.
+>>                        These are clocks which hardware needs to be
+>>                        enabled before enabling certain power domains.
+>> -	Required clocks for MT2701: "mm", "mfg", "ethif"
+>> +	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
+>>  	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
+>>  	Required clocks for MT6797: "mm", "mfg", "vdec"
+>>  	Required clocks for MT7622: "hif_sel"
+>> +	Required clocks for MT7622A: "ethif"
+>>  	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
+>>  
+>>  Optional properties:
+> 
+> 
