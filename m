@@ -1,55 +1,39 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] soc: mediatek: fix the mistaken pointer accessed when
- subdomains are added
-Date: Sun, 11 Mar 2018 23:51:17 +0100
-Message-ID: <b3923ae4-3fb4-c107-e7df-cd9d3c5f0652@gmail.com>
-References: <9d9d75250bf62b491294a0c550c35ab7aba05eef.1518113047.git.sean.wang@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH 3/3] phy: phy-mtk-tphy: add properties for U2 slew rate calibrate
+Date: Mon, 12 Mar 2018 11:39:08 +0800
+Message-ID: <49dff54ceb0c2f4b820af48a87818e935e23447a.1520824899.git.chunfeng.yun@mediatek.com>
+References: <c9679bc6e969ebf0f97a01c6d1aff3bbc0e8e4f7.1520824899.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9d9d75250bf62b491294a0c550c35ab7aba05eef.1518113047.git.sean.wang@mediatek.com>
-Content-Language: en-US
+In-Reply-To: <c9679bc6e969ebf0f97a01c6d1aff3bbc0e8e4f7.1520824899.git.chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com, rjw@rjwysocki.net, khilman@baylibre.com
-Cc: ulf.hansson@linaro.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ryder Lee <ryder.lee@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Add two properties of ref_clk and coefficient used by U2 slew rate
+calibrate which may vary on different SoCs
 
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-On 02/08/2018 07:07 PM, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Fix the pointer to struct scp_subdomian not being moved forward
-> when each sub-domain is expected to be iteratively added through
-> pm_genpd_add_subdomain call.
-> 
-> Cc: stable@vger.kernel.org
-> Fixes: 53fddb1a66dd ("soc: mediatek: reduce code duplication of scpsys_probe across all SoCs")
-> Reported-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-
-Pushed now to v4.16-next/soc
-
-Thanks a lot
-
-@stable this would need to be applied since v4.13
-
-> ---
->  drivers/soc/mediatek/mtk-scpsys.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index fc55faa..9de801e 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -1048,7 +1048,7 @@ static int scpsys_probe(struct platform_device *pdev)
->  
->  	pd_data = &scp->pd_data;
->  
-> -	for (i = 0, sd = soc->subdomains ; i < soc->num_subdomains ; i++) {
-> +	for (i = 0, sd = soc->subdomains; i < soc->num_subdomains; i++, sd++) {
->  		ret = pm_genpd_add_subdomain(pd_data->domains[sd->origin],
->  					     pd_data->domains[sd->subdomain]);
->  		if (ret && IS_ENABLED(CONFIG_PM))
-> 
+diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+index 41e09ed..0d34b2b 100644
+--- a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
++++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+@@ -27,6 +27,10 @@ Optional properties (controller (parent) node):
+  - reg		: offset and length of register shared by multiple ports,
+ 		  exclude port's private register. It is needed on mt2701
+ 		  and mt8173, but not on mt2712.
++ - mediatek,src-ref-clk-mhz	: frequency of reference clock for slew rate
++		  calibrate
++ - mediatek,src-coef	: coefficient for slew rate calibrate, depends on
++		  SoC process
+ 
+ Required properties (port (child) node):
+ - reg		: address and length of the register set for the port.
+-- 
+1.9.1
