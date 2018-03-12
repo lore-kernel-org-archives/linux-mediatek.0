@@ -1,94 +1,73 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: mt8173-rt5650: fix child-node lookup" to the asoc tree
-Date: Mon, 12 Mar 2018 16:28:52 +0000 (GMT)
-Message-ID: <20180312162852.E3DDE44007C@finisterre.ee.mobilebroadband>
+Subject: Re: Applied "ASoC: mt8173-rt5650: fix child-node
+ lookup" to the asoc tree
+Date: Mon, 12 Mar 2018 09:33:54 -0700
+Message-ID: <20180312163354.GJ2186@sirena.org.uk>
 References: <20180131055921.25574-1-johan@kernel.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180131055921.25574-1-johan@kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
+ <20180312162852.E3DDE44007C@finisterre.ee.mobilebroadband>
+Mime-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============0463487416108890796=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20180312162852.E3DDE44007C@finisterre.ee.mobilebroadband>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
 To: Johan Hovold <johan@kernel.org>
-Cc: Mark Brown <broonie@kernel.org>Mark Brown <broonie@kernel.org>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>alsa-devel@alsa-project.org
+Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
 
-   ASoC: mt8173-rt5650: fix child-node lookup
+--===============0463487416108890796==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="yhze8HlyfmXt1APY"
+Content-Disposition: inline
 
-has been applied to the asoc tree at
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+--yhze8HlyfmXt1APY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+On Mon, Mar 12, 2018 at 04:28:52PM +0000, Mark Brown wrote:
+> The patch
+>=20
+>    ASoC: mt8173-rt5650: fix child-node lookup
+>=20
+> has been applied to the asoc tree at
+>=20
+>    https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git=20
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+=2E..a while ago, my script found some old branches and pushed them out
+sorry.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+--yhze8HlyfmXt1APY
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+-----BEGIN PGP SIGNATURE-----
 
-Thanks,
-Mark
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlqmq/EACgkQJNaLcl1U
+h9DTSAf9Hvp3X5cqnAlzugzyNo+4weYbMLGxza1mL6sKX7MduK5MvdUKC0z14s8y
+qXTwnoRRV0GaFxEc2JXrBQ6NhEYtcXcM6LEk3/wCA68Tc5jibPdDiard74yOaY7G
+jUQx3v4uuLpUaIvtvEZo9ZMxt6UuzIm3ER8+jeggs0EbNhuWAHUbcXeCJIW23wLy
++JWecahExf77Gv91YrobnwEI9CUfqGfo89t/RnP48AsSjOsjJGHwnfzX0xZCcpXe
+kKGAiQ1WaJ4G6tVBJPg3JMDPMatWEhPjOoQull9TL+sdpAghErEIHOyhQNkmbQvR
+MRAGJLWDf5xlqMRdPwMRYVzfjRahQg==
+=6L4w
+-----END PGP SIGNATURE-----
 
->From 06190937b9de9803e15a122762b5bbd442eaee31 Mon Sep 17 00:00:00 2001
-From: Johan Hovold <johan@kernel.org>
-Date: Wed, 31 Jan 2018 16:59:21 +1100
-Subject: [PATCH] ASoC: mt8173-rt5650: fix child-node lookup
+--yhze8HlyfmXt1APY--
 
-This driver used the wrong OF-helper when looking up the optional
-capture-codec child node during probe. Instead of searching just
-children of the sound node, a tree-wide depth-first search starting at
-the unrelated platform node was done. Not only could this end up
-matching an unrelated node or no node at all; the platform node could
-also be prematurely freed since of_find_node_by_name() drops a reference
-to its first argument. This particular pattern has been observed leading
-to crashes after probe deferrals in other drivers.
+--===============0463487416108890796==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-Fix this by dropping the broken call to of_find_node_by_name() and
-keeping only the second, correct lookup using of_get_child_by_name()
-while taking care not to bail out if the optional node is missing.
 
-Note that this also addresses two capture-codec node-reference leaks
-(one for each of the original helper calls).
-
-Compile tested only.
-
-Fixes: d349caeb0510 ("ASoC: mediatek: Add second I2S on mt8173-rt5650 machine driver")
-Signed-off-by: Johan Hovold <johan@kernel.org>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/mediatek/mt8173/mt8173-rt5650.c | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
-
-diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650.c b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-index 40ebefd625c1..679fc8bea0a3 100644
---- a/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-+++ b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-@@ -272,15 +272,10 @@ static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
- 	}
- 	mt8173_rt5650_codecs[1].of_node = mt8173_rt5650_codecs[0].of_node;
- 
--	if (of_find_node_by_name(platform_node, "codec-capture")) {
--		np = of_get_child_by_name(pdev->dev.of_node, "codec-capture");
--		if (!np) {
--			dev_err(&pdev->dev,
--				"%s: Can't find codec-capture DT node\n",
--				__func__);
--			return -EINVAL;
--		}
-+	np = of_get_child_by_name(pdev->dev.of_node, "codec-capture");
-+	if (np) {
- 		ret = snd_soc_of_get_dai_name(np, &codec_capture_dai);
-+		of_node_put(np);
- 		if (ret < 0) {
- 			dev_err(&pdev->dev,
- 				"%s codec_capture_dai name fail %d\n",
--- 
-2.16.2
+--===============0463487416108890796==--
