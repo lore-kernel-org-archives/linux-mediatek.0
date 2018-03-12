@@ -1,130 +1,40 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v1 05/19] arm: dts: mt7623: add BTIF, HSDMA and SPI-NOR
- device nodes
-Date: Mon, 12 Mar 2018 17:53:07 +0800
-Message-ID: <1520848387.27000.0.camel@mtkswgap22>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v1 04/19] dt-bindings: arm: mediatek: add support for more
+ mt7623 reference boards
+Date: Mon, 12 Mar 2018 12:03:45 +0100
+Message-ID: <adeee56f-97c6-1999-4f1c-d420ce24ee13@gmail.com>
 References: <cover.1519378871.git.sean.wang@mediatek.com>
-         <ca071fec200f80d894523b11c94ddde19381f936.1519378871.git.sean.wang@mediatek.com>
-         <cea7b0bf-fcd9-6405-c437-d3251e7bb4bf@gmail.com>
+ <e77690ea7f7332e9e1ee64204a4e72c759c41aa9.1519378871.git.sean.wang@mediatek.com>
+ <20180302160022.ub6vinw6br3l2dyb@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cea7b0bf-fcd9-6405-c437-d3251e7bb4bf@gmail.com>
+In-Reply-To: <20180302160022.ub6vinw6br3l2dyb@rob-hp-laptop>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Rob Herring <robh@kernel.org>, sean.wang@mediatek.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-03-12 at 10:40 +0100, Matthias Brugger wrote:
+
+
+On 03/02/2018 05:00 PM, Rob Herring wrote:
+> On Fri, Feb 23, 2018 at 06:16:24PM +0800, sean.wang@mediatek.com wrote:
+>> From: Sean Wang <sean.wang@mediatek.com>
+>>
+>> Update binding document for more mt7623[A,N] reference boards being
+>> supported.
+>>
+>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>> Cc: Rob Herring <robh+dt@kernel.org>
+>> Cc: Mark Rutland <mark.rutland@arm.com>
+>> Cc: devicetree@vger.kernel.org
+>> ---
+>>  Documentation/devicetree/bindings/arm/mediatek.txt | 9 +++++++++
+>>  1 file changed, 9 insertions(+)
 > 
-> On 02/23/2018 11:16 AM, sean.wang@mediatek.com wrote:
-> > From: Sean Wang <sean.wang@mediatek.com>
-> > 
-> > add BTIF, HSDMA and SPI-NOR device nodes and enable it on relevant boards
-> 
-> AFAIK hsdma controller is not upstream yet.
-> Please resubmit when at least the binding got merged.
+> Reviewed-by: Rob Herring <robh@kernel.org>
 > 
 
-Sure, I will drop the node for HSDMA in the next version.
-
-> Thanks,
-> Matthias
-> 
-> > 
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > ---
-> >  arch/arm/boot/dts/mt7623.dtsi                 | 36 ++++++++++++++++++++++++++-
-> >  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |  6 ++++-
-> >  2 files changed, 40 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-> > index 91317a1..da56c54 100644
-> > --- a/arch/arm/boot/dts/mt7623.dtsi
-> > +++ b/arch/arm/boot/dts/mt7623.dtsi
-> > @@ -1,5 +1,5 @@
-> >  /*
-> > - * Copyright (c) 2017 MediaTek Inc.
-> > + * Copyright (c) 2017-2018 MediaTek Inc.
-> >   * Author: John Crispin <john@phrozen.org>
-> >   *	   Sean Wang <sean.wang@mediatek.com>
-> >   *
-> > @@ -483,6 +483,18 @@
-> >  		nvmem-cell-names = "calibration-data";
-> >  	};
-> >  
-> > +	btif: serial@1100c000 {
-> > +		compatible = "mediatek,mt7623-btif",
-> > +			     "mediatek,mtk-btif";
-> > +		reg = <0 0x1100c000 0 0x1000>;
-> > +		interrupts = <GIC_SPI 50 IRQ_TYPE_LEVEL_LOW>;
-> > +		clocks = <&pericfg CLK_PERI_BTIF>;
-> > +		clock-names = "main";
-> > +		reg-shift = <2>;
-> > +		reg-io-width = <4>;
-> > +		status = "disabled";
-> > +	};
-> > +
-> >  	nandc: nfi@1100d000 {
-> >  		compatible = "mediatek,mt7623-nfc",
-> >  			     "mediatek,mt2701-nfc";
-> > @@ -508,6 +520,18 @@
-> >  		status = "disabled";
-> >  	};
-> >  
-> > +	nor_flash: spi@11014000 {
-> > +		compatible = "mediatek,mt7623-nor",
-> > +			     "mediatek,mt8173-nor";
-> > +		reg = <0 0x11014000 0 0x1000>;
-> > +		clocks = <&pericfg CLK_PERI_FLASH>,
-> > +			 <&topckgen CLK_TOP_FLASH_SEL>;
-> > +		clock-names = "spi", "sf";
-> > +		#address-cells = <1>;
-> > +		#size-cells = <0>;
-> > +		status = "disabled";
-> > +	};
-> > +
-> >  	spi1: spi@11016000 {
-> >  		compatible = "mediatek,mt7623-spi",
-> >  			     "mediatek,mt2701-spi";
-> > @@ -861,6 +885,16 @@
-> >  		#reset-cells = <1>;
-> >  	};
-> >  
-> > +	hsdma: dma-controller@1b007000 {
-> > +		compatible = "mediatek,mt7623-hsdma";
-> > +		reg = <0 0x1b007000 0 0x1000>;
-> > +		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_LOW>;
-> > +		clocks = <&ethsys CLK_ETHSYS_HSDMA>;
-> > +		clock-names = "hsdma";
-> > +		power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
-> > +		#dma-cells = <1>;
-> > +	};
-> > +
-> >  	eth: ethernet@1b100000 {
-> >  		compatible = "mediatek,mt7623-eth",
-> >  			     "mediatek,mt2701-eth",
-> > diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> > index 3efecc5..ec11e14 100644
-> > --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> > +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> > @@ -1,5 +1,5 @@
-> >  /*
-> > - * Copyright 2017 Sean Wang <sean.wang@mediatek.com>
-> > + * Copyright 2017-2018 Sean Wang <sean.wang@mediatek.com>
-> >   *
-> >   * SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> >   */
-> > @@ -86,6 +86,10 @@
-> >  	};
-> >  };
-> >  
-> > +&btif {
-> > +	status = "okay";
-> > +};
-> > +
-> >  &cir {
-> >  	pinctrl-names = "default";
-> >  	pinctrl-0 = <&cir_pins_a>;
-> > 
+Pushed to v4.16-next/dts32
