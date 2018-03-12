@@ -1,41 +1,94 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v1 06/19] arm: dts: mt7623: fix USB initialization fails
- on bananapi-r2
-Date: Mon, 12 Mar 2018 12:03:57 +0100
-Message-ID: <81aab78c-a921-3d80-1636-fc4b797b4517@gmail.com>
-References: <cover.1519378871.git.sean.wang@mediatek.com>
- <bcb9dbeb1389e71f4eaba0c2def1c991703e10c4.1519378872.git.sean.wang@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: mt8173-rt5650: fix child-node lookup" to the asoc tree
+Date: Mon, 12 Mar 2018 16:28:52 +0000 (GMT)
+Message-ID: <20180312162852.E3DDE44007C@finisterre.ee.mobilebroadband>
+References: <20180131055921.25574-1-johan@kernel.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <bcb9dbeb1389e71f4eaba0c2def1c991703e10c4.1519378872.git.sean.wang@mediatek.com>
-Content-Language: en-US
+In-Reply-To: <20180131055921.25574-1-johan@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org
+To: Johan Hovold <johan@kernel.org>
+Cc: Mark Brown <broonie@kernel.org>Mark Brown <broonie@kernel.org>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>alsa-devel@alsa-project.org
 List-Id: linux-mediatek@lists.infradead.org
 
+The patch
 
+   ASoC: mt8173-rt5650: fix child-node lookup
 
-On 02/23/2018 11:16 AM, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Fix that USB initialization fails as below runtime log is present during
-> booting on bananapi-r2 board by adding missing regulators the USB device
-> requires. Current regulators USB device uses are being updated with the
-> correct ones to reflect real configurations which are all from fixed
-> regulators rather than MT6323 one's output.
-> 
-> [    6.473958] xhci-mtk 1a1c0000.usb: fail to get vbus
-> [    6.479313] xhci-mtk 1a240000.usb: fail to get vbus
-> 
-> Cc: stable@vger.kernel.org
-> Fixes: f4ff257cd160 ("arm: dts: mt7623: add support for Bananapi R2 (BPI-R2) board")
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 24 ++++++++++++++++++++++--
->  1 file changed, 22 insertions(+), 2 deletions(-)
-> 
+has been applied to the asoc tree at
 
-Pushed to v4.16-next/dts32
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From 06190937b9de9803e15a122762b5bbd442eaee31 Mon Sep 17 00:00:00 2001
+From: Johan Hovold <johan@kernel.org>
+Date: Wed, 31 Jan 2018 16:59:21 +1100
+Subject: [PATCH] ASoC: mt8173-rt5650: fix child-node lookup
+
+This driver used the wrong OF-helper when looking up the optional
+capture-codec child node during probe. Instead of searching just
+children of the sound node, a tree-wide depth-first search starting at
+the unrelated platform node was done. Not only could this end up
+matching an unrelated node or no node at all; the platform node could
+also be prematurely freed since of_find_node_by_name() drops a reference
+to its first argument. This particular pattern has been observed leading
+to crashes after probe deferrals in other drivers.
+
+Fix this by dropping the broken call to of_find_node_by_name() and
+keeping only the second, correct lookup using of_get_child_by_name()
+while taking care not to bail out if the optional node is missing.
+
+Note that this also addresses two capture-codec node-reference leaks
+(one for each of the original helper calls).
+
+Compile tested only.
+
+Fixes: d349caeb0510 ("ASoC: mediatek: Add second I2S on mt8173-rt5650 machine driver")
+Signed-off-by: Johan Hovold <johan@kernel.org>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650.c b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+index 40ebefd625c1..679fc8bea0a3 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-rt5650.c
++++ b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+@@ -272,15 +272,10 @@ static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
+ 	}
+ 	mt8173_rt5650_codecs[1].of_node = mt8173_rt5650_codecs[0].of_node;
+ 
+-	if (of_find_node_by_name(platform_node, "codec-capture")) {
+-		np = of_get_child_by_name(pdev->dev.of_node, "codec-capture");
+-		if (!np) {
+-			dev_err(&pdev->dev,
+-				"%s: Can't find codec-capture DT node\n",
+-				__func__);
+-			return -EINVAL;
+-		}
++	np = of_get_child_by_name(pdev->dev.of_node, "codec-capture");
++	if (np) {
+ 		ret = snd_soc_of_get_dai_name(np, &codec_capture_dai);
++		of_node_put(np);
+ 		if (ret < 0) {
+ 			dev_err(&pdev->dev,
+ 				"%s codec_capture_dai name fail %d\n",
+-- 
+2.16.2
