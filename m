@@ -1,73 +1,48 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: Applied "ASoC: mt8173-rt5650: fix child-node
- lookup" to the asoc tree
-Date: Mon, 12 Mar 2018 09:33:54 -0700
-Message-ID: <20180312163354.GJ2186@sirena.org.uk>
-References: <20180131055921.25574-1-johan@kernel.org>
- <20180312162852.E3DDE44007C@finisterre.ee.mobilebroadband>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 3/3] dt-bindings: phy-mtk-tphy: add properties for U2
+ slew rate calibrate
+Date: Wed, 14 Mar 2018 00:21:16 +0100
+Message-ID: <6810b7b4-3023-2e76-5fbf-7e442067cbc4@gmail.com>
+References: <c9679bc6e969ebf0f97a01c6d1aff3bbc0e8e4f7.1520832210.git.chunfeng.yun@mediatek.com>
+ <94a7d3b1240297cd0cac82df52954d0a53d50d36.1520832210.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0463487416108890796=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20180312162852.E3DDE44007C@finisterre.ee.mobilebroadband>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Johan Hovold <johan@kernel.org>
-Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <94a7d3b1240297cd0cac82df52954d0a53d50d36.1520832210.git.chunfeng.yun@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ryder Lee <ryder.lee@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
---===============0463487416108890796==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="yhze8HlyfmXt1APY"
-Content-Disposition: inline
 
+On 03/12/2018 06:25 AM, Chunfeng Yun wrote:
+> Add two properties of ref_clk and coefficient used by U2 slew rate
+> calibrate which may vary on different SoCs
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
---yhze8HlyfmXt1APY
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-On Mon, Mar 12, 2018 at 04:28:52PM +0000, Mark Brown wrote:
-> The patch
->=20
->    ASoC: mt8173-rt5650: fix child-node lookup
->=20
-> has been applied to the asoc tree at
->=20
->    https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git=20
-
-=2E..a while ago, my script found some old branches and pushed them out
-sorry.
-
---yhze8HlyfmXt1APY
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlqmq/EACgkQJNaLcl1U
-h9DTSAf9Hvp3X5cqnAlzugzyNo+4weYbMLGxza1mL6sKX7MduK5MvdUKC0z14s8y
-qXTwnoRRV0GaFxEc2JXrBQ6NhEYtcXcM6LEk3/wCA68Tc5jibPdDiard74yOaY7G
-jUQx3v4uuLpUaIvtvEZo9ZMxt6UuzIm3ER8+jeggs0EbNhuWAHUbcXeCJIW23wLy
-+JWecahExf77Gv91YrobnwEI9CUfqGfo89t/RnP48AsSjOsjJGHwnfzX0xZCcpXe
-kKGAiQ1WaJ4G6tVBJPg3JMDPMatWEhPjOoQull9TL+sdpAghErEIHOyhQNkmbQvR
-MRAGJLWDf5xlqMRdPwMRYVzfjRahQg==
-=6L4w
------END PGP SIGNATURE-----
-
---yhze8HlyfmXt1APY--
-
---===============0463487416108890796==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============0463487416108890796==--
+> ---
+>  Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+> index 41e09ed..0d34b2b 100644
+> --- a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+> +++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+> @@ -27,6 +27,10 @@ Optional properties (controller (parent) node):
+>   - reg		: offset and length of register shared by multiple ports,
+>  		  exclude port's private register. It is needed on mt2701
+>  		  and mt8173, but not on mt2712.
+> + - mediatek,src-ref-clk-mhz	: frequency of reference clock for slew rate
+> +		  calibrate
+> + - mediatek,src-coef	: coefficient for slew rate calibrate, depends on
+> +		  SoC process
+>  
+>  Required properties (port (child) node):
+>  - reg		: address and length of the register set for the port.
+> 
