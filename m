@@ -1,36 +1,78 @@
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] usb: misc: supports Apple Carplay driver
-Date: Wed, 14 Mar 2018 07:16:12 +0100
-Message-ID: <20180314061612.GA17263@kroah.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH] Add Apple Carplay driver
+Date: Wed, 14 Mar 2018 16:18:55 +0800
+Message-ID: <1521015535.3717.26.camel@mhfsdcap03>
 References: <1521007356-12306-1-git-send-email-chunfeng.yun@mediatek.com>
- <1521007356-12306-2-git-send-email-chunfeng.yun@mediatek.com>
+         <CAA6KcBAnLYZ2UyUB6Ecv96D0zWhmce2BMmA_iWx04njeNYsd9w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1521007356-12306-2-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <CAA6KcBAnLYZ2UyUB6Ecv96D0zWhmce2BMmA_iWx04njeNYsd9w@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Serge Semin <fancer.lancer@gmail.com>, Guenter Roeck <linux@roeck-us.net>, Kate Stewart <kstewart@linuxfoundation.org>, Thomas Gleixner <tglx@linutronix.de>, Alan Stern <stern@rowland.harvard.edu>, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Matthew Dharm <mdharm-usb@one-eyed-alien.net>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Serge Semin <fancer.lancer@gmail.com>, Guenter Roeck <linux@roeck-us.net>, Kate Stewart <kstewart@linuxfoundation.org>, Thomas Gleixner <tglx@linutronix.de>, Alan Stern <stern@rowland.harvard.edu>, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Mar 14, 2018 at 02:02:36PM +0800, Chunfeng Yun wrote:
-> The driver is used to support Apple carplay feature by a debugfs
-> interface which can force the driver to send a USB Vendor Request
-> of "Apple Device to Host Mode Switch" to switch Apple Device
-> into host mode.
+On Tue, 2018-03-13 at 23:53 -0700, Matthew Dharm wrote:
+> Why is this a kernel-level driver, rather than a userspace application
+> that uses libusb to send the single vendor-specific command required?
+> Since this command would be applicable to many CarPlay devices, with
+> many different VID/PIDs, it would seem to make more sense as a
+> userspace app that took a reference to a USB device or VID/PID.
+Sorry, I'm not familiar with libusb.
+But after I roughly read a simple example using libusb, it indeed can be
+realized by a userspace driver.
 
-While I am all for crazy debugfs interfaces, I would _strongly_ suggest
-not doing that here for the main API to the device.  I know Android is
-trying to prevent any new devices from even enabling debugfs, and as the
-file system requires root permissions by default, you are forcing any
-user of your new api to run as root, which is not a good idea either.
+Thanks for your useful comments
 
-Given that all you are doing here is a single usb control message, why
-does this even need to be a kernel driver at all?  Can't you do the same
-thing from userspace with a simple libusb/usbfs program?  Or even a
-simple script?
-
-thanks,
-
-greg k-h
+> 
+> Matt
+> 
+> On Tue, Mar 13, 2018 at 11:02 PM, Chunfeng Yun
+> <chunfeng.yun@mediatek.com> wrote:
+> > From bf48dcd9cb254576cfea373c9a5d2ab996408895 Mon Sep 17 00:00:00 2001
+> > From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > Date: Tue, 13 Mar 2018 11:47:38 +0800
+> > Subject: [PATCH] Add Apple Carplay driver
+> >
+> > Some Apple devices which support Carplay can enter USB Host Mode from USB
+> > Device Mode after receiving a specific USB Vendor Request. There is a
+> > requirement apply to accesssories that support the USB dual role switch
+> > feature, and must have a USB-A receptacle that is capable of functioning
+> > in both USB Host and USB Device roles.
+> > It means that the driver should supports manual Dual-Role switch, due to
+> > no IDDIG pin is avaliable.
+> >
+> > There is no suitable place to add this spicific USB Vendor Request, so
+> > here I extract a single driver which allow user force to send it by a debug
+> > interface when need it, and keep it independent on USB Dual-Role Controller
+> > Drivers.
+> > But to implement carplay feature, there are some requirments for USB Dual-Role
+> > Driver:
+> > 1. supports manual dual-role switch, such as, by a debug interface;
+> > 2. keep vbus alive even when switch host into device mode;
+> >
+> > More information please refer to "Chapter 46. USB Role Switch" in
+> > MFI Accessroy Interface Specification.pdf
+> >
+> > Chunfeng Yun (1):
+> >   usb: misc: supports Apple Carplay driver
+> >
+> >  drivers/usb/misc/Kconfig   |    9 +++
+> >  drivers/usb/misc/Makefile  |    1 +
+> >  drivers/usb/misc/carplay.c |  193 ++++++++++++++++++++++++++++++++++++++++++++
+> >  3 files changed, 203 insertions(+)
+> >  create mode 100644 drivers/usb/misc/carplay.c
+> >
+> > --
+> > 1.7.9.5
+> >
+> >
+> > --
+> > To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+> 
+> 
