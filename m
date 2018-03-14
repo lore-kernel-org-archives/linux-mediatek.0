@@ -1,50 +1,72 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v2 3/3] dt-bindings: phy-mtk-tphy: add properties for U2
- slew rate calibrate
-Date: Wed, 14 Mar 2018 14:09:44 +0800
-Message-ID: <1521007784.3717.17.camel@mhfsdcap03>
-References: <c9679bc6e969ebf0f97a01c6d1aff3bbc0e8e4f7.1520832210.git.chunfeng.yun@mediatek.com>
-         <94a7d3b1240297cd0cac82df52954d0a53d50d36.1520832210.git.chunfeng.yun@mediatek.com>
-         <6810b7b4-3023-2e76-5fbf-7e442067cbc4@gmail.com>
+From: Matthew Dharm <mdharm-usb@one-eyed-alien.net>
+Subject: Re: [PATCH] Add Apple Carplay driver
+Date: Tue, 13 Mar 2018 23:53:15 -0700
+Message-ID: <CAA6KcBAnLYZ2UyUB6Ecv96D0zWhmce2BMmA_iWx04njeNYsd9w@mail.gmail.com>
+References: <1521007356-12306-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6810b7b4-3023-2e76-5fbf-7e442067cbc4@gmail.com>
+In-Reply-To: <1521007356-12306-1-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ryder Lee <ryder.lee@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Serge Semin <fancer.lancer@gmail.com>, Guenter Roeck <linux@roeck-us.net>, Kate Stewart <kstewart@linuxfoundation.org>, Thomas Gleixner <tglx@linutronix.de>, Alan Stern <stern@rowland.harvard.edu>, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-03-14 at 00:21 +0100, Matthias Brugger wrote:
-> 
-> On 03/12/2018 06:25 AM, Chunfeng Yun wrote:
-> > Add two properties of ref_clk and coefficient used by U2 slew rate
-> > calibrate which may vary on different SoCs
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> 
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> 
-Thanks again
+Why is this a kernel-level driver, rather than a userspace application
+that uses libusb to send the single vendor-specific command required?
+Since this command would be applicable to many CarPlay devices, with
+many different VID/PIDs, it would seem to make more sense as a
+userspace app that took a reference to a USB device or VID/PID.
 
-> > ---
-> >  Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt | 4 ++++
-> >  1 file changed, 4 insertions(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-> > index 41e09ed..0d34b2b 100644
-> > --- a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-> > +++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-> > @@ -27,6 +27,10 @@ Optional properties (controller (parent) node):
-> >   - reg		: offset and length of register shared by multiple ports,
-> >  		  exclude port's private register. It is needed on mt2701
-> >  		  and mt8173, but not on mt2712.
-> > + - mediatek,src-ref-clk-mhz	: frequency of reference clock for slew rate
-> > +		  calibrate
-> > + - mediatek,src-coef	: coefficient for slew rate calibrate, depends on
-> > +		  SoC process
-> >  
-> >  Required properties (port (child) node):
-> >  - reg		: address and length of the register set for the port.
-> > 
+Matt
+
+On Tue, Mar 13, 2018 at 11:02 PM, Chunfeng Yun
+<chunfeng.yun@mediatek.com> wrote:
+> From bf48dcd9cb254576cfea373c9a5d2ab996408895 Mon Sep 17 00:00:00 2001
+> From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Date: Tue, 13 Mar 2018 11:47:38 +0800
+> Subject: [PATCH] Add Apple Carplay driver
+>
+> Some Apple devices which support Carplay can enter USB Host Mode from USB
+> Device Mode after receiving a specific USB Vendor Request. There is a
+> requirement apply to accesssories that support the USB dual role switch
+> feature, and must have a USB-A receptacle that is capable of functioning
+> in both USB Host and USB Device roles.
+> It means that the driver should supports manual Dual-Role switch, due to
+> no IDDIG pin is avaliable.
+>
+> There is no suitable place to add this spicific USB Vendor Request, so
+> here I extract a single driver which allow user force to send it by a debug
+> interface when need it, and keep it independent on USB Dual-Role Controller
+> Drivers.
+> But to implement carplay feature, there are some requirments for USB Dual-Role
+> Driver:
+> 1. supports manual dual-role switch, such as, by a debug interface;
+> 2. keep vbus alive even when switch host into device mode;
+>
+> More information please refer to "Chapter 46. USB Role Switch" in
+> MFI Accessroy Interface Specification.pdf
+>
+> Chunfeng Yun (1):
+>   usb: misc: supports Apple Carplay driver
+>
+>  drivers/usb/misc/Kconfig   |    9 +++
+>  drivers/usb/misc/Makefile  |    1 +
+>  drivers/usb/misc/carplay.c |  193 ++++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 203 insertions(+)
+>  create mode 100644 drivers/usb/misc/carplay.c
+>
+> --
+> 1.7.9.5
+>
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+
+
+-- 
+Matthew Dharm
+Former Maintainer, USB Mass Storage driver for Linux
