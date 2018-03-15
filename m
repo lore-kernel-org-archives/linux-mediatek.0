@@ -1,42 +1,32 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH] usb: misc: supports Apple Carplay driver
-Date: Wed, 14 Mar 2018 16:20:52 +0800
-Message-ID: <1521015652.3717.28.camel@mhfsdcap03>
-References: <1521007356-12306-1-git-send-email-chunfeng.yun@mediatek.com>
-         <1521007356-12306-2-git-send-email-chunfeng.yun@mediatek.com>
-         <20180314061612.GA17263@kroah.com>
+From: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: thermal: add binding for MT7622 SoC
+Date: Wed, 14 Mar 2018 17:04:32 -0700
+Message-ID: <20180315000430.GA12096@localhost.localdomain>
+References: <c72262a17332a227aa2db39b682db50e2324821a.1518856935.git.sean.wang@mediatek.com>
+ <1520413941.677.0.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180314061612.GA17263@kroah.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Serge Semin <fancer.lancer@gmail.com>, Guenter Roeck <linux@roeck-us.net>, Kate Stewart <kstewart@linuxfoundation.org>, Thomas Gleixner <tglx@linutronix.de>, Alan Stern <stern@rowland.harvard.edu>, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1520413941.677.0.camel@mtkswgap22>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-03-14 at 07:16 +0100, Greg Kroah-Hartman wrote:
-> On Wed, Mar 14, 2018 at 02:02:36PM +0800, Chunfeng Yun wrote:
-> > The driver is used to support Apple carplay feature by a debugfs
-> > interface which can force the driver to send a USB Vendor Request
-> > of "Apple Device to Host Mode Switch" to switch Apple Device
-> > into host mode.
+On Wed, Mar 07, 2018 at 05:12:21PM +0800, Sean Wang wrote:
+> Hi, Rui
 > 
-> While I am all for crazy debugfs interfaces, I would _strongly_ suggest
-> not doing that here for the main API to the device.  I know Android is
-> trying to prevent any new devices from even enabling debugfs, and as the
-> file system requires root permissions by default, you are forcing any
-> user of your new api to run as root, which is not a good idea either.
+> just a gentle ping to the both patches
 > 
-> Given that all you are doing here is a single usb control message, why
-> does this even need to be a kernel driver at all?  Can't you do the same
-> thing from userspace with a simple libusb/usbfs program?  Or even a
-> simple script?
-Ok, I'll abandon this patch, and do it by libusb
 
-Thanks a lot
-
-> 
-> thanks,
-> 
-> greg k-h
+Applied both.
