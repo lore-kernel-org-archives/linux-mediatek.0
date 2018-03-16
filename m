@@ -1,33 +1,27 @@
 From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v3 01/15] dt-bindings: clock: mediatek: add missing required
- #reset-cells
-Date: Fri, 16 Mar 2018 13:36:58 -0700
-Message-ID: <152123261872.225550.10226809804986023416@swboyd.mtv.corp.google.com>
-References: <cover.1518895232.git.sean.wang@mediatek.com>
- <7365f2286ff2cebcfb590715cb4a15dedd089046.1518895232.git.sean.wang@mediatek.com>
+Subject: Re: [PATCH 0/7] clk: add helper functions for managing clk_onecell_data
+Date: Fri, 16 Mar 2018 15:29:13 -0700
+Message-ID: <152123935331.242365.4716792321487612827@swboyd.mtv.corp.google.com>
+References: <1515112695-3160-1-git-send-email-david@lechnology.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <7365f2286ff2cebcfb590715cb4a15dedd089046.1518895232.git.sean.wang@mediatek.com>
+In-Reply-To: <1515112695-3160-1-git-send-email-david@lechnology.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, mark.rutland@arm.com, matthias.bgg@gmail.com, robh+dt@kernel.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org
+To: linux-clk@vger.kernel.org
+Cc: David Lechner <david@lechnology.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, =?utf-8?q?Emilio_L=C3=B3pez?= <emilio@elopez.com.ar>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting sean.wang@mediatek.com (2018-02-17 11:54:36)
-> From: Sean Wang <sean.wang@mediatek.com>
+Quoting David Lechner (2018-01-04 16:38:05)
+> I am writing some clock drivers that use struct clk_onecell_data a few
+> times, so I decided to write a helper function to allocate the memory
+> since it is a two step process and can be tedious. Then I noticed that
+> mediatek already had such a helper function, so I have moved that to the
+> clk core and made use of it in other drivers where possible.
 > 
-> All ethsys, pciesys and ssusbsys internally include reset controller, so
-> explicitly add back these missing cell definitions to related bindings
-> and examples.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Cc: Rob Herring <robh@kernel.org>
-> Cc: Michael Turquette <mturquette@baylibre.com>
-> Cc: Stephen Boyd <sboyd@codeaurora.org>
-> Cc: linux-clk@vger.kernel.org
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> ---
 
-Acked-by: Stephen Boyd <sboyd@kernel.org>
+We're actively trying to discourage driver authors from adding more
+clk_onecell_data and pushing them to register clks and providers with
+the clk_hw structures. So thanks for doing the consolidation work, but
+no thanks. We can wait for the conversion to hw pointers instead.
