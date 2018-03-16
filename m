@@ -1,150 +1,69 @@
 From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH v5 1/2] PCI: mediatek: Clear IRQ status after IRQ
- dispatched to avoid reentry
-Date: Fri, 16 Mar 2018 11:22:16 +0000
-Message-ID: <20180316112216.GA24325@e107981-ln.cambridge.arm.com>
+Subject: Re: [PATCH v5 2/2] PCI: mediatek: Set up class type and vendor ID
+ for MT7622
+Date: Fri, 16 Mar 2018 12:13:50 +0000
+Message-ID: <20180316121350.GB24325@e107981-ln.cambridge.arm.com>
 References: <1514336394-17747-1-git-send-email-honghui.zhang@mediatek.com>
- <1514336394-17747-2-git-send-email-honghui.zhang@mediatek.com>
- <20180104184040.GE12239@red-moon>
- <88c84a3e-17ea-08f2-e5fc-4799b41de267@arm.com>
- <1515153107.25872.57.camel@mhfsdcap03>
+ <1514336394-17747-3-git-send-email-honghui.zhang@mediatek.com>
+ <20171227184542.GA79892@bhelgaas-glaptop.roam.corp.google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1515153107.25872.57.camel@mhfsdcap03>
+In-Reply-To: <20171227184542.GA79892@bhelgaas-glaptop.roam.corp.google.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Honghui Zhang <honghui.zhang@mediatek.com>
-Cc: Marc Zyngier <marc.zyngier@arm.com>, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: honghui.zhang@mediatek.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jan 05, 2018 at 07:51:47PM +0800, Honghui Zhang wrote:
-> On Thu, 2018-01-04 at 19:04 +0000, Marc Zyngier wrote:
-> > On 04/01/18 18:40, Lorenzo Pieralisi wrote:
-> > > [+Marc]
-> > > 
-> > > On Wed, Dec 27, 2017 at 08:59:53AM +0800, honghui.zhang@mediatek.com wrote:
-> > >> From: Honghui Zhang <honghui.zhang@mediatek.com>
-> > >>
-> > >> There maybe a same IRQ reentry scenario after IRQ received in current
-> > >> IRQ handle flow:
-> > >> 	EP device		PCIe host driver	EP driver
-> > >> 1. issue an IRQ
-> > >> 			2. received IRQ
-> > >> 			3. clear IRQ status
-> > >> 			4. dispatch IRQ
-> > >> 						5. clear IRQ source
-> > >> The IRQ status was not successfully cleared at step 2 since the IRQ
-> > >> source was not cleared yet. So the PCIe host driver may receive the
-> > >> same IRQ after step 5. Then there's an IRQ reentry occurred.
-> > >> Even worse, if the reentry IRQ was not an IRQ that EP driver expected,
-> > >> it may not handle the IRQ. Then we may run into the infinite loop from
-> > >> step 2 to step 4.
-> > >> Clear the IRQ status after IRQ have been dispatched to avoid the IRQ
-> > >> reentry.
-> > >> This patch also fix another INTx IRQ issue by initialize the iterate
-> > >> before the loop. If an INTx IRQ re-occurred while we are dispatching
-> > >> the INTx IRQ, then iterate may start from PCI_NUM_INTX + INTX_SHIFT
-> > >> instead of INTX_SHIFT for the second time entering the
-> > >> for_each_set_bit_from() loop.
-> > > 
-> > > This looks like two different issues that should be fixed with two
-> > > patches.
-> 
-> Ok, I split this into two patches and figure out a more reasonable
-> approach by using irq_chip solution.
+On Wed, Dec 27, 2017 at 12:45:42PM -0600, Bjorn Helgaas wrote:
 
-For the time being, I will mark this patch as "Changes Requested"
-waiting for a new version.
+[...]
+
+> > +		/* Set up class code for MT7622 */
+> > +		val = PCI_CLASS_BRIDGE_PCI << 16;
+> > +		writel(val, port->base + PCIE_CONF_CLASS);
+> 
+> 1) Your comments mention MT7622 specifically, but this code is run for
+> both mt2712-pcie and mt7622-pcie.  If this code is safe and necessary
+> for both mt2712-pcie and mt7622-pcie, please remove the mention of
+> MT7622.
+> 
+> 2) The first comment mentions both "vendor ID and device ID" but you
+> don't write the device ID.  Since this code applies to both
+> mt2712-pcie and mt7622-pcie, my guess is that you don't *want* to
+> write the device ID.  If that's the case, please fix the comment.
+> 
+> 3) If you only need to set the vendor ID, you're performing a 32-bit
+> write (writel()) to update a 16-bit value.  Please use writew()
+> instead.
+> 
+> 4) If you only need to set the vendor ID, please use a definition like
+> "PCIE_CONF_VENDOR_ID" instead of the ambiguous "PCIE_CONF_ID".
+> 
+> 5) If you only need to set the vendor ID, please update the changelog
+> to mention "vendor ID" specifically instead of the ambiguous "IDs".
+> 
+> 6) Please add a space before the closing "*/" of the first comment.
+> 
+> 7) PCI_CLASS_BRIDGE_PCI is for a PCI-to-PCI bridge, i.e., one that has
+> PCI on both the primary (upstream) side and the secondary (downstream)
+> side.  That kind of bridge has a type 1 config header (see
+> PCI_HEADER_TYPE) and the PCI_PRIMARY_BUS and PCI_SECONDARY_BUS
+> registers tell us the bus number of the primary and secondary sides.
+> 
+> I don't believe this device is a PCI-to-PCI bridge.  I think it's a
+> *host* bridge that has some non-PCI interface on the upstream side and
+> should have a type 0 config header.  If that's the case you should use
+> PCI_CLASS_BRIDGE_HOST instead.
+
+I think these registers actually programme the root port register space
+in the RC (whether real or fake - that depends on the RC design) so
+the class is PCI_CLASS_BRIDGE_PCI, that's what most of host bridge
+drivers in drivers/pci/host do.
+
+I would like to get to the bottom of this since it is indeed misleading
+(and I do not have HW to test it myself to check my understanding).
 
 Thanks,
 Lorenzo
-
-> 
-> > > 
-> > >> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> > >> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
-> > >> ---
-> > >>  drivers/pci/host/pcie-mediatek.c | 11 ++++++-----
-> > >>  1 file changed, 6 insertions(+), 5 deletions(-)
-> > > 
-> > > For the sake of uniformity, I first want to understand why this
-> > > driver does not call:
-> > > 
-> > > chained_irq_enter/exit()
-> > > 
-> > > in the primary handler (mtk_pcie_intr_handler()).
-> > > 
-> > > With the GIC as a primary interrupt controller we have not
-> > > even figured out how current code can actually work without
-> > > calling the chained_* API.
-> > > 
-> > > I want to come up with a consistent handling of IRQ domains for
-> > > all host bridges and any discrepancy should be explained.
-> > 
-> > That's because this driver is a huge hack, see below:
-> > 
-> > > 
-> > >> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-> > >> index db93efd..fc29a9a 100644
-> > >> --- a/drivers/pci/host/pcie-mediatek.c
-> > >> +++ b/drivers/pci/host/pcie-mediatek.c
-> > >> @@ -601,15 +601,16 @@ static irqreturn_t mtk_pcie_intr_handler(int irq, void *data)
-> > 
-> > This function is not a chained irqchip, but an interrupt handler...
-> > 
-> > >>  	struct mtk_pcie_port *port = (struct mtk_pcie_port *)data;
-> > >>  	unsigned long status;
-> > >>  	u32 virq;
-> > >> -	u32 bit = INTX_SHIFT;
-> > >> +	u32 bit;
-> > >>  
-> > >>  	while ((status = readl(port->base + PCIE_INT_STATUS)) & INTX_MASK) {
-> > >> +		bit = INTX_SHIFT;
-> > >>  		for_each_set_bit_from(bit, &status, PCI_NUM_INTX + INTX_SHIFT) {
-> > >> -			/* Clear the INTx */
-> > >> -			writel(1 << bit, port->base + PCIE_INT_STATUS);
-> > >>  			virq = irq_find_mapping(port->irq_domain,
-> > >>  						bit - INTX_SHIFT);
-> > >>  			generic_handle_irq(virq);
-> > 
-> > and nonetheless, this calls into generic_handle_irq(). That's a complete
-> > violation of the interrupt layering. Maybe there is a good reason for
-> > it, but I'd like to know which one.
-> > 
-> > Which means that all of the ack/mask has to be done outside of the
-> > irqchip framework too... Disgusting.
-> > 
-> > >> +			/* Clear the INTx */
-> > >> +			writel(1 << bit, port->base + PCIE_INT_STATUS);
-> > > 
-> > > I think that these masking/acking should actually be done through
-> > > the irq_chip hooks (see for instance pci-ftpci100.c) - that would
-> > > make this kind of bugs much easier to prevent (because the IRQ
-> > > layer does the sequencing for you).
-> > 
-> > +1.
-> > 
-> 
-> Thanks for your advice, I need to do some homework to have a better
-> understanding of the irq_chip approach.
-> 
-> > > Marc (CC'ed) has a more comprehensive view on this than me - I would
-> > > like to get to a point where all host bridges uses a consistent
-> > > approach for chained IRQ handling and I hope this bug fix can be
-> > > a starting point.
-> > 
-> > +1 again. We definitely need to come up with some form of common
-> > approach for all these host drivers, and maybe turn that into a library...
-> > 
-> 
-> Well, this is beyond my knowledge now, I guess I can figure out how to
-> using irq_chip for the first step, then I may following this "common
-> approach" after we have a solution for that?
-> 
-> thanks.
-> > Thanks,
-> > 
-> > 	M.
-> 
-> 
