@@ -1,37 +1,108 @@
-From: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH -next] ASoC: mediatek: mt2701: drop
- unnessary snd_soc_unregister_component()
-Date: Fri, 16 Mar 2018 11:47:12 +0300
-Message-ID: <20180316084712.hh4ll7hfsncqqsos@mwanda>
-References: <1521185516-164333-1-git-send-email-weiyongjun1@huawei.com>
+From: Peter Zijlstra <peterz@infradead.org>
+Subject: Re: update vruntime incorrectly When use rt_mutex
+Date: Fri, 16 Mar 2018 10:51:13 +0100
+Message-ID: <20180316095113.GA4064@hirez.programming.kicks-ass.net>
+References: <1521099370.7712.4.camel@mtkswgap22>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <1521185516-164333-1-git-send-email-weiyongjun1@huawei.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Wei Yongjun <weiyongjun1@huawei.com>
-Cc: alsa-devel@alsa-project.org, Ryder Lee <ryder.lee@mediatek.com>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1521099370.7712.4.camel@mtkswgap22>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Kathleen Chang <yt.chang@mediatek.com>
+Cc: wsd_upstream@mediatek.com, Matt Fleming <matt@codeblueprint.co.uk>, linux-kernel@vger.kernel.org, mingo@redhat.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, Jonathan.JMChen@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Mar 16, 2018 at 07:31:56AM +0000, Wei Yongjun wrote:
-> It's not necessary to unregister a component registered
-> with devm_snd_soc_register_component().
+On Thu, Mar 15, 2018 at 03:36:10PM +0800, Kathleen Chang wrote:
+> hi,  
 > 
-> Fixes: f1b5bf07365d ("ASoC: mt2701/mt8173: replace platform to componen")
-> Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
+> We found the vruntime might update incorrectly when use rt_mutex.
 
+That's nice, on what kernel?
 
-This fixes a double free on unload, right?
+Also, your email is very hard to make sense of.
 
-regards,
-dan carpenter
+> <<abnormal case>>
+> When the Task is waking, update vruntime incorrectly.
+> 1.  When there is a CFS task (A) hold  rt_mutex_lock and the state is
+> TASK_WAKING (on_rq=0),  a RT task (B) want to hold this rt_mutex_lock.
+> Update vruntime incorrectly.
+> 
+>   RT task (B)
+>      rt_mutex_setprio  (cfs->RT)  ->  Task is waking , and update
+> vruntime
+> 
+>        queued = task_on_rq_queued(p); // task is waking, queued=0
+>        running = task_current(rq, p);
+>        if (queued)      /*   don't update vruntime here!   */
+>                 dequeue_task(rq, p, queue_flag);                      
+>        if (running)
+>                 put_prev_task(rq, p);
+>        
+>        check_class_changed(rq, p, prev_class, oldprio);   -> 
+>                 switched_from_fair -> 
+>                       detach_task_cfs_rq  
+>           ( due to task is waking, and bypass
+> vruntime-=cfs_rq.min_vruntime) 
+> 
+> static void detach_task_cfs_rq(struct task_struct *p)
+> {
+>         struct sched_entity *se = &p->se;
+>         struct cfs_rq *cfs_rq = cfs_rq_of(se);
+> 
+>         if (!vruntime_normalized(p)) {   // return 1, then p->state is
+> TASK_WAKING
+>                 /*
+>                  * Fix up our vruntime so that the current sleep doesn't
+>                  * cause 'unlimited' sleep bonus.
+>                  */
+>                 place_entity(cfs_rq, se, 0);
+>                 check_vruntime(8, se, cfs_rq->min_vruntime);
+>                 se->vruntime -= cfs_rq->min_vruntime;
+
+So here we subtract min_vruntime,
+
+>                 se->normalized = true;
+
+this doesn't exist.. which makes me wonder what you're looking at,
+
+>         }
+> 
+>         detach_entity_cfs_rq(se);
+> }
+> 
+> // when p->state is TASK_WAKING, the task's vruntime is normalized 
+> static inline bool vruntime_normalized(struct task_struct *p)
+> {
+> .....
+>         if (!se->sum_exec_runtime || p->state == TASK_WAKING)
+>                 return true;
+> 
+> }
+> 
+> 2.  When the task (A) which holds the rt_muex_lock unlock the
+> rt_mutex_lock.
+>      Task (A) must be on_rq=1 
+> 
+>     rt_mutex_setprio (RT->CFS)     
+>        if (queued)
+>                 enqueue_task(rq, p, queue_flag);    );     
+>                     /* vruntime += cfs_rq.min_vruntime */
+
+And here we're adding min_vruntime.
+
+>        if (running)
+>                 set_curr_task(rq, p);
+> 
+>     that result in vruntime accumulates
+
+So what exactly is the problem?
