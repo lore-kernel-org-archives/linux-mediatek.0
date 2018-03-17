@@ -1,27 +1,84 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH 0/7] clk: add helper functions for managing clk_onecell_data
-Date: Fri, 16 Mar 2018 15:29:13 -0700
-Message-ID: <152123935331.242365.4716792321487612827@swboyd.mtv.corp.google.com>
-References: <1515112695-3160-1-git-send-email-david@lechnology.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [PATCH v3 1/7] watchdog: sama5d4: make use of timeout-secs
+ provided in devicetree
+Date: Fri, 16 Mar 2018 18:56:27 -0700
+Message-ID: <f3d913af-a396-ccdf-105f-c4e64397cbff@roeck-us.net>
+References: <20180211200847.25000-1-marcus.folkesson@gmail.com>
+ <20180316133703.GA31029@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1515112695-3160-1-git-send-email-david@lechnology.com>
+In-Reply-To: <20180316133703.GA31029@gmail.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-clk@vger.kernel.org
-Cc: David Lechner <david@lechnology.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, =?utf-8?q?Emilio_L=C3=B3pez?= <emilio@elopez.com.ar>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Marcus Folkesson <marcus.folkesson@gmail.com>, Wim Van Sebroeck <wim@iguana.be>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Barry Song <baohua@kernel.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Linus Walleij <linus.walleij@linaro.org>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Cc: linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting David Lechner (2018-01-04 16:38:05)
-> I am writing some clock drivers that use struct clk_onecell_data a few
-> times, so I decided to write a helper function to allocate the memory
-> since it is a two step process and can be tedious. Then I noticed that
-> mediatek already had such a helper function, so I have moved that to the
-> clk core and made use of it in other drivers where possible.
+On 03/16/2018 06:37 AM, Marcus Folkesson wrote:
+> Hi,
+> 
+> Am I supposed to do something more to make this patchset picked up?
 > 
 
-We're actively trying to discourage driver authors from adding more
-clk_onecell_data and pushing them to register clks and providers with
-the clk_hw structures. So thanks for doing the consolidation work, but
-no thanks. We can wait for the conversion to hw pointers instead.
+Did you check linux-next ?
+
+Guenter
+
+> Thanks,
+> Marcus Folkesson
+> 
+> On Sun, Feb 11, 2018 at 09:08:41PM +0100, Marcus Folkesson wrote:
+>> watchdog_init_timeout() will allways pick timeout_param since it
+>> defaults to a valid timeout.
+>>
+>> Following best practice described in
+>> Documentation/watchdog/watchdog-kernel-api.txt to make use of
+>> the parameter logic.
+>>
+>> Signed-off-by: Marcus Folkesson <marcus.folkesson@gmail.com>
+>> ---
+>>
+>> Notes:
+>>      v3:
+>>      	- Use wdd->timeout instead of wdt_timeout when print out
+>>      	  timout in probe function.
+>>
+>>   drivers/watchdog/sama5d4_wdt.c | 6 +++---
+>>   1 file changed, 3 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/watchdog/sama5d4_wdt.c b/drivers/watchdog/sama5d4_wdt.c
+>> index 0ae947c3d7bc..255169916dbb 100644
+>> --- a/drivers/watchdog/sama5d4_wdt.c
+>> +++ b/drivers/watchdog/sama5d4_wdt.c
+>> @@ -33,7 +33,7 @@ struct sama5d4_wdt {
+>>   	unsigned long		last_ping;
+>>   };
+>>   
+>> -static int wdt_timeout = WDT_DEFAULT_TIMEOUT;
+>> +static int wdt_timeout;
+>>   static bool nowayout = WATCHDOG_NOWAYOUT;
+>>   
+>>   module_param(wdt_timeout, int, 0);
+>> @@ -212,7 +212,7 @@ static int sama5d4_wdt_probe(struct platform_device *pdev)
+>>   		return -ENOMEM;
+>>   
+>>   	wdd = &wdt->wdd;
+>> -	wdd->timeout = wdt_timeout;
+>> +	wdd->timeout = WDT_DEFAULT_TIMEOUT;
+>>   	wdd->info = &sama5d4_wdt_info;
+>>   	wdd->ops = &sama5d4_wdt_ops;
+>>   	wdd->min_timeout = MIN_WDT_TIMEOUT;
+>> @@ -273,7 +273,7 @@ static int sama5d4_wdt_probe(struct platform_device *pdev)
+>>   	platform_set_drvdata(pdev, wdt);
+>>   
+>>   	dev_info(&pdev->dev, "initialized (timeout = %d sec, nowayout = %d)\n",
+>> -		 wdt_timeout, nowayout);
+>> +		 wdd->timeout, nowayout);
+>>   
+>>   	return 0;
+>>   }
+>> -- 
+>> 2.15.1
+>>
