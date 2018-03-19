@@ -1,86 +1,52 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v1 02/19] dt-bindings: cpufreq: mediatek: use - instead
- of _ in examples
-Date: Mon, 19 Mar 2018 10:51:01 +0800
-Message-ID: <1521427861.13211.8.camel@mtkswgap22>
-References: <cover.1519378871.git.sean.wang@mediatek.com>
-         <fd1fc4c6760ab8fcbf7518df1cecf3837ab18d2c.1519378871.git.sean.wang@mediatek.com>
-         <20180226041336.GJ26947@vireshk-i7>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v2 3/3] dt-bindings: phy-mtk-tphy: add properties for U2
+ slew rate calibrate
+Date: Mon, 19 Mar 2018 11:21:40 +0800
+Message-ID: <1521429700.3717.31.camel@mhfsdcap03>
+References: <c9679bc6e969ebf0f97a01c6d1aff3bbc0e8e4f7.1520832210.git.chunfeng.yun@mediatek.com>
+         <94a7d3b1240297cd0cac82df52954d0a53d50d36.1520832210.git.chunfeng.yun@mediatek.com>
+         <20180318124838.ruakamqywz4jd6jz@rob-hp-laptop>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180226041336.GJ26947@vireshk-i7>
+In-Reply-To: <20180318124838.ruakamqywz4jd6jz@rob-hp-laptop>
 Sender: linux-kernel-owner@vger.kernel.org
-To: matthias.bgg@gmail.com
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-pm@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ryder Lee <ryder.lee@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-Hi, Matthias
-
-I'm worried you missed the patch which already got both tags Reviewed-by
-from Rob and Acked-by: Viresh and thus I thought it
-should be ready for your tree.
-
-For the other patches in the same series, I will have v2 to refine them
-according to these suggestions and comments in v1 and let them easy to
-review.
-
-Really thanks for your effort!
-	
-	Sean
-
-
-On Mon, 2018-02-26 at 09:43 +0530, Viresh Kumar wrote:
-> On 23-02-18, 18:16, sean.wang@mediatek.com wrote:
-> > From: Sean Wang <sean.wang@mediatek.com>
+On Sun, 2018-03-18 at 07:48 -0500, Rob Herring wrote:
+> On Mon, Mar 12, 2018 at 01:25:40PM +0800, Chunfeng Yun wrote:
+> > Add two properties of ref_clk and coefficient used by U2 slew rate
+> > calibrate which may vary on different SoCs
 > > 
-> > It should be good that no use "_" is in examples. Consequently,
-> > those nodes in certain files which have an inappropriate name containing
-> > "_" are all being replaced with "-".
-> > 
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>
-> > Cc: Viresh Kumar <viresh.kumar@linaro.org>
-> > Cc: Rob Herring <robh+dt@kernel.org>
-> > Cc: Mark Rutland <mark.rutland@arm.com>
-> > Cc: linux-pm@vger.kernel.org
-> > Cc: devicetree@vger.kernel.org
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > > ---
-> >  Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt | 6 +++---
-> >  1 file changed, 3 insertions(+), 3 deletions(-)
+> >  Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt | 4 ++++
+> >  1 file changed, 4 insertions(+)
 > > 
-> > diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
-> > index d36f07e..38cfbb5 100644
-> > --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
-> > +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
-> > @@ -26,7 +26,7 @@ Optional properties:
-> >  
-> >  Example 1 (MT7623 SoC):
-> >  
-> > -	cpu_opp_table: opp_table {
-> > +	cpu_opp_table: opp-table {
-> >  		compatible = "operating-points-v2";
-> >  		opp-shared;
-> >  
-> > @@ -86,7 +86,7 @@ Example 1 (MT7623 SoC):
-> >  	};
-> >  
-> >  Example 2 (MT8173 SoC):
-> > -	cpu_opp_table_a: opp_table_a {
-> > +	cpu_opp_table_a: opp-table-a {
-> >  		compatible = "operating-points-v2";
-> >  		opp-shared;
-> >  
-> > @@ -131,7 +131,7 @@ Example 2 (MT8173 SoC):
-> >  		};
-> >  	};
-> >  
-> > -	cpu_opp_table_b: opp_table_b {
-> > +	cpu_opp_table_b: opp-table-b {
-> >  		compatible = "operating-points-v2";
-> >  		opp-shared;
+> > diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+> > index 41e09ed..0d34b2b 100644
+> > --- a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+> > +++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+> > @@ -27,6 +27,10 @@ Optional properties (controller (parent) node):
+> >   - reg		: offset and length of register shared by multiple ports,
+> >  		  exclude port's private register. It is needed on mt2701
+> >  		  and mt8173, but not on mt2712.
+> > + - mediatek,src-ref-clk-mhz	: frequency of reference clock for slew rate
+> > +		  calibrate
+> > + - mediatek,src-coef	: coefficient for slew rate calibrate, depends on
+> > +		  SoC process
 > 
-> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+> What are valid values? This is one cell?
+Yes, one cell, integer type. If need, I'll send a new patch
+
+Thanks
 > 
+> >  
+> >  Required properties (port (child) node):
+> >  - reg		: address and length of the register set for the port.
+> > -- 
+> > 1.9.1
+> > 
