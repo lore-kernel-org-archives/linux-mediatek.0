@@ -1,86 +1,102 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [GIT PUL] ARM: mediatek: dts64 updates for v4.16-next
-Date: Mon, 19 Mar 2018 11:20:22 +0100
-Message-ID: <e006b345-5711-3c1b-cd06-d75d87beefef@gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v1 02/19] dt-bindings: cpufreq: mediatek: use - instead of
+ _ in examples
+Date: Mon, 19 Mar 2018 11:35:04 +0100
+Message-ID: <1eafba31-0d0b-89d9-fb66-c4ba5ca6b56f@gmail.com>
+References: <cover.1519378871.git.sean.wang@mediatek.com>
+ <fd1fc4c6760ab8fcbf7518df1cecf3837ab18d2c.1519378871.git.sean.wang@mediatek.com>
+ <20180226041336.GJ26947@vireshk-i7> <1521427861.13211.8.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1521427861.13211.8.camel@mtkswgap22>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-pm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Arnd and Olof,
+Hi Sean,
 
-Please pull the following commits.
+On 03/19/2018 03:51 AM, Sean Wang wrote:
+> 
+> Hi, Matthias
+> 
+> I'm worried you missed the patch which already got both tags Reviewed-by
+> from Rob and Acked-by: Viresh and thus I thought it
+> should be ready for your tree.
+> 
 
-Thanks a lot,
+Yes, sorry I missed this one. Fortunately it is not critical, can you please add
+it to v2.
+
+I suppose you realized that I didn't take any from 12/19 onwards, especially 14,
+15 and 17, because they have many conflicts with previous patches in the series.
+
+Sorry for the inconvenience.
 Matthias
 
----
-
-The following changes since commit 7928b2cbe55b2a410a0f5c1f154610059c57b1b2:
-
-  Linux 4.16-rc1 (2018-02-11 15:04:29 -0800)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-tags/v4.16-next-dts64
-
-for you to fetch changes up to 5f59955299a13196233bbc0fb72f8dd5b5ba22a1:
-
-  arm64: dts: mt2712: Add auxadc device node. (2018-03-19 02:49:59 +0100)
-
-----------------------------------------------------------------
-- mt2712e add auxadc devcie
-
-mt7622:
-- fix clock bindings description
-- add nodes for mmc, usb, SATA, PCI, ethernet, cpufreq, PMIC mt6380,
-pinctrl, scpsys and clock devices
-
-----------------------------------------------------------------
-Chunfeng Yun (1):
-      arm64: dts: mt7622: add usb device nodes
-
-Ryder Lee (2):
-      arm64: dts: mt7622: add PCIe device nodes
-      arm64: dts: mt7622: add SATA device nodes
-
-Sean Wang (11):
-      arm64: dts: mt7622: add clock controller device nodes
-      arm64: dts: mt7622: add power domain controller device nodes
-      arm64: dts: mt7622: add pinctrl related device nodes
-      arm64: dts: mt7622: add PMIC MT6380 related nodes
-      arm64: dts: mt7622: add cpufreq related device nodes
-      arm64: dts: mt7622: turn uart0 clock to real ones
-      arm64: dts: mt7622: add SoC and peripheral related device nodes
-      arm64: dts: mt7622: add flash related device nodes
-      arm64: dts: mt7622: add ethernet device nodes
-      arm64: dts: mt7622: add mmc related device nodes
-      dt-bindings: clock: mediatek: add missing required #reset-cells
-
-Zhiyong Tao (1):
-      arm64: dts: mt2712: Add auxadc device node.
-
- .../bindings/arm/mediatek/mediatek,ethsys.txt      |   1 +
- .../bindings/arm/mediatek/mediatek,pciesys.txt     |   2 +
- .../bindings/arm/mediatek/mediatek,ssusbsys.txt    |   2 +
- arch/arm64/boot/dts/mediatek/mt2712-evb.dts        |   4 +
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi          |   9 +
- arch/arm64/boot/dts/mediatek/mt6380.dtsi           |  86 +++
- arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts       | 469 ++++++++++++++
- arch/arm64/boot/dts/mediatek/mt7622.dtsi           | 675 ++++++++++++++++++++-
- 8 files changed, 1243 insertions(+), 5 deletions(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt6380.dtsi
+> For the other patches in the same series, I will have v2 to refine them
+> according to these suggestions and comments in v1 and let them easy to
+> review.
+> 
+> Really thanks for your effort!
+> 	
+> 	Sean
+> 
+> 
+> On Mon, 2018-02-26 at 09:43 +0530, Viresh Kumar wrote:
+>> On 23-02-18, 18:16, sean.wang@mediatek.com wrote:
+>>> From: Sean Wang <sean.wang@mediatek.com>
+>>>
+>>> It should be good that no use "_" is in examples. Consequently,
+>>> those nodes in certain files which have an inappropriate name containing
+>>> "_" are all being replaced with "-".
+>>>
+>>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>>> Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+>>> Cc: Viresh Kumar <viresh.kumar@linaro.org>
+>>> Cc: Rob Herring <robh+dt@kernel.org>
+>>> Cc: Mark Rutland <mark.rutland@arm.com>
+>>> Cc: linux-pm@vger.kernel.org
+>>> Cc: devicetree@vger.kernel.org
+>>> ---
+>>>  Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt | 6 +++---
+>>>  1 file changed, 3 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+>>> index d36f07e..38cfbb5 100644
+>>> --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+>>> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+>>> @@ -26,7 +26,7 @@ Optional properties:
+>>>  
+>>>  Example 1 (MT7623 SoC):
+>>>  
+>>> -	cpu_opp_table: opp_table {
+>>> +	cpu_opp_table: opp-table {
+>>>  		compatible = "operating-points-v2";
+>>>  		opp-shared;
+>>>  
+>>> @@ -86,7 +86,7 @@ Example 1 (MT7623 SoC):
+>>>  	};
+>>>  
+>>>  Example 2 (MT8173 SoC):
+>>> -	cpu_opp_table_a: opp_table_a {
+>>> +	cpu_opp_table_a: opp-table-a {
+>>>  		compatible = "operating-points-v2";
+>>>  		opp-shared;
+>>>  
+>>> @@ -131,7 +131,7 @@ Example 2 (MT8173 SoC):
+>>>  		};
+>>>  	};
+>>>  
+>>> -	cpu_opp_table_b: opp_table_b {
+>>> +	cpu_opp_table_b: opp-table-b {
+>>>  		compatible = "operating-points-v2";
+>>>  		opp-shared;
+>>
+>> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+>>
+> 
+> 
