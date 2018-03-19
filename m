@@ -1,24 +1,23 @@
 From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v4 5/6] dt-bindings: clock: mediatek: add audsys support for
- MT2701
-Date: Mon, 19 Mar 2018 13:41:44 -0700
-Message-ID: <152149210481.242365.6023758294737799949@swboyd.mtv.corp.google.com>
-References: <cover.1520327262.git.ryder.lee@mediatek.com>
- <9ff8a4ae99e50bc5f9f1ae6c7a454cb80451fd5b.1520327262.git.ryder.lee@mediatek.com>
+Subject: Re: [PATCH v2 3/5] dt-bindings: clock: add clocks for MT2712
+Date: Mon, 19 Mar 2018 14:38:21 -0700
+Message-ID: <152149550104.242365.2294976320013460839@swboyd.mtv.corp.google.com>
+References: <20180312070342.4335-1-weiyi.lu@mediatek.com>
+ <20180312070342.4335-5-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9ff8a4ae99e50bc5f9f1ae6c7a454cb80451fd5b.1520327262.git.ryder.lee@mediatek.com>
+In-Reply-To: <20180312070342.4335-5-weiyi.lu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Garlic Tseng <garlic.tseng@mediatek.com>, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Ryder Lee (2018-03-06 01:09:30)
-> This patch adds a compatible string for MT2701.
+Quoting Weiyi Lu (2018-03-12 00:03:40)
+> add new clocks according to ECO design change
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 > ---
 
 Applied to clk-next
