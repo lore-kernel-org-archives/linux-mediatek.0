@@ -1,57 +1,86 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 3/3] arm64: dts: mt2712: Add auxadc device node.
-Date: Mon, 19 Mar 2018 02:51:58 +0100
-Message-ID: <f1c8f79f-8536-f3cc-22be-31466a1390ad@gmail.com>
-References: <1505957212-13402-1-git-send-email-zhiyong.tao@mediatek.com>
- <1505957212-13402-4-git-send-email-zhiyong.tao@mediatek.com>
- <20170924164705.78cbb856@archlinux>
- <0e1bac27-18ca-121c-f1d7-8063af177a8b@gmail.com>
- <6680d15a-625a-cc16-830f-9831f5f52ad3@gmail.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v1 02/19] dt-bindings: cpufreq: mediatek: use - instead
+ of _ in examples
+Date: Mon, 19 Mar 2018 10:51:01 +0800
+Message-ID: <1521427861.13211.8.camel@mtkswgap22>
+References: <cover.1519378871.git.sean.wang@mediatek.com>
+         <fd1fc4c6760ab8fcbf7518df1cecf3837ab18d2c.1519378871.git.sean.wang@mediatek.com>
+         <20180226041336.GJ26947@vireshk-i7>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6680d15a-625a-cc16-830f-9831f5f52ad3@gmail.com>
-Content-Language: en-US
+In-Reply-To: <20180226041336.GJ26947@vireshk-i7>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jonathan Cameron <jic23@kernel.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>
-Cc: robh+dt@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, srv_heupstream@mediatek.com, liguo.zhang@mediatek.com, yingjoe.chen@mediatek.com, sean.wang@mediatek.com, yt.shen@mediatek.com, s.hauer@pengutronix.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-iio@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: matthias.bgg@gmail.com
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-pm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
+Hi, Matthias
 
-On 10/16/2017 05:09 PM, Matthias Brugger wrote:
-> 
-> 
-> On 10/13/2017 05:11 PM, Matthias Brugger wrote:
->>
->>
->> On 09/24/2017 05:47 PM, Jonathan Cameron wrote:
->>> On Thu, 21 Sep 2017 09:26:52 +0800
->>> Zhiyong Tao <zhiyong.tao@mediatek.com> wrote:
->>>
->>>> Add auxadc device node for MT2712.
->>>>
->>>> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
->>>
->>> I've applied the IIO patches to make this work, so assume this will get
->>> picked up in due course.
->>>
->>
->> pushed now to v4.14-next/dts64
->> Thanks.
->>
-> 
-> I realized that this needs the mt2712 clock patches to actually work.
-> Dropped for now. Please resubmit as soon as mt2712 clock patches got [1]
-> accepted upstream.
-> 
+I'm worried you missed the patch which already got both tags Reviewed-by
+from Rob and Acked-by: Viresh and thus I thought it
+should be ready for your tree.
 
-I think you actually never resubmitted. Anyway I pushed it now to v4.16-next/dts64
+For the other patches in the same series, I will have v2 to refine them
+according to these suggestions and comments in v1 and let them easy to
+review.
 
-Thanks.
+Really thanks for your effort!
+	
+	Sean
 
-> Thanks,
-> Matthias
+
+On Mon, 2018-02-26 at 09:43 +0530, Viresh Kumar wrote:
+> On 23-02-18, 18:16, sean.wang@mediatek.com wrote:
+> > From: Sean Wang <sean.wang@mediatek.com>
+> > 
+> > It should be good that no use "_" is in examples. Consequently,
+> > those nodes in certain files which have an inappropriate name containing
+> > "_" are all being replaced with "-".
+> > 
+> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+> > Cc: Viresh Kumar <viresh.kumar@linaro.org>
+> > Cc: Rob Herring <robh+dt@kernel.org>
+> > Cc: Mark Rutland <mark.rutland@arm.com>
+> > Cc: linux-pm@vger.kernel.org
+> > Cc: devicetree@vger.kernel.org
+> > ---
+> >  Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt | 6 +++---
+> >  1 file changed, 3 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> > index d36f07e..38cfbb5 100644
+> > --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> > +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> > @@ -26,7 +26,7 @@ Optional properties:
+> >  
+> >  Example 1 (MT7623 SoC):
+> >  
+> > -	cpu_opp_table: opp_table {
+> > +	cpu_opp_table: opp-table {
+> >  		compatible = "operating-points-v2";
+> >  		opp-shared;
+> >  
+> > @@ -86,7 +86,7 @@ Example 1 (MT7623 SoC):
+> >  	};
+> >  
+> >  Example 2 (MT8173 SoC):
+> > -	cpu_opp_table_a: opp_table_a {
+> > +	cpu_opp_table_a: opp-table-a {
+> >  		compatible = "operating-points-v2";
+> >  		opp-shared;
+> >  
+> > @@ -131,7 +131,7 @@ Example 2 (MT8173 SoC):
+> >  		};
+> >  	};
+> >  
+> > -	cpu_opp_table_b: opp_table_b {
+> > +	cpu_opp_table_b: opp-table-b {
+> >  		compatible = "operating-points-v2";
+> >  		opp-shared;
 > 
-> [1] https://lkml.org/lkml/2017/9/19/9
+> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+> 
