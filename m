@@ -1,74 +1,40 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH -next] phy: phy-mtk-tphy: fix missing
- clk_disable_unprepare() on error in mtk_phy_init()
-Date: Wed, 21 Mar 2018 11:04:13 +0800
-Message-ID: <1521601453.3717.117.camel@mhfsdcap03>
-References: <1521551999-154546-1-git-send-email-weiyongjun1@huawei.com>
+From: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH] iommu/mediatek: Fix protect memory setting
+Date: Wed, 21 Mar 2018 13:18:24 +0800
+Message-ID: <1521609504.24119.5.camel@mhfsdcap03>
+References: <1521337974-22112-1-git-send-email-yong.wu@mediatek.com>
+         <20180320185716.ldxs2vvfcchznpnb@8bytes.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1521551999-154546-1-git-send-email-weiyongjun1@huawei.com>
+In-Reply-To: <20180320185716.ldxs2vvfcchznpnb@8bytes.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Wei Yongjun <weiyongjun1@huawei.com>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
+To: Joerg Roedel <joro@8bytes.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will.deacon@arm.com>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, arnd@arndb.de, honghui.zhang@mediatek.com, youlin.pei@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-03-20 at 13:19 +0000, Wei Yongjun wrote:
-> Fix the missing clk_disable_unprepare() before return
-> from mtk_phy_init() in the error handling case.
-> 
-> Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
-> ---
->  drivers/phy/mediatek/phy-mtk-tphy.c | 11 +++++++++--
->  1 file changed, 9 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-> index 38c281b..3ff9020 100644
-> --- a/drivers/phy/mediatek/phy-mtk-tphy.c
-> +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-> @@ -841,7 +841,7 @@ static int mtk_phy_init(struct phy *phy)
->  	ret = clk_prepare_enable(instance->ref_clk);
->  	if (ret) {
->  		dev_err(tphy->dev, "failed to enable ref_clk\n");
-> -		return ret;
-> +		goto disable_u3phya_ref;
-@u3phya_ref and @ref_clk clocks are mutually exclusive, that means one
-of them must be NULL; so if failed to enable @ref_clk, then @u3phya_ref
-should be NULL, and no need to disable it in fact.
-But it's also no problem to disable it.
->  	}
+Hi Joerg,
 
-
->  
->  	switch (instance->type) {
-> @@ -859,10 +859,17 @@ static int mtk_phy_init(struct phy *phy)
->  		break;
->  	default:
->  		dev_err(tphy->dev, "incompatible PHY type\n");
-> -		return -EINVAL;
-> +		ret = -EINVAL;
-> +		goto disable_ref_clk;
-mtk_phy_xlate() has already checked supported type,so usually doesn't
-comes here, otherwise there will be a serious problem about system.
-
-Anyway, it's better to disable these clocks when fail.
->  	}
->  
->  	return 0;
-> +
-> +disable_ref_clk:
-> +	clk_disable_unprepare(instance->ref_clk);
-> +disable_u3phya_ref:
-> +	clk_disable_unprepare(tphy->u3phya_ref);
-> +	return ret;
->  }
->  
->  static int mtk_phy_power_on(struct phy *phy)
+On Tue, 2018-03-20 at 13:57 -0500, Joerg Roedel wrote:
+> On Sun, Mar 18, 2018 at 09:52:54AM +0800, Yong Wu wrote:
+> > To avoid adding this complex macro or a new function, I put
+> > it in the code and backup its value in the suspend registers.
 > 
-Tested-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Acked-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Missing Signed-off-by.
 
-Thanks a lot
+Signed-off-by and Reported-by have been added above.
+
+====
+Reported-by: Honghui Zhang <honghui.zhang@mediatek.com>
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+====
+
+> 
+> > ---
+> >  drivers/iommu/mtk_iommu.c | 15 ++++++++++-----
+> >  drivers/iommu/mtk_iommu.h |  1 +
+> >  2 files changed, 11 insertions(+), 5 deletions(-)
 > 
 > 
+> Joerg
