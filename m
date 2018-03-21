@@ -1,44 +1,38 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 0/5] update Mediatek MT2712 clock and scpsys support
-Date: Wed, 21 Mar 2018 10:11:09 +0100
-Message-ID: <6c29df1f-f619-5e11-4160-b58e154f6592@gmail.com>
-References: <20180312070342.4335-1-weiyi.lu@mediatek.com>
- <1521526068.13313.8.camel@mtksdaap41>
- <152153061465.254778.3061562183948751301@swboyd.mtv.corp.google.com>
+From: Joerg Roedel <joro@8bytes.org>
+Subject: Re: [PATCH] iommu/mediatek: Fix protect memory setting
+Date: Wed, 21 Mar 2018 06:14:55 -0500
+Message-ID: <20180321111455.djllpdsj35vu5cxc@8bytes.org>
+References: <1521337974-22112-1-git-send-email-yong.wu@mediatek.com>
+ <20180320185716.ldxs2vvfcchznpnb@8bytes.org>
+ <1521609504.24119.5.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <152153061465.254778.3061562183948751301@swboyd.mtv.corp.google.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1521609504.24119.5.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>, Weiyi Lu <weiyi.lu@mediatek.com>, Arnd Bergmann <arnd@arndb.de>
-Cc: Mike Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will.deacon@arm.com>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, arnd@arndb.de, honghui.zhang@mediatek.com, youlin.pei@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 03/20/2018 08:23 AM, Stephen Boyd wrote:
-> Quoting Weiyi Lu (2018-03-19 23:07:48)
->> On Mon, 2018-03-12 at 15:03 +0800, Weiyi Lu wrote:
->>> This series is based on v4.16-rc1 and composed of scpsys control (PATCH 1-2) and clock control (PATCH 3-5).
->>> Basically, all changes are for the ECO design change of MT2712.
->>>
->>> changes since v1:
->>> - Avoid renumbering clocks. Append new clocks at the bottom of each own subsystem.
->>>
->> Hi Matthias & Stephen,
->>
->> Sorry to bother. Just saw patch 1/2 are already pushed to v4.16-next-soc
->> and patch 3/5 are applied onto clk-next. What about the patch 4(arm64:
->> dts: add clock device nodes of MT2712). Does there any problem remain or
->> it cause some problems? Many thanks.
+On Wed, Mar 21, 2018 at 01:18:24PM +0800, Yong Wu wrote:
+> On Tue, 2018-03-20 at 13:57 -0500, Joerg Roedel wrote:
+> > On Sun, Mar 18, 2018 at 09:52:54AM +0800, Yong Wu wrote:
+> > > To avoid adding this complex macro or a new function, I put
+> > > it in the code and backup its value in the suspend registers.
+> > 
+> > Missing Signed-off-by.
 > 
-> Patch 4 can go via arm-soc? I'm not planning to apply that patch.
+> Signed-off-by and Reported-by have been added above.
 > 
+> ====
+> Reported-by: Honghui Zhang <honghui.zhang@mediatek.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ====
 
-I can take it through my branch, no problem. But I think it is too late for this
-cycle. CCing Arnd to confirm.
+Right, sorry. I was in a hurry and missed it. Patch is now applied.
 
-Regards,
-Matthias
+
+Thanks,
+
+	Joerg
