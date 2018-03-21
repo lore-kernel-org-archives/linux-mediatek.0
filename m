@@ -1,74 +1,44 @@
-From: Roger Quadros <rogerq@ti.com>
-Subject: Re: [usb-next PATCH] usb: xhci: skip phys initialization of shared hcd
-Date: Wed, 21 Mar 2018 11:05:15 +0200
-Message-ID: <ae71fdae-43aa-9df3-3f81-8a92460d61b9@ti.com>
-References: <1ece0d5508a00bca67d16e64310a071646b59c7d.1521612280.git.chunfeng.yun@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 0/5] update Mediatek MT2712 clock and scpsys support
+Date: Wed, 21 Mar 2018 10:11:09 +0100
+Message-ID: <6c29df1f-f619-5e11-4160-b58e154f6592@gmail.com>
+References: <20180312070342.4335-1-weiyi.lu@mediatek.com>
+ <1521526068.13313.8.camel@mtksdaap41>
+ <152153061465.254778.3061562183948751301@swboyd.mtv.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1ece0d5508a00bca67d16e64310a071646b59c7d.1521612280.git.chunfeng.yun@mediatek.com>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <152153061465.254778.3061562183948751301@swboyd.mtv.corp.google.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>, Weiyi Lu <weiyi.lu@mediatek.com>, Arnd Bergmann <arnd@arndb.de>
+Cc: Mike Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Chunfeng,
 
-On 21/03/18 08:12, Chunfeng Yun wrote:
-> The phys has already been initialized when add primary hcd,
-> including usb2 phys and usb3 phys also if exist, so needn't
-> re-parse "phys" property again.
+
+On 03/20/2018 08:23 AM, Stephen Boyd wrote:
+> Quoting Weiyi Lu (2018-03-19 23:07:48)
+>> On Mon, 2018-03-12 at 15:03 +0800, Weiyi Lu wrote:
+>>> This series is based on v4.16-rc1 and composed of scpsys control (PATCH 1-2) and clock control (PATCH 3-5).
+>>> Basically, all changes are for the ECO design change of MT2712.
+>>>
+>>> changes since v1:
+>>> - Avoid renumbering clocks. Append new clocks at the bottom of each own subsystem.
+>>>
+>> Hi Matthias & Stephen,
+>>
+>> Sorry to bother. Just saw patch 1/2 are already pushed to v4.16-next-soc
+>> and patch 3/5 are applied onto clk-next. What about the patch 4(arm64:
+>> dts: add clock device nodes of MT2712). Does there any problem remain or
+>> it cause some problems? Many thanks.
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->  drivers/usb/host/xhci-mtk.c  | 1 +
->  drivers/usb/host/xhci-plat.c | 1 +
->  2 files changed, 2 insertions(+)
-> 
-> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-> index 7334da9..6bb23fb 100644
-> --- a/drivers/usb/host/xhci-mtk.c
-> +++ b/drivers/usb/host/xhci-mtk.c
-> @@ -554,6 +554,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
->  	if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
->  		xhci->shared_hcd->can_do_streams = 1;
->  
-> +	xhci->shared_hcd->skip_phy_initialization = 1;
->  	ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
->  	if (ret)
->  		goto dealloc_usb2_hcd;
-> diff --git a/drivers/usb/host/xhci-plat.c b/drivers/usb/host/xhci-plat.c
-> index 6700e5e..65a4294 100644
-> --- a/drivers/usb/host/xhci-plat.c
-> +++ b/drivers/usb/host/xhci-plat.c
-> @@ -294,6 +294,7 @@ static int xhci_plat_probe(struct platform_device *pdev)
->  	if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
->  		xhci->shared_hcd->can_do_streams = 1;
->  
-> +	xhci->shared_hcd->skip_phy_initialization = 1;
-
-I think this is unnecessary.
-There aren't separate PHYs for the primary and shared HCDs right?
-
-Also how can you be sure that phy_init() has been done for all platform HCD users?
-
->  	ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
->  	if (ret)
->  		goto dealloc_usb2_hcd;
+> Patch 4 can go via arm-soc? I'm not planning to apply that patch.
 > 
 
--- 
-cheers,
--roger
+I can take it through my branch, no problem. But I think it is too late for this
+cycle. CCing Arnd to confirm.
 
-Texas Instruments Finland Oy, Porkkalankatu 22, 00180 Helsinki. Y-tunnus/Business ID: 0615521-4. Kotipaikka/Domicile: Helsinki
+Regards,
+Matthias
