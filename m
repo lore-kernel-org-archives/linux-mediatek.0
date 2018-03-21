@@ -1,40 +1,114 @@
-From: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH] iommu/mediatek: Fix protect memory setting
-Date: Wed, 21 Mar 2018 13:18:24 +0800
-Message-ID: <1521609504.24119.5.camel@mhfsdcap03>
-References: <1521337974-22112-1-git-send-email-yong.wu@mediatek.com>
-         <20180320185716.ldxs2vvfcchznpnb@8bytes.org>
+From: Kathleen Chang <yt.chang@mediatek.com>
+Subject: Re: update vruntime incorrectly When use rt_mutex
+Date: Wed, 21 Mar 2018 13:52:06 +0800
+Message-ID: <1521611526.11277.2.camel@mtkswgap22>
+References: <1521099370.7712.4.camel@mtkswgap22>
+         <20180316095113.GA4064@hirez.programming.kicks-ass.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180320185716.ldxs2vvfcchznpnb@8bytes.org>
+In-Reply-To: <20180316095113.GA4064@hirez.programming.kicks-ass.net>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Joerg Roedel <joro@8bytes.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will.deacon@arm.com>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, arnd@arndb.de, honghui.zhang@mediatek.com, youlin.pei@mediatek.com
+To: Peter Zijlstra <peterz@infradead.org>
+Cc: mingo@redhat.com, matthias.bgg@gmail.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Jonathan.JMChen@mediatek.com, wsd_upstream@mediatek.com, Matt Fleming <matt@codeblueprint.co.uk>, En-Ron.Chang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Joerg,
+hi, 
 
-On Tue, 2018-03-20 at 13:57 -0500, Joerg Roedel wrote:
-> On Sun, Mar 18, 2018 at 09:52:54AM +0800, Yong Wu wrote:
-> > To avoid adding this complex macro or a new function, I put
-> > it in the code and backup its value in the suspend registers.
-> 
-> Missing Signed-off-by.
+Thanks for your feedback.  
 
-Signed-off-by and Reported-by have been added above.
+On Fri, 2018-03-16 at 10:51 +0100, Peter Zijlstra wrote:
+> On Thu, Mar 15, 2018 at 03:36:10PM +0800, Kathleen Chang wrote:
+> > hi,  
+> > 
+> > We found the vruntime might update incorrectly when use rt_mutex.
+> 
+> That's nice, on what kernel?
+> 
+> Also, your email is very hard to make sense of.
+> 
+> > <<abnormal case>>
+> > When the Task is waking, update vruntime incorrectly.
+> > 1.  When there is a CFS task (A) hold  rt_mutex_lock and the state is
+> > TASK_WAKING (on_rq=0),  a RT task (B) want to hold this rt_mutex_lock.
+> > Update vruntime incorrectly.
+> > 
+> >   RT task (B)
+> >      rt_mutex_setprio  (cfs->RT)  ->  Task is waking , and update
+> > vruntime
+> > 
+> >        queued = task_on_rq_queued(p); // task is waking, queued=0
+> >        running = task_current(rq, p);
+> >        if (queued)      /*   don't update vruntime here!   */
+> >                 dequeue_task(rq, p, queue_flag);                      
+> >        if (running)
+> >                 put_prev_task(rq, p);
+> >        
+> >        check_class_changed(rq, p, prev_class, oldprio);   -> 
+> >                 switched_from_fair -> 
+> >                       detach_task_cfs_rq  
+> >           ( due to task is waking, and bypass
+> > vruntime-=cfs_rq.min_vruntime) 
+> > 
+> > static void detach_task_cfs_rq(struct task_struct *p)
+> > {
+> >         struct sched_entity *se = &p->se;
+> >         struct cfs_rq *cfs_rq = cfs_rq_of(se);
+> > 
+> >         if (!vruntime_normalized(p)) {   // return 1, then p->state is
+> > TASK_WAKING
+> >                 /*
+> >                  * Fix up our vruntime so that the current sleep doesn't
+> >                  * cause 'unlimited' sleep bonus.
+> >                  */
+> >                 place_entity(cfs_rq, se, 0);
+> >                 check_vruntime(8, se, cfs_rq->min_vruntime);
+> >                 se->vruntime -= cfs_rq->min_vruntime;
+> 
+> So here we subtract min_vruntime,
 
-====
-Reported-by: Honghui Zhang <honghui.zhang@mediatek.com>
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-====
+When the p->state is TASK_WAKING, vruntime_normlized will return 1 
+and if(!vruntime_normalized(p)) will be 0
+
+in this case, don't subtract min_vruntime. 
+
 
 > 
-> > ---
-> >  drivers/iommu/mtk_iommu.c | 15 ++++++++++-----
-> >  drivers/iommu/mtk_iommu.h |  1 +
-> >  2 files changed, 11 insertions(+), 5 deletions(-)
+> >                 se->normalized = true;
+> 
+> this doesn't exist.. which makes me wonder what you're looking at,
+> 
+> >         }
+> > 
+> >         detach_entity_cfs_rq(se);
+> > }
+> > 
+> > // when p->state is TASK_WAKING, the task's vruntime is normalized 
+> > static inline bool vruntime_normalized(struct task_struct *p)
+> > {
+> > .....
+> >         if (!se->sum_exec_runtime || p->state == TASK_WAKING)
+> >                 return true;
+> > 
+> > }
+> > 
+> > 2.  When the task (A) which holds the rt_muex_lock unlock the
+> > rt_mutex_lock.
+> >      Task (A) must be on_rq=1 
+> > 
+> >     rt_mutex_setprio (RT->CFS)     
+> >        if (queued)
+> >                 enqueue_task(rq, p, queue_flag);    );     
+> >                     /* vruntime += cfs_rq.min_vruntime */
+> 
+> And here we're adding min_vruntime.
+> 
+> >        if (running)
+> >                 set_curr_task(rq, p);
+> > 
+> >     that result in vruntime accumulates
+> 
+> So what exactly is the problem?
 > 
 > 
-> Joerg
