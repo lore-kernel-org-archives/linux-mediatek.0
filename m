@@ -1,114 +1,64 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v6 0/6] Add MediaTek PMIC keys support
-Date: Thu, 22 Mar 2018 10:17:53 +0800
-Message-ID: <1521685073.28226.10.camel@mtkswgap22>
-References: <1508937364-30054-1-git-send-email-chen.zhong@mediatek.com>
-         <808b2029da224ab687fb0553cbc1c68e@mtkmbs08n1.mediatek.inc>
+From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Subject: [PATCH v4 0/5] PINCTRL: Mediatek pinctrl driver for mt2712
+Date: Thu, 22 Mar 2018 10:58:38 +0800
+Message-ID: <1521687523-1604-1-git-send-email-zhiyong.tao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <808b2029da224ab687fb0553cbc1c68e@mtkmbs08n1.mediatek.inc>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, Lee Jones <lee.jones@linaro.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, a.zummo@towertech.it, devicetree@vger.kernel.org, linus.walleij@linaro.org, jcsing.lee@samsung.com, linux-kernel@vger.kernel.org, krzk@kernel.org, javier@osg.samsung.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org, matthias.bgg@gmail.com, eddie.huang@mediatek.com, Chen.Zhong@mediatek.com, beomho.seo@samsung.com, linux-rtc@vger.kernel.org
+To: robh+dt@kernel.org, linus.walleij@linaro.org, mark.rutland@arm.com, matthias.bgg@gmail.com
+Cc: srv_heupstream@mediatek.com, liguo.zhang@mediatek.com, yingjoe.chen@mediatek.com, hongkun.cao@mediatek.com, biao.huang@mediatek.com, yt.shen@mediatek.com, hongzhou.yang@mediatek.com, erin.lo@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Dmitry and Lee
+This series includes five patches:
+1.Add mt2712 pintcrl head file.
+2.Add mt2712 pinctrl device node.
+3.Add mt2712 pinctrl driver.
+4.Support bias-disable of generic and special pins simultaneously.
+5.fix check warnings.
 
-The series seems not being got merged. Are they good enough to be ready
-into the your tree?
+Changes in patch v4:
+1)fix check warnings for mt2712.
+2)add fix check warnings patch for other ICs.
 
-Recently I've tested the series with focusing on pwrkey event generated
-through interrupt when push and release the key on bpi-r2 board and then
-finally it's working fine. but for homekey it cannot be found on the
-board and thus I cannot have more tests more about it.
+Changes in patch v3:
+1)Use SPDX identifiers for all new files.
+2)Use right data for Copyright and Author.
+3)Correct some spelling mistake.
+4)Reusing original logic and change solution to support bias-disable of generic and special pins simultaneously.
+5)Add some comments for the speical path of special pins bias-disable.
 
-Tested-by: Sean Wang <sean.wang@mediatek.com>
+Changes in patch v2:
+1)Separate patch4 for supporting bias-disable of generic and special pins.
+2)GPIO16~17 direction setting is changed as generic pins in mt2712 E2,
+  So remove GPIO16~17 special direction setting and remove apmixedsys node in pinctrl device node.
+3)Add pinmux define in "mt2712-pinfunc.h" and "pinctrl-mtk-mt2712.h" for mt2712 E2 design.
 
-	Sean
 
+Zhiyong Tao (5):
+  arm64: dts: mt2712: add pintcrl file
+  arm64: dts: mt2712: add pintcrl device node.
+  pinctrl: add mt2712 pinctrl driver
+  pintcrl: support bias-disable of generic and special pins
+    simultaneously
+  pinctrl: fix check warnings.
 
-On Thu, 2018-03-22 at 10:03 +0800, Sean Wang (王志亘) wrote:
-> 
-> > -----Original Message-----
-> > From: Linux-mediatek [mailto:linux-mediatek-bounces@lists.infradead.org] On
-> > Behalf Of Chen Zhong
-> > Sent: Wednesday, October 25, 2017 9:16 PM
-> > To: Dmitry Torokhov <dmitry.torokhov@gmail.com>; Rob Herring
-> > <robh+dt@kernel.org>; Lee Jones <lee.jones@linaro.org>; Alexandre Belloni
-> > <alexandre.belloni@free-electrons.com>
-> > Cc: Mark Rutland <mark.rutland@arm.com>; Alessandro Zummo
-> > <a.zummo@towertech.it>; devicetree@vger.kernel.org; Linus Walleij
-> > <linus.walleij@linaro.org>; Jaechul Lee <jcsing.lee@samsung.com>; linux-
-> > kernel@vger.kernel.org; Krzysztof Kozlowski <krzk@kernel.org>; Javier
-> > Martinez Canillas <javier@osg.samsung.com>; linux-
-> > mediatek@lists.infradead.org; linux-arm-kernel@lists.infradead.org; linux-
-> > input@vger.kernel.org; Matthias Brugger <matthias.bgg@gmail.com>; Eddie
-> > Huang (S智) <eddie.huang@mediatek.com>; Chen Zhong (钟辰)
-> > <Chen.Zhong@mediatek.com>; Beomho Seo <beomho.seo@samsung.com>;
-> > linux-rtc@vger.kernel.org
-> > Subject: [PATCH v6 0/6] Add MediaTek PMIC keys support
-> > 
-> > MediaTek PMIC are multi-function devices that can handle key interrupts,
-> > typically there are two keys attached to PMIC, which called pwrkey and
-> > homekey. PWRKEY usually used to wake up system from sleep. Homekey can
-> > used as volume down key due to board design. Long press keys can shutdown
-> > PMIC, the mode can be choose to be one key only or two keys together.
-> > This series add support for key functions for MediaTek PMIC MT6397/MT6323.
-> > 
-> > Changes since v5:
-> > - use __maybe_unused annotation instead of #ifdef guard
-> > - use of_* API instead of device_* API
-> > 
-> > Changes since v4:
-> > - rebase to Linux 4.14-rc1
-> > - add a common keyboard binding document
-> > - use child device tree node to define each key
-> > 
-> > Changes since v3:
-> > - make the naming to be consistent as mtk_pmic or MTK_PMIC
-> > - add suspend/resume functions to enable/disable irq
-> > - change binding properties to define wakeup sources
-> > 
-> > Changes since v2:
-> > - use standard properties for keycodes and debounce time
-> > - change to use platform_get_irq in leaf drivers
-> > - use better ways to define IRQ resources
-> > 
-> > Changes since v1:
-> > - create irq mappings in mfd core driver instead of leaf drivers
-> > - remove some unused parts in mtk-pmic-keys driver
-> > 
-> > Chen Zhong (6):
-> >   mfd: mt6397: create irq mappings in mfd core driver
-> >   dt-bindings: input: Add common keyboard document bindings
-> >   dt-bindings: input: Add document bindings for mtk-pmic-keys
-> >   dt-bindings: mfd: Add bindings for the keys as subnode of PMIC
-> >   input: Add MediaTek PMIC keys support
-> >   mfd: mt6397: Add PMIC keys support to MT6397 driver
-> > 
-> >  Documentation/devicetree/bindings/input/keys.txt   |   8 +
-> >  .../devicetree/bindings/input/mtk-pmic-keys.txt    |  43 +++
-> >  Documentation/devicetree/bindings/mfd/mt6397.txt   |   6 +
-> >  drivers/input/keyboard/Kconfig                     |   9 +
-> >  drivers/input/keyboard/Makefile                    |   1 +
-> >  drivers/input/keyboard/mtk-pmic-keys.c             | 339
-> > +++++++++++++++++++++
-> >  drivers/mfd/mt6397-core.c                          |  26 +-
-> >  drivers/rtc/rtc-mt6397.c                           |   7 +-
-> >  8 files changed, 432 insertions(+), 7 deletions(-)  create mode 100644
-> > Documentation/devicetree/bindings/input/keys.txt
-> >  create mode 100644 Documentation/devicetree/bindings/input/mtk-pmic-
-> > keys.txt
-> >  create mode 100644 drivers/input/keyboard/mtk-pmic-keys.c
-> > 
-> > --
-> > 1.9.1
-> > 
-> > 
-> > 
-> > _______________________________________________
-> > Linux-mediatek mailing list
-> > Linux-mediatek@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+ arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h | 1123 ++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |   18 +
+ drivers/pinctrl/mediatek/Kconfig              |    7 +
+ drivers/pinctrl/mediatek/Makefile             |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt2712.c     |  634 +++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c |    8 +-
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h |  840 ++++--------
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt2712.h | 1757 +++++++++++++++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt6397.h |  123 +-
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt8127.h |  429 ++----
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt8135.h |  609 +++------
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt8173.h |  405 ++----
+ 12 files changed, 4348 insertions(+), 1606 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt2712.c
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt2712.h
+
+--
+2.6.4
