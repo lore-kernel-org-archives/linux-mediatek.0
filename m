@@ -1,43 +1,36 @@
-From: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH] iommu/mediatek: Fix protect memory setting
-Date: Thu, 22 Mar 2018 09:13:04 +0800
-Message-ID: <1521681184.583.2.camel@mhfsdcap03>
-References: <1521337974-22112-1-git-send-email-yong.wu@mediatek.com>
-         <20180320185716.ldxs2vvfcchznpnb@8bytes.org>
-         <1521609504.24119.5.camel@mhfsdcap03>
-         <20180321111455.djllpdsj35vu5cxc@8bytes.org>
+From: Wei Yongjun <weiyongjun1@huawei.com>
+Subject: [PATCH -next] staging: mt7621-gpio: mt7621: make symbol gc_map static
+Date: Thu, 22 Mar 2018 02:09:25 +0000
+Message-ID: <1521684565-76447-1-git-send-email-weiyongjun1@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180321111455.djllpdsj35vu5cxc@8bytes.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Joerg Roedel <joro@8bytes.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will.deacon@arm.com>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, arnd@arndb.de, honghui.zhang@mediatek.com, youlin.pei@mediatek.com
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <blogic@openwrt.org>, NeilBrown <neil@brown.name>
+Cc: Wei Yongjun <weiyongjun1@huawei.com>, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-03-21 at 06:14 -0500, Joerg Roedel wrote:
-> On Wed, Mar 21, 2018 at 01:18:24PM +0800, Yong Wu wrote:
-> > On Tue, 2018-03-20 at 13:57 -0500, Joerg Roedel wrote:
-> > > On Sun, Mar 18, 2018 at 09:52:54AM +0800, Yong Wu wrote:
-> > > > To avoid adding this complex macro or a new function, I put
-> > > > it in the code and backup its value in the suspend registers.
-> > > 
-> > > Missing Signed-off-by.
-> > 
-> > Signed-off-by and Reported-by have been added above.
-> > 
-> > ====
-> > Reported-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > ====
-> 
-> Right, sorry. I was in a hurry and missed it. Patch is now applied.
+Fixes the following sparse warning:
 
-Thanks Joerg.
+drivers/staging/mt7621-gpio/gpio-mt7621.c:47:3: warning:
+ symbol 'gc_map' was not declared. Should it be static?
 
-> 
-> 
-> Thanks,
-> 
-> 	Joerg
+Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
+---
+ drivers/staging/mt7621-gpio/gpio-mt7621.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/mt7621-gpio/gpio-mt7621.c b/drivers/staging/mt7621-gpio/gpio-mt7621.c
+index 5c57abe..d00c1cd 100644
+--- a/drivers/staging/mt7621-gpio/gpio-mt7621.c
++++ b/drivers/staging/mt7621-gpio/gpio-mt7621.c
+@@ -38,7 +38,7 @@ enum mediatek_gpio_reg {
+ static int mediatek_gpio_irq;
+ static struct irq_domain *mediatek_gpio_irq_domain;
+ 
+-struct mtk_gc {
++static struct mtk_gc {
+ 	struct gpio_chip chip;
+ 	spinlock_t lock;
+ 	int bank;
