@@ -1,27 +1,41 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [usb-next, v3 PATCH] usb: xhci: skip phys initialization of
- shared hcd
-Date: Fri, 23 Mar 2018 11:20:48 +0800
-Message-ID: <1521775248.3717.159.camel@mhfsdcap03>
-References: <643701fef843f91931e3a68779afe053c63c96f6.1521707846.git.chunfeng.yun@mediatek.com>
-         <20180322125300.GA22130@kroah.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] [media] vcodec: fix error return value from mtk_jpeg_clk_init()
+Date: Fri, 23 Mar 2018 11:44:13 +0800
+Message-ID: <f9295ecafa4c845ef5d9414fca47b2dc0fc6640d.1521776018.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180322125300.GA22130@kroah.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Roger Quadros <rogerq@ti.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, Rick Chang <rick.chang@mediatek.com>, Bin Liu <bin.liu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2018-03-22 at 13:53 +0100, Greg Kroah-Hartman wrote:
-> On Thu, Mar 22, 2018 at 08:12:50PM +0800, Chunfeng Yun wrote:
-> > The phys has already been initialized when add primary hcd,
-> > including usb2 phys and usb3 phys also if exist, so needn't
-> > re-parse "phys" property again.
-> 
-> Wait, why does the subject say "xhci", when this is in USB core code?
-> 
-> I'll go edit that by hand...
-Thanks
+The error return value should be fixed as it may return EPROBE_DEFER.
+
+Cc: Rick Chang <rick.chang@mediatek.com>
+Cc: Bin Liu <bin.liu@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+index 226f908..af17aaa 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+@@ -1081,11 +1081,11 @@ static int mtk_jpeg_clk_init(struct mtk_jpeg_dev *jpeg)
+ 
+ 	jpeg->clk_jdec = devm_clk_get(jpeg->dev, "jpgdec");
+ 	if (IS_ERR(jpeg->clk_jdec))
+-		return -EINVAL;
++		return PTR_ERR(jpeg->clk_jdec);
+ 
+ 	jpeg->clk_jdec_smi = devm_clk_get(jpeg->dev, "jpgdec-smi");
+ 	if (IS_ERR(jpeg->clk_jdec_smi))
+-		return -EINVAL;
++		return PTR_ERR(jpeg->clk_jdec_smi);
+ 
+ 	return 0;
+ }
+-- 
+1.9.1
