@@ -1,45 +1,76 @@
 From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Subject: Re: [PATCH v1 06/16] rtc: mediatek: remove unnecessary parentheses
-Date: Fri, 23 Mar 2018 11:21:23 +0100
-Message-ID: <20180323102123.GG3417@piout.net>
+Subject: Re: [PATCH v1 08/16] rtc: mediatek: remove unnecessary
+ irq_dispose_mapping
+Date: Fri, 23 Mar 2018 11:38:01 +0100
+Message-ID: <20180323103801.GH3417@piout.net>
 References: <cover.1521794176.git.sean.wang@mediatek.com>
- <92d07e90f43899981a82fbc684c3d15aaecaf591.1521794177.git.sean.wang@mediatek.com>
+ <96f39ce7f57a4dcd7653e049eebc87c83bcbdfc9.1521794177.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <92d07e90f43899981a82fbc684c3d15aaecaf591.1521794177.git.sean.wang@mediatek.com>
+In-Reply-To: <96f39ce7f57a4dcd7653e049eebc87c83bcbdfc9.1521794177.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: sean.wang@mediatek.com
 Cc: robh+dt@kernel.org, mark.rutland@arm.com, sre@kernel.org, lee.jones@linaro.org, a.zummo@towertech.it, eddie.huang@mediatek.com, devicetree@vger.kernel.org, linux-rtc@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 23/03/2018 at 17:15:03 +0800, sean.wang@mediatek.com wrote:
+On 23/03/2018 at 17:15:05 +0800, sean.wang@mediatek.com wrote:
 > From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Remove unnecessary parentheses due to explicit C operator precedence.
+> It's unnecessary doing irq_dispose_mapping as a reverse operation for
+> platform_get_irq.
+> 
+> Ususally, irq_dispose_mapping should be called in error path or module
+> removal to release the resources for irq_of_parse_and_map requested.
 > 
 > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
->  drivers/rtc/rtc-mt6397.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/rtc/rtc-mt6397.c | 7 ++-----
+>  1 file changed, 2 insertions(+), 5 deletions(-)
 > 
 > diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-> index 0df7ccd..4411c08 100644
+> index b62eaa8..cefb83b 100644
 > --- a/drivers/rtc/rtc-mt6397.c
 > +++ b/drivers/rtc/rtc-mt6397.c
-> @@ -106,7 +106,7 @@ static irqreturn_t mtk_rtc_irq_handler_thread(int irq, void *data)
->  	int ret;
+> @@ -17,7 +17,6 @@
+>  #include <linux/module.h>
+>  #include <linux/regmap.h>
+>  #include <linux/rtc.h>
+> -#include <linux/irqdomain.h>
+>  #include <linux/jiffies.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/of_address.h>
+> @@ -336,7 +335,7 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+>  	if (ret) {
+>  		dev_err(&pdev->dev, "Failed to request alarm IRQ: %d: %d\n",
+>  			rtc->irq, ret);
+> -		goto out_dispose_irq;
+> +		return ret;
+>  	}
 >  
->  	ret = regmap_read(rtc->regmap, rtc->addr_base + RTC_IRQ_STA, &irqsta);
-> -	if ((ret >= 0) && (irqsta & RTC_IRQ_STA_AL)) {
-> +	if (ret >= 0 && irqsta & RTC_IRQ_STA_AL) {
+>  	device_init_wakeup(&pdev->dev, 1);
+> @@ -353,8 +352,7 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+>  
+>  out_free_irq:
+>  	free_irq(rtc->irq, rtc->rtc_dev);
+> -out_dispose_irq:
+> -	irq_dispose_mapping(rtc->irq);
+> +
 
-I don't think this makes the code particularly clearer.
+Don't you still have a irq_create_mapping?
 
->  		rtc_update_irq(rtc->rtc_dev, 1, RTC_IRQF | RTC_AF);
->  		irqen = irqsta & ~RTC_IRQ_EN_AL;
->  		mutex_lock(&rtc->lock);
+>  	return ret;
+>  }
+>  
+> @@ -364,7 +362,6 @@ static int mtk_rtc_remove(struct platform_device *pdev)
+>  
+>  	rtc_device_unregister(rtc->rtc_dev);
+>  	free_irq(rtc->irq, rtc->rtc_dev);
+> -	irq_dispose_mapping(rtc->irq);
+>  
+>  	return 0;
+>  }
 > -- 
 > 2.7.4
 > 
