@@ -1,13 +1,13 @@
 From: <sean.wang@mediatek.com>
-Subject: [PATCH] usb: xhci-mtk: remove redundant MODULE_ALIAS entries
-Date: Mon, 26 Mar 2018 18:03:36 +0800
-Message-ID: <9b7cc59683fc4d1d2b03419cec4b440d5d949114.1522055042.git.sean.wang@mediatek.com>
+Subject: [PATCH] spi: mediatek: remove redundant MODULE_ALIAS entries
+Date: Mon, 26 Mar 2018 18:04:18 +0800
+Message-ID: <58fc8553bdc3cbad8d107a905947b7e4d9c12b92.1522054975.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: mathias.nyman@intel.com, gregkh@linuxfoundation.org, matthias.bgg@gmail.com, chunfeng.yun@mediatek.com
-Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+To: broonie@kernel.org, matthias.bgg@gmail.com
+Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
@@ -20,20 +20,17 @@ MODULE_ALIAS is redundant and should be removed properly.
 
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/usb/host/xhci-mtk.c | 1 -
+ drivers/spi/spi-mt65xx.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index b0ab4d5..2807c769 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -766,7 +766,6 @@ static struct platform_driver mtk_xhci_driver = {
- 		.of_match_table = of_match_ptr(mtk_xhci_of_match),
- 	},
- };
--MODULE_ALIAS("platform:xhci-mtk");
- 
- static int __init xhci_mtk_init(void)
- {
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index 86bf456..9fdc2e5 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -856,4 +856,3 @@ module_platform_driver(mtk_spi_driver);
+ MODULE_DESCRIPTION("MTK SPI Controller driver");
+ MODULE_AUTHOR("Leilk Liu <leilk.liu@mediatek.com>");
+ MODULE_LICENSE("GPL v2");
+-MODULE_ALIAS("platform:mtk-spi");
 -- 
 2.7.4
