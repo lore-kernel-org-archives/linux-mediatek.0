@@ -1,48 +1,91 @@
-From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH net 2/2] net: dsa: mt7530: fix module autoloading for OF
- platform drivers
-Date: Mon, 26 Mar 2018 18:07:10 +0800
-Message-ID: <cb3bdedb65fca8e206ba081b0dfd69667c3f7804.1522057659.git.sean.wang@mediatek.com>
-References: <2497321afc9156f7954e813721f60a0a95c03bd2.1522057659.git.sean.wang@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH 1/2] ASoC: mediatek: remove redundant MODULE_ALIAS entries
+Date: Mon, 26 Mar 2018 18:09:37 +0800
+Message-ID: <da30b7c1ac29e1d3668a5713cd096a73a8c8dd7d.1522055433.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2497321afc9156f7954e813721f60a0a95c03bd2.1522057659.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, andrew-g2DYL2Zd6BY@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, vivien.didelot-4ysUXcep3aM1wj+D4I0NRVaTQe2KTcn/@public.gmane.org
-Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, ryder.lee@mediatek.com, arvind.yadav.cs@gmail.com, dolinux.peng@gmail.com
+Cc: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+From: Sean Wang <sean.wang@mediatek.com>
 
-It's required to create a modules.alias via MODULE_DEVICE_TABLE helper
-for the OF platform driver. Otherwise, module autoloading cannot work.
+MODULE_ALIAS exports information to allow the module to be auto-loaded at
+boot for the drivers registered using legacy platform registration.
 
-Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+However, currently the driver is always used by DT-only platform,
+MODULE_ALIAS is redundant and should be removed properly.
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/dsa/mt7530.c | 1 +
- 1 file changed, 1 insertion(+)
+ sound/soc/mediatek/mt2701/mt2701-cs42448.c       | 1 -
+ sound/soc/mediatek/mt2701/mt2701-wm8960.c        | 1 -
+ sound/soc/mediatek/mt8173/mt8173-max98090.c      | 1 -
+ sound/soc/mediatek/mt8173/mt8173-rt5650-rt5514.c | 1 -
+ sound/soc/mediatek/mt8173/mt8173-rt5650-rt5676.c | 1 -
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c        | 1 -
+ 6 files changed, 6 deletions(-)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index d31246c..4e53c5c 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -1409,6 +1409,7 @@ static const struct of_device_id mt7530_of_match[] = {
- 	{ .compatible = "mediatek,mt7530" },
- 	{ /* sentinel */ },
- };
-+MODULE_DEVICE_TABLE(of, mt7530_of_match);
+diff --git a/sound/soc/mediatek/mt2701/mt2701-cs42448.c b/sound/soc/mediatek/mt2701/mt2701-cs42448.c
+index 70f61d5..f664b9d 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-cs42448.c
++++ b/sound/soc/mediatek/mt2701/mt2701-cs42448.c
+@@ -409,4 +409,3 @@ module_platform_driver(mt2701_cs42448_machine);
+ MODULE_DESCRIPTION("MT2701 CS42448 ALSA SoC machine driver");
+ MODULE_AUTHOR("Ir Lian <ir.lian@mediatek.com>");
+ MODULE_LICENSE("GPL v2");
+-MODULE_ALIAS("mt2701 cs42448 soc card");
+diff --git a/sound/soc/mediatek/mt2701/mt2701-wm8960.c b/sound/soc/mediatek/mt2701/mt2701-wm8960.c
+index a08ce23..a137057 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-wm8960.c
++++ b/sound/soc/mediatek/mt2701/mt2701-wm8960.c
+@@ -172,5 +172,4 @@ module_platform_driver(mt2701_wm8960_machine);
+ MODULE_DESCRIPTION("MT2701 WM8960 ALSA SoC machine driver");
+ MODULE_AUTHOR("Ryder Lee <ryder.lee@mediatek.com>");
+ MODULE_LICENSE("GPL v2");
+-MODULE_ALIAS("mt2701 wm8960 soc card");
  
- static struct mdio_driver mt7530_mdio_driver = {
- 	.probe  = mt7530_probe,
+diff --git a/sound/soc/mediatek/mt8173/mt8173-max98090.c b/sound/soc/mediatek/mt8173/mt8173-max98090.c
+index e0c2b23..6e58af6 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-max98090.c
++++ b/sound/soc/mediatek/mt8173/mt8173-max98090.c
+@@ -203,5 +203,4 @@ module_platform_driver(mt8173_max98090_driver);
+ MODULE_DESCRIPTION("MT8173 MAX98090 ALSA SoC machine driver");
+ MODULE_AUTHOR("Koro Chen <koro.chen@mediatek.com>");
+ MODULE_LICENSE("GPL v2");
+-MODULE_ALIAS("platform:mt8173-max98090");
+ 
+diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650-rt5514.c b/sound/soc/mediatek/mt8173/mt8173-rt5650-rt5514.c
+index 5a9a548..addbbb3 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-rt5650-rt5514.c
++++ b/sound/soc/mediatek/mt8173/mt8173-rt5650-rt5514.c
+@@ -251,5 +251,4 @@ module_platform_driver(mt8173_rt5650_rt5514_driver);
+ MODULE_DESCRIPTION("MT8173 RT5650 and RT5514 SoC machine driver");
+ MODULE_AUTHOR("Koro Chen <koro.chen@mediatek.com>");
+ MODULE_LICENSE("GPL v2");
+-MODULE_ALIAS("platform:mtk-rt5650-rt5514");
+ 
+diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650-rt5676.c b/sound/soc/mediatek/mt8173/mt8173-rt5650-rt5676.c
+index b724808..f46e4c8 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-rt5650-rt5676.c
++++ b/sound/soc/mediatek/mt8173/mt8173-rt5650-rt5676.c
+@@ -308,5 +308,4 @@ module_platform_driver(mt8173_rt5650_rt5676_driver);
+ MODULE_DESCRIPTION("MT8173 RT5650 and RT5676 SoC machine driver");
+ MODULE_AUTHOR("Koro Chen <koro.chen@mediatek.com>");
+ MODULE_LICENSE("GPL v2");
+-MODULE_ALIAS("platform:mtk-rt5650-rt5676");
+ 
+diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650.c b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+index 679fc8b..e2e42e6 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-rt5650.c
++++ b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+@@ -335,5 +335,4 @@ module_platform_driver(mt8173_rt5650_driver);
+ MODULE_DESCRIPTION("MT8173 RT5650 SoC machine driver");
+ MODULE_AUTHOR("Koro Chen <koro.chen@mediatek.com>");
+ MODULE_LICENSE("GPL v2");
+-MODULE_ALIAS("platform:mtk-rt5650");
+ 
 -- 
 2.7.4
