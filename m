@@ -1,78 +1,36 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v1 01/16] dt-bindings: power: reset: mediatek: add
- bindings for power device
-Date: Tue, 27 Mar 2018 11:21:46 +0800
-Message-ID: <1522120906.18424.21.camel@mtkswgap22>
-References: <cover.1521794176.git.sean.wang@mediatek.com>
-         <c5527464207b02d40f1c2682feb97ebf5dd443be.1521794176.git.sean.wang@mediatek.com>
-         <20180326222455.6kou2rdn76k6p6ct@rob-hp-laptop>
+From: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: [2/4] wireless: Use octal not symbolic permissions
+Date: Tue, 27 Mar 2018 08:02:05 +0000 (UTC)
+Message-ID: <20180327080205.CD80760C54@smtp.codeaurora.org>
+References: <a368e1c4878619172f3da4849cb211b4dfad0a58.1521845237.git.joe@perches.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180326222455.6kou2rdn76k6p6ct@rob-hp-laptop>
+In-Reply-To: <a368e1c4878619172f3da4849cb211b4dfad0a58.1521845237.git.joe@perches.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: mark.rutland@arm.com, sre@kernel.org, lee.jones@linaro.org, a.zummo@towertech.it, alexandre.belloni@free-electrons.com, eddie.huang@mediatek.com, devicetree@vger.kernel.org, linux-rtc@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Joe Perches <joe@perches.com>
+Cc: Jiri Slaby <jirislaby@gmail.com>, Nick Kossifidis <mickflemm@gmail.com>, "Luis R. Rodriguez" <mcgrof@do-not-panic.com>, Kalle Valo <kvalo@qca.qualcomm.com>, QCA ath9k Development <ath9k-devel@qca.qualcomm.com>, Christian Lamparter <chunkeey@googlemail.com>, Eugene Krasnikov <k.eugene.e@gmail.com>, Stanislav Yakovlev <stas.yakovlev@gmail.com>, Stanislaw Gruszka <sgruszka@redhat.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Jakub Kicinski <kubakici@wp.pl>, Helmut Schaa <helmut.schaa@googlemail.com>, Solomon Peachy <pizza@shaftnet.org>, Matthias Brugger <matthias.bgg@gmail.com>, Arend van Spriel <arend.vanspriel@broadcom.>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-03-26 at 17:24 -0500, Rob Herring wrote:
-> On Fri, Mar 23, 2018 at 05:14:58PM +0800, sean.wang@mediatek.com wrote:
-> > From: Sean Wang <sean.wang@mediatek.com>
-> > 
-> > Add device-tree binding for the power device responsible for shutdown a
-> > remote SoC, which is a tiny circuit block present on MediaTek PMIC based
-> > RTC.
-> > 
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > ---
-> >  .../bindings/power/reset/mt6397-rtc-poweroff.txt   | 24 ++++++++++++++++++++++
-> >  1 file changed, 24 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/power/reset/mt6397-rtc-poweroff.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/power/reset/mt6397-rtc-poweroff.txt b/Documentation/devicetree/bindings/power/reset/mt6397-rtc-poweroff.txt
-> > new file mode 100644
-> > index 0000000..75a9d7d
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/power/reset/mt6397-rtc-poweroff.txt
-> > @@ -0,0 +1,24 @@
-> > +Device-Tree bindings for Power Device on MediaTek PMIC RTC
-> > +
-> > +The power device is responsible for externally power off or on the remote
-> > +MediaTek SoC through the a tiny circuit block BBPU inside PMIC RTC.
-> > +
-> > +Required parent node:
-> > +- rtc
-> > +	For MediaTek PMIC RTC bindings, see:
-> > +	Documentation/devicetree/bindings/mfd/mt6397.txt
-> > +
-> > +Required properties:
-> > +- compatible: Should be one of follows
-> > +	"mediatek,mt6323-rtc-poweroff": for MT6323 PMIC
-> > +	"mediatek,mt6397-rtc-poweroff": for MT6397 PMIC
-> > +
-> > +Example:
-> > +
-> > +	rtc {
-> > +		compatible = "mediatek,mt6323-rtc";
-> > +
-> > +		power-off {
-> > +			compatible = "mediatek,mt6323-rtc-poweroff";
-> > +		};
+Joe Perches <joe@perches.com> wrote:
+
+> Prefer the direct use of octal for permissions.
 > 
-> There's no need for this node. The OS can register a device in the rtc 
-> driver.
+> Done with checkpatch -f --types=SYMBOLIC_PERMS --fix-inplace
+> and some typing.
 > 
+> Miscellanea:
+> 
+> o Whitespace neatening around these conversions.
+> 
+> Signed-off-by: Joe Perches <joe@perches.com>
 
-It seems a good way.
+Patch applied to wireless-drivers-next.git, thanks.
 
-I will remove the really simple dt-binding and use a
-platform_device_register_simple api embedded in rtc driver to
-register the power-off device.
+2ef00c53049b wireless: Use octal not symbolic permissions
 
-Hope I do not misconception your points addressed here.
+-- 
+https://patchwork.kernel.org/patch/10305719/
 
-> > +	};
-> > -- 
-> > 2.7.4
-> > 
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
