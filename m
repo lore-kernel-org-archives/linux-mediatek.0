@@ -1,52 +1,48 @@
-From: Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Subject: Re: [RFC usb-next v3 1/2] usb: core: split
- usb_phy_roothub_{init,alloc}
-Date: Tue, 27 Mar 2018 11:00:04 +0200
-Message-ID: <20180327090004.GA6649@kroah.com>
-References: <20180326203846.7248-1-martin.blumenstingl@googlemail.com>
- <20180326203846.7248-2-martin.blumenstingl@googlemail.com>
- <05b749dc-c8e6-260f-287d-7b3e8f599d13@ti.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v6 0/6] Add MediaTek PMIC keys support
+Date: Tue, 27 Mar 2018 12:47:42 +0200
+Message-ID: <3ece050c-7573-ef4e-2c89-61645a243a33@gmail.com>
+References: <1508937364-30054-1-git-send-email-chen.zhong@mediatek.com>
+ <808b2029da224ab687fb0553cbc1c68e@mtkmbs08n1.mediatek.inc>
+ <1521685073.28226.10.camel@mtkswgap22> <20180323185418.GD255819@dtor-ws>
+ <20180327080507.pgil6pw2mn4y2f4d@dell>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <05b749dc-c8e6-260f-287d-7b3e8f599d13-l0cyMroinI0@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
-Cc: d-gerlach-l0cyMroinI0@public.gmane.org, Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, j-keerthy-l0cyMroinI0@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180327080507.pgil6pw2mn4y2f4d@dell>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lee Jones <lee.jones@linaro.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Mark Rutland <mark.rutland@arm.com>, a.zummo@towertech.it, devicetree@vger.kernel.org, linus.walleij@linaro.org, jcsing.lee@samsung.com, linux-kernel@vger.kernel.org, krzk@kernel.org, javier@osg.samsung.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org, eddie.huang@mediatek.com, Chen.Zhong@mediatek.com, beomho.seo@samsung.com, linux-rtc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Mar 27, 2018 at 11:24:08AM +0300, Roger Quadros wrote:
-> On 26/03/18 23:38, Martin Blumenstingl wrote:
-> > Before this patch usb_phy_roothub_init served two purposes (from a
-> > caller's point of view - like hcd.c):
-> > - parsing the PHYs and allocating the list entries
-> > - calling phy_init on each list entry
-> > 
-> > While this worked so far it has one disadvantage: if we need to call
-> > phy_init for each PHY instance then the existing code cannot be re-used.
-> > Solve this by splitting off usb_phy_roothub_alloc which only parses the
-> > PHYs and allocates the list entries.
-> > usb_phy_roothub_init then gets a struct usb_phy_roothub and only calls
-> > phy_init on each PHY instance (along with the corresponding cleanup if
-> > that failed somewhere).
-> > 
-> > This is a preparation step for adding proper suspend support for some
-> > hardware that requires phy_exit to be called during suspend and phy_init
-> > to be called during resume.
-> > 
-> > Signed-off-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-> 
-> I don't think we need RFC in subject.
 
-As I don't apply series with RFC in the subject, that might be a good
-idea :)
+
+On 03/27/2018 10:05 AM, Lee Jones wrote:
+> On Fri, 23 Mar 2018, Dmitry Torokhov wrote:
+>> On Thu, Mar 22, 2018 at 10:17:53AM +0800, Sean Wang wrote:
+>>> Hi, Dmitry and Lee
+>>>
+>>> The series seems not being got merged. Are they good enough to be ready
+>>> into the your tree?
+>>>
+>>> Recently I've tested the series with focusing on pwrkey event generated
+>>> through interrupt when push and release the key on bpi-r2 board and then
+>>> finally it's working fine. but for homekey it cannot be found on the
+>>> board and thus I cannot have more tests more about it.
+>>>
+>>> Tested-by: Sean Wang <sean.wang@mediatek.com>
+>>
+>> You have my Ack on the input patch; I expect it go through Lee's tree as
+>> there are some dependencies on mfd core piece.
+> 
+> Are you happy for me to merge the Input dt-bindings without your Ack?
+> 
+
+They got both Acked in v5, but the commit message was not updated:
+https://patchwork.kernel.org/patch/9973721/
+https://patchwork.kernel.org/patch/9973723/
+
+Regards,
+Matthias
