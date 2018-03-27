@@ -1,44 +1,43 @@
-From: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [2/4] wireless: Use octal not symbolic permissions
-Date: Tue, 27 Mar 2018 08:02:04 +0000 (UTC)
-Message-ID: <20180327080205.07AD26030F@smtp.codeaurora.org>
-References: <a368e1c4878619172f3da4849cb211b4dfad0a58.1521845237.git.joe@perches.com>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH v6 0/6] Add MediaTek PMIC keys support
+Date: Tue, 27 Mar 2018 09:05:07 +0100
+Message-ID: <20180327080507.pgil6pw2mn4y2f4d@dell>
+References: <1508937364-30054-1-git-send-email-chen.zhong@mediatek.com>
+ <808b2029da224ab687fb0553cbc1c68e@mtkmbs08n1.mediatek.inc>
+ <1521685073.28226.10.camel@mtkswgap22>
+ <20180323185418.GD255819@dtor-ws>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <a368e1c4878619172f3da4849cb211b4dfad0a58.1521845237.git.joe@perches.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Joe Perches <joe@perches.com>
-Cc: Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Stanislaw Gruszka <sgruszka@redhat.com>, Jiri Slaby <jirislaby@gmail.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Helmut Schaa <helmut.schaa@googlemail.com>, Kalle Valo <kvalo@qca.qualcomm.com>, Luca Coelho <luciano.coelho@intel.com>, Solomon Peachy <pizza@shaftnet.org>, Christian Lamparter <chunkeey@googlemail.com>, wcn36xx@lists.infradead.org, brcm80211-dev-list@cypress.com, Jakub Kicinski <kubakici@wp.pl>, Nick Kossifidis <mickflemm@gmail.com>, Stanislav Yakovlev <stas.yakovlev@gmail.com>, Arend van Spriel <arend.vanspriel@broadcom.com>, Johannes Berg <johannes.berg@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Hante Meuleman <hante.meuleman@broadcom.com>, linux-mediatek@lists.infradead.org, Wright Feng <wright.feng@cypress.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradea
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20180323185418.GD255819@dtor-ws>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Mark Rutland <mark.rutland@arm.com>, a.zummo@towertech.it, devicetree@vger.kernel.org, linus.walleij@linaro.org, jcsing.lee@samsung.com, linux-kernel@vger.kernel.org, krzk@kernel.org, javier@osg.samsung.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org, matthias.bgg@gmail.com, eddie.huang@mediatek.com, Chen.Zhong@mediatek.com, beomho.seo@samsung.com, linux-rtc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Joe Perches <joe@perches.com> wrote:
+On Fri, 23 Mar 2018, Dmitry Torokhov wrote:
+> On Thu, Mar 22, 2018 at 10:17:53AM +0800, Sean Wang wrote:
+> > Hi, Dmitry and Lee
+> > 
+> > The series seems not being got merged. Are they good enough to be ready
+> > into the your tree?
+> > 
+> > Recently I've tested the series with focusing on pwrkey event generated
+> > through interrupt when push and release the key on bpi-r2 board and then
+> > finally it's working fine. but for homekey it cannot be found on the
+> > board and thus I cannot have more tests more about it.
+> > 
+> > Tested-by: Sean Wang <sean.wang@mediatek.com>
+> 
+> You have my Ack on the input patch; I expect it go through Lee's tree as
+> there are some dependencies on mfd core piece.
 
-> Prefer the direct use of octal for permissions.
-> 
-> Done with checkpatch -f --types=SYMBOLIC_PERMS --fix-inplace
-> and some typing.
-> 
-> Miscellanea:
-> 
-> o Whitespace neatening around these conversions.
-> 
-> Signed-off-by: Joe Perches <joe@perches.com>
-
-Patch applied to wireless-drivers-next.git, thanks.
-
-2ef00c53049b wireless: Use octal not symbolic permissions
+Are you happy for me to merge the Input dt-bindings without your Ack?
 
 -- 
-https://patchwork.kernel.org/patch/10305719/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+Lee Jones [李琼斯]
+Linaro Services Technical Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
