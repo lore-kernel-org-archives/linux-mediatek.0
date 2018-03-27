@@ -1,34 +1,40 @@
-From: Vinod Koul <vinod.koul@intel.com>
-Subject: Re: [PATCH v7 0/3] add support for Mediatek High-Speed DMA
- controller on MT7622 and MT7623 SoC
-Date: Tue, 27 Mar 2018 17:31:46 +0530
-Message-ID: <20180327120146.GI15443@localhost>
-References: <cover.1521098171.git.sean.wang@mediatek.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL] ARM: mediatek: dts32 updates for v4.16-next
+Date: Tue, 27 Mar 2018 14:18:22 +0200
+Message-ID: <CAK8P3a2L2G_oDRG0EuAdUc3u8oxBnpULrz5J5SX77ueXioBvGA@mail.gmail.com>
+References: <c1fa5369-4aef-1e51-80cd-ef4d2fb136c6@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <cover.1521098171.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: dan.j.williams@intel.com, robh+dt@kernel.org, mark.rutland@arm.com, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <c1fa5369-4aef-1e51-80cd-ef4d2fb136c6@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Mar 15, 2018 at 03:40:34PM +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> 
-> This patchset introduces support for MediaTek High-Speed DMA controller
-> (MTK-HSDMA) Currently, the driver is already tested successfully with
-> dmatest module on MT7622 and MT7623 SoC. 
-> 
-> MTK-HSDMA on MT7622/23 SoC has a single ring which is dedicated for
-> doing memory-to-memory transfer through ring-based descriptor management.
-> Even though there is only a single ring available inside HSDMA, the
-> driver is being extended to the support for multiple virtual channels
-> processing simultaneously by means of DMA_VIRTUAL_CHANNELS.
+On Mon, Mar 19, 2018 at 11:18 AM, Matthias Brugger
+<matthias.bgg@gmail.com> wrote:
+> mt7623:
+> - fix style issues of the dts
+> - add cpu clock properties
+> - add PCI controller
+> - add mt7623 reference board
+>
+> banapi-r2:
+> - enable missing uarts
+> - fix regulator for mmc
+> - fix USB initialization
+>
 
-Applied all, thanks
+Pulled into next/dt, thanks!
 
--- 
-~Vinod
+      Arnd
