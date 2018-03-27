@@ -1,48 +1,34 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v6 0/6] Add MediaTek PMIC keys support
-Date: Tue, 27 Mar 2018 12:47:42 +0200
-Message-ID: <3ece050c-7573-ef4e-2c89-61645a243a33@gmail.com>
-References: <1508937364-30054-1-git-send-email-chen.zhong@mediatek.com>
- <808b2029da224ab687fb0553cbc1c68e@mtkmbs08n1.mediatek.inc>
- <1521685073.28226.10.camel@mtkswgap22> <20180323185418.GD255819@dtor-ws>
- <20180327080507.pgil6pw2mn4y2f4d@dell>
+From: Vinod Koul <vinod.koul@intel.com>
+Subject: Re: [PATCH v7 0/3] add support for Mediatek High-Speed DMA
+ controller on MT7622 and MT7623 SoC
+Date: Tue, 27 Mar 2018 17:31:46 +0530
+Message-ID: <20180327120146.GI15443@localhost>
+References: <cover.1521098171.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180327080507.pgil6pw2mn4y2f4d@dell>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <cover.1521098171.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Mark Rutland <mark.rutland@arm.com>, a.zummo@towertech.it, devicetree@vger.kernel.org, linus.walleij@linaro.org, jcsing.lee@samsung.com, linux-kernel@vger.kernel.org, krzk@kernel.org, javier@osg.samsung.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org, eddie.huang@mediatek.com, Chen.Zhong@mediatek.com, beomho.seo@samsung.com, linux-rtc@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: dan.j.williams@intel.com, robh+dt@kernel.org, mark.rutland@arm.com, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 03/27/2018 10:05 AM, Lee Jones wrote:
-> On Fri, 23 Mar 2018, Dmitry Torokhov wrote:
->> On Thu, Mar 22, 2018 at 10:17:53AM +0800, Sean Wang wrote:
->>> Hi, Dmitry and Lee
->>>
->>> The series seems not being got merged. Are they good enough to be ready
->>> into the your tree?
->>>
->>> Recently I've tested the series with focusing on pwrkey event generated
->>> through interrupt when push and release the key on bpi-r2 board and then
->>> finally it's working fine. but for homekey it cannot be found on the
->>> board and thus I cannot have more tests more about it.
->>>
->>> Tested-by: Sean Wang <sean.wang@mediatek.com>
->>
->> You have my Ack on the input patch; I expect it go through Lee's tree as
->> there are some dependencies on mfd core piece.
+On Thu, Mar 15, 2018 at 03:40:34PM +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Are you happy for me to merge the Input dt-bindings without your Ack?
 > 
+> This patchset introduces support for MediaTek High-Speed DMA controller
+> (MTK-HSDMA) Currently, the driver is already tested successfully with
+> dmatest module on MT7622 and MT7623 SoC. 
+> 
+> MTK-HSDMA on MT7622/23 SoC has a single ring which is dedicated for
+> doing memory-to-memory transfer through ring-based descriptor management.
+> Even though there is only a single ring available inside HSDMA, the
+> driver is being extended to the support for multiple virtual channels
+> processing simultaneously by means of DMA_VIRTUAL_CHANNELS.
 
-They got both Acked in v5, but the commit message was not updated:
-https://patchwork.kernel.org/patch/9973721/
-https://patchwork.kernel.org/patch/9973723/
+Applied all, thanks
 
-Regards,
-Matthias
+-- 
+~Vinod
