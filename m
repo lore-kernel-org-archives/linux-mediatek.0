@@ -1,67 +1,248 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v1 01/16] dt-bindings: power: reset: mediatek: add
- bindings for power device
-Date: Mon, 26 Mar 2018 17:24:55 -0500
-Message-ID: <20180326222455.6kou2rdn76k6p6ct@rob-hp-laptop>
-References: <cover.1521794176.git.sean.wang@mediatek.com>
- <c5527464207b02d40f1c2682feb97ebf5dd443be.1521794176.git.sean.wang@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [RFC usb-next v2 1/2] usb: core: split
+ usb_phy_roothub_{init,alloc}
+Date: Tue, 27 Mar 2018 08:50:48 +0800
+Message-ID: <1522111848.3717.188.camel@mhfsdcap03>
+References: <20180324142121.8618-1-martin.blumenstingl@googlemail.com>
+ <20180324142121.8618-2-martin.blumenstingl@googlemail.com>
+ <1522035422.3717.181.camel@mhfsdcap03>
+ <CAFBinCBaY6io5kye2inbjKvECBZY9bpuiftYhVS9i=Ro8AxHXg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <c5527464207b02d40f1c2682feb97ebf5dd443be.1521794176.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: mark.rutland@arm.com, sre@kernel.org, lee.jones@linaro.org, a.zummo@towertech.it, alexandre.belloni@free-electrons.com, eddie.huang@mediatek.com, devicetree@vger.kernel.org, linux-rtc@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAFBinCBaY6io5kye2inbjKvECBZY9bpuiftYhVS9i=Ro8AxHXg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+Cc: j-keerthy-l0cyMroinI0@public.gmane.org, d-gerlach-l0cyMroinI0@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, rogerq-l0cyMroinI0@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Mar 23, 2018 at 05:14:58PM +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On Mon, 2018-03-26 at 22:31 +0200, Martin Blumenstingl wrote:
+> Hi Chunfeng,
 > 
-> Add device-tree binding for the power device responsible for shutdown a
-> remote SoC, which is a tiny circuit block present on MediaTek PMIC based
-> RTC.
+> On Mon, Mar 26, 2018 at 5:37 AM, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> > On Sat, 2018-03-24 at 15:21 +0100, Martin Blumenstingl wrote:
+> >> Before this patch usb_phy_roothub_init served two purposes (from a
+> >> caller's point of view - like hcd.c):
+> >> - parsing the PHYs and allocating the list entries
+> >> - calling phy_init on each list entry
+> >>
+> >> While this worked so far it has one disadvantage: if we need to call
+> >> phy_init for each PHY instance then the existing code cannot be re-used.
+> >> Solve this by splitting off usb_phy_roothub_alloc which only parses the
+> >> PHYs and allocates the list entries.
+> >> usb_phy_roothub_init then gets a struct usb_phy_roothub and only calls
+> >> phy_init on each PHY instance (along with the corresponding cleanup if
+> >> that failed somewhere).
+> >>
+> >> This is a preparation step for adding proper suspend support for some
+> >> hardware that requires phy_exit to be called during suspend and phy_init
+> >> to be called during resume.
+> >>
+> >> Signed-off-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+> >> ---
+> >>  drivers/usb/core/hcd.c | 10 +++++++---
+> >>  drivers/usb/core/phy.c | 51 +++++++++++++++++++++++++-------------------------
+> >>  drivers/usb/core/phy.h |  4 +++-
+> >>  3 files changed, 35 insertions(+), 30 deletions(-)
+> >>
+> >> diff --git a/drivers/usb/core/hcd.c b/drivers/usb/core/hcd.c
+> >> index 777036ae6367..15b0418e3b6a 100644
+> >> --- a/drivers/usb/core/hcd.c
+> >> +++ b/drivers/usb/core/hcd.c
+> >> @@ -2758,12 +2758,16 @@ int usb_add_hcd(struct usb_hcd *hcd,
+> >>       }
+> >>
+> >>       if (!hcd->skip_phy_initialization && usb_hcd_is_primary_hcd(hcd)) {
+> >> -             hcd->phy_roothub = usb_phy_roothub_init(hcd->self.sysdev);
+> >> +             hcd->phy_roothub = usb_phy_roothub_alloc(hcd->self.sysdev);
+> >>               if (IS_ERR(hcd->phy_roothub)) {
+> >>                       retval = PTR_ERR(hcd->phy_roothub);
+> >> -                     goto err_phy_roothub_init;
+> >> +                     goto err_phy_roothub_alloc;
+> >>               }
+> >>
+> >> +             retval = usb_phy_roothub_init(hcd->phy_roothub);
+> >> +             if (retval)
+> >> +                     goto err_phy_roothub_alloc;
+> >> +
+> >>               retval = usb_phy_roothub_power_on(hcd->phy_roothub);
+> >>               if (retval)
+> >>                       goto err_usb_phy_roothub_power_on;
+> >> @@ -2936,7 +2940,7 @@ int usb_add_hcd(struct usb_hcd *hcd,
+> >>       usb_phy_roothub_power_off(hcd->phy_roothub);
+> >>  err_usb_phy_roothub_power_on:
+> >>       usb_phy_roothub_exit(hcd->phy_roothub);
+> >> -err_phy_roothub_init:
+> >> +err_phy_roothub_alloc:
+> >>       if (hcd->remove_phy && hcd->usb_phy) {
+> >>               usb_phy_shutdown(hcd->usb_phy);
+> >>               usb_put_phy(hcd->usb_phy);
+> >> diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
+> >> index f19aaa3c899c..d1861c5a74de 100644
+> >> --- a/drivers/usb/core/phy.c
+> >> +++ b/drivers/usb/core/phy.c
+> >> @@ -19,19 +19,6 @@ struct usb_phy_roothub {
+> >>       struct list_head        list;
+> >>  };
+> >>
+> >> -static struct usb_phy_roothub *usb_phy_roothub_alloc(struct device *dev)
+> >> -{
+> >> -     struct usb_phy_roothub *roothub_entry;
+> >> -
+> >> -     roothub_entry = devm_kzalloc(dev, sizeof(*roothub_entry), GFP_KERNEL);
+> >> -     if (!roothub_entry)
+> >> -             return ERR_PTR(-ENOMEM);
+> >> -
+> >> -     INIT_LIST_HEAD(&roothub_entry->list);
+> >> -
+> >> -     return roothub_entry;
+> >> -}
+> >> -
+> >>  static int usb_phy_roothub_add_phy(struct device *dev, int index,
+> >>                                  struct list_head *list)
+> >>  {
+> >> @@ -45,9 +32,9 @@ static int usb_phy_roothub_add_phy(struct device *dev, int index,
+> >>                       return PTR_ERR(phy);
+> >>       }
+> >
+> >>
+> >> -     roothub_entry = usb_phy_roothub_alloc(dev);
+> >> -     if (IS_ERR(roothub_entry))
+> >> -             return PTR_ERR(roothub_entry);
+> >> +     roothub_entry = devm_kzalloc(dev, sizeof(*roothub_entry), GFP_KERNEL);
+> >> +     if (!roothub_entry)
+> >> +             return -ENOMEM;
+> >>
+> >>       roothub_entry->phy = phy;
+> >>
+> >> @@ -56,11 +43,9 @@ static int usb_phy_roothub_add_phy(struct device *dev, int index,
+> >>       return 0;
+> >>  }
+> >>
+> >> -struct usb_phy_roothub *usb_phy_roothub_init(struct device *dev)
+> >> +struct usb_phy_roothub *usb_phy_roothub_alloc(struct device *dev)
+> >>  {
+> >>       struct usb_phy_roothub *phy_roothub;
+> >> -     struct usb_phy_roothub *roothub_entry;
+> >> -     struct list_head *head;
+> >>       int i, num_phys, err;
+> >>
+> >>       num_phys = of_count_phandle_with_args(dev->of_node, "phys",
+> >> @@ -68,16 +53,31 @@ struct usb_phy_roothub *usb_phy_roothub_init(struct device *dev)
+> >>       if (num_phys <= 0)
+> >>               return NULL;
+> >>
+> >> -     phy_roothub = usb_phy_roothub_alloc(dev);
+> >> -     if (IS_ERR(phy_roothub))
+> >> -             return phy_roothub;
+> >> +     phy_roothub = devm_kzalloc(dev, sizeof(*phy_roothub), GFP_KERNEL);
+> >> +     if (!phy_roothub)
+> >> +             return ERR_PTR(-ENOMEM);
+> >> +
+> >> +     INIT_LIST_HEAD(&phy_roothub->list);
+> >>
+> >>       for (i = 0; i < num_phys; i++) {
+> >>               err = usb_phy_roothub_add_phy(dev, i, &phy_roothub->list);
+> > BTW:
+> >
+> > static int usb_phy_roothub_add_phy(struct device *dev, int index,
+> >                    struct list_head *list)
+> > {
+> >     struct usb_phy_roothub *roothub_entry;
+> >     struct phy *phy = devm_of_phy_get_by_index(dev, dev->of_node,
+> > index);
+> >
+> >     if (IS_ERR_OR_NULL(phy)) {
+> >         if (!phy || PTR_ERR(phy) == -ENODEV)
+> >             return 0;
+> >         else
+> >             return PTR_ERR(phy);
+> >     }
+> >
+> > changed as:
+> >     if (IS_ERR(phy))
+> >          return PTR_ERR(phy);
+> >
+> > The checking of return code of devm_of_phy_get_by_index() called by
+> > usb_phy_roothub_add_phy() need be fixed? because it should exist for
+> > index @i.
+> good catch - thank you!
+> I think (but I don't remember exactly) my idea was to catch the case
+> where CONFIG_GENERIC_PHY was disabled. however, in that case the PHY
+> framework returns ERR_PTR(-ENOSYS);
+In the earlier patch, phy is got by name for each port, and may not
+exist.
 > 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  .../bindings/power/reset/mt6397-rtc-poweroff.txt   | 24 ++++++++++++++++++++++
->  1 file changed, 24 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/power/reset/mt6397-rtc-poweroff.txt
+> let me know if I should send a patch for this issue or if you want to
+> send a patch yourself
+> however, I'd suggest waiting until this RFC is finished/merged because
+> this issue already exist in the code before this series
+Ok, I'll send a patch if need after this RFC is merged
 > 
-> diff --git a/Documentation/devicetree/bindings/power/reset/mt6397-rtc-poweroff.txt b/Documentation/devicetree/bindings/power/reset/mt6397-rtc-poweroff.txt
-> new file mode 100644
-> index 0000000..75a9d7d
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/power/reset/mt6397-rtc-poweroff.txt
-> @@ -0,0 +1,24 @@
-> +Device-Tree bindings for Power Device on MediaTek PMIC RTC
-> +
-> +The power device is responsible for externally power off or on the remote
-> +MediaTek SoC through the a tiny circuit block BBPU inside PMIC RTC.
-> +
-> +Required parent node:
-> +- rtc
-> +	For MediaTek PMIC RTC bindings, see:
-> +	Documentation/devicetree/bindings/mfd/mt6397.txt
-> +
-> +Required properties:
-> +- compatible: Should be one of follows
-> +	"mediatek,mt6323-rtc-poweroff": for MT6323 PMIC
-> +	"mediatek,mt6397-rtc-poweroff": for MT6397 PMIC
-> +
-> +Example:
-> +
-> +	rtc {
-> +		compatible = "mediatek,mt6323-rtc";
-> +
-> +		power-off {
-> +			compatible = "mediatek,mt6323-rtc-poweroff";
-> +		};
-
-There's no need for this node. The OS can register a device in the rtc 
-driver.
-
-> +	};
-> -- 
-> 2.7.4
+> >>               if (err)
+> >> -                     goto err_out;
+> >> +                     return ERR_PTR(err);
+> >>       }
+> >>
+> >> +     return phy_roothub;
+> >> +}
+> >> +EXPORT_SYMBOL_GPL(usb_phy_roothub_alloc);
+> >> +
+> >> +int usb_phy_roothub_init(struct usb_phy_roothub *phy_roothub)
+> >> +{
+> >> +     struct usb_phy_roothub *roothub_entry;
+> >> +     struct list_head *head;
+> >> +     int err;
+> >> +
+> >> +     if (!phy_roothub)
+> >> +             return 0;
+> >> +
+> >>       head = &phy_roothub->list;
+> >>
+> >>       list_for_each_entry(roothub_entry, head, list) {
+> >> @@ -86,14 +86,13 @@ struct usb_phy_roothub *usb_phy_roothub_init(struct device *dev)
+> >>                       goto err_exit_phys;
+> >>       }
+> >>
+> >> -     return phy_roothub;
+> >> +     return 0;
+> >>
+> >>  err_exit_phys:
+> >>       list_for_each_entry_continue_reverse(roothub_entry, head, list)
+> >>               phy_exit(roothub_entry->phy);
+> >>
+> >> -err_out:
+> >> -     return ERR_PTR(err);
+> >> +     return err;
+> >>  }
+> >>  EXPORT_SYMBOL_GPL(usb_phy_roothub_init);
+> >>
+> >> diff --git a/drivers/usb/core/phy.h b/drivers/usb/core/phy.h
+> >> index 6fde59bfbff8..eb31253201ad 100644
+> >> --- a/drivers/usb/core/phy.h
+> >> +++ b/drivers/usb/core/phy.h
+> >> @@ -1,6 +1,8 @@
+> >>  struct usb_phy_roothub;
+> >>
+> >> -struct usb_phy_roothub *usb_phy_roothub_init(struct device *dev);
+> >> +struct usb_phy_roothub *usb_phy_roothub_alloc(struct device *dev);
+> >> +
+> >> +int usb_phy_roothub_init(struct usb_phy_roothub *phy_roothub);
+> >>  int usb_phy_roothub_exit(struct usb_phy_roothub *phy_roothub);
+> >>
+> >>  int usb_phy_roothub_power_on(struct usb_phy_roothub *phy_roothub);
+> >
+> >
 > 
+> 
+> Regards
+> Martin
