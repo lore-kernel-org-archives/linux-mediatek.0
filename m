@@ -1,149 +1,77 @@
-From: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Subject: [PATCH usb-next v4 2/2] usb: core: use phy_exit during suspend if
- wake up is not supported
-Date: Tue, 27 Mar 2018 23:26:21 +0200
-Message-ID: <20180327212621.3400-3-martin.blumenstingl@googlemail.com>
-References: <20180327212621.3400-1-martin.blumenstingl@googlemail.com>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH v3] pwm: mediatek: fix up PWM4 and PWM5 malfunction on
+ MT7623
+Date: Wed, 28 Mar 2018 00:30:48 +0200
+Message-ID: <20180327223047.GG28163@mithrandir>
+References: <051f401bcca48ece188023ccf10b2cedc7a25a64.1519891948.git.sean.wang@mediatek.com>
+ <20180302105719.GC27178@ulmo>
+ <1520030090.8089.186.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180327212621.3400-1-martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
-Cc: d-gerlach-l0cyMroinI0@public.gmane.org, Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, j-keerthy-l0cyMroinI0@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, rogerq-l0cyMroinI0@public.gmane.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="hTiIB9CRvBOLTyqY"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1520030090.8089.186.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: matthias.bgg@gmail.com, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org, Zhi Mao <zhi.mao@mediatek.com>, John Crispin <john@phrozen.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-If the USB controller can wake up the system (which is the case for
-example with the Mediatek USB3 IP) then we must not call phy_exit during
-suspend to ensure that the USB controller doesn't have to re-enumerate
-the devices during resume.
-However, if the USB controller cannot wake up the system (which is the
-case for example on various TI platforms using a dwc3 controller) then
-we must call phy_exit during suspend. Otherwise the PHY driver keeps the
-clocks enabled, which prevents the system from reaching the lowest power
-levels in the suspend state.
 
-Solve this by introducing two new functions in the PHY wrapper which are
-dedicated to the suspend and resume handling.
-If the controller can wake up the system the new usb_phy_roothub_suspend
-function will simply call usb_phy_roothub_power_off. However, if wake up
-is not supported by the controller it will also call
-usb_phy_roothub_exit.
-The also new usb_phy_roothub_resume function takes care of calling
-usb_phy_roothub_init (if the controller can't wake up the system) in
-addition to usb_phy_roothub_power_on.
+--hTiIB9CRvBOLTyqY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fixes: 07dbff0ddbd86c ("usb: core: add a wrapper for the USB PHYs on the HCD")
-Fixes: 178a0bce05cbc1 ("usb: core: hcd: integrate the PHY wrapper into the HCD core")
-Reported-by: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
-Suggested-by: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
-Suggested-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Tested-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Reviewed-by: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
----
- drivers/usb/core/hcd.c |  8 +++++---
- drivers/usb/core/phy.c | 35 +++++++++++++++++++++++++++++++++++
- drivers/usb/core/phy.h |  5 +++++
- 3 files changed, 45 insertions(+), 3 deletions(-)
+On Sat, Mar 03, 2018 at 06:34:50AM +0800, Sean Wang wrote:
+> On Fri, 2018-03-02 at 11:57 +0100, Thierry Reding wrote:
+> > On Thu, Mar 01, 2018 at 04:19:12PM +0800, sean.wang@mediatek.com wrote:
+> > > From: Sean Wang <sean.wang@mediatek.com>
+> > >=20
+> > > Since the offset for both registers, PWMDWIDTH and PWMTHRES, used to
+> > > control PWM4 or PWM5 are distinct from the other PWMs, whose wrong
+> > > programming on PWM hardware causes waveform cannot be output as expec=
+ted.
+> > > Thus, the patch adds the extra condition for fixing up the weird case=
+ to
+> > > let PWM4 or PWM5 able to work on MT7623.
+> > >=20
+> > > v1 -> v2: use pwm45_fixup naming instead of pwm45_quirk
+> > > v2 -> v3: add more tags for Reviewed-by, Fixes, and Cc stable
+> > >=20
+> > > Cc: stable@vger.kernel.org
+> > > Fixes: caf065f8fd58 ("pwm: Add MediaTek PWM support")
+> > > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> > > Cc: Zhi Mao <zhi.mao@mediatek.com>
+> > > Cc: John Crispin <john@phrozen.org>
+> > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> > > ---
+> > >  drivers/pwm/pwm-mediatek.c | 24 +++++++++++++++++++++---
+> > >  1 file changed, 21 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/usb/core/hcd.c b/drivers/usb/core/hcd.c
-index 15b0418e3b6a..78bae4ecd68b 100644
---- a/drivers/usb/core/hcd.c
-+++ b/drivers/usb/core/hcd.c
-@@ -2262,7 +2262,8 @@ int hcd_bus_suspend(struct usb_device *rhdev, pm_message_t msg)
- 		hcd->state = HC_STATE_SUSPENDED;
- 
- 		if (!PMSG_IS_AUTO(msg))
--			usb_phy_roothub_power_off(hcd->phy_roothub);
-+			usb_phy_roothub_suspend(hcd->self.sysdev,
-+						hcd->phy_roothub);
- 
- 		/* Did we race with a root-hub wakeup event? */
- 		if (rhdev->do_remote_wakeup) {
-@@ -2302,7 +2303,8 @@ int hcd_bus_resume(struct usb_device *rhdev, pm_message_t msg)
- 	}
- 
- 	if (!PMSG_IS_AUTO(msg)) {
--		status = usb_phy_roothub_power_on(hcd->phy_roothub);
-+		status = usb_phy_roothub_resume(hcd->self.sysdev,
-+						hcd->phy_roothub);
- 		if (status)
- 			return status;
- 	}
-@@ -2344,7 +2346,7 @@ int hcd_bus_resume(struct usb_device *rhdev, pm_message_t msg)
- 		}
- 	} else {
- 		hcd->state = old_state;
--		usb_phy_roothub_power_off(hcd->phy_roothub);
-+		usb_phy_roothub_suspend(hcd->self.sysdev, hcd->phy_roothub);
- 		dev_dbg(&rhdev->dev, "bus %s fail, err %d\n",
- 				"resume", status);
- 		if (status != -ESHUTDOWN)
-diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
-index 44f008cda7a8..a39d9bb26a4f 100644
---- a/drivers/usb/core/phy.c
-+++ b/drivers/usb/core/phy.c
-@@ -157,3 +157,38 @@ void usb_phy_roothub_power_off(struct usb_phy_roothub *phy_roothub)
- 		phy_power_off(roothub_entry->phy);
- }
- EXPORT_SYMBOL_GPL(usb_phy_roothub_power_off);
-+
-+int usb_phy_roothub_suspend(struct device *controller_dev,
-+			    struct usb_phy_roothub *phy_roothub)
-+{
-+	usb_phy_roothub_power_off(phy_roothub);
-+
-+	/* keep the PHYs initialized so the device can wake up the system */
-+	if (device_may_wakeup(controller_dev))
-+		return 0;
-+
-+	return usb_phy_roothub_exit(phy_roothub);
-+}
-+EXPORT_SYMBOL_GPL(usb_phy_roothub_suspend);
-+
-+int usb_phy_roothub_resume(struct device *controller_dev,
-+			   struct usb_phy_roothub *phy_roothub)
-+{
-+	int err;
-+
-+	/* if the device can't wake up the system _exit was called */
-+	if (!device_may_wakeup(controller_dev)) {
-+		err = usb_phy_roothub_init(phy_roothub);
-+		if (err)
-+			return err;
-+	}
-+
-+	err = usb_phy_roothub_power_on(phy_roothub);
-+
-+	/* undo _init if _power_on failed */
-+	if (err && !device_may_wakeup(controller_dev))
-+		usb_phy_roothub_exit(phy_roothub);
-+
-+	return err;
-+}
-+EXPORT_SYMBOL_GPL(usb_phy_roothub_resume);
-diff --git a/drivers/usb/core/phy.h b/drivers/usb/core/phy.h
-index eb31253201ad..605555901d44 100644
---- a/drivers/usb/core/phy.h
-+++ b/drivers/usb/core/phy.h
-@@ -7,3 +7,8 @@ int usb_phy_roothub_exit(struct usb_phy_roothub *phy_roothub);
- 
- int usb_phy_roothub_power_on(struct usb_phy_roothub *phy_roothub);
- void usb_phy_roothub_power_off(struct usb_phy_roothub *phy_roothub);
-+
-+int usb_phy_roothub_suspend(struct device *controller_dev,
-+			    struct usb_phy_roothub *phy_roothub);
-+int usb_phy_roothub_resume(struct device *controller_dev,
-+			   struct usb_phy_roothub *phy_roothub);
--- 
-2.16.3
+Applied, thanks.
+
+Thierry
+
+--hTiIB9CRvBOLTyqY
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlq6xhcACgkQ3SOs138+
+s6GemRAAven23G0YiLEVbk8S+JKm4WpzNzax/Nsk3xja50+dVlf3+VoeRa/PCW/e
+QguUdC8q9QyujEC/XzNJaaqxIa5T43kOcTePVuwrEHq54+2IFoNSDWi+OuUsCZyu
+ujjK0B3w1Q67ExSqUw9EbeF6dnJf4EZSZCo9iej4TCY8I/bMTcwOaope6itRyKn0
+Y6dp6v5Bpx4Frf4QEH9QObiCJmwsdCgKTNsoLdowqWYrXic3jXA9V1GQPBGXSCCJ
+s8k8bH8vBiGR8FVqPU+DE6NYMb/FjvAxHXMNaFSPhGyMyZpTcPloA0Aq9JTLWfhW
+0V7WrWI9oA0yomKC3nuNCOBFtByniUlrRIGncWLFrmU6vo/H4Th87TQzeDUc7ue3
+9pHcvWfW3Py9LgR0xDffTw1FNbeAAiVsedahQf2WfLR1ecR5ys4RjrHOoH7Ajjw0
+BnNPLxJN4jYyadlG+qtRTxnlExWEfVMyGvbmhaBtnpgqBTsrWL2T94QYWFKWc3AA
+9JOa4iBQ18D+IWWJM06et+ftMkWzkENL5mIPiQ1RomCIiAOFL6+EhYHx9t8kD+0o
+UR+LPVdYwmh+Yfj8uMNvghflJi4iIAijZ+0sA3M8SnhLyAmDPXWarissJ3Ei+5aG
+++a6F7qDY1K9XSwTQICbWhS2DYsxx+DBvVGIcjy6O9xx3rLc+0U=
+=aYXi
+-----END PGP SIGNATURE-----
+
+--hTiIB9CRvBOLTyqY--
