@@ -1,7 +1,8 @@
 From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 1/2] mtd: Fix some function description mismatches in mtdcore.c
-Date: Wed, 28 Mar 2018 17:13:57 +0800
-Message-ID: <1522228438-64034-2-git-send-email-xiaolei.li@mediatek.com>
+Subject: [PATCH 2/2] mtd: nand: Fix some function description mismatches in
+ core.c
+Date: Wed, 28 Mar 2018 17:13:58 +0800
+Message-ID: <1522228438-64034-3-git-send-email-xiaolei.li@mediatek.com>
 References: <1522228438-64034-1-git-send-email-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,47 +22,53 @@ To: boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc
 Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-In mtdcore.c, some function descriptions do not match function
+In core.c, some function descriptions do not match function
 definitions. Just fix these mismatches.
 
 Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/mtd/mtdcore.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/mtd/nand/core.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/mtd/mtdcore.c b/drivers/mtd/mtdcore.c
-index 28553c8..413ea9b 100644
---- a/drivers/mtd/mtdcore.c
-+++ b/drivers/mtd/mtdcore.c
-@@ -419,7 +419,7 @@ int mtd_wunit_to_pairing_info(struct mtd_info *mtd, int wunit,
- EXPORT_SYMBOL_GPL(mtd_wunit_to_pairing_info);
- 
+diff --git a/drivers/mtd/nand/core.c b/drivers/mtd/nand/core.c
+index f237a68..9f6febd 100644
+--- a/drivers/mtd/nand/core.c
++++ b/drivers/mtd/nand/core.c
+@@ -51,7 +51,7 @@ bool nanddev_isbad(struct nand_device *nand, const struct nand_pos *pos)
  /**
-- * mtd_wunit_to_pairing_info - get wunit from pairing information
-+ * mtd_pairing_info_to_wunit - get wunit from pairing information
-  * @mtd: pointer to new MTD device info structure
-  * @info: pairing information struct
+  * nanddev_markbad() - Mark a block as bad
+  * @nand: NAND device
+- * @block: block to mark bad
++ * @pos: position of the block to mark bad
   *
-@@ -1525,9 +1525,9 @@ int mtd_ooblayout_get_databytes(struct mtd_info *mtd, u8 *databuf,
- EXPORT_SYMBOL_GPL(mtd_ooblayout_get_databytes);
- 
+  * Mark a block bad. This function is updating the BBT if available and
+  * calls the low-level markbad hook (nand->ops->markbad()).
+@@ -117,9 +117,9 @@ bool nanddev_isreserved(struct nand_device *nand, const struct nand_pos *pos)
  /**
-- * mtd_ooblayout_get_eccbytes - set data bytes into the oob buffer
-+ * mtd_ooblayout_set_databytes - set data bytes into the oob buffer
-  * @mtd: mtd info structure
-- * @eccbuf: source buffer to get data bytes from
-+ * @databuf: source buffer to get data bytes from
-  * @oobbuf: OOB buffer
-  * @start: first ECC byte to set
-  * @nbytes: number of ECC bytes to set
-@@ -1559,7 +1559,7 @@ int mtd_ooblayout_count_freebytes(struct mtd_info *mtd)
- EXPORT_SYMBOL_GPL(mtd_ooblayout_count_freebytes);
- 
- /**
-- * mtd_ooblayout_count_freebytes - count the number of ECC bytes in OOB
-+ * mtd_ooblayout_count_eccbytes - count the number of ECC bytes in OOB
-  * @mtd: mtd info structure
+  * nanddev_erase() - Erase a NAND portion
+  * @nand: NAND device
+- * @block: eraseblock to erase
++ * @pos: position of the block to erase
   *
-  * Works like mtd_ooblayout_count_bytes(), except it count ECC bytes.
+- * Erases @block if it's not bad.
++ * Erases the block if it's not bad.
+  *
+  * Return: 0 in case of success, a negative error code otherwise.
+  */
+@@ -179,11 +179,11 @@ int nanddev_mtd_erase(struct mtd_info *mtd, struct erase_info *einfo)
+ /**
+  * nanddev_init() - Initialize a NAND device
+  * @nand: NAND device
+- * @memorg: NAND memory organization descriptor
+  * @ops: NAND device operations
++ * @owner: MTD module owner
+  *
+- * Initializes a NAND device object. Consistency checks are done on @memorg and
+- * @ops. Also takes care of initializing the BBT.
++ * Initializes a NAND device object. Consistency checks are done on @ops and
++ * nand memory organization. Also takes care of initializing the BBT.
+  *
+  * Return: 0 in case of success, a negative error code otherwise.
+  */
 -- 
 1.9.1
