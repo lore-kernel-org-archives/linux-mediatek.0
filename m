@@ -1,56 +1,34 @@
 From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v6 0/6] Add MediaTek PMIC keys support
-Date: Wed, 28 Mar 2018 11:26:40 +0100
-Message-ID: <20180328102640.yx6nv5abfexmouuf@dell>
-References: <1508937364-30054-1-git-send-email-chen.zhong@mediatek.com>
- <808b2029da224ab687fb0553cbc1c68e@mtkmbs08n1.mediatek.inc>
- <1521685073.28226.10.camel@mtkswgap22>
- <20180323185418.GD255819@dtor-ws>
- <20180327080507.pgil6pw2mn4y2f4d@dell>
- <3ece050c-7573-ef4e-2c89-61645a243a33@gmail.com>
+Subject: Re: [PATCH v1 03/16] dt-bindings: mfd: mediatek: add a description
+ for MT6323 RTC
+Date: Wed, 28 Mar 2018 12:13:25 +0100
+Message-ID: <20180328111325.2vbyrbfcixheocma@dell>
+References: <cover.1521794176.git.sean.wang@mediatek.com>
+ <ba4708a34e43fbc12e78804840be1698f84243cc.1521794177.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <3ece050c-7573-ef4e-2c89-61645a243a33@gmail.com>
+In-Reply-To: <ba4708a34e43fbc12e78804840be1698f84243cc.1521794177.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Mark Rutland <mark.rutland@arm.com>, a.zummo@towertech.it, devicetree@vger.kernel.org, linus.walleij@linaro.org, jcsing.lee@samsung.com, linux-kernel@vger.kernel.org, krzk@kernel.org, javier@osg.samsung.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org, eddie.huang@mediatek.com, Chen.Zhong@mediatek.com, beomho.seo@samsung.com, linux-rtc@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, sre@kernel.org, a.zummo@towertech.it, alexandre.belloni@free-electrons.com, eddie.huang@mediatek.com, devicetree@vger.kernel.org, linux-rtc@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 27 Mar 2018, Matthias Brugger wrote:
+On Fri, 23 Mar 2018, sean.wang@mediatek.com wrote:
 
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
+> Add a description for MT6323 RTC and link it to the detailed binding
+> documentation.
 > 
-> On 03/27/2018 10:05 AM, Lee Jones wrote:
-> > On Fri, 23 Mar 2018, Dmitry Torokhov wrote:
-> >> On Thu, Mar 22, 2018 at 10:17:53AM +0800, Sean Wang wrote:
-> >>> Hi, Dmitry and Lee
-> >>>
-> >>> The series seems not being got merged. Are they good enough to be ready
-> >>> into the your tree?
-> >>>
-> >>> Recently I've tested the series with focusing on pwrkey event generated
-> >>> through interrupt when push and release the key on bpi-r2 board and then
-> >>> finally it's working fine. but for homekey it cannot be found on the
-> >>> board and thus I cannot have more tests more about it.
-> >>>
-> >>> Tested-by: Sean Wang <sean.wang@mediatek.com>
-> >>
-> >> You have my Ack on the input patch; I expect it go through Lee's tree as
-> >> there are some dependencies on mfd core piece.
-> > 
-> > Are you happy for me to merge the Input dt-bindings without your Ack?
-> > 
-> 
-> They got both Acked in v5, but the commit message was not updated:
-> https://patchwork.kernel.org/patch/9973721/
-> https://patchwork.kernel.org/patch/9973723/
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/mfd/mt6397.txt | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 
-Thanks Matthias.
-
-Chen, can you collect all the Acks and repost as a RESEND please?
+Acked-by: Lee Jones <lee.jones@linaro.org>
 
 -- 
 Lee Jones [李琼斯]
