@@ -1,87 +1,59 @@
-From: Mark Rutland <mark.rutland@arm.com>
-Subject: Re: [PATCH] arm64: avoid race condition issue in dump_backtrace
-Date: Wed, 28 Mar 2018 11:12:41 +0100
-Message-ID: <20180328101240.moo44g5qd3qjuxgn@lakrids.cambridge.arm.com>
-References: <1521687960-3744-1-git-send-email-ji.zhang@mediatek.com>
- <20180322055929.z25brvwlmdighz66@salmiak>
- <1521711329.26617.31.camel@mtksdccf07>
- <20180326113932.2i6qp3776jtmcqk4@lakrids.cambridge.arm.com>
- <1522229612.26617.47.camel@mtksdccf07>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH v6 0/6] Add MediaTek PMIC keys support
+Date: Wed, 28 Mar 2018 11:26:40 +0100
+Message-ID: <20180328102640.yx6nv5abfexmouuf@dell>
+References: <1508937364-30054-1-git-send-email-chen.zhong@mediatek.com>
+ <808b2029da224ab687fb0553cbc1c68e@mtkmbs08n1.mediatek.inc>
+ <1521685073.28226.10.camel@mtkswgap22>
+ <20180323185418.GD255819@dtor-ws>
+ <20180327080507.pgil6pw2mn4y2f4d@dell>
+ <3ece050c-7573-ef4e-2c89-61645a243a33@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1522229612.26617.47.camel@mtksdccf07>
+In-Reply-To: <3ece050c-7573-ef4e-2c89-61645a243a33@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "Ji.Zhang" <ji.zhang@mediatek.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, James Morse <james.morse@arm.com>, Dave Martin <Dave.Martin@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, Michael Weiser <michael.weiser@gmx.de>, Julien Thierry <julien.thierry@arm.com>, Xie XiuQi <xiexiuqi@huawei.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, shadanji@163.com
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Mark Rutland <mark.rutland@arm.com>, a.zummo@towertech.it, devicetree@vger.kernel.org, linus.walleij@linaro.org, jcsing.lee@samsung.com, linux-kernel@vger.kernel.org, krzk@kernel.org, javier@osg.samsung.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org, eddie.huang@mediatek.com, Chen.Zhong@mediatek.com, beomho.seo@samsung.com, linux-rtc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Mar 28, 2018 at 05:33:32PM +0800, Ji.Zhang wrote:
-> On Mon, 2018-03-26 at 12:39 +0100, Mark Rutland wrote:
-> > I think that it would be preferable to try to avoid the inifinite loop
-> > case. We could hit that by accident if we're tracing a live task.
+On Tue, 27 Mar 2018, Matthias Brugger wrote:
+
+> 
+> 
+> On 03/27/2018 10:05 AM, Lee Jones wrote:
+> > On Fri, 23 Mar 2018, Dmitry Torokhov wrote:
+> >> On Thu, Mar 22, 2018 at 10:17:53AM +0800, Sean Wang wrote:
+> >>> Hi, Dmitry and Lee
+> >>>
+> >>> The series seems not being got merged. Are they good enough to be ready
+> >>> into the your tree?
+> >>>
+> >>> Recently I've tested the series with focusing on pwrkey event generated
+> >>> through interrupt when push and release the key on bpi-r2 board and then
+> >>> finally it's working fine. but for homekey it cannot be found on the
+> >>> board and thus I cannot have more tests more about it.
+> >>>
+> >>> Tested-by: Sean Wang <sean.wang@mediatek.com>
+> >>
+> >> You have my Ack on the input patch; I expect it go through Lee's tree as
+> >> there are some dependencies on mfd core piece.
 > > 
-> > It's a little tricky to ensure that we don't loop, since we can have
-> > traces that span several stacks, e.g. overflow -> irq -> task, so we
-> > need to know where the last frame was, and we need to defnie a strict
-> > order for stack nesting.
-> Can we consider this through an easier way? According to AArch64 PCS,
-> stack should be full-descending, which means we can add validation on fp
-> by comparing the fp and previous fp, if they are equal means there is an
-> exactly loop, while if current fp is smaller than previous means the
-> uwnind is rollback, which is also unexpected. The only concern is how to
-> handle the unwind from one stack span to another (eg. overflow->irq, or
-> irq->task, etc)
-> Below diff is a proposal that we check if stack spans, and if yes, a
-> tricky is used to bypass the fp check.
+> > Are you happy for me to merge the Input dt-bindings without your Ack?
+> > 
 > 
-> diff --git a/arch/arm64/kernel/traps.c b/arch/arm64/kernel/traps.c
-> index eb2d151..760ea59 100644
-> --- a/arch/arm64/kernel/traps.c
-> +++ b/arch/arm64/kernel/traps.c
-> @@ -101,6 +101,7 @@ void dump_backtrace(struct pt_regs *regs, struct
-> task_struct *tsk)
->  {
->         struct stackframe frame;
->         int skip;
-> +       unsigned long fp = 0x0;
-> 
->         pr_debug("%s(regs = %p tsk = %p)\n", __func__, regs, tsk);
-> 
-> @@ -127,6 +128,20 @@ void dump_backtrace(struct pt_regs *regs, struct
-> task_struct *tsk)
->         skip = !!regs;
->         printk("Call trace:\n");
->         do {
-> +               unsigned long stack;
-> +               if (fp) {
-> +                       if (in_entry_text(frame.pc)) {
-> +                               stack = frame.fp - offsetof(struct
-> pt_regs, stackframe);
-> +
-> +                               if (on_accessible_stack(tsk, stack))
-> +                                       fp = frame.fp + 0x8; //tricky to
-> bypass the fp check
-> +                       }
-> +                       if (fp <= frame->fp) {
-> +                               pr_notice("fp invalid, stop unwind\n");
-> +                               break;
-> +                       }
-> +               }
-> +               fp = frame.fp;
+> They got both Acked in v5, but the commit message was not updated:
+> https://patchwork.kernel.org/patch/9973721/
+> https://patchwork.kernel.org/patch/9973723/
 
-I'm very much not keen on this.
+Thanks Matthias.
 
-I think that if we're going to do this, the only sane way to do it is to
-have unwind_frame() verify the current fp against the previous one, and
-verify that we have some strict nesting of stacks. Generally, that means
-we can go:
+Chen, can you collect all the Acks and repost as a RESEND please?
 
-  overflow -> irq -> task
-
-... though I'm not sure what to do about the SDEI stack vs the overflow
-stack.
-
-Thanks,
-Mark.
+-- 
+Lee Jones [李琼斯]
+Linaro Services Technical Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
