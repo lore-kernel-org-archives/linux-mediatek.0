@@ -1,42 +1,67 @@
 From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH] spi: mediatek: remove redundant MODULE_ALIAS entries
-Date: Wed, 28 Mar 2018 11:09:03 +0800
-Message-ID: <1522206543.18424.23.camel@mtkswgap22>
-References: <58fc8553bdc3cbad8d107a905947b7e4d9c12b92.1522054975.git.sean.wang@mediatek.com>
-         <20180328021416.GK29239@sirena.org.uk>
+Subject: Re: [PATCH v1 02/16] dt-bindings: rtc: mediatek: add bindings for
+ PMIC RTC
+Date: Wed, 28 Mar 2018 11:53:17 +0800
+Message-ID: <1522209197.18424.26.camel@mtkswgap22>
+References: <cover.1521794176.git.sean.wang@mediatek.com>
+         <5846e8be319c4836808c8127d5bb51b7e999e896.1521794177.git.sean.wang@mediatek.com>
+         <20180323094118.GC3417@piout.net> <20180323101505.GF3417@piout.net>
+         <1521920188.31197.13.camel@mtkswgap22> <20180327151848.GD22441@piout.net>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180328021416.GK29239@sirena.org.uk>
+In-Reply-To: <20180327151848.GD22441@piout.net>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: matthias.bgg@gmail.com, linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, sre@kernel.org, lee.jones@linaro.org, a.zummo@towertech.it, eddie.huang@mediatek.com, devicetree@vger.kernel.org, linux-rtc@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-03-28 at 10:14 +0800, Mark Brown wrote:
-> On Mon, Mar 26, 2018 at 06:04:18PM +0800, sean.wang@mediatek.com wrote:
-> > From: Sean Wang <sean.wang@mediatek.com>
+On Tue, 2018-03-27 at 17:18 +0200, Alexandre Belloni wrote:
+> On 25/03/2018 at 03:36:28 +0800, Sean Wang wrote:
+> > just reply both replies in the same mail
 > > 
-> > MODULE_ALIAS exports information to allow the module to be auto-loaded at
-> > boot for the drivers registered using legacy platform registration.
+> > 1.) the power-off device is a part of rtc, use the same registers rtc
+> > has and thus it is put as child nodes under the node rtc to reflect the
+> > reality of characteristics the rtc has.
 > > 
-> > However, currently the driver is always used by DT-only platform,
-> > MODULE_ALIAS is redundant and should be removed properly.
+> > Or am I wrong for a certain aspect in these opinions?
+> > 
 > 
-> There is no meaningful cost to having the alias there, why remove it?
+> My point is that it is also part of the PMIC so it may as well be
+> registers from the mfd driver which already registers a bunch of devices
+> instead of doing unusual stuff from the rtc driver.
+> 
+> mt6397_rtc->regmap is mt6397_chip->regmap anyway. You have the added
+> benefit that if the RTC driver probe fails for some reason, you may
+> still be able to probe the reset driver.
+> 
+> I don't tink there is any benefit having it as a child of the rtc
+> device.
+> 
 
 
-It's no explicitly improved to the driver, it only takes less bytes
-in .secion modinfo from 644 bytes to 620 bytes in the observation with
-objdump.
+really thanks! it's an optional solution I thought it 's fine and worth
+doing
 
-More importantly, it seems the driver should probably refer to another
-qualified driver at the initial development, but MODULE_ALIAS is
-forgetting to be removed to meet real usage for the module autoload. 
+but so far I cannot fully make sure of whether mfd can accept two
+devices holding overlay IORESOURCE_MEM.
 
-Even I was curious whether people for the driver know the actual purpose
-the macro it's for.
+Or do you like Rob's suggestion in [1] ? By which, I tend to embed a
+sub-device with platform_device_register_data api in the rtc probe()
+instead of treating it as a dt node under rtc node, but which seems
+something a bit violates your preferences :(
 
-Removing MODULE_ALIAS is just to correct the driver to where it should
-be.
+Just confirm to know which way I should step into before I produce next
+version.
+
+[1]
+http://lists.infradead.org/pipermail/linux-mediatek/2018-March/012576.html
+
+> > 2) the other sub-functions for the same pmic already created its own
+> > dt-binding document belonged to its corresponding subsystem. Don't we
+> > really want to follow it them all?
+> > 
+> 
+> Ok, that's fine.
+> 
