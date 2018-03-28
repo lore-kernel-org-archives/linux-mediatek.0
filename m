@@ -1,49 +1,68 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] spi: mediatek: remove redundant MODULE_ALIAS entries
-Date: Wed, 28 Mar 2018 10:14:16 +0800
-Message-ID: <20180328021416.GK29239@sirena.org.uk>
-References: <58fc8553bdc3cbad8d107a905947b7e4d9c12b92.1522054975.git.sean.wang@mediatek.com>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="SdaPbLtAangIkrMZ"
+Subject: Applied "ASoC: mediatek: remove "simple-mfd" in the example" to the asoc tree
+Date: Wed, 28 Mar 2018 03:20:17 +0100 (BST)
+Message-ID: <20180328022017.BA9C844007A@finisterre.ee.mobilebroadband>
+References: <79b79aa29ea14e6f851ad01ed1f5a33543b05040.1522114156.git.ryder.lee@mediatek.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <58fc8553bdc3cbad8d107a905947b7e4d9c12b92.1522054975.git.sean.wang@mediatek.com>
+In-Reply-To: <79b79aa29ea14e6f851ad01ed1f5a33543b05040.1522114156.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: matthias.bgg@gmail.com, linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Mark Brown <broonie@kernel.org>Mark Brown <broonie@kernel.org>, alsa-devel@alsa-project.org, Garlic Tseng <garlic.tseng@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
 List-Id: linux-mediatek@lists.infradead.org
 
+The patch
 
---SdaPbLtAangIkrMZ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+   ASoC: mediatek: remove "simple-mfd" in the example
 
-On Mon, Mar 26, 2018 at 06:04:18PM +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
->=20
-> MODULE_ALIAS exports information to allow the module to be auto-loaded at
-> boot for the drivers registered using legacy platform registration.
->=20
-> However, currently the driver is always used by DT-only platform,
-> MODULE_ALIAS is redundant and should be removed properly.
+has been applied to the asoc tree at
 
-There is no meaningful cost to having the alias there, why remove it?
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
---SdaPbLtAangIkrMZ
-Content-Type: application/pgp-signature; name="signature.asc"
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
------BEGIN PGP SIGNATURE-----
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlq6+ngACgkQJNaLcl1U
-h9DH+Qf9EtxwWsTohTFZLq84M56CM8LV9zkR8RXwk1z1y8iuiUjwqlLSfeAltGNU
-XHcFWDc3Q9+hsx/nhq3YsVGJ8b7ligzUs+jfsZ4a9G+/KG+89ojAMzn24zTZoQWy
-0FjMU6KfdlhcM07f3g7GH/Rj/OiriBGOs1hfYtHZA0fOshGgT5yLPMSwb5GTbjgD
-flCk4qclIug/P8+WDGYMABV0+zypuZK1xtK+fmoFZwTLKg8BnQU7pyZIsainqjIj
-MjhGdolULgvMBtVbqwS84epAWq88wxTd9FZGyeEgCbc8L4hrrXuuMH3Xj/lqHBEf
-mQQkcN8gROFJYdGdIakuHP69k7Il9g==
-=HD40
------END PGP SIGNATURE-----
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
---SdaPbLtAangIkrMZ--
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From de2404701469a7e8d557b8d7b4d35bda5b262cac Mon Sep 17 00:00:00 2001
+From: Ryder Lee <ryder.lee@mediatek.com>
+Date: Tue, 27 Mar 2018 09:32:25 +0800
+Subject: [PATCH] ASoC: mediatek: remove "simple-mfd" in the example
+
+Remove compatible string "simple-mfd" in the example as we have
+already added devm_of_platform_populate() in the parent driver.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt b/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
+index 6df87b97f7cb..e2f7f4951215 100644
+--- a/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
++++ b/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
+@@ -53,7 +53,7 @@ See ../arm/mediatek/mediatek,audsys.txt for details about the parent node.
+ Example:
+ 
+ 	audsys: audio-subsystem@11220000 {
+-		compatible = "mediatek,mt2701-audsys", "syscon", "simple-mfd";
++		compatible = "mediatek,mt2701-audsys", "syscon";
+ 		...
+ 
+ 		afe: audio-controller {
+-- 
+2.16.2
