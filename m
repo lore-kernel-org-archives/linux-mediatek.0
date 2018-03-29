@@ -1,47 +1,66 @@
-From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 0/2] Fix some function description mismatches
-Date: Thu, 29 Mar 2018 09:34:57 +0800
-Message-ID: <1522287299-12620-1-git-send-email-xiaolei.li@mediatek.com>
+From: Chen Zhong <chen.zhong@mediatek.com>
+Subject: Re: [PATCH v6 0/6] Add MediaTek PMIC keys support
+Date: Thu, 29 Mar 2018 10:31:15 +0800
+Message-ID: <1522290675.17084.8.camel@mhfsdcap03>
+References: <1508937364-30054-1-git-send-email-chen.zhong@mediatek.com>
+         <808b2029da224ab687fb0553cbc1c68e@mtkmbs08n1.mediatek.inc>
+         <1521685073.28226.10.camel@mtkswgap22> <20180323185418.GD255819@dtor-ws>
+         <20180327080507.pgil6pw2mn4y2f4d@dell>
+         <3ece050c-7573-ef4e-2c89-61645a243a33@gmail.com>
+         <20180328102640.yx6nv5abfexmouuf@dell>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180328102640.yx6nv5abfexmouuf@dell>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lee Jones <lee.jones@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Mark Rutland <mark.rutland@arm.com>, a.zummo@towertech.it, devicetree@vger.kernel.org, linus.walleij@linaro.org, jcsing.lee@samsung.com, linux-kernel@vger.kernel.org, krzk@kernel.org, javier@osg.samsung.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org, eddie.huang@mediatek.com, beomho.seo@samsung.com, linux-rtc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch fixes some function description mismatches.
+On Wed, 2018-03-28 at 11:26 +0100, Lee Jones wrote:
+> On Tue, 27 Mar 2018, Matthias Brugger wrote:
+> 
+> > 
+> > 
+> > On 03/27/2018 10:05 AM, Lee Jones wrote:
+> > > On Fri, 23 Mar 2018, Dmitry Torokhov wrote:
+> > >> On Thu, Mar 22, 2018 at 10:17:53AM +0800, Sean Wang wrote:
+> > >>> Hi, Dmitry and Lee
+> > >>>
+> > >>> The series seems not being got merged. Are they good enough to be ready
+> > >>> into the your tree?
+> > >>>
+> > >>> Recently I've tested the series with focusing on pwrkey event generated
+> > >>> through interrupt when push and release the key on bpi-r2 board and then
+> > >>> finally it's working fine. but for homekey it cannot be found on the
+> > >>> board and thus I cannot have more tests more about it.
+> > >>>
+> > >>> Tested-by: Sean Wang <sean.wang@mediatek.com>
+> > >>
+> > >> You have my Ack on the input patch; I expect it go through Lee's tree as
+> > >> there are some dependencies on mfd core piece.
+> > > 
+> > > Are you happy for me to merge the Input dt-bindings without your Ack?
+> > > 
+> > 
+> > They got both Acked in v5, but the commit message was not updated:
+> > https://patchwork.kernel.org/patch/9973721/
+> > https://patchwork.kernel.org/patch/9973723/
+> 
+> Thanks Matthias.
+> 
+> Chen, can you collect all the Acks and repost as a RESEND please?
+> 
 
-Changes on v2 relative to:
---------------------
+Thanks Matthias, Lee, Dmitry and Sean for your comments.
 
-tree	: https://github.com/bbrezillon/linux-0day
-branch	: nand/next
-commit	:
-	'commit ba4150b1ec2a ("mtd: rawnand: s3c2410: enhance the probe
-	function error path")'
+Hi Lee,
 
-Patch v2:
----------
-- change "@owner: MTD module owner" to "@owner: NAND device owner"
-- change "nand memory organization" to "@nand->memorg" 
+I have collected the Acks by Rob and sent the v6:
+https://patchwork.kernel.org/patch/10026705
+https://patchwork.kernel.org/patch/10026707
 
-Xiaolei Li (2):
-  mtd: Fix some function description mismatches in mtdcore.c
-  mtd: nand: Fix some function description mismatches in core.c
+Are they enough to be merged?
 
- drivers/mtd/mtdcore.c   |  8 ++++----
- drivers/mtd/nand/core.c | 12 ++++++------
- 2 files changed, 10 insertions(+), 10 deletions(-)
-
--- 
-1.9.1
+Thank you.
