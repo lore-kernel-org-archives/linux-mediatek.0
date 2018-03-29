@@ -1,16 +1,14 @@
 From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 2/2] mtd: nand: Fix some function description mismatches
- in core.c
-Date: Thu, 29 Mar 2018 09:04:41 +0800
-Message-ID: <1522285481.8261.2.camel@mhfsdcap03>
+Subject: Re: [PATCH 0/2] Fix some function description mismatches
+Date: Thu, 29 Mar 2018 09:07:29 +0800
+Message-ID: <1522285649.8261.5.camel@mhfsdcap03>
 References: <1522228438-64034-1-git-send-email-xiaolei.li@mediatek.com>
- <1522228438-64034-3-git-send-email-xiaolei.li@mediatek.com>
- <20180328133750.1c42044d@bbrezillon>
+ <24567439.icTe1ItB9o@blindfold>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180328133750.1c42044d@bbrezillon>
+In-Reply-To: <24567439.icTe1ItB9o@blindfold>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -20,77 +18,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+To: Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>
+Cc: boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-03-28 at 13:37 +0200, Boris Brezillon wrote:
-> On Wed, 28 Mar 2018 17:13:58 +0800
-> Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> 
-> > In core.c, some function descriptions do not match function
-> > definitions. Just fix these mismatches.
-> > 
-> > Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  drivers/mtd/nand/core.c | 12 ++++++------
-> >  1 file changed, 6 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/drivers/mtd/nand/core.c b/drivers/mtd/nand/core.c
-> > index f237a68..9f6febd 100644
-> > --- a/drivers/mtd/nand/core.c
-> > +++ b/drivers/mtd/nand/core.c
-> > @@ -51,7 +51,7 @@ bool nanddev_isbad(struct nand_device *nand, const struct nand_pos *pos)
-> >  /**
-> >   * nanddev_markbad() - Mark a block as bad
-> >   * @nand: NAND device
-> > - * @block: block to mark bad
-> > + * @pos: position of the block to mark bad
-> >   *
-> >   * Mark a block bad. This function is updating the BBT if available and
-> >   * calls the low-level markbad hook (nand->ops->markbad()).
-> > @@ -117,9 +117,9 @@ bool nanddev_isreserved(struct nand_device *nand, const struct nand_pos *pos)
-> >  /**
-> >   * nanddev_erase() - Erase a NAND portion
-> >   * @nand: NAND device
-> > - * @block: eraseblock to erase
-> > + * @pos: position of the block to erase
-> >   *
-> > - * Erases @block if it's not bad.
-> > + * Erases the block if it's not bad.
-> >   *
-> >   * Return: 0 in case of success, a negative error code otherwise.
-> >   */
-> > @@ -179,11 +179,11 @@ int nanddev_mtd_erase(struct mtd_info *mtd, struct erase_info *einfo)
-> >  /**
-> >   * nanddev_init() - Initialize a NAND device
-> >   * @nand: NAND device
-> > - * @memorg: NAND memory organization descriptor
-> >   * @ops: NAND device operations
-> > + * @owner: MTD module owner
-> 
-> 	      ^ NAND device owner.
-OK. Thanks
-> 
-> >   *
-> > - * Initializes a NAND device object. Consistency checks are done on @memorg and
-> > - * @ops. Also takes care of initializing the BBT.
-> > + * Initializes a NAND device object. Consistency checks are done on @ops and
-> > + * nand memory organization. Also takes care of initializing the BBT.
-> 
-> Don't remember the exact format, but I thing you can use something
-> @nand->memorg
-OK. Thanks.
-> 
-> Anyway, thanks for reporting and fixing those problems in the doc.
-Welcome.
-
-Thanks.
-Xiaolei
-> 
-> >   *
-> >   * Return: 0 in case of success, a negative error code otherwise.
-> >   */
-> 
-> 
-> 
+SGkgUmljaGFyZAoKT24gV2VkLCAyMDE4LTAzLTI4IGF0IDE0OjA2ICswMjAwLCBSaWNoYXJkIFdl
+aW5iZXJnZXIgd3JvdGU6Cj4gQW0gTWl0dHdvY2gsIDI4LiBNw6RyeiAyMDE4LCAxMToxMzo1NiBD
+RVNUIHNjaHJpZWIgWGlhb2xlaSBMaToKPiA+IFRoaXMgcGF0Y2ggZml4ZXMgc29tZSBmdW5jdGlv
+biBkZXNjcmlwdGlvbiBtaXNtYXRjaGVzLgo+IAo+IERpZCB5b3UgZmluZCB0aGVzZSBtYW51YWxs
+eSBvciBpbiBzb21lIGF1dG9tYXRlZCB3YXk/CgpJIGZvdW5kIHRoZXNlIGJ5IGFjY2lkZW50LiBE
+byB5b3Uga25vdyB3aGV0aGVyIHRoZXJlIGlzIGEgdG9vbCB0byBkbwpjb21tZW50cyBjaGVjaz8g
+CgpUaGFua3MuClhpYW9sZWkKCj4gCj4gVGhhbmtzLAo+IC8vcmljaGFyZAoKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
+aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
