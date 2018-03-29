@@ -1,14 +1,14 @@
-From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 0/2] Fix some function description mismatches
-Date: Thu, 29 Mar 2018 09:07:29 +0800
-Message-ID: <1522285649.8261.5.camel@mhfsdcap03>
-References: <1522228438-64034-1-git-send-email-xiaolei.li@mediatek.com>
- <24567439.icTe1ItB9o@blindfold>
+From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 1/2] mtd: Fix some function description mismatches in
+ mtdcore.c
+Date: Thu, 29 Mar 2018 09:34:58 +0800
+Message-ID: <1522287299-12620-2-git-send-email-xiaolei.li@mediatek.com>
+References: <1522287299-12620-1-git-send-email-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <24567439.icTe1ItB9o@blindfold>
+In-Reply-To: <1522287299-12620-1-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -18,17 +18,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>
-Cc: boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+To: boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgUmljaGFyZAoKT24gV2VkLCAyMDE4LTAzLTI4IGF0IDE0OjA2ICswMjAwLCBSaWNoYXJkIFdl
-aW5iZXJnZXIgd3JvdGU6Cj4gQW0gTWl0dHdvY2gsIDI4LiBNw6RyeiAyMDE4LCAxMToxMzo1NiBD
-RVNUIHNjaHJpZWIgWGlhb2xlaSBMaToKPiA+IFRoaXMgcGF0Y2ggZml4ZXMgc29tZSBmdW5jdGlv
-biBkZXNjcmlwdGlvbiBtaXNtYXRjaGVzLgo+IAo+IERpZCB5b3UgZmluZCB0aGVzZSBtYW51YWxs
-eSBvciBpbiBzb21lIGF1dG9tYXRlZCB3YXk/CgpJIGZvdW5kIHRoZXNlIGJ5IGFjY2lkZW50LiBE
-byB5b3Uga25vdyB3aGV0aGVyIHRoZXJlIGlzIGEgdG9vbCB0byBkbwpjb21tZW50cyBjaGVjaz8g
-CgpUaGFua3MuClhpYW9sZWkKCj4gCj4gVGhhbmtzLAo+IC8vcmljaGFyZAoKCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
-aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+In mtdcore.c, some function descriptions do not match function
+definitions. Just fix these mismatches.
+
+Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/mtd/mtdcore.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/mtd/mtdcore.c b/drivers/mtd/mtdcore.c
+index 28553c8..413ea9b 100644
+--- a/drivers/mtd/mtdcore.c
++++ b/drivers/mtd/mtdcore.c
+@@ -419,7 +419,7 @@ int mtd_wunit_to_pairing_info(struct mtd_info *mtd, int wunit,
+ EXPORT_SYMBOL_GPL(mtd_wunit_to_pairing_info);
+ 
+ /**
+- * mtd_wunit_to_pairing_info - get wunit from pairing information
++ * mtd_pairing_info_to_wunit - get wunit from pairing information
+  * @mtd: pointer to new MTD device info structure
+  * @info: pairing information struct
+  *
+@@ -1525,9 +1525,9 @@ int mtd_ooblayout_get_databytes(struct mtd_info *mtd, u8 *databuf,
+ EXPORT_SYMBOL_GPL(mtd_ooblayout_get_databytes);
+ 
+ /**
+- * mtd_ooblayout_get_eccbytes - set data bytes into the oob buffer
++ * mtd_ooblayout_set_databytes - set data bytes into the oob buffer
+  * @mtd: mtd info structure
+- * @eccbuf: source buffer to get data bytes from
++ * @databuf: source buffer to get data bytes from
+  * @oobbuf: OOB buffer
+  * @start: first ECC byte to set
+  * @nbytes: number of ECC bytes to set
+@@ -1559,7 +1559,7 @@ int mtd_ooblayout_count_freebytes(struct mtd_info *mtd)
+ EXPORT_SYMBOL_GPL(mtd_ooblayout_count_freebytes);
+ 
+ /**
+- * mtd_ooblayout_count_freebytes - count the number of ECC bytes in OOB
++ * mtd_ooblayout_count_eccbytes - count the number of ECC bytes in OOB
+  * @mtd: mtd info structure
+  *
+  * Works like mtd_ooblayout_count_bytes(), except it count ECC bytes.
+-- 
+1.9.1
