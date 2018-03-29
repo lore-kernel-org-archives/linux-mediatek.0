@@ -1,66 +1,58 @@
-From: Chen Zhong <chen.zhong@mediatek.com>
-Subject: Re: [PATCH v6 0/6] Add MediaTek PMIC keys support
-Date: Thu, 29 Mar 2018 10:31:15 +0800
-Message-ID: <1522290675.17084.8.camel@mhfsdcap03>
-References: <1508937364-30054-1-git-send-email-chen.zhong@mediatek.com>
-         <808b2029da224ab687fb0553cbc1c68e@mtkmbs08n1.mediatek.inc>
-         <1521685073.28226.10.camel@mtkswgap22> <20180323185418.GD255819@dtor-ws>
-         <20180327080507.pgil6pw2mn4y2f4d@dell>
-         <3ece050c-7573-ef4e-2c89-61645a243a33@gmail.com>
-         <20180328102640.yx6nv5abfexmouuf@dell>
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] staging: mt7621-eth: Fix sparse warning in ethtool.c
+Date: Thu, 29 Mar 2018 11:56:37 +0200
+Message-ID: <20180329095637.GA16778@kroah.com>
+References: <20180328211848.11085-1-cmc@babblebit.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180328102640.yx6nv5abfexmouuf@dell>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Mark Rutland <mark.rutland@arm.com>, a.zummo@towertech.it, devicetree@vger.kernel.org, linus.walleij@linaro.org, jcsing.lee@samsung.com, linux-kernel@vger.kernel.org, krzk@kernel.org, javier@osg.samsung.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org, eddie.huang@mediatek.com, beomho.seo@samsung.com, linux-rtc@vger.kernel.org
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+Content-Disposition: inline
+In-Reply-To: <20180328211848.11085-1-cmc@babblebit.net>
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: Chris Coffey <cmc@babblebit.net>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, NeilBrown <neil@brown.name>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-03-28 at 11:26 +0100, Lee Jones wrote:
-> On Tue, 27 Mar 2018, Matthias Brugger wrote:
+On Wed, Mar 28, 2018 at 10:18:48PM +0100, Chris Coffey wrote:
+> Include the local ethtool.h header file in mtk_eth_soc.h so
+> implementation files have centralized access to it.
 > 
-> > 
-> > 
-> > On 03/27/2018 10:05 AM, Lee Jones wrote:
-> > > On Fri, 23 Mar 2018, Dmitry Torokhov wrote:
-> > >> On Thu, Mar 22, 2018 at 10:17:53AM +0800, Sean Wang wrote:
-> > >>> Hi, Dmitry and Lee
-> > >>>
-> > >>> The series seems not being got merged. Are they good enough to be ready
-> > >>> into the your tree?
-> > >>>
-> > >>> Recently I've tested the series with focusing on pwrkey event generated
-> > >>> through interrupt when push and release the key on bpi-r2 board and then
-> > >>> finally it's working fine. but for homekey it cannot be found on the
-> > >>> board and thus I cannot have more tests more about it.
-> > >>>
-> > >>> Tested-by: Sean Wang <sean.wang@mediatek.com>
-> > >>
-> > >> You have my Ack on the input patch; I expect it go through Lee's tree as
-> > >> there are some dependencies on mfd core piece.
-> > > 
-> > > Are you happy for me to merge the Input dt-bindings without your Ack?
-> > > 
-> > 
-> > They got both Acked in v5, but the commit message was not updated:
-> > https://patchwork.kernel.org/patch/9973721/
-> > https://patchwork.kernel.org/patch/9973723/
+> This fixes the following sparse warning:
 > 
-> Thanks Matthias.
+> drivers/staging/mt7621-eth/ethtool.c:213:6: warning: symbol
+> 'mtk_set_ethtool_ops' was not declared. Should it be static?
 > 
-> Chen, can you collect all the Acks and repost as a RESEND please?
+> Signed-off-by: Chris Coffey <cmc@babblebit.net>
+> ---
+>  drivers/staging/mt7621-eth/mtk_eth_soc.c | 1 -
+>  drivers/staging/mt7621-eth/mtk_eth_soc.h | 1 +
+>  2 files changed, 1 insertion(+), 1 deletion(-)
 > 
+> diff --git a/drivers/staging/mt7621-eth/mtk_eth_soc.c b/drivers/staging/mt7621-eth/mtk_eth_soc.c
+> index cbc7339843..0574e71573 100644
+> --- a/drivers/staging/mt7621-eth/mtk_eth_soc.c
+> +++ b/drivers/staging/mt7621-eth/mtk_eth_soc.c
+> @@ -35,7 +35,6 @@
+>  
+>  #include "mtk_eth_soc.h"
+>  #include "mdio.h"
+> -#include "ethtool.h"
 
-Thanks Matthias, Lee, Dmitry and Sean for your comments.
+How about just moving ethtool.h above the mtk_eth_soc.h include?
 
-Hi Lee,
+Putting .h file dependancies in other .h files is generally not a good
+idea if at all possible.  Keeping them "clean" is better, and this
+driver has a bunch of work to go there, so let's not make it worse :)
 
-I have collected the Acks by Rob and sent the v6:
-https://patchwork.kernel.org/patch/10026705
-https://patchwork.kernel.org/patch/10026707
+thanks,
 
-Are they enough to be merged?
-
-Thank you.
+greg k-h
