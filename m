@@ -1,61 +1,96 @@
-From: Chris Coffey <cmc@babblebit.net>
-Subject: [PATCH] staging: mt7621-eth: Fix sparse warning in ethtool.c
-Date: Wed, 28 Mar 2018 22:18:48 +0100
-Message-ID: <20180328211848.11085-1-cmc@babblebit.net>
+From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/2] mtd: nand: Fix some function description mismatches
+ in core.c
+Date: Thu, 29 Mar 2018 09:04:41 +0800
+Message-ID: <1522285481.8261.2.camel@mhfsdcap03>
+References: <1522228438-64034-1-git-send-email-xiaolei.li@mediatek.com>
+ <1522228438-64034-3-git-send-email-xiaolei.li@mediatek.com>
+ <20180328133750.1c42044d@bbrezillon>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, NeilBrown <neil@brown.name>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devel@driverdev.osuosl.org, Chris Coffey <cmc@babblebit.net>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180328133750.1c42044d@bbrezillon>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Include the local ethtool.h header file in mtk_eth_soc.h so
-implementation files have centralized access to it.
+On Wed, 2018-03-28 at 13:37 +0200, Boris Brezillon wrote:
+> On Wed, 28 Mar 2018 17:13:58 +0800
+> Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> 
+> > In core.c, some function descriptions do not match function
+> > definitions. Just fix these mismatches.
+> > 
+> > Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/mtd/nand/core.c | 12 ++++++------
+> >  1 file changed, 6 insertions(+), 6 deletions(-)
+> > 
+> > diff --git a/drivers/mtd/nand/core.c b/drivers/mtd/nand/core.c
+> > index f237a68..9f6febd 100644
+> > --- a/drivers/mtd/nand/core.c
+> > +++ b/drivers/mtd/nand/core.c
+> > @@ -51,7 +51,7 @@ bool nanddev_isbad(struct nand_device *nand, const struct nand_pos *pos)
+> >  /**
+> >   * nanddev_markbad() - Mark a block as bad
+> >   * @nand: NAND device
+> > - * @block: block to mark bad
+> > + * @pos: position of the block to mark bad
+> >   *
+> >   * Mark a block bad. This function is updating the BBT if available and
+> >   * calls the low-level markbad hook (nand->ops->markbad()).
+> > @@ -117,9 +117,9 @@ bool nanddev_isreserved(struct nand_device *nand, const struct nand_pos *pos)
+> >  /**
+> >   * nanddev_erase() - Erase a NAND portion
+> >   * @nand: NAND device
+> > - * @block: eraseblock to erase
+> > + * @pos: position of the block to erase
+> >   *
+> > - * Erases @block if it's not bad.
+> > + * Erases the block if it's not bad.
+> >   *
+> >   * Return: 0 in case of success, a negative error code otherwise.
+> >   */
+> > @@ -179,11 +179,11 @@ int nanddev_mtd_erase(struct mtd_info *mtd, struct erase_info *einfo)
+> >  /**
+> >   * nanddev_init() - Initialize a NAND device
+> >   * @nand: NAND device
+> > - * @memorg: NAND memory organization descriptor
+> >   * @ops: NAND device operations
+> > + * @owner: MTD module owner
+> 
+> 	      ^ NAND device owner.
+OK. Thanks
+> 
+> >   *
+> > - * Initializes a NAND device object. Consistency checks are done on @memorg and
+> > - * @ops. Also takes care of initializing the BBT.
+> > + * Initializes a NAND device object. Consistency checks are done on @ops and
+> > + * nand memory organization. Also takes care of initializing the BBT.
+> 
+> Don't remember the exact format, but I thing you can use something
+> @nand->memorg
+OK. Thanks.
+> 
+> Anyway, thanks for reporting and fixing those problems in the doc.
+Welcome.
 
-This fixes the following sparse warning:
-
-drivers/staging/mt7621-eth/ethtool.c:213:6: warning: symbol
-'mtk_set_ethtool_ops' was not declared. Should it be static?
-
-Signed-off-by: Chris Coffey <cmc@babblebit.net>
----
- drivers/staging/mt7621-eth/mtk_eth_soc.c | 1 -
- drivers/staging/mt7621-eth/mtk_eth_soc.h | 1 +
- 2 files changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/mt7621-eth/mtk_eth_soc.c b/drivers/staging/mt7621-eth/mtk_eth_soc.c
-index cbc7339843..0574e71573 100644
---- a/drivers/staging/mt7621-eth/mtk_eth_soc.c
-+++ b/drivers/staging/mt7621-eth/mtk_eth_soc.c
-@@ -35,7 +35,6 @@
- 
- #include "mtk_eth_soc.h"
- #include "mdio.h"
--#include "ethtool.h"
- 
- #define	MAX_RX_LENGTH		1536
- #define MTK_RX_ETH_HLEN		(VLAN_ETH_HLEN + VLAN_HLEN + ETH_FCS_LEN)
-diff --git a/drivers/staging/mt7621-eth/mtk_eth_soc.h b/drivers/staging/mt7621-eth/mtk_eth_soc.h
-index 443f88d8af..01deeddfdd 100644
---- a/drivers/staging/mt7621-eth/mtk_eth_soc.h
-+++ b/drivers/staging/mt7621-eth/mtk_eth_soc.h
-@@ -23,6 +23,7 @@
- #include <linux/ethtool.h>
- #include <linux/version.h>
- #include <linux/atomic.h>
-+#include "ethtool.h"
- 
- /* these registers have different offsets depending on the SoC. we use a lookup
-  * table for these
--- 
-2.11.0
+Thanks.
+Xiaolei
+> 
+> >   *
+> >   * Return: 0 in case of success, a negative error code otherwise.
+> >   */
+> 
+> 
+> 
