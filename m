@@ -1,105 +1,194 @@
-From: Ji.Zhang <ji.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] arm64: avoid race condition issue in dump_backtrace
-Date: Fri, 30 Mar 2018 16:08:12 +0800
-Message-ID: <1522397292.26617.63.camel@mtksdccf07>
-References: <1521687960-3744-1-git-send-email-ji.zhang@mediatek.com>
- <20180322055929.z25brvwlmdighz66@salmiak>
- <1521711329.26617.31.camel@mtksdccf07>
- <20180326113932.2i6qp3776jtmcqk4@lakrids.cambridge.arm.com>
- <1522229612.26617.47.camel@mtksdccf07>
- <20180328101240.moo44g5qd3qjuxgn@lakrids.cambridge.arm.com>
+From: Satendra Singh Thakur <thakursatendra2003@yahoo.co.in>
+Subject: [PATCH] [DRM][KMS][MODE][MEDIATEK] Using the function
+ drm_display_mode_to_videomode
+Date: Sat, 31 Mar 2018 20:17:58 +0530
+Message-ID: <1522507712-22763-1-git-send-email-thakursatendra2003@yahoo.co.in>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180328101240.moo44g5qd3qjuxgn-agMKViyK24J5pKCnmE3YQBJ8xKzm50AiAL8bYrjMMd8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Xie XiuQi <xiexiuqi-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Ard Biesheuvel <ard.biesheuvel-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Julien Thierry <julien.thierry-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shadanji-9Onoh4P/yGk@public.gmane.org, James Morse <james.morse-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Michael Weiser <michael.weiser-Mmb7MZpHnFY@public.gmane.org>, Dave Martin <Dave.Martin-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-kernel@vger.kernel.org
+Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Satendra Singh Thakur <thakursatendra2003@yahoo.co.in>, Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-03-28 at 11:12 +0100, Mark Rutland wrote:
-> On Wed, Mar 28, 2018 at 05:33:32PM +0800, Ji.Zhang wrote:
-> 
-> I'm very much not keen on this.
-> 
-> I think that if we're going to do this, the only sane way to do it is to
-> have unwind_frame() verify the current fp against the previous one, and
-> verify that we have some strict nesting of stacks. Generally, that means
-> we can go:
-> 
->   overflow -> irq -> task
-> 
-> ... though I'm not sure what to do about the SDEI stack vs the overflow
-> stack.
-Actually I have had the fp check in unwind_frame(), but since I use the
-in_entry_text() to determine if stack spans, and I did not want to
-include traps.h in stacktrace.c, so I move the check out to
-dump_backtrace.
-Anyway, It seems that the key point is how should we verify that there
-are some nesting of stacks. Since in unwind_frame() we already have the
-previous fp and current fp, could we assume that if these two fps are
-NOT belong to the same stack, there should be stack spans (no matter
-task->irq, or irq->overflow, etc), and we can do the tricky to bypass
-the fp check.The sample of the prosal just like:
+This patch uses existing method drm_display_mode_to_videomode for
+calculating front/back porches, sync lengths for mediatek dsi/dpi drivers; 
+instead of manually calculating them
 
-diff --git a/arch/arm64/include/asm/stacktrace.h
-b/arch/arm64/include/asm/stacktrace.h
-index 902f9ed..fc2bf4d 100644
---- a/arch/arm64/include/asm/stacktrace.h
-+++ b/arch/arm64/include/asm/stacktrace.h
-@@ -92,4 +92,18 @@ static inline bool on_accessible_stack(struct
-task_struct *tsk, unsigned long sp
-        return false;
+Signed-off-by: Satendra Singh Thakur <thakursatendra2003@yahoo.co.in>
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 60 +++++++++++++++++++-------------------
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 14 ++-------
+ 2 files changed, 32 insertions(+), 42 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index e80a603..6c0ea39 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -22,6 +22,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/types.h>
+ #include <linux/clk.h>
++#include <video/videomode.h>
+ 
+ #include "mtk_dpi_regs.h"
+ #include "mtk_drm_ddp_comp.h"
+@@ -429,34 +430,35 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 	struct mtk_dpi_sync_param vsync_leven = { 0 };
+ 	struct mtk_dpi_sync_param vsync_rodd = { 0 };
+ 	struct mtk_dpi_sync_param vsync_reven = { 0 };
+-	unsigned long pix_rate;
++	struct videomode vm = { 0 };
+ 	unsigned long pll_rate;
+ 	unsigned int factor;
+ 
+ 	/* let pll_rate can fix the valid range of tvdpll (1G~2GHz) */
+-	pix_rate = 1000UL * mode->clock;
++
+ 	if (mode->clock <= 27000)
+-		factor = 16 * 3;
++		factor = 3 << 4;
+ 	else if (mode->clock <= 84000)
+-		factor = 8 * 3;
++		factor = 3 << 3;
+ 	else if (mode->clock <= 167000)
+-		factor = 4 * 3;
++		factor = 3 << 2;
+ 	else
+-		factor = 2 * 3;
+-	pll_rate = pix_rate * factor;
++		factor = 3 << 1;
++	drm_display_mode_to_videomode(mode, &vm);
++	pll_rate = vm.pixelclock * factor;
+ 
+ 	dev_dbg(dpi->dev, "Want PLL %lu Hz, pixel clock %lu Hz\n",
+-		pll_rate, pix_rate);
++		pll_rate, vm.pixelclock);
+ 
+ 	clk_set_rate(dpi->tvd_clk, pll_rate);
+ 	pll_rate = clk_get_rate(dpi->tvd_clk);
+ 
+-	pix_rate = pll_rate / factor;
+-	clk_set_rate(dpi->pixel_clk, pix_rate);
+-	pix_rate = clk_get_rate(dpi->pixel_clk);
++	vm.pixelclock = pll_rate / factor;
++	clk_set_rate(dpi->pixel_clk, vm.pixelclock);
++	vm.pixelclock = clk_get_rate(dpi->pixel_clk);
+ 
+ 	dev_dbg(dpi->dev, "Got  PLL %lu Hz, pixel clock %lu Hz\n",
+-		pll_rate, pix_rate);
++		pll_rate, vm.pixelclock);
+ 
+ 	limit.c_bottom = 0x0010;
+ 	limit.c_top = 0x0FE0;
+@@ -465,33 +467,31 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 
+ 	dpi_pol.ck_pol = MTK_DPI_POLARITY_FALLING;
+ 	dpi_pol.de_pol = MTK_DPI_POLARITY_RISING;
+-	dpi_pol.hsync_pol = mode->flags & DRM_MODE_FLAG_PHSYNC ?
++	dpi_pol.hsync_pol = vm.flags & DISPLAY_FLAGS_HSYNC_HIGH ?
+ 			    MTK_DPI_POLARITY_FALLING : MTK_DPI_POLARITY_RISING;
+-	dpi_pol.vsync_pol = mode->flags & DRM_MODE_FLAG_PVSYNC ?
++	dpi_pol.vsync_pol = vm.flags & DISPLAY_FLAGS_VSYNC_HIGH ?
+ 			    MTK_DPI_POLARITY_FALLING : MTK_DPI_POLARITY_RISING;
+-
+-	hsync.sync_width = mode->hsync_end - mode->hsync_start;
+-	hsync.back_porch = mode->htotal - mode->hsync_end;
+-	hsync.front_porch = mode->hsync_start - mode->hdisplay;
++	hsync.sync_width = vm.hsync_len;
++	hsync.back_porch = vm.hback_porch;
++	hsync.front_porch = vm.hfront_porch;
+ 	hsync.shift_half_line = false;
+-
+-	vsync_lodd.sync_width = mode->vsync_end - mode->vsync_start;
+-	vsync_lodd.back_porch = mode->vtotal - mode->vsync_end;
+-	vsync_lodd.front_porch = mode->vsync_start - mode->vdisplay;
++	vsync_lodd.sync_width = vm.vsync_len;
++	vsync_lodd.back_porch = vm.vback_porch;
++	vsync_lodd.front_porch = vm.vfront_porch;
+ 	vsync_lodd.shift_half_line = false;
+ 
+-	if (mode->flags & DRM_MODE_FLAG_INTERLACE &&
++	if (vm.flags & DISPLAY_FLAGS_INTERLACED &&
+ 	    mode->flags & DRM_MODE_FLAG_3D_MASK) {
+ 		vsync_leven = vsync_lodd;
+ 		vsync_rodd = vsync_lodd;
+ 		vsync_reven = vsync_lodd;
+ 		vsync_leven.shift_half_line = true;
+ 		vsync_reven.shift_half_line = true;
+-	} else if (mode->flags & DRM_MODE_FLAG_INTERLACE &&
++	} else if (vm.flags & DISPLAY_FLAGS_INTERLACED &&
+ 		   !(mode->flags & DRM_MODE_FLAG_3D_MASK)) {
+ 		vsync_leven = vsync_lodd;
+ 		vsync_leven.shift_half_line = true;
+-	} else if (!(mode->flags & DRM_MODE_FLAG_INTERLACE) &&
++	} else if (!(vm.flags & DISPLAY_FLAGS_INTERLACED) &&
+ 		   mode->flags & DRM_MODE_FLAG_3D_MASK) {
+ 		vsync_rodd = vsync_lodd;
+ 	}
+@@ -505,12 +505,12 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 	mtk_dpi_config_vsync_reven(dpi, &vsync_reven);
+ 
+ 	mtk_dpi_config_3d(dpi, !!(mode->flags & DRM_MODE_FLAG_3D_MASK));
+-	mtk_dpi_config_interface(dpi, !!(mode->flags &
+-					 DRM_MODE_FLAG_INTERLACE));
+-	if (mode->flags & DRM_MODE_FLAG_INTERLACE)
+-		mtk_dpi_config_fb_size(dpi, mode->hdisplay, mode->vdisplay / 2);
++	mtk_dpi_config_interface(dpi, !!(vm.flags &
++					 DISPLAY_FLAGS_INTERLACED));
++	if (vm.flags & DISPLAY_FLAGS_INTERLACED)
++		mtk_dpi_config_fb_size(dpi, vm.hactive, vm.vactive >> 1);
+ 	else
+-		mtk_dpi_config_fb_size(dpi, mode->hdisplay, mode->vdisplay);
++		mtk_dpi_config_fb_size(dpi, vm.hactive, vm.vactive);
+ 
+ 	mtk_dpi_config_channel_limit(dpi, &limit);
+ 	mtk_dpi_config_bit_num(dpi, dpi->bit_num);
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 7e5e24c..aa0943e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -551,13 +551,12 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 	}
+ 
+ 	/**
+-	 * vm.pixelclock is in kHz, pixel_clock unit is Hz, so multiply by 1000
+ 	 * htotal_time = htotal * byte_per_pixel / num_lanes
+ 	 * overhead_time = lpx + hs_prepare + hs_zero + hs_trail + hs_exit
+ 	 * mipi_ratio = (htotal_time + overhead_time) / htotal_time
+ 	 * data_rate = pixel_clock * bit_per_pixel * mipi_ratio / num_lanes;
+ 	 */
+-	pixel_clock = dsi->vm.pixelclock * 1000;
++	pixel_clock = dsi->vm.pixelclock;
+ 	htotal = dsi->vm.hactive + dsi->vm.hback_porch + dsi->vm.hfront_porch +
+ 			dsi->vm.hsync_len;
+ 	htotal_bits = htotal * bit_per_pixel;
+@@ -725,16 +724,7 @@ static void mtk_dsi_encoder_mode_set(struct drm_encoder *encoder,
+ {
+ 	struct mtk_dsi *dsi = encoder_to_dsi(encoder);
+ 
+-	dsi->vm.pixelclock = adjusted->clock;
+-	dsi->vm.hactive = adjusted->hdisplay;
+-	dsi->vm.hback_porch = adjusted->htotal - adjusted->hsync_end;
+-	dsi->vm.hfront_porch = adjusted->hsync_start - adjusted->hdisplay;
+-	dsi->vm.hsync_len = adjusted->hsync_end - adjusted->hsync_start;
+-
+-	dsi->vm.vactive = adjusted->vdisplay;
+-	dsi->vm.vback_porch = adjusted->vtotal - adjusted->vsync_end;
+-	dsi->vm.vfront_porch = adjusted->vsync_start - adjusted->vdisplay;
+-	dsi->vm.vsync_len = adjusted->vsync_end - adjusted->vsync_start;
++	drm_display_mode_to_videomode(adjusted, &dsi->vm);
  }
-
-+static inline bool on_same_stack(struct task_struct *tsk, unsigned long
-sp1, unsigned sp2)
-+{
-+       if (on_task_stack(tsk, sp1) && on_task_stack(tsk, sp2))
-+               return true;
-+       if (on_irq_stack(sp1) && on_irq_stack(sp2))
-+               return true;
-+       if (on_overflow_stack(sp1) && on_overflow_stack(sp2))
-+               return true;
-+       if (on_sdei_stack(sp1) && on_sdei_stack(sp2))
-+               return true;
-+
-+       return false;
-+}
-+
- #endif /* __ASM_STACKTRACE_H */
-diff --git a/arch/arm64/kernel/stacktrace.c
-b/arch/arm64/kernel/stacktrace.c
-index d5718a0..4907a67 100644
---- a/arch/arm64/kernel/stacktrace.c
-+++ b/arch/arm64/kernel/stacktrace.c
-@@ -56,6 +56,13 @@ int notrace unwind_frame(struct task_struct *tsk,
-struct stackframe *frame)
-        frame->fp = READ_ONCE_NOCHECK(*(unsigned long *)(fp));
-        frame->pc = READ_ONCE_NOCHECK(*(unsigned long *)(fp + 8));
-
-+       if (!on_same_stack(fp, frame->fp))
-+               fp = frame->fp + 0x8;
-+       if (fp <= frame->fp) {
-+               pr_notice("fp invalid, stop unwind\n");
-+               return -EINVAL;
-+       }
-+
- #ifdef CONFIG_FUNCTION_GRAPH_TRACER
-        if (tsk->ret_stack &&
-                        (frame->pc == (unsigned long)return_to_handler))
-{
-
-Could this work?
-
-Best Regards,
-Ji
+ 
+ static void mtk_dsi_encoder_disable(struct drm_encoder *encoder)
+-- 
+2.7.4
