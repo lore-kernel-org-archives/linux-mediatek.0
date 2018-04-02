@@ -1,98 +1,83 @@
-From: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH] mtd: Add sysfs attribute for mtd OOB available size
-Date: Mon, 2 Apr 2018 14:15:05 +0200
-Message-ID: <20180402141505.33051c14@bbrezillon>
-References: <1522657210-56833-1-git-send-email-xiaolei.li@mediatek.com>
- <1522657210-56833-2-git-send-email-xiaolei.li@mediatek.com>
+From: NeilBrown <neil@brown.name>
+Subject: Re: [PATCH v2] staging: mt7621-eth: Fix sparse warning in ethtool.c
+Date: Tue, 03 Apr 2018 08:39:55 +1000
+Message-ID: <87efjx1bd0.fsf@notabene.neil.brown.name>
+References: <20180329095637.GA16778@kroah.com> <20180329124745.24694-1-cmc@babblebit.net> <87vada1owt.fsf@notabene.neil.brown.name> <1522638255.18424.44.camel@mtkswgap22> <87po3i1dhu.fsf@notabene.neil.brown.name> <20180402114103.GA29354@demeter.lkamp.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1522657210-56833-2-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: multipart/signed; boundary="=-=-=";
+        micalg=pgp-sha256; protocol="application/pgp-signature"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180402114103.GA29354@demeter.lkamp.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Christian =?utf-8?Q?L=C3=BCtke-Stetzkamp?= <christian@lkamp.de>
+Cc: Sean Wang <sean.wang@mediatek.com>, devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Chris Coffey <cmc@babblebit.net>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Xiaolei,
+--=-=-=
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-On Mon, 2 Apr 2018 16:20:10 +0800
-Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+On Mon, Apr 02 2018, Christian L=C3=BCtke-Stetzkamp wrote:
 
-> Expose mtd OOB available size by sysfs file. Then users can get available
-> OOB size by accessing /sys/class/mtd/mtdX/oobavail.
+> On Mon, Apr 02, 2018 at 01:41:33PM +1000, NeilBrown wrote:
+>> On Mon, Apr 02 2018, Sean Wang wrote:
+>> > Hi, Neil
+>> >
+>> > Forgive me I cannot find the cover letter in the original series in my
+>> > mailbox to make a reply, so I rudely made here just letting you know
+>> > something good to the growth of mt7621 support in upstream.
+>> >
+>> > If so, it would become a bit easier for me that maybe I could give a
+>> > hand for migrating these staging driver for mt7621 to mainline. I
+>> > thought mmc, pci, ethernet, gsw and hsdma all could probably reuse the
+>> > current mainline code.
+>>=20
+>> I agree that it is quite likely that several of these drivers could and
+>> should reuse current mainline code.  I would love to have some help
+>> sorting this out.  I won't have much time myself to dig into it for
+>> several weeks, but I'll make time to review and test any code that is
+>> contributed.
+>>=20
+>> Thanks,
+>> NeilBrown
+>
+> Hi,
+>
+> I have started a patch series for the mmc driver that is currently in
+> staging, that makes some of the first cleanups (whitespace, indent,..)
+> and also starts to clean up the code, to make the similarities and
+> differences to the current mainline code clearer. The series is far
+> from being complete, but I think I'm going to send it out today, so
+> you can look and comment.
+>
+> I would suggest that we continue cleaning the code that is currently
+> in staging to remove the dead parts and make the diff to the mainline
+> code obvious. Do you agree with that proposal or do you suggest a
+> different plan?
 
-May I ask why you need to expose that? I'm not against exposing new
-things through sysfs, but since this is part of the ABI, I'd like to be
-sure we actually need it.
+I think this is an excellent plan - thanks for doing it.
+I'll hopefully look over your patches today and send any comments.
 
-Regards,
+Thanks,
+NeilBrown
 
-Boris
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> 
-> Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  Documentation/ABI/testing/sysfs-class-mtd |  8 ++++++++
->  drivers/mtd/mtdcore.c                     | 10 ++++++++++
->  2 files changed, 18 insertions(+)
-> 
-> diff --git a/Documentation/ABI/testing/sysfs-class-mtd b/Documentation/ABI/testing/sysfs-class-mtd
-> index f34e5923..3bc7c0a 100644
-> --- a/Documentation/ABI/testing/sysfs-class-mtd
-> +++ b/Documentation/ABI/testing/sysfs-class-mtd
-> @@ -232,3 +232,11 @@ Description:
->  		of the parent (another partition or a flash device) in bytes.
->  		This attribute is absent on flash devices, so it can be used
->  		to distinguish them from partitions.
-> +
-> +What:		/sys/class/mtd/mtdX/oobavail
-> +Date:		April 2018
-> +KernelVersion:	4.16
-> +Contact:	linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> +Description:
-> +		Number of bytes available for a client to place data into
-> +		the out of band area.
-> diff --git a/drivers/mtd/mtdcore.c b/drivers/mtd/mtdcore.c
-> index 807d17d..99d9352 100644
-> --- a/drivers/mtd/mtdcore.c
-> +++ b/drivers/mtd/mtdcore.c
-> @@ -210,6 +210,15 @@ static ssize_t mtd_oobsize_show(struct device *dev,
->  }
->  static DEVICE_ATTR(oobsize, S_IRUGO, mtd_oobsize_show, NULL);
->  
-> +static ssize_t mtd_oobavail_show(struct device *dev,
-> +				 struct device_attribute *attr, char *buf)
-> +{
-> +	struct mtd_info *mtd = dev_get_drvdata(dev);
-> +
-> +	return snprintf(buf, PAGE_SIZE, "%lu\n", (unsigned long)mtd->oobavail);
-> +}
-> +static DEVICE_ATTR(oobavail, S_IRUGO, mtd_oobavail_show, NULL);
-> +
->  static ssize_t mtd_numeraseregions_show(struct device *dev,
->  		struct device_attribute *attr, char *buf)
->  {
-> @@ -327,6 +336,7 @@ static ssize_t mtd_bbtblocks_show(struct device *dev,
->  	&dev_attr_writesize.attr,
->  	&dev_attr_subpagesize.attr,
->  	&dev_attr_oobsize.attr,
-> +	&dev_attr_oobavail.attr,
->  	&dev_attr_numeraseregions.attr,
->  	&dev_attr_name.attr,
->  	&dev_attr_ecc_strength.attr,
+-----BEGIN PGP SIGNATURE-----
 
-
-
--- 
-Boris Brezillon, Bootlin (formerly Free Electrons)
-Embedded Linux and Kernel engineering
-https://bootlin.com
+iQIzBAEBCAAdFiEEG8Yp69OQ2HB7X0l6Oeye3VZigbkFAlrCsTsACgkQOeye3VZi
+gbnWZBAAgM+nDheq63eqsAz9aPkevInjx3b4v591NkaKQ7TwjZhonCYMOBZaz9LV
+gRQ3i6ybs+muzGOe1BkaRjZDQJ3EP4GJ6jm4d6IUwu0SXNqa0qcyDa3Z/QmeYGb+
+0BkGJFqf1jYtsgt5VeLLZdhsoR3GyzwLaWCGxOlwhnbT+8Xm4+97t18AzQjHMmER
+vJjY8BnfoaZM9FGosDd/VeFqtaPg91LhHMzdb/AXBP5d/K5vF6HugSIjsLCOwsR4
+HxoqM83IehvEozmDIjfSVuqLanaP03VylBDTdFjy4N/ATkUriNOG8M/Bt6ForbWS
+JNuWtl7jtOFEkD/5v5rK1x0RfJtt/AOAFnGVKTrH7nrswW407pf//6lU/Wmdb8jN
+gADYgnPp/Pz9CkKmLy/yKO9Q3Y+j8v36bhc4mEMrZfcRKL3m6C6oFAhzS2ZJ0Ktg
+M6/LgZeExXGiNbeaSCUbg5+8XJqn5jgRN4MWY/YGNx3nH/lqr29ou5GVTLShQub3
+ZsJEjMdQmqi0W4P6/ZKkTLh2AdoPos/PYATgfg2Ls8ov7BpTugAKJAkFP7LHBQDz
+vKp+wpVXh17Y/OhlhDu6yoyqh/irdGQk+T0tfWF4BaJI1RNIGBaaVPt2J4jHqKlZ
+Ac75L70vuGRVYw7B3jsZx7IjOwFFk1FKiz///GUbPSuIC7OYEKg=
+=F9Ie
+-----END PGP SIGNATURE-----
+--=-=-=--
