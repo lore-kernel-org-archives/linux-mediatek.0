@@ -1,65 +1,98 @@
-From: Christian =?iso-8859-1?Q?L=FCtke-Stetzkamp?= <christian@lkamp.de>
-Subject: Re: [PATCH v2] staging: mt7621-eth: Fix sparse warning in ethtool.c
-Date: Mon, 2 Apr 2018 13:41:03 +0200
-Message-ID: <20180402114103.GA29354@demeter.lkamp.de>
-References: <20180329095637.GA16778@kroah.com>
- <20180329124745.24694-1-cmc@babblebit.net>
- <87vada1owt.fsf@notabene.neil.brown.name>
- <1522638255.18424.44.camel@mtkswgap22>
- <87po3i1dhu.fsf@notabene.neil.brown.name>
+From: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [PATCH] mtd: Add sysfs attribute for mtd OOB available size
+Date: Mon, 2 Apr 2018 14:15:05 +0200
+Message-ID: <20180402141505.33051c14@bbrezillon>
+References: <1522657210-56833-1-git-send-email-xiaolei.li@mediatek.com>
+ <1522657210-56833-2-git-send-email-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-Content-Disposition: inline
-In-Reply-To: <87po3i1dhu.fsf@notabene.neil.brown.name>
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: NeilBrown <neil@brown.name>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Chris Coffey <cmc@babblebit.net>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1522657210-56833-2-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Apr 02, 2018 at 01:41:33PM +1000, NeilBrown wrote:
-> On Mon, Apr 02 2018, Sean Wang wrote:
-> > Hi, Neil
-> >
-> > Forgive me I cannot find the cover letter in the original series in my
-> > mailbox to make a reply, so I rudely made here just letting you know
-> > something good to the growth of mt7621 support in upstream.
-> >
-> > If so, it would become a bit easier for me that maybe I could give a
-> > hand for migrating these staging driver for mt7621 to mainline. I
-> > thought mmc, pci, ethernet, gsw and hsdma all could probably reuse the
-> > current mainline code.
+Hi Xiaolei,
+
+On Mon, 2 Apr 2018 16:20:10 +0800
+Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+
+> Expose mtd OOB available size by sysfs file. Then users can get available
+> OOB size by accessing /sys/class/mtd/mtdX/oobavail.
+
+May I ask why you need to expose that? I'm not against exposing new
+things through sysfs, but since this is part of the ABI, I'd like to be
+sure we actually need it.
+
+Regards,
+
+Boris
+
 > 
-> I agree that it is quite likely that several of these drivers could and
-> should reuse current mainline code.  I would love to have some help
-> sorting this out.  I won't have much time myself to dig into it for
-> several weeks, but I'll make time to review and test any code that is
-> contributed.
+> Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  Documentation/ABI/testing/sysfs-class-mtd |  8 ++++++++
+>  drivers/mtd/mtdcore.c                     | 10 ++++++++++
+>  2 files changed, 18 insertions(+)
 > 
-> Thanks,
-> NeilBrown
+> diff --git a/Documentation/ABI/testing/sysfs-class-mtd b/Documentation/ABI/testing/sysfs-class-mtd
+> index f34e5923..3bc7c0a 100644
+> --- a/Documentation/ABI/testing/sysfs-class-mtd
+> +++ b/Documentation/ABI/testing/sysfs-class-mtd
+> @@ -232,3 +232,11 @@ Description:
+>  		of the parent (another partition or a flash device) in bytes.
+>  		This attribute is absent on flash devices, so it can be used
+>  		to distinguish them from partitions.
+> +
+> +What:		/sys/class/mtd/mtdX/oobavail
+> +Date:		April 2018
+> +KernelVersion:	4.16
+> +Contact:	linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> +Description:
+> +		Number of bytes available for a client to place data into
+> +		the out of band area.
+> diff --git a/drivers/mtd/mtdcore.c b/drivers/mtd/mtdcore.c
+> index 807d17d..99d9352 100644
+> --- a/drivers/mtd/mtdcore.c
+> +++ b/drivers/mtd/mtdcore.c
+> @@ -210,6 +210,15 @@ static ssize_t mtd_oobsize_show(struct device *dev,
+>  }
+>  static DEVICE_ATTR(oobsize, S_IRUGO, mtd_oobsize_show, NULL);
+>  
+> +static ssize_t mtd_oobavail_show(struct device *dev,
+> +				 struct device_attribute *attr, char *buf)
+> +{
+> +	struct mtd_info *mtd = dev_get_drvdata(dev);
+> +
+> +	return snprintf(buf, PAGE_SIZE, "%lu\n", (unsigned long)mtd->oobavail);
+> +}
+> +static DEVICE_ATTR(oobavail, S_IRUGO, mtd_oobavail_show, NULL);
+> +
+>  static ssize_t mtd_numeraseregions_show(struct device *dev,
+>  		struct device_attribute *attr, char *buf)
+>  {
+> @@ -327,6 +336,7 @@ static ssize_t mtd_bbtblocks_show(struct device *dev,
+>  	&dev_attr_writesize.attr,
+>  	&dev_attr_subpagesize.attr,
+>  	&dev_attr_oobsize.attr,
+> +	&dev_attr_oobavail.attr,
+>  	&dev_attr_numeraseregions.attr,
+>  	&dev_attr_name.attr,
+>  	&dev_attr_ecc_strength.attr,
 
-Hi,
 
-I have started a patch series for the mmc driver that is currently in
-staging, that makes some of the first cleanups (whitespace, indent,..)
-and also starts to clean up the code, to make the similarities and
-differences to the current mainline code clearer. The series is far
-from being complete, but I think I'm going to send it out today, so
-you can look and comment.
 
-I would suggest that we continue cleaning the code that is currently
-in staging to remove the dead parts and make the diff to the mainline
-code obvious. Do you agree with that proposal or do you suggest a
-different plan?
-
-Christian
+-- 
+Boris Brezillon, Bootlin (formerly Free Electrons)
+Embedded Linux and Kernel engineering
+https://bootlin.com
