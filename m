@@ -1,13 +1,15 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH net] net: dsa: mt7530: Use NULL instead of plain integer
-Date: Tue, 3 Apr 2018 10:18:24 +0800
-Message-ID: <1522721904.18424.51.camel@mtkswgap22>
-References: <20180402232414.19671-1-f.fainelli@gmail.com>
+From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] mtd: Add sysfs attribute for mtd OOB available size
+Date: Tue, 3 Apr 2018 10:46:58 +0800
+Message-ID: <1522723618.3504.7.camel@mhfsdcap03>
+References: <1522657210-56833-1-git-send-email-xiaolei.li@mediatek.com>
+ <1522657210-56833-2-git-send-email-xiaolei.li@mediatek.com>
+ <20180402141505.33051c14@bbrezillon>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180402232414.19671-1-f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <20180402141505.33051c14@bbrezillon>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -17,55 +19,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Vivien Didelot <vivien.didelot-4ysUXcep3aM1wj+D4I0NRVaTQe2KTcn/@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, open list <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>
+To: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-04-02 at 16:24 -0700, Florian Fainelli wrote:
-> We would be passing 0 instead of NULL as the rsp argument to
-> mt7530_fdb_cmd(), fix that.
+Hello Boris,
+
+On Mon, 2018-04-02 at 14:15 +0200, Boris Brezillon wrote:
+> Hi Xiaolei,
 > 
-
-Acked-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-BTW, does the part of the commit message should be updated with "passing
-NULL instead of 0"?
-
-
-> Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
-> Signed-off-by: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
->  drivers/net/dsa/mt7530.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+> On Mon, 2 Apr 2018 16:20:10 +0800
+> Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 > 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 4e53c5ce23ff..a7f6c0a62fc7 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -917,7 +917,7 @@ mt7530_port_fdb_add(struct dsa_switch *ds, int port,
->  
->  	mutex_lock(&priv->reg_mutex);
->  	mt7530_fdb_write(priv, vid, port_mask, addr, -1, STATIC_ENT);
-> -	ret = mt7530_fdb_cmd(priv, MT7530_FDB_WRITE, 0);
-> +	ret = mt7530_fdb_cmd(priv, MT7530_FDB_WRITE, NULL);
->  	mutex_unlock(&priv->reg_mutex);
->  
->  	return ret;
-> @@ -933,7 +933,7 @@ mt7530_port_fdb_del(struct dsa_switch *ds, int port,
->  
->  	mutex_lock(&priv->reg_mutex);
->  	mt7530_fdb_write(priv, vid, port_mask, addr, -1, STATIC_EMP);
-> -	ret = mt7530_fdb_cmd(priv, MT7530_FDB_WRITE, 0);
-> +	ret = mt7530_fdb_cmd(priv, MT7530_FDB_WRITE, NULL);
->  	mutex_unlock(&priv->reg_mutex);
->  
->  	return ret;
-> @@ -1293,7 +1293,7 @@ mt7530_setup(struct dsa_switch *ds)
->  	}
->  
->  	/* Flush the FDB table */
-> -	ret = mt7530_fdb_cmd(priv, MT7530_FDB_FLUSH, 0);
-> +	ret = mt7530_fdb_cmd(priv, MT7530_FDB_FLUSH, NULL);
->  	if (ret < 0)
->  		return ret;
->  
+> > Expose mtd OOB available size by sysfs file. Then users can get available
+> > OOB size by accessing /sys/class/mtd/mtdX/oobavail.
+> 
+> May I ask why you need to expose that? I'm not against exposing new
+> things through sysfs, but since this is part of the ABI, I'd like to be
+> sure we actually need it.
+> 
+That is user-space can write OOB data through ioctl MEMWRITE now.
+If OOB operation mode is MTD_OPS_AUTO_OOB, user should know how many
+OOB available bytes it can use. But I didn't find a way to get it. (If
+there is already a method, please kindly let me know, thanks.)
+
+One problem I know is to do Jffs2 type flash erase using MTD user-space
+tool flash_erase. flash_erase tool will program "cleanmarker" into OOB
+free area, but it can not get OOB available size.
+Please refer this commit:
+http://git.infradead.org/mtd-utils.git/commit/d7e86124d55bbcee1b82c68b82389ebcda588076
+
+Thanks!
+Xiaolei
+
+> Regards,
+> 
+> Boris
+> 
+> > 
+> > Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  Documentation/ABI/testing/sysfs-class-mtd |  8 ++++++++
+> >  drivers/mtd/mtdcore.c                     | 10 ++++++++++
+> >  2 files changed, 18 insertions(+)
+> > 
+> > diff --git a/Documentation/ABI/testing/sysfs-class-mtd b/Documentation/ABI/testing/sysfs-class-mtd
+> > index f34e5923..3bc7c0a 100644
+> > --- a/Documentation/ABI/testing/sysfs-class-mtd
+> > +++ b/Documentation/ABI/testing/sysfs-class-mtd
+> > @@ -232,3 +232,11 @@ Description:
+> >  		of the parent (another partition or a flash device) in bytes.
+> >  		This attribute is absent on flash devices, so it can be used
+> >  		to distinguish them from partitions.
+> > +
+> > +What:		/sys/class/mtd/mtdX/oobavail
+> > +Date:		April 2018
+> > +KernelVersion:	4.16
+> > +Contact:	linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> > +Description:
+> > +		Number of bytes available for a client to place data into
+> > +		the out of band area.
+> > diff --git a/drivers/mtd/mtdcore.c b/drivers/mtd/mtdcore.c
+> > index 807d17d..99d9352 100644
+> > --- a/drivers/mtd/mtdcore.c
+> > +++ b/drivers/mtd/mtdcore.c
+> > @@ -210,6 +210,15 @@ static ssize_t mtd_oobsize_show(struct device *dev,
+> >  }
+> >  static DEVICE_ATTR(oobsize, S_IRUGO, mtd_oobsize_show, NULL);
+> >  
+> > +static ssize_t mtd_oobavail_show(struct device *dev,
+> > +				 struct device_attribute *attr, char *buf)
+> > +{
+> > +	struct mtd_info *mtd = dev_get_drvdata(dev);
+> > +
+> > +	return snprintf(buf, PAGE_SIZE, "%lu\n", (unsigned long)mtd->oobavail);
+> > +}
+> > +static DEVICE_ATTR(oobavail, S_IRUGO, mtd_oobavail_show, NULL);
+> > +
+> >  static ssize_t mtd_numeraseregions_show(struct device *dev,
+> >  		struct device_attribute *attr, char *buf)
+> >  {
+> > @@ -327,6 +336,7 @@ static ssize_t mtd_bbtblocks_show(struct device *dev,
+> >  	&dev_attr_writesize.attr,
+> >  	&dev_attr_subpagesize.attr,
+> >  	&dev_attr_oobsize.attr,
+> > +	&dev_attr_oobavail.attr,
+> >  	&dev_attr_numeraseregions.attr,
+> >  	&dev_attr_name.attr,
+> >  	&dev_attr_ecc_strength.attr,
+> 
+> 
+> 
