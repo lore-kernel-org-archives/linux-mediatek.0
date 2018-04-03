@@ -1,33 +1,33 @@
-From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Subject: Re: [PATCH] rtc: mt7622: fix module autoloading for OF platform
- drivers
-Date: Tue, 3 Apr 2018 16:57:41 +0200
-Message-ID: <20180403145741.GB6444@piout.net>
-References: <4231c0b6038764f68324297a40b18b15ecda5a92.1522055289.git.sean.wang@mediatek.com>
+From: Florian Fainelli <f.fainelli@gmail.com>
+Subject: Re: [PATCH net] net: dsa: mt7530: Use NULL instead of plain integer
+Date: Tue, 3 Apr 2018 10:02:40 -0700
+Message-ID: <f5aa0467-8124-b097-2b89-dcf1698a5ba5@gmail.com>
+References: <20180402232414.19671-1-f.fainelli@gmail.com>
+ <1522721904.18424.51.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <4231c0b6038764f68324297a40b18b15ecda5a92.1522055289.git.sean.wang@mediatek.com>
+In-Reply-To: <1522721904.18424.51.camel@mtkswgap22>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: a.zummo@towertech.it, linux-rtc@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: netdev@vger.kernel.org, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@savoirfairelinux.com>, open list <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 26/03/2018 18:05:52+0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On 04/02/2018 07:18 PM, Sean Wang wrote:
+> On Mon, 2018-04-02 at 16:24 -0700, Florian Fainelli wrote:
+>> We would be passing 0 instead of NULL as the rsp argument to
+>> mt7530_fdb_cmd(), fix that.
+>>
 > 
-> It's required to create a modules.alias via MODULE_DEVICE_TABLE helper
-> for the OF platform driver. Otherwise, module autoloading cannot work.
+> Acked-by: Sean Wang <sean.wang@mediatek.com>
 > 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  drivers/rtc/rtc-mt7622.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-Applied, thanks.
+> BTW, does the part of the commit message should be updated with "passing
+> NULL instead of 0"?
 
+I don't follow you, the commit message indicates what we were doing
+which implies it was wrong and fixes it. Would you want me to reword
+that part?
 -- 
-Alexandre Belloni, Bootlin (formerly Free Electrons)
-Embedded Linux and Kernel engineering
-https://bootlin.com
+Florian
