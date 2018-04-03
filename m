@@ -1,85 +1,66 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v1 2/7] serdev: add dev_pm_domain_attach|detach()
-Date: Tue, 3 Apr 2018 15:15:52 +0800
-Message-ID: <f976766cd499c8d7053a1f442aba1494b4d3314f.1522736996.git.sean.wang@mediatek.com>
-References: <cover.1522736996.git.sean.wang@mediatek.com>
+From: Boris Brezillon <boris.brezillon@bootlin.com>
+Subject: Re: [PATCH] mtd: Add sysfs attribute for mtd OOB available size
+Date: Tue, 3 Apr 2018 10:43:54 +0200
+Message-ID: <20180403104354.03895246@bbrezillon>
+References: <1522657210-56833-1-git-send-email-xiaolei.li@mediatek.com>
+ <1522657210-56833-2-git-send-email-xiaolei.li@mediatek.com>
+ <20180402141505.33051c14@bbrezillon>
+ <1522723618.3504.7.camel@mhfsdcap03>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <cover.1522736996.git.sean.wang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: robh+dt@kernel.org, mark.rutland@arm.com, marcel@holtmann.org, johan.hedberg@gmail.com
-Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, Jiri Slaby <jslaby@suse.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+In-Reply-To: <1522723618.3504.7.camel@mhfsdcap03>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
+To: xiaolei li <xiaolei.li@mediatek.com>
+Cc: richard@nod.at, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-mtd@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Tue, 3 Apr 2018 10:46:58 +0800
+xiaolei li <xiaolei.li@mediatek.com> wrote:
 
-In order to open up the required power gate before any operation can be
-effectively performed over the serial bus between CPU and serdev, it's
-clearly essential to add common attach functions for PM domains to serdev
-at the probe phase.
+> Hello Boris,
+> 
+> On Mon, 2018-04-02 at 14:15 +0200, Boris Brezillon wrote:
+> > Hi Xiaolei,
+> > 
+> > On Mon, 2 Apr 2018 16:20:10 +0800
+> > Xiaolei Li <xiaolei.li@mediatek.com> wrote:
+> >   
+> > > Expose mtd OOB available size by sysfs file. Then users can get available
+> > > OOB size by accessing /sys/class/mtd/mtdX/oobavail.  
+> > 
+> > May I ask why you need to expose that? I'm not against exposing new
+> > things through sysfs, but since this is part of the ABI, I'd like to be
+> > sure we actually need it.
+> >   
+> That is user-space can write OOB data through ioctl MEMWRITE now.
+> If OOB operation mode is MTD_OPS_AUTO_OOB, user should know how many
+> OOB available bytes it can use. But I didn't find a way to get it. (If
+> there is already a method, please kindly let me know, thanks.)
 
-Similarly, the relevant dettach function for the PM domains should be
-properly and reversely added at the remove phase.
+Nope. We have the ECCGETLAYOUT ioctl, but it's not reliable because of
+the MTD_MAX_OOBFREE_ENTRIES limitation.
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Jiri Slaby <jslaby@suse.com>
-Cc: linux-serial@vger.kernel.org
----
- drivers/tty/serdev/core.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
+> 
+> One problem I know is to do Jffs2 type flash erase using MTD user-space
+> tool flash_erase. flash_erase tool will program "cleanmarker" into OOB
+> free area, but it can not get OOB available size.
 
-diff --git a/drivers/tty/serdev/core.c b/drivers/tty/serdev/core.c
-index df93b72..c93d8ee 100644
---- a/drivers/tty/serdev/core.c
-+++ b/drivers/tty/serdev/core.c
-@@ -13,6 +13,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/pm_domain.h>
- #include <linux/serdev.h>
- #include <linux/slab.h>
- 
-@@ -330,8 +331,16 @@ EXPORT_SYMBOL_GPL(serdev_device_set_tiocm);
- static int serdev_drv_probe(struct device *dev)
- {
- 	const struct serdev_device_driver *sdrv = to_serdev_device_driver(dev->driver);
-+	int ret;
-+
-+	ret = dev_pm_domain_attach(dev, true);
-+	if (ret != -EPROBE_DEFER) {
-+		ret = sdrv->probe(to_serdev_device(dev));
-+		if (ret)
-+			dev_pm_domain_detach(dev, true);
-+	}
- 
--	return sdrv->probe(to_serdev_device(dev));
-+	return ret;
- }
- 
- static int serdev_drv_remove(struct device *dev)
-@@ -339,6 +348,9 @@ static int serdev_drv_remove(struct device *dev)
- 	const struct serdev_device_driver *sdrv = to_serdev_device_driver(dev->driver);
- 	if (sdrv->remove)
- 		sdrv->remove(to_serdev_device(dev));
-+
-+	dev_pm_domain_detach(dev, true);
-+
- 	return 0;
- }
- 
--- 
-2.7.4
+That's a good reason to expose this property indeed. Do you plan to fix
+mtd-utils to use the sysfs value when it's available? Also, do we need
+to expose the ECC/free layout as done with the
+ECCGETLAYOUT/MEMGETOOBSEL ioctls?
+
+
+______________________________________________________
+Linux MTD discussion mailing list
+http://lists.infradead.org/mailman/listinfo/linux-mtd/
