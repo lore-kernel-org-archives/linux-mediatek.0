@@ -1,112 +1,57 @@
-From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] mtd: Add sysfs attribute for mtd OOB available size
-Date: Tue, 3 Apr 2018 10:46:58 +0800
-Message-ID: <1522723618.3504.7.camel@mhfsdcap03>
-References: <1522657210-56833-1-git-send-email-xiaolei.li@mediatek.com>
- <1522657210-56833-2-git-send-email-xiaolei.li@mediatek.com>
- <20180402141505.33051c14@bbrezillon>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v1 0/7] add support for Bluetooth on MT7622 SoC
+Date: Tue, 3 Apr 2018 15:15:50 +0800
+Message-ID: <cover.1522736996.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180402141505.33051c14@bbrezillon>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, mark.rutland@arm.com, marcel@holtmann.org, johan.hedberg@gmail.com
+Cc: devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello Boris,
+From: Sean Wang <sean.wang@mediatek.com>
 
-On Mon, 2018-04-02 at 14:15 +0200, Boris Brezillon wrote:
-> Hi Xiaolei,
-> 
-> On Mon, 2 Apr 2018 16:20:10 +0800
-> Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> 
-> > Expose mtd OOB available size by sysfs file. Then users can get available
-> > OOB size by accessing /sys/class/mtd/mtdX/oobavail.
-> 
-> May I ask why you need to expose that? I'm not against exposing new
-> things through sysfs, but since this is part of the ABI, I'd like to be
-> sure we actually need it.
-> 
-That is user-space can write OOB data through ioctl MEMWRITE now.
-If OOB operation mode is MTD_OPS_AUTO_OOB, user should know how many
-OOB available bytes it can use. But I didn't find a way to get it. (If
-there is already a method, please kindly let me know, thanks.)
+Hi,
 
-One problem I know is to do Jffs2 type flash erase using MTD user-space
-tool flash_erase. flash_erase tool will program "cleanmarker" into OOB
-free area, but it can not get OOB available size.
-Please refer this commit:
-http://git.infradead.org/mtd-utils.git/commit/d7e86124d55bbcee1b82c68b82389ebcda588076
+This patchset introduces built-in Bluetooth support on MT7622 SoC.
+And, it should be simple to make an extension to support other
+MediaTek SoCs with adjusting a few of changes on the initialization
+sequence of the device.
 
-Thanks!
-Xiaolei
+Before the main driver is being introduced, a few of things about
+power-domain management should be re-worked for serdev core and MediaTek
+SCPSYS to allow the Bluetooth to properly power up.
 
-> Regards,
-> 
-> Boris
-> 
-> > 
-> > Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  Documentation/ABI/testing/sysfs-class-mtd |  8 ++++++++
-> >  drivers/mtd/mtdcore.c                     | 10 ++++++++++
-> >  2 files changed, 18 insertions(+)
-> > 
-> > diff --git a/Documentation/ABI/testing/sysfs-class-mtd b/Documentation/ABI/testing/sysfs-class-mtd
-> > index f34e5923..3bc7c0a 100644
-> > --- a/Documentation/ABI/testing/sysfs-class-mtd
-> > +++ b/Documentation/ABI/testing/sysfs-class-mtd
-> > @@ -232,3 +232,11 @@ Description:
-> >  		of the parent (another partition or a flash device) in bytes.
-> >  		This attribute is absent on flash devices, so it can be used
-> >  		to distinguish them from partitions.
-> > +
-> > +What:		/sys/class/mtd/mtdX/oobavail
-> > +Date:		April 2018
-> > +KernelVersion:	4.16
-> > +Contact:	linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> > +Description:
-> > +		Number of bytes available for a client to place data into
-> > +		the out of band area.
-> > diff --git a/drivers/mtd/mtdcore.c b/drivers/mtd/mtdcore.c
-> > index 807d17d..99d9352 100644
-> > --- a/drivers/mtd/mtdcore.c
-> > +++ b/drivers/mtd/mtdcore.c
-> > @@ -210,6 +210,15 @@ static ssize_t mtd_oobsize_show(struct device *dev,
-> >  }
-> >  static DEVICE_ATTR(oobsize, S_IRUGO, mtd_oobsize_show, NULL);
-> >  
-> > +static ssize_t mtd_oobavail_show(struct device *dev,
-> > +				 struct device_attribute *attr, char *buf)
-> > +{
-> > +	struct mtd_info *mtd = dev_get_drvdata(dev);
-> > +
-> > +	return snprintf(buf, PAGE_SIZE, "%lu\n", (unsigned long)mtd->oobavail);
-> > +}
-> > +static DEVICE_ATTR(oobavail, S_IRUGO, mtd_oobavail_show, NULL);
-> > +
-> >  static ssize_t mtd_numeraseregions_show(struct device *dev,
-> >  		struct device_attribute *attr, char *buf)
-> >  {
-> > @@ -327,6 +336,7 @@ static ssize_t mtd_bbtblocks_show(struct device *dev,
-> >  	&dev_attr_writesize.attr,
-> >  	&dev_attr_subpagesize.attr,
-> >  	&dev_attr_oobsize.attr,
-> > +	&dev_attr_oobavail.attr,
-> >  	&dev_attr_numeraseregions.attr,
-> >  	&dev_attr_name.attr,
-> >  	&dev_attr_ecc_strength.attr,
-> 
-> 
-> 
+Patch 2: add a generic way attaching power domain to serdev
+Patch 3 and 4: add cleanups with reuse APIs from Linux core
+Patch 5: fix a limitation about power enablement Bluetooth depends on
+Patch 1, 6 and 7: the major part of adding Bluetooth support to MT7622
+	
+	Sean
+
+Sean Wang (7):
+  dt-bindings: net: bluetooth: Add mediatek-bluetooth
+  serdev: add dev_pm_domain_attach|detach()
+  soc: mediatek: reuse read[l,x]_poll_timeout helpers
+  soc: mediatek: reuse regmap_read_poll_timeout helpers
+  soc: mediatek: add a fixed wait for SRAM stable
+  Bluetooth: hci_mediatek: Add protocol support for MediaTek serial
+    devices
+  MAINTAINERS: add an entry for MediaTek Bluetooth driver
+
+ .../devicetree/bindings/net/mediatek-bluetooth.txt |  35 ++
+ MAINTAINERS                                        |   8 +
+ drivers/bluetooth/Kconfig                          |  12 +
+ drivers/bluetooth/Makefile                         |   1 +
+ drivers/bluetooth/hci_mediatek.c                   | 499 +++++++++++++++++++++
+ drivers/bluetooth/hci_uart.h                       |   3 +-
+ drivers/soc/mediatek/mtk-infracfg.c                |  45 +-
+ drivers/soc/mediatek/mtk-scpsys.c                  |  98 ++--
+ drivers/tty/serdev/core.c                          |  14 +-
+ 9 files changed, 610 insertions(+), 105 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
+ create mode 100644 drivers/bluetooth/hci_mediatek.c
+
+-- 
+2.7.4
