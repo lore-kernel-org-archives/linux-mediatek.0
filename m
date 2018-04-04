@@ -1,107 +1,201 @@
-From: Mark Rutland <mark.rutland@arm.com>
-Subject: Re: [PATCH] arm64: avoid race condition issue in dump_backtrace
-Date: Wed, 4 Apr 2018 10:04:32 +0100
-Message-ID: <20180404090431.rqwtaqovipxa5gta@lakrids.cambridge.arm.com>
-References: <1521687960-3744-1-git-send-email-ji.zhang@mediatek.com>
- <20180322055929.z25brvwlmdighz66@salmiak>
- <1521711329.26617.31.camel@mtksdccf07>
- <20180326113932.2i6qp3776jtmcqk4@lakrids.cambridge.arm.com>
- <1522229612.26617.47.camel@mtksdccf07>
- <20180328101240.moo44g5qd3qjuxgn@lakrids.cambridge.arm.com>
- <1522397292.26617.63.camel@mtksdccf07>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: Re: [usb-next PATCH v11 3/8] usb: core: add a wrapper for the USB
+ PHYs on the HCD
+Date: Wed, 4 Apr 2018 21:10:28 +0900
+Message-ID: <CAK7LNARM=F3Ey0aO9PiNftxkcLVo4z10jdrkSrQE1f74nK1=Ng@mail.gmail.com>
+References: <20180303214309.25643-1-martin.blumenstingl@googlemail.com>
+ <20180303214309.25643-4-martin.blumenstingl@googlemail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1522397292.26617.63.camel@mtksdccf07>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "Ji.Zhang" <ji.zhang@mediatek.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, James Morse <james.morse@arm.com>, Dave Martin <Dave.Martin@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, Michael Weiser <michael.weiser@gmx.de>, Julien Thierry <julien.thierry@arm.com>, Xie XiuQi <xiexiuqi@huawei.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, shadanji@163.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180303214309.25643-4-martin.blumenstingl@googlemail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Peter.Chen@nxp.com, Neil Armstrong <narmstrong@baylibre.com>, linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, Tony Prisk <linux@prisktech.co.nz>, Felipe Balbi <felipe.balbi@linux.intel.com>, Jon Hunter <jonathanh@nvidia.com>, Alan Stern <stern@rowland.harvard.edu>, Chunfeng Yun <chunfeng.yun@mediatek.com>, DTML <devicetree@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>, yixun.lan@amlogic.com, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org, Linux-OMAP <linux-omap@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, mathias.nyman@intel.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Mar 30, 2018 at 04:08:12PM +0800, Ji.Zhang wrote:
-> On Wed, 2018-03-28 at 11:12 +0100, Mark Rutland wrote:
-> > On Wed, Mar 28, 2018 at 05:33:32PM +0800, Ji.Zhang wrote:
-> > 
-> > I'm very much not keen on this.
-> > 
-> > I think that if we're going to do this, the only sane way to do it is to
-> > have unwind_frame() verify the current fp against the previous one, and
-> > verify that we have some strict nesting of stacks. Generally, that means
-> > we can go:
-> > 
-> >   overflow -> irq -> task
-> > 
-> > ... though I'm not sure what to do about the SDEI stack vs the overflow
-> > stack.
-> Actually I have had the fp check in unwind_frame(), but since I use the
-> in_entry_text() to determine if stack spans, and I did not want to
-> include traps.h in stacktrace.c, so I move the check out to
-> dump_backtrace.
-> Anyway, It seems that the key point is how should we verify that there
-> are some nesting of stacks. Since in unwind_frame() we already have the
-> previous fp and current fp, could we assume that if these two fps are
-> NOT belong to the same stack, there should be stack spans (no matter
-> task->irq, or irq->overflow, etc), and we can do the tricky to bypass
-> the fp check.The sample of the prosal just like:
-
-Unfortuantely, this still allows for loops, like task -> irq -> task, so
-I think if we're going to try to fix this, we must define a nesting
-order and check against that.
-
-Thanks,
-Mark.
-
-> diff --git a/arch/arm64/include/asm/stacktrace.h
-> b/arch/arm64/include/asm/stacktrace.h
-> index 902f9ed..fc2bf4d 100644
-> --- a/arch/arm64/include/asm/stacktrace.h
-> +++ b/arch/arm64/include/asm/stacktrace.h
-> @@ -92,4 +92,18 @@ static inline bool on_accessible_stack(struct
-> task_struct *tsk, unsigned long sp
->         return false;
->  }
-> 
-> +static inline bool on_same_stack(struct task_struct *tsk, unsigned long
-> sp1, unsigned sp2)
-> +{
-> +       if (on_task_stack(tsk, sp1) && on_task_stack(tsk, sp2))
-> +               return true;
-> +       if (on_irq_stack(sp1) && on_irq_stack(sp2))
-> +               return true;
-> +       if (on_overflow_stack(sp1) && on_overflow_stack(sp2))
-> +               return true;
-> +       if (on_sdei_stack(sp1) && on_sdei_stack(sp2))
-> +               return true;
+2018-03-04 6:43 GMT+09:00 Martin Blumenstingl
+<martin.blumenstingl@googlemail.com>:
+> Many SoC platforms have separate devices for the USB PHY which are
+> registered through the generic PHY framework. These PHYs have to be
+> enabled to make the USB controller actually work. They also have to be
+> disabled again on shutdown/suspend.
+>
+> Currently (at least) the following HCI platform drivers are using custom
+> code to obtain all PHYs via devicetree for the roothub/controller and
+> disable/enable them when required:
+> - ehci-platform.c has ehci_platform_power_{on,off}
+> - xhci-mtk.c has xhci_mtk_phy_{init,exit,power_on,power_off}
+> - ohci-platform.c has ohci_platform_power_{on,off}
+>
+> With this new wrapper the USB PHYs can be specified directly in the
+> USB controller's devicetree node (just like on the drivers listed
+> above). This allows SoCs like the Amlogic Meson GXL family to operate
+> correctly once this is wired up correctly. These SoCs use a dwc3
+> controller and require all USB PHYs to be initialized (if one of the USB
+> PHYs it not initialized then none of USB port works at all).
+>
+> Signed-off-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+> Tested-by: Yixun Lan <yixun.lan@amlogic.com>
+> Cc: Neil Armstrong <narmstrong@baylibre.com>
+> Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  drivers/usb/core/Makefile |   2 +-
+>  drivers/usb/core/phy.c    | 158 ++++++++++++++++++++++++++++++++++++++++++++++
+>  drivers/usb/core/phy.h    |   7 ++
+>  3 files changed, 166 insertions(+), 1 deletion(-)
+>  create mode 100644 drivers/usb/core/phy.c
+>  create mode 100644 drivers/usb/core/phy.h
+>
+> diff --git a/drivers/usb/core/Makefile b/drivers/usb/core/Makefile
+> index 92c9cefb4317..18e874b0441e 100644
+> --- a/drivers/usb/core/Makefile
+> +++ b/drivers/usb/core/Makefile
+> @@ -6,7 +6,7 @@
+>  usbcore-y := usb.o hub.o hcd.o urb.o message.o driver.o
+>  usbcore-y += config.o file.o buffer.o sysfs.o endpoint.o
+>  usbcore-y += devio.o notify.o generic.o quirks.o devices.o
+> -usbcore-y += port.o
+> +usbcore-y += phy.o port.o
+>
+>  usbcore-$(CONFIG_OF)           += of.o
+>  usbcore-$(CONFIG_USB_PCI)              += hcd-pci.o
+> diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
+> new file mode 100644
+> index 000000000000..09b7c43c0ea4
+> --- /dev/null
+> +++ b/drivers/usb/core/phy.c
+> @@ -0,0 +1,158 @@
+> +// SPDX-License-Identifier: GPL-2.0+
+> +/*
+> + * A wrapper for multiple PHYs which passes all phy_* function calls to
+> + * multiple (actual) PHY devices. This is comes handy when initializing
+> + * all PHYs on a HCD and to keep them all in the same state.
+> + *
+> + * Copyright (C) 2018 Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+> + */
 > +
-> +       return false;
+> +#include <linux/device.h>
+> +#include <linux/list.h>
+> +#include <linux/phy/phy.h>
+> +#include <linux/of.h>
+> +
+> +#include "phy.h"
+> +
+> +struct usb_phy_roothub {
+> +       struct phy              *phy;
+> +       struct list_head        list;
+> +};
+> +
+> +static struct usb_phy_roothub *usb_phy_roothub_alloc(struct device *dev)
+> +{
+> +       struct usb_phy_roothub *roothub_entry;
+> +
+> +       roothub_entry = devm_kzalloc(dev, sizeof(*roothub_entry), GFP_KERNEL);
+> +       if (!roothub_entry)
+> +               return ERR_PTR(-ENOMEM);
+> +
+> +       INIT_LIST_HEAD(&roothub_entry->list);
+> +
+> +       return roothub_entry;
 > +}
 > +
->  #endif /* __ASM_STACKTRACE_H */
-> diff --git a/arch/arm64/kernel/stacktrace.c
-> b/arch/arm64/kernel/stacktrace.c
-> index d5718a0..4907a67 100644
-> --- a/arch/arm64/kernel/stacktrace.c
-> +++ b/arch/arm64/kernel/stacktrace.c
-> @@ -56,6 +56,13 @@ int notrace unwind_frame(struct task_struct *tsk,
-> struct stackframe *frame)
->         frame->fp = READ_ONCE_NOCHECK(*(unsigned long *)(fp));
->         frame->pc = READ_ONCE_NOCHECK(*(unsigned long *)(fp + 8));
-> 
-> +       if (!on_same_stack(fp, frame->fp))
-> +               fp = frame->fp + 0x8;
-> +       if (fp <= frame->fp) {
-> +               pr_notice("fp invalid, stop unwind\n");
-> +               return -EINVAL;
+> +static int usb_phy_roothub_add_phy(struct device *dev, int index,
+> +                                  struct list_head *list)
+> +{
+> +       struct usb_phy_roothub *roothub_entry;
+> +       struct phy *phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
+> +
+> +       if (IS_ERR_OR_NULL(phy)) {
+> +               if (!phy || PTR_ERR(phy) == -ENODEV)
+> +                       return 0;
+> +               else
+> +                       return PTR_ERR(phy);
 > +       }
 > +
->  #ifdef CONFIG_FUNCTION_GRAPH_TRACER
->         if (tsk->ret_stack &&
->                         (frame->pc == (unsigned long)return_to_handler))
-> {
-> 
-> Could this work?
-> 
-> Best Regards,
-> Ji
-> 
+> +       roothub_entry = usb_phy_roothub_alloc(dev);
+> +       if (IS_ERR(roothub_entry))
+> +               return PTR_ERR(roothub_entry);
+> +
+> +       roothub_entry->phy = phy;
+> +
+> +       list_add_tail(&roothub_entry->list, list);
+> +
+> +       return 0;
+> +}
+> +
+> +struct usb_phy_roothub *usb_phy_roothub_init(struct device *dev)
+> +{
+> +       struct usb_phy_roothub *phy_roothub;
+> +       struct usb_phy_roothub *roothub_entry;
+> +       struct list_head *head;
+> +       int i, num_phys, err;
+> +
+> +       num_phys = of_count_phandle_with_args(dev->of_node, "phys",
+> +                                             "#phy-cells");
+> +       if (num_phys <= 0)
+> +               return NULL;
+> +
+> +       phy_roothub = usb_phy_roothub_alloc(dev);
+> +       if (IS_ERR(phy_roothub))
+> +               return phy_roothub;
+> +
+> +       for (i = 0; i < num_phys; i++) {
+> +               err = usb_phy_roothub_add_phy(dev, i, &phy_roothub->list);
+> +               if (err)
+> +                       goto err_out;
+> +       }
+> +
+> +       head = &phy_roothub->list;
+
+
+I think phy_roothub->phy is always empty,
+and only phy_roothub->list is used.
+
+
+I just wondered if we can directly put 'struct list_head' into
+'struct usb_hcd'.
+
+
+
+
+
+> diff --git a/drivers/usb/core/phy.h b/drivers/usb/core/phy.h
+> new file mode 100644
+> index 000000000000..6fde59bfbff8
+> --- /dev/null
+> +++ b/drivers/usb/core/phy.h
+> @@ -0,0 +1,7 @@
+> +struct usb_phy_roothub;
+
+struct device;
+
+is also needed for usb_phy_roothub_init().
+
+
+
+> +struct usb_phy_roothub *usb_phy_roothub_init(struct device *dev);
+> +int usb_phy_roothub_exit(struct usb_phy_roothub *phy_roothub);
+> +
+> +int usb_phy_roothub_power_on(struct usb_phy_roothub *phy_roothub);
+> +void usb_phy_roothub_power_off(struct usb_phy_roothub *phy_roothub);
+
+
+Better to add an include guard?
+SPDX-License-Identifier for this header too?
+
+
+
+
+-- 
+Best Regards
+Masahiro Yamada
