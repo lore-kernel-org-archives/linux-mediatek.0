@@ -1,92 +1,70 @@
-From: Hans de Goede <hdegoede@redhat.com>
-Subject: Re: [PATCH] ata: ahci-platform: add reset control support
-Date: Thu, 5 Apr 2018 13:30:35 +0200
-Message-ID: <b2426da6-598c-8ab1-7576-7ca4a151cc2a@redhat.com>
-References: <1521768653-11824-1-git-send-email-hayashi.kunihiko@socionext.com>
- <20180405095429.GA7506@ulmo> <20180405202347.2803.4A936039@socionext.com>
+From: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: [bug report] staging: mt7621-mmc: MIPS: ralink: add sdhci for
+ mt7620a SoC
+Date: Thu, 5 Apr 2018 14:56:54 +0300
+Message-ID: <20180405115654.GA6324@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180405202347.2803.4A936039@socionext.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Thierry Reding <thierry.reding@gmail.com>
-Cc: Tejun Heo <tj@kernel.org>, Patrice Chotard <patrice.chotard@st.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-ide@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: blogic@openwrt.org
+Cc: devel@driverdev.osuosl.org, NeilBrown <neil@brown.name>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+Hello John Crispin,
 
-On 05-04-18 13:23, Kunihiko Hayashi wrote:
-> Hi Thierry,
-> 
-> On Thu, 5 Apr 2018 11:54:29 +0200
-> Thierry Reding <thierry.reding@gmail.com> wrote:
-> 
->> On Fri, Mar 23, 2018 at 10:30:53AM +0900, Kunihiko Hayashi wrote:
->>> Add support to get and control a list of resets for the device
->>> as optional and shared. These resets must be kept de-asserted until
->>> the device is enabled.
->>>
->>> This is specified as shared because some SoCs like UniPhier series
->>> have common reset controls with all ahci controller instances.
->>>
->>> Signed-off-by: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
->>> ---
->>>   .../devicetree/bindings/ata/ahci-platform.txt      |  1 +
->>>   drivers/ata/ahci.h                                 |  1 +
->>>   drivers/ata/libahci_platform.c                     | 24 +++++++++++++++++++---
->>>   3 files changed, 23 insertions(+), 3 deletions(-)
->>
->> This causes a regression on Tegra because we explicitly request the
->> resets after the call to ahci_platform_get_resources().
->>
->>  From a quick look, ahci_mtk and ahci_st are in the same boat, adding the
->> corresponding maintainers to Cc.
->>
->> Patrice, Matthias: does SATA still work for you after this patch? This
->> has been in linux-next since next-20180327.
-> 
-> I assume that I use "generic-ahci" driver directly, and this driver has
-> no way to handle resets, so I sent this patch.
-> 
-> However, also as far as I look, some hardware-specific drivers handle their
-> own resets, and call ahci_platform_{enable,disable}_resources().
-> Surely there are paths to call reset control twice in such drivers.
-> 
-> Identically, when the driver also handle their own clocks, they have same issue.
-> 
->> Given how this is one of the more hardware-specific bits, perhaps a
->> better way to do this is to move reset handling into a Uniphier driver
->> much like Tegra, Mediatek and ST?
-> 
-> Since it's difficult to write the resets in general with ahci_platform, I can prepare
-> hardware-specific driver for our SoCs >
->> That said, I don't see SATA support for any of the Socionext hardware
->> either in the DT bindings or drivers/ata, so perhaps it'd be best to
->> back this out again until we have something that's more well tested?
-> 
-> I'm about to use the generic driver, and prepare our phy driver and
-> DT bindings for our SoCs, but not yet.
+The patch 8b634a9c7620: "staging: mt7621-mmc: MIPS: ralink: add sdhci
+for mt7620a SoC" from Mar 15, 2018, leads to the following static
+checker warning:
 
-If the AHCI controller on your SoC works with the generic driver +
-a phy-driver using the generic phy framework, then IMHO that is
-preferred over adding yet another SoC specific AHCI driver. If the
-only reason to do a SoC specific AHCI driver is the need for resets,
-then IMHO we should add a flags parameter to ahci_platform_get_resources
-which specifies which resource-types to get and have the existing
-drivers call ahci_platform_get_resources() without the flag to also
-get resets, where as the generic driver would get resets.
+	drivers/staging/mt7621-mmc/sd.c:2790 msdc_drv_probe()
+	warn: curly braces intended?
 
-Thierry that should solve the problem, right ?
+drivers/staging/mt7621-mmc/sd.c
+  2777      /* For sd card: MSDC_SYS_SUSPEND | MSDC_WP_PIN_EN | MSDC_CD_PIN_EN | MSDC_REMOVABLE | MSDC_HIGHSPEED, 
+  2778         For sdio   : MSDC_EXT_SDIO_IRQ | MSDC_HIGHSPEED */
+  2779      if (hw->flags & MSDC_HIGHSPEED) {
+  2780          mmc->caps   = MMC_CAP_MMC_HIGHSPEED | MMC_CAP_SD_HIGHSPEED;
+  2781      }
+  2782      if (hw->data_pins == 4) { /* current data_pins are all 4*/
+  2783          mmc->caps  |= MMC_CAP_4_BIT_DATA;
+  2784      } else if (hw->data_pins == 8) {
+  2785          mmc->caps  |= MMC_CAP_8_BIT_DATA;
+  2786      }
+  2787      if ((hw->flags & MSDC_SDIO_IRQ) || (hw->flags & MSDC_EXT_SDIO_IRQ))
 
- > Then it's no problem that we can back this out.
+Are curly braces intended for this if statement?
 
-Yes reverting it for now is probably best, but I would like to see
-it get re-introduced while at the same time adding a flags parameter
-to ahci_platform_get_resources() and make the reset handling conditional
-on the flags. This IMHO is better then introducing another SoC driver.
+  2788          mmc->caps |= MMC_CAP_SDIO_IRQ;  /* yes for sdio */
+  2789  
+  2790          cd_active_low = !of_property_read_bool(pdev->dev.of_node, "mediatek,cd-high");
+  2791          mtk_sw_poll = of_property_read_bool(pdev->dev.of_node, "mediatek,cd-poll");
+  2792  
+  2793          if (mtk_sw_poll)
+  2794                  mmc->caps |= MMC_CAP_NEEDS_POLL;
 
-Regards,
+because the indenting seems to say that the braces should reach up to
+here.
 
-Hans
+  2795  
+  2796      /* MMC core transfer sizes tunable parameters */
+  2797  #if LINUX_VERSION_CODE > KERNEL_VERSION(3,10,0)
+  2798      mmc->max_segs      = MAX_HW_SGMTS;
+  2799  #else
+  2800      mmc->max_hw_segs   = MAX_HW_SGMTS;
+  2801      mmc->max_phys_segs = MAX_PHY_SGMTS;
+  2802  #endif
+
+
+regards,
+dan carpenter
