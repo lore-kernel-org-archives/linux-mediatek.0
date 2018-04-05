@@ -1,82 +1,117 @@
-From: Hans de Goede <hdegoede@redhat.com>
-Subject: Re: [PATCH] ata: ahci-platform: add reset control support
-Date: Thu, 5 Apr 2018 15:27:03 +0200
-Message-ID: <1f7d0738-1963-21c5-c293-e46fb0214ecf@redhat.com>
-References: <1521768653-11824-1-git-send-email-hayashi.kunihiko@socionext.com>
- <20180405095429.GA7506@ulmo> <e33f54ed-2848-9a4f-9669-7fada8c60326@st.com>
+From: Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Subject: Re: [PATCH usb-next v4 0/2] fix HCD PHY suspend handling
+Date: Thu, 5 Apr 2018 15:38:15 +0200
+Message-ID: <20180405133815.GC21390@kroah.com>
+References: <20180327212621.3400-1-martin.blumenstingl@googlemail.com>
+ <851bcd3a-9ff6-e0ac-579a-a4973c619818@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e33f54ed-2848-9a4f-9669-7fada8c60326@st.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Patrice CHOTARD <patrice.chotard@st.com>, Thierry Reding <thierry.reding@gmail.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Tejun Heo <tj@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, "linux-ide@vger.kernel.org" <linux-ide@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <851bcd3a-9ff6-e0ac-579a-a4973c619818-l0cyMroinI0@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
+Cc: d-gerlach-l0cyMroinI0@public.gmane.org, Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, j-keerthy-l0cyMroinI0@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-
-On 05-04-18 15:17, Patrice CHOTARD wrote:
-> Hi Thierry
+On Thu, Apr 05, 2018 at 11:47:11AM +0300, Roger Quadros wrote:
+> Greg,
 > 
-> On 04/05/2018 11:54 AM, Thierry Reding wrote:
->> On Fri, Mar 23, 2018 at 10:30:53AM +0900, Kunihiko Hayashi wrote:
->>> Add support to get and control a list of resets for the device
->>> as optional and shared. These resets must be kept de-asserted until
->>> the device is enabled.
->>>
->>> This is specified as shared because some SoCs like UniPhier series
->>> have common reset controls with all ahci controller instances.
->>>
->>> Signed-off-by: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
->>> ---
->>>    .../devicetree/bindings/ata/ahci-platform.txt      |  1 +
->>>    drivers/ata/ahci.h                                 |  1 +
->>>    drivers/ata/libahci_platform.c                     | 24 +++++++++++++++++++---
->>>    3 files changed, 23 insertions(+), 3 deletions(-)
->>
->> This causes a regression on Tegra because we explicitly request the
->> resets after the call to ahci_platform_get_resources().
+> On 28/03/18 00:26, Martin Blumenstingl wrote:
+> > This is a follow-up to my previous series "initialize (multiple) PHYs
+> > for a HCD": [0].
+> > 
+> > Roger Quadros reported [1] that it "is breaking low power cases on TI
+> > SoCs when USB is in host mode". He further explains that "Not doing the
+> > phy_exit() here [when entering suspend] leaves the clocks enabled on
+> > our SoC and we're no longer able to reach low power states on system
+> > suspend."
+> > Chunfeng Yun from Mediatek noted [2] that we cannot unconditionally call
+> > phy_exit while entering system suspend, because this would "disconnect
+> > plugged devices on MTK platforms, due to re-initialize u2 phys when
+> > resume"
+> > 
+> > In the discussion (which followed Roger's bug report: [1]) Roger,
+> > Chunfeng and me came to the conclusion that we can fix suspend on the
+> > TI SoCs without breaking it on the Mediatek SoCs by extending the
+> > suspend and resume code in usb/core/phy.c by checking whether the USB
+> > controller can wake up the system (which is the case for the Mediatek
+> > MTU3 controller, but now for the dwc3 controller used on the TI SoCs):
+> > - if the controller can wake up the system (Mediatek MTU3 use-case) we
+> >   only call usb_phy_roothub_power_off (which calls phy_power_off) when
+> >   entering system suspend
+> > - if the controller however cannot wake up the system (dwc3 on TI SoCs)
+> >   we additionally call usb_phy_roothub_exit (which calls phy_exit) when
+> >   entering system suspend
+> > - (we undo the previous steps during system resume)
+> > 
+> > The goal of this series is to fix the issue reported by Roger without
+> > breaking suspend/resume on the Mediatek SoCs.
+> > Since I neither have a TI nor a Mediatek device I am sending this as
+> > RFC. I have tested it on an Amlogic Meson GXM board (Khadas VIM2) which
+> > does NOT support suspend/resume yet.
+> > 
+> > this should be applied on top of [3] "usb: core: phy: fix return value
+> > of usb_phy_roothub_exit()" (even though there's no strict dependency,
+> > this is the order I wrote the patches in).
+> > 
+> > changes since RFC v3 at [6]:
+> > - added Chunfeng Yun's Tested-by and Roger Quadros' Reviewed-by (thank
+> >   you!)
+> > - dropped RFC prefix
+> > 
+> > changes since RFC v2 at [5]:
+> > - add missing INIT_LIST_HEAD call in usb_phy_roothub_add_phy (affects
+> >   patch #1 - spotted by Roger Quadros, thank you!)
+> > - fixed swapped conditions using device_may_wakeup() in
+> >   usb_phy_roothub_resume because we need to call usb_phy_roothub_init
+> >   if the controller cannot wake up the device (affects patch #2, spotted
+> >   by Chunfeng Yun, thank you!)
+> > - simplified the error condition to "undo" usb_phy_roothub_init if
+> >   usb_phy_roothub_power_on failed in usb_phy_roothub_resume (suggested
+> >   by Chunfeng Yun)
+> > - updated the commit message (using Roger's wording) because (quote from
+> >   Roger "it doesn't prevent the system from entering suspend but just
+> >   prevents the system from reaching lowest power levels in the suspend
+> >   state."
+> > 
+> > Changes since RFC v1 (blob attachments) at [4]:
+> > - use device_may_wakeup instead of device_can_wakeup as suggested by
+> >   Roger Quadros
+> > - use the controller device from hcd->self.controller as suggested by
+> >   Chunfeng Yun
+> > - compile time fixes thanks to Roger Quadros
+> > - if usb_phy_roothub_power_on in usb_phy_roothub_resume failes then
+> >   we now call usb_phy_roothub_exit to keep the PHYs in the correct
+> >   state if usb_phy_roothub_resume partially failed
+> > 
+> > 
+> > [0] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006599.html
+> > [1] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006737.html
+> > [2] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006758.html
+> > [3] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006819.html
+> > [4] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006794.html
+> > [5] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006820.html
+> > [6] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006847.html
+> > 
+> > Martin Blumenstingl (2):
+> >   usb: core: split usb_phy_roothub_{init,alloc}
+> >   usb: core: use phy_exit during suspend if wake up is not supported
 > 
-> I confirm, we got exactly the same behavior on STi platform.
-> 
->>
->>   From a quick look, ahci_mtk and ahci_st are in the same boat, adding the
->> corresponding maintainers to Cc.
->>
->> Patrice, Matthias: does SATA still work for you after this patch? This
->> has been in linux-next since next-20180327.
-> 
-> SATA is still working after this patch, but a kernel warning is
-> triggered due to the fact that resets are both requested by
-> libahci_platform and by ahci_st driver.
+> Gentle ping on this one. Without this system suspend/resume is broken on TI platforms.
 
-So in your case you might be able to remove the reset handling
-from the ahci_st driver and rely on the new libahci_platform
-handling instead? If that works that seems like a win to me.
+Sorry, this missed my merge window, I can pick it up after 4.17-rc1 is
+out.
 
-As said elsewhere in this thread I think it makes sense to keep (or re-add
-after a revert) the libahci_platform reset code, but make it conditional
-on a flag passed to ahci_platform_get_resources(). This way we get
-the shared code for most cases and platforms which need special handling
-can opt-out.
+thanks,
 
-Regards,
-
-Hans
-
-
-> 
-> Patrice
-> 
->>
->> Given how this is one of the more hardware-specific bits, perhaps a
->> better way to do this is to move reset handling into a Uniphier driver
->> much like Tegra, Mediatek and ST?
->>
->> That said, I don't see SATA support for any of the Socionext hardware
->> either in the DT bindings or drivers/ata, so perhaps it'd be best to
->> back this out again until we have something that's more well tested?
->>
->> Thierry
+greg k-h
