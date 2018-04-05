@@ -1,138 +1,73 @@
-From: John Crispin <john@phrozen.org>
-Subject: Re: [bug report] staging: mt7621-mmc: MIPS: ralink: add sdhci for
- mt7620a SoC
-Date: Thu, 5 Apr 2018 14:26:57 +0200
-Message-ID: <faae6ec3-e282-861f-c0c4-aa1c65162d8d@phrozen.org>
-References: <20180405121310.GA7782@mwanda>
+From: Patrice CHOTARD <patrice.chotard-qxv4g6HH51o@public.gmane.org>
+Subject: Re: [PATCH] ata: ahci-platform: add reset control support
+Date: Thu, 5 Apr 2018 13:17:45 +0000
+Message-ID: <e33f54ed-2848-9a4f-9669-7fada8c60326@st.com>
+References: <1521768653-11824-1-git-send-email-hayashi.kunihiko@socionext.com>
+ <20180405095429.GA7506@ulmo>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-In-Reply-To: <20180405121310.GA7782@mwanda>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180405095429.GA7506@ulmo>
 Content-Language: en-US
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Dan Carpenter <dan.carpenter@oracle.com>, blogic@openwrt.org
-Cc: devel@driverdev.osuosl.org, NeilBrown <neil@brown.name>, linux-mediatek@lists.infradead.org
+Content-ID: <BE3B334EEE98F84BA88BFEA6331EA38F-qxv4g6HH51o@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kunihiko Hayashi <hayashi.kunihiko-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Tejun Heo <tj-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-ide-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-ide-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Hans de Goede <hdegoede-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgRGFuLAoKSSBleHBsYWluZWQgd2h5IEkgdGhpbmsgdGhpcyBzaG91bGQgbm90IGJlIG1lcmdl
-ZCwgaSBkbyBub3QgcGxhbiB0byBmaXggCmFueSBpc3N1ZXMsIHBsZWFzZSBzZW5kIGFsbCBtYWlu
-dGVuYW5jZSByZXF1ZXN0cyB0b3dhcmRzIE5laWxCcm93bi4KCkFuZCAuLiBpdCB3YXMgbWVyZ2Vk
-IGl0IHdpdGggYW4gb3V0IGRhdGVkIGRlZnVuY3QgbWFpbCBhZGRyIG9mIG1pbmUuCgogwqDCoMKg
-IEpvaG4KCgpPbiAwNS8wNC8xOCAxNDoxMywgRGFuIENhcnBlbnRlciB3cm90ZToKPiBbIEkganVz
-dCBkZWNpZGVkIHRvIGZvcndhcmQgeW91IGd1eXMgYWxsIHRoZSBTbWF0Y2ggd2FybmluZ3MuICAt
-ZGFuIF0KPgo+IEhlbGxvIEpvaG4gQ3Jpc3BpbiwKPgo+IFRoZSBwYXRjaCA4YjYzNGE5Yzc2MjA6
-ICJzdGFnaW5nOiBtdDc2MjEtbW1jOiBNSVBTOiByYWxpbms6IGFkZCBzZGhjaQo+IGZvciBtdDc2
-MjBhIFNvQyIgZnJvbSBNYXIgMTUsIDIwMTgsIGxlYWRzIHRvIHRoZSBmb2xsb3dpbmcgc3RhdGlj
-Cj4gY2hlY2tlciB3YXJuaW5nOgo+Cj4gCWRyaXZlcnMvc3RhZ2luZy9tdDc2MjEtbW1jL3NkLmM6
-OTUxIG1zZGNfY29tbWFuZF9zdGFydCgpCj4gCXdhcm46IHdlIHRlc3RlZCAnb3Bjb2RlID09IDMn
-IGJlZm9yZSBhbmQgaXQgd2FzICdmYWxzZScKPgo+IGRyaXZlcnMvc3RhZ2luZy9tdDc2MjEtbW1j
-L3NkLmMKPiAgICAgOTMxICBzdGF0aWMgdW5zaWduZWQgaW50IG1zZGNfY29tbWFuZF9zdGFydChz
-dHJ1Y3QgbXNkY19ob3N0ICAgKmhvc3QsCj4gICAgIDkzMiAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICBzdHJ1Y3QgbW1jX2NvbW1hbmQgKmNtZCwKPiAgICAgOTMzICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGludCAgICAgICAgICAgICAgICAgdHVu
-ZSwgICAvKiBub3QgdXNlZCAqLwo+ICAgICA5MzQgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgdW5zaWduZWQgbG9uZyAgICAgICB0aW1lb3V0KQo+ICAgICA5MzUgIHsKPiAg
-ICAgOTM2ICAgICAgdTMyIGJhc2UgPSBob3N0LT5iYXNlOwo+ICAgICA5MzcgICAgICB1MzIgb3Bj
-b2RlID0gY21kLT5vcGNvZGU7Cj4gICAgIDkzOCAgICAgIHUzMiByYXdjbWQ7Cj4gICAgIDkzOSAg
-ICAgIHUzMiB3aW50cyA9IE1TRENfSU5UX0NNRFJEWSAgfCBNU0RDX0lOVF9SU1BDUkNFUlIgIHwg
-TVNEQ19JTlRfQ01EVE1PICB8Cj4gICAgIDk0MCAgICAgICAgICAgICAgICAgIE1TRENfSU5UX0FD
-TURSRFkgfCBNU0RDX0lOVF9BQ01EQ1JDRVJSIHwgTVNEQ19JTlRfQUNNRFRNTyB8Cj4gICAgIDk0
-MSAgICAgICAgICAgICAgICAgIE1TRENfSU5UX0FDTUQxOV9ET05FOwo+ICAgICA5NDIKPiAgICAg
-OTQzICAgICAgdTMyIHJlc3A7Cj4gICAgIDk0NCAgICAgIHVuc2lnbmVkIGxvbmcgdG1vOwo+ICAg
-ICA5NDUKPiAgICAgOTQ2ICAgICAgLyogUHJvdG9jb2wgbGF5ZXIgZG9lcyBub3QgcHJvdmlkZSBy
-ZXNwb25zZSB0eXBlLCBidXQgb3VyIGhhcmR3YXJlIG5lZWRzCj4gICAgIDk0NyAgICAgICAqIHRv
-IGtub3cgZXhhY3QgdHlwZSwgbm90IGp1c3Qgc2l6ZSEKPiAgICAgOTQ4ICAgICAgICovCj4gICAg
-IDk0OSAgICAgIGlmIChvcGNvZGUgPT0gTU1DX1NFTkRfT1BfQ09ORCB8fCBvcGNvZGUgPT0gU0Rf
-QVBQX09QX0NPTkQpCj4gICAgIDk1MCAgICAgICAgICByZXNwID0gUkVTUF9SMzsKPiAgICAgOTUx
-ICAgICAgZWxzZSBpZiAob3Bjb2RlID09IE1NQ19TRVRfUkVMQVRJVkVfQUREUiB8fCBvcGNvZGUg
-PT0gU0RfU0VORF9SRUxBVElWRV9BRERSKQo+ICAgICAgICAgICAgICAgICAgICAgICBeXl5eXl5e
-Xl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5e
-Xl4KPiBNTUNfU0VUX1JFTEFUSVZFX0FERFIgYW5kIFNEX1NFTkRfUkVMQVRJVkVfQUREUiBhcmUg
-Ym90aCAzIHNvIHRoaXMKPiBpcyByZWR1bmRhbnQuCj4KPiAgICAgOTUyICAgICAgICAgIHJlc3Ag
-PSAobW1jX2NtZF90eXBlKGNtZCkgPT0gTU1DX0NNRF9CQ1IpID8gUkVTUF9SNiA6IFJFU1BfUjE7
-Cj4gICAgIDk1MyAgICAgIGVsc2UgaWYgKG9wY29kZSA9PSBNTUNfRkFTVF9JTykKPiAgICAgOTU0
-ICAgICAgICAgIHJlc3AgPSBSRVNQX1I0Owo+ICAgICA5NTUgICAgICBlbHNlIGlmIChvcGNvZGUg
-PT0gTU1DX0dPX0lSUV9TVEFURSkKPiAgICAgOTU2ICAgICAgICAgIHJlc3AgPSBSRVNQX1I1Owo+
-ICAgICA5NTcgICAgICBlbHNlIGlmIChvcGNvZGUgPT0gTU1DX1NFTEVDVF9DQVJEKQo+ICAgICA5
-NTggICAgICAgICAgcmVzcCA9IChjbWQtPmFyZyAhPSAwKSA/IFJFU1BfUjFCIDogUkVTUF9OT05F
-Owo+ICAgICA5NTkgICAgICBlbHNlIGlmIChvcGNvZGUgPT0gU0RfSU9fUldfRElSRUNUIHx8IG9w
-Y29kZSA9PSBTRF9JT19SV19FWFRFTkRFRCkKPiAgICAgOTYwICAgICAgICAgIHJlc3AgPSBSRVNQ
-X1IxOyAvKiBTRElPIHdvcmthcm91bmQuICovCj4gICAgIDk2MSAgICAgIGVsc2UgaWYgKG9wY29k
-ZSA9PSBTRF9TRU5EX0lGX0NPTkQgJiYgKG1tY19jbWRfdHlwZShjbWQpID09IE1NQ19DTURfQkNS
-KSkKPiAgICAgOTYyICAgICAgICAgIHJlc3AgPSBSRVNQX1IxOwo+ICAgICA5NjMgICAgICBlbHNl
-IHsKPiAgICAgOTY0ICAgICAgICAgIHN3aXRjaCAobW1jX3Jlc3BfdHlwZShjbWQpKSB7Cj4KPiAg
-ICAgICAgICBkcml2ZXJzL3N0YWdpbmcvbXQ3NjIxLW1tYy9zZC5jOjI5NjEgbXNkY19kcnZfc3Vz
-cGVuZCgpCj4gICAgICAgICAgd2FybjogdmFyaWFibGUgZGVyZWZlcmVuY2VkIGJlZm9yZSBjaGVj
-ayAnbW1jJyAoc2VlIGxpbmUgMjk1OSkKPgo+ICAgICAgICAgIGRyaXZlcnMvc3RhZ2luZy9tdDc2
-MjEtbW1jL3NkLmM6Mjk3NiBtc2RjX2Rydl9yZXN1bWUoKQo+ICAgICAgICAgIHdhcm46IHZhcmlh
-YmxlIGRlcmVmZXJlbmNlZCBiZWZvcmUgY2hlY2sgJ21tYycgKHNlZSBsaW5lIDI5NzIpCj4KPiBk
-cml2ZXJzL3N0YWdpbmcvbXQ3NjIxLW1tYy9zZC5jCj4gICAgMjk1MyAgLyogRml4IG1lOiBQb3dl
-ciBGbG93ICovCj4gICAgMjk1NCAgI2lmZGVmIENPTkZJR19QTQo+ICAgIDI5NTUgIHN0YXRpYyBp
-bnQgbXNkY19kcnZfc3VzcGVuZChzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LCBwbV9tZXNz
-YWdlX3Qgc3RhdGUpCj4gICAgMjk1NiAgewo+ICAgIDI5NTcgICAgICBpbnQgcmV0ID0gMDsKPiAg
-ICAyOTU4ICAgICAgc3RydWN0IG1tY19ob3N0ICptbWMgPSBwbGF0Zm9ybV9nZXRfZHJ2ZGF0YShw
-ZGV2KTsKPiAgICAyOTU5ICAgICAgc3RydWN0IG1zZGNfaG9zdCAqaG9zdCA9IG1tY19wcml2KG1t
-Yyk7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeXl5eXl5eXl5eXl5e
-Cj4gRGVyZWZlcmVuY2UKPgo+ICAgIDI5NjAKPiAgICAyOTYxICAgICAgaWYgKG1tYyAmJiBzdGF0
-ZS5ldmVudCA9PSBQTV9FVkVOVF9TVVNQRU5EICYmIChob3N0LT5ody0+ZmxhZ3MgJiBNU0RDX1NZ
-U19TVVNQRU5EKSkgeyAvKiB3aWxsIHNldCBmb3IgY2FyZCAqLwo+ICAgICAgICAgICAgICAgICAg
-Xl5eCj4gQ2hlY2sKPgo+ICAgIDI5NjIgICAgICAgICAgbXNkY19wbShzdGF0ZSwgKHZvaWQqKWhv
-c3QpOwo+ICAgIDI5NjMgICAgICB9Cj4gICAgMjk2NAo+ICAgIDI5NjUgICAgICByZXR1cm4gcmV0
-Owo+ICAgIDI5NjYgIH0KPiAgICAyOTY3Cj4gICAgMjk2OCAgc3RhdGljIGludCBtc2RjX2Rydl9y
-ZXN1bWUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgICAyOTY5ICB7Cj4gICAgMjk3
-MCAgICAgIGludCByZXQgPSAwOwo+ICAgIDI5NzEgICAgICBzdHJ1Y3QgbW1jX2hvc3QgKm1tYyA9
-IHBsYXRmb3JtX2dldF9kcnZkYXRhKHBkZXYpOwo+ICAgIDI5NzIgICAgICBzdHJ1Y3QgbXNkY19o
-b3N0ICpob3N0ID0gbW1jX3ByaXYobW1jKTsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIF5eXl5eXl5eXl5eXgo+IERlcmVmZXJlbmNlCj4KPiAgICAyOTczICAgICAgc3Ry
-dWN0IHBtX21lc3NhZ2Ugc3RhdGU7Cj4gICAgMjk3NAo+ICAgIDI5NzUgICAgICBzdGF0ZS5ldmVu
-dCA9IFBNX0VWRU5UX1JFU1VNRTsKPiAgICAyOTc2ICAgICAgaWYgKG1tYyAmJiAoaG9zdC0+aHct
-PmZsYWdzICYgTVNEQ19TWVNfU1VTUEVORCkpIHsvKiB3aWxsIHNldCBmb3IgY2FyZCAqLwo+ICAg
-ICAgICAgICAgICAgICAgXl5eCj4gQ2hlY2sKPgo+ICAgIDI5NzcgICAgICAgICAgbXNkY19wbShz
-dGF0ZSwgKHZvaWQqKWhvc3QpOwo+ICAgIDI5NzggICAgICB9Cj4gICAgMjk3OQo+ICAgIDI5ODAg
-ICAgICAvKiBUaGlzIG1lYW4gV0lGSSBub3QgY29udHJvbGxlciBieSBQTSAqLwo+ICAgIDI5ODEK
-PiAgICAyOTgyICAgICAgcmV0dXJuIHJldDsKPiAgICAyOTgzICB9Cj4KPiAgICAgICAgICBkcml2
-ZXJzL3N0YWdpbmcvbXQ3NjIxLW1tYy9kYmcuYzoyNzAgbXNkY19kZWJ1Z19wcm9jX3dyaXRlKCkK
-PiAgICAgICAgICB3YXJuOiBjb3B5X3RvL2Zyb21fdXNlcigpIHJldHVybnMgYSBwb3NpdGl2ZSB2
-YWx1ZQo+Cj4gZHJpdmVycy9zdGFnaW5nL210NzYyMS1tbWMvZGJnLmMKPiAgICAgMjU3ICBzdGF0
-aWMgc3NpemVfdCBtc2RjX2RlYnVnX3Byb2Nfd3JpdGUoc3RydWN0IGZpbGUgKmZpbGUsCj4gICAg
-IDI1OCAgICAgICAgICAgICAgICAgICAgICAgICAgY29uc3QgY2hhciBfX3VzZXIgKmJ1Ziwgc2l6
-ZV90IGNvdW50LCBsb2ZmX3QgKmRhdGEpCj4gICAgIDI1OSAgewo+ICAgICAyNjAgICAgICAgICAg
-aW50IHJldDsKPiAgICAgMjYxCj4gICAgIDI2MiAgICAgICAgICBpbnQgY21kLCBwMSwgcDI7Cj4g
-ICAgIDI2MyAgICAgICAgICBpbnQgaWQsIHpvbmU7Cj4gICAgIDI2NCAgICAgICAgICBpbnQgbW9k
-ZSwgc2l6ZTsKPiAgICAgMjY1Cj4gICAgIDI2NiAgICAgICAgICBpZiAoY291bnQgPT0gMClyZXR1
-cm4gLTE7Cj4gICAgIDI2NyAgICAgICAgICBpZihjb3VudCA+IDI1NSljb3VudCA9IDI1NTsKPiAg
-ICAgMjY4Cj4gICAgIDI2OSAgICAgICAgICByZXQgPSBjb3B5X2Zyb21fdXNlcihjbWRfYnVmLCBi
-dWYsIGNvdW50KTsKPiAgICAgMjcwICAgICAgICAgIGlmIChyZXQgPCAwKXJldHVybiAtMTsKPgo+
-IFRoaXMgc2hvdWxkIGJlOgo+Cj4gCQlpZiAoY29weV9mcm9tX3VzZXIoY21kX2J1ZiwgYnVmLCBj
-b3VudCkpCj4gCQkJcmV0dXJuIC1FRkFVTFQ7Cj4KPiAgICAgMjcxCj4gICAgIDI3MiAgICAgICAg
-ICBjbWRfYnVmW2NvdW50XSA9ICdcMCc7Cj4gICAgIDI3MyAgICAgICAgICBwcmludGsoIm1zZGMg
-V3JpdGUgJXNcbiIsIGNtZF9idWYpOwo+ICAgICAyNzQKPgo+ICAgICAgICAgIGRyaXZlcnMvc3Rh
-Z2luZy9tdDc2MjEtbW1jL2RiZy5jOjMzOSBtc2RjX2RlYnVnX3Byb2NfaW5pdCgpCj4gICAgICAg
-ICAgd2FybjogcHJvYyBmaWxlICcibXNkY19kZWJ1ZyInIGlzIHdvcmxkIHdyaXRhYmxlCj4KPiAJ
-ZHJpdmVycy9zdGFnaW5nL210NzYyMS1tbWMvZGJnLmM6MzQxIG1zZGNfZGVidWdfcHJvY19pbml0
-KCkKPiAJd2FybjogJ2RlJyBpc24ndCBhbiBFUlJfUFRSCj4KPgo+IGRyaXZlcnMvc3RhZ2luZy9t
-dDc2MjEtbW1jL2RiZy5jCj4gICAgIDMzNyAgaW50IG1zZGNfZGVidWdfcHJvY19pbml0KHZvaWQp
-Cj4gICAgIDMzOCAgewo+ICAgICAzMzkgICAgICBzdHJ1Y3QgcHJvY19kaXJfZW50cnkgKmRlID0g
-cHJvY19jcmVhdGUoIm1zZGNfZGVidWciLCAwNjY3LCBOVUxMLCAmbXNkY19kZWJ1Z19mb3BzKTsK
-PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgXgo+IFRoaXMgc2hvdWxkIHByb2JhYmx5IGJlIGEgemVybyBpbnN0ZWFk
-IG9mIGEgc2V2ZW4uCj4KPiAgICAgMzQwCj4gICAgIDM0MSAgICAgIGlmICghZGUgfHwgSVNfRVJS
-KGRlKSkKPiAgICAgICAgICAgICAgICAgICAgICAgICBeXl5eXl5eXl5eCj4gUmVtb3ZlIHRoaXMu
-Cj4KPiAgICAgMzQyICAgICAgICAgIHByaW50aygiISEgQ3JlYXRlIE1TREMgZGVidWcgUFJPQyBm
-YWlsICEhXG4iKTsKPiAgICAgMzQzCj4gICAgIDM0NCAgICAgIHJldHVybiAwIDsKPiAgICAgMzQ1
-ICB9Cj4KPiByZWdhcmRzLAo+IGRhbiBjYXJwZW50ZXIKPgo+IF9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0
-Cj4gTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZl
-bEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9q
-ZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+Hi Thierry
+
+On 04/05/2018 11:54 AM, Thierry Reding wrote:
+> On Fri, Mar 23, 2018 at 10:30:53AM +0900, Kunihiko Hayashi wrote:
+>> Add support to get and control a list of resets for the device
+>> as optional and shared. These resets must be kept de-asserted until
+>> the device is enabled.
+>>
+>> This is specified as shared because some SoCs like UniPhier series
+>> have common reset controls with all ahci controller instances.
+>>
+>> Signed-off-by: Kunihiko Hayashi <hayashi.kunihiko-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+>> ---
+>>   .../devicetree/bindings/ata/ahci-platform.txt      |  1 +
+>>   drivers/ata/ahci.h                                 |  1 +
+>>   drivers/ata/libahci_platform.c                     | 24 +++++++++++++++++++---
+>>   3 files changed, 23 insertions(+), 3 deletions(-)
+> 
+> This causes a regression on Tegra because we explicitly request the
+> resets after the call to ahci_platform_get_resources().
+
+I confirm, we got exactly the same behavior on STi platform.
+
+> 
+>  From a quick look, ahci_mtk and ahci_st are in the same boat, adding the
+> corresponding maintainers to Cc.
+> 
+> Patrice, Matthias: does SATA still work for you after this patch? This
+> has been in linux-next since next-20180327.
+
+SATA is still working after this patch, but a kernel warning is 
+triggered due to the fact that resets are both requested by 
+libahci_platform and by ahci_st driver.
+
+Patrice
+
+> 
+> Given how this is one of the more hardware-specific bits, perhaps a
+> better way to do this is to move reset handling into a Uniphier driver
+> much like Tegra, Mediatek and ST?
+> 
+> That said, I don't see SATA support for any of the Socionext hardware
+> either in the DT bindings or drivers/ata, so perhaps it'd be best to
+> back this out again until we have something that's more well tested?
+> 
+> Thierry
+> 
