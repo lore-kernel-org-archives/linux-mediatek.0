@@ -1,121 +1,78 @@
-From: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH usb-next v4 0/2] fix HCD PHY suspend handling
-Date: Thu, 5 Apr 2018 11:47:11 +0300
-Message-ID: <851bcd3a-9ff6-e0ac-579a-a4973c619818@ti.com>
-References: <20180327212621.3400-1-martin.blumenstingl@googlemail.com>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH] ata: ahci-platform: add reset control support
+Date: Thu, 5 Apr 2018 11:54:29 +0200
+Message-ID: <20180405095429.GA7506@ulmo>
+References: <1521768653-11824-1-git-send-email-hayashi.kunihiko@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180327212621.3400-1-martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
-Cc: d-gerlach-l0cyMroinI0@public.gmane.org, j-keerthy-l0cyMroinI0@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="3MwIy2ne0vdjdPXF"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1521768653-11824-1-git-send-email-hayashi.kunihiko@socionext.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Tejun Heo <tj@kernel.org>, Patrice Chotard <patrice.chotard@st.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Hans de Goede <hdegoede@redhat.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-ide@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Greg,
 
-On 28/03/18 00:26, Martin Blumenstingl wrote:
-> This is a follow-up to my previous series "initialize (multiple) PHYs
-> for a HCD": [0].
-> 
-> Roger Quadros reported [1] that it "is breaking low power cases on TI
-> SoCs when USB is in host mode". He further explains that "Not doing the
-> phy_exit() here [when entering suspend] leaves the clocks enabled on
-> our SoC and we're no longer able to reach low power states on system
-> suspend."
-> Chunfeng Yun from Mediatek noted [2] that we cannot unconditionally call
-> phy_exit while entering system suspend, because this would "disconnect
-> plugged devices on MTK platforms, due to re-initialize u2 phys when
-> resume"
-> 
-> In the discussion (which followed Roger's bug report: [1]) Roger,
-> Chunfeng and me came to the conclusion that we can fix suspend on the
-> TI SoCs without breaking it on the Mediatek SoCs by extending the
-> suspend and resume code in usb/core/phy.c by checking whether the USB
-> controller can wake up the system (which is the case for the Mediatek
-> MTU3 controller, but now for the dwc3 controller used on the TI SoCs):
-> - if the controller can wake up the system (Mediatek MTU3 use-case) we
->   only call usb_phy_roothub_power_off (which calls phy_power_off) when
->   entering system suspend
-> - if the controller however cannot wake up the system (dwc3 on TI SoCs)
->   we additionally call usb_phy_roothub_exit (which calls phy_exit) when
->   entering system suspend
-> - (we undo the previous steps during system resume)
-> 
-> The goal of this series is to fix the issue reported by Roger without
-> breaking suspend/resume on the Mediatek SoCs.
-> Since I neither have a TI nor a Mediatek device I am sending this as
-> RFC. I have tested it on an Amlogic Meson GXM board (Khadas VIM2) which
-> does NOT support suspend/resume yet.
-> 
-> this should be applied on top of [3] "usb: core: phy: fix return value
-> of usb_phy_roothub_exit()" (even though there's no strict dependency,
-> this is the order I wrote the patches in).
-> 
-> changes since RFC v3 at [6]:
-> - added Chunfeng Yun's Tested-by and Roger Quadros' Reviewed-by (thank
->   you!)
-> - dropped RFC prefix
-> 
-> changes since RFC v2 at [5]:
-> - add missing INIT_LIST_HEAD call in usb_phy_roothub_add_phy (affects
->   patch #1 - spotted by Roger Quadros, thank you!)
-> - fixed swapped conditions using device_may_wakeup() in
->   usb_phy_roothub_resume because we need to call usb_phy_roothub_init
->   if the controller cannot wake up the device (affects patch #2, spotted
->   by Chunfeng Yun, thank you!)
-> - simplified the error condition to "undo" usb_phy_roothub_init if
->   usb_phy_roothub_power_on failed in usb_phy_roothub_resume (suggested
->   by Chunfeng Yun)
-> - updated the commit message (using Roger's wording) because (quote from
->   Roger "it doesn't prevent the system from entering suspend but just
->   prevents the system from reaching lowest power levels in the suspend
->   state."
-> 
-> Changes since RFC v1 (blob attachments) at [4]:
-> - use device_may_wakeup instead of device_can_wakeup as suggested by
->   Roger Quadros
-> - use the controller device from hcd->self.controller as suggested by
->   Chunfeng Yun
-> - compile time fixes thanks to Roger Quadros
-> - if usb_phy_roothub_power_on in usb_phy_roothub_resume failes then
->   we now call usb_phy_roothub_exit to keep the PHYs in the correct
->   state if usb_phy_roothub_resume partially failed
-> 
-> 
-> [0] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006599.html
-> [1] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006737.html
-> [2] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006758.html
-> [3] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006819.html
-> [4] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006794.html
-> [5] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006820.html
-> [6] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006847.html
-> 
-> Martin Blumenstingl (2):
->   usb: core: split usb_phy_roothub_{init,alloc}
->   usb: core: use phy_exit during suspend if wake up is not supported
+--3MwIy2ne0vdjdPXF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Gentle ping on this one. Without this system suspend/resume is broken on TI platforms.
+On Fri, Mar 23, 2018 at 10:30:53AM +0900, Kunihiko Hayashi wrote:
+> Add support to get and control a list of resets for the device
+> as optional and shared. These resets must be kept de-asserted until
+> the device is enabled.
+>=20
+> This is specified as shared because some SoCs like UniPhier series
+> have common reset controls with all ahci controller instances.
+>=20
+> Signed-off-by: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
+> ---
+>  .../devicetree/bindings/ata/ahci-platform.txt      |  1 +
+>  drivers/ata/ahci.h                                 |  1 +
+>  drivers/ata/libahci_platform.c                     | 24 ++++++++++++++++=
++++---
+>  3 files changed, 23 insertions(+), 3 deletions(-)
 
-> 
->  drivers/usb/core/hcd.c | 18 +++++++----
->  drivers/usb/core/phy.c | 88 +++++++++++++++++++++++++++++++++++---------------
->  drivers/usb/core/phy.h |  9 +++++-
->  3 files changed, 82 insertions(+), 33 deletions(-)
-> 
+This causes a regression on Tegra because we explicitly request the
+resets after the call to ahci_platform_get_resources().
 
--- 
-cheers,
--roger
+=46rom a quick look, ahci_mtk and ahci_st are in the same boat, adding the
+corresponding maintainers to Cc.
 
-Texas Instruments Finland Oy, Porkkalankatu 22, 00180 Helsinki. Y-tunnus/Business ID: 0615521-4. Kotipaikka/Domicile: Helsinki
+Patrice, Matthias: does SATA still work for you after this patch? This
+has been in linux-next since next-20180327.
+
+Given how this is one of the more hardware-specific bits, perhaps a
+better way to do this is to move reset handling into a Uniphier driver
+much like Tegra, Mediatek and ST?
+
+That said, I don't see SATA support for any of the Socionext hardware
+either in the DT bindings or drivers/ata, so perhaps it'd be best to
+back this out again until we have something that's more well tested?
+
+Thierry
+
+--3MwIy2ne0vdjdPXF
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlrF8lEACgkQ3SOs138+
+s6H7EA//fqnLBMRIi+b3go4vL4naTiR/ajPZkj30Gl9LMUb0uprVgnPOC1ClhAEd
+VUqcL75MwXydIasQixfzTEmX2DPXGC4EYaPY1Zv/FDgnC0PXJMOezup8W40mHZKU
+9imul0pq7on0izFRB32xb45s2BXHAVpAyB/uEVthyWopnWK6cvGlaL5BdbHgtVhj
+GaajtH+v6+LY54zquz0noREZqFqDS5ugUHFkZq7Vquza99K2TAs9Jw9O9FaloNZq
+/rwKurnds9aeegnt6661XK5mYjuGzlA0Zwf4zk9uzU71pGmKDBNBu6WEwvTSM1jK
+l8/io7YCmbr4mVbzzoLn3hzzI9loK0ohL3e7mVJO+mORJZBCTjOzBIz+bQOdkU4y
+BQyiX8RK1tl4q1beYKV0HD6sffXiJDTBdHNMON3UNqF9MCOyAaX4t5Nr9MITUsaz
+NggHnWunPeJD0TPDEVrdYGQHj/z4Ri6AAEcuBW6KsPrwLOxRbM+qAw3VF29Ur1fC
+4v5e7Olr1ltu/NmvBiiHEELk8lnVmgZwVacpVLv2a8JZ2XMp0WH9lxVXB57SoEQ7
+KdrmDfYTcpyeCIOrUqdaz64CDsWGbZL+X048KoZmoxV5I5VEcXjCOJzd49CJYNtW
+J9bCVROflae3vM95hOt98CnC1ewPDe/SlR1HX7cySdFdAQxOaXs=
+=5EOF
+-----END PGP SIGNATURE-----
+
+--3MwIy2ne0vdjdPXF--
