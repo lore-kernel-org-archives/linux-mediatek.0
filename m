@@ -1,122 +1,59 @@
-From: Hans de Goede <hdegoede@redhat.com>
-Subject: Re: [PATCH] ata: ahci-platform: add reset control support
-Date: Thu, 5 Apr 2018 16:08:24 +0200
-Message-ID: <cd3bc161-9a38-1e58-b66f-3ef81e3ed220@redhat.com>
-References: <1521768653-11824-1-git-send-email-hayashi.kunihiko@socionext.com>
- <20180405095429.GA7506@ulmo> <e33f54ed-2848-9a4f-9669-7fada8c60326@st.com>
- <1f7d0738-1963-21c5-c293-e46fb0214ecf@redhat.com>
- <20180405135435.GA10860@ulmo>
- <6ce60a0b-0409-016a-d29c-91b8b9e2ad07@redhat.com>
+From: Christian =?iso-8859-1?Q?L=FCtke-Stetzkamp?= <christian@lkamp.de>
+Subject: Re: [bug report] staging: mt7621-mmc: MIPS: ralink: add sdhci for
+ mt7620a SoC
+Date: Thu, 5 Apr 2018 18:39:47 +0200
+Message-ID: <20180405163947.GA20350@demeter.lkamp.de>
+References: <20180405121310.GA7782@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6ce60a0b-0409-016a-d29c-91b8b9e2ad07@redhat.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Patrice CHOTARD <patrice.chotard@st.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Tejun Heo <tj@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, "linux-ide@vger.kernel.org" <linux-ide@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+Content-Disposition: inline
+In-Reply-To: <20180405121310.GA7782@mwanda>
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, NeilBrown <neil@brown.name>, linux-mediatek@lists.infradead.org, blogic@openwrt.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-
-On 05-04-18 16:00, Hans de Goede wrote:
-> Hi,
+On Thu, Apr 05, 2018 at 03:13:10PM +0300, Dan Carpenter wrote:
+> [ I just decided to forward you guys all the Smatch warnings.  -dan ]
 > 
-> On 05-04-18 15:54, Thierry Reding wrote:
->> On Thu, Apr 05, 2018 at 03:27:03PM +0200, Hans de Goede wrote:
->>> Hi,
->>>
->>> On 05-04-18 15:17, Patrice CHOTARD wrote:
->>>> Hi Thierry
->>>>
->>>> On 04/05/2018 11:54 AM, Thierry Reding wrote:
->>>>> On Fri, Mar 23, 2018 at 10:30:53AM +0900, Kunihiko Hayashi wrote:
->>>>>> Add support to get and control a list of resets for the device
->>>>>> as optional and shared. These resets must be kept de-asserted until
->>>>>> the device is enabled.
->>>>>>
->>>>>> This is specified as shared because some SoCs like UniPhier series
->>>>>> have common reset controls with all ahci controller instances.
->>>>>>
->>>>>> Signed-off-by: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
->>>>>> ---
->>>>>>     .../devicetree/bindings/ata/ahci-platform.txt      |  1 +
->>>>>>     drivers/ata/ahci.h                                 |  1 +
->>>>>>     drivers/ata/libahci_platform.c                     | 24 +++++++++++++++++++---
->>>>>>     3 files changed, 23 insertions(+), 3 deletions(-)
->>>>>
->>>>> This causes a regression on Tegra because we explicitly request the
->>>>> resets after the call to ahci_platform_get_resources().
->>>>
->>>> I confirm, we got exactly the same behavior on STi platform.
->>>>
->>>>>
->>>>>    From a quick look, ahci_mtk and ahci_st are in the same boat, adding the
->>>>> corresponding maintainers to Cc.
->>>>>
->>>>> Patrice, Matthias: does SATA still work for you after this patch? This
->>>>> has been in linux-next since next-20180327.
->>>>
->>>> SATA is still working after this patch, but a kernel warning is
->>>> triggered due to the fact that resets are both requested by
->>>> libahci_platform and by ahci_st driver.
->>>
->>> So in your case you might be able to remove the reset handling
->>> from the ahci_st driver and rely on the new libahci_platform
->>> handling instead? If that works that seems like a win to me.
->>>
->>> As said elsewhere in this thread I think it makes sense to keep (or re-add
->>> after a revert) the libahci_platform reset code, but make it conditional
->>> on a flag passed to ahci_platform_get_resources(). This way we get
->>> the shared code for most cases and platforms which need special handling
->>> can opt-out.
->>
->> Agreed, although I prefer such helpers to be opt-in, rather than
->> opt-out. In my experience that tends make the helpers more resilient to
->> this kind of regression. It also simplifies things because instead of
->> drivers saying "I want all the helpers except this one and that one",
->> they can simply say "I want these helpers and that one". In the former
->> case whenever you add some new (opt-out) feature, you have to update all
->> drivers and add the exception. In the latter you only need to extend the
->> drivers that want to make use of the new helper.
-
-Erm, the idea never was to make this opt-out but rather opt in, so
-we add a flags parameter to ahci_platform_get_resources() and all
-current users pass in 0 for that to keep the current behavior.
-
-And only the generic drivers/ata/ahci_platform.c driver will pass
-in a the new AHCI_PLATFORM_GET_RESETS flag, which makes
-ahci_platform_get_resources() (and the other functions) also deal
-with resets.
-
->> With that in mind, rather than adding a flag to the
->> ahci_platform_get_resources() function, it might be more flexible to
->> split the helpers into finer-grained functions. That way drivers can
->> pick whatever functionality they want from the helpers.
+> Hello John Crispin,
 > 
-> Good point, so lets:
-> 
-> 1) Revert the patch for now
-> 2) Have a new version of the patch which adds a ahci_platform_get_resets() helper
-> 3) Modify the generic drivers/ata/ahci_platform.c driver to call the new
->     ahci_platform_get_resets() between its ahci_platform_get_resources()
->     and ahci_platform_enable_resources() calls.
->     I think that ahci_platform_enable_resources() should still automatically
->     do the right thing wrt resets if ahci_platform_get_resets() was called
->     (otherwise the resets array will be empty and should be skipped)
-> 
-> This should make the generic driver usable for the UniPhier SoCs and
-> maybe some other drivers like the ahci_st driver can also switch to the
-> new ahci_platform_get_resets() functionality to reduce their code a bit.
+> The patch 8b634a9c7620: "staging: mt7621-mmc: MIPS: ralink: add sdhci
+> for mt7620a SoC" from Mar 15, 2018, leads to the following static
+> checker warning:
+>
+> 	drivers/staging/mt7621-mmc/sd.c:951 msdc_command_start()
+> 	warn: we tested 'opcode == 3' before and it was 'false'
+>
+>         drivers/staging/mt7621-mmc/sd.c:2961 msdc_drv_suspend()
+>         warn: variable dereferenced before check 'mmc' (see line 2959)
+>
+>         drivers/staging/mt7621-mmc/sd.c:2976 msdc_drv_resume()
+>         warn: variable dereferenced before check 'mmc' (see line 2972)
+>
+>         drivers/staging/mt7621-mmc/dbg.c:270 msdc_debug_proc_write()
+>         warn: copy_to/from_user() returns a positive value
+>
+>         drivers/staging/mt7621-mmc/dbg.c:339 msdc_debug_proc_init()
+>         warn: proc file '"msdc_debug"' is world writable
+>
+> 	drivers/staging/mt7621-mmc/dbg.c:341 msdc_debug_proc_init()
+> 	warn: 'de' isn't an ERR_PTR
 
-So thinking slightly longer about this, with the opt-in variant
-(which is what I intended all along) I do think that a flags parameter
-is better, because the whole idea behind lib_ahci_platform is to avoid
-having to do err = get_resource_a(), if (err) bail, err = get_resource_b()
-if (err) bail, etc. in all the ahci (platform) drivers. And having fine
-grained helpers re-introduces that.
+Hi Dan,
 
-Regards,
+thanks for the report, I have created patches for all of these and
+will send them, once my previous series got merged, because I based
+them on that status.
 
-Hans
+Christian
