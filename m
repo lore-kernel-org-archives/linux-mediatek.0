@@ -1,85 +1,79 @@
-From: Fabien DESSENNE <fabien.dessenne@st.com>
+From: Jassi Brar <jassisinghbrar@gmail.com>
 Subject: Re: [PATCH v2 2/2] mailbox: add STMicroelectronics STM32 IPCC driver
-Date: Fri, 6 Apr 2018 15:05:41 +0000
-Message-ID: <f9a45a6e-5b3c-ddd0-e465-cfcad6ece818@st.com>
+Date: Fri, 6 Apr 2018 21:50:44 +0530
+Message-ID: <CABb+yY2Dd2Gr_-+4RaJarq3tve8tgzVqcoJw+MGT=+Vy56PwLw@mail.gmail.com>
 References: <1520852307-26659-1-git-send-email-fabien.dessenne@st.com>
  <1520852307-26659-3-git-send-email-fabien.dessenne@st.com>
  <CABb+yY1x7J_oEgU-LR5jPYCoCoUHng84E+CibTxLzdtxhENTBw@mail.gmail.com>
- <4a2170b7-e5e9-4f5c-8ff7-79e102a658c1@st.com>
- <CABb+yY182+7xMbGCurzqxyoGFCRZn4_xKr3AvTQ2c+KyR1vx_w@mail.gmail.com>
+ <4a2170b7-e5e9-4f5c-8ff7-79e102a658c1@st.com> <CABb+yY182+7xMbGCurzqxyoGFCRZn4_xKr3AvTQ2c+KyR1vx_w@mail.gmail.com>
+ <f9a45a6e-5b3c-ddd0-e465-cfcad6ece818@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CABb+yY182+7xMbGCurzqxyoGFCRZn4_xKr3AvTQ2c+KyR1vx_w@mail.gmail.com>
-Content-Language: en-US
-Content-ID: <E50218504ED75D4D88DF590B9A38B071@st.com>
+In-Reply-To: <f9a45a6e-5b3c-ddd0-e465-cfcad6ece818@st.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jassi Brar <jassisinghbrar@gmail.com>
+To: Fabien DESSENNE <fabien.dessenne@st.com>
 Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre TORGUE <alexandre.torgue@st.com>, Ludovic BARRE <ludovic.barre@st.com>, Devicetree List <devicetree@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Loic PALLARDY <loic.pallardy@st.com>, Arnaud POULIQUEN <arnaud.pouliquen@st.com>, Bjorn Andersson <bjorn.andersson@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-DQpPbiAwNi8wNC8xOCAxNDo1NiwgSmFzc2kgQnJhciB3cm90ZToNCj4gT24gRnJpLCBBcHIgNiwg
-MjAxOCBhdCA1OjU5IFBNLCBGYWJpZW4gREVTU0VOTkUgPGZhYmllbi5kZXNzZW5uZUBzdC5jb20+
-IHdyb3RlOg0KPj4gSGkNCj4+DQo+Pg0KPj4gT24gMDUvMDQvMTggMTE6MzgsIEphc3NpIEJyYXIg
-d3JvdGU6DQo+Pj4gT24gTW9uLCBNYXIgMTIsIDIwMTggYXQgNDoyOCBQTSwgRmFiaWVuIERlc3Nl
-bm5lIDxmYWJpZW4uZGVzc2VubmVAc3QuY29tPiB3cm90ZToNCj4+PiAuLi4uDQo+Pj4+ICsNCj4+
-Pj4gKyAgICAgICAvKiBpcnEgKi8NCj4+Pj4gKyAgICAgICBmb3IgKGkgPSAwOyBpIDwgSVBDQ19J
-UlFfTlVNOyBpKyspIHsNCj4+Pj4gKyAgICAgICAgICAgICAgIGlwY2MtPmlycXNbaV0gPSBvZl9p
-cnFfZ2V0X2J5bmFtZShkZXYtPm9mX25vZGUsIGlycV9uYW1lW2ldKTsNCj4+Pj4gKyAgICAgICAg
-ICAgICAgIGlmIChpcGNjLT5pcnFzW2ldIDwgMCkgew0KPj4+PiArICAgICAgICAgICAgICAgICAg
-ICAgICBkZXZfZXJyKGRldiwgIm5vIElSUSBzcGVjaWZpZWQgJXNcbiIsIGlycV9uYW1lW2ldKTsN
-Cj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgcmV0ID0gaXBjYy0+aXJxc1tpXTsNCj4+Pj4g
-KyAgICAgICAgICAgICAgICAgICAgICAgZ290byBlcnJfY2xrOw0KPj4+PiArICAgICAgICAgICAg
-ICAgfQ0KPj4+PiArDQo+Pj4+ICsgICAgICAgICAgICAgICByZXQgPSBkZXZtX3JlcXVlc3RfdGhy
-ZWFkZWRfaXJxKGRldiwgaXBjYy0+aXJxc1tpXSwgTlVMTCwNCj4+Pj4gKyAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaXJxX3RocmVhZFtpXSwgSVJRRl9PTkVT
-SE9ULA0KPj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBkZXZfbmFtZShkZXYpLCBpcGNjKTsNCj4+Pj4NCj4+PiBJbiB5b3VyIGludGVycnVwdCBoYW5k
-bGVycyB5b3UgZG9uJ3QgZG8gYW55dGhpbmcgdGhhdCBjb3VsZCBibG9jay4NCj4+PiBUaHJlYWRz
-IG9ubHkgYWRkcyBzb21lIGRlbGF5IHRvIHlvdXIgbWVzc2FnZSBoYW5kbGluZy4NCj4+PiBTbyBt
-YXliZSB1c2UgZGV2bV9yZXF1ZXN0X2lycSgpID8NCj4+IFRoZSBpbnRlcnJ1cHQgaGFuZGxlcnMg
-Y2FsbCBtYm94X2NoYW5fcmVjZWl2ZWRfZGF0YSgpIC8NCj4+IG1ib3hfY2hhbl90eGRvbmUoKSwg
-d2hpY2ggY2FsbCBpbiB0dXJuIGNsaWVudCdzIHJ4X2NhbGxiYWNrKCkgLw0KPj4gdHhfZG9uZSgp
-IC8gdHhfcHJlcGFyZSgpIHdoaWNoIGJlaGF2aW9yIG1heSBiZSB1bnNhZmUuIEhlbmNlLCB1c2lu
-ZyBhDQo+PiB0aHJlYWRlZCBpcnEgaGVyZSBzZWVtcyB0byBiZSBhIGdvb2QgY2hvaWNlLg0KPj4N
-Cj4gcnhfY2FsbGJhY2soKSBpcyBzdXBwb3NlZCB0byBiZSBhdG9taWMuDQoNCkkgYW0gd29ycmll
-ZCB3aXRoIHRoaXMgYXRvbWljIHBhcnQgKGFuZCBob25lc3RseSBJIGRpZCBub3Qgbm90ZSB0aGF0
-IHRoZSANCmNhbGxiYWNrcyB3ZXJlIGV4cGVjdGVkIHRvIGJlKQ0KDQpJbiBteSBjYXNlLCByZW1v
-dGVwcm9jLT52aXJ0aW8tPnJwbXNnIGlzIHRoZSBtYWlsYm94IGNsaWVudCBkZWZpbmluZyB0aGUg
-DQpyeF9jYWxsYmFjay4NCklmIEkgZm9sbG93IHlvdXIgc3VnZ2VzdGlvbiwgSSBzaGFsbCBtYWtl
-IHRoaXMgcnhfY2FsbGJhY2sgQXRvbWljIGluIA0KcmVtb3RlcHJvYyAob3IgaW4gdmlydGlvIG9y
-IHJwbXNnKS4gQW5kIHRoaXMgZG9lcyBub3Qgc2VlbSB0byBiZSBzbyANCnNpbXBsZSAoYWRkIGEg
-d29ya2VyIGluIHRoZSBtaWRkbGUgb2Ygc29tZXdoZXJlPykuIEJqb3JuLCBmZWVsIGZyZWUgdG8g
-DQpjb21tZW50IHRoaXMgcGFydC4NCg0KQW4gYWx0ZXJuYXRlIGltcGxlbWVudGF0aW9uIGNvbnNp
-c3RzIGluIHVzaW5nIGEgdGhyZWFkZWQgSVJRIGZvciB0aGUgDQptYWlsYm94IGludGVycnVwdC4N
-ClRoaXMgb3B0aW9uIGlzIG5vdCBvbmx5IHNpbXBsZSwgYnV0IGFsc28gZW5zdXJlcyB0byBzcGxp
-dCBib3R0b20gJiBoYWxmIA0KcGFydHMgYXQgdGhlIGlycSBsZXZlbCB3aGljaCBpcyBJTUhPIGEg
-Z2VuZXJhbCBnb29kIHByYWN0aWNlLg0KDQpJIGNhbiBzZWUgdGhhdCBzb21lIG1haWxib3ggY2xp
-ZW50cyBpbXBsZW1lbnQgY2FsbGJhY2tzIHRoYXQgYXJlIE5PVCANCmF0b21pYyBhbmQgSSBzdXNw
-ZWN0IHRoaXMgaXMgdGhlIHJlYXNvbiB3aHkgc29tZSBtYWlsYm94IGRyaXZlcnMgdXNlIA0KdGhy
-ZWFkZWRfaXJxIChyb2NrY2hpcCBtYWlsYm94IHNwbGl0cyB0aGUgYm90dG9tICYgaGFsZiBwYXJ0
-cykuDQoNCldvdWxkIGl0IGJlIGFjY2VwdGFibGUgdG8gY29uc2lkZXIgdGhlICJhdG9taWMgY2xp
-ZW50IGNhbGxiYWNrIiBhcyBhIA0Kbm9uLXN0cmljdCBydWxlID8NCg0KPiAgIFNvIHdhcyB0eF9k
-b25lKCkgYnV0IHNvbWUNCj4gcGxhdGZvcm1zIG5lZWRlZCBwcmVwYXJpbmcgZm9yIHRoZSBtZXNz
-YWdlIHRvIGJlIHNlbnQuIFlvdXIgY2xpZW50IGlzDQo+IG5vdCBnb2luZyB0byBiZSB1c2VkIGJ5
-IG90aGVyIHBsYXRmb3JtcyBvciBldmVuIG92ZXIgb3RoZXINCj4gY29udHJvbGxlcnMsIHNvIGlm
-IHlvdXIgcHJlcGFyZSBpcyBOVUxML2F0b21pYywgeW91IHNob3VsZCBhc3N1bWUNCj4gdHhfZG9u
-ZSB0byBiZSBhdG9taWMgYW5kIG5vdCBsb3NlIHBlcmZvcm1hY2UuIElmIHRpbWUgY29tZXMgdG8g
-Zml4IGl0LA0KPiB3ZSdsbCBtb3ZlIHByZXBhcmUoKSBvdXQgb2YgdGhlIGF0b21pYyBwYXRoLg0K
-Pg0KPg0KPj4+IC4uLi4uLi4NCj4+Pj4gKw0KPj4+PiArc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9k
-cml2ZXIgc3RtMzJfaXBjY19kcml2ZXIgPSB7DQo+Pj4+ICsgICAgICAgLmRyaXZlciA9IHsNCj4+
-Pj4gKyAgICAgICAgICAgICAgIC5uYW1lID0gInN0bTMyLWlwY2MiLA0KPj4+PiArICAgICAgICAg
-ICAgICAgLm93bmVyID0gVEhJU19NT0RVTEUsDQo+Pj4+DQo+Pj4gTm8gbmVlZCBvZiBvd25lciBo
-ZXJlIHRoZXNlIGRheXMuDQo+PiBPSywgSSB3aWxsIHN1cHByZXNzIGl0Lg0KPj4NCj4+PiBBbmQg
-YWxzbyBtYXliZSB1c2UgcmVhZGwvd3JpdGVsLCBpbnN0ZWFkIG9mIF9yZWxheGVkLg0KPj4gVGhl
-IElQQ0MgZGV2aWNlIGlzIGV4Y2x1c2l2ZWx5IHVzZWQgb24gQVJNLiBJbiBBUk0gYXJjaGl0ZWN0
-dXJlLCB0aGUNCj4+IGlvcmVtYXAgb24gZGV2aWNlcyBhcmUgc3RyaWN0bHkgb3JkZXJlZCBhbmQg
-dW5jYWNoZWQuDQo+PiBJbiB0aGF0IGNhc2UsIHVzaW5nIF9yZWxheGVkIGF2b2lkcyBhbiB1bm5l
-ZWRlZCBjYWNoZSBmbHVzaCwgc2xpZ2h0bHkNCj4+IGltcHJvdmluZyBwZXJmb3JtYW5jZS4NCj4+
-DQo+IEl0cyBub3QgdGhlIHBvcnRhYmlsaXR5LCBidXQgdGhhdCB0aGUgaW1wYWN0IGlzIG5lZ2xp
-Z2libGUgaW4gZmF2b3Igb2YNCj4gX3JlbGF4ZWQoKSB2ZXJzaW9uIHdoZW4gYWxsIHlvdSBkbyBp
-cyBqdXN0IHByb2dyYW0gc29tZSByZWdpc3RlcnMgYW5kDQo+IG5vdCBoZWF2eSBkdXR5IGkvby4g
-QnV0IEkgYW0gb2sgZWl0aGVyIHdheS4gIFlvdSdkIGdhaW4gZmFyIG1vcmUNCj4gcGVyZm9ybWFu
-Y2UgaGFuZGxpbmcgaXJxcyBpbiBub24tdGhyZWFkZWQgbWFubmVyIDopDQo+DQo+IENoZWVycyEN
-Cg==
+On Fri, Apr 6, 2018 at 8:35 PM, Fabien DESSENNE <fabien.dessenne@st.com> wrote:
+>
+> On 06/04/18 14:56, Jassi Brar wrote:
+>> On Fri, Apr 6, 2018 at 5:59 PM, Fabien DESSENNE <fabien.dessenne@st.com> wrote:
+>>> Hi
+>>>
+>>>
+>>> On 05/04/18 11:38, Jassi Brar wrote:
+>>>> On Mon, Mar 12, 2018 at 4:28 PM, Fabien Dessenne <fabien.dessenne@st.com> wrote:
+>>>> ....
+>>>>> +
+>>>>> +       /* irq */
+>>>>> +       for (i = 0; i < IPCC_IRQ_NUM; i++) {
+>>>>> +               ipcc->irqs[i] = of_irq_get_byname(dev->of_node, irq_name[i]);
+>>>>> +               if (ipcc->irqs[i] < 0) {
+>>>>> +                       dev_err(dev, "no IRQ specified %s\n", irq_name[i]);
+>>>>> +                       ret = ipcc->irqs[i];
+>>>>> +                       goto err_clk;
+>>>>> +               }
+>>>>> +
+>>>>> +               ret = devm_request_threaded_irq(dev, ipcc->irqs[i], NULL,
+>>>>> +                                               irq_thread[i], IRQF_ONESHOT,
+>>>>> +                                               dev_name(dev), ipcc);
+>>>>>
+>>>> In your interrupt handlers you don't do anything that could block.
+>>>> Threads only adds some delay to your message handling.
+>>>> So maybe use devm_request_irq() ?
+>>> The interrupt handlers call mbox_chan_received_data() /
+>>> mbox_chan_txdone(), which call in turn client's rx_callback() /
+>>> tx_done() / tx_prepare() which behavior may be unsafe. Hence, using a
+>>> threaded irq here seems to be a good choice.
+>>>
+>> rx_callback() is supposed to be atomic.
+>
+> I am worried with this atomic part (and honestly I did not note that the
+> callbacks were expected to be)
+>
+> In my case, remoteproc->virtio->rpmsg is the mailbox client defining the
+> rx_callback.
+> If I follow your suggestion, I shall make this rx_callback Atomic in
+> remoteproc (or in virtio or rpmsg). And this does not seem to be so
+> simple (add a worker in the middle of somewhere?). Bjorn, feel free to
+> comment this part.
+>
+> An alternate implementation consists in using a threaded IRQ for the
+> mailbox interrupt.
+> This option is not only simple, but also ensures to split bottom & half
+> parts at the irq level which is IMHO a general good practice.
+>
+> I can see that some mailbox clients implement callbacks that are NOT
+> atomic and I suspect this is the reason why some mailbox drivers use
+> threaded_irq (rockchip mailbox splits the bottom & half parts).
+>
+> Would it be acceptable to consider the "atomic client callback" as a
+> non-strict rule ?
+>
+Of course you can traverse atomic path from sleepable context (but not
+vice-versa).
+Please send in the final revision.
+
+Thanks.
