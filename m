@@ -1,197 +1,136 @@
-From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: Re: [usb-next PATCH v11 3/8] usb: core: add a wrapper for the USB
- PHYs on the HCD
-Date: Fri, 6 Apr 2018 12:48:12 +0900
-Message-ID: <CAK7LNASN4mgSVXw425CEuFzJdgmgiv=u9h7T+_zSbqU7dwRRcA@mail.gmail.com>
-References: <20180303214309.25643-1-martin.blumenstingl@googlemail.com>
- <20180303214309.25643-4-martin.blumenstingl@googlemail.com>
- <CAK7LNARM=F3Ey0aO9PiNftxkcLVo4z10jdrkSrQE1f74nK1=Ng@mail.gmail.com>
- <CAFBinCCRhJLxOCz6_a23XnVcSo35MpE8huA8keNFBrWmr_mR=A@mail.gmail.com>
+From: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
+Subject: Re: [PATCH] ata: ahci-platform: add reset control support
+Date: Fri, 06 Apr 2018 13:48:39 +0900
+Message-ID: <20180406134838.2ADC.4A936039@socionext.com>
+References: <6ce60a0b-0409-016a-d29c-91b8b9e2ad07@redhat.com> <cd3bc161-9a38-1e58-b66f-3ef81e3ed220@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAFBinCCRhJLxOCz6_a23XnVcSo35MpE8huA8keNFBrWmr_mR=A@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Peter.Chen@nxp.com, Neil Armstrong <narmstrong@baylibre.com>, linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, Tony Prisk <linux@prisktech.co.nz>, Felipe Balbi <felipe.balbi@linux.intel.com>, Jon Hunter <jonathanh@nvidia.com>, Alan Stern <stern@rowland.harvard.edu>, Chunfeng Yun <chunfeng.yun@mediatek.com>, DTML <devicetree@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>, yixun.lan@amlogic.com, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org, Linux-OMAP <linux-omap@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, mathias.nyman@intel.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cd3bc161-9a38-1e58-b66f-3ef81e3ed220@redhat.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans de Goede <hdegoede@redhat.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Patrice CHOTARD <patrice.chotard@st.com>, Tejun Heo <tj@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, "linux-ide@vger.kernel.org" <linux-ide@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-2018-04-06 5:04 GMT+09:00 Martin Blumenstingl
-<martin.blumenstingl@googlemail.com>:
-> Hello,
->
-> (great to hear that this might be useful on Socionext SoCs as well :))
->
-> On Wed, Apr 4, 2018 at 2:10 PM, Masahiro Yamada
-> <yamada.masahiro@socionext.com> wrote:
->> 2018-03-04 6:43 GMT+09:00 Martin Blumenstingl
->> <martin.blumenstingl@googlemail.com>:
->>> Many SoC platforms have separate devices for the USB PHY which are
->>> registered through the generic PHY framework. These PHYs have to be
->>> enabled to make the USB controller actually work. They also have to be
->>> disabled again on shutdown/suspend.
->>>
->>> Currently (at least) the following HCI platform drivers are using custom
->>> code to obtain all PHYs via devicetree for the roothub/controller and
->>> disable/enable them when required:
->>> - ehci-platform.c has ehci_platform_power_{on,off}
->>> - xhci-mtk.c has xhci_mtk_phy_{init,exit,power_on,power_off}
->>> - ohci-platform.c has ohci_platform_power_{on,off}
->>>
->>> With this new wrapper the USB PHYs can be specified directly in the
->>> USB controller's devicetree node (just like on the drivers listed
->>> above). This allows SoCs like the Amlogic Meson GXL family to operate
->>> correctly once this is wired up correctly. These SoCs use a dwc3
->>> controller and require all USB PHYs to be initialized (if one of the USB
->>> PHYs it not initialized then none of USB port works at all).
->>>
->>> Signed-off-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
->>> Tested-by: Yixun Lan <yixun.lan@amlogic.com>
->>> Cc: Neil Armstrong <narmstrong@baylibre.com>
->>> Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>
->>> ---
->>>  drivers/usb/core/Makefile |   2 +-
->>>  drivers/usb/core/phy.c    | 158 ++++++++++++++++++++++++++++++++++++++++++++++
->>>  drivers/usb/core/phy.h    |   7 ++
->>>  3 files changed, 166 insertions(+), 1 deletion(-)
->>>  create mode 100644 drivers/usb/core/phy.c
->>>  create mode 100644 drivers/usb/core/phy.h
->>>
->>> diff --git a/drivers/usb/core/Makefile b/drivers/usb/core/Makefile
->>> index 92c9cefb4317..18e874b0441e 100644
->>> --- a/drivers/usb/core/Makefile
->>> +++ b/drivers/usb/core/Makefile
->>> @@ -6,7 +6,7 @@
->>>  usbcore-y := usb.o hub.o hcd.o urb.o message.o driver.o
->>>  usbcore-y += config.o file.o buffer.o sysfs.o endpoint.o
->>>  usbcore-y += devio.o notify.o generic.o quirks.o devices.o
->>> -usbcore-y += port.o
->>> +usbcore-y += phy.o port.o
->>>
->>>  usbcore-$(CONFIG_OF)           += of.o
->>>  usbcore-$(CONFIG_USB_PCI)              += hcd-pci.o
->>> diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
->>> new file mode 100644
->>> index 000000000000..09b7c43c0ea4
->>> --- /dev/null
->>> +++ b/drivers/usb/core/phy.c
->>> @@ -0,0 +1,158 @@
->>> +// SPDX-License-Identifier: GPL-2.0+
->>> +/*
->>> + * A wrapper for multiple PHYs which passes all phy_* function calls to
->>> + * multiple (actual) PHY devices. This is comes handy when initializing
->>> + * all PHYs on a HCD and to keep them all in the same state.
->>> + *
->>> + * Copyright (C) 2018 Martin Blumenstingl <martin.blumenstingl@googlemail.com>
->>> + */
->>> +
->>> +#include <linux/device.h>
->>> +#include <linux/list.h>
->>> +#include <linux/phy/phy.h>
->>> +#include <linux/of.h>
->>> +
->>> +#include "phy.h"
->>> +
->>> +struct usb_phy_roothub {
->>> +       struct phy              *phy;
->>> +       struct list_head        list;
->>> +};
->>> +
->>> +static struct usb_phy_roothub *usb_phy_roothub_alloc(struct device *dev)
->>> +{
->>> +       struct usb_phy_roothub *roothub_entry;
->>> +
->>> +       roothub_entry = devm_kzalloc(dev, sizeof(*roothub_entry), GFP_KERNEL);
->>> +       if (!roothub_entry)
->>> +               return ERR_PTR(-ENOMEM);
->>> +
->>> +       INIT_LIST_HEAD(&roothub_entry->list);
->>> +
->>> +       return roothub_entry;
->>> +}
->>> +
->>> +static int usb_phy_roothub_add_phy(struct device *dev, int index,
->>> +                                  struct list_head *list)
->>> +{
->>> +       struct usb_phy_roothub *roothub_entry;
->>> +       struct phy *phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
->>> +
->>> +       if (IS_ERR_OR_NULL(phy)) {
->>> +               if (!phy || PTR_ERR(phy) == -ENODEV)
->>> +                       return 0;
->>> +               else
->>> +                       return PTR_ERR(phy);
->>> +       }
->>> +
->>> +       roothub_entry = usb_phy_roothub_alloc(dev);
->>> +       if (IS_ERR(roothub_entry))
->>> +               return PTR_ERR(roothub_entry);
->>> +
->>> +       roothub_entry->phy = phy;
->>> +
->>> +       list_add_tail(&roothub_entry->list, list);
->>> +
->>> +       return 0;
->>> +}
->>> +
->>> +struct usb_phy_roothub *usb_phy_roothub_init(struct device *dev)
->>> +{
->>> +       struct usb_phy_roothub *phy_roothub;
->>> +       struct usb_phy_roothub *roothub_entry;
->>> +       struct list_head *head;
->>> +       int i, num_phys, err;
->>> +
->>> +       num_phys = of_count_phandle_with_args(dev->of_node, "phys",
->>> +                                             "#phy-cells");
->>> +       if (num_phys <= 0)
->>> +               return NULL;
->>> +
->>> +       phy_roothub = usb_phy_roothub_alloc(dev);
->>> +       if (IS_ERR(phy_roothub))
->>> +               return phy_roothub;
->>> +
->>> +       for (i = 0; i < num_phys; i++) {
->>> +               err = usb_phy_roothub_add_phy(dev, i, &phy_roothub->list);
->>> +               if (err)
->>> +                       goto err_out;
->>> +       }
->>> +
->>> +       head = &phy_roothub->list;
->>
->>
->> I think phy_roothub->phy is always empty,
->> and only phy_roothub->list is used.
->>
->>
->> I just wondered if we can directly put 'struct list_head' into
->> 'struct usb_hcd'.
-> maybe you can try it and send a patch (note: please wait until
-> v4.17-rc2-ish because there are some fixes that will be applied by
-> Greg after v4.17-rc1 is out, as well as the issues you noted below)?
-> I believe it's not critical so there's plenty of time to get it into v4.18
+Hi Hans,
 
-Oh, I was misunderstanding - I thought this patch series was under review.
-(Greg does not post patch-apply announce to ML.)
+On Thu, 5 Apr 2018 16:08:24 +0200
+Hans de Goede <hdegoede@redhat.com> wrote:
 
-I see this in linux-next now.
+> Hi,
+> 
+> On 05-04-18 16:00, Hans de Goede wrote:
+> > Hi,
+> > > On 05-04-18 15:54, Thierry Reding wrote:
+> >> On Thu, Apr 05, 2018 at 03:27:03PM +0200, Hans de Goede wrote:
+> >>> Hi,
+> >>>
+> >>> On 05-04-18 15:17, Patrice CHOTARD wrote:
+> >>>> Hi Thierry
+> >>>>
+> >>>> On 04/05/2018 11:54 AM, Thierry Reding wrote:
+> >>>>> On Fri, Mar 23, 2018 at 10:30:53AM +0900, Kunihiko Hayashi wrote:
+> >>>>>> Add support to get and control a list of resets for the device
+> >>>>>> as optional and shared. These resets must be kept de-asserted until
+> >>>>>> the device is enabled.
+> >>>>>>
+> >>>>>> This is specified as shared because some SoCs like UniPhier series
+> >>>>>> have common reset controls with all ahci controller instances.
+> >>>>>>
+> >>>>>> Signed-off-by: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
+> >>>>>> ---
+> >>>>>> ??? .../devicetree/bindings/ata/ahci-platform.txt????? |? 1 +
+> >>>>>> ??? drivers/ata/ahci.h???????????????????????????????? |? 1 +
+> >>>>>> ??? drivers/ata/libahci_platform.c???????????????????? | 24 +++++++++++++++++++---
+> >>>>>> ??? 3 files changed, 23 insertions(+), 3 deletions(-)
+> >>>>>
+> >>>>> This causes a regression on Tegra because we explicitly request the
+> >>>>> resets after the call to ahci_platform_get_resources().
+> >>>>
+> >>>> I confirm, we got exactly the same behavior on STi platform.
+> >>>>
+> >>>>>
+> >>>>> ?? From a quick look, ahci_mtk and ahci_st are in the same boat, adding the
+> >>>>> corresponding maintainers to Cc.
+> >>>>>
+> >>>>> Patrice, Matthias: does SATA still work for you after this patch? This
+> >>>>> has been in linux-next since next-20180327.
+> >>>>
+> >>>> SATA is still working after this patch, but a kernel warning is
+> >>>> triggered due to the fact that resets are both requested by
+> >>>> libahci_platform and by ahci_st driver.
+> >>>
+> >>> So in your case you might be able to remove the reset handling
+> >>> from the ahci_st driver and rely on the new libahci_platform
+> >>> handling instead? If that works that seems like a win to me.
+> >>>
+> >>> As said elsewhere in this thread I think it makes sense to keep (or re-add
+> >>> after a revert) the libahci_platform reset code, but make it conditional
+> >>> on a flag passed to ahci_platform_get_resources(). This way we get
+> >>> the shared code for most cases and platforms which need special handling
+> >>> can opt-out.
+> >>
+> >> Agreed, although I prefer such helpers to be opt-in, rather than
+> >> opt-out. In my experience that tends make the helpers more resilient to
+> >> this kind of regression. It also simplifies things because instead of
+> >> drivers saying "I want all the helpers except this one and that one",
+> >> they can simply say "I want these helpers and that one". In the former
+> >> case whenever you add some new (opt-out) feature, you have to update all
+> >> drivers and add the exception. In the latter you only need to extend the
+> >> drivers that want to make use of the new helper.
+> 
+> Erm, the idea never was to make this opt-out but rather opt in, so
+> we add a flags parameter to ahci_platform_get_resources() and all
+> current users pass in 0 for that to keep the current behavior.
+> 
+> And only the generic drivers/ata/ahci_platform.c driver will pass
+> in a the new AHCI_PLATFORM_GET_RESETS flag, which makes
+> ahci_platform_get_resources() (and the other functions) also deal
+> with resets.
+> 
+> >> With that in mind, rather than adding a flag to the
+> >> ahci_platform_get_resources() function, it might be more flexible to
+> >> split the helpers into finer-grained functions. That way drivers can
+> >> pick whatever functionality they want from the helpers.
+> > > Good point, so lets:
+> > > 1) Revert the patch for now
+> > 2) Have a new version of the patch which adds a ahci_platform_get_resets() helper
+> > 3) Modify the generic drivers/ata/ahci_platform.c driver to call the new
+> >  ?? ahci_platform_get_resets() between its ahci_platform_get_resources()
+> >  ?? and ahci_platform_enable_resources() calls.
+> >  ?? I think that ahci_platform_enable_resources() should still automatically
+> >  ?? do the right thing wrt resets if ahci_platform_get_resets() was called
+> >  ?? (otherwise the resets array will be empty and should be skipped)
+> > > This should make the generic driver usable for the UniPhier SoCs and
+> > maybe some other drivers like the ahci_st driver can also switch to the
+> > new ahci_platform_get_resets() functionality to reduce their code a bit.
+> 
+> So thinking slightly longer about this, with the opt-in variant
+> (which is what I intended all along) I do think that a flags parameter
+> is better, because the whole idea behind lib_ahci_platform is to avoid
+> having to do err = get_resource_a(), if (err) bail, err = get_resource_b()
+> if (err) bail, etc. in all the ahci (platform) drivers. And having fine
+> grained helpers re-introduces that.
 
-When will this be available in Linus' tree?   In the current MW?
+In case of adding a flag instead of get_resource_a(),
+for example, we add the flag for use of resets,
 
-Sure, I can send a patch after some flaws are ironed-out.
+-struct ahci_host_priv *ahci_platform_get_resources(struct platform_device *pdev)
++struct ahci_host_priv *ahci_platform_get_resources(struct platform_device *pdev,
++                                                  bool use_reset)
 
+and for now all the drivers using this function need to add the argument as false
+to the caller.
 
+-       hpriv = ahci_platform_get_resources(pdev);
++       hpriv = ahci_platform_get_resources(pdev, false);
 
+Surely this can avoid adding functions such get_resource_a(). If we apply another
+feature later, we add its flag as one of the arguments instead. Is it right?
 
+Thank you,
 
--- 
-Best Regards
-Masahiro Yamada
+---
+Best Regards,
+Kunihiko Hayashi
