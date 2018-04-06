@@ -1,138 +1,197 @@
-From: Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Subject: Re: [PATCH usb-next v4 0/2] fix HCD PHY suspend handling
-Date: Thu, 5 Apr 2018 22:13:54 +0200
-Message-ID: <20180405201354.GA3840@kroah.com>
-References: <20180327212621.3400-1-martin.blumenstingl@googlemail.com>
- <851bcd3a-9ff6-e0ac-579a-a4973c619818@ti.com>
- <20180405133815.GC21390@kroah.com>
- <CAFBinCC6TQEyWdtSuqHsejy5b1EXXaJdyUegVTNVqxy9DcuBpw@mail.gmail.com>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: Re: [usb-next PATCH v11 3/8] usb: core: add a wrapper for the USB
+ PHYs on the HCD
+Date: Fri, 6 Apr 2018 12:48:12 +0900
+Message-ID: <CAK7LNASN4mgSVXw425CEuFzJdgmgiv=u9h7T+_zSbqU7dwRRcA@mail.gmail.com>
+References: <20180303214309.25643-1-martin.blumenstingl@googlemail.com>
+ <20180303214309.25643-4-martin.blumenstingl@googlemail.com>
+ <CAK7LNARM=F3Ey0aO9PiNftxkcLVo4z10jdrkSrQE1f74nK1=Ng@mail.gmail.com>
+ <CAFBinCCRhJLxOCz6_a23XnVcSo35MpE8huA8keNFBrWmr_mR=A@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAFBinCC6TQEyWdtSuqHsejy5b1EXXaJdyUegVTNVqxy9DcuBpw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Cc: d-gerlach-l0cyMroinI0@public.gmane.org, j-keerthy-l0cyMroinI0@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CAFBinCCRhJLxOCz6_a23XnVcSo35MpE8huA8keNFBrWmr_mR=A@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Peter.Chen@nxp.com, Neil Armstrong <narmstrong@baylibre.com>, linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, Tony Prisk <linux@prisktech.co.nz>, Felipe Balbi <felipe.balbi@linux.intel.com>, Jon Hunter <jonathanh@nvidia.com>, Alan Stern <stern@rowland.harvard.edu>, Chunfeng Yun <chunfeng.yun@mediatek.com>, DTML <devicetree@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>, yixun.lan@amlogic.com, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org, Linux-OMAP <linux-omap@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, mathias.nyman@intel.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Apr 05, 2018 at 10:08:23PM +0200, Martin Blumenstingl wrote:
-> Hi Greg,
-> 
-> On Thu, Apr 5, 2018 at 3:38 PM, Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org> wrote:
-> > On Thu, Apr 05, 2018 at 11:47:11AM +0300, Roger Quadros wrote:
-> >> Greg,
-> >>
-> >> On 28/03/18 00:26, Martin Blumenstingl wrote:
-> >> > This is a follow-up to my previous series "initialize (multiple) PHYs
-> >> > for a HCD": [0].
-> >> >
-> >> > Roger Quadros reported [1] that it "is breaking low power cases on TI
-> >> > SoCs when USB is in host mode". He further explains that "Not doing the
-> >> > phy_exit() here [when entering suspend] leaves the clocks enabled on
-> >> > our SoC and we're no longer able to reach low power states on system
-> >> > suspend."
-> >> > Chunfeng Yun from Mediatek noted [2] that we cannot unconditionally call
-> >> > phy_exit while entering system suspend, because this would "disconnect
-> >> > plugged devices on MTK platforms, due to re-initialize u2 phys when
-> >> > resume"
-> >> >
-> >> > In the discussion (which followed Roger's bug report: [1]) Roger,
-> >> > Chunfeng and me came to the conclusion that we can fix suspend on the
-> >> > TI SoCs without breaking it on the Mediatek SoCs by extending the
-> >> > suspend and resume code in usb/core/phy.c by checking whether the USB
-> >> > controller can wake up the system (which is the case for the Mediatek
-> >> > MTU3 controller, but now for the dwc3 controller used on the TI SoCs):
-> >> > - if the controller can wake up the system (Mediatek MTU3 use-case) we
-> >> >   only call usb_phy_roothub_power_off (which calls phy_power_off) when
-> >> >   entering system suspend
-> >> > - if the controller however cannot wake up the system (dwc3 on TI SoCs)
-> >> >   we additionally call usb_phy_roothub_exit (which calls phy_exit) when
-> >> >   entering system suspend
-> >> > - (we undo the previous steps during system resume)
-> >> >
-> >> > The goal of this series is to fix the issue reported by Roger without
-> >> > breaking suspend/resume on the Mediatek SoCs.
-> >> > Since I neither have a TI nor a Mediatek device I am sending this as
-> >> > RFC. I have tested it on an Amlogic Meson GXM board (Khadas VIM2) which
-> >> > does NOT support suspend/resume yet.
-> >> >
-> >> > this should be applied on top of [3] "usb: core: phy: fix return value
-> >> > of usb_phy_roothub_exit()" (even though there's no strict dependency,
-> >> > this is the order I wrote the patches in).
-> >> >
-> >> > changes since RFC v3 at [6]:
-> >> > - added Chunfeng Yun's Tested-by and Roger Quadros' Reviewed-by (thank
-> >> >   you!)
-> >> > - dropped RFC prefix
-> >> >
-> >> > changes since RFC v2 at [5]:
-> >> > - add missing INIT_LIST_HEAD call in usb_phy_roothub_add_phy (affects
-> >> >   patch #1 - spotted by Roger Quadros, thank you!)
-> >> > - fixed swapped conditions using device_may_wakeup() in
-> >> >   usb_phy_roothub_resume because we need to call usb_phy_roothub_init
-> >> >   if the controller cannot wake up the device (affects patch #2, spotted
-> >> >   by Chunfeng Yun, thank you!)
-> >> > - simplified the error condition to "undo" usb_phy_roothub_init if
-> >> >   usb_phy_roothub_power_on failed in usb_phy_roothub_resume (suggested
-> >> >   by Chunfeng Yun)
-> >> > - updated the commit message (using Roger's wording) because (quote from
-> >> >   Roger "it doesn't prevent the system from entering suspend but just
-> >> >   prevents the system from reaching lowest power levels in the suspend
-> >> >   state."
-> >> >
-> >> > Changes since RFC v1 (blob attachments) at [4]:
-> >> > - use device_may_wakeup instead of device_can_wakeup as suggested by
-> >> >   Roger Quadros
-> >> > - use the controller device from hcd->self.controller as suggested by
-> >> >   Chunfeng Yun
-> >> > - compile time fixes thanks to Roger Quadros
-> >> > - if usb_phy_roothub_power_on in usb_phy_roothub_resume failes then
-> >> >   we now call usb_phy_roothub_exit to keep the PHYs in the correct
-> >> >   state if usb_phy_roothub_resume partially failed
-> >> >
-> >> >
-> >> > [0] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006599.html
-> >> > [1] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006737.html
-> >> > [2] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006758.html
-> >> > [3] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006819.html
-> >> > [4] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006794.html
-> >> > [5] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006820.html
-> >> > [6] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006847.html
-> >> >
-> >> > Martin Blumenstingl (2):
-> >> >   usb: core: split usb_phy_roothub_{init,alloc}
-> >> >   usb: core: use phy_exit during suspend if wake up is not supported
-> >>
-> >> Gentle ping on this one. Without this system suspend/resume is broken on TI platforms.
-> >
-> > Sorry, this missed my merge window, I can pick it up after 4.17-rc1 is
-> > out.
-> do you want me to re-send this based on v4.17-rc1 (once it's out)?
-> I can re-spin this series so it includes:
-> a) "usb: core: phy: fix return value of usb_phy_roothub_exit()" [0]
-> b) the two patches from this series (they apply on top of [0])
-> c) a missing forward declaration as well as a missing include guard
-> (and a SPDX-License-Identifier) as suggested by Masahiro Yamada in [1]
-> 
-> (patches for c) are neither written nor posted yet, but they're minor
-> and I can prepare and test them during the weekend)
-> 
-> just let me know whether you would like to take these three series
-> individually or whether you would like them all in one "usb: core:
-> phy: fixes for v4.17" series
+2018-04-06 5:04 GMT+09:00 Martin Blumenstingl
+<martin.blumenstingl@googlemail.com>:
+> Hello,
+>
+> (great to hear that this might be useful on Socionext SoCs as well :))
+>
+> On Wed, Apr 4, 2018 at 2:10 PM, Masahiro Yamada
+> <yamada.masahiro@socionext.com> wrote:
+>> 2018-03-04 6:43 GMT+09:00 Martin Blumenstingl
+>> <martin.blumenstingl@googlemail.com>:
+>>> Many SoC platforms have separate devices for the USB PHY which are
+>>> registered through the generic PHY framework. These PHYs have to be
+>>> enabled to make the USB controller actually work. They also have to be
+>>> disabled again on shutdown/suspend.
+>>>
+>>> Currently (at least) the following HCI platform drivers are using custom
+>>> code to obtain all PHYs via devicetree for the roothub/controller and
+>>> disable/enable them when required:
+>>> - ehci-platform.c has ehci_platform_power_{on,off}
+>>> - xhci-mtk.c has xhci_mtk_phy_{init,exit,power_on,power_off}
+>>> - ohci-platform.c has ohci_platform_power_{on,off}
+>>>
+>>> With this new wrapper the USB PHYs can be specified directly in the
+>>> USB controller's devicetree node (just like on the drivers listed
+>>> above). This allows SoCs like the Amlogic Meson GXL family to operate
+>>> correctly once this is wired up correctly. These SoCs use a dwc3
+>>> controller and require all USB PHYs to be initialized (if one of the USB
+>>> PHYs it not initialized then none of USB port works at all).
+>>>
+>>> Signed-off-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+>>> Tested-by: Yixun Lan <yixun.lan@amlogic.com>
+>>> Cc: Neil Armstrong <narmstrong@baylibre.com>
+>>> Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>
+>>> ---
+>>>  drivers/usb/core/Makefile |   2 +-
+>>>  drivers/usb/core/phy.c    | 158 ++++++++++++++++++++++++++++++++++++++++++++++
+>>>  drivers/usb/core/phy.h    |   7 ++
+>>>  3 files changed, 166 insertions(+), 1 deletion(-)
+>>>  create mode 100644 drivers/usb/core/phy.c
+>>>  create mode 100644 drivers/usb/core/phy.h
+>>>
+>>> diff --git a/drivers/usb/core/Makefile b/drivers/usb/core/Makefile
+>>> index 92c9cefb4317..18e874b0441e 100644
+>>> --- a/drivers/usb/core/Makefile
+>>> +++ b/drivers/usb/core/Makefile
+>>> @@ -6,7 +6,7 @@
+>>>  usbcore-y := usb.o hub.o hcd.o urb.o message.o driver.o
+>>>  usbcore-y += config.o file.o buffer.o sysfs.o endpoint.o
+>>>  usbcore-y += devio.o notify.o generic.o quirks.o devices.o
+>>> -usbcore-y += port.o
+>>> +usbcore-y += phy.o port.o
+>>>
+>>>  usbcore-$(CONFIG_OF)           += of.o
+>>>  usbcore-$(CONFIG_USB_PCI)              += hcd-pci.o
+>>> diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
+>>> new file mode 100644
+>>> index 000000000000..09b7c43c0ea4
+>>> --- /dev/null
+>>> +++ b/drivers/usb/core/phy.c
+>>> @@ -0,0 +1,158 @@
+>>> +// SPDX-License-Identifier: GPL-2.0+
+>>> +/*
+>>> + * A wrapper for multiple PHYs which passes all phy_* function calls to
+>>> + * multiple (actual) PHY devices. This is comes handy when initializing
+>>> + * all PHYs on a HCD and to keep them all in the same state.
+>>> + *
+>>> + * Copyright (C) 2018 Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+>>> + */
+>>> +
+>>> +#include <linux/device.h>
+>>> +#include <linux/list.h>
+>>> +#include <linux/phy/phy.h>
+>>> +#include <linux/of.h>
+>>> +
+>>> +#include "phy.h"
+>>> +
+>>> +struct usb_phy_roothub {
+>>> +       struct phy              *phy;
+>>> +       struct list_head        list;
+>>> +};
+>>> +
+>>> +static struct usb_phy_roothub *usb_phy_roothub_alloc(struct device *dev)
+>>> +{
+>>> +       struct usb_phy_roothub *roothub_entry;
+>>> +
+>>> +       roothub_entry = devm_kzalloc(dev, sizeof(*roothub_entry), GFP_KERNEL);
+>>> +       if (!roothub_entry)
+>>> +               return ERR_PTR(-ENOMEM);
+>>> +
+>>> +       INIT_LIST_HEAD(&roothub_entry->list);
+>>> +
+>>> +       return roothub_entry;
+>>> +}
+>>> +
+>>> +static int usb_phy_roothub_add_phy(struct device *dev, int index,
+>>> +                                  struct list_head *list)
+>>> +{
+>>> +       struct usb_phy_roothub *roothub_entry;
+>>> +       struct phy *phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
+>>> +
+>>> +       if (IS_ERR_OR_NULL(phy)) {
+>>> +               if (!phy || PTR_ERR(phy) == -ENODEV)
+>>> +                       return 0;
+>>> +               else
+>>> +                       return PTR_ERR(phy);
+>>> +       }
+>>> +
+>>> +       roothub_entry = usb_phy_roothub_alloc(dev);
+>>> +       if (IS_ERR(roothub_entry))
+>>> +               return PTR_ERR(roothub_entry);
+>>> +
+>>> +       roothub_entry->phy = phy;
+>>> +
+>>> +       list_add_tail(&roothub_entry->list, list);
+>>> +
+>>> +       return 0;
+>>> +}
+>>> +
+>>> +struct usb_phy_roothub *usb_phy_roothub_init(struct device *dev)
+>>> +{
+>>> +       struct usb_phy_roothub *phy_roothub;
+>>> +       struct usb_phy_roothub *roothub_entry;
+>>> +       struct list_head *head;
+>>> +       int i, num_phys, err;
+>>> +
+>>> +       num_phys = of_count_phandle_with_args(dev->of_node, "phys",
+>>> +                                             "#phy-cells");
+>>> +       if (num_phys <= 0)
+>>> +               return NULL;
+>>> +
+>>> +       phy_roothub = usb_phy_roothub_alloc(dev);
+>>> +       if (IS_ERR(phy_roothub))
+>>> +               return phy_roothub;
+>>> +
+>>> +       for (i = 0; i < num_phys; i++) {
+>>> +               err = usb_phy_roothub_add_phy(dev, i, &phy_roothub->list);
+>>> +               if (err)
+>>> +                       goto err_out;
+>>> +       }
+>>> +
+>>> +       head = &phy_roothub->list;
+>>
+>>
+>> I think phy_roothub->phy is always empty,
+>> and only phy_roothub->list is used.
+>>
+>>
+>> I just wondered if we can directly put 'struct list_head' into
+>> 'struct usb_hcd'.
+> maybe you can try it and send a patch (note: please wait until
+> v4.17-rc2-ish because there are some fixes that will be applied by
+> Greg after v4.17-rc1 is out, as well as the issues you noted below)?
+> I believe it's not critical so there's plenty of time to get it into v4.18
 
-Yes, please respin and resend.
+Oh, I was misunderstanding - I thought this patch series was under review.
+(Greg does not post patch-apply announce to ML.)
 
-thanks,
+I see this in linux-next now.
 
-greg k-h
+When will this be available in Linus' tree?   In the current MW?
+
+Sure, I can send a patch after some flaws are ironed-out.
+
+
+
+
+
+-- 
+Best Regards
+Masahiro Yamada
