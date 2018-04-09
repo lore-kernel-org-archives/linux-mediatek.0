@@ -1,14 +1,14 @@
-From: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Subject: [PATCH usb v5 6/6] usb: core: phy: add the SPDX-License-Identifier
- and include guard
-Date: Sun,  8 Apr 2018 23:27:43 +0200
-Message-ID: <20180408212743.22934-7-martin.blumenstingl@googlemail.com>
-References: <20180408212743.22934-1-martin.blumenstingl@googlemail.com>
+From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 2/2] misc-utils: flash_erase: Fix Jffs2 type flash erase
+ problem
+Date: Mon, 9 Apr 2018 11:10:10 +0800
+Message-ID: <1523243410-65424-3-git-send-email-xiaolei.li@mediatek.com>
+References: <1523243410-65424-1-git-send-email-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180408212743.22934-1-martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <1523243410-65424-1-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -18,43 +18,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
-Cc: d-gerlach-l0cyMroinI0@public.gmane.org, eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org, j-keerthy-l0cyMroinI0@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, rogerq-l0cyMroinI0@public.gmane.org
+To: david.oberhollenzer-S6VGOU4v5edDinCvNWH78Q@public.gmane.org, boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This clarifies the license of the code. While here also add an include
-guard to the header file.
+Currently, Jffs2 clean marker is not written actually, because the oob
+write length is set to 0 when do mtd_write().
 
-Fixes: 07dbff0ddbd86c ("usb: core: add a wrapper for the USB PHYs on the HCD")
-Suggested-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Signed-off-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+So, get OOB available size at first, and set the correct clean marker
+length, then program clean marker to free OOB area.
+
+Fixes: d7e86124d55b ("mtd-utils: Support jffs2 flash-erase for large OOB (>32b)")
+Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/usb/core/phy.h | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ misc-utils/flash_erase.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/usb/core/phy.h b/drivers/usb/core/phy.h
-index bbc969383074..8451a7e88d38 100644
---- a/drivers/usb/core/phy.h
-+++ b/drivers/usb/core/phy.h
-@@ -1,3 +1,13 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * USB roothub wrapper
-+ *
-+ * Copyright (C) 2018 Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-+ */
-+
-+#ifndef __USB_CORE_PHY_H_
-+#define __USB_CORE_PHY_H_
-+
- struct device;
- struct usb_phy_roothub;
+diff --git a/misc-utils/flash_erase.c b/misc-utils/flash_erase.c
+index 0c9449f..e7a00ae 100644
+--- a/misc-utils/flash_erase.c
++++ b/misc-utils/flash_erase.c
+@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
+ {
+ 	libmtd_t mtd_desc;
+ 	struct mtd_dev_info mtd;
+-	int fd;
++	int fd, cmlen = 8;
+ 	unsigned long long start;
+ 	unsigned int eb, eb_start, eb_cnt;
+ 	bool isNAND;
+@@ -190,10 +190,11 @@ int main(int argc, char *argv[])
+ 	if (jffs2) {
+ 		cleanmarker.magic = cpu_to_je16 (JFFS2_MAGIC_BITMASK);
+ 		cleanmarker.nodetype = cpu_to_je16 (JFFS2_NODETYPE_CLEANMARKER);
+-		if (!isNAND)
++		if (!isNAND) {
+ 			cleanmarker.totlen = cpu_to_je32(sizeof(cleanmarker));
+-		else {
++		} else {
+ 			cleanmarker.totlen = cpu_to_je32(8);
++			cmlen = min(mtd.oobavail, 8);
+ 		}
+ 		cleanmarker.hdr_crc = cpu_to_je32(mtd_crc32(0, &cleanmarker, sizeof(cleanmarker) - 4));
+ 	}
+@@ -242,7 +243,7 @@ int main(int argc, char *argv[])
  
-@@ -13,3 +23,5 @@ int usb_phy_roothub_suspend(struct device *controller_dev,
- 			    struct usb_phy_roothub *phy_roothub);
- int usb_phy_roothub_resume(struct device *controller_dev,
- 			   struct usb_phy_roothub *phy_roothub);
-+
-+#endif /* __USB_CORE_PHY_H_ */
+ 		/* write cleanmarker */
+ 		if (isNAND) {
+-			if (mtd_write(mtd_desc, &mtd, fd, eb, 0, NULL, 0, &cleanmarker, 0,
++			if (mtd_write(mtd_desc, &mtd, fd, eb, 0, NULL, 0, &cleanmarker, cmlen,
+ 					MTD_OPS_AUTO_OOB) != 0) {
+ 				sys_errmsg("%s: MTD writeoob failure", mtd_device);
+ 				continue;
 -- 
-2.17.0
+1.9.1
