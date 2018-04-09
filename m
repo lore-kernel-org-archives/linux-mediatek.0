@@ -1,50 +1,30 @@
-From: Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Subject: Re: [ANN] mt76x0 usb driver
-Date: Mon, 9 Apr 2018 20:52:05 +0200 (CEST)
-Message-ID: <alpine.LNX.2.00.1804092045270.8369@T420s>
-References: <20180409141032.GA9247@redhat.com> <20180409142640.GA5680@localhost.localdomain> <20180409144819.GA9253@redhat.com> <20180409145342.GB5680@localhost.localdomain>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v1 1/7] dt-bindings: net: bluetooth: Add
+ mediatek-bluetooth
+Date: Mon, 9 Apr 2018 16:16:52 -0500
+Message-ID: <20180409211652.etq6ylp63b7j65el@rob-hp-laptop>
+References: <cover.1522736996.git.sean.wang@mediatek.com>
+ <958f8a0ef0b557fdfcc02a1e86536e1f97a16e22.1522736996.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180409145342.GB5680-bi+AKbBUZKY6gyzm1THtWbp2dZbC/Bob@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, =?ISO-8859-2?Q?Jakub_Kici=F1ski?= <moorray3-5tc4TXWwyLM@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <958f8a0ef0b557fdfcc02a1e86536e1f97a16e22.1522736996.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: mark.rutland@arm.com, marcel@holtmann.org, johan.hedberg@gmail.com, devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi
-
-On Mon, 9 Apr 2018, Lorenzo Bianconi wrote:
-
-> On Apr 09, Stanislaw Gruszka wrote:
-> > On Mon, Apr 09, 2018 at 04:26:42PM +0200, Lorenzo Bianconi wrote:
-> > > > I would like to integrate the driver to kernel via mt76 driver, i.e.
-> > > > add USB hooks and mt76x0 mac/phy code to mt76. This will open
-> > > > possibility to develop support for mt76x2 USB devices as well as mt76x0
-> > > > PCIe devices in mt76.
-> > > > 
-> > > 
-> > > I have already started supporting mt76x2 USB devices in mt76 since register map
-> > > is pretty similar to PCIe devices:
-> > > https://github.com/LorenzoBianconi/wireless-drivers-next/tree/mt76x2u
-> > > I added some usb utility routines so I think we can integrate mt76x0 in mt76 as
-> > > well
-> > 
-> > Great, I'll start to integrate mt76x0 on top of your tree.
+On Tue, Apr 03, 2018 at 03:15:51PM +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Cool :) actually this branch is in under development but what is really
-> changing day by day is mt7612u part not usb one so I guess we can use it as
-> common ground for mt76x2u and mt76x0.
-> Maybe even the mcu code is in common with mt76x2, isn't it?
+> Add binding document for a SoC built-in device using MediaTek protocol.
+> Which could be found on MT7622 SoC or other similar MediaTek SoCs.
 > 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  .../devicetree/bindings/net/mediatek-bluetooth.txt | 35 ++++++++++++++++++++++
+>  1 file changed, 35 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
 
-from my POV for "general" commands the MCU on mt76x0 and mt76x2 (doesn't 
-matter if USB or PCIe) are almost the same i.e. CMD_FUN_SET_OP
-
-The only difference is CMD_CALIBRATION_OP, they are for mt76x0 and mt76x2 
-different calibrate id's.
-
-How about the LED on mt76x2 ?
-
-Greetings
-Hans
+Reviewed-by: Rob Herring <robh@kernel.org>
