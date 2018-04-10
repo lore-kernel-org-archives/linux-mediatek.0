@@ -1,74 +1,46 @@
-From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 3/3] misc-utils: flash_erase: Fix Jffs2 type flash erase
- problem
-Date: Tue, 10 Apr 2018 15:36:57 +0800
-Message-ID: <1523345817-42627-4-git-send-email-xiaolei.li@mediatek.com>
-References: <1523345817-42627-1-git-send-email-xiaolei.li@mediatek.com>
+From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [ANN] mt76x0 usb driver
+Date: Tue, 10 Apr 2018 12:12:11 +0200
+Message-ID: <20180410101211.GA2174@redhat.com>
+References: <20180409141032.GA9247@redhat.com>
+ <20180409142640.GA5680@localhost.localdomain>
+ <20180409144819.GA9253@redhat.com>
+ <20180409145342.GB5680@localhost.localdomain>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1523345817-42627-1-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: david.oberhollenzer-S6VGOU4v5edDinCvNWH78Q@public.gmane.org, boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180409145342.GB5680-bi+AKbBUZKY6gyzm1THtWbp2dZbC/Bob@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Jakub =?utf-8?B?S2ljacWEc2tp?= <moorray3-5tc4TXWwyLM@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Currently, Jffs2 clean marker is not written actually, because the oob
-write length is set to 0 when do mtd_write().
+On Mon, Apr 09, 2018 at 04:53:44PM +0200, Lorenzo Bianconi wrote:
+> On Apr 09, Stanislaw Gruszka wrote:
+> > On Mon, Apr 09, 2018 at 04:26:42PM +0200, Lorenzo Bianconi wrote:
+> > > > I would like to integrate the driver to kernel via mt76 driver, i.e.
+> > > > add USB hooks and mt76x0 mac/phy code to mt76. This will open
+> > > > possibility to develop support for mt76x2 USB devices as well as mt76x0
+> > > > PCIe devices in mt76.
+> > > > 
+> > > 
+> > > I have already started supporting mt76x2 USB devices in mt76 since register map
+> > > is pretty similar to PCIe devices:
+> > > https://github.com/LorenzoBianconi/wireless-drivers-next/tree/mt76x2u
+> > > I added some usb utility routines so I think we can integrate mt76x0 in mt76 as
+> > > well
+> > 
+> > Great, I'll start to integrate mt76x0 on top of your tree.
+> 
+> Cool :) actually this branch is in under development but what is really
+> changing day by day is mt7612u part not usb one so I guess we can use it as
+> common ground for mt76x2u and mt76x0.
+> Maybe even the mcu code is in common with mt76x2, isn't it?
 
-So, get OOB available size at first, and set the correct clean marker
-length, then program clean marker to free OOB area.
+There are some new bits in mcu/mcu_and.c in Mediatek MT7612U driver,
+compared to MT7610U driver, but most of the code there looks pretty
+much the same :-)
 
-Fixes: d7e86124d55b ("mtd-utils: Support jffs2 flash-erase for large OOB (>32b)")
-Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- misc-utils/flash_erase.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
-diff --git a/misc-utils/flash_erase.c b/misc-utils/flash_erase.c
-index 0c9449f..e7a00ae 100644
---- a/misc-utils/flash_erase.c
-+++ b/misc-utils/flash_erase.c
-@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
- {
- 	libmtd_t mtd_desc;
- 	struct mtd_dev_info mtd;
--	int fd;
-+	int fd, cmlen = 8;
- 	unsigned long long start;
- 	unsigned int eb, eb_start, eb_cnt;
- 	bool isNAND;
-@@ -190,10 +190,11 @@ int main(int argc, char *argv[])
- 	if (jffs2) {
- 		cleanmarker.magic = cpu_to_je16 (JFFS2_MAGIC_BITMASK);
- 		cleanmarker.nodetype = cpu_to_je16 (JFFS2_NODETYPE_CLEANMARKER);
--		if (!isNAND)
-+		if (!isNAND) {
- 			cleanmarker.totlen = cpu_to_je32(sizeof(cleanmarker));
--		else {
-+		} else {
- 			cleanmarker.totlen = cpu_to_je32(8);
-+			cmlen = min(mtd.oobavail, 8);
- 		}
- 		cleanmarker.hdr_crc = cpu_to_je32(mtd_crc32(0, &cleanmarker, sizeof(cleanmarker) - 4));
- 	}
-@@ -242,7 +243,7 @@ int main(int argc, char *argv[])
- 
- 		/* write cleanmarker */
- 		if (isNAND) {
--			if (mtd_write(mtd_desc, &mtd, fd, eb, 0, NULL, 0, &cleanmarker, 0,
-+			if (mtd_write(mtd_desc, &mtd, fd, eb, 0, NULL, 0, &cleanmarker, cmlen,
- 					MTD_OPS_AUTO_OOB) != 0) {
- 				sys_errmsg("%s: MTD writeoob failure", mtd_device);
- 				continue;
--- 
-1.9.1
+Regards
+Stanislaw
