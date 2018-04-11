@@ -1,211 +1,88 @@
-From: Gagan Sidhu <broly-ee4meeAH724@public.gmane.org>
-Subject: MT7621AT rtc issues (pcf8563)
-Date: Tue, 10 Apr 2018 11:32:09 -0600
-Message-ID: <72497BFD-64E6-4E70-82A9-7B048C976564@mac.com>
-References: <5ab4caaa.QEYPpIXgSwbsItGa%temnota.am@gmail.com>
- <30C3A561-74F6-4C26-A0CF-0947547EBFAF@mac.com>
- <CA+PODjp-Pbm7ZWHEE1in=iNqphHE4D=gi2OeZ4vhA3ficT-=hw@mail.gmail.com>
- <21DAB08D-C821-4301-A0D8-6C495126D0B6@mac.com>
- <EE4EE831-B806-4524-A6CA-85991D22E078@mac.com>
- <ED13EFF5-4270-4E6F-AEEF-733DAC385349@mac.com>
- <20180409191333.GG2475@piout.net>
-Mime-Version: 1.0 (Mac OS X Mail 8.2 \(2104\))
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-reply-to: <20180409191333.GG2475-m++hUPXGwpdeoWH0uzbU5w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v2 00/12] refactor dts and add support for more boards
+Date: Wed, 11 Apr 2018 16:53:53 +0800
+Message-ID: <cover.1523434757.git.sean.wang@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-aGVsbG8sCgpCYmxvdyBpcyBhbiBleGNoYW5nZSBJ4oCZdmUgaGFkIHdpdGggc29tZSBpbmRpdmlk
-dWFscyB3aG8gYXJlIGFwYXJ0IG9mIG9wZW53cnQvbGludXgga2VybmVsIGRldmVsb3BtZW50LgoK
-YXMgYWxleGFuZHJlIHBvaW50cyBvdXQsIGl0IGlzIGxpa2VseSB0aGF0IHRoZSBzZXR0aW5nIG9m
-IHRpbWUgKGV2ZW4gdGhvdWdoIGl0IGlzIHJlcG9ydGVkIGFzIHN1Y2Nlc3NmdWwpIGlzIG5vdCBv
-cGVyYXRpbmcgYXMtZXhwZWN0ZWQsIHNpbmNlIFJUQ19SRF9USU1FIGlzIHJldHVybmluZyBhbiDi
-gJxpbnZhbGlkIGFyZ3VtZW504oCdIGVycm9yLgoKaSB3YXMgaG9waW5nIHRvIGdldCBzb21lIGlu
-c2lnaHQgYXMgdG8gaG93IHRoaXMgY2FuIGJlIGZpeGVkLiBpIGhhdmUgdHJpZWQgdGhlIGkyYy1n
-cGlvIGFuZCBkdHMgYXBwcm9hY2hlcywgYm90aCBvZiB3aGljaCB5aWVsZGVkIHRoZSBzYW1lIHJl
-c3VsdC4KClRoYW5rcywKR2FnYW4KCgoKCj4gT24gQXByIDksIDIwMTgsIGF0IDE6MTMgUE0sIEFs
-ZXhhbmRyZSBCZWxsb25pIDxhbGV4YW5kcmUuYmVsbG9uaUBmcmVlLWVsZWN0cm9ucy5jb20+IHdy
-b3RlOgo+IAo+IEhpLAo+IAo+IE9uIDIzLzAzLzIwMTggMTU6NTM6MTItMDYwMCwgR2FnYW4gU2lk
-aHUgd3JvdGU6Cj4+IGhlbGxvIGFnYWluLAo+PiAKPj4gc28gaSBmb2xsb3dlZCB5b3VyIHN1Z2dl
-c3Rpbm9zIGFuZCBpIGRpZCBtYW5hZ2UgdG8gZ2V0IHRoZSBncGlvL2kyYyBhcHByb2FjaCB3b3Jr
-aW5nLCBidXQgaXQgZ2V0cyBubyBmYXJ0aGVyIHRoYW4gdGhlIEkyQyBPRiBhcHByb2FjaC4KPj4g
-Cj4+IGnigJl2ZSBhdHRhY2hlZCBteSBleGNoYW5nZSB3aXRoIHRoZSBndXlzIGF0IExFREUgYmVs
-b3csIGp1c3Qgc28geW91IGhhdmUgYW4gaWRlYS4KPj4gCj4+IGl0IGNvdWxkIHZlcnkgd2VsbCBi
-ZSBhIGNoYW5nZSBvbiB0aGUgUkFMSU5LIHNpZGUgYmV0d2VlbiAzLnggYW5kIDQueCwgYnV0IGl0
-IHNlZW1zIHRoZSBwdWxsdXAgbGluZXMgYXJlIGJlaW5nIHVzZWQgKD8/IG5vdCBhbiBleHBlcnQg
-aGVyZSwgcGxlYXNlIGRvIGNvcnJlY3QgbWUgd2hlcmV2ZXIgbmVjZXNzYXJ5KS4KPj4gCj4gCj4g
-V2VsbCwgSSBzdGlsbCB0aGluayB3cml0aW5nICJzdWNjZWVkcyIgYmVjYXVzZSB0aGUgZHJpdmVy
-IGRvZXNuJ3QgY2hlY2sKPiB0aGUgd3JpdGUgYW5kIHRoZW4gcmVhZGluZyBmYWlscyBiZWNhdXNl
-IHRoZSBpMmMgYnVzIHN0aWxsIGRvZXNuJ3Qgd29yay4KPiAKPiBZb3Ugc2hvdWxkIHByb2JhYmx5
-IGNvbnRhY3QgTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4gb3IKPiBT
-ZWFuIFdhbmcgPHNlYW4ud2FuZ0BtZWRpYXRlay5jb20+IG9yIHRoZQo+IGxpbnV4LW1lZGlhdGVr
-QGxpc3RzLmluZnJhZGVhZC5vcmcgbWFpbGluZyBsaXN0Lgo+IAo+PiAKPj4gVGhhbmtzLAo+PiBH
-YWdhbgo+PiAKPj4gCj4+IAo+PiAKPj4+IE9uIE1hciAyMywgMjAxOCwgYXQgMzo1MSBQTSwgR2Fn
-YW4gU2lkaHUgPGJyb2x5QG1hYy5jb20+IHdyb3RlOgo+Pj4gCj4+PiB1cGRhdGU6Cj4+PiAKPj4+
-IGl0IHNlZW1zIHRoZSBwaW5zIGFyZSBzdXBwb3NlZCB0byBiZSAxMSBhbmQgNCwgYW5kIG5vdCAz
-IGFuZCA0Ogo+Pj4gCj4+Pj4gaTJjLWdwaW8gMWUwMDAwMDAucGFsbWJ1czppMmMtZ3Bpb0A5MDA6
-IHVzaW5nIHBpbnMgMTEgKFNEQSkgYW5kIDQgKFNDTCkKPj4+IAo+Pj4gdGhpcyByZXN1bHRzIGlu
-IHRoZSByZWdpc3RyYXRpb24gb2YgdGhlIHJ0YyBkcml2ZXIsIGhvd2V2ZXIgdGhlIHNhbWUgcHJv
-YmxlbSBpcyBzdGlsbCB0aGVyZToKPj4+IAo+Pj4+IHJvb3RAREQtV1JUOn4jIGh3Y2xvY2sgLS12
-ZXJib3NlIC0tc3lzdG9oYwo+Pj4+IGh3Y2xvY2sgZnJvbSB1dGlsLWxpbnV4IDIuMzIKPj4+PiBT
-eXN0ZW0gVGltZTogNzAuMTA3MjkwCj4+Pj4gVHJ5aW5nIHRvIG9wZW46IC9kZXYvcnRjMAo+Pj4+
-IFVzaW5nIHRoZSBydGMgaW50ZXJmYWNlIHRvIHRoZSBjbG9jay4KPj4+PiBBc3N1bWluZyBoYXJk
-d2FyZSBjbG9jayBpcyBrZXB0IGluIFVUQyB0aW1lLgo+Pj4+IDcwLjUwMDAxOCBpcyBjbG9zZSBl
-bm91Z2ggdG8gNzAuNTAwMDAwICgwLjAwMDAxOCA8IDAuMDAxMDAwKQo+Pj4+IFNldCBSVEMgdG8g
-NzAgKDcwICsgMDsgcmVmc3lzdGltZSA9IDcwLjAwMDAwMCkKPj4+PiBTZXR0aW5nIEhhcmR3YXJl
-IENsb2NrIHRvIDAwOjAxOjEwID0gNzAgc2Vjb25kcyBzaW5jZSAxOTY5Cj4+Pj4gaW9jdGwoUlRD
-X1NFVF9USU1FKSB3YXMgc3VjY2Vzc2Z1bC4KPj4+PiBOb3QgYWRqdXN0aW5nIGRyaWZ0IGZhY3Rv
-ciBiZWNhdXNlIHRoZSAtLXVwZGF0ZS1kcmlmdCBvcHRpb24gd2FzIG5vdCB1c2VkLgo+Pj4+IE5l
-dyAvZXRjL2FkanRpbWUgZGF0YToKPj4+PiAwLjAwMDAwMCA3MCAwLjAwMDAwMAo+Pj4+IDcwCj4+
-Pj4gVVRDCj4+PiAKPj4+PiByb290QERELVdSVDp+IyBod2Nsb2NrIC0tdmVyYm9zZSAtLWhjdG9z
-eXMKPj4+PiBod2Nsb2NrIGZyb20gdXRpbC1saW51eCAyLjMyCj4+Pj4gU3lzdGVtIFRpbWU6IDcz
-LjkxNzMzNQo+Pj4+IFRyeWluZyB0byBvcGVuOiAvZGV2L3J0YzAKPj4+PiBVc2luZyB0aGUgcnRj
-IGludGVyZmFjZSB0byB0aGUgY2xvY2suCj4+Pj4gTGFzdCBkcmlmdCBhZGp1c3RtZW50IGRvbmUg
-YXQgNzAgc2Vjb25kcyBhZnRlciAxOTY5Cj4+Pj4gTGFzdCBjYWxpYnJhdGlvbiBkb25lIGF0IDcw
-IHNlY29uZHMgYWZ0ZXIgMTk2OQo+Pj4+IEhhcmR3YXJlIGNsb2NrIGlzIG9uIFVUQyB0aW1lCj4+
-Pj4gQXNzdW1pbmcgaGFyZHdhcmUgY2xvY2sgaXMga2VwdCBpbiBVVEMgdGltZS4KPj4+PiBXYWl0
-aW5nIGZvciBjbG9jayB0aWNrLi4uCj4+Pj4gaW9jdGwoMywgUlRDX1VJRV9PTiwgMCk6IEludmFs
-aWQgYXJndW1lbnQKPj4+PiBXYWl0aW5nIGluIGxvb3AgZm9yIHRpbWUgZnJvbSAvZGV2L3J0YzAg
-dG8gY2hhbmdlCj4+Pj4gaHdjbG9jazogaW9jdGwoUlRDX1JEX1RJTUUpIHRvIC9kZXYvcnRjMCB0
-byByZWFkIHRoZSB0aW1lIGZhaWxlZDogSW52YWxpZCBhcmd1bWVudAo+Pj4+IC4uLnN5bmNocm9u
-aXphdGlvbiBmYWlsZWQKPj4+IAo+Pj4gCj4+PiBhcyBhbmRyZXkgYWxsdWRlZCB0bywgaSB0aGlu
-ayB0aGVyZSBpcyBzb21ldGhpbmcgdXAgd2l0aCB0aGUgY2hhbmdlcyBiZXR3ZWVuIDMueCBhbmQg
-NC54IHRoYXQgaXMgaGluZGVyaW5nIHRoZSB1c2FnZSBvZiBpMmMgZGV2aWNlcy4KPj4+IAo+Pj4g
-aSBhbSBoYXBweSB0aGF0IGkgY2FuIGNvbmZpcm0gdGhlIFNEQS9TREwgYXBwcm9hY2ggZG9lcyBu
-b3QgY2hhbmdlIGFueXRoaW5nIGluIGNvbXBhcmlzb24gdG8gdGhlIChjYW5vbmljYWwpIE9GIGR0
-cy4KPj4+IAo+Pj4gaeKAmWxsIGZvcndhcmQgdGhpcyBjb3JyZXNwb25kZW5jZSB0byBBbGV4YW5k
-cmUgdG8gc2VlIGlmIGhlIGhhcyBhbnkgYWRkaXRpb25hbCBpbnNpZ2h0cy4gCj4+PiAKPj4+IHRo
-ZXNlIGFyZSB0aGUgY29tYmluYXRpb25zIGkgdHJpZWQgZm9yIFNEQS9TREw6Cj4+PiAzLzQgKGZh
-aWx1cmUpCj4+PiA0LzExIChzYW1lIGFzIE9GIEkyQyBhcHByb2FjaCwgbm8gUlRDX1JEX1RJTUUp
-Cj4+PiA0LzUgKHNhbWUgYXMgdGhlIGFib3ZlKS4KPj4+IAo+Pj4gCj4+PiB0aHgKPj4+IAo+Pj4g
-Cj4+PiAKPj4+PiBPbiBNYXIgMjMsIDIwMTgsIGF0IDM6MTYgUE0sIEdhZ2FuIFNpZGh1IDxicm9s
-eUBtYWMuY29tPiB3cm90ZToKPj4+PiAKPj4+PiAKPj4+Pj4gT24gTWFyIDIzLCAyMDE4LCBhdCAy
-OjIwIFBNLCBBbmRyZXkgTWVsbmlrb3YgPHRlbW5vdGEuYW1AZ21haWwuY29tPiB3cm90ZToKPj4+
-Pj4gCj4+Pj4+IDIwMTgtMDMtMjMgMjI6MDUgR01UKzAzOjAwIEdhZ2FuIFNpZGh1IDxicm9seUBt
-YWMuY29tPjoKPj4+Pj4+IHNvIHRoZXJlIGFyZSB0d28gY2FzZXMuCj4+Pj4+PiAKPj4+Pj4+IDEu
-IHRoZSBjYXNlIG9mIHRoZSBpMmMtbXQ3NjIxIGRyaXZlciwgaSBkbyBleGFjdGx5IHdoYXQgeW91
-IHN0YXRlOgo+Pj4+Pj4gICAgIC1yZW1vdmUg4oCcaTJj4oCdIGZyb20gcGluY3RybCBpbiB0aGUg
-ZHRzLCBhbmQgc2V0IENPTkZJR19JMkNfTVQ3NjIxPXkKPj4+Pj4+ICAgICAtaW4gdGhpcyBjYXNl
-LCB0aGUgZHJpdmVyIGlzIGhhbGYtd29ya2luZywgYnV0IGlzIHVuYWJsZSB0byByZWFkIHRoZSBy
-dGMuCj4+Pj4+IAo+Pj4+PiBJMkMgc3BlZWQgY2hlY2tlZD8KPj4+PiB5ZWFoLCBpdCBhbHdheXMg
-c2hvd3M6Cj4+Pj4gaTJjLW10NzYyMSAxZTAwMDkwMC5pMmM6IGNsb2NrIDEwMEtIeiwgcmUtc3Rh
-cnQgbm90IHN1cHBvcnQKPj4+PiBkdXJpbmcgYm9vdAo+Pj4+PiAKPj4+Pj4+IDIuIHRoZSBjYXNl
-IG9mIHRoZSBpMmMtZ3BpbyBkcml2ZXIuIGk6Cj4+Pj4+PiAgICAgLWVuYWJsZSBDT05GSUdfSTJD
-X0dQSU89eSwKPj4+Pj4+ICAgICAtaW5jbHVkZSBpMmMtZ3BpbyBpbnNpZGUgdGhlIHBhbG1idXNA
-MUUwMDAwMDAgeyDigKYgbm9kZQo+Pj4+Pj4gICAgIC1yZW5hbWUg4oCcaTJjLW10NzYyMeKAnSBp
-biBtdDc2MjEuZHRzaSB0byDigJxpMmMtZ3Bpb+KAnQo+Pj4+PiAKPj4+Pj4gSG1tLiBUcnkgYnVp
-bGQgJiBsb2FkIGkyYy1ncGlvLWN1c3RvbSB3aXRoIGFyZ3MgYnVzMD0wLFNEQS1QSU4sU0NMLVBJ
-Tgo+Pj4+PiBhbmQgY2hlY2suCj4+Pj4gCj4+Pj4gdGhhbmsgeW91IGZvciB0aGlzIHN1Z2dlc3Rp
-b24uCj4+Pj4ganVzdCB3YW50IHRvIGFkZCB0aGF0IGkgZm9yZ290IHRvIGFkZCBhIOKAnEA5MDDi
-gJ0gYXQgdGhlIGVuZCBvZiDigJxpMmMtZ3Bpb+KAnSAoc28gdGhhdCB0aGUgYWRkcmVzcyBpcyBj
-b3JyZWN0KS4KPj4+PiAKPj4+PiBpIGRvd25sb2FkZWQgaHR0cHM6Ly9naXRodWIuY29tL2xlZGUt
-cHJvamVjdC9zb3VyY2UvdHJlZS9tYXN0ZXIvcGFja2FnZS9rZXJuZWwvaTJjLWdwaW8tY3VzdG9t
-L3NyYwo+Pj4+IGFmdGVyIGRvaW5nIHRoaXMsIHRoZXJlIGlzIG1vcmUgaG9wZSBidXQgc3RpbGwg
-bm90aGluZyBjb25jcmV0ZS4gCj4+Pj4gCj4+Pj4gaSBmaXJzdCB0cmllZCBpMmMtZ3Bpby1jdXN0
-b20gKGkgdW5kZXJzdGFuZCB0aGVyZSBhcmUgYXJndW1lbnRzIHJlcXVpcmVkLCBzbyBwbGVhc2Ug
-YmVhciB3aXRoIG1lKSBhcyBhIGtlcm5lbCBkcml2ZXIgYW5kIHRoaXMgaXMgd2hhdCBpIGdldDoK
-Pj4+PiAKPj4+PiBpMmMtZ3BpbyAxZTAwMDAwMC5wYWxtYnVzOmkyYy1ncGlvQDkwMDogdXNpbmcg
-cGlucyAzIChTREEpIGFuZCA0IChTQ0wpCj4+Pj4gQ3VzdG9tIEdQSU8tYmFzZWQgSTJDIGRyaXZl
-ciB2ZXJzaW9uIDAuMS4xCj4+Pj4gaTJjLWdwaW8tY3VzdG9tOiBubyBidXMgcGFyYW1ldGVyKHMp
-IHNwZWNpZmllZAo+Pj4+IAo+Pj4+IHdoaWNoIHJlc3VsdHMgaW4gZmFpbHVyZSB0byByZWdpc3Rl
-ciB0aGUgcnRjLCBidXQgYXQgbGVhc3QgaXQgdHJpZXM6Cj4+Pj4gCj4+Pj4gcnRjLXBjZjg1NjMg
-MC0wMDUxOiBwY2Y4NTYzX3dyaXRlX2Jsb2NrX2RhdGE6IGVycj0tNiBhZGRyPTBlLCBkYXRhPTAz
-Cj4+Pj4gcnRjLXBjZjg1NjMgMC0wMDUxOiBwY2Y4NTYzX3Byb2JlOiB3cml0ZSBlcnJvcgo+Pj4+
-IHJ0Yy1wY2Y4NTYzOiBwcm9iZSBvZiAwLTAwNTEgZmFpbGVkIHdpdGggZXJyb3IgLTUKPj4+PiAK
-Pj4+PiBub3csIGFzIGEgbW9kdWxlLCBhc3N1bWluZyBpIHJlcGxhY2UgU0RBLVBJTiBhbmQgU0NM
-LVBJTiB3aXRoIDMgYW5kIDQgKHZhbHVlcyBmcm9tIGdwaW9zIGluIGkyYy1ncGlvIG5vZGUpIGkg
-Z2V0Ogo+Pj4+IAo+Pj4+IHJvb3RAREQtV1JUOn4jIGluc21vZCBpMmMtZ3Bpby1jdXN0b20ua28g
-YnVzMD0wLDMsNAo+Pj4+IEphbiAgMSAwMTowMToxOSBERC1XUlQga2VybmVsOiBDdXN0b20gR1BJ
-Ty1iYXNlZCBJMkMgZHJpdmVyIHZlcnNpb24gMC4xLjEKPj4+PiBKYW4gIDEgMDE6MDE6MTkgREQt
-V1JUIGtlcm5lbDogaTJjLWdwaW86IHByb2JlIG9mIGkyYy1ncGlvLjAgZmFpbGVkIHdpdGggZXJy
-b3IgLTE2Cj4+Pj4gCj4+Pj4gcm9vdEBERC1XUlQ6fiMgaW5zbW9kIGkyYy1ncGlvLWN1c3RvbS5r
-byBidXMwPTEsMyw0Cj4+Pj4gSmFuICAxIDAxOjAzOjAyIERELVdSVCBrZXJuZWw6IEN1c3RvbSBH
-UElPLWJhc2VkIEkyQyBkcml2ZXIgdmVyc2lvbiAwLjEuMQo+Pj4+IEphbiAgMSAwMTowMzowMiBE
-RC1XUlQga2VybmVsOiBpMmMtZ3BpbzogcHJvYmUgb2YgaTJjLWdwaW8uMSBmYWlsZWQgd2l0aCBl
-cnJvciAtMTYKPj4+PiAKPj4+PiBhZ2hoaGhoISEgc28gY2xvc2UgYWguIAo+Pj4+IG5lZWQgdGhl
-IHJ0YyBhaCBmb3IgcGFtX2xhc3Rsb2cgYWgKPj4+PiBncmVhdGx5IGFtcGxpZmllcyBkZXNrdG9w
-IGV4cGVyaWVuY2Ugb24gcm91dGVyIGFoCj4+Pj4gbXVzdCBoYXZlIGFoIChsb2wpCj4+Pj4gCj4+
-Pj4+IAo+Pj4+Pj4gaSBmb2xsb3dlZCB5b3VyIHN1Z2dlc3Rpb24gYW5kIHJlbW92ZWQgaTJjIGZy
-b20gcGluY3RybCBpbiB0aGUgZHRzLCBidXQgdGhlIGkyYy1ncGlvIGRyaXZlciBnb2VzIHVuZGV0
-ZWN0ZWQuCj4+Pj4+PiAKPj4+Pj4+IGRvZXMgYW55b25lIHJ1bm5pbmcgbGVkZS9vcGVud3J0IG9u
-IGFuIG10NzYyMSBoYXZlIGEgZnVuY3Rpb25hbCBydGM/Cj4+Pj4+IEknbSBydW5uaW5nIGl0IG9u
-IG1pa3JvdGlrIHJiNzUwZ3IzIHdpdGhvdXQgYW55IEkyQy4gQnV0IEkgaGF2ZSBvdGhlcgo+Pj4+
-PiBkZXZpY2Ugb24gbXQ3NjIwIHdpdGggSTJDIGFuZCBoYXZlIHNhbWUgcHJvYmxlbSAtIGNhbid0
-IHNlZSBzcGVjaWZpYwo+Pj4+PiBjb250cm9sbGVyIG9uIEkyQyBidXMuIE9yaWdpbmFsIGZpcm13
-YXJlIChiYXNlZCBvbiByYWxpbmsgU0RLIGtlcm5lbAo+Pj4+PiAzLjEwLjE0LXgpIHdvcmtpbmcu
-IEJ1dCBJIGhhdmUgbm90IHRpbWUgdG8gZGVlcCBjaGVjayB0aGlzIG5vdy4KPj4+PiBubyB3b3Jy
-aWVzLiBpIHdhcyB3b25kZXJpbmcgaWYgaXQgd2FzIHNvbWV0aGluZyBlZmZlY3RpbmcgYWxsIFJB
-TElOSyBkZXZpY2VzLiBpdCBtdXN0IGJlLgo+Pj4+IGkgZG9u4oCZdCB0aGluayB0aGUgZHJpdmVy
-IGlzIHRoZSBwcm9ibGVtLCBidXQgc29tZXRoaW5nIHRvIGRvIHdpdGggdGhlIGNoYW5nZXMgaW4g
-My54IGFuZCA0LnggZm9yIGkyYy4KPj4+PiAKPj4+Pj4gCj4+Pj4+Pj4gT24gTWFyIDIzLCAyMDE4
-LCBhdCAzOjM2IEFNLCBBbmRyZXkgSnIuIE1lbG5pa292IDx0ZW1ub3RhLmFtQGdtYWlsLmNvbT4g
-d3JvdGU6Cj4+Pj4+Pj4gCj4+Pj4+Pj4gSW4gYXJ0aWNsZSA8M0M0M0MwMUItOTRBNi00QTZGLTgy
-QjYtQTgxNjU5NTA4Mzk2QG1hYy5jb20+IHlvdSB3cm90ZToKPj4+Pj4+Pj4gaGkgZ3V5cywKPj4+
-Pj4+PiAKPj4+Pj4+Pj4gc29ycnkgZm9yIGJ1bXBpbmcgdGhpcyB0aHJlYWQsIGJ1dCBpIGZvdW5k
-IFN2ZW4/Pz9zIGFwcHJvYWNoIGludGVyZXN0aW5nLgo+Pj4+Pj4+IAo+Pj4+Pj4+PiBpbiA0Lngs
-IGl0IGRvZXMgbm90IHNlZW0gaSBjYW4gc2ltcGx5IGVuYWJsZSBDT05GSUdfSTJDX0dQSU89eSwg
-YWRkIHRoZSBpMmMtZ3BpbyBub2RlOgo+Pj4+Pj4+IAo+Pj4+Pj4+Pj4gICAgaTJjLWdwaW8gewo+
-Pj4+Pj4+Pj4gICAgY29tcGF0aWJsZSA9ICJpMmMtZ3BpbyI7Cj4+Pj4+Pj4+PiAgICBncGlvcyA9
-IDwmZ3BpbzAgMyAwCj4+Pj4+Pj4+PiAgICAgICAgICAgICAmZ3BpbzAgNCAwPjsKPj4+Pj4+Pj4+
-ICAgICAgICAgICAgICNhZGRyZXNzLWNlbGxzPTwxPjsKPj4+Pj4+Pj4+ICAgICAgICAgICAgICNz
-aXplLWNlbGxzID0gPDA+Owo+Pj4+Pj4+Pj4gICAgICAgIGh3bW9uQDRiIHsKPj4+Pj4+Pj4+ICAg
-ICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJuYXRpb25hbCwgbG05MiI7Cj4+Pj4+Pj4+PiAgICAg
-ICAgICAgICAgIHJlZyA9IDwweDRiPjsKPj4+Pj4+Pj4+IAo+Pj4+Pj4+Pj4gICAgICAgICAgICB9
-Owo+Pj4+Pj4+Pj4gCj4+Pj4+Pj4+PiAgICAgICAgcnRjQDUxIHsKPj4+Pj4+Pj4+ICAgICAgICAg
-ICAgICAgY29tcGF0aWJsZSA9ICJueHAscGNmODU2MyI7Cj4+Pj4+Pj4+PiAgICAgICAgICAgICAg
-IHJlZyA9IDwweDUxPjsKPj4+Pj4+Pj4+ICAgICAgICAgICAgICAgI2Nsb2NrLWNlbGxzID0gPDA+
-Owo+Pj4+Pj4+Pj4gICAgICAgICAgICB9Owo+Pj4+Pj4+Pj4gCj4+Pj4+Pj4+PiAKPj4+Pj4+Pj4+
-ICAgIH07Cj4+Pj4+Pj4gCj4+Pj4+Pj4gCj4+Pj4+Pj4+IGFuZCBtb2RpZnkgdGhlIHBpbmN0cmwg
-bm9kZSBhY2NvcmRpbmdseToKPj4+Pj4+PiAKPj4+Pj4+Pj4+ICAgIHBpbmN0cmwgewo+Pj4+Pj4+
-Pj4gICAgICAgICAgICBzdGF0ZV9kZWZhdWx0OiBwaW5jdHJsMCB7Cj4+Pj4+Pj4+PiAgICAgICAg
-ICAgICAgICAgICAgZ3BpbyB7Cj4+Pj4+Pj4+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICBy
-YWxpbmssZ3JvdXAgPSAicmdtaWkyIiwgInVhcnQyIiwidWFydDMiLCJ3ZHQiLCJpMmMiLCJqdGFn
-IjsKPj4+Pj4+Pj4+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJhbGluayxmdW5jdGlvbiA9
-ICJncGlvIjsKPj4+Pj4+Pj4+ICAgICAgICAgICAgICAgICAgICB9Owo+Pj4+Pj4+Pj4gICAgICAg
-ICAgICB9Owo+Pj4+Pj4+Pj4gICAgfTsKPj4+Pj4+PiAKPj4+Pj4+PiBhZGRpbmcgImkyYyIgdG8g
-Z3BpbyBncm91cCBzaW1wbHkgbWFrZSBpdCB1bnVzYWJsZSBmb3Iga2VybmVsIC0gaXQncyBleHBv
-cnQgYWxsIG5hbWVkIHBpbnMgYXMgcGxhaW4gZ3Bpby4gSWYgeW91IHdhbnQKPj4+Pj4+PiB0byB1
-c2UgaTJjIGtlcm5lbCBkcml2ZXIgLSByZW1vdmUgImkyYyIgZnJvbSBncGlvIGV4cG9ydC4KPj4+
-Pj4+PiAKPj4+Pj4+Pj4gaW4gRElSODgyLmR0cyAoaW5oZXJpdHMgZnJvbSBtdDc2MjEuZHRzaSks
-IHdoZXJlIGkgYWRkID8/P2kyYy1ncGlvPz8/IHRvIHRoZSBpMmMgZW50cnkgaW4gbXQ3NjIxLmR0
-c2kgYXMgZm9sbG93czoKPj4+Pj4+PiAKPj4+Pj4+Pj4+IGkyYzogaTJjQDkwMCB7Cj4+Pj4+Pj4+
-PiAgICAgICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJpMmMtZ3BpbyI7Cj4+Pj4+Pj4+PiAg
-ICAgICAgICAgICAgICAgICAgcmVnID0gPDB4OTAwIDB4MTAwPjsKPj4+Pj4+Pj4+IAo+Pj4+Pj4+
-Pj4gICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmc3lzY2xvY2s+Owo+Pj4+Pj4+Pj4gCj4+
-Pj4+Pj4+PiAgICAgICAgICAgICAgICAgICAgcmVzZXRzID0gPCZyc3RjdHJsIDE2PjsKPj4+Pj4+
-Pj4+ICAgICAgICAgICAgICAgICAgICByZXNldC1uYW1lcyA9ICJpMmMiOwo+Pj4+Pj4+Pj4gCj4+
-Pj4+Pj4+PiAgICAgICAgICAgICAgICAgICAgI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4+Pj4+Pj4+
-PiAgICAgICAgICAgICAgICAgICAgI3NpemUtY2VsbHMgPSA8MD47Cj4+Pj4+Pj4+PiAKPj4+Pj4+
-Pj4+ICAgICAgICAgICAgICAgICAgICBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+Pj4+Pj4+Pj4gCj4+
-Pj4+Pj4+PiAgICAgICAgICAgICAgICAgICAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4+
-Pj4+Pj4+ICAgICAgICAgICAgICAgICAgICBwaW5jdHJsLTAgPSA8JmkyY19waW5zPjsKPj4+Pj4+
-Pj4+IH0KPj4+Pj4+PiAKPj4+Pj4+Pj4gaXQgZG9lcyBub3Qgd29yayBhdCBhbGwuCj4+Pj4+Pj4g
-Cj4+Pj4+Pj4+IGkgcmVhbGx5IHdhbnQgYSBmdW5jdGlvbmFsIHJ0YyBsb2wuCj4+Pj4+Pj4gCj4+
-Pj4+Pj4+IG15IHJvdXRlciBpcyBub3QgY29ubmVjdGVkIHRvIHRoZSBpbnRlcm5ldCBzbyBpZiB0
-aGUgcnRjIGNhbiBob2xkIHRoZSB0aW1lIGZvciBhIHNlY29uZCBhZnRlciByZXNldCwgdGhhdCBz
-aG91bGQgYmUgZW5vdWdoIHNpbmNlIHJlc2V0dGluZyBkb2Vzbj8/P3QgY3V0IHBvd2VyLgo+Pj4+
-Pj4+IAo+Pj4+Pj4+PiBpIHNwb2tlIHdpdGggQWxleGFuZHJlIEJlbGxvbmkgd2hvIGhhcyBkb25l
-IGEgbG90IG9mIHdvcmsgb24gdGhlIGxpbnV4IHJ0YywgYW5kIGhlIHNheXMgd2UgYXJlIG1pc3Np
-bmcgdGhlIFNEQS9TREwgUFVMTFVQIG1lY2hhbmlzbS4gdGhpcyBtYWtlcyBzZW5zZS4KPj4+Pj4+
-PiAKPj4+Pj4+Pj4gdGhlIHF1ZXN0aW9uIGlzOiB3aGF0IG5lZWRzIHdvcmsgaW4gb3JkZXIgdG8g
-aGF2ZSBhIGZ1bGx5IGZ1bmN0aW9uYWwgcnRjPyBhcy1pcywgaSBhbSBvbmx5IGFibGUgdG8gd3Jp
-dGUgdG8gdGhlIGNsb2NrIGJ1dCBub3QgYWJsZSB0byByZWFkIGZyb20gaXQsIHdoaWNoIHN1Z2dl
-c3RzIGkgbmVlZCB0byBpbmNvcnBvcmF0ZSB0aGUgU0RBL1NETCBwaW5zIHNvbWVob3cuCj4+Pj4+
-Pj4gCj4+Pj4+Pj4+IGFueSB0aXBzIHdvdWxkIGJlIGdyZWF0Lgo+Pj4+Pj4+IAo+Pj4+Pj4gCj4+
-Pj4gCj4+PiAKPj4gCj4gCj4gLS0gCj4gQWxleGFuZHJlIEJlbGxvbmksIEJvb3RsaW4gKGZvcm1l
-cmx5IEZyZWUgRWxlY3Ryb25zKQo+IEVtYmVkZGVkIExpbnV4IGFuZCBLZXJuZWwgZW5naW5lZXJp
-bmcKPiBodHRwczovL2Jvb3RsaW4uY29tCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
-dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+From: Sean Wang <sean.wang@mediatek.com>
+
+Changes since v1:
+- Dropped several patches which have been merged.
+- Rebased to linux-next-20180410 where those dependent patches including
+  [1] and [2] all have been got merged.
+- Revised according to suggestions and comments on v1, where the major work is
+  to put board-specific nodes into DTS files and to leave the common nodes
+  among boards in DTSI files as done in patch 7,9,10,11 and 12.
+- Merged Ryder Lee's patch for update audio nodes reflecting the latest
+  bindings.
+- Revised commit message.
+
+The series is to refactor current .dts for allowing more boards can properly
+join and reuse almost the same device node definitions.
+
+Before we're doing that, some works about enhancements and fixups are being
+made on the dt-binding document and .dts files. In addition, the series has to
+depend on the patch [1][2]. Otherwise, certain build failure would have an
+occurrence.
+
+[1] arm: dts: mt7623: add PCIe related nodes
+http://lists.infradead.org/pipermail/linux-mediatek/2018-February/012053.html
+
+[2] dt-bindings: soc: add header files required for MT7623A SCPSYS dt-binding
+http://lists.infradead.org/pipermail/linux-mediatek/2018-February/011930.html
+
+Ryder Lee (1):
+  arm: dts: mediatek: modify audio related nodes for both MT2701 and
+    MT7623
+
+Sean Wang (11):
+  dt-bindings: cpufreq: mediatek: use - instead of _ in examples
+  arm: dts: mediatek: converted to using SPDX identifiers
+  arm: dts: mt7623: fix invalid memory node being generated
+  arm: dts: mt7623: fix available memory size on bananapi-r2
+  arm: dts: mt7623: fix all Warnings (unit_address_vs_reg)
+  arm: dts: mt7623: add BTIF, HSDMA and SPI-NOR device nodes
+  arm: dts: mt6323: move node mt6323 leds to mt6323.dtsi
+  arm: dts: mt7623: extend common file reused by all boards with MT7623
+    SoCs
+  arm: dts: mt7623: add MT7623A SoC level DTS
+  arm: dts: mt7623: add MT7623A reference boards
+  arm: dts: mt7623: add MT7623N reference board with eMMC
+
+ .../bindings/cpufreq/cpufreq-mediatek.txt          |   6 +-
+ arch/arm/boot/dts/Makefile                         |   3 +
+ arch/arm/boot/dts/mt2701-evb.dts                   |   9 +-
+ arch/arm/boot/dts/mt2701.dtsi                      | 197 ++++----
+ arch/arm/boot/dts/mt6323.dtsi                      |  17 +-
+ arch/arm/boot/dts/mt6580-evbp1.dts                 |   9 +-
+ arch/arm/boot/dts/mt6580.dtsi                      |   9 +-
+ arch/arm/boot/dts/mt6589-aquaris5.dts              |  10 +-
+ arch/arm/boot/dts/mt6589.dtsi                      |  12 +-
+ arch/arm/boot/dts/mt6592-evb.dts                   |   9 +-
+ arch/arm/boot/dts/mt6592.dtsi                      |   9 +-
+ arch/arm/boot/dts/mt7623.dtsi                      | 537 ++++++++++++++++-----
+ arch/arm/boot/dts/mt7623a-rfb-emmc.dts             | 291 +++++++++++
+ arch/arm/boot/dts/mt7623a-rfb-nand.dts             | 337 +++++++++++++
+ arch/arm/boot/dts/mt7623a.dtsi                     |  44 ++
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts      | 279 ++---------
+ arch/arm/boot/dts/mt7623n-rfb-emmc.dts             | 326 +++++++++++++
+ arch/arm/boot/dts/mt7623n-rfb-nand.dts             |  40 +-
+ arch/arm/boot/dts/mt7623n-rfb.dtsi                 |  12 +-
+ arch/arm/boot/dts/mt8127-moose.dts                 |   9 +-
+ arch/arm/boot/dts/mt8127.dtsi                      |   9 +-
+ arch/arm/boot/dts/mt8135-evbp1.dts                 |   9 +-
+ arch/arm/boot/dts/mt8135.dtsi                      |   9 +-
+ 23 files changed, 1576 insertions(+), 616 deletions(-)
+ create mode 100644 arch/arm/boot/dts/mt7623a-rfb-emmc.dts
+ create mode 100644 arch/arm/boot/dts/mt7623a-rfb-nand.dts
+ create mode 100644 arch/arm/boot/dts/mt7623a.dtsi
+ create mode 100644 arch/arm/boot/dts/mt7623n-rfb-emmc.dts
+
+-- 
+2.7.4
