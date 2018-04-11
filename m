@@ -1,754 +1,226 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v2 11/12] arm: dts: mt7623: add MT7623A reference boards
-Date: Wed, 11 Apr 2018 16:54:04 +0800
-Message-ID: <68c37aafb9d49eaa26453f06ab02731b97e5792d.1523434758.git.sean.wang@mediatek.com>
-References: <cover.1523434757.git.sean.wang@mediatek.com>
+From: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [PATCH 5/8] mtd: rawnand: Modify ->calc_ecc_bytes() hook in
+ nand_ecc_caps
+Date: Wed, 11 Apr 2018 20:57:57 +0200
+Message-ID: <20180411205757.06495b7b@bbrezillon>
+References: <1523418118-57686-1-git-send-email-xiaolei.li@mediatek.com>
+ <1523418118-57686-6-git-send-email-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <cover.1523434757.git.sean.wang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1523418118-57686-6-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Wed, 11 Apr 2018 11:41:55 +0800
+Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 
-Add MT7623A reference board with eMMC and NAND, respectively.
+> Maybe some controllers need more information besides step size and ecc
+> strength to calculate ECC bytes.
+> 
+> struct nand_ecc_ctrl provides lots of ECC control information include
+> private ECC control data. So, add it into ->calc_ecc_bytes() interface,
+> to make this hook be more flexible.
 
-The both boards compared against MT7623N BPI-R2, we could see there are
-UART[0-1] and USB2 being removed, I2C2 and SPI1 being added, I2C1, UART2
-owning distinct pin usage and an extra WM8960 codec chip plugged into the
-I2C1 offering the functionality of audio player and recorder through
-SoC audio front-end engine (AFE).
+I'm not fond of this approach. Why don't you provide a different
+function for the 2 cases you have (parity = 13 and parity = 14)? 
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Suggested-by: Ryder Lee <ryder.lee@mediatek.com>
----
- arch/arm/boot/dts/Makefile             |   2 +
- arch/arm/boot/dts/mt7623.dtsi          |  32 ++++
- arch/arm/boot/dts/mt7623a-rfb-emmc.dts | 291 ++++++++++++++++++++++++++++
- arch/arm/boot/dts/mt7623a-rfb-nand.dts | 337 +++++++++++++++++++++++++++++++++
- 4 files changed, 662 insertions(+)
- create mode 100644 arch/arm/boot/dts/mt7623a-rfb-emmc.dts
- create mode 100644 arch/arm/boot/dts/mt7623a-rfb-nand.dts
-
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index 7e24249..bc33a3c 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -1150,6 +1150,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += \
- 	mt6580-evbp1.dtb \
- 	mt6589-aquaris5.dtb \
- 	mt6592-evb.dtb \
-+	mt7623a-rfb-emmc.dtb \
-+	mt7623a-rfb-nand.dtb \
- 	mt7623n-rfb-nand.dtb \
- 	mt7623n-bananapi-bpi-r2.dtb \
- 	mt8127-moose.dtb \
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index 01893858..f84c37b 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -960,6 +960,22 @@
- 		};
- 	};
- 
-+	i2c1_pins_b: i2c1-alt {
-+		pin-i2c1 {
-+			pinmux = <MT7623_PIN_242_URTS2_FUNC_SCL1>,
-+				 <MT7623_PIN_243_UCTS2_FUNC_SDA1>;
-+			bias-disable;
-+		};
-+	};
-+
-+	i2c2_pins_b: i2c2-alt {
-+		pin-i2c2 {
-+			pinmux = <MT7623_PIN_122_GPIO122_FUNC_SDA2>,
-+				 <MT7623_PIN_123_HTPLG_FUNC_SCL2>;
-+			bias-disable;
-+		};
-+	};
-+
- 	i2s0_pins_a: i2s0-default {
- 		pin-i2s0 {
- 			pinmux = <MT7623_PIN_49_I2S0_DATA_FUNC_I2S0_DATA>,
-@@ -1160,6 +1176,15 @@
- 		};
- 	};
- 
-+	spi1_pins_a: spi1-default {
-+		pins-spi {
-+			pinmux = <MT7623_PIN_7_SPI1_CSN_FUNC_SPI1_CS>,
-+				<MT7623_PIN_199_SPI1_CK_FUNC_SPI1_CK>,
-+				<MT7623_PIN_8_SPI1_MI_FUNC_SPI1_MI>,
-+				<MT7623_PIN_9_SPI1_MO_FUNC_SPI1_MO>;
-+		};
-+	};
-+
- 	uart0_pins_a: uart0-default {
- 		pins-dat {
- 			pinmux = <MT7623_PIN_79_URXD0_FUNC_URXD0>,
-@@ -1180,4 +1205,11 @@
- 				 <MT7623_PIN_15_GPIO15_FUNC_UTXD2>;
- 		};
- 	};
-+
-+	uart2_pins_b: uart2-alt {
-+		pins-dat {
-+			pinmux = <MT7623_PIN_200_URXD2_FUNC_URXD2>,
-+				 <MT7623_PIN_201_UTXD2_FUNC_UTXD2>;
-+		};
-+	};
- };
-diff --git a/arch/arm/boot/dts/mt7623a-rfb-emmc.dts b/arch/arm/boot/dts/mt7623a-rfb-emmc.dts
-new file mode 100644
-index 0000000..13c8693
---- /dev/null
-+++ b/arch/arm/boot/dts/mt7623a-rfb-emmc.dts
-@@ -0,0 +1,291 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2017-2018 MediaTek Inc.
-+ * Author: Sean Wang <sean.wang@mediatek.com>
-+ *
-+ */
-+
-+/dts-v1/;
-+#include <dt-bindings/input/input.h>
-+#include "mt7623a.dtsi"
-+#include "mt6323.dtsi"
-+
-+/ {
-+	model = "MediaTek MT7623A with eMMC reference board";
-+	compatible = "mediatek,mt7623a-rfb-emmc", "mediatek,mt7623";
-+
-+	aliases {
-+		serial2 = &uart2;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial2:115200n8";
-+	};
-+
-+	cpus {
-+		cpu@0 {
-+			proc-supply = <&mt6323_vproc_reg>;
-+		};
-+
-+		cpu@1 {
-+			proc-supply = <&mt6323_vproc_reg>;
-+		};
-+
-+		cpu@2 {
-+			proc-supply = <&mt6323_vproc_reg>;
-+		};
-+
-+		cpu@3 {
-+			proc-supply = <&mt6323_vproc_reg>;
-+		};
-+	};
-+
-+	gpio-keys {
-+		compatible = "gpio-keys";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&key_pins_a>;
-+
-+		factory {
-+			label = "factory";
-+			linux,code = <BTN_0>;
-+			gpios = <&pio 256 GPIO_ACTIVE_LOW>;
-+		};
-+
-+		wps {
-+			label = "wps";
-+			linux,code = <KEY_WPS_BUTTON>;
-+			gpios = <&pio 257 GPIO_ACTIVE_HIGH>;
-+		};
-+	};
-+
-+	memory@80000000 {
-+		device_type = "memory";
-+		reg = <0 0x80000000 0 0x20000000>;
-+	};
-+
-+	reg_1p8v: regulator-1p8v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "fixed-1.8V";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		regulator-boot-on;
-+		regulator-always-on;
-+	};
-+
-+	reg_3p3v: regulator-3p3v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "fixed-3.3V";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-boot-on;
-+		regulator-always-on;
-+	};
-+
-+	reg_5v: regulator-5v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "fixed-5V";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		regulator-boot-on;
-+		regulator-always-on;
-+	};
-+
-+	sound {
-+		compatible = "mediatek,mt2701-wm8960-machine";
-+		mediatek,platform = <&afe>;
-+		audio-routing =
-+			"Headphone", "HP_L",
-+			"Headphone", "HP_R",
-+			"LINPUT1", "AMIC",
-+			"RINPUT1", "AMIC";
-+		mediatek,audio-codec = <&wm8960>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&i2s0_pins_a>;
-+	};
-+};
-+
-+&btif {
-+	status = "okay";
-+};
-+
-+&crypto {
-+	status = "okay";
-+};
-+
-+&eth {
-+	status = "okay";
-+
-+	gmac0: mac@0 {
-+		compatible = "mediatek,eth-mac";
-+		reg = <0>;
-+		phy-mode = "trgmii";
-+
-+		fixed-link {
-+			speed = <1000>;
-+			full-duplex;
-+			pause;
-+		};
-+	};
-+
-+	mdio-bus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		switch@0 {
-+			compatible = "mediatek,mt7530";
-+			reg = <0>;
-+			mediatek,mcm;
-+			resets = <&ethsys MT2701_ETHSYS_MCM_RST>;
-+			reset-names = "mcm";
-+			core-supply = <&mt6323_vpa_reg>;
-+			io-supply = <&mt6323_vemc3v3_reg>;
-+
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					reg = <0>;
-+					label = "lan0";
-+				};
-+
-+				port@1 {
-+					reg = <1>;
-+					label = "lan1";
-+				};
-+
-+				port@2 {
-+					reg = <2>;
-+					label = "lan2";
-+				};
-+
-+				port@3 {
-+					reg = <3>;
-+					label = "lan3";
-+				};
-+
-+				port@4 {
-+					reg = <4>;
-+					label = "wan";
-+				};
-+
-+				port@6 {
-+					reg = <6>;
-+					label = "cpu";
-+					ethernet = <&gmac0>;
-+					phy-mode = "trgmii";
-+
-+					fixed-link {
-+						speed = <1000>;
-+						full-duplex;
-+					};
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&i2c0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c0_pins_a>;
-+	status = "okay";
-+};
-+
-+&i2c1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c1_pins_b>;
-+	status = "okay";
-+
-+	wm8960: wm8960@1a {
-+		compatible = "wlf,wm8960";
-+		reg = <0x1a>;
-+	};
-+};
-+
-+&i2c2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c2_pins_b>;
-+	status = "okay";
-+};
-+
-+&mmc0 {
-+	pinctrl-names = "default", "state_uhs";
-+	pinctrl-0 = <&mmc0_pins_default>;
-+	pinctrl-1 = <&mmc0_pins_uhs>;
-+	status = "okay";
-+	bus-width = <8>;
-+	max-frequency = <50000000>;
-+	cap-mmc-highspeed;
-+	vmmc-supply = <&reg_3p3v>;
-+	vqmmc-supply = <&reg_1p8v>;
-+	non-removable;
-+};
-+
-+&mmc1 {
-+	pinctrl-names = "default", "state_uhs";
-+	pinctrl-0 = <&mmc1_pins_default>;
-+	pinctrl-1 = <&mmc1_pins_uhs>;
-+	status = "okay";
-+	bus-width = <4>;
-+	max-frequency = <50000000>;
-+	cap-sd-highspeed;
-+	cd-gpios = <&pio 261 GPIO_ACTIVE_LOW>;
-+	vmmc-supply = <&reg_3p3v>;
-+	vqmmc-supply = <&reg_3p3v>;
-+};
-+
-+&pcie {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_default>;
-+	status = "okay";
-+
-+	pcie@0,0 {
-+		status = "okay";
-+	};
-+
-+	pcie@1,0 {
-+		status = "okay";
-+	};
-+};
-+
-+&pcie0_phy {
-+	status = "okay";
-+};
-+
-+&pcie1_phy {
-+	status = "okay";
-+};
-+
-+&pwm {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pwm_pins_a>;
-+	status = "okay";
-+};
-+
-+&spi0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spi0_pins_a>;
-+	status = "okay";
-+};
-+
-+&spi1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spi1_pins_a>;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart2_pins_b>;
-+	status = "okay";
-+};
-+
-+&usb1 {
-+	vusb33-supply = <&reg_3p3v>;
-+	vbus-supply = <&reg_5v>;
-+	status = "okay";
-+};
-+
-+&u3phy1 {
-+	status = "okay";
-+};
-diff --git a/arch/arm/boot/dts/mt7623a-rfb-nand.dts b/arch/arm/boot/dts/mt7623a-rfb-nand.dts
-new file mode 100644
-index 0000000..88d8f0b
---- /dev/null
-+++ b/arch/arm/boot/dts/mt7623a-rfb-nand.dts
-@@ -0,0 +1,337 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2017-2018 MediaTek Inc.
-+ * Author: Sean Wang <sean.wang@mediatek.com>
-+ *
-+ */
-+
-+/dts-v1/;
-+#include <dt-bindings/input/input.h>
-+#include "mt7623a.dtsi"
-+#include "mt6323.dtsi"
-+
-+/ {
-+	model = "MediaTek MT7623A with NAND reference board";
-+	compatible = "mediatek,mt7623a-rfb-nand", "mediatek,mt7623";
-+
-+	aliases {
-+		serial2 = &uart2;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial2:115200n8";
-+	};
-+
-+	cpus {
-+		cpu@0 {
-+			proc-supply = <&mt6323_vproc_reg>;
-+		};
-+
-+		cpu@1 {
-+			proc-supply = <&mt6323_vproc_reg>;
-+		};
-+
-+		cpu@2 {
-+			proc-supply = <&mt6323_vproc_reg>;
-+		};
-+
-+		cpu@3 {
-+			proc-supply = <&mt6323_vproc_reg>;
-+		};
-+	};
-+
-+	gpio-keys {
-+		compatible = "gpio-keys";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&key_pins_a>;
-+
-+		factory {
-+			label = "factory";
-+			linux,code = <BTN_0>;
-+			gpios = <&pio 256 GPIO_ACTIVE_LOW>;
-+		};
-+
-+		wps {
-+			label = "wps";
-+			linux,code = <KEY_WPS_BUTTON>;
-+			gpios = <&pio 257 GPIO_ACTIVE_HIGH>;
-+		};
-+	};
-+
-+	memory@80000000 {
-+		device_type = "memory";
-+		reg = <0 0x80000000 0 0x20000000>;
-+	};
-+
-+	reg_1p8v: regulator-1p8v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "fixed-1.8V";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		regulator-boot-on;
-+		regulator-always-on;
-+	};
-+
-+	reg_3p3v: regulator-3p3v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "fixed-3.3V";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-boot-on;
-+		regulator-always-on;
-+	};
-+
-+	reg_5v: regulator-5v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "fixed-5V";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		regulator-boot-on;
-+		regulator-always-on;
-+	};
-+
-+	sound {
-+		compatible = "mediatek,mt2701-wm8960-machine";
-+		mediatek,platform = <&afe>;
-+		audio-routing =
-+			"Headphone", "HP_L",
-+			"Headphone", "HP_R",
-+			"LINPUT1", "AMIC",
-+			"RINPUT1", "AMIC";
-+		mediatek,audio-codec = <&wm8960>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&i2s0_pins_a>;
-+	};
-+};
-+
-+&bch {
-+	status = "okay";
-+};
-+
-+&btif {
-+	status = "okay";
-+};
-+
-+&crypto {
-+	status = "okay";
-+};
-+
-+&eth {
-+	status = "okay";
-+
-+	gmac0: mac@0 {
-+		compatible = "mediatek,eth-mac";
-+		reg = <0>;
-+		phy-mode = "trgmii";
-+
-+		fixed-link {
-+			speed = <1000>;
-+			full-duplex;
-+			pause;
-+		};
-+	};
-+
-+	mdio-bus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		switch@0 {
-+			compatible = "mediatek,mt7530";
-+			reg = <0>;
-+			mediatek,mcm;
-+			resets = <&ethsys MT2701_ETHSYS_MCM_RST>;
-+			reset-names = "mcm";
-+			core-supply = <&mt6323_vpa_reg>;
-+			io-supply = <&mt6323_vemc3v3_reg>;
-+
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					reg = <0>;
-+					label = "lan0";
-+				};
-+
-+				port@1 {
-+					reg = <1>;
-+					label = "lan1";
-+				};
-+
-+				port@2 {
-+					reg = <2>;
-+					label = "lan2";
-+				};
-+
-+				port@3 {
-+					reg = <3>;
-+					label = "lan3";
-+				};
-+
-+				port@4 {
-+					reg = <4>;
-+					label = "wan";
-+				};
-+
-+				port@6 {
-+					reg = <6>;
-+					label = "cpu";
-+					ethernet = <&gmac0>;
-+					phy-mode = "trgmii";
-+
-+					fixed-link {
-+						speed = <1000>;
-+						full-duplex;
-+					};
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&i2c0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c0_pins_a>;
-+	status = "okay";
-+};
-+
-+&i2c1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c1_pins_b>;
-+	status = "okay";
-+
-+	wm8960: wm8960@1a {
-+		compatible = "wlf,wm8960";
-+		reg = <0x1a>;
-+	};
-+};
-+
-+&i2c2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c2_pins_b>;
-+	status = "okay";
-+};
-+
-+&mmc1 {
-+	pinctrl-names = "default", "state_uhs";
-+	pinctrl-0 = <&mmc1_pins_default>;
-+	pinctrl-1 = <&mmc1_pins_uhs>;
-+	status = "okay";
-+	bus-width = <4>;
-+	max-frequency = <50000000>;
-+	cap-sd-highspeed;
-+	cd-gpios = <&pio 261 GPIO_ACTIVE_LOW>;
-+	vmmc-supply = <&reg_3p3v>;
-+	vqmmc-supply = <&reg_3p3v>;
-+};
-+
-+&nandc {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&nand_pins_default>;
-+	status = "okay";
-+
-+	nand@0 {
-+		reg = <0>;
-+		spare_per_sector = <64>;
-+		nand-ecc-mode = "hw";
-+		nand-ecc-strength = <12>;
-+		nand-ecc-step-size = <1024>;
-+
-+		partitions {
-+			compatible = "fixed-partitions";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+
-+			partition@0 {
-+				label = "preloader";
-+				reg = <0x0 0x40000>;
-+			};
-+
-+			partition@40000 {
-+				label = "uboot";
-+				reg = <0x40000 0x80000>;
-+			};
-+
-+			partition@c0000 {
-+				label = "uboot-env";
-+				reg = <0xC0000 0x40000>;
-+			};
-+
-+			partition@140000 {
-+				label = "bootimg";
-+				reg = <0x140000 0x2000000>;
-+			};
-+
-+			partition@2140000 {
-+				label = "recovery";
-+				reg = <0x2140000 0x2000000>;
-+			};
-+
-+			partition@4140000 {
-+				label = "rootfs";
-+				reg = <0x4140000 0x1000000>;
-+			};
-+
-+			partition@5140000 {
-+				label = "usrdata";
-+				reg = <0x5140000 0x1000000>;
-+			};
-+		};
-+	};
-+};
-+
-+&pcie {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_default>;
-+	status = "okay";
-+
-+	pcie@0,0 {
-+		status = "okay";
-+	};
-+
-+	pcie@1,0 {
-+		status = "okay";
-+	};
-+};
-+
-+&pcie0_phy {
-+	status = "okay";
-+};
-+
-+&pcie1_phy {
-+	status = "okay";
-+};
-+
-+&pwm {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pwm_pins_a>;
-+	status = "okay";
-+};
-+
-+&spi0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spi0_pins_a>;
-+	status = "okay";
-+};
-+
-+&spi1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spi1_pins_a>;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart2_pins_b>;
-+	status = "okay";
-+};
-+
-+&usb1 {
-+	vusb33-supply = <&reg_3p3v>;
-+	vbus-supply = <&reg_5v>;
-+	status = "okay";
-+};
-+
-+&u3phy1 {
-+	status = "okay";
-+};
--- 
-2.7.4
+> 
+> Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/mtd/nand/raw/denali.c    |  3 +-
+>  drivers/mtd/nand/raw/denali.h    |  2 +-
+>  drivers/mtd/nand/raw/nand_base.c | 11 ++++--
+>  include/linux/mtd/rawnand.h      | 77 ++++++++++++++++++++--------------------
+>  4 files changed, 50 insertions(+), 43 deletions(-)
+> 
+> diff --git a/drivers/mtd/nand/raw/denali.c b/drivers/mtd/nand/raw/denali.c
+> index 2a302a1..907609c 100644
+> --- a/drivers/mtd/nand/raw/denali.c
+> +++ b/drivers/mtd/nand/raw/denali.c
+> @@ -1113,7 +1113,8 @@ static void denali_hw_init(struct denali_nand_info *denali)
+>  	iowrite32(0xffff, denali->reg + SPARE_AREA_MARKER);
+>  }
+>  
+> -int denali_calc_ecc_bytes(int step_size, int strength)
+> +int denali_calc_ecc_bytes(struct nand_ecc_ctrl *ecc, int step_size,
+> +			  int strength)
+>  {
+>  	/* BCH code.  Denali requires ecc.bytes to be multiple of 2 */
+>  	return DIV_ROUND_UP(strength * fls(step_size * 8), 16) * 2;
+> diff --git a/drivers/mtd/nand/raw/denali.h b/drivers/mtd/nand/raw/denali.h
+> index 9ad33d2..644dffd 100644
+> --- a/drivers/mtd/nand/raw/denali.h
+> +++ b/drivers/mtd/nand/raw/denali.h
+> @@ -328,7 +328,7 @@ struct denali_nand_info {
+>  #define DENALI_CAP_HW_ECC_FIXUP			BIT(0)
+>  #define DENALI_CAP_DMA_64BIT			BIT(1)
+>  
+> -int denali_calc_ecc_bytes(int step_size, int strength);
+> +int denali_calc_ecc_bytes(struct nand_ecc_ctrl *, int, int);
+>  int denali_init(struct denali_nand_info *denali);
+>  void denali_remove(struct denali_nand_info *denali);
+>  
+> diff --git a/drivers/mtd/nand/raw/nand_base.c b/drivers/mtd/nand/raw/nand_base.c
+> index d0b993f..e17abc8 100644
+> --- a/drivers/mtd/nand/raw/nand_base.c
+> +++ b/drivers/mtd/nand/raw/nand_base.c
+> @@ -6052,6 +6052,7 @@ int nand_check_ecc_caps(struct nand_chip *chip,
+>  			const struct nand_ecc_caps *caps, int oobavail)
+>  {
+>  	struct mtd_info *mtd = nand_to_mtd(chip);
+> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
+>  	const struct nand_ecc_step_info *stepinfo;
+>  	int preset_step = chip->ecc.size;
+>  	int preset_strength = chip->ecc.strength;
+> @@ -6076,7 +6077,7 @@ int nand_check_ecc_caps(struct nand_chip *chip,
+>  			if (stepinfo->strengths[j] != preset_strength)
+>  				continue;
+>  
+> -			ecc_bytes = caps->calc_ecc_bytes(preset_step,
+> +			ecc_bytes = caps->calc_ecc_bytes(ecc, preset_step,
+>  							 preset_strength);
+>  			if (WARN_ON_ONCE(ecc_bytes < 0))
+>  				return ecc_bytes;
+> @@ -6114,6 +6115,7 @@ int nand_match_ecc_req(struct nand_chip *chip,
+>  		       const struct nand_ecc_caps *caps, int oobavail)
+>  {
+>  	struct mtd_info *mtd = nand_to_mtd(chip);
+> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
+>  	const struct nand_ecc_step_info *stepinfo;
+>  	int req_step = chip->ecc_step_ds;
+>  	int req_strength = chip->ecc_strength_ds;
+> @@ -6152,7 +6154,8 @@ int nand_match_ecc_req(struct nand_chip *chip,
+>  
+>  			nsteps = mtd->writesize / step_size;
+>  
+> -			ecc_bytes = caps->calc_ecc_bytes(step_size, strength);
+> +			ecc_bytes = caps->calc_ecc_bytes(ecc, step_size,
+> +							 strength);
+>  			if (WARN_ON_ONCE(ecc_bytes < 0))
+>  				continue;
+>  			ecc_bytes_total = ecc_bytes * nsteps;
+> @@ -6198,6 +6201,7 @@ int nand_maximize_ecc(struct nand_chip *chip,
+>  		      const struct nand_ecc_caps *caps, int oobavail)
+>  {
+>  	struct mtd_info *mtd = nand_to_mtd(chip);
+> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
+>  	const struct nand_ecc_step_info *stepinfo;
+>  	int step_size, strength, nsteps, ecc_bytes, corr;
+>  	int best_corr = 0;
+> @@ -6224,7 +6228,8 @@ int nand_maximize_ecc(struct nand_chip *chip,
+>  
+>  			nsteps = mtd->writesize / step_size;
+>  
+> -			ecc_bytes = caps->calc_ecc_bytes(step_size, strength);
+> +			ecc_bytes = caps->calc_ecc_bytes(ecc, step_size,
+> +							 strength);
+>  			if (WARN_ON_ONCE(ecc_bytes < 0))
+>  				continue;
+>  
+> diff --git a/include/linux/mtd/rawnand.h b/include/linux/mtd/rawnand.h
+> index 5dad59b..e7c7fdb 100644
+> --- a/include/linux/mtd/rawnand.h
+> +++ b/include/linux/mtd/rawnand.h
+> @@ -507,44 +507,6 @@ static inline void nand_hw_control_init(struct nand_hw_control *nfc)
+>  }
+>  
+>  /**
+> - * struct nand_ecc_step_info - ECC step information of ECC engine
+> - * @stepsize: data bytes per ECC step
+> - * @strengths: array of supported strengths
+> - * @nstrengths: number of supported strengths
+> - */
+> -struct nand_ecc_step_info {
+> -	int stepsize;
+> -	const int *strengths;
+> -	int nstrengths;
+> -};
+> -
+> -/**
+> - * struct nand_ecc_caps - capability of ECC engine
+> - * @stepinfos: array of ECC step information
+> - * @nstepinfos: number of ECC step information
+> - * @calc_ecc_bytes: driver's hook to calculate ECC bytes per step
+> - */
+> -struct nand_ecc_caps {
+> -	const struct nand_ecc_step_info *stepinfos;
+> -	int nstepinfos;
+> -	int (*calc_ecc_bytes)(int step_size, int strength);
+> -};
+> -
+> -/* a shorthand to generate struct nand_ecc_caps with only one ECC stepsize */
+> -#define NAND_ECC_CAPS_SINGLE(__name, __calc, __step, ...)	\
+> -static const int __name##_strengths[] = { __VA_ARGS__ };	\
+> -static const struct nand_ecc_step_info __name##_stepinfo = {	\
+> -	.stepsize = __step,					\
+> -	.strengths = __name##_strengths,			\
+> -	.nstrengths = ARRAY_SIZE(__name##_strengths),		\
+> -};								\
+> -static const struct nand_ecc_caps __name = {			\
+> -	.stepinfos = &__name##_stepinfo,			\
+> -	.nstepinfos = 1,					\
+> -	.calc_ecc_bytes = __calc,				\
+> -}
+> -
+> -/**
+>   * struct nand_ecc_ctrl - Control structure for ECC
+>   * @mode:	ECC mode
+>   * @algo:	ECC algorithm
+> @@ -639,6 +601,45 @@ struct nand_ecc_ctrl {
+>  };
+>  
+>  /**
+> + * struct nand_ecc_step_info - ECC step information of ECC engine
+> + * @stepsize: data bytes per ECC step
+> + * @strengths: array of supported strengths
+> + * @nstrengths: number of supported strengths
+> + */
+> +struct nand_ecc_step_info {
+> +	int stepsize;
+> +	const int *strengths;
+> +	int nstrengths;
+> +};
+> +
+> +/**
+> + * struct nand_ecc_caps - capability of ECC engine
+> + * @stepinfos: array of ECC step information
+> + * @nstepinfos: number of ECC step information
+> + * @calc_ecc_bytes: driver's hook to calculate ECC bytes per step
+> + */
+> +struct nand_ecc_caps {
+> +	const struct nand_ecc_step_info *stepinfos;
+> +	int nstepinfos;
+> +	int (*calc_ecc_bytes)(struct nand_ecc_ctrl *ecc, int step_size,
+> +			      int strength);
+> +};
+> +
+> +/* a shorthand to generate struct nand_ecc_caps with only one ECC stepsize */
+> +#define NAND_ECC_CAPS_SINGLE(__name, __calc, __step, ...)	\
+> +static const int __name##_strengths[] = { __VA_ARGS__ };	\
+> +static const struct nand_ecc_step_info __name##_stepinfo = {	\
+> +	.stepsize = __step,					\
+> +	.strengths = __name##_strengths,			\
+> +	.nstrengths = ARRAY_SIZE(__name##_strengths),		\
+> +};								\
+> +static const struct nand_ecc_caps __name = {			\
+> +	.stepinfos = &__name##_stepinfo,			\
+> +	.nstepinfos = 1,					\
+> +	.calc_ecc_bytes = __calc,				\
+> +}
+> +
+> +/**
+>   * struct nand_sdr_timings - SDR NAND chip timings
+>   *
+>   * This struct defines the timing requirements of a SDR NAND chip.
