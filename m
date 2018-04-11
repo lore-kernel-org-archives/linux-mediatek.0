@@ -1,115 +1,76 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v2 06/12] arm: dts: mt7623: add BTIF, HSDMA and SPI-NOR device nodes
-Date: Wed, 11 Apr 2018 16:53:59 +0800
-Message-ID: <39294f68b1f9e65341f94a989347da81a26c878d.1523434758.git.sean.wang@mediatek.com>
+From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 01/12] dt-bindings: cpufreq: mediatek: use - instead of _
+ in examples
+Date: Wed, 11 Apr 2018 16:53:54 +0800
+Message-ID: <1b9604aa3d3c68be68caf8af32fa4130f57743d6.1523434758.git.sean.wang@mediatek.com>
 References: <cover.1523434757.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1523434757.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <cover.1523434757.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-add BTIF, HSDMA and SPI-NOR device nodes and enable it on relevant boards
+It should be good that no use "_" is in examples. Consequently,
+those nodes in certain files which have an inappropriate name containing
+"_" are all being replaced with "-".
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>
+Cc: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Acked-by: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 ---
- arch/arm/boot/dts/mt7623.dtsi                 | 36 ++++++++++++++++++++++++++-
- arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |  6 ++++-
- 2 files changed, 40 insertions(+), 2 deletions(-)
+ Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index b9b5619..8cf3d26 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -1,6 +1,6 @@
- // SPDX-License-Identifier: GPL-2.0
- /*
-- * Copyright (c) 2017 MediaTek Inc.
-+ * Copyright (c) 2017-2018 MediaTek Inc.
-  * Author: John Crispin <john@phrozen.org>
-  *	   Sean Wang <sean.wang@mediatek.com>
-  *
-@@ -486,6 +486,18 @@
- 		nvmem-cell-names = "calibration-data";
+diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+index d36f07e..38cfbb5 100644
+--- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
++++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+@@ -26,7 +26,7 @@ Optional properties:
+ 
+ Example 1 (MT7623 SoC):
+ 
+-	cpu_opp_table: opp_table {
++	cpu_opp_table: opp-table {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 
+@@ -86,7 +86,7 @@ Example 1 (MT7623 SoC):
  	};
  
-+	btif: serial@1100c000 {
-+		compatible = "mediatek,mt7623-btif",
-+			     "mediatek,mtk-btif";
-+		reg = <0 0x1100c000 0 0x1000>;
-+		interrupts = <GIC_SPI 50 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&pericfg CLK_PERI_BTIF>;
-+		clock-names = "main";
-+		reg-shift = <2>;
-+		reg-io-width = <4>;
-+		status = "disabled";
-+	};
-+
- 	nandc: nfi@1100d000 {
- 		compatible = "mediatek,mt7623-nfc",
- 			     "mediatek,mt2701-nfc";
-@@ -511,6 +523,18 @@
- 		status = "disabled";
+ Example 2 (MT8173 SoC):
+-	cpu_opp_table_a: opp_table_a {
++	cpu_opp_table_a: opp-table-a {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 
+@@ -131,7 +131,7 @@ Example 2 (MT8173 SoC):
+ 		};
  	};
  
-+	nor_flash: spi@11014000 {
-+		compatible = "mediatek,mt7623-nor",
-+			     "mediatek,mt8173-nor";
-+		reg = <0 0x11014000 0 0x1000>;
-+		clocks = <&pericfg CLK_PERI_FLASH>,
-+			 <&topckgen CLK_TOP_FLASH_SEL>;
-+		clock-names = "spi", "sf";
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		status = "disabled";
-+	};
-+
- 	spi1: spi@11016000 {
- 		compatible = "mediatek,mt7623-spi",
- 			     "mediatek,mt2701-spi";
-@@ -867,6 +891,16 @@
- 		#reset-cells = <1>;
- 	};
+-	cpu_opp_table_b: opp_table_b {
++	cpu_opp_table_b: opp-table-b {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
  
-+	hsdma: dma-controller@1b007000 {
-+		compatible = "mediatek,mt7623-hsdma";
-+		reg = <0 0x1b007000 0 0x1000>;
-+		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&ethsys CLK_ETHSYS_HSDMA>;
-+		clock-names = "hsdma";
-+		power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
-+		#dma-cells = <1>;
-+	};
-+
- 	eth: ethernet@1b100000 {
- 		compatible = "mediatek,mt7623-eth",
- 			     "mediatek,mt2701-eth",
-diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-index 71023a6..1fd6f55 100644
---- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-+++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-@@ -1,5 +1,5 @@
- /*
-- * Copyright 2017 Sean Wang <sean.wang@mediatek.com>
-+ * Copyright 2017-2018 Sean Wang <sean.wang@mediatek.com>
-  *
-  * SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-  */
-@@ -114,6 +114,10 @@
- 	};
- };
- 
-+&btif {
-+	status = "okay";
-+};
-+
- &cir {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&cir_pins_a>;
 -- 
 2.7.4
