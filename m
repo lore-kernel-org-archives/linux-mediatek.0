@@ -1,78 +1,64 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] spi: mediatek: remove redundant MODULE_ALIAS entries
-Date: Thu, 12 Apr 2018 17:13:23 +0100
-Message-ID: <20180412161323.GH9929@sirena.org.uk>
-References: <58fc8553bdc3cbad8d107a905947b7e4d9c12b92.1522054975.git.sean.wang@mediatek.com>
- <20180328021416.GK29239@sirena.org.uk>
- <1522206543.18424.23.camel@mtkswgap22>
+From: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Subject: [PATCH 0/5] ASoC: mediatek: add support for mt6797 SoC
+Date: Fri, 13 Apr 2018 17:02:37 +0800
+Message-ID: <20180413090242.4211-1-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="Bg2esWel0ueIH/G/"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1522206543.18424.23.camel@mtkswgap22>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: matthias.bgg@gmail.com, linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: broonie@kernel.org
+Cc: alsa-devel@alsa-project.org, wsd_upstream@mediatek.com, chipeng.chang@mediatek.com, garlic.tseng@mediatek.com, linux-mediatek@lists.infradead.org, kaichieh.chuang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
+This patch adds basic support for Mediatek AFE for MT6797 SoC.
 
---Bg2esWel0ueIH/G/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+KaiChieh Chuang (5):
+  ASoC: add mt6351 codec driver
+  ASoC: mt6797: add structure define and clock control function for 6797
+  ASoC: mt6797: add mt6797 platform driver
+  ASoC: add mt6797-mt6351 driver and config option
+  ASoC: mediatek: add documents for mt6797
 
-On Wed, Mar 28, 2018 at 11:09:03AM +0800, Sean Wang wrote:
-> On Wed, 2018-03-28 at 10:14 +0800, Mark Brown wrote:
-> > On Mon, Mar 26, 2018 at 06:04:18PM +0800, sean.wang@mediatek.com wrote:
-> > > From: Sean Wang <sean.wang@mediatek.com>
+ Documentation/devicetree/bindings/sound/mt6351.txt |   16 +
+ .../devicetree/bindings/sound/mt6797-afe-pcm.txt   |   42 +
+ .../devicetree/bindings/sound/mt6797-mt6351.txt    |   14 +
+ sound/soc/codecs/Kconfig                           |    4 +
+ sound/soc/codecs/Makefile                          |    2 +
+ sound/soc/codecs/mt6351.c                          | 1639 ++++++++++++++++++++
+ sound/soc/codecs/mt6351.h                          |  108 ++
+ sound/soc/mediatek/Kconfig                         |   20 +
+ sound/soc/mediatek/Makefile                        |    1 +
+ sound/soc/mediatek/mt6797/Makefile                 |   19 +
+ sound/soc/mediatek/mt6797/mt6797-afe-clk.c         |  132 ++
+ sound/soc/mediatek/mt6797/mt6797-afe-clk.h         |   25 +
+ sound/soc/mediatek/mt6797/mt6797-afe-common.h      |   57 +
+ sound/soc/mediatek/mt6797/mt6797-afe-pcm.c         | 1234 +++++++++++++++
+ sound/soc/mediatek/mt6797/mt6797-interconnection.h |   41 +
+ sound/soc/mediatek/mt6797/mt6797-mt6351.c          |  186 +++
+ sound/soc/mediatek/mt6797/mt6797-reg.h             |  846 ++++++++++
+ 17 files changed, 4386 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/mt6351.txt
+ create mode 100644 Documentation/devicetree/bindings/sound/mt6797-afe-pcm.txt
+ create mode 100644 Documentation/devicetree/bindings/sound/mt6797-mt6351.txt
+ create mode 100644 sound/soc/codecs/mt6351.c
+ create mode 100644 sound/soc/codecs/mt6351.h
+ create mode 100644 sound/soc/mediatek/mt6797/Makefile
+ create mode 100644 sound/soc/mediatek/mt6797/mt6797-afe-clk.c
+ create mode 100644 sound/soc/mediatek/mt6797/mt6797-afe-clk.h
+ create mode 100644 sound/soc/mediatek/mt6797/mt6797-afe-common.h
+ create mode 100644 sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
+ create mode 100644 sound/soc/mediatek/mt6797/mt6797-interconnection.h
+ create mode 100644 sound/soc/mediatek/mt6797/mt6797-mt6351.c
+ create mode 100644 sound/soc/mediatek/mt6797/mt6797-reg.h
 
-> > > MODULE_ALIAS exports information to allow the module to be auto-loade=
-d at
-> > > boot for the drivers registered using legacy platform registration.
-
-> > > However, currently the driver is always used by DT-only platform,
-> > > MODULE_ALIAS is redundant and should be removed properly.
-
-> > There is no meaningful cost to having the alias there, why remove it?
-
-> It's no explicitly improved to the driver, it only takes less bytes
-> in .secion modinfo from 644 bytes to 620 bytes in the observation with
-> objdump.
-
-OK, that's a *very* small saving though especially given the block sizes
-that filesystems tend to use.
-
-> More importantly, it seems the driver should probably refer to another
-> qualified driver at the initial development, but MODULE_ALIAS is
-> forgetting to be removed to meet real usage for the module autoload.=20
-
-I can't parse the above, sorry.
-
-> Even I was curious whether people for the driver know the actual purpose
-> the macro it's for.
-
-> Removing MODULE_ALIAS is just to correct the driver to where it should
-> be.
-
-To me it's the other way around - ideally platform drivers should
-remember to set up the MODULE_ALIAS, just as a joining the dots thing to
-make sure that things that work when the driver is built in work when
-built as a module.
-
---Bg2esWel0ueIH/G/
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlrPhaIACgkQJNaLcl1U
-h9DMHwgAhd0vlEUQgTNCsJBgH2eZIifafg8x1AQmq/ics42nbhuEEHZ3M0F1uhsc
-2LX8cjgZhy5umaTVgXQxxRwgVWXdIq1SnGqWmxEpLkym9cOwNrMxEFMk7qJIARFB
-5Pmb04alsMWu16lYGv6KSPpVRIiFV6V+UlTm1BBX/huP4rlOYVEv3WaoXWRMB8vG
-1kltkzZh7AEzyp0l5BUvZD3vFl9M5PMnj/MEb1FCoTjOOg6DK5y87mO2bsAvYhol
-LNjIn7Z3szdcVWT8zDW0vFwkVe1WwTFerAJsZg4wI8LuliIHpnq/DPMTERQmvuTC
-kNzQvILli2+HDInE/yUy0uFp5qbNCA==
-=S7Iz
------END PGP SIGNATURE-----
-
---Bg2esWel0ueIH/G/--
+-- 
+2.12.5
