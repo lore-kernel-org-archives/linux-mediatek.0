@@ -1,25 +1,27 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH] clk: mediatek: correct the clocks for MT2701 HDMI PHY module
-Date: Mon, 16 Apr 2018 09:34:55 -0700
-Message-ID: <152389649546.51482.15378110712126175925@swboyd.mtv.corp.google.com>
-References: <f3248cc94349000b2587d9c6102d56323acba9e0.1523844642.git.ryder.lee@mediatek.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH] net: mediatek: use of_device_get_match_data()
+Date: Mon, 16 Apr 2018 13:43:33 -0400 (EDT)
+Message-ID: <20180416.134333.1584175683168282946.davem@davemloft.net>
+References: <31f944ab8dfcc1d7b6f03b35657a2a34825b5246.1523347340.git.ryder.lee@mediatek.com>
+        <9bf87205f84062580934168774d690d4cd2bf26b.1523347340.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8BIT
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f3248cc94349000b2587d9c6102d56323acba9e0.1523844642.git.ryder.lee@mediatek.com>
+In-Reply-To: <9bf87205f84062580934168774d690d4cd2bf26b.1523347340.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, chunhui dai <chunhui.dai@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
+To: ryder.lee@mediatek.com
+Cc: sean.wang@mediatek.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Ryder Lee (2018-04-15 19:31:58)
-> The hdmitx_dig_cts clock signal is not a child of clk26m,
-> and the actual output of the PLL block is derived from
-> the tvdpll via a configurable PLL post-divider.
+From: Ryder Lee <ryder.lee@mediatek.com>
+Date: Mon, 16 Apr 2018 10:33:41 +0800
+
+> The usage of of_device_get_match_data() reduce the code size a bit.
 > 
-> It is used as the PLL reference input to the HDMI PHY module.
+> Also, the only way to call mtk_probe() is to match an entry in
+> of_mtk_match[], so match cannot be NULL.
 > 
-> Signed-off-by: Chunhui Dai <chunhui.dai@mediatek.com>
 > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 
-Any sort of Fixes: tag here?
+Applied to net-next.
