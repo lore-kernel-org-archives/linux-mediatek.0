@@ -1,92 +1,73 @@
-From: xiaolei li <xiaolei.li@mediatek.com>
-Subject: Re: [PATCH] mtd: nand: mtk: use of_device_get_match_data()
-Date: Mon, 16 Apr 2018 12:27:37 +0800
-Message-ID: <1523852857.14673.30.camel@mhfsdcap03>
-References: <31f944ab8dfcc1d7b6f03b35657a2a34825b5246.1523347340.git.ryder.lee@mediatek.com>
-         <c3af6d5035e43b53b5cc7ee68f9f1a853ce2a8f9.1523347340.git.ryder.lee@mediatek.com>
+From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 1/4] dt-bindings: mtd: mtk-nand: Update properties
+ description
+Date: Mon, 16 Apr 2018 15:41:01 +0800
+Message-ID: <1523864464-41059-2-git-send-email-xiaolei.li@mediatek.com>
+References: <1523864464-41059-1-git-send-email-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <c3af6d5035e43b53b5cc7ee68f9f1a853ce2a8f9.1523347340.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Boris Brezillon <boris.brezillon@free-electrons.com>, linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1523864464-41059-1-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-04-16 at 10:33 +0800, Ryder Lee wrote:
-> The usage of of_device_get_match_data() reduce the code size a bit.
-> 
-> Also, the only way to call .probe() is to match an entry in
-> .of_match_table[], so of_device_id cannot be NULL.
-> 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> ---
->  drivers/mtd/nand/raw/mtk_ecc.c  |  7 +------
->  drivers/mtd/nand/raw/mtk_nand.c | 10 +---------
->  2 files changed, 2 insertions(+), 15 deletions(-)
-> 
-> diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
-> index 40d86a8..6432bd7 100644
-> --- a/drivers/mtd/nand/raw/mtk_ecc.c
-> +++ b/drivers/mtd/nand/raw/mtk_ecc.c
-> @@ -500,7 +500,6 @@ static int mtk_ecc_probe(struct platform_device *pdev)
->  	struct device *dev = &pdev->dev;
->  	struct mtk_ecc *ecc;
->  	struct resource *res;
-> -	const struct of_device_id *of_ecc_id = NULL;
->  	u32 max_eccdata_size;
->  	int irq, ret;
->  
-> @@ -508,11 +507,7 @@ static int mtk_ecc_probe(struct platform_device *pdev)
->  	if (!ecc)
->  		return -ENOMEM;
->  
-> -	of_ecc_id = of_match_device(mtk_ecc_dt_match, &pdev->dev);
-> -	if (!of_ecc_id)
-> -		return -ENODEV;
-> -
-> -	ecc->caps = of_ecc_id->data;
-> +	ecc->caps = of_device_get_match_data(dev);
->  
-Thanks.
+Update ecc step size, ecc strength, and parity bits supported on
+each MTK NAND controller.
 
-Reviewed-by: Xiaolei Li <xiaolei.li@mediatek.com>
+Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ Documentation/devicetree/bindings/mtd/mtk-nand.txt | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
 
->  	max_eccdata_size = ecc->caps->num_ecc_strength - 1;
->  	max_eccdata_size = ecc->caps->ecc_strength[max_eccdata_size];
-> diff --git a/drivers/mtd/nand/mtk_nand.c b/drivers/mtd/nand/mtk_nand.c
-> index 6977da3..75c845a 100644
-> --- a/drivers/mtd/nand/raw/mtk_nand.c
-> +++ b/drivers/mtd/nand/raw/mtk_nand.c
-> @@ -1434,7 +1434,6 @@ static int mtk_nfc_probe(struct platform_device *pdev)
->  	struct device_node *np = dev->of_node;
->  	struct mtk_nfc *nfc;
->  	struct resource *res;
-> -	const struct of_device_id *of_nfc_id = NULL;
->  	int ret, irq;
->  
->  	nfc = devm_kzalloc(dev, sizeof(*nfc), GFP_KERNEL);
-> @@ -1452,6 +1451,7 @@ static int mtk_nfc_probe(struct platform_device *pdev)
->  	else if (!nfc->ecc)
->  		return -ENODEV;
->  
-> +	nfc->caps = of_device_get_match_data(dev);
->  	nfc->dev = dev;
->  
->  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> @@ -1498,14 +1498,6 @@ static int mtk_nfc_probe(struct platform_device *pdev)
->  		goto clk_disable;
->  	}
->  
-> -	of_nfc_id = of_match_device(mtk_nfc_id_table, &pdev->dev);
-> -	if (!of_nfc_id) {
-> -		ret = -ENODEV;
-> -		goto clk_disable;
-> -	}
-> -
-> -	nfc->caps = of_nfc_id->data;
-> -
->  	platform_set_drvdata(pdev, nfc);
->  
->  	ret = mtk_nfc_nand_chips_init(dev, nfc);
+diff --git a/Documentation/devicetree/bindings/mtd/mtk-nand.txt b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
+index 1c88526..ef786568 100644
+--- a/Documentation/devicetree/bindings/mtd/mtk-nand.txt
++++ b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
+@@ -50,14 +50,19 @@ Optional:
+ - nand-on-flash-bbt:	Store BBT on NAND Flash.
+ - nand-ecc-mode:	the NAND ecc mode (check driver for supported modes)
+ - nand-ecc-step-size:	Number of data bytes covered by a single ECC step.
+-			valid values: 512 and 1024.
++			valid values:
++			512 and 1024 on mt2701 and mt2712.
++			512 only on mt7622.
+ 			1024 is recommended for large page NANDs.
+ - nand-ecc-strength:	Number of bits to correct per ECC step.
+-			The valid values that the controller supports are: 4, 6,
+-			8, 10, 12, 14, 16, 18, 20, 22, 24, 28, 32, 36, 40, 44,
+-			48, 52, 56, 60.
++			The valid values that each controller supports:
++			mt2701: 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 28,
++				32, 36, 40, 44, 48, 52, 56, 60.
++			mt2712: 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 28,
++				32, 36, 40, 44, 48, 52, 56, 60, 68, 72, 80.
++			mt7622: 4, 6, 8, 10, 12, 14, 16.
+ 			The strength should be calculated as follows:
+-			E = (S - F) * 8 / 14
++			E = (S - F) * 8 / B
+ 			S = O / (P / Q)
+ 				E :	nand-ecc-strength.
+ 				S :	spare size per sector.
+@@ -66,6 +71,9 @@ Optional:
+ 				O :	oob size.
+ 				P :	page size.
+ 				Q :	nand-ecc-step-size.
++				B :	parity bits to do 1 bit ECC.
++					Be 14 on mt2701 and mt2712.
++					Be 13 on mt7622.
+ 			If the result does not match any one of the listed
+ 			choices above, please select the smaller valid value from
+ 			the list.
+-- 
+1.9.1
