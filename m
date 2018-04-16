@@ -1,27 +1,24 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH] net: mediatek: use of_device_get_match_data()
-Date: Mon, 16 Apr 2018 13:43:33 -0400 (EDT)
-Message-ID: <20180416.134333.1584175683168282946.davem@davemloft.net>
-References: <31f944ab8dfcc1d7b6f03b35657a2a34825b5246.1523347340.git.ryder.lee@mediatek.com>
-        <9bf87205f84062580934168774d690d4cd2bf26b.1523347340.git.ryder.lee@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH] pinctrl: mediatek: update pinmux defintions for MT7623
+Date: Mon, 16 Apr 2018 16:35:52 -0500
+Message-ID: <20180416213552.wbtv2ljwqpxgogqx@rob-hp-laptop>
+References: <c8748c81711b0d41e83418b6c23d82d8c78c7094.1523845138.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9bf87205f84062580934168774d690d4cd2bf26b.1523347340.git.ryder.lee@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <c8748c81711b0d41e83418b6c23d82d8c78c7094.1523845138.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: ryder.lee@mediatek.com
-Cc: sean.wang@mediatek.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Ryder Lee <ryder.lee@mediatek.com>
-Date: Mon, 16 Apr 2018 10:33:41 +0800
-
-> The usage of of_device_get_match_data() reduce the code size a bit.
-> 
-> Also, the only way to call mtk_probe() is to match an entry in
-> of_mtk_match[], so match cannot be NULL.
+On Mon, Apr 16, 2018 at 10:32:19AM +0800, Ryder Lee wrote:
+> Fulfill the pinmux macros for MT7623
 > 
 > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  include/dt-bindings/pinctrl/mt7623-pinfunc.h | 90 +++++++++++++++++++++++++++-
+>  1 file changed, 87 insertions(+), 3 deletions(-)
 
-Applied to net-next.
+Reviewed-by: Rob Herring <robh@kernel.org>
