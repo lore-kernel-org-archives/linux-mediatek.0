@@ -1,128 +1,58 @@
-From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 3/4] mtd: rawnand: mtk: Replace max_sector_size with sector
- size array
-Date: Mon, 16 Apr 2018 15:41:03 +0800
-Message-ID: <1523864464-41059-4-git-send-email-xiaolei.li@mediatek.com>
-References: <1523864464-41059-1-git-send-email-xiaolei.li@mediatek.com>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: [GIT PULL] Immutable branch between MFD, Input and RTC due for the
+ v4.18 merge window
+Date: Mon, 16 Apr 2018 15:18:09 +0100
+Message-ID: <20180416141809.34l2ofmeljqvyicm@dell>
+References: <1508937364-30054-1-git-send-email-chen.zhong@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1523864464-41059-1-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1508937364-30054-1-git-send-email-chen.zhong@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chen Zhong <chen.zhong@mediatek.com>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Linus Walleij <linus.walleij@linaro.org>, Beomho Seo <beomho.seo@samsung.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Jaechul Lee <jcsing.lee@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Remove max_sector_size from struct mtk_nfc_caps, and use sector size
-array and number of sector size to show sector sizes that controller
-supports.
+Enjoy!
 
-Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/mtd/nand/raw/mtk_nand.c | 32 +++++++++++++++++++++++++++-----
- 1 file changed, 27 insertions(+), 5 deletions(-)
+The following changes since commit 60cc43fc888428bb2f18f08997432d426a243338:
 
-diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index 6977da3..03a4df2 100644
---- a/drivers/mtd/nand/raw/mtk_nand.c
-+++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -106,10 +106,11 @@
- struct mtk_nfc_caps {
- 	const u8 *spare_size;
- 	u8 num_spare_size;
-+	const int *sector_size;
-+	int num_sector_size;
- 	u8 pageformat_spare_shift;
- 	u8 nfi_clk_div;
- 	u8 max_sector;
--	u32 max_sector_size;
- };
- 
- struct mtk_nfc_bad_mark_ctl {
-@@ -178,6 +179,14 @@ struct mtk_nfc {
- 	16, 26, 27, 28
- };
- 
-+static const int sector_size_max_1k[] = {
-+	1024, 512
-+};
-+
-+static const int sector_size_max_512[] = {
-+	512
-+};
-+
- static inline struct mtk_nfc_nand_chip *to_mtk_nand(struct nand_chip *nand)
- {
- 	return container_of(nand, struct mtk_nfc_nand_chip, nand);
-@@ -258,6 +267,16 @@ static inline u8 nfi_readb(struct mtk_nfc *nfc, u32 reg)
- 	return readb_relaxed(nfc->regs + reg);
- }
- 
-+static int mtk_nfc_max_sector_size(struct mtk_nfc *nfc)
-+{
-+	int i, sector_size = 0;
-+
-+	for (i = 0; i < nfc->caps->num_sector_size; i++)
-+		sector_size = max(sector_size, nfc->caps->sector_size[i]);
-+
-+	return sector_size;
-+}
-+
- static void mtk_nfc_hw_reset(struct mtk_nfc *nfc)
- {
- 	struct device *dev = nfc->dev;
-@@ -1207,7 +1226,7 @@ static int mtk_nfc_ecc_init(struct device *dev, struct mtd_info *mtd)
- 		 */
- 		if (nand->ecc.size < 1024) {
- 			if (mtd->writesize > 512 &&
--			    nfc->caps->max_sector_size > 512) {
-+			    mtk_nfc_max_sector_size(nfc) > 512) {
- 				nand->ecc.size = 1024;
- 				nand->ecc.strength <<= 1;
- 			} else {
-@@ -1389,28 +1408,31 @@ static int mtk_nfc_nand_chips_init(struct device *dev, struct mtk_nfc *nfc)
- static const struct mtk_nfc_caps mtk_nfc_caps_mt2701 = {
- 	.spare_size = spare_size_mt2701,
- 	.num_spare_size = 16,
-+	.sector_size = sector_size_max_1k,
-+	.num_sector_size = 2,
- 	.pageformat_spare_shift = 4,
- 	.nfi_clk_div = 1,
- 	.max_sector = 16,
--	.max_sector_size = 1024,
- };
- 
- static const struct mtk_nfc_caps mtk_nfc_caps_mt2712 = {
- 	.spare_size = spare_size_mt2712,
- 	.num_spare_size = 19,
-+	.sector_size = sector_size_max_1k,
-+	.num_sector_size = 2,
- 	.pageformat_spare_shift = 16,
- 	.nfi_clk_div = 2,
- 	.max_sector = 16,
--	.max_sector_size = 1024,
- };
- 
- static const struct mtk_nfc_caps mtk_nfc_caps_mt7622 = {
- 	.spare_size = spare_size_mt7622,
- 	.num_spare_size = 4,
-+	.sector_size = sector_size_max_512,
-+	.num_sector_size = 1,
- 	.pageformat_spare_shift = 4,
- 	.nfi_clk_div = 1,
- 	.max_sector = 8,
--	.max_sector_size = 512,
- };
- 
- static const struct of_device_id mtk_nfc_id_table[] = {
+  Linux 4.17-rc1 (2018-04-15 18:24:20 -0700)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git ib-mfd-input-rtc-v4.18
+
+for you to fetch changes up to 55d1d1547ab5e52269988af5e7c553796ff68e97:
+
+  mfd: mt6397: Add PMIC keys support to MT6397 driver (2018-04-16 15:16:11 +0100)
+
+----------------------------------------------------------------
+Immutable branch between MFD, Input and RTC due for the v4.18 merge window
+
+----------------------------------------------------------------
+Chen Zhong (5):
+      mfd: mt6397: Create irq mappings in mfd core driver
+      dt-bindings: input: Add document bindings for mtk-pmic-keys
+      dt-bindings: mfd: Add bindings for the keys as subnode of PMIC
+      input: Add MediaTek PMIC keys support
+      mfd: mt6397: Add PMIC keys support to MT6397 driver
+
+ .../devicetree/bindings/input/mtk-pmic-keys.txt    |  43 +++
+ Documentation/devicetree/bindings/mfd/mt6397.txt   |   6 +
+ drivers/input/keyboard/Kconfig                     |   9 +
+ drivers/input/keyboard/Makefile                    |   1 +
+ drivers/input/keyboard/mtk-pmic-keys.c             | 339 +++++++++++++++++++++
+ drivers/mfd/mt6397-core.c                          |  26 +-
+ drivers/rtc/rtc-mt6397.c                           |   7 +-
+ 7 files changed, 424 insertions(+), 7 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+ create mode 100644 drivers/input/keyboard/mtk-pmic-keys.c
+
 -- 
-1.9.1
+Lee Jones [李琼斯]
+Linaro Services Technical Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
