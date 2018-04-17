@@ -1,39 +1,49 @@
-From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [ANN] mt76x0 usb driver
-Date: Tue, 17 Apr 2018 00:30:59 +0200
-Message-ID: <CAJ0CqmWQX0+dCyGwf9EYO=+X9mjadDMHq1tUR8oaxH-HyMGUyg@mail.gmail.com>
-References: <20180409141032.GA9247@redhat.com> <alpine.LNX.2.00.1804092042320.8369@T420s>
- <20180410101359.GA4220@redhat.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH] media: rc: mtk-cir: use of_device_get_match_data()
+Date: Tue, 17 Apr 2018 11:58:40 +0800
+Message-ID: <1523937520.12959.2.camel@mtkswgap22>
+References: <31f944ab8dfcc1d7b6f03b35657a2a34825b5246.1523347340.git.ryder.lee@mediatek.com>
+         <39601fe0c5daf9bcdbb3e44390b671a12d508e00.1523347340.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180410101359.GA4220-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, =?UTF-8?Q?Jakub_Kici=C5=84ski?= <moorray3-5tc4TXWwyLM@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <39601fe0c5daf9bcdbb3e44390b671a12d508e00.1523347340.git.ryder.lee@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Apr 10, 2018 at 12:14 PM, Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
-> Hi
->
-> On Mon, Apr 09, 2018 at 08:45:20PM +0200, Hans Ulli Kroll wrote:
->> here are my changes for working 5Ghz band and more USB ID's form my side
->
-> I applied the changes and pushed to github repo.
->
-> Thanks
-> Stanislaw
+On Mon, 2018-04-16 at 10:34 +0800, Ryder Lee wrote:
+> The usage of of_device_get_match_data() reduce the code size a bit.
+> 
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  drivers/media/rc/mtk-cir.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/drivers/media/rc/mtk-cir.c b/drivers/media/rc/mtk-cir.c
+> index e88eb64..e42efd9 100644
+> --- a/drivers/media/rc/mtk-cir.c
+> +++ b/drivers/media/rc/mtk-cir.c
+> @@ -299,8 +299,6 @@ static int mtk_ir_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+>  	struct device_node *dn = dev->of_node;
+> -	const struct of_device_id *of_id =
+> -		of_match_device(mtk_ir_match, &pdev->dev);
+>  	struct resource *res;
+>  	struct mtk_ir *ir;
+>  	u32 val;
+> @@ -312,7 +310,7 @@ static int mtk_ir_probe(struct platform_device *pdev)
+>  		return -ENOMEM;
+>  
+>  	ir->dev = dev;
+> -	ir->data = of_id->data;
+> +	ir->data = of_device_get_match_data(dev);
+>  
+>  	ir->clk = devm_clk_get(dev, "clk");
+>  	if (IS_ERR(ir->clk)) {
 
-Hi all,
 
-brief update on mt76x2u support in mt76 driver: I added the support
-for tx/rx data channels and I am able to successfully connect to an
-unencrypted AP.
-I extended the usb utility layer that can be used to support mt76x0 in
-mt76 driver. Moreover I reused as mach as I can mt76x2 routines since
-the register map is pretty similar with the one used by mt7612u and
-similar chipsets (for the moment I just exported requested symbols).
-Next steps are add encryption support and improve driver stability.
-
-Regards,
-Lorenzo
+Acked-by: Sean Wang <sean.wang@mediatek.com>
