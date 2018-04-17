@@ -1,69 +1,93 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v4 2/5] arm64: dts: mt2712: add pintcrl device node.
-Date: Tue, 17 Apr 2018 16:31:54 +0200
-Message-ID: <5b132440-d71b-b330-ee82-5e1ea915141b@gmail.com>
-References: <1521687523-1604-1-git-send-email-zhiyong.tao@mediatek.com>
- <1521687523-1604-3-git-send-email-zhiyong.tao@mediatek.com>
+Subject: Re: [PATCH] soc: mediatek: use of_device_get_match_data()
+Date: Tue, 17 Apr 2018 16:37:29 +0200
+Message-ID: <ca67f622-d624-81c1-b8f4-eb5dfe4d5dab@gmail.com>
+References: <31f944ab8dfcc1d7b6f03b35657a2a34825b5246.1523347340.git.ryder.lee@mediatek.com>
+ <b7fffebff04c6b717c568194ac7503144a3302a8.1523347340.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1521687523-1604-3-git-send-email-zhiyong.tao@mediatek.com>
+In-Reply-To: <b7fffebff04c6b717c568194ac7503144a3302a8.1523347340.git.ryder.lee@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Zhiyong Tao <zhiyong.tao@mediatek.com>, robh+dt@kernel.org, linus.walleij@linaro.org, mark.rutland@arm.com
-Cc: srv_heupstream@mediatek.com, liguo.zhang@mediatek.com, yingjoe.chen@mediatek.com, hongkun.cao@mediatek.com, biao.huang@mediatek.com, yt.shen@mediatek.com, hongzhou.yang@mediatek.com, erin.lo@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 03/22/2018 03:58 AM, Zhiyong Tao wrote:
-> This patch adds pintcrl device node for mt2712.
+On 04/16/2018 04:33 AM, Ryder Lee wrote:
+> The usage of of_device_get_match_data() reduce the code size a bit.
 > 
-> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> Also, the only way to call pwrap_probe() is to match an entry in
+> of_pwrap_match_tbl[], so of_id cannot be NULL.
+> 
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 > ---
 
-Applied to v4.17-next/dts64
+Applied to v4.17-next/soc
 
-Thanks!
+Thanks.
 
->  arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
+>  drivers/soc/mediatek/mtk-pmic-wrap.c | 13 +++----------
+>  drivers/soc/mediatek/mtk-scpsys.c    |  4 +---
+>  2 files changed, 4 insertions(+), 13 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> index d7688bc..fb3b051 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> @@ -9,6 +9,7 @@
->  #include <dt-bindings/interrupt-controller/irq.h>
->  #include <dt-bindings/interrupt-controller/arm-gic.h>
->  #include <dt-bindings/power/mt2712-power.h>
-> +#include "mt2712-pinfunc.h"
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> index e9e054a..2afae64 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -1458,19 +1458,12 @@ static int pwrap_probe(struct platform_device *pdev)
+>  	int ret, irq;
+>  	struct pmic_wrapper *wrp;
+>  	struct device_node *np = pdev->dev.of_node;
+> -	const struct of_device_id *of_id =
+> -		of_match_device(of_pwrap_match_tbl, &pdev->dev);
+>  	const struct of_device_id *of_slave_id = NULL;
+>  	struct resource *res;
 >  
->  / {
->  	compatible = "mediatek,mt2712";
-> @@ -258,6 +259,23 @@
->  		#clock-cells = <1>;
->  	};
+> -	if (!of_id) {
+> -		dev_err(&pdev->dev, "Error: No device match found\n");
+> -		return -ENODEV;
+> -	}
+> +	if (np->child)
+> +		of_slave_id = of_match_node(of_slave_match_tbl, np->child);
 >  
-> +	syscfg_pctl_a: syscfg_pctl_a@10005000 {
-> +		compatible = "mediatek,mt2712-pctl-a-syscfg", "syscon";
-> +		reg = <0 0x10005000 0 0x1000>;
-> +	};
-> +
-> +	pio: pinctrl@10005000 {
-> +		compatible = "mediatek,mt2712-pinctrl";
-> +		reg = <0 0x1000b000 0 0x1000>;
-> +		mediatek,pctl-regmap = <&syscfg_pctl_a>;
-> +		pins-are-numbered;
-> +		gpio-controller;
-> +		#gpio-cells = <2>;
-> +		interrupt-controller;
-> +		#interrupt-cells = <2>;
-> +		interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_HIGH>;
-> +	};
-> +
->  	scpsys: scpsys@10006000 {
->  		compatible = "mediatek,mt2712-scpsys", "syscon";
->  		#power-domain-cells = <1>;
+> -	if (pdev->dev.of_node->child)
+> -		of_slave_id = of_match_node(of_slave_match_tbl,
+> -					    pdev->dev.of_node->child);
+>  	if (!of_slave_id) {
+>  		dev_dbg(&pdev->dev, "slave pmic should be defined in dts\n");
+>  		return -EINVAL;
+> @@ -1482,7 +1475,7 @@ static int pwrap_probe(struct platform_device *pdev)
+>  
+>  	platform_set_drvdata(pdev, wrp);
+>  
+> -	wrp->master = of_id->data;
+> +	wrp->master = of_device_get_match_data(&pdev->dev);
+>  	wrp->slave = of_slave_id->data;
+>  	wrp->dev = &pdev->dev;
+>  
+> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> index 435ce5e..a02a18e 100644
+> --- a/drivers/soc/mediatek/mtk-scpsys.c
+> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> @@ -973,15 +973,13 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+>  
+>  static int scpsys_probe(struct platform_device *pdev)
+>  {
+> -	const struct of_device_id *match;
+>  	const struct scp_subdomain *sd;
+>  	const struct scp_soc_data *soc;
+>  	struct scp *scp;
+>  	struct genpd_onecell_data *pd_data;
+>  	int i, ret;
+>  
+> -	match = of_match_device(of_scpsys_match_tbl, &pdev->dev);
+> -	soc = (const struct scp_soc_data *)match->data;
+> +	soc = of_device_get_match_data(&pdev->dev);
+>  
+>  	scp = init_scp(pdev, soc->domains, soc->num_domains, &soc->regs,
+>  			soc->bus_prot_reg_update);
 > 
