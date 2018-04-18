@@ -1,8 +1,8 @@
 From: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Subject: [PATCH usb v6 3/6] usb: core: use phy_exit during suspend if wake up
- is not supported
-Date: Wed, 18 Apr 2018 21:39:48 +0200
-Message-ID: <20180418193951.17922-4-martin.blumenstingl@googlemail.com>
+Subject: [PATCH usb v6 1/6] usb: core: phy: fix return value of
+ usb_phy_roothub_exit()
+Date: Wed, 18 Apr 2018 21:39:46 +0200
+Message-ID: <20180418193951.17922-2-martin.blumenstingl@googlemail.com>
 References: <20180418193951.17922-1-martin.blumenstingl@googlemail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -19,132 +19,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
-Cc: d-gerlach-l0cyMroinI0@public.gmane.org, eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org, j-keerthy-l0cyMroinI0@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, rogerq-l0cyMroinI0@public.gmane.org
+Cc: d-gerlach-l0cyMroinI0@public.gmane.org, eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org, j-keerthy-l0cyMroinI0@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rishabh Bhatnagar <rishabhb-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, rogerq-l0cyMroinI0@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-If the USB controller can wake up the system (which is the case for
-example with the Mediatek USB3 IP) then we must not call phy_exit during
-suspend to ensure that the USB controller doesn't have to re-enumerate
-the devices during resume.
-However, if the USB controller cannot wake up the system (which is the
-case for example on various TI platforms using a dwc3 controller) then
-we must call phy_exit during suspend. Otherwise the PHY driver keeps the
-clocks enabled, which prevents the system from reaching the lowest power
-levels in the suspend state.
+usb_phy_roothub_exit() should return the error code from the phy_exit()
+call if exiting the PHY failed.
+However, since a wrong variable is used usb_phy_roothub_exit() currently
+always returns 0, even if one of the phy_exit calls returned an error.
+Clang also reports this bug:
+kernel/drivers/usb/core/phy.c:114:8: warning: explicitly assigning value of
+variable of type 'int' to itself [-Wself-assign] error, forbidden
+warning: phy.c:114
 
-Solve this by introducing two new functions in the PHY wrapper which are
-dedicated to the suspend and resume handling.
-If the controller can wake up the system the new usb_phy_roothub_suspend
-function will simply call usb_phy_roothub_power_off. However, if wake up
-is not supported by the controller it will also call
-usb_phy_roothub_exit.
-The also new usb_phy_roothub_resume function takes care of calling
-usb_phy_roothub_init (if the controller can't wake up the system) in
-addition to usb_phy_roothub_power_on.
+Fix this by assigning the error code from phy_exit() to the "ret"
+variable to propagate the error correctly.
 
 Fixes: 07dbff0ddbd86c ("usb: core: add a wrapper for the USB PHYs on the HCD")
-Fixes: 178a0bce05cbc1 ("usb: core: hcd: integrate the PHY wrapper into the HCD core")
-Reported-by: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
-Suggested-by: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
-Suggested-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Signed-off-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Tested-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Reviewed-by: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
+Signed-off-by: Rishabh Bhatnagar <rishabhb-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
 Tested-by: Keerthy <j-keerthy-l0cyMroinI0@public.gmane.org>
 ---
- drivers/usb/core/hcd.c |  8 +++++---
- drivers/usb/core/phy.c | 35 +++++++++++++++++++++++++++++++++++
- drivers/usb/core/phy.h |  5 +++++
- 3 files changed, 45 insertions(+), 3 deletions(-)
+ drivers/usb/core/phy.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/usb/core/hcd.c b/drivers/usb/core/hcd.c
-index 15b0418e3b6a..78bae4ecd68b 100644
---- a/drivers/usb/core/hcd.c
-+++ b/drivers/usb/core/hcd.c
-@@ -2262,7 +2262,8 @@ int hcd_bus_suspend(struct usb_device *rhdev, pm_message_t msg)
- 		hcd->state = HC_STATE_SUSPENDED;
- 
- 		if (!PMSG_IS_AUTO(msg))
--			usb_phy_roothub_power_off(hcd->phy_roothub);
-+			usb_phy_roothub_suspend(hcd->self.sysdev,
-+						hcd->phy_roothub);
- 
- 		/* Did we race with a root-hub wakeup event? */
- 		if (rhdev->do_remote_wakeup) {
-@@ -2302,7 +2303,8 @@ int hcd_bus_resume(struct usb_device *rhdev, pm_message_t msg)
- 	}
- 
- 	if (!PMSG_IS_AUTO(msg)) {
--		status = usb_phy_roothub_power_on(hcd->phy_roothub);
-+		status = usb_phy_roothub_resume(hcd->self.sysdev,
-+						hcd->phy_roothub);
- 		if (status)
- 			return status;
- 	}
-@@ -2344,7 +2346,7 @@ int hcd_bus_resume(struct usb_device *rhdev, pm_message_t msg)
- 		}
- 	} else {
- 		hcd->state = old_state;
--		usb_phy_roothub_power_off(hcd->phy_roothub);
-+		usb_phy_roothub_suspend(hcd->self.sysdev, hcd->phy_roothub);
- 		dev_dbg(&rhdev->dev, "bus %s fail, err %d\n",
- 				"resume", status);
- 		if (status != -ESHUTDOWN)
 diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
-index 44f008cda7a8..a39d9bb26a4f 100644
+index 09b7c43c0ea4..f19aaa3c899c 100644
 --- a/drivers/usb/core/phy.c
 +++ b/drivers/usb/core/phy.c
-@@ -157,3 +157,38 @@ void usb_phy_roothub_power_off(struct usb_phy_roothub *phy_roothub)
- 		phy_power_off(roothub_entry->phy);
- }
- EXPORT_SYMBOL_GPL(usb_phy_roothub_power_off);
-+
-+int usb_phy_roothub_suspend(struct device *controller_dev,
-+			    struct usb_phy_roothub *phy_roothub)
-+{
-+	usb_phy_roothub_power_off(phy_roothub);
-+
-+	/* keep the PHYs initialized so the device can wake up the system */
-+	if (device_may_wakeup(controller_dev))
-+		return 0;
-+
-+	return usb_phy_roothub_exit(phy_roothub);
-+}
-+EXPORT_SYMBOL_GPL(usb_phy_roothub_suspend);
-+
-+int usb_phy_roothub_resume(struct device *controller_dev,
-+			   struct usb_phy_roothub *phy_roothub)
-+{
-+	int err;
-+
-+	/* if the device can't wake up the system _exit was called */
-+	if (!device_may_wakeup(controller_dev)) {
-+		err = usb_phy_roothub_init(phy_roothub);
-+		if (err)
-+			return err;
-+	}
-+
-+	err = usb_phy_roothub_power_on(phy_roothub);
-+
-+	/* undo _init if _power_on failed */
-+	if (err && !device_may_wakeup(controller_dev))
-+		usb_phy_roothub_exit(phy_roothub);
-+
-+	return err;
-+}
-+EXPORT_SYMBOL_GPL(usb_phy_roothub_resume);
-diff --git a/drivers/usb/core/phy.h b/drivers/usb/core/phy.h
-index eb31253201ad..605555901d44 100644
---- a/drivers/usb/core/phy.h
-+++ b/drivers/usb/core/phy.h
-@@ -7,3 +7,8 @@ int usb_phy_roothub_exit(struct usb_phy_roothub *phy_roothub);
+@@ -111,7 +111,7 @@ int usb_phy_roothub_exit(struct usb_phy_roothub *phy_roothub)
+ 	list_for_each_entry(roothub_entry, head, list) {
+ 		err = phy_exit(roothub_entry->phy);
+ 		if (err)
+-			ret = ret;
++			ret = err;
+ 	}
  
- int usb_phy_roothub_power_on(struct usb_phy_roothub *phy_roothub);
- void usb_phy_roothub_power_off(struct usb_phy_roothub *phy_roothub);
-+
-+int usb_phy_roothub_suspend(struct device *controller_dev,
-+			    struct usb_phy_roothub *phy_roothub);
-+int usb_phy_roothub_resume(struct device *controller_dev,
-+			   struct usb_phy_roothub *phy_roothub);
+ 	return ret;
 -- 
 2.17.0
