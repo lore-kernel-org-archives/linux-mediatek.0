@@ -1,64 +1,48 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v2 0/5] ASoC: mediatek: add support for
-	mt6797 SoC
-Date: Wed, 18 Apr 2018 17:46:58 +0100
-Message-ID: <20180418164658.GI10061@sirena.org.uk>
-References: <20180416003252.4177-1-kaichieh.chuang@mediatek.com>
+From: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+Subject: [PATCH usb v6 5/6] usb: core: phy: add missing forward declaration
+ for "struct device"
+Date: Wed, 18 Apr 2018 21:39:50 +0200
+Message-ID: <20180418193951.17922-6-martin.blumenstingl@googlemail.com>
+References: <20180418193951.17922-1-martin.blumenstingl@googlemail.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============2613757614209424035=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20180416003252.4177-1-kaichieh.chuang@mediatek.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
-Cc: alsa-devel@alsa-project.org, garlic.tseng@mediatek.com, linux-mediatek@lists.infradead.org, chipeng.chang@mediatek.com, wsd_upstream@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180418193951.17922-1-martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
+Cc: d-gerlach-l0cyMroinI0@public.gmane.org, eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org, j-keerthy-l0cyMroinI0@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, rogerq-l0cyMroinI0@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Currently hcd.c is the only consumer of the usb_phy_roothub logic. This
+already includes the required header files so struct device is known.
+However, future consumers might not know about struct device.
+Add a forward declaration for struct device to fix potential future
+consumers which don't include any of the struct device API headers.
 
---===============2613757614209424035==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="cVp8NMj01v+Em8Se"
-Content-Disposition: inline
+Fixes: 07dbff0ddbd86c ("usb: core: add a wrapper for the USB PHYs on the HCD")
+Suggested-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+Signed-off-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+---
+ drivers/usb/core/phy.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-
---cVp8NMj01v+Em8Se
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Mon, Apr 16, 2018 at 08:32:47AM +0800, KaiChieh Chuang wrote:
-> This patch adds basic support for Mediatek AFE for MT6797 SoC.
-
-I commented on a couple of patches, everything else looks good!
-
---cVp8NMj01v+Em8Se
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlrXdoEACgkQJNaLcl1U
-h9DppAf/YmharDPyMRkft8NfK2Y3HhI50QhLNoAnaI43SPmIAWFuk8Ap3Mo0KrUA
-9Y06/No94Z7GUHj4GXosiYYD1iT9YFfyuTQAeqmjQef70GuEv8kZxsfGR8+rY+9u
-hfSpGC3dgg3xkeWDpvunXehU7JXHBgaETrlCf8PbYbgJW3QGN9fRmfjnpb2eIYb5
-hi6uHzr59i1rpcx0/YrBLlPjjHW7VTkIJSTG5BrWFS/YBulyYFRSy81qet97zaQK
-owoysE82daDC/hc2JVcag8jIvRPiVJJaH6ufSVhtts/D26WJ437gXvnHFqR0vs9W
-1jvbe/8zH5Xmhcu9vabEKBmcJeA7fg==
-=wzYt
------END PGP SIGNATURE-----
-
---cVp8NMj01v+Em8Se--
-
---===============2613757614209424035==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============2613757614209424035==--
+diff --git a/drivers/usb/core/phy.h b/drivers/usb/core/phy.h
+index 605555901d44..bbc969383074 100644
+--- a/drivers/usb/core/phy.h
++++ b/drivers/usb/core/phy.h
+@@ -1,3 +1,4 @@
++struct device;
+ struct usb_phy_roothub;
+ 
+ struct usb_phy_roothub *usb_phy_roothub_alloc(struct device *dev);
+-- 
+2.17.0
