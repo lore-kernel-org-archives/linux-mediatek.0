@@ -1,198 +1,145 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v1 3/7] soc: mediatek: reuse read[l,x]_poll_timeout
- helpers
-Date: Wed, 18 Apr 2018 17:06:52 +0200
-Message-ID: <549e6adc-73c1-aa03-93dc-578138729750@gmail.com>
-References: <cover.1522736996.git.sean.wang@mediatek.com>
- <2c0d233c658fa6093a18a54e82a3e51340251bc9.1522736996.git.sean.wang@mediatek.com>
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] drm: Print unadorned pointers
+Date: Wed, 18 Apr 2018 17:52:09 +0200
+Message-ID: <20180418155209.GA1634@kroah.com>
+References: <20180418092450.13798-1-abrodkin@synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2c0d233c658fa6093a18a54e82a3e51340251bc9.1522736996.git.sean.wang@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com, robh+dt@kernel.org, mark.rutland@arm.com, marcel@holtmann.org, johan.hedberg@gmail.com
-Cc: devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Weiyi Lu <weiyi.lu@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20180418092450.13798-1-abrodkin@synopsys.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Alexey Brodkin <Alexey.Brodkin@synopsys.com>
+Cc: amd-gfx@lists.freedesktop.org, Tom Lendacky <thomas.lendacky@amd.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, Russell King <linux@armlinux.org.uk>, Cihangir Akturk <cakturk@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>, Ingo Molnar <mingo@kernel.org>, linux-kernel@vger.kernel.org, Thomas Hellstrom <thellstrom@vmware.com>, Vincent Abriou <vincent.abriou@st.com>, "Jerry (Fangzhi) Zuo" <Jerry.Zuo@amd.com>, Krzysztof Kozlowski <krzk@kernel.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Roger He <Hongbo.He@amd.com>, Dave Airlie <airlied@redhat.com>, Borislav Petkov <bp@suse.de>, Arnd Bergmann <arnd@arndb.de>, "Leo (Sunpeng) Li" <sunpeng.li@amd.com>, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org, linux-rockchip@lists.infradead.
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 04/03/2018 09:15 AM, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Reuse the common helpers read[l,x]_poll_timeout provided by Linux core
-> instead of an open-coded handling. The name of the local variable
-> sram_pdn_ack in scpsys_power_on is renamed to pdn_ack in order to be
-> consistent with the one used in scpsys_power_off.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Ulf Hansson <ulf.hansson@linaro.org>
-> Cc: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
-
-pushed to v4.17-next/soc
-
-Thanks!
-
->  drivers/soc/mediatek/mtk-scpsys.c | 91 ++++++++++-----------------------------
->  1 file changed, 23 insertions(+), 68 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index d762a46..f9b7248 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -13,6 +13,7 @@
->  #include <linux/clk.h>
->  #include <linux/init.h>
->  #include <linux/io.h>
-> +#include <linux/iopoll.h>
->  #include <linux/mfd/syscon.h>
->  #include <linux/of_device.h>
->  #include <linux/platform_device.h>
-> @@ -27,6 +28,9 @@
->  #include <dt-bindings/power/mt7623a-power.h>
->  #include <dt-bindings/power/mt8173-power.h>
->  
-> +#define MTK_POLL_DELAY_US   10
-> +#define MTK_POLL_TIMEOUT    (jiffies_to_usecs(HZ))
-> +
->  #define SPM_VDE_PWR_CON			0x0210
->  #define SPM_MFG_PWR_CON			0x0214
->  #define SPM_VEN_PWR_CON			0x0230
-> @@ -184,12 +188,10 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->  {
->  	struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
->  	struct scp *scp = scpd->scp;
-> -	unsigned long timeout;
-> -	bool expired;
->  	void __iomem *ctl_addr = scp->base + scpd->data->ctl_offs;
-> -	u32 sram_pdn_ack = scpd->data->sram_pdn_ack_bits;
-> +	u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
->  	u32 val;
-> -	int ret;
-> +	int ret, tmp;
->  	int i;
->  
->  	if (scpd->supply) {
-> @@ -215,23 +217,10 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->  	writel(val, ctl_addr);
->  
->  	/* wait until PWR_ACK = 1 */
-> -	timeout = jiffies + HZ;
-> -	expired = false;
-> -	while (1) {
-> -		ret = scpsys_domain_is_on(scpd);
-> -		if (ret > 0)
-> -			break;
-> -
-> -		if (expired) {
-> -			ret = -ETIMEDOUT;
-> -			goto err_pwr_ack;
-> -		}
-> -
-> -		cpu_relax();
-> -
-> -		if (time_after(jiffies, timeout))
-> -			expired = true;
-> -	}
-> +	ret = readx_poll_timeout(scpsys_domain_is_on, scpd, tmp, tmp > 0,
-> +				 MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> +	if (ret < 0)
-> +		goto err_pwr_ack;
->  
->  	val &= ~PWR_CLK_DIS_BIT;
->  	writel(val, ctl_addr);
-> @@ -246,20 +235,10 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->  	writel(val, ctl_addr);
->  
->  	/* wait until SRAM_PDN_ACK all 0 */
-> -	timeout = jiffies + HZ;
-> -	expired = false;
-> -	while (sram_pdn_ack && (readl(ctl_addr) & sram_pdn_ack)) {
-> -
-> -		if (expired) {
-> -			ret = -ETIMEDOUT;
-> -			goto err_pwr_ack;
-> -		}
-> -
-> -		cpu_relax();
-> -
-> -		if (time_after(jiffies, timeout))
-> -			expired = true;
-> -	}
-> +	ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == 0,
-> +				 MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> +	if (ret < 0)
-> +		goto err_pwr_ack;
->  
->  	if (scpd->data->bus_prot_mask) {
->  		ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
-> @@ -289,12 +268,10 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->  {
->  	struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
->  	struct scp *scp = scpd->scp;
-> -	unsigned long timeout;
-> -	bool expired;
->  	void __iomem *ctl_addr = scp->base + scpd->data->ctl_offs;
->  	u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
->  	u32 val;
-> -	int ret;
-> +	int ret, tmp;
->  	int i;
->  
->  	if (scpd->data->bus_prot_mask) {
-> @@ -310,19 +287,10 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->  	writel(val, ctl_addr);
->  
->  	/* wait until SRAM_PDN_ACK all 1 */
-> -	timeout = jiffies + HZ;
-> -	expired = false;
-> -	while (pdn_ack && (readl(ctl_addr) & pdn_ack) != pdn_ack) {
-> -		if (expired) {
-> -			ret = -ETIMEDOUT;
-> -			goto out;
-> -		}
-> -
-> -		cpu_relax();
-> -
-> -		if (time_after(jiffies, timeout))
-> -			expired = true;
-> -	}
-> +	ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == pdn_ack,
-> +				 MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> +	if (ret < 0)
-> +		goto out;
->  
->  	val |= PWR_ISO_BIT;
->  	writel(val, ctl_addr);
-> @@ -340,23 +308,10 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->  	writel(val, ctl_addr);
->  
->  	/* wait until PWR_ACK = 0 */
-> -	timeout = jiffies + HZ;
-> -	expired = false;
-> -	while (1) {
-> -		ret = scpsys_domain_is_on(scpd);
-> -		if (ret == 0)
-> -			break;
-> -
-> -		if (expired) {
-> -			ret = -ETIMEDOUT;
-> -			goto out;
-> -		}
-> -
-> -		cpu_relax();
-> -
-> -		if (time_after(jiffies, timeout))
-> -			expired = true;
-> -	}
-> +	ret = readx_poll_timeout(scpsys_domain_is_on, scpd, tmp, tmp == 0,
-> +				 MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> +	if (ret < 0)
-> +		goto out;
->  
->  	for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++)
->  		clk_disable_unprepare(scpd->clk[i]);
-> 
+T24gV2VkLCBBcHIgMTgsIDIwMTggYXQgMTI6MjQ6NTBQTSArMDMwMCwgQWxleGV5IEJyb2RraW4g
+d3JvdGU6Cj4gQWZ0ZXIgY29tbWl0IGFkNjdiNzQgKCJwcmludGs6IGhhc2ggYWRkcmVzc2VzIHBy
+aW50ZWQgd2l0aCAlcCIpCj4gcG9pbnRlcnMgYXJlIGJlaW5nIGhhc2hlZCB3aGVuIHByaW50ZWQu
+IEhvd2V2ZXIsIHRoaXMgbWFrZXMKPiBkZWJ1ZyBvdXRwdXQgY29tcGxldGVseSB1c2VsZXNzLiBT
+d2l0Y2ggdG8gJXB4IGluIG9yZGVyIHRvIHNlZSB0aGUKPiB1bmFkb3JuZWQga2VybmVsIHBvaW50
+ZXJzLgo+IAo+IFRoaXMgd2FzIGRvbmUgd2l0aCB0aGUgZm9sbG93aW5nIG9uZS1saW5lcjoKPiAg
+ZmluZCBkcml2ZXJzL2dwdS9kcm0gLXR5cGUgZiAtbmFtZSAiKi5jIiAtZXhlYyBzZWQgLXIgLWkg
+Jy9EUk1fREVCVUd8S0VSTl9ERUJVR3xwcl9kZWJ1Zy8gcy8lcFxiLyVweC9nJyB7fSArCj4gCj4g
+U2lnbmVkLW9mZi1ieTogQWxleGV5IEJyb2RraW4gPGFicm9ka2luQHN5bm9wc3lzLmNvbT4KPiBD
+YzogQm9yaXNsYXYgUGV0a292IDxicEBzdXNlLmRlPgo+IENjOiBUb2JpbiBDLiBIYXJkaW5nIDxt
+ZUB0b2Jpbi5jYz4KPiBDYzogQWxleCBEZXVjaGVyIDxhbGV4YW5kZXIuZGV1Y2hlckBhbWQuY29t
+Pgo+IENjOiBBbmRyZXkgR3JvZHpvdnNreSA8YW5kcmV5Lmdyb2R6b3Zza3lAYW1kLmNvbT4KPiBD
+YzogQXJuZCBCZXJnbWFubiA8YXJuZEBhcm5kYi5kZT4KPiBDYzogQmVuamFtaW4gR2FpZ25hcmQg
+PGJlbmphbWluLmdhaWduYXJkQGxpbmFyby5vcmc+Cj4gQ2M6IENoZW4tWXUgVHNhaSA8d2Vuc0Bj
+c2llLm9yZz4KPiBDYzogQ2hyaXN0aWFuIEdtZWluZXIgPGNocmlzdGlhbi5nbWVpbmVyQGdtYWls
+LmNvbT4KPiBDYzogIkNocmlzdGlhbiBLw7ZuaWciIDxjaHJpc3RpYW4ua29lbmlnQGFtZC5jb20+
+Cj4gQ2M6IENpaGFuZ2lyIEFrdHVyayA8Y2FrdHVya0BnbWFpbC5jb20+Cj4gQ2M6IENLIEh1IDxj
+ay5odUBtZWRpYXRlay5jb20+Cj4gQ2M6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJAZmZ3
+bGwuY2g+Cj4gQ2M6IERhdmUgQWlybGllIDxhaXJsaWVkQHJlZGhhdC5jb20+Cj4gQ2M6IERhdmlk
+IEFpcmxpZSA8YWlybGllZEBsaW51eC5pZT4KPiBDYzogIkRhdmlkIChDaHVuTWluZykgWmhvdSIg
+PERhdmlkMS5aaG91QGFtZC5jb20+Cj4gQ2M6IEdlcmQgSG9mZm1hbm4gPGtyYXhlbEByZWRoYXQu
+Y29tPgo+IENjOiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3Jn
+Pgo+IENjOiBHdXN0YXZvIFBhZG92YW4gPGd1c3Rhdm9AcGFkb3Zhbi5vcmc+Cj4gQ2M6IEhhcnJ5
+IFdlbnRsYW5kIDxoYXJyeS53ZW50bGFuZEBhbWQuY29tPgo+IENjOiAiSGVpa28gU3TDvGJuZXIi
+IDxoZWlrb0BzbnRlY2guZGU+Cj4gQ2M6IEluZ28gTW9sbmFyIDxtaW5nb0BrZXJuZWwub3JnPgo+
+IENjOiBKYW5pIE5pa3VsYSA8amFuaS5uaWt1bGFAbGludXguaW50ZWwuY29tPgo+IENjOiAiSmVy
+cnkgKEZhbmd6aGkpIFp1byIgPEplcnJ5Llp1b0BhbWQuY29tPgo+IENjOiBKb29uYXMgTGFodGlu
+ZW4gPGpvb25hcy5sYWh0aW5lbkBsaW51eC5pbnRlbC5jb20+Cj4gQ2M6IEtyenlzenRvZiBLb3ps
+b3dza2kgPGtyemtAa2VybmVsLm9yZz4KPiBDYzogIkxlbyAoU3VucGVuZykgTGkiIDxzdW5wZW5n
+LmxpQGFtZC5jb20+Cj4gQ2M6IEx1Y2FzIFN0YWNoIDxsLnN0YWNoQHBlbmd1dHJvbml4LmRlPgo+
+IENjOiBNYWFydGVuIExhbmtob3JzdCA8bWFhcnRlbi5sYW5raG9yc3RAbGludXguaW50ZWwuY29t
+Pgo+IENjOiBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPgo+IENjOiBN
+YXhpbWUgUmlwYXJkIDxtYXhpbWUucmlwYXJkQGJvb3RsaW4uY29tPgo+IENjOiAiTWljaGVsIETD
+pG56ZXIiIDxtaWNoZWwuZGFlbnplckBhbWQuY29tPgo+IENjOiBPZGVkIEdhYmJheSA8b2RlZC5n
+YWJiYXlAZ21haWwuY29tPgo+IENjOiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4
+LmRlPgo+IENjOiBSb2IgQ2xhcmsgPHJvYmRjbGFya0BnbWFpbC5jb20+Cj4gQ2M6IFJvZHJpZ28g
+Vml2aSA8cm9kcmlnby52aXZpQGludGVsLmNvbT4KPiBDYzogUm9nZXIgSGUgPEhvbmdiby5IZUBh
+bWQuY29tPgo+IENjOiBSb21hbiBMaSA8Um9tYW4uTGlAYW1kLmNvbT4KPiBDYzogUnVzc2VsbCBL
+aW5nIDxsaW51eEBhcm1saW51eC5vcmcudWs+Cj4gQ2M6IFNhbXVlbCBMaSA8U2FtdWVsLkxpQGFt
+ZC5jb20+Cj4gQ2M6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+Cj4gQ2M6IFNlYW4g
+UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+IENjOiBTaGlyaXNoIFMgPHNoaXJpc2guc0Bh
+bWQuY29tPgo+IENjOiBTaW5jbGFpciBZZWggPHN5ZWhAdm13YXJlLmNvbT4KPiBDYzogVGhvbWFz
+IEhlbGxzdHJvbSA8dGhlbGxzdHJvbUB2bXdhcmUuY29tPgo+IENjOiBUb20gTGVuZGFja3kgPHRo
+b21hcy5sZW5kYWNreUBhbWQuY29tPgo+IENjOiBUb255IENoZW5nIDxUb255LkNoZW5nQGFtZC5j
+b20+Cj4gQ2M6IFZpbmNlbnQgQWJyaW91IDx2aW5jZW50LmFicmlvdUBzdC5jb20+Cj4gQ2M6IFZN
+d2FyZSBHcmFwaGljcyA8bGludXgtZ3JhcGhpY3MtbWFpbnRhaW5lckB2bXdhcmUuY29tPgo+IENj
+OiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBDYzogbGludXgtYXJtLW1z
+bUB2Z2VyLmtlcm5lbC5vcmcKPiBDYzogbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZwo+IENj
+OiBsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gQ2M6IGxpbnV4LXJvY2tjaGlw
+QGxpc3RzLmluZnJhZGVhZC5vcmcKPiBDYzogZXRuYXZpdkBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+PiBDYzogZnJlZWRyZW5vQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IENjOiBhbWQtZ2Z4QGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwo+IENjOiBpbnRlbC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4g
+Q2M6IHZpcnR1YWxpemF0aW9uQGxpc3RzLmxpbnV4LWZvdW5kYXRpb24ub3JnCj4gLS0tCj4gIGRy
+aXZlcnMvZ3B1L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9hbWRrZmRfZ3B1dm0uYyAgIHwgMTQgKysr
+LS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVfZGlzcGxheS5jICAgICAg
+ICB8ICA0ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9hbWQvYW1ka2ZkL2tmZF9jaGFyZGV2LmMgICAg
+ICAgICAgIHwgIDQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2FtZC9hbWRrZmQva2ZkX2RiZ2Rldi5j
+ICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGtmZC9rZmRfZGV2
+aWNlLmMgICAgICAgICAgICB8IDEwICsrLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9hbWQvYW1ka2Zk
+L2tmZF9kb29yYmVsbC5jICAgICAgICAgIHwgIDQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2FtZC9h
+bWRrZmQva2ZkX2V2ZW50cy5jICAgICAgICAgICAgfCAgNCArLQo+ICBkcml2ZXJzL2dwdS9kcm0v
+YW1kL2FtZGtmZC9rZmRfa2VybmVsX3F1ZXVlLmMgICAgICB8ICAyICstCj4gIGRyaXZlcnMvZ3B1
+L2RybS9hbWQvYW1ka2ZkL2tmZF9wcm9jZXNzLmMgICAgICAgICAgIHwgIDQgKy0KPiAgZHJpdmVy
+cy9ncHUvZHJtL2FtZC9hbWRrZmQva2ZkX3F1ZXVlLmMgICAgICAgICAgICAgfCAxOCArKysrLS0t
+LS0KPiAgZHJpdmVycy9ncHUvZHJtL2FtZC9kaXNwbGF5L2FtZGdwdV9kbS9hbWRncHVfZG0uYyAg
+fCAxNCArKystLS0tCj4gIC4uLi9hbWQvZGlzcGxheS9hbWRncHVfZG0vYW1kZ3B1X2RtX21zdF90
+eXBlcy5jICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1hZGFfZ2VtLmMg
+ICAgICAgICAgICAgICAgfCAxMiArKystLS0KPiAgZHJpdmVycy9ncHUvZHJtL2RybV9hdG9taWMu
+YyAgICAgICAgICAgICAgICAgICAgICAgfCA0NCArKysrKysrKysrKy0tLS0tLS0tLS0tCj4gIGRy
+aXZlcnMvZ3B1L2RybS9kcm1fYnVmcy5jICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDggKyst
+LQo+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2RwX21zdF90b3BvbG9neS5jICAgICAgICAgICAgICB8
+ICA0ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fbGVhc2UuYyAgICAgICAgICAgICAgICAgICAg
+ICAgIHwgIDYgKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fbG9jay5jICAgICAgICAgICAgICAg
+ICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2RybV9zY2F0dGVyLmMgICAgICAg
+ICAgICAgICAgICAgICAgfCAgNCArLQo+ICBkcml2ZXJzL2dwdS9kcm0vZXRuYXZpdi9ldG5hdml2
+X2Rydi5jICAgICAgICAgICAgICB8ICA2ICstLQo+ICBkcml2ZXJzL2dwdS9kcm0vaTgxMC9pODEw
+X2RtYS5jICAgICAgICAgICAgICAgICAgICB8ICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1
+L2k5MTVfcGVyZi5jICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJt
+L2k5MTUvaW50ZWxfZGlzcGxheS5jICAgICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dw
+dS9kcm0vaTkxNS9pbnRlbF9ndWNfY3QuYyAgICAgICAgICAgICAgICB8ICA0ICstCj4gIGRyaXZl
+cnMvZ3B1L2RybS9pOTE1L2ludGVsX2d1Y19zdWJtaXNzaW9uLmMgICAgICAgIHwgIDIgKy0KPiAg
+ZHJpdmVycy9ncHUvZHJtL2k5MTUvaW50ZWxfdWNfZncuYyAgICAgICAgICAgICAgICAgfCAgMiAr
+LQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYyAgICAgICAgICAgICB8
+ICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9tZ2EvbWdhX3dhcnAuYyAgICAgICAgICAgICAgICAg
+ICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL21zbS9tc21fZHJ2LmMgICAgICAgICAgICAg
+ICAgICAgICAgfCAgNCArLQo+ICBkcml2ZXJzL2dwdS9kcm0vcXhsL3F4bF9jbWQuYyAgICAgICAg
+ICAgICAgICAgICAgICB8ICA0ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9xeGwvcXhsX2ZiLmMgICAg
+ICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3F4bC9xeGxfdHRt
+LmMgICAgICAgICAgICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vcmFkZW9u
+L3JhZGVvbl9kaXNwbGF5LmMgICAgICAgICAgICB8ICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9y
+YWRlb24vcmFkZW9uX2RwX21zdC5jICAgICAgICAgICAgIHwgMTIgKysrLS0tCj4gIGRyaXZlcnMv
+Z3B1L2RybS9yYWRlb24vcmFkZW9uX29iamVjdC5jICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5jICAgICAgfCAgMiArLQo+
+ICBkcml2ZXJzL2dwdS9kcm0vc2F2YWdlL3NhdmFnZV9iY2kuYyAgICAgICAgICAgICAgICB8ICAy
+ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9zdGkvc3RpX2dkcC5jICAgICAgICAgICAgICAgICAgICAg
+IHwgIDQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfbWl4ZXIuYyAgICAgICAgICAgICAg
+ICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNGlfY3J0Yy5jICAgICAg
+ICAgICAgICAgICB8ICA0ICstCj4gIGRyaXZlcnMvZ3B1L2RybS90dG0vdHRtX3BhZ2VfYWxsb2Mu
+YyAgICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3VkbC91ZGxfZmIuYyAg
+ICAgICAgICAgICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vdmlhL3ZpYV9k
+bWEuYyAgICAgICAgICAgICAgICAgICAgICB8ICA0ICstCj4gIGRyaXZlcnMvZ3B1L2RybS92aWEv
+dmlhX2lycS5jICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJt
+L3Ztd2dmeC92bXdnZnhfb3ZlcmxheS5jICAgICAgICAgICAgfCAgMiArLQo+ICA0NSBmaWxlcyBj
+aGFuZ2VkLCAxMjAgaW5zZXJ0aW9ucygrKSwgMTIwIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVfYW1ka2ZkX2dwdXZtLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVfYW1ka2ZkX2dwdXZtLmMKPiBpbmRleCAx
+ZDZlMTQ3OWRhMzguLjMyZTg1ZmU4MzE1MiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+YW1kL2FtZGdwdS9hbWRncHVfYW1ka2ZkX2dwdXZtLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0v
+YW1kL2FtZGdwdS9hbWRncHVfYW1ka2ZkX2dwdXZtLmMKPiBAQCAtNDM4LDcgKzQzOCw3IEBAIHN0
+YXRpYyBpbnQgYWRkX2JvX3RvX3ZtKHN0cnVjdCBhbWRncHVfZGV2aWNlICphZGV2LCBzdHJ1Y3Qg
+a2dkX21lbSAqbWVtLAo+ICAJaWYgKCFib192YV9lbnRyeSkKPiAgCQlyZXR1cm4gLUVOT01FTTsK
+PiAgCj4gLQlwcl9kZWJ1ZygiXHQgYWRkIFZBIDB4JWxseCAtIDB4JWxseCB0byB2bSAlcFxuIiwg
+dmEsCj4gKwlwcl9kZWJ1ZygiXHQgYWRkIFZBIDB4JWxseCAtIDB4JWxseCB0byB2bSAlcHhcbiIs
+IHZhLAo+ICAJCQl2YSArIGJvX3NpemUsIHZtKTsKPiAgCj4gIAkvKiBBZGQgQk8gdG8gVk0gaW50
+ZXJuYWwgZGF0YSBzdHJ1Y3R1cmVzKi8KCjxzbmlwPgoKQXMgb3RoZXJzIGhhdmUgcG9pbnRlZCBv
+dXQsIHBsZWFzZSBkbyBub3QgZG8gdGhpcy4gIFVzZSAlcEsgYXMgbmVlZGVkLgpBbmQgcGVyaGFw
+cyByZXZpc2l0IHNvbWUgb2YgdGhlICJuZWVkIiBmb3IgdGhlc2UgcG9pbnRlcnMgYXQgYWxsIGlu
+IHRoZQpmaXJzdCBwbGFjZS4uLgoKdGhhbmtzLAoKZ3JlZyBrLWgKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
+ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
