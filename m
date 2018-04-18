@@ -1,13 +1,11 @@
 From: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Subject: [PATCH usb v6 2/6] usb: core: split usb_phy_roothub_{init,alloc}
-Date: Wed, 18 Apr 2018 21:39:47 +0200
-Message-ID: <20180418193951.17922-3-martin.blumenstingl@googlemail.com>
-References: <20180418193951.17922-1-martin.blumenstingl@googlemail.com>
+Subject: [PATCH usb v6 0/6] usb/core/phy fixes for v4.17
+Date: Wed, 18 Apr 2018 21:39:45 +0200
+Message-ID: <20180418193951.17922-1-martin.blumenstingl@googlemail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180418193951.17922-1-martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -21,183 +19,118 @@ To: linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsb
 Cc: d-gerlach-l0cyMroinI0@public.gmane.org, eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org, j-keerthy-l0cyMroinI0@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, rogerq-l0cyMroinI0@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Before this patch usb_phy_roothub_init served two purposes (from a
-caller's point of view - like hcd.c):
-- parsing the PHYs and allocating the list entries
-- calling phy_init on each list entry
+This is a follow-up to my previous series "initialize (multiple) PHYs
+for a HCD": [0].
 
-While this worked so far it has one disadvantage: if we need to call
-phy_init for each PHY instance then the existing code cannot be re-used.
-Solve this by splitting off usb_phy_roothub_alloc which only parses the
-PHYs and allocates the list entries.
-usb_phy_roothub_init then gets a struct usb_phy_roothub and only calls
-phy_init on each PHY instance (along with the corresponding cleanup if
-that failed somewhere).
+Roger Quadros reported [1] that it "is breaking low power cases on TI
+SoCs when USB is in host mode". He further explains that "Not doing the
+phy_exit() here [when entering suspend] leaves the clocks enabled on
+our SoC and we're no longer able to reach low power states on system
+suspend."
+Chunfeng Yun from Mediatek noted [2] that we cannot unconditionally call
+phy_exit while entering system suspend, because this would "disconnect
+plugged devices on MTK platforms, due to re-initialize u2 phys when
+resume"
 
-This is a preparation step for adding proper suspend support for some
-hardware that requires phy_exit to be called during suspend and phy_init
-to be called during resume.
+In the discussion (which followed Roger's bug report: [1]) Roger,
+Chunfeng and me came to the conclusion that we can fix suspend on the
+TI SoCs without breaking it on the Mediatek SoCs by extending the
+suspend and resume code in usb/core/phy.c by checking whether the USB
+controller can wake up the system (which is the case for the Mediatek
+MTU3 controller, but now for the dwc3 controller used on the TI SoCs):
+- if the controller can wake up the system (Mediatek MTU3 use-case) we
+  only call usb_phy_roothub_power_off (which calls phy_power_off) when
+  entering system suspend
+- if the controller however cannot wake up the system (dwc3 on TI SoCs)
+  we additionally call usb_phy_roothub_exit (which calls phy_exit) when
+  entering system suspend
+- (we undo the previous steps during system resume)
 
-Signed-off-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Tested-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Reviewed-by: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
-Tested-by: Keerthy <j-keerthy-l0cyMroinI0@public.gmane.org>
----
- drivers/usb/core/hcd.c | 10 +++++---
- drivers/usb/core/phy.c | 53 +++++++++++++++++++++---------------------
- drivers/usb/core/phy.h |  4 +++-
- 3 files changed, 37 insertions(+), 30 deletions(-)
+The goal of this series is to fix the issue reported by Roger without
+breaking suspend/resume on the Mediatek SoCs.
+Since I neither have a TI nor a Mediatek device I am sending this as
+RFC. I have tested it on an Amlogic Meson GXM board (Khadas VIM2) which
+does NOT support suspend/resume yet.
 
-diff --git a/drivers/usb/core/hcd.c b/drivers/usb/core/hcd.c
-index 777036ae6367..15b0418e3b6a 100644
---- a/drivers/usb/core/hcd.c
-+++ b/drivers/usb/core/hcd.c
-@@ -2758,12 +2758,16 @@ int usb_add_hcd(struct usb_hcd *hcd,
- 	}
- 
- 	if (!hcd->skip_phy_initialization && usb_hcd_is_primary_hcd(hcd)) {
--		hcd->phy_roothub = usb_phy_roothub_init(hcd->self.sysdev);
-+		hcd->phy_roothub = usb_phy_roothub_alloc(hcd->self.sysdev);
- 		if (IS_ERR(hcd->phy_roothub)) {
- 			retval = PTR_ERR(hcd->phy_roothub);
--			goto err_phy_roothub_init;
-+			goto err_phy_roothub_alloc;
- 		}
- 
-+		retval = usb_phy_roothub_init(hcd->phy_roothub);
-+		if (retval)
-+			goto err_phy_roothub_alloc;
-+
- 		retval = usb_phy_roothub_power_on(hcd->phy_roothub);
- 		if (retval)
- 			goto err_usb_phy_roothub_power_on;
-@@ -2936,7 +2940,7 @@ int usb_add_hcd(struct usb_hcd *hcd,
- 	usb_phy_roothub_power_off(hcd->phy_roothub);
- err_usb_phy_roothub_power_on:
- 	usb_phy_roothub_exit(hcd->phy_roothub);
--err_phy_roothub_init:
-+err_phy_roothub_alloc:
- 	if (hcd->remove_phy && hcd->usb_phy) {
- 		usb_phy_shutdown(hcd->usb_phy);
- 		usb_put_phy(hcd->usb_phy);
-diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
-index f19aaa3c899c..44f008cda7a8 100644
---- a/drivers/usb/core/phy.c
-+++ b/drivers/usb/core/phy.c
-@@ -19,19 +19,6 @@ struct usb_phy_roothub {
- 	struct list_head	list;
- };
- 
--static struct usb_phy_roothub *usb_phy_roothub_alloc(struct device *dev)
--{
--	struct usb_phy_roothub *roothub_entry;
--
--	roothub_entry = devm_kzalloc(dev, sizeof(*roothub_entry), GFP_KERNEL);
--	if (!roothub_entry)
--		return ERR_PTR(-ENOMEM);
--
--	INIT_LIST_HEAD(&roothub_entry->list);
--
--	return roothub_entry;
--}
--
- static int usb_phy_roothub_add_phy(struct device *dev, int index,
- 				   struct list_head *list)
- {
-@@ -45,9 +32,11 @@ static int usb_phy_roothub_add_phy(struct device *dev, int index,
- 			return PTR_ERR(phy);
- 	}
- 
--	roothub_entry = usb_phy_roothub_alloc(dev);
--	if (IS_ERR(roothub_entry))
--		return PTR_ERR(roothub_entry);
-+	roothub_entry = devm_kzalloc(dev, sizeof(*roothub_entry), GFP_KERNEL);
-+	if (!roothub_entry)
-+		return -ENOMEM;
-+
-+	INIT_LIST_HEAD(&roothub_entry->list);
- 
- 	roothub_entry->phy = phy;
- 
-@@ -56,11 +45,9 @@ static int usb_phy_roothub_add_phy(struct device *dev, int index,
- 	return 0;
- }
- 
--struct usb_phy_roothub *usb_phy_roothub_init(struct device *dev)
-+struct usb_phy_roothub *usb_phy_roothub_alloc(struct device *dev)
- {
- 	struct usb_phy_roothub *phy_roothub;
--	struct usb_phy_roothub *roothub_entry;
--	struct list_head *head;
- 	int i, num_phys, err;
- 
- 	num_phys = of_count_phandle_with_args(dev->of_node, "phys",
-@@ -68,16 +55,31 @@ struct usb_phy_roothub *usb_phy_roothub_init(struct device *dev)
- 	if (num_phys <= 0)
- 		return NULL;
- 
--	phy_roothub = usb_phy_roothub_alloc(dev);
--	if (IS_ERR(phy_roothub))
--		return phy_roothub;
-+	phy_roothub = devm_kzalloc(dev, sizeof(*phy_roothub), GFP_KERNEL);
-+	if (!phy_roothub)
-+		return ERR_PTR(-ENOMEM);
-+
-+	INIT_LIST_HEAD(&phy_roothub->list);
- 
- 	for (i = 0; i < num_phys; i++) {
- 		err = usb_phy_roothub_add_phy(dev, i, &phy_roothub->list);
- 		if (err)
--			goto err_out;
-+			return ERR_PTR(err);
- 	}
- 
-+	return phy_roothub;
-+}
-+EXPORT_SYMBOL_GPL(usb_phy_roothub_alloc);
-+
-+int usb_phy_roothub_init(struct usb_phy_roothub *phy_roothub)
-+{
-+	struct usb_phy_roothub *roothub_entry;
-+	struct list_head *head;
-+	int err;
-+
-+	if (!phy_roothub)
-+		return 0;
-+
- 	head = &phy_roothub->list;
- 
- 	list_for_each_entry(roothub_entry, head, list) {
-@@ -86,14 +88,13 @@ struct usb_phy_roothub *usb_phy_roothub_init(struct device *dev)
- 			goto err_exit_phys;
- 	}
- 
--	return phy_roothub;
-+	return 0;
- 
- err_exit_phys:
- 	list_for_each_entry_continue_reverse(roothub_entry, head, list)
- 		phy_exit(roothub_entry->phy);
- 
--err_out:
--	return ERR_PTR(err);
-+	return err;
- }
- EXPORT_SYMBOL_GPL(usb_phy_roothub_init);
- 
-diff --git a/drivers/usb/core/phy.h b/drivers/usb/core/phy.h
-index 6fde59bfbff8..eb31253201ad 100644
---- a/drivers/usb/core/phy.h
-+++ b/drivers/usb/core/phy.h
-@@ -1,6 +1,8 @@
- struct usb_phy_roothub;
- 
--struct usb_phy_roothub *usb_phy_roothub_init(struct device *dev);
-+struct usb_phy_roothub *usb_phy_roothub_alloc(struct device *dev);
-+
-+int usb_phy_roothub_init(struct usb_phy_roothub *phy_roothub);
- int usb_phy_roothub_exit(struct usb_phy_roothub *phy_roothub);
- 
- int usb_phy_roothub_power_on(struct usb_phy_roothub *phy_roothub);
+Additionally Stefan Wahren reported [7] that booting on a Raspberry Pi
+with CONFIG_GENERIC_PHY being disabled (which is the case for
+bcm2835_defconfig) breaks USB. A fix for this is also included.
+
+
+changes since v5 at [9]
+- rebased on top of v4.17-rc1
+- added Keerthy's Tested-by to the first three patches (thank you!)
+- fixed a checkpatch warning (which was introduced in v4.17-rc1's
+  checkpatch.pl) in patch #6 by using "/* SPDX-License-Identifier"
+  instead of "// SPDX-License-Identifier"
+
+changes since v4 at [8]
+- updated series title since it now includes fixes for other
+  functionality than suspend
+- rebased on top of f8cf2f16a7c95a from Linus' tree -> I will re-send
+  an updated version once v4.17-rc1 is out, I just sent it early to
+  get some feedback early!
+- included patch [3] "usb: core: phy: fix return value of
+  usb_phy_roothub_exit()" in this series
+- fix the logic if CONFIG_GENERIC_PHY is disabled (as reported by
+  Stefan Wahren, new patch #4)
+- two minor coding style fixes as suggested by Masahiro Yamada (new
+  patches #4 and #5)
+
+changes since RFC v3 at [6]:
+- added Chunfeng Yun's Tested-by and Roger Quadros' Reviewed-by (thank
+  you!)
+- dropped RFC prefix
+
+changes since RFC v2 at [5]:
+- add missing INIT_LIST_HEAD call in usb_phy_roothub_add_phy (affects
+  patch #1 - spotted by Roger Quadros, thank you!)
+- fixed swapped conditions using device_may_wakeup() in
+  usb_phy_roothub_resume because we need to call usb_phy_roothub_init
+  if the controller cannot wake up the device (affects patch #2, spotted
+  by Chunfeng Yun, thank you!)
+- simplified the error condition to "undo" usb_phy_roothub_init if
+  usb_phy_roothub_power_on failed in usb_phy_roothub_resume (suggested
+  by Chunfeng Yun)
+- updated the commit message (using Roger's wording) because (quote from
+  Roger "it doesn't prevent the system from entering suspend but just
+  prevents the system from reaching lowest power levels in the suspend
+  state."
+
+Changes since RFC v1 (blob attachments) at [4]:
+- use device_may_wakeup instead of device_can_wakeup as suggested by
+  Roger Quadros
+- use the controller device from hcd->self.controller as suggested by
+  Chunfeng Yun
+- compile time fixes thanks to Roger Quadros
+- if usb_phy_roothub_power_on in usb_phy_roothub_resume failes then
+  we now call usb_phy_roothub_exit to keep the PHYs in the correct
+  state if usb_phy_roothub_resume partially failed
+
+
+[0] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006599.html
+[1] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006737.html
+[2] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006758.html
+[3] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006819.html
+[4] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006794.html
+[5] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006820.html
+[6] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006847.html
+[7] https://www.spinics.net/lists/linux-usb/msg167472.html
+[8] http://lists.infradead.org/pipermail/linux-amlogic/2018-March/006882.html
+[9] http://lists.infradead.org/pipermail/linux-amlogic/2018-April/007009.html
+
+Martin Blumenstingl (6):
+  usb: core: phy: fix return value of usb_phy_roothub_exit()
+  usb: core: split usb_phy_roothub_{init,alloc}
+  usb: core: use phy_exit during suspend if wake up is not supported
+  usb: core: phy: make it a no-op if CONFIG_GENERIC_PHY is disabled
+  usb: core: phy: add missing forward declaration for "struct device"
+  usb: core: phy: add the SPDX-License-Identifier and include guard
+
+ drivers/usb/core/hcd.c | 18 +++++---
+ drivers/usb/core/phy.c | 93 ++++++++++++++++++++++++++++++------------
+ drivers/usb/core/phy.h | 22 +++++++++-
+ 3 files changed, 99 insertions(+), 34 deletions(-)
+
 -- 
 2.17.0
