@@ -1,78 +1,46 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v2 1/5] ASoC: add mt6351 codec driver
-Date: Thu, 19 Apr 2018 15:41:39 +0100
-Message-ID: <20180419144139.GG27188@sirena.org.uk>
-References: <20180416003252.4177-1-kaichieh.chuang@mediatek.com>
- <20180416003252.4177-2-kaichieh.chuang@mediatek.com>
- <20180418164040.GG10061@sirena.org.uk>
- <1524103097.3290.14.camel@mtksdaap41>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v1 2/4] dt-bindings: clock: mediatek: add g3dsys bindings
+Date: Thu, 19 Apr 2018 10:25:41 -0700
+Message-ID: <152415874117.46528.7501317526173019067@swboyd.mtv.corp.google.com>
+References: <cover.1524044917.git.sean.wang@mediatek.com>
+ <4b5d243d33433f83874359794b796d4228574714.1524044917.git.sean.wang@mediatek.com>
+ <152410791532.46528.10083030894445315558@swboyd.mtv.corp.google.com>
+ <1524109802.12959.10.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============5838039384056307137=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1524103097.3290.14.camel@mtksdaap41>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
-Cc: alsa-devel@alsa-project.org, garlic.tseng@mediatek.com, linux-mediatek@lists.infradead.org, chipeng.chang@mediatek.com, wsd_upstream@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1524109802.12959.10.camel@mtkswgap22>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, airlied@linux.ie, mturquette@baylibre.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
---===============5838039384056307137==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="t4apE7yKrX2dGgJC"
-Content-Disposition: inline
-
-
---t4apE7yKrX2dGgJC
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Thu, Apr 19, 2018 at 09:58:17AM +0800, KaiChieh Chuang wrote:
-> On Wed, 2018-04-18 at 17:40 +0100, Mark Brown wrote:
-
-> > > +	priv->regmap = dev_get_regmap(pdev->dev.parent, NULL);
-> > > +	if (IS_ERR(priv->regmap))
-> > > +		return PTR_ERR(priv->regmap);
-
-> > This should be the default behaviour so I'm guessing you don't need the
-> > callback?
-
-> the regmap is obtain from parent dev, i assume i can use
-> snd_soc_component_init_regmap() as alternative for
-> get_regmap().callback?
-
-Yes, though you shouldn't even need to do that - the core should just
-try using the parent regmap if none is provided.
-
---t4apE7yKrX2dGgJC
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlrYqqIACgkQJNaLcl1U
-h9COWwf/X3Glme1dInVh20LNwCsONUv8nFqls3g06hu3FIyuR5SX9/XOq3a5HoZa
-w5LkRmve66WIQPWV3u8lZu7SnquzzJvXHSaxfw6BV5LTJ54obq9Xf7Haig0c+6cq
-//b7olDohoDnHHw0lI1W/jRiE73JOxMaXOOyMsYqFwM3CByy/y8zpHTQ6qXlVjJk
-K46VL8uP6zw3EH3EJyRE0lVS4mL05jVl8vUnu6T9r4oUtxJfMIznozZRFz6EDp4c
-c5llouu1mTYu/1IQprqTXVAE9YzjLKR8jjcrInAGbA5j3N/1lQf24JtIjqf5a/Ce
-mZW/3jRNf7TawAtjSmHW71L//pbT/A==
-=VgQz
------END PGP SIGNATURE-----
-
---t4apE7yKrX2dGgJC--
-
---===============5838039384056307137==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============5838039384056307137==--
+UXVvdGluZyBTZWFuIFdhbmcgKDIwMTgtMDQtMTggMjA6NTA6MDIpCj4gT24gV2VkLCAyMDE4LTA0
+LTE4IGF0IDIwOjE4IC0wNzAwLCBTdGVwaGVuIEJveWQgd3JvdGU6Cj4gPiBRdW90aW5nIHNlYW4u
+d2FuZ0BtZWRpYXRlay5jb20gKDIwMTgtMDQtMTggMDM6MjQ6NTQpCj4gPiA+IEZyb206IFNlYW4g
+V2FuZyA8c2Vhbi53YW5nQG1lZGlhdGVrLmNvbT4KPiA+ID4gCj4gPiA+IEFkZCBiaW5kaW5ncyB0
+byBnM2RzeXMgcHJvdmlkaW5nIG5lY2Vzc2FyeSBjbG9jayBhbmQgcmVzZXQgY29udHJvbCB0bwo+
+ID4gPiBNYWxpLTQ1MC4KPiA+ID4gCj4gPiA+IFNpZ25lZC1vZmYtYnk6IFNlYW4gV2FuZyA8c2Vh
+bi53YW5nQG1lZGlhdGVrLmNvbT4KPiA+ID4gLS0tCj4gPiA+ICAuLi4vYmluZGluZ3MvYXJtL21l
+ZGlhdGVrL21lZGlhdGVrLGczZHN5cy50eHQgICAgICB8IDMwICsrKysrKysrKysrKysrKysrKysr
+KysKPiA+IAo+ID4gV2h5IGlzbid0IHRoaXMgdW5kZXIgYmluZGluZ3MvY2xvY2svID8KPiA+IAo+
+IAo+IFRvbnMgb2YgYmluZGluZ3MgZm9yIGNsb2NrIGNvbnRyb2xsZXIgaGF2ZSBiZWVuIHByZXNl
+bnQgYXQKPiBiaW5kaW5nL2FybS9tZWRpYXRlay4gZzNkc3lzIGp1c3QgaGF2ZSBhIGZvbGxvdy11
+cCB0byB0aGVtLgo+IAo+IEl0J3Mgd29ydGggYW5vdGhlciBwYXRjaCBtb3ZpbmcgdGhlbSBhbGwg
+ZnJvbSBiaW5kaW5ncy9hcm0vbWVkaWF0ZWsvIHRvCj4gYmluZGluZ3MvY2xvY2svbWVkaWF0ZWsu
+Cj4gCj4gd2hhdCdzIHlvdXIgb3BpbmlvbiBmb3IgZWl0aGVyIGRvaW5nIGl0IHByaW9yIHRvIGcz
+ZHN5cyBiaW5kaW5nIGJlaW5nCj4gYWRkZWQgb3IgZG9pbmcgaXQgaW4gdGhlIGZ1dHVyZSA/Cj4g
+CgpEb2luZyBpdCBhdCBhIGxhdGVyIHRpbWUgaXMgZmluZS4gSnVzdCB3b25kZXJpbmcgd2h5IHRo
+ZXkncmUgYWxsIGdldHRpbmcKZHVtcGVkIGludG8gdGhlIGFybS8gZGlyZWN0b3J5LgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
+ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
+ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
