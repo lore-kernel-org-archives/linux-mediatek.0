@@ -1,60 +1,75 @@
-From: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Subject: [PATCH usb v6 6/6] usb: core: phy: add the SPDX-License-Identifier
- and include guard
-Date: Wed, 18 Apr 2018 21:39:51 +0200
-Message-ID: <20180418193951.17922-7-martin.blumenstingl@googlemail.com>
-References: <20180418193951.17922-1-martin.blumenstingl@googlemail.com>
+From: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Subject: Re: [PATCH v2 3/5] ASoC: mt6797: add mt6797 platform
+	driver
+Date: Thu, 19 Apr 2018 09:51:13 +0800
+Message-ID: <1524102673.3290.8.camel@mtksdaap41>
+References: <20180416003252.4177-1-kaichieh.chuang@mediatek.com>
+ <20180416003252.4177-4-kaichieh.chuang@mediatek.com>
+ <20180418164626.GH10061@sirena.org.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180418193951.17922-1-martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
-Cc: d-gerlach-l0cyMroinI0@public.gmane.org, eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org, j-keerthy-l0cyMroinI0@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, rogerq-l0cyMroinI0@public.gmane.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20180418164626.GH10061@sirena.org.uk>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>
+Cc: alsa-devel@alsa-project.org, garlic.tseng@mediatek.com, linux-mediatek@lists.infradead.org, chipeng.chang@mediatek.com, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-This clarifies the license of the code. While here also add an include
-guard to the header file.
+On Wed, 2018-04-18 at 17:46 +0100, Mark Brown wrote:
+Wants to clarify on few comments, others will be updated in next patch.
 
-Fixes: 07dbff0ddbd86c ("usb: core: add a wrapper for the USB PHYs on the HCD")
-Suggested-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Signed-off-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
----
- drivers/usb/core/phy.h | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+> > +		/* turn of mute function */
+> > +		dl_src2_con0 |= (0x03 << 11);
+> 
+> Is there any reason for not implementing this as a mute_stream()
+> callback?  That'll keep the DAI muted during startup and before teardown
+> which will do the most to avoid any noise making it into the output.
 
-diff --git a/drivers/usb/core/phy.h b/drivers/usb/core/phy.h
-index bbc969383074..88a3c037e9df 100644
---- a/drivers/usb/core/phy.h
-+++ b/drivers/usb/core/phy.h
-@@ -1,3 +1,13 @@
-+/* SPDX-License-Identifier: GPL-2.0+ */
-+/*
-+ * USB roothub wrapper
-+ *
-+ * Copyright (C) 2018 Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-+ */
-+
-+#ifndef __USB_CORE_PHY_H_
-+#define __USB_CORE_PHY_H_
-+
- struct device;
- struct usb_phy_roothub;
- 
-@@ -13,3 +23,5 @@ int usb_phy_roothub_suspend(struct device *controller_dev,
- 			    struct usb_phy_roothub *phy_roothub);
- int usb_phy_roothub_resume(struct device *controller_dev,
- 			   struct usb_phy_roothub *phy_roothub);
-+
-+#endif /* __USB_CORE_PHY_H_ */
--- 
-2.17.0
+We used to avoid the pop sound from user space by closing hw path from outside to inside.
+The control here is just to avoid the state is leaved in muted state.
+I'll take a look at the mute_stream() though.
+
+> > +static irqreturn_t mt6797_afe_irq_handler(int irq_id, void *dev)
+> > +{
+> > +	struct mtk_base_afe *afe = dev;
+> > +	struct mtk_base_afe_irq *irq;
+> > +	unsigned int status;
+> > +	unsigned int mcu_en;
+> > +	int ret;
+> > +	int i;
+> > +
+> > +	/* get irq that is sent to MCU */
+> > +	regmap_read(afe->regmap, AFE_IRQ_MCU_EN, &mcu_en);
+> 
+> ...
+> 
+> > +	/* clear irq */
+> > +	regmap_write(afe->regmap,
+> > +		     AFE_IRQ_MCU_CLR,
+> > +		     status & AFE_IRQ_STATUS_BITS);
+> > +
+> > +	return IRQ_HANDLED;
+> > +}
+> 
+> This unconditionally returns IRQ_HANDLED even if we didn't get an
+> interrupt - it's better to return IRQ_NONE unless we actually handled
+> something since that is more robust if something goes wrong, it lets the
+> IRQ core shut up interrupts that get latched on and works with shared
+> interrupts if any future designs do that.
+
+this IRQ num is not shared with other module, it's only for audio.
+We error handle by clearing the all the irq status again, when
+interrupts is sent but status not matched. we consider this handled?
+
+I'm concerned if returing IRQ_NONE, will i no longer be able
+to receive irq from this irq line?
+Thanks
