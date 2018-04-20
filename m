@@ -1,58 +1,45 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH 55/61] usb: mtu3: simplify getting .drvdata
-Date: Fri, 20 Apr 2018 15:46:24 +0800
-Message-ID: <1524210384.25162.1.camel@mhfsdcap03>
-References: <20180419140641.27926-1-wsa+renesas@sang-engineering.com>
-         <20180419140641.27926-56-wsa+renesas@sang-engineering.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH] arm64: defconfig: Enable CONFIG_PINCTRL_MT7622 by default
+Date: Fri, 20 Apr 2018 16:58:05 +0800
+Message-ID: <aac9629afc510681a5dad1a24eb78f5f84f12c23.1524214111.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180419140641.27926-56-wsa+renesas@sang-engineering.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Wolfram Sang <wsa+renesas@sang-engineering.com>
-Cc: linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, kernel-janitors@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: catalin.marinas@arm.com, will.deacon@arm.com
+Cc: matthias.bgg@gmail.com, khilman@baylibre.com, arnd@arndb.de, andy.gross@linaro.org, timur@codeaurora.org, xuwei5@hisilicon.com, horms+renesas@verge.net.au, heiko@sntech.de, ard.biesheuvel@linaro.org, amit.kucheria@linaro.org, robh@kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, stable@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-hi,
+From: Sean Wang <sean.wang@mediatek.com>
 
-On Thu, 2018-04-19 at 16:06 +0200, Wolfram Sang wrote:
-> We should get drvdata from struct device directly. Going via
-> platform_device is an unneeded step back and forth.
-> 
-> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
-> ---
-> 
-> Build tested only. buildbot is happy. Please apply individually.
-> 
->  drivers/usb/mtu3/mtu3_plat.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-> index 628d5ce356ca..46551f6d16fd 100644
-> --- a/drivers/usb/mtu3/mtu3_plat.c
-> +++ b/drivers/usb/mtu3/mtu3_plat.c
-> @@ -447,8 +447,7 @@ static int mtu3_remove(struct platform_device *pdev)
->   */
->  static int __maybe_unused mtu3_suspend(struct device *dev)
->  {
-> -	struct platform_device *pdev = to_platform_device(dev);
-> -	struct ssusb_mtk *ssusb = platform_get_drvdata(pdev);
-> +	struct ssusb_mtk *ssusb = dev_get_drvdata(dev);
->  
->  	dev_dbg(dev, "%s\n", __func__);
->  
-> @@ -466,8 +465,7 @@ static int __maybe_unused mtu3_suspend(struct device *dev)
->  
->  static int __maybe_unused mtu3_resume(struct device *dev)
->  {
-> -	struct platform_device *pdev = to_platform_device(dev);
-> -	struct ssusb_mtk *ssusb = platform_get_drvdata(pdev);
-> +	struct ssusb_mtk *ssusb = dev_get_drvdata(dev);
->  	int ret;
->  
->  	dev_dbg(dev, "%s\n", __func__);
+Recently kernelCI reported the board mt7622-rfb1 has a fail test with
+kernel: ERROR: did not start booting whose details could be seen at [1].
 
-Acked-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+The cause is that UART0 can't output anything when it's missing a proper
+pin setup with current DTS, so the essential driver is always getting
+enabled to fix up the issue.
 
-Thanks
+[1] https://kernelci.org/boot/id/5ad7d62759b51461bfb1f829/
+
+Cc: Kevin Hilman <khilman@baylibre.com>
+Cc: stable@vger.kernel.org
+Fixes: ae457b7679c4 ("arm64: dts: mt7622: add SoC and peripheral related device nodes")
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index ecf6137..fe005df 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -320,6 +320,7 @@ CONFIG_PINCTRL_MAX77620=y
+ CONFIG_PINCTRL_MSM8916=y
+ CONFIG_PINCTRL_MSM8994=y
+ CONFIG_PINCTRL_MSM8996=y
++CONFIG_PINCTRL_MT7622=y
+ CONFIG_PINCTRL_QDF2XXX=y
+ CONFIG_PINCTRL_QCOM_SPMI_PMIC=y
+ CONFIG_GPIO_DWAPB=y
+-- 
+2.7.4
