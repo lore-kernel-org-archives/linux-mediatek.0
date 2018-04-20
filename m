@@ -1,45 +1,59 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH] arm64: defconfig: Enable CONFIG_PINCTRL_MT7622 by default
-Date: Fri, 20 Apr 2018 16:58:05 +0800
-Message-ID: <aac9629afc510681a5dad1a24eb78f5f84f12c23.1524214111.git.sean.wang@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 1/8] drm/mediatek: Use regmap for register access
+Date: Fri, 20 Apr 2018 11:41:22 +0200
+Message-ID: <3fffe06c-f19b-ef26-a19d-771611aae158@gmail.com>
+References: <20171114214114.15793-1-mbrugger@suse.com>
+ <20171114214114.15793-2-mbrugger@suse.com>
+ <1511427282.7685.1.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1511427282.7685.1.camel@pengutronix.de>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: catalin.marinas@arm.com, will.deacon@arm.com
-Cc: matthias.bgg@gmail.com, khilman@baylibre.com, arnd@arndb.de, andy.gross@linaro.org, timur@codeaurora.org, xuwei5@hisilicon.com, horms+renesas@verge.net.au, heiko@sntech.de, ard.biesheuvel@linaro.org, amit.kucheria@linaro.org, robh@kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, stable@vger.kernel.org
+To: Philipp Zabel <p.zabel@pengutronix.de>, ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org
+Cc: davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, pi-cheng.chen@linaro.org, sean.wang@mediatek.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+Hi Philipp,
 
-Recently kernelCI reported the board mt7622-rfb1 has a fail test with
-kernel: ERROR: did not start booting whose details could be seen at [1].
+On 11/23/2017 09:54 AM, Philipp Zabel wrote:
+> Hi Matthias,
+> 
+> On Tue, 2017-11-14 at 22:41 +0100, Matthias Brugger wrote:
+>> The mmsys memory space is shared between the drm and the
+>> clk driver. Use regmap to access it.
+>>
+>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+>> ---
+>>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c |  4 ++--
+>>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c  | 30 +++++++++++++++++-------------
+>>  drivers/gpu/drm/mediatek/mtk_drm_ddp.h  |  4 ++--
+>>  drivers/gpu/drm/mediatek/mtk_drm_drv.c  | 13 ++++---------
+>>  drivers/gpu/drm/mediatek/mtk_drm_drv.h  |  2 +-
+>>  5 files changed, 26 insertions(+), 27 deletions(-)
+> [...]
+[...]
+>>  	}
+>>  
+>>  	value = mtk_ddp_sel_in(cur, next, &addr);
+>>  	if (value) {
+>> -		reg = readl_relaxed(config_regs + addr) & ~value;
+>> -		writel_relaxed(reg, config_regs + addr);
+>> +		regmap_read(config_regs, addr, &reg);
+>> +		reg &= ~value;
+>> +		regmap_write(config_regs, addr, reg);
+> 
+> 		regmap_update_bits(config_regs, addr, value, 0);
+> 
+> Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+> 
 
-The cause is that UART0 can't output anything when it's missing a proper
-pin setup with current DTS, so the essential driver is always getting
-enabled to fix up the issue.
+Thanks for having a look on that.
 
-[1] https://kernelci.org/boot/id/5ad7d62759b51461bfb1f829/
+I'll update the next version with regmap_update_bits and leave your Reviewed-by,
+hope that's ok.
 
-Cc: Kevin Hilman <khilman@baylibre.com>
-Cc: stable@vger.kernel.org
-Fixes: ae457b7679c4 ("arm64: dts: mt7622: add SoC and peripheral related device nodes")
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index ecf6137..fe005df 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -320,6 +320,7 @@ CONFIG_PINCTRL_MAX77620=y
- CONFIG_PINCTRL_MSM8916=y
- CONFIG_PINCTRL_MSM8994=y
- CONFIG_PINCTRL_MSM8996=y
-+CONFIG_PINCTRL_MT7622=y
- CONFIG_PINCTRL_QDF2XXX=y
- CONFIG_PINCTRL_QCOM_SPMI_PMIC=y
- CONFIG_GPIO_DWAPB=y
--- 
-2.7.4
+Regards,
+Matthias
