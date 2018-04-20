@@ -1,55 +1,110 @@
-From: <honghui.zhang@mediatek.com>
-Subject: [PATCH v6 0/2] PCI: mediatek: Fixups for the IRQ handle routine and MT7622's class code
-Date: Fri, 20 Apr 2018 13:25:08 +0800
-Message-ID: <1524201910-22836-1-git-send-email-honghui.zhang@mediatek.com>
+From: Ji Zhang <ji.zhang@mediatek.com>
+Subject: [PATCH] arm64: avoid potential infinity loop in dump_backtrace
+Date: Fri, 20 Apr 2018 13:38:33 +0800
+Message-ID: <1524202713-31024-1-git-send-email-ji.zhang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: lorenzo.pieralisi@arm.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com
-Cc: honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Pratyush Anand <panand@redhat.com>, Kefeng Wang <wangkefeng.wang@huawei.com>, James Morse <james.morse@arm.com>, Andrew Morton <akpm@linux-foundation.org>, Dustin Brown <dustinb@codeaurora.org>, Prakash Gupta <guptap@codeaurora.org>, Dave Martin <Dave.Martin@arm.com>, Michael Weiser <michael.weiser@gmx.de>, Julien Thierry <julien.thierry@arm.com>, Marc Zyngier <marc.zyngier@arm.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Ji Zhang <ji.zhang@mediatek.com>, shadanji@163.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+When we dump the backtrace of some tasks there is a potential infinity
+loop if the content of the stack changed, no matter the change is
+because the task is running or other unexpected cases.
 
-Two fixups for mediatek's host bridge:
-The first patch fixup class type and vendor ID for MT7622.
-The second patch fixup the IRQ handle routine by using irq_chip solution
-to avoid IRQ reentry which may exist for both MT2712 and MT7622.
+This patch add stronger check on frame pointer and set the max number
+of stack spanning to avoid infinity loop.
 
-Change since v5:
- - Make the comments consistend with the code modification in the first patch.
- - Using writew to performing a 16-bit write.
- - Using irq_chip solution to fix the IRQ issue.
+Signed-off-by: Ji Zhang <ji.zhang@mediatek.com>
+---
+ arch/arm64/include/asm/stacktrace.h | 25 +++++++++++++++++++++++++
+ arch/arm64/kernel/stacktrace.c      |  8 ++++++++
+ arch/arm64/kernel/traps.c           |  1 +
+ 3 files changed, 34 insertions(+)
 
-The v5 patchset could be found in:
- https://patchwork.kernel.org/patch/10133303
- https://patchwork.kernel.org/patch/10133305
-
-Change since v4:
- - Only setup vendor ID for MT7622, igorning the device ID since mediatek's
-   host bridge driver does not cares about the device ID.
-
-Change since v3:
- - Setup the class type and vendor ID at the beginning of startup instead
-   of in a quirk.
- - Add mediatek's vendor ID, it could be found in:
-   https://pcisig.com/membership/member-companies?combine=&page=4
-
-Change since v2:
- - Move the initialize of the iterate before the loop to fix an
-   INTx IRQ issue in the first patch
-
-Change since v1:
- - Add the second patch.
- - Make the first patch's commit message more standard.
-Honghui Zhang (2):
-  PCI: mediatek: Set up vendor ID and class type for MT7622
-  PCI: mediatek: Using chained IRQ to setup IRQ handle
-
- drivers/pci/host/pcie-mediatek.c | 220 +++++++++++++++++++++++----------------
- include/linux/pci_ids.h          |   2 +
- 2 files changed, 133 insertions(+), 89 deletions(-)
-
+diff --git a/arch/arm64/include/asm/stacktrace.h b/arch/arm64/include/asm/stacktrace.h
+index 902f9ed..f235b86 100644
+--- a/arch/arm64/include/asm/stacktrace.h
++++ b/arch/arm64/include/asm/stacktrace.h
+@@ -24,9 +24,18 @@
+ #include <asm/ptrace.h>
+ #include <asm/sdei.h>
+ 
++#ifndef CONFIG_VMAP_STACK
++#define MAX_NR_STACKS	2
++#elif !defined(CONFIG_ARM_SDE_INTERFACE)
++#define MAX_NR_STACKS	3
++#else
++#define MAX_NR_STACKS	4
++#endif
++
+ struct stackframe {
+ 	unsigned long fp;
+ 	unsigned long pc;
++	int nr_stacks;
+ #ifdef CONFIG_FUNCTION_GRAPH_TRACER
+ 	int graph;
+ #endif
+@@ -92,4 +101,20 @@ static inline bool on_accessible_stack(struct task_struct *tsk, unsigned long sp
+ 	return false;
+ }
+ 
++
++static inline bool on_same_stack(struct task_struct *tsk,
++				unsigned long sp1, unsigned long sp2)
++{
++	if (on_task_stack(tsk, sp1) && on_task_stack(tsk, sp2))
++		return true;
++	if (on_irq_stack(sp1) && on_irq_stack(sp2))
++		return true;
++	if (on_overflow_stack(sp1) && on_overflow_stack(sp2))
++		return true;
++	if (on_sdei_stack(sp1) && on_sdei_stack(sp2))
++		return true;
++
++	return false;
++}
++
+ #endif	/* __ASM_STACKTRACE_H */
+diff --git a/arch/arm64/kernel/stacktrace.c b/arch/arm64/kernel/stacktrace.c
+index d5718a0..d75f59d 100644
+--- a/arch/arm64/kernel/stacktrace.c
++++ b/arch/arm64/kernel/stacktrace.c
+@@ -43,6 +43,7 @@
+ int notrace unwind_frame(struct task_struct *tsk, struct stackframe *frame)
+ {
+ 	unsigned long fp = frame->fp;
++	bool same_stack;
+ 
+ 	if (fp & 0xf)
+ 		return -EINVAL;
+@@ -56,6 +57,13 @@ int notrace unwind_frame(struct task_struct *tsk, struct stackframe *frame)
+ 	frame->fp = READ_ONCE_NOCHECK(*(unsigned long *)(fp));
+ 	frame->pc = READ_ONCE_NOCHECK(*(unsigned long *)(fp + 8));
+ 
++	same_stack = on_same_stack(tsk, fp, frame->fp);
++
++	if (fp <= frame->fp && same_stack)
++		return -EINVAL;
++	if (!same_stack && ++frame->nr_stacks > MAX_NR_STACKS)
++		return -EINVAL;
++
+ #ifdef CONFIG_FUNCTION_GRAPH_TRACER
+ 	if (tsk->ret_stack &&
+ 			(frame->pc == (unsigned long)return_to_handler)) {
+diff --git a/arch/arm64/kernel/traps.c b/arch/arm64/kernel/traps.c
+index ba964da..ee0403d 100644
+--- a/arch/arm64/kernel/traps.c
++++ b/arch/arm64/kernel/traps.c
+@@ -121,6 +121,7 @@ void dump_backtrace(struct pt_regs *regs, struct task_struct *tsk)
+ 		frame.fp = thread_saved_fp(tsk);
+ 		frame.pc = thread_saved_pc(tsk);
+ 	}
++	frame.nr_stacks = 1;
+ #ifdef CONFIG_FUNCTION_GRAPH_TRACER
+ 	frame.graph = tsk->curr_ret_stack;
+ #endif
 -- 
-2.6.4
+1.9.1
