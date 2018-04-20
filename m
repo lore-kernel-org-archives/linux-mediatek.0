@@ -1,58 +1,73 @@
-From: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/4] MAINTAINERS: Add entry for Mediatek NAND
- controller driver
-Date: Fri, 20 Apr 2018 22:24:51 +0200
-Message-ID: <20180420222451.20d72560@bbrezillon>
-References: <1523864464-41059-1-git-send-email-xiaolei.li@mediatek.com>
- <1523864464-41059-3-git-send-email-xiaolei.li@mediatek.com>
+From: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Subject: Re: [PATCH v2 1/5] ASoC: add mt6351 codec driver
+Date: Sat, 21 Apr 2018 07:49:24 +0800
+Message-ID: <1524268164.3290.31.camel@mtksdaap41>
+References: <20180416003252.4177-1-kaichieh.chuang@mediatek.com>
+ <20180416003252.4177-2-kaichieh.chuang@mediatek.com>
+ <20180418164040.GG10061@sirena.org.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1523864464-41059-3-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20180418164040.GG10061@sirena.org.uk>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>
+Cc: alsa-devel@alsa-project.org, garlic.tseng@mediatek.com, linux-mediatek@lists.infradead.org, chipeng.chang@mediatek.com, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 16 Apr 2018 15:41:02 +0800
-Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+sorry for replying this early comment now,
+i have to study on tlv first.
 
-> Add entry for Mediatek NAND controller driver and its bindings.
+> > +/* dl pga gain */
+> > +static const char *const dl_pga_gain[] = {
+> > +	"8Db", "7Db", "6Db", "5Db", "4Db",
+> > +	"3Db", "2Db", "1Db", "0Db", "-1Db",
+> > +	"-2Db", "-3Db", "-4Db", "-5Db", "-6Db",
+> > +	"-7Db", "-8Db", "-9Db", "-10Db", "-40Db",
+> > +};
 > 
-> Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  MAINTAINERS | 7 +++++++
->  1 file changed, 7 insertions(+)
+> These gains should be put in TLVs rather than an enum so userspace can
+> handle them (also it should be dB not Db).  You can handle irregular
+> step sizes like these with DECLARE_TLV_DB_SCALE(), there's several
+> examples in the code already.
+
+We declare this enum for user space to operate on enum directly,
+unlike alsa-lib, we use tinyalsa in Android, if declared in tlv,
+the mixer control just become a integer control, which is not
+informative for user space.
+
+> > +static int dl_pga_get(struct snd_kcontrol *kcontrol,
+> > +		      struct snd_ctl_elem_value *ucontrol)
+> > +{
+> > +	struct snd_soc_codec *codec = snd_soc_kcontrol_codec(kcontrol);
+> > +	struct mt6351_priv *priv = snd_soc_codec_get_drvdata(codec);
+> > +
+> > +	ucontrol->value.integer.value[0] = priv->ana_gain[kcontrol->id.device];
+> > +
+> > +	if (ucontrol->value.integer.value[0] == 0x1f)	/* reg idx for -40dB*/
+> > +		ucontrol->value.integer.value[0] = ARRAY_SIZE(dl_pga_gain) - 1;
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index d262f17..429ef09 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -8838,6 +8838,13 @@ L:	linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
->  S:	Maintained
->  F:	drivers/net/wireless/mediatek/mt7601u/
->  
-> +MEDIATEK NAND CONTROLLER DRIVER
-> +M:	Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> +L:	linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> +S:	Maintained
-> +F:	drivers/mtd/nand/raw/mtk_*
-> +F:	Documentation/devicetree/bindings/mtd/mtk-nand.txt
+> Why do this rewriting?
 
-Thanks for doing that.
+A little awkward gain register here,
+the range is  for 8dB ~ -10dB and -40dB, corresponding to reg index 0 ~
+18 and 31.
 
-I'll apply the patch, you can drop it from your v3.
+00000: +8dB.
+00001: +7dB.
+10010: -10dB
+11111: -40dB(Mute).
 
-> +
->  MEDIATEK RANDOM NUMBER GENERATOR SUPPORT
->  M:	Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->  S:	Maintained
+and where 19 ~ 30 is not defined, and shouldn't be set.
+
+i think tlv not yet support this kind of gain control?
+
+Maybe i'll just declare 8dB ~ -10dB for now.
