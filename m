@@ -1,46 +1,132 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v1 2/4] dt-bindings: clock: mediatek: add g3dsys bindings
-Date: Thu, 19 Apr 2018 10:25:41 -0700
-Message-ID: <152415874117.46528.7501317526173019067@swboyd.mtv.corp.google.com>
-References: <cover.1524044917.git.sean.wang@mediatek.com>
- <4b5d243d33433f83874359794b796d4228574714.1524044917.git.sean.wang@mediatek.com>
- <152410791532.46528.10083030894445315558@swboyd.mtv.corp.google.com>
- <1524109802.12959.10.camel@mtkswgap22>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v1 4/7] soc: mediatek: reuse regmap_read_poll_timeout
+ helpers
+Date: Fri, 20 Apr 2018 11:42:54 +0800
+Message-ID: <1524195774.26454.1.camel@mtkswgap22>
+References: <cover.1522736996.git.sean.wang@mediatek.com>
+         <2f84f7695ea3223b8626a8369aa4ae5e0d03fdce.1522736996.git.sean.wang@mediatek.com>
+         <6fd85b96-f076-36c7-8ff4-8e8ed252edb2@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1524109802.12959.10.camel@mtkswgap22>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, airlied@linux.ie, mturquette@baylibre.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <6fd85b96-f076-36c7-8ff4-8e8ed252edb2@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, marcel@holtmann.org, johan.hedberg@gmail.com, devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Weiyi Lu <weiyi.lu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-UXVvdGluZyBTZWFuIFdhbmcgKDIwMTgtMDQtMTggMjA6NTA6MDIpCj4gT24gV2VkLCAyMDE4LTA0
-LTE4IGF0IDIwOjE4IC0wNzAwLCBTdGVwaGVuIEJveWQgd3JvdGU6Cj4gPiBRdW90aW5nIHNlYW4u
-d2FuZ0BtZWRpYXRlay5jb20gKDIwMTgtMDQtMTggMDM6MjQ6NTQpCj4gPiA+IEZyb206IFNlYW4g
-V2FuZyA8c2Vhbi53YW5nQG1lZGlhdGVrLmNvbT4KPiA+ID4gCj4gPiA+IEFkZCBiaW5kaW5ncyB0
-byBnM2RzeXMgcHJvdmlkaW5nIG5lY2Vzc2FyeSBjbG9jayBhbmQgcmVzZXQgY29udHJvbCB0bwo+
-ID4gPiBNYWxpLTQ1MC4KPiA+ID4gCj4gPiA+IFNpZ25lZC1vZmYtYnk6IFNlYW4gV2FuZyA8c2Vh
-bi53YW5nQG1lZGlhdGVrLmNvbT4KPiA+ID4gLS0tCj4gPiA+ICAuLi4vYmluZGluZ3MvYXJtL21l
-ZGlhdGVrL21lZGlhdGVrLGczZHN5cy50eHQgICAgICB8IDMwICsrKysrKysrKysrKysrKysrKysr
-KysKPiA+IAo+ID4gV2h5IGlzbid0IHRoaXMgdW5kZXIgYmluZGluZ3MvY2xvY2svID8KPiA+IAo+
-IAo+IFRvbnMgb2YgYmluZGluZ3MgZm9yIGNsb2NrIGNvbnRyb2xsZXIgaGF2ZSBiZWVuIHByZXNl
-bnQgYXQKPiBiaW5kaW5nL2FybS9tZWRpYXRlay4gZzNkc3lzIGp1c3QgaGF2ZSBhIGZvbGxvdy11
-cCB0byB0aGVtLgo+IAo+IEl0J3Mgd29ydGggYW5vdGhlciBwYXRjaCBtb3ZpbmcgdGhlbSBhbGwg
-ZnJvbSBiaW5kaW5ncy9hcm0vbWVkaWF0ZWsvIHRvCj4gYmluZGluZ3MvY2xvY2svbWVkaWF0ZWsu
-Cj4gCj4gd2hhdCdzIHlvdXIgb3BpbmlvbiBmb3IgZWl0aGVyIGRvaW5nIGl0IHByaW9yIHRvIGcz
-ZHN5cyBiaW5kaW5nIGJlaW5nCj4gYWRkZWQgb3IgZG9pbmcgaXQgaW4gdGhlIGZ1dHVyZSA/Cj4g
-CgpEb2luZyBpdCBhdCBhIGxhdGVyIHRpbWUgaXMgZmluZS4gSnVzdCB3b25kZXJpbmcgd2h5IHRo
-ZXkncmUgYWxsIGdldHRpbmcKZHVtcGVkIGludG8gdGhlIGFybS8gZGlyZWN0b3J5LgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Thu, 2018-04-19 at 12:23 +0200, Matthias Brugger wrote:
+> 
+> On 04/03/2018 09:15 AM, sean.wang@mediatek.com wrote:
+> > From: Sean Wang <sean.wang@mediatek.com>
+> > 
+> > Reuse the common helpers regmap_read_poll_timeout provided by Linux core
+> > instead of an open-coded handling.
+> > 
+> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> > Cc: Ulf Hansson <ulf.hansson@linaro.org>
+> > Cc: Weiyi Lu <weiyi.lu@mediatek.com>
+> > ---
+> >  drivers/soc/mediatek/mtk-infracfg.c | 45 +++++++++----------------------------
+> >  1 file changed, 10 insertions(+), 35 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
+> > index 8c310de..b849aa5 100644
+> > --- a/drivers/soc/mediatek/mtk-infracfg.c
+> > +++ b/drivers/soc/mediatek/mtk-infracfg.c
+> > @@ -12,6 +12,7 @@
+> >   */
+> >  
+> >  #include <linux/export.h>
+> > +#include <linux/iopoll.h>
+> >  #include <linux/jiffies.h>
+> >  #include <linux/regmap.h>
+> >  #include <linux/soc/mediatek/infracfg.h>
+> > @@ -37,7 +38,6 @@
+> >  int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
+> >  		bool reg_update)
+> >  {
+> > -	unsigned long expired;
+> >  	u32 val;
+> >  	int ret;
+> >  
+> > @@ -47,22 +47,11 @@ int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
+> >  	else
+> >  		regmap_write(infracfg, INFRA_TOPAXI_PROTECTEN_SET, mask);
+> >  
+> > -	expired = jiffies + HZ;
+> > +	ret = regmap_read_poll_timeout(infracfg, INFRA_TOPAXI_PROTECTSTA1,
+> > +				       val, (val & mask) == mask, 10,
+> > +				       jiffies_to_usecs(HZ));
+> 
+> To align with the changes in scpsys, please define MTK_POLL_DELAY_US and
+> MTK_POLL_TIMEOUT. I'm not really fan of passing macros as function arguments.
+> 
+
+Agreed on. will have an improve on it
+
+thanks!
+
+> Other then that, the patch looks good.
+> 
+> Thanks a lot,
+> Matthias
+> 
+> >  
+> > -	while (1) {
+> > -		ret = regmap_read(infracfg, INFRA_TOPAXI_PROTECTSTA1, &val);
+> > -		if (ret)
+> > -			return ret;
+> > -
+> > -		if ((val & mask) == mask)
+> > -			break;
+> > -
+> > -		cpu_relax();
+> > -		if (time_after(jiffies, expired))
+> > -			return -EIO;
+> > -	}
+> > -
+> > -	return 0;
+> > +	return ret;
+> >  }
+> >  
+> >  /**
+> > @@ -80,30 +69,16 @@ int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
+> >  int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
+> >  		bool reg_update)
+> >  {
+> > -	unsigned long expired;
+> >  	int ret;
+> > +	u32 val;
+> >  
+> >  	if (reg_update)
+> >  		regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask, 0);
+> >  	else
+> >  		regmap_write(infracfg, INFRA_TOPAXI_PROTECTEN_CLR, mask);
+> >  
+> > -	expired = jiffies + HZ;
+> > -
+> > -	while (1) {
+> > -		u32 val;
+> > -
+> > -		ret = regmap_read(infracfg, INFRA_TOPAXI_PROTECTSTA1, &val);
+> > -		if (ret)
+> > -			return ret;
+> > -
+> > -		if (!(val & mask))
+> > -			break;
+> > -
+> > -		cpu_relax();
+> > -		if (time_after(jiffies, expired))
+> > -			return -EIO;
+> > -	}
+> > -
+> > -	return 0;
+> > +	ret = regmap_read_poll_timeout(infracfg, INFRA_TOPAXI_PROTECTSTA1,
+> > +				       val, !(val & mask), 10,
+> > +				       jiffies_to_usecs(HZ));
+> > +	return ret;
+> >  }
+> > 
