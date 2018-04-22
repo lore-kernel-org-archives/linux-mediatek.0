@@ -1,97 +1,74 @@
-From: Boris Brezillon <boris.brezillon@bootlin.com>
-Subject: Re: [PATCH] mtd: nand: mtk: use of_device_get_match_data()
-Date: Sun, 22 Apr 2018 19:27:48 +0200
-Message-ID: <20180422192748.42fc6b6f@bbrezillon>
-References: <31f944ab8dfcc1d7b6f03b35657a2a34825b5246.1523347340.git.ryder.lee@mediatek.com>
-        <c3af6d5035e43b53b5cc7ee68f9f1a853ce2a8f9.1523347340.git.ryder.lee@mediatek.com>
+From: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [PATCH v2 2/4] MAINTAINERS: Add entry for Mediatek NAND
+ controller driver
+Date: Sun, 22 Apr 2018 19:28:20 +0200
+Message-ID: <20180422192820.06147c31@bbrezillon>
+References: <1523864464-41059-1-git-send-email-xiaolei.li@mediatek.com>
+ <1523864464-41059-3-git-send-email-xiaolei.li@mediatek.com>
+ <20180420222451.20d72560@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <c3af6d5035e43b53b5cc7ee68f9f1a853ce2a8f9.1523347340.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Boris Brezillon <boris.brezillon@free-electrons.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, Xiaolei Li <xiaolei.li@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180420222451.20d72560@bbrezillon>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 16 Apr 2018 10:33:54 +0800
-Ryder Lee <ryder.lee@mediatek.com> wrote:
+On Fri, 20 Apr 2018 22:24:51 +0200
+Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org> wrote:
 
-> The usage of of_device_get_match_data() reduce the code size a bit.
+> On Mon, 16 Apr 2018 15:41:02 +0800
+> Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 > 
-> Also, the only way to call .probe() is to match an entry in
-> .of_match_table[], so of_device_id cannot be NULL.
+> > Add entry for Mediatek NAND controller driver and its bindings.
+> > 
+> > Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  MAINTAINERS | 7 +++++++
+> >  1 file changed, 7 insertions(+)
+> > 
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index d262f17..429ef09 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -8838,6 +8838,13 @@ L:	linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> >  S:	Maintained
+> >  F:	drivers/net/wireless/mediatek/mt7601u/
+> >  
+> > +MEDIATEK NAND CONTROLLER DRIVER
+> > +M:	Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > +L:	linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> > +S:	Maintained
+> > +F:	drivers/mtd/nand/raw/mtk_*
+> > +F:	Documentation/devicetree/bindings/mtd/mtk-nand.txt  
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> ---
->  drivers/mtd/nand/raw/mtk_ecc.c  |  7 +------
->  drivers/mtd/nand/raw/mtk_nand.c | 10 +---------
+> Thanks for doing that.
+> 
+> I'll apply the patch, you can drop it from your v3.
 
-Applied to nand/next after fixing the subject prefix.
+Applied to nand/next.
 
 Thanks,
 
 Boris
 
->  2 files changed, 2 insertions(+), 15 deletions(-)
 > 
-> diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
-> index 40d86a8..6432bd7 100644
-> --- a/drivers/mtd/nand/raw/mtk_ecc.c
-> +++ b/drivers/mtd/nand/raw/mtk_ecc.c
-> @@ -500,7 +500,6 @@ static int mtk_ecc_probe(struct platform_device *pdev)
->  	struct device *dev = &pdev->dev;
->  	struct mtk_ecc *ecc;
->  	struct resource *res;
-> -	const struct of_device_id *of_ecc_id = NULL;
->  	u32 max_eccdata_size;
->  	int irq, ret;
->  
-> @@ -508,11 +507,7 @@ static int mtk_ecc_probe(struct platform_device *pdev)
->  	if (!ecc)
->  		return -ENOMEM;
->  
-> -	of_ecc_id = of_match_device(mtk_ecc_dt_match, &pdev->dev);
-> -	if (!of_ecc_id)
-> -		return -ENODEV;
-> -
-> -	ecc->caps = of_ecc_id->data;
-> +	ecc->caps = of_device_get_match_data(dev);
->  
->  	max_eccdata_size = ecc->caps->num_ecc_strength - 1;
->  	max_eccdata_size = ecc->caps->ecc_strength[max_eccdata_size];
-> diff --git a/drivers/mtd/nand/mtk_nand.c b/drivers/mtd/nand/mtk_nand.c
-> index 6977da3..75c845a 100644
-> --- a/drivers/mtd/nand/raw/mtk_nand.c
-> +++ b/drivers/mtd/nand/raw/mtk_nand.c
-> @@ -1434,7 +1434,6 @@ static int mtk_nfc_probe(struct platform_device *pdev)
->  	struct device_node *np = dev->of_node;
->  	struct mtk_nfc *nfc;
->  	struct resource *res;
-> -	const struct of_device_id *of_nfc_id = NULL;
->  	int ret, irq;
->  
->  	nfc = devm_kzalloc(dev, sizeof(*nfc), GFP_KERNEL);
-> @@ -1452,6 +1451,7 @@ static int mtk_nfc_probe(struct platform_device *pdev)
->  	else if (!nfc->ecc)
->  		return -ENODEV;
->  
-> +	nfc->caps = of_device_get_match_data(dev);
->  	nfc->dev = dev;
->  
->  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> @@ -1498,14 +1498,6 @@ static int mtk_nfc_probe(struct platform_device *pdev)
->  		goto clk_disable;
->  	}
->  
-> -	of_nfc_id = of_match_device(mtk_nfc_id_table, &pdev->dev);
-> -	if (!of_nfc_id) {
-> -		ret = -ENODEV;
-> -		goto clk_disable;
-> -	}
-> -
-> -	nfc->caps = of_nfc_id->data;
-> -
->  	platform_set_drvdata(pdev, nfc);
->  
->  	ret = mtk_nfc_nand_chips_init(dev, nfc);
+> > +
+> >  MEDIATEK RANDOM NUMBER GENERATOR SUPPORT
+> >  M:	Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >  S:	Maintained  
+> 
+> 
+> ______________________________________________________
+> Linux MTD discussion mailing list
+> http://lists.infradead.org/mailman/listinfo/linux-mtd/
