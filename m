@@ -1,73 +1,51 @@
-From: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
-Subject: Re: [PATCH v2 1/5] ASoC: add mt6351 codec driver
-Date: Sat, 21 Apr 2018 07:49:24 +0800
-Message-ID: <1524268164.3290.31.camel@mtksdaap41>
-References: <20180416003252.4177-1-kaichieh.chuang@mediatek.com>
- <20180416003252.4177-2-kaichieh.chuang@mediatek.com>
- <20180418164040.GG10061@sirena.org.uk>
+From: Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Subject: Re: [PATCH usb v6 6/6] usb: core: phy: add the
+ SPDX-License-Identifier and include guard
+Date: Sun, 22 Apr 2018 15:01:09 +0200
+Message-ID: <20180422130109.GA5781@kroah.com>
+References: <20180418193951.17922-1-martin.blumenstingl@googlemail.com>
+ <20180418193951.17922-7-martin.blumenstingl@googlemail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20180418164040.GG10061@sirena.org.uk>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Mark Brown <broonie@kernel.org>
-Cc: alsa-devel@alsa-project.org, garlic.tseng@mediatek.com, linux-mediatek@lists.infradead.org, chipeng.chang@mediatek.com, wsd_upstream@mediatek.com
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180418193951.17922-7-martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+Cc: d-gerlach-l0cyMroinI0@public.gmane.org, eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org, j-keerthy-l0cyMroinI0@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, rogerq-l0cyMroinI0@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-sorry for replying this early comment now,
-i have to study on tlv first.
-
-> > +/* dl pga gain */
-> > +static const char *const dl_pga_gain[] = {
-> > +	"8Db", "7Db", "6Db", "5Db", "4Db",
-> > +	"3Db", "2Db", "1Db", "0Db", "-1Db",
-> > +	"-2Db", "-3Db", "-4Db", "-5Db", "-6Db",
-> > +	"-7Db", "-8Db", "-9Db", "-10Db", "-40Db",
-> > +};
+On Wed, Apr 18, 2018 at 09:39:51PM +0200, Martin Blumenstingl wrote:
+> This clarifies the license of the code. While here also add an include
+> guard to the header file.
 > 
-> These gains should be put in TLVs rather than an enum so userspace can
-> handle them (also it should be dB not Db).  You can handle irregular
-> step sizes like these with DECLARE_TLV_DB_SCALE(), there's several
-> examples in the code already.
-
-We declare this enum for user space to operate on enum directly,
-unlike alsa-lib, we use tinyalsa in Android, if declared in tlv,
-the mixer control just become a integer control, which is not
-informative for user space.
-
-> > +static int dl_pga_get(struct snd_kcontrol *kcontrol,
-> > +		      struct snd_ctl_elem_value *ucontrol)
-> > +{
-> > +	struct snd_soc_codec *codec = snd_soc_kcontrol_codec(kcontrol);
-> > +	struct mt6351_priv *priv = snd_soc_codec_get_drvdata(codec);
-> > +
-> > +	ucontrol->value.integer.value[0] = priv->ana_gain[kcontrol->id.device];
-> > +
-> > +	if (ucontrol->value.integer.value[0] == 0x1f)	/* reg idx for -40dB*/
-> > +		ucontrol->value.integer.value[0] = ARRAY_SIZE(dl_pga_gain) - 1;
+> Fixes: 07dbff0ddbd86c ("usb: core: add a wrapper for the USB PHYs on the HCD")
+> Suggested-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+> Signed-off-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+> ---
+>  drivers/usb/core/phy.h | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
 > 
-> Why do this rewriting?
+> diff --git a/drivers/usb/core/phy.h b/drivers/usb/core/phy.h
+> index bbc969383074..88a3c037e9df 100644
+> --- a/drivers/usb/core/phy.h
+> +++ b/drivers/usb/core/phy.h
+> @@ -1,3 +1,13 @@
+> +/* SPDX-License-Identifier: GPL-2.0+ */
 
-A little awkward gain register here,
-the range is  for 8dB ~ -10dB and -40dB, corresponding to reg index 0 ~
-18 and 31.
+Do you _really_ mean GPLv2 or anything later?
 
-00000: +8dB.
-00001: +7dB.
-10010: -10dB
-11111: -40dB(Mute).
+I have to ask...
 
-and where 19 ~ 30 is not defined, and shouldn't be set.
+thanks,
 
-i think tlv not yet support this kind of gain control?
-
-Maybe i'll just declare 8dB ~ -10dB for now.
+greg k-h
