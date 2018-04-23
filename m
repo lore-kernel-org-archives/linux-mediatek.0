@@ -1,64 +1,321 @@
-From: Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Subject: Re: [PATCH usb v6 6/6] usb: core: phy: add the
- SPDX-License-Identifier and include guard
-Date: Mon, 23 Apr 2018 09:39:35 +0200
-Message-ID: <20180423073935.GA2484@kroah.com>
-References: <20180418193951.17922-1-martin.blumenstingl@googlemail.com>
- <20180418193951.17922-7-martin.blumenstingl@googlemail.com>
- <20180422130109.GA5781@kroah.com>
- <CAFBinCBv+zwjjjA_HeDY_e=aZwVpktzqM7wszZ-Ejvid+ZBe-A@mail.gmail.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v2 1/2] soc: mediatek: introduce a CAPS flag for scp_domain_data
+Date: Mon, 23 Apr 2018 16:36:21 +0800
+Message-ID: <2e16481e1477dfae0cfb24568d8111da81d92628.1524472331.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAFBinCBv+zwjjjA_HeDY_e=aZwVpktzqM7wszZ-Ejvid+ZBe-A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Cc: d-gerlach-l0cyMroinI0@public.gmane.org, eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org, j-keerthy-l0cyMroinI0@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, rogerq-l0cyMroinI0@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: matthias.bgg@gmail.com, rjw@rjwysocki.net, khilman@baylibre.com
+Cc: ulf.hansson@linaro.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Apr 22, 2018 at 09:41:56PM +0200, Martin Blumenstingl wrote:
-> Hi Greg,
-> 
-> On Sun, Apr 22, 2018 at 3:01 PM, Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org> wrote:
-> > On Wed, Apr 18, 2018 at 09:39:51PM +0200, Martin Blumenstingl wrote:
-> >> This clarifies the license of the code. While here also add an include
-> >> guard to the header file.
-> >>
-> >> Fixes: 07dbff0ddbd86c ("usb: core: add a wrapper for the USB PHYs on the HCD")
-> >> Suggested-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-> >> Signed-off-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-> >> ---
-> >>  drivers/usb/core/phy.h | 12 ++++++++++++
-> >>  1 file changed, 12 insertions(+)
-> >>
-> >> diff --git a/drivers/usb/core/phy.h b/drivers/usb/core/phy.h
-> >> index bbc969383074..88a3c037e9df 100644
-> >> --- a/drivers/usb/core/phy.h
-> >> +++ b/drivers/usb/core/phy.h
-> >> @@ -1,3 +1,13 @@
-> >> +/* SPDX-License-Identifier: GPL-2.0+ */
-> >
-> > Do you _really_ mean GPLv2 or anything later?
-> drivers/usb/core/hcd.c uses the same license identifier
-> that code is much more "valuable" than my few lines which manage a
-> list of PHYs - so I'm fine with "GPLv2 or anything later"
-> 
-> > I have to ask...
-> if you see any problems with this (for example that phy.h couldn't be
-> used from some special module with another license, ...) then please
-> let me know
+From: Sean Wang <sean.wang@mediatek.com>
 
-Nope, that's fine, thanks for the quick response, I'll go apply this
-now.
+Instead of adding more and more fields to scp_domain_data which get
+checked in the code flow, add a caps field used for an indication the
+characteristics for each SCP domain.
 
-greg k-h
+At present, type u8 for the caps field is selected which can satisfy the
+current situation and doesn't take up extra space against type bool
+previously used.
+
+Suggested-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-scpsys.c | 65 ++++++++++++++++++++-------------------
+ 1 file changed, 34 insertions(+), 31 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index f140e71..b1b45e4 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -31,6 +31,9 @@
+ #define MTK_POLL_DELAY_US   10
+ #define MTK_POLL_TIMEOUT    (jiffies_to_usecs(HZ))
+ 
++#define MTK_SCPD_ACTIVE_WAKEUP		BIT(0)
++#define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
++
+ #define SPM_VDE_PWR_CON			0x0210
+ #define SPM_MFG_PWR_CON			0x0214
+ #define SPM_VEN_PWR_CON			0x0230
+@@ -120,7 +123,7 @@ struct scp_domain_data {
+ 	u32 sram_pdn_ack_bits;
+ 	u32 bus_prot_mask;
+ 	enum clk_id clk_id[MAX_CLKS];
+-	bool active_wakeup;
++	u8 caps;
+ };
+ 
+ struct scp;
+@@ -424,7 +427,7 @@ static struct scp *init_scp(struct platform_device *pdev,
+ 		genpd->name = data->name;
+ 		genpd->power_off = scpsys_power_off;
+ 		genpd->power_on = scpsys_power_on;
+-		if (scpd->data->active_wakeup)
++		if (MTK_SCPD_CAPS(scpd, MTK_SCPD_ACTIVE_WAKEUP))
+ 			genpd->flags |= GENPD_FLAG_ACTIVE_WAKEUP;
+ 	}
+ 
+@@ -477,7 +480,7 @@ static const struct scp_domain_data scp_domain_data_mt2701[] = {
+ 		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_CONN_M |
+ 				 MT2701_TOP_AXI_PROT_EN_CONN_S,
+ 		.clk_id = {CLK_NONE},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_DISP] = {
+ 		.name = "disp",
+@@ -486,7 +489,7 @@ static const struct scp_domain_data scp_domain_data_mt2701[] = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.clk_id = {CLK_MM},
+ 		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_MM_M0,
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_MFG] = {
+ 		.name = "mfg",
+@@ -495,7 +498,7 @@ static const struct scp_domain_data scp_domain_data_mt2701[] = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.clk_id = {CLK_MFG},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_VDEC] = {
+ 		.name = "vdec",
+@@ -504,7 +507,7 @@ static const struct scp_domain_data scp_domain_data_mt2701[] = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.clk_id = {CLK_MM},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_ISP] = {
+ 		.name = "isp",
+@@ -513,7 +516,7 @@ static const struct scp_domain_data scp_domain_data_mt2701[] = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+ 		.clk_id = {CLK_MM},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_BDP] = {
+ 		.name = "bdp",
+@@ -521,7 +524,7 @@ static const struct scp_domain_data scp_domain_data_mt2701[] = {
+ 		.ctl_offs = SPM_BDP_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.clk_id = {CLK_NONE},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_ETH] = {
+ 		.name = "eth",
+@@ -530,7 +533,7 @@ static const struct scp_domain_data scp_domain_data_mt2701[] = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = {CLK_ETHIF},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_HIF] = {
+ 		.name = "hif",
+@@ -539,14 +542,14 @@ static const struct scp_domain_data scp_domain_data_mt2701[] = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = {CLK_ETHIF},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_IFR_MSC] = {
+ 		.name = "ifr_msc",
+ 		.sta_mask = PWR_STATUS_IFR_MSC,
+ 		.ctl_offs = SPM_IFR_MSC_PWR_CON,
+ 		.clk_id = {CLK_NONE},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ };
+ 
+@@ -561,7 +564,7 @@ static const struct scp_domain_data scp_domain_data_mt2712[] = {
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.clk_id = {CLK_MM},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_VDEC] = {
+ 		.name = "vdec",
+@@ -570,7 +573,7 @@ static const struct scp_domain_data scp_domain_data_mt2712[] = {
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.clk_id = {CLK_MM, CLK_VDEC},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_VENC] = {
+ 		.name = "venc",
+@@ -579,7 +582,7 @@ static const struct scp_domain_data scp_domain_data_mt2712[] = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = {CLK_MM, CLK_VENC, CLK_JPGDEC},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_ISP] = {
+ 		.name = "isp",
+@@ -588,7 +591,7 @@ static const struct scp_domain_data scp_domain_data_mt2712[] = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+ 		.clk_id = {CLK_MM},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_AUDIO] = {
+ 		.name = "audio",
+@@ -597,7 +600,7 @@ static const struct scp_domain_data scp_domain_data_mt2712[] = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = {CLK_AUDIO},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_USB] = {
+ 		.name = "usb",
+@@ -606,7 +609,7 @@ static const struct scp_domain_data scp_domain_data_mt2712[] = {
+ 		.sram_pdn_bits = GENMASK(10, 8),
+ 		.sram_pdn_ack_bits = GENMASK(14, 12),
+ 		.clk_id = {CLK_NONE},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_USB2] = {
+ 		.name = "usb2",
+@@ -615,7 +618,7 @@ static const struct scp_domain_data scp_domain_data_mt2712[] = {
+ 		.sram_pdn_bits = GENMASK(10, 8),
+ 		.sram_pdn_ack_bits = GENMASK(14, 12),
+ 		.clk_id = {CLK_NONE},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_MFG] = {
+ 		.name = "mfg",
+@@ -625,7 +628,7 @@ static const struct scp_domain_data scp_domain_data_mt2712[] = {
+ 		.sram_pdn_ack_bits = GENMASK(16, 16),
+ 		.clk_id = {CLK_MFG},
+ 		.bus_prot_mask = BIT(14) | BIT(21) | BIT(23),
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_MFG_SC1] = {
+ 		.name = "mfg_sc1",
+@@ -634,7 +637,7 @@ static const struct scp_domain_data scp_domain_data_mt2712[] = {
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(16, 16),
+ 		.clk_id = {CLK_NONE},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_MFG_SC2] = {
+ 		.name = "mfg_sc2",
+@@ -643,7 +646,7 @@ static const struct scp_domain_data scp_domain_data_mt2712[] = {
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(16, 16),
+ 		.clk_id = {CLK_NONE},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_MFG_SC3] = {
+ 		.name = "mfg_sc3",
+@@ -652,7 +655,7 @@ static const struct scp_domain_data scp_domain_data_mt2712[] = {
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(16, 16),
+ 		.clk_id = {CLK_NONE},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ };
+ 
+@@ -752,7 +755,7 @@ static const struct scp_domain_data scp_domain_data_mt7622[] = {
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = {CLK_NONE},
+ 		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_ETHSYS,
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT7622_POWER_DOMAIN_HIF0] = {
+ 		.name = "hif0",
+@@ -762,7 +765,7 @@ static const struct scp_domain_data scp_domain_data_mt7622[] = {
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = {CLK_HIFSEL},
+ 		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_HIF0,
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT7622_POWER_DOMAIN_HIF1] = {
+ 		.name = "hif1",
+@@ -772,7 +775,7 @@ static const struct scp_domain_data scp_domain_data_mt7622[] = {
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = {CLK_HIFSEL},
+ 		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_HIF1,
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT7622_POWER_DOMAIN_WB] = {
+ 		.name = "wb",
+@@ -782,7 +785,7 @@ static const struct scp_domain_data scp_domain_data_mt7622[] = {
+ 		.sram_pdn_ack_bits = 0,
+ 		.clk_id = {CLK_NONE},
+ 		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_WB,
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ };
+ 
+@@ -798,7 +801,7 @@ static const struct scp_domain_data scp_domain_data_mt7623a[] = {
+ 		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_CONN_M |
+ 				 MT2701_TOP_AXI_PROT_EN_CONN_S,
+ 		.clk_id = {CLK_NONE},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT7623A_POWER_DOMAIN_ETH] = {
+ 		.name = "eth",
+@@ -807,7 +810,7 @@ static const struct scp_domain_data scp_domain_data_mt7623a[] = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = {CLK_ETHIF},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT7623A_POWER_DOMAIN_HIF] = {
+ 		.name = "hif",
+@@ -816,14 +819,14 @@ static const struct scp_domain_data scp_domain_data_mt7623a[] = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = {CLK_ETHIF},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT7623A_POWER_DOMAIN_IFR_MSC] = {
+ 		.name = "ifr_msc",
+ 		.sta_mask = PWR_STATUS_IFR_MSC,
+ 		.ctl_offs = SPM_IFR_MSC_PWR_CON,
+ 		.clk_id = {CLK_NONE},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ };
+ 
+@@ -889,7 +892,7 @@ static const struct scp_domain_data scp_domain_data_mt8173[] = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = {CLK_NONE},
+-		.active_wakeup = true,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT8173_POWER_DOMAIN_MFG_ASYNC] = {
+ 		.name = "mfg_async",
+-- 
+2.7.4
