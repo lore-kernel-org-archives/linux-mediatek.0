@@ -1,68 +1,65 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 1/2] regmap: include <linux/ktime.h> from
- include/linux/regmap.h
-Date: Mon, 23 Apr 2018 16:07:10 +0200
-Message-ID: <f4025431-be9a-32f9-06e1-9c6ac185c96a@gmail.com>
-References: <ccea364eeb830b2092987d271c8308b97fe59d8f.1524465345.git.sean.wang@mediatek.com>
- <20180423100318.GA19834@sirena.org.uk>
- <d3e10dc5-55d3-40b8-a8de-d48aaaecf019@gmail.com>
- <20180423115043.GD19834@sirena.org.uk>
+From: matthias.bgg@kernel.org
+Subject: [v2 00/10] arm/arm64: mediatek: Fix mmsys device probing
+Date: Mon, 23 Apr 2018 18:13:49 +0200
+Message-ID: <cover.1524497268.git.mbrugger@suse.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180423115043.GD19834@sirena.org.uk>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: sean.wang@mediatek.com, rjw@rjwysocki.net, khilman@baylibre.com, ulf.hansson@linaro.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org
+Cc: sean.wang@mediatek.com, gregkh@linuxfoundation.org, rdunlap@infradead.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, pi-cheng.chen@linaro.org, davem@davemloft.net, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA256
-
-
-
-On 04/23/2018 01:50 PM, Mark Brown wrote:
-> On Mon, Apr 23, 2018 at 12:11:01PM +0200, Matthias Brugger wrote:
-> 
->> On 04/23/2018 12:03 PM, Mark Brown wrote:
->>> On Mon, Apr 23, 2018 at 02:42:44PM +0800, sean.wang@mediatek.com
->>> wrote:
->>>> From: Sean Wang <sean.wang@mediatek.com>
-> 
->>>> Similar to the readx_poll_timeout() macro calling ktime_* and using 
->>>> ktime_t type, which is declared in <linux/ktime.h>. So, make
-> 
->>> I'm missing patch 2 here - what's the story, are there any
->>> dependencies?
-> 
->> You can find the second patch here: 
->> https://patchwork.kernel.org/patch/10356237/
-> 
-> So it looks like there is a dependency here...?
-> 
-
-Yes, regmap_read_poll_timeout macro uses for example ktime_compare which is
-defined in linux/ktime.h
-
-That's my understanding.
-
-Regards,
-Matthias
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEiUuSfQSYnG8EMsBltDliWyzx00MFAlrd6IYACgkQtDliWyzx
-00MiNQ/5ASP4bK0FTkrulj6hCQbOaDXQcYB6wmrZGeWse4PXhAaehGBjursRlE96
-SjkAa/ZDXjDIhEDHNjO2QONdkDCBiUKp1/Mp8HJeeOTne5yy9V7mFrVxxLCIoqrk
-nlu8I9AY608fjUMiWHtt/nNa91QCjjYUfz/S74FhO0bB4tKBvIQb3zV0HGmqM2s2
-HSxPJhXhlfQIBO5rUcVPsrndfNMDMyCHdxWF7fjN8Gm9aSDIq/j0BvUlxJXm3CmP
-P3AsW1Wdom86IoLJAwCo8dAaPsHos3u7kCK1IWLxDIxl0x9ruHSTKrML01e9o0M9
-VlhqdM8GfoTG4cegRHiBQRVuHNbySpSw15WmuQtvPMKfHRpUThzHFiKawhpLvN5G
-Q/lnNehJvLQ/L7vaiy4kkq4PkppBGutIGobRmG5WU0NwI3sGzrAGev5IBUgkMn5w
-YfMyk/Yxn39aXdOZFSViA1zOYiEfjOnxkDQoxyW/TkyA5NCBG4tAn8Mz8qRH9Z5N
-G8lQ2UiLzxvhe007Ce0PXofkO6TbYoup4YebyOh7RIo13L5xsmmyenQxDb0DqpXH
-g1KDhz+hijenE6/ppEKBSFg8z1NMY+ZWjFWfTV6NB96WrG8Qh+EJ4gODIQCbvYY1
-xEGs3TLuyPuXAz+2pFOK5FEExskrzLnlJ+Mg1wXrJfqs3OWS2EE=
-=fHpR
------END PGP SIGNATURE-----
+RnJvbTogTWF0dGhpYXMgQnJ1Z2dlciA8bWJydWdnZXJAc3VzZS5jb20+CgpDaGFuZ2VzIHNpbmNl
+IHYxOgotIGFkZCBiaW5kaW5nIGRvY3VtZW50YXRpb24KLSBkZHA6IHVzZSByZWdtYXBfdXBkYXRl
+X2JpdHMKLSBkZHA6IGlnbm9yZSBFUFJPQkVfREVGRVIgb24gY2xvY2sgcHJvYmluZwotIG1mZDog
+ZGVsZXRlIG1tc3lzX3ByaXZhdGUKLSBhZGQgUmV2aWV3ZWQtYnkgYW5kIEFja2VkLWJ5IHRhZ3MK
+Ci0tLQoKTU1TWVMgaW4gTWVkaWF0ZWsgU29DcyBoYXMgc29tZSByZWdpc3RlcnMgdG8gY29udHJv
+bCBjbG9jayBnYXRlcyAod2hpY2ggaXMgCnVzZWQgaW4gdGhlIGNsayBkcml2ZXIpIGFuZCBzb21l
+IHJlZ2lzdGVycyB0byBzZXQgdGhlIHJvdXRpbmcgYW5kIGVuYWJsZQp0aGUgZGlmZmVybmV0IGJs
+b2NrcyBvZiB0aGUgZGlzcGxheSBzdWJzeXN0ZW0uCgpVcCB0byBub3cgYm90aCBkcml2ZXJzLCBj
+bG9jayBhbmQgZHJtIGFyZSBwcm9iZWQgd2l0aCB0aGUgc2FtZSBkZXZpY2UgdHJlZQpjb21wYXRp
+YmxlLiBCdXQgb25seSB0aGUgZmlyc3QgZHJpdmVyIGdldCBwcm9iZWQsIHdoaWNoIGluIGVmZmVj
+dCBicmVha3MKZ3JhcGhpY3Mgb24gbXQ4MTczIGFuZCBtdDI3MDEuCgpUaGlzIHBhdGNoIHNldCBp
+bnRyb2R1Y2VzIGEgbmV3IG1mZCBkZXZpY2UsIHdoaWNoIGJpbmRzIGFnYWluc3QgdGhlIG1tc3lz
+CmNvbXBhdGlibGUgYW5kIHRha2VzIGNhcmUgb2YgcHJvYmluZyB0aGUgbmVlZGVkIGRldmljZXMu
+IEl0IHdhcyB0ZXN0ZWQgb24gdGhlCmJhbmFuYXBpLXIyIGFuZCB0aGUgQWNlciBSMTMgQ2hyb21l
+Ym9vay4KCgpNYXR0aGlhcyBCcnVnZ2VyICgxMCk6CiAgZHQtYmluZGluZ3M6IG1lZGlhdGVrOiBt
+bXN5czogQWRkIHN1cHBvcnQgZm9yIG1mZAogIGRybS9tZWRpYXRlazogVXNlIHJlZ21hcCBmb3Ig
+cmVnaXN0ZXIgYWNjZXNzCiAgbWZkOiBtdGstbW1zeXM6IEFkZCBtbXN5cyBkcml2ZXIKICBkcm0v
+bWVkaWF0ZWs6IG10MjcwMTogc3dpdGNoIHRvIG1mZCBwcm9iaW5nLgogIGNsazogbWVkaWF0ZWs6
+IG10MjcwMS1tbTogc3dpdGNoIHRvIG1mZCBkZXZpY2UKICBtZmQ6IG10ay1tbXN5czogQWRkIG10
+ODE3MyBub2RlcwogIGRybS9tZWRpYXRlazogQWRkIG1mZCBzdXBwb3J0IGZvciBtdDgxNzMKICBj
+bGs6IG1lZGlhdGVrOiBtdDgxNzMtbW06IHN3aXRjaCB0byBtZmQgZGV2aWNlCiAgZHJtOiBtZWRp
+YXRlazogT21pdCB3YXJuaW5nIG9uIHByb2JlIGRlZmVycwogIE1BSU5UQUlORVJTOiB1cGRhdGUg
+TWVkaWF0ZWsgU29jIGVudHJ5CgogLi4uL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRlayxt
+bXN5cy50eHQgICAgICAgfCAgMiAtCiAuLi4vYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRp
+YXRlayxkaXNwLnR4dCAgICB8ICAyICstCiAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9tZmQvbWVk
+aWF0ZWssbW1zeXMudHh0ICAgICB8IDI3ICsrKysrKysKIE1BSU5UQUlORVJTICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKwogZHJpdmVycy9jbGsvbWVkaWF0ZWsv
+Y2xrLW10MjcwMS1tbS5jICAgICAgICAgICAgICAgfCAxMCArLS0KIGRyaXZlcnMvY2xrL21lZGlh
+dGVrL2Nsay1tdDgxNzMuYyAgICAgICAgICAgICAgICAgIHwgMTcgKysrLQogZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jICAgICAgICAgICAgfCAgNCArLQogZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMgICAgICAgICAgICAgfCA0MSArKysrLS0tLS0t
+CiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuaCAgICAgICAgICAgICB8ICA0
+ICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyAgICAgICAgICAgICB8
+IDMzICsrKystLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaCAgICAg
+ICAgICAgICB8ICAyICstCiBkcml2ZXJzL21mZC9LY29uZmlnICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICB8ICA5ICsrKwogZHJpdmVycy9tZmQvTWFrZWZpbGUgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgfCAgMiArCiBkcml2ZXJzL21mZC9tdGstbW1zeXMuYyAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICB8IDkzICsrKysrKysrKysrKysrKysrKysrKysKIDE0IGZpbGVzIGNo
+YW5nZWQsIDE4OSBpbnNlcnRpb25zKCspLCA1OSBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2RlIDEw
+MDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL21lZGlhdGVrLG1tc3lz
+LnR4dAogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbWZkL210ay1tbXN5cy5jCgotLSAKMi4x
+Ni4zCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
