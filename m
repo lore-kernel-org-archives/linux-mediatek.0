@@ -1,16 +1,16 @@
-From: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Subject: Re: [PATCH usb v6 6/6] usb: core: phy: add the SPDX-License-Identifier
- and include guard
-Date: Sun, 22 Apr 2018 21:41:56 +0200
-Message-ID: <CAFBinCBv+zwjjjA_HeDY_e=aZwVpktzqM7wszZ-Ejvid+ZBe-A@mail.gmail.com>
-References: <20180418193951.17922-1-martin.blumenstingl@googlemail.com>
- <20180418193951.17922-7-martin.blumenstingl@googlemail.com>
- <20180422130109.GA5781@kroah.com>
+From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 1/4] dt-bindings: mtd: mtk-nand: Update properties
+ description
+Date: Mon, 23 Apr 2018 09:43:46 +0800
+Message-ID: <1524447826.14673.40.camel@mhfsdcap03>
+References: <1523864464-41059-1-git-send-email-xiaolei.li@mediatek.com>
+ <1523864464-41059-2-git-send-email-xiaolei.li@mediatek.com>
+ <20180420221553.44832fda@bbrezillon>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180422130109.GA5781-U8xfFu+wG4EAvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <20180420221553.44832fda@bbrezillon>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -20,41 +20,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Cc: d-gerlach-l0cyMroinI0@public.gmane.org, eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org, j-keerthy-l0cyMroinI0@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, rogerq-l0cyMroinI0@public.gmane.org
+To: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Greg,
+Hi Boris
 
-On Sun, Apr 22, 2018 at 3:01 PM, Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org> wrote:
-> On Wed, Apr 18, 2018 at 09:39:51PM +0200, Martin Blumenstingl wrote:
->> This clarifies the license of the code. While here also add an include
->> guard to the header file.
->>
->> Fixes: 07dbff0ddbd86c ("usb: core: add a wrapper for the USB PHYs on the HCD")
->> Suggested-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
->> Signed-off-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
->> ---
->>  drivers/usb/core/phy.h | 12 ++++++++++++
->>  1 file changed, 12 insertions(+)
->>
->> diff --git a/drivers/usb/core/phy.h b/drivers/usb/core/phy.h
->> index bbc969383074..88a3c037e9df 100644
->> --- a/drivers/usb/core/phy.h
->> +++ b/drivers/usb/core/phy.h
->> @@ -1,3 +1,13 @@
->> +/* SPDX-License-Identifier: GPL-2.0+ */
->
-> Do you _really_ mean GPLv2 or anything later?
-drivers/usb/core/hcd.c uses the same license identifier
-that code is much more "valuable" than my few lines which manage a
-list of PHYs - so I'm fine with "GPLv2 or anything later"
+On Fri, 2018-04-20 at 22:15 +0200, Boris Brezillon wrote:
+> On Mon, 16 Apr 2018 15:41:01 +0800
+> Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> 
+> > Update ecc step size, ecc strength, and parity bits supported on
+> > each MTK NAND controller.
+> > 
+> > Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  Documentation/devicetree/bindings/mtd/mtk-nand.txt | 18 +++++++++++++-----
+> >  1 file changed, 13 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/mtd/mtk-nand.txt b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
+> > index 1c88526..ef786568 100644
+> > --- a/Documentation/devicetree/bindings/mtd/mtk-nand.txt
+> > +++ b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
+> > @@ -50,14 +50,19 @@ Optional:
+> >  - nand-on-flash-bbt:	Store BBT on NAND Flash.
+> >  - nand-ecc-mode:	the NAND ecc mode (check driver for supported modes)
+> >  - nand-ecc-step-size:	Number of data bytes covered by a single ECC step.
+> > -			valid values: 512 and 1024.
+> > +			valid values:
+> > +			512 and 1024 on mt2701 and mt2712.
+> > +			512 only on mt7622.
+> >  			1024 is recommended for large page NANDs.
+> >  - nand-ecc-strength:	Number of bits to correct per ECC step.
+> > -			The valid values that the controller supports are: 4, 6,
+> > -			8, 10, 12, 14, 16, 18, 20, 22, 24, 28, 32, 36, 40, 44,
+> > -			48, 52, 56, 60.
+> > +			The valid values that each controller supports:
+> > +			mt2701: 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 28,
+> > +				32, 36, 40, 44, 48, 52, 56, 60.
+> > +			mt2712: 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 28,
+> > +				32, 36, 40, 44, 48, 52, 56, 60, 68, 72, 80.
+> > +			mt7622: 4, 6, 8, 10, 12, 14, 16.
+> >  			The strength should be calculated as follows:
+> > -			E = (S - F) * 8 / 14
+> > +			E = (S - F) * 8 / B
+> >  			S = O / (P / Q)
+> >  				E :	nand-ecc-strength.
+> >  				S :	spare size per sector.
+> > @@ -66,6 +71,9 @@ Optional:
+> >  				O :	oob size.
+> >  				P :	page size.
+> >  				Q :	nand-ecc-step-size.
+> > +				B :	parity bits to do 1 bit ECC.
+> 
+> Hm, this one is not clear. I guess what you wanted to say was "number
+> of parity bits needed to correct 1 bitflip". Even if what you say is
+Yes. It is.
+> true, the value actually comes from the ECC step size, so I'm not
+> sure this is really useful to explain why it's 14 or 13 in the
+> dt-bindings doc.
 
-> I have to ask...
-if you see any problems with this (for example that phy.h couldn't be
-used from some special module with another license, ...) then please
-let me know
+According to MTK NAND controller design, this number depends on max ecc
+step size that the MTK NAND controller supports. If max ecc step size
+supported is 1024 bytes, then the number of parity bits will be always
+14. And if max ecc step size is 512 bytes, it will be 13.
 
+I will add this explanation in patch v3.
+ 
+> 
+> > +					Be 14 on mt2701 and mt2712.
+> > +					Be 13 on mt7622.
 
-Regards
-Martin
+> 					^ Should be
+OK. Thanks.
+
+> 
+> You can keep only that part.
+> 
+> >  			If the result does not match any one of the listed
+> >  			choices above, please select the smaller valid value from
+> >  			the list.
+> 
