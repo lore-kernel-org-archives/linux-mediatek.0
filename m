@@ -1,16 +1,16 @@
 From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 1/4] dt-bindings: mtd: mtk-nand: Update properties
- description
-Date: Mon, 23 Apr 2018 09:43:46 +0800
-Message-ID: <1524447826.14673.40.camel@mhfsdcap03>
+Subject: Re: [PATCH v2 2/4] MAINTAINERS: Add entry for Mediatek NAND
+ controller driver
+Date: Mon, 23 Apr 2018 09:44:22 +0800
+Message-ID: <1524447862.14673.41.camel@mhfsdcap03>
 References: <1523864464-41059-1-git-send-email-xiaolei.li@mediatek.com>
- <1523864464-41059-2-git-send-email-xiaolei.li@mediatek.com>
- <20180420221553.44832fda@bbrezillon>
+ <1523864464-41059-3-git-send-email-xiaolei.li@mediatek.com>
+ <20180420222451.20d72560@bbrezillon>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180420221553.44832fda@bbrezillon>
+In-Reply-To: <20180420222451.20d72560@bbrezillon>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -24,80 +24,40 @@ To: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Boris
-
-On Fri, 2018-04-20 at 22:15 +0200, Boris Brezillon wrote:
-> On Mon, 16 Apr 2018 15:41:01 +0800
+On Fri, 2018-04-20 at 22:24 +0200, Boris Brezillon wrote:
+> On Mon, 16 Apr 2018 15:41:02 +0800
 > Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 > 
-> > Update ecc step size, ecc strength, and parity bits supported on
-> > each MTK NAND controller.
+> > Add entry for Mediatek NAND controller driver and its bindings.
 > > 
 > > Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > > ---
-> >  Documentation/devicetree/bindings/mtd/mtk-nand.txt | 18 +++++++++++++-----
-> >  1 file changed, 13 insertions(+), 5 deletions(-)
+> >  MAINTAINERS | 7 +++++++
+> >  1 file changed, 7 insertions(+)
 > > 
-> > diff --git a/Documentation/devicetree/bindings/mtd/mtk-nand.txt b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> > index 1c88526..ef786568 100644
-> > --- a/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> > +++ b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> > @@ -50,14 +50,19 @@ Optional:
-> >  - nand-on-flash-bbt:	Store BBT on NAND Flash.
-> >  - nand-ecc-mode:	the NAND ecc mode (check driver for supported modes)
-> >  - nand-ecc-step-size:	Number of data bytes covered by a single ECC step.
-> > -			valid values: 512 and 1024.
-> > +			valid values:
-> > +			512 and 1024 on mt2701 and mt2712.
-> > +			512 only on mt7622.
-> >  			1024 is recommended for large page NANDs.
-> >  - nand-ecc-strength:	Number of bits to correct per ECC step.
-> > -			The valid values that the controller supports are: 4, 6,
-> > -			8, 10, 12, 14, 16, 18, 20, 22, 24, 28, 32, 36, 40, 44,
-> > -			48, 52, 56, 60.
-> > +			The valid values that each controller supports:
-> > +			mt2701: 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 28,
-> > +				32, 36, 40, 44, 48, 52, 56, 60.
-> > +			mt2712: 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 28,
-> > +				32, 36, 40, 44, 48, 52, 56, 60, 68, 72, 80.
-> > +			mt7622: 4, 6, 8, 10, 12, 14, 16.
-> >  			The strength should be calculated as follows:
-> > -			E = (S - F) * 8 / 14
-> > +			E = (S - F) * 8 / B
-> >  			S = O / (P / Q)
-> >  				E :	nand-ecc-strength.
-> >  				S :	spare size per sector.
-> > @@ -66,6 +71,9 @@ Optional:
-> >  				O :	oob size.
-> >  				P :	page size.
-> >  				Q :	nand-ecc-step-size.
-> > +				B :	parity bits to do 1 bit ECC.
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index d262f17..429ef09 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -8838,6 +8838,13 @@ L:	linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> >  S:	Maintained
+> >  F:	drivers/net/wireless/mediatek/mt7601u/
+> >  
+> > +MEDIATEK NAND CONTROLLER DRIVER
+> > +M:	Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > +L:	linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> > +S:	Maintained
+> > +F:	drivers/mtd/nand/raw/mtk_*
+> > +F:	Documentation/devicetree/bindings/mtd/mtk-nand.txt
 > 
-> Hm, this one is not clear. I guess what you wanted to say was "number
-> of parity bits needed to correct 1 bitflip". Even if what you say is
-Yes. It is.
-> true, the value actually comes from the ECC step size, so I'm not
-> sure this is really useful to explain why it's 14 or 13 in the
-> dt-bindings doc.
-
-According to MTK NAND controller design, this number depends on max ecc
-step size that the MTK NAND controller supports. If max ecc step size
-supported is 1024 bytes, then the number of parity bits will be always
-14. And if max ecc step size is 512 bytes, it will be 13.
-
-I will add this explanation in patch v3.
- 
+> Thanks for doing that.
 > 
-> > +					Be 14 on mt2701 and mt2712.
-> > +					Be 13 on mt7622.
-
-> 					^ Should be
+> I'll apply the patch, you can drop it from your v3.
+> 
 OK. Thanks.
 
-> 
-> You can keep only that part.
-> 
-> >  			If the result does not match any one of the listed
-> >  			choices above, please select the smaller valid value from
-> >  			the list.
+> > +
+> >  MEDIATEK RANDOM NUMBER GENERATOR SUPPORT
+> >  M:	Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >  S:	Maintained
 > 
