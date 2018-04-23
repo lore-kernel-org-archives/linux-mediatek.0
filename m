@@ -1,110 +1,119 @@
-From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 4/4] mtd: rawnand: mtk: Add new nfc capability
- maximize_fdm_ecc
-Date: Mon, 23 Apr 2018 10:04:51 +0800
-Message-ID: <1524449091.14673.50.camel@mhfsdcap03>
-References: <1523864464-41059-1-git-send-email-xiaolei.li@mediatek.com>
- <1523864464-41059-5-git-send-email-xiaolei.li@mediatek.com>
- <20180420222350.620e4db7@bbrezillon>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v2 2/2] soc: mediatek: reuse regmap_read_poll_timeout helpers
+Date: Mon, 23 Apr 2018 14:42:45 +0800
+Message-ID: <ed866d3345a27b2c87b570562d9ad9132bca6062.1524465345.git.sean.wang@mediatek.com>
+References: <ccea364eeb830b2092987d271c8308b97fe59d8f.1524465345.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180420222350.620e4db7@bbrezillon>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <ccea364eeb830b2092987d271c8308b97fe59d8f.1524465345.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: matthias.bgg@gmail.com, rjw@rjwysocki.net, khilman@baylibre.com
+Cc: ulf.hansson@linaro.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Boris
+From: Sean Wang <sean.wang@mediatek.com>
 
-On Fri, 2018-04-20 at 22:23 +0200, Boris Brezillon wrote:
-> On Mon, 16 Apr 2018 15:41:04 +0800
-> Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> 
-> > For some MTK NAND chips, BootROM will access more than one byte
-> > ECC protected FDM data, but now we fix ECC protected FDM byte as 1.
-> > This will make some chips be failed to boot up.
-> > 
-> > This patch adds one new nfc capability maximize_fdm_ecc to maximize ECC
-> > protected FDM bytes if it is true.
-> > 
-> > Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  drivers/mtd/nand/raw/mtk_nand.c | 8 ++++++--
-> >  1 file changed, 6 insertions(+), 2 deletions(-)
-> >  mode change 100644 => 100755 drivers/mtd/nand/raw/mtk_nand.c
-> > 
-> > diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-> > old mode 100644
-> > new mode 100755
-> > index 03a4df2..7025132
-> > --- a/drivers/mtd/nand/raw/mtk_nand.c
-> > +++ b/drivers/mtd/nand/raw/mtk_nand.c
-> > @@ -111,6 +111,7 @@ struct mtk_nfc_caps {
-> >  	u8 pageformat_spare_shift;
-> >  	u8 nfi_clk_div;
-> >  	u8 max_sector;
-> > +	bool maximize_fdm_ecc;
-> >  };
-> >  
-> >  struct mtk_nfc_bad_mark_ctl {
-> > @@ -1151,8 +1152,8 @@ static void mtk_nfc_set_fdm(struct mtk_nfc_fdm *fdm, struct mtd_info *mtd)
-> >  	if (fdm->reg_size > NFI_FDM_MAX_SIZE)
-> >  		fdm->reg_size = NFI_FDM_MAX_SIZE;
-> >  
-> > -	/* bad block mark storage */
-> > -	fdm->ecc_size = 1;
-> > +	/* Reserve at least one byte for bad mark */
-> > +	fdm->ecc_size = nfc->caps->maximize_fdm_ecc ? fdm->reg_size : 1;
-> >  }
-> >  
-> >  static void mtk_nfc_set_bad_mark_ctl(struct mtk_nfc_bad_mark_ctl *bm_ctl,
-> > @@ -1413,6 +1414,7 @@ static int mtk_nfc_nand_chips_init(struct device *dev, struct mtk_nfc *nfc)
-> >  	.pageformat_spare_shift = 4,
-> >  	.nfi_clk_div = 1,
-> >  	.max_sector = 16,
-> > +	.maximize_fdm_ecc = false,
-> >  };
-> >  
-> >  static const struct mtk_nfc_caps mtk_nfc_caps_mt2712 = {
-> > @@ -1423,6 +1425,7 @@ static int mtk_nfc_nand_chips_init(struct device *dev, struct mtk_nfc *nfc)
-> >  	.pageformat_spare_shift = 16,
-> >  	.nfi_clk_div = 2,
-> >  	.max_sector = 16,
-> > +	.maximize_fdm_ecc = false,
-> >  };
-> >  
-> >  static const struct mtk_nfc_caps mtk_nfc_caps_mt7622 = {
-> > @@ -1433,6 +1436,7 @@ static int mtk_nfc_nand_chips_init(struct device *dev, struct mtk_nfc *nfc)
-> >  	.pageformat_spare_shift = 4,
-> >  	.nfi_clk_div = 1,
-> >  	.max_sector = 8,
-> > +	.maximize_fdm_ecc = false,
-> >  };
-> 
-> So, you introduce a new flag, but all existing SoCs are setting it to
-> false. Can you please send a patch series containing all the
-OK. Because some MTK SoCs that will apply "true" setting have not been
-upstreamed now, so I think it is better to send a patch series in the
-future as your advice.
-I will remove this patch in v3. Sorry for making you confused.
+Reuse the common helpers regmap_read_poll_timeout provided by Linux core
+instead of an open-coded handling.
 
-Thanks.
-Xiaolei
+v1 -> v2:
+ - use macro definitions MTK_POLL_DELAY_US and MTK_POLL_TIMEOUT for
+   arguments sleep_us and timeout_us passing in regmap_read_poll_timeout.
+ - remove unnecessary linux/iopoll.h being included in.
 
-> modifications, or at least point to a branch containing all the changes
-> you intend to push so that we know why the changes are required?
-> Your first version of this patchset was better in this regard.
-> 
-> >  
-> >  static const struct of_device_id mtk_nfc_id_table[] = {
-> 
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Weiyi Lu <weiyi.lu@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-infracfg.c | 46 ++++++++++---------------------------
+ 1 file changed, 12 insertions(+), 34 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
+index 8c310de..958861c 100644
+--- a/drivers/soc/mediatek/mtk-infracfg.c
++++ b/drivers/soc/mediatek/mtk-infracfg.c
+@@ -17,6 +17,9 @@
+ #include <linux/soc/mediatek/infracfg.h>
+ #include <asm/processor.h>
+ 
++#define MTK_POLL_DELAY_US   10
++#define MTK_POLL_TIMEOUT    (jiffies_to_usecs(HZ))
++
+ #define INFRA_TOPAXI_PROTECTEN		0x0220
+ #define INFRA_TOPAXI_PROTECTSTA1	0x0228
+ #define INFRA_TOPAXI_PROTECTEN_SET	0x0260
+@@ -37,7 +40,6 @@
+ int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
+ 		bool reg_update)
+ {
+-	unsigned long expired;
+ 	u32 val;
+ 	int ret;
+ 
+@@ -47,22 +49,11 @@ int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
+ 	else
+ 		regmap_write(infracfg, INFRA_TOPAXI_PROTECTEN_SET, mask);
+ 
+-	expired = jiffies + HZ;
+-
+-	while (1) {
+-		ret = regmap_read(infracfg, INFRA_TOPAXI_PROTECTSTA1, &val);
+-		if (ret)
+-			return ret;
+-
+-		if ((val & mask) == mask)
+-			break;
++	ret = regmap_read_poll_timeout(infracfg, INFRA_TOPAXI_PROTECTSTA1,
++				       val, (val & mask) == mask,
++				       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+ 
+-		cpu_relax();
+-		if (time_after(jiffies, expired))
+-			return -EIO;
+-	}
+-
+-	return 0;
++	return ret;
+ }
+ 
+ /**
+@@ -80,30 +71,17 @@ int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
+ int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
+ 		bool reg_update)
+ {
+-	unsigned long expired;
+ 	int ret;
++	u32 val;
+ 
+ 	if (reg_update)
+ 		regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask, 0);
+ 	else
+ 		regmap_write(infracfg, INFRA_TOPAXI_PROTECTEN_CLR, mask);
+ 
+-	expired = jiffies + HZ;
+-
+-	while (1) {
+-		u32 val;
+-
+-		ret = regmap_read(infracfg, INFRA_TOPAXI_PROTECTSTA1, &val);
+-		if (ret)
+-			return ret;
+-
+-		if (!(val & mask))
+-			break;
+-
+-		cpu_relax();
+-		if (time_after(jiffies, expired))
+-			return -EIO;
+-	}
++	ret = regmap_read_poll_timeout(infracfg, INFRA_TOPAXI_PROTECTSTA1,
++				       val, !(val & mask),
++				       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+ 
+-	return 0;
++	return ret;
+ }
+-- 
+2.7.4
