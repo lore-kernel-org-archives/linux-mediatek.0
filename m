@@ -1,103 +1,57 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v2 1/5] ASoC: add mt6351 codec driver
-Date: Mon, 23 Apr 2018 12:39:08 +0100
-Message-ID: <20180423113908.GC19834@sirena.org.uk>
-References: <20180416003252.4177-1-kaichieh.chuang@mediatek.com>
- <20180416003252.4177-2-kaichieh.chuang@mediatek.com>
- <20180418164040.GG10061@sirena.org.uk>
- <1524268164.3290.31.camel@mtksdaap41>
+Subject: Re: [PATCH v2 1/2] regmap: include <linux/ktime.h> from
+ include/linux/regmap.h
+Date: Mon, 23 Apr 2018 12:50:43 +0100
+Message-ID: <20180423115043.GD19834@sirena.org.uk>
+References: <ccea364eeb830b2092987d271c8308b97fe59d8f.1524465345.git.sean.wang@mediatek.com>
+ <20180423100318.GA19834@sirena.org.uk>
+ <d3e10dc5-55d3-40b8-a8de-d48aaaecf019@gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============2784896682938972740=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1524268164.3290.31.camel@mtksdaap41>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
-Cc: alsa-devel@alsa-project.org, garlic.tseng@mediatek.com, linux-mediatek@lists.infradead.org, chipeng.chang@mediatek.com, wsd_upstream@mediatek.com
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="tEFtbjk+mNEviIIX"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <d3e10dc5-55d3-40b8-a8de-d48aaaecf019@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: sean.wang@mediatek.com, rjw@rjwysocki.net, khilman@baylibre.com, ulf.hansson@linaro.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
---===============2784896682938972740==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="uh9ZiVrAOUUm9fzH"
-Content-Disposition: inline
-
-
---uh9ZiVrAOUUm9fzH
+--tEFtbjk+mNEviIIX
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Sat, Apr 21, 2018 at 07:49:24AM +0800, KaiChieh Chuang wrote:
+On Mon, Apr 23, 2018 at 12:11:01PM +0200, Matthias Brugger wrote:
 
-> > These gains should be put in TLVs rather than an enum so userspace can
-> > handle them (also it should be dB not Db).  You can handle irregular
-> > step sizes like these with DECLARE_TLV_DB_SCALE(), there's several
-> > examples in the code already.
+> On 04/23/2018 12:03 PM, Mark Brown wrote:
+> > On Mon, Apr 23, 2018 at 02:42:44PM +0800, sean.wang@mediatek.com wrote:
+> >> From: Sean Wang <sean.wang@mediatek.com>
 
-> We declare this enum for user space to operate on enum directly,
-> unlike alsa-lib, we use tinyalsa in Android, if declared in tlv,
-> the mixer control just become a integer control, which is not
-> informative for user space.
+> >> Similar to the readx_poll_timeout() macro calling ktime_* and using=20
+> >> ktime_t type, which is declared in <linux/ktime.h>. So, make
 
-Your custom userspace isn't really a factor for upstream.
+> > I'm missing patch 2 here - what's the story, are there any dependencies?
 
-> > > +	if (ucontrol->value.integer.value[0] == 0x1f)	/* reg idx for -40dB*/
-> > > +		ucontrol->value.integer.value[0] = ARRAY_SIZE(dl_pga_gain) - 1;
+> You can find the second patch here:
+> https://patchwork.kernel.org/patch/10356237/
 
-> > Why do this rewriting?
+So it looks like there is a dependency here...?
 
-> A little awkward gain register here,
-> the range is  for 8dB ~ -10dB and -40dB, corresponding to reg index 0 ~
-> 18 and 31.
-
-> 00000: +8dB.
-> 00001: +7dB.
-> 10010: -10dB
-> 11111: -40dB(Mute).
-
-> and where 19 ~ 30 is not defined, and shouldn't be set.
-
-> i think tlv not yet support this kind of gain control?
-
-You can say there's a mute value, but gaps like that aren't easily
-handled AFAIR.  You could assign vales to them (I'm guessing there
-probably are some that just aren't doucmented for some reason) or...
-
-> Maybe i'll just declare 8dB ~ -10dB for now.
-
-...this is also common, the mixed mute and gain controls aren't always
-super useful.  Depending on what goes on with pops and clicks a DAPM
-autodisable control might be a good application too.
-
---uh9ZiVrAOUUm9fzH
+--tEFtbjk+mNEviIIX
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlrdxdsACgkQJNaLcl1U
-h9B0CAf/fzwacihi4ov/LuMNew4/eQFtZwHbQ58HsgO+vkO7r44CsVwwkx751g7h
-69oUsMc8FSMs5wVGqz8KNuUA4VNTcbQORVFqMXxuk3zsjTMwgSuEaeRuhKt6PQmA
-lz7VCAXdSjSTcnIF02t3e/Q1DOhVWE1JiQjvQi+W+lSTJwRYCXbkbIHXydkGcpSt
-JaS6+zuKt0ihnq8oixhcx+/Y+TjHIsBgXijv8dIihD8xXnG4xWajo5z9xvg6eg6H
-jEabHdiEh0/JZlYwrAeBeCh0brOJ1E1snKNBUuND8WzFj6ozWiDwcxGsuCtAsy2B
-lwe8QL7uZdHWA889oH750Z5IM9+4Vw==
-=I0hL
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlrdyJMACgkQJNaLcl1U
+h9DMMgf+Mq4XuE2uTjJ3RczmwV7XtbZbOyfz9skBzZlxHIMLgev1gD4PsrI5xDiC
+tSdlZKU7hE7+K+h2ZQ+LT95qpf4V8xK39zALPjqy+24FJuNkfKG6kb1AROqta+dX
+LQ5dlTIz0xmLfZ7zkCOWmm0oyeCbc/k/d9nW815ULWk0vRTOgjUmVShy9ARpj3z7
+YZGijwLH2MEaMFr7LBmk+SJiYvsmkSY5/Ie5umu3VWiHta7r05tmcI/kg9ugggt1
+CwUk3T3s787dJLoVvhFPJVdRgG+2SL0ciDq2WkI4geMZ5EWuj0d6zY4I5AYEJ7sD
+gL0OnsG348CnPSKl6TWMfb4wfiCWcQ==
+=oz9q
 -----END PGP SIGNATURE-----
 
---uh9ZiVrAOUUm9fzH--
-
---===============2784896682938972740==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============2784896682938972740==--
+--tEFtbjk+mNEviIIX--
