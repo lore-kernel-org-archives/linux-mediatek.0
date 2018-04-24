@@ -1,88 +1,65 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [v2 00/10] arm/arm64: mediatek: Fix mmsys device probing
-Date: Tue, 24 Apr 2018 11:46:13 +0200
-Message-ID: <723392d5-ee51-d49b-050b-db4f9709e6bf@gmail.com>
-References: <cover.1524497268.git.mbrugger@suse.com>
- <20180424054854.bpd6h3imazhqnuy3@dell>
+From: matthias.bgg@kernel.org
+Subject: [v2 resend 00/10] arm/arm64: mediatek: Fix mmsys device probing
+Date: Tue, 24 Apr 2018 11:46:57 +0200
+Message-ID: <cover.1524563001.git.mbrugger@suse.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180424054854.bpd6h3imazhqnuy3@dell>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>, matthias.bgg@kernel.org
-Cc: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, pi-cheng.chen@linaro.org, sean.wang@mediatek.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org
+Cc: sean.wang@mediatek.com, gregkh@linuxfoundation.org, rdunlap@infradead.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, pi-cheng.chen@linaro.org, davem@davemloft.net, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Lee,
-
-On 04/24/2018 07:48 AM, Lee Jones wrote:
-> On Mon, 23 Apr 2018, matthias.bgg@kernel.org wrote:
-> 
->> From: Matthias Brugger <mbrugger@suse.com>
->>
->> Changes since v1:
->> - add binding documentation
->> - ddp: use regmap_update_bits
->> - ddp: ignore EPROBE_DEFER on clock probing
->> - mfd: delete mmsys_private
->> - add Reviewed-by and Acked-by tags
-> 
-> I'm confused by the double submission.
-> 
-> Please can you send it again completely detached from the first and
-> the second submissions please?
-> 
-
-I had some problems with my mailclient. I'll resend as 'v2 resend'.
-
-Sorry for that.
-Matthias
-
->> ---
->>
->> MMSYS in Mediatek SoCs has some registers to control clock gates (which is 
->> used in the clk driver) and some registers to set the routing and enable
->> the differnet blocks of the display subsystem.
->>
->> Up to now both drivers, clock and drm are probed with the same device tree
->> compatible. But only the first driver get probed, which in effect breaks
->> graphics on mt8173 and mt2701.
->>
->> This patch set introduces a new mfd device, which binds against the mmsys
->> compatible and takes care of probing the needed devices. It was tested on the
->> bananapi-r2 and the Acer R13 Chromebook.
->>
->>
->> Matthias Brugger (10):
->>   dt-bindings: mediatek: mmsys: Add support for mfd
->>   drm/mediatek: Use regmap for register access
->>   mfd: mtk-mmsys: Add mmsys driver
->>   drm/mediatek: mt2701: switch to mfd probing.
->>   clk: mediatek: mt2701-mm: switch to mfd device
->>   mfd: mtk-mmsys: Add mt8173 nodes
->>   drm/mediatek: Add mfd support for mt8173
->>   clk: mediatek: mt8173-mm: switch to mfd device
->>   drm: mediatek: Omit warning on probe defers
->>   MAINTAINERS: update Mediatek Soc entry
->>
->>  .../bindings/arm/mediatek/mediatek,mmsys.txt       |  2 -
->>  .../bindings/display/mediatek/mediatek,disp.txt    |  2 +-
->>  .../devicetree/bindings/mfd/mediatek,mmsys.txt     | 27 +++++++
->>  MAINTAINERS                                        |  2 +
->>  drivers/clk/mediatek/clk-mt2701-mm.c               | 10 +--
->>  drivers/clk/mediatek/clk-mt8173.c                  | 17 +++-
->>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c            |  4 +-
->>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c             | 41 ++++------
->>  drivers/gpu/drm/mediatek/mtk_drm_ddp.h             |  4 +-
->>  drivers/gpu/drm/mediatek/mtk_drm_drv.c             | 33 ++++----
->>  drivers/gpu/drm/mediatek/mtk_drm_drv.h             |  2 +-
->>  drivers/mfd/Kconfig                                |  9 +++
->>  drivers/mfd/Makefile                               |  2 +
->>  drivers/mfd/mtk-mmsys.c                            | 93 ++++++++++++++++++++++
->>  14 files changed, 189 insertions(+), 59 deletions(-)
->>  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mmsys.txt
->>  create mode 100644 drivers/mfd/mtk-mmsys.c
->>
-> 
+RnJvbTogTWF0dGhpYXMgQnJ1Z2dlciA8bWJydWdnZXJAc3VzZS5jb20+CgpDaGFuZ2VzIHNpbmNl
+IHYxOgotIGFkZCBiaW5kaW5nIGRvY3VtZW50YXRpb24KLSBkZHA6IHVzZSByZWdtYXBfdXBkYXRl
+X2JpdHMKLSBkZHA6IGlnbm9yZSBFUFJPQkVfREVGRVIgb24gY2xvY2sgcHJvYmluZwotIG1mZDog
+ZGVsZXRlIG1tc3lzX3ByaXZhdGUKLSBhZGQgUmV2aWV3ZWQtYnkgYW5kIEFja2VkLWJ5IHRhZ3MK
+Ci0tLQoKTU1TWVMgaW4gTWVkaWF0ZWsgU29DcyBoYXMgc29tZSByZWdpc3RlcnMgdG8gY29udHJv
+bCBjbG9jayBnYXRlcyAod2hpY2ggaXMgCnVzZWQgaW4gdGhlIGNsayBkcml2ZXIpIGFuZCBzb21l
+IHJlZ2lzdGVycyB0byBzZXQgdGhlIHJvdXRpbmcgYW5kIGVuYWJsZQp0aGUgZGlmZmVybmV0IGJs
+b2NrcyBvZiB0aGUgZGlzcGxheSBzdWJzeXN0ZW0uCgpVcCB0byBub3cgYm90aCBkcml2ZXJzLCBj
+bG9jayBhbmQgZHJtIGFyZSBwcm9iZWQgd2l0aCB0aGUgc2FtZSBkZXZpY2UgdHJlZQpjb21wYXRp
+YmxlLiBCdXQgb25seSB0aGUgZmlyc3QgZHJpdmVyIGdldCBwcm9iZWQsIHdoaWNoIGluIGVmZmVj
+dCBicmVha3MKZ3JhcGhpY3Mgb24gbXQ4MTczIGFuZCBtdDI3MDEuCgpUaGlzIHBhdGNoIHNldCBp
+bnRyb2R1Y2VzIGEgbmV3IG1mZCBkZXZpY2UsIHdoaWNoIGJpbmRzIGFnYWluc3QgdGhlIG1tc3lz
+CmNvbXBhdGlibGUgYW5kIHRha2VzIGNhcmUgb2YgcHJvYmluZyB0aGUgbmVlZGVkIGRldmljZXMu
+IEl0IHdhcyB0ZXN0ZWQgb24gdGhlCmJhbmFuYXBpLXIyIGFuZCB0aGUgQWNlciBSMTMgQ2hyb21l
+Ym9vay4KCgpNYXR0aGlhcyBCcnVnZ2VyICgxMCk6CiAgZHQtYmluZGluZ3M6IG1lZGlhdGVrOiBt
+bXN5czogQWRkIHN1cHBvcnQgZm9yIG1mZAogIGRybS9tZWRpYXRlazogVXNlIHJlZ21hcCBmb3Ig
+cmVnaXN0ZXIgYWNjZXNzCiAgbWZkOiBtdGstbW1zeXM6IEFkZCBtbXN5cyBkcml2ZXIKICBkcm0v
+bWVkaWF0ZWs6IG10MjcwMTogc3dpdGNoIHRvIG1mZCBwcm9iaW5nLgogIGNsazogbWVkaWF0ZWs6
+IG10MjcwMS1tbTogc3dpdGNoIHRvIG1mZCBkZXZpY2UKICBtZmQ6IG10ay1tbXN5czogQWRkIG10
+ODE3MyBub2RlcwogIGRybS9tZWRpYXRlazogQWRkIG1mZCBzdXBwb3J0IGZvciBtdDgxNzMKICBj
+bGs6IG1lZGlhdGVrOiBtdDgxNzMtbW06IHN3aXRjaCB0byBtZmQgZGV2aWNlCiAgZHJtOiBtZWRp
+YXRlazogT21pdCB3YXJuaW5nIG9uIHByb2JlIGRlZmVycwogIE1BSU5UQUlORVJTOiB1cGRhdGUg
+TWVkaWF0ZWsgU29jIGVudHJ5CgogLi4uL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRlayxt
+bXN5cy50eHQgICAgICAgfCAgMiAtCiAuLi4vYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRp
+YXRlayxkaXNwLnR4dCAgICB8ICAyICstCiAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9tZmQvbWVk
+aWF0ZWssbW1zeXMudHh0ICAgICB8IDI3ICsrKysrKysKIE1BSU5UQUlORVJTICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKwogZHJpdmVycy9jbGsvbWVkaWF0ZWsv
+Y2xrLW10MjcwMS1tbS5jICAgICAgICAgICAgICAgfCAxMCArLS0KIGRyaXZlcnMvY2xrL21lZGlh
+dGVrL2Nsay1tdDgxNzMuYyAgICAgICAgICAgICAgICAgIHwgMTcgKysrLQogZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jICAgICAgICAgICAgfCAgNCArLQogZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMgICAgICAgICAgICAgfCA0MSArKysrLS0tLS0t
+CiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuaCAgICAgICAgICAgICB8ICA0
+ICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyAgICAgICAgICAgICB8
+IDMzICsrKystLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaCAgICAg
+ICAgICAgICB8ICAyICstCiBkcml2ZXJzL21mZC9LY29uZmlnICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICB8ICA5ICsrKwogZHJpdmVycy9tZmQvTWFrZWZpbGUgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgfCAgMiArCiBkcml2ZXJzL21mZC9tdGstbW1zeXMuYyAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICB8IDkzICsrKysrKysrKysrKysrKysrKysrKysKIDE0IGZpbGVzIGNo
+YW5nZWQsIDE4OSBpbnNlcnRpb25zKCspLCA1OSBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2RlIDEw
+MDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL21lZGlhdGVrLG1tc3lz
+LnR4dAogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbWZkL210ay1tbXN5cy5jCgotLSAKMi4x
+Ni4zCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
