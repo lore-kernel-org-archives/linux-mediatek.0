@@ -1,39 +1,83 @@
-From: matthias.bgg@kernel.org
-Subject: [v2 10/10] MAINTAINERS: update Mediatek Soc entry
-Date: Mon, 23 Apr 2018 18:13:59 +0200
-Message-ID: <0fd5bf87d227fdb44bd0ddd2f83c5595380957fb.1524497268.git.mbrugger@suse.com>
-References: <cover.1524497268.git.mbrugger@suse.com>
+From: Xiaolei Li <xiaolei.li@mediatek.com>
+Subject: [PATCH v3] dt-bindings: mtd: mtk-nand: Update properties description
+Date: Tue, 24 Apr 2018 10:11:07 +0800
+Message-ID: <1524535867-32413-2-git-send-email-xiaolei.li@mediatek.com>
+References: <1524535867-32413-1-git-send-email-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <cover.1524497268.git.mbrugger@suse.com>
-In-Reply-To: <cover.1524497268.git.mbrugger@suse.com>
-References: <cover.1524497268.git.mbrugger@suse.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org
-Cc: sean.wang@mediatek.com, gregkh@linuxfoundation.org, rdunlap@infradead.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, pi-cheng.chen@linaro.org, davem@davemloft.net, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+In-Reply-To: <1524535867-32413-1-git-send-email-xiaolei.li@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
+To: boris.brezillon@bootlin.com
+Cc: linux-mediatek@lists.infradead.org, xiaolei.li@mediatek.com, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogTWF0dGhpYXMgQnJ1Z2dlciA8bWJydWdnZXJAc3VzZS5jb20+CgpNZWRpYXRlayBTb0Nz
-IGluY2x1ZGUgc2V2ZXJhbCBzb2Mgc3BlY2lmaWMgZHJpdmVycyBhcyB3ZWxsCmFzIGEgbWZkIGRl
-dmljZS4gQWRkIHRoZXNlIHRvIHRoZSBtYWludGFpbmVycyBmaWxlLgoKU2lnbmVkLW9mZi1ieTog
-TWF0dGhpYXMgQnJ1Z2dlciA8bWJydWdnZXJAc3VzZS5jb20+Ci0tLQogTUFJTlRBSU5FUlMgfCAy
-ICsrCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvTUFJTlRB
-SU5FUlMgYi9NQUlOVEFJTkVSUwppbmRleCAwYTE0MTBkNWE2MjEuLjc0ZjdlYTM0NTA5NiAxMDA2
-NDQKLS0tIGEvTUFJTlRBSU5FUlMKKysrIGIvTUFJTlRBSU5FUlMKQEAgLTE2MjEsNiArMTYyMSw4
-IEBAIEY6CWFyY2gvYXJtL2Jvb3QvZHRzL210NyoKIEY6CWFyY2gvYXJtL2Jvb3QvZHRzL210OCoK
-IEY6CWFyY2gvYXJtL21hY2gtbWVkaWF0ZWsvCiBGOglhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlh
-dGVrLworRjoJZHJpdmVycy9zb2MvbWVkaWF0ZWsvCitGOglkcml2ZXJzL21mZC9tdGstbW1zeXMu
-YwogTjoJbXRrCiBLOgltZWRpYXRlawogCi0tIAoyLjE2LjMKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Update ecc step size, ecc strength, and parity bits supported on
+each MTK NAND controller.
+
+Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
+---
+ Documentation/devicetree/bindings/mtd/mtk-nand.txt | 24 +++++++++++++++++-----
+ 1 file changed, 19 insertions(+), 5 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/mtd/mtk-nand.txt b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
+index 1c88526..f20ab4a 100644
+--- a/Documentation/devicetree/bindings/mtd/mtk-nand.txt
++++ b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
+@@ -50,14 +50,19 @@ Optional:
+ - nand-on-flash-bbt:	Store BBT on NAND Flash.
+ - nand-ecc-mode:	the NAND ecc mode (check driver for supported modes)
+ - nand-ecc-step-size:	Number of data bytes covered by a single ECC step.
+-			valid values: 512 and 1024.
++			valid values:
++			512 and 1024 on mt2701 and mt2712.
++			512 only on mt7622.
+ 			1024 is recommended for large page NANDs.
+ - nand-ecc-strength:	Number of bits to correct per ECC step.
+-			The valid values that the controller supports are: 4, 6,
+-			8, 10, 12, 14, 16, 18, 20, 22, 24, 28, 32, 36, 40, 44,
+-			48, 52, 56, 60.
++			The valid values that each controller supports:
++			mt2701: 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 28,
++				32, 36, 40, 44, 48, 52, 56, 60.
++			mt2712: 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 28,
++				32, 36, 40, 44, 48, 52, 56, 60, 68, 72, 80.
++			mt7622: 4, 6, 8, 10, 12, 14, 16.
+ 			The strength should be calculated as follows:
+-			E = (S - F) * 8 / 14
++			E = (S - F) * 8 / B
+ 			S = O / (P / Q)
+ 				E :	nand-ecc-strength.
+ 				S :	spare size per sector.
+@@ -66,6 +71,15 @@ Optional:
+ 				O :	oob size.
+ 				P :	page size.
+ 				Q :	nand-ecc-step-size.
++				B :	number of parity bits needed to correct
++					1 bitflip.
++					According to MTK NAND controller design,
++					this number depends on max ecc step size
++					that MTK NAND controller supports.
++					If max ecc step size supported is 1024,
++					then it should be always 14. And if max
++					ecc step size is 512, then it should be
++					always 13.
+ 			If the result does not match any one of the listed
+ 			choices above, please select the smaller valid value from
+ 			the list.
+-- 
+1.9.1
+
+
+______________________________________________________
+Linux MTD discussion mailing list
+http://lists.infradead.org/mailman/listinfo/linux-mtd/
