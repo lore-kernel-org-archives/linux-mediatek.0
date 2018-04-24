@@ -1,55 +1,45 @@
-From: Xiaolei Li <xiaolei.li@mediatek.com>
-Subject: [PATCH v3] Improve MTK NAND driver
-Date: Tue, 24 Apr 2018 10:11:06 +0800
-Message-ID: <1524535867-32413-1-git-send-email-xiaolei.li@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH 2/5] usb: mtu3: remove repeated setting of gadget state
+Date: Tue, 24 Apr 2018 10:52:47 +0800
+Message-ID: <e570f74b9ef18b0de5fc2bf660c547028a22743e.1524537854.git.chunfeng.yun@mediatek.com>
+References: <3b0c7ca576fee8220d63c9914483b70b0fbc8783.1524537854.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
-List-Post: <mailto:linux-mtd@lists.infradead.org>
-List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
-Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
-To: boris.brezillon@bootlin.com
-Cc: linux-mediatek@lists.infradead.org, xiaolei.li@mediatek.com, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <3b0c7ca576fee8220d63c9914483b70b0fbc8783.1524537854.git.chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch fixes some MTK NAND driver DT binding description errors.
+The usb_add_gadget_udc() will set the gadget state as
+USB_STATE_NOTATTACHED, so we needn't set it again.
 
-Changes relative to:
---------------------
-tree    : https://github.com/bbrezillon/linux-0day
-branch  : nand/next
-commit  :
-	'commit ba4150b1ec2a ("mtd: rawnand: s3c2410: enhance the probe
-	 function error path")'
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/usb/mtu3/mtu3_gadget.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-Patch v3:
-  - Remove max_sector_size change. It is uselees now.
-  - Remove maximize_fdm_ecc new caps patch. Send a patch series for this
-    change in the future.
-  - Remove MTK NAND Controller maintainers entry patch. This patch was
-    accepted in patch v2.
-
-Patch v2:
-  - Add new nfc capability instead of defining new DT property.
-  - Remove not backward compat patches about nand-ecc-maximize.
-
-Xiaolei Li (1):
-  dt-bindings: mtd: mtk-nand: Update properties description
-
- Documentation/devicetree/bindings/mtd/mtk-nand.txt | 24 +++++++++++++++++-----
- 1 file changed, 19 insertions(+), 5 deletions(-)
-
+diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
+index f05f10f..de0de01 100644
+--- a/drivers/usb/mtu3/mtu3_gadget.c
++++ b/drivers/usb/mtu3/mtu3_gadget.c
+@@ -660,14 +660,10 @@ int mtu3_gadget_setup(struct mtu3 *mtu)
+ 	mtu3_gadget_init_eps(mtu);
+ 
+ 	ret = usb_add_gadget_udc(mtu->dev, &mtu->g);
+-	if (ret) {
++	if (ret)
+ 		dev_err(mtu->dev, "failed to register udc\n");
+-		return ret;
+-	}
+ 
+-	usb_gadget_set_state(&mtu->g, USB_STATE_NOTATTACHED);
+-
+-	return 0;
++	return ret;
+ }
+ 
+ void mtu3_gadget_cleanup(struct mtu3 *mtu)
 -- 
 1.9.1
-
-
-______________________________________________________
-Linux MTD discussion mailing list
-http://lists.infradead.org/mailman/listinfo/linux-mtd/
