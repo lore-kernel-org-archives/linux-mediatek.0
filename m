@@ -1,75 +1,111 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v1 2/4] dt-bindings: clock: mediatek: add g3dsys bindings
-Date: Tue, 24 Apr 2018 23:45:38 +0800
-Message-ID: <1524584738.12322.17.camel@mtkswgap22>
-References: <cover.1524044917.git.sean.wang@mediatek.com>
-         <4b5d243d33433f83874359794b796d4228574714.1524044917.git.sean.wang@mediatek.com>
-         <20180424143907.eewrpzdmkhhux3lb@rob-hp-laptop>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] regmap: include <linux/ktime.h> from
+ include/linux/regmap.h
+Date: Tue, 24 Apr 2018 18:31:06 +0100
+Message-ID: <20180424173106.GE22073@sirena.org.uk>
+References: <ccea364eeb830b2092987d271c8308b97fe59d8f.1524465345.git.sean.wang@mediatek.com>
+ <20180423100318.GA19834@sirena.org.uk>
+ <d3e10dc5-55d3-40b8-a8de-d48aaaecf019@gmail.com>
+ <20180423115043.GD19834@sirena.org.uk>
+ <f4025431-be9a-32f9-06e1-9c6ac185c96a@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180424143907.eewrpzdmkhhux3lb@rob-hp-laptop>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, airlied@linux.ie, matthias.bgg@gmail.com, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============2666023413235501595=="
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <f4025431-be9a-32f9-06e1-9c6ac185c96a-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-04-24 at 09:39 -0500, Rob Herring wrote:
-> On Wed, Apr 18, 2018 at 06:24:54PM +0800, sean.wang@mediatek.com wrote:
-> > From: Sean Wang <sean.wang@mediatek.com>
-> > 
-> > Add bindings to g3dsys providing necessary clock and reset control to
-> > Mali-450.
-> > 
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > ---
-> >  .../bindings/arm/mediatek/mediatek,g3dsys.txt      | 30 ++++++++++++++++++++++
-> >  1 file changed, 30 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,g3dsys.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,g3dsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,g3dsys.txt
-> > new file mode 100644
-> > index 0000000..ff2d70c
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,g3dsys.txt
-> > @@ -0,0 +1,30 @@
-> > +MediaTek g3dsys controller
-> > +============================
-> > +
-> > +The MediaTek g3dsys controller provides various clocks and reset controller to
-> > +the GPU.
-> > +
-> > +Required Properties:
-> > +
-> > +- compatible: Should be:
-> > +	- "mediatek,mt2701-g3dsys", "syscon":
-> > +		for MT2701 SoC
-> > +	- "mediatek,mt7623-ethsys", "mediatek,mt2701-g3dsys", "syscon":
-> > +		for MT7623 SoC
-> 
-> ethsys?
-> 
 
-thanks! I'll also fix it up in the next version.
+--===============2666023413235501595==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="wchHw8dVAp53YPj8"
+Content-Disposition: inline
 
-> > +- #clock-cells: Must be 1
-> > +- #reset-cells: Must be 1
-> > +
-> > +The ethsys controller uses the common clk binding from
-> > +Documentation/devicetree/bindings/clock/clock-bindings.txt
-> > +The available clocks are defined in dt-bindings/clock/mt*-clk.h.
-> > +
-> > +Example:
-> > +
-> > +g3dsys: clock-controller@13000000 {
-> > +	compatible = "mediatek,mt7623-g3dsys",
-> > +		     "mediatek,mt2701-g3dsys",
-> > +		     "syscon";
-> > +	reg = <0 0x13000000 0 0x200>;
-> > +	#clock-cells = <1>;
-> > +	#reset-cells = <1>;
-> > +};
-> > -- 
-> > 2.7.4
-> > 
+
+--wchHw8dVAp53YPj8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Apr 23, 2018 at 04:07:10PM +0200, Matthias Brugger wrote:
+> On 04/23/2018 01:50 PM, Mark Brown wrote:
+
+> > So it looks like there is a dependency here...?
+
+> Yes, regmap_read_poll_timeout macro uses for example ktime_compare which =
+is
+> defined in linux/ktime.h
+
+> That's my understanding.
+
+OK, it's important to make sure that people getting a patch series know
+about stuff like this as it will affect how things are reviewed and
+applied. =20
+
+The following changes since commit e241e3f2bf975788a1b70dff2eb5180ca395b28e:
+
+  Merge tag 'for_linus' of git://git.kernel.org/pub/scm/linux/kernel/git/ms=
+t/vhost (2018-04-11 18:58:27 -0700)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regmap.git tags/r=
+egmap-ktime-fix
+
+for you to fetch changes up to f15cd6d99198e9c15229aefec639a34a6e8174c6:
+
+  regmap: include <linux/ktime.h> from include/linux/regmap.h (2018-04-24 1=
+8:11:50 +0100)
+
+----------------------------------------------------------------
+regmap: Fix missing include of ktime.h
+
+Required for some dependencies.
+
+----------------------------------------------------------------
+Sean Wang (1):
+      regmap: include <linux/ktime.h> from include/linux/regmap.h
+
+ include/linux/regmap.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+--wchHw8dVAp53YPj8
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlrfadkACgkQJNaLcl1U
+h9AlHQf/bC6mn12CND4+25wXDK/guAEy3YpckmZXliCZ67oYASB1lLcKxu1OqQjN
+U/QLwp1Xbo0HhKmvT3OQBZAEtPPUOJOEHWCevu/jVi+9j3W793P5hW3+vzAhYvVc
+MlD1/9xSqskL8pSVIfiQMRa133zKUPN7Yb1VmP/Y2I+kksgB0llJakMegX1ljpka
+uHKCweP0yli6KmZL6um29miFw6NZ0GOhVBrYucPPe8ovmJmrfQFT5B/zPRAqlJmu
+eWi1+hXjk0o7KHXx3J3wHgDk9hXGO2eJlyKghOX0efIWWw9Jznir1BZg4V+dpVdh
+OMaPVaup5ztQWdB+vNK33I1jZxd3Ig==
+=aChS
+-----END PGP SIGNATURE-----
+
+--wchHw8dVAp53YPj8--
+
+
+--===============2666023413235501595==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============2666023413235501595==--
