@@ -1,205 +1,72 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: [PATCH v2] mmc: mediatek: add 64G DRAM DMA support
-Date: Wed, 25 Apr 2018 15:19:03 +0800
-Message-ID: <1524640743-11732-2-git-send-email-chaotian.jing@mediatek.com>
-References: <1524640743-11732-1-git-send-email-chaotian.jing@mediatek.com>
+From: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Subject: [PATCH v4 0/5] ASoC: mediatek: add support for mt6797
+	SoC
+Date: Wed, 25 Apr 2018 15:25:17 +0800
+Message-ID: <20180425072522.14167-1-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1524640743-11732-1-git-send-email-chaotian.jing@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Phong LE <ple@baylibre.com>, Julia Lawall <Julia.Lawall@lip6.fr>, Heiner Kallweit <hkallweit1@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, yong mao <yong.mao@mediatek.com>, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: broonie@kernel.org
+Cc: alsa-devel@alsa-project.org, wsd_upstream@mediatek.com, chipeng.chang@mediatek.com, garlic.tseng@mediatek.com, linux-mediatek@lists.infradead.org, kaichieh.chuang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-MT2712 MSDC supports 64G DRAM DMA access, it needs update
-gpd/bd structure.
+This patch adds basic support for Mediatek AFE for MT6797 SoC.
 
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 56 +++++++++++++++++++++++++++++++++++++++++------
- 1 file changed, 49 insertions(+), 7 deletions(-)
+Change since the previous patch set:
+* mt6797, return IRQ_NONE when receive unexpected irq signal.
+* mt6351, gain control use tlv
+* mt6351, set regmap to component by snd_soc_component_init_regmap
+* mt6351, playback_tlv, starts from -10 dB
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index d642e11..0484138 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -71,6 +71,7 @@
- #define SDC_ADV_CFG0     0x64
- #define EMMC_IOCON       0x7c
- #define SDC_ACMD_RESP    0x80
-+#define DMA_SA_H4BIT     0x8c
- #define MSDC_DMA_SA      0x90
- #define MSDC_DMA_CTRL    0x98
- #define MSDC_DMA_CFG     0x9c
-@@ -195,6 +196,9 @@
- /* SDC_ADV_CFG0 mask */
- #define SDC_RX_ENHANCE_EN	(0x1 << 20)	/* RW */
- 
-+/* DMA_SA_H4BIT mask */
-+#define DMA_ADDR_HIGH_4BIT      (0xf << 0)      /* RW */
-+
- /* MSDC_DMA_CTRL mask */
- #define MSDC_DMA_CTRL_START     (0x1 << 0)	/* W */
- #define MSDC_DMA_CTRL_STOP      (0x1 << 1)	/* W */
-@@ -228,6 +232,7 @@
- 
- #define MSDC_PATCH_BIT2_CFGRESP   (0x1 << 15)   /* RW */
- #define MSDC_PATCH_BIT2_CFGCRCSTS (0x1 << 28)   /* RW */
-+#define MSDC_PB2_SUPPORT_64G      (0x1 << 1)    /* RW */
- #define MSDC_PB2_RESPWAIT         (0x3 << 2)    /* RW */
- #define MSDC_PB2_RESPSTSENSEL     (0x7 << 16)   /* RW */
- #define MSDC_PB2_CRCSTSENSEL      (0x7 << 29)   /* RW */
-@@ -281,6 +286,8 @@ struct mt_gpdma_desc {
- #define GPDMA_DESC_BDP		(0x1 << 1)
- #define GPDMA_DESC_CHECKSUM	(0xff << 8) /* bit8 ~ bit15 */
- #define GPDMA_DESC_INT		(0x1 << 16)
-+#define GPDMA_DESC_NEXT_H4	(0xf << 24)
-+#define GPDMA_DESC_PTR_H4	(0xf << 28)
- 	u32 next;
- 	u32 ptr;
- 	u32 gpd_data_len;
-@@ -297,6 +304,8 @@ struct mt_bdma_desc {
- #define BDMA_DESC_CHECKSUM	(0xff << 8) /* bit8 ~ bit15 */
- #define BDMA_DESC_BLKPAD	(0x1 << 17)
- #define BDMA_DESC_DWPAD		(0x1 << 18)
-+#define BDMA_DESC_NEXT_H4	(0xf << 24)
-+#define BDMA_DESC_PTR_H4	(0xf << 28)
- 	u32 next;
- 	u32 ptr;
- 	u32 bd_data_len;
-@@ -335,6 +344,7 @@ struct mtk_mmc_compatible {
- 	bool busy_check;
- 	bool stop_clk_fix;
- 	bool enhance_rx;
-+	bool support_64g;
- };
- 
- struct msdc_tune_para {
-@@ -404,6 +414,7 @@ struct msdc_host {
- 	.busy_check = false,
- 	.stop_clk_fix = false,
- 	.enhance_rx = false,
-+	.support_64g = false,
- };
- 
- static const struct mtk_mmc_compatible mt8173_compat = {
-@@ -415,6 +426,7 @@ struct msdc_host {
- 	.busy_check = false,
- 	.stop_clk_fix = false,
- 	.enhance_rx = false,
-+	.support_64g = false,
- };
- 
- static const struct mtk_mmc_compatible mt2701_compat = {
-@@ -426,6 +438,7 @@ struct msdc_host {
- 	.busy_check = false,
- 	.stop_clk_fix = false,
- 	.enhance_rx = false,
-+	.support_64g = false,
- };
- 
- static const struct mtk_mmc_compatible mt2712_compat = {
-@@ -437,6 +450,7 @@ struct msdc_host {
- 	.busy_check = true,
- 	.stop_clk_fix = true,
- 	.enhance_rx = true,
-+	.support_64g = true,
- };
- 
- static const struct mtk_mmc_compatible mt7622_compat = {
-@@ -448,6 +462,7 @@ struct msdc_host {
- 	.busy_check = true,
- 	.stop_clk_fix = true,
- 	.enhance_rx = true,
-+	.support_64g = false,
- };
- 
- static const struct of_device_id msdc_of_ids[] = {
-@@ -557,7 +572,12 @@ static inline void msdc_dma_setup(struct msdc_host *host, struct msdc_dma *dma,
- 		/* init bd */
- 		bd[j].bd_info &= ~BDMA_DESC_BLKPAD;
- 		bd[j].bd_info &= ~BDMA_DESC_DWPAD;
--		bd[j].ptr = (u32)dma_address;
-+		bd[j].ptr = lower_32_bits(dma_address);
-+		if (host->dev_comp->support_64g) {
-+			bd[j].bd_info &= ~BDMA_DESC_PTR_H4;
-+			bd[j].bd_info |= (upper_32_bits(dma_address) & 0xf)
-+					 << 28;
-+		}
- 		bd[j].bd_data_len &= ~BDMA_DESC_BUFLEN;
- 		bd[j].bd_data_len |= (dma_len & BDMA_DESC_BUFLEN);
- 
-@@ -576,7 +596,10 @@ static inline void msdc_dma_setup(struct msdc_host *host, struct msdc_dma *dma,
- 	dma_ctrl &= ~(MSDC_DMA_CTRL_BRUSTSZ | MSDC_DMA_CTRL_MODE);
- 	dma_ctrl |= (MSDC_BURST_64B << 12 | 1 << 8);
- 	writel_relaxed(dma_ctrl, host->base + MSDC_DMA_CTRL);
--	writel((u32)dma->gpd_addr, host->base + MSDC_DMA_SA);
-+	if (host->dev_comp->support_64g)
-+		sdr_set_field(host->base + DMA_SA_H4BIT, DMA_ADDR_HIGH_4BIT,
-+			      upper_32_bits(dma->gpd_addr) & 0xf);
-+	writel(lower_32_bits(dma->gpd_addr), host->base + MSDC_DMA_SA);
- }
- 
- static void msdc_prepare_data(struct msdc_host *host, struct mmc_request *mrq)
-@@ -1367,6 +1390,9 @@ static void msdc_init_hw(struct msdc_host *host)
- 			     MSDC_PATCH_BIT2_CFGCRCSTS);
- 	}
- 
-+	if (host->dev_comp->support_64g)
-+		sdr_set_bits(host->base + MSDC_PATCH_BIT2,
-+			     MSDC_PB2_SUPPORT_64G);
- 	if (host->dev_comp->data_tune) {
- 		sdr_set_bits(host->base + tune_reg,
- 			     MSDC_PAD_TUNE_RD_SEL | MSDC_PAD_TUNE_CMD_SEL);
-@@ -1408,19 +1434,32 @@ static void msdc_init_gpd_bd(struct msdc_host *host, struct msdc_dma *dma)
- {
- 	struct mt_gpdma_desc *gpd = dma->gpd;
- 	struct mt_bdma_desc *bd = dma->bd;
-+	dma_addr_t dma_addr;
- 	int i;
- 
- 	memset(gpd, 0, sizeof(struct mt_gpdma_desc) * 2);
- 
-+	dma_addr = dma->gpd_addr + sizeof(struct mt_gpdma_desc);
- 	gpd->gpd_info = GPDMA_DESC_BDP; /* hwo, cs, bd pointer */
--	gpd->ptr = (u32)dma->bd_addr; /* physical address */
- 	/* gpd->next is must set for desc DMA
- 	 * That's why must alloc 2 gpd structure.
- 	 */
--	gpd->next = (u32)dma->gpd_addr + sizeof(struct mt_gpdma_desc);
-+	gpd->next = lower_32_bits(dma_addr);
-+	if (host->dev_comp->support_64g)
-+		gpd->gpd_info |= (upper_32_bits(dma_addr) & 0xf) << 24;
-+
-+	dma_addr = dma->bd_addr;
-+	gpd->ptr = lower_32_bits(dma->bd_addr); /* physical address */
-+	if (host->dev_comp->support_64g)
-+		gpd->gpd_info |= (upper_32_bits(dma_addr) & 0xf) << 28;
-+
- 	memset(bd, 0, sizeof(struct mt_bdma_desc) * MAX_BD_NUM);
--	for (i = 0; i < (MAX_BD_NUM - 1); i++)
--		bd[i].next = (u32)dma->bd_addr + sizeof(*bd) * (i + 1);
-+	for (i = 0; i < (MAX_BD_NUM - 1); i++) {
-+		dma_addr = dma->bd_addr + sizeof(*bd) * (i + 1);
-+		bd[i].next = lower_32_bits(dma_addr);
-+		if (host->dev_comp->support_64g)
-+			bd[i].bd_info |= (upper_32_bits(dma_addr) & 0xf) << 24;
-+	}
- }
- 
- static void msdc_ops_set_ios(struct mmc_host *mmc, struct mmc_ios *ios)
-@@ -1913,7 +1952,10 @@ static int msdc_drv_probe(struct platform_device *pdev)
- 	mmc->max_blk_size = 2048;
- 	mmc->max_req_size = 512 * 1024;
- 	mmc->max_blk_count = mmc->max_req_size / 512;
--	host->dma_mask = DMA_BIT_MASK(32);
-+	if (host->dev_comp->support_64g)
-+		host->dma_mask = DMA_BIT_MASK(36);
-+	else
-+		host->dma_mask = DMA_BIT_MASK(32);
- 	mmc_dev(mmc)->dma_mask = &host->dma_mask;
- 
- 	host->timeout_clks = 3 * 1048576;
+KaiChieh Chuang (5):
+  ASoC: add mt6351 codec driver
+  ASoC: mt6797: add structure define and	clock control function
+    for 6797
+  ASoC: mt6797: add mt6797 platform driver
+  ASoC: add mt6797-mt6351 driver and	config option
+  ASoC: mediatek: add documents for mt6797
+
+ Documentation/devicetree/bindings/sound/mt6351.txt |   16 +
+ .../devicetree/bindings/sound/mt6797-afe-pcm.txt   |   42 +
+ .../devicetree/bindings/sound/mt6797-mt6351.txt    |   14 +
+ sound/soc/codecs/Kconfig                           |    4 +
+ sound/soc/codecs/Makefile                          |    2 +
+ sound/soc/codecs/mt6351.c                          | 1516 ++++++++++++++++++++
+ sound/soc/codecs/mt6351.h                          |  108 ++
+ sound/soc/mediatek/Kconfig                         |   20 +
+ sound/soc/mediatek/Makefile                        |    1 +
+ sound/soc/mediatek/mt6797/Makefile                 |   19 +
+ sound/soc/mediatek/mt6797/mt6797-afe-clk.c         |  132 ++
+ sound/soc/mediatek/mt6797/mt6797-afe-clk.h         |   25 +
+ sound/soc/mediatek/mt6797/mt6797-afe-common.h      |   57 +
+ sound/soc/mediatek/mt6797/mt6797-afe-pcm.c         | 1241 ++++++++++++++++
+ sound/soc/mediatek/mt6797/mt6797-interconnection.h |   41 +
+ sound/soc/mediatek/mt6797/mt6797-mt6351.c          |  186 +++
+ sound/soc/mediatek/mt6797/mt6797-reg.h             |  846 +++++++++++
+ 17 files changed, 4270 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/mt6351.txt
+ create mode 100644 Documentation/devicetree/bindings/sound/mt6797-afe-pcm.txt
+ create mode 100644 Documentation/devicetree/bindings/sound/mt6797-mt6351.txt
+ create mode 100644 sound/soc/codecs/mt6351.c
+ create mode 100644 sound/soc/codecs/mt6351.h
+ create mode 100644 sound/soc/mediatek/mt6797/Makefile
+ create mode 100644 sound/soc/mediatek/mt6797/mt6797-afe-clk.c
+ create mode 100644 sound/soc/mediatek/mt6797/mt6797-afe-clk.h
+ create mode 100644 sound/soc/mediatek/mt6797/mt6797-afe-common.h
+ create mode 100644 sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
+ create mode 100644 sound/soc/mediatek/mt6797/mt6797-interconnection.h
+ create mode 100644 sound/soc/mediatek/mt6797/mt6797-mt6351.c
+ create mode 100644 sound/soc/mediatek/mt6797/mt6797-reg.h
+
 -- 
-1.8.1.1.dirty
+2.12.5
