@@ -1,187 +1,104 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v2 15/17] power: reset: mt6323: add a driver for MT6323 power controller
-Date: Wed, 25 Apr 2018 17:32:41 +0800
-Message-ID: <51d4fbe0d6a22986ddd2df66c9db39aa1eaab74a.1524646231.git.sean.wang@mediatek.com>
-References: <cover.1524646231.git.sean.wang@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v4 1/5] ASoC: add mt6351 codec driver
+Date: Wed, 25 Apr 2018 18:19:34 +0100
+Message-ID: <20180425171934.GH24769@sirena.org.uk>
+References: <20180425072522.14167-1-kaichieh.chuang@mediatek.com>
+ <20180425072522.14167-2-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1524646231.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, mark.rutland@arm.com, sre@kernel.org, lee.jones@linaro.org, a.zummo@towertech.it, alexandre.belloni@free-electrons.com, matthias.bgg@gmail.com, eddie.huang@mediatek.com
-Cc: devicetree@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+Content-Type: multipart/mixed; boundary="===============1065398219761819332=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20180425072522.14167-2-kaichieh.chuang@mediatek.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Cc: alsa-devel@alsa-project.org, garlic.tseng@mediatek.com, linux-mediatek@lists.infradead.org, chipeng.chang@mediatek.com, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
 
-The power device is responsible for externally down or up the power
-of the remote MediaTek SoC through the tiny circuit BBPU inside PMIC RTC.
+--===============1065398219761819332==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="GBDnBH7+ZvLx8QD4"
+Content-Disposition: inline
 
-Though it's a part of RTC device, it would be better to be a standalone
-driver than to be a part of existent RTC driver so as to let us make
-concentration on works about power-controlling topic and to obtain
-improvements while the subsystem power/reset constantly growing.
 
-Currently, the most basic functionality supported is to just power off
-the system by writing to a special bit field in BBPU register after the
-system has reached pm_poweroff.
+--GBDnBH7+ZvLx8QD4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/power/reset/Kconfig           | 10 ++++
- drivers/power/reset/Makefile          |  1 +
- drivers/power/reset/mt6323-poweroff.c | 97 +++++++++++++++++++++++++++++++++++
- include/linux/mfd/mt6397/rtc.h        |  1 +
- 4 files changed, 109 insertions(+)
- create mode 100644 drivers/power/reset/mt6323-poweroff.c
+On Wed, Apr 25, 2018 at 03:25:18PM +0800, KaiChieh Chuang wrote:
 
-diff --git a/drivers/power/reset/Kconfig b/drivers/power/reset/Kconfig
-index df58fc8..7b49d71 100644
---- a/drivers/power/reset/Kconfig
-+++ b/drivers/power/reset/Kconfig
-@@ -128,6 +128,16 @@ config POWER_RESET_LTC2952
- 	  This driver supports an external powerdown trigger and board power
- 	  down via the LTC2952. Bindings are made in the device tree.
- 
-+config POWER_RESET_MT6323
-+	bool "MediaTek MT6323 power-off driver"
-+	depends on MFD_MT6397
-+	help
-+	  The power-off driver is responsible for externally shutdown down
-+	  the power of a remote MediaTek SoC MT6323 is connected to through
-+	  controlling a tiny circuit BBPU inside MT6323 RTC.
-+
-+	  Say Y if you have a board where MT6323 could be found.
-+
- config POWER_RESET_QNAP
- 	bool "QNAP power-off driver"
- 	depends on OF_GPIO && PLAT_ORION
-diff --git a/drivers/power/reset/Makefile b/drivers/power/reset/Makefile
-index 7778c74..8836172 100644
---- a/drivers/power/reset/Makefile
-+++ b/drivers/power/reset/Makefile
-@@ -11,6 +11,7 @@ obj-$(CONFIG_POWER_RESET_GPIO) += gpio-poweroff.o
- obj-$(CONFIG_POWER_RESET_GPIO_RESTART) += gpio-restart.o
- obj-$(CONFIG_POWER_RESET_HISI) += hisi-reboot.o
- obj-$(CONFIG_POWER_RESET_MSM) += msm-poweroff.o
-+obj-$(CONFIG_POWER_RESET_MT6323) += mt6323-poweroff.o
- obj-$(CONFIG_POWER_RESET_OCELOT_RESET) += ocelot-reset.o
- obj-$(CONFIG_POWER_RESET_PIIX4_POWEROFF) += piix4-poweroff.o
- obj-$(CONFIG_POWER_RESET_LTC2952) += ltc2952-poweroff.o
-diff --git a/drivers/power/reset/mt6323-poweroff.c b/drivers/power/reset/mt6323-poweroff.c
-new file mode 100644
-index 0000000..c195766
---- /dev/null
-+++ b/drivers/power/reset/mt6323-poweroff.c
-@@ -0,0 +1,97 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Power off through MediaTek PMIC
-+ *
-+ * Copyright (C) 2018 MediaTek Inc.
-+ *
-+ * Author: Sean Wang <sean.wang@mediatek.com>
-+ *
-+ */
-+
-+#include <linux/err.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/mfd/mt6397/core.h>
-+#include <linux/mfd/mt6397/rtc.h>
-+
-+struct mt6323_pwrc {
-+	struct device *dev;
-+	struct regmap *regmap;
-+	u32 base;
-+};
-+
-+static struct mt6323_pwrc *mt_pwrc;
-+
-+static void mt6323_do_pwroff(void)
-+{
-+	struct mt6323_pwrc *pwrc = mt_pwrc;
-+	unsigned int val;
-+	int ret;
-+
-+	regmap_write(pwrc->regmap, pwrc->base + RTC_BBPU, RTC_BBPU_KEY);
-+	regmap_write(pwrc->regmap, pwrc->base + RTC_WRTGR, 1);
-+
-+	ret = regmap_read_poll_timeout(pwrc->regmap,
-+				       pwrc->base + RTC_BBPU, val,
-+				       !(val & RTC_BBPU_CBUSY),
-+				       MTK_RTC_POLL_DELAY_US,
-+				       MTK_RTC_POLL_TIMEOUT);
-+	if (ret)
-+		dev_err(pwrc->dev, "failed to write BBPU: %d\n", ret);
-+
-+	/* Wait some time until system down, otherwise, notice with a warn */
-+	mdelay(1000);
-+
-+	WARN_ONCE(1, "Unable to power off system\n");
-+}
-+
-+static int mt6323_pwrc_probe(struct platform_device *pdev)
-+{
-+	struct mt6397_chip *mt6397_chip = dev_get_drvdata(pdev->dev.parent);
-+	struct mt6323_pwrc *pwrc;
-+	struct resource *res;
-+
-+	pwrc = devm_kzalloc(&pdev->dev, sizeof(*pwrc), GFP_KERNEL);
-+	if (!pwrc)
-+		return -ENOMEM;
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	pwrc->base = res->start;
-+	pwrc->regmap = mt6397_chip->regmap;
-+	pwrc->dev = &pdev->dev;
-+	mt_pwrc = pwrc;
-+
-+	pm_power_off = &mt6323_do_pwroff;
-+
-+	return 0;
-+}
-+
-+static int mt6323_pwrc_remove(struct platform_device *pdev)
-+{
-+	if (pm_power_off == &mt6323_do_pwroff)
-+		pm_power_off = NULL;
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id mt6323_pwrc_dt_match[] = {
-+	{ .compatible = "mediatek,mt6323-pwrc" },
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, mt6323_pwrc_dt_match);
-+
-+static struct platform_driver mt6323_pwrc_driver = {
-+	.probe		= mt6323_pwrc_probe,
-+	.remove		= mt6323_pwrc_remove,
-+	.driver		= {
-+		.name	= "mt6323-pwrc",
-+		.of_match_table = mt6323_pwrc_dt_match,
-+	},
-+};
-+
-+module_platform_driver(mt6323_pwrc_driver);
-+
-+MODULE_DESCRIPTION("Poweroff driver for MT6323 PMIC");
-+MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
-+MODULE_LICENSE("GPL v2");
-diff --git a/include/linux/mfd/mt6397/rtc.h b/include/linux/mfd/mt6397/rtc.h
-index 480977c..ac932c9 100644
---- a/include/linux/mfd/mt6397/rtc.h
-+++ b/include/linux/mfd/mt6397/rtc.h
-@@ -16,6 +16,7 @@
- 
- #define RTC_BBPU		0x0000
- #define RTC_BBPU_CBUSY		BIT(6)
-+#define RTC_BBPU_KEY            (0x43 << 8)
- 
- #define RTC_WRTGR		0x003c
- 
--- 
-2.7.4
+This is almost ready, a few more things below that I just noticed as the
+bigger issues have all been dealt with now.  Sorry, should've noticed
+most of these sooner.
+
+> +++ b/sound/soc/codecs/mt6351.c
+> @@ -0,0 +1,1516 @@
+> +/*
+> + * mt6351.c  --  mt6351 ALSA SoC audio codec driver
+> + *
+> + * Copyright (c) 2018 MediaTek Inc.
+> + * Author: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+
+This should be a C++ comment with a SPDX header instead of the GPL
+statement.
+
+> +static unsigned int get_play_reg_val(struct snd_soc_codec *codec,
+> +				     unsigned int rate)
+
+The driver is using snd_soc_codec quite a bit but we are trying to
+transition away from that to snd_soc_component - you can see a lot of
+example transitions in mainline from Moritmoto-san, everything that
+exists at the CODEC level has a pretty direct equivalent in the
+component struct so it's mostly (but not quite entirely unfortunately)
+search and replace.
+
+> +static struct snd_soc_codec_driver mt6351_soc_codec_driver = {
+> +	.probe = mt6351_codec_probe,
+> +
+> +	.component_driver = {
+> +		.dapm_widgets = mt6351_dapm_widgets,
+> +		.num_dapm_widgets = ARRAY_SIZE(mt6351_dapm_widgets),
+> +		.dapm_routes = mt6351_dapm_routes,
+> +		.num_dapm_routes = ARRAY_SIZE(mt6351_dapm_routes),
+> +	},
+> +};
+
+You should be able to add the controls that you're manually registering
+in probe here.
+
+--GBDnBH7+ZvLx8QD4
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlrguKUACgkQJNaLcl1U
+h9A1XQf+IYwq9580VE7RG+lt8Vkzo/3JWQR6jDGB7kqedKhBmclVFtD9RzVrEGLO
+N1FwIUvnVKH+YJM785OkBa76s26FivND0fdvl7DrGYynjswenPlmkrjy7GFfR0OU
+qvAGcXG9XL2fIPk6PPvrO18mB5IorPkL7XNAjbQ82rc8/cSxMffdfGAoGQ2ETmOS
+ZJGUCr9SDMOqzoif+4Mj3E4xyOsTQZjJUdwrtBXvmzSvQZijDbP9HKesjewH5V4A
+NznAa6Bz/CUmkLm9OIu9Jdoj52E6dM7Q9mxZpV5DzAOURygX7zle3M8KooD52kln
++9CViHoxcmHds9htqzTvBcN1T8o/8Q==
+=YUUy
+-----END PGP SIGNATURE-----
+
+--GBDnBH7+ZvLx8QD4--
+
+--===============1065398219761819332==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============1065398219761819332==--
