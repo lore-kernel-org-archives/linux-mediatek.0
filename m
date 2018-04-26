@@ -1,104 +1,209 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v1 2/7] serdev: add dev_pm_domain_attach|detach()
-Date: Thu, 26 Apr 2018 13:29:58 +0800
-Message-ID: <1524720598.12322.37.camel@mtkswgap22>
-References: <cover.1522736996.git.sean.wang@mediatek.com>
-         <f976766cd499c8d7053a1f442aba1494b4d3314f.1522736996.git.sean.wang@mediatek.com>
-         <FD85DED4-589C-4113-8A8B-BC5A39494130@holtmann.org>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH] [DRM][KMS][MODE][MEDIATEK] Using the function
+ drm_display_mode_to_videomode
+Date: Thu, 26 Apr 2018 13:58:33 +0800
+Message-ID: <1524722313.6240.8.camel@mtksdaap41>
+References: <1522507712-22763-1-git-send-email-thakursatendra2003@yahoo.co.in>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <FD85DED4-589C-4113-8A8B-BC5A39494130@holtmann.org>
+In-Reply-To: <1522507712-22763-1-git-send-email-thakursatendra2003@yahoo.co.in>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Marcel Holtmann <marcel@holtmann.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Johan Hedberg <johan.hedberg@gmail.com>, devicetree <devicetree@vger.kernel.org>, Bluez mailing list <linux-bluetooth@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, Rob Herring <robh@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, linux-serial@vger.kernel.org
+To: Satendra Singh Thakur <thakursatendra2003@yahoo.co.in>
+Cc: linux-kernel@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-04-03 at 12:29 +0200, Marcel Holtmann wrote:
-> Hi Sean,
+Hi, Satendra:
+
+I've applied this patch to my branch mediatek-drm-next-4.18,
+and I've added below modification in this patch to prevent build error,
+
+diff --git a/drivers/gpu/drm/mediatek/Kconfig
+b/drivers/gpu/drm/mediatek/Kconfig
+index 294de45..119ec0a 100644
+--- a/drivers/gpu/drm/mediatek/Kconfig
++++ b/drivers/gpu/drm/mediatek/Kconfig
+@@ -11,6 +11,7 @@ config DRM_MEDIATEK
+        select DRM_PANEL
+        select MEMORY
+        select MTK_SMI
++       select VIDEOMODE_HELPERS
+        help
+          Choose this option if you have a Mediatek SoCs.
+          The module will be called mediatek-drm
+
+Regards,
+CK
+
+On Sat, 2018-03-31 at 20:17 +0530, Satendra Singh Thakur wrote:
+> This patch uses existing method drm_display_mode_to_videomode for
+> calculating front/back porches, sync lengths for mediatek dsi/dpi drivers; 
+> instead of manually calculating them
 > 
-> > In order to open up the required power gate before any operation can be
-> > effectively performed over the serial bus between CPU and serdev, it's
-> > clearly essential to add common attach functions for PM domains to serdev
-> > at the probe phase.
-> > 
-> > Similarly, the relevant dettach function for the PM domains should be
-> > properly and reversely added at the remove phase.
-> > 
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > Cc: Rob Herring <robh@kernel.org>
-> > Cc: Ulf Hansson <ulf.hansson@linaro.org>
-> > Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> > Cc: Jiri Slaby <jslaby@suse.com>
-> > Cc: linux-serial@vger.kernel.org
-> > ---
-> > drivers/tty/serdev/core.c | 14 +++++++++++++-
-> > 1 file changed, 13 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/tty/serdev/core.c b/drivers/tty/serdev/core.c
-> > index df93b72..c93d8ee 100644
-> > --- a/drivers/tty/serdev/core.c
-> > +++ b/drivers/tty/serdev/core.c
-> > @@ -13,6 +13,7 @@
-> > #include <linux/module.h>
-> > #include <linux/of.h>
-> > #include <linux/of_device.h>
-> > +#include <linux/pm_domain.h>
-> > #include <linux/serdev.h>
-> > #include <linux/slab.h>
-> > 
-> > @@ -330,8 +331,16 @@ EXPORT_SYMBOL_GPL(serdev_device_set_tiocm);
-> > static int serdev_drv_probe(struct device *dev)
-> > {
-> > 	const struct serdev_device_driver *sdrv = to_serdev_device_driver(dev->driver);
-> > +	int ret;
-> > +
-> > +	ret = dev_pm_domain_attach(dev, true);
-> > +	if (ret != -EPROBE_DEFER) {
-> > +		ret = sdrv->probe(to_serdev_device(dev));
-> > +		if (ret)
-> > +			dev_pm_domain_detach(dev, true);
-> > +	}
+> Signed-off-by: Satendra Singh Thakur <thakursatendra2003@yahoo.co.in>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dpi.c | 60 +++++++++++++++++++-------------------
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 14 ++-------
+>  2 files changed, 32 insertions(+), 42 deletions(-)
 > 
-> so if this is deferred, when does the serdev device gets probed?
-> 
-
-driver probe deferral mechanism is supported in driver core
-
-deferred_probe_initcall makes sure that deferred probing is
-delayed until late_initcall time.
-
-
-Below is a few of word I got from drivers/base/core.c I thought it helps
-to understand the mechanism in complete picture
-
-* If a required resource is not available yet, a driver can
-request probing to be deferred by returning -EPROBE_DEFER from
-its probe hook.
-
-* A driver returning -EPROBE_DEFER causes the device to be added to the
-pending list.  A successful driver probe will trigger moving all devices
-from the pending to the active list so that the workqueue will
-eventually retry them.
-
-> > 
-> > -	return sdrv->probe(to_serdev_device(dev));
-> > +	return ret;
-> > }
-> > 
-> > static int serdev_drv_remove(struct device *dev)
-> > @@ -339,6 +348,9 @@ static int serdev_drv_remove(struct device *dev)
-> > 	const struct serdev_device_driver *sdrv = to_serdev_device_driver(dev->driver);
-> > 	if (sdrv->remove)
-> > 		sdrv->remove(to_serdev_device(dev));
-> > +
-> > +	dev_pm_domain_detach(dev, true);
-> > +
-> > 	return 0;
-> > }
-> 
-> Regards
-> 
-> Marcel
-> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> index e80a603..6c0ea39 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -22,6 +22,7 @@
+>  #include <linux/interrupt.h>
+>  #include <linux/types.h>
+>  #include <linux/clk.h>
+> +#include <video/videomode.h>
+>  
+>  #include "mtk_dpi_regs.h"
+>  #include "mtk_drm_ddp_comp.h"
+> @@ -429,34 +430,35 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+>  	struct mtk_dpi_sync_param vsync_leven = { 0 };
+>  	struct mtk_dpi_sync_param vsync_rodd = { 0 };
+>  	struct mtk_dpi_sync_param vsync_reven = { 0 };
+> -	unsigned long pix_rate;
+> +	struct videomode vm = { 0 };
+>  	unsigned long pll_rate;
+>  	unsigned int factor;
+>  
+>  	/* let pll_rate can fix the valid range of tvdpll (1G~2GHz) */
+> -	pix_rate = 1000UL * mode->clock;
+> +
+>  	if (mode->clock <= 27000)
+> -		factor = 16 * 3;
+> +		factor = 3 << 4;
+>  	else if (mode->clock <= 84000)
+> -		factor = 8 * 3;
+> +		factor = 3 << 3;
+>  	else if (mode->clock <= 167000)
+> -		factor = 4 * 3;
+> +		factor = 3 << 2;
+>  	else
+> -		factor = 2 * 3;
+> -	pll_rate = pix_rate * factor;
+> +		factor = 3 << 1;
+> +	drm_display_mode_to_videomode(mode, &vm);
+> +	pll_rate = vm.pixelclock * factor;
+>  
+>  	dev_dbg(dpi->dev, "Want PLL %lu Hz, pixel clock %lu Hz\n",
+> -		pll_rate, pix_rate);
+> +		pll_rate, vm.pixelclock);
+>  
+>  	clk_set_rate(dpi->tvd_clk, pll_rate);
+>  	pll_rate = clk_get_rate(dpi->tvd_clk);
+>  
+> -	pix_rate = pll_rate / factor;
+> -	clk_set_rate(dpi->pixel_clk, pix_rate);
+> -	pix_rate = clk_get_rate(dpi->pixel_clk);
+> +	vm.pixelclock = pll_rate / factor;
+> +	clk_set_rate(dpi->pixel_clk, vm.pixelclock);
+> +	vm.pixelclock = clk_get_rate(dpi->pixel_clk);
+>  
+>  	dev_dbg(dpi->dev, "Got  PLL %lu Hz, pixel clock %lu Hz\n",
+> -		pll_rate, pix_rate);
+> +		pll_rate, vm.pixelclock);
+>  
+>  	limit.c_bottom = 0x0010;
+>  	limit.c_top = 0x0FE0;
+> @@ -465,33 +467,31 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+>  
+>  	dpi_pol.ck_pol = MTK_DPI_POLARITY_FALLING;
+>  	dpi_pol.de_pol = MTK_DPI_POLARITY_RISING;
+> -	dpi_pol.hsync_pol = mode->flags & DRM_MODE_FLAG_PHSYNC ?
+> +	dpi_pol.hsync_pol = vm.flags & DISPLAY_FLAGS_HSYNC_HIGH ?
+>  			    MTK_DPI_POLARITY_FALLING : MTK_DPI_POLARITY_RISING;
+> -	dpi_pol.vsync_pol = mode->flags & DRM_MODE_FLAG_PVSYNC ?
+> +	dpi_pol.vsync_pol = vm.flags & DISPLAY_FLAGS_VSYNC_HIGH ?
+>  			    MTK_DPI_POLARITY_FALLING : MTK_DPI_POLARITY_RISING;
+> -
+> -	hsync.sync_width = mode->hsync_end - mode->hsync_start;
+> -	hsync.back_porch = mode->htotal - mode->hsync_end;
+> -	hsync.front_porch = mode->hsync_start - mode->hdisplay;
+> +	hsync.sync_width = vm.hsync_len;
+> +	hsync.back_porch = vm.hback_porch;
+> +	hsync.front_porch = vm.hfront_porch;
+>  	hsync.shift_half_line = false;
+> -
+> -	vsync_lodd.sync_width = mode->vsync_end - mode->vsync_start;
+> -	vsync_lodd.back_porch = mode->vtotal - mode->vsync_end;
+> -	vsync_lodd.front_porch = mode->vsync_start - mode->vdisplay;
+> +	vsync_lodd.sync_width = vm.vsync_len;
+> +	vsync_lodd.back_porch = vm.vback_porch;
+> +	vsync_lodd.front_porch = vm.vfront_porch;
+>  	vsync_lodd.shift_half_line = false;
+>  
+> -	if (mode->flags & DRM_MODE_FLAG_INTERLACE &&
+> +	if (vm.flags & DISPLAY_FLAGS_INTERLACED &&
+>  	    mode->flags & DRM_MODE_FLAG_3D_MASK) {
+>  		vsync_leven = vsync_lodd;
+>  		vsync_rodd = vsync_lodd;
+>  		vsync_reven = vsync_lodd;
+>  		vsync_leven.shift_half_line = true;
+>  		vsync_reven.shift_half_line = true;
+> -	} else if (mode->flags & DRM_MODE_FLAG_INTERLACE &&
+> +	} else if (vm.flags & DISPLAY_FLAGS_INTERLACED &&
+>  		   !(mode->flags & DRM_MODE_FLAG_3D_MASK)) {
+>  		vsync_leven = vsync_lodd;
+>  		vsync_leven.shift_half_line = true;
+> -	} else if (!(mode->flags & DRM_MODE_FLAG_INTERLACE) &&
+> +	} else if (!(vm.flags & DISPLAY_FLAGS_INTERLACED) &&
+>  		   mode->flags & DRM_MODE_FLAG_3D_MASK) {
+>  		vsync_rodd = vsync_lodd;
+>  	}
+> @@ -505,12 +505,12 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+>  	mtk_dpi_config_vsync_reven(dpi, &vsync_reven);
+>  
+>  	mtk_dpi_config_3d(dpi, !!(mode->flags & DRM_MODE_FLAG_3D_MASK));
+> -	mtk_dpi_config_interface(dpi, !!(mode->flags &
+> -					 DRM_MODE_FLAG_INTERLACE));
+> -	if (mode->flags & DRM_MODE_FLAG_INTERLACE)
+> -		mtk_dpi_config_fb_size(dpi, mode->hdisplay, mode->vdisplay / 2);
+> +	mtk_dpi_config_interface(dpi, !!(vm.flags &
+> +					 DISPLAY_FLAGS_INTERLACED));
+> +	if (vm.flags & DISPLAY_FLAGS_INTERLACED)
+> +		mtk_dpi_config_fb_size(dpi, vm.hactive, vm.vactive >> 1);
+>  	else
+> -		mtk_dpi_config_fb_size(dpi, mode->hdisplay, mode->vdisplay);
+> +		mtk_dpi_config_fb_size(dpi, vm.hactive, vm.vactive);
+>  
+>  	mtk_dpi_config_channel_limit(dpi, &limit);
+>  	mtk_dpi_config_bit_num(dpi, dpi->bit_num);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index 7e5e24c..aa0943e 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -551,13 +551,12 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+>  	}
+>  
+>  	/**
+> -	 * vm.pixelclock is in kHz, pixel_clock unit is Hz, so multiply by 1000
+>  	 * htotal_time = htotal * byte_per_pixel / num_lanes
+>  	 * overhead_time = lpx + hs_prepare + hs_zero + hs_trail + hs_exit
+>  	 * mipi_ratio = (htotal_time + overhead_time) / htotal_time
+>  	 * data_rate = pixel_clock * bit_per_pixel * mipi_ratio / num_lanes;
+>  	 */
+> -	pixel_clock = dsi->vm.pixelclock * 1000;
+> +	pixel_clock = dsi->vm.pixelclock;
+>  	htotal = dsi->vm.hactive + dsi->vm.hback_porch + dsi->vm.hfront_porch +
+>  			dsi->vm.hsync_len;
+>  	htotal_bits = htotal * bit_per_pixel;
+> @@ -725,16 +724,7 @@ static void mtk_dsi_encoder_mode_set(struct drm_encoder *encoder,
+>  {
+>  	struct mtk_dsi *dsi = encoder_to_dsi(encoder);
+>  
+> -	dsi->vm.pixelclock = adjusted->clock;
+> -	dsi->vm.hactive = adjusted->hdisplay;
+> -	dsi->vm.hback_porch = adjusted->htotal - adjusted->hsync_end;
+> -	dsi->vm.hfront_porch = adjusted->hsync_start - adjusted->hdisplay;
+> -	dsi->vm.hsync_len = adjusted->hsync_end - adjusted->hsync_start;
+> -
+> -	dsi->vm.vactive = adjusted->vdisplay;
+> -	dsi->vm.vback_porch = adjusted->vtotal - adjusted->vsync_end;
+> -	dsi->vm.vfront_porch = adjusted->vsync_start - adjusted->vdisplay;
+> -	dsi->vm.vsync_len = adjusted->vsync_end - adjusted->vsync_start;
+> +	drm_display_mode_to_videomode(adjusted, &dsi->vm);
+>  }
+>  
+>  static void mtk_dsi_encoder_disable(struct drm_encoder *encoder)
