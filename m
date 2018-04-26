@@ -1,59 +1,67 @@
-From: Peter Rosin <peda@axentia.se>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Subject: Re: [PATCH 00/24] device link, bridge supplier <-> drm device
-Date: Fri, 27 Apr 2018 01:09:14 +0200
-Message-ID: <8a9fcd8c-962d-1acc-c2ba-74a3d8f59590@axentia.se>
+Date: Fri, 27 Apr 2018 02:18:27 +0300
+Message-ID: <3483427.EaMxDYJt8U@avalon>
 References: <20180426223139.16740-1-peda@axentia.se>
- <1881012.XPHlTWYXH6@avalon>
+ <1881012.XPHlTWYXH6@avalon> <8a9fcd8c-962d-1acc-c2ba-74a3d8f59590@axentia.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1881012.XPHlTWYXH6@avalon>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: linux-kernel@vger.kernel.org, Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, David Airlie <airlied@linux.ie>, Peter Senna Tschudin <peter.senna@collabora.com>, Martin Donnelly <martin.donnelly@ge.com>, Martyn Welch <martyn.welch@collabora.co.uk>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <seanpaul@chromium.org>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <8a9fcd8c-962d-1acc-c2ba-74a3d8f59590@axentia.se>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Peter Rosin <peda@axentia.se>
+Cc: Martyn Welch <martyn.welch@collabora.co.uk>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kern, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>, Peter Senna Tschudin <peter.senna@collabora.com>, Martin Donnelly <martin.donnelly@ge.com>, linux-arm-msm@vger.kernel.org, Jyri Sarha <jsarha@ti.com>, el.org@freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2018-04-27 00:40, Laurent Pinchart wrote:
-> Hi Peter,
-> 
-> Thank you for the patches.
-> 
-> On Friday, 27 April 2018 01:31:15 EEST Peter Rosin wrote:
->> Hi!
->>
->> It was noted by Russel King [1] that bridges (not using components)
->> might disappear unexpectedly if the owner of the bridge was unbound.
->> Jyri Sarha had previously noted the same thing with panels [2]. Jyri
->> came up with using device links to resolve the panel issue, which
->> was also my (independent) reaction to the note from Russel.
->>
->> This series builds up to the addition of that link in the last
->> patch, but in my opinion the other 23 patches do have merit on their
->> own.
->>
->> The last patch needs testing, while the others look trivial. That
->> said, I might have missed some subtlety.
-> 
-> I don't think this is the way to go. We have a real lifetime management 
-> problem with bridges, and device links are just trying to hide the problem 
-> under the carpet. They will further corner us by making a real fix much more 
-> difficult to implement. I'll try to comment further in the next few days on 
-> what I think a better solution would be, but in a nutshell I believe that 
-> drm_bridge objects need to be refcounted, with a .release() operation to free 
-> the bridge resources when the reference count drops to zero. This shouldn't be 
-> difficult to implement and I'm willing to help.
-
-Ok, sp 24/24 is dead, and maybe 23/24 too. But how do you feel about dropping
-.of_node in favour of .owner? That gets rid of ugly #ifdefs...
-
-I also have the nagging feeling that .driver_private serves very little real
-purpose if there is a .owner so that you can do
-
-	dev_get_drvdata(bridge->owner)
-
-for the cases where the container_of macro is not appropriate.
-
-Cheers,
-Peter
+SGkgUGV0ZXIsCgpPbiBGcmlkYXksIDI3IEFwcmlsIDIwMTggMDI6MDk6MTQgRUVTVCBQZXRlciBS
+b3NpbiB3cm90ZToKPiBPbiAyMDE4LTA0LTI3IDAwOjQwLCBMYXVyZW50IFBpbmNoYXJ0IHdyb3Rl
+Ogo+ID4gT24gRnJpZGF5LCAyNyBBcHJpbCAyMDE4IDAxOjMxOjE1IEVFU1QgUGV0ZXIgUm9zaW4g
+d3JvdGU6Cj4gPj4gSGkhCj4gPj4gCj4gPj4gSXQgd2FzIG5vdGVkIGJ5IFJ1c3NlbCBLaW5nIFsx
+XSB0aGF0IGJyaWRnZXMgKG5vdCB1c2luZyBjb21wb25lbnRzKQo+ID4+IG1pZ2h0IGRpc2FwcGVh
+ciB1bmV4cGVjdGVkbHkgaWYgdGhlIG93bmVyIG9mIHRoZSBicmlkZ2Ugd2FzIHVuYm91bmQuCj4g
+Pj4gSnlyaSBTYXJoYSBoYWQgcHJldmlvdXNseSBub3RlZCB0aGUgc2FtZSB0aGluZyB3aXRoIHBh
+bmVscyBbMl0uIEp5cmkKPiA+PiBjYW1lIHVwIHdpdGggdXNpbmcgZGV2aWNlIGxpbmtzIHRvIHJl
+c29sdmUgdGhlIHBhbmVsIGlzc3VlLCB3aGljaAo+ID4+IHdhcyBhbHNvIG15IChpbmRlcGVuZGVu
+dCkgcmVhY3Rpb24gdG8gdGhlIG5vdGUgZnJvbSBSdXNzZWwuCj4gPj4gCj4gPj4gVGhpcyBzZXJp
+ZXMgYnVpbGRzIHVwIHRvIHRoZSBhZGRpdGlvbiBvZiB0aGF0IGxpbmsgaW4gdGhlIGxhc3QKPiA+
+PiBwYXRjaCwgYnV0IGluIG15IG9waW5pb24gdGhlIG90aGVyIDIzIHBhdGNoZXMgZG8gaGF2ZSBt
+ZXJpdCBvbiB0aGVpcgo+ID4+IG93bi4KPiA+PiAKPiA+PiBUaGUgbGFzdCBwYXRjaCBuZWVkcyB0
+ZXN0aW5nLCB3aGlsZSB0aGUgb3RoZXJzIGxvb2sgdHJpdmlhbC4gVGhhdAo+ID4+IHNhaWQsIEkg
+bWlnaHQgaGF2ZSBtaXNzZWQgc29tZSBzdWJ0bGV0eS4KPiA+IAo+ID4gSSBkb24ndCB0aGluayB0
+aGlzIGlzIHRoZSB3YXkgdG8gZ28uIFdlIGhhdmUgYSByZWFsIGxpZmV0aW1lIG1hbmFnZW1lbnQK
+PiA+IHByb2JsZW0gd2l0aCBicmlkZ2VzLCBhbmQgZGV2aWNlIGxpbmtzIGFyZSBqdXN0IHRyeWlu
+ZyB0byBoaWRlIHRoZSBwcm9ibGVtCj4gPiB1bmRlciB0aGUgY2FycGV0LiBUaGV5IHdpbGwgZnVy
+dGhlciBjb3JuZXIgdXMgYnkgbWFraW5nIGEgcmVhbCBmaXggbXVjaAo+ID4gbW9yZSBkaWZmaWN1
+bHQgdG8gaW1wbGVtZW50LiBJJ2xsIHRyeSB0byBjb21tZW50IGZ1cnRoZXIgaW4gdGhlIG5leHQg
+ZmV3Cj4gPiBkYXlzIG9uIHdoYXQgSSB0aGluayBhIGJldHRlciBzb2x1dGlvbiB3b3VsZCBiZSwg
+YnV0IGluIGEgbnV0c2hlbGwgSQo+ID4gYmVsaWV2ZSB0aGF0IGRybV9icmlkZ2Ugb2JqZWN0cyBu
+ZWVkIHRvIGJlIHJlZmNvdW50ZWQsIHdpdGggYSAucmVsZWFzZSgpCj4gPiBvcGVyYXRpb24gdG8g
+ZnJlZSB0aGUgYnJpZGdlIHJlc291cmNlcyB3aGVuIHRoZSByZWZlcmVuY2UgY291bnQgZHJvcHMg
+dG8KPiA+IHplcm8uIFRoaXMgc2hvdWxkbid0IGJlIGRpZmZpY3VsdCB0byBpbXBsZW1lbnQgYW5k
+IEknbSB3aWxsaW5nIHRvIGhlbHAuCj4gCj4gT2ssIHNwIDI0LzI0IGlzIGRlYWQsIGFuZCBtYXli
+ZSAyMy8yNCB0b28uCgpOb3QgbmVjZXNzYXJpbHksIG1heWJlIEknbGwgZ2V0IHByb3ZlbiB3cm9u
+ZyA6LSkgTGV0J3MgZGlzY3VzcywgYnV0IEkgZmlyc3QgCm5lZWQgc29tZSBzbGVlcC4KCj4gQnV0
+IGhvdyBkbyB5b3UgZmVlbCBhYm91dCBkcm9wcGluZyAub2Zfbm9kZSBpbiBmYXZvdXIgb2YgLm93
+bmVyPyBUaGF0IGdldHMKPiByaWQgb2YgdWdseSAjaWZkZWZzLi4uCgpJJ2xsIHJldmlldyB0aGF0
+IHBhcnQgYW5kIHJlcGx5LCBJIGhhdmUgbm90aGluZyBhZ2FpbnN0IGl0IG9uIHByaW5jaXBsZSBh
+dCB0aGUgCm1vbWVudC4gVGhlIG1vcmUgZ2VuZXJpYyB0aGUgY29kZSBpcywgdGhlIGJldHRlciBp
+biBteSBvcGluaW9uLiBXZSBqdXN0IG5lZWQgCnRvIG1ha2Ugc3VyZSB0aGF0IHRoZSBPRiBub2Rl
+IHdlJ3JlIGludGVyZXN0ZWQgaW4gd2lsbCBhbHdheXMgYmUgLm93bmVyLQo+b2Zfbm9kZSBpbiBh
+bGwgY2FzZXMuCgo+IEkgYWxzbyBoYXZlIHRoZSBuYWdnaW5nIGZlZWxpbmcgdGhhdCAuZHJpdmVy
+X3ByaXZhdGUgc2VydmVzIHZlcnkgbGl0dGxlIHJlYWwKPiBwdXJwb3NlIGlmIHRoZXJlIGlzIGEg
+Lm93bmVyIHNvIHRoYXQgeW91IGNhbiBkbwo+IAo+IAlkZXZfZ2V0X2RydmRhdGEoYnJpZGdlLT5v
+d25lcikKPiAKPiBmb3IgdGhlIGNhc2VzIHdoZXJlIHRoZSBjb250YWluZXJfb2YgbWFjcm8gaXMg
+bm90IGFwcHJvcHJpYXRlLgoKSSdsbCByZXZpZXcgdGhhdCB0b28sIGl0J3MgYSBnb29kIHBvaW50
+LgoKLS0gClJlZ2FyZHMsCgpMYXVyZW50IFBpbmNoYXJ0CgoKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
