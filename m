@@ -1,8 +1,8 @@
 From: Mark Brown <broonie@kernel.org>
 Subject: Applied "ASoC: add mt6351 codec driver" to the asoc
 	tree
-Date: Thu, 26 Apr 2018 12:46:15 +0100
-Message-ID: <E1fBfLr-0006z1-0e@debutante>
+Date: Thu, 26 Apr 2018 12:49:22 +0100
+Message-ID: <E1fBfOs-00079d-I3@debutante>
 References: <20180426024144.13974-1-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
