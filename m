@@ -1,88 +1,90 @@
-From: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH v3] dt-bindings: mtd: mtk-nand: Update properties
- description
-Date: Thu, 26 Apr 2018 22:09:21 +0200
-Message-ID: <20180426220921.16ad89e5@bbrezillon>
-References: <1524535867-32413-1-git-send-email-xiaolei.li@mediatek.com>
- <1524535867-32413-2-git-send-email-xiaolei.li@mediatek.com>
+From: Peter Rosin <peda@axentia.se>
+Subject: [PATCH 00/24] device link, bridge supplier <-> drm device
+Date: Fri, 27 Apr 2018 00:31:15 +0200
+Message-ID: <20180426223139.16740-1-peda@axentia.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1524535867-32413-2-git-send-email-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: Peter Rosin <peda@axentia.se>, Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Peter Senna Tschudin <peter.senna@collabora.com>, Martin Donnelly <martin.donnelly@ge.com>, Martyn Welch <martyn.welch@collabora.co.uk>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <seanpaul@chromium.org>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 24 Apr 2018 10:11:07 +0800
-Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+Hi!
 
-> Update ecc step size, ecc strength, and parity bits supported on
-> each MTK NAND controller.
-> 
-> Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+It was noted by Russel King [1] that bridges (not using components)
+might disappear unexpectedly if the owner of the bridge was unbound.
+Jyri Sarha had previously noted the same thing with panels [2]. Jyri
+came up with using device links to resolve the panel issue, which
+was also my (independent) reaction to the note from Russel.
 
-Applied.
+This series builds up to the addition of that link in the last
+patch, but in my opinion the other 23 patches do have merit on their
+own.
 
-Thanks,
+The last patch needs testing, while the others look trivial. That
+said, I might have missed some subtlety.
 
-Boris
+Cheers,
+Peter
 
-> ---
->  Documentation/devicetree/bindings/mtd/mtk-nand.txt | 24 +++++++++++++++++-----
->  1 file changed, 19 insertions(+), 5 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/mtd/mtk-nand.txt b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> index 1c88526..f20ab4a 100644
-> --- a/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> +++ b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> @@ -50,14 +50,19 @@ Optional:
->  - nand-on-flash-bbt:	Store BBT on NAND Flash.
->  - nand-ecc-mode:	the NAND ecc mode (check driver for supported modes)
->  - nand-ecc-step-size:	Number of data bytes covered by a single ECC step.
-> -			valid values: 512 and 1024.
-> +			valid values:
-> +			512 and 1024 on mt2701 and mt2712.
-> +			512 only on mt7622.
->  			1024 is recommended for large page NANDs.
->  - nand-ecc-strength:	Number of bits to correct per ECC step.
-> -			The valid values that the controller supports are: 4, 6,
-> -			8, 10, 12, 14, 16, 18, 20, 22, 24, 28, 32, 36, 40, 44,
-> -			48, 52, 56, 60.
-> +			The valid values that each controller supports:
-> +			mt2701: 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 28,
-> +				32, 36, 40, 44, 48, 52, 56, 60.
-> +			mt2712: 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 28,
-> +				32, 36, 40, 44, 48, 52, 56, 60, 68, 72, 80.
-> +			mt7622: 4, 6, 8, 10, 12, 14, 16.
->  			The strength should be calculated as follows:
-> -			E = (S - F) * 8 / 14
-> +			E = (S - F) * 8 / B
->  			S = O / (P / Q)
->  				E :	nand-ecc-strength.
->  				S :	spare size per sector.
-> @@ -66,6 +71,15 @@ Optional:
->  				O :	oob size.
->  				P :	page size.
->  				Q :	nand-ecc-step-size.
-> +				B :	number of parity bits needed to correct
-> +					1 bitflip.
-> +					According to MTK NAND controller design,
-> +					this number depends on max ecc step size
-> +					that MTK NAND controller supports.
-> +					If max ecc step size supported is 1024,
-> +					then it should be always 14. And if max
-> +					ecc step size is 512, then it should be
-> +					always 13.
->  			If the result does not match any one of the listed
->  			choices above, please select the smaller valid value from
->  			the list.
+[1] https://lkml.org/lkml/2018/4/23/769
+[2] https://www.spinics.net/lists/dri-devel/msg174275.html
+
+Peter Rosin (24):
+  drm/bridge: allow optionally specifying an .owner device
+  drm/bridge: adv7511: provide an .owner device
+  drm/bridge/analogix: core: specify the .owner of the bridge
+  drm/bridge: analogix-anx78xx: provide an .owner device
+  drm/bridge: vga-dac: provide an .owner device
+  drm/bridge: lvds-encoder: provide an .owner device
+  drm/bridge: megachips-stdpxxxx-ge-b850v3-fw: provide an .owner device
+  drm/bridge: nxp-ptn3460: provide an .owner device
+  drm/bridge: panel: provide an .owner device
+  drm/bridge: ps8622: provide an .owner device
+  drm/bridge: sii902x: provide an .owner device
+  drm/bridge: sii9234: provide an .owner device
+  drm/bridge: sii8620: provide an .owner device
+  drm/bridge: synopsys: provide an .owner device for the bridges
+  drm/bridge: tc358767: provide an .owner device
+  drm/bridge: ti-tfp410: provide an .owner device
+  drm/exynos: mic: provide an .owner device for the bridge
+  drm/mediatek: hdmi: provide an .owner device for the bridge
+  drm/msm: specify the .owner of the bridges
+  drm/rcar-du: lvds: provide an .owner device for the bridge
+  drm/sti: provide an .owner device for the bridges
+  drm/bridge: remove the .of_node member
+  drm/bridge: require the .owner to be filled in on drm_bridge_attach
+  drm/bridge: establish a link between the bridge supplier and consumer
+
+ drivers/gpu/drm/bridge/adv7511/adv7511_drv.c       |  2 +-
+ drivers/gpu/drm/bridge/analogix-anx78xx.c          |  5 +----
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  1 +
+ drivers/gpu/drm/bridge/dumb-vga-dac.c              |  2 +-
+ drivers/gpu/drm/bridge/lvds-encoder.c              |  2 +-
+ .../drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c   |  2 +-
+ drivers/gpu/drm/bridge/nxp-ptn3460.c               |  2 +-
+ drivers/gpu/drm/bridge/panel.c                     |  4 +---
+ drivers/gpu/drm/bridge/parade-ps8622.c             |  2 +-
+ drivers/gpu/drm/bridge/sii902x.c                   |  2 +-
+ drivers/gpu/drm/bridge/sii9234.c                   |  2 +-
+ drivers/gpu/drm/bridge/sil-sii8620.c               |  2 +-
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          |  4 +---
+ drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c      |  4 +---
+ drivers/gpu/drm/bridge/tc358767.c                  |  2 +-
+ drivers/gpu/drm/bridge/ti-tfp410.c                 |  2 +-
+ drivers/gpu/drm/drm_bridge.c                       | 23 +++++++++++++++++++++-
+ drivers/gpu/drm/exynos/exynos_drm_mic.c            |  2 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi.c                |  2 +-
+ drivers/gpu/drm/msm/dsi/dsi_manager.c              |  1 +
+ drivers/gpu/drm/msm/edp/edp_bridge.c               |  1 +
+ drivers/gpu/drm/msm/hdmi/hdmi_bridge.c             |  1 +
+ drivers/gpu/drm/rcar-du/rcar_lvds.c                |  2 +-
+ drivers/gpu/drm/sti/sti_dvo.c                      |  2 +-
+ drivers/gpu/drm/sti/sti_hda.c                      |  1 +
+ drivers/gpu/drm/sti/sti_hdmi.c                     |  1 +
+ include/drm/drm_bridge.h                           |  8 ++++----
+ 27 files changed, 51 insertions(+), 33 deletions(-)
+
+-- 
+2.11.0
