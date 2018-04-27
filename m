@@ -1,67 +1,44 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH 00/24] device link, bridge supplier <-> drm device
-Date: Fri, 27 Apr 2018 02:18:27 +0300
-Message-ID: <3483427.EaMxDYJt8U@avalon>
-References: <20180426223139.16740-1-peda@axentia.se>
- <1881012.XPHlTWYXH6@avalon> <8a9fcd8c-962d-1acc-c2ba-74a3d8f59590@axentia.se>
+From: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Subject: [PATCH v2 0/2] ASoC: mt6797-mt6351: switch to SPDX
+	license tag
+Date: Fri, 27 Apr 2018 09:54:43 +0800
+Message-ID: <20180427015445.4334-1-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <8a9fcd8c-962d-1acc-c2ba-74a3d8f59590@axentia.se>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Peter Rosin <peda@axentia.se>
-Cc: Martyn Welch <martyn.welch@collabora.co.uk>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kern, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>, Peter Senna Tschudin <peter.senna@collabora.com>, Martin Donnelly <martin.donnelly@ge.com>, linux-arm-msm@vger.kernel.org, Jyri Sarha <jsarha@ti.com>, el.org@freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: garlic.tseng@mediatek.com, broonie@kernel.org, ryder.lee@mediatek.com
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, chipeng.chang@mediatek.com, wsd_upstream@mediatek.com, kaichieh.chuang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgUGV0ZXIsCgpPbiBGcmlkYXksIDI3IEFwcmlsIDIwMTggMDI6MDk6MTQgRUVTVCBQZXRlciBS
-b3NpbiB3cm90ZToKPiBPbiAyMDE4LTA0LTI3IDAwOjQwLCBMYXVyZW50IFBpbmNoYXJ0IHdyb3Rl
-Ogo+ID4gT24gRnJpZGF5LCAyNyBBcHJpbCAyMDE4IDAxOjMxOjE1IEVFU1QgUGV0ZXIgUm9zaW4g
-d3JvdGU6Cj4gPj4gSGkhCj4gPj4gCj4gPj4gSXQgd2FzIG5vdGVkIGJ5IFJ1c3NlbCBLaW5nIFsx
-XSB0aGF0IGJyaWRnZXMgKG5vdCB1c2luZyBjb21wb25lbnRzKQo+ID4+IG1pZ2h0IGRpc2FwcGVh
-ciB1bmV4cGVjdGVkbHkgaWYgdGhlIG93bmVyIG9mIHRoZSBicmlkZ2Ugd2FzIHVuYm91bmQuCj4g
-Pj4gSnlyaSBTYXJoYSBoYWQgcHJldmlvdXNseSBub3RlZCB0aGUgc2FtZSB0aGluZyB3aXRoIHBh
-bmVscyBbMl0uIEp5cmkKPiA+PiBjYW1lIHVwIHdpdGggdXNpbmcgZGV2aWNlIGxpbmtzIHRvIHJl
-c29sdmUgdGhlIHBhbmVsIGlzc3VlLCB3aGljaAo+ID4+IHdhcyBhbHNvIG15IChpbmRlcGVuZGVu
-dCkgcmVhY3Rpb24gdG8gdGhlIG5vdGUgZnJvbSBSdXNzZWwuCj4gPj4gCj4gPj4gVGhpcyBzZXJp
-ZXMgYnVpbGRzIHVwIHRvIHRoZSBhZGRpdGlvbiBvZiB0aGF0IGxpbmsgaW4gdGhlIGxhc3QKPiA+
-PiBwYXRjaCwgYnV0IGluIG15IG9waW5pb24gdGhlIG90aGVyIDIzIHBhdGNoZXMgZG8gaGF2ZSBt
-ZXJpdCBvbiB0aGVpcgo+ID4+IG93bi4KPiA+PiAKPiA+PiBUaGUgbGFzdCBwYXRjaCBuZWVkcyB0
-ZXN0aW5nLCB3aGlsZSB0aGUgb3RoZXJzIGxvb2sgdHJpdmlhbC4gVGhhdAo+ID4+IHNhaWQsIEkg
-bWlnaHQgaGF2ZSBtaXNzZWQgc29tZSBzdWJ0bGV0eS4KPiA+IAo+ID4gSSBkb24ndCB0aGluayB0
-aGlzIGlzIHRoZSB3YXkgdG8gZ28uIFdlIGhhdmUgYSByZWFsIGxpZmV0aW1lIG1hbmFnZW1lbnQK
-PiA+IHByb2JsZW0gd2l0aCBicmlkZ2VzLCBhbmQgZGV2aWNlIGxpbmtzIGFyZSBqdXN0IHRyeWlu
-ZyB0byBoaWRlIHRoZSBwcm9ibGVtCj4gPiB1bmRlciB0aGUgY2FycGV0LiBUaGV5IHdpbGwgZnVy
-dGhlciBjb3JuZXIgdXMgYnkgbWFraW5nIGEgcmVhbCBmaXggbXVjaAo+ID4gbW9yZSBkaWZmaWN1
-bHQgdG8gaW1wbGVtZW50LiBJJ2xsIHRyeSB0byBjb21tZW50IGZ1cnRoZXIgaW4gdGhlIG5leHQg
-ZmV3Cj4gPiBkYXlzIG9uIHdoYXQgSSB0aGluayBhIGJldHRlciBzb2x1dGlvbiB3b3VsZCBiZSwg
-YnV0IGluIGEgbnV0c2hlbGwgSQo+ID4gYmVsaWV2ZSB0aGF0IGRybV9icmlkZ2Ugb2JqZWN0cyBu
-ZWVkIHRvIGJlIHJlZmNvdW50ZWQsIHdpdGggYSAucmVsZWFzZSgpCj4gPiBvcGVyYXRpb24gdG8g
-ZnJlZSB0aGUgYnJpZGdlIHJlc291cmNlcyB3aGVuIHRoZSByZWZlcmVuY2UgY291bnQgZHJvcHMg
-dG8KPiA+IHplcm8uIFRoaXMgc2hvdWxkbid0IGJlIGRpZmZpY3VsdCB0byBpbXBsZW1lbnQgYW5k
-IEknbSB3aWxsaW5nIHRvIGhlbHAuCj4gCj4gT2ssIHNwIDI0LzI0IGlzIGRlYWQsIGFuZCBtYXli
-ZSAyMy8yNCB0b28uCgpOb3QgbmVjZXNzYXJpbHksIG1heWJlIEknbGwgZ2V0IHByb3ZlbiB3cm9u
-ZyA6LSkgTGV0J3MgZGlzY3VzcywgYnV0IEkgZmlyc3QgCm5lZWQgc29tZSBzbGVlcC4KCj4gQnV0
-IGhvdyBkbyB5b3UgZmVlbCBhYm91dCBkcm9wcGluZyAub2Zfbm9kZSBpbiBmYXZvdXIgb2YgLm93
-bmVyPyBUaGF0IGdldHMKPiByaWQgb2YgdWdseSAjaWZkZWZzLi4uCgpJJ2xsIHJldmlldyB0aGF0
-IHBhcnQgYW5kIHJlcGx5LCBJIGhhdmUgbm90aGluZyBhZ2FpbnN0IGl0IG9uIHByaW5jaXBsZSBh
-dCB0aGUgCm1vbWVudC4gVGhlIG1vcmUgZ2VuZXJpYyB0aGUgY29kZSBpcywgdGhlIGJldHRlciBp
-biBteSBvcGluaW9uLiBXZSBqdXN0IG5lZWQgCnRvIG1ha2Ugc3VyZSB0aGF0IHRoZSBPRiBub2Rl
-IHdlJ3JlIGludGVyZXN0ZWQgaW4gd2lsbCBhbHdheXMgYmUgLm93bmVyLQo+b2Zfbm9kZSBpbiBh
-bGwgY2FzZXMuCgo+IEkgYWxzbyBoYXZlIHRoZSBuYWdnaW5nIGZlZWxpbmcgdGhhdCAuZHJpdmVy
-X3ByaXZhdGUgc2VydmVzIHZlcnkgbGl0dGxlIHJlYWwKPiBwdXJwb3NlIGlmIHRoZXJlIGlzIGEg
-Lm93bmVyIHNvIHRoYXQgeW91IGNhbiBkbwo+IAo+IAlkZXZfZ2V0X2RydmRhdGEoYnJpZGdlLT5v
-d25lcikKPiAKPiBmb3IgdGhlIGNhc2VzIHdoZXJlIHRoZSBjb250YWluZXJfb2YgbWFjcm8gaXMg
-bm90IGFwcHJvcHJpYXRlLgoKSSdsbCByZXZpZXcgdGhhdCB0b28sIGl0J3MgYSBnb29kIHBvaW50
-LgoKLS0gClJlZ2FyZHMsCgpMYXVyZW50IFBpbmNoYXJ0CgoKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Author name correction is confirmed by Ryder and Garlic
+
+change since v1:
+c files header use c++ comment
+
+KaiChieh Chuang (2):
+  ASoC: mt6797: switch to SPDX license tag
+  ASoC: mt6351 switch to SPDX license tag
+
+ sound/soc/codecs/mt6351.c                          | 11 +++++------
+ sound/soc/mediatek/mt6797/Makefile                 | 13 +------------
+ sound/soc/mediatek/mt6797/mt6797-afe-clk.c         | 21 ++++++---------------
+ sound/soc/mediatek/mt6797/mt6797-afe-clk.h         | 10 +---------
+ sound/soc/mediatek/mt6797/mt6797-afe-common.h      | 10 +---------
+ sound/soc/mediatek/mt6797/mt6797-afe-pcm.c         | 21 ++++++---------------
+ sound/soc/mediatek/mt6797/mt6797-interconnection.h | 10 +---------
+ sound/soc/mediatek/mt6797/mt6797-mt6351.c          | 21 ++++++---------------
+ sound/soc/mediatek/mt6797/mt6797-reg.h             | 12 ++----------
+ 9 files changed, 29 insertions(+), 100 deletions(-)
+
+-- 
+2.12.5
