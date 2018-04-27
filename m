@@ -1,54 +1,82 @@
 From: matthias.bgg@kernel.org
-Subject: [v3 06/10] mfd: mtk-mmsys: Add mt8173 nodes
-Date: Fri, 27 Apr 2018 11:23:58 +0200
-Message-ID: <fb942cf83613f75299cff6df1791c63ad7b02e3a.1524820923.git.mbrugger@suse.com>
+Subject: [v3 07/10] drm/mediatek: Add mfd support for mt8173
+Date: Fri, 27 Apr 2018 11:23:59 +0200
+Message-ID: <caba94bee1fefa6eb507c6c91c25ed085f996b9a.1524820923.git.mbrugger@suse.com>
 References: <cover.1524820923.git.mbrugger@suse.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <cover.1524820923.git.mbrugger@suse.com>
 In-Reply-To: <cover.1524820923.git.mbrugger@suse.com>
 References: <cover.1524820923.git.mbrugger@suse.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org
-Cc: sean.wang@mediatek.com, gregkh@linuxfoundation.org, rdunlap@infradead.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, davem@davemloft.net, linux-kernel@vger.kernel.org
+Cc: davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, sean.wang@mediatek.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogTWF0dGhpYXMgQnJ1Z2dlciA8bWJydWdnZXJAc3VzZS5jb20+CgpBZGQgZGV2aWNlcyBm
-b3IgdGhlIG10ODE3MyBTb0MuCgpTaWduZWQtb2ZmLWJ5OiBNYXR0aGlhcyBCcnVnZ2VyIDxtYnJ1
-Z2dlckBzdXNlLmNvbT4KUmV2aWV3ZWQtYnk6IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0
-cm9uaXguZGU+Ci0tLQogZHJpdmVycy9tZmQvbXRrLW1tc3lzLmMgfCAxNCArKysrKysrKysrKysr
-KwogMSBmaWxlIGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJz
-L21mZC9tdGstbW1zeXMuYyBiL2RyaXZlcnMvbWZkL210ay1tbXN5cy5jCmluZGV4IGM4MDIzNDNm
-YjFjNi4uNTU4NWE1NjFhMDJmIDEwMDY0NAotLS0gYS9kcml2ZXJzL21mZC9tdGstbW1zeXMuYwor
-KysgYi9kcml2ZXJzL21mZC9tdGstbW1zeXMuYwpAQCAtMTksNiArMTksNyBAQAogCiBlbnVtIHsK
-IAlNTVNZU19NVDI3MDEgPSAxLAorCU1NU1lTX01UODE3MywKIH07CiAKIHN0YXRpYyBjb25zdCBz
-dHJ1Y3QgbWZkX2NlbGwgbW1zeXNfbXQyNzAxX2RldnNbXSA9IHsKQEAgLTI2LDYgKzI3LDEyIEBA
-IHN0YXRpYyBjb25zdCBzdHJ1Y3QgbWZkX2NlbGwgbW1zeXNfbXQyNzAxX2RldnNbXSA9IHsKIAl7
-IC5uYW1lID0gImRybS1tdDI3MDEtbW0iLCB9LAogfTsKIAorc3RhdGljIGNvbnN0IHN0cnVjdCBt
-ZmRfY2VsbCBtbXN5c19tdDgxNzNfZGV2c1tdID0geworCXsgLm5hbWUgPSAiY2xrLW10ODE3My1t
-bSIsIH0sCisJeyAubmFtZSA9ICJkcm0tbXQ4MTczLW1tIiwgfSwKK307CisKKwogc3RhdGljIGlu
-dCBtbXN5c19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogewogCWNvbnN0IHN0
-cnVjdCBtZmRfY2VsbCAqbW1zeXNfY2VsbHM7CkBAIC00NCw2ICs1MSwxMCBAQCBzdGF0aWMgaW50
-IG1tc3lzX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiAJCW1tc3lzX2NlbGxz
-ID0gbW1zeXNfbXQyNzAxX2RldnM7CiAJCW5yX2NlbGxzID0gQVJSQVlfU0laRShtbXN5c19tdDI3
-MDFfZGV2cyk7CiAJCWJyZWFrOworCWNhc2UgTU1TWVNfTVQ4MTczOgorCQltbXN5c19jZWxscyA9
-IG1tc3lzX210ODE3M19kZXZzOworCQlucl9jZWxscyA9IEFSUkFZX1NJWkUobW1zeXNfbXQ4MTcz
-X2RldnMpOworCQlicmVhazsKIAlkZWZhdWx0OgogCQlyZXR1cm4gLUVOT0RFVjsKIAl9CkBAIC02
-Miw2ICs3Myw5IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG9mX21hdGNoX21t
-c3lzW10gPSB7CiAJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtbW1zeXMiLAogCSAg
-LmRhdGEgPSAodm9pZCAqKSBNTVNZU19NVDI3MDEsCiAJfSwKKwl7IC5jb21wYXRpYmxlID0gIm1l
-ZGlhdGVrLG10ODE3My1tbXN5cyIsCisJICAuZGF0YSA9ICh2b2lkICopIE1NU1lTX01UODE3MywK
-Kwl9LAogCXsgLyogc2VudGluZWwgKi8gfSwKIH07CiAKLS0gCjIuMTYuMwoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
-dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+From: Matthias Brugger <mbrugger@suse.com>
+
+Use the MFD device for SoC mt8173. Probing via devicetree
+is no longer needed for any SoC, so delete it.
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 28 +++++++---------------------
+ 1 file changed, 7 insertions(+), 21 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 88ee35907744..3cc433ebfa8f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -399,20 +399,12 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 	INIT_WORK(&private->commit.work, mtk_atomic_work);
+ 	private->data = of_device_get_match_data(dev);
+ 
+-	/* Check if called from mfd */
+-	if (!dev->of_node) {
+-		mmsys_node = pdev->dev.parent->of_node;
+-		private->data = (struct mtk_mmsys_driver_data *)
+-				platform_get_device_id(pdev)->driver_data;
+-		private->config_regs =
+-			syscon_node_to_regmap(mmsys_node);
+-		parent_node = mmsys_node->parent;
+-	} else {
+-		private->config_regs = syscon_node_to_regmap(dev->of_node);
+-		if (IS_ERR(private->config_regs))
+-			return PTR_ERR(private->config_regs);
+-		parent_node = dev->of_node->parent;
+-	}
++	mmsys_node = pdev->dev.parent->of_node;
++	private->data = (struct mtk_mmsys_driver_data *)
++			platform_get_device_id(pdev)->driver_data;
++	private->config_regs =
++		syscon_node_to_regmap(mmsys_node);
++	parent_node = mmsys_node->parent;
+ 
+ 	/* Iterate over sibling DISP function blocks */
+ 	for_each_child_of_node(parent_node, node) {
+@@ -555,14 +547,9 @@ static int mtk_drm_sys_resume(struct device *dev)
+ static SIMPLE_DEV_PM_OPS(mtk_drm_pm_ops, mtk_drm_sys_suspend,
+ 			 mtk_drm_sys_resume);
+ 
+-static const struct of_device_id mtk_drm_of_ids[] = {
+-	{ .compatible = "mediatek,mt8173-mmsys",
+-	  .data = &mt8173_mmsys_driver_data},
+-	{ }
+-};
+-
+ static const struct platform_device_id mtk_drm_ids[] = {
+ 	{ "drm-mt2701-mm", (kernel_ulong_t)&mt2701_mmsys_driver_data },
++	{ "drm-mt8173-mm", (kernel_ulong_t)&mt8173_mmsys_driver_data },
+ 	{ /* sentinel */ },
+ };
+ MODULE_DEVICE_TABLE(platform, mtk_drm_ids);
+@@ -572,7 +559,6 @@ static struct platform_driver mtk_drm_platform_driver = {
+ 	.remove	= mtk_drm_remove,
+ 	.driver	= {
+ 		.name	= "mediatek-drm",
+-		.of_match_table = mtk_drm_of_ids,
+ 		.pm     = &mtk_drm_pm_ops,
+ 	},
+ 	.id_table = mtk_drm_ids,
+-- 
+2.16.3
