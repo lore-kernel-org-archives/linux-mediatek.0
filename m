@@ -1,65 +1,39 @@
 From: matthias.bgg@kernel.org
-Subject: [v3 08/10] clk: mediatek: mt8173-mm: switch to mfd device
-Date: Fri, 27 Apr 2018 11:24:00 +0200
-Message-ID: <228863cbbde4a4c682a6596343a8071119b913e7.1524820923.git.mbrugger@suse.com>
+Subject: [v3 10/10] MAINTAINERS: update Mediatek Soc entry
+Date: Fri, 27 Apr 2018 11:24:02 +0200
+Message-ID: <d4283880be7689a83affbd8548a999731cb7c031.1524820923.git.mbrugger@suse.com>
 References: <cover.1524820923.git.mbrugger@suse.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <cover.1524820923.git.mbrugger@suse.com>
 In-Reply-To: <cover.1524820923.git.mbrugger@suse.com>
 References: <cover.1524820923.git.mbrugger@suse.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org
-Cc: sean.wang@mediatek.com, gregkh@linuxfoundation.org, rdunlap@infradead.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, davem@davemloft.net, linux-kernel@vger.kernel.org
+Cc: davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, sean.wang@mediatek.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogTWF0dGhpYXMgQnJ1Z2dlciA8bWJydWdnZXJAc3VzZS5jb20+CgpBcyB0aGUgbmV3IG1m
-ZCBkZXZpY2UgaXMgaW4gcGxhY2UsIHN3aXRjaCBwcm9iaW5nCmZvciB0aGUgTU1TWVMgdG8gc3Vw
-cG9ydCBpbnZvY2F0aW9uIGZyb20gdGhlIG1mZCBkZXZpY2UuCgpTaWduZWQtb2ZmLWJ5OiBNYXR0
-aGlhcyBCcnVnZ2VyIDxtYnJ1Z2dlckBzdXNlLmNvbT4KQWNrZWQtYnk6IFN0ZXBoZW4gQm95ZCA8
-c2JveWRAY29kZWF1cm9yYS5vcmc+Ci0tLQogZHJpdmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10ODE3
-My5jIHwgMTkgKysrKysrKysrKysrKysrKy0tLQogMSBmaWxlIGNoYW5nZWQsIDE2IGluc2VydGlv
-bnMoKyksIDMgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsvbWVkaWF0ZWsv
-Y2xrLW10ODE3My5jIGIvZHJpdmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10ODE3My5jCmluZGV4IDk2
-YzI5MmMzZTQ0MC4uZTMxYjNlZTNlOTY4IDEwMDY0NAotLS0gYS9kcml2ZXJzL2Nsay9tZWRpYXRl
-ay9jbGstbXQ4MTczLmMKKysrIGIvZHJpdmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10ODE3My5jCkBA
-IC0xNSw2ICsxNSw3IEBACiAjaW5jbHVkZSA8bGludXgvY2xrLmg+CiAjaW5jbHVkZSA8bGludXgv
-b2YuaD4KICNpbmNsdWRlIDxsaW51eC9vZl9hZGRyZXNzLmg+CisjaW5jbHVkZSA8bGludXgvcGxh
-dGZvcm1fZGV2aWNlLmg+CiAKICNpbmNsdWRlICJjbGstbXRrLmgiCiAjaW5jbHVkZSAiY2xrLWdh
-dGUuaCIKQEAgLTc5MSw3ICs3OTIsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG10a19nYXRlX3Jl
-Z3MgbW0xX2NnX3JlZ3MgX19pbml0Y29uc3QgPSB7CiAJCS5vcHMgPSAmbXRrX2Nsa19nYXRlX29w
-c19zZXRjbHIsCQlcCiAJfQogCi1zdGF0aWMgY29uc3Qgc3RydWN0IG10a19nYXRlIG1tX2Nsa3Nb
-XSBfX2luaXRjb25zdCA9IHsKK3N0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2dhdGUgbW1fY2xrc1td
-ID0gewogCS8qIE1NMCAqLwogCUdBVEVfTU0wKENMS19NTV9TTUlfQ09NTU9OLCAibW1fc21pX2Nv
-bW1vbiIsICJtbV9zZWwiLCAwKSwKIAlHQVRFX01NMChDTEtfTU1fU01JX0xBUkIwLCAibW1fc21p
-X2xhcmIwIiwgIm1tX3NlbCIsIDEpLApAQCAtMTE1MiwxMCArMTE1MywxMyBAQCBzdGF0aWMgdm9p
-ZCBfX2luaXQgbXRrX2ltZ3N5c19pbml0KHN0cnVjdCBkZXZpY2Vfbm9kZSAqbm9kZSkKIH0KIENM
-S19PRl9ERUNMQVJFKG10a19pbWdzeXMsICJtZWRpYXRlayxtdDgxNzMtaW1nc3lzIiwgbXRrX2lt
-Z3N5c19pbml0KTsKIAotc3RhdGljIHZvaWQgX19pbml0IG10a19tbXN5c19pbml0KHN0cnVjdCBk
-ZXZpY2Vfbm9kZSAqbm9kZSkKK3N0YXRpYyBpbnQgbXRrX21tc3lzX3Byb2JlKHN0cnVjdCBwbGF0
-Zm9ybV9kZXZpY2UgKnBkZXYpCiB7CiAJc3RydWN0IGNsa19vbmVjZWxsX2RhdGEgKmNsa19kYXRh
-OwogCWludCByOworCXN0cnVjdCBkZXZpY2Vfbm9kZSAqbm9kZTsKKworCW5vZGUgPSBwZGV2LT5k
-ZXYucGFyZW50LT5vZl9ub2RlOwogCiAJY2xrX2RhdGEgPSBtdGtfYWxsb2NfY2xrX2RhdGEoQ0xL
-X01NX05SX0NMSyk7CiAKQEAgLTExNjYsOCArMTE3MCwxNyBAQCBzdGF0aWMgdm9pZCBfX2luaXQg
-bXRrX21tc3lzX2luaXQoc3RydWN0IGRldmljZV9ub2RlICpub2RlKQogCWlmIChyKQogCQlwcl9l
-cnIoIiVzKCk6IGNvdWxkIG5vdCByZWdpc3RlciBjbG9jayBwcm92aWRlcjogJWRcbiIsCiAJCQlf
-X2Z1bmNfXywgcik7CisKKwlyZXR1cm4gcjsKIH0KLUNMS19PRl9ERUNMQVJFKG10a19tbXN5cywg
-Im1lZGlhdGVrLG10ODE3My1tbXN5cyIsIG10a19tbXN5c19pbml0KTsKKworc3RhdGljIHN0cnVj
-dCBwbGF0Zm9ybV9kcml2ZXIgY2xrX210ODE3M19tbV9kcnYgPSB7CisJLnByb2JlID0gbXRrX21t
-c3lzX3Byb2JlLAorCS5kcml2ZXIgPSB7CisJCS5uYW1lID0gImNsay1tdDgxNzMtbW0iLAorCX0s
-Cit9OworYnVpbHRpbl9wbGF0Zm9ybV9kcml2ZXIoY2xrX210ODE3M19tbV9kcnYpOwogCiBzdGF0
-aWMgdm9pZCBfX2luaXQgbXRrX3ZkZWNzeXNfaW5pdChzdHJ1Y3QgZGV2aWNlX25vZGUgKm5vZGUp
-CiB7Ci0tIAoyLjE2LjMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
-Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
-ZXZlbAo=
+From: Matthias Brugger <mbrugger@suse.com>
+
+Mediatek SoCs include several soc specific drivers as well
+as a mfd device. Add these to the maintainers file.
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ MAINTAINERS | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 0a1410d5a621..74f7ea345096 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1621,6 +1621,8 @@ F:	arch/arm/boot/dts/mt7*
+ F:	arch/arm/boot/dts/mt8*
+ F:	arch/arm/mach-mediatek/
+ F:	arch/arm64/boot/dts/mediatek/
++F:	drivers/soc/mediatek/
++F:	drivers/mfd/mtk-mmsys.c
+ N:	mtk
+ K:	mediatek
+ 
+-- 
+2.16.3
