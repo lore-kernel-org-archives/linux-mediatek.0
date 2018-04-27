@@ -1,82 +1,45 @@
 From: matthias.bgg@kernel.org
-Subject: [v3 07/10] drm/mediatek: Add mfd support for mt8173
-Date: Fri, 27 Apr 2018 11:23:59 +0200
-Message-ID: <caba94bee1fefa6eb507c6c91c25ed085f996b9a.1524820923.git.mbrugger@suse.com>
+Subject: [v3 09/10] drm: mediatek: Omit warning on probe defers
+Date: Fri, 27 Apr 2018 11:24:01 +0200
+Message-ID: <9d514a4ab45f0700663fa756d5aa3913922b6fb7.1524820923.git.mbrugger@suse.com>
 References: <cover.1524820923.git.mbrugger@suse.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <cover.1524820923.git.mbrugger@suse.com>
 In-Reply-To: <cover.1524820923.git.mbrugger@suse.com>
 References: <cover.1524820923.git.mbrugger@suse.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org
-Cc: davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, sean.wang@mediatek.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
+Cc: sean.wang@mediatek.com, gregkh@linuxfoundation.org, rdunlap@infradead.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, davem@davemloft.net, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Matthias Brugger <mbrugger@suse.com>
-
-Use the MFD device for SoC mt8173. Probing via devicetree
-is no longer needed for any SoC, so delete it.
-
-Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 28 +++++++---------------------
- 1 file changed, 7 insertions(+), 21 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 88ee35907744..3cc433ebfa8f 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -399,20 +399,12 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 	INIT_WORK(&private->commit.work, mtk_atomic_work);
- 	private->data = of_device_get_match_data(dev);
- 
--	/* Check if called from mfd */
--	if (!dev->of_node) {
--		mmsys_node = pdev->dev.parent->of_node;
--		private->data = (struct mtk_mmsys_driver_data *)
--				platform_get_device_id(pdev)->driver_data;
--		private->config_regs =
--			syscon_node_to_regmap(mmsys_node);
--		parent_node = mmsys_node->parent;
--	} else {
--		private->config_regs = syscon_node_to_regmap(dev->of_node);
--		if (IS_ERR(private->config_regs))
--			return PTR_ERR(private->config_regs);
--		parent_node = dev->of_node->parent;
--	}
-+	mmsys_node = pdev->dev.parent->of_node;
-+	private->data = (struct mtk_mmsys_driver_data *)
-+			platform_get_device_id(pdev)->driver_data;
-+	private->config_regs =
-+		syscon_node_to_regmap(mmsys_node);
-+	parent_node = mmsys_node->parent;
- 
- 	/* Iterate over sibling DISP function blocks */
- 	for_each_child_of_node(parent_node, node) {
-@@ -555,14 +547,9 @@ static int mtk_drm_sys_resume(struct device *dev)
- static SIMPLE_DEV_PM_OPS(mtk_drm_pm_ops, mtk_drm_sys_suspend,
- 			 mtk_drm_sys_resume);
- 
--static const struct of_device_id mtk_drm_of_ids[] = {
--	{ .compatible = "mediatek,mt8173-mmsys",
--	  .data = &mt8173_mmsys_driver_data},
--	{ }
--};
--
- static const struct platform_device_id mtk_drm_ids[] = {
- 	{ "drm-mt2701-mm", (kernel_ulong_t)&mt2701_mmsys_driver_data },
-+	{ "drm-mt8173-mm", (kernel_ulong_t)&mt8173_mmsys_driver_data },
- 	{ /* sentinel */ },
- };
- MODULE_DEVICE_TABLE(platform, mtk_drm_ids);
-@@ -572,7 +559,6 @@ static struct platform_driver mtk_drm_platform_driver = {
- 	.remove	= mtk_drm_remove,
- 	.driver	= {
- 		.name	= "mediatek-drm",
--		.of_match_table = mtk_drm_of_ids,
- 		.pm     = &mtk_drm_pm_ops,
- 	},
- 	.id_table = mtk_drm_ids,
--- 
-2.16.3
+RnJvbTogTWF0dGhpYXMgQnJ1Z2dlciA8bWJydWdnZXJAc3VzZS5jb20+CgpXaGVuIHByb2JlIHRo
+cm91Z2ggdGhlIE1GRCwgaXQgY2FuIGhhcHBlbiB0aGF0IHRoZQpjbG9jayBkcml2ZXJzIHdhc24n
+dCBwcm9iZWQgYmVmb3JlIHRoZSBkZHAgZHJpdmVyIGdldHMKaW52b2tlZC4gVGhlIGRyaXZlciB1
+c2VkIHRvIG9taXQgYSB3YXJuaW5nIHRoYXQgdGhlIGRyaXZlcgpmYWlsZWQgdG8gZ2V0IHRoZSBj
+bG9ja3MuIE9taXQgdGhpcyBlcnJvciBvbiB0aGUgZGVmZXJlZCBwcm9iZSBwYXRoLgoKU2lnbmVk
+LW9mZi1ieTogTWF0dGhpYXMgQnJ1Z2dlciA8bWJydWdnZXJAc3VzZS5jb20+Ci0tLQogZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMgfCAzICsrLQogMSBmaWxlIGNoYW5nZWQs
+IDIgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kcm1fZGRwLmMKaW5kZXggYmFmYzVjNzdjNGZiLi42YjM5OTM0OGEyZGMgMTAwNjQ0Ci0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCisrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCkBAIC0zNzQsNyArMzc0LDggQEAgc3RhdGljIGlu
+dCBtdGtfZGRwX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiAKIAlkZHAtPmNs
+ayA9IGRldm1fY2xrX2dldChkZXYsIE5VTEwpOwogCWlmIChJU19FUlIoZGRwLT5jbGspKSB7Ci0J
+CWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCBjbG9ja1xuIik7CisJCWlmIChQVFJfRVJSKGRk
+cC0+Y2xrKSAhPSAtRVBST0JFX0RFRkVSKQorCQkJZGV2X2VycihkZXYsICJGYWlsZWQgdG8gZ2V0
+IGNsb2NrXG4iKTsKIAkJcmV0dXJuIFBUUl9FUlIoZGRwLT5jbGspOwogCX0KIAotLSAKMi4xNi4z
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
+ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
+aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
