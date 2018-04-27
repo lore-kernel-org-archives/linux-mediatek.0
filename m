@@ -1,547 +1,111 @@
-From: Marcel Holtmann <marcel@holtmann.org>
-Subject: Re: [PATCH v1 6/7] Bluetooth: hci_mediatek: Add protocol support for
- MediaTek serial devices
-Date: Fri, 27 Apr 2018 07:25:59 +0200
-Message-ID: <BBFEF77F-BE5D-4092-BB2B-8844C10CC34E@holtmann.org>
-References: <cover.1522736996.git.sean.wang@mediatek.com>
- <f0e0a0b7f1dc3845dc6eafb4ccd60284d1675f8d.1522736996.git.sean.wang@mediatek.com>
- <A7391E5D-2945-415B-8AB1-8DFBF2E65878@holtmann.org>
- <1524728068.12322.125.camel@mtkswgap22>
- <0DB4E6C1-28AD-41B7-8623-10046809A686@holtmann.org>
- <1524802381.12322.164.camel@mtkswgap22>
-Mime-Version: 1.0 (Mac OS X Mail 11.3 \(3445.6.18\))
-Content-Type: text/plain;
-        charset=utf-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1524802381.12322.164.camel@mtkswgap22>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Johan Hedberg <johan.hedberg@gmail.com>, devicetree <devicetree@vger.kernel.org>, BlueZ development <linux-bluetooth@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH 00/24] device link, bridge supplier <-> drm device
+Date: Fri, 27 Apr 2018 09:11:10 +0200
+Message-ID: <25d8e621-b3f8-094f-32a2-d22efc2163a4@samsung.com>
+References: <CGME20180426223215epcas2p38fe3b0b7b1ea1c8190805f9e2a89e11e@epcas2p3.samsung.com>
+ <20180426223139.16740-1-peda@axentia.se>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180426223139.16740-1-peda@axentia.se>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Peter Rosin <peda@axentia.se>, linux-kernel@vger.kernel.org
+Cc: Martyn Welch <martyn.welch@collabora.co.uk>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>, Peter Senna Tschudin <peter.senna@collabora.com>, Martin Donnelly <martin.donnelly@ge.com>, linux-arm-msm@vger.kernel.org, Jyri Sarha <jsarha@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sean,
-
->>>>> This adds a driver for the MediaTek serial protocol based on H4 protocol,
->>>>> which can enable the built-in Bluetooth device inside MT7622 SoC.
->>>>> 
->>>>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->>>>> ---
-> 
-> [... snip ...]
-> 
->>>>> +
->>>>> +	/* Start to build a WMT header and its actual payload. */
->>>>> +	whdr = skb_put(skb, MTK_WMT_HDR_SIZE);
->>>>> +	whdr->dir = 1;
->>>>> +	whdr->op = opcode;
->>>>> +	whdr->dlen = cpu_to_le16(plen + 1);
->>>>> +	whdr->flag = flag;
->>>>> +	skb_put_data(skb, param, plen);
->>>>> +
->>>>> +	mtk_enqueue(hu, skb);
->>>>> +	hci_uart_tx_wakeup(hu);
->>>>> +
->>>>> +	/*
->>>>> +	 * Waiting a WMT event response, while we must take care in case of
->>>>> +	 * failures for the wait.
->>>>> +	 */
->>>>> +	ret = wait_for_completion_interruptible_timeout(&btdev->wmt_cmd, HZ);
->>>>> +
->>>>> +	return ret > 0 ? 0 : ret < 0 ? ret : -ETIMEDOUT;
->>>>> +}
->>>> 
->>>> All in all I am not convinced that this is super clean. I get that we need something special for having this in the ACL data packets, but for the standard HCI command I prefer that __hci_cmd_sync is used. I addition, it seems that patch download is the only special case and that happens before at the setup stage. So we could make things special for that. I need to understand this a bit better. Can I get a btmon -w trace.log file from the whole init procedure.
->>>> 
->>>> 
->>> 
->>> I can try to use __hci_cmd_sync to send those chip-specific hci commands
->>> which only can be recognized by the chip, but no meaningful to bluez
->>> core.
->>> 
->>> Is btmon able to capture these cmd/evt between driver and device?
->>> 
->>> my question's caused by that mtk_wmt_cmd_sync and its events only happen
->>> between driver and device,  it doesn't go to core.
->> 
->> for Intel, Broadcom, Qualcomm, Realtek etc. we use __hci_cmd_sync() in the ->setup() callback and it will show up in btmon. For at least Intel and Broadcom, btmon will decode them as well. You can hint the manufacturer id out of band it will be told to btmon. And that is also how I want it. If it is using HCI as transport, I want it to go through the Bluetooth core.
->> 
-> 
-> understood. I will allow chip-specific HCI cmd/evt to go to bluetooth
-> core.
-> 
->>>>> +
->>>>> +static int mtk_setup_fw(struct hci_uart *hu)
->>>>> +{
->>>>> +	struct mtk_bt_dev *btdev = hu->priv;
->>>>> +	const struct firmware *fw;
->>>>> +	struct device *dev;
->>>>> +	const char *fwname;
->>>>> +	const u8 *fw_ptr;
->>>>> +	size_t fw_size;
->>>>> +	int err, dlen;
->>>>> +	u8 flag;
->>>>> +
->>>>> +	dev = &hu->serdev->dev;
->>>>> +	fwname = FIRMWARE_MT7622;
->>>>> +
->>>>> +	init_completion(&btdev->wmt_cmd);
->>>>> +
->>>>> +	err = request_firmware(&fw, fwname, dev);
->>>>> +	if (err < 0) {
->>>>> +		dev_err(dev, "%s: Failed to load firmware file (%d)",
->>>>> +			hu->hdev->name, err);
->>>>> +		return err;
->>>>> +	}
->>>>> +
->>>>> +	fw_ptr = fw->data;
->>>>> +	fw_size = fw->size;
->>>>> +
->>>>> +	/* The size of a patch header at least has 30 bytes. */
->>>>> +	if (fw_size < 30)
->>>>> +		return -EINVAL;
->>>>> +
->>>>> +	while (fw_size > 0) {
->>>>> +		dlen = min_t(int, 1000, fw_size);
->>>>> +
->>>>> +		/* Tell deivice the position in sequence. */
->>>>> +		flag = (fw_size - dlen <= 0) ? 3 :
->>>>> +		       (fw_size < fw->size) ? 2 : 1;
->>>>> +
->>>>> +		err = mtk_wmt_cmd_sync(hu, MTK_WMT_PATCH_DWNLD, flag,
->>>>> +				       dlen, fw_ptr);
->>>>> +		if (err < 0)
->>>>> +			break;
->>>>> +
->>>>> +		fw_size -= dlen;
->>>>> +		fw_ptr += dlen;
->>>>> +	}
->>>>> +
->>>>> +	release_firmware(fw);
->>>>> +
->>>>> +	return err;
->>>>> +}
->>>>> +
->>>>> +static int mtk_open(struct hci_uart *hu)
->>>>> +{
->>>>> +	struct mtk_bt_dev *btdev = hu->priv;
->>>>> +	struct device *dev;
->>>>> +	int err = 0;
->>>>> +
->>>>> +	dev = &hu->serdev->dev;
->>>>> +
->>>>> +	serdev_device_open(hu->serdev);
->>>>> +	skb_queue_head_init(&btdev->txq);
->>>>> +
->>>>> +	/* Setup the usage of H4. */
->>>>> +	hu->alignment = 1;
->>>>> +	hu->padding = 0;
->>>>> +	mtk_stp_reset(btdev->sp);
->>>>> +
->>>>> +	/* Enable the power domain and clock the device requires */
->>>>> +	pm_runtime_enable(dev);
->>>>> +	err = pm_runtime_get_sync(dev);
->>>>> +	if (err < 0) {
->>>>> +		pm_runtime_disable(dev);
->>>>> +		return err;
->>>>> +	}
->>>>> +
->>>>> +	err = clk_prepare_enable(btdev->clk);
->>>>> +	if (err < 0) {
->>>>> +		pm_runtime_put_sync(dev);
->>>>> +		pm_runtime_disable(dev);
->>>>> +	}
->>>>> +
->>>>> +	return err;
->>>>> +}
->>>>> +
->>>>> +static int mtk_close(struct hci_uart *hu)
->>>>> +{
->>>>> +	struct mtk_bt_dev *btdev = hu->priv;
->>>>> +	struct device *dev = &hu->serdev->dev;
->>>>> +	u8 param = 0x0;
->>>>> +
->>>>> +	skb_queue_purge(&btdev->txq);
->>>>> +	kfree_skb(btdev->rx_skb);
->>>>> +
->>>>> +	/* Disable the device. */
->>>>> +	mtk_wmt_cmd_sync(hu, MTK_WMT_FUNC_CTRL, 0x0, sizeof(param), &param);
->>>> 
->>>> Wouldn’t this require a enable device in open callback?
->>>> 
->>> 
->>> It's another story ...
->>> 
->>> At initial time I began working on the driver. I indeed made the
->>> mtk_open and mtk_close be consistent, but it's required a few patches
->>> for core to solve a problem: 
->>> 
->>> The problem is that hci_uart resource CAN'T be used in mtk_open to send
->>> these specific command taking to the chip since hci_uart_proto->open()
->>> would be called much earlier in hci_uart_register_device at which
->>> hci_uart is even not being allocated yet. 
->>> 
->>> So, in the first version I want to make thing be simple, instead, I only
->>> hold mtk_open is doing platform stuff such as clock enablement, and
->>> power enablement and any other thing about configuring chip all is moved
->>> to setup handler.
->> 
->> You are also not suppose to be sending HCI commands to close the transport in close(). In close() you are suppose to close the transport. You can use shutdown() if there more commands needed. And setup() if for HCI commands after registration.
->> 
-> 
-> okay. in the next changes, I will make that 
-> 
-> 1. open(), close() would be handling open/close transport and
-> platform-specific thing such clk, pwr setup
-> 
-> 2. setup() would be handling chip-specific commands/firmware download to
-> configure the chip 
-> 
-> 3. shutdown() would be doing the reverse of setup(),which involve a few
-> chip-specific commands to disable something in that chip
-
-just remember that setup() and shutdown() are not symmetric. Tell me if you need to load the firmware every time you do btmgmt power on or if that is kept. Either we add a quirk to always run setup() after open() or we introduce an analogues callback for shutdown().
-
->> Using hci_uart has a bit of legacy in it due to the line discipline. Maybe using btuart.c (which I posted) might be a better starting point since then you hook directly into it as a plain HCI driver.
->> 
->> That all said, I have no issues with extending the core driver framework. I rather do that than having drivers hack around it. That always ends badly.
->> 
-> 
-> 
-> where could I find the newest btuart.c (which seems cannot be found in
-> 4.17 rc2)? It seems a time to rewrite the driver based on btuart.c
-
-It is not merged yet. I posted RFC patches to the mailing list.
-
-> 
->>> 
->>>>> +
->>>>> +	/* Shutdown the clock and power domain the device requires. */
->>>>> +	clk_disable_unprepare(btdev->clk);
->>>>> +
->>>>> +	pm_runtime_put_sync(dev);
->>>>> +	pm_runtime_disable(dev);
->>>>> +
->>>>> +	serdev_device_close(hu->serdev);
->>>>> +
->>>>> +	return 0;
->>>>> +}
->>>>> +
->>>>> +int mtk_recv_frame(struct hci_dev *hdev, struct sk_buff *skb)
->>>>> +{
->>>>> +	struct hci_event_hdr *hdr = (void *)skb->data;
->>>>> +	struct hci_uart *hu = hci_get_drvdata(hdev);
->>>>> +	struct mtk_bt_dev *btdev = hu->priv;
->>>>> +
->>>>> +	if (hci_skb_pkt_type(skb) == HCI_EVENT_PKT &&
->>>>> +	    hdr->evt == 0xe4) {
->>>>> +		complete(&btdev->wmt_cmd);
->>>>> +		kfree_skb(skb);
->>>>> +		return 0;
->>>>> +	}
->>>>> +
->>>>> +	return hci_recv_frame(hdev, skb);
->>>>> +}
->>>> 
->>>> actually this is overdoing it. You can use hci_recv_frame for ACL and SCO and just a special one for events. However all in all I question the need for the special handling anyway. As I said above, I have the feeling this can be done via __hci_cmd_sync or __hci_cmd_sync_ev. So I really like to see a btmon -w trace.log for these so that I can see how they look.
->>> 
->>> in the next version, I would only use a special way for events; ACL and
->>> SCO can just use a generic way. 
->>> 
->>> BTW, add more words for the mtk_recv_frame what it's doing for
->>> 
->>> * The special handling with hdr->evt 0xe4 in mtk_recv_frame is
->>> corresponding to mtk_wmt_cmd_sync.
->>> 
->>> * It is expected to not to propagate the chip-specific events to bluez
->>> core since it's only meaningful data between driver and device.
->> 
->> No, HCI vendor commands and events can happily go through the core. I actually prefer it that way. Mind you that the core HCI handling is rock solid. So trying to hack around it will just lead to bugs. And no other manufacturer is doing that.
-> 
-> 
-> 
-> understood. I will allow chip-specific HCI cmd/evt to go to bluetooth
-> core. The discard for the specific event can be prevented.
-> 
->>>>> +
->>>>> +static const struct h4_recv_pkt mtk_recv_pkts[] = {
->>>>> +	{ H4_RECV_ACL,		.recv = mtk_recv_frame },
->>>>> +	{ H4_RECV_SCO,		.recv = mtk_recv_frame },
->>>>> +	{ H4_RECV_EVENT,	.recv = mtk_recv_frame },
->>>>> +};
->>>>> +
->>>>> +static int mtk_recv(struct hci_uart *hu, const void *data, int count)
->>>>> +{
->>>>> +	const unsigned char *p_left = data, *p_h4;
->>>>> +	struct mtk_bt_dev *btdev = hu->priv;
->>>>> +	int sz_left = count, sz_h4, adv;
->>>>> +	struct device *dev;
->>>>> +	int err;
->>>>> +
->>>>> +	if (!test_bit(HCI_UART_REGISTERED, &hu->flags))
->>>>> +		return -EUNATCH;
->>>>> +
->>>>> +	dev = &hu->serdev->dev;
->>>>> +
->>>>> +	while (sz_left > 0) {
->>>>> +		p_h4 = mtk_stp_split(dev, btdev->sp, p_left, sz_left, &sz_h4);
->>>>> +		if (!p_h4)
->>>>> +			break;
->>>> 
->>>> Now this is troubling me a bit. While there are some H:4 frames somewhere in here, you need to do another set of framing. So what is the framing that comes from the serial part in the first place?
->>>> 
->>> 
->>> the chip always adds a fews bytes before and after the H:4 data, it's
->>> something like that.
->>> 
->>> -------------------------------------  
->>> | STP header  |  H:4   | STP tailer |  
->>> -------------------------------------  
->>> 
->>> mtk_stp_split no looked into the details of H:4, only is used to find
->>> where is the start of H:4 part and keep info. from STP header and then
->>> feed the H:4 part into h4_recv_buf to reuse the extent logic to process
->>> HCI/ACL/SCO pkts. So, I think it should be unnecessary to create a new
->>> framing for the current usage.
->> 
->> I would disagree right now. I think taking btuart.c and writing your own driver might be a lot simpler. You have less legacy and you have less things to hack around.
->> 
->> If you have framing around H:4 packets anyway, then why bother trying to use h4_recv_buf anyway (which you could even from a separate driver, see bpa10x.c). The reason behind h4_recv_buf is that we have no framing and need to understand H:4 to find the end of a packet. If you know it, then there is not point in that (see bfusb.c driver).
->> 
-> 
-> Thanks for the advice. I will check with btuart.c first and to see if I
-> have a clean and better solution for the parse logic.
-> 
->>>> Btw. it is fine if hci_uart is not a good fit. I actually think it is a bad fit and using the btuart driver I send around a few weeks ago is a better starting point. However if the framing itself is more elaborate actually, then even a brand new driver and just re-using h4_recv.h would be good. If however the extra framing already does a real framing job, then even h4_recv.h is useless and we can just pick the frames right out of serial device. For example bfusb.c had such an extra framing on top of H:4.
->>> 
->>> 
->>> 
->>>>> +
->>>>> +		adv = p_h4 - p_left;
->>>>> +		sz_left -= adv;
->>>>> +		p_left += adv;
->>>>> +
->>>>> +		btdev->rx_skb = h4_recv_buf(hu->hdev, btdev->rx_skb,
->>>>> +					    p_h4, sz_h4, mtk_recv_pkts,
->>>>> +					    ARRAY_SIZE(mtk_recv_pkts));
->>>>> +		if (IS_ERR(btdev->rx_skb)) {
->>>>> +			err = PTR_ERR(btdev->rx_skb);
->>>>> +			dev_err(dev, "Frame reassembly failed (%d)", err);
->>>>> +			btdev->rx_skb = NULL;
->>>>> +			return err;
->>>>> +		}
->>>>> +
->>>>> +		sz_left -= sz_h4;
->>>>> +		p_left += sz_h4;
->>>>> +	}
->>>>> +
->>>>> +	return count;
->>>>> +}
->>>>> +
->>>>> +static struct sk_buff *mtk_dequeue(struct hci_uart *hu)
->>>>> +{
->>>>> +	struct mtk_bt_dev *btdev = hu->priv;
->>>>> +
->>>>> +	return skb_dequeue(&btdev->txq);
->>>>> +}
->>>>> +
->>>>> +static int mtk_flush(struct hci_uart *hu)
->>>>> +{
->>>>> +	struct mtk_bt_dev *btdev = hu->priv;
->>>>> +
->>>>> +	skb_queue_purge(&btdev->txq);
->>>>> +
->>>>> +	return 0;
->>>>> +}
->>>>> +
->>>>> +static int mtk_setup(struct hci_uart *hu)
->>>>> +{
->>>>> +	struct device *dev;
->>>>> +	u8 param = 0x1;
->>>>> +	int err;
->>>>> +
->>>>> +	dev = &hu->serdev->dev;
->>>>> +
->>>>> +	/* Setup a firmware which the device definitely requires. */
->>>>> +	err = mtk_setup_fw(hu);
->>>>> +	if (err < 0) {
->>>>> +		dev_err(dev, "Fail at setup FW (%d): %d", __LINE__, err);
->>>>> +		return err;
->>>>> +	}
->>>>> +
->>>>> +	/* Activate funciton the firmware provides to. */
->>>>> +	err = mtk_wmt_cmd_sync(hu, MTK_WMT_RST, 0x4, 0, 0);
->>>>> +	if (err < 0) {
->>>>> +		dev_err(dev, "Fail at WMT RST (%d): %d", __LINE__, err);
->>>>> +		return err;
->>>>> +	}
->>>>> +
->>>>> +	/* Enable Bluetooth protocol. */
->>>>> +	err = mtk_wmt_cmd_sync(hu, MTK_WMT_FUNC_CTRL, 0x0, sizeof(param),
->>>>> +			       &param);
->>>>> +	if (err < 0)
->>>>> +		dev_err(dev, "Fail at FUNC CTRL (%d): %d", __LINE__, err);
->>>> 
->>>> Just as a reminder, setup callback is only called once. You should enable the transport in open callback.
->>>> 
->>> 
->>> If capable, I would like to move all chip initialization stuff to
->>> mtk_open and de-initialization stuff to mtk_close.
->> 
->> So open/close is for establishing the HCI transport. Sending commands there is something we have not yet encountered.
->> 
->>> In that way, a user power up/down with bluetoothctl or hcitool can
->>> completely recover the chip from any fatal errors. and even it seem at
->>> bluez core, there's workqueue in charge of recovery thing.
->>> 
->>> But the core seems not supports me to move chip handling in
->>> mtk_open :-( 
->> 
->> What do you need for your driver. On every power on, you need to execute a HCI command to enable the chip? Do you need to re-load the firmware or does it survive a power down/up cycle?
->> 
-> 
-> the Bluetooth device can't survive in a power/down cycle and
-> 
-> * power on should be including
->  - enable clk and power domain
->  - download firmware through specific ACL command
->  - send specific commands to configure bluetooth (Required to note that
-> the steps should be after downloading firmware because the behavior for
-> the command might be changed by the firmware)
-
-Then this sounds like you need a quirk that runs setup() after every open() and not just after the first open(). You would be the first hardware that looses their firmware, but that is fine, I almost expect that at some point someone comes along and requires this. So just create a new HCI_QUIRK_NON_PERSISTENT_SETUP.
-
-> * power off should be including
->  - send specific commands, such as to disable bluetooth
-
-So try to put these in shutdown()
-
->  - disable power domain and clk
-
-And do this in close().
-
-> 
->>> 
->>>>> +
->>>>> +	return err;
->>>>> +}
->>>>> +
->>>>> +static const struct hci_uart_proto mtk_proto = {
->>>>> +	.id		= HCI_UART_MTK,
->>>>> +	.name		= "MediaTek",
->>>>> +	.open		= mtk_open,
->>>>> +	.close		= mtk_close,
->>>>> +	.recv		= mtk_recv,
->>>>> +	.enqueue	= mtk_enqueue,
->>>>> +	.dequeue	= mtk_dequeue,
->>>>> +	.flush		= mtk_flush,
->>>>> +	.setup		= mtk_setup,
->>>>> +	.manufacturer	= 1,
->>>> 
->>>> Unless you are Nokia, this id is wrong.
->>>> 
->>> 
->>> okay, i will remove it 
->>> 
->>>>> +};
->>>>> +
->>>>> +static int mtk_bluetooth_serdev_probe(struct serdev_device *serdev)
->>>>> +{
->>>>> +	struct device *dev = &serdev->dev;
->>>>> +	struct mtk_bt_dev *btdev;
->>>>> +	int err = 0;
->>>>> +
->>>>> +	btdev = devm_kzalloc(dev, sizeof(*btdev), GFP_KERNEL);
->>>>> +	if (!btdev)
->>>>> +		return -ENOMEM;
->>>>> +
->>>>> +	btdev->sp = devm_kzalloc(dev, sizeof(*btdev->sp), GFP_KERNEL);
->>>>> +	if (!btdev->sp)
->>>>> +		return -ENOMEM;
->>>>> +
->>>>> +	btdev->clk = devm_clk_get(dev, "ref");
->>>>> +	if (IS_ERR(btdev->clk))
->>>>> +		return PTR_ERR(btdev->clk);
->>>>> +
->>>>> +	btdev->hu.serdev = serdev;
->>>>> +	btdev->hu.priv = btdev;
->>>>> +
->>>>> +	serdev_device_set_drvdata(serdev, btdev);
->>>>> +
->>>>> +	err = hci_uart_register_device(&btdev->hu, &mtk_proto);
->>>>> +	if (err)
->>>>> +		dev_err(dev, "Could not register bluetooth uart: %d", err);
->>>>> +
->>>>> +	return err;
->>>>> +}
->>>>> +
->>>>> +static void mtk_bluetooth_serdev_remove(struct serdev_device *serdev)
->>>>> +{
->>>>> +	struct mtk_bt_dev *btdev = serdev_device_get_drvdata(serdev);
->>>>> +
->>>>> +	hci_uart_unregister_device(&btdev->hu);
->>>>> +}
->>>>> +
->>>>> +static const struct of_device_id mtk_bluetooth_of_match[] = {
->>>>> +	{ .compatible = "mediatek,mt7622-bluetooth" },
->>>>> +	{},
->>>>> +};
->>>>> +MODULE_DEVICE_TABLE(of, mtk_bluetooth_of_match);
->>>>> +
->>>>> +static struct serdev_device_driver mtk_bluetooth_serdev_driver = {
->>>>> +	.probe = mtk_bluetooth_serdev_probe,
->>>>> +	.remove = mtk_bluetooth_serdev_remove,
->>>>> +	.driver = {
->>>>> +		.name = "mediatek-bluetooth",
->>>>> +		.of_match_table = of_match_ptr(mtk_bluetooth_of_match),
->>>>> +	},
->>>>> +};
->>>>> +
->>>>> +module_serdev_device_driver(mtk_bluetooth_serdev_driver);
->>>>> +
->>>>> +MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
->>>>> +MODULE_DESCRIPTION("Bluetooth HCI Serial driver for MediaTek SoC");
->>>>> +MODULE_LICENSE("GPL v2");
->>>>> diff --git a/drivers/bluetooth/hci_uart.h b/drivers/bluetooth/hci_uart.h
->>>>> index 66e8c68..3f0911e 100644
->>>>> --- a/drivers/bluetooth/hci_uart.h
->>>>> +++ b/drivers/bluetooth/hci_uart.h
->>>>> @@ -35,7 +35,7 @@
->>>>> #define HCIUARTGETFLAGS		_IOR('U', 204, int)
->>>>> 
->>>>> /* UART protocols */
->>>>> -#define HCI_UART_MAX_PROTO	12
->>>>> +#define HCI_UART_MAX_PROTO	13
->>>>> 
->>>>> #define HCI_UART_H4	0
->>>>> #define HCI_UART_BCSP	1
->>>>> @@ -49,6 +49,7 @@
->>>>> #define HCI_UART_AG6XX	9
->>>>> #define HCI_UART_NOKIA	10
->>>>> #define HCI_UART_MRVL	11
->>>>> +#define HCI_UART_MTK	12
->>>> 
->>>> I am really trying to avoid new id assignments here and go for serdev only drivers.
->>>> 
->>> 
->>> it seems no necessary for a serdev device. can i remove it from driver?
->>> but what id should be filled in hci_uart_proto ?
->>> 
->>> 430 static const struct hci_uart_proto mtk_proto = {
->>> 431         .id             = HCI_UART_MTK,
->>> 432         .name           = "MediaTek",
->>> 433         .open           = mtk_open,
->> 
->> We can work on something to allow an unassigned id here, but I still feel that you should go for a separate driver in the first place.
->> 
->> If you only have a hammer, then everything looks like a nail. hci_uart being the hammer here. I think you would be better served with starting with btuart.c and then evolve it into your own driver. Try that and see where your problems are.
->> 
-> 
-> Okay, lets see whether the addressed problems are still present on 2n
-> version based on btuart.c to evolve
-
-Go with a brand new btmtkuart.c driver. I really sounds you don’t want the hci_ldisc.c framework in your way. You want direct control over the core callbacks.
-
-Regards
-
-Marcel
+SGkgUGV0ZXIsCgpPbiAyNy4wNC4yMDE4IDAwOjMxLCBQZXRlciBSb3NpbiB3cm90ZToKPiBIaSEK
+Pgo+IEl0IHdhcyBub3RlZCBieSBSdXNzZWwgS2luZyBbMV0gdGhhdCBicmlkZ2VzIChub3QgdXNp
+bmcgY29tcG9uZW50cykKPiBtaWdodCBkaXNhcHBlYXIgdW5leHBlY3RlZGx5IGlmIHRoZSBvd25l
+ciBvZiB0aGUgYnJpZGdlIHdhcyB1bmJvdW5kLgo+IEp5cmkgU2FyaGEgaGFkIHByZXZpb3VzbHkg
+bm90ZWQgdGhlIHNhbWUgdGhpbmcgd2l0aCBwYW5lbHMgWzJdLiBKeXJpCj4gY2FtZSB1cCB3aXRo
+IHVzaW5nIGRldmljZSBsaW5rcyB0byByZXNvbHZlIHRoZSBwYW5lbCBpc3N1ZSwgd2hpY2gKPiB3
+YXMgYWxzbyBteSAoaW5kZXBlbmRlbnQpIHJlYWN0aW9uIHRvIHRoZSBub3RlIGZyb20gUnVzc2Vs
+Lgo+Cj4gVGhpcyBzZXJpZXMgYnVpbGRzIHVwIHRvIHRoZSBhZGRpdGlvbiBvZiB0aGF0IGxpbmsg
+aW4gdGhlIGxhc3QKPiBwYXRjaCwgYnV0IGluIG15IG9waW5pb24gdGhlIG90aGVyIDIzIHBhdGNo
+ZXMgZG8gaGF2ZSBtZXJpdCBvbiB0aGVpcgo+IG93bi4KPgo+IFRoZSBsYXN0IHBhdGNoIG5lZWRz
+IHRlc3RpbmcsIHdoaWxlIHRoZSBvdGhlcnMgbG9vayB0cml2aWFsLiBUaGF0Cj4gc2FpZCwgSSBt
+aWdodCBoYXZlIG1pc3NlZCBzb21lIHN1YnRsZXR5LgoKb2Zfbm9kZSBpcyB1c2VkIGFzIGFuIGlk
+ZW50aWZpZXIgb2YgdGhlIGJyaWRnZSBpbiB0aGUga2VybmVsLiBJZiB5b3UKcmVwbGFjZSBpdCB3
+aXRoIGRldmljZSBwb2ludGVyIHRoZXJlIHdpbGwgYmUgcG90ZW50aWFsIHByb2JsZW0gd2l0aApk
+ZXZpY2VzIGhhdmluZyB0d28gb3IgbW9yZSBicmlkZ2VzLCBob3cgZG8geW91IGRpZmZlcmVudGlh
+dGUgYnJpZGdlcyBpZgp0aGUgb3duZXIgaXMgdGhlIHNhbWU/IElmIEkgcmVtZW1iZXIgY29ycmVj
+dGx5IGN1cnJlbnQgYnJpZGdlIGNvZGUgZG9lcwpub3QgYWxsb3cgdG8gaGF2ZSBtdWx0aXBsZSBi
+cmlkZ2VzIGluIG9uZSBkZXZpY2UsIGJ1dCB0aGF0IHNob3VsZCBiZQpxdWl0ZSBlYXN5IHRvIGZp
+eCBpZiBuZWNlc3NhcnkuIEFmdGVyIHRoaXMgY2hhbmdlIGl0IHdpbGwgYmVjb21lIG1vcmUKZGlm
+ZmljdWx0LgoKQW55d2F5IEkgcmVtZW1iZXIgZGlzY3Vzc2lvbiB0aGF0IGluIERUIHdvcmxkIGJy
+aWRnZSBzaG91bGQgYmUKaWRlbnRpZmllZCByYXRoZXIgYnkgb2ZfZ3JhcGggcG9ydCBub2RlLCBu
+b3QgYnkgcGFyZW50IG5vZGUgYXMgaXQgaXMKbm93LiBJZiB5b3Ugd2FudCB0byB0cmFuc2xhdGUg
+dGhpcyByZWxhdGlvbiB0byBkZXZpY2Ugb3duZXIsIHlvdSBzaG91bGQKYWRkIGFsc28gcG9ydCBu
+dW1iZXIgdG8gaGF2ZSBmdWxsIGlkZW50aWZpY2F0aW9uIG9mIHRoZSBicmlkZ2UsIGllIHBhaXIK
+KG93bmVyLCBwb3J0X251bWJlcikgd291bGQgYmUgZXF1aXZhbGVudCBvZiBwb3J0IG5vZGUuCgpS
+ZWdhcmRzCkFuZHJ6ZWoKCgo+Cj4gQ2hlZXJzLAo+IFBldGVyCj4KPiBbMV0gaHR0cHM6Ly9sa21s
+Lm9yZy9sa21sLzIwMTgvNC8yMy83NjkKPiBbMl0gaHR0cHM6Ly93d3cuc3Bpbmljcy5uZXQvbGlz
+dHMvZHJpLWRldmVsL21zZzE3NDI3NS5odG1sCj4KPiBQZXRlciBSb3NpbiAoMjQpOgo+ICAgZHJt
+L2JyaWRnZTogYWxsb3cgb3B0aW9uYWxseSBzcGVjaWZ5aW5nIGFuIC5vd25lciBkZXZpY2UKPiAg
+IGRybS9icmlkZ2U6IGFkdjc1MTE6IHByb3ZpZGUgYW4gLm93bmVyIGRldmljZQo+ICAgZHJtL2Jy
+aWRnZS9hbmFsb2dpeDogY29yZTogc3BlY2lmeSB0aGUgLm93bmVyIG9mIHRoZSBicmlkZ2UKPiAg
+IGRybS9icmlkZ2U6IGFuYWxvZ2l4LWFueDc4eHg6IHByb3ZpZGUgYW4gLm93bmVyIGRldmljZQo+
+ICAgZHJtL2JyaWRnZTogdmdhLWRhYzogcHJvdmlkZSBhbiAub3duZXIgZGV2aWNlCj4gICBkcm0v
+YnJpZGdlOiBsdmRzLWVuY29kZXI6IHByb3ZpZGUgYW4gLm93bmVyIGRldmljZQo+ICAgZHJtL2Jy
+aWRnZTogbWVnYWNoaXBzLXN0ZHB4eHh4LWdlLWI4NTB2My1mdzogcHJvdmlkZSBhbiAub3duZXIg
+ZGV2aWNlCj4gICBkcm0vYnJpZGdlOiBueHAtcHRuMzQ2MDogcHJvdmlkZSBhbiAub3duZXIgZGV2
+aWNlCj4gICBkcm0vYnJpZGdlOiBwYW5lbDogcHJvdmlkZSBhbiAub3duZXIgZGV2aWNlCj4gICBk
+cm0vYnJpZGdlOiBwczg2MjI6IHByb3ZpZGUgYW4gLm93bmVyIGRldmljZQo+ICAgZHJtL2JyaWRn
+ZTogc2lpOTAyeDogcHJvdmlkZSBhbiAub3duZXIgZGV2aWNlCj4gICBkcm0vYnJpZGdlOiBzaWk5
+MjM0OiBwcm92aWRlIGFuIC5vd25lciBkZXZpY2UKPiAgIGRybS9icmlkZ2U6IHNpaTg2MjA6IHBy
+b3ZpZGUgYW4gLm93bmVyIGRldmljZQo+ICAgZHJtL2JyaWRnZTogc3lub3BzeXM6IHByb3ZpZGUg
+YW4gLm93bmVyIGRldmljZSBmb3IgdGhlIGJyaWRnZXMKPiAgIGRybS9icmlkZ2U6IHRjMzU4NzY3
+OiBwcm92aWRlIGFuIC5vd25lciBkZXZpY2UKPiAgIGRybS9icmlkZ2U6IHRpLXRmcDQxMDogcHJv
+dmlkZSBhbiAub3duZXIgZGV2aWNlCj4gICBkcm0vZXh5bm9zOiBtaWM6IHByb3ZpZGUgYW4gLm93
+bmVyIGRldmljZSBmb3IgdGhlIGJyaWRnZQo+ICAgZHJtL21lZGlhdGVrOiBoZG1pOiBwcm92aWRl
+IGFuIC5vd25lciBkZXZpY2UgZm9yIHRoZSBicmlkZ2UKPiAgIGRybS9tc206IHNwZWNpZnkgdGhl
+IC5vd25lciBvZiB0aGUgYnJpZGdlcwo+ICAgZHJtL3JjYXItZHU6IGx2ZHM6IHByb3ZpZGUgYW4g
+Lm93bmVyIGRldmljZSBmb3IgdGhlIGJyaWRnZQo+ICAgZHJtL3N0aTogcHJvdmlkZSBhbiAub3du
+ZXIgZGV2aWNlIGZvciB0aGUgYnJpZGdlcwo+ICAgZHJtL2JyaWRnZTogcmVtb3ZlIHRoZSAub2Zf
+bm9kZSBtZW1iZXIKPiAgIGRybS9icmlkZ2U6IHJlcXVpcmUgdGhlIC5vd25lciB0byBiZSBmaWxs
+ZWQgaW4gb24gZHJtX2JyaWRnZV9hdHRhY2gKPiAgIGRybS9icmlkZ2U6IGVzdGFibGlzaCBhIGxp
+bmsgYmV0d2VlbiB0aGUgYnJpZGdlIHN1cHBsaWVyIGFuZCBjb25zdW1lcgo+Cj4gIGRyaXZlcnMv
+Z3B1L2RybS9icmlkZ2UvYWR2NzUxMS9hZHY3NTExX2Rydi5jICAgICAgIHwgIDIgKy0KPiAgZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC1hbng3OHh4LmMgICAgICAgICAgfCAgNSArLS0t
+LQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyB8
+ICAxICsKPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kdW1iLXZnYS1kYWMuYyAgICAgICAgICAg
+ICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2x2ZHMtZW5jb2Rlci5jICAgICAg
+ICAgICAgICB8ICAyICstCj4gIC4uLi9kcm0vYnJpZGdlL21lZ2FjaGlwcy1zdGRweHh4eC1nZS1i
+ODUwdjMtZncuYyAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9ueHAtcHRuMzQ2
+MC5jICAgICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3BhbmVs
+LmMgICAgICAgICAgICAgICAgICAgICB8ICA0ICstLS0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRn
+ZS9wYXJhZGUtcHM4NjIyLmMgICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL3NpaTkwMnguYyAgICAgICAgICAgICAgICAgICB8ICAyICstCj4gIGRyaXZlcnMvZ3B1
+L2RybS9icmlkZ2Uvc2lpOTIzNC5jICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9zaWwtc2lpODYyMC5jICAgICAgICAgICAgICAgfCAgMiArLQo+ICBk
+cml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyAgICAgICAgICB8ICA0ICst
+LS0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jICAgICAg
+fCAgNCArLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvdGMzNTg3NjcuYyAgICAgICAgICAg
+ICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS90aS10ZnA0MTAuYyAgICAg
+ICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZS5jICAgICAg
+ICAgICAgICAgICAgICAgICB8IDIzICsrKysrKysrKysrKysrKysrKysrKy0KPiAgZHJpdmVycy9n
+cHUvZHJtL2V4eW5vcy9leHlub3NfZHJtX21pYy5jICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYyAgICAgICAgICAgICAgICB8ICAyICstCj4g
+IGRyaXZlcnMvZ3B1L2RybS9tc20vZHNpL2RzaV9tYW5hZ2VyLmMgICAgICAgICAgICAgIHwgIDEg
+Kwo+ICBkcml2ZXJzL2dwdS9kcm0vbXNtL2VkcC9lZHBfYnJpZGdlLmMgICAgICAgICAgICAgICB8
+ICAxICsKPiAgZHJpdmVycy9ncHUvZHJtL21zbS9oZG1pL2hkbWlfYnJpZGdlLmMgICAgICAgICAg
+ICAgfCAgMSArCj4gIGRyaXZlcnMvZ3B1L2RybS9yY2FyLWR1L3JjYXJfbHZkcy5jICAgICAgICAg
+ICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfZHZvLmMgICAgICAgICAg
+ICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vc3RpL3N0aV9oZGEuYyAgICAg
+ICAgICAgICAgICAgICAgICB8ICAxICsKPiAgZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfaGRtaS5j
+ICAgICAgICAgICAgICAgICAgICAgfCAgMSArCj4gIGluY2x1ZGUvZHJtL2RybV9icmlkZ2UuaCAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDggKysrKy0tLS0KPiAgMjcgZmlsZXMgY2hhbmdl
+ZCwgNTEgaW5zZXJ0aW9ucygrKSwgMzMgZGVsZXRpb25zKC0pCj4KCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
+LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
