@@ -1,58 +1,66 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] arm64: defconfig: Enable CONFIG_PINCTRL_MT7622 by default
-Date: Fri, 27 Apr 2018 11:50:01 +0200
-Message-ID: <8892ae83-8af9-0065-ed53-5dd456b9cbcb@gmail.com>
-References: <aac9629afc510681a5dad1a24eb78f5f84f12c23.1524214111.git.sean.wang@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v2 1/2] ASoC: mt6797: switch to SPDX
+	license tag
+Date: Fri, 27 Apr 2018 11:41:21 +0100
+Message-ID: <20180427104121.GB6872@sirena.org.uk>
+References: <20180427015445.4334-1-kaichieh.chuang@mediatek.com>
+ <20180427015445.4334-2-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <aac9629afc510681a5dad1a24eb78f5f84f12c23.1524214111.git.sean.wang@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com, catalin.marinas@arm.com, will.deacon@arm.com
-Cc: khilman@baylibre.com, arnd@arndb.de, andy.gross@linaro.org, timur@codeaurora.org, xuwei5@hisilicon.com, horms+renesas@verge.net.au, heiko@sntech.de, ard.biesheuvel@linaro.org, amit.kucheria@linaro.org, robh@kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============1546046159826775220=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20180427015445.4334-2-kaichieh.chuang@mediatek.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Cc: alsa-devel@alsa-project.org, ryder.lee@mediatek.com, wsd_upstream@mediatek.com, chipeng.chang@mediatek.com, garlic.tseng@mediatek.com, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
-
-On 04/20/2018 10:58 AM, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Recently kernelCI reported the board mt7622-rfb1 has a fail test with
-> kernel: ERROR: did not start booting whose details could be seen at [1].
-> 
-> The cause is that UART0 can't output anything when it's missing a proper
-> pin setup with current DTS, so the essential driver is always getting
-> enabled to fix up the issue.
-> 
-> [1] https://kernelci.org/boot/id/5ad7d62759b51461bfb1f829/
-> 
-> Cc: Kevin Hilman <khilman@baylibre.com>
-> Cc: stable@vger.kernel.org
-> Fixes: ae457b7679c4 ("arm64: dts: mt7622: add SoC and peripheral related device nodes")
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
-
-Pushed to:
-v4.17-next/defconfig
-
-Thanks
+--===============1546046159826775220==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="H1spWtNR+x+ondvy"
+Content-Disposition: inline
 
 
->  arch/arm64/configs/defconfig | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-> index ecf6137..fe005df 100644
-> --- a/arch/arm64/configs/defconfig
-> +++ b/arch/arm64/configs/defconfig
-> @@ -320,6 +320,7 @@ CONFIG_PINCTRL_MAX77620=y
->  CONFIG_PINCTRL_MSM8916=y
->  CONFIG_PINCTRL_MSM8994=y
->  CONFIG_PINCTRL_MSM8996=y
-> +CONFIG_PINCTRL_MT7622=y
->  CONFIG_PINCTRL_QDF2XXX=y
->  CONFIG_PINCTRL_QCOM_SPMI_PMIC=y
->  CONFIG_GPIO_DWAPB=y
-> 
+--H1spWtNR+x+ondvy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Fri, Apr 27, 2018 at 09:54:44AM +0800, KaiChieh Chuang wrote:
+
+>  sound/soc/mediatek/mt6797/mt6797-afe-clk.c         | 21 ++++++---------------
+
+This file doesn't seem to be in -next?
+
+--H1spWtNR+x+ondvy
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlri/lAACgkQJNaLcl1U
+h9CRJgf+MpUzsNhvLtHOPTuSFhrTiVyRhaZ0WQA1kyeasdj/F5JI9OpD7Vc/CKC9
+RF9hNjQaOavkwjnVzihvstLggW17wUZoOGRkux/4lOxVoxx10DM71JQ5yu1uHktp
+Ar6abNXAA4AnLjPydg4Fz6OdSgDBRIp3fE8Ibf8WVwPO2TubbOwcKbdX5h6hQ7aA
+ngu3JiLJUCI02LrkNuYqDPqK0P8ZhFQfG++AQdKT8S6F0Ktjit6mCKAM/PEtT0N/
+Wk+JZLa9hR/DcTH4P/apP8kkxOsHTIVWESwweie++FZf2Dwzk+wJYgnbapDVGzsP
+jF6dUZ60QIIAs9+PyL37YtEMbHaEqQ==
+=rBVb
+-----END PGP SIGNATURE-----
+
+--H1spWtNR+x+ondvy--
+
+--===============1546046159826775220==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============1546046159826775220==--
