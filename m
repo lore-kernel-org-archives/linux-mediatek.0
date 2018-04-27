@@ -1,82 +1,72 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Applied "ASoC: mt6351 switch to SPDX license tag" to the asoc tree
-Date: Fri, 27 Apr 2018 11:53:31 +0100
-Message-ID: <E1fC10N-0003OC-SE@debutante>
-References: <20180427015445.4334-3-kaichieh.chuang@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v2 1/2] ASoC: mt6797: switch to SPDX
+	license tag
+Date: Fri, 27 Apr 2018 11:55:10 +0100
+Message-ID: <20180427105510.GC6872@sirena.org.uk>
+References: <20180427015445.4334-1-kaichieh.chuang@mediatek.com>
+ <20180427015445.4334-2-kaichieh.chuang@mediatek.com>
+ <20180427104121.GB6872@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180427015445.4334-3-kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chipeng.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: multipart/mixed; boundary="===============7171324934001120235=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20180427104121.GB6872@sirena.org.uk>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Cc: alsa-devel@alsa-project.org, ryder.lee@mediatek.com, wsd_upstream@mediatek.com, chipeng.chang@mediatek.com, garlic.tseng@mediatek.com, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
 
-   ASoC: mt6351 switch to SPDX license tag
+--===============7171324934001120235==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="/Uq4LBwYP4y1W6pO"
+Content-Disposition: inline
 
-has been applied to the asoc tree at
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+--/Uq4LBwYP4y1W6pO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+On Fri, Apr 27, 2018 at 11:41:21AM +0100, Mark Brown wrote:
+> On Fri, Apr 27, 2018 at 09:54:44AM +0800, KaiChieh Chuang wrote:
+>=20
+> >  sound/soc/mediatek/mt6797/mt6797-afe-clk.c         | 21 ++++++--------=
+-------
+>=20
+> This file doesn't seem to be in -next?
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+Sorry, figured this out.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+--/Uq4LBwYP4y1W6pO
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+-----BEGIN PGP SIGNATURE-----
 
-Thanks,
-Mark
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlrjAY0ACgkQJNaLcl1U
+h9C9ugf+KRGwZOAyQZlbv2xsvMW1HqzDpYNQUpHc+bs8NQgt+tqOIJBZNDweKI/n
++fUO2Xkp+CQOE+5NA509lVKZbTzkj2Mg3TRlg0W9YOPEc7/NuFoiBJD88tH6tXxw
+j7qaC0onGvfvr1pKZQpiJNCfKBgjKHJ0JENNCJqWwcv8G496OLNE66WSEvRAaKqM
+QEq/XSCn27b1ANBqzYVmfUhCrA6ASNF6G9Wkd1/XclcGl3d4PymaxSCR80BoU+8b
+J/24nW+0wMM4wIfjRqLWhfszUWI0IZfNshkusmdc9NiG9VaQNWdczlhhhQPRD8nE
+9oLHUuHGYUuREZITSzpZ5I1S9Y4sEw==
+=2jX4
+-----END PGP SIGNATURE-----
 
->From 3c76fbc316fb41ff731b91de3a1e860d92478eeb Mon Sep 17 00:00:00 2001
-From: Kai Chieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Date: Fri, 27 Apr 2018 09:54:45 +0800
-Subject: [PATCH] ASoC: mt6351 switch to SPDX license tag
+--/Uq4LBwYP4y1W6pO--
 
-Signed-off-by: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- sound/soc/codecs/mt6351.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+--===============7171324934001120235==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-diff --git a/sound/soc/codecs/mt6351.c b/sound/soc/codecs/mt6351.c
-index 06fd4706ae20..e739f078fec5 100644
---- a/sound/soc/codecs/mt6351.c
-+++ b/sound/soc/codecs/mt6351.c
-@@ -1,10 +1,9 @@
- // SPDX-License-Identifier: GPL-2.0
--/*
-- * mt6351.c  --  mt6351 ALSA SoC audio codec driver
-- *
-- * Copyright (c) 2018 MediaTek Inc.
-- * Author: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-- */
-+//
-+// mt6351.c  --  mt6351 ALSA SoC audio codec driver
-+//
-+// Copyright (c) 2018 MediaTek Inc.
-+// Author: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
- 
- #include <linux/dma-mapping.h>
- #include <linux/platform_device.h>
--- 
-2.17.0
+
+--===============7171324934001120235==--
