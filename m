@@ -1,128 +1,102 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v1 6/7] Bluetooth: hci_mediatek: Add protocol support
- for MediaTek serial devices
-Date: Fri, 27 Apr 2018 17:14:28 +0800
-Message-ID: <1524820468.12322.205.camel@mtkswgap22>
-References: <cover.1522736996.git.sean.wang@mediatek.com>
-         <f0e0a0b7f1dc3845dc6eafb4ccd60284d1675f8d.1522736996.git.sean.wang@mediatek.com>
-         <A7391E5D-2945-415B-8AB1-8DFBF2E65878@holtmann.org>
-         <1524728068.12322.125.camel@mtkswgap22>
-         <0DB4E6C1-28AD-41B7-8623-10046809A686@holtmann.org>
-         <1524802381.12322.164.camel@mtkswgap22>
-         <BBFEF77F-BE5D-4092-BB2B-8844C10CC34E@holtmann.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 1/2] ASoC: mt6797: switch to SPDX
+	license tag
+Date: Fri, 27 Apr 2018 11:15:23 +0200
+Message-ID: <b4b51172-0de3-b866-ecaa-310adc32ee98@gmail.com>
+References: <20180427015445.4334-1-kaichieh.chuang@mediatek.com>
+ <20180427015445.4334-2-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <BBFEF77F-BE5D-4092-BB2B-8844C10CC34E@holtmann.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Marcel Holtmann <marcel@holtmann.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Johan Hedberg <johan.hedberg@gmail.com>, devicetree <devicetree@vger.kernel.org>, BlueZ development <linux-bluetooth@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20180427015445.4334-2-kaichieh.chuang@mediatek.com>
+Content-Language: en-US
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: KaiChieh Chuang <kaichieh.chuang@mediatek.com>, garlic.tseng@mediatek.com, broonie@kernel.org, ryder.lee@mediatek.com
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, chipeng.chang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2018-04-27 at 07:25 +0200, Marcel Holtmann wrote:
-> Hi Sean,
-> 
-> >>>>> This adds a driver for the MediaTek serial protocol based on H4 protocol,
-> >>>>> which can enable the built-in Bluetooth device inside MT7622 SoC.
-> >>>>> 
-> >>>>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> >>>>> ---
-> > 
 
- [... snip ...]
 
-> > 
-> > where could I find the newest btuart.c (which seems cannot be found in
-> > 4.17 rc2)? It seems a time to rewrite the driver based on btuart.c
-> 
-> It is not merged yet. I posted RFC patches to the mailing list.
+On 04/27/2018 03:54 AM, KaiChieh Chuang wrote:
+> Signed-off-by: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+> ---
+>  sound/soc/mediatek/mt6797/Makefile                 | 13 +------------
+>  sound/soc/mediatek/mt6797/mt6797-afe-clk.c         | 21 ++++++---------------
+>  sound/soc/mediatek/mt6797/mt6797-afe-clk.h         | 10 +---------
+>  sound/soc/mediatek/mt6797/mt6797-afe-common.h      | 10 +---------
+>  sound/soc/mediatek/mt6797/mt6797-afe-pcm.c         | 21 ++++++---------------
+>  sound/soc/mediatek/mt6797/mt6797-interconnection.h | 10 +---------
+>  sound/soc/mediatek/mt6797/mt6797-mt6351.c          | 21 ++++++---------------
+>  sound/soc/mediatek/mt6797/mt6797-reg.h             | 12 ++----------
+>  8 files changed, 24 insertions(+), 94 deletions(-)
 > 
 
-got it.
+[...]
 
-> > 
-> > the Bluetooth device can't survive in a power/down cycle and
-> > 
-> > * power on should be including
-> >  - enable clk and power domain
-> >  - download firmware through specific ACL command
-> >  - send specific commands to configure bluetooth (Required to note that
-> > the steps should be after downloading firmware because the behavior for
-> > the command might be changed by the firmware)
-> 
-> Then this sounds like you need a quirk that runs setup() after every open() and not just after the first open(). You would be the first hardware that looses their firmware, but that is fine, I almost expect that at some point someone comes along and requires this. So just create a new HCI_QUIRK_NON_PERSISTENT_SETUP.
-> 
+> diff --git a/sound/soc/mediatek/mt6797/mt6797-mt6351.c b/sound/soc/mediatek/mt6797/mt6797-mt6351.c
+> index d42a9d9fbf3e..9e5866d6819a 100644
+> --- a/sound/soc/mediatek/mt6797/mt6797-mt6351.c
+> +++ b/sound/soc/mediatek/mt6797/mt6797-mt6351.c
+> @@ -1,18 +1,9 @@
+> -/*
+> - * mt6797-mt6351.c  --  MT6797 MT6351 ALSA SoC machine driver
+> - *
+> - * Copyright (c) 2018 MediaTek Inc.
+> - * Author: Ryder Lee <ryder.lee@mediatek.com>
+> - *
+> - * This program is free software; you can redistribute it and/or modify
+> - * it under the terms of the GNU General Public License version 2 and
+> - * only version 2 as published by the Free Software Foundation.
+> - *
+> - * This program is distributed in the hope that it will be useful,
+> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> - * GNU General Public License for more details.
+> - */
+> +// SPDX-License-Identifier: GPL-2.0
+> +//
+> +// mt6797-mt6351.c  --  MT6797 MT6351 ALSA SoC machine driver
+> +//
+> +// Copyright (c) 2018 MediaTek Inc.
+> +// Author: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
 
-Yes, it should be good to have an option HCI_QUIRK_NON_PERSISTENT_SETUP
-to allow us to run setup() for every open(). 
+As we said in the last version, you should not delete Ryder from the author list.
 
-When users are feeling unexpected thing happening on its device, they
-always have a habit trying to restart device from UI.
+>  
+>  #include <linux/module.h>
+>  #include <sound/soc.h>
+> diff --git a/sound/soc/mediatek/mt6797/mt6797-reg.h b/sound/soc/mediatek/mt6797/mt6797-reg.h
+> index 3330f73fc8bb..ffb55367f59f 100644
+> --- a/sound/soc/mediatek/mt6797/mt6797-reg.h
+> +++ b/sound/soc/mediatek/mt6797/mt6797-reg.h
+> @@ -1,17 +1,9 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+>  /*
+>   * mt6797-reg.h  --  Mediatek 6797 audio driver reg definition
+>   *
+>   * Copyright (c) 2018 MediaTek Inc.
+> - * Author: Garlic Tseng <garlic.tseng@mediatek.com>
+> - *
+> - * This program is free software; you can redistribute it and/or modify
+> - * it under the terms of the GNU General Public License version 2 and
+> - * only version 2 as published by the Free Software Foundation.
+> - *
+> - * This program is distributed in the hope that it will be useful,
+> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> - * GNU General Public License for more details.
+> + * Author: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
 
-If close() -> open() can completely power reset a bluetooth device and
-then it can recover from any fatal error to the initial state as at
-boot. It's good for these problems specially hard to be reproduced and
-required to reboot the whole machine to save.
+Same here, Garlic is an author as well, don't delete him from the comment.
 
-However, it would take a little longer time on open() since it takes
-extra time to make firmware download and reconfiguration.
-
-> > * power off should be including
-> >  - send specific commands, such as to disable bluetooth
-> 
-> So try to put these in shutdown()
-> 
-
-got it.
-
-> >  - disable power domain and clk
-> 
-> And do this in close().
-> 
-
-got it.
-
-
-> > 
-> >>> 
-> >>>>> +
-> >>>>> +	return err;
-
-
-[ ... snip ....]
-
->       .open           = mtk_open,
-> >> 
-> 
-> Go with a brand new btmtkuart.c driver. I really sounds you don’t want the hci_ldisc.c framework in your way. You want direct control over the core callbacks.
-> 
-
-1)
-
-In fact. the device is working via a internal serial bus, rather than
-via uart for mt7622. so could i call it btmtkserial.c ?
-
-Becasue mediatek indeed also have bluetooth over uart, if i called it
-btmtkserialc, the same code logic I think can be fit to all other
-devices using either uart or internal serial bus.
-
-2)
-
-Yes, i don't want hci_ldisc. so far i thought serdev version is enough,
-and i preferred that bluetotoh device don't depend on any utility on
-user space to launch.
-
-
-3) 
-
-last question
-
-if i have bluetooth over usb, the usb version bluetooth can reuse
-btmtkserial.c code?
-
-
-> Regards
-> 
-> Marcel
-> 
+Regards,
+Matthias
