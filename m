@@ -1,30 +1,43 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 4/6] dt-bindings: reset: mediatek: add entry for
- Mali-450 node to refer
-Date: Fri, 27 Apr 2018 15:11:37 -0500
-Message-ID: <20180427201137.it43l2gcdvsn32au@rob-hp-laptop>
-References: <cover.1524816502.git.sean.wang@mediatek.com>
- <d9f327fa30c987ac9cf3a349551bbaa037d1b24a.1524816502.git.sean.wang@mediatek.com>
+From: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Subject: [PATCH] ASoC: mediatek: avoid using snd_soc_platform
+Date: Sat, 28 Apr 2018 13:21:26 +0800
+Message-ID: <1524892886-25343-1-git-send-email-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <d9f327fa30c987ac9cf3a349551bbaa037d1b24a.1524816502.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: sboyd@codeaurora.org, mturquette@baylibre.com, matthias.bgg@gmail.com, mark.rutland@arm.com, p.zabel@pengutronix.de, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: broonie@kernel.org
+Cc: alsa-devel@alsa-project.org, garlic.tseng@mediatek.com, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, kaichieh.chuang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Apr 27, 2018 at 04:14:45PM +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Just add binding for a required reset referenced by Mali-450 on MT7623
-> or MT2701 SoC.
-> 
-> Cc: devicetree@vger.kernel.org
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  include/dt-bindings/reset/mt2701-resets.h | 3 +++
->  1 file changed, 3 insertions(+)
+avoid using snd_soc_platform, which is removed after 4.18
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Signed-off-by: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+---
+ .../soc/mediatek/common/mtk-afe-platform-driver.c  |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.c b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+index d046ea8..8966ee1 100644
+--- a/sound/soc/mediatek/common/mtk-afe-platform-driver.c
++++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+@@ -62,7 +62,7 @@ static int mtk_afe_pcm_new(struct snd_soc_pcm_runtime *rtd)
+ 
+ 	size = afe->mtk_afe_hardware->buffer_bytes_max;
+ 	return snd_pcm_lib_preallocate_pages_for_all(pcm, SNDRV_DMA_TYPE_DEV,
+-						     rtd->platform->dev,
++						     afe->dev,
+ 						     size, size);
+ }
+ 
+-- 
+1.7.9.5
