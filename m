@@ -1,112 +1,99 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v2 2/2] soc: mediatek: add a fixed wait for SRAM stable
-Date: Mon, 30 Apr 2018 17:59:11 +0800
-Message-ID: <1525082351.12322.230.camel@mtkswgap22>
-References: <2e16481e1477dfae0cfb24568d8111da81d92628.1524472331.git.sean.wang@mediatek.com>
-         <0ef8e87ba7156e626d1a1a48388f222ce917099b.1524472331.git.sean.wang@mediatek.com>
-         <51840588-96e4-2520-f3d7-a61e74da6814@gmail.com>
-         <1524476340.12322.14.camel@mtkswgap22>
-         <0ec15c8a-ca90-26c3-1ea6-00bf0d48b62a@gmail.com>
-         <1525072080.12322.212.camel@mtkswgap22>
-         <b45efd5d-755c-6d5c-b226-763801e811ea@gmail.com>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [v3 03/10] mfd: mtk-mmsys: Add mmsys driver
+Date: Mon, 30 Apr 2018 11:18:26 +0100
+Message-ID: <20180430101826.GC5147@dell>
+References: <cover.1524820923.git.mbrugger@suse.com>
+ <e0894c97775e46ce6d9a441dc05e2e2479a4b612.1524820923.git.mbrugger@suse.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <b45efd5d-755c-6d5c-b226-763801e811ea@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: rjw@rjwysocki.net, khilman@baylibre.com, ulf.hansson@linaro.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <e0894c97775e46ce6d9a441dc05e2e2479a4b612.1524820923.git.mbrugger@suse.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: matthias.bgg@kernel.org
+Cc: mark.rutland@arm.com, airlied@linux.ie, mturquette@baylibre.com, dri-devel@lists.freedesktop.org, laurent.pinchart@ideasonboard.com, ulrich.hecht+renesas@gmail.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, sean.wang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>, gregkh@linuxfoundation.org, rdunlap@infradead.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, davem@davemloft.net
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-04-30 at 11:10 +0200, Matthias Brugger wrote:
-> 
-> On 04/30/2018 09:08 AM, Sean Wang wrote:
-> > On Fri, 2018-04-27 at 11:46 +0200, Matthias Brugger wrote:
-> >> Hi Sean,
-> >>
-> >> On 04/23/2018 11:39 AM, Sean Wang wrote:
-> >>> On Mon, 2018-04-23 at 11:31 +0200, Matthias Brugger wrote:
-> >>>>
-> >>>> On 04/23/2018 10:36 AM, sean.wang@mediatek.com wrote:
-> >>>>> From: Sean Wang <sean.wang@mediatek.com>
-> >>>>>
-> >>>>> MT7622_POWER_DOMAIN_WB doesn't send an ACK when its managed SRAM becomes
-> >>>>> stable, which is not like the behavior the other power domains should
-> >>>>> have. Therefore, it's necessary for such a power domain to have a fixed
-> >>>>> and well-predefined duration to wait until its managed SRAM can be allowed
-> >>>>> to access by all functions running on the top.
-> >>>>>
-> >>>>> v1 -> v2:
-> >>>>>  - use MTK_SCPD_FWAIT_SRAM flag as an indication requiring force waiting.
-> >>>>>
-> >>>>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> >>>>> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> >>>>> Cc: Ulf Hansson <ulf.hansson@linaro.org>
-> >>>>> Cc: Weiyi Lu <weiyi.lu@mediatek.com>
-> >>>>> ---
-> >>>>>  drivers/soc/mediatek/mtk-scpsys.c | 24 ++++++++++++++++++------
-> >>>>>  1 file changed, 18 insertions(+), 6 deletions(-)
-> >>>>>
-> >>>>> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> >>>>> index b1b45e4..d4f1a63 100644
-> >>>>> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> >>>>> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> >>>>> @@ -32,6 +32,7 @@
-> >>>>>  #define MTK_POLL_TIMEOUT    (jiffies_to_usecs(HZ))
-> >>>>>  
-> >>>>>  #define MTK_SCPD_ACTIVE_WAKEUP		BIT(0)
-> >>>>> +#define MTK_SCPD_FWAIT_SRAM		BIT(1)
-> >>>>>  #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
-> >>>>>  
-> >>>>>  #define SPM_VDE_PWR_CON			0x0210
-> >>>>> @@ -237,11 +238,22 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
-> >>>>>  	val &= ~scpd->data->sram_pdn_bits;
-> >>>>>  	writel(val, ctl_addr);
-> >>>>>  
-> >>>>> -	/* wait until SRAM_PDN_ACK all 0 */
-> >>>>> -	ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == 0,
-> >>>>> -				 MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> >>>>> -	if (ret < 0)
-> >>>>> -		goto err_pwr_ack;
-> >>>>> +	/* Either wait until SRAM_PDN_ACK all 0 or have a force wait */
-> >>>>> +	if (!MTK_SCPD_CAPS(scpd, MTK_SCPD_FWAIT_SRAM)) {
-> >>
-> >> After having another look on the patch, could you change the order of the if:
-> >> So that we check for the existence of the MTK_SCPD_FWAIT_SRAM and sleep and in
-> >> the else branch we to the readl_poll_timeout.
-> >>
-> >> I think in the future this will make the code easier to understand as you can
-> >> easily oversee the '!' negation in the if.
-> >>
-> >> Regards,
-> >> Matthias
-> >>
-> > 
-> > Initial thought on the patch is that I would like to save a branch
-> > instruction for a most possibly executed block. Or would it be better to
-> > add a compiler to branch prediction information? something like that  
-> > 
-> >         /* Either wait until SRAM_PDN_ACK all 0 or have a force wait */
-> >         if (unlikely(MTK_SCPD_CAPS(scpd, MTK_SCPD_FWAIT_SRAM))) {
-> >                 /*
-> >                  * Currently, MTK_SCPD_FWAIT_SRAM is necessary only for
-> >                  * MT7622_POWER_DOMAIN_WB and thus just a trivial setup
-> > is
-> >                  * applied here.
-> >                  */
-> >                 usleep_range(12000, 12100);
-> > ...
-> >  
-> 
-> Is this a performance critical path? I thought if you turn on the power domain
-> for some peripherals, it does not matter if you need a few CPU cycles more or less.
-
-thanks for your advice
-
-it's not a critical path.
-
-i'll send a new patch according to the result.
-
-> Regards,
-> Matthias
+T24gRnJpLCAyNyBBcHIgMjAxOCwgbWF0dGhpYXMuYmdnQGtlcm5lbC5vcmcgd3JvdGU6Cgo+IEZy
+b206IE1hdHRoaWFzIEJydWdnZXIgPG1icnVnZ2VyQHN1c2UuY29tPgo+IAo+IFRoZSBNTVNZUyBz
+dWJzeXN0ZW0gaW5jbHVkZXMgY2xvY2tzIGFuZCBkcm0gY29tcG9uZW50cy4KPiBUaGlzIHBhdGNo
+IGFkZHMgYSBNRkQgZGV2aWNlIHRvIHByb2JlIGJvdGggZHJpdmVycyBmcm9tIHRoZSBzYW1lCj4g
+ZGV2aWNlIHRyZWUgY29tcGF0aWJsZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBNYXR0aGlhcyBCcnVn
+Z2VyIDxtYnJ1Z2dlckBzdXNlLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9tZmQvS2NvbmZpZyAgICAg
+fCAgOSArKysrKysKPiAgZHJpdmVycy9tZmQvTWFrZWZpbGUgICAgfCAgMiArKwo+ICBkcml2ZXJz
+L21mZC9tdGstbW1zeXMuYyB8IDc5ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysKPiAgMyBmaWxlcyBjaGFuZ2VkLCA5MCBpbnNlcnRpb25zKCspCj4gIGNy
+ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21mZC9tdGstbW1zeXMuYwo+IAo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL21mZC9LY29uZmlnIGIvZHJpdmVycy9tZmQvS2NvbmZpZwo+IGluZGV4IGI4NjBl
+YjVhYTE5NC4uZDIzYTNiOWEyYzU4IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbWZkL0tjb25maWcK
+PiArKysgYi9kcml2ZXJzL21mZC9LY29uZmlnCj4gQEAgLTM3OCw2ICszNzgsMTUgQEAgY29uZmln
+IE1GRF9NQzEzWFhYX0kyQwo+ICAJaGVscAo+ICAJICBTZWxlY3QgdGhpcyBpZiB5b3VyIE1DMTN4
+eHggaXMgY29ubmVjdGVkIHZpYSBhbiBJMkMgYnVzLgo+ICAKPiArY29uZmlnIE1GRF9NRURJQVRF
+S19NTVNZUwo+ICsJdHJpc3RhdGUgIk1lZGlhdGVrIE1NU1lTIGludGVyZmFjZSIKPiArCXNlbGVj
+dCBNRkRfQ09SRQo+ICsJc2VsZWN0IFJFR01BUF9NTUlPCj4gKwloZWxwCj4gKwkgIFNlbGVjdCB0
+aGlzIGlmIHlvdSBoYXZlIGEgTU1TWVMgc3Vic3lzdGVtIGluIHlvdXIgU29DLiBUaGUKPiArCSAg
+TU1TWVMgc3Vic3lzdGVtIGhhcyBhdCBsZWFzdCBhIGNsb2NrIGRyaXZlciBwYXJ0IGFuZCBzb21l
+Cj4gKwkgIERSTSBjb21wb25lbnRzLgo+ICsKPiAgY29uZmlnIE1GRF9NWFNfTFJBREMKPiAgCXRy
+aXN0YXRlICJGcmVlc2NhbGUgaS5NWDIzL2kuTVgyOCBMUkFEQyIKPiAgCWRlcGVuZHMgb24gQVJD
+SF9NWFMgfHwgQ09NUElMRV9URVNUCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWZkL01ha2VmaWxl
+IGIvZHJpdmVycy9tZmQvTWFrZWZpbGUKPiBpbmRleCBkOWQyY2YwZDMyZWYuLmI5NjExOGJkNjhk
+OSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL21mZC9NYWtlZmlsZQo+ICsrKyBiL2RyaXZlcnMvbWZk
+L01ha2VmaWxlCj4gQEAgLTk4LDYgKzk4LDggQEAgb2JqLSQoQ09ORklHX01GRF9NQzEzWFhYKQkr
+PSBtYzEzeHh4LWNvcmUubwo+ICBvYmotJChDT05GSUdfTUZEX01DMTNYWFhfU1BJKQkrPSBtYzEz
+eHh4LXNwaS5vCj4gIG9iai0kKENPTkZJR19NRkRfTUMxM1hYWF9JMkMpCSs9IG1jMTN4eHgtaTJj
+Lm8KPiAgCj4gK29iai0kKENPTkZJR19NRkRfTUVESUFURUtfTU1TWVMpICs9IG10ay1tbXN5cy5v
+Cj4gKwo+ICBvYmotJChDT05GSUdfTUZEX0NPUkUpCQkrPSBtZmQtY29yZS5vCj4gIAo+ICBvYmot
+JChDT05GSUdfRVpYX1BDQVApCQkrPSBlengtcGNhcC5vCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+bWZkL210ay1tbXN5cy5jIGIvZHJpdmVycy9tZmQvbXRrLW1tc3lzLmMKPiBuZXcgZmlsZSBtb2Rl
+IDEwMDY0NAo+IGluZGV4IDAwMDAwMDAwMDAwMC4uYzgwMjM0M2ZiMWM2Cj4gLS0tIC9kZXYvbnVs
+bAo+ICsrKyBiL2RyaXZlcnMvbWZkL210ay1tbXN5cy5jCj4gQEAgLTAsMCArMSw3OSBAQAo+ICsv
+LyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMCsKPiArCj4gKy8qCj4gKyAqIG10ay1t
+bXN5cy5jIC0tIE1lZGlhdGVrIE1NU1lTIG11bHRpLWZ1bmN0aW9uIGRyaXZlcgo+ICsgKgo+ICsg
+KiBDb3B5cmlnaHQgKGMpIDIwMTggTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWls
+LmNvbT4KPiArICoKPiArICogQXV0aG9yOiBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlhcy5iZ2dA
+Z21haWwuY29tPgo+ICsgKi8KPiArCj4gKyNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiArI2lu
+Y2x1ZGUgPGxpbnV4L2luaXQuaD4KPiArI2luY2x1ZGUgPGxpbnV4L21mZC9jb3JlLmg+Cj4gKyNp
+bmNsdWRlIDxsaW51eC9vZi5oPgo+ICsjaW5jbHVkZSA8bGludXgvb2ZfYWRkcmVzcy5oPgo+ICsj
+aW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9k
+ZXZpY2UuaD4KPiArI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgo+ICsKPiArZW51bSB7Cj4gKwlN
+TVNZU19NVDI3MDEgPSAxLAo+ICt9Owo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBtZmRfY2Vs
+bCBtbXN5c19tdDI3MDFfZGV2c1tdID0gewo+ICsJeyAubmFtZSA9ICJjbGstbXQyNzAxLW1tIiwg
+fSwKPiArCXsgLm5hbWUgPSAiZHJtLW10MjcwMS1tbSIsIH0sCj4gK307Cj4gKwo+ICtzdGF0aWMg
+aW50IG1tc3lzX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gK3sKPiArCWNv
+bnN0IHN0cnVjdCBtZmRfY2VsbCAqbW1zeXNfY2VsbHM7Cj4gKwlpbnQgbnJfY2VsbHM7Cj4gKwls
+b25nIGlkOwo+ICsJaW50IHJldDsKPiArCj4gKwlpZCA9IChsb25nKSBvZl9kZXZpY2VfZ2V0X21h
+dGNoX2RhdGEoJnBkZXYtPmRldik7Cj4gKwlpZiAoIWlkKSB7Cj4gKwkJZGV2X2VycigmcGRldi0+
+ZGV2LCAib2ZfZGV2aWNlX2dldCBtYXRjaF9kYXRhKCkgZmFpbGVkXG4iKTsKPiArCQlyZXR1cm4g
+LUVJTlZBTDsKPiArCX0KPiArCj4gKwlzd2l0Y2ggKGlkKSB7Cj4gKwljYXNlIE1NU1lTX01UMjcw
+MToKPiArCQltbXN5c19jZWxscyA9IG1tc3lzX210MjcwMV9kZXZzOwo+ICsJCW5yX2NlbGxzID0g
+QVJSQVlfU0laRShtbXN5c19tdDI3MDFfZGV2cyk7Cj4gKwkJYnJlYWs7Cj4gKwlkZWZhdWx0Ogo+
+ICsJCXJldHVybiAtRU5PREVWOwo+ICsJfQo+ICsKPiArCXJldCA9IGRldm1fbWZkX2FkZF9kZXZp
+Y2VzKCZwZGV2LT5kZXYsIDAsIG1tc3lzX2NlbGxzLCBucl9jZWxscywKPiArCQkJCQlOVUxMLCAw
+LCBOVUxMKTsKPiArCWlmIChyZXQpIHsKPiArCQlkZXZfZXJyKCZwZGV2LT5kZXYsICJmYWlsZWQg
+dG8gYWRkIE1GRCBkZXZpY2VzICVkXG4iLCByZXQpOwo+ICsJCXJldHVybiByZXQ7Cj4gKwl9Cj4g
+Kwo+ICsJcmV0dXJuIDA7Cj4gK307CgpUaGlzIGRyaXZlciBpcyBwcmV0dHkgcG9pbnRsZXNzLiAg
+SXQgZG9lc24ndCBhY3R1YWxseSBkbyBhbnl0aGluZy4KCkkgdGhpbmsgeW91IGp1c3Qgd2FudCB0
+byB1c2UgInNpbXBsZS1tZmQiIGluc3RlYWQuCgo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2Rl
+dmljZV9pZCBvZl9tYXRjaF9tbXN5c1tdID0gewo+ICsJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRl
+ayxtdDI3MDEtbW1zeXMiLAo+ICsJICAuZGF0YSA9ICh2b2lkICopIE1NU1lTX01UMjcwMSwKPiAr
+CX0sCj4gKwl7IC8qIHNlbnRpbmVsICovIH0sCj4gK307Cj4gKwo+ICtzdGF0aWMgc3RydWN0IHBs
+YXRmb3JtX2RyaXZlciBtbXN5c19kcnYgPSB7Cj4gKwkucHJvYmUgPSBtbXN5c19wcm9iZSwKPiAr
+CS5kcml2ZXIgPSB7Cj4gKwkJLm5hbWUgPSAibWVkaWF0ZWstbW15c3lzIiwKPiArCQkub2ZfbWF0
+Y2hfdGFibGUgPSBvZl9tYXRjaF9wdHIob2ZfbWF0Y2hfbW1zeXMpLAo+ICsJfSwKPiArfTsKPiAr
+Cj4gK2J1aWx0aW5fcGxhdGZvcm1fZHJpdmVyKG1tc3lzX2Rydik7Cj4gKwo+ICtNT0RVTEVfREVT
+Q1JJUFRJT04oIk1lZGlhdGVrIE1NU1lTIG11bHRpLWZ1bmN0aW9uIGRyaXZlciIpOwo+ICtNT0RV
+TEVfTElDRU5TRSgiR1BMIik7CgotLSAKTGVlIEpvbmVzIFvmnY7nkLzmlq9dCkxpbmFybyBTZXJ2
+aWNlcyBUZWNobmljYWwgTGVhZApMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBm
+b3IgQVJNIFNvQ3MKRm9sbG93IExpbmFybzogRmFjZWJvb2sgfCBUd2l0dGVyIHwgQmxvZwpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
