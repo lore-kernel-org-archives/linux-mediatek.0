@@ -1,62 +1,138 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH v6 0/2] PCI: mediatek: Fixups for the IRQ handle routine
- and MT7622's class code
-Date: Mon, 30 Apr 2018 10:02:26 +0800
-Message-ID: <1525053746.5013.8.camel@mtkswgap22>
-References: <1524201910-22836-1-git-send-email-honghui.zhang@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v2 2/2] soc: mediatek: add a fixed wait for SRAM stable
+Date: Mon, 30 Apr 2018 15:08:00 +0800
+Message-ID: <1525072080.12322.212.camel@mtkswgap22>
+References: <2e16481e1477dfae0cfb24568d8111da81d92628.1524472331.git.sean.wang@mediatek.com>
+         <0ef8e87ba7156e626d1a1a48388f222ce917099b.1524472331.git.sean.wang@mediatek.com>
+         <51840588-96e4-2520-f3d7-a61e74da6814@gmail.com>
+         <1524476340.12322.14.camel@mtkswgap22>
+         <0ec15c8a-ca90-26c3-1ea6-00bf0d48b62a@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1524201910-22836-1-git-send-email-honghui.zhang@mediatek.com>
+In-Reply-To: <0ec15c8a-ca90-26c3-1ea6-00bf0d48b62a@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Honghui Zhang =?UTF-8?Q?=28=E5=BC=A0=E6=B4=AA=E8=BE=89=29?= <Honghui.Zhang@mediatek.com>
-Cc: "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>, "marc.zyngier@arm.com" <marc.zyngier@arm.com>, "bhelgaas@google.com" <bhelgaas@google.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Yingjoe Chen =?UTF-8?Q?=28=3F=3F=E8=8B=B1=E6=B4=B2=29?= <Yingjoe.Chen@mediatek.com>, Eddie Huang =?UTF-8?Q?=28=3FS=3F=C7=82=3F=29?= <eddie.huang@mediatek.com>, Youlin Pei =?UTF-8?Q?=28=E8=A3=B4=E5=8F=8B=E6=9E=97=29?= <youlin.pei@m>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: rjw@rjwysocki.net, khilman@baylibre.com, ulf.hansson@linaro.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2018-04-20 at 13:25 +0800, Honghui Zhang (张洪辉) wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
+On Fri, 2018-04-27 at 11:46 +0200, Matthias Brugger wrote:
+> Hi Sean,
 > 
-> Two fixups for mediatek's host bridge:
-> The first patch fixup class type and vendor ID for MT7622.
-> The second patch fixup the IRQ handle routine by using irq_chip solution
-> to avoid IRQ reentry which may exist for both MT2712 and MT7622.
+> On 04/23/2018 11:39 AM, Sean Wang wrote:
+> > On Mon, 2018-04-23 at 11:31 +0200, Matthias Brugger wrote:
+> >>
+> >> On 04/23/2018 10:36 AM, sean.wang@mediatek.com wrote:
+> >>> From: Sean Wang <sean.wang@mediatek.com>
+> >>>
+> >>> MT7622_POWER_DOMAIN_WB doesn't send an ACK when its managed SRAM becomes
+> >>> stable, which is not like the behavior the other power domains should
+> >>> have. Therefore, it's necessary for such a power domain to have a fixed
+> >>> and well-predefined duration to wait until its managed SRAM can be allowed
+> >>> to access by all functions running on the top.
+> >>>
+> >>> v1 -> v2:
+> >>>  - use MTK_SCPD_FWAIT_SRAM flag as an indication requiring force waiting.
+> >>>
+> >>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> >>> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> >>> Cc: Ulf Hansson <ulf.hansson@linaro.org>
+> >>> Cc: Weiyi Lu <weiyi.lu@mediatek.com>
+> >>> ---
+> >>>  drivers/soc/mediatek/mtk-scpsys.c | 24 ++++++++++++++++++------
+> >>>  1 file changed, 18 insertions(+), 6 deletions(-)
+> >>>
+> >>> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> >>> index b1b45e4..d4f1a63 100644
+> >>> --- a/drivers/soc/mediatek/mtk-scpsys.c
+> >>> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> >>> @@ -32,6 +32,7 @@
+> >>>  #define MTK_POLL_TIMEOUT    (jiffies_to_usecs(HZ))
+> >>>  
+> >>>  #define MTK_SCPD_ACTIVE_WAKEUP		BIT(0)
+> >>> +#define MTK_SCPD_FWAIT_SRAM		BIT(1)
+> >>>  #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
+> >>>  
+> >>>  #define SPM_VDE_PWR_CON			0x0210
+> >>> @@ -237,11 +238,22 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+> >>>  	val &= ~scpd->data->sram_pdn_bits;
+> >>>  	writel(val, ctl_addr);
+> >>>  
+> >>> -	/* wait until SRAM_PDN_ACK all 0 */
+> >>> -	ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == 0,
+> >>> -				 MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> >>> -	if (ret < 0)
+> >>> -		goto err_pwr_ack;
+> >>> +	/* Either wait until SRAM_PDN_ACK all 0 or have a force wait */
+> >>> +	if (!MTK_SCPD_CAPS(scpd, MTK_SCPD_FWAIT_SRAM)) {
 > 
-> Change since v5:
->  - Make the comments consistend with the code modification in the first patch.
->  - Using writew to performing a 16-bit write.
->  - Using irq_chip solution to fix the IRQ issue.
+> After having another look on the patch, could you change the order of the if:
+> So that we check for the existence of the MTK_SCPD_FWAIT_SRAM and sleep and in
+> the else branch we to the readl_poll_timeout.
 > 
-> The v5 patchset could be found in:
->  https://patchwork.kernel.org/patch/10133303
->  https://patchwork.kernel.org/patch/10133305
+> I think in the future this will make the code easier to understand as you can
+> easily oversee the '!' negation in the if.
 > 
-> Change since v4:
->  - Only setup vendor ID for MT7622, igorning the device ID since mediatek's
->    host bridge driver does not cares about the device ID.
+> Regards,
+> Matthias
 > 
-> Change since v3:
->  - Setup the class type and vendor ID at the beginning of startup instead
->    of in a quirk.
->  - Add mediatek's vendor ID, it could be found in:
->    https://pcisig.com/membership/member-companies?combine=&page=4
-> 
-> Change since v2:
->  - Move the initialize of the iterate before the loop to fix an
->    INTx IRQ issue in the first patch
-> 
-> Change since v1:
->  - Add the second patch.
->  - Make the first patch's commit message more standard.
-> Honghui Zhang (2):
->   PCI: mediatek: Set up vendor ID and class type for MT7622
->   PCI: mediatek: Using chained IRQ to setup IRQ handle
-> 
->  drivers/pci/host/pcie-mediatek.c | 220 +++++++++++++++++++++++----------------
->  include/linux/pci_ids.h          |   2 +
->  2 files changed, 133 insertions(+), 89 deletions(-)
+
+Initial thought on the patch is that I would like to save a branch
+instruction for a most possibly executed block. Or would it be better to
+add a compiler to branch prediction information? something like that  
+
+        /* Either wait until SRAM_PDN_ACK all 0 or have a force wait */
+        if (unlikely(MTK_SCPD_CAPS(scpd, MTK_SCPD_FWAIT_SRAM))) {
+                /*
+                 * Currently, MTK_SCPD_FWAIT_SRAM is necessary only for
+                 * MT7622_POWER_DOMAIN_WB and thus just a trivial setup
+is
+                 * applied here.
+                 */
+                usleep_range(12000, 12100);
+...
+ 
 
 
-Acked-by: Ryder Lee <ryder.lee@mediatek.com> for the series.
-
-Thanks
+> 
+> >>> +		ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == 0,
+> >>> +					 MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> >>> +		if (ret < 0)
+> >>> +			goto err_pwr_ack;
+> >>> +	} else {
+> >>> +		/*
+> >>> +		 * Currently, MTK_SCPD_FWAIT_SRAM is necessary only for
+> >>> +		 * MT7622_POWER_DOMAIN_WB and thus just a trivial setup is
+> >>> +		 * applied here. If there're more domains which need to force
+> >>> +		 * waiting for its own pre-defined value, the duration should
+> >>> +		 * be coded in the caps field.
+> >>> +		 */
+> >>
+> >> I would say, if necessary in the future we can add a switch statement here.
+> >> Other then that the patches look good. If you are OK, I'll just delete the last
+> >> sentence when applying the patch.
+> >>
+> > 
+> > yes, it's okay for me. 
+> > 
+> >> Regards,
+> >> Matthias
+> >>
+> >>> +		usleep_range(12000, 12100);
+> >>> +	};
+> >>>  
+> >>>  	if (scpd->data->bus_prot_mask) {
+> >>>  		ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
+> >>> @@ -785,7 +797,7 @@ static const struct scp_domain_data scp_domain_data_mt7622[] = {
+> >>>  		.sram_pdn_ack_bits = 0,
+> >>>  		.clk_id = {CLK_NONE},
+> >>>  		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_WB,
+> >>> -		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+> >>> +		.caps = MTK_SCPD_ACTIVE_WAKEUP | MTK_SCPD_FWAIT_SRAM,
+> >>>  	},
+> >>>  };
+> >>>  
+> >>>
+> > 
+> > 
