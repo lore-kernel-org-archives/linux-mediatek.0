@@ -1,403 +1,79 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: Re: [PATCH 2/2] PCI: mediatek: Using chained IRQ to setup IRQ handle
-Date: Mon, 30 Apr 2018 12:03:07 +0100
-Message-ID: <a2f7e70a-fdef-d925-8838-be3051c2e96d@arm.com>
-References: <1524201910-22836-1-git-send-email-honghui.zhang@mediatek.com>
- <1524201910-22836-3-git-send-email-honghui.zhang@mediatek.com>
+From: Peter Rosin <peda-koto5C5qi+TLoDKTGw+V6w@public.gmane.org>
+Subject: Re: [PATCH 22/24] drm/bridge: remove the .of_node member
+Date: Mon, 30 Apr 2018 13:14:08 +0200
+Message-ID: <f5f99e99-1174-6ee0-c097-e1a9d4d5a62a@axentia.se>
+References: <20180426223139.16740-23-peda@axentia.se>
+ <201804281608.Iji1Keed%fengguang.wu@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1524201910-22836-3-git-send-email-honghui.zhang@mediatek.com>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com, lorenzo.pieralisi@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com
-Cc: hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+In-Reply-To: <201804281608.Iji1Keed%fengguang.wu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/freedreno>
+List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Martyn Welch <martyn.welch-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Peter Senna Tschudin <peter.senna-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Martin Donnelly <martin.donnelly-JJi787mZWgc@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Zhang,
-
-On 20/04/18 06:25, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
-> 
-> Using irq_chip solution to setup IRQs for the consistent with IRQ framework.
-> 
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> ---
->  drivers/pci/host/pcie-mediatek.c | 192 +++++++++++++++++++++------------------
->  1 file changed, 105 insertions(+), 87 deletions(-)
-> 
-> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-> index c3dc549..1d9c6f1 100644
-> --- a/drivers/pci/host/pcie-mediatek.c
-> +++ b/drivers/pci/host/pcie-mediatek.c
-> @@ -11,8 +11,10 @@
->  #include <linux/delay.h>
->  #include <linux/iopoll.h>
->  #include <linux/irq.h>
-> +#include <linux/irqchip/chained_irq.h>
->  #include <linux/irqdomain.h>
->  #include <linux/kernel.h>
-> +#include <linux/msi.h>
->  #include <linux/of_address.h>
->  #include <linux/of_pci.h>
->  #include <linux/of_platform.h>
-> @@ -130,14 +132,12 @@ struct mtk_pcie_port;
->  /**
->   * struct mtk_pcie_soc - differentiate between host generations
->   * @need_fix_class_id: whether this host's class ID needed to be fixed or not
-> - * @has_msi: whether this host supports MSI interrupts or not
->   * @ops: pointer to configuration access functions
->   * @startup: pointer to controller setting functions
->   * @setup_irq: pointer to initialize IRQ functions
->   */
->  struct mtk_pcie_soc {
->  	bool need_fix_class_id;
-> -	bool has_msi;
->  	struct pci_ops *ops;
->  	int (*startup)(struct mtk_pcie_port *port);
->  	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
-> @@ -161,7 +161,9 @@ struct mtk_pcie_soc {
->   * @lane: lane count
->   * @slot: port slot
->   * @irq_domain: legacy INTx IRQ domain
-> + * @inner_domain: inner IRQ domain
->   * @msi_domain: MSI IRQ domain
-> + * @lock: protect the msi_irq_in_use bitmap
->   * @msi_irq_in_use: bit map for assigned MSI IRQ
->   */
->  struct mtk_pcie_port {
-> @@ -179,7 +181,9 @@ struct mtk_pcie_port {
->  	u32 lane;
->  	u32 slot;
->  	struct irq_domain *irq_domain;
-> +	struct irq_domain *inner_domain;
->  	struct irq_domain *msi_domain;
-> +	struct mutex lock;
->  	DECLARE_BITMAP(msi_irq_in_use, MTK_MSI_IRQS_NUM);
->  };
->  
-> @@ -446,103 +450,122 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
->  	return 0;
->  }
->  
-> -static int mtk_pcie_msi_alloc(struct mtk_pcie_port *port)
-> +static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
->  {
-> -	int msi;
-> +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-> +	phys_addr_t addr;
->  
-> -	msi = find_first_zero_bit(port->msi_irq_in_use, MTK_MSI_IRQS_NUM);
-> -	if (msi < MTK_MSI_IRQS_NUM)
-> -		set_bit(msi, port->msi_irq_in_use);
-> -	else
-> -		return -ENOSPC;
-> +	/* MT2712/MT7622 only support 32-bit MSI addresses */
-> +	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
-> +	msg->address_hi = 0;
-> +	msg->address_lo = lower_32_bits(addr);
->  
-> -	return msi;
-> +	msg->data = data->hwirq;
-> +
-> +	dev_dbg(port->pcie->dev, "msi#%d address_hi %#x address_lo %#x\n",
-> +		(int)data->hwirq, msg->address_hi, msg->address_lo);
->  }
->  
-> -static void mtk_pcie_msi_free(struct mtk_pcie_port *port, unsigned long hwirq)
-> +static int mtk_msi_set_affinity(struct irq_data *irq_data,
-> +				   const struct cpumask *mask, bool force)
->  {
-> -	clear_bit(hwirq, port->msi_irq_in_use);
-> +	return -EINVAL;
->  }
->  
-> -static int mtk_pcie_msi_setup_irq(struct msi_controller *chip,
-> -				  struct pci_dev *pdev, struct msi_desc *desc)
-> -{
-> -	struct mtk_pcie_port *port;
-> -	struct msi_msg msg;
-> -	unsigned int irq;
-> -	int hwirq;
-> -	phys_addr_t msg_addr;
-> +static struct irq_chip mtk_msi_bottom_irq_chip = {
-> +	.name			= "MTK MSI",
-> +	.irq_compose_msi_msg	= mtk_compose_msi_msg,
-> +	.irq_set_affinity	= mtk_msi_set_affinity,
-> +	.irq_mask		= pci_msi_mask_irq,
-> +	.irq_unmask	= pci_msi_unmask_irq,
-> +};
->  
-> -	port = mtk_pcie_find_port(pdev->bus, pdev->devfn);
-> -	if (!port)
-> -		return -EINVAL;
-> +static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int virq,
-> +				     unsigned int nr_irqs, void *args)
-> +{
-> +	struct mtk_pcie_port *port = domain->host_data;
-> +	unsigned long bit;
->  
-> -	hwirq = mtk_pcie_msi_alloc(port);
-> -	if (hwirq < 0)
-> -		return hwirq;
-> +	WARN_ON(nr_irqs != 1);
-> +	mutex_lock(&port->lock);
->  
-> -	irq = irq_create_mapping(port->msi_domain, hwirq);
-> -	if (!irq) {
-> -		mtk_pcie_msi_free(port, hwirq);
-> -		return -EINVAL;
-> +	bit = find_first_zero_bit(port->msi_irq_in_use, MTK_MSI_IRQS_NUM);
-> +	if (bit >= MTK_MSI_IRQS_NUM) {
-> +		mutex_unlock(&port->lock);
-> +		return -ENOSPC;
->  	}
->  
-> -	chip->dev = &pdev->dev;
-> -
-> -	irq_set_msi_desc(irq, desc);
-> +	__set_bit(bit, port->msi_irq_in_use);
->  
-> -	/* MT2712/MT7622 only support 32-bit MSI addresses */
-> -	msg_addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
-> -	msg.address_hi = 0;
-> -	msg.address_lo = lower_32_bits(msg_addr);
-> -	msg.data = hwirq;
-> +	mutex_unlock(&port->lock);
->  
-> -	pci_write_msi_msg(irq, &msg);
-> +	irq_domain_set_info(domain, virq, bit, &mtk_msi_bottom_irq_chip,
-> +			    domain->host_data, handle_simple_irq,
-
-Why don't you handle the interrupt as an edge interrupt
-(handle_edge_irq)? That's what it really is, and the fact that you use
-"handle_simple_irq" makes me think that wou're papering over some other
-issue (see below).
-
-> +			    NULL, NULL);
->  
->  	return 0;
->  }
->  
-> -static void mtk_msi_teardown_irq(struct msi_controller *chip, unsigned int irq)
-> +static void mtk_pcie_irq_domain_free(struct irq_domain *domain,
-> +				     unsigned int virq, unsigned int nr_irqs)
->  {
-> -	struct pci_dev *pdev = to_pci_dev(chip->dev);
-> -	struct irq_data *d = irq_get_irq_data(irq);
-> -	irq_hw_number_t hwirq = irqd_to_hwirq(d);
-> -	struct mtk_pcie_port *port;
-> +	struct irq_data *d = irq_domain_get_irq_data(domain, virq);
-> +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(d);
->  
-> -	port = mtk_pcie_find_port(pdev->bus, pdev->devfn);
-> -	if (!port)
-> -		return;
-> +	mutex_lock(&port->lock);
-> +
-> +	if (!test_bit(d->hwirq, port->msi_irq_in_use))
-> +		dev_err(port->pcie->dev, "trying to free unused MSI#%lu\n",
-> +			d->hwirq);
-> +	else
-> +		__clear_bit(d->hwirq, port->msi_irq_in_use);
->  
-> -	irq_dispose_mapping(irq);
-> -	mtk_pcie_msi_free(port, hwirq);
-> +	mutex_unlock(&port->lock);
-> +
-> +	irq_domain_free_irqs_parent(domain, virq, nr_irqs);
->  }
->  
-> -static struct msi_controller mtk_pcie_msi_chip = {
-> -	.setup_irq = mtk_pcie_msi_setup_irq,
-> -	.teardown_irq = mtk_msi_teardown_irq,
-> +static const struct irq_domain_ops msi_domain_ops = {
-> +	.alloc	= mtk_pcie_irq_domain_alloc,
-> +	.free	= mtk_pcie_irq_domain_free,
->  };
->  
->  static struct irq_chip mtk_msi_irq_chip = {
->  	.name = "MTK PCIe MSI",
-> -	.irq_enable = pci_msi_unmask_irq,
-> -	.irq_disable = pci_msi_mask_irq,
->  	.irq_mask = pci_msi_mask_irq,
->  	.irq_unmask = pci_msi_unmask_irq,
->  };
->  
-> -static int mtk_pcie_msi_map(struct irq_domain *domain, unsigned int irq,
-> -			    irq_hw_number_t hwirq)
-> +static struct msi_domain_info mtk_msi_domain_info = {
-> +	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
-> +		   MSI_FLAG_PCI_MSIX),
-> +	.chip	= &mtk_msi_irq_chip,
-> +};
-> +
-> +static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
->  {
-> -	irq_set_chip_and_handler(irq, &mtk_msi_irq_chip, handle_simple_irq);
-> -	irq_set_chip_data(irq, domain->host_data);
-> +	struct fwnode_handle *fwnode = of_node_to_fwnode(port->pcie->dev->of_node);
-> +
-> +	mutex_init(&port->lock);
-> +
-> +	port->inner_domain = irq_domain_create_linear(fwnode, MTK_MSI_IRQS_NUM,
-> +						      &msi_domain_ops, port);
-> +	if (!port->inner_domain) {
-> +		dev_err(port->pcie->dev, "failed to create IRQ domain\n");
-> +		return -ENOMEM;
-> +	}
-> +
-> +	port->msi_domain = pci_msi_create_irq_domain(fwnode, &mtk_msi_domain_info,
-> +						     port->inner_domain);
-> +	if (!port->msi_domain) {
-> +		dev_err(port->pcie->dev, "failed to create MSI domain\n");
-> +		irq_domain_remove(port->inner_domain);
-> +		return -ENOMEM;
-> +	}
->  
->  	return 0;
->  }
->  
-> -static const struct irq_domain_ops msi_domain_ops = {
-> -	.map = mtk_pcie_msi_map,
-> -};
-> -
->  static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
->  {
->  	u32 val;
-> @@ -575,6 +598,7 @@ static int mtk_pcie_init_irq_domain(struct mtk_pcie_port *port,
->  {
->  	struct device *dev = port->pcie->dev;
->  	struct device_node *pcie_intc_node;
-> +	int ret;
->  
->  	/* Setup INTx */
->  	pcie_intc_node = of_get_next_child(node, NULL);
-> @@ -591,27 +615,28 @@ static int mtk_pcie_init_irq_domain(struct mtk_pcie_port *port,
->  	}
->  
->  	if (IS_ENABLED(CONFIG_PCI_MSI)) {
-> -		port->msi_domain = irq_domain_add_linear(node, MTK_MSI_IRQS_NUM,
-> -							 &msi_domain_ops,
-> -							 &mtk_pcie_msi_chip);
-> -		if (!port->msi_domain) {
-> -			dev_err(dev, "failed to create MSI IRQ domain\n");
-> -			return -ENODEV;
-> -		}
-> +		ret = mtk_pcie_allocate_msi_domains(port);
-> +		if (ret)
-> +			return ret;
-> +
->  		mtk_pcie_enable_msi(port);
->  	}
->  
->  	return 0;
->  }
->  
-> -static irqreturn_t mtk_pcie_intr_handler(int irq, void *data)
-> +static void mtk_pcie_intr_handler(struct irq_desc *desc)
->  {
-> -	struct mtk_pcie_port *port = (struct mtk_pcie_port *)data;
-> +	struct mtk_pcie_port *port = irq_desc_get_handler_data(desc);
-> +	struct irq_chip *irqchip = irq_desc_get_chip(desc);
->  	unsigned long status;
->  	u32 virq;
->  	u32 bit = INTX_SHIFT;
->  
-> -	while ((status = readl(port->base + PCIE_INT_STATUS)) & INTX_MASK) {
-> +	chained_irq_enter(irqchip, desc);
-> +
-> +	status = readl(port->base + PCIE_INT_STATUS);
-> +	if (status & INTX_MASK) {
->  		for_each_set_bit_from(bit, &status, PCI_NUM_INTX + INTX_SHIFT) {
->  			/* Clear the INTx */
->  			writel(1 << bit, port->base + PCIE_INT_STATUS);
-> @@ -622,14 +647,14 @@ static irqreturn_t mtk_pcie_intr_handler(int irq, void *data)
->  	}
->  
->  	if (IS_ENABLED(CONFIG_PCI_MSI)) {
-> -		while ((status = readl(port->base + PCIE_INT_STATUS)) & MSI_STATUS) {
-> +		if (status & MSI_STATUS) {
->  			unsigned long imsi_status;
->  
->  			while ((imsi_status = readl(port->base + PCIE_IMSI_STATUS))) {
->  				for_each_set_bit(bit, &imsi_status, MTK_MSI_IRQS_NUM) {
->  					/* Clear the MSI */
->  					writel(1 << bit, port->base + PCIE_IMSI_STATUS);
-
-This write suspiciously looks like an "ack" operation on the controller.
-Why isn't it part of the irqchip as a first class method?
-
-> -					virq = irq_find_mapping(port->msi_domain, bit);
-> +					virq = irq_find_mapping(port->inner_domain, bit);
->  					generic_handle_irq(virq);
->  				}
->  			}
-> @@ -638,7 +663,9 @@ static irqreturn_t mtk_pcie_intr_handler(int irq, void *data)
->  		}
->  	}
->  
-> -	return IRQ_HANDLED;
-> +	chained_irq_exit(irqchip, desc);
-> +
-> +	return;
->  }
->  
->  static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
-> @@ -649,20 +676,15 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
->  	struct platform_device *pdev = to_platform_device(dev);
->  	int err, irq;
->  
-> -	irq = platform_get_irq(pdev, port->slot);
-> -	err = devm_request_irq(dev, irq, mtk_pcie_intr_handler,
-> -			       IRQF_SHARED, "mtk-pcie", port);
-> -	if (err) {
-> -		dev_err(dev, "unable to request IRQ %d\n", irq);
-> -		return err;
-> -	}
-> -
->  	err = mtk_pcie_init_irq_domain(port, node);
->  	if (err) {
->  		dev_err(dev, "failed to init PCIe IRQ domain\n");
->  		return err;
->  	}
->  
-> +	irq = platform_get_irq(pdev, port->slot);
-> +	irq_set_chained_handler_and_data(irq, mtk_pcie_intr_handler, port);
-> +
->  	return 0;
->  }
->  
-> @@ -1096,8 +1118,6 @@ static int mtk_pcie_register_host(struct pci_host_bridge *host)
->  	host->map_irq = of_irq_parse_and_map_pci;
->  	host->swizzle_irq = pci_common_swizzle;
->  	host->sysdata = pcie;
-> -	if (IS_ENABLED(CONFIG_PCI_MSI) && pcie->soc->has_msi)
-> -		host->msi = &mtk_pcie_msi_chip;
->  
->  	err = pci_scan_root_bus_bridge(host);
->  	if (err < 0)
-> @@ -1159,7 +1179,6 @@ static const struct mtk_pcie_soc mtk_pcie_soc_v1 = {
->  };
->  
->  static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
-> -	.has_msi = true,
->  	.ops = &mtk_pcie_ops_v2,
->  	.startup = mtk_pcie_startup_port_v2,
->  	.setup_irq = mtk_pcie_setup_irq,
-> @@ -1167,7 +1186,6 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
->  
->  static const struct mtk_pcie_soc mtk_pcie_soc_mt7622 = {
->  	.need_fix_class_id = true,
-> -	.has_msi = true,
->  	.ops = &mtk_pcie_ops_v2,
->  	.startup = mtk_pcie_startup_port_v2,
->  	.setup_irq = mtk_pcie_setup_irq,
-> 
-
-Thanks,
-
-	M.
--- 
-Jazz is not dead. It just smells funny...
+T24gMjAxOC0wNC0yOCAxMDowOSwga2J1aWxkIHRlc3Qgcm9ib3Qgd3JvdGU6Cj4gSGkgUGV0ZXIs
+Cj4gCj4gSSBsb3ZlIHlvdXIgcGF0Y2ghIFlldCBzb21ldGhpbmcgdG8gaW1wcm92ZToKPiAKPiBb
+YXV0byBidWlsZCB0ZXN0IEVSUk9SIG9uIHY0LjE3LXJjMl0KPiBbYWxzbyBidWlsZCB0ZXN0IEVS
+Uk9SIG9uIG5leHQtMjAxODA0MjZdCj4gW2Nhbm5vdCBhcHBseSB0byBkcm0vZHJtLW5leHQgcm9i
+Y2xhcmsvbXNtLW5leHQgZHJtLWV4eW5vcy9leHlub3MtZHJtL2Zvci1uZXh0XQo+IFtpZiB5b3Vy
+IHBhdGNoIGlzIGFwcGxpZWQgdG8gdGhlIHdyb25nIGdpdCB0cmVlLCBwbGVhc2UgZHJvcCB1cyBh
+IG5vdGUgdG8gaGVscCBpbXByb3ZlIHRoZSBzeXN0ZW1dCj4gCj4gdXJsOiAgICBodHRwczovL2dp
+dGh1Yi5jb20vMGRheS1jaS9saW51eC9jb21taXRzL1BldGVyLVJvc2luL2RldmljZS1saW5rLWJy
+aWRnZS1zdXBwbGllci1kcm0tZGV2aWNlLzIwMTgwNDI4LTEzNTIyOQo+IGNvbmZpZzogYXJtLWFs
+bG1vZGNvbmZpZyAoYXR0YWNoZWQgYXMgLmNvbmZpZykKPiBjb21waWxlcjogYXJtLWxpbnV4LWdu
+dWVhYmktZ2NjIChEZWJpYW4gNy4yLjAtMTEpIDcuMi4wCj4gcmVwcm9kdWNlOgo+ICAgICAgICAg
+d2dldCBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vaW50ZWwvbGtwLXRlc3RzL21h
+c3Rlci9zYmluL21ha2UuY3Jvc3MgLU8gfi9iaW4vbWFrZS5jcm9zcwo+ICAgICAgICAgY2htb2Qg
+K3ggfi9iaW4vbWFrZS5jcm9zcwo+ICAgICAgICAgIyBzYXZlIHRoZSBhdHRhY2hlZCAuY29uZmln
+IHRvIGxpbnV4IGJ1aWxkIHRyZWUKPiAgICAgICAgIG1ha2UuY3Jvc3MgQVJDSD1hcm0gCj4gCj4g
+QWxsIGVycm9ycyAobmV3IG9uZXMgcHJlZml4ZWQgYnkgPj4pOgo+IAo+ICAgIGRyaXZlcnMvZ3B1
+Ly9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jOiBJbiBmdW5jdGlvbiAncm9ja2NoaXBfbHZk
+c19iaW5kJzoKPj4+IGRyaXZlcnMvZ3B1Ly9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jOjM4
+MToyNDogZXJyb3I6ICdzdHJ1Y3QgZHJtX2JyaWRnZScgaGFzIG5vIG1lbWJlciBuYW1lZCAnb2Zf
+bm9kZScKPiAgICAgICByZW1vdGUgPSBsdmRzLT5icmlkZ2UtPm9mX25vZGU7Cj4gICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgXn4KPiAKPiB2aW0gKzM4MSBkcml2ZXJzL2dwdS8vZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2x2ZHMuYwoKVWdoLgoKU28sIHBhdGNoIDEvMjQgbmVlZHMgdG8gYmUgYW1l
+bmRlZCB3aXRoIHRoaXMKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfbHZkcy5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYwpp
+bmRleCBlNjdmNGVhMjhjMGUuLjNmMzMwMzRiM2Y1OCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfbHZkcy5jCkBAIC0zNzcsOCArMzc3LDEwIEBAIHN0YXRpYyBpbnQgcm9ja2No
+aXBfbHZkc19iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAog
+ICAgICAgIH0KICAgICAgICBpZiAobHZkcy0+cGFuZWwpCiAgICAgICAgICAgICAgICByZW1vdGUg
+PSBsdmRzLT5wYW5lbC0+ZGV2LT5vZl9ub2RlOwotICAgICAgIGVsc2UKKyAgICAgICBlbHNlIGlm
+IChsdmRzLT5icmlkZ2UtPm9mX25vZGUpCiAgICAgICAgICAgICAgICByZW1vdGUgPSBsdmRzLT5i
+cmlkZ2UtPm9mX25vZGU7CisgICAgICAgZWxzZQorICAgICAgICAgICAgICAgcmVtb3RlID0gbHZk
+cy0+YnJpZGdlLT5vd25lci0+b2Zfbm9kZTsKICAgICAgICBpZiAob2ZfcHJvcGVydHlfcmVhZF9z
+dHJpbmcoZGV2LT5vZl9ub2RlLCAicm9ja2NoaXAsb3V0cHV0IiwgJm5hbWUpKQogICAgICAgICAg
+ICAgICAgLyogZGVmYXVsdCBzZXQgaXQgYXMgb3V0cHV0IHJnYiAqLwogICAgICAgICAgICAgICAg
+bHZkcy0+b3V0cHV0ID0gRElTUExBWV9PVVRQVVRfUkdCOwoKCmFuZCBwYXRjaCAyMi8yNCB3aXRo
+IHRoaXMKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZk
+cy5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYwppbmRleCAzZjMz
+MDM0YjNmNTguLjhjODJmYTY0NzUzNiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2x2ZHMuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfbHZkcy5jCkBAIC0zNzcsOCArMzc3LDYgQEAgc3RhdGljIGludCByb2NrY2hpcF9sdmRzX2Jp
+bmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAgICAgICAgfQog
+ICAgICAgIGlmIChsdmRzLT5wYW5lbCkKICAgICAgICAgICAgICAgIHJlbW90ZSA9IGx2ZHMtPnBh
+bmVsLT5kZXYtPm9mX25vZGU7Ci0gICAgICAgZWxzZSBpZiAobHZkcy0+YnJpZGdlLT5vZl9ub2Rl
+KQotICAgICAgICAgICAgICAgcmVtb3RlID0gbHZkcy0+YnJpZGdlLT5vZl9ub2RlOwogICAgICAg
+IGVsc2UKICAgICAgICAgICAgICAgIHJlbW90ZSA9IGx2ZHMtPmJyaWRnZS0+b3duZXItPm9mX25v
+ZGU7CiAgICAgICAgaWYgKG9mX3Byb3BlcnR5X3JlYWRfc3RyaW5nKGRldi0+b2Zfbm9kZSwgInJv
+Y2tjaGlwLG91dHB1dCIsICZuYW1lKSkKCgpCdXQgdGhhdCBpcyBvZiBjb3Vyc2UganVzdCBhIHN0
+b3AtZ2FwLiBUaGUgcmVhbCBmaXggaXMgdG8gYWRhcHQgdG8gdGhlCiJkcm06IGJyaWRnZTogQWRk
+IHN1cHBvcnQgZm9yIHN0YXRpYyBpbWFnZSBmb3JtYXRz4oCLIiBzZXJpZXMgZnJvbSBKYWNvcG8u
+CkJ1dCB0aGF0J3Mgb3J0aG9nb25hbC4KCkNoZWVycywKUGV0ZXIKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KRnJlZWRyZW5vIG1haWxpbmcgbGlzdApGcmVl
+ZHJlbm9AbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZnJlZWRyZW5vCg==
