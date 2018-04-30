@@ -1,79 +1,83 @@
-From: Peter Rosin <peda-koto5C5qi+TLoDKTGw+V6w@public.gmane.org>
-Subject: Re: [PATCH 22/24] drm/bridge: remove the .of_node member
-Date: Mon, 30 Apr 2018 13:14:08 +0200
-Message-ID: <f5f99e99-1174-6ee0-c097-e1a9d4d5a62a@axentia.se>
-References: <20180426223139.16740-23-peda@axentia.se>
- <201804281608.Iji1Keed%fengguang.wu@intel.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] ASoC: mediatek: add the .probe() callback in mt2701_afe_pcm_dai_component
+Date: Mon, 30 Apr 2018 20:15:31 +0800
+Message-ID: <2bcfa1a389ff00a00204c2ddf3a94882195fd19d.1525090110.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-In-Reply-To: <201804281608.Iji1Keed%fengguang.wu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/freedreno>
-List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Martyn Welch <martyn.welch-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Peter Senna Tschudin <peter.senna-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Martin Donnelly <martin.donnelly-JJi787mZWgc@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Garlic Tseng <garlic.tseng@mediatek.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gMjAxOC0wNC0yOCAxMDowOSwga2J1aWxkIHRlc3Qgcm9ib3Qgd3JvdGU6Cj4gSGkgUGV0ZXIs
-Cj4gCj4gSSBsb3ZlIHlvdXIgcGF0Y2ghIFlldCBzb21ldGhpbmcgdG8gaW1wcm92ZToKPiAKPiBb
-YXV0byBidWlsZCB0ZXN0IEVSUk9SIG9uIHY0LjE3LXJjMl0KPiBbYWxzbyBidWlsZCB0ZXN0IEVS
-Uk9SIG9uIG5leHQtMjAxODA0MjZdCj4gW2Nhbm5vdCBhcHBseSB0byBkcm0vZHJtLW5leHQgcm9i
-Y2xhcmsvbXNtLW5leHQgZHJtLWV4eW5vcy9leHlub3MtZHJtL2Zvci1uZXh0XQo+IFtpZiB5b3Vy
-IHBhdGNoIGlzIGFwcGxpZWQgdG8gdGhlIHdyb25nIGdpdCB0cmVlLCBwbGVhc2UgZHJvcCB1cyBh
-IG5vdGUgdG8gaGVscCBpbXByb3ZlIHRoZSBzeXN0ZW1dCj4gCj4gdXJsOiAgICBodHRwczovL2dp
-dGh1Yi5jb20vMGRheS1jaS9saW51eC9jb21taXRzL1BldGVyLVJvc2luL2RldmljZS1saW5rLWJy
-aWRnZS1zdXBwbGllci1kcm0tZGV2aWNlLzIwMTgwNDI4LTEzNTIyOQo+IGNvbmZpZzogYXJtLWFs
-bG1vZGNvbmZpZyAoYXR0YWNoZWQgYXMgLmNvbmZpZykKPiBjb21waWxlcjogYXJtLWxpbnV4LWdu
-dWVhYmktZ2NjIChEZWJpYW4gNy4yLjAtMTEpIDcuMi4wCj4gcmVwcm9kdWNlOgo+ICAgICAgICAg
-d2dldCBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vaW50ZWwvbGtwLXRlc3RzL21h
-c3Rlci9zYmluL21ha2UuY3Jvc3MgLU8gfi9iaW4vbWFrZS5jcm9zcwo+ICAgICAgICAgY2htb2Qg
-K3ggfi9iaW4vbWFrZS5jcm9zcwo+ICAgICAgICAgIyBzYXZlIHRoZSBhdHRhY2hlZCAuY29uZmln
-IHRvIGxpbnV4IGJ1aWxkIHRyZWUKPiAgICAgICAgIG1ha2UuY3Jvc3MgQVJDSD1hcm0gCj4gCj4g
-QWxsIGVycm9ycyAobmV3IG9uZXMgcHJlZml4ZWQgYnkgPj4pOgo+IAo+ICAgIGRyaXZlcnMvZ3B1
-Ly9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jOiBJbiBmdW5jdGlvbiAncm9ja2NoaXBfbHZk
-c19iaW5kJzoKPj4+IGRyaXZlcnMvZ3B1Ly9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jOjM4
-MToyNDogZXJyb3I6ICdzdHJ1Y3QgZHJtX2JyaWRnZScgaGFzIG5vIG1lbWJlciBuYW1lZCAnb2Zf
-bm9kZScKPiAgICAgICByZW1vdGUgPSBsdmRzLT5icmlkZ2UtPm9mX25vZGU7Cj4gICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgXn4KPiAKPiB2aW0gKzM4MSBkcml2ZXJzL2dwdS8vZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2x2ZHMuYwoKVWdoLgoKU28sIHBhdGNoIDEvMjQgbmVlZHMgdG8gYmUgYW1l
-bmRlZCB3aXRoIHRoaXMKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfbHZkcy5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYwpp
-bmRleCBlNjdmNGVhMjhjMGUuLjNmMzMwMzRiM2Y1OCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfbHZkcy5jCkBAIC0zNzcsOCArMzc3LDEwIEBAIHN0YXRpYyBpbnQgcm9ja2No
-aXBfbHZkc19iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAog
-ICAgICAgIH0KICAgICAgICBpZiAobHZkcy0+cGFuZWwpCiAgICAgICAgICAgICAgICByZW1vdGUg
-PSBsdmRzLT5wYW5lbC0+ZGV2LT5vZl9ub2RlOwotICAgICAgIGVsc2UKKyAgICAgICBlbHNlIGlm
-IChsdmRzLT5icmlkZ2UtPm9mX25vZGUpCiAgICAgICAgICAgICAgICByZW1vdGUgPSBsdmRzLT5i
-cmlkZ2UtPm9mX25vZGU7CisgICAgICAgZWxzZQorICAgICAgICAgICAgICAgcmVtb3RlID0gbHZk
-cy0+YnJpZGdlLT5vd25lci0+b2Zfbm9kZTsKICAgICAgICBpZiAob2ZfcHJvcGVydHlfcmVhZF9z
-dHJpbmcoZGV2LT5vZl9ub2RlLCAicm9ja2NoaXAsb3V0cHV0IiwgJm5hbWUpKQogICAgICAgICAg
-ICAgICAgLyogZGVmYXVsdCBzZXQgaXQgYXMgb3V0cHV0IHJnYiAqLwogICAgICAgICAgICAgICAg
-bHZkcy0+b3V0cHV0ID0gRElTUExBWV9PVVRQVVRfUkdCOwoKCmFuZCBwYXRjaCAyMi8yNCB3aXRo
-IHRoaXMKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZk
-cy5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYwppbmRleCAzZjMz
-MDM0YjNmNTguLjhjODJmYTY0NzUzNiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2x2ZHMuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfbHZkcy5jCkBAIC0zNzcsOCArMzc3LDYgQEAgc3RhdGljIGludCByb2NrY2hpcF9sdmRzX2Jp
-bmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAgICAgICAgfQog
-ICAgICAgIGlmIChsdmRzLT5wYW5lbCkKICAgICAgICAgICAgICAgIHJlbW90ZSA9IGx2ZHMtPnBh
-bmVsLT5kZXYtPm9mX25vZGU7Ci0gICAgICAgZWxzZSBpZiAobHZkcy0+YnJpZGdlLT5vZl9ub2Rl
-KQotICAgICAgICAgICAgICAgcmVtb3RlID0gbHZkcy0+YnJpZGdlLT5vZl9ub2RlOwogICAgICAg
-IGVsc2UKICAgICAgICAgICAgICAgIHJlbW90ZSA9IGx2ZHMtPmJyaWRnZS0+b3duZXItPm9mX25v
-ZGU7CiAgICAgICAgaWYgKG9mX3Byb3BlcnR5X3JlYWRfc3RyaW5nKGRldi0+b2Zfbm9kZSwgInJv
-Y2tjaGlwLG91dHB1dCIsICZuYW1lKSkKCgpCdXQgdGhhdCBpcyBvZiBjb3Vyc2UganVzdCBhIHN0
-b3AtZ2FwLiBUaGUgcmVhbCBmaXggaXMgdG8gYWRhcHQgdG8gdGhlCiJkcm06IGJyaWRnZTogQWRk
-IHN1cHBvcnQgZm9yIHN0YXRpYyBpbWFnZSBmb3JtYXRz4oCLIiBzZXJpZXMgZnJvbSBKYWNvcG8u
-CkJ1dCB0aGF0J3Mgb3J0aG9nb25hbC4KCkNoZWVycywKUGV0ZXIKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KRnJlZWRyZW5vIG1haWxpbmcgbGlzdApGcmVl
-ZHJlbm9AbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZnJlZWRyZW5vCg==
+For the sake of uniformity, this patch adds a callback mt2701_afe_pcm_probe()
+in mt2701_afe_pcm_dai_component to retrieve the regmap - the canonical way to 
+obtain the pointer..
+
+Doing so, we could switch to use devm_snd_soc_register_component() to register
+the component driver.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c | 31 ++++++++++++++----------------
+ 1 file changed, 14 insertions(+), 17 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+index d6eeb4c..828d11c 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+@@ -958,7 +958,17 @@ static int mt2701_irq_fs(struct snd_pcm_substream *substream, unsigned int rate)
+ 	{ "O31", "I35 Switch", "I35" },
+ };
+ 
++static int mt2701_afe_pcm_probe(struct snd_soc_component *component)
++{
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
++
++	snd_soc_component_init_regmap(component, afe->regmap);
++
++	return 0;
++}
++
+ static const struct snd_soc_component_driver mt2701_afe_pcm_dai_component = {
++	.probe = mt2701_afe_pcm_probe,
+ 	.name = "mt2701-afe-pcm-dai",
+ 	.dapm_widgets = mt2701_afe_pcm_widgets,
+ 	.num_dapm_widgets = ARRAY_SIZE(mt2701_afe_pcm_widgets),
+@@ -1316,22 +1326,6 @@ static int mt2701_afe_runtime_resume(struct device *dev)
+ 	return mt2701_afe_enable_clock(afe);
+ }
+ 
+-static int mt2701_afe_add_component(struct mtk_base_afe *afe)
+-{
+-	struct snd_soc_component *component;
+-
+-	component = kzalloc(sizeof(*component), GFP_KERNEL);
+-	if (!component)
+-		return -ENOMEM;
+-
+-	component->regmap = afe->regmap;
+-
+-	return snd_soc_add_component(afe->dev, component,
+-				     &mt2701_afe_pcm_dai_component,
+-				     mt2701_afe_pcm_dais,
+-				     ARRAY_SIZE(mt2701_afe_pcm_dais));
+-}
+-
+ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_base_afe *afe;
+@@ -1442,7 +1436,10 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ 		goto err_platform;
+ 	}
+ 
+-	ret = mt2701_afe_add_component(afe);
++	ret = devm_snd_soc_register_component(&pdev->dev,
++					 &mt2701_afe_pcm_dai_component,
++					 mt2701_afe_pcm_dais,
++					 ARRAY_SIZE(mt2701_afe_pcm_dais));
+ 	if (ret) {
+ 		dev_warn(dev, "err_dai_component\n");
+ 		goto err_platform;
+-- 
+1.9.1
