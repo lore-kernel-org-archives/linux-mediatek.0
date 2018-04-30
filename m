@@ -1,31 +1,74 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH] spi: mediatek: Use of_device_get_match_data()
-Date: Mon, 30 Apr 2018 15:26:36 +0800
-Message-ID: <1525073196.21494.3.camel@mtkswgap22>
-References: <31f944ab8dfcc1d7b6f03b35657a2a34825b5246.1523347340.git.ryder.lee@mediatek.com>
-         <94cba80f703be048666afde1ed53c15c3704c533.1523347340.git.ryder.lee@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v2 01/17] dt-bindings: power: reset: mt6323: add
+ bindings for MT6323 power controller
+Date: Mon, 30 Apr 2018 15:34:23 +0800
+Message-ID: <1525073663.12322.219.camel@mtkswgap22>
+References: <cover.1524646231.git.sean.wang@mediatek.com>
+         <0b3123e42c8a47e3fa8b21aa2e139e6d3dc69f41.1524646231.git.sean.wang@mediatek.com>
+         <20180427200225.lq63ex7eiukc6egl@rob-hp-laptop>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <94cba80f703be048666afde1ed53c15c3704c533.1523347340.git.ryder.lee@mediatek.com>
+In-Reply-To: <20180427200225.lq63ex7eiukc6egl@rob-hp-laptop>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Leilk Liu =?UTF-8?Q?=28=E5=88=98=E7=A3=8A=29?= <Leilk.Liu@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Rob Herring <robh@kernel.org>
+Cc: mark.rutland@arm.com, sre@kernel.org, lee.jones@linaro.org, a.zummo@towertech.it, alexandre.belloni@free-electrons.com, matthias.bgg@gmail.com, eddie.huang@mediatek.com, devicetree@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mark,
+On Fri, 2018-04-27 at 15:02 -0500, Rob Herring wrote:
+> On Wed, Apr 25, 2018 at 05:32:27PM +0800, sean.wang@mediatek.com wrote:
+> > From: Sean Wang <sean.wang@mediatek.com>
+> > 
+> > Adding device-tree binding for the power controller which is a tiny
+> > circuit block present as a part of MT6323 PMIC and is responsible for
+> > externally powering off or on a remote SoC the PMIC is connected to.
+> > 
+> > Cc: devicetree@vger.kernel.org
+> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > ---
+> >  .../bindings/power/reset/mt6323-poweroff.txt         | 20 ++++++++++++++++++++
+> >  1 file changed, 20 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt b/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
+> > new file mode 100644
+> > index 0000000..6f7c590
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
+> > @@ -0,0 +1,20 @@
+> > +Device Tree Bindings for Power Controller on MediaTek PMIC
+> > +
+> > +The power controller which could be found on PMIC is responsible for externally
+> > +powering off or on the remote MediaTek SoC through the circuit BBPU.
+> > +
+> > +Required properties:
+> > +- compatible: Should be one of follows
+> > +	"mediatek,mt6323-pwrc": for MT6323 PMIC
+> > +
+> > +Example:
+> > +
+> > +	pmic {
+> > +		compatible = "mediatek,mt6323";
+> > +
+> > +		...
+> > +
+> > +		power-controller {
+> > +			compatible = "mediatek,mt6323-pwrc";
+> 
+> Why do you need this in DT? It doesn't define any resources. The parent 
+> can just as well register a reset or poweroff handler.
+> 
+> Rob
+> 
 
-Is it okay with you?
+Yes, those binding can be removed. 
 
-On Mon, 2018-04-16 at 10:33 +0800, Ryder Lee (李庚?V) wrote:
-> The usage of of_device_get_match_data() reduce the code size a bit.
-> 
-> Also, the only way to call mtk_spi_probe() is to match an entry in
-> mtk_spi_of_match[], so of_id cannot be NULL.
-> 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> ---
->  drivers/spi/spi-mt65xx.c | 12 +++---------
->  1 file changed, 3 insertions(+), 9 deletions(-)
-> 
+I tend to use platform_device_register_data embedded in mfd driver
+to probe the existent poweroff driver in the next version.
+
+> > +		};
+> > +	}
+> > -- 
+> > 2.7.4
+> > 
