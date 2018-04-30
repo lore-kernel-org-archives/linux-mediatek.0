@@ -1,128 +1,89 @@
-From: Kristian Evensen <kristian.evensen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: Questions about bringing up MT7623 board
-Date: Mon, 30 Apr 2018 18:12:40 +0200
-Message-ID: <CAKfDRXiYdxSusSSZ5rC38quM+vk+n1mKdmpedDvPG1sNZSd=wA@mail.gmail.com>
-References: <CAKfDRXhhrndoKMidZYsw=E8BmS7AFsTJHbS4dcYbEoADhjD44Q@mail.gmail.com>
- <CAKfDRXg0jeHP9xZRGDNm5tfW1afZd-TPfwbwUzEPiWsy_bfuUQ@mail.gmail.com>
- <fc2bf32a-eb81-6cd1-9085-b8786ddf0f9c@phrozen.org>
- <CAKfDRXjpG4CNeHfKC1Kg=6mrqUTZ8A7bD1aivLkSQ2L0eK755Q@mail.gmail.com>
- <6ae4103b-45bf-c427-d0d9-87f6f4eb83b5@phrozen.org>
- <CAKfDRXiJCMpA+qj4HmoSg0F_Yt4LnjQ=Dvy_tkxa=Dnh_pN13g@mail.gmail.com>
- <a594ffaa-4098-4171-f824-1aa3f332c9fc@gmail.com>
- <CAKfDRXgNGRHu9JMs-9vb4n72w+PmR8buqDnz8ObEQNXtP1pM4w@mail.gmail.com>
- <1518446229.9025.61.camel@mtkswgap22>
- <CAKfDRXi57H5V+Qv-YO6+8OKdZLbTw7T_h64uZTMQZP6biO7Wpg@mail.gmail.com>
- <CAKfDRXg419rBTeqZ+UqQJFRj5s6CVg0YXzjmhyFxrbJgMkM8fg@mail.gmail.com>
- <1525052532.5013.5.camel@mtkswgap22>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: Applied "ASoC: mediatek: preallocate pages use
+ platform device" to the asoc tree
+Date: Mon, 30 Apr 2018 21:44:08 +0200
+Message-ID: <20180430194408.synwtzoawrdrudx7@kozik-lap>
+References: <E1fC164-0003ui-Ea@debutante>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="0000000000008aa7ec056b131f96"
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1525052532.5013.5.camel@mtkswgap22>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <alsa-devel-bounces@alsa-project.org>
+Content-Disposition: inline
+In-Reply-To: <E1fC164-0003ui-Ea@debutante>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>
+Cc: alsa-devel@alsa-project.org, ryder.lee@mediatek.com, wsd_upstream@mediatek.com, chipeng.chang@mediatek.com, garlic.tseng@mediatek.com, Hidalgo.Huang@mediatek.com, linux-mediatek@lists.infradead.org, PC.Liao@mediatek.com, Kai Chieh Chuang <kaichieh.chuang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
---0000000000008aa7ec056b131f96
-Content-Type: text/plain; charset="UTF-8"
-
-Hi Ryder,
-
-On Mon, Apr 30, 2018 at 3:42 AM, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> We didn't support port2 (pcie@2,0) for mainline version, but if you want
-> to use it you could take a look at -
-> https://patchwork.kernel.org/patch/9747713/
->
-> grep: HIF_SYSCFG1 /HIF_SYSCFG1_PHY2_MASK
->
-> That is, you need to clear these bits to 0 to enable PHY for pcie@2,0.
-
-Thanks a lot for the pointer. With the attached patch and a slight
-update to my DTS (add a reference to hifsys for usb3phy2), both the
-PCIe-slots work and I have both 2.4Ghz and 5GHz.
-
-The "only" thing left now is the USB OTG-port. I got the SDK from the
-vendor yesterday, but without any proper documentation. Looking
-through the kernel configuration for my board, the only relevant
-select options (that I could find), was that USB_MUSB_HDRC and
-MUSB_PIO_ONLY was enabled. Enabling those options for my 4.14 kernel
-has seemingly no effect, the modem connected to PCIe-slot connected to
-the OTG-port (puh) is not visible. Does anyone know where I should
-start looking in order to enable this port? I see that there is some
-mention of OTG in phy-mtk-tphy.c, but not sure if that is relevant.
-Also, as far as I can tell, my device should be set to host mode and
-both usb-phys are activated (phy1 is the port on the front of my
-board, phy2 shared with pcie).
-
-Thanks in advance for any help (again)!
-
-BR,
-Kristian
-
---0000000000008aa7ec056b131f96
-Content-Type: text/x-patch; charset="US-ASCII";
-	name="0001-Add-hifsys-support-to-phy-mtk-tphy.patch"
-Content-Disposition: attachment;
-	filename="0001-Add-hifsys-support-to-phy-mtk-tphy.patch"
-Content-Transfer-Encoding: base64
-X-Attachment-Id: f_jgme3ppt0
-
-RnJvbSA0ZDA1NGZhMWY3MmM2NWU5NjQwYjNkZDFhOTBjMmVjYjZkZDU3NDQ1IE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpGcm9tOiBLcmlzdGlhbiBFdmVuc2VuIDxrcmlzdGlhbi5ldmVuc2VuQGdt
-YWlsLmNvbT4KRGF0ZTogTW9uLCAzMCBBcHIgMjAxOCAxNDozODowMSArMDIwMApTdWJqZWN0OiBb
-UEFUQ0hdIEFkZCBoaWZzeXMtc3VwcG9ydCB0byBwaHktbXRrLXRwaHkKCi0tLQogZHJpdmVycy9w
-aHkvbWVkaWF0ZWsvcGh5LW10ay10cGh5LmMgfCAyMCArKysrKysrKysrKysrKysrKysrKwogMSBm
-aWxlIGNoYW5nZWQsIDIwIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3BoeS9t
-ZWRpYXRlay9waHktbXRrLXRwaHkuYyBiL2RyaXZlcnMvcGh5L21lZGlhdGVrL3BoeS1tdGstdHBo
-eS5jCmluZGV4IDcyMWEyYTFjOS4uMGNiMWNlYTUzIDEwMDY0NAotLS0gYS9kcml2ZXJzL3BoeS9t
-ZWRpYXRlay9waHktbXRrLXRwaHkuYworKysgYi9kcml2ZXJzL3BoeS9tZWRpYXRlay9waHktbXRr
-LXRwaHkuYwpAQCAtMjIsNiArMjIsOCBAQAogI2luY2x1ZGUgPGxpbnV4L29mX2FkZHJlc3MuaD4K
-ICNpbmNsdWRlIDxsaW51eC9waHkvcGh5Lmg+CiAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2
-aWNlLmg+CisjaW5jbHVkZSA8bGludXgvbWZkL3N5c2Nvbi5oPgorI2luY2x1ZGUgPGxpbnV4L3Jl
-Z21hcC5oPgogCiAvKiB2ZXJzaW9uIFYxIHN1Yi1iYW5rcyBvZmZzZXQgYmFzZSBhZGRyZXNzICov
-CiAvKiBiYW5rcyBzaGFyZWQgYnkgbXVsdGlwbGUgcGh5cyAqLwpAQCAtMjU5LDYgKzI2MSw5IEBA
-CiAjZGVmaW5lIFJHX0NEUl9CSVJMVEQwX0dFTjNfTVNLCQlHRU5NQVNLKDQsIDApCiAjZGVmaW5l
-IFJHX0NEUl9CSVJMVEQwX0dFTjNfVkFMKHgpCSgweDFmICYgKHgpKQogCisjZGVmaW5lIEhJRl9T
-WVNDRkcxCQkJMHgxNAorI2RlZmluZSBISUZfU1lTQ0ZHMV9QSFkyX01BU0sJCSgweDMgPDwgMjAp
-CisKIGVudW0gbXRrX3BoeV92ZXJzaW9uIHsKIAlNVEtfUEhZX1YxID0gMSwKIAlNVEtfUEhZX1Yy
-LApAQCAtMzAyLDYgKzMwNyw3IEBAIHN0cnVjdCBtdGtfdHBoeSB7CiAJc3RydWN0IGNsayAqdTNw
-aHlhX3JlZjsJLyogcmVmZXJlbmNlIGNsb2NrIG9mIHVzYjMgYW5vbG9nIHBoeSAqLwogCWNvbnN0
-IHN0cnVjdCBtdGtfcGh5X3BkYXRhICpwZGF0YTsKIAlzdHJ1Y3QgbXRrX3BoeV9pbnN0YW5jZSAq
-KnBoeXM7CisJc3RydWN0IHJlZ21hcCAqaGlmOwogCWludCBucGh5czsKIH07CiAKQEAgLTU5NCw2
-ICs2MDAsMTAgQEAgc3RhdGljIHZvaWQgcGNpZV9waHlfaW5zdGFuY2VfaW5pdChzdHJ1Y3QgbXRr
-X3RwaHkgKnRwaHksCiAJaWYgKHRwaHktPnBkYXRhLT52ZXJzaW9uICE9IE1US19QSFlfVjEpCiAJ
-CXJldHVybjsKIAorCWlmICh0cGh5LT5oaWYpCisJCXJlZ21hcF91cGRhdGVfYml0cyh0cGh5LT5o
-aWYsIEhJRl9TWVNDRkcxLAorCQkJCSAgIEhJRl9TWVNDRkcxX1BIWTJfTUFTSywgMCk7CisKIAl0
-bXAgPSByZWFkbCh1M19iYW5rcy0+cGh5YSArIFUzUF9VM19QSFlBX0RBX1JFRzApOwogCXRtcCAm
-PSB+KFAzQV9SR19YVEFMX0VYVF9QRTFIIHwgUDNBX1JHX1hUQUxfRVhUX1BFMkgpOwogCXRtcCB8
-PSBQM0FfUkdfWFRBTF9FWFRfUEUxSF9WQUwoMHgyKSB8IFAzQV9SR19YVEFMX0VYVF9QRTJIX1ZB
-TCgweDIpOwpAQCAtMTAwOCw2ICsxMDE4LDE2IEBAIHN0YXRpYyBpbnQgbXRrX3RwaHlfcHJvYmUo
-c3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAkJdHBoeS0+dTNwaHlhX3JlZiA9IE5VTEw7
-CiAJfQogCisJaWYgKG9mX2ZpbmRfcHJvcGVydHkobnAsICJtZWRpYXRlayxwaHktc3dpdGNoIiwg
-TlVMTCkpIHsKKwkJdHBoeS0+aGlmID0gc3lzY29uX3JlZ21hcF9sb29rdXBfYnlfcGhhbmRsZShu
-cCwKKwkJCQkJCQkgICAgIm1lZGlhdGVrLHBoeS1zd2l0Y2giKTsKKwkJaWYgKElTX0VSUih0cGh5
-LT5oaWYpKSB7CisJCQlkZXZfZXJyKCZwZGV2LT5kZXYsCisJCQkJIm1pc3NpbmcgXCJtZWRpYXRl
-ayxwaHktc3dpdGNoXCIgcGhhbmRsZVxuIik7CisJCQlyZXR1cm4gUFRSX0VSUih0cGh5LT5oaWYp
-OworCQl9CisJfQorCiAJcG9ydCA9IDA7CiAJZm9yX2VhY2hfY2hpbGRfb2Zfbm9kZShucCwgY2hp
-bGRfbnApIHsKIAkJc3RydWN0IG10a19waHlfaW5zdGFuY2UgKmluc3RhbmNlOwotLSAKMi4xNC4x
-Cgo=
---0000000000008aa7ec056b131f96
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---0000000000008aa7ec056b131f96--
+T24gRnJpLCBBcHIgMjcsIDIwMTggYXQgMTE6NTk6MjRBTSArMDEwMCwgTWFyayBCcm93biB3cm90
+ZToKPiBUaGUgcGF0Y2gKPiAKPiAgICBBU29DOiBtZWRpYXRlazogcHJlYWxsb2NhdGUgcGFnZXMg
+dXNlIHBsYXRmb3JtIGRldmljZQo+IAo+IGhhcyBiZWVuIGFwcGxpZWQgdG8gdGhlIGFzb2MgdHJl
+ZSBhdAo+IAo+ICAgIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwv
+Z2l0L2Jyb29uaWUvc291bmQuZ2l0IAo+IAo+IEFsbCBiZWluZyB3ZWxsIHRoaXMgbWVhbnMgdGhh
+dCBpdCB3aWxsIGJlIGludGVncmF0ZWQgaW50byB0aGUgbGludXgtbmV4dAo+IHRyZWUgKHVzdWFs
+bHkgc29tZXRpbWUgaW4gdGhlIG5leHQgMjQgaG91cnMpIGFuZCBzZW50IHRvIExpbnVzIGR1cmlu
+Zwo+IHRoZSBuZXh0IG1lcmdlIHdpbmRvdyAob3Igc29vbmVyIGlmIGl0IGlzIGEgYnVnIGZpeCks
+IGhvd2V2ZXIgaWYKPiBwcm9ibGVtcyBhcmUgZGlzY292ZXJlZCB0aGVuIHRoZSBwYXRjaCBtYXkg
+YmUgZHJvcHBlZCBvciByZXZlcnRlZC4gIAo+IAo+IFlvdSBtYXkgZ2V0IGZ1cnRoZXIgZS1tYWls
+cyByZXN1bHRpbmcgZnJvbSBhdXRvbWF0ZWQgb3IgbWFudWFsIHRlc3RpbmcKPiBhbmQgcmV2aWV3
+IG9mIHRoZSB0cmVlLCBwbGVhc2UgZW5nYWdlIHdpdGggcGVvcGxlIHJlcG9ydGluZyBwcm9ibGVt
+cyBhbmQKPiBzZW5kIGZvbGxvd3VwIHBhdGNoZXMgYWRkcmVzc2luZyBhbnkgaXNzdWVzIHRoYXQg
+YXJlIHJlcG9ydGVkIGlmIG5lZWRlZC4KPiAKPiBJZiBhbnkgdXBkYXRlcyBhcmUgcmVxdWlyZWQg
+b3IgeW91IGFyZSBzdWJtaXR0aW5nIGZ1cnRoZXIgY2hhbmdlcyB0aGV5Cj4gc2hvdWxkIGJlIHNl
+bnQgYXMgaW5jcmVtZW50YWwgdXBkYXRlcyBhZ2FpbnN0IGN1cnJlbnQgZ2l0LCBleGlzdGluZwo+
+IHBhdGNoZXMgd2lsbCBub3QgYmUgcmVwbGFjZWQuCj4gCj4gUGxlYXNlIGFkZCBhbnkgcmVsZXZh
+bnQgbGlzdHMgYW5kIG1haW50YWluZXJzIHRvIHRoZSBDQ3Mgd2hlbiByZXBseWluZwo+IHRvIHRo
+aXMgbWFpbC4KPiAKPiBUaGFua3MsCj4gTWFyawo+IAo+ID5Gcm9tIDU4ZWRmMzI1NWNhMzAyNTQ0
+NGMwMTYyNDE2MTE0NTM1ODU0NTMwODkgTW9uIFNlcCAxNyAwMDowMDowMCAyMDAxCj4gRnJvbTog
+S2FpIENoaWVoIENodWFuZyA8a2FpY2hpZWguY2h1YW5nQG1lZGlhdGVrLmNvbT4KPiBEYXRlOiBG
+cmksIDI3IEFwciAyMDE4IDEwOjExOjM1ICswODAwCj4gU3ViamVjdDogW1BBVENIXSBBU29DOiBt
+ZWRpYXRlazogcHJlYWxsb2NhdGUgcGFnZXMgdXNlIHBsYXRmb3JtIGRldmljZQo+IAo+IHByZWFs
+bG9jYXRlIHBhZ2VzIHNob3VsZCB1c2UgcGxhdGZvcm0gZGV2aWNlLAo+IHNpbmNlIHdlIHNldCBk
+bWEgbWFzayBmb3IgcGxhdGZvcm0gZGV2aWNlLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEthaUNoaWVo
+IENodWFuZyA8a2FpY2hpZWguY2h1YW5nQG1lZGlhdGVrLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBN
+YXJrIEJyb3duIDxicm9vbmllQGtlcm5lbC5vcmc+Cj4gLS0tCj4gIHNvdW5kL3NvYy9tZWRpYXRl
+ay9jb21tb24vbXRrLWFmZS1wbGF0Zm9ybS1kcml2ZXIuYyB8IDQgKystLQo+ICAxIGZpbGUgY2hh
+bmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQoKSGksCgpJdCBsb29rcyBsaWtl
+IHRoaXMgcGF0Y2ggYnJlYWtzIGNvbXBpbGF0aW9uIG9mIGFsbHllc2NvbmZpZyBvbiBBUk0KbmV4
+dC0yMDE4MDQzMDoKCiAgICAgIENDICAgICAgc291bmQvc29jL21lZGlhdGVrL2NvbW1vbi9tdGst
+YWZlLXBsYXRmb3JtLWRyaXZlci5vCiAgICAuLi9zb3VuZC9zb2MvbWVkaWF0ZWsvY29tbW9uL210
+ay1hZmUtcGxhdGZvcm0tZHJpdmVyLmM6IEluIGZ1bmN0aW9uIOKAmG10a19hZmVfcGNtX25ld+KA
+mToKICAgIC4uL3NvdW5kL3NvYy9tZWRpYXRlay9jb21tb24vbXRrLWFmZS1wbGF0Zm9ybS1kcml2
+ZXIuYzo2NToxNTogZXJyb3I6IOKAmHN0cnVjdCBzbmRfc29jX3BjbV9ydW50aW1l4oCZIGhhcyBu
+byBtZW1iZXIgbmFtZWQg4oCYcGxhdGZvcm3igJkKICAgICAgICAgICAgICAgIHJ0ZC0+cGxhdGZv
+cm0tPmRldiwKICAgICAgICAgICAgICAgICAgIF4KICAgIC4uL3NvdW5kL3NvYy9tZWRpYXRlay9j
+b21tb24vbXRrLWFmZS1wbGF0Zm9ybS1kcml2ZXIuYzo2NzoxOiB3YXJuaW5nOiBjb250cm9sIHJl
+YWNoZXMgZW5kIG9mIG5vbi12b2lkIGZ1bmN0aW9uIFstV3JldHVybi10eXBlXQogICAgIH0KICAg
+ICBeCiAgICAuLi9zY3JpcHRzL01ha2VmaWxlLmJ1aWxkOjMxMjogcmVjaXBlIGZvciB0YXJnZXQg
+J3NvdW5kL3NvYy9tZWRpYXRlay9jb21tb24vbXRrLWFmZS1wbGF0Zm9ybS1kcml2ZXIubycgZmFp
+bGVkCiAgICBtYWtlWzVdOiAqKiogW3NvdW5kL3NvYy9tZWRpYXRlay9jb21tb24vbXRrLWFmZS1w
+bGF0Zm9ybS1kcml2ZXIub10gRXJyb3IgMQoKUmV2ZXJ0aW5nIGl0IGhlbHBzLgoKQmVzdCByZWdh
+cmRzLApLcnp5c3p0b2YKCj4gZGlmZiAtLWdpdCBhL3NvdW5kL3NvYy9tZWRpYXRlay9jb21tb24v
+bXRrLWFmZS1wbGF0Zm9ybS1kcml2ZXIuYyBiL3NvdW5kL3NvYy9tZWRpYXRlay9jb21tb24vbXRr
+LWFmZS1wbGF0Zm9ybS1kcml2ZXIuYwo+IGluZGV4IDQwNGZiZTE5ZTFhMy4uZDA0NmVhOGU1NDNi
+IDEwMDY0NAo+IC0tLSBhL3NvdW5kL3NvYy9tZWRpYXRlay9jb21tb24vbXRrLWFmZS1wbGF0Zm9y
+bS1kcml2ZXIuYwo+ICsrKyBiL3NvdW5kL3NvYy9tZWRpYXRlay9jb21tb24vbXRrLWFmZS1wbGF0
+Zm9ybS1kcml2ZXIuYwo+IEBAIC01NiwxNCArNTYsMTQgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBz
+bmRfcGNtX29wcyBtdGtfYWZlX3BjbV9vcHMgPSB7Cj4gIHN0YXRpYyBpbnQgbXRrX2FmZV9wY21f
+bmV3KHN0cnVjdCBzbmRfc29jX3BjbV9ydW50aW1lICpydGQpCj4gIHsKPiAgCXNpemVfdCBzaXpl
+Owo+IC0Jc3RydWN0IHNuZF9jYXJkICpjYXJkID0gcnRkLT5jYXJkLT5zbmRfY2FyZDsKPiAgCXN0
+cnVjdCBzbmRfcGNtICpwY20gPSBydGQtPnBjbTsKPiAgCXN0cnVjdCBzbmRfc29jX2NvbXBvbmVu
+dCAqY29tcG9uZW50ID0gc25kX3NvY19ydGRjb21fbG9va3VwKHJ0ZCwgQUZFX1BDTV9OQU1FKTsK
+PiAgCXN0cnVjdCBtdGtfYmFzZV9hZmUgKmFmZSA9IHNuZF9zb2NfY29tcG9uZW50X2dldF9kcnZk
+YXRhKGNvbXBvbmVudCk7Cj4gIAo+ICAJc2l6ZSA9IGFmZS0+bXRrX2FmZV9oYXJkd2FyZS0+YnVm
+ZmVyX2J5dGVzX21heDsKPiAgCXJldHVybiBzbmRfcGNtX2xpYl9wcmVhbGxvY2F0ZV9wYWdlc19m
+b3JfYWxsKHBjbSwgU05EUlZfRE1BX1RZUEVfREVWLAo+IC0JCQkJCQkgICAgIGNhcmQtPmRldiwg
+c2l6ZSwgc2l6ZSk7Cj4gKwkJCQkJCSAgICAgcnRkLT5wbGF0Zm9ybS0+ZGV2LAo+ICsJCQkJCQkg
+ICAgIHNpemUsIHNpemUpOwo+ICB9Cj4gIAo+ICBzdGF0aWMgdm9pZCBtdGtfYWZlX3BjbV9mcmVl
+KHN0cnVjdCBzbmRfcGNtICpwY20pCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCkFsc2EtZGV2ZWwgbWFpbGluZyBsaXN0CkFsc2EtZGV2ZWxAYWxzYS1wcm9q
+ZWN0Lm9yZwpodHRwOi8vbWFpbG1hbi5hbHNhLXByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8v
+YWxzYS1kZXZlbAo=
