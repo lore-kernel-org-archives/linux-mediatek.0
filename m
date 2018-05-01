@@ -1,14 +1,14 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: mediatek: add the .probe() callback in
-	mt2701_afe_pcm_dai_component" to the asoc tree
-Date: Tue,  1 May 2018 22:08:36 +0100 (BST)
-Message-ID: <20180501210836.ED3D144007A@finisterre.ee.mobilebroadband>
-References: <2bcfa1a389ff00a00204c2ddf3a94882195fd19d.1525090110.git.ryder.lee@mediatek.com>
+Subject: Applied "ASoC: mediatek: avoid using snd_soc_platform"
+	to the asoc tree
+Date: Tue,  1 May 2018 22:08:58 +0100 (BST)
+Message-ID: <20180501210858.BD1D044007C@finisterre.ee.mobilebroadband>
+References: <1524892886-25343-1-git-send-email-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <2bcfa1a389ff00a00204c2ddf3a94882195fd19d.1525090110.git.ryder.lee@mediatek.com>
+In-Reply-To: <1524892886-25343-1-git-send-email-kaichieh.chuang@mediatek.com>
 List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
 List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
@@ -18,13 +18,12 @@ List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
 Errors-To: alsa-devel-bounces@alsa-project.org
 Sender: alsa-devel-bounces@alsa-project.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: alsa-devel@alsa-project.org, Garlic Tseng <garlic.tseng@mediatek.com>, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: alsa-devel@alsa-project.org, wsd_upstream@mediatek.com, garlic.tseng@mediatek.com, broonie@kernel.org, linux-mediatek@lists.infradead.org, kaichieh.chuang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 The patch
 
-   ASoC: mediatek: add the .probe() callback in mt2701_afe_pcm_dai_component
+   ASoC: mediatek: avoid using snd_soc_platform
 
 has been applied to the asoc tree at
 
@@ -49,81 +48,31 @@ to this mail.
 Thanks,
 Mark
 
->From 10abdc7c149a058c74be803f33c9ffb1080ad07e Mon Sep 17 00:00:00 2001
-From: Ryder Lee <ryder.lee@mediatek.com>
-Date: Mon, 30 Apr 2018 20:15:31 +0800
-Subject: [PATCH] ASoC: mediatek: add the .probe() callback in
- mt2701_afe_pcm_dai_component
+>From 9a67d11e34cc21afe2cbddaa8f50d2a5da098d6e Mon Sep 17 00:00:00 2001
+From: Kai Chieh Chuang <kaichieh.chuang@mediatek.com>
+Date: Sat, 28 Apr 2018 13:21:26 +0800
+Subject: [PATCH] ASoC: mediatek: avoid using snd_soc_platform
 
-For the sake of uniformity, this patch adds a callback mt2701_afe_pcm_probe()
-in mt2701_afe_pcm_dai_component to retrieve the regmap - the canonical way to
-obtain the pointer..
+avoid using snd_soc_platform, which is removed after 4.18
 
-Doing so, we could switch to use devm_snd_soc_register_component() to register
-the component driver.
-
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
 Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- sound/soc/mediatek/mt2701/mt2701-afe-pcm.c | 31 ++++++++++------------
- 1 file changed, 14 insertions(+), 17 deletions(-)
+ sound/soc/mediatek/common/mtk-afe-platform-driver.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-index d6eeb4c36fcc..828d11c30c6a 100644
---- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-+++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-@@ -958,7 +958,17 @@ static const struct snd_soc_dapm_route mt2701_afe_pcm_routes[] = {
- 	{ "O31", "I35 Switch", "I35" },
- };
+diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.c b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+index d046ea8e543b..8966ee138387 100644
+--- a/sound/soc/mediatek/common/mtk-afe-platform-driver.c
++++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+@@ -62,7 +62,7 @@ static int mtk_afe_pcm_new(struct snd_soc_pcm_runtime *rtd)
  
-+static int mt2701_afe_pcm_probe(struct snd_soc_component *component)
-+{
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
-+
-+	snd_soc_component_init_regmap(component, afe->regmap);
-+
-+	return 0;
-+}
-+
- static const struct snd_soc_component_driver mt2701_afe_pcm_dai_component = {
-+	.probe = mt2701_afe_pcm_probe,
- 	.name = "mt2701-afe-pcm-dai",
- 	.dapm_widgets = mt2701_afe_pcm_widgets,
- 	.num_dapm_widgets = ARRAY_SIZE(mt2701_afe_pcm_widgets),
-@@ -1316,22 +1326,6 @@ static int mt2701_afe_runtime_resume(struct device *dev)
- 	return mt2701_afe_enable_clock(afe);
+ 	size = afe->mtk_afe_hardware->buffer_bytes_max;
+ 	return snd_pcm_lib_preallocate_pages_for_all(pcm, SNDRV_DMA_TYPE_DEV,
+-						     rtd->platform->dev,
++						     afe->dev,
+ 						     size, size);
  }
  
--static int mt2701_afe_add_component(struct mtk_base_afe *afe)
--{
--	struct snd_soc_component *component;
--
--	component = kzalloc(sizeof(*component), GFP_KERNEL);
--	if (!component)
--		return -ENOMEM;
--
--	component->regmap = afe->regmap;
--
--	return snd_soc_add_component(afe->dev, component,
--				     &mt2701_afe_pcm_dai_component,
--				     mt2701_afe_pcm_dais,
--				     ARRAY_SIZE(mt2701_afe_pcm_dais));
--}
--
- static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
- {
- 	struct mtk_base_afe *afe;
-@@ -1442,7 +1436,10 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
- 		goto err_platform;
- 	}
- 
--	ret = mt2701_afe_add_component(afe);
-+	ret = devm_snd_soc_register_component(&pdev->dev,
-+					 &mt2701_afe_pcm_dai_component,
-+					 mt2701_afe_pcm_dais,
-+					 ARRAY_SIZE(mt2701_afe_pcm_dais));
- 	if (ret) {
- 		dev_warn(dev, "err_dai_component\n");
- 		goto err_platform;
 -- 
 2.17.0
