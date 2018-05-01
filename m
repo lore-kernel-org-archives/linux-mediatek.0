@@ -1,70 +1,57 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/2] ASoC: add documents for mt6351
-Date: Tue, 1 May 2018 09:42:36 -0500
-Message-ID: <20180501144236.GA26497@rob-hp-laptop>
-References: <20180426030732.5887-1-kaichieh.chuang@mediatek.com>
- <20180426030732.5887-2-kaichieh.chuang@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH] spi: mediatek: Use of_device_get_match_data()
+Date: Wed, 2 May 2018 05:35:31 +0900
+Message-ID: <20180501203531.GA2714@sirena.org.uk>
+References: <31f944ab8dfcc1d7b6f03b35657a2a34825b5246.1523347340.git.ryder.lee@mediatek.com>
+ <94cba80f703be048666afde1ed53c15c3704c533.1523347340.git.ryder.lee@mediatek.com>
+ <1525073196.21494.3.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="Dxnq1zWXvFF0Q93v"
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20180426030732.5887-2-kaichieh.chuang@mediatek.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, ryder.lee@mediatek.com, wsd_upstream@mediatek.com, chipeng.chang@mediatek.com, garlic.tseng@mediatek.com, broonie@kernel.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <1525073196.21494.3.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Leilk Liu =?utf-8?B?KOWImOejiik=?= <Leilk.Liu@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Apr 26, 2018 at 11:07:31AM +0800, KaiChieh Chuang wrote:
-> Signed-off-by: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
 
-Needs a commit msg and 'binding' would be more informative than 
-'documents' in the subject.
+--Dxnq1zWXvFF0Q93v
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> ---
->  Documentation/devicetree/bindings/sound/mt6351.txt | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/sound/mt6351.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/mt6351.txt b/Documentation/devicetree/bindings/sound/mt6351.txt
-> new file mode 100644
-> index 000000000000..7fb2cb99245e
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sound/mt6351.txt
-> @@ -0,0 +1,16 @@
-> +Mediatek MT6351 Audio Codec
-> +
-> +The communication between MT6351 and SoC is through Mediatek PMIC wrapper.
-> +For more detail, please visit Mediatek PMIC wrapper documentation.
+On Mon, Apr 30, 2018 at 03:26:36PM +0800, Ryder Lee wrote:
+> Hi Mark,
+>=20
+> Is it okay with you?
+>=20
+> On Mon, 2018-04-16 at 10:33 +0800, Ryder Lee (=E6=9D=8E=E5=BA=9A?V) wrote:
+> > The usage of of_device_get_match_data() reduce the code size a bit.
 
-Add the path to the doc file.
+Please don't send content free pings and please allow a reasonable time
+for review.  People get busy, go on holiday, attend conferences and so=20
+on so unless there is some reason for urgency (like critical bug fixes)
+please allow at least a couple of weeks for review.  If there have been
+review comments then people may be waiting for those to be addressed.
+Sending content free pings just adds to the mail volume (if they are
+seen at all) and if something has gone wrong you'll have to resend the
+patches anyway.
 
-What's a wrapper? Is this a block within the PMIC or ?
+--Dxnq1zWXvFF0Q93v
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> +
-> +Must be a child node of PMIC wrapper.
-> +
-> +Required properties:
-> +
-> +- compatible : "mediatek,mt6351-sound".
-> +
-> +Example:
-> +
-> +mt6351_snd {
-> +	compatible = "mediatek,mt6351-sound";
-> +};
-> -- 
-> 2.12.5
-> 
-> --
-> To unsubscribe from this list: send the line "unsubscribe devicetree" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlroz5IACgkQJNaLcl1U
+h9Aozgf/dlersQlemJt9YYytwTHQpJn6ykNz0dHqAHr3JotCFqSGnkYfnmf1BrhS
+AmkDq4YgOtcv0XoGcdMCLMPeL5Ah2N2w+wkVG1JFXKSevbfAd19+rgyvrj7/iXRN
+z2R2FJu2avyaAGJONG0PZ9raP0CpqaxAfd9vww/n+4py/fnFCp7/r5m1fBbN6rkF
+8i6jOWvA302gUgRk9r8viElBvWNBGmeso2IJBkcevlPET6pCgUg+N0SA5bFY0yJz
+U67oySQy/7z+Au+aJpdPiVsdIwGdRmWyeyGKQoVcuxl0NzERZ/9gjjA48gqTcRHT
+kKupcvzZoCxZeArEo1RoLNrqE51Ynw==
+=psBX
+-----END PGP SIGNATURE-----
+
+--Dxnq1zWXvFF0Q93v--
