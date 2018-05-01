@@ -1,57 +1,129 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] spi: mediatek: Use of_device_get_match_data()
-Date: Wed, 2 May 2018 05:35:31 +0900
-Message-ID: <20180501203531.GA2714@sirena.org.uk>
-References: <31f944ab8dfcc1d7b6f03b35657a2a34825b5246.1523347340.git.ryder.lee@mediatek.com>
- <94cba80f703be048666afde1ed53c15c3704c533.1523347340.git.ryder.lee@mediatek.com>
- <1525073196.21494.3.camel@mtkswgap22>
+Subject: Applied "ASoC: mediatek: add the .probe() callback in
+	mt2701_afe_pcm_dai_component" to the asoc tree
+Date: Tue,  1 May 2018 22:08:36 +0100 (BST)
+Message-ID: <20180501210836.ED3D144007A@finisterre.ee.mobilebroadband>
+References: <2bcfa1a389ff00a00204c2ddf3a94882195fd19d.1525090110.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="Dxnq1zWXvFF0Q93v"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1525073196.21494.3.camel@mtkswgap22>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <2bcfa1a389ff00a00204c2ddf3a94882195fd19d.1525090110.git.ryder.lee@mediatek.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
 To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Leilk Liu =?utf-8?B?KOWImOejiik=?= <Leilk.Liu@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: alsa-devel@alsa-project.org, Garlic Tseng <garlic.tseng@mediatek.com>, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+The patch
 
---Dxnq1zWXvFF0Q93v
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+   ASoC: mediatek: add the .probe() callback in mt2701_afe_pcm_dai_component
 
-On Mon, Apr 30, 2018 at 03:26:36PM +0800, Ryder Lee wrote:
-> Hi Mark,
->=20
-> Is it okay with you?
->=20
-> On Mon, 2018-04-16 at 10:33 +0800, Ryder Lee (=E6=9D=8E=E5=BA=9A?V) wrote:
-> > The usage of of_device_get_match_data() reduce the code size a bit.
+has been applied to the asoc tree at
 
-Please don't send content free pings and please allow a reasonable time
-for review.  People get busy, go on holiday, attend conferences and so=20
-on so unless there is some reason for urgency (like critical bug fixes)
-please allow at least a couple of weeks for review.  If there have been
-review comments then people may be waiting for those to be addressed.
-Sending content free pings just adds to the mail volume (if they are
-seen at all) and if something has gone wrong you'll have to resend the
-patches anyway.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
---Dxnq1zWXvFF0Q93v
-Content-Type: application/pgp-signature; name="signature.asc"
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
------BEGIN PGP SIGNATURE-----
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlroz5IACgkQJNaLcl1U
-h9Aozgf/dlersQlemJt9YYytwTHQpJn6ykNz0dHqAHr3JotCFqSGnkYfnmf1BrhS
-AmkDq4YgOtcv0XoGcdMCLMPeL5Ah2N2w+wkVG1JFXKSevbfAd19+rgyvrj7/iXRN
-z2R2FJu2avyaAGJONG0PZ9raP0CpqaxAfd9vww/n+4py/fnFCp7/r5m1fBbN6rkF
-8i6jOWvA302gUgRk9r8viElBvWNBGmeso2IJBkcevlPET6pCgUg+N0SA5bFY0yJz
-U67oySQy/7z+Au+aJpdPiVsdIwGdRmWyeyGKQoVcuxl0NzERZ/9gjjA48gqTcRHT
-kKupcvzZoCxZeArEo1RoLNrqE51Ynw==
-=psBX
------END PGP SIGNATURE-----
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
---Dxnq1zWXvFF0Q93v--
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From 10abdc7c149a058c74be803f33c9ffb1080ad07e Mon Sep 17 00:00:00 2001
+From: Ryder Lee <ryder.lee@mediatek.com>
+Date: Mon, 30 Apr 2018 20:15:31 +0800
+Subject: [PATCH] ASoC: mediatek: add the .probe() callback in
+ mt2701_afe_pcm_dai_component
+
+For the sake of uniformity, this patch adds a callback mt2701_afe_pcm_probe()
+in mt2701_afe_pcm_dai_component to retrieve the regmap - the canonical way to
+obtain the pointer..
+
+Doing so, we could switch to use devm_snd_soc_register_component() to register
+the component driver.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c | 31 ++++++++++------------
+ 1 file changed, 14 insertions(+), 17 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+index d6eeb4c36fcc..828d11c30c6a 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+@@ -958,7 +958,17 @@ static const struct snd_soc_dapm_route mt2701_afe_pcm_routes[] = {
+ 	{ "O31", "I35 Switch", "I35" },
+ };
+ 
++static int mt2701_afe_pcm_probe(struct snd_soc_component *component)
++{
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
++
++	snd_soc_component_init_regmap(component, afe->regmap);
++
++	return 0;
++}
++
+ static const struct snd_soc_component_driver mt2701_afe_pcm_dai_component = {
++	.probe = mt2701_afe_pcm_probe,
+ 	.name = "mt2701-afe-pcm-dai",
+ 	.dapm_widgets = mt2701_afe_pcm_widgets,
+ 	.num_dapm_widgets = ARRAY_SIZE(mt2701_afe_pcm_widgets),
+@@ -1316,22 +1326,6 @@ static int mt2701_afe_runtime_resume(struct device *dev)
+ 	return mt2701_afe_enable_clock(afe);
+ }
+ 
+-static int mt2701_afe_add_component(struct mtk_base_afe *afe)
+-{
+-	struct snd_soc_component *component;
+-
+-	component = kzalloc(sizeof(*component), GFP_KERNEL);
+-	if (!component)
+-		return -ENOMEM;
+-
+-	component->regmap = afe->regmap;
+-
+-	return snd_soc_add_component(afe->dev, component,
+-				     &mt2701_afe_pcm_dai_component,
+-				     mt2701_afe_pcm_dais,
+-				     ARRAY_SIZE(mt2701_afe_pcm_dais));
+-}
+-
+ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_base_afe *afe;
+@@ -1442,7 +1436,10 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ 		goto err_platform;
+ 	}
+ 
+-	ret = mt2701_afe_add_component(afe);
++	ret = devm_snd_soc_register_component(&pdev->dev,
++					 &mt2701_afe_pcm_dai_component,
++					 mt2701_afe_pcm_dais,
++					 ARRAY_SIZE(mt2701_afe_pcm_dais));
+ 	if (ret) {
+ 		dev_warn(dev, "err_dai_component\n");
+ 		goto err_platform;
+-- 
+2.17.0
