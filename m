@@ -1,47 +1,28 @@
-From: Peter Rosin <peda-koto5C5qi+TLoDKTGw+V6w@public.gmane.org>
-Subject: Re: [PATCH 24/24] drm/bridge: establish a link between
- the bridge supplier and consumer
-Date: Mon, 30 Apr 2018 23:12:56 +0200
-Message-ID: <e2562f6f-f7b0-477c-db38-a3bf6c956fa7@axentia.se>
-References: <20180426223139.16740-1-peda@axentia.se>
- <20180426223139.16740-25-peda@axentia.se>
- <20180430153236.GP12521@phenom.ffwll.local>
+From: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Subject: Re: Applied "ASoC: mediatek: preallocate pages use
+ platform device" to the asoc tree
+Date: Tue, 1 May 2018 08:41:14 +0800
+Message-ID: <1525135274.22465.0.camel@mtksdaap41>
+References: <E1fC164-0003ui-Ea@debutante>
+ <20180430194408.synwtzoawrdrudx7@kozik-lap>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-In-Reply-To: <20180430153236.GP12521-dv86pmgwkMBes7Z6vYuT8azUEOm+Xw19@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/freedreno>
-List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Martyn Welch <martyn.welch-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Peter Senna Tschudin <peter.senna-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Martin Donnelly <martin.donnelly-JJi787mZWgc@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20180430194408.synwtzoawrdrudx7@kozik-lap>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: alsa-devel@alsa-project.org, ryder.lee@mediatek.com, wsd_upstream@mediatek.com, chipeng.chang@mediatek.com, garlic.tseng@mediatek.com, Hidalgo.Huang@mediatek.com, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, PC.Liao@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gMjAxOC0wNC0zMCAxNzozMiwgRGFuaWVsIFZldHRlciB3cm90ZToKPiBPbiBGcmksIEFwciAy
-NywgMjAxOCBhdCAxMjozMTozOUFNICswMjAwLCBQZXRlciBSb3NpbiB3cm90ZToKPj4gSWYgdGhl
-IGJyaWRnZSBzdXBwbGllciBpcyB1bmJvdW5kLCB0aGlzIHdpbGwgYnJpbmcgdGhlIGJyaWRnZSBj
-b25zdW1lcgo+PiBkb3duIGFsb25nIHdpdGggdGhlIGJyaWRnZS4gVGh1cywgdGhlcmUgd2lsbCBu
-byBsb25nZXIgbGluZ2VyIGFueQo+PiBkYW5nbGluZyBwb2ludGVycyBmcm9tIHRoZSBicmlkZ2Ug
-Y29uc3VtZXIgKHRoZSBkcm1fZGV2aWNlKSB0byBzb21lCj4+IG5vbi1leGlzdGVudCBicmlkZ2Ug
-c3VwcGxpZXIuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IFBldGVyIFJvc2luIDxwZWRhQGF4ZW50aWEu
-c2U+Cj4gCj4gTWludXMgdGhlIC0+b3duZXIgYmlrZXNoZWQgSSBicm91Z2h0IHVwIGluIHRoZSBw
-cmV2aW91cyBwYXRjaCBJIGFncmVlIHdpdGgKPiB0aGlzIGFwcHJvYWNoIGFzIHRoZSBiZXN0IHdh
-eSB0byBtb3ZlIGZvcndhcmQgZm9yIG5vdy4KPiAKPiBBY2tlZC1ieTogRGFuaWVsIFZldHRlciA8
-ZGFuaWVsLnZldHRlckBmZndsbC5jaD4KClRoYW5rcywgbGV0J3Mgc2VlIGlmIExhdXJlbnQgaXMg
-YWxzbyBvbi1ib2FyZC4uLgoKPiBPbmUgc21hbGwgc3VnZ2VzdGlvbiBiZWxvdywgZm9yIG1lcmdp
-bmcgSSdkIHNheSBwbHMgZ2V0IEp5cmkncwo+IHJldmlldy90ZXN0ZWQtYnkgdG9vLCBzaW5jZSB5
-b3UncmUgYm90aCB3b3JraW5nIG9uIHRoZSBzYW1lIHByb2JsZW0gaXQKPiBzZWVtcy4KClllcywg
-SSB0b28gd291bGQgYmUgdmVyeSBoYXBweSB0byBzZWUgYSB0ZXN0ZWQtYnkgZnJvbSBzb21lb25l
-LgoKPiBBc2lkZTogRG8geW91IHdhbnQgY29tbWl0IHJpZ2h0cyB0byBkcm0tbWlzYyB0byBiZSBh
-YmxlIHRvIHB1c2ggd29yayBsaWtlCj4gdGhpcz8KCklmIHRoYXQgbWFrZXMgbGlmZSBlYXNpZXIs
-IHN1cmUuCgpDaGVlcnMsClBldGVyCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkZyZWVkcmVubyBtYWlsaW5nIGxpc3QKRnJlZWRyZW5vQGxpc3RzLmZyZWVk
-ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2ZyZWVkcmVubwo=
+i have submitted a patch to fix this in 4-18,
+http://mailman.alsa-project.org/pipermail/alsa-devel/2018-April/135316.html
+thanks.
