@@ -1,194 +1,70 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: add MediaTek XS-PHY binding
-Date: Tue, 1 May 2018 09:24:59 -0500
-Message-ID: <20180501142459.GA10534@rob-hp-laptop>
-References: <1524642329-12255-1-git-send-email-chunfeng.yun@mediatek.com>
- <1524642329-12255-2-git-send-email-chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH 1/2] ASoC: add documents for mt6351
+Date: Tue, 1 May 2018 09:42:36 -0500
+Message-ID: <20180501144236.GA26497@rob-hp-laptop>
+References: <20180426030732.5887-1-kaichieh.chuang@mediatek.com>
+ <20180426030732.5887-2-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
 Content-Disposition: inline
-In-Reply-To: <1524642329-12255-2-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ryder Lee <ryder.lee@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+In-Reply-To: <20180426030732.5887-2-kaichieh.chuang@mediatek.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, ryder.lee@mediatek.com, wsd_upstream@mediatek.com, chipeng.chang@mediatek.com, garlic.tseng@mediatek.com, broonie@kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Apr 25, 2018 at 03:45:28PM +0800, Chunfeng Yun wrote:
-> Add a DT binding documentation of XS-PHY for MediaTek SoCs
-> with USB3.1 GEN2 controller
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+On Thu, Apr 26, 2018 at 11:07:31AM +0800, KaiChieh Chuang wrote:
+> Signed-off-by: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+
+Needs a commit msg and 'binding' would be more informative than 
+'documents' in the subject.
+
 > ---
->  .../devicetree/bindings/phy/phy-mtk-xsphy.txt      |  127 ++++++++++++++++++++
->  1 file changed, 127 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt
+>  Documentation/devicetree/bindings/sound/mt6351.txt | 16 ++++++++++++++++
+>  1 file changed, 16 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mt6351.txt
 > 
-> diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt
+> diff --git a/Documentation/devicetree/bindings/sound/mt6351.txt b/Documentation/devicetree/bindings/sound/mt6351.txt
 > new file mode 100644
-> index 0000000..23c51a0
+> index 000000000000..7fb2cb99245e
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt
-> @@ -0,0 +1,127 @@
-> +MediaTek XS-PHY binding
-> +--------------------------
+> +++ b/Documentation/devicetree/bindings/sound/mt6351.txt
+> @@ -0,0 +1,16 @@
+> +Mediatek MT6351 Audio Codec
 > +
-> +The XS-PHY controller supports physical layer functionality for USB3.1
-> +GEN2 controller on MediaTek SoCs.
-> +
-> +Required properties (controller (parent) node):
-> + - compatible	: should be "mediatek,<soc-model>-xsphy", "mediatek,xsphy",
-> + 		  soc-model is the name of SoC, such as mt2712 etc;
+> +The communication between MT6351 and SoC is through Mediatek PMIC wrapper.
+> +For more detail, please visit Mediatek PMIC wrapper documentation.
 
-Please list all valid SoCs.
+Add the path to the doc file.
 
-> +		  when using "mediatek,xsphy" compatible string, you need SoC specific
-> +		  ones in addition.
-> +
-> +Required nodes	: a sub-node is required for each port the controller
-> +		  provides. Address range information including the usual
-> +		  'reg' property is used inside these nodes to describe
-> +		  the controller's topology.
-
-This should go afer the parent optional properties.
+What's a wrapper? Is this a block within the PMIC or ?
 
 > +
-> +Optional properties (controller (parent) node):
-> + - reg		: offset and length of register shared by multiple U3 ports,
-> +		  exclude port's private register, if only U2 ports provided,
-> +		  shouldn't use the property.
-> + - mediatek,src-ref-clk-mhz	: u32, frequency of reference clock for slew rate
-> +		  calibrate
-> + - mediatek,src-coef	: u32, coefficient for slew rate calibrate, depends on
-> +		  SoC process
+> +Must be a child node of PMIC wrapper.
 > +
-> +Required properties (port (child) node):
-> +- reg		: address and length of the register set for the port.
-> +- clocks	: a list of phandle + clock-specifier pairs, one for each
-> +		  entry in clock-names
-> +- clock-names	: must contain
-> +		  "ref": 48M reference clock for HighSpeed analog phy; and 26M
-> +			reference clock for SuperSpeedPlus analog phy, sometimes is
-> +			24M, 25M or 27M, depended on platform.
-> +- #phy-cells	: should be 1 (See second example)
-> +		  cell after port phandle is phy type from:
-> +			- PHY_TYPE_USB2
-> +			- PHY_TYPE_USB3
-
-Is the type a property of the connection to the host? If not, this 
-shouldn't be part of the phy cells. I would add compatible strings to 
-the child nodes to define this. I think that would simplify the driver 
-too as then you can parse DT properties in probe rather than phy_init.
-
+> +Required properties:
 > +
-> +The following optional properties are only for debug or HQA test
-> +Optional properties (PHY_TYPE_USB2 port (child) node):
-> +- mediatek,eye-src	: u32, the value of slew rate calibrate
-> +- mediatek,eye-vrt	: u32, the selection of VRT reference voltage
-> +- mediatek,eye-term	: u32, the selection of HS_TX TERM reference voltage
-> +- mediatek,efuse-intr	: u32, the selection of Internal Resistor
-> +
-> +Optional properties (PHY_TYPE_USB3 port (child) node):
-> +- mediatek,efuse-intr	: u32, the selection of Internal Resistor
-> +- mediatek,efuse-tx-imp	: u32, the selection of TX Impedance
-> +- mediatek,efuse-rx-imp	: u32, the selection of RX Impedance
+> +- compatible : "mediatek,mt6351-sound".
 > +
 > +Example:
 > +
-> +u3phy: usb-phy@11c40000 {
-> +	compatible = "mediatek,mt36xx-xsphy", "mediatek,xsphy";
-
-Is mt36xx a specific SoC? Don't use wildcards in compatible strings.
-
-> +	reg = <0 0x11c43000 0 0x0200>;
-> +	mediatek,src-ref-clk-mhz = <26>;
-> +	mediatek,src-coef = <17>;
-> +	#address-cells = <2>;
-> +	#size-cells = <2>;
-
-Really need 64-bit sizes?
-
-> +	ranges;
-
-Limiting the range to only the phy addresses is preferred.
-
-> +	status = "disabled";
-
-Don't show status in examples.
-
-> +
-> +	u2port0: usb-phy@11c40000 {
-> +		reg = <0 0x11c40000 0 0x0400>;
-> +		clocks = <&clk48m>;
-> +		clock-names = "ref";
-> +		mediatek,eye-src = <4>;
-> +		#phy-cells = <1>;
-> +		status = "okay";
-> +	};
-> +
-> +	u3port0: usb-phy@11c43000 {
-> +		reg = <0 0x11c43400 0 0x0500>;
-> +		clocks = <&clk26m>;
-> +		clock-names = "ref";
-> +		mediatek,efuse-intr = <28>;
-> +		#phy-cells = <1>;
-> +		status = "okay";
-> +	};
+> +mt6351_snd {
+> +	compatible = "mediatek,mt6351-sound";
 > +};
-> +
-
-> +Specifying phy control of devices
-> +---------------------------------
-> +
-> +Device nodes should specify the configuration required in their "phys"
-> +property, containing a phandle to the phy port node and a device type;
-> +phy-names for each port are optional.
-> +
-> +Example:
-> +
-> +#include <dt-bindings/phy/phy.h>
-> +
-> +ssusb: usb@112a0000 {
-> +	...
-> +	phys = <&u2port0 PHY_TYPE_USB2>, <&u3port0 PHY_TYPE_USB3>;
-> +	phy-names = "usb2-0", "usb3-0";
-> +	...
-> +};
-
-This section is not necessary. We've already explained how to use the 
-phy binding elsewhere.
-
-> +
-> +
-> +Banks layout of xsphy
-
-Put this before the example.
-
-> +-------------------------------------------------------------
-> +port        offset    bank
-> +u2 port0    0x0000    MISC
-> +            0x0100    FMREG
-> +            0x0300    U2PHY_COM
-> +u2 port1    0x1000    MISC
-> +            0x1100    FMREG
-> +            0x1300    U2PHY_COM
-> +u2 port2    0x2000    MISC
-> +            ...
-> +u31 common  0x3000    DIG_GLB
-> +            0x3100    PHYA_GLB
-> +u31 port0   0x3400    DIG_LN_TOP
-> +            0x3500    DIG_LN_TX0
-> +            0x3600    DIG_LN_RX0
-> +            0x3700    DIG_LN_DAIF
-> +            0x3800    PHYA_LN
-> +u31 port1   0x3a00    DIG_LN_TOP
-> +            0x3b00    DIG_LN_TX0
-> +            0x3c00    DIG_LN_RX0
-> +            0x3d00    DIG_LN_DAIF
-> +            0x3e00    PHYA_LN
-> +            ...
-> +
-> +DIG_GLB & PHYA_GLB are shared by U31 ports.
 > -- 
-> 1.7.9.5
+> 2.12.5
 > 
+> --
+> To unsubscribe from this list: send the line "unsubscribe devicetree" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
