@@ -1,210 +1,79 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH 1/2] dt-bindings: add MediaTek XS-PHY binding
-Date: Wed, 2 May 2018 15:04:20 +0800
-Message-ID: <1525244660.25162.12.camel@mhfsdcap03>
-References: <1524642329-12255-1-git-send-email-chunfeng.yun@mediatek.com>
-         <1524642329-12255-2-git-send-email-chunfeng.yun@mediatek.com>
-         <20180501142459.GA10534@rob-hp-laptop>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 01/12] dt-bindings: cpufreq: mediatek: use - instead of
+ _ in examples
+Date: Wed, 2 May 2018 10:59:09 +0200
+Message-ID: <1da10bfb-5d96-5a69-252e-2efacf120fdf@gmail.com>
+References: <cover.1523434757.git.sean.wang@mediatek.com>
+ <1b9604aa3d3c68be68caf8af32fa4130f57743d6.1523434758.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180501142459.GA10534@rob-hp-laptop>
+In-Reply-To: <1b9604aa3d3c68be68caf8af32fa4130f57743d6.1523434758.git.sean.wang@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ryder Lee <ryder.lee@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+To: sean.wang@mediatek.com, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>, linux-pm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Rob,
-On Tue, 2018-05-01 at 09:24 -0500, Rob Herring wrote:
-> On Wed, Apr 25, 2018 at 03:45:28PM +0800, Chunfeng Yun wrote:
-> > Add a DT binding documentation of XS-PHY for MediaTek SoCs
-> > with USB3.1 GEN2 controller
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/phy/phy-mtk-xsphy.txt      |  127 ++++++++++++++++++++
-> >  1 file changed, 127 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt
-> > new file mode 100644
-> > index 0000000..23c51a0
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt
-> > @@ -0,0 +1,127 @@
-> > +MediaTek XS-PHY binding
-> > +--------------------------
-> > +
-> > +The XS-PHY controller supports physical layer functionality for USB3.1
-> > +GEN2 controller on MediaTek SoCs.
-> > +
-> > +Required properties (controller (parent) node):
-> > + - compatible	: should be "mediatek,<soc-model>-xsphy", "mediatek,xsphy",
-> > + 		  soc-model is the name of SoC, such as mt2712 etc;
-> 
-> Please list all valid SoCs.
-Ok
-> 
-> > +		  when using "mediatek,xsphy" compatible string, you need SoC specific
-> > +		  ones in addition.
-> > +
-> > +Required nodes	: a sub-node is required for each port the controller
-> > +		  provides. Address range information including the usual
-> > +		  'reg' property is used inside these nodes to describe
-> > +		  the controller's topology.
-> 
-> This should go afer the parent optional properties.
-Ok
-> 
-> > +
-> > +Optional properties (controller (parent) node):
-> > + - reg		: offset and length of register shared by multiple U3 ports,
-> > +		  exclude port's private register, if only U2 ports provided,
-> > +		  shouldn't use the property.
-> > + - mediatek,src-ref-clk-mhz	: u32, frequency of reference clock for slew rate
-> > +		  calibrate
-> > + - mediatek,src-coef	: u32, coefficient for slew rate calibrate, depends on
-> > +		  SoC process
-> > +
-> > +Required properties (port (child) node):
-> > +- reg		: address and length of the register set for the port.
-> > +- clocks	: a list of phandle + clock-specifier pairs, one for each
-> > +		  entry in clock-names
-> > +- clock-names	: must contain
-> > +		  "ref": 48M reference clock for HighSpeed analog phy; and 26M
-> > +			reference clock for SuperSpeedPlus analog phy, sometimes is
-> > +			24M, 25M or 27M, depended on platform.
-> > +- #phy-cells	: should be 1 (See second example)
-> > +		  cell after port phandle is phy type from:
-> > +			- PHY_TYPE_USB2
-> > +			- PHY_TYPE_USB3
-> 
-> Is the type a property of the connection to the host? If not, this 
-> shouldn't be part of the phy cells. I would add compatible strings to 
-> the child nodes to define this. I think that would simplify the driver 
-> too as then you can parse DT properties in probe rather than phy_init.
-Yes, it is.
-It's parsed when the phy is got by the host driver.
-> 
-> > +
-> > +The following optional properties are only for debug or HQA test
-> > +Optional properties (PHY_TYPE_USB2 port (child) node):
-> > +- mediatek,eye-src	: u32, the value of slew rate calibrate
-> > +- mediatek,eye-vrt	: u32, the selection of VRT reference voltage
-> > +- mediatek,eye-term	: u32, the selection of HS_TX TERM reference voltage
-> > +- mediatek,efuse-intr	: u32, the selection of Internal Resistor
-> > +
-> > +Optional properties (PHY_TYPE_USB3 port (child) node):
-> > +- mediatek,efuse-intr	: u32, the selection of Internal Resistor
-> > +- mediatek,efuse-tx-imp	: u32, the selection of TX Impedance
-> > +- mediatek,efuse-rx-imp	: u32, the selection of RX Impedance
-> > +
-> > +Example:
-> > +
-> > +u3phy: usb-phy@11c40000 {
-> > +	compatible = "mediatek,mt36xx-xsphy", "mediatek,xsphy";
-> 
-> Is mt36xx a specific SoC? Don't use wildcards in compatible strings.
-No, will use a specific one
 
+On 04/11/2018 10:53 AM, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> > +	reg = <0 0x11c43000 0 0x0200>;
-> > +	mediatek,src-ref-clk-mhz = <26>;
-> > +	mediatek,src-coef = <17>;
-> > +	#address-cells = <2>;
-> > +	#size-cells = <2>;
+> It should be good that no use "_" is in examples. Consequently,
+> those nodes in certain files which have an inappropriate name containing
+> "_" are all being replaced with "-".
 > 
-> Really need 64-bit sizes?
-Just an example, 32-bit is also ok, but it's better to use the same
-value as the root node
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+> Cc: Viresh Kumar <viresh.kumar@linaro.org>
+> Cc: Rob Herring <robh+dt@kernel.org>
+> Cc: Mark Rutland <mark.rutland@arm.com>
+> Cc: linux-pm@vger.kernel.org
+> Cc: devicetree@vger.kernel.org
+> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> ---
+>  Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> > +	ranges;
-> 
-> Limiting the range to only the phy addresses is preferred.
-> 
-> > +	status = "disabled";
-> 
-> Don't show status in examples.
-Ok
-> 
-> > +
-> > +	u2port0: usb-phy@11c40000 {
-> > +		reg = <0 0x11c40000 0 0x0400>;
-> > +		clocks = <&clk48m>;
-> > +		clock-names = "ref";
-> > +		mediatek,eye-src = <4>;
-> > +		#phy-cells = <1>;
-> > +		status = "okay";
-> > +	};
-> > +
-> > +	u3port0: usb-phy@11c43000 {
-> > +		reg = <0 0x11c43400 0 0x0500>;
-> > +		clocks = <&clk26m>;
-> > +		clock-names = "ref";
-> > +		mediatek,efuse-intr = <28>;
-> > +		#phy-cells = <1>;
-> > +		status = "okay";
-> > +	};
-> > +};
-> > +
-> 
-> > +Specifying phy control of devices
-> > +---------------------------------
-> > +
-> > +Device nodes should specify the configuration required in their "phys"
-> > +property, containing a phandle to the phy port node and a device type;
-> > +phy-names for each port are optional.
-> > +
-> > +Example:
-> > +
-> > +#include <dt-bindings/phy/phy.h>
-> > +
-> > +ssusb: usb@112a0000 {
-> > +	...
-> > +	phys = <&u2port0 PHY_TYPE_USB2>, <&u3port0 PHY_TYPE_USB3>;
-> > +	phy-names = "usb2-0", "usb3-0";
-> > +	...
-> > +};
-> 
-> This section is not necessary. We've already explained how to use the 
-> phy binding elsewhere.
-Will remove it in next version
-> 
-> > +
-> > +
-> > +Banks layout of xsphy
-> 
-> Put this before the example.
-Ok
 
-Thanks a lot.
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+Rafael, will you take this through your tree?
+
+Regards,
+Matthias
+
+> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> index d36f07e..38cfbb5 100644
+> --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> @@ -26,7 +26,7 @@ Optional properties:
+>  
+>  Example 1 (MT7623 SoC):
+>  
+> -	cpu_opp_table: opp_table {
+> +	cpu_opp_table: opp-table {
+>  		compatible = "operating-points-v2";
+>  		opp-shared;
+>  
+> @@ -86,7 +86,7 @@ Example 1 (MT7623 SoC):
+>  	};
+>  
+>  Example 2 (MT8173 SoC):
+> -	cpu_opp_table_a: opp_table_a {
+> +	cpu_opp_table_a: opp-table-a {
+>  		compatible = "operating-points-v2";
+>  		opp-shared;
+>  
+> @@ -131,7 +131,7 @@ Example 2 (MT8173 SoC):
+>  		};
+>  	};
+>  
+> -	cpu_opp_table_b: opp_table_b {
+> +	cpu_opp_table_b: opp-table-b {
+>  		compatible = "operating-points-v2";
+>  		opp-shared;
+>  
 > 
-> > +-------------------------------------------------------------
-> > +port        offset    bank
-> > +u2 port0    0x0000    MISC
-> > +            0x0100    FMREG
-> > +            0x0300    U2PHY_COM
-> > +u2 port1    0x1000    MISC
-> > +            0x1100    FMREG
-> > +            0x1300    U2PHY_COM
-> > +u2 port2    0x2000    MISC
-> > +            ...
-> > +u31 common  0x3000    DIG_GLB
-> > +            0x3100    PHYA_GLB
-> > +u31 port0   0x3400    DIG_LN_TOP
-> > +            0x3500    DIG_LN_TX0
-> > +            0x3600    DIG_LN_RX0
-> > +            0x3700    DIG_LN_DAIF
-> > +            0x3800    PHYA_LN
-> > +u31 port1   0x3a00    DIG_LN_TOP
-> > +            0x3b00    DIG_LN_TX0
-> > +            0x3c00    DIG_LN_RX0
-> > +            0x3d00    DIG_LN_DAIF
-> > +            0x3e00    PHYA_LN
-> > +            ...
-> > +
-> > +DIG_GLB & PHYA_GLB are shared by U31 ports.
-> > -- 
-> > 1.7.9.5
-> > 
