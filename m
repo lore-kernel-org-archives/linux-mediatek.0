@@ -1,208 +1,103 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: Re: [PATCH 2/2] PCI: mediatek: Using chained IRQ to setup IRQ handle
-Date: Wed, 2 May 2018 11:09:18 +0100
-Message-ID: <e04ea8b1-731f-e72b-8944-5c067e1a04da@arm.com>
-References: <1524201910-22836-1-git-send-email-honghui.zhang@mediatek.com>
- <1524201910-22836-3-git-send-email-honghui.zhang@mediatek.com>
- <a2f7e70a-fdef-d925-8838-be3051c2e96d@arm.com>
- <1525254064.22948.11.camel@mhfsdcap03>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH V4 2/8] soc: mediatek: pwrap: add caps flag for pwrap
+Date: Wed, 2 May 2018 12:27:26 +0200
+Message-ID: <41027d71-a0b5-b78d-e9bf-aec4beb05a59@gmail.com>
+References: <20180502092112.3991-1-argus.lin@mediatek.com>
+ <20180502092112.3991-3-argus.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1525254064.22948.11.camel@mhfsdcap03>
-Content-Language: en-GB
+In-Reply-To: <20180502092112.3991-3-argus.lin@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Honghui Zhang <honghui.zhang@mediatek.com>
-Cc: lorenzo.pieralisi@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+To: argus.lin@mediatek.com, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
+Cc: Chenglin Xu <chenglin.xu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, wsd_upstream@mediatek.com, henryc.chen@mediatek.com, flora.fu@mediatek.com, Chen Zhong <chen.zhong@mediatek.com>, Christophe Jaillet <christophe.jaillet@wanadoo.fr>, "shailendra . v" <shailendra.v@samsung.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 02/05/18 10:41, Honghui Zhang wrote:
-> On Mon, 2018-04-30 at 12:03 +0100, Marc Zyngier wrote:
->> Hi Zhang,
->>
->> On 20/04/18 06:25, honghui.zhang@mediatek.com wrote:
->>> From: Honghui Zhang <honghui.zhang@mediatek.com>
->>>
->>> Using irq_chip solution to setup IRQs for the consistent with IRQ framework.
->>>
->>> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
->>> ---
->>>  drivers/pci/host/pcie-mediatek.c | 192 +++++++++++++++++++++------------------
->>>  1 file changed, 105 insertions(+), 87 deletions(-)
->>>
->>> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
->>> index c3dc549..1d9c6f1 100644
->>> --- a/drivers/pci/host/pcie-mediatek.c
->>> +++ b/drivers/pci/host/pcie-mediatek.c
->>> @@ -11,8 +11,10 @@
->>>  #include <linux/delay.h>
->>>  #include <linux/iopoll.h>
->>>  #include <linux/irq.h>
->>> +#include <linux/irqchip/chained_irq.h>
->>>  #include <linux/irqdomain.h>
->>>  #include <linux/kernel.h>
->>> +#include <linux/msi.h>
->>>  #include <linux/of_address.h>
->>>  #include <linux/of_pci.h>
->>>  #include <linux/of_platform.h>
->>> @@ -130,14 +132,12 @@ struct mtk_pcie_port;
->>>  /**
->>>   * struct mtk_pcie_soc - differentiate between host generations
->>>   * @need_fix_class_id: whether this host's class ID needed to be fixed or not
->>> - * @has_msi: whether this host supports MSI interrupts or not
->>>   * @ops: pointer to configuration access functions
->>>   * @startup: pointer to controller setting functions
->>>   * @setup_irq: pointer to initialize IRQ functions
->>>   */
->>>  struct mtk_pcie_soc {
->>>  	bool need_fix_class_id;
->>> -	bool has_msi;
->>>  	struct pci_ops *ops;
->>>  	int (*startup)(struct mtk_pcie_port *port);
->>>  	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
->>> @@ -161,7 +161,9 @@ struct mtk_pcie_soc {
->>>   * @lane: lane count
->>>   * @slot: port slot
->>>   * @irq_domain: legacy INTx IRQ domain
->>> + * @inner_domain: inner IRQ domain
->>>   * @msi_domain: MSI IRQ domain
->>> + * @lock: protect the msi_irq_in_use bitmap
->>>   * @msi_irq_in_use: bit map for assigned MSI IRQ
->>>   */
->>>  struct mtk_pcie_port {
->>> @@ -179,7 +181,9 @@ struct mtk_pcie_port {
->>>  	u32 lane;
->>>  	u32 slot;
->>>  	struct irq_domain *irq_domain;
->>> +	struct irq_domain *inner_domain;
->>>  	struct irq_domain *msi_domain;
->>> +	struct mutex lock;
->>>  	DECLARE_BITMAP(msi_irq_in_use, MTK_MSI_IRQS_NUM);
->>>  };
->>>  
->>> @@ -446,103 +450,122 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
->>>  	return 0;
->>>  }
->>>  
->>> -static int mtk_pcie_msi_alloc(struct mtk_pcie_port *port)
->>> +static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
->>>  {
->>> -	int msi;
->>> +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
->>> +	phys_addr_t addr;
->>>  
->>> -	msi = find_first_zero_bit(port->msi_irq_in_use, MTK_MSI_IRQS_NUM);
->>> -	if (msi < MTK_MSI_IRQS_NUM)
->>> -		set_bit(msi, port->msi_irq_in_use);
->>> -	else
->>> -		return -ENOSPC;
->>> +	/* MT2712/MT7622 only support 32-bit MSI addresses */
->>> +	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
->>> +	msg->address_hi = 0;
->>> +	msg->address_lo = lower_32_bits(addr);
->>>  
->>> -	return msi;
->>> +	msg->data = data->hwirq;
->>> +
->>> +	dev_dbg(port->pcie->dev, "msi#%d address_hi %#x address_lo %#x\n",
->>> +		(int)data->hwirq, msg->address_hi, msg->address_lo);
->>>  }
->>>  
->>> -static void mtk_pcie_msi_free(struct mtk_pcie_port *port, unsigned long hwirq)
->>> +static int mtk_msi_set_affinity(struct irq_data *irq_data,
->>> +				   const struct cpumask *mask, bool force)
->>>  {
->>> -	clear_bit(hwirq, port->msi_irq_in_use);
->>> +	return -EINVAL;
->>>  }
->>>  
->>> -static int mtk_pcie_msi_setup_irq(struct msi_controller *chip,
->>> -				  struct pci_dev *pdev, struct msi_desc *desc)
->>> -{
->>> -	struct mtk_pcie_port *port;
->>> -	struct msi_msg msg;
->>> -	unsigned int irq;
->>> -	int hwirq;
->>> -	phys_addr_t msg_addr;
->>> +static struct irq_chip mtk_msi_bottom_irq_chip = {
->>> +	.name			= "MTK MSI",
->>> +	.irq_compose_msi_msg	= mtk_compose_msi_msg,
->>> +	.irq_set_affinity	= mtk_msi_set_affinity,
->>> +	.irq_mask		= pci_msi_mask_irq,
->>> +	.irq_unmask	= pci_msi_unmask_irq,
->>> +};
->>>  
->>> -	port = mtk_pcie_find_port(pdev->bus, pdev->devfn);
->>> -	if (!port)
->>> -		return -EINVAL;
->>> +static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int virq,
->>> +				     unsigned int nr_irqs, void *args)
->>> +{
->>> +	struct mtk_pcie_port *port = domain->host_data;
->>> +	unsigned long bit;
->>>  
->>> -	hwirq = mtk_pcie_msi_alloc(port);
->>> -	if (hwirq < 0)
->>> -		return hwirq;
->>> +	WARN_ON(nr_irqs != 1);
->>> +	mutex_lock(&port->lock);
->>>  
->>> -	irq = irq_create_mapping(port->msi_domain, hwirq);
->>> -	if (!irq) {
->>> -		mtk_pcie_msi_free(port, hwirq);
->>> -		return -EINVAL;
->>> +	bit = find_first_zero_bit(port->msi_irq_in_use, MTK_MSI_IRQS_NUM);
->>> +	if (bit >= MTK_MSI_IRQS_NUM) {
->>> +		mutex_unlock(&port->lock);
->>> +		return -ENOSPC;
->>>  	}
->>>  
->>> -	chip->dev = &pdev->dev;
->>> -
->>> -	irq_set_msi_desc(irq, desc);
->>> +	__set_bit(bit, port->msi_irq_in_use);
->>>  
->>> -	/* MT2712/MT7622 only support 32-bit MSI addresses */
->>> -	msg_addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
->>> -	msg.address_hi = 0;
->>> -	msg.address_lo = lower_32_bits(msg_addr);
->>> -	msg.data = hwirq;
->>> +	mutex_unlock(&port->lock);
->>>  
->>> -	pci_write_msi_msg(irq, &msg);
->>> +	irq_domain_set_info(domain, virq, bit, &mtk_msi_bottom_irq_chip,
->>> +			    domain->host_data, handle_simple_irq,
->>
->> Why don't you handle the interrupt as an edge interrupt
->> (handle_edge_irq)? That's what it really is, and the fact that you use
->> "handle_simple_irq" makes me think that wou're papering over some other
->> issue (see below).
+
+
+On 05/02/2018 11:21 AM, argus.lin@mediatek.com wrote:
+> From: Argus Lin <argus.lin@mediatek.com>
 > 
-> Hi, Marc,
+> We use caps to describe pwrap's capability, used
+> to replace has_bridge flag for single meaning.
 > 
-> Thanks very much for your comments.
+> Signed-off-by: Argus Lin <argus.lin@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mtk-pmic-wrap.c | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
 > 
-> I guess the MSI irq is more like a level IRQ instead of edge IRQ.
-> When a MSI IRQ arrived, the corresponding bit of MSI status register
-> will be asserted and stay asserted until it's been cleared by software.
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> index e9e054a15b7d..3a25ff6e6907 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -76,6 +76,12 @@
+>  #define PWRAP_SLV_CAP_SECURITY	BIT(2)
+>  #define HAS_CAP(_c, _x)	(((_c) & (_x)) == (_x))
+>  
+> +/* Group of bits used for shown pwrap capability */
+> +#define PWRAP_CAP_BRIDGE	BIT(0)
+> +#define PWRAP_CAP_RESET		BIT(1)
+> +#define PWRAP_CAP_DCM		BIT(2)
+> +#define PWRAP_CAP_INT1_EN	BIT(3)
+> +
 
-There is some confusion here. The MSI itself is always edge-triggered.
-That's by definition, and you cannot change it. The interrupt that is
-used to signal that MSIs are pending (the multiplexing interrupt) can
-itself be level triggered (and goes low once all the MSIs have been
-acknowledged).
+You are missing the logic to handle the caps.
+With out this logic, this patch is useless.
 
-> I will try to using handle_level_irq and add some callbacks of irq_ack
-> in the next version.
+Regards,
+Matthias
 
-The interrupt above seem to be the MSI itself, and not the multiplexing
-interrupt. It should be handled as an edge.
-
-If that doesn't work, we need to understand why.
-
-Thanks,
-
-	M.
--- 
-Jazz is not dead. It just smells funny...
+>  /* defines for slave device wrapper registers */
+>  enum dew_regs {
+>  	PWRAP_DEW_BASE,
+> @@ -684,6 +690,8 @@ struct pmic_wrapper_type {
+>  	u32 spi_w;
+>  	u32 wdt_src;
+>  	unsigned int has_bridge:1;
+> +	/* Flags indicating the capability for the target pwrap */
+> +	u8 caps;
+>  	int (*init_reg_clock)(struct pmic_wrapper *wrp);
+>  	int (*init_soc_specific)(struct pmic_wrapper *wrp);
+>  };
+> @@ -1394,6 +1402,7 @@ static const struct pmic_wrapper_type pwrap_mt2701 = {
+>  	.spi_w = PWRAP_MAN_CMD_SPI_WRITE_NEW,
+>  	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
+>  	.has_bridge = 0,
+> +	.caps = PWRAP_CAP_RESET | PWRAP_CAP_DCM,
+>  	.init_reg_clock = pwrap_mt2701_init_reg_clock,
+>  	.init_soc_specific = pwrap_mt2701_init_soc_specific,
+>  };
+> @@ -1406,6 +1415,7 @@ static const struct pmic_wrapper_type pwrap_mt7622 = {
+>  	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
+>  	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
+>  	.has_bridge = 0,
+> +	.caps = PWRAP_CAP_RESET | PWRAP_CAP_DCM,
+>  	.init_reg_clock = pwrap_common_init_reg_clock,
+>  	.init_soc_specific = pwrap_mt7622_init_soc_specific,
+>  };
+> @@ -1418,6 +1428,7 @@ static const struct pmic_wrapper_type pwrap_mt8135 = {
+>  	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
+>  	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
+>  	.has_bridge = 1,
+> +	.caps = PWRAP_CAP_BRIDGE | PWRAP_CAP_RESET | PWRAP_CAP_DCM,
+>  	.init_reg_clock = pwrap_common_init_reg_clock,
+>  	.init_soc_specific = pwrap_mt8135_init_soc_specific,
+>  };
+> -- 
+> 2.12.5
+> 
+> ************* Email Confidentiality Notice ********************
+> The information contained in this e-mail message (including any 
+> attachments) may be confidential, proprietary, privileged, or otherwise
+> exempt from disclosure under applicable laws. It is intended to be 
+> conveyed only to the designated recipient(s). Any use, dissemination, 
+> distribution, printing, retaining or copying of this e-mail (including its 
+> attachments) by unintended recipient(s) is strictly prohibited and may 
+> be unlawful. If you are not an intended recipient of this e-mail, or believe 
+> that you have received this e-mail in error, please notify the sender 
+> immediately (by replying to this e-mail), delete any and all copies of 
+> this e-mail (including any attachments) from your system, and do not
+> disclose the content of this e-mail to any other person. Thank you!
+> 
