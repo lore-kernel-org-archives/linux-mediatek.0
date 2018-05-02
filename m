@@ -1,172 +1,86 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH 2/2] arm64: dts: mt7622: add audio related device nodes
-Date: Wed, 2 May 2018 11:53:58 +0800
-Message-ID: <1525233238.14792.14.camel@mtkswgap22>
-References: <d208e8cf93f18b97ee9cf24cdd0220aa44188b8b.1525231985.git.sean.wang@mediatek.com>
-         <e48bc87f54d7f2e06664ee358822aa9a9e34256b.1525231985.git.sean.wang@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v3] soc: mediatek: add a fixed wait for SRAM stable
+Date: Wed, 2 May 2018 12:03:29 +0800
+Message-ID: <90f83c1bd359bb39cdae334e489037d6fb8ac69b.1525233544.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e48bc87f54d7f2e06664ee358822aa9a9e34256b.1525231985.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: matthias.bgg@gmail.com
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
+To: matthias.bgg@gmail.com, rjw@rjwysocki.net, khilman@baylibre.com
+Cc: ulf.hansson@linaro.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Matthias
+From: Sean Wang <sean.wang@mediatek.com>
 
-On Wed, 2018-05-02 at 11:41 +0800, sean.wang@mediatek.com wrote:
-> From: Ryder Lee <ryder.lee@mediatek.com>
-> 
-> Add audio device nodes and its proper setup for all used pins
-> 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts | 11 +++-
->  arch/arm64/boot/dts/mediatek/mt7622.dtsi     | 89 ++++++++++++++++++++++++++++
->  2 files changed, 98 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> index 45d8655..b783764 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> @@ -18,7 +18,7 @@
->  	compatible = "mediatek,mt7622-rfb1", "mediatek,mt7622";
->  
->  	chosen {
-> -		bootargs = "console=ttyS0,115200n1";
-> +		bootargs = "console=ttyS0,115200n1 swiotlb=512";
->  	};
->  
->  	cpus {
-> @@ -163,10 +163,17 @@
->  	i2s1_pins: i2s1-pins {
->  		mux {
->  			function = "i2s";
-> -			groups =  "i2s_out_bclk_ws_mclk",
-> +			groups =  "i2s_out_mclk_bclk_ws",
+MT7622_POWER_DOMAIN_WB doesn't send an ACK when its managed SRAM becomes
+stable, which is not like the behavior the other power domains should
+have. Therefore, it's necessary for such a power domain to have a fixed
+and well-predefined duration to wait until its managed SRAM can be allowed
+to access by all functions running on the top.
 
-The old one ("i2s_out_bclk_ws_mclk") should be the indecisive value when
-I initially worked on the pinctrl device.
+v1 -> v2:
+ - use MTK_SCPD_FWAIT_SRAM flag as an indication requiring force waiting.
 
-It has to be corrected with "i2s_out_mclk_bclk_ws" to comply with the
-final dt-bindings.
+v2 -> v3:
+ - change the order for condition judgment with we check an existence of
+   the MTK_SCPD_FWAIT_SRAM first to get rid of any oversight on negative
+   condition.
 
->  				  "i2s1_in_data",
->  				  "i2s1_out_data";
->  		};
-> +
-> +		conf {
-> +			pins = "I2S1_IN", "I2S1_OUT", "I2S_BCLK",
-> +			       "I2S_WS", "I2S_MCLK";
-> +			drive-strength = <12>;
-> +			bias-pull-down;
-> +		};
->  	};
->  
->  	irrx_pins: irrx-pins {
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> index 6bbabb6..9213c96 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> @@ -527,6 +527,95 @@
->  		status = "disabled";
->  	};
->  
-> +	audsys: clock-controller@11220000 {
-> +		compatible = "mediatek,mt7622-audsys", "syscon";
-> +		reg = <0 0x11220000 0 0x2000>;
-> +		#clock-cells = <1>;
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Weiyi Lu <weiyi.lu@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-scpsys.c | 23 +++++++++++++++++------
+ 1 file changed, 17 insertions(+), 6 deletions(-)
 
-The binding have been through broonie/sound.git around a week ago
-
-> +
-> +		afe: audio-controller {
-> +			compatible = "mediatek,mt7622-audio";
-> +			interrupts =  <GIC_SPI 144 IRQ_TYPE_LEVEL_LOW>,
-> +				      <GIC_SPI 145 IRQ_TYPE_LEVEL_LOW>;
-> +			interrupt-names	= "afe", "asys";
-> +
-> +			clocks = <&infracfg CLK_INFRA_AUDIO_PD>,
-> +				 <&topckgen CLK_TOP_AUD1_SEL>,
-> +				 <&topckgen CLK_TOP_AUD2_SEL>,
-> +				 <&topckgen CLK_TOP_A1SYS_HP_DIV_PD>,
-> +				 <&topckgen CLK_TOP_A2SYS_HP_DIV_PD>,
-> +				 <&topckgen CLK_TOP_I2S0_MCK_SEL>,
-> +				 <&topckgen CLK_TOP_I2S1_MCK_SEL>,
-> +				 <&topckgen CLK_TOP_I2S2_MCK_SEL>,
-> +				 <&topckgen CLK_TOP_I2S3_MCK_SEL>,
-> +				 <&topckgen CLK_TOP_I2S0_MCK_DIV>,
-> +				 <&topckgen CLK_TOP_I2S1_MCK_DIV>,
-> +				 <&topckgen CLK_TOP_I2S2_MCK_DIV>,
-> +				 <&topckgen CLK_TOP_I2S3_MCK_DIV>,
-> +				 <&topckgen CLK_TOP_I2S0_MCK_DIV_PD>,
-> +				 <&topckgen CLK_TOP_I2S1_MCK_DIV_PD>,
-> +				 <&topckgen CLK_TOP_I2S2_MCK_DIV_PD>,
-> +				 <&topckgen CLK_TOP_I2S3_MCK_DIV_PD>,
-> +				 <&audsys CLK_AUDIO_I2SO1>,
-> +				 <&audsys CLK_AUDIO_I2SO2>,
-> +				 <&audsys CLK_AUDIO_I2SO3>,
-> +				 <&audsys CLK_AUDIO_I2SO4>,
-> +				 <&audsys CLK_AUDIO_I2SIN1>,
-> +				 <&audsys CLK_AUDIO_I2SIN2>,
-> +				 <&audsys CLK_AUDIO_I2SIN3>,
-> +				 <&audsys CLK_AUDIO_I2SIN4>,
-> +				 <&audsys CLK_AUDIO_ASRCO1>,
-> +				 <&audsys CLK_AUDIO_ASRCO2>,
-> +				 <&audsys CLK_AUDIO_ASRCO3>,
-> +				 <&audsys CLK_AUDIO_ASRCO4>,
-> +				 <&audsys CLK_AUDIO_AFE>,
-> +				 <&audsys CLK_AUDIO_AFE_CONN>,
-> +				 <&audsys CLK_AUDIO_A1SYS>,
-> +				 <&audsys CLK_AUDIO_A2SYS>;
-> +
-> +			clock-names = "infra_sys_audio_clk",
-> +				      "top_audio_mux1_sel",
-> +				      "top_audio_mux2_sel",
-> +				      "top_audio_a1sys_hp",
-> +				      "top_audio_a2sys_hp",
-> +				      "i2s0_src_sel",
-> +				      "i2s1_src_sel",
-> +				      "i2s2_src_sel",
-> +				      "i2s3_src_sel",
-> +				      "i2s0_src_div",
-> +				      "i2s1_src_div",
-> +				      "i2s2_src_div",
-> +				      "i2s3_src_div",
-> +				      "i2s0_mclk_en",
-> +				      "i2s1_mclk_en",
-> +				      "i2s2_mclk_en",
-> +				      "i2s3_mclk_en",
-> +				      "i2so0_hop_ck",
-> +				      "i2so1_hop_ck",
-> +				      "i2so2_hop_ck",
-> +				      "i2so3_hop_ck",
-> +				      "i2si0_hop_ck",
-> +				      "i2si1_hop_ck",
-> +				      "i2si2_hop_ck",
-> +				      "i2si3_hop_ck",
-> +				      "asrc0_out_ck",
-> +				      "asrc1_out_ck",
-> +				      "asrc2_out_ck",
-> +				      "asrc3_out_ck",
-> +				      "audio_afe_pd",
-> +				      "audio_afe_conn_pd",
-> +				      "audio_a1sys_pd",
-> +				      "audio_a2sys_pd";
-> +
-> +			assigned-clocks = <&topckgen CLK_TOP_A1SYS_HP_SEL>,
-> +					  <&topckgen CLK_TOP_A2SYS_HP_SEL>,
-> +					  <&topckgen CLK_TOP_A1SYS_HP_DIV>,
-> +					  <&topckgen CLK_TOP_A2SYS_HP_DIV>;
-> +			assigned-clock-parents = <&topckgen CLK_TOP_AUD1PLL>,
-> +						 <&topckgen CLK_TOP_AUD2PLL>;
-> +			assigned-clock-rates = <0>, <0>, <49152000>, <45158400>;
-> +		};
-> +	};
-> +
->  	mmc0: mmc@11230000 {
->  		compatible = "mediatek,mt7622-mmc";
->  		reg = <0 0x11230000 0 0x1000>;
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index b1b45e4..2080c8f 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -32,6 +32,7 @@
+ #define MTK_POLL_TIMEOUT    (jiffies_to_usecs(HZ))
+ 
+ #define MTK_SCPD_ACTIVE_WAKEUP		BIT(0)
++#define MTK_SCPD_FWAIT_SRAM		BIT(1)
+ #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
+ 
+ #define SPM_VDE_PWR_CON			0x0210
+@@ -237,11 +238,21 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	val &= ~scpd->data->sram_pdn_bits;
+ 	writel(val, ctl_addr);
+ 
+-	/* wait until SRAM_PDN_ACK all 0 */
+-	ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == 0,
+-				 MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+-	if (ret < 0)
+-		goto err_pwr_ack;
++	/* Either wait until SRAM_PDN_ACK all 0 or have a force wait */
++	if (MTK_SCPD_CAPS(scpd, MTK_SCPD_FWAIT_SRAM)) {
++		/*
++		 * Currently, MTK_SCPD_FWAIT_SRAM is necessary only for
++		 * MT7622_POWER_DOMAIN_WB and thus just a trivial setup is
++		 * applied here.
++		 */
++		usleep_range(12000, 12100);
++
++	} else {
++		ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == 0,
++					 MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
++		if (ret < 0)
++			goto err_pwr_ack;
++	};
+ 
+ 	if (scpd->data->bus_prot_mask) {
+ 		ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
+@@ -785,7 +796,7 @@ static const struct scp_domain_data scp_domain_data_mt7622[] = {
+ 		.sram_pdn_ack_bits = 0,
+ 		.clk_id = {CLK_NONE},
+ 		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_WB,
+-		.caps = MTK_SCPD_ACTIVE_WAKEUP,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP | MTK_SCPD_FWAIT_SRAM,
+ 	},
+ };
+ 
+-- 
+2.7.4
