@@ -1,50 +1,42 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH 1/2] dt-bindings: add MediaTek XS-PHY binding
-Date: Thu, 3 May 2018 09:20:36 +0800
-Message-ID: <1525310436.25162.28.camel@mhfsdcap03>
-References: <1524642329-12255-1-git-send-email-chunfeng.yun@mediatek.com>
-         <1524642329-12255-2-git-send-email-chunfeng.yun@mediatek.com>
-         <20180501142459.GA10534@rob-hp-laptop>
-         <1525244660.25162.12.camel@mhfsdcap03>
-         <CAL_Jsq+_Bq_Cm7RT0aTstLcRvdpx62U-7CXUA5hJnO-UqW6E4w@mail.gmail.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH V4 1/8] dt-bindings: pwrap: mediatek: add MT6351 PMIC
+ support for MT6797
+Date: Thu, 3 May 2018 10:01:02 +0800
+Message-ID: <1525312862.14792.37.camel@mtkswgap22>
+References: <20180502092112.3991-1-argus.lin@mediatek.com>
+         <20180502092112.3991-2-argus.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAL_Jsq+_Bq_Cm7RT0aTstLcRvdpx62U-7CXUA5hJnO-UqW6E4w@mail.gmail.com>
+In-Reply-To: <20180502092112.3991-2-argus.lin@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ryder Lee <ryder.lee@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Linux USB List <linux-usb@vger.kernel.org>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+To: argus.lin@mediatek.com
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Chenglin Xu <chenglin.xu@mediatek.com>, wsd_upstream@mediatek.com, henryc.chen@mediatek.com, flora.fu@mediatek.com, Chen Zhong <chen.zhong@mediatek.com>, Christophe Jaillet <christophe.jaillet@wanadoo.fr>, "shailendra . v" <shailendra.v@samsung.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-05-02 at 07:41 -0500, Rob Herring wrote:
-> On Wed, May 2, 2018 at 2:04 AM, Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
-> > Hi Rob,
-> > On Tue, 2018-05-01 at 09:24 -0500, Rob Herring wrote:
-> >> On Wed, Apr 25, 2018 at 03:45:28PM +0800, Chunfeng Yun wrote:
-> >> > Add a DT binding documentation of XS-PHY for MediaTek SoCs
-> >> > with USB3.1 GEN2 controller
+On Wed, 2018-05-02 at 17:21 +0800, argus.lin@mediatek.com wrote:
+> From: Argus Lin <argus.lin@mediatek.com>
 > 
-> [...]
+> We add MT6351 PMIC support for MT6797 SoCs.
 > 
-> >> > +   reg = <0 0x11c43000 0 0x0200>;
-> >> > +   mediatek,src-ref-clk-mhz = <26>;
-> >> > +   mediatek,src-coef = <17>;
-> >> > +   #address-cells = <2>;
-> >> > +   #size-cells = <2>;
-> >>
-> >> Really need 64-bit sizes?
-> > Just an example, 32-bit is also ok, but it's better to use the same
-> > value as the root node
+> Signed-off-by: Argus Lin <argus.lin@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> Why is it better?
-> 
-> It is unnecessary bloat and it is better to limit the range of child
-> nodes using ranges.
-I agree with you.
-And here the parent and child address space is identical, and no address
-translate is required, so use the same value as the root node, if the
-root node uses 64-bit sizes, we will use 64-bit sizes as well,  if it
-uses 32-bit sizes, we use 32-bit sizes too, in order to keep consistent.
-> 
-> Rob
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> index bf80e3f96f8c..f9987c30f0d5 100644
+> --- a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> @@ -19,6 +19,7 @@ IP Pairing
+>  Required properties in pwrap device node.
+>  - compatible:
+>  	"mediatek,mt2701-pwrap" for MT2701/7623 SoCs
+> +	"mediatek,mt6797-pwrap" for MT6797 SoCs
+>  	"mediatek,mt7622-pwrap" for MT7622 SoCs
+>  	"mediatek,mt8135-pwrap" for MT8135 SoCs
+>  	"mediatek,mt8173-pwrap" for MT8173 SoCs
+
+The content doesn't describe anything about MT6351, which seems to be
+inconsistent with its title
