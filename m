@@ -1,225 +1,189 @@
-From: Honghui Zhang <honghui.zhang@mediatek.com>
-Subject: Re: [PATCH 2/2] PCI: mediatek: Using chained IRQ to setup IRQ handle
-Date: Thu, 3 May 2018 17:41:54 +0800
-Message-ID: <1525340514.22948.25.camel@mhfsdcap03>
-References: <1524201910-22836-1-git-send-email-honghui.zhang@mediatek.com>
-         <1524201910-22836-3-git-send-email-honghui.zhang@mediatek.com>
-         <a2f7e70a-fdef-d925-8838-be3051c2e96d@arm.com>
-         <1525254064.22948.11.camel@mhfsdcap03>
-         <e04ea8b1-731f-e72b-8944-5c067e1a04da@arm.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+From: Satendra Singh Thakur <satendra.t@samsung.com>
+Subject: [PATCH 12/13] drm/kms/mode/mtk_dpi_dsi: using helper func
+ drm_display_mode_to_videomode for calculating timing parameters
+Date: Thu,  3 May 2018 16:39:46 +0530
+Message-ID: <986995915d004bf99936eaf380da6113a974b639.1525087679.git.satendra.t@samsung.com>
+References: <cover.1525087679.git.satendra.t@samsung.com>
+        <CGME20180503111008epcas5p26088af1ff767ac0bf06cae934f1da339@epcas5p2.samsung.com>
+Content-Type: text/plain; charset="utf-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e04ea8b1-731f-e72b-8944-5c067e1a04da@arm.com>
+In-Reply-To: <cover.1525087679.git.satendra.t@samsung.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: lorenzo.pieralisi@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Satendra Singh Thakur <satendra.t@samsung.com>, Madhur Verma <madhur.verma@samsung.com>, Hemanshu Srivastava <hemanshu.s@samsung.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-05-02 at 11:09 +0100, Marc Zyngier wrote:
-> On 02/05/18 10:41, Honghui Zhang wrote:
-> > On Mon, 2018-04-30 at 12:03 +0100, Marc Zyngier wrote:
-> >> Hi Zhang,
-> >>
-> >> On 20/04/18 06:25, honghui.zhang@mediatek.com wrote:
-> >>> From: Honghui Zhang <honghui.zhang@mediatek.com>
-> >>>
-> >>> Using irq_chip solution to setup IRQs for the consistent with IRQ framework.
-> >>>
-> >>> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> >>> ---
-> >>>  drivers/pci/host/pcie-mediatek.c | 192 +++++++++++++++++++++------------------
-> >>>  1 file changed, 105 insertions(+), 87 deletions(-)
-> >>>
-> >>> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-> >>> index c3dc549..1d9c6f1 100644
-> >>> --- a/drivers/pci/host/pcie-mediatek.c
-> >>> +++ b/drivers/pci/host/pcie-mediatek.c
-> >>> @@ -11,8 +11,10 @@
-> >>>  #include <linux/delay.h>
-> >>>  #include <linux/iopoll.h>
-> >>>  #include <linux/irq.h>
-> >>> +#include <linux/irqchip/chained_irq.h>
-> >>>  #include <linux/irqdomain.h>
-> >>>  #include <linux/kernel.h>
-> >>> +#include <linux/msi.h>
-> >>>  #include <linux/of_address.h>
-> >>>  #include <linux/of_pci.h>
-> >>>  #include <linux/of_platform.h>
-> >>> @@ -130,14 +132,12 @@ struct mtk_pcie_port;
-> >>>  /**
-> >>>   * struct mtk_pcie_soc - differentiate between host generations
-> >>>   * @need_fix_class_id: whether this host's class ID needed to be fixed or not
-> >>> - * @has_msi: whether this host supports MSI interrupts or not
-> >>>   * @ops: pointer to configuration access functions
-> >>>   * @startup: pointer to controller setting functions
-> >>>   * @setup_irq: pointer to initialize IRQ functions
-> >>>   */
-> >>>  struct mtk_pcie_soc {
-> >>>  	bool need_fix_class_id;
-> >>> -	bool has_msi;
-> >>>  	struct pci_ops *ops;
-> >>>  	int (*startup)(struct mtk_pcie_port *port);
-> >>>  	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
-> >>> @@ -161,7 +161,9 @@ struct mtk_pcie_soc {
-> >>>   * @lane: lane count
-> >>>   * @slot: port slot
-> >>>   * @irq_domain: legacy INTx IRQ domain
-> >>> + * @inner_domain: inner IRQ domain
-> >>>   * @msi_domain: MSI IRQ domain
-> >>> + * @lock: protect the msi_irq_in_use bitmap
-> >>>   * @msi_irq_in_use: bit map for assigned MSI IRQ
-> >>>   */
-> >>>  struct mtk_pcie_port {
-> >>> @@ -179,7 +181,9 @@ struct mtk_pcie_port {
-> >>>  	u32 lane;
-> >>>  	u32 slot;
-> >>>  	struct irq_domain *irq_domain;
-> >>> +	struct irq_domain *inner_domain;
-> >>>  	struct irq_domain *msi_domain;
-> >>> +	struct mutex lock;
-> >>>  	DECLARE_BITMAP(msi_irq_in_use, MTK_MSI_IRQS_NUM);
-> >>>  };
-> >>>  
-> >>> @@ -446,103 +450,122 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
-> >>>  	return 0;
-> >>>  }
-> >>>  
-> >>> -static int mtk_pcie_msi_alloc(struct mtk_pcie_port *port)
-> >>> +static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
-> >>>  {
-> >>> -	int msi;
-> >>> +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-> >>> +	phys_addr_t addr;
-> >>>  
-> >>> -	msi = find_first_zero_bit(port->msi_irq_in_use, MTK_MSI_IRQS_NUM);
-> >>> -	if (msi < MTK_MSI_IRQS_NUM)
-> >>> -		set_bit(msi, port->msi_irq_in_use);
-> >>> -	else
-> >>> -		return -ENOSPC;
-> >>> +	/* MT2712/MT7622 only support 32-bit MSI addresses */
-> >>> +	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
-> >>> +	msg->address_hi = 0;
-> >>> +	msg->address_lo = lower_32_bits(addr);
-> >>>  
-> >>> -	return msi;
-> >>> +	msg->data = data->hwirq;
-> >>> +
-> >>> +	dev_dbg(port->pcie->dev, "msi#%d address_hi %#x address_lo %#x\n",
-> >>> +		(int)data->hwirq, msg->address_hi, msg->address_lo);
-> >>>  }
-> >>>  
-> >>> -static void mtk_pcie_msi_free(struct mtk_pcie_port *port, unsigned long hwirq)
-> >>> +static int mtk_msi_set_affinity(struct irq_data *irq_data,
-> >>> +				   const struct cpumask *mask, bool force)
-> >>>  {
-> >>> -	clear_bit(hwirq, port->msi_irq_in_use);
-> >>> +	return -EINVAL;
-> >>>  }
-> >>>  
-> >>> -static int mtk_pcie_msi_setup_irq(struct msi_controller *chip,
-> >>> -				  struct pci_dev *pdev, struct msi_desc *desc)
-> >>> -{
-> >>> -	struct mtk_pcie_port *port;
-> >>> -	struct msi_msg msg;
-> >>> -	unsigned int irq;
-> >>> -	int hwirq;
-> >>> -	phys_addr_t msg_addr;
-> >>> +static struct irq_chip mtk_msi_bottom_irq_chip = {
-> >>> +	.name			= "MTK MSI",
-> >>> +	.irq_compose_msi_msg	= mtk_compose_msi_msg,
-> >>> +	.irq_set_affinity	= mtk_msi_set_affinity,
-> >>> +	.irq_mask		= pci_msi_mask_irq,
-> >>> +	.irq_unmask	= pci_msi_unmask_irq,
-> >>> +};
-> >>>  
-> >>> -	port = mtk_pcie_find_port(pdev->bus, pdev->devfn);
-> >>> -	if (!port)
-> >>> -		return -EINVAL;
-> >>> +static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int virq,
-> >>> +				     unsigned int nr_irqs, void *args)
-> >>> +{
-> >>> +	struct mtk_pcie_port *port = domain->host_data;
-> >>> +	unsigned long bit;
-> >>>  
-> >>> -	hwirq = mtk_pcie_msi_alloc(port);
-> >>> -	if (hwirq < 0)
-> >>> -		return hwirq;
-> >>> +	WARN_ON(nr_irqs != 1);
-> >>> +	mutex_lock(&port->lock);
-> >>>  
-> >>> -	irq = irq_create_mapping(port->msi_domain, hwirq);
-> >>> -	if (!irq) {
-> >>> -		mtk_pcie_msi_free(port, hwirq);
-> >>> -		return -EINVAL;
-> >>> +	bit = find_first_zero_bit(port->msi_irq_in_use, MTK_MSI_IRQS_NUM);
-> >>> +	if (bit >= MTK_MSI_IRQS_NUM) {
-> >>> +		mutex_unlock(&port->lock);
-> >>> +		return -ENOSPC;
-> >>>  	}
-> >>>  
-> >>> -	chip->dev = &pdev->dev;
-> >>> -
-> >>> -	irq_set_msi_desc(irq, desc);
-> >>> +	__set_bit(bit, port->msi_irq_in_use);
-> >>>  
-> >>> -	/* MT2712/MT7622 only support 32-bit MSI addresses */
-> >>> -	msg_addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
-> >>> -	msg.address_hi = 0;
-> >>> -	msg.address_lo = lower_32_bits(msg_addr);
-> >>> -	msg.data = hwirq;
-> >>> +	mutex_unlock(&port->lock);
-> >>>  
-> >>> -	pci_write_msi_msg(irq, &msg);
-> >>> +	irq_domain_set_info(domain, virq, bit, &mtk_msi_bottom_irq_chip,
-> >>> +			    domain->host_data, handle_simple_irq,
-> >>
-> >> Why don't you handle the interrupt as an edge interrupt
-> >> (handle_edge_irq)? That's what it really is, and the fact that you use
-> >> "handle_simple_irq" makes me think that wou're papering over some other
-> >> issue (see below).
-> > 
-> > Hi, Marc,
-> > 
-> > Thanks very much for your comments.
-> > 
-> > I guess the MSI irq is more like a level IRQ instead of edge IRQ.
-> > When a MSI IRQ arrived, the corresponding bit of MSI status register
-> > will be asserted and stay asserted until it's been cleared by software.
-> 
-> There is some confusion here. The MSI itself is always edge-triggered.
-> That's by definition, and you cannot change it. The interrupt that is
-> used to signal that MSIs are pending (the multiplexing interrupt) can
-> itself be level triggered (and goes low once all the MSIs have been
-> acknowledged).
+-Duplicate logic for the timing params is avoided
+-Arithmatic operator *,/ are replaced by logical >>, << operators
+-The flags DRM_MODE_FLAG_* are replaced with DISPLAY_FLAGS_* flags
 
-Hi, Marc, thanks for your comments.
+Signed-off-by: Satendra Singh Thakur <satendra.t@samsung.com>
+Cc: Madhur Verma <madhur.verma@samsung.com>
+Cc: Hemanshu Srivastava <hemanshu.s@samsung.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 60 +++++++++++++++++++-------------------
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 14 ++-------
+ 2 files changed, 32 insertions(+), 42 deletions(-)
 
-Yes, PCIe SPEC have defined that the MSI must be edge trigged. But I'm
-not sure whether the HW design needed to following some edge irq
-standard. In our design, when there's MSI irq trigged(which may is edge
-trigged in hw implemented), the corresponding msi irq status bits will
-be asserted until it's been cleared by software. It's more like that the
-HW IP have translate the edge irq to level status. Do you think using
-handle_level_irq or handle_simple_irq(which most of the pci host driver
-now doing) is acceptable in this case?
-
-BTW, I'm still struggling in trying the handle_edge_irq solution. Seems
-that I could not get the msi index in irq_ack callback from
-irq_data->hwirq, the hwirq was set by pci_msi_domain_calc_hwirq() which
-I'm still try to figure out the proper routine in my driver.
-
-thanks.
-> 
-> > I will try to using handle_level_irq and add some callbacks of irq_ack
-> > in the next version.
-> 
-> The interrupt above seem to be the MSI itself, and not the multiplexing
-> interrupt. It should be handled as an edge.
-> 
-> If that doesn't work, we need to understand why.
-> 
-> Thanks,
-> 
-> 	M.
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index e80a603..76dd3b9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -22,6 +22,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/types.h>
+ #include <linux/clk.h>
++#include <video/videomode.h>
+ 
+ #include "mtk_dpi_regs.h"
+ #include "mtk_drm_ddp_comp.h"
+@@ -429,34 +430,35 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 	struct mtk_dpi_sync_param vsync_leven = { 0 };
+ 	struct mtk_dpi_sync_param vsync_rodd = { 0 };
+ 	struct mtk_dpi_sync_param vsync_reven = { 0 };
+-	unsigned long pix_rate;
++	struct videomode vm;
+ 	unsigned long pll_rate;
+ 	unsigned int factor;
+ 
+ 	/* let pll_rate can fix the valid range of tvdpll (1G~2GHz) */
+-	pix_rate = 1000UL * mode->clock;
++
+ 	if (mode->clock <= 27000)
+-		factor = 16 * 3;
++		factor = 3 << 4;
+ 	else if (mode->clock <= 84000)
+-		factor = 8 * 3;
++		factor = 3 << 3;
+ 	else if (mode->clock <= 167000)
+-		factor = 4 * 3;
++		factor = 3 << 2;
+ 	else
+-		factor = 2 * 3;
+-	pll_rate = pix_rate * factor;
++		factor = 3 << 1;
++	drm_display_mode_to_videomode(mode, &vm);
++	pll_rate = vm.pixelclock * factor;
+ 
+ 	dev_dbg(dpi->dev, "Want PLL %lu Hz, pixel clock %lu Hz\n",
+-		pll_rate, pix_rate);
++		pll_rate, vm.pixelclock);
+ 
+ 	clk_set_rate(dpi->tvd_clk, pll_rate);
+ 	pll_rate = clk_get_rate(dpi->tvd_clk);
+ 
+-	pix_rate = pll_rate / factor;
+-	clk_set_rate(dpi->pixel_clk, pix_rate);
+-	pix_rate = clk_get_rate(dpi->pixel_clk);
++	vm.pixelclock = pll_rate / factor;
++	clk_set_rate(dpi->pixel_clk, vm.pixelclock);
++	vm.pixelclock = clk_get_rate(dpi->pixel_clk);
+ 
+ 	dev_dbg(dpi->dev, "Got  PLL %lu Hz, pixel clock %lu Hz\n",
+-		pll_rate, pix_rate);
++		pll_rate, vm.pixelclock);
+ 
+ 	limit.c_bottom = 0x0010;
+ 	limit.c_top = 0x0FE0;
+@@ -465,33 +467,31 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 
+ 	dpi_pol.ck_pol = MTK_DPI_POLARITY_FALLING;
+ 	dpi_pol.de_pol = MTK_DPI_POLARITY_RISING;
+-	dpi_pol.hsync_pol = mode->flags & DRM_MODE_FLAG_PHSYNC ?
++	dpi_pol.hsync_pol = vm.flags & DISPLAY_FLAGS_HSYNC_HIGH ?
+ 			    MTK_DPI_POLARITY_FALLING : MTK_DPI_POLARITY_RISING;
+-	dpi_pol.vsync_pol = mode->flags & DRM_MODE_FLAG_PVSYNC ?
++	dpi_pol.vsync_pol = vm.flags & DISPLAY_FLAGS_VSYNC_HIGH ?
+ 			    MTK_DPI_POLARITY_FALLING : MTK_DPI_POLARITY_RISING;
+-
+-	hsync.sync_width = mode->hsync_end - mode->hsync_start;
+-	hsync.back_porch = mode->htotal - mode->hsync_end;
+-	hsync.front_porch = mode->hsync_start - mode->hdisplay;
++	hsync.sync_width = vm.hsync_len;
++	hsync.back_porch = vm.hback_porch;
++	hsync.front_porch = vm.hfront_porch;
+ 	hsync.shift_half_line = false;
+-
+-	vsync_lodd.sync_width = mode->vsync_end - mode->vsync_start;
+-	vsync_lodd.back_porch = mode->vtotal - mode->vsync_end;
+-	vsync_lodd.front_porch = mode->vsync_start - mode->vdisplay;
++	vsync_lodd.sync_width = vm.vsync_len;
++	vsync_lodd.back_porch = vm.vback_porch;
++	vsync_lodd.front_porch = vm.vfront_porch;
+ 	vsync_lodd.shift_half_line = false;
+ 
+-	if (mode->flags & DRM_MODE_FLAG_INTERLACE &&
++	if (vm.flags & DISPLAY_FLAGS_INTERLACED &&
+ 	    mode->flags & DRM_MODE_FLAG_3D_MASK) {
+ 		vsync_leven = vsync_lodd;
+ 		vsync_rodd = vsync_lodd;
+ 		vsync_reven = vsync_lodd;
+ 		vsync_leven.shift_half_line = true;
+ 		vsync_reven.shift_half_line = true;
+-	} else if (mode->flags & DRM_MODE_FLAG_INTERLACE &&
++	} else if (vm.flags & DISPLAY_FLAGS_INTERLACED &&
+ 		   !(mode->flags & DRM_MODE_FLAG_3D_MASK)) {
+ 		vsync_leven = vsync_lodd;
+ 		vsync_leven.shift_half_line = true;
+-	} else if (!(mode->flags & DRM_MODE_FLAG_INTERLACE) &&
++	} else if (!(vm.flags & DISPLAY_FLAGS_INTERLACED) &&
+ 		   mode->flags & DRM_MODE_FLAG_3D_MASK) {
+ 		vsync_rodd = vsync_lodd;
+ 	}
+@@ -505,12 +505,12 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 	mtk_dpi_config_vsync_reven(dpi, &vsync_reven);
+ 
+ 	mtk_dpi_config_3d(dpi, !!(mode->flags & DRM_MODE_FLAG_3D_MASK));
+-	mtk_dpi_config_interface(dpi, !!(mode->flags &
+-					 DRM_MODE_FLAG_INTERLACE));
+-	if (mode->flags & DRM_MODE_FLAG_INTERLACE)
+-		mtk_dpi_config_fb_size(dpi, mode->hdisplay, mode->vdisplay / 2);
++	mtk_dpi_config_interface(dpi, !!(vm.flags &
++					 DISPLAY_FLAGS_INTERLACED));
++	if (vm.flags & DISPLAY_FLAGS_INTERLACED)
++		mtk_dpi_config_fb_size(dpi, vm.hactive, vm.vactive >> 1);
+ 	else
+-		mtk_dpi_config_fb_size(dpi, mode->hdisplay, mode->vdisplay);
++		mtk_dpi_config_fb_size(dpi, vm.hactive, vm.vactive);
+ 
+ 	mtk_dpi_config_channel_limit(dpi, &limit);
+ 	mtk_dpi_config_bit_num(dpi, dpi->bit_num);
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 7e5e24c..aa0943e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -551,13 +551,12 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 	}
+ 
+ 	/**
+-	 * vm.pixelclock is in kHz, pixel_clock unit is Hz, so multiply by 1000
+ 	 * htotal_time = htotal * byte_per_pixel / num_lanes
+ 	 * overhead_time = lpx + hs_prepare + hs_zero + hs_trail + hs_exit
+ 	 * mipi_ratio = (htotal_time + overhead_time) / htotal_time
+ 	 * data_rate = pixel_clock * bit_per_pixel * mipi_ratio / num_lanes;
+ 	 */
+-	pixel_clock = dsi->vm.pixelclock * 1000;
++	pixel_clock = dsi->vm.pixelclock;
+ 	htotal = dsi->vm.hactive + dsi->vm.hback_porch + dsi->vm.hfront_porch +
+ 			dsi->vm.hsync_len;
+ 	htotal_bits = htotal * bit_per_pixel;
+@@ -725,16 +724,7 @@ static void mtk_dsi_encoder_mode_set(struct drm_encoder *encoder,
+ {
+ 	struct mtk_dsi *dsi = encoder_to_dsi(encoder);
+ 
+-	dsi->vm.pixelclock = adjusted->clock;
+-	dsi->vm.hactive = adjusted->hdisplay;
+-	dsi->vm.hback_porch = adjusted->htotal - adjusted->hsync_end;
+-	dsi->vm.hfront_porch = adjusted->hsync_start - adjusted->hdisplay;
+-	dsi->vm.hsync_len = adjusted->hsync_end - adjusted->hsync_start;
+-
+-	dsi->vm.vactive = adjusted->vdisplay;
+-	dsi->vm.vback_porch = adjusted->vtotal - adjusted->vsync_end;
+-	dsi->vm.vfront_porch = adjusted->vsync_start - adjusted->vdisplay;
+-	dsi->vm.vsync_len = adjusted->vsync_end - adjusted->vsync_start;
++	drm_display_mode_to_videomode(adjusted, &dsi->vm);
+ }
+ 
+ static void mtk_dsi_encoder_disable(struct drm_encoder *encoder)
+-- 
+2.7.4
