@@ -1,61 +1,118 @@
 From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH V4 8/8] arm64: dts: mt6797: add pwrap support for mt6797
-Date: Thu, 3 May 2018 10:22:44 +0800
-Message-ID: <1525314164.14792.43.camel@mtkswgap22>
+Subject: Re: [PATCH V4 7/8] soc: mediatek: pwrap: add mt6351 for mt6797 SoCs
+Date: Thu, 3 May 2018 11:53:50 +0800
+Message-ID: <1525319630.14792.91.camel@mtkswgap22>
 References: <20180502092112.3991-1-argus.lin@mediatek.com>
-         <20180502092112.3991-9-argus.lin@mediatek.com>
+         <20180502092112.3991-8-argus.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180502092112.3991-9-argus.lin@mediatek.com>
+In-Reply-To: <20180502092112.3991-8-argus.lin@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: argus.lin@mediatek.com
 Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Chenglin Xu <chenglin.xu@mediatek.com>, wsd_upstream@mediatek.com, henryc.chen@mediatek.com, flora.fu@mediatek.com, Chen Zhong <chen.zhong@mediatek.com>, Christophe Jaillet <christophe.jaillet@wanadoo.fr>, "shailendra . v" <shailendra.v@samsung.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi, Argus
+
 On Wed, 2018-05-02 at 17:21 +0800, argus.lin@mediatek.com wrote:
 > From: Argus Lin <argus.lin@mediatek.com>
 > 
-> mt6797 is a highly integrated SoCs, and it uses
-> mt6351 as Power Management IC.
-> We need to add pwrap device to communicate with
-> mt6351 by SPI.
-> The base address of pwrap is 0x1000d000, and IRQ
-> number is 178. It also using fixed 26Mhz clock
-> as SPI CLK.
+> mt6351 is a new power management IC and it is
+> used for mt6797 SoCs. We need to add mt6351_regs for
+> pmic register mapping and pmic_mt6351 for
+> register accessing by regmap.
 > 
+
+suggest line wrapping closely at 75 columns
+
 > Signed-off-by: Argus Lin <argus.lin@mediatek.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt6797.dtsi | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
+>  drivers/soc/mediatek/mtk-pmic-wrap.c | 29 +++++++++++++++++++++++++++++
+>  1 file changed, 29 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> index 4beaa71107d7..485546efc9bf 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> @@ -161,6 +161,20 @@
->  		      <0 0x10220690 0 0x10>;
->  	};
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> index 285bfa76249f..26076900eee0 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -152,6 +152,21 @@ static const u32 mt6397_regs[] = {
+>  	[PWRAP_DEW_CIPHER_SWRST] =	0xbc24,
+>  };
 >  
-> +	pwrap: pwrap@1000d000 {
-> +		compatible = "mediatek,mt6797-pwrap";
-> +		reg = <0 0x1000d000 0 0x1000>;
-> +		reg-names = "pwrap";
-> +		interrupts = <GIC_SPI 178 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&clk26m>, <&clk26m>;
-> +		clock-names = "spi", "wrap";
+> +static const u32 mt6351_regs[] = {
+> +	[PWRAP_DEW_DIO_EN] =		0x02F2,
+> +	[PWRAP_DEW_READ_TEST] =		0x02F4,
+> +	[PWRAP_DEW_WRITE_TEST] =	0x02F6,
+> +	[PWRAP_DEW_CRC_EN] =		0x02FA,
+> +	[PWRAP_DEW_CRC_VAL] =		0x02FC,
+> +	[PWRAP_DEW_CIPHER_KEY_SEL] =	0x0300,
+> +	[PWRAP_DEW_CIPHER_IV_SEL] =	0x0302,
+> +	[PWRAP_DEW_CIPHER_EN] =		0x0304,
+> +	[PWRAP_DEW_CIPHER_RDY] =	0x0306,
+> +	[PWRAP_DEW_CIPHER_MODE] =	0x0308,
+> +	[PWRAP_DEW_CIPHER_SWRST] =	0x030A,
+> +	[PWRAP_DEW_RDDMY_NO] =		0x030C,
+> +};
 > +
-> +		pmic: mt6351 {
-> +			compatible = "mediatek,mt6351";
-> +			interrupt-controller;
 
-the child node can't be added until MT6351 support is added to
-dt-binding
+trim the unused registers if any
 
-> +		};
-> +	};
+>  enum pwrap_regs {
+>  	PWRAP_MUX_SEL,
+>  	PWRAP_WRAP_EN,
+> @@ -684,6 +699,7 @@ static int mt8135_regs[] = {
+>  
+>  enum pmic_type {
+>  	PMIC_MT6323,
+> +	PMIC_MT6351,
+>  	PMIC_MT6380,
+>  	PMIC_MT6397,
+>  };
+> @@ -1150,6 +1166,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
+>  			    0x1);
+>  		break;
+>  	case PMIC_MT6323:
+> +	case PMIC_MT6351:
+>  		pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_EN],
+>  			    0x1);
+>  		break;
+> @@ -1435,6 +1452,15 @@ static const struct pwrap_slv_type pmic_mt6397 = {
+>  	.pwrap_write = pwrap_write16,
+>  };
+>  
+> +static const struct pwrap_slv_type pmic_mt6351 = {
+> +	.dew_regs = mt6351_regs,
+> +	.type = PMIC_MT6351,
+> +	.regmap = &pwrap_regmap_config16,
+> +	.caps = 0,
+
+the caps should be
+
+PWRAP_SLV_CAP_SPI | PWRAP_SLV_CAP_DUALIO |
+                 PWRAP_SLV_CAP_SECURITY,
+ 
+otherwise, the registers you defined here cannot be accessed by its
+function.
+
+
+> +	.pwrap_read = pwrap_read16,
+> +	.pwrap_write = pwrap_write16,
+> +};
 > +
->  	uart0: serial@11002000 {
->  		compatible = "mediatek,mt6797-uart",
->  			     "mediatek,mt6577-uart";
+>  static const struct of_device_id of_slave_match_tbl[] = {
+>  	{
+>  		.compatible = "mediatek,mt6323",
+> @@ -1449,6 +1475,9 @@ static const struct of_device_id of_slave_match_tbl[] = {
+>  		.compatible = "mediatek,mt6397",
+>  		.data = &pmic_mt6397,
+>  	}, {
+> +		.compatible = "mediatek,mt6351",
+> +		.data = &pmic_mt6351,
+> +	}, {
+
+need to be sorted din alphabetical order
+
+>  		/* sentinel */
+>  	}
+>  };
