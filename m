@@ -1,98 +1,100 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v3] soc: mediatek: add a fixed wait for SRAM stable
-Date: Thu, 3 May 2018 09:12:31 +0200
-Message-ID: <2377953d-f5a2-7b59-8d07-034b6827c45f@gmail.com>
-References: <90f83c1bd359bb39cdae334e489037d6fb8ac69b.1525233544.git.sean.wang@mediatek.com>
+From: Satendra Singh Thakur <satendra.t@samsung.com>
+Subject: [PATCH 00/13] drm/kms/mode: using helper func
+ drm_display_mode_to/from_videomode for calculating timing parameters
+Date: Thu,  3 May 2018 13:53:55 +0530
+Message-ID: <cover.1525087679.git.satendra.t@samsung.com>
+References: <CGME20180503082417epcas5p19ee919d68eb5ae18f183a41881869cc1@epcas5p1.samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <90f83c1bd359bb39cdae334e489037d6fb8ac69b.1525233544.git.sean.wang@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com, rjw@rjwysocki.net, khilman@baylibre.com
-Cc: ulf.hansson@linaro.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org
+Cc: hemanshu.s@samsung.com, madhur.verma@samsung.com, Satendra Singh Thakur <satendra.t@samsung.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+1.There is a function in drm-core to calculate display timing parameters:
+horizontal front porch, back porch, sync length,
+vertical front porch, back porch, sync length and
+clock in Hz.
+However, some drivers are still calculating these parameters themselves.
+Therefore, there is a duplication of the code.
+This patch series replaces this redundant code with the function
+drm_display_mode_to_videomode.
+This removes nearly 100 redundant lines from the related drivers.
+2.For some drivers (sun4i) the reverse helper
+drm_display_mode_from_videomode is used.
+3.For some drivers it replaces arithmatic operators (*, /) with shifting
+operators (>>, <<).
+4.For some drivers DRM_MODE_FLAG_* are replaced with DISPLAY_FLAGS_* flags.
+5.These changes apply to following crtc and encoder drivers:
+atmel-hlcdc
+bridge-tc358767
+exynos-dsi
+fsl-dcu
+gma500-mdfld_dsi_dpi
+hisilicon-kirin_dsi, ade
+meson-encoder
+pl111-display
+sun4i-tv
+ti lcdc
+tegra dc
+mediatek dpi dsi
+bridge-adv7533
 
+Satendra Singh Thakur (13):
+  drm/kms/mode/atmel-hlcdc: using helper func
+    drm_display_mode_to_videomode for calculating timing parameters
+  drm/kms/mode/bridge-tc358767: using helper func
+    drm_display_mode_to_videomode for calculating timing parameters
+  drm/kms/mode/exynos-dsi: using helper func
+    drm_display_mode_to_videomode for calculating timing parameters
+  drm/kms/mode/fsl-dcu: using helper func drm_display_mode_to_videomode 
+       for calculating timing parameters
+  drm/kms/mode/gma500-mdfld_dsi_dpi: using helper function
+    drm_display_mode_to_videomode for calculating timing parameters
+  drm/kms/mode/hisilicon-kirin-dsi-ade: using helper function    
+    drm_display_mode_to_videomode for calculating timing parameters
+  drm/kms/mode/meson-encoder: using helper function
+    drm_display_mode_to_videomode for calculating timing parameters
+  drm/kms/mode/pl111-display: using helper function
+    drm_display_mode_to_videomode for calculating timing parameters
+  drm/kms/mode/sun4i-tv: using helper func
+    drm_display_mode_from_videomode for calculating timing
+    parameters
+  drm/kms/mode/ti-lcdc: using helper func drm_display_mode_to_videomode 
+       for calculating timing parameters
+  drm/kms/mode/tegra: using helper func drm_display_mode_to_videomode
+    for calculating timing parameters
+  drm/kms/mode/mtk_dpi_dsi: using helper func
+    drm_display_mode_to_videomode for calculating timing parameters
+  drm/kms/mode/bridge-adv7533: using helper func
+    drm_display_mode_to_videomode for calculating timing parameters
 
-On 05/02/2018 06:03 AM, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> MT7622_POWER_DOMAIN_WB doesn't send an ACK when its managed SRAM becomes
-> stable, which is not like the behavior the other power domains should
-> have. Therefore, it's necessary for such a power domain to have a fixed
-> and well-predefined duration to wait until its managed SRAM can be allowed
-> to access by all functions running on the top.
-> 
-> v1 -> v2:
->  - use MTK_SCPD_FWAIT_SRAM flag as an indication requiring force waiting.
-> 
-> v2 -> v3:
->  - change the order for condition judgment with we check an existence of
->    the MTK_SCPD_FWAIT_SRAM first to get rid of any oversight on negative
->    condition.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Ulf Hansson <ulf.hansson@linaro.org>
-> Cc: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
+ drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c    |  28 +++--
+ drivers/gpu/drm/bridge/adv7511/adv7533.c        |  35 +++---
+ drivers/gpu/drm/bridge/tc358767.c               |  42 +++----
+ drivers/gpu/drm/exynos/exynos_drm_dsi.c         |   9 +-
+ drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_crtc.c      |  29 ++---
+ drivers/gpu/drm/gma500/mdfld_dsi_dpi.c          |  28 ++---
+ drivers/gpu/drm/hisilicon/kirin/dw_drm_dsi.c    |  42 ++++---
+ drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c |  52 +++------
+ drivers/gpu/drm/mediatek/mtk_dpi.c              |  60 +++++-----
+ drivers/gpu/drm/mediatek/mtk_dsi.c              |  14 +--
+ drivers/gpu/drm/meson/meson_venc.c              | 149 +++++++++++-------------
+ drivers/gpu/drm/pl111/pl111_display.c           |  40 +++----
+ drivers/gpu/drm/sun4i/sun4i_tv.c                |  67 ++++-------
+ drivers/gpu/drm/tegra/dc.c                      |  15 ++-
+ drivers/gpu/drm/tilcdc/tilcdc_crtc.c            |  60 +++++-----
+ 15 files changed, 280 insertions(+), 390 deletions(-)
 
-Now pused to v4.17-next/soc
-
-Thanks a lot!
-Matthias
-
->  drivers/soc/mediatek/mtk-scpsys.c | 23 +++++++++++++++++------
->  1 file changed, 17 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index b1b45e4..2080c8f 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -32,6 +32,7 @@
->  #define MTK_POLL_TIMEOUT    (jiffies_to_usecs(HZ))
->  
->  #define MTK_SCPD_ACTIVE_WAKEUP		BIT(0)
-> +#define MTK_SCPD_FWAIT_SRAM		BIT(1)
->  #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
->  
->  #define SPM_VDE_PWR_CON			0x0210
-> @@ -237,11 +238,21 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->  	val &= ~scpd->data->sram_pdn_bits;
->  	writel(val, ctl_addr);
->  
-> -	/* wait until SRAM_PDN_ACK all 0 */
-> -	ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == 0,
-> -				 MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> -	if (ret < 0)
-> -		goto err_pwr_ack;
-> +	/* Either wait until SRAM_PDN_ACK all 0 or have a force wait */
-> +	if (MTK_SCPD_CAPS(scpd, MTK_SCPD_FWAIT_SRAM)) {
-> +		/*
-> +		 * Currently, MTK_SCPD_FWAIT_SRAM is necessary only for
-> +		 * MT7622_POWER_DOMAIN_WB and thus just a trivial setup is
-> +		 * applied here.
-> +		 */
-> +		usleep_range(12000, 12100);
-> +
-> +	} else {
-> +		ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == 0,
-> +					 MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> +		if (ret < 0)
-> +			goto err_pwr_ack;
-> +	};
->  
->  	if (scpd->data->bus_prot_mask) {
->  		ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
-> @@ -785,7 +796,7 @@ static const struct scp_domain_data scp_domain_data_mt7622[] = {
->  		.sram_pdn_ack_bits = 0,
->  		.clk_id = {CLK_NONE},
->  		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_WB,
-> -		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-> +		.caps = MTK_SCPD_ACTIVE_WAKEUP | MTK_SCPD_FWAIT_SRAM,
->  	},
->  };
->  
-> 
+-- 
+2.7.4
