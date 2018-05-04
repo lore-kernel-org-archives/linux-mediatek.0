@@ -1,68 +1,115 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH v7 0/2] PCI: mediatek: Fixups for the IRQ handle routine
- and MT7622's class code
-Date: Fri, 4 May 2018 14:16:28 +0100
-Message-ID: <20180504131628.GA8759@e107981-ln.cambridge.arm.com>
-References: <1525412853-24367-1-git-send-email-honghui.zhang@mediatek.com>
+From: Peter Rosin <peda-koto5C5qi+TLoDKTGw+V6w@public.gmane.org>
+Subject: [PATCH v2 00/26] device link,
+ bridge supplier <-> drm device
+Date: Fri,  4 May 2018 15:51:46 +0200
+Message-ID: <20180504135212.26977-1-peda@axentia.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1525412853-24367-1-git-send-email-honghui.zhang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com
-Cc: marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/freedreno>
+List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Martyn Welch <martyn.welch-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Peter Senna Tschudin <peter.senna-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Martin Donnelly <martin.donnelly-JJi787mZWgc@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Inki
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, May 04, 2018 at 01:47:31PM +0800, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
-> 
-> Two fixups for mediatek's host bridge:
-> The first patch fixup class type and vendor ID for MT7622.
-> The second patch fixup the IRQ handle routine by using irq_chip solution
-> to avoid IRQ reentry which may exist for both MT2712 and MT7622.
-> 
-> Change since v6:
->  - Remove the irq_mask, irq_unmask callback in lower layer irq_chip since we
->    have set the MSI_FLAG_USE_DEF_CHIP_OPS flags.
->  - Add irq_ack callback in irq_chip to handle edge IRQ.
->  - Uing handle_edge_irq to handle the MSI IRQs.
-> 
-> Change since v5:
->  - Make the comments consistend with the code modification in the first patch.
->  - Using writew to performing a 16-bit write.
->  - Using irq_chip solution to fix the IRQ issue.
-> 
-> The v5 patchset could be found in:
->  https://patchwork.kernel.org/patch/10133303
->  https://patchwork.kernel.org/patch/10133305
-> 
-> Change since v4:
->  - Only setup vendor ID for MT7622, igorning the device ID since mediatek's
->    host bridge driver does not cares about the device ID.
-> 
-> Change since v3:
->  - Setup the class type and vendor ID at the beginning of startup instead
->    of in a quirk.
->  - Add mediatek's vendor ID, it could be found in:
->    https://pcisig.com/membership/member-companies?combine=&page=4
-> 
-> Change since v2:
->  - Move the initialize of the iterate before the loop to fix an
->    INTx IRQ issue in the first patch
-> 
-> Change since v1:
->  - Add the second patch.
->  - Make the first patch's commit message more standard.
-> 
-> Honghui Zhang (2):
->   PCI: mediatek: Set up vendor ID and class type for MT7622
->   PCI: mediatek: Using chained IRQ to setup IRQ handle
-> 
->  drivers/pci/host/pcie-mediatek.c | 234 +++++++++++++++++++++++----------------
->  include/linux/pci_ids.h          |   2 +
->  2 files changed, 143 insertions(+), 93 deletions(-)
-
-Applied to pci/mediatek for v4.18, thanks.
-
-Lorenzo
+SGkhCgpJdCB3YXMgbm90ZWQgYnkgUnVzc2VsIEtpbmcgWzFdIHRoYXQgYnJpZGdlcyAobm90IHVz
+aW5nIGNvbXBvbmVudHMpCm1pZ2h0IGRpc2FwcGVhciB1bmV4cGVjdGVkbHkgaWYgdGhlIG93bmVy
+IG9mIHRoZSBicmlkZ2Ugd2FzIHVuYm91bmQuCkp5cmkgU2FyaGEgaGFkIHByZXZpb3VzbHkgbm90
+ZWQgdGhlIHNhbWUgdGhpbmcgd2l0aCBwYW5lbHMgWzJdLiBKeXJpCmNhbWUgdXAgd2l0aCB1c2lu
+ZyBkZXZpY2UgbGlua3MgdG8gcmVzb2x2ZSB0aGUgcGFuZWwgaXNzdWUsIHdoaWNoCndhcyBhbHNv
+IG15IChpbmRlcGVuZGVudCkgcmVhY3Rpb24gdG8gdGhlIG5vdGUgZnJvbSBSdXNzZWwuCgpUaGlz
+IHNlcmllcyBidWlsZHMgdXAgdG8gdGhlIGFkZGl0aW9uIG9mIHRoYXQgbGluayBpbiB0aGUgbGFz
+dApwYXRjaCwgYnV0IGluIG15IG9waW5pb24gdGhlIG90aGVyIDI1IHBhdGNoZXMgZG8gaGF2ZSBt
+ZXJpdCBvbiB0aGVpcgpvd24uCgpUaGUgbGFzdCBwYXRjaCBuZWVkcyB0ZXN0aW5nLCB3aGlsZSB0
+aGUgb3RoZXJzIGxvb2sgdHJpdmlhbC4gSnlyaSwgYXJlCnlvdSBhYmxlIHRvIHRlc3Q/IFRoYXQg
+c2FpZCwgSSBtaWdodCBoYXZlIG1pc3NlZCBzb21lIHN1YnRsZXR5LgoKT2ggYW5kIHRoZSByZWFz
+b24gSSdtIHB1c2hpbmcgdGhpcyBpcyBvZiBjb3Vyc2Ugc28gdGhhdCB0aGUgaXNzdWUKbm90ZWQg
+YnkgUnVzc2VsIGluIFsxXSBpcyBhZGRyZXNzZWQgd2hpY2ggaW4gdHVybiBtZWFucyB0aGF0IHRo
+ZQp0ZGE5OTh4IGJyaWRnZSBkcml2ZXIgY2FuIGJlIHBhdGNoZWQgYWNjb3JkaW5nIHRvIHRoYXQg
+c2VyaWVzIHdpdGhvdXQKb2JqZWN0aW9uIChob3BlZnVsbHkpIGFuZCB0aGVuIHVzZWQgZnJvbSB0
+aGUgYXRtZWwtaGxjZGMgZHJpdmVyIChhbmQKb3RoZXIgZHJpdmVycyB0aGF0IGFyZSBub3QgY29t
+cG9uZW50aXplZCkuCgpDaGFuZ2VzIHNpbmNlIHYxICAgIGh0dHBzOi8vbGttbC5vcmcvbGttbC8y
+MDE4LzQvMjYvMTAxOAoKLSByZW5hbWUgLm93bmVyIHRvIC5vZGV2IHRvIG5vdCBnZXQgbWl4ZWQg
+dXAgd2l0aCB0aGUgbW9kdWxlIG93bmVyLgotIGFkZGVkIHBhdGNoZXMgZm9yIG5ldyByZWNlbnQg
+ZHJpdmVycyB0aGM2M2x2ZDEwMjQgYW5kIGNkbnMtZHNpCi0gZml4IGZvciBwcm9ibGVtIGluIHRo
+ZSByb2NrY2hpcF9sdmRzIGRyaXZlciByZXBvcnRlZCBieSAwZGF5Ci0gYWRkZWQgYSBXQVJOIGlu
+IGRybV9icmlkZ2VfYWRkIGlmIHRoZXJlIGlzIG5vIC5vZGV2IG93bmVyIGRldmljZQoKSSBkaWQg
+Km5vdCo6Ci0gYWRkIGFueSBhY2sgZnJvbSBEYW5pZWwgc2luY2UgaGUgc3VnZ2VzdGVkICJwZGV2
+IiwgYW5kIEkgZW5kZWQgdXAKICB3aXRoICJvZGV2IiBpbiB0aGUgcmVuYW1lIHNpbmNlIEkgZGlz
+bGlrZWQgInBkZXYiIGFib3V0IGFzIG11Y2gKICBhcyAib3duZXIiLgotIGFkZCBhbnkgcG9ydCBp
+ZC4gVGhlIGN1cnJlbnQgLm9mX25vZGUgKHRoYXQgdGhpcyBzZXJpZXMgcmVtb3ZlcykKICBkb2Vz
+IG5vdCBpZGVudGlmeSB0aGUgcG9ydCwgc28gdGhhdCBwcm9ibGVtIHNlZW1zIG9ydGhvZ29uYWwK
+ICB0byBtZS4KCkNoZWVycywKUGV0ZXIKClsxXSBodHRwczovL2xrbWwub3JnL2xrbWwvMjAxOC80
+LzIzLzc2OQpbMl0gaHR0cHM6Ly93d3cuc3Bpbmljcy5uZXQvbGlzdHMvZHJpLWRldmVsL21zZzE3
+NDI3NS5odG1sCgpQZXRlciBSb3NpbiAoMjYpOgogIGRybS9icmlkZ2U6IGFsbG93IG9wdGlvbmFs
+bHkgc3BlY2lmeWluZyBhbiBvd25lciAub2RldiBkZXZpY2UKICBkcm0vYnJpZGdlOiBhZHY3NTEx
+OiBwcm92aWRlIGFuIG93bmVyIC5vZGV2IGRldmljZQogIGRybS9icmlkZ2UvYW5hbG9naXg6IGNv
+cmU6IHNwZWNpZnkgdGhlIG93bmVyIC5vZGV2IG9mIHRoZSBicmlkZ2UKICBkcm0vYnJpZGdlOiBh
+bmFsb2dpeC1hbng3OHh4OiBwcm92aWRlIGFuIG93bmVyIC5vZGV2IGRldmljZQogIGRybS9icmlk
+Z2U6IGNkbnMtZHNpOiBwcm92aWRlIGFuIG93bmVyIC5vZGV2IGRldmljZQogIGRybS9icmlkZ2U6
+IHZnYS1kYWM6IHByb3ZpZGUgYW4gb3duZXIgLm9kZXYgZGV2aWNlCiAgZHJtL2JyaWRnZTogbHZk
+cy1lbmNvZGVyOiBwcm92aWRlIGFuIG93bmVyIC5vZGV2IGRldmljZQogIGRybS9icmlkZ2U6IG1l
+Z2FjaGlwcy1zdGRweHh4eC1nZS1iODUwdjMtZnc6IHByb3ZpZGUgYW4gb3duZXIgLm9kZXYKICAg
+IGRldmljZQogIGRybS9icmlkZ2U6IG54cC1wdG4zNDYwOiBwcm92aWRlIGFuIG93bmVyIC5vZGV2
+IGRldmljZQogIGRybS9icmlkZ2U6IHBhbmVsOiBwcm92aWRlIGFuIG93bmVyIC5vZGV2IGRldmlj
+ZQogIGRybS9icmlkZ2U6IHBzODYyMjogcHJvdmlkZSBhbiBvd25lciAub2RldiBkZXZpY2UKICBk
+cm0vYnJpZGdlOiBzaWk5MDJ4OiBwcm92aWRlIGFuIG93bmVyIC5vZGV2IGRldmljZQogIGRybS9i
+cmlkZ2U6IHNpaTkyMzQ6IHByb3ZpZGUgYW4gb3duZXIgLm9kZXYgZGV2aWNlCiAgZHJtL2JyaWRn
+ZTogc2lpODYyMDogcHJvdmlkZSBhbiBvd25lciAub2RldiBkZXZpY2UKICBkcm0vYnJpZGdlOiBz
+eW5vcHN5czogcHJvdmlkZSBhbiBvd25lciAub2RldiBkZXZpY2UgZm9yIHRoZSBicmlkZ2VzCiAg
+ZHJtL2JyaWRnZTogdGMzNTg3Njc6IHByb3ZpZGUgYW4gb3duZXIgLm9kZXYgZGV2aWNlCiAgZHJt
+L2JyaWRnZTogdGhjNjNsdmQxMDI0OiBwcm92aWRlIGFuIG93bmVyIC5vZGV2IGRldmljZQogIGRy
+bS9icmlkZ2U6IHRpLXRmcDQxMDogcHJvdmlkZSBhbiBvd25lciAub2RldiBkZXZpY2UKICBkcm0v
+ZXh5bm9zOiBtaWM6IHByb3ZpZGUgYW4gb3duZXIgLm9kZXYgZGV2aWNlIGZvciB0aGUgYnJpZGdl
+CiAgZHJtL21lZGlhdGVrOiBoZG1pOiBwcm92aWRlIGFuIG93bmVyIC5vZGV2IGRldmljZSBmb3Ig
+dGhlIGJyaWRnZQogIGRybS9tc206IHNwZWNpZnkgdGhlIG93bmVyIC5vZGV2IG9mIHRoZSBicmlk
+Z2VzCiAgZHJtL3JjYXItZHU6IGx2ZHM6IHByb3ZpZGUgYW4gb3duZXIgLm9kZXYgZGV2aWNlIGZv
+ciB0aGUgYnJpZGdlCiAgZHJtL3N0aTogcHJvdmlkZSBhbiBvd25lciAub2RldiBkZXZpY2UgZm9y
+IHRoZSBicmlkZ2VzCiAgZHJtL2JyaWRnZTogcmVtb3ZlIHRoZSAub2Zfbm9kZSBtZW1iZXIKICBk
+cm0vYnJpZGdlOiByZXF1aXJlIHRoZSBvd25lciAub2RldiB0byBiZSBmaWxsZWQgaW4gb24KICAg
+IGRybV9icmlkZ2VfYWRkL2F0dGFjaAogIGRybS9icmlkZ2U6IGVzdGFibGlzaCBhIGxpbmsgYmV0
+d2VlbiB0aGUgYnJpZGdlIHN1cHBsaWVyIGFuZCBjb25zdW1lcgoKIGRyaXZlcnMvZ3B1L2RybS9i
+cmlkZ2UvYWR2NzUxMS9hZHY3NTExX2Rydi5jICAgICAgIHwgIDIgKy0KIGRyaXZlcnMvZ3B1L2Ry
+bS9icmlkZ2UvYW5hbG9naXgtYW54Nzh4eC5jICAgICAgICAgIHwgIDUgKy0tLS0KIGRyaXZlcnMv
+Z3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgIDEgKwogZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9jZG5zLWRzaS5jICAgICAgICAgICAgICAgICAgfCAgMiArLQogZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9kdW1iLXZnYS1kYWMuYyAgICAgICAgICAgICAgfCAgMiArLQog
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9sdmRzLWVuY29kZXIuYyAgICAgICAgICAgICAgfCAgMiAr
+LQogLi4uL2RybS9icmlkZ2UvbWVnYWNoaXBzLXN0ZHB4eHh4LWdlLWI4NTB2My1mdy5jICAgfCAg
+MiArLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9ueHAtcHRuMzQ2MC5jICAgICAgICAgICAgICAg
+fCAgMiArLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9wYW5lbC5jICAgICAgICAgICAgICAgICAg
+ICAgfCAgNCArLS0tCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3BhcmFkZS1wczg2MjIuYyAgICAg
+ICAgICAgICB8ICAyICstCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3NpaTkwMnguYyAgICAgICAg
+ICAgICAgICAgICB8ICAyICstCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3NpaTkyMzQuYyAgICAg
+ICAgICAgICAgICAgICB8ICAyICstCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3NpbC1zaWk4NjIw
+LmMgICAgICAgICAgICAgICB8ICAyICstCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lz
+L2R3LWhkbWkuYyAgICAgICAgICB8ICA0ICstLS0KIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lu
+b3BzeXMvZHctbWlwaS1kc2kuYyAgICAgIHwgIDQgKy0tLQogZHJpdmVycy9ncHUvZHJtL2JyaWRn
+ZS90YzM1ODc2Ny5jICAgICAgICAgICAgICAgICAgfCAgMiArLQogZHJpdmVycy9ncHUvZHJtL2Jy
+aWRnZS90aGM2M2x2ZDEwMjQuYyAgICAgICAgICAgICAgfCAgMiArLQogZHJpdmVycy9ncHUvZHJt
+L2JyaWRnZS90aS10ZnA0MTAuYyAgICAgICAgICAgICAgICAgfCAgMiArLQogZHJpdmVycy9ncHUv
+ZHJtL2RybV9icmlkZ2UuYyAgICAgICAgICAgICAgICAgICAgICAgfCAyNiArKysrKysrKysrKysr
+KysrKysrKystCiBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcm1fbWljLmMgICAgICAg
+ICAgICB8ICAyICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYyAgICAgICAg
+ICAgICAgICB8ICAyICstCiBkcml2ZXJzL2dwdS9kcm0vbXNtL2RzaS9kc2lfbWFuYWdlci5jICAg
+ICAgICAgICAgICB8ICAxICsKIGRyaXZlcnMvZ3B1L2RybS9tc20vZWRwL2VkcF9icmlkZ2UuYyAg
+ICAgICAgICAgICAgIHwgIDEgKwogZHJpdmVycy9ncHUvZHJtL21zbS9oZG1pL2hkbWlfYnJpZGdl
+LmMgICAgICAgICAgICAgfCAgMSArCiBkcml2ZXJzL2dwdS9kcm0vcmNhci1kdS9yY2FyX2x2ZHMu
+YyAgICAgICAgICAgICAgICB8ICAyICstCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfbHZkcy5jICAgICAgICAgICB8ICAyICstCiBkcml2ZXJzL2dwdS9kcm0vc3RpL3N0aV9kdm8u
+YyAgICAgICAgICAgICAgICAgICAgICB8ICAyICstCiBkcml2ZXJzL2dwdS9kcm0vc3RpL3N0aV9o
+ZGEuYyAgICAgICAgICAgICAgICAgICAgICB8ICAxICsKIGRyaXZlcnMvZ3B1L2RybS9zdGkvc3Rp
+X2hkbWkuYyAgICAgICAgICAgICAgICAgICAgIHwgIDEgKwogaW5jbHVkZS9kcm0vZHJtX2JyaWRn
+ZS5oICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgOCArKystLS0tCiAzMCBmaWxlcyBjaGFu
+Z2VkLCA1NyBpbnNlcnRpb25zKCspLCAzNiBkZWxldGlvbnMoLSkKCi0tIAoyLjExLjAKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkZyZWVkcmVubyBtYWls
+aW5nIGxpc3QKRnJlZWRyZW5vQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
+ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ZyZWVkcmVubwo=
