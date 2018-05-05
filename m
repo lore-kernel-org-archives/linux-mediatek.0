@@ -1,37 +1,57 @@
-From: Peter Rosin <peda@axentia.se>
-Subject: [PATCH v2 20/26] drm/mediatek: hdmi: provide an owner .odev device for the bridge
-Date: Fri,  4 May 2018 15:52:06 +0200
-Message-ID: <20180504135212.26977-21-peda@axentia.se>
-References: <20180504135212.26977-1-peda@axentia.se>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH v2] phy: phy-mtk-tphy: use SPDX license tag
+Date: Sat, 5 May 2018 09:47:41 +0800
+Message-ID: <e650d3f5f586e6282a5bbbc4007e4920d4a9147f.1525484369.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180504135212.26977-1-peda@axentia.se>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Peter Rosin <peda@axentia.se>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Jyri Sarha <jsarha@ti.com>, Daniel Vetter <daniel@ffwll.ch>
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The .of_node member is going away.
+Use SPDX-License-Identifier tag instead of the GPL license text
 
-Signed-off-by: Peter Rosin <peda@axentia.se>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+v2: change subject line to fix checkpatch warning:
+    "A patch subject line should describe the change not
+    the tool that found it"
+---
+ drivers/phy/mediatek/Makefile       |  1 +
+ drivers/phy/mediatek/phy-mtk-tphy.c | 10 +---------
+ 2 files changed, 2 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 59a11026dceb..d8c7d93d0a87 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1694,8 +1694,8 @@ static int mtk_drm_hdmi_probe(struct platform_device *pdev)
+diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
+index 763a92e..1bdab14 100644
+--- a/drivers/phy/mediatek/Makefile
++++ b/drivers/phy/mediatek/Makefile
+@@ -1,3 +1,4 @@
++# SPDX-License-Identifier: GPL-2.0
+ #
+ # Makefile for the phy drivers.
+ #
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index 38c281b..b962339 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -1,16 +1,8 @@
++// SPDX-License-Identifier: GPL-2.0
+ /*
+  * Copyright (c) 2015 MediaTek Inc.
+  * Author: Chunfeng Yun <chunfeng.yun@mediatek.com>
+  *
+- * This software is licensed under the terms of the GNU General Public
+- * License version 2, as published by the Free Software Foundation, and
+- * may be copied, distributed, and modified under those terms.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+  */
  
- 	mtk_hdmi_register_audio_driver(dev);
- 
-+	hdmi->bridge.odev = &pdev->dev;
- 	hdmi->bridge.funcs = &mtk_hdmi_bridge_funcs;
--	hdmi->bridge.of_node = pdev->dev.of_node;
- 	drm_bridge_add(&hdmi->bridge);
- 
- 	ret = mtk_hdmi_clk_enable_audio(hdmi);
+ #include <dt-bindings/phy/phy.h>
 -- 
-2.11.0
+1.9.1
