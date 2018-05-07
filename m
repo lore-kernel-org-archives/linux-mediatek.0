@@ -1,118 +1,112 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH v2 26/26] drm/bridge: establish a link between the
- bridge supplier and consumer
-Date: Mon, 7 May 2018 14:59:45 +0200
-Message-ID: <4cdcd215-8caf-e045-a478-f438f128c9f2@samsung.com>
+From: Peter Rosin <peda-koto5C5qi+TLoDKTGw+V6w@public.gmane.org>
+Subject: Re: [PATCH v2 26/26] drm/bridge: establish a link
+ between the bridge supplier and consumer
+Date: Mon, 7 May 2018 15:43:01 +0200
+Message-ID: <9751c1c5-f2fa-f24e-64f3-71019f253332@axentia.se>
 References: <20180504135212.26977-1-peda@axentia.se>
-        <CGME20180504135358epcas3p2bd9c2f5c9a8295152f2c96fdbb2ea8b1@epcas3p2.samsung.com>
-        <20180504135212.26977-27-peda@axentia.se>
+ <CGME20180504135358epcas3p2bd9c2f5c9a8295152f2c96fdbb2ea8b1@epcas3p2.samsung.com>
+ <20180504135212.26977-27-peda@axentia.se>
+ <4cdcd215-8caf-e045-a478-f438f128c9f2@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180504135212.26977-27-peda@axentia.se>
+Content-Transfer-Encoding: base64
+Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+In-Reply-To: <4cdcd215-8caf-e045-a478-f438f128c9f2-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Peter Rosin <peda@axentia.se>, linux-kernel@vger.kernel.org
-Cc: Archit Taneja <architt@codeaurora.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Peter Senna Tschudin <peter.senna@collabora.com>, Martin Donnelly <martin.donnelly@ge.com>, Martyn Welch <martyn.welch@collabora.co.uk>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <seanpaul@chromium.org>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/freedreno>
+List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Martyn Welch <martyn.welch-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Peter Senna Tschudin <peter.senna-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Martin Donnelly <martin.donnelly-JJi787mZWgc@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean
 List-Id: linux-mediatek@lists.infradead.org
 
-On 04.05.2018 15:52, Peter Rosin wrote:
-> If the bridge supplier is unbound, this will bring the bridge consumer
-> down along with the bridge. Thus, there will no longer linger any
-> dangling pointers from the bridge consumer (the drm_device) to some
-> non-existent bridge supplier.
-
-I understand rationales behind this patch, but it is another step into
-making drm_dev one big driver with subcomponents, where drm will work
-only if every subcomponent is working/loaded. Do we need to go this way?
-In case of many platforms such approach results in display turned on
-very late on boot for example due to late initialization of some
-regulator exposed by some i2c device, which is used by hdmi bridge. And
-this hdmi bridge is just to provide alternative(rarely used) display
-path, the main display path would work anyway.
-
-So the main question to drm maintainers is about evolution of bridges,
-if drm_bridges should become mandatory components of drm device or they
-could be added/removed dynamically?
-
-Regards
-Andrzej
-
-
->
-> Signed-off-by: Peter Rosin <peda@axentia.se>
-> ---
->  drivers/gpu/drm/drm_bridge.c | 18 ++++++++++++++++++
->  include/drm/drm_bridge.h     |  2 ++
->  2 files changed, 20 insertions(+)
->
-> diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
-> index 78d186b6831b..0259f0a3ff27 100644
-> --- a/drivers/gpu/drm/drm_bridge.c
-> +++ b/drivers/gpu/drm/drm_bridge.c
-> @@ -26,6 +26,7 @@
->  #include <linux/mutex.h>
->  
->  #include <drm/drm_bridge.h>
-> +#include <drm/drm_device.h>
->  #include <drm/drm_encoder.h>
->  
->  #include "drm_crtc_internal.h"
-> @@ -127,12 +128,25 @@ int drm_bridge_attach(struct drm_encoder *encoder, struct drm_bridge *bridge,
->  	if (bridge->dev)
->  		return -EBUSY;
->  
-> +	if (encoder->dev->dev != bridge->odev) {
-> +		bridge->link = device_link_add(encoder->dev->dev,
-> +					       bridge->odev, 0);
-> +		if (!bridge->link) {
-> +			dev_err(bridge->odev, "failed to link bridge to %s\n",
-> +				dev_name(encoder->dev->dev));
-> +			return -EINVAL;
-> +		}
-> +	}
-> +
->  	bridge->dev = encoder->dev;
->  	bridge->encoder = encoder;
->  
->  	if (bridge->funcs->attach) {
->  		ret = bridge->funcs->attach(bridge);
->  		if (ret < 0) {
-> +			if (bridge->link)
-> +				device_link_del(bridge->link);
-> +			bridge->link = NULL;
->  			bridge->dev = NULL;
->  			bridge->encoder = NULL;
->  			return ret;
-> @@ -159,6 +173,10 @@ void drm_bridge_detach(struct drm_bridge *bridge)
->  	if (bridge->funcs->detach)
->  		bridge->funcs->detach(bridge);
->  
-> +	if (bridge->link)
-> +		device_link_del(bridge->link);
-> +	bridge->link = NULL;
-> +
->  	bridge->dev = NULL;
->  }
->  
-> diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
-> index b656e505d11e..804189c63a4c 100644
-> --- a/include/drm/drm_bridge.h
-> +++ b/include/drm/drm_bridge.h
-> @@ -261,6 +261,7 @@ struct drm_bridge_timings {
->   * @list: to keep track of all added bridges
->   * @timings: the timing specification for the bridge, if any (may
->   * be NULL)
-> + * @link: drm consumer <-> bridge supplier
->   * @funcs: control functions
->   * @driver_private: pointer to the bridge driver's internal context
->   */
-> @@ -271,6 +272,7 @@ struct drm_bridge {
->  	struct drm_bridge *next;
->  	struct list_head list;
->  	const struct drm_bridge_timings *timings;
-> +	struct device_link *link;
->  
->  	const struct drm_bridge_funcs *funcs;
->  	void *driver_private;
+T24gMjAxOC0wNS0wNyAxNDo1OSwgQW5kcnplaiBIYWpkYSB3cm90ZToKPiBPbiAwNC4wNS4yMDE4
+IDE1OjUyLCBQZXRlciBSb3NpbiB3cm90ZToKPj4gSWYgdGhlIGJyaWRnZSBzdXBwbGllciBpcyB1
+bmJvdW5kLCB0aGlzIHdpbGwgYnJpbmcgdGhlIGJyaWRnZSBjb25zdW1lcgo+PiBkb3duIGFsb25n
+IHdpdGggdGhlIGJyaWRnZS4gVGh1cywgdGhlcmUgd2lsbCBubyBsb25nZXIgbGluZ2VyIGFueQo+
+PiBkYW5nbGluZyBwb2ludGVycyBmcm9tIHRoZSBicmlkZ2UgY29uc3VtZXIgKHRoZSBkcm1fZGV2
+aWNlKSB0byBzb21lCj4+IG5vbi1leGlzdGVudCBicmlkZ2Ugc3VwcGxpZXIuCj4gCj4gSSB1bmRl
+cnN0YW5kIHJhdGlvbmFsZXMgYmVoaW5kIHRoaXMgcGF0Y2gsIGJ1dCBpdCBpcyBhbm90aGVyIHN0
+ZXAgaW50bwo+IG1ha2luZyBkcm1fZGV2IG9uZSBiaWcgZHJpdmVyIHdpdGggc3ViY29tcG9uZW50
+cywgd2hlcmUgZHJtIHdpbGwgd29yawo+IG9ubHkgaWYgZXZlcnkgc3ViY29tcG9uZW50IGlzIHdv
+cmtpbmcvbG9hZGVkLgoKVGhlIHN0ZXAgaXMgdmVyeSBzbWFsbCBJTUhPLiBKdXN0IGEgZGV2aWNl
+LWxpbmssIHdoaWNoIGlzIHZlcnkgZWFzeSB0bwpyZW1vdmUgb25jZSB3aGF0ZXZlciBvdGhlciBz
+b2x1dGlvbiBpcyByZWFkeS4KCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIERvIHdlIG5lZWQgdG8gZ28gdGhpcyB3YXk/CgpJZiB0aGUgZHJpdmVycyBleHBl
+Y3QgdGhlIHBhcnRzIHRvIGJlIHRoZXJlLCBhbmQgdGhlcmUgaXMgbm8gb3RoZXIgc2FmZXR5Cm5l
+dCBpbiBwbGFjZSBpZiB0aGV5IGFyZSBub3QsIHdoYXQgaXMgdGhlIChzaG9ydC10ZXJtKSBhbHRl
+cm5hdGl2ZT8KCj4gSW4gY2FzZSBvZiBtYW55IHBsYXRmb3JtcyBzdWNoIGFwcHJvYWNoIHJlc3Vs
+dHMgaW4gZGlzcGxheSB0dXJuZWQgb24KPiB2ZXJ5IGxhdGUgb24gYm9vdCBmb3IgZXhhbXBsZSBk
+dWUgdG8gbGF0ZSBpbml0aWFsaXphdGlvbiBvZiBzb21lCj4gcmVndWxhdG9yIGV4cG9zZWQgYnkg
+c29tZSBpMmMgZGV2aWNlLCB3aGljaCBpcyB1c2VkIGJ5IGhkbWkgYnJpZGdlLiBBbmQKPiB0aGlz
+IGhkbWkgYnJpZGdlIGlzIGp1c3QgdG8gcHJvdmlkZSBhbHRlcm5hdGl2ZShyYXJlbHkgdXNlZCkg
+ZGlzcGxheQo+IHBhdGgsIHRoZSBtYWluIGRpc3BsYXkgcGF0aCB3b3VsZCB3b3JrIGFueXdheS4K
+ClRoaXMgcGF0Y2ggZG9lcyBub3QgY29udHJpYnV0ZSB0byBhbnkgbGF0ZSBpbml0IGFuZCBhbnkg
+c3VjaCBkZWxheSBpcyBub3QKYWZmZWN0ZWQgYnkgdGhpcy4gQXQgYWxsLgoKPiBTbyB0aGUgbWFp
+biBxdWVzdGlvbiB0byBkcm0gbWFpbnRhaW5lcnMgaXMgYWJvdXQgZXZvbHV0aW9uIG9mIGJyaWRn
+ZXMsCj4gaWYgZHJtX2JyaWRnZXMgc2hvdWxkIGJlY29tZSBtYW5kYXRvcnkgY29tcG9uZW50cyBv
+ZiBkcm0gZGV2aWNlIG9yIHRoZXkKPiBjb3VsZCBiZSBhZGRlZC9yZW1vdmVkIGR5bmFtaWNhbGx5
+PwoKVGhhdCBpcyBhIG11Y2ggYmlnZ2VyIHF1ZXN0aW9uIHRoYW4gdGhpcyBwYXRjaC9zZXJpZXMu
+IENvbmZsYXRpbmcgdGhlCnR3byBpcyBub3QgZmFpciBJTUhPLiBZb3UgY291bGQgcnVuIHRoaXMg
+dmVyeSBzYW1lIGFyZ3VtZW50IGZvciBldmVyeQpkcml2ZXIgdGhhdCBnZXRzIGFkZGVkLCBzaW5j
+ZSBhbnkgYWRkaXRpb25hbCBkcml2ZXIgd2lsbCBqdXN0IG1ha2UgaXQKaGFyZGVyIHRvIG1ha2Ug
+ZXZlcnl0aGluZyBkeW5hbWljLiBTaG91bGQgd2Ugc3RvcCBkZXZlbG9wbWVudCByaWdodAphd2F5
+PwoKQmVzaWRlcywgYXMgbG9uZyBhcyB0aGUgZHJtIGRldmljZXMgYXJlIGluIGZhY3QgYWN0aW5n
+IGFzIGJpZyBzdGF0aWMKZHJpdmVycyAoYnVpbHQgZnJvbSBzbWFsbGVyIHBhcnRzKSwgdGhpcyBz
+aG91bGQgYmUgY29uc2lkZXJlZCBhIGJ1Zy1maXgKdGhhdCB3aWxsIHByZXZlbnQgZGVyZWZlcmVu
+Y2Ugb2Ygc3RhbGUgcG9pbnRlcnMuCgpPciB3aWxsIHNvbWUgb3RoZXIgc29sdXRpb24gYXBwZWFy
+IGFuZCBtYWdpY2FsbHkgbWFrZSBhbGwgYnJpZGdlcyBhbmQKZHJtIGRyaXZlcnMgY2FwYWJsZSBv
+ZiBkeW5hbWljIHJlY29uZmlndXJhdGlvbiBpbiB0aGUgbmV4dCBmZXcgd2Vla3M/ClllYWgsIHJp
+Z2h0Li4uCgpDaGVlcnMsClBldGVyCgo+IFJlZ2FyZHMKPiBBbmRyemVqCj4gCj4gCj4+Cj4+IFNp
+Z25lZC1vZmYtYnk6IFBldGVyIFJvc2luIDxwZWRhQGF4ZW50aWEuc2U+Cj4+IC0tLQo+PiAgZHJp
+dmVycy9ncHUvZHJtL2RybV9icmlkZ2UuYyB8IDE4ICsrKysrKysrKysrKysrKysrKwo+PiAgaW5j
+bHVkZS9kcm0vZHJtX2JyaWRnZS5oICAgICB8ICAyICsrCj4+ICAyIGZpbGVzIGNoYW5nZWQsIDIw
+IGluc2VydGlvbnMoKykKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fYnJp
+ZGdlLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZS5jCj4+IGluZGV4IDc4ZDE4NmI2ODMx
+Yi4uMDI1OWYwYTNmZjI3IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRn
+ZS5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fYnJpZGdlLmMKPj4gQEAgLTI2LDYgKzI2
+LDcgQEAKPj4gICNpbmNsdWRlIDxsaW51eC9tdXRleC5oPgo+PiAgCj4+ICAjaW5jbHVkZSA8ZHJt
+L2RybV9icmlkZ2UuaD4KPj4gKyNpbmNsdWRlIDxkcm0vZHJtX2RldmljZS5oPgo+PiAgI2luY2x1
+ZGUgPGRybS9kcm1fZW5jb2Rlci5oPgo+PiAgCj4+ICAjaW5jbHVkZSAiZHJtX2NydGNfaW50ZXJu
+YWwuaCIKPj4gQEAgLTEyNywxMiArMTI4LDI1IEBAIGludCBkcm1fYnJpZGdlX2F0dGFjaChzdHJ1
+Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIsIHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsCj4+ICAJ
+aWYgKGJyaWRnZS0+ZGV2KQo+PiAgCQlyZXR1cm4gLUVCVVNZOwo+PiAgCj4+ICsJaWYgKGVuY29k
+ZXItPmRldi0+ZGV2ICE9IGJyaWRnZS0+b2Rldikgewo+PiArCQlicmlkZ2UtPmxpbmsgPSBkZXZp
+Y2VfbGlua19hZGQoZW5jb2Rlci0+ZGV2LT5kZXYsCj4+ICsJCQkJCSAgICAgICBicmlkZ2UtPm9k
+ZXYsIDApOwo+PiArCQlpZiAoIWJyaWRnZS0+bGluaykgewo+PiArCQkJZGV2X2VycihicmlkZ2Ut
+Pm9kZXYsICJmYWlsZWQgdG8gbGluayBicmlkZ2UgdG8gJXNcbiIsCj4+ICsJCQkJZGV2X25hbWUo
+ZW5jb2Rlci0+ZGV2LT5kZXYpKTsKPj4gKwkJCXJldHVybiAtRUlOVkFMOwo+PiArCQl9Cj4+ICsJ
+fQo+PiArCj4+ICAJYnJpZGdlLT5kZXYgPSBlbmNvZGVyLT5kZXY7Cj4+ICAJYnJpZGdlLT5lbmNv
+ZGVyID0gZW5jb2RlcjsKPj4gIAo+PiAgCWlmIChicmlkZ2UtPmZ1bmNzLT5hdHRhY2gpIHsKPj4g
+IAkJcmV0ID0gYnJpZGdlLT5mdW5jcy0+YXR0YWNoKGJyaWRnZSk7Cj4+ICAJCWlmIChyZXQgPCAw
+KSB7Cj4+ICsJCQlpZiAoYnJpZGdlLT5saW5rKQo+PiArCQkJCWRldmljZV9saW5rX2RlbChicmlk
+Z2UtPmxpbmspOwo+PiArCQkJYnJpZGdlLT5saW5rID0gTlVMTDsKPj4gIAkJCWJyaWRnZS0+ZGV2
+ID0gTlVMTDsKPj4gIAkJCWJyaWRnZS0+ZW5jb2RlciA9IE5VTEw7Cj4+ICAJCQlyZXR1cm4gcmV0
+Owo+PiBAQCAtMTU5LDYgKzE3MywxMCBAQCB2b2lkIGRybV9icmlkZ2VfZGV0YWNoKHN0cnVjdCBk
+cm1fYnJpZGdlICpicmlkZ2UpCj4+ICAJaWYgKGJyaWRnZS0+ZnVuY3MtPmRldGFjaCkKPj4gIAkJ
+YnJpZGdlLT5mdW5jcy0+ZGV0YWNoKGJyaWRnZSk7Cj4+ICAKPj4gKwlpZiAoYnJpZGdlLT5saW5r
+KQo+PiArCQlkZXZpY2VfbGlua19kZWwoYnJpZGdlLT5saW5rKTsKPj4gKwlicmlkZ2UtPmxpbmsg
+PSBOVUxMOwo+PiArCj4+ICAJYnJpZGdlLT5kZXYgPSBOVUxMOwo+PiAgfQo+PiAgCj4+IGRpZmYg
+LS1naXQgYS9pbmNsdWRlL2RybS9kcm1fYnJpZGdlLmggYi9pbmNsdWRlL2RybS9kcm1fYnJpZGdl
+LmgKPj4gaW5kZXggYjY1NmU1MDVkMTFlLi44MDQxODljNjNhNGMgMTAwNjQ0Cj4+IC0tLSBhL2lu
+Y2x1ZGUvZHJtL2RybV9icmlkZ2UuaAo+PiArKysgYi9pbmNsdWRlL2RybS9kcm1fYnJpZGdlLmgK
+Pj4gQEAgLTI2MSw2ICsyNjEsNyBAQCBzdHJ1Y3QgZHJtX2JyaWRnZV90aW1pbmdzIHsKPj4gICAq
+IEBsaXN0OiB0byBrZWVwIHRyYWNrIG9mIGFsbCBhZGRlZCBicmlkZ2VzCj4+ICAgKiBAdGltaW5n
+czogdGhlIHRpbWluZyBzcGVjaWZpY2F0aW9uIGZvciB0aGUgYnJpZGdlLCBpZiBhbnkgKG1heQo+
+PiAgICogYmUgTlVMTCkKPj4gKyAqIEBsaW5rOiBkcm0gY29uc3VtZXIgPC0+IGJyaWRnZSBzdXBw
+bGllcgo+PiAgICogQGZ1bmNzOiBjb250cm9sIGZ1bmN0aW9ucwo+PiAgICogQGRyaXZlcl9wcml2
+YXRlOiBwb2ludGVyIHRvIHRoZSBicmlkZ2UgZHJpdmVyJ3MgaW50ZXJuYWwgY29udGV4dAo+PiAg
+ICovCj4+IEBAIC0yNzEsNiArMjcyLDcgQEAgc3RydWN0IGRybV9icmlkZ2Ugewo+PiAgCXN0cnVj
+dCBkcm1fYnJpZGdlICpuZXh0Owo+PiAgCXN0cnVjdCBsaXN0X2hlYWQgbGlzdDsKPj4gIAljb25z
+dCBzdHJ1Y3QgZHJtX2JyaWRnZV90aW1pbmdzICp0aW1pbmdzOwo+PiArCXN0cnVjdCBkZXZpY2Vf
+bGluayAqbGluazsKPj4gIAo+PiAgCWNvbnN0IHN0cnVjdCBkcm1fYnJpZGdlX2Z1bmNzICpmdW5j
+czsKPj4gIAl2b2lkICpkcml2ZXJfcHJpdmF0ZTsKPiAKPiAKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkZyZWVkcmVubyBtYWlsaW5nIGxpc3QKRnJlZWRy
+ZW5vQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2ZyZWVkcmVubwo=
