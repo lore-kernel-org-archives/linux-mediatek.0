@@ -1,129 +1,153 @@
-From: Daniel Vetter <daniel@ffwll.ch>
+From: Peter Rosin <peda-koto5C5qi+TLoDKTGw+V6w@public.gmane.org>
 Subject: Re: [PATCH v2 00/26] device link, bridge supplier <-> drm device
-Date: Mon, 7 May 2018 15:56:01 +0200
-Message-ID: <20180507135601.GJ12521@phenom.ffwll.local>
+Date: Mon, 7 May 2018 16:09:27 +0200
+Message-ID: <12173f3b-e4dc-940a-8abb-b7be7b79f451__19843.6879938983$1525703046$gmane$org@axentia.se>
 References: <20180504135212.26977-1-peda@axentia.se>
+ <20180507135601.GJ12521@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20180504135212.26977-1-peda@axentia.se>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Peter Rosin <peda@axentia.se>
-Cc: Martyn Welch <martyn.welch@collabora.co.uk>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Peter Senna Tschudin <peter.senna@collabora.com>, Martin Donnelly <martin.donnelly@ge.com>, linux-arm-msm@vger.kernel.org, Jyri Sarha <jsarha@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180507135601.GJ12521-dv86pmgwkMBes7Z6vYuT8azUEOm+Xw19@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Peter Senna Tschudin <peter.senna-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Martin Donnelly <martin.donnelly-JJi787mZWgc@public.gmane.org>, Martyn Welch <martyn.welch-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heik
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gRnJpLCBNYXkgMDQsIDIwMTggYXQgMDM6NTE6NDZQTSArMDIwMCwgUGV0ZXIgUm9zaW4gd3Jv
-dGU6Cj4gSGkhCj4gCj4gSXQgd2FzIG5vdGVkIGJ5IFJ1c3NlbCBLaW5nIFsxXSB0aGF0IGJyaWRn
-ZXMgKG5vdCB1c2luZyBjb21wb25lbnRzKQo+IG1pZ2h0IGRpc2FwcGVhciB1bmV4cGVjdGVkbHkg
-aWYgdGhlIG93bmVyIG9mIHRoZSBicmlkZ2Ugd2FzIHVuYm91bmQuCj4gSnlyaSBTYXJoYSBoYWQg
-cHJldmlvdXNseSBub3RlZCB0aGUgc2FtZSB0aGluZyB3aXRoIHBhbmVscyBbMl0uIEp5cmkKPiBj
-YW1lIHVwIHdpdGggdXNpbmcgZGV2aWNlIGxpbmtzIHRvIHJlc29sdmUgdGhlIHBhbmVsIGlzc3Vl
-LCB3aGljaAo+IHdhcyBhbHNvIG15IChpbmRlcGVuZGVudCkgcmVhY3Rpb24gdG8gdGhlIG5vdGUg
-ZnJvbSBSdXNzZWwuCj4gCj4gVGhpcyBzZXJpZXMgYnVpbGRzIHVwIHRvIHRoZSBhZGRpdGlvbiBv
-ZiB0aGF0IGxpbmsgaW4gdGhlIGxhc3QKPiBwYXRjaCwgYnV0IGluIG15IG9waW5pb24gdGhlIG90
-aGVyIDI1IHBhdGNoZXMgZG8gaGF2ZSBtZXJpdCBvbiB0aGVpcgo+IG93bi4KPiAKPiBUaGUgbGFz
-dCBwYXRjaCBuZWVkcyB0ZXN0aW5nLCB3aGlsZSB0aGUgb3RoZXJzIGxvb2sgdHJpdmlhbC4gSnly
-aSwgYXJlCj4geW91IGFibGUgdG8gdGVzdD8gVGhhdCBzYWlkLCBJIG1pZ2h0IGhhdmUgbWlzc2Vk
-IHNvbWUgc3VidGxldHkuCj4gCj4gT2ggYW5kIHRoZSByZWFzb24gSSdtIHB1c2hpbmcgdGhpcyBp
-cyBvZiBjb3Vyc2Ugc28gdGhhdCB0aGUgaXNzdWUKPiBub3RlZCBieSBSdXNzZWwgaW4gWzFdIGlz
-IGFkZHJlc3NlZCB3aGljaCBpbiB0dXJuIG1lYW5zIHRoYXQgdGhlCj4gdGRhOTk4eCBicmlkZ2Ug
-ZHJpdmVyIGNhbiBiZSBwYXRjaGVkIGFjY29yZGluZyB0byB0aGF0IHNlcmllcyB3aXRob3V0Cj4g
-b2JqZWN0aW9uIChob3BlZnVsbHkpIGFuZCB0aGVuIHVzZWQgZnJvbSB0aGUgYXRtZWwtaGxjZGMg
-ZHJpdmVyIChhbmQKPiBvdGhlciBkcml2ZXJzIHRoYXQgYXJlIG5vdCBjb21wb25lbnRpemVkKS4K
-PiAKPiBDaGFuZ2VzIHNpbmNlIHYxICAgIGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDE4LzQvMjYv
-MTAxOAo+IAo+IC0gcmVuYW1lIC5vd25lciB0byAub2RldiB0byBub3QgZ2V0IG1peGVkIHVwIHdp
-dGggdGhlIG1vZHVsZSBvd25lci4KPiAtIGFkZGVkIHBhdGNoZXMgZm9yIG5ldyByZWNlbnQgZHJp
-dmVycyB0aGM2M2x2ZDEwMjQgYW5kIGNkbnMtZHNpCj4gLSBmaXggZm9yIHByb2JsZW0gaW4gdGhl
-IHJvY2tjaGlwX2x2ZHMgZHJpdmVyIHJlcG9ydGVkIGJ5IDBkYXkKPiAtIGFkZGVkIGEgV0FSTiBp
-biBkcm1fYnJpZGdlX2FkZCBpZiB0aGVyZSBpcyBubyAub2RldiBvd25lciBkZXZpY2UKPiAKPiBJ
-IGRpZCAqbm90KjoKPiAtIGFkZCBhbnkgYWNrIGZyb20gRGFuaWVsIHNpbmNlIGhlIHN1Z2dlc3Rl
-ZCAicGRldiIsIGFuZCBJIGVuZGVkIHVwCj4gICB3aXRoICJvZGV2IiBpbiB0aGUgcmVuYW1lIHNp
-bmNlIEkgZGlzbGlrZWQgInBkZXYiIGFib3V0IGFzIG11Y2gKPiAgIGFzICJvd25lciIuCgpBcyBs
-b25nIGFzIGl0J3Mgbm90IG93bmVyLCBJJ20gZmluZSA6LSkgQWNrIG9uIHRoZSBpZGVhIHN0aWxs
-IGhvbGRzLgoKPiAtIGFkZCBhbnkgcG9ydCBpZC4gVGhlIGN1cnJlbnQgLm9mX25vZGUgKHRoYXQg
-dGhpcyBzZXJpZXMgcmVtb3ZlcykKPiAgIGRvZXMgbm90IGlkZW50aWZ5IHRoZSBwb3J0LCBzbyB0
-aGF0IHByb2JsZW0gc2VlbXMgb3J0aG9nb25hbAo+ICAgdG8gbWUuCgpIbSwgZnJvbSBteSBjdXJz
-b3J5IERUL29mIGNvZGUgcmVhZGluZyBsYXN0IHdlZWsgSSB0aG91Z2h0IHRoZSBwb3J0IGlzCnVz
-ZWQgdG8gbG9va3VwIHRoZSByaWdodCBub2RlLCBidXQgdGhlcmUncyBubyBwb3J0IHRoaW5nIG9u
-IHRoZSB0YXJnZXQgZm9yCmEgcGhhbmRsZT8gQXQgbGVhc3QgdGhhdCdzIGhvdyBjdXJyZW50IGRy
-bV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZSBzZWVtcwp0byB3b3JrIC4uLgotRGFuaWVsCj4gCj4g
-Q2hlZXJzLAo+IFBldGVyCj4gCj4gWzFdIGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDE4LzQvMjMv
-NzY5Cj4gWzJdIGh0dHBzOi8vd3d3LnNwaW5pY3MubmV0L2xpc3RzL2RyaS1kZXZlbC9tc2cxNzQy
-NzUuaHRtbAo+IAo+IFBldGVyIFJvc2luICgyNik6Cj4gICBkcm0vYnJpZGdlOiBhbGxvdyBvcHRp
-b25hbGx5IHNwZWNpZnlpbmcgYW4gb3duZXIgLm9kZXYgZGV2aWNlCj4gICBkcm0vYnJpZGdlOiBh
-ZHY3NTExOiBwcm92aWRlIGFuIG93bmVyIC5vZGV2IGRldmljZQo+ICAgZHJtL2JyaWRnZS9hbmFs
-b2dpeDogY29yZTogc3BlY2lmeSB0aGUgb3duZXIgLm9kZXYgb2YgdGhlIGJyaWRnZQo+ICAgZHJt
-L2JyaWRnZTogYW5hbG9naXgtYW54Nzh4eDogcHJvdmlkZSBhbiBvd25lciAub2RldiBkZXZpY2UK
-PiAgIGRybS9icmlkZ2U6IGNkbnMtZHNpOiBwcm92aWRlIGFuIG93bmVyIC5vZGV2IGRldmljZQo+
-ICAgZHJtL2JyaWRnZTogdmdhLWRhYzogcHJvdmlkZSBhbiBvd25lciAub2RldiBkZXZpY2UKPiAg
-IGRybS9icmlkZ2U6IGx2ZHMtZW5jb2RlcjogcHJvdmlkZSBhbiBvd25lciAub2RldiBkZXZpY2UK
-PiAgIGRybS9icmlkZ2U6IG1lZ2FjaGlwcy1zdGRweHh4eC1nZS1iODUwdjMtZnc6IHByb3ZpZGUg
-YW4gb3duZXIgLm9kZXYKPiAgICAgZGV2aWNlCj4gICBkcm0vYnJpZGdlOiBueHAtcHRuMzQ2MDog
-cHJvdmlkZSBhbiBvd25lciAub2RldiBkZXZpY2UKPiAgIGRybS9icmlkZ2U6IHBhbmVsOiBwcm92
-aWRlIGFuIG93bmVyIC5vZGV2IGRldmljZQo+ICAgZHJtL2JyaWRnZTogcHM4NjIyOiBwcm92aWRl
-IGFuIG93bmVyIC5vZGV2IGRldmljZQo+ICAgZHJtL2JyaWRnZTogc2lpOTAyeDogcHJvdmlkZSBh
-biBvd25lciAub2RldiBkZXZpY2UKPiAgIGRybS9icmlkZ2U6IHNpaTkyMzQ6IHByb3ZpZGUgYW4g
-b3duZXIgLm9kZXYgZGV2aWNlCj4gICBkcm0vYnJpZGdlOiBzaWk4NjIwOiBwcm92aWRlIGFuIG93
-bmVyIC5vZGV2IGRldmljZQo+ICAgZHJtL2JyaWRnZTogc3lub3BzeXM6IHByb3ZpZGUgYW4gb3du
-ZXIgLm9kZXYgZGV2aWNlIGZvciB0aGUgYnJpZGdlcwo+ICAgZHJtL2JyaWRnZTogdGMzNTg3Njc6
-IHByb3ZpZGUgYW4gb3duZXIgLm9kZXYgZGV2aWNlCj4gICBkcm0vYnJpZGdlOiB0aGM2M2x2ZDEw
-MjQ6IHByb3ZpZGUgYW4gb3duZXIgLm9kZXYgZGV2aWNlCj4gICBkcm0vYnJpZGdlOiB0aS10ZnA0
-MTA6IHByb3ZpZGUgYW4gb3duZXIgLm9kZXYgZGV2aWNlCj4gICBkcm0vZXh5bm9zOiBtaWM6IHBy
-b3ZpZGUgYW4gb3duZXIgLm9kZXYgZGV2aWNlIGZvciB0aGUgYnJpZGdlCj4gICBkcm0vbWVkaWF0
-ZWs6IGhkbWk6IHByb3ZpZGUgYW4gb3duZXIgLm9kZXYgZGV2aWNlIGZvciB0aGUgYnJpZGdlCj4g
-ICBkcm0vbXNtOiBzcGVjaWZ5IHRoZSBvd25lciAub2RldiBvZiB0aGUgYnJpZGdlcwo+ICAgZHJt
-L3JjYXItZHU6IGx2ZHM6IHByb3ZpZGUgYW4gb3duZXIgLm9kZXYgZGV2aWNlIGZvciB0aGUgYnJp
-ZGdlCj4gICBkcm0vc3RpOiBwcm92aWRlIGFuIG93bmVyIC5vZGV2IGRldmljZSBmb3IgdGhlIGJy
-aWRnZXMKPiAgIGRybS9icmlkZ2U6IHJlbW92ZSB0aGUgLm9mX25vZGUgbWVtYmVyCj4gICBkcm0v
-YnJpZGdlOiByZXF1aXJlIHRoZSBvd25lciAub2RldiB0byBiZSBmaWxsZWQgaW4gb24KPiAgICAg
-ZHJtX2JyaWRnZV9hZGQvYXR0YWNoCj4gICBkcm0vYnJpZGdlOiBlc3RhYmxpc2ggYSBsaW5rIGJl
-dHdlZW4gdGhlIGJyaWRnZSBzdXBwbGllciBhbmQgY29uc3VtZXIKPiAKPiAgZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9hZHY3NTExL2Fkdjc1MTFfZHJ2LmMgICAgICAgfCAgMiArLQo+ICBkcml2ZXJz
-L2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4LWFueDc4eHguYyAgICAgICAgICB8ICA1ICstLS0tCj4g
-IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgIDEg
-Kwo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2NkbnMtZHNpLmMgICAgICAgICAgICAgICAgICB8
-ICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHVtYi12Z2EtZGFjLmMgICAgICAgICAg
-ICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9sdmRzLWVuY29kZXIuYyAgICAg
-ICAgICAgICAgfCAgMiArLQo+ICAuLi4vZHJtL2JyaWRnZS9tZWdhY2hpcHMtc3RkcHh4eHgtZ2Ut
-Yjg1MHYzLWZ3LmMgICB8ICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvbnhwLXB0bjM0
-NjAuYyAgICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9wYW5l
-bC5jICAgICAgICAgICAgICAgICAgICAgfCAgNCArLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlk
-Z2UvcGFyYWRlLXBzODYyMi5jICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJt
-L2JyaWRnZS9zaWk5MDJ4LmMgICAgICAgICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dw
-dS9kcm0vYnJpZGdlL3NpaTkyMzQuYyAgICAgICAgICAgICAgICAgICB8ICAyICstCj4gIGRyaXZl
-cnMvZ3B1L2RybS9icmlkZ2Uvc2lsLXNpaTg2MjAuYyAgICAgICAgICAgICAgIHwgIDIgKy0KPiAg
-ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMgICAgICAgICAgfCAgNCAr
-LS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyAgICAg
-IHwgIDQgKy0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3RjMzU4NzY3LmMgICAgICAgICAg
-ICAgICAgICB8ICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvdGhjNjNsdmQxMDI0LmMg
-ICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS90aS10ZnA0MTAu
-YyAgICAgICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZS5j
-ICAgICAgICAgICAgICAgICAgICAgICB8IDI2ICsrKysrKysrKysrKysrKysrKysrKy0KPiAgZHJp
-dmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHJtX21pYy5jICAgICAgICAgICAgfCAgMiArLQo+
-ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYyAgICAgICAgICAgICAgICB8ICAy
-ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9tc20vZHNpL2RzaV9tYW5hZ2VyLmMgICAgICAgICAgICAg
-IHwgIDEgKwo+ICBkcml2ZXJzL2dwdS9kcm0vbXNtL2VkcC9lZHBfYnJpZGdlLmMgICAgICAgICAg
-ICAgICB8ICAxICsKPiAgZHJpdmVycy9ncHUvZHJtL21zbS9oZG1pL2hkbWlfYnJpZGdlLmMgICAg
-ICAgICAgICAgfCAgMSArCj4gIGRyaXZlcnMvZ3B1L2RybS9yY2FyLWR1L3JjYXJfbHZkcy5jICAg
-ICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2x2ZHMuYyAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vc3RpL3N0aV9kdm8u
-YyAgICAgICAgICAgICAgICAgICAgICB8ICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9zdGkvc3Rp
-X2hkYS5jICAgICAgICAgICAgICAgICAgICAgIHwgIDEgKwo+ICBkcml2ZXJzL2dwdS9kcm0vc3Rp
-L3N0aV9oZG1pLmMgICAgICAgICAgICAgICAgICAgICB8ICAxICsKPiAgaW5jbHVkZS9kcm0vZHJt
-X2JyaWRnZS5oICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgOCArKystLS0tCj4gIDMwIGZp
-bGVzIGNoYW5nZWQsIDU3IGluc2VydGlvbnMoKyksIDM2IGRlbGV0aW9ucygtKQo+IAo+IC0tIAo+
-IDIuMTEuMAo+IAoKLS0gCkRhbmllbCBWZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIEludGVsIENv
-cnBvcmF0aW9uCmh0dHA6Ly9ibG9nLmZmd2xsLmNoCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On 2018-05-07 15:56, Daniel Vetter wrote:
+> On Fri, May 04, 2018 at 03:51:46PM +0200, Peter Rosin wrote:
+>> Hi!
+>>
+>> It was noted by Russel King [1] that bridges (not using components)
+>> might disappear unexpectedly if the owner of the bridge was unbound.
+>> Jyri Sarha had previously noted the same thing with panels [2]. Jyri
+>> came up with using device links to resolve the panel issue, which
+>> was also my (independent) reaction to the note from Russel.
+>>
+>> This series builds up to the addition of that link in the last
+>> patch, but in my opinion the other 25 patches do have merit on their
+>> own.
+>>
+>> The last patch needs testing, while the others look trivial. Jyri, are
+>> you able to test? That said, I might have missed some subtlety.
+>>
+>> Oh and the reason I'm pushing this is of course so that the issue
+>> noted by Russel in [1] is addressed which in turn means that the
+>> tda998x bridge driver can be patched according to that series without
+>> objection (hopefully) and then used from the atmel-hlcdc driver (and
+>> other drivers that are not componentized).
+>>
+>> Changes since v1    https://lkml.org/lkml/2018/4/26/1018
+>>
+>> - rename .owner to .odev to not get mixed up with the module owner.
+>> - added patches for new recent drivers thc63lvd1024 and cdns-dsi
+>> - fix for problem in the rockchip_lvds driver reported by 0day
+>> - added a WARN in drm_bridge_add if there is no .odev owner device
+>>
+>> I did *not*:
+>> - add any ack from Daniel since he suggested "pdev", and I ended up
+>>   with "odev" in the rename since I disliked "pdev" about as much
+>>   as "owner".
+> 
+> As long as it's not owner, I'm fine :-) Ack on the idea still holds.
+> 
+>> - add any port id. The current .of_node (that this series removes)
+>>   does not identify the port, so that problem seems orthogonal
+>>   to me.
+> 
+> Hm, from my cursory DT/of code reading last week I thought the port is
+> used to lookup the right node, but there's no port thing on the target for
+> a phandle? At least that's how current drm_of_find_panel_or_bridge seems
+> to work ...
+
+drm_of_find_panel_or_bridge calls of_graph_get_remote_node and that
+function looks up the main remote device node, i.e. not the remote
+port or endpoint node but the parent node. So, bridges using .of_node
+have stored their main device node in the .of_node member. I.e. the
+same value as of_node in struct device for all current cases.
+
+Cheers,
+Peter
+
+> -Daniel
+>>
+>> Cheers,
+>> Peter
+>>
+>> [1] https://lkml.org/lkml/2018/4/23/769
+>> [2] https://www.spinics.net/lists/dri-devel/msg174275.html
+>>
+>> Peter Rosin (26):
+>>   drm/bridge: allow optionally specifying an owner .odev device
+>>   drm/bridge: adv7511: provide an owner .odev device
+>>   drm/bridge/analogix: core: specify the owner .odev of the bridge
+>>   drm/bridge: analogix-anx78xx: provide an owner .odev device
+>>   drm/bridge: cdns-dsi: provide an owner .odev device
+>>   drm/bridge: vga-dac: provide an owner .odev device
+>>   drm/bridge: lvds-encoder: provide an owner .odev device
+>>   drm/bridge: megachips-stdpxxxx-ge-b850v3-fw: provide an owner .odev
+>>     device
+>>   drm/bridge: nxp-ptn3460: provide an owner .odev device
+>>   drm/bridge: panel: provide an owner .odev device
+>>   drm/bridge: ps8622: provide an owner .odev device
+>>   drm/bridge: sii902x: provide an owner .odev device
+>>   drm/bridge: sii9234: provide an owner .odev device
+>>   drm/bridge: sii8620: provide an owner .odev device
+>>   drm/bridge: synopsys: provide an owner .odev device for the bridges
+>>   drm/bridge: tc358767: provide an owner .odev device
+>>   drm/bridge: thc63lvd1024: provide an owner .odev device
+>>   drm/bridge: ti-tfp410: provide an owner .odev device
+>>   drm/exynos: mic: provide an owner .odev device for the bridge
+>>   drm/mediatek: hdmi: provide an owner .odev device for the bridge
+>>   drm/msm: specify the owner .odev of the bridges
+>>   drm/rcar-du: lvds: provide an owner .odev device for the bridge
+>>   drm/sti: provide an owner .odev device for the bridges
+>>   drm/bridge: remove the .of_node member
+>>   drm/bridge: require the owner .odev to be filled in on
+>>     drm_bridge_add/attach
+>>   drm/bridge: establish a link between the bridge supplier and consumer
+>>
+>>  drivers/gpu/drm/bridge/adv7511/adv7511_drv.c       |  2 +-
+>>  drivers/gpu/drm/bridge/analogix-anx78xx.c          |  5 +----
+>>  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  1 +
+>>  drivers/gpu/drm/bridge/cdns-dsi.c                  |  2 +-
+>>  drivers/gpu/drm/bridge/dumb-vga-dac.c              |  2 +-
+>>  drivers/gpu/drm/bridge/lvds-encoder.c              |  2 +-
+>>  .../drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c   |  2 +-
+>>  drivers/gpu/drm/bridge/nxp-ptn3460.c               |  2 +-
+>>  drivers/gpu/drm/bridge/panel.c                     |  4 +---
+>>  drivers/gpu/drm/bridge/parade-ps8622.c             |  2 +-
+>>  drivers/gpu/drm/bridge/sii902x.c                   |  2 +-
+>>  drivers/gpu/drm/bridge/sii9234.c                   |  2 +-
+>>  drivers/gpu/drm/bridge/sil-sii8620.c               |  2 +-
+>>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          |  4 +---
+>>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c      |  4 +---
+>>  drivers/gpu/drm/bridge/tc358767.c                  |  2 +-
+>>  drivers/gpu/drm/bridge/thc63lvd1024.c              |  2 +-
+>>  drivers/gpu/drm/bridge/ti-tfp410.c                 |  2 +-
+>>  drivers/gpu/drm/drm_bridge.c                       | 26 +++++++++++++++++++++-
+>>  drivers/gpu/drm/exynos/exynos_drm_mic.c            |  2 +-
+>>  drivers/gpu/drm/mediatek/mtk_hdmi.c                |  2 +-
+>>  drivers/gpu/drm/msm/dsi/dsi_manager.c              |  1 +
+>>  drivers/gpu/drm/msm/edp/edp_bridge.c               |  1 +
+>>  drivers/gpu/drm/msm/hdmi/hdmi_bridge.c             |  1 +
+>>  drivers/gpu/drm/rcar-du/rcar_lvds.c                |  2 +-
+>>  drivers/gpu/drm/rockchip/rockchip_lvds.c           |  2 +-
+>>  drivers/gpu/drm/sti/sti_dvo.c                      |  2 +-
+>>  drivers/gpu/drm/sti/sti_hda.c                      |  1 +
+>>  drivers/gpu/drm/sti/sti_hdmi.c                     |  1 +
+>>  include/drm/drm_bridge.h                           |  8 +++----
+>>  30 files changed, 57 insertions(+), 36 deletions(-)
+>>
+>> -- 
+>> 2.11.0
+>>
+> 
