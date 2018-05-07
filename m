@@ -1,153 +1,46 @@
-From: Peter Rosin <peda-koto5C5qi+TLoDKTGw+V6w@public.gmane.org>
-Subject: Re: [PATCH v2 00/26] device link, bridge supplier <-> drm device
-Date: Mon, 7 May 2018 16:09:27 +0200
-Message-ID: <12173f3b-e4dc-940a-8abb-b7be7b79f451__19843.6879938983$1525703046$gmane$org@axentia.se>
-References: <20180504135212.26977-1-peda@axentia.se>
- <20180507135601.GJ12521@phenom.ffwll.local>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: add MediaTek XS-PHY binding
+Date: Mon, 7 May 2018 12:04:35 -0500
+Message-ID: <20180507170435.GA14540@rob-hp-laptop>
+References: <1525486506-19301-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1525486506-19301-2-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180507135601.GJ12521-dv86pmgwkMBes7Z6vYuT8azUEOm+Xw19@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Peter Senna Tschudin <peter.senna-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Martin Donnelly <martin.donnelly-JJi787mZWgc@public.gmane.org>, Martyn Welch <martyn.welch-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heik
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1525486506-19301-2-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ryder Lee <ryder.lee@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2018-05-07 15:56, Daniel Vetter wrote:
-> On Fri, May 04, 2018 at 03:51:46PM +0200, Peter Rosin wrote:
->> Hi!
->>
->> It was noted by Russel King [1] that bridges (not using components)
->> might disappear unexpectedly if the owner of the bridge was unbound.
->> Jyri Sarha had previously noted the same thing with panels [2]. Jyri
->> came up with using device links to resolve the panel issue, which
->> was also my (independent) reaction to the note from Russel.
->>
->> This series builds up to the addition of that link in the last
->> patch, but in my opinion the other 25 patches do have merit on their
->> own.
->>
->> The last patch needs testing, while the others look trivial. Jyri, are
->> you able to test? That said, I might have missed some subtlety.
->>
->> Oh and the reason I'm pushing this is of course so that the issue
->> noted by Russel in [1] is addressed which in turn means that the
->> tda998x bridge driver can be patched according to that series without
->> objection (hopefully) and then used from the atmel-hlcdc driver (and
->> other drivers that are not componentized).
->>
->> Changes since v1    https://lkml.org/lkml/2018/4/26/1018
->>
->> - rename .owner to .odev to not get mixed up with the module owner.
->> - added patches for new recent drivers thc63lvd1024 and cdns-dsi
->> - fix for problem in the rockchip_lvds driver reported by 0day
->> - added a WARN in drm_bridge_add if there is no .odev owner device
->>
->> I did *not*:
->> - add any ack from Daniel since he suggested "pdev", and I ended up
->>   with "odev" in the rename since I disliked "pdev" about as much
->>   as "owner".
+On Sat, May 05, 2018 at 10:15:05AM +0800, Chunfeng Yun wrote:
+> Add a DT binding documentation of XS-PHY for MediaTek SoCs
+> with USB3.1 GEN2 controller
 > 
-> As long as it's not owner, I'm fine :-) Ack on the idea still holds.
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  .../devicetree/bindings/phy/phy-mtk-xsphy.txt      |  110 ++++++++++++++++++++
+>  1 file changed, 110 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt
 > 
->> - add any port id. The current .of_node (that this series removes)
->>   does not identify the port, so that problem seems orthogonal
->>   to me.
-> 
-> Hm, from my cursory DT/of code reading last week I thought the port is
-> used to lookup the right node, but there's no port thing on the target for
-> a phandle? At least that's how current drm_of_find_panel_or_bridge seems
-> to work ...
+> diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt
+> new file mode 100644
+> index 0000000..9a95fab
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt
+> @@ -0,0 +1,110 @@
+> +MediaTek XS-PHY binding
+> +--------------------------
+> +
+> +The XS-PHY controller supports physical layer functionality for USB3.1
+> +GEN2 controller on MediaTek SoCs.
+> +
+> +Required properties (controller (parent) node):
+> + - compatible	: should be "mediatek,<soc-model>-xsphy", "mediatek,xsphy",
+> + 		  soc-model is the name of SoC, such as mt2712 etc;
+> +		  when using "mediatek,xsphy" compatible string, you need SoC specific
+> +		  ones in addition, one of:
+> +		  - "mediatek,mt3611-xsphy"
 
-drm_of_find_panel_or_bridge calls of_graph_get_remote_node and that
-function looks up the main remote device node, i.e. not the remote
-port or endpoint node but the parent node. So, bridges using .of_node
-have stored their main device node in the .of_node member. I.e. the
-same value as of_node in struct device for all current cases.
-
-Cheers,
-Peter
-
-> -Daniel
->>
->> Cheers,
->> Peter
->>
->> [1] https://lkml.org/lkml/2018/4/23/769
->> [2] https://www.spinics.net/lists/dri-devel/msg174275.html
->>
->> Peter Rosin (26):
->>   drm/bridge: allow optionally specifying an owner .odev device
->>   drm/bridge: adv7511: provide an owner .odev device
->>   drm/bridge/analogix: core: specify the owner .odev of the bridge
->>   drm/bridge: analogix-anx78xx: provide an owner .odev device
->>   drm/bridge: cdns-dsi: provide an owner .odev device
->>   drm/bridge: vga-dac: provide an owner .odev device
->>   drm/bridge: lvds-encoder: provide an owner .odev device
->>   drm/bridge: megachips-stdpxxxx-ge-b850v3-fw: provide an owner .odev
->>     device
->>   drm/bridge: nxp-ptn3460: provide an owner .odev device
->>   drm/bridge: panel: provide an owner .odev device
->>   drm/bridge: ps8622: provide an owner .odev device
->>   drm/bridge: sii902x: provide an owner .odev device
->>   drm/bridge: sii9234: provide an owner .odev device
->>   drm/bridge: sii8620: provide an owner .odev device
->>   drm/bridge: synopsys: provide an owner .odev device for the bridges
->>   drm/bridge: tc358767: provide an owner .odev device
->>   drm/bridge: thc63lvd1024: provide an owner .odev device
->>   drm/bridge: ti-tfp410: provide an owner .odev device
->>   drm/exynos: mic: provide an owner .odev device for the bridge
->>   drm/mediatek: hdmi: provide an owner .odev device for the bridge
->>   drm/msm: specify the owner .odev of the bridges
->>   drm/rcar-du: lvds: provide an owner .odev device for the bridge
->>   drm/sti: provide an owner .odev device for the bridges
->>   drm/bridge: remove the .of_node member
->>   drm/bridge: require the owner .odev to be filled in on
->>     drm_bridge_add/attach
->>   drm/bridge: establish a link between the bridge supplier and consumer
->>
->>  drivers/gpu/drm/bridge/adv7511/adv7511_drv.c       |  2 +-
->>  drivers/gpu/drm/bridge/analogix-anx78xx.c          |  5 +----
->>  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  1 +
->>  drivers/gpu/drm/bridge/cdns-dsi.c                  |  2 +-
->>  drivers/gpu/drm/bridge/dumb-vga-dac.c              |  2 +-
->>  drivers/gpu/drm/bridge/lvds-encoder.c              |  2 +-
->>  .../drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c   |  2 +-
->>  drivers/gpu/drm/bridge/nxp-ptn3460.c               |  2 +-
->>  drivers/gpu/drm/bridge/panel.c                     |  4 +---
->>  drivers/gpu/drm/bridge/parade-ps8622.c             |  2 +-
->>  drivers/gpu/drm/bridge/sii902x.c                   |  2 +-
->>  drivers/gpu/drm/bridge/sii9234.c                   |  2 +-
->>  drivers/gpu/drm/bridge/sil-sii8620.c               |  2 +-
->>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          |  4 +---
->>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c      |  4 +---
->>  drivers/gpu/drm/bridge/tc358767.c                  |  2 +-
->>  drivers/gpu/drm/bridge/thc63lvd1024.c              |  2 +-
->>  drivers/gpu/drm/bridge/ti-tfp410.c                 |  2 +-
->>  drivers/gpu/drm/drm_bridge.c                       | 26 +++++++++++++++++++++-
->>  drivers/gpu/drm/exynos/exynos_drm_mic.c            |  2 +-
->>  drivers/gpu/drm/mediatek/mtk_hdmi.c                |  2 +-
->>  drivers/gpu/drm/msm/dsi/dsi_manager.c              |  1 +
->>  drivers/gpu/drm/msm/edp/edp_bridge.c               |  1 +
->>  drivers/gpu/drm/msm/hdmi/hdmi_bridge.c             |  1 +
->>  drivers/gpu/drm/rcar-du/rcar_lvds.c                |  2 +-
->>  drivers/gpu/drm/rockchip/rockchip_lvds.c           |  2 +-
->>  drivers/gpu/drm/sti/sti_dvo.c                      |  2 +-
->>  drivers/gpu/drm/sti/sti_hda.c                      |  1 +
->>  drivers/gpu/drm/sti/sti_hdmi.c                     |  1 +
->>  include/drm/drm_bridge.h                           |  8 +++----
->>  30 files changed, 57 insertions(+), 36 deletions(-)
->>
->> -- 
->> 2.11.0
->>
-> 
+What about mt2712 you mention above?
