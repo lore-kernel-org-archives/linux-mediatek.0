@@ -1,47 +1,43 @@
-From: Wei Yongjun <weiyongjun1@huawei.com>
-Subject: [PATCH -next] ASoC: fix return value check in
-	mt6351_codec_driver_probe()
-Date: Mon, 7 May 2018 01:39:45 +0000
-Message-ID: <1525657185-73163-1-git-send-email-weiyongjun1@huawei.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: [GIT PULL] mediatek drm next for 4.18
+Date: Mon, 7 May 2018 13:27:52 +0800
+Message-ID: <1525670872.3147.6.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Kai Chieh Chuang <kaichieh.chuang@mediatek.com>
-Cc: alsa-devel@alsa-project.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Wei Yongjun <weiyongjun1@huawei.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: Vasyl Gomonovych <gomonovych@gmail.com>, Satendra Singh Thakur <thakursatendra2003@yahoo.co.in>
 List-Id: linux-mediatek@lists.infradead.org
 
-In case of error, the function dev_get_regmap() returns NULL pointer not
-ERR_PTR(). The IS_ERR() test in the return value check should be
-replaced with NULL test.
-
-Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
----
- sound/soc/codecs/mt6351.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/sound/soc/codecs/mt6351.c b/sound/soc/codecs/mt6351.c
-index e739f07..f73dcd7 100644
---- a/sound/soc/codecs/mt6351.c
-+++ b/sound/soc/codecs/mt6351.c
-@@ -1472,8 +1472,8 @@ static int mt6351_codec_driver_probe(struct platform_device *pdev)
- 	priv->dev = &pdev->dev;
- 
- 	priv->regmap = dev_get_regmap(pdev->dev.parent, NULL);
--	if (IS_ERR(priv->regmap))
--		return PTR_ERR(priv->regmap);
-+	if (!priv->regmap)
-+		return -ENODEV;
- 
- 	dev_dbg(priv->dev, "%s(), dev name %s\n",
- 		__func__, dev_name(&pdev->dev));
+SGksIERhdmU6CgpUaGlzIGluY2x1ZGUgdHdvIHJlZmluZWQgcGF0Y2hlcy4KUGxlYXNlIGtpbmRs
+eSBsZXQgbWUga25vdyBpZiB0aGVyZSBpcyBhbnkgcHJvYmxlbS4KClJlZ2FyZHMsCkNLCgpUaGUg
+Zm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0CjYwY2M0M2ZjODg4NDI4YmIyZjE4ZjA4OTk3
+NDMyZDQyNmEyNDMzMzg6CgogIExpbnV4IDQuMTctcmMxICgyMDE4LTA0LTE1IDE4OjI0OjIwIC0w
+NzAwKQoKYXJlIGF2YWlsYWJsZSBpbiB0aGUgZ2l0IHJlcG9zaXRvcnkgYXQ6CgogIGh0dHBzOi8v
+Z2l0aHViLmNvbS9ja2h1LW1lZGlhdGVrL2xpbnV4LmdpdC10YWdzLmdpdAptZWRpYXRlay1kcm0t
+bmV4dC00LjE4Cgpmb3IgeW91IHRvIGZldGNoIGNoYW5nZXMgdXAgdG8gNzJhYzY5NjkwMzNkYzlm
+NWU1MjY1NjYyNDBhM2E3OTM0ZjA5MTZlZToKCiAgZHJtL21lZGlhdGVrOiBVc2luZyB0aGUgZnVu
+Y3Rpb24gZHJtX2Rpc3BsYXlfbW9kZV90b192aWRlb21vZGUKKDIwMTgtMDUtMDIgMTQ6MjA6NDcg
+KzA4MDApCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tCkdvbW9ub3Z5Y2gsIFZhc3lsICgxKToKICAgICAgZHJtL21lZGlhdGVr
+OiBVc2UgRVJSX0NBU1QgaW5zdGVhZCBvZiBFUlJfUFRSKFBUUl9FUlIoKSkKClNhdGVuZHJhIFNp
+bmdoIFRoYWt1ciAoMSk6CiAgICAgIGRybS9tZWRpYXRlazogVXNpbmcgdGhlIGZ1bmN0aW9uIGRy
+bV9kaXNwbGF5X21vZGVfdG9fdmlkZW9tb2RlCgogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tj
+b25maWcgICAgICAgfCAgMSArCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jICAg
+ICB8IDYwCisrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0KIGRyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jIHwgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZHNpLmMgICAgIHwgMTQgKystLS0tLS0KIDQgZmlsZXMgY2hhbmdlZCwgMzQgaW5zZXJ0
+aW9ucygrKSwgNDMgZGVsZXRpb25zKC0pCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
