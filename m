@@ -1,61 +1,47 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [RESEND PATCH 4/5] usb: mtu3: fix operation failure when test TEST_J/K
-Date: Sat, 5 May 2018 10:21:19 +0800
-Message-ID: <4c41c6c4230ac6f19643007540e786bc55a38a89.1525486663.git.chunfeng.yun@mediatek.com>
-References: <3b0c7ca576fee8220d63c9914483b70b0fbc8783.1525486663.git.chunfeng.yun@mediatek.com>
+From: Wei Yongjun <weiyongjun1@huawei.com>
+Subject: [PATCH -next] ASoC: fix return value check in
+	mt6351_codec_driver_probe()
+Date: Mon, 7 May 2018 01:39:45 +0000
+Message-ID: <1525657185-73163-1-git-send-email-weiyongjun1@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3b0c7ca576fee8220d63c9914483b70b0fbc8783.1525486663.git.chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Kai Chieh Chuang <kaichieh.chuang@mediatek.com>
+Cc: alsa-devel@alsa-project.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Wei Yongjun <weiyongjun1@huawei.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-There is an error dialog popped up in PC when test TEST_J/K
-by EHSETT tool, due to not waiting for the completion of
-control transfer. Here fix it by entering test mode after
-Status Stage finish.
+In case of error, the function dev_get_regmap() returns NULL pointer not
+ERR_PTR(). The IS_ERR() test in the return value check should be
+replaced with NULL test.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
 ---
- drivers/usb/mtu3/mtu3_gadget_ep0.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ sound/soc/codecs/mt6351.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/usb/mtu3/mtu3_gadget_ep0.c b/drivers/usb/mtu3/mtu3_gadget_ep0.c
-index d67b540..0d2b1cf 100644
---- a/drivers/usb/mtu3/mtu3_gadget_ep0.c
-+++ b/drivers/usb/mtu3/mtu3_gadget_ep0.c
-@@ -7,6 +7,7 @@
-  * Author:  Chunfeng.Yun <chunfeng.yun@mediatek.com>
-  */
+diff --git a/sound/soc/codecs/mt6351.c b/sound/soc/codecs/mt6351.c
+index e739f07..f73dcd7 100644
+--- a/sound/soc/codecs/mt6351.c
++++ b/sound/soc/codecs/mt6351.c
+@@ -1472,8 +1472,8 @@ static int mt6351_codec_driver_probe(struct platform_device *pdev)
+ 	priv->dev = &pdev->dev;
  
-+#include <linux/iopoll.h>
- #include <linux/usb/composite.h>
+ 	priv->regmap = dev_get_regmap(pdev->dev.parent, NULL);
+-	if (IS_ERR(priv->regmap))
+-		return PTR_ERR(priv->regmap);
++	if (!priv->regmap)
++		return -ENODEV;
  
- #include "mtu3.h"
-@@ -263,6 +264,7 @@ static int handle_test_mode(struct mtu3 *mtu, struct usb_ctrlrequest *setup)
- {
- 	void __iomem *mbase = mtu->mac_base;
- 	int handled = 1;
-+	u32 value;
- 
- 	switch (le16_to_cpu(setup->wIndex) >> 8) {
- 	case TEST_J:
-@@ -292,6 +294,14 @@ static int handle_test_mode(struct mtu3 *mtu, struct usb_ctrlrequest *setup)
- 	if (mtu->test_mode_nr == TEST_PACKET_MODE)
- 		ep0_load_test_packet(mtu);
- 
-+	/* send status before entering test mode. */
-+	value = mtu3_readl(mbase, U3D_EP0CSR) & EP0_W1C_BITS;
-+	mtu3_writel(mbase, U3D_EP0CSR, value | EP0_SETUPPKTRDY | EP0_DATAEND);
-+
-+	/* wait for ACK status sent by host */
-+	readl_poll_timeout(mbase + U3D_EP0CSR, value,
-+			!(value & EP0_DATAEND), 100, 5000);
-+
- 	mtu3_writel(mbase, U3D_USB2_TEST_MODE, mtu->test_mode_nr);
- 
- 	mtu->ep0_state = MU3D_EP0_STATE_SETUP;
--- 
-1.9.1
+ 	dev_dbg(priv->dev, "%s(), dev name %s\n",
+ 		__func__, dev_name(&pdev->dev));
