@@ -1,43 +1,118 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: [GIT PULL] mediatek drm next for 4.18
-Date: Mon, 7 May 2018 13:27:52 +0800
-Message-ID: <1525670872.3147.6.camel@mtksdaap41>
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH v2 26/26] drm/bridge: establish a link between the
+ bridge supplier and consumer
+Date: Mon, 7 May 2018 14:59:45 +0200
+Message-ID: <4cdcd215-8caf-e045-a478-f438f128c9f2@samsung.com>
+References: <20180504135212.26977-1-peda@axentia.se>
+        <CGME20180504135358epcas3p2bd9c2f5c9a8295152f2c96fdbb2ea8b1@epcas3p2.samsung.com>
+        <20180504135212.26977-27-peda@axentia.se>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Dave Airlie <airlied@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Vasyl Gomonovych <gomonovych@gmail.com>, Satendra Singh Thakur <thakursatendra2003@yahoo.co.in>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180504135212.26977-27-peda@axentia.se>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Peter Rosin <peda@axentia.se>, linux-kernel@vger.kernel.org
+Cc: Archit Taneja <architt@codeaurora.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Peter Senna Tschudin <peter.senna@collabora.com>, Martin Donnelly <martin.donnelly@ge.com>, Martyn Welch <martyn.welch@collabora.co.uk>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <seanpaul@chromium.org>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIERhdmU6CgpUaGlzIGluY2x1ZGUgdHdvIHJlZmluZWQgcGF0Y2hlcy4KUGxlYXNlIGtpbmRs
-eSBsZXQgbWUga25vdyBpZiB0aGVyZSBpcyBhbnkgcHJvYmxlbS4KClJlZ2FyZHMsCkNLCgpUaGUg
-Zm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0CjYwY2M0M2ZjODg4NDI4YmIyZjE4ZjA4OTk3
-NDMyZDQyNmEyNDMzMzg6CgogIExpbnV4IDQuMTctcmMxICgyMDE4LTA0LTE1IDE4OjI0OjIwIC0w
-NzAwKQoKYXJlIGF2YWlsYWJsZSBpbiB0aGUgZ2l0IHJlcG9zaXRvcnkgYXQ6CgogIGh0dHBzOi8v
-Z2l0aHViLmNvbS9ja2h1LW1lZGlhdGVrL2xpbnV4LmdpdC10YWdzLmdpdAptZWRpYXRlay1kcm0t
-bmV4dC00LjE4Cgpmb3IgeW91IHRvIGZldGNoIGNoYW5nZXMgdXAgdG8gNzJhYzY5NjkwMzNkYzlm
-NWU1MjY1NjYyNDBhM2E3OTM0ZjA5MTZlZToKCiAgZHJtL21lZGlhdGVrOiBVc2luZyB0aGUgZnVu
-Y3Rpb24gZHJtX2Rpc3BsYXlfbW9kZV90b192aWRlb21vZGUKKDIwMTgtMDUtMDIgMTQ6MjA6NDcg
-KzA4MDApCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tCkdvbW9ub3Z5Y2gsIFZhc3lsICgxKToKICAgICAgZHJtL21lZGlhdGVr
-OiBVc2UgRVJSX0NBU1QgaW5zdGVhZCBvZiBFUlJfUFRSKFBUUl9FUlIoKSkKClNhdGVuZHJhIFNp
-bmdoIFRoYWt1ciAoMSk6CiAgICAgIGRybS9tZWRpYXRlazogVXNpbmcgdGhlIGZ1bmN0aW9uIGRy
-bV9kaXNwbGF5X21vZGVfdG9fdmlkZW9tb2RlCgogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tj
-b25maWcgICAgICAgfCAgMSArCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jICAg
-ICB8IDYwCisrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0KIGRyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jIHwgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHNpLmMgICAgIHwgMTQgKystLS0tLS0KIDQgZmlsZXMgY2hhbmdlZCwgMzQgaW5zZXJ0
-aW9ucygrKSwgNDMgZGVsZXRpb25zKC0pCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+On 04.05.2018 15:52, Peter Rosin wrote:
+> If the bridge supplier is unbound, this will bring the bridge consumer
+> down along with the bridge. Thus, there will no longer linger any
+> dangling pointers from the bridge consumer (the drm_device) to some
+> non-existent bridge supplier.
+
+I understand rationales behind this patch, but it is another step into
+making drm_dev one big driver with subcomponents, where drm will work
+only if every subcomponent is working/loaded. Do we need to go this way?
+In case of many platforms such approach results in display turned on
+very late on boot for example due to late initialization of some
+regulator exposed by some i2c device, which is used by hdmi bridge. And
+this hdmi bridge is just to provide alternative(rarely used) display
+path, the main display path would work anyway.
+
+So the main question to drm maintainers is about evolution of bridges,
+if drm_bridges should become mandatory components of drm device or they
+could be added/removed dynamically?
+
+Regards
+Andrzej
+
+
+>
+> Signed-off-by: Peter Rosin <peda@axentia.se>
+> ---
+>  drivers/gpu/drm/drm_bridge.c | 18 ++++++++++++++++++
+>  include/drm/drm_bridge.h     |  2 ++
+>  2 files changed, 20 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+> index 78d186b6831b..0259f0a3ff27 100644
+> --- a/drivers/gpu/drm/drm_bridge.c
+> +++ b/drivers/gpu/drm/drm_bridge.c
+> @@ -26,6 +26,7 @@
+>  #include <linux/mutex.h>
+>  
+>  #include <drm/drm_bridge.h>
+> +#include <drm/drm_device.h>
+>  #include <drm/drm_encoder.h>
+>  
+>  #include "drm_crtc_internal.h"
+> @@ -127,12 +128,25 @@ int drm_bridge_attach(struct drm_encoder *encoder, struct drm_bridge *bridge,
+>  	if (bridge->dev)
+>  		return -EBUSY;
+>  
+> +	if (encoder->dev->dev != bridge->odev) {
+> +		bridge->link = device_link_add(encoder->dev->dev,
+> +					       bridge->odev, 0);
+> +		if (!bridge->link) {
+> +			dev_err(bridge->odev, "failed to link bridge to %s\n",
+> +				dev_name(encoder->dev->dev));
+> +			return -EINVAL;
+> +		}
+> +	}
+> +
+>  	bridge->dev = encoder->dev;
+>  	bridge->encoder = encoder;
+>  
+>  	if (bridge->funcs->attach) {
+>  		ret = bridge->funcs->attach(bridge);
+>  		if (ret < 0) {
+> +			if (bridge->link)
+> +				device_link_del(bridge->link);
+> +			bridge->link = NULL;
+>  			bridge->dev = NULL;
+>  			bridge->encoder = NULL;
+>  			return ret;
+> @@ -159,6 +173,10 @@ void drm_bridge_detach(struct drm_bridge *bridge)
+>  	if (bridge->funcs->detach)
+>  		bridge->funcs->detach(bridge);
+>  
+> +	if (bridge->link)
+> +		device_link_del(bridge->link);
+> +	bridge->link = NULL;
+> +
+>  	bridge->dev = NULL;
+>  }
+>  
+> diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+> index b656e505d11e..804189c63a4c 100644
+> --- a/include/drm/drm_bridge.h
+> +++ b/include/drm/drm_bridge.h
+> @@ -261,6 +261,7 @@ struct drm_bridge_timings {
+>   * @list: to keep track of all added bridges
+>   * @timings: the timing specification for the bridge, if any (may
+>   * be NULL)
+> + * @link: drm consumer <-> bridge supplier
+>   * @funcs: control functions
+>   * @driver_private: pointer to the bridge driver's internal context
+>   */
+> @@ -271,6 +272,7 @@ struct drm_bridge {
+>  	struct drm_bridge *next;
+>  	struct list_head list;
+>  	const struct drm_bridge_timings *timings;
+> +	struct device_link *link;
+>  
+>  	const struct drm_bridge_funcs *funcs;
+>  	void *driver_private;
