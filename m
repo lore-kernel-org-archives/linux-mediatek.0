@@ -1,49 +1,129 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: add MediaTek XS-PHY binding
-Date: Tue, 8 May 2018 09:03:09 +0800
-Message-ID: <1525741389.25162.37.camel@mhfsdcap03>
-References: <1525486506-19301-1-git-send-email-chunfeng.yun@mediatek.com>
-         <1525486506-19301-2-git-send-email-chunfeng.yun@mediatek.com>
-         <20180507170435.GA14540@rob-hp-laptop>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH 7/7] drm/mediatek: config component output by device node port
+Date: Tue, 8 May 2018 10:20:57 +0800
+Message-ID: <20180508022057.29379-8-bibby.hsieh@mediatek.com>
+References: <20180508022057.29379-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180507170435.GA14540@rob-hp-laptop>
+In-Reply-To: <20180508022057.29379-1-bibby.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ryder Lee <ryder.lee@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-05-07 at 12:04 -0500, Rob Herring wrote:
-> On Sat, May 05, 2018 at 10:15:05AM +0800, Chunfeng Yun wrote:
-> > Add a DT binding documentation of XS-PHY for MediaTek SoCs
-> > with USB3.1 GEN2 controller
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/phy/phy-mtk-xsphy.txt      |  110 ++++++++++++++++++++
-> >  1 file changed, 110 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt
-> > new file mode 100644
-> > index 0000000..9a95fab
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt
-> > @@ -0,0 +1,110 @@
-> > +MediaTek XS-PHY binding
-> > +--------------------------
-> > +
-> > +The XS-PHY controller supports physical layer functionality for USB3.1
-> > +GEN2 controller on MediaTek SoCs.
-> > +
-> > +Required properties (controller (parent) node):
-> > + - compatible	: should be "mediatek,<soc-model>-xsphy", "mediatek,xsphy",
-> > + 		  soc-model is the name of SoC, such as mt2712 etc;
-> > +		  when using "mediatek,xsphy" compatible string, you need SoC specific
-> > +		  ones in addition, one of:
-> > +		  - "mediatek,mt3611-xsphy"
-> 
-> What about mt2712 you mention above?
-Sorry, forgot to modify it
+We can select output component by decive node port.
+Main path default output component is DSI.
+External path default output component is DPI.
+
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 37 ++++++++++++++++++++++++++++++----
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h |  4 ++--
+ 2 files changed, 35 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index f4fb86ab7b8d..05333769d862 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -24,6 +24,8 @@
+ #include <linux/of_address.h>
+ #include <linux/of_platform.h>
+ #include <linux/pm_runtime.h>
++#include <linux/of.h>
++#include <linux/of_graph.h>
+ 
+ #include "mtk_drm_crtc.h"
+ #include "mtk_drm_ddp.h"
+@@ -133,7 +135,7 @@ static const struct drm_mode_config_funcs mtk_drm_mode_config_funcs = {
+ 	.atomic_commit = mtk_atomic_commit,
+ };
+ 
+-static const enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
++static enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_OVL0,
+ 	DDP_COMPONENT_RDMA0,
+ 	DDP_COMPONENT_COLOR0,
+@@ -141,12 +143,12 @@ static const enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_DSI0,
+ };
+ 
+-static const enum mtk_ddp_comp_id mt2701_mtk_ddp_ext[] = {
++static enum mtk_ddp_comp_id mt2701_mtk_ddp_ext[] = {
+ 	DDP_COMPONENT_RDMA1,
+ 	DDP_COMPONENT_DPI0,
+ };
+ 
+-static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
++static enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_OVL0,
+ 	DDP_COMPONENT_COLOR0,
+ 	DDP_COMPONENT_AAL,
+@@ -157,7 +159,7 @@ static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_PWM0,
+ };
+ 
+-static const enum mtk_ddp_comp_id mt8173_mtk_ddp_ext[] = {
++static enum mtk_ddp_comp_id mt8173_mtk_ddp_ext[] = {
+ 	DDP_COMPONENT_OVL1,
+ 	DDP_COMPONENT_COLOR1,
+ 	DDP_COMPONENT_GAMMA,
+@@ -411,6 +413,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 
+ 	/* Iterate over sibling DISP function blocks */
+ 	for_each_child_of_node(dev->of_node->parent, node) {
++		struct device_node *port, *ep, *remote;
+ 		const struct of_device_id *of_id;
+ 		enum mtk_ddp_comp_type comp_type;
+ 		int comp_id;
+@@ -470,6 +473,32 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 
+ 			private->ddp_comp[comp_id] = comp;
+ 		}
++
++		if (comp_type != MTK_DSI && comp_type != MTK_DPI) {
++			port = of_graph_get_port_by_id(node, 0);
++			if (!port)
++				continue;
++			ep = of_get_child_by_name(port, "endpoint");
++			of_node_put(port);
++			if (!ep)
++				continue;
++			remote = of_graph_get_remote_port_parent(ep);
++			of_node_put(ep);
++			if (!remote)
++				continue;
++			of_id = of_match_node(mtk_ddp_comp_dt_ids, remote);
++			if (!of_id)
++				continue;
++			comp_type = (enum mtk_ddp_comp_type)of_id->data;
++			for (i = 0; i < private->data->main_len - 1; i++)
++				if (private->data->main_path[i] == comp_id)
++					private->data->main_path[i + 1] =
++					mtk_ddp_comp_get_id(node, comp_type);
++			for (i = 0; i < private->data->ext_len - 1; i++)
++				if (private->data->ext_path[i] == comp_id)
++					private->data->ext_path[i + 1] =
++					mtk_ddp_comp_get_id(node, comp_type);
++		}
+ 	}
+ 
+ 	if (!private->mutex_node) {
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+index c3378c452c0a..2bcba8eb06f4 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+@@ -29,9 +29,9 @@ struct drm_property;
+ struct regmap;
+ 
+ struct mtk_mmsys_driver_data {
+-	const enum mtk_ddp_comp_id *main_path;
++	enum mtk_ddp_comp_id *main_path;
+ 	unsigned int main_len;
+-	const enum mtk_ddp_comp_id *ext_path;
++	enum mtk_ddp_comp_id *ext_path;
+ 	unsigned int ext_len;
+ 	bool shadow_register;
+ };
+-- 
+2.12.5
