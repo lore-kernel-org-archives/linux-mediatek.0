@@ -1,122 +1,67 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH v2 26/26] drm/bridge: establish a link between the
- bridge supplier and consumer
-Date: Tue, 8 May 2018 11:03:14 +0200
-Message-ID: <4284b38f-2c1e-1abd-8a0f-b3b6c90ceeed@samsung.com>
-References: <20180504135212.26977-1-peda@axentia.se>
- <CGME20180504135358epcas3p2bd9c2f5c9a8295152f2c96fdbb2ea8b1@epcas3p2.samsung.com>
- <20180504135212.26977-27-peda@axentia.se>
- <4cdcd215-8caf-e045-a478-f438f128c9f2@samsung.com>
- <9751c1c5-f2fa-f24e-64f3-71019f253332@axentia.se>
-Mime-Version: 1.0
+From: Satendra Singh Thakur <satendra.t@samsung.com>
+Subject: Re: [PATCH 00/13] drm/kms/mode: using helper func
+ drm_display_mode_to/from_videomode for calculating timing parameters
+Date: Tue,  8 May 2018 16:28:30 +0530
+Message-ID: <1525777110-11378-1-git-send-email-satendra.t@samsung.com>
+References: <20180507134602.GH12521@phenom.ffwll.local>
+        <CGME20180508105900epcas5p25ffe94a214e5ad0848d834d6c3562ad6@epcas5p2.samsung.com>
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <9751c1c5-f2fa-f24e-64f3-71019f253332@axentia.se>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Peter Rosin <peda@axentia.se>, linux-kernel@vger.kernel.org
-Cc: Martyn Welch <martyn.welch@collabora.co.uk>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Peter Senna Tschudin <peter.senna@collabora.com>, Martin Donnelly <martin.donnelly@ge.com>, linux-arm-msm@vger.kernel.org, Jyri Sarha <jsarha@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180507134602.GH12521@phenom.ffwll.local>
+Sender: linux-kernel-owner@vger.kernel.org
+To: daniel@ffwll.ch, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org
+Cc: sst2005@gmail.com, Satendra Singh Thakur <satendra.t@samsung.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gMDcuMDUuMjAxOCAxNTo0MywgUGV0ZXIgUm9zaW4gd3JvdGU6Cj4gT24gMjAxOC0wNS0wNyAx
-NDo1OSwgQW5kcnplaiBIYWpkYSB3cm90ZToKPj4gT24gMDQuMDUuMjAxOCAxNTo1MiwgUGV0ZXIg
-Um9zaW4gd3JvdGU6Cj4+PiBJZiB0aGUgYnJpZGdlIHN1cHBsaWVyIGlzIHVuYm91bmQsIHRoaXMg
-d2lsbCBicmluZyB0aGUgYnJpZGdlIGNvbnN1bWVyCj4+PiBkb3duIGFsb25nIHdpdGggdGhlIGJy
-aWRnZS4gVGh1cywgdGhlcmUgd2lsbCBubyBsb25nZXIgbGluZ2VyIGFueQo+Pj4gZGFuZ2xpbmcg
-cG9pbnRlcnMgZnJvbSB0aGUgYnJpZGdlIGNvbnN1bWVyICh0aGUgZHJtX2RldmljZSkgdG8gc29t
-ZQo+Pj4gbm9uLWV4aXN0ZW50IGJyaWRnZSBzdXBwbGllci4KPj4gSSB1bmRlcnN0YW5kIHJhdGlv
-bmFsZXMgYmVoaW5kIHRoaXMgcGF0Y2gsIGJ1dCBpdCBpcyBhbm90aGVyIHN0ZXAgaW50bwo+PiBt
-YWtpbmcgZHJtX2RldiBvbmUgYmlnIGRyaXZlciB3aXRoIHN1YmNvbXBvbmVudHMsIHdoZXJlIGRy
-bSB3aWxsIHdvcmsKPj4gb25seSBpZiBldmVyeSBzdWJjb21wb25lbnQgaXMgd29ya2luZy9sb2Fk
-ZWQuCj4gVGhlIHN0ZXAgaXMgdmVyeSBzbWFsbCBJTUhPLiBKdXN0IGEgZGV2aWNlLWxpbmssIHdo
-aWNoIGlzIHZlcnkgZWFzeSB0bwo+IHJlbW92ZSBvbmNlIHdoYXRldmVyIG90aGVyIHNvbHV0aW9u
-IGlzIHJlYWR5Lgo+Cj4+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBEbyB3ZSBuZWVkIHRvIGdvIHRoaXMgd2F5Pwo+IElmIHRoZSBkcml2ZXJzIGV4cGVjdCB0
-aGUgcGFydHMgdG8gYmUgdGhlcmUsIGFuZCB0aGVyZSBpcyBubyBvdGhlciBzYWZldHkKPiBuZXQg
-aW4gcGxhY2UgaWYgdGhleSBhcmUgbm90LCB3aGF0IGlzIHRoZSAoc2hvcnQtdGVybSkgYWx0ZXJu
-YXRpdmU/Cj4KPj4gSW4gY2FzZSBvZiBtYW55IHBsYXRmb3JtcyBzdWNoIGFwcHJvYWNoIHJlc3Vs
-dHMgaW4gZGlzcGxheSB0dXJuZWQgb24KPj4gdmVyeSBsYXRlIG9uIGJvb3QgZm9yIGV4YW1wbGUg
-ZHVlIHRvIGxhdGUgaW5pdGlhbGl6YXRpb24gb2Ygc29tZQo+PiByZWd1bGF0b3IgZXhwb3NlZCBi
-eSBzb21lIGkyYyBkZXZpY2UsIHdoaWNoIGlzIHVzZWQgYnkgaGRtaSBicmlkZ2UuIEFuZAo+PiB0
-aGlzIGhkbWkgYnJpZGdlIGlzIGp1c3QgdG8gcHJvdmlkZSBhbHRlcm5hdGl2ZShyYXJlbHkgdXNl
-ZCkgZGlzcGxheQo+PiBwYXRoLCB0aGUgbWFpbiBkaXNwbGF5IHBhdGggd291bGQgd29yayBhbnl3
-YXkuCj4gVGhpcyBwYXRjaCBkb2VzIG5vdCBjb250cmlidXRlIHRvIGFueSBsYXRlIGluaXQgYW5k
-IGFueSBzdWNoIGRlbGF5IGlzIG5vdAo+IGFmZmVjdGVkIGJ5IHRoaXMuIEF0IGFsbC4KPgo+PiBT
-byB0aGUgbWFpbiBxdWVzdGlvbiB0byBkcm0gbWFpbnRhaW5lcnMgaXMgYWJvdXQgZXZvbHV0aW9u
-IG9mIGJyaWRnZXMsCj4+IGlmIGRybV9icmlkZ2VzIHNob3VsZCBiZWNvbWUgbWFuZGF0b3J5IGNv
-bXBvbmVudHMgb2YgZHJtIGRldmljZSBvciB0aGV5Cj4+IGNvdWxkIGJlIGFkZGVkL3JlbW92ZWQg
-ZHluYW1pY2FsbHk/Cj4gVGhhdCBpcyBhIG11Y2ggYmlnZ2VyIHF1ZXN0aW9uIHRoYW4gdGhpcyBw
-YXRjaC9zZXJpZXMuIENvbmZsYXRpbmcgdGhlCj4gdHdvIGlzIG5vdCBmYWlyIElNSE8uIFlvdSBj
-b3VsZCBydW4gdGhpcyB2ZXJ5IHNhbWUgYXJndW1lbnQgZm9yIGV2ZXJ5Cj4gZHJpdmVyIHRoYXQg
-Z2V0cyBhZGRlZCwgc2luY2UgYW55IGFkZGl0aW9uYWwgZHJpdmVyIHdpbGwganVzdCBtYWtlIGl0
-Cj4gaGFyZGVyIHRvIG1ha2UgZXZlcnl0aGluZyBkeW5hbWljLiBTaG91bGQgd2Ugc3RvcCBkZXZl
-bG9wbWVudCByaWdodAo+IGF3YXk/Cj4KPiBCZXNpZGVzLCBhcyBsb25nIGFzIHRoZSBkcm0gZGV2
-aWNlcyBhcmUgaW4gZmFjdCBhY3RpbmcgYXMgYmlnIHN0YXRpYwo+IGRyaXZlcnMgKGJ1aWx0IGZy
-b20gc21hbGxlciBwYXJ0cyksIAoKbm90IHRydWUKCj4gdGhpcyBzaG91bGQgYmUgY29uc2lkZXJl
-ZCBhIGJ1Zy1maXgKPiB0aGF0IHdpbGwgcHJldmVudCBkZXJlZmVyZW5jZSBvZiBzdGFsZSBwb2lu
-dGVycy4KPgo+IE9yIHdpbGwgc29tZSBvdGhlciBzb2x1dGlvbiBhcHBlYXIgYW5kIG1hZ2ljYWxs
-eSBtYWtlIGFsbCBicmlkZ2VzIGFuZAo+IGRybSBkcml2ZXJzIGNhcGFibGUgb2YgZHluYW1pYyBy
-ZWNvbmZpZ3VyYXRpb24gaW4gdGhlIG5leHQgZmV3IHdlZWtzPwo+IFllYWgsIHJpZ2h0Li4uCgpZ
-b3UgYXJlIG5vdCBjaGFuZ2luZyBzaW5nbGUgZHJpdmVyLCB5b3UgYXJlIGNoYW5naW5nIGZyYW1l
-d29yayBhbmQgaXQKYWZmZWN0cyBhbGwgdGhlIGRyaXZlcnMgdXNpbmcgaXQsIGJlaW5nIG1vcmUg
-Y2F1dGlvdXMgYWJvdXQgc3VjaCBwYXRjaGVzCnNlZW1zIHF1aXRlIG5hdHVyYWwuCgpBbnl3YXks
-IEkgaGF2ZSByZWFsaXplZCB0aGF0IHNpbmNlIGRybV9icmlkZ2VfZGV0YWNoIHdpbGwgcmVtb3Zl
-IHRoZQpsaW5rLCBzbyB3aXRoIHByb3Blcmx5IHdyaXR0ZW4gZHluYW1pYyBicmlkZ2UgcmVtb3Zh
-bCwgeW91ciBwYXRjaCBzaG91bGQKbm90IGJlIGEgYmxvY2tlci4KClJlZ2FyZHMKQW5kcnplagoK
-Pgo+IENoZWVycywKPiBQZXRlcgo+Cj4+IFJlZ2FyZHMKPj4gQW5kcnplago+Pgo+Pgo+Pj4gU2ln
-bmVkLW9mZi1ieTogUGV0ZXIgUm9zaW4gPHBlZGFAYXhlbnRpYS5zZT4KPj4+IC0tLQo+Pj4gIGRy
-aXZlcnMvZ3B1L2RybS9kcm1fYnJpZGdlLmMgfCAxOCArKysrKysrKysrKysrKysrKysKPj4+ICBp
-bmNsdWRlL2RybS9kcm1fYnJpZGdlLmggICAgIHwgIDIgKysKPj4+ICAyIGZpbGVzIGNoYW5nZWQs
-IDIwIGluc2VydGlvbnMoKykKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2Ry
-bV9icmlkZ2UuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fYnJpZGdlLmMKPj4+IGluZGV4IDc4ZDE4
-NmI2ODMxYi4uMDI1OWYwYTNmZjI3IDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2Ry
-bV9icmlkZ2UuYwo+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9icmlkZ2UuYwo+Pj4gQEAg
-LTI2LDYgKzI2LDcgQEAKPj4+ICAjaW5jbHVkZSA8bGludXgvbXV0ZXguaD4KPj4+ICAKPj4+ICAj
-aW5jbHVkZSA8ZHJtL2RybV9icmlkZ2UuaD4KPj4+ICsjaW5jbHVkZSA8ZHJtL2RybV9kZXZpY2Uu
-aD4KPj4+ICAjaW5jbHVkZSA8ZHJtL2RybV9lbmNvZGVyLmg+Cj4+PiAgCj4+PiAgI2luY2x1ZGUg
-ImRybV9jcnRjX2ludGVybmFsLmgiCj4+PiBAQCAtMTI3LDEyICsxMjgsMjUgQEAgaW50IGRybV9i
-cmlkZ2VfYXR0YWNoKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2Rlciwgc3RydWN0IGRybV9icmlk
-Z2UgKmJyaWRnZSwKPj4+ICAJaWYgKGJyaWRnZS0+ZGV2KQo+Pj4gIAkJcmV0dXJuIC1FQlVTWTsK
-Pj4+ICAKPj4+ICsJaWYgKGVuY29kZXItPmRldi0+ZGV2ICE9IGJyaWRnZS0+b2Rldikgewo+Pj4g
-KwkJYnJpZGdlLT5saW5rID0gZGV2aWNlX2xpbmtfYWRkKGVuY29kZXItPmRldi0+ZGV2LAo+Pj4g
-KwkJCQkJICAgICAgIGJyaWRnZS0+b2RldiwgMCk7Cj4+PiArCQlpZiAoIWJyaWRnZS0+bGluaykg
-ewo+Pj4gKwkJCWRldl9lcnIoYnJpZGdlLT5vZGV2LCAiZmFpbGVkIHRvIGxpbmsgYnJpZGdlIHRv
-ICVzXG4iLAo+Pj4gKwkJCQlkZXZfbmFtZShlbmNvZGVyLT5kZXYtPmRldikpOwo+Pj4gKwkJCXJl
-dHVybiAtRUlOVkFMOwo+Pj4gKwkJfQo+Pj4gKwl9Cj4+PiArCj4+PiAgCWJyaWRnZS0+ZGV2ID0g
-ZW5jb2Rlci0+ZGV2Owo+Pj4gIAlicmlkZ2UtPmVuY29kZXIgPSBlbmNvZGVyOwo+Pj4gIAo+Pj4g
-IAlpZiAoYnJpZGdlLT5mdW5jcy0+YXR0YWNoKSB7Cj4+PiAgCQlyZXQgPSBicmlkZ2UtPmZ1bmNz
-LT5hdHRhY2goYnJpZGdlKTsKPj4+ICAJCWlmIChyZXQgPCAwKSB7Cj4+PiArCQkJaWYgKGJyaWRn
-ZS0+bGluaykKPj4+ICsJCQkJZGV2aWNlX2xpbmtfZGVsKGJyaWRnZS0+bGluayk7Cj4+PiArCQkJ
-YnJpZGdlLT5saW5rID0gTlVMTDsKPj4+ICAJCQlicmlkZ2UtPmRldiA9IE5VTEw7Cj4+PiAgCQkJ
-YnJpZGdlLT5lbmNvZGVyID0gTlVMTDsKPj4+ICAJCQlyZXR1cm4gcmV0Owo+Pj4gQEAgLTE1OSw2
-ICsxNzMsMTAgQEAgdm9pZCBkcm1fYnJpZGdlX2RldGFjaChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJp
-ZGdlKQo+Pj4gIAlpZiAoYnJpZGdlLT5mdW5jcy0+ZGV0YWNoKQo+Pj4gIAkJYnJpZGdlLT5mdW5j
-cy0+ZGV0YWNoKGJyaWRnZSk7Cj4+PiAgCj4+PiArCWlmIChicmlkZ2UtPmxpbmspCj4+PiArCQlk
-ZXZpY2VfbGlua19kZWwoYnJpZGdlLT5saW5rKTsKPj4+ICsJYnJpZGdlLT5saW5rID0gTlVMTDsK
-Pj4+ICsKPj4+ICAJYnJpZGdlLT5kZXYgPSBOVUxMOwo+Pj4gIH0KPj4+ICAKPj4+IGRpZmYgLS1n
-aXQgYS9pbmNsdWRlL2RybS9kcm1fYnJpZGdlLmggYi9pbmNsdWRlL2RybS9kcm1fYnJpZGdlLmgK
-Pj4+IGluZGV4IGI2NTZlNTA1ZDExZS4uODA0MTg5YzYzYTRjIDEwMDY0NAo+Pj4gLS0tIGEvaW5j
-bHVkZS9kcm0vZHJtX2JyaWRnZS5oCj4+PiArKysgYi9pbmNsdWRlL2RybS9kcm1fYnJpZGdlLmgK
-Pj4+IEBAIC0yNjEsNiArMjYxLDcgQEAgc3RydWN0IGRybV9icmlkZ2VfdGltaW5ncyB7Cj4+PiAg
-ICogQGxpc3Q6IHRvIGtlZXAgdHJhY2sgb2YgYWxsIGFkZGVkIGJyaWRnZXMKPj4+ICAgKiBAdGlt
-aW5nczogdGhlIHRpbWluZyBzcGVjaWZpY2F0aW9uIGZvciB0aGUgYnJpZGdlLCBpZiBhbnkgKG1h
-eQo+Pj4gICAqIGJlIE5VTEwpCj4+PiArICogQGxpbms6IGRybSBjb25zdW1lciA8LT4gYnJpZGdl
-IHN1cHBsaWVyCj4+PiAgICogQGZ1bmNzOiBjb250cm9sIGZ1bmN0aW9ucwo+Pj4gICAqIEBkcml2
-ZXJfcHJpdmF0ZTogcG9pbnRlciB0byB0aGUgYnJpZGdlIGRyaXZlcidzIGludGVybmFsIGNvbnRl
-eHQKPj4+ICAgKi8KPj4+IEBAIC0yNzEsNiArMjcyLDcgQEAgc3RydWN0IGRybV9icmlkZ2Ugewo+
-Pj4gIAlzdHJ1Y3QgZHJtX2JyaWRnZSAqbmV4dDsKPj4+ICAJc3RydWN0IGxpc3RfaGVhZCBsaXN0
-Owo+Pj4gIAljb25zdCBzdHJ1Y3QgZHJtX2JyaWRnZV90aW1pbmdzICp0aW1pbmdzOwo+Pj4gKwlz
-dHJ1Y3QgZGV2aWNlX2xpbmsgKmxpbms7Cj4+PiAgCj4+PiAgCWNvbnN0IHN0cnVjdCBkcm1fYnJp
-ZGdlX2Z1bmNzICpmdW5jczsKPj4+ICAJdm9pZCAqZHJpdmVyX3ByaXZhdGU7Cj4+Cj4KPgo+Cgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Thu, May 07, 2018 at 15:46:02 +0200, Daniel Vetter wrote:
+> On Thu, May 03, 2018 at 01:53:55PM +0530, Satendra Singh Thakur wrote:
+> > 1.There is a function in drm-core to calculate display timing parameters:
+> > horizontal front porch, back porch, sync length,
+> > vertical front porch, back porch, sync length and
+> > clock in Hz.
+> > However, some drivers are still calculating these parameters themselves.
+> > Therefore, there is a duplication of the code.
+> > This patch series replaces this redundant code with the function
+> > drm_display_mode_to_videomode.
+> > This removes nearly 100 redundant lines from the related drivers.
+> > 2.For some drivers (sun4i) the reverse helper
+> > drm_display_mode_from_videomode is used.
+> > 3.For some drivers it replaces arithmatic operators (*, /) with shifting
+> > operators (>>, <<).
+> > 4.For some drivers DRM_MODE_FLAG_* are replaced with DISPLAY_FLAGS_* flags.
+> > 5.These changes apply to following crtc and encoder drivers:
+> > atmel-hlcdc
+> > bridge-tc358767
+> > exynos-dsi
+> > fsl-dcu
+> > gma500-mdfld_dsi_dpi
+> > hisilicon-kirin_dsi, ade
+> > meson-encoder
+> > pl111-display
+> > sun4i-tv
+> > ti lcdc
+> > tegra dc
+> > mediatek dpi dsi
+> > bridge-adv7533
+> 
+> The drm_mode_to_videomode helper is meant for interop between drm and v4l,
+> which have different internal structures to represent modes.
+> 
+> For drivers that only use drm I think the better option would be to add
+> these fields to struct drm_display_mode as another set of crtc_* values
+> (the computed values are stored in crtc_ prefixed members). And compute
+> front/back porch in drm_mode_set_crtcinfo.
+> 
+> Then we can use these new drm_display_mode->crtc_h|vfront|back_porch
+> fields in all the drivers you're changing. This way you avoid having to
+> change all the drm drivers to use v4l #defines.
+> 
+> Thanks,
+> Daniel
+
+Hi Daniel,
+Thanks for the comments.
+I will look into it.
+
+Thanks
+-Satendra
