@@ -1,71 +1,55 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: fix return value check in mt6351_codec_driver_probe()" to the asoc tree
-Date: Wed,  9 May 2018 10:47:58 +0100 (BST)
-Message-ID: <20180509094758.E29A044007A@finisterre.ee.mobilebroadband>
-References: <1525657185-73163-1-git-send-email-weiyongjun1@huawei.com>
+From: Felipe Balbi <felipe.balbi@linux.intel.com>
+Subject: Re: [PATCH] usb: gadget: composite: fill bcdUSB as 0x0320 for SuperSpeed or higher speeds
+Date: Wed, 09 May 2018 14:33:13 +0300
+Message-ID: <8736z1kqrq.fsf@linux.intel.com>
+References: <69cc710fa8b7d18c494c9f482fd2b8e6fb7c0c94.1525865206.git.chunfeng.yun@mediatek.com>
+Mime-Version: 1.0
+Content-Type: multipart/signed; boundary="=-=-=";
+        micalg=pgp-sha512; protocol="application/pgp-signature"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1525657185-73163-1-git-send-email-weiyongjun1@huawei.com>
+In-Reply-To: <69cc710fa8b7d18c494c9f482fd2b8e6fb7c0c94.1525865206.git.chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Wei Yongjun <weiyongjun1@huawei.com>
-Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Kai Chieh Chuang <kaichieh.chuang@mediatek.com>, alsa-devel@alsa-project.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-   ASoC: fix return value check in mt6351_codec_driver_probe()
 
-has been applied to the asoc tree at
+Hi,
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
+> The USB3CV version 2.1.80 (March 26, 2018) requires all devices
+> ( gen1, gen2, single lane, dual lane) to return the value of 0x0320
+> in the bcdUSB field
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+this sounds really odd. What happens when I get a USB 3.1 compliant
+device off-the-shelf and run it through USB3CV? will it fail now?
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+Care to share a screenshot or the raw html of the test result?
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+=2D-=20
+balbi
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Thanks,
-Mark
+-----BEGIN PGP SIGNATURE-----
 
->From aaa730ca3f88f535dc12e2f0ff575f70f516841b Mon Sep 17 00:00:00 2001
-From: Wei Yongjun <weiyongjun1@huawei.com>
-Date: Mon, 7 May 2018 01:39:45 +0000
-Subject: [PATCH] ASoC: fix return value check in mt6351_codec_driver_probe()
-
-In case of error, the function dev_get_regmap() returns NULL pointer not
-ERR_PTR(). The IS_ERR() test in the return value check should be
-replaced with NULL test.
-
-Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/codecs/mt6351.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/sound/soc/codecs/mt6351.c b/sound/soc/codecs/mt6351.c
-index e739f078fec5..f73dcd753584 100644
---- a/sound/soc/codecs/mt6351.c
-+++ b/sound/soc/codecs/mt6351.c
-@@ -1472,8 +1472,8 @@ static int mt6351_codec_driver_probe(struct platform_device *pdev)
- 	priv->dev = &pdev->dev;
- 
- 	priv->regmap = dev_get_regmap(pdev->dev.parent, NULL);
--	if (IS_ERR(priv->regmap))
--		return PTR_ERR(priv->regmap);
-+	if (!priv->regmap)
-+		return -ENODEV;
- 
- 	dev_dbg(priv->dev, "%s(), dev name %s\n",
- 		__func__, dev_name(&pdev->dev));
--- 
-2.17.0
+iQIzBAEBCgAdFiEElLzh7wn96CXwjh2IzL64meEamQYFAlry3HkACgkQzL64meEa
+mQZVhw//c8t4VTHKlwox/tPXPbndtR4FkwXphjHcAuuOELFYCjxYaP9aG+7WTqYr
+7GdOsC+FkGagg0qJ6XQ1thV1pAZ9y/onGmCYnCpEyOXHFO0UVBz60/ooRt2eeLqc
+Akk/Obl92v5vGG2Nh5u3cNOIgMovp6g56K4it2Gu3kTuuORQIqcx6bwNqwahKf4R
+7X3gZ+pSVWvq0s0TpYeAYrDIzHKoIuXnCJJlVBaqDpf8gNUbzAg1nw9kKuNkVupy
+cGSHfgTDIhnd3/cHwNluHbyGRAwPDMUs1ERqUAyoUVweFoKM1Y8zd0NzXIkhPzgP
+J3cXHCIKrtdy4RsbwpVkTZRlFN7UjNaTRCUDQHENfmwzIHR3pn9tOnkLTp6cjClI
+Pwj+Ni6G+CWGA6+KCwpI/8aUakyTd2fsue+X64bSslI+mjc24nTtii3rLD+oNevF
+MLETaiAlU6Xn4YhCAfv/A/LzxxTUHqQnEJlBlqAnZO+9hVBQ+jL1DuM2BqgrNUoL
+mb1m9yLHYasbQ6iJPjDegqO4M+A/nLNS6SY/2e4wc0uwI7CXP5P3eQGp6H57GxF2
+XtGUYQhSTjyj6qs89uicNRsy70v52E3BzFBWw2lmVikqrU9HiD3VC7cJCK5/n3ZN
+IaxwIsiIpRKpWxoSvl/Vd6B3+FDIeiu6tfJTHcGirDdRFlS1E6M=
+=yC5H
+-----END PGP SIGNATURE-----
+--=-=-=--
