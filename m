@@ -1,96 +1,103 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v1 6/7] Bluetooth: hci_mediatek: Add protocol support
- for MediaTek serial devices
-Date: Thu, 10 May 2018 14:45:41 +0800
-Message-ID: <1525934741.18877.38.camel@mtkswgap22>
-References: <cover.1522736996.git.sean.wang@mediatek.com>
-         <f0e0a0b7f1dc3845dc6eafb4ccd60284d1675f8d.1522736996.git.sean.wang@mediatek.com>
-         <A7391E5D-2945-415B-8AB1-8DFBF2E65878@holtmann.org>
-         <1525762084.14468.20.camel@mtkswgap22>
-         <D474053D-6910-4B04-8B98-59B96FEB86BC@holtmann.org>
-         <1525767775.18877.22.camel@mtkswgap22>
-         <6033F916-F103-4F07-9912-695B5B49F30F@holtmann.org>
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH v2 01/26] drm/bridge: allow optionally specifying an
+ owner .odev device
+Date: Thu, 10 May 2018 09:00:26 +0200
+Message-ID: <603ed606-022b-6520-149d-3b333123cfcf@samsung.com>
+References: <20180504135212.26977-1-peda@axentia.se>
+ <CGME20180504135245epcas4p1d0463b6b3c73d1dd2550c6ed5a4e3986@epcas4p1.samsung.com>
+ <20180504135212.26977-2-peda@axentia.se>
+ <4e92fdea-0609-0fff-0e3f-d9f78f596eb7@samsung.com>
+ <4be4448e-763c-4832-f194-6b79afe87d08@axentia.se>
+ <5abcab35-8a78-a02a-9f22-321da55d9858@axentia.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6033F916-F103-4F07-9912-695B5B49F30F@holtmann.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Marcel Holtmann <marcel@holtmann.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Johan Hedberg <johan.hedberg@gmail.com>, devicetree <devicetree@vger.kernel.org>, BlueZ development <linux-bluetooth@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <5abcab35-8a78-a02a-9f22-321da55d9858@axentia.se>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Peter Rosin <peda@axentia.se>, linux-kernel@vger.kernel.org
+Cc: Martyn Welch <martyn.welch@collabora.co.uk>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Peter Senna Tschudin <peter.senna@collabora.com>, Martin Donnelly <martin.donnelly@ge.com>, linux-arm-msm@vger.kernel.org, Jyri Sarha <jsarha@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-05-08 at 13:18 +0200, Marcel Holtmann wrote:
-> Hi Sean,
-> 
-> >>>>> +
-
-[ ... ]
-
-> > 
-> > I'm happy to do with btmon. just the environment with buildroot the BT
-> > running on seems there's a missing support for btmon. I can start to use
-> > btmon once I change the environment to Debian.
-> > 
-> >> So all the MTK vendor commands respond with a vendor event? Or are there some that do the standard command status/complete handling?
-> >> 
-> > 
-> > yes, mtk controller after mt7622 (included), its MTK vendors command
-> > (opcode 0xfc6f) always respond with a vendor event id 0xe4. And they
-> > don't do any standard status/complete handling.
-
-
-> then we need to figure out where the __hci_cmd_sync_ev causes a problem. Since normally that should just work for you.
-> 
-
-Okay. I will look into more about the issue after I finished the v2
-based on btuart driver. By the way, I've ported the btmon to my board,
-these vendor commands/events reported via btmon looks like below shown
-up
-
-> HCI Event: Unknown (0xe4) plen 5
- [hci0] 11.213593
-        02 01 01 00 00                                   .....
-
-> HCI Event: Unknown (0xe4) plen 5
- [hci0] 11.214272
-        02 01 01 00 00                                   .....
-
-< HCI Command: Vendor (0x3f|0x006f) plen 5
- [hci0] 11.214318
-        01 07 01 00 04                                   .....
-
-> HCI Event: Unknown (0xe4) plen 5
- [hci0] 11.214438
-        02 07 01 00 00                                   .....
-
-< HCI Command: Vendor (0x3f|0x006f) plen 6
- [hci0] 13.229379
-        01 06 02 00 00 01                                ......
-
-> HCI Event: Unknown (0xe4) plen 5
- [hci0] 13.307729
-        02 06 01 00 00                                   .....
-
-
-> > BTW, mtk controller before mt7622, such as mt7623, its MTK vendor
-> > command always go with completely specific format, not with hci format.
-> 
-> What does that mean? Do you have an example?
-> 
-
-what I meant is that these vendor commands and events applied on old
-SoCs prior to MT7622 always use completely proprietary format rather
-than any BT packet to setup the BT controller.
-
-for example:
-- vendor command 
-01 06 02 00 00 01 
-
-- vendor event
-02 06 01 00 00
-
-> Regards
-> 
-> Marcel
-> 
+T24gMTAuMDUuMjAxOCAwMDoyMSwgUGV0ZXIgUm9zaW4gd3JvdGU6Cj4gT24gMjAxOC0wNS0wOSAx
+Nzo1MywgUGV0ZXIgUm9zaW4gd3JvdGU6Cj4+IE9uIDIwMTgtMDUtMDkgMTc6MDgsIEFuZHJ6ZWog
+SGFqZGEgd3JvdGU6Cj4+PiBPbiAwNC4wNS4yMDE4IDE1OjUxLCBQZXRlciBSb3NpbiB3cm90ZToK
+Pj4+PiBCcmlkZ2UgZHJpdmVycyBjYW4gbm93ICh0ZW1wb3JhcmlseSwgaW4gYSB0cmFuc2l0aW9u
+IHBoYXNlKSBzZWxlY3QgaWYKPj4+PiB0aGV5IHdhbnQgdG8gcHJvdmlkZSBhIGZ1bGwgb3duZXIg
+ZGV2aWNlIG9yIGtlZXAganVzdCBwcm92aWRpbmcgYW4KPj4+PiBvZl9ub2RlLgo+Pj4+Cj4+Pj4g
+QnkgcHJvdmlkaW5nIGEgZnVsbCBvd25lciBkZXZpY2UsIHRoZSBicmlkZ2UgZHJpdmVycyBubyBs
+b25nZXIgbmVlZAo+Pj4+IHRvIHByb3ZpZGUgYW4gb2Zfbm9kZSBzaW5jZSB0aGF0IG5vZGUgaXMg
+YXZhaWxhYmxlIHZpYSB0aGUgb3duZXIKPj4+PiBkZXZpY2UuCj4+Pj4KPj4+PiBXaGVuIGFsbCBi
+cmlkZ2UgZHJpdmVycyBwcm92aWRlIGFuIG93bmVyIGRldmljZSwgdGhhdCB3aWxsIGJlY29tZQo+
+Pj4+IG1hbmRhdG9yeSBhbmQgdGhlIC5vZl9ub2RlIG1lbWJlciB3aWxsIGJlIHJlbW92ZWQuCj4+
+Pj4KPj4+PiBTaWduZWQtb2ZmLWJ5OiBQZXRlciBSb3NpbiA8cGVkYUBheGVudGlhLnNlPgo+Pj4+
+IC0tLQo+Pj4+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZS5jICAgICAgICAgICAgIHwgMyAr
+Ky0KPj4+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYyB8IDQgKysr
+LQo+Pj4gV2hhdCBpcyB0aGUgcmVhc29uIHRvIHB1dCByb2NrY2hpcCBoZXJlPyBTaG91bGRuJ3Qg
+YmUgaW4gc2VwYXJhdGUgcGF0Y2g/Cj4+IEJlY2F1c2UgdGhlIHJvY2tjaGlwIGRyaXZlciBwZWVr
+cyBpbnRvIHRoZSBicmlkZ2Ugc3RydWN0IGFuZCBhbGwgdGhlCj4+IGNoYW5nZXMgaW4gdGhpcyBw
+YXRjaCByZWxhdGUgdG8gbWFraW5nIHRoZSBuZXcgLm9kZXYgbWVtYmVyIG9wdGlvbmFsIGluCj4+
+IHRoZSB0cmFuc2l0aW9uIHBoYXNlLCB3aGVuIHRoZSBicmlkZ2UgY2FuIGhhdmUgZWl0aGVyIGEg
+bmV3LXN0eWxlIG9kZXYKPj4gb3IgYW4gb2xkIHN0eWxlIG9mX25vZGUuCj4+Cj4+IEkgZ3Vlc3Mg
+dGhpcyByb2NrY2hpcCBjaGFuZ2UgY291bGQgYmUgcGF0Y2ggMiwgYnV0IGl0IGhhcyB0byBjb21l
+IGZpcnN0Cj4+IGFmdGVyIHRoaXMgcGF0Y2ggYW5kIGl0IG1ha2VzIG5vIHNlbnNlIG9uIGl0cyBv
+d24uIEhlbmNlLCBvbmUgcGF0Y2guCj4+Cj4+IFRoaXMgcm9ja2NoaXBfbHZkcyBpbnRlcmFjdGlv
+biBpcyBhbHNvIHByZXNlbnQgaW4gcGF0Y2ggMjQvMjYKPj4gZHJtL2JyaWRnZTogcmVtb3ZlIHRo
+ZSAub2Zfbm9kZSBtZW1iZXIKPj4KPj4gSSBjYW4gc3BsaXQgdGhlbSBpZiB5b3Ugd2FudCwgYnV0
+IEkgcGVyc29uYWxseSBkb24ndCBzZWUgdGhlIHBvaW50Lgo+IEkgaGFkIGEgc2Vjb25kIGxvb2ss
+IGFuZCBtYXliZSB0aGUgc2VyaWVzIHNob3VsZCBzdGFydCB3aXRoIGEgcGF0Y2ggbGlrZQo+IHRo
+aXMgaW5zdGVhZCwgc28gdGhhdCB0aGUgcm9ja2NoaXBfbHZkcy5jIGh1bmtzIGNhbiBiZSByZW1v
+dmVkIGZyb20KPiBwYXRjaCAxLzI2IGFuZCAyNC8yNi4gVGhhdCB3b3VsZCBwZXJoYXBzIGJlIHNs
+aWdodGx5IGNsZWFuZXI/Cj4KPiBPbiB0aGUgb3RoZXIgaGFuZCwgaXQncyBvcnRob2dvbmFsIGFu
+ZCB0aGlzIHNlcmllcyBjYW4gYmUgbGVmdCBhcyBpcwo+ICh3aXRoIHRoZSBiZW5lZml0IG9mIG1l
+IG5vdCBoYXZpbmcgdG8gZG8gYW5vdGhlciBpdGVyYXRpb24gYW5kIHlvdSBhbGwKPiBub3QgaGF2
+aW5nIGFub3RoZXIgYnVuY2ggb2YgbWVzc2FnZXMgdG8gc2lmdCB0aHJvdWdoKS4gVGhlIGJlbG93
+Cj4gcGF0Y2ggY291bGQgZWFzaWx5IGJlIChhZGp1c3RlZCBhbmQpIGFwcGxpZWQgbGF0ZXIgaW5z
+dGVhZC4gT3Igbm90LAo+IHNpbmNlIHRoZSByaWdodCBmaXggaXMgdG8gZG8gdGhpcyB3aXRoIHRo
+ZSBuZXdmYW5nbGVkIHN0YXRpYyBpbWFnZQo+IGZvcm1hdCBtZWNoYW5pc20gZnJvbSBKYWNvcG8g
+TW9uZGksIGFuZCBpdCBtaWdodCBiZSBlYXNpZXIgdG8ganVzdCBkbwo+IGl0IHJpZ2h0Lgo+Cj4g
+U3RhdGUgeW91ciBwcmVmZXJlbmNlLgoKRm9yIG1lIHRoZSBjdXJyZW50IHZlcnNpb24gaXMgT0ss
+IGl0IG1heWJlIGxhY2tzIGV4cGxhbmF0aW9uIHdoeSBkbyB5b3UKbmVlZCB0byB0b3VjaCByb2Nr
+Y2hpcCwgZnJvbSBteSBQb1YgaXQgZGlkIG5vdCBzZWVtIHNvIG9idmlvdXMuClNvbWVib2R5IHNo
+b3VsZCBmaXggcm9ja2NoaXAgdG8gdXNlIEphY29wbydzIGFwcHJvYWNoIGluc3RlYWQgb2YKdmlv
+bGF0aW5nIGFic3RyYWN0aW9ucywgYnV0IHRoaXMgaXMgYW5vdGhlciBzdG9yeS4KCldpdGggb3Ig
+d2l0aG91dCBhZGRlZCBtaXNzaW5nIGV4cGxhbmF0aW9uOgoKUmV2aWV3ZWQtYnk6IEFuZHJ6ZWog
+SGFqZGEgPGEuaGFqZGFAc2Ftc3VuZy5jb20+CgrCoC0tClJlZ2FyZHMKQW5kcnplagoKCj4KPiBD
+aGVlcnMsCj4gUGV0ZXIKPgo+ID5Gcm9tIGRlZTI3YjM2YTM2YWNkMjcxNDU5ZDE0ODkzMzZiNTYx
+MzIwOTc0MjUgTW9uIFNlcCAxNyAwMDowMDowMCAyMDAxCj4gRnJvbTogUGV0ZXIgUm9zaW4gPHBl
+ZGFAYXhlbnRpYS5zZT4KPiBEYXRlOiBXZWQsIDkgTWF5IDIwMTggMjM6NTg6MjQgKzAyMDAKPiBT
+dWJqZWN0OiBbUEFUQ0hdIGRybS9yb2NrY2hpcDogbHZkczogZG8gbm90IGRpZyBpbnRvIHRoZSBE
+VCBvZiByZW1vdGUgYnJpZGdlcwo+Cj4gVGhlIGRyaXZlciBpcyB0cnlpbmcgdG8gZmluZCB0aGUg
+bmVlZGVkICJkYXRhLW1hcHBpbmciIGZvcgo+IGludGVyYWN0aW5nIHdpdGggdGhlIGZvbGxvd2lu
+ZyBicmlkZ2UgaW4gdGhlIGdyYXBoaWNzIGNoYWluLgo+IEJ1dCwgZG9pbmcgc28gaXMgYmFkIHNp
+bmNlIGl0IGlzIGRvbmUgdy9vIHJlZ2FyZCBvZiB0aGUKPiBjb21wYXRpYmxlIG9mIHRoZSByZW1v
+dGUgYnJpZGdlLCBzbyB0aGUgdmFsdWUgb2YgImRhdGEtbWFwcGluZyIKPiBtaWdodCBub3QgbWVh
+biB3aGF0IHRoaXMgZHJpdmVyIGFzc3VtZXMuIEl0IGlzIGFsc28gcG9pbnRsZXNzCj4gc2luY2Ug
+bm8gYnJpZGdlIGhhcyBhbnkgZG9jdW1lbnRlZCAiZGF0YS1tYXBwaW5nIiBEVCBwcm9wZXJ0eQo+
+IGFuZCBubyBkdHMgZmlsZSBzaG93IGFueSB1bmRvY3VtZW50ZWQgdXNlLgo+Cj4gSnVzdCByZW1v
+dmUgdGhlIGluYXBwcm9wcmlhdGUgY29kZS4KPgo+IFNpZ25lZC1vZmYtYnk6IFBldGVyIFJvc2lu
+IDxwZWRhQGF4ZW50aWEuc2U+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9sdmRzLmMgfCAyIC0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAyIGRlbGV0aW9ucygtKQo+Cj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jCj4gaW5kZXggNGJkOTRiMTY3
+ZDJjLi5mYTNmNGJmOTcxMmYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2x2ZHMuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9sdmRzLmMKPiBAQCAtMzc3LDggKzM3Nyw2IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfbHZkc19i
+aW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+ICAJfQo+ICAJ
+aWYgKGx2ZHMtPnBhbmVsKQo+ICAJCXJlbW90ZSA9IGx2ZHMtPnBhbmVsLT5kZXYtPm9mX25vZGU7
+Cj4gLQllbHNlCj4gLQkJcmVtb3RlID0gbHZkcy0+YnJpZGdlLT5vZl9ub2RlOwo+ICAJaWYgKG9m
+X3Byb3BlcnR5X3JlYWRfc3RyaW5nKGRldi0+b2Zfbm9kZSwgInJvY2tjaGlwLG91dHB1dCIsICZu
+YW1lKSkKPiAgCQkvKiBkZWZhdWx0IHNldCBpdCBhcyBvdXRwdXQgcmdiICovCj4gIAkJbHZkcy0+
+b3V0cHV0ID0gRElTUExBWV9PVVRQVVRfUkdCOwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
+c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2RyaS1kZXZlbAo=
