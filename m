@@ -1,19 +1,17 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 03/12] arm: dts: mt7623: fix invalid memory node being
- generated
-Date: Fri, 11 May 2018 17:03:22 +0200
-Message-ID: <4dcb0435-1f98-0753-0feb-d17ad02077ae@gmail.com>
+Subject: Re: [PATCH v2 00/12] refactor dts and add support for more boards
+Date: Fri, 11 May 2018 18:40:14 +0200
+Message-ID: <df482bb2-df7c-3e65-fc0a-f20c81c2dac3@gmail.com>
 References: <cover.1523434757.git.sean.wang@mediatek.com>
- <d887b72e1839c7e476179e384cfc712216096f20.1523434758.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <d887b72e1839c7e476179e384cfc712216096f20.1523434758.git.sean.wang@mediatek.com>
+In-Reply-To: <cover.1523434757.git.sean.wang@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
 To: sean.wang@mediatek.com, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
@@ -21,81 +19,85 @@ List-Id: linux-mediatek@lists.infradead.org
 On 04/11/2018 10:53 AM, sean.wang@mediatek.com wrote:
 > From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Below two wrong nodes in existing DTS files would cause a fail boot since
-> in fact the address 0 is not the correct place the memory device locates
-> at.
+> Changes since v1:
+> - Dropped several patches which have been merged.
+> - Rebased to linux-next-20180410 where those dependent patches including
+>   [1] and [2] all have been got merged.
+> - Revised according to suggestions and comments on v1, where the major work is
+>   to put board-specific nodes into DTS files and to leave the common nodes
+>   among boards in DTSI files as done in patch 7,9,10,11 and 12.
+> - Merged Ryder Lee's patch for update audio nodes reflecting the latest
+>   bindings.
+> - Revised commit message.
 > 
-> memory {
->         device_type = "memory";
->         reg = <0x0 0x0 0x0 0x0>;
-> };
+> The series is to refactor current .dts for allowing more boards can properly
+> join and reuse almost the same device node definitions.
 > 
-> memory@80000000 {
->         reg = <0x0 0x80000000 0x0 0x40000000>;
-> };
+> Before we're doing that, some works about enhancements and fixups are being
+> made on the dt-binding document and .dts files. In addition, the series has to
+> depend on the patch [1][2]. Otherwise, certain build failure would have an
+> occurrence.
 > 
-> In order to avoid having a memory node starting at address 0, we can't
-> include file skeleton64.dtsi and instead need to explicitly manually
-> define a few of properties the DTS relies on such as #address-cells
-> and #size-cells in root node and device_type in the node memory@80000000.
+> [1] arm: dts: mt7623: add PCIe related nodes
+> http://lists.infradead.org/pipermail/linux-mediatek/2018-February/012053.html
 > 
-> Cc: stable@vger.kernel.org
-> Fixes: 31ac0d69a1d4 ("ARM: dts: mediatek: add MT7623 basic support")
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Cc: Rob Herring <robh+dt@kernel.org>
-> ---
->  arch/arm/boot/dts/mt7623.dtsi                 | 3 ++-
->  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 1 +
->  arch/arm/boot/dts/mt7623n-rfb.dtsi            | 1 +
->  3 files changed, 4 insertions(+), 1 deletion(-)
+> [2] dt-bindings: soc: add header files required for MT7623A SCPSYS dt-binding
+> http://lists.infradead.org/pipermail/linux-mediatek/2018-February/011930.html
+> 
+> Ryder Lee (1):
+>   arm: dts: mediatek: modify audio related nodes for both MT2701 and
+>     MT7623
+> 
+> Sean Wang (11):
+>   dt-bindings: cpufreq: mediatek: use - instead of _ in examples
+>   arm: dts: mediatek: converted to using SPDX identifiers
+>   arm: dts: mt7623: fix invalid memory node being generated
+>   arm: dts: mt7623: fix available memory size on bananapi-r2
+>   arm: dts: mt7623: fix all Warnings (unit_address_vs_reg)
+>   arm: dts: mt7623: add BTIF, HSDMA and SPI-NOR device nodes
+>   arm: dts: mt6323: move node mt6323 leds to mt6323.dtsi
+>   arm: dts: mt7623: extend common file reused by all boards with MT7623
+>     SoCs
+>   arm: dts: mt7623: add MT7623A SoC level DTS
+>   arm: dts: mt7623: add MT7623A reference boards
+>   arm: dts: mt7623: add MT7623N reference board with eMMC
 > 
 
-merged. We would need this at least for mt2701 as well, correct?
-Would you mind to provide a patch.
+I merged all but 1/12 which needs to go through rafaels tree and 8/12 which was
+already applied from a different series.
+
+You can find them in v4.17-next/soc on git.kernel.org
 
 Regards,
 Matthias
 
-> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-> index fec4715..406a9f3 100644
-> --- a/arch/arm/boot/dts/mt7623.dtsi
-> +++ b/arch/arm/boot/dts/mt7623.dtsi
-> @@ -15,11 +15,12 @@
->  #include <dt-bindings/phy/phy.h>
->  #include <dt-bindings/reset/mt2701-resets.h>
->  #include <dt-bindings/thermal/thermal.h>
-> -#include "skeleton64.dtsi"
->  
->  / {
->  	compatible = "mediatek,mt7623";
->  	interrupt-parent = <&sysirq>;
-> +	#address-cells = <2>;
-> +	#size-cells = <2>;
->  
->  	cpu_opp_table: opp-table {
->  		compatible = "operating-points-v2";
-> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> index bbf56f8..5938e4c 100644
-> --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> @@ -109,6 +109,7 @@
->  	};
->  
->  	memory@80000000 {
-> +		device_type = "memory";
->  		reg = <0 0x80000000 0 0x40000000>;
->  	};
->  };
-> diff --git a/arch/arm/boot/dts/mt7623n-rfb.dtsi b/arch/arm/boot/dts/mt7623n-rfb.dtsi
-> index a199ae7..343e8ef 100644
-> --- a/arch/arm/boot/dts/mt7623n-rfb.dtsi
-> +++ b/arch/arm/boot/dts/mt7623n-rfb.dtsi
-> @@ -40,6 +40,7 @@
->  	};
->  
->  	memory@80000000 {
-> +		device_type = "memory";
->  		reg = <0 0x80000000 0 0x40000000>;
->  	};
->  
+
+>  .../bindings/cpufreq/cpufreq-mediatek.txt          |   6 +-
+>  arch/arm/boot/dts/Makefile                         |   3 +
+>  arch/arm/boot/dts/mt2701-evb.dts                   |   9 +-
+>  arch/arm/boot/dts/mt2701.dtsi                      | 197 ++++----
+>  arch/arm/boot/dts/mt6323.dtsi                      |  17 +-
+>  arch/arm/boot/dts/mt6580-evbp1.dts                 |   9 +-
+>  arch/arm/boot/dts/mt6580.dtsi                      |   9 +-
+>  arch/arm/boot/dts/mt6589-aquaris5.dts              |  10 +-
+>  arch/arm/boot/dts/mt6589.dtsi                      |  12 +-
+>  arch/arm/boot/dts/mt6592-evb.dts                   |   9 +-
+>  arch/arm/boot/dts/mt6592.dtsi                      |   9 +-
+>  arch/arm/boot/dts/mt7623.dtsi                      | 537 ++++++++++++++++-----
+>  arch/arm/boot/dts/mt7623a-rfb-emmc.dts             | 291 +++++++++++
+>  arch/arm/boot/dts/mt7623a-rfb-nand.dts             | 337 +++++++++++++
+>  arch/arm/boot/dts/mt7623a.dtsi                     |  44 ++
+>  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts      | 279 ++---------
+>  arch/arm/boot/dts/mt7623n-rfb-emmc.dts             | 326 +++++++++++++
+>  arch/arm/boot/dts/mt7623n-rfb-nand.dts             |  40 +-
+>  arch/arm/boot/dts/mt7623n-rfb.dtsi                 |  12 +-
+>  arch/arm/boot/dts/mt8127-moose.dts                 |   9 +-
+>  arch/arm/boot/dts/mt8127.dtsi                      |   9 +-
+>  arch/arm/boot/dts/mt8135-evbp1.dts                 |   9 +-
+>  arch/arm/boot/dts/mt8135.dtsi                      |   9 +-
+>  23 files changed, 1576 insertions(+), 616 deletions(-)
+>  create mode 100644 arch/arm/boot/dts/mt7623a-rfb-emmc.dts
+>  create mode 100644 arch/arm/boot/dts/mt7623a-rfb-nand.dts
+>  create mode 100644 arch/arm/boot/dts/mt7623a.dtsi
+>  create mode 100644 arch/arm/boot/dts/mt7623n-rfb-emmc.dts
 > 
