@@ -1,103 +1,186 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 00/12] refactor dts and add support for more boards
-Date: Fri, 11 May 2018 18:40:14 +0200
-Message-ID: <df482bb2-df7c-3e65-fc0a-f20c81c2dac3@gmail.com>
-References: <cover.1523434757.git.sean.wang@mediatek.com>
+Subject: Re: [PATCH 2/2] arm64: dts: mt7622: add audio related device nodes
+Date: Fri, 11 May 2018 18:56:00 +0200
+Message-ID: <626c6741-00cd-c125-07f9-cfbbdbe36db4@gmail.com>
+References: <d208e8cf93f18b97ee9cf24cdd0220aa44188b8b.1525231985.git.sean.wang@mediatek.com>
+ <e48bc87f54d7f2e06664ee358822aa9a9e34256b.1525231985.git.sean.wang@mediatek.com>
+ <1525233238.14792.14.camel@mtkswgap22>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1523434757.git.sean.wang@mediatek.com>
+In-Reply-To: <1525233238.14792.14.camel@mtkswgap22>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 04/11/2018 10:53 AM, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On 05/02/2018 05:53 AM, Sean Wang wrote:
+> Hi, Matthias
 > 
-> Changes since v1:
-> - Dropped several patches which have been merged.
-> - Rebased to linux-next-20180410 where those dependent patches including
->   [1] and [2] all have been got merged.
-> - Revised according to suggestions and comments on v1, where the major work is
->   to put board-specific nodes into DTS files and to leave the common nodes
->   among boards in DTSI files as done in patch 7,9,10,11 and 12.
-> - Merged Ryder Lee's patch for update audio nodes reflecting the latest
->   bindings.
-> - Revised commit message.
+> On Wed, 2018-05-02 at 11:41 +0800, sean.wang@mediatek.com wrote:
+>> From: Ryder Lee <ryder.lee@mediatek.com>
+>>
+>> Add audio device nodes and its proper setup for all used pins
+>>
+>> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>> ---
+>>  arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts | 11 +++-
+>>  arch/arm64/boot/dts/mediatek/mt7622.dtsi     | 89 ++++++++++++++++++++++++++++
+>>  2 files changed, 98 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+>> index 45d8655..b783764 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+>> +++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+>> @@ -18,7 +18,7 @@
+>>  	compatible = "mediatek,mt7622-rfb1", "mediatek,mt7622";
+>>  
+>>  	chosen {
+>> -		bootargs = "console=ttyS0,115200n1";
+>> +		bootargs = "console=ttyS0,115200n1 swiotlb=512";
+>>  	};
+>>  
+>>  	cpus {
+>> @@ -163,10 +163,17 @@
+>>  	i2s1_pins: i2s1-pins {
+>>  		mux {
+>>  			function = "i2s";
+>> -			groups =  "i2s_out_bclk_ws_mclk",
+>> +			groups =  "i2s_out_mclk_bclk_ws",
 > 
-> The series is to refactor current .dts for allowing more boards can properly
-> join and reuse almost the same device node definitions.
+> The old one ("i2s_out_bclk_ws_mclk") should be the indecisive value when
+> I initially worked on the pinctrl device.
 > 
-> Before we're doing that, some works about enhancements and fixups are being
-> made on the dt-binding document and .dts files. In addition, the series has to
-> depend on the patch [1][2]. Otherwise, certain build failure would have an
-> occurrence.
+> It has to be corrected with "i2s_out_mclk_bclk_ws" to comply with the
+> final dt-bindings.
 > 
-> [1] arm: dts: mt7623: add PCIe related nodes
-> http://lists.infradead.org/pipermail/linux-mediatek/2018-February/012053.html
+>>  				  "i2s1_in_data",
+>>  				  "i2s1_out_data";
+>>  		};
+>> +
+>> +		conf {
+>> +			pins = "I2S1_IN", "I2S1_OUT", "I2S_BCLK",
+>> +			       "I2S_WS", "I2S_MCLK";
+>> +			drive-strength = <12>;
+>> +			bias-pull-down;
+>> +		};
+>>  	};
+>>  
+>>  	irrx_pins: irrx-pins {
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+>> index 6bbabb6..9213c96 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+>> @@ -527,6 +527,95 @@
+>>  		status = "disabled";
+>>  	};
+>>  
+>> +	audsys: clock-controller@11220000 {
+>> +		compatible = "mediatek,mt7622-audsys", "syscon";
+>> +		reg = <0 0x11220000 0 0x2000>;
+>> +		#clock-cells = <1>;
 > 
-> [2] dt-bindings: soc: add header files required for MT7623A SCPSYS dt-binding
-> http://lists.infradead.org/pipermail/linux-mediatek/2018-February/011930.html
-> 
-> Ryder Lee (1):
->   arm: dts: mediatek: modify audio related nodes for both MT2701 and
->     MT7623
-> 
-> Sean Wang (11):
->   dt-bindings: cpufreq: mediatek: use - instead of _ in examples
->   arm: dts: mediatek: converted to using SPDX identifiers
->   arm: dts: mt7623: fix invalid memory node being generated
->   arm: dts: mt7623: fix available memory size on bananapi-r2
->   arm: dts: mt7623: fix all Warnings (unit_address_vs_reg)
->   arm: dts: mt7623: add BTIF, HSDMA and SPI-NOR device nodes
->   arm: dts: mt6323: move node mt6323 leds to mt6323.dtsi
->   arm: dts: mt7623: extend common file reused by all boards with MT7623
->     SoCs
->   arm: dts: mt7623: add MT7623A SoC level DTS
->   arm: dts: mt7623: add MT7623A reference boards
->   arm: dts: mt7623: add MT7623N reference board with eMMC
+> The binding have been through broonie/sound.git around a week ago
 > 
 
-I merged all but 1/12 which needs to go through rafaels tree and 8/12 which was
-already applied from a different series.
-
-You can find them in v4.17-next/soc on git.kernel.org
+Thanks for the clarifications!
+Pushed to v4.17-next/dts64
 
 Regards,
 Matthias
 
-
->  .../bindings/cpufreq/cpufreq-mediatek.txt          |   6 +-
->  arch/arm/boot/dts/Makefile                         |   3 +
->  arch/arm/boot/dts/mt2701-evb.dts                   |   9 +-
->  arch/arm/boot/dts/mt2701.dtsi                      | 197 ++++----
->  arch/arm/boot/dts/mt6323.dtsi                      |  17 +-
->  arch/arm/boot/dts/mt6580-evbp1.dts                 |   9 +-
->  arch/arm/boot/dts/mt6580.dtsi                      |   9 +-
->  arch/arm/boot/dts/mt6589-aquaris5.dts              |  10 +-
->  arch/arm/boot/dts/mt6589.dtsi                      |  12 +-
->  arch/arm/boot/dts/mt6592-evb.dts                   |   9 +-
->  arch/arm/boot/dts/mt6592.dtsi                      |   9 +-
->  arch/arm/boot/dts/mt7623.dtsi                      | 537 ++++++++++++++++-----
->  arch/arm/boot/dts/mt7623a-rfb-emmc.dts             | 291 +++++++++++
->  arch/arm/boot/dts/mt7623a-rfb-nand.dts             | 337 +++++++++++++
->  arch/arm/boot/dts/mt7623a.dtsi                     |  44 ++
->  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts      | 279 ++---------
->  arch/arm/boot/dts/mt7623n-rfb-emmc.dts             | 326 +++++++++++++
->  arch/arm/boot/dts/mt7623n-rfb-nand.dts             |  40 +-
->  arch/arm/boot/dts/mt7623n-rfb.dtsi                 |  12 +-
->  arch/arm/boot/dts/mt8127-moose.dts                 |   9 +-
->  arch/arm/boot/dts/mt8127.dtsi                      |   9 +-
->  arch/arm/boot/dts/mt8135-evbp1.dts                 |   9 +-
->  arch/arm/boot/dts/mt8135.dtsi                      |   9 +-
->  23 files changed, 1576 insertions(+), 616 deletions(-)
->  create mode 100644 arch/arm/boot/dts/mt7623a-rfb-emmc.dts
->  create mode 100644 arch/arm/boot/dts/mt7623a-rfb-nand.dts
->  create mode 100644 arch/arm/boot/dts/mt7623a.dtsi
->  create mode 100644 arch/arm/boot/dts/mt7623n-rfb-emmc.dts
+>> +
+>> +		afe: audio-controller {
+>> +			compatible = "mediatek,mt7622-audio";
+>> +			interrupts =  <GIC_SPI 144 IRQ_TYPE_LEVEL_LOW>,
+>> +				      <GIC_SPI 145 IRQ_TYPE_LEVEL_LOW>;
+>> +			interrupt-names	= "afe", "asys";
+>> +
+>> +			clocks = <&infracfg CLK_INFRA_AUDIO_PD>,
+>> +				 <&topckgen CLK_TOP_AUD1_SEL>,
+>> +				 <&topckgen CLK_TOP_AUD2_SEL>,
+>> +				 <&topckgen CLK_TOP_A1SYS_HP_DIV_PD>,
+>> +				 <&topckgen CLK_TOP_A2SYS_HP_DIV_PD>,
+>> +				 <&topckgen CLK_TOP_I2S0_MCK_SEL>,
+>> +				 <&topckgen CLK_TOP_I2S1_MCK_SEL>,
+>> +				 <&topckgen CLK_TOP_I2S2_MCK_SEL>,
+>> +				 <&topckgen CLK_TOP_I2S3_MCK_SEL>,
+>> +				 <&topckgen CLK_TOP_I2S0_MCK_DIV>,
+>> +				 <&topckgen CLK_TOP_I2S1_MCK_DIV>,
+>> +				 <&topckgen CLK_TOP_I2S2_MCK_DIV>,
+>> +				 <&topckgen CLK_TOP_I2S3_MCK_DIV>,
+>> +				 <&topckgen CLK_TOP_I2S0_MCK_DIV_PD>,
+>> +				 <&topckgen CLK_TOP_I2S1_MCK_DIV_PD>,
+>> +				 <&topckgen CLK_TOP_I2S2_MCK_DIV_PD>,
+>> +				 <&topckgen CLK_TOP_I2S3_MCK_DIV_PD>,
+>> +				 <&audsys CLK_AUDIO_I2SO1>,
+>> +				 <&audsys CLK_AUDIO_I2SO2>,
+>> +				 <&audsys CLK_AUDIO_I2SO3>,
+>> +				 <&audsys CLK_AUDIO_I2SO4>,
+>> +				 <&audsys CLK_AUDIO_I2SIN1>,
+>> +				 <&audsys CLK_AUDIO_I2SIN2>,
+>> +				 <&audsys CLK_AUDIO_I2SIN3>,
+>> +				 <&audsys CLK_AUDIO_I2SIN4>,
+>> +				 <&audsys CLK_AUDIO_ASRCO1>,
+>> +				 <&audsys CLK_AUDIO_ASRCO2>,
+>> +				 <&audsys CLK_AUDIO_ASRCO3>,
+>> +				 <&audsys CLK_AUDIO_ASRCO4>,
+>> +				 <&audsys CLK_AUDIO_AFE>,
+>> +				 <&audsys CLK_AUDIO_AFE_CONN>,
+>> +				 <&audsys CLK_AUDIO_A1SYS>,
+>> +				 <&audsys CLK_AUDIO_A2SYS>;
+>> +
+>> +			clock-names = "infra_sys_audio_clk",
+>> +				      "top_audio_mux1_sel",
+>> +				      "top_audio_mux2_sel",
+>> +				      "top_audio_a1sys_hp",
+>> +				      "top_audio_a2sys_hp",
+>> +				      "i2s0_src_sel",
+>> +				      "i2s1_src_sel",
+>> +				      "i2s2_src_sel",
+>> +				      "i2s3_src_sel",
+>> +				      "i2s0_src_div",
+>> +				      "i2s1_src_div",
+>> +				      "i2s2_src_div",
+>> +				      "i2s3_src_div",
+>> +				      "i2s0_mclk_en",
+>> +				      "i2s1_mclk_en",
+>> +				      "i2s2_mclk_en",
+>> +				      "i2s3_mclk_en",
+>> +				      "i2so0_hop_ck",
+>> +				      "i2so1_hop_ck",
+>> +				      "i2so2_hop_ck",
+>> +				      "i2so3_hop_ck",
+>> +				      "i2si0_hop_ck",
+>> +				      "i2si1_hop_ck",
+>> +				      "i2si2_hop_ck",
+>> +				      "i2si3_hop_ck",
+>> +				      "asrc0_out_ck",
+>> +				      "asrc1_out_ck",
+>> +				      "asrc2_out_ck",
+>> +				      "asrc3_out_ck",
+>> +				      "audio_afe_pd",
+>> +				      "audio_afe_conn_pd",
+>> +				      "audio_a1sys_pd",
+>> +				      "audio_a2sys_pd";
+>> +
+>> +			assigned-clocks = <&topckgen CLK_TOP_A1SYS_HP_SEL>,
+>> +					  <&topckgen CLK_TOP_A2SYS_HP_SEL>,
+>> +					  <&topckgen CLK_TOP_A1SYS_HP_DIV>,
+>> +					  <&topckgen CLK_TOP_A2SYS_HP_DIV>;
+>> +			assigned-clock-parents = <&topckgen CLK_TOP_AUD1PLL>,
+>> +						 <&topckgen CLK_TOP_AUD2PLL>;
+>> +			assigned-clock-rates = <0>, <0>, <49152000>, <45158400>;
+>> +		};
+>> +	};
+>> +
+>>  	mmc0: mmc@11230000 {
+>>  		compatible = "mediatek,mt7622-mmc";
+>>  		reg = <0 0x11230000 0 0x1000>;
+> 
 > 
