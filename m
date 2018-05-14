@@ -1,58 +1,88 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v1 5/7] drm/mediatek: implement connection from BLS to DPI0
-Date: Mon, 14 May 2018 15:52:41 +0800
-Message-ID: <20180514075243.5442-6-bibby.hsieh@mediatek.com>
+Subject: [PATCH v1 3/7] drm/mediatek: add dpi driver for mt2701 and mt7623
+Date: Mon, 14 May 2018 15:52:39 +0800
+Message-ID: <20180514075243.5442-4-bibby.hsieh@mediatek.com>
 References: <20180514075243.5442-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180514075243.5442-1-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-TW9kaWZ5IGRpc3BsYXkgZHJpdmVyIHRvIHN1cHBvcnQgY29ubmVjdGlvbiBmcm9tIEJMUyB0byBE
-UEkuCgpTaWduZWQtb2ZmLWJ5OiBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29t
-PgotLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jIHwgMTQgKysrKysr
-KysrKysrKy0KIDEgZmlsZSBjaGFuZ2VkLCAxMyBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0p
-CgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwppbmRleCA4MTMwZjNkYWI2NjEu
-LjI4OWE2OGM2NzMxZiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-cm1fZGRwLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKQEAg
-LTM1LDYgKzM1LDcgQEAKICNkZWZpbmUgRElTUF9SRUdfQ09ORklHX0RJU1BfT1ZMX01PVVRfRU4J
-MHgwMzAKICNkZWZpbmUgRElTUF9SRUdfQ09ORklHX09VVF9TRUwJCQkweDA0YwogI2RlZmluZSBE
-SVNQX1JFR19DT05GSUdfRFNJX1NFTAkJCTB4MDUwCisjZGVmaW5lIERJU1BfUkVHX0NPTkZJR19E
-UElfU0VMCQkJMHgwNjQKIAogI2RlZmluZSBESVNQX1JFR19NVVRFWF9FTihuKQkoMHgyMCArIDB4
-MjAgKiAobikpCiAjZGVmaW5lIERJU1BfUkVHX01VVEVYKG4pCSgweDI0ICsgMHgyMCAqIChuKSkK
-QEAgLTg0LDcgKzg1LDEwIEBACiAKICNkZWZpbmUgT1ZMX01PVVRfRU5fUkRNQQkJMHgxCiAjZGVm
-aW5lIEJMU19UT19EU0lfUkRNQTFfVE9fRFBJMQkweDgKKyNkZWZpbmUgQkxTX1RPX0RQSV9SRE1B
-MV9UT19EU0kJCTB4MgogI2RlZmluZSBEU0lfU0VMX0lOX0JMUwkJCTB4MAorI2RlZmluZSBEUElf
-U0VMX0lOX0JMUwkJCTB4MAorI2RlZmluZSBEU0lfU0VMX0lOX1JETUEJCQkweDEKIAogc3RydWN0
-IG10a19kaXNwX211dGV4IHsKIAlpbnQgaWQ7CkBAIC0xODksOSArMTkzLDE3IEBAIHN0YXRpYyB2
-b2lkIG10a19kZHBfc291dF9zZWwodm9pZCBfX2lvbWVtICpjb25maWdfcmVncywKIAkJCSAgICAg
-ZW51bSBtdGtfZGRwX2NvbXBfaWQgY3VyLAogCQkJICAgICBlbnVtIG10a19kZHBfY29tcF9pZCBu
-ZXh0KQogewotCWlmIChjdXIgPT0gRERQX0NPTVBPTkVOVF9CTFMgJiYgbmV4dCA9PSBERFBfQ09N
-UE9ORU5UX0RTSTApCisJaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX0JMUyAmJiBuZXh0ID09IERE
-UF9DT01QT05FTlRfRFNJMCkgewogCQl3cml0ZWxfcmVsYXhlZChCTFNfVE9fRFNJX1JETUExX1RP
-X0RQSTEsCiAJCQkgICAgICAgY29uZmlnX3JlZ3MgKyBESVNQX1JFR19DT05GSUdfT1VUX1NFTCk7
-CisJfSBlbHNlIGlmIChjdXIgPT0gRERQX0NPTVBPTkVOVF9CTFMgJiYgbmV4dCA9PSBERFBfQ09N
-UE9ORU5UX0RQSTApIHsKKwkJd3JpdGVsX3JlbGF4ZWQoQkxTX1RPX0RQSV9SRE1BMV9UT19EU0ks
-CisJCQkgICAgICAgY29uZmlnX3JlZ3MgKyBESVNQX1JFR19DT05GSUdfT1VUX1NFTCk7CisJCXdy
-aXRlbF9yZWxheGVkKERTSV9TRUxfSU5fUkRNQSwKKwkJCSAgICAgICBjb25maWdfcmVncyArIERJ
-U1BfUkVHX0NPTkZJR19EU0lfU0VMKTsKKwkJd3JpdGVsX3JlbGF4ZWQoRFBJX1NFTF9JTl9CTFMs
-CisJCQkgICAgICAgY29uZmlnX3JlZ3MgKyBESVNQX1JFR19DT05GSUdfRFBJX1NFTCk7CisJfQog
-fQogCiB2b2lkIG10a19kZHBfYWRkX2NvbXBfdG9fcGF0aCh2b2lkIF9faW9tZW0gKmNvbmZpZ19y
-ZWdzLAotLSAKMi4xMi41CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
-cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWwK
+From: chunhui dai <chunhui.dai@mediatek.com>
+
+This patch adds dpi driver suppot for both mt2701 and mt7623.
+And also support other (existing or future) chips that use
+the same binding and driver.
+
+Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c     | 24 ++++++++++++++++++++++--
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c |  1 +
+ 2 files changed, 23 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 2b8b34c72697..e1af1d0d213d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -640,8 +640,7 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
+ 	}
+ 	drm_encoder_helper_add(&dpi->encoder, &mtk_dpi_encoder_helper_funcs);
+ 
+-	/* Currently DPI0 is fixed to be driven by OVL1 */
+-	dpi->encoder.possible_crtcs = BIT(1);
++	dpi->encoder.possible_crtcs = BIT(0) | BIT(1);
+ 	dpi->encoder.bridge->encoder = &dpi->encoder;
+ 	ret = drm_bridge_attach(&dpi->encoder, dpi->encoder.bridge, NULL);
+ 	if (ret) {
+@@ -690,12 +689,33 @@ static unsigned int mt8173_calculate_factor(int clock)
+ 		return 2 * 3;
+ }
+ 
++static unsigned int mt2701_calculate_factor(int clock)
++{
++	if (clock <= 64000)
++		return 16;
++	else if (clock <= 128000)
++		return 8;
++	else if (clock <= 256000)
++		return 4;
++	else
++		return 2;
++}
++
+ static const struct mtk_dpi_conf mt8173_conf = {
+ 	.cal_factor = mt8173_calculate_factor,
+ 	.reg_h_fre_con = 0xe0,
+ };
+ 
++static const struct mtk_dpi_conf mt2701_conf = {
++	.cal_factor = mt2701_calculate_factor,
++	.reg_h_fre_con = 0xb0,
++	.edge_sel_en = true,
++};
++
+ static const struct of_device_id mtk_dpi_of_ids[] = {
++	{ .compatible = "mediatek,mt2701-dpi",
++	  .data = &mt2701_conf,
++	},
+ 	{ .compatible = "mediatek,mt8173-dpi",
+ 	  .data = &mt8173_conf,
+ 	},
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index a2ca90fc403c..f4fb86ab7b8d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -372,6 +372,7 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	{ .compatible = "mediatek,mt8173-disp-ufoe",  .data = (void *)MTK_DISP_UFOE },
+ 	{ .compatible = "mediatek,mt2701-dsi",	      .data = (void *)MTK_DSI },
+ 	{ .compatible = "mediatek,mt8173-dsi",        .data = (void *)MTK_DSI },
++	{ .compatible = "mediatek,mt2701-dpi",	      .data = (void *)MTK_DPI },
+ 	{ .compatible = "mediatek,mt8173-dpi",        .data = (void *)MTK_DPI },
+ 	{ .compatible = "mediatek,mt2701-disp-mutex", .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8173-disp-mutex", .data = (void *)MTK_DISP_MUTEX },
+-- 
+2.12.5
