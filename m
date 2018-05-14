@@ -1,80 +1,58 @@
-From: Mikko Perttunen <cyndis@kapsi.fi>
-Subject: Re: [PATCH 6/8] serial: Add Tegra Combined UART driver
-Date: Sun, 13 May 2018 21:06:37 +0300
-Message-ID: <4d6aab52-9c99-8dd8-556d-86f32d9f6234@kapsi.fi>
-References: <20180508114403.14499-1-mperttunen@nvidia.com>
- <20180508114403.14499-7-mperttunen@nvidia.com>
- <CABb+yY3snB9o4e14by4xui+o_Vhqpe2zh6Pp_e0t-DCTKvMHWA@mail.gmail.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v1 5/7] drm/mediatek: implement connection from BLS to DPI0
+Date: Mon, 14 May 2018 15:52:41 +0800
+Message-ID: <20180514075243.5442-6-bibby.hsieh@mediatek.com>
+References: <20180514075243.5442-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CABb+yY3snB9o4e14by4xui+o_Vhqpe2zh6Pp_e0t-DCTKvMHWA@mail.gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jassi Brar <jassisinghbrar@gmail.com>, Mikko Perttunen <mperttunen@nvidia.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Greg KH <gregkh@linuxfoundation.org>, Thierry Reding <thierry.reding@gmail.com>, Jon Hunter <jonathanh@nvidia.com>, araza@nvidia.com, Devicetree List <devicetree@vger.kernel.org>, linux-serial@vger.kernel.org, linux-tegra@vger.kernel.org, ", linux-arm-kernel"@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180514075243.5442-1-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 05/13/2018 06:36 PM, Jassi Brar wrote:
-> On Tue, May 8, 2018 at 5:14 PM, Mikko Perttunen <mperttunen@nvidia.com> wrote:
-> 
-> ....
->>
->> +config SERIAL_TEGRA_TCU
->> +       tristate "NVIDIA Tegra Combined UART"
->> +       depends on ARCH_TEGRA && MAILBOX
->> +       select SERIAL_CORE
->> +       help
->> +         Support for the mailbox-based TCU (Tegra Combined UART) serial port.
->> +         TCU is a virtual serial port that allows multiplexing multiple data
->> +         streams into a single hardware serial port.
->> +
-> Maybe make it depend upon TEGRA_HSP_MBOX ?
-
-Yeah, that probably makes more sense. MAILBOX is enough to build it but 
-it won't be of any use without TEGRA_HSP_MBOX.
-
-> 
-> ......
-> 
->> +
->> +static void tegra_tcu_write(const char *s, unsigned int count)
->> +{
->> +       struct tegra_tcu *tcu = tegra_tcu_uart_port.private_data;
->> +       unsigned int written = 0, i = 0;
->> +       bool insert_nl = false;
->> +       uint32_t value = 0;
->> +
->> +       while (i < count) {
->> +               if (insert_nl) {
->> +                       value |= '\n' << (written++ * 8);
->> +                       insert_nl = false;
->> +                       i++;
->> +               } else if (s[i] == '\n') {
->> +                       value |= '\r' << (written++ * 8);
->> +                       insert_nl = true;
->> +               } else {
->> +                       value |= s[i++] << (written++ * 8);
->> +               }
->> +
->> +               if (written == 3) {
->> +                       value |= 3 << 24;
->> +                       value |= BIT(26);
->> +                       mbox_send_message(tcu->tx, &value);
->>
-> How is this supposed to work? tegra_hsp_doorbell_send_data() ignores
-> the second argument.
-
-The previous patch in the series adds support for what are called 
-"shared mailboxes" to the tegra-hsp driver. For these the second 
-argument is used.
-
-Thanks,
-Mikko
-
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-tegra" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> 
+TW9kaWZ5IGRpc3BsYXkgZHJpdmVyIHRvIHN1cHBvcnQgY29ubmVjdGlvbiBmcm9tIEJMUyB0byBE
+UEkuCgpTaWduZWQtb2ZmLWJ5OiBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29t
+PgotLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jIHwgMTQgKysrKysr
+KysrKysrKy0KIDEgZmlsZSBjaGFuZ2VkLCAxMyBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0p
+CgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwppbmRleCA4MTMwZjNkYWI2NjEu
+LjI4OWE2OGM2NzMxZiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+cm1fZGRwLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKQEAg
+LTM1LDYgKzM1LDcgQEAKICNkZWZpbmUgRElTUF9SRUdfQ09ORklHX0RJU1BfT1ZMX01PVVRfRU4J
+MHgwMzAKICNkZWZpbmUgRElTUF9SRUdfQ09ORklHX09VVF9TRUwJCQkweDA0YwogI2RlZmluZSBE
+SVNQX1JFR19DT05GSUdfRFNJX1NFTAkJCTB4MDUwCisjZGVmaW5lIERJU1BfUkVHX0NPTkZJR19E
+UElfU0VMCQkJMHgwNjQKIAogI2RlZmluZSBESVNQX1JFR19NVVRFWF9FTihuKQkoMHgyMCArIDB4
+MjAgKiAobikpCiAjZGVmaW5lIERJU1BfUkVHX01VVEVYKG4pCSgweDI0ICsgMHgyMCAqIChuKSkK
+QEAgLTg0LDcgKzg1LDEwIEBACiAKICNkZWZpbmUgT1ZMX01PVVRfRU5fUkRNQQkJMHgxCiAjZGVm
+aW5lIEJMU19UT19EU0lfUkRNQTFfVE9fRFBJMQkweDgKKyNkZWZpbmUgQkxTX1RPX0RQSV9SRE1B
+MV9UT19EU0kJCTB4MgogI2RlZmluZSBEU0lfU0VMX0lOX0JMUwkJCTB4MAorI2RlZmluZSBEUElf
+U0VMX0lOX0JMUwkJCTB4MAorI2RlZmluZSBEU0lfU0VMX0lOX1JETUEJCQkweDEKIAogc3RydWN0
+IG10a19kaXNwX211dGV4IHsKIAlpbnQgaWQ7CkBAIC0xODksOSArMTkzLDE3IEBAIHN0YXRpYyB2
+b2lkIG10a19kZHBfc291dF9zZWwodm9pZCBfX2lvbWVtICpjb25maWdfcmVncywKIAkJCSAgICAg
+ZW51bSBtdGtfZGRwX2NvbXBfaWQgY3VyLAogCQkJICAgICBlbnVtIG10a19kZHBfY29tcF9pZCBu
+ZXh0KQogewotCWlmIChjdXIgPT0gRERQX0NPTVBPTkVOVF9CTFMgJiYgbmV4dCA9PSBERFBfQ09N
+UE9ORU5UX0RTSTApCisJaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX0JMUyAmJiBuZXh0ID09IERE
+UF9DT01QT05FTlRfRFNJMCkgewogCQl3cml0ZWxfcmVsYXhlZChCTFNfVE9fRFNJX1JETUExX1RP
+X0RQSTEsCiAJCQkgICAgICAgY29uZmlnX3JlZ3MgKyBESVNQX1JFR19DT05GSUdfT1VUX1NFTCk7
+CisJfSBlbHNlIGlmIChjdXIgPT0gRERQX0NPTVBPTkVOVF9CTFMgJiYgbmV4dCA9PSBERFBfQ09N
+UE9ORU5UX0RQSTApIHsKKwkJd3JpdGVsX3JlbGF4ZWQoQkxTX1RPX0RQSV9SRE1BMV9UT19EU0ks
+CisJCQkgICAgICAgY29uZmlnX3JlZ3MgKyBESVNQX1JFR19DT05GSUdfT1VUX1NFTCk7CisJCXdy
+aXRlbF9yZWxheGVkKERTSV9TRUxfSU5fUkRNQSwKKwkJCSAgICAgICBjb25maWdfcmVncyArIERJ
+U1BfUkVHX0NPTkZJR19EU0lfU0VMKTsKKwkJd3JpdGVsX3JlbGF4ZWQoRFBJX1NFTF9JTl9CTFMs
+CisJCQkgICAgICAgY29uZmlnX3JlZ3MgKyBESVNQX1JFR19DT05GSUdfRFBJX1NFTCk7CisJfQog
+fQogCiB2b2lkIG10a19kZHBfYWRkX2NvbXBfdG9fcGF0aCh2b2lkIF9faW9tZW0gKmNvbmZpZ19y
+ZWdzLAotLSAKMi4xMi41CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
