@@ -1,93 +1,53 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v1 7/7] drm/mediatek: config component output by device node
- port
-Date: Mon, 14 May 2018 15:52:43 +0800
-Message-ID: <20180514075243.5442-8-bibby.hsieh@mediatek.com>
-References: <20180514075243.5442-1-bibby.hsieh@mediatek.com>
+Subject: [PATCH v1 0/7] drm/mediatek: support hdmi output for mt2701 and mt7623
+Date: Mon, 14 May 2018 15:52:36 +0800
+Message-ID: <20180514075243.5442-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180514075243.5442-1-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-V2UgY2FuIHNlbGVjdCBvdXRwdXQgY29tcG9uZW50IGJ5IGRldmljZSBub2RlIHBvcnQuCk1haW4g
-cGF0aCBkZWZhdWx0IG91dHB1dCBjb21wb25lbnQgaXMgRFNJLgpFeHRlcm5hbCBwYXRoIGRlZmF1
-bHQgb3V0cHV0IGNvbXBvbmVudCBpcyBEUEkuCgpTaWduZWQtb2ZmLWJ5OiBCaWJieSBIc2llaCA8
-YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX2Rydi5jIHwgMzcgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrLS0tLQogZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmggfCAgNCArKy0tCiAyIGZpbGVzIGNo
-YW5nZWQsIDM1IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9kcnYuYwppbmRleCBmNGZiODZhYjdiOGQuLjA1MzMzNzY5ZDg2MiAxMDA2
-NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKKysrIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKQEAgLTI0LDYgKzI0LDggQEAKICNp
-bmNsdWRlIDxsaW51eC9vZl9hZGRyZXNzLmg+CiAjaW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0u
-aD4KICNpbmNsdWRlIDxsaW51eC9wbV9ydW50aW1lLmg+CisjaW5jbHVkZSA8bGludXgvb2YuaD4K
-KyNpbmNsdWRlIDxsaW51eC9vZl9ncmFwaC5oPgogCiAjaW5jbHVkZSAibXRrX2RybV9jcnRjLmgi
-CiAjaW5jbHVkZSAibXRrX2RybV9kZHAuaCIKQEAgLTEzMyw3ICsxMzUsNyBAQCBzdGF0aWMgY29u
-c3Qgc3RydWN0IGRybV9tb2RlX2NvbmZpZ19mdW5jcyBtdGtfZHJtX21vZGVfY29uZmlnX2Z1bmNz
-ID0gewogCS5hdG9taWNfY29tbWl0ID0gbXRrX2F0b21pY19jb21taXQsCiB9OwogCi1zdGF0aWMg
-Y29uc3QgZW51bSBtdGtfZGRwX2NvbXBfaWQgbXQyNzAxX210a19kZHBfbWFpbltdID0geworc3Rh
-dGljIGVudW0gbXRrX2RkcF9jb21wX2lkIG10MjcwMV9tdGtfZGRwX21haW5bXSA9IHsKIAlERFBf
-Q09NUE9ORU5UX09WTDAsCiAJRERQX0NPTVBPTkVOVF9SRE1BMCwKIAlERFBfQ09NUE9ORU5UX0NP
-TE9SMCwKQEAgLTE0MSwxMiArMTQzLDEyIEBAIHN0YXRpYyBjb25zdCBlbnVtIG10a19kZHBfY29t
-cF9pZCBtdDI3MDFfbXRrX2RkcF9tYWluW10gPSB7CiAJRERQX0NPTVBPTkVOVF9EU0kwLAogfTsK
-IAotc3RhdGljIGNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkIG10MjcwMV9tdGtfZGRwX2V4dFtd
-ID0geworc3RhdGljIGVudW0gbXRrX2RkcF9jb21wX2lkIG10MjcwMV9tdGtfZGRwX2V4dFtdID0g
-ewogCUREUF9DT01QT05FTlRfUkRNQTEsCiAJRERQX0NPTVBPTkVOVF9EUEkwLAogfTsKIAotc3Rh
-dGljIGNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkIG10ODE3M19tdGtfZGRwX21haW5bXSA9IHsK
-K3N0YXRpYyBlbnVtIG10a19kZHBfY29tcF9pZCBtdDgxNzNfbXRrX2RkcF9tYWluW10gPSB7CiAJ
-RERQX0NPTVBPTkVOVF9PVkwwLAogCUREUF9DT01QT05FTlRfQ09MT1IwLAogCUREUF9DT01QT05F
-TlRfQUFMLApAQCAtMTU3LDcgKzE1OSw3IEBAIHN0YXRpYyBjb25zdCBlbnVtIG10a19kZHBfY29t
-cF9pZCBtdDgxNzNfbXRrX2RkcF9tYWluW10gPSB7CiAJRERQX0NPTVBPTkVOVF9QV00wLAogfTsK
-IAotc3RhdGljIGNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkIG10ODE3M19tdGtfZGRwX2V4dFtd
-ID0geworc3RhdGljIGVudW0gbXRrX2RkcF9jb21wX2lkIG10ODE3M19tdGtfZGRwX2V4dFtdID0g
-ewogCUREUF9DT01QT05FTlRfT1ZMMSwKIAlERFBfQ09NUE9ORU5UX0NPTE9SMSwKIAlERFBfQ09N
-UE9ORU5UX0dBTU1BLApAQCAtNDExLDYgKzQxMyw3IEBAIHN0YXRpYyBpbnQgbXRrX2RybV9wcm9i
-ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCiAJLyogSXRlcmF0ZSBvdmVyIHNpYmxp
-bmcgRElTUCBmdW5jdGlvbiBibG9ja3MgKi8KIAlmb3JfZWFjaF9jaGlsZF9vZl9ub2RlKGRldi0+
-b2Zfbm9kZS0+cGFyZW50LCBub2RlKSB7CisJCXN0cnVjdCBkZXZpY2Vfbm9kZSAqcG9ydCwgKmVw
-LCAqcmVtb3RlOwogCQljb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkICpvZl9pZDsKIAkJZW51bSBt
-dGtfZGRwX2NvbXBfdHlwZSBjb21wX3R5cGU7CiAJCWludCBjb21wX2lkOwpAQCAtNDcwLDYgKzQ3
-MywzMiBAQCBzdGF0aWMgaW50IG10a19kcm1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAq
-cGRldikKIAogCQkJcHJpdmF0ZS0+ZGRwX2NvbXBbY29tcF9pZF0gPSBjb21wOwogCQl9CisKKwkJ
-aWYgKGNvbXBfdHlwZSAhPSBNVEtfRFNJICYmIGNvbXBfdHlwZSAhPSBNVEtfRFBJKSB7CisJCQlw
-b3J0ID0gb2ZfZ3JhcGhfZ2V0X3BvcnRfYnlfaWQobm9kZSwgMCk7CisJCQlpZiAoIXBvcnQpCisJ
-CQkJY29udGludWU7CisJCQllcCA9IG9mX2dldF9jaGlsZF9ieV9uYW1lKHBvcnQsICJlbmRwb2lu
-dCIpOworCQkJb2Zfbm9kZV9wdXQocG9ydCk7CisJCQlpZiAoIWVwKQorCQkJCWNvbnRpbnVlOwor
-CQkJcmVtb3RlID0gb2ZfZ3JhcGhfZ2V0X3JlbW90ZV9wb3J0X3BhcmVudChlcCk7CisJCQlvZl9u
-b2RlX3B1dChlcCk7CisJCQlpZiAoIXJlbW90ZSkKKwkJCQljb250aW51ZTsKKwkJCW9mX2lkID0g
-b2ZfbWF0Y2hfbm9kZShtdGtfZGRwX2NvbXBfZHRfaWRzLCByZW1vdGUpOworCQkJaWYgKCFvZl9p
-ZCkKKwkJCQljb250aW51ZTsKKwkJCWNvbXBfdHlwZSA9IChlbnVtIG10a19kZHBfY29tcF90eXBl
-KW9mX2lkLT5kYXRhOworCQkJZm9yIChpID0gMDsgaSA8IHByaXZhdGUtPmRhdGEtPm1haW5fbGVu
-IC0gMTsgaSsrKQorCQkJCWlmIChwcml2YXRlLT5kYXRhLT5tYWluX3BhdGhbaV0gPT0gY29tcF9p
-ZCkKKwkJCQkJcHJpdmF0ZS0+ZGF0YS0+bWFpbl9wYXRoW2kgKyAxXSA9CisJCQkJCW10a19kZHBf
-Y29tcF9nZXRfaWQobm9kZSwgY29tcF90eXBlKTsKKwkJCWZvciAoaSA9IDA7IGkgPCBwcml2YXRl
-LT5kYXRhLT5leHRfbGVuIC0gMTsgaSsrKQorCQkJCWlmIChwcml2YXRlLT5kYXRhLT5leHRfcGF0
-aFtpXSA9PSBjb21wX2lkKQorCQkJCQlwcml2YXRlLT5kYXRhLT5leHRfcGF0aFtpICsgMV0gPQor
-CQkJCQltdGtfZGRwX2NvbXBfZ2V0X2lkKG5vZGUsIGNvbXBfdHlwZSk7CisJCX0KIAl9CiAKIAlp
-ZiAoIXByaXZhdGUtPm11dGV4X25vZGUpIHsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX2Rydi5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
-ZHJ2LmgKaW5kZXggYzMzNzhjNDUyYzBhLi4yYmNiYThlYjA2ZjQgMTAwNjQ0Ci0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX2Rydi5oCkBAIC0yOSw5ICsyOSw5IEBAIHN0cnVjdCBkcm1fcHJvcGVy
-dHk7CiBzdHJ1Y3QgcmVnbWFwOwogCiBzdHJ1Y3QgbXRrX21tc3lzX2RyaXZlcl9kYXRhIHsKLQlj
-b25zdCBlbnVtIG10a19kZHBfY29tcF9pZCAqbWFpbl9wYXRoOworCWVudW0gbXRrX2RkcF9jb21w
-X2lkICptYWluX3BhdGg7CiAJdW5zaWduZWQgaW50IG1haW5fbGVuOwotCWNvbnN0IGVudW0gbXRr
-X2RkcF9jb21wX2lkICpleHRfcGF0aDsKKwllbnVtIG10a19kZHBfY29tcF9pZCAqZXh0X3BhdGg7
-CiAJdW5zaWduZWQgaW50IGV4dF9sZW47CiAJYm9vbCBzaGFkb3dfcmVnaXN0ZXI7CiB9OwotLSAK
-Mi4xMi41CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+In order to support HDMI on mt2701,
+we have to make some modifications.
+1) Add the HDMI driver.
+2) Add the DPI driver.
+3) Add a mechanism that config output component by dts.
+
+Changes since v0:
+ - Correct some typos in commit message.
+ - Fixup the build warning (tmp variable didn't be initialized)
+
+Bibby Hsieh (3):
+  drm/mediatek: implement connection from BLS to DPI0
+  drm/mediatek: add a error return value when clock driver has been
+    prepared
+  drm/mediatek: config component output by device node port
+
+chunhui dai (4):
+  drm/mediatek: move dpi private data to device
+  drm/mediatek: fix to get right bridge for dpi encoder
+  drm/mediatek: add dpi driver for mt2701 and mt7623
+  drm/mediatek: add hdmi driver for different hardware
+
+ drivers/gpu/drm/mediatek/Makefile              |   4 +-
+ drivers/gpu/drm/mediatek/mtk_dpi.c             | 125 +++++++---
+ drivers/gpu/drm/mediatek/mtk_dpi_regs.h        |   2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c         |  14 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c    |   2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c         |  38 ++-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h         |   4 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi.c            |  88 +++++--
+ drivers/gpu/drm/mediatek/mtk_hdmi.h            |  28 +++
+ drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        | 157 +++++++++++++
+ drivers/gpu/drm/mediatek/mtk_hdmi_regs.h       |   1 +
+ drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 307 +++++++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c | 129 +----------
+ 13 files changed, 716 insertions(+), 183 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+
+-- 
+2.12.5
