@@ -1,67 +1,44 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v1 2/7] drm/mediatek: fix to get right bridge for dpi encoder
-Date: Mon, 14 May 2018 15:52:38 +0800
-Message-ID: <20180514075243.5442-3-bibby.hsieh@mediatek.com>
-References: <20180514075243.5442-1-bibby.hsieh@mediatek.com>
+From: Erin Lo <erin.lo@mediatek.com>
+Subject: [PATCH v2 0/4] Add basic support for Mediatek MT8183 SoC
+Date: Mon, 14 May 2018 18:22:27 +0800
+Message-ID: <1526293351-32794-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180514075243.5442-1-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: chunhui dai <chunhui.dai@mediatek.com>, linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, erin.lo@mediatek.com, mars.cheng@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogY2h1bmh1aSBkYWkgPGNodW5odWkuZGFpQG1lZGlhdGVrLmNvbT4KCjEsIGRwaSBpcyBh
-biBlbmNvZGVyLCB0aGVyZSBpcyBhbiBicmlkZ2UgaW4gdGhlIHN0cnVjdApvZiBkZWNvZGVyLCB3
-ZSBjb3VsZCB1c2UgaXQuCjIsIHVzaW5nIG9mX2dyYXBoX2dldF9yZW1vdGVfcG9ydF9wYXJlbnQg
-dG8gZ2V0IHJpZ2h0CmJyaWRnZSBpbiBkZXZpY2UgdHJlZS4KClNpZ25lZC1vZmYtYnk6IGNodW5o
-dWkgZGFpIDxjaHVuaHVpLmRhaUBtZWRpYXRlay5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcGkuYyB8IDIxICsrKysrKysrKysrKystLS0tLS0tLQogMSBmaWxlIGNoYW5n
-ZWQsIDEzIGluc2VydGlvbnMoKyksIDggZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHBpLmMKaW5kZXggMGE0NGFiMTc1NDIyLi4yYjhiMzRjNzI2OTcgMTAwNjQ0Ci0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcGkuYwpAQCAtNjMsNyArNjMsNiBAQCBlbnVtIG10a19kcGlfb3V0X2NvbG9y
-X2Zvcm1hdCB7CiBzdHJ1Y3QgbXRrX2RwaSB7CiAJc3RydWN0IG10a19kZHBfY29tcCBkZHBfY29t
-cDsKIAlzdHJ1Y3QgZHJtX2VuY29kZXIgZW5jb2RlcjsKLQlzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJp
-ZGdlOwogCXZvaWQgX19pb21lbSAqcmVnczsKIAlzdHJ1Y3QgZGV2aWNlICpkZXY7CiAJc3RydWN0
-IGNsayAqZW5naW5lX2NsazsKQEAgLTY0Myw4ICs2NDIsOCBAQCBzdGF0aWMgaW50IG10a19kcGlf
-YmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3Rlciwgdm9pZCAqZGF0
-YSkKIAogCS8qIEN1cnJlbnRseSBEUEkwIGlzIGZpeGVkIHRvIGJlIGRyaXZlbiBieSBPVkwxICov
-CiAJZHBpLT5lbmNvZGVyLnBvc3NpYmxlX2NydGNzID0gQklUKDEpOwotCi0JcmV0ID0gZHJtX2Jy
-aWRnZV9hdHRhY2goJmRwaS0+ZW5jb2RlciwgZHBpLT5icmlkZ2UsIE5VTEwpOworCWRwaS0+ZW5j
-b2Rlci5icmlkZ2UtPmVuY29kZXIgPSAmZHBpLT5lbmNvZGVyOworCXJldCA9IGRybV9icmlkZ2Vf
-YXR0YWNoKCZkcGktPmVuY29kZXIsIGRwaS0+ZW5jb2Rlci5icmlkZ2UsIE5VTEwpOwogCWlmIChy
-ZXQpIHsKIAkJZGV2X2VycihkZXYsICJGYWlsZWQgdG8gYXR0YWNoIGJyaWRnZTogJWRcbiIsIHJl
-dCk7CiAJCWdvdG8gZXJyX2NsZWFudXA7CkBAIC03MDksNyArNzA4LDcgQEAgc3RhdGljIGludCBt
-dGtfZHBpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiAJc3RydWN0IGRldmlj
-ZSAqZGV2ID0gJnBkZXYtPmRldjsKIAlzdHJ1Y3QgbXRrX2RwaSAqZHBpOwogCXN0cnVjdCByZXNv
-dXJjZSAqbWVtOwotCXN0cnVjdCBkZXZpY2Vfbm9kZSAqYnJpZGdlX25vZGU7CisJc3RydWN0IGRl
-dmljZV9ub2RlICplcCwgKmJyaWRnZV9ub2RlOwogCWludCBjb21wX2lkOwogCWNvbnN0IHN0cnVj
-dCBvZl9kZXZpY2VfaWQgKm1hdGNoOwogCWludCByZXQ7CkBAIC03NTksMTUgKzc1OCwyMSBAQCBz
-dGF0aWMgaW50IG10a19kcGlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAkJ
-cmV0dXJuIC1FSU5WQUw7CiAJfQogCi0JYnJpZGdlX25vZGUgPSBvZl9ncmFwaF9nZXRfcmVtb3Rl
-X25vZGUoZGV2LT5vZl9ub2RlLCAwLCAwKTsKLQlpZiAoIWJyaWRnZV9ub2RlKQorCWVwID0gb2Zf
-Z3JhcGhfZ2V0X25leHRfZW5kcG9pbnQoZGV2LT5vZl9ub2RlLCBOVUxMKTsKKwlpZiAoZXApIHsK
-KwkJYnJpZGdlX25vZGUgPSBvZl9ncmFwaF9nZXRfcmVtb3RlX3BvcnRfcGFyZW50KGVwKTsKKwkJ
-b2Zfbm9kZV9wdXQoZXApOworCX0KKwlpZiAoIWJyaWRnZV9ub2RlKSB7CisJCWRldl9lcnIoZGV2
-LCAiRmFpbGVkIHRvIGZpbmQgYnJpZGdlIG5vZGVcbiIpOwogCQlyZXR1cm4gLUVOT0RFVjsKKwl9
-CiAKIAlkZXZfaW5mbyhkZXYsICJGb3VuZCBicmlkZ2Ugbm9kZTogJXBPRlxuIiwgYnJpZGdlX25v
-ZGUpOwogCi0JZHBpLT5icmlkZ2UgPSBvZl9kcm1fZmluZF9icmlkZ2UoYnJpZGdlX25vZGUpOwor
-CWRwaS0+ZW5jb2Rlci5icmlkZ2UgPSBvZl9kcm1fZmluZF9icmlkZ2UoYnJpZGdlX25vZGUpOwog
-CW9mX25vZGVfcHV0KGJyaWRnZV9ub2RlKTsKLQlpZiAoIWRwaS0+YnJpZGdlKQorCWlmICghZHBp
-LT5lbmNvZGVyLmJyaWRnZSkKIAkJcmV0dXJuIC1FUFJPQkVfREVGRVI7CiAKIAljb21wX2lkID0g
-bXRrX2RkcF9jb21wX2dldF9pZChkZXYtPm9mX25vZGUsIE1US19EUEkpOwotLSAKMi4xMi41Cgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+MT8183 is a SoC based on 64bit ARMv8 architecture.
+It contains 4 CA53 and 4 CA73 cores.
+MT8183 share many HW IP with MT65xx series.
+This patchset was tested on MT8183 evaluation board, and boot to shell ok.
+
+This series contains document bindings, device tree including interrupt, uart.
+
+Change in v2:
+1. Split dt-bindings into different patches
+2. Correct bindings for supported SoCs (mtk-uart.txt)
+
+Ben Ho (1):
+  arm64: dts: Add Mediatek SoC MT8183 and evaluation board dts and
+    Makefile
+
+Erin Lo (3):
+  dt-bindings: arm: Add bindings for Mediatek MT8183 SoC Platform
+  dt-bindings: mtk-sysirq: Add compatible for Mediatek MT8183
+  dt-bindings: serial: Add compatible for Mediatek MT8183
+
+ Documentation/devicetree/bindings/arm/mediatek.txt |   4 +
+ .../interrupt-controller/mediatek,sysirq.txt       |   1 +
+ .../devicetree/bindings/serial/mtk-uart.txt        |   1 +
+ arch/arm64/boot/dts/mediatek/Makefile              |   1 +
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts        |  31 ++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           | 178 +++++++++++++++++++++
+ 6 files changed, 216 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183.dtsi
+
+--
+1.9.1
