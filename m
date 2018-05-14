@@ -1,88 +1,127 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v1 3/7] drm/mediatek: add dpi driver for mt2701 and mt7623
-Date: Mon, 14 May 2018 15:52:39 +0800
-Message-ID: <20180514075243.5442-4-bibby.hsieh@mediatek.com>
+Subject: [PATCH v1 1/7] drm/mediatek: move dpi private data to device
+Date: Mon, 14 May 2018 15:52:37 +0800
+Message-ID: <20180514075243.5442-2-bibby.hsieh@mediatek.com>
 References: <20180514075243.5442-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20180514075243.5442-1-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>
+Cc: chunhui dai <chunhui.dai@mediatek.com>, linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: chunhui dai <chunhui.dai@mediatek.com>
-
-This patch adds dpi driver suppot for both mt2701 and mt7623.
-And also support other (existing or future) chips that use
-the same binding and driver.
-
-Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dpi.c     | 24 ++++++++++++++++++++++--
- drivers/gpu/drm/mediatek/mtk_drm_drv.c |  1 +
- 2 files changed, 23 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 2b8b34c72697..e1af1d0d213d 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -640,8 +640,7 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
- 	}
- 	drm_encoder_helper_add(&dpi->encoder, &mtk_dpi_encoder_helper_funcs);
- 
--	/* Currently DPI0 is fixed to be driven by OVL1 */
--	dpi->encoder.possible_crtcs = BIT(1);
-+	dpi->encoder.possible_crtcs = BIT(0) | BIT(1);
- 	dpi->encoder.bridge->encoder = &dpi->encoder;
- 	ret = drm_bridge_attach(&dpi->encoder, dpi->encoder.bridge, NULL);
- 	if (ret) {
-@@ -690,12 +689,33 @@ static unsigned int mt8173_calculate_factor(int clock)
- 		return 2 * 3;
- }
- 
-+static unsigned int mt2701_calculate_factor(int clock)
-+{
-+	if (clock <= 64000)
-+		return 16;
-+	else if (clock <= 128000)
-+		return 8;
-+	else if (clock <= 256000)
-+		return 4;
-+	else
-+		return 2;
-+}
-+
- static const struct mtk_dpi_conf mt8173_conf = {
- 	.cal_factor = mt8173_calculate_factor,
- 	.reg_h_fre_con = 0xe0,
- };
- 
-+static const struct mtk_dpi_conf mt2701_conf = {
-+	.cal_factor = mt2701_calculate_factor,
-+	.reg_h_fre_con = 0xb0,
-+	.edge_sel_en = true,
-+};
-+
- static const struct of_device_id mtk_dpi_of_ids[] = {
-+	{ .compatible = "mediatek,mt2701-dpi",
-+	  .data = &mt2701_conf,
-+	},
- 	{ .compatible = "mediatek,mt8173-dpi",
- 	  .data = &mt8173_conf,
- 	},
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index a2ca90fc403c..f4fb86ab7b8d 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -372,6 +372,7 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	{ .compatible = "mediatek,mt8173-disp-ufoe",  .data = (void *)MTK_DISP_UFOE },
- 	{ .compatible = "mediatek,mt2701-dsi",	      .data = (void *)MTK_DSI },
- 	{ .compatible = "mediatek,mt8173-dsi",        .data = (void *)MTK_DSI },
-+	{ .compatible = "mediatek,mt2701-dpi",	      .data = (void *)MTK_DPI },
- 	{ .compatible = "mediatek,mt8173-dpi",        .data = (void *)MTK_DPI },
- 	{ .compatible = "mediatek,mt2701-disp-mutex", .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8173-disp-mutex", .data = (void *)MTK_DISP_MUTEX },
--- 
-2.12.5
+RnJvbTogY2h1bmh1aSBkYWkgPGNodW5odWkuZGFpQG1lZGlhdGVrLmNvbT4KCm1vdmUgY2xvY2sg
+ZmFjdG9yIGFuZCBlZGdlIGVuYWJsZSBzZXR0aW5nIHRvIHByaXZhdGUgZGF0YS4KClNpZ25lZC1v
+ZmYtYnk6IGNodW5odWkgZGFpIDxjaHVuaHVpLmRhaUBtZWRpYXRlay5jb20+Ci0tLQogZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYyAgICAgIHwgODIgKysrKysrKysrKysrKysrKysr
+KysrKysrKystLS0tLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaV9yZWdzLmgg
+fCAgMiArLQogMiBmaWxlcyBjaGFuZ2VkLCA2NiBpbnNlcnRpb25zKCspLCAxOCBkZWxldGlvbnMo
+LSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jIGIvZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwppbmRleCBlODBhNjAzZTVmYjAuLjk5M2Rj
+NDQzNjhiZCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwor
+KysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCkBAIC03MSwxMSArNzEsMTMg
+QEAgc3RydWN0IG10a19kcGkgewogCXN0cnVjdCBjbGsgKnR2ZF9jbGs7CiAJaW50IGlycTsKIAlz
+dHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSBtb2RlOworCWNvbnN0IHN0cnVjdCBtdGtfZHBpX2NvbmYg
+KmNvbmY7CiAJZW51bSBtdGtfZHBpX291dF9jb2xvcl9mb3JtYXQgY29sb3JfZm9ybWF0OwogCWVu
+dW0gbXRrX2RwaV9vdXRfeWNfbWFwIHljX21hcDsKIAllbnVtIG10a19kcGlfb3V0X2JpdF9udW0g
+Yml0X251bTsKIAllbnVtIG10a19kcGlfb3V0X2NoYW5uZWxfc3dhcCBjaGFubmVsX3N3YXA7CiAJ
+Ym9vbCBwb3dlcl9zdGE7CisJaW50IHJlZmNvdW50OwogCXU4IHBvd2VyX2N0bDsKIH07CiAKQEAg
+LTExNSw2ICsxMTcsMTIgQEAgc3RydWN0IG10a19kcGlfeWNfbGltaXQgewogCXUxNiBjX2JvdHRv
+bTsKIH07CiAKK3N0cnVjdCBtdGtfZHBpX2NvbmYgeworCXVuc2lnbmVkIGludCAoKmNhbF9mYWN0
+b3IpKGludCBjbG9jayk7CisJY29uc3QgdTMyIHJlZ19oX2ZyZV9jb247CisJYm9vbCBlZGdlX3Nl
+bF9lbjsKK307CisKIHN0YXRpYyB2b2lkIG10a19kcGlfbWFzayhzdHJ1Y3QgbXRrX2RwaSAqZHBp
+LCB1MzIgb2Zmc2V0LCB1MzIgdmFsLCB1MzIgbWFzaykKIHsKIAl1MzIgdG1wID0gcmVhZGwoZHBp
+LT5yZWdzICsgb2Zmc2V0KSAmIH5tYXNrOwpAQCAtMzQwLDcgKzM0OCwxMyBAQCBzdGF0aWMgdm9p
+ZCBtdGtfZHBpX2NvbmZpZ19zd2FwX2lucHV0KHN0cnVjdCBtdGtfZHBpICpkcGksIGJvb2wgZW5h
+YmxlKQogCiBzdGF0aWMgdm9pZCBtdGtfZHBpX2NvbmZpZ18ybl9oX2ZyZShzdHJ1Y3QgbXRrX2Rw
+aSAqZHBpKQogewotCW10a19kcGlfbWFzayhkcGksIERQSV9IX0ZSRV9DT04sIEhfRlJFXzJOLCBI
+X0ZSRV8yTik7CisJbXRrX2RwaV9tYXNrKGRwaSwgZHBpLT5jb25mLT5yZWdfaF9mcmVfY29uLCBI
+X0ZSRV8yTiwgSF9GUkVfMk4pOworfQorCitzdGF0aWMgdm9pZCBtdGtfZHBpX2NvbmZpZ19kaXNh
+YmxlX2VkZ2Uoc3RydWN0IG10a19kcGkgKmRwaSkKK3sKKwlpZiAoZHBpLT5jb25mLT5lZGdlX3Nl
+bF9lbikKKwkJbXRrX2RwaV9tYXNrKGRwaSwgZHBpLT5jb25mLT5yZWdfaF9mcmVfY29uLCAwLCBF
+REdFX1NFTF9FTik7CiB9CiAKIHN0YXRpYyB2b2lkIG10a19kcGlfY29uZmlnX2NvbG9yX2Zvcm1h
+dChzdHJ1Y3QgbXRrX2RwaSAqZHBpLApAQCAtMzY4LDYgKzM4MiwxMiBAQCBzdGF0aWMgdm9pZCBt
+dGtfZHBpX2NvbmZpZ19jb2xvcl9mb3JtYXQoc3RydWN0IG10a19kcGkgKmRwaSwKIAogc3RhdGlj
+IHZvaWQgbXRrX2RwaV9wb3dlcl9vZmYoc3RydWN0IG10a19kcGkgKmRwaSwgZW51bSBtdGtfZHBp
+X3Bvd2VyX2N0bCBwY3RsKQogeworCWlmIChXQVJOX09OKGRwaS0+cmVmY291bnQgPT0gMCkpCisJ
+CXJldHVybjsKKworCWlmICgtLWRwaS0+cmVmY291bnQgIT0gMCkKKwkJcmV0dXJuOworCiAJZHBp
+LT5wb3dlcl9jdGwgJj0gfnBjdGw7CiAKIAlpZiAoKGRwaS0+cG93ZXJfY3RsICYgRFBJX1BPV0VS
+X1NUQVJUKSB8fApAQCAtMzg1LDE2ICs0MDUsMTkgQEAgc3RhdGljIHZvaWQgbXRrX2RwaV9wb3dl
+cl9vZmYoc3RydWN0IG10a19kcGkgKmRwaSwgZW51bSBtdGtfZHBpX3Bvd2VyX2N0bCBwY3RsKQog
+CiBzdGF0aWMgaW50IG10a19kcGlfcG93ZXJfb24oc3RydWN0IG10a19kcGkgKmRwaSwgZW51bSBt
+dGtfZHBpX3Bvd2VyX2N0bCBwY3RsKQogewotCWludCByZXQ7CisJaW50IHJldCA9IDA7CisKKwlp
+ZiAoKytkcGktPnJlZmNvdW50ICE9IDEpCisJCXJldHVybiAwOwogCiAJZHBpLT5wb3dlcl9jdGwg
+fD0gcGN0bDsKIAogCWlmICghKGRwaS0+cG93ZXJfY3RsICYgRFBJX1BPV0VSX1NUQVJUKSAmJgog
+CSAgICAhKGRwaS0+cG93ZXJfY3RsICYgRFBJX1BPV0VSX0VOQUJMRSkpCi0JCXJldHVybiAwOwor
+CQlnb3RvIGVycl9yZWZjb3VudDsKIAogCWlmIChkcGktPnBvd2VyX3N0YSkKLQkJcmV0dXJuIDA7
+CisJCWdvdG8gZXJyX3JlZmNvdW50OwogCiAJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKGRwaS0+
+ZW5naW5lX2Nsayk7CiAJaWYgKHJldCkgewpAQCAtNDE2LDYgKzQzOSw4IEBAIHN0YXRpYyBpbnQg
+bXRrX2RwaV9wb3dlcl9vbihzdHJ1Y3QgbXRrX2RwaSAqZHBpLCBlbnVtIG10a19kcGlfcG93ZXJf
+Y3RsIHBjdGwpCiAJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRwaS0+ZW5naW5lX2Nsayk7CiBlcnJf
+ZW5nOgogCWRwaS0+cG93ZXJfY3RsICY9IH5wY3RsOworZXJyX3JlZmNvdW50OgorCWRwaS0+cmVm
+Y291bnQtLTsKIAlyZXR1cm4gcmV0OwogfQogCkBAIC00MzMsMTYgKzQ1OCwxMyBAQCBzdGF0aWMg
+aW50IG10a19kcGlfc2V0X2Rpc3BsYXlfbW9kZShzdHJ1Y3QgbXRrX2RwaSAqZHBpLAogCXVuc2ln
+bmVkIGxvbmcgcGxsX3JhdGU7CiAJdW5zaWduZWQgaW50IGZhY3RvcjsKIAorCWlmICghZHBpKSB7
+CisJCWRldl9lcnIoZHBpLT5kZXYsICJpbnZhbGlkIGFyZ3VtZW50XG4iKTsKKwkJcmV0dXJuIC1F
+SU5WQUw7CisJfQogCS8qIGxldCBwbGxfcmF0ZSBjYW4gZml4IHRoZSB2YWxpZCByYW5nZSBvZiB0
+dmRwbGwgKDFHfjJHSHopICovCiAJcGl4X3JhdGUgPSAxMDAwVUwgKiBtb2RlLT5jbG9jazsKLQlp
+ZiAobW9kZS0+Y2xvY2sgPD0gMjcwMDApCi0JCWZhY3RvciA9IDE2ICogMzsKLQllbHNlIGlmICht
+b2RlLT5jbG9jayA8PSA4NDAwMCkKLQkJZmFjdG9yID0gOCAqIDM7Ci0JZWxzZSBpZiAobW9kZS0+
+Y2xvY2sgPD0gMTY3MDAwKQotCQlmYWN0b3IgPSA0ICogMzsKLQllbHNlCi0JCWZhY3RvciA9IDIg
+KiAzOworCWZhY3RvciA9IGRwaS0+Y29uZi0+Y2FsX2ZhY3Rvcihtb2RlLT5jbG9jayk7CiAJcGxs
+X3JhdGUgPSBwaXhfcmF0ZSAqIGZhY3RvcjsKIAogCWRldl9kYmcoZHBpLT5kZXYsICJXYW50IFBM
+TCAlbHUgSHosIHBpeGVsIGNsb2NrICVsdSBIelxuIiwKQEAgLTUxOCw2ICs1NDAsNyBAQCBzdGF0
+aWMgaW50IG10a19kcGlfc2V0X2Rpc3BsYXlfbW9kZShzdHJ1Y3QgbXRrX2RwaSAqZHBpLAogCW10
+a19kcGlfY29uZmlnX3ljX21hcChkcGksIGRwaS0+eWNfbWFwKTsKIAltdGtfZHBpX2NvbmZpZ19j
+b2xvcl9mb3JtYXQoZHBpLCBkcGktPmNvbG9yX2Zvcm1hdCk7CiAJbXRrX2RwaV9jb25maWdfMm5f
+aF9mcmUoZHBpKTsKKwltdGtfZHBpX2NvbmZpZ19kaXNhYmxlX2VkZ2UoZHBpKTsKIAltdGtfZHBp
+X3N3X3Jlc2V0KGRwaSwgZmFsc2UpOwogCiAJcmV0dXJuIDA7CkBAIC02NTYsNiArNjc5LDMxIEBA
+IHN0YXRpYyBjb25zdCBzdHJ1Y3QgY29tcG9uZW50X29wcyBtdGtfZHBpX2NvbXBvbmVudF9vcHMg
+PSB7CiAJLnVuYmluZCA9IG10a19kcGlfdW5iaW5kLAogfTsKIAorc3RhdGljIHVuc2lnbmVkIGlu
+dCBtdDgxNzNfY2FsY3VsYXRlX2ZhY3RvcihpbnQgY2xvY2spCit7CisJaWYgKGNsb2NrIDw9IDI3
+MDAwKQorCQlyZXR1cm4gMTYgKiAzOworCWVsc2UgaWYgKGNsb2NrIDw9IDc0MjUwKQorCQlyZXR1
+cm4gOCAqIDM7CisJZWxzZSBpZiAoY2xvY2sgPD0gMTY3MDAwKQorCQlyZXR1cm4gNCAqIDM7CisJ
+ZWxzZQorCQlyZXR1cm4gMiAqIDM7Cit9CisKK3N0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RwaV9j
+b25mIG10ODE3M19jb25mID0geworCS5jYWxfZmFjdG9yID0gbXQ4MTczX2NhbGN1bGF0ZV9mYWN0
+b3IsCisJLnJlZ19oX2ZyZV9jb24gPSAweGUwLAorfTsKKworc3RhdGljIGNvbnN0IHN0cnVjdCBv
+Zl9kZXZpY2VfaWQgbXRrX2RwaV9vZl9pZHNbXSA9IHsKKwl7IC5jb21wYXRpYmxlID0gIm1lZGlh
+dGVrLG10ODE3My1kcGkiLAorCSAgLmRhdGEgPSAmbXQ4MTczX2NvbmYsCisJfSwKKwl7IH0sCit9
+OworTU9EVUxFX0RFVklDRV9UQUJMRShvZiwgbXRrX2RwaV9vZl9pZHMpOworCiBzdGF0aWMgaW50
+IG10a19kcGlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIHsKIAlzdHJ1Y3Qg
+ZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2OwpAQCAtNjYzLDEzICs3MTEsMTggQEAgc3RhdGljIGlu
+dCBtdGtfZHBpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiAJc3RydWN0IHJl
+c291cmNlICptZW07CiAJc3RydWN0IGRldmljZV9ub2RlICpicmlkZ2Vfbm9kZTsKIAlpbnQgY29t
+cF9pZDsKKwljb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkICptYXRjaDsKIAlpbnQgcmV0OwogCisJ
+bWF0Y2ggPSBvZl9tYXRjaF9ub2RlKG10a19kcGlfb2ZfaWRzLCBkZXYtPm9mX25vZGUpOworCWlm
+ICghbWF0Y2gpCisJCXJldHVybiAtRU5PREVWOwogCWRwaSA9IGRldm1fa3phbGxvYyhkZXYsIHNp
+emVvZigqZHBpKSwgR0ZQX0tFUk5FTCk7CiAJaWYgKCFkcGkpCiAJCXJldHVybiAtRU5PTUVNOwog
+CiAJZHBpLT5kZXYgPSBkZXY7CisJZHBpLT5jb25mID0gKHN0cnVjdCBtdGtfZHBpX2NvbmYgKilt
+YXRjaC0+ZGF0YTsKIAogCW1lbSA9IHBsYXRmb3JtX2dldF9yZXNvdXJjZShwZGV2LCBJT1JFU09V
+UkNFX01FTSwgMCk7CiAJZHBpLT5yZWdzID0gZGV2bV9pb3JlbWFwX3Jlc291cmNlKGRldiwgbWVt
+KTsKQEAgLTc0OCwxMSArODAxLDYgQEAgc3RhdGljIGludCBtdGtfZHBpX3JlbW92ZShzdHJ1Y3Qg
+cGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCXJldHVybiAwOwogfQogCi1zdGF0aWMgY29uc3Qgc3Ry
+dWN0IG9mX2RldmljZV9pZCBtdGtfZHBpX29mX2lkc1tdID0gewotCXsgLmNvbXBhdGlibGUgPSAi
+bWVkaWF0ZWssbXQ4MTczLWRwaSIsIH0sCi0Je30KLX07Ci0KIHN0cnVjdCBwbGF0Zm9ybV9kcml2
+ZXIgbXRrX2RwaV9kcml2ZXIgPSB7CiAJLnByb2JlID0gbXRrX2RwaV9wcm9iZSwKIAkucmVtb3Zl
+ID0gbXRrX2RwaV9yZW1vdmUsCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2RwaV9yZWdzLmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaV9yZWdzLmgK
+aW5kZXggNGI2YWQ0NzUxYTMxLi5kOWRiOGM0Y2FjZDcgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHBpX3JlZ3MuaAorKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RwaV9yZWdzLmgKQEAgLTIyMyw2ICsyMjMsNiBAQAogI2RlZmluZSBFU0FWX0NPREUy
+CQkJKDB4RkZGIDw8IDApCiAjZGVmaW5lIEVTQVZfQ09ERTNfTVNCCQkJQklUKDE2KQogCi0jZGVm
+aW5lIERQSV9IX0ZSRV9DT04JCTB4RTAKKyNkZWZpbmUgRURHRV9TRUxfRU4JCQlCSVQoNSkKICNk
+ZWZpbmUgSF9GUkVfMk4JCQlCSVQoMjUpCiAjZW5kaWYgLyogX19NVEtfRFBJX1JFR1NfSCAqLwot
+LSAKMi4xMi41CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
