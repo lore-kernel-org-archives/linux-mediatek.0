@@ -1,63 +1,54 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: Re: [PATCH v2 4/4] arm64: dts: Add Mediatek SoC MT8183 and evaluation
- board dts and Makefile
-Date: Mon, 14 May 2018 11:35:45 +0100
-Message-ID: <efa91778-e81f-9ba4-22a6-43ff0f94af4f@arm.com>
-References: <1526293351-32794-1-git-send-email-erin.lo@mediatek.com>
- <1526293351-32794-5-git-send-email-erin.lo@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [GIT PULL] defconfig updates for v4.18
+Date: Mon, 14 May 2018 13:24:03 +0200
+Message-ID: <268190dc-bca5-d86a-c56c-75013dc20d38@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1526293351-32794-5-git-send-email-erin.lo@mediatek.com>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Erin Lo <erin.lo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, mars.cheng@mediatek.com, Ben Ho <Ben.Ho@mediatek.com>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 14/05/18 11:22, Erin Lo wrote:
-> From: Ben Ho <Ben.Ho@mediatek.com>
-> 
-> Add basic chip support for Mediatek 8183
-> 
-> Signed-off-by: Ben Ho <Ben.Ho@mediatek.com>
-> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/Makefile       |   1 +
->  arch/arm64/boot/dts/mediatek/mt8183-evb.dts |  31 +++++
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 178 ++++++++++++++++++++++++++++
->  3 files changed, 210 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-evb.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> 
+Hi Olof and Arnd,
 
-[...]
-
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> new file mode 100644
-> index 0000000..8564a26
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-
-[...]
-
-> +	gic: interrupt-controller@0c000000 {
-> +		compatible = "arm,gic-v3";
-> +		#interrupt-cells = <3>;
-> +		interrupt-parent = <&gic>;
-> +		interrupt-controller;
-> +		reg = <0 0x0c000000 0 0x40000>,  // CID
-> +		      <0 0x0c100000 0 0x200000>; // CIR
-
-You're missing the GICV and GICH regions that are present on both A53
-and A73 at an offset from PERIPHBASE.
-
-> +		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> +	};
+Please merge the following patch for defconfig.
 
 Thanks,
+Matthias
 
-	M.
--- 
-Jazz is not dead. It just smells funny...
+---
+
+The following changes since commit 60cc43fc888428bb2f18f08997432d426a243338:
+
+  Linux 4.17-rc1 (2018-04-15 18:24:20 -0700)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+tags/v4.17-next-defconfig
+
+for you to fetch changes up to 1e31927aa64545ee97a2a41db9984c9931afc50a:
+
+  arm64: defconfig: Enable CONFIG_PINCTRL_MT7622 by default (2018-04-27 11:48:37
++0200)
+
+----------------------------------------------------------------
+enable mt7622 pinctrl to fix boot issue
+
+----------------------------------------------------------------
+Sean Wang (1):
+      arm64: defconfig: Enable CONFIG_PINCTRL_MT7622 by default
+
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
