@@ -1,148 +1,129 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH V5 3/4] soc: mediatek: pwrap: add pwrap driver for mt6797
- SoCs
-Date: Tue, 15 May 2018 11:56:05 +0200
-Message-ID: <eca7c8a9-684c-6d58-2eef-5f79b7f8e81e@gmail.com>
-References: <1525957319-20557-1-git-send-email-argus.lin@mediatek.com>
- <1525957319-20557-4-git-send-email-argus.lin@mediatek.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH v2 26/26] drm/bridge: establish a link between the bridge
+ supplier and consumer
+Date: Tue, 15 May 2018 12:22:38 +0200
+Message-ID: <CAKMK7uECSUo5k6uG3-y+yKQTGxB3FfGcwzMT+ZP5uux2SbpfUg@mail.gmail.com>
+References: <20180504135212.26977-1-peda@axentia.se>
+ <CGME20180504135432epcas3p368bb7541ca52bc8bc301dec794851214@epcas3p3.samsung.com>
+ <20180504135212.26977-27-peda@axentia.se>
+ <a723ad4a-8caa-4ff5-d39d-52db98a56d7b@samsung.com>
+ <c25f81e0-5b7b-c605-5b58-0ecc88830124@axentia.se>
+ <20180514162828.GE28661@phenom.ffwll.local>
+ <73fa1ca3-28e4-96c5-1fc6-23e9c0cebb49@axentia.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1525957319-20557-4-git-send-email-argus.lin@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: argus.lin@mediatek.com, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
-Cc: Chenglin Xu <chenglin.xu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, wsd_upstream@mediatek.com, henryc.chen@mediatek.com, flora.fu@mediatek.com, Chen Zhong <chen.zhong@mediatek.com>, Christophe Jaillet <christophe.jaillet@wanadoo.fr>, Arvind Yadav <arvind.yadav.cs@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <73fa1ca3-28e4-96c5-1fc6-23e9c0cebb49@axentia.se>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Peter Rosin <peda@axentia.se>
+Cc: Martyn Welch <martyn.welch@collabora.co.uk>, David Airlie <airlied@linux.ie>, dri-devel <dri-devel@lists.freedesktop.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kukjin Kim <kgene@kernel.org>, Peter Senna Tschudin <peter.senna@collabora.com>, Martin Donnelly <martin.donnelly@ge.com>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, Jyri Sarha <jsarha@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Seung-Woo Kim <sw0312.kim@samsung.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:DRM DRIVERS FOR RENESAS" <linux-renesas-soc@vger.kernel.>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 05/10/2018 03:01 PM, argus.lin@mediatek.com wrote:
-> From: Argus Lin <argus.lin@mediatek.com>
-> 
-> mt6797 is a highly integrated SoCs, it uses mt6351 for power management.
-> We need to add pwrap driver to access mt6351. Pwrap of mt6797 support
-> dynamic priority meichanism, sequence monitor and starvation mechanism
-> to make transaction more reliable.
-> 
-
-This is drivers differs vastly from V4, but I can't find any explanation why.
-Can you please elaborate. For the record the explanation should have been done
-in the cover letter.
-
-Thanks,
-Matthias
-
-> ---
->  drivers/soc/mediatek/mtk-pmic-wrap.c | 50 ++++++++++++++++++++++++++++++++++++
->  1 file changed, 50 insertions(+)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index 9a01e30..d03e2d4 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -366,6 +366,39 @@ enum pwrap_regs {
->  	[PWRAP_ADC_RDATA_ADDR2] =	0x154,
->  };
->  
-> +static int mt6797_regs[] = {
-> +	[PWRAP_MUX_SEL] =		0x0,
-> +	[PWRAP_WRAP_EN] =		0x4,
-> +	[PWRAP_DIO_EN] =		0x8,
-> +	[PWRAP_SIDLY] =			0xC,
-> +	[PWRAP_RDDMY] =			0x10,
-> +	[PWRAP_CSHEXT_WRITE] =		0x18,
-> +	[PWRAP_CSHEXT_READ] =		0x1C,
-> +	[PWRAP_CSLEXT_START] =		0x20,
-> +	[PWRAP_CSLEXT_END] =		0x24,
-> +	[PWRAP_STAUPD_PRD] =		0x28,
-> +	[PWRAP_HARB_HPRIO] =		0x50,
-> +	[PWRAP_HIPRIO_ARB_EN] =		0x54,
-> +	[PWRAP_MAN_EN] =		0x60,
-> +	[PWRAP_MAN_CMD] =		0x64,
-> +	[PWRAP_WACS0_EN] =		0x70,
-> +	[PWRAP_WACS1_EN] =		0x84,
-> +	[PWRAP_WACS2_EN] =		0x98,
-> +	[PWRAP_INIT_DONE2] =		0x9C,
-> +	[PWRAP_WACS2_CMD] =		0xA0,
-> +	[PWRAP_WACS2_RDATA] =		0xA4,
-> +	[PWRAP_WACS2_VLDCLR] =		0xA8,
-> +	[PWRAP_INT_EN] =		0xC0,
-> +	[PWRAP_INT_FLG_RAW] =		0xC4,
-> +	[PWRAP_INT_FLG] =		0xC8,
-> +	[PWRAP_INT_CLR] =		0xCC,
-> +	[PWRAP_TIMER_EN] =		0xF4,
-> +	[PWRAP_WDT_UNIT] =		0xFC,
-> +	[PWRAP_WDT_SRC_EN] =		0x100,
-> +	[PWRAP_DCM_EN] =		0x1CC,
-> +	[PWRAP_DCM_DBC_PRD] =		0x1D4,
-> +};
-> +
->  static int mt7622_regs[] = {
->  	[PWRAP_MUX_SEL] =		0x0,
->  	[PWRAP_WRAP_EN] =		0x4,
-> @@ -641,6 +674,7 @@ enum pmic_type {
->  
->  enum pwrap_type {
->  	PWRAP_MT2701,
-> +	PWRAP_MT6797,
->  	PWRAP_MT7622,
->  	PWRAP_MT8135,
->  	PWRAP_MT8173,
-> @@ -1067,6 +1101,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
->  		pwrap_writel(wrp, 1, PWRAP_CIPHER_START);
->  		break;
->  	case PWRAP_MT2701:
-> +	case PWRAP_MT6797:
->  	case PWRAP_MT8173:
->  		pwrap_writel(wrp, 1, PWRAP_CIPHER_EN);
->  		break;
-> @@ -1396,6 +1431,18 @@ static irqreturn_t pwrap_interrupt(int irqno, void *dev_id)
->  	.init_soc_specific = pwrap_mt2701_init_soc_specific,
->  };
->  
-> +static const struct pmic_wrapper_type pwrap_mt6797 = {
-> +	.regs = mt6797_regs,
-> +	.type = PWRAP_MT6797,
-> +	.arb_en_all = 0x01fff,
-> +	.int_en_all = 0xffffffc6,
-> +	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
-> +	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
-> +	.has_bridge = 0,
-> +	.init_reg_clock = pwrap_common_init_reg_clock,
-> +	.init_soc_specific = NULL,
-> +};
-> +
->  static const struct pmic_wrapper_type pwrap_mt7622 = {
->  	.regs = mt7622_regs,
->  	.type = PWRAP_MT7622,
-> @@ -1437,6 +1484,9 @@ static irqreturn_t pwrap_interrupt(int irqno, void *dev_id)
->  		.compatible = "mediatek,mt2701-pwrap",
->  		.data = &pwrap_mt2701,
->  	}, {
-> +		.compatible = "mediatek,mt6797-pwrap",
-> +		.data = &pwrap_mt6797,
-> +	}, {
->  		.compatible = "mediatek,mt7622-pwrap",
->  		.data = &pwrap_mt7622,
->  	}, {
-> -- 
-> 1.8.1.1.dirty
-> 
-> ************* Email Confidentiality Notice
->  ********************
-> The information contained in this e-mail message (including any 
-> attachments) may be confidential, proprietary, privileged, or otherwise
-> exempt from disclosure under applicable laws. It is intended to be 
-> conveyed only to the designated recipient(s). Any use, dissemination, 
-> distribution, printing, retaining or copying of this e-mail (including its 
-> attachments) by unintended recipient(s) is strictly prohibited and may 
-> be unlawful. If you are not an intended recipient of this e-mail, or believe
->  
-> that you have received this e-mail in error, please notify the sender 
-> immediately (by replying to this e-mail), delete any and all copies of 
-> this e-mail (including any attachments) from your system, and do not
-> disclose the content of this e-mail to any other person. Thank
->  you!
-> 
+T24gTW9uLCBNYXkgMTQsIDIwMTggYXQgMTA6NDAgUE0sIFBldGVyIFJvc2luIDxwZWRhQGF4ZW50
+aWEuc2U+IHdyb3RlOgo+IE9uIDIwMTgtMDUtMTQgMTg6MjgsIERhbmllbCBWZXR0ZXIgd3JvdGU6
+Cj4+IE9uIEZyaSwgTWF5IDExLCAyMDE4IGF0IDA5OjM3OjQ3QU0gKzAyMDAsIFBldGVyIFJvc2lu
+IHdyb3RlOgo+Pj4gT24gMjAxOC0wNS0xMCAxMDoxMCwgQW5kcnplaiBIYWpkYSB3cm90ZToKPj4+
+PiBPbiAwNC4wNS4yMDE4IDE1OjUyLCBQZXRlciBSb3NpbiB3cm90ZToKPj4+Pj4gSWYgdGhlIGJy
+aWRnZSBzdXBwbGllciBpcyB1bmJvdW5kLCB0aGlzIHdpbGwgYnJpbmcgdGhlIGJyaWRnZSBjb25z
+dW1lcgo+Pj4+PiBkb3duIGFsb25nIHdpdGggdGhlIGJyaWRnZS4gVGh1cywgdGhlcmUgd2lsbCBu
+byBsb25nZXIgbGluZ2VyIGFueQo+Pj4+PiBkYW5nbGluZyBwb2ludGVycyBmcm9tIHRoZSBicmlk
+Z2UgY29uc3VtZXIgKHRoZSBkcm1fZGV2aWNlKSB0byBzb21lCj4+Pj4+IG5vbi1leGlzdGVudCBi
+cmlkZ2Ugc3VwcGxpZXIuCj4+Pj4+Cj4+Pj4+IFNpZ25lZC1vZmYtYnk6IFBldGVyIFJvc2luIDxw
+ZWRhQGF4ZW50aWEuc2U+Cj4+Pj4+IC0tLQo+Pj4+PiAgZHJpdmVycy9ncHUvZHJtL2RybV9icmlk
+Z2UuYyB8IDE4ICsrKysrKysrKysrKysrKysrKwo+Pj4+PiAgaW5jbHVkZS9kcm0vZHJtX2JyaWRn
+ZS5oICAgICB8ICAyICsrCj4+Pj4+ICAyIGZpbGVzIGNoYW5nZWQsIDIwIGluc2VydGlvbnMoKykK
+Pj4+Pj4KPj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fYnJpZGdlLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZS5jCj4+Pj4+IGluZGV4IDc4ZDE4NmI2ODMxYi4uMDI1
+OWYwYTNmZjI3IDEwMDY0NAo+Pj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZS5j
+Cj4+Pj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fYnJpZGdlLmMKPj4+Pj4gQEAgLTI2LDYg
+KzI2LDcgQEAKPj4+Pj4gICNpbmNsdWRlIDxsaW51eC9tdXRleC5oPgo+Pj4+Pgo+Pj4+PiAgI2lu
+Y2x1ZGUgPGRybS9kcm1fYnJpZGdlLmg+Cj4+Pj4+ICsjaW5jbHVkZSA8ZHJtL2RybV9kZXZpY2Uu
+aD4KPj4+Pj4gICNpbmNsdWRlIDxkcm0vZHJtX2VuY29kZXIuaD4KPj4+Pj4KPj4+Pj4gICNpbmNs
+dWRlICJkcm1fY3J0Y19pbnRlcm5hbC5oIgo+Pj4+PiBAQCAtMTI3LDEyICsxMjgsMjUgQEAgaW50
+IGRybV9icmlkZ2VfYXR0YWNoKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2Rlciwgc3RydWN0IGRy
+bV9icmlkZ2UgKmJyaWRnZSwKPj4+Pj4gICAgaWYgKGJyaWRnZS0+ZGV2KQo+Pj4+PiAgICAgICAg
+ICAgIHJldHVybiAtRUJVU1k7Cj4+Pj4+Cj4+Pj4+ICsgIGlmIChlbmNvZGVyLT5kZXYtPmRldiAh
+PSBicmlkZ2UtPm9kZXYpIHsKPj4+Pgo+Pj4+IEkgd29uZGVyIHdoeSBkZXZpY2VfbGlua19hZGQg
+ZG9lcyBub3QgaGFuZGxlIHRoaXMgY2FzZSAoc2VsZiBkZXBlbmRlbmN5KQo+Pj4+IHNpbGVudGx5
+IGFzIG5vb3AsIGFzIGl0IHNlZW1zIHRvIGJlIGEgY29ycmVjdCBiZWhhdmlvci4KPj4+Cj4+PiBJ
+dCdzIGtpbmQtb2YgYSBzaWxseSBjb3JuZXItY2FzZSB0aG91Z2gsIHNvIHBlcmZlY3RseSB1bmRl
+cnN0YW5kYWJsZQo+Pj4gdGhhdCBpdCBpc24ndCBoYW5kbGVkLgo+Pj4KPj4+Pj4gKyAgICAgICAg
+ICBicmlkZ2UtPmxpbmsgPSBkZXZpY2VfbGlua19hZGQoZW5jb2Rlci0+ZGV2LT5kZXYsCj4+Pj4+
+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJyaWRnZS0+b2Rldiwg
+MCk7Cj4+Pj4+ICsgICAgICAgICAgaWYgKCFicmlkZ2UtPmxpbmspIHsKPj4+Pj4gKyAgICAgICAg
+ICAgICAgICAgIGRldl9lcnIoYnJpZGdlLT5vZGV2LCAiZmFpbGVkIHRvIGxpbmsgYnJpZGdlIHRv
+ICVzXG4iLAo+Pj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICBkZXZfbmFtZShlbmNvZGVy
+LT5kZXYtPmRldikpOwo+Pj4+PiArICAgICAgICAgICAgICAgICAgcmV0dXJuIC1FSU5WQUw7Cj4+
+Pj4+ICsgICAgICAgICAgfQo+Pj4+PiArICB9Cj4+Pj4+ICsKPj4+Pj4gICAgYnJpZGdlLT5kZXYg
+PSBlbmNvZGVyLT5kZXY7Cj4+Pj4+ICAgIGJyaWRnZS0+ZW5jb2RlciA9IGVuY29kZXI7Cj4+Pj4+
+Cj4+Pj4+ICAgIGlmIChicmlkZ2UtPmZ1bmNzLT5hdHRhY2gpIHsKPj4+Pj4gICAgICAgICAgICBy
+ZXQgPSBicmlkZ2UtPmZ1bmNzLT5hdHRhY2goYnJpZGdlKTsKPj4+Pj4gICAgICAgICAgICBpZiAo
+cmV0IDwgMCkgewo+Pj4+PiArICAgICAgICAgICAgICAgICAgaWYgKGJyaWRnZS0+bGluaykKPj4+
+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgZGV2aWNlX2xpbmtfZGVsKGJyaWRnZS0+bGlu
+ayk7Cj4+Pj4+ICsgICAgICAgICAgICAgICAgICBicmlkZ2UtPmxpbmsgPSBOVUxMOwo+Pj4+PiAg
+ICAgICAgICAgICAgICAgICAgYnJpZGdlLT5kZXYgPSBOVUxMOwo+Pj4+PiAgICAgICAgICAgICAg
+ICAgICAgYnJpZGdlLT5lbmNvZGVyID0gTlVMTDsKPj4+Pj4gICAgICAgICAgICAgICAgICAgIHJl
+dHVybiByZXQ7Cj4+Pj4+IEBAIC0xNTksNiArMTczLDEwIEBAIHZvaWQgZHJtX2JyaWRnZV9kZXRh
+Y2goc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSkKPj4+Pj4gICAgaWYgKGJyaWRnZS0+ZnVuY3Mt
+PmRldGFjaCkKPj4+Pj4gICAgICAgICAgICBicmlkZ2UtPmZ1bmNzLT5kZXRhY2goYnJpZGdlKTsK
+Pj4+Pj4KPj4+Pj4gKyAgaWYgKGJyaWRnZS0+bGluaykKPj4+Pj4gKyAgICAgICAgICBkZXZpY2Vf
+bGlua19kZWwoYnJpZGdlLT5saW5rKTsKPj4+Pj4gKyAgYnJpZGdlLT5saW5rID0gTlVMTDsKPj4+
+Pj4gKwo+Pj4+PiAgICBicmlkZ2UtPmRldiA9IE5VTEw7Cj4+Pj4+ICB9Cj4+Pj4+Cj4+Pj4+IGRp
+ZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1fYnJpZGdlLmggYi9pbmNsdWRlL2RybS9kcm1fYnJp
+ZGdlLmgKPj4+Pj4gaW5kZXggYjY1NmU1MDVkMTFlLi44MDQxODljNjNhNGMgMTAwNjQ0Cj4+Pj4+
+IC0tLSBhL2luY2x1ZGUvZHJtL2RybV9icmlkZ2UuaAo+Pj4+PiArKysgYi9pbmNsdWRlL2RybS9k
+cm1fYnJpZGdlLmgKPj4+Pj4gQEAgLTI2MSw2ICsyNjEsNyBAQCBzdHJ1Y3QgZHJtX2JyaWRnZV90
+aW1pbmdzIHsKPj4+Pj4gICAqIEBsaXN0OiB0byBrZWVwIHRyYWNrIG9mIGFsbCBhZGRlZCBicmlk
+Z2VzCj4+Pj4+ICAgKiBAdGltaW5nczogdGhlIHRpbWluZyBzcGVjaWZpY2F0aW9uIGZvciB0aGUg
+YnJpZGdlLCBpZiBhbnkgKG1heQo+Pj4+PiAgICogYmUgTlVMTCkKPj4+Pj4gKyAqIEBsaW5rOiBk
+cm0gY29uc3VtZXIgPC0+IGJyaWRnZSBzdXBwbGllcgo+Pj4+Cj4+Pj4gTml0cGljazogIjwtPiIg
+c3VnZ2VzdHMgc3ltbWV0cnksIG1heWJlICJkZXZpY2UgbGluayBmcm9tIGRybSBjb25zdW1lcgo+
+Pj4+IHRvIHRoZSBicmlkZ2UiIHdvdWxkIGJlIGJldHRlci4KPj4+Cj4+PiBJIG1lYW50ICI8LT4i
+IHRvIGluZGljYXRlIHRoYXQgdGhlIGxpbmsgaXMgYmlkaXJlY3Rpb25hbCwgbm90IHRoYXQgdGhl
+Cj4+PiByZWxhdGlvbnNoaXAgaXMgaW4gYW55IHdheSBzeW1tZXRyaWMuIEkgd2Fzbid0IGF3YXJl
+IG9mIGFueSBpbXBsaWNhdGlvbgo+Pj4gb2YgYSBzeW1tZXRyaWMgcmVsYXRpb25zaGlwIHdoZW4g
+dXNpbmcgIjwtPiIsIGRvIHlvdSBoYXZlIGEgcmVmZXJlbmNlPwo+Pj4gQnV0IEkgZ3Vlc3MgdGhl
+IGRpZmZlcmVudCBhcnJvdyBub3RhdGlvbnMgaW4gbWF0aCBhcmUgc29tZXdoYXQgb3ZlcmxvYWRl
+ZAo+Pj4gYW5kIHRoYXQgc29tZW9uZSBhdCBzb21lIHBvaW50IG11c3QgaGF2ZSB1c2VkICI8LT4i
+IHRvIGluZGljYXRlIGEKPj4+IHN5bW1ldHJpYyByZWxhdGlvbnNoaXAuLi4KPj4KPj4gWWVhaCBJ
+IGFncmVlIHdpdGggQW5kcnplaiBoZXJlLCBmb3IgbWUgPC0+IGltcGxpZXMgYSBzeW1tZXRyaWMK
+Pj4gcmVsYXRpb25zaGlwLiBTcGVsbGluZyBpdCBvdXQgbGlrZSBBbmRyemVqIHN1Z2dlc3RlZCBz
+b3VuZHMgbGlrZSB0aGUKPj4gYmV0dGVyIGlkZWEuCj4+IC1EYW5pZWwKPgo+IE9rLCBJIGd1ZXNz
+IHRoYXQgbWVhbnMgSSBoYXZlIHRvIGRvIGEgdjMgYWZ0ZXIgYWxsLiBPciBjYW4gdGhpcwo+IHRy
+aXZpYWwgZG9jdW1lbnRhdGlvbiB1cGRhdGUgYmUgZG9uZSBieSB0aGUgY29tbWl0dGVyPyBJIGhh
+dGUgdG8KPiBzcGFtIGV2ZXJ5b25lIHdpdGggYW5vdGhlciB2b2xsZXkuLi4KPgo+IE9yIHBlcmhh
+cHMgSSBzaG91bGQgc3F1YXNoIHBhdGNoZXMgMi0yMyB0aGF0IGFyZSBhbGwgcmF0aGVyIHNpbWls
+YXIKPiBhbmQgbWVjaGFuaWM/IEkgc2VwYXJhdGVkIHRoZW0gdG8gYWxsb3cgZm9yIGVhc2llciBy
+ZXZpZXcgZnJvbQo+IGluZGl2aWR1YWwgZHJpdmVyIG1haW50YWluZXJzLCBidXQgdGhhdCBkaWRu
+J3Qgc2VlbSB0byBoYXBwZW4KPiBhbnl3YXkuLi4KCkRvIGFub3RoZXIgdm9sbGV5IG9mIHRoZSBm
+dWxsIHNldCwgb3IgaW4tcmVwbHktdG8gdG8ganVzdCByZXBsYWNlIHRoZQpwYXRjaCB0aGF0IG5l
+ZWRzIHRvIGJlIHJlc3B1biAoYnV0IHNvbWUgcGVvcGxlIGRvbid0IGxpa2UgdGhhdCkuCgpXaGVu
+IHJlc2VuZGluZyBqdXN0IG1ha2Ugc3VyZSB5b3UncmUgcGlja2luZyB1cCBhbGwgdGhlIGFja3Mv
+ci1icyB5b3UKaGF2ZSBhbHJlYWR5LgotRGFuaWVsCj4gQ2hlZXJzLAo+IFBldGVyCj4KPj4KPj4+
+Cj4+Pj4gQW55d2F5Ogo+Pj4+IFJldmlld2VkLWJ5OiBBbmRyemVqIEhhamRhIDxhLmhhamRhQHNh
+bXN1bmcuY29tPgo+Pj4KPj4+IFRoYW5rcyEKPj4+Cj4+PiBDaGVlcnMsCj4+PiBQZXRlcgo+Pj4K
+Pj4+PiAgLS0KPj4+PiBSZWdhcmRzCj4+Pj4gQW5kcnplago+Pj4+Cj4+Pj4+ICAgKiBAZnVuY3M6
+IGNvbnRyb2wgZnVuY3Rpb25zCj4+Pj4+ICAgKiBAZHJpdmVyX3ByaXZhdGU6IHBvaW50ZXIgdG8g
+dGhlIGJyaWRnZSBkcml2ZXIncyBpbnRlcm5hbCBjb250ZXh0Cj4+Pj4+ICAgKi8KPj4+Pj4gQEAg
+LTI3MSw2ICsyNzIsNyBAQCBzdHJ1Y3QgZHJtX2JyaWRnZSB7Cj4+Pj4+ICAgIHN0cnVjdCBkcm1f
+YnJpZGdlICpuZXh0Owo+Pj4+PiAgICBzdHJ1Y3QgbGlzdF9oZWFkIGxpc3Q7Cj4+Pj4+ICAgIGNv
+bnN0IHN0cnVjdCBkcm1fYnJpZGdlX3RpbWluZ3MgKnRpbWluZ3M7Cj4+Pj4+ICsgIHN0cnVjdCBk
+ZXZpY2VfbGluayAqbGluazsKPj4+Pj4KPj4+Pj4gICAgY29uc3Qgc3RydWN0IGRybV9icmlkZ2Vf
+ZnVuY3MgKmZ1bmNzOwo+Pj4+PiAgICB2b2lkICpkcml2ZXJfcHJpdmF0ZTsKPj4+Pgo+Pj4+Cj4+
+Pgo+Pgo+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+PiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
+Zwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCgoKCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3Jh
+dGlvbgorNDEgKDApIDc5IDM2NSA1NyA0OCAtIGh0dHA6Ly9ibG9nLmZmd2xsLmNoCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
