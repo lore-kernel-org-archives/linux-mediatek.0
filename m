@@ -1,15 +1,15 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH V5 1/4] dt-bindings: pwrap: mediatek: add pwrap support
- for MT6797
-Date: Tue, 15 May 2018 11:31:30 +0200
-Message-ID: <2cb5230e-f8be-e0b3-3521-3145ab02a0c1@gmail.com>
+Subject: Re: [PATCH V5 2/4] soc: mediatek: pwrap: fix cipher init setting
+ error
+Date: Tue, 15 May 2018 11:50:12 +0200
+Message-ID: <d754bbdd-93ee-fadd-e4e7-439032f8b173@gmail.com>
 References: <1525957319-20557-1-git-send-email-argus.lin@mediatek.com>
- <1525957319-20557-2-git-send-email-argus.lin@mediatek.com>
+ <1525957319-20557-3-git-send-email-argus.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1525957319-20557-2-git-send-email-argus.lin@mediatek.com>
+In-Reply-To: <1525957319-20557-3-git-send-email-argus.lin@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
 To: argus.lin@mediatek.com, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
@@ -21,27 +21,30 @@ List-Id: linux-mediatek@lists.infradead.org
 On 05/10/2018 03:01 PM, argus.lin@mediatek.com wrote:
 > From: Argus Lin <argus.lin@mediatek.com>
 > 
-> We add pwrap support for MT6797 SoCs.
+> PWRAP_DEW_CIPHER_LOAD and PWRAP_DEW_CIPHER_START only exist at
+> PMIC_mt6397 datasheet. We fix it before merge PMIC_mt6351 driver.
 > 
+> Fixes: 5ae48040aa47 ("soc: mediatek: PMIC wrap: add mt6323 slave support")
 
-You forgot the Signed-off-by tag.
+Same here, you forgot Signed-off-by tag.
 
 > ---
->  Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 1 +
->  1 file changed, 1 insertion(+)
+>  drivers/soc/mediatek/mtk-pmic-wrap.c | 2 --
+>  1 file changed, 2 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-> index bf80e3f..f9987c3 100644
-> --- a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-> @@ -19,6 +19,7 @@ IP Pairing
->  Required properties in pwrap device node.
->  - compatible:
->  	"mediatek,mt2701-pwrap" for MT2701/7623 SoCs
-> +	"mediatek,mt6797-pwrap" for MT6797 SoCs
->  	"mediatek,mt7622-pwrap" for MT7622 SoCs
->  	"mediatek,mt8135-pwrap" for MT8135 SoCs
->  	"mediatek,mt8173-pwrap" for MT8173 SoCs
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> index e9e054a..9a01e30 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -1080,8 +1080,6 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
+>  	pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_SWRST], 0x0);
+>  	pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_KEY_SEL], 0x1);
+>  	pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_IV_SEL], 0x2);
+> -	pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_LOAD], 0x1);
+> -	pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_START], 0x1);
+>  
+>  	switch (wrp->slave->type) {
+>  	case PMIC_MT6397:
 > -- 
 > 1.8.1.1.dirty
 > 
