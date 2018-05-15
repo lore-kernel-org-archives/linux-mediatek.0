@@ -1,55 +1,29 @@
-From: Olof Johansson <olof@lixom.net>
-Subject: Re: [GIT PULL] defconfig updates for v4.18
-Date: Tue, 15 May 2018 13:38:38 -0700
-Message-ID: <20180515203838.xnehmjr2osczm7kt@localhost>
-References: <268190dc-bca5-d86a-c56c-75013dc20d38@gmail.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v1] clk: mediatek: correct the clocks for MT2701 HDMI PHY module
+Date: Tue, 15 May 2018 15:19:02 -0700
+Message-ID: <152642274258.237094.4546092795485779715@swboyd.mtv.corp.google.com>
+References: <dc75b5b289d1f6e4914e60543c2611f387f0c164.1523944160.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <268190dc-bca5-d86a-c56c-75013dc20d38@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <dc75b5b289d1f6e4914e60543c2611f387f0c164.1523944160.git.ryder.lee@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, chunhui dai <chunhui.dai@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, May 14, 2018 at 01:24:03PM +0200, Matthias Brugger wrote:
-> Hi Olof and Arnd,
-> 
-> Please merge the following patch for defconfig.
-> 
-> Thanks,
-> Matthias
-> 
+Quoting Ryder Lee (2018-04-17 05:30:27)
+> The hdmitx_dig_cts clock signal is not a child of clk26m,
+> and the actual output of the PLL block is derived from
+> the tvdpll via a configurable PLL post-divider.
+> =
+
+> It is used as the PLL reference input to the HDMI PHY module.
+> =
+
+> Fixes: e9862118272a ("clk: mediatek: Add MT2701 clock support")
+> Signed-off-by: Chunhui Dai <chunhui.dai@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 > ---
-> 
-> The following changes since commit 60cc43fc888428bb2f18f08997432d426a243338:
-> 
->   Linux 4.17-rc1 (2018-04-15 18:24:20 -0700)
-> 
-> are available in the Git repository at:
-> 
->   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-> tags/v4.17-next-defconfig
-> 
-> for you to fetch changes up to 1e31927aa64545ee97a2a41db9984c9931afc50a:
-> 
->   arm64: defconfig: Enable CONFIG_PINCTRL_MT7622 by default (2018-04-27 11:48:37
-> +0200)
-> 
-> ----------------------------------------------------------------
-> enable mt7622 pinctrl to fix boot issue
 
-Merged, thanks!
-
-
--Olof
+Applied to clk-next
