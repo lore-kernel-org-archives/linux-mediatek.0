@@ -1,73 +1,45 @@
-From: Peter Rosin <peda-koto5C5qi+TLoDKTGw+V6w@public.gmane.org>
-Subject: [PATCH v3 26/26] drm/bridge: establish a link between
- the bridge supplier and consumer
-Date: Wed, 16 May 2018 12:15:10 +0200
-Message-ID: <20180516101510.13215-27-peda@axentia.se>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH v3 20/26] drm/mediatek: hdmi: provide an owner .odev
+ device for the bridge
+Date: Wed, 16 May 2018 12:22:15 +0200
+Message-ID: <1526466135.3397.8.camel@pengutronix.de>
 References: <20180516101510.13215-1-peda@axentia.se>
+         <20180516101510.13215-21-peda@axentia.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-In-Reply-To: <20180516101510.13215-1-peda-koto5C5qi+TLoDKTGw+V6w@public.gmane.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/freedreno>
-List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Martyn Welch <martyn.welch-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Martin Donnelly <martin.donnelly-JJi787mZWgc@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean Paul <seanpaul@ch>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180516101510.13215-21-peda@axentia.se>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Peter Rosin <peda@axentia.se>, linux-kernel@vger.kernel.org
+Cc: CK Hu <ck.hu@mediatek.com>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Jyri Sarha <jsarha@ti.com>, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-mediatek@lists.infradead.org
 
-SWYgdGhlIGJyaWRnZSBzdXBwbGllciBpcyB1bmJvdW5kLCB0aGlzIHdpbGwgYnJpbmcgdGhlIGJy
-aWRnZSBjb25zdW1lcgpkb3duIGFsb25nIHdpdGggdGhlIGJyaWRnZS4gVGh1cywgdGhlcmUgd2ls
-bCBubyBsb25nZXIgbGluZ2VyIGFueQpkYW5nbGluZyBwb2ludGVycyBmcm9tIHRoZSBicmlkZ2Ug
-Y29uc3VtZXIgKHRoZSBkcm1fZGV2aWNlKSB0byBzb21lCm5vbi1leGlzdGVudCBicmlkZ2Ugc3Vw
-cGxpZXIuCgpSZXZpZXdlZC1ieTogQW5kcnplaiBIYWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4K
-QWNrZWQtYnk6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJAZmZ3bGwuY2g+ClNpZ25lZC1v
-ZmYtYnk6IFBldGVyIFJvc2luIDxwZWRhQGF4ZW50aWEuc2U+Ci0tLQogZHJpdmVycy9ncHUvZHJt
-L2RybV9icmlkZ2UuYyB8IDE4ICsrKysrKysrKysrKysrKysrKwogaW5jbHVkZS9kcm0vZHJtX2Jy
-aWRnZS5oICAgICB8ICAyICsrCiAyIGZpbGVzIGNoYW5nZWQsIDIwIGluc2VydGlvbnMoKykKCmRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZS5jIGIvZHJpdmVycy9ncHUvZHJt
-L2RybV9icmlkZ2UuYwppbmRleCA3OGQxODZiNjgzMWIuLjAyNTlmMGEzZmYyNyAxMDA2NDQKLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL2RybV9icmlkZ2UuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJt
-X2JyaWRnZS5jCkBAIC0yNiw2ICsyNiw3IEBACiAjaW5jbHVkZSA8bGludXgvbXV0ZXguaD4KIAog
-I2luY2x1ZGUgPGRybS9kcm1fYnJpZGdlLmg+CisjaW5jbHVkZSA8ZHJtL2RybV9kZXZpY2UuaD4K
-ICNpbmNsdWRlIDxkcm0vZHJtX2VuY29kZXIuaD4KIAogI2luY2x1ZGUgImRybV9jcnRjX2ludGVy
-bmFsLmgiCkBAIC0xMjcsMTIgKzEyOCwyNSBAQCBpbnQgZHJtX2JyaWRnZV9hdHRhY2goc3RydWN0
-IGRybV9lbmNvZGVyICplbmNvZGVyLCBzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLAogCWlmIChi
-cmlkZ2UtPmRldikKIAkJcmV0dXJuIC1FQlVTWTsKIAorCWlmIChlbmNvZGVyLT5kZXYtPmRldiAh
-PSBicmlkZ2UtPm9kZXYpIHsKKwkJYnJpZGdlLT5saW5rID0gZGV2aWNlX2xpbmtfYWRkKGVuY29k
-ZXItPmRldi0+ZGV2LAorCQkJCQkgICAgICAgYnJpZGdlLT5vZGV2LCAwKTsKKwkJaWYgKCFicmlk
-Z2UtPmxpbmspIHsKKwkJCWRldl9lcnIoYnJpZGdlLT5vZGV2LCAiZmFpbGVkIHRvIGxpbmsgYnJp
-ZGdlIHRvICVzXG4iLAorCQkJCWRldl9uYW1lKGVuY29kZXItPmRldi0+ZGV2KSk7CisJCQlyZXR1
-cm4gLUVJTlZBTDsKKwkJfQorCX0KKwogCWJyaWRnZS0+ZGV2ID0gZW5jb2Rlci0+ZGV2OwogCWJy
-aWRnZS0+ZW5jb2RlciA9IGVuY29kZXI7CiAKIAlpZiAoYnJpZGdlLT5mdW5jcy0+YXR0YWNoKSB7
-CiAJCXJldCA9IGJyaWRnZS0+ZnVuY3MtPmF0dGFjaChicmlkZ2UpOwogCQlpZiAocmV0IDwgMCkg
-eworCQkJaWYgKGJyaWRnZS0+bGluaykKKwkJCQlkZXZpY2VfbGlua19kZWwoYnJpZGdlLT5saW5r
-KTsKKwkJCWJyaWRnZS0+bGluayA9IE5VTEw7CiAJCQlicmlkZ2UtPmRldiA9IE5VTEw7CiAJCQli
-cmlkZ2UtPmVuY29kZXIgPSBOVUxMOwogCQkJcmV0dXJuIHJldDsKQEAgLTE1OSw2ICsxNzMsMTAg
-QEAgdm9pZCBkcm1fYnJpZGdlX2RldGFjaChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQogCWlm
-IChicmlkZ2UtPmZ1bmNzLT5kZXRhY2gpCiAJCWJyaWRnZS0+ZnVuY3MtPmRldGFjaChicmlkZ2Up
-OwogCisJaWYgKGJyaWRnZS0+bGluaykKKwkJZGV2aWNlX2xpbmtfZGVsKGJyaWRnZS0+bGluayk7
-CisJYnJpZGdlLT5saW5rID0gTlVMTDsKKwogCWJyaWRnZS0+ZGV2ID0gTlVMTDsKIH0KIApkaWZm
-IC0tZ2l0IGEvaW5jbHVkZS9kcm0vZHJtX2JyaWRnZS5oIGIvaW5jbHVkZS9kcm0vZHJtX2JyaWRn
-ZS5oCmluZGV4IGI2NTZlNTA1ZDExZS4uYmQxMjY1YzVhMGJjIDEwMDY0NAotLS0gYS9pbmNsdWRl
-L2RybS9kcm1fYnJpZGdlLmgKKysrIGIvaW5jbHVkZS9kcm0vZHJtX2JyaWRnZS5oCkBAIC0yNjEs
-NiArMjYxLDcgQEAgc3RydWN0IGRybV9icmlkZ2VfdGltaW5ncyB7CiAgKiBAbGlzdDogdG8ga2Vl
-cCB0cmFjayBvZiBhbGwgYWRkZWQgYnJpZGdlcwogICogQHRpbWluZ3M6IHRoZSB0aW1pbmcgc3Bl
-Y2lmaWNhdGlvbiBmb3IgdGhlIGJyaWRnZSwgaWYgYW55IChtYXkKICAqIGJlIE5VTEwpCisgKiBA
-bGluazogZGV2aWNlIGxpbmsgYmV0d2VlbiB0aGUgZHJtIGNvbnN1bWVyIGFuZCB0aGUgYnJpZGdl
-IHN1cHBsaWVyCiAgKiBAZnVuY3M6IGNvbnRyb2wgZnVuY3Rpb25zCiAgKiBAZHJpdmVyX3ByaXZh
-dGU6IHBvaW50ZXIgdG8gdGhlIGJyaWRnZSBkcml2ZXIncyBpbnRlcm5hbCBjb250ZXh0CiAgKi8K
-QEAgLTI3MSw2ICsyNzIsNyBAQCBzdHJ1Y3QgZHJtX2JyaWRnZSB7CiAJc3RydWN0IGRybV9icmlk
-Z2UgKm5leHQ7CiAJc3RydWN0IGxpc3RfaGVhZCBsaXN0OwogCWNvbnN0IHN0cnVjdCBkcm1fYnJp
-ZGdlX3RpbWluZ3MgKnRpbWluZ3M7CisJc3RydWN0IGRldmljZV9saW5rICpsaW5rOwogCiAJY29u
-c3Qgc3RydWN0IGRybV9icmlkZ2VfZnVuY3MgKmZ1bmNzOwogCXZvaWQgKmRyaXZlcl9wcml2YXRl
-OwotLSAKMi4xMS4wCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpGcmVlZHJlbm8gbWFpbGluZyBsaXN0CkZyZWVkcmVub0BsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9mcmVlZHJl
-bm8K
+On Wed, 2018-05-16 at 12:15 +0200, Peter Rosin wrote:
+> The .of_node member is going away.
+> 
+> Signed-off-by: Peter Rosin <peda@axentia.se>
+
+Acked-by: Philipp Zabel <p.zabel@pengutronix.de>
+
+regards
+Philipp
+
+> ---
+>  drivers/gpu/drm/mediatek/mtk_hdmi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> index 59a11026dceb..d8c7d93d0a87 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> @@ -1694,8 +1694,8 @@ static int mtk_drm_hdmi_probe(struct platform_device *pdev)
+>  
+>  	mtk_hdmi_register_audio_driver(dev);
+>  
+> +	hdmi->bridge.odev = &pdev->dev;
+>  	hdmi->bridge.funcs = &mtk_hdmi_bridge_funcs;
+> -	hdmi->bridge.of_node = pdev->dev.of_node;
+>  	drm_bridge_add(&hdmi->bridge);
+>  
+>  	ret = mtk_hdmi_clk_enable_audio(hdmi);
