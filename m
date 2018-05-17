@@ -1,45 +1,42 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH v3 20/26] drm/mediatek: hdmi: provide an owner .odev
- device for the bridge
-Date: Wed, 16 May 2018 12:22:15 +0200
-Message-ID: <1526466135.3397.8.camel@pengutronix.de>
-References: <20180516101510.13215-1-peda@axentia.se>
-         <20180516101510.13215-21-peda@axentia.se>
+From: Erin Lo <erin.lo@mediatek.com>
+Subject: [PATCH v3 1/4] dt-bindings: arm: Add bindings for Mediatek MT8183 SoC Platform
+Date: Thu, 17 May 2018 14:22:03 +0800
+Message-ID: <1526538126-51497-2-git-send-email-erin.lo@mediatek.com>
+References: <1526538126-51497-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180516101510.13215-21-peda@axentia.se>
+In-Reply-To: <1526538126-51497-1-git-send-email-erin.lo@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Peter Rosin <peda@axentia.se>, linux-kernel@vger.kernel.org
-Cc: CK Hu <ck.hu@mediatek.com>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Jyri Sarha <jsarha@ti.com>, Daniel Vetter <daniel@ffwll.ch>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, erin.lo@mediatek.com, mars.cheng@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-05-16 at 12:15 +0200, Peter Rosin wrote:
-> The .of_node member is going away.
-> 
-> Signed-off-by: Peter Rosin <peda@axentia.se>
+This adds dt-binding documentation of cpu for Mediatek MT8183.
 
-Acked-by: Philipp Zabel <p.zabel@pengutronix.de>
+Signed-off-by: Erin Lo <erin.lo@mediatek.com>
+---
+ Documentation/devicetree/bindings/arm/mediatek.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-regards
-Philipp
-
-> ---
->  drivers/gpu/drm/mediatek/mtk_hdmi.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> index 59a11026dceb..d8c7d93d0a87 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> @@ -1694,8 +1694,8 @@ static int mtk_drm_hdmi_probe(struct platform_device *pdev)
->  
->  	mtk_hdmi_register_audio_driver(dev);
->  
-> +	hdmi->bridge.odev = &pdev->dev;
->  	hdmi->bridge.funcs = &mtk_hdmi_bridge_funcs;
-> -	hdmi->bridge.of_node = pdev->dev.of_node;
->  	drm_bridge_add(&hdmi->bridge);
->  
->  	ret = mtk_hdmi_clk_enable_audio(hdmi);
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt b/Documentation/devicetree/bindings/arm/mediatek.txt
+index 7d21ab3..2754535 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek.txt
+@@ -19,6 +19,7 @@ compatible: Must contain one of
+    "mediatek,mt8127"
+    "mediatek,mt8135"
+    "mediatek,mt8173"
++   "mediatek,mt8183"
+ 
+ 
+ Supported boards:
+@@ -73,3 +74,6 @@ Supported boards:
+ - MTK mt8173 tablet EVB:
+     Required root node properties:
+       - compatible = "mediatek,mt8173-evb", "mediatek,mt8173";
++- Evaluation board for MT8183:
++    Required root node properties:
++      - compatible = "mediatek,mt8183-evb", "mediatek,mt8183";
+-- 
+1.9.1
