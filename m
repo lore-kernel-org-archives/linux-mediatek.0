@@ -1,124 +1,75 @@
-From: Boris Brezillon <boris.brezillon@bootlin.com>
-Subject: Re: Some questions about the spi mem framework
-Date: Thu, 17 May 2018 09:42:32 +0200
-Message-ID: <20180517094232.20651211@bbrezillon>
-References: <1526355800.31853.45.camel@mhfsdcap03>
-        <20180515172551.1adcf276@bbrezillon>
-        <1526472699.31853.80.camel@mhfsdcap03>
-        <20180516144204.65bb20c5@bbrezillon>
-        <1526540304.31853.98.camel@mhfsdcap03>
-        <20180517091308.387f0a70@bbrezillon>
-        <1526542504.31853.106.camel@mhfsdcap03>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [GIT PULL] ARM: mediatek: soc driver updates for v4.18
+Date: Thu, 17 May 2018 13:46:00 +0900
+Message-ID: <20180517044600.GC20254@sirena.org.uk>
+References: <bd033549-4998-e376-eb92-16111ec71a07@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1526542504.31853.106.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com, guochun.mao@mediatek.com, benliang.zhao@mediatek.com, bayi.cheng@mediatek.com, dandan.he@mediatek.com, sean.wang@mediatek.com, ryder.lee@mediatek.com, xiaolei.li@mediatek.com, honghui.zhang@mediatek.com
+Content-Type: multipart/mixed; boundary="===============0339812973231533219=="
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <bd033549-4998-e376-eb92-16111ec71a07-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 17 May 2018 15:35:04 +0800
-Xiangsheng Hou <xiangsheng.hou@mediatek.com> wrote:
 
-> On Thu, 2018-05-17 at 09:13 +0200, Boris Brezillon wrote:
-> > On Thu, 17 May 2018 14:58:24 +0800
-> > Xiangsheng Hou <xiangsheng.hou@mediatek.com> wrote:
-> >   
-> > > Hi Boris,
-> > > 
-> > > On Wed, 2018-05-16 at 14:42 +0200, Boris Brezillon wrote:  
-> > > > On Wed, 16 May 2018 20:11:39 +0800
-> > > > Xiangsheng Hou <xiangsheng.hou@mediatek.com> wrote:
-> > > >     
-> > > > > Hi Boris,
-> > > > > 
-> > > > > On Tue, 2018-05-15 at 17:25 +0200, Boris Brezillon wrote:    
-> > > > > > Hi,
-> > > > > > 
-> > > > > > On Tue, 15 May 2018 11:43:20 +0800
-> > > > > > Xiangsheng Hou <xiangsheng.hou@mediatek.com> wrote:
-> > > > > >       
-> > > > > > > Hello Boris,
-> > > > > > > 
-> > > > > > > I have seen you are working on extend the framework to generically
-> > > > > > > support spi memory devices.
-> > > > > > > And, I am working on upstream SPI Nand driver of Mediatek SPI NAND
-> > > > > > > controller based on your branch[1].      
-> > > > > > 
-> > > > > > Great!
-> > > > > >       
-> > > > > > > I have some questions need your comment.
-> > > > > > > 
-> > > > > > > 1) There is a difference between different SPI NAND Flash when using the
-> > > > > > > Quad SPI command,for example Macronix,Etron and GigaDevice, 
-> > > > > > > Quad SPI commands require the Quad Enable bit in Status Register(B0H) to
-> > > > > > > be set.
-> > > > > > > However, current spi-mem framework does not have this operation,
-> > > > > > > do you have a plan to support it?      
-> > > > > > 
-> > > > > > I added support for the QE bit in the v7 I sent just a few minutes ago
-> > > > > > [1].      
-> > > > > 
-> > > > > Ok,I have studied v7.
-> > > > >     
-> > > > > >       
-> > > > > > > 
-> > > > > > > 2) I see that current spi-mem framework doesn't support ECC,
-> > > > > > > But we need ECC, and we use Mediatek controller's HW ECC
-> > > > > > > instead of spi nand on-chip ECC,
-> > > > > > > maybe other companies also have this behavior,
-> > > > > > > So the ECC part must be implemented in controller's driver.
-> > > > > > > Will you abstract ECC interface in future?       
-> > > > > > 
-> > > > > > Well, I added support for on-die ECC in my v7 since all chips seem to
-> > > > > > provide this feature. I was initially planning on abstracting ECC
-> > > > > > engines, but I decided to go for a simpler approach and only support
-> > > > > > on-die ECC. That does not mean we shouldn't work on this "ECC engine
-> > > > > > abstraction", just that I wanted to get something out and didn't have
-> > > > > > time to spend on this topic.
-> > > > > > 
-> > > > > > I'd be happy if someone else could work on that aspect though. BTW, do
-> > > > > > you plan to use this engine [2], or is this yet another ECC engine?      
-> > > > > 
-> > > > > Yes,I plan to use this ecc engine[2].    
-> > > > 
-> > > > Cool. That probably means we'll have to move the driver one level up
-> > > > (in drivers/mtd/nand) and work on this ECC engine interface I was
-> > > > talking about.
-> > > >      
-> > > > > > > 3) You know, some nand controller need configure their registers when
-> > > > > > > getting some information(page size, spare size) of nand flash,
-> > > > > > > But the spi-mem framework doesn't has an interface for scanning NAND
-> > > > > > > flash, when controller driver initialization.      
-> > > > > > 
-> > > > > > You seem to mix 2 different things:
-> > > > > > - spi-mem: this is generic interface provided by the SPI framework to
-> > > > > >   send spi_mem_op. There's nothing NOR or NAND specific in there, and
-> > > > > >   I'd like it to stay like that as much as possible
-> > > > > > - spinand: this the spi-mem driver that is dealing with SPI NAND
-> > > > > >   devices, and this is where all the code related to SPI NAND support
-> > > > > >   should end up.
-> > > > > > 
-> > > > > > Can you tell me exactly why your SPI controller needs such a detailed
-> > > > > > description? Is it able to program/read pages or erase blocks on its
-> > > > > > own? Do you have a spec of this controller publicly available?      
-> > > > > 
-> > > > > For Mediatek SPI Nand controller,I have to configure registers for ECC
-> > > > > engine,page format and spare format according to nand information just
-> > > > > like[3] in mtk_nfc_hw_runtime_config() function.    
-> > > > 
-> > > > So it's all related to the NAND controller, nothing specific to the SPI
-> > > > controller, right?    
-> > > 
-> > > Yes,we use NAND controller rather than SPI controller.  
-> > 
-> > Sorry, I meant ECC engine, not NAND controller.  
-> 
-> It's related to ECC engine and NAND controller.
+--===============0339812973231533219==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Qbvjkv9qwOGw/5Fx"
+Content-Disposition: inline
 
-Not sure I understand what you call NAND controller. Is it a SPI NAND
-controller or the raw NAND controller available in
-drivers/mtd/nand/raw? And if it's a SPI NAND controller, does that mean
-MTK implements a NAND dedicated logic on top of its SPI controller?
+
+--Qbvjkv9qwOGw/5Fx
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Mon, May 14, 2018 at 01:32:49PM +0200, Matthias Brugger wrote:
+
+> ----------------------------------------------------------------
+> Matthias Brugger (1):
+>       Merge commit 'f15cd6d99198e9c15229aefec639a34a6e8174c6' into
+> v.4.17-next/soc-test
+
+There is a signed tag for this - please don't ever pull anything from me
+without a signed tag, while I try to avoid rewriting history it does
+sometimes happen but if I've made a signed tag part of that is me saying
+I know other people might've merged the commit.
+
+--Qbvjkv9qwOGw/5Fx
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlr9CQcACgkQJNaLcl1U
+h9CpyQf9HWvI8XONOvSlZhqFnTIMsVUkj95X1IDC/4IyNxB3OsYFLIhgfMIpF+LF
+7Ad/MUsbwota7MdwpgCoN4jLeD+Zv/3AkQk8w6LlyHRuJCdwGME9rjyplWnnIdZz
+CY9vh3b02msOuCclGYmo6mBxqPEI5rpSr1c0yrZg6JhNgdaKjfDCqL97e/01vso9
+3jQQcjR5bJwzmnUGDGsmzWrj3+RTnmQ13ZnTgT9C1zvMbFWOxMUAXToFHaQPgAiC
+pSoJQDgg8ehpmLyjF0g7iEj0uWNgZK8mOdh+uHk+2PR/U2wHD7joBZNh/vp2g7Mo
+AzIeA/9LGuWoj5URmTPqAykz/I78LA==
+=He9k
+-----END PGP SIGNATURE-----
+
+--Qbvjkv9qwOGw/5Fx--
+
+
+--===============0339812973231533219==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============0339812973231533219==--
