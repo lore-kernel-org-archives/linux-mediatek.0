@@ -1,36 +1,116 @@
-From: Erin Lo <erin.lo@mediatek.com>
-Subject: [PATCH v3 3/4] dt-bindings: serial: Add compatible for Mediatek MT8183
-Date: Thu, 17 May 2018 14:22:05 +0800
-Message-ID: <1526538126-51497-4-git-send-email-erin.lo@mediatek.com>
-References: <1526538126-51497-1-git-send-email-erin.lo@mediatek.com>
+From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+Subject: Re: Some questions about the spi mem framework
+Date: Thu, 17 May 2018 15:35:04 +0800
+Message-ID: <1526542504.31853.106.camel@mhfsdcap03>
+References: <1526355800.31853.45.camel@mhfsdcap03>
+         <20180515172551.1adcf276@bbrezillon>   <1526472699.31853.80.camel@mhfsdcap03>
+         <20180516144204.65bb20c5@bbrezillon>   <1526540304.31853.98.camel@mhfsdcap03>
+         <20180517091308.387f0a70@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1526538126-51497-1-git-send-email-erin.lo@mediatek.com>
+In-Reply-To: <20180517091308.387f0a70@bbrezillon>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, erin.lo@mediatek.com, mars.cheng@mediatek.com
+To: Boris Brezillon <boris.brezillon@bootlin.com>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com, guochun.mao@mediatek.com, benliang.zhao@mediatek.com, bayi.cheng@mediatek.com, dandan.he@mediatek.com, sean.wang@mediatek.com, ryder.lee@mediatek.com, xiaolei.li@mediatek.com, honghui.zhang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds dt-binding documentation of uart for Mediatek MT8183 SoC
-Platform.
+On Thu, 2018-05-17 at 09:13 +0200, Boris Brezillon wrote:
+> On Thu, 17 May 2018 14:58:24 +0800
+> Xiangsheng Hou <xiangsheng.hou@mediatek.com> wrote:
+> 
+> > Hi Boris,
+> > 
+> > On Wed, 2018-05-16 at 14:42 +0200, Boris Brezillon wrote:
+> > > On Wed, 16 May 2018 20:11:39 +0800
+> > > Xiangsheng Hou <xiangsheng.hou@mediatek.com> wrote:
+> > >   
+> > > > Hi Boris,
+> > > > 
+> > > > On Tue, 2018-05-15 at 17:25 +0200, Boris Brezillon wrote:  
+> > > > > Hi,
+> > > > > 
+> > > > > On Tue, 15 May 2018 11:43:20 +0800
+> > > > > Xiangsheng Hou <xiangsheng.hou@mediatek.com> wrote:
+> > > > >     
+> > > > > > Hello Boris,
+> > > > > > 
+> > > > > > I have seen you are working on extend the framework to generically
+> > > > > > support spi memory devices.
+> > > > > > And, I am working on upstream SPI Nand driver of Mediatek SPI NAND
+> > > > > > controller based on your branch[1].    
+> > > > > 
+> > > > > Great!
+> > > > >     
+> > > > > > I have some questions need your comment.
+> > > > > > 
+> > > > > > 1) There is a difference between different SPI NAND Flash when using the
+> > > > > > Quad SPI command,for example Macronix,Etron and GigaDevice, 
+> > > > > > Quad SPI commands require the Quad Enable bit in Status Register(B0H) to
+> > > > > > be set.
+> > > > > > However, current spi-mem framework does not have this operation,
+> > > > > > do you have a plan to support it?    
+> > > > > 
+> > > > > I added support for the QE bit in the v7 I sent just a few minutes ago
+> > > > > [1].    
+> > > > 
+> > > > Ok,I have studied v7.
+> > > >   
+> > > > >     
+> > > > > > 
+> > > > > > 2) I see that current spi-mem framework doesn't support ECC,
+> > > > > > But we need ECC, and we use Mediatek controller's HW ECC
+> > > > > > instead of spi nand on-chip ECC,
+> > > > > > maybe other companies also have this behavior,
+> > > > > > So the ECC part must be implemented in controller's driver.
+> > > > > > Will you abstract ECC interface in future?     
+> > > > > 
+> > > > > Well, I added support for on-die ECC in my v7 since all chips seem to
+> > > > > provide this feature. I was initially planning on abstracting ECC
+> > > > > engines, but I decided to go for a simpler approach and only support
+> > > > > on-die ECC. That does not mean we shouldn't work on this "ECC engine
+> > > > > abstraction", just that I wanted to get something out and didn't have
+> > > > > time to spend on this topic.
+> > > > > 
+> > > > > I'd be happy if someone else could work on that aspect though. BTW, do
+> > > > > you plan to use this engine [2], or is this yet another ECC engine?    
+> > > > 
+> > > > Yes,I plan to use this ecc engine[2].  
+> > > 
+> > > Cool. That probably means we'll have to move the driver one level up
+> > > (in drivers/mtd/nand) and work on this ECC engine interface I was
+> > > talking about.
+> > >    
+> > > > > > 3) You know, some nand controller need configure their registers when
+> > > > > > getting some information(page size, spare size) of nand flash,
+> > > > > > But the spi-mem framework doesn't has an interface for scanning NAND
+> > > > > > flash, when controller driver initialization.    
+> > > > > 
+> > > > > You seem to mix 2 different things:
+> > > > > - spi-mem: this is generic interface provided by the SPI framework to
+> > > > >   send spi_mem_op. There's nothing NOR or NAND specific in there, and
+> > > > >   I'd like it to stay like that as much as possible
+> > > > > - spinand: this the spi-mem driver that is dealing with SPI NAND
+> > > > >   devices, and this is where all the code related to SPI NAND support
+> > > > >   should end up.
+> > > > > 
+> > > > > Can you tell me exactly why your SPI controller needs such a detailed
+> > > > > description? Is it able to program/read pages or erase blocks on its
+> > > > > own? Do you have a spec of this controller publicly available?    
+> > > > 
+> > > > For Mediatek SPI Nand controller,I have to configure registers for ECC
+> > > > engine,page format and spare format according to nand information just
+> > > > like[3] in mtk_nfc_hw_runtime_config() function.  
+> > > 
+> > > So it's all related to the NAND controller, nothing specific to the SPI
+> > > controller, right?  
+> > 
+> > Yes,we use NAND controller rather than SPI controller.
+> 
+> Sorry, I meant ECC engine, not NAND controller.
 
-Signed-off-by: Erin Lo <erin.lo@mediatek.com>
----
- Documentation/devicetree/bindings/serial/mtk-uart.txt | 1 +
- 1 file changed, 1 insertion(+)
+It's related to ECC engine and NAND controller.
 
-diff --git a/Documentation/devicetree/bindings/serial/mtk-uart.txt b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-index f73abff..4783336 100644
---- a/Documentation/devicetree/bindings/serial/mtk-uart.txt
-+++ b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-@@ -15,6 +15,7 @@ Required properties:
-   * "mediatek,mt8127-uart" for MT8127 compatible UARTS
-   * "mediatek,mt8135-uart" for MT8135 compatible UARTS
-   * "mediatek,mt8173-uart" for MT8173 compatible UARTS
-+  * "mediatek,mt8183-uart", "mediatek,mt6577-uart" for MT8183 compatible UARTS
-   * "mediatek,mt6577-uart" for MT6577 and all of the above
- 
- - reg: The base address of the UART register bank.
--- 
-1.9.1
+Best Regards,
+Xiangsheng Hou
