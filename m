@@ -1,59 +1,27 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v7 2/2] PCI: mediatek: Using chained IRQ to setup IRQ
- handle
-Date: Fri, 18 May 2018 14:51:54 -0500
-Message-ID: <20180518195154.GB41790@bhelgaas-glaptop.roam.corp.google.com>
-References: <1525412853-24367-1-git-send-email-honghui.zhang@mediatek.com>
- <1525412853-24367-3-git-send-email-honghui.zhang@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v3 1/2] dt-bindings: add MediaTek XS-PHY binding
+Date: Fri, 18 May 2018 16:29:25 -0500
+Message-ID: <20180518212925.GA25632@rob-hp-laptop>
+References: <1525932629-10603-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1525932629-10603-2-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1525412853-24367-3-git-send-email-honghui.zhang@mediatek.com>
+In-Reply-To: <1525932629-10603-2-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com
-Cc: lorenzo.pieralisi@arm.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ryder Lee <ryder.lee@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, May 04, 2018 at 01:47:33PM +0800, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
+On Thu, May 10, 2018 at 02:10:28PM +0800, Chunfeng Yun wrote:
+> Add a DT binding documentation of XS-PHY for MediaTek SoCs
+> with USB3.1 GEN2 controller
 > 
-> Using irq_chip solution to setup IRQs in order to consist
-> with IRQ framework.
-> 
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > ---
->  drivers/pci/host/pcie-mediatek.c | 206 ++++++++++++++++++++++-----------------
->  1 file changed, 115 insertions(+), 91 deletions(-)
-> 
-> diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-> index c3dc549..dabf1086 100644
-> --- a/drivers/pci/host/pcie-mediatek.c
-> +++ b/drivers/pci/host/pcie-mediatek.c
-> ...
+>  .../devicetree/bindings/phy/phy-mtk-xsphy.txt      |  110 ++++++++++++++++++++
+>  1 file changed, 110 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt
 
-> -static int mtk_pcie_msi_map(struct irq_domain *domain, unsigned int irq,
-> -			    irq_hw_number_t hwirq)
-> +static struct msi_domain_info mtk_msi_domain_info = {
-
-I think this patch should be amended to include this:
-
-diff --git a/drivers/pci/host/Kconfig b/drivers/pci/host/Kconfig
-index 0d0177ce436c..368b70d9371b 100644
---- a/drivers/pci/host/Kconfig
-+++ b/drivers/pci/host/Kconfig
-@@ -193,7 +193,7 @@ config PCIE_MEDIATEK
- 	bool "MediaTek PCIe controller"
- 	depends on (ARM || ARM64) && (ARCH_MEDIATEK || COMPILE_TEST)
- 	depends on OF
--	depends on PCI
-+	depends on PCI_MSI_IRQ_DOMAIN
- 	select PCIEPORTBUS
- 	help
- 	  Say Y here if you want to enable PCIe controller support on
-
-
-Lorenzo, if you want to fold that in and update your branch, I can pull it.
-If not, I can add a patch on top, which should only break compile-testing
-bisection.
+Reviewed-by: Rob Herring <robh@kernel.org>
