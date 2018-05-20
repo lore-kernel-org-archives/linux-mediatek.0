@@ -1,42 +1,103 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3 24/26] drm/bridge: remove the .of_node member
-Date: Sat, 19 May 2018 18:08:30 +0200
-Message-ID: <5194502.mIuqRB9jFM@phil>
-References: <20180516101510.13215-1-peda@axentia.se>
- <20180516101510.13215-25-peda@axentia.se>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v1 5/7] pinctrl: mediatek: remove unused fields in struct mtk_eint_hw
+Date: Mon, 21 May 2018 01:01:51 +0800
+Message-ID: <72462fb7aab16463a42066998ac3b4bf35ada416.1526835466.git.sean.wang@mediatek.com>
+References: <cover.1526835466.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180516101510.13215-25-peda@axentia.se>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Peter Rosin <peda@axentia.se>
-Cc: Martyn Welch <martyn.welch@collabora.co.uk>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Martin Donnelly <martin.donnelly@ge.com>, linux-arm-msm@vger.kernel.org, Jyri Sarha <jsarha@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1526835466.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, mark.rutland@arm.com, linus.walleij@linaro.org, matthias.bgg@gmail.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-QW0gTWl0dHdvY2gsIDE2LiBNYWkgMjAxOCwgMTI6MTU6MDggQ0VTVCBzY2hyaWViIFBldGVyIFJv
-c2luOgo+IEl0IGlzIHVudXNlZC4KPiAKPiBBY2tlZC1ieTogRGFuaWVsIFZldHRlciA8ZGFuaWVs
-LnZldHRlckBmZndsbC5jaD4KPiBTaWduZWQtb2ZmLWJ5OiBQZXRlciBSb3NpbiA8cGVkYUBheGVu
-dGlhLnNlPgoKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2x2ZHMuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMKPiBpbmRl
-eCA1NTdlMDA3OWM5OGQuLmU3N2Q0YzkwOTU4MiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2x2ZHMuYwo+IEBAIC0zNzcsOCArMzc3LDYgQEAgc3RhdGljIGludCByb2Nr
-Y2hpcF9sdmRzX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIs
-Cj4gIAl9Cj4gIAlpZiAobHZkcy0+cGFuZWwpCj4gIAkJcmVtb3RlID0gbHZkcy0+cGFuZWwtPmRl
-di0+b2Zfbm9kZTsKPiAtCWVsc2UgaWYgKGx2ZHMtPmJyaWRnZS0+b2Zfbm9kZSkKPiAtCQlyZW1v
-dGUgPSBsdmRzLT5icmlkZ2UtPm9mX25vZGU7Cj4gIAllbHNlCj4gIAkJcmVtb3RlID0gbHZkcy0+
-YnJpZGdlLT5vZGV2LT5vZl9ub2RlOwo+ICAJaWYgKG9mX3Byb3BlcnR5X3JlYWRfc3RyaW5nKGRl
-di0+b2Zfbm9kZSwgInJvY2tjaGlwLG91dHB1dCIsICZuYW1lKSkKCmZvciB0aGUgUm9ja2NoaXAt
-cGFydApBY2tlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+From: Sean Wang <sean.wang@mediatek.com>
+
+The .name field has been not being used in existent code logic, so
+it's better that we remove them all.
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/pinctrl/mediatek/mtk-eint.h       | 1 -
+ drivers/pinctrl/mediatek/pinctrl-mt2701.c | 1 -
+ drivers/pinctrl/mediatek/pinctrl-mt2712.c | 1 -
+ drivers/pinctrl/mediatek/pinctrl-mt8127.c | 1 -
+ drivers/pinctrl/mediatek/pinctrl-mt8135.c | 1 -
+ drivers/pinctrl/mediatek/pinctrl-mt8173.c | 1 -
+ 6 files changed, 6 deletions(-)
+
+diff --git a/drivers/pinctrl/mediatek/mtk-eint.h b/drivers/pinctrl/mediatek/mtk-eint.h
+index 55b4d5f..c286a9b 100644
+--- a/drivers/pinctrl/mediatek/mtk-eint.h
++++ b/drivers/pinctrl/mediatek/mtk-eint.h
+@@ -33,7 +33,6 @@ struct mtk_eint_regs {
+ };
+ 
+ struct mtk_eint_hw {
+-	const char	*name;
+ 	u8		port_mask;
+ 	u8		ports;
+ 	unsigned int	ap_num;
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2701.c b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
+index db22250..e91c314 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt2701.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
+@@ -532,7 +532,6 @@ static const struct mtk_pinctrl_devdata mt2701_pinctrl_data = {
+ 	.port_mask = 0x1f,
+ 	.port_align = 4,
+ 	.eint_hw = {
+-		.name = "mt2701_eint",
+ 		.port_mask = 6,
+ 		.ports     = 6,
+ 		.ap_num    = 169,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2712.c b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
+index 6e2acef..8398d55 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt2712.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
+@@ -577,7 +577,6 @@ static const struct mtk_pinctrl_devdata mt2712_pinctrl_data = {
+ 	.port_mask = 0xf,
+ 	.port_align = 4,
+ 	.eint_hw = {
+-		.name = "mt2712_eint",
+ 		.port_mask = 0xf,
+ 		.ports     = 8,
+ 		.ap_num    = 229,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8127.c b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+index 949a235..2e4cc92 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8127.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+@@ -301,7 +301,6 @@ static const struct mtk_pinctrl_devdata mt8127_pinctrl_data = {
+ 	.port_mask = 0xf,
+ 	.port_align = 4,
+ 	.eint_hw = {
+-		.name = "mt8127_eint",
+ 		.port_mask = 7,
+ 		.ports     = 6,
+ 		.ap_num    = 143,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8135.c b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+index 974a1f43..7f5edfa 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8135.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+@@ -314,7 +314,6 @@ static const struct mtk_pinctrl_devdata mt8135_pinctrl_data = {
+ 	.port_mask = 0xf,
+ 	.port_align = 4,
+ 	.eint_hw = {
+-		.name = "mt8135_eint",
+ 		.port_mask = 7,
+ 		.ports     = 6,
+ 		.ap_num    = 192,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+index a836cee3..c449c9a 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+@@ -341,7 +341,6 @@ static const struct mtk_pinctrl_devdata mt8173_pinctrl_data = {
+ 	.port_mask = 0xf,
+ 	.port_align = 4,
+ 	.eint_hw = {
+-		.name = "mt8173_eint",
+ 		.port_mask = 7,
+ 		.ports     = 6,
+ 		.ap_num    = 224,
+-- 
+2.7.4
