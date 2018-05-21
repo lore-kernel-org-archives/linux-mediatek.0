@@ -1,8 +1,8 @@
 From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 Subject: Re: [PATCH v7 2/2] PCI: mediatek: Using chained IRQ to setup IRQ
  handle
-Date: Mon, 21 May 2018 11:08:14 +0100
-Message-ID: <20180521100814.GA30668@e107981-ln.cambridge.arm.com>
+Date: Mon, 21 May 2018 15:03:36 +0100
+Message-ID: <20180521140336.GA3149@e107981-ln.cambridge.arm.com>
 References: <1525412853-24367-1-git-send-email-honghui.zhang@mediatek.com>
  <1525412853-24367-3-git-send-email-honghui.zhang@mediatek.com>
  <20180518195154.GB41790@bhelgaas-glaptop.roam.corp.google.com>
@@ -50,16 +50,11 @@ On Fri, May 18, 2018 at 02:51:54PM -0500, Bjorn Helgaas wrote:
 >  	depends on (ARM || ARM64) && (ARCH_MEDIATEK || COMPILE_TEST)
 >  	depends on OF
 > -	depends on PCI
-> +	depends on PCI_MSI_IRQ_DOMAIN
->  	select PCIEPORTBUS
->  	help
->  	  Say Y here if you want to enable PCIe controller support on
-> 
-> 
-> Lorenzo, if you want to fold that in and update your branch, I can pull it.
-> If not, I can add a patch on top, which should only break compile-testing
-> bisection.
 
-I folded the patch above and pushed into pci/mediatek, thanks !
+Actually I amended your patch, since I do not think the deletion above
+belongs in this commit (I agree that's completely useless but that's
+not this patch that we should remove it).
 
 Lorenzo
+
+> +	depends on PCI_MSI_IRQ_DOMAIN
