@@ -1,60 +1,67 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH v7 2/2] PCI: mediatek: Using chained IRQ to setup IRQ
- handle
-Date: Mon, 21 May 2018 15:03:36 +0100
-Message-ID: <20180521140336.GA3149@e107981-ln.cambridge.arm.com>
-References: <1525412853-24367-1-git-send-email-honghui.zhang@mediatek.com>
- <1525412853-24367-3-git-send-email-honghui.zhang@mediatek.com>
- <20180518195154.GB41790@bhelgaas-glaptop.roam.corp.google.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: Marcel Holtmann <marcel@holtmann.org>
+Subject: Re: [PATCH v2 4/7] Bluetooth: Add new quirk for non-persistent setup
+ settings
+Date: Tue, 22 May 2018 09:21:23 +0200
+Message-ID: <920B3BE9-3FE8-4AC6-8C5F-63B0E00182AC@holtmann.org>
+References: <cover.1526374087.git.sean.wang@mediatek.com>
+ <1d6097f538b3182b2876ad48225ecd6e2d1b128c.1526374087.git.sean.wang@mediatek.com>
+Mime-Version: 1.0 (Mac OS X Mail 11.3 \(3445.6.18\))
+Content-Type: text/plain;
+        charset=us-ascii
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180518195154.GB41790@bhelgaas-glaptop.roam.corp.google.com>
+In-Reply-To: <1d6097f538b3182b2876ad48225ecd6e2d1b128c.1526374087.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: honghui.zhang@mediatek.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+To: sean.wang@mediatek.com
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Johan Hedberg <johan.hedberg@gmail.com>, devicetree <devicetree@vger.kernel.org>, BlueZ development <linux-bluetooth@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, May 18, 2018 at 02:51:54PM -0500, Bjorn Helgaas wrote:
-> On Fri, May 04, 2018 at 01:47:33PM +0800, honghui.zhang@mediatek.com wrote:
-> > From: Honghui Zhang <honghui.zhang@mediatek.com>
-> > 
-> > Using irq_chip solution to setup IRQs in order to consist
-> > with IRQ framework.
-> > 
-> > Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> > Acked-by: Ryder Lee <ryder.lee@mediatek.com>
-> > ---
-> >  drivers/pci/host/pcie-mediatek.c | 206 ++++++++++++++++++++++-----------------
-> >  1 file changed, 115 insertions(+), 91 deletions(-)
-> > 
-> > diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-> > index c3dc549..dabf1086 100644
-> > --- a/drivers/pci/host/pcie-mediatek.c
-> > +++ b/drivers/pci/host/pcie-mediatek.c
-> > ...
-> 
-> > -static int mtk_pcie_msi_map(struct irq_domain *domain, unsigned int irq,
-> > -			    irq_hw_number_t hwirq)
-> > +static struct msi_domain_info mtk_msi_domain_info = {
-> 
-> I think this patch should be amended to include this:
-> 
-> diff --git a/drivers/pci/host/Kconfig b/drivers/pci/host/Kconfig
-> index 0d0177ce436c..368b70d9371b 100644
-> --- a/drivers/pci/host/Kconfig
-> +++ b/drivers/pci/host/Kconfig
-> @@ -193,7 +193,7 @@ config PCIE_MEDIATEK
->  	bool "MediaTek PCIe controller"
->  	depends on (ARM || ARM64) && (ARCH_MEDIATEK || COMPILE_TEST)
->  	depends on OF
-> -	depends on PCI
+Hi Sean,
 
-Actually I amended your patch, since I do not think the deletion above
-belongs in this commit (I agree that's completely useless but that's
-not this patch that we should remove it).
+> Add a new quirk HCI_QUIRK_NON_PERSISTENT_SETUP allowing that a quirk that
+> runs setup() after every open() and not just after the first open().
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+> include/net/bluetooth/hci.h | 9 +++++++++
+> net/bluetooth/hci_core.c    | 3 ++-
+> 2 files changed, 11 insertions(+), 1 deletion(-)
+> 
+> diff --git a/include/net/bluetooth/hci.h b/include/net/bluetooth/hci.h
+> index 1668211..b37d973 100644
+> --- a/include/net/bluetooth/hci.h
+> +++ b/include/net/bluetooth/hci.h
+> @@ -183,6 +183,15 @@ enum {
+> 	 * during the hdev->setup vendor callback.
+> 	 */
+> 	HCI_QUIRK_NON_PERSISTENT_DIAG,
+> +
+> +	/* When this quirk is set, setup() would be run after every
+> +	 * open() and not just after the first open().
+> +	 *
+> +	 * This quirk can be set before hci_register_dev is called or
+> +	 * during the hdev->setup vendor callback.
+> +	 *
+> +	 */
+> +	HCI_QUIRK_NON_PERSISTENT_SETUP,
+> };
+> 
+> /* HCI device flags */
+> diff --git a/net/bluetooth/hci_core.c b/net/bluetooth/hci_core.c
+> index 40d260f..7de712e2 100644
+> --- a/net/bluetooth/hci_core.c
+> +++ b/net/bluetooth/hci_core.c
+> @@ -1377,7 +1377,8 @@ static int hci_dev_do_open(struct hci_dev *hdev)
+> 	atomic_set(&hdev->cmd_cnt, 1);
+> 	set_bit(HCI_INIT, &hdev->flags);
+> 
+> -	if (hci_dev_test_flag(hdev, HCI_SETUP)) {
+> +	if (hci_dev_test_flag(hdev, HCI_SETUP) ||
+> +	    test_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks)) {
+> 		hci_sock_dev_event(hdev, HCI_DEV_SETUP);
 
-Lorenzo
+I am not 100% sure that we want to send the HCI_DEV_SETUP event also multiple times. That is a userspace change that I would need to think about. We need to check create_monitor_event() and see what the btmon trace for this looks like. Can you send me a btmon -w trace.log when this change is active.
 
-> +	depends on PCI_MSI_IRQ_DOMAIN
+Regards
+
+Marcel
