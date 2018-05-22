@@ -1,27 +1,30 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 3/4] dt-bindings: serial: Add compatible for Mediatek
- MT8183
-Date: Tue, 22 May 2018 12:15:40 -0500
-Message-ID: <20180522171540.GA21870@rob-hp-laptop>
-References: <1526538126-51497-1-git-send-email-erin.lo@mediatek.com>
- <1526538126-51497-4-git-send-email-erin.lo@mediatek.com>
+Subject: Re: [PATCH v1 1/7] dt-bindings: pinctrl: add external interrupt
+ support to MT7622 pinctrl
+Date: Tue, 22 May 2018 15:02:10 -0500
+Message-ID: <20180522200209.GA7801@rob-hp-laptop>
+References: <cover.1526835466.git.sean.wang@mediatek.com>
+ <3898620ef606004aaddc332591ca467f56773029.1526835466.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1526538126-51497-4-git-send-email-erin.lo@mediatek.com>
+In-Reply-To: <3898620ef606004aaddc332591ca467f56773029.1526835466.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Erin Lo <erin.lo@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, mars.cheng@mediatek.com
+To: sean.wang@mediatek.com
+Cc: mark.rutland@arm.com, linus.walleij@linaro.org, matthias.bgg@gmail.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, May 17, 2018 at 02:22:05PM +0800, Erin Lo wrote:
-> This adds dt-binding documentation of uart for Mediatek MT8183 SoC
-> Platform.
+On Mon, May 21, 2018 at 01:01:47AM +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
+> Extend the capability of MT7622 pinctrl with adding EINT so that each
+> GPIO can be used to notify CPU when a signal state is changing on the
+> line as an external interrupt.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/serial/mtk-uart.txt | 1 +
->  1 file changed, 1 insertion(+)
+>  Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
 
-Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
