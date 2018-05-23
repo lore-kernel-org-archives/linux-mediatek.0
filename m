@@ -1,52 +1,51 @@
-From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: Re: [PATCH v2 4/4] drm/mediatek: add connection from OD1 to RDMA1
-Date: Wed, 23 May 2018 17:31:09 +0800
-Message-ID: <1527067869.19074.29.camel@mtksdaap41>
-References: <20180523022517.12103-1-stu.hsieh@mediatek.com>
- <20180523022517.12103-5-stu.hsieh@mediatek.com>
- <1527055278.21354.3.camel@mtksdaap41>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1527055278.21354.3.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+From: Marcel Holtmann <marcel@holtmann.org>
+Subject: Re: [PATCH v2 4/7] Bluetooth: Add new quirk for non-persistent setup
+ settings
+Date: Wed, 23 May 2018 14:31:30 +0200
+Message-ID: <B82BB5F4-E197-4915-A543-C5FF9A5A41F1@holtmann.org>
+References: <cover.1526374087.git.sean.wang@mediatek.com>
+ <1d6097f538b3182b2876ad48225ecd6e2d1b128c.1526374087.git.sean.wang@mediatek.com>
+ <920B3BE9-3FE8-4AC6-8C5F-63B0E00182AC@holtmann.org>
+ <1526976323.18877.47.camel@mtkswgap22> <1527057423.4607.3.camel@mtkswgap22>
+Mime-Version: 1.0 (Mac OS X Mail 11.3 \(3445.6.18\))
+Content-Type: text/plain;
+        charset=us-ascii
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1527057423.4607.3.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, Johan Hedberg <johan.hedberg@gmail.com>, LKML <linux-kernel@vger.kernel.org>, BlueZ development <linux-bluetooth@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIENLOgoKT24gV2VkLCAyMDE4LTA1LTIzIGF0IDE0OjAxICswODAwLCBDSyBIdSB3cm90ZToK
-PiBIaSwgU3R1Ogo+IAo+IE9uIFdlZCwgMjAxOC0wNS0yMyBhdCAxMDoyNSArMDgwMCwgU3R1IEhz
-aWVoIHdyb3RlOgo+ID4gVGhpcyBwYXRjaCBhZGQgdGhlIGNvbm5lY3Rpb24gZnJvbSBPRDEgdG8g
-UkRNQTEgZm9yIGV4dCBwYXRoLgo+ID4gCj4gCj4gSSB3b3VsZCBsaWtlIHRvIGFwcGx5IHRoaXMg
-cGF0Y2ggYmVmb3JlIHRoZSBwYXRjaCAnQWRkIHN1cHBvcnQgZm9yCj4gbWVkaWF0ZWsgU09DIE1U
-MjcxMicgYmVjYXVzZSB0aGlzIHBhdGNoIGlzIG5lY2Vzc2FyeSBmb3IgbXQyNzEyLgpvawoKPiAK
-PiBSZWdhcmRzLAo+IENLCj4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBTdHUgSHNpZWggPHN0dS5oc2ll
-aEBtZWRpYXRlay5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kZHAuYyB8IDMgKysrCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKQo+
-ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRw
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwo+ID4gaW5kZXggM2M3
-YmQ0NTNjZjQyLi4wNDUwZWNiYmMzNTYgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RybV9kZHAuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kcm1fZGRwLmMKPiA+IEBAIC0xOTMsNiArMTkzLDkgQEAgc3RhdGljIHVuc2lnbmVkIGlu
-dCBtdGtfZGRwX21vdXRfZW4oZW51bSBtdGtfZGRwX2NvbXBfaWQgY3VyLAo+ID4gIAl9IGVsc2Ug
-aWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX0dBTU1BICYmIG5leHQgPT0gRERQX0NPTVBPTkVOVF9S
-RE1BMSkgewo+ID4gIAkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9HQU1NQV9NT1VUX0VO
-Owo+ID4gIAkJdmFsdWUgPSBHQU1NQV9NT1VUX0VOX1JETUExOwo+ID4gKwl9IGVsc2UgaWYgKGN1
-ciA9PSBERFBfQ09NUE9ORU5UX09EMSAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfUkRNQTEpIHsK
-PiA+ICsJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfT0RfTU9VVF9FTjsKPiA+ICsJCXZh
-bHVlID0gT0QxX01PVVRfRU5fUkRNQTE7Cj4gPiAgCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01Q
-T05FTlRfUkRNQTEgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RQSTApIHsKPiA+ICAJCSphZGRy
-ID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTFfTU9VVF9FTjsKPiA+ICAJCXZhbHVlID0gUkRN
-QTFfTU9VVF9EUEkwOwo+IAo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
-ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2RyaS1kZXZlbAo=
+Hi Sean,
+
+>> 
+>> [ ... ]
+>> 
+>>>> -	if (hci_dev_test_flag(hdev, HCI_SETUP)) {
+>>>> +	if (hci_dev_test_flag(hdev, HCI_SETUP) ||
+>>>> +	    test_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks)) {
+>>>> 		hci_sock_dev_event(hdev, HCI_DEV_SETUP);
+>>> 
+>>> I am not 100% sure that we want to send the HCI_DEV_SETUP event also multiple times. That is a userspace change that I would need to think about. We need to check create_monitor_event() and see what the btmon trace for this looks like. Can you send me a btmon -w trace.log when this change is active.
+>>> 
+>>> Regards
+>>> 
+>>> Marcel
+>>> 
+>> 
+>> Sure, I'll send you the trace.log with the change is active.
+>> 
+>> 	Sean
+>> 
+> 
+> 
+> Attached trace.log was captured when I inputted commands power on and
+> then off in bluetoothctl.
+
+the trace.log is somehow mangled. Something is not fully correct. Can you read it with btmon -r trace.log?
+
+Regards
+
+Marcel
