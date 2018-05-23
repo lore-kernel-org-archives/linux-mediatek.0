@@ -1,30 +1,43 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v1 1/7] dt-bindings: pinctrl: add external interrupt
- support to MT7622 pinctrl
-Date: Tue, 22 May 2018 15:02:10 -0500
-Message-ID: <20180522200209.GA7801@rob-hp-laptop>
-References: <cover.1526835466.git.sean.wang@mediatek.com>
- <3898620ef606004aaddc332591ca467f56773029.1526835466.git.sean.wang@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v2 1/4] drm/mediatek: update dt-bindings for mt2712
+Date: Wed, 23 May 2018 11:30:58 +0800
+Message-ID: <1527046258.2655.1.camel@mtksdaap41>
+References: <20180523022517.12103-1-stu.hsieh@mediatek.com>
+         <20180523022517.12103-2-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <3898620ef606004aaddc332591ca467f56773029.1526835466.git.sean.wang@mediatek.com>
+In-Reply-To: <20180523022517.12103-2-stu.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: mark.rutland@arm.com, linus.walleij@linaro.org, matthias.bgg@gmail.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
+To: Stu Hsieh <stu.hsieh@mediatek.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, May 21, 2018 at 01:01:47AM +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Extend the capability of MT7622 pinctrl with adding EINT so that each
-> GPIO can be used to notify CPU when a signal state is changing on the
-> line as an external interrupt.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt | 10 ++++++++++
->  1 file changed, 10 insertions(+)
+Hi, Stu:
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+On Wed, 2018-05-23 at 10:25 +0800, Stu Hsieh wrote:
+> Update device tree binding documentation for the display subsystem for
+> Mediatek MT2712 SoCs.
+> 
+
+Acked-by: CK Hu <ck.hu@mediatek.com>
+
+> Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> index 383183a89164..8469de510001 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> @@ -40,7 +40,7 @@ Required properties (all function blocks):
+>  	"mediatek,<chip>-dpi"        - DPI controller, see mediatek,dpi.txt
+>  	"mediatek,<chip>-disp-mutex" - display mutex
+>  	"mediatek,<chip>-disp-od"    - overdrive
+> -  the supported chips are mt2701 and mt8173.
+> +  the supported chips are mt2701, mt2712 and mt8173.
+>  - reg: Physical base address and length of the function block register space
+>  - interrupts: The interrupt signal from the function block (required, except for
+>    merge and split function blocks).
