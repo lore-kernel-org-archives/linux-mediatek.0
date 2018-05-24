@@ -1,7 +1,7 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
 Subject: Re: [PATCH v2 2/4] drm/mediatek: Add support for mediatek SOC MT2712
-Date: Thu, 24 May 2018 15:50:30 +0800
-Message-ID: <1527148230.11810.3.camel@mtksdaap41>
+Date: Thu, 24 May 2018 16:40:28 +0800
+Message-ID: <1527151228.12697.3.camel@mtksdaap41>
 References: <20180523022517.12103-1-stu.hsieh@mediatek.com>
          <20180523022517.12103-3-stu.hsieh@mediatek.com>
          <1527053036.10410.18.camel@mtksdaap41>
@@ -102,9 +102,13 @@ On Thu, 2018-05-24 at 09:26 +0800, CK Hu wrote:
 > 
 > Regards,
 > CK
-ok, these modification has no build warning.
+
+This modification has no build warning.
 I would also change the definition about 2701 and 8173 from bitwise to
 index.
+
+Regards,
+Stu
 
 > 
 > > > > +#define MT2712_MUTEX_MOD2_DISP_OD1		(BIT(2) | BIT(31))
