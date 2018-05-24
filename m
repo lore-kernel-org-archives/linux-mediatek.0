@@ -1,82 +1,29 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [v3 03/10] mfd: mtk-mmsys: Add mmsys driver
-Date: Thu, 24 May 2018 10:52:22 +0800
-Message-ID: <1527130342.4607.27.camel@mtkswgap22>
-References: <cover.1524820923.git.mbrugger@suse.com>
-         <e0894c97775e46ce6d9a441dc05e2e2479a4b612.1524820923.git.mbrugger@suse.com>
-         <20180430101826.GC5147@dell>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v1 1/7] dt-bindings: pinctrl: add external interrupt
+ support to MT7622 pinctrl
+Date: Thu, 24 May 2018 09:36:08 +0200
+Message-ID: <CACRpkdbKwck2E3v+vr3freG1L5kSnfRc8Gti7jYtkqcuemK-fQ@mail.gmail.com>
+References: <cover.1526835466.git.sean.wang@mediatek.com> <3898620ef606004aaddc332591ca467f56773029.1526835466.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180430101826.GC5147@dell>
+In-Reply-To: <3898620ef606004aaddc332591ca467f56773029.1526835466.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: matthias.bgg@kernel.org, ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, linux-clk@vger.kernel.org, linux@armlinux.org.uk, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-04-30 at 11:18 +0100, Lee Jones wrote:
-> On Fri, 27 Apr 2018, matthias.bgg@kernel.org wrote:
-> 
-> > From: Matthias Brugger <mbrugger@suse.com>
-> > 
-> > The MMSYS subsystem includes clocks and drm components.
-> > This patch adds a MFD device to probe both drivers from the same
-> > device tree compatible.
-> > 
-> > Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-> > ---
-> >  drivers/mfd/Kconfig     |  9 ++++++
-> >  drivers/mfd/Makefile    |  2 ++
-> >  drivers/mfd/mtk-mmsys.c | 79 +++++++++++++++++++++++++++++++++++++++++++++++++
+On Sun, May 20, 2018 at 7:01 PM,  <sean.wang@mediatek.com> wrote:
 
-[ ... ]
+> From: Sean Wang <sean.wang@mediatek.com>
+>
+> Extend the capability of MT7622 pinctrl with adding EINT so that each
+> GPIO can be used to notify CPU when a signal state is changing on the
+> line as an external interrupt.
+>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
-> > +};
-> 
-> This driver is pretty pointless.  It doesn't actually do anything.
-> 
-> I think you just want to use "simple-mfd" instead.
-> 
+Patch applied with Rob's review tag.
 
-
-Hi, Matthias
-
-Why not embedded a platform_device_register_data call into existent
-MMSYS driver ?
-
-It looks elegant and makes sense that mmsys device is being as parent
-device for all its DRM components device and no need to create an
-additional node representing the same device with mmsys simply in order
-to probe its DRM components.
-
-I'm planing to send a bunch of HDMI, MIPI related to MMSYS nodes for
-MT7623 SoC when 4.18 rc1 comes out, so we should want to solve the
-dt-binding violation issue first.
-
-Though there are two same mmsys-compatible strings involving in dts
-though, it seems that hdmi still can work fine in my setup.
-
-	Sean
-
-
-> > +static const struct of_device_id of_match_mmsys[] = {
-> > +	{ .compatible = "mediatek,mt2701-mmsys",
-> > +	  .data = (void *) MMSYS_MT2701,
-> > +	},
-> > +	{ /* sentinel */ },
-> > +};
-> > +
-> > +static struct platform_driver mmsys_drv = {
-> > +	.probe = mmsys_probe,
-> > +	.driver = {
-> > +		.name = "mediatek-mmysys",
-> > +		.of_match_table = of_match_ptr(of_match_mmsys),
-> > +	},
-> > +};
-> > +
-> > +builtin_platform_driver(mmsys_drv);
-> > +
-> > +MODULE_DESCRIPTION("Mediatek MMSYS multi-function driver");
-> > +MODULE_LICENSE("GPL");
-> 
+Yours,
+Linus Walleij
