@@ -1,85 +1,82 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 2/4] drm/mediatek: Add support for mediatek SOC MT2712
-Date: Thu, 24 May 2018 09:26:37 +0800
-Message-ID: <1527125197.6406.10.camel@mtksdaap41>
-References: <20180523022517.12103-1-stu.hsieh@mediatek.com>
- <20180523022517.12103-3-stu.hsieh@mediatek.com>
- <1527053036.10410.18.camel@mtksdaap41>
- <1527067696.19074.28.camel@mtksdaap41>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [v3 03/10] mfd: mtk-mmsys: Add mmsys driver
+Date: Thu, 24 May 2018 10:52:22 +0800
+Message-ID: <1527130342.4607.27.camel@mtkswgap22>
+References: <cover.1524820923.git.mbrugger@suse.com>
+         <e0894c97775e46ce6d9a441dc05e2e2479a4b612.1524820923.git.mbrugger@suse.com>
+         <20180430101826.GC5147@dell>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1527067696.19074.28.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180430101826.GC5147@dell>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lee Jones <lee.jones@linaro.org>
+Cc: matthias.bgg@kernel.org, ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, linux-clk@vger.kernel.org, linux@armlinux.org.uk, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFN0dToKCk9uIFdlZCwgMjAxOC0wNS0yMyBhdCAxNzoyOCArMDgwMCwgU3R1IEhzaWVoIHdy
-b3RlOgo+IE9uIFdlZCwgMjAxOC0wNS0yMyBhdCAxMzoyMyArMDgwMCwgQ0sgSHUgd3JvdGU6Cj4g
-PiBIaSwgU3R1Ogo+ID4gCj4gPiBJJ3ZlIHNvbWUgaW5saW5lIGNvbW1lbnQuCj4gPiAKPiA+IE9u
-IFdlZCwgMjAxOC0wNS0yMyBhdCAxMDoyNSArMDgwMCwgU3R1IEhzaWVoIHdyb3RlOgo+ID4gPiBU
-aGlzIHBhdGNoIGFkZCBzdXBwb3J0IGZvciB0aGUgTWVkaWF0ZWsgTVQyNzEyIERJU1Agc3Vic3lz
-dGVtLgo+ID4gPiBUaGVyZSBhcmUgdHdvIE9WTCBlbmdpbmUgYW5kIHRocmVlIGRpc3Agb3V0cHV0
-IGluIE1UMjcxMi4KPiA+ID4gCj4gPiA+IFNpZ25lZC1vZmYtYnk6IFN0dSBIc2llaCA8c3R1Lmhz
-aWVoQG1lZGlhdGVrLmNvbT4KPiA+ID4gLS0tCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9kZHAuYyAgICAgIHwgNTAgKysrKysrKysrKysrKysrKysrKysrKysrKysrLS0K
-PiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgfCAgOCAr
-KystLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaCB8
-ICA3ICsrLS0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICAg
-ICAgfCA0NyArKysrKysrKysrKysrKysrKysrKysrKysrLS0KPiA+ID4gIGRyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2Rydi5oICAgICAgfCAgNyArKy0tCj4gPiA+ICA1IGZpbGVzIGNo
-YW5nZWQsIDEwOCBpbnNlcnRpb25zKCspLCAxMSBkZWxldGlvbnMoLSkKPiA+ID4gCj4gPiA+ICsj
-ZGVmaW5lIE1UMjcxMl9NVVRFWF9NT0RfRElTUF9BQUwwCQlCSVQoMjApCj4gPiA+ICsjZGVmaW5l
-IE1UMjcxMl9NVVRFWF9NT0RfRElTUF9VRk9FCQlCSVQoMjIpCj4gPiA+ICsjZGVmaW5lIE1UMjcx
-Ml9NVVRFWF9NT0RfRElTUF9QV00wCQlCSVQoMjMpCj4gPiA+ICsjZGVmaW5lIE1UMjcxMl9NVVRF
-WF9NT0RfRElTUF9QV00xCQlCSVQoMjQpCj4gPiA+ICsjZGVmaW5lIE1UMjcxMl9NVVRFWF9NT0Rf
-RElTUF9QV00yCQlCSVQoMTApCj4gPiA+ICsjZGVmaW5lIE1UMjcxMl9NVVRFWF9NT0RfRElTUF9P
-RDAJCUJJVCgyNSkKPiA+ID4gKy8qIG1vZHVsZXMgbW9yZSB0aGFuIDMyLCBhZGQgQklUKDMxKSB3
-aGVuIHVzaW5nIERJU1BfUkVHX01VVEVYX01PRDIgYml0ICovCj4gPiA+ICsjZGVmaW5lIE1UMjcx
-Ml9NVVRFWF9NT0QyX0RJU1BfQUFMMQkJKEJJVCgxKSB8IEJJVCgzMSkpCj4gPiAKPiA+IEkgdGhp
-bmsgYSBiZXR0ZXIgZGVmaW5pdGlvbiBpcwo+ID4gCj4gPiAjZGVmaW5lIE1UMjcxMl9NVVRFWF9N
-T0QyX0RJU1BfQUFMMQkJQklUKDMzKQo+ID4gCj4gPiB3aGVuIHlvdSBuZWVkIHRvIGFjY2VzcyB0
-aGlzIHJlZ2lzdGVyLAo+ID4gCj4gPiBpZiAoZGRwLT5tdXRleF9tb2RbaWRdIDwgQklUKDMyKSkg
-ewo+ID4gCW9mZnNldCA9IERJU1BfUkVHX01VVEVYX01PRChtdXRleC0+aWQpOwo+ID4gCXJlZyA9
-IHJlYWRsX3JlbGF4ZWQoZGRwLT5yZWdzICsgb2Zmc2V0KTsKPiA+IAlyZWcgfD0gZGRwLT5tdXRl
-eF9tb2RbaWRdOwo+ID4gCXdyaXRlbF9yZWxheGVkKHJlZywgZGRwLT5yZWdzICsgb2Zmc2V0KTsK
-PiA+IH0gZWxzZSB7Cj4gPiAJb2Zmc2V0ID0gRElTUF9SRUdfTVVURVhfTU9EMihtdXRleC0+aWQp
-Owo+ID4gCXJlZyA9IHJlYWRsX3JlbGF4ZWQoZGRwLT5yZWdzICsgb2Zmc2V0KTsKPiA+IAlyZWcg
-fD0gKGRkcC0+bXV0ZXhfbW9kW2lkXSA+PiAzMik7Cj4gPiAJd3JpdGVsX3JlbGF4ZWQocmVnLCBk
-ZHAtPnJlZ3MgKyBvZmZzZXQpOwo+ID4gfQo+ID4gCj4gPiBiZWNhdXNlIERJU1BfUkVHX01VVEVY
-X01PRCBCSVQoMzEpIGNvdWxkIGJlIHVzZWQgZm9yIHNvbWUgbW9kdWxlLgo+IAo+IFRoaXMgbW9k
-aWZpY2F0aW9uIGlzIHdvcmthYmxlLCBidXQgcmVzdWx0IHNvbWUgYnVpbGQgd2FybmluZyBsaWtl
-Cj4gZm9sbG93aW5nOgo+IDEuICNkZWZpbmUgQklUKG5yKSAgICgxVUwgPDwgKG5yKSkgaW4gaW5j
-bHVkZS9saW51eC9iaXRvcHMuaAo+IDIuIFtERFBfQ09NUE9ORU5UX0FBTDFdID0gTVQyNzEyX01V
-VEVYX01PRDJfRElTUF9BQUwxLAo+ICAgID0+IHdlIG5lZWQgdG8gbW9kaWZ5IHRoZSBkZWZpbml0
-aW9uIGFib3V0ICJzdGF0aWMgY29uc3QgdW5zaWduZWQgaW50Cj4gbXQyNzEyX211dGV4X21vZCIK
-PiAKCkN1cnJlbnRseSwgbXV0ZXhfbW9kIGlzIGEgYml0d2lzZSBkZWZpbml0aW9uLiBJIHRoaW5r
-IGl0IGNvdWxkIGJlCmNoYW5nZWQgdG8gaW5kZXggZGVmaW5pdGlvbiBzdWNoIGFzCgoKI2RlZmlu
-ZSBNVDI3MTJfTVVURVhfTU9EX0RJU1BfUFdNMgkJMTAKI2RlZmluZSBNVDI3MTJfTVVURVhfTU9E
-X0RJU1BfT0QwCQkyNQojZGVmaW5lIE1UMjcxMl9NVVRFWF9NT0QyX0RJU1BfQUFMMQkJMzMKCndo
-ZW4geW91IG5lZWQgdG8gYWNjZXNzIHRoaXMgcmVnaXN0ZXIsCgppZiAoZGRwLT5tdXRleF9tb2Rb
-aWRdIDwgMzIpIHsKCW9mZnNldCA9IERJU1BfUkVHX01VVEVYX01PRChtdXRleC0+aWQpOwoJcmVn
-ID0gcmVhZGxfcmVsYXhlZChkZHAtPnJlZ3MgKyBvZmZzZXQpOwoJcmVnIHw9IDEgPDwgZGRwLT5t
-dXRleF9tb2RbaWRdOwoJd3JpdGVsX3JlbGF4ZWQocmVnLCBkZHAtPnJlZ3MgKyBvZmZzZXQpOwp9
-IGVsc2UgewoJb2Zmc2V0ID0gRElTUF9SRUdfTVVURVhfTU9EMihtdXRleC0+aWQpOwoJcmVnID0g
-cmVhZGxfcmVsYXhlZChkZHAtPnJlZ3MgKyBvZmZzZXQpOwoJcmVnIHw9IDEgPDwgKGRkcC0+bXV0
-ZXhfbW9kW2lkXSAtIDMyKTsKCXdyaXRlbF9yZWxheGVkKHJlZywgZGRwLT5yZWdzICsgb2Zmc2V0
-KTsKfQoKUmVnYXJkcywKQ0sKCj4gPiA+ICsjZGVmaW5lIE1UMjcxMl9NVVRFWF9NT0QyX0RJU1Bf
-T0QxCQkoQklUKDIpIHwgQklUKDMxKSkKPiA+ID4gKwo+ID4gPiAgI2RlZmluZSBNVDI3MDFfTVVU
-RVhfTU9EX0RJU1BfT1ZMCQlCSVQoMykKPiA+ID4gICNkZWZpbmUgTVQyNzAxX01VVEVYX01PRF9E
-SVNQX1dETUEJCUJJVCg2KQo+ID4gPiAgI2RlZmluZSBNVDI3MDFfTVVURVhfTU9EX0RJU1BfQ09M
-T1IJCUJJVCg3KQo+ID4gPiBAQCAtNzQsNiArOTYsNyBAQAo+ID4gPiAgCj4gPiA+ICAKPiA+IAo+
-ID4gCj4gCj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-Cg==
+On Mon, 2018-04-30 at 11:18 +0100, Lee Jones wrote:
+> On Fri, 27 Apr 2018, matthias.bgg@kernel.org wrote:
+> 
+> > From: Matthias Brugger <mbrugger@suse.com>
+> > 
+> > The MMSYS subsystem includes clocks and drm components.
+> > This patch adds a MFD device to probe both drivers from the same
+> > device tree compatible.
+> > 
+> > Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+> > ---
+> >  drivers/mfd/Kconfig     |  9 ++++++
+> >  drivers/mfd/Makefile    |  2 ++
+> >  drivers/mfd/mtk-mmsys.c | 79 +++++++++++++++++++++++++++++++++++++++++++++++++
+
+[ ... ]
+
+> > +};
+> 
+> This driver is pretty pointless.  It doesn't actually do anything.
+> 
+> I think you just want to use "simple-mfd" instead.
+> 
+
+
+Hi, Matthias
+
+Why not embedded a platform_device_register_data call into existent
+MMSYS driver ?
+
+It looks elegant and makes sense that mmsys device is being as parent
+device for all its DRM components device and no need to create an
+additional node representing the same device with mmsys simply in order
+to probe its DRM components.
+
+I'm planing to send a bunch of HDMI, MIPI related to MMSYS nodes for
+MT7623 SoC when 4.18 rc1 comes out, so we should want to solve the
+dt-binding violation issue first.
+
+Though there are two same mmsys-compatible strings involving in dts
+though, it seems that hdmi still can work fine in my setup.
+
+	Sean
+
+
+> > +static const struct of_device_id of_match_mmsys[] = {
+> > +	{ .compatible = "mediatek,mt2701-mmsys",
+> > +	  .data = (void *) MMSYS_MT2701,
+> > +	},
+> > +	{ /* sentinel */ },
+> > +};
+> > +
+> > +static struct platform_driver mmsys_drv = {
+> > +	.probe = mmsys_probe,
+> > +	.driver = {
+> > +		.name = "mediatek-mmysys",
+> > +		.of_match_table = of_match_ptr(of_match_mmsys),
+> > +	},
+> > +};
+> > +
+> > +builtin_platform_driver(mmsys_drv);
+> > +
+> > +MODULE_DESCRIPTION("Mediatek MMSYS multi-function driver");
+> > +MODULE_LICENSE("GPL");
+> 
