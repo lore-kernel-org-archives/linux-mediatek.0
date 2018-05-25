@@ -1,64 +1,60 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: [PATCH 4/6] arm64: dts: mediatek: Add missing cooling device properties for CPUs
-Date: Fri, 25 May 2018 11:10:04 +0530
-Message-ID: <49b1086c104b0ee22f6e992a0abb380de9320c09.1527225682.git.viresh.kumar@linaro.org>
-References: <cover.1527225682.git.viresh.kumar@linaro.org>
+From: Stu Hsieh <stu.hsieh@mediatek.com>
+Subject: Re: [PATCH v3 1/8] drm/mediatek: update dt-bindings for mt2712
+Date: Fri, 25 May 2018 17:20:58 +0800
+Message-ID: <1527240058.11190.0.camel@mtksdccf07>
+References: <1527215665-11937-1-git-send-email-stu.hsieh@mediatek.com>
+         <1527215665-11937-2-git-send-email-stu.hsieh@mediatek.com>
+         <1527218292.27165.2.camel@mtksdaap41>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1527225682.git.viresh.kumar@linaro.org>
-In-Reply-To: <cover.1527225682.git.viresh.kumar@linaro.org>
-References: <cover.1527225682.git.viresh.kumar@linaro.org>
+In-Reply-To: <1527218292.27165.2.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: arm@kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, Vincent Guittot <vincent.guittot@linaro.org>, ionela.voinescu@arm.com, Daniel Lezcano <daniel.lezcano@linaro.org>, chris.redpath@arm.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-The cooling device properties, like "#cooling-cells" and
-"dynamic-power-coefficient", should either be present for all the CPUs
-of a cluster or none. If these are present only for a subset of CPUs of
-a cluster then things will start falling apart as soon as the CPUs are
-brought online in a different order. For example, this will happen
-because the operating system looks for such properties in the CPU node
-it is trying to bring up, so that it can register a cooling device.
+Hi, CK:
 
-Add such missing properties.
+On Fri, 2018-05-25 at 11:18 +0800, CK Hu wrote:
+> Hi, Stu:
+> 
+> On Fri, 2018-05-25 at 10:34 +0800, stu.hsieh@mediatek.com wrote:
+> > From: Stu Hsieh <stu.hsieh@mediatek.com>
+> > 
+> > Update device tree binding documentation for the display subsystem for
+> > Mediatek MT2712 SoCs.
+> > 
+> 
+> I've acked v2 of this patch and v3 is the same as v2, so you should keep
+> my ack in commit message.
+> 
+> Regards,
+> CK
+OK
 
-Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
----
- arch/arm64/boot/dts/mediatek/mt7622.dtsi | 1 +
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 2 ++
- 2 files changed, 3 insertions(+)
+Regards,
+Stu
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-index 9213c966c224..d49fe125e770 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-@@ -89,6 +89,7 @@
- 				 <&apmixedsys CLK_APMIXED_MAIN_CORE_EN>;
- 			clock-names = "cpu", "intermediate";
- 			operating-points-v2 = <&cpu_opp_table>;
-+			#cooling-cells = <2>;
- 			enable-method = "psci";
- 			clock-frequency = <1300000000>;
- 		};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 94597e33c806..abd2f15a544b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -168,6 +168,7 @@
- 			reg = <0x001>;
- 			enable-method = "psci";
- 			cpu-idle-states = <&CPU_SLEEP_0>;
-+			#cooling-cells = <2>;
- 			clocks = <&infracfg CLK_INFRA_CA53SEL>,
- 				 <&apmixedsys CLK_APMIXED_MAINPLL>;
- 			clock-names = "cpu", "intermediate";
-@@ -193,6 +194,7 @@
- 			reg = <0x101>;
- 			enable-method = "psci";
- 			cpu-idle-states = <&CPU_SLEEP_0>;
-+			#cooling-cells = <2>;
- 			clocks = <&infracfg CLK_INFRA_CA57SEL>,
- 				 <&apmixedsys CLK_APMIXED_MAINPLL>;
- 			clock-names = "cpu", "intermediate";
--- 
-2.15.0.194.g9af6a3dea062
+> 
+> > Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+> > ---
+> >  Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> > index 383183a89164..8469de510001 100644
+> > --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> > +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> > @@ -40,7 +40,7 @@ Required properties (all function blocks):
+> >  	"mediatek,<chip>-dpi"        - DPI controller, see mediatek,dpi.txt
+> >  	"mediatek,<chip>-disp-mutex" - display mutex
+> >  	"mediatek,<chip>-disp-od"    - overdrive
+> > -  the supported chips are mt2701 and mt8173.
+> > +  the supported chips are mt2701, mt2712 and mt8173.
+> >  - reg: Physical base address and length of the function block register space
+> >  - interrupts: The interrupt signal from the function block (required, except for
+> >    merge and split function blocks).
+> 
+> 
