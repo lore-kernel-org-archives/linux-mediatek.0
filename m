@@ -1,54 +1,66 @@
-From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: Re: [PATCH v3 3/8] drm/mediatek: add connection from OD1 to RDMA1
-Date: Fri, 25 May 2018 17:36:53 +0800
-Message-ID: <1527241013.11190.11.camel@mtksdccf07>
-References: <1527215665-11937-1-git-send-email-stu.hsieh@mediatek.com>
- <1527215665-11937-4-git-send-email-stu.hsieh@mediatek.com>
- <1527218776.27165.5.camel@mtksdaap41>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1527218776.27165.5.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: [PATCH 00/15] arm: dts: Fix OPP and cooling device properties
+Date: Fri, 25 May 2018 16:01:46 +0530
+Message-ID: <cover.1527244200.git.viresh.kumar@linaro.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: arm@kernel.org, Andrew Lunn <andrew@lunn.ch>, Andy Gross <andy.gross@linaro.org>, =?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>, Chen-Yu Tsai <wens@csie.org>, David Brown <david.brown@linaro.org>, Fabio Estevam <fabio.estevam@nxp.com>, Gregory Clement <gregory.clement@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, Jason Cooper <jason@lakedaemon.net>, Jisheng Zhang <Jisheng.Zhang@synaptics.com>, Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>, Magnus Damm <magnus.damm@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Pengutronix Kernel Team <kernel@pengutronix.de>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, Vincent Guittot <vincent.guittot@linaro.org>, ionela.voinescu@arm.com, Daniel Lezcano <daniel.lezcano@linaro.org>, chris.redpath@arm.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-soc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIENLOgoKRm9yIHRoaXMgcGF0Y2gsIEkgd291bGQgbW92ZSBpdCBhZnRlciAiYWRkIGRkcCBj
-b21wb25lbnQgT0QxIgpBbmQgYWRkIHRoaXMgbGluZSAiI2RlZmluZSBPRDFfTU9VVF9FTl9SRE1B
-MSAgICAgICAgICAgICAgQklUKDE2KSIgZnJvbQp0aGUgcGF0aCAiQWRkIHN1cHBvcnQgZm9yIG1l
-ZGlhdGVrIFNPQyBNVDI3MTIiIHRvIHRoaXMgcGF0Y2gKClJlZ2FyZHMsClN0dQoKT24gRnJpLCAy
-MDE4LTA1LTI1IGF0IDExOjI2ICswODAwLCBDSyBIdSB3cm90ZToKPiBIaSwgU3R1Ogo+IAo+IE9u
-IEZyaSwgMjAxOC0wNS0yNSBhdCAxMDozNCArMDgwMCwgc3R1LmhzaWVoQG1lZGlhdGVrLmNvbSB3
-cm90ZToKPiA+IEZyb206IFN0dSBIc2llaCA8c3R1LmhzaWVoQG1lZGlhdGVrLmNvbT4KPiA+IAo+
-ID4gVGhpcyBwYXRjaCBhZGQgdGhlIGNvbm5lY3Rpb24gZnJvbSBPRDEgdG8gUkRNQTEgZm9yIGV4
-dCBwYXRoLgo+ID4gCj4gCj4gUmV2aWV3ZWQtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+
-Cj4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBTdHUgSHNpZWggPHN0dS5oc2llaEBtZWRpYXRlay5jb20+
-Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyB8IDMg
-KysrCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKQo+ID4gCj4gPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMgYi9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwo+ID4gaW5kZXggNDdmZmEyNDBiZDI1Li4wZjU2
-OGRkODUzZDggMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
-bV9kZHAuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMK
-PiA+IEBAIC0xNTEsNiArMTUxLDkgQEAgc3RhdGljIHVuc2lnbmVkIGludCBtdGtfZGRwX21vdXRf
-ZW4oZW51bSBtdGtfZGRwX2NvbXBfaWQgY3VyLAo+ID4gIAl9IGVsc2UgaWYgKGN1ciA9PSBERFBf
-Q09NUE9ORU5UX0dBTU1BICYmIG5leHQgPT0gRERQX0NPTVBPTkVOVF9SRE1BMSkgewo+ID4gIAkJ
-KmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9HQU1NQV9NT1VUX0VOOwo+ID4gIAkJdmFsdWUg
-PSBHQU1NQV9NT1VUX0VOX1JETUExOwo+ID4gKwl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9O
-RU5UX09EMSAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfUkRNQTEpIHsKPiA+ICsJCSphZGRyID0g
-RElTUF9SRUdfQ09ORklHX0RJU1BfT0RfTU9VVF9FTjsKPiA+ICsJCXZhbHVlID0gT0QxX01PVVRf
-RU5fUkRNQTE7Cj4gPiAgCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRNQTEgJiYg
-bmV4dCA9PSBERFBfQ09NUE9ORU5UX0RQSTApIHsKPiA+ICAJCSphZGRyID0gRElTUF9SRUdfQ09O
-RklHX0RJU1BfUkRNQTFfTU9VVF9FTjsKPiA+ICAJCXZhbHVlID0gUkRNQTFfTU9VVF9EUEkwOwo+
-IAo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+This fixes missing OPP and cooling device properties for CPUs for the
+ARM 32 bit platforms. This is build tested by the zero day testing
+infrastructure as well.
+
+Individual maintainers can pick the patches to their SoC trees or I will
+ask ARM SoC maintainers to pick them up later.
+
+--
+viresh
+
+Viresh Kumar (15):
+  arm: dts: armada: Fix "#cooling-cells" property's name
+  arm: dts: ls1021a: Add missing cooling device properties for CPUs
+  arm: dts: mediatek: Add missing cooling device properties for CPUs
+  arm: dts: rk322x: Add missing cooling device properties for CPUs
+  arm: dts: uniphier: Add missing cooling device properties for CPUs
+  arm: dts: sun: Add missing cooling device properties for CPUs
+  arm: dts: exynos: Add missing cooling device properties for CPUs
+  arm: dts: dra74x: Add missing cooling device properties for CPUs
+  arm: dts: omap: Add missing cooling device properties for CPUs
+  arm: dts: rk3288: Add missing cooling device properties for CPUs
+  arm: dts: berlin: Add missing OPP properties for CPUs
+  arm: dts: highbank: Add missing OPP properties for CPUs
+  arm: dts: r8a7743: Add missing OPP properties for CPUs
+  arm: dts: qcom: Add missing OPP properties for CPUs
+  arm: dts: imx: Add missing OPP properties for CPUs
+
+ arch/arm/boot/dts/armada-385-synology-ds116.dts |  2 +-
+ arch/arm/boot/dts/berlin2.dtsi                  | 10 +++
+ arch/arm/boot/dts/berlin2q.dtsi                 | 33 ++++++++++
+ arch/arm/boot/dts/dra74x.dtsi                   | 10 +++
+ arch/arm/boot/dts/exynos3250.dtsi               | 16 +++++
+ arch/arm/boot/dts/exynos4210.dtsi               | 13 ++++
+ arch/arm/boot/dts/exynos4412.dtsi               |  9 +++
+ arch/arm/boot/dts/exynos5250.dtsi               | 23 +++++++
+ arch/arm/boot/dts/highbank.dts                  | 30 +++++++++
+ arch/arm/boot/dts/imx6dl.dtsi                   | 23 +++++++
+ arch/arm/boot/dts/imx6q-cm-fx6.dts              | 66 +++++++++++++++++++
+ arch/arm/boot/dts/imx6q.dtsi                    | 87 ++++++++++++++++++++++++-
+ arch/arm/boot/dts/imx7d.dtsi                    |  5 ++
+ arch/arm/boot/dts/ls1021a.dtsi                  |  1 +
+ arch/arm/boot/dts/mt7623.dtsi                   |  3 +
+ arch/arm/boot/dts/omap5.dtsi                    | 14 ++++
+ arch/arm/boot/dts/qcom-ipq4019.dtsi             | 24 +++++++
+ arch/arm/boot/dts/r8a7743.dtsi                  |  9 +++
+ arch/arm/boot/dts/rk322x.dtsi                   |  3 +
+ arch/arm/boot/dts/rk3288.dtsi                   | 54 +++++++++++++++
+ arch/arm/boot/dts/sun6i-a31.dtsi                | 30 +++++++++
+ arch/arm/boot/dts/sun7i-a20.dtsi                | 13 ++++
+ arch/arm/boot/dts/sun8i-a33.dtsi                |  9 +++
+ arch/arm/boot/dts/sun8i-h3.dtsi                 |  9 +++
+ arch/arm/boot/dts/uniphier-pxs2.dtsi            |  3 +
+ 25 files changed, 495 insertions(+), 4 deletions(-)
+
+-- 
+2.15.0.194.g9af6a3dea062
