@@ -1,55 +1,47 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v3 8/8] drm/mediatek: add third ddp path
-Date: Fri, 25 May 2018 13:00:25 +0800
-Message-ID: <1527224425.27165.27.camel@mtksdaap41>
-References: <1527215665-11937-1-git-send-email-stu.hsieh@mediatek.com>
-         <1527215665-11937-9-git-send-email-stu.hsieh@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: [PATCH 0/6] arm64: dts: Add missing cooling device properties for CPUs
+Date: Fri, 25 May 2018 11:10:00 +0530
+Message-ID: <cover.1527225682.git.viresh.kumar@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1527215665-11937-9-git-send-email-stu.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: stu.hsieh@mediatek.com
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+To: arm@kernel.org, Carlo Caione <carlo@caione.org>, Catalin Marinas <catalin.marinas@arm.com>, Heiko Stuebner <heiko@sntech.de>, Kevin Hilman <khilman@baylibre.com>, Mark Rutland <mark.rutland@arm.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Wei Xu <xuwei5@hisilicon.com>, Will Deacon <will.deacon@arm.com>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, Vincent Guittot <vincent.guittot@linaro.org>, ionela.voinescu@arm.com, Daniel Lezcano <daniel.lezcano@linaro.org>, chris.redpath@arm.com, devicetree@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Stu:
+Hello,
 
-On Fri, 2018-05-25 at 10:34 +0800, stu.hsieh@mediatek.com wrote:
-> From: Stu Hsieh <stu.hsieh@mediatek.com>
-> 
-> This patch create third crtc by third ddp path
-> 
+This fixes missing cooling device properties for CPUs for the ARM64
+platforms. This is build tested by the zero day testing infrastructure
+as well.
 
-Apply this patch before the patch 'Add support for mediatek SOC MT2712'
-because this patch is necessary for mt2712.
+Individual maintainers can pick the patches to their SoC trees or I will
+ask ARM SoC maintainers to pick them up later.
 
-> Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index b32c4cc8d051..3a866e1d6af4 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -267,6 +267,11 @@ static int mtk_drm_kms_init(struct drm_device *drm)
->  	if (ret < 0)
->  		goto err_component_unbind;
->  
-> +	ret = mtk_drm_crtc_create(drm, private->data->third_path,
-> +				  private->data->third_len);
+--
+viresh
 
-I think you should prevent doing this for mt8173 and mt2701 because that
-two SoC has only two ddp path.
+Viresh Kumar (6):
+  arm64: dts: amlogic: Add missing cooling device properties for CPUs
+  arm64: dts: freescale: Add missing cooling device properties for CPUs
+  arm64: dts: hisilicon: Add missing cooling device properties for CPUs
+  arm64: dts: mediatek: Add missing cooling device properties for CPUs
+  arm64: dts: rockchip: Add missing cooling device properties for CPUs
+  arm64: dts: socionext: Add missing cooling device properties for CPUs
 
-Regards,
-CK
+ .../boot/dts/amlogic/meson-gxm-khadas-vim2.dts     | 24 ++++++++++++++++++++++
+ arch/arm64/boot/dts/freescale/fsl-ls1043a.dtsi     |  5 ++++-
+ arch/arm64/boot/dts/freescale/fsl-ls1046a.dtsi     |  3 +++
+ arch/arm64/boot/dts/freescale/fsl-ls1088a.dtsi     |  6 ++++++
+ arch/arm64/boot/dts/freescale/fsl-ls2080a.dtsi     |  4 ++++
+ arch/arm64/boot/dts/freescale/fsl-ls2088a.dtsi     |  4 ++++
+ arch/arm64/boot/dts/hisilicon/hi6220.dtsi          | 16 ++++++++++++++-
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi           |  1 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  2 ++
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  3 +++
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi           | 12 +++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  8 ++++++--
+ arch/arm64/boot/dts/socionext/uniphier-ld20.dtsi   |  2 ++
+ 13 files changed, 86 insertions(+), 4 deletions(-)
 
-> +	if (ret < 0)
-> +		goto err_component_unbind;
-> +
->  	/* Use OVL device for all DMA memory allocations */
->  	np = private->comp_node[private->data->main_path[0]] ?:
->  	     private->comp_node[private->data->ext_path[0]];
+-- 
+2.15.0.194.g9af6a3dea062
