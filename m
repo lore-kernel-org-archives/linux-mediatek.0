@@ -1,60 +1,46 @@
-From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: Re: [PATCH v3 1/8] drm/mediatek: update dt-bindings for mt2712
-Date: Fri, 25 May 2018 17:20:58 +0800
-Message-ID: <1527240058.11190.0.camel@mtksdccf07>
-References: <1527215665-11937-1-git-send-email-stu.hsieh@mediatek.com>
-         <1527215665-11937-2-git-send-email-stu.hsieh@mediatek.com>
-         <1527218292.27165.2.camel@mtksdaap41>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH] usb: gadget: composite: fix delayed_status race condition when set_interface
+Date: Fri, 25 May 2018 17:24:57 +0800
+Message-ID: <75dc545f259a68d36d49c0c663d5cac19bb61a24.1527240183.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1527218292.27165.2.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, CK:
+It happens when enable debug log, if set_alt() returns
+USB_GADGET_DELAYED_STATUS and usb_composite_setup_continue()
+is called before increasing count of @delayed_status,
+so fix it by using spinlock of @cdev->lock.
 
-On Fri, 2018-05-25 at 11:18 +0800, CK Hu wrote:
-> Hi, Stu:
-> 
-> On Fri, 2018-05-25 at 10:34 +0800, stu.hsieh@mediatek.com wrote:
-> > From: Stu Hsieh <stu.hsieh@mediatek.com>
-> > 
-> > Update device tree binding documentation for the display subsystem for
-> > Mediatek MT2712 SoCs.
-> > 
-> 
-> I've acked v2 of this patch and v3 is the same as v2, so you should keep
-> my ack in commit message.
-> 
-> Regards,
-> CK
-OK
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Tested-by: Jay Hsu <shih-chieh.hsu@mediatek.com>
+---
+ drivers/usb/gadget/composite.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Regards,
-Stu
-
-> 
-> > Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
-> > ---
-> >  Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> > index 383183a89164..8469de510001 100644
-> > --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> > +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> > @@ -40,7 +40,7 @@ Required properties (all function blocks):
-> >  	"mediatek,<chip>-dpi"        - DPI controller, see mediatek,dpi.txt
-> >  	"mediatek,<chip>-disp-mutex" - display mutex
-> >  	"mediatek,<chip>-disp-od"    - overdrive
-> > -  the supported chips are mt2701 and mt8173.
-> > +  the supported chips are mt2701, mt2712 and mt8173.
-> >  - reg: Physical base address and length of the function block register space
-> >  - interrupts: The interrupt signal from the function block (required, except for
-> >    merge and split function blocks).
-> 
-> 
+diff --git a/drivers/usb/gadget/composite.c b/drivers/usb/gadget/composite.c
+index f242c2b..d2fa071 100644
+--- a/drivers/usb/gadget/composite.c
++++ b/drivers/usb/gadget/composite.c
+@@ -1719,6 +1719,8 @@ static int fill_ext_prop(struct usb_configuration *c, int interface, u8 *buf)
+ 		 */
+ 		if (w_value && !f->get_alt)
+ 			break;
++
++		spin_lock(&cdev->lock);
+ 		value = f->set_alt(f, w_index, w_value);
+ 		if (value == USB_GADGET_DELAYED_STATUS) {
+ 			DBG(cdev,
+@@ -1728,6 +1730,7 @@ static int fill_ext_prop(struct usb_configuration *c, int interface, u8 *buf)
+ 			DBG(cdev, "delayed_status count %d\n",
+ 					cdev->delayed_status);
+ 		}
++		spin_unlock(&cdev->lock);
+ 		break;
+ 	case USB_REQ_GET_INTERFACE:
+ 		if (ctrl->bRequestType != (USB_DIR_IN|USB_RECIP_INTERFACE))
+-- 
+1.9.1
