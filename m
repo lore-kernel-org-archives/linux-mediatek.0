@@ -1,34 +1,44 @@
-From: Colin King <colin.king@canonical.com>
-Subject: [PATCH] media: mtk-vpu:  fix spelling mistake: "Prosessor" -> "Processor"
-Date: Sat, 26 May 2018 14:45:07 +0100
-Message-ID: <20180526134507.28919-1-colin.king@canonical.com>
+From: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Subject: [PATCH v2 0/2] ASoC: dpcm: fix BE dai not hw_free and
+	shutdown
+Date: Mon, 28 May 2018 10:18:17 +0800
+Message-ID: <1527473899-23079-1-git-send-email-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: broonie@kernel.org
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, kaichieh.chuang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Colin Ian King <colin.king@canonical.com>
+These two patch is to solve problem found
+in the case of one BE is used by multiple FE.
 
-Trivial fix to spelling mistake in module description text.
+The error log "ASoC: Unable to apply rate constraint"
+will happen when be_substream->runtime is use after free.
+Which is due to BE not being hw_free/shutdown correctly.
 
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/media/platform/mtk-vpu/mtk_vpu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Also to resolve fe_substream->runtime is not
+constrained by BE dai symmetry property.
 
-diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-index 1ff6a93262b7..f8d35e3ac1dc 100644
---- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
-+++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-@@ -960,4 +960,4 @@ static struct platform_driver mtk_vpu_driver = {
- module_platform_driver(mtk_vpu_driver);
- 
- MODULE_LICENSE("GPL v2");
--MODULE_DESCRIPTION("Mediatek Video Prosessor Unit driver");
-+MODULE_DESCRIPTION("Mediatek Video Processor Unit driver");
+v2:
+    remove flag condition
+
+KaiChieh Chuang (2):
+  ASoC: dpcm: fix BE dai not hw_free and shutdown
+  ASoC: dpcm: symmetry constraint on FE substream
+
+ sound/soc/soc-pcm.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
 -- 
-2.17.0
+1.9.1
