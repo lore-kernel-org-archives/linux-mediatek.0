@@ -1,148 +1,30 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v1 7/7] drm/mediatek: config component output by device
- node port
-Date: Mon, 28 May 2018 16:38:30 +0800
-Message-ID: <1527496710.396.11.camel@mtksdaap41>
-References: <20180514075243.5442-1-bibby.hsieh@mediatek.com>
-         <20180514075243.5442-8-bibby.hsieh@mediatek.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: About the DRM Mediatek patches
+Date: Mon, 28 May 2018 16:43:24 +0800
+Message-ID: <1527497004.6333.8.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180514075243.5442-8-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: ulrich.hecht+renesas@gmail.com
+Cc: kernel@pengutronix.de, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Bibby:
-
-On Mon, 2018-05-14 at 15:52 +0800, Bibby Hsieh wrote:
-> We can select output component by device node port.
-> Main path default output component is DSI.
-> External path default output component is DPI.
-
-Config the HW routine by device tree is a good idea. But I would like
-this to be more general. My idea is:
-1. Each component has one or two endpoint in device tree. The first and
-the last has one, and the others has two.
-2. Remove mtxxxx_mtk_ddp_main[] and mtxxxx_mtk_ddp_ext[], use multiple
-link list (One display path has one link list, two display path has two
-link list) to generate it by parsing device tree in mtk_drm_probe().
-
-Stu has planed to do this in future. You could wait him or you could do
-this first.
-
-Regards,
-CK
-
-> 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 37 ++++++++++++++++++++++++++++++----
->  drivers/gpu/drm/mediatek/mtk_drm_drv.h |  4 ++--
->  2 files changed, 35 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index f4fb86ab7b8d..05333769d862 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -24,6 +24,8 @@
->  #include <linux/of_address.h>
->  #include <linux/of_platform.h>
->  #include <linux/pm_runtime.h>
-> +#include <linux/of.h>
-> +#include <linux/of_graph.h>
->  
->  #include "mtk_drm_crtc.h"
->  #include "mtk_drm_ddp.h"
-> @@ -133,7 +135,7 @@ static const struct drm_mode_config_funcs mtk_drm_mode_config_funcs = {
->  	.atomic_commit = mtk_atomic_commit,
->  };
->  
-> -static const enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
-> +static enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
->  	DDP_COMPONENT_OVL0,
->  	DDP_COMPONENT_RDMA0,
->  	DDP_COMPONENT_COLOR0,
-> @@ -141,12 +143,12 @@ static const enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
->  	DDP_COMPONENT_DSI0,
->  };
->  
-> -static const enum mtk_ddp_comp_id mt2701_mtk_ddp_ext[] = {
-> +static enum mtk_ddp_comp_id mt2701_mtk_ddp_ext[] = {
->  	DDP_COMPONENT_RDMA1,
->  	DDP_COMPONENT_DPI0,
->  };
->  
-> -static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
-> +static enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
->  	DDP_COMPONENT_OVL0,
->  	DDP_COMPONENT_COLOR0,
->  	DDP_COMPONENT_AAL,
-> @@ -157,7 +159,7 @@ static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
->  	DDP_COMPONENT_PWM0,
->  };
->  
-> -static const enum mtk_ddp_comp_id mt8173_mtk_ddp_ext[] = {
-> +static enum mtk_ddp_comp_id mt8173_mtk_ddp_ext[] = {
->  	DDP_COMPONENT_OVL1,
->  	DDP_COMPONENT_COLOR1,
->  	DDP_COMPONENT_GAMMA,
-> @@ -411,6 +413,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
->  
->  	/* Iterate over sibling DISP function blocks */
->  	for_each_child_of_node(dev->of_node->parent, node) {
-> +		struct device_node *port, *ep, *remote;
->  		const struct of_device_id *of_id;
->  		enum mtk_ddp_comp_type comp_type;
->  		int comp_id;
-> @@ -470,6 +473,32 @@ static int mtk_drm_probe(struct platform_device *pdev)
->  
->  			private->ddp_comp[comp_id] = comp;
->  		}
-> +
-> +		if (comp_type != MTK_DSI && comp_type != MTK_DPI) {
-> +			port = of_graph_get_port_by_id(node, 0);
-> +			if (!port)
-> +				continue;
-> +			ep = of_get_child_by_name(port, "endpoint");
-> +			of_node_put(port);
-> +			if (!ep)
-> +				continue;
-> +			remote = of_graph_get_remote_port_parent(ep);
-> +			of_node_put(ep);
-> +			if (!remote)
-> +				continue;
-> +			of_id = of_match_node(mtk_ddp_comp_dt_ids, remote);
-> +			if (!of_id)
-> +				continue;
-> +			comp_type = (enum mtk_ddp_comp_type)of_id->data;
-> +			for (i = 0; i < private->data->main_len - 1; i++)
-> +				if (private->data->main_path[i] == comp_id)
-> +					private->data->main_path[i + 1] =
-> +					mtk_ddp_comp_get_id(node, comp_type);
-> +			for (i = 0; i < private->data->ext_len - 1; i++)
-> +				if (private->data->ext_path[i] == comp_id)
-> +					private->data->ext_path[i + 1] =
-> +					mtk_ddp_comp_get_id(node, comp_type);
-> +		}
->  	}
->  
->  	if (!private->mutex_node) {
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> index c3378c452c0a..2bcba8eb06f4 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> @@ -29,9 +29,9 @@ struct drm_property;
->  struct regmap;
->  
->  struct mtk_mmsys_driver_data {
-> -	const enum mtk_ddp_comp_id *main_path;
-> +	enum mtk_ddp_comp_id *main_path;
->  	unsigned int main_len;
-> -	const enum mtk_ddp_comp_id *ext_path;
-> +	enum mtk_ddp_comp_id *ext_path;
->  	unsigned int ext_len;
->  	bool shadow_register;
->  };
+SGksIFVscmljaCwKCkkgZm91bmQgdHdvIERSTS1NZWRpYXRlayByZWxhdGVkIHBhdGNoZXMgYXMg
+YmVsb3cgZnJvbSB5b3UuCmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTAwMDkw
+MzkvCmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTAwMDkwNDkvCgpEaWQgeW91
+IGhhdmUgYW55IHBsYW5zIHRvIHNlbmQgdGhlIG5ldyB2ZXJzaW9uIChUaGVyZSBhcmUgc29tZSBj
+b21tZW50cwpmcm9tIFBoaWxpcHApPyBJZiBub3QsIG1heSBJIHNlbmQgdGhlIG5ldyB2ZXJzaW9u
+PwoKVGhhbmtzLgoKLS0gCkJpYmJ5CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcmktZGV2ZWwK
