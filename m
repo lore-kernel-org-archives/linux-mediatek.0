@@ -1,138 +1,247 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v4 9/9] drm/mediatek: Add support for mediatek SOC MT2712
-Date: Mon, 28 May 2018 15:53:34 +0800
-Message-ID: <1527494014.24367.14.camel@mtksdaap41>
-References: <1527489507-24453-1-git-send-email-stu.hsieh@mediatek.com>
- <1527489507-24453-10-git-send-email-stu.hsieh@mediatek.com>
+Subject: Re: [PATCH v1 1/7] drm/mediatek: move dpi private data to device
+Date: Mon, 28 May 2018 16:25:13 +0800
+Message-ID: <1527495913.396.3.camel@mtksdaap41>
+References: <20180514075243.5442-1-bibby.hsieh@mediatek.com>
+         <20180514075243.5442-2-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1527489507-24453-10-git-send-email-stu.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180514075243.5442-2-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFN0dToKClR3byBpbmxpbmUgY29tbWVudC4KCk9uIE1vbiwgMjAxOC0wNS0yOCBhdCAxNDoz
-OCArMDgwMCwgU3R1IEhzaWVoIHdyb3RlOgo+IFRoaXMgcGF0Y2ggYWRkIHN1cHBvcnQgZm9yIHRo
-ZSBNZWRpYXRlayBNVDI3MTIgRElTUCBzdWJzeXN0ZW0uCj4gVGhlcmUgYXJlIHR3byBPVkwgZW5n
-aW5lIGFuZCB0aHJlZSBkaXNwIG91dHB1dCBpbiBNVDI3MTIuCj4gCj4gU2lnbmVkLW9mZi1ieTog
-U3R1IEhzaWVoIDxzdHUuaHNpZWhAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyB8IDM5ICsrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgfCAzOCAr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiAgMiBmaWxlcyBjaGFuZ2VkLCA3NyBp
-bnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX2RkcC5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiBp
-bmRleCA4YmZjMGRlYmQyYzIuLjNiMjJiNDhhNjAyMiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZHJtX2RkcC5jCj4gQEAgLTYxLDYgKzYxLDI0IEBACj4gICNkZWZpbmUgTVQ4MTcz
-X01VVEVYX01PRF9ESVNQX1BXTTEJCTI0Cj4gICNkZWZpbmUgTVQ4MTczX01VVEVYX01PRF9ESVNQ
-X09ECQkyNQo+ICAKPiArI2RlZmluZSBNVDI3MTJfTVVURVhfTU9EX0RJU1BfUFdNMgkJMTAKPiAr
-I2RlZmluZSBNVDI3MTJfTVVURVhfTU9EX0RJU1BfT1ZMMAkJMTEKPiArI2RlZmluZSBNVDI3MTJf
-TVVURVhfTU9EX0RJU1BfT1ZMMQkJMTIKPiArI2RlZmluZSBNVDI3MTJfTVVURVhfTU9EX0RJU1Bf
-UkRNQTAJCTEzCj4gKyNkZWZpbmUgTVQyNzEyX01VVEVYX01PRF9ESVNQX1JETUExCQkxNAo+ICsj
-ZGVmaW5lIE1UMjcxMl9NVVRFWF9NT0RfRElTUF9SRE1BMgkJMTUKPiArI2RlZmluZSBNVDI3MTJf
-TVVURVhfTU9EX0RJU1BfV0RNQTAJCTE2Cj4gKyNkZWZpbmUgTVQyNzEyX01VVEVYX01PRF9ESVNQ
-X1dETUExCQkxNwo+ICsjZGVmaW5lIE1UMjcxMl9NVVRFWF9NT0RfRElTUF9DT0xPUjAJCTE4Cj4g
-KyNkZWZpbmUgTVQyNzEyX01VVEVYX01PRF9ESVNQX0NPTE9SMQkJMTkKPiArI2RlZmluZSBNVDI3
-MTJfTVVURVhfTU9EX0RJU1BfQUFMMAkJMjAKPiArI2RlZmluZSBNVDI3MTJfTVVURVhfTU9EX0RJ
-U1BfVUZPRQkJMjIKPiArI2RlZmluZSBNVDI3MTJfTVVURVhfTU9EX0RJU1BfUFdNMAkJMjMKPiAr
-I2RlZmluZSBNVDI3MTJfTVVURVhfTU9EX0RJU1BfUFdNMQkJMjQKPiArI2RlZmluZSBNVDI3MTJf
-TVVURVhfTU9EX0RJU1BfT0QwCQkyNQo+ICsjZGVmaW5lIE1UMjcxMl9NVVRFWF9NT0QyX0RJU1Bf
-QUFMMQkJMzMKPiArI2RlZmluZSBNVDI3MTJfTVVURVhfTU9EMl9ESVNQX09EMQkJMzQKPiArCj4g
-ICNkZWZpbmUgTVQyNzAxX01VVEVYX01PRF9ESVNQX09WTAkJMwo+ICAjZGVmaW5lIE1UMjcwMV9N
-VVRFWF9NT0RfRElTUF9XRE1BCQk2Cj4gICNkZWZpbmUgTVQyNzAxX01VVEVYX01PRF9ESVNQX0NP
-TE9SCQk3Cj4gQEAgLTExMCw2ICsxMjgsMjYgQEAgc3RhdGljIGNvbnN0IHVuc2lnbmVkIGludCBt
-dDI3MDFfbXV0ZXhfbW9kW0REUF9DT01QT05FTlRfSURfTUFYXSA9IHsKPiAgCVtERFBfQ09NUE9O
-RU5UX1dETUEwXSA9IE1UMjcwMV9NVVRFWF9NT0RfRElTUF9XRE1BLAo+ICB9Owo+ICAKPiArc3Rh
-dGljIGNvbnN0IHVuc2lnbmVkIGludCBtdDI3MTJfbXV0ZXhfbW9kW0REUF9DT01QT05FTlRfSURf
-TUFYXSA9IHsKPiArCVtERFBfQ09NUE9ORU5UX0FBTDBdID0gTVQyNzEyX01VVEVYX01PRF9ESVNQ
-X0FBTDAsCj4gKwlbRERQX0NPTVBPTkVOVF9BQUwxXSA9IE1UMjcxMl9NVVRFWF9NT0QyX0RJU1Bf
-QUFMMSwKPiArCVtERFBfQ09NUE9ORU5UX0NPTE9SMF0gPSBNVDI3MTJfTVVURVhfTU9EX0RJU1Bf
-Q09MT1IwLAo+ICsJW0REUF9DT01QT05FTlRfQ09MT1IxXSA9IE1UMjcxMl9NVVRFWF9NT0RfRElT
-UF9DT0xPUjEsCj4gKwlbRERQX0NPTVBPTkVOVF9PRDBdID0gTVQyNzEyX01VVEVYX01PRF9ESVNQ
-X09EMCwKPiArCVtERFBfQ09NUE9ORU5UX09EMV0gPSBNVDI3MTJfTVVURVhfTU9EMl9ESVNQX09E
-MSwKPiArCVtERFBfQ09NUE9ORU5UX09WTDBdID0gTVQyNzEyX01VVEVYX01PRF9ESVNQX09WTDAs
-Cj4gKwlbRERQX0NPTVBPTkVOVF9PVkwxXSA9IE1UMjcxMl9NVVRFWF9NT0RfRElTUF9PVkwxLAo+
-ICsJW0REUF9DT01QT05FTlRfUFdNMF0gPSBNVDI3MTJfTVVURVhfTU9EX0RJU1BfUFdNMCwKPiAr
-CVtERFBfQ09NUE9ORU5UX1BXTTFdID0gTVQyNzEyX01VVEVYX01PRF9ESVNQX1BXTTEsCj4gKwlb
-RERQX0NPTVBPTkVOVF9QV00yXSA9IE1UMjcxMl9NVVRFWF9NT0RfRElTUF9QV00yLAo+ICsJW0RE
-UF9DT01QT05FTlRfUkRNQTBdID0gTVQyNzEyX01VVEVYX01PRF9ESVNQX1JETUEwLAo+ICsJW0RE
-UF9DT01QT05FTlRfUkRNQTFdID0gTVQyNzEyX01VVEVYX01PRF9ESVNQX1JETUExLAo+ICsJW0RE
-UF9DT01QT05FTlRfUkRNQTJdID0gTVQyNzEyX01VVEVYX01PRF9ESVNQX1JETUEyLAo+ICsJW0RE
-UF9DT01QT05FTlRfVUZPRV0gPSBNVDI3MTJfTVVURVhfTU9EX0RJU1BfVUZPRSwKPiArCVtERFBf
-Q09NUE9ORU5UX1dETUEwXSA9IE1UMjcxMl9NVVRFWF9NT0RfRElTUF9XRE1BMCwKPiArCVtERFBf
-Q09NUE9ORU5UX1dETUExXSA9IE1UMjcxMl9NVVRFWF9NT0RfRElTUF9XRE1BMSwKPiArfTsKPiAr
-Cj4gIHN0YXRpYyBjb25zdCB1bnNpZ25lZCBpbnQgbXQ4MTczX211dGV4X21vZFtERFBfQ09NUE9O
-RU5UX0lEX01BWF0gPSB7Cj4gIAlbRERQX0NPTVBPTkVOVF9BQUwwXSA9IE1UODE3M19NVVRFWF9N
-T0RfRElTUF9BQUwsCj4gIAlbRERQX0NPTVBPTkVOVF9DT0xPUjBdID0gTVQ4MTczX01VVEVYX01P
-RF9ESVNQX0NPTE9SMCwKPiBAQCAtNDMwLDYgKzQ2OCw3IEBAIHN0YXRpYyBpbnQgbXRrX2RkcF9y
-ZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCj4gIHN0YXRpYyBjb25zdCBz
-dHJ1Y3Qgb2ZfZGV2aWNlX2lkIGRkcF9kcml2ZXJfZHRfbWF0Y2hbXSA9IHsKPiAgCXsgLmNvbXBh
-dGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWRpc3AtbXV0ZXgiLCAuZGF0YSA9IG10MjcwMV9tdXRl
-eF9tb2R9LAo+ICsJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MTItZGlzcC1tdXRleCIs
-IC5kYXRhID0gbXQyNzEyX211dGV4X21vZH0sCj4gIAl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVr
-LG10ODE3My1kaXNwLW11dGV4IiwgLmRhdGEgPSBtdDgxNzNfbXV0ZXhfbW9kfSwKPiAgCXt9LAo+
-ICB9Owo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYu
-YyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gaW5kZXggM2QyNzlh
-Mjk5MzgzLi4zYTg2NmUxZDZhZjQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kcm1fZHJ2LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
-bV9kcnYuYwo+IEBAIC0xNDYsNiArMTQ2LDMyIEBAIHN0YXRpYyBjb25zdCBlbnVtIG10a19kZHBf
-Y29tcF9pZCBtdDI3MDFfbXRrX2RkcF9leHRbXSA9IHsKPiAgCUREUF9DT01QT05FTlRfRFBJMCwK
-PiAgfTsKPiAgCj4gK3N0YXRpYyBjb25zdCBlbnVtIG10a19kZHBfY29tcF9pZCBtdDI3MTJfbXRr
-X2RkcF9tYWluW10gPSB7Cj4gKwlERFBfQ09NUE9ORU5UX09WTDAsCj4gKwlERFBfQ09NUE9ORU5U
-X0NPTE9SMCwKPiArCUREUF9DT01QT05FTlRfQUFMMCwKPiArCUREUF9DT01QT05FTlRfT0QwLAo+
-ICsJRERQX0NPTVBPTkVOVF9SRE1BMCwKPiArCUREUF9DT01QT05FTlRfRFBJMCwKPiArCUREUF9D
-T01QT05FTlRfUFdNMCwKPiArfTsKPiArCj4gK3N0YXRpYyBjb25zdCBlbnVtIG10a19kZHBfY29t
-cF9pZCBtdDI3MTJfbXRrX2RkcF9leHRbXSA9IHsKPiArCUREUF9DT01QT05FTlRfT1ZMMSwKPiAr
-CUREUF9DT01QT05FTlRfQ09MT1IxLAo+ICsJRERQX0NPTVBPTkVOVF9BQUwxLAo+ICsJRERQX0NP
-TVBPTkVOVF9PRDEsCj4gKwlERFBfQ09NUE9ORU5UX1JETUExLAo+ICsJRERQX0NPTVBPTkVOVF9E
-UEkxLAoKV2hlcmUgZG8geW91IGRlZmluZSBERFBfQ09NUE9ORU5UX0RQSTE/Cgo+ICsJRERQX0NP
-TVBPTkVOVF9QV00xLAo+ICt9Owo+ICsKPiArc3RhdGljIGNvbnN0IGVudW0gbXRrX2RkcF9jb21w
-X2lkIG10MjcxMl9tdGtfZGRwX3RoaXJkW10gPSB7Cj4gKwlERFBfQ09NUE9ORU5UX1JETUEyLAo+
-ICsJRERQX0NPTVBPTkVOVF9EU0kyLAoKV2hlcmUgZG8geW91IGRlZmluZSBERFBfQ09NUE9ORU5U
-X0RTSTI/CgpSZWdhcmRzLApDSwoKPiArCUREUF9DT01QT05FTlRfUFdNMiwKPiArfTsKPiArCj4g
-IHN0YXRpYyBjb25zdCBlbnVtIG10a19kZHBfY29tcF9pZCBtdDgxNzNfbXRrX2RkcF9tYWluW10g
-PSB7Cj4gIAlERFBfQ09NUE9ORU5UX09WTDAsCj4gIAlERFBfQ09NUE9ORU5UX0NPTE9SMCwKPiBA
-QCAtMTczLDYgKzE5OSwxNSBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG10a19tbXN5c19kcml2ZXJf
-ZGF0YSBtdDI3MDFfbW1zeXNfZHJpdmVyX2RhdGEgPSB7Cj4gIAkuc2hhZG93X3JlZ2lzdGVyID0g
-dHJ1ZSwKPiAgfTsKPiAgCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX21tc3lzX2RyaXZlcl9k
-YXRhIG10MjcxMl9tbXN5c19kcml2ZXJfZGF0YSA9IHsKPiArCS5tYWluX3BhdGggPSBtdDI3MTJf
-bXRrX2RkcF9tYWluLAo+ICsJLm1haW5fbGVuID0gQVJSQVlfU0laRShtdDI3MTJfbXRrX2RkcF9t
-YWluKSwKPiArCS5leHRfcGF0aCA9IG10MjcxMl9tdGtfZGRwX2V4dCwKPiArCS5leHRfbGVuID0g
-QVJSQVlfU0laRShtdDI3MTJfbXRrX2RkcF9leHQpLAo+ICsJLnRoaXJkX3BhdGggPSBtdDI3MTJf
-bXRrX2RkcF90aGlyZCwKPiArCS50aGlyZF9sZW4gPSBBUlJBWV9TSVpFKG10MjcxMl9tdGtfZGRw
-X3RoaXJkKSwKPiArfTsKPiArCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX21tc3lzX2RyaXZl
-cl9kYXRhIG10ODE3M19tbXN5c19kcml2ZXJfZGF0YSA9IHsKPiAgCS5tYWluX3BhdGggPSBtdDgx
-NzNfbXRrX2RkcF9tYWluLAo+ICAJLm1haW5fbGVuID0gQVJSQVlfU0laRShtdDgxNzNfbXRrX2Rk
-cF9tYWluKSwKPiBAQCAtMzc5LDYgKzQxNCw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2
-aWNlX2lkIG10a19kZHBfY29tcF9kdF9pZHNbXSA9IHsKPiAgCXsgLmNvbXBhdGlibGUgPSAibWVk
-aWF0ZWssbXQ4MTczLWRzaSIsICAgICAgICAuZGF0YSA9ICh2b2lkICopTVRLX0RTSSB9LAo+ICAJ
-eyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZHBpIiwgICAgICAgIC5kYXRhID0gKHZv
-aWQgKilNVEtfRFBJIH0sCj4gIAl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10MjcwMS1kaXNw
-LW11dGV4IiwgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQX01VVEVYIH0sCj4gKwl7IC5jb21wYXRp
-YmxlID0gIm1lZGlhdGVrLG10MjcxMi1kaXNwLW11dGV4IiwgLmRhdGEgPSAodm9pZCAqKU1US19E
-SVNQX01VVEVYIH0sCj4gIAl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kaXNwLW11
-dGV4IiwgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQX01VVEVYIH0sCj4gIAl7IC5jb21wYXRpYmxl
-ID0gIm1lZGlhdGVrLG10MjcwMS1kaXNwLXB3bSIsICAgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQ
-X0JMUyB9LAo+ICAJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZGlzcC1wd20iLCAg
-IC5kYXRhID0gKHZvaWQgKilNVEtfRElTUF9QV00gfSwKPiBAQCAtNTU3LDYgKzU5Myw4IEBAIHN0
-YXRpYyBTSU1QTEVfREVWX1BNX09QUyhtdGtfZHJtX3BtX29wcywgbXRrX2RybV9zeXNfc3VzcGVu
-ZCwKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXRrX2RybV9vZl9pZHNbXSA9
-IHsKPiAgCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLW1tc3lzIiwKPiAgCSAgLmRh
-dGEgPSAmbXQyNzAxX21tc3lzX2RyaXZlcl9kYXRhfSwKPiArCXsgLmNvbXBhdGlibGUgPSAibWVk
-aWF0ZWssbXQyNzEyLW1tc3lzIiwKPiArCSAgLmRhdGEgPSAmbXQyNzEyX21tc3lzX2RyaXZlcl9k
-YXRhfSwKPiAgCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLW1tc3lzIiwKPiAgCSAg
-LmRhdGEgPSAmbXQ4MTczX21tc3lzX2RyaXZlcl9kYXRhfSwKPiAgCXsgfQoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
-c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNr
-dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi, Bibby:
+
+Some inline comment.
+
+On Mon, 2018-05-14 at 15:52 +0800, Bibby Hsieh wrote:
+> From: chunhui dai <chunhui.dai@mediatek.com>
+> 
+> move clock factor and edge enable setting to private data.
+> 
+
+I think this modification is to separate different part of dpi driver
+for different chip.
+Describe more for this.
+
+
+> Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dpi.c      | 82 ++++++++++++++++++++++++++-------
+>  drivers/gpu/drm/mediatek/mtk_dpi_regs.h |  2 +-
+>  2 files changed, 66 insertions(+), 18 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> index e80a603e5fb0..993dc44368bd 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -71,11 +71,13 @@ struct mtk_dpi {
+>  	struct clk *tvd_clk;
+>  	int irq;
+>  	struct drm_display_mode mode;
+> +	const struct mtk_dpi_conf *conf;
+>  	enum mtk_dpi_out_color_format color_format;
+>  	enum mtk_dpi_out_yc_map yc_map;
+>  	enum mtk_dpi_out_bit_num bit_num;
+>  	enum mtk_dpi_out_channel_swap channel_swap;
+>  	bool power_sta;
+> +	int refcount;
+>  	u8 power_ctl;
+>  };
+>  
+> @@ -115,6 +117,12 @@ struct mtk_dpi_yc_limit {
+>  	u16 c_bottom;
+>  };
+>  
+> +struct mtk_dpi_conf {
+> +	unsigned int (*cal_factor)(int clock);
+> +	const u32 reg_h_fre_con;
+> +	bool edge_sel_en;
+> +};
+> +
+>  static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
+>  {
+>  	u32 tmp = readl(dpi->regs + offset) & ~mask;
+> @@ -340,7 +348,13 @@ static void mtk_dpi_config_swap_input(struct mtk_dpi *dpi, bool enable)
+>  
+>  static void mtk_dpi_config_2n_h_fre(struct mtk_dpi *dpi)
+>  {
+> -	mtk_dpi_mask(dpi, DPI_H_FRE_CON, H_FRE_2N, H_FRE_2N);
+> +	mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, H_FRE_2N, H_FRE_2N);
+> +}
+> +
+> +static void mtk_dpi_config_disable_edge(struct mtk_dpi *dpi)
+> +{
+> +	if (dpi->conf->edge_sel_en)
+> +		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0, EDGE_SEL_EN);
+>  }
+>  
+>  static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+> @@ -368,6 +382,12 @@ static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+>  
+>  static void mtk_dpi_power_off(struct mtk_dpi *dpi, enum mtk_dpi_power_ctl pctl)
+>  {
+> +	if (WARN_ON(dpi->refcount == 0))
+> +		return;
+> +
+> +	if (--dpi->refcount != 0)
+> +		return;
+> +
+
+I think 'refcount' should be moved to an independent patch.
+
+>  	dpi->power_ctl &= ~pctl;
+>  
+>  	if ((dpi->power_ctl & DPI_POWER_START) ||
+> @@ -385,16 +405,19 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi, enum mtk_dpi_power_ctl pctl)
+>  
+>  static int mtk_dpi_power_on(struct mtk_dpi *dpi, enum mtk_dpi_power_ctl pctl)
+>  {
+> -	int ret;
+> +	int ret = 0;
+> +
+> +	if (++dpi->refcount != 1)
+> +		return 0;
+>  
+>  	dpi->power_ctl |= pctl;
+>  
+>  	if (!(dpi->power_ctl & DPI_POWER_START) &&
+>  	    !(dpi->power_ctl & DPI_POWER_ENABLE))
+> -		return 0;
+> +		goto err_refcount;
+>  
+>  	if (dpi->power_sta)
+> -		return 0;
+> +		goto err_refcount;
+>  
+>  	ret = clk_prepare_enable(dpi->engine_clk);
+>  	if (ret) {
+> @@ -416,6 +439,8 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi, enum mtk_dpi_power_ctl pctl)
+>  	clk_disable_unprepare(dpi->engine_clk);
+>  err_eng:
+>  	dpi->power_ctl &= ~pctl;
+> +err_refcount:
+> +	dpi->refcount--;
+>  	return ret;
+>  }
+>  
+> @@ -433,16 +458,13 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+>  	unsigned long pll_rate;
+>  	unsigned int factor;
+>  
+> +	if (!dpi) {
+> +		dev_err(dpi->dev, "invalid argument\n");
+> +		return -EINVAL;
+> +	}
+>  	/* let pll_rate can fix the valid range of tvdpll (1G~2GHz) */
+>  	pix_rate = 1000UL * mode->clock;
+> -	if (mode->clock <= 27000)
+> -		factor = 16 * 3;
+> -	else if (mode->clock <= 84000)
+> -		factor = 8 * 3;
+> -	else if (mode->clock <= 167000)
+> -		factor = 4 * 3;
+> -	else
+> -		factor = 2 * 3;
+> +	factor = dpi->conf->cal_factor(mode->clock);
+>  	pll_rate = pix_rate * factor;
+>  
+>  	dev_dbg(dpi->dev, "Want PLL %lu Hz, pixel clock %lu Hz\n",
+> @@ -518,6 +540,7 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+>  	mtk_dpi_config_yc_map(dpi, dpi->yc_map);
+>  	mtk_dpi_config_color_format(dpi, dpi->color_format);
+>  	mtk_dpi_config_2n_h_fre(dpi);
+> +	mtk_dpi_config_disable_edge(dpi);
+
+What does this do? Separate this to an independent patch and describe
+what does this do.
+
+>  	mtk_dpi_sw_reset(dpi, false);
+>  
+>  	return 0;
+> @@ -656,6 +679,31 @@ static const struct component_ops mtk_dpi_component_ops = {
+>  	.unbind = mtk_dpi_unbind,
+>  };
+>  
+> +static unsigned int mt8173_calculate_factor(int clock)
+> +{
+> +	if (clock <= 27000)
+> +		return 16 * 3;
+> +	else if (clock <= 74250)
+
+Why do you change 84000 to 74250? If 74250 is correct for mt8173, use a
+new patch for this bug fix.
+
+Regards,
+CK
+
+> +		return 8 * 3;
+> +	else if (clock <= 167000)
+> +		return 4 * 3;
+> +	else
+> +		return 2 * 3;
+> +}
+> +
+> +static const struct mtk_dpi_conf mt8173_conf = {
+> +	.cal_factor = mt8173_calculate_factor,
+> +	.reg_h_fre_con = 0xe0,
+> +};
+> +
+> +static const struct of_device_id mtk_dpi_of_ids[] = {
+> +	{ .compatible = "mediatek,mt8173-dpi",
+> +	  .data = &mt8173_conf,
+> +	},
+> +	{ },
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_dpi_of_ids);
+> +
+>  static int mtk_dpi_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> @@ -663,13 +711,18 @@ static int mtk_dpi_probe(struct platform_device *pdev)
+>  	struct resource *mem;
+>  	struct device_node *bridge_node;
+>  	int comp_id;
+> +	const struct of_device_id *match;
+>  	int ret;
+>  
+> +	match = of_match_node(mtk_dpi_of_ids, dev->of_node);
+> +	if (!match)
+> +		return -ENODEV;
+>  	dpi = devm_kzalloc(dev, sizeof(*dpi), GFP_KERNEL);
+>  	if (!dpi)
+>  		return -ENOMEM;
+>  
+>  	dpi->dev = dev;
+> +	dpi->conf = (struct mtk_dpi_conf *)match->data;
+>  
+>  	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>  	dpi->regs = devm_ioremap_resource(dev, mem);
+> @@ -748,11 +801,6 @@ static int mtk_dpi_remove(struct platform_device *pdev)
+>  	return 0;
+>  }
+>  
+> -static const struct of_device_id mtk_dpi_of_ids[] = {
+> -	{ .compatible = "mediatek,mt8173-dpi", },
+> -	{}
+> -};
+> -
+>  struct platform_driver mtk_dpi_driver = {
+>  	.probe = mtk_dpi_probe,
+>  	.remove = mtk_dpi_remove,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> index 4b6ad4751a31..d9db8c4cacd7 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> @@ -223,6 +223,6 @@
+>  #define ESAV_CODE2			(0xFFF << 0)
+>  #define ESAV_CODE3_MSB			BIT(16)
+>  
+> -#define DPI_H_FRE_CON		0xE0
+> +#define EDGE_SEL_EN			BIT(5)
+>  #define H_FRE_2N			BIT(25)
+>  #endif /* __MTK_DPI_REGS_H */
