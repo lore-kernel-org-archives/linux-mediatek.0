@@ -1,65 +1,86 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v3 8/8] drm/mediatek: add third ddp path
-Date: Mon, 28 May 2018 10:50:15 +0800
-Message-ID: <1527475815.31089.0.camel@mtksdaap41>
-References: <1527215665-11937-1-git-send-email-stu.hsieh@mediatek.com>
- <1527215665-11937-9-git-send-email-stu.hsieh@mediatek.com>
- <1527224425.27165.27.camel@mtksdaap41>
- <1527474417.11190.21.camel@mtksdccf07>
+From: Stu Hsieh <stu.hsieh@mediatek.com>
+Subject: [PATCH v4 0/9] Add support for mediatek SOC MT2712
+Date: Mon, 28 May 2018 14:38:18 +0800
+Message-ID: <1527489507-24453-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1527474417.11190.21.camel@mtksdccf07>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Stu Hsieh <stu.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFN0dToKCk9uIE1vbiwgMjAxOC0wNS0yOCBhdCAxMDoyNiArMDgwMCwgU3R1IEhzaWVoIHdy
-b3RlOgo+IEhpLCBDSzoKPiBJJ3ZlIHNvbWUgaWRlYSBhcyBiZWxvdy4KPiAKPiBPbiBGcmksIDIw
-MTgtMDUtMjUgYXQgMTM6MDAgKzA4MDAsIENLIEh1IHdyb3RlOgo+ID4gSGksIFN0dToKPiA+IAo+
-ID4gT24gRnJpLCAyMDE4LTA1LTI1IGF0IDEwOjM0ICswODAwLCBzdHUuaHNpZWhAbWVkaWF0ZWsu
-Y29tIHdyb3RlOgo+ID4gPiBGcm9tOiBTdHUgSHNpZWggPHN0dS5oc2llaEBtZWRpYXRlay5jb20+
-Cj4gPiA+IAo+ID4gPiBUaGlzIHBhdGNoIGNyZWF0ZSB0aGlyZCBjcnRjIGJ5IHRoaXJkIGRkcCBw
-YXRoCj4gPiA+IAo+ID4gCj4gPiBBcHBseSB0aGlzIHBhdGNoIGJlZm9yZSB0aGUgcGF0Y2ggJ0Fk
-ZCBzdXBwb3J0IGZvciBtZWRpYXRlayBTT0MgTVQyNzEyJwo+ID4gYmVjYXVzZSB0aGlzIHBhdGNo
-IGlzIG5lY2Vzc2FyeSBmb3IgbXQyNzEyLgo+ID4gCj4gPiA+IFNpZ25lZC1vZmYtYnk6IFN0dSBI
-c2llaCA8c3R1LmhzaWVoQG1lZGlhdGVrLmNvbT4KPiA+ID4gLS0tCj4gPiA+ICBkcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyB8IDUgKysrKysKPiA+ID4gIDEgZmlsZSBjaGFu
-Z2VkLCA1IGluc2VydGlvbnMoKykKPiA+ID4gCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX2Rydi5jCj4gPiA+IGluZGV4IGIzMmM0Y2M4ZDA1MS4uM2E4NjZlMWQ2YWY0IDEwMDY0
-NAo+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ID4g
-PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ID4gPiBAQCAt
-MjY3LDYgKzI2NywxMSBAQCBzdGF0aWMgaW50IG10a19kcm1fa21zX2luaXQoc3RydWN0IGRybV9k
-ZXZpY2UgKmRybSkKPiA+ID4gIAlpZiAocmV0IDwgMCkKPiA+ID4gIAkJZ290byBlcnJfY29tcG9u
-ZW50X3VuYmluZDsKPiA+ID4gIAo+ID4gPiArCXJldCA9IG10a19kcm1fY3J0Y19jcmVhdGUoZHJt
-LCBwcml2YXRlLT5kYXRhLT50aGlyZF9wYXRoLAo+ID4gPiArCQkJCSAgcHJpdmF0ZS0+ZGF0YS0+
-dGhpcmRfbGVuKTsKPiA+IAo+ID4gSSB0aGluayB5b3Ugc2hvdWxkIHByZXZlbnQgZG9pbmcgdGhp
-cyBmb3IgbXQ4MTczIGFuZCBtdDI3MDEgYmVjYXVzZSB0aGF0Cj4gPiB0d28gU29DIGhhcyBvbmx5
-IHR3byBkZHAgcGF0aC4KPiAKPiBOb3csIDgxNzMgYW5kIDI3MDEgaGF2ZSBvbmx5IHR3byBkZHAg
-cGF0aCwgdGhlcmUgaXMgYSBwcm9ibGVtIG9uIHJ1bgo+IHRpbWUuIAo+IFRoZXJlIGFyZSB0aHJl
-ZSBjcnRjIGZvciBkcm0gcmVzb3VyY2UsIGFuZCB0aGVyZSBpcyBub3RoaW5nIGluIHRoaXJkCj4g
-Y3J0Yy4gCj4gQmVjYXVzZSA4MTczIGFuZCAyNzAxIGhhdmUgbm8gdGhpcmQgZGRwLCBhbmQgdGhl
-IHRoaXJkIGRkcF9sZW4gaXMgemVyby4KPiBTbywgSSB3YW50IHRvIGFkZCB0aGUgY29uZGl0aW9u
-IGxpa2UgZm9sbG93aW5nIGluIG10a19jcnRjX2NyZWF0ZSgpCj4gaWYgKHBhdGhfbGVuID09IDAp
-Cj4gCXJldHVybiAwOwo+IAo+IFRoZW4sIHRoZSB2YWx1ciByZXQgaXMgemVybyBhbmQgaXQgd291
-bGQgbm90IGNyZWF0ZSB0aGUgbnVsbCB0aGlyZCBjcnRjLgoKVGhpcyBzb3VuZHMgZ29vZCB0byBt
-ZS4KClJlZ2FyZHMsCkNLCgo+IAo+IAo+IFJlZ2FyZHMsCj4gU3R1Cj4gCj4gPiAKPiA+IFJlZ2Fy
-ZHMsCj4gPiBDSwo+ID4gCj4gPiA+ICsJaWYgKHJldCA8IDApCj4gPiA+ICsJCWdvdG8gZXJyX2Nv
-bXBvbmVudF91bmJpbmQ7Cj4gPiA+ICsKPiA+ID4gIAkvKiBVc2UgT1ZMIGRldmljZSBmb3IgYWxs
-IERNQSBtZW1vcnkgYWxsb2NhdGlvbnMgKi8KPiA+ID4gIAlucCA9IHByaXZhdGUtPmNvbXBfbm9k
-ZVtwcml2YXRlLT5kYXRhLT5tYWluX3BhdGhbMF1dID86Cj4gPiA+ICAJICAgICBwcml2YXRlLT5j
-b21wX25vZGVbcHJpdmF0ZS0+ZGF0YS0+ZXh0X3BhdGhbMF1dOwo+ID4gCj4gPiAKPiAKPiAKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+This patch add support for the Mediatek MT2712 DISP subsystem.
+MT2712 is base on MT8173, there are some difference as following:
+MT2712 support three disp output(two ovl and one rdma)
+
+Change in v4:
+- Move some modification about AAL1 from patch
+  "Add support for mediatek SOC MT2712" to
+  "add ddp component AAL1"
+- Move some modification about OD1 from patch
+  "Add support for mediatek SOC MT2712" to
+  "add ddp component OD1"
+- Move some modification about PWM2 from patch
+  "Add support for mediatek SOC MT2712" to
+  "add ddp component PWM2"
+- Move some modification about third ddp path from patch
+  "Add support for mediatek SOC MT2712" to
+  "add third ddp path"
+- Move the definition OD1_MOUT_EN_RDMA1 from patch
+  "Add support for mediatek SOC MT2712" to
+  "add connection from OD1 to RDMA1"
+- Rebase the patch "add connection from OD1 to RDMA1" after
+  "add ddp component OD1"
+- Rebase the patch "add third ddp path" before
+  "Add support for mediatek SOC MT2712"
+- Modify the 2712 MUTEX MODULE in the order by index
+- Added patch for ddp component PWM1
+- For patch "add third ddp path"
+  Add the condition in mtk_crtc_create() that if there
+  is no ddp path, then return 0 to avoid the null crtc
+
+Change in v3:
+- Added patch for ddp component AAL1
+- Added patch for ddp component OD1
+- Added patch for ddp component PWM2
+- Added patch to create third ddp path
+- Rebase patch "support maximum 64 mutex mod" before
+  "Add support for mediatek SOC MT2712"
+- Rebase patch "add connection from OD1 to RDMA1" before
+  "Add support for mediatek SOC MT2712"
+- Remove two definition about RDMA0 and RDMA2
+- Change the definition about mutex module from
+  bitwise to index
+
+Changes in v2:
+- update dt-bindings for mt2712
+- Added patch to connection from OD1 to RDMA1
+- Added patch to support maximum 64 mutex mod
+- rewrite mutex mod condition for reducing one byte
+- Change the component name AAL/OD to AAL0/OD0 for naming consistency
+- Move the compatible information about dpi to other patch which modify
+  the dpi driver for mt2712
+
+Stu Hsieh (9):
+  drm/mediatek: update dt-bindings for mt2712
+  drm/mediatek: support maximum 64 mutex mod
+  drm/mediatek: add ddp component AAL1
+  drm/mediatek: add ddp component OD1
+  drm/mediatek: add ddp component PWM1
+  drm/mediatek: add ddp component PWM2
+  drm/mediatek: add connection from OD1 to RDMA1
+  drm/mediatek: add third ddp path
+  drm/mediatek: Add support for mediatek SOC MT2712
+
+ .../bindings/display/mediatek/mediatek,disp.txt    |   2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c            |   3 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c             | 124 +++++++++++++++------
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c        |   8 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h        |   7 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  47 +++++++-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h             |   7 +-
+ 7 files changed, 158 insertions(+), 40 deletions(-)
+
+-- 
+2.12.5
