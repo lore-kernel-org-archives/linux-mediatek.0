@@ -1,63 +1,60 @@
-From: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 2/2] ASoC: dpcm: symmetry constraint on FE substream
-Date: Mon, 28 May 2018 10:18:19 +0800
-Message-ID: <1527473899-23079-3-git-send-email-kaichieh.chuang@mediatek.com>
-References: <1527473899-23079-1-git-send-email-kaichieh.chuang@mediatek.com>
+From: Stu Hsieh <stu.hsieh@mediatek.com>
+Subject: Re: [PATCH v3 8/8] drm/mediatek: add third ddp path
+Date: Mon, 28 May 2018 10:26:57 +0800
+Message-ID: <1527474417.11190.21.camel@mtksdccf07>
+References: <1527215665-11937-1-git-send-email-stu.hsieh@mediatek.com>
+ <1527215665-11937-9-git-send-email-stu.hsieh@mediatek.com>
+ <1527224425.27165.27.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1527473899-23079-1-git-send-email-kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1527224425.27165.27.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-We should set BE symmetric constraint on FE substream.
-
-in case one BE is used by two FE1/FE2,
-the first BE runtime will use FE1's substream->runtime.
-hence the FE1's will be constrained by BE symmetry property.
-
-Though, second FE2 call dpcm_apply_symmetry,
-the be_substream->runtime == FE1's substream->runtime.
-The FE2's substream->runtime will not be constrained
-by BE's symmetry property.
-
-Signed-off-by: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- sound/soc/soc-pcm.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/sound/soc/soc-pcm.c b/sound/soc/soc-pcm.c
-index ffdbbd9..61494f7 100644
---- a/sound/soc/soc-pcm.c
-+++ b/sound/soc/soc-pcm.c
-@@ -1779,14 +1779,15 @@ static int dpcm_apply_symmetry(struct snd_pcm_substream *fe_substream,
- 
- 		/* Symmetry only applies if we've got an active stream. */
- 		if (rtd->cpu_dai->active) {
--			err = soc_pcm_apply_symmetry(be_substream, rtd->cpu_dai);
-+			err = soc_pcm_apply_symmetry(fe_substream,
-+						     rtd->cpu_dai);
- 			if (err < 0)
- 				return err;
- 		}
- 
- 		for (i = 0; i < rtd->num_codecs; i++) {
- 			if (rtd->codec_dais[i]->active) {
--				err = soc_pcm_apply_symmetry(be_substream,
-+				err = soc_pcm_apply_symmetry(fe_substream,
- 							     rtd->codec_dais[i]);
- 				if (err < 0)
- 					return err;
--- 
-1.9.1
+SGksIENLOgpJJ3ZlIHNvbWUgaWRlYSBhcyBiZWxvdy4KCk9uIEZyaSwgMjAxOC0wNS0yNSBhdCAx
+MzowMCArMDgwMCwgQ0sgSHUgd3JvdGU6Cj4gSGksIFN0dToKPiAKPiBPbiBGcmksIDIwMTgtMDUt
+MjUgYXQgMTA6MzQgKzA4MDAsIHN0dS5oc2llaEBtZWRpYXRlay5jb20gd3JvdGU6Cj4gPiBGcm9t
+OiBTdHUgSHNpZWggPHN0dS5oc2llaEBtZWRpYXRlay5jb20+Cj4gPiAKPiA+IFRoaXMgcGF0Y2gg
+Y3JlYXRlIHRoaXJkIGNydGMgYnkgdGhpcmQgZGRwIHBhdGgKPiA+IAo+IAo+IEFwcGx5IHRoaXMg
+cGF0Y2ggYmVmb3JlIHRoZSBwYXRjaCAnQWRkIHN1cHBvcnQgZm9yIG1lZGlhdGVrIFNPQyBNVDI3
+MTInCj4gYmVjYXVzZSB0aGlzIHBhdGNoIGlzIG5lY2Vzc2FyeSBmb3IgbXQyNzEyLgo+IAo+ID4g
+U2lnbmVkLW9mZi1ieTogU3R1IEhzaWVoIDxzdHUuaHNpZWhAbWVkaWF0ZWsuY29tPgo+ID4gLS0t
+Cj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgfCA1ICsrKysrCj4g
+PiAgMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ID4gaW5kZXggYjMyYzRjYzhkMDUxLi4zYTg2NmUxZDZh
+ZjQgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYu
+Ywo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiA+IEBA
+IC0yNjcsNiArMjY3LDExIEBAIHN0YXRpYyBpbnQgbXRrX2RybV9rbXNfaW5pdChzdHJ1Y3QgZHJt
+X2RldmljZSAqZHJtKQo+ID4gIAlpZiAocmV0IDwgMCkKPiA+ICAJCWdvdG8gZXJyX2NvbXBvbmVu
+dF91bmJpbmQ7Cj4gPiAgCj4gPiArCXJldCA9IG10a19kcm1fY3J0Y19jcmVhdGUoZHJtLCBwcml2
+YXRlLT5kYXRhLT50aGlyZF9wYXRoLAo+ID4gKwkJCQkgIHByaXZhdGUtPmRhdGEtPnRoaXJkX2xl
+bik7Cj4gCj4gSSB0aGluayB5b3Ugc2hvdWxkIHByZXZlbnQgZG9pbmcgdGhpcyBmb3IgbXQ4MTcz
+IGFuZCBtdDI3MDEgYmVjYXVzZSB0aGF0Cj4gdHdvIFNvQyBoYXMgb25seSB0d28gZGRwIHBhdGgu
+CgpOb3csIDgxNzMgYW5kIDI3MDEgaGF2ZSBvbmx5IHR3byBkZHAgcGF0aCwgdGhlcmUgaXMgYSBw
+cm9ibGVtIG9uIHJ1bgp0aW1lLiAKVGhlcmUgYXJlIHRocmVlIGNydGMgZm9yIGRybSByZXNvdXJj
+ZSwgYW5kIHRoZXJlIGlzIG5vdGhpbmcgaW4gdGhpcmQKY3J0Yy4gCkJlY2F1c2UgODE3MyBhbmQg
+MjcwMSBoYXZlIG5vIHRoaXJkIGRkcCwgYW5kIHRoZSB0aGlyZCBkZHBfbGVuIGlzIHplcm8uClNv
+LCBJIHdhbnQgdG8gYWRkIHRoZSBjb25kaXRpb24gbGlrZSBmb2xsb3dpbmcgaW4gbXRrX2NydGNf
+Y3JlYXRlKCkKaWYgKHBhdGhfbGVuID09IDApCglyZXR1cm4gMDsKClRoZW4sIHRoZSB2YWx1ciBy
+ZXQgaXMgemVybyBhbmQgaXQgd291bGQgbm90IGNyZWF0ZSB0aGUgbnVsbCB0aGlyZCBjcnRjLgoK
+ClJlZ2FyZHMsClN0dQoKPiAKPiBSZWdhcmRzLAo+IENLCj4gCj4gPiArCWlmIChyZXQgPCAwKQo+
+ID4gKwkJZ290byBlcnJfY29tcG9uZW50X3VuYmluZDsKPiA+ICsKPiA+ICAJLyogVXNlIE9WTCBk
+ZXZpY2UgZm9yIGFsbCBETUEgbWVtb3J5IGFsbG9jYXRpb25zICovCj4gPiAgCW5wID0gcHJpdmF0
+ZS0+Y29tcF9ub2RlW3ByaXZhdGUtPmRhdGEtPm1haW5fcGF0aFswXV0gPzoKPiA+ICAJICAgICBw
+cml2YXRlLT5jb21wX25vZGVbcHJpdmF0ZS0+ZGF0YS0+ZXh0X3BhdGhbMF1dOwo+IAo+IAoKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
+YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
+LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
