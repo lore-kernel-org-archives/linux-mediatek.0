@@ -1,75 +1,50 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: [PATCH 2/2] arm64: dts: Add Mediatek X20 Development Board support
-Date: Tue, 29 May 2018 10:22:58 +0530
-Message-ID: <20180529045258.1415-3-manivannan.sadhasivam@linaro.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 0/2] Add Mediatek X20 Development Board support
+Date: Tue, 29 May 2018 08:38:27 +0200
+Message-ID: <06dbc5ef-5bba-f3e0-1b57-3eaeab26ed68@gmail.com>
 References: <20180529045258.1415-1-manivannan.sadhasivam@linaro.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180529045258.1415-1-manivannan.sadhasivam@linaro.org>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: matthias.bgg@gmail.com, robh+dt@kernel.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, taiten.peng@linaro.org, daniel.thompson@linaro.org, amit.kucheria@linaro.org, manivannanece23@gmail.com, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, robh+dt@kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, taiten.peng@linaro.org, daniel.thompson@linaro.org, amit.kucheria@linaro.org, manivannanece23@gmail.com, Mars Cheng <mars.cheng@mediatek.com>, Saber Rezvani <irsaber@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add initial device tree support for Mediatek X20 Development Board
-based on MT6797 Deca core SoC. This board is one of the 96Boards
-Consumer Edition platform.
+Hi Manivannan,
 
-Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
----
- arch/arm64/boot/dts/mediatek/Makefile         |  1 +
- .../boot/dts/mediatek/mt6797-x20-dev.dts      | 33 +++++++++++++++++++
- 2 files changed, 34 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
+it's nice to see that someone at Linaro cares about upstreaming the 96 board.
+>From what I can see, your patches add the very same support to the board as
+does the mt6797 evaluation board. Do you have plans to upstream more drivers for
+the board? Do you have a roadmap or something?
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index ac17f60f998c..5b7fd6ad96e4 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -3,5 +3,6 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts b/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
-new file mode 100644
-index 000000000000..2c09ca95d9e2
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
-@@ -0,0 +1,33 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Device Tree Source for MediaTek X20 Development Board
-+ *
-+ * Copyright (C) 2018, Linaro Ltd.
-+ *
-+ */
-+
-+/dts-v1/;
-+
-+#include "mt6797.dtsi"
-+
-+/ {
-+	model = "Mediatek X20 Development Board";
-+	compatible = "archermind,mt6797-x20-dev", "mediatek,mt6797";
-+
-+	aliases {
-+		serial0 = &uart1;
-+	};
-+
-+	memory@40000000 {
-+		device_type = "memory";
-+		reg = <0 0x40000000 0 0x1e605000>;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial0:115200n8";
-+	};
-+};
-+
-+&uart1 {
-+	status = "okay";
-+};
--- 
-2.17.0
+I'm asking becuase I don't want to have just another dead devicetree in the
+kernel which does nothing but provides a boot to rootfs. Especially as this can
+be achieved on the same board with the EVB dts.
+
+Regards,
+Matthias
+
+On 29/05/18 06:52, Manivannan Sadhasivam wrote:
+> Add devicetree support for Mediatek X20 Development Board by Archermind.
+> This board is based on the Deca-Core MT6797 SoC from Mediatek and is
+> one of the 96Boards Consumer Edition platform.
+> 
+> With this devicetree change, board can boot into initramfs.
+> 
+> More information about this board can be found in 96Boards product page:
+> https://www.96boards.org/product/mediatek-x20/
+> 
+> Manivannan Sadhasivam (2):
+>   dt-bindings: Add vendor prefix for ArcherMind
+>   arm64: dts: Add Mediatek X20 Development Board support
+> 
+>  .../devicetree/bindings/vendor-prefixes.txt   |  1 +
+>  arch/arm64/boot/dts/mediatek/Makefile         |  1 +
+>  .../boot/dts/mediatek/mt6797-x20-dev.dts      | 33 +++++++++++++++++++
+>  3 files changed, 35 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
+> 
