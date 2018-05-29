@@ -1,65 +1,56 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: Re: [PATCH 0/2] Add Mediatek X20 Development Board support
-Date: Tue, 29 May 2018 12:57:19 +0530
-Message-ID: <20180529072719.GA5529@Mani-XPS-13-9360>
-References: <20180529045258.1415-1-manivannan.sadhasivam@linaro.org>
- <06dbc5ef-5bba-f3e0-1b57-3eaeab26ed68@gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [GIT PULL] ARM: mediatek fixes for v4.17
+Date: Tue, 29 May 2018 13:29:28 +0200
+Message-ID: <b32962c3-2ede-b352-959d-cb0c5244307f@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <06dbc5ef-5bba-f3e0-1b57-3eaeab26ed68@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, taiten.peng@linaro.org, daniel.thompson@linaro.org, amit.kucheria@linaro.org, manivannanece23@gmail.com, Mars Cheng <mars.cheng@mediatek.com>, Saber Rezvani <irsaber@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm-soc <arm@kernel.org>
+Cc: Kevin Hilman <khilman@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
+Hi Olof, hi Arnd,
 
-On Tue, May 29, 2018 at 08:38:27AM +0200, Matthias Brugger wrote:
-> Hi Manivannan,
-> 
-> it's nice to see that someone at Linaro cares about upstreaming the 96 board.
-> From what I can see, your patches add the very same support to the board as
-> does the mt6797 evaluation board. Do you have plans to upstream more drivers for
-> the board? Do you have a roadmap or something?
-> 
-> I'm asking becuase I don't want to have just another dead devicetree in the
-> kernel which does nothing but provides a boot to rootfs. Especially as this can
-> be achieved on the same board with the EVB dts.
-> 
+We observe boot issues on mt7622 with v4.17
+The following fix addresses this. Could you please merge this so that we have
+working v4.17 on the mt7622 :)
 
-I can understand your concern here. I do have plans to add more drivers
-in the future for this board but I can't give you any roadmap for that
-since it mostly falls under the spare time work and I have been doing a
-similar kind of work for the Bubblegum-96 board in parallel.
+Thanks a lot,
+Matthias
 
-At most I can guarentee that this board's functionality will be added
-gradually in upcoming days.
+---
 
-Thanks,
-Mani
+The following changes since commit b04e217704b7f879c6b91222b066983a44a7a09f:
 
-> Regards,
-> Matthias
-> 
-> On 29/05/18 06:52, Manivannan Sadhasivam wrote:
-> > Add devicetree support for Mediatek X20 Development Board by Archermind.
-> > This board is based on the Deca-Core MT6797 SoC from Mediatek and is
-> > one of the 96Boards Consumer Edition platform.
-> > 
-> > With this devicetree change, board can boot into initramfs.
-> > 
-> > More information about this board can be found in 96Boards product page:
-> > https://www.96boards.org/product/mediatek-x20/
-> > 
-> > Manivannan Sadhasivam (2):
-> >   dt-bindings: Add vendor prefix for ArcherMind
-> >   arm64: dts: Add Mediatek X20 Development Board support
-> > 
-> >  .../devicetree/bindings/vendor-prefixes.txt   |  1 +
-> >  arch/arm64/boot/dts/mediatek/Makefile         |  1 +
-> >  .../boot/dts/mediatek/mt6797-x20-dev.dts      | 33 +++++++++++++++++++
-> >  3 files changed, 35 insertions(+)
-> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
-> > 
+  Linux 4.17-rc7 (2018-05-27 13:01:47 -0700)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+tags/v4.17-next-fixes
+
+for you to fetch changes up to eac2e79a02a2c92c09600162d02167d8dfb63d66:
+
+  arm64: defconfig: Enable CONFIG_PINCTRL_MT7622 by default (2018-05-29 13:19:49
++0200)
+
+----------------------------------------------------------------
+mt7622 enable pinctrl driver in defconfig to fix boot issue
+
+----------------------------------------------------------------
+Sean Wang (1):
+      arm64: defconfig: Enable CONFIG_PINCTRL_MT7622 by default
+
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
