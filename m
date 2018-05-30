@@ -1,96 +1,146 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: dpcm: symmetry constraint on FE
-	substream" to the asoc tree
-Date: Tue, 29 May 2018 15:59:35 +0100
-Message-ID: <E1fNg63-000678-HT@debutante>
-References: <1526980408-1935-3-git-send-email-kaichieh.chuang@mediatek.com>
+From: <honghui.zhang@mediatek.com>
+Subject: [PATCH] PCI: mediatek: Add system pm support for MT2712
+Date: Wed, 30 May 2018 10:35:36 +0800
+Message-ID: <1527647736-19986-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1526980408-1935-3-git-send-email-kaichieh.chuang@mediatek.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-Cc: alsa-devel@alsa-project.org, broonie@kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, kaichieh.chuang@mediatek.com
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: lorenzo.pieralisi@arm.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com
+Cc: honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+From: Honghui Zhang <honghui.zhang@mediatek.com>
 
-   ASoC: dpcm: symmetry constraint on FE substream
+The MTCMOS of PCIe Host for MT2712 will be off when system suspend, and all
+the internel control register will be reset after system resume. The PCIe
+link should be re-established and the related control register values should
+be re-set after system resume.
 
-has been applied to the asoc tree at
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From 99bcedbdebc57fe5d02fb470b7265f2208c2cf96 Mon Sep 17 00:00:00 2001
-From: Kai Chieh Chuang <kaichieh.chuang@mediatek.com>
-Date: Mon, 28 May 2018 10:18:19 +0800
-Subject: [PATCH] ASoC: dpcm: symmetry constraint on FE substream
-
-We should set BE symmetric constraint on FE substream.
-
-in case one BE is used by two FE1/FE2,
-the first BE runtime will use FE1's substream->runtime.
-hence the FE1's will be constrained by BE symmetry property.
-
-Though, second FE2 call dpcm_apply_symmetry,
-the be_substream->runtime == FE1's substream->runtime.
-The FE2's substream->runtime will not be constrained
-by BE's symmetry property.
-
-Signed-off-by: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+CC: Ryder Lee <ryder.lee@mediatek.com>
 ---
- sound/soc/soc-pcm.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/pci/host/pcie-mediatek.c | 82 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 82 insertions(+)
 
-diff --git a/sound/soc/soc-pcm.c b/sound/soc/soc-pcm.c
-index 2d846b3dd70c..0e2b2c6c60bd 100644
---- a/sound/soc/soc-pcm.c
-+++ b/sound/soc/soc-pcm.c
-@@ -1779,14 +1779,15 @@ static int dpcm_apply_symmetry(struct snd_pcm_substream *fe_substream,
+diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+index dabf1086..60f98d92 100644
+--- a/drivers/pci/host/pcie-mediatek.c
++++ b/drivers/pci/host/pcie-mediatek.c
+@@ -132,12 +132,14 @@ struct mtk_pcie_port;
+ /**
+  * struct mtk_pcie_soc - differentiate between host generations
+  * @need_fix_class_id: whether this host's class ID needed to be fixed or not
++ * @pm_support: whether the host's MTCMOS will be off when suspend
+  * @ops: pointer to configuration access functions
+  * @startup: pointer to controller setting functions
+  * @setup_irq: pointer to initialize IRQ functions
+  */
+ struct mtk_pcie_soc {
+ 	bool need_fix_class_id;
++	bool pm_support;
+ 	struct pci_ops *ops;
+ 	int (*startup)(struct mtk_pcie_port *port);
+ 	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
+@@ -1179,12 +1181,91 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+ 	return err;
+ }
  
- 		/* Symmetry only applies if we've got an active stream. */
- 		if (rtd->cpu_dai->active) {
--			err = soc_pcm_apply_symmetry(be_substream, rtd->cpu_dai);
-+			err = soc_pcm_apply_symmetry(fe_substream,
-+						     rtd->cpu_dai);
- 			if (err < 0)
- 				return err;
- 		}
++static int __maybe_unused mtk_pcie_suspend_noirq(struct device *dev)
++{
++	struct platform_device *pdev;
++	struct mtk_pcie *pcie;
++	struct mtk_pcie_port *port;
++	const struct mtk_pcie_soc *soc;
++
++	pdev = to_platform_device(dev);
++	pcie = platform_get_drvdata(pdev);
++	soc = pcie->soc;
++	if (!soc->pm_support)
++		return 0;
++
++	list_for_each_entry(port, &pcie->ports, list) {
++		clk_disable_unprepare(port->ahb_ck);
++		clk_disable_unprepare(port->sys_ck);
++		phy_power_off(port->phy);
++	}
++
++	return 0;
++}
++
++static int __maybe_unused mtk_pcie_resume_noirq(struct device *dev)
++{
++	struct platform_device *pdev;
++	struct mtk_pcie *pcie;
++	struct mtk_pcie_port *port;
++	const struct mtk_pcie_soc *soc;
++	int ret;
++
++	pdev = to_platform_device(dev);
++	pcie = platform_get_drvdata(pdev);
++	soc = pcie->soc;
++	if (!soc->pm_support)
++		return 0;
++
++	list_for_each_entry(port, &pcie->ports, list) {
++		ret = phy_power_on(port->phy);
++		if (ret) {
++			dev_err(dev, "could not power on phy\n");
++			return ret;
++		}
++		ret = clk_prepare_enable(port->sys_ck);
++		if (ret) {
++			dev_err(dev, "enable sys clock error\n");
++			phy_power_off(port->phy);
++			return ret;
++		}
++
++		ret = clk_prepare_enable(port->ahb_ck);
++		if (ret) {
++			dev_err(dev, "enable ahb clock error\n");
++			phy_power_off(port->phy);
++			clk_disable_unprepare(port->sys_ck);
++			return ret;
++		}
++
++		ret = soc->startup(port);
++		if (ret) {
++			dev_err(dev, "pcie linkup failed\n");
++			phy_power_off(port->phy);
++			clk_disable_unprepare(port->sys_ck);
++			clk_disable_unprepare(port->ahb_ck);
++			return ret;
++		}
++
++		if (IS_ENABLED(CONFIG_PCI_MSI))
++			mtk_pcie_enable_msi(port);
++	}
++
++	return 0;
++}
++
++const struct dev_pm_ops mtk_pcie_pm_ops = {
++	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_pcie_suspend_noirq,
++				      mtk_pcie_resume_noirq)
++};
++
+ static const struct mtk_pcie_soc mtk_pcie_soc_v1 = {
+ 	.ops = &mtk_pcie_ops,
+ 	.startup = mtk_pcie_startup_port,
+ };
  
- 		for (i = 0; i < rtd->num_codecs; i++) {
- 			if (rtd->codec_dais[i]->active) {
--				err = soc_pcm_apply_symmetry(be_substream,
-+				err = soc_pcm_apply_symmetry(fe_substream,
- 							     rtd->codec_dais[i]);
- 				if (err < 0)
- 					return err;
+ static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
++	.pm_support = true,
+ 	.ops = &mtk_pcie_ops_v2,
+ 	.startup = mtk_pcie_startup_port_v2,
+ 	.setup_irq = mtk_pcie_setup_irq,
+@@ -1211,6 +1292,7 @@ static struct platform_driver mtk_pcie_driver = {
+ 		.name = "mtk-pcie",
+ 		.of_match_table = mtk_pcie_ids,
+ 		.suppress_bind_attrs = true,
++		.pm = &mtk_pcie_pm_ops,
+ 	},
+ };
+ builtin_platform_driver(mtk_pcie_driver);
 -- 
-2.17.0
+2.6.4
