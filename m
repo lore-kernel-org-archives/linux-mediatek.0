@@ -1,74 +1,27 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH 0/7] add non-strict mode support for arm-smmu-v3
-Date: Thu, 31 May 2018 15:25:20 +0100
-Message-ID: <92b240f5-596e-87a9-863a-b18475042cce@arm.com>
-References: <1527752569-18020-1-git-send-email-thunder.leizhen@huawei.com>
- <d65f87a4-db61-3cd2-1a6f-0322025840a8@arm.com>
- <96cc25b9-b21f-6067-384d-f52e6b8b25e7@huawei.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/2] dt-bindings: Add vendor prefix for ArcherMind
+Date: Thu, 31 May 2018 12:16:39 -0500
+Message-ID: <20180531171639.GA23016@rob-hp-laptop>
+References: <20180529045258.1415-1-manivannan.sadhasivam@linaro.org>
+ <20180529045258.1415-2-manivannan.sadhasivam@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <96cc25b9-b21f-6067-384d-f52e6b8b25e7@huawei.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20180529045258.1415-2-manivannan.sadhasivam@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hanjun Guo <guohanjun@huawei.com>, Zhen Lei <thunder.leizhen@huawei.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Joerg Roedel <joro@8bytes.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, iommu <iommu@lists.linux-foundation.org>, linux-kernel <linux-kernel@vger.kernel.org>
-Cc: Libin <huawei.libin@huawei.com>, Guozhu Li <liguozhu@hisilicon.com>, Xinwei Hu <huxinwei@huawei.com>
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, taiten.peng@linaro.org, daniel.thompson@linaro.org, amit.kucheria@linaro.org, manivannanece23@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 31/05/18 14:49, Hanjun Guo wrote:
-> Hi Robin,
+On Tue, May 29, 2018 at 10:22:57AM +0530, Manivannan Sadhasivam wrote:
+> Add vendor prefix for ArcherMind Technology (Nanjing) Co., Ltd.
 > 
-> On 2018/5/31 19:24, Robin Murphy wrote:
->> On 31/05/18 08:42, Zhen Lei wrote:
->>> In common, a IOMMU unmap operation follow the below steps:
->>> 1. remove the mapping in page table of the specified iova range
->>> 2. execute tlbi command to invalid the mapping which is cached in TLB
->>> 3. wait for the above tlbi operation to be finished
->>> 4. free the IOVA resource
->>> 5. free the physical memory resource
->>>
->>> This maybe a problem when unmap is very frequently, the combination of tlbi
->>> and wait operation will consume a lot of time. A feasible method is put off
->>> tlbi and iova-free operation, when accumulating to a certain number or
->>> reaching a specified time, execute only one tlbi_all command to clean up
->>> TLB, then free the backup IOVAs. Mark as non-strict mode.
->>>
->>> But it must be noted that, although the mapping has already been removed in
->>> the page table, it maybe still exist in TLB. And the freed physical memory
->>> may also be reused for others. So a attacker can persistent access to memory
->>> based on the just freed IOVA, to obtain sensible data or corrupt memory. So
->>> the VFIO should always choose the strict mode.
->>>
->>> Some may consider put off physical memory free also, that will still follow
->>> strict mode. But for the map_sg cases, the memory allocation is not controlled
->>> by IOMMU APIs, so it is not enforceable.
->>>
->>> Fortunately, Intel and AMD have already applied the non-strict mode, and put
->>> queue_iova() operation into the common file dma-iommu.c., and my work is based
->>> on it. The difference is that arm-smmu-v3 driver will call IOMMU common APIs to
->>> unmap, but Intel and AMD IOMMU drivers are not.
->>>
->>> Below is the performance data of strict vs non-strict for NVMe device:
->>> Randomly Read  IOPS: 146K(strict) vs 573K(non-strict)
->>> Randomly Write IOPS: 143K(strict) vs 513K(non-strict)
->>
->> What hardware is this on? If it's SMMUv3 without MSIs (e.g. D05), then you'll still be using the rubbish globally-blocking sync implementation. If that is the case, I'd be very interested to see how much there is to gain from just improving that - I've had a patch kicking around for a while[1] (also on a rebased branch at [2]), but don't have the means for serious performance testing.
-> 
-> The hardware is the new D06 which the SMMU with MSIs,
+> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> ---
+>  Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
+>  1 file changed, 1 insertion(+)
 
-Cool! Now that profiling is fairly useful since we got rid of most of 
-the locks, are you able to get an idea of how the overhead in the normal 
-case is distributed between arm_smmu_cmdq_insert_cmd() and 
-__arm_smmu_sync_poll_msi()? We're always trying to improve our 
-understanding of where command-queue-related overheads turn out to be in 
-practice, and there's still potentially room to do nicer things than 
-TLBI_NH_ALL ;)
+I've applied this while you all debate the dts file.
 
-Robin.
-
-> it's not D05 :)
-> 
-> Thanks
-> Hanjun
-> 
+Rob
