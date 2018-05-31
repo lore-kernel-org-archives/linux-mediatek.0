@@ -1,615 +1,95 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: mt6797: add PCM interface" to the asoc
-	tree
-Date: Thu, 31 May 2018 12:06:29 +0100
-Message-ID: <E1fOLPZ-0001yh-Db@debutante>
-References: <1527729981-4802-1-git-send-email-kaichieh.chuang@mediatek.com>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH 0/7] add non-strict mode support for arm-smmu-v3
+Date: Thu, 31 May 2018 12:24:21 +0100
+Message-ID: <d65f87a4-db61-3cd2-1a6f-0322025840a8@arm.com>
+References: <1527752569-18020-1-git-send-email-thunder.leizhen@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1527729981-4802-1-git-send-email-kaichieh.chuang@mediatek.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-Cc: alsa-devel@alsa-project.org, broonie@kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, kaichieh.chuang@mediatek.com
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <1527752569-18020-1-git-send-email-thunder.leizhen-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Zhen Lei <thunder.leizhen-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, linux-mediatek <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-arm-msm <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, iommu <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Cc: Xinwei Hu <huxinwei-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Guozhu Li <liguozhu-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Libin <huawei.libin-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Hanjun Guo <guohanjun-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+On 31/05/18 08:42, Zhen Lei wrote:
+> In common, a IOMMU unmap operation follow the below steps:
+> 1. remove the mapping in page table of the specified iova range
+> 2. execute tlbi command to invalid the mapping which is cached in TLB
+> 3. wait for the above tlbi operation to be finished
+> 4. free the IOVA resource
+> 5. free the physical memory resource
+> 
+> This maybe a problem when unmap is very frequently, the combination of tlbi
+> and wait operation will consume a lot of time. A feasible method is put off
+> tlbi and iova-free operation, when accumulating to a certain number or
+> reaching a specified time, execute only one tlbi_all command to clean up
+> TLB, then free the backup IOVAs. Mark as non-strict mode.
+> 
+> But it must be noted that, although the mapping has already been removed in
+> the page table, it maybe still exist in TLB. And the freed physical memory
+> may also be reused for others. So a attacker can persistent access to memory
+> based on the just freed IOVA, to obtain sensible data or corrupt memory. So
+> the VFIO should always choose the strict mode.
+> 
+> Some may consider put off physical memory free also, that will still follow
+> strict mode. But for the map_sg cases, the memory allocation is not controlled
+> by IOMMU APIs, so it is not enforceable.
+> 
+> Fortunately, Intel and AMD have already applied the non-strict mode, and put
+> queue_iova() operation into the common file dma-iommu.c., and my work is based
+> on it. The difference is that arm-smmu-v3 driver will call IOMMU common APIs to
+> unmap, but Intel and AMD IOMMU drivers are not.
+> 
+> Below is the performance data of strict vs non-strict for NVMe device:
+> Randomly Read  IOPS: 146K(strict) vs 573K(non-strict)
+> Randomly Write IOPS: 143K(strict) vs 513K(non-strict)
 
-   ASoC: mt6797: add PCM interface
+What hardware is this on? If it's SMMUv3 without MSIs (e.g. D05), then 
+you'll still be using the rubbish globally-blocking sync implementation. 
+If that is the case, I'd be very interested to see how much there is to 
+gain from just improving that - I've had a patch kicking around for a 
+while[1] (also on a rebased branch at [2]), but don't have the means for 
+serious performance testing.
 
-has been applied to the asoc tree at
+Robin.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+[1] 
+https://www.mail-archive.com/iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org/msg20576.html
+[2] git://linux-arm.org/linux-rm iommu/smmu
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From 314b355f55b53bc3cfc0380b46192dafb5893fcb Mon Sep 17 00:00:00 2001
-From: Kai Chieh Chuang <kaichieh.chuang@mediatek.com>
-Date: Thu, 31 May 2018 09:26:19 +0800
-Subject: [PATCH] ASoC: mt6797: add PCM interface
-
-Signed-off-by: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/mediatek/mt6797/Makefile            |   1 +
- sound/soc/mediatek/mt6797/mt6797-afe-common.h |   3 +
- sound/soc/mediatek/mt6797/mt6797-afe-pcm.c    |   1 +
- sound/soc/mediatek/mt6797/mt6797-dai-pcm.c    | 312 ++++++++++++++++++
- sound/soc/mediatek/mt6797/mt6797-reg.h        | 177 ++++++++++
- 5 files changed, 494 insertions(+)
- create mode 100644 sound/soc/mediatek/mt6797/mt6797-dai-pcm.c
-
-diff --git a/sound/soc/mediatek/mt6797/Makefile b/sound/soc/mediatek/mt6797/Makefile
-index 4cbdc4d7da85..484a6a6fb0f5 100644
---- a/sound/soc/mediatek/mt6797/Makefile
-+++ b/sound/soc/mediatek/mt6797/Makefile
-@@ -4,6 +4,7 @@
- snd-soc-mt6797-afe-objs := \
- 	mt6797-afe-pcm.o \
- 	mt6797-afe-clk.o \
-+	mt6797-dai-pcm.o \
- 	mt6797-dai-adda.o
- 
- obj-$(CONFIG_SND_SOC_MT6797) += snd-soc-mt6797-afe.o
-diff --git a/sound/soc/mediatek/mt6797/mt6797-afe-common.h b/sound/soc/mediatek/mt6797/mt6797-afe-common.h
-index d53654f6e8aa..85d2a3cb1d10 100644
---- a/sound/soc/mediatek/mt6797/mt6797-afe-common.h
-+++ b/sound/soc/mediatek/mt6797/mt6797-afe-common.h
-@@ -24,6 +24,8 @@ enum {
- 	MT6797_MEMIF_MOD_DAI,
- 	MT6797_MEMIF_NUM,
- 	MT6797_DAI_ADDA = MT6797_MEMIF_NUM,
-+	MT6797_DAI_PCM_1,
-+	MT6797_DAI_PCM_2,
- 	MT6797_DAI_NUM,
- };
- 
-@@ -49,4 +51,5 @@ unsigned int mt6797_rate_transform(struct device *dev,
- 
- /* dai register */
- int mt6797_dai_adda_register(struct mtk_base_afe *afe);
-+int mt6797_dai_pcm_register(struct mtk_base_afe *afe);
- #endif
-diff --git a/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c b/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
-index 1286c6ee97cb..d9379888ae49 100644
---- a/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
-+++ b/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
-@@ -819,6 +819,7 @@ static int mt6797_afe_pcm_dev_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	mt6797_dai_adda_register(afe);
-+	mt6797_dai_pcm_register(afe);
- 
- 	afe->sub_dais[MT6797_MEMIF_DL1].dai_drivers = mt6797_memif_dai_driver;
- 	afe->sub_dais[MT6797_MEMIF_DL1].num_dai_drivers =
-diff --git a/sound/soc/mediatek/mt6797/mt6797-dai-pcm.c b/sound/soc/mediatek/mt6797/mt6797-dai-pcm.c
-new file mode 100644
-index 000000000000..16d5b5067204
---- /dev/null
-+++ b/sound/soc/mediatek/mt6797/mt6797-dai-pcm.c
-@@ -0,0 +1,312 @@
-+// SPDX-License-Identifier: GPL-2.0
-+//
-+// MediaTek ALSA SoC Audio DAI I2S Control
-+//
-+// Copyright (c) 2018 MediaTek Inc.
-+// Author: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
-+
-+#include <linux/regmap.h>
-+#include <sound/pcm_params.h>
-+#include "mt6797-afe-common.h"
-+#include "mt6797-interconnection.h"
-+#include "mt6797-reg.h"
-+
-+enum AUD_TX_LCH_RPT {
-+	AUD_TX_LCH_RPT_NO_REPEAT = 0,
-+	AUD_TX_LCH_RPT_REPEAT = 1
-+};
-+
-+enum AUD_VBT_16K_MODE {
-+	AUD_VBT_16K_MODE_DISABLE = 0,
-+	AUD_VBT_16K_MODE_ENABLE = 1
-+};
-+
-+enum AUD_EXT_MODEM {
-+	AUD_EXT_MODEM_SELECT_INTERNAL = 0,
-+	AUD_EXT_MODEM_SELECT_EXTERNAL = 1
-+};
-+
-+enum AUD_PCM_SYNC_TYPE {
-+	/* bck sync length = 1 */
-+	AUD_PCM_ONE_BCK_CYCLE_SYNC = 0,
-+	/* bck sync length = PCM_INTF_CON1[9:13] */
-+	AUD_PCM_EXTENDED_BCK_CYCLE_SYNC = 1
-+};
-+
-+enum AUD_BT_MODE {
-+	AUD_BT_MODE_DUAL_MIC_ON_TX = 0,
-+	AUD_BT_MODE_SINGLE_MIC_ON_TX = 1
-+};
-+
-+enum AUD_PCM_AFIFO_SRC {
-+	/* slave mode & external modem uses different crystal */
-+	AUD_PCM_AFIFO_ASRC = 0,
-+	/* slave mode & external modem uses the same crystal */
-+	AUD_PCM_AFIFO_AFIFO = 1
-+};
-+
-+enum AUD_PCM_CLOCK_SOURCE {
-+	AUD_PCM_CLOCK_MASTER_MODE = 0,
-+	AUD_PCM_CLOCK_SLAVE_MODE = 1
-+};
-+
-+enum AUD_PCM_WLEN {
-+	AUD_PCM_WLEN_PCM_32_BCK_CYCLES = 0,
-+	AUD_PCM_WLEN_PCM_64_BCK_CYCLES = 1
-+};
-+
-+enum AUD_PCM_MODE {
-+	AUD_PCM_MODE_PCM_MODE_8K = 0,
-+	AUD_PCM_MODE_PCM_MODE_16K = 1,
-+	AUD_PCM_MODE_PCM_MODE_32K = 2,
-+	AUD_PCM_MODE_PCM_MODE_48K = 3,
-+};
-+
-+enum AUD_PCM_FMT {
-+	AUD_PCM_FMT_I2S = 0,
-+	AUD_PCM_FMT_EIAJ = 1,
-+	AUD_PCM_FMT_PCM_MODE_A = 2,
-+	AUD_PCM_FMT_PCM_MODE_B = 3
-+};
-+
-+enum AUD_BCLK_OUT_INV {
-+	AUD_BCLK_OUT_INV_NO_INVERSE = 0,
-+	AUD_BCLK_OUT_INV_INVERSE = 1
-+};
-+
-+enum AUD_PCM_EN {
-+	AUD_PCM_EN_DISABLE = 0,
-+	AUD_PCM_EN_ENABLE = 1
-+};
-+
-+/* dai component */
-+static const struct snd_kcontrol_new mtk_pcm_1_playback_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN7,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL2_CH1", AFE_CONN7,
-+				    I_DL2_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new mtk_pcm_1_playback_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN8,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL2_CH2", AFE_CONN8,
-+				    I_DL2_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new mtk_pcm_1_playback_ch4_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL1_CH1", AFE_CONN27,
-+				    I_DL1_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new mtk_pcm_2_playback_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN17,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL2_CH1", AFE_CONN17,
-+				    I_DL2_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new mtk_pcm_2_playback_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN18,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL2_CH2", AFE_CONN18,
-+				    I_DL2_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new mtk_pcm_2_playback_ch4_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL1_CH1", AFE_CONN24,
-+				    I_DL1_CH1, 1, 0),
-+};
-+
-+static const struct snd_soc_dapm_widget mtk_dai_pcm_widgets[] = {
-+	/* inter-connections */
-+	SND_SOC_DAPM_MIXER("PCM_1_PB_CH1", SND_SOC_NOPM, 0, 0,
-+			   mtk_pcm_1_playback_ch1_mix,
-+			   ARRAY_SIZE(mtk_pcm_1_playback_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("PCM_1_PB_CH2", SND_SOC_NOPM, 0, 0,
-+			   mtk_pcm_1_playback_ch2_mix,
-+			   ARRAY_SIZE(mtk_pcm_1_playback_ch2_mix)),
-+	SND_SOC_DAPM_MIXER("PCM_1_PB_CH4", SND_SOC_NOPM, 0, 0,
-+			   mtk_pcm_1_playback_ch4_mix,
-+			   ARRAY_SIZE(mtk_pcm_1_playback_ch4_mix)),
-+	SND_SOC_DAPM_MIXER("PCM_2_PB_CH1", SND_SOC_NOPM, 0, 0,
-+			   mtk_pcm_2_playback_ch1_mix,
-+			   ARRAY_SIZE(mtk_pcm_2_playback_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("PCM_2_PB_CH2", SND_SOC_NOPM, 0, 0,
-+			   mtk_pcm_2_playback_ch2_mix,
-+			   ARRAY_SIZE(mtk_pcm_2_playback_ch2_mix)),
-+	SND_SOC_DAPM_MIXER("PCM_2_PB_CH4", SND_SOC_NOPM, 0, 0,
-+			   mtk_pcm_2_playback_ch4_mix,
-+			   ARRAY_SIZE(mtk_pcm_2_playback_ch4_mix)),
-+
-+	SND_SOC_DAPM_SUPPLY("PCM_1_EN", PCM_INTF_CON1, PCM_EN_SFT, 0,
-+			    NULL, 0),
-+
-+	SND_SOC_DAPM_SUPPLY("PCM_2_EN", PCM2_INTF_CON, PCM2_EN_SFT, 0,
-+			    NULL, 0),
-+
-+	SND_SOC_DAPM_INPUT("MD1_TO_AFE"),
-+	SND_SOC_DAPM_INPUT("MD2_TO_AFE"),
-+	SND_SOC_DAPM_OUTPUT("AFE_TO_MD1"),
-+	SND_SOC_DAPM_OUTPUT("AFE_TO_MD2"),
-+};
-+
-+static const struct snd_soc_dapm_route mtk_dai_pcm_routes[] = {
-+	{"PCM 1 Playback", NULL, "PCM_1_PB_CH1"},
-+	{"PCM 1 Playback", NULL, "PCM_1_PB_CH2"},
-+	{"PCM 1 Playback", NULL, "PCM_1_PB_CH4"},
-+	{"PCM 2 Playback", NULL, "PCM_2_PB_CH1"},
-+	{"PCM 2 Playback", NULL, "PCM_2_PB_CH2"},
-+	{"PCM 2 Playback", NULL, "PCM_2_PB_CH4"},
-+
-+	{"PCM 1 Playback", NULL, "PCM_1_EN"},
-+	{"PCM 2 Playback", NULL, "PCM_2_EN"},
-+	{"PCM 1 Capture", NULL, "PCM_1_EN"},
-+	{"PCM 2 Capture", NULL, "PCM_2_EN"},
-+
-+	{"AFE_TO_MD1", NULL, "PCM 2 Playback"},
-+	{"AFE_TO_MD2", NULL, "PCM 1 Playback"},
-+	{"PCM 2 Capture", NULL, "MD1_TO_AFE"},
-+	{"PCM 1 Capture", NULL, "MD2_TO_AFE"},
-+
-+	{"PCM_1_PB_CH1", "DL2_CH1", "DL2"},
-+	{"PCM_1_PB_CH2", "DL2_CH2", "DL2"},
-+	{"PCM_1_PB_CH4", "DL1_CH1", "DL1"},
-+	{"PCM_2_PB_CH1", "DL2_CH1", "DL2"},
-+	{"PCM_2_PB_CH2", "DL2_CH2", "DL2"},
-+	{"PCM_2_PB_CH4", "DL1_CH1", "DL1"},
-+};
-+
-+/* dai ops */
-+static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
-+				 struct snd_pcm_hw_params *params,
-+				 struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	unsigned int rate = params_rate(params);
-+	unsigned int rate_reg = mt6797_rate_transform(afe->dev, rate, dai->id);
-+	unsigned int pcm_con = 0;
-+
-+	dev_dbg(afe->dev, "%s(), id %d, stream %d, rate %d, rate_reg %d, widget active p %d, c %d\n",
-+		__func__,
-+		dai->id,
-+		substream->stream,
-+		rate,
-+		rate_reg,
-+		dai->playback_widget->active,
-+		dai->capture_widget->active);
-+
-+	if (dai->playback_widget->active || dai->capture_widget->active)
-+		return 0;
-+
-+	switch (dai->id) {
-+	case MT6797_DAI_PCM_1:
-+		pcm_con |= AUD_BCLK_OUT_INV_NO_INVERSE << PCM_BCLK_OUT_INV_SFT;
-+		pcm_con |= AUD_TX_LCH_RPT_NO_REPEAT << PCM_TX_LCH_RPT_SFT;
-+		pcm_con |= AUD_VBT_16K_MODE_DISABLE << PCM_VBT_16K_MODE_SFT;
-+		pcm_con |= AUD_EXT_MODEM_SELECT_INTERNAL << PCM_EXT_MODEM_SFT;
-+		pcm_con |= 0 << PCM_SYNC_LENGTH_SFT;
-+		pcm_con |= AUD_PCM_ONE_BCK_CYCLE_SYNC << PCM_SYNC_TYPE_SFT;
-+		pcm_con |= AUD_BT_MODE_DUAL_MIC_ON_TX << PCM_BT_MODE_SFT;
-+		pcm_con |= AUD_PCM_AFIFO_AFIFO << PCM_BYP_ASRC_SFT;
-+		pcm_con |= AUD_PCM_CLOCK_SLAVE_MODE << PCM_SLAVE_SFT;
-+		pcm_con |= rate_reg << PCM_MODE_SFT;
-+		pcm_con |= AUD_PCM_FMT_PCM_MODE_B << PCM_FMT_SFT;
-+
-+		regmap_update_bits(afe->regmap, PCM_INTF_CON1,
-+				   0xfffffffe, pcm_con);
-+		break;
-+	case MT6797_DAI_PCM_2:
-+		pcm_con |= AUD_TX_LCH_RPT_NO_REPEAT << PCM2_TX_LCH_RPT_SFT;
-+		pcm_con |= AUD_VBT_16K_MODE_DISABLE << PCM2_VBT_16K_MODE_SFT;
-+		pcm_con |= AUD_BT_MODE_DUAL_MIC_ON_TX << PCM2_BT_MODE_SFT;
-+		pcm_con |= AUD_PCM_AFIFO_AFIFO << PCM2_AFIFO_SFT;
-+		pcm_con |= AUD_PCM_WLEN_PCM_32_BCK_CYCLES << PCM2_WLEN_SFT;
-+		pcm_con |= rate_reg << PCM2_MODE_SFT;
-+		pcm_con |= AUD_PCM_FMT_PCM_MODE_B << PCM2_FMT_SFT;
-+
-+		regmap_update_bits(afe->regmap, PCM2_INTF_CON,
-+				   0xfffffffe, pcm_con);
-+		break;
-+	default:
-+		dev_warn(afe->dev, "%s(), id %d not support\n",
-+			 __func__, dai->id);
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct snd_soc_dai_ops mtk_dai_pcm_ops = {
-+	.hw_params = mtk_dai_pcm_hw_params,
-+};
-+
-+/* dai driver */
-+#define MTK_PCM_RATES (SNDRV_PCM_RATE_8000 |\
-+		       SNDRV_PCM_RATE_16000 |\
-+		       SNDRV_PCM_RATE_32000 |\
-+		       SNDRV_PCM_RATE_48000)
-+
-+#define MTK_PCM_FORMATS (SNDRV_PCM_FMTBIT_S16_LE |\
-+			 SNDRV_PCM_FMTBIT_S24_LE |\
-+			 SNDRV_PCM_FMTBIT_S32_LE)
-+
-+static struct snd_soc_dai_driver mtk_dai_pcm_driver[] = {
-+	{
-+		.name = "PCM 1",
-+		.id = MT6797_DAI_PCM_1,
-+		.playback = {
-+			.stream_name = "PCM 1 Playback",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_PCM_RATES,
-+			.formats = MTK_PCM_FORMATS,
-+		},
-+		.capture = {
-+			.stream_name = "PCM 1 Capture",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_PCM_RATES,
-+			.formats = MTK_PCM_FORMATS,
-+		},
-+		.ops = &mtk_dai_pcm_ops,
-+		.symmetric_rates = 1,
-+		.symmetric_samplebits = 1,
-+	},
-+	{
-+		.name = "PCM 2",
-+		.id = MT6797_DAI_PCM_2,
-+		.playback = {
-+			.stream_name = "PCM 2 Playback",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_PCM_RATES,
-+			.formats = MTK_PCM_FORMATS,
-+		},
-+		.capture = {
-+			.stream_name = "PCM 2 Capture",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_PCM_RATES,
-+			.formats = MTK_PCM_FORMATS,
-+		},
-+		.ops = &mtk_dai_pcm_ops,
-+		.symmetric_rates = 1,
-+		.symmetric_samplebits = 1,
-+	},
-+};
-+
-+int mt6797_dai_pcm_register(struct mtk_base_afe *afe)
-+{
-+	int id = MT6797_DAI_PCM_1;
-+
-+	afe->sub_dais[id].dai_drivers = mtk_dai_pcm_driver;
-+	afe->sub_dais[id].num_dai_drivers = ARRAY_SIZE(mtk_dai_pcm_driver);
-+
-+	afe->sub_dais[id].dapm_widgets = mtk_dai_pcm_widgets;
-+	afe->sub_dais[id].num_dapm_widgets = ARRAY_SIZE(mtk_dai_pcm_widgets);
-+	afe->sub_dais[id].dapm_routes = mtk_dai_pcm_routes;
-+	afe->sub_dais[id].num_dapm_routes = ARRAY_SIZE(mtk_dai_pcm_routes);
-+
-+	return 0;
-+}
-diff --git a/sound/soc/mediatek/mt6797/mt6797-reg.h b/sound/soc/mediatek/mt6797/mt6797-reg.h
-index ffb55367f59f..978f146c143c 100644
---- a/sound/soc/mediatek/mt6797/mt6797-reg.h
-+++ b/sound/soc/mediatek/mt6797/mt6797-reg.h
-@@ -835,4 +835,181 @@
- #define DL1_HD_ALIGN_SFT                                    0
- #define DL1_HD_ALIGN_MASK                                   0x1
- #define DL1_HD_ALIGN_MASK_SFT                               (0x1 << 0)
-+
-+/* PCM_INTF_CON1 */
-+#define PCM_FIX_VALUE_SEL_SFT                               31
-+#define PCM_FIX_VALUE_SEL_MASK                              0x1
-+#define PCM_FIX_VALUE_SEL_MASK_SFT                          (0x1 << 31)
-+#define PCM_BUFFER_LOOPBACK_SFT                             30
-+#define PCM_BUFFER_LOOPBACK_MASK                            0x1
-+#define PCM_BUFFER_LOOPBACK_MASK_SFT                        (0x1 << 30)
-+#define PCM_PARALLEL_LOOPBACK_SFT                           29
-+#define PCM_PARALLEL_LOOPBACK_MASK                          0x1
-+#define PCM_PARALLEL_LOOPBACK_MASK_SFT                      (0x1 << 29)
-+#define PCM_SERIAL_LOOPBACK_SFT                             28
-+#define PCM_SERIAL_LOOPBACK_MASK                            0x1
-+#define PCM_SERIAL_LOOPBACK_MASK_SFT                        (0x1 << 28)
-+#define PCM_DAI_PCM_LOOPBACK_SFT                            27
-+#define PCM_DAI_PCM_LOOPBACK_MASK                           0x1
-+#define PCM_DAI_PCM_LOOPBACK_MASK_SFT                       (0x1 << 27)
-+#define PCM_I2S_PCM_LOOPBACK_SFT                            26
-+#define PCM_I2S_PCM_LOOPBACK_MASK                           0x1
-+#define PCM_I2S_PCM_LOOPBACK_MASK_SFT                       (0x1 << 26)
-+#define PCM_SYNC_DELSEL_SFT                                 25
-+#define PCM_SYNC_DELSEL_MASK                                0x1
-+#define PCM_SYNC_DELSEL_MASK_SFT                            (0x1 << 25)
-+#define PCM_TX_LR_SWAP_SFT                                  24
-+#define PCM_TX_LR_SWAP_MASK                                 0x1
-+#define PCM_TX_LR_SWAP_MASK_SFT                             (0x1 << 24)
-+#define PCM_SYNC_OUT_INV_SFT                                23
-+#define PCM_SYNC_OUT_INV_MASK                               0x1
-+#define PCM_SYNC_OUT_INV_MASK_SFT                           (0x1 << 23)
-+#define PCM_BCLK_OUT_INV_SFT                                22
-+#define PCM_BCLK_OUT_INV_MASK                               0x1
-+#define PCM_BCLK_OUT_INV_MASK_SFT                           (0x1 << 22)
-+#define PCM_SYNC_IN_INV_SFT                                 21
-+#define PCM_SYNC_IN_INV_MASK                                0x1
-+#define PCM_SYNC_IN_INV_MASK_SFT                            (0x1 << 21)
-+#define PCM_BCLK_IN_INV_SFT                                 20
-+#define PCM_BCLK_IN_INV_MASK                                0x1
-+#define PCM_BCLK_IN_INV_MASK_SFT                            (0x1 << 20)
-+#define PCM_TX_LCH_RPT_SFT                                  19
-+#define PCM_TX_LCH_RPT_MASK                                 0x1
-+#define PCM_TX_LCH_RPT_MASK_SFT                             (0x1 << 19)
-+#define PCM_VBT_16K_MODE_SFT                                18
-+#define PCM_VBT_16K_MODE_MASK                               0x1
-+#define PCM_VBT_16K_MODE_MASK_SFT                           (0x1 << 18)
-+#define PCM_EXT_MODEM_SFT                                   17
-+#define PCM_EXT_MODEM_MASK                                  0x1
-+#define PCM_EXT_MODEM_MASK_SFT                              (0x1 << 17)
-+#define PCM_24BIT_SFT                                       16
-+#define PCM_24BIT_MASK                                      0x1
-+#define PCM_24BIT_MASK_SFT                                  (0x1 << 16)
-+#define PCM_WLEN_SFT                                        14
-+#define PCM_WLEN_MASK                                       0x3
-+#define PCM_WLEN_MASK_SFT                                   (0x3 << 14)
-+#define PCM_SYNC_LENGTH_SFT                                 9
-+#define PCM_SYNC_LENGTH_MASK                                0x1f
-+#define PCM_SYNC_LENGTH_MASK_SFT                            (0x1f << 9)
-+#define PCM_SYNC_TYPE_SFT                                   8
-+#define PCM_SYNC_TYPE_MASK                                  0x1
-+#define PCM_SYNC_TYPE_MASK_SFT                              (0x1 << 8)
-+#define PCM_BT_MODE_SFT                                     7
-+#define PCM_BT_MODE_MASK                                    0x1
-+#define PCM_BT_MODE_MASK_SFT                                (0x1 << 7)
-+#define PCM_BYP_ASRC_SFT                                    6
-+#define PCM_BYP_ASRC_MASK                                   0x1
-+#define PCM_BYP_ASRC_MASK_SFT                               (0x1 << 6)
-+#define PCM_SLAVE_SFT                                       5
-+#define PCM_SLAVE_MASK                                      0x1
-+#define PCM_SLAVE_MASK_SFT                                  (0x1 << 5)
-+#define PCM_MODE_SFT                                        3
-+#define PCM_MODE_MASK                                       0x3
-+#define PCM_MODE_MASK_SFT                                   (0x3 << 3)
-+#define PCM_FMT_SFT                                         1
-+#define PCM_FMT_MASK                                        0x3
-+#define PCM_FMT_MASK_SFT                                    (0x3 << 1)
-+#define PCM_EN_SFT                                          0
-+#define PCM_EN_MASK                                         0x1
-+#define PCM_EN_MASK_SFT                                     (0x1 << 0)
-+
-+/* PCM_INTF_CON2 */
-+#define PCM1_TX_FIFO_OV_SFT                                 31
-+#define PCM1_TX_FIFO_OV_MASK                                0x1
-+#define PCM1_TX_FIFO_OV_MASK_SFT                            (0x1 << 31)
-+#define PCM1_RX_FIFO_OV_SFT                                 30
-+#define PCM1_RX_FIFO_OV_MASK                                0x1
-+#define PCM1_RX_FIFO_OV_MASK_SFT                            (0x1 << 30)
-+#define PCM2_TX_FIFO_OV_SFT                                 29
-+#define PCM2_TX_FIFO_OV_MASK                                0x1
-+#define PCM2_TX_FIFO_OV_MASK_SFT                            (0x1 << 29)
-+#define PCM2_RX_FIFO_OV_SFT                                 28
-+#define PCM2_RX_FIFO_OV_MASK                                0x1
-+#define PCM2_RX_FIFO_OV_MASK_SFT                            (0x1 << 28)
-+#define PCM1_SYNC_GLITCH_SFT                                27
-+#define PCM1_SYNC_GLITCH_MASK                               0x1
-+#define PCM1_SYNC_GLITCH_MASK_SFT                           (0x1 << 27)
-+#define PCM2_SYNC_GLITCH_SFT                                26
-+#define PCM2_SYNC_GLITCH_MASK                               0x1
-+#define PCM2_SYNC_GLITCH_MASK_SFT                           (0x1 << 26)
-+#define PCM1_PCM2_LOOPBACK_SFT                              15
-+#define PCM1_PCM2_LOOPBACK_MASK                             0x1
-+#define PCM1_PCM2_LOOPBACK_MASK_SFT                         (0x1 << 15)
-+#define DAI_PCM_LOOPBACK_CH_SFT                             13
-+#define DAI_PCM_LOOPBACK_CH_MASK                            0x1
-+#define DAI_PCM_LOOPBACK_CH_MASK_SFT                        (0x1 << 13)
-+#define I2S_PCM_LOOPBACK_CH_SFT                             12
-+#define I2S_PCM_LOOPBACK_CH_MASK                            0x1
-+#define I2S_PCM_LOOPBACK_CH_MASK_SFT                        (0x1 << 12)
-+#define PCM_USE_MD3_SFT                                     8
-+#define PCM_USE_MD3_MASK                                    0x1
-+#define PCM_USE_MD3_MASK_SFT                                (0x1 << 8)
-+#define TX_FIX_VALUE_SFT                                    0
-+#define TX_FIX_VALUE_MASK                                   0xff
-+#define TX_FIX_VALUE_MASK_SFT                               (0xff << 0)
-+
-+/* PCM2_INTF_CON */
-+#define PCM2_TX_FIX_VALUE_SFT                                24
-+#define PCM2_TX_FIX_VALUE_MASK                               0xff
-+#define PCM2_TX_FIX_VALUE_MASK_SFT                           (0xff << 24)
-+#define PCM2_FIX_VALUE_SEL_SFT                               23
-+#define PCM2_FIX_VALUE_SEL_MASK                              0x1
-+#define PCM2_FIX_VALUE_SEL_MASK_SFT                          (0x1 << 23)
-+#define PCM2_BUFFER_LOOPBACK_SFT                             22
-+#define PCM2_BUFFER_LOOPBACK_MASK                            0x1
-+#define PCM2_BUFFER_LOOPBACK_MASK_SFT                        (0x1 << 22)
-+#define PCM2_PARALLEL_LOOPBACK_SFT                           21
-+#define PCM2_PARALLEL_LOOPBACK_MASK                          0x1
-+#define PCM2_PARALLEL_LOOPBACK_MASK_SFT                      (0x1 << 21)
-+#define PCM2_SERIAL_LOOPBACK_SFT                             20
-+#define PCM2_SERIAL_LOOPBACK_MASK                            0x1
-+#define PCM2_SERIAL_LOOPBACK_MASK_SFT                        (0x1 << 20)
-+#define PCM2_DAI_PCM_LOOPBACK_SFT                            19
-+#define PCM2_DAI_PCM_LOOPBACK_MASK                           0x1
-+#define PCM2_DAI_PCM_LOOPBACK_MASK_SFT                       (0x1 << 19)
-+#define PCM2_I2S_PCM_LOOPBACK_SFT                            18
-+#define PCM2_I2S_PCM_LOOPBACK_MASK                           0x1
-+#define PCM2_I2S_PCM_LOOPBACK_MASK_SFT                       (0x1 << 18)
-+#define PCM2_SYNC_DELSEL_SFT                                 17
-+#define PCM2_SYNC_DELSEL_MASK                                0x1
-+#define PCM2_SYNC_DELSEL_MASK_SFT                            (0x1 << 17)
-+#define PCM2_TX_LR_SWAP_SFT                                  16
-+#define PCM2_TX_LR_SWAP_MASK                                 0x1
-+#define PCM2_TX_LR_SWAP_MASK_SFT                             (0x1 << 16)
-+#define PCM2_SYNC_IN_INV_SFT                                 15
-+#define PCM2_SYNC_IN_INV_MASK                                0x1
-+#define PCM2_SYNC_IN_INV_MASK_SFT                            (0x1 << 15)
-+#define PCM2_BCLK_IN_INV_SFT                                 14
-+#define PCM2_BCLK_IN_INV_MASK                                0x1
-+#define PCM2_BCLK_IN_INV_MASK_SFT                            (0x1 << 14)
-+#define PCM2_TX_LCH_RPT_SFT                                  13
-+#define PCM2_TX_LCH_RPT_MASK                                 0x1
-+#define PCM2_TX_LCH_RPT_MASK_SFT                             (0x1 << 13)
-+#define PCM2_VBT_16K_MODE_SFT                                12
-+#define PCM2_VBT_16K_MODE_MASK                               0x1
-+#define PCM2_VBT_16K_MODE_MASK_SFT                           (0x1 << 12)
-+#define PCM2_LOOPBACK_CH_SEL_SFT                             10
-+#define PCM2_LOOPBACK_CH_SEL_MASK                            0x3
-+#define PCM2_LOOPBACK_CH_SEL_MASK_SFT                        (0x3 << 10)
-+#define PCM2_TX2_BT_MODE_SFT                                 8
-+#define PCM2_TX2_BT_MODE_MASK                                0x1
-+#define PCM2_TX2_BT_MODE_MASK_SFT                            (0x1 << 8)
-+#define PCM2_BT_MODE_SFT                                     7
-+#define PCM2_BT_MODE_MASK                                    0x1
-+#define PCM2_BT_MODE_MASK_SFT                                (0x1 << 7)
-+#define PCM2_AFIFO_SFT                                       6
-+#define PCM2_AFIFO_MASK                                      0x1
-+#define PCM2_AFIFO_MASK_SFT                                  (0x1 << 6)
-+#define PCM2_WLEN_SFT                                        5
-+#define PCM2_WLEN_MASK                                       0x1
-+#define PCM2_WLEN_MASK_SFT                                   (0x1 << 5)
-+#define PCM2_MODE_SFT                                        3
-+#define PCM2_MODE_MASK                                       0x3
-+#define PCM2_MODE_MASK_SFT                                   (0x3 << 3)
-+#define PCM2_FMT_SFT                                         1
-+#define PCM2_FMT_MASK                                        0x3
-+#define PCM2_FMT_MASK_SFT                                    (0x3 << 1)
-+#define PCM2_EN_SFT                                          0
-+#define PCM2_EN_MASK                                         0x1
-+#define PCM2_EN_MASK_SFT                                     (0x1 << 0)
- #endif
--- 
-2.17.0
+> 
+> 
+> Zhen Lei (7):
+>    iommu/dma: fix trival coding style mistake
+>    iommu/arm-smmu-v3: fix the implementation of flush_iotlb_all hook
+>    iommu: prepare for the non-strict mode support
+>    iommu/amd: make sure TLB to be flushed before IOVA freed
+>    iommu/dma: add support for non-strict mode
+>    iommu/io-pgtable-arm: add support for non-strict mode
+>    iommu/arm-smmu-v3: add support for non-strict mode
+> 
+>   drivers/iommu/amd_iommu.c          |  2 +-
+>   drivers/iommu/arm-smmu-v3.c        | 16 ++++++++++++---
+>   drivers/iommu/arm-smmu.c           |  2 +-
+>   drivers/iommu/dma-iommu.c          | 41 ++++++++++++++++++++++++++++++--------
+>   drivers/iommu/io-pgtable-arm-v7s.c |  6 +++---
+>   drivers/iommu/io-pgtable-arm.c     | 28 ++++++++++++++------------
+>   drivers/iommu/io-pgtable.h         |  2 +-
+>   drivers/iommu/ipmmu-vmsa.c         |  2 +-
+>   drivers/iommu/msm_iommu.c          |  2 +-
+>   drivers/iommu/mtk_iommu.c          |  2 +-
+>   drivers/iommu/qcom_iommu.c         |  2 +-
+>   include/linux/iommu.h              |  5 +++++
+>   12 files changed, 76 insertions(+), 34 deletions(-)
+> 
