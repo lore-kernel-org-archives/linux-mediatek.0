@@ -1,220 +1,125 @@
-From: Zhen Lei <thunder.leizhen@huawei.com>
-Subject: [PATCH 3/7] iommu: prepare for the non-strict mode support
-Date: Thu, 31 May 2018 15:42:45 +0800
-Message-ID: <1527752569-18020-4-git-send-email-thunder.leizhen@huawei.com>
-References: <1527752569-18020-1-git-send-email-thunder.leizhen@huawei.com>
+From: <honghui.zhang@mediatek.com>
+Subject: [PATCH v2] PCI: mediatek: Add system pm support for MT2712
+Date: Thu, 31 May 2018 16:15:45 +0800
+Message-ID: <1527754545-32378-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1527752569-18020-1-git-send-email-thunder.leizhen@huawei.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Joerg Roedel <joro@8bytes.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, iommu <iommu@lists.linux-foundation.org>, linux-kernel <linux-kernel@vger.kernel.org>
-Cc: Zhen Lei <thunder.leizhen@huawei.com>, Hanjun Guo <guohanjun@huawei.com>, Libin <huawei.libin@huawei.com>, Guozhu Li <liguozhu@hisilicon.com>, Xinwei Hu <huxinwei@huawei.com>
+To: lorenzo.pieralisi@arm.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com
+Cc: honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-In common, a IOMMU unmap operation follow the below steps:
-1. remove the mapping in page table of the specified iova range
-2. execute tlbi command to invalid the mapping which is cached in TLB
-3. wait for the above tlbi operation to be finished
-4. free the IOVA resource
-5. free the physical memory resource
+From: Honghui Zhang <honghui.zhang@mediatek.com>
 
-This maybe a problem when unmap is very frequently, the combination of tlbi
-and wait operation will consume a lot of time. A feasible method is put off
-tlbi and iova-free operation, when accumulating to a certain number or
-reaching a specified time, execute only one tlbi_all command to clean up
-TLB, then free the backup IOVAs. Mark as non-strict mode.
+The MTCMOS of PCIe Host for MT2712 will be off when system suspend, and all
+the internal control register will be reset after system resume. The PCIe
+link should be re-established and the related control register values
+should be re-set after system resume.
 
-But it must be noted that, although the mapping has already been removed in
-the page table, it maybe still exist in TLB. And the freed physical memory
-may also be reused for others. So a attacker can persistent access to memory
-based on the just freed IOVA, to obtain sensible data or corrupt memory. So
-the VFIO should always choose the strict mode.
-
-This patch just add a new parameter for the unmap operation, to help the
-upper functions capable choose which mode to be applied.
-
-No functional changes.
-
-Signed-off-by: Zhen Lei <thunder.leizhen@huawei.com>
+Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+CC: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/iommu/arm-smmu-v3.c        | 2 +-
- drivers/iommu/arm-smmu.c           | 2 +-
- drivers/iommu/io-pgtable-arm-v7s.c | 6 +++---
- drivers/iommu/io-pgtable-arm.c     | 6 +++---
- drivers/iommu/io-pgtable.h         | 2 +-
- drivers/iommu/ipmmu-vmsa.c         | 2 +-
- drivers/iommu/msm_iommu.c          | 2 +-
- drivers/iommu/mtk_iommu.c          | 2 +-
- drivers/iommu/qcom_iommu.c         | 2 +-
- include/linux/iommu.h              | 2 ++
- 10 files changed, 15 insertions(+), 13 deletions(-)
+ drivers/pci/host/pcie-mediatek.c | 61 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 61 insertions(+)
 
-diff --git a/drivers/iommu/arm-smmu-v3.c b/drivers/iommu/arm-smmu-v3.c
-index 4402187..59b3387 100644
---- a/drivers/iommu/arm-smmu-v3.c
-+++ b/drivers/iommu/arm-smmu-v3.c
-@@ -1767,7 +1767,7 @@ static int arm_smmu_map(struct iommu_domain *domain, unsigned long iova,
- 	if (!ops)
- 		return 0;
- 
--	return ops->unmap(ops, iova, size);
-+	return ops->unmap(ops, iova, size, IOMMU_STRICT);
+diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+index dabf1086..6bf7f5a 100644
+--- a/drivers/pci/host/pcie-mediatek.c
++++ b/drivers/pci/host/pcie-mediatek.c
+@@ -132,12 +132,14 @@ struct mtk_pcie_port;
+ /**
+  * struct mtk_pcie_soc - differentiate between host generations
+  * @need_fix_class_id: whether this host's class ID needed to be fixed or not
++ * @pm_support: whether the host's MTCMOS will be off when suspend
+  * @ops: pointer to configuration access functions
+  * @startup: pointer to controller setting functions
+  * @setup_irq: pointer to initialize IRQ functions
+  */
+ struct mtk_pcie_soc {
+ 	bool need_fix_class_id;
++	bool pm_support;
+ 	struct pci_ops *ops;
+ 	int (*startup)(struct mtk_pcie_port *port);
+ 	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
+@@ -1179,12 +1181,70 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+ 	return err;
  }
  
- static void arm_smmu_flush_iotlb_all(struct iommu_domain *domain)
-diff --git a/drivers/iommu/arm-smmu.c b/drivers/iommu/arm-smmu.c
-index 69e7c60..253e807 100644
---- a/drivers/iommu/arm-smmu.c
-+++ b/drivers/iommu/arm-smmu.c
-@@ -1249,7 +1249,7 @@ static size_t arm_smmu_unmap(struct iommu_domain *domain, unsigned long iova,
- 	if (!ops)
- 		return 0;
- 
--	return ops->unmap(ops, iova, size);
-+	return ops->unmap(ops, iova, size, IOMMU_STRICT);
- }
- 
- static void arm_smmu_iotlb_sync(struct iommu_domain *domain)
-diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
-index 10e4a3d..799eced 100644
---- a/drivers/iommu/io-pgtable-arm-v7s.c
-+++ b/drivers/iommu/io-pgtable-arm-v7s.c
-@@ -658,7 +658,7 @@ static size_t __arm_v7s_unmap(struct arm_v7s_io_pgtable *data,
- }
- 
- static size_t arm_v7s_unmap(struct io_pgtable_ops *ops, unsigned long iova,
--			    size_t size)
-+			    size_t size, int strict)
- {
- 	struct arm_v7s_io_pgtable *data = io_pgtable_ops_to_data(ops);
- 
-@@ -883,7 +883,7 @@ static int __init arm_v7s_do_selftests(void)
- 	size = 1UL << __ffs(cfg.pgsize_bitmap);
- 	while (i < loopnr) {
- 		iova_start = i * SZ_16M;
--		if (ops->unmap(ops, iova_start + size, size) != size)
-+		if (ops->unmap(ops, iova_start + size, size, IOMMU_STRICT) != size)
- 			return __FAIL(ops);
- 
- 		/* Remap of partial unmap */
-@@ -902,7 +902,7 @@ static int __init arm_v7s_do_selftests(void)
- 	while (i != BITS_PER_LONG) {
- 		size = 1UL << i;
- 
--		if (ops->unmap(ops, iova, size) != size)
-+		if (ops->unmap(ops, iova, size, IOMMU_STRICT) != size)
- 			return __FAIL(ops);
- 
- 		if (ops->iova_to_phys(ops, iova + 42))
-diff --git a/drivers/iommu/io-pgtable-arm.c b/drivers/iommu/io-pgtable-arm.c
-index 39c2a05..e0f52db 100644
---- a/drivers/iommu/io-pgtable-arm.c
-+++ b/drivers/iommu/io-pgtable-arm.c
-@@ -624,7 +624,7 @@ static size_t __arm_lpae_unmap(struct arm_lpae_io_pgtable *data,
- }
- 
- static size_t arm_lpae_unmap(struct io_pgtable_ops *ops, unsigned long iova,
--			     size_t size)
-+			     size_t size, int strict)
- {
- 	struct arm_lpae_io_pgtable *data = io_pgtable_ops_to_data(ops);
- 	arm_lpae_iopte *ptep = data->pgd;
-@@ -1108,7 +1108,7 @@ static int __init arm_lpae_run_tests(struct io_pgtable_cfg *cfg)
- 
- 		/* Partial unmap */
- 		size = 1UL << __ffs(cfg->pgsize_bitmap);
--		if (ops->unmap(ops, SZ_1G + size, size) != size)
-+		if (ops->unmap(ops, SZ_1G + size, size, IOMMU_STRICT) != size)
- 			return __FAIL(ops, i);
- 
- 		/* Remap of partial unmap */
-@@ -1124,7 +1124,7 @@ static int __init arm_lpae_run_tests(struct io_pgtable_cfg *cfg)
- 		while (j != BITS_PER_LONG) {
- 			size = 1UL << j;
- 
--			if (ops->unmap(ops, iova, size) != size)
-+			if (ops->unmap(ops, iova, size, IOMMU_STRICT) != size)
- 				return __FAIL(ops, i);
- 
- 			if (ops->iova_to_phys(ops, iova + 42))
-diff --git a/drivers/iommu/io-pgtable.h b/drivers/iommu/io-pgtable.h
-index 2df7909..2908806 100644
---- a/drivers/iommu/io-pgtable.h
-+++ b/drivers/iommu/io-pgtable.h
-@@ -120,7 +120,7 @@ struct io_pgtable_ops {
- 	int (*map)(struct io_pgtable_ops *ops, unsigned long iova,
- 		   phys_addr_t paddr, size_t size, int prot);
- 	size_t (*unmap)(struct io_pgtable_ops *ops, unsigned long iova,
--			size_t size);
-+			size_t size, int strict);
- 	phys_addr_t (*iova_to_phys)(struct io_pgtable_ops *ops,
- 				    unsigned long iova);
- };
-diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
-index 40ae6e8..e6d9e11 100644
---- a/drivers/iommu/ipmmu-vmsa.c
-+++ b/drivers/iommu/ipmmu-vmsa.c
-@@ -716,7 +716,7 @@ static size_t ipmmu_unmap(struct iommu_domain *io_domain, unsigned long iova,
- {
- 	struct ipmmu_vmsa_domain *domain = to_vmsa_domain(io_domain);
- 
--	return domain->iop->unmap(domain->iop, iova, size);
-+	return domain->iop->unmap(domain->iop, iova, size, IOMMU_STRICT);
- }
- 
- static void ipmmu_iotlb_sync(struct iommu_domain *io_domain)
-diff --git a/drivers/iommu/msm_iommu.c b/drivers/iommu/msm_iommu.c
-index 0d33504..180fa3d 100644
---- a/drivers/iommu/msm_iommu.c
-+++ b/drivers/iommu/msm_iommu.c
-@@ -532,7 +532,7 @@ static size_t msm_iommu_unmap(struct iommu_domain *domain, unsigned long iova,
- 	unsigned long flags;
- 
- 	spin_lock_irqsave(&priv->pgtlock, flags);
--	len = priv->iop->unmap(priv->iop, iova, len);
-+	len = priv->iop->unmap(priv->iop, iova, len, IOMMU_STRICT);
- 	spin_unlock_irqrestore(&priv->pgtlock, flags);
- 
- 	return len;
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index f2832a1..54661ed 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -386,7 +386,7 @@ static size_t mtk_iommu_unmap(struct iommu_domain *domain,
- 	size_t unmapsz;
- 
- 	spin_lock_irqsave(&dom->pgtlock, flags);
--	unmapsz = dom->iop->unmap(dom->iop, iova, size);
-+	unmapsz = dom->iop->unmap(dom->iop, iova, size, IOMMU_STRICT);
- 	spin_unlock_irqrestore(&dom->pgtlock, flags);
- 
- 	return unmapsz;
-diff --git a/drivers/iommu/qcom_iommu.c b/drivers/iommu/qcom_iommu.c
-index 65b9c99..90abde1 100644
---- a/drivers/iommu/qcom_iommu.c
-+++ b/drivers/iommu/qcom_iommu.c
-@@ -444,7 +444,7 @@ static size_t qcom_iommu_unmap(struct iommu_domain *domain, unsigned long iova,
- 	 */
- 	pm_runtime_get_sync(qcom_domain->iommu->dev);
- 	spin_lock_irqsave(&qcom_domain->pgtbl_lock, flags);
--	ret = ops->unmap(ops, iova, size);
-+	ret = ops->unmap(ops, iova, size, IOMMU_STRICT);
- 	spin_unlock_irqrestore(&qcom_domain->pgtbl_lock, flags);
- 	pm_runtime_put_sync(qcom_domain->iommu->dev);
- 
-diff --git a/include/linux/iommu.h b/include/linux/iommu.h
-index 19938ee..39b3150 100644
---- a/include/linux/iommu.h
-+++ b/include/linux/iommu.h
-@@ -86,6 +86,8 @@ struct iommu_domain_geometry {
- #define IOMMU_DOMAIN_DMA	(__IOMMU_DOMAIN_PAGING |	\
- 				 __IOMMU_DOMAIN_DMA_API)
- 
-+#define IOMMU_STRICT		1
++#ifdef CONFIG_PM_SLEEP
++static int mtk_pcie_suspend_noirq(struct device *dev)
++{
++	struct mtk_pcie *pcie = dev_get_drvdata(dev);
++	const struct mtk_pcie_soc *soc = pcie->soc;
++	struct mtk_pcie_port *port;
 +
- struct iommu_domain {
- 	unsigned type;
- 	const struct iommu_ops *ops;
++	if (!soc->pm_support)
++		return 0;
++
++	list_for_each_entry(port, &pcie->ports, list) {
++		clk_disable_unprepare(port->ahb_ck);
++		clk_disable_unprepare(port->sys_ck);
++		phy_power_off(port->phy);
++	}
++
++	return 0;
++}
++
++static int mtk_pcie_resume_noirq(struct device *dev)
++{
++	struct mtk_pcie *pcie = dev_get_drvdata(dev);
++	const struct mtk_pcie_soc *soc = pcie->soc;
++	struct mtk_pcie_port *port;
++	int ret;
++
++	soc = pcie->soc;
++	if (!soc->pm_support)
++		return 0;
++
++	list_for_each_entry(port, &pcie->ports, list) {
++		phy_power_on(port->phy);
++		clk_prepare_enable(port->sys_ck);
++		clk_prepare_enable(port->ahb_ck);
++
++		ret = soc->startup(port);
++		if (ret) {
++			dev_err(dev, "Port%d link down\n", port->slot);
++			phy_power_off(port->phy);
++			clk_disable_unprepare(port->sys_ck);
++			clk_disable_unprepare(port->ahb_ck);
++			return ret;
++		}
++
++		if (IS_ENABLED(CONFIG_PCI_MSI))
++			mtk_pcie_enable_msi(port);
++	}
++
++	return 0;
++}
++#endif
++
++const struct dev_pm_ops mtk_pcie_pm_ops = {
++	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_pcie_suspend_noirq,
++				      mtk_pcie_resume_noirq)
++};
++
+ static const struct mtk_pcie_soc mtk_pcie_soc_v1 = {
+ 	.ops = &mtk_pcie_ops,
+ 	.startup = mtk_pcie_startup_port,
+ };
+ 
+ static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
++	.pm_support = true,
+ 	.ops = &mtk_pcie_ops_v2,
+ 	.startup = mtk_pcie_startup_port_v2,
+ 	.setup_irq = mtk_pcie_setup_irq,
+@@ -1211,6 +1271,7 @@ static struct platform_driver mtk_pcie_driver = {
+ 		.name = "mtk-pcie",
+ 		.of_match_table = mtk_pcie_ids,
+ 		.suppress_bind_attrs = true,
++		.pm = &mtk_pcie_pm_ops,
+ 	},
+ };
+ builtin_platform_driver(mtk_pcie_driver);
 -- 
-1.8.3
+2.6.4
