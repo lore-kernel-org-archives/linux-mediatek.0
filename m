@@ -1,125 +1,127 @@
-From: <honghui.zhang@mediatek.com>
-Subject: [PATCH v2] PCI: mediatek: Add system pm support for MT2712
-Date: Thu, 31 May 2018 16:15:45 +0800
-Message-ID: <1527754545-32378-1-git-send-email-honghui.zhang@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: mt6797-mt6351: add hostless phone call
+	path" to the asoc tree
+Date: Thu, 31 May 2018 12:06:18 +0100
+Message-ID: <E1fOLPO-0001wK-7q@debutante>
+References: <1527729981-4802-3-git-send-email-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: lorenzo.pieralisi@arm.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com
-Cc: honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1527729981-4802-3-git-send-email-kaichieh.chuang@mediatek.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+Cc: alsa-devel@alsa-project.org, broonie@kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, kaichieh.chuang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+The patch
 
-The MTCMOS of PCIe Host for MT2712 will be off when system suspend, and all
-the internal control register will be reset after system resume. The PCIe
-link should be re-established and the related control register values
-should be re-set after system resume.
+   ASoC: mt6797-mt6351: add hostless phone call path
 
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-CC: Ryder Lee <ryder.lee@mediatek.com>
+has been applied to the asoc tree at
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From 983333c0f6c4c6b4dab1257d14d16c31912d7561 Mon Sep 17 00:00:00 2001
+From: Kai Chieh Chuang <kaichieh.chuang@mediatek.com>
+Date: Thu, 31 May 2018 09:26:21 +0800
+Subject: [PATCH] ASoC: mt6797-mt6351: add hostless phone call path
+
+Signed-off-by: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- drivers/pci/host/pcie-mediatek.c | 61 ++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 61 insertions(+)
+ sound/soc/mediatek/mt6797/mt6797-mt6351.c | 46 +++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
 
-diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-index dabf1086..6bf7f5a 100644
---- a/drivers/pci/host/pcie-mediatek.c
-+++ b/drivers/pci/host/pcie-mediatek.c
-@@ -132,12 +132,14 @@ struct mtk_pcie_port;
- /**
-  * struct mtk_pcie_soc - differentiate between host generations
-  * @need_fix_class_id: whether this host's class ID needed to be fixed or not
-+ * @pm_support: whether the host's MTCMOS will be off when suspend
-  * @ops: pointer to configuration access functions
-  * @startup: pointer to controller setting functions
-  * @setup_irq: pointer to initialize IRQ functions
-  */
- struct mtk_pcie_soc {
- 	bool need_fix_class_id;
-+	bool pm_support;
- 	struct pci_ops *ops;
- 	int (*startup)(struct mtk_pcie_port *port);
- 	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
-@@ -1179,12 +1181,70 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 	return err;
- }
- 
-+#ifdef CONFIG_PM_SLEEP
-+static int mtk_pcie_suspend_noirq(struct device *dev)
-+{
-+	struct mtk_pcie *pcie = dev_get_drvdata(dev);
-+	const struct mtk_pcie_soc *soc = pcie->soc;
-+	struct mtk_pcie_port *port;
-+
-+	if (!soc->pm_support)
-+		return 0;
-+
-+	list_for_each_entry(port, &pcie->ports, list) {
-+		clk_disable_unprepare(port->ahb_ck);
-+		clk_disable_unprepare(port->sys_ck);
-+		phy_power_off(port->phy);
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_pcie_resume_noirq(struct device *dev)
-+{
-+	struct mtk_pcie *pcie = dev_get_drvdata(dev);
-+	const struct mtk_pcie_soc *soc = pcie->soc;
-+	struct mtk_pcie_port *port;
-+	int ret;
-+
-+	soc = pcie->soc;
-+	if (!soc->pm_support)
-+		return 0;
-+
-+	list_for_each_entry(port, &pcie->ports, list) {
-+		phy_power_on(port->phy);
-+		clk_prepare_enable(port->sys_ck);
-+		clk_prepare_enable(port->ahb_ck);
-+
-+		ret = soc->startup(port);
-+		if (ret) {
-+			dev_err(dev, "Port%d link down\n", port->slot);
-+			phy_power_off(port->phy);
-+			clk_disable_unprepare(port->sys_ck);
-+			clk_disable_unprepare(port->ahb_ck);
-+			return ret;
-+		}
-+
-+		if (IS_ENABLED(CONFIG_PCI_MSI))
-+			mtk_pcie_enable_msi(port);
-+	}
-+
-+	return 0;
-+}
-+#endif
-+
-+const struct dev_pm_ops mtk_pcie_pm_ops = {
-+	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_pcie_suspend_noirq,
-+				      mtk_pcie_resume_noirq)
-+};
-+
- static const struct mtk_pcie_soc mtk_pcie_soc_v1 = {
- 	.ops = &mtk_pcie_ops,
- 	.startup = mtk_pcie_startup_port,
- };
- 
- static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
-+	.pm_support = true,
- 	.ops = &mtk_pcie_ops_v2,
- 	.startup = mtk_pcie_startup_port_v2,
- 	.setup_irq = mtk_pcie_setup_irq,
-@@ -1211,6 +1271,7 @@ static struct platform_driver mtk_pcie_driver = {
- 		.name = "mtk-pcie",
- 		.of_match_table = mtk_pcie_ids,
- 		.suppress_bind_attrs = true,
-+		.pm = &mtk_pcie_pm_ops,
+diff --git a/sound/soc/mediatek/mt6797/mt6797-mt6351.c b/sound/soc/mediatek/mt6797/mt6797-mt6351.c
+index 9e5866d6819a..b1558c57b9ca 100644
+--- a/sound/soc/mediatek/mt6797/mt6797-mt6351.c
++++ b/sound/soc/mediatek/mt6797/mt6797-mt6351.c
+@@ -89,6 +89,32 @@ static struct snd_soc_dai_link mt6797_mt6351_dai_links[] = {
+ 		.dynamic = 1,
+ 		.dpcm_capture = 1,
  	},
++	{
++		.name = "Hostless_LPBK",
++		.stream_name = "Hostless_LPBK",
++		.cpu_dai_name = "Hostless LPBK DAI",
++		.codec_name = "snd-soc-dummy",
++		.codec_dai_name = "snd-soc-dummy-dai",
++		.trigger = {SND_SOC_DPCM_TRIGGER_PRE,
++			    SND_SOC_DPCM_TRIGGER_PRE},
++		.dynamic = 1,
++		.dpcm_playback = 1,
++		.dpcm_capture = 1,
++		.ignore_suspend = 1,
++	},
++	{
++		.name = "Hostless_Speech",
++		.stream_name = "Hostless_Speech",
++		.cpu_dai_name = "Hostless Speech DAI",
++		.codec_name = "snd-soc-dummy",
++		.codec_dai_name = "snd-soc-dummy-dai",
++		.trigger = {SND_SOC_DPCM_TRIGGER_PRE,
++			    SND_SOC_DPCM_TRIGGER_PRE},
++		.dynamic = 1,
++		.dpcm_playback = 1,
++		.dpcm_capture = 1,
++		.ignore_suspend = 1,
++	},
+ 	/* BE */
+ 	{
+ 		.name = "Primary Codec",
+@@ -99,6 +125,26 @@ static struct snd_soc_dai_link mt6797_mt6351_dai_links[] = {
+ 		.dpcm_capture = 1,
+ 		.ignore_suspend = 1,
+ 	},
++	{
++		.name = "PCM 1",
++		.cpu_dai_name = "PCM 1",
++		.codec_name = "snd-soc-dummy",
++		.codec_dai_name = "snd-soc-dummy-dai",
++		.no_pcm = 1,
++		.dpcm_playback = 1,
++		.dpcm_capture = 1,
++		.ignore_suspend = 1,
++	},
++	{
++		.name = "PCM 2",
++		.cpu_dai_name = "PCM 2",
++		.codec_name = "snd-soc-dummy",
++		.codec_dai_name = "snd-soc-dummy-dai",
++		.no_pcm = 1,
++		.dpcm_playback = 1,
++		.dpcm_capture = 1,
++		.ignore_suspend = 1,
++	},
  };
- builtin_platform_driver(mtk_pcie_driver);
+ 
+ static struct snd_soc_card mt6797_mt6351_card = {
 -- 
-2.6.4
+2.17.0
