@@ -1,47 +1,94 @@
-From: Wei Yongjun <weiyongjun1@huawei.com>
-Subject: [PATCH -next] pinctrl: mediatek: remove redundant return value check
- of platform_get_resource()
-Date: Thu, 31 May 2018 11:39:42 +0000
-Message-ID: <1527766782-72315-1-git-send-email-weiyongjun1@huawei.com>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH 1/7] iommu/dma: fix trival coding style mistake
+Date: Thu, 31 May 2018 14:03:42 +0100
+Message-ID: <b473059d-fee6-1627-4749-192771038741@arm.com>
+References: <1527752569-18020-1-git-send-email-thunder.leizhen@huawei.com>
+	<1527752569-18020-2-git-send-email-thunder.leizhen@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Sean Wang <sean.wang@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org, Wei Yongjun <weiyongjun1@huawei.com>, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <1527752569-18020-2-git-send-email-thunder.leizhen-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Zhen Lei <thunder.leizhen-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, linux-mediatek <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-arm-msm <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, iommu <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Cc: Xinwei Hu <huxinwei-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Guozhu Li <liguozhu-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Libin <huawei.libin-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Hanjun Guo <guohanjun-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Remove unneeded error handling on the result of a call
-to platform_get_resource() when the value is passed to
-devm_ioremap_resource().
+On 31/05/18 08:42, Zhen Lei wrote:
+> The static function iova_reserve_iommu_regions is only called by function
+> iommu_dma_init_domain, and the 'if (!dev)' check in iommu_dma_init_domain
+> affect it only, so we can safely move the check into it. I think it looks
+> more natural.
 
-Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
----
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 5 -----
- 1 file changed, 5 deletions(-)
+As before, I disagree - the logic of iommu_dma_init_domain() is "we 
+expect to have a valid device, but stop here if we don't", and moving 
+the check just needlessly obfuscates that. It is not a coincidence that 
+the arguments of both functions are in effective order of importance.
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index b379969..16ff56f9 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -1000,11 +1000,6 @@ static int mtk_eint_init(struct mtk_pinctrl *pctl, struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	if (!res) {
--		dev_err(&pdev->dev, "Unable to get eint resource\n");
--		return -ENODEV;
--	}
--
- 	pctl->eint->base = devm_ioremap_resource(&pdev->dev, res);
- 	if (IS_ERR(pctl->eint->base))
- 		return PTR_ERR(pctl->eint->base);
+> In addition, the local variable 'ret' is only assigned in the branch of
+> 'if (region->type == IOMMU_RESV_MSI)', so the 'if (ret)' should also only
+> take effect in the branch, add a brace to enclose it.
+
+'ret' is clearly also assigned at its declaration, to cover the (very 
+likely) case where we don't enter the loop at all. Thus testing it in 
+the loop is harmless, and cluttering that up with extra tabs and braces 
+is just noise.
+
+Robin.
+
+> No functional changes.
+> 
+> Signed-off-by: Zhen Lei <thunder.leizhen-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+> ---
+>   drivers/iommu/dma-iommu.c | 12 +++++++-----
+>   1 file changed, 7 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
+> index ddcbbdb..4e885f7 100644
+> --- a/drivers/iommu/dma-iommu.c
+> +++ b/drivers/iommu/dma-iommu.c
+> @@ -231,6 +231,9 @@ static int iova_reserve_iommu_regions(struct device *dev,
+>   	LIST_HEAD(resv_regions);
+>   	int ret = 0;
+>   
+> +	if (!dev)
+> +		return 0;
+> +
+>   	if (dev_is_pci(dev))
+>   		iova_reserve_pci_windows(to_pci_dev(dev), iovad);
+>   
+> @@ -246,11 +249,12 @@ static int iova_reserve_iommu_regions(struct device *dev,
+>   		hi = iova_pfn(iovad, region->start + region->length - 1);
+>   		reserve_iova(iovad, lo, hi);
+>   
+> -		if (region->type == IOMMU_RESV_MSI)
+> +		if (region->type == IOMMU_RESV_MSI) {
+>   			ret = cookie_init_hw_msi_region(cookie, region->start,
+>   					region->start + region->length);
+> -		if (ret)
+> -			break;
+> +			if (ret)
+> +				break;
+> +		}
+>   	}
+>   	iommu_put_resv_regions(dev, &resv_regions);
+>   
+> @@ -308,8 +312,6 @@ int iommu_dma_init_domain(struct iommu_domain *domain, dma_addr_t base,
+>   	}
+>   
+>   	init_iova_domain(iovad, 1UL << order, base_pfn);
+> -	if (!dev)
+> -		return 0;
+>   
+>   	return iova_reserve_iommu_regions(dev, domain);
+>   }
+> 
