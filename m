@@ -1,87 +1,79 @@
-From: Honghui Zhang <honghui.zhang@mediatek.com>
-Subject: Re: [PATCH] PCI: mediatek: Add system pm support for MT2712
-Date: Thu, 31 May 2018 15:37:40 +0800
-Message-ID: <1527752260.28160.3.camel@mhfsdcap03>
-References: <1527647736-19986-1-git-send-email-honghui.zhang@mediatek.com>
-         <20180531042020.GQ39853@bhelgaas-glaptop.roam.corp.google.com>
+From: Zhen Lei <thunder.leizhen-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH 0/7] add non-strict mode support for arm-smmu-v3
+Date: Thu, 31 May 2018 15:42:42 +0800
+Message-ID: <1527752569-18020-1-git-send-email-thunder.leizhen@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180531042020.GQ39853@bhelgaas-glaptop.roam.corp.google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: lorenzo.pieralisi@arm.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, youlin.pei@mediatek.com, hongkun.cao@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com, yt.shen@mediatek.com, yong.wu@mediatek.com
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, linux-mediatek <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-arm-msm <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, iommu <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Cc: Xinwei Hu <huxinwei-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Hanjun Guo <guohanjun-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Guozhu Li <liguozhu-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Libin <huawei.libin-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-05-30 at 23:20 -0500, Bjorn Helgaas wrote:
-> On Wed, May 30, 2018 at 10:35:36AM +0800, honghui.zhang@mediatek.com wrote:
-> > From: Honghui Zhang <honghui.zhang@mediatek.com>
-> > 
-> > The MTCMOS of PCIe Host for MT2712 will be off when system suspend, and all
-> > the internel control register will be reset after system resume. The PCIe
-> > link should be re-established and the related control register values should
-> > be re-set after system resume.
-> > 
-> > Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> > CC: Ryder Lee <ryder.lee@mediatek.com>
-> > ---
-> >  drivers/pci/host/pcie-mediatek.c | 82 ++++++++++++++++++++++++++++++++++++++++
-> >  1 file changed, 82 insertions(+)
-> > 
-> > diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
-> > index dabf1086..60f98d92 100644
-> > --- a/drivers/pci/host/pcie-mediatek.c
-> > +++ b/drivers/pci/host/pcie-mediatek.c
-> > @@ -132,12 +132,14 @@ struct mtk_pcie_port;
-> >  /**
-> >   * struct mtk_pcie_soc - differentiate between host generations
-> >   * @need_fix_class_id: whether this host's class ID needed to be fixed or not
-> > + * @pm_support: whether the host's MTCMOS will be off when suspend
-> >   * @ops: pointer to configuration access functions
-> >   * @startup: pointer to controller setting functions
-> >   * @setup_irq: pointer to initialize IRQ functions
-> >   */
-> >  struct mtk_pcie_soc {
-> >  	bool need_fix_class_id;
-> > +	bool pm_support;
-> >  	struct pci_ops *ops;
-> >  	int (*startup)(struct mtk_pcie_port *port);
-> >  	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
-> > @@ -1179,12 +1181,91 @@ static int mtk_pcie_probe(struct platform_device *pdev)
-> >  	return err;
-> >  }
-> >  
-> > +static int __maybe_unused mtk_pcie_suspend_noirq(struct device *dev)
-> > +{
-> > +	struct platform_device *pdev;
-> > +	struct mtk_pcie *pcie;
-> > +	struct mtk_pcie_port *port;
-> > +	const struct mtk_pcie_soc *soc;
-> > +
-> > +	pdev = to_platform_device(dev);
-> > +	pcie = platform_get_drvdata(pdev);
-> > +	soc = pcie->soc;
-> > +	if (!soc->pm_support)
-> > +		return 0;
-> > +
-> > +	list_for_each_entry(port, &pcie->ports, list) {
-> > +		clk_disable_unprepare(port->ahb_ck);
-> > +		clk_disable_unprepare(port->sys_ck);
-> > +		phy_power_off(port->phy);
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int __maybe_unused mtk_pcie_resume_noirq(struct device *dev)
-> 
-> I don't really like the __maybe_unused annotations.  Looking at the
-> other users of SET_NOIRQ_SYSTEM_SLEEP_PM_OPS, I think a small majority
-> of them wrap the function definitions in #ifdef CONFIG_PM_SLEEP
-> instead of using __maybe_unused.  That's also a bit ugly, but has the
-> advantage of truly omitting the definitions when they're not needed.
+In common, a IOMMU unmap operation follow the below steps:
+1. remove the mapping in page table of the specified iova range
+2. execute tlbi command to invalid the mapping which is cached in TLB
+3. wait for the above tlbi operation to be finished
+4. free the IOVA resource
+5. free the physical memory resource
 
-Ok, I will follow your advise in the next version.
+This maybe a problem when unmap is very frequently, the combination of tlbi
+and wait operation will consume a lot of time. A feasible method is put off
+tlbi and iova-free operation, when accumulating to a certain number or
+reaching a specified time, execute only one tlbi_all command to clean up
+TLB, then free the backup IOVAs. Mark as non-strict mode.
 
-thanks.
+But it must be noted that, although the mapping has already been removed in
+the page table, it maybe still exist in TLB. And the freed physical memory
+may also be reused for others. So a attacker can persistent access to memory
+based on the just freed IOVA, to obtain sensible data or corrupt memory. So
+the VFIO should always choose the strict mode.
+
+Some may consider put off physical memory free also, that will still follow
+strict mode. But for the map_sg cases, the memory allocation is not controlled
+by IOMMU APIs, so it is not enforceable.
+
+Fortunately, Intel and AMD have already applied the non-strict mode, and put
+queue_iova() operation into the common file dma-iommu.c., and my work is based
+on it. The difference is that arm-smmu-v3 driver will call IOMMU common APIs to
+unmap, but Intel and AMD IOMMU drivers are not.
+
+Below is the performance data of strict vs non-strict for NVMe device:
+Randomly Read  IOPS: 146K(strict) vs 573K(non-strict)
+Randomly Write IOPS: 143K(strict) vs 513K(non-strict)
+
+
+Zhen Lei (7):
+  iommu/dma: fix trival coding style mistake
+  iommu/arm-smmu-v3: fix the implementation of flush_iotlb_all hook
+  iommu: prepare for the non-strict mode support
+  iommu/amd: make sure TLB to be flushed before IOVA freed
+  iommu/dma: add support for non-strict mode
+  iommu/io-pgtable-arm: add support for non-strict mode
+  iommu/arm-smmu-v3: add support for non-strict mode
+
+ drivers/iommu/amd_iommu.c          |  2 +-
+ drivers/iommu/arm-smmu-v3.c        | 16 ++++++++++++---
+ drivers/iommu/arm-smmu.c           |  2 +-
+ drivers/iommu/dma-iommu.c          | 41 ++++++++++++++++++++++++++++++--------
+ drivers/iommu/io-pgtable-arm-v7s.c |  6 +++---
+ drivers/iommu/io-pgtable-arm.c     | 28 ++++++++++++++------------
+ drivers/iommu/io-pgtable.h         |  2 +-
+ drivers/iommu/ipmmu-vmsa.c         |  2 +-
+ drivers/iommu/msm_iommu.c          |  2 +-
+ drivers/iommu/mtk_iommu.c          |  2 +-
+ drivers/iommu/qcom_iommu.c         |  2 +-
+ include/linux/iommu.h              |  5 +++++
+ 12 files changed, 76 insertions(+), 34 deletions(-)
+
+-- 
+1.8.3
