@@ -1,46 +1,124 @@
-From: kbuild test robot <lkp@intel.com>
-Subject: Re: [PATCH] PCI: mediatek: Add system pm support for MT2712
-Date: Fri, 1 Jun 2018 08:42:27 +0800
-Message-ID: <201806010727.GOthd5OK%fengguang.wu@intel.com>
-References: <1527647736-19986-1-git-send-email-honghui.zhang@mediatek.com>
+From: <honghui.zhang@mediatek.com>
+Subject: [PATCH v3] PCI: mediatek: Add system pm support for MT2712
+Date: Fri, 1 Jun 2018 11:04:30 +0800
+Message-ID: <1527822270-30280-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1527647736-19986-1-git-send-email-honghui.zhang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: kbuild-all@01.org, lorenzo.pieralisi@arm.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
+To: lorenzo.pieralisi@arm.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com
+Cc: honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Honghui,
+From: Honghui Zhang <honghui.zhang@mediatek.com>
 
-Thank you for the patch! Perhaps something to improve:
+The MTCMOS of PCIe Host for MT2712 will be off when system suspend, and all
+the internal control register will be reset after system resume. The PCIe
+link should be re-established and the related control register values
+should be re-set after system resume.
 
-[auto build test WARNING on pci/next]
-[also build test WARNING on next-20180531]
-[cannot apply to v4.17-rc7]
-[if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
-
-url:    https://github.com/0day-ci/linux/commits/honghui-zhang-mediatek-com/PCI-mediatek-Add-system-pm-support-for-MT2712/20180601-053217
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/helgaas/pci.git next
-reproduce:
-        # apt-get install sparse
-        make ARCH=x86_64 allmodconfig
-        make C=1 CF=-D__CHECK_ENDIAN__
-
-
-sparse warnings: (new ones prefixed by >>)
-
-   drivers/pci/host/pcie-mediatek.c:463:40: sparse: incorrect type in argument 1 (different address spaces) @@    expected void volatile *address @@    got void [novoid volatile *address @@
-   drivers/pci/host/pcie-mediatek.c:463:40:    expected void volatile *address
-   drivers/pci/host/pcie-mediatek.c:463:40:    got void [noderef] <asn:2>*
-   drivers/pci/host/pcie-mediatek.c:586:44: sparse: incorrect type in argument 1 (different address spaces) @@    expected void volatile *address @@    got void [novoid volatile *address @@
-   drivers/pci/host/pcie-mediatek.c:586:44:    expected void volatile *address
-   drivers/pci/host/pcie-mediatek.c:586:44:    got void [noderef] <asn:2>*
->> drivers/pci/host/pcie-mediatek.c:1259:25: sparse: symbol 'mtk_pcie_pm_ops' was not declared. Should it be static?
-
-Please review and possibly fold the followup patch.
-
+Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+CC: Ryder Lee <ryder.lee@mediatek.com>
 ---
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+ drivers/pci/host/pcie-mediatek.c | 60 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 60 insertions(+)
+
+diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+index dabf1086..5363cc7 100644
+--- a/drivers/pci/host/pcie-mediatek.c
++++ b/drivers/pci/host/pcie-mediatek.c
+@@ -132,12 +132,14 @@ struct mtk_pcie_port;
+ /**
+  * struct mtk_pcie_soc - differentiate between host generations
+  * @need_fix_class_id: whether this host's class ID needed to be fixed or not
++ * @pm_support: whether the host's MTCMOS will be off when suspend
+  * @ops: pointer to configuration access functions
+  * @startup: pointer to controller setting functions
+  * @setup_irq: pointer to initialize IRQ functions
+  */
+ struct mtk_pcie_soc {
+ 	bool need_fix_class_id;
++	bool pm_support;
+ 	struct pci_ops *ops;
+ 	int (*startup)(struct mtk_pcie_port *port);
+ 	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
+@@ -1179,12 +1181,69 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+ 	return err;
+ }
+ 
++#ifdef CONFIG_PM_SLEEP
++static int mtk_pcie_suspend_noirq(struct device *dev)
++{
++	struct mtk_pcie *pcie = dev_get_drvdata(dev);
++	const struct mtk_pcie_soc *soc = pcie->soc;
++	struct mtk_pcie_port *port;
++
++	if (!soc->pm_support)
++		return 0;
++
++	list_for_each_entry(port, &pcie->ports, list) {
++		clk_disable_unprepare(port->ahb_ck);
++		clk_disable_unprepare(port->sys_ck);
++		phy_power_off(port->phy);
++	}
++
++	return 0;
++}
++
++static int mtk_pcie_resume_noirq(struct device *dev)
++{
++	struct mtk_pcie *pcie = dev_get_drvdata(dev);
++	const struct mtk_pcie_soc *soc = pcie->soc;
++	struct mtk_pcie_port *port;
++	int ret;
++
++	if (!soc->pm_support)
++		return 0;
++
++	list_for_each_entry(port, &pcie->ports, list) {
++		phy_power_on(port->phy);
++		clk_prepare_enable(port->sys_ck);
++		clk_prepare_enable(port->ahb_ck);
++
++		ret = soc->startup(port);
++		if (ret) {
++			dev_err(dev, "Port%d link down\n", port->slot);
++			phy_power_off(port->phy);
++			clk_disable_unprepare(port->sys_ck);
++			clk_disable_unprepare(port->ahb_ck);
++			return ret;
++		}
++
++		if (IS_ENABLED(CONFIG_PCI_MSI))
++			mtk_pcie_enable_msi(port);
++	}
++
++	return 0;
++}
++#endif
++
++static const struct dev_pm_ops mtk_pcie_pm_ops = {
++	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_pcie_suspend_noirq,
++				      mtk_pcie_resume_noirq)
++};
++
+ static const struct mtk_pcie_soc mtk_pcie_soc_v1 = {
+ 	.ops = &mtk_pcie_ops,
+ 	.startup = mtk_pcie_startup_port,
+ };
+ 
+ static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
++	.pm_support = true,
+ 	.ops = &mtk_pcie_ops_v2,
+ 	.startup = mtk_pcie_startup_port_v2,
+ 	.setup_irq = mtk_pcie_setup_irq,
+@@ -1211,6 +1270,7 @@ static struct platform_driver mtk_pcie_driver = {
+ 		.name = "mtk-pcie",
+ 		.of_match_table = mtk_pcie_ids,
+ 		.suppress_bind_attrs = true,
++		.pm = &mtk_pcie_pm_ops,
+ 	},
+ };
+ builtin_platform_driver(mtk_pcie_driver);
+-- 
+2.6.4
