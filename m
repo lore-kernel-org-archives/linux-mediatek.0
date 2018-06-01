@@ -1,85 +1,34 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 2/2] arm64: dts: Add Mediatek X20 Development Board
- support
-Date: Thu, 31 May 2018 12:17:26 -0500
-Message-ID: <20180531171726.GB23016@rob-hp-laptop>
-References: <20180529045258.1415-1-manivannan.sadhasivam@linaro.org>
- <20180529045258.1415-3-manivannan.sadhasivam@linaro.org>
+From: kbuild test robot <fengguang.wu@intel.com>
+Subject: [RFC PATCH] PCI: mediatek: mtk_pcie_pm_ops can be static
+Date: Fri, 1 Jun 2018 08:42:27 +0800
+Message-ID: <20180601004227.GA98217@lkp-sb05>
+References: <1527647736-19986-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20180529045258.1415-3-manivannan.sadhasivam@linaro.org>
+In-Reply-To: <1527647736-19986-1-git-send-email-honghui.zhang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, taiten.peng@linaro.org, daniel.thompson@linaro.org, amit.kucheria@linaro.org, manivannanece23@gmail.com
+Cc: kbuild-all@01.org, lorenzo.pieralisi@arm.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-tOn Tue, May 29, 2018 at 10:22:58AM +0530, Manivannan Sadhasivam wrote:
-> Add initial device tree support for Mediatek X20 Development Board
-> based on MT6797 Deca core SoC. This board is one of the 96Boards
-> Consumer Edition platform.
-> 
-> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> ---
->  arch/arm64/boot/dts/mediatek/Makefile         |  1 +
->  .../boot/dts/mediatek/mt6797-x20-dev.dts      | 33 +++++++++++++++++++
->  2 files changed, 34 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index ac17f60f998c..5b7fd6ad96e4 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -3,5 +3,6 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts b/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
-> new file mode 100644
-> index 000000000000..2c09ca95d9e2
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
-> @@ -0,0 +1,33 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Device Tree Source for MediaTek X20 Development Board
-> + *
-> + * Copyright (C) 2018, Linaro Ltd.
-> + *
-> + */
-> +
-> +/dts-v1/;
-> +
-> +#include "mt6797.dtsi"
-> +
-> +/ {
-> +	model = "Mediatek X20 Development Board";
-> +	compatible = "archermind,mt6797-x20-dev", "mediatek,mt6797";
 
-The board compatible needs documenting.
+Fixes: 24dc21cd1e9d ("PCI: mediatek: Add system pm support for MT2712")
+Signed-off-by: kbuild test robot <fengguang.wu@intel.com>
+---
+ pcie-mediatek.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> +
-> +	aliases {
-> +		serial0 = &uart1;
-> +	};
-> +
-> +	memory@40000000 {
-> +		device_type = "memory";
-> +		reg = <0 0x40000000 0 0x1e605000>;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path = "serial0:115200n8";
-> +	};
-> +};
-> +
-> +&uart1 {
-> +	status = "okay";
-> +};
-> -- 
-> 2.17.0
-> 
+diff --git a/drivers/pci/host/pcie-mediatek.c b/drivers/pci/host/pcie-mediatek.c
+index e3b16b0..e01cc66 100644
+--- a/drivers/pci/host/pcie-mediatek.c
++++ b/drivers/pci/host/pcie-mediatek.c
+@@ -1256,7 +1256,7 @@ static int __maybe_unused mtk_pcie_resume_noirq(struct device *dev)
+ 	return 0;
+ }
+ 
+-const struct dev_pm_ops mtk_pcie_pm_ops = {
++static const struct dev_pm_ops mtk_pcie_pm_ops = {
+ 	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_pcie_suspend_noirq,
+ 				      mtk_pcie_resume_noirq)
+ };
