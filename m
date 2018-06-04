@@ -1,84 +1,96 @@
-From: NeilBrown <neil@brown.name>
-Subject: Re: [PATCH 0/7] staging: mt7621-pci: Fix coding style issues
-Date: Mon, 04 Jun 2018 10:13:58 +1000
-Message-ID: <877enfqugp.fsf@notabene.neil.brown.name>
-References: <cover.1528040188.git.abdun.nihaal@gmail.com>
+From: "Leizhen (ThunderTown)" <thunder.leizhen-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH 1/7] iommu/dma: fix trival coding style mistake
+Date: Mon, 4 Jun 2018 19:05:30 +0800
+Message-ID: <5B151CFA.10808@huawei.com>
+References: <1527752569-18020-1-git-send-email-thunder.leizhen@huawei.com>
+	<1527752569-18020-2-git-send-email-thunder.leizhen@huawei.com>
+	<b473059d-fee6-1627-4749-192771038741@arm.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-        micalg=pgp-sha256; protocol="application/pgp-signature"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1528040188.git.abdun.nihaal@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: gregkh@linuxfoundation.org
-Cc: matthias.bgg@gmail.com, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Abdun Nihaal <abdun.nihaal@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <b473059d-fee6-1627-4749-192771038741-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, linux-mediatek <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-arm-msm <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, iommu <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Cc: Xinwei Hu <huxinwei-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Guozhu Li <liguozhu-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Libin <huawei.libin-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Hanjun Guo <guohanjun-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
-On Sun, Jun 03 2018, Abdun Nihaal wrote:
-
-> This patchset fixes the following set of coding style=20
-> issues found using checkpatch.
->
-> ERROR: space prohibited after that open parenthesis '('
-> ERROR: trailing whitespace
-> ERROR: space required before the open parenthesis '('
-> ERROR: space required after that ',' (ctx:VxV)
-> ERROR: spaces required around that '=3D' (ctx:VxW)
-> ERROR: spaces required around that '=3D=3D' (ctx:WxV)
-> ERROR: that open brace { should be on the previous line
-
-Hi,
- thanks for contributing these, how ever some of these issues have
- already been address (not all).  I think you must be working from an
- old try.
- When submitting patches to drives/staging, they should be based on
- the staging-next branch of
-    git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
-
- Also, I'd suggest leaving linux-arm-kernel and linux-mediatek off the
- cc list.  They are unlikely to be interested until the driver is ready
- to be moved out of drivers/staging.
-
-Thanks,
-NeilBrown
 
 
->
-> Abdun Nihaal (7):
->   staging: mt7621-pci: Remove space after open parenthesis
->   staging: mt7621-pci: remove trailing whitespace
->   staging: mt7621-pci: add space before open parenthesis
->   staging: mt7621-pci: add space after comma symbol
->   staging: mt7621-pci: add spaces around equal symbol
->   staging: mt7621-pci: add space after '=3D=3D' symbol
->   staging: mt7621-pci: fix coding style error
->
->  drivers/staging/mt7621-pci/pci-mt7621.c | 114 ++++++++++++------------
->  1 file changed, 56 insertions(+), 58 deletions(-)
->
-> --=20
-> 2.17.0
+On 2018/5/31 21:03, Robin Murphy wrote:
+> On 31/05/18 08:42, Zhen Lei wrote:
+>> The static function iova_reserve_iommu_regions is only called by function
+>> iommu_dma_init_domain, and the 'if (!dev)' check in iommu_dma_init_domain
+>> affect it only, so we can safely move the check into it. I think it looks
+>> more natural.
+> 
+> As before, I disagree - the logic of iommu_dma_init_domain() is "we expect to have a valid device, but stop here if we don't", and moving the check just needlessly obfuscates that. It is not a coincidence that the arguments of both functions are in effective order of importance.
+OK
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+> 
+>> In addition, the local variable 'ret' is only assigned in the branch of
+>> 'if (region->type == IOMMU_RESV_MSI)', so the 'if (ret)' should also only
+>> take effect in the branch, add a brace to enclose it.
+> 
+> 'ret' is clearly also assigned at its declaration, to cover the (very likely) case where we don't enter the loop at all. Thus testing it in the loop is harmless, and cluttering that up with extra tabs and braces is just noise.
+OK, I will drop this patch in v2
 
------BEGIN PGP SIGNATURE-----
+> 
+> Robin.
+> 
+>> No functional changes.
+>>
+>> Signed-off-by: Zhen Lei <thunder.leizhen-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+>> ---
+>>   drivers/iommu/dma-iommu.c | 12 +++++++-----
+>>   1 file changed, 7 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
+>> index ddcbbdb..4e885f7 100644
+>> --- a/drivers/iommu/dma-iommu.c
+>> +++ b/drivers/iommu/dma-iommu.c
+>> @@ -231,6 +231,9 @@ static int iova_reserve_iommu_regions(struct device *dev,
+>>       LIST_HEAD(resv_regions);
+>>       int ret = 0;
+>>   +    if (!dev)
+>> +        return 0;
+>> +
+>>       if (dev_is_pci(dev))
+>>           iova_reserve_pci_windows(to_pci_dev(dev), iovad);
+>>   @@ -246,11 +249,12 @@ static int iova_reserve_iommu_regions(struct device *dev,
+>>           hi = iova_pfn(iovad, region->start + region->length - 1);
+>>           reserve_iova(iovad, lo, hi);
+>>   -        if (region->type == IOMMU_RESV_MSI)
+>> +        if (region->type == IOMMU_RESV_MSI) {
+>>               ret = cookie_init_hw_msi_region(cookie, region->start,
+>>                       region->start + region->length);
+>> -        if (ret)
+>> -            break;
+>> +            if (ret)
+>> +                break;
+>> +        }
+>>       }
+>>       iommu_put_resv_regions(dev, &resv_regions);
+>>   @@ -308,8 +312,6 @@ int iommu_dma_init_domain(struct iommu_domain *domain, dma_addr_t base,
+>>       }
+>>         init_iova_domain(iovad, 1UL << order, base_pfn);
+>> -    if (!dev)
+>> -        return 0;
+>>         return iova_reserve_iommu_regions(dev, domain);
+>>   }
+>>
+> 
+> .
+> 
 
-iQIzBAEBCAAdFiEEG8Yp69OQ2HB7X0l6Oeye3VZigbkFAlsUhEYACgkQOeye3VZi
-gbmqeQ//WA32pYuVChludSOQq2pmdfEHZLVBJoxzDx2ew0IVjjXOtSCx3dEig7qI
-pcgiQd9ER1zhBBt/9Y4Fxu4iWA20CA8sQcQJqbmfMIz1rf9yJOBag0hilnYH8SgU
-ccl9hmi+H1F4KPjB53zxFle5okyfiQPlUPzcdGecLg68MPjsNpQdr/XW2LgFwaMV
-J4PqwkjiG9tVWzhHYpNJIkHuW6tk5mgEHkiZFQBTUWW2IX4f0O5Spbju5d1Obc3e
-GBjyXap4xcKMI9zzbYPQet6VAb6Nm5XxuORJ5TZM5KzxTwDv3sJ9QYazynocn1zM
-h1vke1vueXrFo0RlELfWTn5kuwjVOWEdnzlNZnboKTOVV3F0xtR/QdDZuL9mJzbJ
-eds9Jpi2hOtHwTD2jZI1oz10kChWcW9k03kDOWmLUzRLnGGdqofhR8hE0xEj/OcF
-kedW54bI11Ol2xRxaOYTKGViu0wEKYH9devxw4qgH+u2mLHsCYNoZWzUnF8RLiIC
-k4bI4oKxTOsTiBJk9ZmGSU325wORyydScZQo++lJpU20gteUVXWisMsbcXJAW6y4
-1c3VzajAuZH/ipMR4WEiMZX2T9ur9u0YxnQtGnxgpsXkqMeDvqEeQdC/JyuQmHT8
-P9SmOV+eTkItLdq7nt13rAVmj2qgWnlkRQLFwMdZe0c6Zu/8sRw=
-=ysyz
------END PGP SIGNATURE-----
---=-=-=--
+-- 
+Thanks!
+BestRegards
