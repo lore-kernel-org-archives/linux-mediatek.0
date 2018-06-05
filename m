@@ -1,84 +1,76 @@
-From: "Leizhen (ThunderTown)" <thunder.leizhen-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH 5/7] iommu/dma: add support for non-strict mode
-Date: Mon, 4 Jun 2018 20:19:25 +0800
-Message-ID: <5B152E4D.4040205@huawei.com>
-References: <1527752569-18020-6-git-send-email-thunder.leizhen@huawei.com>
-	<201806020106.eRUp2Ehc%fengguang.wu@intel.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 0/2] Add Mediatek X20 Development Board support
+Date: Tue, 5 Jun 2018 17:15:06 +0200
+Message-ID: <06a0535a-132e-9466-80e0-9af74b9af07b@gmail.com>
+References: <20180529045258.1415-1-manivannan.sadhasivam@linaro.org>
+ <06dbc5ef-5bba-f3e0-1b57-3eaeab26ed68@gmail.com>
+ <20180529072719.GA5529@Mani-XPS-13-9360>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <201806020106.eRUp2Ehc%fengguang.wu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: linux-arm-msm <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, iommu <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Xinwei Hu <huxinwei-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Guozhu Li <liguozhu-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, linux-mediatek <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, kbuild-all-JC7UmRfGjtg@public.gmane.org, Libin <huawei.libin-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Hanjun Guo <guohanjun-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180529072719.GA5529@Mani-XPS-13-9360>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, taiten.peng@linaro.org, daniel.thompson@linaro.org, amit.kucheria@linaro.org, manivannanece23@gmail.com, Mars Cheng <mars.cheng@mediatek.com>, Saber Rezvani <irsaber@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 2018/6/2 1:51, kbuild test robot wrote:
-> Hi Zhen,
+On 29/05/18 09:27, Manivannan Sadhasivam wrote:
+> Hi Matthias,
 > 
-> Thank you for the patch! Perhaps something to improve:
+> On Tue, May 29, 2018 at 08:38:27AM +0200, Matthias Brugger wrote:
+>> Hi Manivannan,
+>>
+>> it's nice to see that someone at Linaro cares about upstreaming the 96 board.
+>> From what I can see, your patches add the very same support to the board as
+>> does the mt6797 evaluation board. Do you have plans to upstream more drivers for
+>> the board? Do you have a roadmap or something?
+>>
+>> I'm asking becuase I don't want to have just another dead devicetree in the
+>> kernel which does nothing but provides a boot to rootfs. Especially as this can
+>> be achieved on the same board with the EVB dts.
+>>
 > 
-> [auto build test WARNING on linus/master]
-> [also build test WARNING on v4.17-rc7 next-20180601]
-> [cannot apply to iommu/next]
-> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+> I can understand your concern here. I do have plans to add more drivers
+> in the future for this board but I can't give you any roadmap for that
+> since it mostly falls under the spare time work and I have been doing a
+> similar kind of work for the Bubblegum-96 board in parallel.
 > 
-> url:    https://github.com/0day-ci/linux/commits/Zhen-Lei/add-non-strict-mode-support-for-arm-smmu-v3/20180602-000418
-> config: x86_64-randconfig-x008-201821 (attached as .config)
-> compiler: gcc-7 (Debian 7.3.0-16) 7.3.0
-> reproduce:
->         # save the attached .config to linux build tree
->         make ARCH=x86_64 
-> 
-> All warnings (new ones prefixed by >>):
-> 
->    drivers//iommu/amd_iommu.c: In function 'amd_iommu_capable':
->>> drivers//iommu/amd_iommu.c:3053:2: warning: enumeration value 'IOMMU_CAP_NON_STRICT' not handled in switch [-Wswitch]
->      switch (cap) {
->      ^~~~~~
-> 
-> vim +/IOMMU_CAP_NON_STRICT +3053 drivers//iommu/amd_iommu.c
-> 
-> 645c4c8d arch/x86/kernel/amd_iommu.c Joerg Roedel 2008-12-02  3050  
-> ab636481 drivers/iommu/amd_iommu.c   Joerg Roedel 2014-09-05  3051  static bool amd_iommu_capable(enum iommu_cap cap)
-> dbb9fd86 arch/x86/kernel/amd_iommu.c Sheng Yang   2009-03-18  3052  {
-> 80a506b8 arch/x86/kernel/amd_iommu.c Joerg Roedel 2010-07-27 @3053  	switch (cap) {
-> 80a506b8 arch/x86/kernel/amd_iommu.c Joerg Roedel 2010-07-27  3054  	case IOMMU_CAP_CACHE_COHERENCY:
-> ab636481 drivers/iommu/amd_iommu.c   Joerg Roedel 2014-09-05  3055  		return true;
-> bdddadcb drivers/iommu/amd_iommu.c   Joerg Roedel 2012-07-02  3056  	case IOMMU_CAP_INTR_REMAP:
-> ab636481 drivers/iommu/amd_iommu.c   Joerg Roedel 2014-09-05  3057  		return (irq_remapping_enabled == 1);
-> cfdeec22 drivers/iommu/amd_iommu.c   Will Deacon  2014-10-27  3058  	case IOMMU_CAP_NOEXEC:
-It seems that it's better to change this to 'default'.
-
-> cfdeec22 drivers/iommu/amd_iommu.c   Will Deacon  2014-10-27  3059  		return false;
-> 80a506b8 arch/x86/kernel/amd_iommu.c Joerg Roedel 2010-07-27  3060  	}
-> 80a506b8 arch/x86/kernel/amd_iommu.c Joerg Roedel 2010-07-27  3061  
-> ab636481 drivers/iommu/amd_iommu.c   Joerg Roedel 2014-09-05  3062  	return false;
-> dbb9fd86 arch/x86/kernel/amd_iommu.c Sheng Yang   2009-03-18  3063  }
-> dbb9fd86 arch/x86/kernel/amd_iommu.c Sheng Yang   2009-03-18  3064  
-> 
-> :::::: The code at line 3053 was first introduced by commit
-> :::::: 80a506b8fdcfa868bb53eb740f928217d0966fc1 x86/amd-iommu: Export cache-coherency capability
-> 
-> :::::: TO: Joerg Roedel <joerg.roedel-5C7GfCeVMHo@public.gmane.org>
-> :::::: CC: Joerg Roedel <joerg.roedel-5C7GfCeVMHo@public.gmane.org>
-> 
-> ---
-> 0-DAY kernel test infrastructure                Open Source Technology Center
-> https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+> At most I can guarentee that this board's functionality will be added
+> gradually in upcoming days.
 > 
 
--- 
-Thanks!
-BestRegards
+Sounds good. Fancy to send a v2 with the comments from Rob?
+
+Regards,
+Matthias
+
+> Thanks,
+> Mani
+> 
+>> Regards,
+>> Matthias
+>>
+>> On 29/05/18 06:52, Manivannan Sadhasivam wrote:
+>>> Add devicetree support for Mediatek X20 Development Board by Archermind.
+>>> This board is based on the Deca-Core MT6797 SoC from Mediatek and is
+>>> one of the 96Boards Consumer Edition platform.
+>>>
+>>> With this devicetree change, board can boot into initramfs.
+>>>
+>>> More information about this board can be found in 96Boards product page:
+>>> https://www.96boards.org/product/mediatek-x20/
+>>>
+>>> Manivannan Sadhasivam (2):
+>>>   dt-bindings: Add vendor prefix for ArcherMind
+>>>   arm64: dts: Add Mediatek X20 Development Board support
+>>>
+>>>  .../devicetree/bindings/vendor-prefixes.txt   |  1 +
+>>>  arch/arm64/boot/dts/mediatek/Makefile         |  1 +
+>>>  .../boot/dts/mediatek/mt6797-x20-dev.dts      | 33 +++++++++++++++++++
+>>>  3 files changed, 35 insertions(+)
+>>>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
+>>>
