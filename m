@@ -1,188 +1,55 @@
-From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: Re: [PATCH v4 9/9] drm/mediatek: Add support for mediatek SOC MT2712
-Date: Fri, 8 Jun 2018 16:38:18 +0800
-Message-ID: <1528447098.11190.26.camel@mtksdccf07>
-References: <1527489507-24453-1-git-send-email-stu.hsieh@mediatek.com>
-         <1527489507-24453-10-git-send-email-stu.hsieh@mediatek.com>
-         <1527494014.24367.14.camel@mtksdaap41>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v2 2/2] media: mtk-vcodec: Support VP9 profile in decoder
+Date: Fri, 8 Jun 2018 11:14:01 +0200
+Message-ID: <a631f7f4-3405-5c1a-2932-106e4481ae5a@xs4all.nl>
+References: <20180530071613.125768-1-keiichiw@chromium.org>
+ <20180530071613.125768-3-keiichiw@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1527494014.24367.14.camel@mtksdaap41>
+In-Reply-To: <20180530071613.125768-3-keiichiw@chromium.org>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+To: Keiichi Watanabe <keiichiw@chromium.org>, linux-arm-kernel@lists.infradead.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Smitha T Murthy <smitha.t@samsung.com>, Tom Saeger <tom.saeger@oracle.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Tomasz Figa <tfiga@chromium.org>, Ricardo Ribalda Delgado <ricardo.ribalda@gmail.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, CK:
+On 05/30/2018 09:16 AM, Keiichi Watanabe wrote:
+> Add V4L2_CID_MPEG_VIDEO_VP9_PROFILE control in MediaTek decoder's
+> driver.
+> MediaTek decoder only supports profile 0 for now.
+> 
+> Signed-off-by: Keiichi Watanabe <keiichiw@chromium.org>
+> ---
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+> index 86f0a7134365..f9393504356d 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+> @@ -1400,6 +1400,12 @@ int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_ctx *ctx)
+>  				V4L2_CID_MIN_BUFFERS_FOR_CAPTURE,
+>  				0, 32, 1, 1);
+>  	ctrl->flags |= V4L2_CTRL_FLAG_VOLATILE;
+> +	v4l2_ctrl_new_std_menu(&ctx->ctrl_hdl,
+> +				&mtk_vcodec_dec_ctrl_ops,
+> +				V4L2_CID_MPEG_VIDEO_VP9_PROFILE,
+> +				V4L2_MPEG_VIDEO_VP9_PROFILE_3,
 
+It makes no sense to set max to PROFILE_3 if PROFILE_0 is the only choice.
+Just set max to PROFILE_0 as well.
 
-On Mon, 2018-05-28 at 15:53 +0800, CK Hu wrote:
-> Hi, Stu:
+> +				~(1U << V4L2_MPEG_VIDEO_VP9_PROFILE_0),
+> +				V4L2_MPEG_VIDEO_VP9_PROFILE_0);
 > 
-> Two inline comment.
+>  	if (ctx->ctrl_hdl.error) {
+>  		mtk_v4l2_err("Adding control failed %d",
+> --
+> 2.17.0.921.gf22659ad46-goog
 > 
-> On Mon, 2018-05-28 at 14:38 +0800, Stu Hsieh wrote:
-> > This patch add support for the Mediatek MT2712 DISP subsystem.
-> > There are two OVL engine and three disp output in MT2712.
-> > 
-> > Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 39 ++++++++++++++++++++++++++++++++++
-> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 38 +++++++++++++++++++++++++++++++++
-> >  2 files changed, 77 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-> > index 8bfc0debd2c2..3b22b48a6022 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-> > @@ -61,6 +61,24 @@
-> >  #define MT8173_MUTEX_MOD_DISP_PWM1		24
-> >  #define MT8173_MUTEX_MOD_DISP_OD		25
-> >  
-> > +#define MT2712_MUTEX_MOD_DISP_PWM2		10
-> > +#define MT2712_MUTEX_MOD_DISP_OVL0		11
-> > +#define MT2712_MUTEX_MOD_DISP_OVL1		12
-> > +#define MT2712_MUTEX_MOD_DISP_RDMA0		13
-> > +#define MT2712_MUTEX_MOD_DISP_RDMA1		14
-> > +#define MT2712_MUTEX_MOD_DISP_RDMA2		15
-> > +#define MT2712_MUTEX_MOD_DISP_WDMA0		16
-> > +#define MT2712_MUTEX_MOD_DISP_WDMA1		17
-> > +#define MT2712_MUTEX_MOD_DISP_COLOR0		18
-> > +#define MT2712_MUTEX_MOD_DISP_COLOR1		19
-> > +#define MT2712_MUTEX_MOD_DISP_AAL0		20
-> > +#define MT2712_MUTEX_MOD_DISP_UFOE		22
-> > +#define MT2712_MUTEX_MOD_DISP_PWM0		23
-> > +#define MT2712_MUTEX_MOD_DISP_PWM1		24
-> > +#define MT2712_MUTEX_MOD_DISP_OD0		25
-> > +#define MT2712_MUTEX_MOD2_DISP_AAL1		33
-> > +#define MT2712_MUTEX_MOD2_DISP_OD1		34
-> > +
-> >  #define MT2701_MUTEX_MOD_DISP_OVL		3
-> >  #define MT2701_MUTEX_MOD_DISP_WDMA		6
-> >  #define MT2701_MUTEX_MOD_DISP_COLOR		7
-> > @@ -110,6 +128,26 @@ static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-> >  	[DDP_COMPONENT_WDMA0] = MT2701_MUTEX_MOD_DISP_WDMA,
-> >  };
-> >  
-> > +static const unsigned int mt2712_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-> > +	[DDP_COMPONENT_AAL0] = MT2712_MUTEX_MOD_DISP_AAL0,
-> > +	[DDP_COMPONENT_AAL1] = MT2712_MUTEX_MOD2_DISP_AAL1,
-> > +	[DDP_COMPONENT_COLOR0] = MT2712_MUTEX_MOD_DISP_COLOR0,
-> > +	[DDP_COMPONENT_COLOR1] = MT2712_MUTEX_MOD_DISP_COLOR1,
-> > +	[DDP_COMPONENT_OD0] = MT2712_MUTEX_MOD_DISP_OD0,
-> > +	[DDP_COMPONENT_OD1] = MT2712_MUTEX_MOD2_DISP_OD1,
-> > +	[DDP_COMPONENT_OVL0] = MT2712_MUTEX_MOD_DISP_OVL0,
-> > +	[DDP_COMPONENT_OVL1] = MT2712_MUTEX_MOD_DISP_OVL1,
-> > +	[DDP_COMPONENT_PWM0] = MT2712_MUTEX_MOD_DISP_PWM0,
-> > +	[DDP_COMPONENT_PWM1] = MT2712_MUTEX_MOD_DISP_PWM1,
-> > +	[DDP_COMPONENT_PWM2] = MT2712_MUTEX_MOD_DISP_PWM2,
-> > +	[DDP_COMPONENT_RDMA0] = MT2712_MUTEX_MOD_DISP_RDMA0,
-> > +	[DDP_COMPONENT_RDMA1] = MT2712_MUTEX_MOD_DISP_RDMA1,
-> > +	[DDP_COMPONENT_RDMA2] = MT2712_MUTEX_MOD_DISP_RDMA2,
-> > +	[DDP_COMPONENT_UFOE] = MT2712_MUTEX_MOD_DISP_UFOE,
-> > +	[DDP_COMPONENT_WDMA0] = MT2712_MUTEX_MOD_DISP_WDMA0,
-> > +	[DDP_COMPONENT_WDMA1] = MT2712_MUTEX_MOD_DISP_WDMA1,
-> > +};
-> > +
-> >  static const unsigned int mt8173_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-> >  	[DDP_COMPONENT_AAL0] = MT8173_MUTEX_MOD_DISP_AAL,
-> >  	[DDP_COMPONENT_COLOR0] = MT8173_MUTEX_MOD_DISP_COLOR0,
-> > @@ -430,6 +468,7 @@ static int mtk_ddp_remove(struct platform_device *pdev)
-> >  
-> >  static const struct of_device_id ddp_driver_dt_match[] = {
-> >  	{ .compatible = "mediatek,mt2701-disp-mutex", .data = mt2701_mutex_mod},
-> > +	{ .compatible = "mediatek,mt2712-disp-mutex", .data = mt2712_mutex_mod},
-> >  	{ .compatible = "mediatek,mt8173-disp-mutex", .data = mt8173_mutex_mod},
-> >  	{},
-> >  };
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > index 3d279a299383..3a866e1d6af4 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > @@ -146,6 +146,32 @@ static const enum mtk_ddp_comp_id mt2701_mtk_ddp_ext[] = {
-> >  	DDP_COMPONENT_DPI0,
-> >  };
-> >  
-> > +static const enum mtk_ddp_comp_id mt2712_mtk_ddp_main[] = {
-> > +	DDP_COMPONENT_OVL0,
-> > +	DDP_COMPONENT_COLOR0,
-> > +	DDP_COMPONENT_AAL0,
-> > +	DDP_COMPONENT_OD0,
-> > +	DDP_COMPONENT_RDMA0,
-> > +	DDP_COMPONENT_DPI0,
-> > +	DDP_COMPONENT_PWM0,
-> > +};
-> > +
-> > +static const enum mtk_ddp_comp_id mt2712_mtk_ddp_ext[] = {
-> > +	DDP_COMPONENT_OVL1,
-> > +	DDP_COMPONENT_COLOR1,
-> > +	DDP_COMPONENT_AAL1,
-> > +	DDP_COMPONENT_OD1,
-> > +	DDP_COMPONENT_RDMA1,
-> > +	DDP_COMPONENT_DPI1,
-> 
-> Where do you define DDP_COMPONENT_DPI1?
-> 
-> > +	DDP_COMPONENT_PWM1,
-> > +};
-> > +
-> > +static const enum mtk_ddp_comp_id mt2712_mtk_ddp_third[] = {
-> > +	DDP_COMPONENT_RDMA2,
-> > +	DDP_COMPONENT_DSI2,
-> 
-> Where do you define DDP_COMPONENT_DSI2?
-> 
-
-I would add another patch for these component in next version patch
-series.And add some connection patch from RDMAx to
-DPI0/DPI1/DSI1/DSI2/DSI3.
 
 Regards,
-Stu
 
-> Regards,
-> CK
-> 
-> > +	DDP_COMPONENT_PWM2,
-> > +};
-> > +
-> >  static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
-> >  	DDP_COMPONENT_OVL0,
-> >  	DDP_COMPONENT_COLOR0,
-> > @@ -173,6 +199,15 @@ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
-> >  	.shadow_register = true,
-> >  };
-> >  
-> > +static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
-> > +	.main_path = mt2712_mtk_ddp_main,
-> > +	.main_len = ARRAY_SIZE(mt2712_mtk_ddp_main),
-> > +	.ext_path = mt2712_mtk_ddp_ext,
-> > +	.ext_len = ARRAY_SIZE(mt2712_mtk_ddp_ext),
-> > +	.third_path = mt2712_mtk_ddp_third,
-> > +	.third_len = ARRAY_SIZE(mt2712_mtk_ddp_third),
-> > +};
-> > +
-> >  static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
-> >  	.main_path = mt8173_mtk_ddp_main,
-> >  	.main_len = ARRAY_SIZE(mt8173_mtk_ddp_main),
-> > @@ -379,6 +414,7 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
-> >  	{ .compatible = "mediatek,mt8173-dsi",        .data = (void *)MTK_DSI },
-> >  	{ .compatible = "mediatek,mt8173-dpi",        .data = (void *)MTK_DPI },
-> >  	{ .compatible = "mediatek,mt2701-disp-mutex", .data = (void *)MTK_DISP_MUTEX },
-> > +	{ .compatible = "mediatek,mt2712-disp-mutex", .data = (void *)MTK_DISP_MUTEX },
-> >  	{ .compatible = "mediatek,mt8173-disp-mutex", .data = (void *)MTK_DISP_MUTEX },
-> >  	{ .compatible = "mediatek,mt2701-disp-pwm",   .data = (void *)MTK_DISP_BLS },
-> >  	{ .compatible = "mediatek,mt8173-disp-pwm",   .data = (void *)MTK_DISP_PWM },
-> > @@ -557,6 +593,8 @@ static SIMPLE_DEV_PM_OPS(mtk_drm_pm_ops, mtk_drm_sys_suspend,
-> >  static const struct of_device_id mtk_drm_of_ids[] = {
-> >  	{ .compatible = "mediatek,mt2701-mmsys",
-> >  	  .data = &mt2701_mmsys_driver_data},
-> > +	{ .compatible = "mediatek,mt2712-mmsys",
-> > +	  .data = &mt2712_mmsys_driver_data},
-> >  	{ .compatible = "mediatek,mt8173-mmsys",
-> >  	  .data = &mt8173_mmsys_driver_data},
-> >  	{ }
-> 
-> 
+	Hans
