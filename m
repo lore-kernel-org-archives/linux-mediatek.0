@@ -1,36 +1,75 @@
-From: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH -next] pinctrl: mediatek: remove redundant return value
- check of platform_get_resource()
-Date: Fri, 8 Jun 2018 10:06:26 +0200
-Message-ID: <CACRpkdY3YOAbsXHYu3m-0LUSf0FnXS6vO4+M3+=xUS_YuaydjQ@mail.gmail.com>
-References: <1527766782-72315-1-git-send-email-weiyongjun1@huawei.com>
+From: Stu Hsieh <stu.hsieh@mediatek.com>
+Subject: Re: [PATCH v4 8/9] drm/mediatek: add third ddp path
+Date: Fri, 8 Jun 2018 16:31:24 +0800
+Message-ID: <1528446684.11190.22.camel@mtksdccf07>
+References: <1527489507-24453-1-git-send-email-stu.hsieh@mediatek.com>
+ <1527489507-24453-9-git-send-email-stu.hsieh@mediatek.com>
+ <1527493677.24367.10.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1527766782-72315-1-git-send-email-weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
-Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:GPIO SUBSYSTEM" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1527493677.24367.10.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, May 31, 2018 at 1:39 PM, Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org> wrote:
-
-> Remove unneeded error handling on the result of a call
-> to platform_get_resource() when the value is passed to
-> devm_ioremap_resource().
->
-> Signed-off-by: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
-
-Patch applied for fixes.
-
-Yours,
-Linus Walleij
+T24gTW9uLCAyMDE4LTA1LTI4IGF0IDE1OjQ3ICswODAwLCBDSyBIdSB3cm90ZToKPiBIaSwgU3R1
+Ogo+IAo+IE9uZSBpbmxpbmUgY29tbWVudC4KPiAKPiBPbiBNb24sIDIwMTgtMDUtMjggYXQgMTQ6
+MzggKzA4MDAsIFN0dSBIc2llaCB3cm90ZToKPiA+IFRoaXMgcGF0Y2ggY3JlYXRlIHRoaXJkIGNy
+dGMgYnkgdGhpcmQgZGRwIHBhdGgKPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogU3R1IEhzaWVoIDxz
+dHUuaHNpZWhAbWVkaWF0ZWsuY29tPgo+ID4gLS0tCj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fY3J0Yy5jIHwgMyArKysKPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2RybV9kcnYuYyAgfCA1ICsrKysrCj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kcm1fZHJ2LmggIHwgNyArKysrKy0tCj4gPiAgMyBmaWxlcyBjaGFuZ2VkLCAxMyBpbnNlcnRp
+b25zKCspLCAyIGRlbGV0aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kcm1fY3J0Yy5jCj4gPiBpbmRleCA2NThiOGRkNDViODMuLjJkNmFhMTUwYTlmZiAxMDA2NDQK
+PiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYwo+ID4gKysr
+IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jCj4gPiBAQCAtNTM5LDYg
+KzUzOSw5IEBAIGludCBtdGtfZHJtX2NydGNfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm1f
+ZGV2LAo+ID4gIAlpbnQgcmV0Owo+ID4gIAlpbnQgaTsKPiA+ICAKPiA+ICsJaWYgKCFwYXRoKQo+
+ID4gKwkJcmV0dXJuIDA7Cj4gPiArCj4gPiAgCWZvciAoaSA9IDA7IGkgPCBwYXRoX2xlbjsgaSsr
+KSB7Cj4gPiAgCQllbnVtIG10a19kZHBfY29tcF9pZCBjb21wX2lkID0gcGF0aFtpXTsKPiA+ICAJ
+CXN0cnVjdCBkZXZpY2Vfbm9kZSAqbm9kZTsKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHJtX2Rydi5jCj4gPiBpbmRleCAwOGQ1ZDBiNDdiZmUuLjNkMjc5YTI5OTM4MyAxMDA2NDQKPiA+
+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gPiArKysgYi9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ID4gQEAgLTIzMiw2ICsyMzIs
+MTEgQEAgc3RhdGljIGludCBtdGtfZHJtX2ttc19pbml0KHN0cnVjdCBkcm1fZGV2aWNlICpkcm0p
+Cj4gPiAgCWlmIChyZXQgPCAwKQo+ID4gIAkJZ290byBlcnJfY29tcG9uZW50X3VuYmluZDsKPiA+
+ICAKPiA+ICsJcmV0ID0gbXRrX2RybV9jcnRjX2NyZWF0ZShkcm0sIHByaXZhdGUtPmRhdGEtPnRo
+aXJkX3BhdGgsCj4gPiArCQkJCSAgcHJpdmF0ZS0+ZGF0YS0+dGhpcmRfbGVuKTsKPiA+ICsJaWYg
+KHJldCA8IDApCj4gPiArCQlnb3RvIGVycl9jb21wb25lbnRfdW5iaW5kOwo+ID4gKwo+ID4gIAkv
+KiBVc2UgT1ZMIGRldmljZSBmb3IgYWxsIERNQSBtZW1vcnkgYWxsb2NhdGlvbnMgKi8KPiA+ICAJ
+bnAgPSBwcml2YXRlLT5jb21wX25vZGVbcHJpdmF0ZS0+ZGF0YS0+bWFpbl9wYXRoWzBdXSA/Ogo+
+ID4gIAkgICAgIHByaXZhdGUtPmNvbXBfbm9kZVtwcml2YXRlLT5kYXRhLT5leHRfcGF0aFswXV07
+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2Lmgg
+Yi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaAo+ID4gaW5kZXggYzMzNzhj
+NDUyYzBhLi5kODY3ZTI2ODM5MjMgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RybV9kcnYuaAo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kcm1fZHJ2LmgKPiA+IEBAIC0xNyw4ICsxNyw4IEBACj4gPiAgI2luY2x1ZGUgPGxpbnV4L2lv
+Lmg+Cj4gPiAgI2luY2x1ZGUgIm10a19kcm1fZGRwX2NvbXAuaCIKPiA+ICAKPiA+IC0jZGVmaW5l
+IE1BWF9DUlRDCTIKPiA+IC0jZGVmaW5lIE1BWF9DT05ORUNUT1IJMgo+ID4gKyNkZWZpbmUgTUFY
+X0NSVEMJMwo+ID4gKyNkZWZpbmUgTUFYX0NPTk5FQ1RPUgkzCj4gCj4gTUFYX0NPTk5FQ1RPUiBp
+cyB1c2VsZXNzLCBtYXliZSB3ZSBqdXN0IG5lZWQgdG8gcmVtb3ZlIGl0IGluIGEgY2xlYW4gdXAK
+PiBwYXRjaC4gT3IgeW91IGNvdWxkIGtlZXAgaXRzIHZhbHVlLgpvawpGb3IgdGhpcyBwYXRjaCwg
+SSB3b3VsZCBrZWVwIGl0cyB2YWx1ZS4KClJlZ2FyZHMsClN0dQoKPiAKPiBSZWdhcmRzLAo+IENL
+Cj4gCj4gPiAgCj4gPiAgc3RydWN0IGRldmljZTsKPiA+ICBzdHJ1Y3QgZGV2aWNlX25vZGU7Cj4g
+PiBAQCAtMzMsNiArMzMsOSBAQCBzdHJ1Y3QgbXRrX21tc3lzX2RyaXZlcl9kYXRhIHsKPiA+ICAJ
+dW5zaWduZWQgaW50IG1haW5fbGVuOwo+ID4gIAljb25zdCBlbnVtIG10a19kZHBfY29tcF9pZCAq
+ZXh0X3BhdGg7Cj4gPiAgCXVuc2lnbmVkIGludCBleHRfbGVuOwo+ID4gKwljb25zdCBlbnVtIG10
+a19kZHBfY29tcF9pZCAqdGhpcmRfcGF0aDsKPiA+ICsJdW5zaWduZWQgaW50IHRoaXJkX2xlbjsK
+PiA+ICsKPiA+ICAJYm9vbCBzaGFkb3dfcmVnaXN0ZXI7Cj4gPiAgfTsKPiA+ICAKPiAKPiAKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
