@@ -1,54 +1,109 @@
-From: Stanimir Varbanov <stanimir.varbanov@linaro.org>
-Subject: Re: [PATCH v2 1/2] media: v4l2-ctrl: Add control for VP9 profile
-Date: Fri, 8 Jun 2018 15:56:03 +0300
-Message-ID: <bd56e330-91d2-dfde-4cfb-40b466953dad@linaro.org>
-References: <20180530071613.125768-1-keiichiw@chromium.org>
- <20180530071613.125768-2-keiichiw@chromium.org>
- <a16dca32-4198-72c1-cf22-83f18a8cfcb6@xs4all.nl>
+From: "Leizhen (ThunderTown)" <thunder.leizhen@huawei.com>
+Subject: Re: [PATCH 0/7] add non-strict mode support for arm-smmu-v3
+Date: Sun, 10 Jun 2018 19:13:13 +0800
+Message-ID: <5B1D07C9.6090507@huawei.com>
+References: <1527752569-18020-1-git-send-email-thunder.leizhen@huawei.com>
+ <d65f87a4-db61-3cd2-1a6f-0322025840a8@arm.com>
+ <96cc25b9-b21f-6067-384d-f52e6b8b25e7@huawei.com>
+ <92b240f5-596e-87a9-863a-b18475042cce@arm.com> <5B10ECBB.209@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <a16dca32-4198-72c1-cf22-83f18a8cfcb6@xs4all.nl>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>, Keiichi Watanabe <keiichiw@chromium.org>, linux-arm-kernel@lists.infradead.org
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Smitha T Murthy <smitha.t@samsung.com>, Tom Saeger <tom.saeger@oracle.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Tomasz Figa <tfiga@chromium.org>, Ricardo Ribalda Delgado <ricardo.ribalda@gmail.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <5B10ECBB.209@huawei.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Robin Murphy <robin.murphy@arm.com>, Hanjun Guo <guohanjun@huawei.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Joerg Roedel <joro@8bytes.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, iommu <iommu@lists.linux-foundation.org>, linux-kernel <linux-kernel@vger.kernel.org>
+Cc: Xinwei Hu <huxinwei@huawei.com>, Guozhu Li <liguozhu@hisilicon.com>, Libin <huawei.libin@huawei.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Hans,
 
-On 06/08/2018 12:29 PM, Hans Verkuil wrote:
-> On 05/30/2018 09:16 AM, Keiichi Watanabe wrote:
->> Add a new control V4L2_CID_MPEG_VIDEO_VP9_PROFILE for selecting desired
->> profile for VP9 encoder and querying for supported profiles by VP9 encoder
->> or decoder.
->>
->> An existing control V4L2_CID_MPEG_VIDEO_VPX_PROFILE cannot be
->> used for querying since it is not a menu control but an integer
->> control, which cannot return an arbitrary set of supported profiles.
->>
->> The new control V4L2_CID_MPEG_VIDEO_VP9_PROFILE is a menu control as
->> with controls for other codec profiles. (e.g. H264)
-> 
-> Please ignore my reply to patch 2/2. I looked at this a bit more and what you
-> should do is to change the type of V4L2_CID_MPEG_VIDEO_VPX_PROFILE to enum.
-> 
-> All other codec profile controls are all enums, so the fact that VPX_PROFILE
-> isn't is a bug. Changing the type should not cause any problems since the same
-> control value is used when you set the control.
-> 
-> Sylwester: I see that s5p-mfc uses this control, but it is explicitly added
-> as an integer type control, so the s5p-mfc driver should not be affected by
-> changing the type of this control.
-> 
-> Stanimir: this will slightly change the venus driver, but since it is a very
-> recent driver I think we can get away with changing the core type of the
-> VPX_PROFILE control. I think that's better than ending up with two controls
-> that do the same thing.
 
-I agree. Actually the changes shouldn't be so much in venus driver.
+On 2018/6/1 14:50, Leizhen (ThunderTown) wrote:
+> 
+> 
+> On 2018/5/31 22:25, Robin Murphy wrote:
+>> On 31/05/18 14:49, Hanjun Guo wrote:
+>>> Hi Robin,
+>>>
+>>> On 2018/5/31 19:24, Robin Murphy wrote:
+>>>> On 31/05/18 08:42, Zhen Lei wrote:
+>>>>> In common, a IOMMU unmap operation follow the below steps:
+>>>>> 1. remove the mapping in page table of the specified iova range
+>>>>> 2. execute tlbi command to invalid the mapping which is cached in TLB
+>>>>> 3. wait for the above tlbi operation to be finished
+>>>>> 4. free the IOVA resource
+>>>>> 5. free the physical memory resource
+>>>>>
+>>>>> This maybe a problem when unmap is very frequently, the combination of tlbi
+>>>>> and wait operation will consume a lot of time. A feasible method is put off
+>>>>> tlbi and iova-free operation, when accumulating to a certain number or
+>>>>> reaching a specified time, execute only one tlbi_all command to clean up
+>>>>> TLB, then free the backup IOVAs. Mark as non-strict mode.
+>>>>>
+>>>>> But it must be noted that, although the mapping has already been removed in
+>>>>> the page table, it maybe still exist in TLB. And the freed physical memory
+>>>>> may also be reused for others. So a attacker can persistent access to memory
+>>>>> based on the just freed IOVA, to obtain sensible data or corrupt memory. So
+>>>>> the VFIO should always choose the strict mode.
+>>>>>
+>>>>> Some may consider put off physical memory free also, that will still follow
+>>>>> strict mode. But for the map_sg cases, the memory allocation is not controlled
+>>>>> by IOMMU APIs, so it is not enforceable.
+>>>>>
+>>>>> Fortunately, Intel and AMD have already applied the non-strict mode, and put
+>>>>> queue_iova() operation into the common file dma-iommu.c., and my work is based
+>>>>> on it. The difference is that arm-smmu-v3 driver will call IOMMU common APIs to
+>>>>> unmap, but Intel and AMD IOMMU drivers are not.
+>>>>>
+>>>>> Below is the performance data of strict vs non-strict for NVMe device:
+>>>>> Randomly Read  IOPS: 146K(strict) vs 573K(non-strict)
+>>>>> Randomly Write IOPS: 143K(strict) vs 513K(non-strict)
+>>>>
+>>>> What hardware is this on? If it's SMMUv3 without MSIs (e.g. D05), then you'll still be using the rubbish globally-blocking sync implementation. If that is the case, I'd be very interested to see how much there is to gain from just improving that - I've had a patch kicking around for a while[1] (also on a rebased branch at [2]), but don't have the means for serious performance testing.
+> I will try your patch to see how much it can improve. I think the best way
+Hi Robin,
+
+I applied your patch and got below improvemnet.
+
+Randomly Read  IOPS: 146K --> 214K
+Randomly Write IOPS: 143K --> 212K
+
+> to resovle the globally-blocking sync is that the hardware provide 64bits
+> CONS regitster, so that it can never be wrapped, and the spinlock can also
+> be removed.
+> 
+>>>
+>>> The hardware is the new D06 which the SMMU with MSIs,
+>>
+>> Cool! Now that profiling is fairly useful since we got rid of most of the locks, are you able to get an idea of how the overhead in the normal case is distributed between arm_smmu_cmdq_insert_cmd() and __arm_smmu_sync_poll_msi()? We're always trying to improve our understanding of where command-queue-related overheads turn out to be in practice, and there's still potentially room to do nicer things than TLBI_NH_ALL ;)
+> Even if the software has no overhead, there may still be a problem, because
+> the smmu need to execute the commands in sequence, especially before
+> globally-blocking sync has been removed. Base on the actually execute time
+> of single tlbi and sync, we can get the upper limit in theory.
+> 
+> BTW, I will reply the reset of mail next week. I'm busy with other things now.
+> 
+>>
+>> Robin.
+>>
+>>> it's not D05 :)
+>>>
+>>> Thanks
+>>> Hanjun
+>>>
+>>
+>> .
+>>
+> 
 
 -- 
-regards,
-Stan
+Thanks!
+BestRegards
