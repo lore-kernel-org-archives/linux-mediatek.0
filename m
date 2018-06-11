@@ -1,81 +1,98 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH 1/2] gpio: mediatek: add driver for MT7621
-Date: Mon, 11 Jun 2018 11:29:29 +0800
-Message-ID: <1528687769.21593.19.camel@mtkswgap22>
-References: <1527924610-13135-1-git-send-email-sergio.paracuellos@gmail.com>
- <1527924610-13135-2-git-send-email-sergio.paracuellos@gmail.com>
- <CACRpkdaw9O6TbZie5AOTmQJ9-3=yHETFFX7YVkPBEL72EZzZ=g@mail.gmail.com>
+From: Keiichi Watanabe <keiichiw@google.com>
+Subject: Re: [PATCH v2 1/2] media: v4l2-ctrl: Add control for VP9 profile
+Date: Mon, 11 Jun 2018 15:44:37 +0900
+Message-ID: <CANb2CJFXhY+mzEV7AnM5EQcvqyeAH7G=t3Bi_9_d9_+_Kce9RQ@mail.gmail.com>
+References: <20180530071613.125768-1-keiichiw@chromium.org>
+ <20180530071613.125768-2-keiichiw@chromium.org> <a16dca32-4198-72c1-cf22-83f18a8cfcb6@xs4all.nl>
+ <bd56e330-91d2-dfde-4cfb-40b466953dad@linaro.org> <CAKQmDh8MnArB1jCD6STh9FgLX+H4ZsEnH+coOJe-4A=FNPGshA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-In-Reply-To: <CACRpkdaw9O6TbZie5AOTmQJ9-3=yHETFFX7YVkPBEL72EZzZ=g@mail.gmail.com>
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE
- TREE BINDINGS" <devicetree@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Greg KH <gregkh@linuxfoundation.org>, driverdev-devel@linuxdriverproject.org, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, NeilBrown <neil@brown.name>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAKQmDh8MnArB1jCD6STh9FgLX+H4ZsEnH+coOJe-4A=FNPGshA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: nicolas@ndufresne.ca
+Cc: stanimir.varbanov@linaro.org, Hans Verkuil <hverkuil@xs4all.nl>, linux-arm-kernel@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>, tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com, matthias.bgg@gmail.com, Sakari Ailus <sakari.ailus@linux.intel.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Smitha T Murthy <smitha.t@samsung.com>, tom.saeger@oracle.com, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Tomasz Figa <tfiga@chromium.org>, Ricardo Ribalda Delgado <ricardo.ribalda@gmail.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+Hi, Hans.
+Thank you for the review.
+Your idea sounds good.
 
-On Fri, 2018-06-08 at 13:59 +0200, Linus Walleij wrote:
-> Hi Sergio!
-> 
-> Thanks for your patch!
-> 
-> Given that we have combined pin control and GPIO drivers for
-> almost all Mediatek chips in drivers/pinctrl/mediatek/*
-> I would ideally like to have some input from the Mediatek
-> maintainers (especially Sean Wang) on this, especially:
-> 
-> - Is MT7621 a non-pincontrol GPIO controller, or can it
->   eventually use pin control as a back-end? Will a separate
->   pin control driver appear later for this SoC?
-> 
+However, I think that changing V4L2_CID_MPEG_VIDEO_VPX_PROFILE to an enum
+breaks both of s5p-mfc and venus drivers.  This is because they call
+'v4l2_ctrl_new_std' for it.  For menu controls,
+'v4l2_ctrl_new_std_menu' must be used.
 
-MT7621 also have the circuit for pad setup tweaking Tx driving and mux
-setup switching to either gpio mode or specific hardware mode, but the
-circuit for all of them is being accessed in a different register range
-from gpio controller being implemented here.
+https://elixir.bootlin.com/linux/latest/source/drivers/media/platform/s5p-m=
+fc/s5p_mfc_enc.c#L2678
+https://elixir.bootlin.com/linux/latest/source/drivers/media/platform/qcom/=
+venus/vdec_ctrls.c#L133
 
-the part of pad or mux control for MT7621 I thought that is really
-simple, so it seems worth joining pinmux and pinconf together into a
-single driver to become a full function about pin setup. 
+I can fix them within the commit for adding VP8_PROFILE control, but
+cannot confirm that it works on real devices since I don't have them.
+What should I do?
 
-> - Would it make sense to have a combined driver just like
->   for the other Mediatek SoCs in drivers/pinctrl/mediatek?
->   If this GPIO controller does not do pin control I understand
->   why it is submitted as a GPIO driver only.
-> 
-> drivers/pinctrl/mediatek/pinctrl-mt7622.c is suspiciously
-> similarly named. Is this a relative or just as different as
-> night and day?
-> 
-
-The MT7621 is just as completely different as night and day from MT7622.
-
-MT7622 pinctrl originate from MediaTek IPs but MT7621 pinctrl originate
-from Ralink IPs and even MT7621 should be the last one machine using the
-Ralink pinctrl IPs. And for these machine MT762x appearing later MT7622,
-they all will be developed based on pinctrl-mt7622 architecture .
-
-> Also you can see that this driver has a built-in GPIO driver,
-> using an external interrupt.
-> 
-> On Sat, Jun 2, 2018 at 9:30 AM, Sergio Paracuellos
-
-[ ... ]
-
-> I guess you want to use
-> builtin_platform_driver()?
-> 
-> Yours,
-> Linus Walleij
+Best regards,
+Keiichi
+On Fri, Jun 8, 2018 at 10:00 PM Nicolas Dufresne <nicolas@ndufresne.ca> wro=
+te:
+>
+>
+>
+> Le ven. 8 juin 2018 08:56, Stanimir Varbanov <stanimir.varbanov@linaro.or=
+g> a =C3=A9crit :
+>>
+>> Hi Hans,
+>>
+>> On 06/08/2018 12:29 PM, Hans Verkuil wrote:
+>> > On 05/30/2018 09:16 AM, Keiichi Watanabe wrote:
+>> >> Add a new control V4L2_CID_MPEG_VIDEO_VP9_PROFILE for selecting desir=
+ed
+>> >> profile for VP9 encoder and querying for supported profiles by VP9 en=
+coder
+>> >> or decoder.
+>> >>
+>> >> An existing control V4L2_CID_MPEG_VIDEO_VPX_PROFILE cannot be
+>> >> used for querying since it is not a menu control but an integer
+>> >> control, which cannot return an arbitrary set of supported profiles.
+>> >>
+>> >> The new control V4L2_CID_MPEG_VIDEO_VP9_PROFILE is a menu control as
+>> >> with controls for other codec profiles. (e.g. H264)
+>> >
+>> > Please ignore my reply to patch 2/2. I looked at this a bit more and w=
+hat you
+>> > should do is to change the type of V4L2_CID_MPEG_VIDEO_VPX_PROFILE to =
+enum.
+>> >
+>> > All other codec profile controls are all enums, so the fact that VPX_P=
+ROFILE
+>> > isn't is a bug. Changing the type should not cause any problems since =
+the same
+>> > control value is used when you set the control.
+>> >
+>> > Sylwester: I see that s5p-mfc uses this control, but it is explicitly =
+added
+>> > as an integer type control, so the s5p-mfc driver should not be affect=
+ed by
+>> > changing the type of this control.
+>> >
+>> > Stanimir: this will slightly change the venus driver, but since it is =
+a very
+>> > recent driver I think we can get away with changing the core type of t=
+he
+>> > VPX_PROFILE control. I think that's better than ending up with two con=
+trols
+>> > that do the same thing.
+>>
+>> I agree. Actually the changes shouldn't be so much in venus driver.
+>
+>
+> Also fine on userspace side, since profiles enumeration isn't implemented=
+ yet in FFMPEG, GStreamer, Chrome
+>
+>
+>>
+>> --
+>> regards,
+>> Stan
