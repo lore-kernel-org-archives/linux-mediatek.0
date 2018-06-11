@@ -1,99 +1,50 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v2 1/2] media: v4l2-ctrl: Add control for VP9 profile
-Date: Mon, 11 Jun 2018 09:38:39 +0200
-Message-ID: <cdd4046d-b043-4189-15a3-4654a0803f3c@xs4all.nl>
-References: <20180530071613.125768-1-keiichiw@chromium.org>
- <20180530071613.125768-2-keiichiw@chromium.org>
- <a16dca32-4198-72c1-cf22-83f18a8cfcb6@xs4all.nl>
- <bd56e330-91d2-dfde-4cfb-40b466953dad@linaro.org>
- <CAKQmDh8MnArB1jCD6STh9FgLX+H4ZsEnH+coOJe-4A=FNPGshA@mail.gmail.com>
- <CANb2CJFXhY+mzEV7AnM5EQcvqyeAH7G=t3Bi_9_d9_+_Kce9RQ@mail.gmail.com>
+From: <argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH V5 2/4] soc: mediatek: pwrap: fix cipher init setting error
+Date: Mon, 11 Jun 2018 18:49:58 +0800
+Message-ID: <1528714200-2500-3-git-send-email-argus.lin@mediatek.com>
+References: <1528714200-2500-1-git-send-email-argus.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CANb2CJFXhY+mzEV7AnM5EQcvqyeAH7G=t3Bi_9_d9_+_Kce9RQ@mail.gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Keiichi Watanabe <keiichiw@google.com>, nicolas@ndufresne.ca
-Cc: stanimir.varbanov@linaro.org, linux-arm-kernel@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>, tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com, matthias.bgg@gmail.com, Sakari Ailus <sakari.ailus@linux.intel.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Smitha T Murthy <smitha.t@samsung.com>, tom.saeger@oracle.com, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Tomasz Figa <tfiga@chromium.org>, Ricardo Ribalda Delgado <ricardo.ribalda@gmail.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1528714200-2500-1-git-send-email-argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 11/06/18 08:44, Keiichi Watanabe wrote:
-> Hi, Hans.
-> Thank you for the review.
-> Your idea sounds good.
-> 
-> However, I think that changing V4L2_CID_MPEG_VIDEO_VPX_PROFILE to an enum
-> breaks both of s5p-mfc and venus drivers.  This is because they call
-> 'v4l2_ctrl_new_std' for it.  For menu controls,
-> 'v4l2_ctrl_new_std_menu' must be used.
-> 
-> https://elixir.bootlin.com/linux/latest/source/drivers/media/platform/s5p-mfc/s5p_mfc_enc.c#L2678
-> https://elixir.bootlin.com/linux/latest/source/drivers/media/platform/qcom/venus/vdec_ctrls.c#L133
-> 
-> I can fix them within the commit for adding VP8_PROFILE control, but
-> cannot confirm that it works on real devices since I don't have them.
-> What should I do?
+From: Argus Lin <argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Fix it in both drivers with a Cc to stanimir.varbanov@linaro.org (venus) and
-s.nawrocki@samsung.com (s5p) to let them test/ack the patch.
+PWRAP_DEW_CIPHER_LOAD and PWRAP_DEW_CIPHER_START only exist at
+PMIC_mt6397 datasheet. We fix it before merge PMIC_mt6351 driver.
 
-Venus is no problem, the s5p driver can decide to keep the old INT control
-since it has been in use for such a long time, but that is up to Sylwester to
-decide.
+Fixes: 5ae48040aa47 ("soc: mediatek: PMIC wrap: add mt6323 slave support")
 
-Regards,
+Signed-off-by: Argus Lin <argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-	Hans
-
-> 
-> Best regards,
-> Keiichi
-> On Fri, Jun 8, 2018 at 10:00 PM Nicolas Dufresne <nicolas@ndufresne.ca> wrote:
->>
->>
->>
->> Le ven. 8 juin 2018 08:56, Stanimir Varbanov <stanimir.varbanov@linaro.org> a écrit :
->>>
->>> Hi Hans,
->>>
->>> On 06/08/2018 12:29 PM, Hans Verkuil wrote:
->>>> On 05/30/2018 09:16 AM, Keiichi Watanabe wrote:
->>>>> Add a new control V4L2_CID_MPEG_VIDEO_VP9_PROFILE for selecting desired
->>>>> profile for VP9 encoder and querying for supported profiles by VP9 encoder
->>>>> or decoder.
->>>>>
->>>>> An existing control V4L2_CID_MPEG_VIDEO_VPX_PROFILE cannot be
->>>>> used for querying since it is not a menu control but an integer
->>>>> control, which cannot return an arbitrary set of supported profiles.
->>>>>
->>>>> The new control V4L2_CID_MPEG_VIDEO_VP9_PROFILE is a menu control as
->>>>> with controls for other codec profiles. (e.g. H264)
->>>>
->>>> Please ignore my reply to patch 2/2. I looked at this a bit more and what you
->>>> should do is to change the type of V4L2_CID_MPEG_VIDEO_VPX_PROFILE to enum.
->>>>
->>>> All other codec profile controls are all enums, so the fact that VPX_PROFILE
->>>> isn't is a bug. Changing the type should not cause any problems since the same
->>>> control value is used when you set the control.
->>>>
->>>> Sylwester: I see that s5p-mfc uses this control, but it is explicitly added
->>>> as an integer type control, so the s5p-mfc driver should not be affected by
->>>> changing the type of this control.
->>>>
->>>> Stanimir: this will slightly change the venus driver, but since it is a very
->>>> recent driver I think we can get away with changing the core type of the
->>>> VPX_PROFILE control. I think that's better than ending up with two controls
->>>> that do the same thing.
->>>
->>> I agree. Actually the changes shouldn't be so much in venus driver.
->>
->>
->> Also fine on userspace side, since profiles enumeration isn't implemented yet in FFMPEG, GStreamer, Chrome
->>
->>
->>>
->>> --
->>> regards,
->>> Stan
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index e9e054a..9a01e30 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -1080,8 +1080,6 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
+ 	pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_SWRST], 0x0);
+ 	pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_KEY_SEL], 0x1);
+ 	pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_IV_SEL], 0x2);
+-	pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_LOAD], 0x1);
+-	pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_START], 0x1);
+ 
+ 	switch (wrp->slave->type) {
+ 	case PMIC_MT6397:
+-- 
+1.9.1
