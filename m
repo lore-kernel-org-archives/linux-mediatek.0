@@ -1,68 +1,67 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 13/28] drm/mediatek: add connection from RDMA0 to DSI3
-Date: Wed, 13 Jun 2018 13:45:51 +0800
-Message-ID: <1528868751.15127.10.camel@mtksdaap41>
+Subject: Re: [PATCH 14/28] drm/mediatek: add connection from RDMA1 to DPI1
+Date: Wed, 13 Jun 2018 14:13:30 +0800
+Message-ID: <1528870410.15127.11.camel@mtksdaap41>
 References: <1528687580-549-1-git-send-email-stu.hsieh@mediatek.com>
- <1528687580-549-14-git-send-email-stu.hsieh@mediatek.com>
+         <1528687580-549-15-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1528687580-549-14-git-send-email-stu.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1528687580-549-15-git-send-email-stu.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFN0dToKClR3byBpbmxpbmUgY29tbWVudC4KCk9uIE1vbiwgMjAxOC0wNi0xMSBhdCAxMToy
-NiArMDgwMCwgU3R1IEhzaWVoIHdyb3RlOgo+IFRoaXMgcGF0Y2ggYWRkIHRoZSBjb25uZWN0aW9u
-IGZyb20gUkRNQTAgdG8gRFNJMwo+IAo+IFNpZ25lZC1vZmYtYnk6IFN0dSBIc2llaCA8c3R1Lmhz
-aWVoQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-cm1fZGRwLmMgICAgICB8IDQgKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
-bV9kZHBfY29tcC5jIHwgMiArLQo+ICAyIGZpbGVzIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwg
-MSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9kZHAuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCj4g
-aW5kZXggYzA4YWVkOGRhZTQ0Li5mZWQxYjU3MDQzNTUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9kZHAuYwo+IEBAIC04Myw2ICs4Myw3IEBACj4gICNkZWZpbmUgR0FNTUFf
-TU9VVF9FTl9SRE1BMQkJMHgxCj4gICNkZWZpbmUgUkRNQTBfTU9VVF9EUEkwCQkJMHgyCj4gICNk
-ZWZpbmUgUkRNQTBfTU9VVF9EU0kyCQkJMHg0Cj4gKyNkZWZpbmUgUkRNQTBfTU9VVF9EU0kzCQkJ
-MHg1CgpVc3VhbGx5LCBlYWNoIGJpdCBvZiBhIG1vdXQgcmVnaXN0ZXIgcmVwcmVzZW50IGEgb3V0
-cHV0IGVuYWJsZS4gSXMgdGhpcwp2YWx1ZSAweDUgaXMgYSBjb3JyZWN0IHZhbHVlPwoKPiAgI2Rl
-ZmluZSBSRE1BMV9NT1VUX0RQSTAJCQkweDIKPiAgI2RlZmluZSBEUEkwX1NFTF9JTl9SRE1BMQkJ
-MHgxCj4gICNkZWZpbmUgQ09MT1IxX1NFTF9JTl9PVkwxCQkweDEKPiBAQCAtMTY0LDYgKzE2NSw5
-IEBAIHN0YXRpYyB1bnNpZ25lZCBpbnQgbXRrX2RkcF9tb3V0X2VuKGVudW0gbXRrX2RkcF9jb21w
-X2lkIGN1ciwKPiAgCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRNQTAgJiYgbmV4
-dCA9PSBERFBfQ09NUE9ORU5UX0RTSTIpIHsKPiAgCQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19E
-SVNQX1JETUEwX01PVVRfRU47Cj4gIAkJdmFsdWUgPSBSRE1BMF9NT1VUX0RTSTI7Cj4gKwl9IGVs
-c2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEwICYmIG5leHQgPT0gRERQX0NPTVBPTkVO
-VF9EU0kzKSB7Cj4gKwkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMF9NT1VUX0VO
-Owo+ICsJCXZhbHVlID0gUkRNQTBfTU9VVF9EU0kzOwo+ICAJfSBlbHNlIGlmIChjdXIgPT0gRERQ
-X0NPTVBPTkVOVF9SRE1BMSAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFBJMCkgewo+ICAJCSph
-ZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTFfTU9VVF9FTjsKPiAgCQl2YWx1ZSA9IFJE
-TUExX01PVVRfRFBJMDsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcm1fZGRwX2NvbXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9j
-b21wLmMKPiBpbmRleCBmZTZmZGMwMjFmYzcuLjIyZjRjNzJmYTc4NSAxMDA2NDQKPiAtLS0gYS9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4gKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwo+IEBAIC0yMjgsNyArMjI4LDcg
-QEAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfZGRwX2NvbXBfbWF0Y2ggbXRrX2RkcF9tYXRjaGVz
-W0REUF9DT01QT05FTlRfSURfTUFYXSA9IHsKPiAgCVtERFBfQ09NUE9ORU5UX0RTSTBdCT0geyBN
-VEtfRFNJLAkJMCwgTlVMTCB9LAo+ICAJW0REUF9DT01QT05FTlRfRFNJMV0JPSB7IE1US19EU0ks
-CQkxLCBOVUxMIH0sCj4gIAlbRERQX0NPTVBPTkVOVF9EU0kyXQk9IHsgTVRLX0RTSSwJCTIsIE5V
-TEwgfSwKPiAtCVtERFBfQ09NUE9ORU5UX0RTSTJdCT0geyBNVEtfRFNJLAkJMywgTlVMTCB9LAo+
-ICsJW0REUF9DT01QT05FTlRfRFNJM10JPSB7IE1US19EU0ksCQkzLCBOVUxMIH0sCgpJIHRoaW5r
-IHRoaXMgaXMgbm90IHJlbGF0ZWQgdG8gdGhpcyBwYXRjaC4KClJlZ2FyZHMsCkNLCgo+ICAJW0RE
-UF9DT01QT05FTlRfR0FNTUFdCT0geyBNVEtfRElTUF9HQU1NQSwJMCwgJmRkcF9nYW1tYSB9LAo+
-ICAJW0REUF9DT01QT05FTlRfT0QwXQk9IHsgTVRLX0RJU1BfT0QsCTAsICZkZHBfb2QgfSwKPiAg
-CVtERFBfQ09NUE9ORU5UX09EMV0JPSB7IE1US19ESVNQX09ELAkxLCAmZGRwX29kIH0sCgoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi, Stu:
+
+On Mon, 2018-06-11 at 11:26 +0800, Stu Hsieh wrote:
+> This patch add the connection from RDMA1 to DPI1
+> 
+> Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> index fed1b5704355..4abd5dabeccf 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> @@ -85,7 +85,9 @@
+>  #define RDMA0_MOUT_DSI2			0x4
+>  #define RDMA0_MOUT_DSI3			0x5
+>  #define RDMA1_MOUT_DPI0			0x2
+> +#define RDMA1_MOUT_DPI1			0x3
+
+Usually, each bit of a mout register represent a output enable. Is this
+value 0x3 a correct value?
+
+Regards,
+CK
+
+>  #define DPI0_SEL_IN_RDMA1		0x1
+> +#define DPI1_SEL_IN_RDMA1		(0x1 << 8)
+>  #define COLOR1_SEL_IN_OVL1		0x1
+>  
+>  #define OVL_MOUT_EN_RDMA		0x1
+> @@ -171,6 +173,9 @@ static unsigned int mtk_ddp_mout_en(enum mtk_ddp_comp_id cur,
+>  	} else if (cur == DDP_COMPONENT_RDMA1 && next == DDP_COMPONENT_DPI0) {
+>  		*addr = DISP_REG_CONFIG_DISP_RDMA1_MOUT_EN;
+>  		value = RDMA1_MOUT_DPI0;
+> +	} else if (cur == DDP_COMPONENT_RDMA1 && next == DDP_COMPONENT_DPI1) {
+> +		*addr = DISP_REG_CONFIG_DISP_RDMA1_MOUT_EN;
+> +		value = RDMA1_MOUT_DPI1;
+>  	} else {
+>  		value = 0;
+>  	}
+> @@ -190,6 +195,9 @@ static unsigned int mtk_ddp_sel_in(enum mtk_ddp_comp_id cur,
+>  	} else if (cur == DDP_COMPONENT_RDMA1 && next == DDP_COMPONENT_DPI0) {
+>  		*addr = DISP_REG_CONFIG_DPI_SEL_IN;
+>  		value = DPI0_SEL_IN_RDMA1;
+> +	} else if (cur == DDP_COMPONENT_RDMA1 && next == DDP_COMPONENT_DPI1) {
+> +		*addr = DISP_REG_CONFIG_DPI_SEL_IN;
+> +		value = DPI1_SEL_IN_RDMA1;
+>  	} else if (cur == DDP_COMPONENT_OVL1 && next == DDP_COMPONENT_COLOR1) {
+>  		*addr = DISP_REG_CONFIG_DISP_COLOR1_SEL_IN;
+>  		value = COLOR1_SEL_IN_OVL1;
