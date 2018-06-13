@@ -1,91 +1,89 @@
-From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: Re: [PATCH 19/28] drm/mediatek: add connection from RDMA2 to DPI1
-Date: Wed, 13 Jun 2018 16:01:02 +0800
-Message-ID: <1528876862.11190.35.camel@mtksdccf07>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH 13/28] drm/mediatek: add connection from RDMA0 to DSI3
+Date: Wed, 13 Jun 2018 16:05:12 +0800
+Message-ID: <1528877112.30263.24.camel@mtksdaap41>
 References: <1528687580-549-1-git-send-email-stu.hsieh@mediatek.com>
-         <1528687580-549-20-git-send-email-stu.hsieh@mediatek.com>
-         <1528874037.30263.6.camel@mtksdaap41>
+ <1528687580-549-14-git-send-email-stu.hsieh@mediatek.com>
+ <1528868751.15127.10.camel@mtksdaap41>
+ <1528875983.11190.29.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1528874037.30263.6.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1528875983.11190.29.camel@mtksdccf07>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Stu Hsieh <stu.hsieh@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, CK:
-
-
-On Wed, 2018-06-13 at 15:13 +0800, CK Hu wrote:
-> Hi, Stu:
-> 
-> On Mon, 2018-06-11 at 11:26 +0800, Stu Hsieh wrote:
-> > This patch add the connection from RDMA2 to DPI1
-> > 
-> > Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 8 ++++++++
-> >  1 file changed, 8 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-> > index 31a0832ef9ec..2d883815d79c 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-> > @@ -93,9 +93,11 @@
-> >  #define RDMA1_MOUT_DPI0			0x2
-> >  #define RDMA1_MOUT_DPI1			0x3
-> >  #define RDMA2_MOUT_DPI0			0x2
-> > +#define RDMA2_MOUT_DPI1			0x3
-> 
-> Usually, each bit of a mout register represent a output enable. Is this
-> value 0x3 a correct value?
-> 
-> Regards,
-> CK
-> 
-In HW CONFIG SPEC or MT2712_E2_MMSYS_Change_note show as following:
-
-Bit(s)	Name			Description
-2:0	DISP_RDMA2_SOUT_SEL_IN	0: output to dsi0
-				1: outptu to dsi1
-				2: output to dpi0
-				3: output to dpi1
-				4: output to dsi2
-				5: output to dsi3
-
-So, 0x3 is correct value.
-
-Regard,
-Stu
-
-> >  #define DPI0_SEL_IN_RDMA1		0x1
-> >  #define DPI0_SEL_IN_RDMA2		0x3
-> >  #define DPI1_SEL_IN_RDMA1		(0x1 << 8)
-> > +#define DPI1_SEL_IN_RDMA2		(0x3 << 8)
-> >  #define DSI1_SEL_IN_RDMA1		0x1
-> >  #define DSI2_SEL_IN_RDMA1		(0x1 << 16)
-> >  #define DSI3_SEL_IN_RDMA1		(0x1 << 16)
-> > @@ -199,6 +201,9 @@ static unsigned int mtk_ddp_mout_en(enum mtk_ddp_comp_id cur,
-> >  	} else if (cur == DDP_COMPONENT_RDMA2 && next == DDP_COMPONENT_DPI0) {
-> >  		*addr = DISP_REG_CONFIG_DISP_RDMA2_SOUT;
-> >  		value = RDMA2_MOUT_DPI0;
-> > +	} else if (cur == DDP_COMPONENT_RDMA2 && next == DDP_COMPONENT_DPI1) {
-> > +		*addr = DISP_REG_CONFIG_DISP_RDMA2_SOUT;
-> > +		value = RDMA2_MOUT_DPI1;
-> >  	} else {
-> >  		value = 0;
-> >  	}
-> > @@ -233,6 +238,9 @@ static unsigned int mtk_ddp_sel_in(enum mtk_ddp_comp_id cur,
-> >  	} else if (cur == DDP_COMPONENT_RDMA2 && next == DDP_COMPONENT_DPI0) {
-> >  		*addr = DISP_REG_CONFIG_DPI_SEL_IN;
-> >  		value = DPI0_SEL_IN_RDMA2;
-> > +	} else if (cur == DDP_COMPONENT_RDMA2 && next == DDP_COMPONENT_DPI1) {
-> > +		*addr = DISP_REG_CONFIG_DPI_SEL_IN;
-> > +		value = DPI1_SEL_IN_RDMA2;
-> >  	} else if (cur == DDP_COMPONENT_OVL1 && next == DDP_COMPONENT_COLOR1) {
-> >  		*addr = DISP_REG_CONFIG_DISP_COLOR1_SEL_IN;
-> >  		value = COLOR1_SEL_IN_OVL1;
-> 
-> 
+SGksIFN0dToKCk9uIFdlZCwgMjAxOC0wNi0xMyBhdCAxNTo0NiArMDgwMCwgU3R1IEhzaWVoIHdy
+b3RlOgo+IEhpLCBDSzoKPiAKPiBPbiBXZWQsIDIwMTgtMDYtMTMgYXQgMTM6NDUgKzA4MDAsIENL
+IEh1IHdyb3RlOgo+ID4gSGksIFN0dToKPiA+IAo+ID4gVHdvIGlubGluZSBjb21tZW50Lgo+ID4g
+Cj4gPiBPbiBNb24sIDIwMTgtMDYtMTEgYXQgMTE6MjYgKzA4MDAsIFN0dSBIc2llaCB3cm90ZToK
+PiA+ID4gVGhpcyBwYXRjaCBhZGQgdGhlIGNvbm5lY3Rpb24gZnJvbSBSRE1BMCB0byBEU0kzCj4g
+PiA+IAo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBTdHUgSHNpZWggPHN0dS5oc2llaEBtZWRpYXRlay5j
+b20+Cj4gPiA+IC0tLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRw
+LmMgICAgICB8IDQgKysrKwo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
+ZGRwX2NvbXAuYyB8IDIgKy0KPiA+ID4gIDIgZmlsZXMgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCsp
+LCAxIGRlbGV0aW9uKC0pCj4gPiA+IAo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fZGRwLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9kZHAuYwo+ID4gPiBpbmRleCBjMDhhZWQ4ZGFlNDQuLmZlZDFiNTcwNDM1NSAxMDA2NDQKPiA+
+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiA+ID4gKysr
+IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiA+ID4gQEAgLTgzLDYg
+KzgzLDcgQEAKPiA+ID4gICNkZWZpbmUgR0FNTUFfTU9VVF9FTl9SRE1BMQkJMHgxCj4gPiA+ICAj
+ZGVmaW5lIFJETUEwX01PVVRfRFBJMAkJCTB4Mgo+ID4gPiAgI2RlZmluZSBSRE1BMF9NT1VUX0RT
+STIJCQkweDQKPiA+ID4gKyNkZWZpbmUgUkRNQTBfTU9VVF9EU0kzCQkJMHg1Cj4gPiAKPiA+IFVz
+dWFsbHksIGVhY2ggYml0IG9mIGEgbW91dCByZWdpc3RlciByZXByZXNlbnQgYSBvdXRwdXQgZW5h
+YmxlLiBJcyB0aGlzCj4gPiB2YWx1ZSAweDUgaXMgYSBjb3JyZWN0IHZhbHVlPwo+IAo+IEluIGh3
+IENPTkZJRyBTUEVDIHNob3cgYXMgZm9sbG93aW5nOgo+IEJpdChzKQlOYW1lCQkJRGVzY3JpcHRp
+b24KPiAyOjAJRElTUF9QQVRIMF9TT1VUX1NFTF9JTgkwIDogT3V0cHV0IHRvIERTSTAKPiAJCQkJ
+MTogIE9vdXRwdXQgdG8gRFNJMQo+IAkJCQkyOiAgT291dHB1dCB0byBEUEkKPiAJCQkJMzogIE9v
+dXRwdXQgdG8gRFBJMQo+IAkJCQk0OiAgT291dHB1dCB0byBEU0kyCj4gCQkJCTU6ICBPb3V0cHV0
+IHRvIERTSTMKPiAJCQkJNiA6IHJlc2VydmVkCj4gCQkJCTc6ICBPb3V0cHV0IHRvIERJU1BfVUZP
+RQo+IFNvLCB0aGUgdmFsdWUgMHg1IGlzIGNvcnJlY3QgdmFsdWUuCj4gCgpGcm9tIHRoZSBkZWZp
+bml0aW9uLCBpdCBsb29rcyBsaWtlIHRoYXQgUkRNQTAgY291bGQgb25seSBzaW5nbGUgb3V0cHV0
+CihvdXRwdXQgdG8gb25seSBvbmUgZGVzdGluYXRpb24gYXQgb25lIG1vbWVudCkuIFRoZSByZWdp
+c3RlciBuYW1pbmcKJ0RJU1BfUkVHX0NPTkZJR19ESVNQX1JETUEwX01PVVRfRU4nIChNT1VUIG1l
+YW5zIG91dHB1dCB0byBtdWx0aXBsZQpkZXN0aW5hdGlvbiBzaW11bHRhbmVvdXNseSkgd291bGQg
+Y29uZnVzZSBtZS4gSWYgdGhlIGRhdGEgc2hlZXQgdXNlIHRoZQpjb25mdXNlZCBuYW1pbmcsIEkg
+dGhpbmsgSSBjb3VsZCBqdXN0IGFjY2VwdCBpdC4KClJlZ2FyZHMsCkNLCgo+IFJlZ2FyZCwKPiBT
+dHUKPiAKPiA+IAo+ID4gPiAgI2RlZmluZSBSRE1BMV9NT1VUX0RQSTAJCQkweDIKPiA+ID4gICNk
+ZWZpbmUgRFBJMF9TRUxfSU5fUkRNQTEJCTB4MQo+ID4gPiAgI2RlZmluZSBDT0xPUjFfU0VMX0lO
+X09WTDEJCTB4MQo+ID4gPiBAQCAtMTY0LDYgKzE2NSw5IEBAIHN0YXRpYyB1bnNpZ25lZCBpbnQg
+bXRrX2RkcF9tb3V0X2VuKGVudW0gbXRrX2RkcF9jb21wX2lkIGN1ciwKPiA+ID4gIAl9IGVsc2Ug
+aWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEwICYmIG5leHQgPT0gRERQX0NPTVBPTkVOVF9E
+U0kyKSB7Cj4gPiA+ICAJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTBfTU9VVF9F
+TjsKPiA+ID4gIAkJdmFsdWUgPSBSRE1BMF9NT1VUX0RTSTI7Cj4gPiA+ICsJfSBlbHNlIGlmIChj
+dXIgPT0gRERQX0NPTVBPTkVOVF9SRE1BMCAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJMykg
+ewo+ID4gPiArCQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19ESVNQX1JETUEwX01PVVRfRU47Cj4g
+PiA+ICsJCXZhbHVlID0gUkRNQTBfTU9VVF9EU0kzOwo+ID4gPiAgCX0gZWxzZSBpZiAoY3VyID09
+IEREUF9DT01QT05FTlRfUkRNQTEgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RQSTApIHsKPiA+
+ID4gIAkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMV9NT1VUX0VOOwo+ID4gPiAg
+CQl2YWx1ZSA9IFJETUExX01PVVRfRFBJMDsKPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4gPiA+IGluZGV4IGZlNmZkYzAyMWZjNy4uMjJmNGM3MmZh
+Nzg1IDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9k
+ZHBfY29tcC5jCj4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rk
+cF9jb21wLmMKPiA+ID4gQEAgLTIyOCw3ICsyMjgsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG10
+a19kZHBfY29tcF9tYXRjaCBtdGtfZGRwX21hdGNoZXNbRERQX0NPTVBPTkVOVF9JRF9NQVhdID0g
+ewo+ID4gPiAgCVtERFBfQ09NUE9ORU5UX0RTSTBdCT0geyBNVEtfRFNJLAkJMCwgTlVMTCB9LAo+
+ID4gPiAgCVtERFBfQ09NUE9ORU5UX0RTSTFdCT0geyBNVEtfRFNJLAkJMSwgTlVMTCB9LAo+ID4g
+PiAgCVtERFBfQ09NUE9ORU5UX0RTSTJdCT0geyBNVEtfRFNJLAkJMiwgTlVMTCB9LAo+ID4gPiAt
+CVtERFBfQ09NUE9ORU5UX0RTSTJdCT0geyBNVEtfRFNJLAkJMywgTlVMTCB9LAo+ID4gPiArCVtE
+RFBfQ09NUE9ORU5UX0RTSTNdCT0geyBNVEtfRFNJLAkJMywgTlVMTCB9LAo+ID4gCj4gPiBJIHRo
+aW5rIHRoaXMgaXMgbm90IHJlbGF0ZWQgdG8gdGhpcyBwYXRjaC4KPiBPSwo+IAo+ID4gCj4gPiBS
+ZWdhcmRzLAo+ID4gQ0sKPiA+IAo+ID4gPiAgCVtERFBfQ09NUE9ORU5UX0dBTU1BXQk9IHsgTVRL
+X0RJU1BfR0FNTUEsCTAsICZkZHBfZ2FtbWEgfSwKPiA+ID4gIAlbRERQX0NPTVBPTkVOVF9PRDBd
+CT0geyBNVEtfRElTUF9PRCwJMCwgJmRkcF9vZCB9LAo+ID4gPiAgCVtERFBfQ09NUE9ORU5UX09E
+MV0JPSB7IE1US19ESVNQX09ELAkxLCAmZGRwX29kIH0sCj4gPiAKPiA+IAo+IAo+IAoKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
+aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
+ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
