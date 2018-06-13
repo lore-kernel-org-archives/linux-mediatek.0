@@ -1,82 +1,78 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 27/28] drm/mediatek: add third ddp path
-Date: Wed, 13 Jun 2018 15:38:37 +0800
-Message-ID: <1528875517.30263.15.camel@mtksdaap41>
+From: Stu Hsieh <stu.hsieh@mediatek.com>
+Subject: Re: [PATCH 13/28] drm/mediatek: add connection from RDMA0 to DSI3
+Date: Wed, 13 Jun 2018 15:46:23 +0800
+Message-ID: <1528875983.11190.29.camel@mtksdccf07>
 References: <1528687580-549-1-git-send-email-stu.hsieh@mediatek.com>
-         <1528687580-549-28-git-send-email-stu.hsieh@mediatek.com>
+ <1528687580-549-14-git-send-email-stu.hsieh@mediatek.com>
+ <1528868751.15127.10.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1528687580-549-28-git-send-email-stu.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1528868751.15127.10.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-06-11 at 11:26 +0800, Stu Hsieh wrote:
-> This patch create third crtc by third ddp path
-> 
-> Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
-
-Reviewed-by: CK Hu <ck.hu at mediatek.com>
-
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 3 +++
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c  | 5 +++++
->  drivers/gpu/drm/mediatek/mtk_drm_drv.h  | 5 ++++-
->  3 files changed, 12 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index 658b8dd45b83..2d6aa150a9ff 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -539,6 +539,9 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
->  	int ret;
->  	int i;
->  
-> +	if (!path)
-> +		return 0;
-> +
->  	for (i = 0; i < path_len; i++) {
->  		enum mtk_ddp_comp_id comp_id = path[i];
->  		struct device_node *node;
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index 08d5d0b47bfe..3d279a299383 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -232,6 +232,11 @@ static int mtk_drm_kms_init(struct drm_device *drm)
->  	if (ret < 0)
->  		goto err_component_unbind;
->  
-> +	ret = mtk_drm_crtc_create(drm, private->data->third_path,
-> +				  private->data->third_len);
-> +	if (ret < 0)
-> +		goto err_component_unbind;
-> +
->  	/* Use OVL device for all DMA memory allocations */
->  	np = private->comp_node[private->data->main_path[0]] ?:
->  	     private->comp_node[private->data->ext_path[0]];
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> index c3378c452c0a..ecc00ca3221d 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> @@ -17,7 +17,7 @@
->  #include <linux/io.h>
->  #include "mtk_drm_ddp_comp.h"
->  
-> -#define MAX_CRTC	2
-> +#define MAX_CRTC	3
->  #define MAX_CONNECTOR	2
->  
->  struct device;
-> @@ -33,6 +33,9 @@ struct mtk_mmsys_driver_data {
->  	unsigned int main_len;
->  	const enum mtk_ddp_comp_id *ext_path;
->  	unsigned int ext_len;
-> +	const enum mtk_ddp_comp_id *third_path;
-> +	unsigned int third_len;
-> +
->  	bool shadow_register;
->  };
->  
+SGksIENLOgoKT24gV2VkLCAyMDE4LTA2LTEzIGF0IDEzOjQ1ICswODAwLCBDSyBIdSB3cm90ZToK
+PiBIaSwgU3R1Ogo+IAo+IFR3byBpbmxpbmUgY29tbWVudC4KPiAKPiBPbiBNb24sIDIwMTgtMDYt
+MTEgYXQgMTE6MjYgKzA4MDAsIFN0dSBIc2llaCB3cm90ZToKPiA+IFRoaXMgcGF0Y2ggYWRkIHRo
+ZSBjb25uZWN0aW9uIGZyb20gUkRNQTAgdG8gRFNJMwo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBT
+dHUgSHNpZWggPHN0dS5oc2llaEBtZWRpYXRlay5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgICAgIHwgNCArKysrCj4gPiAgZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYyB8IDIgKy0KPiA+ICAyIGZpbGVzIGNo
+YW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMgYi9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwo+ID4gaW5kZXggYzA4YWVkOGRhZTQ0Li5mZWQxYjU3
+MDQzNTUgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9k
+ZHAuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiA+
+IEBAIC04Myw2ICs4Myw3IEBACj4gPiAgI2RlZmluZSBHQU1NQV9NT1VUX0VOX1JETUExCQkweDEK
+PiA+ICAjZGVmaW5lIFJETUEwX01PVVRfRFBJMAkJCTB4Mgo+ID4gICNkZWZpbmUgUkRNQTBfTU9V
+VF9EU0kyCQkJMHg0Cj4gPiArI2RlZmluZSBSRE1BMF9NT1VUX0RTSTMJCQkweDUKPiAKPiBVc3Vh
+bGx5LCBlYWNoIGJpdCBvZiBhIG1vdXQgcmVnaXN0ZXIgcmVwcmVzZW50IGEgb3V0cHV0IGVuYWJs
+ZS4gSXMgdGhpcwo+IHZhbHVlIDB4NSBpcyBhIGNvcnJlY3QgdmFsdWU/CgpJbiBodyBDT05GSUcg
+U1BFQyBzaG93IGFzIGZvbGxvd2luZzoKQml0KHMpCU5hbWUJCQlEZXNjcmlwdGlvbgoyOjAJRElT
+UF9QQVRIMF9TT1VUX1NFTF9JTgkwIDogT3V0cHV0IHRvIERTSTAKCQkJCTE6ICBPb3V0cHV0IHRv
+IERTSTEKCQkJCTI6ICBPb3V0cHV0IHRvIERQSQoJCQkJMzogIE9vdXRwdXQgdG8gRFBJMQoJCQkJ
+NDogIE9vdXRwdXQgdG8gRFNJMgoJCQkJNTogIE9vdXRwdXQgdG8gRFNJMwoJCQkJNiA6IHJlc2Vy
+dmVkCgkJCQk3OiAgT291dHB1dCB0byBESVNQX1VGT0UKU28sIHRoZSB2YWx1ZSAweDUgaXMgY29y
+cmVjdCB2YWx1ZS4KClJlZ2FyZCwKU3R1Cgo+IAo+ID4gICNkZWZpbmUgUkRNQTFfTU9VVF9EUEkw
+CQkJMHgyCj4gPiAgI2RlZmluZSBEUEkwX1NFTF9JTl9SRE1BMQkJMHgxCj4gPiAgI2RlZmluZSBD
+T0xPUjFfU0VMX0lOX09WTDEJCTB4MQo+ID4gQEAgLTE2NCw2ICsxNjUsOSBAQCBzdGF0aWMgdW5z
+aWduZWQgaW50IG10a19kZHBfbW91dF9lbihlbnVtIG10a19kZHBfY29tcF9pZCBjdXIsCj4gPiAg
+CX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRNQTAgJiYgbmV4dCA9PSBERFBfQ09N
+UE9ORU5UX0RTSTIpIHsKPiA+ICAJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTBf
+TU9VVF9FTjsKPiA+ICAJCXZhbHVlID0gUkRNQTBfTU9VVF9EU0kyOwo+ID4gKwl9IGVsc2UgaWYg
+KGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEwICYmIG5leHQgPT0gRERQX0NPTVBPTkVOVF9EU0kz
+KSB7Cj4gPiArCQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19ESVNQX1JETUEwX01PVVRfRU47Cj4g
+PiArCQl2YWx1ZSA9IFJETUEwX01PVVRfRFNJMzsKPiA+ICAJfSBlbHNlIGlmIChjdXIgPT0gRERQ
+X0NPTVBPTkVOVF9SRE1BMSAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFBJMCkgewo+ID4gIAkJ
+KmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMV9NT1VUX0VOOwo+ID4gIAkJdmFsdWUg
+PSBSRE1BMV9NT1VUX0RQSTA7Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fZGRwX2NvbXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
+X2RkcF9jb21wLmMKPiA+IGluZGV4IGZlNmZkYzAyMWZjNy4uMjJmNGM3MmZhNzg1IDEwMDY0NAo+
+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwo+ID4g
+KysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwo+ID4gQEAg
+LTIyOCw3ICsyMjgsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG10a19kZHBfY29tcF9tYXRjaCBt
+dGtfZGRwX21hdGNoZXNbRERQX0NPTVBPTkVOVF9JRF9NQVhdID0gewo+ID4gIAlbRERQX0NPTVBP
+TkVOVF9EU0kwXQk9IHsgTVRLX0RTSSwJCTAsIE5VTEwgfSwKPiA+ICAJW0REUF9DT01QT05FTlRf
+RFNJMV0JPSB7IE1US19EU0ksCQkxLCBOVUxMIH0sCj4gPiAgCVtERFBfQ09NUE9ORU5UX0RTSTJd
+CT0geyBNVEtfRFNJLAkJMiwgTlVMTCB9LAo+ID4gLQlbRERQX0NPTVBPTkVOVF9EU0kyXQk9IHsg
+TVRLX0RTSSwJCTMsIE5VTEwgfSwKPiA+ICsJW0REUF9DT01QT05FTlRfRFNJM10JPSB7IE1US19E
+U0ksCQkzLCBOVUxMIH0sCj4gCj4gSSB0aGluayB0aGlzIGlzIG5vdCByZWxhdGVkIHRvIHRoaXMg
+cGF0Y2guCk9LCgo+IAo+IFJlZ2FyZHMsCj4gQ0sKPiAKPiA+ICAJW0REUF9DT01QT05FTlRfR0FN
+TUFdCT0geyBNVEtfRElTUF9HQU1NQSwJMCwgJmRkcF9nYW1tYSB9LAo+ID4gIAlbRERQX0NPTVBP
+TkVOVF9PRDBdCT0geyBNVEtfRElTUF9PRCwJMCwgJmRkcF9vZCB9LAo+ID4gIAlbRERQX0NPTVBP
+TkVOVF9PRDFdCT0geyBNVEtfRElTUF9PRCwJMSwgJmRkcF9vZCB9LAo+IAo+IAoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
