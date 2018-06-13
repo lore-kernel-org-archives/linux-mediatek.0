@@ -1,37 +1,94 @@
-From: Mars Cheng <mars.cheng@mediatek.com>
-Subject: Re: [PATCH 1/2] ndings: mediatek: Add bindings for mediatek MT6765
- Platform
-Date: Wed, 13 Jun 2018 09:59:24 +0800
-Message-ID: <1528855164.5296.9.camel@mtkswgap22>
-References: <1528843243-29782-1-git-send-email-mars.cheng@mediatek.com>
-         <1528843243-29782-2-git-send-email-mars.cheng@mediatek.com>
-         <CAL_JsqJ3LjA3yG7UvD7FyhCxF60xWuu=c4uXLW1wD7MCLWuOPg@mail.gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH 04/28] drm/mediatek: add ddp component OD1
+Date: Wed, 13 Jun 2018 13:27:43 +0800
+Message-ID: <1528867663.15127.1.camel@mtksdaap41>
+References: <1528687580-549-1-git-send-email-stu.hsieh@mediatek.com>
+         <1528687580-549-5-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqJ3LjA3yG7UvD7FyhCxF60xWuu=c4uXLW1wD7MCLWuOPg@mail.gmail.com>
+In-Reply-To: <1528687580-549-5-git-send-email-stu.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
+To: Stu Hsieh <stu.hsieh@mediatek.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-06-12 at 18:51 -0600, Rob Herring wrote:
-> On Tue, Jun 12, 2018 at 4:40 PM, Mars Cheng <mars.cheng@mediatek.com> wrote:
-> > This adds dt-binding documentation for Mediatek MT6765. Only
-> > include very basic items, gic, uart timer and cpu.
+On Mon, 2018-06-11 at 11:25 +0800, Stu Hsieh wrote:
+> This patch add the component OD1 and
+> rename the OD to OD0
 > 
-> Check your subject...
+> Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
 
-Hi Rob
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 
-oops, my bad... will correct this in v2
-
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c      | 4 ++--
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 3 ++-
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 3 ++-
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 2 +-
+>  4 files changed, 7 insertions(+), 5 deletions(-)
 > 
-> >
-> > Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
-> > ---
-> >  Documentation/devicetree/bindings/arm/mediatek.txt |    4 ++++
-> >  .../interrupt-controller/mediatek,sysirq.txt       |    1 +
-> >  .../devicetree/bindings/serial/mtk-uart.txt        |    1 +
-> >  3 files changed, 6 insertions(+)
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> index 7217665f4b5d..58e44349e315 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> @@ -114,7 +114,7 @@ static const unsigned int mt8173_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+>  	[DDP_COMPONENT_COLOR0] = MT8173_MUTEX_MOD_DISP_COLOR0,
+>  	[DDP_COMPONENT_COLOR1] = MT8173_MUTEX_MOD_DISP_COLOR1,
+>  	[DDP_COMPONENT_GAMMA] = MT8173_MUTEX_MOD_DISP_GAMMA,
+> -	[DDP_COMPONENT_OD] = MT8173_MUTEX_MOD_DISP_OD,
+> +	[DDP_COMPONENT_OD0] = MT8173_MUTEX_MOD_DISP_OD,
+>  	[DDP_COMPONENT_OVL0] = MT8173_MUTEX_MOD_DISP_OVL0,
+>  	[DDP_COMPONENT_OVL1] = MT8173_MUTEX_MOD_DISP_OVL1,
+>  	[DDP_COMPONENT_PWM0] = MT8173_MUTEX_MOD_DISP_PWM0,
+> @@ -139,7 +139,7 @@ static unsigned int mtk_ddp_mout_en(enum mtk_ddp_comp_id cur,
+>  	} else if (cur == DDP_COMPONENT_OVL0 && next == DDP_COMPONENT_RDMA0) {
+>  		*addr = DISP_REG_CONFIG_DISP_OVL_MOUT_EN;
+>  		value = OVL_MOUT_EN_RDMA;
+> -	} else if (cur == DDP_COMPONENT_OD && next == DDP_COMPONENT_RDMA0) {
+> +	} else if (cur == DDP_COMPONENT_OD0 && next == DDP_COMPONENT_RDMA0) {
+>  		*addr = DISP_REG_CONFIG_DISP_OD_MOUT_EN;
+>  		value = OD_MOUT_EN_RDMA0;
+>  	} else if (cur == DDP_COMPONENT_UFOE && next == DDP_COMPONENT_DSI0) {
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> index 0919039805aa..87acf6be87f6 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> @@ -227,7 +227,8 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
+>  	[DDP_COMPONENT_DSI0]	= { MTK_DSI,		0, NULL },
+>  	[DDP_COMPONENT_DSI1]	= { MTK_DSI,		1, NULL },
+>  	[DDP_COMPONENT_GAMMA]	= { MTK_DISP_GAMMA,	0, &ddp_gamma },
+> -	[DDP_COMPONENT_OD]	= { MTK_DISP_OD,	0, &ddp_od },
+> +	[DDP_COMPONENT_OD0]	= { MTK_DISP_OD,	0, &ddp_od },
+> +	[DDP_COMPONENT_OD1]	= { MTK_DISP_OD,	1, &ddp_od },
+>  	[DDP_COMPONENT_OVL0]	= { MTK_DISP_OVL,	0, NULL },
+>  	[DDP_COMPONENT_OVL1]	= { MTK_DISP_OVL,	1, NULL },
+>  	[DDP_COMPONENT_PWM0]	= { MTK_DISP_PWM,	0, NULL },
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> index eee3c0cc2632..9b19fc4423f1 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> @@ -50,7 +50,8 @@ enum mtk_ddp_comp_id {
+>  	DDP_COMPONENT_DSI0,
+>  	DDP_COMPONENT_DSI1,
+>  	DDP_COMPONENT_GAMMA,
+> -	DDP_COMPONENT_OD,
+> +	DDP_COMPONENT_OD0,
+> +	DDP_COMPONENT_OD1,
+>  	DDP_COMPONENT_OVL0,
+>  	DDP_COMPONENT_OVL1,
+>  	DDP_COMPONENT_PWM0,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index a415260f3d5f..08d5d0b47bfe 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -150,7 +150,7 @@ static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
+>  	DDP_COMPONENT_OVL0,
+>  	DDP_COMPONENT_COLOR0,
+>  	DDP_COMPONENT_AAL0,
+> -	DDP_COMPONENT_OD,
+> +	DDP_COMPONENT_OD0,
+>  	DDP_COMPONENT_RDMA0,
+>  	DDP_COMPONENT_UFOE,
+>  	DDP_COMPONENT_DSI0,
