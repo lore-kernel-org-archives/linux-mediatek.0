@@ -1,96 +1,324 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] pinctrl: mt7622: fix a kernel panic when pio don't work
- as EINT controller
-Date: Thu, 14 Jun 2018 16:24:24 +0200
-Message-ID: <CACRpkdaipxgMbUHSA-UFQ3De9AGSKE2jCBU5_SaFJS7M0=eygQ@mail.gmail.com>
-References: <6615b85997509d659358d33eab2d280e235b8659.1528966092.git.sean.wang@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Subject: [PATCH v3 00/27] Fix some doc build warnings/errors and broken links
+Date: Thu, 14 Jun 2018 13:08:45 -0300
+Message-ID: <cover.1528990947.git.mchehab+samsung@kernel.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6615b85997509d659358d33eab2d280e235b8659.1528966092.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Kevin Hilman <khilman@baylibre.com>, stable <stable@vger.kernel.org>
+To: Jonathan Corbet <corbet@lwn.net>, Linux Doc Mailing List <linux-doc@vger.kernel.org>
+Cc: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Andrea Parri <parri.andrea@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jun 14, 2018 at 10:55 AM,  <sean.wang@mediatek.com> wrote:
+Jon,
 
-> From: Sean Wang <sean.wang@mediatek.com>
->
-> The function, external interrupt controller, is made as an optional to
-> mt7622 pinctrl. But if we don't want pio behaves as an external interrupt
-> controller, it would lead to hw->eint not be created properly and then
-> will cause 'kernel NULL pointer' issue when gpiochip try to call .to_irq
-> or .set_config. To fix it, check hw->eint before accessing the member.
->
-> [    1.339494] Unable to handle kernel NULL pointer dereference at virtual
->                address 00000010
-> [    1.347857] Mem abort info:
-> [    1.350742]   ESR = 0x96000005
-> [    1.353905]   Exception class = DABT (current EL), IL = 32 bits
-> [    1.360024]   SET = 0, FnV = 0
-> [    1.363185]   EA = 0, S1PTW = 0
-> [    1.366431] Data abort info:
-> [    1.369405]   ISV = 0, ISS = 0x00000005
-> [    1.373363]   CM = 0, WnR = 0
-> [    1.376437] [0000000000000010] user address but active_mm is swapper
-> [    1.383005] Internal error: Oops: 96000005 [#1] PREEMPT SMP
-> [    1.388748] Modules linked in:
-> [    1.391897] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 4.16.0-rc1+ #344
-> [    1.398625] Hardware name: MediaTek MT7622 RFB1 board (DT)
-> [    1.404279] pstate: 80000005 (Nzcv daif -PAN -UAO)
-> [    1.409221] pc : mtk_eint_find_irq+0x8/0x24
-> [    1.413532] lr : mtk_gpio_to_irq+0x20/0x28
-> [    1.417749] sp : ffffff800801baf0
-> [    1.421161] x29: ffffff800801baf0 x28: ffffff8008792f40
-> [    1.426637] x27: ffffff800886b000 x26: ffffff8008615620
-> [    1.432113] x25: ffffffc00e4dbdc8 x24: ffffff80087b8000
-> [    1.437589] x23: ffffffc00325a000 x22: ffffffc00325a010
-> [    1.443066] x21: ffffffc0033dec18 x20: 00000000ffffffea
-> [    1.448542] x19: ffffffc00e4db800 x18: 0000000000000130
-> [    1.454018] x17: 000000000000000e x16: 0000000000000007
-> [    1.459494] x15: ffffff80085ee000 x14: 0000000000000001
-> [    1.464970] x13: 0000000000000001 x12: 0000000000000010
-> [    1.470446] x11: 0101010101010101 x10: 0000000000000880
-> [    1.475922] x9 : ffffff800801b990 x8 : ffffffc0030688e0
-> [    1.481399] x7 : ffffff80080c0660 x6 : ffffffc00e4dbbb0
-> [    1.486875] x5 : 0000000000000000 x4 : 0000000000000000
-> [    1.492351] x3 : ffffff80082a92f4 x2 : 00000000fffffffa
-> [    1.497826] x1 : 0000000000000051 x0 : 0000000000000000
-> [    1.503305] Process swapper/0 (pid: 1, stack limit = 0x0000000054e053bd)
-> [    1.510210] Call trace:
-> [    1.512727]  mtk_eint_find_irq+0x8/0x24
-> [    1.516677]  mtk_gpio_to_irq+0x20/0x28
-> [    1.520539]  gpiod_to_irq+0x48/0x60
-> [    1.524135]  mmc_gpiod_request_cd_irq+0x3c/0xc4
-> [    1.528804]  mmc_start_host+0x6c/0x8c
-> [    1.532575]  mmc_add_host+0x58/0x7c
-> [    1.536168]  msdc_drv_probe+0x4fc/0x67c
-> [    1.540121]  platform_drv_probe+0x58/0xa4
-> [    1.544251]  driver_probe_device+0x204/0x44c
-> [    1.548649]  __driver_attach+0x84/0xf8
-> [    1.552512]  bus_for_each_dev+0x68/0xa0
-> [    1.556461]  driver_attach+0x20/0x28
-> [    1.560142]  bus_add_driver+0xec/0x240
-> [    1.564002]  driver_register+0x98/0xe4
-> [    1.567863]  __platform_driver_register+0x48/0x50
-> [    1.572711]  mt_msdc_driver_init+0x18/0x20
-> [    1.576932]  do_one_initcall+0x98/0x130
-> [    1.580886]  kernel_init_freeable+0x13c/0x1d4
-> [    1.585375]  kernel_init+0x10/0xf8
-> [    1.588879]  ret_from_fork+0x10/0x18
-> [    1.592564] Code: a8c67bfd d65f03c0 a9bf7bfd 910003fd (f9400800)
-> [    1.598849] ---[ end trace 4bbcb7bc30e98492 ]---
-> [    1.603677] Kernel panic - not syncing: Attempted to kill init!
->                exitcode=0x0000000b
-> [    1.603677]
->
-> cc: Kevin Hilman <khilman@baylibre.com>
-> Cc: stable@vger.kernel.org
-> Fixes: e6dabd38d8e7 ("pinctrl: mediatek: add EINT support to MT7622 SoC")
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+As discussed during the review of v2, your plans were to merge
+things with potential to conflict with merges by the end of the
+merge window. So, I'm resubmitting it in order to help you with
+that.
 
-Patch applied for fixes.
+This patch series is at my experimental tree:
+	https://git.linuxtv.org/mchehab/experimental.git/log/?h=broken-links-v5
 
-Yours,
-Linus Walleij
+	git://linuxtv.org/mchehab/experimental.git broken-links-v5
+
+This series contains:
+
+- 5 patches that weren't applied on my previous v2 series yet. 
+  Except for rebasing, the only change is that tools/memory-model/README
+  was removed from patch 5, as per Andrea review;
+
+- 4 patches for media stuff. I forgot to apply those via my tree.
+  Only noticed I didn't apply on media when I rebased by work.
+
+  Jon, 
+    I could sent them via my tree, but, IMHO, better to apply together
+    with the other ones. So, feel free to send them via your tree.
+
+- 6 patches improving the scripts/documentation-file-ref-check tool.
+  They fix a few things there and add more auto-correct rules,
+  some focused at DT binding stuff.
+
+- a series of other patches fixing several broken Documentation/
+  file references.
+
+After this patch series, only 32 broken references to doc files are detected:
+
+  Documentation/devicetree/bindings/input/mtk-pmic-keys.txt: Documentation/devicetree/bindings/input/keys.txt
+  Documentation/devicetree/bindings/input/mtk-pmic-keys.txt: Documentation/devicetree/bindings/input/keys.txt
+  Documentation/devicetree/bindings/leds/common.txt: Documentation/devicetree/bindings/gpio/led.txt
+  Documentation/devicetree/bindings/regulator/rohm,bd71837-regulator.txt: Documentation/devicetree/bindings/mfd/rohm,bd71837-pmic.txt
+  Documentation/devicetree/dynamic-resolution-notes.txt: Documentation/devicetree/dt-object-internal.txt
+  Documentation/scheduler/sched-pelt.c: Documentation/scheduler/sched-pelt
+  Documentation/scsi/scsi_mid_low_api.txt: Documentation/Configure.help
+  Documentation/sound/alsa-configuration.rst: Documentation/sound/oss/MultiSound
+  Documentation/target/tcm_mod_builder.txt: mnt/sdb/lio-core-2.6.git/Documentation/target/../../drivers/target/tcm_nab5000
+  Documentation/target/tcm_mod_builder.txt: mnt/sdb/lio-core-2.6.git/Documentation/target/../../drivers/target/tcm_nab5000
+  Documentation/target/tcm_mod_builder.txt: mnt/sdb/lio-core-2.6.git/Documentation/target/../../drivers/target/tcm_nab5000/tcm_nab5000_base.h
+  Documentation/target/tcm_mod_builder.txt: mnt/sdb/lio-core-2.6.git/Documentation/target/../../include/target/target_core_fabric_ops.h
+  Documentation/target/tcm_mod_builder.txt: mnt/sdb/lio-core-2.6.git/Documentation/target/../../drivers/target/tcm_nab5000/tcm_nab5000_fabric.c
+  Documentation/target/tcm_mod_builder.txt: mnt/sdb/lio-core-2.6.git/Documentation/target/../../drivers/target/tcm_nab5000/tcm_nab5000_fabric.h
+  Documentation/target/tcm_mod_builder.txt: mnt/sdb/lio-core-2.6.git/Documentation/target/../../drivers/target/tcm_nab5000/tcm_nab5000_configfs.c
+  Documentation/target/tcm_mod_builder.txt: mnt/sdb/lio-core-2.6.git/Documentation/target/../../drivers/target/tcm_nab5000/Kbuild
+  Documentation/target/tcm_mod_builder.txt: mnt/sdb/lio-core-2.6.git/Documentation/target/../../drivers/target/tcm_nab5000/Kconfig
+  Documentation/trace/ftrace.rst: Documentation/trace/histogram.rst
+  Documentation/translations/zh_CN/HOWTO: Documentation/DocBook/
+  Documentation/translations/zh_CN/basic_profiling.txt: Documentation/basic_profiling
+  Documentation/translations/zh_CN/basic_profiling.txt: Documentation/basic_profiling
+  Documentation/translations/zh_CN/oops-tracing.txt: Documentation/admin-guide/oops-tracing.rst
+  Documentation/translations/zh_CN/oops-tracing.txt: Documentation/admin-guide/oops-tracing.rst
+  MAINTAINERS: Documentation/devicetree/bindings/i2c/ina209.txt
+  MAINTAINERS: Documentation/devicetree/bindings/rng/samsung,exynos5250-trng.txt
+  arch/powerpc/Kconfig: Documentation/vm/protection-keys.rst
+  drivers/isdn/mISDN/dsp_core.c: Documentation/isdn/mISDN.cert
+  drivers/scsi/Kconfig: file:Documentation/scsi/tmscsim.txt
+  drivers/vhost/vhost.c: Documentation/virtual/lguest/lguest.c
+  include/linux/gpio.h: Documentation/gpio/gpio-legacy.txt
+  kernel/sched/sched-pelt.h: Documentation/scheduler/sched-pelt
+  sound/isa/Kconfig: file:Documentation/sound/oss/MultiSound
+
+Just reminding, before v1 of this series, we had around 300 broken refs,
+so, I guess we've made some progress.
+
+The remaining ones will likely require subsystem attention, as most
+of them seem to be related to non-trivial code changes and/or code
+cleanups.
+
+Mauro Carvalho Chehab (27):
+  docs: can.rst: fix a footnote reference
+  docs: crypto_engine.rst: Fix two parse warnings
+  arch/*: Kconfig: fix documentation for NMI watchdog
+  docs: fix broken references with multiple hints
+  docs: Fix some broken references
+  media: dvb: fix location of get_dvb_firmware script
+  media: dvb: point to the location of the old README.dvb-usb file
+  media: v4l: fix broken video4linux docs locations
+  media: max2175: fix location of driver's companion documentation
+  scripts/documentation-file-ref-check: fix help message
+  scripts/documentation-file-ref-check: accept more wildcards at
+    filenames
+  scripts/documentation-file-ref-check: add a fix logic for DT
+  scripts/documentation-file-ref-check: hint: dash or underline
+  scripts/documentation-file-ref-check: get rid of false-positives
+  scripts/documentation-file-ref-check: check tools/*/Documentation
+  docs: Fix more broken references
+  bindings: nvmem/zii: Fix location of nvmem.txt
+  kernel-parameters.txt: fix pointers to sound parameters
+  MAINTAINERS: fix location of some display DT bindings
+  MAINTAINERS: fix location of DT npcm files
+  MAINTAINERS: get rid of non-existing Documentation/fpga
+  devicetree: fix some bindings file names
+  devicetree: fix name of pinctrl-bindings.txt
+  devicetree: fix a series of wrong file references
+  ABI: sysfs-devices-system-cpu: remove a broken reference
+  Documentation: rstFlatTable.py: fix a broken reference
+  fix a series of Documentation/ broken file name references
+
+ Documentation/ABI/obsolete/sysfs-gpio         |  2 +-
+ .../ABI/testing/sysfs-devices-system-cpu      |  3 -
+ .../admin-guide/kernel-parameters.txt         |  9 +--
+ Documentation/crypto/crypto_engine.rst        |  8 ++-
+ .../bindings/clock/st/st,clkgen.txt           |  8 +--
+ .../devicetree/bindings/clock/ti/gate.txt     |  2 +-
+ .../bindings/clock/ti/interface.txt           |  2 +-
+ .../bindings/cpufreq/cpufreq-mediatek.txt     |  2 +-
+ .../bindings/devfreq/rk3399_dmc.txt           |  2 +-
+ .../bindings/display/bridge/tda998x.txt       |  2 +-
+ .../bindings/gpu/arm,mali-midgard.txt         |  2 +-
+ .../bindings/gpu/arm,mali-utgard.txt          |  2 +-
+ .../bindings/input/rmi4/rmi_2d_sensor.txt     |  2 +-
+ .../bindings/input/rotary-encoder.txt         |  2 +-
+ .../bindings/media/stih407-c8sectpfe.txt      |  2 +-
+ .../devicetree/bindings/mfd/as3722.txt        |  2 +-
+ .../devicetree/bindings/mfd/mt6397.txt        |  2 +-
+ .../devicetree/bindings/mfd/sun6i-prcm.txt    |  4 +-
+ .../bindings/mmc/exynos-dw-mshc.txt           |  2 +-
+ .../bindings/mmc/microchip,sdhci-pic32.txt    |  2 +-
+ .../devicetree/bindings/mmc/sdhci-st.txt      |  2 +-
+ .../devicetree/bindings/net/dsa/ksz.txt       |  2 +-
+ .../devicetree/bindings/net/dsa/mt7530.txt    |  2 +-
+ .../bindings/nvmem/zii,rave-sp-eeprom.txt     |  2 +-
+ .../bindings/pci/hisilicon-pcie.txt           |  2 +-
+ .../devicetree/bindings/pci/kirin-pcie.txt    |  2 +-
+ .../devicetree/bindings/pci/pci-keystone.txt  |  4 +-
+ .../bindings/pinctrl/pinctrl-max77620.txt     |  4 +-
+ .../bindings/pinctrl/pinctrl-mcp23s08.txt     |  4 +-
+ .../bindings/pinctrl/pinctrl-rk805.txt        |  4 +-
+ .../devicetree/bindings/power/fsl,imx-gpc.txt |  2 +-
+ .../bindings/power/supply/ab8500/btemp.txt    |  2 +-
+ .../bindings/power/supply/ab8500/chargalg.txt |  2 +-
+ .../bindings/power/supply/ab8500/charger.txt  |  2 +-
+ .../bindings/power/wakeup-source.txt          |  2 +-
+ .../bindings/serial/microchip,pic32-uart.txt  |  2 +-
+ .../bindings/sound/st,stm32-i2s.txt           |  2 +-
+ .../bindings/sound/st,stm32-sai.txt           |  2 +-
+ .../devicetree/bindings/spi/spi-st-ssc.txt    |  2 +-
+ .../devicetree/bindings/usb/rockchip,dwc3.txt |  2 +-
+ Documentation/driver-api/gpio/consumer.rst    |  2 +-
+ Documentation/hwmon/ina2xx                    |  2 +-
+ Documentation/kprobes.txt                     |  4 +-
+ Documentation/maintainer/pull-requests.rst    |  2 +-
+ Documentation/networking/can.rst              |  4 +-
+ Documentation/sphinx/rstFlatTable.py          |  2 -
+ Documentation/trace/coresight.txt             |  2 +-
+ Documentation/trace/events.rst                |  2 +-
+ Documentation/trace/ftrace-uses.rst           |  2 +-
+ Documentation/trace/histogram.txt             |  2 +-
+ Documentation/trace/intel_th.rst              |  2 +-
+ Documentation/trace/tracepoint-analysis.rst   |  8 +--
+ Documentation/translations/ja_JP/howto.rst    |  4 +-
+ Documentation/translations/ko_KR/howto.rst    |  2 +-
+ .../translations/zh_CN/SubmittingDrivers      |  2 +-
+ Documentation/translations/zh_CN/gpio.txt     |  4 +-
+ .../translations/zh_CN/io_ordering.txt        |  2 +-
+ .../translations/zh_CN/magic-number.txt       |  4 +-
+ .../zh_CN/video4linux/omap3isp.txt            |  4 +-
+ .../zh_CN/video4linux/v4l2-framework.txt      |  6 +-
+ MAINTAINERS                                   | 63 +++++++++----------
+ arch/Kconfig                                  |  2 +-
+ arch/arm/Kconfig                              |  2 +-
+ arch/arm/include/asm/cacheflush.h             |  2 +-
+ arch/arm64/include/asm/cacheflush.h           |  2 +-
+ arch/microblaze/include/asm/cacheflush.h      |  2 +-
+ arch/parisc/Kconfig                           |  2 +-
+ arch/sh/Kconfig                               |  2 +-
+ arch/sparc/Kconfig                            |  2 +-
+ arch/um/Kconfig.um                            |  2 +-
+ arch/unicore32/include/asm/cacheflush.h       |  2 +-
+ arch/x86/entry/vsyscall/vsyscall_64.c         |  2 +-
+ arch/xtensa/include/asm/cacheflush.h          |  4 +-
+ block/Kconfig                                 |  2 +-
+ certs/Kconfig                                 |  2 +-
+ crypto/asymmetric_keys/asymmetric_type.c      |  2 +-
+ crypto/asymmetric_keys/signature.c            |  2 +-
+ drivers/char/Kconfig                          |  2 +-
+ drivers/clk/clk.c                             |  4 +-
+ drivers/clk/ingenic/cgu.h                     |  2 +-
+ drivers/dma/dmaengine.c                       |  2 +-
+ drivers/gpu/vga/Kconfig                       |  2 +-
+ drivers/gpu/vga/vgaarb.c                      |  2 +-
+ drivers/hid/usbhid/Kconfig                    |  2 +-
+ drivers/input/Kconfig                         |  4 +-
+ drivers/input/joystick/Kconfig                | 14 ++---
+ drivers/input/joystick/iforce/Kconfig         |  4 +-
+ drivers/input/joystick/walkera0701.c          |  2 +-
+ drivers/input/misc/Kconfig                    |  4 +-
+ drivers/input/misc/rotary_encoder.c           |  2 +-
+ drivers/input/mouse/Kconfig                   |  6 +-
+ drivers/input/mouse/alps.c                    |  2 +-
+ drivers/input/serio/Kconfig                   |  4 +-
+ drivers/input/touchscreen/wm97xx-core.c       |  2 +-
+ drivers/lightnvm/pblk-rb.c                    |  2 +-
+ drivers/md/bcache/Kconfig                     |  2 +-
+ drivers/md/bcache/btree.c                     |  2 +-
+ drivers/md/bcache/extents.c                   |  2 +-
+ drivers/media/dvb-core/dvb_ringbuffer.c       |  2 +-
+ drivers/media/dvb-frontends/Kconfig           | 18 +++---
+ drivers/media/dvb-frontends/dib3000.h         |  2 +-
+ drivers/media/dvb-frontends/dib3000mb.c       |  2 +-
+ drivers/media/dvb-frontends/eds1547.h         |  2 +-
+ drivers/media/dvb-frontends/nxt200x.c         |  4 +-
+ drivers/media/dvb-frontends/or51211.c         |  2 +-
+ drivers/media/dvb-frontends/sp8870.c          |  2 +-
+ drivers/media/dvb-frontends/sp887x.c          |  2 +-
+ drivers/media/dvb-frontends/tda1004x.c        |  4 +-
+ drivers/media/dvb-frontends/tda10071.c        |  2 +-
+ drivers/media/dvb-frontends/z0194a.h          |  2 +-
+ drivers/media/i2c/max2175.c                   |  6 +-
+ drivers/media/pci/bt8xx/Kconfig               |  2 +-
+ drivers/media/pci/cx18/cx18-dvb.c             |  2 +-
+ drivers/media/pci/cx18/cx18-streams.c         |  4 +-
+ drivers/media/pci/cx23885/cx23885-cards.c     |  2 +-
+ drivers/media/pci/meye/Kconfig                |  2 +-
+ drivers/media/pci/ttpci/Kconfig               |  2 +-
+ drivers/media/platform/pxa_camera.c           |  4 +-
+ .../soc_camera/sh_mobile_ceu_camera.c         |  2 +-
+ drivers/media/radio/Kconfig                   | 12 ++--
+ drivers/media/radio/si470x/Kconfig            |  2 +-
+ drivers/media/radio/wl128x/Kconfig            |  2 +-
+ drivers/media/usb/dvb-usb-v2/Kconfig          |  2 +-
+ drivers/media/usb/dvb-usb-v2/dvb_usb_core.c   |  2 +-
+ drivers/media/usb/dvb-usb-v2/gl861.c          |  2 +-
+ drivers/media/usb/dvb-usb-v2/lmedm04.c        |  4 +-
+ drivers/media/usb/dvb-usb-v2/lmedm04.h        |  2 +-
+ drivers/media/usb/dvb-usb-v2/mxl111sf.c       |  2 +-
+ drivers/media/usb/dvb-usb-v2/mxl111sf.h       |  2 +-
+ drivers/media/usb/dvb-usb/Kconfig             |  2 +-
+ drivers/media/usb/dvb-usb/a800.c              |  2 +-
+ drivers/media/usb/dvb-usb/af9005-fe.c         |  2 +-
+ drivers/media/usb/dvb-usb/af9005-remote.c     |  2 +-
+ drivers/media/usb/dvb-usb/af9005.c            |  2 +-
+ drivers/media/usb/dvb-usb/af9005.h            |  2 +-
+ drivers/media/usb/dvb-usb/az6027.c            |  2 +-
+ drivers/media/usb/dvb-usb/cxusb.c             |  2 +-
+ drivers/media/usb/dvb-usb/dibusb-common.c     |  2 +-
+ drivers/media/usb/dvb-usb/dibusb-mb.c         |  2 +-
+ drivers/media/usb/dvb-usb/dibusb-mc-common.c  |  2 +-
+ drivers/media/usb/dvb-usb/dibusb-mc.c         |  2 +-
+ drivers/media/usb/dvb-usb/dibusb.h            |  2 +-
+ drivers/media/usb/dvb-usb/digitv.c            |  2 +-
+ drivers/media/usb/dvb-usb/dtt200u-fe.c        |  2 +-
+ drivers/media/usb/dvb-usb/dtt200u.c           |  2 +-
+ drivers/media/usb/dvb-usb/dtt200u.h           |  2 +-
+ drivers/media/usb/dvb-usb/dvb-usb-firmware.c  |  2 +-
+ drivers/media/usb/dvb-usb/dvb-usb-init.c      |  2 +-
+ drivers/media/usb/dvb-usb/dw2102.c            |  6 +-
+ drivers/media/usb/dvb-usb/friio-fe.c          |  2 +-
+ drivers/media/usb/dvb-usb/friio.c             |  2 +-
+ drivers/media/usb/dvb-usb/friio.h             |  2 +-
+ drivers/media/usb/dvb-usb/gp8psk.c            |  4 +-
+ drivers/media/usb/dvb-usb/gp8psk.h            |  2 +-
+ drivers/media/usb/dvb-usb/m920x.c             |  2 +-
+ drivers/media/usb/dvb-usb/nova-t-usb2.c       |  2 +-
+ drivers/media/usb/dvb-usb/opera1.c            |  4 +-
+ drivers/media/usb/dvb-usb/ttusb2.c            |  2 +-
+ drivers/media/usb/dvb-usb/ttusb2.h            |  2 +-
+ drivers/media/usb/dvb-usb/umt-010.c           |  2 +-
+ drivers/media/usb/dvb-usb/vp702x-fe.c         |  2 +-
+ drivers/media/usb/dvb-usb/vp702x.c            |  2 +-
+ drivers/media/usb/dvb-usb/vp7045-fe.c         |  2 +-
+ drivers/media/usb/dvb-usb/vp7045.c            |  2 +-
+ drivers/media/usb/dvb-usb/vp7045.h            |  2 +-
+ drivers/media/usb/gspca/m5602/Kconfig         |  2 -
+ drivers/media/usb/ttusb-dec/Kconfig           |  6 +-
+ drivers/media/usb/zr364xx/Kconfig             |  2 +-
+ drivers/net/ethernet/intel/Kconfig            |  8 +--
+ drivers/parport/Kconfig                       |  6 +-
+ drivers/platform/x86/Kconfig                  |  2 +-
+ drivers/sbus/char/oradax.c                    |  2 +-
+ drivers/soundwire/stream.c                    |  8 +--
+ .../staging/fsl-mc/bus/dpio/dpio-driver.txt   |  2 +-
+ drivers/staging/media/bcm2048/TODO            |  2 +-
+ drivers/staging/media/zoran/Kconfig           |  2 +-
+ drivers/video/fbdev/skeletonfb.c              |  8 +--
+ fs/Kconfig.binfmt                             |  2 +-
+ fs/befs/ChangeLog                             |  2 +-
+ fs/binfmt_misc.c                              |  2 +-
+ fs/orangefs/orangefs-sysfs.c                  |  2 +-
+ include/keys/asymmetric-subtype.h             |  2 +-
+ include/keys/asymmetric-type.h                |  2 +-
+ include/linux/assoc_array.h                   |  2 +-
+ include/linux/assoc_array_priv.h              |  2 +-
+ include/linux/circ_buf.h                      |  2 +-
+ include/linux/ftrace.h                        |  2 +-
+ include/linux/platform_data/sc18is602.h       |  2 +-
+ include/linux/rculist_nulls.h                 |  2 +-
+ include/linux/tracepoint.h                    |  2 +-
+ include/uapi/linux/prctl.h                    |  2 +-
+ include/xen/interface/io/kbdif.h              |  2 +-
+ kernel/cgroup/cpuset.c                        |  2 +-
+ kernel/power/main.c                           |  2 +-
+ kernel/trace/Kconfig                          | 16 ++---
+ lib/Kconfig                                   |  2 +-
+ scripts/documentation-file-ref-check          | 56 ++++++++++++++---
+ security/device_cgroup.c                      |  2 +-
+ security/selinux/hooks.c                      |  2 +-
+ sound/core/Kconfig                            |  4 +-
+ sound/drivers/Kconfig                         |  4 +-
+ sound/pci/Kconfig                             | 10 +--
+ tools/include/uapi/linux/prctl.h              |  2 +-
+ tools/lib/api/fs/fs.c                         |  2 +-
+ tools/perf/util/bpf-prologue.c                |  2 +-
+ .../config/custom-timeline-functions.cfg      |  4 +-
+ 206 files changed, 370 insertions(+), 339 deletions(-)
+
+-- 
+2.17.1
