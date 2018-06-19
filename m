@@ -1,38 +1,108 @@
-From: Keiichi Watanabe <keiichiw@chromium.org>
-Subject: [PATCH v4 3/3] media: mtk-vcodec: Support VP9 profile in decoder
-Date: Mon, 18 Jun 2018 16:58:54 +0900
-Message-ID: <20180618075854.12881-4-keiichiw@chromium.org>
-References: <20180618075854.12881-1-keiichiw@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180618075854.12881-1-keiichiw@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Stanimir Varbanov <stanimir.varbanov@linaro.org>, Kyungmin Park <kyungmin.park@samsung.com>, Kamil Debski <kamil@wypas.org>, Jeongtae Park <jtp.park@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Hans Verkuil <hverkuil@xs4all.nl>, Keiichi Watanabe <keiichiw@chromium.org>, Smitha T Murthy <smitha.t@samsung.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Tom Saeger <tom.saeger@oracle.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Tomasz Figa <tfiga@chromium.org>, Ricardo Ribalda Delgado <ricardo.ribalda@gmail.com>
+From: Stu Hsieh <stu.hsieh@mediatek.com>
+Subject: [PATCH v6 02/29] drm/mediatek: support maximum 64 mutex mod
+Date: Tue, 19 Jun 2018 15:34:03 +0800
+Message-ID: <1529393670-26862-3-git-send-email-stu.hsieh@mediatek.com>
+References: <1529393670-26862-1-git-send-email-stu.hsieh@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1529393670-26862-1-git-send-email-stu.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add V4L2_CID_MPEG_VIDEO_VP9_PROFILE control in MediaTek decoder's
-driver. MediaTek decoder only supports profile 0 for now.
-
-Signed-off-by: Keiichi Watanabe <keiichiw@chromium.org>
----
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-index 86f0a7134365..ba986232b953 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-@@ -1400,6 +1400,11 @@ int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_ctx *ctx)
- 				V4L2_CID_MIN_BUFFERS_FOR_CAPTURE,
- 				0, 32, 1, 1);
- 	ctrl->flags |= V4L2_CTRL_FLAG_VOLATILE;
-+	v4l2_ctrl_new_std_menu(&ctx->ctrl_hdl,
-+				&mtk_vcodec_dec_ctrl_ops,
-+				V4L2_CID_MPEG_VIDEO_VP9_PROFILE,
-+				V4L2_MPEG_VIDEO_VP9_PROFILE_0,
-+				0, V4L2_MPEG_VIDEO_VP9_PROFILE_0);
-
- 	if (ctx->ctrl_hdl.error) {
- 		mtk_v4l2_err("Adding control failed %d",
---
-2.18.0.rc1.244.gcf134e6275-goog
+VGhpcyBwYXRjaCBzdXBwb3J0IHRoYXQgaWYgbW9kdWxlcyBtb3JlIHRoYW4gMzIsCmFkZCBpbmRl
+eCBtb3JlIHRoYW4gMzEgd2hlbiB1c2luZyBESVNQX1JFR19NVVRFWF9NT0QyIGJpdAoKU2lnbmVk
+LW9mZi1ieTogU3R1IEhzaWVoIDxzdHUuaHNpZWhAbWVkaWF0ZWsuY29tPgpSZXZpZXdlZC1ieTog
+Q0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2RybV9kZHAuYyB8IDc1ICsrKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0KIDEg
+ZmlsZSBjaGFuZ2VkLCA0NyBpbnNlcnRpb25zKCspLCAyOCBkZWxldGlvbnMoLSkKCmRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyBiL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCmluZGV4IDgxMzBmM2RhYjY2MS4uNDdmZmEyNDBi
+ZDI1IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwor
+KysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwpAQCAtNDEsMzEgKzQx
+LDMyIEBACiAjZGVmaW5lIERJU1BfUkVHX01VVEVYX1JTVChuKQkoMHgyOCArIDB4MjAgKiAobikp
+CiAjZGVmaW5lIERJU1BfUkVHX01VVEVYX01PRChuKQkoMHgyYyArIDB4MjAgKiAobikpCiAjZGVm
+aW5lIERJU1BfUkVHX01VVEVYX1NPRihuKQkoMHgzMCArIDB4MjAgKiAobikpCisjZGVmaW5lIERJ
+U1BfUkVHX01VVEVYX01PRDIobikJKDB4MzQgKyAweDIwICogKG4pKQogCiAjZGVmaW5lIElOVF9N
+VVRFWAkJCQlCSVQoMSkKIAotI2RlZmluZSBNVDgxNzNfTVVURVhfTU9EX0RJU1BfT1ZMMAkJQklU
+KDExKQotI2RlZmluZSBNVDgxNzNfTVVURVhfTU9EX0RJU1BfT1ZMMQkJQklUKDEyKQotI2RlZmlu
+ZSBNVDgxNzNfTVVURVhfTU9EX0RJU1BfUkRNQTAJCUJJVCgxMykKLSNkZWZpbmUgTVQ4MTczX01V
+VEVYX01PRF9ESVNQX1JETUExCQlCSVQoMTQpCi0jZGVmaW5lIE1UODE3M19NVVRFWF9NT0RfRElT
+UF9SRE1BMgkJQklUKDE1KQotI2RlZmluZSBNVDgxNzNfTVVURVhfTU9EX0RJU1BfV0RNQTAJCUJJ
+VCgxNikKLSNkZWZpbmUgTVQ4MTczX01VVEVYX01PRF9ESVNQX1dETUExCQlCSVQoMTcpCi0jZGVm
+aW5lIE1UODE3M19NVVRFWF9NT0RfRElTUF9DT0xPUjAJCUJJVCgxOCkKLSNkZWZpbmUgTVQ4MTcz
+X01VVEVYX01PRF9ESVNQX0NPTE9SMQkJQklUKDE5KQotI2RlZmluZSBNVDgxNzNfTVVURVhfTU9E
+X0RJU1BfQUFMCQlCSVQoMjApCi0jZGVmaW5lIE1UODE3M19NVVRFWF9NT0RfRElTUF9HQU1NQQkJ
+QklUKDIxKQotI2RlZmluZSBNVDgxNzNfTVVURVhfTU9EX0RJU1BfVUZPRQkJQklUKDIyKQotI2Rl
+ZmluZSBNVDgxNzNfTVVURVhfTU9EX0RJU1BfUFdNMAkJQklUKDIzKQotI2RlZmluZSBNVDgxNzNf
+TVVURVhfTU9EX0RJU1BfUFdNMQkJQklUKDI0KQotI2RlZmluZSBNVDgxNzNfTVVURVhfTU9EX0RJ
+U1BfT0QJCUJJVCgyNSkKLQotI2RlZmluZSBNVDI3MDFfTVVURVhfTU9EX0RJU1BfT1ZMCQlCSVQo
+MykKLSNkZWZpbmUgTVQyNzAxX01VVEVYX01PRF9ESVNQX1dETUEJCUJJVCg2KQotI2RlZmluZSBN
+VDI3MDFfTVVURVhfTU9EX0RJU1BfQ09MT1IJCUJJVCg3KQotI2RlZmluZSBNVDI3MDFfTVVURVhf
+TU9EX0RJU1BfQkxTCQlCSVQoOSkKLSNkZWZpbmUgTVQyNzAxX01VVEVYX01PRF9ESVNQX1JETUEw
+CQlCSVQoMTApCi0jZGVmaW5lIE1UMjcwMV9NVVRFWF9NT0RfRElTUF9SRE1BMQkJQklUKDEyKQor
+I2RlZmluZSBNVDgxNzNfTVVURVhfTU9EX0RJU1BfT1ZMMAkJMTEKKyNkZWZpbmUgTVQ4MTczX01V
+VEVYX01PRF9ESVNQX09WTDEJCTEyCisjZGVmaW5lIE1UODE3M19NVVRFWF9NT0RfRElTUF9SRE1B
+MAkJMTMKKyNkZWZpbmUgTVQ4MTczX01VVEVYX01PRF9ESVNQX1JETUExCQkxNAorI2RlZmluZSBN
+VDgxNzNfTVVURVhfTU9EX0RJU1BfUkRNQTIJCTE1CisjZGVmaW5lIE1UODE3M19NVVRFWF9NT0Rf
+RElTUF9XRE1BMAkJMTYKKyNkZWZpbmUgTVQ4MTczX01VVEVYX01PRF9ESVNQX1dETUExCQkxNwor
+I2RlZmluZSBNVDgxNzNfTVVURVhfTU9EX0RJU1BfQ09MT1IwCQkxOAorI2RlZmluZSBNVDgxNzNf
+TVVURVhfTU9EX0RJU1BfQ09MT1IxCQkxOQorI2RlZmluZSBNVDgxNzNfTVVURVhfTU9EX0RJU1Bf
+QUFMCQkyMAorI2RlZmluZSBNVDgxNzNfTVVURVhfTU9EX0RJU1BfR0FNTUEJCTIxCisjZGVmaW5l
+IE1UODE3M19NVVRFWF9NT0RfRElTUF9VRk9FCQkyMgorI2RlZmluZSBNVDgxNzNfTVVURVhfTU9E
+X0RJU1BfUFdNMAkJMjMKKyNkZWZpbmUgTVQ4MTczX01VVEVYX01PRF9ESVNQX1BXTTEJCTI0Cisj
+ZGVmaW5lIE1UODE3M19NVVRFWF9NT0RfRElTUF9PRAkJMjUKKworI2RlZmluZSBNVDI3MDFfTVVU
+RVhfTU9EX0RJU1BfT1ZMCQkzCisjZGVmaW5lIE1UMjcwMV9NVVRFWF9NT0RfRElTUF9XRE1BCQk2
+CisjZGVmaW5lIE1UMjcwMV9NVVRFWF9NT0RfRElTUF9DT0xPUgkJNworI2RlZmluZSBNVDI3MDFf
+TVVURVhfTU9EX0RJU1BfQkxTCQk5CisjZGVmaW5lIE1UMjcwMV9NVVRFWF9NT0RfRElTUF9SRE1B
+MAkJMTAKKyNkZWZpbmUgTVQyNzAxX01VVEVYX01PRF9ESVNQX1JETUExCQkxMgogCiAjZGVmaW5l
+IE1VVEVYX1NPRl9TSU5HTEVfTU9ERQkJMAogI2RlZmluZSBNVVRFWF9TT0ZfRFNJMAkJCTEKQEAg
+LTI3OCw2ICsyNzksNyBAQCB2b2lkIG10a19kaXNwX211dGV4X2FkZF9jb21wKHN0cnVjdCBtdGtf
+ZGlzcF9tdXRleCAqbXV0ZXgsCiAJc3RydWN0IG10a19kZHAgKmRkcCA9IGNvbnRhaW5lcl9vZiht
+dXRleCwgc3RydWN0IG10a19kZHAsCiAJCQkJCSAgIG11dGV4W211dGV4LT5pZF0pOwogCXVuc2ln
+bmVkIGludCByZWc7CisJdW5zaWduZWQgaW50IG9mZnNldDsKIAogCVdBUk5fT04oJmRkcC0+bXV0
+ZXhbbXV0ZXgtPmlkXSAhPSBtdXRleCk7CiAKQEAgLTI5Miw5ICsyOTQsMTcgQEAgdm9pZCBtdGtf
+ZGlzcF9tdXRleF9hZGRfY29tcChzdHJ1Y3QgbXRrX2Rpc3BfbXV0ZXggKm11dGV4LAogCQlyZWcg
+PSBNVVRFWF9TT0ZfRFBJMDsKIAkJYnJlYWs7CiAJZGVmYXVsdDoKLQkJcmVnID0gcmVhZGxfcmVs
+YXhlZChkZHAtPnJlZ3MgKyBESVNQX1JFR19NVVRFWF9NT0QobXV0ZXgtPmlkKSk7Ci0JCXJlZyB8
+PSBkZHAtPm11dGV4X21vZFtpZF07Ci0JCXdyaXRlbF9yZWxheGVkKHJlZywgZGRwLT5yZWdzICsg
+RElTUF9SRUdfTVVURVhfTU9EKG11dGV4LT5pZCkpOworCQlpZiAoZGRwLT5tdXRleF9tb2RbaWRd
+IDwgMzIpIHsKKwkJCW9mZnNldCA9IERJU1BfUkVHX01VVEVYX01PRChtdXRleC0+aWQpOworCQkJ
+cmVnID0gcmVhZGxfcmVsYXhlZChkZHAtPnJlZ3MgKyBvZmZzZXQpOworCQkJcmVnIHw9IDEgPDwg
+ZGRwLT5tdXRleF9tb2RbaWRdOworCQkJd3JpdGVsX3JlbGF4ZWQocmVnLCBkZHAtPnJlZ3MgKyBv
+ZmZzZXQpOworCQl9IGVsc2UgeworCQkJb2Zmc2V0ID0gRElTUF9SRUdfTVVURVhfTU9EMihtdXRl
+eC0+aWQpOworCQkJcmVnID0gcmVhZGxfcmVsYXhlZChkZHAtPnJlZ3MgKyBvZmZzZXQpOworCQkJ
+cmVnIHw9IDEgPDwgKGRkcC0+bXV0ZXhfbW9kW2lkXSAtIDMyKTsKKwkJCXdyaXRlbF9yZWxheGVk
+KHJlZywgZGRwLT5yZWdzICsgb2Zmc2V0KTsKKwkJfQogCQlyZXR1cm47CiAJfQogCkBAIC0zMDcs
+NiArMzE3LDcgQEAgdm9pZCBtdGtfZGlzcF9tdXRleF9yZW1vdmVfY29tcChzdHJ1Y3QgbXRrX2Rp
+c3BfbXV0ZXggKm11dGV4LAogCXN0cnVjdCBtdGtfZGRwICpkZHAgPSBjb250YWluZXJfb2YobXV0
+ZXgsIHN0cnVjdCBtdGtfZGRwLAogCQkJCQkgICBtdXRleFttdXRleC0+aWRdKTsKIAl1bnNpZ25l
+ZCBpbnQgcmVnOworCXVuc2lnbmVkIGludCBvZmZzZXQ7CiAKIAlXQVJOX09OKCZkZHAtPm11dGV4
+W211dGV4LT5pZF0gIT0gbXV0ZXgpOwogCkBAIC0zMTgsOSArMzI5LDE3IEBAIHZvaWQgbXRrX2Rp
+c3BfbXV0ZXhfcmVtb3ZlX2NvbXAoc3RydWN0IG10a19kaXNwX211dGV4ICptdXRleCwKIAkJCSAg
+ICAgICBkZHAtPnJlZ3MgKyBESVNQX1JFR19NVVRFWF9TT0YobXV0ZXgtPmlkKSk7CiAJCWJyZWFr
+OwogCWRlZmF1bHQ6Ci0JCXJlZyA9IHJlYWRsX3JlbGF4ZWQoZGRwLT5yZWdzICsgRElTUF9SRUdf
+TVVURVhfTU9EKG11dGV4LT5pZCkpOwotCQlyZWcgJj0gfihkZHAtPm11dGV4X21vZFtpZF0pOwot
+CQl3cml0ZWxfcmVsYXhlZChyZWcsIGRkcC0+cmVncyArIERJU1BfUkVHX01VVEVYX01PRChtdXRl
+eC0+aWQpKTsKKwkJaWYgKGRkcC0+bXV0ZXhfbW9kW2lkXSA8IDMyKSB7CisJCQlvZmZzZXQgPSBE
+SVNQX1JFR19NVVRFWF9NT0QobXV0ZXgtPmlkKTsKKwkJCXJlZyA9IHJlYWRsX3JlbGF4ZWQoZGRw
+LT5yZWdzICsgb2Zmc2V0KTsKKwkJCXJlZyAmPSB+KDEgPDwgZGRwLT5tdXRleF9tb2RbaWRdKTsK
+KwkJCXdyaXRlbF9yZWxheGVkKHJlZywgZGRwLT5yZWdzICsgb2Zmc2V0KTsKKwkJfSBlbHNlIHsK
+KwkJCW9mZnNldCA9IERJU1BfUkVHX01VVEVYX01PRDIobXV0ZXgtPmlkKTsKKwkJCXJlZyA9IHJl
+YWRsX3JlbGF4ZWQoZGRwLT5yZWdzICsgb2Zmc2V0KTsKKwkJCXJlZyAmPSB+KDEgPDwgKGRkcC0+
+bXV0ZXhfbW9kW2lkXSAtIDMyKSk7CisJCQl3cml0ZWxfcmVsYXhlZChyZWcsIGRkcC0+cmVncyAr
+IG9mZnNldCk7CisJCX0KIAkJYnJlYWs7CiAJfQogfQotLSAKMi4xMi41CgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
