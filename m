@@ -1,57 +1,60 @@
-From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v6 12/29] drm/mediatek: Update the definition of connection from RDMA1 to DPI0
-Date: Tue, 19 Jun 2018 15:34:13 +0800
-Message-ID: <1529393670-26862-13-git-send-email-stu.hsieh@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v6 07/29] drm/mediatek: add component DPI1
+Date: Tue, 19 Jun 2018 15:58:28 +0800
+Message-ID: <1529395108.26480.0.camel@mtksdaap41>
 References: <1529393670-26862-1-git-send-email-stu.hsieh@mediatek.com>
+ <1529393670-26862-8-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1529393670-26862-1-git-send-email-stu.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Stu Hsieh <stu.hsieh@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1529393670-26862-8-git-send-email-stu.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Stu Hsieh <stu.hsieh@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch update the definition of connection from RDMA1 to DPI0.
-Change the term MOUT to SOUT.
-
-Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-index 8bfc0debd2c2..977df8facb79 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-@@ -29,7 +29,7 @@
- #define DISP_REG_CONFIG_DISP_COLOR0_SEL_IN	0x084
- #define DISP_REG_CONFIG_DISP_COLOR1_SEL_IN	0x088
- #define DISP_REG_CONFIG_DPI_SEL_IN		0x0ac
--#define DISP_REG_CONFIG_DISP_RDMA1_MOUT_EN	0x0c8
-+#define DISP_REG_CONFIG_DISP_RDMA1_SOUT_EN	0x0c8
- #define DISP_REG_CONFIG_MMSYS_CG_CON0		0x100
- 
- #define DISP_REG_CONFIG_DISP_OVL_MOUT_EN	0x030
-@@ -80,7 +80,7 @@
- #define COLOR0_SEL_IN_OVL0		0x1
- #define OVL1_MOUT_EN_COLOR1		0x1
- #define GAMMA_MOUT_EN_RDMA1		0x1
--#define RDMA1_MOUT_DPI0			0x2
-+#define RDMA1_SOUT_DPI0			0x2
- #define DPI0_SEL_IN_RDMA1		0x1
- #define COLOR1_SEL_IN_OVL1		0x1
- 
-@@ -156,8 +156,8 @@ static unsigned int mtk_ddp_mout_en(enum mtk_ddp_comp_id cur,
- 		*addr = DISP_REG_CONFIG_DISP_OD_MOUT_EN;
- 		value = OD1_MOUT_EN_RDMA1;
- 	} else if (cur == DDP_COMPONENT_RDMA1 && next == DDP_COMPONENT_DPI0) {
--		*addr = DISP_REG_CONFIG_DISP_RDMA1_MOUT_EN;
--		value = RDMA1_MOUT_DPI0;
-+		*addr = DISP_REG_CONFIG_DISP_RDMA1_SOUT_EN;
-+		value = RDMA1_SOUT_DPI0;
- 	} else {
- 		value = 0;
- 	}
--- 
-2.12.5
+T24gVHVlLCAyMDE4LTA2LTE5IGF0IDE1OjM0ICswODAwLCBTdHUgSHNpZWggd3JvdGU6Cj4gVGhp
+cyBwYXRjaCBhZGQgdGhlIGNvbXBvbmVudCBEUEkxCj4gCgpSZXZpZXdlZC1ieTogQ0sgSHUgPGNr
+Lmh1QG1lZGlhdGVrLmNvbT4KCj4gU2lnbmVkLW9mZi1ieTogU3R1IEhzaWVoIDxzdHUuaHNpZWhA
+bWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9k
+ZHBfY29tcC5jIHwgMiArKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBf
+Y29tcC5oIHwgMSArCj4gIDIgZmlsZXMgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspCj4gCj4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4gaW5kZXggODZlOGM5
+ZTVkZjQxLi5jYzc0YjFhNzI3OGMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fZGRwX2NvbXAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfZHJtX2RkcF9jb21wLmMKPiBAQCAtMjI0LDYgKzIyNCw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1
+Y3QgbXRrX2RkcF9jb21wX21hdGNoIG10a19kZHBfbWF0Y2hlc1tERFBfQ09NUE9ORU5UX0lEX01B
+WF0gPSB7Cj4gIAlbRERQX0NPTVBPTkVOVF9DT0xPUjBdCT0geyBNVEtfRElTUF9DT0xPUiwJMCwg
+TlVMTCB9LAo+ICAJW0REUF9DT01QT05FTlRfQ09MT1IxXQk9IHsgTVRLX0RJU1BfQ09MT1IsCTEs
+IE5VTEwgfSwKPiAgCVtERFBfQ09NUE9ORU5UX0RQSTBdCT0geyBNVEtfRFBJLAkJMCwgTlVMTCB9
+LAo+ICsJW0REUF9DT01QT05FTlRfRFBJMV0JPSB7IE1US19EUEksCQkxLCBOVUxMIH0sCj4gIAlb
+RERQX0NPTVBPTkVOVF9EU0kwXQk9IHsgTVRLX0RTSSwJCTAsIE5VTEwgfSwKPiAgCVtERFBfQ09N
+UE9ORU5UX0RTSTFdCT0geyBNVEtfRFNJLAkJMSwgTlVMTCB9LAo+ICAJW0REUF9DT01QT05FTlRf
+R0FNTUFdCT0geyBNVEtfRElTUF9HQU1NQSwJMCwgJmRkcF9nYW1tYSB9LAo+IEBAIC0yNzUsNiAr
+Mjc2LDcgQEAgaW50IG10a19kZHBfY29tcF9pbml0KHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0
+IGRldmljZV9ub2RlICpub2RlLAo+ICAKPiAgCWlmIChjb21wX2lkID09IEREUF9DT01QT05FTlRf
+QkxTIHx8Cj4gIAkgICAgY29tcF9pZCA9PSBERFBfQ09NUE9ORU5UX0RQSTAgfHwKPiArCSAgICBj
+b21wX2lkID09IEREUF9DT01QT05FTlRfRFBJMSB8fAo+ICAJICAgIGNvbXBfaWQgPT0gRERQX0NP
+TVBPTkVOVF9EU0kwIHx8Cj4gIAkgICAgY29tcF9pZCA9PSBERFBfQ09NUE9ORU5UX1BXTTApIHsK
+PiAgCQljb21wLT5yZWdzID0gTlVMTDsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaCBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHJtX2RkcF9jb21wLmgKPiBpbmRleCBlMDBjMmU3OThhYmQuLjU0Yzk5YzE2OTA5MyAxMDA2NDQK
+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oCj4gKysr
+IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaAo+IEBAIC00Nyw2
+ICs0Nyw3IEBAIGVudW0gbXRrX2RkcF9jb21wX2lkIHsKPiAgCUREUF9DT01QT05FTlRfQ09MT1Iw
+LAo+ICAJRERQX0NPTVBPTkVOVF9DT0xPUjEsCj4gIAlERFBfQ09NUE9ORU5UX0RQSTAsCj4gKwlE
+RFBfQ09NUE9ORU5UX0RQSTEsCj4gIAlERFBfQ09NUE9ORU5UX0RTSTAsCj4gIAlERFBfQ09NUE9O
+RU5UX0RTSTEsCj4gIAlERFBfQ09NUE9ORU5UX0dBTU1BLAoKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
