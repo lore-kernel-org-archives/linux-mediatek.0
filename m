@@ -1,54 +1,67 @@
-From: Mars Cheng <mars.cheng@mediatek.com>
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: add mt6765 support
-Date: Wed, 20 Jun 2018 08:18:07 +0800
-Message-ID: <1529453887.8701.0.camel@mtkswgap22>
-References: <1528843243-29782-1-git-send-email-mars.cheng@mediatek.com>
-         <1528843243-29782-3-git-send-email-mars.cheng@mediatek.com>
-         <80bca2ae-eb08-3d6c-a863-140107286b2d@gmail.com>
+From: Stu Hsieh <stu.hsieh@mediatek.com>
+Subject: Re: [PATCH v6 12/29] drm/mediatek: Update the definition of
+ connection from RDMA1 to DPI0
+Date: Wed, 20 Jun 2018 16:14:31 +0800
+Message-ID: <1529482471.11190.46.camel@mtksdccf07>
+References: <1529393670-26862-1-git-send-email-stu.hsieh@mediatek.com>
+ <1529393670-26862-13-git-send-email-stu.hsieh@mediatek.com>
+ <1529396422.26480.8.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <80bca2ae-eb08-3d6c-a863-140107286b2d@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1529396422.26480.8.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias
-
-On Fri, 2018-06-15 at 10:54 +0200, Matthias Brugger wrote:
-> 
-> On 13/06/18 00:40, Mars Cheng wrote:
-> > +
-> > +	uart0: serial@11002000 {
-> > +		compatible = "mediatek,mt6765-uart",
-> > +			     "mediatek,mt6577-uart";
-> > +		reg = <0 0x11002000 0 0x400>;
-> > +		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
-> > +		clocks = <&uart_clk>;
-> > +		status = "disabled";
-> > +	};
-> 
-> You need "baud" and "bus" clock. Also add clock-names please.
-
-Got it, will add them in V2
-
-> 
-> > +
-> > +	uart1: serial@11003000 {
-> > +		compatible = "mediatek,mt6765-uart",
-> > +			     "mediatek,mt6577-uart";
-> > +		reg = <0 0x11003000 0 0x400>;
-> > +		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
-> > +		clocks = <&uart_clk>;
-> > +		status = "disabled";
-> 
-> Same here obviously.
-
-Will fixed in V2.
-
-Thanks.
-> 
-> Regards,
-> Matthias
+SGksIENLOgoKT24gVHVlLCAyMDE4LTA2LTE5IGF0IDE2OjIwICswODAwLCBDSyBIdSB3cm90ZToK
+PiBIaSwgU3R1Ogo+IAo+IE9uIFR1ZSwgMjAxOC0wNi0xOSBhdCAxNTozNCArMDgwMCwgU3R1IEhz
+aWVoIHdyb3RlOgo+ID4gVGhpcyBwYXRjaCB1cGRhdGUgdGhlIGRlZmluaXRpb24gb2YgY29ubmVj
+dGlvbiBmcm9tIFJETUExIHRvIERQSTAuCj4gPiBDaGFuZ2UgdGhlIHRlcm0gTU9VVCB0byBTT1VU
+Lgo+ID4gCj4gCj4gSSB3b3VsZCBsaWtlIGNvbW1pdCBtZXNzYWdlIGRlc2NyaWJlICd3aHknIG9m
+IHRoaXMgcGF0Y2guIEJvdGggeW91IGFuZAo+IG1lIGtub3cgJ3doeScgb2YgdGhpcyBwYXRjaCBi
+ZWNhdXNlIHdlIGhhdmUgZGlzY3VzcyBwcmV2aW91c2x5LiBCdXQgZm9yCj4gc29tZW9uZSB3aG8g
+anVzdCBzZWUgdGhpcyBwYXRjaCwgaGUgb3Igc2hlIGRvZXMgbm90IHVuZGVyc3RhbmQgd2h5IHlv
+dQo+IGNoYW5nZSB0aGUgbmFtZS4gU28gZXhwbGFpbiAnTU9VVCcsICdTT1VUJyBhbmQgZGVzY3Jp
+YmUgJ3doeScgY2hhbmdlIHRoZQo+IG5hbWluZy4KPiAKPiBSZWdhcmRzLAo+IENLCj4gCk9LCgpS
+ZWdhcmRzLApTdHUKCj4gPiBTaWduZWQtb2ZmLWJ5OiBTdHUgSHNpZWggPHN0dS5oc2llaEBtZWRp
+YXRlay5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9k
+ZHAuYyB8IDggKysrKy0tLS0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCA0
+IGRlbGV0aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fZGRwLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAu
+Ywo+ID4gaW5kZXggOGJmYzBkZWJkMmMyLi45NzdkZjhmYWNiNzkgMTAwNjQ0Cj4gPiAtLS0gYS9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwo+ID4gKysrIGIvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiA+IEBAIC0yOSw3ICsyOSw3IEBACj4gPiAg
+I2RlZmluZSBESVNQX1JFR19DT05GSUdfRElTUF9DT0xPUjBfU0VMX0lOCTB4MDg0Cj4gPiAgI2Rl
+ZmluZSBESVNQX1JFR19DT05GSUdfRElTUF9DT0xPUjFfU0VMX0lOCTB4MDg4Cj4gPiAgI2RlZmlu
+ZSBESVNQX1JFR19DT05GSUdfRFBJX1NFTF9JTgkJMHgwYWMKPiA+IC0jZGVmaW5lIERJU1BfUkVH
+X0NPTkZJR19ESVNQX1JETUExX01PVVRfRU4JMHgwYzgKPiA+ICsjZGVmaW5lIERJU1BfUkVHX0NP
+TkZJR19ESVNQX1JETUExX1NPVVRfRU4JMHgwYzgKPiA+ICAjZGVmaW5lIERJU1BfUkVHX0NPTkZJ
+R19NTVNZU19DR19DT04wCQkweDEwMAo+ID4gIAo+ID4gICNkZWZpbmUgRElTUF9SRUdfQ09ORklH
+X0RJU1BfT1ZMX01PVVRfRU4JMHgwMzAKPiA+IEBAIC04MCw3ICs4MCw3IEBACj4gPiAgI2RlZmlu
+ZSBDT0xPUjBfU0VMX0lOX09WTDAJCTB4MQo+ID4gICNkZWZpbmUgT1ZMMV9NT1VUX0VOX0NPTE9S
+MQkJMHgxCj4gPiAgI2RlZmluZSBHQU1NQV9NT1VUX0VOX1JETUExCQkweDEKPiA+IC0jZGVmaW5l
+IFJETUExX01PVVRfRFBJMAkJCTB4Mgo+ID4gKyNkZWZpbmUgUkRNQTFfU09VVF9EUEkwCQkJMHgy
+Cj4gPiAgI2RlZmluZSBEUEkwX1NFTF9JTl9SRE1BMQkJMHgxCj4gPiAgI2RlZmluZSBDT0xPUjFf
+U0VMX0lOX09WTDEJCTB4MQo+ID4gIAo+ID4gQEAgLTE1Niw4ICsxNTYsOCBAQCBzdGF0aWMgdW5z
+aWduZWQgaW50IG10a19kZHBfbW91dF9lbihlbnVtIG10a19kZHBfY29tcF9pZCBjdXIsCj4gPiAg
+CQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19ESVNQX09EX01PVVRfRU47Cj4gPiAgCQl2YWx1ZSA9
+IE9EMV9NT1VUX0VOX1JETUExOwo+ID4gIAl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5U
+X1JETUExICYmIG5leHQgPT0gRERQX0NPTVBPTkVOVF9EUEkwKSB7Cj4gPiAtCQkqYWRkciA9IERJ
+U1BfUkVHX0NPTkZJR19ESVNQX1JETUExX01PVVRfRU47Cj4gPiAtCQl2YWx1ZSA9IFJETUExX01P
+VVRfRFBJMDsKPiA+ICsJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTFfU09VVF9F
+TjsKPiA+ICsJCXZhbHVlID0gUkRNQTFfU09VVF9EUEkwOwo+ID4gIAl9IGVsc2Ugewo+ID4gIAkJ
+dmFsdWUgPSAwOwo+ID4gIAl9Cj4gCj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVsCg==
