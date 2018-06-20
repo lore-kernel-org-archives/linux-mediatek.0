@@ -1,63 +1,54 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v6 24/29] drm/mediatek: add connection from RDMA2 to DSI3
-Date: Tue, 19 Jun 2018 16:47:45 +0800
-Message-ID: <1529398065.26480.20.camel@mtksdaap41>
-References: <1529393670-26862-1-git-send-email-stu.hsieh@mediatek.com>
- <1529393670-26862-25-git-send-email-stu.hsieh@mediatek.com>
+From: Mars Cheng <mars.cheng@mediatek.com>
+Subject: Re: [PATCH 2/2] arm64: dts: mediatek: add mt6765 support
+Date: Wed, 20 Jun 2018 08:18:07 +0800
+Message-ID: <1529453887.8701.0.camel@mtkswgap22>
+References: <1528843243-29782-1-git-send-email-mars.cheng@mediatek.com>
+         <1528843243-29782-3-git-send-email-mars.cheng@mediatek.com>
+         <80bca2ae-eb08-3d6c-a863-140107286b2d@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1529393670-26862-25-git-send-email-stu.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <80bca2ae-eb08-3d6c-a863-140107286b2d@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVHVlLCAyMDE4LTA2LTE5IGF0IDE1OjM0ICswODAwLCBTdHUgSHNpZWggd3JvdGU6Cj4gVGhp
-cyBwYXRjaCBhZGQgdGhlIGNvbm5lY3Rpb24gZnJvbSBSRE1BMiB0byBEU0kzCj4gCgpSZXZpZXdl
-ZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KCj4gU2lnbmVkLW9mZi1ieTogU3R1IEhz
-aWVoIDxzdHUuaHNpZWhAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9kZHAuYyB8IDggKysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDggaW5z
-ZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kZHAuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCj4gaW5k
-ZXggZTVkYjFhYjUxYzliLi4wYTFiOTY3Y2FiMWIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9kZHAuYwo+IEBAIC05Niw2ICs5Niw3IEBACj4gICNkZWZpbmUgUkRNQTJfU09V
-VF9EUEkxCQkJMHgzCj4gICNkZWZpbmUgUkRNQTJfU09VVF9EU0kxCQkJMHgxCj4gICNkZWZpbmUg
-UkRNQTJfU09VVF9EU0kyCQkJMHg0Cj4gKyNkZWZpbmUgUkRNQTJfU09VVF9EU0kzCQkJMHg1Cj4g
-ICNkZWZpbmUgRFBJMF9TRUxfSU5fUkRNQTEJCTB4MQo+ICAjZGVmaW5lIERQSTBfU0VMX0lOX1JE
-TUEyCQkweDMKPiAgI2RlZmluZSBEUEkxX1NFTF9JTl9SRE1BMQkJKDB4MSA8PCA4KQo+IEBAIC0x
-MDUsNiArMTA2LDcgQEAKPiAgI2RlZmluZSBEU0kyX1NFTF9JTl9SRE1BMQkJKDB4MSA8PCAxNikK
-PiAgI2RlZmluZSBEU0kyX1NFTF9JTl9SRE1BMgkJKDB4NCA8PCAxNikKPiAgI2RlZmluZSBEU0kz
-X1NFTF9JTl9SRE1BMQkJKDB4MSA8PCAxNikKPiArI2RlZmluZSBEU0kzX1NFTF9JTl9SRE1BMgkJ
-KDB4NCA8PCAxNikKPiAgI2RlZmluZSBDT0xPUjFfU0VMX0lOX09WTDEJCTB4MQo+ICAKPiAgI2Rl
-ZmluZSBPVkxfTU9VVF9FTl9SRE1BCQkweDEKPiBAQCAtMjE0LDYgKzIxNiw5IEBAIHN0YXRpYyB1
-bnNpZ25lZCBpbnQgbXRrX2RkcF9tb3V0X2VuKGVudW0gbXRrX2RkcF9jb21wX2lkIGN1ciwKPiAg
-CX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRNQTIgJiYgbmV4dCA9PSBERFBfQ09N
-UE9ORU5UX0RTSTIpIHsKPiAgCQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19ESVNQX1JETUEyX1NP
-VVQ7Cj4gIAkJdmFsdWUgPSBSRE1BMl9TT1VUX0RTSTI7Cj4gKwl9IGVsc2UgaWYgKGN1ciA9PSBE
-RFBfQ09NUE9ORU5UX1JETUEyICYmIG5leHQgPT0gRERQX0NPTVBPTkVOVF9EU0kzKSB7Cj4gKwkJ
-KmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMl9TT1VUOwo+ICsJCXZhbHVlID0gUkRN
-QTJfU09VVF9EU0kzOwo+ICAJfSBlbHNlIHsKPiAgCQl2YWx1ZSA9IDA7Cj4gIAl9Cj4gQEAgLTI1
-Nyw2ICsyNjIsOSBAQCBzdGF0aWMgdW5zaWduZWQgaW50IG10a19kZHBfc2VsX2luKGVudW0gbXRr
-X2RkcF9jb21wX2lkIGN1ciwKPiAgCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRN
-QTIgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTIpIHsKPiAgCQkqYWRkciA9IERJU1BfUkVH
-X0NPTkZJR19EU0lFX1NFTF9JTjsKPiAgCQl2YWx1ZSA9IERTSTJfU0VMX0lOX1JETUEyOwo+ICsJ
-fSBlbHNlIGlmIChjdXIgPT0gRERQX0NPTVBPTkVOVF9SRE1BMiAmJiBuZXh0ID09IEREUF9DT01Q
-T05FTlRfRFNJMykgewo+ICsJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RTSUVfU0VMX0lOOwo+
-ICsJCXZhbHVlID0gRFNJM19TRUxfSU5fUkRNQTI7Cj4gIAl9IGVsc2UgaWYgKGN1ciA9PSBERFBf
-Q09NUE9ORU5UX09WTDEgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0NPTE9SMSkgewo+ICAJCSph
-ZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfQ09MT1IxX1NFTF9JTjsKPiAgCQl2YWx1ZSA9IENP
-TE9SMV9TRUxfSU5fT1ZMMTsKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWwK
+Hi Matthias
+
+On Fri, 2018-06-15 at 10:54 +0200, Matthias Brugger wrote:
+> 
+> On 13/06/18 00:40, Mars Cheng wrote:
+> > +
+> > +	uart0: serial@11002000 {
+> > +		compatible = "mediatek,mt6765-uart",
+> > +			     "mediatek,mt6577-uart";
+> > +		reg = <0 0x11002000 0 0x400>;
+> > +		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
+> > +		clocks = <&uart_clk>;
+> > +		status = "disabled";
+> > +	};
+> 
+> You need "baud" and "bus" clock. Also add clock-names please.
+
+Got it, will add them in V2
+
+> 
+> > +
+> > +	uart1: serial@11003000 {
+> > +		compatible = "mediatek,mt6765-uart",
+> > +			     "mediatek,mt6577-uart";
+> > +		reg = <0 0x11003000 0 0x400>;
+> > +		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
+> > +		clocks = <&uart_clk>;
+> > +		status = "disabled";
+> 
+> Same here obviously.
+
+Will fixed in V2.
+
+Thanks.
+> 
+> Regards,
+> Matthias
