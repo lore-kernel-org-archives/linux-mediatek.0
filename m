@@ -1,127 +1,248 @@
-From: <honghui.zhang@mediatek.com>
-Subject: [PATCH v4] PCI: mediatek: Add system pm support for MT2712
-Date: Thu, 21 Jun 2018 10:55:00 +0800
-Message-ID: <1529549700-18742-1-git-send-email-honghui.zhang@mediatek.com>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4] dt-bindings: mediatek: Add binding for mt2712 IOMMU
+	and SMI
+Date: Thu, 21 Jun 2018 14:27:13 +0800
+Message-ID: <1529562433.22229.2.camel@mhfsdcap03>
+References: <1527165331-22261-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: lorenzo.pieralisi@arm.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com
-Cc: honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <1527165331-22261-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+Hi Matthias,
 
-The MTCMOS of PCIe Host for MT2712 will be off when system suspend, and all
-the internal control register will be reset after system resume. The PCIe
-link should be re-established and the related control register values
-should be re-set after system resume.
+      A gentle ping on this.
 
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-CC: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/pci/controller/pcie-mediatek.c | 60 ++++++++++++++++++++++++++++++++++
- 1 file changed, 60 insertions(+)
-
-Change since v3:
- - rebase to v4.18-rc1.
-
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 0baabe3..1ed2ef0 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -134,12 +134,14 @@ struct mtk_pcie_port;
- /**
-  * struct mtk_pcie_soc - differentiate between host generations
-  * @need_fix_class_id: whether this host's class ID needed to be fixed or not
-+ * @pm_support: whether the host's MTCMOS will be off when suspend
-  * @ops: pointer to configuration access functions
-  * @startup: pointer to controller setting functions
-  * @setup_irq: pointer to initialize IRQ functions
-  */
- struct mtk_pcie_soc {
- 	bool need_fix_class_id;
-+	bool pm_support;
- 	struct pci_ops *ops;
- 	int (*startup)(struct mtk_pcie_port *port);
- 	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
-@@ -1181,12 +1183,69 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 	return err;
- }
- 
-+#ifdef CONFIG_PM_SLEEP
-+static int mtk_pcie_suspend_noirq(struct device *dev)
-+{
-+	struct mtk_pcie *pcie = dev_get_drvdata(dev);
-+	const struct mtk_pcie_soc *soc = pcie->soc;
-+	struct mtk_pcie_port *port;
-+
-+	if (!soc->pm_support)
-+		return 0;
-+
-+	list_for_each_entry(port, &pcie->ports, list) {
-+		clk_disable_unprepare(port->ahb_ck);
-+		clk_disable_unprepare(port->sys_ck);
-+		phy_power_off(port->phy);
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_pcie_resume_noirq(struct device *dev)
-+{
-+	struct mtk_pcie *pcie = dev_get_drvdata(dev);
-+	const struct mtk_pcie_soc *soc = pcie->soc;
-+	struct mtk_pcie_port *port;
-+	int ret;
-+
-+	if (!soc->pm_support)
-+		return 0;
-+
-+	list_for_each_entry(port, &pcie->ports, list) {
-+		phy_power_on(port->phy);
-+		clk_prepare_enable(port->sys_ck);
-+		clk_prepare_enable(port->ahb_ck);
-+
-+		ret = soc->startup(port);
-+		if (ret) {
-+			dev_err(dev, "Port%d link down\n", port->slot);
-+			phy_power_off(port->phy);
-+			clk_disable_unprepare(port->sys_ck);
-+			clk_disable_unprepare(port->ahb_ck);
-+			return ret;
-+		}
-+
-+		if (IS_ENABLED(CONFIG_PCI_MSI))
-+			mtk_pcie_enable_msi(port);
-+	}
-+
-+	return 0;
-+}
-+#endif
-+
-+static const struct dev_pm_ops mtk_pcie_pm_ops = {
-+	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_pcie_suspend_noirq,
-+				      mtk_pcie_resume_noirq)
-+};
-+
- static const struct mtk_pcie_soc mtk_pcie_soc_v1 = {
- 	.ops = &mtk_pcie_ops,
- 	.startup = mtk_pcie_startup_port,
- };
- 
- static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
-+	.pm_support = true,
- 	.ops = &mtk_pcie_ops_v2,
- 	.startup = mtk_pcie_startup_port_v2,
- 	.setup_irq = mtk_pcie_setup_irq,
-@@ -1213,6 +1272,7 @@ static struct platform_driver mtk_pcie_driver = {
- 		.name = "mtk-pcie",
- 		.of_match_table = mtk_pcie_ids,
- 		.suppress_bind_attrs = true,
-+		.pm = &mtk_pcie_pm_ops,
- 	},
- };
- builtin_platform_driver(mtk_pcie_driver);
--- 
-2.6.4
+On Thu, 2018-05-24 at 20:35 +0800, Yong Wu wrote:
+> This patch adds decriptions for mt2712 IOMMU and SMI.
+> 
+> In order to balance the bandwidth, mt2712 has two M4Us, two
+> smi-commons, 10 smi-larbs. and mt2712 is also MTK IOMMU gen2 which
+> uses ARM Short-Descriptor translation table format.
+> 
+> The mt2712 M4U-SMI HW diagram is as below:
+> 
+>                             EMI
+>                              |
+>               ------------------------------------
+>               |                                  |
+>              M4U0                              M4U1
+>               |                                  |
+>          smi-common0                        smi-common1
+>               |                                  |
+>   -------------------------       --------------------------------
+>   |     |     |     |     |       |         |        |     |     |
+>   |     |     |     |     |       |         |        |     |     |
+> larb0 larb1 larb2 larb3 larb6    larb4    larb5    larb7 larb8 larb9
+> disp0 vdec  cam   venc   jpg  mdp1/disp1 mdp2/disp2 mdp3 vdo/nr tvd
+> 
+> All the connections are HW fixed, SW can NOT adjust it.
+> 
+> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> ---
+> change notes:
+> v4: change the license of the new file in this patch to SPDX.
+> 
+> v3: http://lists.infradead.org/pipermail/linux-mediatek/2018-May/013279.html
+> Add a new ECO port(DISP_RDMA2) in larb0/port7.
+> 
+> v2:
+> https://lists.linuxfoundation.org/pipermail/iommu/2017-August/023848.html
+> 
+> v1:
+> https://lists.linuxfoundation.org/pipermail/iommu/2017-August/023665.html
+> ---
+>  .../devicetree/bindings/iommu/mediatek,iommu.txt   |  6 +-
+>  .../memory-controllers/mediatek,smi-common.txt     |  6 +-
+>  .../memory-controllers/mediatek,smi-larb.txt       |  5 +-
+>  include/dt-bindings/memory/mt2712-larb-port.h      | 95 ++++++++++++++++++++++
+>  4 files changed, 106 insertions(+), 6 deletions(-)
+>  create mode 100644 include/dt-bindings/memory/mt2712-larb-port.h
+> 
+> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt b/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+> index 53c20ca..df5db73 100644
+> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+> @@ -40,6 +40,7 @@ video decode local arbiter, all these ports are according to the video HW.
+>  Required properties:
+>  - compatible : must be one of the following string:
+>  	"mediatek,mt2701-m4u" for mt2701 which uses generation one m4u HW.
+> +	"mediatek,mt2712-m4u" for mt2712 which uses generation two m4u HW.
+>  	"mediatek,mt8173-m4u" for mt8173 which uses generation two m4u HW.
+>  - reg : m4u register base and size.
+>  - interrupts : the interrupt of m4u.
+> @@ -50,8 +51,9 @@ Required properties:
+>  	according to the local arbiter index, like larb0, larb1, larb2...
+>  - iommu-cells : must be 1. This is the mtk_m4u_id according to the HW.
+>  	Specifies the mtk_m4u_id as defined in
+> -	dt-binding/memory/mt2701-larb-port.h for mt2701 and
+> -	dt-binding/memory/mt8173-larb-port.h for mt8173
+> +	dt-binding/memory/mt2701-larb-port.h for mt2701,
+> +	dt-binding/memory/mt2712-larb-port.h for mt2712, and
+> +	dt-binding/memory/mt8173-larb-port.h for mt8173.
+>  
+>  Example:
+>  	iommu: iommu@10205000 {
+> diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+> index aa614b2..615abdd 100644
+> --- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+> +++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+> @@ -2,8 +2,9 @@ SMI (Smart Multimedia Interface) Common
+>  
+>  The hardware block diagram please check bindings/iommu/mediatek,iommu.txt
+>  
+> -Mediatek SMI have two generations of HW architecture, mt8173 uses the second
+> -generation of SMI HW while mt2701 uses the first generation HW of SMI.
+> +Mediatek SMI have two generations of HW architecture, mt2712 and mt8173 use
+> +the second generation of SMI HW while mt2701 uses the first generation HW of
+> +SMI.
+>  
+>  There's slight differences between the two SMI, for generation 2, the
+>  register which control the iommu port is at each larb's register base. But
+> @@ -15,6 +16,7 @@ not needed for SMI generation 2.
+>  Required properties:
+>  - compatible : must be one of :
+>  	"mediatek,mt2701-smi-common"
+> +	"mediatek,mt2712-smi-common"
+>  	"mediatek,mt8173-smi-common"
+>  - reg : the register and size of the SMI block.
+>  - power-domains : a phandle to the power domain of this local arbiter.
+> diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+> index ddf46b8..083155c 100644
+> --- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+> +++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+> @@ -4,8 +4,9 @@ The hardware block diagram please check bindings/iommu/mediatek,iommu.txt
+>  
+>  Required properties:
+>  - compatible : must be one of :
+> -		"mediatek,mt8173-smi-larb"
+>  		"mediatek,mt2701-smi-larb"
+> +		"mediatek,mt2712-smi-larb"
+> +		"mediatek,mt8173-smi-larb"
+>  - reg : the register and size of this local arbiter.
+>  - mediatek,smi : a phandle to the smi_common node.
+>  - power-domains : a phandle to the power domain of this local arbiter.
+> @@ -15,7 +16,7 @@ Required properties:
+>  	    the register.
+>    - "smi" : It's the clock for transfer data and command.
+>  
+> -Required property for mt2701:
+> +Required property for mt2701 and mt2712:
+>  - mediatek,larb-id :the hardware id of this larb.
+>  
+>  Example:
+> diff --git a/include/dt-bindings/memory/mt2712-larb-port.h b/include/dt-bindings/memory/mt2712-larb-port.h
+> new file mode 100644
+> index 0000000..6f9aa73
+> --- /dev/null
+> +++ b/include/dt-bindings/memory/mt2712-larb-port.h
+> @@ -0,0 +1,95 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2017 MediaTek Inc.
+> + * Author: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> + */
+> +#ifndef __DTS_IOMMU_PORT_MT2712_H
+> +#define __DTS_IOMMU_PORT_MT2712_H
+> +
+> +#define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
+> +
+> +#define M4U_LARB0_ID			0
+> +#define M4U_LARB1_ID			1
+> +#define M4U_LARB2_ID			2
+> +#define M4U_LARB3_ID			3
+> +#define M4U_LARB4_ID			4
+> +#define M4U_LARB5_ID			5
+> +#define M4U_LARB6_ID			6
+> +#define M4U_LARB7_ID			7
+> +#define M4U_LARB8_ID			8
+> +#define M4U_LARB9_ID			9
+> +
+> +/* larb0 */
+> +#define M4U_PORT_DISP_OVL0		MTK_M4U_ID(M4U_LARB0_ID, 0)
+> +#define M4U_PORT_DISP_RDMA0		MTK_M4U_ID(M4U_LARB0_ID, 1)
+> +#define M4U_PORT_DISP_WDMA0		MTK_M4U_ID(M4U_LARB0_ID, 2)
+> +#define M4U_PORT_DISP_OD_R		MTK_M4U_ID(M4U_LARB0_ID, 3)
+> +#define M4U_PORT_DISP_OD_W		MTK_M4U_ID(M4U_LARB0_ID, 4)
+> +#define M4U_PORT_MDP_RDMA0		MTK_M4U_ID(M4U_LARB0_ID, 5)
+> +#define M4U_PORT_MDP_WDMA		MTK_M4U_ID(M4U_LARB0_ID, 6)
+> +#define M4U_PORT_DISP_RDMA2		MTK_M4U_ID(M4U_LARB0_ID, 7)
+> +
+> +/* larb1 */
+> +#define M4U_PORT_HW_VDEC_MC_EXT		MTK_M4U_ID(M4U_LARB1_ID, 0)
+> +#define M4U_PORT_HW_VDEC_PP_EXT		MTK_M4U_ID(M4U_LARB1_ID, 1)
+> +#define M4U_PORT_HW_VDEC_UFO_EXT	MTK_M4U_ID(M4U_LARB1_ID, 2)
+> +#define M4U_PORT_HW_VDEC_VLD_EXT	MTK_M4U_ID(M4U_LARB1_ID, 3)
+> +#define M4U_PORT_HW_VDEC_VLD2_EXT	MTK_M4U_ID(M4U_LARB1_ID, 4)
+> +#define M4U_PORT_HW_VDEC_AVC_MV_EXT	MTK_M4U_ID(M4U_LARB1_ID, 5)
+> +#define M4U_PORT_HW_VDEC_PRED_RD_EXT	MTK_M4U_ID(M4U_LARB1_ID, 6)
+> +#define M4U_PORT_HW_VDEC_PRED_WR_EXT	MTK_M4U_ID(M4U_LARB1_ID, 7)
+> +#define M4U_PORT_HW_VDEC_PPWRAP_EXT	MTK_M4U_ID(M4U_LARB1_ID, 8)
+> +#define M4U_PORT_HW_VDEC_TILE		MTK_M4U_ID(M4U_LARB1_ID, 9)
+> +#define M4U_PORT_HW_IMG_RESZ_EXT	MTK_M4U_ID(M4U_LARB1_ID, 10)
+> +
+> +/* larb2 */
+> +#define M4U_PORT_CAM_DMA0		MTK_M4U_ID(M4U_LARB2_ID, 0)
+> +#define M4U_PORT_CAM_DMA1		MTK_M4U_ID(M4U_LARB2_ID, 1)
+> +#define M4U_PORT_CAM_DMA2		MTK_M4U_ID(M4U_LARB2_ID, 2)
+> +
+> +/* larb3 */
+> +#define M4U_PORT_VENC_RCPU		MTK_M4U_ID(M4U_LARB3_ID, 0)
+> +#define M4U_PORT_VENC_REC		MTK_M4U_ID(M4U_LARB3_ID, 1)
+> +#define M4U_PORT_VENC_BSDMA		MTK_M4U_ID(M4U_LARB3_ID, 2)
+> +#define M4U_PORT_VENC_SV_COMV		MTK_M4U_ID(M4U_LARB3_ID, 3)
+> +#define M4U_PORT_VENC_RD_COMV		MTK_M4U_ID(M4U_LARB3_ID, 4)
+> +#define M4U_PORT_VENC_CUR_CHROMA	MTK_M4U_ID(M4U_LARB3_ID, 5)
+> +#define M4U_PORT_VENC_REF_CHROMA	MTK_M4U_ID(M4U_LARB3_ID, 6)
+> +#define M4U_PORT_VENC_CUR_LUMA		MTK_M4U_ID(M4U_LARB3_ID, 7)
+> +#define M4U_PORT_VENC_REF_LUMA		MTK_M4U_ID(M4U_LARB3_ID, 8)
+> +
+> +/* larb4 */
+> +#define M4U_PORT_DISP_OVL1		MTK_M4U_ID(M4U_LARB4_ID, 0)
+> +#define M4U_PORT_DISP_RDMA1		MTK_M4U_ID(M4U_LARB4_ID, 1)
+> +#define M4U_PORT_DISP_WDMA1		MTK_M4U_ID(M4U_LARB4_ID, 2)
+> +#define M4U_PORT_DISP_OD1_R		MTK_M4U_ID(M4U_LARB4_ID, 3)
+> +#define M4U_PORT_DISP_OD1_W		MTK_M4U_ID(M4U_LARB4_ID, 4)
+> +#define M4U_PORT_MDP_RDMA1		MTK_M4U_ID(M4U_LARB4_ID, 5)
+> +#define M4U_PORT_MDP_WROT1		MTK_M4U_ID(M4U_LARB4_ID, 6)
+> +
+> +/* larb5 */
+> +#define M4U_PORT_DISP_OVL2		MTK_M4U_ID(M4U_LARB5_ID, 0)
+> +#define M4U_PORT_DISP_WDMA2		MTK_M4U_ID(M4U_LARB5_ID, 1)
+> +#define M4U_PORT_MDP_RDMA2		MTK_M4U_ID(M4U_LARB5_ID, 2)
+> +#define M4U_PORT_MDP_WROT0		MTK_M4U_ID(M4U_LARB5_ID, 3)
+> +
+> +/* larb6 */
+> +#define M4U_PORT_JPGDEC_WDMA_0		MTK_M4U_ID(M4U_LARB6_ID, 0)
+> +#define M4U_PORT_JPGDEC_WDMA_1		MTK_M4U_ID(M4U_LARB6_ID, 1)
+> +#define M4U_PORT_JPGDEC_BSDMA_0		MTK_M4U_ID(M4U_LARB6_ID, 2)
+> +#define M4U_PORT_JPGDEC_BSDMA_1		MTK_M4U_ID(M4U_LARB6_ID, 3)
+> +
+> +/* larb7 */
+> +#define M4U_PORT_MDP_RDMA3		MTK_M4U_ID(M4U_LARB7_ID, 0)
+> +#define M4U_PORT_MDP_WROT2		MTK_M4U_ID(M4U_LARB7_ID, 1)
+> +
+> +/* larb8 */
+> +#define M4U_PORT_VDO			MTK_M4U_ID(M4U_LARB8_ID, 0)
+> +#define M4U_PORT_NR			MTK_M4U_ID(M4U_LARB8_ID, 1)
+> +#define M4U_PORT_WR_CHANNEL0		MTK_M4U_ID(M4U_LARB8_ID, 2)
+> +
+> +/* larb9 */
+> +#define M4U_PORT_TVD			MTK_M4U_ID(M4U_LARB9_ID, 0)
+> +#define M4U_PORT_WR_CHANNEL1		MTK_M4U_ID(M4U_LARB9_ID, 1)
+> +
+> +#endif
