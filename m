@@ -1,48 +1,57 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH 2/2] usb: core: phy: fix return value checking about devm_of_phy_get_by_index()
-Date: Fri, 22 Jun 2018 14:33:06 +0800
-Message-ID: <644d00edd2932c1a0d0a1bf368dd25427d1d9f64.1529647619.git.chunfeng.yun@mediatek.com>
-References: <4c338a129ab14ab41949da5e3c21aed0d77dff8d.1529647619.git.chunfeng.yun@mediatek.com>
+From: Chen Zhong <chen.zhong@mediatek.com>
+Subject: Re: [RESEND PATCH] dt-bindings: input: Add common keyboard document
+ bindings
+Date: Fri, 22 Jun 2018 14:39:55 +0800
+Message-ID: <1529649595.14396.18.camel@mhfsdcap03>
+References: <1529648198-14231-1-git-send-email-chen.zhong@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4c338a129ab14ab41949da5e3c21aed0d77dff8d.1529647619.git.chunfeng.yun@mediatek.com>
+In-Reply-To: <1529648198-14231-1-git-send-email-chen.zhong@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-1. use IS_ERR() but not IS_ERR_OR_NULL() because devm_of_phy_get_by_index()
-    never return NULL value;
-2. devm_of_phy_get_by_index() should not fail for a valid index
+Hi Dmitry,
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/core/phy.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
+The other patches in the series to add mediatek pmic keys support are
+now available in 4.18-rc1, but this patch seems not being merged.
 
-diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
-index 9879767..0f972e1 100644
---- a/drivers/usb/core/phy.c
-+++ b/drivers/usb/core/phy.c
-@@ -23,14 +23,11 @@ static int usb_phy_roothub_add_phy(struct device *dev, int index,
- 				   struct list_head *list)
- {
- 	struct usb_phy_roothub *roothub_entry;
--	struct phy *phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
-+	struct phy *phy;
- 
--	if (IS_ERR_OR_NULL(phy)) {
--		if (!phy || PTR_ERR(phy) == -ENODEV)
--			return 0;
--		else
--			return PTR_ERR(phy);
--	}
-+	phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
-+	if (IS_ERR(phy))
-+		return PTR_ERR(phy);
- 
- 	roothub_entry = devm_kzalloc(dev, sizeof(*roothub_entry), GFP_KERNEL);
- 	if (!roothub_entry)
--- 
-1.9.1
+  git://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git
+ib-mfd-input-rtc-v4.18
+
+I have resend the patch, and rebase to 4.18-rc1.
+Could you help to see if it is good enough to be merged into your tree?
+
+Thank you.
+
+
+On Fri, 2018-06-22 at 14:16 +0800, Chen Zhong wrote:
+> This patch adds the device tree binding documentation for common
+> keyboard.
+> 
+> Acked-by: Rob Herring <robh@kernel.org>
+> Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+> Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/input/keys.txt | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/input/keys.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/input/keys.txt b/Documentation/devicetree/bindings/input/keys.txt
+> new file mode 100644
+> index 0000000..a0ea7eb
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/input/keys.txt
+> @@ -0,0 +1,8 @@
+> +General Keys Properties:
+> +
+> +Optional properties for Keys:
+> +- power-off-time-sec: Duration in seconds which the key should be kept
+> + 	pressed for device to power off automatically. Device with key pressed
+> + 	shutdown feature can specify this property.
+> +- linux,keycodes: Specifies the numeric keycode values to be used for
+> +	reporting key presses.
+> \ No newline at end of file
