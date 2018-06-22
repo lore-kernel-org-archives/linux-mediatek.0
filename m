@@ -1,57 +1,55 @@
-From: Chen Zhong <chen.zhong@mediatek.com>
-Subject: Re: [RESEND PATCH] dt-bindings: input: Add common keyboard document
- bindings
-Date: Fri, 22 Jun 2018 14:39:55 +0800
-Message-ID: <1529649595.14396.18.camel@mhfsdcap03>
-References: <1529648198-14231-1-git-send-email-chen.zhong@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Subject: [PATCH v4] MAINTAINERS: Add file patterns for mediatek device tree bindings
+Date: Fri, 22 Jun 2018 12:08:16 +0200
+Message-ID: <20180622100816.29320-1-geert@linux-m68k.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1529648198-14231-1-git-send-email-chen.zhong@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Geert Uytterhoeven <geert@linux-m68k.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Dmitry,
+Submitters of device tree binding documentation may forget to CC
+the subsystem maintainer if this is missing.
 
-The other patches in the series to add mediatek pmic keys support are
-now available in 4.18-rc1, but this patch seems not being merged.
+Signed-off-by: Geert Uytterhoeven <geert@linux-m68k.org>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
+v3:
+  - Update for next-20180622,
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git
-ib-mfd-input-rtc-v4.18
+v2:
+  - Add Reviewed-by.
 
-I have resend the patch, and rebase to 4.18-rc1.
-Could you help to see if it is good enough to be merged into your tree?
+Impact on "scripts/get_maintainer.pl -f Documentation/devicetree/bindings/soc/mediatek/":
 
-Thank you.
+-Rob Herring <robh+dt@kernel.org> (maintainer:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS,commit_signer:4/4=100%)
++Matthias Brugger <matthias.bgg@gmail.com> (maintainer:ARM/Mediatek SoC support)
++Rob Herring <robh+dt@kernel.org> (maintainer:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS)
+ Mark Rutland <mark.rutland@arm.com> (maintainer:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS)
+-Matthias Brugger <matthias.bgg@gmail.com> (commit_signer:4/4=100%)
+-Sean Wang <sean.wang@mediatek.com> (commit_signer:3/4=75%,authored:3/4=75%)
+-Ulf Hansson <ulf.hansson@linaro.org> (commit_signer:2/4=50%)
+-Chen Zhong <chen.zhong@mediatek.com> (commit_signer:1/4=25%)
+-"weiyi.lu@mediatek.com" <weiyi.lu@mediatek.com> (authored:1/4=25%)
++linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
++linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+ devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS)
+ linux-kernel@vger.kernel.org (open list)
+---
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-
-On Fri, 2018-06-22 at 14:16 +0800, Chen Zhong wrote:
-> This patch adds the device tree binding documentation for common
-> keyboard.
-> 
-> Acked-by: Rob Herring <robh@kernel.org>
-> Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-> Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/input/keys.txt | 8 ++++++++
->  1 file changed, 8 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/input/keys.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/input/keys.txt b/Documentation/devicetree/bindings/input/keys.txt
-> new file mode 100644
-> index 0000000..a0ea7eb
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/input/keys.txt
-> @@ -0,0 +1,8 @@
-> +General Keys Properties:
-> +
-> +Optional properties for Keys:
-> +- power-off-time-sec: Duration in seconds which the key should be kept
-> + 	pressed for device to power off automatically. Device with key pressed
-> + 	shutdown feature can specify this property.
-> +- linux,keycodes: Specifies the numeric keycode values to be used for
-> +	reporting key presses.
-> \ No newline at end of file
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 3bb8ce891719ed21..baa4dc046daf9cdc 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1634,6 +1634,7 @@ M:	Matthias Brugger <matthias.bgg@gmail.com>
+ L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+ S:	Maintained
++F:	Documentation/devicetree/bindings/soc/mediatek/
+ F:	arch/arm/boot/dts/mt6*
+ F:	arch/arm/boot/dts/mt7*
+ F:	arch/arm/boot/dts/mt8*
+-- 
+2.17.1
