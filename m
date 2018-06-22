@@ -1,62 +1,40 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH 4/7] pinctrl: mt7622: stop using the deprecated pinctrl_add_gpio_range
-Date: Fri, 22 Jun 2018 11:49:07 +0800
-Message-ID: <098100772163e54fe5ca49576042edbfaf3807a5.1529639050.git.sean.wang@mediatek.com>
-References: <f222c9f488490bd86d35346e725491e1de306ace.1529639050.git.sean.wang@mediatek.com>
+From: Chen Zhong <chen.zhong@mediatek.com>
+Subject: [RESEND PATCH] dt-bindings: input: Add common keyboard document bindings
+Date: Fri, 22 Jun 2018 14:16:38 +0800
+Message-ID: <1529648198-14231-1-git-send-email-chen.zhong@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f222c9f488490bd86d35346e725491e1de306ace.1529639050.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linus.walleij@linaro.org, linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, stable@vger.kernel.org
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Chen Zhong <chen.zhong@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+This patch adds the device tree binding documentation for common
+keyboard.
 
-If the pinctrl node has the gpio-ranges property, the range will be added
-by the gpio core and doesn't need to be added by the pinctrl driver.
-
-But for keeping backward compatibility, an explicit pinctrl_add_gpio_range
-is still needed to be called when there is a missing gpio-ranges in pinctrl
-node in old dts files.
-
-Cc: stable@vger.kernel.org
-Fixes: d6ed93551320 ("pinctrl: mediatek: add pinctrl driver for MT7622 SoC")
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
 ---
- drivers/pinctrl/mediatek/pinctrl-mt7622.c | 19 ++++++++++++++-----
- 1 file changed, 14 insertions(+), 5 deletions(-)
+ Documentation/devicetree/bindings/input/keys.txt | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/input/keys.txt
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7622.c b/drivers/pinctrl/mediatek/pinctrl-mt7622.c
-index 42155d4..055074bb 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7622.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7622.c
-@@ -1508,11 +1508,20 @@ static int mtk_build_gpiochip(struct mtk_pinctrl *hw, struct device_node *np)
- 	if (ret < 0)
- 		return ret;
- 
--	ret = gpiochip_add_pin_range(chip, dev_name(hw->dev), 0, 0,
--				     chip->ngpio);
--	if (ret < 0) {
--		gpiochip_remove(chip);
--		return ret;
-+	/* Just for backward compatible for these old pinctrl nodes without
-+	 * "gpio-ranges" property. Otherwise, called directly from a
-+	 * DeviceTree-supported pinctrl driver is DEPRECATED.
-+	 * Please see Section 2.1 of
-+	 * Documentation/devicetree/bindings/gpio/gpio.txt on how to
-+	 * bind pinctrl and gpio drivers via the "gpio-ranges" property.
-+	 */
-+	if (!of_find_property(np, "gpio-ranges", NULL)) {
-+		ret = gpiochip_add_pin_range(chip, dev_name(hw->dev), 0, 0,
-+					     chip->ngpio);
-+		if (ret < 0) {
-+			gpiochip_remove(chip);
-+			return ret;
-+		}
- 	}
- 
- 	return 0;
+diff --git a/Documentation/devicetree/bindings/input/keys.txt b/Documentation/devicetree/bindings/input/keys.txt
+new file mode 100644
+index 0000000..a0ea7eb
+--- /dev/null
++++ b/Documentation/devicetree/bindings/input/keys.txt
+@@ -0,0 +1,8 @@
++General Keys Properties:
++
++Optional properties for Keys:
++- power-off-time-sec: Duration in seconds which the key should be kept
++ 	pressed for device to power off automatically. Device with key pressed
++ 	shutdown feature can specify this property.
++- linux,keycodes: Specifies the numeric keycode values to be used for
++	reporting key presses.
+\ No newline at end of file
 -- 
-2.7.4
+1.8.1.1.dirty
