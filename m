@@ -1,104 +1,49 @@
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Subject: Re: [PATCH] input: mtk-pmic-keys: Fix probe when no DT node present
-Date: Fri, 22 Jun 2018 11:31:14 -0700
-Message-ID: <20180622183114.GA92912@dtor-ws>
-References: <20180622114228.8619-1-matthias.bgg@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: Joe Perches <joe@perches.com>
+Subject: [PATCH] staging: Convert random_ether_addr to eth_random_addr
+Date: Sat, 23 Jun 2018 10:27:58 -0700
+Message-ID: <d5ed83275b7e9ed8bacbcc8a45fcb5ac419c272f.1529774856.git.joe@perches.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180622114228.8619-1-matthias.bgg@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: chen.zhong@mediatek.com, lee.jones@linaro.org, linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jun 22, 2018 at 01:42:28PM +0200, Matthias Brugger wrote:
-> The drivers gets probed from a mfd devices. So the driver runs
-> probe although no DT node exists. This leads to a NULL pointer
-> dereference in the probe function. Check if a node exists and
-> error out in case none is present.
+random_ether_addr is a #define for eth_random_addr which is
+generally preferred in kernel code by ~3:1
 
-Hmm, if a cell specifies of_compatible and no such node is present in DT
-maybe we should bail out in mfd_add_device() instead of pushing the
-check into individual drivers? Something like:
+Convert the uses of random_ether_addr to enable removing the #define
 
-diff --git a/drivers/mfd/mfd-core.c b/drivers/mfd/mfd-core.c
-index 94e3f32ce935..36a5fd98000d 100644
---- a/drivers/mfd/mfd-core.c
-+++ b/drivers/mfd/mfd-core.c
-@@ -137,6 +137,18 @@ static inline void mfd_acpi_add_device(const struct mfd_cell *cell,
- }
- #endif
+Signed-off-by: Joe Perches <joe@perches.com>
+---
+ drivers/staging/mt7621-eth/mtk_eth_soc.c               | 2 +-
+ drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/mt7621-eth/mtk_eth_soc.c b/drivers/staging/mt7621-eth/mtk_eth_soc.c
+index 2c7a2e666bfb..e1696b06870e 100644
+--- a/drivers/staging/mt7621-eth/mtk_eth_soc.c
++++ b/drivers/staging/mt7621-eth/mtk_eth_soc.c
+@@ -1822,7 +1822,7 @@ static int __init mtk_init(struct net_device *dev)
  
-+static struct device_node *mfd_get_node_for_cell(struct device *parent,
-+						 const struct mfd_cell *cell)
-+{
-+	struct device_node *np;
-+
-+	for_each_child_of_node(parent->of_node, np)
-+		if (of_device_is_compatible(np, cell->of_compatible))
-+			return np;
-+
-+	return NULL;
-+}
-+
- static int mfd_add_device(struct device *parent, int id,
- 			  const struct mfd_cell *cell, atomic_t *usage_count,
- 			  struct resource *mem_base,
-@@ -144,7 +156,6 @@ static int mfd_add_device(struct device *parent, int id,
- {
- 	struct resource *res;
- 	struct platform_device *pdev;
--	struct device_node *np = NULL;
- 	int ret = -ENOMEM;
- 	int platform_id;
- 	int r;
-@@ -176,11 +187,11 @@ static int mfd_add_device(struct device *parent, int id,
- 		goto fail_res;
+ 	/* If the mac address is invalid, use random mac address  */
+ 	if (!is_valid_ether_addr(dev->dev_addr)) {
+-		random_ether_addr(dev->dev_addr);
++		eth_random_addr(dev->dev_addr);
+ 		dev_err(eth->dev, "generated random MAC address %pM\n",
+ 			dev->dev_addr);
+ 		dev->addr_assign_type = NET_ADDR_RANDOM;
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+index 21874e78d8a1..9d9a9e102bb8 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+@@ -2382,7 +2382,7 @@ static void ieee80211_start_ibss_wq(struct work_struct *work)
+ 	if (ieee->state == IEEE80211_NOLINK) {
+ 		printk("creating new IBSS cell\n");
+ 		if(!ieee->wap_set)
+-			random_ether_addr(ieee->current_network.bssid);
++			eth_random_addr(ieee->current_network.bssid);
  
- 	if (parent->of_node && cell->of_compatible) {
--		for_each_child_of_node(parent->of_node, np) {
--			if (of_device_is_compatible(np, cell->of_compatible)) {
--				pdev->dev.of_node = np;
--				break;
--			}
-+		pdev->dev.of_node = mfd_get_node_for_cell(parent, cell);
-+		if (!pdev->dev.of_node) {
-+			dev_err(parent, "unable to locate node for %s (%s)\n",
-+				cell->name, cell->of_compatible);
-+			goto fail_res;
- 		}
- 	}
+ 		if(ieee->modulation & IEEE80211_CCK_MODULATION){
  
-Lee?
-
-> 
-> Fixes: 3e9f0b3e2b27 ("input: Add MediaTek PMIC keys support")
-> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-> ---
->  drivers/input/keyboard/mtk-pmic-keys.c | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-> index 02c67a1749fc..388043e1939c 100644
-> --- a/drivers/input/keyboard/mtk-pmic-keys.c
-> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
-> @@ -257,6 +257,9 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
->  	const struct of_device_id *of_id =
->  		of_match_device(of_mtk_pmic_keys_match_tbl, &pdev->dev);
->  
-> +	if (of_id == NULL)
-> +		return -ENODEV;
-> +
->  	keys = devm_kzalloc(&pdev->dev, sizeof(*keys), GFP_KERNEL);
->  	if (!keys)
->  		return -ENOMEM;
-> -- 
-> 2.17.1
-> 
-
-Thanks.
-
 -- 
-Dmitry
+2.15.0
