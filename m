@@ -1,49 +1,68 @@
-From: Joe Perches <joe@perches.com>
-Subject: [PATCH] staging: Convert random_ether_addr to eth_random_addr
-Date: Sat, 23 Jun 2018 10:27:58 -0700
-Message-ID: <d5ed83275b7e9ed8bacbcc8a45fcb5ac419c272f.1529774856.git.joe@perches.com>
+From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Subject: Re: [PATCH 2/2] usb: core: phy: fix return value checking about devm_of_phy_get_by_index()
+Date: Sun, 24 Jun 2018 20:00:01 +0200
+Message-ID: <CAFBinCBS+fpfx6jaaqD=kqFuMF6ko8GikbV1ZVwgbDh-Sn8T8w@mail.gmail.com>
+References: <4c338a129ab14ab41949da5e3c21aed0d77dff8d.1529647619.git.chunfeng.yun@mediatek.com>
+ <644d00edd2932c1a0d0a1bf368dd25427d1d9f64.1529647619.git.chunfeng.yun@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <644d00edd2932c1a0d0a1bf368dd25427d1d9f64.1529647619.git.chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: chunfeng.yun@mediatek.com, johan@kernel.org
+Cc: gregkh@linuxfoundation.org, felipe.balbi@linux.intel.com, matthias.bgg@gmail.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-random_ether_addr is a #define for eth_random_addr which is
-generally preferred in kernel code by ~3:1
+Hello Chunfeng,
 
-Convert the uses of random_ether_addr to enable removing the #define
+thank you for the patch!
 
-Signed-off-by: Joe Perches <joe@perches.com>
----
- drivers/staging/mt7621-eth/mtk_eth_soc.c               | 2 +-
- drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+On Fri, Jun 22, 2018 at 8:33 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+>
+> 1. use IS_ERR() but not IS_ERR_OR_NULL() because devm_of_phy_get_by_index()
+>     never return NULL value;
+ACK - good catch!
 
-diff --git a/drivers/staging/mt7621-eth/mtk_eth_soc.c b/drivers/staging/mt7621-eth/mtk_eth_soc.c
-index 2c7a2e666bfb..e1696b06870e 100644
---- a/drivers/staging/mt7621-eth/mtk_eth_soc.c
-+++ b/drivers/staging/mt7621-eth/mtk_eth_soc.c
-@@ -1822,7 +1822,7 @@ static int __init mtk_init(struct net_device *dev)
- 
- 	/* If the mac address is invalid, use random mac address  */
- 	if (!is_valid_ether_addr(dev->dev_addr)) {
--		random_ether_addr(dev->dev_addr);
-+		eth_random_addr(dev->dev_addr);
- 		dev_err(eth->dev, "generated random MAC address %pM\n",
- 			dev->dev_addr);
- 		dev->addr_assign_type = NET_ADDR_RANDOM;
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-index 21874e78d8a1..9d9a9e102bb8 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-@@ -2382,7 +2382,7 @@ static void ieee80211_start_ibss_wq(struct work_struct *work)
- 	if (ieee->state == IEEE80211_NOLINK) {
- 		printk("creating new IBSS cell\n");
- 		if(!ieee->wap_set)
--			random_ether_addr(ieee->current_network.bssid);
-+			eth_random_addr(ieee->current_network.bssid);
- 
- 		if(ieee->modulation & IEEE80211_CCK_MODULATION){
- 
--- 
-2.15.0
+> 2. devm_of_phy_get_by_index() should not fail for a valid index
+I have learned that the PHY framework can return -ENODEV if the PHY is:
+1. supposed to be handled by the legacy USB PHY framework
+2. the PHY node is disabled in devicetree
+
+see [0] for the code in the PHY framework and [1] for the discussion
+with Johan (who informed me of case #1, I added him on this mail)
+
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  drivers/usb/core/phy.c | 11 ++++-------
+>  1 file changed, 4 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
+> index 9879767..0f972e1 100644
+> --- a/drivers/usb/core/phy.c
+> +++ b/drivers/usb/core/phy.c
+> @@ -23,14 +23,11 @@ static int usb_phy_roothub_add_phy(struct device *dev, int index,
+>                                    struct list_head *list)
+>  {
+>         struct usb_phy_roothub *roothub_entry;
+> -       struct phy *phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
+> +       struct phy *phy;
+>
+> -       if (IS_ERR_OR_NULL(phy)) {
+> -               if (!phy || PTR_ERR(phy) == -ENODEV)
+> -                       return 0;
+> -               else
+> -                       return PTR_ERR(phy);
+> -       }
+> +       phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
+> +       if (IS_ERR(phy))
+> +               return PTR_ERR(phy);
+@Johan can you please review this as well? maybe we need to keep the
+-ENODEV check
+
+
+Regards
+Martin
+
+
+[0] https://elixir.bootlin.com/linux/v4.18-rc2/source/drivers/phy/phy-core.c#L421
+[1] https://lkml.org/lkml/2018/4/19/88
