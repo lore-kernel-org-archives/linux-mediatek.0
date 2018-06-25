@@ -1,68 +1,65 @@
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Subject: Re: [PATCH 2/2] usb: core: phy: fix return value checking about devm_of_phy_get_by_index()
-Date: Sun, 24 Jun 2018 20:00:01 +0200
-Message-ID: <CAFBinCBS+fpfx6jaaqD=kqFuMF6ko8GikbV1ZVwgbDh-Sn8T8w@mail.gmail.com>
+From: Johan Hovold <johan@kernel.org>
+Subject: Re: [PATCH 2/2] usb: core: phy: fix return value checking about
+ devm_of_phy_get_by_index()
+Date: Mon, 25 Jun 2018 07:29:30 +0200
+Message-ID: <20180625052930.GA26803@localhost>
 References: <4c338a129ab14ab41949da5e3c21aed0d77dff8d.1529647619.git.chunfeng.yun@mediatek.com>
  <644d00edd2932c1a0d0a1bf368dd25427d1d9f64.1529647619.git.chunfeng.yun@mediatek.com>
+ <CAFBinCBS+fpfx6jaaqD=kqFuMF6ko8GikbV1ZVwgbDh-Sn8T8w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <644d00edd2932c1a0d0a1bf368dd25427d1d9f64.1529647619.git.chunfeng.yun@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <CAFBinCBS+fpfx6jaaqD=kqFuMF6ko8GikbV1ZVwgbDh-Sn8T8w@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: chunfeng.yun@mediatek.com, johan@kernel.org
-Cc: gregkh@linuxfoundation.org, felipe.balbi@linux.intel.com, matthias.bgg@gmail.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Cc: chunfeng.yun@mediatek.com, johan@kernel.org, gregkh@linuxfoundation.org, felipe.balbi@linux.intel.com, matthias.bgg@gmail.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello Chunfeng,
+On Sun, Jun 24, 2018 at 08:00:01PM +0200, Martin Blumenstingl wrote:
+> Hello Chunfeng,
+> 
+> thank you for the patch!
+> 
+> On Fri, Jun 22, 2018 at 8:33 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
 
-thank you for the patch!
+> > 2. devm_of_phy_get_by_index() should not fail for a valid index
+> I have learned that the PHY framework can return -ENODEV if the PHY is:
+> 1. supposed to be handled by the legacy USB PHY framework
+> 2. the PHY node is disabled in devicetree
+> 
+> see [0] for the code in the PHY framework and [1] for the discussion
+> with Johan (who informed me of case #1, I added him on this mail)
+> 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> >  drivers/usb/core/phy.c | 11 ++++-------
+> >  1 file changed, 4 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
+> > index 9879767..0f972e1 100644
+> > --- a/drivers/usb/core/phy.c
+> > +++ b/drivers/usb/core/phy.c
+> > @@ -23,14 +23,11 @@ static int usb_phy_roothub_add_phy(struct device *dev, int index,
+> >                                    struct list_head *list)
+> >  {
+> >         struct usb_phy_roothub *roothub_entry;
+> > -       struct phy *phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
+> > +       struct phy *phy;
+> >
+> > -       if (IS_ERR_OR_NULL(phy)) {
+> > -               if (!phy || PTR_ERR(phy) == -ENODEV)
+> > -                       return 0;
+> > -               else
+> > -                       return PTR_ERR(phy);
+> > -       }
+> > +       phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
+> > +       if (IS_ERR(phy))
+> > +               return PTR_ERR(phy);
+> @Johan can you please review this as well? maybe we need to keep the
+> -ENODEV check
 
-On Fri, Jun 22, 2018 at 8:33 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
->
-> 1. use IS_ERR() but not IS_ERR_OR_NULL() because devm_of_phy_get_by_index()
->     never return NULL value;
-ACK - good catch!
+Indeed, the -ENODEV check is still needed for the reasons you point out
+above.
 
-> 2. devm_of_phy_get_by_index() should not fail for a valid index
-I have learned that the PHY framework can return -ENODEV if the PHY is:
-1. supposed to be handled by the legacy USB PHY framework
-2. the PHY node is disabled in devicetree
-
-see [0] for the code in the PHY framework and [1] for the discussion
-with Johan (who informed me of case #1, I added him on this mail)
-
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->  drivers/usb/core/phy.c | 11 ++++-------
->  1 file changed, 4 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
-> index 9879767..0f972e1 100644
-> --- a/drivers/usb/core/phy.c
-> +++ b/drivers/usb/core/phy.c
-> @@ -23,14 +23,11 @@ static int usb_phy_roothub_add_phy(struct device *dev, int index,
->                                    struct list_head *list)
->  {
->         struct usb_phy_roothub *roothub_entry;
-> -       struct phy *phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
-> +       struct phy *phy;
->
-> -       if (IS_ERR_OR_NULL(phy)) {
-> -               if (!phy || PTR_ERR(phy) == -ENODEV)
-> -                       return 0;
-> -               else
-> -                       return PTR_ERR(phy);
-> -       }
-> +       phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
-> +       if (IS_ERR(phy))
-> +               return PTR_ERR(phy);
-@Johan can you please review this as well? maybe we need to keep the
--ENODEV check
-
-
-Regards
-Martin
-
-
-[0] https://elixir.bootlin.com/linux/v4.18-rc2/source/drivers/phy/phy-core.c#L421
-[1] https://lkml.org/lkml/2018/4/19/88
+Johan
