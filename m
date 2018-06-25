@@ -1,53 +1,82 @@
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Subject: Re: [PATCH 2/2] usb: core: phy: fix return value checking about devm_of_phy_get_by_index()
-Date: Mon, 25 Jun 2018 19:32:04 +0200
-Message-ID: <CAFBinCDuGd-R1OR6h1UTTsWm2XNJC_f8iREgdE8fQQv1ph9hpQ@mail.gmail.com>
-References: <4c338a129ab14ab41949da5e3c21aed0d77dff8d.1529647619.git.chunfeng.yun@mediatek.com>
- <644d00edd2932c1a0d0a1bf368dd25427d1d9f64.1529647619.git.chunfeng.yun@mediatek.com>
- <CAFBinCBS+fpfx6jaaqD=kqFuMF6ko8GikbV1ZVwgbDh-Sn8T8w@mail.gmail.com> <1529908621.32173.27.camel@mhfsdcap03>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH 1/2] dt-bindings: Add mtk-systimer bindings
+Date: Mon, 25 Jun 2018 23:53:45 +0200
+Message-ID: <ad38a952-4400-984a-a7fd-aa4e6af13c13@linaro.org>
+References: <1529910601-15005-1-git-send-email-stanley.chu@mediatek.com>
+ <1529910601-15005-2-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1529908621.32173.27.camel@mhfsdcap03>
+In-Reply-To: <1529910601-15005-2-git-send-email-stanley.chu@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: chunfeng.yun@mediatek.com
-Cc: johan@kernel.org, gregkh@linuxfoundation.org, felipe.balbi@linux.intel.com, matthias.bgg@gmail.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Stanley Chu <stanley.chu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Chunfeng,
+On 25/06/2018 09:10, Stanley Chu wrote:
+> Add binding documentation for the System Timer driver of
+> the Mediatek SoCs.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> ---
+>  .../bindings/timer/mediatek,mtk-systimer.txt       |   18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
+> new file mode 100644
+> index 0000000..735a6fd
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
+> @@ -0,0 +1,18 @@
+> +Mediatek System Timers
+> +----------------------
+> +
+> +Required properties:
+> +- compatible: should contain
+> +	"mediatek,sys_timer" for those platforms which support system timer.
+> +- reg: Mandatory. The location and length for system timer registers.
+> +- clock-frequency: Optional. If not assigned specifically, default
+> +	value 13000000 (means 13 MHz) would be applied.
 
-On Mon, Jun 25, 2018 at 8:37 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
->
-> On Sun, 2018-06-24 at 20:00 +0200, Martin Blumenstingl wrote:
-> > Hello Chunfeng,
-> >
-> > thank you for the patch!
-> >
-> > On Fri, Jun 22, 2018 at 8:33 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
-> > >
-> > > 1. use IS_ERR() but not IS_ERR_OR_NULL() because devm_of_phy_get_by_index()
-> > >     never return NULL value;
-> > ACK - good catch!
-> >
-> > > 2. devm_of_phy_get_by_index() should not fail for a valid index
-> > I have learned that the PHY framework can return -ENODEV if the PHY is:
-> > 1. supposed to be handled by the legacy USB PHY framework
-> > 2. the PHY node is disabled in devicetree
-> A little confused, we can avoid this error by not using a disabled or
-> "usb-nop-xceiv" phy in host node.
-I think that would be the mid or long term goal
+The driver tells there is an error if it is not defined, so it can't be
+optional.
 
-> If ignore error of -ENODEV, we will also skip an error case which we
-> don't want it happen.
-as far as I understand the problem is that there are .dts files out
-there which specify "usb-nop-xceiv" in the "phys" property, see [0]
-(there might be even some more out-of-tree cases)
-so I think the -ENODEV check can only be removed once nothing uses
-"usb-nop-xceiv" anymore
+> +Examples:
+> +
+> +	sys_timer@10017000 {
+> +		compatible = "mediatek,sys_timer";
+> +		reg = <0 0x10017000 0 0x1000>;
+> +		interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_HIGH>;
+> +		clock-frequency = <13000000>;
+
+Replace it by a phandle to a 'fixed-clock'.
+
+eg.
+
+clocks = <&myclk>;
 
 
-Regards
-Martin
+> +	};
+
+myclk: myclk {
+	#clock-cells = <0>;
+	compatible = "fixed-clock";
+        clock-frequency = <13000000>;
+};
+
+Thanks
+
+  -- DAniel
 
 
-[0] https://patchwork.kernel.org/patch/10160181/
+
+
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
