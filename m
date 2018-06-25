@@ -1,113 +1,53 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [v3 01/10] dt-bindings: mediatek: mmsys: Add support for mfd
-Date: Mon, 25 Jun 2018 17:39:05 +0200
-Message-ID: <4ead47f6-2f69-2afa-bfcc-a240a9845dc4@gmail.com>
-References: <cover.1524820923.git.mbrugger@suse.com>
- <64ca273429d92f581568a48f3efe6035af65f579.1524820923.git.mbrugger@suse.com>
- <20180430103029.GD5147@dell>
+From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Subject: Re: [PATCH 2/2] usb: core: phy: fix return value checking about devm_of_phy_get_by_index()
+Date: Mon, 25 Jun 2018 19:32:04 +0200
+Message-ID: <CAFBinCDuGd-R1OR6h1UTTsWm2XNJC_f8iREgdE8fQQv1ph9hpQ@mail.gmail.com>
+References: <4c338a129ab14ab41949da5e3c21aed0d77dff8d.1529647619.git.chunfeng.yun@mediatek.com>
+ <644d00edd2932c1a0d0a1bf368dd25427d1d9f64.1529647619.git.chunfeng.yun@mediatek.com>
+ <CAFBinCBS+fpfx6jaaqD=kqFuMF6ko8GikbV1ZVwgbDh-Sn8T8w@mail.gmail.com> <1529908621.32173.27.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180430103029.GD5147@dell>
-Content-Language: en-US
+In-Reply-To: <1529908621.32173.27.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>, matthias.bgg@kernel.org
-Cc: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, sean.wang@mediatek.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
+To: chunfeng.yun@mediatek.com
+Cc: johan@kernel.org, gregkh@linuxfoundation.org, felipe.balbi@linux.intel.com, matthias.bgg@gmail.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Chunfeng,
+
+On Mon, Jun 25, 2018 at 8:37 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+>
+> On Sun, 2018-06-24 at 20:00 +0200, Martin Blumenstingl wrote:
+> > Hello Chunfeng,
+> >
+> > thank you for the patch!
+> >
+> > On Fri, Jun 22, 2018 at 8:33 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+> > >
+> > > 1. use IS_ERR() but not IS_ERR_OR_NULL() because devm_of_phy_get_by_index()
+> > >     never return NULL value;
+> > ACK - good catch!
+> >
+> > > 2. devm_of_phy_get_by_index() should not fail for a valid index
+> > I have learned that the PHY framework can return -ENODEV if the PHY is:
+> > 1. supposed to be handled by the legacy USB PHY framework
+> > 2. the PHY node is disabled in devicetree
+> A little confused, we can avoid this error by not using a disabled or
+> "usb-nop-xceiv" phy in host node.
+I think that would be the mid or long term goal
+
+> If ignore error of -ENODEV, we will also skip an error case which we
+> don't want it happen.
+as far as I understand the problem is that there are .dts files out
+there which specify "usb-nop-xceiv" in the "phys" property, see [0]
+(there might be even some more out-of-tree cases)
+so I think the -ENODEV check can only be removed once nothing uses
+"usb-nop-xceiv" anymore
 
 
-On 30/04/18 12:30, Lee Jones wrote:
-> On Fri, 27 Apr 2018, matthias.bgg@kernel.org wrote:
-> 
->> From: Matthias Brugger <mbrugger@suse.com>
->>
->> Add binding description for the mmsys mfd for some Mediatek
->> devices. mmsys has some registers to control clock gates (which is
->> used in the clk driver) and some registers to set the routing and enable
->> the differnet blocks of the display subsystem.
->>
->> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
->> ---
->>  .../bindings/arm/mediatek/mediatek,mmsys.txt       |  2 --
->>  .../bindings/display/mediatek/mediatek,disp.txt    |  2 +-
->>  .../devicetree/bindings/mfd/mediatek,mmsys.txt     | 27 ++++++++++++++++++++++
->>  3 files changed, 28 insertions(+), 3 deletions(-)
->>  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mmsys.txt
->>
->> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
->> index 4eb8bbe15c01..4468345f8b1a 100644
->> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
->> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
->> @@ -6,10 +6,8 @@ The Mediatek mmsys controller provides various clocks to the system.
->>  Required Properties:
->>  
->>  - compatible: Should be one of:
->> -	- "mediatek,mt2701-mmsys", "syscon"
->>  	- "mediatek,mt2712-mmsys", "syscon"
->>  	- "mediatek,mt6797-mmsys", "syscon"
->> -	- "mediatek,mt8173-mmsys", "syscon"
->>  - #clock-cells: Must be 1
->>  
->>  The mmsys controller uses the common clk binding from
->> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
->> index 383183a89164..85a3b4ec06cd 100644
->> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
->> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
->> @@ -9,7 +9,7 @@ function block.
->>  
->>  All DISP device tree nodes must be siblings to the central MMSYS_CONFIG node.
->>  For a description of the MMSYS_CONFIG binding, see
->> -Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt.
->> +Documentation/devicetree/bindings/mfd/mediatek,mmsys.txt
->>  
->>  DISP function blocks
->>  ====================
->> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mmsys.txt b/Documentation/devicetree/bindings/mfd/mediatek,mmsys.txt
->> new file mode 100644
->> index 000000000000..2331ae16917e
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mmsys.txt
->> @@ -0,0 +1,27 @@
->> +MediaTek MMSYS Multifunction Device Driver
-> 
-> What is "MMSYS"?
-> 
-> "Multi-Function Driver"s are specific to Linux.
-> 
-> What actually is the device?
-> 
+Regards
+Martin
 
-It's includes all the DRM parts of the SoC together with the clocks for the
-device. MMSYS IMHO stands for Multi-Media-System.
 
-Regards,
-Matthias
-
->> +MMSYS is a multifunction device with the following sub modules:
->> +- clocks for the multi-media subsystem
->> +- central node for the DRM subsystem.
->> +
->> +This document describes the binding for MFD device. The MFD takes care to initailize
->> +the clock driver and the DRM driver. More info see
->> +Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
->> +
->> +Required properties:
->> +- compatible: Should be one of:
->> +	- "mediatek,mt2701-mmsys", "syscon"
->> +	- "mediatek,mt8173-mmsys", "syscon"
->> +- #clock-cells: Must be 1
->> +
->> +Optional properties:
->> +- power-domains: list of powerdomains needed for the subsystem to work
->> +
->> +Example:
->> +
->> +mmsys: clock-controller@14000000 {
->> +	compatible = "mediatek,mt8173-mmsys", "syscon";
->> +	reg = <0 0x14000000 0 0x1000>;
->> +	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
->> +	#clock-cells = <1>;
->> +};
-> 
+[0] https://patchwork.kernel.org/patch/10160181/
