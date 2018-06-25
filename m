@@ -1,85 +1,49 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH] [dts] fix green/blue pio-led on bananapi-r2
-Date: Mon, 25 Jun 2018 17:17:43 +0800
-Message-ID: <1529918263.29697.31.camel@mtkswgap22>
-References: <trinity-ae29ad25-a4fb-47f3-8d68-f6e58c875a0e-1529682447976@3c-app-gmx-bs42>
- <trinity-0d48bc23-f754-4da3-af01-c3a7abe1d34b-1529682783853@3c-app-gmx-bs42>
+From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [ANN] mt76x0 usb driver
+Date: Mon, 25 Jun 2018 14:08:17 +0200
+Message-ID: <20180625120816.GA2072@redhat.com>
+References: <20180409141032.GA9247@redhat.com>
+ <20180409142640.GA5680@localhost.localdomain>
+ <20180409144819.GA9253@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <trinity-0d48bc23-f754-4da3-af01-c3a7abe1d34b-1529682783853@3c-app-gmx-bs42>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Frank Wunderlich <FrankWu@gmx.de>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180409144819.GA9253-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Jakub =?utf-8?B?S2ljacWEc2tp?= <moorray3-5tc4TXWwyLM@public.gmane.org>
+Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2018-06-22 at 17:53 +0200, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> Date: Sun, 17 Jun 2018 19:11:58 +0200
-> Subject: [PATCH] [dts] fix green/blue pio-led
->  green/blue pio-leds (near GPIO-Header) are swapped and LOW-active
->  this patch restore this expected behaviour
->  red cannot be switched afaik
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 14 +++++++-------
->  1 file changed, 7 insertions(+), 7 deletions(-)
-> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> index 531d905d924ff..3e8a0ffe8b13e 100644
-> --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-> @@ -89,21 +89,21 @@
->          pinctrl-names = "default";
->          pinctrl-0 = <&led_pins_a>;
->  
-> -        blue {
-> -            label = "bpi-r2:pio:blue";
-> -            gpios = <&pio 241 GPIO_ACTIVE_HIGH>;
-> +        green {
-> +            label = "bpi-r2:pio:green";
-> +            gpios = <&pio 241 GPIO_ACTIVE_LOW>;
->              default-state = "off";
->          };
->  
-> -        green {
-> -            label = "bpi-r2:pio:green";
-> -            gpios = <&pio 240 GPIO_ACTIVE_HIGH>;
-> +        blue {
-> +            label = "bpi-r2:pio:blue";
-> +            gpios = <&pio 240 GPIO_ACTIVE_LOW>;
->              default-state = "off";
->          };
->  
->          red {
->              label = "bpi-r2:pio:red";
-> -            gpios = <&pio 239 GPIO_ACTIVE_HIGH>;
-> +            gpios = <&pio 239 GPIO_ACTIVE_LOW>;
->              default-state = "off";
->          };
->      };
->  
+Hi all,
 
-Hi, Frank
-
-Node name should be listed in alphabetic order that means you should
-keep the order and only have the fixes for its content.
-
-Apart from that
-	Reviewed-by: Sean Wang <sean.wang@mediatek.com>
-	
->  
->  
+On Mon, Apr 09, 2018 at 04:48:19PM +0200, Stanislaw Gruszka wrote:
+> On Mon, Apr 09, 2018 at 04:26:42PM +0200, Lorenzo Bianconi wrote:
+> > > I would like to integrate the driver to kernel via mt76 driver, i.e.
+> > > add USB hooks and mt76x0 mac/phy code to mt76. This will open
+> > > possibility to develop support for mt76x2 USB devices as well as mt76x0
+> > > PCIe devices in mt76.
+> > > 
+> > 
+> > I have already started supporting mt76x2 USB devices in mt76 since register map
+> > is pretty similar to PCIe devices:
+> > https://github.com/LorenzoBianconi/wireless-drivers-next/tree/mt76x2u
+> > I added some usb utility routines so I think we can integrate mt76x0 in mt76 as
+> > well
 > 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> Great, I'll start to integrate mt76x0 on top of your tree.
+
+So I started to do integration here:
+https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft
+
+However since driver is self containging, I think better would be just
+submit the driver into mt76/mt76x0/ dir upstream and do code merging work as
+follow-up patches posted on the mailing list. Patches then could be reviewed
+on regular basic. This will provide support for new mt76x0 devices in kernel
+quicker. Conflicts with mt76x2u and not yet upstreamed mt7603 could be resolved
+on the fly.
+
+Another issue is firmware submission, how it was done for mt7601u and mt76x2 ?
+
+Thanks
+Stanislaw
