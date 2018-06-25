@@ -1,71 +1,68 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v1 7/7] arm64: dts: mt7622: add EINT support to pinctrl
-Date: Mon, 25 Jun 2018 17:02:28 +0200
-Message-ID: <e6747e99-78b6-ed8c-d6fa-cab2f7398fcf@gmail.com>
-References: <cover.1526835466.git.sean.wang@mediatek.com>
- <f896f79ebfa9a262c89fdeed89cf086220ca051d.1526835466.git.sean.wang@mediatek.com>
+Subject: Re: [PATCH v2 1/6] dt-bindings: gpu: mali-utgard: add
+ mediatek,mt7623-mali compatible
+Date: Mon, 25 Jun 2018 17:14:32 +0200
+Message-ID: <3bd6e509-f99a-1f2d-1b66-65c414bacdbd@gmail.com>
+References: <cover.1524816502.git.sean.wang@mediatek.com>
+ <7ab060c2e9ef2b220fc62913b8936b706dfaf202.1524816502.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f896f79ebfa9a262c89fdeed89cf086220ca051d.1526835466.git.sean.wang@mediatek.com>
+In-Reply-To: <7ab060c2e9ef2b220fc62913b8936b706dfaf202.1524816502.git.sean.wang@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com, robh+dt@kernel.org, mark.rutland@arm.com, linus.walleij@linaro.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
+To: sean.wang@mediatek.com, sboyd@codeaurora.org, mturquette@baylibre.com, robh+dt@kernel.org, mark.rutland@arm.com, p.zabel@pengutronix.de
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 20/05/18 19:01, sean.wang@mediatek.com wrote:
+On 27/04/18 10:14, sean.wang@mediatek.com wrote:
 > From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Add EINT support to pinctrl and set those GPIO keys as interrupt-driven
-> keys.
+> The MediaTek MT7623 SoC contains a Mali-450, so add a compatible for it
+> and define its own vendor-specific properties.
 > 
+> Reviewed-by: Rob Herring <robh@kernel.org>
 > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
 
-Merged,
+Hi Rob,
 
-Thanks!
+Any comments regarding this patch?
 
->  arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts | 2 +-
->  arch/arm64/boot/dts/mediatek/mt7622.dtsi     | 8 +++++++-
->  2 files changed, 8 insertions(+), 2 deletions(-)
+Regards,
+Matthias
+
+>  Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> index b783764..1ff003e 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> @@ -34,7 +34,7 @@
->  	};
+> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
+> index 99d1c0a..656068f 100644
+> --- a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
+> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
+> @@ -19,6 +19,7 @@ Required properties:
+>        + rockchip,rk3228-mali
+>        + rockchip,rk3328-mali
+>        + stericsson,db8500-mali
+> +      + mediatek,mt7623-mali
 >  
->  	gpio-keys {
-> -		compatible = "gpio-keys-polled";
-> +		compatible = "gpio-keys";
->  		poll-interval = <100>;
+>    - reg: Physical base address and length of the GPU registers
 >  
->  		factory {
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> index 9213c96..e2c5450 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> @@ -286,9 +286,15 @@
+> @@ -89,6 +90,14 @@ to specify one more vendor-specific compatible, among:
+>        * interrupt-names and interrupts:
+>          + combined: combined interrupt of all of the above lines
 >  
->  	pio: pinctrl@10211000 {
->  		compatible = "mediatek,mt7622-pinctrl";
-> -		reg = <0 0x10211000 0 0x1000>;
-> +		reg = <0 0x10211000 0 0x1000>,
-> +		      <0 0x10005000 0 0x1000>;
-> +		reg-names = "base", "eint";
->  		gpio-controller;
->  		#gpio-cells = <2>;
-> +		interrupt-controller;
-> +		interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_HIGH>;
-> +		interrupt-parent = <&gic>;
-> +		#interrupt-cells = <2>;
->  	};
+> +  - mediatek,mt7623-mali
+> +     Required properties:
+> +      * resets: phandle to the reset line for the GPU
+> +      * mediatek,larb: phandle pointed to the local arbiter used to control the
+> +	access to external memory on the SoC.
+> +	see Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+> +	for details
+> +
+>  Example:
 >  
->  	watchdog: watchdog@10212000 {
+>  mali: gpu@1c40000 {
 > 
