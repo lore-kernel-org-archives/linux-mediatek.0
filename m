@@ -1,50 +1,70 @@
-From: "Frank Wunderlich" <frank-w-SipyoOjXbOMoAHOVJHB0wA@public.gmane.org>
-Subject: [dts] [v2] fix green/blue pio-led on bananapi-r2
-Date: Mon, 25 Jun 2018 12:05:59 +0200
-Message-ID: <trinity-28694d63-092a-48be-aade-ba680b5c4e70-1529921159405@3c-app-gmx-bs16>
-References: <trinity-ae29ad25-a4fb-47f3-8d68-f6e58c875a0e-1529682447976@3c-app-gmx-bs42>
- <trinity-0d48bc23-f754-4da3-af01-c3a7abe1d34b-1529682783853@3c-app-gmx-bs42>
- <1529918263.29697.31.camel@mtkswgap22>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 03/15] arm: dts: mediatek: Add missing cooling device
+ properties for CPUs
+Date: Mon, 25 Jun 2018 16:58:04 +0200
+Message-ID: <186ed0b1-e365-4b3d-5c50-613d8353708b@gmail.com>
+References: <cover.1527244200.git.viresh.kumar@linaro.org>
+ <b687bb6035fbb010383f4511a206abb4006679fa.1527244201.git.viresh.kumar@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1529918263.29697.31.camel@mtkswgap22>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <b687bb6035fbb010383f4511a206abb4006679fa.1527244201.git.viresh.kumar@linaro.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>, arm@kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: Vincent Guittot <vincent.guittot@linaro.org>, ionela.voinescu@arm.com, Daniel Lezcano <daniel.lezcano@linaro.org>, chris.redpath@arm.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-CkZyb206IEZyYW5rIFd1bmRlcmxpY2ggPGZyYW5rLXdAcHVibGljLWZpbGVzLmRlPgpEYXRlOiBN
-b24sIDI1IEp1biAyMDE4IDExOjU3OjEzICswMjAwClN1YmplY3Q6IFtQQVRDSF0gW2R0c10gW3Yy
-XSBmaXggZ3JlZW4vYmx1ZSBwaW8tbGVkCiBwaW8tbGVkcyAobmVhciBHUElPLUhlYWRlcikgYXJl
-IHN3YXBwZWQgYW5kIExPVy1hY3RpdmUgCiBwYXRjaCByZXN0b3JlIHRoaXMgZXhwZWN0ZWQgYmVo
-YXZpb3VyCiByZWQgY2Fubm90IGJlIHN3aXRjaGVkIGFmYWlrCgp2MjogYWxwaGFiZXRpYyBvcmRl
-cgoKU2lnbmVkLW9mZi1ieTogRnJhbmsgV3VuZGVybGljaCA8ZnJhbmstd0BwdWJsaWMtZmlsZXMu
-ZGU+Ci0tLQogYXJjaC9hcm0vYm9vdC9kdHMvbXQ3NjIzbi1iYW5hbmFwaS1icGktcjIuZHRzIHwg
-NiArKystLS0KIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0p
-CgpkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vYm9vdC9kdHMvbXQ3NjIzbi1iYW5hbmFwaS1icGktcjIu
-ZHRzIGIvYXJjaC9hcm0vYm9vdC9kdHMvbXQ3NjIzbi1iYW5hbmFwaS1icGktcjIuZHRzCmluZGV4
-IDUzMWQ5MDVkOTI0ZmYuLjJiNzYwZjkwZjM4YzggMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtL2Jvb3Qv
-ZHRzL210NzYyM24tYmFuYW5hcGktYnBpLXIyLmR0cworKysgYi9hcmNoL2FybS9ib290L2R0cy9t
-dDc2MjNuLWJhbmFuYXBpLWJwaS1yMi5kdHMKQEAgLTkxLDE5ICs5MSwxOSBAQAogCiAJCWJsdWUg
-ewogCQkJbGFiZWwgPSAiYnBpLXIyOnBpbzpibHVlIjsKLQkJCWdwaW9zID0gPCZwaW8gMjQxIEdQ
-SU9fQUNUSVZFX0hJR0g+OworCQkJZ3Bpb3MgPSA8JnBpbyAyNDAgR1BJT19BQ1RJVkVfTE9XPjsK
-IAkJCWRlZmF1bHQtc3RhdGUgPSAib2ZmIjsKIAkJfTsKIAogCQlncmVlbiB7CiAJCQlsYWJlbCA9
-ICJicGktcjI6cGlvOmdyZWVuIjsKLQkJCWdwaW9zID0gPCZwaW8gMjQwIEdQSU9fQUNUSVZFX0hJ
-R0g+OworCQkJZ3Bpb3MgPSA8JnBpbyAyNDEgR1BJT19BQ1RJVkVfTE9XPjsKIAkJCWRlZmF1bHQt
-c3RhdGUgPSAib2ZmIjsKIAkJfTsKIAogCQlyZWQgewogCQkJbGFiZWwgPSAiYnBpLXIyOnBpbzpy
-ZWQiOwotCQkJZ3Bpb3MgPSA8JnBpbyAyMzkgR1BJT19BQ1RJVkVfSElHSD47CisJCQlncGlvcyA9
-IDwmcGlvIDIzOSBHUElPX0FDVElWRV9MT1c+OwogCQkJZGVmYXVsdC1zdGF0ZSA9ICJvZmYiOwog
-CQl9OwogCX07CgrCoAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1tZWRpYXRlawo=
+
+
+On 25/05/18 12:31, Viresh Kumar wrote:
+> The cooling device properties, like "#cooling-cells" and
+> "dynamic-power-coefficient", should either be present for all the CPUs
+> of a cluster or none. If these are present only for a subset of CPUs of
+> a cluster then things will start falling apart as soon as the CPUs are
+> brought online in a different order. For example, this will happen
+> because the operating system looks for such properties in the CPU node
+> it is trying to bring up, so that it can register a cooling device.
+> 
+> Add such missing properties.
+> 
+> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+
+pushed to v4.18-next/dts32
+
+Thanks
+
+> ---
+>  arch/arm/boot/dts/mt7623.dtsi | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index d1eb123bc73b..1cdc346a05e8 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -92,6 +92,7 @@
+>  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+>  			clock-names = "cpu", "intermediate";
+>  			operating-points-v2 = <&cpu_opp_table>;
+> +			#cooling-cells = <2>;
+>  			clock-frequency = <1300000000>;
+>  		};
+>  
+> @@ -103,6 +104,7 @@
+>  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+>  			clock-names = "cpu", "intermediate";
+>  			operating-points-v2 = <&cpu_opp_table>;
+> +			#cooling-cells = <2>;
+>  			clock-frequency = <1300000000>;
+>  		};
+>  
+> @@ -114,6 +116,7 @@
+>  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+>  			clock-names = "cpu", "intermediate";
+>  			operating-points-v2 = <&cpu_opp_table>;
+> +			#cooling-cells = <2>;
+>  			clock-frequency = <1300000000>;
+>  		};
+>  	};
+> 
