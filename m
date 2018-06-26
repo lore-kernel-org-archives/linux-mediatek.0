@@ -1,82 +1,35 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 1/2] dt-bindings: Add mtk-systimer bindings
-Date: Mon, 25 Jun 2018 23:53:45 +0200
-Message-ID: <ad38a952-4400-984a-a7fd-aa4e6af13c13@linaro.org>
-References: <1529910601-15005-1-git-send-email-stanley.chu@mediatek.com>
- <1529910601-15005-2-git-send-email-stanley.chu@mediatek.com>
+From: Mars Cheng <mars.cheng@mediatek.com>
+Subject: [PATCH 0/2] Add basic SoC support for MT6765
+Date: Tue, 26 Jun 2018 10:04:04 +0800
+Message-ID: <1529978646-28976-1-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1529910601-15005-2-git-send-email-stanley.chu@mediatek.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stanley Chu <stanley.chu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>
+Cc: CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 25/06/2018 09:10, Stanley Chu wrote:
-> Add binding documentation for the System Timer driver of
-> the Mediatek SoCs.
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
->  .../bindings/timer/mediatek,mtk-systimer.txt       |   18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
-> new file mode 100644
-> index 0000000..735a6fd
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
-> @@ -0,0 +1,18 @@
-> +Mediatek System Timers
-> +----------------------
-> +
-> +Required properties:
-> +- compatible: should contain
-> +	"mediatek,sys_timer" for those platforms which support system timer.
-> +- reg: Mandatory. The location and length for system timer registers.
-> +- clock-frequency: Optional. If not assigned specifically, default
-> +	value 13000000 (means 13 MHz) would be applied.
 
-The driver tells there is an error if it is not defined, so it can't be
-optional.
+This patch adds basic SoC support for Mediatek's new 8-core SoC,
+MT6765, which is mainly for smartphone application.
 
-> +Examples:
-> +
-> +	sys_timer@10017000 {
-> +		compatible = "mediatek,sys_timer";
-> +		reg = <0 0x10017000 0 0x1000>;
-> +		interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_HIGH>;
-> +		clock-frequency = <13000000>;
+Change in V2:
+1. fix clk properties in uart dts node
+2. fix typo in submit title
+3. add simple-bus in mt6765.dtsi
+4. use correct SPDX license format
 
-Replace it by a phandle to a 'fixed-clock'.
+Mars Cheng (2):
+  dt-bindings: mediatek: Add bindings for mediatek MT6765 Platform
+  arm64: dts: mediatek: add mt6765 support
 
-eg.
-
-clocks = <&myclk>;
-
-
-> +	};
-
-myclk: myclk {
-	#clock-cells = <0>;
-	compatible = "fixed-clock";
-        clock-frequency = <13000000>;
-};
-
-Thanks
-
-  -- DAniel
-
-
-
-
--- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+ Documentation/devicetree/bindings/arm/mediatek.txt |    4 +
+ .../interrupt-controller/mediatek,sysirq.txt       |    1 +
+ .../devicetree/bindings/serial/mtk-uart.txt        |    1 +
+ arch/arm64/boot/dts/mediatek/Makefile              |    1 +
+ arch/arm64/boot/dts/mediatek/mt6765-evb.dts        |   33 ++++
+ arch/arm64/boot/dts/mediatek/mt6765.dtsi           |  158 ++++++++++++++++++++
+ 6 files changed, 198 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
