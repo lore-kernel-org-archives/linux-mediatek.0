@@ -1,242 +1,84 @@
-From: Mars Cheng <mars.cheng@mediatek.com>
-Subject: [PATCH v2 2/2] arm64: dts: mediatek: add mt6765 support
-Date: Tue, 26 Jun 2018 10:04:06 +0800
-Message-ID: <1529978646-28976-3-git-send-email-mars.cheng@mediatek.com>
-References: <1529978646-28976-1-git-send-email-mars.cheng@mediatek.com>
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH 1/2] dt-bindings: Add mtk-systimer bindings
+Date: Tue, 26 Jun 2018 14:36:24 +0800
+Message-ID: <1529994984.17448.27.camel@mtkswgap22>
+References: <1529910601-15005-1-git-send-email-stanley.chu@mediatek.com>
+         <1529910601-15005-2-git-send-email-stanley.chu@mediatek.com>
+         <ad38a952-4400-984a-a7fd-aa4e6af13c13@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1529978646-28976-1-git-send-email-mars.cheng@mediatek.com>
+In-Reply-To: <ad38a952-4400-984a-a7fd-aa4e6af13c13@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>
-Cc: CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Mars Cheng <mars.cheng@mediatek.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds basic chip support for MT6765 SoC.
+On Mon, 2018-06-25 at 23:53 +0200, Daniel Lezcano wrote:
+> On 25/06/2018 09:10, Stanley Chu wrote:
+> > Add binding documentation for the System Timer driver of
+> > the Mediatek SoCs.
+> > 
+> > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> > ---
+> >  .../bindings/timer/mediatek,mtk-systimer.txt       |   18 ++++++++++++++++++
+> >  1 file changed, 18 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
+> > new file mode 100644
+> > index 0000000..735a6fd
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
+> > @@ -0,0 +1,18 @@
+> > +Mediatek System Timers
+> > +----------------------
+> > +
+> > +Required properties:
+> > +- compatible: should contain
+> > +	"mediatek,sys_timer" for those platforms which support system timer.
+> > +- reg: Mandatory. The location and length for system timer registers.
+> > +- clock-frequency: Optional. If not assigned specifically, default
+> > +	value 13000000 (means 13 MHz) would be applied.
+> 
+> The driver tells there is an error if it is not defined, so it can't be
+> optional.
+> 
+> > +Examples:
+> > +
+> > +	sys_timer@10017000 {
+> > +		compatible = "mediatek,sys_timer";
+> > +		reg = <0 0x10017000 0 0x1000>;
+> > +		interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_HIGH>;
+> > +		clock-frequency = <13000000>;
+> 
+> Replace it by a phandle to a 'fixed-clock'.
+> 
+> eg.
+> 
+> clocks = <&myclk>;
+> 
+> 
+> > +	};
+> 
+> myclk: myclk {
+> 	#clock-cells = <0>;
+> 	compatible = "fixed-clock";
+>         clock-frequency = <13000000>;
+> };
+> 
+> Thanks
+> 
+>   -- DAniel
+> 
+> 
+> 
+> 
+Hi Daniel,
 
-Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/Makefile       |    1 +
- arch/arm64/boot/dts/mediatek/mt6765-evb.dts |   33 ++++++
- arch/arm64/boot/dts/mediatek/mt6765.dtsi    |  158 +++++++++++++++++++++++++++
- 3 files changed, 192 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
+13 MHz clock is necessary. We will fix it in v2 by using system's
+fixed-clock.
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index ac17f60..7506b0d 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -1,6 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt6765-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt6765-evb.dts b/arch/arm64/boot/dts/mediatek/mt6765-evb.dts
-new file mode 100644
-index 0000000..36dddff2
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt6765-evb.dts
-@@ -0,0 +1,33 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * dts file for Mediatek MT6765
-+ *
-+ * (C) Copyright 2018. Mediatek, Inc.
-+ *
-+ * Mars Cheng <mars.cheng@mediatek.com>
-+ */
-+
-+/dts-v1/;
-+#include "mt6765.dtsi"
-+
-+/ {
-+	model = "MediaTek MT6765 EVB";
-+	compatible = "mediatek,mt6765-evb", "mediatek,mt6765";
-+
-+	aliases {
-+		serial0 = &uart0;
-+	};
-+
-+	memory@40000000 {
-+		device_type = "memory";
-+		reg = <0 0x40000000 0 0x1e800000>;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial0:921600n8";
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt6765.dtsi b/arch/arm64/boot/dts/mediatek/mt6765.dtsi
-new file mode 100644
-index 0000000..ab34c0f
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt6765.dtsi
-@@ -0,0 +1,158 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * dts file for Mediatek MT6765
-+ *
-+ * (C) Copyright 2018. Mediatek, Inc.
-+ *
-+ * Mars Cheng <mars.cheng@mediatek.com>
-+ */
-+
-+#include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/interrupt-controller/arm-gic.h>
-+
-+/ {
-+	compatible = "mediatek,mt6765";
-+	interrupt-parent = <&sysirq>;
-+	#address-cells = <2>;
-+	#size-cells = <2>;
-+
-+	psci {
-+		compatible = "arm,psci-0.2";
-+		method = "smc";
-+	};
-+
-+	cpus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		cpu0: cpu@0 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a53";
-+			enable-method = "psci";
-+			reg = <0x000>;
-+		};
-+
-+		cpu1: cpu@1 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a53";
-+			enable-method = "psci";
-+			reg = <0x001>;
-+		};
-+
-+		cpu2: cpu@2 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a53";
-+			enable-method = "psci";
-+			reg = <0x002>;
-+		};
-+
-+		cpu3: cpu@3 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a53";
-+			enable-method = "psci";
-+			reg = <0x003>;
-+		};
-+
-+		cpu4: cpu@100 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a53";
-+			enable-method = "psci";
-+			reg = <0x100>;
-+		};
-+
-+		cpu5: cpu@101 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a53";
-+			enable-method = "psci";
-+			reg = <0x101>;
-+		};
-+
-+		cpu6: cpu@102 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a53";
-+			enable-method = "psci";
-+			reg = <0x102>;
-+		};
-+
-+		cpu7: cpu@103 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a53";
-+			enable-method = "psci";
-+			reg = <0x103>;
-+		};
-+	};
-+
-+	baud_clk: dummy26m {
-+		compatible = "fixed-clock";
-+		clock-frequency = <26000000>;
-+		#clock-cells = <0>;
-+	};
-+
-+	sys_clk: dummyclk {
-+		compatible = "fixed-clock";
-+		clock-frequency = <26000000>;
-+		#clock-cells = <0>;
-+	};
-+
-+	timer {
-+		compatible = "arm,armv8-timer";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 13
-+			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
-+			     <GIC_PPI 14
-+			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
-+			     <GIC_PPI 11
-+			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
-+			     <GIC_PPI 10
-+			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>;
-+	};
-+
-+	soc {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		compatible = "simple-bus";
-+		ranges;
-+
-+		sysirq: intpol-controller@10200a80 {
-+			compatible = "mediatek,mt6765-sysirq",
-+				     "mediatek,mt6577-sysirq";
-+			interrupt-controller;
-+			#interrupt-cells = <3>;
-+			interrupt-parent = <&gic>;
-+			reg = <0 0x10200a80 0 0x50>;
-+		};
-+
-+		gic: interrupt-controller@0c000000 {
-+			compatible = "arm,gic-v3";
-+			#interrupt-cells = <3>;
-+			#address-cells = <2>;
-+			#size-cells = <2>;
-+			#redistributor-regions = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupt-controller;
-+			reg = <0 0x0c000000 0 0x40000>, // distributor
-+			      <0 0x0c100000 0 0x200000>; // redistributor
-+			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-+		};
-+
-+		uart0: serial@11002000 {
-+			compatible = "mediatek,mt6765-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11002000 0 0x400>;
-+			interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&baud_clk>, <&sys_clk>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+
-+		uart1: serial@11003000 {
-+			compatible = "mediatek,mt6765-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11003000 0 0x400>;
-+			interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&baud_clk>, <&sys_clk>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+	}; /* end of soc */
-+};
--- 
-1.7.9.5
+Thanks.
+Stanley Chu
