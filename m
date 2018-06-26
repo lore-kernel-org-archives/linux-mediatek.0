@@ -1,84 +1,54 @@
-From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH 1/2] dt-bindings: Add mtk-systimer bindings
-Date: Tue, 26 Jun 2018 14:36:24 +0800
-Message-ID: <1529994984.17448.27.camel@mtkswgap22>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: Add system timer driver for Mediatek SoCs
+Date: Tue, 26 Jun 2018 09:31:47 +0200
+Message-ID: <561c2c41-ea92-3ad8-a1d7-aeef46cdc601@linaro.org>
 References: <1529910601-15005-1-git-send-email-stanley.chu@mediatek.com>
-         <1529910601-15005-2-git-send-email-stanley.chu@mediatek.com>
-         <ad38a952-4400-984a-a7fd-aa4e6af13c13@linaro.org>
+ <dd36b094-b11c-e6ef-a0fc-b039785e74f2@linaro.org>
+ <1529917631.17448.22.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <ad38a952-4400-984a-a7fd-aa4e6af13c13@linaro.org>
+In-Reply-To: <1529917631.17448.22.camel@mtkswgap22>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
+To: Stanley Chu <stanley.chu@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-06-25 at 23:53 +0200, Daniel Lezcano wrote:
-> On 25/06/2018 09:10, Stanley Chu wrote:
-> > Add binding documentation for the System Timer driver of
-> > the Mediatek SoCs.
-> > 
-> > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> > ---
-> >  .../bindings/timer/mediatek,mtk-systimer.txt       |   18 ++++++++++++++++++
-> >  1 file changed, 18 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
-> > new file mode 100644
-> > index 0000000..735a6fd
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
-> > @@ -0,0 +1,18 @@
-> > +Mediatek System Timers
-> > +----------------------
-> > +
-> > +Required properties:
-> > +- compatible: should contain
-> > +	"mediatek,sys_timer" for those platforms which support system timer.
-> > +- reg: Mandatory. The location and length for system timer registers.
-> > +- clock-frequency: Optional. If not assigned specifically, default
-> > +	value 13000000 (means 13 MHz) would be applied.
+On 25/06/2018 11:07, Stanley Chu wrote:
+> On Mon, 2018-06-25 at 09:34 +0200, Daniel Lezcano wrote:
+>> On 25/06/2018 09:09, Stanley Chu wrote:
+>>> This patch adds a new driver for system timer on the Mediatek SoCs.
+>>
+>> Please elaborate why we need yet another timer.
+>>
+>> Is this timer present on all Mediatek platform ? Does it always co-exist
+>> with the existing one ?
+>>
+>>
+>>
+>>
+> Hi Daniel,
 > 
-> The driver tells there is an error if it is not defined, so it can't be
-> optional.
+> This new "system timer" only exists on recent Mediatek platforms,
+> for example, MT6765. We will upstream driver first, and then update
+> device tree on MT6765 later.
 > 
-> > +Examples:
-> > +
-> > +	sys_timer@10017000 {
-> > +		compatible = "mediatek,sys_timer";
-> > +		reg = <0 0x10017000 0 0x1000>;
-> > +		interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_HIGH>;
-> > +		clock-frequency = <13000000>;
+> System timer is designed and optimized as a SoC timer for
+> tick-broadcasting. Besides timer IP has simpler register manipulation
+> and friendly low-power design.
 > 
-> Replace it by a phandle to a 'fixed-clock'.
-> 
-> eg.
-> 
-> clocks = <&myclk>;
-> 
-> 
-> > +	};
-> 
-> myclk: myclk {
-> 	#clock-cells = <0>;
-> 	compatible = "fixed-clock";
->         clock-frequency = <13000000>;
-> };
-> 
-> Thanks
-> 
->   -- DAniel
-> 
-> 
-> 
-> 
-Hi Daniel,
+> There is no plan to remove existed "General Purpose Timer" now.
 
-13 MHz clock is necessary. We will fix it in v2 by using system's
-fixed-clock.
+It is unclear what "General Purpose Timer" and "System Timer" differ
+except they are different timers running on different platforms.
 
-Thanks.
-Stanley Chu
+Merge them into a single timer-mediatek.c file.
+
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
