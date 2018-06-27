@@ -1,85 +1,78 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v4 2/7] serdev: add dev_pm_domain_attach|detach()
-Date: Wed, 27 Jun 2018 10:00:08 +0200
-Message-ID: <CAPDyKFp4kESPH4hcqgATYWBt3Kz3FhAOCpnrCc5PRSkMkBikEg@mail.gmail.com>
-References: <cover.1530004712.git.sean.wang@mediatek.com> <ed497b2a9751df3b2f84cc9db6d6834816a6027f.1530004712.git.sean.wang@mediatek.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: Add mtk-systimer bindings
+Date: Wed, 27 Jun 2018 10:20:38 +0200
+Message-ID: <32d0da38-f014-c2c0-70ff-11cdf9ed0569@linaro.org>
+References: <1530086039-3763-1-git-send-email-stanley.chu@mediatek.com>
+ <1530086039-3763-2-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <ed497b2a9751df3b2f84cc9db6d6834816a6027f.1530004712.git.sean.wang@mediatek.com>
+In-Reply-To: <1530086039-3763-2-git-send-email-stanley.chu@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Rob Herring <robh@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, linux-serial@vger.kernel.org
+To: Stanley Chu <stanley.chu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 27 June 2018 at 07:43,  <sean.wang@mediatek.com> wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
->
-> In order to open up the required power gate before any operation can be
-> effectively performed over the serial bus between CPU and serdev, it's
-> clearly essential to add common attach functions for PM domains to serdev
-> at the probe phase.
->
-> Similarly, the relevant dettach function for the PM domains should be
-> properly and reversely added at the remove phase.
->
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Cc: Rob Herring <robh@kernel.org>
-> Cc: Ulf Hansson <ulf.hansson@linaro.org>
-> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> Cc: Jiri Slaby <jslaby@suse.com>
-> Cc: linux-serial@vger.kernel.org
-
-Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
-
-Kind regards
-Uffe
-
+On 27/06/2018 09:53, Stanley Chu wrote:
+> Add binding documentation for the System Timer driver of
+> the Mediatek SoCs.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 > ---
->  drivers/tty/serdev/core.c | 15 ++++++++++++++-
->  1 file changed, 14 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/tty/serdev/core.c b/drivers/tty/serdev/core.c
-> index df93b72..8096138 100644
-> --- a/drivers/tty/serdev/core.c
-> +++ b/drivers/tty/serdev/core.c
-> @@ -13,6 +13,7 @@
->  #include <linux/module.h>
->  #include <linux/of.h>
->  #include <linux/of_device.h>
-> +#include <linux/pm_domain.h>
->  #include <linux/serdev.h>
->  #include <linux/slab.h>
->
-> @@ -330,8 +331,17 @@ EXPORT_SYMBOL_GPL(serdev_device_set_tiocm);
->  static int serdev_drv_probe(struct device *dev)
->  {
->         const struct serdev_device_driver *sdrv = to_serdev_device_driver(dev->driver);
-> +       int ret;
->
-> -       return sdrv->probe(to_serdev_device(dev));
-> +       ret = dev_pm_domain_attach(dev, true);
-> +       if (ret)
-> +               return ret;
+
+
+>  .../bindings/timer/mediatek,mtk-systimer.txt       |   18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
+> new file mode 100644
+> index 0000000..7a5bde6
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
+> @@ -0,0 +1,18 @@
+> +Mediatek System Timers
+> +----------------------
 > +
-> +       ret = sdrv->probe(to_serdev_device(dev));
-> +       if (ret)
-> +               dev_pm_domain_detach(dev, true);
+> +Required properties:
+> +- compatible: Should contain
+> +	"mediatek,sys_timer" for those platforms which support system timer.
+> +- reg: Should contain the location and length for system timer registers.
+> +- clocks: System timer is drived by system clock.
 > +
-> +       return ret;
->  }
->
->  static int serdev_drv_remove(struct device *dev)
-> @@ -339,6 +349,9 @@ static int serdev_drv_remove(struct device *dev)
->         const struct serdev_device_driver *sdrv = to_serdev_device_driver(dev->driver);
->         if (sdrv->remove)
->                 sdrv->remove(to_serdev_device(dev));
+> +Examples:
 > +
-> +       dev_pm_domain_detach(dev, true);
+> +	sys_timer@10017000 {
+> +		compatible = "mediatek,sys_timer";
+> +		reg = <0 0x10017000 0 0x1000>;
+> +		interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&sys_clk>;
+> +	};
 > +
->         return 0;
->  }
->
-> --
-> 2.7.4
->
+
+Actually this binding already exists for mediatek timers, it is useless
+to add a new one.
+
+I note the binding in
+
+Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+
+contains:
+
+ clocks = <&system_clk>, <&rtc_clk>
+
+However the existing driver does only use <&system_clk> AFAICT, I'm
+questioning if <&rtc_clk> is really needed.
+
+So, I suggest you sort out and fixup the rtc_clk thing (drop it) and
+then just add your new platform in the list in this binding.
+
+
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
