@@ -1,58 +1,85 @@
-From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 1/2] dt-bindings: Add mtk-systimer bindings
-Date: Wed, 27 Jun 2018 15:53:58 +0800
-Message-ID: <1530086039-3763-2-git-send-email-stanley.chu@mediatek.com>
-References: <1530086039-3763-1-git-send-email-stanley.chu@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v4 2/7] serdev: add dev_pm_domain_attach|detach()
+Date: Wed, 27 Jun 2018 10:00:08 +0200
+Message-ID: <CAPDyKFp4kESPH4hcqgATYWBt3Kz3FhAOCpnrCc5PRSkMkBikEg@mail.gmail.com>
+References: <cover.1530004712.git.sean.wang@mediatek.com> <ed497b2a9751df3b2f84cc9db6d6834816a6027f.1530004712.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1530086039-3763-1-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <ed497b2a9751df3b2f84cc9db6d6834816a6027f.1530004712.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Rob Herring <robh@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, linux-serial@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add binding documentation for the System Timer driver of
-the Mediatek SoCs.
+On 27 June 2018 at 07:43,  <sean.wang@mediatek.com> wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+>
+> In order to open up the required power gate before any operation can be
+> effectively performed over the serial bus between CPU and serdev, it's
+> clearly essential to add common attach functions for PM domains to serdev
+> at the probe phase.
+>
+> Similarly, the relevant dettach function for the PM domains should be
+> properly and reversely added at the remove phase.
+>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Cc: Rob Herring <robh@kernel.org>
+> Cc: Ulf Hansson <ulf.hansson@linaro.org>
+> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Cc: Jiri Slaby <jslaby@suse.com>
+> Cc: linux-serial@vger.kernel.org
 
-Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- .../bindings/timer/mediatek,mtk-systimer.txt       |   18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
+Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
 
-diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
-new file mode 100644
-index 0000000..7a5bde6
---- /dev/null
-+++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
-@@ -0,0 +1,18 @@
-+Mediatek System Timers
-+----------------------
-+
-+Required properties:
-+- compatible: Should contain
-+	"mediatek,sys_timer" for those platforms which support system timer.
-+- reg: Should contain the location and length for system timer registers.
-+- clocks: System timer is drived by system clock.
-+
-+Examples:
-+
-+	sys_timer@10017000 {
-+		compatible = "mediatek,sys_timer";
-+		reg = <0 0x10017000 0 0x1000>;
-+		interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&sys_clk>;
-+	};
-+
--- 
-1.7.9.5
+Kind regards
+Uffe
+
+> ---
+>  drivers/tty/serdev/core.c | 15 ++++++++++++++-
+>  1 file changed, 14 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/tty/serdev/core.c b/drivers/tty/serdev/core.c
+> index df93b72..8096138 100644
+> --- a/drivers/tty/serdev/core.c
+> +++ b/drivers/tty/serdev/core.c
+> @@ -13,6 +13,7 @@
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+>  #include <linux/of_device.h>
+> +#include <linux/pm_domain.h>
+>  #include <linux/serdev.h>
+>  #include <linux/slab.h>
+>
+> @@ -330,8 +331,17 @@ EXPORT_SYMBOL_GPL(serdev_device_set_tiocm);
+>  static int serdev_drv_probe(struct device *dev)
+>  {
+>         const struct serdev_device_driver *sdrv = to_serdev_device_driver(dev->driver);
+> +       int ret;
+>
+> -       return sdrv->probe(to_serdev_device(dev));
+> +       ret = dev_pm_domain_attach(dev, true);
+> +       if (ret)
+> +               return ret;
+> +
+> +       ret = sdrv->probe(to_serdev_device(dev));
+> +       if (ret)
+> +               dev_pm_domain_detach(dev, true);
+> +
+> +       return ret;
+>  }
+>
+>  static int serdev_drv_remove(struct device *dev)
+> @@ -339,6 +349,9 @@ static int serdev_drv_remove(struct device *dev)
+>         const struct serdev_device_driver *sdrv = to_serdev_device_driver(dev->driver);
+>         if (sdrv->remove)
+>                 sdrv->remove(to_serdev_device(dev));
+> +
+> +       dev_pm_domain_detach(dev, true);
+> +
+>         return 0;
+>  }
+>
+> --
+> 2.7.4
+>
