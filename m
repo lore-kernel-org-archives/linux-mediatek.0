@@ -1,78 +1,77 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH v2 1/2] dt-bindings: Add mtk-systimer bindings
-Date: Wed, 27 Jun 2018 10:20:38 +0200
-Message-ID: <32d0da38-f014-c2c0-70ff-11cdf9ed0569@linaro.org>
-References: <1530086039-3763-1-git-send-email-stanley.chu@mediatek.com>
- <1530086039-3763-2-git-send-email-stanley.chu@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v2 1/6] dt-bindings: gpu: mali-utgard: add
+ mediatek,mt7623-mali compatible
+Date: Wed, 27 Jun 2018 16:52:45 +0800
+Message-ID: <1530089565.29697.35.camel@mtkswgap22>
+References: <cover.1524816502.git.sean.wang@mediatek.com>
+         <7ab060c2e9ef2b220fc62913b8936b706dfaf202.1524816502.git.sean.wang@mediatek.com>
+         <3bd6e509-f99a-1f2d-1b66-65c414bacdbd@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1530086039-3763-2-git-send-email-stanley.chu@mediatek.com>
-Content-Language: en-US
+In-Reply-To: <3bd6e509-f99a-1f2d-1b66-65c414bacdbd@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stanley Chu <stanley.chu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: sboyd@codeaurora.org, mturquette@baylibre.com, robh+dt@kernel.org, mark.rutland@arm.com, p.zabel@pengutronix.de, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 27/06/2018 09:53, Stanley Chu wrote:
-> Add binding documentation for the System Timer driver of
-> the Mediatek SoCs.
+On Mon, 2018-06-25 at 17:14 +0200, Matthias Brugger wrote:
 > 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
-
-
->  .../bindings/timer/mediatek,mtk-systimer.txt       |   18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
+> On 27/04/18 10:14, sean.wang@mediatek.com wrote:
+> > From: Sean Wang <sean.wang@mediatek.com>
+> > 
+> > The MediaTek MT7623 SoC contains a Mali-450, so add a compatible for it
+> > and define its own vendor-specific properties.
+> > 
+> > Reviewed-by: Rob Herring <robh@kernel.org>
+> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > ---
 > 
-> diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
-> new file mode 100644
-> index 0000000..7a5bde6
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-systimer.txt
-> @@ -0,0 +1,18 @@
-> +Mediatek System Timers
-> +----------------------
-> +
-> +Required properties:
-> +- compatible: Should contain
-> +	"mediatek,sys_timer" for those platforms which support system timer.
-> +- reg: Should contain the location and length for system timer registers.
-> +- clocks: System timer is drived by system clock.
-> +
-> +Examples:
-> +
-> +	sys_timer@10017000 {
-> +		compatible = "mediatek,sys_timer";
-> +		reg = <0 0x10017000 0 0x1000>;
-> +		interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&sys_clk>;
-> +	};
-> +
+> Hi Rob,
+> 
+> Any comments regarding this patch?
+> 
+> Regards,
+> Matthias
+> 
 
-Actually this binding already exists for mediatek timers, it is useless
-to add a new one.
+Hi, Matthias
 
-I note the binding in
+I've already got a Reviewed-by tag from Rob.
 
-Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+Is it possible that this patch go through your tree ?
 
-contains:
+	Sean
 
- clocks = <&system_clk>, <&rtc_clk>
-
-However the existing driver does only use <&system_clk> AFAICT, I'm
-questioning if <&rtc_clk> is really needed.
-
-So, I suggest you sort out and fixup the rtc_clk thing (drop it) and
-then just add your new platform in the list in this binding.
-
-
--- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+> >  Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt | 9 +++++++++
+> >  1 file changed, 9 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
+> > index 99d1c0a..656068f 100644
+> > --- a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
+> > +++ b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
+> > @@ -19,6 +19,7 @@ Required properties:
+> >        + rockchip,rk3228-mali
+> >        + rockchip,rk3328-mali
+> >        + stericsson,db8500-mali
+> > +      + mediatek,mt7623-mali
+> >  
+> >    - reg: Physical base address and length of the GPU registers
+> >  
+> > @@ -89,6 +90,14 @@ to specify one more vendor-specific compatible, among:
+> >        * interrupt-names and interrupts:
+> >          + combined: combined interrupt of all of the above lines
+> >  
+> > +  - mediatek,mt7623-mali
+> > +     Required properties:
+> > +      * resets: phandle to the reset line for the GPU
+> > +      * mediatek,larb: phandle pointed to the local arbiter used to control the
+> > +	access to external memory on the SoC.
+> > +	see Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+> > +	for details
+> > +
+> >  Example:
+> >  
+> >  mali: gpu@1c40000 {
+> > 
