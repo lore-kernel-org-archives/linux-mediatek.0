@@ -1,198 +1,72 @@
-From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v4 5/7] Bluetooth: Extend btuart driver for join more vendor
- devices
-Date: Wed, 27 Jun 2018 13:43:23 +0800
-Message-ID: <c03a3c1c35082c71418da00defe2cd8498bff3c2.1530004712.git.sean.wang@mediatek.com>
-References: <cover.1530004712.git.sean.wang@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [dts] [v2] fix green/blue pio-led on bananapi-r2
+Date: Wed, 27 Jun 2018 13:54:18 +0800
+Message-ID: <1530078858.29697.32.camel@mtkswgap22>
+References: <trinity-ae29ad25-a4fb-47f3-8d68-f6e58c875a0e-1529682447976@3c-app-gmx-bs42>
+ <trinity-0d48bc23-f754-4da3-af01-c3a7abe1d34b-1529682783853@3c-app-gmx-bs42>
+ <1529918263.29697.31.camel@mtkswgap22>
+ <trinity-28694d63-092a-48be-aade-ba680b5c4e70-1529921159405@3c-app-gmx-bs16>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <cover.1530004712.git.sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, marcel-kz+m5ild9QBg9hUCZPvPmw@public.gmane.org, johan.hedberg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-bluetooth-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <trinity-28694d63-092a-48be-aade-ba680b5c4e70-1529921159405@3c-app-gmx-bs16>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Mon, 2018-06-25 at 12:05 +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> Date: Mon, 25 Jun 2018 11:57:13 +0200
+> Subject: [PATCH] [dts] [v2] fix green/blue pio-led
+>  pio-leds (near GPIO-Header) are swapped and LOW-active 
+>  patch restore this expected behaviour
+>  red cannot be switched afaik
+> 
+> v2: alphabetic order
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+> index 531d905d924ff..2b760f90f38c8 100644
+> --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+> @@ -91,19 +91,19 @@
+>  
+>  		blue {
+>  			label = "bpi-r2:pio:blue";
+> -			gpios = <&pio 241 GPIO_ACTIVE_HIGH>;
+> +			gpios = <&pio 240 GPIO_ACTIVE_LOW>;
+>  			default-state = "off";
+>  		};
+>  
+>  		green {
+>  			label = "bpi-r2:pio:green";
+> -			gpios = <&pio 240 GPIO_ACTIVE_HIGH>;
+> +			gpios = <&pio 241 GPIO_ACTIVE_LOW>;
+>  			default-state = "off";
+>  		};
+>  
+>  		red {
+>  			label = "bpi-r2:pio:red";
+> -			gpios = <&pio 239 GPIO_ACTIVE_HIGH>;
+> +			gpios = <&pio 239 GPIO_ACTIVE_LOW>;
+>  			default-state = "off";
+>  		};
+>  	};
+> 
+>  
 
-Adding an independent btuart.h header allows these essential definitions
-can be reused in vendor driver. Also, struct btuart_vnd is extended with
-additional callbacks such as .init initializing vendor data, .shtudown,
-.recv and .send supporting SoC specific framing for that btuart can
-simply adapt to various Bluetooth uart-based devices.
-
-Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/bluetooth/btuart.c | 73 ++++++++++++++++++++++++----------------------
- drivers/bluetooth/btuart.h | 30 +++++++++++++++++++
- 2 files changed, 68 insertions(+), 35 deletions(-)
- create mode 100644 drivers/bluetooth/btuart.h
-
-diff --git a/drivers/bluetooth/btuart.c b/drivers/bluetooth/btuart.c
-index 03e980f..ab7f836 100644
---- a/drivers/bluetooth/btuart.c
-+++ b/drivers/bluetooth/btuart.c
-@@ -33,35 +33,11 @@
- #include <net/bluetooth/hci_core.h>
- 
- #include "h4_recv.h"
-+#include "btuart.h"
- #include "btbcm.h"
- 
- #define VERSION "1.0"
- 
--struct btuart_vnd {
--	const struct h4_recv_pkt *recv_pkts;
--	int recv_pkts_cnt;
--	unsigned int manufacturer;
--	int (*open)(struct hci_dev *hdev);
--	int (*close)(struct hci_dev *hdev);
--	int (*setup)(struct hci_dev *hdev);
--};
--
--struct btuart_dev {
--	struct hci_dev *hdev;
--	struct serdev_device *serdev;
--
--	struct work_struct tx_work;
--	unsigned long tx_state;
--	struct sk_buff_head txq;
--
--	struct sk_buff *rx_skb;
--
--	const struct btuart_vnd *vnd;
--};
--
--#define BTUART_TX_STATE_ACTIVE	1
--#define BTUART_TX_STATE_WAKEUP	2
--
- static void btuart_tx_work(struct work_struct *work)
- {
- 	struct btuart_dev *bdev = container_of(work, struct btuart_dev,
-@@ -187,13 +163,27 @@ static int btuart_setup(struct hci_dev *hdev)
- 	return 0;
- }
- 
-+static int btuart_shutdown(struct hci_dev *hdev)
-+{
-+	struct btuart_dev *bdev = hci_get_drvdata(hdev);
-+
-+	if (bdev->vnd->shutdown)
-+		return bdev->vnd->shutdown(hdev);
-+
-+	return 0;
-+}
-+
- static int btuart_send_frame(struct hci_dev *hdev, struct sk_buff *skb)
- {
- 	struct btuart_dev *bdev = hci_get_drvdata(hdev);
- 
--	/* Prepend skb with frame type */
--	memcpy(skb_push(skb, 1), &hci_skb_pkt_type(skb), 1);
--	skb_queue_tail(&bdev->txq, skb);
-+	if (bdev->vnd->send) {
-+		bdev->vnd->send(hdev, skb);
-+	} else {
-+		/* Prepend skb with frame type */
-+		memcpy(skb_push(skb, 1), &hci_skb_pkt_type(skb), 1);
-+		skb_queue_tail(&bdev->txq, skb);
-+	}
- 
- 	btuart_tx_wakeup(bdev);
- 	return 0;
-@@ -204,14 +194,23 @@ static int btuart_receive_buf(struct serdev_device *serdev, const u8 *data,
- {
- 	struct btuart_dev *bdev = serdev_device_get_drvdata(serdev);
- 	const struct btuart_vnd *vnd = bdev->vnd;
-+	int err;
- 
--	bdev->rx_skb = h4_recv_buf(bdev->hdev, bdev->rx_skb, data, count,
--				   vnd->recv_pkts, vnd->recv_pkts_cnt);
--	if (IS_ERR(bdev->rx_skb)) {
--		int err = PTR_ERR(bdev->rx_skb);
--		bt_dev_err(bdev->hdev, "Frame reassembly failed (%d)", err);
--		bdev->rx_skb = NULL;
--		return err;
-+	if (bdev->vnd->recv) {
-+		err = bdev->vnd->recv(bdev->hdev, data, count);
-+		if (err < 0)
-+			return err;
-+	} else {
-+		bdev->rx_skb = h4_recv_buf(bdev->hdev, bdev->rx_skb,
-+					   data, count, vnd->recv_pkts,
-+					   vnd->recv_pkts_cnt);
-+		if (IS_ERR(bdev->rx_skb)) {
-+			err = PTR_ERR(bdev->rx_skb);
-+			bt_dev_err(bdev->hdev,
-+				   "Frame reassembly failed (%d)", err);
-+			bdev->rx_skb = NULL;
-+			return err;
-+		}
- 	}
- 
- 	bdev->hdev->stat.byte_rx += count;
-@@ -429,6 +428,9 @@ static int btuart_probe(struct serdev_device *serdev)
- 	if (!bdev->vnd)
- 		bdev->vnd = &default_vnd;
- 
-+	if (bdev->vnd->init)
-+		bdev->data = bdev->vnd->init(&serdev->dev);
-+
- 	bdev->serdev = serdev;
- 	serdev_device_set_drvdata(serdev, bdev);
- 
-@@ -460,6 +462,7 @@ static int btuart_probe(struct serdev_device *serdev)
- 	hdev->close = btuart_close;
- 	hdev->flush = btuart_flush;
- 	hdev->setup = btuart_setup;
-+	hdev->shutdown = btuart_shutdown;
- 	hdev->send  = btuart_send_frame;
- 	SET_HCIDEV_DEV(hdev, &serdev->dev);
- 
-diff --git a/drivers/bluetooth/btuart.h b/drivers/bluetooth/btuart.h
-new file mode 100644
-index 0000000..6c1fe31
---- /dev/null
-+++ b/drivers/bluetooth/btuart.h
-@@ -0,0 +1,30 @@
-+struct btuart_vnd {
-+	const struct h4_recv_pkt *recv_pkts;
-+	int recv_pkts_cnt;
-+	unsigned int manufacturer;
-+	void *(*init)(struct device *dev);
-+
-+	int (*open)(struct hci_dev *hdev);
-+	int (*close)(struct hci_dev *hdev);
-+	int (*setup)(struct hci_dev *hdev);
-+	int (*shutdown)(struct hci_dev *hdev);
-+	int (*send)(struct hci_dev *hdev, struct sk_buff *skb);
-+	int (*recv)(struct hci_dev *hdev, const u8 *data, size_t count);
-+};
-+
-+struct btuart_dev {
-+	struct hci_dev *hdev;
-+	struct serdev_device *serdev;
-+
-+	struct work_struct tx_work;
-+	unsigned long tx_state;
-+	struct sk_buff_head txq;
-+
-+	struct sk_buff *rx_skb;
-+
-+	const struct btuart_vnd *vnd;
-+	void *data;
-+};
-+
-+#define BTUART_TX_STATE_ACTIVE	1
-+#define BTUART_TX_STATE_WAKEUP	2
--- 
-2.7.4
+Reviewed-by: Sean Wang <sean.wang@mediatek.com>
