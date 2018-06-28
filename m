@@ -1,15 +1,15 @@
 From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH v3 4/5] clocksource/drivers/timer-mediatek: Convert the
- driver to timer-of
-Date: Thu, 28 Jun 2018 16:03:18 +0200
-Message-ID: <5cdfbfdf-4d6e-de18-0f20-2f3b50129b87@linaro.org>
+Subject: Re: [PATCH v3 1/5] clocksource/drivers/timer-mediatek: Add system
+ timer bindings
+Date: Thu, 28 Jun 2018 16:08:12 +0200
+Message-ID: <93345c88-f880-5e2e-ae36-cf1b57df9bba@linaro.org>
 References: <1530182744-10731-1-git-send-email-stanley.chu@mediatek.com>
- <1530182744-10731-5-git-send-email-stanley.chu@mediatek.com>
+ <1530182744-10731-2-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1530182744-10731-5-git-send-email-stanley.chu@mediatek.com>
+In-Reply-To: <1530182744-10731-2-git-send-email-stanley.chu@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
 To: Stanley Chu <stanley.chu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>
@@ -17,58 +17,76 @@ Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree
 List-Id: linux-mediatek@lists.infradead.org
 
 On 28/06/2018 12:45, Stanley Chu wrote:
-> Convert the driver to use the timer_of helpers.
-> This allows to remove custom proprietary structure,
-> factors out and simplifies the code.
+> This patch fixes bindings of existed "General Purpose Timer",
+> and then add bindings of new "System Timer" on Mediatek SoCs.
 > 
 > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 > ---
->  drivers/clocksource/timer-mediatek.c |  222 ++++++++++++++++------------------
->  1 file changed, 104 insertions(+), 118 deletions(-)
+>  .../bindings/timer/mediatek,mtk-timer.txt          |   38 ++++++++++++++++----
+>  1 file changed, 32 insertions(+), 6 deletions(-)
 > 
-> diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
-> index ff284f2..d94d8e1 100644
-> --- a/drivers/clocksource/timer-mediatek.c
-> +++ b/drivers/clocksource/timer-mediatek.c
-> @@ -18,16 +18,13 @@
+> diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+> index b1fe7e9..d42247b 100644
+> --- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+> +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+> @@ -1,5 +1,14 @@
+> -Mediatek MT6577, MT6572 and MT6589 Timers
+> ----------------------------------------
+> +Mediatek Timers
+> +---------------
+> +
+> +Mediatek SoCs have two different timers on different platforms,
+> +- GPT (General Purpose Timer)
+> +- SYST (System Timer)
+> +
+> +Please bind correct timers in each platforms.
+> +
+> +
+> +** General Purpose Timer (GPT)
 >  
->  #define pr_fmt(fmt)	KBUILD_MODNAME ": " fmt
+>  Required properties:
+>  - compatible should contain:
+> @@ -11,9 +20,8 @@ Required properties:
+>  	* "mediatek,mt8135-timer" for MT8135 compatible timers
+>  	* "mediatek,mt8173-timer" for MT8173 compatible timers
+>  	* "mediatek,mt6577-timer" for MT6577 and all above compatible timers
+> -- reg: Should contain location and length for timers register.
+> -- clocks: Clocks driving the timer hardware. This list should include two
+> -	clocks. The order is system clock and as second clock the RTC clock.
+> +- reg: Should contain location and length for GPT register.
+> +- clocks: GPT is drived by system clock.
 >  
-> -#include <linux/clk.h>
->  #include <linux/clockchips.h>
-> +#include <linux/clocksource.h>
->  #include <linux/interrupt.h>
-> -#include <linux/irq.h>
->  #include <linux/irqreturn.h>
-> -#include <linux/of.h>
-> -#include <linux/of_address.h>
-> -#include <linux/of_irq.h>
->  #include <linux/sched_clock.h>
->  #include <linux/slab.h>
-> +#include "timer-of.h"
+>  Examples:
 >  
->  #define GPT_IRQ_EN_REG		0x00
->  #define GPT_IRQ_ENABLE(val)	BIT((val) - 1)
-> @@ -56,49 +53,57 @@
->  #define GPT_CLK_EVT	1
->  #define GPT_CLK_SRC	2
->  
-> -struct mtk_clock_event_device {
-> -	void __iomem *gpt_base;
-> -	u32 ticks_per_jiffy;
-> -	struct clock_event_device dev;
-> +struct mtk_timer_private {
-> +	unsigned long ticks_per_jiffy;
->  };
+> @@ -21,5 +29,23 @@ Examples:
+>  		compatible = "mediatek,mt6577-timer";
+>  		reg = <0x10008000 0x80>;
+>  		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>;
+> -		clocks = <&system_clk>, <&rtc_clk>;
+> +		clocks = <&system_clk>;
+> +	};
+> +
+> +
+> +** System Timer (SYST)
+> +
+> +Required properties:
+> +- compatible: Should contain
+> +	* "mediatek,mt6765-systimer" for MT6765 compatible timers
+> +- reg: Should contain the location and length for system timer registers.
+> +- clocks: System timer is drived by system clock.
+> +
+> +Examples:
+> +
+> +	systimer@10017000 {
+> +		compatible = "mediatek,mt6765-systimer";
 
-This private structure is not needed. There is timer_of_clk->period
+why not "mediatek,mt6765-timer" ? for consistency.
 
-cf.
-
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/clocksource/timer-of.c#n144
-
-
-
+> +		reg = <0 0x10017000 0 0x1000>;
+> +		interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&system_clk>;
+>  	};
+> 
 
 
 -- 
