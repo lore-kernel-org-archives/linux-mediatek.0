@@ -1,91 +1,194 @@
-From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [ANN] mt76x0 usb driver
-Date: Thu, 28 Jun 2018 19:26:48 +0200
-Message-ID: <CAJ0CqmXE7hF8UAe2iAZ7GhYWb7Uf3zJ+Fg_ervfyK1ojS1Oh=w@mail.gmail.com>
-References: <20180409141032.GA9247@redhat.com> <20180409142640.GA5680@localhost.localdomain>
- <20180409144819.GA9253@redhat.com> <20180625120816.GA2072@redhat.com>
- <CAA2SeNJjHCrO5NyznK+EJt5K6SRVRr_FPZA2i53Z-FnqzkKz_g@mail.gmail.com> <20180625135419.GA3282@redhat.com>
+From: houlong wei <houlong.wei@mediatek.com>
+Subject: Re: [PATCH v22 4/4] soc: mediatek: Add Mediatek CMDQ helper
+Date: Fri, 29 Jun 2018 07:32:19 +0800
+Message-ID: <1530228739.21991.14.camel@mhfsdcap03>
+References: <1530098172-31385-1-git-send-email-houlong.wei@mediatek.com>
+         <1530098172-31385-5-git-send-email-houlong.wei@mediatek.com>
+         <1530182516.8518.11.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180625135419.GA3282-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, =?UTF-8?Q?Jakub_Kici=C5=84ski?= <moorray3-5tc4TXWwyLM@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1530182516.8518.11.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, Bibby Hsieh =?UTF-8?Q?=28=E8=AC=9D=E6=BF=9F=E9=81=A0=29?= <Bibby.Hsieh@mediatek.com>, YT
 List-Id: linux-mediatek@lists.infradead.org
 
->
-> On Mon, Jun 25, 2018 at 02:55:51PM +0200, Lorenzo Bianconi wrote:
-> > >
-> > > Hi all,
-> >
-> > Hi Stanislaw,
-> >
-> > >
-> > > On Mon, Apr 09, 2018 at 04:48:19PM +0200, Stanislaw Gruszka wrote:
-> > > > On Mon, Apr 09, 2018 at 04:26:42PM +0200, Lorenzo Bianconi wrote:
-> > > > > > I would like to integrate the driver to kernel via mt76 driver, i.e.
-> > > > > > add USB hooks and mt76x0 mac/phy code to mt76. This will open
-> > > > > > possibility to develop support for mt76x2 USB devices as well as mt76x0
-> > > > > > PCIe devices in mt76.
-> > > > > >
-> > > > >
-> > > > > I have already started supporting mt76x2 USB devices in mt76 since register map
-> > > > > is pretty similar to PCIe devices:
-> > > > > https://github.com/LorenzoBianconi/wireless-drivers-next/tree/mt76x2u
-> > > > > I added some usb utility routines so I think we can integrate mt76x0 in mt76 as
-> > > > > well
-> > > >
-> > > > Great, I'll start to integrate mt76x0 on top of your tree.
-> > >
-> > > So I started to do integration here:
-> > > https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft
-> > >
-> > > However since driver is self containging, I think better would be just
-> > > submit the driver into mt76/mt76x0/ dir upstream and do code merging work as
-> > > follow-up patches posted on the mailing list. Patches then could be reviewed
-> > > on regular basic. This will provide support for new mt76x0 devices in kernel
-> > > quicker. Conflicts with mt76x2u and not yet upstreamed mt7603 could be resolved
-> > > on the fly.
-> >
-> > I did a quick review of the code and it seems (please correct me if I
-> > am wrong) there is
-> > a lot of duplicated code with mt76/mt76x2u and mt7601u drivers (i.e:
-> > mcu/eeprom/mac code
->
-> Yes, however there are some subtle differences too.
->
-> > is quite the same of the ones used in mt76x2u). Moreover mt76/mt76x2u has been
-> > refactored in order to expose usb and mt76x2_common modules where you
-> > can use better
-> > 802.11 aggregation (using mac80211 per-sta queuing) and A-MSDU support (using
-> > tx/rx usb scatter-gather). Moreover mt76x2u has been tested/used by
-> > various users till now.
-> > So since mt76x0 will be deeply modified I guess it would be better to
-> > start integrating the driver with
-> > mt76/mt76x2u before been merged upstream otherwise will end-up with a
-> > lot of integration commits.
->
-> Not sure why many integration commits in upstream is a problem. I think
-> having patches posted on mailing list is better than doing them in my
-> "private" tree without any review.
->
-> > What do you think?
->
-> I was thinking about posting mt76x0 driver in a subdir (there is sill
-> some cleanup work need to be done there), wait for upstream mt76x2u
-> integration, then post patches that remove duplication between mt76x2
-> and mt76x0 and add support for mt76x0e on the way.
->
+On Thu, 2018-06-28 at 18:41 +0800, CK Hu wrote:
+> Hi, Houlong:
+> 
+> Some inline comment.
+> 
+> On Wed, 2018-06-27 at 19:16 +0800, Houlong Wei wrote:
+> > Add Mediatek CMDQ helper to create CMDQ packet and assemble GCE op code.
+> > 
+> > Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
+> > Signed-off-by: HS Liao <hs.liao@mediatek.com>
+> > ---
+> >  drivers/soc/mediatek/Kconfig           |   12 ++
+> >  drivers/soc/mediatek/Makefile          |    1 +
+> >  drivers/soc/mediatek/mtk-cmdq-helper.c |  258 ++++++++++++++++++++++++++++++++
+> >  include/linux/soc/mediatek/mtk-cmdq.h  |  132 ++++++++++++++++
+> >  4 files changed, 403 insertions(+)
+> >  create mode 100644 drivers/soc/mediatek/mtk-cmdq-helper.c
+> >  create mode 100644 include/linux/soc/mediatek/mtk-cmdq.h
+> > 
+> > diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+> > index a7d0667..17bd759 100644
+> > --- a/drivers/soc/mediatek/Kconfig
+> > +++ b/drivers/soc/mediatek/Kconfig
+> > @@ -4,6 +4,18 @@
+> >  menu "MediaTek SoC drivers"
+> >  	depends on ARCH_MEDIATEK || COMPILE_TEST
+> >  
+> 
+> [...]
+> 
+> > +
+> > +int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u32 event)
+> > +{
+> > +	u32 arg_b;
+> > +
+> > +	if (event >= CMDQ_MAX_EVENT || event < 0)
+> 
+> The type of event is 'u32', so checking 'event < 0' is redundant.
 
-Ack, fine. I modified a little bit mt76x2u/usb architecture moving
-some parts in common with mt76x0u
-in mt76-usb module (e.g. mt76_queue management in tx_status data path,
-tx_stats workqueue,
-some mcu utility routines). In this way the integration will be easier I guess
+will fix.
 
-Regards,
-Lorenzo
+> 
+> > +		return -EINVAL;
+> > +
+> > +	/*
+> > +	 * WFE arg_b
+> > +	 * bit 0-11: wait value
+> > +	 * bit 15: 1 - wait, 0 - no wait
+> > +	 * bit 16-27: update value
+> > +	 * bit 31: 1 - update, 0 - no update
+> > +	 */
+> > +	arg_b = CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | CMDQ_WFE_WAIT_VALUE;
+> > +
+> > +	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WFE, event, arg_b);
+> > +}
+> > +EXPORT_SYMBOL(cmdq_pkt_wfe);
+> > +
+> > +int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u32 event)
+> > +{
+> > +	if (event >= CMDQ_MAX_EVENT || event < 0)
+> 
+> The type of event is 'u32', so checking 'event < 0' is redundant.
 
-> Thanks
-> Stanislaw
+Will fix.
+
+> 
+> > +		return -EINVAL;
+> > +
+> > +	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WFE, event,
+> > +				       CMDQ_WFE_UPDATE);
+> > +}
+> > +EXPORT_SYMBOL(cmdq_pkt_clear_event);
+> > +
+> > +static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+> > +{
+> > +	int err;
+> > +
+> > +	if (cmdq_pkt_is_finalized(pkt))
+> > +		return 0;
+> > +
+> > +	/* insert EOC and generate IRQ for each command iteration */
+> > +	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_EOC, 0, CMDQ_EOC_IRQ_EN);
+> > +	if (err < 0)
+> > +		return err;
+> > +
+> > +	/* JUMP to end */
+> > +	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_JUMP, 0, CMDQ_JUMP_PASS);
+> > +	if (err < 0)
+> > +		return err;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +int cmdq_pkt_flush_async(struct cmdq_client *client, struct cmdq_pkt *pkt,
+> > +			 cmdq_async_flush_cb cb, void *data)
+> > +{
+> > +	int err;
+> > +	struct device *dev;
+> > +	dma_addr_t dma_addr;
+> > +
+> > +	err = cmdq_pkt_finalize(pkt);
+> > +	if (err < 0)
+> > +		return err;
+> > +
+> > +	dev = client->chan->mbox->dev;
+> > +	dma_addr = dma_map_single(dev, pkt->va_base, pkt->cmd_buf_size,
+> > +		DMA_TO_DEVICE);
+> 
+> You map here, but I could not find unmap, so the unmap should be done in
+> client driver. I would prefer a symmetric map/unmap which means that
+> both map and unmap are done in client driver. I think you put map here
+> because you should map after finalize. 
+
+The unmap is done before callback to client, in function
+cmdq_task_exec_done, mtk-cmdq-mailbox.c.
+
+> Therefore, export
+> cmdq_pkt_finalize() to client driver and let client do finalize, so
+> there is no finalize in flush function. This method have a benefit that
+> if client reuse command buffer, it need not to map/unmap frequently.
+
+If client reuse command buffer or cmdq_pkt(command queue packet), client
+will add new commands to the cmdq_pkt, so map/unmap are necessary for
+each cmdq_pkt flush.
+
+> 
+> Regards,
+> CK
+> 
+> > +	if (dma_mapping_error(dev, dma_addr)) {
+> > +		dev_err(client->chan->mbox->dev, "dma map failed\n");
+> > +		return -ENOMEM;
+> > +	}
+> > +
+> > +	pkt->pa_base = dma_addr;
+> > +	pkt->cb.cb = cb;
+> > +	pkt->cb.data = data;
+> > +
+> > +	mbox_send_message(client->chan, pkt);
+> > +	/* We can send next packet immediately, so just call txdone. */
+> > +	mbox_client_txdone(client->chan, 0);
+> > +
+> > +	return 0;
+> > +}
+> > +EXPORT_SYMBOL(cmdq_pkt_flush_async);
+> > +
+> > +struct cmdq_flush_completion {
+> > +	struct completion cmplt;
+> > +	bool err;
+> > +};
+> > +
+> > +static void cmdq_pkt_flush_cb(struct cmdq_cb_data data)
+> > +{
+> > +	struct cmdq_flush_completion *cmplt = data.data;
+> > +
+> > +	cmplt->err = data.err;
+> > +	complete(&cmplt->cmplt);
+> > +}
+> > +
+> > +int cmdq_pkt_flush(struct cmdq_client *client, struct cmdq_pkt *pkt)
+> > +{
+> > +	struct cmdq_flush_completion cmplt;
+> > +	int err;
+> > +
+> > +	init_completion(&cmplt.cmplt);
+> > +	err = cmdq_pkt_flush_async(client, pkt, cmdq_pkt_flush_cb, &cmplt);
+> > +	if (err < 0)
+> > +		return err;
+> > +	wait_for_completion(&cmplt.cmplt);
+> > +
+> > +	return cmplt.err ? -EFAULT : 0;
+> > +}
+> > +EXPORT_SYMBOL(cmdq_pkt_flush);
+> 
+> [...]
+> 
+> 
