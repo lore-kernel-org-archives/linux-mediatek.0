@@ -1,137 +1,99 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v21 4/4] soc: mediatek: Add Mediatek CMDQ helper
-Date: Thu, 28 Jun 2018 09:07:08 +0800
-Message-ID: <1530148028.6193.9.camel@mtksdaap41>
-References: <1517383693-25591-1-git-send-email-houlong.wei@mediatek.com>
-         <1517383693-25591-5-git-send-email-houlong.wei@mediatek.com>
-         <1519200345.8716.68.camel@mtksdaap41> <1530099833.31725.7.camel@mhfsdcap03>
+From: Honghui Zhang <honghui.zhang@mediatek.com>
+Subject: Re: [PATCH 1/4] PCI: mediatek: fixup mtk_pcie_find_port logical
+Date: Thu, 28 Jun 2018 09:12:07 +0800
+Message-ID: <1530148327.28284.1.camel@mhfsdcap03>
+References: <1530091298-28120-1-git-send-email-honghui.zhang@mediatek.com>
+         <1530091298-28120-2-git-send-email-honghui.zhang@mediatek.com>
+         <CAHp75Ve2N_Bt8FvX8xCx3JtQ+ozZE=isfsKp9swY+86Cg-78XQ@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1530099833.31725.7.camel@mhfsdcap03>
+In-Reply-To: <CAHp75Ve2N_Bt8FvX8xCx3JtQ+ozZE=isfsKp9swY+86Cg-78XQ@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: houlong wei <houlong.wei@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, Cawa Cheng =?UTF-8?Q?=28=E9=84=AD=E6=9B=84=E7=A6=A7=29?= <cawa.cheng@mediatek.com>, Bibby
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-pci@vger.kernel.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, yingjoe.chen@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, YT Shen <yt.shen@mediatek.com>, sean.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Houlong:
-
-On Wed, 2018-06-27 at 19:43 +0800, houlong wei wrote:
-> On Wed, 2018-02-21 at 16:05 +0800, CK Hu wrote:
-> > Hi, Houlong:
-> > 
-> > I've one more inline comment.
-> > 
-> > On Wed, 2018-01-31 at 15:28 +0800, houlong.wei@mediatek.com wrote:
-> > > From: "hs.liao@mediatek.com" <hs.liao@mediatek.com>
-> > > 
-> > > Add Mediatek CMDQ helper to create CMDQ packet and assemble GCE op code.
-> > > 
-> > > Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
-> > > Signed-off-by: HS Liao <hs.liao@mediatek.com>
-> > > ---
-> > >  drivers/soc/mediatek/Kconfig           |   12 ++
-> > >  drivers/soc/mediatek/Makefile          |    1 +
-> > >  drivers/soc/mediatek/mtk-cmdq-helper.c |  322 ++++++++++++++++++++++++++++++++
-> > >  include/linux/soc/mediatek/mtk-cmdq.h  |  174 +++++++++++++++++
-> > >  4 files changed, 509 insertions(+)
-> > >  create mode 100644 drivers/soc/mediatek/mtk-cmdq-helper.c
-> > >  create mode 100644 include/linux/soc/mediatek/mtk-cmdq.h
-> > > 
-> > > diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-> > > index a7d0667..e66582e 100644
-> > > --- a/drivers/soc/mediatek/Kconfig
-> > > +++ b/drivers/soc/mediatek/Kconfig
-> > > @@ -4,6 +4,18 @@
-> > >  menu "MediaTek SoC drivers"
-> > >  	depends on ARCH_MEDIATEK || COMPILE_TEST
-> > >  
-
-[...]
-
-> > > +
-> > > +static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
-> > > +				   u32 arg_a, u32 arg_b)
-> > > +{
-> > > +	u64 *cmd_ptr;
-> > > +	int err;
-> > > +
-> > > +	if (WARN_ON(cmdq_pkt_is_finalized(pkt)))
-> > > +		return -EBUSY;
-> > > +	if (unlikely(pkt->cmd_buf_size + CMDQ_INST_SIZE > pkt->buf_size)) {
-> > > +		err = cmdq_pkt_realloc_cmd_buffer(pkt, pkt->buf_size << 1);
-> > 
-> > In your design, the command buffer is frequently allocated and freed.
-> > But client may not want this mechanism because it have penalty on CPU
-> > loading and may have risk of allocation failure. The client may
-> > pre-allocate the command buffer and reuse it. So it's better to let
-> > client decide which buffer management it want. That means cmdq helper do
-> > not allocate command buffer and do not reallocate it. The working flow
-> > would be:
-> > 
-> > For client that want to pre-allocate buffer:
-> > (1) Client pre-allocate a command buffer with a pre-calculated size.
-> > (Programmer should make sure that all command would not exceed this
-> > size)
-> > (2) Client use cmdq helper function to generate command in command
-> > buffer. If command buffer is full, helper still increase
-> > pkt->cmd_buf_size but do not write command into command buffer.
-> > (3) When client flush packet, cmdq helper could check whether
-> > pkt->cmd_buf_size is greater than pkt->buf_size, if so, return error and
-> > programmer should modify the pre-calculated size in step (1).
-> > (4) Wait for command done.
-> > (5) Set pkt->cmd_buf_size to zero and directly goto step (2) to reuse
-> > this command buffer.
-> > 
-> > For client that want to dynamically allocate buffer:
-> > (1) Client dynamically allocate a command buffer with a initial size,
-> > for example, 1024 bytes.
-> > (2) Client use cmdq helper function to generate command in command
-> > buffer. If command buffer is full, helper still increase
-> > pkt->cmd_buf_size but do not write command into command buffer.
-> > (3) When client flush packet, cmdq helper could check whether
-> > pkt->cmd_buf_size is greater than pkt->buf_size, if so, return error and
-> > client goto step (1) and reallocate a command buffer with pkt->buf_size.
-> > (4) Wait for command done.
-> > (5) Free the command buffer.
-> > 
-> > Because the reallocation is so complicated, for client that want to
-> > dynamically allocate buffer, the initial buffer size could also be
-> > pre-calculated that you need not to reallocate it. Once the buffer is
-> > full, programmer should also fix the accurate buffer size.
-> > 
-> > Regards,
-> > CK
-> > 
+On Wed, 2018-06-27 at 19:35 +0300, Andy Shevchenko wrote:
+> On Wed, Jun 27, 2018 at 12:21 PM,  <honghui.zhang@mediatek.com> wrote:
+> > From: Honghui Zhang <honghui.zhang@mediatek.com>
+> >
+> > Mediatek's host controller have two slots, each have it's own control
+> > registers. The host driver need to identify which slot was connected
+> > in order to access the device's configuration space. There's problem
+> > for current host driver to find out which slot was connected to for
+> > a given EP device.
+> >
+> > Assuming each slot have connect with one EP device as below:
+> >
+> >                 host bridge
+> >   bus 0 --> __________|_______
+> >            |                  |
+> >            |                  |
+> >          slot 0             slot 1
+> >   bus 1 -->|        bus 2 --> |
+> >            |                  |
+> >          EP 0               EP 1
+> >
+> > While PCI emulation, system software will scan all the PCI device
+> > starting from devfn 0. So it will get the proper port for slot0 and
+> > slot1 device when using PCI_SLOT(devfn) for match. But it will get
+> > the wrong slot for EP1: The devfn will be start from 0 when scanning
+> > EP1 behind slot1, it will get port0 since the PCI_SLOT(EP1) is match
+> > for port0's slot value. So the host driver should not using EP's devfn
+> > but the slot's devfn(the slot which EP was connected to) for match.
+> >
+> > This patch fix the mtk_pcie_find_port's logical by using the slot's
+> > devfn for match.
 > 
-> Hi CK, thanks for your explanation and suggestion. Currently, the cmdq
-> buffer is allocated in cmdq_pkt_create and its initial size is
-> PAGE_SIZE. In most case of display scenario, PAGE_SIZE(4096) bytes are
-> enough.
+> 
+> > +       list_for_each_entry(port, &pcie->ports, list) {
+> > +               if (bus->number == 0 && port->slot == PCI_SLOT(devfn)) {
+> >                         return port;
+> > +               } else if (bus->number != 0) {
+> 
+> You can do it like (no need 'else')
+> 
+> if (...)
+>  return ...;
+> if (bus->number) {
+>  ...
+> }
+> 
+> > +                       pbus = bus;
+> > +                       do {
+> > +                               dev = pbus->self;
+> > +                               if (port->slot == PCI_SLOT(dev->devfn))
+> > +                                       return port;
+> > +
+> > +                               pbus = dev->bus;
+> > +                       } while (dev->bus->number != 0);
+> 
+> This can be rewritten like
+> 
+> pbus = bus;
+> while (pbus->number) {
+>  dev = ...;
+>  ...
+>  pbus = dev->bus;
+> }
+> 
+> and no need for if (bus->number) anymore.
 > 
 
-You use the tern 'most' means you still need to consider the size over
-PAGE_SIZE. If in current application, PAGE_SIZE is enough for display, I
-think you still should remove this reallocation in the first patch
-because you need not to reallocation. Once the display need more than
-PAGE_SIZE, you send the another patch that support client to set the
-initial size. I think we should make the first patch as simple as
-possible, and you could add another patch to improve it.
+Hi, Andy, thanks very much for your advise, I will change it in the next
+version.
 
-Regards,
-CK
-
-> > > +		if (err < 0)
-> > > +			return err;
-> > > +	}
-> > > +	cmd_ptr = pkt->va_base + pkt->cmd_buf_size;
-> > > +	(*cmd_ptr) = (u64)((code << CMDQ_OP_CODE_SHIFT) | arg_a) << 32 | arg_b;
-> > > +	pkt->cmd_buf_size += CMDQ_INST_SIZE;
-> > > +	return 0;
-> > > +}
-> > > +
-
-[...]
+thanks.
+> > +               }
+> > +       }
+> >
+> >         return NULL;
+> >  }
+> > --
+> > 2.6.4
+> >
+> 
 > 
 > 
