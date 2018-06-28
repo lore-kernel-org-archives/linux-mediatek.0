@@ -1,81 +1,62 @@
-From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: Re: [PATCH v7 00/29] Add support for mediatek SOC MT2712
-Date: Thu, 28 Jun 2018 11:45:37 +0800
-Message-ID: <1530157537.11190.53.camel@mtksdccf07>
-References: <1529482771-2153-1-git-send-email-stu.hsieh@mediatek.com>
- <20180625084740.GN2958@phenom.ffwll.local>
+From: Johan Hovold <johan@kernel.org>
+Subject: Re: [PATCH v4 6/7] Bluetooth: mediatek: Add protocol support for
+ MediaTek serial devices
+Date: Thu, 28 Jun 2018 07:19:41 +0200
+Message-ID: <20180628051941.GF629@localhost>
+References: <cover.1530004712.git.sean.wang@mediatek.com>
+ <48215a1276c36af7ad581c3d83759fe9f55e3c4b.1530004712.git.sean.wang@mediatek.com>
+ <CAHp75VehTeyyzR4bPKK3hFDTVqZnhdNy5vcBFJCSH_Zrx+QrKA@mail.gmail.com>
+ <CAHp75VedHLw52J_ymh3iYf2w=r8d+Kqg=fJZmBGnaCrEbNEPdQ@mail.gmail.com>
+ <1530155173.29697.48.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180625084740.GN2958@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1530155173.29697.48.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: Andy Shevchenko <andy.shevchenko@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, Johan Hedberg <johan.hedberg@gmail.com>, Marcel Holtmann <marcel@holtmann.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-bluetooth@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIERhbmllbCBWZXR0ZXI6CgpPbiBNb24sIDIwMTgtMDYtMjUgYXQgMTA6NDcgKzAyMDAsIERh
-bmllbCBWZXR0ZXIgd3JvdGU6Cj4gT24gV2VkLCBKdW4gMjAsIDIwMTggYXQgMDQ6MTk6MDJQTSAr
-MDgwMCwgU3R1IEhzaWVoIHdyb3RlOgo+ID4gVGhpcyBwYXRjaCBhZGQgc3VwcG9ydCBmb3IgdGhl
-IE1lZGlhdGVrIE1UMjcxMiBESVNQIHN1YnN5c3RlbS4KPiA+IE1UMjcxMiBpcyBiYXNlIG9uIE1U
-ODE3MywgdGhlcmUgYXJlIHNvbWUgZGlmZmVyZW5jZSBhcyBmb2xsb3dpbmc6Cj4gPiBNVDI3MTIg
-c3VwcG9ydCB0aHJlZSBkaXNwIG91dHB1dCh0d28gb3ZsIGFuZCBvbmUgcmRtYSkKPiA+IAo+ID4g
-Q2hhbmdlIGluIHY2Ogo+ID4gLSBVcGRhdGUgY29tbWl0IG1lc3NhZ2UgZm9yIHRoZSBwYXRjaAo+
-ID4gICAiZHJtL21lZGlhdGVrOiBVcGRhdGUgdGhlIGRlZmluaXRpb24gb2YgY29ubmVjdGlvbiBm
-cm9tIFJETUExIHRvIERQSTAiCj4gCj4gSnVzdCBhIGRyaXZlLWJ5IGNvbW1lbnQgb24gdGhlIG1l
-ZGlhdGVrIGRyaXZlcjoKPiAKPiBBcyBmYXIgYXMgSSBjYW4gc2VlIG10a19kcm1fZ2VtLmMgcmVp
-bXBsZW1lbnRzIHRoZSBjbWEgaGVscGVycyBhcyBhCj4gY29weXBhc3RlIGpvYi4gQW55IHJlYXNv
-bnMgd2h5IHlvdSdyZSBub3QgdXNpbmcgdGhlIG5vcm1hbCBjbWEgaGVscGVycz8KPiAKPiBUaGFu
-a3MsIERhbmllbAo+ID4gCgpJbiB0aGUgYmVnaW5uaW5nLCB3ZSBkZXZlbG9wIG10a19kcm1fZ2Vt
-LmMgYnkgcmVmZXJyaW5nIG90aGVyIHBsYXRmb3JtLgpXZSB3aWxsIHRyeSB0byB1c2UgdGhlIG5v
-cm1hbCBjbWEgaGVscGVycyBhY2NvcmRpbmcgdG8geW91ciBpZGVhLgoKVGhhbmtzLApTdHUKCj4g
-PiBTdHUgSHNpZWggKDI5KToKPiA+ICAgZHJtL21lZGlhdGVrOiB1cGRhdGUgZHQtYmluZGluZ3Mg
-Zm9yIG10MjcxMgo+ID4gICBkcm0vbWVkaWF0ZWs6IHN1cHBvcnQgbWF4aW11bSA2NCBtdXRleCBt
-b2QKPiA+ICAgZHJtL21lZGlhdGVrOiBhZGQgZGRwIGNvbXBvbmVudCBBQUwxCj4gPiAgIGRybS9t
-ZWRpYXRlazogYWRkIGRkcCBjb21wb25lbnQgT0QxCj4gPiAgIGRybS9tZWRpYXRlazogYWRkIGRk
-cCBjb21wb25lbnQgUFdNMQo+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBkZHAgY29tcG9uZW50IFBX
-TTIKPiA+ICAgZHJtL21lZGlhdGVrOiBhZGQgY29tcG9uZW50IERQSTEKPiA+ICAgZHJtL21lZGlh
-dGVrOiBhZGQgY29tcG9uZW50IERTSTIKPiA+ICAgZHJtL21lZGlhdGVrOiBhZGQgY29tcG9uZW50
-IERTSTMKPiA+ICAgZHJtL21lZGlhdGVrOiBhZGQgdGhlIERTSTEgZm9yIGNvbXBvbmVudCBpbml0
-IGNvbmRpdGlvbgo+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBjb25uZWN0aW9uIGZyb20gT0QxIHRv
-IFJETUExCj4gPiAgIGRybS9tZWRpYXRlazogVXBkYXRlIHRoZSBkZWZpbml0aW9uIG9mIGNvbm5l
-Y3Rpb24gZnJvbSBSRE1BMSB0byBEUEkwCj4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rp
-b24gZnJvbSBSRE1BMCB0byBEUEkwCj4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24g
-ZnJvbSBSRE1BMCB0byBEU0kyCj4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJv
-bSBSRE1BMCB0byBEU0kzCj4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBS
-RE1BMSB0byBEUEkxCj4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1B
-MSB0byBEU0kxCj4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMSB0
-byBEU0kyCj4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMSB0byBE
-U0kzCj4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMiB0byBEUEkw
-Cj4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMiB0byBEUEkxCj4g
-PiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMiB0byBEU0kxCj4gPiAg
-IGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMiB0byBEU0kyCj4gPiAgIGRy
-bS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMiB0byBEU0kzCj4gPiAgIGRybS9t
-ZWRpYXRlazogYWRkIERQSTEgc3VwcG9ydCBmb3IgbXV0ZXgKPiA+ICAgZHJtL21lZGlhdGVrOiBh
-ZGQgRFNJMiBzdXBwb3J0IGZvciBtdXRleAo+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBEU0kzIHN1
-cHBvcnQgZm9yIG11dGV4Cj4gPiAgIGRybS9tZWRpYXRlazogYWRkIHRoaXJkIGRkcCBwYXRoCj4g
-PiAgIGRybS9tZWRpYXRlazogQWRkIHN1cHBvcnQgZm9yIG1lZGlhdGVrIFNPQyBNVDI3MTIKPiA+
-IAo+ID4gIC4uLi9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0ICAg
-IHwgICAyICstCj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jICAg
-ICAgICAgICAgfCAgIDMgKwo+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rk
-cC5jICAgICAgICAgICAgIHwgMjM1ICsrKysrKysrKysrKysrKysrKy0tLQo+ID4gIGRyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgICAgICAgIHwgIDE1ICstCj4gPiAg
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaCAgICAgICAgfCAgMTAg
-Ky0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyAgICAgICAgICAg
-ICB8ICA0NyArKysrLQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5o
-ICAgICAgICAgICAgIHwgICA1ICstCj4gPiAgNyBmaWxlcyBjaGFuZ2VkLCAyNzQgaW5zZXJ0aW9u
-cygrKSwgNDMgZGVsZXRpb25zKC0pCj4gPiAKPiA+IC0tIAo+ID4gMi4xMi41Cj4gPiAKPiA+IF9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gPiBkcmktZGV2
-ZWwgbWFpbGluZyBsaXN0Cj4gPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gPiBo
-dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo+
-IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Thu, Jun 28, 2018 at 11:06:13AM +0800, Sean Wang wrote:
+> On Wed, 2018-06-27 at 20:04 +0300, Andy Shevchenko wrote:
+> > On Wed, Jun 27, 2018 at 7:59 PM, Andy Shevchenko
+> > <andy.shevchenko@gmail.com> wrote:
+> > > On Wed, Jun 27, 2018 at 8:43 AM,  <sean.wang@mediatek.com> wrote:
+> > >> From: Sean Wang <sean.wang@mediatek.com>
+
+> > >> +#include <net/bluetooth/bluetooth.h>
+> > >> +#include <net/bluetooth/hci_core.h>
+> > 
+> > >> +       /* Enable the power domain and clock the device requires. */
+> > >> +       pm_runtime_enable(dev);
+> > >> +       err = pm_runtime_get_sync(dev);
+> > >> +       if (err < 0)
+> > >> +               goto err_pm2;
+
+> > >> +err_pm1:
+> > >> +       pm_runtime_put_sync(dev);
+> > >> +err_pm2:
+> > >> +       pm_runtime_disable(dev);
+
+Please name error labels after what they do, not using numbers (see
+CodingStyle). Here you could use err_disable_rpm instead of err_pm2, for
+example.
+
+Also, if you really want to undo pm_runtime_get_sync() failing above,
+you still need a pm_runtime_put_noidle() to balance the usage count.
+
+> > >> +struct mtk_stp_hdr {
+> > >> +       __u8 prefix;
+> > >> +       __u8 dlen1:4;
+> > >> +       __u8 type:4;
+> > 
+> > >> +       __u8 dlen2:8;
+> > >> +       __u8 cs;
+> > >> +} __packed;
+
+Perhaps too much context have been lost here, but unless you're sharing
+this struct with user space, you should be using u8 (without __) above
+(and elsewhere).
+
+Johan
