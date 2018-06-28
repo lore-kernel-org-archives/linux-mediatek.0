@@ -1,98 +1,243 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v7 00/29] Add support for mediatek SOC MT2712
-Date: Thu, 28 Jun 2018 08:02:28 +0200
-Message-ID: <20180628060228.GJ13978@phenom.ffwll.local>
-References: <1529482771-2153-1-git-send-email-stu.hsieh@mediatek.com>
- <20180625084740.GN2958@phenom.ffwll.local>
- <1530157537.11190.53.camel@mtksdccf07>
+From: houlong wei <houlong.wei@mediatek.com>
+Subject: Re: [PATCH v21 2/4] mailbox: mediatek: Add Mediatek CMDQ driver
+Date: Thu, 28 Jun 2018 14:55:37 +0800
+Message-ID: <1530168937.21275.4.camel@mhfsdcap03>
+References: <1517383693-25591-1-git-send-email-houlong.wei@mediatek.com>
+         <1517383693-25591-3-git-send-email-houlong.wei@mediatek.com>
+         <1519185212.8716.32.camel@mtksdaap41>
+         <1530100416.31725.15.camel@mhfsdcap03>
+         <1530151059.6193.27.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1530157537.11190.53.camel@mtksdccf07>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1530151059.6193.27.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, Cawa Cheng =?UTF-8?Q?=28=E9=84=AD=E6=9B=84=E7=A6=A7=29?= <cawa.cheng@mediatek.com>, Bibby
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVGh1LCBKdW4gMjgsIDIwMTggYXQgMTE6NDU6MzdBTSArMDgwMCwgU3R1IEhzaWVoIHdyb3Rl
-Ogo+IEhpLCBEYW5pZWwgVmV0dGVyOgo+IAo+IE9uIE1vbiwgMjAxOC0wNi0yNSBhdCAxMDo0NyAr
-MDIwMCwgRGFuaWVsIFZldHRlciB3cm90ZToKPiA+IE9uIFdlZCwgSnVuIDIwLCAyMDE4IGF0IDA0
-OjE5OjAyUE0gKzA4MDAsIFN0dSBIc2llaCB3cm90ZToKPiA+ID4gVGhpcyBwYXRjaCBhZGQgc3Vw
-cG9ydCBmb3IgdGhlIE1lZGlhdGVrIE1UMjcxMiBESVNQIHN1YnN5c3RlbS4KPiA+ID4gTVQyNzEy
-IGlzIGJhc2Ugb24gTVQ4MTczLCB0aGVyZSBhcmUgc29tZSBkaWZmZXJlbmNlIGFzIGZvbGxvd2lu
-ZzoKPiA+ID4gTVQyNzEyIHN1cHBvcnQgdGhyZWUgZGlzcCBvdXRwdXQodHdvIG92bCBhbmQgb25l
-IHJkbWEpCj4gPiA+IAo+ID4gPiBDaGFuZ2UgaW4gdjY6Cj4gPiA+IC0gVXBkYXRlIGNvbW1pdCBt
-ZXNzYWdlIGZvciB0aGUgcGF0Y2gKPiA+ID4gICAiZHJtL21lZGlhdGVrOiBVcGRhdGUgdGhlIGRl
-ZmluaXRpb24gb2YgY29ubmVjdGlvbiBmcm9tIFJETUExIHRvIERQSTAiCj4gPiAKPiA+IEp1c3Qg
-YSBkcml2ZS1ieSBjb21tZW50IG9uIHRoZSBtZWRpYXRlayBkcml2ZXI6Cj4gPiAKPiA+IEFzIGZh
-ciBhcyBJIGNhbiBzZWUgbXRrX2RybV9nZW0uYyByZWltcGxlbWVudHMgdGhlIGNtYSBoZWxwZXJz
-IGFzIGEKPiA+IGNvcHlwYXN0ZSBqb2IuIEFueSByZWFzb25zIHdoeSB5b3UncmUgbm90IHVzaW5n
-IHRoZSBub3JtYWwgY21hIGhlbHBlcnM/Cj4gPiAKPiA+IFRoYW5rcywgRGFuaWVsCj4gPiA+IAo+
-IAo+IEluIHRoZSBiZWdpbm5pbmcsIHdlIGRldmVsb3AgbXRrX2RybV9nZW0uYyBieSByZWZlcnJp
-bmcgb3RoZXIgcGxhdGZvcm0uCj4gV2Ugd2lsbCB0cnkgdG8gdXNlIHRoZSBub3JtYWwgY21hIGhl
-bHBlcnMgYWNjb3JkaW5nIHRvIHlvdXIgaWRlYS4KClNvdW5kcyBncmVhdCBpZiB5b3UgY2FuIGRv
-IHRoaXMgYXMgYSBsb25nZXItdGVybSByZWZhY3RvcmluZyB0YXNrIQoKSSBkaXNjdXNzZWQgdGhp
-cyBhbHNvIGEgYml0IHdpdGggUGhpbGlwcCBvbiBpcmMsIGFuZCBoZSBzYWlkIHRoZXJlJ3MKcG9z
-c2libGUgYSBuZWVkIHRvIHN1cHBvcnQgbm9uLWNvbnRpZyBidWZmZXJzIGluIG10ay4gSWYgdGhh
-dCBjYW4ndCBiZQpkb25lIHVzaW5nIGNtYSBoZWxwZXJzICh1c3VhbGx5IHlvdSBoYXZlIGFuIGlv
-bW11IGluIHN1Y2ggYSBjYXNlLCB3aGljaAphZ2FpbiBnaXZlcyB5b3UgYSBjb250aWcgYnVmZmVy
-IGluIGRldmljZS1hZGRyZXNzIHNwYWNlLCBhbmQgdGhhdCBjYW4gYmUKdXNlZCBieSBjbWEgSSB0
-aGluayksIHRoZW4gSSB0aGluayBpdCB3b3VsZCBzdGlsbCBiZSB1c2VmdWwgaWYgeW91IHVzZSB0
-aGUKY21hIGhlbHBlcnMgZm9yIHRoZSBjb250aWcgYnVmZmVycy4gQnV0IHRoZW4gd3JhcCB0aGVt
-IGluIHNvbWUgbXRrIGNvZGUgdG8Kc3dpdGNoIGJldHdlZW4gdGhlIHR3by4KCkNoZWVycywgRGFu
-aWVsCgo+IAo+IFRoYW5rcywKPiBTdHUKPiAKPiA+ID4gU3R1IEhzaWVoICgyOSk6Cj4gPiA+ICAg
-ZHJtL21lZGlhdGVrOiB1cGRhdGUgZHQtYmluZGluZ3MgZm9yIG10MjcxMgo+ID4gPiAgIGRybS9t
-ZWRpYXRlazogc3VwcG9ydCBtYXhpbXVtIDY0IG11dGV4IG1vZAo+ID4gPiAgIGRybS9tZWRpYXRl
-azogYWRkIGRkcCBjb21wb25lbnQgQUFMMQo+ID4gPiAgIGRybS9tZWRpYXRlazogYWRkIGRkcCBj
-b21wb25lbnQgT0QxCj4gPiA+ICAgZHJtL21lZGlhdGVrOiBhZGQgZGRwIGNvbXBvbmVudCBQV00x
-Cj4gPiA+ICAgZHJtL21lZGlhdGVrOiBhZGQgZGRwIGNvbXBvbmVudCBQV00yCj4gPiA+ICAgZHJt
-L21lZGlhdGVrOiBhZGQgY29tcG9uZW50IERQSTEKPiA+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBj
-b21wb25lbnQgRFNJMgo+ID4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbXBvbmVudCBEU0kzCj4g
-PiA+ICAgZHJtL21lZGlhdGVrOiBhZGQgdGhlIERTSTEgZm9yIGNvbXBvbmVudCBpbml0IGNvbmRp
-dGlvbgo+ID4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBPRDEgdG8gUkRN
-QTEKPiA+ID4gICBkcm0vbWVkaWF0ZWs6IFVwZGF0ZSB0aGUgZGVmaW5pdGlvbiBvZiBjb25uZWN0
-aW9uIGZyb20gUkRNQTEgdG8gRFBJMAo+ID4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rp
-b24gZnJvbSBSRE1BMCB0byBEUEkwCj4gPiA+ICAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlv
-biBmcm9tIFJETUEwIHRvIERTSTIKPiA+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBjb25uZWN0aW9u
-IGZyb20gUkRNQTAgdG8gRFNJMwo+ID4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24g
-ZnJvbSBSRE1BMSB0byBEUEkxCj4gPiA+ICAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBm
-cm9tIFJETUExIHRvIERTSTEKPiA+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBjb25uZWN0aW9uIGZy
-b20gUkRNQTEgdG8gRFNJMgo+ID4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJv
-bSBSRE1BMSB0byBEU0kzCj4gPiA+ICAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9t
-IFJETUEyIHRvIERQSTAKPiA+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBjb25uZWN0aW9uIGZyb20g
-UkRNQTIgdG8gRFBJMQo+ID4gPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBS
-RE1BMiB0byBEU0kxCj4gPiA+ICAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJE
-TUEyIHRvIERTSTIKPiA+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBjb25uZWN0aW9uIGZyb20gUkRN
-QTIgdG8gRFNJMwo+ID4gPiAgIGRybS9tZWRpYXRlazogYWRkIERQSTEgc3VwcG9ydCBmb3IgbXV0
-ZXgKPiA+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBEU0kyIHN1cHBvcnQgZm9yIG11dGV4Cj4gPiA+
-ICAgZHJtL21lZGlhdGVrOiBhZGQgRFNJMyBzdXBwb3J0IGZvciBtdXRleAo+ID4gPiAgIGRybS9t
-ZWRpYXRlazogYWRkIHRoaXJkIGRkcCBwYXRoCj4gPiA+ICAgZHJtL21lZGlhdGVrOiBBZGQgc3Vw
-cG9ydCBmb3IgbWVkaWF0ZWsgU09DIE1UMjcxMgo+ID4gPiAKPiA+ID4gIC4uLi9iaW5kaW5ncy9k
-aXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0ICAgIHwgICAyICstCj4gPiA+ICBkcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgICAgICAgICAgICB8ICAgMyArCj4g
-PiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgICAgICAgICAgICB8
-IDIzNSArKysrKysrKysrKysrKysrKystLS0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHJtX2RkcF9jb21wLmMgICAgICAgIHwgIDE1ICstCj4gPiA+ICBkcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oICAgICAgICB8ICAxMCArLQo+ID4gPiAgZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgICAgICAgICAgICAgfCAgNDcgKysr
-Ky0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5oICAgICAgICAg
-ICAgIHwgICA1ICstCj4gPiA+ICA3IGZpbGVzIGNoYW5nZWQsIDI3NCBpbnNlcnRpb25zKCspLCA0
-MyBkZWxldGlvbnMoLSkKPiA+ID4gCj4gPiA+IC0tIAo+ID4gPiAyLjEyLjUKPiA+ID4gCj4gPiA+
-IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gPiA+IGRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKPiA+ID4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
-Zwo+ID4gPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbAo+ID4gCj4gCj4gCgotLSAKRGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwg
-SW50ZWwgQ29ycG9yYXRpb24KaHR0cDovL2Jsb2cuZmZ3bGwuY2gKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Thu, 2018-06-28 at 09:57 +0800, CK Hu wrote:
+> Hi, Houlong:
+> 
+> On Wed, 2018-06-27 at 19:53 +0800, houlong wei wrote:
+> > On Wed, 2018-02-21 at 11:53 +0800, CK Hu wrote:
+> > > Hi, Houlong:
+> > > 
+> > > I've one inline comment.
+> > > 
+> > > On Wed, 2018-01-31 at 15:28 +0800, houlong.wei@mediatek.com wrote:
+> > > > From: "hs.liao@mediatek.com" <hs.liao@mediatek.com>
+> > > > 
+> > > > This patch is first version of Mediatek Command Queue(CMDQ) driver. The
+> > > > CMDQ is used to help write registers with critical time limitation,
+> > > > such as updating display configuration during the vblank. It controls
+> > > > Global Command Engine (GCE) hardware to achieve this requirement.
+> > > > Currently, CMDQ only supports display related hardwares, but we expect
+> > > > it can be extended to other hardwares for future requirements.
+> > > > 
+> > > > Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
+> > > > Signed-off-by: HS Liao <hs.liao@mediatek.com>
+> > > > Signed-off-by: CK Hu <ck.hu@mediatek.com>
+> > > > ---
+> > > >  drivers/mailbox/Kconfig                  |   10 +
+> > > >  drivers/mailbox/Makefile                 |    2 +
+> > > >  drivers/mailbox/mtk-cmdq-mailbox.c       |  594 ++++++++++++++++++++++++++++++
+> > > >  include/linux/mailbox/mtk-cmdq-mailbox.h |   77 ++++
+> > > >  4 files changed, 683 insertions(+)
+> > > >  create mode 100644 drivers/mailbox/mtk-cmdq-mailbox.c
+> > > >  create mode 100644 include/linux/mailbox/mtk-cmdq-mailbox.h
+> > > > 
+> > > > diff --git a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
+> > > > index ba2f152..43bb26f 100644
+> > > > --- a/drivers/mailbox/Kconfig
+> > > > +++ b/drivers/mailbox/Kconfig
+> > > > @@ -171,4 +171,14 @@ config BCM_FLEXRM_MBOX
+> > > >  	  Mailbox implementation of the Broadcom FlexRM ring manager,
+> > > >  	  which provides access to various offload engines on Broadcom
+> > > >  	  SoCs. Say Y here if you want to use the Broadcom FlexRM.
+> > > > +
+> 
+> [...]
+> 
+> > > > +
+> > > > +static void cmdq_task_exec(struct cmdq_pkt *pkt, struct cmdq_thread *thread)
+> > > > +{
+> > > > +	struct cmdq *cmdq;
+> > > > +	struct cmdq_task *task;
+> > > > +	unsigned long curr_pa, end_pa;
+> > > > +
+> > > > +	cmdq = dev_get_drvdata(thread->chan->mbox->dev);
+> > > > +
+> > > > +	/* Client should not flush new tasks if suspended. */
+> > > > +	WARN_ON(cmdq->suspended);
+> > > > +
+> > > > +	task = kzalloc(sizeof(*task), GFP_ATOMIC);
+> > > > +	task->cmdq = cmdq;
+> > > > +	INIT_LIST_HEAD(&task->list_entry);
+> > > > +	task->pa_base = pkt->pa_base;
+> > > > +	task->thread = thread;
+> > > > +	task->pkt = pkt;
+> > > > +
+> > > > +	if (list_empty(&thread->task_busy_list)) {
+> > > > +		WARN_ON(clk_enable(cmdq->clock) < 0);
+> > > > +		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
+> > > > +
+> > > > +		writel(task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
+> > > > +		writel(task->pa_base + pkt->cmd_buf_size,
+> > > > +		       thread->base + CMDQ_THR_END_ADDR);
+> > > > +		writel(CMDQ_THR_IRQ_EN, thread->base + CMDQ_THR_IRQ_ENABLE);
+> > > > +		writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
+> > > > +
+> > > > +		mod_timer(&thread->timeout,
+> > > > +			  jiffies + msecs_to_jiffies(CMDQ_TIMEOUT_MS));
+> > > > +	} else {
+> > > > +		WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+> > > > +		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR);
+> > > > +		end_pa = readl(thread->base + CMDQ_THR_END_ADDR);
+> > > > +
+> > > > +		/*
+> > > > +		 * Atomic execution should remove the following wfe, i.e. only
+> > > > +		 * wait event at first task, and prevent to pause when running.
+> > > > +		 */
+> > > > +		if (thread->atomic_exec) {
+> > > > +			/* GCE is executing if command is not WFE */
+> > > > +			if (!cmdq_thread_is_in_wfe(thread)) {
+> > > > +				cmdq_thread_resume(thread);
+> > > > +				cmdq_thread_wait_end(thread, end_pa);
+> > > > +				WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+> > > > +				/* set to this task directly */
+> > > > +				writel(task->pa_base,
+> > > > +				       thread->base + CMDQ_THR_CURR_ADDR);
+> > > > +			} else {
+> > > > +				cmdq_task_insert_into_thread(task);
+> > > > +				cmdq_task_remove_wfe(task);
+> > > > +				smp_mb(); /* modify jump before enable thread */
+> > > > +			}
+> > > > +		} else {
+> > > > +			/* check boundary */
+> > > > +			if (curr_pa == end_pa - CMDQ_INST_SIZE ||
+> > > > +			    curr_pa == end_pa) {
+> > > > +				/* set to this task directly */
+> > > > +				writel(task->pa_base,
+> > > > +				       thread->base + CMDQ_THR_CURR_ADDR);
+> > > > +			} else {
+> > > > +				cmdq_task_insert_into_thread(task);
+> > > > +				smp_mb(); /* modify jump before enable thread */
+> > > > +			}
+> > > > +		}
+> > > > +		writel(task->pa_base + pkt->cmd_buf_size,
+> > > > +		       thread->base + CMDQ_THR_END_ADDR);
+> > > > +		cmdq_thread_resume(thread);
+> > > > +	}
+> > > > +	list_move_tail(&task->list_entry, &thread->task_busy_list);
+> > > 
+> > > You implement a list to queue command because you need to execute
+> > > multiple packet in the same vblank period. I've a suggestion that you
+> > > need not to implement a list. Once cmdq driver receive two packet as
+> > > below:
+> > > 
+> > > Packet 1:
+> > > (1) clear vblank event
+> > > (2) wait vblank event
+> > > (3) write register setting 1
+> > > (4) no operation
+> > > 
+> > > Packet 2:
+> > > (1) clear vblank event
+> > > (2) wait vblank event
+> > > (3) write register setting 2
+> > > (4) no operation
+> > > 
+> > > In your current design, you modify these two packet as:
+> > > 
+> > > Packet 1:
+> > > (1) clear vblank event
+> > > (2) wait vblank event
+> > > (3) write register setting 1
+> > > (4) Jump to packet 2 (modified)
+> > > 
+> > > Packet 2:
+> > > (1) no operation (modified)
+> > > (2) no operation (modified)
+> > > (3) write register setting 2
+> > > (4) no operation
+> > > 
+> > > So the register setting 1 and register setting 2 could be executed in
+> > > the same vblank period.
+> > > 
+> > > My suggestion is: when the client want to send packet 2, it 'abort'
+> > > packet 1 at first. The 'abort' means remove it from channel. In current
+> > > mailbox interface, mbox_free_channel() is most like abort function, but
+> > > my abort would keep the channel. So maybe you need to implement a new
+> > > mailbox interface which could remove packet in the channel. So the step
+> > > would be:
+> > > 
+> > > (1) Client generate packet 1 which include write register setting 1
+> > > (2) Client send packet 1 to channel A
+> > > 
+> > > When client want to send register setting 2,
+> > > 
+> > > (3) Client abort channel A
+> > > (4) Client generate packet 2 which include write register setting 1 & 2
+> > > (5) Client send packet 2 to channel A
+> > > 
+> > > Once you have the abort function, you could use the queue mechanism in
+> > > mailbox core instead of implementing your own.
+> > > 
+> > > For the client which have the atomic requirement, it also need not to
+> > > implement a list to keep what command have not executed. So the abort
+> > > interface would make client and controller much simpler.
+> > > 
+> > > Regards,
+> > > CK
+> > > 
+> > 
+> > Hi CK, thanks for you suggestion. Since current mailbox framework has
+> > no 'abort' function and need add new interface. It may be complicated
+> > to do this. Could we keep current solution?
+> > 
+> 
+> I imagine that 'abort' is a simple function. Is my imagination
+> incorrect? So you would like choose implementing a complicated queue
+> mechanism in mtk_cmdq driver rather than implementing abort function.
+> Maybe both are complicated.
+> 
+> I think the more important thing is that do you and maintainer agree to
+> implement abort function which could reduce mtk-self-queue in mtk_cmdq
+> driver. If the answer is yes, there could be two patch sequence A and B,
+
+
+Hello Jassi, what's your opinion on 'abort' function ?
+
+
+> the patch sequence A is
+> 
+> A.1 mtk_cmdq driver with mtk-self-queue.
+> A.2 mtk display driver use mtk_cmdq without abort function.
+> A.3 add mailbox abort function
+> A.4 mtk_cmdq driver support abort function and remove mtk-self-queue.
+> A.5 mtk display driver use mtk_cmdq with abort function
+> 
+> And the patch sequence B is
+> 
+> B.1 add mailbox abort function
+> B.2 mtk_cmdq driver with abort function and no mtk-self-queue
+> B.3 mtk display driver use mtk_cmdq with abort function
+> 
+> Which one do you think is complicated?
+> 
+> So let's back to the more important thing: 'do you agree to implement
+> abort function which could reduce mtk-self-queue in mtk_cmdq driver?'
+> 
+> Regards,
+> CK
+> 
+> > > > +}
+> > > > +
+> 
+> [...]
+> 
+> > 
+> 
+> 
