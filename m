@@ -1,192 +1,234 @@
-From: Honghui Zhang <honghui.zhang@mediatek.com>
-Subject: Re: [PATCH 3/4] PCI: mediatek: Add system pm support for MT2712 and
- MT7622
-Date: Thu, 28 Jun 2018 09:44:25 +0800
-Message-ID: <1530150265.28284.25.camel@mhfsdcap03>
-References: <1530091298-28120-1-git-send-email-honghui.zhang@mediatek.com>
-         <1530091298-28120-4-git-send-email-honghui.zhang@mediatek.com>
-         <CAHp75VcHgJrujzqstSc4RWpUbjip1vtJu87HN3uTosoLdOiT3A@mail.gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v21 2/4] mailbox: mediatek: Add Mediatek CMDQ driver
+Date: Thu, 28 Jun 2018 09:57:39 +0800
+Message-ID: <1530151059.6193.27.camel@mtksdaap41>
+References: <1517383693-25591-1-git-send-email-houlong.wei@mediatek.com>
+         <1517383693-25591-3-git-send-email-houlong.wei@mediatek.com>
+         <1519185212.8716.32.camel@mtksdaap41>
+         <1530100416.31725.15.camel@mhfsdcap03>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAHp75VcHgJrujzqstSc4RWpUbjip1vtJu87HN3uTosoLdOiT3A@mail.gmail.com>
+In-Reply-To: <1530100416.31725.15.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-pci@vger.kernel.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, yingjoe.chen@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, YT Shen <yt.shen@mediatek.com>, sean.wang@mediatek.com
+To: houlong wei <houlong.wei@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, Cawa Cheng =?UTF-8?Q?=28=E9=84=AD=E6=9B=84=E7=A6=A7=29?= <cawa.cheng@mediatek.com>, Bibby
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-06-27 at 19:45 +0300, Andy Shevchenko wrote:
-> On Wed, Jun 27, 2018 at 12:21 PM,  <honghui.zhang@mediatek.com> wrote:
-> > From: Honghui Zhang <honghui.zhang@mediatek.com>
-> >
-> > The MTCMOS of PCIe Host for MT2712 and MT7622 will be off when system
-> > suspend, and all the internal control register will be reset after system
-> > resume. The PCIe link should be re-established and the related control
-> > register values should be re-set after system resume.
-> 
-> >  struct mtk_pcie_soc {
-> >         bool need_fix_class_id;
-> 
-> > +       bool pm_support;
-> 
-> Hmm... Do you really need this flag? Can't runtime PM API tell you this?
+Hi, Houlong:
 
-This host driver is both for MT2712, MT7622 and MT7623, but MT7623 do
-not this this patch.
-I only add this flag to identify whether we need to do the PM operation
-for this SoC since I do not want to touch anything for MT7623.
- 
-> 
-> >         struct pci_ops *ops;
-> >         int (*startup)(struct mtk_pcie_port *port);
-> >         int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
-> > @@ -1195,12 +1197,76 @@ static int mtk_pcie_probe(struct platform_device *pdev)
-> >         return err;
-> >  }
-> >
-> > +#ifdef CONFIG_PM_SLEEP
-> > +static int mtk_pcie_suspend_noirq(struct device *dev)
-> 
-> Perhaps __maybe_unused?
+On Wed, 2018-06-27 at 19:53 +0800, houlong wei wrote:
+> On Wed, 2018-02-21 at 11:53 +0800, CK Hu wrote:
+> > Hi, Houlong:
+> > 
+> > I've one inline comment.
+> > 
+> > On Wed, 2018-01-31 at 15:28 +0800, houlong.wei@mediatek.com wrote:
+> > > From: "hs.liao@mediatek.com" <hs.liao@mediatek.com>
+> > > 
+> > > This patch is first version of Mediatek Command Queue(CMDQ) driver. The
+> > > CMDQ is used to help write registers with critical time limitation,
+> > > such as updating display configuration during the vblank. It controls
+> > > Global Command Engine (GCE) hardware to achieve this requirement.
+> > > Currently, CMDQ only supports display related hardwares, but we expect
+> > > it can be extended to other hardwares for future requirements.
+> > > 
+> > > Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
+> > > Signed-off-by: HS Liao <hs.liao@mediatek.com>
+> > > Signed-off-by: CK Hu <ck.hu@mediatek.com>
+> > > ---
+> > >  drivers/mailbox/Kconfig                  |   10 +
+> > >  drivers/mailbox/Makefile                 |    2 +
+> > >  drivers/mailbox/mtk-cmdq-mailbox.c       |  594 ++++++++++++++++++++++++++++++
+> > >  include/linux/mailbox/mtk-cmdq-mailbox.h |   77 ++++
+> > >  4 files changed, 683 insertions(+)
+> > >  create mode 100644 drivers/mailbox/mtk-cmdq-mailbox.c
+> > >  create mode 100644 include/linux/mailbox/mtk-cmdq-mailbox.h
+> > > 
+> > > diff --git a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
+> > > index ba2f152..43bb26f 100644
+> > > --- a/drivers/mailbox/Kconfig
+> > > +++ b/drivers/mailbox/Kconfig
+> > > @@ -171,4 +171,14 @@ config BCM_FLEXRM_MBOX
+> > >  	  Mailbox implementation of the Broadcom FlexRM ring manager,
+> > >  	  which provides access to various offload engines on Broadcom
+> > >  	  SoCs. Say Y here if you want to use the Broadcom FlexRM.
+> > > +
 
-Ok, I'm a bit confused about this, if there's some discussion about
-this, do you have the link of those discussion and kindly point put it
-in this thread? Or I guess I can change this back to __maybe_unused if
-there's no other comments about this.
+[...]
 
+> > > +
+> > > +static void cmdq_task_exec(struct cmdq_pkt *pkt, struct cmdq_thread *thread)
+> > > +{
+> > > +	struct cmdq *cmdq;
+> > > +	struct cmdq_task *task;
+> > > +	unsigned long curr_pa, end_pa;
+> > > +
+> > > +	cmdq = dev_get_drvdata(thread->chan->mbox->dev);
+> > > +
+> > > +	/* Client should not flush new tasks if suspended. */
+> > > +	WARN_ON(cmdq->suspended);
+> > > +
+> > > +	task = kzalloc(sizeof(*task), GFP_ATOMIC);
+> > > +	task->cmdq = cmdq;
+> > > +	INIT_LIST_HEAD(&task->list_entry);
+> > > +	task->pa_base = pkt->pa_base;
+> > > +	task->thread = thread;
+> > > +	task->pkt = pkt;
+> > > +
+> > > +	if (list_empty(&thread->task_busy_list)) {
+> > > +		WARN_ON(clk_enable(cmdq->clock) < 0);
+> > > +		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
+> > > +
+> > > +		writel(task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
+> > > +		writel(task->pa_base + pkt->cmd_buf_size,
+> > > +		       thread->base + CMDQ_THR_END_ADDR);
+> > > +		writel(CMDQ_THR_IRQ_EN, thread->base + CMDQ_THR_IRQ_ENABLE);
+> > > +		writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
+> > > +
+> > > +		mod_timer(&thread->timeout,
+> > > +			  jiffies + msecs_to_jiffies(CMDQ_TIMEOUT_MS));
+> > > +	} else {
+> > > +		WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+> > > +		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR);
+> > > +		end_pa = readl(thread->base + CMDQ_THR_END_ADDR);
+> > > +
+> > > +		/*
+> > > +		 * Atomic execution should remove the following wfe, i.e. only
+> > > +		 * wait event at first task, and prevent to pause when running.
+> > > +		 */
+> > > +		if (thread->atomic_exec) {
+> > > +			/* GCE is executing if command is not WFE */
+> > > +			if (!cmdq_thread_is_in_wfe(thread)) {
+> > > +				cmdq_thread_resume(thread);
+> > > +				cmdq_thread_wait_end(thread, end_pa);
+> > > +				WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+> > > +				/* set to this task directly */
+> > > +				writel(task->pa_base,
+> > > +				       thread->base + CMDQ_THR_CURR_ADDR);
+> > > +			} else {
+> > > +				cmdq_task_insert_into_thread(task);
+> > > +				cmdq_task_remove_wfe(task);
+> > > +				smp_mb(); /* modify jump before enable thread */
+> > > +			}
+> > > +		} else {
+> > > +			/* check boundary */
+> > > +			if (curr_pa == end_pa - CMDQ_INST_SIZE ||
+> > > +			    curr_pa == end_pa) {
+> > > +				/* set to this task directly */
+> > > +				writel(task->pa_base,
+> > > +				       thread->base + CMDQ_THR_CURR_ADDR);
+> > > +			} else {
+> > > +				cmdq_task_insert_into_thread(task);
+> > > +				smp_mb(); /* modify jump before enable thread */
+> > > +			}
+> > > +		}
+> > > +		writel(task->pa_base + pkt->cmd_buf_size,
+> > > +		       thread->base + CMDQ_THR_END_ADDR);
+> > > +		cmdq_thread_resume(thread);
+> > > +	}
+> > > +	list_move_tail(&task->list_entry, &thread->task_busy_list);
+> > 
+> > You implement a list to queue command because you need to execute
+> > multiple packet in the same vblank period. I've a suggestion that you
+> > need not to implement a list. Once cmdq driver receive two packet as
+> > below:
+> > 
+> > Packet 1:
+> > (1) clear vblank event
+> > (2) wait vblank event
+> > (3) write register setting 1
+> > (4) no operation
+> > 
+> > Packet 2:
+> > (1) clear vblank event
+> > (2) wait vblank event
+> > (3) write register setting 2
+> > (4) no operation
+> > 
+> > In your current design, you modify these two packet as:
+> > 
+> > Packet 1:
+> > (1) clear vblank event
+> > (2) wait vblank event
+> > (3) write register setting 1
+> > (4) Jump to packet 2 (modified)
+> > 
+> > Packet 2:
+> > (1) no operation (modified)
+> > (2) no operation (modified)
+> > (3) write register setting 2
+> > (4) no operation
+> > 
+> > So the register setting 1 and register setting 2 could be executed in
+> > the same vblank period.
+> > 
+> > My suggestion is: when the client want to send packet 2, it 'abort'
+> > packet 1 at first. The 'abort' means remove it from channel. In current
+> > mailbox interface, mbox_free_channel() is most like abort function, but
+> > my abort would keep the channel. So maybe you need to implement a new
+> > mailbox interface which could remove packet in the channel. So the step
+> > would be:
+> > 
+> > (1) Client generate packet 1 which include write register setting 1
+> > (2) Client send packet 1 to channel A
+> > 
+> > When client want to send register setting 2,
+> > 
+> > (3) Client abort channel A
+> > (4) Client generate packet 2 which include write register setting 1 & 2
+> > (5) Client send packet 2 to channel A
+> > 
+> > Once you have the abort function, you could use the queue mechanism in
+> > mailbox core instead of implementing your own.
+> > 
+> > For the client which have the atomic requirement, it also need not to
+> > implement a list to keep what command have not executed. So the abort
+> > interface would make client and controller much simpler.
+> > 
+> > Regards,
+> > CK
+> > 
 > 
-> > +{
-> > +       struct mtk_pcie *pcie = dev_get_drvdata(dev);
-> > +       const struct mtk_pcie_soc *soc = pcie->soc;
-> > +       struct mtk_pcie_port *port;
-> > +
-> > +       if (!soc->pm_support)
-> > +               return 0;
-> > +
-> 
-> > +       if (list_empty(&pcie->ports))
-> > +               return 0;
-> 
-> So, if the list is empty you are not suspending for the host?
+> Hi CK, thanks for you suggestion. Since current mailbox framework has
+> no 'abort' function and need add new interface. It may be complicated
+> to do this. Could we keep current solution?
 > 
 
-if the list was empty then it indicate that all the PCIe slot was not
-connected with any EP device, and all the resource have been release in
-probe time. So the host driver does not need to save or restore
-anything.
+I imagine that 'abort' is a simple function. Is my imagination
+incorrect? So you would like choose implementing a complicated queue
+mechanism in mtk_cmdq driver rather than implementing abort function.
+Maybe both are complicated.
 
-> 
-> > +
-> > +       list_for_each_entry(port, &pcie->ports, list) {
-> > +               clk_disable_unprepare(port->pipe_ck);
-> > +               clk_disable_unprepare(port->obff_ck);
-> > +               clk_disable_unprepare(port->axi_ck);
-> > +               clk_disable_unprepare(port->aux_ck);
-> > +               clk_disable_unprepare(port->ahb_ck);
-> > +               clk_disable_unprepare(port->sys_ck);
-> > +               phy_power_off(port->phy);
-> > +               phy_exit(port->phy);
-> > +       }
-> > +
-> > +       mtk_pcie_subsys_powerdown(pcie);
-> > +
-> > +       return 0;
-> > +}
-> > +
-> > +static int mtk_pcie_resume_noirq(struct device *dev)
-> > +{
-> > +       struct mtk_pcie *pcie = dev_get_drvdata(dev);
-> > +       const struct mtk_pcie_soc *soc = pcie->soc;
-> > +       struct mtk_pcie_port *port;
-> > +
-> > +       if (!soc->pm_support)
-> > +               return 0;
-> > +
-> 
-> > +       if (list_empty(&pcie->ports))
-> > +               return 0;
-> 
-> No runtime PM for this case?
-> (It seems now I understand why in previous patch you have a similar check)
-> 
-I guess host driver does not need to resume anything if there's no EP
-device was connected.
+I think the more important thing is that do you and maintainer agree to
+implement abort function which could reduce mtk-self-queue in mtk_cmdq
+driver. If the answer is yes, there could be two patch sequence A and B,
+the patch sequence A is
 
-> > +
-> > +       if (dev->pm_domain) {
-> > +               pm_runtime_enable(dev);
-> > +               pm_runtime_get_sync(dev);
-> > +       }
-> > +
-> > +       clk_prepare_enable(pcie->free_ck);
-> > +
-> > +       list_for_each_entry(port, &pcie->ports, list)
-> > +               mtk_pcie_enable_port(port);
-> > +
-> 
-> > +       if (list_empty(&pcie->ports))
-> 
-> Hmm... How it would be true if you already bailed out above on the
-> same condition?
+A.1 mtk_cmdq driver with mtk-self-queue.
+A.2 mtk display driver use mtk_cmdq without abort function.
+A.3 add mailbox abort function
+A.4 mtk_cmdq driver support abort function and remove mtk-self-queue.
+A.5 mtk display driver use mtk_cmdq with abort function
 
-Assuming that there's EP device connected before suspend, and the EP was
-removed from the link while system suspend. It means that when enter
-this function the list is not empty, but after the function of
-mtk_pcie_enable_port was called, host driver found there's no EP device
-was connected anymore, it will free this list and some other resources
-in mtk_pcie_enable_port,(after mtk_pcie_enable_port was called, the list
-is empty in this scenario) but leave the subsys power along, I guess we
-need to take care of this scenario.
-> 
-> > +               mtk_pcie_subsys_powerdown(pcie);
-> > +
-> > +       return 0;
-> > +}
-> > +#endif
-> > +
-> > +static const struct dev_pm_ops mtk_pcie_pm_ops = {
-> > +       SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_pcie_suspend_noirq,
-> > +                                     mtk_pcie_resume_noirq)
-> > +};
-> > +
-> >  static const struct mtk_pcie_soc mtk_pcie_soc_v1 = {
-> >         .ops = &mtk_pcie_ops,
-> >         .startup = mtk_pcie_startup_port,
-> >  };
-> >
-> >  static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
-> > +       .pm_support = true,
-> >         .ops = &mtk_pcie_ops_v2,
-> >         .startup = mtk_pcie_startup_port_v2,
-> >         .setup_irq = mtk_pcie_setup_irq,
-> 
-> No update for .pm ?
+And the patch sequence B is
 
-I'm not get your point, I update the .pm callbacks in the
-platform_driver struct, this SoC data just store the different
-information for SoCs. Did I missed something?
+B.1 add mailbox abort function
+B.2 mtk_cmdq driver with abort function and no mtk-self-queue
+B.3 mtk display driver use mtk_cmdq with abort function
 
-> 
-> > @@ -1208,6 +1274,7 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
-> >
-> >  static const struct mtk_pcie_soc mtk_pcie_soc_mt7622 = {
-> >         .need_fix_class_id = true,
-> > +       .pm_support = true,
-> >         .ops = &mtk_pcie_ops_v2,
-> >         .startup = mtk_pcie_startup_port_v2,
-> >         .setup_irq = mtk_pcie_setup_irq,
-> > @@ -1227,6 +1294,7 @@ static struct platform_driver mtk_pcie_driver = {
-> >                 .name = "mtk-pcie",
-> >                 .of_match_table = mtk_pcie_ids,
-> >                 .suppress_bind_attrs = true,
-> > +               .pm = &mtk_pcie_pm_ops,
-> >         },
-> >  };
-> >  builtin_platform_driver(mtk_pcie_driver);
-> > --
-> > 2.6.4
-> >
-> 
-> 
+Which one do you think is complicated?
+
+So let's back to the more important thing: 'do you agree to implement
+abort function which could reduce mtk-self-queue in mtk_cmdq driver?'
+
+Regards,
+CK
+
+> > > +}
+> > > +
+
+[...]
+
 > 
