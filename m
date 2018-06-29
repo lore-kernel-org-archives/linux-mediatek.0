@@ -1,177 +1,73 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v22 4/4] soc: mediatek: Add Mediatek CMDQ helper
-Date: Fri, 29 Jun 2018 17:22:03 +0800
-Message-ID: <1530264123.22098.12.camel@mtksdaap41>
-References: <1530098172-31385-1-git-send-email-houlong.wei@mediatek.com>
-         <1530098172-31385-5-git-send-email-houlong.wei@mediatek.com>
-         <1530182516.8518.11.camel@mtksdaap41>
-         <1530228739.21991.14.camel@mhfsdcap03>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v4 6/7] Bluetooth: mediatek: Add protocol support for
+ MediaTek serial devices
+Date: Fri, 29 Jun 2018 17:47:26 +0800
+Message-ID: <1530265646.6245.6.camel@mtkswgap22>
+References: <cover.1530004712.git.sean.wang@mediatek.com>
+         <48215a1276c36af7ad581c3d83759fe9f55e3c4b.1530004712.git.sean.wang@mediatek.com>
+         <CAHp75VehTeyyzR4bPKK3hFDTVqZnhdNy5vcBFJCSH_Zrx+QrKA@mail.gmail.com>
+         <CAHp75VedHLw52J_ymh3iYf2w=r8d+Kqg=fJZmBGnaCrEbNEPdQ@mail.gmail.com>
+         <1530155173.29697.48.camel@mtkswgap22> <20180628051941.GF629@localhost>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1530228739.21991.14.camel@mhfsdcap03>
+In-Reply-To: <20180628051941.GF629@localhost>
 Sender: linux-kernel-owner@vger.kernel.org
-To: houlong wei <houlong.wei@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, Bibby Hsieh =?UTF-8?Q?=28=E8=AC=9D=E6=BF=9F=E9=81=A0=29?= <Bibby.Hsieh@mediatek.com>, YT
+To: Johan Hovold <johan@kernel.org>
+Cc: Andy Shevchenko <andy.shevchenko@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, Johan Hedberg <johan.hedberg@gmail.com>, Marcel Holtmann <marcel@holtmann.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-bluetooth@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Houlong:
-
-On Fri, 2018-06-29 at 07:32 +0800, houlong wei wrote:
-> On Thu, 2018-06-28 at 18:41 +0800, CK Hu wrote:
-> > Hi, Houlong:
-> > 
-> > Some inline comment.
-> > 
-> > On Wed, 2018-06-27 at 19:16 +0800, Houlong Wei wrote:
-> > > Add Mediatek CMDQ helper to create CMDQ packet and assemble GCE op code.
+On Thu, 2018-06-28 at 07:19 +0200, Johan Hovold wrote:
+> On Thu, Jun 28, 2018 at 11:06:13AM +0800, Sean Wang wrote:
+> > On Wed, 2018-06-27 at 20:04 +0300, Andy Shevchenko wrote:
+> > > On Wed, Jun 27, 2018 at 7:59 PM, Andy Shevchenko
+> > > <andy.shevchenko@gmail.com> wrote:
+> > > > On Wed, Jun 27, 2018 at 8:43 AM,  <sean.wang@mediatek.com> wrote:
+> > > >> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> > > >> +#include <net/bluetooth/bluetooth.h>
+> > > >> +#include <net/bluetooth/hci_core.h>
 > > > 
-> > > Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
-> > > Signed-off-by: HS Liao <hs.liao@mediatek.com>
-> > > ---
-> > >  drivers/soc/mediatek/Kconfig           |   12 ++
-> > >  drivers/soc/mediatek/Makefile          |    1 +
-> > >  drivers/soc/mediatek/mtk-cmdq-helper.c |  258 ++++++++++++++++++++++++++++++++
-> > >  include/linux/soc/mediatek/mtk-cmdq.h  |  132 ++++++++++++++++
-> > >  4 files changed, 403 insertions(+)
-> > >  create mode 100644 drivers/soc/mediatek/mtk-cmdq-helper.c
-> > >  create mode 100644 include/linux/soc/mediatek/mtk-cmdq.h
+> > > >> +       /* Enable the power domain and clock the device requires. */
+> > > >> +       pm_runtime_enable(dev);
+> > > >> +       err = pm_runtime_get_sync(dev);
+> > > >> +       if (err < 0)
+> > > >> +               goto err_pm2;
+> 
+> > > >> +err_pm1:
+> > > >> +       pm_runtime_put_sync(dev);
+> > > >> +err_pm2:
+> > > >> +       pm_runtime_disable(dev);
+> 
+> Please name error labels after what they do, not using numbers (see
+> CodingStyle). Here you could use err_disable_rpm instead of err_pm2, for
+> example.
+> 
+> Also, if you really want to undo pm_runtime_get_sync() failing above,
+> you still need a pm_runtime_put_noidle() to balance the usage count.
+> 
+
+I'll give a reasonable naming for these labels and add a
+pm_runtime_put_noidle() in the path undoing failing
+pm_runtime_get_sync().
+
+> > > >> +struct mtk_stp_hdr {
+> > > >> +       __u8 prefix;
+> > > >> +       __u8 dlen1:4;
+> > > >> +       __u8 type:4;
 > > > 
-> > > diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-> > > index a7d0667..17bd759 100644
-> > > --- a/drivers/soc/mediatek/Kconfig
-> > > +++ b/drivers/soc/mediatek/Kconfig
-> > > @@ -4,6 +4,18 @@
-> > >  menu "MediaTek SoC drivers"
-> > >  	depends on ARCH_MEDIATEK || COMPILE_TEST
-> > >  
-> > 
-
-[...]
-
-> > > +
-> > > +static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
-> > > +{
-> > > +	int err;
-> > > +
-> > > +	if (cmdq_pkt_is_finalized(pkt))
-> > > +		return 0;
-> > > +
-> > > +	/* insert EOC and generate IRQ for each command iteration */
-> > > +	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_EOC, 0, CMDQ_EOC_IRQ_EN);
-> > > +	if (err < 0)
-> > > +		return err;
-> > > +
-> > > +	/* JUMP to end */
-> > > +	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_JUMP, 0, CMDQ_JUMP_PASS);
-> > > +	if (err < 0)
-> > > +		return err;
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +int cmdq_pkt_flush_async(struct cmdq_client *client, struct cmdq_pkt *pkt,
-> > > +			 cmdq_async_flush_cb cb, void *data)
-> > > +{
-> > > +	int err;
-> > > +	struct device *dev;
-> > > +	dma_addr_t dma_addr;
-> > > +
-> > > +	err = cmdq_pkt_finalize(pkt);
-> > > +	if (err < 0)
-> > > +		return err;
-> > > +
-> > > +	dev = client->chan->mbox->dev;
-> > > +	dma_addr = dma_map_single(dev, pkt->va_base, pkt->cmd_buf_size,
-> > > +		DMA_TO_DEVICE);
-> > 
-> > You map here, but I could not find unmap, so the unmap should be done in
-> > client driver. I would prefer a symmetric map/unmap which means that
-> > both map and unmap are done in client driver. I think you put map here
-> > because you should map after finalize. 
+> > > >> +       __u8 dlen2:8;
+> > > >> +       __u8 cs;
+> > > >> +} __packed;
 > 
-> The unmap is done before callback to client, in function
-> cmdq_task_exec_done, mtk-cmdq-mailbox.c.
-
-You put unmap in mailbox controller, and map here (here would be mailbox
-client), so this is not symmetric. If the code is asymmetric, it's easy
-to cause bug and not easy to maintain. So I would like move both
-map/unmap to client driver.
-
+> Perhaps too much context have been lost here, but unless you're sharing
+> this struct with user space, you should be using u8 (without __) above
+> (and elsewhere).
 > 
-> > Therefore, export
-> > cmdq_pkt_finalize() to client driver and let client do finalize, so
-> > there is no finalize in flush function. This method have a benefit that
-> > if client reuse command buffer, it need not to map/unmap frequently.
-> 
-> If client reuse command buffer or cmdq_pkt(command queue packet), client
-> will add new commands to the cmdq_pkt, so map/unmap are necessary for
-> each cmdq_pkt flush.
 
-If the buffer size is 4K bytes, client driver could map the whole 4K at
-initialization. Before it write new command, it call
-dma_sync_single_for_cpu(), after it write new command, it call
-dma_sync_single_for_device(). And then it could flush this buffer to
-mailbox controller. So client driver just call dma sync function when it
-reuse the command buffer. dma sync function is much lightweight then dma
-map because map would search the memory area which could be mapped.
+These struct don't be shard with user space so I will turn __u8 into u8.
 
-Regards,
-CK
+Thanks so much for all suggestions. 
 
-> 
-> > 
-> > Regards,
-> > CK
-> > 
-> > > +	if (dma_mapping_error(dev, dma_addr)) {
-> > > +		dev_err(client->chan->mbox->dev, "dma map failed\n");
-> > > +		return -ENOMEM;
-> > > +	}
-> > > +
-> > > +	pkt->pa_base = dma_addr;
-> > > +	pkt->cb.cb = cb;
-> > > +	pkt->cb.data = data;
-> > > +
-> > > +	mbox_send_message(client->chan, pkt);
-> > > +	/* We can send next packet immediately, so just call txdone. */
-> > > +	mbox_client_txdone(client->chan, 0);
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +EXPORT_SYMBOL(cmdq_pkt_flush_async);
-> > > +
-> > > +struct cmdq_flush_completion {
-> > > +	struct completion cmplt;
-> > > +	bool err;
-> > > +};
-> > > +
-> > > +static void cmdq_pkt_flush_cb(struct cmdq_cb_data data)
-> > > +{
-> > > +	struct cmdq_flush_completion *cmplt = data.data;
-> > > +
-> > > +	cmplt->err = data.err;
-> > > +	complete(&cmplt->cmplt);
-> > > +}
-> > > +
-> > > +int cmdq_pkt_flush(struct cmdq_client *client, struct cmdq_pkt *pkt)
-> > > +{
-> > > +	struct cmdq_flush_completion cmplt;
-> > > +	int err;
-> > > +
-> > > +	init_completion(&cmplt.cmplt);
-> > > +	err = cmdq_pkt_flush_async(client, pkt, cmdq_pkt_flush_cb, &cmplt);
-> > > +	if (err < 0)
-> > > +		return err;
-> > > +	wait_for_completion(&cmplt.cmplt);
-> > > +
-> > > +	return cmplt.err ? -EFAULT : 0;
-> > > +}
-> > > +EXPORT_SYMBOL(cmdq_pkt_flush);
-> > 
-> > [...]
-> > 
-> > 
-> 
-> 
+> Johan
