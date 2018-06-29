@@ -1,73 +1,28 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v4 6/7] Bluetooth: mediatek: Add protocol support for
- MediaTek serial devices
-Date: Fri, 29 Jun 2018 17:47:26 +0800
-Message-ID: <1530265646.6245.6.camel@mtkswgap22>
-References: <cover.1530004712.git.sean.wang@mediatek.com>
-         <48215a1276c36af7ad581c3d83759fe9f55e3c4b.1530004712.git.sean.wang@mediatek.com>
-         <CAHp75VehTeyyzR4bPKK3hFDTVqZnhdNy5vcBFJCSH_Zrx+QrKA@mail.gmail.com>
-         <CAHp75VedHLw52J_ymh3iYf2w=r8d+Kqg=fJZmBGnaCrEbNEPdQ@mail.gmail.com>
-         <1530155173.29697.48.camel@mtkswgap22> <20180628051941.GF629@localhost>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 1/7] pinctrl: mt7622: fix error path on failing at groups building
+Date: Fri, 29 Jun 2018 14:17:18 +0200
+Message-ID: <CACRpkdbZd_Dj78i9-f1dkNrL8EH6GPrS4TDJXViANn2=SQf8CA@mail.gmail.com>
+References: <f222c9f488490bd86d35346e725491e1de306ace.1529639050.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180628051941.GF629@localhost>
+In-Reply-To: <f222c9f488490bd86d35346e725491e1de306ace.1529639050.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Johan Hovold <johan@kernel.org>
-Cc: Andy Shevchenko <andy.shevchenko@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, Johan Hedberg <johan.hedberg@gmail.com>, Marcel Holtmann <marcel@holtmann.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-bluetooth@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, stable <stable@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2018-06-28 at 07:19 +0200, Johan Hovold wrote:
-> On Thu, Jun 28, 2018 at 11:06:13AM +0800, Sean Wang wrote:
-> > On Wed, 2018-06-27 at 20:04 +0300, Andy Shevchenko wrote:
-> > > On Wed, Jun 27, 2018 at 7:59 PM, Andy Shevchenko
-> > > <andy.shevchenko@gmail.com> wrote:
-> > > > On Wed, Jun 27, 2018 at 8:43 AM,  <sean.wang@mediatek.com> wrote:
-> > > >> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> > > >> +#include <net/bluetooth/bluetooth.h>
-> > > >> +#include <net/bluetooth/hci_core.h>
-> > > 
-> > > >> +       /* Enable the power domain and clock the device requires. */
-> > > >> +       pm_runtime_enable(dev);
-> > > >> +       err = pm_runtime_get_sync(dev);
-> > > >> +       if (err < 0)
-> > > >> +               goto err_pm2;
-> 
-> > > >> +err_pm1:
-> > > >> +       pm_runtime_put_sync(dev);
-> > > >> +err_pm2:
-> > > >> +       pm_runtime_disable(dev);
-> 
-> Please name error labels after what they do, not using numbers (see
-> CodingStyle). Here you could use err_disable_rpm instead of err_pm2, for
-> example.
-> 
-> Also, if you really want to undo pm_runtime_get_sync() failing above,
-> you still need a pm_runtime_put_noidle() to balance the usage count.
-> 
+On Fri, Jun 22, 2018 at 5:49 AM <sean.wang@mediatek.com> wrote:
 
-I'll give a reasonable naming for these labels and add a
-pm_runtime_put_noidle() in the path undoing failing
-pm_runtime_get_sync().
+> From: Sean Wang <sean.wang@mediatek.com>
+>
+> It should be to return an error code when failing at groups building.
+>
+> Cc: stable@vger.kernel.org
+> Fixes: d6ed93551320 ("pinctrl: mediatek: add pinctrl driver for MT7622 SoC")
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
-> > > >> +struct mtk_stp_hdr {
-> > > >> +       __u8 prefix;
-> > > >> +       __u8 dlen1:4;
-> > > >> +       __u8 type:4;
-> > > 
-> > > >> +       __u8 dlen2:8;
-> > > >> +       __u8 cs;
-> > > >> +} __packed;
-> 
-> Perhaps too much context have been lost here, but unless you're sharing
-> this struct with user space, you should be using u8 (without __) above
-> (and elsewhere).
-> 
+Patch applied for fixes.
 
-These struct don't be shard with user space so I will turn __u8 into u8.
-
-Thanks so much for all suggestions. 
-
-> Johan
+Yours,
+Linus Walleij
