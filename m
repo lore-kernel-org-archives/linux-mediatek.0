@@ -1,162 +1,177 @@
-From: Honghui Zhang <honghui.zhang@mediatek.com>
-Subject: Re: [PATCH 1/4] PCI: mediatek: fixup mtk_pcie_find_port logical
-Date: Fri, 29 Jun 2018 15:51:46 +0800
-Message-ID: <1530258706.28284.50.camel@mhfsdcap03>
-References: <1530091298-28120-1-git-send-email-honghui.zhang@mediatek.com>
-         <1530091298-28120-2-git-send-email-honghui.zhang@mediatek.com>
-         <20180628130737.GA90450@bhelgaas-glaptop.roam.corp.google.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v22 4/4] soc: mediatek: Add Mediatek CMDQ helper
+Date: Fri, 29 Jun 2018 17:22:03 +0800
+Message-ID: <1530264123.22098.12.camel@mtksdaap41>
+References: <1530098172-31385-1-git-send-email-houlong.wei@mediatek.com>
+         <1530098172-31385-5-git-send-email-houlong.wei@mediatek.com>
+         <1530182516.8518.11.camel@mtksdaap41>
+         <1530228739.21991.14.camel@mhfsdcap03>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180628130737.GA90450@bhelgaas-glaptop.roam.corp.google.com>
+In-Reply-To: <1530228739.21991.14.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: lorenzo.pieralisi@arm.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, youlin.pei@mediatek.com, hongkun.cao@mediatek.com, sean.wang@mediatek.com, yt.shen@mediatek.com, yong.wu@mediatek.com
+To: houlong wei <houlong.wei@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, Bibby Hsieh =?UTF-8?Q?=28=E8=AC=9D=E6=BF=9F=E9=81=A0=29?= <Bibby.Hsieh@mediatek.com>, YT
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2018-06-28 at 08:07 -0500, Bjorn Helgaas wrote:
-> On Wed, Jun 27, 2018 at 05:21:35PM +0800, honghui.zhang@mediatek.com wrote:
-> > From: Honghui Zhang <honghui.zhang@mediatek.com>
+Hi, Houlong:
+
+On Fri, 2018-06-29 at 07:32 +0800, houlong wei wrote:
+> On Thu, 2018-06-28 at 18:41 +0800, CK Hu wrote:
+> > Hi, Houlong:
 > > 
-> > Mediatek's host controller have two slots, each have it's own control
-> > registers. The host driver need to identify which slot was connected
-> > in order to access the device's configuration space. There's problem
-> > for current host driver to find out which slot was connected to for
-> > a given EP device.
-> 
->   The Mediatek host controller has two slots, each with its own control
->   registers.
-
-Thanks, I will update it in the next version.
-
-> 
-> > Assuming each slot have connect with one EP device as below:
+> > Some inline comment.
 > > 
-> >                 host bridge
-> >   bus 0 --> __________|_______
-> >            |                  |
-> >            |                  |
-> >          slot 0             slot 1
-> >   bus 1 -->|        bus 2 --> |
-> >            |                  |
-> >          EP 0               EP 1
+> > On Wed, 2018-06-27 at 19:16 +0800, Houlong Wei wrote:
+> > > Add Mediatek CMDQ helper to create CMDQ packet and assemble GCE op code.
+> > > 
+> > > Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
+> > > Signed-off-by: HS Liao <hs.liao@mediatek.com>
+> > > ---
+> > >  drivers/soc/mediatek/Kconfig           |   12 ++
+> > >  drivers/soc/mediatek/Makefile          |    1 +
+> > >  drivers/soc/mediatek/mtk-cmdq-helper.c |  258 ++++++++++++++++++++++++++++++++
+> > >  include/linux/soc/mediatek/mtk-cmdq.h  |  132 ++++++++++++++++
+> > >  4 files changed, 403 insertions(+)
+> > >  create mode 100644 drivers/soc/mediatek/mtk-cmdq-helper.c
+> > >  create mode 100644 include/linux/soc/mediatek/mtk-cmdq.h
+> > > 
+> > > diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+> > > index a7d0667..17bd759 100644
+> > > --- a/drivers/soc/mediatek/Kconfig
+> > > +++ b/drivers/soc/mediatek/Kconfig
+> > > @@ -4,6 +4,18 @@
+> > >  menu "MediaTek SoC drivers"
+> > >  	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > >  
 > > 
-> > While PCI emulation, system software will scan all the PCI device
-> 
-> s/While PCI emulation/During PCI enumeration/
 
-Thanks, will update this.
+[...]
 
-> 
-> > starting from devfn 0. So it will get the proper port for slot0 and
-> > slot1 device when using PCI_SLOT(devfn) for match. But it will get
-> > the wrong slot for EP1: The devfn will be start from 0 when scanning
-> > EP1 behind slot1, it will get port0 since the PCI_SLOT(EP1) is match
-> > for port0's slot value. So the host driver should not using EP's devfn
-> > but the slot's devfn(the slot which EP was connected to) for match.
+> > > +
+> > > +static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+> > > +{
+> > > +	int err;
+> > > +
+> > > +	if (cmdq_pkt_is_finalized(pkt))
+> > > +		return 0;
+> > > +
+> > > +	/* insert EOC and generate IRQ for each command iteration */
+> > > +	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_EOC, 0, CMDQ_EOC_IRQ_EN);
+> > > +	if (err < 0)
+> > > +		return err;
+> > > +
+> > > +	/* JUMP to end */
+> > > +	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_JUMP, 0, CMDQ_JUMP_PASS);
+> > > +	if (err < 0)
+> > > +		return err;
+> > > +
+> > > +	return 0;
+> > > +}
+> > > +
+> > > +int cmdq_pkt_flush_async(struct cmdq_client *client, struct cmdq_pkt *pkt,
+> > > +			 cmdq_async_flush_cb cb, void *data)
+> > > +{
+> > > +	int err;
+> > > +	struct device *dev;
+> > > +	dma_addr_t dma_addr;
+> > > +
+> > > +	err = cmdq_pkt_finalize(pkt);
+> > > +	if (err < 0)
+> > > +		return err;
+> > > +
+> > > +	dev = client->chan->mbox->dev;
+> > > +	dma_addr = dma_map_single(dev, pkt->va_base, pkt->cmd_buf_size,
+> > > +		DMA_TO_DEVICE);
 > > 
-> > This patch fix the mtk_pcie_find_port's logical by using the slot's
-> > devfn for match.
+> > You map here, but I could not find unmap, so the unmap should be done in
+> > client driver. I would prefer a symmetric map/unmap which means that
+> > both map and unmap are done in client driver. I think you put map here
+> > because you should map after finalize. 
+> 
+> The unmap is done before callback to client, in function
+> cmdq_task_exec_done, mtk-cmdq-mailbox.c.
+
+You put unmap in mailbox controller, and map here (here would be mailbox
+client), so this is not symmetric. If the code is asymmetric, it's easy
+to cause bug and not easy to maintain. So I would like move both
+map/unmap to client driver.
+
+> 
+> > Therefore, export
+> > cmdq_pkt_finalize() to client driver and let client do finalize, so
+> > there is no finalize in flush function. This method have a benefit that
+> > if client reuse command buffer, it need not to map/unmap frequently.
+> 
+> If client reuse command buffer or cmdq_pkt(command queue packet), client
+> will add new commands to the cmdq_pkt, so map/unmap are necessary for
+> each cmdq_pkt flush.
+
+If the buffer size is 4K bytes, client driver could map the whole 4K at
+initialization. Before it write new command, it call
+dma_sync_single_for_cpu(), after it write new command, it call
+dma_sync_single_for_device(). And then it could flush this buffer to
+mailbox controller. So client driver just call dma sync function when it
+reuse the command buffer. dma sync function is much lightweight then dma
+map because map would search the memory area which could be mapped.
+
+Regards,
+CK
+
+> 
 > > 
-> > Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> > Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
-> > ---
-> >  drivers/pci/controller/pcie-mediatek.c | 17 +++++++++++++++--
-> >  1 file changed, 15 insertions(+), 2 deletions(-)
+> > Regards,
+> > CK
 > > 
-> > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> > index 0baabe3..9cf7ecf 100644
-> > --- a/drivers/pci/controller/pcie-mediatek.c
-> > +++ b/drivers/pci/controller/pcie-mediatek.c
-> > @@ -337,10 +337,23 @@ static struct mtk_pcie_port *mtk_pcie_find_port(struct pci_bus *bus,
-> >  {
-> >  	struct mtk_pcie *pcie = bus->sysdata;
-> >  	struct mtk_pcie_port *port;
-> > +	struct pci_dev *dev;
-> > +	struct pci_bus *pbus;
-> >  
-> > -	list_for_each_entry(port, &pcie->ports, list)
-> > -		if (port->slot == PCI_SLOT(devfn))
-> > +	list_for_each_entry(port, &pcie->ports, list) {
-> 
-> mvebu has the identical hardware structure but uses an array instead
-> of a list:
-> 
->   num = of_get_available_child_count(np);
->   pcie->ports = devm_kcalloc(dev, num, sizeof(*pcie->ports), GFP_KERNEL);
->   for_each_available_child_of_node(np, child) {
->     struct mvebu_pcie_port *port = &pcie->ports[i];
->     mvebu_pcie_parse_port(pcie, port, child);
->   }
-> 
-> It would be nice if mvebu and mtk used the same strategy so the code
-> looks the same.
-
-Seems there's different approach existing in current host controller
-driver for this, tegra PCIe is using list too.
-I guess I can change it to using array after this problem is fixed if
-you have strong opinion here.
-
-> 
-> > +		if (bus->number == 0 && port->slot == PCI_SLOT(devfn)) {
-> 
-> Is the root bus number fixed at 0 or is it programmable?  Many drivers
-> do something like this:
-
-The primary bus number is fixed at 0.(technically speaking, hardware
-will capture the very first value of primary bus number, once it's been
-captured, change the value in configuration space will not take effort. 
-
-But the hardware default value is 0, the hardware will not response to
-other values except 0 at the first time. And the only way to touch the
-value in it's configuration space is using primary bus number 0. So it
-could be taken as fixed at 0.)
-
-> 
->   if (bus->number == pcie->root_bus_nr)
-> 
-> to handle the case of the root bus number being programmable.
-> 
-> >  			return port;
-> > +		} else if (bus->number != 0) {
-> > +			pbus = bus;
-> > +			do {
-> > +				dev = pbus->self;
-> > +				if (port->slot == PCI_SLOT(dev->devfn))
-> > +					return port;
-> > +
-> > +				pbus = dev->bus;
-> > +			} while (dev->bus->number != 0);
-> 
-> You should not need to search up the tree of dev->bus->self.
-> 
-> mvebu_pcie_find_port() checks the root port secondary and subordinate
-> bus numbers, which should work here, too.
-> 
-
-I checked mvebu's host driver, it using software bridge to abstract a
-pseudo bridge. And access to this pseudo bridge's configuration space is
-all software behavior.
-
-If I following mvebu's way, I need to touch the hardware to read back
-the secondary and subordinary bus number, I think current software
-solution is more efficient.
-
-Or I could add per port parameter to store the bus_number, and update
-the value as mvebu's driver is doing. Do you think it's better than
-current solution?
-
-> > +		}
-> > +	}
-> >  
-> >  	return NULL;
-> >  }
-> > -- 
-> > 2.6.4
+> > > +	if (dma_mapping_error(dev, dma_addr)) {
+> > > +		dev_err(client->chan->mbox->dev, "dma map failed\n");
+> > > +		return -ENOMEM;
+> > > +	}
+> > > +
+> > > +	pkt->pa_base = dma_addr;
+> > > +	pkt->cb.cb = cb;
+> > > +	pkt->cb.data = data;
+> > > +
+> > > +	mbox_send_message(client->chan, pkt);
+> > > +	/* We can send next packet immediately, so just call txdone. */
+> > > +	mbox_client_txdone(client->chan, 0);
+> > > +
+> > > +	return 0;
+> > > +}
+> > > +EXPORT_SYMBOL(cmdq_pkt_flush_async);
+> > > +
+> > > +struct cmdq_flush_completion {
+> > > +	struct completion cmplt;
+> > > +	bool err;
+> > > +};
+> > > +
+> > > +static void cmdq_pkt_flush_cb(struct cmdq_cb_data data)
+> > > +{
+> > > +	struct cmdq_flush_completion *cmplt = data.data;
+> > > +
+> > > +	cmplt->err = data.err;
+> > > +	complete(&cmplt->cmplt);
+> > > +}
+> > > +
+> > > +int cmdq_pkt_flush(struct cmdq_client *client, struct cmdq_pkt *pkt)
+> > > +{
+> > > +	struct cmdq_flush_completion cmplt;
+> > > +	int err;
+> > > +
+> > > +	init_completion(&cmplt.cmplt);
+> > > +	err = cmdq_pkt_flush_async(client, pkt, cmdq_pkt_flush_cb, &cmplt);
+> > > +	if (err < 0)
+> > > +		return err;
+> > > +	wait_for_completion(&cmplt.cmplt);
+> > > +
+> > > +	return cmplt.err ? -EFAULT : 0;
+> > > +}
+> > > +EXPORT_SYMBOL(cmdq_pkt_flush);
+> > 
+> > [...]
 > > 
 > > 
-> > _______________________________________________
-> > linux-arm-kernel mailing list
-> > linux-arm-kernel@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+> 
+> 
