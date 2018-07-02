@@ -1,73 +1,167 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 4/6] arm64: dts: mediatek: Add missing cooling device
- properties for CPUs
-Date: Mon, 2 Jul 2018 18:56:47 +0200
-Message-ID: <003321e5-3d47-9626-ee65-be5abd54a3ae@gmail.com>
-References: <cover.1527225682.git.viresh.kumar@linaro.org>
- <49b1086c104b0ee22f6e992a0abb380de9320c09.1527225682.git.viresh.kumar@linaro.org>
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Subject: Re: [PATCH] pci: fix I/O space page leak
+Date: Mon, 2 Jul 2018 22:40:31 +0300
+Message-ID: <b881add9-b428-938e-947d-b44d04c34dd6@cogentembedded.com>
+References: <1ca6adde-a91e-84d0-c7dc-fd01bfd9edcc@cogentembedded.com>
+ <20180628132259.GB90450@bhelgaas-glaptop.roam.corp.google.com>
+ <20180628142615.GA9101@red-moon>
+ <ac015f99-c310-3701-35ce-846393b61235@cogentembedded.com>
+ <20180702103316.GA10784@red-moon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <49b1086c104b0ee22f6e992a0abb380de9320c09.1527225682.git.viresh.kumar@linaro.org>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Viresh Kumar <viresh.kumar@linaro.org>, arm@kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
-Cc: Vincent Guittot <vincent.guittot@linaro.org>, ionela.voinescu@arm.com, Daniel Lezcano <daniel.lezcano@linaro.org>, chris.redpath@arm.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180702103316.GA10784@red-moon>
+Content-Language: en-MW
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Rob Herring <robh@kernel.org>, Joao Pinto <Joao.Pinto@synopsys.com>, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-renesas-soc@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Bjorn Helgaas <helgaas@kernel.org>, Tanmay Inamdar <tinamdar@apm.com>, Jingoo Han <jingoohan1@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On 07/02/2018 01:33 PM, Lorenzo Pieralisi wrote:
 
+>>>>> When testing the R-Car PCIe driver on the Condor board, I noticed that iff
+>>>>> I  left the PCIe PHY driver disabled, the kernel crashed  with this BUG:
+>>>>>
+>>>>> [    1.225819] kernel BUG at lib/ioremap.c:72!
+>>>>> [    1.230007] Internal error: Oops - BUG: 0 [#1] PREEMPT SMP
+>>>>> [    1.235496] Modules linked in:
+>>>>> [    1.238561] CPU: 0 PID: 39 Comm: kworker/0:1 Not tainted 4.17.0-dirty #1092
+>>>>> [    1.245526] Hardware name: Renesas Condor board based on r8a77980 (DT)
+>>>>> [    1.252075] Workqueue: events deferred_probe_work_func
+>>>>> [    1.257220] pstate: 80000005 (Nzcv daif -PAN -UAO)
+>>>>> [    1.262024] pc : ioremap_page_range+0x370/0x3c8
+>>>>> [    1.266558] lr : ioremap_page_range+0x40/0x3c8
+>>>>> [    1.271002] sp : ffff000008da39e0
+>>>>> [    1.274317] x29: ffff000008da39e0 x28: 00e8000000000f07
+>>>>> [    1.279636] x27: ffff7dfffee00000 x26: 0140000000000000
+>>>>> [    1.284954] x25: ffff7dfffef00000 x24: 00000000000fe100
+>>>>> [    1.290272] x23: ffff80007b906000 x22: ffff000008ab8000
+>>>>> [    1.295590] x21: ffff000008bb1d58 x20: ffff7dfffef00000
+>>>>> [    1.300909] x19: ffff800009c30fb8 x18: 0000000000000001
+>>>>> [    1.306226] x17: 00000000000152d0 x16: 00000000014012d0
+>>>>> [    1.311544] x15: 0000000000000000 x14: 0720072007200720
+>>>>> [    1.316862] x13: 0720072007200720 x12: 0720072007200720
+>>>>> [    1.322180] x11: 0720072007300730 x10: 00000000000000ae
+>>>>> [    1.327498] x9 : 0000000000000000 x8 : ffff7dffff000000
+>>>>> [    1.332816] x7 : 0000000000000000 x6 : 0000000000000100
+>>>>> [    1.338134] x5 : 0000000000000000 x4 : 000000007b906000
+>>>>> [    1.343452] x3 : ffff80007c61a880 x2 : ffff7dfffeefffff
+>>>>> [    1.348770] x1 : 0000000040000000 x0 : 00e80000fe100f07
+>>>>> [    1.354090] Process kworker/0:1 (pid: 39, stack limit = 0x        (ptrval))
+>>>>> [    1.361056] Call trace:
+>>>>> [    1.363504]  ioremap_page_range+0x370/0x3c8
+>>>>> [    1.367695]  pci_remap_iospace+0x7c/0xac
+>>>>> [    1.371624]  pci_parse_request_of_pci_ranges+0x13c/0x190
+>>>>> [    1.376945]  rcar_pcie_probe+0x4c/0xb04
+>>>>> [    1.380786]  platform_drv_probe+0x50/0xbc
+>>>>> [    1.384799]  driver_probe_device+0x21c/0x308
+>>>>> [    1.389072]  __device_attach_driver+0x98/0xc8
+>>>>> [    1.393431]  bus_for_each_drv+0x54/0x94
+>>>>> [    1.397269]  __device_attach+0xc4/0x12c
+>>>>> [    1.401107]  device_initial_probe+0x10/0x18
+>>>>> [    1.405292]  bus_probe_device+0x90/0x98
+>>>>> [    1.409130]  deferred_probe_work_func+0xb0/0x150
+>>>>> [    1.413756]  process_one_work+0x12c/0x29c
+>>>>> [    1.417768]  worker_thread+0x200/0x3fc
+>>>>> [    1.421522]  kthread+0x108/0x134
+>>>>> [    1.424755]  ret_from_fork+0x10/0x18
+>>>>> [    1.428334] Code: f9004ba2 54000080 aa0003fb 17ffff48 (d4210000)
+>>>>>
+>>>>> It turned out that pci_remap_iospace() wasn't undone when the driver's
+>>>>> probe failed, and since devm_phy_optional_get() returned -EPROBE_DEFER,
+>>>>> the probe was retried,  finally causing the BUG due to trying to remap
+>>>>> already remapped pages.
+>>>>>
+>>>>> The most feasible solution seems to introduce devm_pci_remap_iospace()
+>>>>> and call it instead of pci_remap_iospace(), so that the pages get unmapped
+>>>>> automagically on any probe failure.
+>>>>>
+>>>>> And  while fixing pci_parse_request_of_pci_ranges(), aslo fix the other
+>>>>> drivers that have probably copied the bad example...
+>>>>>
+>>>>> Fixes: 4e64dbe226e7 ("PCI: generic: Expose pci_host_common_probe() for use by other drivers")
+>>>>> Fixes: cbce7900598c ("PCI: designware: Make driver arch-agnostic")
+>>>>> Fixes: 8c39d710363c ("PCI: aardvark: Add Aardvark PCI host controller driver")
+>>>>> Fixes: d3c68e0a7e34 ("PCI: faraday: Add Faraday Technology FTPCI100 PCI Host Bridge driver")
+>>>>> Fixes: 68a15eb7bd0c ("PCI: v3-semi: Add V3 Semiconductor PCI host driver")
+>>>>> Fixes: b7e78170efd4 ("PCI: versatile: Add DT-based ARM Versatile PB PCIe host driver")
+>>>>> Fixes: 5f6b6ccdbe1c ("PCI: xgene: Add APM X-Gene PCIe driver")
+>>>>> Fixes: 637cfacae96f ("PCI: mediatek: Add MediaTek PCIe host controller support")
+>>>>> Signed-off-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+>>>>> Cc: stable@vger.kernel.org
+>>>>
+>>>> Let me know if you want me to take this, Lorenzo, otherwise:
+>>>> s/pci: fix/PCI: Fix/ and
+>>>>
+>>>> Acked-by: Bjorn Helgaas <bhelgaas@google.com>
+>>>
+>>> Thank you Bjorn, yes it could go in as a fix but IMO it has to be split,
+>>> more so given the stable tag (and I think that each "Fixes" tag should
+>>> be self-contained),
+>>
+>>    It cannot be self-contained because it'll depend on the initial
+>> commit adding devm_pci_remap_iobase(). If you mean finding the
+>> earliest broken driver and introduce the deviec managed API while
+>> fixing it and then make use of that
+>> API in the subsequent patches, that surely can be done.
+> 
+> Yes I think that's the best course of action.
 
-On 25/05/18 07:40, Viresh Kumar wrote:
-> The cooling device properties, like "#cooling-cells" and
-> "dynamic-power-coefficient", should either be present for all the CPUs
-> of a cluster or none. If these are present only for a subset of CPUs of
-> a cluster then things will start falling apart as soon as the CPUs are
-> brought online in a different order. For example, this will happen
-> because the operating system looks for such properties in the CPU node
-> it is trying to bring up, so that it can register a cooling device.
-> 
-> Add such missing properties.
-> 
-> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+   OK! :-)
 
-pushed now to v4.18-next/dts64
+>>> merging it as-is would give Greg (and us) a
+>>> headache when it comes to backporting it.
+>>
+>>    The patch interdependency would give him headache too, and I was
+>> hoping to relieve those with the monilitic patch. :-)
+> 
+> The problem is that if any of the fixes has to be reverted we have
+> to revert the whole thing instead of just the problematic patch,
+> which, given that we are sending this to stable kernels may easily
+> turn out quite complicated.
+> 
+> So, I would add the new API along with the earliest broken driver
+> and mark it for stable.
+> 
+> In the same thread, add all other fixes (one per patch) without the
+> stable tag. When the first fix gets merged into the mainline (and
+> consequently goes to stable) we can send the stable backports for the
+> remainder of fixes.
+> 
+> How does that sound ?
 
-> ---
->  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 1 +
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 2 ++
->  2 files changed, 3 insertions(+)
+   I think the -stable maintainers are actively looking at the Fixes: tags
+these days, not only at stable@vger.kernel.org.  I can do thsat
+
+>>> Honestly I think it is best to split it up and send it for v4.19 but
+>>> I am happy to hear other options.
+>>
+>>    I disagree about 4.19. The R-Car PCIe situation is as follows:
+>> given me missing to get the PHY driver merged into 4.18 (and the
+>> gen3 PCIe stuff successfully merged into 4.18), the user is bound to
+>> have PCIe not working (if he doesn't refer to the PHY driver in DT)
+>> or encounter a kernel BUG (if he does refer to the PHY driver), thus
+
+   s/driver/device/, of course. :-)
+
+>> I'd like this BUG to be fixed in 4.18 time frame...
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> index 9213c966c224..d49fe125e770 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> @@ -89,6 +89,7 @@
->  				 <&apmixedsys CLK_APMIXED_MAIN_CORE_EN>;
->  			clock-names = "cpu", "intermediate";
->  			operating-points-v2 = <&cpu_opp_table>;
-> +			#cooling-cells = <2>;
->  			enable-method = "psci";
->  			clock-frequency = <1300000000>;
->  		};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index 94597e33c806..abd2f15a544b 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -168,6 +168,7 @@
->  			reg = <0x001>;
->  			enable-method = "psci";
->  			cpu-idle-states = <&CPU_SLEEP_0>;
-> +			#cooling-cells = <2>;
->  			clocks = <&infracfg CLK_INFRA_CA53SEL>,
->  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
->  			clock-names = "cpu", "intermediate";
-> @@ -193,6 +194,7 @@
->  			reg = <0x101>;
->  			enable-method = "psci";
->  			cpu-idle-states = <&CPU_SLEEP_0>;
-> +			#cooling-cells = <2>;
->  			clocks = <&infracfg CLK_INFRA_CA57SEL>,
->  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
->  			clock-names = "cpu", "intermediate";
-> 
+> We shall try, please let me know if you are able to respin asap,
+> we already have a bunch of fixes queued.
+
+   I can probably try -- despite I'm on vacations and the football
+championship is still going on. :-)
+
+> Thanks for putting it together,
+> Lorenzo
+
+MBR, Sergei
