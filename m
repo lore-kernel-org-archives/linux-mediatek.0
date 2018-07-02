@@ -1,77 +1,55 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v7 00/29] Add support for mediatek SOC MT2712
-Date: Mon, 2 Jul 2018 09:39:10 +0800
-Message-ID: <1530495550.4568.2.camel@mtksdaap41>
-References: <1529482771-2153-1-git-send-email-stu.hsieh@mediatek.com>
+From: <honghui.zhang@mediatek.com>
+Subject: [PATCH v2 0/4] PCI: mediatek: fixup find_port, enable_msi and add pm, module support
+Date: Mon, 2 Jul 2018 11:49:40 +0800
+Message-ID: <1530503384-1218-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1529482771-2153-1-git-send-email-stu.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+To: lorenzo.pieralisi@arm.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com
+Cc: honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Stu:
+From: Honghui Zhang <honghui.zhang@mediatek.com>
 
-On Wed, 2018-06-20 at 16:19 +0800, Stu Hsieh wrote:
-> This patch add support for the Mediatek MT2712 DISP subsystem.
-> MT2712 is base on MT8173, there are some difference as following:
-> MT2712 support three disp output(two ovl and one rdma)
-> 
+This patchset includes misc patchs:
 
-For the series, applied to mediatek-drm-next-4.19 [1], the patch
-'drm/mediatek: Add support for mediatek SOC MT2712' has line over 80
-character, so I've modified it.
+The first patch fixup the mtk_pcie_find_port logical which will cause system
+could not touch the EP's configuration space which was connected to PCIe slot 1.
 
-[1]
-https://github.com/ckhu-mediatek/linux.git-tags/commits/mediatek-drm-next-4.19
+The second patch fixup the enable msi logical, the operation to enable msi
+should be after system clock is enabled. The function of mtk_pcie_startup_port_v2's
+define location is re-arranged to avoid mtk_pcie_enable_msi's forward declaration.
+And call mtk_pcie_enable_msi in mtk_pcie_startup_port_v2 since the clock was all
+enabled at that time.
 
-Regards,
-CK
+The third patch was rebased and refactor of the v4 patch[1], changes are:
+ -Add PM support for MT7622.
+ -Using mtk_pcie_enable_port to re-establish the link when resumed.
+ -Rebase on the previous two patches.
 
-> Change in v6:
-> - Update commit message for the patch
->   "drm/mediatek: Update the definition of connection from RDMA1 to DPI0"
-> 
-> Stu Hsieh (29):
->   drm/mediatek: update dt-bindings for mt2712
->   drm/mediatek: support maximum 64 mutex mod
->   drm/mediatek: add ddp component AAL1
->   drm/mediatek: add ddp component OD1
->   drm/mediatek: add ddp component PWM1
->   drm/mediatek: add ddp component PWM2
->   drm/mediatek: add component DPI1
->   drm/mediatek: add component DSI2
->   drm/mediatek: add component DSI3
->   drm/mediatek: add the DSI1 for component init condition
->   drm/mediatek: add connection from OD1 to RDMA1
->   drm/mediatek: Update the definition of connection from RDMA1 to DPI0
->   drm/mediatek: add connection from RDMA0 to DPI0
->   drm/mediatek: add connection from RDMA0 to DSI2
->   drm/mediatek: add connection from RDMA0 to DSI3
->   drm/mediatek: add connection from RDMA1 to DPI1
->   drm/mediatek: add connection from RDMA1 to DSI1
->   drm/mediatek: add connection from RDMA1 to DSI2
->   drm/mediatek: add connection from RDMA1 to DSI3
->   drm/mediatek: add connection from RDMA2 to DPI0
->   drm/mediatek: add connection from RDMA2 to DPI1
->   drm/mediatek: add connection from RDMA2 to DSI1
->   drm/mediatek: add connection from RDMA2 to DSI2
->   drm/mediatek: add connection from RDMA2 to DSI3
->   drm/mediatek: add DPI1 support for mutex
->   drm/mediatek: add DSI2 support for mutex
->   drm/mediatek: add DSI3 support for mutex
->   drm/mediatek: add third ddp path
->   drm/mediatek: Add support for mediatek SOC MT2712
-> 
->  .../bindings/display/mediatek/mediatek,disp.txt    |   2 +-
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c            |   3 +
->  drivers/gpu/drm/mediatek/mtk_drm_ddp.c             | 235 ++++++++++++++++++---
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c        |  15 +-
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h        |  10 +-
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  47 ++++-
->  drivers/gpu/drm/mediatek/mtk_drm_drv.h             |   5 +-
->  7 files changed, 274 insertions(+), 43 deletions(-)
-> 
+The fourth patch add loadable kernel module support.
+
+Some of those patches was already reviewed-by Ryder Lee <ryder.lee@mediatek.com>,
+so I just add the Reviewed-by tags in those patches.
+
+[1] https://patchwork.kernel.org/patch/10479079
+
+Change since v1:
+ - A bit of code refact of the first patch suggested by Andy Shevchenko, and
+   commit message updated.
+ - Using __maybe_unused.
+ - Remove the redundant list_empty check of the fourth patch.
+
+Honghui Zhang (4):
+  PCI: mediatek: fixup mtk_pcie_find_port logical
+  PCI: mediatek: enable msi after clock enabled
+  PCI: mediatek: Add system pm support for MT2712 and MT7622
+  PCI: mediatek: Add loadable kernel module support
+
+ drivers/pci/controller/Kconfig         |   2 +-
+ drivers/pci/controller/pcie-mediatek.c | 289 ++++++++++++++++++++++++---------
+ 2 files changed, 213 insertions(+), 78 deletions(-)
+
+-- 
+2.6.4
