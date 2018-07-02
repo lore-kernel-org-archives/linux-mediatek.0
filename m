@@ -1,140 +1,156 @@
-From: <honghui.zhang@mediatek.com>
-Subject: [PATCH v3 3/4] PCI: mediatek: Add system pm support for MT2712 and MT7622
-Date: Mon, 2 Jul 2018 15:57:43 +0800
-Message-ID: <1530518264-6125-4-git-send-email-honghui.zhang@mediatek.com>
-References: <1530518264-6125-1-git-send-email-honghui.zhang@mediatek.com>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH] pci: fix I/O space page leak
+Date: Mon, 2 Jul 2018 11:33:16 +0100
+Message-ID: <20180702103316.GA10784@red-moon>
+References: <1ca6adde-a91e-84d0-c7dc-fd01bfd9edcc@cogentembedded.com>
+ <20180628132259.GB90450@bhelgaas-glaptop.roam.corp.google.com>
+ <20180628142615.GA9101@red-moon>
+ <ac015f99-c310-3701-35ce-846393b61235@cogentembedded.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1530518264-6125-1-git-send-email-honghui.zhang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: lorenzo.pieralisi@arm.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com
-Cc: honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <ac015f99-c310-3701-35ce-846393b61235@cogentembedded.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Rob Herring <robh@kernel.org>, Joao Pinto <Joao.Pinto@synopsys.com>, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-renesas-soc@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Bjorn Helgaas <helgaas@kernel.org>, Tanmay Inamdar <tinamdar@apm.com>, Jingoo Han <jingoohan1@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+On Sat, Jun 30, 2018 at 01:37:18PM +0300, Sergei Shtylyov wrote:
+> Hello!
+> 
+> On 6/28/2018 5:26 PM, Lorenzo Pieralisi wrote:
+> 
+> >>>When testing the R-Car PCIe driver on the Condor board, I noticed that iff
+> >>>I  left the PCIe PHY driver disabled, the kernel crashed  with this BUG:
+> >>>
+> >>>[    1.225819] kernel BUG at lib/ioremap.c:72!
+> >>>[    1.230007] Internal error: Oops - BUG: 0 [#1] PREEMPT SMP
+> >>>[    1.235496] Modules linked in:
+> >>>[    1.238561] CPU: 0 PID: 39 Comm: kworker/0:1 Not tainted 4.17.0-dirty #1092
+> >>>[    1.245526] Hardware name: Renesas Condor board based on r8a77980 (DT)
+> >>>[    1.252075] Workqueue: events deferred_probe_work_func
+> >>>[    1.257220] pstate: 80000005 (Nzcv daif -PAN -UAO)
+> >>>[    1.262024] pc : ioremap_page_range+0x370/0x3c8
+> >>>[    1.266558] lr : ioremap_page_range+0x40/0x3c8
+> >>>[    1.271002] sp : ffff000008da39e0
+> >>>[    1.274317] x29: ffff000008da39e0 x28: 00e8000000000f07
+> >>>[    1.279636] x27: ffff7dfffee00000 x26: 0140000000000000
+> >>>[    1.284954] x25: ffff7dfffef00000 x24: 00000000000fe100
+> >>>[    1.290272] x23: ffff80007b906000 x22: ffff000008ab8000
+> >>>[    1.295590] x21: ffff000008bb1d58 x20: ffff7dfffef00000
+> >>>[    1.300909] x19: ffff800009c30fb8 x18: 0000000000000001
+> >>>[    1.306226] x17: 00000000000152d0 x16: 00000000014012d0
+> >>>[    1.311544] x15: 0000000000000000 x14: 0720072007200720
+> >>>[    1.316862] x13: 0720072007200720 x12: 0720072007200720
+> >>>[    1.322180] x11: 0720072007300730 x10: 00000000000000ae
+> >>>[    1.327498] x9 : 0000000000000000 x8 : ffff7dffff000000
+> >>>[    1.332816] x7 : 0000000000000000 x6 : 0000000000000100
+> >>>[    1.338134] x5 : 0000000000000000 x4 : 000000007b906000
+> >>>[    1.343452] x3 : ffff80007c61a880 x2 : ffff7dfffeefffff
+> >>>[    1.348770] x1 : 0000000040000000 x0 : 00e80000fe100f07
+> >>>[    1.354090] Process kworker/0:1 (pid: 39, stack limit = 0x        (ptrval))
+> >>>[    1.361056] Call trace:
+> >>>[    1.363504]  ioremap_page_range+0x370/0x3c8
+> >>>[    1.367695]  pci_remap_iospace+0x7c/0xac
+> >>>[    1.371624]  pci_parse_request_of_pci_ranges+0x13c/0x190
+> >>>[    1.376945]  rcar_pcie_probe+0x4c/0xb04
+> >>>[    1.380786]  platform_drv_probe+0x50/0xbc
+> >>>[    1.384799]  driver_probe_device+0x21c/0x308
+> >>>[    1.389072]  __device_attach_driver+0x98/0xc8
+> >>>[    1.393431]  bus_for_each_drv+0x54/0x94
+> >>>[    1.397269]  __device_attach+0xc4/0x12c
+> >>>[    1.401107]  device_initial_probe+0x10/0x18
+> >>>[    1.405292]  bus_probe_device+0x90/0x98
+> >>>[    1.409130]  deferred_probe_work_func+0xb0/0x150
+> >>>[    1.413756]  process_one_work+0x12c/0x29c
+> >>>[    1.417768]  worker_thread+0x200/0x3fc
+> >>>[    1.421522]  kthread+0x108/0x134
+> >>>[    1.424755]  ret_from_fork+0x10/0x18
+> >>>[    1.428334] Code: f9004ba2 54000080 aa0003fb 17ffff48 (d4210000)
+> >>>
+> >>>It turned out that pci_remap_iospace() wasn't undone when the driver's
+> >>>probe failed, and since devm_phy_optional_get() returned -EPROBE_DEFER,
+> >>>the probe was retried,  finally causing the BUG due to trying to remap
+> >>>already remapped pages.
+> >>>
+> >>>The most feasible solution seems to introduce devm_pci_remap_iospace()
+> >>>and call it instead of pci_remap_iospace(), so that the pages get unmapped
+> >>>automagically on any probe failure.
+> >>>
+> >>>And  while fixing pci_parse_request_of_pci_ranges(), aslo fix the other
+> >>>drivers that have probably copied the bad example...
+> >>>
+> >>>Fixes: 4e64dbe226e7 ("PCI: generic: Expose pci_host_common_probe() for use by other drivers")
+> >>>Fixes: cbce7900598c ("PCI: designware: Make driver arch-agnostic")
+> >>>Fixes: 8c39d710363c ("PCI: aardvark: Add Aardvark PCI host controller driver")
+> >>>Fixes: d3c68e0a7e34 ("PCI: faraday: Add Faraday Technology FTPCI100 PCI Host Bridge driver")
+> >>>Fixes: 68a15eb7bd0c ("PCI: v3-semi: Add V3 Semiconductor PCI host driver")
+> >>>Fixes: b7e78170efd4 ("PCI: versatile: Add DT-based ARM Versatile PB PCIe host driver")
+> >>>Fixes: 5f6b6ccdbe1c ("PCI: xgene: Add APM X-Gene PCIe driver")
+> >>>Fixes: 637cfacae96f ("PCI: mediatek: Add MediaTek PCIe host controller support")
+> >>>Signed-off-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+> >>>Cc: stable@vger.kernel.org
+> >>
+> >>Let me know if you want me to take this, Lorenzo, otherwise:
+> >>s/pci: fix/PCI: Fix/ and
+> >>
+> >>Acked-by: Bjorn Helgaas <bhelgaas@google.com>
+> >
+> >Thank you Bjorn, yes it could go in as a fix but IMO it has to be split,
+> >more so given the stable tag (and I think that each "Fixes" tag should
+> >be self-contained),
+> 
+>    It cannot be self-contained because it'll depend on the initial
+> commit adding devm_pci_remap_iobase(). If you mean finding the
+> earliest broken driver and introduce the deviec managed API while
+> fixing it and then make use of that
+> API in the subsequent patches, that surely can be done.
 
-The MTCMOS of PCIe Host for MT2712 and MT7622 will be off when system
-suspend, and all the internal control register will be reset after system
-resume. The PCIe link should be re-established and the related control
-register values should be re-set after system resume.
+Yes I think that's the best course of action.
 
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-Acked-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/pci/controller/pcie-mediatek.c | 67 ++++++++++++++++++++++++++++++++++
- 1 file changed, 67 insertions(+)
+> >merging it as-is would give Greg (and us) a
+> >headache when it comes to backporting it.
+> 
+>    The patch interdependency would give him headache too, and I was
+> hoping to relieve those with the monilitic patch. :-)
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 86918d4..175d7b6 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -134,12 +134,14 @@ struct mtk_pcie_port;
- /**
-  * struct mtk_pcie_soc - differentiate between host generations
-  * @need_fix_class_id: whether this host's class ID needed to be fixed or not
-+ * @pm_support: whether the host's MTCMOS will be off when suspend
-  * @ops: pointer to configuration access functions
-  * @startup: pointer to controller setting functions
-  * @setup_irq: pointer to initialize IRQ functions
-  */
- struct mtk_pcie_soc {
- 	bool need_fix_class_id;
-+	bool pm_support;
- 	struct pci_ops *ops;
- 	int (*startup)(struct mtk_pcie_port *port);
- 	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
-@@ -1197,12 +1199,75 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 	return err;
- }
- 
-+static int __maybe_unused mtk_pcie_suspend_noirq(struct device *dev)
-+{
-+	struct mtk_pcie *pcie = dev_get_drvdata(dev);
-+	const struct mtk_pcie_soc *soc = pcie->soc;
-+	struct mtk_pcie_port *port;
-+
-+	if (!soc->pm_support)
-+		return 0;
-+
-+	if (list_empty(&pcie->ports))
-+		return 0;
-+
-+	list_for_each_entry(port, &pcie->ports, list) {
-+		clk_disable_unprepare(port->pipe_ck);
-+		clk_disable_unprepare(port->obff_ck);
-+		clk_disable_unprepare(port->axi_ck);
-+		clk_disable_unprepare(port->aux_ck);
-+		clk_disable_unprepare(port->ahb_ck);
-+		clk_disable_unprepare(port->sys_ck);
-+		phy_power_off(port->phy);
-+		phy_exit(port->phy);
-+	}
-+
-+	mtk_pcie_subsys_powerdown(pcie);
-+
-+	return 0;
-+}
-+
-+static int __maybe_unused mtk_pcie_resume_noirq(struct device *dev)
-+{
-+	struct mtk_pcie *pcie = dev_get_drvdata(dev);
-+	const struct mtk_pcie_soc *soc = pcie->soc;
-+	struct mtk_pcie_port *port, *tmp;
-+
-+	if (!soc->pm_support)
-+		return 0;
-+
-+	if (list_empty(&pcie->ports))
-+		return 0;
-+
-+	if (dev->pm_domain) {
-+		pm_runtime_enable(dev);
-+		pm_runtime_get_sync(dev);
-+	}
-+
-+	clk_prepare_enable(pcie->free_ck);
-+
-+	list_for_each_entry_safe(port, tmp, &pcie->ports, list)
-+		mtk_pcie_enable_port(port);
-+
-+	/* In case of EP was removed while system suspend. */
-+	if (list_empty(&pcie->ports))
-+		mtk_pcie_subsys_powerdown(pcie);
-+
-+	return 0;
-+}
-+
-+static const struct dev_pm_ops mtk_pcie_pm_ops = {
-+	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_pcie_suspend_noirq,
-+				      mtk_pcie_resume_noirq)
-+};
-+
- static const struct mtk_pcie_soc mtk_pcie_soc_v1 = {
- 	.ops = &mtk_pcie_ops,
- 	.startup = mtk_pcie_startup_port,
- };
- 
- static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
-+	.pm_support = true,
- 	.ops = &mtk_pcie_ops_v2,
- 	.startup = mtk_pcie_startup_port_v2,
- 	.setup_irq = mtk_pcie_setup_irq,
-@@ -1210,6 +1275,7 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
- 
- static const struct mtk_pcie_soc mtk_pcie_soc_mt7622 = {
- 	.need_fix_class_id = true,
-+	.pm_support = true,
- 	.ops = &mtk_pcie_ops_v2,
- 	.startup = mtk_pcie_startup_port_v2,
- 	.setup_irq = mtk_pcie_setup_irq,
-@@ -1229,6 +1295,7 @@ static struct platform_driver mtk_pcie_driver = {
- 		.name = "mtk-pcie",
- 		.of_match_table = mtk_pcie_ids,
- 		.suppress_bind_attrs = true,
-+		.pm = &mtk_pcie_pm_ops,
- 	},
- };
- builtin_platform_driver(mtk_pcie_driver);
--- 
-2.6.4
+The problem is that if any of the fixes has to be reverted we have
+to revert the whole thing instead of just the problematic patch,
+which, given that we are sending this to stable kernels may easily
+turn out quite complicated.
+
+So, I would add the new API along with the earliest broken driver
+and mark it for stable.
+
+In the same thread, add all other fixes (one per patch) without the
+stable tag. When the first fix gets merged into the mainline (and
+consequently goes to stable) we can send the stable backports for the
+remainder of fixes.
+
+How does that sound ?
+
+> >Honestly I think it is best to split it up and send it for v4.19 but
+> >I am happy to hear other options.
+> 
+>    I disagree about 4.19. The R-Car PCIe situation is as follows:
+> given me missing to get the PHY driver merged into 4.18 (and the
+> gen3 PCIe stuff successfully merged into 4.18), the user is bound to
+> have PCIe not working (if he doesn't refer to the PHY driver in DT)
+> or encounter a kernel BUG (if he does refer to the PHY driver), thus
+> I'd like this BUG to be fixed in 4.18 time frame...
+
+We shall try, please let me know if you are able to respin asap,
+we already have a bunch of fixes queued.
+
+Thanks for putting it together,
+Lorenzo
