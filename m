@@ -1,125 +1,73 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH] pci: fix I/O space page leak
-Date: Mon, 2 Jul 2018 15:12:25 +0100
-Message-ID: <20180702141216.GA30712@e107981-ln.cambridge.arm.com>
-References: <1ca6adde-a91e-84d0-c7dc-fd01bfd9edcc@cogentembedded.com>
- <20180628132259.GB90450@bhelgaas-glaptop.roam.corp.google.com>
- <20180628142615.GA9101@red-moon>
- <ac015f99-c310-3701-35ce-846393b61235@cogentembedded.com>
- <20180702103316.GA10784@red-moon>
- <CAMuHMdUCNPrpYx1xOBTL0F23r3H2jc+kg+T5-rqMe0V-2w-LqQ@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 4/6] arm64: dts: mediatek: Add missing cooling device
+ properties for CPUs
+Date: Mon, 2 Jul 2018 18:56:47 +0200
+Message-ID: <003321e5-3d47-9626-ee65-be5abd54a3ae@gmail.com>
+References: <cover.1527225682.git.viresh.kumar@linaro.org>
+ <49b1086c104b0ee22f6e992a0abb380de9320c09.1527225682.git.viresh.kumar@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <CAMuHMdUCNPrpYx1xOBTL0F23r3H2jc+kg+T5-rqMe0V-2w-LqQ@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Rob Herring <robh@kernel.org>, Joao.Pinto@synopsys.com, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, linux-pci <linux-pci@vger.kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Linux-Renesas <linux-renesas-soc@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, ryder.lee@mediatek.com, Bjorn Helgaas <helgaas@kernel.org>, Tanmay Inamdar <tinamdar@apm.com>, Jingoo Han <jingoohan1@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-mediatek@lists.infradead.org, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <49b1086c104b0ee22f6e992a0abb380de9320c09.1527225682.git.viresh.kumar@linaro.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>, arm@kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
+Cc: Vincent Guittot <vincent.guittot@linaro.org>, ionela.voinescu@arm.com, Daniel Lezcano <daniel.lezcano@linaro.org>, chris.redpath@arm.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jul 02, 2018 at 01:08:45PM +0200, Geert Uytterhoeven wrote:
-> Hi Lorenzo,
+
+
+On 25/05/18 07:40, Viresh Kumar wrote:
+> The cooling device properties, like "#cooling-cells" and
+> "dynamic-power-coefficient", should either be present for all the CPUs
+> of a cluster or none. If these are present only for a subset of CPUs of
+> a cluster then things will start falling apart as soon as the CPUs are
+> brought online in a different order. For example, this will happen
+> because the operating system looks for such properties in the CPU node
+> it is trying to bring up, so that it can register a cooling device.
 > 
-> On Mon, Jul 2, 2018 at 12:31 PM Lorenzo Pieralisi
-> <lorenzo.pieralisi@arm.com> wrote:
-> > On Sat, Jun 30, 2018 at 01:37:18PM +0300, Sergei Shtylyov wrote:
-> > > On 6/28/2018 5:26 PM, Lorenzo Pieralisi wrote:
-> > > >>>When testing the R-Car PCIe driver on the Condor board, I noticed that iff
-> > > >>>I  left the PCIe PHY driver disabled, the kernel crashed  with this BUG:
-> > > >>>
-> > > >>>[    1.225819] kernel BUG at lib/ioremap.c:72!
+> Add such missing properties.
 > 
-> > > >>>It turned out that pci_remap_iospace() wasn't undone when the driver's
-> > > >>>probe failed, and since devm_phy_optional_get() returned -EPROBE_DEFER,
-> > > >>>the probe was retried,  finally causing the BUG due to trying to remap
-> > > >>>already remapped pages.
-> > > >>>
-> > > >>>The most feasible solution seems to introduce devm_pci_remap_iospace()
-> > > >>>and call it instead of pci_remap_iospace(), so that the pages get unmapped
-> > > >>>automagically on any probe failure.
-> > > >>>
-> > > >>>And  while fixing pci_parse_request_of_pci_ranges(), aslo fix the other
-> > > >>>drivers that have probably copied the bad example...
-> > > >>>
-> > > >>>Fixes: 4e64dbe226e7 ("PCI: generic: Expose pci_host_common_probe() for use by other drivers")
-> > > >>>Fixes: cbce7900598c ("PCI: designware: Make driver arch-agnostic")
-> > > >>>Fixes: 8c39d710363c ("PCI: aardvark: Add Aardvark PCI host controller driver")
-> > > >>>Fixes: d3c68e0a7e34 ("PCI: faraday: Add Faraday Technology FTPCI100 PCI Host Bridge driver")
-> > > >>>Fixes: 68a15eb7bd0c ("PCI: v3-semi: Add V3 Semiconductor PCI host driver")
-> > > >>>Fixes: b7e78170efd4 ("PCI: versatile: Add DT-based ARM Versatile PB PCIe host driver")
-> > > >>>Fixes: 5f6b6ccdbe1c ("PCI: xgene: Add APM X-Gene PCIe driver")
-> > > >>>Fixes: 637cfacae96f ("PCI: mediatek: Add MediaTek PCIe host controller support")
-> > > >>>Signed-off-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-> > > >>>Cc: stable@vger.kernel.org
-> > > >>
-> > > >>Let me know if you want me to take this, Lorenzo, otherwise:
-> > > >>s/pci: fix/PCI: Fix/ and
-> > > >>
-> > > >>Acked-by: Bjorn Helgaas <bhelgaas@google.com>
-> > > >
-> > > >Thank you Bjorn, yes it could go in as a fix but IMO it has to be split,
-> > > >more so given the stable tag (and I think that each "Fixes" tag should
-> > > >be self-contained),
-> > >
-> > >    It cannot be self-contained because it'll depend on the initial
-> > > commit adding devm_pci_remap_iobase(). If you mean finding the
-> > > earliest broken driver and introduce the deviec managed API while
-> > > fixing it and then make use of that
-> > > API in the subsequent patches, that surely can be done.
-> >
-> > Yes I think that's the best course of action.
-> >
-> > > >merging it as-is would give Greg (and us) a
-> > > >headache when it comes to backporting it.
-> > >
-> > >    The patch interdependency would give him headache too, and I was
-> > > hoping to relieve those with the monilitic patch. :-)
-> >
-> > The problem is that if any of the fixes has to be reverted we have
-> > to revert the whole thing instead of just the problematic patch,
-> > which, given that we are sending this to stable kernels may easily
-> > turn out quite complicated.
-> >
-> > So, I would add the new API along with the earliest broken driver
-> > and mark it for stable.
-> >
-> > In the same thread, add all other fixes (one per patch) without the
-> > stable tag. When the first fix gets merged into the mainline (and
-> > consequently goes to stable) we can send the stable backports for the
-> > remainder of fixes.
-> >
-> > How does that sound ?
+> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+
+pushed now to v4.18-next/dts64
+
+> ---
+>  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 1 +
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 2 ++
+>  2 files changed, 3 insertions(+)
 > 
-> If you want to be prepared for reverting, why not split off the first fix
-> from the patch that provides the new API as well?
-> Yes, it does mean a dependency for backporting, but it avoids the mess if
-> it turns out the first fix is the (only) one that needs to be reverted.
-
-Problem is that that would give Bjorn a hard time asking to merge the
-new API as a fix as a standalone patch for an -rc, hence I suggested we
-merged it for v4.19 but Sergei is not happy with that and I understand
-his point.
-
-To be honest I'd rather start with fixing RCAR (by "fixing" the
-pci_parse_request_of_pci_ranges() call with the new devm_ API) without
-any stable tag (with commit log reporting the RCAR regression), we will
-work out how to fix and backport the rest of the drivers later.
-
-I am not even sure this fix per-se is stable kernel material, that's
-moot given that there exists an pci_unmap_iospace() API that could be
-used in drivers before they were converted to
-pci_parse_request_of_pci_ranges().
-
-Please let me know if that's reasonable, thanks.
-
-Lorenzo
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> index 9213c966c224..d49fe125e770 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> @@ -89,6 +89,7 @@
+>  				 <&apmixedsys CLK_APMIXED_MAIN_CORE_EN>;
+>  			clock-names = "cpu", "intermediate";
+>  			operating-points-v2 = <&cpu_opp_table>;
+> +			#cooling-cells = <2>;
+>  			enable-method = "psci";
+>  			clock-frequency = <1300000000>;
+>  		};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index 94597e33c806..abd2f15a544b 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -168,6 +168,7 @@
+>  			reg = <0x001>;
+>  			enable-method = "psci";
+>  			cpu-idle-states = <&CPU_SLEEP_0>;
+> +			#cooling-cells = <2>;
+>  			clocks = <&infracfg CLK_INFRA_CA53SEL>,
+>  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+>  			clock-names = "cpu", "intermediate";
+> @@ -193,6 +194,7 @@
+>  			reg = <0x101>;
+>  			enable-method = "psci";
+>  			cpu-idle-states = <&CPU_SLEEP_0>;
+> +			#cooling-cells = <2>;
+>  			clocks = <&infracfg CLK_INFRA_CA57SEL>,
+>  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+>  			clock-names = "cpu", "intermediate";
+> 
