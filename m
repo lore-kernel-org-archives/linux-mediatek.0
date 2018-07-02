@@ -1,167 +1,254 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [PATCH] pci: fix I/O space page leak
-Date: Mon, 2 Jul 2018 22:40:31 +0300
-Message-ID: <b881add9-b428-938e-947d-b44d04c34dd6@cogentembedded.com>
-References: <1ca6adde-a91e-84d0-c7dc-fd01bfd9edcc@cogentembedded.com>
- <20180628132259.GB90450@bhelgaas-glaptop.roam.corp.google.com>
- <20180628142615.GA9101@red-moon>
- <ac015f99-c310-3701-35ce-846393b61235@cogentembedded.com>
- <20180702103316.GA10784@red-moon>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: add mt6765 support
+Date: Mon, 2 Jul 2018 15:50:00 -0600
+Message-ID: <CAL_JsqKxvCxn3eb0sZVFwhUudDAkoHH5uyUgt1NY06zt-yKkQQ@mail.gmail.com>
+References: <1529978646-28976-1-git-send-email-mars.cheng@mediatek.com> <1529978646-28976-3-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180702103316.GA10784@red-moon>
-Content-Language: en-MW
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Rob Herring <robh@kernel.org>, Joao Pinto <Joao.Pinto@synopsys.com>, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-renesas-soc@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Bjorn Helgaas <helgaas@kernel.org>, Tanmay Inamdar <tinamdar@apm.com>, Jingoo Han <jingoohan1@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1529978646-28976-3-git-send-email-mars.cheng@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mars Cheng <mars.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Marc Zyngier <marc.zyngier@arm.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Choui <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 07/02/2018 01:33 PM, Lorenzo Pieralisi wrote:
+On Mon, Jun 25, 2018 at 8:04 PM Mars Cheng <mars.cheng@mediatek.com> wrote:
+>
+> This adds basic chip support for MT6765 SoC.
+>
+> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/Makefile       |    1 +
+>  arch/arm64/boot/dts/mediatek/mt6765-evb.dts |   33 ++++++
+>  arch/arm64/boot/dts/mediatek/mt6765.dtsi    |  158 +++++++++++++++++++++++++++
+>  3 files changed, 192 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index ac17f60..7506b0d 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -1,6 +1,7 @@
+>  # SPDX-License-Identifier: GPL-2.0
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt6765-evb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6765-evb.dts b/arch/arm64/boot/dts/mediatek/mt6765-evb.dts
+> new file mode 100644
+> index 0000000..36dddff2
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt6765-evb.dts
+> @@ -0,0 +1,33 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * dts file for Mediatek MT6765
+> + *
+> + * (C) Copyright 2018. Mediatek, Inc.
+> + *
+> + * Mars Cheng <mars.cheng@mediatek.com>
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt6765.dtsi"
+> +
+> +/ {
+> +       model = "MediaTek MT6765 EVB";
+> +       compatible = "mediatek,mt6765-evb", "mediatek,mt6765";
+> +
+> +       aliases {
+> +               serial0 = &uart0;
+> +       };
+> +
+> +       memory@40000000 {
+> +               device_type = "memory";
+> +               reg = <0 0x40000000 0 0x1e800000>;
+> +       };
+> +
+> +       chosen {
+> +               stdout-path = "serial0:921600n8";
+> +       };
+> +};
+> +
+> +&uart0 {
+> +       status = "okay";
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6765.dtsi b/arch/arm64/boot/dts/mediatek/mt6765.dtsi
+> new file mode 100644
+> index 0000000..ab34c0f
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt6765.dtsi
+> @@ -0,0 +1,158 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * dts file for Mediatek MT6765
+> + *
+> + * (C) Copyright 2018. Mediatek, Inc.
+> + *
+> + * Mars Cheng <mars.cheng@mediatek.com>
+> + */
+> +
+> +#include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +/ {
+> +       compatible = "mediatek,mt6765";
+> +       interrupt-parent = <&sysirq>;
+> +       #address-cells = <2>;
+> +       #size-cells = <2>;
+> +
+> +       psci {
+> +               compatible = "arm,psci-0.2";
+> +               method = "smc";
+> +       };
+> +
+> +       cpus {
+> +               #address-cells = <1>;
+> +               #size-cells = <0>;
+> +
+> +               cpu0: cpu@0 {
 
->>>>> When testing the R-Car PCIe driver on the Condor board, I noticed that iff
->>>>> I  left the PCIe PHY driver disabled, the kernel crashed  with this BUG:
->>>>>
->>>>> [    1.225819] kernel BUG at lib/ioremap.c:72!
->>>>> [    1.230007] Internal error: Oops - BUG: 0 [#1] PREEMPT SMP
->>>>> [    1.235496] Modules linked in:
->>>>> [    1.238561] CPU: 0 PID: 39 Comm: kworker/0:1 Not tainted 4.17.0-dirty #1092
->>>>> [    1.245526] Hardware name: Renesas Condor board based on r8a77980 (DT)
->>>>> [    1.252075] Workqueue: events deferred_probe_work_func
->>>>> [    1.257220] pstate: 80000005 (Nzcv daif -PAN -UAO)
->>>>> [    1.262024] pc : ioremap_page_range+0x370/0x3c8
->>>>> [    1.266558] lr : ioremap_page_range+0x40/0x3c8
->>>>> [    1.271002] sp : ffff000008da39e0
->>>>> [    1.274317] x29: ffff000008da39e0 x28: 00e8000000000f07
->>>>> [    1.279636] x27: ffff7dfffee00000 x26: 0140000000000000
->>>>> [    1.284954] x25: ffff7dfffef00000 x24: 00000000000fe100
->>>>> [    1.290272] x23: ffff80007b906000 x22: ffff000008ab8000
->>>>> [    1.295590] x21: ffff000008bb1d58 x20: ffff7dfffef00000
->>>>> [    1.300909] x19: ffff800009c30fb8 x18: 0000000000000001
->>>>> [    1.306226] x17: 00000000000152d0 x16: 00000000014012d0
->>>>> [    1.311544] x15: 0000000000000000 x14: 0720072007200720
->>>>> [    1.316862] x13: 0720072007200720 x12: 0720072007200720
->>>>> [    1.322180] x11: 0720072007300730 x10: 00000000000000ae
->>>>> [    1.327498] x9 : 0000000000000000 x8 : ffff7dffff000000
->>>>> [    1.332816] x7 : 0000000000000000 x6 : 0000000000000100
->>>>> [    1.338134] x5 : 0000000000000000 x4 : 000000007b906000
->>>>> [    1.343452] x3 : ffff80007c61a880 x2 : ffff7dfffeefffff
->>>>> [    1.348770] x1 : 0000000040000000 x0 : 00e80000fe100f07
->>>>> [    1.354090] Process kworker/0:1 (pid: 39, stack limit = 0x        (ptrval))
->>>>> [    1.361056] Call trace:
->>>>> [    1.363504]  ioremap_page_range+0x370/0x3c8
->>>>> [    1.367695]  pci_remap_iospace+0x7c/0xac
->>>>> [    1.371624]  pci_parse_request_of_pci_ranges+0x13c/0x190
->>>>> [    1.376945]  rcar_pcie_probe+0x4c/0xb04
->>>>> [    1.380786]  platform_drv_probe+0x50/0xbc
->>>>> [    1.384799]  driver_probe_device+0x21c/0x308
->>>>> [    1.389072]  __device_attach_driver+0x98/0xc8
->>>>> [    1.393431]  bus_for_each_drv+0x54/0x94
->>>>> [    1.397269]  __device_attach+0xc4/0x12c
->>>>> [    1.401107]  device_initial_probe+0x10/0x18
->>>>> [    1.405292]  bus_probe_device+0x90/0x98
->>>>> [    1.409130]  deferred_probe_work_func+0xb0/0x150
->>>>> [    1.413756]  process_one_work+0x12c/0x29c
->>>>> [    1.417768]  worker_thread+0x200/0x3fc
->>>>> [    1.421522]  kthread+0x108/0x134
->>>>> [    1.424755]  ret_from_fork+0x10/0x18
->>>>> [    1.428334] Code: f9004ba2 54000080 aa0003fb 17ffff48 (d4210000)
->>>>>
->>>>> It turned out that pci_remap_iospace() wasn't undone when the driver's
->>>>> probe failed, and since devm_phy_optional_get() returned -EPROBE_DEFER,
->>>>> the probe was retried,  finally causing the BUG due to trying to remap
->>>>> already remapped pages.
->>>>>
->>>>> The most feasible solution seems to introduce devm_pci_remap_iospace()
->>>>> and call it instead of pci_remap_iospace(), so that the pages get unmapped
->>>>> automagically on any probe failure.
->>>>>
->>>>> And  while fixing pci_parse_request_of_pci_ranges(), aslo fix the other
->>>>> drivers that have probably copied the bad example...
->>>>>
->>>>> Fixes: 4e64dbe226e7 ("PCI: generic: Expose pci_host_common_probe() for use by other drivers")
->>>>> Fixes: cbce7900598c ("PCI: designware: Make driver arch-agnostic")
->>>>> Fixes: 8c39d710363c ("PCI: aardvark: Add Aardvark PCI host controller driver")
->>>>> Fixes: d3c68e0a7e34 ("PCI: faraday: Add Faraday Technology FTPCI100 PCI Host Bridge driver")
->>>>> Fixes: 68a15eb7bd0c ("PCI: v3-semi: Add V3 Semiconductor PCI host driver")
->>>>> Fixes: b7e78170efd4 ("PCI: versatile: Add DT-based ARM Versatile PB PCIe host driver")
->>>>> Fixes: 5f6b6ccdbe1c ("PCI: xgene: Add APM X-Gene PCIe driver")
->>>>> Fixes: 637cfacae96f ("PCI: mediatek: Add MediaTek PCIe host controller support")
->>>>> Signed-off-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
->>>>> Cc: stable@vger.kernel.org
->>>>
->>>> Let me know if you want me to take this, Lorenzo, otherwise:
->>>> s/pci: fix/PCI: Fix/ and
->>>>
->>>> Acked-by: Bjorn Helgaas <bhelgaas@google.com>
->>>
->>> Thank you Bjorn, yes it could go in as a fix but IMO it has to be split,
->>> more so given the stable tag (and I think that each "Fixes" tag should
->>> be self-contained),
->>
->>    It cannot be self-contained because it'll depend on the initial
->> commit adding devm_pci_remap_iobase(). If you mean finding the
->> earliest broken driver and introduce the deviec managed API while
->> fixing it and then make use of that
->> API in the subsequent patches, that surely can be done.
-> 
-> Yes I think that's the best course of action.
+Really need labels for cpu nodes?
 
-   OK! :-)
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a53";
+> +                       enable-method = "psci";
+> +                       reg = <0x000>;
+> +               };
+> +
+> +               cpu1: cpu@1 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a53";
+> +                       enable-method = "psci";
+> +                       reg = <0x001>;
+> +               };
+> +
+> +               cpu2: cpu@2 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a53";
+> +                       enable-method = "psci";
+> +                       reg = <0x002>;
+> +               };
+> +
+> +               cpu3: cpu@3 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a53";
+> +                       enable-method = "psci";
+> +                       reg = <0x003>;
+> +               };
+> +
+> +               cpu4: cpu@100 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a53";
+> +                       enable-method = "psci";
+> +                       reg = <0x100>;
+> +               };
+> +
+> +               cpu5: cpu@101 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a53";
+> +                       enable-method = "psci";
+> +                       reg = <0x101>;
+> +               };
+> +
+> +               cpu6: cpu@102 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a53";
+> +                       enable-method = "psci";
+> +                       reg = <0x102>;
+> +               };
+> +
+> +               cpu7: cpu@103 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a53";
+> +                       enable-method = "psci";
+> +                       reg = <0x103>;
+> +               };
+> +       };
+> +
+> +       baud_clk: dummy26m {
+> +               compatible = "fixed-clock";
+> +               clock-frequency = <26000000>;
+> +               #clock-cells = <0>;
+> +       };
+> +
+> +       sys_clk: dummyclk {
+> +               compatible = "fixed-clock";
+> +               clock-frequency = <26000000>;
+> +               #clock-cells = <0>;
+> +       };
+> +
+> +       timer {
+> +               compatible = "arm,armv8-timer";
+> +               interrupt-parent = <&gic>;
+> +               interrupts = <GIC_PPI 13
+> +                            (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
+> +                            <GIC_PPI 14
+> +                            (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
+> +                            <GIC_PPI 11
+> +                            (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
+> +                            <GIC_PPI 10
+> +                            (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>;
+> +       };
+> +
+> +       soc {
+> +               #address-cells = <2>;
+> +               #size-cells = <2>;
+> +               compatible = "simple-bus";
+> +               ranges;
+> +
+> +               sysirq: intpol-controller@10200a80 {
 
->>> merging it as-is would give Greg (and us) a
->>> headache when it comes to backporting it.
->>
->>    The patch interdependency would give him headache too, and I was
->> hoping to relieve those with the monilitic patch. :-)
-> 
-> The problem is that if any of the fixes has to be reverted we have
-> to revert the whole thing instead of just the problematic patch,
-> which, given that we are sending this to stable kernels may easily
-> turn out quite complicated.
-> 
-> So, I would add the new API along with the earliest broken driver
-> and mark it for stable.
-> 
-> In the same thread, add all other fixes (one per patch) without the
-> stable tag. When the first fix gets merged into the mainline (and
-> consequently goes to stable) we can send the stable backports for the
-> remainder of fixes.
-> 
-> How does that sound ?
+interrupt-controller@...
 
-   I think the -stable maintainers are actively looking at the Fixes: tags
-these days, not only at stable@vger.kernel.org.  I can do thsat
+> +                       compatible = "mediatek,mt6765-sysirq",
+> +                                    "mediatek,mt6577-sysirq";
+> +                       interrupt-controller;
+> +                       #interrupt-cells = <3>;
+> +                       interrupt-parent = <&gic>;
+> +                       reg = <0 0x10200a80 0 0x50>;
+> +               };
+> +
+> +               gic: interrupt-controller@0c000000 {
 
->>> Honestly I think it is best to split it up and send it for v4.19 but
->>> I am happy to hear other options.
->>
->>    I disagree about 4.19. The R-Car PCIe situation is as follows:
->> given me missing to get the PHY driver merged into 4.18 (and the
->> gen3 PCIe stuff successfully merged into 4.18), the user is bound to
->> have PCIe not working (if he doesn't refer to the PHY driver in DT)
->> or encounter a kernel BUG (if he does refer to the PHY driver), thus
+Drop the leading 0. Build your dts with W=12 and fix the warnings like this.
 
-   s/driver/device/, of course. :-)
-
->> I'd like this BUG to be fixed in 4.18 time frame...
-> 
-> We shall try, please let me know if you are able to respin asap,
-> we already have a bunch of fixes queued.
-
-   I can probably try -- despite I'm on vacations and the football
-championship is still going on. :-)
-
-> Thanks for putting it together,
-> Lorenzo
-
-MBR, Sergei
+> +                       compatible = "arm,gic-v3";
+> +                       #interrupt-cells = <3>;
+> +                       #address-cells = <2>;
+> +                       #size-cells = <2>;
+> +                       #redistributor-regions = <1>;
+> +                       interrupt-parent = <&gic>;
+> +                       interrupt-controller;
+> +                       reg = <0 0x0c000000 0 0x40000>, // distributor
+> +                             <0 0x0c100000 0 0x200000>; // redistributor
+> +                       interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
+> +               };
+> +
+> +               uart0: serial@11002000 {
+> +                       compatible = "mediatek,mt6765-uart",
+> +                                    "mediatek,mt6577-uart";
+> +                       reg = <0 0x11002000 0 0x400>;
+> +                       interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
+> +                       clocks = <&baud_clk>, <&sys_clk>;
+> +                       clock-names = "baud", "bus";
+> +                       status = "disabled";
+> +               };
+> +
+> +               uart1: serial@11003000 {
+> +                       compatible = "mediatek,mt6765-uart",
+> +                                    "mediatek,mt6577-uart";
+> +                       reg = <0 0x11003000 0 0x400>;
+> +                       interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
+> +                       clocks = <&baud_clk>, <&sys_clk>;
+> +                       clock-names = "baud", "bus";
+> +                       status = "disabled";
+> +               };
+> +       }; /* end of soc */
+> +};
+> --
+> 1.7.9.5
+>
