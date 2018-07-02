@@ -1,136 +1,77 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [PATCH] pci: fix I/O space page leak
-Date: Sat, 30 Jun 2018 13:37:18 +0300
-Message-ID: <ac015f99-c310-3701-35ce-846393b61235@cogentembedded.com>
-References: <1ca6adde-a91e-84d0-c7dc-fd01bfd9edcc@cogentembedded.com>
- <20180628132259.GB90450@bhelgaas-glaptop.roam.corp.google.com>
- <20180628142615.GA9101@red-moon>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v7 00/29] Add support for mediatek SOC MT2712
+Date: Mon, 2 Jul 2018 09:39:10 +0800
+Message-ID: <1530495550.4568.2.camel@mtksdaap41>
+References: <1529482771-2153-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180628142615.GA9101@red-moon>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <helgaas@kernel.org>
-Cc: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Rob Herring <robh@kernel.org>, Joao Pinto <Joao.Pinto@synopsys.com>, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-renesas-soc@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org, Tanmay Inamdar <tinamdar@apm.com>, Jingoo Han <jingoohan1@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1529482771-2153-1-git-send-email-stu.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Stu Hsieh <stu.hsieh@mediatek.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello!
+Hi, Stu:
 
-On 6/28/2018 5:26 PM, Lorenzo Pieralisi wrote:
-
->>> When testing the R-Car PCIe driver on the Condor board, I noticed that iff
->>> I  left the PCIe PHY driver disabled, the kernel crashed  with this BUG:
->>>
->>> [    1.225819] kernel BUG at lib/ioremap.c:72!
->>> [    1.230007] Internal error: Oops - BUG: 0 [#1] PREEMPT SMP
->>> [    1.235496] Modules linked in:
->>> [    1.238561] CPU: 0 PID: 39 Comm: kworker/0:1 Not tainted 4.17.0-dirty #1092
->>> [    1.245526] Hardware name: Renesas Condor board based on r8a77980 (DT)
->>> [    1.252075] Workqueue: events deferred_probe_work_func
->>> [    1.257220] pstate: 80000005 (Nzcv daif -PAN -UAO)
->>> [    1.262024] pc : ioremap_page_range+0x370/0x3c8
->>> [    1.266558] lr : ioremap_page_range+0x40/0x3c8
->>> [    1.271002] sp : ffff000008da39e0
->>> [    1.274317] x29: ffff000008da39e0 x28: 00e8000000000f07
->>> [    1.279636] x27: ffff7dfffee00000 x26: 0140000000000000
->>> [    1.284954] x25: ffff7dfffef00000 x24: 00000000000fe100
->>> [    1.290272] x23: ffff80007b906000 x22: ffff000008ab8000
->>> [    1.295590] x21: ffff000008bb1d58 x20: ffff7dfffef00000
->>> [    1.300909] x19: ffff800009c30fb8 x18: 0000000000000001
->>> [    1.306226] x17: 00000000000152d0 x16: 00000000014012d0
->>> [    1.311544] x15: 0000000000000000 x14: 0720072007200720
->>> [    1.316862] x13: 0720072007200720 x12: 0720072007200720
->>> [    1.322180] x11: 0720072007300730 x10: 00000000000000ae
->>> [    1.327498] x9 : 0000000000000000 x8 : ffff7dffff000000
->>> [    1.332816] x7 : 0000000000000000 x6 : 0000000000000100
->>> [    1.338134] x5 : 0000000000000000 x4 : 000000007b906000
->>> [    1.343452] x3 : ffff80007c61a880 x2 : ffff7dfffeefffff
->>> [    1.348770] x1 : 0000000040000000 x0 : 00e80000fe100f07
->>> [    1.354090] Process kworker/0:1 (pid: 39, stack limit = 0x        (ptrval))
->>> [    1.361056] Call trace:
->>> [    1.363504]  ioremap_page_range+0x370/0x3c8
->>> [    1.367695]  pci_remap_iospace+0x7c/0xac
->>> [    1.371624]  pci_parse_request_of_pci_ranges+0x13c/0x190
->>> [    1.376945]  rcar_pcie_probe+0x4c/0xb04
->>> [    1.380786]  platform_drv_probe+0x50/0xbc
->>> [    1.384799]  driver_probe_device+0x21c/0x308
->>> [    1.389072]  __device_attach_driver+0x98/0xc8
->>> [    1.393431]  bus_for_each_drv+0x54/0x94
->>> [    1.397269]  __device_attach+0xc4/0x12c
->>> [    1.401107]  device_initial_probe+0x10/0x18
->>> [    1.405292]  bus_probe_device+0x90/0x98
->>> [    1.409130]  deferred_probe_work_func+0xb0/0x150
->>> [    1.413756]  process_one_work+0x12c/0x29c
->>> [    1.417768]  worker_thread+0x200/0x3fc
->>> [    1.421522]  kthread+0x108/0x134
->>> [    1.424755]  ret_from_fork+0x10/0x18
->>> [    1.428334] Code: f9004ba2 54000080 aa0003fb 17ffff48 (d4210000)
->>>
->>> It turned out that pci_remap_iospace() wasn't undone when the driver's
->>> probe failed, and since devm_phy_optional_get() returned -EPROBE_DEFER,
->>> the probe was retried,  finally causing the BUG due to trying to remap
->>> already remapped pages.
->>>
->>> The most feasible solution seems to introduce devm_pci_remap_iospace()
->>> and call it instead of pci_remap_iospace(), so that the pages get unmapped
->>> automagically on any probe failure.
->>>
->>> And  while fixing pci_parse_request_of_pci_ranges(), aslo fix the other
->>> drivers that have probably copied the bad example...
->>>
->>> Fixes: 4e64dbe226e7 ("PCI: generic: Expose pci_host_common_probe() for use by other drivers")
->>> Fixes: cbce7900598c ("PCI: designware: Make driver arch-agnostic")
->>> Fixes: 8c39d710363c ("PCI: aardvark: Add Aardvark PCI host controller driver")
->>> Fixes: d3c68e0a7e34 ("PCI: faraday: Add Faraday Technology FTPCI100 PCI Host Bridge driver")
->>> Fixes: 68a15eb7bd0c ("PCI: v3-semi: Add V3 Semiconductor PCI host driver")
->>> Fixes: b7e78170efd4 ("PCI: versatile: Add DT-based ARM Versatile PB PCIe host driver")
->>> Fixes: 5f6b6ccdbe1c ("PCI: xgene: Add APM X-Gene PCIe driver")
->>> Fixes: 637cfacae96f ("PCI: mediatek: Add MediaTek PCIe host controller support")
->>> Signed-off-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
->>> Cc: stable@vger.kernel.org
->>
->> Let me know if you want me to take this, Lorenzo, otherwise:
->> s/pci: fix/PCI: Fix/ and
->>
->> Acked-by: Bjorn Helgaas <bhelgaas@google.com>
+On Wed, 2018-06-20 at 16:19 +0800, Stu Hsieh wrote:
+> This patch add support for the Mediatek MT2712 DISP subsystem.
+> MT2712 is base on MT8173, there are some difference as following:
+> MT2712 support three disp output(two ovl and one rdma)
 > 
-> Thank you Bjorn, yes it could go in as a fix but IMO it has to be split,
-> more so given the stable tag (and I think that each "Fixes" tag should
-> be self-contained),
 
-    It cannot be self-contained because it'll depend on the initial commit 
-adding devm_pci_remap_iobase(). If you mean finding the earliest broken driver 
-and introduce the deviec managed API while fixing it and then make use of that
-API in the subsequent patches, that surely can be done.
+For the series, applied to mediatek-drm-next-4.19 [1], the patch
+'drm/mediatek: Add support for mediatek SOC MT2712' has line over 80
+character, so I've modified it.
 
-> merging it as-is would give Greg (and us) a
-> headache when it comes to backporting it.
+[1]
+https://github.com/ckhu-mediatek/linux.git-tags/commits/mediatek-drm-next-4.19
 
-    The patch interdependency would give him headache too, and I was hoping to 
-relieve those with the monilitic patch. :-)
+Regards,
+CK
 
-> Honestly I think it is best to split it up and send it for v4.19 but
-> I am happy to hear other options.
-
-    I disagree about 4.19. The R-Car PCIe situation is as follows: given me 
-missing to get the PHY driver merged into 4.18 (and the gen3 PCIe stuff 
-successfully merged into 4.18), the user is bound to have PCIe not working (if 
-he doesn't refer to the PHY driver in DT) or encounter a kernel BUG (if he 
-does refer to the PHY driver), thus I'd like this BUG to be fixed in 4.18 time 
-frame...
-    Note that any PCI driver having signaled a probe deferral will also hit 
-this BUG., not just R-Car one.
-
-> Lorenzo
-
-MBR, Sergei
+> Change in v6:
+> - Update commit message for the patch
+>   "drm/mediatek: Update the definition of connection from RDMA1 to DPI0"
+> 
+> Stu Hsieh (29):
+>   drm/mediatek: update dt-bindings for mt2712
+>   drm/mediatek: support maximum 64 mutex mod
+>   drm/mediatek: add ddp component AAL1
+>   drm/mediatek: add ddp component OD1
+>   drm/mediatek: add ddp component PWM1
+>   drm/mediatek: add ddp component PWM2
+>   drm/mediatek: add component DPI1
+>   drm/mediatek: add component DSI2
+>   drm/mediatek: add component DSI3
+>   drm/mediatek: add the DSI1 for component init condition
+>   drm/mediatek: add connection from OD1 to RDMA1
+>   drm/mediatek: Update the definition of connection from RDMA1 to DPI0
+>   drm/mediatek: add connection from RDMA0 to DPI0
+>   drm/mediatek: add connection from RDMA0 to DSI2
+>   drm/mediatek: add connection from RDMA0 to DSI3
+>   drm/mediatek: add connection from RDMA1 to DPI1
+>   drm/mediatek: add connection from RDMA1 to DSI1
+>   drm/mediatek: add connection from RDMA1 to DSI2
+>   drm/mediatek: add connection from RDMA1 to DSI3
+>   drm/mediatek: add connection from RDMA2 to DPI0
+>   drm/mediatek: add connection from RDMA2 to DPI1
+>   drm/mediatek: add connection from RDMA2 to DSI1
+>   drm/mediatek: add connection from RDMA2 to DSI2
+>   drm/mediatek: add connection from RDMA2 to DSI3
+>   drm/mediatek: add DPI1 support for mutex
+>   drm/mediatek: add DSI2 support for mutex
+>   drm/mediatek: add DSI3 support for mutex
+>   drm/mediatek: add third ddp path
+>   drm/mediatek: Add support for mediatek SOC MT2712
+> 
+>  .../bindings/display/mediatek/mediatek,disp.txt    |   2 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c            |   3 +
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c             | 235 ++++++++++++++++++---
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c        |  15 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h        |  10 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  47 ++++-
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.h             |   5 +-
+>  7 files changed, 274 insertions(+), 43 deletions(-)
+> 
