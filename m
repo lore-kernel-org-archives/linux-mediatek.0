@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 09/32] mtd: rawnand: gpmi: convert driver to nand_scan()
-Date: Wed,  4 Jul 2018 00:00:06 +0200
-Message-ID: <20180703220029.19565-10-miquel.raynal@bootlin.com>
+Subject: [PATCH v2 11/32] mtd: rawnand: jz4780: convert driver to nand_scan()
+Date: Wed,  4 Jul 2018 00:00:08 +0200
+Message-ID: <20180703220029.19565-12-miquel.raynal@bootlin.com>
 References: <20180703220029.19565-1-miquel.raynal@bootlin.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180703220029.19565-1-miquel.raynal@bootlin.com>
@@ -16,86 +16,84 @@ these hooks and convert the driver to just use nand_scan() instead of
 both nand_scan_ident() and nand_scan_tail().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
+Acked-by: Harvey Hunt <harveyhuntnexus@gmail.com>
 ---
- drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c | 52 +++++++++++++++++-------------
- 1 file changed, 29 insertions(+), 23 deletions(-)
+ drivers/mtd/nand/raw/jz4780_nand.c | 30 ++++++++++++------------------
+ 1 file changed, 12 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c b/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-index f6aa358a3452..920f06aa40d7 100644
---- a/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-+++ b/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-@@ -757,9 +757,9 @@ static int gpmi_alloc_dma_buffer(struct gpmi_nand_data *this)
- 	 * [2] Allocate a read/write data buffer.
- 	 *     The gpmi_alloc_dma_buffer can be called twice.
- 	 *     We allocate a PAGE_SIZE length buffer if gpmi_alloc_dma_buffer
--	 *     is called before the nand_scan_ident; and we allocate a buffer
--	 *     of the real NAND page size when the gpmi_alloc_dma_buffer is
--	 *     called after the nand_scan_ident.
-+	 *     is called before the NAND identification; and we allocate a
-+	 *     buffer of the real NAND page size when the gpmi_alloc_dma_buffer
-+	 *     is called after.
- 	 */
- 	this->data_buffer_dma = kzalloc(mtd->writesize ?: PAGE_SIZE,
- 					GFP_DMA | GFP_KERNEL);
-@@ -1881,6 +1881,30 @@ static int gpmi_init_last(struct gpmi_nand_data *this)
- 	return 0;
+diff --git a/drivers/mtd/nand/raw/jz4780_nand.c b/drivers/mtd/nand/raw/jz4780_nand.c
+index e69f6ae4c539..dd8c2facdef5 100644
+--- a/drivers/mtd/nand/raw/jz4780_nand.c
++++ b/drivers/mtd/nand/raw/jz4780_nand.c
+@@ -157,9 +157,8 @@ static int jz4780_nand_ecc_correct(struct mtd_info *mtd, u8 *dat,
+ 	return jz4780_bch_correct(nfc->bch, &params, dat, read_ecc);
  }
  
-+static int gpmi_nand_attach_chip(struct nand_chip *chip)
-+{
-+	struct gpmi_nand_data *this = nand_get_controller_data(chip);
-+	int ret;
-+
-+	if (chip->bbt_options & NAND_BBT_USE_FLASH) {
-+		chip->bbt_options |= NAND_BBT_NO_OOB;
-+
-+		if (of_property_read_bool(this->dev->of_node,
-+					  "fsl,no-blockmark-swap"))
-+			this->swap_block_mark = false;
-+	}
-+	dev_dbg(this->dev, "Blockmark swapping %sabled\n",
-+		this->swap_block_mark ? "en" : "dis");
-+
-+	ret = gpmi_init_last(this);
-+	if (ret)
-+		return ret;
-+
-+	chip->options |= NAND_SKIP_BBTSCAN;
-+
-+	return 0;
-+}
-+
- static int gpmi_nand_init(struct gpmi_nand_data *this)
+-static int jz4780_nand_init_ecc(struct jz4780_nand_chip *nand, struct device *dev)
++static int jz4780_nand_attach_chip(struct nand_chip *chip)
  {
- 	struct nand_chip *chip = &this->nand;
-@@ -1921,26 +1945,8 @@ static int gpmi_nand_init(struct gpmi_nand_data *this)
- 	if (ret)
- 		goto err_out;
+-	struct nand_chip *chip = &nand->chip;
+ 	struct mtd_info *mtd = nand_to_mtd(chip);
+ 	struct jz4780_nand_controller *nfc = to_jz4780_nand_controller(chip->controller);
+ 	int eccbytes;
+@@ -170,7 +169,8 @@ static int jz4780_nand_init_ecc(struct jz4780_nand_chip *nand, struct device *de
+ 	switch (chip->ecc.mode) {
+ 	case NAND_ECC_HW:
+ 		if (!nfc->bch) {
+-			dev_err(dev, "HW BCH selected, but BCH controller not found\n");
++			dev_err(nfc->dev,
++				"HW BCH selected, but BCH controller not found\n");
+ 			return -ENODEV;
+ 		}
  
--	ret = nand_scan_ident(mtd, GPMI_IS_MX6(this) ? 2 : 1, NULL);
+@@ -179,15 +179,16 @@ static int jz4780_nand_init_ecc(struct jz4780_nand_chip *nand, struct device *de
+ 		chip->ecc.correct = jz4780_nand_ecc_correct;
+ 		/* fall through */
+ 	case NAND_ECC_SOFT:
+-		dev_info(dev, "using %s (strength %d, size %d, bytes %d)\n",
+-			(nfc->bch) ? "hardware BCH" : "software ECC",
+-			chip->ecc.strength, chip->ecc.size, chip->ecc.bytes);
++		dev_info(nfc->dev, "using %s (strength %d, size %d, bytes %d)\n",
++			 (nfc->bch) ? "hardware BCH" : "software ECC",
++			 chip->ecc.strength, chip->ecc.size, chip->ecc.bytes);
+ 		break;
+ 	case NAND_ECC_NONE:
+-		dev_info(dev, "not using ECC\n");
++		dev_info(nfc->dev, "not using ECC\n");
+ 		break;
+ 	default:
+-		dev_err(dev, "ECC mode %d not supported\n", chip->ecc.mode);
++		dev_err(nfc->dev, "ECC mode %d not supported\n",
++			chip->ecc.mode);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -199,7 +200,7 @@ static int jz4780_nand_init_ecc(struct jz4780_nand_chip *nand, struct device *de
+ 	eccbytes = mtd->writesize / chip->ecc.size * chip->ecc.bytes;
+ 
+ 	if (eccbytes > mtd->oobsize - 2) {
+-		dev_err(dev,
++		dev_err(nfc->dev,
+ 			"invalid ECC config: required %d ECC bytes, but only %d are available",
+ 			eccbytes, mtd->oobsize - 2);
+ 		return -EINVAL;
+@@ -279,15 +280,8 @@ static int jz4780_nand_init_chip(struct platform_device *pdev,
+ 	chip->controller = &nfc->controller;
+ 	nand_set_flash_node(chip, np);
+ 
+-	ret = nand_scan_ident(mtd, 1, NULL);
 -	if (ret)
--		goto err_out;
+-		return ret;
 -
--	if (chip->bbt_options & NAND_BBT_USE_FLASH) {
--		chip->bbt_options |= NAND_BBT_NO_OOB;
--
--		if (of_property_read_bool(this->dev->of_node,
--						"fsl,no-blockmark-swap"))
--			this->swap_block_mark = false;
--	}
--	dev_dbg(this->dev, "Blockmark swapping %sabled\n",
--		this->swap_block_mark ? "en" : "dis");
--
--	ret = gpmi_init_last(this);
+-	ret = jz4780_nand_init_ecc(nand, dev);
 -	if (ret)
--		goto err_out;
+-		return ret;
 -
--	chip->options |= NAND_SKIP_BBTSCAN;
 -	ret = nand_scan_tail(mtd);
-+	chip->hwcontrol.attach_chip = gpmi_nand_attach_chip;
-+	ret = nand_scan(mtd, GPMI_IS_MX6(this) ? 2 : 1);
++	chip->controller->attach_chip = jz4780_nand_attach_chip;
++	ret = nand_scan(mtd, 1);
  	if (ret)
- 		goto err_out;
+ 		return ret;
  
 -- 
 2.14.1
