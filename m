@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 12/32] mtd: rawnand: lpc32xx_mlc: convert driver to nand_scan()
-Date: Wed,  4 Jul 2018 00:00:09 +0200
-Message-ID: <20180703220029.19565-13-miquel.raynal@bootlin.com>
+Subject: [PATCH v2 15/32] mtd: rawnand: mtk: convert driver to nand_scan()
+Date: Wed,  4 Jul 2018 00:00:12 +0200
+Message-ID: <20180703220029.19565-16-miquel.raynal@bootlin.com>
 References: <20180703220029.19565-1-miquel.raynal@bootlin.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180703220029.19565-1-miquel.raynal@bootlin.com>
@@ -17,156 +17,103 @@ both nand_scan_ident() and nand_scan_tail().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/lpc32xx_mlc.c | 105 +++++++++++++++++++------------------
- 1 file changed, 55 insertions(+), 50 deletions(-)
+ drivers/mtd/nand/raw/mtk_nand.c | 71 +++++++++++++++++++++++------------------
+ 1 file changed, 40 insertions(+), 31 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/lpc32xx_mlc.c b/drivers/mtd/nand/raw/lpc32xx_mlc.c
-index 052d123a8304..d650ed609ba7 100644
---- a/drivers/mtd/nand/raw/lpc32xx_mlc.c
-+++ b/drivers/mtd/nand/raw/lpc32xx_mlc.c
-@@ -184,6 +184,7 @@ static struct nand_bbt_descr lpc32xx_nand_bbt_mirror = {
- };
- 
- struct lpc32xx_nand_host {
-+	struct platform_device	*pdev;
- 	struct nand_chip	nand_chip;
- 	struct lpc32xx_mlc_platform_data *pdata;
- 	struct clk		*clk;
-@@ -653,6 +654,53 @@ static struct lpc32xx_nand_cfg_mlc *lpc32xx_parse_dt(struct device *dev)
- 	return ncfg;
+diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
+index 75c845adb050..a81cd36596e1 100644
+--- a/drivers/mtd/nand/raw/mtk_nand.c
++++ b/drivers/mtd/nand/raw/mtk_nand.c
+@@ -1250,13 +1250,50 @@ static int mtk_nfc_ecc_init(struct device *dev, struct mtd_info *mtd)
+ 	return 0;
  }
  
-+static int lpc32xx_nand_attach_chip(struct nand_chip *chip)
++static int mtk_nfc_attach_chip(struct nand_chip *chip)
 +{
 +	struct mtd_info *mtd = nand_to_mtd(chip);
-+	struct lpc32xx_nand_host *host = nand_get_controller_data(chip);
-+	struct device *dev = &host->pdev->dev;
++	struct device *dev = mtd->dev.parent;
++	struct mtk_nfc *nfc = nand_get_controller_data(chip);
++	struct mtk_nfc_nand_chip *mtk_nand = to_mtk_nand(chip);
++	int len;
++	int ret;
 +
-+	host->dma_buf = devm_kzalloc(dev, mtd->writesize, GFP_KERNEL);
-+	if (!host->dma_buf)
-+		return -ENOMEM;
-+
-+	host->dummy_buf = devm_kzalloc(dev, mtd->writesize, GFP_KERNEL);
-+	if (!host->dummy_buf)
-+		return -ENOMEM;
-+
-+	chip->ecc.mode = NAND_ECC_HW;
-+	chip->ecc.size = 512;
-+	mtd_set_ooblayout(mtd, &lpc32xx_ooblayout_ops);
-+	host->mlcsubpages = mtd->writesize / 512;
-+
-+	/* initially clear interrupt status */
-+	readb(MLC_IRQ_SR(host->io_base));
-+
-+	init_completion(&host->comp_nand);
-+	init_completion(&host->comp_controller);
-+
-+	host->irq = platform_get_irq(host->pdev, 0);
-+	if (host->irq < 0) {
-+		dev_err(dev, "failed to get platform irq\n");
++	if (chip->options & NAND_BUSWIDTH_16) {
++		dev_err(dev, "16bits buswidth not supported");
 +		return -EINVAL;
 +	}
 +
-+	if (request_irq(host->irq, (irq_handler_t)&lpc3xxx_nand_irq,
-+			IRQF_TRIGGER_HIGH, DRV_NAME, host)) {
-+		dev_err(dev, "Error requesting NAND IRQ\n");
-+		return -ENXIO;
-+	}
++	/* store bbt magic in page, cause OOB is not protected */
++	if (chip->bbt_options & NAND_BBT_USE_FLASH)
++		chip->bbt_options |= NAND_BBT_NO_OOB;
++
++	ret = mtk_nfc_ecc_init(dev, mtd);
++	if (ret)
++		return ret;
++
++	ret = mtk_nfc_set_spare_per_sector(&mtk_nand->spare_per_sector, mtd);
++	if (ret)
++		return ret;
++
++	mtk_nfc_set_fdm(&mtk_nand->fdm, mtd);
++	mtk_nfc_set_bad_mark_ctl(&mtk_nand->bad_mark, mtd);
++
++	len = mtd->writesize + mtd->oobsize;
++	nfc->buffer = devm_kzalloc(dev, len, GFP_KERNEL);
++	if (!nfc->buffer)
++		return  -ENOMEM;
 +
 +	return 0;
 +}
 +
-+static void lpc32xx_nand_detach_chip(struct nand_chip *chip)
-+{
-+	struct lpc32xx_nand_host *host = nand_get_controller_data(chip);
-+
-+	free_irq(host->irq, host);
-+}
-+
- /*
-  * Probe for NAND controller
-  */
-@@ -669,6 +717,8 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
- 	if (!host)
- 		return -ENOMEM;
+ static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
+ 				  struct device_node *np)
+ {
+ 	struct mtk_nfc_nand_chip *chip;
+ 	struct nand_chip *nand;
+ 	struct mtd_info *mtd;
+-	int nsels, len;
++	int nsels;
+ 	u32 tmp;
+ 	int ret;
+ 	int i;
+@@ -1324,36 +1361,8 @@ static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
  
-+	host->pdev = pdev;
-+
- 	rc = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	host->io_base = devm_ioremap_resource(&pdev->dev, rc);
- 	if (IS_ERR(host->io_base))
-@@ -749,58 +799,15 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
- 	}
+ 	mtk_nfc_hw_init(nfc);
  
- 	/*
--	 * Scan to find existance of the device and
--	 * Get the type of NAND device SMALL block or LARGE block
-+	 * Scan to find existence of the device and get the type of NAND device:
-+	 * SMALL block or LARGE block.
- 	 */
--	res = nand_scan_ident(mtd, 1, NULL);
-+	nand_chip->hwcontrol.attach_chip = lpc32xx_nand_attach_chip;
-+	nand_chip->hwcontrol.detach_chip = lpc32xx_nand_detach_chip;
-+	res = nand_scan(mtd, 1);
- 	if (res)
- 		goto release_dma_chan;
- 
--	host->dma_buf = devm_kzalloc(&pdev->dev, mtd->writesize, GFP_KERNEL);
--	if (!host->dma_buf) {
--		res = -ENOMEM;
--		goto release_dma_chan;
+-	ret = nand_scan_ident(mtd, nsels, NULL);
+-	if (ret)
+-		return ret;
+-
+-	/* store bbt magic in page, cause OOB is not protected */
+-	if (nand->bbt_options & NAND_BBT_USE_FLASH)
+-		nand->bbt_options |= NAND_BBT_NO_OOB;
+-
+-	ret = mtk_nfc_ecc_init(dev, mtd);
+-	if (ret)
+-		return -EINVAL;
+-
+-	if (nand->options & NAND_BUSWIDTH_16) {
+-		dev_err(dev, "16bits buswidth not supported");
+-		return -EINVAL;
 -	}
 -
--	host->dummy_buf = devm_kzalloc(&pdev->dev, mtd->writesize, GFP_KERNEL);
--	if (!host->dummy_buf) {
--		res = -ENOMEM;
--		goto release_dma_chan;
--	}
+-	ret = mtk_nfc_set_spare_per_sector(&chip->spare_per_sector, mtd);
+-	if (ret)
+-		return ret;
 -
--	nand_chip->ecc.mode = NAND_ECC_HW;
--	nand_chip->ecc.size = 512;
--	mtd_set_ooblayout(mtd, &lpc32xx_ooblayout_ops);
--	host->mlcsubpages = mtd->writesize / 512;
+-	mtk_nfc_set_fdm(&chip->fdm, mtd);
+-	mtk_nfc_set_bad_mark_ctl(&chip->bad_mark, mtd);
 -
--	/* initially clear interrupt status */
--	readb(MLC_IRQ_SR(host->io_base));
+-	len = mtd->writesize + mtd->oobsize;
+-	nfc->buffer = devm_kzalloc(dev, len, GFP_KERNEL);
+-	if (!nfc->buffer)
+-		return  -ENOMEM;
 -
--	init_completion(&host->comp_nand);
--	init_completion(&host->comp_controller);
--
--	host->irq = platform_get_irq(pdev, 0);
--	if (host->irq < 0) {
--		dev_err(&pdev->dev, "failed to get platform irq\n");
--		res = -EINVAL;
--		goto release_dma_chan;
--	}
--
--	if (request_irq(host->irq, (irq_handler_t)&lpc3xxx_nand_irq,
--			IRQF_TRIGGER_HIGH, DRV_NAME, host)) {
--		dev_err(&pdev->dev, "Error requesting NAND IRQ\n");
--		res = -ENXIO;
--		goto release_dma_chan;
--	}
--
--	/*
--	 * Fills out all the uninitialized function pointers with the defaults
--	 * And scans for a bad block table if appropriate.
--	 */
--	res = nand_scan_tail(mtd);
--	if (res)
--		goto free_irq;
--
- 	mtd->name = DRV_NAME;
+-	ret = nand_scan_tail(mtd);
++	nand->controller->attach_chip = mtk_nfc_attach_chip;
++	ret = nand_scan(mtd, nsels);
+ 	if (ret)
+ 		return ret;
  
- 	res = mtd_device_register(mtd, host->ncfg->parts,
-@@ -812,8 +819,6 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
- 
- cleanup_nand:
- 	nand_cleanup(nand_chip);
--free_irq:
--	free_irq(host->irq, host);
- release_dma_chan:
- 	if (use_dma)
- 		dma_release_channel(host->dma_chan);
 -- 
 2.14.1
