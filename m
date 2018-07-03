@@ -1,48 +1,153 @@
-From: Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Subject: Re: [ANN] mt76x0 usb driver
-Date: Tue, 3 Jul 2018 17:31:04 +0200 (CEST)
-Message-ID: <alpine.LNX.2.00.1807031725420.3545@T420s>
-References: <20180409141032.GA9247@redhat.com> <20180409142640.GA5680@localhost.localdomain> <20180409144819.GA9253@redhat.com> <20180625120816.GA2072@redhat.com> <CAA2SeNJjHCrO5NyznK+EJt5K6SRVRr_FPZA2i53Z-FnqzkKz_g@mail.gmail.com> <20180625135419.GA3282@redhat.com>
- <CAJ0CqmXE7hF8UAe2iAZ7GhYWb7Uf3zJ+Fg_ervfyK1ojS1Oh=w@mail.gmail.com>
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+Subject: [PATCH v2 00/32] Allow dynamic allocations during NAND chip identification phase
+Date: Tue,  3 Jul 2018 23:59:57 +0200
+Message-ID: <20180703220029.19565-1-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAJ0CqmXE7hF8UAe2iAZ7GhYWb7Uf3zJ+Fg_ervfyK1ojS1Oh=w@mail.gmail.com>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, =?ISO-8859-2?Q?Jakub_Kici=F1ski?= <moorray3-5tc4TXWwyLM@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Boris Brezillon <boris.brezillon@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <mat>
+Cc: linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi
+Hello,
 
->
-> On Mon, Jun 25, 2018 at 02:55:51PM +0200, Lorenzo Bianconi wrote:
+This series make a quite deep change in the NAND framework. Until now,
+the NAND chip identification phase could be done in two manners from the
+controller driver perspective:
 
-> > Not sure why many integration commits in upstream is a problem. I think
-> > having patches posted on mailing list is better than doing them in my
-> > "private" tree without any review.
-> >
-> > > What do you think?
-> >
-> > I was thinking about posting mt76x0 driver in a subdir (there is sill
-> > some cleanup work need to be done there), wait for upstream mt76x2u
-> > integration, then post patches that remove duplication between mt76x2
-> > and mt76x0 and add support for mt76x0e on the way.
-> >
-> 
-> Ack, fine. I modified a little bit mt76x2u/usb architecture moving
-> some parts in common with mt76x0u
-> in mt76-usb module (e.g. mt76_queue management in tx_status data path,
-> tx_stats workqueue,
-> some mcu utility routines). In this way the integration will be easier I guess
-> 
-> Regards,
-> Lorenzo
-> 
-> > Thanks
-> > Stanislaw
-> 
+1/ Call nand_scan()
 
-I'm currrently working mt76x0u on top of Lorenzo's mt76x2u driver.
+  or
 
-Ulli
+1/ Call nand_scan_ident()
+2/ Do some controller-dependent configuration
+3/ Call nand_scan_tail().
+
+The fact that the identifaction could be split in two operations
+involved that in the NAND framework, it was not possible to do any
+dynamic allocation without risking a memory leak. What if the core
+allocates a structure, then the driver between nand_scan_ident() and
+nand_scan_tail() decides it cannot handle the chip and errors out?
+The structure allocated by the core is lost: it is a memory leak. One
+solution could have been to add a nand_scan_ident_cleanup() function,
+but that would mean patching all the drivers anyway to make them call
+this function when something fails between nand_scan_ident() and
+nand_scan_tail().
+
+To avoid this situation, we migrate all drivers to use nand_scan(). But
+because drivers need to do some configuration before nand_scan_tail(), a
+first hook is offered, embedded in the nand_hw_ctrl structure, called
+->attach_chip(). Drivers that need to tweak their configuration after
+nand_scan_ident() should implement it. Any dynamically allocated space
+in ->attach_chip() must be freed in the second hook: ->detach_chip().
+
+The ->detach_chip() does not have to be called upon error in the
+controller driver probe function. The nand_cleanup() helper already
+exists for that and will do the call if needed. Of course, this helper
+must be called on error after a successful nand_scan(), just like
+before.
+
+Once all drivers not using nand_scan() (yet) are migrated,
+nand_scan_ident() and nand_scan_tail() are unexported and only available
+internally.
+
+A previous work [1] removed the ONFI/JEDEC parameter pages and instead
+allocated a nand_parameters structure in nand_chip, embedding both
+generic entries and ONFI-related ones. The deal was, once dynamic
+allocation possible, allocate in nand_scan_ident() the ONFI strcuture
+only if actually needed. This is done in the last patches.
+
+All these changes have been tested with the GPMI driver and tested by
+the 0-day robot. They apply now on top of another previous series that
+cleaned the error path of all the drivers touched in this series.
+
+Thank you,
+Miquèl
+
+[1] http://lists.infradead.org/pipermail/linux-mtd/2018-March/079456.html
+
+Changes since v1:
+=================
+* Rebased on top of nand/next.
+* Light rewording of the cover letter about the possibility to have a
+  nand_scan_ident_cleanup() function (just as example of how this series
+  could have been done differently).
+* Changed the hooks to reside in the nand_hw_ctrl structure instead of
+  being part of nand_ecc_ctrl as these hooks are more
+  controller-related.
+
+
+Miquel Raynal (32):
+  mtd: rawnand: add hooks that may be called during nand_scan()
+  mtd: rawnand: brcmnand: convert driver to nand_scan()
+  mtd: rawnand: cafe: convert driver to nand_scan()
+  mtd: rawnand: davinci: convert driver to nand_scan()
+  mtd: rawnand: denali: convert to nand_scan()
+  mtd: rawnand: fsl_elbc: convert driver to nand_scan()
+  mtd: rawnand: fsl_ifc: convert driver to nand_scan()
+  mtd: rawnand: fsmc: convert driver to nand_scan()
+  mtd: rawnand: gpmi: convert driver to nand_scan()
+  mtd: rawnand: hisi504: convert driver to nand_scan()
+  mtd: rawnand: jz4780: convert driver to nand_scan()
+  mtd: rawnand: lpc32xx_mlc: convert driver to nand_scan()
+  mtd: rawnand: lpc32xx_slc: convert driver to nand_scan()
+  mtd: rawnand: marvell: convert driver to nand_scan()
+  mtd: rawnand: mtk: convert driver to nand_scan()
+  mtd: rawnand: mxc: convert driver to nand_scan()
+  mtd: rawnand: nandsim: convert driver to nand_scan()
+  mtd: rawnand: omap2: convert driver to nand_scan()
+  mtd: rawnand: s3c2410: convert driver to nand_scan()
+  mtd: rawnand: sh_flctl: move all NAND chip related setup in one
+    function
+  mtd: rawnand: sh_flctl: convert driver to nand_scan()
+  mtd: rawnand: sunxi: convert driver to nand_scan()
+  mtd: rawnand: tango: convert driver to nand_scan()
+  mtd: rawnand: txx9ndfmc: convert driver to nand_scan()
+  mtd: rawnand: vf610: convert driver to nand_scan()
+  mtd: rawnand: atmel: convert driver to nand_scan()
+  mtd: rawnand: sm_common: convert driver to nand_scan_with_ids()
+  mtd: rawnand: docg4: convert driver to nand_scan()
+  mtd: rawnand: qcom: convert driver to nand_scan()
+  mtd: rawnand: jz4740: convert driver to nand_scan()
+  mtd: rawnand: do not export nand_scan_[ident|tail]() anymore
+  mtd: rawnand: allocate dynamically ONFI parameters during detection
+
+ drivers/mtd/nand/raw/atmel/nand-controller.c |  70 ++--
+ drivers/mtd/nand/raw/brcmnand/brcmnand.c     |  43 ++-
+ drivers/mtd/nand/raw/cafe_nand.c             | 131 ++++---
+ drivers/mtd/nand/raw/davinci_nand.c          | 186 +++++-----
+ drivers/mtd/nand/raw/denali.c                | 134 +++----
+ drivers/mtd/nand/raw/docg4.c                 |  51 +--
+ drivers/mtd/nand/raw/fsl_elbc_nand.c         |  15 +-
+ drivers/mtd/nand/raw/fsl_ifc_nand.c          |  15 +-
+ drivers/mtd/nand/raw/fsmc_nand.c             | 144 ++++----
+ drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c   |  52 +--
+ drivers/mtd/nand/raw/hisi504_nand.c          |  74 ++--
+ drivers/mtd/nand/raw/jz4740_nand.c           |  42 ++-
+ drivers/mtd/nand/raw/jz4780_nand.c           |  30 +-
+ drivers/mtd/nand/raw/lpc32xx_mlc.c           | 105 +++---
+ drivers/mtd/nand/raw/lpc32xx_slc.c           |  73 ++--
+ drivers/mtd/nand/raw/marvell_nand.c          | 201 ++++++-----
+ drivers/mtd/nand/raw/mtk_nand.c              |  71 ++--
+ drivers/mtd/nand/raw/mxc_nand.c              | 132 +++----
+ drivers/mtd/nand/raw/nand_base.c             | 132 +++++--
+ drivers/mtd/nand/raw/nand_micron.c           |   6 +-
+ drivers/mtd/nand/raw/nand_timings.c          |  12 +-
+ drivers/mtd/nand/raw/nandsim.c               |  78 ++--
+ drivers/mtd/nand/raw/omap2.c                 | 517 +++++++++++++--------------
+ drivers/mtd/nand/raw/qcom_nandc.c            |  67 ++--
+ drivers/mtd/nand/raw/s3c2410.c               |  26 +-
+ drivers/mtd/nand/raw/sh_flctl.c              |  53 ++-
+ drivers/mtd/nand/raw/sm_common.c             |  35 +-
+ drivers/mtd/nand/raw/sunxi_nand.c            |  38 +-
+ drivers/mtd/nand/raw/tango_nand.c            |  36 +-
+ drivers/mtd/nand/raw/txx9ndfmc.c             |  25 +-
+ drivers/mtd/nand/raw/vf610_nfc.c             | 123 +++----
+ include/linux/mtd/rawnand.h                  |  23 +-
+ include/linux/mtd/sh_flctl.h                 |   1 +
+ 33 files changed, 1414 insertions(+), 1327 deletions(-)
+
+-- 
+2.14.1
