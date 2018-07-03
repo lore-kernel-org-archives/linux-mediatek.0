@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 13/32] mtd: rawnand: lpc32xx_slc: convert driver to nand_scan()
-Date: Wed,  4 Jul 2018 00:00:10 +0200
-Message-ID: <20180703220029.19565-14-miquel.raynal@bootlin.com>
+Subject: [PATCH v2 08/32] mtd: rawnand: fsmc: convert driver to nand_scan()
+Date: Wed,  4 Jul 2018 00:00:05 +0200
+Message-ID: <20180703220029.19565-9-miquel.raynal@bootlin.com>
 References: <20180703220029.19565-1-miquel.raynal@bootlin.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180703220029.19565-1-miquel.raynal@bootlin.com>
@@ -17,99 +17,170 @@ both nand_scan_ident() and nand_scan_tail().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/lpc32xx_slc.c | 73 ++++++++++++++++++++------------------
- 1 file changed, 38 insertions(+), 35 deletions(-)
+ drivers/mtd/nand/raw/fsmc_nand.c | 144 ++++++++++++++++++++-------------------
+ 1 file changed, 74 insertions(+), 70 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/lpc32xx_slc.c b/drivers/mtd/nand/raw/lpc32xx_slc.c
-index 42820aa1abab..c31efac1f9f5 100644
---- a/drivers/mtd/nand/raw/lpc32xx_slc.c
-+++ b/drivers/mtd/nand/raw/lpc32xx_slc.c
-@@ -779,6 +779,42 @@ static struct lpc32xx_nand_cfg_slc *lpc32xx_parse_dt(struct device *dev)
- 	return ncfg;
+diff --git a/drivers/mtd/nand/raw/fsmc_nand.c b/drivers/mtd/nand/raw/fsmc_nand.c
+index f4a5a317d4ae..f8b505ce7b98 100644
+--- a/drivers/mtd/nand/raw/fsmc_nand.c
++++ b/drivers/mtd/nand/raw/fsmc_nand.c
+@@ -918,6 +918,78 @@ static int fsmc_nand_probe_config_dt(struct platform_device *pdev,
+ 	return 0;
  }
  
-+static int lpc32xx_nand_attach_chip(struct nand_chip *chip)
++static int fsmc_nand_attach_chip(struct nand_chip *nand)
 +{
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+	struct lpc32xx_nand_host *host = nand_get_controller_data(chip);
++	struct mtd_info *mtd = nand_to_mtd(nand);
++	struct fsmc_nand_data *host = mtd_to_fsmc(mtd);
 +
-+	/* OOB and ECC CPU and DMA work areas */
-+	host->ecc_buf = (uint32_t *)(host->data_buf + LPC32XX_DMA_DATA_SIZE);
++	if (AMBA_REV_BITS(host->pid) >= 8) {
++		switch (mtd->oobsize) {
++		case 16:
++		case 64:
++		case 128:
++		case 224:
++		case 256:
++			break;
++		default:
++			dev_warn(host->dev,
++				 "No oob scheme defined for oobsize %d\n",
++				 mtd->oobsize);
++			return -EINVAL;
++		}
++
++		mtd_set_ooblayout(mtd, &fsmc_ecc4_ooblayout_ops);
++
++		return 0;
++	}
++
++	switch (nand->ecc.mode) {
++	case NAND_ECC_HW:
++		dev_info(host->dev, "Using 1-bit HW ECC scheme\n");
++		nand->ecc.calculate = fsmc_read_hwecc_ecc1;
++		nand->ecc.correct = nand_correct_data;
++		nand->ecc.bytes = 3;
++		nand->ecc.strength = 1;
++		break;
++
++	case NAND_ECC_SOFT:
++		if (nand->ecc.algo == NAND_ECC_BCH) {
++			dev_info(host->dev,
++				 "Using 4-bit SW BCH ECC scheme\n");
++			break;
++		}
++
++	case NAND_ECC_ON_DIE:
++		break;
++
++	default:
++		dev_err(host->dev, "Unsupported ECC mode!\n");
++		return -ENOTSUPP;
++	}
 +
 +	/*
-+	 * Small page FLASH has a unique OOB layout, but large and huge
-+	 * page FLASH use the standard layout. Small page FLASH uses a
-+	 * custom BBT marker layout.
++	 * Don't set layout for BCH4 SW ECC. This will be
++	 * generated later in nand_bch_init() later.
 +	 */
-+	if (mtd->writesize <= 512)
-+		mtd_set_ooblayout(mtd, &lpc32xx_ooblayout_ops);
-+
-+	/* These sizes remain the same regardless of page size */
-+	chip->ecc.size = 256;
-+	chip->ecc.bytes = LPC32XX_SLC_DEV_ECC_BYTES;
-+	chip->ecc.prepad = 0;
-+	chip->ecc.postpad = 0;
-+
-+	/*
-+	 * Use a custom BBT marker setup for small page FLASH that
-+	 * won't interfere with the ECC layout. Large and huge page
-+	 * FLASH use the standard layout.
-+	 */
-+	if ((chip->bbt_options & NAND_BBT_USE_FLASH) &&
-+	    mtd->writesize <= 512) {
-+		chip->bbt_td = &bbt_smallpage_main_descr;
-+		chip->bbt_md = &bbt_smallpage_mirror_descr;
++	if (nand->ecc.mode == NAND_ECC_HW) {
++		switch (mtd->oobsize) {
++		case 16:
++		case 64:
++		case 128:
++			mtd_set_ooblayout(mtd,
++					  &fsmc_ecc1_ooblayout_ops);
++			break;
++		default:
++			dev_warn(host->dev,
++				 "No oob scheme defined for oobsize %d\n",
++				 mtd->oobsize);
++			return -EINVAL;
++		}
 +	}
 +
 +	return 0;
 +}
 +
  /*
-  * Probe for NAND controller
-  */
-@@ -884,41 +920,8 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
- 	}
- 
- 	/* Find NAND device */
--	res = nand_scan_ident(mtd, 1, NULL);
--	if (res)
--		goto release_dma;
--
--	/* OOB and ECC CPU and DMA work areas */
--	host->ecc_buf = (uint32_t *)(host->data_buf + LPC32XX_DMA_DATA_SIZE);
--
--	/*
--	 * Small page FLASH has a unique OOB layout, but large and huge
--	 * page FLASH use the standard layout. Small page FLASH uses a
--	 * custom BBT marker layout.
--	 */
--	if (mtd->writesize <= 512)
--		mtd_set_ooblayout(mtd, &lpc32xx_ooblayout_ops);
--
--	/* These sizes remain the same regardless of page size */
--	chip->ecc.size = 256;
--	chip->ecc.bytes = LPC32XX_SLC_DEV_ECC_BYTES;
--	chip->ecc.prepad = chip->ecc.postpad = 0;
--
--	/*
--	 * Use a custom BBT marker setup for small page FLASH that
--	 * won't interfere with the ECC layout. Large and huge page
--	 * FLASH use the standard layout.
--	 */
--	if ((chip->bbt_options & NAND_BBT_USE_FLASH) &&
--	    mtd->writesize <= 512) {
--		chip->bbt_td = &bbt_smallpage_main_descr;
--		chip->bbt_md = &bbt_smallpage_mirror_descr;
+  * fsmc_nand_probe - Probe function
+  * @pdev:       platform device structure
+@@ -1047,76 +1119,8 @@ static int __init fsmc_nand_probe(struct platform_device *pdev)
+ 	/*
+ 	 * Scan to find existence of the device
+ 	 */
+-	ret = nand_scan_ident(mtd, 1, NULL);
+-	if (ret) {
+-		dev_err(&pdev->dev, "No NAND Device found!\n");
+-		goto release_dma_write_chan;
 -	}
 -
--	/*
--	 * Fills out all the uninitialized function pointers with the defaults
--	 */
--	res = nand_scan_tail(mtd);
-+	chip->hwcontrol.attach_chip = lpc32xx_nand_attach_chip;
-+	res = nand_scan(mtd, 1);
- 	if (res)
- 		goto release_dma;
+-	if (AMBA_REV_BITS(host->pid) >= 8) {
+-		switch (mtd->oobsize) {
+-		case 16:
+-		case 64:
+-		case 128:
+-		case 224:
+-		case 256:
+-			break;
+-		default:
+-			dev_warn(&pdev->dev, "No oob scheme defined for oobsize %d\n",
+-				 mtd->oobsize);
+-			ret = -EINVAL;
+-			goto release_dma_write_chan;
+-		}
+-
+-		mtd_set_ooblayout(mtd, &fsmc_ecc4_ooblayout_ops);
+-	} else {
+-		switch (nand->ecc.mode) {
+-		case NAND_ECC_HW:
+-			dev_info(&pdev->dev, "Using 1-bit HW ECC scheme\n");
+-			nand->ecc.calculate = fsmc_read_hwecc_ecc1;
+-			nand->ecc.correct = nand_correct_data;
+-			nand->ecc.bytes = 3;
+-			nand->ecc.strength = 1;
+-			break;
+-
+-		case NAND_ECC_SOFT:
+-			if (nand->ecc.algo == NAND_ECC_BCH) {
+-				dev_info(&pdev->dev, "Using 4-bit SW BCH ECC scheme\n");
+-				break;
+-			}
+-
+-		case NAND_ECC_ON_DIE:
+-			break;
+-
+-		default:
+-			dev_err(&pdev->dev, "Unsupported ECC mode!\n");
+-			goto release_dma_write_chan;
+-		}
+-
+-		/*
+-		 * Don't set layout for BCH4 SW ECC. This will be
+-		 * generated later in nand_bch_init() later.
+-		 */
+-		if (nand->ecc.mode == NAND_ECC_HW) {
+-			switch (mtd->oobsize) {
+-			case 16:
+-			case 64:
+-			case 128:
+-				mtd_set_ooblayout(mtd,
+-						  &fsmc_ecc1_ooblayout_ops);
+-				break;
+-			default:
+-				dev_warn(&pdev->dev,
+-					 "No oob scheme defined for oobsize %d\n",
+-					 mtd->oobsize);
+-				ret = -EINVAL;
+-				goto release_dma_write_chan;
+-			}
+-		}
+-	}
+-
+-	/* Second stage of scan to fill MTD data-structures */
+-	ret = nand_scan_tail(mtd);
++	nand->hwcontrol.attach_chip = fsmc_nand_attach_chip;
++	ret = nand_scan(mtd, 1);
+ 	if (ret)
+ 		goto release_dma_write_chan;
  
 -- 
 2.14.1
