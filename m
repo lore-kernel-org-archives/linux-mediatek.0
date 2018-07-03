@@ -1,106 +1,117 @@
 From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [v3 03/10] mfd: mtk-mmsys: Add mmsys driver
-Date: Tue, 3 Jul 2018 08:11:03 +0100
-Message-ID: <20180703071103.GE20176@dell>
-References: <cover.1524820923.git.mbrugger@suse.com>
- <e0894c97775e46ce6d9a441dc05e2e2479a4b612.1524820923.git.mbrugger@suse.com>
- <20180430101826.GC5147@dell>
- <5269ccfd-0274-3c12-7eeb-5de923197d92@gmail.com>
+Subject: Re: [PATCH] input: mtk-pmic-keys: Fix probe when no DT node present
+Date: Tue, 3 Jul 2018 10:17:26 +0100
+Message-ID: <20180703091726.GM20176@dell>
+References: <20180622114228.8619-1-matthias.bgg@gmail.com>
+ <20180622183114.GA92912@dtor-ws>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <5269ccfd-0274-3c12-7eeb-5de923197d92@gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: mark.rutland@arm.com, airlied@linux.ie, mturquette@baylibre.com, dri-devel@lists.freedesktop.org, laurent.pinchart@ideasonboard.com, ulrich.hecht+renesas@gmail.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, sean.wang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>, gregkh@linuxfoundation.org, rdunlap@infradead.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, matthias.bgg@kernel.org, davem@davemloft.net
+In-Reply-To: <20180622183114.GA92912@dtor-ws>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, chen.zhong@mediatek.com, linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gTW9uLCAyNSBKdW4gMjAxOCwgTWF0dGhpYXMgQnJ1Z2dlciB3cm90ZToKPiBPbiAzMC8wNC8x
-OCAxMjoxOCwgTGVlIEpvbmVzIHdyb3RlOgo+ID4gT24gRnJpLCAyNyBBcHIgMjAxOCwgbWF0dGhp
-YXMuYmdnQGtlcm5lbC5vcmcgd3JvdGU6Cj4gPiAKPiA+PiBGcm9tOiBNYXR0aGlhcyBCcnVnZ2Vy
-IDxtYnJ1Z2dlckBzdXNlLmNvbT4KPiA+Pgo+ID4+IFRoZSBNTVNZUyBzdWJzeXN0ZW0gaW5jbHVk
-ZXMgY2xvY2tzIGFuZCBkcm0gY29tcG9uZW50cy4KPiA+PiBUaGlzIHBhdGNoIGFkZHMgYSBNRkQg
-ZGV2aWNlIHRvIHByb2JlIGJvdGggZHJpdmVycyBmcm9tIHRoZSBzYW1lCj4gPj4gZGV2aWNlIHRy
-ZWUgY29tcGF0aWJsZS4KPiA+Pgo+ID4+IFNpZ25lZC1vZmYtYnk6IE1hdHRoaWFzIEJydWdnZXIg
-PG1icnVnZ2VyQHN1c2UuY29tPgo+ID4+IC0tLQo+ID4+ICBkcml2ZXJzL21mZC9LY29uZmlnICAg
-ICB8ICA5ICsrKysrKwo+ID4+ICBkcml2ZXJzL21mZC9NYWtlZmlsZSAgICB8ICAyICsrCj4gPj4g
-IGRyaXZlcnMvbWZkL210ay1tbXN5cy5jIHwgNzkgKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKwo+ID4+ICAzIGZpbGVzIGNoYW5nZWQsIDkwIGluc2VydGlv
-bnMoKykKPiA+PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbWZkL210ay1tbXN5cy5jCj4g
-Pj4KPiA+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZmQvS2NvbmZpZyBiL2RyaXZlcnMvbWZkL0tj
-b25maWcKPiA+PiBpbmRleCBiODYwZWI1YWExOTQuLmQyM2EzYjlhMmM1OCAxMDA2NDQKPiA+PiAt
-LS0gYS9kcml2ZXJzL21mZC9LY29uZmlnCj4gPj4gKysrIGIvZHJpdmVycy9tZmQvS2NvbmZpZwo+
-ID4+IEBAIC0zNzgsNiArMzc4LDE1IEBAIGNvbmZpZyBNRkRfTUMxM1hYWF9JMkMKPiA+PiAgCWhl
-bHAKPiA+PiAgCSAgU2VsZWN0IHRoaXMgaWYgeW91ciBNQzEzeHh4IGlzIGNvbm5lY3RlZCB2aWEg
-YW4gSTJDIGJ1cy4KPiA+PiAgCj4gPj4gK2NvbmZpZyBNRkRfTUVESUFURUtfTU1TWVMKPiA+PiAr
-CXRyaXN0YXRlICJNZWRpYXRlayBNTVNZUyBpbnRlcmZhY2UiCj4gPj4gKwlzZWxlY3QgTUZEX0NP
-UkUKPiA+PiArCXNlbGVjdCBSRUdNQVBfTU1JTwo+ID4+ICsJaGVscAo+ID4+ICsJICBTZWxlY3Qg
-dGhpcyBpZiB5b3UgaGF2ZSBhIE1NU1lTIHN1YnN5c3RlbSBpbiB5b3VyIFNvQy4gVGhlCj4gPj4g
-KwkgIE1NU1lTIHN1YnN5c3RlbSBoYXMgYXQgbGVhc3QgYSBjbG9jayBkcml2ZXIgcGFydCBhbmQg
-c29tZQo+ID4+ICsJICBEUk0gY29tcG9uZW50cy4KPiA+PiArCj4gPj4gIGNvbmZpZyBNRkRfTVhT
-X0xSQURDCj4gPj4gIAl0cmlzdGF0ZSAiRnJlZXNjYWxlIGkuTVgyMy9pLk1YMjggTFJBREMiCj4g
-Pj4gIAlkZXBlbmRzIG9uIEFSQ0hfTVhTIHx8IENPTVBJTEVfVEVTVAo+ID4+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL21mZC9NYWtlZmlsZSBiL2RyaXZlcnMvbWZkL01ha2VmaWxlCj4gPj4gaW5kZXgg
-ZDlkMmNmMGQzMmVmLi5iOTYxMThiZDY4ZDkgMTAwNjQ0Cj4gPj4gLS0tIGEvZHJpdmVycy9tZmQv
-TWFrZWZpbGUKPiA+PiArKysgYi9kcml2ZXJzL21mZC9NYWtlZmlsZQo+ID4+IEBAIC05OCw2ICs5
-OCw4IEBAIG9iai0kKENPTkZJR19NRkRfTUMxM1hYWCkJKz0gbWMxM3h4eC1jb3JlLm8KPiA+PiAg
-b2JqLSQoQ09ORklHX01GRF9NQzEzWFhYX1NQSSkJKz0gbWMxM3h4eC1zcGkubwo+ID4+ICBvYmot
-JChDT05GSUdfTUZEX01DMTNYWFhfSTJDKQkrPSBtYzEzeHh4LWkyYy5vCj4gPj4gIAo+ID4+ICtv
-YmotJChDT05GSUdfTUZEX01FRElBVEVLX01NU1lTKSArPSBtdGstbW1zeXMubwo+ID4+ICsKPiA+
-PiAgb2JqLSQoQ09ORklHX01GRF9DT1JFKQkJKz0gbWZkLWNvcmUubwo+ID4+ICAKPiA+PiAgb2Jq
-LSQoQ09ORklHX0VaWF9QQ0FQKQkJKz0gZXp4LXBjYXAubwo+ID4+IGRpZmYgLS1naXQgYS9kcml2
-ZXJzL21mZC9tdGstbW1zeXMuYyBiL2RyaXZlcnMvbWZkL210ay1tbXN5cy5jCj4gPj4gbmV3IGZp
-bGUgbW9kZSAxMDA2NDQKPiA+PiBpbmRleCAwMDAwMDAwMDAwMDAuLmM4MDIzNDNmYjFjNgo+ID4+
-IC0tLSAvZGV2L251bGwKPiA+PiArKysgYi9kcml2ZXJzL21mZC9tdGstbW1zeXMuYwo+ID4+IEBA
-IC0wLDAgKzEsNzkgQEAKPiA+PiArLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAr
-Cj4gPj4gKwo+ID4+ICsvKgo+ID4+ICsgKiBtdGstbW1zeXMuYyAtLSBNZWRpYXRlayBNTVNZUyBt
-dWx0aS1mdW5jdGlvbiBkcml2ZXIKPiA+PiArICoKPiA+PiArICogQ29weXJpZ2h0IChjKSAyMDE4
-IE1hdHRoaWFzIEJydWdnZXIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+Cj4gPj4gKyAqCj4gPj4g
-KyAqIEF1dGhvcjogTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4KPiA+
-PiArICovCj4gPj4gKwo+ID4+ICsjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gPj4gKyNpbmNs
-dWRlIDxsaW51eC9pbml0Lmg+Cj4gPj4gKyNpbmNsdWRlIDxsaW51eC9tZmQvY29yZS5oPgo+ID4+
-ICsjaW5jbHVkZSA8bGludXgvb2YuaD4KPiA+PiArI2luY2x1ZGUgPGxpbnV4L29mX2FkZHJlc3Mu
-aD4KPiA+PiArI2luY2x1ZGUgPGxpbnV4L29mX2RldmljZS5oPgo+ID4+ICsjaW5jbHVkZSA8bGlu
-dXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gPj4gKyNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KPiA+
-PiArCj4gPj4gK2VudW0gewo+ID4+ICsJTU1TWVNfTVQyNzAxID0gMSwKPiA+PiArfTsKPiA+PiAr
-Cj4gPj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgbWZkX2NlbGwgbW1zeXNfbXQyNzAxX2RldnNbXSA9
-IHsKPiA+PiArCXsgLm5hbWUgPSAiY2xrLW10MjcwMS1tbSIsIH0sCj4gPj4gKwl7IC5uYW1lID0g
-ImRybS1tdDI3MDEtbW0iLCB9LAo+ID4+ICt9Owo+ID4+ICsKPiA+PiArc3RhdGljIGludCBtbXN5
-c19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4+ICt7Cj4gPj4gKwljb25z
-dCBzdHJ1Y3QgbWZkX2NlbGwgKm1tc3lzX2NlbGxzOwo+ID4+ICsJaW50IG5yX2NlbGxzOwo+ID4+
-ICsJbG9uZyBpZDsKPiA+PiArCWludCByZXQ7Cj4gPj4gKwo+ID4+ICsJaWQgPSAobG9uZykgb2Zf
-ZGV2aWNlX2dldF9tYXRjaF9kYXRhKCZwZGV2LT5kZXYpOwo+ID4+ICsJaWYgKCFpZCkgewo+ID4+
-ICsJCWRldl9lcnIoJnBkZXYtPmRldiwgIm9mX2RldmljZV9nZXQgbWF0Y2hfZGF0YSgpIGZhaWxl
-ZFxuIik7Cj4gPj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gPj4gKwl9Cj4gPj4gKwo+ID4+ICsJc3dp
-dGNoIChpZCkgewo+ID4+ICsJY2FzZSBNTVNZU19NVDI3MDE6Cj4gPj4gKwkJbW1zeXNfY2VsbHMg
-PSBtbXN5c19tdDI3MDFfZGV2czsKPiA+PiArCQlucl9jZWxscyA9IEFSUkFZX1NJWkUobW1zeXNf
-bXQyNzAxX2RldnMpOwo+ID4+ICsJCWJyZWFrOwo+ID4+ICsJZGVmYXVsdDoKPiA+PiArCQlyZXR1
-cm4gLUVOT0RFVjsKPiA+PiArCX0KPiA+PiArCj4gPj4gKwlyZXQgPSBkZXZtX21mZF9hZGRfZGV2
-aWNlcygmcGRldi0+ZGV2LCAwLCBtbXN5c19jZWxscywgbnJfY2VsbHMsCj4gPj4gKwkJCQkJTlVM
-TCwgMCwgTlVMTCk7Cj4gPj4gKwlpZiAocmV0KSB7Cj4gPj4gKwkJZGV2X2VycigmcGRldi0+ZGV2
-LCAiZmFpbGVkIHRvIGFkZCBNRkQgZGV2aWNlcyAlZFxuIiwgcmV0KTsKPiA+PiArCQlyZXR1cm4g
-cmV0Owo+ID4+ICsJfQo+ID4+ICsKPiA+PiArCXJldHVybiAwOwo+ID4+ICt9Owo+ID4gCj4gPiBU
-aGlzIGRyaXZlciBpcyBwcmV0dHkgcG9pbnRsZXNzLiAgSXQgZG9lc24ndCBhY3R1YWxseSBkbyBh
-bnl0aGluZy4KPiA+IAo+ID4gSSB0aGluayB5b3UganVzdCB3YW50IHRvIHVzZSAic2ltcGxlLW1m
-ZCIgaW5zdGVhZC4KPiA+IAo+IAo+IEkgdGhpbmsgdGhlIHByb2JsZW0gaXMsIHRoYXQgcmlnaHQg
-bm93IHdlIGhhdmUgdHdvIGRyaXZlcnMgd2hpY2ggdXNlIHRoZSBzYW1lCj4gZGV2aWNldHJlZSBi
-aW5kaW5nLCB3aGljaCBhcmUgY2xrIGFuZCBkcm0gZHJpdmVyLiBXaXRoIGEgc2ltcGxlLW1mZCB3
-ZSB3b3VsZAo+IG5lZWQgdHdvIGNvbXBhdGlibGVzLCBhbmQgdGhpcyB3b3VsZCBicmVhayBiYWNr
-d2FyZHMgY29tcGF0aWJpbGl0eS4KClNvIHdoYXQgZnVuY3Rpb25hbGl0eSBkb2VzIHRoaXMgZHJp
-dmVyIHByb3ZpZGUgeW91IHdpdGggdGhhdCB5b3UgZG8Kbm90IGhhdmUgY3VycmVudGx5PwoKLS0g
-CkxlZSBKb25lcyBb5p2O55C85pavXQpMaW5hcm8gU2VydmljZXMgVGVjaG5pY2FsIExlYWQKTGlu
-YXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdhcmUgZm9yIEFSTSBTb0NzCkZvbGxvdyBMaW5h
-cm86IEZhY2Vib29rIHwgVHdpdHRlciB8IEJsb2cKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
-bGlzdGluZm8vZHJpLWRldmVsCg==
+On Fri, 22 Jun 2018, Dmitry Torokhov wrote:
+
+> On Fri, Jun 22, 2018 at 01:42:28PM +0200, Matthias Brugger wrote:
+> > The drivers gets probed from a mfd devices. So the driver runs
+> > probe although no DT node exists. This leads to a NULL pointer
+> > dereference in the probe function. Check if a node exists and
+> > error out in case none is present.
+> 
+> Hmm, if a cell specifies of_compatible and no such node is present in DT
+> maybe we should bail out in mfd_add_device() instead of pushing the
+> check into individual drivers? Something like:
+> 
+> diff --git a/drivers/mfd/mfd-core.c b/drivers/mfd/mfd-core.c
+> index 94e3f32ce935..36a5fd98000d 100644
+> --- a/drivers/mfd/mfd-core.c
+> +++ b/drivers/mfd/mfd-core.c
+> @@ -137,6 +137,18 @@ static inline void mfd_acpi_add_device(const struct mfd_cell *cell,
+>  }
+>  #endif
+>  
+> +static struct device_node *mfd_get_node_for_cell(struct device *parent,
+> +						 const struct mfd_cell *cell)
+> +{
+> +	struct device_node *np;
+> +
+> +	for_each_child_of_node(parent->of_node, np)
+> +		if (of_device_is_compatible(np, cell->of_compatible))
+> +			return np;
+> +
+> +	return NULL;
+> +}
+> +
+>  static int mfd_add_device(struct device *parent, int id,
+>  			  const struct mfd_cell *cell, atomic_t *usage_count,
+>  			  struct resource *mem_base,
+> @@ -144,7 +156,6 @@ static int mfd_add_device(struct device *parent, int id,
+>  {
+>  	struct resource *res;
+>  	struct platform_device *pdev;
+> -	struct device_node *np = NULL;
+>  	int ret = -ENOMEM;
+>  	int platform_id;
+>  	int r;
+> @@ -176,11 +187,11 @@ static int mfd_add_device(struct device *parent, int id,
+>  		goto fail_res;
+>  
+>  	if (parent->of_node && cell->of_compatible) {
+> -		for_each_child_of_node(parent->of_node, np) {
+> -			if (of_device_is_compatible(np, cell->of_compatible)) {
+> -				pdev->dev.of_node = np;
+> -				break;
+> -			}
+> +		pdev->dev.of_node = mfd_get_node_for_cell(parent, cell);
+> +		if (!pdev->dev.of_node) {
+> +			dev_err(parent, "unable to locate node for %s (%s)\n",
+> +				cell->name, cell->of_compatible);
+> +			goto fail_res;
+>  		}
+>  	}
+>  
+> Lee?
+
+This change results the wrong semantics.  MFD overrides Device Tree,
+such that if a device is supplied and registered using
+mfd_add_device(s) it should be probed.  The only reason we provide a
+pointer to the of_node is for the child device to pull properties
+from.
+
+If a device should only be probed if an OF node exists, then it should
+not be registered at the MFD level.
+
+> > Fixes: 3e9f0b3e2b27 ("input: Add MediaTek PMIC keys support")
+> > Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+> > ---
+> >  drivers/input/keyboard/mtk-pmic-keys.c | 3 +++
+> >  1 file changed, 3 insertions(+)
+> > 
+> > diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+> > index 02c67a1749fc..388043e1939c 100644
+> > --- a/drivers/input/keyboard/mtk-pmic-keys.c
+> > +++ b/drivers/input/keyboard/mtk-pmic-keys.c
+> > @@ -257,6 +257,9 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+> >  	const struct of_device_id *of_id =
+> >  		of_match_device(of_mtk_pmic_keys_match_tbl, &pdev->dev);
+> >  
+> > +	if (of_id == NULL)
+> > +		return -ENODEV;
+> > +
+> >  	keys = devm_kzalloc(&pdev->dev, sizeof(*keys), GFP_KERNEL);
+> >  	if (!keys)
+> >  		return -ENOMEM;
+> 
+> Thanks.
+> 
+
+-- 
+Lee Jones [李琼斯]
+Linaro Services Technical Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
