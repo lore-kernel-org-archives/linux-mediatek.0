@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 22/32] mtd: rawnand: sunxi: convert driver to nand_scan()
-Date: Wed,  4 Jul 2018 00:00:19 +0200
-Message-ID: <20180703220029.19565-23-miquel.raynal@bootlin.com>
+Subject: [PATCH v2 17/32] mtd: rawnand: nandsim: convert driver to nand_scan()
+Date: Wed,  4 Jul 2018 00:00:14 +0200
+Message-ID: <20180703220029.19565-18-miquel.raynal@bootlin.com>
 References: <20180703220029.19565-1-miquel.raynal@bootlin.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180703220029.19565-1-miquel.raynal@bootlin.com>
@@ -17,70 +17,105 @@ both nand_scan_ident() and nand_scan_tail().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/sunxi_nand.c | 38 ++++++++++++++------------------------
- 1 file changed, 14 insertions(+), 24 deletions(-)
+ drivers/mtd/nand/raw/nandsim.c | 78 ++++++++++++++++++++++--------------------
+ 1 file changed, 41 insertions(+), 37 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/sunxi_nand.c b/drivers/mtd/nand/raw/sunxi_nand.c
-index d831a141a196..38bef2ad90a3 100644
---- a/drivers/mtd/nand/raw/sunxi_nand.c
-+++ b/drivers/mtd/nand/raw/sunxi_nand.c
-@@ -1816,12 +1816,21 @@ static void sunxi_nand_ecc_cleanup(struct nand_ecc_ctrl *ecc)
- 	}
+diff --git a/drivers/mtd/nand/raw/nandsim.c b/drivers/mtd/nand/raw/nandsim.c
+index f8edacde49ab..fa9d1c05fc45 100644
+--- a/drivers/mtd/nand/raw/nandsim.c
++++ b/drivers/mtd/nand/raw/nandsim.c
+@@ -2192,6 +2192,44 @@ static void ns_nand_read_buf(struct mtd_info *mtd, u_char *buf, int len)
+ 	return;
  }
  
--static int sunxi_nand_ecc_init(struct mtd_info *mtd, struct nand_ecc_ctrl *ecc,
--			       struct device_node *np)
-+static int sunxi_nand_attach_chip(struct nand_chip *nand)
- {
--	struct nand_chip *nand = mtd_to_nand(mtd);
-+	struct mtd_info *mtd = nand_to_mtd(nand);
-+	struct nand_ecc_ctrl *ecc = &nand->ecc;
-+	struct device_node *np = nand_get_flash_node(nand);
- 	int ret;
- 
-+	if (nand->bbt_options & NAND_BBT_USE_FLASH)
-+		nand->bbt_options |= NAND_BBT_NO_OOB;
++static int ns_attach_chip(struct nand_chip *chip)
++{
++	unsigned int eccsteps, eccbytes;
 +
-+	if (nand->options & NAND_NEED_SCRAMBLING)
-+		nand->options |= NAND_NO_SUBPAGE_WRITE;
++	if (!bch)
++		return 0;
 +
-+	nand->options |= NAND_SUBPAGE_READ;
++	if (!mtd_nand_has_bch()) {
++		NS_ERR("BCH ECC support is disabled\n");
++		return -EINVAL;
++	}
 +
- 	if (!ecc->size) {
- 		ecc->size = nand->ecc_step_ds;
- 		ecc->strength = nand->ecc_strength_ds;
-@@ -1927,30 +1936,11 @@ static int sunxi_nand_chip_init(struct device *dev, struct sunxi_nfc *nfc,
- 	mtd = nand_to_mtd(nand);
- 	mtd->dev.parent = dev;
++	/* Use 512-byte ecc blocks */
++	eccsteps = nsmtd->writesize / 512;
++	eccbytes = ((bch * 13) + 7) / 8;
++
++	/* Do not bother supporting small page devices */
++	if (nsmtd->oobsize < 64 || !eccsteps) {
++		NS_ERR("BCH not available on small page devices\n");
++		return -EINVAL;
++	}
++
++	if (((eccbytes * eccsteps) + 2) > nsmtd->oobsize) {
++		NS_ERR("Invalid BCH value %u\n", bch);
++		return -EINVAL;
++	}
++
++	chip->ecc.mode = NAND_ECC_SOFT;
++	chip->ecc.algo = NAND_ECC_BCH;
++	chip->ecc.size = 512;
++	chip->ecc.strength = bch;
++	chip->ecc.bytes = eccbytes;
++
++	NS_INFO("Using %u-bit/%u bytes BCH ECC\n", bch, chip->ecc.size);
++
++	return 0;
++}
++
+ /*
+  * Module initialization function
+  */
+@@ -2276,44 +2314,10 @@ static int __init ns_init_module(void)
+ 	if ((retval = parse_gravepages()) != 0)
+ 		goto error;
  
--	ret = nand_scan_ident(mtd, nsels, NULL);
-+	nand->controller->attach_chip = sunxi_nand_attach_chip;
-+	ret = nand_scan(mtd, nsels);
- 	if (ret)
- 		return ret;
- 
--	if (nand->bbt_options & NAND_BBT_USE_FLASH)
--		nand->bbt_options |= NAND_BBT_NO_OOB;
--
--	if (nand->options & NAND_NEED_SCRAMBLING)
--		nand->options |= NAND_NO_SUBPAGE_WRITE;
--
--	nand->options |= NAND_SUBPAGE_READ;
--
--	ret = sunxi_nand_ecc_init(mtd, &nand->ecc, np);
--	if (ret) {
--		dev_err(dev, "ECC init failed: %d\n", ret);
--		return ret;
+-	retval = nand_scan_ident(nsmtd, 1, NULL);
++	chip->hwcontrol.attach_chip = ns_attach_chip;
++	retval = nand_scan(nsmtd, 1);
+ 	if (retval) {
+-		NS_ERR("cannot scan NAND Simulator device\n");
+-		goto error;
 -	}
 -
--	ret = nand_scan_tail(mtd);
--	if (ret) {
--		dev_err(dev, "nand_scan_tail failed: %d\n", ret);
--		return ret;
+-	if (bch) {
+-		unsigned int eccsteps, eccbytes;
+-		if (!mtd_nand_has_bch()) {
+-			NS_ERR("BCH ECC support is disabled\n");
+-			retval = -EINVAL;
+-			goto error;
+-		}
+-		/* use 512-byte ecc blocks */
+-		eccsteps = nsmtd->writesize/512;
+-		eccbytes = (bch*13+7)/8;
+-		/* do not bother supporting small page devices */
+-		if ((nsmtd->oobsize < 64) || !eccsteps) {
+-			NS_ERR("bch not available on small page devices\n");
+-			retval = -EINVAL;
+-			goto error;
+-		}
+-		if ((eccbytes*eccsteps+2) > nsmtd->oobsize) {
+-			NS_ERR("invalid bch value %u\n", bch);
+-			retval = -EINVAL;
+-			goto error;
+-		}
+-		chip->ecc.mode = NAND_ECC_SOFT;
+-		chip->ecc.algo = NAND_ECC_BCH;
+-		chip->ecc.size = 512;
+-		chip->ecc.strength = bch;
+-		chip->ecc.bytes = eccbytes;
+-		NS_INFO("using %u-bit/%u bytes BCH ECC\n", bch, chip->ecc.size);
 -	}
 -
- 	ret = mtd_device_register(mtd, NULL, 0);
- 	if (ret) {
- 		dev_err(dev, "failed to register mtd device: %d\n", ret);
+-	retval = nand_scan_tail(nsmtd);
+-	if (retval) {
+-		NS_ERR("can't register NAND Simulator\n");
++		NS_ERR("Could not scan NAND Simulator device\n");
+ 		goto error;
+ 	}
+ 
 -- 
 2.14.1
