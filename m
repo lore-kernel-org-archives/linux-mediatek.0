@@ -1,119 +1,172 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 01/32] mtd: rawnand: add hooks that may be called during
- nand_scan()
-Date: Tue,  3 Jul 2018 23:59:58 +0200
-Message-ID: <20180703220029.19565-2-miquel.raynal@bootlin.com>
+Subject: [PATCH v2 12/32] mtd: rawnand: lpc32xx_mlc: convert driver to nand_scan()
+Date: Wed,  4 Jul 2018 00:00:09 +0200
+Message-ID: <20180703220029.19565-13-miquel.raynal@bootlin.com>
 References: <20180703220029.19565-1-miquel.raynal@bootlin.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180703220029.19565-1-miquel.raynal@bootlin.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Boris Brezillon <boris.brezillon@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Marc Gonzalez <marc.w.gonzalez@f>
-Cc: bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Boris Brezillon <boris.brezillon@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <mat>
+Cc: linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-In order to remove the limitation that forbids dynamic allocation in
-nand_scan_ident(), we must create a path that will be the same for all
-controller drivers. The idea is to use nand_scan() instead of the widely
-implemented nand_scan_ident()/nand_scan_tail() couple. In order to
-achieve this, controller drivers will need to adjust some parameters
-between these two functions depending on the NAND chip wired on them.
-
-For that, a hook called ->attach_chip() is created in the
-nand_hw_control structure. This structure may be referenced by two ways:
-1/ if the driver does not implement its own controller, the
-   chip->controller hook is not populated before nand_scan() so it
-   cannot be dereferenced: use chip->hwcontrol instead (which is
-   statically allocated and will be referenced later by chip->controller
-   anyway).
-2/ through chip->controller if the driver implements its own controller.
-
-Another hook, ->detach_chip() is also introduced in order to clean the
-controller driver's potential allocations in case of failure of
-nand_scan_tail(). There is no need for the controller driver to call the
-->detach_chip() hook directly upon error after a successful nand_scan().
-In this situation, calling nand_release() as before is enough.
+Two helpers have been added to the core to make ECC-related
+configuration between the detection phase and the final NAND scan. Use
+these hooks and convert the driver to just use nand_scan() instead of
+both nand_scan_ident() and nand_scan_tail().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/nand_base.c | 21 +++++++++++++++++++--
- include/linux/mtd/rawnand.h      |  6 ++++++
- 2 files changed, 25 insertions(+), 2 deletions(-)
+ drivers/mtd/nand/raw/lpc32xx_mlc.c | 105 +++++++++++++++++++------------------
+ 1 file changed, 55 insertions(+), 50 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/nand_base.c b/drivers/mtd/nand/raw/nand_base.c
-index faac82b1e058..97a74d48b0cf 100644
---- a/drivers/mtd/nand/raw/nand_base.c
-+++ b/drivers/mtd/nand/raw/nand_base.c
-@@ -6712,11 +6712,23 @@ EXPORT_SYMBOL(nand_scan_tail);
- int nand_scan_with_ids(struct mtd_info *mtd, int maxchips,
- 		       struct nand_flash_dev *ids)
- {
-+	struct nand_chip *chip = mtd_to_nand(mtd);
- 	int ret;
- 
- 	ret = nand_scan_ident(mtd, maxchips, ids);
--	if (!ret)
--		ret = nand_scan_tail(mtd);
-+	if (ret)
-+		return ret;
-+
-+	if (chip->controller->attach_chip) {
-+		ret = chip->controller->attach_chip(chip);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	ret = nand_scan_tail(mtd);
-+	if (ret && chip->controller->detach_chip)
-+		chip->controller->detach_chip(chip);
-+
- 	return ret;
- }
- EXPORT_SYMBOL(nand_scan_with_ids);
-@@ -6744,7 +6756,12 @@ void nand_cleanup(struct nand_chip *chip)
- 
- 	/* Free manufacturer priv data. */
- 	nand_manufacturer_cleanup(chip);
-+
-+	/* Free controller specific allocations after chip identification */
-+	if (chip->controller->detach_chip)
-+		chip->controller->detach_chip(chip);
- }
-+
- EXPORT_SYMBOL_GPL(nand_cleanup);
- 
- /**
-diff --git a/include/linux/mtd/rawnand.h b/include/linux/mtd/rawnand.h
-index 0c6fb316b409..81654211e520 100644
---- a/include/linux/mtd/rawnand.h
-+++ b/include/linux/mtd/rawnand.h
-@@ -517,11 +517,17 @@ struct nand_id {
-  * @wq:			wait queue to sleep on if a NAND operation is in
-  *			progress used instead of the per chip wait queue
-  *			when a hw controller is available.
-+ * @attach_chip:	Callback that may be called between nand_detect() and
-+ *			nand_scan_tail() during nand_scan() (optional).
-+ * @detach_chip:	Callback that may be called if nand_scan_tail() fails
-+ *			(optional).
-  */
- struct nand_hw_control {
- 	spinlock_t lock;
- 	struct nand_chip *active;
- 	wait_queue_head_t wq;
-+	int (*attach_chip)(struct nand_chip *chip);
-+	void (*detach_chip)(struct nand_chip *chip);
+diff --git a/drivers/mtd/nand/raw/lpc32xx_mlc.c b/drivers/mtd/nand/raw/lpc32xx_mlc.c
+index 052d123a8304..d650ed609ba7 100644
+--- a/drivers/mtd/nand/raw/lpc32xx_mlc.c
++++ b/drivers/mtd/nand/raw/lpc32xx_mlc.c
+@@ -184,6 +184,7 @@ static struct nand_bbt_descr lpc32xx_nand_bbt_mirror = {
  };
  
- static inline void nand_hw_control_init(struct nand_hw_control *nfc)
+ struct lpc32xx_nand_host {
++	struct platform_device	*pdev;
+ 	struct nand_chip	nand_chip;
+ 	struct lpc32xx_mlc_platform_data *pdata;
+ 	struct clk		*clk;
+@@ -653,6 +654,53 @@ static struct lpc32xx_nand_cfg_mlc *lpc32xx_parse_dt(struct device *dev)
+ 	return ncfg;
+ }
+ 
++static int lpc32xx_nand_attach_chip(struct nand_chip *chip)
++{
++	struct mtd_info *mtd = nand_to_mtd(chip);
++	struct lpc32xx_nand_host *host = nand_get_controller_data(chip);
++	struct device *dev = &host->pdev->dev;
++
++	host->dma_buf = devm_kzalloc(dev, mtd->writesize, GFP_KERNEL);
++	if (!host->dma_buf)
++		return -ENOMEM;
++
++	host->dummy_buf = devm_kzalloc(dev, mtd->writesize, GFP_KERNEL);
++	if (!host->dummy_buf)
++		return -ENOMEM;
++
++	chip->ecc.mode = NAND_ECC_HW;
++	chip->ecc.size = 512;
++	mtd_set_ooblayout(mtd, &lpc32xx_ooblayout_ops);
++	host->mlcsubpages = mtd->writesize / 512;
++
++	/* initially clear interrupt status */
++	readb(MLC_IRQ_SR(host->io_base));
++
++	init_completion(&host->comp_nand);
++	init_completion(&host->comp_controller);
++
++	host->irq = platform_get_irq(host->pdev, 0);
++	if (host->irq < 0) {
++		dev_err(dev, "failed to get platform irq\n");
++		return -EINVAL;
++	}
++
++	if (request_irq(host->irq, (irq_handler_t)&lpc3xxx_nand_irq,
++			IRQF_TRIGGER_HIGH, DRV_NAME, host)) {
++		dev_err(dev, "Error requesting NAND IRQ\n");
++		return -ENXIO;
++	}
++
++	return 0;
++}
++
++static void lpc32xx_nand_detach_chip(struct nand_chip *chip)
++{
++	struct lpc32xx_nand_host *host = nand_get_controller_data(chip);
++
++	free_irq(host->irq, host);
++}
++
+ /*
+  * Probe for NAND controller
+  */
+@@ -669,6 +717,8 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
+ 	if (!host)
+ 		return -ENOMEM;
+ 
++	host->pdev = pdev;
++
+ 	rc = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	host->io_base = devm_ioremap_resource(&pdev->dev, rc);
+ 	if (IS_ERR(host->io_base))
+@@ -749,58 +799,15 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	/*
+-	 * Scan to find existance of the device and
+-	 * Get the type of NAND device SMALL block or LARGE block
++	 * Scan to find existence of the device and get the type of NAND device:
++	 * SMALL block or LARGE block.
+ 	 */
+-	res = nand_scan_ident(mtd, 1, NULL);
++	nand_chip->hwcontrol.attach_chip = lpc32xx_nand_attach_chip;
++	nand_chip->hwcontrol.detach_chip = lpc32xx_nand_detach_chip;
++	res = nand_scan(mtd, 1);
+ 	if (res)
+ 		goto release_dma_chan;
+ 
+-	host->dma_buf = devm_kzalloc(&pdev->dev, mtd->writesize, GFP_KERNEL);
+-	if (!host->dma_buf) {
+-		res = -ENOMEM;
+-		goto release_dma_chan;
+-	}
+-
+-	host->dummy_buf = devm_kzalloc(&pdev->dev, mtd->writesize, GFP_KERNEL);
+-	if (!host->dummy_buf) {
+-		res = -ENOMEM;
+-		goto release_dma_chan;
+-	}
+-
+-	nand_chip->ecc.mode = NAND_ECC_HW;
+-	nand_chip->ecc.size = 512;
+-	mtd_set_ooblayout(mtd, &lpc32xx_ooblayout_ops);
+-	host->mlcsubpages = mtd->writesize / 512;
+-
+-	/* initially clear interrupt status */
+-	readb(MLC_IRQ_SR(host->io_base));
+-
+-	init_completion(&host->comp_nand);
+-	init_completion(&host->comp_controller);
+-
+-	host->irq = platform_get_irq(pdev, 0);
+-	if (host->irq < 0) {
+-		dev_err(&pdev->dev, "failed to get platform irq\n");
+-		res = -EINVAL;
+-		goto release_dma_chan;
+-	}
+-
+-	if (request_irq(host->irq, (irq_handler_t)&lpc3xxx_nand_irq,
+-			IRQF_TRIGGER_HIGH, DRV_NAME, host)) {
+-		dev_err(&pdev->dev, "Error requesting NAND IRQ\n");
+-		res = -ENXIO;
+-		goto release_dma_chan;
+-	}
+-
+-	/*
+-	 * Fills out all the uninitialized function pointers with the defaults
+-	 * And scans for a bad block table if appropriate.
+-	 */
+-	res = nand_scan_tail(mtd);
+-	if (res)
+-		goto free_irq;
+-
+ 	mtd->name = DRV_NAME;
+ 
+ 	res = mtd_device_register(mtd, host->ncfg->parts,
+@@ -812,8 +819,6 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
+ 
+ cleanup_nand:
+ 	nand_cleanup(nand_chip);
+-free_irq:
+-	free_irq(host->irq, host);
+ release_dma_chan:
+ 	if (use_dma)
+ 		dma_release_channel(host->dma_chan);
 -- 
 2.14.1
