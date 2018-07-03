@@ -1,254 +1,122 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: add mt6765 support
-Date: Mon, 2 Jul 2018 15:50:00 -0600
-Message-ID: <CAL_JsqKxvCxn3eb0sZVFwhUudDAkoHH5uyUgt1NY06zt-yKkQQ@mail.gmail.com>
-References: <1529978646-28976-1-git-send-email-mars.cheng@mediatek.com> <1529978646-28976-3-git-send-email-mars.cheng@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v22 1/4] dt-bindings: soc: Add documentation for the
+ MediaTek GCE unit
+Date: Mon, 2 Jul 2018 20:30:40 -0600
+Message-ID: <20180703023040.GA24508@rob-hp-laptop>
+References: <1530098172-31385-1-git-send-email-houlong.wei@mediatek.com>
+ <1530098172-31385-2-git-send-email-houlong.wei@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1529978646-28976-3-git-send-email-mars.cheng@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1530098172-31385-2-git-send-email-houlong.wei@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mars Cheng <mars.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Marc Zyngier <marc.zyngier@arm.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Choui <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
+To: Houlong Wei <houlong.wei@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Monica Wang <monica.wang@mediatek.com>, HS Liao <hs.liao@mediatek.com>, ginny.chen@m
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jun 25, 2018 at 8:04 PM Mars Cheng <mars.cheng@mediatek.com> wrote:
->
-> This adds basic chip support for MT6765 SoC.
->
-> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+On Wed, Jun 27, 2018 at 07:16:09PM +0800, Houlong Wei wrote:
+> This adds documentation for the MediaTek Global Command Engine (GCE) unit
+> found in MT8173 SoCs.
+> 
+> Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
+> Signed-off-by: HS Liao <hs.liao@mediatek.com>
 > ---
->  arch/arm64/boot/dts/mediatek/Makefile       |    1 +
->  arch/arm64/boot/dts/mediatek/mt6765-evb.dts |   33 ++++++
->  arch/arm64/boot/dts/mediatek/mt6765.dtsi    |  158 +++++++++++++++++++++++++++
->  3 files changed, 192 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
->
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index ac17f60..7506b0d 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -1,6 +1,7 @@
->  # SPDX-License-Identifier: GPL-2.0
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt6765-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6765-evb.dts b/arch/arm64/boot/dts/mediatek/mt6765-evb.dts
+> Hi Rob,
+>   I don't add your ACK in this version since the dt-binding description
+> has been changed. Thanks.
+> ---
+>  .../devicetree/bindings/mailbox/mtk-gce.txt        |   65 ++++++++++++++++++++
+>  include/dt-bindings/gce/mt8173-gce.h               |   48 +++++++++++++++
+>  2 files changed, 113 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+>  create mode 100644 include/dt-bindings/gce/mt8173-gce.h
+> 
+> diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
 > new file mode 100644
-> index 0000000..36dddff2
+> index 0000000..26f65a4
 > --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt6765-evb.dts
-> @@ -0,0 +1,33 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * dts file for Mediatek MT6765
-> + *
-> + * (C) Copyright 2018. Mediatek, Inc.
-> + *
-> + * Mars Cheng <mars.cheng@mediatek.com>
-> + */
+> +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> @@ -0,0 +1,65 @@
+> +MediaTek GCE
+> +===============
 > +
-> +/dts-v1/;
-> +#include "mt6765.dtsi"
+> +The Global Command Engine (GCE) is used to help read/write registers with
+> +critical time limitation, such as updating display configuration during the
+> +vblank. The GCE can be used to implement the Command Queue (CMDQ) driver.
 > +
-> +/ {
-> +       model = "MediaTek MT6765 EVB";
-> +       compatible = "mediatek,mt6765-evb", "mediatek,mt6765";
+> +CMDQ driver uses mailbox framework for communication. Please refer to
+> +mailbox.txt for generic information about mailbox device-tree bindings.
 > +
-> +       aliases {
-> +               serial0 = &uart0;
-> +       };
-> +
-> +       memory@40000000 {
-> +               device_type = "memory";
-> +               reg = <0 0x40000000 0 0x1e800000>;
-> +       };
-> +
-> +       chosen {
-> +               stdout-path = "serial0:921600n8";
-> +       };
-> +};
-> +
-> +&uart0 {
-> +       status = "okay";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6765.dtsi b/arch/arm64/boot/dts/mediatek/mt6765.dtsi
-> new file mode 100644
-> index 0000000..ab34c0f
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt6765.dtsi
-> @@ -0,0 +1,158 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * dts file for Mediatek MT6765
-> + *
-> + * (C) Copyright 2018. Mediatek, Inc.
-> + *
-> + * Mars Cheng <mars.cheng@mediatek.com>
-> + */
-> +
-> +#include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +/ {
-> +       compatible = "mediatek,mt6765";
-> +       interrupt-parent = <&sysirq>;
-> +       #address-cells = <2>;
-> +       #size-cells = <2>;
-> +
-> +       psci {
-> +               compatible = "arm,psci-0.2";
-> +               method = "smc";
-> +       };
-> +
-> +       cpus {
-> +               #address-cells = <1>;
-> +               #size-cells = <0>;
-> +
-> +               cpu0: cpu@0 {
+> +Required properties:
+> +- compatible: Must be "mediatek,mt8173-gce"
+> +- reg: Address range of the GCE unit
+> +- interrupts: The interrupt signal from the GCE block
+> +- clock: Clocks according to the common clock binding
+> +- clock-names: Must be "gce" to stand for GCE clock
+> +- thread-num: Maximum threads count of GCE.
 
-Really need labels for cpu nodes?
+mediatek,thread-num
 
-> +                       device_type = "cpu";
-> +                       compatible = "arm,cortex-a53";
-> +                       enable-method = "psci";
-> +                       reg = <0x000>;
-> +               };
-> +
-> +               cpu1: cpu@1 {
-> +                       device_type = "cpu";
-> +                       compatible = "arm,cortex-a53";
-> +                       enable-method = "psci";
-> +                       reg = <0x001>;
-> +               };
-> +
-> +               cpu2: cpu@2 {
-> +                       device_type = "cpu";
-> +                       compatible = "arm,cortex-a53";
-> +                       enable-method = "psci";
-> +                       reg = <0x002>;
-> +               };
-> +
-> +               cpu3: cpu@3 {
-> +                       device_type = "cpu";
-> +                       compatible = "arm,cortex-a53";
-> +                       enable-method = "psci";
-> +                       reg = <0x003>;
-> +               };
-> +
-> +               cpu4: cpu@100 {
-> +                       device_type = "cpu";
-> +                       compatible = "arm,cortex-a53";
-> +                       enable-method = "psci";
-> +                       reg = <0x100>;
-> +               };
-> +
-> +               cpu5: cpu@101 {
-> +                       device_type = "cpu";
-> +                       compatible = "arm,cortex-a53";
-> +                       enable-method = "psci";
-> +                       reg = <0x101>;
-> +               };
-> +
-> +               cpu6: cpu@102 {
-> +                       device_type = "cpu";
-> +                       compatible = "arm,cortex-a53";
-> +                       enable-method = "psci";
-> +                       reg = <0x102>;
-> +               };
-> +
-> +               cpu7: cpu@103 {
-> +                       device_type = "cpu";
-> +                       compatible = "arm,cortex-a53";
-> +                       enable-method = "psci";
-> +                       reg = <0x103>;
-> +               };
-> +       };
-> +
-> +       baud_clk: dummy26m {
-> +               compatible = "fixed-clock";
-> +               clock-frequency = <26000000>;
-> +               #clock-cells = <0>;
-> +       };
-> +
-> +       sys_clk: dummyclk {
-> +               compatible = "fixed-clock";
-> +               clock-frequency = <26000000>;
-> +               #clock-cells = <0>;
-> +       };
-> +
-> +       timer {
-> +               compatible = "arm,armv8-timer";
-> +               interrupt-parent = <&gic>;
-> +               interrupts = <GIC_PPI 13
-> +                            (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
-> +                            <GIC_PPI 14
-> +                            (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
-> +                            <GIC_PPI 11
-> +                            (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
-> +                            <GIC_PPI 10
-> +                            (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>;
-> +       };
-> +
-> +       soc {
-> +               #address-cells = <2>;
-> +               #size-cells = <2>;
-> +               compatible = "simple-bus";
-> +               ranges;
-> +
-> +               sysirq: intpol-controller@10200a80 {
+Is this needed for anything other than error checking the thread id in 
+the mbox cells? if that's it, then drop it. 
 
-interrupt-controller@...
-
-> +                       compatible = "mediatek,mt6765-sysirq",
-> +                                    "mediatek,mt6577-sysirq";
-> +                       interrupt-controller;
-> +                       #interrupt-cells = <3>;
-> +                       interrupt-parent = <&gic>;
-> +                       reg = <0 0x10200a80 0 0x50>;
-> +               };
+> +- #mbox-cells: Should be 4.
+> +	<&phandle channel timeout priority atomic_exec>
+> +	phandle: Label name of a gce node.
+> +	channel: Channel of mailbox. Be equal to the thread id of GCE.
+> +	timeout: Maximum time of software waiting GCE processing done, in unit
+> +		of millisecond.
+> +	priority: Priority of GCE thread.
+> +	atomic_exec: GCE processing continuous packets of commands in atomic
+> +		way.
 > +
-> +               gic: interrupt-controller@0c000000 {
+> +Required properties for a client device:
+> +- mboxes: Client use mailbox to communicate with GCE, it should have this
+> +  property and list of phandle, mailbox specifiers.
+> +- gce-subsys: Specify the sub-system id which is corresponding to the register
+> +  address.
 
-Drop the leading 0. Build your dts with W=12 and fix the warnings like this.
+What is this for?
 
-> +                       compatible = "arm,gic-v3";
-> +                       #interrupt-cells = <3>;
-> +                       #address-cells = <2>;
-> +                       #size-cells = <2>;
-> +                       #redistributor-regions = <1>;
-> +                       interrupt-parent = <&gic>;
-> +                       interrupt-controller;
-> +                       reg = <0 0x0c000000 0 0x40000>, // distributor
-> +                             <0 0x0c100000 0 0x200000>; // redistributor
-> +                       interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> +               };
 > +
-> +               uart0: serial@11002000 {
-> +                       compatible = "mediatek,mt6765-uart",
-> +                                    "mediatek,mt6577-uart";
-> +                       reg = <0 0x11002000 0 0x400>;
-> +                       interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
-> +                       clocks = <&baud_clk>, <&sys_clk>;
-> +                       clock-names = "baud", "bus";
-> +                       status = "disabled";
-> +               };
+> +Optional properties for a client device:
+> +- gce-event: Specify the event if the client has any. Because the event is
+> +  parsed by client, so client can replace 'gce-event' with other meaningful
+> +  name.
+
+If the client sets the name, then no point having here. It must be 
+documented in the client binding. But then, what is this for in the 
+first place?
+
 > +
-> +               uart1: serial@11003000 {
-> +                       compatible = "mediatek,mt6765-uart",
-> +                                    "mediatek,mt6577-uart";
-> +                       reg = <0 0x11003000 0 0x400>;
-> +                       interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
-> +                       clocks = <&baud_clk>, <&sys_clk>;
-> +                       clock-names = "baud", "bus";
-> +                       status = "disabled";
-> +               };
-> +       }; /* end of soc */
-> +};
-> --
-> 1.7.9.5
->
+> +Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'. Such as
+> +thread number, sub-system ids, thread priority, event ids.
+> +
+> +Example:
+> +
+> +	gce: gce@10212000 {
+
+mailbox@...
+
+> +		compatible = "mediatek,mt8173-gce";
+> +		reg = <0 0x10212000 0 0x1000>;
+> +		interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&infracfg CLK_INFRA_GCE>;
+> +		clock-names = "gce";
+> +		thread-num = CMDQ_THR_MAX_COUNT;
+> +		#mbox-cells = <4>;
+> +	};
+> +
+> +Example for a client device:
+> +
+> +	mmsys: clock-controller@14000000 {
+> +		compatible = "mediatek,mt8173-mmsys";
+> +		mboxes = <&gce 0 2000 CMDQ_THR_PRIO_LOWEST 1>,
+> +			 <&gce 1 2000 CMDQ_THR_PRIO_LOWEST 1>;
+> +		gce-subsys = <SUBSYS_1400XXXX>;
+> +		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
+> +				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
+> +
+> +		...
+> +	};
