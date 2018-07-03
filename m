@@ -1,99 +1,119 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 11/32] mtd: rawnand: jz4780: convert driver to nand_scan()
-Date: Wed,  4 Jul 2018 00:00:08 +0200
-Message-ID: <20180703220029.19565-12-miquel.raynal@bootlin.com>
+Subject: [PATCH v2 01/32] mtd: rawnand: add hooks that may be called during
+ nand_scan()
+Date: Tue,  3 Jul 2018 23:59:58 +0200
+Message-ID: <20180703220029.19565-2-miquel.raynal@bootlin.com>
 References: <20180703220029.19565-1-miquel.raynal@bootlin.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20180703220029.19565-1-miquel.raynal@bootlin.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Boris Brezillon <boris.brezillon@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <mat>
-Cc: linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Boris Brezillon <boris.brezillon@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Marc Gonzalez <marc.w.gonzalez@f>
+Cc: bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Two helpers have been added to the core to make ECC-related
-configuration between the detection phase and the final NAND scan. Use
-these hooks and convert the driver to just use nand_scan() instead of
-both nand_scan_ident() and nand_scan_tail().
+In order to remove the limitation that forbids dynamic allocation in
+nand_scan_ident(), we must create a path that will be the same for all
+controller drivers. The idea is to use nand_scan() instead of the widely
+implemented nand_scan_ident()/nand_scan_tail() couple. In order to
+achieve this, controller drivers will need to adjust some parameters
+between these two functions depending on the NAND chip wired on them.
+
+For that, a hook called ->attach_chip() is created in the
+nand_hw_control structure. This structure may be referenced by two ways:
+1/ if the driver does not implement its own controller, the
+   chip->controller hook is not populated before nand_scan() so it
+   cannot be dereferenced: use chip->hwcontrol instead (which is
+   statically allocated and will be referenced later by chip->controller
+   anyway).
+2/ through chip->controller if the driver implements its own controller.
+
+Another hook, ->detach_chip() is also introduced in order to clean the
+controller driver's potential allocations in case of failure of
+nand_scan_tail(). There is no need for the controller driver to call the
+->detach_chip() hook directly upon error after a successful nand_scan().
+In this situation, calling nand_release() as before is enough.
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
-Acked-by: Harvey Hunt <harveyhuntnexus@gmail.com>
 ---
- drivers/mtd/nand/raw/jz4780_nand.c | 30 ++++++++++++------------------
- 1 file changed, 12 insertions(+), 18 deletions(-)
+ drivers/mtd/nand/raw/nand_base.c | 21 +++++++++++++++++++--
+ include/linux/mtd/rawnand.h      |  6 ++++++
+ 2 files changed, 25 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/jz4780_nand.c b/drivers/mtd/nand/raw/jz4780_nand.c
-index e69f6ae4c539..dd8c2facdef5 100644
---- a/drivers/mtd/nand/raw/jz4780_nand.c
-+++ b/drivers/mtd/nand/raw/jz4780_nand.c
-@@ -157,9 +157,8 @@ static int jz4780_nand_ecc_correct(struct mtd_info *mtd, u8 *dat,
- 	return jz4780_bch_correct(nfc->bch, &params, dat, read_ecc);
- }
- 
--static int jz4780_nand_init_ecc(struct jz4780_nand_chip *nand, struct device *dev)
-+static int jz4780_nand_attach_chip(struct nand_chip *chip)
+diff --git a/drivers/mtd/nand/raw/nand_base.c b/drivers/mtd/nand/raw/nand_base.c
+index faac82b1e058..97a74d48b0cf 100644
+--- a/drivers/mtd/nand/raw/nand_base.c
++++ b/drivers/mtd/nand/raw/nand_base.c
+@@ -6712,11 +6712,23 @@ EXPORT_SYMBOL(nand_scan_tail);
+ int nand_scan_with_ids(struct mtd_info *mtd, int maxchips,
+ 		       struct nand_flash_dev *ids)
  {
--	struct nand_chip *chip = &nand->chip;
- 	struct mtd_info *mtd = nand_to_mtd(chip);
- 	struct jz4780_nand_controller *nfc = to_jz4780_nand_controller(chip->controller);
- 	int eccbytes;
-@@ -170,7 +169,8 @@ static int jz4780_nand_init_ecc(struct jz4780_nand_chip *nand, struct device *de
- 	switch (chip->ecc.mode) {
- 	case NAND_ECC_HW:
- 		if (!nfc->bch) {
--			dev_err(dev, "HW BCH selected, but BCH controller not found\n");
-+			dev_err(nfc->dev,
-+				"HW BCH selected, but BCH controller not found\n");
- 			return -ENODEV;
- 		}
++	struct nand_chip *chip = mtd_to_nand(mtd);
+ 	int ret;
  
-@@ -179,15 +179,16 @@ static int jz4780_nand_init_ecc(struct jz4780_nand_chip *nand, struct device *de
- 		chip->ecc.correct = jz4780_nand_ecc_correct;
- 		/* fall through */
- 	case NAND_ECC_SOFT:
--		dev_info(dev, "using %s (strength %d, size %d, bytes %d)\n",
--			(nfc->bch) ? "hardware BCH" : "software ECC",
--			chip->ecc.strength, chip->ecc.size, chip->ecc.bytes);
-+		dev_info(nfc->dev, "using %s (strength %d, size %d, bytes %d)\n",
-+			 (nfc->bch) ? "hardware BCH" : "software ECC",
-+			 chip->ecc.strength, chip->ecc.size, chip->ecc.bytes);
- 		break;
- 	case NAND_ECC_NONE:
--		dev_info(dev, "not using ECC\n");
-+		dev_info(nfc->dev, "not using ECC\n");
- 		break;
- 	default:
--		dev_err(dev, "ECC mode %d not supported\n", chip->ecc.mode);
-+		dev_err(nfc->dev, "ECC mode %d not supported\n",
-+			chip->ecc.mode);
- 		return -EINVAL;
- 	}
+ 	ret = nand_scan_ident(mtd, maxchips, ids);
+-	if (!ret)
+-		ret = nand_scan_tail(mtd);
++	if (ret)
++		return ret;
++
++	if (chip->controller->attach_chip) {
++		ret = chip->controller->attach_chip(chip);
++		if (ret)
++			return ret;
++	}
++
++	ret = nand_scan_tail(mtd);
++	if (ret && chip->controller->detach_chip)
++		chip->controller->detach_chip(chip);
++
+ 	return ret;
+ }
+ EXPORT_SYMBOL(nand_scan_with_ids);
+@@ -6744,7 +6756,12 @@ void nand_cleanup(struct nand_chip *chip)
  
-@@ -199,7 +200,7 @@ static int jz4780_nand_init_ecc(struct jz4780_nand_chip *nand, struct device *de
- 	eccbytes = mtd->writesize / chip->ecc.size * chip->ecc.bytes;
+ 	/* Free manufacturer priv data. */
+ 	nand_manufacturer_cleanup(chip);
++
++	/* Free controller specific allocations after chip identification */
++	if (chip->controller->detach_chip)
++		chip->controller->detach_chip(chip);
+ }
++
+ EXPORT_SYMBOL_GPL(nand_cleanup);
  
- 	if (eccbytes > mtd->oobsize - 2) {
--		dev_err(dev,
-+		dev_err(nfc->dev,
- 			"invalid ECC config: required %d ECC bytes, but only %d are available",
- 			eccbytes, mtd->oobsize - 2);
- 		return -EINVAL;
-@@ -279,15 +280,8 @@ static int jz4780_nand_init_chip(struct platform_device *pdev,
- 	chip->controller = &nfc->controller;
- 	nand_set_flash_node(chip, np);
+ /**
+diff --git a/include/linux/mtd/rawnand.h b/include/linux/mtd/rawnand.h
+index 0c6fb316b409..81654211e520 100644
+--- a/include/linux/mtd/rawnand.h
++++ b/include/linux/mtd/rawnand.h
+@@ -517,11 +517,17 @@ struct nand_id {
+  * @wq:			wait queue to sleep on if a NAND operation is in
+  *			progress used instead of the per chip wait queue
+  *			when a hw controller is available.
++ * @attach_chip:	Callback that may be called between nand_detect() and
++ *			nand_scan_tail() during nand_scan() (optional).
++ * @detach_chip:	Callback that may be called if nand_scan_tail() fails
++ *			(optional).
+  */
+ struct nand_hw_control {
+ 	spinlock_t lock;
+ 	struct nand_chip *active;
+ 	wait_queue_head_t wq;
++	int (*attach_chip)(struct nand_chip *chip);
++	void (*detach_chip)(struct nand_chip *chip);
+ };
  
--	ret = nand_scan_ident(mtd, 1, NULL);
--	if (ret)
--		return ret;
--
--	ret = jz4780_nand_init_ecc(nand, dev);
--	if (ret)
--		return ret;
--
--	ret = nand_scan_tail(mtd);
-+	chip->controller->attach_chip = jz4780_nand_attach_chip;
-+	ret = nand_scan(mtd, 1);
- 	if (ret)
- 		return ret;
- 
+ static inline void nand_hw_control_init(struct nand_hw_control *nfc)
 -- 
 2.14.1
