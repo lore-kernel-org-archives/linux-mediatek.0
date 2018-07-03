@@ -1,24 +1,13 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 03/32] mtd: rawnand: cafe: convert driver to nand_scan()
-Date: Wed,  4 Jul 2018 00:00:00 +0200
-Message-ID: <20180703220029.19565-4-miquel.raynal@bootlin.com>
+Subject: [PATCH v2 23/32] mtd: rawnand: tango: convert driver to nand_scan()
+Date: Wed,  4 Jul 2018 00:00:20 +0200
+Message-ID: <20180703220029.19565-24-miquel.raynal@bootlin.com>
 References: <20180703220029.19565-1-miquel.raynal@bootlin.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180703220029.19565-1-miquel.raynal@bootlin.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Boris Brezillon <boris.brezillon@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Marc Gonzalez <marc.w.gonzalez@f>
-Cc: bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Boris Brezillon <boris.brezillon@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <mat>
+Cc: linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Two helpers have been added to the core to make ECC-related
@@ -28,177 +17,62 @@ both nand_scan_ident() and nand_scan_tail().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/cafe_nand.c | 131 ++++++++++++++++++++++-----------------
- 1 file changed, 75 insertions(+), 56 deletions(-)
+ drivers/mtd/nand/raw/tango_nand.c | 36 ++++++++++++++++++++----------------
+ 1 file changed, 20 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/cafe_nand.c b/drivers/mtd/nand/raw/cafe_nand.c
-index d721f489b38b..035061606e39 100644
---- a/drivers/mtd/nand/raw/cafe_nand.c
-+++ b/drivers/mtd/nand/raw/cafe_nand.c
-@@ -71,7 +71,9 @@ struct cafe_priv {
- 	unsigned char *dmabuf;
- };
- 
--static int usedma = 1;
-+#define CAFE_DEFAULT_DMA	1
-+
-+static int usedma = CAFE_DEFAULT_DMA;
- module_param(usedma, int, 0644);
- 
- static int skipbbt = 0;
-@@ -598,6 +600,74 @@ static int cafe_mul(int x)
- 	return gf4096_mul(x, 0xe01);
+diff --git a/drivers/mtd/nand/raw/tango_nand.c b/drivers/mtd/nand/raw/tango_nand.c
+index f2052fae21c7..fb41e66e9b60 100644
+--- a/drivers/mtd/nand/raw/tango_nand.c
++++ b/drivers/mtd/nand/raw/tango_nand.c
+@@ -517,6 +517,24 @@ static int tango_set_timings(struct mtd_info *mtd, int csline,
+ 	return 0;
  }
  
-+static int cafe_nand_attach_chip(struct nand_chip *chip)
++static int tango_attach_chip(struct nand_chip *chip)
 +{
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+	struct cafe_priv *cafe = nand_get_controller_data(chip);
-+	int err = 0;
++	struct nand_ecc_ctrl *ecc = &chip->ecc;
 +
-+	cafe->dmabuf = dma_alloc_coherent(&cafe->pdev->dev, 2112,
-+					  &cafe->dmaaddr, GFP_KERNEL);
-+	if (!cafe->dmabuf)
-+		return -ENOMEM;
++	ecc->mode = NAND_ECC_HW;
++	ecc->algo = NAND_ECC_BCH;
++	ecc->bytes = DIV_ROUND_UP(ecc->strength * FIELD_ORDER, BITS_PER_BYTE);
 +
-+	/* Set up DMA address */
-+	cafe_writel(cafe, lower_32_bits(cafe->dmaaddr), NAND_DMA_ADDR0);
-+	cafe_writel(cafe, upper_32_bits(cafe->dmaaddr), NAND_DMA_ADDR1);
-+
-+	cafe_dev_dbg(&cafe->pdev->dev, "Set DMA address to %x (virt %p)\n",
-+		     cafe_readl(cafe, NAND_DMA_ADDR0), cafe->dmabuf);
-+
-+	/* Restore the DMA flag */
-+	usedma = CAFE_DEFAULT_DMA;
-+
-+	cafe->ctl2 = BIT(27); /* Reed-Solomon ECC */
-+	if (mtd->writesize == 2048)
-+		cafe->ctl2 |= BIT(29); /* 2KiB page size */
-+
-+	/* Set up ECC according to the type of chip we found */
-+	mtd_set_ooblayout(mtd, &cafe_ooblayout_ops);
-+	if (mtd->writesize == 2048) {
-+		cafe->nand.bbt_td = &cafe_bbt_main_descr_2048;
-+		cafe->nand.bbt_md = &cafe_bbt_mirror_descr_2048;
-+	} else if (mtd->writesize == 512) {
-+		cafe->nand.bbt_td = &cafe_bbt_main_descr_512;
-+		cafe->nand.bbt_md = &cafe_bbt_mirror_descr_512;
-+	} else {
-+		dev_warn(&cafe->pdev->dev,
-+			 "Unexpected NAND flash writesize %d. Aborting\n",
-+			 mtd->writesize);
-+		err = -ENOTSUPP;
-+		goto out_free_dma;
-+	}
-+
-+	cafe->nand.ecc.mode = NAND_ECC_HW_SYNDROME;
-+	cafe->nand.ecc.size = mtd->writesize;
-+	cafe->nand.ecc.bytes = 14;
-+	cafe->nand.ecc.strength = 4;
-+	cafe->nand.ecc.hwctl  = (void *)cafe_nand_bug;
-+	cafe->nand.ecc.calculate = (void *)cafe_nand_bug;
-+	cafe->nand.ecc.correct  = (void *)cafe_nand_bug;
-+	cafe->nand.ecc.write_page = cafe_nand_write_page_lowlevel;
-+	cafe->nand.ecc.write_oob = cafe_nand_write_oob;
-+	cafe->nand.ecc.read_page = cafe_nand_read_page;
-+	cafe->nand.ecc.read_oob = cafe_nand_read_oob;
++	ecc->read_page_raw = tango_read_page_raw;
++	ecc->write_page_raw = tango_write_page_raw;
++	ecc->read_page = tango_read_page;
++	ecc->write_page = tango_write_page;
++	ecc->read_oob = tango_read_oob;
++	ecc->write_oob = tango_write_oob;
 +
 +	return 0;
-+
-+ out_free_dma:
-+	dma_free_coherent(&cafe->pdev->dev, 2112, cafe->dmabuf, cafe->dmaaddr);
-+
-+	return err;
 +}
 +
-+static void cafe_nand_detach_chip(struct nand_chip *chip)
-+{
-+	struct cafe_priv *cafe = nand_get_controller_data(chip);
-+
-+	dma_free_coherent(&cafe->pdev->dev, 2112, cafe->dmabuf, cafe->dmaaddr);
-+}
-+
- static int cafe_nand_probe(struct pci_dev *pdev,
- 				     const struct pci_device_id *ent)
+ static int chip_init(struct device *dev, struct device_node *np)
  {
-@@ -713,65 +783,16 @@ static int cafe_nand_probe(struct pci_dev *pdev,
- 		cafe_readl(cafe, GLOBAL_CTRL),
- 		cafe_readl(cafe, GLOBAL_IRQ_MASK));
+ 	u32 cs;
+@@ -566,22 +584,8 @@ static int chip_init(struct device *dev, struct device_node *np)
+ 	mtd_set_ooblayout(mtd, &tango_nand_ooblayout_ops);
+ 	mtd->dev.parent = dev;
  
--	/* Do not use the DMA for the nand_scan_ident() */
--	old_dma = usedma;
-+	/* Do not use the DMA during the NAND identification */
- 	usedma = 0;
- 
- 	/* Scan to find existence of the device */
--	err = nand_scan_ident(mtd, 2, NULL);
-+	cafe->nand.hwcontrol.attach_chip = cafe_nand_attach_chip;
-+	cafe->nand.hwcontrol.detach_chip = cafe_nand_detach_chip;
-+	err = nand_scan(mtd, 2);
- 	if (err)
- 		goto out_irq;
- 
--	cafe->dmabuf = dma_alloc_coherent(&cafe->pdev->dev, 2112,
--					  &cafe->dmaaddr, GFP_KERNEL);
--	if (!cafe->dmabuf) {
--		err = -ENOMEM;
--		goto out_irq;
--	}
+-	err = nand_scan_ident(mtd, 1, NULL);
+-	if (err)
+-		return err;
 -
--	/* Set up DMA address */
--	cafe_writel(cafe, lower_32_bits(cafe->dmaaddr), NAND_DMA_ADDR0);
--	cafe_writel(cafe, upper_32_bits(cafe->dmaaddr), NAND_DMA_ADDR1);
+-	ecc->mode = NAND_ECC_HW;
+-	ecc->algo = NAND_ECC_BCH;
+-	ecc->bytes = DIV_ROUND_UP(ecc->strength * FIELD_ORDER, BITS_PER_BYTE);
 -
--	cafe_dev_dbg(&cafe->pdev->dev, "Set DMA address to %x (virt %p)\n",
--		cafe_readl(cafe, NAND_DMA_ADDR0), cafe->dmabuf);
--
--	/* Restore the DMA flag */
--	usedma = old_dma;
--
--	cafe->ctl2 = 1<<27; /* Reed-Solomon ECC */
--	if (mtd->writesize == 2048)
--		cafe->ctl2 |= 1<<29; /* 2KiB page size */
--
--	/* Set up ECC according to the type of chip we found */
--	mtd_set_ooblayout(mtd, &cafe_ooblayout_ops);
--	if (mtd->writesize == 2048) {
--		cafe->nand.bbt_td = &cafe_bbt_main_descr_2048;
--		cafe->nand.bbt_md = &cafe_bbt_mirror_descr_2048;
--	} else if (mtd->writesize == 512) {
--		cafe->nand.bbt_td = &cafe_bbt_main_descr_512;
--		cafe->nand.bbt_md = &cafe_bbt_mirror_descr_512;
--	} else {
--		pr_warn("Unexpected NAND flash writesize %d. Aborting\n",
--			mtd->writesize);
--		goto out_free_dma;
--	}
--	cafe->nand.ecc.mode = NAND_ECC_HW_SYNDROME;
--	cafe->nand.ecc.size = mtd->writesize;
--	cafe->nand.ecc.bytes = 14;
--	cafe->nand.ecc.strength = 4;
--	cafe->nand.ecc.hwctl  = (void *)cafe_nand_bug;
--	cafe->nand.ecc.calculate = (void *)cafe_nand_bug;
--	cafe->nand.ecc.correct  = (void *)cafe_nand_bug;
--	cafe->nand.ecc.write_page = cafe_nand_write_page_lowlevel;
--	cafe->nand.ecc.write_oob = cafe_nand_write_oob;
--	cafe->nand.ecc.read_page = cafe_nand_read_page;
--	cafe->nand.ecc.read_oob = cafe_nand_read_oob;
+-	ecc->read_page_raw = tango_read_page_raw;
+-	ecc->write_page_raw = tango_write_page_raw;
+-	ecc->read_page = tango_read_page;
+-	ecc->write_page = tango_write_page;
+-	ecc->read_oob = tango_read_oob;
+-	ecc->write_oob = tango_write_oob;
 -
 -	err = nand_scan_tail(mtd);
--	if (err)
--		goto out_free_dma;
--
- 	pci_set_drvdata(pdev, mtd);
++	chip->controller->attach_chip = tango_attach_chip;
++	err = nand_scan(mtd, 1);
+ 	if (err)
+ 		return err;
  
- 	mtd->name = "cafe_nand";
-@@ -783,8 +804,6 @@ static int cafe_nand_probe(struct pci_dev *pdev,
- 
-  out_cleanup_nand:
- 	nand_cleanup(&cafe->nand);
-- out_free_dma:
--	dma_free_coherent(&cafe->pdev->dev, 2112, cafe->dmabuf, cafe->dmaaddr);
-  out_irq:
- 	/* Disable NAND IRQ in global IRQ mask register */
- 	cafe_writel(cafe, ~1 & cafe_readl(cafe, GLOBAL_IRQ_MASK), GLOBAL_IRQ_MASK);
 -- 
 2.14.1
