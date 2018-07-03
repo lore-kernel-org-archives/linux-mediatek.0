@@ -1,13 +1,24 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 26/32] mtd: rawnand: atmel: convert driver to nand_scan()
-Date: Wed,  4 Jul 2018 00:00:23 +0200
-Message-ID: <20180703220029.19565-27-miquel.raynal@bootlin.com>
+Subject: [PATCH v2 04/32] mtd: rawnand: davinci: convert driver to nand_scan()
+Date: Wed,  4 Jul 2018 00:00:01 +0200
+Message-ID: <20180703220029.19565-5-miquel.raynal@bootlin.com>
 References: <20180703220029.19565-1-miquel.raynal@bootlin.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20180703220029.19565-1-miquel.raynal@bootlin.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Boris Brezillon <boris.brezillon@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <mat>
-Cc: linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Boris Brezillon <boris.brezillon@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Marc Gonzalez <marc.w.gonzalez@f>
+Cc: bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Two helpers have been added to the core to make ECC-related
@@ -15,148 +26,237 @@ configuration between the detection phase and the final NAND scan. Use
 these hooks and convert the driver to just use nand_scan() instead of
 both nand_scan_ident() and nand_scan_tail().
 
+Also change the unused "struct device *dev" parameter of the driver
+structure into a platform device to reuse it in the ->attach_chip()
+hook.
+
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/atmel/nand-controller.c | 70 +++++++++++-----------------
- 1 file changed, 27 insertions(+), 43 deletions(-)
+ drivers/mtd/nand/raw/davinci_nand.c | 186 +++++++++++++++++++-----------------
+ 1 file changed, 98 insertions(+), 88 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/atmel/nand-controller.c b/drivers/mtd/nand/raw/atmel/nand-controller.c
-index e686fe73159e..0b5695b3c8c1 100644
---- a/drivers/mtd/nand/raw/atmel/nand-controller.c
-+++ b/drivers/mtd/nand/raw/atmel/nand-controller.c
-@@ -202,7 +202,7 @@ struct atmel_nand_controller_ops {
- 	int (*remove)(struct atmel_nand_controller *nc);
- 	void (*nand_init)(struct atmel_nand_controller *nc,
- 			  struct atmel_nand *nand);
--	int (*ecc_init)(struct atmel_nand *nand);
-+	int (*ecc_init)(struct nand_chip *chip);
- 	int (*setup_data_interface)(struct atmel_nand *nand, int csline,
- 				    const struct nand_data_interface *conf);
- };
-@@ -1133,9 +1133,8 @@ static int atmel_nand_pmecc_init(struct nand_chip *chip)
- 	return 0;
+diff --git a/drivers/mtd/nand/raw/davinci_nand.c b/drivers/mtd/nand/raw/davinci_nand.c
+index cd12e5abafde..f27ce709f5b0 100644
+--- a/drivers/mtd/nand/raw/davinci_nand.c
++++ b/drivers/mtd/nand/raw/davinci_nand.c
+@@ -53,7 +53,7 @@
+ struct davinci_nand_info {
+ 	struct nand_chip	chip;
+ 
+-	struct device		*dev;
++	struct platform_device	*pdev;
+ 
+ 	bool			is_readmode;
+ 
+@@ -606,6 +606,100 @@ static struct davinci_nand_pdata
  }
+ #endif
  
--static int atmel_nand_ecc_init(struct atmel_nand *nand)
-+static int atmel_nand_ecc_init(struct nand_chip *chip)
++static int davinci_nand_attach_chip(struct nand_chip *chip)
++{
++	struct mtd_info *mtd = nand_to_mtd(chip);
++	struct davinci_nand_info *info = to_davinci_nand(mtd);
++	struct davinci_nand_pdata *pdata = nand_davinci_get_pdata(info->pdev);
++	int ret = 0;
++
++	if (IS_ERR(pdata))
++		return PTR_ERR(pdata);
++
++	switch (info->chip.ecc.mode) {
++	case NAND_ECC_NONE:
++		pdata->ecc_bits = 0;
++		break;
++	case NAND_ECC_SOFT:
++		pdata->ecc_bits = 0;
++		/*
++		 * This driver expects Hamming based ECC when ecc_mode is set
++		 * to NAND_ECC_SOFT. Force ecc.algo to NAND_ECC_HAMMING to
++		 * avoid adding an extra ->ecc_algo field to
++		 * davinci_nand_pdata.
++		 */
++		info->chip.ecc.algo = NAND_ECC_HAMMING;
++		break;
++	case NAND_ECC_HW:
++		if (pdata->ecc_bits == 4) {
++			/*
++			 * No sanity checks:  CPUs must support this,
++			 * and the chips may not use NAND_BUSWIDTH_16.
++			 */
++
++			/* No sharing 4-bit hardware between chipselects yet */
++			spin_lock_irq(&davinci_nand_lock);
++			if (ecc4_busy)
++				ret = -EBUSY;
++			else
++				ecc4_busy = true;
++			spin_unlock_irq(&davinci_nand_lock);
++
++			if (ret == -EBUSY)
++				return ret;
++
++			info->chip.ecc.calculate = nand_davinci_calculate_4bit;
++			info->chip.ecc.correct = nand_davinci_correct_4bit;
++			info->chip.ecc.hwctl = nand_davinci_hwctl_4bit;
++			info->chip.ecc.bytes = 10;
++			info->chip.ecc.options = NAND_ECC_GENERIC_ERASED_CHECK;
++			info->chip.ecc.algo = NAND_ECC_BCH;
++		} else {
++			/* 1bit ecc hamming */
++			info->chip.ecc.calculate = nand_davinci_calculate_1bit;
++			info->chip.ecc.correct = nand_davinci_correct_1bit;
++			info->chip.ecc.hwctl = nand_davinci_hwctl_1bit;
++			info->chip.ecc.bytes = 3;
++			info->chip.ecc.algo = NAND_ECC_HAMMING;
++		}
++		info->chip.ecc.size = 512;
++		info->chip.ecc.strength = pdata->ecc_bits;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	/*
++	 * Update ECC layout if needed ... for 1-bit HW ECC, the default
++	 * is OK, but it allocates 6 bytes when only 3 are needed (for
++	 * each 512 bytes).  For the 4-bit HW ECC, that default is not
++	 * usable:  10 bytes are needed, not 6.
++	 */
++	if (pdata->ecc_bits == 4) {
++		int chunks = mtd->writesize / 512;
++
++		if (!chunks || mtd->oobsize < 16) {
++			dev_dbg(&info->pdev->dev, "too small\n");
++			return -EINVAL;
++		}
++
++		/* For small page chips, preserve the manufacturer's
++		 * badblock marking data ... and make sure a flash BBT
++		 * table marker fits in the free bytes.
++		 */
++		if (chunks == 1) {
++			mtd_set_ooblayout(mtd, &hwecc4_small_ooblayout_ops);
++		} else if (chunks == 4 || chunks == 8) {
++			mtd_set_ooblayout(mtd, &nand_ooblayout_lp_ops);
++			info->chip.ecc.mode = NAND_ECC_HW_OOB_FIRST;
++		} else {
++			return -EIO;
++		}
++	}
++
++	return ret;
++}
++
+ static int nand_davinci_probe(struct platform_device *pdev)
  {
--	struct nand_chip *chip = &nand->base;
- 	struct atmel_nand_controller *nc;
- 	int ret;
- 
-@@ -1170,12 +1169,11 @@ static int atmel_nand_ecc_init(struct atmel_nand *nand)
- 	return 0;
- }
- 
--static int atmel_hsmc_nand_ecc_init(struct atmel_nand *nand)
-+static int atmel_hsmc_nand_ecc_init(struct nand_chip *chip)
- {
--	struct nand_chip *chip = &nand->base;
- 	int ret;
- 
--	ret = atmel_nand_ecc_init(nand);
-+	ret = atmel_nand_ecc_init(chip);
- 	if (ret)
- 		return ret;
- 
-@@ -1558,22 +1556,6 @@ static void atmel_hsmc_nand_init(struct atmel_nand_controller *nc,
- 	chip->select_chip = atmel_hsmc_nand_select_chip;
- }
- 
--static int atmel_nand_detect(struct atmel_nand *nand)
--{
--	struct nand_chip *chip = &nand->base;
--	struct mtd_info *mtd = nand_to_mtd(chip);
--	struct atmel_nand_controller *nc;
--	int ret;
--
--	nc = to_nand_controller(chip->controller);
--
--	ret = nand_scan_ident(mtd, nand->numcs, NULL);
--	if (ret)
--		dev_err(nc->dev, "nand_scan_ident() failed: %d\n", ret);
--
--	return ret;
--}
--
- static int atmel_nand_unregister(struct atmel_nand *nand)
- {
- 	struct nand_chip *chip = &nand->base;
-@@ -1595,7 +1577,6 @@ static int atmel_nand_register(struct atmel_nand *nand)
- 	struct nand_chip *chip = &nand->base;
- 	struct mtd_info *mtd = nand_to_mtd(chip);
- 	struct atmel_nand_controller *nc;
--	int ret;
- 
- 	nc = to_nand_controller(chip->controller);
- 
-@@ -1626,21 +1607,6 @@ static int atmel_nand_register(struct atmel_nand *nand)
- 		}
+ 	struct davinci_nand_pdata	*pdata;
+@@ -659,7 +753,7 @@ static int nand_davinci_probe(struct platform_device *pdev)
+ 		return -EADDRNOTAVAIL;
  	}
  
--	ret = nand_scan_tail(mtd);
--	if (ret) {
--		dev_err(nc->dev, "nand_scan_tail() failed: %d\n", ret);
--		return ret;
--	}
--
--	ret = mtd_device_register(mtd, NULL, 0);
--	if (ret) {
--		dev_err(nc->dev, "Failed to register mtd device: %d\n", ret);
--		nand_cleanup(chip);
--		return ret;
--	}
--
--	list_add_tail(&nand->node, &nc->chips);
--
- 	return 0;
- }
+-	info->dev		= &pdev->dev;
++	info->pdev		= pdev;
+ 	info->base		= base;
+ 	info->vaddr		= vaddr;
  
-@@ -1755,6 +1721,8 @@ static int
- atmel_nand_controller_add_nand(struct atmel_nand_controller *nc,
- 			       struct atmel_nand *nand)
- {
-+	struct nand_chip *chip = &nand->base;
-+	struct mtd_info *mtd = nand_to_mtd(chip);
- 	int ret;
+@@ -711,97 +805,13 @@ static int nand_davinci_probe(struct platform_device *pdev)
+ 	spin_unlock_irq(&davinci_nand_lock);
  
- 	/* No card inserted, skip this NAND. */
-@@ -1765,15 +1733,31 @@ atmel_nand_controller_add_nand(struct atmel_nand_controller *nc,
- 
- 	nc->caps->ops->nand_init(nc, nand);
- 
--	ret = atmel_nand_detect(nand);
--	if (ret)
-+	chip->controller->attach_chip = nc->caps->ops->ecc_init;
-+	ret = nand_scan(mtd, nand->numcs);
-+	if (ret) {
-+		dev_err(nc->dev, "NAND scan failed: %d\n", ret);
+ 	/* Scan to find existence of the device(s) */
+-	ret = nand_scan_ident(mtd, pdata->mask_chipsel ? 2 : 1, NULL);
++	info->chip.hwcontrol.attach_chip = davinci_nand_attach_chip;
++	ret = nand_scan(mtd, pdata->mask_chipsel ? 2 : 1);
+ 	if (ret < 0) {
+ 		dev_dbg(&pdev->dev, "no NAND chip(s) found\n");
  		return ret;
-+	}
+ 	}
  
--	ret = nc->caps->ops->ecc_init(nand);
-+	ret = atmel_nand_register(nand);
- 	if (ret)
--		return ret;
-+		goto cleanup_nand;
-+
-+	ret = mtd_device_register(mtd, NULL, 0);
-+	if (ret) {
-+		dev_err(nc->dev, "Failed to register mtd device: %d\n", ret);
-+		goto cleanup_nand;
-+	}
-+
-+	list_add_tail(&nand->node, &nc->chips);
-+
-+	return 0;
-+
-+cleanup_nand:
-+	nand_cleanup(chip);
- 
--	return atmel_nand_register(nand);
-+	return ret;
- }
- 
- static int
+-	switch (info->chip.ecc.mode) {
+-	case NAND_ECC_NONE:
+-		pdata->ecc_bits = 0;
+-		break;
+-	case NAND_ECC_SOFT:
+-		pdata->ecc_bits = 0;
+-		/*
+-		 * This driver expects Hamming based ECC when ecc_mode is set
+-		 * to NAND_ECC_SOFT. Force ecc.algo to NAND_ECC_HAMMING to
+-		 * avoid adding an extra ->ecc_algo field to
+-		 * davinci_nand_pdata.
+-		 */
+-		info->chip.ecc.algo = NAND_ECC_HAMMING;
+-		break;
+-	case NAND_ECC_HW:
+-		if (pdata->ecc_bits == 4) {
+-			/* No sanity checks:  CPUs must support this,
+-			 * and the chips may not use NAND_BUSWIDTH_16.
+-			 */
+-
+-			/* No sharing 4-bit hardware between chipselects yet */
+-			spin_lock_irq(&davinci_nand_lock);
+-			if (ecc4_busy)
+-				ret = -EBUSY;
+-			else
+-				ecc4_busy = true;
+-			spin_unlock_irq(&davinci_nand_lock);
+-
+-			if (ret == -EBUSY)
+-				return ret;
+-
+-			info->chip.ecc.calculate = nand_davinci_calculate_4bit;
+-			info->chip.ecc.correct = nand_davinci_correct_4bit;
+-			info->chip.ecc.hwctl = nand_davinci_hwctl_4bit;
+-			info->chip.ecc.bytes = 10;
+-			info->chip.ecc.options = NAND_ECC_GENERIC_ERASED_CHECK;
+-			info->chip.ecc.algo = NAND_ECC_BCH;
+-		} else {
+-			/* 1bit ecc hamming */
+-			info->chip.ecc.calculate = nand_davinci_calculate_1bit;
+-			info->chip.ecc.correct = nand_davinci_correct_1bit;
+-			info->chip.ecc.hwctl = nand_davinci_hwctl_1bit;
+-			info->chip.ecc.bytes = 3;
+-			info->chip.ecc.algo = NAND_ECC_HAMMING;
+-		}
+-		info->chip.ecc.size = 512;
+-		info->chip.ecc.strength = pdata->ecc_bits;
+-		break;
+-	default:
+-		return -EINVAL;
+-	}
+-
+-	/* Update ECC layout if needed ... for 1-bit HW ECC, the default
+-	 * is OK, but it allocates 6 bytes when only 3 are needed (for
+-	 * each 512 bytes).  For the 4-bit HW ECC, that default is not
+-	 * usable:  10 bytes are needed, not 6.
+-	 */
+-	if (pdata->ecc_bits == 4) {
+-		int	chunks = mtd->writesize / 512;
+-
+-		if (!chunks || mtd->oobsize < 16) {
+-			dev_dbg(&pdev->dev, "too small\n");
+-			ret = -EINVAL;
+-			goto err;
+-		}
+-
+-		/* For small page chips, preserve the manufacturer's
+-		 * badblock marking data ... and make sure a flash BBT
+-		 * table marker fits in the free bytes.
+-		 */
+-		if (chunks == 1) {
+-			mtd_set_ooblayout(mtd, &hwecc4_small_ooblayout_ops);
+-		} else if (chunks == 4 || chunks == 8) {
+-			mtd_set_ooblayout(mtd, &nand_ooblayout_lp_ops);
+-			info->chip.ecc.mode = NAND_ECC_HW_OOB_FIRST;
+-		} else {
+-			ret = -EIO;
+-			goto err;
+-		}
+-	}
+-
+-	ret = nand_scan_tail(mtd);
+-	if (ret < 0)
+-		goto err;
+-
+ 	if (pdata->parts)
+ 		ret = mtd_device_parse_register(mtd, NULL, NULL,
+ 					pdata->parts, pdata->nr_parts);
 -- 
 2.14.1
