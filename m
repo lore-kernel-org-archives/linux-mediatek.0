@@ -1,13 +1,24 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 16/32] mtd: rawnand: mxc: convert driver to nand_scan()
-Date: Wed,  4 Jul 2018 00:00:13 +0200
-Message-ID: <20180703220029.19565-17-miquel.raynal@bootlin.com>
+Subject: [PATCH v2 07/32] mtd: rawnand: fsl_ifc: convert driver to nand_scan()
+Date: Wed,  4 Jul 2018 00:00:04 +0200
+Message-ID: <20180703220029.19565-8-miquel.raynal@bootlin.com>
 References: <20180703220029.19565-1-miquel.raynal@bootlin.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20180703220029.19565-1-miquel.raynal@bootlin.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Boris Brezillon <boris.brezillon@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <mat>
-Cc: linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Boris Brezillon <boris.brezillon@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Marc Gonzalez <marc.w.gonzalez@f>
+Cc: bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Two helpers have been added to the core to make ECC-related
@@ -17,158 +28,42 @@ both nand_scan_ident() and nand_scan_tail().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/mxc_nand.c | 132 ++++++++++++++++++++--------------------
- 1 file changed, 67 insertions(+), 65 deletions(-)
+ drivers/mtd/nand/raw/fsl_ifc_nand.c | 15 ++++-----------
+ 1 file changed, 4 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/mxc_nand.c b/drivers/mtd/nand/raw/mxc_nand.c
-index 90cfb5e730aa..3c0451433247 100644
---- a/drivers/mtd/nand/raw/mxc_nand.c
-+++ b/drivers/mtd/nand/raw/mxc_nand.c
-@@ -1706,6 +1706,70 @@ static int mxcnd_probe_dt(struct mxc_nand_host *host)
+diff --git a/drivers/mtd/nand/raw/fsl_ifc_nand.c b/drivers/mtd/nand/raw/fsl_ifc_nand.c
+index 382b67e97174..faefa186e9d3 100644
+--- a/drivers/mtd/nand/raw/fsl_ifc_nand.c
++++ b/drivers/mtd/nand/raw/fsl_ifc_nand.c
+@@ -714,9 +714,9 @@ static int fsl_ifc_write_page(struct mtd_info *mtd, struct nand_chip *chip,
+ 	return nand_prog_page_end_op(chip);
  }
- #endif
  
-+static int mxcnd_attach_chip(struct nand_chip *chip)
-+{
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+	struct mxc_nand_host *host = nand_get_controller_data(chip);
-+	struct device *dev = mtd->dev.parent;
-+
-+	switch (chip->ecc.mode) {
-+	case NAND_ECC_HW:
-+		chip->ecc.read_page = mxc_nand_read_page;
-+		chip->ecc.read_page_raw = mxc_nand_read_page_raw;
-+		chip->ecc.read_oob = mxc_nand_read_oob;
-+		chip->ecc.write_page = mxc_nand_write_page_ecc;
-+		chip->ecc.write_page_raw = mxc_nand_write_page_raw;
-+		chip->ecc.write_oob = mxc_nand_write_oob;
-+		break;
-+
-+	case NAND_ECC_SOFT:
-+		break;
-+
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	if (chip->bbt_options & NAND_BBT_USE_FLASH) {
-+		chip->bbt_td = &bbt_main_descr;
-+		chip->bbt_md = &bbt_mirror_descr;
-+	}
-+
-+	/* Allocate the right size buffer now */
-+	devm_kfree(dev, (void *)host->data_buf);
-+	host->data_buf = devm_kzalloc(dev, mtd->writesize + mtd->oobsize,
-+				      GFP_KERNEL);
-+	if (!host->data_buf)
-+		return -ENOMEM;
-+
-+	/* Call preset again, with correct writesize chip time */
-+	host->devtype_data->preset(mtd);
-+
-+	if (!chip->ecc.bytes) {
-+		if (host->eccsize == 8)
-+			chip->ecc.bytes = 18;
-+		else if (host->eccsize == 4)
-+			chip->ecc.bytes = 9;
-+	}
-+
-+	/*
-+	 * Experimentation shows that i.MX NFC can only handle up to 218 oob
-+	 * bytes. Limit used_oobsize to 218 so as to not confuse copy_spare()
-+	 * into copying invalid data to/from the spare IO buffer, as this
-+	 * might cause ECC data corruption when doing sub-page write to a
-+	 * partially written page.
-+	 */
-+	host->used_oobsize = min(mtd->oobsize, 218U);
-+
-+	if (chip->ecc.mode == NAND_ECC_HW) {
-+		if (is_imx21_nfc(host) || is_imx27_nfc(host))
-+			chip->ecc.strength = 1;
-+		else
-+			chip->ecc.strength = (host->eccsize == 4) ? 4 : 8;
-+	}
-+
-+	return 0;
-+}
-+
- static int mxcnd_probe(struct platform_device *pdev)
+-static int fsl_ifc_chip_init_tail(struct mtd_info *mtd)
++static int fsl_ifc_attach_chip(struct nand_chip *chip)
  {
- 	struct nand_chip *this;
-@@ -1845,71 +1909,9 @@ static int mxcnd_probe(struct platform_device *pdev)
- 		host->devtype_data->irq_control(host, 1);
- 	}
+-	struct nand_chip *chip = mtd_to_nand(mtd);
++	struct mtd_info *mtd = nand_to_mtd(chip);
+ 	struct fsl_ifc_mtd *priv = nand_get_controller_data(chip);
  
--	/* first scan to find the device and get the page size */
--	err = nand_scan_ident(mtd, is_imx25_nfc(host) ? 4 : 1, NULL);
--	if (err)
--		goto escan;
+ 	dev_dbg(priv->dev, "%s: nand->numchips = %d\n", __func__,
+@@ -1046,15 +1046,8 @@ static int fsl_ifc_nand_probe(struct platform_device *dev)
+ 	if (ret)
+ 		goto err;
+ 
+-	ret = nand_scan_ident(mtd, 1, NULL);
+-	if (ret)
+-		goto err;
 -
--	switch (this->ecc.mode) {
--	case NAND_ECC_HW:
--		this->ecc.read_page = mxc_nand_read_page;
--		this->ecc.read_page_raw = mxc_nand_read_page_raw;
--		this->ecc.read_oob = mxc_nand_read_oob;
--		this->ecc.write_page = mxc_nand_write_page_ecc;
--		this->ecc.write_page_raw = mxc_nand_write_page_raw;
--		this->ecc.write_oob = mxc_nand_write_oob;
--		break;
+-	ret = fsl_ifc_chip_init_tail(mtd);
+-	if (ret)
+-		goto err;
 -
--	case NAND_ECC_SOFT:
--		break;
--
--	default:
--		err = -EINVAL;
--		goto escan;
--	}
--
--	if (this->bbt_options & NAND_BBT_USE_FLASH) {
--		this->bbt_td = &bbt_main_descr;
--		this->bbt_md = &bbt_mirror_descr;
--	}
--
--	/* allocate the right size buffer now */
--	devm_kfree(&pdev->dev, (void *)host->data_buf);
--	host->data_buf = devm_kzalloc(&pdev->dev, mtd->writesize + mtd->oobsize,
--					GFP_KERNEL);
--	if (!host->data_buf) {
--		err = -ENOMEM;
--		goto escan;
--	}
--
--	/* Call preset again, with correct writesize this time */
--	host->devtype_data->preset(mtd);
--
--	if (!this->ecc.bytes) {
--		if (host->eccsize == 8)
--			this->ecc.bytes = 18;
--		else if (host->eccsize == 4)
--			this->ecc.bytes = 9;
--	}
--
--	/*
--	 * Experimentation shows that i.MX NFC can only handle up to 218 oob
--	 * bytes. Limit used_oobsize to 218 so as to not confuse copy_spare()
--	 * into copying invalid data to/from the spare IO buffer, as this
--	 * might cause ECC data corruption when doing sub-page write to a
--	 * partially written page.
--	 */
--	host->used_oobsize = min(mtd->oobsize, 218U);
--
--	if (this->ecc.mode == NAND_ECC_HW) {
--		if (is_imx21_nfc(host) || is_imx27_nfc(host))
--			this->ecc.strength = 1;
--		else
--			this->ecc.strength = (host->eccsize == 4) ? 4 : 8;
--	}
--
--	/* second phase scan */
--	err = nand_scan_tail(mtd);
-+	/* Scan the NAND device */
-+	this->hwcontrol.attach_chip = mxcnd_attach_chip;
-+	err = nand_scan(mtd, is_imx25_nfc(host) ? 4 : 1);
- 	if (err)
- 		goto escan;
+-	ret = nand_scan_tail(mtd);
++	priv->chip.controller->attach_chip = fsl_ifc_attach_chip;
++	ret = nand_scan(mtd, 1);
+ 	if (ret)
+ 		goto err;
  
 -- 
 2.14.1
