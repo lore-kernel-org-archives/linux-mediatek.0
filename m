@@ -1,207 +1,30 @@
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 05/32] mtd: rawnand: denali: convert to nand_scan()
-Date: Wed,  4 Jul 2018 00:00:02 +0200
-Message-ID: <20180703220029.19565-6-miquel.raynal@bootlin.com>
-References: <20180703220029.19565-1-miquel.raynal@bootlin.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: mediatek: Add bindings for mediatek
+ MT6765 Platform
+Date: Tue, 3 Jul 2018 16:11:01 -0600
+Message-ID: <20180703221101.GA6829@rob-hp-laptop>
+References: <1529978646-28976-1-git-send-email-mars.cheng@mediatek.com>
+ <1529978646-28976-2-git-send-email-mars.cheng@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180703220029.19565-1-miquel.raynal@bootlin.com>
+Content-Disposition: inline
+In-Reply-To: <1529978646-28976-2-git-send-email-mars.cheng@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Boris Brezillon <boris.brezillon@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <mat>
-Cc: linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org
+To: Mars Cheng <mars.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Marc Zyngier <marc.zyngier@arm.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Two helpers have been added to the core to make ECC-related
-configuration between the detection phase and the final NAND scan. Use
-these hooks and convert the driver to just use nand_scan() instead of
-both nand_scan_ident() and nand_scan_tail().
+On Tue, Jun 26, 2018 at 10:04:05AM +0800, Mars Cheng wrote:
+> This adds dt-binding documentation for Mediatek MT6765. Only
+> include very basic items, gic, uart timer and cpu.
+> 
+> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.txt |    4 ++++
+>  .../interrupt-controller/mediatek,sysirq.txt       |    1 +
+>  .../devicetree/bindings/serial/mtk-uart.txt        |    1 +
 
-Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
----
- drivers/mtd/nand/raw/denali.c | 134 +++++++++++++++++++++++-------------------
- 1 file changed, 73 insertions(+), 61 deletions(-)
+These can all go thru different trees, so should be split.
 
-diff --git a/drivers/mtd/nand/raw/denali.c b/drivers/mtd/nand/raw/denali.c
-index 4d53f41ada08..09b85d749552 100644
---- a/drivers/mtd/nand/raw/denali.c
-+++ b/drivers/mtd/nand/raw/denali.c
-@@ -1205,62 +1205,12 @@ static int denali_multidev_fixup(struct denali_nand_info *denali)
- 	return 0;
- }
- 
--int denali_init(struct denali_nand_info *denali)
-+static int denali_attach_chip(struct nand_chip *chip)
- {
--	struct nand_chip *chip = &denali->nand;
- 	struct mtd_info *mtd = nand_to_mtd(chip);
--	u32 features = ioread32(denali->reg + FEATURES);
-+	struct denali_nand_info *denali = mtd_to_denali(mtd);
- 	int ret;
- 
--	mtd->dev.parent = denali->dev;
--	denali_hw_init(denali);
--
--	init_completion(&denali->complete);
--	spin_lock_init(&denali->irq_lock);
--
--	denali_clear_irq_all(denali);
--
--	ret = devm_request_irq(denali->dev, denali->irq, denali_isr,
--			       IRQF_SHARED, DENALI_NAND_NAME, denali);
--	if (ret) {
--		dev_err(denali->dev, "Unable to request IRQ\n");
--		return ret;
--	}
--
--	denali_enable_irq(denali);
--	denali_reset_banks(denali);
--
--	denali->active_bank = DENALI_INVALID_BANK;
--
--	nand_set_flash_node(chip, denali->dev->of_node);
--	/* Fallback to the default name if DT did not give "label" property */
--	if (!mtd->name)
--		mtd->name = "denali-nand";
--
--	chip->select_chip = denali_select_chip;
--	chip->read_byte = denali_read_byte;
--	chip->write_byte = denali_write_byte;
--	chip->read_word = denali_read_word;
--	chip->cmd_ctrl = denali_cmd_ctrl;
--	chip->dev_ready = denali_dev_ready;
--	chip->waitfunc = denali_waitfunc;
--
--	if (features & FEATURES__INDEX_ADDR) {
--		denali->host_read = denali_indexed_read;
--		denali->host_write = denali_indexed_write;
--	} else {
--		denali->host_read = denali_direct_read;
--		denali->host_write = denali_direct_write;
--	}
--
--	/* clk rate info is needed for setup_data_interface */
--	if (denali->clk_rate && denali->clk_x_rate)
--		chip->setup_data_interface = denali_setup_data_interface;
--
--	ret = nand_scan_ident(mtd, denali->max_banks, NULL);
--	if (ret)
--		goto disable_irq;
--
- 	if (ioread32(denali->reg + FEATURES) & FEATURES__DMA)
- 		denali->dma_avail = 1;
- 
-@@ -1293,7 +1243,7 @@ int denali_init(struct denali_nand_info *denali)
- 				   mtd->oobsize - denali->oob_skip_bytes);
- 	if (ret) {
- 		dev_err(denali->dev, "Failed to setup ECC settings.\n");
--		goto disable_irq;
-+		return ret;
- 	}
- 
- 	dev_dbg(denali->dev,
-@@ -1337,7 +1287,7 @@ int denali_init(struct denali_nand_info *denali)
- 
- 	ret = denali_multidev_fixup(denali);
- 	if (ret)
--		goto disable_irq;
-+		return ret;
- 
- 	/*
- 	 * This buffer is DMA-mapped by denali_{read,write}_page_raw.  Do not
-@@ -1345,26 +1295,88 @@ int denali_init(struct denali_nand_info *denali)
- 	 * guarantee DMA-safe alignment.
- 	 */
- 	denali->buf = kmalloc(mtd->writesize + mtd->oobsize, GFP_KERNEL);
--	if (!denali->buf) {
--		ret = -ENOMEM;
--		goto disable_irq;
-+	if (!denali->buf)
-+		return -ENOMEM;
-+
-+	return 0;
-+}
-+
-+static void denali_detach_chip(struct nand_chip *chip)
-+{
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+	struct denali_nand_info *denali = mtd_to_denali(mtd);
-+
-+	kfree(denali->buf);
-+}
-+
-+int denali_init(struct denali_nand_info *denali)
-+{
-+	struct nand_chip *chip = &denali->nand;
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+	u32 features = ioread32(denali->reg + FEATURES);
-+	int ret;
-+
-+	mtd->dev.parent = denali->dev;
-+	denali_hw_init(denali);
-+
-+	init_completion(&denali->complete);
-+	spin_lock_init(&denali->irq_lock);
-+
-+	denali_clear_irq_all(denali);
-+
-+	ret = devm_request_irq(denali->dev, denali->irq, denali_isr,
-+			       IRQF_SHARED, DENALI_NAND_NAME, denali);
-+	if (ret) {
-+		dev_err(denali->dev, "Unable to request IRQ\n");
-+		return ret;
- 	}
- 
--	ret = nand_scan_tail(mtd);
-+	denali_enable_irq(denali);
-+	denali_reset_banks(denali);
-+
-+	denali->active_bank = DENALI_INVALID_BANK;
-+
-+	nand_set_flash_node(chip, denali->dev->of_node);
-+	/* Fallback to the default name if DT did not give "label" property */
-+	if (!mtd->name)
-+		mtd->name = "denali-nand";
-+
-+	chip->select_chip = denali_select_chip;
-+	chip->read_byte = denali_read_byte;
-+	chip->write_byte = denali_write_byte;
-+	chip->read_word = denali_read_word;
-+	chip->cmd_ctrl = denali_cmd_ctrl;
-+	chip->dev_ready = denali_dev_ready;
-+	chip->waitfunc = denali_waitfunc;
-+
-+	if (features & FEATURES__INDEX_ADDR) {
-+		denali->host_read = denali_indexed_read;
-+		denali->host_write = denali_indexed_write;
-+	} else {
-+		denali->host_read = denali_direct_read;
-+		denali->host_write = denali_direct_write;
-+	}
-+
-+	/* clk rate info is needed for setup_data_interface */
-+	if (denali->clk_rate && denali->clk_x_rate)
-+		chip->setup_data_interface = denali_setup_data_interface;
-+
-+	chip->hwcontrol.attach_chip = denali_attach_chip;
-+	chip->hwcontrol.detach_chip = denali_detach_chip;
-+	ret = nand_scan(mtd, denali->max_banks);
- 	if (ret)
--		goto free_buf;
-+		goto disable_irq;
- 
- 	ret = mtd_device_register(mtd, NULL, 0);
- 	if (ret) {
- 		dev_err(denali->dev, "Failed to register MTD: %d\n", ret);
- 		goto cleanup_nand;
- 	}
-+
- 	return 0;
- 
- cleanup_nand:
- 	nand_cleanup(chip);
--free_buf:
--	kfree(denali->buf);
- disable_irq:
- 	denali_disable_irq(denali);
- 
--- 
-2.14.1
+>  3 files changed, 6 insertions(+)
