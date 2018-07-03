@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 15/32] mtd: rawnand: mtk: convert driver to nand_scan()
-Date: Wed,  4 Jul 2018 00:00:12 +0200
-Message-ID: <20180703220029.19565-16-miquel.raynal@bootlin.com>
+Subject: [PATCH v2 21/32] mtd: rawnand: sh_flctl: convert driver to nand_scan()
+Date: Wed,  4 Jul 2018 00:00:18 +0200
+Message-ID: <20180703220029.19565-22-miquel.raynal@bootlin.com>
 References: <20180703220029.19565-1-miquel.raynal@bootlin.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180703220029.19565-1-miquel.raynal@bootlin.com>
@@ -17,103 +17,43 @@ both nand_scan_ident() and nand_scan_tail().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/mtk_nand.c | 71 +++++++++++++++++++++++------------------
- 1 file changed, 40 insertions(+), 31 deletions(-)
+ drivers/mtd/nand/raw/sh_flctl.c | 15 ++++-----------
+ 1 file changed, 4 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index 75c845adb050..a81cd36596e1 100644
---- a/drivers/mtd/nand/raw/mtk_nand.c
-+++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -1250,13 +1250,50 @@ static int mtk_nfc_ecc_init(struct device *dev, struct mtd_info *mtd)
- 	return 0;
+diff --git a/drivers/mtd/nand/raw/sh_flctl.c b/drivers/mtd/nand/raw/sh_flctl.c
+index d37d1d3ccbf9..959eb6f5f269 100644
+--- a/drivers/mtd/nand/raw/sh_flctl.c
++++ b/drivers/mtd/nand/raw/sh_flctl.c
+@@ -1002,10 +1002,10 @@ static void flctl_read_buf(struct mtd_info *mtd, uint8_t *buf, int len)
+ 	flctl->index += len;
  }
  
-+static int mtk_nfc_attach_chip(struct nand_chip *chip)
-+{
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+	struct device *dev = mtd->dev.parent;
-+	struct mtk_nfc *nfc = nand_get_controller_data(chip);
-+	struct mtk_nfc_nand_chip *mtk_nand = to_mtk_nand(chip);
-+	int len;
-+	int ret;
-+
-+	if (chip->options & NAND_BUSWIDTH_16) {
-+		dev_err(dev, "16bits buswidth not supported");
-+		return -EINVAL;
-+	}
-+
-+	/* store bbt magic in page, cause OOB is not protected */
-+	if (chip->bbt_options & NAND_BBT_USE_FLASH)
-+		chip->bbt_options |= NAND_BBT_NO_OOB;
-+
-+	ret = mtk_nfc_ecc_init(dev, mtd);
-+	if (ret)
-+		return ret;
-+
-+	ret = mtk_nfc_set_spare_per_sector(&mtk_nand->spare_per_sector, mtd);
-+	if (ret)
-+		return ret;
-+
-+	mtk_nfc_set_fdm(&mtk_nand->fdm, mtd);
-+	mtk_nfc_set_bad_mark_ctl(&mtk_nand->bad_mark, mtd);
-+
-+	len = mtd->writesize + mtd->oobsize;
-+	nfc->buffer = devm_kzalloc(dev, len, GFP_KERNEL);
-+	if (!nfc->buffer)
-+		return  -ENOMEM;
-+
-+	return 0;
-+}
-+
- static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
- 				  struct device_node *np)
+-static int flctl_chip_init_tail(struct mtd_info *mtd)
++static int flctl_chip_attach_chip(struct nand_chip *chip)
  {
- 	struct mtk_nfc_nand_chip *chip;
- 	struct nand_chip *nand;
- 	struct mtd_info *mtd;
--	int nsels, len;
-+	int nsels;
- 	u32 tmp;
- 	int ret;
- 	int i;
-@@ -1324,36 +1361,8 @@ static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
++	struct mtd_info *mtd = nand_to_mtd(chip);
+ 	struct sh_flctl *flctl = mtd_to_flctl(mtd);
+-	struct nand_chip *chip = &flctl->chip;
  
- 	mtk_nfc_hw_init(nfc);
+ 	if (chip->options & NAND_BUSWIDTH_16) {
+ 		/*
+@@ -1200,15 +1200,8 @@ static int flctl_probe(struct platform_device *pdev)
  
--	ret = nand_scan_ident(mtd, nsels, NULL);
+ 	flctl_setup_dma(flctl);
+ 
+-	ret = nand_scan_ident(flctl_mtd, 1, NULL);
 -	if (ret)
--		return ret;
+-		goto err_chip;
 -
--	/* store bbt magic in page, cause OOB is not protected */
--	if (nand->bbt_options & NAND_BBT_USE_FLASH)
--		nand->bbt_options |= NAND_BBT_NO_OOB;
--
--	ret = mtk_nfc_ecc_init(dev, mtd);
+-	ret = flctl_chip_init_tail(flctl_mtd);
 -	if (ret)
--		return -EINVAL;
+-		goto err_chip;
 -
--	if (nand->options & NAND_BUSWIDTH_16) {
--		dev_err(dev, "16bits buswidth not supported");
--		return -EINVAL;
--	}
--
--	ret = mtk_nfc_set_spare_per_sector(&chip->spare_per_sector, mtd);
--	if (ret)
--		return ret;
--
--	mtk_nfc_set_fdm(&chip->fdm, mtd);
--	mtk_nfc_set_bad_mark_ctl(&chip->bad_mark, mtd);
--
--	len = mtd->writesize + mtd->oobsize;
--	nfc->buffer = devm_kzalloc(dev, len, GFP_KERNEL);
--	if (!nfc->buffer)
--		return  -ENOMEM;
--
--	ret = nand_scan_tail(mtd);
-+	nand->controller->attach_chip = mtk_nfc_attach_chip;
-+	ret = nand_scan(mtd, nsels);
+-	ret = nand_scan_tail(flctl_mtd);
++	nand->hwcontrol.attach_chip = flctl_chip_attach_chip;
++	ret = nand_scan(flctl_mtd, 1);
  	if (ret)
- 		return ret;
+ 		goto err_chip;
  
 -- 
 2.14.1
