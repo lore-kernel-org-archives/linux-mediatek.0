@@ -1,122 +1,104 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v22 1/4] dt-bindings: soc: Add documentation for the
- MediaTek GCE unit
-Date: Mon, 2 Jul 2018 20:30:40 -0600
-Message-ID: <20180703023040.GA24508@rob-hp-laptop>
-References: <1530098172-31385-1-git-send-email-houlong.wei@mediatek.com>
- <1530098172-31385-2-git-send-email-houlong.wei@mediatek.com>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [v3 01/10] dt-bindings: mediatek: mmsys: Add support for mfd
+Date: Tue, 3 Jul 2018 08:04:16 +0100
+Message-ID: <20180703070416.GD20176@dell>
+References: <cover.1524820923.git.mbrugger@suse.com>
+ <64ca273429d92f581568a48f3efe6035af65f579.1524820923.git.mbrugger@suse.com>
+ <20180430103029.GD5147@dell>
+ <4ead47f6-2f69-2afa-bfcc-a240a9845dc4@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <1530098172-31385-2-git-send-email-houlong.wei@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Houlong Wei <houlong.wei@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Monica Wang <monica.wang@mediatek.com>, HS Liao <hs.liao@mediatek.com>, ginny.chen@m
+In-Reply-To: <4ead47f6-2f69-2afa-bfcc-a240a9845dc4@gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: mark.rutland@arm.com, airlied@linux.ie, mturquette@baylibre.com, dri-devel@lists.freedesktop.org, laurent.pinchart@ideasonboard.com, ulrich.hecht+renesas@gmail.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, sean.wang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>, gregkh@linuxfoundation.org, rdunlap@infradead.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, matthias.bgg@kernel.org, davem@davemloft.net
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jun 27, 2018 at 07:16:09PM +0800, Houlong Wei wrote:
-> This adds documentation for the MediaTek Global Command Engine (GCE) unit
-> found in MT8173 SoCs.
-> 
-> Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
-> Signed-off-by: HS Liao <hs.liao@mediatek.com>
-> ---
-> Hi Rob,
->   I don't add your ACK in this version since the dt-binding description
-> has been changed. Thanks.
-> ---
->  .../devicetree/bindings/mailbox/mtk-gce.txt        |   65 ++++++++++++++++++++
->  include/dt-bindings/gce/mt8173-gce.h               |   48 +++++++++++++++
->  2 files changed, 113 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mailbox/mtk-gce.txt
->  create mode 100644 include/dt-bindings/gce/mt8173-gce.h
-> 
-> diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> new file mode 100644
-> index 0000000..26f65a4
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> @@ -0,0 +1,65 @@
-> +MediaTek GCE
-> +===============
-> +
-> +The Global Command Engine (GCE) is used to help read/write registers with
-> +critical time limitation, such as updating display configuration during the
-> +vblank. The GCE can be used to implement the Command Queue (CMDQ) driver.
-> +
-> +CMDQ driver uses mailbox framework for communication. Please refer to
-> +mailbox.txt for generic information about mailbox device-tree bindings.
-> +
-> +Required properties:
-> +- compatible: Must be "mediatek,mt8173-gce"
-> +- reg: Address range of the GCE unit
-> +- interrupts: The interrupt signal from the GCE block
-> +- clock: Clocks according to the common clock binding
-> +- clock-names: Must be "gce" to stand for GCE clock
-> +- thread-num: Maximum threads count of GCE.
-
-mediatek,thread-num
-
-Is this needed for anything other than error checking the thread id in 
-the mbox cells? if that's it, then drop it. 
-
-> +- #mbox-cells: Should be 4.
-> +	<&phandle channel timeout priority atomic_exec>
-> +	phandle: Label name of a gce node.
-> +	channel: Channel of mailbox. Be equal to the thread id of GCE.
-> +	timeout: Maximum time of software waiting GCE processing done, in unit
-> +		of millisecond.
-> +	priority: Priority of GCE thread.
-> +	atomic_exec: GCE processing continuous packets of commands in atomic
-> +		way.
-> +
-> +Required properties for a client device:
-> +- mboxes: Client use mailbox to communicate with GCE, it should have this
-> +  property and list of phandle, mailbox specifiers.
-> +- gce-subsys: Specify the sub-system id which is corresponding to the register
-> +  address.
-
-What is this for?
-
-> +
-> +Optional properties for a client device:
-> +- gce-event: Specify the event if the client has any. Because the event is
-> +  parsed by client, so client can replace 'gce-event' with other meaningful
-> +  name.
-
-If the client sets the name, then no point having here. It must be 
-documented in the client binding. But then, what is this for in the 
-first place?
-
-> +
-> +Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'. Such as
-> +thread number, sub-system ids, thread priority, event ids.
-> +
-> +Example:
-> +
-> +	gce: gce@10212000 {
-
-mailbox@...
-
-> +		compatible = "mediatek,mt8173-gce";
-> +		reg = <0 0x10212000 0 0x1000>;
-> +		interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&infracfg CLK_INFRA_GCE>;
-> +		clock-names = "gce";
-> +		thread-num = CMDQ_THR_MAX_COUNT;
-> +		#mbox-cells = <4>;
-> +	};
-> +
-> +Example for a client device:
-> +
-> +	mmsys: clock-controller@14000000 {
-> +		compatible = "mediatek,mt8173-mmsys";
-> +		mboxes = <&gce 0 2000 CMDQ_THR_PRIO_LOWEST 1>,
-> +			 <&gce 1 2000 CMDQ_THR_PRIO_LOWEST 1>;
-> +		gce-subsys = <SUBSYS_1400XXXX>;
-> +		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
-> +				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
-> +
-> +		...
-> +	};
+T24gTW9uLCAyNSBKdW4gMjAxOCwgTWF0dGhpYXMgQnJ1Z2dlciB3cm90ZToKCj4gCj4gCj4gT24g
+MzAvMDQvMTggMTI6MzAsIExlZSBKb25lcyB3cm90ZToKPiA+IE9uIEZyaSwgMjcgQXByIDIwMTgs
+IG1hdHRoaWFzLmJnZ0BrZXJuZWwub3JnIHdyb3RlOgo+ID4gCj4gPj4gRnJvbTogTWF0dGhpYXMg
+QnJ1Z2dlciA8bWJydWdnZXJAc3VzZS5jb20+Cj4gPj4KPiA+PiBBZGQgYmluZGluZyBkZXNjcmlw
+dGlvbiBmb3IgdGhlIG1tc3lzIG1mZCBmb3Igc29tZSBNZWRpYXRlawo+ID4+IGRldmljZXMuIG1t
+c3lzIGhhcyBzb21lIHJlZ2lzdGVycyB0byBjb250cm9sIGNsb2NrIGdhdGVzICh3aGljaCBpcwo+
+ID4+IHVzZWQgaW4gdGhlIGNsayBkcml2ZXIpIGFuZCBzb21lIHJlZ2lzdGVycyB0byBzZXQgdGhl
+IHJvdXRpbmcgYW5kIGVuYWJsZQo+ID4+IHRoZSBkaWZmZXJuZXQgYmxvY2tzIG9mIHRoZSBkaXNw
+bGF5IHN1YnN5c3RlbS4KPiA+Pgo+ID4+IFNpZ25lZC1vZmYtYnk6IE1hdHRoaWFzIEJydWdnZXIg
+PG1icnVnZ2VyQHN1c2UuY29tPgo+ID4+IC0tLQo+ID4+ICAuLi4vYmluZGluZ3MvYXJtL21lZGlh
+dGVrL21lZGlhdGVrLG1tc3lzLnR4dCAgICAgICB8ICAyIC0tCj4gPj4gIC4uLi9iaW5kaW5ncy9k
+aXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0ICAgIHwgIDIgKy0KPiA+PiAgLi4uL2Rl
+dmljZXRyZWUvYmluZGluZ3MvbWZkL21lZGlhdGVrLG1tc3lzLnR4dCAgICAgfCAyNyArKysrKysr
+KysrKysrKysrKysrKysrCj4gPj4gIDMgZmlsZXMgY2hhbmdlZCwgMjggaW5zZXJ0aW9ucygrKSwg
+MyBkZWxldGlvbnMoLSkKPiA+PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9tZmQvbWVkaWF0ZWssbW1zeXMudHh0Cj4gPj4KPiA+PiBkaWZmIC0t
+Z2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRp
+YXRlayxtbXN5cy50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL21l
+ZGlhdGVrL21lZGlhdGVrLG1tc3lzLnR4dAo+ID4+IGluZGV4IDRlYjhiYmUxNWMwMS4uNDQ2ODM0
+NWY4YjFhIDEwMDY0NAo+ID4+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9hcm0vbWVkaWF0ZWsvbWVkaWF0ZWssbW1zeXMudHh0Cj4gPj4gKysrIGIvRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRlayxtbXN5cy50eHQKPiA+
+PiBAQCAtNiwxMCArNiw4IEBAIFRoZSBNZWRpYXRlayBtbXN5cyBjb250cm9sbGVyIHByb3ZpZGVz
+IHZhcmlvdXMgY2xvY2tzIHRvIHRoZSBzeXN0ZW0uCj4gPj4gIFJlcXVpcmVkIFByb3BlcnRpZXM6
+Cj4gPj4gIAo+ID4+ICAtIGNvbXBhdGlibGU6IFNob3VsZCBiZSBvbmUgb2Y6Cj4gPj4gLQktICJt
+ZWRpYXRlayxtdDI3MDEtbW1zeXMiLCAic3lzY29uIgo+ID4+ICAJLSAibWVkaWF0ZWssbXQyNzEy
+LW1tc3lzIiwgInN5c2NvbiIKPiA+PiAgCS0gIm1lZGlhdGVrLG10Njc5Ny1tbXN5cyIsICJzeXNj
+b24iCj4gPj4gLQktICJtZWRpYXRlayxtdDgxNzMtbW1zeXMiLCAic3lzY29uIgo+ID4+ICAtICNj
+bG9jay1jZWxsczogTXVzdCBiZSAxCj4gPj4gIAo+ID4+ICBUaGUgbW1zeXMgY29udHJvbGxlciB1
+c2VzIHRoZSBjb21tb24gY2xrIGJpbmRpbmcgZnJvbQo+ID4+IGRpZmYgLS1naXQgYS9Eb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkaXNw
+LnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVr
+L21lZGlhdGVrLGRpc3AudHh0Cj4gPj4gaW5kZXggMzgzMTgzYTg5MTY0Li44NWEzYjRlYzA2Y2Qg
+MTAwNjQ0Cj4gPj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
+YXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQKPiA+PiArKysgYi9Eb2N1bWVudGF0aW9uL2Rl
+dmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkaXNwLnR4dAo+ID4+
+IEBAIC05LDcgKzksNyBAQCBmdW5jdGlvbiBibG9jay4KPiA+PiAgCj4gPj4gIEFsbCBESVNQIGRl
+dmljZSB0cmVlIG5vZGVzIG11c3QgYmUgc2libGluZ3MgdG8gdGhlIGNlbnRyYWwgTU1TWVNfQ09O
+RklHIG5vZGUuCj4gPj4gIEZvciBhIGRlc2NyaXB0aW9uIG9mIHRoZSBNTVNZU19DT05GSUcgYmlu
+ZGluZywgc2VlCj4gPj4gLURvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vbWVk
+aWF0ZWsvbWVkaWF0ZWssbW1zeXMudHh0Lgo+ID4+ICtEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvbWZkL21lZGlhdGVrLG1tc3lzLnR4dAo+ID4+ICAKPiA+PiAgRElTUCBmdW5jdGlv
+biBibG9ja3MKPiA+PiAgPT09PT09PT09PT09PT09PT09PT0KPiA+PiBkaWZmIC0tZ2l0IGEvRG9j
+dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9tZWRpYXRlayxtbXN5cy50eHQgYi9E
+b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL21lZGlhdGVrLG1tc3lzLnR4dAo+
+ID4+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gPj4gaW5kZXggMDAwMDAwMDAwMDAwLi4yMzMxYWUx
+NjkxN2UKPiA+PiAtLS0gL2Rldi9udWxsCj4gPj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL21mZC9tZWRpYXRlayxtbXN5cy50eHQKPiA+PiBAQCAtMCwwICsxLDI3IEBA
+Cj4gPj4gK01lZGlhVGVrIE1NU1lTIE11bHRpZnVuY3Rpb24gRGV2aWNlIERyaXZlcgo+ID4gCj4g
+PiBXaGF0IGlzICJNTVNZUyI/Cj4gPiAKPiA+ICJNdWx0aS1GdW5jdGlvbiBEcml2ZXIicyBhcmUg
+c3BlY2lmaWMgdG8gTGludXguCj4gPiAKPiA+IFdoYXQgYWN0dWFsbHkgaXMgdGhlIGRldmljZT8K
+PiAKPiBJdCdzIGluY2x1ZGVzIGFsbCB0aGUgRFJNIHBhcnRzIG9mIHRoZSBTb0MgdG9nZXRoZXIg
+d2l0aCB0aGUgY2xvY2tzIGZvciB0aGUKPiBkZXZpY2UuIE1NU1lTIElNSE8gc3RhbmRzIGZvciBN
+dWx0aS1NZWRpYS1TeXN0ZW0uCgpQbGVhc2UgdXBkYXRlIHRoZSBkb2N1bWVudCB3aXRoIHRoYXQg
+aW5mb3JtYXRpb24uCgpJcyB0aGVyZSBhIGRhdGFzaGVldCBJIGNhbiB2aWV3PwoKPiA+PiArTU1T
+WVMgaXMgYSBtdWx0aWZ1bmN0aW9uIGRldmljZSB3aXRoIHRoZSBmb2xsb3dpbmcgc3ViIG1vZHVs
+ZXM6Cj4gPj4gKy0gY2xvY2tzIGZvciB0aGUgbXVsdGktbWVkaWEgc3Vic3lzdGVtCj4gPj4gKy0g
+Y2VudHJhbCBub2RlIGZvciB0aGUgRFJNIHN1YnN5c3RlbS4KPiA+PiArCj4gPj4gK1RoaXMgZG9j
+dW1lbnQgZGVzY3JpYmVzIHRoZSBiaW5kaW5nIGZvciBNRkQgZGV2aWNlLiBUaGUgTUZEIHRha2Vz
+IGNhcmUgdG8gaW5pdGFpbGl6ZQo+ID4+ICt0aGUgY2xvY2sgZHJpdmVyIGFuZCB0aGUgRFJNIGRy
+aXZlci4gTW9yZSBpbmZvIHNlZQo+ID4+ICtEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkaXNwLnR4dAo+ID4+ICsKPiA+PiArUmVxdWly
+ZWQgcHJvcGVydGllczoKPiA+PiArLSBjb21wYXRpYmxlOiBTaG91bGQgYmUgb25lIG9mOgo+ID4+
+ICsJLSAibWVkaWF0ZWssbXQyNzAxLW1tc3lzIiwgInN5c2NvbiIKPiA+PiArCS0gIm1lZGlhdGVr
+LG10ODE3My1tbXN5cyIsICJzeXNjb24iCj4gPj4gKy0gI2Nsb2NrLWNlbGxzOiBNdXN0IGJlIDEK
+PiA+PiArCj4gPj4gK09wdGlvbmFsIHByb3BlcnRpZXM6Cj4gPj4gKy0gcG93ZXItZG9tYWluczog
+bGlzdCBvZiBwb3dlcmRvbWFpbnMgbmVlZGVkIGZvciB0aGUgc3Vic3lzdGVtIHRvIHdvcmsKPiA+
+PiArCj4gPj4gK0V4YW1wbGU6Cj4gPj4gKwo+ID4+ICttbXN5czogY2xvY2stY29udHJvbGxlckAx
+NDAwMDAwMCB7Cj4gPj4gKwljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1tbXN5cyIsICJz
+eXNjb24iOwo+ID4+ICsJcmVnID0gPDAgMHgxNDAwMDAwMCAwIDB4MTAwMD47Cj4gPj4gKwlwb3dl
+ci1kb21haW5zID0gPCZzY3BzeXMgTVQ4MTczX1BPV0VSX0RPTUFJTl9NTT47Cj4gPj4gKwkjY2xv
+Y2stY2VsbHMgPSA8MT47Cj4gPj4gK307Cj4gPiAKCi0tIApMZWUgSm9uZXMgW+adjueQvOaWr10K
+TGluYXJvIFNlcnZpY2VzIFRlY2huaWNhbCBMZWFkCkxpbmFyby5vcmcg4pSCIE9wZW4gc291cmNl
+IHNvZnR3YXJlIGZvciBBUk0gU29DcwpGb2xsb3cgTGluYXJvOiBGYWNlYm9vayB8IFR3aXR0ZXIg
+fCBCbG9nCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
