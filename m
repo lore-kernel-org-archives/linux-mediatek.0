@@ -1,64 +1,185 @@
-From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [ANN] mt76x0 usb driver
-Date: Wed, 4 Jul 2018 16:00:13 +0200
-Message-ID: <20180704140012.GA26399@redhat.com>
-References: <20180409141032.GA9247@redhat.com>
- <20180409142640.GA5680@localhost.localdomain>
- <20180409144819.GA9253@redhat.com>
- <20180625120816.GA2072@redhat.com>
- <CAA2SeNJjHCrO5NyznK+EJt5K6SRVRr_FPZA2i53Z-FnqzkKz_g@mail.gmail.com>
- <20180625135419.GA3282@redhat.com>
- <CAJ0CqmXE7hF8UAe2iAZ7GhYWb7Uf3zJ+Fg_ervfyK1ojS1Oh=w@mail.gmail.com>
- <alpine.LNX.2.00.1807031725420.3545@T420s>
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v5 5/5] clocksource/drivers/timer-mediatek: Add support
+ for system timer
+Date: Wed, 4 Jul 2018 22:24:05 +0800
+Message-ID: <1530714245.17448.77.camel@mtkswgap22>
+References: <1530669383-17516-1-git-send-email-stanley.chu@mediatek.com>
+         <1530669383-17516-6-git-send-email-stanley.chu@mediatek.com>
+         <alpine.DEB.2.21.1807041108110.1816@nanos.tec.linutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <alpine.LNX.2.00.1807031725420.3545@T420s>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Jakub =?utf-8?B?S2ljacWEc2tp?= <moorray3-5tc4TXWwyLM@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <alpine.DEB.2.21.1807041108110.1816@nanos.tec.linutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Thomas Gleixner <tglx@linutronix.de>
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi
+On Wed, 2018-07-04 at 11:27 +0200, Thomas Gleixner wrote:
+> On Wed, 4 Jul 2018, Stanley Chu wrote:
 
-On Tue, Jul 03, 2018 at 05:31:04PM +0200, Hans Ulli Kroll wrote:
-> > On Mon, Jun 25, 2018 at 02:55:51PM +0200, Lorenzo Bianconi wrote:
+Hi Thomas,
+
+Thanks so much for very constructive comments.
+
+Summary of below response,
+
+1, Yes. System timer has a "clock enable (i.e., SYST_CON_EN)" design
+which not only start timer to countdown but also be required to make
+interrupt function work.
+
+In other words, SYST_CON_EN shall be set before user changes interrupt
+related registers, for example, enable or disable interrupt.
+
+2. The driver certainly has to be optimized and redundant register
+operations shall be removed.
+
+Both things will be done in v6.
+
+> > +/* system timer */
+> > +#define SYST_CON                (0x0)
+> > +#define SYST_VAL                (0x4)
+> > +
+> > +#define SYST_CON_REG(to)        (timer_of_base(to) + SYST_CON)
+> > +#define SYST_VAL_REG(to)        (timer_of_base(to) + SYST_VAL)
+> > +
+> > +#define SYST_CON_EN              BIT(0)
+> > +#define SYST_CON_IRQ_EN          BIT(1)
+> > +#define SYST_CON_IRQ_CLR         BIT(4)
+> > +
+> > +static void __iomem *gpt_sched_reg __read_mostly;
+> > +
+> > +static void mtk_syst_reset(struct timer_of *to)
+> > +{
+> > +	/* clear and disable interrupt */
+> > +	writel(SYST_CON_IRQ_CLR | SYST_CON_EN, SYST_CON_REG(to));
+> > +
+> > +	/* reset counter */
+> > +	writel(0, SYST_VAL_REG(to));
+> > +
+> > +	/* disable timer */
+> > +	writel(0, SYST_CON_REG(to));
 > 
-> > > Not sure why many integration commits in upstream is a problem. I think
-> > > having patches posted on mailing list is better than doing them in my
-> > > "private" tree without any review.
-> > >
-> > > > What do you think?
-> > >
-> > > I was thinking about posting mt76x0 driver in a subdir (there is sill
-> > > some cleanup work need to be done there), wait for upstream mt76x2u
-> > > integration, then post patches that remove duplication between mt76x2
-> > > and mt76x0 and add support for mt76x0e on the way.
-> > >
-> > 
-> > Ack, fine. I modified a little bit mt76x2u/usb architecture moving
-> > some parts in common with mt76x0u
-> > in mt76-usb module (e.g. mt76_queue management in tx_status data path,
-> > tx_stats workqueue,
-> > some mcu utility routines). In this way the integration will be easier I guess
-> > 
-> > Regards,
-> > Lorenzo
-> > 
-> > > Thanks
-> > > Stanislaw
-> > 
+> Not having any insight into the inner workings of that hardware. This
+> sequence does not make any sense.
 > 
-> I'm currrently working mt76x0u on top of Lorenzo's mt76x2u driver.
+> You first clear and disable the interrupt, but leave the counter
+> running. Then you reset the counter and _after_ that you disable the
+> timer.
+> 
+> Is that a workaround for yet another completely misdesigned piece of timer
+> hardware or is it just the software implementation which makes no sense?
+> 
+> If it's a workaround for HW stupidity then you really want to document it
+> proper.
+> 
+> If not then, what's wrong with doing the obvious:
+> {
+> 	writel(SYST_CON_IRQ_CLR, SYST_CON_REG(to));
+> }
 
-Hmm, I think efforts should be somehow synchronized here.
+As above summary said, SYST_CON_EN shall be set to
+1. Change interrupt function.
+2. Allow timeout tick to be updated.
 
-I have almost ready for post patches adding mt76x0 driver to the kernel.
-Some cleanup work is probably needed, but I think they can be reviewed
-and merged. They do not conflict with patches currently posted Lorenzo
-except small changes in mt76.h and Makefile files, what can be easy
-to resolve.
+We will document those as comments in v6.
 
-Thanks
-Stanislaw
+> 
+> which clears the interrupt and disables the timer in one go. Writing the
+> counter is not required at all because the next_event() function will write
+> it again and the counter value is irrelevant once the timer is disabled.
+> 
+> > +static void mtk_syst_ack_irq(struct timer_of *to)
+> > +{
+> > +	mtk_syst_reset(to);
+> > +}
+> > +
+> > +static irqreturn_t mtk_syst_handler(int irq, void *dev_id)
+> > +{
+> > +	struct clock_event_device *clkevt = (struct clock_event_device *)dev_id;
+> 
+> No type casts from and to void. They are completely pointless.
+
+Will be fixed in v6.
+
+> 
+> > +	struct timer_of *to = to_timer_of(clkevt);
+> > +
+> > +	mtk_syst_ack_irq(to);
+> 
+> So you do the full dance here.
+
+Here full dance is not necessary and we only need to "clear and disable
+interrupt".
+
+Will be optimized in v6.
+
+> 
+> > +	clkevt->event_handler(clkevt);
+> > +
+> > +	return IRQ_HANDLED;
+> > +}
+> > +
+> > +static int mtk_syst_clkevt_next_event(unsigned long ticks,
+> > +				      struct clock_event_device *clkevt)
+> > +{
+> > +	struct timer_of *to = to_timer_of(clkevt);
+> > +
+> > +	/*
+> > +	 * reset timer first because we do not expect interrupt is triggered
+> > +	 * by old compare value.
+> > +	 */
+> > +	mtk_syst_reset(to);
+> 
+> And here, which gets called through the event_handler.
+
+Timer reset here is not necessary.
+
+Will be removed in v6.
+
+> 
+> > +
+> > +	writel(SYST_CON_EN, SYST_CON_REG(to));
+> 
+> Why are you enabling the timer _before_ setting the new counter value? This
+> does not make any sense at least not w/o a comment explaining WHY this
+> needs to be so convoluted.
+
+As above response in mtk_syst_reset().
+
+> 
+> > +	writel(ticks, SYST_VAL_REG(to));
+> > +
+> > +	writel(SYST_CON_EN | SYST_CON_IRQ_EN, SYST_CON_REG(to));
+> 
+> With a sane hardware implementation the whole thing can be boiled down to:
+> 
+> {
+> 	writel(ticks, SYST_VAL_REG(to));
+> 	writel(SYST_CON_EN | SYST_CON_IRQ_EN, SYST_CON_REG(to));
+> }
+> 
+> There is no need to do the whole reset thing, unless the hardware is
+> broken. Either you manage to overwrite the timer in time or not. The extra
+> work of writing the control register before that is a cosmetic 'makes me
+> feel' good hack, which just makes the normal case slower. If you have an
+> occasional spurious interrupt, fine, but you can get them anyway.
+> 
+
+Yes, we have reviewed reset timing and found most of them are not
+necessary actually.
+
+We will optimize driver in v6.
+
+> Thanks,
+> 
+> 	tglx
+
+
+Thanks,
+Stanley Chu
+
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
