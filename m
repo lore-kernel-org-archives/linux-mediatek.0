@@ -1,189 +1,78 @@
-From: houlong wei <houlong.wei@mediatek.com>
-Subject: Re: [PATCH v22 4/4] soc: mediatek: Add Mediatek CMDQ helper
-Date: Wed, 4 Jul 2018 08:47:37 +0800
-Message-ID: <1530665257.24157.7.camel@mhfsdcap03>
-References: <1530098172-31385-1-git-send-email-houlong.wei@mediatek.com>
-         <1530098172-31385-5-git-send-email-houlong.wei@mediatek.com>
-         <1530182516.8518.11.camel@mtksdaap41>
-         <1530228739.21991.14.camel@mhfsdcap03>
-         <1530264123.22098.12.camel@mtksdaap41>
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v4 1/5] clocksource/drivers/timer-mediatek: Add system
+ timer bindings
+Date: Wed, 4 Jul 2018 09:49:27 +0800
+Message-ID: <1530668967.17448.55.camel@mtkswgap22>
+References: <1530231446-13760-1-git-send-email-stanley.chu@mediatek.com>
+         <1530231446-13760-2-git-send-email-stanley.chu@mediatek.com>
+         <20180703233256.GA27424@rob-hp-laptop>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1530264123.22098.12.camel@mtksdaap41>
+In-Reply-To: <20180703233256.GA27424@rob-hp-laptop>
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, Bibby Hsieh =?UTF-8?Q?=28=E8=AC=9D=E6=BF=9F=E9=81=A0=29?= <Bibby.Hsieh@mediatek.com>, YT
+To: Rob Herring <robh@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2018-06-29 at 17:22 +0800, CK Hu wrote:
-> Hi, Houlong:
-> 
-> On Fri, 2018-06-29 at 07:32 +0800, houlong wei wrote:
-> > On Thu, 2018-06-28 at 18:41 +0800, CK Hu wrote:
-> > > Hi, Houlong:
-> > > 
-> > > Some inline comment.
-> > > 
-> > > On Wed, 2018-06-27 at 19:16 +0800, Houlong Wei wrote:
-> > > > Add Mediatek CMDQ helper to create CMDQ packet and assemble GCE op code.
-> > > > 
-> > > > Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
-> > > > Signed-off-by: HS Liao <hs.liao@mediatek.com>
-> > > > ---
-> > > >  drivers/soc/mediatek/Kconfig           |   12 ++
-> > > >  drivers/soc/mediatek/Makefile          |    1 +
-> > > >  drivers/soc/mediatek/mtk-cmdq-helper.c |  258 ++++++++++++++++++++++++++++++++
-> > > >  include/linux/soc/mediatek/mtk-cmdq.h  |  132 ++++++++++++++++
-> > > >  4 files changed, 403 insertions(+)
-> > > >  create mode 100644 drivers/soc/mediatek/mtk-cmdq-helper.c
-> > > >  create mode 100644 include/linux/soc/mediatek/mtk-cmdq.h
-> > > > 
-> > > > diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-> > > > index a7d0667..17bd759 100644
-> > > > --- a/drivers/soc/mediatek/Kconfig
-> > > > +++ b/drivers/soc/mediatek/Kconfig
-> > > > @@ -4,6 +4,18 @@
-> > > >  menu "MediaTek SoC drivers"
-> > > >  	depends on ARCH_MEDIATEK || COMPILE_TEST
-> > > >  
-> > > 
-> 
-> [...]
-> 
-> > > > +
-> > > > +static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
-> > > > +{
-> > > > +	int err;
-> > > > +
-> > > > +	if (cmdq_pkt_is_finalized(pkt))
-> > > > +		return 0;
-> > > > +
-> > > > +	/* insert EOC and generate IRQ for each command iteration */
-> > > > +	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_EOC, 0, CMDQ_EOC_IRQ_EN);
-> > > > +	if (err < 0)
-> > > > +		return err;
-> > > > +
-> > > > +	/* JUMP to end */
-> > > > +	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_JUMP, 0, CMDQ_JUMP_PASS);
-> > > > +	if (err < 0)
-> > > > +		return err;
-> > > > +
-> > > > +	return 0;
-> > > > +}
-> > > > +
-> > > > +int cmdq_pkt_flush_async(struct cmdq_client *client, struct cmdq_pkt *pkt,
-> > > > +			 cmdq_async_flush_cb cb, void *data)
-> > > > +{
-> > > > +	int err;
-> > > > +	struct device *dev;
-> > > > +	dma_addr_t dma_addr;
-> > > > +
-> > > > +	err = cmdq_pkt_finalize(pkt);
-> > > > +	if (err < 0)
-> > > > +		return err;
-> > > > +
-> > > > +	dev = client->chan->mbox->dev;
-> > > > +	dma_addr = dma_map_single(dev, pkt->va_base, pkt->cmd_buf_size,
-> > > > +		DMA_TO_DEVICE);
-> > > 
-> > > You map here, but I could not find unmap, so the unmap should be done in
-> > > client driver. I would prefer a symmetric map/unmap which means that
-> > > both map and unmap are done in client driver. I think you put map here
-> > > because you should map after finalize. 
-> > 
-> > The unmap is done before callback to client, in function
-> > cmdq_task_exec_done, mtk-cmdq-mailbox.c.
-> 
-> You put unmap in mailbox controller, and map here (here would be mailbox
-> client), so this is not symmetric. If the code is asymmetric, it's easy
-> to cause bug and not easy to maintain. So I would like move both
-> map/unmap to client driver.
-> 
+On Tue, 2018-07-03 at 17:32 -0600, Rob Herring wrote:
 
-Since map/unmap is common code for client drivers, can we move unmap to
-CMDQ helper and do not put in client driver?
+Hi Rob,
 
-> > 
-> > > Therefore, export
-> > > cmdq_pkt_finalize() to client driver and let client do finalize, so
-> > > there is no finalize in flush function. This method have a benefit that
-> > > if client reuse command buffer, it need not to map/unmap frequently.
-> > 
-> > If client reuse command buffer or cmdq_pkt(command queue packet), client
-> > will add new commands to the cmdq_pkt, so map/unmap are necessary for
-> > each cmdq_pkt flush.
+> > +- reg: Should contain location and length for GPT register.
+> > +- clocks: GPT is drived by system clock.
 > 
-> If the buffer size is 4K bytes, client driver could map the whole 4K at
-> initialization. Before it write new command, it call
-> dma_sync_single_for_cpu(), after it write new command, it call
-> dma_sync_single_for_device(). And then it could flush this buffer to
-> mailbox controller. So client driver just call dma sync function when it
-> reuse the command buffer. dma sync function is much lightweight then dma
-> map because map would search the memory area which could be mapped.
-> 
-> Regards,
-> CK
+> s/drived/driven/
 
-Maybe we can do dma map/unmap/sync in cmdq helper, and make client
-driver simple.
+Will be fixed in v5.
 
 > 
-> > 
-> > > 
-> > > Regards,
-> > > CK
-> > > 
-> > > > +	if (dma_mapping_error(dev, dma_addr)) {
-> > > > +		dev_err(client->chan->mbox->dev, "dma map failed\n");
-> > > > +		return -ENOMEM;
-> > > > +	}
-> > > > +
-> > > > +	pkt->pa_base = dma_addr;
-> > > > +	pkt->cb.cb = cb;
-> > > > +	pkt->cb.data = data;
-> > > > +
-> > > > +	mbox_send_message(client->chan, pkt);
-> > > > +	/* We can send next packet immediately, so just call txdone. */
-> > > > +	mbox_client_txdone(client->chan, 0);
-> > > > +
-> > > > +	return 0;
-> > > > +}
-> > > > +EXPORT_SYMBOL(cmdq_pkt_flush_async);
-> > > > +
-> > > > +struct cmdq_flush_completion {
-> > > > +	struct completion cmplt;
-> > > > +	bool err;
-> > > > +};
-> > > > +
-> > > > +static void cmdq_pkt_flush_cb(struct cmdq_cb_data data)
-> > > > +{
-> > > > +	struct cmdq_flush_completion *cmplt = data.data;
-> > > > +
-> > > > +	cmplt->err = data.err;
-> > > > +	complete(&cmplt->cmplt);
-> > > > +}
-> > > > +
-> > > > +int cmdq_pkt_flush(struct cmdq_client *client, struct cmdq_pkt *pkt)
-> > > > +{
-> > > > +	struct cmdq_flush_completion cmplt;
-> > > > +	int err;
-> > > > +
-> > > > +	init_completion(&cmplt.cmplt);
-> > > > +	err = cmdq_pkt_flush_async(client, pkt, cmdq_pkt_flush_cb, &cmplt);
-> > > > +	if (err < 0)
-> > > > +		return err;
-> > > > +	wait_for_completion(&cmplt.cmplt);
-> > > > +
-> > > > +	return cmplt.err ? -EFAULT : 0;
-> > > > +}
-> > > > +EXPORT_SYMBOL(cmdq_pkt_flush);
-> > > 
-> > > [...]
-> > > 
-> > > 
-> > 
-> > 
+> >  
+> >  Examples:
+> >  
+> > @@ -21,5 +29,23 @@ Examples:
+> >  		compatible = "mediatek,mt6577-timer";
+> >  		reg = <0x10008000 0x80>;
+> >  		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>;
+> > -		clocks = <&system_clk>, <&rtc_clk>;
+> > +		clocks = <&system_clk>;
+> > +	};
+> > +
+> > +
+> > +** System Timer (SYST)
+> > +
+> > +Required properties:
+> > +- compatible: Should contain
+> > +	* "mediatek,mt6765-timer" for MT6765 compatible timers
+> > +- reg: Should contain the location and length for system timer registers.
+> > +- clocks: System timer is drived by system clock.
 > 
+> These look the same. Can't you just add the compatible string and note 
+> in the description it is the system timer. Or make the compatible 
+> "mediatek,mt6765-systimer"
 > 
+
+OK! We will simplify it and just use the same compatible string.
+
+> > +
+> > +Examples:
+> > +
+> > +	systimer@10017000 {
+> 
+> timer@
+
+As above, will be fixed in v5.
+
+> 
+> > +		compatible = "mediatek,mt6765-timer";
+> > +		reg = <0 0x10017000 0 0x1000>;
+> > +		interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_HIGH>;
+> > +		clocks = <&system_clk>;
+> >  	};
+> > -- 
+> > 1.7.9.5
+> > 
+
+Thanks.
+Stanley Chu
