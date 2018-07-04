@@ -1,124 +1,83 @@
-From: Thomas Gleixner <tglx@linutronix.de>
-Subject: Re: [PATCH v5 5/5] clocksource/drivers/timer-mediatek: Add support
- for system timer
-Date: Wed, 4 Jul 2018 11:27:53 +0200 (CEST)
-Message-ID: <alpine.DEB.2.21.1807041108110.1816@nanos.tec.linutronix.de>
-References: <1530669383-17516-1-git-send-email-stanley.chu@mediatek.com> <1530669383-17516-6-git-send-email-stanley.chu@mediatek.com>
+From: Mars Cheng <mars.cheng@mediatek.com>
+Subject: Re: [PATCH v3 4/4] arm64: dts: mediatek: add mt6765 support
+Date: Wed, 4 Jul 2018 19:38:09 +0800
+Message-ID: <1530704289.16183.6.camel@mtkswgap22>
+References: <1530669174-17623-1-git-send-email-mars.cheng@mediatek.com>
+         <1530669174-17623-5-git-send-email-mars.cheng@mediatek.com>
+         <f482708c-ea5e-5d81-a176-d69be9ccdf63@arm.com>
+         <1530690473.16183.3.camel@mtkswgap22>
+         <304dc0a7-bcba-961c-40f4-b324ecc2d003@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1530669383-17516-6-git-send-email-stanley.chu@mediatek.com>
+In-Reply-To: <304dc0a7-bcba-961c-40f4-b324ecc2d003@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stanley Chu <stanley.chu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
+To: Marc Zyngier <marc.zyngier@arm.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 4 Jul 2018, Stanley Chu wrote:
-> +/* system timer */
-> +#define SYST_CON                (0x0)
-> +#define SYST_VAL                (0x4)
-> +
-> +#define SYST_CON_REG(to)        (timer_of_base(to) + SYST_CON)
-> +#define SYST_VAL_REG(to)        (timer_of_base(to) + SYST_VAL)
-> +
-> +#define SYST_CON_EN              BIT(0)
-> +#define SYST_CON_IRQ_EN          BIT(1)
-> +#define SYST_CON_IRQ_CLR         BIT(4)
-> +
-> +static void __iomem *gpt_sched_reg __read_mostly;
-> +
-> +static void mtk_syst_reset(struct timer_of *to)
-> +{
-> +	/* clear and disable interrupt */
-> +	writel(SYST_CON_IRQ_CLR | SYST_CON_EN, SYST_CON_REG(to));
-> +
-> +	/* reset counter */
-> +	writel(0, SYST_VAL_REG(to));
-> +
-> +	/* disable timer */
-> +	writel(0, SYST_CON_REG(to));
+Hi Marc
 
-Not having any insight into the inner workings of that hardware. This
-sequence does not make any sense.
+On Wed, 2018-07-04 at 08:59 +0100, Marc Zyngier wrote:
+> On 04/07/18 08:47, Mars Cheng wrote:
+> > Hi Marc
+> > 
+> > On Wed, 2018-07-04 at 08:35 +0100, Marc Zyngier wrote:
+> >> On 04/07/18 02:52, Mars Cheng wrote:
+> >>> This adds basic chip support for MT6765 SoC.
+> >>>
+> >>> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> >>> ---
+> >>>  arch/arm64/boot/dts/mediatek/Makefile       |    1 +
+> >>>  arch/arm64/boot/dts/mediatek/mt6765-evb.dts |   33 ++++++
+> >>>  arch/arm64/boot/dts/mediatek/mt6765.dtsi    |  155 +++++++++++++++++++++++++++
+> >>>  3 files changed, 189 insertions(+)
+> >>>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
+> >>>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
+> >>>
+> >>
+> >> [...]
+> >>
+> >>> +
+> >>> +		gic: interrupt-controller@c000000 {
+> >>> +			compatible = "arm,gic-v3";
+> >>> +			#interrupt-cells = <3>;
+> >>> +			#address-cells = <2>;
+> >>> +			#size-cells = <2>;
+> >>> +			#redistributor-regions = <1>;
+> >>> +			interrupt-parent = <&gic>;
+> >>> +			interrupt-controller;
+> >>> +			reg = <0 0x0c000000 0 0x40000>, // distributor
+> >>> +			      <0 0x0c100000 0 0x200000>, // redistributor
+> >>> +			      <0 0x0c400000 0 0x40000>; // gicc
+> >>
+> >> For the second time: please add *all* the GIC CPU interface regions,
+> >> described in the Cortex-A53 TRM[1] (GICC, GICH, and GICV).
+> >>
+> > 
+> > MT6765 has no GICH/GICV/ITS in mediatek design. Have confirmed with our
+> > designer.  
+> 
+> The only way *not* to have GICH or GICV is to assert GICCDISABLE on the
+> CPU, in which case you don't have GICC either, nor any support for the
+> GICv3 at all. So either the designer is wrong or the documentation is
+> wrong. Which one is it, do you think?
+> 
+> As for the ITS, that's a perfectly optional part of the design, and not
+> part of the CPU.
+> 
 
-You first clear and disable the interrupt, but leave the counter
-running. Then you reset the counter and _after_ that you disable the
-timer.
+Clarified with our designer. It is our misunderstanding for TRM.
+GICV/GICH do exist. Will add them in v4 soon. And fix MT6797 in another
+patch.
 
-Is that a workaround for yet another completely misdesigned piece of timer
-hardware or is it just the software implementation which makes no sense?
+Thanks.
 
-If it's a workaround for HW stupidity then you really want to document it
-proper.
-
-If not then, what's wrong with doing the obvious:
-{
-	writel(SYST_CON_IRQ_CLR, SYST_CON_REG(to));
-}
-
-which clears the interrupt and disables the timer in one go. Writing the
-counter is not required at all because the next_event() function will write
-it again and the counter value is irrelevant once the timer is disabled.
-
-> +static void mtk_syst_ack_irq(struct timer_of *to)
-> +{
-> +	mtk_syst_reset(to);
-> +}
-> +
-> +static irqreturn_t mtk_syst_handler(int irq, void *dev_id)
-> +{
-> +	struct clock_event_device *clkevt = (struct clock_event_device *)dev_id;
-
-No type casts from and to void. They are completely pointless.
-
-> +	struct timer_of *to = to_timer_of(clkevt);
-> +
-> +	mtk_syst_ack_irq(to);
-
-So you do the full dance here.
-
-> +	clkevt->event_handler(clkevt);
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +static int mtk_syst_clkevt_next_event(unsigned long ticks,
-> +				      struct clock_event_device *clkevt)
-> +{
-> +	struct timer_of *to = to_timer_of(clkevt);
-> +
-> +	/*
-> +	 * reset timer first because we do not expect interrupt is triggered
-> +	 * by old compare value.
-> +	 */
-> +	mtk_syst_reset(to);
-
-And here, which gets called through the event_handler.
-
-> +
-> +	writel(SYST_CON_EN, SYST_CON_REG(to));
-
-Why are you enabling the timer _before_ setting the new counter value? This
-does not make any sense at least not w/o a comment explaining WHY this
-needs to be so convoluted.
-
-> +	writel(ticks, SYST_VAL_REG(to));
-> +
-> +	writel(SYST_CON_EN | SYST_CON_IRQ_EN, SYST_CON_REG(to));
-
-With a sane hardware implementation the whole thing can be boiled down to:
-
-{
-	writel(ticks, SYST_VAL_REG(to));
-	writel(SYST_CON_EN | SYST_CON_IRQ_EN, SYST_CON_REG(to));
-}
-
-There is no need to do the whole reset thing, unless the hardware is
-broken. Either you manage to overwrite the timer in time or not. The extra
-work of writing the control register before that is a cosmetic 'makes me
-feel' good hack, which just makes the normal case slower. If you have an
-occasional spurious interrupt, fine, but you can get them anyway.
-
-Thanks,
-
-	tglx
+> > MT6797 had similar question from you. Sorry for not mentioned it first.
+> > 
+> > https://urldefense.proofpoint.com/v2/url?u=http-3A__lists.infradead.org_pipermail_linux-2Dmediatek_2017-2DFebruary_008074.html&d=DwICaQ&c=X9NHckmGz7LNQmqtvpDCYVnn6eFXNivfZeknqiAo-n0&r=Ph_SbcClVGRWmGxVhfr-5CZF9ffiUOE7TZ47ns4ROh4&m=iACLXUO5vXXZCPSvhbBKZFXy0bXdO8f4kbgy6RLi2QM&s=2N4qyy0aMytzNgObeyU4tvCDREX4U1x4oeNgvZwUxvM&e= 
+> 
+> Well, that's wrong too.
+> 
+> 	M.
