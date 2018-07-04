@@ -1,83 +1,64 @@
-From: Mars Cheng <mars.cheng@mediatek.com>
-Subject: Re: [PATCH v3 4/4] arm64: dts: mediatek: add mt6765 support
-Date: Wed, 4 Jul 2018 19:38:09 +0800
-Message-ID: <1530704289.16183.6.camel@mtkswgap22>
-References: <1530669174-17623-1-git-send-email-mars.cheng@mediatek.com>
-         <1530669174-17623-5-git-send-email-mars.cheng@mediatek.com>
-         <f482708c-ea5e-5d81-a176-d69be9ccdf63@arm.com>
-         <1530690473.16183.3.camel@mtkswgap22>
-         <304dc0a7-bcba-961c-40f4-b324ecc2d003@arm.com>
+From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [ANN] mt76x0 usb driver
+Date: Wed, 4 Jul 2018 16:00:13 +0200
+Message-ID: <20180704140012.GA26399@redhat.com>
+References: <20180409141032.GA9247@redhat.com>
+ <20180409142640.GA5680@localhost.localdomain>
+ <20180409144819.GA9253@redhat.com>
+ <20180625120816.GA2072@redhat.com>
+ <CAA2SeNJjHCrO5NyznK+EJt5K6SRVRr_FPZA2i53Z-FnqzkKz_g@mail.gmail.com>
+ <20180625135419.GA3282@redhat.com>
+ <CAJ0CqmXE7hF8UAe2iAZ7GhYWb7Uf3zJ+Fg_ervfyK1ojS1Oh=w@mail.gmail.com>
+ <alpine.LNX.2.00.1807031725420.3545@T420s>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <304dc0a7-bcba-961c-40f4-b324ecc2d003@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <alpine.LNX.2.00.1807031725420.3545@T420s>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Jakub =?utf-8?B?S2ljacWEc2tp?= <moorray3-5tc4TXWwyLM@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Marc
+Hi
 
-On Wed, 2018-07-04 at 08:59 +0100, Marc Zyngier wrote:
-> On 04/07/18 08:47, Mars Cheng wrote:
-> > Hi Marc
+On Tue, Jul 03, 2018 at 05:31:04PM +0200, Hans Ulli Kroll wrote:
+> > On Mon, Jun 25, 2018 at 02:55:51PM +0200, Lorenzo Bianconi wrote:
+> 
+> > > Not sure why many integration commits in upstream is a problem. I think
+> > > having patches posted on mailing list is better than doing them in my
+> > > "private" tree without any review.
+> > >
+> > > > What do you think?
+> > >
+> > > I was thinking about posting mt76x0 driver in a subdir (there is sill
+> > > some cleanup work need to be done there), wait for upstream mt76x2u
+> > > integration, then post patches that remove duplication between mt76x2
+> > > and mt76x0 and add support for mt76x0e on the way.
+> > >
 > > 
-> > On Wed, 2018-07-04 at 08:35 +0100, Marc Zyngier wrote:
-> >> On 04/07/18 02:52, Mars Cheng wrote:
-> >>> This adds basic chip support for MT6765 SoC.
-> >>>
-> >>> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
-> >>> ---
-> >>>  arch/arm64/boot/dts/mediatek/Makefile       |    1 +
-> >>>  arch/arm64/boot/dts/mediatek/mt6765-evb.dts |   33 ++++++
-> >>>  arch/arm64/boot/dts/mediatek/mt6765.dtsi    |  155 +++++++++++++++++++++++++++
-> >>>  3 files changed, 189 insertions(+)
-> >>>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
-> >>>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
-> >>>
-> >>
-> >> [...]
-> >>
-> >>> +
-> >>> +		gic: interrupt-controller@c000000 {
-> >>> +			compatible = "arm,gic-v3";
-> >>> +			#interrupt-cells = <3>;
-> >>> +			#address-cells = <2>;
-> >>> +			#size-cells = <2>;
-> >>> +			#redistributor-regions = <1>;
-> >>> +			interrupt-parent = <&gic>;
-> >>> +			interrupt-controller;
-> >>> +			reg = <0 0x0c000000 0 0x40000>, // distributor
-> >>> +			      <0 0x0c100000 0 0x200000>, // redistributor
-> >>> +			      <0 0x0c400000 0 0x40000>; // gicc
-> >>
-> >> For the second time: please add *all* the GIC CPU interface regions,
-> >> described in the Cortex-A53 TRM[1] (GICC, GICH, and GICV).
-> >>
+> > Ack, fine. I modified a little bit mt76x2u/usb architecture moving
+> > some parts in common with mt76x0u
+> > in mt76-usb module (e.g. mt76_queue management in tx_status data path,
+> > tx_stats workqueue,
+> > some mcu utility routines). In this way the integration will be easier I guess
 > > 
-> > MT6765 has no GICH/GICV/ITS in mediatek design. Have confirmed with our
-> > designer.  
-> 
-> The only way *not* to have GICH or GICV is to assert GICCDISABLE on the
-> CPU, in which case you don't have GICC either, nor any support for the
-> GICv3 at all. So either the designer is wrong or the documentation is
-> wrong. Which one is it, do you think?
-> 
-> As for the ITS, that's a perfectly optional part of the design, and not
-> part of the CPU.
-> 
-
-Clarified with our designer. It is our misunderstanding for TRM.
-GICV/GICH do exist. Will add them in v4 soon. And fix MT6797 in another
-patch.
-
-Thanks.
-
-> > MT6797 had similar question from you. Sorry for not mentioned it first.
+> > Regards,
+> > Lorenzo
 > > 
-> > https://urldefense.proofpoint.com/v2/url?u=http-3A__lists.infradead.org_pipermail_linux-2Dmediatek_2017-2DFebruary_008074.html&d=DwICaQ&c=X9NHckmGz7LNQmqtvpDCYVnn6eFXNivfZeknqiAo-n0&r=Ph_SbcClVGRWmGxVhfr-5CZF9ffiUOE7TZ47ns4ROh4&m=iACLXUO5vXXZCPSvhbBKZFXy0bXdO8f4kbgy6RLi2QM&s=2N4qyy0aMytzNgObeyU4tvCDREX4U1x4oeNgvZwUxvM&e= 
+> > > Thanks
+> > > Stanislaw
+> > 
 > 
-> Well, that's wrong too.
-> 
-> 	M.
+> I'm currrently working mt76x0u on top of Lorenzo's mt76x2u driver.
+
+Hmm, I think efforts should be somehow synchronized here.
+
+I have almost ready for post patches adding mt76x0 driver to the kernel.
+Some cleanup work is probably needed, but I think they can be reviewed
+and merged. They do not conflict with patches currently posted Lorenzo
+except small changes in mt76.h and Makefile files, what can be easy
+to resolve.
+
+Thanks
+Stanislaw
