@@ -1,210 +1,141 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v22 4/4] soc: mediatek: Add Mediatek CMDQ helper
-Date: Wed, 4 Jul 2018 10:39:14 +0800
-Message-ID: <1530671954.8732.10.camel@mtksdaap41>
-References: <1530098172-31385-1-git-send-email-houlong.wei@mediatek.com>
-         <1530098172-31385-5-git-send-email-houlong.wei@mediatek.com>
-         <1530182516.8518.11.camel@mtksdaap41>
-         <1530228739.21991.14.camel@mhfsdcap03>
-         <1530264123.22098.12.camel@mtksdaap41>
-         <1530665257.24157.7.camel@mhfsdcap03>
+From: Boris Brezillon <boris.brezillon@bootlin.com>
+Subject: Re: [PATCH v2 01/32] mtd: rawnand: add hooks that may be called
+ during nand_scan()
+Date: Wed, 4 Jul 2018 09:09:42 +0200
+Message-ID: <20180704090942.24a17db1@bbrezillon>
+References: <20180703220029.19565-1-miquel.raynal@bootlin.com>
+ <20180703220029.19565-2-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1530665257.24157.7.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: houlong wei <houlong.wei@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, Bibby Hsieh =?UTF-8?Q?=28=E8=AC=9D=E6=BF=9F=E9=81=A0=29?= <Bibby.Hsieh@mediatek.com>, YT
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180703220029.19565-2-miquel.raynal@bootlin.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, Mans Rullgard <mans@mansr.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Stefan Agner <stefan@agner.ch>, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mtd@lists.infradead.org, Kamal Dasu <kdasu.kdev@gmail.com>, Josh Wu <rainyfeeling@outlook.com>, Marc Gonzalez <marc.w.gonzalez@free.fr>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com, Sylvain Lemieux <slemieux.tyco@gmail.com>, Wenyou Yang <wenyou.yang@microchip.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Vladimir Zapolskiy <vz@mleia.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Han Xu <han.xu@nxp.com>, Xiaolei Li <xiaolei.li@mediatek.com>, linux-arm-kernel@lists.infradead.org, Richard
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Houlong:
+Hi Miquel,
 
-On Wed, 2018-07-04 at 08:47 +0800, houlong wei wrote:
-> On Fri, 2018-06-29 at 17:22 +0800, CK Hu wrote:
-> > Hi, Houlong:
-> > 
-> > On Fri, 2018-06-29 at 07:32 +0800, houlong wei wrote:
-> > > On Thu, 2018-06-28 at 18:41 +0800, CK Hu wrote:
-> > > > Hi, Houlong:
-> > > > 
-> > > > Some inline comment.
-> > > > 
-> > > > On Wed, 2018-06-27 at 19:16 +0800, Houlong Wei wrote:
-> > > > > Add Mediatek CMDQ helper to create CMDQ packet and assemble GCE op code.
-> > > > > 
-> > > > > Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
-> > > > > Signed-off-by: HS Liao <hs.liao@mediatek.com>
-> > > > > ---
-> > > > >  drivers/soc/mediatek/Kconfig           |   12 ++
-> > > > >  drivers/soc/mediatek/Makefile          |    1 +
-> > > > >  drivers/soc/mediatek/mtk-cmdq-helper.c |  258 ++++++++++++++++++++++++++++++++
-> > > > >  include/linux/soc/mediatek/mtk-cmdq.h  |  132 ++++++++++++++++
-> > > > >  4 files changed, 403 insertions(+)
-> > > > >  create mode 100644 drivers/soc/mediatek/mtk-cmdq-helper.c
-> > > > >  create mode 100644 include/linux/soc/mediatek/mtk-cmdq.h
-> > > > > 
-> > > > > diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-> > > > > index a7d0667..17bd759 100644
-> > > > > --- a/drivers/soc/mediatek/Kconfig
-> > > > > +++ b/drivers/soc/mediatek/Kconfig
-> > > > > @@ -4,6 +4,18 @@
-> > > > >  menu "MediaTek SoC drivers"
-> > > > >  	depends on ARCH_MEDIATEK || COMPILE_TEST
-> > > > >  
-> > > > 
-> > 
-> > [...]
-> > 
-> > > > > +
-> > > > > +static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
-> > > > > +{
-> > > > > +	int err;
-> > > > > +
-> > > > > +	if (cmdq_pkt_is_finalized(pkt))
-> > > > > +		return 0;
-> > > > > +
-> > > > > +	/* insert EOC and generate IRQ for each command iteration */
-> > > > > +	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_EOC, 0, CMDQ_EOC_IRQ_EN);
-> > > > > +	if (err < 0)
-> > > > > +		return err;
-> > > > > +
-> > > > > +	/* JUMP to end */
-> > > > > +	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_JUMP, 0, CMDQ_JUMP_PASS);
-> > > > > +	if (err < 0)
-> > > > > +		return err;
-> > > > > +
-> > > > > +	return 0;
-> > > > > +}
-> > > > > +
-> > > > > +int cmdq_pkt_flush_async(struct cmdq_client *client, struct cmdq_pkt *pkt,
-> > > > > +			 cmdq_async_flush_cb cb, void *data)
-> > > > > +{
-> > > > > +	int err;
-> > > > > +	struct device *dev;
-> > > > > +	dma_addr_t dma_addr;
-> > > > > +
-> > > > > +	err = cmdq_pkt_finalize(pkt);
-> > > > > +	if (err < 0)
-> > > > > +		return err;
-> > > > > +
-> > > > > +	dev = client->chan->mbox->dev;
-> > > > > +	dma_addr = dma_map_single(dev, pkt->va_base, pkt->cmd_buf_size,
-> > > > > +		DMA_TO_DEVICE);
-> > > > 
-> > > > You map here, but I could not find unmap, so the unmap should be done in
-> > > > client driver. I would prefer a symmetric map/unmap which means that
-> > > > both map and unmap are done in client driver. I think you put map here
-> > > > because you should map after finalize. 
-> > > 
-> > > The unmap is done before callback to client, in function
-> > > cmdq_task_exec_done, mtk-cmdq-mailbox.c.
-> > 
-> > You put unmap in mailbox controller, and map here (here would be mailbox
-> > client), so this is not symmetric. If the code is asymmetric, it's easy
-> > to cause bug and not easy to maintain. So I would like move both
-> > map/unmap to client driver.
-> > 
-> 
-> Since map/unmap is common code for client drivers, can we move unmap to
-> CMDQ helper and do not put in client driver?
-> 
-> > > 
-> > > > Therefore, export
-> > > > cmdq_pkt_finalize() to client driver and let client do finalize, so
-> > > > there is no finalize in flush function. This method have a benefit that
-> > > > if client reuse command buffer, it need not to map/unmap frequently.
-> > > 
-> > > If client reuse command buffer or cmdq_pkt(command queue packet), client
-> > > will add new commands to the cmdq_pkt, so map/unmap are necessary for
-> > > each cmdq_pkt flush.
-> > 
-> > If the buffer size is 4K bytes, client driver could map the whole 4K at
-> > initialization. Before it write new command, it call
-> > dma_sync_single_for_cpu(), after it write new command, it call
-> > dma_sync_single_for_device(). And then it could flush this buffer to
-> > mailbox controller. So client driver just call dma sync function when it
-> > reuse the command buffer. dma sync function is much lightweight then dma
-> > map because map would search the memory area which could be mapped.
-> > 
-> > Regards,
-> > CK
-> 
-> Maybe we can do dma map/unmap/sync in cmdq helper, and make client
-> driver simple.
-> 
+On Tue,  3 Jul 2018 23:59:58 +0200
+Miquel Raynal <miquel.raynal@bootlin.com> wrote:
 
-Why are map/unmap common code for client drivers? I've mentioned that
-some client driver may just call dma sync function before flush, so it
-does not map for every flush. Frequently map/unmap has some drawback:
+> In order to remove the limitation that forbids dynamic allocation in
+> nand_scan_ident(), we must create a path that will be the same for all
+> controller drivers. The idea is to use nand_scan() instead of the widely
+> implemented nand_scan_ident()/nand_scan_tail() couple. In order to
+> achieve this, controller drivers will need to adjust some parameters
+> between these two functions depending on the NAND chip wired on them.
+> 
+> For that, a hook called ->attach_chip() is created in the
+> nand_hw_control structure. This structure may be referenced by two ways:
+> 1/ if the driver does not implement its own controller, the
+>    chip->controller hook is not populated before nand_scan() so it
+>    cannot be dereferenced: use chip->hwcontrol instead (which is
+>    statically allocated and will be referenced later by chip->controller
+>    anyway).
+> 2/ through chip->controller if the driver implements its own controller.
+> 
+> Another hook, ->detach_chip() is also introduced in order to clean the
+> controller driver's potential allocations in case of failure of
+> nand_scan_tail(). There is no need for the controller driver to call the
+> ->detach_chip() hook directly upon error after a successful nand_scan().  
+> In this situation, calling nand_release() as before is enough.
+> 
+> Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
+> ---
+>  drivers/mtd/nand/raw/nand_base.c | 21 +++++++++++++++++++--
+>  include/linux/mtd/rawnand.h      |  6 ++++++
+>  2 files changed, 25 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/mtd/nand/raw/nand_base.c b/drivers/mtd/nand/raw/nand_base.c
+> index faac82b1e058..97a74d48b0cf 100644
+> --- a/drivers/mtd/nand/raw/nand_base.c
+> +++ b/drivers/mtd/nand/raw/nand_base.c
+> @@ -6712,11 +6712,23 @@ EXPORT_SYMBOL(nand_scan_tail);
+>  int nand_scan_with_ids(struct mtd_info *mtd, int maxchips,
+>  		       struct nand_flash_dev *ids)
+>  {
+> +	struct nand_chip *chip = mtd_to_nand(mtd);
+>  	int ret;
+>  
+>  	ret = nand_scan_ident(mtd, maxchips, ids);
+> -	if (!ret)
+> -		ret = nand_scan_tail(mtd);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (chip->controller->attach_chip) {
+> +		ret = chip->controller->attach_chip(chip);
+> +		if (ret)
+> +			return ret;
+> +	}
+> +
+> +	ret = nand_scan_tail(mtd);
+> +	if (ret && chip->controller->detach_chip)
+> +		chip->controller->detach_chip(chip);
+> +
+>  	return ret;
+>  }
+>  EXPORT_SYMBOL(nand_scan_with_ids);
+> @@ -6744,7 +6756,12 @@ void nand_cleanup(struct nand_chip *chip)
+>  
+>  	/* Free manufacturer priv data. */
+>  	nand_manufacturer_cleanup(chip);
+> +
+> +	/* Free controller specific allocations after chip identification */
+> +	if (chip->controller->detach_chip)
+> +		chip->controller->detach_chip(chip);
+>  }
+> +
+>  EXPORT_SYMBOL_GPL(nand_cleanup);
+>  
+>  /**
+> diff --git a/include/linux/mtd/rawnand.h b/include/linux/mtd/rawnand.h
+> index 0c6fb316b409..81654211e520 100644
+> --- a/include/linux/mtd/rawnand.h
+> +++ b/include/linux/mtd/rawnand.h
+> @@ -517,11 +517,17 @@ struct nand_id {
+>   * @wq:			wait queue to sleep on if a NAND operation is in
+>   *			progress used instead of the per chip wait queue
+>   *			when a hw controller is available.
+> + * @attach_chip:	Callback that may be called between nand_detect() and
+> + *			nand_scan_tail() during nand_scan() (optional).
+> + * @detach_chip:	Callback that may be called if nand_scan_tail() fails
+> + *			(optional).
+>   */
+>  struct nand_hw_control {
+>  	spinlock_t lock;
+>  	struct nand_chip *active;
+>  	wait_queue_head_t wq;
+> +	int (*attach_chip)(struct nand_chip *chip);
+> +	void (*detach_chip)(struct nand_chip *chip);
+>  };
 
-1. Waste CPU resource: this also waste power.
-2. Risk of mapping fail: to reduce this risk, client driver could map at
-initialization.
+Can we instead declare a nand_controller_ops struct and then have
+nand_hw_control point to it. Something like:
 
-I think reducing these drawback is more important than making client
-driver simple.
+struct nand_controller_ops {
+	int (*attach_chip)(struct nand_chip *chip);
+	void (*detach_chip)(struct nand_chip *chip);
+};
+
+struct nand_hw_control {
+	...
+	const struct nand_controller_ops *ops;
+};
+
+>  
+>  static inline void nand_hw_control_init(struct nand_hw_control *nfc)
 
 Regards,
-CK
 
-> > 
-> > > 
-> > > > 
-> > > > Regards,
-> > > > CK
-> > > > 
-> > > > > +	if (dma_mapping_error(dev, dma_addr)) {
-> > > > > +		dev_err(client->chan->mbox->dev, "dma map failed\n");
-> > > > > +		return -ENOMEM;
-> > > > > +	}
-> > > > > +
-> > > > > +	pkt->pa_base = dma_addr;
-> > > > > +	pkt->cb.cb = cb;
-> > > > > +	pkt->cb.data = data;
-> > > > > +
-> > > > > +	mbox_send_message(client->chan, pkt);
-> > > > > +	/* We can send next packet immediately, so just call txdone. */
-> > > > > +	mbox_client_txdone(client->chan, 0);
-> > > > > +
-> > > > > +	return 0;
-> > > > > +}
-> > > > > +EXPORT_SYMBOL(cmdq_pkt_flush_async);
-> > > > > +
-> > > > > +struct cmdq_flush_completion {
-> > > > > +	struct completion cmplt;
-> > > > > +	bool err;
-> > > > > +};
-> > > > > +
-> > > > > +static void cmdq_pkt_flush_cb(struct cmdq_cb_data data)
-> > > > > +{
-> > > > > +	struct cmdq_flush_completion *cmplt = data.data;
-> > > > > +
-> > > > > +	cmplt->err = data.err;
-> > > > > +	complete(&cmplt->cmplt);
-> > > > > +}
-> > > > > +
-> > > > > +int cmdq_pkt_flush(struct cmdq_client *client, struct cmdq_pkt *pkt)
-> > > > > +{
-> > > > > +	struct cmdq_flush_completion cmplt;
-> > > > > +	int err;
-> > > > > +
-> > > > > +	init_completion(&cmplt.cmplt);
-> > > > > +	err = cmdq_pkt_flush_async(client, pkt, cmdq_pkt_flush_cb, &cmplt);
-> > > > > +	if (err < 0)
-> > > > > +		return err;
-> > > > > +	wait_for_completion(&cmplt.cmplt);
-> > > > > +
-> > > > > +	return cmplt.err ? -EFAULT : 0;
-> > > > > +}
-> > > > > +EXPORT_SYMBOL(cmdq_pkt_flush);
-> > > > 
-> > > > [...]
-> > > > 
-> > > > 
-> > > 
-> > > 
-> > 
-> > 
-> 
-> 
+Boris
