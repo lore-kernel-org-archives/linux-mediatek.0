@@ -1,55 +1,35 @@
-From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: [PATCH v6 0/5] Add system timer driver for Mediatek SoCs
-Date: Wed, 4 Jul 2018 22:50:15 +0800
-Message-ID: <1530715820-3406-1-git-send-email-stanley.chu@mediatek.com>
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Subject: Re: [RESEND PATCH] dt-bindings: input: Add common keyboard document
+ bindings
+Date: Wed, 4 Jul 2018 15:25:14 +0000
+Message-ID: <20180704152514.33h52ujqp34hpj2o@penguin>
+References: <1529648198-14231-1-git-send-email-chen.zhong@mediatek.com>
+ <1529649595.14396.18.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1529649595.14396.18.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
+To: Chen Zhong <chen.zhong@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Changes since v5:
-- Optimize driver and remove redundant register operations.
-- Docuement registers.
-- Fix system timer base address.
+On Fri, Jun 22, 2018 at 02:39:55PM +0800, Chen Zhong wrote:
+> Hi Dmitry,
+> 
+> The other patches in the series to add mediatek pmic keys support are
+> now available in 4.18-rc1, but this patch seems not being merged.
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git
+> ib-mfd-input-rtc-v4.18
+> 
+> I have resend the patch, and rebase to 4.18-rc1.
+> Could you help to see if it is good enough to be merged into your tree?
 
-Changes since v4:
-- Simplify dt-bindings.
-- Add error handling for mtk_syst_init().
+I thought Rob would pick it up, but since he hasn't I'll do it.
 
-Changes since v3:
-- Use the same binding style for both GPT and System Timer.
-- Use timer_of.of_clk->period instead of private structure.
-- Arrange patches to contain system timer changes in patch 5/5 only.
+Thanks.
 
-Changes since v2:
-- Rename existed mtk_timer.c to timer-mediatek.c.
-- Add system timer support into timer-mediatek.c instead of creating a new file.
-- Use _gpt_ and _syst_ to identify different timers.
-- Convert gpt driver to use timer_of.
-- Fix system timer driver: irq flags.
-- Fix bindings of both gpt and system timer.
-
-Changes since v1:
-- Use timer_of structure and APIs to make driver more clean.
-- Remove unnecessary headers.
-- Use fixed-clock.
-- Fix indent.
-
-
-Stanley Chu (5):
-  clocksource/drivers/timer-mediatek: Add system timer bindings
-  clocksource/drivers/timer-mediatek: Rename mtk_timer to timer-mediatek
-  clocksource/drivers/timer-mediatek: Use specific prefix for GPT
-  clocksource/drivers/timer-mediatek: Convert the driver to timer-of
-  clocksource/drivers/timer-mediatek: Add support for system timer
-
- .../bindings/timer/mediatek,mtk-timer.txt          |  36 ++-
- drivers/clocksource/Makefile                       |   2 +-
- drivers/clocksource/mtk_timer.c                    | 268 -----------------
- drivers/clocksource/timer-mediatek.c               | 334 +++++++++++++++++++++
- 4 files changed, 356 insertions(+), 284 deletions(-)
- delete mode 100644 drivers/clocksource/mtk_timer.c
- create mode 100644 drivers/clocksource/timer-mediatek.c
+-- 
+Dmitry
