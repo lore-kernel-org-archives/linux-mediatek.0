@@ -1,185 +1,303 @@
 From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v5 5/5] clocksource/drivers/timer-mediatek: Add support
- for system timer
-Date: Wed, 4 Jul 2018 22:24:05 +0800
-Message-ID: <1530714245.17448.77.camel@mtkswgap22>
-References: <1530669383-17516-1-git-send-email-stanley.chu@mediatek.com>
-         <1530669383-17516-6-git-send-email-stanley.chu@mediatek.com>
-         <alpine.DEB.2.21.1807041108110.1816@nanos.tec.linutronix.de>
+Subject: [PATCH v6 3/5] clocksource/drivers/timer-mediatek: Use specific prefix for GPT
+Date: Wed, 4 Jul 2018 22:50:18 +0800
+Message-ID: <1530715820-3406-4-git-send-email-stanley.chu@mediatek.com>
+References: <1530715820-3406-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <alpine.DEB.2.21.1807041108110.1816@nanos.tec.linutronix.de>
+In-Reply-To: <1530715820-3406-1-git-send-email-stanley.chu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Thomas Gleixner <tglx@linutronix.de>
-Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, Stanley Chu <stanley.chu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-07-04 at 11:27 +0200, Thomas Gleixner wrote:
-> On Wed, 4 Jul 2018, Stanley Chu wrote:
+Use specific prefix to specify the name of supported
+timer hardware: "General Purpose Timer (GPT)".
 
-Hi Thomas,
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/clocksource/timer-mediatek.c |  157 +++++++++++++++++-----------------
+ 1 file changed, 80 insertions(+), 77 deletions(-)
 
-Thanks so much for very constructive comments.
-
-Summary of below response,
-
-1, Yes. System timer has a "clock enable (i.e., SYST_CON_EN)" design
-which not only start timer to countdown but also be required to make
-interrupt function work.
-
-In other words, SYST_CON_EN shall be set before user changes interrupt
-related registers, for example, enable or disable interrupt.
-
-2. The driver certainly has to be optimized and redundant register
-operations shall be removed.
-
-Both things will be done in v6.
-
-> > +/* system timer */
-> > +#define SYST_CON                (0x0)
-> > +#define SYST_VAL                (0x4)
-> > +
-> > +#define SYST_CON_REG(to)        (timer_of_base(to) + SYST_CON)
-> > +#define SYST_VAL_REG(to)        (timer_of_base(to) + SYST_VAL)
-> > +
-> > +#define SYST_CON_EN              BIT(0)
-> > +#define SYST_CON_IRQ_EN          BIT(1)
-> > +#define SYST_CON_IRQ_CLR         BIT(4)
-> > +
-> > +static void __iomem *gpt_sched_reg __read_mostly;
-> > +
-> > +static void mtk_syst_reset(struct timer_of *to)
-> > +{
-> > +	/* clear and disable interrupt */
-> > +	writel(SYST_CON_IRQ_CLR | SYST_CON_EN, SYST_CON_REG(to));
-> > +
-> > +	/* reset counter */
-> > +	writel(0, SYST_VAL_REG(to));
-> > +
-> > +	/* disable timer */
-> > +	writel(0, SYST_CON_REG(to));
-> 
-> Not having any insight into the inner workings of that hardware. This
-> sequence does not make any sense.
-> 
-> You first clear and disable the interrupt, but leave the counter
-> running. Then you reset the counter and _after_ that you disable the
-> timer.
-> 
-> Is that a workaround for yet another completely misdesigned piece of timer
-> hardware or is it just the software implementation which makes no sense?
-> 
-> If it's a workaround for HW stupidity then you really want to document it
-> proper.
-> 
-> If not then, what's wrong with doing the obvious:
-> {
-> 	writel(SYST_CON_IRQ_CLR, SYST_CON_REG(to));
-> }
-
-As above summary said, SYST_CON_EN shall be set to
-1. Change interrupt function.
-2. Allow timeout tick to be updated.
-
-We will document those as comments in v6.
-
-> 
-> which clears the interrupt and disables the timer in one go. Writing the
-> counter is not required at all because the next_event() function will write
-> it again and the counter value is irrelevant once the timer is disabled.
-> 
-> > +static void mtk_syst_ack_irq(struct timer_of *to)
-> > +{
-> > +	mtk_syst_reset(to);
-> > +}
-> > +
-> > +static irqreturn_t mtk_syst_handler(int irq, void *dev_id)
-> > +{
-> > +	struct clock_event_device *clkevt = (struct clock_event_device *)dev_id;
-> 
-> No type casts from and to void. They are completely pointless.
-
-Will be fixed in v6.
-
-> 
-> > +	struct timer_of *to = to_timer_of(clkevt);
-> > +
-> > +	mtk_syst_ack_irq(to);
-> 
-> So you do the full dance here.
-
-Here full dance is not necessary and we only need to "clear and disable
-interrupt".
-
-Will be optimized in v6.
-
-> 
-> > +	clkevt->event_handler(clkevt);
-> > +
-> > +	return IRQ_HANDLED;
-> > +}
-> > +
-> > +static int mtk_syst_clkevt_next_event(unsigned long ticks,
-> > +				      struct clock_event_device *clkevt)
-> > +{
-> > +	struct timer_of *to = to_timer_of(clkevt);
-> > +
-> > +	/*
-> > +	 * reset timer first because we do not expect interrupt is triggered
-> > +	 * by old compare value.
-> > +	 */
-> > +	mtk_syst_reset(to);
-> 
-> And here, which gets called through the event_handler.
-
-Timer reset here is not necessary.
-
-Will be removed in v6.
-
-> 
-> > +
-> > +	writel(SYST_CON_EN, SYST_CON_REG(to));
-> 
-> Why are you enabling the timer _before_ setting the new counter value? This
-> does not make any sense at least not w/o a comment explaining WHY this
-> needs to be so convoluted.
-
-As above response in mtk_syst_reset().
-
-> 
-> > +	writel(ticks, SYST_VAL_REG(to));
-> > +
-> > +	writel(SYST_CON_EN | SYST_CON_IRQ_EN, SYST_CON_REG(to));
-> 
-> With a sane hardware implementation the whole thing can be boiled down to:
-> 
-> {
-> 	writel(ticks, SYST_VAL_REG(to));
-> 	writel(SYST_CON_EN | SYST_CON_IRQ_EN, SYST_CON_REG(to));
-> }
-> 
-> There is no need to do the whole reset thing, unless the hardware is
-> broken. Either you manage to overwrite the timer in time or not. The extra
-> work of writing the control register before that is a cosmetic 'makes me
-> feel' good hack, which just makes the normal case slower. If you have an
-> occasional spurious interrupt, fine, but you can get them anyway.
-> 
-
-Yes, we have reviewed reset timing and found most of them are not
-necessary actually.
-
-We will optimize driver in v6.
-
-> Thanks,
-> 
-> 	tglx
-
-
-Thanks,
-Stanley Chu
-
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
+index f9b724f..e3657d2 100644
+--- a/drivers/clocksource/timer-mediatek.c
++++ b/drivers/clocksource/timer-mediatek.c
+@@ -29,32 +29,35 @@
+ #include <linux/sched_clock.h>
+ #include <linux/slab.h>
+ 
+-#define GPT_IRQ_EN_REG		0x00
+-#define GPT_IRQ_ENABLE(val)	BIT((val) - 1)
+-#define GPT_IRQ_ACK_REG		0x08
+-#define GPT_IRQ_ACK(val)	BIT((val) - 1)
+-
+-#define TIMER_CTRL_REG(val)	(0x10 * (val))
+-#define TIMER_CTRL_OP(val)	(((val) & 0x3) << 4)
+-#define TIMER_CTRL_OP_ONESHOT	(0)
+-#define TIMER_CTRL_OP_REPEAT	(1)
+-#define TIMER_CTRL_OP_FREERUN	(3)
+-#define TIMER_CTRL_CLEAR	(2)
+-#define TIMER_CTRL_ENABLE	(1)
+-#define TIMER_CTRL_DISABLE	(0)
+-
+-#define TIMER_CLK_REG(val)	(0x04 + (0x10 * (val)))
+-#define TIMER_CLK_SRC(val)	(((val) & 0x1) << 4)
+-#define TIMER_CLK_SRC_SYS13M	(0)
+-#define TIMER_CLK_SRC_RTC32K	(1)
+-#define TIMER_CLK_DIV1		(0x0)
+-#define TIMER_CLK_DIV2		(0x1)
+-
+-#define TIMER_CNT_REG(val)	(0x08 + (0x10 * (val)))
+-#define TIMER_CMP_REG(val)	(0x0C + (0x10 * (val)))
+-
+-#define GPT_CLK_EVT	1
+-#define GPT_CLK_SRC	2
++#define TIMER_CLK_EVT           (1)
++#define TIMER_CLK_SRC           (2)
++
++#define TIMER_SYNC_TICKS        (3)
++
++/* gpt */
++#define GPT_IRQ_EN_REG          0x00
++#define GPT_IRQ_ENABLE(val)     BIT((val) - 1)
++#define GPT_IRQ_ACK_REG	        0x08
++#define GPT_IRQ_ACK(val)        BIT((val) - 1)
++
++#define GPT_CTRL_REG(val)       (0x10 * (val))
++#define GPT_CTRL_OP(val)        (((val) & 0x3) << 4)
++#define GPT_CTRL_OP_ONESHOT     (0)
++#define GPT_CTRL_OP_REPEAT      (1)
++#define GPT_CTRL_OP_FREERUN     (3)
++#define GPT_CTRL_CLEAR          (2)
++#define GPT_CTRL_ENABLE         (1)
++#define GPT_CTRL_DISABLE        (0)
++
++#define GPT_CLK_REG(val)        (0x04 + (0x10 * (val)))
++#define GPT_CLK_SRC(val)        (((val) & 0x1) << 4)
++#define GPT_CLK_SRC_SYS13M      (0)
++#define GPT_CLK_SRC_RTC32K      (1)
++#define GPT_CLK_DIV1            (0x0)
++#define GPT_CLK_DIV2            (0x1)
++
++#define GPT_CNT_REG(val)        (0x08 + (0x10 * (val)))
++#define GPT_CMP_REG(val)        (0x0C + (0x10 * (val)))
+ 
+ struct mtk_clock_event_device {
+ 	void __iomem *gpt_base;
+@@ -64,7 +67,7 @@ struct mtk_clock_event_device {
+ 
+ static void __iomem *gpt_sched_reg __read_mostly;
+ 
+-static u64 notrace mtk_read_sched_clock(void)
++static u64 notrace mtk_gpt_read_sched_clock(void)
+ {
+ 	return readl_relaxed(gpt_sched_reg);
+ }
+@@ -75,22 +78,22 @@ static inline struct mtk_clock_event_device *to_mtk_clk(
+ 	return container_of(c, struct mtk_clock_event_device, dev);
+ }
+ 
+-static void mtk_clkevt_time_stop(struct mtk_clock_event_device *evt, u8 timer)
++static void mtk_gpt_clkevt_time_stop(struct mtk_clock_event_device *evt, u8 timer)
+ {
+ 	u32 val;
+ 
+-	val = readl(evt->gpt_base + TIMER_CTRL_REG(timer));
+-	writel(val & ~TIMER_CTRL_ENABLE, evt->gpt_base +
+-			TIMER_CTRL_REG(timer));
++	val = readl(evt->gpt_base + GPT_CTRL_REG(timer));
++	writel(val & ~GPT_CTRL_ENABLE, evt->gpt_base +
++			GPT_CTRL_REG(timer));
+ }
+ 
+-static void mtk_clkevt_time_setup(struct mtk_clock_event_device *evt,
++static void mtk_gpt_clkevt_time_setup(struct mtk_clock_event_device *evt,
+ 				unsigned long delay, u8 timer)
+ {
+-	writel(delay, evt->gpt_base + TIMER_CMP_REG(timer));
++	writel(delay, evt->gpt_base + GPT_CMP_REG(timer));
+ }
+ 
+-static void mtk_clkevt_time_start(struct mtk_clock_event_device *evt,
++static void mtk_gpt_clkevt_time_start(struct mtk_clock_event_device *evt,
+ 		bool periodic, u8 timer)
+ {
+ 	u32 val;
+@@ -98,75 +101,75 @@ static void mtk_clkevt_time_start(struct mtk_clock_event_device *evt,
+ 	/* Acknowledge interrupt */
+ 	writel(GPT_IRQ_ACK(timer), evt->gpt_base + GPT_IRQ_ACK_REG);
+ 
+-	val = readl(evt->gpt_base + TIMER_CTRL_REG(timer));
++	val = readl(evt->gpt_base + GPT_CTRL_REG(timer));
+ 
+ 	/* Clear 2 bit timer operation mode field */
+-	val &= ~TIMER_CTRL_OP(0x3);
++	val &= ~GPT_CTRL_OP(0x3);
+ 
+ 	if (periodic)
+-		val |= TIMER_CTRL_OP(TIMER_CTRL_OP_REPEAT);
++		val |= GPT_CTRL_OP(GPT_CTRL_OP_REPEAT);
+ 	else
+-		val |= TIMER_CTRL_OP(TIMER_CTRL_OP_ONESHOT);
++		val |= GPT_CTRL_OP(GPT_CTRL_OP_ONESHOT);
+ 
+-	writel(val | TIMER_CTRL_ENABLE | TIMER_CTRL_CLEAR,
+-	       evt->gpt_base + TIMER_CTRL_REG(timer));
++	writel(val | GPT_CTRL_ENABLE | GPT_CTRL_CLEAR,
++	       evt->gpt_base + GPT_CTRL_REG(timer));
+ }
+ 
+-static int mtk_clkevt_shutdown(struct clock_event_device *clk)
++static int mtk_gpt_clkevt_shutdown(struct clock_event_device *clk)
+ {
+-	mtk_clkevt_time_stop(to_mtk_clk(clk), GPT_CLK_EVT);
++	mtk_gpt_clkevt_time_stop(to_mtk_clk(clk), TIMER_CLK_EVT);
+ 	return 0;
+ }
+ 
+-static int mtk_clkevt_set_periodic(struct clock_event_device *clk)
++static int mtk_gpt_clkevt_set_periodic(struct clock_event_device *clk)
+ {
+ 	struct mtk_clock_event_device *evt = to_mtk_clk(clk);
+ 
+-	mtk_clkevt_time_stop(evt, GPT_CLK_EVT);
+-	mtk_clkevt_time_setup(evt, evt->ticks_per_jiffy, GPT_CLK_EVT);
+-	mtk_clkevt_time_start(evt, true, GPT_CLK_EVT);
++	mtk_gpt_clkevt_time_stop(evt, TIMER_CLK_EVT);
++	mtk_gpt_clkevt_time_setup(evt, evt->ticks_per_jiffy, TIMER_CLK_EVT);
++	mtk_gpt_clkevt_time_start(evt, true, TIMER_CLK_EVT);
+ 	return 0;
+ }
+ 
+-static int mtk_clkevt_next_event(unsigned long event,
++static int mtk_gpt_clkevt_next_event(unsigned long event,
+ 				   struct clock_event_device *clk)
+ {
+ 	struct mtk_clock_event_device *evt = to_mtk_clk(clk);
+ 
+-	mtk_clkevt_time_stop(evt, GPT_CLK_EVT);
+-	mtk_clkevt_time_setup(evt, event, GPT_CLK_EVT);
+-	mtk_clkevt_time_start(evt, false, GPT_CLK_EVT);
++	mtk_gpt_clkevt_time_stop(evt, TIMER_CLK_EVT);
++	mtk_gpt_clkevt_time_setup(evt, event, TIMER_CLK_EVT);
++	mtk_gpt_clkevt_time_start(evt, false, TIMER_CLK_EVT);
+ 
+ 	return 0;
+ }
+ 
+-static irqreturn_t mtk_timer_interrupt(int irq, void *dev_id)
++static irqreturn_t mtk_gpt_interrupt(int irq, void *dev_id)
+ {
+ 	struct mtk_clock_event_device *evt = dev_id;
+ 
+ 	/* Acknowledge timer0 irq */
+-	writel(GPT_IRQ_ACK(GPT_CLK_EVT), evt->gpt_base + GPT_IRQ_ACK_REG);
++	writel(GPT_IRQ_ACK(TIMER_CLK_EVT), evt->gpt_base + GPT_IRQ_ACK_REG);
+ 	evt->dev.event_handler(&evt->dev);
+ 
+ 	return IRQ_HANDLED;
+ }
+ 
+ static void
+-__init mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
++__init mtk_gpt_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
+ {
+-	writel(TIMER_CTRL_CLEAR | TIMER_CTRL_DISABLE,
+-		evt->gpt_base + TIMER_CTRL_REG(timer));
++	writel(GPT_CTRL_CLEAR | GPT_CTRL_DISABLE,
++		evt->gpt_base + GPT_CTRL_REG(timer));
+ 
+-	writel(TIMER_CLK_SRC(TIMER_CLK_SRC_SYS13M) | TIMER_CLK_DIV1,
+-			evt->gpt_base + TIMER_CLK_REG(timer));
++	writel(GPT_CLK_SRC(GPT_CLK_SRC_SYS13M) | GPT_CLK_DIV1,
++			evt->gpt_base + GPT_CLK_REG(timer));
+ 
+-	writel(0x0, evt->gpt_base + TIMER_CMP_REG(timer));
++	writel(0x0, evt->gpt_base + GPT_CMP_REG(timer));
+ 
+-	writel(TIMER_CTRL_OP(option) | TIMER_CTRL_ENABLE,
+-			evt->gpt_base + TIMER_CTRL_REG(timer));
++	writel(GPT_CTRL_OP(option) | GPT_CTRL_ENABLE,
++			evt->gpt_base + GPT_CTRL_REG(timer));
+ }
+ 
+-static void mtk_timer_enable_irq(struct mtk_clock_event_device *evt, u8 timer)
++static void mtk_gpt_enable_irq(struct mtk_clock_event_device *evt, u8 timer)
+ {
+ 	u32 val;
+ 
+@@ -181,7 +184,7 @@ static void mtk_timer_enable_irq(struct mtk_clock_event_device *evt, u8 timer)
+ 			evt->gpt_base + GPT_IRQ_EN_REG);
+ }
+ 
+-static int __init mtk_timer_init(struct device_node *node)
++static int __init mtk_gpt_init(struct device_node *node)
+ {
+ 	struct mtk_clock_event_device *evt;
+ 	struct resource res;
+@@ -195,14 +198,14 @@ static int __init mtk_timer_init(struct device_node *node)
+ 	evt->dev.name = "mtk_tick";
+ 	evt->dev.rating = 300;
+ 	evt->dev.features = CLOCK_EVT_FEAT_PERIODIC | CLOCK_EVT_FEAT_ONESHOT;
+-	evt->dev.set_state_shutdown = mtk_clkevt_shutdown;
+-	evt->dev.set_state_periodic = mtk_clkevt_set_periodic;
+-	evt->dev.set_state_oneshot = mtk_clkevt_shutdown;
+-	evt->dev.tick_resume = mtk_clkevt_shutdown;
+-	evt->dev.set_next_event = mtk_clkevt_next_event;
++	evt->dev.set_state_shutdown = mtk_gpt_clkevt_shutdown;
++	evt->dev.set_state_periodic = mtk_gpt_clkevt_set_periodic;
++	evt->dev.set_state_oneshot = mtk_gpt_clkevt_shutdown;
++	evt->dev.tick_resume = mtk_gpt_clkevt_shutdown;
++	evt->dev.set_next_event = mtk_gpt_clkevt_next_event;
+ 	evt->dev.cpumask = cpu_possible_mask;
+ 
+-	evt->gpt_base = of_io_request_and_map(node, 0, "mtk-timer");
++	evt->gpt_base = of_io_request_and_map(node, 0, "mtk-timer-gpt");
+ 	if (IS_ERR(evt->gpt_base)) {
+ 		pr_err("Can't get resource\n");
+ 		goto err_kzalloc;
+@@ -226,7 +229,7 @@ static int __init mtk_timer_init(struct device_node *node)
+ 	}
+ 	rate = clk_get_rate(clk);
+ 
+-	if (request_irq(evt->dev.irq, mtk_timer_interrupt,
++	if (request_irq(evt->dev.irq, mtk_gpt_interrupt,
+ 			IRQF_TIMER | IRQF_IRQPOLL, "mtk_timer", evt)) {
+ 		pr_err("failed to setup irq %d\n", evt->dev.irq);
+ 		goto err_clk_disable;
+@@ -235,18 +238,18 @@ static int __init mtk_timer_init(struct device_node *node)
+ 	evt->ticks_per_jiffy = DIV_ROUND_UP(rate, HZ);
+ 
+ 	/* Configure clock source */
+-	mtk_timer_setup(evt, GPT_CLK_SRC, TIMER_CTRL_OP_FREERUN);
+-	clocksource_mmio_init(evt->gpt_base + TIMER_CNT_REG(GPT_CLK_SRC),
++	mtk_gpt_setup(evt, TIMER_CLK_SRC, GPT_CTRL_OP_FREERUN);
++	clocksource_mmio_init(evt->gpt_base + GPT_CNT_REG(TIMER_CLK_SRC),
+ 			node->name, rate, 300, 32, clocksource_mmio_readl_up);
+-	gpt_sched_reg = evt->gpt_base + TIMER_CNT_REG(GPT_CLK_SRC);
+-	sched_clock_register(mtk_read_sched_clock, 32, rate);
++	gpt_sched_reg = evt->gpt_base + GPT_CNT_REG(TIMER_CLK_SRC);
++	sched_clock_register(mtk_gpt_read_sched_clock, 32, rate);
+ 
+ 	/* Configure clock event */
+-	mtk_timer_setup(evt, GPT_CLK_EVT, TIMER_CTRL_OP_REPEAT);
+-	clockevents_config_and_register(&evt->dev, rate, 0x3,
++	mtk_gpt_setup(evt, TIMER_CLK_EVT, GPT_CTRL_OP_REPEAT);
++	clockevents_config_and_register(&evt->dev, rate, TIMER_SYNC_TICKS,
+ 					0xffffffff);
+ 
+-	mtk_timer_enable_irq(evt, GPT_CLK_EVT);
++	mtk_gpt_enable_irq(evt, TIMER_CLK_EVT);
+ 
+ 	return 0;
+ 
+@@ -265,4 +268,4 @@ static int __init mtk_timer_init(struct device_node *node)
+ 
+ 	return -EINVAL;
+ }
+-TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_timer_init);
++TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
+-- 
+1.7.9.5
