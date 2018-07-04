@@ -1,102 +1,56 @@
-From: Boris Brezillon <boris.brezillon@bootlin.com>
-Subject: Re: [PATCH v2 02/32] mtd: rawnand: brcmnand: convert driver to
- nand_scan()
-Date: Wed, 4 Jul 2018 09:14:12 +0200
-Message-ID: <20180704091412.1118c857@bbrezillon>
-References: <20180703220029.19565-1-miquel.raynal@bootlin.com>
-        <20180703220029.19565-3-miquel.raynal@bootlin.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Subject: Re: [PATCH v3 4/4] arm64: dts: mediatek: add mt6765 support
+Date: Wed, 4 Jul 2018 08:35:14 +0100
+Message-ID: <f482708c-ea5e-5d81-a176-d69be9ccdf63@arm.com>
+References: <1530669174-17623-1-git-send-email-mars.cheng@mediatek.com>
+ <1530669174-17623-5-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180703220029.19565-3-miquel.raynal@bootlin.com>
+In-Reply-To: <1530669174-17623-5-git-send-email-mars.cheng@mediatek.com>
+Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.o>
+To: Mars Cheng <mars.cheng@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue,  3 Jul 2018 23:59:59 +0200
-Miquel Raynal <miquel.raynal@bootlin.com> wrote:
-
-> Two helpers have been added to the core to make ECC-related
-> configuration between the detection phase and the final NAND scan. Use
-> these hooks and convert the driver to just use nand_scan() instead of
-> both nand_scan_ident() and nand_scan_tail().
+On 04/07/18 02:52, Mars Cheng wrote:
+> This adds basic chip support for MT6765 SoC.
 > 
-> Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
+> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
 > ---
->  drivers/mtd/nand/raw/brcmnand/brcmnand.c | 43 ++++++++++++++++++--------------
->  1 file changed, 24 insertions(+), 19 deletions(-)
+>  arch/arm64/boot/dts/mediatek/Makefile       |    1 +
+>  arch/arm64/boot/dts/mediatek/mt6765-evb.dts |   33 ++++++
+>  arch/arm64/boot/dts/mediatek/mt6765.dtsi    |  155 +++++++++++++++++++++++++++
+>  3 files changed, 189 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
 > 
-> diff --git a/drivers/mtd/nand/raw/brcmnand/brcmnand.c b/drivers/mtd/nand/raw/brcmnand/brcmnand.c
-> index 1306aaa7a8bf..99ab7b93756c 100644
-> --- a/drivers/mtd/nand/raw/brcmnand/brcmnand.c
-> +++ b/drivers/mtd/nand/raw/brcmnand/brcmnand.c
-> @@ -2208,6 +2208,28 @@ static int brcmnand_setup_dev(struct brcmnand_host *host)
->  	return 0;
->  }
->  
-> +static int brcmnand_attach_chip(struct nand_chip *chip)
-> +{
-> +	struct mtd_info *mtd = nand_to_mtd(chip);
-> +	struct brcmnand_host *host = nand_get_controller_data(chip);
-> +	int ret;
-> +
-> +	if (chip->bbt_options & NAND_BBT_USE_FLASH)
-> +		chip->bbt_options |= NAND_BBT_NO_OOB;
-> +
-> +	if (brcmnand_setup_dev(host))
-> +		return -ENXIO;
-> +
-> +	chip->ecc.size = host->hwcfg.sector_size_1k ? 1024 : 512;
-> +
-> +	/* only use our internal HW threshold */
-> +	mtd->bitflip_threshold = 1;
-> +
-> +	ret = brcmstb_choose_ecc_layout(host);
-> +
-> +	return ret;
-> +}
-> +
->  static int brcmnand_init_cs(struct brcmnand_host *host, struct device_node *dn)
->  {
->  	struct brcmnand_controller *ctrl = host->ctrl;
-> @@ -2267,10 +2289,6 @@ static int brcmnand_init_cs(struct brcmnand_host *host, struct device_node *dn)
->  	nand_writereg(ctrl, cfg_offs,
->  		      nand_readreg(ctrl, cfg_offs) & ~CFG_BUS_WIDTH);
->  
-> -	ret = nand_scan_ident(mtd, 1, NULL);
-> -	if (ret)
-> -		return ret;
-> -
->  	chip->options |= NAND_NO_SUBPAGE_WRITE;
->  	/*
->  	 * Avoid (for instance) kmap()'d buffers from JFFS2, which we can't DMA
-> @@ -2279,21 +2297,8 @@ static int brcmnand_init_cs(struct brcmnand_host *host, struct device_node *dn)
->  	 */
->  	chip->options |= NAND_USE_BOUNCE_BUFFER;
->  
-> -	if (chip->bbt_options & NAND_BBT_USE_FLASH)
-> -		chip->bbt_options |= NAND_BBT_NO_OOB;
-> -
-> -	if (brcmnand_setup_dev(host))
-> -		return -ENXIO;
-> -
-> -	chip->ecc.size = host->hwcfg.sector_size_1k ? 1024 : 512;
-> -	/* only use our internal HW threshold */
-> -	mtd->bitflip_threshold = 1;
-> -
-> -	ret = brcmstb_choose_ecc_layout(host);
-> -	if (ret)
-> -		return ret;
-> -
-> -	ret = nand_scan_tail(mtd);
-> +	chip->controller->attach_chip = brcmnand_attach_chip;
 
-Hm, this assignment should be done once, when initializing the
-controller (in brcmnand_probe()), not every time you add a NAND chip.
+[...]
 
-> +	ret = nand_scan(mtd, 1);
->  	if (ret)
->  		return ret;
->  
+> +
+> +		gic: interrupt-controller@c000000 {
+> +			compatible = "arm,gic-v3";
+> +			#interrupt-cells = <3>;
+> +			#address-cells = <2>;
+> +			#size-cells = <2>;
+> +			#redistributor-regions = <1>;
+> +			interrupt-parent = <&gic>;
+> +			interrupt-controller;
+> +			reg = <0 0x0c000000 0 0x40000>, // distributor
+> +			      <0 0x0c100000 0 0x200000>, // redistributor
+> +			      <0 0x0c400000 0 0x40000>; // gicc
+
+For the second time: please add *all* the GIC CPU interface regions,
+described in the Cortex-A53 TRM[1] (GICC, GICH, and GICV).
+
+Thanks,
+
+	M.
+
+[1]
+http://infocenter.arm.com/help/topic/com.arm.doc.ddi0500g/ch09s02s01.html
+-- 
+Jazz is not dead. It just smells funny...
