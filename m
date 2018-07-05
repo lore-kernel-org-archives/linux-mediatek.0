@@ -1,188 +1,153 @@
-From: Matthias Brugger <mbrugger@suse.com>
+From: Lee Jones <lee.jones@linaro.org>
 Subject: Re: [v3 03/10] mfd: mtk-mmsys: Add mmsys driver
-Date: Thu, 5 Jul 2018 13:25:27 +0200
-Message-ID: <92a851a9-a12c-e773-5f43-007f4d08b7e3@suse.com>
+Date: Thu, 5 Jul 2018 13:22:23 +0100
+Message-ID: <20180705122223.GO496@dell>
 References: <cover.1524820923.git.mbrugger@suse.com>
  <e0894c97775e46ce6d9a441dc05e2e2479a4b612.1524820923.git.mbrugger@suse.com>
- <20180430101826.GC5147@dell> <5269ccfd-0274-3c12-7eeb-5de923197d92@gmail.com>
- <20180703071103.GE20176@dell> <b6301691-a9f6-64fe-dd8a-ffe51fad6799@suse.com>
+ <20180430101826.GC5147@dell>
+ <5269ccfd-0274-3c12-7eeb-5de923197d92@gmail.com>
+ <20180703071103.GE20176@dell>
+ <b6301691-a9f6-64fe-dd8a-ffe51fad6799@suse.com>
  <20180704164540.GH496@dell>
+ <92a851a9-a12c-e773-5f43-007f4d08b7e3@suse.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180704164540.GH496@dell>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, matthias.bgg@kernel.org, ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, sean.wang@mediatek.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <92a851a9-a12c-e773-5f43-007f4d08b7e3@suse.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Matthias Brugger <mbrugger@suse.com>
+Cc: mark.rutland@arm.com, airlied@linux.ie, mturquette@baylibre.com, dri-devel@lists.freedesktop.org, laurent.pinchart@ideasonboard.com, ulrich.hecht+renesas@gmail.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, sean.wang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, gregkh@linuxfoundation.org, rdunlap@infradead.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, matthias.bgg@kernel.org, davem@davemloft.net
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 04/07/18 18:45, Lee Jones wrote:
-> On Wed, 04 Jul 2018, Matthias Brugger wrote:
-> 
->>
->>
->> On 03/07/18 09:11, Lee Jones wrote:
->>> On Mon, 25 Jun 2018, Matthias Brugger wrote:
->>>> On 30/04/18 12:18, Lee Jones wrote:
->>>>> On Fri, 27 Apr 2018, matthias.bgg@kernel.org wrote:
->>>>>
->>>>>> From: Matthias Brugger <mbrugger@suse.com>
->>>>>>
->>>>>> The MMSYS subsystem includes clocks and drm components.
->>>>>> This patch adds a MFD device to probe both drivers from the same
->>>>>> device tree compatible.
->>>>>>
->>>>>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
->>>>>> ---
->>>>>>  drivers/mfd/Kconfig     |  9 ++++++
->>>>>>  drivers/mfd/Makefile    |  2 ++
->>>>>>  drivers/mfd/mtk-mmsys.c | 79 +++++++++++++++++++++++++++++++++++++++++++++++++
->>>>>>  3 files changed, 90 insertions(+)
->>>>>>  create mode 100644 drivers/mfd/mtk-mmsys.c
->>>>>>
->>>>>> diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
->>>>>> index b860eb5aa194..d23a3b9a2c58 100644
->>>>>> --- a/drivers/mfd/Kconfig
->>>>>> +++ b/drivers/mfd/Kconfig
->>>>>> @@ -378,6 +378,15 @@ config MFD_MC13XXX_I2C
->>>>>>  	help
->>>>>>  	  Select this if your MC13xxx is connected via an I2C bus.
->>>>>>  
->>>>>> +config MFD_MEDIATEK_MMSYS
->>>>>> +	tristate "Mediatek MMSYS interface"
->>>>>> +	select MFD_CORE
->>>>>> +	select REGMAP_MMIO
->>>>>> +	help
->>>>>> +	  Select this if you have a MMSYS subsystem in your SoC. The
->>>>>> +	  MMSYS subsystem has at least a clock driver part and some
->>>>>> +	  DRM components.
->>>>>> +
->>>>>>  config MFD_MXS_LRADC
->>>>>>  	tristate "Freescale i.MX23/i.MX28 LRADC"
->>>>>>  	depends on ARCH_MXS || COMPILE_TEST
->>>>>> diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
->>>>>> index d9d2cf0d32ef..b96118bd68d9 100644
->>>>>> --- a/drivers/mfd/Makefile
->>>>>> +++ b/drivers/mfd/Makefile
->>>>>> @@ -98,6 +98,8 @@ obj-$(CONFIG_MFD_MC13XXX)	+= mc13xxx-core.o
->>>>>>  obj-$(CONFIG_MFD_MC13XXX_SPI)	+= mc13xxx-spi.o
->>>>>>  obj-$(CONFIG_MFD_MC13XXX_I2C)	+= mc13xxx-i2c.o
->>>>>>  
->>>>>> +obj-$(CONFIG_MFD_MEDIATEK_MMSYS) += mtk-mmsys.o
->>>>>> +
->>>>>>  obj-$(CONFIG_MFD_CORE)		+= mfd-core.o
->>>>>>  
->>>>>>  obj-$(CONFIG_EZX_PCAP)		+= ezx-pcap.o
->>>>>> diff --git a/drivers/mfd/mtk-mmsys.c b/drivers/mfd/mtk-mmsys.c
->>>>>> new file mode 100644
->>>>>> index 000000000000..c802343fb1c6
->>>>>> --- /dev/null
->>>>>> +++ b/drivers/mfd/mtk-mmsys.c
->>>>>> @@ -0,0 +1,79 @@
->>>>>> +// SPDX-License-Identifier: GPL-2.0+
->>>>>> +
->>>>>> +/*
->>>>>> + * mtk-mmsys.c -- Mediatek MMSYS multi-function driver
->>>>>> + *
->>>>>> + * Copyright (c) 2018 Matthias Brugger <matthias.bgg@gmail.com>
->>>>>> + *
->>>>>> + * Author: Matthias Brugger <matthias.bgg@gmail.com>
->>>>>> + */
->>>>>> +
->>>>>> +#include <linux/module.h>
->>>>>> +#include <linux/init.h>
->>>>>> +#include <linux/mfd/core.h>
->>>>>> +#include <linux/of.h>
->>>>>> +#include <linux/of_address.h>
->>>>>> +#include <linux/of_device.h>
->>>>>> +#include <linux/platform_device.h>
->>>>>> +#include <linux/regmap.h>
->>>>>> +
->>>>>> +enum {
->>>>>> +	MMSYS_MT2701 = 1,
->>>>>> +};
->>>>>> +
->>>>>> +static const struct mfd_cell mmsys_mt2701_devs[] = {
->>>>>> +	{ .name = "clk-mt2701-mm", },
->>>>>> +	{ .name = "drm-mt2701-mm", },
->>>>>> +};
->>>>>> +
->>>>>> +static int mmsys_probe(struct platform_device *pdev)
->>>>>> +{
->>>>>> +	const struct mfd_cell *mmsys_cells;
->>>>>> +	int nr_cells;
->>>>>> +	long id;
->>>>>> +	int ret;
->>>>>> +
->>>>>> +	id = (long) of_device_get_match_data(&pdev->dev);
->>>>>> +	if (!id) {
->>>>>> +		dev_err(&pdev->dev, "of_device_get match_data() failed\n");
->>>>>> +		return -EINVAL;
->>>>>> +	}
->>>>>> +
->>>>>> +	switch (id) {
->>>>>> +	case MMSYS_MT2701:
->>>>>> +		mmsys_cells = mmsys_mt2701_devs;
->>>>>> +		nr_cells = ARRAY_SIZE(mmsys_mt2701_devs);
->>>>>> +		break;
->>>>>> +	default:
->>>>>> +		return -ENODEV;
->>>>>> +	}
->>>>>> +
->>>>>> +	ret = devm_mfd_add_devices(&pdev->dev, 0, mmsys_cells, nr_cells,
->>>>>> +					NULL, 0, NULL);
->>>>>> +	if (ret) {
->>>>>> +		dev_err(&pdev->dev, "failed to add MFD devices %d\n", ret);
->>>>>> +		return ret;
->>>>>> +	}
->>>>>> +
->>>>>> +	return 0;
->>>>>> +};
->>>>>
->>>>> This driver is pretty pointless.  It doesn't actually do anything.
->>>>>
->>>>> I think you just want to use "simple-mfd" instead.
->>>>>
->>>>
->>>> I think the problem is, that right now we have two drivers which use the same
->>>> devicetree binding, which are clk and drm driver. With a simple-mfd we would
->>>> need two compatibles, and this would break backwards compatibility.
->>>
->>> So what functionality does this driver provide you with that you do
->>> not have currently?
->>>
->>
->> I'm not sure if I get your question. Point is, that the MMSYS implementation for
->> mt8173 is broken, as it assumes that we can probe two drivers with the
->> mediatek,mt8173-mmsys compatible. Somehow it used to work, but from what I
->> understand it was a bug. So older devicetrees use just on mt8173-mmsys
->> compatible in ther DTB.
-> 
-> Okay, that is what I was getting at.  Thanks for the explanation.
-> 
-> Do you have a datasheet I can look at?
-> 
-
-Unfortunately there is no datasheet you can get without a NDA. The only public
-available information I'm aware of is for the (not upstream supported) 96board
-[1]. And it's only the register description. You can find some more explanation
-about the MMSYS in older threads which tried to solve the very same problem [2]
-
-Regards,
-Matthias
-
-
-[1]
-https://www.96boards.org/documentation/consumer/mediatekx20/additional-docs/docs/MT6797_Register_Table_Part_2.pdf
-[2] http://lists.infradead.org/pipermail/linux-mediatek/2017-October/010979.html
-
->> I would like to keep backwards compatibility for the device tree, that's why I
->> was searching for a solution where we can probe two drivers and came up with
->> this mfd solution.
->>
->> So no new functionality, the clk driver provides the clock the drm components need.
-> 
+T24gVGh1LCAwNSBKdWwgMjAxOCwgTWF0dGhpYXMgQnJ1Z2dlciB3cm90ZToKPiBPbiAwNC8wNy8x
+OCAxODo0NSwgTGVlIEpvbmVzIHdyb3RlOgo+ID4gT24gV2VkLCAwNCBKdWwgMjAxOCwgTWF0dGhp
+YXMgQnJ1Z2dlciB3cm90ZToKPiA+PiBPbiAwMy8wNy8xOCAwOToxMSwgTGVlIEpvbmVzIHdyb3Rl
+Ogo+ID4+PiBPbiBNb24sIDI1IEp1biAyMDE4LCBNYXR0aGlhcyBCcnVnZ2VyIHdyb3RlOgo+ID4+
+Pj4gT24gMzAvMDQvMTggMTI6MTgsIExlZSBKb25lcyB3cm90ZToKPiA+Pj4+PiBPbiBGcmksIDI3
+IEFwciAyMDE4LCBtYXR0aGlhcy5iZ2dAa2VybmVsLm9yZyB3cm90ZToKPiA+Pj4+Pgo+ID4+Pj4+
+PiBGcm9tOiBNYXR0aGlhcyBCcnVnZ2VyIDxtYnJ1Z2dlckBzdXNlLmNvbT4KPiA+Pj4+Pj4KPiA+
+Pj4+Pj4gVGhlIE1NU1lTIHN1YnN5c3RlbSBpbmNsdWRlcyBjbG9ja3MgYW5kIGRybSBjb21wb25l
+bnRzLgo+ID4+Pj4+PiBUaGlzIHBhdGNoIGFkZHMgYSBNRkQgZGV2aWNlIHRvIHByb2JlIGJvdGgg
+ZHJpdmVycyBmcm9tIHRoZSBzYW1lCj4gPj4+Pj4+IGRldmljZSB0cmVlIGNvbXBhdGlibGUuCj4g
+Pj4+Pj4+Cj4gPj4+Pj4+IFNpZ25lZC1vZmYtYnk6IE1hdHRoaWFzIEJydWdnZXIgPG1icnVnZ2Vy
+QHN1c2UuY29tPgo+ID4+Pj4+PiAtLS0KPiA+Pj4+Pj4gIGRyaXZlcnMvbWZkL0tjb25maWcgICAg
+IHwgIDkgKysrKysrCj4gPj4+Pj4+ICBkcml2ZXJzL21mZC9NYWtlZmlsZSAgICB8ICAyICsrCj4g
+Pj4+Pj4+ICBkcml2ZXJzL21mZC9tdGstbW1zeXMuYyB8IDc5ICsrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiA+Pj4+Pj4gIDMgZmlsZXMgY2hhbmdlZCwg
+OTAgaW5zZXJ0aW9ucygrKQo+ID4+Pj4+PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbWZk
+L210ay1tbXN5cy5jCj4gPj4+Pj4+Cj4gPj4+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21mZC9L
+Y29uZmlnIGIvZHJpdmVycy9tZmQvS2NvbmZpZwo+ID4+Pj4+PiBpbmRleCBiODYwZWI1YWExOTQu
+LmQyM2EzYjlhMmM1OCAxMDA2NDQKPiA+Pj4+Pj4gLS0tIGEvZHJpdmVycy9tZmQvS2NvbmZpZwo+
+ID4+Pj4+PiArKysgYi9kcml2ZXJzL21mZC9LY29uZmlnCj4gPj4+Pj4+IEBAIC0zNzgsNiArMzc4
+LDE1IEBAIGNvbmZpZyBNRkRfTUMxM1hYWF9JMkMKPiA+Pj4+Pj4gIAloZWxwCj4gPj4+Pj4+ICAJ
+ICBTZWxlY3QgdGhpcyBpZiB5b3VyIE1DMTN4eHggaXMgY29ubmVjdGVkIHZpYSBhbiBJMkMgYnVz
+Lgo+ID4+Pj4+PiAgCj4gPj4+Pj4+ICtjb25maWcgTUZEX01FRElBVEVLX01NU1lTCj4gPj4+Pj4+
+ICsJdHJpc3RhdGUgIk1lZGlhdGVrIE1NU1lTIGludGVyZmFjZSIKPiA+Pj4+Pj4gKwlzZWxlY3Qg
+TUZEX0NPUkUKPiA+Pj4+Pj4gKwlzZWxlY3QgUkVHTUFQX01NSU8KPiA+Pj4+Pj4gKwloZWxwCj4g
+Pj4+Pj4+ICsJICBTZWxlY3QgdGhpcyBpZiB5b3UgaGF2ZSBhIE1NU1lTIHN1YnN5c3RlbSBpbiB5
+b3VyIFNvQy4gVGhlCj4gPj4+Pj4+ICsJICBNTVNZUyBzdWJzeXN0ZW0gaGFzIGF0IGxlYXN0IGEg
+Y2xvY2sgZHJpdmVyIHBhcnQgYW5kIHNvbWUKPiA+Pj4+Pj4gKwkgIERSTSBjb21wb25lbnRzLgo+
+ID4+Pj4+PiArCj4gPj4+Pj4+ICBjb25maWcgTUZEX01YU19MUkFEQwo+ID4+Pj4+PiAgCXRyaXN0
+YXRlICJGcmVlc2NhbGUgaS5NWDIzL2kuTVgyOCBMUkFEQyIKPiA+Pj4+Pj4gIAlkZXBlbmRzIG9u
+IEFSQ0hfTVhTIHx8IENPTVBJTEVfVEVTVAo+ID4+Pj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9t
+ZmQvTWFrZWZpbGUgYi9kcml2ZXJzL21mZC9NYWtlZmlsZQo+ID4+Pj4+PiBpbmRleCBkOWQyY2Yw
+ZDMyZWYuLmI5NjExOGJkNjhkOSAxMDA2NDQKPiA+Pj4+Pj4gLS0tIGEvZHJpdmVycy9tZmQvTWFr
+ZWZpbGUKPiA+Pj4+Pj4gKysrIGIvZHJpdmVycy9tZmQvTWFrZWZpbGUKPiA+Pj4+Pj4gQEAgLTk4
+LDYgKzk4LDggQEAgb2JqLSQoQ09ORklHX01GRF9NQzEzWFhYKQkrPSBtYzEzeHh4LWNvcmUubwo+
+ID4+Pj4+PiAgb2JqLSQoQ09ORklHX01GRF9NQzEzWFhYX1NQSSkJKz0gbWMxM3h4eC1zcGkubwo+
+ID4+Pj4+PiAgb2JqLSQoQ09ORklHX01GRF9NQzEzWFhYX0kyQykJKz0gbWMxM3h4eC1pMmMubwo+
+ID4+Pj4+PiAgCj4gPj4+Pj4+ICtvYmotJChDT05GSUdfTUZEX01FRElBVEVLX01NU1lTKSArPSBt
+dGstbW1zeXMubwo+ID4+Pj4+PiArCj4gPj4+Pj4+ICBvYmotJChDT05GSUdfTUZEX0NPUkUpCQkr
+PSBtZmQtY29yZS5vCj4gPj4+Pj4+ICAKPiA+Pj4+Pj4gIG9iai0kKENPTkZJR19FWlhfUENBUCkJ
+CSs9IGV6eC1wY2FwLm8KPiA+Pj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWZkL210ay1tbXN5
+cy5jIGIvZHJpdmVycy9tZmQvbXRrLW1tc3lzLmMKPiA+Pj4+Pj4gbmV3IGZpbGUgbW9kZSAxMDA2
+NDQKPiA+Pj4+Pj4gaW5kZXggMDAwMDAwMDAwMDAwLi5jODAyMzQzZmIxYzYKPiA+Pj4+Pj4gLS0t
+IC9kZXYvbnVsbAo+ID4+Pj4+PiArKysgYi9kcml2ZXJzL21mZC9tdGstbW1zeXMuYwo+ID4+Pj4+
+PiBAQCAtMCwwICsxLDc5IEBACj4gPj4+Pj4+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjog
+R1BMLTIuMCsKPiA+Pj4+Pj4gKwo+ID4+Pj4+PiArLyoKPiA+Pj4+Pj4gKyAqIG10ay1tbXN5cy5j
+IC0tIE1lZGlhdGVrIE1NU1lTIG11bHRpLWZ1bmN0aW9uIGRyaXZlcgo+ID4+Pj4+PiArICoKPiA+
+Pj4+Pj4gKyAqIENvcHlyaWdodCAoYykgMjAxOCBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlhcy5i
+Z2dAZ21haWwuY29tPgo+ID4+Pj4+PiArICoKPiA+Pj4+Pj4gKyAqIEF1dGhvcjogTWF0dGhpYXMg
+QnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4KPiA+Pj4+Pj4gKyAqLwo+ID4+Pj4+PiAr
+Cj4gPj4+Pj4+ICsjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gPj4+Pj4+ICsjaW5jbHVkZSA8
+bGludXgvaW5pdC5oPgo+ID4+Pj4+PiArI2luY2x1ZGUgPGxpbnV4L21mZC9jb3JlLmg+Cj4gPj4+
+Pj4+ICsjaW5jbHVkZSA8bGludXgvb2YuaD4KPiA+Pj4+Pj4gKyNpbmNsdWRlIDxsaW51eC9vZl9h
+ZGRyZXNzLmg+Cj4gPj4+Pj4+ICsjaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+Cj4gPj4+Pj4+
+ICsjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gPj4+Pj4+ICsjaW5jbHVkZSA8
+bGludXgvcmVnbWFwLmg+Cj4gPj4+Pj4+ICsKPiA+Pj4+Pj4gK2VudW0gewo+ID4+Pj4+PiArCU1N
+U1lTX01UMjcwMSA9IDEsCj4gPj4+Pj4+ICt9Owo+ID4+Pj4+PiArCj4gPj4+Pj4+ICtzdGF0aWMg
+Y29uc3Qgc3RydWN0IG1mZF9jZWxsIG1tc3lzX210MjcwMV9kZXZzW10gPSB7Cj4gPj4+Pj4+ICsJ
+eyAubmFtZSA9ICJjbGstbXQyNzAxLW1tIiwgfSwKPiA+Pj4+Pj4gKwl7IC5uYW1lID0gImRybS1t
+dDI3MDEtbW0iLCB9LAo+ID4+Pj4+PiArfTsKPiA+Pj4+Pj4gKwo+ID4+Pj4+PiArc3RhdGljIGlu
+dCBtbXN5c19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4+Pj4+PiArewo+
+ID4+Pj4+PiArCWNvbnN0IHN0cnVjdCBtZmRfY2VsbCAqbW1zeXNfY2VsbHM7Cj4gPj4+Pj4+ICsJ
+aW50IG5yX2NlbGxzOwo+ID4+Pj4+PiArCWxvbmcgaWQ7Cj4gPj4+Pj4+ICsJaW50IHJldDsKPiA+
+Pj4+Pj4gKwo+ID4+Pj4+PiArCWlkID0gKGxvbmcpIG9mX2RldmljZV9nZXRfbWF0Y2hfZGF0YSgm
+cGRldi0+ZGV2KTsKPiA+Pj4+Pj4gKwlpZiAoIWlkKSB7Cj4gPj4+Pj4+ICsJCWRldl9lcnIoJnBk
+ZXYtPmRldiwgIm9mX2RldmljZV9nZXQgbWF0Y2hfZGF0YSgpIGZhaWxlZFxuIik7Cj4gPj4+Pj4+
+ICsJCXJldHVybiAtRUlOVkFMOwo+ID4+Pj4+PiArCX0KPiA+Pj4+Pj4gKwo+ID4+Pj4+PiArCXN3
+aXRjaCAoaWQpIHsKPiA+Pj4+Pj4gKwljYXNlIE1NU1lTX01UMjcwMToKPiA+Pj4+Pj4gKwkJbW1z
+eXNfY2VsbHMgPSBtbXN5c19tdDI3MDFfZGV2czsKPiA+Pj4+Pj4gKwkJbnJfY2VsbHMgPSBBUlJB
+WV9TSVpFKG1tc3lzX210MjcwMV9kZXZzKTsKPiA+Pj4+Pj4gKwkJYnJlYWs7Cj4gPj4+Pj4+ICsJ
+ZGVmYXVsdDoKPiA+Pj4+Pj4gKwkJcmV0dXJuIC1FTk9ERVY7Cj4gPj4+Pj4+ICsJfQo+ID4+Pj4+
+PiArCj4gPj4+Pj4+ICsJcmV0ID0gZGV2bV9tZmRfYWRkX2RldmljZXMoJnBkZXYtPmRldiwgMCwg
+bW1zeXNfY2VsbHMsIG5yX2NlbGxzLAo+ID4+Pj4+PiArCQkJCQlOVUxMLCAwLCBOVUxMKTsKPiA+
+Pj4+Pj4gKwlpZiAocmV0KSB7Cj4gPj4+Pj4+ICsJCWRldl9lcnIoJnBkZXYtPmRldiwgImZhaWxl
+ZCB0byBhZGQgTUZEIGRldmljZXMgJWRcbiIsIHJldCk7Cj4gPj4+Pj4+ICsJCXJldHVybiByZXQ7
+Cj4gPj4+Pj4+ICsJfQo+ID4+Pj4+PiArCj4gPj4+Pj4+ICsJcmV0dXJuIDA7Cj4gPj4+Pj4+ICt9
+Owo+ID4+Pj4+Cj4gPj4+Pj4gVGhpcyBkcml2ZXIgaXMgcHJldHR5IHBvaW50bGVzcy4gIEl0IGRv
+ZXNuJ3QgYWN0dWFsbHkgZG8gYW55dGhpbmcuCj4gPj4+Pj4KPiA+Pj4+PiBJIHRoaW5rIHlvdSBq
+dXN0IHdhbnQgdG8gdXNlICJzaW1wbGUtbWZkIiBpbnN0ZWFkLgo+ID4+Pj4+Cj4gPj4+Pgo+ID4+
+Pj4gSSB0aGluayB0aGUgcHJvYmxlbSBpcywgdGhhdCByaWdodCBub3cgd2UgaGF2ZSB0d28gZHJp
+dmVycyB3aGljaCB1c2UgdGhlIHNhbWUKPiA+Pj4+IGRldmljZXRyZWUgYmluZGluZywgd2hpY2gg
+YXJlIGNsayBhbmQgZHJtIGRyaXZlci4gV2l0aCBhIHNpbXBsZS1tZmQgd2Ugd291bGQKPiA+Pj4+
+IG5lZWQgdHdvIGNvbXBhdGlibGVzLCBhbmQgdGhpcyB3b3VsZCBicmVhayBiYWNrd2FyZHMgY29t
+cGF0aWJpbGl0eS4KPiA+Pj4KPiA+Pj4gU28gd2hhdCBmdW5jdGlvbmFsaXR5IGRvZXMgdGhpcyBk
+cml2ZXIgcHJvdmlkZSB5b3Ugd2l0aCB0aGF0IHlvdSBkbwo+ID4+PiBub3QgaGF2ZSBjdXJyZW50
+bHk/Cj4gPj4+Cj4gPj4KPiA+PiBJJ20gbm90IHN1cmUgaWYgSSBnZXQgeW91ciBxdWVzdGlvbi4g
+UG9pbnQgaXMsIHRoYXQgdGhlIE1NU1lTIGltcGxlbWVudGF0aW9uIGZvcgo+ID4+IG10ODE3MyBp
+cyBicm9rZW4sIGFzIGl0IGFzc3VtZXMgdGhhdCB3ZSBjYW4gcHJvYmUgdHdvIGRyaXZlcnMgd2l0
+aCB0aGUKPiA+PiBtZWRpYXRlayxtdDgxNzMtbW1zeXMgY29tcGF0aWJsZS4gU29tZWhvdyBpdCB1
+c2VkIHRvIHdvcmssIGJ1dCBmcm9tIHdoYXQgSQo+ID4+IHVuZGVyc3RhbmQgaXQgd2FzIGEgYnVn
+LiBTbyBvbGRlciBkZXZpY2V0cmVlcyB1c2UganVzdCBvbiBtdDgxNzMtbW1zeXMKPiA+PiBjb21w
+YXRpYmxlIGluIHRoZXIgRFRCLgo+ID4gCj4gPiBPa2F5LCB0aGF0IGlzIHdoYXQgSSB3YXMgZ2V0
+dGluZyBhdC4gIFRoYW5rcyBmb3IgdGhlIGV4cGxhbmF0aW9uLgo+ID4gCj4gPiBEbyB5b3UgaGF2
+ZSBhIGRhdGFzaGVldCBJIGNhbiBsb29rIGF0Pwo+ID4gCj4gCj4gVW5mb3J0dW5hdGVseSB0aGVy
+ZSBpcyBubyBkYXRhc2hlZXQgeW91IGNhbiBnZXQgd2l0aG91dCBhIE5EQS4gVGhlIG9ubHkgcHVi
+bGljCj4gYXZhaWxhYmxlIGluZm9ybWF0aW9uIEknbSBhd2FyZSBvZiBpcyBmb3IgdGhlIChub3Qg
+dXBzdHJlYW0gc3VwcG9ydGVkKSA5NmJvYXJkCj4gWzFdLiBBbmQgaXQncyBvbmx5IHRoZSByZWdp
+c3RlciBkZXNjcmlwdGlvbi4gWW91IGNhbiBmaW5kIHNvbWUgbW9yZSBleHBsYW5hdGlvbgo+IGFi
+b3V0IHRoZSBNTVNZUyBpbiBvbGRlciB0aHJlYWRzIHdoaWNoIHRyaWVkIHRvIHNvbHZlIHRoZSB2
+ZXJ5IHNhbWUgcHJvYmxlbSBbMl0KPiAKPiBbMV0KPiBodHRwczovL3d3dy45NmJvYXJkcy5vcmcv
+ZG9jdW1lbnRhdGlvbi9jb25zdW1lci9tZWRpYXRla3gyMC9hZGRpdGlvbmFsLWRvY3MvZG9jcy9N
+VDY3OTdfUmVnaXN0ZXJfVGFibGVfUGFydF8yLnBkZgo+IFsyXSBodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9waXBlcm1haWwvbGludXgtbWVkaWF0ZWsvMjAxNy1PY3RvYmVyLzAxMDk3OS5odG1s
+CgpBbmQgbm93IHdlIGhhdmUgc29tZSBoaXN0b3J5LiAgVGhhbmtzIGZvciBwcm92aWRpbmcgdGhv
+c2UuCgpTbyBteSBpbml0aWFsIHJlYWN0aW9uIGlzIHRoZSBvbmUgSSBoYXZlIGp1c3QgY29uZmly
+bWVkIGZvciBteXNlbGYuCk1GRCBpcyBiZWluZyB1c2VkIGFzIGEgd29yay1hcm91bmQgaW4gdGhp
+cyBvZGQgdXNlLWNhc2UgYW5kIHJlYWxseQppc24ndCB0aGUgcmlnaHQgcGxhY2UgZm9yIGl0LgoK
+SWYgeW91J3JlIGFkYW1hbnQgdGhhdCB5b3UgZG8gbm90IHdpc2ggdG8gY2hhbmdlIHRoZSBEZXZp
+Y2UgVHJlZSwgbXkKc3VnZ2VzdGlvbiBpcyB0byBlaXRoZXIgbW92ZSB0aGUgY2xrIGZ1bmN0aW9u
+YWxpdHkgaW50byB0aGUgRFJNCmRyaXZlciwgb3IgcmVnaXN0ZXIgdGhlIGNsayBkcml2ZXIgZnJv
+bSBEUk0gdXNpbmcgc3RhbmRhcmQKcGxhdGZvcm1fZGV2aWNlX3JlZ2lzdGVyKCkgQVBJLgoKPiA+
+PiBJIHdvdWxkIGxpa2UgdG8ga2VlcCBiYWNrd2FyZHMgY29tcGF0aWJpbGl0eSBmb3IgdGhlIGRl
+dmljZSB0cmVlLCB0aGF0J3Mgd2h5IEkKPiA+PiB3YXMgc2VhcmNoaW5nIGZvciBhIHNvbHV0aW9u
+IHdoZXJlIHdlIGNhbiBwcm9iZSB0d28gZHJpdmVycyBhbmQgY2FtZSB1cCB3aXRoCj4gPj4gdGhp
+cyBtZmQgc29sdXRpb24uCj4gPj4KPiA+PiBTbyBubyBuZXcgZnVuY3Rpb25hbGl0eSwgdGhlIGNs
+ayBkcml2ZXIgcHJvdmlkZXMgdGhlIGNsb2NrIHRoZSBkcm0gY29tcG9uZW50cyBuZWVkLgo+ID4g
+CgotLSAKTGVlIEpvbmVzIFvmnY7nkLzmlq9dCkxpbmFybyBTZXJ2aWNlcyBUZWNobmljYWwgTGVh
+ZApMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3IgQVJNIFNvQ3MKRm9sbG93
+IExpbmFybzogRmFjZWJvb2sgfCBUd2l0dGVyIHwgQmxvZwpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
