@@ -1,153 +1,81 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [v3 03/10] mfd: mtk-mmsys: Add mmsys driver
-Date: Thu, 5 Jul 2018 13:22:23 +0100
-Message-ID: <20180705122223.GO496@dell>
-References: <cover.1524820923.git.mbrugger@suse.com>
- <e0894c97775e46ce6d9a441dc05e2e2479a4b612.1524820923.git.mbrugger@suse.com>
- <20180430101826.GC5147@dell>
- <5269ccfd-0274-3c12-7eeb-5de923197d92@gmail.com>
- <20180703071103.GE20176@dell>
- <b6301691-a9f6-64fe-dd8a-ffe51fad6799@suse.com>
- <20180704164540.GH496@dell>
- <92a851a9-a12c-e773-5f43-007f4d08b7e3@suse.com>
+From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH 11/11] mt76: Kconfig and Makefile for mt76x0 driver
+Date: Thu, 5 Jul 2018 16:50:19 +0200
+Message-ID: <20180705145018.GA17524@localhost.localdomain>
+References: <1530771142-4118-1-git-send-email-sgruszka@redhat.com>
+ <1530771142-4118-12-git-send-email-sgruszka@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <92a851a9-a12c-e773-5f43-007f4d08b7e3@suse.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Matthias Brugger <mbrugger@suse.com>
-Cc: mark.rutland@arm.com, airlied@linux.ie, mturquette@baylibre.com, dri-devel@lists.freedesktop.org, laurent.pinchart@ideasonboard.com, ulrich.hecht+renesas@gmail.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, sean.wang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, gregkh@linuxfoundation.org, rdunlap@infradead.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, matthias.bgg@kernel.org, davem@davemloft.net
+In-Reply-To: <1530771142-4118-12-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVGh1LCAwNSBKdWwgMjAxOCwgTWF0dGhpYXMgQnJ1Z2dlciB3cm90ZToKPiBPbiAwNC8wNy8x
-OCAxODo0NSwgTGVlIEpvbmVzIHdyb3RlOgo+ID4gT24gV2VkLCAwNCBKdWwgMjAxOCwgTWF0dGhp
-YXMgQnJ1Z2dlciB3cm90ZToKPiA+PiBPbiAwMy8wNy8xOCAwOToxMSwgTGVlIEpvbmVzIHdyb3Rl
-Ogo+ID4+PiBPbiBNb24sIDI1IEp1biAyMDE4LCBNYXR0aGlhcyBCcnVnZ2VyIHdyb3RlOgo+ID4+
-Pj4gT24gMzAvMDQvMTggMTI6MTgsIExlZSBKb25lcyB3cm90ZToKPiA+Pj4+PiBPbiBGcmksIDI3
-IEFwciAyMDE4LCBtYXR0aGlhcy5iZ2dAa2VybmVsLm9yZyB3cm90ZToKPiA+Pj4+Pgo+ID4+Pj4+
-PiBGcm9tOiBNYXR0aGlhcyBCcnVnZ2VyIDxtYnJ1Z2dlckBzdXNlLmNvbT4KPiA+Pj4+Pj4KPiA+
-Pj4+Pj4gVGhlIE1NU1lTIHN1YnN5c3RlbSBpbmNsdWRlcyBjbG9ja3MgYW5kIGRybSBjb21wb25l
-bnRzLgo+ID4+Pj4+PiBUaGlzIHBhdGNoIGFkZHMgYSBNRkQgZGV2aWNlIHRvIHByb2JlIGJvdGgg
-ZHJpdmVycyBmcm9tIHRoZSBzYW1lCj4gPj4+Pj4+IGRldmljZSB0cmVlIGNvbXBhdGlibGUuCj4g
-Pj4+Pj4+Cj4gPj4+Pj4+IFNpZ25lZC1vZmYtYnk6IE1hdHRoaWFzIEJydWdnZXIgPG1icnVnZ2Vy
-QHN1c2UuY29tPgo+ID4+Pj4+PiAtLS0KPiA+Pj4+Pj4gIGRyaXZlcnMvbWZkL0tjb25maWcgICAg
-IHwgIDkgKysrKysrCj4gPj4+Pj4+ICBkcml2ZXJzL21mZC9NYWtlZmlsZSAgICB8ICAyICsrCj4g
-Pj4+Pj4+ICBkcml2ZXJzL21mZC9tdGstbW1zeXMuYyB8IDc5ICsrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiA+Pj4+Pj4gIDMgZmlsZXMgY2hhbmdlZCwg
-OTAgaW5zZXJ0aW9ucygrKQo+ID4+Pj4+PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbWZk
-L210ay1tbXN5cy5jCj4gPj4+Pj4+Cj4gPj4+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21mZC9L
-Y29uZmlnIGIvZHJpdmVycy9tZmQvS2NvbmZpZwo+ID4+Pj4+PiBpbmRleCBiODYwZWI1YWExOTQu
-LmQyM2EzYjlhMmM1OCAxMDA2NDQKPiA+Pj4+Pj4gLS0tIGEvZHJpdmVycy9tZmQvS2NvbmZpZwo+
-ID4+Pj4+PiArKysgYi9kcml2ZXJzL21mZC9LY29uZmlnCj4gPj4+Pj4+IEBAIC0zNzgsNiArMzc4
-LDE1IEBAIGNvbmZpZyBNRkRfTUMxM1hYWF9JMkMKPiA+Pj4+Pj4gIAloZWxwCj4gPj4+Pj4+ICAJ
-ICBTZWxlY3QgdGhpcyBpZiB5b3VyIE1DMTN4eHggaXMgY29ubmVjdGVkIHZpYSBhbiBJMkMgYnVz
-Lgo+ID4+Pj4+PiAgCj4gPj4+Pj4+ICtjb25maWcgTUZEX01FRElBVEVLX01NU1lTCj4gPj4+Pj4+
-ICsJdHJpc3RhdGUgIk1lZGlhdGVrIE1NU1lTIGludGVyZmFjZSIKPiA+Pj4+Pj4gKwlzZWxlY3Qg
-TUZEX0NPUkUKPiA+Pj4+Pj4gKwlzZWxlY3QgUkVHTUFQX01NSU8KPiA+Pj4+Pj4gKwloZWxwCj4g
-Pj4+Pj4+ICsJICBTZWxlY3QgdGhpcyBpZiB5b3UgaGF2ZSBhIE1NU1lTIHN1YnN5c3RlbSBpbiB5
-b3VyIFNvQy4gVGhlCj4gPj4+Pj4+ICsJICBNTVNZUyBzdWJzeXN0ZW0gaGFzIGF0IGxlYXN0IGEg
-Y2xvY2sgZHJpdmVyIHBhcnQgYW5kIHNvbWUKPiA+Pj4+Pj4gKwkgIERSTSBjb21wb25lbnRzLgo+
-ID4+Pj4+PiArCj4gPj4+Pj4+ICBjb25maWcgTUZEX01YU19MUkFEQwo+ID4+Pj4+PiAgCXRyaXN0
-YXRlICJGcmVlc2NhbGUgaS5NWDIzL2kuTVgyOCBMUkFEQyIKPiA+Pj4+Pj4gIAlkZXBlbmRzIG9u
-IEFSQ0hfTVhTIHx8IENPTVBJTEVfVEVTVAo+ID4+Pj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9t
-ZmQvTWFrZWZpbGUgYi9kcml2ZXJzL21mZC9NYWtlZmlsZQo+ID4+Pj4+PiBpbmRleCBkOWQyY2Yw
-ZDMyZWYuLmI5NjExOGJkNjhkOSAxMDA2NDQKPiA+Pj4+Pj4gLS0tIGEvZHJpdmVycy9tZmQvTWFr
-ZWZpbGUKPiA+Pj4+Pj4gKysrIGIvZHJpdmVycy9tZmQvTWFrZWZpbGUKPiA+Pj4+Pj4gQEAgLTk4
-LDYgKzk4LDggQEAgb2JqLSQoQ09ORklHX01GRF9NQzEzWFhYKQkrPSBtYzEzeHh4LWNvcmUubwo+
-ID4+Pj4+PiAgb2JqLSQoQ09ORklHX01GRF9NQzEzWFhYX1NQSSkJKz0gbWMxM3h4eC1zcGkubwo+
-ID4+Pj4+PiAgb2JqLSQoQ09ORklHX01GRF9NQzEzWFhYX0kyQykJKz0gbWMxM3h4eC1pMmMubwo+
-ID4+Pj4+PiAgCj4gPj4+Pj4+ICtvYmotJChDT05GSUdfTUZEX01FRElBVEVLX01NU1lTKSArPSBt
-dGstbW1zeXMubwo+ID4+Pj4+PiArCj4gPj4+Pj4+ICBvYmotJChDT05GSUdfTUZEX0NPUkUpCQkr
-PSBtZmQtY29yZS5vCj4gPj4+Pj4+ICAKPiA+Pj4+Pj4gIG9iai0kKENPTkZJR19FWlhfUENBUCkJ
-CSs9IGV6eC1wY2FwLm8KPiA+Pj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWZkL210ay1tbXN5
-cy5jIGIvZHJpdmVycy9tZmQvbXRrLW1tc3lzLmMKPiA+Pj4+Pj4gbmV3IGZpbGUgbW9kZSAxMDA2
-NDQKPiA+Pj4+Pj4gaW5kZXggMDAwMDAwMDAwMDAwLi5jODAyMzQzZmIxYzYKPiA+Pj4+Pj4gLS0t
-IC9kZXYvbnVsbAo+ID4+Pj4+PiArKysgYi9kcml2ZXJzL21mZC9tdGstbW1zeXMuYwo+ID4+Pj4+
-PiBAQCAtMCwwICsxLDc5IEBACj4gPj4+Pj4+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjog
-R1BMLTIuMCsKPiA+Pj4+Pj4gKwo+ID4+Pj4+PiArLyoKPiA+Pj4+Pj4gKyAqIG10ay1tbXN5cy5j
-IC0tIE1lZGlhdGVrIE1NU1lTIG11bHRpLWZ1bmN0aW9uIGRyaXZlcgo+ID4+Pj4+PiArICoKPiA+
-Pj4+Pj4gKyAqIENvcHlyaWdodCAoYykgMjAxOCBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlhcy5i
-Z2dAZ21haWwuY29tPgo+ID4+Pj4+PiArICoKPiA+Pj4+Pj4gKyAqIEF1dGhvcjogTWF0dGhpYXMg
-QnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4KPiA+Pj4+Pj4gKyAqLwo+ID4+Pj4+PiAr
-Cj4gPj4+Pj4+ICsjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gPj4+Pj4+ICsjaW5jbHVkZSA8
-bGludXgvaW5pdC5oPgo+ID4+Pj4+PiArI2luY2x1ZGUgPGxpbnV4L21mZC9jb3JlLmg+Cj4gPj4+
-Pj4+ICsjaW5jbHVkZSA8bGludXgvb2YuaD4KPiA+Pj4+Pj4gKyNpbmNsdWRlIDxsaW51eC9vZl9h
-ZGRyZXNzLmg+Cj4gPj4+Pj4+ICsjaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+Cj4gPj4+Pj4+
-ICsjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gPj4+Pj4+ICsjaW5jbHVkZSA8
-bGludXgvcmVnbWFwLmg+Cj4gPj4+Pj4+ICsKPiA+Pj4+Pj4gK2VudW0gewo+ID4+Pj4+PiArCU1N
-U1lTX01UMjcwMSA9IDEsCj4gPj4+Pj4+ICt9Owo+ID4+Pj4+PiArCj4gPj4+Pj4+ICtzdGF0aWMg
-Y29uc3Qgc3RydWN0IG1mZF9jZWxsIG1tc3lzX210MjcwMV9kZXZzW10gPSB7Cj4gPj4+Pj4+ICsJ
-eyAubmFtZSA9ICJjbGstbXQyNzAxLW1tIiwgfSwKPiA+Pj4+Pj4gKwl7IC5uYW1lID0gImRybS1t
-dDI3MDEtbW0iLCB9LAo+ID4+Pj4+PiArfTsKPiA+Pj4+Pj4gKwo+ID4+Pj4+PiArc3RhdGljIGlu
-dCBtbXN5c19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4+Pj4+PiArewo+
-ID4+Pj4+PiArCWNvbnN0IHN0cnVjdCBtZmRfY2VsbCAqbW1zeXNfY2VsbHM7Cj4gPj4+Pj4+ICsJ
-aW50IG5yX2NlbGxzOwo+ID4+Pj4+PiArCWxvbmcgaWQ7Cj4gPj4+Pj4+ICsJaW50IHJldDsKPiA+
-Pj4+Pj4gKwo+ID4+Pj4+PiArCWlkID0gKGxvbmcpIG9mX2RldmljZV9nZXRfbWF0Y2hfZGF0YSgm
-cGRldi0+ZGV2KTsKPiA+Pj4+Pj4gKwlpZiAoIWlkKSB7Cj4gPj4+Pj4+ICsJCWRldl9lcnIoJnBk
-ZXYtPmRldiwgIm9mX2RldmljZV9nZXQgbWF0Y2hfZGF0YSgpIGZhaWxlZFxuIik7Cj4gPj4+Pj4+
-ICsJCXJldHVybiAtRUlOVkFMOwo+ID4+Pj4+PiArCX0KPiA+Pj4+Pj4gKwo+ID4+Pj4+PiArCXN3
-aXRjaCAoaWQpIHsKPiA+Pj4+Pj4gKwljYXNlIE1NU1lTX01UMjcwMToKPiA+Pj4+Pj4gKwkJbW1z
-eXNfY2VsbHMgPSBtbXN5c19tdDI3MDFfZGV2czsKPiA+Pj4+Pj4gKwkJbnJfY2VsbHMgPSBBUlJB
-WV9TSVpFKG1tc3lzX210MjcwMV9kZXZzKTsKPiA+Pj4+Pj4gKwkJYnJlYWs7Cj4gPj4+Pj4+ICsJ
-ZGVmYXVsdDoKPiA+Pj4+Pj4gKwkJcmV0dXJuIC1FTk9ERVY7Cj4gPj4+Pj4+ICsJfQo+ID4+Pj4+
-PiArCj4gPj4+Pj4+ICsJcmV0ID0gZGV2bV9tZmRfYWRkX2RldmljZXMoJnBkZXYtPmRldiwgMCwg
-bW1zeXNfY2VsbHMsIG5yX2NlbGxzLAo+ID4+Pj4+PiArCQkJCQlOVUxMLCAwLCBOVUxMKTsKPiA+
-Pj4+Pj4gKwlpZiAocmV0KSB7Cj4gPj4+Pj4+ICsJCWRldl9lcnIoJnBkZXYtPmRldiwgImZhaWxl
-ZCB0byBhZGQgTUZEIGRldmljZXMgJWRcbiIsIHJldCk7Cj4gPj4+Pj4+ICsJCXJldHVybiByZXQ7
-Cj4gPj4+Pj4+ICsJfQo+ID4+Pj4+PiArCj4gPj4+Pj4+ICsJcmV0dXJuIDA7Cj4gPj4+Pj4+ICt9
-Owo+ID4+Pj4+Cj4gPj4+Pj4gVGhpcyBkcml2ZXIgaXMgcHJldHR5IHBvaW50bGVzcy4gIEl0IGRv
-ZXNuJ3QgYWN0dWFsbHkgZG8gYW55dGhpbmcuCj4gPj4+Pj4KPiA+Pj4+PiBJIHRoaW5rIHlvdSBq
-dXN0IHdhbnQgdG8gdXNlICJzaW1wbGUtbWZkIiBpbnN0ZWFkLgo+ID4+Pj4+Cj4gPj4+Pgo+ID4+
-Pj4gSSB0aGluayB0aGUgcHJvYmxlbSBpcywgdGhhdCByaWdodCBub3cgd2UgaGF2ZSB0d28gZHJp
-dmVycyB3aGljaCB1c2UgdGhlIHNhbWUKPiA+Pj4+IGRldmljZXRyZWUgYmluZGluZywgd2hpY2gg
-YXJlIGNsayBhbmQgZHJtIGRyaXZlci4gV2l0aCBhIHNpbXBsZS1tZmQgd2Ugd291bGQKPiA+Pj4+
-IG5lZWQgdHdvIGNvbXBhdGlibGVzLCBhbmQgdGhpcyB3b3VsZCBicmVhayBiYWNrd2FyZHMgY29t
-cGF0aWJpbGl0eS4KPiA+Pj4KPiA+Pj4gU28gd2hhdCBmdW5jdGlvbmFsaXR5IGRvZXMgdGhpcyBk
-cml2ZXIgcHJvdmlkZSB5b3Ugd2l0aCB0aGF0IHlvdSBkbwo+ID4+PiBub3QgaGF2ZSBjdXJyZW50
-bHk/Cj4gPj4+Cj4gPj4KPiA+PiBJJ20gbm90IHN1cmUgaWYgSSBnZXQgeW91ciBxdWVzdGlvbi4g
-UG9pbnQgaXMsIHRoYXQgdGhlIE1NU1lTIGltcGxlbWVudGF0aW9uIGZvcgo+ID4+IG10ODE3MyBp
-cyBicm9rZW4sIGFzIGl0IGFzc3VtZXMgdGhhdCB3ZSBjYW4gcHJvYmUgdHdvIGRyaXZlcnMgd2l0
-aCB0aGUKPiA+PiBtZWRpYXRlayxtdDgxNzMtbW1zeXMgY29tcGF0aWJsZS4gU29tZWhvdyBpdCB1
-c2VkIHRvIHdvcmssIGJ1dCBmcm9tIHdoYXQgSQo+ID4+IHVuZGVyc3RhbmQgaXQgd2FzIGEgYnVn
-LiBTbyBvbGRlciBkZXZpY2V0cmVlcyB1c2UganVzdCBvbiBtdDgxNzMtbW1zeXMKPiA+PiBjb21w
-YXRpYmxlIGluIHRoZXIgRFRCLgo+ID4gCj4gPiBPa2F5LCB0aGF0IGlzIHdoYXQgSSB3YXMgZ2V0
-dGluZyBhdC4gIFRoYW5rcyBmb3IgdGhlIGV4cGxhbmF0aW9uLgo+ID4gCj4gPiBEbyB5b3UgaGF2
-ZSBhIGRhdGFzaGVldCBJIGNhbiBsb29rIGF0Pwo+ID4gCj4gCj4gVW5mb3J0dW5hdGVseSB0aGVy
-ZSBpcyBubyBkYXRhc2hlZXQgeW91IGNhbiBnZXQgd2l0aG91dCBhIE5EQS4gVGhlIG9ubHkgcHVi
-bGljCj4gYXZhaWxhYmxlIGluZm9ybWF0aW9uIEknbSBhd2FyZSBvZiBpcyBmb3IgdGhlIChub3Qg
-dXBzdHJlYW0gc3VwcG9ydGVkKSA5NmJvYXJkCj4gWzFdLiBBbmQgaXQncyBvbmx5IHRoZSByZWdp
-c3RlciBkZXNjcmlwdGlvbi4gWW91IGNhbiBmaW5kIHNvbWUgbW9yZSBleHBsYW5hdGlvbgo+IGFi
-b3V0IHRoZSBNTVNZUyBpbiBvbGRlciB0aHJlYWRzIHdoaWNoIHRyaWVkIHRvIHNvbHZlIHRoZSB2
-ZXJ5IHNhbWUgcHJvYmxlbSBbMl0KPiAKPiBbMV0KPiBodHRwczovL3d3dy45NmJvYXJkcy5vcmcv
-ZG9jdW1lbnRhdGlvbi9jb25zdW1lci9tZWRpYXRla3gyMC9hZGRpdGlvbmFsLWRvY3MvZG9jcy9N
-VDY3OTdfUmVnaXN0ZXJfVGFibGVfUGFydF8yLnBkZgo+IFsyXSBodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9waXBlcm1haWwvbGludXgtbWVkaWF0ZWsvMjAxNy1PY3RvYmVyLzAxMDk3OS5odG1s
-CgpBbmQgbm93IHdlIGhhdmUgc29tZSBoaXN0b3J5LiAgVGhhbmtzIGZvciBwcm92aWRpbmcgdGhv
-c2UuCgpTbyBteSBpbml0aWFsIHJlYWN0aW9uIGlzIHRoZSBvbmUgSSBoYXZlIGp1c3QgY29uZmly
-bWVkIGZvciBteXNlbGYuCk1GRCBpcyBiZWluZyB1c2VkIGFzIGEgd29yay1hcm91bmQgaW4gdGhp
-cyBvZGQgdXNlLWNhc2UgYW5kIHJlYWxseQppc24ndCB0aGUgcmlnaHQgcGxhY2UgZm9yIGl0LgoK
-SWYgeW91J3JlIGFkYW1hbnQgdGhhdCB5b3UgZG8gbm90IHdpc2ggdG8gY2hhbmdlIHRoZSBEZXZp
-Y2UgVHJlZSwgbXkKc3VnZ2VzdGlvbiBpcyB0byBlaXRoZXIgbW92ZSB0aGUgY2xrIGZ1bmN0aW9u
-YWxpdHkgaW50byB0aGUgRFJNCmRyaXZlciwgb3IgcmVnaXN0ZXIgdGhlIGNsayBkcml2ZXIgZnJv
-bSBEUk0gdXNpbmcgc3RhbmRhcmQKcGxhdGZvcm1fZGV2aWNlX3JlZ2lzdGVyKCkgQVBJLgoKPiA+
-PiBJIHdvdWxkIGxpa2UgdG8ga2VlcCBiYWNrd2FyZHMgY29tcGF0aWJpbGl0eSBmb3IgdGhlIGRl
-dmljZSB0cmVlLCB0aGF0J3Mgd2h5IEkKPiA+PiB3YXMgc2VhcmNoaW5nIGZvciBhIHNvbHV0aW9u
-IHdoZXJlIHdlIGNhbiBwcm9iZSB0d28gZHJpdmVycyBhbmQgY2FtZSB1cCB3aXRoCj4gPj4gdGhp
-cyBtZmQgc29sdXRpb24uCj4gPj4KPiA+PiBTbyBubyBuZXcgZnVuY3Rpb25hbGl0eSwgdGhlIGNs
-ayBkcml2ZXIgcHJvdmlkZXMgdGhlIGNsb2NrIHRoZSBkcm0gY29tcG9uZW50cyBuZWVkLgo+ID4g
-CgotLSAKTGVlIEpvbmVzIFvmnY7nkLzmlq9dCkxpbmFybyBTZXJ2aWNlcyBUZWNobmljYWwgTGVh
-ZApMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3IgQVJNIFNvQ3MKRm9sbG93
-IExpbmFybzogRmFjZWJvb2sgfCBUd2l0dGVyIHwgQmxvZwpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Jul 05, Stanislaw Gruszka wrote:
+> Add Kconfig and Makefiles for mt76x0 driver. Now the driver
+> can be build.
+> 
+> Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+> ---
+>  drivers/net/wireless/mediatek/mt76/Kconfig         | 7 +++++++
+>  drivers/net/wireless/mediatek/mt76/Makefile        | 1 +
+>  drivers/net/wireless/mediatek/mt76/mt76x0/Makefile | 7 +++++++
+>  3 files changed, 15 insertions(+)
+>  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wireless/mediatek/mt76/Kconfig
+> index fc05d79c80d0..84854736809a 100644
+> --- a/drivers/net/wireless/mediatek/mt76/Kconfig
+> +++ b/drivers/net/wireless/mediatek/mt76/Kconfig
+> @@ -1,6 +1,13 @@
+>  config MT76_CORE
+>  	tristate
+>  
+> +config MT76x0U
+> +	tristate "MediaTek MT76x0U (USB) support"
+> +	depends on MAC80211
+> +	depends on USB
+> +	help
+> +	  This adds support for MT7610U-based wireless USB dongles.
+> +
+>  config MT76x2E
+>  	tristate "MediaTek MT76x2E (PCIe) support"
+>  	select MT76_CORE
+> diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
+> index a0156bc01dea..08f93127e9e7 100644
+> --- a/drivers/net/wireless/mediatek/mt76/Makefile
+> +++ b/drivers/net/wireless/mediatek/mt76/Makefile
+> @@ -1,4 +1,5 @@
+>  obj-$(CONFIG_MT76_CORE) += mt76.o
+> +obj-$(CONFIG_MT76x0U) += mt76x0/
+>  obj-$(CONFIG_MT76x2E) += mt76x2e.o
+>  
+>  mt76-y := \
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/Makefile b/drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
+> new file mode 100644
+> index 000000000000..7843908261ba
+> --- /dev/null
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
+> @@ -0,0 +1,7 @@
+> +obj-$(CONFIG_MT76x0U)    += mt76x0.o
+> +
+> +mt76x0-objs	= \
+> +	usb.o init.o main.o mcu.o trace.o dma.o eeprom.o phy.o \
+
+There is no main.c source file, is it a leftover from previous implementation?
+Moreover compiling the driver (and fixing conflicts with mt76x2u) I have:
+
+ERROR: "mt76x0_ops" [drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.ko] undefined!
+
+Regards,
+Lorenzo
+
+> +	mac.o util.o debugfs.o tx.o core.o
+> +# ccflags-y := -DDEBUG
+> +CFLAGS_trace.o := -I$(src)
+> -- 
+> 1.9.3
+> 
