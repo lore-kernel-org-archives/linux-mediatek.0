@@ -1,132 +1,190 @@
-From: Chen-Yu Tsai <wens@csie.org>
-Subject: Re: [v3 03/10] mfd: mtk-mmsys: Add mmsys driver
-Date: Thu, 5 Jul 2018 00:52:23 +0800
-Message-ID: <CAGb2v65DX5hS1c93a1ouQsi4R2xaKKkkwKfHqzE_VKPq-TwrBA@mail.gmail.com>
-References: <cover.1524820923.git.mbrugger@suse.com>
- <e0894c97775e46ce6d9a441dc05e2e2479a4b612.1524820923.git.mbrugger@suse.com>
- <20180430101826.GC5147@dell> <5269ccfd-0274-3c12-7eeb-5de923197d92@gmail.com>
- <20180703071103.GE20176@dell> <b6301691-a9f6-64fe-dd8a-ffe51fad6799@suse.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v6 5/5] clocksource/drivers/timer-mediatek: Add support
+ for system timer
+Date: Thu, 5 Jul 2018 02:13:01 +0200
+Message-ID: <2cb9177c-0586-4432-94a2-df46fe64cc3b@linaro.org>
+References: <1530715820-3406-1-git-send-email-stanley.chu@mediatek.com>
+ <1530715820-3406-6-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <b6301691-a9f6-64fe-dd8a-ffe51fad6799@suse.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Matthias Brugger <mbrugger@suse.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, David Airlie <airlied@linux.ie>, Mike Turquette <mturquette@baylibre.com>, dri-devel <dri-devel@lists.freedesktop.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, ulrich.hecht+renesas@gmail.com, Lee Jones <lee.jones@linaro.org>, linux-clk <linux-clk@vger.kernel.org>, Russell King <linux@armlinux.org.uk>, Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Randy Dunlap <rdunlap@infradead.org>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel <linux-kernel@vger.kernel.org>, matthias.bgg@kernel.org, David Miller <davem@davemloft.net>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1530715820-3406-6-git-send-email-stanley.chu@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Stanley Chu <stanley.chu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVGh1LCBKdWwgNSwgMjAxOCBhdCAxMjoxNyBBTSwgTWF0dGhpYXMgQnJ1Z2dlciA8bWJydWdn
-ZXJAc3VzZS5jb20+IHdyb3RlOgo+Cj4KPiBPbiAwMy8wNy8xOCAwOToxMSwgTGVlIEpvbmVzIHdy
-b3RlOgo+PiBPbiBNb24sIDI1IEp1biAyMDE4LCBNYXR0aGlhcyBCcnVnZ2VyIHdyb3RlOgo+Pj4g
-T24gMzAvMDQvMTggMTI6MTgsIExlZSBKb25lcyB3cm90ZToKPj4+PiBPbiBGcmksIDI3IEFwciAy
-MDE4LCBtYXR0aGlhcy5iZ2dAa2VybmVsLm9yZyB3cm90ZToKPj4+Pgo+Pj4+PiBGcm9tOiBNYXR0
-aGlhcyBCcnVnZ2VyIDxtYnJ1Z2dlckBzdXNlLmNvbT4KPj4+Pj4KPj4+Pj4gVGhlIE1NU1lTIHN1
-YnN5c3RlbSBpbmNsdWRlcyBjbG9ja3MgYW5kIGRybSBjb21wb25lbnRzLgo+Pj4+PiBUaGlzIHBh
-dGNoIGFkZHMgYSBNRkQgZGV2aWNlIHRvIHByb2JlIGJvdGggZHJpdmVycyBmcm9tIHRoZSBzYW1l
-Cj4+Pj4+IGRldmljZSB0cmVlIGNvbXBhdGlibGUuCj4+Pj4+Cj4+Pj4+IFNpZ25lZC1vZmYtYnk6
-IE1hdHRoaWFzIEJydWdnZXIgPG1icnVnZ2VyQHN1c2UuY29tPgo+Pj4+PiAtLS0KPj4+Pj4gIGRy
-aXZlcnMvbWZkL0tjb25maWcgICAgIHwgIDkgKysrKysrCj4+Pj4+ICBkcml2ZXJzL21mZC9NYWtl
-ZmlsZSAgICB8ICAyICsrCj4+Pj4+ICBkcml2ZXJzL21mZC9tdGstbW1zeXMuYyB8IDc5ICsrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPj4+Pj4gIDMgZmls
-ZXMgY2hhbmdlZCwgOTAgaW5zZXJ0aW9ucygrKQo+Pj4+PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
-aXZlcnMvbWZkL210ay1tbXN5cy5jCj4+Pj4+Cj4+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21m
-ZC9LY29uZmlnIGIvZHJpdmVycy9tZmQvS2NvbmZpZwo+Pj4+PiBpbmRleCBiODYwZWI1YWExOTQu
-LmQyM2EzYjlhMmM1OCAxMDA2NDQKPj4+Pj4gLS0tIGEvZHJpdmVycy9tZmQvS2NvbmZpZwo+Pj4+
-PiArKysgYi9kcml2ZXJzL21mZC9LY29uZmlnCj4+Pj4+IEBAIC0zNzgsNiArMzc4LDE1IEBAIGNv
-bmZpZyBNRkRfTUMxM1hYWF9JMkMKPj4+Pj4gICAgaGVscAo+Pj4+PiAgICAgIFNlbGVjdCB0aGlz
-IGlmIHlvdXIgTUMxM3h4eCBpcyBjb25uZWN0ZWQgdmlhIGFuIEkyQyBidXMuCj4+Pj4+Cj4+Pj4+
-ICtjb25maWcgTUZEX01FRElBVEVLX01NU1lTCj4+Pj4+ICsgIHRyaXN0YXRlICJNZWRpYXRlayBN
-TVNZUyBpbnRlcmZhY2UiCj4+Pj4+ICsgIHNlbGVjdCBNRkRfQ09SRQo+Pj4+PiArICBzZWxlY3Qg
-UkVHTUFQX01NSU8KPj4+Pj4gKyAgaGVscAo+Pj4+PiArICAgIFNlbGVjdCB0aGlzIGlmIHlvdSBo
-YXZlIGEgTU1TWVMgc3Vic3lzdGVtIGluIHlvdXIgU29DLiBUaGUKPj4+Pj4gKyAgICBNTVNZUyBz
-dWJzeXN0ZW0gaGFzIGF0IGxlYXN0IGEgY2xvY2sgZHJpdmVyIHBhcnQgYW5kIHNvbWUKPj4+Pj4g
-KyAgICBEUk0gY29tcG9uZW50cy4KPj4+Pj4gKwo+Pj4+PiAgY29uZmlnIE1GRF9NWFNfTFJBREMK
-Pj4+Pj4gICAgdHJpc3RhdGUgIkZyZWVzY2FsZSBpLk1YMjMvaS5NWDI4IExSQURDIgo+Pj4+PiAg
-ICBkZXBlbmRzIG9uIEFSQ0hfTVhTIHx8IENPTVBJTEVfVEVTVAo+Pj4+PiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9tZmQvTWFrZWZpbGUgYi9kcml2ZXJzL21mZC9NYWtlZmlsZQo+Pj4+PiBpbmRleCBk
-OWQyY2YwZDMyZWYuLmI5NjExOGJkNjhkOSAxMDA2NDQKPj4+Pj4gLS0tIGEvZHJpdmVycy9tZmQv
-TWFrZWZpbGUKPj4+Pj4gKysrIGIvZHJpdmVycy9tZmQvTWFrZWZpbGUKPj4+Pj4gQEAgLTk4LDYg
-Kzk4LDggQEAgb2JqLSQoQ09ORklHX01GRF9NQzEzWFhYKSAgICAgICAgKz0gbWMxM3h4eC1jb3Jl
-Lm8KPj4+Pj4gIG9iai0kKENPTkZJR19NRkRfTUMxM1hYWF9TUEkpICAgICArPSBtYzEzeHh4LXNw
-aS5vCj4+Pj4+ICBvYmotJChDT05GSUdfTUZEX01DMTNYWFhfSTJDKSAgICAgKz0gbWMxM3h4eC1p
-MmMubwo+Pj4+Pgo+Pj4+PiArb2JqLSQoQ09ORklHX01GRF9NRURJQVRFS19NTVNZUykgKz0gbXRr
-LW1tc3lzLm8KPj4+Pj4gKwo+Pj4+PiAgb2JqLSQoQ09ORklHX01GRF9DT1JFKSAgICAgICAgICAg
-ICs9IG1mZC1jb3JlLm8KPj4+Pj4KPj4+Pj4gIG9iai0kKENPTkZJR19FWlhfUENBUCkgICAgICAg
-ICAgICArPSBlengtcGNhcC5vCj4+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21mZC9tdGstbW1z
-eXMuYyBiL2RyaXZlcnMvbWZkL210ay1tbXN5cy5jCj4+Pj4+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0
-Cj4+Pj4+IGluZGV4IDAwMDAwMDAwMDAwMC4uYzgwMjM0M2ZiMWM2Cj4+Pj4+IC0tLSAvZGV2L251
-bGwKPj4+Pj4gKysrIGIvZHJpdmVycy9tZmQvbXRrLW1tc3lzLmMKPj4+Pj4gQEAgLTAsMCArMSw3
-OSBAQAo+Pj4+PiArLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjArCj4+Pj4+ICsK
-Pj4+Pj4gKy8qCj4+Pj4+ICsgKiBtdGstbW1zeXMuYyAtLSBNZWRpYXRlayBNTVNZUyBtdWx0aS1m
-dW5jdGlvbiBkcml2ZXIKPj4+Pj4gKyAqCj4+Pj4+ICsgKiBDb3B5cmlnaHQgKGMpIDIwMTggTWF0
-dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4KPj4+Pj4gKyAqCj4+Pj4+ICsg
-KiBBdXRob3I6IE1hdHRoaWFzIEJydWdnZXIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+Cj4+Pj4+
-ICsgKi8KPj4+Pj4gKwo+Pj4+PiArI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgo+Pj4+PiArI2lu
-Y2x1ZGUgPGxpbnV4L2luaXQuaD4KPj4+Pj4gKyNpbmNsdWRlIDxsaW51eC9tZmQvY29yZS5oPgo+
-Pj4+PiArI2luY2x1ZGUgPGxpbnV4L29mLmg+Cj4+Pj4+ICsjaW5jbHVkZSA8bGludXgvb2ZfYWRk
-cmVzcy5oPgo+Pj4+PiArI2luY2x1ZGUgPGxpbnV4L29mX2RldmljZS5oPgo+Pj4+PiArI2luY2x1
-ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+Pj4+PiArI2luY2x1ZGUgPGxpbnV4L3JlZ21h
-cC5oPgo+Pj4+PiArCj4+Pj4+ICtlbnVtIHsKPj4+Pj4gKyAgTU1TWVNfTVQyNzAxID0gMSwKPj4+
-Pj4gK307Cj4+Pj4+ICsKPj4+Pj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgbWZkX2NlbGwgbW1zeXNf
-bXQyNzAxX2RldnNbXSA9IHsKPj4+Pj4gKyAgeyAubmFtZSA9ICJjbGstbXQyNzAxLW1tIiwgfSwK
-Pj4+Pj4gKyAgeyAubmFtZSA9ICJkcm0tbXQyNzAxLW1tIiwgfSwKPj4+Pj4gK307Cj4+Pj4+ICsK
-Pj4+Pj4gK3N0YXRpYyBpbnQgbW1zeXNfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRl
-dikKPj4+Pj4gK3sKPj4+Pj4gKyAgY29uc3Qgc3RydWN0IG1mZF9jZWxsICptbXN5c19jZWxsczsK
-Pj4+Pj4gKyAgaW50IG5yX2NlbGxzOwo+Pj4+PiArICBsb25nIGlkOwo+Pj4+PiArICBpbnQgcmV0
-Owo+Pj4+PiArCj4+Pj4+ICsgIGlkID0gKGxvbmcpIG9mX2RldmljZV9nZXRfbWF0Y2hfZGF0YSgm
-cGRldi0+ZGV2KTsKPj4+Pj4gKyAgaWYgKCFpZCkgewo+Pj4+PiArICAgICAgICAgIGRldl9lcnIo
-JnBkZXYtPmRldiwgIm9mX2RldmljZV9nZXQgbWF0Y2hfZGF0YSgpIGZhaWxlZFxuIik7Cj4+Pj4+
-ICsgICAgICAgICAgcmV0dXJuIC1FSU5WQUw7Cj4+Pj4+ICsgIH0KPj4+Pj4gKwo+Pj4+PiArICBz
-d2l0Y2ggKGlkKSB7Cj4+Pj4+ICsgIGNhc2UgTU1TWVNfTVQyNzAxOgo+Pj4+PiArICAgICAgICAg
-IG1tc3lzX2NlbGxzID0gbW1zeXNfbXQyNzAxX2RldnM7Cj4+Pj4+ICsgICAgICAgICAgbnJfY2Vs
-bHMgPSBBUlJBWV9TSVpFKG1tc3lzX210MjcwMV9kZXZzKTsKPj4+Pj4gKyAgICAgICAgICBicmVh
-azsKPj4+Pj4gKyAgZGVmYXVsdDoKPj4+Pj4gKyAgICAgICAgICByZXR1cm4gLUVOT0RFVjsKPj4+
-Pj4gKyAgfQo+Pj4+PiArCj4+Pj4+ICsgIHJldCA9IGRldm1fbWZkX2FkZF9kZXZpY2VzKCZwZGV2
-LT5kZXYsIDAsIG1tc3lzX2NlbGxzLCBucl9jZWxscywKPj4+Pj4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICBOVUxMLCAwLCBOVUxMKTsKPj4+Pj4gKyAgaWYgKHJldCkgewo+Pj4+
-PiArICAgICAgICAgIGRldl9lcnIoJnBkZXYtPmRldiwgImZhaWxlZCB0byBhZGQgTUZEIGRldmlj
-ZXMgJWRcbiIsIHJldCk7Cj4+Pj4+ICsgICAgICAgICAgcmV0dXJuIHJldDsKPj4+Pj4gKyAgfQo+
-Pj4+PiArCj4+Pj4+ICsgIHJldHVybiAwOwo+Pj4+PiArfTsKPj4+Pgo+Pj4+IFRoaXMgZHJpdmVy
-IGlzIHByZXR0eSBwb2ludGxlc3MuICBJdCBkb2Vzbid0IGFjdHVhbGx5IGRvIGFueXRoaW5nLgo+
-Pj4+Cj4+Pj4gSSB0aGluayB5b3UganVzdCB3YW50IHRvIHVzZSAic2ltcGxlLW1mZCIgaW5zdGVh
-ZC4KPj4+Pgo+Pj4KPj4+IEkgdGhpbmsgdGhlIHByb2JsZW0gaXMsIHRoYXQgcmlnaHQgbm93IHdl
-IGhhdmUgdHdvIGRyaXZlcnMgd2hpY2ggdXNlIHRoZSBzYW1lCj4+PiBkZXZpY2V0cmVlIGJpbmRp
-bmcsIHdoaWNoIGFyZSBjbGsgYW5kIGRybSBkcml2ZXIuIFdpdGggYSBzaW1wbGUtbWZkIHdlIHdv
-dWxkCj4+PiBuZWVkIHR3byBjb21wYXRpYmxlcywgYW5kIHRoaXMgd291bGQgYnJlYWsgYmFja3dh
-cmRzIGNvbXBhdGliaWxpdHkuCj4+Cj4+IFNvIHdoYXQgZnVuY3Rpb25hbGl0eSBkb2VzIHRoaXMg
-ZHJpdmVyIHByb3ZpZGUgeW91IHdpdGggdGhhdCB5b3UgZG8KPj4gbm90IGhhdmUgY3VycmVudGx5
-Pwo+Pgo+Cj4gSSdtIG5vdCBzdXJlIGlmIEkgZ2V0IHlvdXIgcXVlc3Rpb24uIFBvaW50IGlzLCB0
-aGF0IHRoZSBNTVNZUyBpbXBsZW1lbnRhdGlvbiBmb3IKPiBtdDgxNzMgaXMgYnJva2VuLCBhcyBp
-dCBhc3N1bWVzIHRoYXQgd2UgY2FuIHByb2JlIHR3byBkcml2ZXJzIHdpdGggdGhlCj4gbWVkaWF0
-ZWssbXQ4MTczLW1tc3lzIGNvbXBhdGlibGUuIFNvbWVob3cgaXQgdXNlZCB0byB3b3JrLCBidXQg
-ZnJvbSB3aGF0IEkKPiB1bmRlcnN0YW5kIGl0IHdhcyBhIGJ1Zy4gU28gb2xkZXIgZGV2aWNldHJl
-ZXMgdXNlIGp1c3Qgb24gbXQ4MTczLW1tc3lzCj4gY29tcGF0aWJsZSBpbiB0aGVyIERUQi4KClRo
-aXMgd29ya3MgcHJvYmFibHkgYmVjYXVzZSB0aGUgY2xrIGRyaXZlciBpcyB1c2luZyBDTEtfT0Zf
-REVDTEFSRSwgd2hpY2gKZG9lcyBub3QgdXNlIHRoZSBkZXZpY2UgbW9kZWwgKGkuZS4gbm8gYXR0
-YWNoZWQgc3RydWN0IGRldikuIFNvIGxhdGVyIG9uLAp3aGVuIHRoZSBkZXZpY2UgbW9kZWwgc2Nh
-bnMgYW5kIGFkZHMgdGhpcyBkZXZpY2UsIGl0J3MgY29uc2lkZXJlZCBub3QKcHJvYmVkIHlldCwg
-YW5kIHRoZSBkcm0gZHJpdmVyIHdpbGwgcHJvYmUuCgpUaGlzIGJyZWFrcyBob3JyaWJseSBpZiB5
-b3UgdHJ5IHRvIG1vdmUgdGhlIGNsayBkcml2ZXIgdG8gYSBwbGF0Zm9ybQpkZXZpY2UgZHJpdmVy
-IGJhc2VkIGltcGxlbWVudGF0aW9uLiBPbiB0aGUgb3RoZXIgaGFuZCwgaWYgeW91IG5lZWQgdGhl
-CmNsayBpbiBlYXJseSBpbml0LCB5b3UgY2FuJ3QgdXNlIGEgcGxhdGZvcm0gb3IgbWZkIGRldmlj
-ZS4KClJlZ2FyZHMKQ2hlbll1Cgo+Cj4gSSB3b3VsZCBsaWtlIHRvIGtlZXAgYmFja3dhcmRzIGNv
-bXBhdGliaWxpdHkgZm9yIHRoZSBkZXZpY2UgdHJlZSwgdGhhdCdzIHdoeSBJCj4gd2FzIHNlYXJj
-aGluZyBmb3IgYSBzb2x1dGlvbiB3aGVyZSB3ZSBjYW4gcHJvYmUgdHdvIGRyaXZlcnMgYW5kIGNh
-bWUgdXAgd2l0aAo+IHRoaXMgbWZkIHNvbHV0aW9uLgo+Cj4gU28gbm8gbmV3IGZ1bmN0aW9uYWxp
-dHksIHRoZSBjbGsgZHJpdmVyIHByb3ZpZGVzIHRoZSBjbG9jayB0aGUgZHJtIGNvbXBvbmVudHMg
-bmVlZC4KPgo+IFJlZ2FyZHMsCj4gTWF0dGhpYXMKPgo+IF9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCj4gbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QK
-PiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
-dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 04/07/2018 16:50, Stanley Chu wrote:
+> This patch adds a new "System Timer" on the Mediatek SoCs.
+> 
+> The System Timer is introduced as an always-on timer being
+> clockevent device for tick-broadcasting.
+> 
+> For clock, it is driven by 13 MHz system clock.
+> The implementation uses the system clock with no clock
+> source divider.
+> 
+> For interrupt, the clock event timer can be used by all cores.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> ---
+>  drivers/clocksource/timer-mediatek.c |  110 +++++++++++++++++++++++++++++++++-
+>  1 file changed, 109 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
+> index e57c4d7..e98244a 100644
+> --- a/drivers/clocksource/timer-mediatek.c
+> +++ b/drivers/clocksource/timer-mediatek.c
+> @@ -58,6 +58,86 @@
+>  
+>  static void __iomem *gpt_sched_reg __read_mostly;
+>  
+> +/* system timer */
+> +#define SYST_BASE               (0x40)
+> +
+> +#define SYST_CON                (SYST_BASE + 0x0)
+> +#define SYST_VAL                (SYST_BASE + 0x4)
+> +
+> +#define SYST_CON_REG(to)        (timer_of_base(to) + SYST_CON)
+> +#define SYST_VAL_REG(to)        (timer_of_base(to) + SYST_VAL)
+> +
+> +/*
+> + * SYST_CON_EN: Clock enable. Shall be set to
+> + *   - Start timer countdown.
+> + *   - Allow timeout ticks being updated.
+> + *   - Allow changing interrupt functions.
+> + *
+> + * SYST_CON_IRQ_EN: Set to allow interrupt.
+> + *
+> + * SYST_CON_IRQ_CLR: Set to clear interrupt.
+> + */
+> +#define SYST_CON_EN              BIT(0)
+> +#define SYST_CON_IRQ_EN          BIT(1)
+> +#define SYST_CON_IRQ_CLR         BIT(4)
+> +
+> +static void __iomem *gpt_sched_reg __read_mostly;
+
+duplicate 'gpt_sched_reg' variable.
+
+
+> +static void mtk_syst_ack_irq(struct timer_of *to)
+> +{
+> +	/* Clear and disable interrupt */
+> +	writel(SYST_CON_IRQ_CLR | SYST_CON_EN, SYST_CON_REG(to));
+> +}
+> +
+> +static irqreturn_t mtk_syst_handler(int irq, void *dev_id)
+> +{
+> +	struct clock_event_device *clkevt = dev_id;
+> +	struct timer_of *to = to_timer_of(clkevt);
+> +
+> +	mtk_syst_ack_irq(to);
+> +	clkevt->event_handler(clkevt);
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +static int mtk_syst_clkevt_next_event(unsigned long ticks,
+> +				      struct clock_event_device *clkevt)
+> +{
+> +	struct timer_of *to = to_timer_of(clkevt);
+> +
+> +	/* Enable clock to allow timeout tick update later */
+> +	writel(SYST_CON_EN, SYST_CON_REG(to));
+> +
+> +	/*
+> +	 * Write new timeout ticks. Timer shall start countdown
+> +	 * after timeout ticks are updated.
+> +	 */
+> +	writel(ticks, SYST_VAL_REG(to));
+> +
+> +	/* Enable interrupt */
+> +	writel(SYST_CON_EN | SYST_CON_IRQ_EN, SYST_CON_REG(to));
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_syst_clkevt_shutdown(struct clock_event_device *clkevt)
+> +{
+> +	/* Disable timer */
+> +	writel(0, SYST_CON_REG(to_timer_of(clkevt)));
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_syst_clkevt_resume(struct clock_event_device *clkevt)
+> +{
+> +	return mtk_syst_clkevt_shutdown(clkevt);
+> +}
+> +
+> +static int mtk_syst_clkevt_oneshot(struct clock_event_device *clkevt)
+> +{
+> +	return 0;
+> +}
+> +
+>  static u64 notrace mtk_gpt_read_sched_clock(void)
+>  {
+>  	return readl_relaxed(gpt_sched_reg);
+> @@ -186,6 +266,34 @@ static void mtk_gpt_enable_irq(struct timer_of *to, u8 timer)
+>  	},
+>  };
+>  
+> +static int __init mtk_syst_init(struct device_node *node)
+> +{
+> +	int ret;
+> +
+> +	to.clkevt.features = CLOCK_EVT_FEAT_DYNIRQ | CLOCK_EVT_FEAT_ONESHOT;
+> +	to.clkevt.set_state_shutdown = mtk_syst_clkevt_shutdown;
+> +	to.clkevt.set_state_oneshot = mtk_syst_clkevt_oneshot;
+> +	to.clkevt.tick_resume = mtk_syst_clkevt_resume;
+> +	to.clkevt.set_next_event = mtk_syst_clkevt_next_event;
+> +	to.of_irq.handler = mtk_syst_handler;
+> +
+> +	ret = timer_of_init(node, &to);
+> +	if (ret)
+> +		goto err;
+> +
+> +	clockevents_config_and_register(&to.clkevt, timer_of_rate(&to),
+> +					TIMER_SYNC_TICKS, 0xffffffff);
+> +
+> +	pr_info("irq=%d, rate=%lu, max_ns: %llu, min_ns: %llu\n",
+> +		timer_of_irq(&to), timer_of_rate(&to),
+> +		to.clkevt.max_delta_ns, to.clkevt.min_delta_ns);
+
+Please remove this trace. Most of this information is already available
+in /proc/timer_list.
+
+However, if you think it is worth to add this trace, do a proposition in
+the time framework directly so all drivers can benefit this change.
+
+> +	return 0;
+> +err:
+> +	timer_of_cleanup(&to);
+> +	return ret;
+> +}
+> +
+>  static int __init mtk_gpt_init(struct device_node *node)
+>  {
+>  	int ret;
+> @@ -218,9 +326,9 @@ static int __init mtk_gpt_init(struct device_node *node)
+>  	mtk_gpt_enable_irq(&to, TIMER_CLK_EVT);
+>  
+>  	return 0;
+> -
+>  err:
+>  	timer_of_cleanup(&to);
+>  	return ret;
+>  }
+>  TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
+> +TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
+> 
+
+
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
