@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH v2 06/12] mt76x0: phy files
-Date: Fri,  6 Jul 2018 13:03:43 +0200
-Message-ID: <1530875029-26274-7-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH v2 07/12] mt76x0: init files
+Date: Fri,  6 Jul 2018 13:03:44 +0200
+Message-ID: <1530875029-26274-8-git-send-email-sgruszka@redhat.com>
 References: <1530875029-26274-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1530875029-26274-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,802 +10,22 @@ To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add phy files of mt76x0 driver.
+Add init files of mt76x0 driver.
 
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- .../wireless/mediatek/mt76/mt76x0/initvals_phy.h   |  772 +++++++++++++++
- drivers/net/wireless/mediatek/mt76/mt76x0/phy.c    | 1008 ++++++++++++++++++++
- drivers/net/wireless/mediatek/mt76/mt76x0/phy.h    |   81 ++
- 3 files changed, 1861 insertions(+)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/initvals_phy.h
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/phy.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/phy.h
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c   | 720 +++++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt76x0/initvals.h   | 282 ++++++++
+ 2 files changed, 1002 insertions(+)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/initvals.h
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/initvals_phy.h b/drivers/net/wireless/mediatek/mt76/mt76x0/initvals_phy.h
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
 new file mode 100644
-index 000000000000..95d43efc1f3d
+index 000000000000..b65b76d80906
 --- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/initvals_phy.h
-@@ -0,0 +1,772 @@
-+/*
-+ * (c) Copyright 2002-2010, Ralink Technology, Inc.
-+ * Copyright (C) 2015 Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>
-+ * Copyright (C) 2018 Stanislaw Gruszka <stf_xl-5tc4TXWwyLM@public.gmane.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2
-+ * as published by the Free Software Foundation
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#ifndef __MT76X0U_PHY_INITVALS_H
-+#define __MT76X0U_PHY_INITVALS_H
-+
-+#define RF_REG_PAIR(bank, reg, value)				\
-+	{ (bank) << 16 | (reg), value }
-+
-+
-+static const struct mt76_reg_pair mt76x0_rf_central_tab[] = {
-+/*
-+	Bank 0 - For central blocks: BG, PLL, XTAL, LO, ADC/DAC
-+*/
-+	{ MT_RF(0, 1), 0x01},
-+	{ MT_RF(0, 2), 0x11},
-+
-+	/*
-+		R3 ~ R7: VCO Cal.
-+	*/
-+	{ MT_RF(0, 3), 0x73}, /* VCO Freq Cal - No Bypass, VCO Amp Cal - No Bypass */
-+	{ MT_RF(0, 4), 0x30}, /* R4 b<7>=1, VCO cal */
-+	{ MT_RF(0, 5), 0x00},
-+	{ MT_RF(0, 6), 0x41}, /* Set the open loop amplitude to middle since bypassing amplitude calibration */
-+	{ MT_RF(0, 7), 0x00},
-+
-+	/*
-+		XO
-+	*/
-+	{ MT_RF(0,  8), 0x00},
-+	{ MT_RF(0,  9), 0x00},
-+	{ MT_RF(0, 10), 0x0C},
-+	{ MT_RF(0, 11), 0x00},
-+	{ MT_RF(0, 12), 0x00},
-+
-+	/*
-+		BG
-+	*/
-+	{ MT_RF(0, 13), 0x00},
-+	{ MT_RF(0, 14), 0x00},
-+	{ MT_RF(0, 15), 0x00},
-+
-+	/*
-+		LDO
-+	*/
-+	{ MT_RF(0, 19), 0x20},
-+	/*
-+		XO
-+	*/
-+	{ MT_RF(0, 20), 0x22},
-+	{ MT_RF(0, 21), 0x12},
-+	{ MT_RF(0, 23), 0x00},
-+	{ MT_RF(0, 24), 0x33}, /* See band selection for R24<1:0> */
-+	{ MT_RF(0, 25), 0x00},
-+
-+	/*
-+		PLL, See Freq Selection
-+	*/
-+	{ MT_RF(0, 26), 0x00},
-+	{ MT_RF(0, 27), 0x00},
-+	{ MT_RF(0, 28), 0x00},
-+	{ MT_RF(0, 29), 0x00},
-+	{ MT_RF(0, 30), 0x00},
-+	{ MT_RF(0, 31), 0x00},
-+	{ MT_RF(0, 32), 0x00},
-+	{ MT_RF(0, 33), 0x00},
-+	{ MT_RF(0, 34), 0x00},
-+	{ MT_RF(0, 35), 0x00},
-+	{ MT_RF(0, 36), 0x00},
-+	{ MT_RF(0, 37), 0x00},
-+
-+	/*
-+		LO Buffer
-+	*/
-+	{ MT_RF(0, 38), 0x2F},
-+
-+	/*
-+		Test Ports
-+	*/
-+	{ MT_RF(0, 64), 0x00},
-+	{ MT_RF(0, 65), 0x80},
-+	{ MT_RF(0, 66), 0x01},
-+	{ MT_RF(0, 67), 0x04},
-+
-+	/*
-+		ADC/DAC
-+	*/
-+	{ MT_RF(0, 68), 0x00},
-+	{ MT_RF(0, 69), 0x08},
-+	{ MT_RF(0, 70), 0x08},
-+	{ MT_RF(0, 71), 0x40},
-+	{ MT_RF(0, 72), 0xD0},
-+	{ MT_RF(0, 73), 0x93},
-+};
-+
-+static const struct mt76_reg_pair mt76x0_rf_2g_channel_0_tab[] = {
-+/*
-+	Bank 5 - Channel 0 2G RF registers
-+*/
-+	/*
-+		RX logic operation
-+	*/
-+	/* RF_R00 Change in SelectBand6590 */
-+
-+	{ MT_RF(5, 2), 0x0C}, /* 5G+2G (MT7610U) */
-+	{ MT_RF(5, 3), 0x00},
-+
-+	/*
-+		TX logic operation
-+	*/
-+	{ MT_RF(5, 4), 0x00},
-+	{ MT_RF(5, 5), 0x84},
-+	{ MT_RF(5, 6), 0x02},
-+
-+	/*
-+		LDO
-+	*/
-+	{ MT_RF(5, 7), 0x00},
-+	{ MT_RF(5, 8), 0x00},
-+	{ MT_RF(5, 9), 0x00},
-+
-+	/*
-+		RX
-+	*/
-+	{ MT_RF(5, 10), 0x51},
-+	{ MT_RF(5, 11), 0x22},
-+	{ MT_RF(5, 12), 0x22},
-+	{ MT_RF(5, 13), 0x0F},
-+	{ MT_RF(5, 14), 0x47}, /* Increase mixer current for more gain */
-+	{ MT_RF(5, 15), 0x25},
-+	{ MT_RF(5, 16), 0xC7}, /* Tune LNA2 tank */
-+	{ MT_RF(5, 17), 0x00},
-+	{ MT_RF(5, 18), 0x00},
-+	{ MT_RF(5, 19), 0x30}, /* Improve max Pin */
-+	{ MT_RF(5, 20), 0x33},
-+	{ MT_RF(5, 21), 0x02},
-+	{ MT_RF(5, 22), 0x32}, /* Tune LNA1 tank */
-+	{ MT_RF(5, 23), 0x00},
-+	{ MT_RF(5, 24), 0x25},
-+	{ MT_RF(5, 26), 0x00},
-+	{ MT_RF(5, 27), 0x12},
-+	{ MT_RF(5, 28), 0x0F},
-+	{ MT_RF(5, 29), 0x00},
-+
-+	/*
-+		LOGEN
-+	*/
-+	{ MT_RF(5, 30), 0x51}, /* Tune LOGEN tank */
-+	{ MT_RF(5, 31), 0x35},
-+	{ MT_RF(5, 32), 0x31},
-+	{ MT_RF(5, 33), 0x31},
-+	{ MT_RF(5, 34), 0x34},
-+	{ MT_RF(5, 35), 0x03},
-+	{ MT_RF(5, 36), 0x00},
-+
-+	/*
-+		TX
-+	*/
-+	{ MT_RF(5, 37), 0xDD}, /* Improve 3.2GHz spur */
-+	{ MT_RF(5, 38), 0xB3},
-+	{ MT_RF(5, 39), 0x33},
-+	{ MT_RF(5, 40), 0xB1},
-+	{ MT_RF(5, 41), 0x71},
-+	{ MT_RF(5, 42), 0xF2},
-+	{ MT_RF(5, 43), 0x47},
-+	{ MT_RF(5, 44), 0x77},
-+	{ MT_RF(5, 45), 0x0E},
-+	{ MT_RF(5, 46), 0x10},
-+	{ MT_RF(5, 47), 0x00},
-+	{ MT_RF(5, 48), 0x53},
-+	{ MT_RF(5, 49), 0x03},
-+	{ MT_RF(5, 50), 0xEF},
-+	{ MT_RF(5, 51), 0xC7},
-+	{ MT_RF(5, 52), 0x62},
-+	{ MT_RF(5, 53), 0x62},
-+	{ MT_RF(5, 54), 0x00},
-+	{ MT_RF(5, 55), 0x00},
-+	{ MT_RF(5, 56), 0x0F},
-+	{ MT_RF(5, 57), 0x0F},
-+	{ MT_RF(5, 58), 0x16},
-+	{ MT_RF(5, 59), 0x16},
-+	{ MT_RF(5, 60), 0x10},
-+	{ MT_RF(5, 61), 0x10},
-+	{ MT_RF(5, 62), 0xD0},
-+	{ MT_RF(5, 63), 0x6C},
-+	{ MT_RF(5, 64), 0x58},
-+	{ MT_RF(5, 65), 0x58},
-+	{ MT_RF(5, 66), 0xF2},
-+	{ MT_RF(5, 67), 0xE8},
-+	{ MT_RF(5, 68), 0xF0},
-+	{ MT_RF(5, 69), 0xF0},
-+	{ MT_RF(5, 127), 0x04},
-+};
-+
-+static const struct mt76_reg_pair mt76x0_rf_5g_channel_0_tab[] = {
-+/*
-+	Bank 6 - Channel 0 5G RF registers
-+*/
-+	/*
-+		RX logic operation
-+	*/
-+	/* RF_R00 Change in SelectBandmt76x0 */
-+
-+	{ MT_RF(6, 2), 0x0C},
-+	{ MT_RF(6, 3), 0x00},
-+
-+	/*
-+		TX logic operation
-+	*/
-+	{ MT_RF(6, 4), 0x00},
-+	{ MT_RF(6, 5), 0x84},
-+	{ MT_RF(6, 6), 0x02},
-+
-+	/*
-+		LDO
-+	*/
-+	{ MT_RF(6, 7), 0x00},
-+	{ MT_RF(6, 8), 0x00},
-+	{ MT_RF(6, 9), 0x00},
-+
-+	/*
-+		RX
-+	*/
-+	{ MT_RF(6, 10), 0x00},
-+	{ MT_RF(6, 11), 0x01},
-+
-+	{ MT_RF(6, 13), 0x23},
-+	{ MT_RF(6, 14), 0x00},
-+	{ MT_RF(6, 15), 0x04},
-+	{ MT_RF(6, 16), 0x22},
-+
-+	{ MT_RF(6, 18), 0x08},
-+	{ MT_RF(6, 19), 0x00},
-+	{ MT_RF(6, 20), 0x00},
-+	{ MT_RF(6, 21), 0x00},
-+	{ MT_RF(6, 22), 0xFB},
-+
-+	/*
-+		LOGEN5G
-+	*/
-+	{ MT_RF(6, 25), 0x76},
-+	{ MT_RF(6, 26), 0x24},
-+	{ MT_RF(6, 27), 0x04},
-+	{ MT_RF(6, 28), 0x00},
-+	{ MT_RF(6, 29), 0x00},
-+
-+	/*
-+		TX
-+	*/
-+	{ MT_RF(6, 37), 0xBB},
-+	{ MT_RF(6, 38), 0xB3},
-+
-+	{ MT_RF(6, 40), 0x33},
-+	{ MT_RF(6, 41), 0x33},
-+
-+	{ MT_RF(6, 43), 0x03},
-+	{ MT_RF(6, 44), 0xB3},
-+
-+	{ MT_RF(6, 46), 0x17},
-+	{ MT_RF(6, 47), 0x0E},
-+	{ MT_RF(6, 48), 0x10},
-+	{ MT_RF(6, 49), 0x07},
-+
-+	{ MT_RF(6, 62), 0x00},
-+	{ MT_RF(6, 63), 0x00},
-+	{ MT_RF(6, 64), 0xF1},
-+	{ MT_RF(6, 65), 0x0F},
-+};
-+
-+static const struct mt76_reg_pair mt76x0_rf_vga_channel_0_tab[] = {
-+/*
-+	Bank 7 - Channel 0 VGA RF registers
-+*/
-+	/* E3 CR */
-+	{ MT_RF(7, 0), 0x47}, /* Allow BBP/MAC to do calibration */
-+	{ MT_RF(7, 1), 0x00},
-+	{ MT_RF(7, 2), 0x00},
-+	{ MT_RF(7, 3), 0x00},
-+	{ MT_RF(7, 4), 0x00},
-+
-+	{ MT_RF(7, 10), 0x13},
-+	{ MT_RF(7, 11), 0x0F},
-+	{ MT_RF(7, 12), 0x13}, /* For dcoc */
-+	{ MT_RF(7, 13), 0x13}, /* For dcoc */
-+	{ MT_RF(7, 14), 0x13}, /* For dcoc */
-+	{ MT_RF(7, 15), 0x20}, /* For dcoc */
-+	{ MT_RF(7, 16), 0x22}, /* For dcoc */
-+
-+	{ MT_RF(7, 17), 0x7C},
-+
-+	{ MT_RF(7, 18), 0x00},
-+	{ MT_RF(7, 19), 0x00},
-+	{ MT_RF(7, 20), 0x00},
-+	{ MT_RF(7, 21), 0xF1},
-+	{ MT_RF(7, 22), 0x11},
-+	{ MT_RF(7, 23), 0xC2},
-+	{ MT_RF(7, 24), 0x41},
-+	{ MT_RF(7, 25), 0x20},
-+	{ MT_RF(7, 26), 0x40},
-+	{ MT_RF(7, 27), 0xD7},
-+	{ MT_RF(7, 28), 0xA2},
-+	{ MT_RF(7, 29), 0x60},
-+	{ MT_RF(7, 30), 0x49},
-+	{ MT_RF(7, 31), 0x20},
-+	{ MT_RF(7, 32), 0x44},
-+	{ MT_RF(7, 33), 0xC1},
-+	{ MT_RF(7, 34), 0x60},
-+	{ MT_RF(7, 35), 0xC0},
-+
-+	{ MT_RF(7, 61), 0x01},
-+
-+	{ MT_RF(7, 72), 0x3C},
-+	{ MT_RF(7, 73), 0x34},
-+	{ MT_RF(7, 74), 0x00},
-+};
-+
-+static const struct mt76x0_rf_switch_item mt76x0_rf_bw_switch_tab[] = {
-+	/*   Bank, 		Register,	Bw/Band, 	Value */
-+	{ MT_RF(0, 17),		RF_G_BAND | RF_BW_20,	0x00},
-+	{ MT_RF(0, 17),		RF_G_BAND | RF_BW_40,	0x00},
-+	{ MT_RF(0, 17),		RF_A_BAND | RF_BW_20,	0x00},
-+	{ MT_RF(0, 17),		RF_A_BAND | RF_BW_40,	0x00},
-+	{ MT_RF(0, 17),		RF_A_BAND | RF_BW_80,	0x00},
-+
-+	/* TODO: need to check B7.R6 & B7.R7 setting for 2.4G again @20121112 */
-+	{ MT_RF(7,  6),		RF_G_BAND | RF_BW_20,	0x40},
-+	{ MT_RF(7,  6),		RF_G_BAND | RF_BW_40,	0x1C},
-+	{ MT_RF(7,  6),		RF_A_BAND | RF_BW_20,	0x40},
-+	{ MT_RF(7,  6),		RF_A_BAND | RF_BW_40,	0x20},
-+	{ MT_RF(7,  6),		RF_A_BAND | RF_BW_80,	0x10},
-+
-+	{ MT_RF(7,  7),		RF_G_BAND | RF_BW_20,	0x40},
-+	{ MT_RF(7,  7),		RF_G_BAND | RF_BW_40,	0x20},
-+	{ MT_RF(7,  7),		RF_A_BAND | RF_BW_20,	0x40},
-+	{ MT_RF(7,  7),		RF_A_BAND | RF_BW_40,	0x20},
-+	{ MT_RF(7,  7),		RF_A_BAND | RF_BW_80,	0x10},
-+
-+	{ MT_RF(7,  8),		RF_G_BAND | RF_BW_20,	0x03},
-+	{ MT_RF(7,  8),		RF_G_BAND | RF_BW_40,	0x01},
-+	{ MT_RF(7,  8),		RF_A_BAND | RF_BW_20,	0x03},
-+	{ MT_RF(7,  8),		RF_A_BAND | RF_BW_40,	0x01},
-+	{ MT_RF(7,  8),		RF_A_BAND | RF_BW_80,	0x00},
-+
-+	/* TODO: need to check B7.R58 & B7.R59 setting for 2.4G again @20121112 */
-+	{ MT_RF(7, 58),		RF_G_BAND | RF_BW_20,	0x40},
-+	{ MT_RF(7, 58),		RF_G_BAND | RF_BW_40,	0x40},
-+	{ MT_RF(7, 58),		RF_A_BAND | RF_BW_20,	0x40},
-+	{ MT_RF(7, 58),		RF_A_BAND | RF_BW_40,	0x40},
-+	{ MT_RF(7, 58),		RF_A_BAND | RF_BW_80,	0x10},
-+
-+	{ MT_RF(7, 59),		RF_G_BAND | RF_BW_20,	0x40},
-+	{ MT_RF(7, 59),		RF_G_BAND | RF_BW_40,	0x40},
-+	{ MT_RF(7, 59),		RF_A_BAND | RF_BW_20,	0x40},
-+	{ MT_RF(7, 59),		RF_A_BAND | RF_BW_40,	0x40},
-+	{ MT_RF(7, 59),		RF_A_BAND | RF_BW_80,	0x10},
-+
-+	{ MT_RF(7, 60),		RF_G_BAND | RF_BW_20,	0xAA},
-+	{ MT_RF(7, 60),		RF_G_BAND | RF_BW_40,	0xAA},
-+	{ MT_RF(7, 60),		RF_A_BAND | RF_BW_20,	0xAA},
-+	{ MT_RF(7, 60),		RF_A_BAND | RF_BW_40,	0xAA},
-+	{ MT_RF(7, 60),		RF_A_BAND | RF_BW_80,	0xAA},
-+
-+	{ MT_RF(7, 76),		RF_BW_20,	0x40},
-+	{ MT_RF(7, 76),		RF_BW_40,	0x40},
-+	{ MT_RF(7, 76),		RF_BW_80,	0x10},
-+
-+	{ MT_RF(7, 77),		RF_BW_20,	0x40},
-+	{ MT_RF(7, 77),		RF_BW_40,	0x40},
-+	{ MT_RF(7, 77),		RF_BW_80,	0x10},
-+};
-+
-+static const struct mt76x0_rf_switch_item mt76x0_rf_band_switch_tab[] = {
-+	/*   Bank, 		Register,	Bw/Band, 		Value */
-+	{ MT_RF(0, 16),		RF_G_BAND,		0x20},
-+	{ MT_RF(0, 16),		RF_A_BAND,		0x20},
-+
-+	{ MT_RF(0, 18),		RF_G_BAND,		0x00},
-+	{ MT_RF(0, 18),		RF_A_BAND,		0x00},
-+
-+	{ MT_RF(0, 39),		RF_G_BAND,		0x36},
-+	{ MT_RF(0, 39),		RF_A_BAND_LB,	0x34},
-+	{ MT_RF(0, 39),		RF_A_BAND_MB,	0x33},
-+	{ MT_RF(0, 39),		RF_A_BAND_HB,	0x31},
-+	{ MT_RF(0, 39),		RF_A_BAND_11J,	0x36},
-+
-+	{ MT_RF(6, 12),		RF_A_BAND_LB,	0x44},
-+	{ MT_RF(6, 12),		RF_A_BAND_MB,	0x44},
-+	{ MT_RF(6, 12),		RF_A_BAND_HB,	0x55},
-+	{ MT_RF(6, 12),		RF_A_BAND_11J,	0x44},
-+
-+	{ MT_RF(6, 17),		RF_A_BAND_LB,	0x02},
-+	{ MT_RF(6, 17),		RF_A_BAND_MB,	0x00},
-+	{ MT_RF(6, 17),		RF_A_BAND_HB,	0x00},
-+	{ MT_RF(6, 17),		RF_A_BAND_11J,	0x05},
-+
-+	{ MT_RF(6, 24),		RF_A_BAND_LB,	0xA1},
-+	{ MT_RF(6, 24),		RF_A_BAND_MB,	0x41},
-+	{ MT_RF(6, 24),		RF_A_BAND_HB,	0x21},
-+	{ MT_RF(6, 24),		RF_A_BAND_11J,	0xE1},
-+
-+	{ MT_RF(6, 39),		RF_A_BAND_LB,	0x36},
-+	{ MT_RF(6, 39),		RF_A_BAND_MB,	0x34},
-+	{ MT_RF(6, 39),		RF_A_BAND_HB,	0x32},
-+	{ MT_RF(6, 39),		RF_A_BAND_11J,	0x37},
-+
-+	{ MT_RF(6, 42),		RF_A_BAND_LB,	0xFB},
-+	{ MT_RF(6, 42),		RF_A_BAND_MB,	0xF3},
-+	{ MT_RF(6, 42),		RF_A_BAND_HB,	0xEB},
-+	{ MT_RF(6, 42),		RF_A_BAND_11J,	0xEB},
-+
-+	/* Move R6-R45, R50~R59 to mt76x0_RF_INT_PA_5G_Channel_0_RegTb/mt76x0_RF_EXT_PA_5G_Channel_0_RegTb */
-+
-+	{ MT_RF(6, 127),	RF_G_BAND,		0x84},
-+	{ MT_RF(6, 127),	RF_A_BAND,		0x04},
-+
-+	{ MT_RF(7, 5),		RF_G_BAND,		0x40},
-+	{ MT_RF(7, 5),		RF_A_BAND,		0x00},
-+
-+	{ MT_RF(7, 9),		RF_G_BAND,		0x00},
-+	{ MT_RF(7, 9),		RF_A_BAND,		0x00},
-+
-+	{ MT_RF(7, 70),		RF_G_BAND,		0x00},
-+	{ MT_RF(7, 70),		RF_A_BAND,		0x6D},
-+
-+	{ MT_RF(7, 71),		RF_G_BAND,		0x00},
-+	{ MT_RF(7, 71),		RF_A_BAND,		0xB0},
-+
-+	{ MT_RF(7, 78),		RF_G_BAND,		0x00},
-+	{ MT_RF(7, 78),		RF_A_BAND,		0x55},
-+
-+	{ MT_RF(7, 79),		RF_G_BAND,		0x00},
-+	{ MT_RF(7, 79),		RF_A_BAND,		0x55},
-+};
-+
-+static const struct mt76x0_freq_item mt76x0_frequency_plan[] = {
-+	{1,	RF_G_BAND,	0x02, 0x3F, 0x28, 0xDD, 0xE2, 0x40, 0x02, 0x40, 0x02, 0, 0, 1, 0x28, 0, 0x30, 0, 0, 0x3}, /* Freq 2412 */
-+	{2, 	RF_G_BAND,	0x02, 0x3F, 0x3C, 0xDD, 0xE4, 0x40, 0x07, 0x40, 0x02, 0, 0, 1, 0xA1, 0, 0x30, 0, 0, 0x1}, /* Freq 2417 */
-+	{3, 	RF_G_BAND,	0x02, 0x3F, 0x3C, 0xDD, 0xE2, 0x40, 0x07, 0x40, 0x0B, 0, 0, 1, 0x50, 0, 0x30, 0, 0, 0x0}, /* Freq 2422 */
-+	{4, 	RF_G_BAND,	0x02, 0x3F, 0x28, 0xDD, 0xD4, 0x40, 0x02, 0x40, 0x09, 0, 0, 1, 0x50, 0, 0x30, 0, 0, 0x0}, /* Freq 2427 */
-+	{5, 	RF_G_BAND,	0x02, 0x3F, 0x3C, 0xDD, 0xD4, 0x40, 0x07, 0x40, 0x02, 0, 0, 1, 0xA2, 0, 0x30, 0, 0, 0x1}, /* Freq 2432 */
-+	{6, 	RF_G_BAND,	0x02, 0x3F, 0x3C, 0xDD, 0xD4, 0x40, 0x07, 0x40, 0x07, 0, 0, 1, 0xA2, 0, 0x30, 0, 0, 0x1}, /* Freq 2437 */
-+	{7, 	RF_G_BAND,	0x02, 0x3F, 0x28, 0xDD, 0xE2, 0x40, 0x02, 0x40, 0x07, 0, 0, 1, 0x28, 0, 0x30, 0, 0, 0x3}, /* Freq 2442 */
-+	{8, 	RF_G_BAND,	0x02, 0x3F, 0x3C, 0xDD, 0xD4, 0x40, 0x07, 0x40, 0x02, 0, 0, 1, 0xA3, 0, 0x30, 0, 0, 0x1}, /* Freq 2447 */
-+	{9, 	RF_G_BAND,	0x02, 0x3F, 0x3C, 0xDD, 0xF2, 0x40, 0x07, 0x40, 0x0D, 0, 0, 1, 0x28, 0, 0x30, 0, 0, 0x3}, /* Freq 2452 */
-+	{10, 	RF_G_BAND,	0x02, 0x3F, 0x28, 0xDD, 0xD4, 0x40, 0x02, 0x40, 0x09, 0, 0, 1, 0x51, 0, 0x30, 0, 0, 0x0}, /* Freq 2457 */
-+	{11, 	RF_G_BAND,	0x02, 0x3F, 0x3C, 0xDD, 0xD4, 0x40, 0x07, 0x40, 0x02, 0, 0, 1, 0xA4, 0, 0x30, 0, 0, 0x1}, /* Freq 2462 */
-+	{12, 	RF_G_BAND,	0x02, 0x3F, 0x3C, 0xDD, 0xD4, 0x40, 0x07, 0x40, 0x07, 0, 0, 1, 0xA4, 0, 0x30, 0, 0, 0x1}, /* Freq 2467 */
-+	{13, 	RF_G_BAND,	0x02, 0x3F, 0x28, 0xDD, 0xF2, 0x40, 0x02, 0x40, 0x02, 0, 0, 1, 0x29, 0, 0x30, 0, 0, 0x3}, /* Freq 2472 */
-+	{14, 	RF_G_BAND,	0x02, 0x3F, 0x28, 0xDD, 0xF2, 0x40, 0x02, 0x40, 0x04, 0, 0, 1, 0x29, 0, 0x30, 0, 0, 0x3}, /* Freq 2484 */
-+
-+	{183, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x70, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x17, 0, 0, 1, 0x28, 0, 0x30, 0, 0, 0x3}, /* Freq 4915 */
-+	{184, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x00, 0, 0, 1, 0x29, 0, 0x30, 0, 0, 0x3}, /* Freq 4920 */
-+	{185, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x01, 0, 0, 1, 0x29, 0, 0x30, 0, 0, 0x3}, /* Freq 4925 */
-+	{187, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x03, 0, 0, 1, 0x29, 0, 0x30, 0, 0, 0x3}, /* Freq 4935 */
-+	{188, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x02, 0, 0, 1, 0x29, 0, 0x30, 0, 0, 0x3}, /* Freq 4940 */
-+	{189, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x05, 0, 0, 1, 0x29, 0, 0x30, 0, 0, 0x3}, /* Freq 4945 */
-+	{192, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x04, 0, 0, 1, 0x29, 0, 0x30, 0, 0, 0x3}, /* Freq 4960 */
-+	{196, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x06, 0, 0, 1, 0x29, 0, 0x30, 0, 0, 0x3}, /* Freq 4980 */
-+
-+	{36, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x02, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5180 */
-+	{37, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x05, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5185 */
-+	{38, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x03, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5190 */
-+	{39, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x07, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5195 */
-+	{40, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x04, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5200 */
-+	{41, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x09, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5205 */
-+	{42, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x05, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5210 */
-+	{43, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x0B, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5215 */
-+	{44, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x06, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5220 */
-+	{45, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x0D, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5225 */
-+	{46, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x07, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5230 */
-+	{47, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x0F, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5235 */
-+	{48, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x08, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5240 */
-+	{49, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x11, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5245 */
-+	{50, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x09, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5250 */
-+	{51, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x13, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5255 */
-+	{52, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x0A, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5260 */
-+	{53, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x15, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5265 */
-+	{54, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x0B, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5270 */
-+	{55, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x70, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x17, 0, 0, 1, 0x2B, 0, 0x30, 0, 0, 0x3}, /* Freq 5275 */
-+	{56, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x00, 0, 0, 1, 0x2C, 0, 0x30, 0, 0, 0x3}, /* Freq 5280 */
-+	{57, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x01, 0, 0, 1, 0x2C, 0, 0x30, 0, 0, 0x3}, /* Freq 5285 */
-+	{58, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x01, 0, 0, 1, 0x2C, 0, 0x30, 0, 0, 0x3}, /* Freq 5290 */
-+	{59, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x03, 0, 0, 1, 0x2C, 0, 0x30, 0, 0, 0x3}, /* Freq 5295 */
-+	{60, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x02, 0, 0, 1, 0x2C, 0, 0x30, 0, 0, 0x3}, /* Freq 5300 */
-+	{61, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x05, 0, 0, 1, 0x2C, 0, 0x30, 0, 0, 0x3}, /* Freq 5305 */
-+	{62, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x03, 0, 0, 1, 0x2C, 0, 0x30, 0, 0, 0x3}, /* Freq 5310 */
-+	{63, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x07, 0, 0, 1, 0x2C, 0, 0x30, 0, 0, 0x3}, /* Freq 5315 */
-+	{64, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x04, 0, 0, 1, 0x2C, 0, 0x30, 0, 0, 0x3}, /* Freq 5320 */
-+
-+	{100, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x0A, 0, 0, 1, 0x2D, 0, 0x30, 0, 0, 0x3}, /* Freq 5500 */
-+	{101, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x15, 0, 0, 1, 0x2D, 0, 0x30, 0, 0, 0x3}, /* Freq 5505 */
-+	{102, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x0B, 0, 0, 1, 0x2D, 0, 0x30, 0, 0, 0x3}, /* Freq 5510 */
-+	{103, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x70, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x17, 0, 0, 1, 0x2D, 0, 0x30, 0, 0, 0x3}, /* Freq 5515 */
-+	{104, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x00, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5520 */
-+	{105, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x01, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5525 */
-+	{106, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x01, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5530 */
-+	{107, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x03, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5535 */
-+	{108, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x02, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5540 */
-+	{109, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x05, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5545 */
-+	{110, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x03, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5550 */
-+	{111, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x07, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5555 */
-+	{112, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x04, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5560 */
-+	{113, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x09, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5565 */
-+	{114, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x05, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5570 */
-+	{115, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x0B, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5575 */
-+	{116, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x06, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5580 */
-+	{117, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x0D, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5585 */
-+	{118, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x07, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5590 */
-+	{119, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x0F, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5595 */
-+	{120, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x08, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5600 */
-+	{121, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x11, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5605 */
-+	{122, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x09, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5610 */
-+	{123, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x13, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5615 */
-+	{124, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x0A, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5620 */
-+	{125, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x15, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5625 */
-+	{126, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x0B, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5630 */
-+	{127, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x70, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x17, 0, 0, 1, 0x2E, 0, 0x30, 0, 0, 0x3}, /* Freq 5635 */
-+	{128, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x00, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5640 */
-+	{129, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x01, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5645 */
-+	{130, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x01, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5650 */
-+	{131, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x03, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5655 */
-+	{132, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x02, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5660 */
-+	{133, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x05, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5665 */
-+	{134, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x03, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5670 */
-+	{135, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x07, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5675 */
-+	{136, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x04, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5680 */
-+
-+	{137, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x09, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5685 */
-+	{138, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x05, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5690 */
-+	{139, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x0B, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5695 */
-+	{140, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x06, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5700 */
-+	{141, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x0D, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5705 */
-+	{142, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x07, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5710 */
-+	{143, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x0F, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5715 */
-+	{144, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x08, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5720 */
-+	{145, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x11, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5725 */
-+	{146, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x09, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5730 */
-+	{147, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x13, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5735 */
-+	{148, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x0A, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5740 */
-+	{149, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x15, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5745 */
-+	{150, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x0B, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5750 */
-+	{151, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x70, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x17, 0, 0, 1, 0x2F, 0, 0x30, 0, 0, 0x3}, /* Freq 5755 */
-+	{152, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x00, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5760 */
-+	{153, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x01, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5765 */
-+	{154, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x01, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5770 */
-+	{155, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x03, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5775 */
-+	{156, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x02, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5780 */
-+	{157, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x05, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5785 */
-+	{158, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x03, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5790 */
-+	{159, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x07, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5795 */
-+	{160, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x04, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5800 */
-+	{161, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x09, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5805 */
-+	{162, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x05, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5810 */
-+	{163, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x0B, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5815 */
-+	{164, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x06, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5820 */
-+	{165, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x0D, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5825 */
-+	{166, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0xDD, 0xD2, 0x40, 0x04, 0x40, 0x07, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5830 */
-+	{167, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x0F, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5835 */
-+	{168, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x08, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5840 */
-+	{169, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x11, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5845 */
-+	{170, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x09, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5850 */
-+	{171, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x13, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5855 */
-+	{172, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x30, 0x97, 0xD2, 0x40, 0x04, 0x40, 0x0A, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5860 */
-+	{173, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x68, 0xDD, 0xD2, 0x40, 0x10, 0x40, 0x15, 0, 0, 1, 0x30, 0, 0x30, 0, 0, 0x3}, /* Freq 5865 */
-+};
-+
-+static const struct mt76x0_freq_item mt76x0_sdm_frequency_plan[] = {
-+	{1,	RF_G_BAND,	0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x28, 0, 0x0, 0x8, 0xCCCC,  0x3}, /* Freq 2412 */
-+	{2, 	RF_G_BAND,	0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x28, 0, 0x0, 0x8, 0x12222, 0x3}, /* Freq 2417 */
-+	{3, 	RF_G_BAND,	0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x28, 0, 0x0, 0x8, 0x17777, 0x3}, /* Freq 2422 */
-+	{4, 	RF_G_BAND,	0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x28, 0, 0x0, 0x8, 0x1CCCC, 0x3}, /* Freq 2427 */
-+	{5, 	RF_G_BAND,	0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x28, 0, 0x0, 0x8, 0x22222, 0x3}, /* Freq 2432 */
-+	{6, 	RF_G_BAND,	0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x28, 0, 0x0, 0x8, 0x27777, 0x3}, /* Freq 2437 */
-+	{7, 	RF_G_BAND,	0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x28, 0, 0x0, 0x8, 0x2CCCC, 0x3}, /* Freq 2442 */
-+	{8, 	RF_G_BAND,	0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x28, 0, 0x0, 0x8, 0x32222, 0x3}, /* Freq 2447 */
-+	{9, 	RF_G_BAND,	0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x28, 0, 0x0, 0x8, 0x37777, 0x3}, /* Freq 2452 */
-+	{10, 	RF_G_BAND,	0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x28, 0, 0x0, 0x8, 0x3CCCC, 0x3}, /* Freq 2457 */
-+	{11, 	RF_G_BAND,	0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x29, 0, 0x0, 0x8, 0x2222, 0x3}, /* Freq 2462 */
-+	{12, 	RF_G_BAND,	0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x29, 0, 0x0, 0x8, 0x7777, 0x3}, /* Freq 2467 */
-+	{13, 	RF_G_BAND,	0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x29, 0, 0x0, 0x8, 0xCCCC, 0x3}, /* Freq 2472 */
-+	{14, 	RF_G_BAND,	0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x29, 0, 0x0, 0x8, 0x19999, 0x3}, /* Freq 2484 */
-+
-+	{183, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x28, 0, 0x0, 0x8, 0x3D555, 0x3}, /* Freq 4915 */
-+	{184, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x29, 0, 0x0, 0x8, 0x0,     0x3}, /* Freq 4920 */
-+	{185, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x29, 0, 0x0, 0x8, 0x2AAA,  0x3}, /* Freq 4925 */
-+	{187, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x29, 0, 0x0, 0x8, 0x8000,  0x3}, /* Freq 4935 */
-+	{188, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x29, 0, 0x0, 0x8, 0xAAAA,  0x3}, /* Freq 4940 */
-+	{189, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x29, 0, 0x0, 0x8, 0xD555,  0x3}, /* Freq 4945 */
-+	{192, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x29, 0, 0x0, 0x8, 0x15555, 0x3}, /* Freq 4960 */
-+	{196, 	(RF_A_BAND | RF_A_BAND_11J), 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x29, 0, 0x0, 0x8, 0x20000, 0x3}, /* Freq 4980 */
-+
-+	{36, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0xAAAA,  0x3}, /* Freq 5180 */
-+	{37, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0xD555,  0x3}, /* Freq 5185 */
-+	{38, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x10000, 0x3}, /* Freq 5190 */
-+	{39, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x12AAA, 0x3}, /* Freq 5195 */
-+	{40, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x15555, 0x3}, /* Freq 5200 */
-+	{41, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x18000, 0x3}, /* Freq 5205 */
-+	{42, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x1AAAA, 0x3}, /* Freq 5210 */
-+	{43, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x1D555, 0x3}, /* Freq 5215 */
-+	{44, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x20000, 0x3}, /* Freq 5220 */
-+	{45, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x22AAA, 0x3}, /* Freq 5225 */
-+	{46, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x25555, 0x3}, /* Freq 5230 */
-+	{47, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x28000, 0x3}, /* Freq 5235 */
-+	{48, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x2AAAA, 0x3}, /* Freq 5240 */
-+	{49, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x2D555, 0x3}, /* Freq 5245 */
-+	{50, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x30000, 0x3}, /* Freq 5250 */
-+	{51, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x32AAA, 0x3}, /* Freq 5255 */
-+	{52, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x35555, 0x3}, /* Freq 5260 */
-+	{53, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x38000, 0x3}, /* Freq 5265 */
-+	{54, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x3AAAA, 0x3}, /* Freq 5270 */
-+	{55, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2B, 0, 0x0, 0x8, 0x3D555, 0x3}, /* Freq 5275 */
-+	{56, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2C, 0, 0x0, 0x8, 0x00000, 0x3}, /* Freq 5280 */
-+	{57, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2C, 0, 0x0, 0x8, 0x02AAA, 0x3}, /* Freq 5285 */
-+	{58, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2C, 0, 0x0, 0x8, 0x05555, 0x3}, /* Freq 5290 */
-+	{59, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2C, 0, 0x0, 0x8, 0x08000, 0x3}, /* Freq 5295 */
-+	{60, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2C, 0, 0x0, 0x8, 0x0AAAA, 0x3}, /* Freq 5300 */
-+	{61, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2C, 0, 0x0, 0x8, 0x0D555, 0x3}, /* Freq 5305 */
-+	{62, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2C, 0, 0x0, 0x8, 0x10000, 0x3}, /* Freq 5310 */
-+	{63, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2C, 0, 0x0, 0x8, 0x12AAA, 0x3}, /* Freq 5315 */
-+	{64, 	(RF_A_BAND | RF_A_BAND_LB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2C, 0, 0x0, 0x8, 0x15555, 0x3}, /* Freq 5320 */
-+
-+	{100, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2D, 0, 0x0, 0x8, 0x35555, 0x3}, /* Freq 5500 */
-+	{101, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2D, 0, 0x0, 0x8, 0x38000, 0x3}, /* Freq 5505 */
-+	{102, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2D, 0, 0x0, 0x8, 0x3AAAA, 0x3}, /* Freq 5510 */
-+	{103, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2D, 0, 0x0, 0x8, 0x3D555, 0x3}, /* Freq 5515 */
-+	{104, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x00000, 0x3}, /* Freq 5520 */
-+	{105, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x02AAA, 0x3}, /* Freq 5525 */
-+	{106, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x05555, 0x3}, /* Freq 5530 */
-+	{107, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x08000, 0x3}, /* Freq 5535 */
-+	{108, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x0AAAA, 0x3}, /* Freq 5540 */
-+	{109, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x0D555, 0x3}, /* Freq 5545 */
-+	{110, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x10000, 0x3}, /* Freq 5550 */
-+	{111, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x12AAA, 0x3}, /* Freq 5555 */
-+	{112, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x15555, 0x3}, /* Freq 5560 */
-+	{113, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x18000, 0x3}, /* Freq 5565 */
-+	{114, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x1AAAA, 0x3}, /* Freq 5570 */
-+	{115, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x1D555, 0x3}, /* Freq 5575 */
-+	{116, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x20000, 0x3}, /* Freq 5580 */
-+	{117, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x22AAA, 0x3}, /* Freq 5585 */
-+	{118, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x25555, 0x3}, /* Freq 5590 */
-+	{119, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x28000, 0x3}, /* Freq 5595 */
-+	{120, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x2AAAA, 0x3}, /* Freq 5600 */
-+	{121, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x2D555, 0x3}, /* Freq 5605 */
-+	{122, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x30000, 0x3}, /* Freq 5610 */
-+	{123, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x32AAA, 0x3}, /* Freq 5615 */
-+	{124, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x35555, 0x3}, /* Freq 5620 */
-+	{125, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x38000, 0x3}, /* Freq 5625 */
-+	{126, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x3AAAA, 0x3}, /* Freq 5630 */
-+	{127, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2E, 0, 0x0, 0x8, 0x3D555, 0x3}, /* Freq 5635 */
-+	{128, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x00000, 0x3}, /* Freq 5640 */
-+	{129, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x02AAA, 0x3}, /* Freq 5645 */
-+	{130, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x05555, 0x3}, /* Freq 5650 */
-+	{131, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x08000, 0x3}, /* Freq 5655 */
-+	{132, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x0AAAA, 0x3}, /* Freq 5660 */
-+	{133, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x0D555, 0x3}, /* Freq 5665 */
-+	{134, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x10000, 0x3}, /* Freq 5670 */
-+	{135, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x12AAA, 0x3}, /* Freq 5675 */
-+	{136, 	(RF_A_BAND | RF_A_BAND_MB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x15555, 0x3}, /* Freq 5680 */
-+
-+	{137, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x18000, 0x3}, /* Freq 5685 */
-+	{138, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x1AAAA, 0x3}, /* Freq 5690 */
-+	{139, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x1D555, 0x3}, /* Freq 5695 */
-+	{140, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x20000, 0x3}, /* Freq 5700 */
-+	{141, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x22AAA, 0x3}, /* Freq 5705 */
-+	{142, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x25555, 0x3}, /* Freq 5710 */
-+	{143, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x28000, 0x3}, /* Freq 5715 */
-+	{144, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x2AAAA, 0x3}, /* Freq 5720 */
-+	{145, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x2D555, 0x3}, /* Freq 5725 */
-+	{146, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x30000, 0x3}, /* Freq 5730 */
-+	{147, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x32AAA, 0x3}, /* Freq 5735 */
-+	{148, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x35555, 0x3}, /* Freq 5740 */
-+	{149, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x38000, 0x3}, /* Freq 5745 */
-+	{150, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x3AAAA, 0x3}, /* Freq 5750 */
-+	{151, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x2F, 0, 0x0, 0x8, 0x3D555, 0x3}, /* Freq 5755 */
-+	{152, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x00000, 0x3}, /* Freq 5760 */
-+	{153, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x02AAA, 0x3}, /* Freq 5765 */
-+	{154, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x05555, 0x3}, /* Freq 5770 */
-+	{155, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x08000, 0x3}, /* Freq 5775 */
-+	{156, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x0AAAA, 0x3}, /* Freq 5780 */
-+	{157, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x0D555, 0x3}, /* Freq 5785 */
-+	{158, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x10000, 0x3}, /* Freq 5790 */
-+	{159, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x12AAA, 0x3}, /* Freq 5795 */
-+	{160, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x15555, 0x3}, /* Freq 5800 */
-+	{161, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x18000, 0x3}, /* Freq 5805 */
-+	{162, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x1AAAA, 0x3}, /* Freq 5810 */
-+	{163, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x1D555, 0x3}, /* Freq 5815 */
-+	{164, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x20000, 0x3}, /* Freq 5820 */
-+	{165, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x22AAA, 0x3}, /* Freq 5825 */
-+	{166, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x25555, 0x3}, /* Freq 5830 */
-+	{167, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x28000, 0x3}, /* Freq 5835 */
-+	{168, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x2AAAA, 0x3}, /* Freq 5840 */
-+	{169, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x2D555, 0x3}, /* Freq 5845 */
-+	{170, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x30000, 0x3}, /* Freq 5850 */
-+	{171, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x32AAA, 0x3}, /* Freq 5855 */
-+	{172, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x35555, 0x3}, /* Freq 5860 */
-+	{173, 	(RF_A_BAND | RF_A_BAND_HB),	 0x02, 0x3F, 0x7F, 0xDD, 0xC3, 0x40, 0x0, 0x80, 0x0, 0/*0 -> 1*/, 0, 0, 0x30, 0, 0x0, 0x8, 0x38000, 0x3}, /* Freq 5865 */
-+};
-+
-+static const u8 mt76x0_sdm_channel[] = {
-+	183, 185, 43, 45, 54, 55, 57, 58, 102, 103, 105, 106, 115, 117, 126, 127, 129, 130, 139, 141, 150, 151, 153, 154, 163, 165
-+};
-+
-+static const struct mt76x0_rf_switch_item mt76x0_rf_ext_pa_tab[] = {
-+	{ MT_RF(6, 45),		RF_A_BAND_LB,	0x63},
-+	{ MT_RF(6, 45),		RF_A_BAND_MB,	0x43},
-+	{ MT_RF(6, 45),		RF_A_BAND_HB,	0x33},
-+	{ MT_RF(6, 45),		RF_A_BAND_11J,	0x73},
-+
-+	{ MT_RF(6, 50),		RF_A_BAND_LB,	0x02},
-+	{ MT_RF(6, 50),		RF_A_BAND_MB,	0x02},
-+	{ MT_RF(6, 50),		RF_A_BAND_HB,	0x02},
-+	{ MT_RF(6, 50),		RF_A_BAND_11J,	0x02},
-+
-+	{ MT_RF(6, 51),		RF_A_BAND_LB,	0x02},
-+	{ MT_RF(6, 51),		RF_A_BAND_MB,	0x02},
-+	{ MT_RF(6, 51),		RF_A_BAND_HB,	0x02},
-+	{ MT_RF(6, 51),		RF_A_BAND_11J,	0x02},
-+
-+	{ MT_RF(6, 52),		RF_A_BAND_LB,	0x08},
-+	{ MT_RF(6, 52),		RF_A_BAND_MB,	0x08},
-+	{ MT_RF(6, 52),		RF_A_BAND_HB,	0x08},
-+	{ MT_RF(6, 52),		RF_A_BAND_11J,	0x08},
-+
-+	{ MT_RF(6, 53),		RF_A_BAND_LB,	0x08},
-+	{ MT_RF(6, 53),		RF_A_BAND_MB,	0x08},
-+	{ MT_RF(6, 53),		RF_A_BAND_HB,	0x08},
-+	{ MT_RF(6, 53),		RF_A_BAND_11J,	0x08},
-+
-+	{ MT_RF(6, 54),		RF_A_BAND_LB,	0x0A},
-+	{ MT_RF(6, 54),		RF_A_BAND_MB,	0x0A},
-+	{ MT_RF(6, 54),		RF_A_BAND_HB,	0x0A},
-+	{ MT_RF(6, 54),		RF_A_BAND_11J,	0x0A},
-+
-+	{ MT_RF(6, 55),		RF_A_BAND_LB,	0x0A},
-+	{ MT_RF(6, 55),		RF_A_BAND_MB,	0x0A},
-+	{ MT_RF(6, 55),		RF_A_BAND_HB,	0x0A},
-+	{ MT_RF(6, 55),		RF_A_BAND_11J,	0x0A},
-+
-+	{ MT_RF(6, 56),		RF_A_BAND_LB,	0x05},
-+	{ MT_RF(6, 56),		RF_A_BAND_MB,	0x05},
-+	{ MT_RF(6, 56),		RF_A_BAND_HB,	0x05},
-+	{ MT_RF(6, 56),		RF_A_BAND_11J,	0x05},
-+
-+	{ MT_RF(6, 57),		RF_A_BAND_LB,	0x05},
-+	{ MT_RF(6, 57),		RF_A_BAND_MB,	0x05},
-+	{ MT_RF(6, 57),		RF_A_BAND_HB,	0x05},
-+	{ MT_RF(6, 57),		RF_A_BAND_11J,	0x05},
-+
-+	{ MT_RF(6, 58),		RF_A_BAND_LB,	0x05},
-+	{ MT_RF(6, 58),		RF_A_BAND_MB,	0x03},
-+	{ MT_RF(6, 58),		RF_A_BAND_HB,	0x02},
-+	{ MT_RF(6, 58),		RF_A_BAND_11J,	0x07},
-+
-+	{ MT_RF(6, 59),		RF_A_BAND_LB,	0x05},
-+	{ MT_RF(6, 59),		RF_A_BAND_MB,	0x03},
-+	{ MT_RF(6, 59),		RF_A_BAND_HB,	0x02},
-+	{ MT_RF(6, 59),		RF_A_BAND_11J,	0x07},
-+};
-+
-+#endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c b/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c
-new file mode 100644
-index 000000000000..083028048723
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c
-@@ -0,0 +1,1008 @@
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+@@ -0,0 +1,720 @@
 +/*
 + * (c) Copyright 2002-2010, Ralink Technology, Inc.
 + * Copyright (C) 2014 Felix Fietkau <nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
@@ -823,1005 +43,718 @@ index 000000000000..083028048723
 + */
 +
 +#include "mt76x0.h"
-+#include "mcu.h"
 +#include "eeprom.h"
 +#include "trace.h"
-+#include "phy.h"
++#include "mcu.h"
++#include "usb.h"
++
 +#include "initvals.h"
-+#include "initvals_phy.h"
 +
-+#include <linux/etherdevice.h>
-+
-+static int
-+mt76x0_rf_csr_wr(struct mt76x0_dev *dev, u32 offset, u8 value)
++static void
++mt76x0_set_wlan_state(struct mt76x0_dev *dev, u32 val, bool enable)
 +{
-+	int ret = 0;
-+	u8 bank, reg;
++	int i;
 +
-+	if (test_bit(MT76_REMOVED, &dev->mt76.state))
-+		return -ENODEV;
++	/* Note: we don't turn off WLAN_CLK because that makes the device
++	 *	 not respond properly on the probe path.
++	 *	 In case anyone (PSM?) wants to use this function we can
++	 *	 bring the clock stuff back and fixup the probe path.
++	 */
 +
-+	bank = MT_RF_BANK(offset);
-+	reg = MT_RF_REG(offset);
++	if (enable)
++		val |= (MT_WLAN_FUN_CTRL_WLAN_EN |
++			MT_WLAN_FUN_CTRL_WLAN_CLK_EN);
++	else
++		val &= ~(MT_WLAN_FUN_CTRL_WLAN_EN);
 +
-+	if (WARN_ON_ONCE(reg > 64) || WARN_ON_ONCE(bank) > 8)
-+		return -EINVAL;
++	mt76_wr(dev, MT_WLAN_FUN_CTRL, val);
++	udelay(20);
 +
-+	mutex_lock(&dev->reg_atomic_mutex);
++	if (!enable)
++		return;
 +
-+	if (!mt76_poll(dev, MT_RF_CSR_CFG, MT_RF_CSR_CFG_KICK, 0, 100)) {
-+		ret = -ETIMEDOUT;
-+		goto out;
++	for (i = 200; i; i--) {
++		val = mt76_rr(dev, MT_CMB_CTRL);
++
++		if (val & MT_CMB_CTRL_XTAL_RDY && val & MT_CMB_CTRL_PLL_LD)
++			break;
++
++		udelay(20);
 +	}
 +
-+	mt76_wr(dev, MT_RF_CSR_CFG,
-+		   FIELD_PREP(MT_RF_CSR_CFG_DATA, value) |
-+		   FIELD_PREP(MT_RF_CSR_CFG_REG_BANK, bank) |
-+		   FIELD_PREP(MT_RF_CSR_CFG_REG_ID, reg) |
-+		   MT_RF_CSR_CFG_WR |
-+		   MT_RF_CSR_CFG_KICK);
-+	trace_rf_write(&dev->mt76, bank, offset, value);
-+out:
-+	mutex_unlock(&dev->reg_atomic_mutex);
-+
-+	if (ret < 0)
-+		dev_err(dev->mt76.dev, "Error: RF write %d:%d failed:%d!!\n",
-+			bank, reg, ret);
-+
-+	return ret;
++	/* Note: vendor driver tries to disable/enable wlan here and retry
++	 *       but the code which does it is so buggy it must have never
++	 *       triggered, so don't bother.
++	 */
++	if (!i)
++		dev_err(dev->mt76.dev, "Error: PLL and XTAL check failed!\n");
 +}
 +
-+static int
-+mt76x0_rf_csr_rr(struct mt76x0_dev *dev, u32 offset)
++static void mt76x0_chip_onoff(struct mt76x0_dev *dev, bool enable, bool reset)
 +{
-+	int ret = -ETIMEDOUT;
-+	u32 val;
-+	u8 bank, reg;
-+
-+	if (test_bit(MT76_REMOVED, &dev->mt76.state))
-+		return -ENODEV;
-+
-+	bank = MT_RF_BANK(offset);
-+	reg = MT_RF_REG(offset);
-+
-+	if (WARN_ON_ONCE(reg > 64) || WARN_ON_ONCE(bank) > 8)
-+		return -EINVAL;
-+
-+	mutex_lock(&dev->reg_atomic_mutex);
-+
-+	if (!mt76_poll(dev, MT_RF_CSR_CFG, MT_RF_CSR_CFG_KICK, 0, 100))
-+		goto out;
-+
-+	mt76_wr(dev, MT_RF_CSR_CFG,
-+		   FIELD_PREP(MT_RF_CSR_CFG_REG_BANK, bank) |
-+		   FIELD_PREP(MT_RF_CSR_CFG_REG_ID, reg) |
-+		   MT_RF_CSR_CFG_KICK);
-+
-+	if (!mt76_poll(dev, MT_RF_CSR_CFG, MT_RF_CSR_CFG_KICK, 0, 100))
-+		goto out;
-+
-+	val = mt76_rr(dev, MT_RF_CSR_CFG);
-+	if (FIELD_GET(MT_RF_CSR_CFG_REG_ID, val) == reg &&
-+	    FIELD_GET(MT_RF_CSR_CFG_REG_BANK, val) == bank) {
-+		ret = FIELD_GET(MT_RF_CSR_CFG_DATA, val);
-+		trace_rf_read(&dev->mt76, bank, offset, ret);
-+	}
-+out:
-+	mutex_unlock(&dev->reg_atomic_mutex);
-+
-+	if (ret < 0)
-+		dev_err(dev->mt76.dev, "Error: RF read %d:%d failed:%d!!\n",
-+			bank, reg, ret);
-+
-+	return ret;
-+}
-+
-+static int
-+rf_wr(struct mt76x0_dev *dev, u32 offset, u8 val)
-+{
-+	if (test_bit(MT76_STATE_MCU_RUNNING, &dev->mt76.state)) {
-+		struct mt76_reg_pair pair = {
-+			.reg = offset,
-+			.value = val,
-+		};
-+
-+		return mt76x0_write_reg_pairs(dev, MT_MCU_MEMMAP_RF, &pair, 1);
-+	} else {
-+		WARN_ON_ONCE(1);
-+		return mt76x0_rf_csr_wr(dev, offset, val);
-+	}
-+}
-+
-+static int
-+rf_rr(struct mt76x0_dev *dev, u32 offset)
-+{
-+	int ret;
 +	u32 val;
 +
-+	if (test_bit(MT76_STATE_MCU_RUNNING, &dev->mt76.state)) {
-+		struct mt76_reg_pair pair = {
-+			.reg = offset,
-+		};
++	mutex_lock(&dev->hw_atomic_mutex);
 +
-+		ret = mt76x0_read_reg_pairs(dev, MT_MCU_MEMMAP_RF, &pair, 1);
-+		val = pair.value;
-+	} else {
-+		WARN_ON_ONCE(1);
-+		ret = val = mt76x0_rf_csr_rr(dev, offset);
++	val = mt76_rr(dev, MT_WLAN_FUN_CTRL);
++
++	if (reset) {
++		val |= MT_WLAN_FUN_CTRL_GPIO_OUT_EN;
++		val &= ~MT_WLAN_FUN_CTRL_FRC_WL_ANT_SEL;
++
++		if (val & MT_WLAN_FUN_CTRL_WLAN_EN) {
++			val |= (MT_WLAN_FUN_CTRL_WLAN_RESET |
++				MT_WLAN_FUN_CTRL_WLAN_RESET_RF);
++			mt76_wr(dev, MT_WLAN_FUN_CTRL, val);
++			udelay(20);
++
++			val &= ~(MT_WLAN_FUN_CTRL_WLAN_RESET |
++				 MT_WLAN_FUN_CTRL_WLAN_RESET_RF);
++		}
 +	}
 +
-+	return (ret < 0) ? ret : val;
++	mt76_wr(dev, MT_WLAN_FUN_CTRL, val);
++	udelay(20);
++
++	mt76x0_set_wlan_state(dev, val, enable);
++
++	mutex_unlock(&dev->hw_atomic_mutex);
 +}
 +
-+static int
-+rf_rmw(struct mt76x0_dev *dev, u32 offset, u8 mask, u8 val)
++static void mt76x0_reset_csr_bbp(struct mt76x0_dev *dev)
 +{
-+	int ret;
++	u32 val;
 +
-+	ret = rf_rr(dev, offset);
-+	if (ret < 0)
-+		return ret;
-+	val |= ret & ~mask;
-+	ret = rf_wr(dev, offset, val);
++	val = mt76_rr(dev, MT_PBF_SYS_CTRL);
++	val &= ~0x2000;
++	mt76_wr(dev, MT_PBF_SYS_CTRL, val);
++
++	mt76_wr(dev, MT_MAC_SYS_CTRL, MT_MAC_SYS_CTRL_RESET_CSR |
++					 MT_MAC_SYS_CTRL_RESET_BBP);
++
++	msleep(200);
++}
++
++static void mt76x0_init_usb_dma(struct mt76x0_dev *dev)
++{
++	u32 val;
++
++	val = mt76_rr(dev, MT_USB_DMA_CFG);
++
++	val |= FIELD_PREP(MT_USB_DMA_CFG_RX_BULK_AGG_TOUT, MT_USB_AGGR_TIMEOUT) |
++	       FIELD_PREP(MT_USB_DMA_CFG_RX_BULK_AGG_LMT, MT_USB_AGGR_SIZE_LIMIT) |
++	       MT_USB_DMA_CFG_RX_BULK_EN |
++	       MT_USB_DMA_CFG_TX_BULK_EN;
++	if (dev->in_max_packet == 512)
++		val |= MT_USB_DMA_CFG_RX_BULK_AGG_EN;
++	mt76_wr(dev, MT_USB_DMA_CFG, val);
++
++	val = mt76_rr(dev, MT_COM_REG0);
++	if (val & 1)
++		dev_dbg(dev->mt76.dev, "MCU not ready\n");
++
++	val = mt76_rr(dev, MT_USB_DMA_CFG);
++
++	val |= MT_USB_DMA_CFG_RX_DROP_OR_PADDING;
++	mt76_wr(dev, MT_USB_DMA_CFG, val);
++	val &= ~MT_USB_DMA_CFG_RX_DROP_OR_PADDING;
++	mt76_wr(dev, MT_USB_DMA_CFG, val);
++}
++
++#define RANDOM_WRITE(dev, tab) \
++	mt76x0_write_reg_pairs(dev, MT_MCU_MEMMAP_WLAN, tab, ARRAY_SIZE(tab));
++
++static int mt76x0_init_bbp(struct mt76x0_dev *dev)
++{
++	int ret, i;
++
++	ret = mt76x0_wait_bbp_ready(dev);
 +	if (ret)
 +		return ret;
 +
-+	return val;
-+}
-+
-+static int
-+rf_set(struct mt76x0_dev *dev, u32 offset, u8 val)
-+{
-+	return rf_rmw(dev, offset, 0, val);
-+}
-+
-+#if 0
-+static int
-+rf_clear(struct mt76x0_dev *dev, u32 offset, u8 mask)
-+{
-+	return rf_rmw(dev, offset, mask, 0);
-+}
-+#endif
-+
-+#define RF_RANDOM_WRITE(dev, tab) \
-+	mt76x0_write_reg_pairs(dev, MT_MCU_MEMMAP_RF, tab, ARRAY_SIZE(tab));
-+
-+int mt76x0_wait_bbp_ready(struct mt76x0_dev *dev)
-+{
-+	int i = 20;
-+	u32 val;
-+
-+	do {
-+		val = mt76_rr(dev, MT_BBP(CORE, 0));
-+		printk("BBP version %08x\n", val);
-+		if (val && ~val)
-+			break;
-+	} while (--i);
-+
-+	if (!i) {
-+		dev_err(dev->mt76.dev, "Error: BBP is not ready\n");
-+		return -EIO;
-+	}
-+
-+	return 0;
-+}
-+
-+static void
-+mt76x0_bbp_set_ctrlch(struct mt76x0_dev *dev, enum nl80211_chan_width width,
-+		      u8 ctrl)
-+{
-+	int core_val, agc_val;
-+
-+	switch (width) {
-+	case NL80211_CHAN_WIDTH_80:
-+		core_val = 3;
-+		agc_val = 7;
-+		break;
-+	case NL80211_CHAN_WIDTH_40:
-+		core_val = 2;
-+		agc_val = 3;
-+		break;
-+	default:
-+		core_val = 0;
-+		agc_val = 1;
-+		break;
-+	}
-+
-+	mt76_rmw_field(dev, MT_BBP(CORE, 1), MT_BBP_CORE_R1_BW, core_val);
-+	mt76_rmw_field(dev, MT_BBP(AGC, 0), MT_BBP_AGC_R0_BW, agc_val);
-+	mt76_rmw_field(dev, MT_BBP(AGC, 0), MT_BBP_AGC_R0_CTRL_CHAN, ctrl);
-+	mt76_rmw_field(dev, MT_BBP(TXBE, 0), MT_BBP_TXBE_R0_CTRL_CHAN, ctrl);
-+}
-+
-+int mt76x0_phy_get_rssi(struct mt76x0_dev *dev, struct mt76x0_rxwi *rxwi)
-+{
-+	s8 lna_gain, rssi_offset;
-+	int val;
-+
-+	if (dev->mt76.chandef.chan->band == NL80211_BAND_2GHZ) {
-+		lna_gain = dev->ee->lna_gain_2ghz;
-+		rssi_offset = dev->ee->rssi_offset_2ghz[0];
-+	} else {
-+		lna_gain = dev->ee->lna_gain_5ghz[0];
-+		rssi_offset = dev->ee->rssi_offset_5ghz[0];
-+	}
-+
-+	val = rxwi->rssi[0] + rssi_offset - lna_gain;
-+
-+	return val;
-+}
-+
-+static void mt76x0_vco_cal(struct mt76x0_dev *dev, u8 channel)
-+{
-+	u8 val;
-+
-+	val = rf_rr(dev, MT_RF(0, 4));
-+	if ((val & 0x70) != 0x30)
-+		return;
-+
-+	/*
-+	 * Calibration Mode - Open loop, closed loop, and amplitude:
-+	 * B0.R06.[0]: 1
-+	 * B0.R06.[3:1] bp_close_code: 100
-+	 * B0.R05.[7:0] bp_open_code: 0x0
-+	 * B0.R04.[2:0] cal_bits: 000
-+	 * B0.R03.[2:0] startup_time: 011
-+	 * B0.R03.[6:4] settle_time:
-+	 *  80MHz channel: 110
-+	 *  40MHz channel: 101
-+	 *  20MHz channel: 100
-+	 */
-+	val = rf_rr(dev, MT_RF(0, 6));
-+	val &= ~0xf;
-+	val |= 0x09;
-+	rf_wr(dev, MT_RF(0, 6), val);
-+
-+	val = rf_rr(dev, MT_RF(0, 5));
-+	if (val != 0)
-+		rf_wr(dev, MT_RF(0, 5), 0x0);
-+
-+	val = rf_rr(dev, MT_RF(0, 4));
-+	val &= ~0x07;
-+	rf_wr(dev, MT_RF(0, 4), val);
-+
-+	val = rf_rr(dev, MT_RF(0, 3));
-+	val &= ~0x77;
-+	if (channel == 1 || channel == 7 || channel == 9 || channel >= 13) {
-+		val |= 0x63;
-+	} else if (channel == 3 || channel == 4 || channel == 10) {
-+		val |= 0x53;
-+	} else if (channel == 2 || channel == 5 || channel == 6 ||
-+		   channel == 8 || channel == 11 || channel == 12) {
-+		val |= 0x43;
-+	} else {
-+		WARN(1, "Unknown channel %u\n", channel);
-+		return;
-+	}
-+	rf_wr(dev, MT_RF(0, 3), val);
-+
-+	/* TODO replace by mt76x0_rf_set(dev, MT_RF(0, 4), BIT(7)); */
-+	val = rf_rr(dev, MT_RF(0, 4));
-+	val = ((val & ~(0x80)) | 0x80);
-+	rf_wr(dev, MT_RF(0, 4), val);
-+
-+	msleep(2);
-+}
-+
-+static void
-+mt76x0_mac_set_ctrlch(struct mt76x0_dev *dev, bool primary_upper)
-+{
-+	mt76_rmw_field(dev, MT_TX_BAND_CFG, MT_TX_BAND_CFG_UPPER_40M,
-+		       primary_upper);
-+}
-+
-+static void
-+mt76x0_phy_set_band(struct mt76x0_dev *dev, enum nl80211_band band)
-+{
-+	switch (band) {
-+	case NL80211_BAND_2GHZ:
-+		RF_RANDOM_WRITE(dev, mt76x0_rf_2g_channel_0_tab);
-+
-+		rf_wr(dev, MT_RF(5, 0), 0x45);
-+		rf_wr(dev, MT_RF(6, 0), 0x44);
-+
-+		mt76_set(dev, MT_TX_BAND_CFG, MT_TX_BAND_CFG_2G);
-+		mt76_clear(dev, MT_TX_BAND_CFG, MT_TX_BAND_CFG_5G);
-+
-+		mt76_wr(dev, MT_TX_ALC_VGA3, 0x00050007);
-+		mt76_wr(dev, MT_TX0_RF_GAIN_CORR, 0x003E0002);
-+		break;
-+	case NL80211_BAND_5GHZ:
-+		RF_RANDOM_WRITE(dev, mt76x0_rf_5g_channel_0_tab);
-+
-+		rf_wr(dev, MT_RF(5, 0), 0x44);
-+		rf_wr(dev, MT_RF(6, 0), 0x45);
-+
-+		mt76_clear(dev, MT_TX_BAND_CFG, MT_TX_BAND_CFG_2G);
-+		mt76_set(dev, MT_TX_BAND_CFG, MT_TX_BAND_CFG_5G);
-+
-+		mt76_wr(dev, MT_TX_ALC_VGA3, 0x00000005);
-+		mt76_wr(dev, MT_TX0_RF_GAIN_CORR, 0x01010102);
-+		break;
-+	default:
-+		break;
-+	}
-+}
-+
-+#define EXT_PA_2G_5G            0x0
-+#define EXT_PA_5G_ONLY          0x1
-+#define EXT_PA_2G_ONLY          0x2
-+#define INT_PA_2G_5G            0x3
-+
-+static void
-+mt76x0_phy_set_chan_rf_params(struct mt76x0_dev *dev, u8 channel, u16 rf_bw_band)
-+{
-+	u16 rf_band = rf_bw_band & 0xff00;
-+	u16 rf_bw = rf_bw_band & 0x00ff;
-+	u32 mac_reg;
-+	u8 rf_val;
-+	int i;
-+	bool bSDM = false;
-+	const struct mt76x0_freq_item *freq_item;
-+
-+	for (i = 0; i < ARRAY_SIZE(mt76x0_sdm_channel); i++) {
-+		if (channel == mt76x0_sdm_channel[i]) {
-+			bSDM = true;
-+			break;
-+		}
-+	}
-+
-+	for (i = 0; i < ARRAY_SIZE(mt76x0_frequency_plan); i++) {
-+		if (channel == mt76x0_frequency_plan[i].channel) {
-+			rf_band = mt76x0_frequency_plan[i].band;
-+
-+			if (bSDM)
-+				freq_item = &(mt76x0_sdm_frequency_plan[i]);
-+			else
-+				freq_item = &(mt76x0_frequency_plan[i]);
-+
-+			rf_wr(dev, MT_RF(0, 37), freq_item->pllR37);
-+			rf_wr(dev, MT_RF(0, 36), freq_item->pllR36);
-+			rf_wr(dev, MT_RF(0, 35), freq_item->pllR35);
-+			rf_wr(dev, MT_RF(0, 34), freq_item->pllR34);
-+			rf_wr(dev, MT_RF(0, 33), freq_item->pllR33);
-+
-+			rf_val = rf_rr(dev, MT_RF(0, 32));
-+			rf_val &= ~0xE0;
-+			rf_val |= freq_item->pllR32_b7b5;
-+			rf_wr(dev, MT_RF(0, 32), rf_val);
-+
-+			/* R32<4:0> pll_den: (Denomina - 8) */
-+			rf_val = rf_rr(dev, MT_RF(0, 32));
-+			rf_val &= ~0x1F;
-+			rf_val |= freq_item->pllR32_b4b0;
-+			rf_wr(dev, MT_RF(0, 32), rf_val);
-+
-+			/* R31<7:5> */
-+			rf_val = rf_rr(dev, MT_RF(0, 31));
-+			rf_val &= ~0xE0;
-+			rf_val |= freq_item->pllR31_b7b5;
-+			rf_wr(dev, MT_RF(0, 31), rf_val);
-+
-+			/* R31<4:0> pll_k(Nominator) */
-+			rf_val = rf_rr(dev, MT_RF(0, 31));
-+			rf_val &= ~0x1F;
-+			rf_val |= freq_item->pllR31_b4b0;
-+			rf_wr(dev, MT_RF(0, 31), rf_val);
-+
-+			/* R30<7> sdm_reset_n */
-+			rf_val = rf_rr(dev, MT_RF(0, 30));
-+			rf_val &= ~0x80;
-+			if (bSDM) {
-+				rf_wr(dev, MT_RF(0, 30), rf_val);
-+				rf_val |= 0x80;
-+				rf_wr(dev, MT_RF(0, 30), rf_val);
-+			} else {
-+				rf_val |= freq_item->pllR30_b7;
-+				rf_wr(dev, MT_RF(0, 30), rf_val);
-+			}
-+
-+			/* R30<6:2> sdmmash_prbs,sin */
-+			rf_val = rf_rr(dev, MT_RF(0, 30));
-+			rf_val &= ~0x7C;
-+			rf_val |= freq_item->pllR30_b6b2;
-+			rf_wr(dev, MT_RF(0, 30), rf_val);
-+
-+			/* R30<1> sdm_bp */
-+			rf_val = rf_rr(dev, MT_RF(0, 30));
-+			rf_val &= ~0x02;
-+			rf_val |= (freq_item->pllR30_b1 << 1);
-+			rf_wr(dev, MT_RF(0, 30), rf_val);
-+
-+			/* R30<0> R29<7:0> (hex) pll_n */
-+			rf_val = freq_item->pll_n & 0x00FF;
-+			rf_wr(dev, MT_RF(0, 29), rf_val);
-+
-+			rf_val = rf_rr(dev, MT_RF(0, 30));
-+			rf_val &= ~0x1;
-+			rf_val |= ((freq_item->pll_n >> 8) & 0x0001);
-+			rf_wr(dev, MT_RF(0, 30), rf_val);
-+
-+			/* R28<7:6> isi_iso */
-+			rf_val = rf_rr(dev, MT_RF(0, 28));
-+			rf_val &= ~0xC0;
-+			rf_val |= freq_item->pllR28_b7b6;
-+			rf_wr(dev, MT_RF(0, 28), rf_val);
-+
-+			/* R28<5:4> pfd_dly */
-+			rf_val = rf_rr(dev, MT_RF(0, 28));
-+			rf_val &= ~0x30;
-+			rf_val |= freq_item->pllR28_b5b4;
-+			rf_wr(dev, MT_RF(0, 28), rf_val);
-+
-+			/* R28<3:2> clksel option */
-+			rf_val = rf_rr(dev, MT_RF(0, 28));
-+			rf_val &= ~0x0C;
-+			rf_val |= freq_item->pllR28_b3b2;
-+			rf_wr(dev, MT_RF(0, 28), rf_val);
-+
-+			/* R28<1:0> R27<7:0> R26<7:0> (hex) sdm_k */
-+			rf_val = freq_item->pll_sdm_k & 0x000000FF;
-+			rf_wr(dev, MT_RF(0, 26), rf_val);
-+
-+			rf_val = ((freq_item->pll_sdm_k >> 8) & 0x000000FF);
-+			rf_wr(dev, MT_RF(0, 27), rf_val);
-+
-+			rf_val = rf_rr(dev, MT_RF(0, 28));
-+			rf_val &= ~0x3;
-+			rf_val |= ((freq_item->pll_sdm_k >> 16) & 0x0003);
-+			rf_wr(dev, MT_RF(0, 28), rf_val);
-+
-+			/* R24<1:0> xo_div */
-+			rf_val = rf_rr(dev, MT_RF(0, 24));
-+			rf_val &= ~0x3;
-+			rf_val |= freq_item->pllR24_b1b0;
-+			rf_wr(dev, MT_RF(0, 24), rf_val);
-+
-+			break;
-+		}
-+	}
-+
-+	for (i = 0; i < ARRAY_SIZE(mt76x0_rf_bw_switch_tab); i++) {
-+		if (rf_bw == mt76x0_rf_bw_switch_tab[i].bw_band) {
-+			rf_wr(dev, mt76x0_rf_bw_switch_tab[i].rf_bank_reg,
-+				   mt76x0_rf_bw_switch_tab[i].value);
-+		} else if ((rf_bw == (mt76x0_rf_bw_switch_tab[i].bw_band & 0xFF)) &&
-+			   (rf_band & mt76x0_rf_bw_switch_tab[i].bw_band)) {
-+			rf_wr(dev, mt76x0_rf_bw_switch_tab[i].rf_bank_reg,
-+				   mt76x0_rf_bw_switch_tab[i].value);
-+		}
-+	}
-+
-+	for (i = 0; i < ARRAY_SIZE(mt76x0_rf_band_switch_tab); i++) {
-+		if (mt76x0_rf_band_switch_tab[i].bw_band & rf_band) {
-+			rf_wr(dev, mt76x0_rf_band_switch_tab[i].rf_bank_reg,
-+				   mt76x0_rf_band_switch_tab[i].value);
-+		}
-+	}
-+
-+	mac_reg = mt76_rr(dev, MT_RF_MISC);
-+	mac_reg &= ~0xC; /* Clear 0x518[3:2] */
-+	mt76_wr(dev, MT_RF_MISC, mac_reg);
-+
-+	if (dev->ee->pa_type == INT_PA_2G_5G ||
-+	    (dev->ee->pa_type == EXT_PA_5G_ONLY && (rf_band & RF_G_BAND)) ||
-+	    (dev->ee->pa_type == EXT_PA_2G_ONLY && (rf_band & RF_A_BAND))) {
-+		; /* Internal PA - nothing to do. */
-+	} else {
-+		/*
-+			MT_RF_MISC (offset: 0x0518)
-+			[2]1'b1: enable external A band PA, 1'b0: disable external A band PA
-+			[3]1'b1: enable external G band PA, 1'b0: disable external G band PA
-+		*/
-+		if (rf_band & RF_A_BAND) {
-+			mac_reg = mt76_rr(dev, MT_RF_MISC);
-+			mac_reg |= 0x4;
-+			mt76_wr(dev, MT_RF_MISC, mac_reg);
-+		} else {
-+			mac_reg = mt76_rr(dev, MT_RF_MISC);
-+			mac_reg |= 0x8;
-+			mt76_wr(dev, MT_RF_MISC, mac_reg);
-+		}
-+
-+		/* External PA */
-+		for (i = 0; i < ARRAY_SIZE(mt76x0_rf_ext_pa_tab); i++)
-+			if (mt76x0_rf_ext_pa_tab[i].bw_band & rf_band)
-+				rf_wr(dev, mt76x0_rf_ext_pa_tab[i].rf_bank_reg,
-+					   mt76x0_rf_ext_pa_tab[i].value);
-+	}
-+
-+	if (rf_band & RF_G_BAND) {
-+		mt76_wr(dev, MT_TX0_RF_GAIN_ATTEN, 0x63707400);
-+		/* Set Atten mode = 2 For G band, Disable Tx Inc dcoc. */
-+		mac_reg = mt76_rr(dev, MT_TX_ALC_CFG_1);
-+		mac_reg &= 0x896400FF;
-+		mt76_wr(dev, MT_TX_ALC_CFG_1, mac_reg);
-+	} else {
-+		mt76_wr(dev, MT_TX0_RF_GAIN_ATTEN, 0x686A7800);
-+		/* Set Atten mode = 0 For Ext A band, Disable Tx Inc dcoc Cal. */
-+		mac_reg = mt76_rr(dev, MT_TX_ALC_CFG_1);
-+		mac_reg &= 0x890400FF;
-+		mt76_wr(dev, MT_TX_ALC_CFG_1, mac_reg);
-+	}
-+}
-+
-+static void
-+mt76x0_phy_set_chan_bbp_params(struct mt76x0_dev *dev, u8 channel, u16 rf_bw_band)
-+{
-+	int i;
++	RANDOM_WRITE(dev, mt76x0_bbp_init_tab);
 +
 +	for (i = 0; i < ARRAY_SIZE(mt76x0_bbp_switch_tab); i++) {
 +		const struct mt76x0_bbp_switch_item *item = &mt76x0_bbp_switch_tab[i];
 +		const struct mt76_reg_pair *pair = &item->reg_pair;
 +
-+		if ((rf_bw_band & item->bw_band) != rf_bw_band)
-+			continue;
-+
-+		if (pair->reg == MT_BBP(AGC, 8)) {
-+			u32 val = pair->value;
-+			u8 gain = FIELD_GET(MT_BBP_AGC_GAIN, val);
-+
-+			if (channel > 14) {
-+				if (channel < 100)
-+					gain -= dev->ee->lna_gain_5ghz[0]*2;
-+				else if (channel < 137)
-+					gain -= dev->ee->lna_gain_5ghz[1]*2;
-+				else
-+					gain -= dev->ee->lna_gain_5ghz[2]*2;
-+
-+			} else {
-+				gain -= dev->ee->lna_gain_2ghz*2;
-+			}
-+
-+			val &= ~MT_BBP_AGC_GAIN;
-+			val |= FIELD_PREP(MT_BBP_AGC_GAIN, gain);
-+			mt76_wr(dev, pair->reg, val);
-+		} else {
++		if (((RF_G_BAND | RF_BW_20) & item->bw_band) == (RF_G_BAND | RF_BW_20))
 +			mt76_wr(dev, pair->reg, pair->value);
-+		}
-+	}
-+}
-+
-+#if 0
-+static void
-+mt76x0_extra_power_over_mac(struct mt76x0_dev *dev)
-+{
-+	u32 val;
-+
-+	val = ((mt76_rr(dev, MT_TX_PWR_CFG_1) & 0x00003f00) >> 8);
-+	val |= ((mt76_rr(dev, MT_TX_PWR_CFG_2) & 0x00003f00) << 8);
-+	mt76_wr(dev, MT_TX_PWR_CFG_7, val);
-+
-+	/* TODO: fix VHT */
-+	val = ((mt76_rr(dev, MT_TX_PWR_CFG_3) & 0x0000ff00) >> 8);
-+	mt76_wr(dev, MT_TX_PWR_CFG_8, val);
-+
-+	val = ((mt76_rr(dev, MT_TX_PWR_CFG_4) & 0x0000ff00) >> 8);
-+	mt76_wr(dev, MT_TX_PWR_CFG_9, val);
-+}
-+
-+static void
-+mt76x0_phy_set_tx_power(struct mt76x0_dev *dev, u8 channel, u8 rf_bw_band)
-+{
-+	u32 val;
-+	int i;
-+	int bw = (rf_bw_band & RF_BW_20) ? 0 : 1;
-+
-+	for (i = 0; i < 4; i++) {
-+		if (channel <= 14)
-+			val = dev->ee->tx_pwr_cfg_2g[i][bw];
-+		else
-+			val = dev->ee->tx_pwr_cfg_5g[i][bw];
-+
-+		mt76_wr(dev, MT_TX_PWR_CFG_0 + 4*i, val);
 +	}
 +
-+	mt76x0_extra_power_over_mac(dev);
-+}
-+#endif
++	RANDOM_WRITE(dev, mt76x0_dcoc_tab);
 +
-+static void
-+mt76x0_bbp_set_bw(struct mt76x0_dev *dev, enum nl80211_chan_width width)
-+{
-+	enum { BW_20 = 0, BW_40 = 1, BW_80 = 2, BW_10 = 4};
-+	int bw;
-+
-+	switch (width) {
-+	default:
-+	case NL80211_CHAN_WIDTH_20_NOHT:
-+	case NL80211_CHAN_WIDTH_20:
-+		bw = BW_20;
-+		break;
-+	case NL80211_CHAN_WIDTH_40:
-+		bw = BW_40;
-+		break;
-+	case NL80211_CHAN_WIDTH_80:
-+		bw = BW_80;
-+		break;
-+	case NL80211_CHAN_WIDTH_10:
-+		bw = BW_10;
-+		break;
-+	case NL80211_CHAN_WIDTH_80P80:
-+	case NL80211_CHAN_WIDTH_160:
-+	case NL80211_CHAN_WIDTH_5:
-+		/* TODO error */
-+		return ;
-+	}
-+
-+	mt76x0_mcu_function_select(dev, BW_SETTING, bw);
-+}
-+
-+static void
-+mt76x0_phy_set_chan_pwr(struct mt76x0_dev *dev, u8 channel)
-+{
-+	static const int mt76x0_tx_pwr_ch_list[] = {
-+		1,2,3,4,5,6,7,8,9,10,11,12,13,14,
-+		36,38,40,44,46,48,52,54,56,60,62,64,
-+		100,102,104,108,110,112,116,118,120,124,126,128,132,134,136,140,
-+		149,151,153,157,159,161,165,167,169,171,173,
-+		42,58,106,122,155
-+	};
-+	int i;
-+	u32 val;
-+
-+	for (i = 0; i < ARRAY_SIZE(mt76x0_tx_pwr_ch_list); i++)
-+		if (mt76x0_tx_pwr_ch_list[i] == channel)
-+			break;
-+
-+	if (WARN_ON(i == ARRAY_SIZE(mt76x0_tx_pwr_ch_list)))
-+		return;
-+
-+	val = mt76_rr(dev, MT_TX_ALC_CFG_0);
-+	val &= ~0x3f3f;
-+	val |= dev->ee->tx_pwr_per_chan[i];
-+	val |= 0x2f2f << 16;
-+	mt76_wr(dev, MT_TX_ALC_CFG_0, val);
-+}
-+
-+static int
-+__mt76x0_phy_set_channel(struct mt76x0_dev *dev,
-+		       struct cfg80211_chan_def *chandef)
-+{
-+	u32 ext_cca_chan[4] = {
-+		[0] = FIELD_PREP(MT_EXT_CCA_CFG_CCA0, 0) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA1, 1) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA2, 2) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA3, 3) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA_MASK, BIT(0)),
-+		[1] = FIELD_PREP(MT_EXT_CCA_CFG_CCA0, 1) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA1, 0) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA2, 2) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA3, 3) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA_MASK, BIT(1)),
-+		[2] = FIELD_PREP(MT_EXT_CCA_CFG_CCA0, 2) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA1, 3) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA2, 1) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA3, 0) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA_MASK, BIT(2)),
-+		[3] = FIELD_PREP(MT_EXT_CCA_CFG_CCA0, 3) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA1, 2) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA2, 1) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA3, 0) |
-+		      FIELD_PREP(MT_EXT_CCA_CFG_CCA_MASK, BIT(3)),
-+	};
-+	bool scan = test_bit(MT76_SCANNING, &dev->mt76.state);
-+	int ch_group_index, freq, freq1;
-+	u8 channel;
-+	u32 val;
-+	u16 rf_bw_band;
-+
-+	freq = chandef->chan->center_freq;
-+	freq1 = chandef->center_freq1;
-+	channel = chandef->chan->hw_value;
-+	rf_bw_band = (channel <= 14) ? RF_G_BAND : RF_A_BAND;
-+
-+	switch (chandef->width) {
-+	case NL80211_CHAN_WIDTH_40:
-+		if (freq1 > freq)
-+			ch_group_index = 0;
-+		else
-+			ch_group_index = 1;
-+		channel += 2 - ch_group_index * 4;
-+		rf_bw_band |= RF_BW_40;
-+		break;
-+	case NL80211_CHAN_WIDTH_80:
-+		ch_group_index = (freq - freq1 + 30) / 20;
-+		if (WARN_ON(ch_group_index < 0 || ch_group_index > 3))
-+			ch_group_index = 0;
-+		channel += 6 - ch_group_index * 4;
-+		rf_bw_band |= RF_BW_80;
-+		break;
-+	default:
-+		ch_group_index = 0;
-+		rf_bw_band |= RF_BW_20;
-+		break;
-+	}
-+
-+	mt76x0_bbp_set_bw(dev, chandef->width);
-+	mt76x0_bbp_set_ctrlch(dev, chandef->width, ch_group_index);
-+	mt76x0_mac_set_ctrlch(dev, ch_group_index & 1);
-+
-+	mt76_rmw(dev, MT_EXT_CCA_CFG,
-+		 (MT_EXT_CCA_CFG_CCA0 |
-+		  MT_EXT_CCA_CFG_CCA1 |
-+		  MT_EXT_CCA_CFG_CCA2 |
-+		  MT_EXT_CCA_CFG_CCA3 |
-+		  MT_EXT_CCA_CFG_CCA_MASK),
-+		 ext_cca_chan[ch_group_index]);
-+
-+	mt76x0_phy_set_band(dev, chandef->chan->band);
-+	mt76x0_phy_set_chan_rf_params(dev, channel, rf_bw_band);
-+
-+	/* set Japan Tx filter at channel 14 */
-+	val = mt76_rr(dev, MT_BBP(CORE, 1));
-+	if (channel == 14)
-+		val |= 0x20;
-+	else
-+		val &= ~0x20;
-+	mt76_wr(dev, MT_BBP(CORE, 1), val);
-+
-+	mt76x0_phy_set_chan_bbp_params(dev, channel, rf_bw_band);
-+
-+	/* Vendor driver don't do it */
-+	/* mt76x0_phy_set_tx_power(dev, channel, rf_bw_band); */
-+
-+	if (scan)
-+		mt76x0_vco_cal(dev, channel);
-+
-+	mt76x0_mcu_calibrate(dev, MCU_CAL_RXDCOC, 1);
-+	mt76x0_phy_set_chan_pwr(dev, channel);
-+
-+	dev->mt76.chandef = *chandef;
 +	return 0;
 +}
 +
-+int mt76x0_phy_set_channel(struct mt76x0_dev *dev,
-+			   struct cfg80211_chan_def *chandef)
++static void
++mt76_init_beacon_offsets(struct mt76x0_dev *dev)
 +{
-+	int ret;
++	u16 base = MT_BEACON_BASE;
++	u32 regs[4] = {};
++	int i;
 +
-+	mutex_lock(&dev->hw_atomic_mutex);
-+	ret = __mt76x0_phy_set_channel(dev, chandef);
-+	mutex_unlock(&dev->hw_atomic_mutex);
++	for (i = 0; i < 16; i++) {
++		u16 addr = dev->beacon_offsets[i];
++
++		regs[i / 4] |= ((addr - base) / 64) << (8 * (i % 4));
++	}
++
++	for (i = 0; i < 4; i++)
++		mt76_wr(dev, MT_BCN_OFFSET(i), regs[i]);
++}
++
++static void mt76x0_init_mac_registers(struct mt76x0_dev *dev)
++{
++	u32 reg;
++
++	RANDOM_WRITE(dev, common_mac_reg_table);
++
++	mt76_init_beacon_offsets(dev);
++
++	/* Enable PBF and MAC clock SYS_CTRL[11:10] = 0x3 */
++	RANDOM_WRITE(dev, mt76x0_mac_reg_table);
++
++	/* Release BBP and MAC reset MAC_SYS_CTRL[1:0] = 0x0 */
++	reg = mt76_rr(dev, MT_MAC_SYS_CTRL);
++	reg &= ~0x3;
++	mt76_wr(dev, MT_MAC_SYS_CTRL, reg);
++
++	if (is_mt7610e(dev)) {
++		/* Disable COEX_EN */
++		reg = mt76_rr(dev, MT_COEXCFG0);
++		reg &= 0xFFFFFFFE;
++		mt76_wr(dev, MT_COEXCFG0, reg);
++	}
++
++	/* Set 0x141C[15:12]=0xF */
++	reg = mt76_rr(dev, MT_EXT_CCA_CFG);
++	reg |= 0x0000F000;
++	mt76_wr(dev, MT_EXT_CCA_CFG, reg);
++
++	mt76_clear(dev, MT_FCE_L2_STUFF, MT_FCE_L2_STUFF_WR_MPDU_LEN_EN);
++
++	/*
++		TxRing 9 is for Mgmt frame.
++		TxRing 8 is for In-band command frame.
++		WMM_RG0_TXQMA: This register setting is for FCE to define the rule of TxRing 9.
++		WMM_RG1_TXQMA: This register setting is for FCE to define the rule of TxRing 8.
++	*/
++	reg = mt76_rr(dev, MT_WMM_CTRL);
++	reg &= ~0x000003FF;
++	reg |= 0x00000201;
++	mt76_wr(dev, MT_WMM_CTRL, reg);
++
++	/* TODO: Probably not needed */
++	mt76_wr(dev, 0x7028, 0);
++	mt76_wr(dev, 0x7010, 0);
++	mt76_wr(dev, 0x7024, 0);
++	msleep(10);
++}
++
++static int mt76x0_init_wcid_mem(struct mt76x0_dev *dev)
++{
++	u32 *vals;
++	int i, ret;
++
++	vals = kmalloc(sizeof(*vals) * N_WCIDS * 2, GFP_KERNEL);
++	if (!vals)
++		return -ENOMEM;
++
++	for (i = 0; i < N_WCIDS; i++)  {
++		vals[i * 2] = 0xffffffff;
++		vals[i * 2 + 1] = 0x00ffffff;
++	}
++
++	ret = mt76x0_burst_write_regs(dev, MT_WCID_ADDR_BASE,
++				      vals, N_WCIDS * 2);
++	kfree(vals);
 +
 +	return ret;
 +}
 +
-+void mt76x0_phy_recalibrate_after_assoc(struct mt76x0_dev *dev)
++static int mt76x0_init_key_mem(struct mt76x0_dev *dev)
 +{
-+	u32 tx_alc, reg_val;
-+	u8 channel = dev->mt76.chandef.chan->hw_value;
-+	int is_5ghz = (dev->mt76.chandef.chan->band == NL80211_BAND_5GHZ) ? 1 : 0;
++	u32 vals[4] = {};
 +
-+	mt76x0_mcu_calibrate(dev, MCU_CAL_R, 0);
-+
-+	mt76x0_vco_cal(dev, channel);
-+
-+	tx_alc = mt76_rr(dev, MT_TX_ALC_CFG_0);
-+	mt76_wr(dev, MT_TX_ALC_CFG_0, 0);
-+	usleep_range(500, 700);
-+
-+	reg_val = mt76_rr(dev, 0x2124);
-+	reg_val &= 0xffffff7e;
-+	mt76_wr(dev, 0x2124, reg_val);
-+
-+	mt76x0_mcu_calibrate(dev, MCU_CAL_RXDCOC, 0);
-+
-+	mt76x0_mcu_calibrate(dev, MCU_CAL_LC, is_5ghz);
-+	mt76x0_mcu_calibrate(dev, MCU_CAL_LOFT, is_5ghz);
-+	mt76x0_mcu_calibrate(dev, MCU_CAL_TXIQ, is_5ghz);
-+	mt76x0_mcu_calibrate(dev, MCU_CAL_TX_GROUP_DELAY, is_5ghz);
-+	mt76x0_mcu_calibrate(dev, MCU_CAL_RXIQ, is_5ghz);
-+	mt76x0_mcu_calibrate(dev, MCU_CAL_RX_GROUP_DELAY, is_5ghz);
-+
-+	mt76_wr(dev, 0x2124, reg_val);
-+	mt76_wr(dev, MT_TX_ALC_CFG_0, tx_alc);
-+	msleep(100);
-+
-+	mt76x0_mcu_calibrate(dev, MCU_CAL_RXDCOC, 1);
++	return mt76x0_burst_write_regs(dev, MT_SKEY_MODE_BASE_0,
++					vals, ARRAY_SIZE(vals));
 +}
 +
-+void mt76x0_agc_save(struct mt76x0_dev *dev)
++static int mt76x0_init_wcid_attr_mem(struct mt76x0_dev *dev)
 +{
-+	/* Only one RX path */
-+	dev->agc_save = FIELD_GET(MT_BBP_AGC_GAIN, mt76_rr(dev, MT_BBP(AGC, 8)));
++	u32 *vals;
++	int i, ret;
++
++	vals = kmalloc(sizeof(*vals) * N_WCIDS * 2, GFP_KERNEL);
++	if (!vals)
++		return -ENOMEM;
++
++	for (i = 0; i < N_WCIDS * 2; i++)
++		vals[i] = 1;
++
++	ret = mt76x0_burst_write_regs(dev, MT_WCID_ATTR_BASE,
++				      vals, N_WCIDS * 2);
++	kfree(vals);
++
++	return ret;
 +}
 +
-+void mt76x0_agc_restore(struct mt76x0_dev *dev)
++static void mt76x0_reset_counters(struct mt76x0_dev *dev)
 +{
-+	mt76_rmw_field(dev, MT_BBP(AGC, 8), MT_BBP_AGC_GAIN, dev->agc_save);
++	mt76_rr(dev, MT_RX_STA_CNT0);
++	mt76_rr(dev, MT_RX_STA_CNT1);
++	mt76_rr(dev, MT_RX_STA_CNT2);
++	mt76_rr(dev, MT_TX_STA_CNT0);
++	mt76_rr(dev, MT_TX_STA_CNT1);
++	mt76_rr(dev, MT_TX_STA_CNT2);
 +}
 +
-+static void mt76x0_temp_sensor(struct mt76x0_dev *dev)
++int mt76x0_mac_start(struct mt76x0_dev *dev)
 +{
-+	u8 rf_b7_73, rf_b0_66, rf_b0_67;
-+	int cycle, temp;
-+	u32 val;
-+	s32 sval;
++	mt76_wr(dev, MT_MAC_SYS_CTRL, MT_MAC_SYS_CTRL_ENABLE_TX);
 +
-+	rf_b7_73 = rf_rr(dev, MT_RF(7, 73));
-+	rf_b0_66 = rf_rr(dev, MT_RF(0, 66));
-+	rf_b0_67 = rf_rr(dev, MT_RF(0, 73));
++	if (!mt76_poll(dev, MT_WPDMA_GLO_CFG, MT_WPDMA_GLO_CFG_TX_DMA_BUSY |
++		       MT_WPDMA_GLO_CFG_RX_DMA_BUSY, 0, 200000))
++		return -ETIMEDOUT;
 +
-+	rf_wr(dev, MT_RF(7, 73), 0x02);
-+	rf_wr(dev, MT_RF(0, 66), 0x23);
-+	rf_wr(dev, MT_RF(0, 73), 0x01);
++	dev->rxfilter = MT_RX_FILTR_CFG_CRC_ERR |
++		MT_RX_FILTR_CFG_PHY_ERR | MT_RX_FILTR_CFG_PROMISC |
++		MT_RX_FILTR_CFG_VER_ERR | MT_RX_FILTR_CFG_DUP |
++		MT_RX_FILTR_CFG_CFACK | MT_RX_FILTR_CFG_CFEND |
++		MT_RX_FILTR_CFG_ACK | MT_RX_FILTR_CFG_CTS |
++		MT_RX_FILTR_CFG_RTS | MT_RX_FILTR_CFG_PSPOLL |
++		MT_RX_FILTR_CFG_BA | MT_RX_FILTR_CFG_CTRL_RSV;
++	mt76_wr(dev, MT_RX_FILTR_CFG, dev->rxfilter);
 +
-+	mt76_wr(dev, MT_BBP(CORE, 34), 0x00080055);
++	mt76_wr(dev, MT_MAC_SYS_CTRL,
++		   MT_MAC_SYS_CTRL_ENABLE_TX | MT_MAC_SYS_CTRL_ENABLE_RX);
 +
-+	for (cycle = 0; cycle < 2000; cycle++) {
-+		val = mt76_rr(dev, MT_BBP(CORE, 34));
-+		if (!(val & 0x10))
-+			break;
-+		udelay(3);
-+	}
++	if (!mt76_poll(dev, MT_WPDMA_GLO_CFG, MT_WPDMA_GLO_CFG_TX_DMA_BUSY |
++		       MT_WPDMA_GLO_CFG_RX_DMA_BUSY, 0, 50))
++		return -ETIMEDOUT;
 +
-+	if (cycle >= 2000) {
-+		val &= 0x10;
-+		mt76_wr(dev, MT_BBP(CORE, 34), val);
-+		goto done;
-+	}
-+
-+	sval = mt76_rr(dev, MT_BBP(CORE, 35)) & 0xff;
-+	if (!(sval & 0x80))
-+		sval &= 0x7f; /* Positive */
-+	else
-+		sval |= 0xffffff00; /* Negative */
-+
-+	temp = (35 * (sval - dev->ee->temp_off))/ 10 + 25;
-+
-+done:
-+	rf_wr(dev, MT_RF(7, 73), rf_b7_73);
-+	rf_wr(dev, MT_RF(0, 66), rf_b0_66);
-+	rf_wr(dev, MT_RF(0, 73), rf_b0_67);
++	return 0;
 +}
 +
-+static void mt76x0_dynamic_vga_tuning(struct mt76x0_dev *dev)
++static void mt76x0_mac_stop_hw(struct mt76x0_dev *dev)
 +{
-+	u32 val, init_vga;
++	int i, ok;
 +
-+	init_vga = (dev->mt76.chandef.chan->band == NL80211_BAND_5GHZ) ? 0x54 : 0x4E;
-+	if (dev->avg_rssi > -60)
-+		init_vga -= 0x20;
-+	else if (dev->avg_rssi > -70)
-+		init_vga -= 0x10;
++	if (test_bit(MT76_REMOVED, &dev->mt76.state))
++		return;
 +
-+	val = mt76_rr(dev, MT_BBP(AGC, 8));
-+	val &= 0xFFFF80FF;
-+	val |= init_vga << 8;
-+	mt76_wr(dev, MT_BBP(AGC,8), val);
-+}
++	mt76_clear(dev, MT_BEACON_TIME_CFG, MT_BEACON_TIME_CFG_TIMER_EN |
++		   MT_BEACON_TIME_CFG_SYNC_MODE | MT_BEACON_TIME_CFG_TBTT_EN |
++		   MT_BEACON_TIME_CFG_BEACON_TX);
 +
-+static void mt76x0_phy_calibrate(struct work_struct *work)
-+{
-+	struct mt76x0_dev *dev = container_of(work, struct mt76x0_dev,
-+					    cal_work.work);
++	if (!mt76_poll(dev, MT_USB_DMA_CFG, MT_USB_DMA_CFG_TX_BUSY, 0, 1000))
++		dev_warn(dev->mt76.dev, "Warning: TX DMA did not stop!\n");
 +
-+	mt76x0_dynamic_vga_tuning(dev);
-+	mt76x0_temp_sensor(dev);
++	/* Page count on TxQ */
++	i = 200;
++	while (i-- && ((mt76_rr(dev, 0x0438) & 0xffffffff) ||
++		       (mt76_rr(dev, 0x0a30) & 0x000000ff) ||
++		       (mt76_rr(dev, 0x0a34) & 0x00ff00ff)))
++		msleep(10);
 +
-+	ieee80211_queue_delayed_work(dev->mt76.hw, &dev->cal_work,
-+				     MT_CALIBRATE_INTERVAL);
-+}
++	if (!mt76_poll(dev, MT_MAC_STATUS, MT_MAC_STATUS_TX, 0, 1000))
++		dev_warn(dev->mt76.dev, "Warning: MAC TX did not stop!\n");
 +
-+void mt76x0_phy_con_cal_onoff(struct mt76x0_dev *dev,
-+			       struct ieee80211_bss_conf *info)
-+{
-+	/* Start/stop collecting beacon data */
-+	spin_lock_bh(&dev->con_mon_lock);
-+	ether_addr_copy(dev->ap_bssid, info->bssid);
-+	dev->avg_rssi = 0;
-+	dev->bcn_freq_off = MT_FREQ_OFFSET_INVALID;
-+	spin_unlock_bh(&dev->con_mon_lock);
-+}
++	mt76_clear(dev, MT_MAC_SYS_CTRL, MT_MAC_SYS_CTRL_ENABLE_RX |
++					 MT_MAC_SYS_CTRL_ENABLE_TX);
 +
-+static void
-+mt76x0_set_rx_chains(struct mt76x0_dev *dev)
-+{
-+	u32 val;
-+
-+	val = mt76_rr(dev, MT_BBP(AGC, 0));
-+	val &= ~(BIT(3) | BIT(4));
-+
-+	if (dev->chainmask & BIT(1))
-+		val |= BIT(3);
-+
-+	mt76_wr(dev, MT_BBP(AGC, 0), val);
-+
-+	mb();
-+	val = mt76_rr(dev, MT_BBP(AGC, 0));
-+}
-+
-+static void
-+mt76x0_set_tx_dac(struct mt76x0_dev *dev)
-+{
-+	if (dev->chainmask & BIT(1))
-+		mt76_set(dev, MT_BBP(TXBE, 5), 3);
-+	else
-+		mt76_clear(dev, MT_BBP(TXBE, 5), 3);
-+}
-+
-+static void
-+mt76x0_rf_init(struct mt76x0_dev *dev)
-+{
-+	int i;
-+	u8 val;
-+
-+	RF_RANDOM_WRITE(dev, mt76x0_rf_central_tab);
-+	RF_RANDOM_WRITE(dev, mt76x0_rf_2g_channel_0_tab);
-+	RF_RANDOM_WRITE(dev, mt76x0_rf_5g_channel_0_tab);
-+	RF_RANDOM_WRITE(dev, mt76x0_rf_vga_channel_0_tab);
-+
-+	for (i = 0; i < ARRAY_SIZE(mt76x0_rf_bw_switch_tab); i++) {
-+		const struct mt76x0_rf_switch_item *item = &mt76x0_rf_bw_switch_tab[i];
-+
-+		if (item->bw_band == RF_BW_20)
-+			rf_wr(dev, item->rf_bank_reg, item->value);
-+		else if (((RF_G_BAND | RF_BW_20) & item->bw_band) == (RF_G_BAND | RF_BW_20))
-+			rf_wr(dev, item->rf_bank_reg, item->value);
-+	}
-+
-+	for (i = 0; i < ARRAY_SIZE(mt76x0_rf_band_switch_tab); i++) {
-+		if (mt76x0_rf_band_switch_tab[i].bw_band & RF_G_BAND) {
-+			rf_wr(dev,
-+			      mt76x0_rf_band_switch_tab[i].rf_bank_reg,
-+			      mt76x0_rf_band_switch_tab[i].value);
++	/* Page count on RxQ */
++	ok = 0;
++	i = 200;
++	while (i--) {
++		if (!(mt76_rr(dev, MT_RXQ_STA) & 0x00ff0000) &&
++		    !mt76_rr(dev, 0x0a30) &&
++		    !mt76_rr(dev, 0x0a34)) {
++			if (ok++ > 5)
++				break;
++			continue;
 +		}
++		msleep(1);
 +	}
 +
-+	/*
-+	   Frequency calibration
-+	   E1: B0.R22<6:0>: xo_cxo<6:0>
-+	   E2: B0.R21<0>: xo_cxo<0>, B0.R22<7:0>: xo_cxo<8:1>
-+	 */
-+	rf_wr(dev, MT_RF(0, 22), min_t(u8, dev->ee->rf_freq_off, 0xBF));
-+	val = rf_rr(dev, MT_RF(0, 22));
++	if (!mt76_poll(dev, MT_MAC_STATUS, MT_MAC_STATUS_RX, 0, 1000))
++		dev_warn(dev->mt76.dev, "Warning: MAC RX did not stop!\n");
 +
-+	/*
-+	   Reset the DAC (Set B0.R73<7>=1, then set B0.R73<7>=0, and then set B0.R73<7>) during power up.
-+	 */
-+	val = rf_rr(dev, MT_RF(0, 73));
-+	val |= 0x80;
-+	rf_wr(dev, MT_RF(0, 73), val);
-+	val &= ~0x80;
-+	rf_wr(dev, MT_RF(0, 73), val);
-+	val |= 0x80;
-+	rf_wr(dev, MT_RF(0, 73), val);
-+
-+	/*
-+	   vcocal_en (initiate VCO calibration (reset after completion)) - It should be at the end of RF configuration.
-+	 */
-+	rf_set(dev, MT_RF(0, 4), 0x80);
++	if (!mt76_poll(dev, MT_USB_DMA_CFG, MT_USB_DMA_CFG_RX_BUSY, 0, 1000))
++		dev_warn(dev->mt76.dev, "Warning: RX DMA did not stop!\n");
 +}
 +
-+void mt76x0_ant_select(struct mt76x0_dev *dev)
++void mt76x0_mac_stop(struct mt76x0_dev *dev)
 +{
-+	/* Single antenna mode. */
-+	mt76_rmw(dev, MT_WLAN_FUN_CTRL, BIT(5), BIT(6));
-+	mt76_clear(dev, MT_CMB_CTRL, BIT(14) | BIT(12));
-+	mt76_clear(dev, MT_COEXCFG0, BIT(2));
-+	mt76_rmw(dev, MT_COEXCFG3, BIT(5) | BIT(4) | BIT(3) | BIT(2), BIT(1));
++	mt76x0_mac_stop_hw(dev);
++	flush_delayed_work(&dev->stat_work);
++	cancel_delayed_work_sync(&dev->stat_work);
 +}
 +
-+void mt76x0_phy_init(struct mt76x0_dev *dev)
++static void mt76x0_stop_hardware(struct mt76x0_dev *dev)
 +{
-+	INIT_DELAYED_WORK(&dev->cal_work, mt76x0_phy_calibrate);
-+
-+	mt76x0_ant_select(dev);
-+
-+	mt76x0_rf_init(dev);
-+
-+	mt76x0_set_rx_chains(dev);
-+	mt76x0_set_tx_dac(dev);
++	mt76x0_chip_onoff(dev, false, false);
 +}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/phy.h b/drivers/net/wireless/mediatek/mt76/mt76x0/phy.h
++
++int mt76x0_init_hardware(struct mt76x0_dev *dev)
++{
++	static const u16 beacon_offsets[16] = {
++		/* 512 byte per beacon */
++		0xc000,	0xc200,	0xc400,	0xc600,
++		0xc800,	0xca00,	0xcc00,	0xce00,
++		0xd000,	0xd200,	0xd400,	0xd600,
++		0xd800,	0xda00,	0xdc00,	0xde00
++	};
++	int ret;
++
++	dev->beacon_offsets = beacon_offsets;
++
++	mt76x0_chip_onoff(dev, true, true);
++
++	ret = mt76x0_wait_asic_ready(dev);
++	if (ret)
++		goto err;
++	ret = mt76x0_mcu_init(dev);
++	if (ret)
++		goto err;
++
++	if (!mt76_poll_msec(dev, MT_WPDMA_GLO_CFG,
++			    MT_WPDMA_GLO_CFG_TX_DMA_BUSY |
++			    MT_WPDMA_GLO_CFG_RX_DMA_BUSY, 0, 100)) {
++		ret = -EIO;
++		goto err;
++	}
++
++	/* Wait for ASIC ready after FW load. */
++	ret = mt76x0_wait_asic_ready(dev);
++	if (ret)
++		goto err;
++
++	mt76x0_reset_csr_bbp(dev);
++	mt76x0_init_usb_dma(dev);
++
++	mt76_wr(dev, MT_HEADER_TRANS_CTRL_REG, 0x0);
++	mt76_wr(dev, MT_TSO_CTRL, 0x0);
++
++	ret = mt76x0_mcu_cmd_init(dev);
++	if (ret)
++		goto err;
++	ret = mt76x0_dma_init(dev);
++	if (ret)
++		goto err_mcu;
++
++	mt76x0_init_mac_registers(dev);
++
++	if (!mt76_poll_msec(dev, MT_MAC_STATUS,
++			    MT_MAC_STATUS_TX | MT_MAC_STATUS_RX, 0, 1000)) {
++		ret = -EIO;
++		goto err_rx;
++	}
++
++	ret = mt76x0_init_bbp(dev);
++	if (ret)
++		goto err_rx;
++
++	ret = mt76x0_init_wcid_mem(dev);
++	if (ret)
++		goto err_rx;
++	ret = mt76x0_init_key_mem(dev);
++	if (ret)
++		goto err_rx;
++	ret = mt76x0_init_wcid_attr_mem(dev);
++	if (ret)
++		goto err_rx;
++
++	mt76_clear(dev, MT_BEACON_TIME_CFG, (MT_BEACON_TIME_CFG_TIMER_EN |
++					     MT_BEACON_TIME_CFG_SYNC_MODE |
++					     MT_BEACON_TIME_CFG_TBTT_EN |
++					     MT_BEACON_TIME_CFG_BEACON_TX));
++
++	mt76x0_reset_counters(dev);
++
++	mt76_rmw(dev, MT_US_CYC_CFG, MT_US_CYC_CNT, 0x1e);
++
++	mt76_wr(dev, MT_TXOP_CTRL_CFG,
++		   FIELD_PREP(MT_TXOP_TRUN_EN, 0x3f) |
++		   FIELD_PREP(MT_TXOP_EXT_CCA_DLY, 0x58));
++
++	ret = mt76x0_eeprom_init(dev);
++	if (ret)
++		goto err_rx;
++
++	mt76x0_phy_init(dev);
++	return 0;
++
++err_rx:
++	mt76x0_dma_cleanup(dev);
++err_mcu:
++	mt76x0_mcu_cmd_deinit(dev);
++err:
++	mt76x0_chip_onoff(dev, false, false);
++	return ret;
++}
++
++void mt76x0_cleanup(struct mt76x0_dev *dev)
++{
++	if (!test_and_clear_bit(MT76_STATE_INITIALIZED, &dev->mt76.state))
++		return;
++
++	mt76x0_stop_hardware(dev);
++	mt76x0_dma_cleanup(dev);
++	mt76x0_mcu_cmd_deinit(dev);
++}
++
++struct mt76x0_dev *mt76x0_alloc_device(struct device *pdev)
++{
++	struct ieee80211_hw *hw;
++	struct mt76x0_dev *dev;
++
++	hw = ieee80211_alloc_hw(sizeof(*dev), &mt76x0_ops);
++	if (!hw)
++		return NULL;
++
++	dev = hw->priv;
++	dev->mt76.dev = pdev;
++	dev->mt76.hw = hw;
++	mutex_init(&dev->usb_ctrl_mtx);
++	mutex_init(&dev->reg_atomic_mutex);
++	mutex_init(&dev->hw_atomic_mutex);
++	mutex_init(&dev->mutex);
++	spin_lock_init(&dev->tx_lock);
++	spin_lock_init(&dev->rx_lock);
++	spin_lock_init(&dev->mt76.lock);
++	spin_lock_init(&dev->mac_lock);
++	spin_lock_init(&dev->con_mon_lock);
++	atomic_set(&dev->avg_ampdu_len, 1);
++	skb_queue_head_init(&dev->tx_skb_done);
++
++	dev->stat_wq = alloc_workqueue("mt76x0", WQ_UNBOUND, 0);
++	if (!dev->stat_wq) {
++		ieee80211_free_hw(hw);
++		return NULL;
++	}
++
++	return dev;
++}
++
++#define CHAN2G(_idx, _freq) {			\
++	.band = NL80211_BAND_2GHZ,		\
++	.center_freq = (_freq),			\
++	.hw_value = (_idx),			\
++	.max_power = 30,			\
++}
++
++static const struct ieee80211_channel mt76_channels_2ghz[] = {
++	CHAN2G(1, 2412),
++	CHAN2G(2, 2417),
++	CHAN2G(3, 2422),
++	CHAN2G(4, 2427),
++	CHAN2G(5, 2432),
++	CHAN2G(6, 2437),
++	CHAN2G(7, 2442),
++	CHAN2G(8, 2447),
++	CHAN2G(9, 2452),
++	CHAN2G(10, 2457),
++	CHAN2G(11, 2462),
++	CHAN2G(12, 2467),
++	CHAN2G(13, 2472),
++	CHAN2G(14, 2484),
++};
++
++#define CHAN5G(_idx, _freq) {			\
++	.band = NL80211_BAND_5GHZ,		\
++	.center_freq = (_freq),			\
++	.hw_value = (_idx),			\
++	.max_power = 30,			\
++}
++
++static const struct ieee80211_channel mt76_channels_5ghz[] = {
++	CHAN5G(36, 5180),
++	CHAN5G(40, 5200),
++	CHAN5G(44, 5220),
++	CHAN5G(46, 5230),
++	CHAN5G(48, 5240),
++	CHAN5G(52, 5260),
++	CHAN5G(56, 5280),
++	CHAN5G(60, 5300),
++	CHAN5G(64, 5320),
++
++	CHAN5G(100, 5500),
++	CHAN5G(104, 5520),
++	CHAN5G(108, 5540),
++	CHAN5G(112, 5560),
++	CHAN5G(116, 5580),
++	CHAN5G(120, 5600),
++	CHAN5G(124, 5620),
++	CHAN5G(128, 5640),
++	CHAN5G(132, 5660),
++	CHAN5G(136, 5680),
++	CHAN5G(140, 5700),
++};
++
++#define CCK_RATE(_idx, _rate) {					\
++	.bitrate = _rate,					\
++	.flags = IEEE80211_RATE_SHORT_PREAMBLE,			\
++	.hw_value = (MT_PHY_TYPE_CCK << 8) | _idx,		\
++	.hw_value_short = (MT_PHY_TYPE_CCK << 8) | (8 + _idx),	\
++}
++
++#define OFDM_RATE(_idx, _rate) {				\
++	.bitrate = _rate,					\
++	.hw_value = (MT_PHY_TYPE_OFDM << 8) | _idx,		\
++	.hw_value_short = (MT_PHY_TYPE_OFDM << 8) | _idx,	\
++}
++
++static struct ieee80211_rate mt76_rates[] = {
++	CCK_RATE(0, 10),
++	CCK_RATE(1, 20),
++	CCK_RATE(2, 55),
++	CCK_RATE(3, 110),
++	OFDM_RATE(0, 60),
++	OFDM_RATE(1, 90),
++	OFDM_RATE(2, 120),
++	OFDM_RATE(3, 180),
++	OFDM_RATE(4, 240),
++	OFDM_RATE(5, 360),
++	OFDM_RATE(6, 480),
++	OFDM_RATE(7, 540),
++};
++
++static int
++mt76_init_sband(struct mt76x0_dev *dev, struct ieee80211_supported_band *sband,
++		const struct ieee80211_channel *chan, int n_chan,
++		struct ieee80211_rate *rates, int n_rates)
++{
++	struct ieee80211_sta_ht_cap *ht_cap;
++	void *chanlist;
++	int size;
++
++	size = n_chan * sizeof(*chan);
++	chanlist = devm_kmemdup(dev->mt76.dev, chan, size, GFP_KERNEL);
++	if (!chanlist)
++		return -ENOMEM;
++
++	sband->channels = chanlist;
++	sband->n_channels = n_chan;
++	sband->bitrates = rates;
++	sband->n_bitrates = n_rates;
++
++	ht_cap = &sband->ht_cap;
++	ht_cap->ht_supported = true;
++	ht_cap->cap = IEEE80211_HT_CAP_SUP_WIDTH_20_40 |
++		      IEEE80211_HT_CAP_GRN_FLD |
++		      IEEE80211_HT_CAP_SGI_20 |
++		      IEEE80211_HT_CAP_SGI_40 |
++		      (1 << IEEE80211_HT_CAP_RX_STBC_SHIFT);
++
++	ht_cap->mcs.rx_mask[0] = 0xff;
++	ht_cap->mcs.rx_mask[4] = 0x1;
++	ht_cap->mcs.tx_params = IEEE80211_HT_MCS_TX_DEFINED;
++	ht_cap->ampdu_factor = IEEE80211_HT_MAX_AMPDU_64K;
++	ht_cap->ampdu_density = IEEE80211_HT_MPDU_DENSITY_2;
++
++	return 0;
++}
++
++static int
++mt76_init_sband_2g(struct mt76x0_dev *dev)
++{
++	dev->mt76.hw->wiphy->bands[NL80211_BAND_2GHZ] = &dev->mt76.sband_2g.sband;
++
++	WARN_ON(dev->ee->reg.start - 1 + dev->ee->reg.num >
++		ARRAY_SIZE(mt76_channels_2ghz));
++
++
++	return mt76_init_sband(dev, &dev->mt76.sband_2g.sband,
++			       mt76_channels_2ghz, ARRAY_SIZE(mt76_channels_2ghz),
++			       mt76_rates, ARRAY_SIZE(mt76_rates));
++}
++
++static int
++mt76_init_sband_5g(struct mt76x0_dev *dev)
++{
++	dev->mt76.hw->wiphy->bands[NL80211_BAND_5GHZ] = &dev->mt76.sband_5g.sband;
++
++	return mt76_init_sband(dev, &dev->mt76.sband_5g.sband,
++			       mt76_channels_5ghz, ARRAY_SIZE(mt76_channels_5ghz),
++			       mt76_rates + 4, ARRAY_SIZE(mt76_rates) - 4);
++}
++
++
++int mt76x0_register_device(struct mt76x0_dev *dev)
++{
++	struct ieee80211_hw *hw = dev->mt76.hw;
++	struct wiphy *wiphy = hw->wiphy;
++	int ret;
++
++	/* Reserve WCID 0 for mcast - thanks to this APs WCID will go to
++	 * entry no. 1 like it does in the vendor driver.
++	 */
++	dev->wcid_mask[0] |= 1;
++
++	/* init fake wcid for monitor interfaces */
++	dev->mon_wcid = devm_kmalloc(dev->mt76.dev, sizeof(*dev->mon_wcid),
++				     GFP_KERNEL);
++	if (!dev->mon_wcid)
++		return -ENOMEM;
++	dev->mon_wcid->idx = 0xff;
++	dev->mon_wcid->hw_key_idx = -1;
++
++	SET_IEEE80211_DEV(hw, dev->mt76.dev);
++
++	hw->queues = 4;
++	ieee80211_hw_set(hw, SIGNAL_DBM);
++	ieee80211_hw_set(hw, PS_NULLFUNC_STACK);
++	ieee80211_hw_set(hw, SUPPORTS_HT_CCK_RATES);
++	ieee80211_hw_set(hw, AMPDU_AGGREGATION);
++	ieee80211_hw_set(hw, SUPPORTS_RC_TABLE);
++	hw->max_rates = 1;
++	hw->max_report_rates = 7;
++	hw->max_rate_tries = 1;
++
++	hw->sta_data_size = sizeof(struct mt76_sta);
++	hw->vif_data_size = sizeof(struct mt76_vif);
++
++	SET_IEEE80211_PERM_ADDR(hw, dev->macaddr);
++
++	wiphy->features |= NL80211_FEATURE_ACTIVE_MONITOR;
++	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION);
++
++	if (dev->ee->has_2ghz) {
++		ret = mt76_init_sband_2g(dev);
++		if (ret)
++			return ret;
++	}
++
++	if (dev->ee->has_5ghz) {
++		ret = mt76_init_sband_5g(dev);
++		if (ret)
++			return ret;
++	}
++
++	dev->mt76.chandef.chan = &dev->mt76.sband_2g.sband.channels[0];
++
++	INIT_DELAYED_WORK(&dev->mac_work, mt76x0_mac_work);
++	INIT_DELAYED_WORK(&dev->stat_work, mt76x0_tx_stat);
++
++	ret = ieee80211_register_hw(hw);
++	if (ret)
++		return ret;
++
++	mt76x0_init_debugfs(dev);
++
++	return 0;
++}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/initvals.h b/drivers/net/wireless/mediatek/mt76/mt76x0/initvals.h
 new file mode 100644
-index 000000000000..2880a43c3cb0
+index 000000000000..24afcfd94b4e
 --- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/phy.h
-@@ -0,0 +1,81 @@
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/initvals.h
+@@ -0,0 +1,282 @@
 +/*
 + * (c) Copyright 2002-2010, Ralink Technology, Inc.
++ * Copyright (C) 2015 Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>
 + * Copyright (C) 2018 Stanislaw Gruszka <stf_xl-5tc4TXWwyLM@public.gmane.org>
 + *
 + * This program is free software; you can redistribute it and/or modify
@@ -1833,73 +766,273 @@ index 000000000000..2880a43c3cb0
 + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 + * GNU General Public License for more details.
 + */
-+#ifndef _MT76X0_PHY_H_
-+#define _MT76X0_PHY_H_
 +
-+#define RF_G_BAND 	0x0100
-+#define RF_A_BAND 	0x0200
-+#define RF_A_BAND_LB	0x0400
-+#define RF_A_BAND_MB	0x0800
-+#define RF_A_BAND_HB	0x1000
-+#define RF_A_BAND_11J	0x2000
++#ifndef __MT76X0U_INITVALS_H
++#define __MT76X0U_INITVALS_H
 +
-+#define RF_BW_20        1
-+#define RF_BW_40        2
-+#define RF_BW_10        4
-+#define RF_BW_80        8
++#include "phy.h"
 +
-+#define MT_RF(bank, reg) ((bank) << 16 | (reg))
-+#define MT_RF_BANK(offset) (offset >> 16)
-+#define MT_RF_REG(offset) (offset & 0xff)
++static const struct mt76_reg_pair common_mac_reg_table[] = {
++#if 1
++	{MT_BCN_OFFSET(0),			0xf8f0e8e0}, /* 0x3800(e0), 0x3A00(e8), 0x3C00(f0), 0x3E00(f8), 512B for each beacon */
++	{MT_BCN_OFFSET(1),			0x6f77d0c8}, /* 0x3200(c8), 0x3400(d0), 0x1DC0(77), 0x1BC0(6f), 512B for each beacon */
++#endif
 +
-+struct mt76x0_bbp_switch_item {
-+	u16 bw_band;
-+	struct mt76_reg_pair reg_pair;
++	{MT_LEGACY_BASIC_RATE,		0x0000013f}, /*  Basic rate set bitmap*/
++	{MT_HT_BASIC_RATE,		0x00008003}, /* Basic HT rate set , 20M, MCS=3, MM. Format is the same as in TXWI.*/
++	{MT_MAC_SYS_CTRL,		0x00}, /* 0x1004, , default Disable RX*/
++	{MT_RX_FILTR_CFG,		0x17f97}, /*0x1400  , RX filter control,  */
++	{MT_BKOFF_SLOT_CFG,	0x209}, /* default set short slot time, CC_DELAY_TIME should be 2	 */
++	/*{TX_SW_CFG0,		0x40a06},  Gary,2006-08-23 */
++	{MT_TX_SW_CFG0,		0x0}, 		/* Gary,2008-05-21 for CWC test */
++	{MT_TX_SW_CFG1,		0x80606}, /* Gary,2006-08-23 */
++	{MT_TX_LINK_CFG,		0x1020},		/* Gary,2006-08-23 */
++	/*{TX_TIMEOUT_CFG,	0x00182090},	 CCK has some problem. So increase timieout value. 2006-10-09 MArvek RT*/
++	{MT_TX_TIMEOUT_CFG,	0x000a2090},	/* CCK has some problem. So increase timieout value. 2006-10-09 MArvek RT , Modify for 2860E ,2007-08-01*/
++	{MT_MAX_LEN_CFG,		0xa0fff | 0x00001000},	/* 0x3018, MAX frame length. Max PSDU = 16kbytes.*/
++	{MT_LED_CFG,		0x7f031e46}, /* Gary, 2006-08-23*/
++
++	{MT_PBF_TX_MAX_PCNT,		0x1fbf1f1f /*0xbfbf3f1f*/},
++	{MT_PBF_RX_MAX_PCNT,		0x9f},
++
++	/*{TX_RTY_CFG,			0x6bb80408},	 Jan, 2006/11/16*/
++/* WMM_ACM_SUPPORT */
++/*	{TX_RTY_CFG,			0x6bb80101},	 sample*/
++	{MT_TX_RETRY_CFG,			0x47d01f0f},	/* Jan, 2006/11/16, Set TxWI->ACK =0 in Probe Rsp Modify for 2860E ,2007-08-03*/
++
++	{MT_AUTO_RSP_CFG,			0x00000013},	/* Initial Auto_Responder, because QA will turn off Auto-Responder*/
++	{MT_CCK_PROT_CFG,			0x05740003 /*0x01740003*/},	/* Initial Auto_Responder, because QA will turn off Auto-Responder. And RTS threshold is enabled. */
++	{MT_OFDM_PROT_CFG,			0x05740003 /*0x01740003*/},	/* Initial Auto_Responder, because QA will turn off Auto-Responder. And RTS threshold is enabled. */
++	{MT_PBF_CFG, 				0xf40006}, 		/* Only enable Queue 2*/
++	{MT_MM40_PROT_CFG,			0x3F44084},		/* Initial Auto_Responder, because QA will turn off Auto-Responder*/
++	{MT_WPDMA_GLO_CFG,			0x00000030},
++	{MT_GF20_PROT_CFG,			0x01744004},    /* set 19:18 --> Short NAV for MIMO PS*/
++	{MT_GF40_PROT_CFG,			0x03F44084},
++	{MT_MM20_PROT_CFG,			0x01744004},
++	{MT_TXOP_CTRL_CFG,			0x0000583f, /*0x0000243f*/ /*0x000024bf*/},	/*Extension channel backoff.*/
++	{MT_TX_RTS_CFG,			0x00092b20},
++
++	{MT_EXP_ACK_TIME,			0x002400ca},	/* default value */
++	{MT_TXOP_HLDR_ET, 			0x00000002},
++
++	/* Jerry comments 2008/01/16: we use SIFS = 10us in CCK defaultly, but it seems that 10us
++		is too small for INTEL 2200bg card, so in MBSS mode, the delta time between beacon0
++		and beacon1 is SIFS (10us), so if INTEL 2200bg card connects to BSS0, the ping
++		will always lost. So we change the SIFS of CCK from 10us to 16us. */
++	{MT_XIFS_TIME_CFG,			0x33a41010},
++	{MT_PWR_PIN_CFG,			0x00000000},
 +};
 +
-+struct mt76x0_rf_switch_item {
-+	u32 rf_bank_reg;
-+	u16 bw_band;
-+	u8 value;
++static const struct mt76_reg_pair mt76x0_mac_reg_table[] = {
++	/* {MT_IOCFG_6,		0xA0040080 }, */
++	{MT_PBF_SYS_CTRL,	0x00080c00 },
++	{MT_PBF_CFG,		0x77723c1f },
++	{MT_FCE_PSE_CTRL,	0x00000001 },
++
++	{MT_AMPDU_MAX_LEN_20M1S,	0xBAA99887 },
++
++	/* Delay bb_tx_pe for proper tx_mcs_pwr update */
++	{MT_TX_SW_CFG0,		0x00000601 },
++
++	/* Set rf_tx_pe deassert time to 1us by Chee's comment @MT7650_CR_setting_1018.xlsx */
++	{MT_TX_SW_CFG1,		0x00040000 },
++	{MT_TX_SW_CFG2,		0x00000000 },
++
++	/* disable Tx info report */
++	{0xa44,		0x0000000 },
++
++	{MT_HEADER_TRANS_CTRL_REG, 0x0},
++	{MT_TSO_CTRL,		0x0},
++
++	/* BB_PA_MODE_CFG0(0x1214) Keep default value @20120903 */
++	{MT_BB_PA_MODE_CFG1,	0x00500055},
++
++	/* RF_PA_MODE_CFG0(0x121C) Keep default value @20120903 */
++	{MT_RF_PA_MODE_CFG1,	0x00500055},
++
++	{MT_TX_ALC_CFG_0,	0x2F2F000C},
++	{MT_TX0_BB_GAIN_ATTEN,  0x00000000}, /* set BBP atten gain = 0 */
++
++	{MT_TX_PWR_CFG_0, 0x3A3A3A3A},
++	{MT_TX_PWR_CFG_1, 0x3A3A3A3A},
++	{MT_TX_PWR_CFG_2, 0x3A3A3A3A},
++	{MT_TX_PWR_CFG_3, 0x3A3A3A3A},
++	{MT_TX_PWR_CFG_4, 0x3A3A3A3A},
++	{MT_TX_PWR_CFG_7, 0x3A3A3A3A},
++	{MT_TX_PWR_CFG_8, 0x3A},
++	{MT_TX_PWR_CFG_9, 0x3A},
++	/* Enable Tx length > 4095 byte */
++	{0x150C,		0x00000002},
++
++	/* Disable bt_abort_tx_en(0x1238[21] = 0) which is not used at MT7650 */
++	{0x1238, 		0x001700C8},
++	/* PMU_OCLEVEL<5:1> from default <5'b10010> to <5'b11011> for normal driver */
++	/* {MT_LDO_CTRL_0,		0x00A647B6}, */
++
++	/* Default LDO_DIG supply 1.26V, change to 1.2V */
++	{MT_LDO_CTRL_1,		0x6B006464 },
++/*
++	{MT_HT_BASIC_RATE,	0x00004003 },
++	{MT_HT_CTRL_CFG,	0x000001FF },
++*/
 +};
 +
-+struct mt76x0_freq_item {
-+	u8 channel;
-+	u32 band;
-+	u8 pllR37;
-+	u8 pllR36;
-+	u8 pllR35;
-+	u8 pllR34;
-+	u8 pllR33;
-+	u8 pllR32_b7b5;
-+	u8 pllR32_b4b0; /* PLL_DEN (Denomina - 8) */
-+	u8 pllR31_b7b5;
-+	u8 pllR31_b4b0; /* PLL_K (Nominator *)*/
-+	u8 pllR30_b7;	/* sdm_reset_n */
-+	u8 pllR30_b6b2; /* sdmmash_prbs,sin */
-+	u8 pllR30_b1;	/* sdm_bp */
-+	u16 pll_n;	/* R30<0>, R29<7:0> (hex) */
-+	u8 pllR28_b7b6; /* isi,iso */
-+	u8 pllR28_b5b4;	/* pfd_dly */
-+	u8 pllR28_b3b2;	/* clksel option */
-+	u32 pll_sdm_k;	/* R28<1:0>, R27<7:0>, R26<7:0> (hex) SDM_k */
-+	u8 pllR24_b1b0;	/* xo_div */
++
++static const struct mt76_reg_pair mt76x0_bbp_init_tab[] = {
++	{MT_BBP(CORE, 1), 0x00000002},
++	{MT_BBP(CORE, 4), 0x00000000},
++	{MT_BBP(CORE, 24), 0x00000000},
++	{MT_BBP(CORE, 32), 0x4003000a},
++	{MT_BBP(CORE, 42), 0x00000000},
++	{MT_BBP(CORE, 44), 0x00000000},
++
++	{MT_BBP(IBI, 11), 0x00000080},
++
++	/*
++		0x2300[5] Default Antenna:
++		0 for WIFI main antenna
++		1 for WIFI aux  antenna
++
++	*/
++	{MT_BBP(AGC, 0), 0x00021400},
++	{MT_BBP(AGC, 1), 0x00000003},
++	{MT_BBP(AGC, 2), 0x003A6464},
++	{MT_BBP(AGC, 15), 0x88A28CB8},
++	{MT_BBP(AGC, 22), 0x00001E21},
++	{MT_BBP(AGC, 23), 0x0000272C},
++	{MT_BBP(AGC, 24), 0x00002F3A},
++	{MT_BBP(AGC, 25), 0x8000005A},
++	{MT_BBP(AGC, 26), 0x007C2005},
++	{MT_BBP(AGC, 34), 0x000A0C0C},
++	{MT_BBP(AGC, 37), 0x2121262C},
++	{MT_BBP(AGC, 41), 0x38383E45},
++	{MT_BBP(AGC, 57), 0x00001010},
++	{MT_BBP(AGC, 59), 0xBAA20E96},
++	{MT_BBP(AGC, 63), 0x00000001},
++
++	{MT_BBP(TXC, 0), 0x00280403},
++	{MT_BBP(TXC, 1), 0x00000000},
++
++	{MT_BBP(RXC, 1), 0x00000012},
++	{MT_BBP(RXC, 2), 0x00000011},
++	{MT_BBP(RXC, 3), 0x00000005},
++	{MT_BBP(RXC, 4), 0x00000000},
++	{MT_BBP(RXC, 5), 0xF977C4EC},
++	{MT_BBP(RXC, 7), 0x00000090},
++
++	{MT_BBP(TXO, 8), 0x00000000},
++
++	{MT_BBP(TXBE, 0), 0x00000000},
++	{MT_BBP(TXBE, 4), 0x00000004},
++	{MT_BBP(TXBE, 6), 0x00000000},
++	{MT_BBP(TXBE, 8), 0x00000014},
++	{MT_BBP(TXBE, 9), 0x20000000},
++	{MT_BBP(TXBE, 10), 0x00000000},
++	{MT_BBP(TXBE, 12), 0x00000000},
++	{MT_BBP(TXBE, 13), 0x00000000},
++	{MT_BBP(TXBE, 14), 0x00000000},
++	{MT_BBP(TXBE, 15), 0x00000000},
++	{MT_BBP(TXBE, 16), 0x00000000},
++	{MT_BBP(TXBE, 17), 0x00000000},
++
++	{MT_BBP(RXFE, 1), 0x00008800}, /* Add for E3 */
++	{MT_BBP(RXFE, 3), 0x00000000},
++	{MT_BBP(RXFE, 4), 0x00000000},
++
++	{MT_BBP(RXO, 13), 0x00000092},
++	{MT_BBP(RXO, 14), 0x00060612},
++	{MT_BBP(RXO, 15), 0xC8321B18},
++	{MT_BBP(RXO, 16), 0x0000001E},
++	{MT_BBP(RXO, 17), 0x00000000},
++	{MT_BBP(RXO, 18), 0xCC00A993},
++	{MT_BBP(RXO, 19), 0xB9CB9CB9},
++	{MT_BBP(RXO, 20), 0x26c00057},
++	{MT_BBP(RXO, 21), 0x00000001},
++	{MT_BBP(RXO, 24), 0x00000006},
 +};
 +
-+struct mt76x0_rate_pwr_item {
-+	s8 mcs_power;
-+	u8 rf_pa_mode;
++static const struct mt76x0_bbp_switch_item mt76x0_bbp_switch_tab[] = {
++	{RF_G_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(AGC, 8), 0x0E344EF0}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 8), 0x122C54F2}},
++
++	{RF_G_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(AGC, 14), 0x310F2E39}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 14), 0x310F2A3F}},
++
++	{RF_G_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(AGC, 32), 0x00003230}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 32), 0x0000181C}},
++
++	{RF_G_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(AGC, 33), 0x00003240}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 33), 0x00003218}},
++
++	{RF_G_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(AGC, 35), 0x11112016}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 35), 0x11112016}},
++
++	{RF_G_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(RXO, 28), 0x0000008A}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(RXO, 28), 0x0000008A}},
++
++	{RF_G_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(AGC, 4), 0x1FEDA049}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 4), 0x1FECA054}},
++
++	{RF_G_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(AGC, 6), 0x00000045}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 6), 0x0000000A}},
++
++	{RF_G_BAND | RF_BW_20,				{MT_BBP(AGC, 12), 0x05052879}},
++	{RF_G_BAND | RF_BW_40,				{MT_BBP(AGC, 12), 0x050528F9}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 12), 0x050528F9}},
++
++	{RF_G_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(AGC, 13), 0x35050004}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 13), 0x2C3A0406}},
++
++	{RF_G_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(AGC, 27), 0x000000E1}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 27), 0x000000EC}},
++
++	{RF_G_BAND | RF_BW_20,				{MT_BBP(AGC, 28), 0x00060806}},
++	{RF_G_BAND | RF_BW_40,				{MT_BBP(AGC, 28), 0x00050806}},
++	{RF_A_BAND | RF_BW_40,				{MT_BBP(AGC, 28), 0x00060801}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_80,		{MT_BBP(AGC, 28), 0x00060806}},
++
++	{RF_G_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(AGC, 31), 0x00000F23}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 31), 0x00000F13}},
++
++	{RF_G_BAND | RF_BW_20,				{MT_BBP(AGC, 39), 0x2A2A3036}},
++	{RF_G_BAND | RF_BW_40,				{MT_BBP(AGC, 39), 0x2A2A2C36}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(AGC, 39), 0x2A2A3036}},
++	{RF_A_BAND | RF_BW_80,				{MT_BBP(AGC, 39), 0x2A2A2A36}},
++
++	{RF_G_BAND | RF_BW_20,				{MT_BBP(AGC, 43), 0x27273438}},
++	{RF_G_BAND | RF_BW_40,				{MT_BBP(AGC, 43), 0x27272D38}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 43), 0x27272B30}},
++
++	{RF_G_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(AGC, 51), 0x17171C1C}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 51), 0xFFFFFFFF}},
++
++	{RF_G_BAND | RF_BW_20,				{MT_BBP(AGC, 53), 0x26262A2F}},
++	{RF_G_BAND | RF_BW_40,				{MT_BBP(AGC, 53), 0x2626322F}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 53), 0xFFFFFFFF}},
++
++	{RF_G_BAND | RF_BW_20,				{MT_BBP(AGC, 55), 0x40404E58}},
++	{RF_G_BAND | RF_BW_40,				{MT_BBP(AGC, 55), 0x40405858}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 55), 0xFFFFFFFF}},
++
++	{RF_G_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(AGC, 58), 0x00001010}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(AGC, 58), 0x00000000}},
++
++	{RF_G_BAND | RF_BW_20 | RF_BW_40,		{MT_BBP(RXFE, 0), 0x3D5000E0}},
++	{RF_A_BAND | RF_BW_20 | RF_BW_40 | RF_BW_80,	{MT_BBP(RXFE, 0), 0x895000E0}},
 +};
 +
-+struct mt76x0_rate_pwr_tab {
-+	struct mt76x0_rate_pwr_item cck[4];
-+	struct mt76x0_rate_pwr_item ofdm[8];
-+	struct mt76x0_rate_pwr_item ht[8];
-+	struct mt76x0_rate_pwr_item vht[10];
-+	struct mt76x0_rate_pwr_item stbc[8];
-+	struct mt76x0_rate_pwr_item mcs32;
++static const struct mt76_reg_pair mt76x0_dcoc_tab[] = {
++	{MT_BBP(CAL, 47), 0x000010F0 },
++	{MT_BBP(CAL, 48), 0x00008080 },
++	{MT_BBP(CAL, 49), 0x00000F07 },
++	{MT_BBP(CAL, 50), 0x00000040 },
++	{MT_BBP(CAL, 51), 0x00000404 },
++	{MT_BBP(CAL, 52), 0x00080803 },
++	{MT_BBP(CAL, 53), 0x00000704 },
++	{MT_BBP(CAL, 54), 0x00002828 },
++	{MT_BBP(CAL, 55), 0x00005050 },
 +};
 +
-+#endif /* _MT76X0_PHY_H_ */
++#endif
 -- 
 1.9.3
