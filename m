@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH v2 08/12] mt76x0: eeprom files
-Date: Fri,  6 Jul 2018 13:03:45 +0200
-Message-ID: <1530875029-26274-9-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH v2 09/12] mt76x0: trace and debugfs files
+Date: Fri,  6 Jul 2018 13:03:46 +0200
+Message-ID: <1530875029-26274-10-git-send-email-sgruszka@redhat.com>
 References: <1530875029-26274-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1530875029-26274-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,22 +10,24 @@ To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add eeprom files of mt76x0 driver.
+Add trace and debugfs files of mt76x0 driver.
 
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c | 445 +++++++++++++++++++++
- drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h | 149 +++++++
- 2 files changed, 594 insertions(+)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
+ .../net/wireless/mediatek/mt76/mt76x0/debugfs.c    | 166 ++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76x0/trace.c  |  21 ++
+ drivers/net/wireless/mediatek/mt76/mt76x0/trace.h  | 366 +++++++++++++++++++++
+ 3 files changed, 553 insertions(+)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/trace.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/trace.h
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
 new file mode 100644
-index 000000000000..1ecd018f12b8
+index 000000000000..e7a77a886068
 --- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-@@ -0,0 +1,445 @@
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
+@@ -0,0 +1,166 @@
 +/*
 + * Copyright (C) 2014 Felix Fietkau <nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 + * Copyright (C) 2015 Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>
@@ -41,446 +43,166 @@ index 000000000000..1ecd018f12b8
 + * GNU General Public License for more details.
 + */
 +
-+#include <linux/of.h>
-+#include <linux/mtd/mtd.h>
-+#include <linux/mtd/partitions.h>
-+#include <linux/etherdevice.h>
-+#include <asm/unaligned.h>
++#include <linux/debugfs.h>
++
 +#include "mt76x0.h"
 +#include "eeprom.h"
 +
-+static bool
-+field_valid(u8 val)
++static int
++mt76_reg_set(void *data, u64 val)
 +{
-+	return val != 0xff;
-+}
++	struct mt76x0_dev *dev = data;
 +
-+static s8
-+field_validate(u8 val)
-+{
-+	if (!field_valid(val))
-+		return 0;
-+
-+	return val;
-+}
-+
-+static inline int
-+sign_extend(u32 val, unsigned int size)
-+{
-+	bool sign = val & BIT(size - 1);
-+
-+	val &= BIT(size - 1) - 1;
-+
-+	return sign ? val : -val;
++	mt76_wr(dev, dev->debugfs_reg, val);
++	return 0;
 +}
 +
 +static int
-+mt76x0_efuse_read(struct mt76x0_dev *dev, u16 addr, u8 *data,
-+		   enum mt76x0_eeprom_access_modes mode)
++mt76_reg_get(void *data, u64 *val)
 +{
-+	u32 val;
++	struct mt76x0_dev *dev = data;
++
++	*val = mt76_rr(dev, dev->debugfs_reg);
++	return 0;
++}
++
++DEFINE_SIMPLE_ATTRIBUTE(fops_regval, mt76_reg_get, mt76_reg_set, "0x%08llx\n");
++
++static int
++mt76x0_ampdu_stat_read(struct seq_file *file, void *data)
++{
++	struct mt76x0_dev *dev = file->private;
++	int i, j;
++
++#define stat_printf(grp, off, name)					\
++	seq_printf(file, #name ":\t%llu\n", dev->stats.grp[off])
++
++	stat_printf(rx_stat, 0, rx_crc_err);
++	stat_printf(rx_stat, 1, rx_phy_err);
++	stat_printf(rx_stat, 2, rx_false_cca);
++	stat_printf(rx_stat, 3, rx_plcp_err);
++	stat_printf(rx_stat, 4, rx_fifo_overflow);
++	stat_printf(rx_stat, 5, rx_duplicate);
++
++	stat_printf(tx_stat, 0, tx_fail_cnt);
++	stat_printf(tx_stat, 1, tx_bcn_cnt);
++	stat_printf(tx_stat, 2, tx_success);
++	stat_printf(tx_stat, 3, tx_retransmit);
++	stat_printf(tx_stat, 4, tx_zero_len);
++	stat_printf(tx_stat, 5, tx_underflow);
++
++	stat_printf(aggr_stat, 0, non_aggr_tx);
++	stat_printf(aggr_stat, 1, aggr_tx);
++
++	stat_printf(zero_len_del, 0, tx_zero_len_del);
++	stat_printf(zero_len_del, 1, rx_zero_len_del);
++#undef stat_printf
++
++	seq_puts(file, "Aggregations stats:\n");
++	for (i = 0; i < 4; i++) {
++		for (j = 0; j < 8; j++)
++			seq_printf(file, "%08llx ",
++				   dev->stats.aggr_n[i * 8 + j]);
++		seq_putc(file, '\n');
++	}
++
++	seq_printf(file, "recent average AMPDU len: %d\n",
++		   atomic_read(&dev->avg_ampdu_len));
++
++	return 0;
++}
++
++static int
++mt76x0_ampdu_stat_open(struct inode *inode, struct file *f)
++{
++	return single_open(f, mt76x0_ampdu_stat_read, inode->i_private);
++}
++
++static const struct file_operations fops_ampdu_stat = {
++	.open = mt76x0_ampdu_stat_open,
++	.read = seq_read,
++	.llseek = seq_lseek,
++	.release = single_release,
++};
++
++static int
++mt76x0_eeprom_param_read(struct seq_file *file, void *data)
++{
++	struct mt76x0_dev *dev = file->private;
 +	int i;
 +
-+	val = mt76_rr(dev, MT_EFUSE_CTRL);
-+	val &= ~(MT_EFUSE_CTRL_AIN |
-+		 MT_EFUSE_CTRL_MODE);
-+	val |= FIELD_PREP(MT_EFUSE_CTRL_AIN, addr & ~0xf) |
-+	       FIELD_PREP(MT_EFUSE_CTRL_MODE, mode) |
-+	       MT_EFUSE_CTRL_KICK;
-+	mt76_wr(dev, MT_EFUSE_CTRL, val);
++	seq_printf(file, "RF freq offset: %hhx\n", dev->ee->rf_freq_off);
++	seq_printf(file, "RSSI offset 2GHz: %hhx %hhx\n",
++		   dev->ee->rssi_offset_2ghz[0], dev->ee->rssi_offset_2ghz[1]);
++	seq_printf(file, "RSSI offset 5GHz: %hhx %hhx %hhx\n",
++		   dev->ee->rssi_offset_5ghz[0], dev->ee->rssi_offset_5ghz[1],
++		   dev->ee->rssi_offset_5ghz[2]);
++	seq_printf(file, "Temperature offset: %hhx\n", dev->ee->temp_off);
++	seq_printf(file, "LNA gain 2Ghz: %hhx\n", dev->ee->lna_gain_2ghz);
++	seq_printf(file, "LNA gain 5Ghz: %hhx %hhx %hhx\n",
++		   dev->ee->lna_gain_5ghz[0], dev->ee->lna_gain_5ghz[1],
++		   dev->ee->lna_gain_5ghz[2]);
++	seq_printf(file, "Power Amplifier type %hhx\n", dev->ee->pa_type);
++	seq_printf(file, "Reg channels: %hhu-%hhu\n", dev->ee->reg.start,
++		   dev->ee->reg.start + dev->ee->reg.num - 1);
 +
-+	if (!mt76_poll(dev, MT_EFUSE_CTRL, MT_EFUSE_CTRL_KICK, 0, 1000))
-+		return -ETIMEDOUT;
++	seq_puts(file, "Per channel power:\n");
++	for (i = 0; i < 58; i++)
++		seq_printf(file, "\t%d chan:%d pwr:%d\n", i, i,
++			   dev->ee->tx_pwr_per_chan[i]);
 +
-+	val = mt76_rr(dev, MT_EFUSE_CTRL);
-+	if ((val & MT_EFUSE_CTRL_AOUT) == MT_EFUSE_CTRL_AOUT) {
-+		/* Parts of eeprom not in the usage map (0x80-0xc0,0xf0)
-+		 * will not return valid data but it's ok.
-+		 */
-+		memset(data, 0xff, 16);
-+		return 0;
-+	}
++	seq_puts(file, "Per rate power 2GHz:\n");
++	for (i = 0; i < 5; i++)
++		seq_printf(file, "\t %d bw20:%d bw40:%d\n",
++			   i, dev->ee->tx_pwr_cfg_2g[i][0],
++			      dev->ee->tx_pwr_cfg_5g[i][1]);
 +
-+	for (i = 0; i < 4; i++) {
-+		val = mt76_rr(dev, MT_EFUSE_DATA(i));
-+		put_unaligned_le32(val, data + 4 * i);
-+	}
++	seq_puts(file, "Per rate power 5GHz:\n");
++	for (i = 0; i < 5; i++)
++		seq_printf(file, "\t %d bw20:%d bw40:%d\n",
++			   i, dev->ee->tx_pwr_cfg_5g[i][0],
++			      dev->ee->tx_pwr_cfg_5g[i][1]);
 +
 +	return 0;
 +}
 +
 +static int
-+mt76x0_efuse_physical_size_check(struct mt76x0_dev *dev)
++mt76x0_eeprom_param_open(struct inode *inode, struct file *f)
 +{
-+	const int map_reads = DIV_ROUND_UP(MT_EFUSE_USAGE_MAP_SIZE, 16);
-+	u8 data[map_reads * 16];
-+	int ret, i;
-+	u32 start = 0, end = 0, cnt_free;
-+
-+	for (i = 0; i < map_reads; i++) {
-+		ret = mt76x0_efuse_read(dev, MT_EE_USAGE_MAP_START + i * 16,
-+					 data + i * 16, MT_EE_PHYSICAL_READ);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	for (i = 0; i < MT_EFUSE_USAGE_MAP_SIZE; i++)
-+		if (!data[i]) {
-+			if (!start)
-+				start = MT_EE_USAGE_MAP_START + i;
-+			end = MT_EE_USAGE_MAP_START + i;
-+		}
-+	cnt_free = end - start + 1;
-+
-+	if (MT_EFUSE_USAGE_MAP_SIZE - cnt_free < 5) {
-+		dev_err(dev->mt76.dev, "Error: your device needs default EEPROM file and this driver doesn't support it!\n");
-+		return -EINVAL;
-+	}
-+
-+	return 0;
++	return single_open(f, mt76x0_eeprom_param_read, inode->i_private);
 +}
 +
-+static void
-+mt76x0_set_chip_cap(struct mt76x0_dev *dev, u8 *eeprom)
++static const struct file_operations fops_eeprom_param = {
++	.open = mt76x0_eeprom_param_open,
++	.read = seq_read,
++	.llseek = seq_lseek,
++	.release = single_release,
++};
++
++void mt76x0_init_debugfs(struct mt76x0_dev *dev)
 +{
-+	enum mt76x2_board_type { BOARD_TYPE_2GHZ = 1, BOARD_TYPE_5GHZ = 2 };
-+	u16 nic_conf0 = get_unaligned_le16(eeprom + MT_EE_NIC_CONF_0);
-+	u16 nic_conf1 = get_unaligned_le16(eeprom + MT_EE_NIC_CONF_1);
++	struct dentry *dir;
 +
-+	dev_dbg(dev->mt76.dev, "NIC_CONF0: %04x NIC_CONF1: %04x\n", nic_conf0, nic_conf1);
-+
-+	switch (FIELD_GET(MT_EE_NIC_CONF_0_BOARD_TYPE, nic_conf0)) {
-+	case BOARD_TYPE_5GHZ:
-+		dev->ee->has_5ghz = true;
-+		break;
-+	case BOARD_TYPE_2GHZ:
-+		dev->ee->has_2ghz = true;
-+		break;
-+	default:
-+		dev->ee->has_2ghz = true;
-+		dev->ee->has_5ghz = true;
-+		break;
-+	}
-+
-+	dev_dbg(dev->mt76.dev, "Has 2GHZ %d 5GHZ %d\n", dev->ee->has_2ghz, dev->ee->has_5ghz);
-+
-+	if (!field_valid(nic_conf1 & 0xff))
-+		nic_conf1 &= 0xff00;
-+
-+	if (nic_conf1 & MT_EE_NIC_CONF_1_HW_RF_CTRL)
-+		dev_err(dev->mt76.dev,
-+			"Error: this driver does not support HW RF ctrl\n");
-+
-+	if (!field_valid(nic_conf0 >> 8))
++	dir = debugfs_create_dir("mt76x0", dev->mt76.hw->wiphy->debugfsdir);
++	if (!dir)
 +		return;
 +
-+	if (FIELD_GET(MT_EE_NIC_CONF_0_RX_PATH, nic_conf0) > 1 ||
-+	    FIELD_GET(MT_EE_NIC_CONF_0_TX_PATH, nic_conf0) > 1)
-+		dev_err(dev->mt76.dev,
-+			"Error: device has more than 1 RX/TX stream!\n");
-+
-+	dev->ee->pa_type = FIELD_GET(MT_EE_NIC_CONF_0_PA_TYPE, nic_conf0);
-+	dev_dbg(dev->mt76.dev, "PA Type %d\n", dev->ee->pa_type);
++	debugfs_create_u32("regidx", S_IRUSR | S_IWUSR, dir, &dev->debugfs_reg);
++	debugfs_create_file("regval", S_IRUSR | S_IWUSR, dir, dev,
++			    &fops_regval);
++	debugfs_create_file("ampdu_stat", S_IRUSR, dir, dev, &fops_ampdu_stat);
++	debugfs_create_file("eeprom_param", S_IRUSR, dir, dev,
++			    &fops_eeprom_param);
 +}
-+
-+static int
-+mt76x0_set_macaddr(struct mt76x0_dev *dev, const u8 *eeprom)
-+{
-+	const void *src = eeprom + MT_EE_MAC_ADDR;
-+
-+	ether_addr_copy(dev->macaddr, src);
-+
-+	if (!is_valid_ether_addr(dev->macaddr)) {
-+		eth_random_addr(dev->macaddr);
-+		dev_info(dev->mt76.dev,
-+			 "Invalid MAC address, using random address %pM\n",
-+			 dev->macaddr);
-+	}
-+
-+	mt76_wr(dev, MT_MAC_ADDR_DW0, get_unaligned_le32(dev->macaddr));
-+	mt76_wr(dev, MT_MAC_ADDR_DW1, get_unaligned_le16(dev->macaddr + 4) |
-+		FIELD_PREP(MT_MAC_ADDR_DW1_U2ME_MASK, 0xff));
-+
-+	return 0;
-+}
-+
-+static void
-+mt76x0_set_temp_offset(struct mt76x0_dev *dev, u8 *eeprom)
-+{
-+	u8 temp = eeprom[MT_EE_TEMP_OFFSET];
-+
-+	if (field_valid(temp))
-+		dev->ee->temp_off = sign_extend(temp, 8);
-+	else
-+		dev->ee->temp_off = -10;
-+}
-+
-+static void
-+mt76x0_set_country_reg(struct mt76x0_dev *dev, u8 *eeprom)
-+{
-+	/* Note: - region 31 is not valid for mt76x0 (see rtmp_init.c)
-+	 *	 - comments in rtmp_def.h are incorrect (see rt_channel.c)
-+	 */
-+	static const struct reg_channel_bounds chan_bounds[] = {
-+		/* EEPROM country regions 0 - 7 */
-+		{  1, 11 },	{  1, 13 },	{ 10,  2 },	{ 10,  4 },
-+		{ 14,  1 },	{  1, 14 },	{  3,  7 },	{  5,  9 },
-+		/* EEPROM country regions 32 - 33 */
-+		{  1, 11 },	{  1, 14 }
-+	};
-+	u8 val = eeprom[MT_EE_COUNTRY_REGION_2GHZ];
-+	int idx = -1;
-+
-+	dev_dbg(dev->mt76.dev, "REG 2GHZ %u REG 5GHZ %u\n", val, eeprom[MT_EE_COUNTRY_REGION_5GHZ]);
-+	if (val < 8)
-+		idx = val;
-+	if (val > 31 && val < 33)
-+		idx = val - 32 + 8;
-+
-+	if (idx != -1)
-+		dev_info(dev->mt76.dev,
-+			 "EEPROM country region %02hhx (channels %hhd-%hhd)\n",
-+			 val, chan_bounds[idx].start,
-+			 chan_bounds[idx].start + chan_bounds[idx].num - 1);
-+	else
-+		idx = 5; /* channels 1 - 14 */
-+
-+	dev->ee->reg = chan_bounds[idx];
-+
-+	/* TODO: country region 33 is special - phy should be set to B-mode
-+	 *	 before entering channel 14 (see sta/connect.c)
-+	 */
-+}
-+
-+static void
-+mt76x0_set_rf_freq_off(struct mt76x0_dev *dev, u8 *eeprom)
-+{
-+	u8 comp;
-+
-+	dev->ee->rf_freq_off = field_validate(eeprom[MT_EE_FREQ_OFFSET]);
-+	comp = field_validate(eeprom[MT_EE_FREQ_OFFSET_COMPENSATION]);
-+
-+	if (comp & BIT(7))
-+		dev->ee->rf_freq_off -= comp & 0x7f;
-+	else
-+		dev->ee->rf_freq_off += comp;
-+}
-+
-+static void
-+mt76x0_set_lna_gain(struct mt76x0_dev *dev, u8 *eeprom)
-+{
-+	s8 gain;
-+
-+	dev->ee->lna_gain_2ghz = eeprom[MT_EE_LNA_GAIN_2GHZ];
-+	dev->ee->lna_gain_5ghz[0] = eeprom[MT_EE_LNA_GAIN_5GHZ_0];
-+
-+	gain = eeprom[MT_EE_LNA_GAIN_5GHZ_1];
-+	if (gain == 0xff || gain == 0)
-+		dev->ee->lna_gain_5ghz[1] = dev->ee->lna_gain_5ghz[0];
-+	else
-+		dev->ee->lna_gain_5ghz[1] = gain;
-+
-+	gain = eeprom[MT_EE_LNA_GAIN_5GHZ_2];
-+	if (gain == 0xff || gain == 0)
-+		dev->ee->lna_gain_5ghz[2] = dev->ee->lna_gain_5ghz[0];
-+	else
-+		dev->ee->lna_gain_5ghz[2] = gain;
-+}
-+
-+static void
-+mt76x0_set_rssi_offset(struct mt76x0_dev *dev, u8 *eeprom)
-+{
-+	int i;
-+	s8 *rssi_offset = dev->ee->rssi_offset_2ghz;
-+
-+	for (i = 0; i < 2; i++) {
-+		rssi_offset[i] = eeprom[MT_EE_RSSI_OFFSET + i];
-+
-+		if (rssi_offset[i] < -10 || rssi_offset[i] > 10) {
-+			dev_warn(dev->mt76.dev,
-+				 "Warning: EEPROM RSSI is invalid %02hhx\n",
-+				 rssi_offset[i]);
-+			rssi_offset[i] = 0;
-+		}
-+	}
-+
-+	rssi_offset = dev->ee->rssi_offset_5ghz;
-+
-+	for (i = 0; i < 3; i++) {
-+		rssi_offset[i] = eeprom[MT_EE_RSSI_OFFSET_5GHZ + i];
-+
-+		if (rssi_offset[i] < -10 || rssi_offset[i] > 10) {
-+			dev_warn(dev->mt76.dev,
-+				 "Warning: EEPROM RSSI is invalid %02hhx\n",
-+				 rssi_offset[i]);
-+			rssi_offset[i] = 0;
-+		}
-+	}
-+}
-+
-+static u32
-+calc_bw40_power_rate(u32 value, int delta)
-+{
-+	u32 ret = 0;
-+	int i, tmp;
-+
-+	for (i = 0; i < 4; i++) {
-+		tmp = s6_to_int((value >> i*8) & 0xff) + delta;
-+		ret |= (u32)(int_to_s6(tmp)) << i*8;
-+	}
-+
-+	return ret;
-+}
-+
-+static s8
-+get_delta(u8 val)
-+{
-+	s8 ret;
-+
-+	if (!field_valid(val) || !(val & BIT(7)))
-+		return 0;
-+
-+	ret = val & 0x1f;
-+	if (ret > 8)
-+		ret = 8;
-+	if (val & BIT(6))
-+		ret = -ret;
-+
-+	return ret;
-+}
-+
-+static void
-+mt76x0_set_tx_power_per_rate(struct mt76x0_dev *dev, u8 *eeprom)
-+{
-+	s8 bw40_delta_2g, bw40_delta_5g;
-+	u32 val;
-+	int i;
-+
-+	bw40_delta_2g = get_delta(eeprom[MT_EE_TX_POWER_DELTA_BW40]);
-+	bw40_delta_5g = get_delta(eeprom[MT_EE_TX_POWER_DELTA_BW40 + 1]);
-+
-+	for (i = 0; i < 5; i++) {
-+		val = get_unaligned_le32(eeprom + MT_EE_TX_POWER_BYRATE(i));
-+
-+		/* Skip last 16 bits. */
-+		if (i == 4)
-+			val &= 0x0000ffff;
-+
-+		dev->ee->tx_pwr_cfg_2g[i][0] = val;
-+		dev->ee->tx_pwr_cfg_2g[i][1] = calc_bw40_power_rate(val, bw40_delta_2g);
-+	}
-+
-+	/* Reading per rate tx power for 5 GHz band is a bit more complex. Note
-+	 * we mix 16 bit and 32 bit reads and sometimes do shifts.
-+	 */
-+	val = get_unaligned_le16(eeprom + 0x120);
-+	val <<= 16;
-+	dev->ee->tx_pwr_cfg_5g[0][0] = val;
-+	dev->ee->tx_pwr_cfg_5g[0][1] = calc_bw40_power_rate(val, bw40_delta_5g);
-+
-+	val = get_unaligned_le32(eeprom + 0x122);
-+	dev->ee->tx_pwr_cfg_5g[1][0] = val;
-+	dev->ee->tx_pwr_cfg_5g[1][1] = calc_bw40_power_rate(val, bw40_delta_5g);
-+
-+	val = get_unaligned_le16(eeprom + 0x126);
-+	dev->ee->tx_pwr_cfg_5g[2][0] = val;
-+	dev->ee->tx_pwr_cfg_5g[2][1] = calc_bw40_power_rate(val, bw40_delta_5g);
-+
-+	val = get_unaligned_le16(eeprom + 0xec);
-+	val <<= 16;
-+	dev->ee->tx_pwr_cfg_5g[3][0] = val;
-+	dev->ee->tx_pwr_cfg_5g[3][1] = calc_bw40_power_rate(val, bw40_delta_5g);
-+
-+	val = get_unaligned_le16(eeprom + 0xee);
-+	dev->ee->tx_pwr_cfg_5g[4][0] = val;
-+	dev->ee->tx_pwr_cfg_5g[4][1] = calc_bw40_power_rate(val, bw40_delta_5g);
-+}
-+
-+static void
-+mt76x0_set_tx_power_per_chan(struct mt76x0_dev *dev, u8 *eeprom)
-+{
-+	int i;
-+	u8 tx_pwr;
-+
-+	for (i = 0; i < 14; i++) {
-+		tx_pwr = eeprom[MT_EE_TX_POWER_OFFSET_2GHZ + i];
-+		if (tx_pwr <= 0x3f && tx_pwr > 0)
-+			dev->ee->tx_pwr_per_chan[i] = tx_pwr;
-+		else
-+			dev->ee->tx_pwr_per_chan[i] = 5;
-+	}
-+
-+	for (i = 0; i < 40; i++) {
-+		tx_pwr = eeprom[MT_EE_TX_POWER_OFFSET_5GHZ + i];
-+		if (tx_pwr <= 0x3f && tx_pwr > 0)
-+			dev->ee->tx_pwr_per_chan[14 + i] = tx_pwr;
-+		else
-+			dev->ee->tx_pwr_per_chan[14 + i] = 5;
-+	}
-+
-+	dev->ee->tx_pwr_per_chan[54] = dev->ee->tx_pwr_per_chan[22];
-+	dev->ee->tx_pwr_per_chan[55] = dev->ee->tx_pwr_per_chan[28];
-+	dev->ee->tx_pwr_per_chan[56] = dev->ee->tx_pwr_per_chan[34];
-+	dev->ee->tx_pwr_per_chan[57] = dev->ee->tx_pwr_per_chan[44];
-+}
-+
-+int
-+mt76x0_eeprom_init(struct mt76x0_dev *dev)
-+{
-+	u8 *eeprom;
-+	int i, ret;
-+
-+	ret = mt76x0_efuse_physical_size_check(dev);
-+	if (ret)
-+		return ret;
-+
-+	dev->ee = devm_kzalloc(dev->mt76.dev, sizeof(*dev->ee), GFP_KERNEL);
-+	if (!dev->ee)
-+		return -ENOMEM;
-+
-+	eeprom = kmalloc(MT76X0_EEPROM_SIZE, GFP_KERNEL);
-+	if (!eeprom)
-+		return -ENOMEM;
-+
-+	for (i = 0; i + 16 <= MT76X0_EEPROM_SIZE; i += 16) {
-+		ret = mt76x0_efuse_read(dev, i, eeprom + i, MT_EE_READ);
-+		if (ret)
-+			goto out;
-+	}
-+
-+	if (eeprom[MT_EE_VERSION_EE] > MT76X0U_EE_MAX_VER)
-+		dev_warn(dev->mt76.dev,
-+			 "Warning: unsupported EEPROM version %02hhx\n",
-+			 eeprom[MT_EE_VERSION_EE]);
-+	dev_info(dev->mt76.dev, "EEPROM ver:%02hhx fae:%02hhx\n",
-+		 eeprom[MT_EE_VERSION_EE], eeprom[MT_EE_VERSION_FAE]);
-+
-+	mt76x0_set_macaddr(dev, eeprom);
-+	mt76x0_set_chip_cap(dev, eeprom);
-+	mt76x0_set_country_reg(dev, eeprom);
-+	mt76x0_set_rf_freq_off(dev, eeprom);
-+	mt76x0_set_temp_offset(dev, eeprom);
-+	mt76x0_set_lna_gain(dev, eeprom);
-+	mt76x0_set_rssi_offset(dev, eeprom);
-+	dev->chainmask = 0x0101;
-+
-+	mt76x0_set_tx_power_per_rate(dev, eeprom);
-+	mt76x0_set_tx_power_per_chan(dev, eeprom);
-+
-+out:
-+	kfree(eeprom);
-+	return ret;
-+}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/trace.c b/drivers/net/wireless/mediatek/mt76/mt76x0/trace.c
 new file mode 100644
-index 000000000000..e37b573aed7b
+index 000000000000..8abdd3cd546d
 --- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-@@ -0,0 +1,149 @@
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/trace.c
+@@ -0,0 +1,21 @@
 +/*
 + * Copyright (C) 2014 Felix Fietkau <nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 + * Copyright (C) 2015 Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>
-+ * Copyright (C) 2018 Stanislaw Gruszka <stf_xl-5tc4TXWwyLM@public.gmane.org>
 + *
 + * This program is free software; you can redistribute it and/or modify
 + * it under the terms of the GNU General Public License version 2
@@ -492,139 +214,384 @@ index 000000000000..e37b573aed7b
 + * GNU General Public License for more details.
 + */
 +
-+#ifndef __MT76X0U_EEPROM_H
-+#define __MT76X0U_EEPROM_H
++#include <linux/module.h>
 +
-+struct mt76x0_dev;
-+
-+#define MT76X0U_EE_MAX_VER			0x0c
-+#define MT76X0_EEPROM_SIZE			512
-+
-+#define MT76X0U_DEFAULT_TX_POWER		6
-+
-+enum mt76_eeprom_field {
-+	MT_EE_CHIP_ID =				0x00,
-+	MT_EE_VERSION_FAE =			0x02,
-+	MT_EE_VERSION_EE =			0x03,
-+	MT_EE_MAC_ADDR =			0x04,
-+	MT_EE_NIC_CONF_0 =			0x34,
-+	MT_EE_NIC_CONF_1 =			0x36,
-+	MT_EE_COUNTRY_REGION_5GHZ =		0x38,
-+	MT_EE_COUNTRY_REGION_2GHZ =		0x39,
-+	MT_EE_FREQ_OFFSET =			0x3a,
-+	MT_EE_NIC_CONF_2 =			0x42,
-+
-+	MT_EE_LNA_GAIN_2GHZ =			0x44,
-+	MT_EE_LNA_GAIN_5GHZ_0 =			0x45,
-+	MT_EE_RSSI_OFFSET =			0x46,
-+	MT_EE_RSSI_OFFSET_5GHZ =		0x4a,
-+	MT_EE_LNA_GAIN_5GHZ_1 =			0x49,
-+	MT_EE_LNA_GAIN_5GHZ_2 =			0x4d,
-+
-+	MT_EE_TX_POWER_DELTA_BW40 =		0x50,
-+
-+	MT_EE_TX_POWER_OFFSET_2GHZ =		0x52,
-+
-+	MT_EE_TX_TSSI_SLOPE =			0x6e,
-+	MT_EE_TX_TSSI_OFFSET_GROUP =		0x6f,
-+	MT_EE_TX_TSSI_OFFSET =			0x76,
-+
-+	MT_EE_TX_POWER_OFFSET_5GHZ =		0x78,
-+
-+	MT_EE_TEMP_OFFSET =			0xd1,
-+	MT_EE_FREQ_OFFSET_COMPENSATION =	0xdb,
-+	MT_EE_TX_POWER_BYRATE_BASE =		0xde,
-+
-+	MT_EE_TX_POWER_BYRATE_BASE_5GHZ =	0x120,
-+
-+	MT_EE_USAGE_MAP_START =			0x1e0,
-+	MT_EE_USAGE_MAP_END =			0x1fc,
-+};
-+
-+#define MT_EE_NIC_CONF_0_RX_PATH		GENMASK(3, 0)
-+#define MT_EE_NIC_CONF_0_TX_PATH		GENMASK(7, 4)
-+#define MT_EE_NIC_CONF_0_PA_TYPE		GENMASK(9, 8)
-+#define MT_EE_NIC_CONF_0_BOARD_TYPE		GENMASK(13, 12)
-+
-+#define MT_EE_NIC_CONF_1_HW_RF_CTRL		BIT(0)
-+#define MT_EE_NIC_CONF_1_TEMP_TX_ALC		BIT(1)
-+#define MT_EE_NIC_CONF_1_LNA_EXT_2G		BIT(2)
-+#define MT_EE_NIC_CONF_1_LNA_EXT_5G		BIT(3)
-+#define MT_EE_NIC_CONF_1_TX_ALC_EN		BIT(13)
-+
-+#define MT_EE_NIC_CONF_2_RX_STREAM		GENMASK(3, 0)
-+#define MT_EE_NIC_CONF_2_TX_STREAM		GENMASK(7, 4)
-+#define MT_EE_NIC_CONF_2_HW_ANTDIV		BIT(8)
-+#define MT_EE_NIC_CONF_2_XTAL_OPTION		GENMASK(10, 9)
-+#define MT_EE_NIC_CONF_2_TEMP_DISABLE		BIT(11)
-+#define MT_EE_NIC_CONF_2_COEX_METHOD		GENMASK(15, 13)
-+
-+#define MT_EE_TX_POWER_BYRATE(i)		(MT_EE_TX_POWER_BYRATE_BASE + \
-+						 (i) * 4)
-+
-+#define MT_EFUSE_USAGE_MAP_SIZE			(MT_EE_USAGE_MAP_END -	\
-+						 MT_EE_USAGE_MAP_START + 1)
-+
-+enum mt76x0_eeprom_access_modes {
-+	MT_EE_READ = 0,
-+	MT_EE_PHYSICAL_READ = 1,
-+};
-+
-+struct reg_channel_bounds {
-+	u8 start;
-+	u8 num;
-+};
-+
-+struct mt76x0_eeprom_params {
-+	u8 rf_freq_off;
-+	s16 temp_off;
-+	s8 rssi_offset_2ghz[2];
-+	s8 rssi_offset_5ghz[3];
-+	s8 lna_gain_2ghz;
-+	s8 lna_gain_5ghz[3];
-+	u8 pa_type;
-+
-+	/* TX_PWR_CFG_* values from EEPROM for 20 and 40 Mhz bandwidths. */
-+	u32 tx_pwr_cfg_2g[5][2];
-+	u32 tx_pwr_cfg_5g[5][2];
-+
-+	u8 tx_pwr_per_chan[58];
-+
-+	struct reg_channel_bounds reg;
-+
-+	bool has_2ghz;
-+	bool has_5ghz;
-+};
-+
-+int mt76x0_eeprom_init(struct mt76x0_dev *dev);
-+
-+static inline u32 s6_validate(u32 reg)
-+{
-+	WARN_ON(reg & ~GENMASK(5, 0));
-+	return reg & GENMASK(5, 0);
-+}
-+
-+static inline int s6_to_int(u32 reg)
-+{
-+	int s6;
-+
-+	s6 = s6_validate(reg);
-+	if (s6 & BIT(5))
-+		s6 -= BIT(6);
-+
-+	return s6;
-+}
-+
-+static inline u32 int_to_s6(int val)
-+{
-+	if (val < -0x20)
-+		return 0x20;
-+	if (val > 0x1f)
-+		return 0x1f;
-+
-+	return val & 0x3f;
-+}
++#ifndef __CHECKER__
++#define CREATE_TRACE_POINTS
++#include "trace.h"
 +
 +#endif
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/trace.h b/drivers/net/wireless/mediatek/mt76/mt76x0/trace.h
+new file mode 100644
+index 000000000000..cdf53e5442d8
+--- /dev/null
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/trace.h
+@@ -0,0 +1,366 @@
++/*
++ * Copyright (C) 2014 Felix Fietkau <nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
++ * Copyright (C) 2015 Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2
++ * as published by the Free Software Foundation
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
++
++#if !defined(__MT76X0U_TRACE_H) || defined(TRACE_HEADER_MULTI_READ)
++#define __MT76X0U_TRACE_H
++
++#include <linux/tracepoint.h>
++#include "mt76x0.h"
++#include "mac.h"
++
++#undef TRACE_SYSTEM
++#define TRACE_SYSTEM mt76x0
++
++#define MAXNAME		32
++#define DEV_ENTRY	__array(char, wiphy_name, 32)
++#define DEV_ASSIGN	strlcpy(__entry->wiphy_name,			\
++				wiphy_name(dev->hw->wiphy), MAXNAME)
++#define DEV_PR_FMT	"%s "
++#define DEV_PR_ARG	__entry->wiphy_name
++
++#define REG_ENTRY	__field(u32, reg) __field(u32, val)
++#define REG_ASSIGN	__entry->reg = reg; __entry->val = val
++#define REG_PR_FMT	"%04x=%08x"
++#define REG_PR_ARG	__entry->reg, __entry->val
++
++DECLARE_EVENT_CLASS(dev_reg_evt,
++	TP_PROTO(struct mt76_dev *dev, u32 reg, u32 val),
++	TP_ARGS(dev, reg, val),
++	TP_STRUCT__entry(
++		DEV_ENTRY
++		REG_ENTRY
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		REG_ASSIGN;
++	),
++	TP_printk(
++		DEV_PR_FMT REG_PR_FMT,
++		DEV_PR_ARG, REG_PR_ARG
++	)
++);
++
++DEFINE_EVENT(dev_reg_evt, reg_read,
++	TP_PROTO(struct mt76_dev *dev, u32 reg, u32 val),
++	TP_ARGS(dev, reg, val)
++);
++
++DEFINE_EVENT(dev_reg_evt, reg_write,
++	TP_PROTO(struct mt76_dev *dev, u32 reg, u32 val),
++	TP_ARGS(dev, reg, val)
++);
++
++TRACE_EVENT(mt_submit_urb,
++	TP_PROTO(struct mt76_dev *dev, struct urb *u),
++	TP_ARGS(dev, u),
++	TP_STRUCT__entry(
++		DEV_ENTRY __field(unsigned, pipe) __field(u32, len)
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		__entry->pipe = u->pipe;
++		__entry->len = u->transfer_buffer_length;
++	),
++	TP_printk(DEV_PR_FMT "p:%08x len:%u",
++		  DEV_PR_ARG, __entry->pipe, __entry->len)
++);
++
++#define trace_mt_submit_urb_sync(__dev, __pipe, __len) ({	\
++	struct urb u;					\
++	u.pipe = __pipe;				\
++	u.transfer_buffer_length = __len;		\
++	trace_mt_submit_urb(__dev, &u);			\
++})
++
++TRACE_EVENT(mt_mcu_msg_send,
++	TP_PROTO(struct mt76_dev *dev,
++		 struct sk_buff *skb, u32 csum, bool resp),
++	TP_ARGS(dev, skb, csum, resp),
++	TP_STRUCT__entry(
++		DEV_ENTRY
++		__field(u32, info)
++		__field(u32, csum)
++		__field(bool, resp)
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		__entry->info = *(u32 *)skb->data;
++		__entry->csum = csum;
++		__entry->resp = resp;
++	),
++	TP_printk(DEV_PR_FMT "i:%08x c:%08x r:%d",
++		  DEV_PR_ARG, __entry->info, __entry->csum, __entry->resp)
++);
++
++TRACE_EVENT(mt_vend_req,
++	TP_PROTO(struct mt76_dev *dev, unsigned pipe, u8 req, u8 req_type,
++		 u16 val, u16 offset, void *buf, size_t buflen, int ret),
++	TP_ARGS(dev, pipe, req, req_type, val, offset, buf, buflen, ret),
++	TP_STRUCT__entry(
++		DEV_ENTRY
++		__field(unsigned, pipe) __field(u8, req) __field(u8, req_type)
++		__field(u16, val) __field(u16, offset) __field(void*, buf)
++		__field(int, buflen) __field(int, ret)
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		__entry->pipe = pipe;
++		__entry->req = req;
++		__entry->req_type = req_type;
++		__entry->val = val;
++		__entry->offset = offset;
++		__entry->buf = buf;
++		__entry->buflen = buflen;
++		__entry->ret = ret;
++	),
++	TP_printk(DEV_PR_FMT
++		  "%d p:%08x req:%02hhx %02hhx val:%04hx %04hx buf:%d %d",
++		  DEV_PR_ARG, __entry->ret, __entry->pipe, __entry->req,
++		  __entry->req_type, __entry->val, __entry->offset,
++		  !!__entry->buf, __entry->buflen)
++);
++
++TRACE_EVENT(ee_read,
++	TP_PROTO(struct mt76_dev *dev, int offset, u16 val),
++	TP_ARGS(dev, offset, val),
++	TP_STRUCT__entry(
++		DEV_ENTRY
++		__field(int, o) __field(u16, v)
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		__entry->o = offset;
++		__entry->v = val;
++	),
++	TP_printk(DEV_PR_FMT "%04x=%04x", DEV_PR_ARG, __entry->o, __entry->v)
++);
++
++DECLARE_EVENT_CLASS(dev_rf_reg_evt,
++	TP_PROTO(struct mt76_dev *dev, u8 bank, u8 reg, u8 val),
++	TP_ARGS(dev, bank, reg, val),
++	TP_STRUCT__entry(
++		DEV_ENTRY
++		__field(u8, bank)
++		__field(u8, reg)
++		__field(u8, val)
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		REG_ASSIGN;
++		__entry->bank = bank;
++	),
++	TP_printk(
++		DEV_PR_FMT "%02hhx:%02hhx=%02hhx",
++		DEV_PR_ARG, __entry->bank, __entry->reg, __entry->val
++	)
++);
++
++DEFINE_EVENT(dev_rf_reg_evt, rf_read,
++	TP_PROTO(struct mt76_dev *dev, u8 bank, u8 reg, u8 val),
++	TP_ARGS(dev, bank, reg, val)
++);
++
++DEFINE_EVENT(dev_rf_reg_evt, rf_write,
++	TP_PROTO(struct mt76_dev *dev, u8 bank, u8 reg, u8 val),
++	TP_ARGS(dev, bank, reg, val)
++);
++
++DECLARE_EVENT_CLASS(dev_bbp_reg_evt,
++	TP_PROTO(struct mt76_dev *dev, u8 reg, u8 val),
++	TP_ARGS(dev, reg, val),
++	TP_STRUCT__entry(
++		DEV_ENTRY
++		__field(u8, reg)
++		__field(u8, val)
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		REG_ASSIGN;
++	),
++	TP_printk(
++		DEV_PR_FMT "%02hhx=%02hhx",
++		DEV_PR_ARG, __entry->reg, __entry->val
++	)
++);
++
++DEFINE_EVENT(dev_bbp_reg_evt, bbp_read,
++	TP_PROTO(struct mt76_dev *dev, u8 reg, u8 val),
++	TP_ARGS(dev, reg, val)
++);
++
++DEFINE_EVENT(dev_bbp_reg_evt, bbp_write,
++	TP_PROTO(struct mt76_dev *dev, u8 reg, u8 val),
++	TP_ARGS(dev, reg, val)
++);
++
++DECLARE_EVENT_CLASS(dev_simple_evt,
++	TP_PROTO(struct mt76_dev *dev, u8 val),
++	TP_ARGS(dev, val),
++	TP_STRUCT__entry(
++		DEV_ENTRY
++		__field(u8, val)
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		__entry->val = val;
++	),
++	TP_printk(
++		DEV_PR_FMT "%02hhx", DEV_PR_ARG, __entry->val
++	)
++);
++
++DEFINE_EVENT(dev_simple_evt, temp_mode,
++	TP_PROTO(struct mt76_dev *dev, u8 val),
++	TP_ARGS(dev, val)
++);
++
++DEFINE_EVENT(dev_simple_evt, read_temp,
++	TP_PROTO(struct mt76_dev *dev, u8 val),
++	TP_ARGS(dev, val)
++);
++
++TRACE_EVENT(mt_rx,
++	TP_PROTO(struct mt76_dev *dev, struct mt76x0_rxwi *rxwi, u32 f),
++	TP_ARGS(dev, rxwi, f),
++	TP_STRUCT__entry(
++		DEV_ENTRY
++		__field_struct(struct mt76x0_rxwi, rxwi)
++		__field(u32, fce_info)
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		__entry->rxwi = *rxwi;
++		__entry->fce_info = f;
++	),
++	TP_printk(DEV_PR_FMT "rxi:%08x ctl:%08x", DEV_PR_ARG,
++		  le32_to_cpu(__entry->rxwi.rxinfo),
++		  le32_to_cpu(__entry->rxwi.ctl))
++);
++
++TRACE_EVENT(mt_tx,
++	TP_PROTO(struct mt76_dev *dev, struct sk_buff *skb,
++		 struct mt76_sta *sta, struct mt76_txwi *h),
++	TP_ARGS(dev, skb, sta, h),
++	TP_STRUCT__entry(
++		DEV_ENTRY
++		__field_struct(struct mt76_txwi, h)
++		__field(struct sk_buff *, skb)
++		__field(struct mt76_sta *, sta)
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		__entry->h = *h;
++		__entry->skb = skb;
++		__entry->sta = sta;
++	),
++	TP_printk(DEV_PR_FMT "skb:%p sta:%p  flg:%04hx rate_ctl:%04hx "
++		  "ack:%02hhx wcid:%02hhx len_ctl:%05hx", DEV_PR_ARG,
++		  __entry->skb, __entry->sta,
++		  le16_to_cpu(__entry->h.flags),
++		  le16_to_cpu(__entry->h.rate_ctl),
++		  __entry->h.ack_ctl, __entry->h.wcid,
++		  le16_to_cpu(__entry->h.len_ctl))
++);
++
++TRACE_EVENT(mt_tx_dma_done,
++	TP_PROTO(struct mt76_dev *dev, struct sk_buff *skb),
++	TP_ARGS(dev, skb),
++	TP_STRUCT__entry(
++		DEV_ENTRY
++		__field(struct sk_buff *, skb)
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		__entry->skb = skb;
++	),
++	TP_printk(DEV_PR_FMT "%p", DEV_PR_ARG, __entry->skb)
++);
++
++TRACE_EVENT(mt_tx_status_cleaned,
++	TP_PROTO(struct mt76_dev *dev, int cleaned),
++	TP_ARGS(dev, cleaned),
++	TP_STRUCT__entry(
++		DEV_ENTRY
++		__field(int, cleaned)
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		__entry->cleaned = cleaned;
++	),
++	TP_printk(DEV_PR_FMT "%d", DEV_PR_ARG, __entry->cleaned)
++);
++
++TRACE_EVENT(mt_tx_status,
++	TP_PROTO(struct mt76_dev *dev, u32 stat1, u32 stat2),
++	TP_ARGS(dev, stat1, stat2),
++	TP_STRUCT__entry(
++		DEV_ENTRY
++		__field(u32, stat1)	__field(u32, stat2)
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		__entry->stat1 = stat1;
++		__entry->stat2 = stat2;
++	),
++	TP_printk(DEV_PR_FMT "%08x %08x",
++		  DEV_PR_ARG, __entry->stat1, __entry->stat2)
++);
++
++TRACE_EVENT(mt_rx_dma_aggr,
++	TP_PROTO(struct mt76_dev *dev, int cnt, bool paged),
++	TP_ARGS(dev, cnt, paged),
++	TP_STRUCT__entry(
++		DEV_ENTRY
++		__field(u8, cnt)
++		__field(bool, paged)
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		__entry->cnt = cnt;
++		__entry->paged = paged;
++	),
++	TP_printk(DEV_PR_FMT "cnt:%d paged:%d",
++		  DEV_PR_ARG, __entry->cnt, __entry->paged)
++);
++
++DEFINE_EVENT(dev_simple_evt, set_key,
++	TP_PROTO(struct mt76_dev *dev, u8 val),
++	TP_ARGS(dev, val)
++);
++
++TRACE_EVENT(set_shared_key,
++	TP_PROTO(struct mt76_dev *dev, u8 vid, u8 key),
++	TP_ARGS(dev, vid, key),
++	TP_STRUCT__entry(
++		DEV_ENTRY
++		__field(u8, vid)
++		__field(u8, key)
++	),
++	TP_fast_assign(
++		DEV_ASSIGN;
++		__entry->vid = vid;
++		__entry->key = key;
++	),
++	TP_printk(DEV_PR_FMT "phy:%02hhx off:%02hhx",
++		  DEV_PR_ARG, __entry->vid, __entry->key)
++);
++
++#endif
++
++#undef TRACE_INCLUDE_PATH
++#define TRACE_INCLUDE_PATH .
++#undef TRACE_INCLUDE_FILE
++#define TRACE_INCLUDE_FILE trace
++
++#include <trace/define_trace.h>
 -- 
 1.9.3
