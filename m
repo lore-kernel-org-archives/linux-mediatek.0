@@ -1,29 +1,50 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v9 1/5] clocksource/drivers/timer-mediatek: Add system
- timer bindings
-Date: Fri, 6 Jul 2018 14:51:37 -0600
-Message-ID: <20180706205137.GA20617@rob-hp-laptop>
-References: <1530832288-8156-1-git-send-email-stanley.chu@mediatek.com>
- <1530832288-8156-2-git-send-email-stanley.chu@mediatek.com>
+From: Jun Gao <jun.gao@mediatek.com>
+Subject: [PATCH 1/3] i2c: mediatek: Register i2c adapter driver earlier
+Date: Sat, 7 Jul 2018 10:49:11 +0800
+Message-ID: <1530931753-8264-2-git-send-email-jun.gao@mediatek.com>
+References: <1530931753-8264-1-git-send-email-jun.gao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1530832288-8156-2-git-send-email-stanley.chu@mediatek.com>
+In-Reply-To: <1530931753-8264-1-git-send-email-jun.gao@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stanley Chu <stanley.chu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
+To: Wolfram Sang <wsa@the-dreams.de>
+Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Jun Gao <jun.gao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jul 06, 2018 at 07:11:24AM +0800, Stanley Chu wrote:
-> This patch adds bindings of new "System Timer" on Mediatek SoCs.
-> 
-> Remove RTC clock in the same time because it is not used by
-> both "General Purpose Timer" and "System Timer" now.
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
->  .../bindings/timer/mediatek,mtk-timer.txt          |   34 ++++++++++++--------
->  1 file changed, 20 insertions(+), 14 deletions(-)
+From: Jun Gao <jun.gao@mediatek.com>
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+As i2c adapter, i2c slave devices will depend on it. In order not to
+block the initializations of i2c slave devices, register i2c adapter
+driver at appropriate time.
+
+Signed-off-by: Jun Gao <jun.gao@mediatek.com>
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index 1e57f58..806e8b90 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -888,7 +888,17 @@ static int mtk_i2c_resume(struct device *dev)
+ 	},
+ };
+ 
+-module_platform_driver(mtk_i2c_driver);
++static int __init mtk_i2c_adap_init(void)
++{
++	return platform_driver_register(&mtk_i2c_driver);
++}
++subsys_initcall(mtk_i2c_adap_init);
++
++static void __exit mtk_i2c_adap_exit(void)
++{
++	platform_driver_unregister(&mtk_i2c_driver);
++}
++module_exit(mtk_i2c_adap_exit);
+ 
+ MODULE_LICENSE("GPL v2");
+ MODULE_DESCRIPTION("MediaTek I2C Bus Driver");
+-- 
+1.8.1.1
