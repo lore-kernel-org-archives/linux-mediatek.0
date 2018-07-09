@@ -1,107 +1,44 @@
-From: Peter Rosin <peda@axentia.se>
-Subject: Re: [PATCH v2 2/3] i2c: Add helper to ease DMA handling
-Date: Sun, 8 Jul 2018 14:46:42 +0200
-Message-ID: <b95b8d38-5b0d-7517-f7d9-bea1c7f1408d@axentia.se>
-References: <1530955795-17714-1-git-send-email-jun.gao@mediatek.com>
- <1530955795-17714-3-git-send-email-jun.gao@mediatek.com>
- <eb0a3e62-3efb-3862-3da5-bdf2952a146c@axentia.se>
+From: Mars Cheng <mars.cheng@mediatek.com>
+Subject: [PATCH v4 0/1] Add basic SoC support for mt6765
+Date: Mon, 9 Jul 2018 14:05:01 +0800
+Message-ID: <1531116302-29921-1-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <eb0a3e62-3efb-3862-3da5-bdf2952a146c@axentia.se>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jun Gao <jun.gao@mediatek.com>, Wolfram Sang <wsa@the-dreams.de>
-Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>
+Cc: CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2018-07-08 13:58, Peter Rosin wrote:
-> On 2018-07-07 11:29, Jun Gao wrote:
->> From: Jun Gao <jun.gao@mediatek.com>
->>
->> This function is needed by i2c_get_dma_safe_msg_buf() potentially.
->> It is used to free DMA safe buffer when DMA operation fails.
->>
->> Signed-off-by: Jun Gao <jun.gao@mediatek.com>
->> ---
->>  drivers/i2c/i2c-core-base.c | 14 ++++++++++++++
->>  include/linux/i2c.h         |  1 +
->>  2 files changed, 15 insertions(+)
->>
->> diff --git a/drivers/i2c/i2c-core-base.c b/drivers/i2c/i2c-core-base.c
->> index 31d16ad..2b518ea 100644
->> --- a/drivers/i2c/i2c-core-base.c
->> +++ b/drivers/i2c/i2c-core-base.c
->> @@ -2288,6 +2288,20 @@ void i2c_release_dma_safe_msg_buf(struct i2c_msg *msg, u8 *buf)
->>  }
->>  EXPORT_SYMBOL_GPL(i2c_release_dma_safe_msg_buf);
->>  
->> +/**
->> + * i2c_free_dma_safe_msg_buf - free DMA safe buffer
->> + * @msg: the message related to DMA safe buffer
->> + * @buf: the buffer obtained from i2c_get_dma_safe_msg_buf(). May be NULL.
->> + */
->> +void i2c_free_dma_safe_msg_buf(struct i2c_msg *msg, u8 *buf)
->> +{
->> +	if (!buf || buf == msg->buf)
->> +		return;
->> +
->> +	kfree(buf);
-> 
-> Considering that the i2c-core-smbus.c file does the following for its
-> DMA safe buffers...
-> 
-> static void i2c_smbus_try_get_dmabuf(struct i2c_msg *msg, u8 init_val)
-> {
-> 	bool is_read = msg->flags & I2C_M_RD;
-> 	unsigned char *dma_buf;
-> 
-> 	dma_buf = kzalloc(I2C_SMBUS_BLOCK_MAX + (is_read ? 2 : 3), GFP_KERNEL);
-> 	if (!dma_buf)
-> 		return;
-> 
-> 	msg->buf = dma_buf;
-> 	msg->flags |= I2C_M_DMA_SAFE;
-> 
-> 	if (init_val)
-> 		msg->buf[0] = init_val;
-> }
-> 
-> ...I do not think your variant of i2c_release_dma_safe_msg_buf is
-> appropriate for the i2c-core-base.c file. It's simply not possible to have
-> central knowledge of the rules for when to free the buffer, and encoding one
-> set of rules is only confusing (when there are more than one set of rules).
-> I suggest that you make your variant driver specific.
 
-Ignore me. Your i2c_free_dma_safe_msg_buf is of course compatible with
-the existing i2c_smbus_try_get_dmabuf. Sorry for the noise.
+This patch adds basic SoC support for Mediatek's new 8-core SoC,
+MT6765, which is mainly for smartphone application.
 
-Cheers,
-Peter
+Changes in V4:
+1. add gic's settings in reg properties
+2. remove some patches about dt-bindings since GKH already took them
 
-( However, the naming of these two functions are not really consistent... )
+Changes in V3:
+1. split dt-binding document patchs
+2. fix mt6765.dtsi warnings with W=12
+3. remove uncessary PPI affinity for timer
+4. add gicc base for gic dt node
 
-> Cheers,
-> Peter
-> 
->> +}
->> +EXPORT_SYMBOL_GPL(i2c_free_dma_safe_msg_buf);
->> +
->>  MODULE_AUTHOR("Simon G. Vogl <simon@tk.uni-linz.ac.at>");
->>  MODULE_DESCRIPTION("I2C-Bus main module");
->>  MODULE_LICENSE("GPL");
->> diff --git a/include/linux/i2c.h b/include/linux/i2c.h
->> index 254cd34..6d62f93 100644
->> --- a/include/linux/i2c.h
->> +++ b/include/linux/i2c.h
->> @@ -860,6 +860,7 @@ static inline u8 i2c_8bit_addr_from_msg(const struct i2c_msg *msg)
->>  
->>  u8 *i2c_get_dma_safe_msg_buf(struct i2c_msg *msg, unsigned int threshold);
->>  void i2c_release_dma_safe_msg_buf(struct i2c_msg *msg, u8 *buf);
->> +void i2c_free_dma_safe_msg_buf(struct i2c_msg *msg, u8 *buf);
->>  
->>  int i2c_handle_smbus_host_notify(struct i2c_adapter *adap, unsigned short addr);
->>  /**
->>
-> 
+Changes in V2:
+1. fix clk properties in uart dts node
+2. fix typo in submit title
+3. add simple-bus in mt6765.dtsi
+4. use correct SPDX license format
+
+Mars Cheng (1):
+  arm64: dts: mediatek: add mt6765 support
+
+ arch/arm64/boot/dts/mediatek/Makefile       |    1 +
+ arch/arm64/boot/dts/mediatek/mt6765-evb.dts |   33 ++++++
+ arch/arm64/boot/dts/mediatek/mt6765.dtsi    |  157 +++++++++++++++++++++++++++
+ 3 files changed, 191 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
+
+--
+1.7.9.5
