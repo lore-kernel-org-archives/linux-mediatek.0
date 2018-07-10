@@ -1,84 +1,48 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 1/2] arm64: dts: mt7622: add some misc device nodes
-Date: Tue, 10 Jul 2018 15:55:47 +0800
-Message-ID: <2ff39c40ef6bc3054667e63c785a1d28527b5ddf.1531209126.git.ryder.lee@mediatek.com>
+From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [SPAM][PATCH v2 00/12] Add mt76x0 driver
+Date: Tue, 10 Jul 2018 11:52:23 +0200
+Message-ID: <20180710095222.GA18926@redhat.com>
+References: <1530875029-26274-1-git-send-email-sgruszka@redhat.com>
+ <1531205430.26214.8.camel@mtkswgap22>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1531205430.26214.8.camel@mtkswgap22>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add some misc nodes support - timer and ARM CCI-400.
+On Tue, Jul 10, 2018 at 02:50:30PM +0800, Sean Wang wrote:
+> > For full support mt7610.bin firmware blob is need, hopefully with 
+> > the permission of Mediatek, the blob will be pushed into linux-firmware
+> > git tree.
+> > 
+> 
+> Hi, Stanislaw
+> 
+> You can feel free to add mt7610.bin firmware blob to linux-firmware with
+> the license LICENCE.mediatek I added in [1].
+> 
+> 
+> [1]
+> http://lists.infradead.org/pipermail/linux-mediatek/2018-June/013759.html
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt7622.dtsi | 36 ++++++++++++++++++++++++++++++++
- 1 file changed, 36 insertions(+)
+Thank you Sean!
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-index 9213c96..8cdec52 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-@@ -217,6 +217,16 @@
- 		#reset-cells = <1>;
- 	};
- 
-+	timer: timer@10004000 {
-+		compatible = "mediatek,mt7622-timer",
-+			     "mediatek,mt6577-timer";
-+		reg = <0 0x10004000 0 0x80>;
-+		interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&infracfg CLK_INFRA_APXGPT_PD>,
-+			 <&topckgen CLK_TOP_RTC>;
-+		clock-names = "system-clk", "rtc-clk";
-+	};
-+
- 	scpsys: scpsys@10006000 {
- 		compatible = "mediatek,mt7622-scpsys",
- 			     "syscon";
-@@ -317,6 +327,32 @@
- 		      <0 0x10360000 0 0x2000>;
- 	};
- 
-+	cci: cci@10390000 {
-+		compatible = "arm,cci-400";
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+		reg = <0 0x10390000 0 0x1000>;
-+		ranges = <0 0 0x10390000 0x10000>;
-+
-+		cci_control0: slave-if@1000 {
-+			compatible = "arm,cci-400-ctrl-if";
-+			interface-type = "ace-lite";
-+			reg = <0x1000 0x1000>;
-+		};
-+
-+		cci_control1: slave-if@4000 {
-+			compatible = "arm,cci-400-ctrl-if";
-+			interface-type = "ace";
-+			reg = <0x4000 0x1000>;
-+		};
-+
-+		cci_control2: slave-if@5000 {
-+			compatible = "arm,cci-400-ctrl-if";
-+			interface-type = "ace";
-+			reg = <0x5000 0x1000>;
-+		};
-+	};
-+
- 	auxadc: adc@11001000 {
- 		compatible = "mediatek,mt7622-auxadc";
- 		reg = <0 0x11001000 0 0x1000>;
--- 
-1.9.1
+I guess there is no problem with similar submission for
+mt7662u.bin and mt7662u_rom_patch.bin needed for mt76x2u:
+https://marc.info/?l=linux-wireless&m=153045438821562&w=2
+
+Regards
+Stanislaw
