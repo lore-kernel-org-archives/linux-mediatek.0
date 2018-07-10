@@ -1,76 +1,219 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: [GIT PULL] mediatek drm next for 4.19
-Date: Tue, 10 Jul 2018 14:34:42 +0800
-Message-ID: <1531204482.14433.6.camel@mtksdaap41>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH 1/2] arm: dts: mt7623: cleanup MT7623N NAND dts file
+Date: Tue, 10 Jul 2018 14:38:10 +0800
+Message-ID: <1531204690.26214.0.camel@mtkswgap22>
+References: <34e4c13bd1deeb8e090a74b4e7e9192512b3eff0.1531199139.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Dave Airlie <airlied@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Daniel Stone <daniels@collabora.com>, Stu Hsieh <stu.hsieh@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <34e4c13bd1deeb8e090a74b4e7e9192512b3eff0.1531199139.git.ryder.lee@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIERhdmU6CgpUaGlzIGluY2x1ZGUgTVQyNzEyIFNvQyBzdXBwb3J0IGFuZCByZW1vdmluZyBz
-dHJ1Y3QgbXRrX2RybV9mYi4KClJlZ2FyZHMsCkNLCgpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2lu
-Y2UgY29tbWl0CmNlMzk3ZDIxNWNjZDA3YjhhZTNmNzFkYjY4OWFlZGI4NWQ1NmFiNDA6CgogIExp
-bnV4IDQuMTgtcmMxICgyMDE4LTA2LTE3IDA4OjA0OjQ5ICswOTAwKQoKYXJlIGF2YWlsYWJsZSBp
-biB0aGUgZ2l0IHJlcG9zaXRvcnkgYXQ6CgogIGh0dHBzOi8vZ2l0aHViLmNvbS9ja2h1LW1lZGlh
-dGVrL2xpbnV4LmdpdC10YWdzLmdpdAptZWRpYXRlay1kcm0tbmV4dC00LjE5Cgpmb3IgeW91IHRv
-IGZldGNoIGNoYW5nZXMgdXAgdG8gNTdjN2Y1ODExMTgwNmZhYTAxNjViODgxNTViZmYxNTY3OTAy
-NDEyMjoKCiAgZHJtL210azogbXRrX2RybV9mYiAtPiBkcm1fZnJhbWVidWZmZXIgKDIwMTgtMDYt
-MjggMDA6Mjc6MzYgKzA4MDApCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCkNLIEh1ICgxKToKICAgICAgZHJtL21lZGlhdGVr
-OiBTcGxpdCBsaW5lIHRvIG5vdCBvdmVyIDgwIGNoYXJhY3RlcnMKCkRhbmllbCBTdG9uZSAoMyk6
-CiAgICAgIGRybS9tdGs6IFJlbW92ZSBpbXBvc3NpYmxlIGludGVybmFsIGVycm9yCiAgICAgIGRy
-bS9tdGs6IE1vdmUgR0VNIEJPIHRvIGRybV9mcmFtZWJ1ZmZlcgogICAgICBkcm0vbXRrOiBtdGtf
-ZHJtX2ZiIC0+IGRybV9mcmFtZWJ1ZmZlcgoKc3R1LmhzaWVoQG1lZGlhdGVrLmNvbSAoMjkpOgog
-ICAgICBkcm0vbWVkaWF0ZWs6IHVwZGF0ZSBkdC1iaW5kaW5ncyBmb3IgbXQyNzEyCiAgICAgIGRy
-bS9tZWRpYXRlazogc3VwcG9ydCBtYXhpbXVtIDY0IG11dGV4IG1vZAogICAgICBkcm0vbWVkaWF0
-ZWs6IGFkZCBkZHAgY29tcG9uZW50IEFBTDEKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgZGRwIGNv
-bXBvbmVudCBPRDEKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgZGRwIGNvbXBvbmVudCBQV00xCiAg
-ICAgIGRybS9tZWRpYXRlazogYWRkIGRkcCBjb21wb25lbnQgUFdNMgogICAgICBkcm0vbWVkaWF0
-ZWs6IGFkZCBjb21wb25lbnQgRFBJMQogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBjb21wb25lbnQg
-RFNJMgogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBjb21wb25lbnQgRFNJMwogICAgICBkcm0vbWVk
-aWF0ZWs6IGFkZCB0aGUgRFNJMSBmb3IgY29tcG9uZW50IGluaXQgY29uZGl0aW9uCiAgICAgIGRy
-bS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBPRDEgdG8gUkRNQTEKICAgICAgZHJtL21l
-ZGlhdGVrOiBVcGRhdGUgdGhlIGRlZmluaXRpb24gb2YgY29ubmVjdGlvbiBmcm9tIFJETUExIHRv
-CkRQSTAKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEwIHRvIERQ
-STAKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEwIHRvIERTSTIK
-ICAgICAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEwIHRvIERTSTMKICAg
-ICAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUExIHRvIERQSTEKICAgICAg
-ZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUExIHRvIERTSTEKICAgICAgZHJt
-L21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUExIHRvIERTSTIKICAgICAgZHJtL21l
-ZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUExIHRvIERTSTMKICAgICAgZHJtL21lZGlh
-dGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEyIHRvIERQSTAKICAgICAgZHJtL21lZGlhdGVr
-OiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEyIHRvIERQSTEKICAgICAgZHJtL21lZGlhdGVrOiBh
-ZGQgY29ubmVjdGlvbiBmcm9tIFJETUEyIHRvIERTSTEKICAgICAgZHJtL21lZGlhdGVrOiBhZGQg
-Y29ubmVjdGlvbiBmcm9tIFJETUEyIHRvIERTSTIKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgY29u
-bmVjdGlvbiBmcm9tIFJETUEyIHRvIERTSTMKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgRFBJMSBz
-dXBwb3J0IGZvciBtdXRleAogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBEU0kyIHN1cHBvcnQgZm9y
-IG11dGV4CiAgICAgIGRybS9tZWRpYXRlazogYWRkIERTSTMgc3VwcG9ydCBmb3IgbXV0ZXgKICAg
-ICAgZHJtL21lZGlhdGVrOiBhZGQgdGhpcmQgZGRwIHBhdGgKICAgICAgZHJtL21lZGlhdGVrOiBB
-ZGQgc3VwcG9ydCBmb3IgbWVkaWF0ZWsgU09DIE1UMjcxMgoKIC4uLi9iaW5kaW5ncy9kaXNwbGF5
-L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0ICAgIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgICAgICAgICAgICB8ICAgMyArCiBkcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgICAgICAgICAgICB8IDIzNQorKysrKysrKysrKysr
-KysrKystLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgICAg
-ICAgIHwgIDE1ICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5o
-ICAgICAgICB8ICAxMCArLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMg
-ICAgICAgICAgICAgfCAxMDIgKysrKysrKy0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kcnYuaCAgICAgICAgICAgICB8ICAgNSArLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kcm1fZmIuYyAgICAgICAgICAgICAgfCAgNzYgKystLS0tLQogZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kcm1fZmIuaCAgICAgICAgICAgICAgfCAgIDEgLQogZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYyAgICAgICAgICAgfCAgIDcgKy0KIDEwIGZpbGVz
-IGNoYW5nZWQsIDMzMCBpbnNlcnRpb25zKCspLCAxMjYgZGVsZXRpb25zKC0pCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
-a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Tue, 2018-07-10 at 13:09 +0800, Ryder Lee wrote:
+> Normally, we didn't release this kind of baord to user. This specific
+> board exists only in the early stage of development inside MediaTek -
+> and that may confuse peoples.
+> 
+> Hence this patch removes related files accordingly.
+> 
+
+Acked-by: Sean Wang <sean.wang@mediatek.com>
+
+> Cc: John Crispin <john@phrozen.org>
+> Cc: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  arch/arm/boot/dts/Makefile             |  1 -
+>  arch/arm/boot/dts/mt7623n-rfb-nand.dts | 73 -----------------------------
+>  arch/arm/boot/dts/mt7623n-rfb.dtsi     | 86 ----------------------------------
+>  3 files changed, 160 deletions(-)
+>  delete mode 100644 arch/arm/boot/dts/mt7623n-rfb-nand.dts
+>  delete mode 100644 arch/arm/boot/dts/mt7623n-rfb.dtsi
+> 
+> diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+> index 37a3de7..dde494e 100644
+> --- a/arch/arm/boot/dts/Makefile
+> +++ b/arch/arm/boot/dts/Makefile
+> @@ -1168,7 +1168,6 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += \
+>  	mt7623a-rfb-emmc.dtb \
+>  	mt7623a-rfb-nand.dtb \
+>  	mt7623n-rfb-emmc.dtb \
+> -	mt7623n-rfb-nand.dtb \
+>  	mt7623n-bananapi-bpi-r2.dtb \
+>  	mt8127-moose.dtb \
+>  	mt8135-evbp1.dtb
+> diff --git a/arch/arm/boot/dts/mt7623n-rfb-nand.dts b/arch/arm/boot/dts/mt7623n-rfb-nand.dts
+> deleted file mode 100644
+> index 96ff3c9..0000000
+> --- a/arch/arm/boot/dts/mt7623n-rfb-nand.dts
+> +++ /dev/null
+> @@ -1,73 +0,0 @@
+> -// SPDX-License-Identifier: GPL-2.0
+> -/*
+> - * Copyright (c) 2017 MediaTek Inc.
+> - * Author: John Crispin <john@phrozen.org>
+> - *
+> - */
+> -
+> -/dts-v1/;
+> -#include "mt7623n-rfb.dtsi"
+> -
+> -/ {
+> -	model = "MediaTek MT7623N NAND reference board";
+> -	compatible = "mediatek,mt7623n-rfb-nand", "mediatek,mt7623";
+> -};
+> -
+> -&bch {
+> -	status = "okay";
+> -};
+> -
+> -&nandc {
+> -	status = "okay";
+> -	pinctrl-names = "default";
+> -	pinctrl-0 = <&nand_pins_default>;
+> -
+> -	nand@0 {
+> -		reg = <0>;
+> -		spare_per_sector = <64>;
+> -		nand-ecc-mode = "hw";
+> -		nand-ecc-strength = <12>;
+> -		nand-ecc-step-size = <1024>;
+> -
+> -		partitions {
+> -			compatible = "fixed-partitions";
+> -			#address-cells = <1>;
+> -			#size-cells = <1>;
+> -
+> -			partition@0 {
+> -				label = "preloader";
+> -				reg = <0x0 0x40000>;
+> -			};
+> -
+> -			partition@40000 {
+> -				label = "uboot";
+> -				reg = <0x40000 0x80000>;
+> -			};
+> -
+> -			partition@c0000 {
+> -				label = "uboot-env";
+> -				reg = <0xC0000 0x40000>;
+> -			};
+> -
+> -			partition@140000 {
+> -				label = "bootimg";
+> -				reg = <0x140000 0x2000000>;
+> -			};
+> -
+> -			partition@2140000 {
+> -				label = "recovery";
+> -				reg = <0x2140000 0x2000000>;
+> -			};
+> -
+> -			partition@4140000 {
+> -				label = "rootfs";
+> -				reg = <0x4140000 0x1000000>;
+> -			};
+> -
+> -			partition@5140000 {
+> -				label = "usrdata";
+> -				reg = <0x5140000 0x1000000>;
+> -			};
+> -		};
+> -	};
+> -};
+> diff --git a/arch/arm/boot/dts/mt7623n-rfb.dtsi b/arch/arm/boot/dts/mt7623n-rfb.dtsi
+> deleted file mode 100644
+> index 5c5cc7d..0000000
+> --- a/arch/arm/boot/dts/mt7623n-rfb.dtsi
+> +++ /dev/null
+> @@ -1,86 +0,0 @@
+> -// SPDX-License-Identifier: GPL-2.0
+> -/*
+> - * Copyright (c) 2017 MediaTek Inc.
+> - * Author: John Crispin <john@phrozen.org>
+> - *	   Sean Wang <sean.wang@mediatek.com>
+> - *
+> - */
+> -
+> -/dts-v1/;
+> -#include "mt7623.dtsi"
+> -#include "mt6323.dtsi"
+> -
+> -/ {
+> -	aliases {
+> -		serial0 = &uart0;
+> -		serial1 = &uart1;
+> -		serial2 = &uart2;
+> -	};
+> -
+> -	chosen {
+> -		stdout-path = "serial2:115200n8";
+> -	};
+> -
+> -	cpus {
+> -		cpu0 {
+> -			proc-supply = <&mt6323_vproc_reg>;
+> -		};
+> -
+> -		cpu1 {
+> -			proc-supply = <&mt6323_vproc_reg>;
+> -		};
+> -
+> -		cpu2 {
+> -			proc-supply = <&mt6323_vproc_reg>;
+> -		};
+> -
+> -		cpu3 {
+> -			proc-supply = <&mt6323_vproc_reg>;
+> -		};
+> -	};
+> -
+> -	memory@80000000 {
+> -		device_type = "memory";
+> -		reg = <0 0x80000000 0 0x40000000>;
+> -	};
+> -
+> -	usb_p1_vbus: regulator-5v {
+> -		compatible = "regulator-fixed";
+> -		regulator-name = "usb_vbus";
+> -		regulator-min-microvolt = <5000000>;
+> -		regulator-max-microvolt = <5000000>;
+> -		gpio = <&pio 135 GPIO_ACTIVE_HIGH>;
+> -		enable-active-high;
+> -	};
+> -};
+> -
+> -&mmc0 {
+> -	vmmc-supply = <&mt6323_vemc3v3_reg>;
+> -	vqmmc-supply = <&mt6323_vio18_reg>;
+> -};
+> -
+> -&mmc1 {
+> -	vmmc-supply = <&mt6323_vmch_reg>;
+> -	vqmmc-supply = <&mt6323_vmc_reg>;
+> -};
+> -
+> -&uart0 {
+> -	status = "okay";
+> -};
+> -
+> -&uart1 {
+> -	status = "okay";
+> -};
+> -
+> -&uart2 {
+> -	status = "okay";
+> -};
+> -
+> -&usb1 {
+> -	vbus-supply = <&usb_p1_vbus>;
+> -	status = "okay";
+> -};
+> -
+> -&u3phy1 {
+> -	status = "okay";
+> -};
