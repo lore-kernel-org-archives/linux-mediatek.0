@@ -1,101 +1,91 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: next/master boot: 173 boots: 4 failed, 136 passed with 32
- offline, 1 untried/unknown (next-20180710)
-Date: Tue, 10 Jul 2018 15:02:13 +0100
-Message-ID: <20180710140213.GB8104@sirena.org.uk>
-References: <5b44b87b.1c69fb81.97804.0122@mx.google.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v9 1/5] clocksource/drivers/timer-mediatek: Add system
+ timer bindings
+Date: Tue, 10 Jul 2018 17:02:23 +0200
+Message-ID: <a4c1a9cf-4d48-a9a7-e7ac-d94685c30619@linaro.org>
+References: <1530832288-8156-1-git-send-email-stanley.chu@mediatek.com>
+ <1530832288-8156-2-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============5875692418262172749=="
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <5b44b87b.1c69fb81.97804.0122@mx.google.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Kevin hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-next@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, "kernelci.org bot" <bot@kernelci.org>, kernel-build-reports@lists.linaro.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1530832288-8156-2-git-send-email-stanley.chu@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Stanley Chu <stanley.chu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 
---===============5875692418262172749==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="aVD9QWMuhilNxW9f"
-Content-Disposition: inline
+Rob ? Are you fine with this change ?
+
+On 06/07/2018 01:11, Stanley Chu wrote:
+> This patch adds bindings of new "System Timer" on Mediatek SoCs.
+> 
+> Remove RTC clock in the same time because it is not used by
+> both "General Purpose Timer" and "System Timer" now.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> ---
+>  .../bindings/timer/mediatek,mtk-timer.txt          |   34 ++++++++++++--------
+>  1 file changed, 20 insertions(+), 14 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+> index b1fe7e9..18d4d01 100644
+> --- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+> +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+> @@ -1,19 +1,25 @@
+> -Mediatek MT6577, MT6572 and MT6589 Timers
+> ----------------------------------------
+> +Mediatek Timers
+> +---------------
+> +
+> +Mediatek SoCs have two different timers on different platforms,
+> +- GPT (General Purpose Timer)
+> +- SYST (System Timer)
+> +
+> +The proper timer will be selected automatically by driver.
+>  
+>  Required properties:
+>  - compatible should contain:
+> -	* "mediatek,mt2701-timer" for MT2701 compatible timers
+> -	* "mediatek,mt6580-timer" for MT6580 compatible timers
+> -	* "mediatek,mt6589-timer" for MT6589 compatible timers
+> -	* "mediatek,mt7623-timer" for MT7623 compatible timers
+> -	* "mediatek,mt8127-timer" for MT8127 compatible timers
+> -	* "mediatek,mt8135-timer" for MT8135 compatible timers
+> -	* "mediatek,mt8173-timer" for MT8173 compatible timers
+> -	* "mediatek,mt6577-timer" for MT6577 and all above compatible timers
+> -- reg: Should contain location and length for timers register.
+> -- clocks: Clocks driving the timer hardware. This list should include two
+> -	clocks. The order is system clock and as second clock the RTC clock.
+> +	* "mediatek,mt2701-timer" for MT2701 compatible timers (GPT)
+> +	* "mediatek,mt6580-timer" for MT6580 compatible timers (GPT)
+> +	* "mediatek,mt6589-timer" for MT6589 compatible timers (GPT)
+> +	* "mediatek,mt7623-timer" for MT7623 compatible timers (GPT)
+> +	* "mediatek,mt8127-timer" for MT8127 compatible timers (GPT)
+> +	* "mediatek,mt8135-timer" for MT8135 compatible timers (GPT)
+> +	* "mediatek,mt8173-timer" for MT8173 compatible timers (GPT)
+> +	* "mediatek,mt6577-timer" for MT6577 and all above compatible timers (GPT)
+> +	* "mediatek,mt6765-timer" for MT6765 compatible timers (SYST)
+> +- reg: Should contain location and length for timer register.
+> +- clocks: Should contain system clock.
+>  
+>  Examples:
+>  
+> @@ -21,5 +27,5 @@ Examples:
+>  		compatible = "mediatek,mt6577-timer";
+>  		reg = <0x10008000 0x80>;
+>  		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>;
+> -		clocks = <&system_clk>, <&rtc_clk>;
+> +		clocks = <&system_clk>;
+>  	};
+> 
 
 
---aVD9QWMuhilNxW9f
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
 
-On Tue, Jul 10, 2018 at 06:45:31AM -0700, kernelci.org bot wrote:
-
-Today's linux-next fails to boot on mt7622-rfb1 with defconfig and
-defconfig+RANDOMIZE_BASE:
-
-> arm64:
-
->     defconfig:
->         mt7622-rfb1:
->             lab-baylibre-seattle: new failure (last pass: next-20180709)
-
->     defconfig+CONFIG_RANDOMIZE_BASE=y:
->         mt7622-rfb1:
->             lab-baylibre-seattle: new failure (last pass: next-20180709)
-
-I'm not 100% sure if this is a lab failure or an early boot failure:
-
-| Starting kernel ...
-
-| [ATF][    34.233534]save kernel info
-| [ATF][    34.236565]Kernel_EL2
-| [ATF][    34.239322]Kernel is 64Bit
-| [ATF][    34.242509]pc=0x40080000, r0=0x5cf48000, r1=0x0
-| INFO:    BL3-1: Preparing for EL3 exit to normal world, Kernel
-| INFO:    BL3-1: Next image address = 0x40080000
-| INFO:    BL3-1: Next image spsr = 0x3c9
-| [ATF][    34.260778]el3_exit
-| ~$off
-| # PYBOOT: Exception: kernel: ERROR: did not start booting.
-
-It only seems to affect this platform, other arm64 platforms seem fine.
-More details at:
-
-   https://kernelci.org/boot/id/5b44981a59b5141e5996baa1/
-
-for the defconfig case, symptoms seem similar with RANDOMIZE_BASE.
-
---aVD9QWMuhilNxW9f
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAltEvGUACgkQJNaLcl1U
-h9ATugf/dpCkqeVefVDcj1ZLT6nMzbk9vzlIO6211HCrAXpZUvgSsYvUpC3VbhKA
-0D0m6SsVgF5lXKnmLVPv8QHuoFIZ6J6v/EUQcn2tl17MHVSs03vA3DBikgueFAum
-WyO8R/98878kamnvkQPKglfiC4utMXffp0euuTsgENY0xzwV63AeN7lfViqvqsBX
-SNqfzFDFZH4grPObeNUmjMjtiNdYKVusEfS0hwIk4BHCtn8aYmRNEc7lZTC8vwC5
-VurtFM+qm+dQOJxwDQdYMDMFL2pt6sR7ZWonRhdQdeMs3OxyWiQuEHO85bGEZjsD
-LbOgEJPjunREz+K37HK8OtJ8gZqWEw==
-=6Smt
------END PGP SIGNATURE-----
-
---aVD9QWMuhilNxW9f--
-
-
---===============5875692418262172749==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-linux-arm-kernel mailing list
-linux-arm-kernel@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
---===============5875692418262172749==--
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
