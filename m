@@ -1,86 +1,50 @@
-From: Mars Cheng <mars.cheng@mediatek.com>
-Subject: Re: [PATCH v4 1/1] arm64: dts: mediatek: add mt6765 support
-Date: Tue, 10 Jul 2018 07:04:03 +0800
-Message-ID: <1531177443.7777.18.camel@mtkswgap22>
-References: <1531116302-29921-1-git-send-email-mars.cheng@mediatek.com>
-         <1531116302-29921-2-git-send-email-mars.cheng@mediatek.com>
-         <7fb13f45-4e33-6efc-467b-c7256a40cbc9@gmail.com>
-         <d439eb7d-6365-7a0a-2969-1ddecc51defc@arm.com>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 2/2] dt-bindings: arm: mediatek: cleanup MT7623N reference
+ boards
+Date: Tue, 10 Jul 2018 13:09:26 +0800
+Message-ID: <99c1fce76e7ec4984c232bc0bdbd0fadbb86b0dc.1531199139.git.ryder.lee@mediatek.com>
+References: <34e4c13bd1deeb8e090a74b4e7e9192512b3eff0.1531199139.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <d439eb7d-6365-7a0a-2969-1ddecc51defc@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <34e4c13bd1deeb8e090a74b4e7e9192512b3eff0.1531199139.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias/Marc
+Cleanup binding document to get rid of unsupported reference boards
+for MT7623N.
 
-On Mon, 2018-07-09 at 17:43 +0100, Marc Zyngier wrote:
-> On 09/07/18 11:20, Matthias Brugger wrote:
-> > 
-> > 
-> > On 09/07/18 08:05, Mars Cheng wrote:
-> >> This adds basic chip support for MT6765 SoC.
-> >>
-> >> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
-> >> ---
-> >>  arch/arm64/boot/dts/mediatek/Makefile       |    1 +
-> >>  arch/arm64/boot/dts/mediatek/mt6765-evb.dts |   33 ++++++
-> >>  arch/arm64/boot/dts/mediatek/mt6765.dtsi    |  156 +++++++++++++++++++++++++++
-> >>  3 files changed, 190 insertions(+)
-> >>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
-> >>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
-> >>
-> >> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> >> index ac17f60..7506b0d 100644
-> >> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> >> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> >> @@ -1,6 +1,7 @@
-> >>  # SPDX-License-Identifier: GPL-2.0
-> >>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
-> >>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
-> >> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt6765-evb.dtb
-> >>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
-> >>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
-> >>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
-> > 
-> > As you can see, we have a long list of SoCs which are poorly supported.
-> > I'm not very keen to just add another SoC which supports booting into a ramdisk
-> > using the serial console. Do you have a roadmap adding mainline support for this
-> > SoC?
-> 
-> Yes, that's a valid concern.
-> 
-> mt6755 and mt6795 are in a similar state, the latter after three years.
-> I'm all for supporting new SoCs, but this feels looks a box-ticking
-> exercise ("hey, look, our SoC is supported in mainline") which doesn't
-> help anyone.
-> 
-> My Ack still stands, but I'd definitely like to see some more complete
-> support before this patch goes in.
-> 
-> Thanks,
-> 
-> 	M.
+Cc: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ Documentation/devicetree/bindings/arm/mediatek.txt | 3 ---
+ 1 file changed, 3 deletions(-)
 
-Yes, we do arrange more resources to do upstream task for mt6765,
-clk/pinctrl drivers are almost ready to submit. systimer is under
-reviewing (v9).
-http://lists.infradead.org/pipermail/linux-mediatek/2018-July/013989.html
-
-other drivers including
-pmic/pwrap/i2c/rtc/kpd/spi/wdt/cqdma/auxadc/pwm/cmdq/disp. We have
-dedicated owners to handle them and will cowork tightly with members to
-make sure things happen in the following weeks.
-
-For previous chips, we did have no enough support after shell. It is due
-to fast pace of smartphone SoC and other resource issues. We also know
-that is no excuse so that we already confirmed owners and their
-schedules for mt6765.
-
-If there is any suggestion, please let us know.
-
-Thanks. 
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt b/Documentation/devicetree/bindings/arm/mediatek.txt
+index 7d21ab3..c07ddf4 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek.txt
+@@ -59,9 +59,6 @@ Supported boards:
+ - Reference board for MT7623n with eMMC:
+     Required root node properties:
+       - compatible = "mediatek,mt7623n-rfb-emmc", "mediatek,mt7623";
+-- Reference  board for MT7623n with NAND:
+-    Required root node properties:
+-      - compatible = "mediatek,mt7623n-rfb-nand", "mediatek,mt7623";
+ - Bananapi BPI-R2 board:
+       - compatible = "bananapi,bpi-r2", "mediatek,mt7623";
+ - MTK mt8127 tablet moose EVB:
+-- 
+1.9.1
