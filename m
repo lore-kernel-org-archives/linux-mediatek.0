@@ -1,60 +1,101 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [SPAM][PATCH v2 00/12] Add mt76x0 driver
-Date: Tue, 10 Jul 2018 21:54:24 +0800
-Message-ID: <1531230864.26214.20.camel@mtkswgap22>
-References: <1530875029-26274-1-git-send-email-sgruszka@redhat.com>
- <1531205430.26214.8.camel@mtkswgap22> <20180710095222.GA18926@redhat.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: next/master boot: 173 boots: 4 failed, 136 passed with 32
+ offline, 1 untried/unknown (next-20180710)
+Date: Tue, 10 Jul 2018 15:02:13 +0100
+Message-ID: <20180710140213.GB8104@sirena.org.uk>
+References: <5b44b87b.1c69fb81.97804.0122@mx.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180710095222.GA18926-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+Content-Type: multipart/mixed; boundary="===============5875692418262172749=="
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <5b44b87b.1c69fb81.97804.0122@mx.google.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Kevin hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-next@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, "kernelci.org bot" <bot@kernelci.org>, kernel-build-reports@lists.linaro.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-07-10 at 11:52 +0200, Stanislaw Gruszka wrote:
-> On Tue, Jul 10, 2018 at 02:50:30PM +0800, Sean Wang wrote:
-> > > For full support mt7610.bin firmware blob is need, hopefully with 
-> > > the permission of Mediatek, the blob will be pushed into linux-firmware
-> > > git tree.
-> > > 
-> > 
-> > Hi, Stanislaw
-> > 
-> > You can feel free to add mt7610.bin firmware blob to linux-firmware with
-> > the license LICENCE.mediatek I added in [1].
-> > 
-> > 
-> > [1]
-> > http://lists.infradead.org/pipermail/linux-mediatek/2018-June/013759.html
-> 
-> Thank you Sean!
-> 
-> I guess there is no problem with similar submission for
-> mt7662u.bin and mt7662u_rom_patch.bin needed for mt76x2u:
-> https://marc.info/?l=linux-wireless&m=153045438821562&w=2
-> 
 
-Sure, there is no any problem for submitting mt7662u.bin and
-mt7662u_rom_patch.bin if they are added with LICENCE.mediatek.
+--===============5875692418262172749==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="aVD9QWMuhilNxW9f"
+Content-Disposition: inline
 
-Do you or Lorenzo have a plan to add MT7668u support to mt76?
-MT7668 is a newer wifi device than MT7610u or MT7662u.
 
-> Regards
-> Stanislaw
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+--aVD9QWMuhilNxW9f
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Tue, Jul 10, 2018 at 06:45:31AM -0700, kernelci.org bot wrote:
+
+Today's linux-next fails to boot on mt7622-rfb1 with defconfig and
+defconfig+RANDOMIZE_BASE:
+
+> arm64:
+
+>     defconfig:
+>         mt7622-rfb1:
+>             lab-baylibre-seattle: new failure (last pass: next-20180709)
+
+>     defconfig+CONFIG_RANDOMIZE_BASE=y:
+>         mt7622-rfb1:
+>             lab-baylibre-seattle: new failure (last pass: next-20180709)
+
+I'm not 100% sure if this is a lab failure or an early boot failure:
+
+| Starting kernel ...
+
+| [ATF][    34.233534]save kernel info
+| [ATF][    34.236565]Kernel_EL2
+| [ATF][    34.239322]Kernel is 64Bit
+| [ATF][    34.242509]pc=0x40080000, r0=0x5cf48000, r1=0x0
+| INFO:    BL3-1: Preparing for EL3 exit to normal world, Kernel
+| INFO:    BL3-1: Next image address = 0x40080000
+| INFO:    BL3-1: Next image spsr = 0x3c9
+| [ATF][    34.260778]el3_exit
+| ~$off
+| # PYBOOT: Exception: kernel: ERROR: did not start booting.
+
+It only seems to affect this platform, other arm64 platforms seem fine.
+More details at:
+
+   https://kernelci.org/boot/id/5b44981a59b5141e5996baa1/
+
+for the defconfig case, symptoms seem similar with RANDOMIZE_BASE.
+
+--aVD9QWMuhilNxW9f
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAltEvGUACgkQJNaLcl1U
+h9ATugf/dpCkqeVefVDcj1ZLT6nMzbk9vzlIO6211HCrAXpZUvgSsYvUpC3VbhKA
+0D0m6SsVgF5lXKnmLVPv8QHuoFIZ6J6v/EUQcn2tl17MHVSs03vA3DBikgueFAum
+WyO8R/98878kamnvkQPKglfiC4utMXffp0euuTsgENY0xzwV63AeN7lfViqvqsBX
+SNqfzFDFZH4grPObeNUmjMjtiNdYKVusEfS0hwIk4BHCtn8aYmRNEc7lZTC8vwC5
+VurtFM+qm+dQOJxwDQdYMDMFL2pt6sR7ZWonRhdQdeMs3OxyWiQuEHO85bGEZjsD
+LbOgEJPjunREz+K37HK8OtJ8gZqWEw==
+=6Smt
+-----END PGP SIGNATURE-----
+
+--aVD9QWMuhilNxW9f--
+
+
+--===============5875692418262172749==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--===============5875692418262172749==--
