@@ -1,46 +1,76 @@
-From: John Crispin <john@phrozen.org>
-Subject: Re: [PATCH 2/2] dt-bindings: arm: mediatek: cleanup MT7623N reference
- boards
-Date: Tue, 10 Jul 2018 07:59:24 +0200
-Message-ID: <194425ed-4ba8-094e-5b54-17ca74847b5f@phrozen.org>
-References: <34e4c13bd1deeb8e090a74b4e7e9192512b3eff0.1531199139.git.ryder.lee@mediatek.com>
- <99c1fce76e7ec4984c232bc0bdbd0fadbb86b0dc.1531199139.git.ryder.lee@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: [GIT PULL] mediatek drm next for 4.19
+Date: Tue, 10 Jul 2018 14:34:42 +0800
+Message-ID: <1531204482.14433.6.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <99c1fce76e7ec4984c232bc0bdbd0fadbb86b0dc.1531199139.git.ryder.lee@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: Daniel Stone <daniels@collabora.com>, Stu Hsieh <stu.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 10/07/18 07:09, Ryder Lee wrote:
-> Cleanup binding document to get rid of unsupported reference boards
-> for MT7623N.
->
-> Cc: John Crispin <john@phrozen.org>
-> Cc: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Acked-by: John Crispin <john@phrozen.org>
-> ---
->   Documentation/devicetree/bindings/arm/mediatek.txt | 3 ---
->   1 file changed, 3 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt b/Documentation/devicetree/bindings/arm/mediatek.txt
-> index 7d21ab3..c07ddf4 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.txt
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.txt
-> @@ -59,9 +59,6 @@ Supported boards:
->   - Reference board for MT7623n with eMMC:
->       Required root node properties:
->         - compatible = "mediatek,mt7623n-rfb-emmc", "mediatek,mt7623";
-> -- Reference  board for MT7623n with NAND:
-> -    Required root node properties:
-> -      - compatible = "mediatek,mt7623n-rfb-nand", "mediatek,mt7623";
->   - Bananapi BPI-R2 board:
->         - compatible = "bananapi,bpi-r2", "mediatek,mt7623";
->   - MTK mt8127 tablet moose EVB:
+SGksIERhdmU6CgpUaGlzIGluY2x1ZGUgTVQyNzEyIFNvQyBzdXBwb3J0IGFuZCByZW1vdmluZyBz
+dHJ1Y3QgbXRrX2RybV9mYi4KClJlZ2FyZHMsCkNLCgpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2lu
+Y2UgY29tbWl0CmNlMzk3ZDIxNWNjZDA3YjhhZTNmNzFkYjY4OWFlZGI4NWQ1NmFiNDA6CgogIExp
+bnV4IDQuMTgtcmMxICgyMDE4LTA2LTE3IDA4OjA0OjQ5ICswOTAwKQoKYXJlIGF2YWlsYWJsZSBp
+biB0aGUgZ2l0IHJlcG9zaXRvcnkgYXQ6CgogIGh0dHBzOi8vZ2l0aHViLmNvbS9ja2h1LW1lZGlh
+dGVrL2xpbnV4LmdpdC10YWdzLmdpdAptZWRpYXRlay1kcm0tbmV4dC00LjE5Cgpmb3IgeW91IHRv
+IGZldGNoIGNoYW5nZXMgdXAgdG8gNTdjN2Y1ODExMTgwNmZhYTAxNjViODgxNTViZmYxNTY3OTAy
+NDEyMjoKCiAgZHJtL210azogbXRrX2RybV9mYiAtPiBkcm1fZnJhbWVidWZmZXIgKDIwMTgtMDYt
+MjggMDA6Mjc6MzYgKzA4MDApCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCkNLIEh1ICgxKToKICAgICAgZHJtL21lZGlhdGVr
+OiBTcGxpdCBsaW5lIHRvIG5vdCBvdmVyIDgwIGNoYXJhY3RlcnMKCkRhbmllbCBTdG9uZSAoMyk6
+CiAgICAgIGRybS9tdGs6IFJlbW92ZSBpbXBvc3NpYmxlIGludGVybmFsIGVycm9yCiAgICAgIGRy
+bS9tdGs6IE1vdmUgR0VNIEJPIHRvIGRybV9mcmFtZWJ1ZmZlcgogICAgICBkcm0vbXRrOiBtdGtf
+ZHJtX2ZiIC0+IGRybV9mcmFtZWJ1ZmZlcgoKc3R1LmhzaWVoQG1lZGlhdGVrLmNvbSAoMjkpOgog
+ICAgICBkcm0vbWVkaWF0ZWs6IHVwZGF0ZSBkdC1iaW5kaW5ncyBmb3IgbXQyNzEyCiAgICAgIGRy
+bS9tZWRpYXRlazogc3VwcG9ydCBtYXhpbXVtIDY0IG11dGV4IG1vZAogICAgICBkcm0vbWVkaWF0
+ZWs6IGFkZCBkZHAgY29tcG9uZW50IEFBTDEKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgZGRwIGNv
+bXBvbmVudCBPRDEKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgZGRwIGNvbXBvbmVudCBQV00xCiAg
+ICAgIGRybS9tZWRpYXRlazogYWRkIGRkcCBjb21wb25lbnQgUFdNMgogICAgICBkcm0vbWVkaWF0
+ZWs6IGFkZCBjb21wb25lbnQgRFBJMQogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBjb21wb25lbnQg
+RFNJMgogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBjb21wb25lbnQgRFNJMwogICAgICBkcm0vbWVk
+aWF0ZWs6IGFkZCB0aGUgRFNJMSBmb3IgY29tcG9uZW50IGluaXQgY29uZGl0aW9uCiAgICAgIGRy
+bS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBPRDEgdG8gUkRNQTEKICAgICAgZHJtL21l
+ZGlhdGVrOiBVcGRhdGUgdGhlIGRlZmluaXRpb24gb2YgY29ubmVjdGlvbiBmcm9tIFJETUExIHRv
+CkRQSTAKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEwIHRvIERQ
+STAKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEwIHRvIERTSTIK
+ICAgICAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEwIHRvIERTSTMKICAg
+ICAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUExIHRvIERQSTEKICAgICAg
+ZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUExIHRvIERTSTEKICAgICAgZHJt
+L21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUExIHRvIERTSTIKICAgICAgZHJtL21l
+ZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUExIHRvIERTSTMKICAgICAgZHJtL21lZGlh
+dGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEyIHRvIERQSTAKICAgICAgZHJtL21lZGlhdGVr
+OiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEyIHRvIERQSTEKICAgICAgZHJtL21lZGlhdGVrOiBh
+ZGQgY29ubmVjdGlvbiBmcm9tIFJETUEyIHRvIERTSTEKICAgICAgZHJtL21lZGlhdGVrOiBhZGQg
+Y29ubmVjdGlvbiBmcm9tIFJETUEyIHRvIERTSTIKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgY29u
+bmVjdGlvbiBmcm9tIFJETUEyIHRvIERTSTMKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgRFBJMSBz
+dXBwb3J0IGZvciBtdXRleAogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBEU0kyIHN1cHBvcnQgZm9y
+IG11dGV4CiAgICAgIGRybS9tZWRpYXRlazogYWRkIERTSTMgc3VwcG9ydCBmb3IgbXV0ZXgKICAg
+ICAgZHJtL21lZGlhdGVrOiBhZGQgdGhpcmQgZGRwIHBhdGgKICAgICAgZHJtL21lZGlhdGVrOiBB
+ZGQgc3VwcG9ydCBmb3IgbWVkaWF0ZWsgU09DIE1UMjcxMgoKIC4uLi9iaW5kaW5ncy9kaXNwbGF5
+L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0ICAgIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgICAgICAgICAgICB8ICAgMyArCiBkcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgICAgICAgICAgICB8IDIzNQorKysrKysrKysrKysr
+KysrKystLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgICAg
+ICAgIHwgIDE1ICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5o
+ICAgICAgICB8ICAxMCArLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMg
+ICAgICAgICAgICAgfCAxMDIgKysrKysrKy0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RybV9kcnYuaCAgICAgICAgICAgICB8ICAgNSArLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kcm1fZmIuYyAgICAgICAgICAgICAgfCAgNzYgKystLS0tLQogZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fZmIuaCAgICAgICAgICAgICAgfCAgIDEgLQogZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYyAgICAgICAgICAgfCAgIDcgKy0KIDEwIGZpbGVz
+IGNoYW5nZWQsIDMzMCBpbnNlcnRpb25zKCspLCAxMjYgZGVsZXRpb25zKC0pCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
