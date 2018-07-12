@@ -1,79 +1,55 @@
-From: Mars Cheng <mars.cheng@mediatek.com>
-Subject: Re: [PATCH v4 1/1] arm64: dts: mediatek: add mt6765 support
-Date: Thu, 12 Jul 2018 08:06:17 +0800
-Message-ID: <1531353977.25499.9.camel@mtkswgap22>
-References: <1531116302-29921-1-git-send-email-mars.cheng@mediatek.com>
- <1531116302-29921-2-git-send-email-mars.cheng@mediatek.com>
- <7fb13f45-4e33-6efc-467b-c7256a40cbc9@gmail.com>
- <d439eb7d-6365-7a0a-2969-1ddecc51defc@arm.com>
- <1531177443.7777.18.camel@mtkswgap22>
- <7a3becb3-510b-5763-5b66-5e14ebf7c974@gmail.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH] pinctrl: mt7622: fix probe fail by misuse the selector
+Date: Thu, 12 Jul 2018 13:50:00 +0800
+Message-ID: <ddd18e427de47476722c945dc622571394192331.1531374468.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <7a3becb3-510b-5763-5b66-5e14ebf7c974@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, CC Hwang <cc.hwang@mediatek.com>, wsd_upstream@mediatek.com, Marc Zyngier <marc.zyngier@arm.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linus.walleij@linaro.org, linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Kevin Hilman <khilman@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias
+From: Sean Wang <sean.wang@mediatek.com>
 
-On Tue, 2018-07-10 at 12:52 +0200, Matthias Brugger wrote:
-> 
-> On 10/07/18 01:04, Mars Cheng wrote:
-[...]
+After the commit acf137951367 ("pinctrl: core: Return selector to the
+pinctrl driver") and the commit 47f1242d19c3 ("pinctrl: pinmux: Return
+selector to the pinctrl driver"), it's necessary to add the fixes
+needed for the pin controller drivers to use the appropriate returned
+selector for a negative error number returned in case of the fail at
+these functions. Otherwise, the driver would have a failed probe and
+that causes boot message cannot correctly output and devices fail
+to acquire their own pins.
 
-> > pmic/pwrap/i2c/rtc/kpd/spi/wdt/cqdma/auxadc/pwm/cmdq/disp. We have
-> > dedicated owners to handle them and will cowork tightly with members to
-> > make sure things happen in the following weeks.
-> > 
-> 
-> Ok, so let's wait until pinctrl driver is submitted. I'd prefer if you could add
-> the clk driver to this series. This way we can get rid of the dummy clocks in
-> the device tree.
-> 
+Cc: Kevin Hilman <khilman@baylibre.com>
+Fixes: acf137951367 ("pinctrl: core: Return selector to the pinctrl driver")
+Fixes: 47f1242d19c3 ("pinctrl: pinmux: Return selector to the pinctrl driver")
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-mt7622.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Got it, I will submit this series with clk support in v5. and pinctrl
-after that.
-
-> > For previous chips, we did have no enough support after shell. It is due
-> > to fast pace of smartphone SoC and other resource issues. We also know
-> > that is no excuse so that we already confirmed owners and their
-> > schedules for mt6765.
-> > 
-> > If there is any suggestion, please let us know.
-> > 
-> 
-> I know that smartphone SoC is a fast paced business. Never the less I'm
-> convinced that the basic building blocks won't change much from one version to
-> another. And that mainline support for the previous version of your SoC will
-> help you to get your new drivers faster upstream.
-> 
-> For me the best example is the mt7622 which got to a reasonable upstream support
-> quite fast, thanks to a good foundation of mt7623 in mainline. I'd love to see
-> that happen on the smartphone SoCs as well.
-> 
-> Not to mention that upstream support will help you internally when you have to
-> rebase your BSP code-base to a new kernel version.
-> 
-> That said I think it is good news that you have already defined owner for the
-> different devices and hope to see submissions for them in the near future :)
-> As a suggestion I would say that upstream submission takes time and effort and
-> it will help your engineers if they can allocate some time to do so. But that's
-> most probably a management decision and all engineers know that management bases
-> it's decision on some hard-to-understandable abbreviations like EBITDA etc. ;)
-> 
-> Best regards,
-> Matthias
-
-Thanks for your suggestions. We will try to catch up on this mission :-)
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7622.c b/drivers/pinctrl/mediatek/pinctrl-mt7622.c
+index 2411c384..6f931b8 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt7622.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt7622.c
+@@ -1538,7 +1538,7 @@ static int mtk_build_groups(struct mtk_pinctrl *hw)
+ 		err = pinctrl_generic_add_group(hw->pctrl, group->name,
+ 						group->pins, group->num_pins,
+ 						group->data);
+-		if (err) {
++		if (err < 0) {
+ 			dev_err(hw->dev, "Failed to register group %s\n",
+ 				group->name);
+ 			return err;
+@@ -1559,7 +1559,7 @@ static int mtk_build_functions(struct mtk_pinctrl *hw)
+ 						  func->group_names,
+ 						  func->num_group_names,
+ 						  func->data);
+-		if (err) {
++		if (err < 0) {
+ 			dev_err(hw->dev, "Failed to register function %s\n",
+ 				func->name);
+ 			return err;
+-- 
+2.7.4
