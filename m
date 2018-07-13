@@ -1,42 +1,28 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH v9 1/5] clocksource/drivers/timer-mediatek: Add system
- timer bindings
-Date: Thu, 12 Jul 2018 21:49:11 +0200
-Message-ID: <1a4b9e36-61b7-0933-4cde-b80218199d14@linaro.org>
-References: <1530832288-8156-1-git-send-email-stanley.chu@mediatek.com>
- <1530832288-8156-2-git-send-email-stanley.chu@mediatek.com>
- <a4c1a9cf-4d48-a9a7-e7ac-d94685c30619@linaro.org>
- <CAL_JsqLz0txawAP3BuQ2H4NyzFsKGkTVZ_kp8toDNRC0eJEC7g@mail.gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 1/2] gpio: mt7621: add OF_GPIO dependency
+Date: Fri, 13 Jul 2018 09:26:11 +0200
+Message-ID: <CACRpkdbD6D3xtR6n3oOj4wWv5AZGar71Gwiyiv8Fu89UvX_9RA@mail.gmail.com>
+References: <20180710151915.2282622-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqLz0txawAP3BuQ2H4NyzFsKGkTVZ_kp8toDNRC0eJEC7g@mail.gmail.com>
-Content-Language: en-US
+In-Reply-To: <20180710151915.2282622-1-arnd@arndb.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Stanley Chu <stanley.chu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Greg KH <gregkh@linuxfoundation.org>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 12/07/2018 21:16, Rob Herring wrote:
-> On Tue, Jul 10, 2018 at 9:02 AM Daniel Lezcano
-> <daniel.lezcano@linaro.org> wrote:
->>
->>
->> Rob ? Are you fine with this change ?
-> 
-> Yes, I added my R-by on Fri.
+On Tue, Jul 10, 2018 at 5:19 PM Arnd Bergmann <arnd@arndb.de> wrote:
 
-Ah, ok. I missed it.
+> Compile-testing the driver fails unless OF_GPIO is enabled:
+>
+> drivers/gpio/gpio-mt7621.c: In function 'mediatek_gpio_bank_probe':
+> drivers/gpio/gpio-mt7621.c:228:10: error: 'struct gpio_chip' has no member named 'of_node'
+>
+> Fixes: 4ba9c3afda41 ("gpio: mt7621: Add a driver for MT7621")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-Thanks
+Patch applied. Sorry for taking some days.
 
-  -- Daniel
-
-
--- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+Yours,
+Linus Walleij
