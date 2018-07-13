@@ -1,28 +1,42 @@
 From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH 1/2] gpio: mt7621: add OF_GPIO dependency
-Date: Fri, 13 Jul 2018 09:26:11 +0200
-Message-ID: <CACRpkdbD6D3xtR6n3oOj4wWv5AZGar71Gwiyiv8Fu89UvX_9RA@mail.gmail.com>
-References: <20180710151915.2282622-1-arnd@arndb.de>
+Subject: Re: [PATCH] pinctrl: mt7622: fix probe fail by misuse the selector
+Date: Fri, 13 Jul 2018 10:11:31 +0200
+Message-ID: <CACRpkdYGPw0Vaaa1_0-vmFf0wdB6Wi+NLv4jDqDxCwJF9o6G=A@mail.gmail.com>
+References: <ddd18e427de47476722c945dc622571394192331.1531374468.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180710151915.2282622-1-arnd@arndb.de>
+In-Reply-To: <ddd18e427de47476722c945dc622571394192331.1531374468.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Greg KH <gregkh@linuxfoundation.org>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+To: Sean Wang <sean.wang@mediatek.com>, ext Tony Lindgren <tony@atomide.com>
+Cc: "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Kevin Hilman <khilman@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jul 10, 2018 at 5:19 PM Arnd Bergmann <arnd@arndb.de> wrote:
+On Thu, Jul 12, 2018 at 7:50 AM <sean.wang@mediatek.com> wrote:
 
-> Compile-testing the driver fails unless OF_GPIO is enabled:
+> From: Sean Wang <sean.wang@mediatek.com>
 >
-> drivers/gpio/gpio-mt7621.c: In function 'mediatek_gpio_bank_probe':
-> drivers/gpio/gpio-mt7621.c:228:10: error: 'struct gpio_chip' has no member named 'of_node'
+> After the commit acf137951367 ("pinctrl: core: Return selector to the
+> pinctrl driver") and the commit 47f1242d19c3 ("pinctrl: pinmux: Return
+> selector to the pinctrl driver"), it's necessary to add the fixes
+> needed for the pin controller drivers to use the appropriate returned
+> selector for a negative error number returned in case of the fail at
+> these functions. Otherwise, the driver would have a failed probe and
+> that causes boot message cannot correctly output and devices fail
+> to acquire their own pins.
 >
-> Fixes: 4ba9c3afda41 ("gpio: mt7621: Add a driver for MT7621")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> Cc: Kevin Hilman <khilman@baylibre.com>
+> Fixes: acf137951367 ("pinctrl: core: Return selector to the pinctrl driver")
+> Fixes: 47f1242d19c3 ("pinctrl: pinmux: Return selector to the pinctrl driver")
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
-Patch applied. Sorry for taking some days.
+Applied on top of Tony's patches on the fixes branch.
+
+Now there are fixes piling on top of fixes and I am starting to feel
+insecure of pushing this to v4.18 and I feel like letting these
+fixes go to v4.19 (it can be picked to stable from there).
+
+Tony: do you think there could be more fallout like this?
 
 Yours,
 Linus Walleij
