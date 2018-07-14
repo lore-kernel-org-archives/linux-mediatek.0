@@ -1,41 +1,78 @@
-From: =?UTF-8?q?Oliver=20H=C3=BCbers?= <oliver.huebers@web.de>
-Subject: [PATCH 3/4] staging: mt7621: Add braces around macro argument
-Date: Fri, 13 Jul 2018 15:41:05 +0200
-Message-ID: <1531489266-20410-3-git-send-email-oliver.huebers@web.de>
-References: <1531489266-20410-1-git-send-email-oliver.huebers@web.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-In-Reply-To: <1531489266-20410-1-git-send-email-oliver.huebers@web.de>
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org, =?UTF-8?q?Oliver=20H=C3=BCbers?= <oliver.huebers@web.de>, linux-kernel@i4.cs.fau.de, Vanessa Borgmann <nessa.x@web.de>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+From: Marcel Holtmann <marcel@holtmann.org>
+Subject: Re: [PATCH v5 1/7] dt-bindings: net: bluetooth: Add
+ mediatek-bluetooth
+Date: Sat, 14 Jul 2018 18:26:24 +0200
+Message-ID: <7E55939D-7F8A-4832-9DD5-EFB3B19ACF0B@holtmann.org>
+References: <cover.1531150733.git.sean.wang@mediatek.com>
+ <d8a5b34513cf2187a2b23a513feaa358d719bc14.1531150733.git.sean.wang@mediatek.com>
+Mime-Version: 1.0 (Mac OS X Mail 11.4 \(3445.8.2\))
+Content-Type: text/plain;
+        charset=us-ascii
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <d8a5b34513cf2187a2b23a513feaa358d719bc14.1531150733.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Johan Hedberg <johan.hedberg@gmail.com>, devicetree <devicetree@vger.kernel.org>, "open list:BLUETOOTH DRIVERS" <linux-bluetooth@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-QWRkIGJyYWNlcyBhcm91bmQgbWFjcm8gYXJndW1lbnQgdG8gYXZvaWQgcHJlY2VkZW5jZSBwcm9i
-bGVtcy4KVGhpcyBmaXhlcyB0aGUgY29ycmVzcG9uZGluZyBjaGVja3BhdGNoIHdhcm5pbmcuCgpT
-aWduZWQtb2ZmLWJ5OiBPbGl2ZXIgSMO8YmVycyA8b2xpdmVyLmh1ZWJlcnNAd2ViLmRlPgpTaWdu
-ZWQtb2ZmLWJ5OiBWYW5lc3NhIEJvcmdtYW5uIDxuZXNzYS54QHdlYi5kZT4KLS0tCiBkcml2ZXJz
-L3N0YWdpbmcvbXQ3NjIxLXBjaS9wY2ktbXQ3NjIxLmMgfCAzICsrLQogMSBmaWxlIGNoYW5nZWQs
-IDIgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3Rh
-Z2luZy9tdDc2MjEtcGNpL3BjaS1tdDc2MjEuYyBiL2RyaXZlcnMvc3RhZ2luZy9tdDc2MjEtcGNp
-L3BjaS1tdDc2MjEuYwppbmRleCBkMGQzZmI5Li5jMTE4ZDc4IDEwMDY0NAotLS0gYS9kcml2ZXJz
-L3N0YWdpbmcvbXQ3NjIxLXBjaS9wY2ktbXQ3NjIxLmMKKysrIGIvZHJpdmVycy9zdGFnaW5nL210
-NzYyMS1wY2kvcGNpLW10NzYyMS5jCkBAIC0xMzIsNyArMTMyLDggQEAKIAkJZWxzZQkJCQkJCQlc
-CiAJCQlydF9zeXNjX20zMih2YWwsIDAsIFJBTElOS19SU1RDVFJMKTsJCVwKIAl9IHdoaWxlICgw
-KQotI2RlZmluZSBERUFTU0VSVF9TWVNSU1RfUENJRSh2YWwpCVwKKworI2RlZmluZSBERUFTU0VS
-VF9TWVNSU1RfUENJRSh2YWwpCQkJCQlcCiAJZG8gewkJCQkJCQkJXAogCQlpZiAocnRfc3lzY19y
-MzIoU1lTQ19SRUdfQ0hJUF9SRVYpID09IDB4MDAwMzAxMDEpCVwKIAkJCXJ0X3N5c2NfbTMyKHZh
-bCwgMCwgUkFMSU5LX1JTVENUUkwpOwkJXAotLSAKMi43LjQKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51
-eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+Hi Sean,
+
+> Add binding document for a SoC built-in device using MediaTek protocol.
+> Which could be found on MT7622 SoC or other similar MediaTek SoCs.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> ---
+> .../devicetree/bindings/net/mediatek-bluetooth.txt | 35 ++++++++++++++++++++++
+> 1 file changed, 35 insertions(+)
+> create mode 100644 Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt b/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
+> new file mode 100644
+> index 0000000..1335429
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
+> @@ -0,0 +1,35 @@
+> +MediaTek SoC built-in Bluetooth Devices
+> +==================================
+> +
+> +This device is a serial attached device to BTIF device and thus it must be a
+> +child node of the serial node with BTIF. The dt-bindings details for BTIF
+> +device can be known via Documentation/devicetree/bindings/serial/8250.txt.
+> +
+> +Required properties:
+> +
+> +- compatible:	Must be one of
+> +		  "mediatek,mt7622-bluetooth"": for MT7622 SoC
+
+this does not match with the example below. And one of, should be normally be a list.
+
+> +- clocks:	Should be the clock specifiers corresponding to the entry in
+> +		clock-names property.
+> +- clock-names:	Should contain "ref" entries.
+> +- power-domains: Phandle to the power domain that the device is part of
+> +
+> +Example:
+> +
+> +	btif: serial@1100c000 {
+> +		compatible = "mediatek,mt7622-btif",
+> +			     "mediatek,mtk-btif";
+> +		reg = <0 0x1100c000 0 0x1000>;
+> +		interrupts = <GIC_SPI 90 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&pericfg CLK_PERI_BTIF_PD>;
+> +		clock-names = "main";
+> +		reg-shift = <2>;
+> +		reg-io-width = <4>;
+> +
+> +		bluetooth {
+> +			compatible = "mediatek,mt7622-bluetooth";
+> +			power-domains = <&scpsys MT7622_POWER_DOMAIN_WB>;
+> +			clocks = <&clk25m>;
+> +			clock-names = "ref";
+> +		};
+> +	};
+
+Regards
+
+Marcel
