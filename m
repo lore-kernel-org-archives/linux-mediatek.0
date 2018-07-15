@@ -1,11 +1,13 @@
 From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: [PATCH 0/8] Fix PCI I/O space page leaks
-Date: Sun, 15 Jul 2018 19:00:21 +0300
-Message-ID: <3e862a05-084a-d732-3060-6e2b234e9718@cogentembedded.com>
+Subject: [PATCH 7/8] PCI: mediatek: Fix I/O space page leak
+Date: Sun, 15 Jul 2018 19:31:22 +0300
+Message-ID: <176630c8-6b02-75a5-6d9e-eedc89ee9763@cogentembedded.com>
+References: <3e862a05-084a-d732-3060-6e2b234e9718@cogentembedded.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <3e862a05-084a-d732-3060-6e2b234e9718@cogentembedded.com>
 Content-Language: en-MW
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
@@ -16,27 +18,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Joao Pinto <Joao.Pinto@synopsys.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Rob Herring <robh@kernel.org>, Tanmay Inamdar <tinamdar@apm.com>, Ryder Lee <ryder.lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello!
+When testing the R-Car PCIe driver on the Condor board,  I noticed that if
+I left  the PCIe PHY driver disabled, the kernel crashed with this BUG:
 
-Here's a set of 8 patches against the 'pci/controller-fixes' branch of Lorenzo
-Pieralisi's 'pci.git' repo. They are the fixes for the PCI I/O space page leaks
-(and the kernel BUG caused by them on deferred probe); those were 1st found
-testing the R-Car PCIe driver. The patches are in the chronological order
-(considering the date/time of the commits specified in the Fixes: tag), patches
-#2..#8 depend on the patch #1 in order to build/work as it introduces the managed
-device API that they all use...
+[    1.225819] kernel BUG at lib/ioremap.c:72!
+[    1.230007] Internal error: Oops - BUG: 0 [#1] PREEMPT SMP
+[    1.235496] Modules linked in:
+[    1.238561] CPU: 0 PID: 39 Comm: kworker/0:1 Not tainted 4.17.0-dirty #1092
+[    1.245526] Hardware name: Renesas Condor board based on r8a77980 (DT)
+[    1.252075] Workqueue: events deferred_probe_work_func
+[    1.257220] pstate: 80000005 (Nzcv daif -PAN -UAO)
+[    1.262024] pc : ioremap_page_range+0x370/0x3c8
+[    1.266558] lr : ioremap_page_range+0x40/0x3c8
+[    1.271002] sp : ffff000008da39e0
+[    1.274317] x29: ffff000008da39e0 x28: 00e8000000000f07
+[    1.279636] x27: ffff7dfffee00000 x26: 0140000000000000
+[    1.284954] x25: ffff7dfffef00000 x24: 00000000000fe100
+[    1.290272] x23: ffff80007b906000 x22: ffff000008ab8000
+[    1.295590] x21: ffff000008bb1d58 x20: ffff7dfffef00000
+[    1.300909] x19: ffff800009c30fb8 x18: 0000000000000001
+[    1.306226] x17: 00000000000152d0 x16: 00000000014012d0
+[    1.311544] x15: 0000000000000000 x14: 0720072007200720
+[    1.316862] x13: 0720072007200720 x12: 0720072007200720
+[    1.322180] x11: 0720072007300730 x10: 00000000000000ae
+[    1.327498] x9 : 0000000000000000 x8 : ffff7dffff000000                      
+[    1.332816] x7 : 0000000000000000 x6 : 0000000000000100
+[    1.338134] x5 : 0000000000000000 x4 : 000000007b906000
+[    1.343452] x3 : ffff80007c61a880 x2 : ffff7dfffeefffff
+[    1.348770] x1 : 0000000040000000 x0 : 00e80000fe100f07
+[    1.354090] Process kworker/0:1 (pid: 39, stack limit = 0x        (ptrval))  
+[    1.361056] Call trace:
+[    1.363504]  ioremap_page_range+0x370/0x3c8
+[    1.367695]  pci_remap_iospace+0x7c/0xac
+[    1.371624]  pci_parse_request_of_pci_ranges+0x13c/0x190
+[    1.376945]  rcar_pcie_probe+0x4c/0xb04
+[    1.380786]  platform_drv_probe+0x50/0xbc
+[    1.384799]  driver_probe_device+0x21c/0x308
+[    1.389072]  __device_attach_driver+0x98/0xc8
+[    1.393431]  bus_for_each_drv+0x54/0x94
+[    1.397269]  __device_attach+0xc4/0x12c
+[    1.401107]  device_initial_probe+0x10/0x18
+[    1.405292]  bus_probe_device+0x90/0x98
+[    1.409130]  deferred_probe_work_func+0xb0/0x150
+[    1.413756]  process_one_work+0x12c/0x29c
+[    1.417768]  worker_thread+0x200/0x3fc
+[    1.421522]  kthread+0x108/0x134
+[    1.424755]  ret_from_fork+0x10/0x18
+[    1.428334] Code: f9004ba2 54000080 aa0003fb 17ffff48 (d4210000)
 
-[1/8] PCI: xgene: Fix I/O space page leak
-[2/8] PCI: of: Fix I/O space page leak
-[3/8] PCI: versatile: Fix I/O space page leak
-[4/8] PCI: designware: Fix I/O space page leak
-[5/8] PCI: aardvark: Fix I/O space page leak
-[6/8] PCI: faraday: Fix I/O space page leak
-[7/8] PCI: mediatek: Fix I/O space page leak
-[8/8] PCI: v3-semi: Fix I/O space page leak
+It turned out that pci_remap_iospace() wasn't undone when the driver's
+probe failed, and since devm_phy_optional_get() returned -EPROBE_DEFER,
+the probe was retried,  finally causing the BUG due to trying to remap
+already remapped pages.
 
-MBR, Sergei
+The MediatTek PCIe driver has the same issue.  The most feasible solution
+seemed to introduce devm_pci_remap_iospace() -- which was done in the XGene
+PCIe driver patch posted earlier...
+
+Fixes: 637cfacae96f ("PCI: mediatek: Add MediaTek PCIe host controller support")
+Signed-off-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+Acked-by: Bjorn Helgaas <bhelgaas@google.com>
+
+---
+ drivers/pci/controller/pcie-mediatek.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: pci/drivers/pci/controller/pcie-mediatek.c
+===================================================================
+--- pci.orig/drivers/pci/controller/pcie-mediatek.c
++++ pci/drivers/pci/controller/pcie-mediatek.c
+@@ -1109,7 +1109,7 @@ static int mtk_pcie_request_resources(st
+ 	if (err < 0)
+ 		return err;
+ 
+-	pci_remap_iospace(&pcie->pio, pcie->io.start);
++	devm_pci_remap_iospace(dev, &pcie->pio, pcie->io.start);
+ 
+ 	return 0;
+ }
