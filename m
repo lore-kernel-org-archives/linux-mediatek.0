@@ -1,42 +1,79 @@
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v5 2/7] serdev: add dev_pm_domain_attach|detach()
-Date: Mon, 16 Jul 2018 11:50:18 +0200
-Message-ID: <20180716095018.GA11078@kroah.com>
-References: <cover.1531150733.git.sean.wang@mediatek.com>
- <d5904115ff1da38fe79b45fa3d59ef0688cea124.1531150733.git.sean.wang@mediatek.com>
- <20180715085628.GI10204@localhost>
+From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH] linux-firmware: add firmware for mt76x2u
+Date: Mon, 16 Jul 2018 11:48:21 +0200
+Message-ID: <20180716094820.GA3810@localhost.localdomain>
+References: <20180715084032.7384-1-lorenzo.bianconi@redhat.com>
+ <20180716091743.GA1297@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <20180715085628.GI10204@localhost>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Johan Hovold <johan@kernel.org>
-Cc: sean.wang@mediatek.com, robh+dt@kernel.org, mark.rutland@arm.com, marcel@holtmann.org, johan.hedberg@gmail.com, devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, Jiri Slaby <jslaby@suse.com>, linux-serial@vger.kernel.org
+In-Reply-To: <20180716091743.GA1297-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-firmware-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, nbd-Vt+b4OUoWG0@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Jul 15, 2018 at 10:56:28AM +0200, Johan Hovold wrote:
-> On Mon, Jul 09, 2018 at 11:56:58PM +0800, sean.wang@mediatek.com wrote:
-> > From: Sean Wang <sean.wang@mediatek.com>
-> > 
-> > In order to open up the required power gate before any operation can be
-> > effectively performed over the serial bus between CPU and serdev, it's
-> > clearly essential to add common attach functions for PM domains to serdev
-> > at the probe phase.
-> > 
-> > Similarly, the relevant dettach function for the PM domains should be
-> > properly and reversely added at the remove phase.
-> > 
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
-> > Cc: Rob Herring <robh@kernel.org>
-> > Cc: Ulf Hansson <ulf.hansson@linaro.org>
-> > Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> > Cc: Jiri Slaby <jslaby@suse.com>
-> > Cc: linux-serial@vger.kernel.org
+> Hi Lorenzo 
 > 
-> Reviewed-by: Johan Hovold <johan@kernel.org>
+> On Sun, Jul 15, 2018 at 10:40:32AM +0200, Lorenzo Bianconi wrote:
+> > Add binary firmware for MT76x2u based devices
+> > 
+> > Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+> > ---
+> >  WHENCE                |  12 ++++++++++++
+> >  mt7662u.bin           | Bin 0 -> 91412 bytes
+> >  mt7662u_rom_patch.bin | Bin 0 -> 20686 bytes
+> >  3 files changed, 12 insertions(+)
+> >  create mode 100644 mt7662u.bin
+> >  create mode 100644 mt7662u_rom_patch.bin
+> > 
+> > diff --git a/WHENCE b/WHENCE
+> > index ca3f30c..afe828e 100644
+> > --- a/WHENCE
+> > +++ b/WHENCE
+> > @@ -3814,6 +3814,18 @@ Version: 0.0.2_P69
+> >  
+> >  Licence: Redistributable. See LICENCE.ralink_a_mediatek_company_firmware for details
+> >  
+> > +---------------------------------------------------------------------------
+> > +
+> > +Driver: mt76x2u - MediaTek MT76x2u Wireless MACs
+> > +
+> > +File: mt7662u.bin
+> > +Version: 1.5
+> > +
+> > +File: mt7662u_rom_patch.bin
+> > +Version: 0.0.2_P48
+> > +
+> > +Licence: Redistributable. See LICENCE.ralink_a_mediatek_company_firmware for details
+> 
+> This is different licence file (and text is different too) than the
+> licence file pointed by Sean:
+> http://lists.infradead.org/pipermail/linux-mediatek/2018-June/013759.html
+> 
+> The LICENCE.mediatek was not yet committed to linux-firmware tree, so
+> I think we should wait for that before posting mt76xx*.bin blobs.
 
-Thanks, now applied.
+Hi Stanislaw,
 
-greg k-h
+thx for the info, I lost that email. I was thinking we can use the same license
+used by mt76x2 driver.
+Please drop my previous email, I will send a v2 (pointing to the right license file)
+as soon as the one posted by Sean is merged.
+
+Regards,
+Lorenzo
+
+> 
+> Regards
+> Stanislaw
