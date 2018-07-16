@@ -1,59 +1,53 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [dts] [v2] fix green/blue pio-led on bananapi-r2
-Date: Mon, 16 Jul 2018 11:16:56 +0200
-Message-ID: <13bab02e-0dc7-0ad9-3dde-fa4eef9e4411@gmail.com>
-References: <trinity-ae29ad25-a4fb-47f3-8d68-f6e58c875a0e-1529682447976@3c-app-gmx-bs42>
- <trinity-0d48bc23-f754-4da3-af01-c3a7abe1d34b-1529682783853@3c-app-gmx-bs42>
- <1529918263.29697.31.camel@mtkswgap22>
- <trinity-28694d63-092a-48be-aade-ba680b5c4e70-1529921159405@3c-app-gmx-bs16>
+Subject: Re: [PATCH v3 0/4] Add basic support for Mediatek MT8183 SoC
+Date: Mon, 16 Jul 2018 11:28:52 +0200
+Message-ID: <9ba45353-a6e1-9a6e-f05b-4b1679ae9e52@gmail.com>
+References: <1526538126-51497-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <trinity-28694d63-092a-48be-aade-ba680b5c4e70-1529921159405@3c-app-gmx-bs16>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1526538126-51497-1-git-send-email-erin.lo@mediatek.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Frank Wunderlich <frank-w@public-files.de>, Sean Wang <sean.wang@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Erin Lo <erin.lo@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, mars.cheng@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-CgpPbiAyNS8wNi8xOCAxMjowNSwgRnJhbmsgV3VuZGVybGljaCB3cm90ZToKPiAKPiBGcm9tOiBG
-cmFuayBXdW5kZXJsaWNoIDxmcmFuay13QHB1YmxpYy1maWxlcy5kZT4KPiBEYXRlOiBNb24sIDI1
-IEp1biAyMDE4IDExOjU3OjEzICswMjAwCj4gU3ViamVjdDogW1BBVENIXSBbZHRzXSBbdjJdIGZp
-eCBncmVlbi9ibHVlIHBpby1sZWQKPiAgcGlvLWxlZHMgKG5lYXIgR1BJTy1IZWFkZXIpIGFyZSBz
-d2FwcGVkIGFuZCBMT1ctYWN0aXZlIAo+ICBwYXRjaCByZXN0b3JlIHRoaXMgZXhwZWN0ZWQgYmVo
-YXZpb3VyCj4gIHJlZCBjYW5ub3QgYmUgc3dpdGNoZWQgYWZhaWsKPiAKPiB2MjogYWxwaGFiZXRp
-YyBvcmRlcgo+IAoKSSBmaXhlZCB0aGUgY29tbWl0IG1lc3NhZ2UgYW5kIHB1c2hlZCBpdCB0byB2
-NC4xOC1uZXh0L2R0czMyCgo+IFNpZ25lZC1vZmYtYnk6IEZyYW5rIFd1bmRlcmxpY2ggPGZyYW5r
-LXdAcHVibGljLWZpbGVzLmRlPgo+IC0tLQo+ICBhcmNoL2FybS9ib290L2R0cy9tdDc2MjNuLWJh
-bmFuYXBpLWJwaS1yMi5kdHMgfCA2ICsrKy0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRp
-b25zKCspLCAzIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0
-cy9tdDc2MjNuLWJhbmFuYXBpLWJwaS1yMi5kdHMgYi9hcmNoL2FybS9ib290L2R0cy9tdDc2MjNu
-LWJhbmFuYXBpLWJwaS1yMi5kdHMKPiBpbmRleCA1MzFkOTA1ZDkyNGZmLi4yYjc2MGY5MGYzOGM4
-IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtL2Jvb3QvZHRzL210NzYyM24tYmFuYW5hcGktYnBpLXIy
-LmR0cwo+ICsrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL210NzYyM24tYmFuYW5hcGktYnBpLXIyLmR0
-cwo+IEBAIC05MSwxOSArOTEsMTkgQEAKPiAgCj4gIAkJYmx1ZSB7Cj4gIAkJCWxhYmVsID0gImJw
-aS1yMjpwaW86Ymx1ZSI7Cj4gLQkJCWdwaW9zID0gPCZwaW8gMjQxIEdQSU9fQUNUSVZFX0hJR0g+
-Owo+ICsJCQlncGlvcyA9IDwmcGlvIDI0MCBHUElPX0FDVElWRV9MT1c+Owo+ICAJCQlkZWZhdWx0
-LXN0YXRlID0gIm9mZiI7Cj4gIAkJfTsKPiAgCj4gIAkJZ3JlZW4gewo+ICAJCQlsYWJlbCA9ICJi
-cGktcjI6cGlvOmdyZWVuIjsKPiAtCQkJZ3Bpb3MgPSA8JnBpbyAyNDAgR1BJT19BQ1RJVkVfSElH
-SD47Cj4gKwkJCWdwaW9zID0gPCZwaW8gMjQxIEdQSU9fQUNUSVZFX0xPVz47Cj4gIAkJCWRlZmF1
-bHQtc3RhdGUgPSAib2ZmIjsKPiAgCQl9Owo+ICAKPiAgCQlyZWQgewo+ICAJCQlsYWJlbCA9ICJi
-cGktcjI6cGlvOnJlZCI7Cj4gLQkJCWdwaW9zID0gPCZwaW8gMjM5IEdQSU9fQUNUSVZFX0hJR0g+
-Owo+ICsJCQlncGlvcyA9IDwmcGlvIDIzOSBHUElPX0FDVElWRV9MT1c+Owo+ICAJCQlkZWZhdWx0
-LXN0YXRlID0gIm9mZiI7Cj4gIAkJfTsKPiAgCX07Cj4gCj4gwqAKPiAKPiBfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LW1lZGlhdGVrIG1haWxp
-bmcgbGlzdAo+IExpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCj4gCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2Vy
-bmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVs
-Cg==
+Hi Erin,
+
+On 17/05/18 08:22, Erin Lo wrote:
+> MT8183 is a SoC based on 64bit ARMv8 architecture.
+> It contains 4 CA53 and 4 CA73 cores.
+> MT8183 share many HW IP with MT65xx series.
+> This patchset was tested on MT8183 evaluation board, and boot to shell ok.
+> 
+> This series contains document bindings, device tree including interrupt, uart.
+> 
+> Change in v3:
+> 1. Fill out GICC, GICH, GICV regions
+> 2. Update Copyright to 2018
+> 
+> Change in v2:
+> 1. Split dt-bindings into different patches
+> 2. Correct bindings for supported SoCs (mtk-uart.txt)
+> 
+> Ben Ho (1):
+>   arm64: dts: Add Mediatek SoC MT8183 and evaluation board dts and
+>     Makefile
+> 
+> Erin Lo (3):
+>   dt-bindings: arm: Add bindings for Mediatek MT8183 SoC Platform
+>   dt-bindings: mtk-sysirq: Add compatible for Mediatek MT8183
+>   dt-bindings: serial: Add compatible for Mediatek MT8183
+> 
+
+I'm a bit reluctant to take this series, as it will only enable the EVB board to
+boot into a serial console. Are you planning to add support for other devices of
+this SoC?
+
+Apart please take into account that there is an issue with the dts file, as you
+were told by the kbuild test robot.
+
+Regards,
+Matthias
