@@ -1,14 +1,14 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: [PATCH 7/8] PCI: mediatek: Fix I/O space page leak
-Date: Sun, 15 Jul 2018 19:31:22 +0300
-Message-ID: <176630c8-6b02-75a5-6d9e-eedc89ee9763@cogentembedded.com>
-References: <3e862a05-084a-d732-3060-6e2b234e9718@cogentembedded.com>
+From: Honghui Zhang <honghui.zhang@mediatek.com>
+Subject: Re: [PATCH v3 0/4] PCI: mediatek: fixup find_port, enable_msi and
+ add pm, module support
+Date: Mon, 16 Jul 2018 11:35:34 +0800
+Message-ID: <1531712134.31406.1.camel@mhfsdcap03>
+References: <1530518264-6125-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <3e862a05-084a-d732-3060-6e2b234e9718@cogentembedded.com>
-Content-Language: en-MW
+In-Reply-To: <1530518264-6125-1-git-send-email-honghui.zhang@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -18,86 +18,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: lorenzo.pieralisi@arm.com
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org, hongkun.cao@mediatek.com, ryder.lee@mediatek.com, marc.zyngier@arm.com, linux-pci@vger.kernel.org, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, yt.shen@mediatek.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, yong.wu@mediatek.com, bhelgaas@google.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-When testing the R-Car PCIe driver on the Condor board,  I noticed that if
-I left  the PCIe PHY driver disabled, the kernel crashed with this BUG:
+Hi, Bjorn, Lorenzo,
 
-[    1.225819] kernel BUG at lib/ioremap.c:72!
-[    1.230007] Internal error: Oops - BUG: 0 [#1] PREEMPT SMP
-[    1.235496] Modules linked in:
-[    1.238561] CPU: 0 PID: 39 Comm: kworker/0:1 Not tainted 4.17.0-dirty #1092
-[    1.245526] Hardware name: Renesas Condor board based on r8a77980 (DT)
-[    1.252075] Workqueue: events deferred_probe_work_func
-[    1.257220] pstate: 80000005 (Nzcv daif -PAN -UAO)
-[    1.262024] pc : ioremap_page_range+0x370/0x3c8
-[    1.266558] lr : ioremap_page_range+0x40/0x3c8
-[    1.271002] sp : ffff000008da39e0
-[    1.274317] x29: ffff000008da39e0 x28: 00e8000000000f07
-[    1.279636] x27: ffff7dfffee00000 x26: 0140000000000000
-[    1.284954] x25: ffff7dfffef00000 x24: 00000000000fe100
-[    1.290272] x23: ffff80007b906000 x22: ffff000008ab8000
-[    1.295590] x21: ffff000008bb1d58 x20: ffff7dfffef00000
-[    1.300909] x19: ffff800009c30fb8 x18: 0000000000000001
-[    1.306226] x17: 00000000000152d0 x16: 00000000014012d0
-[    1.311544] x15: 0000000000000000 x14: 0720072007200720
-[    1.316862] x13: 0720072007200720 x12: 0720072007200720
-[    1.322180] x11: 0720072007300730 x10: 00000000000000ae
-[    1.327498] x9 : 0000000000000000 x8 : ffff7dffff000000                      
-[    1.332816] x7 : 0000000000000000 x6 : 0000000000000100
-[    1.338134] x5 : 0000000000000000 x4 : 000000007b906000
-[    1.343452] x3 : ffff80007c61a880 x2 : ffff7dfffeefffff
-[    1.348770] x1 : 0000000040000000 x0 : 00e80000fe100f07
-[    1.354090] Process kworker/0:1 (pid: 39, stack limit = 0x        (ptrval))  
-[    1.361056] Call trace:
-[    1.363504]  ioremap_page_range+0x370/0x3c8
-[    1.367695]  pci_remap_iospace+0x7c/0xac
-[    1.371624]  pci_parse_request_of_pci_ranges+0x13c/0x190
-[    1.376945]  rcar_pcie_probe+0x4c/0xb04
-[    1.380786]  platform_drv_probe+0x50/0xbc
-[    1.384799]  driver_probe_device+0x21c/0x308
-[    1.389072]  __device_attach_driver+0x98/0xc8
-[    1.393431]  bus_for_each_drv+0x54/0x94
-[    1.397269]  __device_attach+0xc4/0x12c
-[    1.401107]  device_initial_probe+0x10/0x18
-[    1.405292]  bus_probe_device+0x90/0x98
-[    1.409130]  deferred_probe_work_func+0xb0/0x150
-[    1.413756]  process_one_work+0x12c/0x29c
-[    1.417768]  worker_thread+0x200/0x3fc
-[    1.421522]  kthread+0x108/0x134
-[    1.424755]  ret_from_fork+0x10/0x18
-[    1.428334] Code: f9004ba2 54000080 aa0003fb 17ffff48 (d4210000)
+could you kindly take a look at this serial?
 
-It turned out that pci_remap_iospace() wasn't undone when the driver's
-probe failed, and since devm_phy_optional_get() returned -EPROBE_DEFER,
-the probe was retried,  finally causing the BUG due to trying to remap
-already remapped pages.
+thanks.
 
-The MediatTek PCIe driver has the same issue.  The most feasible solution
-seemed to introduce devm_pci_remap_iospace() -- which was done in the XGene
-PCIe driver patch posted earlier...
-
-Fixes: 637cfacae96f ("PCI: mediatek: Add MediaTek PCIe host controller support")
-Signed-off-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-Acked-by: Bjorn Helgaas <bhelgaas@google.com>
-
----
- drivers/pci/controller/pcie-mediatek.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-Index: pci/drivers/pci/controller/pcie-mediatek.c
-===================================================================
---- pci.orig/drivers/pci/controller/pcie-mediatek.c
-+++ pci/drivers/pci/controller/pcie-mediatek.c
-@@ -1109,7 +1109,7 @@ static int mtk_pcie_request_resources(st
- 	if (err < 0)
- 		return err;
- 
--	pci_remap_iospace(&pcie->pio, pcie->io.start);
-+	devm_pci_remap_iospace(dev, &pcie->pio, pcie->io.start);
- 
- 	return 0;
- }
+On Mon, 2018-07-02 at 15:57 +0800, honghui.zhang@mediatek.com wrote:
+> From: Honghui Zhang <honghui.zhang@mediatek.com>
+> 
+> This patchset includes misc patchs:
+> 
+> The first patch fixup the mtk_pcie_find_port logical which will cause system
+> could not touch the EP's configuration space which was connected to PCIe slot 1.
+> 
+> The second patch fixup the enable msi logical, the operation to enable msi
+> should be after system clock is enabled. The function of mtk_pcie_startup_port_v2's
+> define location is re-arranged to avoid mtk_pcie_enable_msi's forward declaration.
+> And call mtk_pcie_enable_msi in mtk_pcie_startup_port_v2 since the clock was all
+> enabled at that time.
+> 
+> The third patch was rebased and refactor of the v4 patch[1], changes are:
+>  -Add PM support for MT7622.
+>  -Using mtk_pcie_enable_port to re-establish the link when resumed.
+>  -Rebase on the previous two patches.
+> 
+> The fourth patch add loadable kernel module support.
+> 
+> Some of those patches was already reviewed-by Ryder Lee <ryder.lee@mediatek.com>,
+> so I just add the Reviewed-by tags in those patches.
+> 
+> [1] https://patchwork.kernel.org/patch/10479079
+> 
+> Change since v2:
+>  - Fix the list_for_each_entry_safe parameter error.
+>  - Add Ryder's Acked-by flag.
+> 
+> Change since v1:
+>  - A bit of code refact of the first patch suggested by Andy Shevchenko, and
+>    commit message updated.
+>  - Using __maybe_unused.
+>  - Remove the redundant list_empty check of the fourth patch.
+> 
+> Honghui Zhang (4):
+>   PCI: mediatek: fixup mtk_pcie_find_port logical
+>   PCI: mediatek: enable msi after clock enabled
+>   PCI: mediatek: Add system pm support for MT2712 and MT7622
+>   PCI: mediatek: Add loadable kernel module support
+> 
+>  drivers/pci/controller/Kconfig         |   2 +-
+>  drivers/pci/controller/pcie-mediatek.c | 289 ++++++++++++++++++++++++---------
+>  2 files changed, 213 insertions(+), 78 deletions(-)
+> 
