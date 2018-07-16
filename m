@@ -1,21 +1,59 @@
-From: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH 3/4] staging: mt7621: Add braces around macro argument
-Date: Mon, 16 Jul 2018 10:35:07 +0200
-Message-ID: <20180716083507.GB7903@kroah.com>
-References: <1531489266-20410-1-git-send-email-oliver.huebers@web.de>
- <1531489266-20410-3-git-send-email-oliver.huebers@web.de>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [dts] [v2] fix green/blue pio-led on bananapi-r2
+Date: Mon, 16 Jul 2018 11:16:56 +0200
+Message-ID: <13bab02e-0dc7-0ad9-3dde-fa4eef9e4411@gmail.com>
+References: <trinity-ae29ad25-a4fb-47f3-8d68-f6e58c875a0e-1529682447976@3c-app-gmx-bs42>
+ <trinity-0d48bc23-f754-4da3-af01-c3a7abe1d34b-1529682783853@3c-app-gmx-bs42>
+ <1529918263.29697.31.camel@mtkswgap22>
+ <trinity-28694d63-092a-48be-aade-ba680b5c4e70-1529921159405@3c-app-gmx-bs16>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1531489266-20410-3-git-send-email-oliver.huebers@web.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Oliver =?iso-8859-1?Q?H=FCbers?= <oliver.huebers@web.de>
-Cc: devel@driverdev.osuosl.org, linux-kernel@i4.cs.fau.de, Vanessa Borgmann <nessa.x@web.de>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <trinity-28694d63-092a-48be-aade-ba680b5c4e70-1529921159405@3c-app-gmx-bs16>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Frank Wunderlich <frank-w@public-files.de>, Sean Wang <sean.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jul 13, 2018 at 03:41:05PM +0200, Oliver Hübers wrote:
-> Add braces around macro argument to avoid precedence problems.
-
-That is not what this patch does :(
+CgpPbiAyNS8wNi8xOCAxMjowNSwgRnJhbmsgV3VuZGVybGljaCB3cm90ZToKPiAKPiBGcm9tOiBG
+cmFuayBXdW5kZXJsaWNoIDxmcmFuay13QHB1YmxpYy1maWxlcy5kZT4KPiBEYXRlOiBNb24sIDI1
+IEp1biAyMDE4IDExOjU3OjEzICswMjAwCj4gU3ViamVjdDogW1BBVENIXSBbZHRzXSBbdjJdIGZp
+eCBncmVlbi9ibHVlIHBpby1sZWQKPiAgcGlvLWxlZHMgKG5lYXIgR1BJTy1IZWFkZXIpIGFyZSBz
+d2FwcGVkIGFuZCBMT1ctYWN0aXZlIAo+ICBwYXRjaCByZXN0b3JlIHRoaXMgZXhwZWN0ZWQgYmVo
+YXZpb3VyCj4gIHJlZCBjYW5ub3QgYmUgc3dpdGNoZWQgYWZhaWsKPiAKPiB2MjogYWxwaGFiZXRp
+YyBvcmRlcgo+IAoKSSBmaXhlZCB0aGUgY29tbWl0IG1lc3NhZ2UgYW5kIHB1c2hlZCBpdCB0byB2
+NC4xOC1uZXh0L2R0czMyCgo+IFNpZ25lZC1vZmYtYnk6IEZyYW5rIFd1bmRlcmxpY2ggPGZyYW5r
+LXdAcHVibGljLWZpbGVzLmRlPgo+IC0tLQo+ICBhcmNoL2FybS9ib290L2R0cy9tdDc2MjNuLWJh
+bmFuYXBpLWJwaS1yMi5kdHMgfCA2ICsrKy0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRp
+b25zKCspLCAzIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0
+cy9tdDc2MjNuLWJhbmFuYXBpLWJwaS1yMi5kdHMgYi9hcmNoL2FybS9ib290L2R0cy9tdDc2MjNu
+LWJhbmFuYXBpLWJwaS1yMi5kdHMKPiBpbmRleCA1MzFkOTA1ZDkyNGZmLi4yYjc2MGY5MGYzOGM4
+IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtL2Jvb3QvZHRzL210NzYyM24tYmFuYW5hcGktYnBpLXIy
+LmR0cwo+ICsrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL210NzYyM24tYmFuYW5hcGktYnBpLXIyLmR0
+cwo+IEBAIC05MSwxOSArOTEsMTkgQEAKPiAgCj4gIAkJYmx1ZSB7Cj4gIAkJCWxhYmVsID0gImJw
+aS1yMjpwaW86Ymx1ZSI7Cj4gLQkJCWdwaW9zID0gPCZwaW8gMjQxIEdQSU9fQUNUSVZFX0hJR0g+
+Owo+ICsJCQlncGlvcyA9IDwmcGlvIDI0MCBHUElPX0FDVElWRV9MT1c+Owo+ICAJCQlkZWZhdWx0
+LXN0YXRlID0gIm9mZiI7Cj4gIAkJfTsKPiAgCj4gIAkJZ3JlZW4gewo+ICAJCQlsYWJlbCA9ICJi
+cGktcjI6cGlvOmdyZWVuIjsKPiAtCQkJZ3Bpb3MgPSA8JnBpbyAyNDAgR1BJT19BQ1RJVkVfSElH
+SD47Cj4gKwkJCWdwaW9zID0gPCZwaW8gMjQxIEdQSU9fQUNUSVZFX0xPVz47Cj4gIAkJCWRlZmF1
+bHQtc3RhdGUgPSAib2ZmIjsKPiAgCQl9Owo+ICAKPiAgCQlyZWQgewo+ICAJCQlsYWJlbCA9ICJi
+cGktcjI6cGlvOnJlZCI7Cj4gLQkJCWdwaW9zID0gPCZwaW8gMjM5IEdQSU9fQUNUSVZFX0hJR0g+
+Owo+ICsJCQlncGlvcyA9IDwmcGlvIDIzOSBHUElPX0FDVElWRV9MT1c+Owo+ICAJCQlkZWZhdWx0
+LXN0YXRlID0gIm9mZiI7Cj4gIAkJfTsKPiAgCX07Cj4gCj4gwqAKPiAKPiBfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LW1lZGlhdGVrIG1haWxp
+bmcgbGlzdAo+IExpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCj4gCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2Vy
+bmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVs
+Cg==
