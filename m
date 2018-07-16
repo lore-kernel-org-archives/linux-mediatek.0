@@ -1,51 +1,75 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 7/7] arm64: dts: mt7622: add earlycon to mt7622-rfb1 board
-Date: Mon, 16 Jul 2018 15:37:06 +0200
-Message-ID: <961bc8b0-cc5d-0796-0c4d-3d83b7cd96cd@gmail.com>
-References: <f222c9f488490bd86d35346e725491e1de306ace.1529639050.git.sean.wang@mediatek.com>
- <4a8b1000e7d8979b0c6c6f9836296b7dd382f6cd.1529639050.git.sean.wang@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH V5 0/4] Pwrap: Mediatek pwrap driver for mt6797
+Date: Mon, 16 Jul 2018 15:52:08 +0200
+Message-ID: <e46ca7c2-4c5b-8aa6-26a4-60a05782fdc8@gmail.com>
+References: <1528714200-2500-1-git-send-email-argus.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4a8b1000e7d8979b0c6c6f9836296b7dd382f6cd.1529639050.git.sean.wang@mediatek.com>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1528714200-2500-1-git-send-email-argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com, linus.walleij@linaro.org, linux-mediatek@lists.infradead.org
-Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 22/06/18 05:49, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On 11/06/18 12:49, argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Argus Lin <argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> Add earlycon to mt7622-rfb1 as to know what was going on when a certain
-> fault is happening at the early initialization stage.
+> Here's version 5 of the patch series, include 4 patches:
+> 1. Fix bug at cipher init for
+> 5ae48040aa47 ("soc: mediatek: PMIC wrap: add mt6323 slave support")
+> 2. Add pwrap driver for mt6797 SoCs.
+> 3. Add mt6351 support for mt6797 SoCs.
+> 4. A big change from V4 to V5 is we remove INT1 interrupt declaration since
+> it is only for debug purpose. The PWRAP_RDDMY, RESET and DCM can use legacy
+> setting, it is backwards compatible. The new caps flag declaration is not
+> needed, just remove it.
 > 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Changes from v3 to v4:
+> 1)add caps flag for pwrap to explain pwrap's capability.
+> 2)remove has_bridge flag, replace by caps flag.
+> 3)add int1_en_all flag for new interrupt.
+> 4)add pwrap drivers for mt6797 SoCs.
+> 5)fix bug at cipher init for
+> 5ae48040aa47 ("soc: mediatek: PMIC wrap: add mt6323 slave support")
+> 6)add mt6351 support for mt6797 SoCs.
+> 
+> Changes from v2 to v3:
+> 1)adjust upstream patch sequence.
+> 2)fix build error for new filed at pmic_wrapper_type.
+> 3)adjust pmic_type enum sequence.
+> 
+> Changes from v1 to v2:
+> 1) add new capability field and MARCO for different pwrap series, the capability include BRIDGE, RESET, DCM, PRIORITY_SEL and INT1_EN.
+> 2) add starvaction for mt6797 pwrap.
+> 3) add INT1 interrupt to handle starvaction and request exception.
+> 
+> 
+> 
+> Argus Lin (4):
+>   dt-bindings: pwrap: mediatek: add pwrap support for MT6797
+>   soc: mediatek: pwrap: fix cipher init setting error
+>   soc: mediatek: pwrap: add pwrap driver for mt6797 SoCs
+>   soc: mediatek: pwrap: add mt6351 driver for mt6797 SoCs
+> 
+>  .../devicetree/bindings/soc/mediatek/pwrap.txt     |  1 +
+>  drivers/soc/mediatek/mtk-pmic-wrap.c               | 81 +++++++++++++++++++++-
+>  2 files changed, 80 insertions(+), 2 deletions(-)
+> 
 
+Pushed to v4.18-next/soc
 
-pushed now to v4.18-next/dts64
-
-Thanks
+Thanks a lot.
 Matthias
-
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> index 1ff003e..a747b7b 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> @@ -18,7 +18,7 @@
->  	compatible = "mediatek,mt7622-rfb1", "mediatek,mt7622";
->  
->  	chosen {
-> -		bootargs = "console=ttyS0,115200n1 swiotlb=512";
-> +		bootargs = "earlycon=uart8250,mmio32,0x11002000 console=ttyS0,115200n1 swiotlb=512";
->  	};
->  
->  	cpus {
-> 
