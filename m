@@ -1,79 +1,89 @@
-From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH] linux-firmware: add firmware for mt76x2u
-Date: Mon, 16 Jul 2018 11:48:21 +0200
-Message-ID: <20180716094820.GA3810@localhost.localdomain>
-References: <20180715084032.7384-1-lorenzo.bianconi@redhat.com>
- <20180716091743.GA1297@redhat.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20180716091743.GA1297-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-firmware-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, nbd-Vt+b4OUoWG0@public.gmane.org
+From: Marcel Holtmann <marcel@holtmann.org>
+Subject: Re: [PATCH v5 4/7] Bluetooth: Add new quirk for non-persistent setup
+ settings
+Date: Mon, 16 Jul 2018 14:56:44 +0200
+Message-ID: <6571C864-B2EC-4806-BC5D-F531792737F6@holtmann.org>
+References: <cover.1531150733.git.sean.wang@mediatek.com>
+ <4b188c8a508340598dda233f6d49a16c9ac8784e.1531150733.git.sean.wang@mediatek.com>
+ <2825B722-E75C-4A3C-8110-879205E46C0E@holtmann.org>
+ <1531638169.3955.5.camel@mtkswgap22>
+Mime-Version: 1.0 (Mac OS X Mail 11.4 \(3445.8.2\))
+Content-Type: text/plain;
+        charset=us-ascii
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1531638169.3955.5.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, Johan Hedberg <johan.hedberg@gmail.com>, devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-> Hi Lorenzo 
-> 
-> On Sun, Jul 15, 2018 at 10:40:32AM +0200, Lorenzo Bianconi wrote:
-> > Add binary firmware for MT76x2u based devices
-> > 
-> > Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-> > ---
-> >  WHENCE                |  12 ++++++++++++
-> >  mt7662u.bin           | Bin 0 -> 91412 bytes
-> >  mt7662u_rom_patch.bin | Bin 0 -> 20686 bytes
-> >  3 files changed, 12 insertions(+)
-> >  create mode 100644 mt7662u.bin
-> >  create mode 100644 mt7662u_rom_patch.bin
-> > 
-> > diff --git a/WHENCE b/WHENCE
-> > index ca3f30c..afe828e 100644
-> > --- a/WHENCE
-> > +++ b/WHENCE
-> > @@ -3814,6 +3814,18 @@ Version: 0.0.2_P69
-> >  
-> >  Licence: Redistributable. See LICENCE.ralink_a_mediatek_company_firmware for details
-> >  
-> > +---------------------------------------------------------------------------
-> > +
-> > +Driver: mt76x2u - MediaTek MT76x2u Wireless MACs
-> > +
-> > +File: mt7662u.bin
-> > +Version: 1.5
-> > +
-> > +File: mt7662u_rom_patch.bin
-> > +Version: 0.0.2_P48
-> > +
-> > +Licence: Redistributable. See LICENCE.ralink_a_mediatek_company_firmware for details
-> 
-> This is different licence file (and text is different too) than the
-> licence file pointed by Sean:
-> http://lists.infradead.org/pipermail/linux-mediatek/2018-June/013759.html
-> 
-> The LICENCE.mediatek was not yet committed to linux-firmware tree, so
-> I think we should wait for that before posting mt76xx*.bin blobs.
+Hi Sean,
 
-Hi Stanislaw,
-
-thx for the info, I lost that email. I was thinking we can use the same license
-used by mt76x2 driver.
-Please drop my previous email, I will send a v2 (pointing to the right license file)
-as soon as the one posted by Sean is merged.
-
-Regards,
-Lorenzo
-
+>>> Add a new quirk HCI_QUIRK_NON_PERSISTENT_SETUP allowing that a quirk that
+>>> runs setup() after every open() and not just after the first open().
+>>> 
+>>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>>> ---
+>>> include/net/bluetooth/hci.h | 9 +++++++++
+>>> net/bluetooth/hci_core.c    | 3 ++-
+>>> 2 files changed, 11 insertions(+), 1 deletion(-)
+>>> 
+>>> diff --git a/include/net/bluetooth/hci.h b/include/net/bluetooth/hci.h
+>>> index 73e48be..d3ec5b2a8 100644
+>>> --- a/include/net/bluetooth/hci.h
+>>> +++ b/include/net/bluetooth/hci.h
+>>> @@ -183,6 +183,15 @@ enum {
+>>> 	 * during the hdev->setup vendor callback.
+>>> 	 */
+>>> 	HCI_QUIRK_NON_PERSISTENT_DIAG,
+>>> +
+>>> +	/* When this quirk is set, setup() would be run after every
+>>> +	 * open() and not just after the first open().
+>>> +	 *
+>>> +	 * This quirk can be set before hci_register_dev is called or
+>>> +	 * during the hdev->setup vendor callback.
+>>> +	 *
+>>> +	 */
+>>> +	HCI_QUIRK_NON_PERSISTENT_SETUP,
+>>> };
+>>> 
+>>> /* HCI device flags */
+>>> diff --git a/net/bluetooth/hci_core.c b/net/bluetooth/hci_core.c
+>>> index f5c21004..0111280 100644
+>>> --- a/net/bluetooth/hci_core.c
+>>> +++ b/net/bluetooth/hci_core.c
+>>> @@ -1396,7 +1396,8 @@ static int hci_dev_do_open(struct hci_dev *hdev)
+>>> 	atomic_set(&hdev->cmd_cnt, 1);
+>>> 	set_bit(HCI_INIT, &hdev->flags);
+>>> 
+>>> -	if (hci_dev_test_flag(hdev, HCI_SETUP)) {
+>>> +	if (hci_dev_test_flag(hdev, HCI_SETUP) ||
+>>> +	    test_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks)) {
+>>> 		hci_sock_dev_event(hdev, HCI_DEV_SETUP);
+>> 
+>> can you include the extract of btmon on how the HCI_DEV_SETUP event shows up in the traces? I remember that I asked about something like that.
+>> 
+>> Regards
+>> 
+>> Marcel
+>> 
 > 
-> Regards
-> Stanislaw
+> No, I cannot see any event about HCI_DEV_SETUP in btmon trace, the trace I posted as below is doing some rounds of power off and then on
+
+it will result in this:
+
+        case HCI_DEV_SETUP:
+                if (hdev->manufacturer == 0xffff)
+                        return NULL;
+                                                                                 
+        case HCI_DEV_UP:
+                skb = bt_skb_alloc(HCI_MON_INDEX_INFO_SIZE, GFP_ATOMIC);
+
+So we will see extra index info events, but I assume that is just fine this we also see them on DEV_UP. They also do not hurt as long as not magically the manufacturer information changes.
+
+I do wonder though if this quirk is set, then hdev->manufacturer needs to be reset and allow hdev->setup() to reset it. This goes with a log of other information as well. Maybe just a look if there are no races here.
+
+Regards
+
+Marcel
