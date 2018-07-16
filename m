@@ -1,19 +1,15 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [SPAM]Re: [PATCH v5 4/7] Bluetooth: Add new quirk for
- non-persistent setup settings
-Date: Tue, 17 Jul 2018 00:15:38 +0800
-Message-ID: <1531757738.8953.17.camel@mtkswgap22>
-References: <cover.1531150733.git.sean.wang@mediatek.com>
- <4b188c8a508340598dda233f6d49a16c9ac8784e.1531150733.git.sean.wang@mediatek.com>
- <2825B722-E75C-4A3C-8110-879205E46C0E@holtmann.org>
- <1531638169.3955.5.camel@mtkswgap22>
- <6571C864-B2EC-4806-BC5D-F531792737F6@holtmann.org>
- <1531757114.8953.12.camel@mtkswgap22>
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Subject: Re: [PATCH 0/8] Fix PCI I/O space page leaks
+Date: Mon, 16 Jul 2018 21:50:52 +0300
+Message-ID: <db85a353-2d90-2aa5-2f45-13d8a0b36424@cogentembedded.com>
+References: <3e862a05-084a-d732-3060-6e2b234e9718@cogentembedded.com>
+ <20180716150606.GA19945@red-moon>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1531757114.8953.12.camel@mtkswgap22>
+In-Reply-To: <20180716150606.GA19945@red-moon>
+Content-Language: en-MW
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -23,104 +19,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Marcel Holtmann <marcel@holtmann.org>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, Johan Hedberg <johan.hedberg@gmail.com>, linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Rob Herring <robh@kernel.org>, Joao Pinto <Joao.Pinto@synopsys.com>, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-renesas-soc@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org, Tanmay Inamdar <tinamdar@apm.com>, Jingoo Han <jingoohan1@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-07-17 at 00:05 +0800, Sean Wang wrote:
-> On Mon, 2018-07-16 at 14:56 +0200, Marcel Holtmann wrote:
-> > Hi Sean,
-> > 
-> > >>> Add a new quirk HCI_QUIRK_NON_PERSISTENT_SETUP allowing that a quirk that
-> > >>> runs setup() after every open() and not just after the first open().
-> > >>> 
-> > >>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > >>> ---
-> > >>> include/net/bluetooth/hci.h | 9 +++++++++
-> > >>> net/bluetooth/hci_core.c    | 3 ++-
-> > >>> 2 files changed, 11 insertions(+), 1 deletion(-)
-> > >>> 
-> > >>> diff --git a/include/net/bluetooth/hci.h b/include/net/bluetooth/hci.h
-> > >>> index 73e48be..d3ec5b2a8 100644
-> > >>> --- a/include/net/bluetooth/hci.h
-> > >>> +++ b/include/net/bluetooth/hci.h
-> > >>> @@ -183,6 +183,15 @@ enum {
-> > >>> 	 * during the hdev->setup vendor callback.
-> > >>> 	 */
-> > >>> 	HCI_QUIRK_NON_PERSISTENT_DIAG,
-> > >>> +
-> > >>> +	/* When this quirk is set, setup() would be run after every
-> > >>> +	 * open() and not just after the first open().
-> > >>> +	 *
-> > >>> +	 * This quirk can be set before hci_register_dev is called or
-> > >>> +	 * during the hdev->setup vendor callback.
-> > >>> +	 *
-> > >>> +	 */
-> > >>> +	HCI_QUIRK_NON_PERSISTENT_SETUP,
-> > >>> };
-> > >>> 
-> > >>> /* HCI device flags */
-> > >>> diff --git a/net/bluetooth/hci_core.c b/net/bluetooth/hci_core.c
-> > >>> index f5c21004..0111280 100644
-> > >>> --- a/net/bluetooth/hci_core.c
-> > >>> +++ b/net/bluetooth/hci_core.c
-> > >>> @@ -1396,7 +1396,8 @@ static int hci_dev_do_open(struct hci_dev *hdev)
-> > >>> 	atomic_set(&hdev->cmd_cnt, 1);
-> > >>> 	set_bit(HCI_INIT, &hdev->flags);
-> > >>> 
-> > >>> -	if (hci_dev_test_flag(hdev, HCI_SETUP)) {
-> > >>> +	if (hci_dev_test_flag(hdev, HCI_SETUP) ||
-> > >>> +	    test_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks)) {
-> > >>> 		hci_sock_dev_event(hdev, HCI_DEV_SETUP);
-> > >> 
-> > >> can you include the extract of btmon on how the HCI_DEV_SETUP event shows up in the traces? I remember that I asked about something like that.
-> > >> 
-> > >> Regards
-> > >> 
-> > >> Marcel
-> > >> 
-> > > 
-> > > No, I cannot see any event about HCI_DEV_SETUP in btmon trace, the trace I posted as below is doing some rounds of power off and then on
-> > 
-> > it will result in this:
-> > 
-> >         case HCI_DEV_SETUP:
-> >                 if (hdev->manufacturer == 0xffff)
-> >                         return NULL;
-> >                                                                                  
-> >         case HCI_DEV_UP:
-> >                 skb = bt_skb_alloc(HCI_MON_INDEX_INFO_SIZE, GFP_ATOMIC);
-> > 
-> > So we will see extra index info events, but I assume that is just fine this we also see them on DEV_UP. They also do not hurt as long as not magically the manufacturer information changes.
-> > 
-> > I do wonder though if this quirk is set, then hdev->manufacturer needs to be reset and allow hdev->setup() to reset it. This goes with a log of other information as well. Maybe just a look if there are no races here.
-> > 
-> > Regards
-> > 
-> > Marcel
-> > 
-> 
-> I didn't set a value to hdev->manufacture.
-> 
-> Should I set it in hdev->setup() ? MediaTek is 0x46 according to [1].
+On 07/16/2018 06:06 PM, Lorenzo Pieralisi wrote:
 
-sorry, something needs be corrected.
+>> Here's a set of 8 patches against the 'pci/controller-fixes' branch of Lorenzo
+>> Pieralisi's 'pci.git' repo. They are the fixes for the PCI I/O space page leaks
+>> (and the kernel BUG caused by them on deferred probe); those were 1st found
+>> testing the R-Car PCIe driver. The patches are in the chronological order
+>> (considering the date/time of the commits specified in the Fixes: tag), patches
+>> #2..#8 depend on the patch #1 in order to build/work as it introduces the managed
+>> device API that they all use...
+>>
+>> [1/8] PCI: xgene: Fix I/O space page leak
+>> [2/8] PCI: of: Fix I/O space page leak
+>> [3/8] PCI: versatile: Fix I/O space page leak
+>> [4/8] PCI: designware: Fix I/O space page leak
+>> [5/8] PCI: aardvark: Fix I/O space page leak
+>> [6/8] PCI: faraday: Fix I/O space page leak
+>> [7/8] PCI: mediatek: Fix I/O space page leak
+>> [8/8] PCI: v3-semi: Fix I/O space page leak
+>>
+>> MBR, Sergei
+> 
+> Hi Sergei,
+> 
+> I reshuffled the series, rewrote commit logs and move the devm_
+> API to commit 2 which is the one you tested AFAIK.
 
-what I means is that should I set hdev->manufacture as 0x46 at probe ? 
+   Well, that means the XGene fix wouldn't propagate "deep enough", if that's your
+choice, OK...
 
-> [1]
-> https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers
-> 
-> 
-> > 
-> > _______________________________________________
-> > Linux-mediatek mailing list
-> > Linux-mediatek@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
-> 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> I pushed them out to my pci/controller-fixes branch which I hope
+> we can still aim for an -rc, please do have a look and let me know
+> what you think, I have not asked Bjorn to pull it yet.
+
+   Your edits generally look fine, except you forgot the usual "X has the same issue"
+phrase in the XGene's commit log.
+
+> Thanks,
+> Lorenzo
+
+MBR, Sergei
