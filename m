@@ -1,76 +1,59 @@
-From: Honghui Zhang <honghui.zhang@mediatek.com>
-Subject: Re: [PATCH v3 0/4] PCI: mediatek: fixup find_port, enable_msi and
- add pm, module support
-Date: Mon, 16 Jul 2018 11:35:34 +0800
-Message-ID: <1531712134.31406.1.camel@mhfsdcap03>
-References: <1530518264-6125-1-git-send-email-honghui.zhang@mediatek.com>
+From: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH 2/4] staging: mt7621-pci: Fix coding style issues
+ reported by checkpatch
+Date: Mon, 16 Jul 2018 10:34:41 +0200
+Message-ID: <20180716083441.GA7903@kroah.com>
+References: <1531489266-20410-1-git-send-email-oliver.huebers@web.de>
+ <1531489266-20410-2-git-send-email-oliver.huebers@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1530518264-6125-1-git-send-email-honghui.zhang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: lorenzo.pieralisi@arm.com
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org, hongkun.cao@mediatek.com, ryder.lee@mediatek.com, marc.zyngier@arm.com, linux-pci@vger.kernel.org, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, yt.shen@mediatek.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, yong.wu@mediatek.com, bhelgaas@google.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1531489266-20410-2-git-send-email-oliver.huebers@web.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Oliver =?iso-8859-1?Q?H=FCbers?= <oliver.huebers@web.de>
+Cc: devel@driverdev.osuosl.org, linux-kernel@i4.cs.fau.de, Vanessa Borgmann <nessa.x@web.de>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Bjorn, Lorenzo,
+On Fri, Jul 13, 2018 at 03:41:04PM +0200, Oliver Hübers wrote:
+> From: Vanessa Borgmann <nessa.x@web.de>
+> 
+> Fix errors: space errors, braces
+> Fix warnings: comment warnings
+> 
+> Signed-off-by: Oliver Hübers <oliver.huebers@web.de>
+> Signed-off-by: Vanessa Borgmann <nessa.x@web.de>
+> ---
+>  drivers/staging/mt7621-pci/pci-mt7621.c | 230 ++++++++++++++++----------------
+>  1 file changed, 112 insertions(+), 118 deletions(-)
 
-could you kindly take a look at this serial?
+Hi,
 
-thanks.
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
 
-On Mon, 2018-07-02 at 15:57 +0800, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
-> 
-> This patchset includes misc patchs:
-> 
-> The first patch fixup the mtk_pcie_find_port logical which will cause system
-> could not touch the EP's configuration space which was connected to PCIe slot 1.
-> 
-> The second patch fixup the enable msi logical, the operation to enable msi
-> should be after system clock is enabled. The function of mtk_pcie_startup_port_v2's
-> define location is re-arranged to avoid mtk_pcie_enable_msi's forward declaration.
-> And call mtk_pcie_enable_msi in mtk_pcie_startup_port_v2 since the clock was all
-> enabled at that time.
-> 
-> The third patch was rebased and refactor of the v4 patch[1], changes are:
->  -Add PM support for MT7622.
->  -Using mtk_pcie_enable_port to re-establish the link when resumed.
->  -Rebase on the previous two patches.
-> 
-> The fourth patch add loadable kernel module support.
-> 
-> Some of those patches was already reviewed-by Ryder Lee <ryder.lee@mediatek.com>,
-> so I just add the Reviewed-by tags in those patches.
-> 
-> [1] https://patchwork.kernel.org/patch/10479079
-> 
-> Change since v2:
->  - Fix the list_for_each_entry_safe parameter error.
->  - Add Ryder's Acked-by flag.
-> 
-> Change since v1:
->  - A bit of code refact of the first patch suggested by Andy Shevchenko, and
->    commit message updated.
->  - Using __maybe_unused.
->  - Remove the redundant list_empty check of the fourth patch.
-> 
-> Honghui Zhang (4):
->   PCI: mediatek: fixup mtk_pcie_find_port logical
->   PCI: mediatek: enable msi after clock enabled
->   PCI: mediatek: Add system pm support for MT2712 and MT7622
->   PCI: mediatek: Add loadable kernel module support
-> 
->  drivers/pci/controller/Kconfig         |   2 +-
->  drivers/pci/controller/pcie-mediatek.c | 289 ++++++++++++++++++++++++---------
->  2 files changed, 213 insertions(+), 78 deletions(-)
-> 
+You are receiving this message because of the following common error(s)
+as indicated below:
+
+- Your patch did many different things all at once, making it difficult
+  to review.  All Linux kernel patches need to only do one thing at a
+  time.  If you need to do multiple things (such as clean up all coding
+  style issues in a file/driver), do it in a sequence of patches, each
+  one doing only one thing.  This will make it easier to review the
+  patches to ensure that they are correct, and to help alleviate any
+  merge issues that larger patches can cause.
+
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
