@@ -1,53 +1,67 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v3 0/4] Add basic support for Mediatek MT8183 SoC
-Date: Mon, 16 Jul 2018 11:28:52 +0200
-Message-ID: <9ba45353-a6e1-9a6e-f05b-4b1679ae9e52@gmail.com>
-References: <1526538126-51497-1-git-send-email-erin.lo@mediatek.com>
+From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH] linux-firmware: add firmware for mt76x2u
+Date: Mon, 16 Jul 2018 11:17:44 +0200
+Message-ID: <20180716091743.GA1297@redhat.com>
+References: <20180715084032.7384-1-lorenzo.bianconi@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1526538126-51497-1-git-send-email-erin.lo@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Erin Lo <erin.lo@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, mars.cheng@mediatek.com
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180715084032.7384-1-lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-firmware-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, nbd-Vt+b4OUoWG0@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Erin,
+Hi Lorenzo 
 
-On 17/05/18 08:22, Erin Lo wrote:
-> MT8183 is a SoC based on 64bit ARMv8 architecture.
-> It contains 4 CA53 and 4 CA73 cores.
-> MT8183 share many HW IP with MT65xx series.
-> This patchset was tested on MT8183 evaluation board, and boot to shell ok.
+On Sun, Jul 15, 2018 at 10:40:32AM +0200, Lorenzo Bianconi wrote:
+> Add binary firmware for MT76x2u based devices
 > 
-> This series contains document bindings, device tree including interrupt, uart.
+> Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+> ---
+>  WHENCE                |  12 ++++++++++++
+>  mt7662u.bin           | Bin 0 -> 91412 bytes
+>  mt7662u_rom_patch.bin | Bin 0 -> 20686 bytes
+>  3 files changed, 12 insertions(+)
+>  create mode 100644 mt7662u.bin
+>  create mode 100644 mt7662u_rom_patch.bin
 > 
-> Change in v3:
-> 1. Fill out GICC, GICH, GICV regions
-> 2. Update Copyright to 2018
-> 
-> Change in v2:
-> 1. Split dt-bindings into different patches
-> 2. Correct bindings for supported SoCs (mtk-uart.txt)
-> 
-> Ben Ho (1):
->   arm64: dts: Add Mediatek SoC MT8183 and evaluation board dts and
->     Makefile
-> 
-> Erin Lo (3):
->   dt-bindings: arm: Add bindings for Mediatek MT8183 SoC Platform
->   dt-bindings: mtk-sysirq: Add compatible for Mediatek MT8183
->   dt-bindings: serial: Add compatible for Mediatek MT8183
-> 
+> diff --git a/WHENCE b/WHENCE
+> index ca3f30c..afe828e 100644
+> --- a/WHENCE
+> +++ b/WHENCE
+> @@ -3814,6 +3814,18 @@ Version: 0.0.2_P69
+>  
+>  Licence: Redistributable. See LICENCE.ralink_a_mediatek_company_firmware for details
+>  
+> +---------------------------------------------------------------------------
+> +
+> +Driver: mt76x2u - MediaTek MT76x2u Wireless MACs
+> +
+> +File: mt7662u.bin
+> +Version: 1.5
+> +
+> +File: mt7662u_rom_patch.bin
+> +Version: 0.0.2_P48
+> +
+> +Licence: Redistributable. See LICENCE.ralink_a_mediatek_company_firmware for details
 
-I'm a bit reluctant to take this series, as it will only enable the EVB board to
-boot into a serial console. Are you planning to add support for other devices of
-this SoC?
+This is different licence file (and text is different too) than the
+licence file pointed by Sean:
+http://lists.infradead.org/pipermail/linux-mediatek/2018-June/013759.html
 
-Apart please take into account that there is an issue with the dts file, as you
-were told by the kbuild test robot.
+The LICENCE.mediatek was not yet committed to linux-firmware tree, so
+I think we should wait for that before posting mt76xx*.bin blobs.
 
-Regards,
-Matthias
+Regards
+Stanislaw
