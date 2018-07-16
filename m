@@ -1,55 +1,57 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH 2/2] arm64: dts: mt7622: update a clock property for
- UART0
-Date: Mon, 16 Jul 2018 23:04:36 +0800
-Message-ID: <1531753476.7842.1.camel@mtkswgap22>
-References: <2ff39c40ef6bc3054667e63c785a1d28527b5ddf.1531209126.git.ryder.lee@mediatek.com>
-         <b96deaa9f54a0ae3f62ec30d858be7abd1ed873f.1531209126.git.ryder.lee@mediatek.com>
-         <a4f0c6db-b88f-4c54-827a-e160bebae62b@gmail.com>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH 0/8] Fix PCI I/O space page leaks
+Date: Mon, 16 Jul 2018 16:06:06 +0100
+Message-ID: <20180716150606.GA19945@red-moon>
+References: <3e862a05-084a-d732-3060-6e2b234e9718@cogentembedded.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <a4f0c6db-b88f-4c54-827a-e160bebae62b@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <3e862a05-084a-d732-3060-6e2b234e9718@cogentembedded.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Rob Herring <robh@kernel.org>, Joao Pinto <Joao.Pinto@synopsys.com>, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-renesas-soc@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org, Tanmay Inamdar <tinamdar@apm.com>, Jingoo Han <jingoohan1@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+On Sun, Jul 15, 2018 at 07:00:21PM +0300, Sergei Shtylyov wrote:
+> Hello!
+> 
+> Here's a set of 8 patches against the 'pci/controller-fixes' branch of Lorenzo
+> Pieralisi's 'pci.git' repo. They are the fixes for the PCI I/O space page leaks
+> (and the kernel BUG caused by them on deferred probe); those were 1st found
+> testing the R-Car PCIe driver. The patches are in the chronological order
+> (considering the date/time of the commits specified in the Fixes: tag), patches
+> #2..#8 depend on the patch #1 in order to build/work as it introduces the managed
+> device API that they all use...
+> 
+> [1/8] PCI: xgene: Fix I/O space page leak
+> [2/8] PCI: of: Fix I/O space page leak
+> [3/8] PCI: versatile: Fix I/O space page leak
+> [4/8] PCI: designware: Fix I/O space page leak
+> [5/8] PCI: aardvark: Fix I/O space page leak
+> [6/8] PCI: faraday: Fix I/O space page leak
+> [7/8] PCI: mediatek: Fix I/O space page leak
+> [8/8] PCI: v3-semi: Fix I/O space page leak
+> 
+> MBR, Sergei
 
-On Mon, 2018-07-16 at 15:55 +0200, Matthias Brugger wrote:
-> Hi Ryder,
-> 
-> On 10/07/18 09:55, Ryder Lee wrote:
-> > The input clock of UART0 should be CLK_PERI_UART0_PD.
-> > 
-> > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> 
-> Can you provide a "Fixes" tag with the commit id of the commit that broke this?
-> 
-> Thanks,
-> Matthias
+Hi Sergei,
 
-I've sent a new one with a "Fixes" tag.
+I reshuffled the series, rewrote commit logs and move the devm_
+API to commit 2 which is the one you tested AFAIK.
 
-Ryder
-> 
-> > ---
-> >  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> > index 8cdec52..4caa9b4 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> > @@ -367,7 +367,7 @@
-> >  		reg = <0 0x11002000 0 0x400>;
-> >  		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
-> >  		clocks = <&topckgen CLK_TOP_UART_SEL>,
-> > -			 <&pericfg CLK_PERI_UART1_PD>;
-> > +			 <&pericfg CLK_PERI_UART0_PD>;
-> >  		clock-names = "baud", "bus";
-> >  		status = "disabled";
-> >  	};
-> > 
+I pushed them out to my pci/controller-fixes branch which I hope
+we can still aim for an -rc, please do have a look and let me know
+what you think, I have not asked Bjorn to pull it yet.
+
+Thanks,
+Lorenzo
