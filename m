@@ -1,65 +1,95 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [PATCH 0/8] Fix PCI I/O space page leaks
-Date: Mon, 16 Jul 2018 21:50:52 +0300
-Message-ID: <db85a353-2d90-2aa5-2f45-13d8a0b36424@cogentembedded.com>
-References: <3e862a05-084a-d732-3060-6e2b234e9718@cogentembedded.com>
- <20180716150606.GA19945@red-moon>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v1 1/2] arm64: dts: mt7622: add some misc device nodes
+Date: Tue, 17 Jul 2018 09:55:43 +0200
+Message-ID: <864955d5-26c4-a5f3-ec1a-420acba50880@gmail.com>
+References: <2ff39c40ef6bc3054667e63c785a1d28527b5ddf.1531753039.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180716150606.GA19945@red-moon>
-Content-Language: en-MW
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Rob Herring <robh@kernel.org>, Joao Pinto <Joao.Pinto@synopsys.com>, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-renesas-soc@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org, Tanmay Inamdar <tinamdar@apm.com>, Jingoo Han <jingoohan1@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <2ff39c40ef6bc3054667e63c785a1d28527b5ddf.1531753039.git.ryder.lee@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 07/16/2018 06:06 PM, Lorenzo Pieralisi wrote:
+Hi Ryder,
 
->> Here's a set of 8 patches against the 'pci/controller-fixes' branch of Lorenzo
->> Pieralisi's 'pci.git' repo. They are the fixes for the PCI I/O space page leaks
->> (and the kernel BUG caused by them on deferred probe); those were 1st found
->> testing the R-Car PCIe driver. The patches are in the chronological order
->> (considering the date/time of the commits specified in the Fixes: tag), patches
->> #2..#8 depend on the patch #1 in order to build/work as it introduces the managed
->> device API that they all use...
->>
->> [1/8] PCI: xgene: Fix I/O space page leak
->> [2/8] PCI: of: Fix I/O space page leak
->> [3/8] PCI: versatile: Fix I/O space page leak
->> [4/8] PCI: designware: Fix I/O space page leak
->> [5/8] PCI: aardvark: Fix I/O space page leak
->> [6/8] PCI: faraday: Fix I/O space page leak
->> [7/8] PCI: mediatek: Fix I/O space page leak
->> [8/8] PCI: v3-semi: Fix I/O space page leak
->>
->> MBR, Sergei
+On 16/07/18 16:59, Ryder Lee wrote:
+> Add some misc nodes support - timer and ARM CCI-400.
 > 
-> Hi Sergei,
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 36 ++++++++++++++++++++++++++++++++
+>  1 file changed, 36 insertions(+)
 > 
-> I reshuffled the series, rewrote commit logs and move the devm_
-> API to commit 2 which is the one you tested AFAIK.
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> index 9213c96..8cdec52 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> @@ -217,6 +217,16 @@
+>  		#reset-cells = <1>;
+>  	};
+>  
+> +	timer: timer@10004000 {
+> +		compatible = "mediatek,mt7622-timer",
+> +			     "mediatek,mt6577-timer";
+> +		reg = <0 0x10004000 0 0x80>;
+> +		interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&infracfg CLK_INFRA_APXGPT_PD>,
+> +			 <&topckgen CLK_TOP_RTC>;
+> +		clock-names = "system-clk", "rtc-clk";
+> +	};
+> +
+>  	scpsys: scpsys@10006000 {
+>  		compatible = "mediatek,mt7622-scpsys",
+>  			     "syscon";
+> @@ -317,6 +327,32 @@
+>  		      <0 0x10360000 0 0x2000>;
+>  	};
+>  
+> +	cci: cci@10390000 {
+> +		compatible = "arm,cci-400";
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +		reg = <0 0x10390000 0 0x1000>;
+> +		ranges = <0 0 0x10390000 0x10000>;
 
-   Well, that means the XGene fix wouldn't propagate "deep enough", if that's your
-choice, OK...
+>From my understanding of the binding description ranges should hold child
+address, parent address and size of the region in the child address space. I can
+see in arch/arm64 two different variants using 4 ranges values (like here) and
+using three values.
 
-> I pushed them out to my pci/controller-fixes branch which I hope
-> we can still aim for an -rc, please do have a look and let me know
-> what you think, I have not asked Bjorn to pull it yet.
+@Rob + Will what is the preferred way to describe this?
 
-   Your edits generally look fine, except you forgot the usual "X has the same issue"
-phrase in the XGene's commit log.
+> +
+> +		cci_control0: slave-if@1000 {
+> +			compatible = "arm,cci-400-ctrl-if";
+> +			interface-type = "ace-lite";
+> +			reg = <0x1000 0x1000>;
+> +		};
 
-> Thanks,
-> Lorenzo
+Don't we need to add phandles to the cci-control-port property in the cpu nodes?
 
-MBR, Sergei
+Regards,
+Matthias
+
+> +
+> +		cci_control1: slave-if@4000 {
+> +			compatible = "arm,cci-400-ctrl-if";
+> +			interface-type = "ace";
+> +			reg = <0x4000 0x1000>;
+> +		};
+> +
+> +		cci_control2: slave-if@5000 {
+> +			compatible = "arm,cci-400-ctrl-if";
+> +			interface-type = "ace";
+> +			reg = <0x5000 0x1000>;
+> +		};
+> +	};
+> +
+>  	auxadc: adc@11001000 {
+>  		compatible = "mediatek,mt7622-auxadc";
+>  		reg = <0 0x11001000 0 0x1000>;
+> 
