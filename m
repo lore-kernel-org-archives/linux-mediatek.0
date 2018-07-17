@@ -1,91 +1,176 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] linux-firmware: add firmware for mt76x2u
-Date: Tue, 17 Jul 2018 20:34:57 +0800
-Message-ID: <1531830897.8953.18.camel@mtkswgap22>
-References: <20180715084032.7384-1-lorenzo.bianconi@redhat.com>
- <20180716091743.GA1297@redhat.com>
- <20180716094820.GA3810@localhost.localdomain>
- <CA+5PVA4AOEv9-QndqPCBNuKU96UqSz2uzzpat7q_gqh74y+uMQ@mail.gmail.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v5 04/11] soc: mediatek: add MT6765 scpsys support
+Date: Tue, 17 Jul 2018 21:00:13 +0800
+Message-ID: <1531832413.8953.30.camel@mtkswgap22>
+References: <1531817552-17221-1-git-send-email-mars.cheng@mediatek.com>
+         <1531817552-17221-5-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CA+5PVA4AOEv9-QndqPCBNuKU96UqSz2uzzpat7q_gqh74y+uMQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Josh Boyer <jwboyer-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux Firmware <linux-firmware-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, nbd-Vt+b4OUoWG0@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1531817552-17221-5-git-send-email-mars.cheng@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mars Cheng <mars.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, Owen Chen <owen.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-07-17 at 07:59 -0400, Josh Boyer wrote:
-> On Mon, Jul 16, 2018 at 5:48 AM Lorenzo Bianconi
-> <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
-> >
-> > > Hi Lorenzo
-> > >
-> > > On Sun, Jul 15, 2018 at 10:40:32AM +0200, Lorenzo Bianconi wrote:
-> > > > Add binary firmware for MT76x2u based devices
-> > > >
-> > > > Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-> > > > ---
-> > > >  WHENCE                |  12 ++++++++++++
-> > > >  mt7662u.bin           | Bin 0 -> 91412 bytes
-> > > >  mt7662u_rom_patch.bin | Bin 0 -> 20686 bytes
-> > > >  3 files changed, 12 insertions(+)
-> > > >  create mode 100644 mt7662u.bin
-> > > >  create mode 100644 mt7662u_rom_patch.bin
-> > > >
-> > > > diff --git a/WHENCE b/WHENCE
-> > > > index ca3f30c..afe828e 100644
-> > > > --- a/WHENCE
-> > > > +++ b/WHENCE
-> > > > @@ -3814,6 +3814,18 @@ Version: 0.0.2_P69
-> > > >
-> > > >  Licence: Redistributable. See LICENCE.ralink_a_mediatek_company_firmware for details
-> > > >
-> > > > +---------------------------------------------------------------------------
-> > > > +
-> > > > +Driver: mt76x2u - MediaTek MT76x2u Wireless MACs
-> > > > +
-> > > > +File: mt7662u.bin
-> > > > +Version: 1.5
-> > > > +
-> > > > +File: mt7662u_rom_patch.bin
-> > > > +Version: 0.0.2_P48
-> > > > +
-> > > > +Licence: Redistributable. See LICENCE.ralink_a_mediatek_company_firmware for details
-> > >
-> > > This is different licence file (and text is different too) than the
-> > > licence file pointed by Sean:
-> > > http://lists.infradead.org/pipermail/linux-mediatek/2018-June/013759.html
-> > >
-> > > The LICENCE.mediatek was not yet committed to linux-firmware tree, so
-> > > I think we should wait for that before posting mt76xx*.bin blobs.
-> >
-> > Hi Stanislaw,
-> >
-> > thx for the info, I lost that email. I was thinking we can use the same license
-> > used by mt76x2 driver.
-> > Please drop my previous email, I will send a v2 (pointing to the right license file)
-> > as soon as the one posted by Sean is merged.
-> 
-> I don't see that patch anywhere in my mboxes at all.  Perhaps a CC of
-> linux-firmware was missed?  In any event, could you please resend that
-> patch?
-> 
-> josh
+On Tue, 2018-07-17 at 16:52 +0800, Mars Cheng wrote:
+> This adds scpsys support for MT6765
 > 
 
-Sorry, It was my fault. I already sent it again.
+it looks like 4/11 have to depend on 6/11 and 7/11 to get a full function on scpsys for MT6765.
 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+you should keep dependency in order to submit these patches
+
+> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mtk-scpsys.c        |   88 ++++++++++++++++++++++++++++++
+>  include/dt-bindings/power/mt6765-power.h |   14 +++++
+>  2 files changed, 102 insertions(+)
+>  create mode 100644 include/dt-bindings/power/mt6765-power.h
+> 
+> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> index 5b24bb4..4bb6c7a 100644
+> --- a/drivers/soc/mediatek/mtk-scpsys.c
+> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> @@ -23,6 +23,7 @@
+>  
+>  #include <dt-bindings/power/mt2701-power.h>
+>  #include <dt-bindings/power/mt2712-power.h>
+> +#include <dt-bindings/power/mt6765-power.h>
+>  #include <dt-bindings/power/mt6797-power.h>
+>  #include <dt-bindings/power/mt7622-power.h>
+>  #include <dt-bindings/power/mt7623a-power.h>
+> @@ -680,6 +681,79 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+>  };
+>  
+>  /*
+> + * MT6765 power domain support
+> + */
+> +#define SPM_PWR_STATUS_MT6765			0x0180
+> +#define SPM_PWR_STATUS_2ND_MT6765		0x0184
+> +
+> +static const struct scp_domain_data scp_domain_data_mt6765[] = {
+> +	[MT6765_POWER_DOMAIN_VCODEC] = {
+> +		.name = "vcodec",
+> +		.sta_mask = BIT(26),
+> +		.ctl_offs = 0x300,
+> +		.sram_pdn_bits = GENMASK(8, 8),
+> +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +	},
+> +	[MT6765_POWER_DOMAIN_ISP] = {
+> +		.name = "isp",
+> +		.sta_mask = BIT(5),
+> +		.ctl_offs = 0x308,
+> +		.sram_pdn_bits = GENMASK(8, 8),
+> +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +	},
+> +	[MT6765_POWER_DOMAIN_MM] = {
+> +		.name = "mm",
+> +		.sta_mask = BIT(3),
+> +		.ctl_offs = 0x30C,
+> +		.sram_pdn_bits = GENMASK(8, 8),
+> +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +	},
+> +	[MT6765_POWER_DOMAIN_CONN] = {
+> +		.name = "conn",
+> +		.sta_mask = BIT(1),
+> +		.ctl_offs = 0x32C,
+> +		.sram_pdn_bits = 0,
+> +		.sram_pdn_ack_bits = 0,
+> +	},
+> +	[MT6765_POWER_DOMAIN_MFG_ASYNC] = {
+> +		.name = "mfg_async",
+> +		.sta_mask = BIT(23),
+> +		.ctl_offs = 0x334,
+> +		.sram_pdn_bits = 0,
+> +		.sram_pdn_ack_bits = 0,
+> +	},
+> +	[MT6765_POWER_DOMAIN_MFG] = {
+> +		.name = "mfg",
+> +		.sta_mask = BIT(4),
+> +		.ctl_offs = 0x338,
+> +		.sram_pdn_bits = GENMASK(8, 8),
+> +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +	},
+> +	[MT6765_POWER_DOMAIN_CAM] = {
+> +		.name = "cam",
+> +		.sta_mask = BIT(25),
+> +		.ctl_offs = 0x344,
+> +		.sram_pdn_bits = GENMASK(8, 9),
+> +		.sram_pdn_ack_bits = GENMASK(12, 13),
+> +	},
+> +	[MT6765_POWER_DOMAIN_MFG_CORE0] = {
+> +		.name = "mfg_core0",
+> +		.sta_mask = BIT(7),
+> +		.ctl_offs = 0x34C,
+> +		.sram_pdn_bits = GENMASK(8, 8),
+> +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +	},
+
+Above power domains really don't require any clock controlled with
+clk_id before any access on them?
+
+> +};
+> +
+> +static const struct scp_subdomain scp_subdomain_mt6765[] = {
+> +	{MT6765_POWER_DOMAIN_MM, MT6765_POWER_DOMAIN_CAM},
+> +	{MT6765_POWER_DOMAIN_MM, MT6765_POWER_DOMAIN_ISP},
+> +	{MT6765_POWER_DOMAIN_MM, MT6765_POWER_DOMAIN_VCODEC},
+> +	{MT6765_POWER_DOMAIN_MFG_ASYNC, MT6765_POWER_DOMAIN_MFG},
+> +	{MT6765_POWER_DOMAIN_MFG, MT6765_POWER_DOMAIN_MFG_CORE0},
+> +};
+> +
+> +/*
+>   * MT6797 power domain support
+>   */
+>  
+> @@ -962,6 +1036,17 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+>  	.bus_prot_reg_update = false,
+>  };
+>  
+> +static const struct scp_soc_data mt6765_data = {
+> +	.domains = scp_domain_data_mt6765,
+> +	.num_domains = ARRAY_SIZE(scp_domain_data_mt6765),
+> +	.subdomains = scp_subdomain_mt6765,
+> +	.num_subdomains = ARRAY_SIZE(scp_subdomain_mt6765),
+> +	.regs = {
+> +		.pwr_sta_offs = SPM_PWR_STATUS_MT6765,
+> +		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND_MT6765,
+> +	},
+> +};
+> +
+>  static const struct scp_soc_data mt6797_data = {
+>  	.domains = scp_domain_data_mt6797,
+>  	.num_domains = ARRAY_SIZE(scp_domain_data_mt6797),
+> @@ -1018,6 +1103,9 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+>  		.compatible = "mediatek,mt2712-scpsys",
+>  		.data = &mt2712_data,
+>  	}, {
+> +		.compatible = "mediatek,mt6765-scpsys",
+> +		.data = &mt6765_data,
+> +	}, {
+>  		.compatible = "mediatek,mt6797-scpsys",
+>  		.data = &mt6797_data,
+>  	}, {
+> diff --git a/include/dt-bindings/power/mt6765-power.h b/include/dt-bindings/power/mt6765-power.h
+> new file mode 100644
+> index 0000000..d347b4e
+> --- /dev/null
+> +++ b/include/dt-bindings/power/mt6765-power.h
+> @@ -0,0 +1,14 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +#ifndef _DT_BINDINGS_POWER_MT6765_POWER_H
+> +#define _DT_BINDINGS_POWER_MT6765_POWER_H
+> +
+> +#define MT6765_POWER_DOMAIN_CONN		0
+> +#define MT6765_POWER_DOMAIN_MM			1
+> +#define MT6765_POWER_DOMAIN_MFG_ASYNC		2
+> +#define MT6765_POWER_DOMAIN_ISP			3
+> +#define MT6765_POWER_DOMAIN_MFG			4
+> +#define MT6765_POWER_DOMAIN_MFG_CORE0		5
+> +#define MT6765_POWER_DOMAIN_CAM			6
+> +#define MT6765_POWER_DOMAIN_VCODEC		7
+> +
+> +#endif /* _DT_BINDINGS_POWER_MT6765_POWER_H */
