@@ -1,75 +1,41 @@
 From: matthias.bgg@kernel.org
-Subject: [PATCH v4--to=ulrich.hecht+renesas@gmail.com 4/5] drm/mediatek: Add
- support for mmsys through a pdev
-Date: Tue, 17 Jul 2018 23:59:50 +0200
-Message-ID: <20180717215951.378-5-matthias.bgg@kernel.org>
+Subject: [PATCH v4--to=ulrich.hecht+renesas@gmail.com 5/5] drm: mediatek: Omit warning on probe defers
+Date: Tue, 17 Jul 2018 23:59:51 +0200
+Message-ID: <20180717215951.378-6-matthias.bgg@kernel.org>
 References: <20180717215951.378-1-matthias.bgg@kernel.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180717215951.378-1-matthias.bgg@kernel.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org
-Cc: sean.wang@mediatek.com, gregkh@linuxfoundation.org, rdunlap@infradead.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, pi-cheng.chen@linaro.org, davem@davemloft.net, linux-kernel@vger.kernel.org
+Cc: davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, pi-cheng.chen@linaro.org, sean.wang@mediatek.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogTWF0dGhpYXMgQnJ1Z2dlciA8bWJydWdnZXJAc3VzZS5jb20+CgpUaGUgTU1TWVMgc3Vi
-c3lzdGVtIGluY2x1ZGVzIGNsb2NrcyBhbmQgZHJtIGNvbXBvbmVudHMuClRoaXMgcGF0Y2ggYWRk
-cyBhbiBpbml0YWlsaXphdGlvbiBwYXRoIHRocm91Z2ggYSBwbGF0Zm9ybSBkZXZpY2UKZm9yIHRo
-ZSBjbG9jayBwYXJ0LCBzbyB0aGF0IGJvdGggZHJpdmVycyBnZXQgcHJvYmVkIGZyb20gdGhlIHNh
-bWUKZGV2aWNlIHRyZWUgY29tcGF0aWJsZS4KClNpZ25lZC1vZmYtYnk6IE1hdHRoaWFzIEJydWdn
-ZXIgPG1icnVnZ2VyQHN1c2UuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-ZHJtX2Rydi5jIHwgMTggKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9kcnYuaCB8ICAyICsrCiAyIGZpbGVzIGNoYW5nZWQsIDIwIGluc2VydGlvbnMo
-KykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBi
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCmluZGV4IGRkMjQ5Y2Y1MTIx
-ZS4uYzk0NmFlYTcyMmU1IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kcnYuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwpA
-QCAtMTczLDYgKzE3Myw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX21tc3lzX2RyaXZlcl9k
-YXRhIG10MjcwMV9tbXN5c19kcml2ZXJfZGF0YSA9IHsKIAkuZXh0X3BhdGggPSBtdDI3MDFfbXRr
-X2RkcF9leHQsCiAJLmV4dF9sZW4gPSBBUlJBWV9TSVpFKG10MjcwMV9tdGtfZGRwX2V4dCksCiAJ
-LnNoYWRvd19yZWdpc3RlciA9IHRydWUsCisJLmNsa19kcnZfbmFtZSA9ICJjbGstbXQyNzAxLW1t
-IiwKIH07CiAKIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX21tc3lzX2RyaXZlcl9kYXRhIG10ODE3
-M19tbXN5c19kcml2ZXJfZGF0YSA9IHsKQEAgLTE4MCw2ICsxODEsNyBAQCBzdGF0aWMgY29uc3Qg
-c3RydWN0IG10a19tbXN5c19kcml2ZXJfZGF0YSBtdDgxNzNfbW1zeXNfZHJpdmVyX2RhdGEgPSB7
-CiAJLm1haW5fbGVuID0gQVJSQVlfU0laRShtdDgxNzNfbXRrX2RkcF9tYWluKSwKIAkuZXh0X3Bh
-dGggPSBtdDgxNzNfbXRrX2RkcF9leHQsCiAJLmV4dF9sZW4gPSBBUlJBWV9TSVpFKG10ODE3M19t
-dGtfZGRwX2V4dCksCisJLmNsa19kcnZfbmFtZSA9ICJjbGstbXQ4MTczLW1tIiwKIH07CiAKIHN0
-YXRpYyBpbnQgbXRrX2RybV9rbXNfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZHJtKQpAQCAtNDEx
-LDYgKzQxMywxOSBAQCBzdGF0aWMgaW50IG10a19kcm1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2Rl
-dmljZSAqcGRldikKIAlpZiAoSVNfRVJSKHByaXZhdGUtPmNvbmZpZ19yZWdzKSkKIAkJcmV0dXJu
-IFBUUl9FUlIocHJpdmF0ZS0+Y29uZmlnX3JlZ3MpOwogCisJaWYgKHByaXZhdGUtPmRhdGEtPmNs
-a19kcnZfbmFtZSkgeworCQlwcml2YXRlLT5jbGtfZGV2ID0gcGxhdGZvcm1fZGV2aWNlX3JlZ2lz
-dGVyX2RhdGEoZGV2LAorCQkJCQkJcHJpdmF0ZS0+ZGF0YS0+Y2xrX2Rydl9uYW1lLCAtMSwKKwkJ
-CQkJCU5VTEwsIDApOworCisJCWlmIChJU19FUlIocHJpdmF0ZS0+Y2xrX2RldikpIHsKKwkJCXBy
-X2VycigiZmFpbGVkIHRvIHJlZ2lzdGVyICVzIHBsYXRmb3JtIGRldmljZVxuIiwKKwkJCQkJCXBy
-aXZhdGUtPmRhdGEtPmNsa19kcnZfbmFtZSk7CisKKwkJCXJldHVybiBQVFJfRVJSKHByaXZhdGUt
-PmNsa19kZXYpOworCQl9CisJfQorCiAJLyogSXRlcmF0ZSBvdmVyIHNpYmxpbmcgRElTUCBmdW5j
-dGlvbiBibG9ja3MgKi8KIAlmb3JfZWFjaF9jaGlsZF9vZl9ub2RlKGRldi0+b2Zfbm9kZS0+cGFy
-ZW50LCBub2RlKSB7CiAJCWNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgKm9mX2lkOwpAQCAtNTE1
-LDYgKzUzMCw5IEBAIHN0YXRpYyBpbnQgbXRrX2RybV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2Rl
-dmljZSAqcGRldikKIAlmb3IgKGkgPSAwOyBpIDwgRERQX0NPTVBPTkVOVF9JRF9NQVg7IGkrKykK
-IAkJb2Zfbm9kZV9wdXQocHJpdmF0ZS0+Y29tcF9ub2RlW2ldKTsKIAorCWlmIChwcml2YXRlLT5j
-bGtfZGV2KQorCQlwbGF0Zm9ybV9kZXZpY2VfdW5yZWdpc3Rlcihwcml2YXRlLT5jbGtfZGV2KTsK
-KwogCXJldHVybiAwOwogfQogCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9kcnYuaCBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5oCmlu
-ZGV4IDg2Y2VjMTkxOTNjNC4uMjAwZWVlNWRlNDE5IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaAorKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9kcnYuaApAQCAtMzQsMTEgKzM0LDEzIEBAIHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVy
-X2RhdGEgewogCWNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkICpleHRfcGF0aDsKIAl1bnNpZ25l
-ZCBpbnQgZXh0X2xlbjsKIAlib29sIHNoYWRvd19yZWdpc3RlcjsKKwljb25zdCBjaGFyICpjbGtf
-ZHJ2X25hbWU7CiB9OwogCiBzdHJ1Y3QgbXRrX2RybV9wcml2YXRlIHsKIAlzdHJ1Y3QgZHJtX2Rl
-dmljZSAqZHJtOwogCXN0cnVjdCBkZXZpY2UgKmRtYV9kZXY7CisJc3RydWN0IHBsYXRmb3JtX2Rl
-dmljZSAqY2xrX2RldjsKIAogCXVuc2lnbmVkIGludCBudW1fcGlwZXM7CiAKLS0gCjIuMTcuMQoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+From: Matthias Brugger <mbrugger@suse.com>
+
+It can happen that the clock drivers wasn't probed before the
+ddp driver gets invoked. The driver used to omit a warning
+that the driver failed to get the clocks. Omit this error on
+the defered probe path.
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+Acked-by: CK Hu <ck.hu@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+index bafc5c77c4fb..6b399348a2dc 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+@@ -374,7 +374,8 @@ static int mtk_ddp_probe(struct platform_device *pdev)
+ 
+ 	ddp->clk = devm_clk_get(dev, NULL);
+ 	if (IS_ERR(ddp->clk)) {
+-		dev_err(dev, "Failed to get clock\n");
++		if (PTR_ERR(ddp->clk) != -EPROBE_DEFER)
++			dev_err(dev, "Failed to get clock\n");
+ 		return PTR_ERR(ddp->clk);
+ 	}
+ 
+-- 
+2.17.1
