@@ -1,51 +1,36 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v1 2/2] arm64: dts: mt7622: update a clock property for
- UART0
-Date: Tue, 17 Jul 2018 09:56:34 +0200
-Message-ID: <070b9fec-a66a-9f2e-bef4-22eaa6d6ddf3@gmail.com>
-References: <2ff39c40ef6bc3054667e63c785a1d28527b5ddf.1531753039.git.ryder.lee@mediatek.com>
- <87527531b135f4eb7fb51d4e7ee82723cd162a6c.1531753039.git.ryder.lee@mediatek.com>
+From: Mars Cheng <mars.cheng@mediatek.com>
+Subject: [PATCH v5 02/11] dt-bindings: mediatek: Add smi dts binding for Mediatek MT6765 SoC
+Date: Tue, 17 Jul 2018 16:52:23 +0800
+Message-ID: <1531817552-17221-3-git-send-email-mars.cheng@mediatek.com>
+References: <1531817552-17221-1-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <87527531b135f4eb7fb51d4e7ee82723cd162a6c.1531753039.git.ryder.lee@mediatek.com>
-Content-Language: en-US
+In-Reply-To: <1531817552-17221-1-git-send-email-mars.cheng@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, Sean Wang <sean.wang@mediatek.com>
+Cc: CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, Mars Cheng <mars.cheng@mediatek.com>, Owen Chen <owen.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+This patch adds MT6765 smi binding document
 
+Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+---
+ .../memory-controllers/mediatek,smi-common.txt     |    1 +
+ 1 file changed, 1 insertion(+)
 
-On 16/07/18 16:59, Ryder Lee wrote:
-> The input clock of UART0 should be CLK_PERI_UART0_PD.
-> 
-> Fixes: 13f36c326cef ("arm64: dts: mt7622: turn uart0 clock to real ones")
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> ---
-
-pused to v4.18-next/dts64
-
-Thanks a lot!
-
-> change since v1:
-> - add Fixes tag.
-> ---
->  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> index 8cdec52..4caa9b4 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> @@ -367,7 +367,7 @@
->  		reg = <0 0x11002000 0 0x400>;
->  		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
->  		clocks = <&topckgen CLK_TOP_UART_SEL>,
-> -			 <&pericfg CLK_PERI_UART1_PD>;
-> +			 <&pericfg CLK_PERI_UART0_PD>;
->  		clock-names = "baud", "bus";
->  		status = "disabled";
->  	};
-> 
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+index aa614b2..0bf64f5 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+@@ -15,6 +15,7 @@ not needed for SMI generation 2.
+ Required properties:
+ - compatible : must be one of :
+ 	"mediatek,mt2701-smi-common"
++	"mediatek,mt6765-smi-common", "syscon"
+ 	"mediatek,mt8173-smi-common"
+ - reg : the register and size of the SMI block.
+ - power-domains : a phandle to the power domain of this local arbiter.
+-- 
+1.7.9.5
