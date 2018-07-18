@@ -1,126 +1,189 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [resend PATCH v4 4/5] drm/mediatek: Add support for mmsys through
- a pdev
-Date: Wed, 18 Jul 2018 11:05:49 +0300
-Message-ID: <51066716.k5MkZnrqCl@avalon>
-References: <20180717220328.792-1-matthias.bgg@kernel.org>
- <20180717220328.792-5-matthias.bgg@kernel.org>
- <1531882655.8953.83.camel@mtkswgap22>
+From: Mars Cheng <mars.cheng@mediatek.com>
+Subject: Re: [PATCH v5 04/11] soc: mediatek: add MT6765 scpsys support
+Date: Wed, 18 Jul 2018 16:54:15 +0800
+Message-ID: <1531904055.4416.2.camel@mtkswgap22>
+References: <1531817552-17221-1-git-send-email-mars.cheng@mediatek.com>
+         <1531817552-17221-5-git-send-email-mars.cheng@mediatek.com>
+         <1531832413.8953.30.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1531882655.8953.83.camel@mtkswgap22>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1531832413.8953.30.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Sean Wang <sean.wang@mediatek.com>
-Cc: mark.rutland@arm.com, airlied@linux.ie, mturquette@baylibre.com, dri-devel@lists.freedesktop.org, ulrich.hecht+renesas@gmail.com, lee.jones@linaro.org, linux-clk@vger.kernel.org, linux@armlinux.org.uk, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>, gregkh@linuxfoundation.org, rdunlap@infradead.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, matthias.bgg@kernel.org, pi-cheng.chen@linaro.org, davem@davemloft.net
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, Owen Chen <owen.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgU2VhbiwKCk9uIFdlZG5lc2RheSwgMTggSnVseSAyMDE4IDA1OjU3OjM1IEVFU1QgU2VhbiBX
-YW5nIHdyb3RlOgo+IE9uIFdlZCwgMjAxOC0wNy0xOCBhdCAwMDowMyArMDIwMCwgbWF0dGhpYXMu
-YmdnQGtlcm5lbC5vcmcgd3JvdGU6Cj4gPiBGcm9tOiBNYXR0aGlhcyBCcnVnZ2VyIDxtYnJ1Z2dl
-ckBzdXNlLmNvbT4KPiA+IAo+ID4gVGhlIE1NU1lTIHN1YnN5c3RlbSBpbmNsdWRlcyBjbG9ja3Mg
-YW5kIGRybSBjb21wb25lbnRzLgo+ID4gVGhpcyBwYXRjaCBhZGRzIGFuIGluaXRhaWxpemF0aW9u
-IHBhdGggdGhyb3VnaCBhIHBsYXRmb3JtIGRldmljZQo+ID4gZm9yIHRoZSBjbG9jayBwYXJ0LCBz
-byB0aGF0IGJvdGggZHJpdmVycyBnZXQgcHJvYmVkIGZyb20gdGhlIHNhbWUKPiA+IGRldmljZSB0
-cmVlIGNvbXBhdGlibGUuCj4gCj4gU29ycnkgZm9yIHRoYXQgSSBzaG91bGQgaGF2ZSBhIHJlc3Bv
-bnNlIGVhcmxpZXIgZm9yIHRoZSBzZXJpZXMuCj4gCj4gU29tZSBwb2ludHMgSSBmZWx0IHRoZXkn
-cmUgbm90IGV4YWN0bHkgcmlnaHQgYW5kIHNob3VsZCBiZSBmaXhlZCB1cAo+IGJlZm9yZSB3ZSdy
-ZSBtb3Zpbmcgb24KPiAKPiBDdXJyZW50bHksIGRybSBkcml2ZXIgaGF2ZSBhIHdyb25nIHJlZmVy
-ZW5jZSB0byB0aGUgZHQtYmluZGluZywKPiAibWVkaWF0ZWssbXQyNzAxLW1tc3lzIiBvciAibWVk
-aWF0ZWssbXQ4MTczLW1tc3lzIiwgdGhleSBzaG91bGQgYmUgYWxsCj4gZm9yIHRoZSBzdWJzeXN0
-ZW0gZXhwb3J0aW5nIGNsb2NrIGFuZCByZXNldCBsaW5lIHN1Y2ggY29tbW9uIHJlc291cmNlIHRv
-Cj4gaXRzIHN1Yi1kZXZpY2VzLiBFdmVyeSBzdWJzeXN0ZW0gaGFzIGEgc2ltaWxhciBzaGFwZS4g
-SSBob3BlIG1tc3lzCj4gc2hvdWxkbid0IGJlIGFuIGV4Y2VwdGlvbi4KPiAKPiBEUk0gZGV2aWNl
-IG5lZWRzIHRvIGhhdmUgaXRzIG93biBkdC1iaW5kaW5nIHNob3cgaG93IGNvbm5lY3Rpb25zIGJl
-dHdlZW4KPiBEUk0gY29tcG9uZW50cyBiZWluZyBtYWRlIGFuZCBpdHMgbm9kZSBzaG91bGQgYmUg
-cHV0IHVuZGVyIG1tc3lzIG5vZGUuCj4gCj4gSW4gdGhpcyB3YXksIGl0IGJlY29tZXMgZWFzeSB0
-byBzZWUgaG93IHRoZSB0b3BvbG9neSBvZiB0aGUgc3Vic3lzdGVtIGlzCj4gYW5kIGdyb3dzLCBs
-aWtlIGEgdHJlZSAiZGV2aWNlIHRyZWUiLCBpbnN0ZWFkIG9mIGhpZGluZyB0aGUgZGV0YWlscyBp
-bgo+IHRoZSBpbXBsZW1lbnRhdGlvbi4KPiAKPiBUaGUgc2ltaWxhciBleGFtcGxlIHdlIGFscmVh
-ZHkgZGlkIGZvciBhdWRzeXMgb24gbXQyNzAxIGFuZCBtdDc2MjMgYXMKPiBiZWxvdwo+IAo+IAlh
-dWRzeXM6IGNsb2NrLWNvbnRyb2xsZXJAMTEyMjAwMDAgewo+IAkJCmNvbXBhdGlibGUgPSAibWVk
-aWF0ZWssbXQ3NjIzLWF1ZHN5cyIsCj4gCQkKCSAgICAgIm1lZGlhdGVrLG10MjcwMS1hdWRzeXMi
-LAo+IAkJCgkgICAgICJzeXNjb24iOwo+IAkJCgkuLi4KPiAKPiAJCQphZmU6IGF1ZGlvLWNvbnRy
-b2xsZXIgewo+IAkJCgljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10NzYyMy1hdWRpbyIsCj4gCQkK
-CQkKICAgICAibWVkaWF0ZWssbXQyNzAxLWF1ZGlvIjsKPiAKPiAJCQoJLi4uCj4gCQkKfTsKPiAJ
-fTsKClRoaXMgbG9va3MgdmVyeSBzdHJhbmdlIHRvIG1lLiBJJ20gbm90IGZhbWlsaWFyIHdpdGgg
-dGhlIGhhcmR3YXJlIAphcmNoaXRlY3R1cmUsIGJ1dCBhIGNsb2NrIGNvbnRyb2xsZXIgdGhhdCBp
-bmNsdWRlcyBhbiBhdWRpbyBjb250cm9sbGVyIHNlZW1zIApsaWtlIGEgdmVyeSB3ZWlyZCBkZXNp
-Z24uIEl0J3MgdXN1YWxseSB0aGUgb3RoZXIgd2F5IGFyb3VuZCwgeW91IGhhdmUgYW4gYXVkaW8g
-CmNvbnRyb2xsZXIsIGFuZCBpdCBhbHNvIGNvbnRhaW5zIGhhcmR3YXJlIHRoYXQgcHJvZHVjZXMg
-Y2xvY2tzLCBhbmQgcG9zc2libHkgCmhhbmRsZXMgbWlzY2VsbGFuZW91cyBhdWRpby1yZWxhdGVk
-IHJvdXRpbmcgdGFza3MuIEkgd291bGQgdGh1cyBleHBlY3QgdGhlIApyZXZlcnNlIGluIHRoZSBk
-ZXZpY2UgdHJlZToKCglhZmU6IGF1ZGlvLWNvbnRyb2xsZXJAMTEyMjAwMDAgewoJCQpjb21wYXRp
-YmxlID0gIm1lZGlhdGVrLG10NzYyMy1hdWRpbyIsCgkJCgkgICAgICJtZWRpYXRlayxtdDI3MDEt
-YXVkaW8iOwoJCQouLgoKCQkKYXVkc3lzOiBjbG9jay1jb250cm9sbGVyIHsKCQkKCWNvbXBhdGli
-bGUgPSAibWVkaWF0ZWssbXQ3NjIzLWF1ZHN5cyIsCgkJCgkJCiAgICAgIm1lZGlhdGVrLG10Mjcw
-MS1hdWRzeXMiLAoJCQoJCQogICAgICJzeXNjb24iOwoJCQoJLi4uCgkJCn07Cgl9OwoKQW5kIGlm
-IGF1ZHN5cyBvbmx5IGV4cG9zZXMgY2xvY2tzLCB5b3UgZG9uJ3QgZXZlbiBuZWVkIGEgc3Vibm9k
-ZSB0byByZXByZXNlbnQgCml0LCB0aGUgYXVkaW8gY29udHJvbGxlciBpdHNlbGYgY2FuIGJlIGEg
-Y2xvY2sgcHJvdmlkZXIuCgoJYWZlOiBhdWRpby1jb250cm9sbGVyQDExMjIwMDAwIHsKCQkKY29t
-cGF0aWJsZSA9ICJtZWRpYXRlayxtdDc2MjMtYXVkaW8iLAoJCQoJICAgICAibWVkaWF0ZWssbXQy
-NzAxLWF1ZGlvIjsKCQkKI2Nsb2NrLWNlbGxzID0gPDE+OwoJCQouLgoJfTsKCj4gPiBTaWduZWQt
-b2ZmLWJ5OiBNYXR0aGlhcyBCcnVnZ2VyIDxtYnJ1Z2dlckBzdXNlLmNvbT4KPiA+IC0tLQo+ID4g
-Cj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgfCAxOCArKysrKysr
-KysrKysrKysrKysKPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaCB8
-ICAyICsrCj4gPiAgMiBmaWxlcyBjaGFuZ2VkLCAyMCBpbnNlcnRpb25zKCspCj4gPiAKPiA+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ID4gYi9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBpbmRleCBkZDI0OWNmNTEyMWUu
-LmM5NDZhZWE3MjJlNQo+ID4gMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9kcnYuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-cm1fZHJ2LmMKPiA+IEBAIC0xNzMsNiArMTczLDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtf
-bW1zeXNfZHJpdmVyX2RhdGEKPiA+IG10MjcwMV9tbXN5c19kcml2ZXJfZGF0YSA9IHs+IAo+ID4g
-IAkuZXh0X3BhdGggPSBtdDI3MDFfbXRrX2RkcF9leHQsCj4gPiAgCS5leHRfbGVuID0gCkFSUkFZ
-X1NJWkUobXQyNzAxX210a19kZHBfZXh0KSwKPiA+ICAJLnNoYWRvd19yZWdpc3RlciA9IHRydWUs
-Cj4gPiAKPiA+ICsJLmNsa19kcnZfbmFtZSA9ICJjbGstbXQyNzAxLW1tIiwKPiA+IAo+ID4gIH07
-Cj4gPiAgCj4gPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVyX2RhdGEgbXQ4
-MTczX21tc3lzX2RyaXZlcl9kYXRhID0gewo+ID4gCj4gPiBAQCAtMTgwLDYgKzE4MSw3IEBAIHN0
-YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX21tc3lzX2RyaXZlcl9kYXRhCj4gPiBtdDgxNzNfbW1zeXNf
-ZHJpdmVyX2RhdGEgPSB7PiAKPiA+ICAJLm1haW5fbGVuID0gCkFSUkFZX1NJWkUobXQ4MTczX210
-a19kZHBfbWFpbiksCj4gPiAgCS5leHRfcGF0aCA9IG10ODE3M19tdGtfZGRwX2V4dCwKPiA+ICAJ
-LmV4dF9sZW4gPSAKQVJSQVlfU0laRShtdDgxNzNfbXRrX2RkcF9leHQpLAo+ID4gCj4gPiArCS5j
-bGtfZHJ2X25hbWUgPSAiY2xrLW10ODE3My1tbSIsCj4gPiAKPiA+ICB9Owo+ID4gIAo+ID4gIHN0
-YXRpYyBpbnQgbXRrX2RybV9rbXNfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZHJtKQo+ID4gCj4g
-PiBAQCAtNDExLDYgKzQxMywxOSBAQCBzdGF0aWMgaW50IG10a19kcm1fcHJvYmUoc3RydWN0IHBs
-YXRmb3JtX2RldmljZQo+ID4gKnBkZXYpCj4gPiAKPiA+ICAJaWYgKElTX0VSUihwcml2YXRlLT5j
-b25maWdfcmVncykpCj4gPiAgCQo+ID4gIAkJCnJldHVybiBQVFJfRVJSKHByaXZhdGUtPmNvbmZp
-Z19yZWdzKTsKPiA+IAo+ID4gKwlpZiAocHJpdmF0ZS0+ZGF0YS0+Y2xrX2Rydl9uYW1lKSB7Cj4g
-PiArCQkKcHJpdmF0ZS0+Y2xrX2RldiA9IHBsYXRmb3JtX2RldmljZV9yZWdpc3Rlcl9kYXRhKGRl
-diwKPiA+ICsJCQoJCQoJCQpwcml2YXRlLT5kYXRhLT5jbGtfZHJ2X25hbWUsIC0xLAo+ID4gKwkJ
-CgkJCgkJCk5VTEwsIDApOwo+ID4gKwo+ID4gKwkJCmlmIChJU19FUlIocHJpdmF0ZS0+Y2xrX2Rl
-dikpIHsKPiA+ICsJCQoJcHJfZXJyKCJmYWlsZWQgdG8gcmVnaXN0ZXIgJXMgcGxhdGZvcm0gCmRl
-dmljZVxuIiwKPiA+ICsJCQoJCQoJCQpwcml2YXRlLT5kYXRhLT5jbGtfZHJ2X25hbWUpOwo+ID4g
-Kwo+ID4gKwkJCglyZXR1cm4gUFRSX0VSUihwcml2YXRlLT5jbGtfZGV2KTsKPiA+ICsJCQp9Cj4g
-PiArCX0KPiA+ICsKPiA+IAo+ID4gIAkvKiBJdGVyYXRlIG92ZXIgc2libGluZyBESVNQIApmdW5j
-dGlvbiBibG9ja3MgKi8KPiA+ICAJZm9yX2VhY2hfY2hpbGRfb2Zfbm9kZShkZXYtPm9mX25vZGUt
-Cj5wYXJlbnQsIG5vZGUpIHsKPiA+ICAJCj4gPiAgCQkKY29uc3Qgc3RydWN0IG9mX2RldmljZV9p
-ZCAqb2ZfaWQ7Cj4gPiAKPiA+IEBAIC01MTUsNiArNTMwLDkgQEAgc3RhdGljIGludCBtdGtfZHJt
-X3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlCj4gPiAqcGRldikKPiA+IAo+ID4gIAlmb3Ig
-KGkgPSAwOyBpIDwgCkREUF9DT01QT05FTlRfSURfTUFYOyBpKyspCj4gPiAgCQo+ID4gIAkJCm9m
-X25vZGVfcHV0KHByaXZhdGUtPmNvbXBfbm9kZVtpXSk7Cj4gPiAKPiA+ICsJaWYgKHByaXZhdGUt
-PmNsa19kZXYpCj4gPiArCQkKcGxhdGZvcm1fZGV2aWNlX3VucmVnaXN0ZXIocHJpdmF0ZS0+Y2xr
-X2Rldik7Cj4gPiArCj4gPiAKPiA+ICAJcmV0dXJuIDA7Cj4gPiAgCj4gPiAgfQo+ID4gCj4gPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmgKPiA+IGIv
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmggaW5kZXggODZjZWMxOTE5M2M0
-Li4yMDBlZWU1ZGU0MTkKPiA+IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kcm1fZHJ2LmgKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-ZHJtX2Rydi5oCj4gPiBAQCAtMzQsMTEgKzM0LDEzIEBAIHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVy
-X2RhdGEgewo+ID4gCj4gPiAgCWNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkIAoqZXh0X3BhdGg7
-Cj4gPiAgCXVuc2lnbmVkIGludCBleHRfbGVuOwo+ID4gIAlib29sIHNoYWRvd19yZWdpc3RlcjsK
-PiA+IAo+ID4gKwljb25zdCBjaGFyICpjbGtfZHJ2X25hbWU7Cj4gPiAKPiA+ICB9Owo+ID4gIAo+
-ID4gIHN0cnVjdCBtdGtfZHJtX3ByaXZhdGUgewo+ID4gIAo+ID4gIAlzdHJ1Y3QgZHJtX2Rldmlj
-ZSAqZHJtOwo+ID4gIAlzdHJ1Y3QgZGV2aWNlICpkbWFfZGV2Owo+ID4gCj4gPiArCXN0cnVjdCBw
-bGF0Zm9ybV9kZXZpY2UgKmNsa19kZXY7Cj4gPiAKPiA+ICAJdW5zaWduZWQgaW50IG51bV9waXBl
-czsKCgotLSAKUmVnYXJkcywKCkxhdXJlbnQgUGluY2hhcnQKCgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Sean
+
+On Tue, 2018-07-17 at 21:00 +0800, Sean Wang wrote:
+> On Tue, 2018-07-17 at 16:52 +0800, Mars Cheng wrote:
+> > This adds scpsys support for MT6765
+> > 
+> 
+> it looks like 4/11 have to depend on 6/11 and 7/11 to get a full function on scpsys for MT6765.
+> 
+> you should keep dependency in order to submit these patches
+> 
+
+Got it, will reorder the sequence.
+
+> > Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> > Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+> > ---
+> >  drivers/soc/mediatek/mtk-scpsys.c        |   88 ++++++++++++++++++++++++++++++
+> >  include/dt-bindings/power/mt6765-power.h |   14 +++++
+> >  2 files changed, 102 insertions(+)
+> >  create mode 100644 include/dt-bindings/power/mt6765-power.h
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> > index 5b24bb4..4bb6c7a 100644
+> > --- a/drivers/soc/mediatek/mtk-scpsys.c
+> > +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> > @@ -23,6 +23,7 @@
+> >  
+> >  #include <dt-bindings/power/mt2701-power.h>
+> >  #include <dt-bindings/power/mt2712-power.h>
+> > +#include <dt-bindings/power/mt6765-power.h>
+> >  #include <dt-bindings/power/mt6797-power.h>
+> >  #include <dt-bindings/power/mt7622-power.h>
+> >  #include <dt-bindings/power/mt7623a-power.h>
+> > @@ -680,6 +681,79 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+> >  };
+> >  
+> >  /*
+> > + * MT6765 power domain support
+> > + */
+> > +#define SPM_PWR_STATUS_MT6765			0x0180
+> > +#define SPM_PWR_STATUS_2ND_MT6765		0x0184
+> > +
+> > +static const struct scp_domain_data scp_domain_data_mt6765[] = {
+> > +	[MT6765_POWER_DOMAIN_VCODEC] = {
+> > +		.name = "vcodec",
+> > +		.sta_mask = BIT(26),
+> > +		.ctl_offs = 0x300,
+> > +		.sram_pdn_bits = GENMASK(8, 8),
+> > +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> > +	},
+> > +	[MT6765_POWER_DOMAIN_ISP] = {
+> > +		.name = "isp",
+> > +		.sta_mask = BIT(5),
+> > +		.ctl_offs = 0x308,
+> > +		.sram_pdn_bits = GENMASK(8, 8),
+> > +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> > +	},
+> > +	[MT6765_POWER_DOMAIN_MM] = {
+> > +		.name = "mm",
+> > +		.sta_mask = BIT(3),
+> > +		.ctl_offs = 0x30C,
+> > +		.sram_pdn_bits = GENMASK(8, 8),
+> > +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> > +	},
+> > +	[MT6765_POWER_DOMAIN_CONN] = {
+> > +		.name = "conn",
+> > +		.sta_mask = BIT(1),
+> > +		.ctl_offs = 0x32C,
+> > +		.sram_pdn_bits = 0,
+> > +		.sram_pdn_ack_bits = 0,
+> > +	},
+> > +	[MT6765_POWER_DOMAIN_MFG_ASYNC] = {
+> > +		.name = "mfg_async",
+> > +		.sta_mask = BIT(23),
+> > +		.ctl_offs = 0x334,
+> > +		.sram_pdn_bits = 0,
+> > +		.sram_pdn_ack_bits = 0,
+> > +	},
+> > +	[MT6765_POWER_DOMAIN_MFG] = {
+> > +		.name = "mfg",
+> > +		.sta_mask = BIT(4),
+> > +		.ctl_offs = 0x338,
+> > +		.sram_pdn_bits = GENMASK(8, 8),
+> > +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> > +	},
+> > +	[MT6765_POWER_DOMAIN_CAM] = {
+> > +		.name = "cam",
+> > +		.sta_mask = BIT(25),
+> > +		.ctl_offs = 0x344,
+> > +		.sram_pdn_bits = GENMASK(8, 9),
+> > +		.sram_pdn_ack_bits = GENMASK(12, 13),
+> > +	},
+> > +	[MT6765_POWER_DOMAIN_MFG_CORE0] = {
+> > +		.name = "mfg_core0",
+> > +		.sta_mask = BIT(7),
+> > +		.ctl_offs = 0x34C,
+> > +		.sram_pdn_bits = GENMASK(8, 8),
+> > +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> > +	},
+> 
+> Above power domains really don't require any clock controlled with
+> clk_id before any access on them?
+> 
+
+Yes, already sync with Owen, they are lost. will add them.
+
+Thanks.
+> > +};
+> > +
+> > +static const struct scp_subdomain scp_subdomain_mt6765[] = {
+> > +	{MT6765_POWER_DOMAIN_MM, MT6765_POWER_DOMAIN_CAM},
+> > +	{MT6765_POWER_DOMAIN_MM, MT6765_POWER_DOMAIN_ISP},
+> > +	{MT6765_POWER_DOMAIN_MM, MT6765_POWER_DOMAIN_VCODEC},
+> > +	{MT6765_POWER_DOMAIN_MFG_ASYNC, MT6765_POWER_DOMAIN_MFG},
+> > +	{MT6765_POWER_DOMAIN_MFG, MT6765_POWER_DOMAIN_MFG_CORE0},
+> > +};
+> > +
+> > +/*
+> >   * MT6797 power domain support
+> >   */
+> >  
+> > @@ -962,6 +1036,17 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+> >  	.bus_prot_reg_update = false,
+> >  };
+> >  
+> > +static const struct scp_soc_data mt6765_data = {
+> > +	.domains = scp_domain_data_mt6765,
+> > +	.num_domains = ARRAY_SIZE(scp_domain_data_mt6765),
+> > +	.subdomains = scp_subdomain_mt6765,
+> > +	.num_subdomains = ARRAY_SIZE(scp_subdomain_mt6765),
+> > +	.regs = {
+> > +		.pwr_sta_offs = SPM_PWR_STATUS_MT6765,
+> > +		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND_MT6765,
+> > +	},
+> > +};
+> > +
+> >  static const struct scp_soc_data mt6797_data = {
+> >  	.domains = scp_domain_data_mt6797,
+> >  	.num_domains = ARRAY_SIZE(scp_domain_data_mt6797),
+> > @@ -1018,6 +1103,9 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+> >  		.compatible = "mediatek,mt2712-scpsys",
+> >  		.data = &mt2712_data,
+> >  	}, {
+> > +		.compatible = "mediatek,mt6765-scpsys",
+> > +		.data = &mt6765_data,
+> > +	}, {
+> >  		.compatible = "mediatek,mt6797-scpsys",
+> >  		.data = &mt6797_data,
+> >  	}, {
+> > diff --git a/include/dt-bindings/power/mt6765-power.h b/include/dt-bindings/power/mt6765-power.h
+> > new file mode 100644
+> > index 0000000..d347b4e
+> > --- /dev/null
+> > +++ b/include/dt-bindings/power/mt6765-power.h
+> > @@ -0,0 +1,14 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +#ifndef _DT_BINDINGS_POWER_MT6765_POWER_H
+> > +#define _DT_BINDINGS_POWER_MT6765_POWER_H
+> > +
+> > +#define MT6765_POWER_DOMAIN_CONN		0
+> > +#define MT6765_POWER_DOMAIN_MM			1
+> > +#define MT6765_POWER_DOMAIN_MFG_ASYNC		2
+> > +#define MT6765_POWER_DOMAIN_ISP			3
+> > +#define MT6765_POWER_DOMAIN_MFG			4
+> > +#define MT6765_POWER_DOMAIN_MFG_CORE0		5
+> > +#define MT6765_POWER_DOMAIN_CAM			6
+> > +#define MT6765_POWER_DOMAIN_VCODEC		7
+> > +
+> > +#endif /* _DT_BINDINGS_POWER_MT6765_POWER_H */
+> 
+> 
