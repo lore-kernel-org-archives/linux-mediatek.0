@@ -1,77 +1,50 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [resend PATCH v4 2/5] clk: mediatek: mt2701-mmsys: switch to
- platform device probing (fwd)
-Date: Wed, 18 Jul 2018 16:58:32 +0200
-Message-ID: <11ba8df2-21f3-71e5-8467-813eda93f8ec@gmail.com>
-References: <alpine.DEB.2.20.1807181654200.3113@hadrien>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v4] dt-bindings: mediatek: Add binding for mt2712 IOMMU
+	and SMI
+Date: Wed, 18 Jul 2018 17:02:40 +0200
+Message-ID: <d29f584b-30a8-0d2d-0ce2-9889907076c7@gmail.com>
+References: <1527165331-22261-1-git-send-email-yong.wu@mediatek.com>
+	<1529562433.22229.2.camel@mhfsdcap03>
+	<d3d34d21-1a38-d3b7-1448-bd9e4c6afc6e@gmail.com>
+	<20180718135446.GB18541@8bytes.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <alpine.DEB.2.20.1807181654200.3113@hadrien>
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <20180718135446.GB18541-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Julia Lawall <julia.lawall@lip6.fr>, matthias.bgg@kernel.org
-Cc: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, sean.wang@mediatek.com, gregkh@linuxfoundation.org, rdunlap@infradead.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, mchehab@kernel.org, pi-cheng.chen@linaro.org, davem@davemloft.net, linux-kernel@vger.kernel.org, kbuild-all@01.org
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 18/07/18 16:54, Julia Lawall wrote:
-> Please check on whether the kfree is still needed.
+On 18/07/18 15:54, Joerg Roedel wrote:
+> On Mon, Jul 16, 2018 at 03:28:14PM +0200, Matthias Brugger wrote:
+>>>>  .../devicetree/bindings/iommu/mediatek,iommu.txt   |  6 +-
+>>>>  .../memory-controllers/mediatek,smi-common.txt     |  6 +-
+>>>>  .../memory-controllers/mediatek,smi-larb.txt       |  5 +-
+>>>>  include/dt-bindings/memory/mt2712-larb-port.h      | 95 ++++++++++++++++++++++
+>>>>  4 files changed, 106 insertions(+), 6 deletions(-)
+>>>>  create mode 100644 include/dt-bindings/memory/mt2712-larb-port.h
+>>>>
+>>
+>> Joerg, will you take this through your tree, or would you mind to provide a
+>> Acked-By?
+> 
+> Sure,
+> 
+> 	Acked-by: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
+> 
 
-No it is not needed, thanks for noting.
-Matthias
-
-> 
-> julia
-> 
-> ---------- Forwarded message ----------
-> Date: Wed, 18 Jul 2018 22:03:48 +0800
-> From: kbuild test robot <lkp@intel.com>
-> To: kbuild@01.org
-> Cc: Julia Lawall <julia.lawall@lip6.fr>
-> Subject: Re: [resend PATCH v4 2/5] clk: mediatek: mt2701-mmsys: switch to
->     platform device probing
-> 
-> In-Reply-To: <20180717220328.792-3-matthias.bgg@kernel.org>
-> References: <20180717220328.792-3-matthias.bgg@kernel.org>
-> TO: matthias.bgg@kernel.org
-> 
-> Hi Matthias,
-> 
-> I love your patch! Perhaps something to improve:
-> 
-> [auto build test WARNING on sof-driver-fuweitax/master]
-> [also build test WARNING on v4.18-rc5 next-20180718]
-> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
-> 
-> url:    https://github.com/0day-ci/linux/commits/matthias-bgg-kernel-org/arm-arm64-mediatek-Fix-mmsys-device-probing/20180718-191916
-> base:   https://github.com/fuweitax/linux master
-> :::::: branch date: 3 hours ago
-> :::::: commit date: 3 hours ago
-> 
->>> drivers/clk/mediatek/clk-mt2701-mm.c:128:1-6: WARNING: invalid free of devm_ allocated data
-> 
-> # https://github.com/0day-ci/linux/commit/555e11caac5f7729e8927939046adbfa2264f9f5
-> git remote add linux-review https://github.com/0day-ci/linux
-> git remote update linux-review
-> git checkout 555e11caac5f7729e8927939046adbfa2264f9f5
-> vim +128 drivers/clk/mediatek/clk-mt2701-mm.c
-> 
-> e98621182 Shunli Wang      2016-11-04  122
-> 555e11caa Matthias Brugger 2018-07-18  123  static int clk_mt2701_mm_remove(struct platform_device *pdev)
-> 555e11caa Matthias Brugger 2018-07-18  124  {
-> 555e11caa Matthias Brugger 2018-07-18  125  	struct clk_mt2701_mm_priv *private = platform_get_drvdata(pdev);
-> 555e11caa Matthias Brugger 2018-07-18  126
-> 555e11caa Matthias Brugger 2018-07-18  127  	kfree(private->clk_data);
-> 555e11caa Matthias Brugger 2018-07-18 @128  	kfree(private);
-> 555e11caa Matthias Brugger 2018-07-18  129
-> 555e11caa Matthias Brugger 2018-07-18  130  	return 0;
-> 555e11caa Matthias Brugger 2018-07-18  131  }
-> 555e11caa Matthias Brugger 2018-07-18  132
-> 
-> ---
-> 0-DAY kernel test infrastructure                Open Source Technology Center
-> https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
-> 
+Thanks.
+Pushed to v4.18-next/dts64
