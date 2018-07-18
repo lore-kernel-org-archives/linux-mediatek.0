@@ -1,65 +1,94 @@
-From: Julia Lawall <julia.lawall@lip6.fr>
-Subject: Re: [resend PATCH v4 2/5] clk: mediatek: mt2701-mmsys: switch to
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [resend PATCH v4 3/5] clk: mediatek: mt8173: switch mmsys to
  platform device probing (fwd)
-Date: Wed, 18 Jul 2018 16:54:57 +0200 (CEST)
-Message-ID: <alpine.DEB.2.20.1807181654200.3113@hadrien>
+Date: Wed, 18 Jul 2018 16:57:46 +0200
+Message-ID: <4a62b859-7d57-4901-d13f-5c5a9de8588c@gmail.com>
+References: <alpine.DEB.2.20.1807181651360.3113@hadrien>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <alpine.DEB.2.20.1807181651360.3113@hadrien>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: matthias.bgg@kernel.org
-Cc: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, sean.wang@mediatek.com, gregkh@linuxfoundation.org, rdunlap@infradead.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, pi-cheng.chen@linaro.org, davem@davemloft.net, linux-kernel@vger.kernel.org, kbuild-all@01.org
+To: Julia Lawall <julia.lawall@lip6.fr>, matthias.bgg@kernel.org
+Cc: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, pi-cheng.chen@linaro.org, sean.wang@mediatek.com, linux-clk@vger.kernel.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>, kbuild-all@01.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Please check on whether the kfree is still needed.
 
-julia
 
----------- Forwarded message ----------
-Date: Wed, 18 Jul 2018 22:03:48 +0800
-From: kbuild test robot <lkp@intel.com>
-To: kbuild@01.org
-Cc: Julia Lawall <julia.lawall@lip6.fr>
-Subject: Re: [resend PATCH v4 2/5] clk: mediatek: mt2701-mmsys: switch to
-    platform device probing
+On 18/07/18 16:53, Julia Lawall wrote:
+> Hello,
+> 
+> Please check on whether the kfree in the remove function is still needed.
+> Also the platform_driver structure has two probe fields.
 
-In-Reply-To: <20180717220328.792-3-matthias.bgg@kernel.org>
-References: <20180717220328.792-3-matthias.bgg@kernel.org>
-TO: matthias.bgg@kernel.org
+Fair enough, kfree(private) is not needed, because it is allocated with
+devm_kzalloc.
 
-Hi Matthias,
+I'll fix both errors. Thanks for noting.
+Matthias
 
-I love your patch! Perhaps something to improve:
-
-[auto build test WARNING on sof-driver-fuweitax/master]
-[also build test WARNING on v4.18-rc5 next-20180718]
-[if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
-
-url:    https://github.com/0day-ci/linux/commits/matthias-bgg-kernel-org/arm-arm64-mediatek-Fix-mmsys-device-probing/20180718-191916
-base:   https://github.com/fuweitax/linux master
-:::::: branch date: 3 hours ago
-:::::: commit date: 3 hours ago
-
->> drivers/clk/mediatek/clk-mt2701-mm.c:128:1-6: WARNING: invalid free of devm_ allocated data
-
-# https://github.com/0day-ci/linux/commit/555e11caac5f7729e8927939046adbfa2264f9f5
-git remote add linux-review https://github.com/0day-ci/linux
-git remote update linux-review
-git checkout 555e11caac5f7729e8927939046adbfa2264f9f5
-vim +128 drivers/clk/mediatek/clk-mt2701-mm.c
-
-e98621182 Shunli Wang      2016-11-04  122
-555e11caa Matthias Brugger 2018-07-18  123  static int clk_mt2701_mm_remove(struct platform_device *pdev)
-555e11caa Matthias Brugger 2018-07-18  124  {
-555e11caa Matthias Brugger 2018-07-18  125  	struct clk_mt2701_mm_priv *private = platform_get_drvdata(pdev);
-555e11caa Matthias Brugger 2018-07-18  126
-555e11caa Matthias Brugger 2018-07-18  127  	kfree(private->clk_data);
-555e11caa Matthias Brugger 2018-07-18 @128  	kfree(private);
-555e11caa Matthias Brugger 2018-07-18  129
-555e11caa Matthias Brugger 2018-07-18  130  	return 0;
-555e11caa Matthias Brugger 2018-07-18  131  }
-555e11caa Matthias Brugger 2018-07-18  132
-
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+> 
+> julia
+> 
+> ---------- Forwarded message ----------
+> Date: Wed, 18 Jul 2018 22:31:13 +0800
+> From: kbuild test robot <lkp@intel.com>
+> To: kbuild@01.org
+> Cc: Julia Lawall <julia.lawall@lip6.fr>
+> Subject: Re: [resend PATCH v4 3/5] clk: mediatek: mt8173: switch mmsys to
+>     platform device probing
+> 
+> In-Reply-To: <20180717220328.792-4-matthias.bgg@kernel.org>
+> References: <20180717220328.792-4-matthias.bgg@kernel.org>
+> TO: matthias.bgg@kernel.org
+> 
+> Hi Matthias,
+> 
+> I love your patch! Perhaps something to improve:
+> 
+> [auto build test WARNING on sof-driver-fuweitax/master]
+> [also build test WARNING on v4.18-rc5 next-20180718]
+> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+> 
+> url:    https://github.com/0day-ci/linux/commits/matthias-bgg-kernel-org/arm-arm64-mediatek-Fix-mmsys-device-probing/20180718-191916
+> base:   https://github.com/fuweitax/linux master
+> :::::: branch date: 3 hours ago
+> :::::: commit date: 3 hours ago
+> 
+>>> drivers/clk/mediatek/clk-mt8173.c:1195:1-6: WARNING: invalid free of devm_ allocated data
+> --
+>>> drivers/clk/mediatek/clk-mt8173.c:1200:48-49: probe: first occurrence line 1201, second occurrence line 1202
+> 
+> # https://github.com/0day-ci/linux/commit/112857d0f58413a87875dfc9e1b43fdfde3b55eb
+> git remote add linux-review https://github.com/0day-ci/linux
+> git remote update linux-review
+> git checkout 112857d0f58413a87875dfc9e1b43fdfde3b55eb
+> vim +1195 drivers/clk/mediatek/clk-mt8173.c
+> 
+> 112857d0 Matthias Brugger 2018-07-18  1189
+> 112857d0 Matthias Brugger 2018-07-18  1190  static int mtk_mmsys_remove(struct platform_device *pdev)
+> 112857d0 Matthias Brugger 2018-07-18  1191  {
+> 112857d0 Matthias Brugger 2018-07-18  1192  	struct mtk_mmsys_priv *private = platform_get_drvdata(pdev);
+> 112857d0 Matthias Brugger 2018-07-18  1193
+> 112857d0 Matthias Brugger 2018-07-18  1194  	kfree(private->clk_data);
+> 112857d0 Matthias Brugger 2018-07-18 @1195  	kfree(private);
+> 112857d0 Matthias Brugger 2018-07-18  1196
+> 112857d0 Matthias Brugger 2018-07-18  1197  	return 0;
+> 29859d93 James Liao       2015-05-20  1198  }
+> 112857d0 Matthias Brugger 2018-07-18  1199
+> 112857d0 Matthias Brugger 2018-07-18 @1200  static struct platform_driver clk_mt8173_mm_drv = {
+> 112857d0 Matthias Brugger 2018-07-18 @1201  	.probe = mtk_mmsys_probe,
+> 112857d0 Matthias Brugger 2018-07-18 @1202  	.probe = mtk_mmsys_remove,
+> 112857d0 Matthias Brugger 2018-07-18  1203  	.driver = {
+> 112857d0 Matthias Brugger 2018-07-18  1204  		.name = "clk-mt8173-mm",
+> 112857d0 Matthias Brugger 2018-07-18  1205  	},
+> 112857d0 Matthias Brugger 2018-07-18  1206  };
+> 112857d0 Matthias Brugger 2018-07-18  1207  module_platform_driver(clk_mt8173_mm_drv);
+> 29859d93 James Liao       2015-05-20  1208
+> 
+> ---
+> 0-DAY kernel test infrastructure                Open Source Technology Center
+> https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+> 
