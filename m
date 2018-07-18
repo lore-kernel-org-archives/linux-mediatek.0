@@ -1,43 +1,139 @@
-From: matthias.bgg@kernel.org
-Subject: [resend PATCH v4 5/5] drm: mediatek: Omit warning on probe defers
-Date: Wed, 18 Jul 2018 00:03:28 +0200
-Message-ID: <20180717220328.792-6-matthias.bgg@kernel.org>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [resend PATCH v4 4/5] drm/mediatek: Add support for mmsys
+ through a pdev
+Date: Wed, 18 Jul 2018 10:57:35 +0800
+Message-ID: <1531882655.8953.83.camel@mtkswgap22>
 References: <20180717220328.792-1-matthias.bgg@kernel.org>
+         <20180717220328.792-5-matthias.bgg@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180717220328.792-1-matthias.bgg@kernel.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org
-Cc: sean.wang@mediatek.com, gregkh@linuxfoundation.org, rdunlap@infradead.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, pi-cheng.chen@linaro.org, davem@davemloft.net, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180717220328.792-5-matthias.bgg@kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: matthias.bgg@kernel.org
+Cc: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, pi-cheng.chen@linaro.org, linux-clk@vger.kernel.org, linux@armlinux.org.uk, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogTWF0dGhpYXMgQnJ1Z2dlciA8bWJydWdnZXJAc3VzZS5jb20+CgpJdCBjYW4gaGFwcGVu
-IHRoYXQgdGhlIGNsb2NrIGRyaXZlcnMgd2Fzbid0IHByb2JlZCBiZWZvcmUgdGhlCmRkcCBkcml2
-ZXIgZ2V0cyBpbnZva2VkLiBUaGUgZHJpdmVyIHVzZWQgdG8gb21pdCBhIHdhcm5pbmcKdGhhdCB0
-aGUgZHJpdmVyIGZhaWxlZCB0byBnZXQgdGhlIGNsb2Nrcy4gT21pdCB0aGlzIGVycm9yIG9uCnRo
-ZSBkZWZlcmVkIHByb2JlIHBhdGguCgpTaWduZWQtb2ZmLWJ5OiBNYXR0aGlhcyBCcnVnZ2VyIDxt
-YnJ1Z2dlckBzdXNlLmNvbT4KQWNrZWQtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+Ci0t
-LQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMgfCAzICsrLQogMSBmaWxl
-IGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jIGIvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcm1fZGRwLmMKaW5kZXggYmFmYzVjNzdjNGZiLi42YjM5OTM0OGEyZGMgMTAw
-NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCisrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCkBAIC0zNzQsNyArMzc0LDggQEAg
-c3RhdGljIGludCBtdGtfZGRwX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiAK
-IAlkZHAtPmNsayA9IGRldm1fY2xrX2dldChkZXYsIE5VTEwpOwogCWlmIChJU19FUlIoZGRwLT5j
-bGspKSB7Ci0JCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCBjbG9ja1xuIik7CisJCWlmIChQ
-VFJfRVJSKGRkcC0+Y2xrKSAhPSAtRVBST0JFX0RFRkVSKQorCQkJZGV2X2VycihkZXYsICJGYWls
-ZWQgdG8gZ2V0IGNsb2NrXG4iKTsKIAkJcmV0dXJuIFBUUl9FUlIoZGRwLT5jbGspOwogCX0KIAot
-LSAKMi4xNy4xCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Wed, 2018-07-18 at 00:03 +0200, matthias.bgg@kernel.org wrote:
+> From: Matthias Brugger <mbrugger@suse.com>
+> 
+> The MMSYS subsystem includes clocks and drm components.
+> This patch adds an initailization path through a platform device
+> for the clock part, so that both drivers get probed from the same
+> device tree compatible.
+> 
+
+Sorry for that I should have a response earlier for the series.
+
+Some points I felt they're not exactly right and should be fixed up
+before we're moving on
+
+Currently, drm driver have a wrong reference to the dt-binding,
+"mediatek,mt2701-mmsys" or "mediatek,mt8173-mmsys", they should be all
+for the subsystem exporting clock and reset line such common resource to
+its sub-devices. Every subsystem has a similar shape. I hope mmsys
+shouldn't be an exception.
+
+DRM device needs to have its own dt-binding show how connections between
+DRM components being made and its node should be put under mmsys node.
+
+In this way, it becomes easy to see how the topology of the subsystem is
+and grows, like a tree "device tree", instead of hiding the details in
+the implementation.
+
+The similar example we already did for audsys on mt2701 and mt7623 as
+below
+
+	audsys: clock-controller@11220000 {
+		compatible = "mediatek,mt7623-audsys",
+			     "mediatek,mt2701-audsys",
+			     "syscon";
+			...
+
+		afe: audio-controller {
+			compatible = "mediatek,mt7623-audio",
+				     "mediatek,mt2701-audio";
+			
+			...
+		};
+	};
+
+	
+	Sean
+
+
+> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 18 ++++++++++++++++++
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.h |  2 ++
+>  2 files changed, 20 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index dd249cf5121e..c946aea722e5 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -173,6 +173,7 @@ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+>  	.ext_path = mt2701_mtk_ddp_ext,
+>  	.ext_len = ARRAY_SIZE(mt2701_mtk_ddp_ext),
+>  	.shadow_register = true,
+> +	.clk_drv_name = "clk-mt2701-mm",
+>  };
+>  
+>  static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+> @@ -180,6 +181,7 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+>  	.main_len = ARRAY_SIZE(mt8173_mtk_ddp_main),
+>  	.ext_path = mt8173_mtk_ddp_ext,
+>  	.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
+> +	.clk_drv_name = "clk-mt8173-mm",
+>  };
+>  
+>  static int mtk_drm_kms_init(struct drm_device *drm)
+> @@ -411,6 +413,19 @@ static int mtk_drm_probe(struct platform_device *pdev)
+>  	if (IS_ERR(private->config_regs))
+>  		return PTR_ERR(private->config_regs);
+>  
+> +	if (private->data->clk_drv_name) {
+> +		private->clk_dev = platform_device_register_data(dev,
+> +						private->data->clk_drv_name, -1,
+> +						NULL, 0);
+> +
+> +		if (IS_ERR(private->clk_dev)) {
+> +			pr_err("failed to register %s platform device\n",
+> +						private->data->clk_drv_name);
+> +
+> +			return PTR_ERR(private->clk_dev);
+> +		}
+> +	}
+> +
+>  	/* Iterate over sibling DISP function blocks */
+>  	for_each_child_of_node(dev->of_node->parent, node) {
+>  		const struct of_device_id *of_id;
+> @@ -515,6 +530,9 @@ static int mtk_drm_remove(struct platform_device *pdev)
+>  	for (i = 0; i < DDP_COMPONENT_ID_MAX; i++)
+>  		of_node_put(private->comp_node[i]);
+>  
+> +	if (private->clk_dev)
+> +		platform_device_unregister(private->clk_dev);
+> +
+>  	return 0;
+>  }
+>  
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> index 86cec19193c4..200eee5de419 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> @@ -34,11 +34,13 @@ struct mtk_mmsys_driver_data {
+>  	const enum mtk_ddp_comp_id *ext_path;
+>  	unsigned int ext_len;
+>  	bool shadow_register;
+> +	const char *clk_drv_name;
+>  };
+>  
+>  struct mtk_drm_private {
+>  	struct drm_device *drm;
+>  	struct device *dma_dev;
+> +	struct platform_device *clk_dev;
+>  
+>  	unsigned int num_pipes;
+>  
