@@ -1,267 +1,104 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [resend PATCH v4 4/5] drm/mediatek: Add support for mmsys
- through a pdev
-Date: Wed, 18 Jul 2018 18:06:27 +0800
-Message-ID: <1531908387.8953.147.camel@mtkswgap22>
-References: <20180717220328.792-1-matthias.bgg@kernel.org>
-         <20180717220328.792-5-matthias.bgg@kernel.org>
-         <1531882655.8953.83.camel@mtkswgap22> <51066716.k5MkZnrqCl@avalon>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+From: Marcel Holtmann <marcel@holtmann.org>
+Subject: Re: [PATCH v5 4/7] Bluetooth: Add new quirk for non-persistent setup
+ settings
+Date: Wed, 18 Jul 2018 14:14:49 +0200
+Message-ID: <E05CD0A8-B820-4900-970D-57F71E8E5583@holtmann.org>
+References: <cover.1531150733.git.sean.wang@mediatek.com>
+ <4b188c8a508340598dda233f6d49a16c9ac8784e.1531150733.git.sean.wang@mediatek.com>
+ <2825B722-E75C-4A3C-8110-879205E46C0E@holtmann.org>
+ <1531638169.3955.5.camel@mtkswgap22>
+ <6571C864-B2EC-4806-BC5D-F531792737F6@holtmann.org>
+ <1531757114.8953.12.camel@mtkswgap22>
+Mime-Version: 1.0 (Mac OS X Mail 11.4 \(3445.8.2\))
+Content-Type: text/plain;
+        charset=us-ascii
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <51066716.k5MkZnrqCl@avalon>
+In-Reply-To: <1531757114.8953.12.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: matthias.bgg@kernel.org, ulrich.hecht+renesas@gmail.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, pi-cheng.chen@linaro.org, linux-clk@vger.kernel.org, linux@armlinux.org.uk, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, Johan Hedberg <johan.hedberg@gmail.com>, linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-07-18 at 11:05 +0300, Laurent Pinchart wrote:
-> Hi Sean,
-> 
-> On Wednesday, 18 July 2018 05:57:35 EEST Sean Wang wrote:
-> > On Wed, 2018-07-18 at 00:03 +0200, matthias.bgg@kernel.org wrote:
-> > > From: Matthias Brugger <mbrugger@suse.com>
-> > > 
-> > > The MMSYS subsystem includes clocks and drm components.
-> > > This patch adds an initailization path through a platform device
-> > > for the clock part, so that both drivers get probed from the same
-> > > device tree compatible.
-> > 
-> > Sorry for that I should have a response earlier for the series.
-> > 
-> > Some points I felt they're not exactly right and should be fixed up
-> > before we're moving on
-> > 
-> > Currently, drm driver have a wrong reference to the dt-binding,
-> > "mediatek,mt2701-mmsys" or "mediatek,mt8173-mmsys", they should be all
-> > for the subsystem exporting clock and reset line such common resource to
-> > its sub-devices. Every subsystem has a similar shape. I hope mmsys
-> > shouldn't be an exception.
-> > 
-> > DRM device needs to have its own dt-binding show how connections between
-> > DRM components being made and its node should be put under mmsys node.
-> > 
-> > In this way, it becomes easy to see how the topology of the subsystem is
-> > and grows, like a tree "device tree", instead of hiding the details in
-> > the implementation.
-> > 
-> > The similar example we already did for audsys on mt2701 and mt7623 as
-> > below
-> > 
-> > 	audsys: clock-controller@11220000 {
-> > 		
-> compatible = "mediatek,mt7623-audsys",
-> > 		
-> 	     "mediatek,mt2701-audsys",
-> > 		
-> 	     "syscon";
-> > 		
-> 	...
-> > 
-> > 		
-> afe: audio-controller {
-> > 		
-> 	compatible = "mediatek,mt7623-audio",
-> > 		
-> 		
->      "mediatek,mt2701-audio";
-> > 
-> > 		
-> 	...
-> > 		
-> };
-> > 	};
-> 
-> This looks very strange to me. I'm not familiar with the hardware 
-> architecture, but a clock controller that includes an audio controller seems 
-> like a very weird design. It's usually the other way around, you have an audio
+Hi Sean,
 
-yes, naming audsys as clock controller is really not good. it should be
-worth a better naming.
+>>>>> Add a new quirk HCI_QUIRK_NON_PERSISTENT_SETUP allowing that a quirk that
+>>>>> runs setup() after every open() and not just after the first open().
+>>>>> 
+>>>>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>>>>> ---
+>>>>> include/net/bluetooth/hci.h | 9 +++++++++
+>>>>> net/bluetooth/hci_core.c    | 3 ++-
+>>>>> 2 files changed, 11 insertions(+), 1 deletion(-)
+>>>>> 
+>>>>> diff --git a/include/net/bluetooth/hci.h b/include/net/bluetooth/hci.h
+>>>>> index 73e48be..d3ec5b2a8 100644
+>>>>> --- a/include/net/bluetooth/hci.h
+>>>>> +++ b/include/net/bluetooth/hci.h
+>>>>> @@ -183,6 +183,15 @@ enum {
+>>>>> 	 * during the hdev->setup vendor callback.
+>>>>> 	 */
+>>>>> 	HCI_QUIRK_NON_PERSISTENT_DIAG,
+>>>>> +
+>>>>> +	/* When this quirk is set, setup() would be run after every
+>>>>> +	 * open() and not just after the first open().
+>>>>> +	 *
+>>>>> +	 * This quirk can be set before hci_register_dev is called or
+>>>>> +	 * during the hdev->setup vendor callback.
+>>>>> +	 *
+>>>>> +	 */
+>>>>> +	HCI_QUIRK_NON_PERSISTENT_SETUP,
+>>>>> };
+>>>>> 
+>>>>> /* HCI device flags */
+>>>>> diff --git a/net/bluetooth/hci_core.c b/net/bluetooth/hci_core.c
+>>>>> index f5c21004..0111280 100644
+>>>>> --- a/net/bluetooth/hci_core.c
+>>>>> +++ b/net/bluetooth/hci_core.c
+>>>>> @@ -1396,7 +1396,8 @@ static int hci_dev_do_open(struct hci_dev *hdev)
+>>>>> 	atomic_set(&hdev->cmd_cnt, 1);
+>>>>> 	set_bit(HCI_INIT, &hdev->flags);
+>>>>> 
+>>>>> -	if (hci_dev_test_flag(hdev, HCI_SETUP)) {
+>>>>> +	if (hci_dev_test_flag(hdev, HCI_SETUP) ||
+>>>>> +	    test_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks)) {
+>>>>> 		hci_sock_dev_event(hdev, HCI_DEV_SETUP);
+>>>> 
+>>>> can you include the extract of btmon on how the HCI_DEV_SETUP event shows up in the traces? I remember that I asked about something like that.
+>>>> 
+>>>> Regards
+>>>> 
+>>>> Marcel
+>>>> 
+>>> 
+>>> No, I cannot see any event about HCI_DEV_SETUP in btmon trace, the trace I posted as below is doing some rounds of power off and then on
+>> 
+>> it will result in this:
+>> 
+>>        case HCI_DEV_SETUP:
+>>                if (hdev->manufacturer == 0xffff)
+>>                        return NULL;
+>> 
+>>        case HCI_DEV_UP:
+>>                skb = bt_skb_alloc(HCI_MON_INDEX_INFO_SIZE, GFP_ATOMIC);
+>> 
+>> So we will see extra index info events, but I assume that is just fine this we also see them on DEV_UP. They also do not hurt as long as not magically the manufacturer information changes.
+>> 
+>> I do wonder though if this quirk is set, then hdev->manufacturer needs to be reset and allow hdev->setup() to reset it. This goes with a log of other information as well. Maybe just a look if there are no races here.
+>> 
+>> Regards
+>> 
+>> Marcel
+>> 
+> 
+> I didn't set a value to hdev->manufacture.
+> 
+> Should I set it in hdev->setup() ? MediaTek is 0x46 according to [1].
 
-mtk subsystem AFAIK works as a container, at least provides clocks,
-reset, syscon access, these common resource to these devices running on
-the subsystem. It also has a power gate independent from other
-subsystem, that can be controlled when these devices all powered down
-or once up.
+it is generally useful so that it gets reported out in btmon and thus it can assign the correct vendor specific decoder. However you better set hdev->manufacturer = 70 in the probe() routine before calling hci_register_dev. You have a dedicated driver and thus will always know it.
 
-And it should be better that we don't assume what exact devices are
-running on since it is possible that there're different devices running
-on the same subsystem per SoC. mtk has many subsystem working in this
-way. mmsys is just a case. we can see in [1]
+The core tries to figure this out at some point, but then you are missing btmon decoding for the earlier messages. See btusb.c and how other drivers set it early on.
 
+Regards
 
-[1]
-https://elixir.bootlin.com/linux/v4.18-rc5/source/Documentation/devicetree/bindings/arm/mediatek
- 
-> controller, and it also contains hardware that produces clocks, and possibly 
-> handles miscellaneous audio-related routing tasks. I would thus expect the 
-> reverse in the device tree:
-> 
-> 	afe: audio-controller@11220000 {
-> 		
-> compatible = "mediatek,mt7623-audio",
-> 		
-> 	     "mediatek,mt2701-audio";
-> 		
-> ..
-> 
-> 		
-> audsys: clock-controller {
-> 		
-> 	compatible = "mediatek,mt7623-audsys",
-> 		
-> 		
->      "mediatek,mt2701-audsys",
-> 		
-> 		
->      "syscon";
-> 		
-> 	...
-> 		
-> };
-> 	};
-> 
-> And if audsys only exposes clocks, you don't even need a subnode to represent 
-> it, the audio controller itself can be a clock provider.
-> 
-> 	afe: audio-controller@11220000 {
-> 		
-> compatible = "mediatek,mt7623-audio",
-> 		
-> 	     "mediatek,mt2701-audio";
-> 		
-> #clock-cells = <1>;
-> 		
-> ..
-> 	};
-> 
-> > > Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-> > > ---
-> > > 
-> > >  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 18 ++++++++++++++++++
-> > >  drivers/gpu/drm/mediatek/mtk_drm_drv.h |  2 ++
-> > >  2 files changed, 20 insertions(+)
-> > > 
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > > b/drivers/gpu/drm/mediatek/mtk_drm_drv.c index dd249cf5121e..c946aea722e5
-> > > 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > > @@ -173,6 +173,7 @@ static const struct mtk_mmsys_driver_data
-> > > mt2701_mmsys_driver_data = {> 
-> > >  	.ext_path = mt2701_mtk_ddp_ext,
-> > >  	.ext_len = 
-> ARRAY_SIZE(mt2701_mtk_ddp_ext),
-> > >  	.shadow_register = true,
-> > > 
-> > > +	.clk_drv_name = "clk-mt2701-mm",
-> > > 
-> > >  };
-> > >  
-> > >  static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
-> > > 
-> > > @@ -180,6 +181,7 @@ static const struct mtk_mmsys_driver_data
-> > > mt8173_mmsys_driver_data = {> 
-> > >  	.main_len = 
-> ARRAY_SIZE(mt8173_mtk_ddp_main),
-> > >  	.ext_path = mt8173_mtk_ddp_ext,
-> > >  	.ext_len = 
-> ARRAY_SIZE(mt8173_mtk_ddp_ext),
-> > > 
-> > > +	.clk_drv_name = "clk-mt8173-mm",
-> > > 
-> > >  };
-> > >  
-> > >  static int mtk_drm_kms_init(struct drm_device *drm)
-> > > 
-> > > @@ -411,6 +413,19 @@ static int mtk_drm_probe(struct platform_device
-> > > *pdev)
-> > > 
-> > >  	if (IS_ERR(private->config_regs))
-> > >  	
-> > >  		
-> return PTR_ERR(private->config_regs);
-> > > 
-> > > +	if (private->data->clk_drv_name) {
-> > > +		
-> private->clk_dev = platform_device_register_data(dev,
-> > > +		
-> 		
-> 		
-> private->data->clk_drv_name, -1,
-> > > +		
-> 		
-> 		
-> NULL, 0);
-> > > +
-> > > +		
-> if (IS_ERR(private->clk_dev)) {
-> > > +		
-> 	pr_err("failed to register %s platform 
-> device\n",
-> > > +		
-> 		
-> 		
-> private->data->clk_drv_name);
-> > > +
-> > > +		
-> 	return PTR_ERR(private->clk_dev);
-> > > +		
-> }
-> > > +	}
-> > > +
-> > > 
-> > >  	/* Iterate over sibling DISP 
-> function blocks */
-> > >  	for_each_child_of_node(dev->of_node-
-> >parent, node) {
-> > >  	
-> > >  		
-> const struct of_device_id *of_id;
-> > > 
-> > > @@ -515,6 +530,9 @@ static int mtk_drm_remove(struct platform_device
-> > > *pdev)
-> > > 
-> > >  	for (i = 0; i < 
-> DDP_COMPONENT_ID_MAX; i++)
-> > >  	
-> > >  		
-> of_node_put(private->comp_node[i]);
-> > > 
-> > > +	if (private->clk_dev)
-> > > +		
-> platform_device_unregister(private->clk_dev);
-> > > +
-> > > 
-> > >  	return 0;
-> > >  
-> > >  }
-> > > 
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> > > b/drivers/gpu/drm/mediatek/mtk_drm_drv.h index 86cec19193c4..200eee5de419
-> > > 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> > > @@ -34,11 +34,13 @@ struct mtk_mmsys_driver_data {
-> > > 
-> > >  	const enum mtk_ddp_comp_id 
-> *ext_path;
-> > >  	unsigned int ext_len;
-> > >  	bool shadow_register;
-> > > 
-> > > +	const char *clk_drv_name;
-> > > 
-> > >  };
-> > >  
-> > >  struct mtk_drm_private {
-> > >  
-> > >  	struct drm_device *drm;
-> > >  	struct device *dma_dev;
-> > > 
-> > > +	struct platform_device *clk_dev;
-> > > 
-> > >  	unsigned int num_pipes;
-> 
-> 
+Marcel
