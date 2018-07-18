@@ -1,183 +1,160 @@
-From: Honghui Zhang <honghui.zhang@mediatek.com>
-Subject: Re: [PATCH v3 3/4] PCI: mediatek: Add system pm support for MT2712
- and MT7622
-Date: Wed, 18 Jul 2018 14:02:41 +0800
-Message-ID: <1531893761.31406.15.camel@mhfsdcap03>
-References: <1530518264-6125-1-git-send-email-honghui.zhang@mediatek.com>
-         <1530518264-6125-4-git-send-email-honghui.zhang@mediatek.com>
-         <20180717171543.GA20991@red-moon>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [resend PATCH v4 4/5] drm/mediatek: Add support for mmsys through
+ a pdev
+Date: Wed, 18 Jul 2018 09:27:48 +0200
+Message-ID: <50c93f6d-c546-1479-62c1-adc0b40d5dab@gmail.com>
+References: <20180717220328.792-1-matthias.bgg@kernel.org>
+ <20180717220328.792-5-matthias.bgg@kernel.org>
+ <1531882655.8953.83.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180717171543.GA20991@red-moon>
+In-Reply-To: <1531882655.8953.83.camel@mtkswgap22>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, rjw@rjwysocki.net, khilman@kernel.org, ulf.hansson@linaro.org
+To: Sean Wang <sean.wang@mediatek.com>, matthias.bgg@kernel.org
+Cc: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, pi-cheng.chen@linaro.org, linux-clk@vger.kernel.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-07-17 at 18:15 +0100, Lorenzo Pieralisi wrote:
-> [+Rafael, Kevin, Ulf]
-> 
-> On Mon, Jul 02, 2018 at 03:57:43PM +0800, honghui.zhang@mediatek.com wrote:
-> > From: Honghui Zhang <honghui.zhang@mediatek.com>
-> > 
-> > The MTCMOS of PCIe Host for MT2712 and MT7622 will be off when system
-> > suspend, and all the internal control register will be reset after system
-> > resume. The PCIe link should be re-established and the related control
-> > register values should be re-set after system resume.
-> > 
-> > Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> > Acked-by: Ryder Lee <ryder.lee@mediatek.com>
-> > ---
-> >  drivers/pci/controller/pcie-mediatek.c | 67 ++++++++++++++++++++++++++++++++++
-> >  1 file changed, 67 insertions(+)
-> > 
-> > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> > index 86918d4..175d7b6 100644
-> > --- a/drivers/pci/controller/pcie-mediatek.c
-> > +++ b/drivers/pci/controller/pcie-mediatek.c
-> > @@ -134,12 +134,14 @@ struct mtk_pcie_port;
-> >  /**
-> >   * struct mtk_pcie_soc - differentiate between host generations
-> >   * @need_fix_class_id: whether this host's class ID needed to be fixed or not
-> > + * @pm_support: whether the host's MTCMOS will be off when suspend
-> >   * @ops: pointer to configuration access functions
-> >   * @startup: pointer to controller setting functions
-> >   * @setup_irq: pointer to initialize IRQ functions
-> >   */
-> >  struct mtk_pcie_soc {
-> >  	bool need_fix_class_id;
-> > +	bool pm_support;
-> >  	struct pci_ops *ops;
-> >  	int (*startup)(struct mtk_pcie_port *port);
-> >  	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
-> > @@ -1197,12 +1199,75 @@ static int mtk_pcie_probe(struct platform_device *pdev)
-> >  	return err;
-> >  }
-> >  
-> > +static int __maybe_unused mtk_pcie_suspend_noirq(struct device *dev)
-> > +{
-> > +	struct mtk_pcie *pcie = dev_get_drvdata(dev);
-> > +	const struct mtk_pcie_soc *soc = pcie->soc;
-> > +	struct mtk_pcie_port *port;
-> > +
-> > +	if (!soc->pm_support)
-> > +		return 0;
-> > +
-> > +	if (list_empty(&pcie->ports))
-> > +		return 0;
-> > +
-> > +	list_for_each_entry(port, &pcie->ports, list) {
-> > +		clk_disable_unprepare(port->pipe_ck);
-> > +		clk_disable_unprepare(port->obff_ck);
-> > +		clk_disable_unprepare(port->axi_ck);
-> > +		clk_disable_unprepare(port->aux_ck);
-> > +		clk_disable_unprepare(port->ahb_ck);
-> > +		clk_disable_unprepare(port->sys_ck);
-> > +		phy_power_off(port->phy);
-> > +		phy_exit(port->phy);
-> > +	}
-> > +
-> > +	mtk_pcie_subsys_powerdown(pcie);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int __maybe_unused mtk_pcie_resume_noirq(struct device *dev)
-> > +{
-> > +	struct mtk_pcie *pcie = dev_get_drvdata(dev);
-> > +	const struct mtk_pcie_soc *soc = pcie->soc;
-> > +	struct mtk_pcie_port *port, *tmp;
-> > +
-> > +	if (!soc->pm_support)
-> > +		return 0;
-> > +
-> > +	if (list_empty(&pcie->ports))
-> > +		return 0;
-> > +
-> > +	if (dev->pm_domain) {
-> > +		pm_runtime_enable(dev);
-> > +		pm_runtime_get_sync(dev);
-> > +	}
-> 
-> Are these runtime PM calls needed/abused here ?
-> 
-> Mind explaining the logic ?
-> 
-> There is certainly an asymmetry with the suspend callback which made me
-> suspicious, I am pretty certain Rafael/Kevin/Ulf can help me clarify so
-> that we can make progress with this patch.
-> 
-> Lorenzo
-> 
-Hi Lorenzo, thanks for your comments.
-Sorry I don't get you.
-I believe that in suspend callbacks the pm_runtime_put_sync and
-pm_runtime_disable should be called to gated the CMOS for this module,
-while the pm_rumtime_enable and pm_rumtime_get_sync should be called in
-resume callback.
+Hi Sean,
 
-That's exactly this patch doing.
-But the pm_rumtime_put_sync and pm_runtime_disable functions was wrapped
-in the mtk_pcie_subsys_powerdown.
+On 18/07/18 04:57, Sean Wang wrote:
+> On Wed, 2018-07-18 at 00:03 +0200, matthias.bgg@kernel.org wrote:
+>> From: Matthias Brugger <mbrugger@suse.com>
+>>
+>> The MMSYS subsystem includes clocks and drm components.
+>> This patch adds an initailization path through a platform device
+>> for the clock part, so that both drivers get probed from the same
+>> device tree compatible.
+>>
+> 
+> Sorry for that I should have a response earlier for the series.
+> 
+> Some points I felt they're not exactly right and should be fixed up
+> before we're moving on
+> 
+> Currently, drm driver have a wrong reference to the dt-binding,
+> "mediatek,mt2701-mmsys" or "mediatek,mt8173-mmsys", they should be all
+> for the subsystem exporting clock and reset line such common resource to
+> its sub-devices. Every subsystem has a similar shape. I hope mmsys
+> shouldn't be an exception.
 
-I did not call mtk_pcie_subsys_powerup since it does not just wrapped
-pm_rumtime related functions but also do the platform_resource_get,
-devm_ioremap, and free_ck clock get which I do not needed in resume
-callback.
+I'm not sure if I understand what you mean. You proposed to use a platform
+device [1] and now you say we should change the DTS?
 
-Do you think it will be much clear if I abstract the
-platform_resource_get, devm_ioremap functions from
-mtk_pcie_subsys_powerup and put it to a new functions like
-mtk_pcie_subsys_resource_get, and then we may call the
-mtk_pcie_subsys_powerup in the resume function?
+What do you mean by "drm driver has a wrong reference to the dt-binding"? How
+would you want to name it and most important, what would be your approach to
+have backwards compatibility to older device tree bindings?
 
-thanks
-> > +
-> > +	clk_prepare_enable(pcie->free_ck);
-> > +
-> > +	list_for_each_entry_safe(port, tmp, &pcie->ports, list)
-> > +		mtk_pcie_enable_port(port);
-> > +
-> > +	/* In case of EP was removed while system suspend. */
-> > +	if (list_empty(&pcie->ports))
-> > +		mtk_pcie_subsys_powerdown(pcie);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static const struct dev_pm_ops mtk_pcie_pm_ops = {
-> > +	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_pcie_suspend_noirq,
-> > +				      mtk_pcie_resume_noirq)
-> > +};
-> > +
-> >  static const struct mtk_pcie_soc mtk_pcie_soc_v1 = {
-> >  	.ops = &mtk_pcie_ops,
-> >  	.startup = mtk_pcie_startup_port,
-> >  };
-> >  
-> >  static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
-> > +	.pm_support = true,
-> >  	.ops = &mtk_pcie_ops_v2,
-> >  	.startup = mtk_pcie_startup_port_v2,
-> >  	.setup_irq = mtk_pcie_setup_irq,
-> > @@ -1210,6 +1275,7 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt2712 = {
-> >  
-> >  static const struct mtk_pcie_soc mtk_pcie_soc_mt7622 = {
-> >  	.need_fix_class_id = true,
-> > +	.pm_support = true,
-> >  	.ops = &mtk_pcie_ops_v2,
-> >  	.startup = mtk_pcie_startup_port_v2,
-> >  	.setup_irq = mtk_pcie_setup_irq,
-> > @@ -1229,6 +1295,7 @@ static struct platform_driver mtk_pcie_driver = {
-> >  		.name = "mtk-pcie",
-> >  		.of_match_table = mtk_pcie_ids,
-> >  		.suppress_bind_attrs = true,
-> > +		.pm = &mtk_pcie_pm_ops,
-> >  	},
-> >  };
-> >  builtin_platform_driver(mtk_pcie_driver);
-> > -- 
-> > 2.6.4
-> > 
+> 
+> DRM device needs to have its own dt-binding show how connections between
+> DRM components being made and its node should be put under mmsys node.
+> > In this way, it becomes easy to see how the topology of the subsystem is
+> and grows, like a tree "device tree", instead of hiding the details in
+> the implementation.
+> 
+> The similar example we already did for audsys on mt2701 and mt7623 as
+> below
+> 
+> 	audsys: clock-controller@11220000 {
+> 		compatible = "mediatek,mt7623-audsys",
+> 			     "mediatek,mt2701-audsys",
+> 			     "syscon";
+> 			...
+> 
+> 		afe: audio-controller {
+> 			compatible = "mediatek,mt7623-audio",
+> 				     "mediatek,mt2701-audio";
+> 			
+> 			...
+> 		};
+> 	};
+> 
+
+I think this approach is not working as, due to backwards compatibility, we have
+to make sure that the DRM driver gets probed with the mmsys binding.
+
+Regards,
+Matthias
+
+> 	
+> 	Sean
+> 
+> 
+>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+>> ---
+>>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 18 ++++++++++++++++++
+>>  drivers/gpu/drm/mediatek/mtk_drm_drv.h |  2 ++
+>>  2 files changed, 20 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> index dd249cf5121e..c946aea722e5 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> @@ -173,6 +173,7 @@ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+>>  	.ext_path = mt2701_mtk_ddp_ext,
+>>  	.ext_len = ARRAY_SIZE(mt2701_mtk_ddp_ext),
+>>  	.shadow_register = true,
+>> +	.clk_drv_name = "clk-mt2701-mm",
+>>  };
+>>  
+>>  static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+>> @@ -180,6 +181,7 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+>>  	.main_len = ARRAY_SIZE(mt8173_mtk_ddp_main),
+>>  	.ext_path = mt8173_mtk_ddp_ext,
+>>  	.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
+>> +	.clk_drv_name = "clk-mt8173-mm",
+>>  };
+>>  
+>>  static int mtk_drm_kms_init(struct drm_device *drm)
+>> @@ -411,6 +413,19 @@ static int mtk_drm_probe(struct platform_device *pdev)
+>>  	if (IS_ERR(private->config_regs))
+>>  		return PTR_ERR(private->config_regs);
+>>  
+>> +	if (private->data->clk_drv_name) {
+>> +		private->clk_dev = platform_device_register_data(dev,
+>> +						private->data->clk_drv_name, -1,
+>> +						NULL, 0);
+>> +
+>> +		if (IS_ERR(private->clk_dev)) {
+>> +			pr_err("failed to register %s platform device\n",
+>> +						private->data->clk_drv_name);
+>> +
+>> +			return PTR_ERR(private->clk_dev);
+>> +		}
+>> +	}
+>> +
+>>  	/* Iterate over sibling DISP function blocks */
+>>  	for_each_child_of_node(dev->of_node->parent, node) {
+>>  		const struct of_device_id *of_id;
+>> @@ -515,6 +530,9 @@ static int mtk_drm_remove(struct platform_device *pdev)
+>>  	for (i = 0; i < DDP_COMPONENT_ID_MAX; i++)
+>>  		of_node_put(private->comp_node[i]);
+>>  
+>> +	if (private->clk_dev)
+>> +		platform_device_unregister(private->clk_dev);
+>> +
+>>  	return 0;
+>>  }
+>>  
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+>> index 86cec19193c4..200eee5de419 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+>> @@ -34,11 +34,13 @@ struct mtk_mmsys_driver_data {
+>>  	const enum mtk_ddp_comp_id *ext_path;
+>>  	unsigned int ext_len;
+>>  	bool shadow_register;
+>> +	const char *clk_drv_name;
+>>  };
+>>  
+>>  struct mtk_drm_private {
+>>  	struct drm_device *drm;
+>>  	struct device *dma_dev;
+>> +	struct platform_device *clk_dev;
+>>  
+>>  	unsigned int num_pipes;
+>>  
+> 
+> 
