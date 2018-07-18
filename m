@@ -1,168 +1,126 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Subject: Re: [resend PATCH v4 4/5] drm/mediatek: Add support for mmsys through
  a pdev
-Date: Wed, 18 Jul 2018 09:28:25 +0200
-Message-ID: <660471a0-480b-241f-8880-8b56aed3e64b@gmail.com>
+Date: Wed, 18 Jul 2018 11:05:49 +0300
+Message-ID: <51066716.k5MkZnrqCl@avalon>
 References: <20180717220328.792-1-matthias.bgg@kernel.org>
  <20180717220328.792-5-matthias.bgg@kernel.org>
  <1531882655.8953.83.camel@mtkswgap22>
- <50c93f6d-c546-1479-62c1-adc0b40d5dab@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <50c93f6d-c546-1479-62c1-adc0b40d5dab@gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>, matthias.bgg@kernel.org
-Cc: ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, davem@davemloft.net, gregkh@linuxfoundation.org, mchehab@kernel.org, rdunlap@infradead.org, pi-cheng.chen@linaro.org, linux-clk@vger.kernel.org, linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1531882655.8953.83.camel@mtkswgap22>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: mark.rutland@arm.com, airlied@linux.ie, mturquette@baylibre.com, dri-devel@lists.freedesktop.org, ulrich.hecht+renesas@gmail.com, lee.jones@linaro.org, linux-clk@vger.kernel.org, linux@armlinux.org.uk, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>, gregkh@linuxfoundation.org, rdunlap@infradead.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, matthias.bgg@kernel.org, pi-cheng.chen@linaro.org, davem@davemloft.net
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 18/07/18 09:27, Matthias Brugger wrote:
-> Hi Sean,
-> 
-> On 18/07/18 04:57, Sean Wang wrote:
->> On Wed, 2018-07-18 at 00:03 +0200, matthias.bgg@kernel.org wrote:
->>> From: Matthias Brugger <mbrugger@suse.com>
->>>
->>> The MMSYS subsystem includes clocks and drm components.
->>> This patch adds an initailization path through a platform device
->>> for the clock part, so that both drivers get probed from the same
->>> device tree compatible.
->>>
->>
->> Sorry for that I should have a response earlier for the series.
->>
->> Some points I felt they're not exactly right and should be fixed up
->> before we're moving on
->>
->> Currently, drm driver have a wrong reference to the dt-binding,
->> "mediatek,mt2701-mmsys" or "mediatek,mt8173-mmsys", they should be all
->> for the subsystem exporting clock and reset line such common resource to
->> its sub-devices. Every subsystem has a similar shape. I hope mmsys
->> shouldn't be an exception.
-> 
-> I'm not sure if I understand what you mean. You proposed to use a platform
-> device [1] and now you say we should change the DTS?
-> 
-> What do you mean by "drm driver has a wrong reference to the dt-binding"? How
-> would you want to name it and most important, what would be your approach to
-> have backwards compatibility to older device tree bindings?
-> 
-
-I forgot the reference:
-[1] https://patchwork.kernel.org/patch/10367797/
-
->>
->> DRM device needs to have its own dt-binding show how connections between
->> DRM components being made and its node should be put under mmsys node.
->>> In this way, it becomes easy to see how the topology of the subsystem is
->> and grows, like a tree "device tree", instead of hiding the details in
->> the implementation.
->>
->> The similar example we already did for audsys on mt2701 and mt7623 as
->> below
->>
->> 	audsys: clock-controller@11220000 {
->> 		compatible = "mediatek,mt7623-audsys",
->> 			     "mediatek,mt2701-audsys",
->> 			     "syscon";
->> 			...
->>
->> 		afe: audio-controller {
->> 			compatible = "mediatek,mt7623-audio",
->> 				     "mediatek,mt2701-audio";
->> 			
->> 			...
->> 		};
->> 	};
->>
-> 
-> I think this approach is not working as, due to backwards compatibility, we have
-> to make sure that the DRM driver gets probed with the mmsys binding.
-> 
-> Regards,
-> Matthias
-> 
->> 	
->> 	Sean
->>
->>
->>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
->>> ---
->>>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 18 ++++++++++++++++++
->>>  drivers/gpu/drm/mediatek/mtk_drm_drv.h |  2 ++
->>>  2 files changed, 20 insertions(+)
->>>
->>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
->>> index dd249cf5121e..c946aea722e5 100644
->>> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
->>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
->>> @@ -173,6 +173,7 @@ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
->>>  	.ext_path = mt2701_mtk_ddp_ext,
->>>  	.ext_len = ARRAY_SIZE(mt2701_mtk_ddp_ext),
->>>  	.shadow_register = true,
->>> +	.clk_drv_name = "clk-mt2701-mm",
->>>  };
->>>  
->>>  static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
->>> @@ -180,6 +181,7 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
->>>  	.main_len = ARRAY_SIZE(mt8173_mtk_ddp_main),
->>>  	.ext_path = mt8173_mtk_ddp_ext,
->>>  	.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
->>> +	.clk_drv_name = "clk-mt8173-mm",
->>>  };
->>>  
->>>  static int mtk_drm_kms_init(struct drm_device *drm)
->>> @@ -411,6 +413,19 @@ static int mtk_drm_probe(struct platform_device *pdev)
->>>  	if (IS_ERR(private->config_regs))
->>>  		return PTR_ERR(private->config_regs);
->>>  
->>> +	if (private->data->clk_drv_name) {
->>> +		private->clk_dev = platform_device_register_data(dev,
->>> +						private->data->clk_drv_name, -1,
->>> +						NULL, 0);
->>> +
->>> +		if (IS_ERR(private->clk_dev)) {
->>> +			pr_err("failed to register %s platform device\n",
->>> +						private->data->clk_drv_name);
->>> +
->>> +			return PTR_ERR(private->clk_dev);
->>> +		}
->>> +	}
->>> +
->>>  	/* Iterate over sibling DISP function blocks */
->>>  	for_each_child_of_node(dev->of_node->parent, node) {
->>>  		const struct of_device_id *of_id;
->>> @@ -515,6 +530,9 @@ static int mtk_drm_remove(struct platform_device *pdev)
->>>  	for (i = 0; i < DDP_COMPONENT_ID_MAX; i++)
->>>  		of_node_put(private->comp_node[i]);
->>>  
->>> +	if (private->clk_dev)
->>> +		platform_device_unregister(private->clk_dev);
->>> +
->>>  	return 0;
->>>  }
->>>  
->>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
->>> index 86cec19193c4..200eee5de419 100644
->>> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
->>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
->>> @@ -34,11 +34,13 @@ struct mtk_mmsys_driver_data {
->>>  	const enum mtk_ddp_comp_id *ext_path;
->>>  	unsigned int ext_len;
->>>  	bool shadow_register;
->>> +	const char *clk_drv_name;
->>>  };
->>>  
->>>  struct mtk_drm_private {
->>>  	struct drm_device *drm;
->>>  	struct device *dma_dev;
->>> +	struct platform_device *clk_dev;
->>>  
->>>  	unsigned int num_pipes;
->>>  
->>
->>
+SGkgU2VhbiwKCk9uIFdlZG5lc2RheSwgMTggSnVseSAyMDE4IDA1OjU3OjM1IEVFU1QgU2VhbiBX
+YW5nIHdyb3RlOgo+IE9uIFdlZCwgMjAxOC0wNy0xOCBhdCAwMDowMyArMDIwMCwgbWF0dGhpYXMu
+YmdnQGtlcm5lbC5vcmcgd3JvdGU6Cj4gPiBGcm9tOiBNYXR0aGlhcyBCcnVnZ2VyIDxtYnJ1Z2dl
+ckBzdXNlLmNvbT4KPiA+IAo+ID4gVGhlIE1NU1lTIHN1YnN5c3RlbSBpbmNsdWRlcyBjbG9ja3Mg
+YW5kIGRybSBjb21wb25lbnRzLgo+ID4gVGhpcyBwYXRjaCBhZGRzIGFuIGluaXRhaWxpemF0aW9u
+IHBhdGggdGhyb3VnaCBhIHBsYXRmb3JtIGRldmljZQo+ID4gZm9yIHRoZSBjbG9jayBwYXJ0LCBz
+byB0aGF0IGJvdGggZHJpdmVycyBnZXQgcHJvYmVkIGZyb20gdGhlIHNhbWUKPiA+IGRldmljZSB0
+cmVlIGNvbXBhdGlibGUuCj4gCj4gU29ycnkgZm9yIHRoYXQgSSBzaG91bGQgaGF2ZSBhIHJlc3Bv
+bnNlIGVhcmxpZXIgZm9yIHRoZSBzZXJpZXMuCj4gCj4gU29tZSBwb2ludHMgSSBmZWx0IHRoZXkn
+cmUgbm90IGV4YWN0bHkgcmlnaHQgYW5kIHNob3VsZCBiZSBmaXhlZCB1cAo+IGJlZm9yZSB3ZSdy
+ZSBtb3Zpbmcgb24KPiAKPiBDdXJyZW50bHksIGRybSBkcml2ZXIgaGF2ZSBhIHdyb25nIHJlZmVy
+ZW5jZSB0byB0aGUgZHQtYmluZGluZywKPiAibWVkaWF0ZWssbXQyNzAxLW1tc3lzIiBvciAibWVk
+aWF0ZWssbXQ4MTczLW1tc3lzIiwgdGhleSBzaG91bGQgYmUgYWxsCj4gZm9yIHRoZSBzdWJzeXN0
+ZW0gZXhwb3J0aW5nIGNsb2NrIGFuZCByZXNldCBsaW5lIHN1Y2ggY29tbW9uIHJlc291cmNlIHRv
+Cj4gaXRzIHN1Yi1kZXZpY2VzLiBFdmVyeSBzdWJzeXN0ZW0gaGFzIGEgc2ltaWxhciBzaGFwZS4g
+SSBob3BlIG1tc3lzCj4gc2hvdWxkbid0IGJlIGFuIGV4Y2VwdGlvbi4KPiAKPiBEUk0gZGV2aWNl
+IG5lZWRzIHRvIGhhdmUgaXRzIG93biBkdC1iaW5kaW5nIHNob3cgaG93IGNvbm5lY3Rpb25zIGJl
+dHdlZW4KPiBEUk0gY29tcG9uZW50cyBiZWluZyBtYWRlIGFuZCBpdHMgbm9kZSBzaG91bGQgYmUg
+cHV0IHVuZGVyIG1tc3lzIG5vZGUuCj4gCj4gSW4gdGhpcyB3YXksIGl0IGJlY29tZXMgZWFzeSB0
+byBzZWUgaG93IHRoZSB0b3BvbG9neSBvZiB0aGUgc3Vic3lzdGVtIGlzCj4gYW5kIGdyb3dzLCBs
+aWtlIGEgdHJlZSAiZGV2aWNlIHRyZWUiLCBpbnN0ZWFkIG9mIGhpZGluZyB0aGUgZGV0YWlscyBp
+bgo+IHRoZSBpbXBsZW1lbnRhdGlvbi4KPiAKPiBUaGUgc2ltaWxhciBleGFtcGxlIHdlIGFscmVh
+ZHkgZGlkIGZvciBhdWRzeXMgb24gbXQyNzAxIGFuZCBtdDc2MjMgYXMKPiBiZWxvdwo+IAo+IAlh
+dWRzeXM6IGNsb2NrLWNvbnRyb2xsZXJAMTEyMjAwMDAgewo+IAkJCmNvbXBhdGlibGUgPSAibWVk
+aWF0ZWssbXQ3NjIzLWF1ZHN5cyIsCj4gCQkKCSAgICAgIm1lZGlhdGVrLG10MjcwMS1hdWRzeXMi
+LAo+IAkJCgkgICAgICJzeXNjb24iOwo+IAkJCgkuLi4KPiAKPiAJCQphZmU6IGF1ZGlvLWNvbnRy
+b2xsZXIgewo+IAkJCgljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10NzYyMy1hdWRpbyIsCj4gCQkK
+CQkKICAgICAibWVkaWF0ZWssbXQyNzAxLWF1ZGlvIjsKPiAKPiAJCQoJLi4uCj4gCQkKfTsKPiAJ
+fTsKClRoaXMgbG9va3MgdmVyeSBzdHJhbmdlIHRvIG1lLiBJJ20gbm90IGZhbWlsaWFyIHdpdGgg
+dGhlIGhhcmR3YXJlIAphcmNoaXRlY3R1cmUsIGJ1dCBhIGNsb2NrIGNvbnRyb2xsZXIgdGhhdCBp
+bmNsdWRlcyBhbiBhdWRpbyBjb250cm9sbGVyIHNlZW1zIApsaWtlIGEgdmVyeSB3ZWlyZCBkZXNp
+Z24uIEl0J3MgdXN1YWxseSB0aGUgb3RoZXIgd2F5IGFyb3VuZCwgeW91IGhhdmUgYW4gYXVkaW8g
+CmNvbnRyb2xsZXIsIGFuZCBpdCBhbHNvIGNvbnRhaW5zIGhhcmR3YXJlIHRoYXQgcHJvZHVjZXMg
+Y2xvY2tzLCBhbmQgcG9zc2libHkgCmhhbmRsZXMgbWlzY2VsbGFuZW91cyBhdWRpby1yZWxhdGVk
+IHJvdXRpbmcgdGFza3MuIEkgd291bGQgdGh1cyBleHBlY3QgdGhlIApyZXZlcnNlIGluIHRoZSBk
+ZXZpY2UgdHJlZToKCglhZmU6IGF1ZGlvLWNvbnRyb2xsZXJAMTEyMjAwMDAgewoJCQpjb21wYXRp
+YmxlID0gIm1lZGlhdGVrLG10NzYyMy1hdWRpbyIsCgkJCgkgICAgICJtZWRpYXRlayxtdDI3MDEt
+YXVkaW8iOwoJCQouLgoKCQkKYXVkc3lzOiBjbG9jay1jb250cm9sbGVyIHsKCQkKCWNvbXBhdGli
+bGUgPSAibWVkaWF0ZWssbXQ3NjIzLWF1ZHN5cyIsCgkJCgkJCiAgICAgIm1lZGlhdGVrLG10Mjcw
+MS1hdWRzeXMiLAoJCQoJCQogICAgICJzeXNjb24iOwoJCQoJLi4uCgkJCn07Cgl9OwoKQW5kIGlm
+IGF1ZHN5cyBvbmx5IGV4cG9zZXMgY2xvY2tzLCB5b3UgZG9uJ3QgZXZlbiBuZWVkIGEgc3Vibm9k
+ZSB0byByZXByZXNlbnQgCml0LCB0aGUgYXVkaW8gY29udHJvbGxlciBpdHNlbGYgY2FuIGJlIGEg
+Y2xvY2sgcHJvdmlkZXIuCgoJYWZlOiBhdWRpby1jb250cm9sbGVyQDExMjIwMDAwIHsKCQkKY29t
+cGF0aWJsZSA9ICJtZWRpYXRlayxtdDc2MjMtYXVkaW8iLAoJCQoJICAgICAibWVkaWF0ZWssbXQy
+NzAxLWF1ZGlvIjsKCQkKI2Nsb2NrLWNlbGxzID0gPDE+OwoJCQouLgoJfTsKCj4gPiBTaWduZWQt
+b2ZmLWJ5OiBNYXR0aGlhcyBCcnVnZ2VyIDxtYnJ1Z2dlckBzdXNlLmNvbT4KPiA+IC0tLQo+ID4g
+Cj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgfCAxOCArKysrKysr
+KysrKysrKysrKysKPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaCB8
+ICAyICsrCj4gPiAgMiBmaWxlcyBjaGFuZ2VkLCAyMCBpbnNlcnRpb25zKCspCj4gPiAKPiA+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ID4gYi9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBpbmRleCBkZDI0OWNmNTEyMWUu
+LmM5NDZhZWE3MjJlNQo+ID4gMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9kcnYuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+cm1fZHJ2LmMKPiA+IEBAIC0xNzMsNiArMTczLDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtf
+bW1zeXNfZHJpdmVyX2RhdGEKPiA+IG10MjcwMV9tbXN5c19kcml2ZXJfZGF0YSA9IHs+IAo+ID4g
+IAkuZXh0X3BhdGggPSBtdDI3MDFfbXRrX2RkcF9leHQsCj4gPiAgCS5leHRfbGVuID0gCkFSUkFZ
+X1NJWkUobXQyNzAxX210a19kZHBfZXh0KSwKPiA+ICAJLnNoYWRvd19yZWdpc3RlciA9IHRydWUs
+Cj4gPiAKPiA+ICsJLmNsa19kcnZfbmFtZSA9ICJjbGstbXQyNzAxLW1tIiwKPiA+IAo+ID4gIH07
+Cj4gPiAgCj4gPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVyX2RhdGEgbXQ4
+MTczX21tc3lzX2RyaXZlcl9kYXRhID0gewo+ID4gCj4gPiBAQCAtMTgwLDYgKzE4MSw3IEBAIHN0
+YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX21tc3lzX2RyaXZlcl9kYXRhCj4gPiBtdDgxNzNfbW1zeXNf
+ZHJpdmVyX2RhdGEgPSB7PiAKPiA+ICAJLm1haW5fbGVuID0gCkFSUkFZX1NJWkUobXQ4MTczX210
+a19kZHBfbWFpbiksCj4gPiAgCS5leHRfcGF0aCA9IG10ODE3M19tdGtfZGRwX2V4dCwKPiA+ICAJ
+LmV4dF9sZW4gPSAKQVJSQVlfU0laRShtdDgxNzNfbXRrX2RkcF9leHQpLAo+ID4gCj4gPiArCS5j
+bGtfZHJ2X25hbWUgPSAiY2xrLW10ODE3My1tbSIsCj4gPiAKPiA+ICB9Owo+ID4gIAo+ID4gIHN0
+YXRpYyBpbnQgbXRrX2RybV9rbXNfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZHJtKQo+ID4gCj4g
+PiBAQCAtNDExLDYgKzQxMywxOSBAQCBzdGF0aWMgaW50IG10a19kcm1fcHJvYmUoc3RydWN0IHBs
+YXRmb3JtX2RldmljZQo+ID4gKnBkZXYpCj4gPiAKPiA+ICAJaWYgKElTX0VSUihwcml2YXRlLT5j
+b25maWdfcmVncykpCj4gPiAgCQo+ID4gIAkJCnJldHVybiBQVFJfRVJSKHByaXZhdGUtPmNvbmZp
+Z19yZWdzKTsKPiA+IAo+ID4gKwlpZiAocHJpdmF0ZS0+ZGF0YS0+Y2xrX2Rydl9uYW1lKSB7Cj4g
+PiArCQkKcHJpdmF0ZS0+Y2xrX2RldiA9IHBsYXRmb3JtX2RldmljZV9yZWdpc3Rlcl9kYXRhKGRl
+diwKPiA+ICsJCQoJCQoJCQpwcml2YXRlLT5kYXRhLT5jbGtfZHJ2X25hbWUsIC0xLAo+ID4gKwkJ
+CgkJCgkJCk5VTEwsIDApOwo+ID4gKwo+ID4gKwkJCmlmIChJU19FUlIocHJpdmF0ZS0+Y2xrX2Rl
+dikpIHsKPiA+ICsJCQoJcHJfZXJyKCJmYWlsZWQgdG8gcmVnaXN0ZXIgJXMgcGxhdGZvcm0gCmRl
+dmljZVxuIiwKPiA+ICsJCQoJCQoJCQpwcml2YXRlLT5kYXRhLT5jbGtfZHJ2X25hbWUpOwo+ID4g
+Kwo+ID4gKwkJCglyZXR1cm4gUFRSX0VSUihwcml2YXRlLT5jbGtfZGV2KTsKPiA+ICsJCQp9Cj4g
+PiArCX0KPiA+ICsKPiA+IAo+ID4gIAkvKiBJdGVyYXRlIG92ZXIgc2libGluZyBESVNQIApmdW5j
+dGlvbiBibG9ja3MgKi8KPiA+ICAJZm9yX2VhY2hfY2hpbGRfb2Zfbm9kZShkZXYtPm9mX25vZGUt
+Cj5wYXJlbnQsIG5vZGUpIHsKPiA+ICAJCj4gPiAgCQkKY29uc3Qgc3RydWN0IG9mX2RldmljZV9p
+ZCAqb2ZfaWQ7Cj4gPiAKPiA+IEBAIC01MTUsNiArNTMwLDkgQEAgc3RhdGljIGludCBtdGtfZHJt
+X3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlCj4gPiAqcGRldikKPiA+IAo+ID4gIAlmb3Ig
+KGkgPSAwOyBpIDwgCkREUF9DT01QT05FTlRfSURfTUFYOyBpKyspCj4gPiAgCQo+ID4gIAkJCm9m
+X25vZGVfcHV0KHByaXZhdGUtPmNvbXBfbm9kZVtpXSk7Cj4gPiAKPiA+ICsJaWYgKHByaXZhdGUt
+PmNsa19kZXYpCj4gPiArCQkKcGxhdGZvcm1fZGV2aWNlX3VucmVnaXN0ZXIocHJpdmF0ZS0+Y2xr
+X2Rldik7Cj4gPiArCj4gPiAKPiA+ICAJcmV0dXJuIDA7Cj4gPiAgCj4gPiAgfQo+ID4gCj4gPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmgKPiA+IGIv
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmggaW5kZXggODZjZWMxOTE5M2M0
+Li4yMDBlZWU1ZGU0MTkKPiA+IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fZHJ2LmgKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHJtX2Rydi5oCj4gPiBAQCAtMzQsMTEgKzM0LDEzIEBAIHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVy
+X2RhdGEgewo+ID4gCj4gPiAgCWNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkIAoqZXh0X3BhdGg7
+Cj4gPiAgCXVuc2lnbmVkIGludCBleHRfbGVuOwo+ID4gIAlib29sIHNoYWRvd19yZWdpc3RlcjsK
+PiA+IAo+ID4gKwljb25zdCBjaGFyICpjbGtfZHJ2X25hbWU7Cj4gPiAKPiA+ICB9Owo+ID4gIAo+
+ID4gIHN0cnVjdCBtdGtfZHJtX3ByaXZhdGUgewo+ID4gIAo+ID4gIAlzdHJ1Y3QgZHJtX2Rldmlj
+ZSAqZHJtOwo+ID4gIAlzdHJ1Y3QgZGV2aWNlICpkbWFfZGV2Owo+ID4gCj4gPiArCXN0cnVjdCBw
+bGF0Zm9ybV9kZXZpY2UgKmNsa19kZXY7Cj4gPiAKPiA+ICAJdW5zaWduZWQgaW50IG51bV9waXBl
+czsKCgotLSAKUmVnYXJkcywKCkxhdXJlbnQgUGluY2hhcnQKCgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
+ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
