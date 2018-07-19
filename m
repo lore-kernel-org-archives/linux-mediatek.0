@@ -1,125 +1,160 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [SPAM]Re: [PATCH] net: mediatek: use dma_zalloc_coherent
- instead of allocator/memset
-Date: Fri, 20 Jul 2018 01:02:24 +0800
-Message-ID: <1532019744.8953.248.camel@mtkswgap22>
-References: <20180719140955.19444-1-yuehaibing@huawei.com>
- <20180719141723.GM17271@n2100.armlinux.org.uk>
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+Subject: [PATCH v3 00/33] Allow dynamic allocations during NAND chip identification phase
+Date: Fri, 20 Jul 2018 00:59:53 +0200
+Message-ID: <20180719230026.8741-1-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180719141723.GM17271@n2100.armlinux.org.uk>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Russell King - ARM Linux <linux@armlinux.org.uk>
-Cc: nbd@openwrt.org, nelson.chang@mediatek.com, netdev@vger.kernel.org, YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, john@phrozen.org, matthias.bgg@gmail.com, davem@davemloft.net, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Boris Brezillon <boris.brezillon@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <mat>
+Cc: linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2018-07-19 at 15:17 +0100, Russell King - ARM Linux wrote:
-> On Thu, Jul 19, 2018 at 10:09:55PM +0800, YueHaibing wrote:
-> > Use dma_zalloc_coherent instead of dma_alloc_coherent
-> > followed by memset 0.
-> > 
-> > Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-> > ---
-> >  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 7 ++-----
-> >  1 file changed, 2 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> > index d8ebf0a..fbdb3e3 100644
-> > --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> > +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> > @@ -1221,14 +1221,11 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
-> >  	if (!ring->buf)
-> >  		goto no_tx_mem;
-> >  
-> > -	ring->dma = dma_alloc_coherent(eth->dev,
-> > -					  MTK_DMA_SIZE * sz,
-> > -					  &ring->phys,
-> > -					  GFP_ATOMIC | __GFP_ZERO);
-> > +	ring->dma = dma_zalloc_coherent(eth->dev, MTK_DMA_SIZE * sz,
-> > +					&ring->phys, GFP_ATOMIC | __GFP_ZERO);
-> >  	if (!ring->dma)
-> >  		goto no_tx_mem;
-> >  
-> > -	memset(ring->dma, 0, MTK_DMA_SIZE * sz);
-> 
-> I have to wonder whether this code needs two forms of zeroing... in
-> the original code, __GFP_ZERO _and_ a call to memset() just in case
-> __GFP_ZERO failed to do its job, and in the replacement code, just
-> in case dma_zalloc_coherent() hasn't got the idea...
-> 
-> I think you can drop the __GFP_ZERO. ;)
-> 
+Hello,
 
-Just now I did an experiment on 4.14.56 on armv7. I found that
-dma_zalloc_coherent does not guarantee that the buffer we get
-is all filled with 0.
+This series make a quite deep change in the NAND framework. Until now,
+the NAND chip identification phase could be done in two manners from the
+controller driver perspective:
 
+1/ Call nand_scan()
 
-I really think it's a little bit weird OR what was I missing something
-for enabling dma_zalloc_coherent ? The result seems to tell that we
-can't remove freely the memset with 0 at this moment until we get a
-cause.
+  or
 
+1/ Call nand_scan_ident()
+2/ Do some controller-dependent configuration
+3/ Call nand_scan_tail().
 
-my test code is
+The fact that the identifaction could be split in two operations
+involved that in the NAND framework, it was not possible to do any
+dynamic allocation without risking a memory leak. What if the core
+allocates a structure, then the driver between nand_scan_ident() and
+nand_scan_tail() decides it cannot handle the chip and errors out?
+The structure allocated by the core is lost: it is a memory leak. One
+solution could have been to add a nand_scan_ident_cleanup() function,
+but that would mean patching all the drivers anyway to make them call
+this function when something fails between nand_scan_ident() and
+nand_scan_tail().
 
-         ring->dma = dma_zalloc_coherent(eth->dev,
-                                          MTK_DMA_SIZE * sz,
-                                          &ring->phys,
-                                          GFP_ATOMIC);
-        if (!ring->dma)
-                goto no_tx_mem;
+To avoid this situation, we migrate all drivers to use nand_scan() in
+conjuction with the recently added hooks ->attach_chip() and
+->detach_chip() that are part of the nand_controller structure
+operations. Drivers that need to tweak their configuration after
+nand_scan_ident() should implement it. Any dynamically allocated space
+in ->attach_chip() must be freed in the second hook: ->detach_chip().
 
-        print_hex_dump(KERN_INFO, "mtk_tx_alloc:",
-                       DUMP_PREFIX_OFFSET, 16, 1,
-                       ring->dma, MTK_DMA_SIZE * sz, false);
+The ->detach_chip() does not have to be called upon error in the
+controller driver probe function. The nand_cleanup() helper already
+exists for that and will do the call if needed. Of course, this helper
+must be called on error after a successful nand_scan(), just like
+before.
 
-        memset(ring->dma, 0, MTK_DMA_SIZE * sz);
+Once all drivers not using nand_scan() are migrated, nand_scan_ident()
+and nand_scan_tail() are unexported and only available internally.
 
-        print_hex_dump(KERN_INFO, "mtk_tx_alloc2:",
-                       DUMP_PREFIX_OFFSET, 16, 1,
-                       ring->dma, MTK_DMA_SIZE * sz, false);
+A previous work [1] removed the ONFI/JEDEC parameter pages and instead
+allocated a nand_parameters structure in nand_chip, embedding both
+generic entries and ONFI-related ones. The deal was, once dynamic
+allocation possible, allocate in nand_scan_ident() the ONFI strcuture
+only if actually needed. This is done in the last patches.
 
+This series applies on top of nand/next.
 
-and the output 
+Thank you,
+Miquèl
 
-...
+[1] http://lists.infradead.org/pipermail/linux-mtd/2018-March/079456.html
 
-[  259.610413] mtk_tx_alloc:00000f40: 00 00 00 00 50 1f 00 bc 00 00 00 c0 00 00 00 00
-[  259.617934] mtk_tx_alloc:00000f50: 00 00 00 00 60 1f 00 bc 00 00 00 c0 00 00 00 00
-[  259.625470] mtk_tx_alloc:00000f60: 00 00 00 00 70 1f 00 bc 00 00 00 c0 00 00 00 00
-[  259.633005] mtk_tx_alloc:00000f70: 00 00 00 00 80 1f 00 bc 00 00 00 c0 00 00 00 00
-[  259.640539] mtk_tx_alloc:00000f80: 00 00 00 00 90 1f 00 bc 00 00 00 c0 00 00 00 00
-[  259.648073] mtk_tx_alloc:00000f90: 00 00 00 00 a0 1f 00 bc 00 00 00 c0 00 00 00 00
-[  259.655590] mtk_tx_alloc:00000fa0: 00 00 00 00 b0 1f 00 bc 00 00 00 c0 00 00 00 00
-[  259.663124] mtk_tx_alloc:00000fb0: 00 00 00 00 c0 1f 00 bc 00 00 00 c0 00 00 00 00
-[  259.670660] mtk_tx_alloc:00000fc0: 00 00 00 00 d0 1f 00 bc 00 00 00 c0 00 00 00 00
-[  259.678196] mtk_tx_alloc:00000fd0: 00 00 00 00 e0 1f 00 bc 00 00 00 c0 00 00 00 00
-[  259.685713] mtk_tx_alloc:00000fe0: 00 00 00 00 f0 1f 00 bc 00 00 00 c0 00 00 00 00
-[  259.693247] mtk_tx_alloc:00000ff0: 02 c0 90 ad 00 10 00 bc 00 40 5a c0 00 00 00 02
-[  259.700782] mtk_tx_alloc2:00000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-[  259.708405] mtk_tx_alloc2:00000010: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-[  259.716013] mtk_tx_alloc2:00000020: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-[  259.723634] mtk_tx_alloc2:00000030: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-[  259.731253] mtk_tx_alloc2:00000040: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-[  259.738875] mtk_tx_alloc2:00000050: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-[  259.746481] mtk_tx_alloc2:00000060: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-[  259.754103] mtk_tx_alloc2:00000070: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-[  259.761723] mtk_tx_alloc2:00000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-[  259.769344] mtk_tx_alloc2:00000090: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-[  259.776951] mtk_tx_alloc2:000000a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Changes since v2:
+=================
+* Rebased on top of nand/next.
+* Adapted all drivers to declare statically a nand_controller_ops
+  structure and assign it in the probe().
+* Added the migration of the tegra_nand.c driver.
+* Moved brcmnand controller ops affectation in the probe().
 
-....
+Changes since v1:
+=================
+* Rebased on top of nand/next.
+* Light rewording of the cover letter about the possibility to have a
+  nand_scan_ident_cleanup() function (just as example of how this series
+  could have been done differently).
+* Changed the hooks to reside in the nand_hw_ctrl structure instead of
+  being part of nand_ecc_ctrl as these hooks are more
+  controller-related.
 
 
-	Sean
+Miquel Raynal (33):
+  mtd: rawnand: brcmnand: convert driver to nand_scan()
+  mtd: rawnand: cafe: convert driver to nand_scan()
+  mtd: rawnand: davinci: convert driver to nand_scan()
+  mtd: rawnand: denali: convert to nand_scan()
+  mtd: rawnand: fsl_elbc: convert driver to nand_scan()
+  mtd: rawnand: fsl_ifc: convert driver to nand_scan()
+  mtd: rawnand: fsmc: convert driver to nand_scan()
+  mtd: rawnand: gpmi: convert driver to nand_scan()
+  mtd: rawnand: hisi504: convert driver to nand_scan()
+  mtd: rawnand: jz4780: convert driver to nand_scan()
+  mtd: rawnand: lpc32xx_mlc: convert driver to nand_scan()
+  mtd: rawnand: lpc32xx_slc: convert driver to nand_scan()
+  mtd: rawnand: marvell: convert driver to nand_scan()
+  mtd: rawnand: mtk: convert driver to nand_scan()
+  mtd: rawnand: mxc: convert driver to nand_scan()
+  mtd: rawnand: nandsim: convert driver to nand_scan()
+  mtd: rawnand: omap2: convert driver to nand_scan()
+  mtd: rawnand: s3c2410: convert driver to nand_scan()
+  mtd: rawnand: sh_flctl: move all NAND chip related setup in one
+    function
+  mtd: rawnand: sh_flctl: convert driver to nand_scan()
+  mtd: rawnand: sunxi: convert driver to nand_scan()
+  mtd: rawnand: tango: convert driver to nand_scan()
+  mtd: rawnand: txx9ndfmc: rename nand controller internal structure
+  mtd: rawnand: txx9ndfmc: convert driver to nand_scan()
+  mtd: rawnand: vf610: convert driver to nand_scan()
+  mtd: rawnand: atmel: convert driver to nand_scan()
+  mtd: rawnand: sm_common: convert driver to nand_scan_with_ids()
+  mtd: rawnand: docg4: convert driver to nand_scan()
+  mtd: rawnand: qcom: convert driver to nand_scan()
+  mtd: rawnand: jz4740: convert driver to nand_scan()
+  mtd: rawnand: tegra: convert driver to nand_scan()
+  mtd: rawnand: do not export nand_scan_[ident|tail]() anymore
+  mtd: rawnand: allocate dynamically ONFI parameters during detection
+
+ drivers/mtd/nand/raw/atmel/nand-controller.c |  83 ++---
+ drivers/mtd/nand/raw/brcmnand/brcmnand.c     |  47 ++-
+ drivers/mtd/nand/raw/cafe_nand.c             | 130 ++++---
+ drivers/mtd/nand/raw/davinci_nand.c          | 195 +++++-----
+ drivers/mtd/nand/raw/denali.c                | 138 +++----
+ drivers/mtd/nand/raw/docg4.c                 |  55 +--
+ drivers/mtd/nand/raw/fsl_elbc_nand.c         |  19 +-
+ drivers/mtd/nand/raw/fsl_ifc_nand.c          |  19 +-
+ drivers/mtd/nand/raw/fsmc_nand.c             | 148 ++++----
+ drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c   |  56 +--
+ drivers/mtd/nand/raw/hisi504_nand.c          |  78 ++--
+ drivers/mtd/nand/raw/jz4740_nand.c           |  46 ++-
+ drivers/mtd/nand/raw/jz4780_nand.c           |  34 +-
+ drivers/mtd/nand/raw/lpc32xx_mlc.c           | 109 +++---
+ drivers/mtd/nand/raw/lpc32xx_slc.c           |  77 ++--
+ drivers/mtd/nand/raw/marvell_nand.c          | 206 ++++++-----
+ drivers/mtd/nand/raw/mtk_nand.c              |  75 ++--
+ drivers/mtd/nand/raw/mxc_nand.c              | 136 +++----
+ drivers/mtd/nand/raw/nand_base.c             | 121 +++++--
+ drivers/mtd/nand/raw/nand_micron.c           |   6 +-
+ drivers/mtd/nand/raw/nand_timings.c          |  12 +-
+ drivers/mtd/nand/raw/nandsim.c               |  82 +++--
+ drivers/mtd/nand/raw/omap2.c                 | 521 +++++++++++++--------------
+ drivers/mtd/nand/raw/qcom_nandc.c            |  71 ++--
+ drivers/mtd/nand/raw/s3c2410.c               |  30 +-
+ drivers/mtd/nand/raw/sh_flctl.c              |  57 ++-
+ drivers/mtd/nand/raw/sm_common.c             |  39 +-
+ drivers/mtd/nand/raw/sunxi_nand.c            |  43 +--
+ drivers/mtd/nand/raw/tango_nand.c            |  40 +-
+ drivers/mtd/nand/raw/tegra_nand.c            | 162 +++++----
+ drivers/mtd/nand/raw/txx9ndfmc.c             |  35 +-
+ drivers/mtd/nand/raw/vf610_nfc.c             | 127 +++----
+ include/linux/mtd/rawnand.h                  |  17 +-
+ include/linux/mtd/sh_flctl.h                 |   1 +
+ 34 files changed, 1603 insertions(+), 1412 deletions(-)
+
+-- 
+2.14.1
