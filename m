@@ -1,91 +1,605 @@
 From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [SPAM]Re: [PATCH v5 5/7] Bluetooth: Extend btuart driver for
- join more vendor devices
-Date: Thu, 19 Jul 2018 00:56:04 +0800
-Message-ID: <1531932964.8953.201.camel@mtkswgap22>
-References: <cover.1531150733.git.sean.wang@mediatek.com>
- <85d449cdd34bf47d72935a821915e825c64a2145.1531150733.git.sean.wang@mediatek.com>
- <70616B99-5A2D-417A-8815-246700EEF4E2@holtmann.org>
- <1531641134.3955.19.camel@mtkswgap22>
- <6476BE78-3FE5-465F-8060-2215387323AA@holtmann.org>
- <1531754965.8953.3.camel@mtkswgap22>
- <BB53539F-C053-4DCD-A748-B75B995E1179@holtmann.org>
- <1531923968.8953.197.camel@mtkswgap22>
+Subject: Re: [PATCH v5 09/11] clk: mediatek: add new clkmux register API
+Date: Thu, 19 Jul 2018 14:57:43 +0800
+Message-ID: <1531983463.8953.235.camel@mtkswgap22>
+References: <1531817552-17221-1-git-send-email-mars.cheng@mediatek.com>
+         <1531817552-17221-10-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1531923968.8953.197.camel@mtkswgap22>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Marcel Holtmann <marcel@holtmann.org>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, Johan Hedberg <johan.hedberg@gmail.com>, linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1531817552-17221-10-git-send-email-mars.cheng@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mars Cheng <mars.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, Owen Chen <owen.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-07-18 at 22:26 +0800, Sean Wang wrote:
-> On Wed, 2018-07-18 at 14:23 +0200, Marcel Holtmann wrote:
-> > Hi Sean,
-> > 
+On Tue, 2018-07-17 at 16:52 +0800, Mars Cheng wrote:
+> From: Owen Chen <owen.chen@mediatek.com>
+> 
+> MT6765 add "set/clr" register for each clkmux setting, and
+> one update register to trigger value change. It is designed
+> to prevent read-modify-write racing issue. The sw design
+> need to add a new API to handle this hw change with a new
+> mtk_clk_mux/mtk_clk_upd struct in new file "clk-mux"and
+> clk-upd".
+> 
 
-[ ... ]
+I don't see any word mtk_clk_upd or clk-upd in the patch
 
-> > > Because the extra header doesn't provide any details about this stream and each radio stack still needs to be in charge of their stream
-> > > parsing. That is why I still want to use recv_h4.h instead of coding my own parser.
-> > 
-> > As I said above, if the header + length always indicates a full H:4 frame, then you do not need h4_recv.h since you know the packet size. If it doesn't (and it means things can fragment), then you do.
-> > 
-> 
-> My case is the extra header + length doesn't indicate a full H:4 frame,
-> things can fragment
-> 
-> > However I have to note that a serial stream from your multiplexer protocol also needs some state handling since it can be interrupted at any point. If you want this clean, then you actually do that anyway. Essentially you have two protocols layered and want to process the independently.
-> 
-> Yes, I also agree that it makes better and cleaner if there is another
-> driver in charge of the multiplexer protocol and the framing.
-> 
-> But, could you accept that I postpone the target into the next stage,
-> I just like to consider BT single device, not for multiplexer protocol
-> case, in the current stage.
-> 
-> To be honest, my next step is to add mt7688 btusb and then want to have
-> an integration with btmtkuart. mt7688 btusb doesn't have extra framing
+and the patch needs to be split into more patches
 
-something needs to be fixed, I mean mt7668 instead of mt7688
+> Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+> ---
+>  drivers/clk/mediatek/Makefile  |    2 +-
+>  drivers/clk/mediatek/clk-mtk.c |   41 +++++++
+>  drivers/clk/mediatek/clk-mtk.h |   85 ++++++++++++---
+>  drivers/clk/mediatek/clk-mux.c |  236 ++++++++++++++++++++++++++++++++++++++++
+>  drivers/clk/mediatek/clk-mux.h |   38 +++++++
+>  5 files changed, 388 insertions(+), 14 deletions(-)
+>  create mode 100644 drivers/clk/mediatek/clk-mux.c
+>  create mode 100644 drivers/clk/mediatek/clk-mux.h
+> 
+> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+> index 844b55d..b97980d 100644
+> --- a/drivers/clk/mediatek/Makefile
+> +++ b/drivers/clk/mediatek/Makefile
+> @@ -1,5 +1,5 @@
+>  # SPDX-License-Identifier: GPL-2.0
+> -obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o reset.o
+> +obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o reset.o clk-mux.o
+>  obj-$(CONFIG_COMMON_CLK_MT6797) += clk-mt6797.o
+>  obj-$(CONFIG_COMMON_CLK_MT6797_IMGSYS) += clk-mt6797-img.o
+>  obj-$(CONFIG_COMMON_CLK_MT6797_MMSYS) += clk-mt6797-mm.o
+> diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+> index 9c0ae42..50becd0 100644
+> --- a/drivers/clk/mediatek/clk-mtk.c
+> +++ b/drivers/clk/mediatek/clk-mtk.c
+> @@ -22,6 +22,7 @@
+>  #include <linux/mfd/syscon.h>
+>  
+>  #include "clk-mtk.h"
+> +#include "clk-mux.h"
+>  #include "clk-gate.h"
+>  
+>  struct clk_onecell_data *mtk_alloc_clk_data(unsigned int clk_num)
+> @@ -144,6 +145,46 @@ int mtk_clk_register_gates(struct device_node *node,
+>  	return 0;
+>  }
+>  
+> +int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+> +			   int num, struct device_node *node,
+> +			   spinlock_t *lock,
+> +			   struct clk_onecell_data *clk_data)
+> +{
+> +	struct regmap *regmap;
+> +	struct clk *clk;
+> +	int i;
+> +
+> +	if (!clk_data)
+> +		return -ENOMEM;
+> +
 
-> for multiplexer protocol, so it can allow me to make the concentration
-> more on pure bt protocol and pushing the latest mtk bluetooth devices
-> being supported on the bluez driver.
-> 
-> > If you post details about the multiplexing protocol for your serial stream, then I can help you design a driver for it. With serdev that is actually simple. And then you could hook up GPS etc. at some point once you want to run this on hardware that has the combo chip.
-> > 
-> 
-> okay, really thanks for your help. I also have an interest on this part.
-> now how does bluez receive and sent packet from/to a virtual device ( a
-> serdev handling multiplexer protocol)? It seems current bluez device all
-> handling packet from/to physical bus device. or I was missing something?
-> 
-> > Having a Linux Bluetooth driver is useful for Android as well btw. We have HCI_CHANNEL_USER and a generic Android driver for using it. So enabling the chip in Linux upstream will enable it for Android as well.
-> > 
-> it really save more time as I knew many vendors do two driver separately
-> for bluez and bluedroid. where could I find the resource for
-> HCI_CHANNEL_USER and generic android driver ? Is it still the part of
-> bluez or run by another project ?
-> 
-> > Regards
-> > 
-> > Marcel
-> > 
-> 
-> 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+general register function is able to handle that there is no clk_data.
+It looks like a optional, not a mandatory
+
+> +	regmap = syscon_node_to_regmap(node);
+> +	if (IS_ERR(regmap)) {
+> +		pr_err("Cannot find regmap for %pOF: %ld\n", node,
+> +		       PTR_ERR(regmap));
+> +		return PTR_ERR(regmap);
+> +	}
+> +
+> +	for (i = 0; i < num; i++) {
+> +		const struct mtk_mux *mux = &muxes[i];
+> +
+> +		if (clk_data && !IS_ERR_OR_NULL(clk_data->clks[mux->id]))
+> +			continue;
+> +
+
+it seems not necessary to check clk data every time
+
+and always use positive check is good to read
+
+> +		clk = mtk_clk_register_mux(mux, regmap, lock);
+> +
+> +		if (IS_ERR(clk)) {
+> +			pr_err("Failed to register clk %s: %ld\n",
+> +			       mux->name, PTR_ERR(clk));
+> +			continue;
+> +		}
+> +
+> +		if (clk_data)
+> +			clk_data->clks[mux->id] = clk;
+
+don't alter any data from input, that is a surprise for users
+
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>  struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
+>  		void __iomem *base, spinlock_t *lock)
+>  {
+> diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+> index 1882221..61693f6 100644
+> --- a/drivers/clk/mediatek/clk-mtk.h
+> +++ b/drivers/clk/mediatek/clk-mtk.h
+> @@ -24,7 +24,9 @@
+>  
+>  #define MAX_MUX_GATE_BIT	31
+>  #define INVALID_MUX_GATE_BIT	(MAX_MUX_GATE_BIT + 1)
+> -
+> +#define INVALID_OFS		-1
+> +#define INVALID_SHFT		-1
+> +#define INVALID_WIDTH		-1
+>  #define MHZ (1000 * 1000)
+>  
+>  struct mtk_fixed_clk {
+> @@ -84,10 +86,72 @@ struct mtk_composite {
+>  	signed char num_parents;
+>  };
+>  
+> +struct mtk_mux {
+> +	int id;
+> +	const char *name;
+> +	const char * const *parent_names;
+> +	unsigned int flags;
+> +
+> +	u32 mux_ofs;
+> +	u32 set_ofs;
+> +	u32 clr_ofs;
+> +	u32 upd_ofs;
+> +
+> +	signed char mux_shift;
+> +	signed char mux_width;
+> +	signed char gate_shift;
+> +	signed char upd_shift;
+> +
+> +	const struct clk_ops *ops;
+> +
+> +	signed char num_parents;
+> +};
+> +
+
+you have created a mtk-mux.h, why is you don't move the newly create
+struct in?
+
+>  /*
+>   * In case the rate change propagation to parent clocks is undesirable,
+>   * this macro allows to specify the clock flags manually.
+>   */
+> +#define CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs, _mux_set_ofs,\
+> +			_mux_clr_ofs, _shift, _width, _gate,		\
+> +			_upd_ofs, _upd, _flags, _ops) {			\
+> +		.id = _id,						\
+> +		.name = _name,						\
+> +		.mux_ofs = _mux_ofs,					\
+> +		.set_ofs = _mux_set_ofs,				\
+> +		.clr_ofs = _mux_clr_ofs,				\
+> +		.upd_ofs = _upd_ofs,					\
+> +		.mux_shift = _shift,					\
+> +		.mux_width = _width,					\
+> +		.gate_shift = _gate,					\
+> +		.upd_shift = _upd,					\
+> +		.parent_names = _parents,				\
+> +		.num_parents = ARRAY_SIZE(_parents),			\
+> +		.flags = _flags,					\
+> +		.ops = &_ops,						\
+> +	}
+> +
+> +#define MUX_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs, _mux_set_ofs,\
+> +			_mux_clr_ofs, _shift, _width, _gate,		\
+> +			_upd_ofs, _upd, _flags)			\
+> +		CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,	\
+> +			_mux_set_ofs, _mux_clr_ofs, _shift, _width,	\
+> +			_gate, _upd_ofs, _upd, _flags,			\
+> +			mtk_mux_clr_set_upd_ops)
+> +
+> +#define MUX_CLR_SET_UPD(_id, _name, _parents, _mux_ofs, _mux_set_ofs,	\
+> +			_mux_clr_ofs, _shift, _width, _gate,		\
+> +			_upd_ofs, _upd)				\
+> +		MUX_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,	\
+> +			_mux_set_ofs, _mux_clr_ofs, _shift, _width,	\
+> +			_gate, _upd_ofs, _upd, CLK_SET_RATE_PARENT)
+> +
+> +#define MUX_UPD(_id, _name, _parents, _mux_ofs, _shift, _width, _gate,	\
+> +			_upd_ofs, _upd)				\
+> +		CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,	\
+> +			INVALID_OFS, INVALID_OFS, _shift, _width,	\
+> +			_gate, _upd_ofs, _upd, CLK_SET_RATE_PARENT,	\
+> +			mtk_mux_upd_ops)
+> +
+>  #define MUX_GATE_FLAGS(_id, _name, _parents, _reg, _shift, _width,	\
+>  			_gate, _flags) {				\
+>  		.id = _id,						\
+> @@ -111,18 +175,8 @@ struct mtk_composite {
+>  	MUX_GATE_FLAGS(_id, _name, _parents, _reg, _shift, _width,	\
+>  		_gate, CLK_SET_RATE_PARENT)
+>  
+> -#define MUX(_id, _name, _parents, _reg, _shift, _width) {		\
+> -		.id = _id,						\
+> -		.name = _name,						\
+> -		.mux_reg = _reg,					\
+> -		.mux_shift = _shift,					\
+> -		.mux_width = _width,					\
+> -		.gate_shift = -1,					\
+> -		.divider_shift = -1,					\
+> -		.parent_names = _parents,				\
+> -		.num_parents = ARRAY_SIZE(_parents),			\
+> -		.flags = CLK_SET_RATE_PARENT,				\
+> -	}
+
+As Matthias always said that, you alter the common thing that is already
+used by a lot of SoC.
+
+You should have a dedicate patch to state why you need it, provide the
+way you propose. and use another patches for migrating old SoC, finally
+then add the patch for your own SoC.
+
+Don't mix everything in a single patch. The patch can't become reusable
+hard to read it, even hard to backport to the other SoC picking up
+patches they are really wanting.
+
+> +#define MUX(_id, _name, _parents, _reg, _shift, _width)		\
+> +	MUX_GATE(_id, _name, _parents, _reg, _shift, _width, INVALID_SHFT)
+>  
+>  #define DIV_GATE(_id, _name, _parent, _gate_reg, _gate_shift, _div_reg,	\
+>  					_div_width, _div_shift) {	\
+> @@ -138,6 +192,11 @@ struct mtk_composite {
+>  		.flags = 0,						\
+>  	}
+>  
+> +int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+> +			   int num, struct device_node *node,
+> +			   spinlock_t *lock,
+> +			   struct clk_onecell_data *clk_data);
+> +
+
+move to mtk-mux.h
+
+>  struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
+>  		void __iomem *base, spinlock_t *lock);
+>  
+> diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
+> new file mode 100644
+> index 0000000..219181b
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mux.c
+> @@ -0,0 +1,236 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2018 MediaTek Inc.
+> + * Author: Owen Chen <owen.chen@mediatek.com>
+> + */
+> +
+> +#include <linux/of.h>
+> +#include <linux/of_address.h>
+> +#include <linux/slab.h>
+> +
+> +#include "clk-mtk.h"
+> +#include "clk-mux.h"
+> +
+> +static inline struct mtk_clk_mux
+> +	*to_mtk_clk_mux(struct clk_hw *hw)
+> +{
+> +	return container_of(hw, struct mtk_clk_mux, hw);
+> +}
+> +
+> +static int mtk_mux_enable(struct clk_hw *hw)
+> +{
+> +	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> +	u32 mask = BIT(mux->gate_shift);
+> +	unsigned long flags = 0;
+> +
+> +	if (mux->lock)
+> +		spin_lock_irqsave(mux->lock, flags);
+> +
+
+we can see many functions in kernel, similar to your need, they always
+be defined as two versions. for example.
+
+mtk_mux_enable refer to lock version
+
+mtk_mux_enable_nolock for lock-free version
+
+that makes less condition, more readable, and users don't care much
+about what stuff is put inside  
+
+> +	regmap_update_bits(mux->regmap, mux->mux_ofs, mask, 0);
+> +
+> +	if (mux->lock)
+> +		spin_unlock_irqrestore(mux->lock, flags);
+> +	return 0;
+> +}
+> +
+> +static void mtk_mux_disable(struct clk_hw *hw)
+> +{
+> +	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> +	u32 mask = BIT(mux->gate_shift);
+> +	unsigned long flags = 0;
+> +
+> +	if (mux->lock)
+> +		spin_lock_irqsave(mux->lock, flags);
+> +
+
+ditto
+
+> +	regmap_update_bits(mux->regmap, mux->mux_ofs, mask, mask);
+> +
+> +	if (mux->lock)
+> +		spin_unlock_irqrestore(mux->lock, flags);
+> +}
+> +
+> +static int mtk_mux_enable_setclr(struct clk_hw *hw)
+> +{
+> +	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> +	u32 val;
+> +	unsigned long flags = 0;
+> +
+> +	if (mux->lock)
+> +		spin_lock_irqsave(mux->lock, flags);
+> +
+
+ditto
+
+> +	val = BIT(mux->gate_shift);
+> +	regmap_write(mux->regmap, mux->mux_clr_ofs, val);
+> +
+> +	if (mux->lock)
+> +		spin_unlock_irqrestore(mux->lock, flags);
+> +	return 0;
+> +}
+> +
+> +static void mtk_mux_disable_setclr(struct clk_hw *hw)
+> +{
+> +	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> +	u32 val;
+> +	unsigned long flags = 0;
+> +
+> +	if (mux->lock)
+> +		spin_lock_irqsave(mux->lock, flags);
+> +
+
+ditto
+
+> +	val = BIT(mux->gate_shift);
+> +	regmap_write(mux->regmap, mux->mux_set_ofs, val);
+> +
+> +	if (mux->lock)
+> +		spin_unlock_irqrestore(mux->lock, flags);
+> +}
+> +
+> +static int mtk_mux_is_enabled(struct clk_hw *hw)
+> +{
+> +	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> +	u32 val = 0;
+> +
+> +	if (mux->gate_shift < 0)
+> +		return true;
+> +
+
+return value should be bool
+
+> +	regmap_read(mux->regmap, mux->mux_ofs, &val);
+> +
+> +	return (val & BIT(mux->gate_shift)) == 0;
+> +}
+> +
+> +static u8 mtk_mux_get_parent(struct clk_hw *hw)
+> +{
+
+
+return value should be int
+> +	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> +	int num_parents = clk_hw_get_num_parents(hw);
+> +	u32 mask = GENMASK(mux->mux_width - 1, 0);
+> +	u32 val;
+> +
+> +	regmap_read(mux->regmap, mux->mux_ofs, &val);
+> +	val = (val >> mux->mux_shift) & mask;
+> +
+> +	if (val >= num_parents)
+> +		return -EINVAL;
+> +
+> +	return val;
+> +}
+> +
+> +static int mtk_mux_set_parent(struct clk_hw *hw, u8 index)
+> +{
+> +	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> +	u32 mask = GENMASK(mux->mux_width - 1, 0);
+> +	u32 val, orig;
+> +	unsigned long flags = 0;
+> +
+> +	if (mux->lock)
+> +		spin_lock_irqsave(mux->lock, flags);
+> +
+
+use lock-free-or-not funciton
+
+> +	regmap_read(mux->regmap, mux->mux_ofs, &val);
+> +	orig = val;
+> +	val &= ~(mask << mux->mux_shift);
+> +	val |= index << mux->mux_shift;
+> +
+> +	if (val != orig) {
+> +		regmap_write(mux->regmap, mux->mux_ofs, val);
+> +
+> +		if (mux->upd_shift >= 0)
+> +			regmap_write(mux->regmap, mux->upd_ofs,
+> +				     BIT(mux->upd_shift));
+
+
+why not use regmap_update_bits like function ?
+
+> +	}
+> +
+> +	if (mux->lock)
+> +		spin_unlock_irqrestore(mux->lock, flags);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_mux_set_parent_setclr(struct clk_hw *hw, u8 index)
+> +{
+> +	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> +	u32 mask = GENMASK(mux->mux_width - 1, 0);
+> +	u32 val, orig;
+> +	unsigned long flags = 0;
+> +
+> +	if (mux->lock)
+> +		spin_lock_irqsave(mux->lock, flags);
+> +
+
+use lock-free-or-not funciton
+
+> +	regmap_read(mux->regmap, mux->mux_ofs, &val);
+> +	orig = val;
+> +	val &= ~(mask << mux->mux_shift);
+> +	val |= index << mux->mux_shift;
+> +
+> +	if (val != orig) {
+> +		val = (mask << mux->mux_shift);
+> +		regmap_write(mux->regmap, mux->mux_clr_ofs, val);
+> +		val = (index << mux->mux_shift);
+> +		regmap_write(mux->regmap, mux->mux_set_ofs, val);
+> +
+
+why not use regmap_update_bits like function ?
+> +		if (mux->upd_shift >= 0)
+> +			regmap_write(mux->regmap, mux->upd_ofs,
+> +				     BIT(mux->upd_shift));
+> +	}
+> +
+> +	if (mux->lock)
+> +		spin_unlock_irqrestore(mux->lock, flags);
+> +
+> +	return 0;
+> +}
+> +
+> +const struct clk_ops mtk_mux_upd_ops = {
+> +	.enable = mtk_mux_enable,
+> +	.disable = mtk_mux_disable,
+> +	.is_enabled = mtk_mux_is_enabled,
+> +	.get_parent = mtk_mux_get_parent,
+> +	.set_parent = mtk_mux_set_parent,
+> +	.determine_rate = NULL,
+
+explicitly set as NULL can be removed
+> +};
+> +
+> +const struct clk_ops mtk_mux_clr_set_upd_ops = {
+> +	.enable = mtk_mux_enable_setclr,
+> +	.disable = mtk_mux_disable_setclr,
+> +	.is_enabled = mtk_mux_is_enabled,
+> +	.get_parent = mtk_mux_get_parent,
+> +	.set_parent = mtk_mux_set_parent_setclr,
+> +	.determine_rate = NULL,
+
+explicitly set as NULL can be removed
+> +};
+> +
+> +struct clk *mtk_clk_register_mux(const struct mtk_mux *mux,
+> +				 struct regmap *regmap,
+> +				 spinlock_t *lock)
+> +{
+> +	struct clk *clk;
+> +	struct clk_init_data init;
+> +	struct mtk_clk_mux *mtk_mux = NULL;
+> +	int ret;
+> +
+make declaration as reverse xmas tree
+
+> +	mtk_mux = kzalloc(sizeof(*mtk_mux), GFP_KERNEL);
+> +	if (!mtk_mux)
+> +		return ERR_PTR(-ENOMEM);
+> +
+> +	init.name = mux->name;
+> +	init.flags = (mux->flags) | CLK_SET_RATE_PARENT;
+> +	init.parent_names = mux->parent_names;
+> +	init.num_parents = mux->num_parents;
+> +	init.ops = mux->ops;
+> +
+> +	mtk_mux->regmap = regmap;
+> +	mtk_mux->name = mux->name;
+> +	mtk_mux->mux_ofs = mux->mux_ofs;
+> +	mtk_mux->mux_set_ofs = mux->set_ofs;
+> +	mtk_mux->mux_clr_ofs = mux->clr_ofs;
+> +	mtk_mux->upd_ofs = mux->upd_ofs;
+> +	mtk_mux->mux_shift = mux->mux_shift;
+> +	mtk_mux->mux_width = mux->mux_width;
+> +	mtk_mux->gate_shift = mux->gate_shift;
+> +	mtk_mux->upd_shift = mux->upd_shift;
+> +
+> +	mtk_mux->lock = lock;
+> +	mtk_mux->hw.init = &init;
+> +
+> +	clk = clk_register(NULL, &mtk_mux->hw);
+> +	if (IS_ERR(clk)) {
+> +		ret = PTR_ERR(clk);
+
+
+ret is superfluous
+
+> +		goto err_out;
+> +	}
+> +
+> +	return clk;
+> +err_out:
+> +	kfree(mtk_mux);
+> +
+
+I felt err path can be optimized
+
+> +	return ERR_PTR(ret);
+> +}
+> diff --git a/drivers/clk/mediatek/clk-mux.h b/drivers/clk/mediatek/clk-mux.h
+> new file mode 100644
+> index 0000000..64f8e7c
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mux.h
+> @@ -0,0 +1,38 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2018 MediaTek Inc.
+> + * Author: Owen Chen <owen.chen@mediatek.com>
+> + */
+> +
+> +#ifndef __DRV_CLK_MUX_H
+> +#define __DRV_CLK_MUX_H
+> +
+> +#include <linux/clk-provider.h>
+> +
+> +struct mtk_clk_mux {
+> +	struct clk_hw hw;
+> +	struct regmap *regmap;
+> +
+> +	const char *name;
+> +
+> +	int mux_set_ofs;
+> +	int mux_clr_ofs;
+> +	int mux_ofs;
+> +	int upd_ofs;
+> +
+> +	s8 mux_shift;
+> +	s8 mux_width;
+> +	s8 gate_shift;
+> +	s8 upd_shift;
+> +
+> +	spinlock_t *lock;
+> +};
+> +
+> +extern const struct clk_ops mtk_mux_upd_ops;
+> +extern const struct clk_ops mtk_mux_clr_set_upd_ops;
+> +
+
+
+extern  is superfluous
+
+> +struct clk *mtk_clk_register_mux(const struct mtk_mux *mux,
+> +				 struct regmap *regmap,
+> +				 spinlock_t *lock);
+> +
+> +#endif /* __DRV_CLK_MUX_H */
