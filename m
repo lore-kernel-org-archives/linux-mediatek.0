@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v3 31/33] mtd: rawnand: tegra: convert driver to nand_scan()
-Date: Fri, 20 Jul 2018 01:00:24 +0200
-Message-ID: <20180719230026.8741-32-miquel.raynal@bootlin.com>
+Subject: [PATCH v3 32/33] mtd: rawnand: do not export nand_scan_[ident|tail]() anymore
+Date: Fri, 20 Jul 2018 01:00:25 +0200
+Message-ID: <20180719230026.8741-33-miquel.raynal@bootlin.com>
 References: <20180719230026.8741-1-miquel.raynal@bootlin.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180719230026.8741-1-miquel.raynal@bootlin.com>
@@ -10,247 +10,204 @@ To: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>,
 Cc: linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Two helpers have been added to the core to make ECC-related
-configuration between the detection phase and the final NAND scan. Use
-these hooks and convert the driver to just use nand_scan() instead of
-both nand_scan_ident() and nand_scan_tail().
+Both nand_scan_ident() and nand_scan_tail() helpers used to be called
+directly from controller drivers that needed to tweak some ECC-related
+parameters before nand_scan_tail(). This separation prevented dynamic
+allocations during the phase of NAND identification, which was
+inconvenient.
+
+All controller drivers have been moved to use nand_scan(), in
+conjunction with the chip->ecc.[attach|detach]_chip() hooks that
+actually do the required tweaking sequence between both ident/tail
+calls, allowing programmers to use dynamic allocation as they need all
+across the scanning sequence.
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/tegra_nand.c | 162 +++++++++++++++++++++-----------------
- 1 file changed, 88 insertions(+), 74 deletions(-)
+ drivers/mtd/nand/raw/nand_base.c | 60 +++++++++++++++++++++++++++++++---------
+ include/linux/mtd/rawnand.h      | 11 ++------
+ 2 files changed, 50 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/tegra_nand.c b/drivers/mtd/nand/raw/tegra_nand.c
-index 31c0d9ca9d23..c40a53066cee 100644
---- a/drivers/mtd/nand/raw/tegra_nand.c
-+++ b/drivers/mtd/nand/raw/tegra_nand.c
-@@ -906,74 +906,13 @@ static int tegra_nand_select_strength(struct nand_chip *chip, int oobsize)
- 				       bits_per_step, oobsize);
+diff --git a/drivers/mtd/nand/raw/nand_base.c b/drivers/mtd/nand/raw/nand_base.c
+index dea41fa25be1..dfee2556a8a8 100644
+--- a/drivers/mtd/nand/raw/nand_base.c
++++ b/drivers/mtd/nand/raw/nand_base.c
+@@ -5151,6 +5151,7 @@ static int nand_flash_detect_onfi(struct nand_chip *chip)
+ {
+ 	struct mtd_info *mtd = nand_to_mtd(chip);
+ 	struct nand_onfi_params *p;
++	char *model;
+ 	char id[4];
+ 	int i, ret, val;
+ 
+@@ -5225,8 +5226,15 @@ static int nand_flash_detect_onfi(struct nand_chip *chip)
+ 
+ 	sanitize_string(p->manufacturer, sizeof(p->manufacturer));
+ 	sanitize_string(p->model, sizeof(p->model));
+-	strncpy(chip->parameters.model, p->model,
+-		sizeof(chip->parameters.model) - 1);
++	model = kmemdup(p->model, sizeof(p->model), GFP_KERNEL);
++	if (!model) {
++		ret = -ENOMEM;
++		goto free_onfi_param_page;
++	}
++
++	chip->parameters.model = model;
++	if (!mtd->name)
++		mtd->name = chip->parameters.model;
+ 
+ 	mtd->writesize = le32_to_cpu(p->byte_per_page);
+ 
+@@ -5306,6 +5314,7 @@ static int nand_flash_detect_jedec(struct nand_chip *chip)
+ 	struct nand_jedec_params *p;
+ 	struct jedec_ecc_info *ecc;
+ 	int jedec_version = 0;
++	char *model;
+ 	char id[5];
+ 	int i, val, ret;
+ 
+@@ -5356,8 +5365,16 @@ static int nand_flash_detect_jedec(struct nand_chip *chip)
+ 
+ 	sanitize_string(p->manufacturer, sizeof(p->manufacturer));
+ 	sanitize_string(p->model, sizeof(p->model));
+-	strncpy(chip->parameters.model, p->model,
+-		sizeof(chip->parameters.model) - 1);
++	model = kzalloc(sizeof(p->model), GFP_KERNEL);
++	if (!p) {
++		ret = -ENOMEM;
++		goto free_jedec_param_page;
++	}
++
++	strncpy(model, p->model, sizeof(model) - 1);
++	chip->parameters.model = model;
++	if (!mtd->name)
++		mtd->name = chip->parameters.model;
+ 
+ 	mtd->writesize = le32_to_cpu(p->byte_per_page);
+ 
+@@ -5924,7 +5941,7 @@ static int nand_dt_init(struct nand_chip *chip)
  }
  
--static int tegra_nand_chips_init(struct device *dev,
--				 struct tegra_nand_controller *ctrl)
-+static int tegra_nand_attach_chip(struct nand_chip *chip)
+ /**
+- * nand_scan_ident - [NAND Interface] Scan for the NAND device
++ * nand_scan_ident - Scan for the NAND device
+  * @mtd: MTD device structure
+  * @maxchips: number of chips to scan for
+  * @table: alternative NAND ID table
+@@ -5932,9 +5949,13 @@ static int nand_dt_init(struct nand_chip *chip)
+  * This is the first phase of the normal nand_scan() function. It reads the
+  * flash ID and sets up MTD fields accordingly.
+  *
++ * This helper used to be called directly from controller drivers that needed
++ * to tweak some ECC-related parameters before nand_scan_tail(). This separation
++ * prevented dynamic allocations during this phase which was unconvenient and
++ * as been banned for the benefit of the ->init_ecc()/cleanup_ecc() hooks.
+  */
+-int nand_scan_ident(struct mtd_info *mtd, int maxchips,
+-		    struct nand_flash_dev *table)
++static int nand_scan_ident(struct mtd_info *mtd, int maxchips,
++			   struct nand_flash_dev *table)
  {
--	struct device_node *np = dev->of_node;
--	struct device_node *np_nand;
--	int nsels, nchips = of_get_child_count(np);
--	struct tegra_nand_chip *nand;
--	struct mtd_info *mtd;
--	struct nand_chip *chip;
-+	struct tegra_nand_controller *ctrl = to_tegra_ctrl(chip->controller);
-+	struct tegra_nand_chip *nand = to_tegra_chip(chip);
-+	struct mtd_info *mtd = nand_to_mtd(chip);
- 	int bits_per_step;
- 	int ret;
--	u32 cs;
--
--	if (nchips != 1) {
--		dev_err(dev, "Currently only one NAND chip supported\n");
--		return -EINVAL;
--	}
--
--	np_nand = of_get_next_child(np, NULL);
--
--	nsels = of_property_count_elems_of_size(np_nand, "reg", sizeof(u32));
--	if (nsels != 1) {
--		dev_err(dev, "Missing/invalid reg property\n");
--		return -EINVAL;
--	}
--
--	/* Retrieve CS id, currently only single die NAND supported */
--	ret = of_property_read_u32(np_nand, "reg", &cs);
--	if (ret) {
--		dev_err(dev, "could not retrieve reg property: %d\n", ret);
--		return ret;
--	}
--
--	nand = devm_kzalloc(dev, sizeof(*nand), GFP_KERNEL);
--	if (!nand)
--		return -ENOMEM;
--
--	nand->cs[0] = cs;
--
--	nand->wp_gpio = devm_gpiod_get_optional(dev, "wp", GPIOD_OUT_LOW);
--
--	if (IS_ERR(nand->wp_gpio)) {
--		ret = PTR_ERR(nand->wp_gpio);
--		dev_err(dev, "Failed to request WP GPIO: %d\n", ret);
--		return ret;
--	}
--
--	chip = &nand->chip;
--	chip->controller = &ctrl->controller;
--
--	mtd = nand_to_mtd(chip);
--
--	mtd->dev.parent = dev;
--	mtd->owner = THIS_MODULE;
--
--	nand_set_flash_node(chip, np_nand);
--
--	if (!mtd->name)
--		mtd->name = "tegra_nand";
--
--	chip->options = NAND_NO_SUBPAGE_WRITE | NAND_USE_BOUNCE_BUFFER;
--	chip->exec_op = tegra_nand_exec_op;
--	chip->select_chip = tegra_nand_select_chip;
--	chip->setup_data_interface = tegra_nand_setup_data_interface;
--
--	ret = nand_scan_ident(mtd, 1, NULL);
--	if (ret)
--		return ret;
+ 	int i, nand_maf_id, nand_dev_id;
+ 	struct nand_chip *chip = mtd_to_nand(mtd);
+@@ -6008,7 +6029,11 @@ int nand_scan_ident(struct mtd_info *mtd, int maxchips,
  
- 	if (chip->bbt_options & NAND_BBT_USE_FLASH)
- 		chip->bbt_options |= NAND_BBT_NO_OOB;
-@@ -982,7 +921,8 @@ static int tegra_nand_chips_init(struct device *dev,
- 	chip->ecc.size = 512;
- 	chip->ecc.steps = mtd->writesize / chip->ecc.size;
- 	if (chip->ecc_step_ds != 512) {
--		dev_err(dev, "Unsupported step size %d\n", chip->ecc_step_ds);
-+		dev_err(ctrl->dev, "Unsupported step size %d\n",
-+			chip->ecc_step_ds);
- 		return -EINVAL;
- 	}
- 
-@@ -1004,14 +944,15 @@ static int tegra_nand_chips_init(struct device *dev,
- 	}
- 
- 	if (chip->ecc.algo == NAND_ECC_BCH && mtd->writesize < 2048) {
--		dev_err(dev, "BCH supports 2K or 4K page size only\n");
-+		dev_err(ctrl->dev, "BCH supports 2K or 4K page size only\n");
- 		return -EINVAL;
- 	}
- 
- 	if (!chip->ecc.strength) {
- 		ret = tegra_nand_select_strength(chip, mtd->oobsize);
- 		if (ret < 0) {
--			dev_err(dev, "No valid strength found, minimum %d\n",
-+			dev_err(ctrl->dev,
-+				"No valid strength found, minimum %d\n",
- 				chip->ecc_strength_ds);
- 			return ret;
- 		}
-@@ -1039,7 +980,7 @@ static int tegra_nand_chips_init(struct device *dev,
- 			nand->config_ecc |= CONFIG_TVAL_8;
- 			break;
- 		default:
--			dev_err(dev, "ECC strength %d not supported\n",
-+			dev_err(ctrl->dev, "ECC strength %d not supported\n",
- 				chip->ecc.strength);
- 			return -EINVAL;
- 		}
-@@ -1062,17 +1003,17 @@ static int tegra_nand_chips_init(struct device *dev,
- 			nand->bch_config |= BCH_TVAL_16;
- 			break;
- 		default:
--			dev_err(dev, "ECC strength %d not supported\n",
-+			dev_err(ctrl->dev, "ECC strength %d not supported\n",
- 				chip->ecc.strength);
- 			return -EINVAL;
- 		}
- 		break;
- 	default:
--		dev_err(dev, "ECC algorithm not supported\n");
-+		dev_err(ctrl->dev, "ECC algorithm not supported\n");
- 		return -EINVAL;
- 	}
- 
--	dev_info(dev, "Using %s with strength %d per 512 byte step\n",
-+	dev_info(ctrl->dev, "Using %s with strength %d per 512 byte step\n",
- 		 chip->ecc.algo == NAND_ECC_BCH ? "BCH" : "RS",
- 		 chip->ecc.strength);
- 
-@@ -1095,7 +1036,8 @@ static int tegra_nand_chips_init(struct device *dev,
- 		nand->config |= CONFIG_PS_4096;
- 		break;
- 	default:
--		dev_err(dev, "Unsupported writesize %d\n", mtd->writesize);
-+		dev_err(ctrl->dev, "Unsupported writesize %d\n",
-+			mtd->writesize);
- 		return -ENODEV;
- 	}
- 
-@@ -1106,7 +1048,79 @@ static int tegra_nand_chips_init(struct device *dev,
- 	nand->config |= CONFIG_TAG_BYTE_SIZE(mtd->oobsize - 1);
- 	writel_relaxed(nand->config, ctrl->regs + CONFIG);
- 
--	ret = nand_scan_tail(mtd);
-+	return 0;
-+}
+ 	return 0;
+ }
+-EXPORT_SYMBOL(nand_scan_ident);
 +
-+static const struct nand_controller_ops tegra_nand_controller_ops = {
-+	.attach_chip = &tegra_nand_attach_chip,
-+};
-+
-+static int tegra_nand_chips_init(struct device *dev,
-+				 struct tegra_nand_controller *ctrl)
++static void nand_scan_ident_cleanup(struct nand_chip *chip)
 +{
-+	struct device_node *np = dev->of_node;
-+	struct device_node *np_nand;
-+	int nsels, nchips = of_get_child_count(np);
-+	struct tegra_nand_chip *nand;
-+	struct mtd_info *mtd;
-+	struct nand_chip *chip;
-+	int ret;
-+	u32 cs;
-+
-+	if (nchips != 1) {
-+		dev_err(dev, "Currently only one NAND chip supported\n");
-+		return -EINVAL;
-+	}
-+
-+	np_nand = of_get_next_child(np, NULL);
-+
-+	nsels = of_property_count_elems_of_size(np_nand, "reg", sizeof(u32));
-+	if (nsels != 1) {
-+		dev_err(dev, "Missing/invalid reg property\n");
-+		return -EINVAL;
-+	}
-+
-+	/* Retrieve CS id, currently only single die NAND supported */
-+	ret = of_property_read_u32(np_nand, "reg", &cs);
-+	if (ret) {
-+		dev_err(dev, "could not retrieve reg property: %d\n", ret);
-+		return ret;
-+	}
-+
-+	nand = devm_kzalloc(dev, sizeof(*nand), GFP_KERNEL);
-+	if (!nand)
-+		return -ENOMEM;
-+
-+	nand->cs[0] = cs;
-+
-+	nand->wp_gpio = devm_gpiod_get_optional(dev, "wp", GPIOD_OUT_LOW);
-+
-+	if (IS_ERR(nand->wp_gpio)) {
-+		ret = PTR_ERR(nand->wp_gpio);
-+		dev_err(dev, "Failed to request WP GPIO: %d\n", ret);
-+		return ret;
-+	}
-+
-+	chip = &nand->chip;
-+	chip->controller = &ctrl->controller;
-+	chip->controller->ops = &tegra_nand_controller_ops;
-+
-+	mtd = nand_to_mtd(chip);
-+
-+	mtd->dev.parent = dev;
-+	mtd->owner = THIS_MODULE;
-+
-+	nand_set_flash_node(chip, np_nand);
-+
-+	if (!mtd->name)
-+		mtd->name = "tegra_nand";
-+
-+	chip->options = NAND_NO_SUBPAGE_WRITE | NAND_USE_BOUNCE_BUFFER;
-+	chip->exec_op = tegra_nand_exec_op;
-+	chip->select_chip = tegra_nand_select_chip;
-+	chip->setup_data_interface = tegra_nand_setup_data_interface;
-+
-+	ret = nand_scan(mtd, 1);
- 	if (ret)
- 		return ret;
++	kfree(chip->parameters.model);
++}
  
+ static int nand_set_ecc_soft_ops(struct mtd_info *mtd)
+ {
+@@ -6385,14 +6410,14 @@ static bool nand_ecc_strength_good(struct mtd_info *mtd)
+ }
+ 
+ /**
+- * nand_scan_tail - [NAND Interface] Scan for the NAND device
++ * nand_scan_tail - Scan for the NAND device
+  * @mtd: MTD device structure
+  *
+  * This is the second phase of the normal nand_scan() function. It fills out
+  * all the uninitialized function pointers with the defaults and scans for a
+  * bad block table if appropriate.
+  */
+-int nand_scan_tail(struct mtd_info *mtd)
++static int nand_scan_tail(struct mtd_info *mtd)
+ {
+ 	struct nand_chip *chip = mtd_to_nand(mtd);
+ 	struct nand_ecc_ctrl *ecc = &chip->ecc;
+@@ -6716,7 +6741,6 @@ int nand_scan_tail(struct mtd_info *mtd)
+ 
+ 	return ret;
+ }
+-EXPORT_SYMBOL(nand_scan_tail);
+ 
+ static int nand_attach(struct nand_chip *chip)
+ {
+@@ -6754,11 +6778,18 @@ int nand_scan_with_ids(struct mtd_info *mtd, int maxchips,
+ 
+ 	ret = nand_attach(chip);
+ 	if (ret)
+-		return ret;
++		goto cleanup_ident;
+ 
+ 	ret = nand_scan_tail(mtd);
+ 	if (ret)
+-		nand_detach(chip);
++		goto detach_chip;
++
++	return 0;
++
++detach_chip:
++	nand_detach(chip);
++cleanup_ident:
++	nand_scan_ident_cleanup(chip);
+ 
+ 	return ret;
+ }
+@@ -6790,6 +6821,9 @@ void nand_cleanup(struct nand_chip *chip)
+ 
+ 	/* Free controller specific allocations after chip identification */
+ 	nand_detach(chip);
++
++	/* Free identification phase allocations */
++	nand_scan_ident_cleanup(chip);
+ }
+ 
+ EXPORT_SYMBOL_GPL(nand_cleanup);
+diff --git a/include/linux/mtd/rawnand.h b/include/linux/mtd/rawnand.h
+index a20c78e25878..5723d940a47d 100644
+--- a/include/linux/mtd/rawnand.h
++++ b/include/linux/mtd/rawnand.h
+@@ -36,14 +36,9 @@ static inline int nand_scan(struct mtd_info *mtd, int max_chips)
+ }
+ 
+ /*
+- * Separate phases of nand_scan(), allowing board driver to intervene
+- * and override command or ECC setup according to flash type.
++ * Unregister the MTD device and free resources held by the NAND device, must be
++ * called on error after a successful nand_scan().
+  */
+-int nand_scan_ident(struct mtd_info *mtd, int max_chips,
+-			   struct nand_flash_dev *table);
+-int nand_scan_tail(struct mtd_info *mtd);
+-
+-/* Unregister the MTD device and free resources held by the NAND device */
+ void nand_release(struct mtd_info *mtd);
+ 
+ /* Internal helper for board drivers which need to override command function */
+@@ -487,7 +482,7 @@ struct onfi_params {
+  */
+ struct nand_parameters {
+ 	/* Generic parameters */
+-	char model[100];
++	const char *model;
+ 	bool supports_set_get_features;
+ 	DECLARE_BITMAP(set_feature_list, ONFI_FEATURE_NUMBER);
+ 	DECLARE_BITMAP(get_feature_list, ONFI_FEATURE_NUMBER);
 -- 
 2.14.1
