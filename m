@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v3 20/33] mtd: rawnand: sh_flctl: convert driver to nand_scan()
-Date: Fri, 20 Jul 2018 01:00:13 +0200
-Message-ID: <20180719230026.8741-21-miquel.raynal@bootlin.com>
+Subject: [PATCH v3 22/33] mtd: rawnand: tango: convert driver to nand_scan()
+Date: Fri, 20 Jul 2018 01:00:15 +0200
+Message-ID: <20180719230026.8741-23-miquel.raynal@bootlin.com>
 References: <20180719230026.8741-1-miquel.raynal@bootlin.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180719230026.8741-1-miquel.raynal@bootlin.com>
@@ -17,54 +17,72 @@ both nand_scan_ident() and nand_scan_tail().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/sh_flctl.c | 19 ++++++++-----------
- 1 file changed, 8 insertions(+), 11 deletions(-)
+ drivers/mtd/nand/raw/tango_nand.c | 40 +++++++++++++++++++++++----------------
+ 1 file changed, 24 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/sh_flctl.c b/drivers/mtd/nand/raw/sh_flctl.c
-index d37d1d3ccbf9..aa9fd92818d9 100644
---- a/drivers/mtd/nand/raw/sh_flctl.c
-+++ b/drivers/mtd/nand/raw/sh_flctl.c
-@@ -1002,10 +1002,10 @@ static void flctl_read_buf(struct mtd_info *mtd, uint8_t *buf, int len)
- 	flctl->index += len;
- }
- 
--static int flctl_chip_init_tail(struct mtd_info *mtd)
-+static int flctl_chip_attach_chip(struct nand_chip *chip)
- {
-+	struct mtd_info *mtd = nand_to_mtd(chip);
- 	struct sh_flctl *flctl = mtd_to_flctl(mtd);
--	struct nand_chip *chip = &flctl->chip;
- 
- 	if (chip->options & NAND_BUSWIDTH_16) {
- 		/*
-@@ -1073,6 +1073,10 @@ static int flctl_chip_init_tail(struct mtd_info *mtd)
+diff --git a/drivers/mtd/nand/raw/tango_nand.c b/drivers/mtd/nand/raw/tango_nand.c
+index dd7a26efdf4f..d06d1aa918ed 100644
+--- a/drivers/mtd/nand/raw/tango_nand.c
++++ b/drivers/mtd/nand/raw/tango_nand.c
+@@ -517,6 +517,28 @@ static int tango_set_timings(struct mtd_info *mtd, int csline,
  	return 0;
  }
  
-+static struct nand_controller_ops flctl_nand_controller_ops = {
-+	.attach_chip = flctl_chip_attach_chip,
++static int tango_attach_chip(struct nand_chip *chip)
++{
++	struct nand_ecc_ctrl *ecc = &chip->ecc;
++
++	ecc->mode = NAND_ECC_HW;
++	ecc->algo = NAND_ECC_BCH;
++	ecc->bytes = DIV_ROUND_UP(ecc->strength * FIELD_ORDER, BITS_PER_BYTE);
++
++	ecc->read_page_raw = tango_read_page_raw;
++	ecc->write_page_raw = tango_write_page_raw;
++	ecc->read_page = tango_read_page;
++	ecc->write_page = tango_write_page;
++	ecc->read_oob = tango_read_oob;
++	ecc->write_oob = tango_write_oob;
++
++	return 0;
++}
++
++static struct nand_controller_ops tango_controller_ops = {
++	.attach_chip = tango_attach_chip,
 +};
 +
- static irqreturn_t flctl_handle_flste(int irq, void *dev_id)
+ static int chip_init(struct device *dev, struct device_node *np)
  {
- 	struct sh_flctl *flctl = dev_id;
-@@ -1200,15 +1204,8 @@ static int flctl_probe(struct platform_device *pdev)
+ 	u32 cs;
+@@ -560,28 +582,14 @@ static int chip_init(struct device *dev, struct device_node *np)
+ 			NAND_NO_SUBPAGE_WRITE |
+ 			NAND_WAIT_TCCS;
+ 	chip->controller = &nfc->hw;
++	chip->controller->ops = &tango_controller_ops;
+ 	tchip->base = nfc->pbus_base + (cs * 256);
  
- 	flctl_setup_dma(flctl);
+ 	nand_set_flash_node(chip, np);
+ 	mtd_set_ooblayout(mtd, &tango_nand_ooblayout_ops);
+ 	mtd->dev.parent = dev;
  
--	ret = nand_scan_ident(flctl_mtd, 1, NULL);
--	if (ret)
--		goto err_chip;
+-	err = nand_scan_ident(mtd, 1, NULL);
+-	if (err)
+-		return err;
 -
--	ret = flctl_chip_init_tail(flctl_mtd);
--	if (ret)
--		goto err_chip;
+-	ecc->mode = NAND_ECC_HW;
+-	ecc->algo = NAND_ECC_BCH;
+-	ecc->bytes = DIV_ROUND_UP(ecc->strength * FIELD_ORDER, BITS_PER_BYTE);
 -
--	ret = nand_scan_tail(flctl_mtd);
-+	nand->dummy_controller.ops = &flctl_nand_controller_ops;
-+	ret = nand_scan(flctl_mtd, 1);
- 	if (ret)
- 		goto err_chip;
+-	ecc->read_page_raw = tango_read_page_raw;
+-	ecc->write_page_raw = tango_write_page_raw;
+-	ecc->read_page = tango_read_page;
+-	ecc->write_page = tango_write_page;
+-	ecc->read_oob = tango_read_oob;
+-	ecc->write_oob = tango_write_oob;
+-
+-	err = nand_scan_tail(mtd);
++	err = nand_scan(mtd, 1);
+ 	if (err)
+ 		return err;
  
 -- 
 2.14.1
