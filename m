@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v3 11/33] mtd: rawnand: lpc32xx_mlc: convert driver to nand_scan()
-Date: Fri, 20 Jul 2018 01:00:04 +0200
-Message-ID: <20180719230026.8741-12-miquel.raynal@bootlin.com>
+Subject: [PATCH v3 13/33] mtd: rawnand: marvell: convert driver to nand_scan()
+Date: Fri, 20 Jul 2018 01:00:06 +0200
+Message-ID: <20180719230026.8741-14-miquel.raynal@bootlin.com>
 References: <20180719230026.8741-1-miquel.raynal@bootlin.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180719230026.8741-1-miquel.raynal@bootlin.com>
@@ -17,160 +17,241 @@ both nand_scan_ident() and nand_scan_tail().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/lpc32xx_mlc.c | 109 ++++++++++++++++++++-----------------
- 1 file changed, 59 insertions(+), 50 deletions(-)
+ drivers/mtd/nand/raw/marvell_nand.c | 206 +++++++++++++++++++-----------------
+ 1 file changed, 109 insertions(+), 97 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/lpc32xx_mlc.c b/drivers/mtd/nand/raw/lpc32xx_mlc.c
-index 052d123a8304..099f1dd308c6 100644
---- a/drivers/mtd/nand/raw/lpc32xx_mlc.c
-+++ b/drivers/mtd/nand/raw/lpc32xx_mlc.c
-@@ -184,6 +184,7 @@ static struct nand_bbt_descr lpc32xx_nand_bbt_mirror = {
- };
- 
- struct lpc32xx_nand_host {
-+	struct platform_device	*pdev;
- 	struct nand_chip	nand_chip;
- 	struct lpc32xx_mlc_platform_data *pdata;
- 	struct clk		*clk;
-@@ -653,6 +654,58 @@ static struct lpc32xx_nand_cfg_mlc *lpc32xx_parse_dt(struct device *dev)
- 	return ncfg;
+diff --git a/drivers/mtd/nand/raw/marvell_nand.c b/drivers/mtd/nand/raw/marvell_nand.c
+index bd5f9a4b7b16..1a4aeb08352a 100644
+--- a/drivers/mtd/nand/raw/marvell_nand.c
++++ b/drivers/mtd/nand/raw/marvell_nand.c
+@@ -319,6 +319,7 @@ struct marvell_nfc_caps {
+  */
+ struct marvell_nfc {
+ 	struct nand_controller controller;
++	struct nand_controller_ops ops;
+ 	struct device *dev;
+ 	void __iomem *regs;
+ 	struct clk *core_clk;
+@@ -2290,6 +2291,111 @@ static int marvell_nfc_setup_data_interface(struct mtd_info *mtd, int chipnr,
+ 	return 0;
  }
  
-+static int lpc32xx_nand_attach_chip(struct nand_chip *chip)
++static int marvell_nand_attach_chip(struct nand_chip *chip)
 +{
 +	struct mtd_info *mtd = nand_to_mtd(chip);
-+	struct lpc32xx_nand_host *host = nand_get_controller_data(chip);
-+	struct device *dev = &host->pdev->dev;
++	struct marvell_nand_chip *marvell_nand = to_marvell_nand(chip);
++	struct marvell_nfc *nfc = to_marvell_nfc(chip->controller);
++	struct pxa3xx_nand_platform_data *pdata = dev_get_platdata(nfc->dev);
++	int ret;
 +
-+	host->dma_buf = devm_kzalloc(dev, mtd->writesize, GFP_KERNEL);
-+	if (!host->dma_buf)
-+		return -ENOMEM;
++	if (pdata && pdata->flash_bbt)
++		chip->bbt_options |= NAND_BBT_USE_FLASH;
 +
-+	host->dummy_buf = devm_kzalloc(dev, mtd->writesize, GFP_KERNEL);
-+	if (!host->dummy_buf)
-+		return -ENOMEM;
-+
-+	chip->ecc.mode = NAND_ECC_HW;
-+	chip->ecc.size = 512;
-+	mtd_set_ooblayout(mtd, &lpc32xx_ooblayout_ops);
-+	host->mlcsubpages = mtd->writesize / 512;
-+
-+	/* initially clear interrupt status */
-+	readb(MLC_IRQ_SR(host->io_base));
-+
-+	init_completion(&host->comp_nand);
-+	init_completion(&host->comp_controller);
-+
-+	host->irq = platform_get_irq(host->pdev, 0);
-+	if (host->irq < 0) {
-+		dev_err(dev, "failed to get platform irq\n");
-+		return -EINVAL;
++	if (chip->bbt_options & NAND_BBT_USE_FLASH) {
++		/*
++		 * We'll use a bad block table stored in-flash and don't
++		 * allow writing the bad block marker to the flash.
++		 */
++		chip->bbt_options |= NAND_BBT_NO_OOB_BBM;
++		chip->bbt_td = &bbt_main_descr;
++		chip->bbt_md = &bbt_mirror_descr;
 +	}
 +
-+	if (request_irq(host->irq, (irq_handler_t)&lpc3xxx_nand_irq,
-+			IRQF_TRIGGER_HIGH, DRV_NAME, host)) {
-+		dev_err(dev, "Error requesting NAND IRQ\n");
-+		return -ENXIO;
++	/* Save the chip-specific fields of NDCR */
++	marvell_nand->ndcr = NDCR_PAGE_SZ(mtd->writesize);
++	if (chip->options & NAND_BUSWIDTH_16)
++		marvell_nand->ndcr |= NDCR_DWIDTH_M | NDCR_DWIDTH_C;
++
++	/*
++	 * On small page NANDs, only one cycle is needed to pass the
++	 * column address.
++	 */
++	if (mtd->writesize <= 512) {
++		marvell_nand->addr_cyc = 1;
++	} else {
++		marvell_nand->addr_cyc = 2;
++		marvell_nand->ndcr |= NDCR_RA_START;
++	}
++
++	/*
++	 * Now add the number of cycles needed to pass the row
++	 * address.
++	 *
++	 * Addressing a chip using CS 2 or 3 should also need the third row
++	 * cycle but due to inconsistance in the documentation and lack of
++	 * hardware to test this situation, this case is not supported.
++	 */
++	if (chip->options & NAND_ROW_ADDR_3)
++		marvell_nand->addr_cyc += 3;
++	else
++		marvell_nand->addr_cyc += 2;
++
++	if (pdata) {
++		chip->ecc.size = pdata->ecc_step_size;
++		chip->ecc.strength = pdata->ecc_strength;
++	}
++
++	ret = marvell_nand_ecc_init(mtd, &chip->ecc);
++	if (ret) {
++		dev_err(nfc->dev, "ECC init failed: %d\n", ret);
++		return ret;
++	}
++
++	if (chip->ecc.mode == NAND_ECC_HW) {
++		/*
++		 * Subpage write not available with hardware ECC, prohibit also
++		 * subpage read as in userspace subpage access would still be
++		 * allowed and subpage write, if used, would lead to numerous
++		 * uncorrectable ECC errors.
++		 */
++		chip->options |= NAND_NO_SUBPAGE_WRITE;
++	}
++
++	if (pdata || nfc->caps->legacy_of_bindings) {
++		/*
++		 * We keep the MTD name unchanged to avoid breaking platforms
++		 * where the MTD cmdline parser is used and the bootloader
++		 * has not been updated to use the new naming scheme.
++		 */
++		mtd->name = "pxa3xx_nand-0";
++	} else if (!mtd->name) {
++		/*
++		 * If the new bindings are used and the bootloader has not been
++		 * updated to pass a new mtdparts parameter on the cmdline, you
++		 * should define the following property in your NAND node, ie:
++		 *
++		 *	label = "main-storage";
++		 *
++		 * This way, mtd->name will be set by the core when
++		 * nand_set_flash_node() is called.
++		 */
++		mtd->name = devm_kasprintf(nfc->dev, GFP_KERNEL,
++					   "%s:nand.%d", dev_name(nfc->dev),
++					   marvell_nand->sels[0].cs);
++		if (!mtd->name) {
++			dev_err(nfc->dev, "Failed to allocate mtd->name\n");
++			return -ENOMEM;
++		}
 +	}
 +
 +	return 0;
 +}
 +
-+static void lpc32xx_nand_detach_chip(struct nand_chip *chip)
-+{
-+	struct lpc32xx_nand_host *host = nand_get_controller_data(chip);
-+
-+	free_irq(host->irq, host);
-+}
-+
-+static struct nand_controller_ops lpc32xx_nand_controller_ops = {
-+	.attach_chip = lpc32xx_nand_attach_chip,
-+	.detach_chip = lpc32xx_nand_detach_chip,
++static const struct nand_controller_ops marvell_nand_controller_ops = {
++	.attach_chip = marvell_nand_attach_chip,
 +};
 +
- /*
-  * Probe for NAND controller
-  */
-@@ -669,6 +722,8 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
- 	if (!host)
- 		return -ENOMEM;
+ static int marvell_nand_chip_init(struct device *dev, struct marvell_nfc *nfc,
+ 				  struct device_node *np)
+ {
+@@ -2432,105 +2538,11 @@ static int marvell_nand_chip_init(struct device *dev, struct marvell_nfc *nfc,
+ 	marvell_nand->ndtr1 = readl_relaxed(nfc->regs + NDTR1);
  
-+	host->pdev = pdev;
-+
- 	rc = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	host->io_base = devm_ioremap_resource(&pdev->dev, rc);
- 	if (IS_ERR(host->io_base))
-@@ -749,58 +804,14 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
- 	}
- 
- 	/*
--	 * Scan to find existance of the device and
--	 * Get the type of NAND device SMALL block or LARGE block
-+	 * Scan to find existence of the device and get the type of NAND device:
-+	 * SMALL block or LARGE block.
- 	 */
--	res = nand_scan_ident(mtd, 1, NULL);
-+	nand_chip->dummy_controller.ops = &lpc32xx_nand_controller_ops;
-+	res = nand_scan(mtd, 1);
- 	if (res)
- 		goto release_dma_chan;
- 
--	host->dma_buf = devm_kzalloc(&pdev->dev, mtd->writesize, GFP_KERNEL);
--	if (!host->dma_buf) {
--		res = -ENOMEM;
--		goto release_dma_chan;
+ 	chip->options |= NAND_BUSWIDTH_AUTO;
+-	ret = nand_scan_ident(mtd, marvell_nand->nsels, NULL);
+-	if (ret) {
+-		dev_err(dev, "could not identify the nand chip\n");
+-		return ret;
 -	}
 -
--	host->dummy_buf = devm_kzalloc(&pdev->dev, mtd->writesize, GFP_KERNEL);
--	if (!host->dummy_buf) {
--		res = -ENOMEM;
--		goto release_dma_chan;
+-	if (pdata && pdata->flash_bbt)
+-		chip->bbt_options |= NAND_BBT_USE_FLASH;
+-
+-	if (chip->bbt_options & NAND_BBT_USE_FLASH) {
+-		/*
+-		 * We'll use a bad block table stored in-flash and don't
+-		 * allow writing the bad block marker to the flash.
+-		 */
+-		chip->bbt_options |= NAND_BBT_NO_OOB_BBM;
+-		chip->bbt_td = &bbt_main_descr;
+-		chip->bbt_md = &bbt_mirror_descr;
 -	}
 -
--	nand_chip->ecc.mode = NAND_ECC_HW;
--	nand_chip->ecc.size = 512;
--	mtd_set_ooblayout(mtd, &lpc32xx_ooblayout_ops);
--	host->mlcsubpages = mtd->writesize / 512;
+-	/* Save the chip-specific fields of NDCR */
+-	marvell_nand->ndcr = NDCR_PAGE_SZ(mtd->writesize);
+-	if (chip->options & NAND_BUSWIDTH_16)
+-		marvell_nand->ndcr |= NDCR_DWIDTH_M | NDCR_DWIDTH_C;
 -
--	/* initially clear interrupt status */
--	readb(MLC_IRQ_SR(host->io_base));
--
--	init_completion(&host->comp_nand);
--	init_completion(&host->comp_controller);
--
--	host->irq = platform_get_irq(pdev, 0);
--	if (host->irq < 0) {
--		dev_err(&pdev->dev, "failed to get platform irq\n");
--		res = -EINVAL;
--		goto release_dma_chan;
--	}
--
--	if (request_irq(host->irq, (irq_handler_t)&lpc3xxx_nand_irq,
--			IRQF_TRIGGER_HIGH, DRV_NAME, host)) {
--		dev_err(&pdev->dev, "Error requesting NAND IRQ\n");
--		res = -ENXIO;
--		goto release_dma_chan;
+-	/*
+-	 * On small page NANDs, only one cycle is needed to pass the
+-	 * column address.
+-	 */
+-	if (mtd->writesize <= 512) {
+-		marvell_nand->addr_cyc = 1;
+-	} else {
+-		marvell_nand->addr_cyc = 2;
+-		marvell_nand->ndcr |= NDCR_RA_START;
 -	}
 -
 -	/*
--	 * Fills out all the uninitialized function pointers with the defaults
--	 * And scans for a bad block table if appropriate.
+-	 * Now add the number of cycles needed to pass the row
+-	 * address.
+-	 *
+-	 * Addressing a chip using CS 2 or 3 should also need the third row
+-	 * cycle but due to inconsistance in the documentation and lack of
+-	 * hardware to test this situation, this case is not supported.
 -	 */
--	res = nand_scan_tail(mtd);
--	if (res)
--		goto free_irq;
+-	if (chip->options & NAND_ROW_ADDR_3)
+-		marvell_nand->addr_cyc += 3;
+-	else
+-		marvell_nand->addr_cyc += 2;
 -
- 	mtd->name = DRV_NAME;
+-	if (pdata) {
+-		chip->ecc.size = pdata->ecc_step_size;
+-		chip->ecc.strength = pdata->ecc_strength;
+-	}
+-
+-	ret = marvell_nand_ecc_init(mtd, &chip->ecc);
+-	if (ret) {
+-		dev_err(dev, "ECC init failed: %d\n", ret);
+-		return ret;
+-	}
+-
+-	if (chip->ecc.mode == NAND_ECC_HW) {
+-		/*
+-		 * Subpage write not available with hardware ECC, prohibit also
+-		 * subpage read as in userspace subpage access would still be
+-		 * allowed and subpage write, if used, would lead to numerous
+-		 * uncorrectable ECC errors.
+-		 */
+-		chip->options |= NAND_NO_SUBPAGE_WRITE;
+-	}
+-
+-	if (pdata || nfc->caps->legacy_of_bindings) {
+-		/*
+-		 * We keep the MTD name unchanged to avoid breaking platforms
+-		 * where the MTD cmdline parser is used and the bootloader
+-		 * has not been updated to use the new naming scheme.
+-		 */
+-		mtd->name = "pxa3xx_nand-0";
+-	} else if (!mtd->name) {
+-		/*
+-		 * If the new bindings are used and the bootloader has not been
+-		 * updated to pass a new mtdparts parameter on the cmdline, you
+-		 * should define the following property in your NAND node, ie:
+-		 *
+-		 *	label = "main-storage";
+-		 *
+-		 * This way, mtd->name will be set by the core when
+-		 * nand_set_flash_node() is called.
+-		 */
+-		mtd->name = devm_kasprintf(nfc->dev, GFP_KERNEL,
+-					   "%s:nand.%d", dev_name(nfc->dev),
+-					   marvell_nand->sels[0].cs);
+-		if (!mtd->name) {
+-			dev_err(nfc->dev, "Failed to allocate mtd->name\n");
+-			return -ENOMEM;
+-		}
+-	}
  
- 	res = mtd_device_register(mtd, host->ncfg->parts,
-@@ -812,8 +823,6 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
+-	ret = nand_scan_tail(mtd);
++	chip->controller->ops = &marvell_nand_controller_ops;
++	ret = nand_scan(mtd, marvell_nand->nsels);
+ 	if (ret) {
+-		dev_err(dev, "nand_scan_tail failed: %d\n", ret);
++		dev_err(dev, "could not scan the nand chip\n");
+ 		return ret;
+ 	}
  
- cleanup_nand:
- 	nand_cleanup(nand_chip);
--free_irq:
--	free_irq(host->irq, host);
- release_dma_chan:
- 	if (use_dma)
- 		dma_release_channel(host->dma_chan);
 -- 
 2.14.1
