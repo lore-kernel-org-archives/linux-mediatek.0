@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v3 14/33] mtd: rawnand: mtk: convert driver to nand_scan()
-Date: Fri, 20 Jul 2018 01:00:07 +0200
-Message-ID: <20180719230026.8741-15-miquel.raynal@bootlin.com>
+Subject: [PATCH v3 12/33] mtd: rawnand: lpc32xx_slc: convert driver to nand_scan()
+Date: Fri, 20 Jul 2018 01:00:05 +0200
+Message-ID: <20180719230026.8741-13-miquel.raynal@bootlin.com>
 References: <20180719230026.8741-1-miquel.raynal@bootlin.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180719230026.8741-1-miquel.raynal@bootlin.com>
@@ -17,114 +17,103 @@ both nand_scan_ident() and nand_scan_tail().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/mtk_nand.c | 75 ++++++++++++++++++++++++-----------------
- 1 file changed, 44 insertions(+), 31 deletions(-)
+ drivers/mtd/nand/raw/lpc32xx_slc.c | 77 +++++++++++++++++++++-----------------
+ 1 file changed, 42 insertions(+), 35 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index 7bc6be3f6ec0..4376adc433a6 100644
---- a/drivers/mtd/nand/raw/mtk_nand.c
-+++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -1250,13 +1250,54 @@ static int mtk_nfc_ecc_init(struct device *dev, struct mtd_info *mtd)
- 	return 0;
+diff --git a/drivers/mtd/nand/raw/lpc32xx_slc.c b/drivers/mtd/nand/raw/lpc32xx_slc.c
+index 42820aa1abab..41c135567e8c 100644
+--- a/drivers/mtd/nand/raw/lpc32xx_slc.c
++++ b/drivers/mtd/nand/raw/lpc32xx_slc.c
+@@ -779,6 +779,46 @@ static struct lpc32xx_nand_cfg_slc *lpc32xx_parse_dt(struct device *dev)
+ 	return ncfg;
  }
  
-+static int mtk_nfc_attach_chip(struct nand_chip *chip)
++static int lpc32xx_nand_attach_chip(struct nand_chip *chip)
 +{
 +	struct mtd_info *mtd = nand_to_mtd(chip);
-+	struct device *dev = mtd->dev.parent;
-+	struct mtk_nfc *nfc = nand_get_controller_data(chip);
-+	struct mtk_nfc_nand_chip *mtk_nand = to_mtk_nand(chip);
-+	int len;
-+	int ret;
++	struct lpc32xx_nand_host *host = nand_get_controller_data(chip);
 +
-+	if (chip->options & NAND_BUSWIDTH_16) {
-+		dev_err(dev, "16bits buswidth not supported");
-+		return -EINVAL;
++	/* OOB and ECC CPU and DMA work areas */
++	host->ecc_buf = (uint32_t *)(host->data_buf + LPC32XX_DMA_DATA_SIZE);
++
++	/*
++	 * Small page FLASH has a unique OOB layout, but large and huge
++	 * page FLASH use the standard layout. Small page FLASH uses a
++	 * custom BBT marker layout.
++	 */
++	if (mtd->writesize <= 512)
++		mtd_set_ooblayout(mtd, &lpc32xx_ooblayout_ops);
++
++	/* These sizes remain the same regardless of page size */
++	chip->ecc.size = 256;
++	chip->ecc.bytes = LPC32XX_SLC_DEV_ECC_BYTES;
++	chip->ecc.prepad = 0;
++	chip->ecc.postpad = 0;
++
++	/*
++	 * Use a custom BBT marker setup for small page FLASH that
++	 * won't interfere with the ECC layout. Large and huge page
++	 * FLASH use the standard layout.
++	 */
++	if ((chip->bbt_options & NAND_BBT_USE_FLASH) &&
++	    mtd->writesize <= 512) {
++		chip->bbt_td = &bbt_smallpage_main_descr;
++		chip->bbt_md = &bbt_smallpage_mirror_descr;
 +	}
-+
-+	/* store bbt magic in page, cause OOB is not protected */
-+	if (chip->bbt_options & NAND_BBT_USE_FLASH)
-+		chip->bbt_options |= NAND_BBT_NO_OOB;
-+
-+	ret = mtk_nfc_ecc_init(dev, mtd);
-+	if (ret)
-+		return ret;
-+
-+	ret = mtk_nfc_set_spare_per_sector(&mtk_nand->spare_per_sector, mtd);
-+	if (ret)
-+		return ret;
-+
-+	mtk_nfc_set_fdm(&mtk_nand->fdm, mtd);
-+	mtk_nfc_set_bad_mark_ctl(&mtk_nand->bad_mark, mtd);
-+
-+	len = mtd->writesize + mtd->oobsize;
-+	nfc->buffer = devm_kzalloc(dev, len, GFP_KERNEL);
-+	if (!nfc->buffer)
-+		return  -ENOMEM;
 +
 +	return 0;
 +}
 +
-+static struct nand_controller_ops mtk_nfc_controller_ops = {
-+	.attach_chip = mtk_nfc_attach_chip,
++static struct nand_controller_ops lpc32xx_nand_controller_ops = {
++	.attach_chip = lpc32xx_nand_attach_chip,
 +};
 +
- static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
- 				  struct device_node *np)
- {
- 	struct mtk_nfc_nand_chip *chip;
- 	struct nand_chip *nand;
- 	struct mtd_info *mtd;
--	int nsels, len;
-+	int nsels;
- 	u32 tmp;
- 	int ret;
- 	int i;
-@@ -1287,6 +1328,7 @@ static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
+ /*
+  * Probe for NAND controller
+  */
+@@ -884,41 +924,8 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
+ 	}
  
- 	nand = &chip->nand;
- 	nand->controller = &nfc->controller;
-+	nand->controller->ops = &mtk_nfc_controller_ops;
- 
- 	nand_set_flash_node(nand, np);
- 	nand_set_controller_data(nand, nfc);
-@@ -1324,36 +1366,7 @@ static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
- 
- 	mtk_nfc_hw_init(nfc);
- 
--	ret = nand_scan_ident(mtd, nsels, NULL);
--	if (ret)
--		return ret;
+ 	/* Find NAND device */
+-	res = nand_scan_ident(mtd, 1, NULL);
+-	if (res)
+-		goto release_dma;
 -
--	/* store bbt magic in page, cause OOB is not protected */
--	if (nand->bbt_options & NAND_BBT_USE_FLASH)
--		nand->bbt_options |= NAND_BBT_NO_OOB;
+-	/* OOB and ECC CPU and DMA work areas */
+-	host->ecc_buf = (uint32_t *)(host->data_buf + LPC32XX_DMA_DATA_SIZE);
 -
--	ret = mtk_nfc_ecc_init(dev, mtd);
--	if (ret)
--		return -EINVAL;
+-	/*
+-	 * Small page FLASH has a unique OOB layout, but large and huge
+-	 * page FLASH use the standard layout. Small page FLASH uses a
+-	 * custom BBT marker layout.
+-	 */
+-	if (mtd->writesize <= 512)
+-		mtd_set_ooblayout(mtd, &lpc32xx_ooblayout_ops);
 -
--	if (nand->options & NAND_BUSWIDTH_16) {
--		dev_err(dev, "16bits buswidth not supported");
--		return -EINVAL;
+-	/* These sizes remain the same regardless of page size */
+-	chip->ecc.size = 256;
+-	chip->ecc.bytes = LPC32XX_SLC_DEV_ECC_BYTES;
+-	chip->ecc.prepad = chip->ecc.postpad = 0;
+-
+-	/*
+-	 * Use a custom BBT marker setup for small page FLASH that
+-	 * won't interfere with the ECC layout. Large and huge page
+-	 * FLASH use the standard layout.
+-	 */
+-	if ((chip->bbt_options & NAND_BBT_USE_FLASH) &&
+-	    mtd->writesize <= 512) {
+-		chip->bbt_td = &bbt_smallpage_main_descr;
+-		chip->bbt_md = &bbt_smallpage_mirror_descr;
 -	}
 -
--	ret = mtk_nfc_set_spare_per_sector(&chip->spare_per_sector, mtd);
--	if (ret)
--		return ret;
--
--	mtk_nfc_set_fdm(&chip->fdm, mtd);
--	mtk_nfc_set_bad_mark_ctl(&chip->bad_mark, mtd);
--
--	len = mtd->writesize + mtd->oobsize;
--	nfc->buffer = devm_kzalloc(dev, len, GFP_KERNEL);
--	if (!nfc->buffer)
--		return  -ENOMEM;
--
--	ret = nand_scan_tail(mtd);
-+	ret = nand_scan(mtd, nsels);
- 	if (ret)
- 		return ret;
+-	/*
+-	 * Fills out all the uninitialized function pointers with the defaults
+-	 */
+-	res = nand_scan_tail(mtd);
++	chip->dummy_controller.ops = &lpc32xx_nand_controller_ops;
++	res = nand_scan(mtd, 1);
+ 	if (res)
+ 		goto release_dma;
  
 -- 
 2.14.1
