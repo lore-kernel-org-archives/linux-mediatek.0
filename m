@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v3 21/33] mtd: rawnand: sunxi: convert driver to nand_scan()
-Date: Fri, 20 Jul 2018 01:00:14 +0200
-Message-ID: <20180719230026.8741-22-miquel.raynal@bootlin.com>
+Subject: [PATCH v3 24/33] mtd: rawnand: txx9ndfmc: convert driver to nand_scan()
+Date: Fri, 20 Jul 2018 01:00:17 +0200
+Message-ID: <20180719230026.8741-25-miquel.raynal@bootlin.com>
 References: <20180719230026.8741-1-miquel.raynal@bootlin.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180719230026.8741-1-miquel.raynal@bootlin.com>
@@ -17,89 +17,74 @@ both nand_scan_ident() and nand_scan_tail().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/sunxi_nand.c | 43 +++++++++++++++++----------------------
- 1 file changed, 19 insertions(+), 24 deletions(-)
+ drivers/mtd/nand/raw/txx9ndfmc.c | 29 +++++++++++++++--------------
+ 1 file changed, 15 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/sunxi_nand.c b/drivers/mtd/nand/raw/sunxi_nand.c
-index 07f3ff9a28f2..de2bf752142b 100644
---- a/drivers/mtd/nand/raw/sunxi_nand.c
-+++ b/drivers/mtd/nand/raw/sunxi_nand.c
-@@ -1816,12 +1816,21 @@ static void sunxi_nand_ecc_cleanup(struct nand_ecc_ctrl *ecc)
- 	}
- }
+diff --git a/drivers/mtd/nand/raw/txx9ndfmc.c b/drivers/mtd/nand/raw/txx9ndfmc.c
+index 9019022774f7..4b2d9418d14a 100644
+--- a/drivers/mtd/nand/raw/txx9ndfmc.c
++++ b/drivers/mtd/nand/raw/txx9ndfmc.c
+@@ -254,23 +254,23 @@ static void txx9ndfmc_initialize(struct platform_device *dev)
+ #define TXX9NDFMC_NS_TO_CYC(gbusclk, ns) \
+ 	DIV_ROUND_UP((ns) * DIV_ROUND_UP(gbusclk, 1000), 1000000)
  
--static int sunxi_nand_ecc_init(struct mtd_info *mtd, struct nand_ecc_ctrl *ecc,
--			       struct device_node *np)
-+static int sunxi_nand_attach_chip(struct nand_chip *nand)
+-static int txx9ndfmc_nand_scan(struct mtd_info *mtd)
++static int txx9ndfmc_attach_chip(struct nand_chip *chip)
  {
--	struct nand_chip *nand = mtd_to_nand(mtd);
-+	struct mtd_info *mtd = nand_to_mtd(nand);
-+	struct nand_ecc_ctrl *ecc = &nand->ecc;
-+	struct device_node *np = nand_get_flash_node(nand);
- 	int ret;
+-	struct nand_chip *chip = mtd_to_nand(mtd);
+-	int ret;
++	struct mtd_info *mtd = nand_to_mtd(chip);
  
-+	if (nand->bbt_options & NAND_BBT_USE_FLASH)
-+		nand->bbt_options |= NAND_BBT_NO_OOB;
+-	ret = nand_scan_ident(mtd, 1, NULL);
+-	if (!ret) {
+-		if (mtd->writesize >= 512) {
+-			/* Hardware ECC 6 byte ECC per 512 Byte data */
+-			chip->ecc.size = 512;
+-			chip->ecc.bytes = 6;
+-		}
+-		ret = nand_scan_tail(mtd);
++	if (mtd->writesize >= 512) {
++		/* Hardware ECC 6 byte ECC per 512 Byte data */
++		chip->ecc.size = 512;
++		chip->ecc.bytes = 6;
+ 	}
+-	return ret;
 +
-+	if (nand->options & NAND_NEED_SCRAMBLING)
-+		nand->options |= NAND_NO_SUBPAGE_WRITE;
-+
-+	nand->options |= NAND_SUBPAGE_READ;
-+
- 	if (!ecc->size) {
- 		ecc->size = nand->ecc_step_ds;
- 		ecc->strength = nand->ecc_strength_ds;
-@@ -1846,6 +1855,10 @@ static int sunxi_nand_ecc_init(struct mtd_info *mtd, struct nand_ecc_ctrl *ecc,
- 	return 0;
++	return 0;
  }
  
-+static struct nand_controller_ops sunxi_nand_controller_ops = {
-+	.attach_chip = sunxi_nand_attach_chip,
++static struct nand_controller_ops txx9ndfmc_controller_ops = {
++	.attach_chip = txx9ndfmc_attach_chip,
 +};
 +
- static int sunxi_nand_chip_init(struct device *dev, struct sunxi_nfc *nfc,
- 				struct device_node *np)
+ static int __init txx9ndfmc_probe(struct platform_device *dev)
  {
-@@ -1911,6 +1924,8 @@ static int sunxi_nand_chip_init(struct device *dev, struct sunxi_nfc *nfc,
- 	/* Default tR value specified in the ONFI spec (chapter 4.15.1) */
- 	nand->chip_delay = 200;
- 	nand->controller = &nfc->controller;
-+	nand->controller->ops = &sunxi_nand_controller_ops;
-+
- 	/*
- 	 * Set the ECC mode to the default value in case nothing is specified
- 	 * in the DT.
-@@ -1927,30 +1942,10 @@ static int sunxi_nand_chip_init(struct device *dev, struct sunxi_nfc *nfc,
- 	mtd = nand_to_mtd(nand);
- 	mtd->dev.parent = dev;
+ 	struct txx9ndfmc_platform_data *plat = dev_get_platdata(&dev->dev);
+@@ -304,6 +304,7 @@ static int __init txx9ndfmc_probe(struct platform_device *dev)
+ 		 (gbusclk + 500000) / 1000000, hold, spw);
  
--	ret = nand_scan_ident(mtd, nsels, NULL);
-+	ret = nand_scan(mtd, nsels);
- 	if (ret)
- 		return ret;
+ 	nand_controller_init(&drvdata->controller);
++	drvdata->controller.ops = &txx9ndfmc_controller_ops;
  
--	if (nand->bbt_options & NAND_BBT_USE_FLASH)
--		nand->bbt_options |= NAND_BBT_NO_OOB;
--
--	if (nand->options & NAND_NEED_SCRAMBLING)
--		nand->options |= NAND_NO_SUBPAGE_WRITE;
--
--	nand->options |= NAND_SUBPAGE_READ;
--
--	ret = sunxi_nand_ecc_init(mtd, &nand->ecc, np);
--	if (ret) {
--		dev_err(dev, "ECC init failed: %d\n", ret);
--		return ret;
--	}
--
--	ret = nand_scan_tail(mtd);
--	if (ret) {
--		dev_err(dev, "nand_scan_tail failed: %d\n", ret);
--		return ret;
--	}
--
- 	ret = mtd_device_register(mtd, NULL, 0);
- 	if (ret) {
- 		dev_err(dev, "failed to register mtd device: %d\n", ret);
+ 	platform_set_drvdata(dev, drvdata);
+ 	txx9ndfmc_initialize(dev);
+@@ -332,7 +333,7 @@ static int __init txx9ndfmc_probe(struct platform_device *dev)
+ 		chip->ecc.correct = txx9ndfmc_correct_data;
+ 		chip->ecc.hwctl = txx9ndfmc_enable_hwecc;
+ 		chip->ecc.mode = NAND_ECC_HW;
+-		/* txx9ndfmc_nand_scan will overwrite ecc.size and ecc.bytes */
++		/* nand_scan() will overwrite ecc.size and ecc.bytes */
+ 		chip->ecc.size = 256;
+ 		chip->ecc.bytes = 3;
+ 		chip->ecc.strength = 1;
+@@ -359,7 +360,7 @@ static int __init txx9ndfmc_probe(struct platform_device *dev)
+ 		if (plat->wide_mask & (1 << i))
+ 			chip->options |= NAND_BUSWIDTH_16;
+ 
+-		if (txx9ndfmc_nand_scan(mtd)) {
++		if (nand_scan(mtd, 1)) {
+ 			kfree(txx9_priv->mtdname);
+ 			kfree(txx9_priv);
+ 			continue;
 -- 
 2.14.1
