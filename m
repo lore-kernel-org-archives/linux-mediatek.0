@@ -1,18 +1,19 @@
 From: Sean Wang <sean.wang@mediatek.com>
 Subject: Re: [SPAM]Re: [PATCH] net: mediatek: use dma_zalloc_coherent
  instead of allocator/memset
-Date: Fri, 20 Jul 2018 21:48:24 +0800
-Message-ID: <1532094504.8953.262.camel@mtkswgap22>
+Date: Fri, 20 Jul 2018 21:57:38 +0800
+Message-ID: <1532095058.8953.264.camel@mtkswgap22>
 References: <20180719140955.19444-1-yuehaibing@huawei.com>
  <20180719141723.GM17271@n2100.armlinux.org.uk>
  <1532019744.8953.248.camel@mtkswgap22>
  <9a4cdfc6-7487-5908-b584-f3bf6158c4d4@huawei.com>
  <20180720081334.GO17271@n2100.armlinux.org.uk>
+ <a8dfe467-9649-ca48-20e9-38041de6a404@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180720081334.GO17271@n2100.armlinux.org.uk>
+In-Reply-To: <a8dfe467-9649-ca48-20e9-38041de6a404@huawei.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -22,92 +23,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Russell King - ARM Linux <linux@armlinux.org.uk>
-Cc: nbd@openwrt.org, nelson.chang@mediatek.com, netdev@vger.kernel.org, YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, john@phrozen.org, matthias.bgg@gmail.com, davem@davemloft.net, linux-arm-kernel@lists.infradead.org
+To: YueHaibing <yuehaibing@huawei.com>
+Cc: nbd@openwrt.org, nelson.chang@mediatek.com, netdev@vger.kernel.org, Russell King - ARM Linux <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, john@phrozen.org, matthias.bgg@gmail.com, davem@davemloft.net, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2018-07-20 at 09:13 +0100, Russell King - ARM Linux wrote:
-> On Fri, Jul 20, 2018 at 02:30:53PM +0800, YueHaibing wrote:
-> > On 2018/7/20 1:02, Sean Wang wrote:
-> > > On Thu, 2018-07-19 at 15:17 +0100, Russell King - ARM Linux wrote:
-> > >> On Thu, Jul 19, 2018 at 10:09:55PM +0800, YueHaibing wrote:
-> > >>> Use dma_zalloc_coherent instead of dma_alloc_coherent
-> > >>> followed by memset 0.
-> > >>>
-> > >>> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-> > >>> ---
-> > >>>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 7 ++-----
-> > >>>  1 file changed, 2 insertions(+), 5 deletions(-)
-> > >>>
-> > >>> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> > >>> index d8ebf0a..fbdb3e3 100644
-> > >>> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> > >>> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> > >>> @@ -1221,14 +1221,11 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
-> > >>>  	if (!ring->buf)
-> > >>>  		goto no_tx_mem;
-> > >>>  
-> > >>> -	ring->dma = dma_alloc_coherent(eth->dev,
-> > >>> -					  MTK_DMA_SIZE * sz,
-> > >>> -					  &ring->phys,
-> > >>> -					  GFP_ATOMIC | __GFP_ZERO);
-> > >>> +	ring->dma = dma_zalloc_coherent(eth->dev, MTK_DMA_SIZE * sz,
-> > >>> +					&ring->phys, GFP_ATOMIC | __GFP_ZERO);
-> > >>>  	if (!ring->dma)
-> > >>>  		goto no_tx_mem;
-> > >>>  
-> > >>> -	memset(ring->dma, 0, MTK_DMA_SIZE * sz);
-> > >>
-> > >> I have to wonder whether this code needs two forms of zeroing... in
-> > >> the original code, __GFP_ZERO _and_ a call to memset() just in case
-> > >> __GFP_ZERO failed to do its job, and in the replacement code, just
-> > >> in case dma_zalloc_coherent() hasn't got the idea...
-> > >>
-> > >> I think you can drop the __GFP_ZERO. ;)
-> > >>
-> > > 
-> > > Just now I did an experiment on 4.14.56 on armv7. I found that
-> > > dma_zalloc_coherent does not guarantee that the buffer we get
-> > > is all filled with 0.
-> > > 
-> > > 
-> > > I really think it's a little bit weird OR what was I missing something
-> > > for enabling dma_zalloc_coherent ? The result seems to tell that we
-> > > can't remove freely the memset with 0 at this moment until we get a
-> > > cause.
-> > > 
-> > 
-> > That means dma_zalloc_coherent doesn't work as expect on armv7?
-> 
-> Can someone work out which underlying allocator is being used - the
-> possibilities are:
-> 
-> - dma_alloc_from_dev_coherent
-> - cma
-> - simple
-> - remap
-> - pool
-> 
-> Looking at the code, I'd guess it's the pool allocator, as I don't see
-> anything which zeros memory there, and it doesn't honor the __GFP_ZERO
-> flag.  This is definitely an allocator bug.
-> 
-
-Yes, your guess is right. the allocator is from pool. I show the full
-stack as below when calling dma_zalloc_coherent
-
-[   54.358310] [<c0113ca8>] (unwind_backtrace) from [<c010e558>] (show_stack+0x20/0x24)
-[   54.366012] [<c010e558>] (show_stack) from [<c0927f58>] (dump_stack+0x98/0xac)
-[   54.373196] [<c0927f58>] (dump_stack) from [<c011c1f8>] (pool_allocator_alloc+0x20/0x30)
-[   54.381238] [<c011c1f8>] (pool_allocator_alloc) from [<c011a238>] (__dma_alloc+0x1b8/0x344)
-[   54.389538] [<c011a238>] (__dma_alloc) from [<c011a45c>] (arm_dma_alloc+0x50/0x58)
-[   54.397063] [<c011a45c>] (arm_dma_alloc) from [<c05dc208>] (mtk_open+0xf4/0x710)
-[   54.404416] [<c05dc208>] (mtk_open) from [<c076d110>] (__dev_open+0xdc/0x160)
-[   54.411507] [<c076d110>] (__dev_open) from [<c076d530>] (__dev_change_flags+0x178/0x1c4)
-[   54.419547] [<c076d530>] (__dev_change_flags) from [<c076d5a4>] (dev_change_flags+0x28/0x58)
-[   54.427934] [<c076d5a4>] (dev_change_flags) from [<c07ea7c0>] (devinet_ioctl+0x630/0x720)
-[   54.436062] [<c07ea7c0>] (devinet_ioctl) from [<c07ed070>] (inet_ioctl+0x210/0x3a8)
-[   54.443674] [<c07ed070>] (inet_ioctl) from [<c0747094>] (sock_ioctl+0x234/0x4dc)
-[   54.451029] [<c0747094>] (sock_ioctl) from [<c028206c>] (do_vfs_ioctl+0xc0/0x914)
-[   54.458468] [<c028206c>] (do_vfs_ioctl) from [<c0282904>] (SyS_ioctl+0x44/0x6c)
-[   54.465733] [<c0282904>] (SyS_ioctl) from [<c0101000>] (ret_fast_syscall+0x0/0x54)
+T24gRnJpLCAyMDE4LTA3LTIwIGF0IDIxOjMzICswODAwLCBZdWVIYWliaW5nIHdyb3RlOgo+IE9u
+IDIwMTgvNy8yMCAxNjoxMywgUnVzc2VsbCBLaW5nIC0gQVJNIExpbnV4IHdyb3RlOgo+ID4gT24g
+RnJpLCBKdWwgMjAsIDIwMTggYXQgMDI6MzA6NTNQTSArMDgwMCwgWXVlSGFpYmluZyB3cm90ZToK
+PiA+PiBPbiAyMDE4LzcvMjAgMTowMiwgU2VhbiBXYW5nIHdyb3RlOgo+ID4+PiBPbiBUaHUsIDIw
+MTgtMDctMTkgYXQgMTU6MTcgKzAxMDAsIFJ1c3NlbGwgS2luZyAtIEFSTSBMaW51eCB3cm90ZToK
+PiA+Pj4+IE9uIFRodSwgSnVsIDE5LCAyMDE4IGF0IDEwOjA5OjU1UE0gKzA4MDAsIFl1ZUhhaWJp
+bmcgd3JvdGU6Cj4gPj4+Pj4gVXNlIGRtYV96YWxsb2NfY29oZXJlbnQgaW5zdGVhZCBvZiBkbWFf
+YWxsb2NfY29oZXJlbnQKPiA+Pj4+PiBmb2xsb3dlZCBieSBtZW1zZXQgMC4KPiA+Pj4+Pgo+ID4+
+Pj4+IFNpZ25lZC1vZmYtYnk6IFl1ZUhhaWJpbmcgPHl1ZWhhaWJpbmdAaHVhd2VpLmNvbT4KPiA+
+Pj4+PiAtLS0KPiA+Pj4+PiAgZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9z
+b2MuYyB8IDcgKystLS0tLQo+ID4+Pj4+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCsp
+LCA1IGRlbGV0aW9ucygtKQo+ID4+Pj4+Cj4gPj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0
+L2V0aGVybmV0L21lZGlhdGVrL210a19ldGhfc29jLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9t
+ZWRpYXRlay9tdGtfZXRoX3NvYy5jCj4gPj4+Pj4gaW5kZXggZDhlYmYwYS4uZmJkYjNlMyAxMDA2
+NDQKPiA+Pj4+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9tZWRpYXRlay9tdGtfZXRoX3Nv
+Yy5jCj4gPj4+Pj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9z
+b2MuYwo+ID4+Pj4+IEBAIC0xMjIxLDE0ICsxMjIxLDExIEBAIHN0YXRpYyBpbnQgbXRrX3R4X2Fs
+bG9jKHN0cnVjdCBtdGtfZXRoICpldGgpCj4gPj4+Pj4gIAlpZiAoIXJpbmctPmJ1ZikKPiA+Pj4+
+PiAgCQlnb3RvIG5vX3R4X21lbTsKPiA+Pj4+PiAgCj4gPj4+Pj4gLQlyaW5nLT5kbWEgPSBkbWFf
+YWxsb2NfY29oZXJlbnQoZXRoLT5kZXYsCj4gPj4+Pj4gLQkJCQkJICBNVEtfRE1BX1NJWkUgKiBz
+eiwKPiA+Pj4+PiAtCQkJCQkgICZyaW5nLT5waHlzLAo+ID4+Pj4+IC0JCQkJCSAgR0ZQX0FUT01J
+QyB8IF9fR0ZQX1pFUk8pOwo+ID4+Pj4+ICsJcmluZy0+ZG1hID0gZG1hX3phbGxvY19jb2hlcmVu
+dChldGgtPmRldiwgTVRLX0RNQV9TSVpFICogc3osCj4gPj4+Pj4gKwkJCQkJJnJpbmctPnBoeXMs
+IEdGUF9BVE9NSUMgfCBfX0dGUF9aRVJPKTsKPiA+Pj4+PiAgCWlmICghcmluZy0+ZG1hKQo+ID4+
+Pj4+ICAJCWdvdG8gbm9fdHhfbWVtOwo+ID4+Pj4+ICAKPiA+Pj4+PiAtCW1lbXNldChyaW5nLT5k
+bWEsIDAsIE1US19ETUFfU0laRSAqIHN6KTsKPiA+Pj4+Cj4gPj4+PiBJIGhhdmUgdG8gd29uZGVy
+IHdoZXRoZXIgdGhpcyBjb2RlIG5lZWRzIHR3byBmb3JtcyBvZiB6ZXJvaW5nLi4uIGluCj4gPj4+
+PiB0aGUgb3JpZ2luYWwgY29kZSwgX19HRlBfWkVSTyBfYW5kXyBhIGNhbGwgdG8gbWVtc2V0KCkg
+anVzdCBpbiBjYXNlCj4gPj4+PiBfX0dGUF9aRVJPIGZhaWxlZCB0byBkbyBpdHMgam9iLCBhbmQg
+aW4gdGhlIHJlcGxhY2VtZW50IGNvZGUsIGp1c3QKPiA+Pj4+IGluIGNhc2UgZG1hX3phbGxvY19j
+b2hlcmVudCgpIGhhc24ndCBnb3QgdGhlIGlkZWEuLi4KPiA+Pj4+Cj4gPj4+PiBJIHRoaW5rIHlv
+dSBjYW4gZHJvcCB0aGUgX19HRlBfWkVSTy4gOykKPiA+Pj4+Cj4gPj4+Cj4gPj4+IEp1c3Qgbm93
+IEkgZGlkIGFuIGV4cGVyaW1lbnQgb24gNC4xNC41NiBvbiBhcm12Ny4gSSBmb3VuZCB0aGF0Cj4g
+Pj4+IGRtYV96YWxsb2NfY29oZXJlbnQgZG9lcyBub3QgZ3VhcmFudGVlIHRoYXQgdGhlIGJ1ZmZl
+ciB3ZSBnZXQKPiA+Pj4gaXMgYWxsIGZpbGxlZCB3aXRoIDAuCj4gPj4+Cj4gPj4+Cj4gPj4+IEkg
+cmVhbGx5IHRoaW5rIGl0J3MgYSBsaXR0bGUgYml0IHdlaXJkIE9SIHdoYXQgd2FzIEkgbWlzc2lu
+ZyBzb21ldGhpbmcKPiA+Pj4gZm9yIGVuYWJsaW5nIGRtYV96YWxsb2NfY29oZXJlbnQgPyBUaGUg
+cmVzdWx0IHNlZW1zIHRvIHRlbGwgdGhhdCB3ZQo+ID4+PiBjYW4ndCByZW1vdmUgZnJlZWx5IHRo
+ZSBtZW1zZXQgd2l0aCAwIGF0IHRoaXMgbW9tZW50IHVudGlsIHdlIGdldCBhCj4gPj4+IGNhdXNl
+Lgo+ID4+Pgo+ID4+Cj4gPj4gVGhhdCBtZWFucyBkbWFfemFsbG9jX2NvaGVyZW50IGRvZXNuJ3Qg
+d29yayBhcyBleHBlY3Qgb24gYXJtdjc/Cj4gPiAKPiA+IENhbiBzb21lb25lIHdvcmsgb3V0IHdo
+aWNoIHVuZGVybHlpbmcgYWxsb2NhdG9yIGlzIGJlaW5nIHVzZWQgLSB0aGUKPiA+IHBvc3NpYmls
+aXRpZXMgYXJlOgo+ID4gCj4gPiAtIGRtYV9hbGxvY19mcm9tX2Rldl9jb2hlcmVudAo+ID4gLSBj
+bWEKPiA+IC0gc2ltcGxlCj4gPiAtIHJlbWFwCj4gPiAtIHBvb2wKPiA+IAo+ID4gTG9va2luZyBh
+dCB0aGUgY29kZSwgSSdkIGd1ZXNzIGl0J3MgdGhlIHBvb2wgYWxsb2NhdG9yLCBhcyBJIGRvbid0
+IHNlZQo+ID4gYW55dGhpbmcgd2hpY2ggemVyb3MgbWVtb3J5IHRoZXJlLCBhbmQgaXQgZG9lc24n
+dCBob25vciB0aGUgX19HRlBfWkVSTwo+ID4gZmxhZy4gIFRoaXMgaXMgZGVmaW5pdGVseSBhbiBh
+bGxvY2F0b3IgYnVnLgo+ID4gCj4gCj4gU2VhbiwKPiAKPiBjYW4geW91IHRlc3QgYmVsbG93IHBh
+dGNo77yaCj4gCj4gCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21tL2RtYS1tYXBwaW5nLmMgYi9h
+cmNoL2FybS9tbS9kbWEtbWFwcGluZy5jCj4gaW5kZXggYmUwZmE3ZS4uNTIwMjliYiAxMDA2NDQK
+PiAtLS0gYS9hcmNoL2FybS9tbS9kbWEtbWFwcGluZy5jCj4gKysrIGIvYXJjaC9hcm0vbW0vZG1h
+LW1hcHBpbmcuYwo+IEBAIC01NjQsNiArNTY0LDcgQEAgc3RhdGljIHZvaWQgKl9fYWxsb2NfZnJv
+bV9wb29sKHNpemVfdCBzaXplLCBzdHJ1Y3QgcGFnZSAqKnJldF9wYWdlKQo+IAo+ICpyZXRfcGFn
+ZSA9IHBoeXNfdG9fcGFnZShwaHlzKTsKPiBwdHIgPSAodm9pZCAqKXZhbDsKPiArIG1lbXNldChw
+dHIsIDAsIHNpemUpOwo+IH0KPiAKCml0IHNob3VsZCB3b3JrLiBidXQgZG9uJ3Qgd2UgbmVlZCB0
+byBjb21wYXJlIGdmcCBhZ2FpbnN0IF9fR0ZQX1pFUk8KYmVmb3JlIHplcm9zIGJ1ZmZlciA/CgoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFy
+bS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1r
+ZXJuZWwK
