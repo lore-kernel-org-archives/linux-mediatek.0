@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v4 22/35] mtd: rawnand: tango: convert driver to nand_scan()
-Date: Fri, 20 Jul 2018 17:15:14 +0200
-Message-ID: <20180720151527.16038-23-miquel.raynal@bootlin.com>
+Subject: [PATCH v4 18/35] mtd: rawnand: s3c2410: convert driver to nand_scan()
+Date: Fri, 20 Jul 2018 17:15:10 +0200
+Message-ID: <20180720151527.16038-19-miquel.raynal@bootlin.com>
 References: <20180720151527.16038-1-miquel.raynal@bootlin.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180720151527.16038-1-miquel.raynal@bootlin.com>
@@ -17,72 +17,76 @@ both nand_scan_ident() and nand_scan_tail().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/tango_nand.c | 40 +++++++++++++++++++++++----------------
- 1 file changed, 24 insertions(+), 16 deletions(-)
+ drivers/mtd/nand/raw/s3c2410.c | 30 +++++++++++++-----------------
+ 1 file changed, 13 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/tango_nand.c b/drivers/mtd/nand/raw/tango_nand.c
-index dd7a26efdf4f..a448d0797cd5 100644
---- a/drivers/mtd/nand/raw/tango_nand.c
-+++ b/drivers/mtd/nand/raw/tango_nand.c
-@@ -517,6 +517,28 @@ static int tango_set_timings(struct mtd_info *mtd, int csline,
+diff --git a/drivers/mtd/nand/raw/s3c2410.c b/drivers/mtd/nand/raw/s3c2410.c
+index e8bf64832213..c21e8892394a 100644
+--- a/drivers/mtd/nand/raw/s3c2410.c
++++ b/drivers/mtd/nand/raw/s3c2410.c
+@@ -915,20 +915,19 @@ static void s3c2410_nand_init_chip(struct s3c2410_nand_info *info,
+ }
+ 
+ /**
+- * s3c2410_nand_update_chip - post probe update
+- * @info: The controller instance.
+- * @nmtd: The driver version of the MTD instance.
++ * s3c2410_nand_attach_chip - Init the ECC engine after NAND scan
++ * @chip: The NAND chip
+  *
+- * This routine is called after the chip probe has successfully completed
+- * and the relevant per-chip information updated. This call ensure that
++ * This hook is called by the core after the identification of the NAND chip,
++ * once the relevant per-chip information is up to date.. This call ensure that
+  * we update the internal state accordingly.
+  *
+  * The internal state is currently limited to the ECC state information.
+ */
+-static int s3c2410_nand_update_chip(struct s3c2410_nand_info *info,
+-				    struct s3c2410_nand_mtd *nmtd)
++static int s3c2410_nand_attach_chip(struct nand_chip *chip)
+ {
+-	struct nand_chip *chip = &nmtd->chip;
++	struct mtd_info *mtd = nand_to_mtd(chip);
++	struct s3c2410_nand_info *info = s3c2410_nand_mtd_toinfo(mtd);
+ 
+ 	switch (chip->ecc.mode) {
+ 
+@@ -998,6 +997,10 @@ static int s3c2410_nand_update_chip(struct s3c2410_nand_info *info,
  	return 0;
  }
  
-+static int tango_attach_chip(struct nand_chip *chip)
-+{
-+	struct nand_ecc_ctrl *ecc = &chip->ecc;
-+
-+	ecc->mode = NAND_ECC_HW;
-+	ecc->algo = NAND_ECC_BCH;
-+	ecc->bytes = DIV_ROUND_UP(ecc->strength * FIELD_ORDER, BITS_PER_BYTE);
-+
-+	ecc->read_page_raw = tango_read_page_raw;
-+	ecc->write_page_raw = tango_write_page_raw;
-+	ecc->read_page = tango_read_page;
-+	ecc->write_page = tango_write_page;
-+	ecc->read_oob = tango_read_oob;
-+	ecc->write_oob = tango_write_oob;
-+
-+	return 0;
-+}
-+
-+static const struct nand_controller_ops tango_controller_ops = {
-+	.attach_chip = tango_attach_chip,
++static const struct nand_controller_ops s3c24xx_nand_controller_ops = {
++	.attach_chip = s3c2410_nand_attach_chip,
 +};
 +
- static int chip_init(struct device *dev, struct device_node *np)
- {
- 	u32 cs;
-@@ -560,28 +582,14 @@ static int chip_init(struct device *dev, struct device_node *np)
- 			NAND_NO_SUBPAGE_WRITE |
- 			NAND_WAIT_TCCS;
- 	chip->controller = &nfc->hw;
-+	chip->controller->ops = &tango_controller_ops;
- 	tchip->base = nfc->pbus_base + (cs * 256);
+ static const struct of_device_id s3c24xx_nand_dt_ids[] = {
+ 	{
+ 		.compatible = "samsung,s3c2410-nand",
+@@ -1095,6 +1098,7 @@ static int s3c24xx_nand_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, info);
  
- 	nand_set_flash_node(chip, np);
- 	mtd_set_ooblayout(mtd, &tango_nand_ooblayout_ops);
- 	mtd->dev.parent = dev;
+ 	nand_controller_init(&info->controller);
++	info->controller.ops = &s3c24xx_nand_controller_ops;
  
--	err = nand_scan_ident(mtd, 1, NULL);
--	if (err)
--		return err;
+ 	/* get the clock source and enable it */
+ 
+@@ -1166,15 +1170,7 @@ static int s3c24xx_nand_probe(struct platform_device *pdev)
+ 		mtd->dev.parent = &pdev->dev;
+ 		s3c2410_nand_init_chip(info, nmtd, sets);
+ 
+-		err = nand_scan_ident(mtd, (sets) ? sets->nr_chips : 1, NULL);
+-		if (err)
+-			goto exit_error;
 -
--	ecc->mode = NAND_ECC_HW;
--	ecc->algo = NAND_ECC_BCH;
--	ecc->bytes = DIV_ROUND_UP(ecc->strength * FIELD_ORDER, BITS_PER_BYTE);
+-		err = s3c2410_nand_update_chip(info, nmtd);
+-		if (err < 0)
+-			goto exit_error;
 -
--	ecc->read_page_raw = tango_read_page_raw;
--	ecc->write_page_raw = tango_write_page_raw;
--	ecc->read_page = tango_read_page;
--	ecc->write_page = tango_write_page;
--	ecc->read_oob = tango_read_oob;
--	ecc->write_oob = tango_write_oob;
--
--	err = nand_scan_tail(mtd);
-+	err = nand_scan(mtd, 1);
- 	if (err)
- 		return err;
+-		err = nand_scan_tail(mtd);
++		err = nand_scan(mtd, sets ? sets->nr_chips : 1);
+ 		if (err)
+ 			goto exit_error;
  
 -- 
 2.14.1
