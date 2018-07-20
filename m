@@ -1,79 +1,103 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v3 0/4] Add basic support for Mediatek MT8183 SoC
-Date: Fri, 20 Jul 2018 12:44:33 +0200
-Message-ID: <2ca76468-198b-b764-c974-374e567e0c93@gmail.com>
-References: <1526538126-51497-1-git-send-email-erin.lo@mediatek.com>
- <9ba45353-a6e1-9a6e-f05b-4b1679ae9e52@gmail.com>
- <1532074769.19148.2.camel@mtksdaap41>
+From: YueHaibing <yuehaibing-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+Subject: Re: [SPAM]Re: [PATCH] net: mediatek: use dma_zalloc_coherent instead
+ of allocator/memset
+Date: Fri, 20 Jul 2018 20:13:02 +0800
+Message-ID: <3fcf3f71-fd63-773b-c863-e4a7beade1ef@huawei.com>
+References: <20180719140955.19444-1-yuehaibing@huawei.com>
+ <20180719141723.GM17271@n2100.armlinux.org.uk>
+ <1532019744.8953.248.camel@mtkswgap22>
+ <9a4cdfc6-7487-5908-b584-f3bf6158c4d4@huawei.com>
+ <1532069663.8953.259.camel@mtkswgap22>
+ <20180720092555.GA28941@n2100.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1532074769.19148.2.camel@mtksdaap41>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Erin Lo <erin.lo@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, mars.cheng@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180720092555.GA28941-l+eeeJia6m9URfEZ8mYm6t73F7V6hmMc@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Russell King - ARM Linux <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 20/07/18 10:19, Erin Lo wrote:
-> On Mon, 2018-07-16 at 11:28 +0200, Matthias Brugger wrote:
->> Hi Erin,
+On 2018/7/20 17:25, Russell King - ARM Linux wrote:
+> On Fri, Jul 20, 2018 at 02:54:23PM +0800, Sean Wang wrote:
+>> On Fri, 2018-07-20 at 14:30 +0800, YueHaibing wrote:
+>>> On 2018/7/20 1:02, Sean Wang wrote:
+>>>> On Thu, 2018-07-19 at 15:17 +0100, Russell King - ARM Linux wrote:
+>>>>> On Thu, Jul 19, 2018 at 10:09:55PM +0800, YueHaibing wrote:
+>>>>>> Use dma_zalloc_coherent instead of dma_alloc_coherent
+>>>>>> followed by memset 0.
+>>>>>>
+>>>>>> Signed-off-by: YueHaibing <yuehaibing-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+>>>>>> ---
+>>>>>>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 7 ++-----
+>>>>>>  1 file changed, 2 insertions(+), 5 deletions(-)
+>>>>>>
+>>>>>> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+>>>>>> index d8ebf0a..fbdb3e3 100644
+>>>>>> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+>>>>>> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+>>>>>> @@ -1221,14 +1221,11 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
+>>>>>>  	if (!ring->buf)
+>>>>>>  		goto no_tx_mem;
+>>>>>>  
+>>>>>> -	ring->dma = dma_alloc_coherent(eth->dev,
+>>>>>> -					  MTK_DMA_SIZE * sz,
+>>>>>> -					  &ring->phys,
+>>>>>> -					  GFP_ATOMIC | __GFP_ZERO);
+>>>>>> +	ring->dma = dma_zalloc_coherent(eth->dev, MTK_DMA_SIZE * sz,
+>>>>>> +					&ring->phys, GFP_ATOMIC | __GFP_ZERO);
+>>>>>>  	if (!ring->dma)
+>>>>>>  		goto no_tx_mem;
+>>>>>>  
+>>>>>> -	memset(ring->dma, 0, MTK_DMA_SIZE * sz);
+>>>>>
+>>>>> I have to wonder whether this code needs two forms of zeroing... in
+>>>>> the original code, __GFP_ZERO _and_ a call to memset() just in case
+>>>>> __GFP_ZERO failed to do its job, and in the replacement code, just
+>>>>> in case dma_zalloc_coherent() hasn't got the idea...
+>>>>>
+>>>>> I think you can drop the __GFP_ZERO. ;)
+>>>>>
+>>>>
+>>>> Just now I did an experiment on 4.14.56 on armv7. I found that
+>>>> dma_zalloc_coherent does not guarantee that the buffer we get
+>>>> is all filled with 0.
+>>>>
+>>>>
+>>>> I really think it's a little bit weird OR what was I missing something
+>>>> for enabling dma_zalloc_coherent ? The result seems to tell that we
+>>>> can't remove freely the memset with 0 at this moment until we get a
+>>>> cause.
+>>>>
+>>>
+>>> That means dma_zalloc_coherent doesn't work as expect on armv7?
+>>>
 >>
->> On 17/05/18 08:22, Erin Lo wrote:
->>> MT8183 is a SoC based on 64bit ARMv8 architecture.
->>> It contains 4 CA53 and 4 CA73 cores.
->>> MT8183 share many HW IP with MT65xx series.
->>> This patchset was tested on MT8183 evaluation board, and boot to shell ok.
->>>
->>> This series contains document bindings, device tree including interrupt, uart.
->>>
->>> Change in v3:
->>> 1. Fill out GICC, GICH, GICV regions
->>> 2. Update Copyright to 2018
->>>
->>> Change in v2:
->>> 1. Split dt-bindings into different patches
->>> 2. Correct bindings for supported SoCs (mtk-uart.txt)
->>>
->>> Ben Ho (1):
->>>   arm64: dts: Add Mediatek SoC MT8183 and evaluation board dts and
->>>     Makefile
->>>
->>> Erin Lo (3):
->>>   dt-bindings: arm: Add bindings for Mediatek MT8183 SoC Platform
->>>   dt-bindings: mtk-sysirq: Add compatible for Mediatek MT8183
->>>   dt-bindings: serial: Add compatible for Mediatek MT8183
->>>
+>> I'm not sure if it's true for every armv7. or it's only happening on my
+>> device.
 >>
->> I'm a bit reluctant to take this series, as it will only enable the EVB board to
->> boot into a serial console. Are you planning to add support for other devices of
->> this SoC?
->>
->> Apart please take into account that there is an issue with the dts file, as you
->> were told by the kbuild test robot.
->>
->> Regards,
->> Matthias
->>
+>> anyway, i think we can replace all occurrences in the driver for
+>> dma_alloc_coherent with __GFP_ZERO by dma_zalloc_coherent, and but
+>> keep the extra memset as is.
 > 
-> Hi, Matthias
-> Sorry for missing this letter...since mail proxy server.
-> We plan to add support all the devices of MT8183 in serious.
-> We have implemented the clock and pinctrl driver for upstream and they
-> are in internal review right now.
+> No, a bug in the allocator has been found that needs fixing.  The
+> right solution is to fix the allocator and remove what should be
+> unnecessary memset()s.
+
+Agree, will send v2.
+
 > 
-
-Nice to hear that :)
-
-> About the dts issue... do you suggest me to send new patch right now or
-> wait for clock and pinctrl driver ready then send them together?
+> This should have been reported when the __GFP_ZERO flag was not
+> being honoured and memset() was initially found to be required -
+> all that dma_zalloc_coherent() does is set the __GFP_ZERO flag
+> before calling dma_alloc_coherent().
 > 
-
-I would prefer that you send at least the clock controller together, so that we
-don't have any dummy clocks in the basic device tree.
-
-Regards,
-Matthias
