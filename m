@@ -1,65 +1,79 @@
-From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH 00/11] Add mt76x0 driver
-Date: Fri, 20 Jul 2018 12:36:29 +0200
-Message-ID: <20180720103628.GA1817@redhat.com>
-References: <1530771142-4118-1-git-send-email-sgruszka@redhat.com>
- <20180705153216.GE17524@localhost.localdomain>
- <alpine.LNX.2.00.1807071027140.11361@T420s>
- <20180720103032.GA1791@redhat.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3 0/4] Add basic support for Mediatek MT8183 SoC
+Date: Fri, 20 Jul 2018 12:44:33 +0200
+Message-ID: <2ca76468-198b-b764-c974-374e567e0c93@gmail.com>
+References: <1526538126-51497-1-git-send-email-erin.lo@mediatek.com>
+ <9ba45353-a6e1-9a6e-f05b-4b1679ae9e52@gmail.com>
+ <1532074769.19148.2.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20180720103032.GA1791-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1532074769.19148.2.camel@mtksdaap41>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Erin Lo <erin.lo@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, mars.cheng@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jul 20, 2018 at 12:30:32PM +0200, Stanislaw Gruszka wrote:
-> On Sat, Jul 07, 2018 at 10:38:27AM +0200, Hans Ulli Kroll wrote:
-> > > > My integration efforts can be traced here:
-> > > > https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft
-> > > > 
-> > > 
-> > > I just had a brief review of the code and I compiled the driver since at
-> > > the moment I had no adapter for that chipset.
-> > > As a remainder for future improvements/integration most of the code in 
-> > > dma.c, usb.c (except probe/disconnect functions) and tx.c can use the related
-> > > routines in the mt76-usb layer (we need to fill function pointer for chipset
-> > > related stuff if there are differences with mt76x2u, not looked yet).
-> > > Moreover mcu code can use utility routines in usb-mcu.c
-> > > I have not looked at mt76x2 common code yet.
-> > > 
-> > > Regards,
-> > > Lorenzo
-> > > 
-> > 
-> > It is also possible to reuse 
-> > struct mt76x2_txwi
-> > struct mt76x2_rxwi
-> > 
-> > They have the same memory layout for both mt76x0u and mt76x2u chipsets.
-> > 
-> > Lorenzo can you move them up to
-> > mt76.h
-> > and rename them to
-> > struct mt76_txwi
-> > struct mt76_rxwi
-> > 
-> > And we can also do this for
-> > struct mt76x2_vif
+
+
+On 20/07/18 10:19, Erin Lo wrote:
+> On Mon, 2018-07-16 at 11:28 +0200, Matthias Brugger wrote:
+>> Hi Erin,
+>>
+>> On 17/05/18 08:22, Erin Lo wrote:
+>>> MT8183 is a SoC based on 64bit ARMv8 architecture.
+>>> It contains 4 CA53 and 4 CA73 cores.
+>>> MT8183 share many HW IP with MT65xx series.
+>>> This patchset was tested on MT8183 evaluation board, and boot to shell ok.
+>>>
+>>> This series contains document bindings, device tree including interrupt, uart.
+>>>
+>>> Change in v3:
+>>> 1. Fill out GICC, GICH, GICV regions
+>>> 2. Update Copyright to 2018
+>>>
+>>> Change in v2:
+>>> 1. Split dt-bindings into different patches
+>>> 2. Correct bindings for supported SoCs (mtk-uart.txt)
+>>>
+>>> Ben Ho (1):
+>>>   arm64: dts: Add Mediatek SoC MT8183 and evaluation board dts and
+>>>     Makefile
+>>>
+>>> Erin Lo (3):
+>>>   dt-bindings: arm: Add bindings for Mediatek MT8183 SoC Platform
+>>>   dt-bindings: mtk-sysirq: Add compatible for Mediatek MT8183
+>>>   dt-bindings: serial: Add compatible for Mediatek MT8183
+>>>
+>>
+>> I'm a bit reluctant to take this series, as it will only enable the EVB board to
+>> boot into a serial console. Are you planning to add support for other devices of
+>> this SoC?
+>>
+>> Apart please take into account that there is an issue with the dts file, as you
+>> were told by the kbuild test robot.
+>>
+>> Regards,
+>> Matthias
+>>
 > 
-> For the record. I unified bunch of mac80211 callbacks and mac/wcid functions
-> and structures (including structures pointed above) into new mt76xx_lib
-> module. I also rebased the changes on top of latest wireless-drivers-next
-> master and mt76x2u patches in new branch mt76x0-draft-v2:
-> https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft-v2
+> Hi, Matthias
+> Sorry for missing this letter...since mail proxy server.
+> We plan to add support all the devices of MT8183 in serious.
+> We have implemented the clock and pinctrl driver for upstream and they
+> are in internal review right now.
+> 
 
-Forgot to wrote that I tested changes only for mt76x0 (sill waiting for
-ordered mt76x2 HW) but common code is basically a copy of mt76x2 code
-(if mt76x0 implementation differ, the one form mt76x2 was used). However
-there are some changes that affect mt76x2 as well. Hopefully I did not break
-anything there, but I can not be sure for now.
+Nice to hear that :)
 
-Stanislaw 
+> About the dts issue... do you suggest me to send new patch right now or
+> wait for clock and pinctrl driver ready then send them together?
+> 
+
+I would prefer that you send at least the clock controller together, so that we
+don't have any dummy clocks in the basic device tree.
+
+Regards,
+Matthias
