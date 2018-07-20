@@ -1,92 +1,41 @@
-From: YueHaibing <yuehaibing@huawei.com>
-Subject: Re: [SPAM]Re: [PATCH] net: mediatek: use dma_zalloc_coherent instead
- of allocator/memset
-Date: Fri, 20 Jul 2018 22:16:05 +0800
-Message-ID: <4075e2bf-7fb9-a2a1-4f29-b6f492040e1d@huawei.com>
-References: <20180719140955.19444-1-yuehaibing@huawei.com>
- <20180719141723.GM17271@n2100.armlinux.org.uk>
- <1532019744.8953.248.camel@mtkswgap22>
- <9a4cdfc6-7487-5908-b584-f3bf6158c4d4@huawei.com>
- <20180720081334.GO17271@n2100.armlinux.org.uk>
- <a8dfe467-9649-ca48-20e9-38041de6a404@huawei.com>
- <1532095058.8953.264.camel@mtkswgap22>
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Subject: [PATCH] PCI: mediatek: Fix unchecked return value
+Date: Fri, 20 Jul 2018 10:01:58 -0500
+Message-ID: <20180720150158.GA10922@embeddedor.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1532095058.8953.264.camel@mtkswgap22>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: nbd@openwrt.org, nelson.chang@mediatek.com, netdev@vger.kernel.org, Russell King - ARM Linux <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, john@phrozen.org, matthias.bgg@gmail.com, davem@davemloft.net, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, "Gustavo A. R. Silva" <gustavo@embeddedor.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gMjAxOC83LzIwIDIxOjU3LCBTZWFuIFdhbmcgd3JvdGU6Cj4gT24gRnJpLCAyMDE4LTA3LTIw
-IGF0IDIxOjMzICswODAwLCBZdWVIYWliaW5nIHdyb3RlOgo+PiBPbiAyMDE4LzcvMjAgMTY6MTMs
-IFJ1c3NlbGwgS2luZyAtIEFSTSBMaW51eCB3cm90ZToKPj4+IE9uIEZyaSwgSnVsIDIwLCAyMDE4
-IGF0IDAyOjMwOjUzUE0gKzA4MDAsIFl1ZUhhaWJpbmcgd3JvdGU6Cj4+Pj4gT24gMjAxOC83LzIw
-IDE6MDIsIFNlYW4gV2FuZyB3cm90ZToKPj4+Pj4gT24gVGh1LCAyMDE4LTA3LTE5IGF0IDE1OjE3
-ICswMTAwLCBSdXNzZWxsIEtpbmcgLSBBUk0gTGludXggd3JvdGU6Cj4+Pj4+PiBPbiBUaHUsIEp1
-bCAxOSwgMjAxOCBhdCAxMDowOTo1NVBNICswODAwLCBZdWVIYWliaW5nIHdyb3RlOgo+Pj4+Pj4+
-IFVzZSBkbWFfemFsbG9jX2NvaGVyZW50IGluc3RlYWQgb2YgZG1hX2FsbG9jX2NvaGVyZW50Cj4+
-Pj4+Pj4gZm9sbG93ZWQgYnkgbWVtc2V0IDAuCj4+Pj4+Pj4KPj4+Pj4+PiBTaWduZWQtb2ZmLWJ5
-OiBZdWVIYWliaW5nIDx5dWVoYWliaW5nQGh1YXdlaS5jb20+Cj4+Pj4+Pj4gLS0tCj4+Pj4+Pj4g
-IGRyaXZlcnMvbmV0L2V0aGVybmV0L21lZGlhdGVrL210a19ldGhfc29jLmMgfCA3ICsrLS0tLS0K
-Pj4+Pj4+PiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkK
-Pj4+Pj4+Pgo+Pj4+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9tZWRpYXRl
-ay9tdGtfZXRoX3NvYy5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9z
-b2MuYwo+Pj4+Pj4+IGluZGV4IGQ4ZWJmMGEuLmZiZGIzZTMgMTAwNjQ0Cj4+Pj4+Pj4gLS0tIGEv
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9zb2MuYwo+Pj4+Pj4+ICsrKyBi
-L2RyaXZlcnMvbmV0L2V0aGVybmV0L21lZGlhdGVrL210a19ldGhfc29jLmMKPj4+Pj4+PiBAQCAt
-MTIyMSwxNCArMTIyMSwxMSBAQCBzdGF0aWMgaW50IG10a190eF9hbGxvYyhzdHJ1Y3QgbXRrX2V0
-aCAqZXRoKQo+Pj4+Pj4+ICAJaWYgKCFyaW5nLT5idWYpCj4+Pj4+Pj4gIAkJZ290byBub190eF9t
-ZW07Cj4+Pj4+Pj4gIAo+Pj4+Pj4+IC0JcmluZy0+ZG1hID0gZG1hX2FsbG9jX2NvaGVyZW50KGV0
-aC0+ZGV2LAo+Pj4+Pj4+IC0JCQkJCSAgTVRLX0RNQV9TSVpFICogc3osCj4+Pj4+Pj4gLQkJCQkJ
-ICAmcmluZy0+cGh5cywKPj4+Pj4+PiAtCQkJCQkgIEdGUF9BVE9NSUMgfCBfX0dGUF9aRVJPKTsK
-Pj4+Pj4+PiArCXJpbmctPmRtYSA9IGRtYV96YWxsb2NfY29oZXJlbnQoZXRoLT5kZXYsIE1US19E
-TUFfU0laRSAqIHN6LAo+Pj4+Pj4+ICsJCQkJCSZyaW5nLT5waHlzLCBHRlBfQVRPTUlDIHwgX19H
-RlBfWkVSTyk7Cj4+Pj4+Pj4gIAlpZiAoIXJpbmctPmRtYSkKPj4+Pj4+PiAgCQlnb3RvIG5vX3R4
-X21lbTsKPj4+Pj4+PiAgCj4+Pj4+Pj4gLQltZW1zZXQocmluZy0+ZG1hLCAwLCBNVEtfRE1BX1NJ
-WkUgKiBzeik7Cj4+Pj4+Pgo+Pj4+Pj4gSSBoYXZlIHRvIHdvbmRlciB3aGV0aGVyIHRoaXMgY29k
-ZSBuZWVkcyB0d28gZm9ybXMgb2YgemVyb2luZy4uLiBpbgo+Pj4+Pj4gdGhlIG9yaWdpbmFsIGNv
-ZGUsIF9fR0ZQX1pFUk8gX2FuZF8gYSBjYWxsIHRvIG1lbXNldCgpIGp1c3QgaW4gY2FzZQo+Pj4+
-Pj4gX19HRlBfWkVSTyBmYWlsZWQgdG8gZG8gaXRzIGpvYiwgYW5kIGluIHRoZSByZXBsYWNlbWVu
-dCBjb2RlLCBqdXN0Cj4+Pj4+PiBpbiBjYXNlIGRtYV96YWxsb2NfY29oZXJlbnQoKSBoYXNuJ3Qg
-Z290IHRoZSBpZGVhLi4uCj4+Pj4+Pgo+Pj4+Pj4gSSB0aGluayB5b3UgY2FuIGRyb3AgdGhlIF9f
-R0ZQX1pFUk8uIDspCj4+Pj4+Pgo+Pj4+Pgo+Pj4+PiBKdXN0IG5vdyBJIGRpZCBhbiBleHBlcmlt
-ZW50IG9uIDQuMTQuNTYgb24gYXJtdjcuIEkgZm91bmQgdGhhdAo+Pj4+PiBkbWFfemFsbG9jX2Nv
-aGVyZW50IGRvZXMgbm90IGd1YXJhbnRlZSB0aGF0IHRoZSBidWZmZXIgd2UgZ2V0Cj4+Pj4+IGlz
-IGFsbCBmaWxsZWQgd2l0aCAwLgo+Pj4+Pgo+Pj4+Pgo+Pj4+PiBJIHJlYWxseSB0aGluayBpdCdz
-IGEgbGl0dGxlIGJpdCB3ZWlyZCBPUiB3aGF0IHdhcyBJIG1pc3Npbmcgc29tZXRoaW5nCj4+Pj4+
-IGZvciBlbmFibGluZyBkbWFfemFsbG9jX2NvaGVyZW50ID8gVGhlIHJlc3VsdCBzZWVtcyB0byB0
-ZWxsIHRoYXQgd2UKPj4+Pj4gY2FuJ3QgcmVtb3ZlIGZyZWVseSB0aGUgbWVtc2V0IHdpdGggMCBh
-dCB0aGlzIG1vbWVudCB1bnRpbCB3ZSBnZXQgYQo+Pj4+PiBjYXVzZS4KPj4+Pj4KPj4+Pgo+Pj4+
-IFRoYXQgbWVhbnMgZG1hX3phbGxvY19jb2hlcmVudCBkb2Vzbid0IHdvcmsgYXMgZXhwZWN0IG9u
-IGFybXY3Pwo+Pj4KPj4+IENhbiBzb21lb25lIHdvcmsgb3V0IHdoaWNoIHVuZGVybHlpbmcgYWxs
-b2NhdG9yIGlzIGJlaW5nIHVzZWQgLSB0aGUKPj4+IHBvc3NpYmlsaXRpZXMgYXJlOgo+Pj4KPj4+
-IC0gZG1hX2FsbG9jX2Zyb21fZGV2X2NvaGVyZW50Cj4+PiAtIGNtYQo+Pj4gLSBzaW1wbGUKPj4+
-IC0gcmVtYXAKPj4+IC0gcG9vbAo+Pj4KPj4+IExvb2tpbmcgYXQgdGhlIGNvZGUsIEknZCBndWVz
-cyBpdCdzIHRoZSBwb29sIGFsbG9jYXRvciwgYXMgSSBkb24ndCBzZWUKPj4+IGFueXRoaW5nIHdo
-aWNoIHplcm9zIG1lbW9yeSB0aGVyZSwgYW5kIGl0IGRvZXNuJ3QgaG9ub3IgdGhlIF9fR0ZQX1pF
-Uk8KPj4+IGZsYWcuICBUaGlzIGlzIGRlZmluaXRlbHkgYW4gYWxsb2NhdG9yIGJ1Zy4KPj4+Cj4+
-Cj4+IFNlYW4sCj4+Cj4+IGNhbiB5b3UgdGVzdCBiZWxsb3cgcGF0Y2jvvJoKPj4KPj4KPj4gZGlm
-ZiAtLWdpdCBhL2FyY2gvYXJtL21tL2RtYS1tYXBwaW5nLmMgYi9hcmNoL2FybS9tbS9kbWEtbWFw
-cGluZy5jCj4+IGluZGV4IGJlMGZhN2UuLjUyMDI5YmIgMTAwNjQ0Cj4+IC0tLSBhL2FyY2gvYXJt
-L21tL2RtYS1tYXBwaW5nLmMKPj4gKysrIGIvYXJjaC9hcm0vbW0vZG1hLW1hcHBpbmcuYwo+PiBA
-QCAtNTY0LDYgKzU2NCw3IEBAIHN0YXRpYyB2b2lkICpfX2FsbG9jX2Zyb21fcG9vbChzaXplX3Qg
-c2l6ZSwgc3RydWN0IHBhZ2UgKipyZXRfcGFnZSkKPj4KPj4gKnJldF9wYWdlID0gcGh5c190b19w
-YWdlKHBoeXMpOwo+PiBwdHIgPSAodm9pZCAqKXZhbDsKPj4gKyBtZW1zZXQocHRyLCAwLCBzaXpl
-KTsKPj4gfQo+Pgo+IAo+IGl0IHNob3VsZCB3b3JrLiBidXQgZG9uJ3Qgd2UgbmVlZCB0byBjb21w
-YXJlIGdmcCBhZ2FpbnN0IF9fR0ZQX1pFUk8KPiBiZWZvcmUgemVyb3MgYnVmZmVyID8KPiAKCmFy
-bTY0IHplcm8gaXQgdW5jb25kaXRpb25hbGx5IGluIF9fYWxsb2NfZnJvbV9wb29sLgo+IAo+IAo+
-IC4KPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwps
-aW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1hcm0ta2VybmVsCg==
+Check return value of devm_pci_remap_iospace.
+
+Notice that, currently, all instances of devm_pci_remap_iospace
+are being checked.
+
+Addresses-Coverity-ID: 1471965 ("Unchecked return value")
+Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
+---
+ drivers/pci/controller/pcie-mediatek.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 861dda6..1477939 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -1109,7 +1109,9 @@ static int mtk_pcie_request_resources(struct mtk_pcie *pcie)
+ 	if (err < 0)
+ 		return err;
+ 
+-	devm_pci_remap_iospace(dev, &pcie->pio, pcie->io.start);
++	err = devm_pci_remap_iospace(dev, &pcie->pio, pcie->io.start);
++	if (err)
++		return err;
+ 
+ 	return 0;
+ }
+-- 
+2.7.4
