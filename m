@@ -1,71 +1,82 @@
-From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH 00/11] Add mt76x0 driver
-Date: Fri, 20 Jul 2018 14:18:22 +0200
-Message-ID: <20180720121821.GB26455@localhost.localdomain>
-References: <1530771142-4118-1-git-send-email-sgruszka@redhat.com>
- <20180705153216.GE17524@localhost.localdomain>
- <alpine.LNX.2.00.1807071027140.11361@T420s>
- <20180720103032.GA1791@redhat.com>
+From: YueHaibing <yuehaibing-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+Subject: Re: [SPAM]Re: [PATCH] net: mediatek: use dma_zalloc_coherent instead
+ of allocator/memset
+Date: Fri, 20 Jul 2018 21:33:55 +0800
+Message-ID: <a8dfe467-9649-ca48-20e9-38041de6a404@huawei.com>
+References: <20180719140955.19444-1-yuehaibing@huawei.com>
+ <20180719141723.GM17271@n2100.armlinux.org.uk>
+ <1532019744.8953.248.camel@mtkswgap22>
+ <9a4cdfc6-7487-5908-b584-f3bf6158c4d4@huawei.com>
+ <20180720081334.GO17271@n2100.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20180720103032.GA1791-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180720081334.GO17271-l+eeeJia6m9URfEZ8mYm6t73F7V6hmMc@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Russell King - ARM Linux <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
+Cc: nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-> On Sat, Jul 07, 2018 at 10:38:27AM +0200, Hans Ulli Kroll wrote:
-> > > > My integration efforts can be traced here:
-> > > > https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft
-> > > > 
-> > > 
-> > > I just had a brief review of the code and I compiled the driver since at
-> > > the moment I had no adapter for that chipset.
-> > > As a remainder for future improvements/integration most of the code in 
-> > > dma.c, usb.c (except probe/disconnect functions) and tx.c can use the related
-> > > routines in the mt76-usb layer (we need to fill function pointer for chipset
-> > > related stuff if there are differences with mt76x2u, not looked yet).
-> > > Moreover mcu code can use utility routines in usb-mcu.c
-> > > I have not looked at mt76x2 common code yet.
-> > > 
-> > > Regards,
-> > > Lorenzo
-> > > 
-> > 
-> > It is also possible to reuse 
-> > struct mt76x2_txwi
-> > struct mt76x2_rxwi
-> > 
-> > They have the same memory layout for both mt76x0u and mt76x2u chipsets.
-> > 
-> > Lorenzo can you move them up to
-> > mt76.h
-> > and rename them to
-> > struct mt76_txwi
-> > struct mt76_rxwi
-> > 
-> > And we can also do this for
-> > struct mt76x2_vif
-> 
-> For the record. I unified bunch of mac80211 callbacks and mac/wcid functions
-> and structures (including structures pointed above) into new mt76xx_lib
-> module. I also rebased the changes on top of latest wireless-drivers-next
-> master and mt76x2u patches in new branch mt76x0-draft-v2:
-> https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft-v2
-> 
-
-Sorry Hans, I forgot to reply to your email. I have already seen Stanislaw's
-repo and I agree he can apply his patchset on top of mt76x2u one as soon as
-it is merged in wireless-driver-next repo.
-Moreover Stanislaw I started working on unifying mt76x2u/mt76x0 dma/usb code,
-I have not sent you the patchset since I am waiting for the adapter. If you
-want I can send you the code as soon as it is completed (just compiled, not
-tested)
-
-Regards,
-Lorenzo
-
-> Regards
-> Stanislaw
+T24gMjAxOC83LzIwIDE2OjEzLCBSdXNzZWxsIEtpbmcgLSBBUk0gTGludXggd3JvdGU6Cj4gT24g
+RnJpLCBKdWwgMjAsIDIwMTggYXQgMDI6MzA6NTNQTSArMDgwMCwgWXVlSGFpYmluZyB3cm90ZToK
+Pj4gT24gMjAxOC83LzIwIDE6MDIsIFNlYW4gV2FuZyB3cm90ZToKPj4+IE9uIFRodSwgMjAxOC0w
+Ny0xOSBhdCAxNToxNyArMDEwMCwgUnVzc2VsbCBLaW5nIC0gQVJNIExpbnV4IHdyb3RlOgo+Pj4+
+IE9uIFRodSwgSnVsIDE5LCAyMDE4IGF0IDEwOjA5OjU1UE0gKzA4MDAsIFl1ZUhhaWJpbmcgd3Jv
+dGU6Cj4+Pj4+IFVzZSBkbWFfemFsbG9jX2NvaGVyZW50IGluc3RlYWQgb2YgZG1hX2FsbG9jX2Nv
+aGVyZW50Cj4+Pj4+IGZvbGxvd2VkIGJ5IG1lbXNldCAwLgo+Pj4+Pgo+Pj4+PiBTaWduZWQtb2Zm
+LWJ5OiBZdWVIYWliaW5nIDx5dWVoYWliaW5nQGh1YXdlaS5jb20+Cj4+Pj4+IC0tLQo+Pj4+PiAg
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9zb2MuYyB8IDcgKystLS0tLQo+
+Pj4+PiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkKPj4+
+Pj4KPj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L21lZGlhdGVrL210a19l
+dGhfc29jLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9tZWRpYXRlay9tdGtfZXRoX3NvYy5jCj4+
+Pj4+IGluZGV4IGQ4ZWJmMGEuLmZiZGIzZTMgMTAwNjQ0Cj4+Pj4+IC0tLSBhL2RyaXZlcnMvbmV0
+L2V0aGVybmV0L21lZGlhdGVrL210a19ldGhfc29jLmMKPj4+Pj4gKysrIGIvZHJpdmVycy9uZXQv
+ZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9zb2MuYwo+Pj4+PiBAQCAtMTIyMSwxNCArMTIyMSwx
+MSBAQCBzdGF0aWMgaW50IG10a190eF9hbGxvYyhzdHJ1Y3QgbXRrX2V0aCAqZXRoKQo+Pj4+PiAg
+CWlmICghcmluZy0+YnVmKQo+Pj4+PiAgCQlnb3RvIG5vX3R4X21lbTsKPj4+Pj4gIAo+Pj4+PiAt
+CXJpbmctPmRtYSA9IGRtYV9hbGxvY19jb2hlcmVudChldGgtPmRldiwKPj4+Pj4gLQkJCQkJICBN
+VEtfRE1BX1NJWkUgKiBzeiwKPj4+Pj4gLQkJCQkJICAmcmluZy0+cGh5cywKPj4+Pj4gLQkJCQkJ
+ICBHRlBfQVRPTUlDIHwgX19HRlBfWkVSTyk7Cj4+Pj4+ICsJcmluZy0+ZG1hID0gZG1hX3phbGxv
+Y19jb2hlcmVudChldGgtPmRldiwgTVRLX0RNQV9TSVpFICogc3osCj4+Pj4+ICsJCQkJCSZyaW5n
+LT5waHlzLCBHRlBfQVRPTUlDIHwgX19HRlBfWkVSTyk7Cj4+Pj4+ICAJaWYgKCFyaW5nLT5kbWEp
+Cj4+Pj4+ICAJCWdvdG8gbm9fdHhfbWVtOwo+Pj4+PiAgCj4+Pj4+IC0JbWVtc2V0KHJpbmctPmRt
+YSwgMCwgTVRLX0RNQV9TSVpFICogc3opOwo+Pj4+Cj4+Pj4gSSBoYXZlIHRvIHdvbmRlciB3aGV0
+aGVyIHRoaXMgY29kZSBuZWVkcyB0d28gZm9ybXMgb2YgemVyb2luZy4uLiBpbgo+Pj4+IHRoZSBv
+cmlnaW5hbCBjb2RlLCBfX0dGUF9aRVJPIF9hbmRfIGEgY2FsbCB0byBtZW1zZXQoKSBqdXN0IGlu
+IGNhc2UKPj4+PiBfX0dGUF9aRVJPIGZhaWxlZCB0byBkbyBpdHMgam9iLCBhbmQgaW4gdGhlIHJl
+cGxhY2VtZW50IGNvZGUsIGp1c3QKPj4+PiBpbiBjYXNlIGRtYV96YWxsb2NfY29oZXJlbnQoKSBo
+YXNuJ3QgZ290IHRoZSBpZGVhLi4uCj4+Pj4KPj4+PiBJIHRoaW5rIHlvdSBjYW4gZHJvcCB0aGUg
+X19HRlBfWkVSTy4gOykKPj4+Pgo+Pj4KPj4+IEp1c3Qgbm93IEkgZGlkIGFuIGV4cGVyaW1lbnQg
+b24gNC4xNC41NiBvbiBhcm12Ny4gSSBmb3VuZCB0aGF0Cj4+PiBkbWFfemFsbG9jX2NvaGVyZW50
+IGRvZXMgbm90IGd1YXJhbnRlZSB0aGF0IHRoZSBidWZmZXIgd2UgZ2V0Cj4+PiBpcyBhbGwgZmls
+bGVkIHdpdGggMC4KPj4+Cj4+Pgo+Pj4gSSByZWFsbHkgdGhpbmsgaXQncyBhIGxpdHRsZSBiaXQg
+d2VpcmQgT1Igd2hhdCB3YXMgSSBtaXNzaW5nIHNvbWV0aGluZwo+Pj4gZm9yIGVuYWJsaW5nIGRt
+YV96YWxsb2NfY29oZXJlbnQgPyBUaGUgcmVzdWx0IHNlZW1zIHRvIHRlbGwgdGhhdCB3ZQo+Pj4g
+Y2FuJ3QgcmVtb3ZlIGZyZWVseSB0aGUgbWVtc2V0IHdpdGggMCBhdCB0aGlzIG1vbWVudCB1bnRp
+bCB3ZSBnZXQgYQo+Pj4gY2F1c2UuCj4+Pgo+Pgo+PiBUaGF0IG1lYW5zIGRtYV96YWxsb2NfY29o
+ZXJlbnQgZG9lc24ndCB3b3JrIGFzIGV4cGVjdCBvbiBhcm12Nz8KPiAKPiBDYW4gc29tZW9uZSB3
+b3JrIG91dCB3aGljaCB1bmRlcmx5aW5nIGFsbG9jYXRvciBpcyBiZWluZyB1c2VkIC0gdGhlCj4g
+cG9zc2liaWxpdGllcyBhcmU6Cj4gCj4gLSBkbWFfYWxsb2NfZnJvbV9kZXZfY29oZXJlbnQKPiAt
+IGNtYQo+IC0gc2ltcGxlCj4gLSByZW1hcAo+IC0gcG9vbAo+IAo+IExvb2tpbmcgYXQgdGhlIGNv
+ZGUsIEknZCBndWVzcyBpdCdzIHRoZSBwb29sIGFsbG9jYXRvciwgYXMgSSBkb24ndCBzZWUKPiBh
+bnl0aGluZyB3aGljaCB6ZXJvcyBtZW1vcnkgdGhlcmUsIGFuZCBpdCBkb2Vzbid0IGhvbm9yIHRo
+ZSBfX0dGUF9aRVJPCj4gZmxhZy4gIFRoaXMgaXMgZGVmaW5pdGVseSBhbiBhbGxvY2F0b3IgYnVn
+Lgo+IAoKU2VhbiwKCmNhbiB5b3UgdGVzdCBiZWxsb3cgcGF0Y2jvvJoKCgpkaWZmIC0tZ2l0IGEv
+YXJjaC9hcm0vbW0vZG1hLW1hcHBpbmcuYyBiL2FyY2gvYXJtL21tL2RtYS1tYXBwaW5nLmMKaW5k
+ZXggYmUwZmE3ZS4uNTIwMjliYiAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vbW0vZG1hLW1hcHBpbmcu
+YworKysgYi9hcmNoL2FybS9tbS9kbWEtbWFwcGluZy5jCkBAIC01NjQsNiArNTY0LDcgQEAgc3Rh
+dGljIHZvaWQgKl9fYWxsb2NfZnJvbV9wb29sKHNpemVfdCBzaXplLCBzdHJ1Y3QgcGFnZSAqKnJl
+dF9wYWdlKQoKKnJldF9wYWdlID0gcGh5c190b19wYWdlKHBoeXMpOwpwdHIgPSAodm9pZCAqKXZh
+bDsKKyBtZW1zZXQocHRyLCAwLCBzaXplKTsKfQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1t
+ZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
