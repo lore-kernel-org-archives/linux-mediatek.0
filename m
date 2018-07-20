@@ -1,103 +1,71 @@
-From: YueHaibing <yuehaibing-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
-Subject: Re: [SPAM]Re: [PATCH] net: mediatek: use dma_zalloc_coherent instead
- of allocator/memset
-Date: Fri, 20 Jul 2018 20:13:02 +0800
-Message-ID: <3fcf3f71-fd63-773b-c863-e4a7beade1ef@huawei.com>
-References: <20180719140955.19444-1-yuehaibing@huawei.com>
- <20180719141723.GM17271@n2100.armlinux.org.uk>
- <1532019744.8953.248.camel@mtkswgap22>
- <9a4cdfc6-7487-5908-b584-f3bf6158c4d4@huawei.com>
- <1532069663.8953.259.camel@mtkswgap22>
- <20180720092555.GA28941@n2100.armlinux.org.uk>
+From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH 00/11] Add mt76x0 driver
+Date: Fri, 20 Jul 2018 14:18:22 +0200
+Message-ID: <20180720121821.GB26455@localhost.localdomain>
+References: <1530771142-4118-1-git-send-email-sgruszka@redhat.com>
+ <20180705153216.GE17524@localhost.localdomain>
+ <alpine.LNX.2.00.1807071027140.11361@T420s>
+ <20180720103032.GA1791@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180720092555.GA28941-l+eeeJia6m9URfEZ8mYm6t73F7V6hmMc@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Russell King - ARM Linux <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180720103032.GA1791-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2018/7/20 17:25, Russell King - ARM Linux wrote:
-> On Fri, Jul 20, 2018 at 02:54:23PM +0800, Sean Wang wrote:
->> On Fri, 2018-07-20 at 14:30 +0800, YueHaibing wrote:
->>> On 2018/7/20 1:02, Sean Wang wrote:
->>>> On Thu, 2018-07-19 at 15:17 +0100, Russell King - ARM Linux wrote:
->>>>> On Thu, Jul 19, 2018 at 10:09:55PM +0800, YueHaibing wrote:
->>>>>> Use dma_zalloc_coherent instead of dma_alloc_coherent
->>>>>> followed by memset 0.
->>>>>>
->>>>>> Signed-off-by: YueHaibing <yuehaibing-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
->>>>>> ---
->>>>>>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 7 ++-----
->>>>>>  1 file changed, 2 insertions(+), 5 deletions(-)
->>>>>>
->>>>>> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
->>>>>> index d8ebf0a..fbdb3e3 100644
->>>>>> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
->>>>>> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
->>>>>> @@ -1221,14 +1221,11 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
->>>>>>  	if (!ring->buf)
->>>>>>  		goto no_tx_mem;
->>>>>>  
->>>>>> -	ring->dma = dma_alloc_coherent(eth->dev,
->>>>>> -					  MTK_DMA_SIZE * sz,
->>>>>> -					  &ring->phys,
->>>>>> -					  GFP_ATOMIC | __GFP_ZERO);
->>>>>> +	ring->dma = dma_zalloc_coherent(eth->dev, MTK_DMA_SIZE * sz,
->>>>>> +					&ring->phys, GFP_ATOMIC | __GFP_ZERO);
->>>>>>  	if (!ring->dma)
->>>>>>  		goto no_tx_mem;
->>>>>>  
->>>>>> -	memset(ring->dma, 0, MTK_DMA_SIZE * sz);
->>>>>
->>>>> I have to wonder whether this code needs two forms of zeroing... in
->>>>> the original code, __GFP_ZERO _and_ a call to memset() just in case
->>>>> __GFP_ZERO failed to do its job, and in the replacement code, just
->>>>> in case dma_zalloc_coherent() hasn't got the idea...
->>>>>
->>>>> I think you can drop the __GFP_ZERO. ;)
->>>>>
->>>>
->>>> Just now I did an experiment on 4.14.56 on armv7. I found that
->>>> dma_zalloc_coherent does not guarantee that the buffer we get
->>>> is all filled with 0.
->>>>
->>>>
->>>> I really think it's a little bit weird OR what was I missing something
->>>> for enabling dma_zalloc_coherent ? The result seems to tell that we
->>>> can't remove freely the memset with 0 at this moment until we get a
->>>> cause.
->>>>
->>>
->>> That means dma_zalloc_coherent doesn't work as expect on armv7?
->>>
->>
->> I'm not sure if it's true for every armv7. or it's only happening on my
->> device.
->>
->> anyway, i think we can replace all occurrences in the driver for
->> dma_alloc_coherent with __GFP_ZERO by dma_zalloc_coherent, and but
->> keep the extra memset as is.
+> On Sat, Jul 07, 2018 at 10:38:27AM +0200, Hans Ulli Kroll wrote:
+> > > > My integration efforts can be traced here:
+> > > > https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft
+> > > > 
+> > > 
+> > > I just had a brief review of the code and I compiled the driver since at
+> > > the moment I had no adapter for that chipset.
+> > > As a remainder for future improvements/integration most of the code in 
+> > > dma.c, usb.c (except probe/disconnect functions) and tx.c can use the related
+> > > routines in the mt76-usb layer (we need to fill function pointer for chipset
+> > > related stuff if there are differences with mt76x2u, not looked yet).
+> > > Moreover mcu code can use utility routines in usb-mcu.c
+> > > I have not looked at mt76x2 common code yet.
+> > > 
+> > > Regards,
+> > > Lorenzo
+> > > 
+> > 
+> > It is also possible to reuse 
+> > struct mt76x2_txwi
+> > struct mt76x2_rxwi
+> > 
+> > They have the same memory layout for both mt76x0u and mt76x2u chipsets.
+> > 
+> > Lorenzo can you move them up to
+> > mt76.h
+> > and rename them to
+> > struct mt76_txwi
+> > struct mt76_rxwi
+> > 
+> > And we can also do this for
+> > struct mt76x2_vif
 > 
-> No, a bug in the allocator has been found that needs fixing.  The
-> right solution is to fix the allocator and remove what should be
-> unnecessary memset()s.
+> For the record. I unified bunch of mac80211 callbacks and mac/wcid functions
+> and structures (including structures pointed above) into new mt76xx_lib
+> module. I also rebased the changes on top of latest wireless-drivers-next
+> master and mt76x2u patches in new branch mt76x0-draft-v2:
+> https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft-v2
+> 
 
-Agree, will send v2.
+Sorry Hans, I forgot to reply to your email. I have already seen Stanislaw's
+repo and I agree he can apply his patchset on top of mt76x2u one as soon as
+it is merged in wireless-driver-next repo.
+Moreover Stanislaw I started working on unifying mt76x2u/mt76x0 dma/usb code,
+I have not sent you the patchset since I am waiting for the adapter. If you
+want I can send you the code as soon as it is completed (just compiled, not
+tested)
 
-> 
-> This should have been reported when the __GFP_ZERO flag was not
-> being honoured and memset() was initially found to be required -
-> all that dma_zalloc_coherent() does is set the __GFP_ZERO flag
-> before calling dma_alloc_coherent().
-> 
+Regards,
+Lorenzo
+
+> Regards
+> Stanislaw
