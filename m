@@ -1,82 +1,113 @@
-From: YueHaibing <yuehaibing-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
-Subject: Re: [SPAM]Re: [PATCH] net: mediatek: use dma_zalloc_coherent instead
- of allocator/memset
-Date: Fri, 20 Jul 2018 21:33:55 +0800
-Message-ID: <a8dfe467-9649-ca48-20e9-38041de6a404@huawei.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [SPAM]Re: [PATCH] net: mediatek: use dma_zalloc_coherent
+ instead of allocator/memset
+Date: Fri, 20 Jul 2018 21:48:24 +0800
+Message-ID: <1532094504.8953.262.camel@mtkswgap22>
 References: <20180719140955.19444-1-yuehaibing@huawei.com>
  <20180719141723.GM17271@n2100.armlinux.org.uk>
  <1532019744.8953.248.camel@mtkswgap22>
  <9a4cdfc6-7487-5908-b584-f3bf6158c4d4@huawei.com>
  <20180720081334.GO17271@n2100.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180720081334.GO17271-l+eeeJia6m9URfEZ8mYm6t73F7V6hmMc@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Russell King - ARM Linux <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
-Cc: nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180720081334.GO17271@n2100.armlinux.org.uk>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Russell King - ARM Linux <linux@armlinux.org.uk>
+Cc: nbd@openwrt.org, nelson.chang@mediatek.com, netdev@vger.kernel.org, YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, john@phrozen.org, matthias.bgg@gmail.com, davem@davemloft.net, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gMjAxOC83LzIwIDE2OjEzLCBSdXNzZWxsIEtpbmcgLSBBUk0gTGludXggd3JvdGU6Cj4gT24g
-RnJpLCBKdWwgMjAsIDIwMTggYXQgMDI6MzA6NTNQTSArMDgwMCwgWXVlSGFpYmluZyB3cm90ZToK
-Pj4gT24gMjAxOC83LzIwIDE6MDIsIFNlYW4gV2FuZyB3cm90ZToKPj4+IE9uIFRodSwgMjAxOC0w
-Ny0xOSBhdCAxNToxNyArMDEwMCwgUnVzc2VsbCBLaW5nIC0gQVJNIExpbnV4IHdyb3RlOgo+Pj4+
-IE9uIFRodSwgSnVsIDE5LCAyMDE4IGF0IDEwOjA5OjU1UE0gKzA4MDAsIFl1ZUhhaWJpbmcgd3Jv
-dGU6Cj4+Pj4+IFVzZSBkbWFfemFsbG9jX2NvaGVyZW50IGluc3RlYWQgb2YgZG1hX2FsbG9jX2Nv
-aGVyZW50Cj4+Pj4+IGZvbGxvd2VkIGJ5IG1lbXNldCAwLgo+Pj4+Pgo+Pj4+PiBTaWduZWQtb2Zm
-LWJ5OiBZdWVIYWliaW5nIDx5dWVoYWliaW5nQGh1YXdlaS5jb20+Cj4+Pj4+IC0tLQo+Pj4+PiAg
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9zb2MuYyB8IDcgKystLS0tLQo+
-Pj4+PiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkKPj4+
-Pj4KPj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L21lZGlhdGVrL210a19l
-dGhfc29jLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9tZWRpYXRlay9tdGtfZXRoX3NvYy5jCj4+
-Pj4+IGluZGV4IGQ4ZWJmMGEuLmZiZGIzZTMgMTAwNjQ0Cj4+Pj4+IC0tLSBhL2RyaXZlcnMvbmV0
-L2V0aGVybmV0L21lZGlhdGVrL210a19ldGhfc29jLmMKPj4+Pj4gKysrIGIvZHJpdmVycy9uZXQv
-ZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9zb2MuYwo+Pj4+PiBAQCAtMTIyMSwxNCArMTIyMSwx
-MSBAQCBzdGF0aWMgaW50IG10a190eF9hbGxvYyhzdHJ1Y3QgbXRrX2V0aCAqZXRoKQo+Pj4+PiAg
-CWlmICghcmluZy0+YnVmKQo+Pj4+PiAgCQlnb3RvIG5vX3R4X21lbTsKPj4+Pj4gIAo+Pj4+PiAt
-CXJpbmctPmRtYSA9IGRtYV9hbGxvY19jb2hlcmVudChldGgtPmRldiwKPj4+Pj4gLQkJCQkJICBN
-VEtfRE1BX1NJWkUgKiBzeiwKPj4+Pj4gLQkJCQkJICAmcmluZy0+cGh5cywKPj4+Pj4gLQkJCQkJ
-ICBHRlBfQVRPTUlDIHwgX19HRlBfWkVSTyk7Cj4+Pj4+ICsJcmluZy0+ZG1hID0gZG1hX3phbGxv
-Y19jb2hlcmVudChldGgtPmRldiwgTVRLX0RNQV9TSVpFICogc3osCj4+Pj4+ICsJCQkJCSZyaW5n
-LT5waHlzLCBHRlBfQVRPTUlDIHwgX19HRlBfWkVSTyk7Cj4+Pj4+ICAJaWYgKCFyaW5nLT5kbWEp
-Cj4+Pj4+ICAJCWdvdG8gbm9fdHhfbWVtOwo+Pj4+PiAgCj4+Pj4+IC0JbWVtc2V0KHJpbmctPmRt
-YSwgMCwgTVRLX0RNQV9TSVpFICogc3opOwo+Pj4+Cj4+Pj4gSSBoYXZlIHRvIHdvbmRlciB3aGV0
-aGVyIHRoaXMgY29kZSBuZWVkcyB0d28gZm9ybXMgb2YgemVyb2luZy4uLiBpbgo+Pj4+IHRoZSBv
-cmlnaW5hbCBjb2RlLCBfX0dGUF9aRVJPIF9hbmRfIGEgY2FsbCB0byBtZW1zZXQoKSBqdXN0IGlu
-IGNhc2UKPj4+PiBfX0dGUF9aRVJPIGZhaWxlZCB0byBkbyBpdHMgam9iLCBhbmQgaW4gdGhlIHJl
-cGxhY2VtZW50IGNvZGUsIGp1c3QKPj4+PiBpbiBjYXNlIGRtYV96YWxsb2NfY29oZXJlbnQoKSBo
-YXNuJ3QgZ290IHRoZSBpZGVhLi4uCj4+Pj4KPj4+PiBJIHRoaW5rIHlvdSBjYW4gZHJvcCB0aGUg
-X19HRlBfWkVSTy4gOykKPj4+Pgo+Pj4KPj4+IEp1c3Qgbm93IEkgZGlkIGFuIGV4cGVyaW1lbnQg
-b24gNC4xNC41NiBvbiBhcm12Ny4gSSBmb3VuZCB0aGF0Cj4+PiBkbWFfemFsbG9jX2NvaGVyZW50
-IGRvZXMgbm90IGd1YXJhbnRlZSB0aGF0IHRoZSBidWZmZXIgd2UgZ2V0Cj4+PiBpcyBhbGwgZmls
-bGVkIHdpdGggMC4KPj4+Cj4+Pgo+Pj4gSSByZWFsbHkgdGhpbmsgaXQncyBhIGxpdHRsZSBiaXQg
-d2VpcmQgT1Igd2hhdCB3YXMgSSBtaXNzaW5nIHNvbWV0aGluZwo+Pj4gZm9yIGVuYWJsaW5nIGRt
-YV96YWxsb2NfY29oZXJlbnQgPyBUaGUgcmVzdWx0IHNlZW1zIHRvIHRlbGwgdGhhdCB3ZQo+Pj4g
-Y2FuJ3QgcmVtb3ZlIGZyZWVseSB0aGUgbWVtc2V0IHdpdGggMCBhdCB0aGlzIG1vbWVudCB1bnRp
-bCB3ZSBnZXQgYQo+Pj4gY2F1c2UuCj4+Pgo+Pgo+PiBUaGF0IG1lYW5zIGRtYV96YWxsb2NfY29o
-ZXJlbnQgZG9lc24ndCB3b3JrIGFzIGV4cGVjdCBvbiBhcm12Nz8KPiAKPiBDYW4gc29tZW9uZSB3
-b3JrIG91dCB3aGljaCB1bmRlcmx5aW5nIGFsbG9jYXRvciBpcyBiZWluZyB1c2VkIC0gdGhlCj4g
-cG9zc2liaWxpdGllcyBhcmU6Cj4gCj4gLSBkbWFfYWxsb2NfZnJvbV9kZXZfY29oZXJlbnQKPiAt
-IGNtYQo+IC0gc2ltcGxlCj4gLSByZW1hcAo+IC0gcG9vbAo+IAo+IExvb2tpbmcgYXQgdGhlIGNv
-ZGUsIEknZCBndWVzcyBpdCdzIHRoZSBwb29sIGFsbG9jYXRvciwgYXMgSSBkb24ndCBzZWUKPiBh
-bnl0aGluZyB3aGljaCB6ZXJvcyBtZW1vcnkgdGhlcmUsIGFuZCBpdCBkb2Vzbid0IGhvbm9yIHRo
-ZSBfX0dGUF9aRVJPCj4gZmxhZy4gIFRoaXMgaXMgZGVmaW5pdGVseSBhbiBhbGxvY2F0b3IgYnVn
-Lgo+IAoKU2VhbiwKCmNhbiB5b3UgdGVzdCBiZWxsb3cgcGF0Y2jvvJoKCgpkaWZmIC0tZ2l0IGEv
-YXJjaC9hcm0vbW0vZG1hLW1hcHBpbmcuYyBiL2FyY2gvYXJtL21tL2RtYS1tYXBwaW5nLmMKaW5k
-ZXggYmUwZmE3ZS4uNTIwMjliYiAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vbW0vZG1hLW1hcHBpbmcu
-YworKysgYi9hcmNoL2FybS9tbS9kbWEtbWFwcGluZy5jCkBAIC01NjQsNiArNTY0LDcgQEAgc3Rh
-dGljIHZvaWQgKl9fYWxsb2NfZnJvbV9wb29sKHNpemVfdCBzaXplLCBzdHJ1Y3QgcGFnZSAqKnJl
-dF9wYWdlKQoKKnJldF9wYWdlID0gcGh5c190b19wYWdlKHBoeXMpOwpwdHIgPSAodm9pZCAqKXZh
-bDsKKyBtZW1zZXQocHRyLCAwLCBzaXplKTsKfQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1t
-ZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Fri, 2018-07-20 at 09:13 +0100, Russell King - ARM Linux wrote:
+> On Fri, Jul 20, 2018 at 02:30:53PM +0800, YueHaibing wrote:
+> > On 2018/7/20 1:02, Sean Wang wrote:
+> > > On Thu, 2018-07-19 at 15:17 +0100, Russell King - ARM Linux wrote:
+> > >> On Thu, Jul 19, 2018 at 10:09:55PM +0800, YueHaibing wrote:
+> > >>> Use dma_zalloc_coherent instead of dma_alloc_coherent
+> > >>> followed by memset 0.
+> > >>>
+> > >>> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+> > >>> ---
+> > >>>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 7 ++-----
+> > >>>  1 file changed, 2 insertions(+), 5 deletions(-)
+> > >>>
+> > >>> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> > >>> index d8ebf0a..fbdb3e3 100644
+> > >>> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> > >>> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> > >>> @@ -1221,14 +1221,11 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
+> > >>>  	if (!ring->buf)
+> > >>>  		goto no_tx_mem;
+> > >>>  
+> > >>> -	ring->dma = dma_alloc_coherent(eth->dev,
+> > >>> -					  MTK_DMA_SIZE * sz,
+> > >>> -					  &ring->phys,
+> > >>> -					  GFP_ATOMIC | __GFP_ZERO);
+> > >>> +	ring->dma = dma_zalloc_coherent(eth->dev, MTK_DMA_SIZE * sz,
+> > >>> +					&ring->phys, GFP_ATOMIC | __GFP_ZERO);
+> > >>>  	if (!ring->dma)
+> > >>>  		goto no_tx_mem;
+> > >>>  
+> > >>> -	memset(ring->dma, 0, MTK_DMA_SIZE * sz);
+> > >>
+> > >> I have to wonder whether this code needs two forms of zeroing... in
+> > >> the original code, __GFP_ZERO _and_ a call to memset() just in case
+> > >> __GFP_ZERO failed to do its job, and in the replacement code, just
+> > >> in case dma_zalloc_coherent() hasn't got the idea...
+> > >>
+> > >> I think you can drop the __GFP_ZERO. ;)
+> > >>
+> > > 
+> > > Just now I did an experiment on 4.14.56 on armv7. I found that
+> > > dma_zalloc_coherent does not guarantee that the buffer we get
+> > > is all filled with 0.
+> > > 
+> > > 
+> > > I really think it's a little bit weird OR what was I missing something
+> > > for enabling dma_zalloc_coherent ? The result seems to tell that we
+> > > can't remove freely the memset with 0 at this moment until we get a
+> > > cause.
+> > > 
+> > 
+> > That means dma_zalloc_coherent doesn't work as expect on armv7?
+> 
+> Can someone work out which underlying allocator is being used - the
+> possibilities are:
+> 
+> - dma_alloc_from_dev_coherent
+> - cma
+> - simple
+> - remap
+> - pool
+> 
+> Looking at the code, I'd guess it's the pool allocator, as I don't see
+> anything which zeros memory there, and it doesn't honor the __GFP_ZERO
+> flag.  This is definitely an allocator bug.
+> 
+
+Yes, your guess is right. the allocator is from pool. I show the full
+stack as below when calling dma_zalloc_coherent
+
+[   54.358310] [<c0113ca8>] (unwind_backtrace) from [<c010e558>] (show_stack+0x20/0x24)
+[   54.366012] [<c010e558>] (show_stack) from [<c0927f58>] (dump_stack+0x98/0xac)
+[   54.373196] [<c0927f58>] (dump_stack) from [<c011c1f8>] (pool_allocator_alloc+0x20/0x30)
+[   54.381238] [<c011c1f8>] (pool_allocator_alloc) from [<c011a238>] (__dma_alloc+0x1b8/0x344)
+[   54.389538] [<c011a238>] (__dma_alloc) from [<c011a45c>] (arm_dma_alloc+0x50/0x58)
+[   54.397063] [<c011a45c>] (arm_dma_alloc) from [<c05dc208>] (mtk_open+0xf4/0x710)
+[   54.404416] [<c05dc208>] (mtk_open) from [<c076d110>] (__dev_open+0xdc/0x160)
+[   54.411507] [<c076d110>] (__dev_open) from [<c076d530>] (__dev_change_flags+0x178/0x1c4)
+[   54.419547] [<c076d530>] (__dev_change_flags) from [<c076d5a4>] (dev_change_flags+0x28/0x58)
+[   54.427934] [<c076d5a4>] (dev_change_flags) from [<c07ea7c0>] (devinet_ioctl+0x630/0x720)
+[   54.436062] [<c07ea7c0>] (devinet_ioctl) from [<c07ed070>] (inet_ioctl+0x210/0x3a8)
+[   54.443674] [<c07ed070>] (inet_ioctl) from [<c0747094>] (sock_ioctl+0x234/0x4dc)
+[   54.451029] [<c0747094>] (sock_ioctl) from [<c028206c>] (do_vfs_ioctl+0xc0/0x914)
+[   54.458468] [<c028206c>] (do_vfs_ioctl) from [<c0282904>] (SyS_ioctl+0x44/0x6c)
+[   54.465733] [<c0282904>] (SyS_ioctl) from [<c0101000>] (ret_fast_syscall+0x0/0x54)
