@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v4 26/35] mtd: rawnand: atmel: convert driver to nand_scan()
-Date: Fri, 20 Jul 2018 17:15:18 +0200
-Message-ID: <20180720151527.16038-27-miquel.raynal@bootlin.com>
+Subject: [PATCH v4 31/35] mtd: rawnand: jz4740: convert driver to nand_scan()
+Date: Fri, 20 Jul 2018 17:15:23 +0200
+Message-ID: <20180720151527.16038-32-miquel.raynal@bootlin.com>
 References: <20180720151527.16038-1-miquel.raynal@bootlin.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180720151527.16038-1-miquel.raynal@bootlin.com>
@@ -17,173 +17,122 @@ both nand_scan_ident() and nand_scan_tail().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/atmel/nand-controller.c | 83 ++++++++++++++--------------
- 1 file changed, 40 insertions(+), 43 deletions(-)
+ drivers/mtd/nand/raw/jz4740_nand.c | 46 ++++++++++++++++++++++++--------------
+ 1 file changed, 29 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/atmel/nand-controller.c b/drivers/mtd/nand/raw/atmel/nand-controller.c
-index 855cc7729c43..0bc7e2abc885 100644
---- a/drivers/mtd/nand/raw/atmel/nand-controller.c
-+++ b/drivers/mtd/nand/raw/atmel/nand-controller.c
-@@ -202,7 +202,7 @@ struct atmel_nand_controller_ops {
- 	int (*remove)(struct atmel_nand_controller *nc);
- 	void (*nand_init)(struct atmel_nand_controller *nc,
- 			  struct atmel_nand *nand);
--	int (*ecc_init)(struct atmel_nand *nand);
-+	int (*ecc_init)(struct nand_chip *chip);
- 	int (*setup_data_interface)(struct atmel_nand *nand, int csline,
- 				    const struct nand_data_interface *conf);
- };
-@@ -1133,9 +1133,8 @@ static int atmel_nand_pmecc_init(struct nand_chip *chip)
- 	return 0;
+diff --git a/drivers/mtd/nand/raw/jz4740_nand.c b/drivers/mtd/nand/raw/jz4740_nand.c
+index 9bb8a89e09f9..8f821fdf8a1c 100644
+--- a/drivers/mtd/nand/raw/jz4740_nand.c
++++ b/drivers/mtd/nand/raw/jz4740_nand.c
+@@ -59,6 +59,7 @@
+ 
+ struct jz_nand {
+ 	struct nand_chip chip;
++	struct platform_device *pdev;
+ 	void __iomem *base;
+ 	struct resource *mem;
+ 
+@@ -329,8 +330,8 @@ static int jz_nand_detect_bank(struct platform_device *pdev,
+ 	writel(ctrl, nand->base + JZ_REG_NAND_CTRL);
+ 
+ 	if (chipnr == 0) {
+-		/* Detect first chip. */
+-		ret = nand_scan_ident(mtd, 1, NULL);
++		/* Detect the first chip and register it */
++		ret = nand_scan(mtd, 1);
+ 		if (ret)
+ 			goto notfound_id;
+ 
+@@ -367,6 +368,25 @@ static int jz_nand_detect_bank(struct platform_device *pdev,
+ 	return ret;
  }
  
--static int atmel_nand_ecc_init(struct atmel_nand *nand)
-+static int atmel_nand_ecc_init(struct nand_chip *chip)
- {
--	struct nand_chip *chip = &nand->base;
- 	struct atmel_nand_controller *nc;
- 	int ret;
- 
-@@ -1170,12 +1169,11 @@ static int atmel_nand_ecc_init(struct atmel_nand *nand)
- 	return 0;
- }
- 
--static int atmel_hsmc_nand_ecc_init(struct atmel_nand *nand)
-+static int atmel_hsmc_nand_ecc_init(struct nand_chip *chip)
- {
--	struct nand_chip *chip = &nand->base;
- 	int ret;
- 
--	ret = atmel_nand_ecc_init(nand);
-+	ret = atmel_nand_ecc_init(chip);
- 	if (ret)
- 		return ret;
- 
-@@ -1558,22 +1556,6 @@ static void atmel_hsmc_nand_init(struct atmel_nand_controller *nc,
- 	chip->select_chip = atmel_hsmc_nand_select_chip;
- }
- 
--static int atmel_nand_detect(struct atmel_nand *nand)
--{
--	struct nand_chip *chip = &nand->base;
--	struct mtd_info *mtd = nand_to_mtd(chip);
--	struct atmel_nand_controller *nc;
--	int ret;
--
--	nc = to_nand_controller(chip->controller);
--
--	ret = nand_scan_ident(mtd, nand->numcs, NULL);
--	if (ret)
--		dev_err(nc->dev, "nand_scan_ident() failed: %d\n", ret);
--
--	return ret;
--}
--
- static int atmel_nand_unregister(struct atmel_nand *nand)
- {
- 	struct nand_chip *chip = &nand->base;
-@@ -1595,7 +1577,6 @@ static int atmel_nand_register(struct atmel_nand *nand)
- 	struct nand_chip *chip = &nand->base;
- 	struct mtd_info *mtd = nand_to_mtd(chip);
- 	struct atmel_nand_controller *nc;
--	int ret;
- 
- 	nc = to_nand_controller(chip->controller);
- 
-@@ -1626,21 +1607,6 @@ static int atmel_nand_register(struct atmel_nand *nand)
- 		}
- 	}
- 
--	ret = nand_scan_tail(mtd);
--	if (ret) {
--		dev_err(nc->dev, "nand_scan_tail() failed: %d\n", ret);
--		return ret;
--	}
--
--	ret = mtd_device_register(mtd, NULL, 0);
--	if (ret) {
--		dev_err(nc->dev, "Failed to register mtd device: %d\n", ret);
--		nand_cleanup(chip);
--		return ret;
--	}
--
--	list_add_tail(&nand->node, &nc->chips);
--
- 	return 0;
- }
- 
-@@ -1755,6 +1721,8 @@ static int
- atmel_nand_controller_add_nand(struct atmel_nand_controller *nc,
- 			       struct atmel_nand *nand)
- {
-+	struct nand_chip *chip = &nand->base;
++static int jz_nand_attach_chip(struct nand_chip *chip)
++{
 +	struct mtd_info *mtd = nand_to_mtd(chip);
- 	int ret;
- 
- 	/* No card inserted, skip this NAND. */
-@@ -1765,15 +1733,30 @@ atmel_nand_controller_add_nand(struct atmel_nand_controller *nc,
- 
- 	nc->caps->ops->nand_init(nc, nand);
- 
--	ret = atmel_nand_detect(nand);
--	if (ret)
-+	ret = nand_scan(mtd, nand->numcs);
-+	if (ret) {
-+		dev_err(nc->dev, "NAND scan failed: %d\n", ret);
- 		return ret;
-+	}
- 
--	ret = nc->caps->ops->ecc_init(nand);
-+	ret = atmel_nand_register(nand);
- 	if (ret)
--		return ret;
-+		goto cleanup_nand;
++	struct jz_nand *nand = mtd_to_jz_nand(mtd);
++	struct device *dev = mtd->dev.parent;
++	struct jz_nand_platform_data *pdata = dev_get_platdata(dev);
 +
-+	ret = mtd_device_register(mtd, NULL, 0);
-+	if (ret) {
-+		dev_err(nc->dev, "Failed to register mtd device: %d\n", ret);
-+		goto cleanup_nand;
++	if (pdata && pdata->ident_callback) {
++		pdata->ident_callback(nand->pdev, mtd, &pdata->partitions,
++				      &pdata->num_partitions);
 +	}
-+
-+	list_add_tail(&nand->node, &nc->chips);
 +
 +	return 0;
-+
-+cleanup_nand:
-+	nand_cleanup(chip);
- 
--	return atmel_nand_register(nand);
-+	return ret;
- }
- 
- static int
-@@ -1958,6 +1941,19 @@ static const struct of_device_id atmel_matrix_of_ids[] = {
- 	{ /* sentinel */ },
- };
- 
-+static int atmel_nand_attach_chip(struct nand_chip *chip)
-+{
-+	struct atmel_nand_controller *nc;
-+
-+	nc = to_nand_controller(chip->controller);
-+
-+	return nc->caps->ops->ecc_init(chip);
 +}
 +
-+static const struct nand_controller_ops atmel_nand_controller_ops = {
-+	.attach_chip = atmel_nand_attach_chip,
++static const struct nand_controller_ops jz_nand_controller_ops = {
++	.attach_chip = jz_nand_attach_chip,
 +};
 +
- static int atmel_nand_controller_init(struct atmel_nand_controller *nc,
- 				struct platform_device *pdev,
- 				const struct atmel_nand_controller_caps *caps)
-@@ -1967,6 +1963,7 @@ static int atmel_nand_controller_init(struct atmel_nand_controller *nc,
+ static int jz_nand_probe(struct platform_device *pdev)
+ {
  	int ret;
+@@ -397,6 +417,7 @@ static int jz_nand_probe(struct platform_device *pdev)
+ 	mtd		= nand_to_mtd(chip);
+ 	mtd->dev.parent = &pdev->dev;
+ 	mtd->name	= "jz4740-nand";
++	nand->pdev	= pdev;
  
- 	nand_controller_init(&nc->base);
-+	nc->base.ops = &atmel_nand_controller_ops;
- 	INIT_LIST_HEAD(&nc->chips);
- 	nc->dev = dev;
- 	nc->caps = caps;
+ 	chip->ecc.hwctl		= jz_nand_hwctl;
+ 	chip->ecc.calculate	= jz_nand_calculate_ecc_rs;
+@@ -410,6 +431,7 @@ static int jz_nand_probe(struct platform_device *pdev)
+ 	chip->chip_delay = 50;
+ 	chip->cmd_ctrl = jz_nand_cmd_ctrl;
+ 	chip->select_chip = jz_nand_select_chip;
++	chip->dummy_controller.ops = &jz_nand_controller_ops;
+ 
+ 	if (nand->busy_gpio)
+ 		chip->dev_ready = jz_nand_dev_ready;
+@@ -450,20 +472,10 @@ static int jz_nand_probe(struct platform_device *pdev)
+ 		else
+ 			nand->banks[chipnr] = 0;
+ 	}
++
+ 	if (chipnr == 0) {
+ 		dev_err(&pdev->dev, "No NAND chips found\n");
+-		goto err_iounmap_mmio;
+-	}
+-
+-	if (pdata && pdata->ident_callback) {
+-		pdata->ident_callback(pdev, mtd, &pdata->partitions,
+-					&pdata->num_partitions);
+-	}
+-
+-	ret = nand_scan_tail(mtd);
+-	if (ret) {
+-		dev_err(&pdev->dev,  "Failed to scan NAND\n");
+-		goto err_unclaim_banks;
++		goto err_nand_release;
+ 	}
+ 
+ 	ret = mtd_device_register(mtd, pdata ? pdata->partitions : NULL,
+@@ -471,15 +483,13 @@ static int jz_nand_probe(struct platform_device *pdev)
+ 
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Failed to add mtd device\n");
+-		goto err_nand_release;
++		goto err_unclaim_banks;
+ 	}
+ 
+ 	dev_info(&pdev->dev, "Successfully registered JZ4740 NAND driver\n");
+ 
+ 	return 0;
+ 
+-err_nand_release:
+-	nand_release(mtd);
+ err_unclaim_banks:
+ 	while (chipnr--) {
+ 		unsigned char bank = nand->banks[chipnr];
+@@ -487,6 +497,8 @@ static int jz_nand_probe(struct platform_device *pdev)
+ 					 nand->bank_base[bank - 1]);
+ 	}
+ 	writel(0, nand->base + JZ_REG_NAND_CTRL);
++err_nand_release:
++	nand_release(mtd);
+ err_iounmap_mmio:
+ 	jz_nand_iounmap_resource(nand->mem, nand->base);
+ err_free:
 -- 
 2.14.1
