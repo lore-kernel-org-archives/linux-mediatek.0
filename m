@@ -1,15 +1,15 @@
 From: Boris Brezillon <boris.brezillon@bootlin.com>
-Subject: Re: [PATCH v4 11/35] mtd: rawnand: lpc32xx_mlc: convert driver to
+Subject: Re: [PATCH v4 12/35] mtd: rawnand: lpc32xx_slc: convert driver to
  nand_scan()
-Date: Sat, 21 Jul 2018 17:26:35 +0200
-Message-ID: <20180721172635.716e68f4@bbrezillon>
+Date: Sat, 21 Jul 2018 17:27:49 +0200
+Message-ID: <20180721172749.05529c8f@bbrezillon>
 References: <20180720151527.16038-1-miquel.raynal@bootlin.com>
- <20180720151527.16038-12-miquel.raynal@bootlin.com>
+ <20180720151527.16038-13-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180720151527.16038-12-miquel.raynal@bootlin.com>
+In-Reply-To: <20180720151527.16038-13-miquel.raynal@bootlin.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -23,7 +23,7 @@ To: Miquel Raynal <miquel.raynal@bootlin.com>
 Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, Mans Rullgard <mans@mansr.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Stefan Agner <stefan@agner.ch>, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mtd@lists.infradead.org, Kamal Dasu <kdasu.kdev@gmail.com>, Josh Wu <rainyfeeling@outlook.com>, Marc Gonzalez <marc.w.gonzalez@free.fr>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com, Sylvain Lemieux <slemieux.tyco@gmail.com>, Wenyou Yang <wenyou.yang@microchip.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Vladimir Zapolskiy <vz@mleia.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Han Xu <han.xu@nxp.com>, Xiaolei Li <xiaolei.li@mediatek.com>, linux-arm-kernel@lists.infradead.org, Richard
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 20 Jul 2018 17:15:03 +0200
+On Fri, 20 Jul 2018 17:15:04 +0200
 Miquel Raynal <miquel.raynal@bootlin.com> wrote:
 
 > Two helpers have been added to the core to make ECC-related
@@ -32,23 +32,18 @@ Miquel Raynal <miquel.raynal@bootlin.com> wrote:
 > both nand_scan_ident() and nand_scan_tail().
 > 
 > Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
+
+Reviewed-by: Boris Brezillon <boris.brezillon@bootlin.com>
+
 > ---
->  drivers/mtd/nand/raw/lpc32xx_mlc.c | 109 ++++++++++++++++++++-----------------
->  1 file changed, 59 insertions(+), 50 deletions(-)
+>  drivers/mtd/nand/raw/lpc32xx_slc.c | 77 +++++++++++++++++++++-----------------
+>  1 file changed, 42 insertions(+), 35 deletions(-)
 > 
-> diff --git a/drivers/mtd/nand/raw/lpc32xx_mlc.c b/drivers/mtd/nand/raw/lpc32xx_mlc.c
-> index 052d123a8304..6f73136fa863 100644
-> --- a/drivers/mtd/nand/raw/lpc32xx_mlc.c
-> +++ b/drivers/mtd/nand/raw/lpc32xx_mlc.c
-> @@ -184,6 +184,7 @@ static struct nand_bbt_descr lpc32xx_nand_bbt_mirror = {
->  };
->  
->  struct lpc32xx_nand_host {
-> +	struct platform_device	*pdev;
->  	struct nand_chip	nand_chip;
->  	struct lpc32xx_mlc_platform_data *pdata;
->  	struct clk		*clk;
-> @@ -653,6 +654,58 @@ static struct lpc32xx_nand_cfg_mlc *lpc32xx_parse_dt(struct device *dev)
+> diff --git a/drivers/mtd/nand/raw/lpc32xx_slc.c b/drivers/mtd/nand/raw/lpc32xx_slc.c
+> index 42820aa1abab..a4e8b7e75135 100644
+> --- a/drivers/mtd/nand/raw/lpc32xx_slc.c
+> +++ b/drivers/mtd/nand/raw/lpc32xx_slc.c
+> @@ -779,6 +779,46 @@ static struct lpc32xx_nand_cfg_slc *lpc32xx_parse_dt(struct device *dev)
 >  	return ncfg;
 >  }
 >  
@@ -56,146 +51,86 @@ Miquel Raynal <miquel.raynal@bootlin.com> wrote:
 > +{
 > +	struct mtd_info *mtd = nand_to_mtd(chip);
 > +	struct lpc32xx_nand_host *host = nand_get_controller_data(chip);
-> +	struct device *dev = &host->pdev->dev;
 > +
-> +	host->dma_buf = devm_kzalloc(dev, mtd->writesize, GFP_KERNEL);
-> +	if (!host->dma_buf)
-> +		return -ENOMEM;
+> +	/* OOB and ECC CPU and DMA work areas */
+> +	host->ecc_buf = (uint32_t *)(host->data_buf + LPC32XX_DMA_DATA_SIZE);
 > +
-> +	host->dummy_buf = devm_kzalloc(dev, mtd->writesize, GFP_KERNEL);
-> +	if (!host->dummy_buf)
-> +		return -ENOMEM;
+> +	/*
+> +	 * Small page FLASH has a unique OOB layout, but large and huge
+> +	 * page FLASH use the standard layout. Small page FLASH uses a
+> +	 * custom BBT marker layout.
+> +	 */
+> +	if (mtd->writesize <= 512)
+> +		mtd_set_ooblayout(mtd, &lpc32xx_ooblayout_ops);
 > +
-> +	chip->ecc.mode = NAND_ECC_HW;
-> +	chip->ecc.size = 512;
-> +	mtd_set_ooblayout(mtd, &lpc32xx_ooblayout_ops);
-> +	host->mlcsubpages = mtd->writesize / 512;
+> +	/* These sizes remain the same regardless of page size */
+> +	chip->ecc.size = 256;
+> +	chip->ecc.bytes = LPC32XX_SLC_DEV_ECC_BYTES;
+> +	chip->ecc.prepad = 0;
+> +	chip->ecc.postpad = 0;
 > +
-> +	/* initially clear interrupt status */
-> +	readb(MLC_IRQ_SR(host->io_base));
-> +
-> +	init_completion(&host->comp_nand);
-> +	init_completion(&host->comp_controller);
-> +
-> +	host->irq = platform_get_irq(host->pdev, 0);
-> +	if (host->irq < 0) {
-> +		dev_err(dev, "failed to get platform irq\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	if (request_irq(host->irq, (irq_handler_t)&lpc3xxx_nand_irq,
-> +			IRQF_TRIGGER_HIGH, DRV_NAME, host)) {
-> +		dev_err(dev, "Error requesting NAND IRQ\n");
-> +		return -ENXIO;
+> +	/*
+> +	 * Use a custom BBT marker setup for small page FLASH that
+> +	 * won't interfere with the ECC layout. Large and huge page
+> +	 * FLASH use the standard layout.
+> +	 */
+> +	if ((chip->bbt_options & NAND_BBT_USE_FLASH) &&
+> +	    mtd->writesize <= 512) {
+> +		chip->bbt_td = &bbt_smallpage_main_descr;
+> +		chip->bbt_md = &bbt_smallpage_mirror_descr;
 > +	}
 > +
 > +	return 0;
 > +}
 > +
-> +static void lpc32xx_nand_detach_chip(struct nand_chip *chip)
-> +{
-> +	struct lpc32xx_nand_host *host = nand_get_controller_data(chip);
-> +
-> +	free_irq(host->irq, host);
-
-Now you call 2 times free_irq() in the ->remove() path.
-
-> +}
-> +
 > +static const struct nand_controller_ops lpc32xx_nand_controller_ops = {
 > +	.attach_chip = lpc32xx_nand_attach_chip,
-> +	.detach_chip = lpc32xx_nand_detach_chip,
 > +};
 > +
 >  /*
 >   * Probe for NAND controller
 >   */
-> @@ -669,6 +722,8 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
->  	if (!host)
->  		return -ENOMEM;
->  
-> +	host->pdev = pdev;
-> +
->  	rc = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->  	host->io_base = devm_ioremap_resource(&pdev->dev, rc);
->  	if (IS_ERR(host->io_base))
-> @@ -749,58 +804,14 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
+> @@ -884,41 +924,8 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
 >  	}
 >  
->  	/*
-> -	 * Scan to find existance of the device and
-> -	 * Get the type of NAND device SMALL block or LARGE block
-> +	 * Scan to find existence of the device and get the type of NAND device:
-> +	 * SMALL block or LARGE block.
->  	 */
+>  	/* Find NAND device */
 > -	res = nand_scan_ident(mtd, 1, NULL);
-> +	nand_chip->dummy_controller.ops = &lpc32xx_nand_controller_ops;
-> +	res = nand_scan(mtd, 1);
->  	if (res)
->  		goto release_dma_chan;
->  
-> -	host->dma_buf = devm_kzalloc(&pdev->dev, mtd->writesize, GFP_KERNEL);
-> -	if (!host->dma_buf) {
-> -		res = -ENOMEM;
-> -		goto release_dma_chan;
+> -	if (res)
+> -		goto release_dma;
+> -
+> -	/* OOB and ECC CPU and DMA work areas */
+> -	host->ecc_buf = (uint32_t *)(host->data_buf + LPC32XX_DMA_DATA_SIZE);
+> -
+> -	/*
+> -	 * Small page FLASH has a unique OOB layout, but large and huge
+> -	 * page FLASH use the standard layout. Small page FLASH uses a
+> -	 * custom BBT marker layout.
+> -	 */
+> -	if (mtd->writesize <= 512)
+> -		mtd_set_ooblayout(mtd, &lpc32xx_ooblayout_ops);
+> -
+> -	/* These sizes remain the same regardless of page size */
+> -	chip->ecc.size = 256;
+> -	chip->ecc.bytes = LPC32XX_SLC_DEV_ECC_BYTES;
+> -	chip->ecc.prepad = chip->ecc.postpad = 0;
+> -
+> -	/*
+> -	 * Use a custom BBT marker setup for small page FLASH that
+> -	 * won't interfere with the ECC layout. Large and huge page
+> -	 * FLASH use the standard layout.
+> -	 */
+> -	if ((chip->bbt_options & NAND_BBT_USE_FLASH) &&
+> -	    mtd->writesize <= 512) {
+> -		chip->bbt_td = &bbt_smallpage_main_descr;
+> -		chip->bbt_md = &bbt_smallpage_mirror_descr;
 > -	}
-> -
-> -	host->dummy_buf = devm_kzalloc(&pdev->dev, mtd->writesize, GFP_KERNEL);
-> -	if (!host->dummy_buf) {
-> -		res = -ENOMEM;
-> -		goto release_dma_chan;
-> -	}
-> -
-> -	nand_chip->ecc.mode = NAND_ECC_HW;
-> -	nand_chip->ecc.size = 512;
-> -	mtd_set_ooblayout(mtd, &lpc32xx_ooblayout_ops);
-> -	host->mlcsubpages = mtd->writesize / 512;
-> -
-
-Starting here...
-
-> -	/* initially clear interrupt status */
-> -	readb(MLC_IRQ_SR(host->io_base));
-> -
-> -	init_completion(&host->comp_nand);
-> -	init_completion(&host->comp_controller);
-> -
-> -	host->irq = platform_get_irq(pdev, 0);
-> -	if (host->irq < 0) {
-> -		dev_err(&pdev->dev, "failed to get platform irq\n");
-> -		res = -EINVAL;
-> -		goto release_dma_chan;
-> -	}
-> -
-> -	if (request_irq(host->irq, (irq_handler_t)&lpc3xxx_nand_irq,
-> -			IRQF_TRIGGER_HIGH, DRV_NAME, host)) {
-> -		dev_err(&pdev->dev, "Error requesting NAND IRQ\n");
-> -		res = -ENXIO;
-> -		goto release_dma_chan;
-> -	}
-
-till there: maybe we should just move this block before nand_scan().
-Registering an IRQ handler is not really something you should do in
-->attach_chip() IMO.
-
 > -
 > -	/*
 > -	 * Fills out all the uninitialized function pointers with the defaults
-> -	 * And scans for a bad block table if appropriate.
 > -	 */
 > -	res = nand_scan_tail(mtd);
-> -	if (res)
-> -		goto free_irq;
-> -
->  	mtd->name = DRV_NAME;
+> +	chip->dummy_controller.ops = &lpc32xx_nand_controller_ops;
+> +	res = nand_scan(mtd, 1);
+>  	if (res)
+>  		goto release_dma;
 >  
->  	res = mtd_device_register(mtd, host->ncfg->parts,
-> @@ -812,8 +823,6 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
->  
->  cleanup_nand:
->  	nand_cleanup(nand_chip);
-> -free_irq:
-> -	free_irq(host->irq, host);
->  release_dma_chan:
->  	if (use_dma)
->  		dma_release_channel(host->dma_chan);
