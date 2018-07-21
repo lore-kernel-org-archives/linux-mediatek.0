@@ -1,16 +1,15 @@
-From: Erin Lo <erin.lo@mediatek.com>
-Subject: Re: [PATCH v3 0/4] Add basic support for Mediatek MT8183 SoC
-Date: Sat, 21 Jul 2018 15:28:54 +0800
-Message-ID: <1532158134.16009.10.camel@mtksdaap41>
-References: <1526538126-51497-1-git-send-email-erin.lo@mediatek.com>
- <9ba45353-a6e1-9a6e-f05b-4b1679ae9e52@gmail.com>
- <1532074769.19148.2.camel@mtksdaap41>
- <2ca76468-198b-b764-c974-374e567e0c93@gmail.com>
+From: Boris Brezillon <boris.brezillon@bootlin.com>
+Subject: Re: [PATCH v4 10/35] mtd: rawnand: jz4780: convert driver to
+ nand_scan()
+Date: Sat, 21 Jul 2018 17:23:19 +0200
+Message-ID: <20180721172250.723b4fd2@bbrezillon>
+References: <20180720151527.16038-1-miquel.raynal@bootlin.com>
+ <20180720151527.16038-11-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2ca76468-198b-b764-c974-374e567e0c93@gmail.com>
+In-Reply-To: <20180720151527.16038-11-miquel.raynal@bootlin.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -20,83 +19,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Jason Cooper <jason@lakedaemon.net>, srv_heupstream <srv_heupstream@mediatek.com>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, mars.cheng@mediatek.com, linux-serial@vger.kernel.org, yingjoe.chen@mediatek.com, Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org
+To: Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, Mans Rullgard <mans@mansr.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Stefan Agner <stefan@agner.ch>, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mtd@lists.infradead.org, Kamal Dasu <kdasu.kdev@gmail.com>, Josh Wu <rainyfeeling@outlook.com>, Marc Gonzalez <marc.w.gonzalez@free.fr>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com, Sylvain Lemieux <slemieux.tyco@gmail.com>, Wenyou Yang <wenyou.yang@microchip.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Vladimir Zapolskiy <vz@mleia.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Han Xu <han.xu@nxp.com>, Xiaolei Li <xiaolei.li@mediatek.com>, linux-arm-kernel@lists.infradead.org, Richard
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2018-07-20 at 12:44 +0200, Matthias Brugger wrote:
-> 
-> On 20/07/18 10:19, Erin Lo wrote:
-> > On Mon, 2018-07-16 at 11:28 +0200, Matthias Brugger wrote:
-> >> Hi Erin,
-> >>
-> >> On 17/05/18 08:22, Erin Lo wrote:
-> >>> MT8183 is a SoC based on 64bit ARMv8 architecture.
-> >>> It contains 4 CA53 and 4 CA73 cores.
-> >>> MT8183 share many HW IP with MT65xx series.
-> >>> This patchset was tested on MT8183 evaluation board, and boot to shell ok.
-> >>>
-> >>> This series contains document bindings, device tree including interrupt, uart.
-> >>>
-> >>> Change in v3:
-> >>> 1. Fill out GICC, GICH, GICV regions
-> >>> 2. Update Copyright to 2018
-> >>>
-> >>> Change in v2:
-> >>> 1. Split dt-bindings into different patches
-> >>> 2. Correct bindings for supported SoCs (mtk-uart.txt)
-> >>>
-> >>> Ben Ho (1):
-> >>>   arm64: dts: Add Mediatek SoC MT8183 and evaluation board dts and
-> >>>     Makefile
-> >>>
-> >>> Erin Lo (3):
-> >>>   dt-bindings: arm: Add bindings for Mediatek MT8183 SoC Platform
-> >>>   dt-bindings: mtk-sysirq: Add compatible for Mediatek MT8183
-> >>>   dt-bindings: serial: Add compatible for Mediatek MT8183
-> >>>
-> >>
-> >> I'm a bit reluctant to take this series, as it will only enable the EVB board to
-> >> boot into a serial console. Are you planning to add support for other devices of
-> >> this SoC?
-> >>
-> >> Apart please take into account that there is an issue with the dts file, as you
-> >> were told by the kbuild test robot.
-> >>
-> >> Regards,
-> >> Matthias
-> >>
-> > 
-> > Hi, Matthias
-> > Sorry for missing this letter...since mail proxy server.
-> > We plan to add support all the devices of MT8183 in serious.
-> > We have implemented the clock and pinctrl driver for upstream and they
-> > are in internal review right now.
-> > 
-> 
-> Nice to hear that :)
-> 
-> > About the dts issue... do you suggest me to send new patch right now or
-> > wait for clock and pinctrl driver ready then send them together?
-> > 
-> 
-> I would prefer that you send at least the clock controller together, so that we
-> don't have any dummy clocks in the basic device tree.
-> 
-> Regards,
-> Matthias
-> 
+On Fri, 20 Jul 2018 17:15:02 +0200
+Miquel Raynal <miquel.raynal@bootlin.com> wrote:
 
-Got it! Next patch, we will send them with clock controller without
-dummy clocks in the basic device tree.
-By the way, the clock controller driver of MT8183 is a little bit
-different from former ICs, so we need more time to prepare them.
-We will send them to public as soon as possible.
+> Two helpers have been added to the core to make ECC-related
+> configuration between the detection phase and the final NAND scan. Use
+> these hooks and convert the driver to just use nand_scan() instead of
+> both nand_scan_ident() and nand_scan_tail().
+> 
+> Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
+> Acked-by: Harvey Hunt <harveyhuntnexus@gmail.com>
 
-Best Regards,
-Erin
+Reviewed-by: Boris Brezillon <boris.brezillon@bootlin.com>
 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> ---
+>  drivers/mtd/nand/raw/jz4780_nand.c | 34 ++++++++++++++++------------------
+>  1 file changed, 16 insertions(+), 18 deletions(-)
+> 
+> diff --git a/drivers/mtd/nand/raw/jz4780_nand.c b/drivers/mtd/nand/raw/jz4780_nand.c
+> index 49841dad347c..db4fa60bd52a 100644
+> --- a/drivers/mtd/nand/raw/jz4780_nand.c
+> +++ b/drivers/mtd/nand/raw/jz4780_nand.c
+> @@ -158,9 +158,8 @@ static int jz4780_nand_ecc_correct(struct mtd_info *mtd, u8 *dat,
+>  	return jz4780_bch_correct(nfc->bch, &params, dat, read_ecc);
+>  }
+>  
+> -static int jz4780_nand_init_ecc(struct jz4780_nand_chip *nand, struct device *dev)
+> +static int jz4780_nand_attach_chip(struct nand_chip *chip)
+>  {
+> -	struct nand_chip *chip = &nand->chip;
+>  	struct mtd_info *mtd = nand_to_mtd(chip);
+>  	struct jz4780_nand_controller *nfc = to_jz4780_nand_controller(chip->controller);
+>  	int eccbytes;
+> @@ -171,7 +170,8 @@ static int jz4780_nand_init_ecc(struct jz4780_nand_chip *nand, struct device *de
+>  	switch (chip->ecc.mode) {
+>  	case NAND_ECC_HW:
+>  		if (!nfc->bch) {
+> -			dev_err(dev, "HW BCH selected, but BCH controller not found\n");
+> +			dev_err(nfc->dev,
+> +				"HW BCH selected, but BCH controller not found\n");
+>  			return -ENODEV;
+>  		}
+>  
+> @@ -180,15 +180,16 @@ static int jz4780_nand_init_ecc(struct jz4780_nand_chip *nand, struct device *de
+>  		chip->ecc.correct = jz4780_nand_ecc_correct;
+>  		/* fall through */
+>  	case NAND_ECC_SOFT:
+> -		dev_info(dev, "using %s (strength %d, size %d, bytes %d)\n",
+> -			(nfc->bch) ? "hardware BCH" : "software ECC",
+> -			chip->ecc.strength, chip->ecc.size, chip->ecc.bytes);
+> +		dev_info(nfc->dev, "using %s (strength %d, size %d, bytes %d)\n",
+> +			 (nfc->bch) ? "hardware BCH" : "software ECC",
+> +			 chip->ecc.strength, chip->ecc.size, chip->ecc.bytes);
+>  		break;
+>  	case NAND_ECC_NONE:
+> -		dev_info(dev, "not using ECC\n");
+> +		dev_info(nfc->dev, "not using ECC\n");
+>  		break;
+>  	default:
+> -		dev_err(dev, "ECC mode %d not supported\n", chip->ecc.mode);
+> +		dev_err(nfc->dev, "ECC mode %d not supported\n",
+> +			chip->ecc.mode);
+>  		return -EINVAL;
+>  	}
+>  
+> @@ -200,7 +201,7 @@ static int jz4780_nand_init_ecc(struct jz4780_nand_chip *nand, struct device *de
+>  	eccbytes = mtd->writesize / chip->ecc.size * chip->ecc.bytes;
+>  
+>  	if (eccbytes > mtd->oobsize - 2) {
+> -		dev_err(dev,
+> +		dev_err(nfc->dev,
+>  			"invalid ECC config: required %d ECC bytes, but only %d are available",
+>  			eccbytes, mtd->oobsize - 2);
+>  		return -EINVAL;
+> @@ -211,6 +212,10 @@ static int jz4780_nand_init_ecc(struct jz4780_nand_chip *nand, struct device *de
+>  	return 0;
+>  }
+>  
+> +static const struct nand_controller_ops jz4780_nand_controller_ops = {
+> +	.attach_chip = jz4780_nand_attach_chip,
+> +};
+> +
+>  static int jz4780_nand_init_chip(struct platform_device *pdev,
+>  				struct jz4780_nand_controller *nfc,
+>  				struct device_node *np,
+> @@ -280,15 +285,8 @@ static int jz4780_nand_init_chip(struct platform_device *pdev,
+>  	chip->controller = &nfc->controller;
+>  	nand_set_flash_node(chip, np);
+>  
+> -	ret = nand_scan_ident(mtd, 1, NULL);
+> -	if (ret)
+> -		return ret;
+> -
+> -	ret = jz4780_nand_init_ecc(nand, dev);
+> -	if (ret)
+> -		return ret;
+> -
+> -	ret = nand_scan_tail(mtd);
+> +	chip->controller->ops = &jz4780_nand_controller_ops;
+> +	ret = nand_scan(mtd, 1);
+>  	if (ret)
+>  		return ret;
+>  
