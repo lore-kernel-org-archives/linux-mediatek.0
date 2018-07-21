@@ -1,29 +1,116 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v5 04/11] soc: mediatek: add MT6765 scpsys support
-Date: Fri, 20 Jul 2018 11:46:09 -0600
-Message-ID: <20180720174609.GA679@rob-hp-laptop>
-References: <1531817552-17221-1-git-send-email-mars.cheng@mediatek.com>
- <1531817552-17221-5-git-send-email-mars.cheng@mediatek.com>
+From: Boris Brezillon <boris.brezillon@bootlin.com>
+Subject: Re: [PATCH v4 01/35] mtd: rawnand: brcmnand: convert driver to
+ nand_scan()
+Date: Sat, 21 Jul 2018 08:23:32 +0200
+Message-ID: <20180721082332.4c098adb@bbrezillon>
+References: <20180720151527.16038-1-miquel.raynal@bootlin.com>
+        <20180720151527.16038-2-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1531817552-17221-5-git-send-email-mars.cheng@mediatek.com>
+In-Reply-To: <20180720151527.16038-2-miquel.raynal@bootlin.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mars Cheng <mars.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Marc Zyngier <marc.zyngier@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, Sean Wang <sean.wang@mediatek.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, Owen Chen <owen.chen@mediatek.com>
+To: Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Wenyou Yang <wenyou.yang@microchip.com>, Josh Wu <rainyfeeling@outlook.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Kamal Dasu <kdasu.kdev@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Xiaolei Li <xiaolei.li@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.o>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jul 17, 2018 at 04:52:25PM +0800, Mars Cheng wrote:
-> This adds scpsys support for MT6765
+On Fri, 20 Jul 2018 17:14:53 +0200
+Miquel Raynal <miquel.raynal@bootlin.com> wrote:
+
+> Two helpers have been added to the core to make ECC-related
+> configuration between the detection phase and the final NAND scan. Use
+> these hooks and convert the driver to just use nand_scan() instead of
+> both nand_scan_ident() and nand_scan_tail().
 > 
-> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
-> Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+> Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 > ---
->  drivers/soc/mediatek/mtk-scpsys.c        |   88 ++++++++++++++++++++++++++++++
->  include/dt-bindings/power/mt6765-power.h |   14 +++++
+>  drivers/mtd/nand/raw/brcmnand/brcmnand.c | 47 +++++++++++++++++++-------------
+>  1 file changed, 28 insertions(+), 19 deletions(-)
+> 
+> diff --git a/drivers/mtd/nand/raw/brcmnand/brcmnand.c b/drivers/mtd/nand/raw/brcmnand/brcmnand.c
+> index 2e5efa0f9ea2..071f09af56dc 100644
+> --- a/drivers/mtd/nand/raw/brcmnand/brcmnand.c
+> +++ b/drivers/mtd/nand/raw/brcmnand/brcmnand.c
+> @@ -2208,6 +2208,32 @@ static int brcmnand_setup_dev(struct brcmnand_host *host)
+>  	return 0;
+>  }
+>  
+> +static int brcmnand_attach_chip(struct nand_chip *chip)
+> +{
+> +	struct mtd_info *mtd = nand_to_mtd(chip);
+> +	struct brcmnand_host *host = nand_get_controller_data(chip);
+> +	int ret;
+> +
+> +	if (chip->bbt_options & NAND_BBT_USE_FLASH)
+> +		chip->bbt_options |= NAND_BBT_NO_OOB;
+> +
+> +	if (brcmnand_setup_dev(host))
+> +		return -ENXIO;
+> +
+> +	chip->ecc.size = host->hwcfg.sector_size_1k ? 1024 : 512;
+> +
+> +	/* only use our internal HW threshold */
+> +	mtd->bitflip_threshold = 1;
+> +
+> +	ret = brcmstb_choose_ecc_layout(host);
+> +
+> +	return ret;
+> +}
+> +
+> +static const struct nand_controller_ops brcmnand_controller_ops = {
+> +	.attach_chip = brcmnand_attach_chip,
+> +};
+> +
+>  static int brcmnand_init_cs(struct brcmnand_host *host, struct device_node *dn)
+>  {
+>  	struct brcmnand_controller *ctrl = host->ctrl;
+> @@ -2267,10 +2293,6 @@ static int brcmnand_init_cs(struct brcmnand_host *host, struct device_node *dn)
+>  	nand_writereg(ctrl, cfg_offs,
+>  		      nand_readreg(ctrl, cfg_offs) & ~CFG_BUS_WIDTH);
+>  
+> -	ret = nand_scan_ident(mtd, 1, NULL);
+> -	if (ret)
+> -		return ret;
+> -
+>  	chip->options |= NAND_NO_SUBPAGE_WRITE;
+>  	/*
+>  	 * Avoid (for instance) kmap()'d buffers from JFFS2, which we can't DMA
+> @@ -2279,21 +2301,7 @@ static int brcmnand_init_cs(struct brcmnand_host *host, struct device_node *dn)
+>  	 */
+>  	chip->options |= NAND_USE_BOUNCE_BUFFER;
+>  
 
-This file goes in the binding patch.
+Any reason for not moving the above chunk in brcmnand_attach_chip()?
 
->  2 files changed, 102 insertions(+)
->  create mode 100644 include/dt-bindings/power/mt6765-power.h
+Since ->attach_chip() is called between nand_scan_ident() and
+nand_scan_tail() in nand_scan(), I'd recommend simply copying all the
+code found between those 2 calls (applies to all drivers).
+
+> -	if (chip->bbt_options & NAND_BBT_USE_FLASH)
+> -		chip->bbt_options |= NAND_BBT_NO_OOB;
+> -
+> -	if (brcmnand_setup_dev(host))
+> -		return -ENXIO;
+> -
+> -	chip->ecc.size = host->hwcfg.sector_size_1k ? 1024 : 512;
+> -	/* only use our internal HW threshold */
+> -	mtd->bitflip_threshold = 1;
+> -
+> -	ret = brcmstb_choose_ecc_layout(host);
+> -	if (ret)
+> -		return ret;
+> -
+> -	ret = nand_scan_tail(mtd);
+> +	ret = nand_scan(mtd, 1);
+>  	if (ret)
+>  		return ret;
+>  
+> @@ -2434,6 +2442,7 @@ int brcmnand_probe(struct platform_device *pdev, struct brcmnand_soc *soc)
+>  	init_completion(&ctrl->done);
+>  	init_completion(&ctrl->dma_done);
+>  	nand_controller_init(&ctrl->controller);
+> +	ctrl->controller.ops = &brcmnand_controller_ops;
+>  	INIT_LIST_HEAD(&ctrl->host_list);
+>  
+>  	/* NAND register range */
