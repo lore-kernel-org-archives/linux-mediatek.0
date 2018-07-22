@@ -1,15 +1,12 @@
-From: Boris Brezillon <boris.brezillon@bootlin.com>
-Subject: Re: [PATCH v4 35/35] mtd: rawnand: allocate dynamically ONFI
- parameters during detection
-Date: Sun, 22 Jul 2018 12:35:33 +0200
-Message-ID: <20180722123533.4966bb36@bbrezillon>
-References: <20180720151527.16038-1-miquel.raynal@bootlin.com>
- <20180720151527.16038-36-miquel.raynal@bootlin.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [GIT PULL] dts32 commits for v4.19
+Date: Sun, 22 Jul 2018 22:47:46 +0200
+Message-ID: <2d918d15-d1d3-b4e0-7427-0b3baa56100a@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180720151527.16038-36-miquel.raynal@bootlin.com>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -19,227 +16,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, Mans Rullgard <mans@mansr.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Stefan Agner <stefan@agner.ch>, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mtd@lists.infradead.org, Kamal Dasu <kdasu.kdev@gmail.com>, Josh Wu <rainyfeeling@outlook.com>, Marc Gonzalez <marc.w.gonzalez@free.fr>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com, Sylvain Lemieux <slemieux.tyco@gmail.com>, Wenyou Yang <wenyou.yang@microchip.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Vladimir Zapolskiy <vz@mleia.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Han Xu <han.xu@nxp.com>, Xiaolei Li <xiaolei.li@mediatek.com>, linux-arm-kernel@lists.infradead.org, Richard
+To: arm-soc <arm@kernel.org>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, Ryder Lee <ryder.lee@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Frank Wunderlich <frank-w@public-files.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 20 Jul 2018 17:15:27 +0200
-Miquel Raynal <miquel.raynal@bootlin.com> wrote:
+Hi Olof,
+Hi Arnd,
 
-> Now that it is possible to do dynamic allocations during the
-> identification phase, convert the onfi_params structure (which is only
-> needed with ONFI compliant chips) into a pointer that will be allocated
-> only if needed.
-> 
-> Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
-> ---
->  drivers/mtd/nand/raw/nand_base.c    | 54 +++++++++++++++++++++++--------------
->  drivers/mtd/nand/raw/nand_micron.c  |  6 ++---
->  drivers/mtd/nand/raw/nand_timings.c | 12 ++++-----
->  include/linux/mtd/rawnand.h         |  6 ++---
->  4 files changed, 46 insertions(+), 32 deletions(-)
-> 
-> diff --git a/drivers/mtd/nand/raw/nand_base.c b/drivers/mtd/nand/raw/nand_base.c
-> index 8645f655e5b0..ed9e2f1578e6 100644
-> --- a/drivers/mtd/nand/raw/nand_base.c
-> +++ b/drivers/mtd/nand/raw/nand_base.c
-> @@ -5151,6 +5151,8 @@ static int nand_flash_detect_onfi(struct nand_chip *chip)
->  {
->  	struct mtd_info *mtd = nand_to_mtd(chip);
->  	struct nand_onfi_params *p;
-> +	struct onfi_params *onfi;
-> +	int onfi_version = 0;
->  	char id[4];
->  	int i, ret, val;
->  
-> @@ -5206,21 +5208,19 @@ static int nand_flash_detect_onfi(struct nand_chip *chip)
->  	/* Check version */
->  	val = le16_to_cpu(p->revision);
->  	if (val & ONFI_VERSION_2_3)
-> -		chip->parameters.onfi.version = 23;
-> +		onfi_version = 23;
->  	else if (val & ONFI_VERSION_2_2)
-> -		chip->parameters.onfi.version = 22;
-> +		onfi_version = 22;
->  	else if (val & ONFI_VERSION_2_1)
-> -		chip->parameters.onfi.version = 21;
-> +		onfi_version = 21;
->  	else if (val & ONFI_VERSION_2_0)
-> -		chip->parameters.onfi.version = 20;
-> +		onfi_version = 20;
->  	else if (val & ONFI_VERSION_1_0)
-> -		chip->parameters.onfi.version = 10;
-> +		onfi_version = 10;
->  
-> -	if (!chip->parameters.onfi.version) {
-> +	if (!onfi_version) {
->  		pr_info("unsupported ONFI version: %d\n", val);
->  		goto free_onfi_param_page;
-> -	} else {
-> -		ret = 1;
->  	}
->  
->  	sanitize_string(p->manufacturer, sizeof(p->manufacturer));
-> @@ -5257,7 +5257,7 @@ static int nand_flash_detect_onfi(struct nand_chip *chip)
->  	if (p->ecc_bits != 0xff) {
->  		chip->ecc_strength_ds = p->ecc_bits;
->  		chip->ecc_step_ds = 512;
-> -	} else if (chip->parameters.onfi.version >= 21 &&
-> +	} else if (onfi_version >= 21 &&
->  		(le16_to_cpu(p->features) & ONFI_FEATURE_EXT_PARAM_PAGE)) {
->  
->  		/*
-> @@ -5284,19 +5284,33 @@ static int nand_flash_detect_onfi(struct nand_chip *chip)
->  		bitmap_set(chip->parameters.set_feature_list,
->  			   ONFI_FEATURE_ADDR_TIMING_MODE, 1);
->  	}
-> -	chip->parameters.onfi.tPROG = le16_to_cpu(p->t_prog);
-> -	chip->parameters.onfi.tBERS = le16_to_cpu(p->t_bers);
-> -	chip->parameters.onfi.tR = le16_to_cpu(p->t_r);
-> -	chip->parameters.onfi.tCCS = le16_to_cpu(p->t_ccs);
-> -	chip->parameters.onfi.async_timing_mode =
-> -		le16_to_cpu(p->async_timing_mode);
-> -	chip->parameters.onfi.vendor_revision =
-> -		le16_to_cpu(p->vendor_revision);
-> -	memcpy(chip->parameters.onfi.vendor, p->vendor,
-> -	       sizeof(p->vendor));
->  
-> +	onfi = kzalloc(sizeof(*onfi), GFP_KERNEL);
-> +	if (!onfi) {
-> +		ret = -ENOMEM;
-> +		goto free_model;
-> +	}
-> +
-> +	onfi->version = onfi_version;
-> +	onfi->tPROG = le16_to_cpu(p->t_prog);
-> +	onfi->tBERS = le16_to_cpu(p->t_bers);
-> +	onfi->tR = le16_to_cpu(p->t_r);
-> +	onfi->tCCS = le16_to_cpu(p->t_ccs);
-> +	onfi->async_timing_mode = le16_to_cpu(p->async_timing_mode);
-> +	onfi->vendor_revision = le16_to_cpu(p->vendor_revision);
-> +	memcpy(onfi->vendor, p->vendor, sizeof(p->vendor));
-> +	chip->parameters.onfi = onfi;
-> +
-> +	/* Identification done, free the full ONFI parameter page and exit */
-> +	kfree(p);
-> +
-> +	return 1;
-> +
-> +free_model:
-> +	kfree(chip->parameters.model);
->  free_onfi_param_page:
->  	kfree(p);
-> +
->  	return ret;
->  }
->  
-> @@ -5693,7 +5707,6 @@ static int nand_detect(struct nand_chip *chip, struct nand_flash_dev *type)
->  		}
->  	}
->  
-> -	chip->parameters.onfi.version = 0;
->  	if (!type->name || !type->pagesize) {
->  		/* Check if the chip is ONFI compliant */
->  		ret = nand_flash_detect_onfi(chip);
-> @@ -6039,6 +6052,7 @@ static int nand_scan_ident(struct mtd_info *mtd, int maxchips,
->  static void nand_scan_ident_cleanup(struct nand_chip *chip)
->  {
->  	kfree(chip->parameters.model);
-> +	kfree(chip->parameters.onfi);
->  }
->  
->  static int nand_set_ecc_soft_ops(struct mtd_info *mtd)
-> diff --git a/drivers/mtd/nand/raw/nand_micron.c b/drivers/mtd/nand/raw/nand_micron.c
-> index 656947d91841..8466a1740b3b 100644
-> --- a/drivers/mtd/nand/raw/nand_micron.c
-> +++ b/drivers/mtd/nand/raw/nand_micron.c
-> @@ -88,9 +88,9 @@ static int micron_nand_setup_read_retry(struct mtd_info *mtd, int retry_mode)
->  static int micron_nand_onfi_init(struct nand_chip *chip)
->  {
->  	struct nand_parameters *p = &chip->parameters;
-> -	struct nand_onfi_vendor_micron *micron = (void *)p->onfi.vendor;
-> +	struct nand_onfi_vendor_micron *micron = (void *)p->onfi->vendor;
->  
-> -	if (chip->parameters.onfi.version && p->onfi.vendor_revision) {
-> +	if (p->onfi && p->onfi->vendor_revision) {
+Please take into account the following patches.
+Thanks a lot,
+Matthias
 
-I think p->onfi != NULL guarantees that p->onfi->vendor_revision != 0.
-if (p->onfi) should be enough.
+---
 
-Looks good otherwise.
+The following changes since commit ce397d215ccd07b8ae3f71db689aedb85d56ab40:
 
-Reviewed-by: Boris Brezillon <boris.brezillon@bootlin.com>
+  Linux 4.18-rc1 (2018-06-17 08:04:49 +0900)
 
->  		chip->read_retries = micron->read_retry_options;
->  		chip->setup_read_retry = micron_nand_setup_read_retry;
->  	}
-> @@ -382,7 +382,7 @@ static int micron_supports_on_die_ecc(struct nand_chip *chip)
->  	u8 id[5];
->  	int ret;
->  
-> -	if (!chip->parameters.onfi.version)
-> +	if (!chip->parameters.onfi)
->  		return MICRON_ON_DIE_UNSUPPORTED;
->  
->  	if (chip->bits_per_cell != 1)
-> diff --git a/drivers/mtd/nand/raw/nand_timings.c b/drivers/mtd/nand/raw/nand_timings.c
-> index 9bb599106a31..ebc7b5f76f77 100644
-> --- a/drivers/mtd/nand/raw/nand_timings.c
-> +++ b/drivers/mtd/nand/raw/nand_timings.c
-> @@ -294,6 +294,7 @@ int onfi_fill_data_interface(struct nand_chip *chip,
->  			     int timing_mode)
->  {
->  	struct nand_data_interface *iface = &chip->data_interface;
-> +	struct onfi_params *onfi = chip->parameters.onfi;
->  
->  	if (type != NAND_SDR_IFACE)
->  		return -EINVAL;
-> @@ -308,17 +309,16 @@ int onfi_fill_data_interface(struct nand_chip *chip,
->  	 * tPROG, tBERS, tR and tCCS.
->  	 * These information are part of the ONFI parameter page.
->  	 */
-> -	if (chip->parameters.onfi.version) {
-> -		struct nand_parameters *params = &chip->parameters;
-> +	if (onfi) {
->  		struct nand_sdr_timings *timings = &iface->timings.sdr;
->  
->  		/* microseconds -> picoseconds */
-> -		timings->tPROG_max = 1000000ULL * params->onfi.tPROG;
-> -		timings->tBERS_max = 1000000ULL * params->onfi.tBERS;
-> -		timings->tR_max = 1000000ULL * params->onfi.tR;
-> +		timings->tPROG_max = 1000000ULL * onfi->tPROG;
-> +		timings->tBERS_max = 1000000ULL * onfi->tBERS;
-> +		timings->tR_max = 1000000ULL * onfi->tR;
->  
->  		/* nanoseconds -> picoseconds */
-> -		timings->tCCS_min = 1000UL * params->onfi.tCCS;
-> +		timings->tCCS_min = 1000UL * onfi->tCCS;
->  	} else {
->  		struct nand_sdr_timings *timings = &iface->timings.sdr;
->  		/*
-> diff --git a/include/linux/mtd/rawnand.h b/include/linux/mtd/rawnand.h
-> index 5723d940a47d..8074cbd4e3fe 100644
-> --- a/include/linux/mtd/rawnand.h
-> +++ b/include/linux/mtd/rawnand.h
-> @@ -488,7 +488,7 @@ struct nand_parameters {
->  	DECLARE_BITMAP(get_feature_list, ONFI_FEATURE_NUMBER);
->  
->  	/* ONFI parameters */
-> -	struct onfi_params onfi;
-> +	struct onfi_params *onfi;
->  };
->  
->  /* The maximum expected count of bytes in the NAND ID sequence */
-> @@ -1618,10 +1618,10 @@ struct platform_nand_data {
->  /* return the supported asynchronous timing mode. */
->  static inline int onfi_get_async_timing_mode(struct nand_chip *chip)
->  {
-> -	if (!chip->parameters.onfi.version)
-> +	if (!chip->parameters.onfi)
->  		return ONFI_TIMING_MODE_UNKNOWN;
->  
-> -	return chip->parameters.onfi.async_timing_mode;
-> +	return chip->parameters.onfi->async_timing_mode;
->  }
->  
->  int onfi_fill_data_interface(struct nand_chip *chip,
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+v4.18-next/dts32
+
+for you to fetch changes up to 11a20c5601c5f0c685fa3a166348b7ffa830e123:
+
+  dt-bindings: arm: mediatek: cleanup MT7623N reference boards (2018-07-16
+15:57:40 +0200)
+
+----------------------------------------------------------------
+Frank Wunderlich (1):
+      arm: dts: mediatek: Fix pio-leds for Bananapi-R2
+
+Ryder Lee (2):
+      arm: dts: mt7623: cleanup MT7623N NAND dts file
+      dt-bindings: arm: mediatek: cleanup MT7623N reference boards
+
+Viresh Kumar (1):
+      arm: dts: mediatek: Add missing cooling device properties for CPUs
+
+ Documentation/devicetree/bindings/arm/mediatek.txt |  3 -
+ arch/arm/boot/dts/Makefile                         |  1 -
+ arch/arm/boot/dts/mt7623.dtsi                      |  3 +
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts      |  6 +-
+ arch/arm/boot/dts/mt7623n-rfb-nand.dts             | 73 ------------------
+ arch/arm/boot/dts/mt7623n-rfb.dtsi                 | 86 ----------------------
+ 6 files changed, 6 insertions(+), 166 deletions(-)
+ delete mode 100644 arch/arm/boot/dts/mt7623n-rfb-nand.dts
+ delete mode 100644 arch/arm/boot/dts/mt7623n-rfb.dtsi
