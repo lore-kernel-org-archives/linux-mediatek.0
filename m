@@ -1,53 +1,116 @@
-From: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH 04/11] mt76x0: usb files
-Date: Mon, 23 Jul 2018 12:07:30 +0300
-Message-ID: <87pnzexqul.fsf@codeaurora.org>
-References: <1530771142-4118-1-git-send-email-sgruszka@redhat.com>
-        <1530771142-4118-5-git-send-email-sgruszka@redhat.com>
-        <20180705150519.GB17524@localhost.localdomain>
-        <87va96tq1g.fsf@purkki.adurom.net>
-        <CAJ0CqmV_pPrKnRvcCrn-pUNGgJ9bDoFY+H2u0eokOayX7N08oA@mail.gmail.com>
+From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH v2 00/12] Add mt76x0 driver
+Date: Mon, 23 Jul 2018 11:16:25 +0200
+Message-ID: <CAJ0CqmXmQMBfz7GUe31LYrqD=ZF1bWGSdvD0DMgA7cTC=eyQpQ@mail.gmail.com>
+References: <1530875029-26274-1-git-send-email-sgruszka@redhat.com>
+ <1531205430.26214.8.camel@mtkswgap22> <20180710095222.GA18926@redhat.com>
+ <1531230864.26214.20.camel@mtkswgap22> <20180711080721.GA3871@localhost.localdomain>
+ <1532100994.8953.305.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAJ0CqmV_pPrKnRvcCrn-pUNGgJ9bDoFY+H2u0eokOayX7N08oA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-        (Lorenzo Bianconi's message of "Mon, 23 Jul 2018 10:57:02 +0200")
+In-Reply-To: <1532100994.8953.305.camel@mtkswgap22>
 Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> writes:
-
->>
->> Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> writes:
->>
->> > On Jul 05, Stanislaw Gruszka wrote:
->> >> Add usb files of mt76x0 driver.
->> >>
->> >> Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
->>
->> [...]
->>
->> >> +static int mt76x0_suspend(struct usb_interface *usb_intf, pm_message_t state)
->> >> +{
->> >> +    struct mt76x0_dev *dev = usb_get_intfdata(usb_intf);
->> >> +
->> >> +    mt76x0_cleanup(dev);
->> >
->> > Is it necessary to deallocate rx queue here in case of a system suspend?
->>
->> BTW it would really helpful to others if you could edit your quotes. It
->> takes some time to find your oneliner from a 450 line message.
 >
-> Ack sorry, I will be more verbose next time :).
+> On Wed, 2018-07-11 at 10:07 +0200, Lorenzo Bianconi wrote:
+> > > On Tue, 2018-07-10 at 11:52 +0200, Stanislaw Gruszka wrote:
+> > > > On Tue, Jul 10, 2018 at 02:50:30PM +0800, Sean Wang wrote:
+> > > > > > For full support mt7610.bin firmware blob is need, hopefully with
+> > > > > > the permission of Mediatek, the blob will be pushed into linux-firmware
+> > > > > > git tree.
+> > > > > >
+> > > > >
+> > > > > Hi, Stanislaw
+> > > > >
+> > > > > You can feel free to add mt7610.bin firmware blob to linux-firmware with
+> > > > > the license LICENCE.mediatek I added in [1].
+> > > > >
+> > > > >
+> > > > > [1]
+> > > > > http://lists.infradead.org/pipermail/linux-mediatek/2018-June/013759.html
+> > > >
+> > > > Thank you Sean!
+> > > >
+> > > > I guess there is no problem with similar submission for
+> > > > mt7662u.bin and mt7662u_rom_patch.bin needed for mt76x2u:
+> > > > https://marc.info/?l=linux-wireless&m=153045438821562&w=2
+> > > >
+> > >
+> >
+> > Thanks Sean,
+> >
+> > I will submit mt7662u.bin and mt7662u_rom_patch.bin with LICENCE.mediatek
+> > soon
+> >
+> > > Sure, there is no any problem for submitting mt7662u.bin and
+> > > mt7662u_rom_patch.bin if they are added with LICENCE.mediatek.
+> > >
+> > > Do you or Lorenzo have a plan to add MT7668u support to mt76?
+> > > MT7668 is a newer wifi device than MT7610u or MT7662u.
+> > >
+> >
+> > Cool, I am interested in adding MT7668u support to mt76 driver.
+> > Is the adapter available on the market?
+>
+> I'm not sure if it can be got from the market easily.
+>
+> I would like to say, mt7668 is based on new MTK wifi architecture. as
+> for mt7662/mt7612/mt7610, they all belong to legacy Ralink based design.
+> of course, we will never see any new chip based on Ralink based design
+> wifi in the future.
+>
+> There must be really lots of differences exist between two types of
+> devices, such as MCU firmware download, MCU control interface, tx/rx
+> path, even hardware register layout all changed and so on.
+>
+> I guess the hardware abstraction layer needs to be largely adjusted to
+> add the new device mt7668u into mt76 driver. And even I think it would
+> be easier for development and maintenance if we make a separate driver
+> and then pick up some pure software components from mt76 to reuse.
+>
 
-I think you misunderstood, I actually was asking to be less verbose :)
+the mt76 driver has a hw independent layer (mt76/mt76-usb modules) that
+implements data path (tx/rx side), mac80211 integration and calls hw dependent
+code for hw initialization (that approach allows to support mt76x2 and mt7603
+chipsets in the same driver).
+I guess it will be feasible (at least in theory) to integrate mt7668
+support in the
+mt76 driver (but I can't be more precise since I have no any reference code or
+hw to test)
 
-The oneliner was just fine. I was just suggesting that instead of
-sending a message with 400 lines trim the unnecessary quotation and just
-send a shorter 50 line message. That way you save a lot of time (and
-avoid frustration) for the people reading your mail.
+> Maybe it's the time I want to test your tree first with 7612u (?) or
+> mt7610u (?) , what is suggested? and see how big the gap between this
+> two type of devices and last write some code based on your tree to test
+> mt7668u
 
--- 
-Kalle Valo
+mt76x2u and mt76x0 are not merged yet, but I would suggest to start looking
+at mt76x2u since it is already integrated in the mt76 driver while
+mt76x0 is a standalone
+driver for the moment.
+
+@Stanislaw what do you think?
+
+Regards,
+Lorenzo
+
+>
+>         Sean
+>
+> > Regards,
+> > Lorenzo
+> >
+> > > > Regards
+> > > > Stanislaw
+> > > >
+> > > > _______________________________________________
+> > > > Linux-mediatek mailing list
+> > > > Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> > > > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> > >
+> > >
+>
+>
