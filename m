@@ -1,45 +1,27 @@
-From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH v2 net-next] net: mediatek: use dma_zalloc_coherent instead of allocator/memset
-Date: Mon, 23 Jul 2018 11:16:47 +0800
-Message-ID: <20180723031647.9820-1-yuehaibing@huawei.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH v2 net-next] net: mediatek: use dma_zalloc_coherent
+ instead of allocator/memset
+Date: Sun, 22 Jul 2018 20:52:19 -0700 (PDT)
+Message-ID: <20180722.205219.971856341700917090.davem@davemloft.net>
+References: <20180723031647.9820-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180723031647.9820-1-yuehaibing@huawei.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: davem@davemloft.net, nbd@openwrt.org, john@phrozen.org, sean.wang@mediatek.com, nelson.chang@mediatek.com
-Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, YueHaibing <yuehaibing@huawei.com>
+To: yuehaibing@huawei.com
+Cc: nbd@openwrt.org, john@phrozen.org, sean.wang@mediatek.com, nelson.chang@mediatek.com, linux-kernel@vger.kernel.org, netdev@vger.kernel.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Use dma_zalloc_coherent instead of dma_alloc_coherent
-followed by memset 0.
+From: YueHaibing <yuehaibing@huawei.com>
+Date: Mon, 23 Jul 2018 11:16:47 +0800
 
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
----
-v2: remove redundant __GFP_ZERO
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+> Use dma_zalloc_coherent instead of dma_alloc_coherent
+> followed by memset 0.
+> 
+> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+> ---
+> v2: remove redundant __GFP_ZERO
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index d8ebf0a..c30aea2 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1221,14 +1221,11 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- 	if (!ring->buf)
- 		goto no_tx_mem;
- 
--	ring->dma = dma_alloc_coherent(eth->dev,
--					  MTK_DMA_SIZE * sz,
--					  &ring->phys,
--					  GFP_ATOMIC | __GFP_ZERO);
-+	ring->dma = dma_zalloc_coherent(eth->dev, MTK_DMA_SIZE * sz,
-+					&ring->phys, GFP_ATOMIC);
- 	if (!ring->dma)
- 		goto no_tx_mem;
- 
--	memset(ring->dma, 0, MTK_DMA_SIZE * sz);
- 	for (i = 0; i < MTK_DMA_SIZE; i++) {
- 		int next = (i + 1) % MTK_DMA_SIZE;
- 		u32 next_ptr = ring->phys + next * sz;
--- 
-2.7.0
+Applied, thank you.
