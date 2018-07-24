@@ -1,46 +1,100 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v1 00/15] Add RDMA memory mode support for mediatek SOC MT2712
-Date: Tue, 24 Jul 2018 16:17:00 +0800
-Message-ID: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
+Subject: [PATCH v1 08/15] drm/mediatek: add RGB color format support for RDMA
+Date: Tue, 24 Jul 2018 16:17:08 +0800
+Message-ID: <1532420235-22268-9-git-send-email-stu.hsieh@mediatek.com>
+References: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
 Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Stu Hsieh <stu.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch series add RDMA memory mode support for mediatek SOC MT2712.
-MT2712 has three display data path, including three HW engine,
-two OVL and one RDMA.
+This patch add RGB color format support for RDMA,
+including RGB565, RGB888, RGBA8888 and ARGB8888.
 
-The RDMA used in third ddp and it need to be set memory mode,
-then RDMA could read data from memory and output to panel.
+Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 41 ++++++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
-Stu Hsieh (15):
-  drm/mediatek: add connection from RDMA0 to DPI1
-  drm/mediatek: add connection from RDMA0 to DSI1
-  drm/mediatek: add connection from RDMA1 to DSI0
-  drm/mediatek: add connection from RDMA2 to DSI0
-  drm/mediatek: add RDMA memory mode for crtc created
-  drm/mediatek: add memory mode for RDMA
-  drm/mediatek: add layer config to set RDMA for plane setting
-  drm/mediatek: add RGB color format support for RDMA
-  drm/mediatek: add YUYV/UYVY color format support for RDMA
-  drm/mediatek: add drm_device in RDMA for mamory mode to reaquest
-    buffer
-  drm/mediatek: add dummy buffer for RDMA memory mode
-  drm/mediatek: add layer number condition for RDMA to control plane
-  drm/mediatek: Update some variable name from ovl to comp
-  drm/mediatek: fixed the error value for add DSI1 in mutex
-  drm/mediatek: fixed connection from RDMA2 to DSI1
-
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c    | 122 +++++++++++++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  59 +++++++++-----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |   4 +-
- drivers/gpu/drm/mediatek/mtk_drm_ddp.c      |  20 ++++-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   2 +
- 5 files changed, 181 insertions(+), 26 deletions(-)
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+index 4ad0715c8341..5b7dadc21016 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+@@ -36,6 +36,8 @@
+ #define DISP_REG_RDMA_SIZE_CON_0		0x0014
+ #define DISP_REG_RDMA_SIZE_CON_1		0x0018
+ #define DISP_REG_RDMA_TARGET_LINE		0x001c
++#define DISP_RDMA_MEM_CON			0x0024
++#define MEM_MODE_INPUT_SWAP				BIT(8)
+ #define DISP_RDMA_MEM_SRC_PITCH			0x002c
+ #define DISP_RDMA_MEM_GMC_SETTING_0		0x0030
+ #define DISP_REG_RDMA_FIFO_CON			0x0040
+@@ -48,6 +50,11 @@
+ #define MATRIX_INT_MTX_SEL_DEFAULT		0xb00000
+ #define RDMA_MEM_GMC				0x40402020
+ 
++#define MEM_MODE_INPUT_FORMAT_RGB565		0x0
++#define MEM_MODE_INPUT_FORMAT_RGB888		(0x001 << 4)
++#define MEM_MODE_INPUT_FORMAT_RGBA8888		(0x002 << 4)
++#define MEM_MODE_INPUT_FORMAT_ARGB8888		(0x003 << 4)
++
+ struct mtk_disp_rdma_data {
+ 	unsigned int fifo_size;
+ };
+@@ -156,16 +163,50 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
+ 	writel(reg, comp->regs + DISP_REG_RDMA_FIFO_CON);
+ }
+ 
++static unsigned int rdma_fmt_convert(struct mtk_disp_rdma *rdma,
++				     unsigned int fmt)
++{
++	switch (fmt) {
++	default:
++	case DRM_FORMAT_RGB565:
++		return MEM_MODE_INPUT_FORMAT_RGB565;
++	case DRM_FORMAT_BGR565:
++		return MEM_MODE_INPUT_FORMAT_RGB565 | MEM_MODE_INPUT_SWAP;
++	case DRM_FORMAT_RGB888:
++		return MEM_MODE_INPUT_FORMAT_RGB888;
++	case DRM_FORMAT_BGR888:
++		return MEM_MODE_INPUT_FORMAT_RGB888 | MEM_MODE_INPUT_SWAP;
++	case DRM_FORMAT_RGBX8888:
++	case DRM_FORMAT_RGBA8888:
++		return MEM_MODE_INPUT_FORMAT_ARGB8888;
++	case DRM_FORMAT_BGRX8888:
++	case DRM_FORMAT_BGRA8888:
++		return MEM_MODE_INPUT_FORMAT_ARGB8888 | MEM_MODE_INPUT_SWAP;
++	case DRM_FORMAT_XRGB8888:
++	case DRM_FORMAT_ARGB8888:
++		return MEM_MODE_INPUT_FORMAT_RGBA8888;
++	case DRM_FORMAT_XBGR8888:
++	case DRM_FORMAT_ABGR8888:
++		return MEM_MODE_INPUT_FORMAT_RGBA8888 | MEM_MODE_INPUT_SWAP;
++	}
++}
++
+ static void mtk_rdma_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
+ 				  struct mtk_plane_state *state)
+ {
++	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
+ 	struct mtk_plane_pending_state *pending = &state->pending;
+ 	unsigned int addr = pending->addr;
+ 	unsigned int pitch = pending->pitch & 0xffff;
++	unsigned int fmt = pending->format;
++	unsigned int con;
+ 
+ 	if (pending->height == 0u || pending->width == 0u)
+ 		return;
+ 
++	con = rdma_fmt_convert(rdma, fmt);
++	writel_relaxed(con, comp->regs + DISP_RDMA_MEM_CON);
++
+ 	writel_relaxed(addr, comp->regs + DISP_RDMA_MEM_START_ADDR);
+ 	writel_relaxed(pitch, comp->regs + DISP_RDMA_MEM_SRC_PITCH);
+ 	writel(RDMA_MEM_GMC, comp->regs + DISP_RDMA_MEM_GMC_SETTING_0);
 -- 
 2.12.5
