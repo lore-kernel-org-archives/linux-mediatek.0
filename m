@@ -1,100 +1,101 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v1 08/15] drm/mediatek: add RGB color format support for RDMA
-Date: Tue, 24 Jul 2018 16:17:08 +0800
-Message-ID: <1532420235-22268-9-git-send-email-stu.hsieh@mediatek.com>
+Subject: [PATCH v1 12/15] drm/mediatek: add layer number condition for RDMA to
+ control plane
+Date: Tue, 24 Jul 2018 16:17:12 +0800
+Message-ID: <1532420235-22268-13-git-send-email-stu.hsieh@mediatek.com>
 References: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Stu Hsieh <stu.hsieh@mediatek.com>
+Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch add RGB color format support for RDMA,
-including RGB565, RGB888, RGBA8888 and ARGB8888.
-
-Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 41 ++++++++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index 4ad0715c8341..5b7dadc21016 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -36,6 +36,8 @@
- #define DISP_REG_RDMA_SIZE_CON_0		0x0014
- #define DISP_REG_RDMA_SIZE_CON_1		0x0018
- #define DISP_REG_RDMA_TARGET_LINE		0x001c
-+#define DISP_RDMA_MEM_CON			0x0024
-+#define MEM_MODE_INPUT_SWAP				BIT(8)
- #define DISP_RDMA_MEM_SRC_PITCH			0x002c
- #define DISP_RDMA_MEM_GMC_SETTING_0		0x0030
- #define DISP_REG_RDMA_FIFO_CON			0x0040
-@@ -48,6 +50,11 @@
- #define MATRIX_INT_MTX_SEL_DEFAULT		0xb00000
- #define RDMA_MEM_GMC				0x40402020
- 
-+#define MEM_MODE_INPUT_FORMAT_RGB565		0x0
-+#define MEM_MODE_INPUT_FORMAT_RGB888		(0x001 << 4)
-+#define MEM_MODE_INPUT_FORMAT_RGBA8888		(0x002 << 4)
-+#define MEM_MODE_INPUT_FORMAT_ARGB8888		(0x003 << 4)
-+
- struct mtk_disp_rdma_data {
- 	unsigned int fifo_size;
- };
-@@ -156,16 +163,50 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
- 	writel(reg, comp->regs + DISP_REG_RDMA_FIFO_CON);
- }
- 
-+static unsigned int rdma_fmt_convert(struct mtk_disp_rdma *rdma,
-+				     unsigned int fmt)
-+{
-+	switch (fmt) {
-+	default:
-+	case DRM_FORMAT_RGB565:
-+		return MEM_MODE_INPUT_FORMAT_RGB565;
-+	case DRM_FORMAT_BGR565:
-+		return MEM_MODE_INPUT_FORMAT_RGB565 | MEM_MODE_INPUT_SWAP;
-+	case DRM_FORMAT_RGB888:
-+		return MEM_MODE_INPUT_FORMAT_RGB888;
-+	case DRM_FORMAT_BGR888:
-+		return MEM_MODE_INPUT_FORMAT_RGB888 | MEM_MODE_INPUT_SWAP;
-+	case DRM_FORMAT_RGBX8888:
-+	case DRM_FORMAT_RGBA8888:
-+		return MEM_MODE_INPUT_FORMAT_ARGB8888;
-+	case DRM_FORMAT_BGRX8888:
-+	case DRM_FORMAT_BGRA8888:
-+		return MEM_MODE_INPUT_FORMAT_ARGB8888 | MEM_MODE_INPUT_SWAP;
-+	case DRM_FORMAT_XRGB8888:
-+	case DRM_FORMAT_ARGB8888:
-+		return MEM_MODE_INPUT_FORMAT_RGBA8888;
-+	case DRM_FORMAT_XBGR8888:
-+	case DRM_FORMAT_ABGR8888:
-+		return MEM_MODE_INPUT_FORMAT_RGBA8888 | MEM_MODE_INPUT_SWAP;
-+	}
-+}
-+
- static void mtk_rdma_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
- 				  struct mtk_plane_state *state)
- {
-+	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
- 	struct mtk_plane_pending_state *pending = &state->pending;
- 	unsigned int addr = pending->addr;
- 	unsigned int pitch = pending->pitch & 0xffff;
-+	unsigned int fmt = pending->format;
-+	unsigned int con;
- 
- 	if (pending->height == 0u || pending->width == 0u)
- 		return;
- 
-+	con = rdma_fmt_convert(rdma, fmt);
-+	writel_relaxed(con, comp->regs + DISP_RDMA_MEM_CON);
-+
- 	writel_relaxed(addr, comp->regs + DISP_RDMA_MEM_START_ADDR);
- 	writel_relaxed(pitch, comp->regs + DISP_RDMA_MEM_SRC_PITCH);
- 	writel(RDMA_MEM_GMC, comp->regs + DISP_RDMA_MEM_GMC_SETTING_0);
--- 
-2.12.5
+VGhpcyBwYXRjaCBhZGQgbGF5ZXIgbnVtYmVyIGNvbmRpdGlvbiBmb3IgUkRNQSB0byBjb250cm9s
+IHBsYW5lCgpXaGVuIHBsYW5lIGluaXQgaW4gY3J0YyBjcmVhdGUsCml0IHVzZSB0aGUgbnVtYmVy
+IG9mIE9WTCBsYXllciB0byBpbml0IHBsYW5lLgpUaGF0J3MgT1ZMIGNhbiByZWFkIDQgbWVtb3J5
+IGFkZHJlc3MuCgpGb3IgbXQyNzEyIHRoaXJkIGRkcCwgaXQgdXNlIFJETUEgdG8gcmVhZCBtZW1v
+cnkuClJETUEgY2FuIHJlYWQgMSBtZW1vcnkgYWRkcmVzcywgc28gaXQganVzdCBpbml0IG9uZSBw
+bGFuZS4KCkZvciBjb21wYXRpYmlsaXR5LCB0aGlzIHBhdGNoIHVzZSB0d28gZGVmaW5lIE9WTF9M
+QVlFUl9OUiBhbmQKUkRNQV9MQVlFUl9OUiB0byBkaXN0aW5ndXNoIHR3byBkaWZmZXJlbmNlIEhX
+IGVuZ2luZS4KClNpZ25lZC1vZmYtYnk6IFN0dSBIc2llaCA8c3R1LmhzaWVoQG1lZGlhdGVrLmNv
+bT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgfCAyNSArKysr
+KysrKysrKysrKysrKy0tLS0tLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9j
+cnRjLmggfCAgMiArKwogMiBmaWxlcyBjaGFuZ2VkLCAxOSBpbnNlcnRpb25zKCspLCA4IGRlbGV0
+aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Ny
+dGMuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYwppbmRleCA0YmY2
+MzZlNDY2ZjIuLjhhZDkwYzYyY2FhNiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fY3J0Yy5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
+X2NydGMuYwpAQCAtNDUsNyArNDUsOCBAQCBzdHJ1Y3QgbXRrX2RybV9jcnRjIHsKIAlib29sCQkJ
+CXBlbmRpbmdfbmVlZHNfdmJsYW5rOwogCXN0cnVjdCBkcm1fcGVuZGluZ192YmxhbmtfZXZlbnQJ
+KmV2ZW50OwogCi0Jc3RydWN0IGRybV9wbGFuZQkJcGxhbmVzW09WTF9MQVlFUl9OUl07CisJc3Ry
+dWN0IGRybV9wbGFuZQkJcGxhbmVzW01BWF9MQVlFUl9OUl07CisJdW5zaWduZWQgaW50CQkJbGF5
+ZXJfbnI7CiAJYm9vbAkJCQlwZW5kaW5nX3BsYW5lczsKIAogCXZvaWQgX19pb21lbQkJCSpjb25m
+aWdfcmVnczsKQEAgLTI4Niw3ICsyODcsNyBAQCBzdGF0aWMgaW50IG10a19jcnRjX2RkcF9od19p
+bml0KHN0cnVjdCBtdGtfZHJtX2NydGMgKm10a19jcnRjKQogCX0KIAogCS8qIEluaXRpYWxseSBj
+b25maWd1cmUgYWxsIHBsYW5lcyAqLwotCWZvciAoaSA9IDA7IGkgPCBPVkxfTEFZRVJfTlI7IGkr
+KykgeworCWZvciAoaSA9IDA7IGkgPCBtdGtfY3J0Yy0+bGF5ZXJfbnI7IGkrKykgewogCQlzdHJ1
+Y3QgZHJtX3BsYW5lICpwbGFuZSA9ICZtdGtfY3J0Yy0+cGxhbmVzW2ldOwogCQlzdHJ1Y3QgbXRr
+X3BsYW5lX3N0YXRlICpwbGFuZV9zdGF0ZTsKIApAQCAtMzUxLDcgKzM1Miw3IEBAIHN0YXRpYyB2
+b2lkIG10a19jcnRjX2RkcF9jb25maWcoc3RydWN0IGRybV9jcnRjICpjcnRjKQogCX0KIAogCWlm
+IChtdGtfY3J0Yy0+cGVuZGluZ19wbGFuZXMpIHsKLQkJZm9yIChpID0gMDsgaSA8IE9WTF9MQVlF
+Ul9OUjsgaSsrKSB7CisJCWZvciAoaSA9IDA7IGkgPCBtdGtfY3J0Yy0+bGF5ZXJfbnI7IGkrKykg
+ewogCQkJc3RydWN0IGRybV9wbGFuZSAqcGxhbmUgPSAmbXRrX2NydGMtPnBsYW5lc1tpXTsKIAkJ
+CXN0cnVjdCBtdGtfcGxhbmVfc3RhdGUgKnBsYW5lX3N0YXRlOwogCkBAIC00MDMsNyArNDA0LDcg
+QEAgc3RhdGljIHZvaWQgbXRrX2RybV9jcnRjX2F0b21pY19kaXNhYmxlKHN0cnVjdCBkcm1fY3J0
+YyAqY3J0YywKIAkJcmV0dXJuOwogCiAJLyogU2V0IGFsbCBwZW5kaW5nIHBsYW5lIHN0YXRlIHRv
+IGRpc2FibGVkICovCi0JZm9yIChpID0gMDsgaSA8IE9WTF9MQVlFUl9OUjsgaSsrKSB7CisJZm9y
+IChpID0gMDsgaSA8IG10a19jcnRjLT5sYXllcl9ucjsgaSsrKSB7CiAJCXN0cnVjdCBkcm1fcGxh
+bmUgKnBsYW5lID0gJm10a19jcnRjLT5wbGFuZXNbaV07CiAJCXN0cnVjdCBtdGtfcGxhbmVfc3Rh
+dGUgKnBsYW5lX3N0YXRlOwogCkBAIC00NTAsNyArNDUxLDcgQEAgc3RhdGljIHZvaWQgbXRrX2Ry
+bV9jcnRjX2F0b21pY19mbHVzaChzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCiAKIAlpZiAobXRrX2Ny
+dGMtPmV2ZW50KQogCQltdGtfY3J0Yy0+cGVuZGluZ19uZWVkc192YmxhbmsgPSB0cnVlOwotCWZv
+ciAoaSA9IDA7IGkgPCBPVkxfTEFZRVJfTlI7IGkrKykgeworCWZvciAoaSA9IDA7IGkgPCBtdGtf
+Y3J0Yy0+bGF5ZXJfbnI7IGkrKykgewogCQlzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSA9ICZtdGtf
+Y3J0Yy0+cGxhbmVzW2ldOwogCQlzdHJ1Y3QgbXRrX3BsYW5lX3N0YXRlICpwbGFuZV9zdGF0ZTsK
+IApAQCAtNTU5LDYgKzU2MCw3IEBAIGludCBtdGtfZHJtX2NydGNfY3JlYXRlKHN0cnVjdCBkcm1f
+ZGV2aWNlICpkcm1fZGV2LAogCWlmICghbXRrX2NydGMpCiAJCXJldHVybiAtRU5PTUVNOwogCisJ
+bXRrX2NydGMtPmxheWVyX25yID0gT1ZMX0xBWUVSX05SOwogCW10a19jcnRjLT5jb25maWdfcmVn
+cyA9IHByaXYtPmNvbmZpZ19yZWdzOwogCW10a19jcnRjLT5kZHBfY29tcF9uciA9IHBhdGhfbGVu
+OwogCW10a19jcnRjLT5kZHBfY29tcCA9IGRldm1fa21hbGxvY19hcnJheShkZXYsIG10a19jcnRj
+LT5kZHBfY29tcF9uciwKQEAgLTYwMSwxMiArNjAzLDEzIEBAIGludCBtdGtfZHJtX2NydGNfY3Jl
+YXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2LAogCQkJICAgICAgIGNvbXBfaWQgPT0gRERQ
+X0NPTVBPTkVOVF9SRE1BMikpIHsKIAkJCXJkbWFfbWVtb3J5X21vZGUgPSBjb21wLT5jb21wX21v
+ZGU7CiAJCQkqcmRtYV9tZW1vcnlfbW9kZSA9IHRydWU7CisJCQltdGtfY3J0Yy0+bGF5ZXJfbnIg
+PSBSRE1BX0xBWUVSX05SOwogCQl9CiAKIAkJbXRrX2NydGMtPmRkcF9jb21wW2ldID0gY29tcDsK
+IAl9CiAKLQlmb3IgKHpwb3MgPSAwOyB6cG9zIDwgT1ZMX0xBWUVSX05SOyB6cG9zKyspIHsKKwlm
+b3IgKHpwb3MgPSAwOyB6cG9zIDwgbXRrX2NydGMtPmxheWVyX25yOyB6cG9zKyspIHsKIAkJdHlw
+ZSA9ICh6cG9zID09IDApID8gRFJNX1BMQU5FX1RZUEVfUFJJTUFSWSA6CiAJCQkJKHpwb3MgPT0g
+MSkgPyBEUk1fUExBTkVfVFlQRV9DVVJTT1IgOgogCQkJCQkJRFJNX1BMQU5FX1RZUEVfT1ZFUkxB
+WTsKQEAgLTYxNiw4ICs2MTksMTQgQEAgaW50IG10a19kcm1fY3J0Y19jcmVhdGUoc3RydWN0IGRy
+bV9kZXZpY2UgKmRybV9kZXYsCiAJCQlnb3RvIHVucHJlcGFyZTsKIAl9CiAKLQlyZXQgPSBtdGtf
+ZHJtX2NydGNfaW5pdChkcm1fZGV2LCBtdGtfY3J0YywgJm10a19jcnRjLT5wbGFuZXNbMF0sCi0J
+CQkJJm10a19jcnRjLT5wbGFuZXNbMV0sIHBpcGUpOworCWlmIChtdGtfY3J0Yy0+bGF5ZXJfbnIg
+PT0gMSkgeworCQlyZXQgPSBtdGtfZHJtX2NydGNfaW5pdChkcm1fZGV2LCBtdGtfY3J0YywgJm10
+a19jcnRjLT5wbGFuZXNbMF0sCisJCQkJCU5VTEwsIHBpcGUpOworCX0gZWxzZSB7CisJCXJldCA9
+IG10a19kcm1fY3J0Y19pbml0KGRybV9kZXYsIG10a19jcnRjLCAmbXRrX2NydGMtPnBsYW5lc1sw
+XSwKKwkJCQkJJm10a19jcnRjLT5wbGFuZXNbMV0sIHBpcGUpOworCX0KKwogCWlmIChyZXQgPCAw
+KQogCQlnb3RvIHVucHJlcGFyZTsKIAlkcm1fbW9kZV9jcnRjX3NldF9nYW1tYV9zaXplKCZtdGtf
+Y3J0Yy0+YmFzZSwgTVRLX0xVVF9TSVpFKTsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHJtX2NydGMuaCBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
+X2NydGMuaAppbmRleCA5ZDk0MTBjNjdhZTkuLmI0NGZlZmFkZjE0YSAxMDA2NDQKLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5oCisrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHJtX2NydGMuaApAQCAtMTgsNyArMTgsOSBAQAogI2luY2x1ZGUgIm10
+a19kcm1fZGRwX2NvbXAuaCIKICNpbmNsdWRlICJtdGtfZHJtX3BsYW5lLmgiCiAKKyNkZWZpbmUg
+TUFYX0xBWUVSX05SCTQKICNkZWZpbmUgT1ZMX0xBWUVSX05SCTQKKyNkZWZpbmUgUkRNQV9MQVlF
+Ul9OUgkxCiAjZGVmaW5lIE1US19MVVRfU0laRQk1MTIKICNkZWZpbmUgTVRLX01BWF9CUEMJMTAK
+ICNkZWZpbmUgTVRLX01JTl9CUEMJMwotLSAKMi4xMi41CgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
