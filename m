@@ -1,67 +1,47 @@
-From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH v2 00/12] Add mt76x0 driver
-Date: Mon, 23 Jul 2018 11:44:05 +0200
-Message-ID: <20180723094404.GC26486@redhat.com>
-References: <1530875029-26274-1-git-send-email-sgruszka@redhat.com>
- <1531205430.26214.8.camel@mtkswgap22>
- <20180710095222.GA18926@redhat.com>
- <1531230864.26214.20.camel@mtkswgap22>
- <20180711080721.GA3871@localhost.localdomain>
- <1532100994.8953.305.camel@mtkswgap22>
- <CAJ0CqmXmQMBfz7GUe31LYrqD=ZF1bWGSdvD0DMgA7cTC=eyQpQ@mail.gmail.com>
+From: Stu Hsieh <stu.hsieh@mediatek.com>
+Subject: [PATCH v1 04/15] drm/mediatek: add connection from RDMA2 to DSI0
+Date: Tue, 24 Jul 2018 16:17:04 +0800
+Message-ID: <1532420235-22268-5-git-send-email-stu.hsieh@mediatek.com>
+References: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAJ0CqmXmQMBfz7GUe31LYrqD=ZF1bWGSdvD0DMgA7cTC=eyQpQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi
-
-On Mon, Jul 23, 2018 at 11:16:25AM +0200, Lorenzo Bianconi wrote:
-> > I'm not sure if it can be got from the market easily.
-> >
-> > I would like to say, mt7668 is based on new MTK wifi architecture. as
-> > for mt7662/mt7612/mt7610, they all belong to legacy Ralink based design.
-> > of course, we will never see any new chip based on Ralink based design
-> > wifi in the future.
-> >
-> > There must be really lots of differences exist between two types of
-> > devices, such as MCU firmware download, MCU control interface, tx/rx
-> > path, even hardware register layout all changed and so on.
-> >
-> > I guess the hardware abstraction layer needs to be largely adjusted to
-> > add the new device mt7668u into mt76 driver. And even I think it would
-> > be easier for development and maintenance if we make a separate driver
-> > and then pick up some pure software components from mt76 to reuse.
-> >
-> 
-> the mt76 driver has a hw independent layer (mt76/mt76-usb modules) that
-> implements data path (tx/rx side), mac80211 integration and calls hw dependent
-> code for hw initialization (that approach allows to support mt76x2 and mt7603
-> chipsets in the same driver).
-> I guess it will be feasible (at least in theory) to integrate mt7668
-> support in the
-> mt76 driver (but I can't be more precise since I have no any reference code or
-> hw to test)
-> 
-> > Maybe it's the time I want to test your tree first with 7612u (?) or
-> > mt7610u (?) , what is suggested? and see how big the gap between this
-> > two type of devices and last write some code based on your tree to test
-> > mt7668u
-> 
-> mt76x2u and mt76x0 are not merged yet, but I would suggest to start looking
-> at mt76x2u since it is already integrated in the mt76 driver while
-> mt76x0 is a standalone
-> driver for the moment.
-> 
-> @Stanislaw what do you think?
-
-I think checking common mt76-usb layer for possibility to add
-support for new MT7688U chip on top of it is reasonable :-)
-
-Thanks
-Stanislaw
+VGhpcyBwYXRjaCBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEyIHRvIERTSTAKClNpZ25lZC1vZmYt
+Ynk6IFN0dSBIc2llaCA8c3R1LmhzaWVoQG1lZGlhdGVrLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyB8IDQgKysrKwogMSBmaWxlIGNoYW5nZWQsIDQgaW5z
+ZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
+X2RkcC5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKaW5kZXggMzEx
+ODlmYWQ4ZDRlLi4zMjM5ZjIyNzg1ZmQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHJtX2RkcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
+X2RkcC5jCkBAIC0xMjUsNiArMTI1LDcgQEAKICNkZWZpbmUgRFBJMV9TRUxfSU5fUkRNQTEJCSgw
+eDEgPDwgOCkKICNkZWZpbmUgRFBJMV9TRUxfSU5fUkRNQTIJCSgweDMgPDwgOCkKICNkZWZpbmUg
+RFNJMF9TRUxfSU5fUkRNQTEJCTB4MQorI2RlZmluZSBEU0kwX1NFTF9JTl9SRE1BMgkJMHg0CiAj
+ZGVmaW5lIERTSTFfU0VMX0lOX1JETUExCQkweDEKICNkZWZpbmUgRFNJMV9TRUxfSU5fUkRNQTIJ
+CTB4NAogI2RlZmluZSBEU0kyX1NFTF9JTl9SRE1BMQkJKDB4MSA8PCAxNikKQEAgLTMwOSw2ICsz
+MTAsOSBAQCBzdGF0aWMgdW5zaWduZWQgaW50IG10a19kZHBfc2VsX2luKGVudW0gbXRrX2RkcF9j
+b21wX2lkIGN1ciwKIAl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEyICYmIG5l
+eHQgPT0gRERQX0NPTVBPTkVOVF9EUEkxKSB7CiAJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RQ
+SV9TRUxfSU47CiAJCXZhbHVlID0gRFBJMV9TRUxfSU5fUkRNQTI7CisJfSBlbHNlIGlmIChjdXIg
+PT0gRERQX0NPTVBPTkVOVF9SRE1BMiAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJMCkgewor
+CQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19EU0lFX1NFTF9JTjsKKwkJdmFsdWUgPSBEU0kwX1NF
+TF9JTl9SRE1BMjsKIAl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEyICYmIG5l
+eHQgPT0gRERQX0NPTVBPTkVOVF9EU0kxKSB7CiAJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RT
+SUVfU0VMX0lOOwogCQl2YWx1ZSA9IERTSTFfU0VMX0lOX1JETUEyOwotLSAKMi4xMi41CgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
