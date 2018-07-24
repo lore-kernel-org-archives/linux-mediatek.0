@@ -1,70 +1,120 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v1 06/15] drm/mediatek: add memory mode for RDMA
-Date: Tue, 24 Jul 2018 16:17:06 +0800
-Message-ID: <1532420235-22268-7-git-send-email-stu.hsieh@mediatek.com>
+Subject: [PATCH v1 11/15] drm/mediatek: add dummy buffer for RDMA memory mode
+Date: Tue, 24 Jul 2018 16:17:11 +0800
+Message-ID: <1532420235-22268-12-git-send-email-stu.hsieh@mediatek.com>
 References: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Stu Hsieh <stu.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhpcyBwYXRjaCBhZGQgbWVtb3J5IG1vZGUgZm9yIFJETUEKCklmIHVzZSBSRE1BIHRvIHJlYWQg
-ZGF0YSBmcm9tIG1lbW9yeSwgaXQgc2hvdWxkIHNldCBtZW1vcnkgbW9kZSB0byBSRE1BCgpTaWdu
-ZWQtb2ZmLWJ5OiBTdHUgSHNpZWggPHN0dS5oc2llaEBtZWRpYXRlay5jb20+Ci0tLQogZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyB8IDE2ICsrKysrKysrKysrKysrKy0K
-IDEgZmlsZSBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyBiL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMKaW5kZXggNjA4NTFiYjJkZDYzLi43OGEx
-YTAwNTdhZmYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9y
-ZG1hLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwpAQCAt
-MzEsNiArMzEsOCBAQAogI2RlZmluZSBSRE1BX1JFR19VUERBVEVfSU5UCQkJCUJJVCgwKQogI2Rl
-ZmluZSBESVNQX1JFR19SRE1BX0dMT0JBTF9DT04JCTB4MDAxMAogI2RlZmluZSBSRE1BX0VOR0lO
-RV9FTgkJCQkJQklUKDApCisjZGVmaW5lIFJETUFfU09GVF9SRVNFVAkJCQkJQklUKDQpCisjZGVm
-aW5lIFJETUFfTU9ERV9NRU1PUlkJCQkJQklUKDEpCiAjZGVmaW5lIERJU1BfUkVHX1JETUFfU0la
-RV9DT05fMAkJMHgwMDE0CiAjZGVmaW5lIERJU1BfUkVHX1JETUFfU0laRV9DT05fMQkJMHgwMDE4
-CiAjZGVmaW5lIERJU1BfUkVHX1JETUFfVEFSR0VUX0xJTkUJCTB4MDAxYwpAQCAtNDAsNiArNDIs
-OCBAQAogI2RlZmluZSBSRE1BX09VVFBVVF9WQUxJRF9GSUZPX1RIUkVTSE9MRChieXRlcykJCSgo
-Ynl0ZXMpIC8gMTYpCiAjZGVmaW5lIFJETUFfRklGT19TSVpFKHJkbWEpCQkJKChyZG1hKS0+ZGF0
-YS0+Zmlmb19zaXplKQogCisjZGVmaW5lIE1BVFJJWF9JTlRfTVRYX1NFTF9ERUZBVUxUCQkweGIw
-MDAwMAorCiBzdHJ1Y3QgbXRrX2Rpc3BfcmRtYV9kYXRhIHsKIAl1bnNpZ25lZCBpbnQgZmlmb19z
-aXplOwogfTsKQEAgLTUzLDYgKzU3LDcgQEAgc3RydWN0IG10a19kaXNwX3JkbWEgewogCXN0cnVj
-dCBtdGtfZGRwX2NvbXAJCWRkcF9jb21wOwogCXN0cnVjdCBkcm1fY3J0YwkJCSpjcnRjOwogCWNv
-bnN0IHN0cnVjdCBtdGtfZGlzcF9yZG1hX2RhdGEJKmRhdGE7CisJYm9vbCByZG1hX21lbW9yeV9t
-b2RlOwogfTsKIAogc3RhdGljIGlubGluZSBzdHJ1Y3QgbXRrX2Rpc3BfcmRtYSAqY29tcF90b19y
-ZG1hKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXApCkBAIC0xMTEsNyArMTE2LDggQEAgc3RhdGlj
-IHZvaWQgbXRrX3JkbWFfc3RhcnQoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCkKIAogc3RhdGlj
-IHZvaWQgbXRrX3JkbWFfc3RvcChzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wKQogewotCXJkbWFf
-dXBkYXRlX2JpdHMoY29tcCwgRElTUF9SRUdfUkRNQV9HTE9CQUxfQ09OLCBSRE1BX0VOR0lORV9F
-TiwgMCk7CisJd3JpdGVsKFJETUFfU09GVF9SRVNFVCwgY29tcC0+cmVncyArIERJU1BfUkVHX1JE
-TUFfR0xPQkFMX0NPTik7CisJd3JpdGVsKDAsIGNvbXAtPnJlZ3MgKyBESVNQX1JFR19SRE1BX0dM
-T0JBTF9DT04pOwogfQogCiBzdGF0aWMgdm9pZCBtdGtfcmRtYV9jb25maWcoc3RydWN0IG10a19k
-ZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IHdpZHRoLApAQCAtMTIxLDEwICsxMjcsMTggQEAg
-c3RhdGljIHZvaWQgbXRrX3JkbWFfY29uZmlnKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAsIHVu
-c2lnbmVkIGludCB3aWR0aCwKIAl1bnNpZ25lZCBpbnQgdGhyZXNob2xkOwogCXVuc2lnbmVkIGlu
-dCByZWc7CiAJc3RydWN0IG10a19kaXNwX3JkbWEgKnJkbWEgPSBjb21wX3RvX3JkbWEoY29tcCk7
-CisJYm9vbCAqcmRtYV9tZW1vcnlfbW9kZSA9IGNvbXAtPmNvbXBfbW9kZTsKIAogCXJkbWFfdXBk
-YXRlX2JpdHMoY29tcCwgRElTUF9SRUdfUkRNQV9TSVpFX0NPTl8wLCAweGZmZiwgd2lkdGgpOwog
-CXJkbWFfdXBkYXRlX2JpdHMoY29tcCwgRElTUF9SRUdfUkRNQV9TSVpFX0NPTl8xLCAweGZmZmZm
-LCBoZWlnaHQpOwogCisJaWYgKCpyZG1hX21lbW9yeV9tb2RlID09IHRydWUpIHsKKwkJcmRtYV91
-cGRhdGVfYml0cyhjb21wLCBESVNQX1JFR19SRE1BX1NJWkVfQ09OXzAsIDB4ZmYwMDAwLAorCQkJ
-CSBNQVRSSVhfSU5UX01UWF9TRUxfREVGQVVMVCk7CisJCXJkbWFfdXBkYXRlX2JpdHMoY29tcCwg
-RElTUF9SRUdfUkRNQV9HTE9CQUxfQ09OLAorCQkJCSBSRE1BX01PREVfTUVNT1JZLCBSRE1BX01P
-REVfTUVNT1JZKTsKKwl9CisKIAkvKgogCSAqIEVuYWJsZSBGSUZPIHVuZGVyZmxvdyBzaW5jZSBE
-U0kgYW5kIERQSSBjYW4ndCBiZSBibG9ja2VkLgogCSAqIEtlZXAgdGhlIEZJRk8gcHNldWRvIHNp
-emUgcmVzZXQgZGVmYXVsdCBvZiA4IEtpQi4gU2V0IHRoZQotLSAKMi4xMi41CgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
-a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+This patch add dummy buffer for RDMA memory mode
+
+When display power on, the drm frame work would modeset and
+set up the display HW.
+
+In this time, the RDMA would start wroking and read the data from memory.
+But, user space not send the data to drm yet.
+
+For this case, if user space not send data to display hw(RDMA) yet,
+RDMA would read the wrong address to show garbage.
+
+Therefore, we create dummy buffer for RDMA reading memory
+when userspace not send the data yet.
+
+Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c    | 23 +++++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  1 +
+ 2 files changed, 24 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+index 8d41f5cd485b..e28f368728cd 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+@@ -20,6 +20,7 @@
+ 
+ #include "mtk_drm_crtc.h"
+ #include "mtk_drm_ddp_comp.h"
++#include "mtk_drm_gem.h"
+ 
+ #define DISP_REG_RDMA_INT_ENABLE		0x0000
+ #define DISP_REG_RDMA_INT_STATUS		0x0004
+@@ -59,6 +60,9 @@
+ #define MEM_MODE_INPUT_FORMAT_UYVY		(0x004 << 4)
+ #define MEM_MODE_INPUT_FORMAT_YUYV		(0x005 << 4)
+ 
++#define RDMA_DUMMY_BUFFER_SIZE(h, v)		((h) * (v) * 4)
++#define RDMA_DUMMY_BUFFER_PITCH(h)		((h) * 4)
++
+ struct mtk_disp_rdma_data {
+ 	unsigned int fifo_size;
+ };
+@@ -74,6 +78,7 @@ struct mtk_disp_rdma {
+ 	const struct mtk_disp_rdma_data	*data;
+ 	struct drm_device *drm_dev;
+ 	bool rdma_memory_mode;
++	unsigned int dummy_size;
+ };
+ 
+ static inline struct mtk_disp_rdma *comp_to_rdma(struct mtk_ddp_comp *comp)
+@@ -126,14 +131,29 @@ static void mtk_rdma_disable_vblank(struct mtk_ddp_comp *comp)
+ 
+ static void mtk_rdma_start(struct mtk_ddp_comp *comp)
+ {
++	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
++	bool *rdma_memory_mode = comp->comp_mode;
++
++	if (*rdma_memory_mode == true) {
++		comp->mtk_gem = mtk_drm_gem_create(rdma->drm_dev,
++						   rdma->dummy_size, false);
++		writel(comp->mtk_gem->dma_addr & 0xFFFFFFFF,
++		       comp->regs + DISP_RDMA_MEM_START_ADDR);
++	}
++
+ 	rdma_update_bits(comp, DISP_REG_RDMA_GLOBAL_CON, RDMA_ENGINE_EN,
+ 			 RDMA_ENGINE_EN);
+ }
+ 
+ static void mtk_rdma_stop(struct mtk_ddp_comp *comp)
+ {
++	bool *rdma_memory_mode = comp->comp_mode;
++
+ 	writel(RDMA_SOFT_RESET, comp->regs + DISP_REG_RDMA_GLOBAL_CON);
+ 	writel(0, comp->regs + DISP_REG_RDMA_GLOBAL_CON);
++
++	if (*rdma_memory_mode == true)
++		mtk_drm_gem_free_object(&comp->mtk_gem->base);
+ }
+ 
+ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
+@@ -149,8 +169,11 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
+ 	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_1, 0xfffff, height);
+ 
+ 	if (*rdma_memory_mode == true) {
++		rdma->dummy_size = RDMA_DUMMY_BUFFER_SIZE(width, height);
+ 		rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0, 0xff0000,
+ 				 MATRIX_INT_MTX_SEL_DEFAULT);
++		writel(RDMA_DUMMY_BUFFER_PITCH(width),
++		       comp->regs + DISP_RDMA_MEM_SRC_PITCH);
+ 		rdma_update_bits(comp, DISP_REG_RDMA_GLOBAL_CON,
+ 				 RDMA_MODE_MEMORY, RDMA_MODE_MEMORY);
+ 	}
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index a1988ce15141..6dbb83144a74 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -92,6 +92,7 @@ struct mtk_ddp_comp {
+ 	int irq;
+ 	struct device *larb_dev;
+ 	enum mtk_ddp_comp_id id;
++	struct mtk_drm_gem_obj *mtk_gem;
+ 	const struct mtk_ddp_comp_funcs *funcs;
+ 	void *comp_mode;
+ };
+-- 
+2.12.5
