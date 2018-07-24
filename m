@@ -1,95 +1,70 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v1 05/15] drm/mediatek: add RDMA memory mode for crtc created
-Date: Tue, 24 Jul 2018 16:17:05 +0800
-Message-ID: <1532420235-22268-6-git-send-email-stu.hsieh@mediatek.com>
+Subject: [PATCH v1 06/15] drm/mediatek: add memory mode for RDMA
+Date: Tue, 24 Jul 2018 16:17:06 +0800
+Message-ID: <1532420235-22268-7-git-send-email-stu.hsieh@mediatek.com>
 References: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Stu Hsieh <stu.hsieh@mediatek.com>
+Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch add RDMA memory mode for crtc created
-
-For mt2712, the third ddp use RDMA engine to read data from dram.
-
-Therefore, when crtc created, crtc need to decide using OVL or RDMA
-by ddp to read data from dram.
-
-If this ddp use RDMA, the crtc should set this RDMA which in the crtc
-using memory mode.
-
-Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c    | 5 ++++-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 8 ++++++++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 1 +
- 3 files changed, 13 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index 585943c81e1f..60851bb2dd63 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -150,6 +150,7 @@ static int mtk_disp_rdma_bind(struct device *dev, struct device *master,
- 			      void *data)
- {
- 	struct mtk_disp_rdma *priv = dev_get_drvdata(dev);
-+	struct mtk_ddp_comp *comp = &priv->ddp_comp;
- 	struct drm_device *drm_dev = data;
- 	int ret;
- 
-@@ -160,8 +161,10 @@ static int mtk_disp_rdma_bind(struct device *dev, struct device *master,
- 		return ret;
- 	}
- 
--	return 0;
- 
-+	comp->comp_mode = &priv->rdma_memory_mode;
-+
-+	return 0;
- }
- 
- static void mtk_disp_rdma_unbind(struct device *dev, struct device *master,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 2d6aa150a9ff..4bf636e466f2 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -578,6 +578,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 		enum mtk_ddp_comp_id comp_id = path[i];
- 		struct mtk_ddp_comp *comp;
- 		struct device_node *node;
-+		bool *rdma_memory_mode;
- 
- 		node = priv->comp_node[comp_id];
- 		comp = priv->ddp_comp[comp_id];
-@@ -595,6 +596,13 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 			goto unprepare;
- 		}
- 
-+		if (i == 0 && (comp_id == DDP_COMPONENT_RDMA0 ||
-+			       comp_id == DDP_COMPONENT_RDMA1 ||
-+			       comp_id == DDP_COMPONENT_RDMA2)) {
-+			rdma_memory_mode = comp->comp_mode;
-+			*rdma_memory_mode = true;
-+		}
-+
- 		mtk_crtc->ddp_comp[i] = comp;
- 	}
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index 7413ffeb3c9d..a1988ce15141 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -93,6 +93,7 @@ struct mtk_ddp_comp {
- 	struct device *larb_dev;
- 	enum mtk_ddp_comp_id id;
- 	const struct mtk_ddp_comp_funcs *funcs;
-+	void *comp_mode;
- };
- 
- static inline void mtk_ddp_comp_config(struct mtk_ddp_comp *comp,
--- 
-2.12.5
+VGhpcyBwYXRjaCBhZGQgbWVtb3J5IG1vZGUgZm9yIFJETUEKCklmIHVzZSBSRE1BIHRvIHJlYWQg
+ZGF0YSBmcm9tIG1lbW9yeSwgaXQgc2hvdWxkIHNldCBtZW1vcnkgbW9kZSB0byBSRE1BCgpTaWdu
+ZWQtb2ZmLWJ5OiBTdHUgSHNpZWggPHN0dS5oc2llaEBtZWRpYXRlay5jb20+Ci0tLQogZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyB8IDE2ICsrKysrKysrKysrKysrKy0K
+IDEgZmlsZSBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyBiL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMKaW5kZXggNjA4NTFiYjJkZDYzLi43OGEx
+YTAwNTdhZmYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9y
+ZG1hLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwpAQCAt
+MzEsNiArMzEsOCBAQAogI2RlZmluZSBSRE1BX1JFR19VUERBVEVfSU5UCQkJCUJJVCgwKQogI2Rl
+ZmluZSBESVNQX1JFR19SRE1BX0dMT0JBTF9DT04JCTB4MDAxMAogI2RlZmluZSBSRE1BX0VOR0lO
+RV9FTgkJCQkJQklUKDApCisjZGVmaW5lIFJETUFfU09GVF9SRVNFVAkJCQkJQklUKDQpCisjZGVm
+aW5lIFJETUFfTU9ERV9NRU1PUlkJCQkJQklUKDEpCiAjZGVmaW5lIERJU1BfUkVHX1JETUFfU0la
+RV9DT05fMAkJMHgwMDE0CiAjZGVmaW5lIERJU1BfUkVHX1JETUFfU0laRV9DT05fMQkJMHgwMDE4
+CiAjZGVmaW5lIERJU1BfUkVHX1JETUFfVEFSR0VUX0xJTkUJCTB4MDAxYwpAQCAtNDAsNiArNDIs
+OCBAQAogI2RlZmluZSBSRE1BX09VVFBVVF9WQUxJRF9GSUZPX1RIUkVTSE9MRChieXRlcykJCSgo
+Ynl0ZXMpIC8gMTYpCiAjZGVmaW5lIFJETUFfRklGT19TSVpFKHJkbWEpCQkJKChyZG1hKS0+ZGF0
+YS0+Zmlmb19zaXplKQogCisjZGVmaW5lIE1BVFJJWF9JTlRfTVRYX1NFTF9ERUZBVUxUCQkweGIw
+MDAwMAorCiBzdHJ1Y3QgbXRrX2Rpc3BfcmRtYV9kYXRhIHsKIAl1bnNpZ25lZCBpbnQgZmlmb19z
+aXplOwogfTsKQEAgLTUzLDYgKzU3LDcgQEAgc3RydWN0IG10a19kaXNwX3JkbWEgewogCXN0cnVj
+dCBtdGtfZGRwX2NvbXAJCWRkcF9jb21wOwogCXN0cnVjdCBkcm1fY3J0YwkJCSpjcnRjOwogCWNv
+bnN0IHN0cnVjdCBtdGtfZGlzcF9yZG1hX2RhdGEJKmRhdGE7CisJYm9vbCByZG1hX21lbW9yeV9t
+b2RlOwogfTsKIAogc3RhdGljIGlubGluZSBzdHJ1Y3QgbXRrX2Rpc3BfcmRtYSAqY29tcF90b19y
+ZG1hKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXApCkBAIC0xMTEsNyArMTE2LDggQEAgc3RhdGlj
+IHZvaWQgbXRrX3JkbWFfc3RhcnQoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCkKIAogc3RhdGlj
+IHZvaWQgbXRrX3JkbWFfc3RvcChzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wKQogewotCXJkbWFf
+dXBkYXRlX2JpdHMoY29tcCwgRElTUF9SRUdfUkRNQV9HTE9CQUxfQ09OLCBSRE1BX0VOR0lORV9F
+TiwgMCk7CisJd3JpdGVsKFJETUFfU09GVF9SRVNFVCwgY29tcC0+cmVncyArIERJU1BfUkVHX1JE
+TUFfR0xPQkFMX0NPTik7CisJd3JpdGVsKDAsIGNvbXAtPnJlZ3MgKyBESVNQX1JFR19SRE1BX0dM
+T0JBTF9DT04pOwogfQogCiBzdGF0aWMgdm9pZCBtdGtfcmRtYV9jb25maWcoc3RydWN0IG10a19k
+ZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IHdpZHRoLApAQCAtMTIxLDEwICsxMjcsMTggQEAg
+c3RhdGljIHZvaWQgbXRrX3JkbWFfY29uZmlnKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAsIHVu
+c2lnbmVkIGludCB3aWR0aCwKIAl1bnNpZ25lZCBpbnQgdGhyZXNob2xkOwogCXVuc2lnbmVkIGlu
+dCByZWc7CiAJc3RydWN0IG10a19kaXNwX3JkbWEgKnJkbWEgPSBjb21wX3RvX3JkbWEoY29tcCk7
+CisJYm9vbCAqcmRtYV9tZW1vcnlfbW9kZSA9IGNvbXAtPmNvbXBfbW9kZTsKIAogCXJkbWFfdXBk
+YXRlX2JpdHMoY29tcCwgRElTUF9SRUdfUkRNQV9TSVpFX0NPTl8wLCAweGZmZiwgd2lkdGgpOwog
+CXJkbWFfdXBkYXRlX2JpdHMoY29tcCwgRElTUF9SRUdfUkRNQV9TSVpFX0NPTl8xLCAweGZmZmZm
+LCBoZWlnaHQpOwogCisJaWYgKCpyZG1hX21lbW9yeV9tb2RlID09IHRydWUpIHsKKwkJcmRtYV91
+cGRhdGVfYml0cyhjb21wLCBESVNQX1JFR19SRE1BX1NJWkVfQ09OXzAsIDB4ZmYwMDAwLAorCQkJ
+CSBNQVRSSVhfSU5UX01UWF9TRUxfREVGQVVMVCk7CisJCXJkbWFfdXBkYXRlX2JpdHMoY29tcCwg
+RElTUF9SRUdfUkRNQV9HTE9CQUxfQ09OLAorCQkJCSBSRE1BX01PREVfTUVNT1JZLCBSRE1BX01P
+REVfTUVNT1JZKTsKKwl9CisKIAkvKgogCSAqIEVuYWJsZSBGSUZPIHVuZGVyZmxvdyBzaW5jZSBE
+U0kgYW5kIERQSSBjYW4ndCBiZSBibG9ja2VkLgogCSAqIEtlZXAgdGhlIEZJRk8gcHNldWRvIHNp
+emUgcmVzZXQgZGVmYXVsdCBvZiA4IEtpQi4gU2V0IHRoZQotLSAKMi4xMi41CgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
