@@ -1,53 +1,40 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH] pinctrl: mediatek: include chained_irq.h header
-Date: Tue, 24 Jul 2018 13:57:10 +0200
-Message-ID: <20180724115722.1274065-1-arnd@arndb.de>
+From: YueHaibing <yuehaibing@huawei.com>
+Subject: [PATCH] ARM: dma-mapping: always clear allocated buffers
+Date: Tue, 24 Jul 2018 22:04:35 +0800
+Message-ID: <20180724140435.17112-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Sean Wang <sean.wang@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux@armlinux.org.uk, matthias.bgg@gmail.com, vladimir.murzin@arm.com
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, akpm@linux-foundation.org, iamjoonsoo.kim@lge.com, robin.murphy@arm.com, treding@nvidia.com, zhongjiang@huawei.com, YueHaibing <yuehaibing@huawei.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Some randconfig builds fail in the mtk-eint driver:
+Sean Wang report dma_zalloc_coherent doesn't work as expect on his
+armv7,the allocated mem is not zeroed.The reason is __alloc_from_pool
+doesn't honor __GFP_ZERO.
 
-drivers/pinctrl/mediatek/mtk-eint.c: In function 'mtk_eint_irq_handler':
-drivers/pinctrl/mediatek/mtk-eint.c:324:2: error: implicit declaration of function 'chained_irq_enter'; did you mean 'rcu_irq_enter'? [-Werror=implicit-function-declaration]
-  chained_irq_enter(chip, desc);
-  ^~~~~~~~~~~~~~~~~
-  rcu_irq_enter
-drivers/pinctrl/mediatek/mtk-eint.c:367:2: error: implicit declaration of function 'chained_irq_exit'; did you mean 'rcu_irq_exit'? [-Werror=implicit-function-declaration]
+Like commit 6829e274a623 ("arm64: dma-mapping: always clear allocated buffers")
+does,always clear allocated buffers to fix this.
 
-The functions are declared in linux/irqchip/chained_irq.h, and including
-that header makes it build in all configurations.
-
-Fixes: e46df235b4e6 ("pinctrl: mediatek: refactor EINT related code for all MediaTek pinctrl can fit")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Reported-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+Reviewed-by: zhong jiang <zhongjiang@huawei.com>
 ---
- drivers/pinctrl/mediatek/mtk-eint.c | 1 +
+ arch/arm/mm/dma-mapping.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
-index 30f3316747e2..a613e546717a 100644
---- a/drivers/pinctrl/mediatek/mtk-eint.c
-+++ b/drivers/pinctrl/mediatek/mtk-eint.c
-@@ -13,6 +13,7 @@
- #include <linux/err.h>
- #include <linux/gpio.h>
- #include <linux/io.h>
-+#include <linux/irqchip/chained_irq.h>
- #include <linux/irqdomain.h>
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
+diff --git a/arch/arm/mm/dma-mapping.c b/arch/arm/mm/dma-mapping.c
+index 6656647..cf5882f 100644
+--- a/arch/arm/mm/dma-mapping.c
++++ b/arch/arm/mm/dma-mapping.c
+@@ -564,6 +564,7 @@ static void *__alloc_from_pool(size_t size, struct page **ret_page)
+ 
+ 		*ret_page = phys_to_page(phys);
+ 		ptr = (void *)val;
++		memset(ptr, 0, size);
+ 	}
+ 
+ 	return ptr;
 -- 
-2.18.0
+2.7.0
