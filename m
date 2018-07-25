@@ -1,65 +1,30 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v1 00/15] Add RDMA memory mode support for mediatek SOC
- MT2712
-Date: Wed, 25 Jul 2018 09:39:28 +0800
-Message-ID: <1532482768.9280.4.camel@mtksdaap41>
-References: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
+From: YueHaibing <yuehaibing@huawei.com>
+Subject: Re: [PATCH] ARM: dma-mapping: always clear allocated buffers
+Date: Wed, 25 Jul 2018 10:24:07 +0800
+Message-ID: <0414bb3e-33a2-8f30-f765-ee10ecb44fad@huawei.com>
+References: <20180724140435.17112-1-yuehaibing@huawei.com>
+ <20180724180906.GA8240@infradead.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180724180906.GA8240@infradead.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Christoph Hellwig <hch@infradead.org>
+Cc: linux@armlinux.org.uk, matthias.bgg@gmail.com, vladimir.murzin@arm.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, akpm@linux-foundation.org, iamjoonsoo.kim@lge.com, robin.murphy@arm.com, treding@nvidia.com, zhongjiang@huawei.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFN0dToKCkl0IGxvb2tzIGxpa2UgdGhlIHNlcmllcyBpcyBhIGJ1ZyBmaXggb2YgWzFdLiBJ
-biBbMV0sIHlvdSBjcmVhdGUgdGhpcmQKY3J0YyBidXQgaXQgZG9lcyBub3Qgd29yayB1bmxlc3Mg
-YXBwbHkgdGhpcyBzZXJpZXMuIFNvIGZvciBhbGwgdGhlCnBhdGNoZXMgaW4gdGhpcyBzZXJpZXMs
-IHlvdSBzaG91bGQgcmVmZXIgdG8gWzJdIHRvIGFkZCAnRml4ZXM6JyBhbmQKJ0NjOicgaW4gY29t
-bWl0IG1lc3NhZ2UuCgoKWzFdCmh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9r
-ZXJuZWwvZ2l0L25leHQvbGludXgtbmV4dC5naXQvY29tbWl0Lz9pZD1lNmFiMDg3YTIyNGZkN2Jj
-ZjcxMmRiNjk4ZmJhZGU2NzNjYzlhZGRkClsyXQpodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9z
-Y20vbGludXgva2VybmVsL2dpdC9uZXh0L2xpbnV4LW5leHQuZ2l0L2NvbW1pdC8/aWQ9ODNiYTYy
-YmM3MDBiYWI3MTBiMjJiZTNhMWJmNmNmOTczZjc1NDI3MwoKUmVnYXJkcywKQ0sKCk9uIFR1ZSwg
-MjAxOC0wNy0yNCBhdCAxNjoxNyArMDgwMCwgU3R1IEhzaWVoIHdyb3RlOgo+IFRoaXMgcGF0Y2gg
-c2VyaWVzIGFkZCBSRE1BIG1lbW9yeSBtb2RlIHN1cHBvcnQgZm9yIG1lZGlhdGVrIFNPQyBNVDI3
-MTIuCj4gTVQyNzEyIGhhcyB0aHJlZSBkaXNwbGF5IGRhdGEgcGF0aCwgaW5jbHVkaW5nIHRocmVl
-IEhXIGVuZ2luZSwKPiB0d28gT1ZMIGFuZCBvbmUgUkRNQS4KPiAKPiBUaGUgUkRNQSB1c2VkIGlu
-IHRoaXJkIGRkcCBhbmQgaXQgbmVlZCB0byBiZSBzZXQgbWVtb3J5IG1vZGUsCj4gdGhlbiBSRE1B
-IGNvdWxkIHJlYWQgZGF0YSBmcm9tIG1lbW9yeSBhbmQgb3V0cHV0IHRvIHBhbmVsLgo+IAo+IFN0
-dSBIc2llaCAoMTUpOgo+ICAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEw
-IHRvIERQSTEKPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMCB0byBE
-U0kxCj4gICBkcm0vbWVkaWF0ZWs6IGFkZCBjb25uZWN0aW9uIGZyb20gUkRNQTEgdG8gRFNJMAo+
-ICAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEyIHRvIERTSTAKPiAgIGRy
-bS9tZWRpYXRlazogYWRkIFJETUEgbWVtb3J5IG1vZGUgZm9yIGNydGMgY3JlYXRlZAo+ICAgZHJt
-L21lZGlhdGVrOiBhZGQgbWVtb3J5IG1vZGUgZm9yIFJETUEKPiAgIGRybS9tZWRpYXRlazogYWRk
-IGxheWVyIGNvbmZpZyB0byBzZXQgUkRNQSBmb3IgcGxhbmUgc2V0dGluZwo+ICAgZHJtL21lZGlh
-dGVrOiBhZGQgUkdCIGNvbG9yIGZvcm1hdCBzdXBwb3J0IGZvciBSRE1BCj4gICBkcm0vbWVkaWF0
-ZWs6IGFkZCBZVVlWL1VZVlkgY29sb3IgZm9ybWF0IHN1cHBvcnQgZm9yIFJETUEKPiAgIGRybS9t
-ZWRpYXRlazogYWRkIGRybV9kZXZpY2UgaW4gUkRNQSBmb3IgbWFtb3J5IG1vZGUgdG8gcmVhcXVl
-c3QKPiAgICAgYnVmZmVyCj4gICBkcm0vbWVkaWF0ZWs6IGFkZCBkdW1teSBidWZmZXIgZm9yIFJE
-TUEgbWVtb3J5IG1vZGUKPiAgIGRybS9tZWRpYXRlazogYWRkIGxheWVyIG51bWJlciBjb25kaXRp
-b24gZm9yIFJETUEgdG8gY29udHJvbCBwbGFuZQo+ICAgZHJtL21lZGlhdGVrOiBVcGRhdGUgc29t
-ZSB2YXJpYWJsZSBuYW1lIGZyb20gb3ZsIHRvIGNvbXAKPiAgIGRybS9tZWRpYXRlazogZml4ZWQg
-dGhlIGVycm9yIHZhbHVlIGZvciBhZGQgRFNJMSBpbiBtdXRleAo+ICAgZHJtL21lZGlhdGVrOiBm
-aXhlZCBjb25uZWN0aW9uIGZyb20gUkRNQTIgdG8gRFNJMQo+IAo+ICBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jICAgIHwgMTIyICsrKysrKysrKysrKysrKysrKysrKysr
-KysrKy0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jICAgICB8ICA1
-OSArKysrKysrKystLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRj
-LmggICAgIHwgICA0ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5j
-ICAgICAgfCAgMjAgKysrKy0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRw
-X2NvbXAuaCB8ICAgMiArCj4gIDUgZmlsZXMgY2hhbmdlZCwgMTgxIGluc2VydGlvbnMoKyksIDI2
-IGRlbGV0aW9ucygtKQo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbAo=
+On 2018/7/25 2:09, Christoph Hellwig wrote:
+> On Tue, Jul 24, 2018 at 10:04:35PM +0800, YueHaibing wrote:
+>> Sean Wang report dma_zalloc_coherent doesn't work as expect on his
+>> armv7,the allocated mem is not zeroed.The reason is __alloc_from_pool
+>> doesn't honor __GFP_ZERO.
+> 
+> Please explain the "why" a little more.  All the explanations are in
+> the referenced arm64 commit and should be mentioned here as well.
+
+ok, will send v2.
+
+> 
+> .
+> 
