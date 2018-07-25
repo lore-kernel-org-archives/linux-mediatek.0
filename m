@@ -1,125 +1,31 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [SPAM][PATCH 2/2] pwm: mediatek: Add MT7628 support
-Date: Wed, 25 Jul 2018 22:36:13 +0800
-Message-ID: <1532529373.8953.306.camel@mtkswgap22>
-References: <20180725095209.10641-1-john@phrozen.org>
- <20180725095209.10641-2-john@phrozen.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v23 1/4] dt-bindings: soc: Add documentation for the
+ MediaTek GCE unit
+Date: Wed, 25 Jul 2018 08:47:16 -0600
+Message-ID: <20180725144716.GA29676@rob-hp-laptop>
+References: <1532482002-11164-1-git-send-email-houlong.wei@mediatek.com>
+ <1532482002-11164-2-git-send-email-houlong.wei@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180725095209.10641-2-john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1532482002-11164-2-git-send-email-houlong.wei@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Houlong Wei <houlong.wei@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Monica Wang <monica.wang@mediatek.com>, HS Liao <hs.liao@mediatek.com>, ginny.chen@m
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-07-25 at 11:52 +0200, John Crispin wrote:
-> Add support for MT7628. The SoC is legacy MIPS and hence has no complex
-> clock tree. This patch add an extra flag to the SoC specific data
-> indicating, that no clocks are present.
+On Wed, Jul 25, 2018 at 09:26:39AM +0800, Houlong Wei wrote:
+> This adds documentation for the MediaTek Global Command Engine (GCE) unit
+> found in MT8173 SoCs.
 > 
-> Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-
-Acked-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
+> Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
+> Signed-off-by: HS Liao <hs.liao@mediatek.com>
 > ---
->  drivers/pwm/Kconfig        |  2 +-
->  drivers/pwm/pwm-mediatek.c | 19 ++++++++++++++++++-
->  2 files changed, 19 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
-> index 4635cb35008c..3fae66c692c4 100644
-> --- a/drivers/pwm/Kconfig
-> +++ b/drivers/pwm/Kconfig
-> @@ -286,7 +286,7 @@ config PWM_MTK_DISP
->  
->  config PWM_MEDIATEK
->  	tristate "MediaTek PWM support"
-> -	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	depends on ARCH_MEDIATEK || RALINK || COMPILE_TEST
->  	help
->  	  Generic PWM framework driver for Mediatek ARM SoC.
->  
-> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-> index 328c124773b2..eb6674ce995f 100644
-> --- a/drivers/pwm/pwm-mediatek.c
-> +++ b/drivers/pwm/pwm-mediatek.c
-> @@ -57,6 +57,7 @@ static const char * const mtk_pwm_clk_name[MTK_CLK_MAX] = {
->  struct mtk_pwm_platform_data {
->  	unsigned int num_pwms;
->  	bool pwm45_fixup;
-> +	bool has_clks;
->  };
->  
->  /**
-> @@ -86,6 +87,9 @@ static int mtk_pwm_clk_enable(struct pwm_chip *chip, struct pwm_device *pwm)
->  	struct mtk_pwm_chip *pc = to_mtk_pwm_chip(chip);
->  	int ret;
->  
-> +	if (!pc->soc->has_clks)
-> +		return 0;
-> +
->  	ret = clk_prepare_enable(pc->clks[MTK_CLK_TOP]);
->  	if (ret < 0)
->  		return ret;
-> @@ -112,6 +116,9 @@ static void mtk_pwm_clk_disable(struct pwm_chip *chip, struct pwm_device *pwm)
->  {
->  	struct mtk_pwm_chip *pc = to_mtk_pwm_chip(chip);
->  
-> +	if (!pc->soc->has_clks)
-> +		return;
-> +
->  	clk_disable_unprepare(pc->clks[MTK_CLK_PWM1 + pwm->hwpwm]);
->  	clk_disable_unprepare(pc->clks[MTK_CLK_MAIN]);
->  	clk_disable_unprepare(pc->clks[MTK_CLK_TOP]);
-> @@ -239,7 +246,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
->  	if (IS_ERR(pc->regs))
->  		return PTR_ERR(pc->regs);
->  
-> -	for (i = 0; i < data->num_pwms + 2; i++) {
-> +	for (i = 0; i < data->num_pwms + 2 && pc->soc->has_clks; i++) {
->  		pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
->  		if (IS_ERR(pc->clks[i])) {
->  			dev_err(&pdev->dev, "clock: %s fail: %ld\n",
-> @@ -274,22 +281,32 @@ static int mtk_pwm_remove(struct platform_device *pdev)
->  static const struct mtk_pwm_platform_data mt2712_pwm_data = {
->  	.num_pwms = 8,
->  	.pwm45_fixup = false,
-> +	.has_clks = true,
->  };
->  
->  static const struct mtk_pwm_platform_data mt7622_pwm_data = {
->  	.num_pwms = 6,
->  	.pwm45_fixup = false,
-> +	.has_clks = true,
->  };
->  
->  static const struct mtk_pwm_platform_data mt7623_pwm_data = {
->  	.num_pwms = 5,
->  	.pwm45_fixup = true,
-> +	.has_clks = true,
-> +};
-> +
-> +static const struct mtk_pwm_platform_data mt7628_pwm_data = {
-> +	.num_pwms = 4,
-> +	.pwm45_fixup = true,
-> +	.has_clks = false,
->  };
->  
->  static const struct of_device_id mtk_pwm_of_match[] = {
->  	{ .compatible = "mediatek,mt2712-pwm", .data = &mt2712_pwm_data },
->  	{ .compatible = "mediatek,mt7622-pwm", .data = &mt7622_pwm_data },
->  	{ .compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data },
-> +	{ .compatible = "mediatek,mt7628-pwm", .data = &mt7628_pwm_data },
->  	{ },
->  };
->  MODULE_DEVICE_TABLE(of, mtk_pwm_of_match);
+>  .../devicetree/bindings/mailbox/mtk-gce.txt        |   57 ++++++++++++++++++++
+>  include/dt-bindings/gce/mt8173-gce.h               |   44 +++++++++++++++
+>  2 files changed, 101 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+>  create mode 100644 include/dt-bindings/gce/mt8173-gce.h
+
+Reviewed-by: Rob Herring <robh@kernel.org>
