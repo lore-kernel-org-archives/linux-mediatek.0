@@ -1,31 +1,64 @@
-From: Christoph Hellwig <hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: dma-mapping: always clear allocated buffers
-Date: Tue, 24 Jul 2018 11:09:06 -0700
-Message-ID: <20180724180906.GA8240@infradead.org>
-References: <20180724140435.17112-1-yuehaibing@huawei.com>
+From: Houlong Wei <houlong.wei@mediatek.com>
+Subject: [PATCH v23 0/4] MediaTek MT8173 CMDQ support
+Date: Wed, 25 Jul 2018 09:26:38 +0800
+Message-ID: <1532482002-11164-1-git-send-email-houlong.wei@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20180724140435.17112-1-yuehaibing-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: YueHaibing <yuehaibing-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
-Cc: vladimir.murzin-5wv7dgnIgG8@public.gmane.org, zhongjiang-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, iamjoonsoo.kim-Hm3cg6mZ9cc@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Monica Wang <monica.wang@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, HS Liao <hs.liao@mediatek.com>, ginny.chen@mediatek.com, enzhu.wa
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jul 24, 2018 at 10:04:35PM +0800, YueHaibing wrote:
-> Sean Wang report dma_zalloc_coherent doesn't work as expect on his
-> armv7,the allocated mem is not zeroed.The reason is __alloc_from_pool
-> doesn't honor __GFP_ZERO.
+Hi,
 
-Please explain the "why" a little more.  All the explanations are in
-the referenced arm64 commit and should be mentioned here as well.
+This is Mediatek MT8173 Command Queue(CMDQ) driver. The CMDQ is used
+to help write registers with critical time limitation, such as
+updating display configuration during the vblank. It controls Global
+Command Engine (GCE) hardware to achieve this requirement.
+
+Changes since v22:
+ -remove properties 'timeout' and 'thread-num' from device tree
+ -move timer from CMDQ driver to CMDQ helper
+ -move dma unmap from CMDQ driver to CMDQ helper
+ -config thread number in CMDQ match table
+ -remove reallocate mechanism and let client specify the cmdq buffer size
+ -let client specify the timeout time
+Changes since v21:
+ -rebase on v4.18-rc1
+ -remove subsys code and event id definition from mtk-cmdq-helper.c
+ -add mt8173-gce.h to define the subsys code and envent id
+Changes since v20:
+ -rebase on v4.15-rc1
+ -move dma_map_single outside of spinlock
+Changes since v19:
+- rebase to v4.10-rc2
+
+Houlong Wei (4):
+  dt-bindings: soc: Add documentation for the MediaTek GCE unit
+  mailbox: mediatek: Add Mediatek CMDQ driver
+  arm64: dts: mt8173: Add GCE node
+  soc: mediatek: Add Mediatek CMDQ helper
+
+ .../devicetree/bindings/mailbox/mtk-gce.txt        |  57 +++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  10 +
+ drivers/mailbox/Kconfig                            |  10 +
+ drivers/mailbox/Makefile                           |   2 +
+ drivers/mailbox/mtk-cmdq-mailbox.c                 | 569 +++++++++++++++++++++
+ drivers/soc/mediatek/Kconfig                       |  12 +
+ drivers/soc/mediatek/Makefile                      |   1 +
+ drivers/soc/mediatek/mtk-cmdq-helper.c             | 291 +++++++++++
+ include/dt-bindings/gce/mt8173-gce.h               |  44 ++
+ include/linux/mailbox/mtk-cmdq-mailbox.h           |  77 +++
+ include/linux/soc/mediatek/mtk-cmdq.h              | 135 +++++
+ 11 files changed, 1208 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+ create mode 100644 drivers/mailbox/mtk-cmdq-mailbox.c
+ create mode 100644 drivers/soc/mediatek/mtk-cmdq-helper.c
+ create mode 100644 include/dt-bindings/gce/mt8173-gce.h
+ create mode 100644 include/linux/mailbox/mtk-cmdq-mailbox.h
+ create mode 100644 include/linux/soc/mediatek/mtk-cmdq.h
+
+-- 
+2.12.5
+ 
