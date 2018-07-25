@@ -1,61 +1,63 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v1 06/15] drm/mediatek: add memory mode for RDMA
-Date: Wed, 25 Jul 2018 10:40:54 +0800
-Message-ID: <1532486454.9280.12.camel@mtksdaap41>
+Subject: Re: [PATCH v1 12/15] drm/mediatek: add layer number condition for
+ RDMA to control plane
+Date: Wed, 25 Jul 2018 11:02:50 +0800
+Message-ID: <1532487770.9280.17.camel@mtksdaap41>
 References: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
- <1532420235-22268-7-git-send-email-stu.hsieh@mediatek.com>
+         <1532420235-22268-13-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1532420235-22268-7-git-send-email-stu.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1532420235-22268-13-git-send-email-stu.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFN0dToKCk9uIFR1ZSwgMjAxOC0wNy0yNCBhdCAxNjoxNyArMDgwMCwgU3R1IEhzaWVoIHdy
-b3RlOgo+IFRoaXMgcGF0Y2ggYWRkIG1lbW9yeSBtb2RlIGZvciBSRE1BCj4gCj4gSWYgdXNlIFJE
-TUEgdG8gcmVhZCBkYXRhIGZyb20gbWVtb3J5LCBpdCBzaG91bGQgc2V0IG1lbW9yeSBtb2RlIHRv
-IFJETUEKPiAKPiBTaWduZWQtb2ZmLWJ5OiBTdHUgSHNpZWggPHN0dS5oc2llaEBtZWRpYXRlay5j
-b20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMgfCAx
-NiArKysrKysrKysrKysrKystCj4gIDEgZmlsZSBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspLCAx
-IGRlbGV0aW9uKC0pCj4gCgpbLi4uXQoKPiAgc3RhdGljIGlubGluZSBzdHJ1Y3QgbXRrX2Rpc3Bf
-cmRtYSAqY29tcF90b19yZG1hKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXApCj4gQEAgLTExMSw3
-ICsxMTYsOCBAQCBzdGF0aWMgdm9pZCBtdGtfcmRtYV9zdGFydChzdHJ1Y3QgbXRrX2RkcF9jb21w
-ICpjb21wKQo+ICAKPiAgc3RhdGljIHZvaWQgbXRrX3JkbWFfc3RvcChzdHJ1Y3QgbXRrX2RkcF9j
-b21wICpjb21wKQo+ICB7Cj4gLQlyZG1hX3VwZGF0ZV9iaXRzKGNvbXAsIERJU1BfUkVHX1JETUFf
-R0xPQkFMX0NPTiwgUkRNQV9FTkdJTkVfRU4sIDApOwo+ICsJd3JpdGVsKFJETUFfU09GVF9SRVNF
-VCwgY29tcC0+cmVncyArIERJU1BfUkVHX1JETUFfR0xPQkFMX0NPTik7Cj4gKwl3cml0ZWwoMCwg
-Y29tcC0+cmVncyArIERJU1BfUkVHX1JETUFfR0xPQkFMX0NPTik7CgpXaXRob3V0IHJlc2V0LCB3
-aGF0IGhhcHBlbiB0byBkcmFtIG1vZGU/IFdoeSBkaXJlY3QgbGluayBtb2RlIG5lZWQgbm90CnRo
-aXMgcmVzZXQ/Cgo+ICB9Cj4gIAo+ICBzdGF0aWMgdm9pZCBtdGtfcmRtYV9jb25maWcoc3RydWN0
-IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IHdpZHRoLAo+IEBAIC0xMjEsMTAgKzEy
-NywxOCBAQCBzdGF0aWMgdm9pZCBtdGtfcmRtYV9jb25maWcoc3RydWN0IG10a19kZHBfY29tcCAq
-Y29tcCwgdW5zaWduZWQgaW50IHdpZHRoLAo+ICAJdW5zaWduZWQgaW50IHRocmVzaG9sZDsKPiAg
-CXVuc2lnbmVkIGludCByZWc7Cj4gIAlzdHJ1Y3QgbXRrX2Rpc3BfcmRtYSAqcmRtYSA9IGNvbXBf
-dG9fcmRtYShjb21wKTsKPiArCWJvb2wgKnJkbWFfbWVtb3J5X21vZGUgPSBjb21wLT5jb21wX21v
-ZGU7Cj4gIAo+ICAJcmRtYV91cGRhdGVfYml0cyhjb21wLCBESVNQX1JFR19SRE1BX1NJWkVfQ09O
-XzAsIDB4ZmZmLCB3aWR0aCk7Cj4gIAlyZG1hX3VwZGF0ZV9iaXRzKGNvbXAsIERJU1BfUkVHX1JE
-TUFfU0laRV9DT05fMSwgMHhmZmZmZiwgaGVpZ2h0KTsKPiAgCj4gKwlpZiAoKnJkbWFfbWVtb3J5
-X21vZGUgPT0gdHJ1ZSkgewo+ICsJCXJkbWFfdXBkYXRlX2JpdHMoY29tcCwgRElTUF9SRUdfUkRN
-QV9TSVpFX0NPTl8wLCAweGZmMDAwMCwKPiArCQkJCSBNQVRSSVhfSU5UX01UWF9TRUxfREVGQVVM
-VCk7Cj4gKwkJcmRtYV91cGRhdGVfYml0cyhjb21wLCBESVNQX1JFR19SRE1BX0dMT0JBTF9DT04s
-Cj4gKwkJCQkgUkRNQV9NT0RFX01FTU9SWSwgUkRNQV9NT0RFX01FTU9SWSk7Cj4gKwl9Cj4gKwoK
-SSB3b3VsZCBsaWtlIHRoaXMgdG8gYmUgYSBraW5kIG9mICdsYXllcicgY29uZmlnLiBJbiBzb21l
-IFNvQywgb25lIGxheWVyCm9mIE9WTCBjb3VsZCBzd2l0Y2ggdG8gZGlyZWN0IGxpbmsgaW5wdXQg
-b3IgZHJhbSBpbnB1dC4gU28gSSB0aGluayBpdCdzCmJldHRlciB0byBtb3ZlIHRoaXMgc2V0dGlu
-ZyBpbnRvIHNvbWUgbGF5ZXIgaW50ZXJmYWNlLgoKUmVnYXJkcywKQ0sKCj4gIAkvKgo+ICAJICog
-RW5hYmxlIEZJRk8gdW5kZXJmbG93IHNpbmNlIERTSSBhbmQgRFBJIGNhbid0IGJlIGJsb2NrZWQu
-Cj4gIAkgKiBLZWVwIHRoZSBGSUZPIHBzZXVkbyBzaXplIHJlc2V0IGRlZmF1bHQgb2YgOCBLaUIu
-IFNldCB0aGUKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi, Stu:
+
+On Tue, 2018-07-24 at 16:17 +0800, Stu Hsieh wrote:
+> This patch add layer number condition for RDMA to control plane
+> 
+> When plane init in crtc create,
+> it use the number of OVL layer to init plane.
+> That's OVL can read 4 memory address.
+> 
+> For mt2712 third ddp, it use RDMA to read memory.
+> RDMA can read 1 memory address, so it just init one plane.
+> 
+> For compatibility, this patch use two define OVL_LAYER_NR and
+> RDMA_LAYER_NR to distingush two difference HW engine.
+> 
+> Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 25 +++++++++++++++++--------
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.h |  2 ++
+>  2 files changed, 19 insertions(+), 8 deletions(-)
+> 
+
+[...]
+
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> index 9d9410c67ae9..b44fefadf14a 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> @@ -18,7 +18,9 @@
+>  #include "mtk_drm_ddp_comp.h"
+>  #include "mtk_drm_plane.h"
+>  
+> +#define MAX_LAYER_NR	4
+>  #define OVL_LAYER_NR	4
+> +#define RDMA_LAYER_NR	1
+>  #define MTK_LUT_SIZE	512
+>  #define MTK_MAX_BPC	10
+>  #define MTK_MIN_BPC	3
+
+If the layer number is not fixed in '4', I would like to get this value
+from component because in some SoC, OVL may have 6 layer. So add an
+interface to get the max layer number and OVL, RDMA driver would return
+the number for this SoC.
+
+Regards,
+CK
