@@ -1,106 +1,49 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v1 11/15] drm/mediatek: add dummy buffer for RDMA memory
- mode
-Date: Wed, 25 Jul 2018 13:42:59 +0800
-Message-ID: <1532497379.9280.32.camel@mtksdaap41>
-References: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
- <1532420235-22268-12-git-send-email-stu.hsieh@mediatek.com>
+From: YueHaibing <yuehaibing@huawei.com>
+Subject: [PATCH v2] ARM: dma-mapping: always clear allocated buffers
+Date: Wed, 25 Jul 2018 15:07:06 +0800
+Message-ID: <20180725070706.19576-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1532420235-22268-12-git-send-email-stu.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux@armlinux.org.uk, matthias.bgg@gmail.com, vladimir.murzin@arm.com
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, akpm@linux-foundation.org, iamjoonsoo.kim@lge.com, robin.murphy@arm.com, treding@nvidia.com, zhongjiang@huawei.com, sean.wang@mediatek.com, YueHaibing <yuehaibing@huawei.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFN0dToKCk9uIFR1ZSwgMjAxOC0wNy0yNCBhdCAxNjoxNyArMDgwMCwgU3R1IEhzaWVoIHdy
-b3RlOgo+IFRoaXMgcGF0Y2ggYWRkIGR1bW15IGJ1ZmZlciBmb3IgUkRNQSBtZW1vcnkgbW9kZQo+
-IAo+IFdoZW4gZGlzcGxheSBwb3dlciBvbiwgdGhlIGRybSBmcmFtZSB3b3JrIHdvdWxkIG1vZGVz
-ZXQgYW5kCj4gc2V0IHVwIHRoZSBkaXNwbGF5IEhXLgo+IAo+IEluIHRoaXMgdGltZSwgdGhlIFJE
-TUEgd291bGQgc3RhcnQgd3Jva2luZyBhbmQgcmVhZCB0aGUgZGF0YSBmcm9tIG1lbW9yeS4KPiBC
-dXQsIHVzZXIgc3BhY2Ugbm90IHNlbmQgdGhlIGRhdGEgdG8gZHJtIHlldC4KPiAKPiBGb3IgdGhp
-cyBjYXNlLCBpZiB1c2VyIHNwYWNlIG5vdCBzZW5kIGRhdGEgdG8gZGlzcGxheSBodyhSRE1BKSB5
-ZXQsCj4gUkRNQSB3b3VsZCByZWFkIHRoZSB3cm9uZyBhZGRyZXNzIHRvIHNob3cgZ2FyYmFnZS4K
-PiAKPiBUaGVyZWZvcmUsIHdlIGNyZWF0ZSBkdW1teSBidWZmZXIgZm9yIFJETUEgcmVhZGluZyBt
-ZW1vcnkKPiB3aGVuIHVzZXJzcGFjZSBub3Qgc2VuZCB0aGUgZGF0YSB5ZXQuCj4gCgpJcyB0aGlz
-IHRoZSBvbmx5IHNvbHV0aW9uPyBJZiBwYW5lbCByZXNvbHV0aW9uIGlzIDE5MjB4MTA4MCwgdGhl
-IGJ1ZmZlcgpzaXplIGlzIDgyOTQ0MDAgYnl0ZXMuIEhvdyBsYXJnZSBpdCBpcy4gSWYgd2UgaGF2
-ZSBhbm90aGVyIHNvbHV0aW9uLApJJ2xsIG5vdCBhY2NlcHQgdGhpcyBvbmUuIEFzIGZhciBhcyBJ
-IGtub3csIERTSSBvciBEUEkgY291bGQgb3V0cHV0CnNpbmdsZSBjb2xvciBldmVuIHRob3VnaCB0
-aGVyZSBpcyBubyBpbnB1dCBkYXRhLiBJZiB0aGlzIGlzIHRydWUsIHdoZW4KZW5jb2RlciBpcyBl
-bmFibGVkLCBpdCBvdXRwdXQgdGhlIHNpbmdsZSBjb2xvci4gV2hlbiBjcnRjIGVuYWJsZSwgY29u
-ZmlnCmFsbCBzZXR0aW5nIGV4Y2VwdCAnc3RhcnQnLiBXaGVuIHJlY2VpdmUgdGhlIGJ1ZmZlciwg
-J3N0YXJ0JyB0aGUKcGlwZWxpbmUgd2hpY2ggaW5jbHVkZSBlbmNvZGVyLiBXaGVuIGVuY29kZXIg
-J3N0YXJ0JywgaXQgZGlzYWJsZSB0aGUKc2luZ2xlIGNvbG9yIGZ1bmN0aW9uIGFuZCBvdXRwdXQg
-dGhlIGRhdGEgZnJvbSBpbnB1dC4KClJlZ2FyZHMsCkNLCgoKPiBTaWduZWQtb2ZmLWJ5OiBTdHUg
-SHNpZWggPHN0dS5oc2llaEBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMgICAgfCAyMyArKysrKysrKysrKysrKysrKysrKysrKwo+
-ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oIHwgIDEgKwo+ICAy
-IGZpbGVzIGNoYW5nZWQsIDI0IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZGlzcF9yZG1hLmMKPiBpbmRleCA4ZDQxZjVjZDQ4NWIuLmUyOGYzNjg3MjhjZCAx
-MDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jCj4g
-KysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwo+IEBAIC0yMCw2
-ICsyMCw3IEBACj4gIAo+ICAjaW5jbHVkZSAibXRrX2RybV9jcnRjLmgiCj4gICNpbmNsdWRlICJt
-dGtfZHJtX2RkcF9jb21wLmgiCj4gKyNpbmNsdWRlICJtdGtfZHJtX2dlbS5oIgo+ICAKPiAgI2Rl
-ZmluZSBESVNQX1JFR19SRE1BX0lOVF9FTkFCTEUJCTB4MDAwMAo+ICAjZGVmaW5lIERJU1BfUkVH
-X1JETUFfSU5UX1NUQVRVUwkJMHgwMDA0Cj4gQEAgLTU5LDYgKzYwLDkgQEAKPiAgI2RlZmluZSBN
-RU1fTU9ERV9JTlBVVF9GT1JNQVRfVVlWWQkJKDB4MDA0IDw8IDQpCj4gICNkZWZpbmUgTUVNX01P
-REVfSU5QVVRfRk9STUFUX1lVWVYJCSgweDAwNSA8PCA0KQo+ICAKPiArI2RlZmluZSBSRE1BX0RV
-TU1ZX0JVRkZFUl9TSVpFKGgsIHYpCQkoKGgpICogKHYpICogNCkKPiArI2RlZmluZSBSRE1BX0RV
-TU1ZX0JVRkZFUl9QSVRDSChoKQkJKChoKSAqIDQpCj4gKwo+ICBzdHJ1Y3QgbXRrX2Rpc3BfcmRt
-YV9kYXRhIHsKPiAgCXVuc2lnbmVkIGludCBmaWZvX3NpemU7Cj4gIH07Cj4gQEAgLTc0LDYgKzc4
-LDcgQEAgc3RydWN0IG10a19kaXNwX3JkbWEgewo+ICAJY29uc3Qgc3RydWN0IG10a19kaXNwX3Jk
-bWFfZGF0YQkqZGF0YTsKPiAgCXN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2Owo+ICAJYm9vbCBy
-ZG1hX21lbW9yeV9tb2RlOwo+ICsJdW5zaWduZWQgaW50IGR1bW15X3NpemU7Cj4gIH07Cj4gIAo+
-ICBzdGF0aWMgaW5saW5lIHN0cnVjdCBtdGtfZGlzcF9yZG1hICpjb21wX3RvX3JkbWEoc3RydWN0
-IG10a19kZHBfY29tcCAqY29tcCkKPiBAQCAtMTI2LDE0ICsxMzEsMjkgQEAgc3RhdGljIHZvaWQg
-bXRrX3JkbWFfZGlzYWJsZV92Ymxhbmsoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCkKPiAgCj4g
-IHN0YXRpYyB2b2lkIG10a19yZG1hX3N0YXJ0KHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXApCj4g
-IHsKPiArCXN0cnVjdCBtdGtfZGlzcF9yZG1hICpyZG1hID0gY29tcF90b19yZG1hKGNvbXApOwo+
-ICsJYm9vbCAqcmRtYV9tZW1vcnlfbW9kZSA9IGNvbXAtPmNvbXBfbW9kZTsKPiArCj4gKwlpZiAo
-KnJkbWFfbWVtb3J5X21vZGUgPT0gdHJ1ZSkgewo+ICsJCWNvbXAtPm10a19nZW0gPSBtdGtfZHJt
-X2dlbV9jcmVhdGUocmRtYS0+ZHJtX2RldiwKPiArCQkJCQkJICAgcmRtYS0+ZHVtbXlfc2l6ZSwg
-ZmFsc2UpOwo+ICsJCXdyaXRlbChjb21wLT5tdGtfZ2VtLT5kbWFfYWRkciAmIDB4RkZGRkZGRkYs
-Cj4gKwkJICAgICAgIGNvbXAtPnJlZ3MgKyBESVNQX1JETUFfTUVNX1NUQVJUX0FERFIpOwo+ICsJ
-fQo+ICsKPiAgCXJkbWFfdXBkYXRlX2JpdHMoY29tcCwgRElTUF9SRUdfUkRNQV9HTE9CQUxfQ09O
-LCBSRE1BX0VOR0lORV9FTiwKPiAgCQkJIFJETUFfRU5HSU5FX0VOKTsKPiAgfQo+ICAKPiAgc3Rh
-dGljIHZvaWQgbXRrX3JkbWFfc3RvcChzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wKQo+ICB7Cj4g
-Kwlib29sICpyZG1hX21lbW9yeV9tb2RlID0gY29tcC0+Y29tcF9tb2RlOwo+ICsKPiAgCXdyaXRl
-bChSRE1BX1NPRlRfUkVTRVQsIGNvbXAtPnJlZ3MgKyBESVNQX1JFR19SRE1BX0dMT0JBTF9DT04p
-Owo+ICAJd3JpdGVsKDAsIGNvbXAtPnJlZ3MgKyBESVNQX1JFR19SRE1BX0dMT0JBTF9DT04pOwo+
-ICsKPiArCWlmICgqcmRtYV9tZW1vcnlfbW9kZSA9PSB0cnVlKQo+ICsJCW10a19kcm1fZ2VtX2Zy
-ZWVfb2JqZWN0KCZjb21wLT5tdGtfZ2VtLT5iYXNlKTsKPiAgfQo+ICAKPiAgc3RhdGljIHZvaWQg
-bXRrX3JkbWFfY29uZmlnKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAsIHVuc2lnbmVkIGludCB3
-aWR0aCwKPiBAQCAtMTQ5LDggKzE2OSwxMSBAQCBzdGF0aWMgdm9pZCBtdGtfcmRtYV9jb25maWco
-c3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IHdpZHRoLAo+ICAJcmRtYV91
-cGRhdGVfYml0cyhjb21wLCBESVNQX1JFR19SRE1BX1NJWkVfQ09OXzEsIDB4ZmZmZmYsIGhlaWdo
-dCk7Cj4gIAo+ICAJaWYgKCpyZG1hX21lbW9yeV9tb2RlID09IHRydWUpIHsKPiArCQlyZG1hLT5k
-dW1teV9zaXplID0gUkRNQV9EVU1NWV9CVUZGRVJfU0laRSh3aWR0aCwgaGVpZ2h0KTsKPiAgCQly
-ZG1hX3VwZGF0ZV9iaXRzKGNvbXAsIERJU1BfUkVHX1JETUFfU0laRV9DT05fMCwgMHhmZjAwMDAs
-Cj4gIAkJCQkgTUFUUklYX0lOVF9NVFhfU0VMX0RFRkFVTFQpOwo+ICsJCXdyaXRlbChSRE1BX0RV
-TU1ZX0JVRkZFUl9QSVRDSCh3aWR0aCksCj4gKwkJICAgICAgIGNvbXAtPnJlZ3MgKyBESVNQX1JE
-TUFfTUVNX1NSQ19QSVRDSCk7Cj4gIAkJcmRtYV91cGRhdGVfYml0cyhjb21wLCBESVNQX1JFR19S
-RE1BX0dMT0JBTF9DT04sCj4gIAkJCQkgUkRNQV9NT0RFX01FTU9SWSwgUkRNQV9NT0RFX01FTU9S
-WSk7Cj4gIAl9Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
-X2RkcF9jb21wLmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5o
-Cj4gaW5kZXggYTE5ODhjZTE1MTQxLi42ZGJiODMxNDRhNzQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaAo+ICsrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmgKPiBAQCAtOTIsNiArOTIsNyBAQCBzdHJ1
-Y3QgbXRrX2RkcF9jb21wIHsKPiAgCWludCBpcnE7Cj4gIAlzdHJ1Y3QgZGV2aWNlICpsYXJiX2Rl
-djsKPiAgCWVudW0gbXRrX2RkcF9jb21wX2lkIGlkOwo+ICsJc3RydWN0IG10a19kcm1fZ2VtX29i
-aiAqbXRrX2dlbTsKPiAgCWNvbnN0IHN0cnVjdCBtdGtfZGRwX2NvbXBfZnVuY3MgKmZ1bmNzOwo+
-ICAJdm9pZCAqY29tcF9tb2RlOwo+ICB9OwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbAo=
+Sean Wang reported dma_zalloc_coherent doesn't work as expect on his
+armv7,the allocated mem is not zeroed.The reason is __alloc_from_pool
+doesn't honor __GFP_ZERO.
+
+As commit 6829e274a623 ("arm64: dma-mapping: always clear allocated buffers")
+has pointed out,buffers allocated by dma_alloc_coherent() are always zeroed
+on most architectures. some drivers rely on this 'feature'. Allocated buffer
+might be also exposed to userspace with dma_mmap() call,so clearing it is
+desired from security point of view to avoid exposing random memory to userspace.
+
+This patch unifies dma_alloc_coherent() behavior on ARM architecture with other
+implementations by unconditionally zeroing allocated buffer.Also to fix
+dma_zalloc_coherent behavior.
+
+Reported-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+Reviewed-by: zhong jiang <zhongjiang@huawei.com>
+---
+v2: reference more argument from arm64 commit as Christoph suggested
+---
+ arch/arm/mm/dma-mapping.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm/mm/dma-mapping.c b/arch/arm/mm/dma-mapping.c
+index 6656647..cf5882f 100644
+--- a/arch/arm/mm/dma-mapping.c
++++ b/arch/arm/mm/dma-mapping.c
+@@ -564,6 +564,7 @@ static void *__alloc_from_pool(size_t size, struct page **ret_page)
+ 
+ 		*ret_page = phys_to_page(phys);
+ 		ptr = (void *)val;
++		memset(ptr, 0, size);
+ 	}
+ 
+ 	return ptr;
+-- 
+2.7.0
