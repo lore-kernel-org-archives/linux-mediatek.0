@@ -1,169 +1,127 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: [PATCH 6/7] clocksource/drivers/timer-mediatek: Add support for system timer
-Date: Thu, 26 Jul 2018 12:15:29 +0200
-Message-ID: <1532600131-28168-6-git-send-email-daniel.lezcano@linaro.org>
-References: <014f94f9-54d4-1ee0-aa89-67ca5d221989@free.fr>
- <1532600131-28168-1-git-send-email-daniel.lezcano@linaro.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1532600131-28168-1-git-send-email-daniel.lezcano@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: tglx@linutronix.de, mingo@kernel.org
-Cc: linux-kernel@vger.kernel.org, stanley.chu@mediatek.com, baolin.wang@linaro.org, Sudeep.Holla@arm.com, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC
-        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
-        support" <linux-mediatek@lists.infradead.org>
+From: Oleksij Rempel <o.rempel@pengutronix.de>
+Subject: Re: [PATCH v7 6/6] mailbox: Add support for i.MX7D messaging unit
+Date: Thu, 26 Jul 2018 12:51:40 +0200
+Message-ID: <a988e8b4-28be-f598-82de-421017409368@pengutronix.de>
+References: <20180726065331.6186-1-o.rempel@pengutronix.de>
+ <20180726065331.6186-7-o.rempel@pengutronix.de>
+ <CABb+yY1Fbj2GiO_zjwnvNFutjX_fRpxnuEoeu6Z3s4NAv2ugbg@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============8636632566864556502=="
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CABb+yY1Fbj2GiO_zjwnvNFutjX_fRpxnuEoeu6Z3s4NAv2ugbg@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Jassi Brar <jassisinghbrar@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, "A.s. Dong" <aisheng.dong@nxp.com>, Devicetree List <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, ", linux-arm-kernel"@lists.infradead.org, Vladimir Zapolskiy <vladimir_zapolskiy@mentor.com>, ",
+ Sascha Hauer" <kernel@pengutronix.de>, Fabio Estevam <fabio.estevam@nxp.com>, linux-mediatek@lists.infradead.org, Shawn Guo <shawnguo@kernel.org>, srv_heupstream <linux-arm-kernel@lists.infradead.org>, dl-linux-imx <linux-imx@nxp.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Stanley Chu <stanley.chu@mediatek.com>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============8636632566864556502==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="nL5YWVr3GLDlSQDY1BkDVeW4R1E6Ycc48"
 
-This patch adds a new "System Timer" on the Mediatek SoCs.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--nL5YWVr3GLDlSQDY1BkDVeW4R1E6Ycc48
+Content-Type: multipart/mixed; boundary="BCN74KpNeBohgqROeaPdkFBnYLUOzlgiy";
+ protected-headers="v1"
+From: Oleksij Rempel <o.rempel@pengutronix.de>
+To: Jassi Brar <jassisinghbrar@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, "A.s. Dong" <aisheng.dong@nxp.com>,
+ Devicetree List <devicetree@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, ", linux-arm-kernel"@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ srv_heupstream <linux-arm-kernel@lists.infradead.org>,
+ ", Sascha Hauer" <kernel@pengutronix.de>,
+ Fabio Estevam <fabio.estevam@nxp.com>, Shawn Guo <shawnguo@kernel.org>,
+ Vladimir Zapolskiy <vladimir_zapolskiy@mentor.com>,
+ dl-linux-imx <linux-imx@nxp.com>
+Message-ID: <a988e8b4-28be-f598-82de-421017409368@pengutronix.de>
+Subject: Re: [PATCH v7 6/6] mailbox: Add support for i.MX7D messaging unit
+References: <20180726065331.6186-1-o.rempel@pengutronix.de>
+ <20180726065331.6186-7-o.rempel@pengutronix.de>
+ <CABb+yY1Fbj2GiO_zjwnvNFutjX_fRpxnuEoeu6Z3s4NAv2ugbg@mail.gmail.com>
+In-Reply-To: <CABb+yY1Fbj2GiO_zjwnvNFutjX_fRpxnuEoeu6Z3s4NAv2ugbg@mail.gmail.com>
 
-The System Timer is introduced as an always-on timer being
-clockevent device for tick-broadcasting.
+--BCN74KpNeBohgqROeaPdkFBnYLUOzlgiy
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-For clock, it is driven by 13 MHz system clock.
-The implementation uses the system clock with no clock
-source divider.
 
-For interrupt, the clock event timer can be used by all cores.
 
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
----
- drivers/clocksource/timer-mediatek.c | 104 ++++++++++++++++++++++++++++++++++-
- 1 file changed, 103 insertions(+), 1 deletion(-)
+On 26.07.2018 12:15, Jassi Brar wrote:
+> On Thu, Jul 26, 2018 at 12:23 PM, Oleksij Rempel
+> <o.rempel@pengutronix.de> wrote:
+>=20
+> .....
+>=20
+>> +
+>> +/* Control Register */
+>> +#define IMX_MU_xCR             0x24
+>> +/* Transmit Interrupt Enable */
+>> +#define IMX_MU_xCR_TIEn(x)     BIT(20 + (3 - (x)))
+>> +/* Receive Interrupt Enable */
+>> +#define IMX_MU_xCR_RIEn(x)     BIT(24 + (3 - (x)))
+>> +
+>> +#define IMX_MU_CHANS   4u
+>> +
+> The 'u' unnecessarily refreshes my knowledge of C  :)
 
-diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
-index e57c4d7..eb10321 100644
---- a/drivers/clocksource/timer-mediatek.c
-+++ b/drivers/clocksource/timer-mediatek.c
-@@ -56,8 +56,86 @@
- #define GPT_CNT_REG(val)        (0x08 + (0x10 * (val)))
- #define GPT_CMP_REG(val)        (0x0C + (0x10 * (val)))
- 
-+/* system timer */
-+#define SYST_BASE               (0x40)
-+
-+#define SYST_CON                (SYST_BASE + 0x0)
-+#define SYST_VAL                (SYST_BASE + 0x4)
-+
-+#define SYST_CON_REG(to)        (timer_of_base(to) + SYST_CON)
-+#define SYST_VAL_REG(to)        (timer_of_base(to) + SYST_VAL)
-+
-+/*
-+ * SYST_CON_EN: Clock enable. Shall be set to
-+ *   - Start timer countdown.
-+ *   - Allow timeout ticks being updated.
-+ *   - Allow changing interrupt functions.
-+ *
-+ * SYST_CON_IRQ_EN: Set to allow interrupt.
-+ *
-+ * SYST_CON_IRQ_CLR: Set to clear interrupt.
-+ */
-+#define SYST_CON_EN              BIT(0)
-+#define SYST_CON_IRQ_EN          BIT(1)
-+#define SYST_CON_IRQ_CLR         BIT(4)
-+
- static void __iomem *gpt_sched_reg __read_mostly;
- 
-+static void mtk_syst_ack_irq(struct timer_of *to)
-+{
-+	/* Clear and disable interrupt */
-+	writel(SYST_CON_IRQ_CLR | SYST_CON_EN, SYST_CON_REG(to));
-+}
-+
-+static irqreturn_t mtk_syst_handler(int irq, void *dev_id)
-+{
-+	struct clock_event_device *clkevt = dev_id;
-+	struct timer_of *to = to_timer_of(clkevt);
-+
-+	mtk_syst_ack_irq(to);
-+	clkevt->event_handler(clkevt);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static int mtk_syst_clkevt_next_event(unsigned long ticks,
-+				      struct clock_event_device *clkevt)
-+{
-+	struct timer_of *to = to_timer_of(clkevt);
-+
-+	/* Enable clock to allow timeout tick update later */
-+	writel(SYST_CON_EN, SYST_CON_REG(to));
-+
-+	/*
-+	 * Write new timeout ticks. Timer shall start countdown
-+	 * after timeout ticks are updated.
-+	 */
-+	writel(ticks, SYST_VAL_REG(to));
-+
-+	/* Enable interrupt */
-+	writel(SYST_CON_EN | SYST_CON_IRQ_EN, SYST_CON_REG(to));
-+
-+	return 0;
-+}
-+
-+static int mtk_syst_clkevt_shutdown(struct clock_event_device *clkevt)
-+{
-+	/* Disable timer */
-+	writel(0, SYST_CON_REG(to_timer_of(clkevt)));
-+
-+	return 0;
-+}
-+
-+static int mtk_syst_clkevt_resume(struct clock_event_device *clkevt)
-+{
-+	return mtk_syst_clkevt_shutdown(clkevt);
-+}
-+
-+static int mtk_syst_clkevt_oneshot(struct clock_event_device *clkevt)
-+{
-+	return 0;
-+}
-+
- static u64 notrace mtk_gpt_read_sched_clock(void)
- {
- 	return readl_relaxed(gpt_sched_reg);
-@@ -186,6 +264,30 @@ static struct timer_of to = {
- 	},
- };
- 
-+static int __init mtk_syst_init(struct device_node *node)
-+{
-+	int ret;
-+
-+	to.clkevt.features = CLOCK_EVT_FEAT_DYNIRQ | CLOCK_EVT_FEAT_ONESHOT;
-+	to.clkevt.set_state_shutdown = mtk_syst_clkevt_shutdown;
-+	to.clkevt.set_state_oneshot = mtk_syst_clkevt_oneshot;
-+	to.clkevt.tick_resume = mtk_syst_clkevt_resume;
-+	to.clkevt.set_next_event = mtk_syst_clkevt_next_event;
-+	to.of_irq.handler = mtk_syst_handler;
-+
-+	ret = timer_of_init(node, &to);
-+	if (ret)
-+		goto err;
-+
-+	clockevents_config_and_register(&to.clkevt, timer_of_rate(&to),
-+					TIMER_SYNC_TICKS, 0xffffffff);
-+
-+	return 0;
-+err:
-+	timer_of_cleanup(&to);
-+	return ret;
-+}
-+
- static int __init mtk_gpt_init(struct device_node *node)
- {
- 	int ret;
-@@ -218,9 +320,9 @@ static int __init mtk_gpt_init(struct device_node *node)
- 	mtk_gpt_enable_irq(&to, TIMER_CLK_EVT);
- 
- 	return 0;
--
- err:
- 	timer_of_cleanup(&to);
- 	return ret;
- }
- TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
-+TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
--- 
-2.7.4
+ok
+
+>=20
+>> +struct imx_mu_con_priv {
+>> +       int                     irq;
+>> +       unsigned int            idx;
+>> +       char                    *irq_desc;
+>>
+> Having      char  irq_desc[16];    seems simpler than free/kfree upon
+> each startup/shutdown. Simply use snprintf() in probe().
+
+Currently all known configurations use one or two channels. I don't see
+any sense to allocate all at the probe.
+
+
+--BCN74KpNeBohgqROeaPdkFBnYLUOzlgiy--
+
+--nL5YWVr3GLDlSQDY1BkDVeW4R1E6Ycc48
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEpENFL0P3hvQ7p0DDdQOiSHVI77QFAltZp70ACgkQdQOiSHVI
+77R9hQf+PHzjVj6uw8lP/pgBEyqp2oLMRnnw9uAUvoKZqwcNwVYZwiUmvx0HyFu1
+PwW08SUREmBGM3aNFMzcenKGZPI0+O3Vj95Voq5649HwMBt8rVXK7vTi+JJgTJT2
+E94MeEXpTPUN6duZwB8Yzn+LOCiKEPwam9oPJf+6gPsEWq/Yseka0ILwQlWavgAB
+nSJnjqIiEaUmGgIOktkhD4eJFeFsAskyHZHZa769yDlvMCPqjTLoIL1erNpdpiDa
+Dt4nTazctoGkXlgofOk9SIlAaSXA3NnCYjMI+W6y5E2yigCT8HAX6XZFpBddxOcO
+Q2C3xgMGHpgPP4sL3yzX5TprRwvMMA==
+=kqUp
+-----END PGP SIGNATURE-----
+
+--nL5YWVr3GLDlSQDY1BkDVeW4R1E6Ycc48--
+
+
+--===============8636632566864556502==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--===============8636632566864556502==--
