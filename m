@@ -1,76 +1,82 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] ARM: mediatek: 32-bit DT updates for v4.19
-Date: Thu, 26 Jul 2018 10:31:09 +0200
-Message-ID: <3ee3ccfb-8fd6-34b0-c03d-67532067e707@gmail.com>
-References: <2d918d15-d1d3-b4e0-7427-0b3baa56100a@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2d918d15-d1d3-b4e0-7427-0b3baa56100a@gmail.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm-soc <arm@kernel.org>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, Ryder Lee <ryder.lee@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Frank Wunderlich <frank-w@public-files.de>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: [PATCH 2/7] clocksource/drivers/timer-mediatek: Add system timer bindings
+Date: Thu, 26 Jul 2018 12:15:25 +0200
+Message-ID: <1532600131-28168-2-git-send-email-daniel.lezcano@linaro.org>
+References: <014f94f9-54d4-1ee0-aa89-67ca5d221989@free.fr>
+ <1532600131-28168-1-git-send-email-daniel.lezcano@linaro.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1532600131-28168-1-git-send-email-daniel.lezcano@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: tglx@linutronix.de, mingo@kernel.org
+Cc: linux-kernel@vger.kernel.org, stanley.chu@mediatek.com, baolin.wang@linaro.org, Sudeep.Holla@arm.com, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:OPEN FIRMWARE AND FLATTENED
+        DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Olof,
-Hi Arnd,
+From: Stanley Chu <stanley.chu@mediatek.com>
 
-This is the second attempt to send the pull request, as in the first one I sent
-the branch instead of the tag.
+This patch adds bindings of new "System Timer" on Mediatek SoCs.
 
-Please have a look.
-Regards,
-Matthias
+Remove RTC clock in the same time because it is not used by
+both "General Purpose Timer" and "System Timer" now.
 
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
 ---
+ .../bindings/timer/mediatek,mtk-timer.txt          | 34 +++++++++++++---------
+ 1 file changed, 20 insertions(+), 14 deletions(-)
 
-The following changes since commit ce397d215ccd07b8ae3f71db689aedb85d56ab40:
-
-  Linux 4.18-rc1 (2018-06-17 08:04:49 +0900)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-tags/v4.18-next-dts32
-
-for you to fetch changes up to 11a20c5601c5f0c685fa3a166348b7ffa830e123:
-
-  dt-bindings: arm: mediatek: cleanup MT7623N reference boards (2018-07-16
-15:57:40 +0200)
-
-----------------------------------------------------------------
-- mt7623
-- delete unsupported reference board
-- fix pio leds
-- add missing cooling device
-
-----------------------------------------------------------------
-Frank Wunderlich (1):
-      arm: dts: mediatek: Fix pio-leds for Bananapi-R2
-
-Ryder Lee (2):
-      arm: dts: mt7623: cleanup MT7623N NAND dts file
-      dt-bindings: arm: mediatek: cleanup MT7623N reference boards
-
-Viresh Kumar (1):
-      arm: dts: mediatek: Add missing cooling device properties for CPUs
-
- Documentation/devicetree/bindings/arm/mediatek.txt |  3 -
- arch/arm/boot/dts/Makefile                         |  1 -
- arch/arm/boot/dts/mt7623.dtsi                      |  3 +
- arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts      |  6 +-
- arch/arm/boot/dts/mt7623n-rfb-nand.dts             | 73 ------------------
- arch/arm/boot/dts/mt7623n-rfb.dtsi                 | 86 ----------------------
- 6 files changed, 6 insertions(+), 166 deletions(-)
- delete mode 100644 arch/arm/boot/dts/mt7623n-rfb-nand.dts
- delete mode 100644 arch/arm/boot/dts/mt7623n-rfb.dtsi
+diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+index b1fe7e9..18d4d01 100644
+--- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
++++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+@@ -1,19 +1,25 @@
+-Mediatek MT6577, MT6572 and MT6589 Timers
+----------------------------------------
++Mediatek Timers
++---------------
++
++Mediatek SoCs have two different timers on different platforms,
++- GPT (General Purpose Timer)
++- SYST (System Timer)
++
++The proper timer will be selected automatically by driver.
+ 
+ Required properties:
+ - compatible should contain:
+-	* "mediatek,mt2701-timer" for MT2701 compatible timers
+-	* "mediatek,mt6580-timer" for MT6580 compatible timers
+-	* "mediatek,mt6589-timer" for MT6589 compatible timers
+-	* "mediatek,mt7623-timer" for MT7623 compatible timers
+-	* "mediatek,mt8127-timer" for MT8127 compatible timers
+-	* "mediatek,mt8135-timer" for MT8135 compatible timers
+-	* "mediatek,mt8173-timer" for MT8173 compatible timers
+-	* "mediatek,mt6577-timer" for MT6577 and all above compatible timers
+-- reg: Should contain location and length for timers register.
+-- clocks: Clocks driving the timer hardware. This list should include two
+-	clocks. The order is system clock and as second clock the RTC clock.
++	* "mediatek,mt2701-timer" for MT2701 compatible timers (GPT)
++	* "mediatek,mt6580-timer" for MT6580 compatible timers (GPT)
++	* "mediatek,mt6589-timer" for MT6589 compatible timers (GPT)
++	* "mediatek,mt7623-timer" for MT7623 compatible timers (GPT)
++	* "mediatek,mt8127-timer" for MT8127 compatible timers (GPT)
++	* "mediatek,mt8135-timer" for MT8135 compatible timers (GPT)
++	* "mediatek,mt8173-timer" for MT8173 compatible timers (GPT)
++	* "mediatek,mt6577-timer" for MT6577 and all above compatible timers (GPT)
++	* "mediatek,mt6765-timer" for MT6765 compatible timers (SYST)
++- reg: Should contain location and length for timer register.
++- clocks: Should contain system clock.
+ 
+ Examples:
+ 
+@@ -21,5 +27,5 @@ Examples:
+ 		compatible = "mediatek,mt6577-timer";
+ 		reg = <0x10008000 0x80>;
+ 		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>;
+-		clocks = <&system_clk>, <&rtc_clk>;
++		clocks = <&system_clk>;
+ 	};
+-- 
+2.7.4
