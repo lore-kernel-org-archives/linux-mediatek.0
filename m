@@ -1,16 +1,17 @@
 From: Jassi Brar <jassisinghbrar@gmail.com>
-Subject: Re: [PATCH v7 6/6] mailbox: Add support for i.MX7D messaging unit
-Date: Thu, 26 Jul 2018 16:39:34 +0530
-Message-ID: <CABb+yY2=mFr+gFuWyE+VyG6dWj3gKhTs6X+U9UjFu5N=4zU5uA@mail.gmail.com>
+Subject: Re: [PATCH v7 3/6] dt-bindings: mailbox: imx-mu: add generic MU
+ channel support
+Date: Thu, 26 Jul 2018 16:58:27 +0530
+Message-ID: <CABb+yY2sU322YVWLee+Bg8ytd6AA78aLJLWki+pg5PP1Hq8sWg@mail.gmail.com>
 References: <20180726065331.6186-1-o.rempel@pengutronix.de>
- <20180726065331.6186-7-o.rempel@pengutronix.de>
- <CABb+yY1Fbj2GiO_zjwnvNFutjX_fRpxnuEoeu6Z3s4NAv2ugbg@mail.gmail.com>
- <a988e8b4-28be-f598-82de-421017409368@pengutronix.de>
+ <20180726065331.6186-4-o.rempel@pengutronix.de>
+ <CABb+yY0kVFvQRBrU4j9t=_JcSUkcXMMSK5u=XSufM6XcmKiv-g@mail.gmail.com>
+ <ddd25683-d7a6-e900-461f-9bbac3100579@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <a988e8b4-28be-f598-82de-421017409368@pengutronix.de>
+In-Reply-To: <ddd25683-d7a6-e900-461f-9bbac3100579@pengutronix.de>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -26,21 +27,49 @@ Cc: Mark Rutland <mark.rutland@arm.com>, "A.s. Dong" <aisheng.dong@nxp.com>, Dev
  srv_heupstream" <linux-mediatek@lists.infradead.org>, Shawn Guo <shawnguo@kernel.org>srv_heupstream <linux-arm-kernel@lists.infradead.org>, dl-linux-imx <linux-imx@nxp.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jul 26, 2018 at 4:21 PM, Oleksij Rempel <o.rempel@pengutronix.de> wrote:
-
+On Thu, Jul 26, 2018 at 4:27 PM, Oleksij Rempel <o.rempel@pengutronix.de> wrote:
+>
+>
+> On 26.07.2018 11:49, Jassi Brar wrote:
+>> On Thu, Jul 26, 2018 at 12:23 PM, Oleksij Rempel
+>> <o.rempel@pengutronix.de> wrote:
 >>
->>> +struct imx_mu_con_priv {
->>> +       int                     irq;
->>> +       unsigned int            idx;
->>> +       char                    *irq_desc;
+>>> Each MU has four pairs of rx/tx data register with four rx/tx interrupts
+>>> which can also be used as a separate channel.
 >>>
->> Having      char  irq_desc[16];    seems simpler than free/kfree upon
->> each startup/shutdown. Simply use snprintf() in probe().
+>> So the hardware actually supports 4 channels.
+>>
+>>> -- #mbox-cells:  Must be 0. Number of cells in a mailbox
+>>> +- #mbox-cells:  Must be:
+>>> +               0 - for single channel mode. i.MX8* SCU protocol specific.
+>>> +               1 - for multichannel (generic) mode.
+>>> +
+>> No, please.
+>> DT bindings should reflect the real hardware, and not the software
+>> mode we want the driver to work in.
+>> Please define mbox-cells=1  and have the i.MX8* platform always ask
+>> for channel-0.
 >
-> Currently all known configurations use one or two channels. I don't see
-> any sense to allocate all at the probe.
+> We spend already some week to publicly talk about this..
 >
-Just because only 2 out of 4 channels are being used, it doesn't make sense?
+You should have kept me in the loop.
+I know, I am not that important, but for the sake of the protocol you
+should have CC'ed the mailbox maintainer :)
 
-What is the concern?  "wasting" 16x2 bytes of memory?  How many bytes,
-LOC and execution time does kasprintf() waste?
+> The problem is, imx8 has multiple MUs
+>
+You mean multiple instances of the MU. Some have 4 channels, some 1.
+Is that correct?
+
+>, only some of them communicate
+> directly with SCU.
+>
+OK
+
+> SCU has some well defined protocol and
+> MU should be used and configured in some SCU specific way. From NXP
+> perspective, SCU firmware should not be replaceable and from Linux side
+> seen as part of the HW.
+>
+Sure. But the behaviour (protocol) should be implemented in the client
+driver, not the controller driver.
