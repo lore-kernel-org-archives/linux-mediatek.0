@@ -1,61 +1,108 @@
-From: Olof Johansson <olof@lixom.net>
-Subject: Re: [GIT PULL] ARM: mediatek: soc updates for v4.19
-Date: Thu, 26 Jul 2018 22:08:32 +0200
-Message-ID: <CAOesGMiGQSTNBPuSuhhm1mT2eKxXNujRFk_KjtCOg_oTbOthsg@mail.gmail.com>
-References: <9fdbdba4-c2e0-510d-62bb-e0a604942e19@gmail.com>
- <97140b0d-ebc7-4fc2-e953-0709da22264b@gmail.com>
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+Subject: Re: [PATCH v4 27/35] mtd: rawnand: sm_common: convert driver to
+ nand_scan_with_ids()
+Date: Fri, 27 Jul 2018 01:13:46 +0200
+Message-ID: <20180727011346.3931dbe9@xps13>
+References: <20180720151527.16038-1-miquel.raynal@bootlin.com>
+        <20180720151527.16038-28-miquel.raynal@bootlin.com>
+        <20180722084432.61b579b1@bbrezillon>
+        <20180726210655.03eca681@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <97140b0d-ebc7-4fc2-e953-0709da22264b@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Argus Lin <argus.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180726210655.03eca681@bbrezillon>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Boris Brezillon <boris.brezillon@bootlin.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, Mans Rullgard <mans@mansr.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Stefan Agner <stefan@agner.ch>, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mtd@lists.infradead.org, Kamal Dasu <kdasu.kdev@gmail.com>, Josh Wu <rainyfeeling@outlook.com>, Marc Gonzalez <marc.w.gonzalez@free.fr>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com, Sylvain Lemieux <slemieux.tyco@gmail.com>, Wenyou Yang <wenyou.yang@microchip.com>, Tudor Ambarus <Tudor.Ambarus@microchip.com>, Vladimir Zapolskiy <vz@mleia.com>, Harvey Hunt <harveyhuntnexus@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gm>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jul 26, 2018 at 10:20 AM, Matthias Brugger
-<matthias.bgg@gmail.com> wrote:
-> Hi Olof,
-> Hi Arnd,
->
-> This is the second attempt to send the pull request, as in the first one I sent
-> the branch instead of the tag.
->
-> Please have a look.
-> Regards,
-> Matthias
->
-> ---
->
-> The following changes since commit ce397d215ccd07b8ae3f71db689aedb85d56ab40:
->
->   Linux 4.18-rc1 (2018-06-17 08:04:49 +0900)
->
-> are available in the Git repository at:
->
->   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-> tags/v4.18-next-soc
->
-> for you to fetch changes up to 00673189b8b971c00417632ffe4c90ba9b4f2568:
->
->   soc: mediatek: pwrap: add mt6351 driver for mt6797 SoCs (2018-07-16 15:50:17
-> +0200)
->
-> ----------------------------------------------------------------
-> - add pmic wrapper support for mt6797
-> - pmic wrapper fix chiper init
-> - add support for pmic mt6351
+Hi Boris,
 
-Merged, thanks!
+Boris Brezillon <boris.brezillon@bootlin.com> wrote on Thu, 26 Jul 2018
+21:06:55 +0200:
 
+> On Sun, 22 Jul 2018 08:44:32 +0200
+> Boris Brezillon <boris.brezillon@bootlin.com> wrote:
+> 
+> > On Fri, 20 Jul 2018 17:15:19 +0200
+> > Miquel Raynal <miquel.raynal@bootlin.com> wrote:
+> >   
+> > > Two helpers have been added to the core to make ECC-related
+> > > configuration between the detection phase and the final NAND scan. Use
+> > > these hooks and convert the driver to just use nand_scan_with_ids()
+> > > (alternative to nand_scan() for passing a flash IDs table) instead of
+> > > both nand_scan_ident() and nand_scan_tail().
+> > > 
+> > > Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>    
+> > 
+> > Reviewed-by: Boris Brezillon <boris.brezillon@bootlin.com>
+> >   
+> > > ---
+> > >  drivers/mtd/nand/raw/sm_common.c | 39 +++++++++++++++++++++++++--------------
+> > >  1 file changed, 25 insertions(+), 14 deletions(-)
+> > > 
+> > > diff --git a/drivers/mtd/nand/raw/sm_common.c b/drivers/mtd/nand/raw/sm_common.c
+> > > index 7f5044a79f01..d05e3f976a5e 100644
+> > > --- a/drivers/mtd/nand/raw/sm_common.c
+> > > +++ b/drivers/mtd/nand/raw/sm_common.c
+> > > @@ -160,19 +160,9 @@ static struct nand_flash_dev nand_xd_flash_ids[] = {
+> > >  	{NULL}
+> > >  };
+> > >  
+> > > -int sm_register_device(struct mtd_info *mtd, int smartmedia)
+> > > +static int sm_attach_chip(struct nand_chip *chip)
+> > >  {
+> > > -	struct nand_chip *chip = mtd_to_nand(mtd);
+> > > -	int ret;
+> > > -
+> > > -	chip->options |= NAND_SKIP_BBTSCAN;
+> > > -
+> > > -	/* Scan for card properties */
+> > > -	ret = nand_scan_ident(mtd, 1, smartmedia ?
+> > > -		nand_smartmedia_flash_ids : nand_xd_flash_ids);
+> > > -
+> > > -	if (ret)
+> > > -		return ret;
+> > > +	struct mtd_info *mtd = nand_to_mtd(chip);
+> > >  
+> > >  	/* Bad block marker position */
+> > >  	chip->badblockpos = 0x05;
+> > > @@ -187,12 +177,33 @@ int sm_register_device(struct mtd_info *mtd, int smartmedia)
+> > >  	else
+> > >  		return -ENODEV;
+> > >  
+> > > -	ret = nand_scan_tail(mtd);
+> > > +	return 0;
+> > > +}
+> > >  
+> > > +static const struct nand_controller_ops sm_controller_ops = {
+> > > +	.attach_chip = sm_attach_chip,
+> > > +};
+> > > +
+> > > +int sm_register_device(struct mtd_info *mtd, int smartmedia)
+> > > +{
+> > > +	struct nand_chip *chip = mtd_to_nand(mtd);
+> > > +	struct nand_flash_dev *flash_ids;
+> > > +	int ret;
+> > > +
+> > > +	chip->options |= NAND_SKIP_BBTSCAN;
+> > > +
+> > > +	/* Scan for card properties */
+> > > +	chip->dummy_controller.ops = &sm_controller_ops;
+> > > +	flash_ids = smartmedia ? nand_smartmedia_flash_ids : nand_xd_flash_ids;
+> > > +	ret = nand_scan_with_ids(mtd, 1, flash_ids);
+> > >  	if (ret)
+> > >  		return ret;
+> > >  
+> > > -	return mtd_device_register(mtd, NULL, 0);
+> > > +	ret = mtd_device_register(mtd, NULL, 0);
+> > > +	if (ret)
+> > > +		nand_release(mtd);  
+> 
+> Didn't notice that while reviewing, but it would have been better to
+> use nand_cleanup() and do this change separately.
 
--Olof
+Indeed, will fix it.
+
+Miquèl
