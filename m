@@ -1,56 +1,77 @@
-From: CK Hu <ck.hu@mediatek.com>
+From: Souptick Joarder <jrdr.linux@gmail.com>
 Subject: Re: [PATCH] drm/mediatek: Convert drm_atomic_helper_suspend/resume()
-Date: Mon, 30 Jul 2018 11:53:06 +0800
-Message-ID: <1532922786.3723.1.camel@mtksdaap41>
-References: <20180728133845.GA15261@jordon-HP-15-Notebook-PC>
+Date: Mon, 30 Jul 2018 10:21:23 +0530
+Message-ID: <CAFqt6zbbVMagJeM53g79RoeYt7edmAZiF8r0_HpyxnS9123vQg@mail.gmail.com>
+References: <20180728133845.GA15261@jordon-HP-15-Notebook-PC> <1532922786.3723.1.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180728133845.GA15261@jordon-HP-15-Notebook-PC>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Souptick Joarder <jrdr.linux@gmail.com>
-Cc: ajitn.linux@gmail.com, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1532922786.3723.1.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: p.zabel@pengutronix.de, airlied@linux.ie, Matthias Brugger <matthias.bgg@gmail.com>, Ajit Linux <ajitn.linux@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFNvdXB0aWNrOgoKT24gU2F0LCAyMDE4LTA3LTI4IGF0IDE5OjA4ICswNTMwLCBTb3VwdGlj
-ayBKb2FyZGVyIHdyb3RlOgo+IGNvbnZlcnQgZHJtX2F0b21pY19oZWxwZXJfc3VzcGVuZC9yZXN1
-bWUoKSB0byB1c2UKPiBkcm1fbW9kZV9jb25maWdfaGVscGVyX3N1c3BlbmQvcmVzdW1lKCkuCj4g
-CgpSZXZpZXdlZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KCj4gU2lnbmVkLW9mZi1i
-eTogU291cHRpY2sgSm9hcmRlciA8anJkci5saW51eEBnbWFpbC5jb20+Cj4gU2lnbmVkLW9mZi1i
-eTogQWppdCBOZWdpIDxhaml0bi5saW51eEBnbWFpbC5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIHwgMjEgKysrKysrKystLS0tLS0tLS0tLS0tCj4g
-IDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDEzIGRlbGV0aW9ucygtKQo+IAo+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gaW5kZXggYTJjYTkwZi4uMWZjZGEy
-ZGUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMK
-PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+IEBAIC01MjAs
-MjkgKzUyMCwyNCBAQCBzdGF0aWMgaW50IG10a19kcm1fc3lzX3N1c3BlbmQoc3RydWN0IGRldmlj
-ZSAqZGV2KQo+ICB7Cj4gIAlzdHJ1Y3QgbXRrX2RybV9wcml2YXRlICpwcml2YXRlID0gZGV2X2dl
-dF9kcnZkYXRhKGRldik7Cj4gIAlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtID0gcHJpdmF0ZS0+ZHJt
-Owo+ICsJaW50IHJldDsKPiAgCj4gLQlkcm1fa21zX2hlbHBlcl9wb2xsX2Rpc2FibGUoZHJtKTsK
-PiAtCj4gLQlwcml2YXRlLT5zdXNwZW5kX3N0YXRlID0gZHJtX2F0b21pY19oZWxwZXJfc3VzcGVu
-ZChkcm0pOwo+IC0JaWYgKElTX0VSUihwcml2YXRlLT5zdXNwZW5kX3N0YXRlKSkgewo+IC0JCWRy
-bV9rbXNfaGVscGVyX3BvbGxfZW5hYmxlKGRybSk7Cj4gLQkJcmV0dXJuIFBUUl9FUlIocHJpdmF0
-ZS0+c3VzcGVuZF9zdGF0ZSk7Cj4gLQl9Cj4gLQo+ICsJcmV0ID0gZHJtX21vZGVfY29uZmlnX2hl
-bHBlcl9zdXNwZW5kKGRybSk7Cj4gIAlEUk1fREVCVUdfRFJJVkVSKCJtdGtfZHJtX3N5c19zdXNw
-ZW5kXG4iKTsKPiAtCXJldHVybiAwOwo+ICsKPiArCXJldHVybiByZXQ7Cj4gIH0KPiAgCj4gIHN0
-YXRpYyBpbnQgbXRrX2RybV9zeXNfcmVzdW1lKHN0cnVjdCBkZXZpY2UgKmRldikKPiAgewo+ICAJ
-c3RydWN0IG10a19kcm1fcHJpdmF0ZSAqcHJpdmF0ZSA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+
-ICAJc3RydWN0IGRybV9kZXZpY2UgKmRybSA9IHByaXZhdGUtPmRybTsKPiArCWludCByZXQ7Cj4g
-IAo+IC0JZHJtX2F0b21pY19oZWxwZXJfcmVzdW1lKGRybSwgcHJpdmF0ZS0+c3VzcGVuZF9zdGF0
-ZSk7Cj4gLQlkcm1fa21zX2hlbHBlcl9wb2xsX2VuYWJsZShkcm0pOwo+IC0KPiArCXJldCA9IGRy
-bV9tb2RlX2NvbmZpZ19oZWxwZXJfcmVzdW1lKGRybSk7Cj4gIAlEUk1fREVCVUdfRFJJVkVSKCJt
-dGtfZHJtX3N5c19yZXN1bWVcbiIpOwo+IC0JcmV0dXJuIDA7Cj4gKwo+ICsJcmV0dXJuIHJldDsK
-PiAgfQo+ICAjZW5kaWYKPiAgCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
-ZHJpLWRldmVsCg==
+On Mon, Jul 30, 2018 at 9:23 AM, CK Hu <ck.hu@mediatek.com> wrote:
+> Hi, Souptick:
+>
+> On Sat, 2018-07-28 at 19:08 +0530, Souptick Joarder wrote:
+>> convert drm_atomic_helper_suspend/resume() to use
+>> drm_mode_config_helper_suspend/resume().
+>>
+>
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+
+Thank CK, can we get this patch in queue for 4.19 ?
+
+>
+>> Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
+>> Signed-off-by: Ajit Negi <ajitn.linux@gmail.com>
+>> ---
+>>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 21 ++++++++-------------
+>>  1 file changed, 8 insertions(+), 13 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> index a2ca90f..1fcda2de 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> @@ -520,29 +520,24 @@ static int mtk_drm_sys_suspend(struct device *dev)
+>>  {
+>>       struct mtk_drm_private *private = dev_get_drvdata(dev);
+>>       struct drm_device *drm = private->drm;
+>> +     int ret;
+>>
+>> -     drm_kms_helper_poll_disable(drm);
+>> -
+>> -     private->suspend_state = drm_atomic_helper_suspend(drm);
+>> -     if (IS_ERR(private->suspend_state)) {
+>> -             drm_kms_helper_poll_enable(drm);
+>> -             return PTR_ERR(private->suspend_state);
+>> -     }
+>> -
+>> +     ret = drm_mode_config_helper_suspend(drm);
+>>       DRM_DEBUG_DRIVER("mtk_drm_sys_suspend\n");
+>> -     return 0;
+>> +
+>> +     return ret;
+>>  }
+>>
+>>  static int mtk_drm_sys_resume(struct device *dev)
+>>  {
+>>       struct mtk_drm_private *private = dev_get_drvdata(dev);
+>>       struct drm_device *drm = private->drm;
+>> +     int ret;
+>>
+>> -     drm_atomic_helper_resume(drm, private->suspend_state);
+>> -     drm_kms_helper_poll_enable(drm);
+>> -
+>> +     ret = drm_mode_config_helper_resume(drm);
+>>       DRM_DEBUG_DRIVER("mtk_drm_sys_resume\n");
+>> -     return 0;
+>> +
+>> +     return ret;
+>>  }
+>>  #endif
+>>
+>
+>
