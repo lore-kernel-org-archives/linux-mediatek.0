@@ -1,77 +1,73 @@
-From: Souptick Joarder <jrdr.linux@gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Convert drm_atomic_helper_suspend/resume()
-Date: Mon, 30 Jul 2018 10:21:23 +0530
-Message-ID: <CAFqt6zbbVMagJeM53g79RoeYt7edmAZiF8r0_HpyxnS9123vQg@mail.gmail.com>
-References: <20180728133845.GA15261@jordon-HP-15-Notebook-PC> <1532922786.3723.1.camel@mtksdaap41>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [SPAM]Re: [PATCH] drm/mediatek: Convert
+ drm_atomic_helper_suspend/resume()
+Date: Mon, 30 Jul 2018 15:29:30 +0800
+Message-ID: <1532935770.22708.2.camel@mtksdaap41>
+References: <20180728133845.GA15261@jordon-HP-15-Notebook-PC>
+ <1532922786.3723.1.camel@mtksdaap41>
+ <CAFqt6zbbVMagJeM53g79RoeYt7edmAZiF8r0_HpyxnS9123vQg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1532922786.3723.1.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: p.zabel@pengutronix.de, airlied@linux.ie, Matthias Brugger <matthias.bgg@gmail.com>, Ajit Linux <ajitn.linux@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAFqt6zbbVMagJeM53g79RoeYt7edmAZiF8r0_HpyxnS9123vQg@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Souptick Joarder <jrdr.linux@gmail.com>
+Cc: Ajit Linux <ajitn.linux@gmail.com>, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jul 30, 2018 at 9:23 AM, CK Hu <ck.hu@mediatek.com> wrote:
-> Hi, Souptick:
->
-> On Sat, 2018-07-28 at 19:08 +0530, Souptick Joarder wrote:
->> convert drm_atomic_helper_suspend/resume() to use
->> drm_mode_config_helper_suspend/resume().
->>
->
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
-Thank CK, can we get this patch in queue for 4.19 ?
-
->
->> Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
->> Signed-off-by: Ajit Negi <ajitn.linux@gmail.com>
->> ---
->>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 21 ++++++++-------------
->>  1 file changed, 8 insertions(+), 13 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
->> index a2ca90f..1fcda2de 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
->> @@ -520,29 +520,24 @@ static int mtk_drm_sys_suspend(struct device *dev)
->>  {
->>       struct mtk_drm_private *private = dev_get_drvdata(dev);
->>       struct drm_device *drm = private->drm;
->> +     int ret;
->>
->> -     drm_kms_helper_poll_disable(drm);
->> -
->> -     private->suspend_state = drm_atomic_helper_suspend(drm);
->> -     if (IS_ERR(private->suspend_state)) {
->> -             drm_kms_helper_poll_enable(drm);
->> -             return PTR_ERR(private->suspend_state);
->> -     }
->> -
->> +     ret = drm_mode_config_helper_suspend(drm);
->>       DRM_DEBUG_DRIVER("mtk_drm_sys_suspend\n");
->> -     return 0;
->> +
->> +     return ret;
->>  }
->>
->>  static int mtk_drm_sys_resume(struct device *dev)
->>  {
->>       struct mtk_drm_private *private = dev_get_drvdata(dev);
->>       struct drm_device *drm = private->drm;
->> +     int ret;
->>
->> -     drm_atomic_helper_resume(drm, private->suspend_state);
->> -     drm_kms_helper_poll_enable(drm);
->> -
->> +     ret = drm_mode_config_helper_resume(drm);
->>       DRM_DEBUG_DRIVER("mtk_drm_sys_resume\n");
->> -     return 0;
->> +
->> +     return ret;
->>  }
->>  #endif
->>
->
->
+SGksIFNvdXB0aWNrOgoKCk9uIE1vbiwgMjAxOC0wNy0zMCBhdCAxMDoyMSArMDUzMCwgU291cHRp
+Y2sgSm9hcmRlciB3cm90ZToKPiBPbiBNb24sIEp1bCAzMCwgMjAxOCBhdCA5OjIzIEFNLCBDSyBI
+dSA8Y2suaHVAbWVkaWF0ZWsuY29tPiB3cm90ZToKPiA+IEhpLCBTb3VwdGljazoKPiA+Cj4gPiBP
+biBTYXQsIDIwMTgtMDctMjggYXQgMTk6MDggKzA1MzAsIFNvdXB0aWNrIEpvYXJkZXIgd3JvdGU6
+Cj4gPj4gY29udmVydCBkcm1fYXRvbWljX2hlbHBlcl9zdXNwZW5kL3Jlc3VtZSgpIHRvIHVzZQo+
+ID4+IGRybV9tb2RlX2NvbmZpZ19oZWxwZXJfc3VzcGVuZC9yZXN1bWUoKS4KPiA+Pgo+ID4KPiA+
+IFJldmlld2VkLWJ5OiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgo+IAo+IFRoYW5rIENLLCBj
+YW4gd2UgZ2V0IHRoaXMgcGF0Y2ggaW4gcXVldWUgZm9yIDQuMTkgPwo+IAoKQXBwbGllZCB0byBt
+ZWRpYXRlay1kcm0tZml4ZXMtNC4xOSBbMV0uCgpbMV0KaHR0cHM6Ly9naXRodWIuY29tL2NraHUt
+bWVkaWF0ZWsvbGludXguZ2l0LXRhZ3MvY29tbWl0cy9tZWRpYXRlay1kcm0tZml4ZXMtNC4xOQoK
+UmVnYXJkcywKQ0sKCj4gPgo+ID4+IFNpZ25lZC1vZmYtYnk6IFNvdXB0aWNrIEpvYXJkZXIgPGpy
+ZHIubGludXhAZ21haWwuY29tPgo+ID4+IFNpZ25lZC1vZmYtYnk6IEFqaXQgTmVnaSA8YWppdG4u
+bGludXhAZ21haWwuY29tPgo+ID4+IC0tLQo+ID4+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2RybV9kcnYuYyB8IDIxICsrKysrKysrLS0tLS0tLS0tLS0tLQo+ID4+ICAxIGZpbGUgY2hh
+bmdlZCwgOCBpbnNlcnRpb25zKCspLCAxMyBkZWxldGlvbnMoLSkKPiA+Pgo+ID4+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gPj4gaW5kZXggYTJjYTkwZi4uMWZjZGEyZGUg
+MTAwNjQ0Cj4gPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMK
+PiA+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ID4+IEBA
+IC01MjAsMjkgKzUyMCwyNCBAQCBzdGF0aWMgaW50IG10a19kcm1fc3lzX3N1c3BlbmQoc3RydWN0
+IGRldmljZSAqZGV2KQo+ID4+ICB7Cj4gPj4gICAgICAgc3RydWN0IG10a19kcm1fcHJpdmF0ZSAq
+cHJpdmF0ZSA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+ID4+ICAgICAgIHN0cnVjdCBkcm1fZGV2
+aWNlICpkcm0gPSBwcml2YXRlLT5kcm07Cj4gPj4gKyAgICAgaW50IHJldDsKPiA+Pgo+ID4+IC0g
+ICAgIGRybV9rbXNfaGVscGVyX3BvbGxfZGlzYWJsZShkcm0pOwo+ID4+IC0KPiA+PiAtICAgICBw
+cml2YXRlLT5zdXNwZW5kX3N0YXRlID0gZHJtX2F0b21pY19oZWxwZXJfc3VzcGVuZChkcm0pOwo+
+ID4+IC0gICAgIGlmIChJU19FUlIocHJpdmF0ZS0+c3VzcGVuZF9zdGF0ZSkpIHsKPiA+PiAtICAg
+ICAgICAgICAgIGRybV9rbXNfaGVscGVyX3BvbGxfZW5hYmxlKGRybSk7Cj4gPj4gLSAgICAgICAg
+ICAgICByZXR1cm4gUFRSX0VSUihwcml2YXRlLT5zdXNwZW5kX3N0YXRlKTsKPiA+PiAtICAgICB9
+Cj4gPj4gLQo+ID4+ICsgICAgIHJldCA9IGRybV9tb2RlX2NvbmZpZ19oZWxwZXJfc3VzcGVuZChk
+cm0pOwo+ID4+ICAgICAgIERSTV9ERUJVR19EUklWRVIoIm10a19kcm1fc3lzX3N1c3BlbmRcbiIp
+Owo+ID4+IC0gICAgIHJldHVybiAwOwo+ID4+ICsKPiA+PiArICAgICByZXR1cm4gcmV0Owo+ID4+
+ICB9Cj4gPj4KPiA+PiAgc3RhdGljIGludCBtdGtfZHJtX3N5c19yZXN1bWUoc3RydWN0IGRldmlj
+ZSAqZGV2KQo+ID4+ICB7Cj4gPj4gICAgICAgc3RydWN0IG10a19kcm1fcHJpdmF0ZSAqcHJpdmF0
+ZSA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+ID4+ICAgICAgIHN0cnVjdCBkcm1fZGV2aWNlICpk
+cm0gPSBwcml2YXRlLT5kcm07Cj4gPj4gKyAgICAgaW50IHJldDsKPiA+Pgo+ID4+IC0gICAgIGRy
+bV9hdG9taWNfaGVscGVyX3Jlc3VtZShkcm0sIHByaXZhdGUtPnN1c3BlbmRfc3RhdGUpOwo+ID4+
+IC0gICAgIGRybV9rbXNfaGVscGVyX3BvbGxfZW5hYmxlKGRybSk7Cj4gPj4gLQo+ID4+ICsgICAg
+IHJldCA9IGRybV9tb2RlX2NvbmZpZ19oZWxwZXJfcmVzdW1lKGRybSk7Cj4gPj4gICAgICAgRFJN
+X0RFQlVHX0RSSVZFUigibXRrX2RybV9zeXNfcmVzdW1lXG4iKTsKPiA+PiAtICAgICByZXR1cm4g
+MDsKPiA+PiArCj4gPj4gKyAgICAgcmV0dXJuIHJldDsKPiA+PiAgfQo+ID4+ICAjZW5kaWYKPiA+
+Pgo+ID4KPiA+Cj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KPiBMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKPiBMaW51eC1tZWRpYXRla0BsaXN0
+cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1tZWRpYXRlawoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
+ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaS1kZXZlbAo=
