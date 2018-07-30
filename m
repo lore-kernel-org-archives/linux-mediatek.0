@@ -1,37 +1,56 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] pinctrl: mediatek: include chained_irq.h header
-Date: Sun, 29 Jul 2018 23:15:54 +0200
-Message-ID: <CACRpkdYHhS7sPY6RqMNUSZ+otnoGPkBVgcfT20B-jscemnmotQ@mail.gmail.com>
-References: <20180724115722.1274065-1-arnd@arndb.de>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH] drm/mediatek: Convert drm_atomic_helper_suspend/resume()
+Date: Mon, 30 Jul 2018 11:53:06 +0800
+Message-ID: <1532922786.3723.1.camel@mtksdaap41>
+References: <20180728133845.GA15261@jordon-HP-15-Notebook-PC>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180724115722.1274065-1-arnd@arndb.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180728133845.GA15261@jordon-HP-15-Notebook-PC>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Souptick Joarder <jrdr.linux@gmail.com>
+Cc: ajitn.linux@gmail.com, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jul 24, 2018 at 1:57 PM Arnd Bergmann <arnd@arndb.de> wrote:
-
-> Some randconfig builds fail in the mtk-eint driver:
->
-> drivers/pinctrl/mediatek/mtk-eint.c: In function 'mtk_eint_irq_handler':
-> drivers/pinctrl/mediatek/mtk-eint.c:324:2: error: implicit declaration of function 'chained_irq_enter'; did you mean 'rcu_irq_enter'? [-Werror=implicit-function-declaration]
->   chained_irq_enter(chip, desc);
->   ^~~~~~~~~~~~~~~~~
->   rcu_irq_enter
-> drivers/pinctrl/mediatek/mtk-eint.c:367:2: error: implicit declaration of function 'chained_irq_exit'; did you mean 'rcu_irq_exit'? [-Werror=implicit-function-declaration]
->
-> The functions are declared in linux/irqchip/chained_irq.h, and including
-> that header makes it build in all configurations.
->
-> Fixes: e46df235b4e6 ("pinctrl: mediatek: refactor EINT related code for all MediaTek pinctrl can fit")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-
-Patch applied!
-
-Thanks Arnd!
-
-Yours,
-Linus Walleij
+SGksIFNvdXB0aWNrOgoKT24gU2F0LCAyMDE4LTA3LTI4IGF0IDE5OjA4ICswNTMwLCBTb3VwdGlj
+ayBKb2FyZGVyIHdyb3RlOgo+IGNvbnZlcnQgZHJtX2F0b21pY19oZWxwZXJfc3VzcGVuZC9yZXN1
+bWUoKSB0byB1c2UKPiBkcm1fbW9kZV9jb25maWdfaGVscGVyX3N1c3BlbmQvcmVzdW1lKCkuCj4g
+CgpSZXZpZXdlZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KCj4gU2lnbmVkLW9mZi1i
+eTogU291cHRpY2sgSm9hcmRlciA8anJkci5saW51eEBnbWFpbC5jb20+Cj4gU2lnbmVkLW9mZi1i
+eTogQWppdCBOZWdpIDxhaml0bi5saW51eEBnbWFpbC5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIHwgMjEgKysrKysrKystLS0tLS0tLS0tLS0tCj4g
+IDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDEzIGRlbGV0aW9ucygtKQo+IAo+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gaW5kZXggYTJjYTkwZi4uMWZjZGEy
+ZGUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMK
+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+IEBAIC01MjAs
+MjkgKzUyMCwyNCBAQCBzdGF0aWMgaW50IG10a19kcm1fc3lzX3N1c3BlbmQoc3RydWN0IGRldmlj
+ZSAqZGV2KQo+ICB7Cj4gIAlzdHJ1Y3QgbXRrX2RybV9wcml2YXRlICpwcml2YXRlID0gZGV2X2dl
+dF9kcnZkYXRhKGRldik7Cj4gIAlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtID0gcHJpdmF0ZS0+ZHJt
+Owo+ICsJaW50IHJldDsKPiAgCj4gLQlkcm1fa21zX2hlbHBlcl9wb2xsX2Rpc2FibGUoZHJtKTsK
+PiAtCj4gLQlwcml2YXRlLT5zdXNwZW5kX3N0YXRlID0gZHJtX2F0b21pY19oZWxwZXJfc3VzcGVu
+ZChkcm0pOwo+IC0JaWYgKElTX0VSUihwcml2YXRlLT5zdXNwZW5kX3N0YXRlKSkgewo+IC0JCWRy
+bV9rbXNfaGVscGVyX3BvbGxfZW5hYmxlKGRybSk7Cj4gLQkJcmV0dXJuIFBUUl9FUlIocHJpdmF0
+ZS0+c3VzcGVuZF9zdGF0ZSk7Cj4gLQl9Cj4gLQo+ICsJcmV0ID0gZHJtX21vZGVfY29uZmlnX2hl
+bHBlcl9zdXNwZW5kKGRybSk7Cj4gIAlEUk1fREVCVUdfRFJJVkVSKCJtdGtfZHJtX3N5c19zdXNw
+ZW5kXG4iKTsKPiAtCXJldHVybiAwOwo+ICsKPiArCXJldHVybiByZXQ7Cj4gIH0KPiAgCj4gIHN0
+YXRpYyBpbnQgbXRrX2RybV9zeXNfcmVzdW1lKHN0cnVjdCBkZXZpY2UgKmRldikKPiAgewo+ICAJ
+c3RydWN0IG10a19kcm1fcHJpdmF0ZSAqcHJpdmF0ZSA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+
+ICAJc3RydWN0IGRybV9kZXZpY2UgKmRybSA9IHByaXZhdGUtPmRybTsKPiArCWludCByZXQ7Cj4g
+IAo+IC0JZHJtX2F0b21pY19oZWxwZXJfcmVzdW1lKGRybSwgcHJpdmF0ZS0+c3VzcGVuZF9zdGF0
+ZSk7Cj4gLQlkcm1fa21zX2hlbHBlcl9wb2xsX2VuYWJsZShkcm0pOwo+IC0KPiArCXJldCA9IGRy
+bV9tb2RlX2NvbmZpZ19oZWxwZXJfcmVzdW1lKGRybSk7Cj4gIAlEUk1fREVCVUdfRFJJVkVSKCJt
+dGtfZHJtX3N5c19yZXN1bWVcbiIpOwo+IC0JcmV0dXJuIDA7Cj4gKwo+ICsJcmV0dXJuIHJldDsK
+PiAgfQo+ICAjZW5kaWYKPiAgCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVsCg==
