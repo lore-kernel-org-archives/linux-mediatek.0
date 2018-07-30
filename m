@@ -1,68 +1,44 @@
-From: "A.s. Dong" <aisheng.dong@nxp.com>
-Subject: RE: [PATCH v7 3/6] dt-bindings: mailbox: imx-mu: add generic MU
- channel support
-Date: Mon, 30 Jul 2018 08:42:43 +0000
-Message-ID: <AM0PR04MB421141B2B51449EC39504941802F0@AM0PR04MB4211.eurprd04.prod.outlook.com>
-References: <20180726065331.6186-1-o.rempel@pengutronix.de>
- <20180726065331.6186-4-o.rempel@pengutronix.de>
- <CABb+yY0kVFvQRBrU4j9t=_JcSUkcXMMSK5u=XSufM6XcmKiv-g@mail.gmail.com>
- <AM0PR04MB42116C756EC78AD12EB254D6802B0@AM0PR04MB4211.eurprd04.prod.outlook.com>
- <CABb+yY0yn9os6nqH8eUfAr3Q3ev4=TfpTp=5ZDBR7FN67eb-wg@mail.gmail.com>
- <VI1PR04MB4222672B8F7B6AF2B11A4442802A0@VI1PR04MB4222.eurprd04.prod.outlook.com>
- <CABb+yY1EkHk85H72xYoYA3JbQL03+-o3UcRVdA_Zub-Q+D=OHw@mail.gmail.com>
- <VI1PR04MB422216469EE5F3ED8E53A4F1802A0@VI1PR04MB4222.eurprd04.prod.outlook.com>
- <CABb+yY0SfdFr8TMOMosTVb5+LFWqB8nQkKj3ze8usi-s7Cko4g@mail.gmail.com>
- <VI1PR04MB4222B4877B341C0FA07A6A8D802A0@VI1PR04MB4222.eurprd04.prod.outlook.com>
- <CABb+yY1MSSQKZ6BOQXC-x=qy4VZ5HqDBjmh_BJTXSkAm3+P8mA@mail.gmail.com>
- <bf7aca98-7ec8-bcf3-b1a8-d86a7cf28d31@pengutronix.de>
+From: Josh Boyer <jwboyer-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2] linux-firmware: add firmware for mt76x2u
+Date: Mon, 30 Jul 2018 07:21:22 -0400
+Message-ID: <CA+5PVA7q1BXBF9Kv4a-zu5wYbPtohAyZ4ZOO7J80RCf42Bi+Ug@mail.gmail.com>
+References: <20180728103857.1458-1-lorenzo.bianconi@redhat.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <bf7aca98-7ec8-bcf3-b1a8-d86a7cf28d31@pengutronix.de>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Oleksij Rempel <o.rempel@pengutronix.de>, Jassi Brar <jassisinghbrar@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Devicetree List <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "\", linux-arm-kernel\"@lists.infradead.org" <",
- linux-arm-kernel"@lists.infradead.org>, srv_heupstream <linux-arm-kernel@lists.infradead.org>, ",
- Sascha Hauer" <kernel@pengutronix.de>, Fabio Estevam <fabio.estevam@nxp.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Shawn Guo <shawnguo@kernel.org>, Vladimir Zapolskiy <vladimir_zapolskiy@mentor.com>, dl-linux-imx <linux-imx@nxp.com>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180728103857.1458-1-lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org
+Cc: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux Firmware <linux-firmware-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Oleksij,
+On Sat, Jul 28, 2018 at 6:39 AM Lorenzo Bianconi
+<lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
+>
+> Add binary firmware for MT76x2u based devices
+>
+> Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+> ---
+> Changes since v1:
+> - move bin files in mediatek folder
+> - use LICENCE.mediatek as licence file
+> ---
+>  WHENCE                         |  12 ++++++++++++
+>  mediatek/mt7662u.bin           | Bin 0 -> 91412 bytes
+>  mediatek/mt7662u_rom_patch.bin | Bin 0 -> 20686 bytes
+>  3 files changed, 12 insertions(+)
+>  create mode 100644 mediatek/mt7662u.bin
+>  create mode 100644 mediatek/mt7662u_rom_patch.bin
 
-> -----Original Message-----
-> From: Oleksij Rempel [mailto:o.rempel@pengutronix.de]
-> Sent: Monday, July 30, 2018 3:36 PM
-> To: Jassi Brar <jassisinghbrar@gmail.com>; A.s. Dong
-> <aisheng.dong@nxp.com>
-> Cc: , Sascha Hauer <kernel@pengutronix.de>; Shawn Guo
-> <shawnguo@kernel.org>; Fabio Estevam <fabio.estevam@nxp.com>; Rob
-> Herring <robh+dt@kernel.org>; Mark Rutland <mark.rutland@arm.com>;
-> Vladimir Zapolskiy <vladimir_zapolskiy@mentor.com>; ", linux-arm-
-> kernel"@lists.infradead.org; linux-mediatek@lists.infradead.org;
-> srv_heupstream <linux-arm-kernel@lists.infradead.org>; Devicetree List
-> <devicetree@vger.kernel.org>; dl-linux-imx <linux-imx@nxp.com>
-> Subject: Re: [PATCH v7 3/6] dt-bindings: mailbox: imx-mu: add generic MU
-> channel support
-> 
-> Hi Aishen, Jassie,
-> 
-> i'm lost in this discussion. Please, as soon as I need to add some changes to
-> my patches, notify me. Preferably on top for email.
-> 
+Applied and pushed out.
 
-I just send you an email of Jassie's early suggestion.
-
-According to the suggestion, the binding needs to be changed into 8 separate
-TX/RX channels. You can quickly start from there.
-
-Regards
-Dong Aisheng
+josh
