@@ -1,12 +1,9 @@
-From: "A.s. Dong" <aisheng.dong@nxp.com>
-Subject: RE: [PATCH v7 3/6] dt-bindings: mailbox: imx-mu: add generic MU
+From: Oleksij Rempel <o.rempel@pengutronix.de>
+Subject: Re: [PATCH v7 3/6] dt-bindings: mailbox: imx-mu: add generic MU
  channel support
-Date: Mon, 30 Jul 2018 14:27:30 +0000
-Message-ID: <AM0PR04MB42115DC21B8B4F3CC78C6BAA802F0@AM0PR04MB4211.eurprd04.prod.outlook.com>
-References: <20180726065331.6186-1-o.rempel@pengutronix.de>
- <20180726065331.6186-4-o.rempel@pengutronix.de>
- <CABb+yY0kVFvQRBrU4j9t=_JcSUkcXMMSK5u=XSufM6XcmKiv-g@mail.gmail.com>
- <AM0PR04MB42116C756EC78AD12EB254D6802B0@AM0PR04MB4211.eurprd04.prod.outlook.com>
+Date: Mon, 30 Jul 2018 16:44:35 +0200
+Message-ID: <20180730144435.srxgohwgdhrmw2rz@pengutronix.de>
+References: <AM0PR04MB42116C756EC78AD12EB254D6802B0@AM0PR04MB4211.eurprd04.prod.outlook.com>
  <CABb+yY0yn9os6nqH8eUfAr3Q3ev4=TfpTp=5ZDBR7FN67eb-wg@mail.gmail.com>
  <VI1PR04MB4222672B8F7B6AF2B11A4442802A0@VI1PR04MB4222.eurprd04.prod.outlook.com>
  <CABb+yY1EkHk85H72xYoYA3JbQL03+-o3UcRVdA_Zub-Q+D=OHw@mail.gmail.com>
@@ -16,13 +13,10 @@ References: <20180726065331.6186-1-o.rempel@pengutronix.de>
  <CABb+yY1MSSQKZ6BOQXC-x=qy4VZ5HqDBjmh_BJTXSkAm3+P8mA@mail.gmail.com>
  <bf7aca98-7ec8-bcf3-b1a8-d86a7cf28d31@pengutronix.de>
  <CABb+yY3PLcjduxm7uJ9xZpPP2zkcQ5Qngs4PjnhGAXp43QVzFA@mail.gmail.com>
- <AM0PR04MB4211EF3D479D6B8A093ACCB2802F0@AM0PR04MB4211.eurprd04.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3024000262410653817=="
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <AM0PR04MB4211EF3D479D6B8A093ACCB2802F0@AM0PR04MB4211.eurprd04.prod.outlook.com>
-Content-Language: en-US
+In-Reply-To: <CABb+yY3PLcjduxm7uJ9xZpPP2zkcQ5Qngs4PjnhGAXp43QVzFA@mail.gmail.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -32,151 +26,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jassi Brar <jassisinghbrar@gmail.com>, Oleksij Rempel <o.rempel@pengutronix.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, Devicetree List <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "\", linux-arm-kernel\"@lists.infradead.org" <",
- linux-arm-kernel"@lists.infradead.org>, srv_heupstream <linux-arm-kernel@lists.infradead.org>, ",
- Sascha Hauer" <kernel@pengutronix.de>, Fabio Estevam <fabio.estevam@nxp.com>, ",
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- srv_heupstream" <linux-mediatek@lists.infradead.org>, Shawn Guo <shawnguo@kernel.org>, Vladimir Zapolskiy <vladimir_zapolskiy@mentor.com>, dl-linux-imx <linux-imx@nxp.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>
+Cc: "A.s. Dong" <aisheng.dong@nxp.com>, Mark Rutland <mark.rutland@arm.com>, Devicetree List <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, ", linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ srv_heupstream" <linux-mediatek@lists.infradead.org>linux-arm-kernel@lists.infradead.org, ", Sascha Hauer" <kernel@pengutronix.de>, Fabio Estevam <fabio.estevam@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Vladimir Zapolskiy <vladimir_zapolskiy@mentor.com>, dl-linux-imx <linux-imx@nxp.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-[...]
-> > It will also help if you could share the user code of "scu-mode". If
-> > there is no such code (and we know the driver doesn't respect the
-> > "scu-mode" property) why do we even have that binding? Maybe drop it.
-> 
-> You can refer to this patch for the user code of "scu-mode".
-> [RFC PATCH v6 2/2] mailbox: imx-mailbox: add scu protocol support
-> https://www.spinics.net/lists/arm-kernel/msg665135.html
-> 
-> And I do admit that there're two protocol specific bits in the driver.
-> 1. Unlike TI message header, SCU size is in the second u8.
-> Ti message header:
-> struct ti_msgmgr_message {
->         size_t len;
->         u8 *buf;
-> };
-> Controller get the size from the first u32.
-> 
-> SCU message header:
-> struct sc_rpc_msg {
->         uint8_t ver;
->         uint8_t size;
->         uint8_t svc;
->         uint8_t func;
-> };
-> Controller get the size from the second u8.
-> 
-> And a full SCU message is like:
-> struct imx_sc_msg_req_set_clock_rate {
->         struct sc_rpc_msg hdr;
->         u32 rate;
->         u16 resource;
->         u8 clk;
-> } __packed;
-> 
-> 2. There's no synchronous read function in mailbox framework, So we use
-> mbox_client_peek_data to read data which can't return the read data. In
-> order to save a mem copy from read data to the data buffer, the controller
-> driver saves the tx data buffer in itself.
-> (Anyway to improve? Maybe we should implement a synchronous
-> mbox_client_read_data()?)
-> 
-> And for SCU IPC client, it's something like:
-> int sc_call_rpc(sc_ipc_t ipc, void *msg, bool no_resp) {
->         ...
->         mbox_send_message(sc_ipc->chan, msg);
-> 
->         if (!no_resp)
->                 ret = mbox_client_peek_data(sc_ipc->chan);
-> 
->         mbox_client_txdone(sc_ipc->chan, ret);
->         ...
-> }
-> 
-> int sc_ipc_open(sc_ipc_t *ipc, struct device *dev) {
->         sc_ipc->cl.dev = dev;
->         sc_ipc->cl.tx_block = false;
->         sc_ipc->cl.knows_txdone = true;
-> 
->         sc_ipc->chan = mbox_request_channel(&sc_ipc->cl, 0);
->         ...
-> }
-> 
-> Any better ideas?
-> 
 
-And this the original implementation used by NXP internally without mailbox.
-As it's quite simple and suppose more easy to help you understand the using of SCU.
+--===============3024000262410653817==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="mmcru3n3kdcljymk"
+Content-Disposition: inline
 
-void mu_send_msg(struct mu_priv *priv, uint32_t index, uint32_t msg)
-{
-        ...
-        /* Wait TX register to be empty. */ 
-        while (!(readl_relaxed(priv->base + MU_ASR) & mask))
-                ;
-        writel_relaxed(msg, priv->base + MU_ATR0  + (index * 4));
-}
 
-/*
- * Wait to receive message from the other core.
- */
-void mu_receive_msg(struct mu_priv *priv, uint32_t index, uint32_t *msg)
-{
-        ...
-        /* Wait RX register to be full. */
-        while (!(readl_relaxed(priv->base + MU_ASR) & mask))
-                ;
-        *msg = readl_relaxed(priv->base + MU_ARR0 + (index * 4));
-}
+--mmcru3n3kdcljymk
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-static void sc_ipc_read(struct sc_ipc *sc_ipc, void *data)
-{
-        sc_rpc_msg_t *msg = (sc_rpc_msg_t *)data;
- 
-        /* Read first word */
-        mu_receive_msg(sc_ipc->mu, 0, (uint32_t *)msg);
-        count++;
- 
-        /* Read remaining words */
-        while (count < msg->size) {
-                mu_receive_msg(sc_ipc->mu, count % MU_RR_COUNT,
-                               &(msg->DATA.u32[count - 1]));
-                count++;
-        }
-}
-
-static void sc_ipc_write(struct sc_ipc *sc_ipc, void *data)
-{
-        sc_rpc_msg_t *msg = (sc_rpc_msg_t *)data;
-        uint8_t count = 0;
-
-        /* Write first word */
-        mu_send_msg(sc_ipc->mu, 0, *((uint32_t *)msg));
-        count++;
-
-        while (count < msg->size) {
-                mu_send_msg(sc_ipc->mu, count % MU_TR_COUNT,
-                            msg->DATA.u32[count - 1]);
-                count++;
-        }
-}
-
-void sc_call_rpc(sc_ipc_t ipc, sc_rpc_msg_t *msg, bool no_resp)
-{
-        sc_ipc_write(sc_ipc, msg);
-        if (!no_resp)
-                sc_ipc_read(sc_ipc, msg);
-}
-
-For details, see:
-https://www.spinics.net/lists/arm-kernel/msg659138.html
-
-Regards
-Dong Aisheng
-
-> Regards
-> Dong Aisheng
-> 
+On Mon, Jul 30, 2018 at 06:34:56PM +0530, Jassi Brar wrote:
+> On Mon, Jul 30, 2018 at 1:05 PM, Oleksij Rempel <o.rempel@pengutronix.de>=
+ wrote:
+> > Hi Aishen, Jassie,
 > >
-> > thnx.
+> > i'm lost in this discussion. Please, as soon as I need to add some
+> > changes to my patches, notify me. Preferably on top for email.
+> >
+> I am ok with however you choose to implement, 8 unidirectional or 4
+> bidirectional channels or whatever.
+>=20
+> We just can't have protocol specific s/w modes in the controller drivers.
+>=20
+> The best solution is to fix the SCU firmware. If that is _really_
+> impossible, I provided a solution (3 cells work around). If you have a
+> better idea please feel free to propose and implement that.
+>=20
+> It will also help if you could share the user code of "scu-mode". If
+> there is no such code (and we know the driver doesn't respect the
+> "scu-mode" property) why do we even have that binding? Maybe drop it.
+
+Tomorrow I have a time slot to address your generic iMX MU suggestions.
+So, what is better, uni- or bi-directional channels? Should I implement
+*all* (4TX+FIFO, 4RX+FIFO, 4TX-simple, 4RX-simple) channels in this run?
+If yes, how should it be reflected in DT?
+- 1 cell: &mu [0-15]
+- 2 cells: &mu [0-7] [TX,RX]
+- 3 cells: &mu [0-4] [FIFO,NOFIFO] [TX,RX]
+
+--=20
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+
+--mmcru3n3kdcljymk
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEpENFL0P3hvQ7p0DDdQOiSHVI77QFAltfJE8ACgkQdQOiSHVI
+77RPhwf/RM3ZhKSe4umXa/ynHNMOYnRbgZ/W4S/dIEJsRoVZdptOclcA+RyABpTL
+evf0YPA8oGB455mNqvp4s8+EBekPISokWHITxCP4Ebp+OYuVZWPGLhbxOdm3smRo
+DG37MpWPR/NkkWdC+kSDLKcZGmXxmp8+qD3m1FxYFhV4ccrAHn/8uNXrctq6mBv/
+AHT4RU9A4cG4G47+IgB81fnQMfX0Pyl9UrlBkTC0/i+U4ij9yYLVa5z8u81OdACJ
+5xtqpoiXgRiDTlsJq4V+Ag0Mu55NU1B5KyLEOwBIZdYWupFMHGAaJWG8K9Z6U9cZ
+0F+6yDyEpbTmI+8F39WxY67S8/qEmw==
+=QzL8
+-----END PGP SIGNATURE-----
+
+--mmcru3n3kdcljymk--
+
+
+--===============3024000262410653817==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--===============3024000262410653817==--
