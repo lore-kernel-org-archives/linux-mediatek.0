@@ -1,101 +1,67 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: RE: Re: [PATCH v1 1/2] arm64: dts: mt7622: add some misc device
- nodes
-Date: Tue, 31 Jul 2018 17:51:14 +0800
-Message-ID: <1533030674.13386.7.camel@mtkswgap22>
-References: <2ff39c40ef6bc3054667e63c785a1d28527b5ddf.1531753039.git.ryder.lee@mediatek.com>
-         <864955d5-26c4-a5f3-ec1a-420acba50880@gmail.com>
-         <2839886f07dc47afb9a05d06fb1acc84@mtkmbs08n1.mediatek.inc>
-         <1533026633.10540.20.camel@mtkswgap22>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Subject: Re: [PATCH v7 3/6] dt-bindings: mailbox: imx-mu: add generic MU
+ channel support
+Date: Tue, 31 Jul 2018 15:45:53 +0530
+Message-ID: <CABb+yY2HaTK9tq539+m1fyMMPr1eyygJZ7QvzWNp9E7aYxpoVQ@mail.gmail.com>
+References: <AM0PR04MB42116C756EC78AD12EB254D6802B0@AM0PR04MB4211.eurprd04.prod.outlook.com>
+ <CABb+yY0yn9os6nqH8eUfAr3Q3ev4=TfpTp=5ZDBR7FN67eb-wg@mail.gmail.com>
+ <VI1PR04MB4222672B8F7B6AF2B11A4442802A0@VI1PR04MB4222.eurprd04.prod.outlook.com>
+ <CABb+yY1EkHk85H72xYoYA3JbQL03+-o3UcRVdA_Zub-Q+D=OHw@mail.gmail.com>
+ <VI1PR04MB422216469EE5F3ED8E53A4F1802A0@VI1PR04MB4222.eurprd04.prod.outlook.com>
+ <CABb+yY0SfdFr8TMOMosTVb5+LFWqB8nQkKj3ze8usi-s7Cko4g@mail.gmail.com>
+ <VI1PR04MB4222B4877B341C0FA07A6A8D802A0@VI1PR04MB4222.eurprd04.prod.outlook.com>
+ <CABb+yY1MSSQKZ6BOQXC-x=qy4VZ5HqDBjmh_BJTXSkAm3+P8mA@mail.gmail.com>
+ <bf7aca98-7ec8-bcf3-b1a8-d86a7cf28d31@pengutronix.de>
+ <CABb+yY3PLcjduxm7uJ9xZpPP2zkcQ5Qngs4PjnhGAXp43QVzFA@mail.gmail.com>
+ <20180730144435.srxgohwgdhrmw2rz@pengutronix.de>
+ <CABb+yY0sUxGatozwdQVM55z7ACtpK8HCepnfvQNunQ=r5y_kVw@mail.gmail.com>
+ <CABb+yY04dm_N1Ud2Mhi-g-eFdNVkxJKE8ONOqntZjN_QKwgLcg@mail.gmail.com>
+ <AM0PR04MB42118617A7F29C1D7BE59242802E0@AM0PR04MB4211.eurprd04.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1533026633.10540.20.camel@mtkswgap22>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <AM0PR04MB42118617A7F29C1D7BE59242802E0@AM0PR04MB4211.eurprd04.prod.outlook.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: "A.s. Dong" <aisheng.dong@nxp.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Devicetree List <devicetree@vger.kernel.org>, Oleksij Rempel <o.rempel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, ",
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ srv_heupstream" <linux-mediatek@lists.infradead.org>",
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ srv_heupstream" <linux-arm-kernel@lists.infradead.org>, ",
+ Sascha Hauer" <kernel@pengutronix.de>, Fabio Estevam <fabio.estevam@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Vladimir Zapolskiy <vladimir_zapolskiy@mentor.com>, dl-linux-imx <linux-imx@nxp.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-07-31 at 16:43 +0800, Ryder Lee wrote:
-> Hi Matthias,
-> 
-> Sorry for the late reply.
-> 
-> On Tue, 2018-07-31 at 16:17 +0800, Ryder Lee (李庚諺) wrote:
-> > Hi Ryder,
-> > 
-> > On 16/07/18 16:59, Ryder Lee wrote:
-> > > Add some misc nodes support - timer and ARM CCI-400.
-> > > 
-> > > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> > > ---
-> > >  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 36 
-> > > ++++++++++++++++++++++++++++++++
-> > >  1 file changed, 36 insertions(+)
-> > > 
-> > > diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi 
-> > > b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> > > index 9213c96..8cdec52 100644
-> > > --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> > > +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> > > @@ -217,6 +217,16 @@
-> > >  		#reset-cells = <1>;
-> > >  	};
-> > >  
-> > > +	timer: timer@10004000 {
-> > > +		compatible = "mediatek,mt7622-timer",
-> > > +			     "mediatek,mt6577-timer";
-> > > +		reg = <0 0x10004000 0 0x80>;
-> > > +		interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW>;
-> > > +		clocks = <&infracfg CLK_INFRA_APXGPT_PD>,
-> > > +			 <&topckgen CLK_TOP_RTC>;
-> > > +		clock-names = "system-clk", "rtc-clk";
-> > > +	};
-> > > +
-> > >  	scpsys: scpsys@10006000 {
-> > >  		compatible = "mediatek,mt7622-scpsys",
-> > >  			     "syscon";
-> > > @@ -317,6 +327,32 @@
-> > >  		      <0 0x10360000 0 0x2000>;
-> > >  	};
-> > >  
-> > > +	cci: cci@10390000 {
-> > > +		compatible = "arm,cci-400";
-> > > +		#address-cells = <1>;
-> > > +		#size-cells = <1>;
-> > > +		reg = <0 0x10390000 0 0x1000>;
-> > > +		ranges = <0 0 0x10390000 0x10000>;
-> > 
-> > From my understanding of the binding description ranges should hold child address, parent address and size of the region in the child address space. I can see in arch/arm64 two different variants using 4 ranges values (like here) and using three values.
-> > 
-> > @Rob + Will what is the preferred way to describe this?
-> 
-> Hmmm... it's just a copy-paste (I take zynqmp.dtsi as an example).
-> > > +
-> > > +		cci_control0: slave-if@1000 {
-> > > +			compatible = "arm,cci-400-ctrl-if";
-> > > +			interface-type = "ace-lite";
-> > > +			reg = <0x1000 0x1000>;
-> > > +		};
-> > 
-> > Don't we need to add phandles to the cci-control-port property in the cpu nodes?
+On Tue, Jul 31, 2018 at 12:51 PM, A.s. Dong <aisheng.dong@nxp.com> wrote:
+> Hi Jassi,
+>
+>> > However, if SCU (in its current form) must be supported. We may need
+>> > to add the third cell (irq enable or not) or some better way, right
+>> > now.
+>> >
+>> Looking at imx_mu_scu_send_data(), which simply polls on the tx, I think we
+>> don't even need third cell for scu client. A simple 2-cell, 8 uni-dir channel
+>> setup should work.
+>
+> How would you suggest to use for SCU in 2 -cells?
+>
+>> If I see the scu client driver, I could confirm how it would work.
+>>
+>
+> I've already given a general overview from here:
+> https://www.spinics.net/lists/arm-kernel/msg669202.html
+>
+No, that is controller side code.
 
-I forgot to answer this question in previous mail.
-
-Yes, we need it. I will add the cci-control-port property in the cpu
-nodes and add the child node PMU in cci-400 - somehow I forgot to add
-them.
-
-Thanks for your reminder.
-
-> > Regards,
-> > Matthias
-> 
-> MT7622 use cci-400 to improve performance (DMA IO coherence) for
-> high-speed IPs. (i.e., ETH/WIFI/SATA/...)
-> 
-> I added it early but actually the related features have not supported in
-> mainline yet.
-> 
-> Ryder
+> Do you need me to send the full scu client driver patch for the reference?
+> If yes, please feel free to let me know.
+>
+Yes, that'll make it clearer.
