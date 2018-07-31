@@ -1,138 +1,101 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v6 3/4] Bluetooth: mediatek: Add protocol support for
- MediaTek serial devices
-Date: Tue, 31 Jul 2018 17:15:52 +0800
-Message-ID: <1533028552.3472.95.camel@mtkswgap22>
-References: <cover.1532060309.git.sean.wang@mediatek.com>
-         <f3a064f86c1da4664a231a40c6cf038cccc758da.1532060309.git.sean.wang@mediatek.com>
-         <60024004-779E-4E1A-8E1B-799339595A27@holtmann.org>
-         <1532966985.3472.54.camel@mtkswgap22>
-         <F83B6E35-B0D7-4050-A112-251BDFB9C998@holtmann.org>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: RE: Re: [PATCH v1 1/2] arm64: dts: mt7622: add some misc device
+ nodes
+Date: Tue, 31 Jul 2018 17:51:14 +0800
+Message-ID: <1533030674.13386.7.camel@mtkswgap22>
+References: <2ff39c40ef6bc3054667e63c785a1d28527b5ddf.1531753039.git.ryder.lee@mediatek.com>
+         <864955d5-26c4-a5f3-ec1a-420acba50880@gmail.com>
+         <2839886f07dc47afb9a05d06fb1acc84@mtkmbs08n1.mediatek.inc>
+         <1533026633.10540.20.camel@mtkswgap22>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <F83B6E35-B0D7-4050-A112-251BDFB9C998@holtmann.org>
+In-Reply-To: <1533026633.10540.20.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Marcel Holtmann <marcel@holtmann.org>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, Johan Hedberg <johan.hedberg@gmail.com>, devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-07-30 at 20:06 +0200, Marcel Holtmann wrote:
-> Hi Sean,
+On Tue, 2018-07-31 at 16:43 +0800, Ryder Lee wrote:
+> Hi Matthias,
 > 
-> > All suggestions seem reasonable for me in order to make code style aligned with the other drivers and code better to read,
-> > and it looks like no any big problem, so I'll start to work on the next version immediately.
+> Sorry for the late reply.
 > 
-> no rush, but if you can get this back to me quickly, we might be still able to get this driver included.
-> 
-> > And I also add a few explanations inline about questions about the diagnostic packet and how hci->shutdown is being made.
+> On Tue, 2018-07-31 at 16:17 +0800, Ryder Lee (李庚諺) wrote:
+> > Hi Ryder,
 > > 
-> > On Mon, 2018-07-30 at 15:40 +0200, Marcel Holtmann wrote:
-
-
-[ ... ]
-
-> >> Do we want these as HCI vendor events. Or actually as vendor / diagnostic packets. There is a hci_recv_diag.
-> >> 
+> > On 16/07/18 16:59, Ryder Lee wrote:
+> > > Add some misc nodes support - timer and ARM CCI-400.
+> > > 
+> > > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> > > ---
+> > >  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 36 
+> > > ++++++++++++++++++++++++++++++++
+> > >  1 file changed, 36 insertions(+)
+> > > 
+> > > diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi 
+> > > b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> > > index 9213c96..8cdec52 100644
+> > > --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> > > +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> > > @@ -217,6 +217,16 @@
+> > >  		#reset-cells = <1>;
+> > >  	};
+> > >  
+> > > +	timer: timer@10004000 {
+> > > +		compatible = "mediatek,mt7622-timer",
+> > > +			     "mediatek,mt6577-timer";
+> > > +		reg = <0 0x10004000 0 0x80>;
+> > > +		interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW>;
+> > > +		clocks = <&infracfg CLK_INFRA_APXGPT_PD>,
+> > > +			 <&topckgen CLK_TOP_RTC>;
+> > > +		clock-names = "system-clk", "rtc-clk";
+> > > +	};
+> > > +
+> > >  	scpsys: scpsys@10006000 {
+> > >  		compatible = "mediatek,mt7622-scpsys",
+> > >  			     "syscon";
+> > > @@ -317,6 +327,32 @@
+> > >  		      <0 0x10360000 0 0x2000>;
+> > >  	};
+> > >  
+> > > +	cci: cci@10390000 {
+> > > +		compatible = "arm,cci-400";
+> > > +		#address-cells = <1>;
+> > > +		#size-cells = <1>;
+> > > +		reg = <0 0x10390000 0 0x1000>;
+> > > +		ranges = <0 0 0x10390000 0x10000>;
 > > 
-> > These are actually Hci vendor events. not for diagnostic purpose. They hdr->evt == 0xe4 are all the part of chip initialization.
+> > From my understanding of the binding description ranges should hold child address, parent address and size of the region in the child address space. I can see in arch/arm64 two different variants using 4 ranges values (like here) and using three values.
+> > 
+> > @Rob + Will what is the preferred way to describe this?
 > 
-> Ok, then leave it as is.
+> Hmmm... it's just a copy-paste (I take zynqmp.dtsi as an example).
+> > > +
+> > > +		cci_control0: slave-if@1000 {
+> > > +			compatible = "arm,cci-400-ctrl-if";
+> > > +			interface-type = "ace-lite";
+> > > +			reg = <0x1000 0x1000>;
+> > > +		};
+> > 
+> > Don't we need to add phandles to the cci-control-port property in the cpu nodes?
+
+I forgot to answer this question in previous mail.
+
+Yes, we need it. I will add the cci-control-port property in the cpu
+nodes and add the child node PMU in cci-400 - somehow I forgot to add
+them.
+
+Thanks for your reminder.
+
+> > Regards,
+> > Matthias
 > 
-> > 
-> >> So let me ask this a different way, do you have support for LMP / LL tracing in your chips? If yes, then how is that enabled and how does it work? Or any general debug data that can be switched on. That is what we have a diagnostic channel for that is also fed into btmon.
-> >> 
-> > 
-> > I'm not really sure about them because I didn't see any diagnostic packets handling in vendor driver.
+> MT7622 use cci-400 to improve performance (DMA IO coherence) for
+> high-speed IPs. (i.e., ETH/WIFI/SATA/...)
 > 
-> You can see examples for this in btusb.c, hci_bcm.c and bpa10x.c where the hardware has a side channel. In case of Broadcom, they are LL or LMP trace packets, but it could be also debug messages or something else. Other vendors use HCI vendor events for that which is also fine. Just wanted to know what it is.
+> I added it early but actually the related features have not supported in
+> mainline yet.
 > 
-> And if your hardware supports LL or LMP traces to be enabled, then implement hdev->set_diag() callback. You can then enable it via /sys/kernel/debug/bluetooth/hci0/vendor_diag
-> 
-
-Thanks for sharing the information to me.
-
-If I get the permission and details about adding support for these debug trace packets, I am willing to add them.
-
-> > 
-> >>> +
-> >>> +	/* Each HCI event would go through the core. */
-> >>> +	return hci_recv_frame(hdev, skb);
-> >>> +}
-> >>> +
-
-[ ... ]
-
-> >>> +
-> >>> +static int mtk_btuart_shutdown(struct hci_dev *hdev)
-> >>> +{
-> >>> +	struct mtk_btuart_dev *bdev = hci_get_drvdata(hdev);
-> >>> +	struct device *dev = &bdev->serdev->dev;
-> >>> +	u8 param = 0x0;
-> >>> +
-> >>> +	/* Disable the device. */
-> >>> +	mtk_hci_wmt_sync(hdev, MTK_WMT_FUNC_CTRL, 0x0, sizeof(param), &param);
-> >>> +
-> >>> +	/* Shutdown the clock and power domain the device requires. */
-> >>> +	clk_disable_unprepare(bdev->clk);
-> >>> +	pm_runtime_put_sync(dev);
-> >>> +	pm_runtime_disable(dev);
-> >> 
-> >> Don’t these belong into ->close method? And the enable ones into ->open? I really think that ->setup and ->shutdown should just do HCI commands and leave the others to ->open and ->close. Since ->open and ->close are suppose to set up and terminate the transport.
-> >> 
-> > 
-> > Yes, ->open and ->close are already done just for setup and terminate the transport. I've noted the part during earlier version discussion. 
-> > 
-> > Because mt7622 is a SoC integrating Bluetooth hardware inside, these operations for clk* and pm clk_* and pm_*  you saw here are all for controlling clocks and powers Bluetooth circuits requires on the SoC, not for the transports.
-> > 
-> > As for clocks for the transport, they're already being taken care of by the serial driver.
-> 
-> With transport, I meant the Bluetooth transport. So I really thing they belong into ->open and ->close. Within ->setup and ->shutdown, I would just expect HCI commands.
-> 
-
-At the moment, it's not easy that clk_* and pm_*  are moved to ->open and ->close
-
-because firmware download would depend on the full cycle of hardware power down and then up.
-
-And another advantage is that when users call hdev down and the up, the device can do the real hardware reset, not just the software reset via hci command.
-
-> > 
-> >>> +
-> >>> +	return 0;
-> >>> +}
-> >>> +
-> >>> +static int mtk_btuart_send(struct hci_dev *hdev, struct sk_buff *skb)
-> >>> +{
-> >> 
-> >> This should be called btmtkuart_send_frame.
-> >> 
-> > 
-> > okay, will have a rename.
-> > 
-> >>> +	struct mtk_btuart_dev *bdev = hci_get_drvdata(hdev);
-> >>> +	int err;
-> >>> +
-
-[ ... ]
-
-> >>> +static inline void
-> >>> +mtk_make_wmt_hdr(struct mtk_wmt_hdr *hdr, u8 op, u16 plen, u8 flag)
-> >>> +{
-> >>> +	hdr->dir = 1;
-> >>> +	hdr->op = op;
-> >>> +	hdr->dlen = cpu_to_le16(plen + 1);
-> >>> +	hdr->flag = flag;
-> >>> +}
-> >> 
-> >> Move all the *.h parts into the *.c file. It is all so simple that there is no need for having this in a header.
-> >> 
-> >> Minor cosmetic changes, but the rest look good to me.
-> >> 
-> > 
-> > okay, will move whole thing in *.h to *.c and finally I really appreciate your effort on reviewing on these code.
-> 
-> Regards
-> 
-> Marcel
-> 
+> Ryder
