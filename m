@@ -1,102 +1,107 @@
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Subject: Re: [PATCH v7 3/6] dt-bindings: mailbox: imx-mu: add generic MU
- channel support
-Date: Tue, 31 Jul 2018 08:21:38 +0530
-Message-ID: <CABb+yY39tcH7DyQijE3Edgho3Aaq-ap8LErXTSs4VmeTszBcYA@mail.gmail.com>
-References: <CABb+yY1EkHk85H72xYoYA3JbQL03+-o3UcRVdA_Zub-Q+D=OHw@mail.gmail.com>
- <VI1PR04MB422216469EE5F3ED8E53A4F1802A0@VI1PR04MB4222.eurprd04.prod.outlook.com>
- <CABb+yY0SfdFr8TMOMosTVb5+LFWqB8nQkKj3ze8usi-s7Cko4g@mail.gmail.com>
- <VI1PR04MB4222B4877B341C0FA07A6A8D802A0@VI1PR04MB4222.eurprd04.prod.outlook.com>
- <CABb+yY1MSSQKZ6BOQXC-x=qy4VZ5HqDBjmh_BJTXSkAm3+P8mA@mail.gmail.com>
- <bf7aca98-7ec8-bcf3-b1a8-d86a7cf28d31@pengutronix.de>
- <CABb+yY3PLcjduxm7uJ9xZpPP2zkcQ5Qngs4PjnhGAXp43QVzFA@mail.gmail.com>
- <20180730144435.srxgohwgdhrmw2rz@pengutronix.de>
- <CABb+yY0sUxGatozwdQVM55z7ACtpK8HCepnfvQNunQ=r5y_kVw@mail.gmail.com>
- <CABb+yY04dm_N1Ud2Mhi-g-eFdNVkxJKE8ONOqntZjN_QKwgLcg@mail.gmail.com>
- <20180730164928.sb3sgnfxueeiqfsq@pengutronix.de>
+From: Erin Lo <erin.lo@mediatek.com>
+Subject: [PATCH v4 00/10] Add basic and clock support for Mediatek MT8183 SoC
+Date: Tue, 31 Jul 2018 13:37:57 +0800
+Message-ID: <1533015487-60189-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180730164928.sb3sgnfxueeiqfsq@pengutronix.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Oleksij Rempel <o.rempel@pengutronix.de>
-Cc: "A.s. Dong" <aisheng.dong@nxp.com>, Mark Rutland <mark.rutland@arm.com>, Devicetree List <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, ", linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- srv_heupstream" <linux-mediatek@lists.infradead.org>",
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- srv_heupstream" <linux-arm-kernel@lists.infradead.org>, ",
- Sascha Hauer" <kernel@pengutronix.de>, Fabio Estevam <fabio.estevam@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Vladimir Zapolskiy <vladimir_zapolskiy@mentor.com>, dl-linux-imx <linux-imx@nxp.com>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, erin.lo@mediatek.com, mars.cheng@mediatek.com, eddie.huang@mediatek.com, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jul 30, 2018 at 10:19 PM, Oleksij Rempel
-<o.rempel@pengutronix.de> wrote:
-> On Mon, Jul 30, 2018 at 09:48:35PM +0530, Jassi Brar wrote:
->> On Mon, Jul 30, 2018 at 8:32 PM, Jassi Brar <jassisinghbrar@gmail.com> wrote:
->> > On Mon, Jul 30, 2018 at 8:14 PM, Oleksij Rempel <o.rempel@pengutronix.de> wrote:
->> >> On Mon, Jul 30, 2018 at 06:34:56PM +0530, Jassi Brar wrote:
->> >>> On Mon, Jul 30, 2018 at 1:05 PM, Oleksij Rempel <o.rempel@pengutronix.de> wrote:
->> >>> > Hi Aishen, Jassie,
->> >>> >
->> >>> > i'm lost in this discussion. Please, as soon as I need to add some
->> >>> > changes to my patches, notify me. Preferably on top for email.
->> >>> >
->> >>> I am ok with however you choose to implement, 8 unidirectional or 4
->> >>> bidirectional channels or whatever.
->> >>>
->> >>> We just can't have protocol specific s/w modes in the controller drivers.
->> >>>
->> >>> The best solution is to fix the SCU firmware. If that is _really_
->> >>> impossible, I provided a solution (3 cells work around). If you have a
->> >>> better idea please feel free to propose and implement that.
->> >>>
->> >>> It will also help if you could share the user code of "scu-mode". If
->> >>> there is no such code (and we know the driver doesn't respect the
->> >>> "scu-mode" property) why do we even have that binding? Maybe drop it.
->> >>
->> >> Tomorrow I have a time slot to address your generic iMX MU suggestions.
->> >> So, what is better, uni- or bi-directional channels?
->> >>
->> > The datasheet indicates there are 4 tx and 4 rx channels. So 8
->> > uni-directional channels (which allow more fine-grained/efficient
->> > resource allocation btw).
->> >
->> >> Should I implement
->> >> *all* (4TX+FIFO, 4RX+FIFO, 4TX-simple, 4RX-simple) channels in this run?
->> >>
->> > From datasheet, each of 8 channels should be defined as signal+data
->> > i.e, IRQ + TX/RX_Reg.
->> > The rest 4 GP channels are doorbells (irq only).
->> >
->> > So we can have 2-cells.
->> >     First cell is 0->Tx, 1->RX, 2->Doorbell
->> >     Second cell is index of the channel {0,3}
->> >
->> > Now you may implement only RX+TX, and leave 'doorbell' out for future.
->> > Thats ok, because we wouldn't have to change bindings then.
->> >
->> > However, if SCU (in its current form) must be supported. We may need
->> > to add the third cell (irq enable or not) or some better way, right
->> > now.
->> >
->> Looking at imx_mu_scu_send_data(), which simply polls on the tx, I
->> think we don't even need third cell for scu client. A simple 2-cell, 8
->> uni-dir channel setup should work.
->> If I see the scu client driver, I could confirm how it would work.
->>
->> So, lets please do the 8 uni-directional, 2 cells implementation.
->
-> Just in case.. to avoid confusion (or add more...). There are 4 GIP (General Interrupt Request n
-> Pending bits) or RX-doorbell and 4 GIR (General Interrupt Request bits)
-> or TX-doorbell.
->
-Ok. But the approach remains the same.
+MT8183 is a SoC based on 64bit ARMv8 architecture.
+It contains 4 CA53 and 4 CA73 cores.
+MT8183 share many HW IP with MT65xx series.
+This patchset was tested on MT8183 evaluation board and use correct clock to shell.
 
-thanks.
+This series contains document bindings, device tree including interrupt, uart, clock.
+
+Based on v4.18-rc1 and https://patchwork.kernel.org/patch/10528515/
+Composed of clock control (PATCH 5-8) and device tree (PATCH 9-10)
+
+Change in v4:
+1. Correct syntax error in dtsi
+2. Add MT8183 clock support
+
+Change in v3:
+1. Fill out GICC, GICH, GICV regions
+2. Update Copyright to 2018
+
+Change in v2:
+1. Split dt-bindings into different patches
+2. Correct bindings for supported SoCs (mtk-uart.txt)
+
+Ben Ho (1):
+  arm64: dts: Add Mediatek SoC MT8183 and evaluation board dts and
+    Makefile
+
+Erin Lo (3):
+  dt-bindings: arm: Add bindings for Mediatek MT8183 SoC Platform
+  dt-bindings: mtk-sysirq: Add compatible for Mediatek MT8183
+  dt-bindings: serial: Add compatible for Mediatek MT8183
+
+Weiyi Lu (6):
+  dt-bindings: ARM: Mediatek: Document bindings for MT8183
+  clk: mediatek: Add dt-bindings for MT8183 clocks
+  clk: mediatek: Add flags support for mtk_gate data
+  clk: mediatek: Add MT8183 clock support
+  arm64: dts: mt8183: Add clock controller device nodes
+  dts: arm64: mt8183: add uart node
+
+ Documentation/devicetree/bindings/arm/mediatek.txt |    4 +
+ .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    1 +
+ .../bindings/arm/mediatek/mediatek,audsys.txt      |    1 +
+ .../bindings/arm/mediatek/mediatek,camsys.txt      |    1 +
+ .../bindings/arm/mediatek/mediatek,imgsys.txt      |    1 +
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    |    1 +
+ .../bindings/arm/mediatek/mediatek,ipu.txt         |   43 +
+ .../bindings/arm/mediatek/mediatek,mfgcfg.txt      |    1 +
+ .../bindings/arm/mediatek/mediatek,mmsys.txt       |    1 +
+ .../bindings/arm/mediatek/mediatek,topckgen.txt    |    1 +
+ .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    1 +
+ .../bindings/arm/mediatek/mediatek,vencsys.txt     |    1 +
+ .../interrupt-controller/mediatek,sysirq.txt       |    1 +
+ .../devicetree/bindings/serial/mtk-uart.txt        |    1 +
+ arch/arm64/boot/dts/mediatek/Makefile              |    1 +
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts        |   31 +
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           |  268 +++++
+ drivers/clk/mediatek/Kconfig                       |   74 ++
+ drivers/clk/mediatek/Makefile                      |   12 +
+ drivers/clk/mediatek/clk-gate.c                    |    5 +-
+ drivers/clk/mediatek/clk-gate.h                    |    3 +-
+ drivers/clk/mediatek/clk-mt8183-audio.c            |  112 ++
+ drivers/clk/mediatek/clk-mt8183-cam.c              |   75 ++
+ drivers/clk/mediatek/clk-mt8183-img.c              |   75 ++
+ drivers/clk/mediatek/clk-mt8183-ipu0.c             |   68 ++
+ drivers/clk/mediatek/clk-mt8183-ipu1.c             |   68 ++
+ drivers/clk/mediatek/clk-mt8183-ipu_adl.c          |   66 ++
+ drivers/clk/mediatek/clk-mt8183-ipu_conn.c         |  155 +++
+ drivers/clk/mediatek/clk-mt8183-mfgcfg.c           |   66 ++
+ drivers/clk/mediatek/clk-mt8183-mm.c               |  128 ++
+ drivers/clk/mediatek/clk-mt8183-vdec.c             |   84 ++
+ drivers/clk/mediatek/clk-mt8183-venc.c             |   71 ++
+ drivers/clk/mediatek/clk-mt8183.c                  | 1230 ++++++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.c                     |    3 +-
+ drivers/clk/mediatek/clk-mtk.h                     |    1 +
+ include/dt-bindings/clock/mt8183-clk.h             |  413 +++++++
+ 36 files changed, 3064 insertions(+), 4 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ipu.txt
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183.dtsi
+ create mode 100644 drivers/clk/mediatek/clk-mt8183-audio.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8183-cam.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8183-img.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8183-ipu0.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8183-ipu1.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8183-ipu_adl.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8183-ipu_conn.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8183-mfgcfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8183-mm.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8183-vdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8183-venc.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8183.c
+ create mode 100644 include/dt-bindings/clock/mt8183-clk.h
+
+--
+1.9.1
