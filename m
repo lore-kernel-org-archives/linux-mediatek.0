@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH v3 11/14] mt76: add more states
-Date: Tue, 31 Jul 2018 14:41:01 +0200
-Message-ID: <1533040864-9026-12-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH v3 13/14] mt76x0: disable HW before probe
+Date: Tue, 31 Jul 2018 14:41:03 +0200
+Message-ID: <1533040864-9026-14-git-send-email-sgruszka@redhat.com>
 References: <1533040864-9026-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1533040864-9026-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,30 +10,55 @@ To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add states needed for mt76x0 driver.
+Disable HW before probe, otherwise after reboot we will fail
+to initialize MCU.
 
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c   | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h | 1 +
+ drivers/net/wireless/mediatek/mt76/mt76x0/usb.c    | 4 ++++
+ 3 files changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 4bf1b35ec44c..2eab35879163 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -204,11 +204,13 @@ struct mt76_rx_tid {
- enum {
- 	MT76_STATE_INITIALIZED,
- 	MT76_STATE_RUNNING,
-+	MT76_STATE_MCU_RUNNING,
- 	MT76_SCANNING,
- 	MT76_RESET,
- 	MT76_OFFCHANNEL,
- 	MT76_REMOVED,
- 	MT76_READING_STATS,
-+	MT76_MORE_STATS,
- };
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+index b65b76d80906..7cdb3e740522 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+@@ -62,7 +62,7 @@
+ 		dev_err(dev->mt76.dev, "Error: PLL and XTAL check failed!\n");
+ }
  
- struct mt76_hw_cap {
+-static void mt76x0_chip_onoff(struct mt76x0_dev *dev, bool enable, bool reset)
++void mt76x0_chip_onoff(struct mt76x0_dev *dev, bool enable, bool reset)
+ {
+ 	u32 val;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+index 49b82a23533c..9e60fcb14687 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+@@ -288,6 +288,7 @@ int mt76x0_burst_write_regs(struct mt76x0_dev *dev, u32 offset,
+ int mt76x0_init_hardware(struct mt76x0_dev *dev);
+ int mt76x0_register_device(struct mt76x0_dev *dev);
+ void mt76x0_cleanup(struct mt76x0_dev *dev);
++void mt76x0_chip_onoff(struct mt76x0_dev *dev, bool enable, bool reset);
+ 
+ int mt76x0_mac_start(struct mt76x0_dev *dev);
+ void mt76x0_mac_stop(struct mt76x0_dev *dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+index 0871fdef59c3..7a635cdcbae0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+@@ -283,6 +283,10 @@ static int mt76x0_probe(struct usb_interface *usb_intf,
+ 	ret = mt76x0_assign_pipes(usb_intf, dev);
+ 	if (ret)
+ 		goto err;
++
++	/* Disable the HW, otherwise MCU fail to initalize on hot reboot */
++	mt76x0_chip_onoff(dev, false, false);
++
+ 	ret = mt76x0_wait_asic_ready(dev);
+ 	if (ret)
+ 		goto err;
 -- 
 1.9.3
