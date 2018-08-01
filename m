@@ -1,45 +1,51 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v4 05/10] clk: mediatek: Add dt-bindings for MT8183 clocks
-Date: Tue, 31 Jul 2018 13:24:26 -0600
-Message-ID: <20180731192426.GA8792@rob-hp-laptop>
-References: <1533015487-60189-1-git-send-email-erin.lo@mediatek.com>
- <1533015487-60189-6-git-send-email-erin.lo@mediatek.com>
+From: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH v3 12/14] mt76: Kconfig and Makefile for mt76x0 driver
+Date: Wed, 01 Aug 2018 10:32:12 +0300
+Message-ID: <8736vy1r0j.fsf@purkki.adurom.net>
+References: <1533040864-9026-1-git-send-email-sgruszka@redhat.com>
+        <1533040864-9026-13-git-send-email-sgruszka@redhat.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1533015487-60189-6-git-send-email-erin.lo@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Erin Lo <erin.lo@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Stephen Boyd <sboyd@codeaurora.org>, devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, mars.cheng@mediatek.com, eddie.huang@mediatek.com, linux-clk@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1533040864-9026-13-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+        (Stanislaw Gruszka's message of "Tue, 31 Jul 2018 14:41:02 +0200")
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jul 31, 2018 at 01:38:02PM +0800, Erin Lo wrote:
-> From: Weiyi Lu <weiyi.lu@mediatek.com>
-> 
-> Add MT8183 clock dt-bindings, include topckgen, apmixedsys,
-> infracfg and subsystem clocks.
-> 
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
+Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> writes:
+
+> Add Kconfig and Makefiles for mt76x0 driver. Now the driver
+> can be build.
+>
+> Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 > ---
->  include/dt-bindings/clock/mt8183-clk.h | 413 +++++++++++++++++++++++++++++++++
->  1 file changed, 413 insertions(+)
->  create mode 100644 include/dt-bindings/clock/mt8183-clk.h
-> 
-> diff --git a/include/dt-bindings/clock/mt8183-clk.h b/include/dt-bindings/clock/mt8183-clk.h
-> new file mode 100644
-> index 0000000..bacad53
-> --- /dev/null
-> +++ b/include/dt-bindings/clock/mt8183-clk.h
-> @@ -0,0 +1,413 @@
-> +/* SPDX-License-Identifier: GPL-2.0
+>  drivers/net/wireless/mediatek/mt76/Kconfig         | 7 +++++++
+>  drivers/net/wireless/mediatek/mt76/Makefile        | 1 +
+>  drivers/net/wireless/mediatek/mt76/mt76x0/Makefile | 7 +++++++
+>  3 files changed, 15 insertions(+)
+>  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wireless/mediatek/mt76/Kconfig
+> index 69906c733a1c..850611ad347a 100644
+> --- a/drivers/net/wireless/mediatek/mt76/Kconfig
+> +++ b/drivers/net/wireless/mediatek/mt76/Kconfig
+> @@ -9,6 +9,13 @@ config MT76x2_COMMON
+>  	tristate
+>  	depends on MT76_CORE
+>  
+> +config MT76x0U
+> +	tristate "MediaTek MT76x0U (USB) support"
+> +	depends on MAC80211
+> +	depends on USB
+> +	help
+> +	  This adds support for MT7610U-based wireless USB dongles.
 
-This should be a separate comment from the copyright. Otherwise,
+Does it make sense to add a Kconfig option for every mt76 device? I'm
+worried that soon we have over a dozen of them. I can understand having
+separate options to enable PCI or USB devices, but I don't see the
+benefit for anything more finegrained than that.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
-
-> + *
-> + * Copyright (c) 2018 MediaTek Inc.
-> + * Author: Weiyi Lu <weiyi.lu@mediatek.com>
-> + */
+-- 
+Kalle Valo
