@@ -1,65 +1,41 @@
-From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH v3 12/14] mt76: Kconfig and Makefile for mt76x0 driver
-Date: Wed, 1 Aug 2018 10:59:14 +0200
-Message-ID: <20180801085913.GC4526@redhat.com>
-References: <1533040864-9026-1-git-send-email-sgruszka@redhat.com>
- <1533040864-9026-13-git-send-email-sgruszka@redhat.com>
- <8736vy1r0j.fsf@purkki.adurom.net>
- <20180801082844.GB4526@redhat.com>
- <87600u8on6.fsf@kamboji.qca.qualcomm.com>
+From: zhong jiang <zhongjiang@huawei.com>
+Subject: [PATCH] drivers/staging/mt7621-eth: Use dma_zalloc_coherent to replace dma_alloc_coherent+memset
+Date: Wed, 1 Aug 2018 22:10:15 +0800
+Message-ID: <1533132615-53808-1-git-send-email-zhongjiang@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <87600u8on6.fsf-HodKDYzPHsUD5k0oWYwrnHL1okKdlPRT@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: gregkh@linuxfoundation.org, matthias.bgg@gmail.com
+Cc: kamalheib1@gmail.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Aug 01, 2018 at 11:41:33AM +0300, Kalle Valo wrote:
-> Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> writes:
-> 
-> > On Wed, Aug 01, 2018 at 10:32:12AM +0300, Kalle Valo wrote:
-> >> Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> writes:
-> >> 
-> >> > Add Kconfig and Makefiles for mt76x0 driver. Now the driver
-> >> > can be build.
-> >> >
-> >> > Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-> >> > ---
-> >> >  drivers/net/wireless/mediatek/mt76/Kconfig         | 7 +++++++
-> >> >  drivers/net/wireless/mediatek/mt76/Makefile        | 1 +
-> >> >  drivers/net/wireless/mediatek/mt76/mt76x0/Makefile | 7 +++++++
-> >> >  3 files changed, 15 insertions(+)
-> >> >  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
-> >> >
-> >> > diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wireless/mediatek/mt76/Kconfig
-> >> > index 69906c733a1c..850611ad347a 100644
-> >> > --- a/drivers/net/wireless/mediatek/mt76/Kconfig
-> >> > +++ b/drivers/net/wireless/mediatek/mt76/Kconfig
-> >> > @@ -9,6 +9,13 @@ config MT76x2_COMMON
-> >> >  	tristate
-> >> >  	depends on MT76_CORE
-> >> >  
-> >> > +config MT76x0U
-> >> > +	tristate "MediaTek MT76x0U (USB) support"
-> >> > +	depends on MAC80211
-> >> > +	depends on USB
-> >> > +	help
-> >> > +	  This adds support for MT7610U-based wireless USB dongles.
-> >> 
-> >> Does it make sense to add a Kconfig option for every mt76 device? I'm
-> >> worried that soon we have over a dozen of them. I can understand having
-> >> separate options to enable PCI or USB devices, but I don't see the
-> >> benefit for anything more finegrained than that.
-> >
-> > I think it does make sense for AP/home routers and other embedded
-> > devices.
-> 
-> How much of memory savings are we talking about?
+we prefer to use dma_zalloc_coherent rather than dam_alloc_coherent+memset
 
-Currently mt76x0.ko module is 285 KB big on x86_64 after debug symbols
-strip (with debug symbols size is 6MB).
+Signed-off-by: zhong jiang <zhongjiang@huawei.com>
+---
+ drivers/staging/mt7621-eth/mtk_eth_soc.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Stanislaw
+diff --git a/drivers/staging/mt7621-eth/mtk_eth_soc.c b/drivers/staging/mt7621-eth/mtk_eth_soc.c
+index f9b593ca..7135075 100644
+--- a/drivers/staging/mt7621-eth/mtk_eth_soc.c
++++ b/drivers/staging/mt7621-eth/mtk_eth_soc.c
+@@ -1396,14 +1396,13 @@ static int mtk_qdma_tx_alloc_tx(struct mtk_eth *eth)
+ 	if (!ring->tx_buf)
+ 		goto no_tx_mem;
+ 
+-	ring->tx_dma = dma_alloc_coherent(eth->dev,
++	ring->tx_dma = dma_zalloc_coherent(eth->dev,
+ 					  ring->tx_ring_size * sz,
+ 					  &ring->tx_phys,
+ 					  GFP_ATOMIC | __GFP_ZERO);
+ 	if (!ring->tx_dma)
+ 		goto no_tx_mem;
+ 
+-	memset(ring->tx_dma, 0, ring->tx_ring_size * sz);
+ 	for (i = 0; i < ring->tx_ring_size; i++) {
+ 		int next = (i + 1) % ring->tx_ring_size;
+ 		u32 next_ptr = ring->tx_phys + next * sz;
+-- 
+1.7.12.4
