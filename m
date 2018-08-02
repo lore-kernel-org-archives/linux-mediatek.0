@@ -1,126 +1,69 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v7 2/3] Bluetooth: mediatek: Add protocol support for
- MediaTek serial devices
-Date: Thu, 2 Aug 2018 18:24:55 +0800
-Message-ID: <1533205495.3472.144.camel@mtkswgap22>
-References: <cover.1533056925.git.sean.wang@mediatek.com>
-         <c92ed10cf16f36d9a3b390e864af92e2dfe7b771.1533056925.git.sean.wang@mediatek.com>
-         <1707FFA1-A294-4A95-A3BF-0910CE455232@holtmann.org>
-         <1533192799.3472.122.camel@mtkswgap22>
-         <FF45A90A-F9F1-47CB-AB1F-1E92BF587FBE@holtmann.org>
-         <1533199720.3472.136.camel@mtkswgap22>
-         <9526E5D9-50BA-4D57-80F5-083DB7D28AFE@holtmann.org>
+From: Stu Hsieh <stu.hsieh@mediatek.com>
+Subject: Re: [PATCH v1 00/15] Add RDMA memory mode support for mediatek SOC
+ MT2712
+Date: Thu, 2 Aug 2018 19:29:22 +0800
+Message-ID: <1533209362.11190.54.camel@mtksdccf07>
+References: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
+ <1532482768.9280.4.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9526E5D9-50BA-4D57-80F5-083DB7D28AFE@holtmann.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Marcel Holtmann <marcel@holtmann.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Johan Hedberg <johan.hedberg@gmail.com>, devicetree <devicetree@vger.kernel.org>, "open list:BLUETOOTH DRIVERS" <linux-bluetooth@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1532482768.9280.4.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>
+Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2018-08-02 at 11:45 +0200, Marcel Holtmann wrote:
-> Hi Sean,
-> 
-> >>>>> +
-> >>>>> +static int mtk_hci_wmt_sync(struct hci_dev *hdev, u8 op, u8 flag, u16 plen,
-> >>>>> +			    const void *param)
-> >>>>> +{
-> >>>>> +	struct mtk_hci_wmt_cmd wc;
-> >>>>> +	struct mtk_wmt_hdr *hdr;
-> >>>>> +	struct sk_buff *skb;
-> >>>>> +	u32 hlen;
-> >>>>> +
-> >>>>> +	hlen = sizeof(*hdr) + plen;
-> >>>>> +	if (hlen > 255)
-> >>>>> +		return -EINVAL;
-> >>>>> +
-> >>>>> +	hdr = (struct mtk_wmt_hdr *)&wc;
-> >>>>> +	hdr->dir = 1;
-> >>>>> +	hdr->op = op;
-> >>>>> +	hdr->dlen = cpu_to_le16(plen + 1);
-> >>>>> +	hdr->flag = flag;
-> >>>>> +	memcpy(wc.data, param, plen);
-> >>>>> +
-> >>>>> +	atomic_inc(&hdev->cmd_cnt);
-> >>>> 
-> >>>> Why are you doing this one. It will need a comment here if really needed. However I doubt that this is needed. You are only using it from hdev->setup and hdev->shutdown callbacks.
-> >>>> 
-> >>> 
-> >>> An increment on cmd_cnt is really needed because hci_cmd_work would check whether cmd_cnt is positive and then has a decrement on cmd_cnt before a packet is being sent out.
-> >>> 
-> >>> okay will add a comment.
-> >> 
-> >> but you are in ->setup callback this time. So if you need this, then all the other ->setup routines would actually fail as well. Either this is leftover from when you did things in ->probe or ->open or this is some thing we might better fix properly in the core instead of papering over it. Can you recheck if this is really needed.
-> >> 
-> > 
-> > I added a counter print and the counter increments as below
-> > 
-> > 	/* atomic_inc(&hdev->cmd_cnt); */
-> >        pr_info("cmd_cnt = %d\n" , atomic_read(&hdev->cmd_cnt));
-> > 
-> >        skb = __hci_cmd_sync_ev(hdev, 0xfc6f, hlen, &wc, HCI_VENDOR_PKT,
-> >                                HCI_INIT_TIMEOUT);
-> > 
-> > and the log show up that 
-> > 
-> > 
-> > [  334.049156] Bluetooth: hci0: command 0xfc6f tx timeout
-> > [  334.054840] cmd_cnt = 0
-> > [  336.065076] Bluetooth: hci0: command 0xfc6f tx timeout
-> > [  336.070795] cmd_cnt = 0
-> > [  338.080997] Bluetooth: hci0: command 0xfc6f tx timeout
-> > [  338.086683] cmd_cnt = 0
-> > [  340.096907] Bluetooth: hci0: command 0xfc6f tx timeout
-> > [  340.102609] cmd_cnt = 0
-> > [  342.112824] Bluetooth: hci0: command 0xfc6f tx timeout
-> > [  342.118520] cmd_cnt = 0
-> > [  344.128747] Bluetooth: hci0: command 0xfc6f tx timeout
-> > [  344.134454] cmd_cnt = 0
-> > [  346.144667] Bluetooth: hci0: command 0xfc6f tx timeout
-> > [  346.150372] cmd_cnt = 0
-> > 
-> > 
-> > The packet is dropped by hci_cmd_work at [1], so I also wondered why the
-> > other vendor driver works, it seems the counter needs to be incremented
-> > before every skb is being queued to cmd_q.
-> > 
-> > 4257 static void hci_cmd_work(struct work_struct *work)
-> > 4258 {
-> > 4259         struct hci_dev *hdev = container_of(work, struct hci_dev, cmd_work);
-> > 4260         struct sk_buff *skb;
-> > 4261
-> > 4262         BT_DBG("%s cmd_cnt %d cmd queued %d", hdev->name,
-> > 4263                atomic_read(&hdev->cmd_cnt), skb_queue_len(&hdev->cmd_q));
-> > 4264
-> > 4265         /* Send queued commands */
-> > 
-> > [1]
-> > 4266         if (atomic_read(&hdev->cmd_cnt)) { /* dropped when cmd_cnt is zero */
-> > 4267                 skb = skb_dequeue(&hdev->cmd_q);
-> > 4268                 if (!skb)
-> > 4269                         return;
-> > 4270
-> > 4271                 kfree_skb(hdev->sent_cmd);
-> > 4272
-> > 4273                 hdev->sent_cmd = skb_clone(skb, GFP_KERNEL);
-> > 4274                 if (hdev->sent_cmd) {
-> > 4275                         atomic_dec(&hdev->cmd_cnt);  /* cmd_cnt-- */
-> > 4276                         hci_send_frame(hdev, skb);
-> 
-> actually the command also needs to better go via the raw_q anyway since it doesn’t come back with the cmd status or cmd complete. You have it waiting for a vendor event. Maybe with is something we need to consider with __hci_cmd_sync_ev anyway.
-> 
-> Johan would know best since he wrote that code. Anyway, we should fix that in the core and not have you hack around it.
-> 
-
-yes, my case is that received event is neither cmd status nor cmd complete. It is completely a vendor event.
-
-if it wants to be solved by the core layer, do you permit that I remove the hack and then send it in the next version?
-
-	Sean
-
-> Regards
-> 
-> Marcel
-> 
+SGksIENLOgoKT24gV2VkLCAyMDE4LTA3LTI1IGF0IDA5OjM5ICswODAwLCBDSyBIdSB3cm90ZToK
+PiBIaSwgU3R1Ogo+IAo+IEl0IGxvb2tzIGxpa2UgdGhlIHNlcmllcyBpcyBhIGJ1ZyBmaXggb2Yg
+WzFdLiBJbiBbMV0sIHlvdSBjcmVhdGUgdGhpcmQKPiBjcnRjIGJ1dCBpdCBkb2VzIG5vdCB3b3Jr
+IHVubGVzcyBhcHBseSB0aGlzIHNlcmllcy4gU28gZm9yIGFsbCB0aGUKPiBwYXRjaGVzIGluIHRo
+aXMgc2VyaWVzLCB5b3Ugc2hvdWxkIHJlZmVyIHRvIFsyXSB0byBhZGQgJ0ZpeGVzOicgYW5kCj4g
+J0NjOicgaW4gY29tbWl0IG1lc3NhZ2UuCj4gCj4gCj4gWzFdCj4gaHR0cHM6Ly9naXQua2VybmVs
+Lm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvbmV4dC9saW51eC1uZXh0LmdpdC9jb21taXQv
+P2lkPWU2YWIwODdhMjI0ZmQ3YmNmNzEyZGI2OThmYmFkZTY3M2NjOWFkZGQKPiBbMl0KPiBodHRw
+czovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9uZXh0L2xpbnV4LW5l
+eHQuZ2l0L2NvbW1pdC8/aWQ9ODNiYTYyYmM3MDBiYWI3MTBiMjJiZTNhMWJmNmNmOTczZjc1NDI3
+Mwo+IAo+IFJlZ2FyZHMsCj4gQ0sKPiAKCk9LCgpSZWdhcmRzLApTdHUKCj4gT24gVHVlLCAyMDE4
+LTA3LTI0IGF0IDE2OjE3ICswODAwLCBTdHUgSHNpZWggd3JvdGU6Cj4gPiBUaGlzIHBhdGNoIHNl
+cmllcyBhZGQgUkRNQSBtZW1vcnkgbW9kZSBzdXBwb3J0IGZvciBtZWRpYXRlayBTT0MgTVQyNzEy
+Lgo+ID4gTVQyNzEyIGhhcyB0aHJlZSBkaXNwbGF5IGRhdGEgcGF0aCwgaW5jbHVkaW5nIHRocmVl
+IEhXIGVuZ2luZSwKPiA+IHR3byBPVkwgYW5kIG9uZSBSRE1BLgo+ID4gCj4gPiBUaGUgUkRNQSB1
+c2VkIGluIHRoaXJkIGRkcCBhbmQgaXQgbmVlZCB0byBiZSBzZXQgbWVtb3J5IG1vZGUsCj4gPiB0
+aGVuIFJETUEgY291bGQgcmVhZCBkYXRhIGZyb20gbWVtb3J5IGFuZCBvdXRwdXQgdG8gcGFuZWwu
+Cj4gPiAKPiA+IFN0dSBIc2llaCAoMTUpOgo+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBjb25uZWN0
+aW9uIGZyb20gUkRNQTAgdG8gRFBJMQo+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBjb25uZWN0aW9u
+IGZyb20gUkRNQTAgdG8gRFNJMQo+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBjb25uZWN0aW9uIGZy
+b20gUkRNQTEgdG8gRFNJMAo+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBjb25uZWN0aW9uIGZyb20g
+UkRNQTIgdG8gRFNJMAo+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBSRE1BIG1lbW9yeSBtb2RlIGZv
+ciBjcnRjIGNyZWF0ZWQKPiA+ICAgZHJtL21lZGlhdGVrOiBhZGQgbWVtb3J5IG1vZGUgZm9yIFJE
+TUEKPiA+ICAgZHJtL21lZGlhdGVrOiBhZGQgbGF5ZXIgY29uZmlnIHRvIHNldCBSRE1BIGZvciBw
+bGFuZSBzZXR0aW5nCj4gPiAgIGRybS9tZWRpYXRlazogYWRkIFJHQiBjb2xvciBmb3JtYXQgc3Vw
+cG9ydCBmb3IgUkRNQQo+ID4gICBkcm0vbWVkaWF0ZWs6IGFkZCBZVVlWL1VZVlkgY29sb3IgZm9y
+bWF0IHN1cHBvcnQgZm9yIFJETUEKPiA+ICAgZHJtL21lZGlhdGVrOiBhZGQgZHJtX2RldmljZSBp
+biBSRE1BIGZvciBtYW1vcnkgbW9kZSB0byByZWFxdWVzdAo+ID4gICAgIGJ1ZmZlcgo+ID4gICBk
+cm0vbWVkaWF0ZWs6IGFkZCBkdW1teSBidWZmZXIgZm9yIFJETUEgbWVtb3J5IG1vZGUKPiA+ICAg
+ZHJtL21lZGlhdGVrOiBhZGQgbGF5ZXIgbnVtYmVyIGNvbmRpdGlvbiBmb3IgUkRNQSB0byBjb250
+cm9sIHBsYW5lCj4gPiAgIGRybS9tZWRpYXRlazogVXBkYXRlIHNvbWUgdmFyaWFibGUgbmFtZSBm
+cm9tIG92bCB0byBjb21wCj4gPiAgIGRybS9tZWRpYXRlazogZml4ZWQgdGhlIGVycm9yIHZhbHVl
+IGZvciBhZGQgRFNJMSBpbiBtdXRleAo+ID4gICBkcm0vbWVkaWF0ZWs6IGZpeGVkIGNvbm5lY3Rp
+b24gZnJvbSBSRE1BMiB0byBEU0kxCj4gPiAKPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2Rpc3BfcmRtYS5jICAgIHwgMTIyICsrKysrKysrKysrKysrKysrKysrKysrKysrKy0KPiA+
+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgICAgIHwgIDU5ICsrKysr
+KysrKy0tLS0tCj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5oICAg
+ICB8ICAgNCArLQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jICAg
+ICAgfCAgMjAgKysrKy0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBf
+Y29tcC5oIHwgICAyICsKPiA+ICA1IGZpbGVzIGNoYW5nZWQsIDE4MSBpbnNlcnRpb25zKCspLCAy
+NiBkZWxldGlvbnMoLSkKPiA+IAo+IAo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaS1kZXZlbAo=
