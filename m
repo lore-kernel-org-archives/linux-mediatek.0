@@ -1,52 +1,122 @@
-From: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH v3 01/14] mt76x0: core files
-Date: Thu,  2 Aug 2018 18:52:34 +0000 (UTC)
-Message-ID: <20180802185234.93C7860AD9@smtp.codeaurora.org>
-References: <1533040864-9026-2-git-send-email-sgruszka@redhat.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v8 0/3] add support for Bluetooth on MT7622 SoC
+Date: Fri, 3 Aug 2018 04:25:29 +0800
+Message-ID: <cover.1533241009.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1533040864-9026-2-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, mark.rutland@arm.com, marcel@holtmann.org, johan.hedberg@gmail.com
+Cc: devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
+From: Sean Wang <sean.wang@mediatek.com>
 
-> Core files of mt76x0 driver.
-> 
-> mt76x0 driver adds support for Mediatek MT7610U based
-> USB Wi-Fi dongles.
-> 
-> Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+v8 and changes since v7:
+ - add updates per these suggestions mentioned in [1][2]
+ - remove the hack atomic_inc(&hdev->cmd_cnt) mentioned in [2] because it should
+   be better to be considered in the core
 
-14 patches applied to wireless-drivers-next.git, thanks.
+[1] http://lists.infradead.org/pipermail/linux-mediatek/2018-August/014516.html
+[2] http://lists.infradead.org/pipermail/linux-mediatek/2018-August/014518.html
 
-7b4859026ccd mt76x0: core files
-a77443498137 mt76x0: mac files
-ff69c75ee539 mt76x0: usb files
-55b13a047445 mt76x0: mcu files
-10de7a8b4ab9 mt76x0: phy files
-134b2d0d1fcf mt76x0: init files
-e87b5039511a mt76x0: eeprom files
-a79e4638152f mt76x0: trace and debugfs files
-b4d4d0644331 mt76x0: dma and tx files
-95e444098a7b mt76x0: main file
-87e022de330a mt76: add more states
-52abb142baa0 mt76: Kconfig and Makefile for mt76x0 driver
-369bbecdbb2d mt76x0: disable HW before probe
-a33ce21e2afc mt76x0: load firmware from mediatek subdir
+v7 and changes since v6:
+ - drop already applied patches
+ - move clk_* and pm_* operation to ->open and ->close 
+ - label this driver as BT_MTKUART
+ - make code style aligned with the other drivers and code better to read
+   as these suggestions and fixes are mentioned in [1]
+
+[1] http://lists.infradead.org/pipermail/linux-mediatek/2018-July/014458.html
+
+v6 and changes since v5:
+ - make btmtkuart become a separate driver.
+ - drop already applied patches and the patch for btuart driver
+ - refine comments in driver allowing people know that mtk extra header
+   + length doesn't indicate a full H:4 frame, things can fragment.
+ - enhance dt-binding document with removing mistaken added " and improve
+   English sentence.
+ - remove unnecessary '\n' with bt_dev_err.
+ - refine code style.
+ - set hdev->manufacturer as mtk id.
+
+v5 and changes since v4:
+ - add Reviewed-by Tag from Ulf Hansson for patch 2
+ - remove default y in Kconfig for btmtkuart selection to avoid overkill for
+   users which would like to have less an amount on stuff in kernel.
+ - list header declarations in alphabetical order and add a proper blank line
+   within.
+ - remove unused macro.
+ - use sizeof to calculate structure size instead of an aextra macro to hardcode.
+ - use struct hci_dev * as input paraments for mtk_hci_wmt_sync and mtk_setup_fw
+   for that can be reused in mtk bluetooth with other interfaces.
+ - remove unused local variabled in mtk_btuart_recv.
+ - remove superfluous :8 for dlen2 in struct mtk_stp_hdr definition.
+ - give a reasonable naming for these labels and add a pm_runtime_put_noidle()
+   in the path undoing failing pm_runtime_get_sync().
+ - Turn __u8 into u8 in struct mtk_stp_hdr.
+
+ Really thanks for these reviews by Johan Hovold and Andy Shevchenko
+
+v4 and changes since v3:
+ - refine patch 2 based on commit 919b7308fcc4 to allow that
+   dev_pm_domain_attach() will return better error codes. 
+
+v3 and changes since v2
+* all changes happen on patch 6
+ - fix up SPDX license style for btmtkuart.h.
+ - change firmware download from in ACL data to in HCI commands
+   and then remove unused mtk_acl_wmt_sync and related code.
+ - add a workaround replacing bad vendor event id 0xe4 with 0xff every
+   vendor should use.
+ - add a sanity check for mtk_hci_wmt_sync to verifying if
+   input parameters are valid.
+ - add an atomic_inc(&bdev->hdev->cmd_cnt) for __hci_cmd_sync_ev.
+ - be changed to use firmware with a header called mt7622pr2h.bin.
+
+v2 and changes since v1
+ - Dropped patches already being applied
+ - Rewirte the whole driver using btuart [1], and add slight extension
+   of btuart to fit into btmtkuart driver. Beware that [1] is also pulled
+   into one part of the series for avoiding any breakage when the patchset
+   is being compiled.
+
+[1] btuart 
+	https://www.spinics.net/lists/linux-bluetooth/msg74918.html
+
+v1:
+
+Hi,
+
+This patchset introduces built-in Bluetooth support on MT7622 SoC.
+And, it should be simple to make an extension to support other
+MediaTek SoCs with adjusting a few of changes on the initialization
+sequence of the device.
+
+Before the main driver is being introduced, a few of things about
+power-domain management should be re-worked for serdev core and MediaTek
+SCPSYS to allow the Bluetooth to properly power up.
+
+Patch 2: add a generic way attaching power domain to serdev
+Patch 3 and 4: add cleanups with reuse APIs from Linux core
+Patch 5: fix a limitation about power enablement Bluetooth depends on
+Patch 1, 6 and 7: the major part of adding Bluetooth support to MT7622
+	
+	Sean
+
+Sean Wang (3):
+  dt-bindings: net: bluetooth: Add mediatek-bluetooth
+  Bluetooth: mediatek: Add protocol support for MediaTek serial devices
+  MAINTAINERS: add an entry for MediaTek Bluetooth driver
+
+ .../devicetree/bindings/net/mediatek-bluetooth.txt |  35 ++
+ MAINTAINERS                                        |   8 +
+ drivers/bluetooth/Kconfig                          |  11 +
+ drivers/bluetooth/Makefile                         |   2 +
+ drivers/bluetooth/btmtkuart.c                      | 588 +++++++++++++++++++++
+ 5 files changed, 644 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
+ create mode 100644 drivers/bluetooth/btmtkuart.c
 
 -- 
-https://patchwork.kernel.org/patch/10550731/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+2.7.4
