@@ -1,117 +1,70 @@
-From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: Re: [PATCH v1 11/15] drm/mediatek: add dummy buffer for RDMA memory
- mode
-Date: Thu, 2 Aug 2018 19:45:14 +0800
-Message-ID: <1533210314.11190.69.camel@mtksdccf07>
-References: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
- <1532420235-22268-12-git-send-email-stu.hsieh@mediatek.com>
- <1532497379.9280.32.camel@mtksdaap41>
+From: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH v3 12/14] mt76: Kconfig and Makefile for mt76x0 driver
+Date: Thu, 02 Aug 2018 20:11:35 +0300
+Message-ID: <87o9ek7kxk.fsf@kamboji.qca.qualcomm.com>
+References: <1533040864-9026-1-git-send-email-sgruszka@redhat.com>
+        <1533040864-9026-13-git-send-email-sgruszka@redhat.com>
+        <8736vy1r0j.fsf@purkki.adurom.net> <20180801082844.GB4526@redhat.com>
+        <87600u8on6.fsf@kamboji.qca.qualcomm.com>
+        <20180801085913.GC4526@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1532497379.9280.32.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20180801085913.GC4526-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> (Stanislaw Gruszka's message
+        of "Wed, 1 Aug 2018 10:59:14 +0200")
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Michal Schmidt <mschmidt-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIENLOgoKT24gV2VkLCAyMDE4LTA3LTI1IGF0IDEzOjQyICswODAwLCBDSyBIdSB3cm90ZToK
-PiBIaSwgU3R1Ogo+IAo+IE9uIFR1ZSwgMjAxOC0wNy0yNCBhdCAxNjoxNyArMDgwMCwgU3R1IEhz
-aWVoIHdyb3RlOgo+ID4gVGhpcyBwYXRjaCBhZGQgZHVtbXkgYnVmZmVyIGZvciBSRE1BIG1lbW9y
-eSBtb2RlCj4gPiAKPiA+IFdoZW4gZGlzcGxheSBwb3dlciBvbiwgdGhlIGRybSBmcmFtZSB3b3Jr
-IHdvdWxkIG1vZGVzZXQgYW5kCj4gPiBzZXQgdXAgdGhlIGRpc3BsYXkgSFcuCj4gPiAKPiA+IElu
-IHRoaXMgdGltZSwgdGhlIFJETUEgd291bGQgc3RhcnQgd3Jva2luZyBhbmQgcmVhZCB0aGUgZGF0
-YSBmcm9tIG1lbW9yeS4KPiA+IEJ1dCwgdXNlciBzcGFjZSBub3Qgc2VuZCB0aGUgZGF0YSB0byBk
-cm0geWV0Lgo+ID4gCj4gPiBGb3IgdGhpcyBjYXNlLCBpZiB1c2VyIHNwYWNlIG5vdCBzZW5kIGRh
-dGEgdG8gZGlzcGxheSBodyhSRE1BKSB5ZXQsCj4gPiBSRE1BIHdvdWxkIHJlYWQgdGhlIHdyb25n
-IGFkZHJlc3MgdG8gc2hvdyBnYXJiYWdlLgo+ID4gCj4gPiBUaGVyZWZvcmUsIHdlIGNyZWF0ZSBk
-dW1teSBidWZmZXIgZm9yIFJETUEgcmVhZGluZyBtZW1vcnkKPiA+IHdoZW4gdXNlcnNwYWNlIG5v
-dCBzZW5kIHRoZSBkYXRhIHlldC4KPiA+IAo+IAo+IElzIHRoaXMgdGhlIG9ubHkgc29sdXRpb24/
-IElmIHBhbmVsIHJlc29sdXRpb24gaXMgMTkyMHgxMDgwLCB0aGUgYnVmZmVyCj4gc2l6ZSBpcyA4
-Mjk0NDAwIGJ5dGVzLiBIb3cgbGFyZ2UgaXQgaXMuIElmIHdlIGhhdmUgYW5vdGhlciBzb2x1dGlv
-biwKPiBJJ2xsIG5vdCBhY2NlcHQgdGhpcyBvbmUuIEFzIGZhciBhcyBJIGtub3csIERTSSBvciBE
-UEkgY291bGQgb3V0cHV0Cj4gc2luZ2xlIGNvbG9yIGV2ZW4gdGhvdWdoIHRoZXJlIGlzIG5vIGlu
-cHV0IGRhdGEuIElmIHRoaXMgaXMgdHJ1ZSwgd2hlbgo+IGVuY29kZXIgaXMgZW5hYmxlZCwgaXQg
-b3V0cHV0IHRoZSBzaW5nbGUgY29sb3IuIFdoZW4gY3J0YyBlbmFibGUsIGNvbmZpZwo+IGFsbCBz
-ZXR0aW5nIGV4Y2VwdCAnc3RhcnQnLiBXaGVuIHJlY2VpdmUgdGhlIGJ1ZmZlciwgJ3N0YXJ0JyB0
-aGUKPiBwaXBlbGluZSB3aGljaCBpbmNsdWRlIGVuY29kZXIuIFdoZW4gZW5jb2RlciAnc3RhcnQn
-LCBpdCBkaXNhYmxlIHRoZQo+IHNpbmdsZSBjb2xvciBmdW5jdGlvbiBhbmQgb3V0cHV0IHRoZSBk
-YXRhIGZyb20gaW5wdXQuCj4gCj4gUmVnYXJkcywKPiBDSwo+IAoKSSB3b3VsZCByZW1vdmUgZHVt
-bXlfYnVmZmVyIHBhdGNoLgpZb3VyIGlkZWEgInVzZSBlbmNvZGVyIGJsYWNrIHBhdHRlcm4gYmVm
-b3JlIHRoZSBmaXJzdCBidWZmZXIgY29taW5nIiBjYW4Kd29yay4KQnV0IGl0IG5lZWQgYWxzbyBt
-b3ZlICJyZG1hIG1lbW9yeSBtb2RlIHNldHRpbmciIHRvIGxheWVyX2NvbmZpZy4KVGhlcmVmb3Jl
-LCB3aGVuIGNtZHEgcGF0Y2ggYWNjZXB0ZWQsIEkgd2lsbCBjb21taXQgYW5vdGhlciBwYXRjaCBz
-ZXQgdG8KZml4IHRoZSBnYXJiYWdlIG91dHB1dCB0byBwYW5lbC4KCj4gCj4gPiBTaWduZWQtb2Zm
-LWJ5OiBTdHUgSHNpZWggPHN0dS5oc2llaEBtZWRpYXRlay5jb20+Cj4gPiAtLS0KPiA+ICBkcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jICAgIHwgMjMgKysrKysrKysrKysr
-KysrKysrKysrKysKPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29t
-cC5oIHwgIDEgKwo+ID4gIDIgZmlsZXMgY2hhbmdlZCwgMjQgaW5zZXJ0aW9ucygrKQo+ID4gCj4g
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyBi
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMKPiA+IGluZGV4IDhkNDFm
-NWNkNDg1Yi4uZTI4ZjM2ODcyOGNkIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kaXNwX3JkbWEuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kaXNwX3JkbWEuYwo+ID4gQEAgLTIwLDYgKzIwLDcgQEAKPiA+ICAKPiA+ICAjaW5jbHVk
-ZSAibXRrX2RybV9jcnRjLmgiCj4gPiAgI2luY2x1ZGUgIm10a19kcm1fZGRwX2NvbXAuaCIKPiA+
-ICsjaW5jbHVkZSAibXRrX2RybV9nZW0uaCIKPiA+ICAKPiA+ICAjZGVmaW5lIERJU1BfUkVHX1JE
-TUFfSU5UX0VOQUJMRQkJMHgwMDAwCj4gPiAgI2RlZmluZSBESVNQX1JFR19SRE1BX0lOVF9TVEFU
-VVMJCTB4MDAwNAo+ID4gQEAgLTU5LDYgKzYwLDkgQEAKPiA+ICAjZGVmaW5lIE1FTV9NT0RFX0lO
-UFVUX0ZPUk1BVF9VWVZZCQkoMHgwMDQgPDwgNCkKPiA+ICAjZGVmaW5lIE1FTV9NT0RFX0lOUFVU
-X0ZPUk1BVF9ZVVlWCQkoMHgwMDUgPDwgNCkKPiA+ICAKPiA+ICsjZGVmaW5lIFJETUFfRFVNTVlf
-QlVGRkVSX1NJWkUoaCwgdikJCSgoaCkgKiAodikgKiA0KQo+ID4gKyNkZWZpbmUgUkRNQV9EVU1N
-WV9CVUZGRVJfUElUQ0goaCkJCSgoaCkgKiA0KQo+ID4gKwo+ID4gIHN0cnVjdCBtdGtfZGlzcF9y
-ZG1hX2RhdGEgewo+ID4gIAl1bnNpZ25lZCBpbnQgZmlmb19zaXplOwo+ID4gIH07Cj4gPiBAQCAt
-NzQsNiArNzgsNyBAQCBzdHJ1Y3QgbXRrX2Rpc3BfcmRtYSB7Cj4gPiAgCWNvbnN0IHN0cnVjdCBt
-dGtfZGlzcF9yZG1hX2RhdGEJKmRhdGE7Cj4gPiAgCXN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2
-Owo+ID4gIAlib29sIHJkbWFfbWVtb3J5X21vZGU7Cj4gPiArCXVuc2lnbmVkIGludCBkdW1teV9z
-aXplOwo+ID4gIH07Cj4gPiAgCj4gPiAgc3RhdGljIGlubGluZSBzdHJ1Y3QgbXRrX2Rpc3BfcmRt
-YSAqY29tcF90b19yZG1hKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXApCj4gPiBAQCAtMTI2LDE0
-ICsxMzEsMjkgQEAgc3RhdGljIHZvaWQgbXRrX3JkbWFfZGlzYWJsZV92Ymxhbmsoc3RydWN0IG10
-a19kZHBfY29tcCAqY29tcCkKPiA+ICAKPiA+ICBzdGF0aWMgdm9pZCBtdGtfcmRtYV9zdGFydChz
-dHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wKQo+ID4gIHsKPiA+ICsJc3RydWN0IG10a19kaXNwX3Jk
-bWEgKnJkbWEgPSBjb21wX3RvX3JkbWEoY29tcCk7Cj4gPiArCWJvb2wgKnJkbWFfbWVtb3J5X21v
-ZGUgPSBjb21wLT5jb21wX21vZGU7Cj4gPiArCj4gPiArCWlmICgqcmRtYV9tZW1vcnlfbW9kZSA9
-PSB0cnVlKSB7Cj4gPiArCQljb21wLT5tdGtfZ2VtID0gbXRrX2RybV9nZW1fY3JlYXRlKHJkbWEt
-PmRybV9kZXYsCj4gPiArCQkJCQkJICAgcmRtYS0+ZHVtbXlfc2l6ZSwgZmFsc2UpOwo+ID4gKwkJ
-d3JpdGVsKGNvbXAtPm10a19nZW0tPmRtYV9hZGRyICYgMHhGRkZGRkZGRiwKPiA+ICsJCSAgICAg
-ICBjb21wLT5yZWdzICsgRElTUF9SRE1BX01FTV9TVEFSVF9BRERSKTsKPiA+ICsJfQo+ID4gKwo+
-ID4gIAlyZG1hX3VwZGF0ZV9iaXRzKGNvbXAsIERJU1BfUkVHX1JETUFfR0xPQkFMX0NPTiwgUkRN
-QV9FTkdJTkVfRU4sCj4gPiAgCQkJIFJETUFfRU5HSU5FX0VOKTsKPiA+ICB9Cj4gPiAgCj4gPiAg
-c3RhdGljIHZvaWQgbXRrX3JkbWFfc3RvcChzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wKQo+ID4g
-IHsKPiA+ICsJYm9vbCAqcmRtYV9tZW1vcnlfbW9kZSA9IGNvbXAtPmNvbXBfbW9kZTsKPiA+ICsK
-PiA+ICAJd3JpdGVsKFJETUFfU09GVF9SRVNFVCwgY29tcC0+cmVncyArIERJU1BfUkVHX1JETUFf
-R0xPQkFMX0NPTik7Cj4gPiAgCXdyaXRlbCgwLCBjb21wLT5yZWdzICsgRElTUF9SRUdfUkRNQV9H
-TE9CQUxfQ09OKTsKPiA+ICsKPiA+ICsJaWYgKCpyZG1hX21lbW9yeV9tb2RlID09IHRydWUpCj4g
-PiArCQltdGtfZHJtX2dlbV9mcmVlX29iamVjdCgmY29tcC0+bXRrX2dlbS0+YmFzZSk7Cj4gPiAg
-fQo+ID4gIAo+ID4gIHN0YXRpYyB2b2lkIG10a19yZG1hX2NvbmZpZyhzdHJ1Y3QgbXRrX2RkcF9j
-b21wICpjb21wLCB1bnNpZ25lZCBpbnQgd2lkdGgsCj4gPiBAQCAtMTQ5LDggKzE2OSwxMSBAQCBz
-dGF0aWMgdm9pZCBtdGtfcmRtYV9jb25maWcoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5z
-aWduZWQgaW50IHdpZHRoLAo+ID4gIAlyZG1hX3VwZGF0ZV9iaXRzKGNvbXAsIERJU1BfUkVHX1JE
-TUFfU0laRV9DT05fMSwgMHhmZmZmZiwgaGVpZ2h0KTsKPiA+ICAKPiA+ICAJaWYgKCpyZG1hX21l
-bW9yeV9tb2RlID09IHRydWUpIHsKPiA+ICsJCXJkbWEtPmR1bW15X3NpemUgPSBSRE1BX0RVTU1Z
-X0JVRkZFUl9TSVpFKHdpZHRoLCBoZWlnaHQpOwo+ID4gIAkJcmRtYV91cGRhdGVfYml0cyhjb21w
-LCBESVNQX1JFR19SRE1BX1NJWkVfQ09OXzAsIDB4ZmYwMDAwLAo+ID4gIAkJCQkgTUFUUklYX0lO
-VF9NVFhfU0VMX0RFRkFVTFQpOwo+ID4gKwkJd3JpdGVsKFJETUFfRFVNTVlfQlVGRkVSX1BJVENI
-KHdpZHRoKSwKPiA+ICsJCSAgICAgICBjb21wLT5yZWdzICsgRElTUF9SRE1BX01FTV9TUkNfUElU
-Q0gpOwo+ID4gIAkJcmRtYV91cGRhdGVfYml0cyhjb21wLCBESVNQX1JFR19SRE1BX0dMT0JBTF9D
-T04sCj4gPiAgCQkJCSBSRE1BX01PREVfTUVNT1JZLCBSRE1BX01PREVfTUVNT1JZKTsKPiA+ICAJ
-fQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9j
-b21wLmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oCj4gPiBp
-bmRleCBhMTk4OGNlMTUxNDEuLjZkYmI4MzE0NGE3NCAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmgKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmgKPiA+IEBAIC05Miw2ICs5Miw3IEBAIHN0
-cnVjdCBtdGtfZGRwX2NvbXAgewo+ID4gIAlpbnQgaXJxOwo+ID4gIAlzdHJ1Y3QgZGV2aWNlICps
-YXJiX2RldjsKPiA+ICAJZW51bSBtdGtfZGRwX2NvbXBfaWQgaWQ7Cj4gPiArCXN0cnVjdCBtdGtf
-ZHJtX2dlbV9vYmogKm10a19nZW07Cj4gPiAgCWNvbnN0IHN0cnVjdCBtdGtfZGRwX2NvbXBfZnVu
-Y3MgKmZ1bmNzOwo+ID4gIAl2b2lkICpjb21wX21vZGU7Cj4gPiAgfTsKPiAKPiAKCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> writes:
+
+> On Wed, Aug 01, 2018 at 11:41:33AM +0300, Kalle Valo wrote:
+>> Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> writes:
+>> 
+>> > On Wed, Aug 01, 2018 at 10:32:12AM +0300, Kalle Valo wrote:
+>> >> Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> writes:
+>> >> 
+>> >> > Add Kconfig and Makefiles for mt76x0 driver. Now the driver
+>> >> > can be build.
+>> >> >
+>> >> > Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+>> >> > ---
+>> >> >  drivers/net/wireless/mediatek/mt76/Kconfig         | 7 +++++++
+>> >> >  drivers/net/wireless/mediatek/mt76/Makefile        | 1 +
+>> >> >  drivers/net/wireless/mediatek/mt76/mt76x0/Makefile | 7 +++++++
+>> >> >  3 files changed, 15 insertions(+)
+>> >> >  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
+>> >> >
+>> >> > diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wireless/mediatek/mt76/Kconfig
+>> >> > index 69906c733a1c..850611ad347a 100644
+>> >> > --- a/drivers/net/wireless/mediatek/mt76/Kconfig
+>> >> > +++ b/drivers/net/wireless/mediatek/mt76/Kconfig
+>> >> > @@ -9,6 +9,13 @@ config MT76x2_COMMON
+>> >> >  	tristate
+>> >> >  	depends on MT76_CORE
+>> >> >  
+>> >> > +config MT76x0U
+>> >> > +	tristate "MediaTek MT76x0U (USB) support"
+>> >> > +	depends on MAC80211
+>> >> > +	depends on USB
+>> >> > +	help
+>> >> > +	  This adds support for MT7610U-based wireless USB dongles.
+>> >> 
+>> >> Does it make sense to add a Kconfig option for every mt76 device? I'm
+>> >> worried that soon we have over a dozen of them. I can understand having
+>> >> separate options to enable PCI or USB devices, but I don't see the
+>> >> benefit for anything more finegrained than that.
+>> >
+>> > I think it does make sense for AP/home routers and other embedded
+>> > devices.
+>> 
+>> How much of memory savings are we talking about?
+>
+> Currently mt76x0.ko module is 285 KB big on x86_64 after debug symbols
+> strip (with debug symbols size is 6MB).
+
+Ok, makes sense then.
+
+-- 
+Kalle Valo
