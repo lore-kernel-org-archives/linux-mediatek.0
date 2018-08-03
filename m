@@ -1,77 +1,54 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v2 09/15] drm/mediatek: add YUYV/UYVY color format support for RDMA
-Date: Fri, 3 Aug 2018 11:11:02 +0800
-Message-ID: <1533265868-28110-10-git-send-email-stu.hsieh@mediatek.com>
+Subject: [PATCH v2 12/15] drm/mediatek: add callback function to return RDMA
+ layer number
+Date: Fri, 3 Aug 2018 11:11:05 +0800
+Message-ID: <1533265868-28110-13-git-send-email-stu.hsieh@mediatek.com>
 References: <1533265868-28110-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <1533265868-28110-1-git-send-email-stu.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Stu Hsieh <stu.hsieh@mediatek.com>
+Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch add YUYV/UYVY color format support for RDMA
-and transform matrix for YUYV/UYVY.
-
-Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index b6a01438ac76..b728f0f42611 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -33,6 +33,8 @@
- #define RDMA_ENGINE_EN					BIT(0)
- #define RDMA_MODE_MEMORY				BIT(1)
- #define DISP_REG_RDMA_SIZE_CON_0		0x0014
-+#define RDMA_MATRIX_ENABLE				BIT(17)
-+#define RDMA_MATRIX_INT_MTX_SEL				(7UL << 20)
- #define DISP_REG_RDMA_SIZE_CON_1		0x0018
- #define DISP_REG_RDMA_TARGET_LINE		0x001c
- #define DISP_RDMA_MEM_CON			0x0024
-@@ -46,12 +48,15 @@
- #define RDMA_FIFO_SIZE(rdma)			((rdma)->data->fifo_size)
- #define DISP_RDMA_MEM_START_ADDR		0x0f00
- 
-+#define MATRIX_INT_MTX_SEL_DEFAULT		0xb00000
- #define RDMA_MEM_GMC				0x40402020
- 
- #define MEM_MODE_INPUT_FORMAT_RGB565		0x0
- #define MEM_MODE_INPUT_FORMAT_RGB888		(0x001 << 4)
- #define MEM_MODE_INPUT_FORMAT_RGBA8888		(0x002 << 4)
- #define MEM_MODE_INPUT_FORMAT_ARGB8888		(0x003 << 4)
-+#define MEM_MODE_INPUT_FORMAT_UYVY		(0x004 << 4)
-+#define MEM_MODE_INPUT_FORMAT_YUYV		(0x005 << 4)
- 
- struct mtk_disp_rdma_data {
- 	unsigned int fifo_size;
-@@ -182,6 +187,10 @@ static unsigned int rdma_fmt_convert(struct mtk_disp_rdma *rdma,
- 	case DRM_FORMAT_XBGR8888:
- 	case DRM_FORMAT_ABGR8888:
- 		return MEM_MODE_INPUT_FORMAT_RGBA8888 | MEM_MODE_INPUT_SWAP;
-+	case DRM_FORMAT_UYVY:
-+		return MEM_MODE_INPUT_FORMAT_UYVY;
-+	case DRM_FORMAT_YUYV:
-+		return MEM_MODE_INPUT_FORMAT_YUYV;
- 	}
- }
- 
-@@ -200,6 +209,12 @@ static void mtk_rdma_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
- 
- 	con = rdma_fmt_convert(rdma, fmt);
- 	writel_relaxed(con, comp->regs + DISP_RDMA_MEM_CON);
-+	if (fmt == DRM_FORMAT_UYVY || fmt == DRM_FORMAT_YUYV)
-+		rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0, 0xff0000,
-+				 RDMA_MATRIX_ENABLE | RDMA_MATRIX_INT_MTX_SEL);
-+	else
-+		rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0, 0xff0000,
-+				 MATRIX_INT_MTX_SEL_DEFAULT);
- 
- 	writel_relaxed(addr, comp->regs + DISP_RDMA_MEM_START_ADDR);
- 	writel_relaxed(pitch, comp->regs + DISP_RDMA_MEM_SRC_PITCH);
--- 
-2.12.5.2.gbdf23ab
+VGhpcyBwYXRjaCBhZGQgY2FsbGJhY2sgZnVuY3Rpb24gdG8gcmV0dXJuIFJETUEgbGF5ZXIgbnVt
+YmVyCgpTaWduZWQtb2ZmLWJ5OiBTdHUgSHNpZWggPHN0dS5oc2llaEBtZWRpYXRlay5jb20+Ci0t
+LQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyB8IDEwICsrKysrKysr
+KysKIDEgZmlsZSBjaGFuZ2VkLCAxMCBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZGlzcF9yZG1hLmMKaW5kZXggYjcyOGYwZjQyNjExLi44YzE0NWE4N2M5ZTUgMTAw
+NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMKKysrIGIv
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwpAQCAtNjAsNiArNjAsNyBA
+QAogCiBzdHJ1Y3QgbXRrX2Rpc3BfcmRtYV9kYXRhIHsKIAl1bnNpZ25lZCBpbnQgZmlmb19zaXpl
+OworCXVuc2lnbmVkIGludCBsYXllcl9ucjsKIH07CiAKIC8qKgpAQCAtMTk0LDYgKzE5NSwxMyBA
+QCBzdGF0aWMgdW5zaWduZWQgaW50IHJkbWFfZm10X2NvbnZlcnQoc3RydWN0IG10a19kaXNwX3Jk
+bWEgKnJkbWEsCiAJfQogfQogCitzdGF0aWMgdW5zaWduZWQgaW50IG10a19yZG1hX2xheWVyX25y
+KHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXApCit7CisJc3RydWN0IG10a19kaXNwX3JkbWEgKnJk
+bWEgPSBjb21wX3RvX3JkbWEoY29tcCk7CisKKwlyZXR1cm4gcmRtYS0+ZGF0YS0+bGF5ZXJfbnI7
+Cit9CisKIHN0YXRpYyB2b2lkIG10a19yZG1hX2xheWVyX2NvbmZpZyhzdHJ1Y3QgbXRrX2RkcF9j
+b21wICpjb21wLCB1bnNpZ25lZCBpbnQgaWR4LAogCQkJCSAgc3RydWN0IG10a19wbGFuZV9zdGF0
+ZSAqc3RhdGUpCiB7CkBAIC0yMjcsNiArMjM1LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtf
+ZGRwX2NvbXBfZnVuY3MgbXRrX2Rpc3BfcmRtYV9mdW5jcyA9IHsKIAkuc3RvcCA9IG10a19yZG1h
+X3N0b3AsCiAJLmVuYWJsZV92YmxhbmsgPSBtdGtfcmRtYV9lbmFibGVfdmJsYW5rLAogCS5kaXNh
+YmxlX3ZibGFuayA9IG10a19yZG1hX2Rpc2FibGVfdmJsYW5rLAorCS5sYXllcl9uciA9IG10a19y
+ZG1hX2xheWVyX25yLAogCS5sYXllcl9jb25maWcgPSBtdGtfcmRtYV9sYXllcl9jb25maWcsCiB9
+OwogCkBAIC0zMjksNiArMzM4LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfZGlzcF9yZG1h
+X2RhdGEgbXQyNzAxX3JkbWFfZHJpdmVyX2RhdGEgPSB7CiAKIHN0YXRpYyBjb25zdCBzdHJ1Y3Qg
+bXRrX2Rpc3BfcmRtYV9kYXRhIG10ODE3M19yZG1hX2RyaXZlcl9kYXRhID0gewogCS5maWZvX3Np
+emUgPSBTWl84SywKKwkubGF5ZXJfbnIgPSAxLAogfTsKIAogc3RhdGljIGNvbnN0IHN0cnVjdCBv
+Zl9kZXZpY2VfaWQgbXRrX2Rpc3BfcmRtYV9kcml2ZXJfZHRfbWF0Y2hbXSA9IHsKLS0gCjIuMTIu
+NS4yLmdiZGYyM2FiCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
+ZWwK
