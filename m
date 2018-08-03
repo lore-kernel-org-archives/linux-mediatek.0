@@ -1,68 +1,36 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v2 00/15] Add RDMA memory mode support for mediatek SOC MT2712
-Date: Fri, 3 Aug 2018 11:10:53 +0800
-Message-ID: <1533265868-28110-1-git-send-email-stu.hsieh@mediatek.com>
+Subject: [PATCH v2 15/15] drm/mediatek: fix connection from RDMA2 to DSI1
+Date: Fri, 3 Aug 2018 11:11:08 +0800
+Message-ID: <1533265868-28110-16-git-send-email-stu.hsieh@mediatek.com>
+References: <1533265868-28110-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1533265868-28110-1-git-send-email-stu.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Stu Hsieh <stu.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhpcyBwYXRjaCBzZXJpZXMgYWRkIFJETUEgbWVtb3J5IG1vZGUgc3VwcG9ydCBmb3IgbWVkaWF0
-ZWsgU09DIE1UMjcxMi4KTVQyNzEyIGhhcyB0aHJlZSBkaXNwbGF5IGRhdGEgcGF0aCwgaW5jbHVk
-aW5nIHRocmVlIEhXIGVuZ2luZSwKdHdvIE9WTCBhbmQgb25lIFJETUEuCgpUaGUgUkRNQSB1c2Vk
-IGluIHRoaXJkIGRkcCBhbmQgaXQgbmVlZCB0byBiZSBzZXQgbWVtb3J5IG1vZGUsCnRoZW4gUkRN
-QSBjb3VsZCByZWFkIGRhdGEgZnJvbSBtZW1vcnkgYW5kIG91dHB1dCB0byBwYW5lbC4KCkNoYW5n
-ZSBpbiB2MjoKLSBSZW1vdmUgc29tZSBtb2RpZmljYXRpb24gYWJvdXQgZHVtbXkgYnVmZmVyIGlu
-IHBhdGNoCiAgImRybS9tZWRpYXRlazogYWRkIG1lbW9yeSBtb2RlIGZvciBSRE1BIjoKICBSZWdp
-c3RlciBzZXR0aW5nIGFib3V0IHJlc2V0IGFuZCBNQVRSSVhfSU5UX01UWF9TRUxfREVGQVVMVC4K
-LSBSZW1vdmUgc29tZSBwYXRjaGVzIGFib3V0IGR1bW15IGJ1ZmZlciBhcyBmb2xvd2luZzoKICAi
-ZHJtL21lZGlhdGVrOiBhZGQgZHJtX2RldmljZSBpbiBSRE1BIGZvciBtYW1vcnkgbW9kZSB0byBy
-ZWFxdWVzdCBidWZmZXIiCiAgImRybS9tZWRpYXRlazogYWRkIGR1bW15IGJ1ZmZlciBmb3IgUkRN
-QSBtZW1vcnkgbW9kZSIKLSBSZW5hbWUgYW5kIG1vZGlmeSB0aGUgdjEgcGF0Y2gKICAiZHJtL21l
-ZGlhdGVrOiBhZGQgbGF5ZXIgbnVtYmVyIGNvbmRpdGlvbiBmb3IgUkRNQSB0byBjb250cm9sIHBs
-YW5lIgogIGFzIGZvbGxvd2luZyBwYXRjaGVzIHRvIGdldCB0aGUgbGF5ZXIgbnVtYmVyIGJ5IG1v
-ZHVsZS4KICAiZHJtL21lZGlhdGVrOiBhZGQgZnVuY3Rpb24gdG8gZ2V0IGxheWVyIG51bWJlciBm
-b3IgY29tcG9uZW50IgogICJkcm0vbWVkaWF0ZWs6IGFkZCBjYWxsYmFjayBmdW5jdGlvbiB0byBy
-ZXR1cm4gT1ZMIGxheWVyIG51bWJlciIKICAiZHJtL21lZGlhdGVrOiBhZGQgY2FsbGJhY2sgZnVu
-Y3Rpb24gdG8gcmV0dXJuIFJETUEgbGF5ZXIgbnVtYmVyIgogICJkcm0vbWVkaWF0ZWs6IHVzZSBs
-YXllcl9uciBmdW5jdGlvbiB0byBnZXQgbGF5ZXIgbnVtYmVyIHRvIGluaXQgcGxhbmUiCi0gUmVt
-b3ZlIHYxIHBhdGNoCiAgImRybS9tZWRpYXRlazogZml4ZWQgdGhlIGVycm9yIHZhbHVlIGZvciBh
-ZGQgRFNJMSBpbiBtdXRleCIKICBUaGlzIHBhdGNoIHdvdWxkIGJlIHNlbmQgaW4gdGhlIGZ1dHVy
-ZS4KClN0dSBIc2llaCAoMTUpOgogIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBS
-RE1BMCB0byBEUEkxCiAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEwIHRv
-IERTSTEKICBkcm0vbWVkaWF0ZWs6IGFkZCBjb25uZWN0aW9uIGZyb20gUkRNQTEgdG8gRFNJMAog
-IGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMiB0byBEU0kwCiAgZHJtL21l
-ZGlhdGVrOiBhZGQgUkRNQSBtZW1vcnkgbW9kZSBmb3IgY3J0YyBjcmVhdGVkCiAgZHJtL21lZGlh
-dGVrOiBhZGQgbWVtb3J5IG1vZGUgZm9yIFJETUEKICBkcm0vbWVkaWF0ZWs6IGFkZCBsYXllciBj
-b25maWcgdG8gc2V0IFJETUEgZm9yIHBsYW5lIHNldHRpbmcKICBkcm0vbWVkaWF0ZWs6IGFkZCBS
-R0IgY29sb3IgZm9ybWF0IHN1cHBvcnQgZm9yIFJETUEKICBkcm0vbWVkaWF0ZWs6IGFkZCBZVVlW
-L1VZVlkgY29sb3IgZm9ybWF0IHN1cHBvcnQgZm9yIFJETUEKICBkcm0vbWVkaWF0ZWs6IGFkZCBm
-dW5jdGlvbiB0byBnZXQgbGF5ZXIgbnVtYmVyIGZvciBjb21wb25lbnQKICBkcm0vbWVkaWF0ZWs6
-IGFkZCBjYWxsYmFjayBmdW5jdGlvbiB0byByZXR1cm4gT1ZMIGxheWVyIG51bWJlcgogIGRybS9t
-ZWRpYXRlazogYWRkIGNhbGxiYWNrIGZ1bmN0aW9uIHRvIHJldHVybiBSRE1BIGxheWVyIG51bWJl
-cgogIGRybS9tZWRpYXRlazogdXNlIGxheWVyX25yIGZ1bmN0aW9uIHRvIGdldCBsYXllciBudW1i
-ZXIgdG8gaW5pdCBwbGFuZQogIGRybS9tZWRpYXRlazogdXBkYXRlIHNvbWUgdmFyaWFibGUgbmFt
-ZSBmcm9tIG92bCB0byBjb21wCiAgZHJtL21lZGlhdGVrOiBmaXggY29ubmVjdGlvbiBmcm9tIFJE
-TUEyIHRvIERTSTEKCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMgICAg
-IHwgMTAgKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jICAgIHwg
-OTkgKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHJtX2NydGMuYyAgICAgfCA2MCArKysrKysrKysrKy0tLS0tLQogZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5oICAgICB8ICA0ICstCiBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgICAgIHwgMTggKysrKystCiBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oIHwgIDggKysrCiA2IGZpbGVzIGNoYW5nZWQsIDE3
-NCBpbnNlcnRpb25zKCspLCAyNSBkZWxldGlvbnMoLSkKCi0tIAoyLjEyLjUuMi5nYmRmMjNhYgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+This patch fix connection from RDMA2 to DSI1
+
+Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+index 3239f22785fd..546b3e3b300b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+@@ -314,7 +314,7 @@ static unsigned int mtk_ddp_sel_in(enum mtk_ddp_comp_id cur,
+ 		*addr = DISP_REG_CONFIG_DSIE_SEL_IN;
+ 		value = DSI0_SEL_IN_RDMA2;
+ 	} else if (cur == DDP_COMPONENT_RDMA2 && next == DDP_COMPONENT_DSI1) {
+-		*addr = DISP_REG_CONFIG_DSIE_SEL_IN;
++		*addr = DISP_REG_CONFIG_DSIO_SEL_IN;
+ 		value = DSI1_SEL_IN_RDMA2;
+ 	} else if (cur == DDP_COMPONENT_RDMA2 && next == DDP_COMPONENT_DSI2) {
+ 		*addr = DISP_REG_CONFIG_DSIE_SEL_IN;
+-- 
+2.12.5.2.gbdf23ab
