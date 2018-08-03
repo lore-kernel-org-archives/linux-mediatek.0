@@ -1,74 +1,54 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v2 05/15] drm/mediatek: add RDMA memory mode for crtc created
-Date: Fri, 3 Aug 2018 11:10:58 +0800
-Message-ID: <1533265868-28110-6-git-send-email-stu.hsieh@mediatek.com>
+Subject: [PATCH v2 02/15] drm/mediatek: add connection from RDMA0 to DSI1
+Date: Fri, 3 Aug 2018 11:10:55 +0800
+Message-ID: <1533265868-28110-3-git-send-email-stu.hsieh@mediatek.com>
 References: <1533265868-28110-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <1533265868-28110-1-git-send-email-stu.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
 Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhpcyBwYXRjaCBhZGQgUkRNQSBtZW1vcnkgbW9kZSBmb3IgY3J0YyBjcmVhdGVkCgpGb3IgbXQy
-NzEyLCB0aGUgdGhpcmQgZGRwIHVzZSBSRE1BIGVuZ2luZSB0byByZWFkIGRhdGEgZnJvbSBkcmFt
-LgoKVGhlcmVmb3JlLCB3aGVuIGNydGMgY3JlYXRlZCwgY3J0YyBuZWVkIHRvIGRlY2lkZSB1c2lu
-ZyBPVkwgb3IgUkRNQQpieSBkZHAgdG8gcmVhZCBkYXRhIGZyb20gZHJhbS4KCklmIHRoaXMgZGRw
-IHVzZSBSRE1BLCB0aGUgY3J0YyBzaG91bGQgc2V0IHRoaXMgUkRNQSB3aGljaCBpbiB0aGUgY3J0
-Ywp1c2luZyBtZW1vcnkgbW9kZS4KClNpZ25lZC1vZmYtYnk6IFN0dSBIc2llaCA8c3R1LmhzaWVo
-QG1lZGlhdGVrLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRt
-YS5jICAgIHwgNSArKysrLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5j
-ICAgICB8IDggKysrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9j
-b21wLmggfCAxICsKIDMgZmlsZXMgY2hhbmdlZCwgMTMgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlv
-bigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1h
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jCmluZGV4IDU4NTk0
-M2M4MWUxZi4uNjA4NTFiYjJkZDYzIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2Rpc3BfcmRtYS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlz
-cF9yZG1hLmMKQEAgLTE1MCw2ICsxNTAsNyBAQCBzdGF0aWMgaW50IG10a19kaXNwX3JkbWFfYmlu
-ZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKIAkJCSAgICAgIHZv
-aWQgKmRhdGEpCiB7CiAJc3RydWN0IG10a19kaXNwX3JkbWEgKnByaXYgPSBkZXZfZ2V0X2RydmRh
-dGEoZGV2KTsKKwlzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wID0gJnByaXYtPmRkcF9jb21wOwog
-CXN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2ID0gZGF0YTsKIAlpbnQgcmV0OwogCkBAIC0xNjAs
-OCArMTYxLDEwIEBAIHN0YXRpYyBpbnQgbXRrX2Rpc3BfcmRtYV9iaW5kKHN0cnVjdCBkZXZpY2Ug
-KmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAogCQlyZXR1cm4gcmV0OwogCX0KIAotCXJldHVy
-biAwOwogCisJY29tcC0+Y29tcF9tb2RlID0gJnByaXYtPnJkbWFfbWVtb3J5X21vZGU7CisKKwly
-ZXR1cm4gMDsKIH0KIAogc3RhdGljIHZvaWQgbXRrX2Rpc3BfcmRtYV91bmJpbmQoc3RydWN0IGRl
-dmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9jcnRjLmMKaW5kZXggMmQ2YWExNTBhOWZmLi40YmY2MzZlNDY2ZjIgMTAwNjQ0Ci0t
-LSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYworKysgYi9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKQEAgLTU3OCw2ICs1NzgsNyBAQCBpbnQg
-bXRrX2RybV9jcnRjX2NyZWF0ZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldiwKIAkJZW51bSBt
-dGtfZGRwX2NvbXBfaWQgY29tcF9pZCA9IHBhdGhbaV07CiAJCXN0cnVjdCBtdGtfZGRwX2NvbXAg
-KmNvbXA7CiAJCXN0cnVjdCBkZXZpY2Vfbm9kZSAqbm9kZTsKKwkJYm9vbCAqcmRtYV9tZW1vcnlf
-bW9kZTsKIAogCQlub2RlID0gcHJpdi0+Y29tcF9ub2RlW2NvbXBfaWRdOwogCQljb21wID0gcHJp
-di0+ZGRwX2NvbXBbY29tcF9pZF07CkBAIC01OTUsNiArNTk2LDEzIEBAIGludCBtdGtfZHJtX2Ny
-dGNfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2LAogCQkJZ290byB1bnByZXBhcmU7
-CiAJCX0KIAorCQlpZiAoaSA9PSAwICYmIChjb21wX2lkID09IEREUF9DT01QT05FTlRfUkRNQTAg
-fHwKKwkJCSAgICAgICBjb21wX2lkID09IEREUF9DT01QT05FTlRfUkRNQTEgfHwKKwkJCSAgICAg
-ICBjb21wX2lkID09IEREUF9DT01QT05FTlRfUkRNQTIpKSB7CisJCQlyZG1hX21lbW9yeV9tb2Rl
-ID0gY29tcC0+Y29tcF9tb2RlOworCQkJKnJkbWFfbWVtb3J5X21vZGUgPSB0cnVlOworCQl9CisK
-IAkJbXRrX2NydGMtPmRkcF9jb21wW2ldID0gY29tcDsKIAl9CiAKZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmggYi9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oCmluZGV4IDc0MTNmZmViM2M5ZC4uYTE5ODhjZTE1
-MTQxIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29t
-cC5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmgKQEAg
-LTkzLDYgKzkzLDcgQEAgc3RydWN0IG10a19kZHBfY29tcCB7CiAJc3RydWN0IGRldmljZSAqbGFy
-Yl9kZXY7CiAJZW51bSBtdGtfZGRwX2NvbXBfaWQgaWQ7CiAJY29uc3Qgc3RydWN0IG10a19kZHBf
-Y29tcF9mdW5jcyAqZnVuY3M7CisJdm9pZCAqY29tcF9tb2RlOwogfTsKIAogc3RhdGljIGlubGlu
-ZSB2b2lkIG10a19kZHBfY29tcF9jb25maWcoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwKLS0g
-CjIuMTIuNS4yLmdiZGYyM2FiCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWwK
+This patch add connection from RDMA0 to DSI1
+
+Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+index 03e3628b5b0d..310d8482d5a0 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+@@ -107,6 +107,7 @@
+ #define GAMMA_MOUT_EN_RDMA1		0x1
+ #define RDMA0_SOUT_DPI0			0x2
+ #define RDMA0_SOUT_DPI1			0x3
++#define RDMA0_SOUT_DSI1			0x1
+ #define RDMA0_SOUT_DSI2			0x4
+ #define RDMA0_SOUT_DSI3			0x5
+ #define RDMA1_SOUT_DPI0			0x2
+@@ -228,6 +229,9 @@ static unsigned int mtk_ddp_mout_en(enum mtk_ddp_comp_id cur,
+ 	} else if (cur == DDP_COMPONENT_RDMA0 && next == DDP_COMPONENT_DPI1) {
+ 		*addr = DISP_REG_CONFIG_DISP_RDMA0_SOUT_EN;
+ 		value = RDMA0_SOUT_DPI1;
++	} else if (cur == DDP_COMPONENT_RDMA0 && next == DDP_COMPONENT_DSI1) {
++		*addr = DISP_REG_CONFIG_DISP_RDMA0_SOUT_EN;
++		value = RDMA0_SOUT_DSI1;
+ 	} else if (cur == DDP_COMPONENT_RDMA0 && next == DDP_COMPONENT_DSI2) {
+ 		*addr = DISP_REG_CONFIG_DISP_RDMA0_SOUT_EN;
+ 		value = RDMA0_SOUT_DSI2;
+-- 
+2.12.5.2.gbdf23ab
