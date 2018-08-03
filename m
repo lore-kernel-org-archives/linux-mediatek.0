@@ -1,78 +1,128 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v1 06/15] drm/mediatek: add memory mode for RDMA
-Date: Fri, 3 Aug 2018 15:30:12 +0800
-Message-ID: <1533281412.31144.23.camel@mtksdaap41>
-References: <1532420235-22268-1-git-send-email-stu.hsieh@mediatek.com>
- <1532420235-22268-7-git-send-email-stu.hsieh@mediatek.com>
- <1532486454.9280.12.camel@mtksdaap41>
- <1533209786.11190.60.camel@mtksdccf07>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1533209786.11190.60.camel@mtksdccf07>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+From: Marcel Holtmann <marcel@holtmann.org>
+Subject: Re: [PATCH v7 2/3] Bluetooth: mediatek: Add protocol support for
+ MediaTek serial devices
+Date: Fri, 3 Aug 2018 14:51:03 +0200
+Message-ID: <A6D48D49-52CE-405D-8C5D-C4D54CE67221@holtmann.org>
+References: <cover.1533056925.git.sean.wang@mediatek.com>
+ <c92ed10cf16f36d9a3b390e864af92e2dfe7b771.1533056925.git.sean.wang@mediatek.com>
+ <1707FFA1-A294-4A95-A3BF-0910CE455232@holtmann.org>
+ <1533192799.3472.122.camel@mtkswgap22>
+ <FF45A90A-F9F1-47CB-AB1F-1E92BF587FBE@holtmann.org>
+ <1533199720.3472.136.camel@mtkswgap22>
+ <9526E5D9-50BA-4D57-80F5-083DB7D28AFE@holtmann.org>
+ <1533205495.3472.144.camel@mtkswgap22>
+Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
+Content-Type: text/plain;
+        charset=utf-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1533205495.3472.144.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Johan Hedberg <johan.hedberg@gmail.com>, devicetree <devicetree@vger.kernel.org>, "open list:BLUETOOTH DRIVERS" <linux-bluetooth@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFN0dToKCk9uIFRodSwgMjAxOC0wOC0wMiBhdCAxOTozNiArMDgwMCwgU3R1IEhzaWVoIHdy
-b3RlOgo+IEhpLCBDSzoKPiAKPiBPbiBXZWQsIDIwMTgtMDctMjUgYXQgMTA6NDAgKzA4MDAsIENL
-IEh1IHdyb3RlOgo+ID4gSGksIFN0dToKPiA+IAo+ID4gT24gVHVlLCAyMDE4LTA3LTI0IGF0IDE2
-OjE3ICswODAwLCBTdHUgSHNpZWggd3JvdGU6Cj4gPiA+IFRoaXMgcGF0Y2ggYWRkIG1lbW9yeSBt
-b2RlIGZvciBSRE1BCj4gPiA+IAo+ID4gPiBJZiB1c2UgUkRNQSB0byByZWFkIGRhdGEgZnJvbSBt
-ZW1vcnksIGl0IHNob3VsZCBzZXQgbWVtb3J5IG1vZGUgdG8gUkRNQQo+ID4gPiAKPiA+ID4gU2ln
-bmVkLW9mZi1ieTogU3R1IEhzaWVoIDxzdHUuaHNpZWhAbWVkaWF0ZWsuY29tPgo+ID4gPiAtLS0K
-PiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMgfCAxNiArKysr
-KysrKysrKysrKystCj4gPiA+ICAxIGZpbGUgY2hhbmdlZCwgMTUgaW5zZXJ0aW9ucygrKSwgMSBk
-ZWxldGlvbigtKQo+ID4gPiAKPiA+IAo+ID4gWy4uLl0KPiA+IAo+ID4gPiAgc3RhdGljIGlubGlu
-ZSBzdHJ1Y3QgbXRrX2Rpc3BfcmRtYSAqY29tcF90b19yZG1hKHN0cnVjdCBtdGtfZGRwX2NvbXAg
-KmNvbXApCj4gPiA+IEBAIC0xMTEsNyArMTE2LDggQEAgc3RhdGljIHZvaWQgbXRrX3JkbWFfc3Rh
-cnQoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCkKPiA+ID4gIAo+ID4gPiAgc3RhdGljIHZvaWQg
-bXRrX3JkbWFfc3RvcChzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wKQo+ID4gPiAgewo+ID4gPiAt
-CXJkbWFfdXBkYXRlX2JpdHMoY29tcCwgRElTUF9SRUdfUkRNQV9HTE9CQUxfQ09OLCBSRE1BX0VO
-R0lORV9FTiwgMCk7Cj4gPiA+ICsJd3JpdGVsKFJETUFfU09GVF9SRVNFVCwgY29tcC0+cmVncyAr
-IERJU1BfUkVHX1JETUFfR0xPQkFMX0NPTik7Cj4gPiA+ICsJd3JpdGVsKDAsIGNvbXAtPnJlZ3Mg
-KyBESVNQX1JFR19SRE1BX0dMT0JBTF9DT04pOwo+ID4gCj4gPiBXaXRob3V0IHJlc2V0LCB3aGF0
-IGhhcHBlbiB0byBkcmFtIG1vZGU/IFdoeSBkaXJlY3QgbGluayBtb2RlIG5lZWQgbm90Cj4gPiB0
-aGlzIHJlc2V0Pwo+ID4gCj4gCj4gVGhlcmUgaXMgbm90aGluZyB0byBoYXBwZW4sIEkgd291bGQg
-cmVtb3ZlIGl0Lgo+IAo+ID4gPiAgfQo+ID4gPiAgCj4gPiA+ICBzdGF0aWMgdm9pZCBtdGtfcmRt
-YV9jb25maWcoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IHdpZHRoLAo+
-ID4gPiBAQCAtMTIxLDEwICsxMjcsMTggQEAgc3RhdGljIHZvaWQgbXRrX3JkbWFfY29uZmlnKHN0
-cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAsIHVuc2lnbmVkIGludCB3aWR0aCwKPiA+ID4gIAl1bnNp
-Z25lZCBpbnQgdGhyZXNob2xkOwo+ID4gPiAgCXVuc2lnbmVkIGludCByZWc7Cj4gPiA+ICAJc3Ry
-dWN0IG10a19kaXNwX3JkbWEgKnJkbWEgPSBjb21wX3RvX3JkbWEoY29tcCk7Cj4gPiA+ICsJYm9v
-bCAqcmRtYV9tZW1vcnlfbW9kZSA9IGNvbXAtPmNvbXBfbW9kZTsKPiA+ID4gIAo+ID4gPiAgCXJk
-bWFfdXBkYXRlX2JpdHMoY29tcCwgRElTUF9SRUdfUkRNQV9TSVpFX0NPTl8wLCAweGZmZiwgd2lk
-dGgpOwo+ID4gPiAgCXJkbWFfdXBkYXRlX2JpdHMoY29tcCwgRElTUF9SRUdfUkRNQV9TSVpFX0NP
-Tl8xLCAweGZmZmZmLCBoZWlnaHQpOwo+ID4gPiAgCj4gPiA+ICsJaWYgKCpyZG1hX21lbW9yeV9t
-b2RlID09IHRydWUpIHsKPiA+ID4gKwkJcmRtYV91cGRhdGVfYml0cyhjb21wLCBESVNQX1JFR19S
-RE1BX1NJWkVfQ09OXzAsIDB4ZmYwMDAwLAo+ID4gPiArCQkJCSBNQVRSSVhfSU5UX01UWF9TRUxf
-REVGQVVMVCk7Cj4gPiA+ICsJCXJkbWFfdXBkYXRlX2JpdHMoY29tcCwgRElTUF9SRUdfUkRNQV9H
-TE9CQUxfQ09OLAo+ID4gPiArCQkJCSBSRE1BX01PREVfTUVNT1JZLCBSRE1BX01PREVfTUVNT1JZ
-KTsKPiA+ID4gKwl9Cj4gPiA+ICsKPiA+IAo+ID4gSSB3b3VsZCBsaWtlIHRoaXMgdG8gYmUgYSBr
-aW5kIG9mICdsYXllcicgY29uZmlnLiBJbiBzb21lIFNvQywgb25lIGxheWVyCj4gPiBvZiBPVkwg
-Y291bGQgc3dpdGNoIHRvIGRpcmVjdCBsaW5rIGlucHV0IG9yIGRyYW0gaW5wdXQuIFNvIEkgdGhp
-bmsgaXQncwo+ID4gYmV0dGVyIHRvIG1vdmUgdGhpcyBzZXR0aW5nIGludG8gc29tZSBsYXllciBp
-bnRlcmZhY2UuCj4gPiAKPiA+IFJlZ2FyZHMsCj4gPiBDSwo+ID4gCj4gCj4gSWYgbW92ZSBpdCB0
-byBsYXllcl9jb25maWcsIFJETUEgd291bGQgbm90IHRyaWdnZXIgaW50ZXJydXB0Lgo+IEluIHRo
-ZSBmdXR1cmUsIHdoZW4gY21kcSBwYXRjaCB1cHN0cmVhbSBhbmQgYWNjZXB0ZWQsIHRoaXMgcGFy
-dCBjYW4gbW92ZQo+IHRvIGxheWVyX2NvbmZpZy4gCgpJIGRvbid0IGtub3cgd2h5IGludGVycnVw
-dCB3b3VsZCBiZSBpbmZsdWVuY2VkIGJ5IG1vdmluZyB0aGlzIHRvIGxheWVyCmNvbmZpZz8gSW4g
-bXRrX2NydGNfZGRwX2h3X2luaXQoKSwgY2FsbCBtdGtfZGRwX2NvbXBfY29uZmlnKCkgZmlyc3Qg
-YW5kCnRoZW4gY2FsbCBtdGtfZGRwX2NvbXBfbGF5ZXJfY29uZmlnKCkgbGF0ZXIuIEl0J3MgaW4g
-YWxtb3N0IHRoZSBzYW1lCnBsYWNlLgoKUmVnYXJkcywKQ0sKCj4gCj4gUmVnYXJkLAo+IFN0dQo+
-IAo+ID4gPiAgCS8qCj4gPiA+ICAJICogRW5hYmxlIEZJRk8gdW5kZXJmbG93IHNpbmNlIERTSSBh
-bmQgRFBJIGNhbid0IGJlIGJsb2NrZWQuCj4gPiA+ICAJICogS2VlcCB0aGUgRklGTyBwc2V1ZG8g
-c2l6ZSByZXNldCBkZWZhdWx0IG9mIDggS2lCLiBTZXQgdGhlCj4gPiAKPiA+IAo+IAo+IAoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
-YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
-LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Sean,
+
+>>>>>>> +
+>>>>>>> +static int mtk_hci_wmt_sync(struct hci_dev *hdev, u8 op, u8 flag, u16 plen,
+>>>>>>> +			    const void *param)
+>>>>>>> +{
+>>>>>>> +	struct mtk_hci_wmt_cmd wc;
+>>>>>>> +	struct mtk_wmt_hdr *hdr;
+>>>>>>> +	struct sk_buff *skb;
+>>>>>>> +	u32 hlen;
+>>>>>>> +
+>>>>>>> +	hlen = sizeof(*hdr) + plen;
+>>>>>>> +	if (hlen > 255)
+>>>>>>> +		return -EINVAL;
+>>>>>>> +
+>>>>>>> +	hdr = (struct mtk_wmt_hdr *)&wc;
+>>>>>>> +	hdr->dir = 1;
+>>>>>>> +	hdr->op = op;
+>>>>>>> +	hdr->dlen = cpu_to_le16(plen + 1);
+>>>>>>> +	hdr->flag = flag;
+>>>>>>> +	memcpy(wc.data, param, plen);
+>>>>>>> +
+>>>>>>> +	atomic_inc(&hdev->cmd_cnt);
+>>>>>> 
+>>>>>> Why are you doing this one. It will need a comment here if really needed. However I doubt that this is needed. You are only using it from hdev->setup and hdev->shutdown callbacks.
+>>>>>> 
+>>>>> 
+>>>>> An increment on cmd_cnt is really needed because hci_cmd_work would check whether cmd_cnt is positive and then has a decrement on cmd_cnt before a packet is being sent out.
+>>>>> 
+>>>>> okay will add a comment.
+>>>> 
+>>>> but you are in ->setup callback this time. So if you need this, then all the other ->setup routines would actually fail as well. Either this is leftover from when you did things in ->probe or ->open or this is some thing we might better fix properly in the core instead of papering over it. Can you recheck if this is really needed.
+>>>> 
+>>> 
+>>> I added a counter print and the counter increments as below
+>>> 
+>>> 	/* atomic_inc(&hdev->cmd_cnt); */
+>>>       pr_info("cmd_cnt = %d\n" , atomic_read(&hdev->cmd_cnt));
+>>> 
+>>>       skb = __hci_cmd_sync_ev(hdev, 0xfc6f, hlen, &wc, HCI_VENDOR_PKT,
+>>>                               HCI_INIT_TIMEOUT);
+>>> 
+>>> and the log show up that 
+>>> 
+>>> 
+>>> [  334.049156] Bluetooth: hci0: command 0xfc6f tx timeout
+>>> [  334.054840] cmd_cnt = 0
+>>> [  336.065076] Bluetooth: hci0: command 0xfc6f tx timeout
+>>> [  336.070795] cmd_cnt = 0
+>>> [  338.080997] Bluetooth: hci0: command 0xfc6f tx timeout
+>>> [  338.086683] cmd_cnt = 0
+>>> [  340.096907] Bluetooth: hci0: command 0xfc6f tx timeout
+>>> [  340.102609] cmd_cnt = 0
+>>> [  342.112824] Bluetooth: hci0: command 0xfc6f tx timeout
+>>> [  342.118520] cmd_cnt = 0
+>>> [  344.128747] Bluetooth: hci0: command 0xfc6f tx timeout
+>>> [  344.134454] cmd_cnt = 0
+>>> [  346.144667] Bluetooth: hci0: command 0xfc6f tx timeout
+>>> [  346.150372] cmd_cnt = 0
+>>> 
+>>> 
+>>> The packet is dropped by hci_cmd_work at [1], so I also wondered why the
+>>> other vendor driver works, it seems the counter needs to be incremented
+>>> before every skb is being queued to cmd_q.
+>>> 
+>>> 4257 static void hci_cmd_work(struct work_struct *work)
+>>> 4258 {
+>>> 4259         struct hci_dev *hdev = container_of(work, struct hci_dev, cmd_work);
+>>> 4260         struct sk_buff *skb;
+>>> 4261
+>>> 4262         BT_DBG("%s cmd_cnt %d cmd queued %d", hdev->name,
+>>> 4263                atomic_read(&hdev->cmd_cnt), skb_queue_len(&hdev->cmd_q));
+>>> 4264
+>>> 4265         /* Send queued commands */
+>>> 
+>>> [1]
+>>> 4266         if (atomic_read(&hdev->cmd_cnt)) { /* dropped when cmd_cnt is zero */
+>>> 4267                 skb = skb_dequeue(&hdev->cmd_q);
+>>> 4268                 if (!skb)
+>>> 4269                         return;
+>>> 4270
+>>> 4271                 kfree_skb(hdev->sent_cmd);
+>>> 4272
+>>> 4273                 hdev->sent_cmd = skb_clone(skb, GFP_KERNEL);
+>>> 4274                 if (hdev->sent_cmd) {
+>>> 4275                         atomic_dec(&hdev->cmd_cnt);  /* cmd_cnt-- */
+>>> 4276                         hci_send_frame(hdev, skb);
+>> 
+>> actually the command also needs to better go via the raw_q anyway since it doesn’t come back with the cmd status or cmd complete. You have it waiting for a vendor event. Maybe with is something we need to consider with __hci_cmd_sync_ev anyway.
+>> 
+>> Johan would know best since he wrote that code. Anyway, we should fix that in the core and not have you hack around it.
+>> 
+> 
+> yes, my case is that received event is neither cmd status nor cmd complete. It is completely a vendor event.
+> 
+> if it wants to be solved by the core layer, do you permit that I remove the hack and then send it in the next version?
+
+we need to have a __hci_raw_sync_ev that uses the hdev->raw_q and waits for the specified event to come back. I never realized that you are missing the cmd status or cmd complete. So this is similar to the original CSR vendor commands which had the same behavior.
+
+I have the feeling that you hdev->cmd_cnt increment is just hiding the problem here. If you really think that it is not chains any side effects we can merge the driver with a big warning and fix this up. However the clean way would be for you to create a patch that introduces __hci_raw_sync_ev as describe above.
+
+Regards
+
+Marcel
