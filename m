@@ -1,61 +1,51 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v2 06/15] drm/mediatek: add memory mode for RDMA
-Date: Fri, 3 Aug 2018 11:10:59 +0800
-Message-ID: <1533265868-28110-7-git-send-email-stu.hsieh@mediatek.com>
+Subject: [PATCH v2 10/15] drm/mediatek: add function to get layer number for
+ component
+Date: Fri, 3 Aug 2018 11:11:03 +0800
+Message-ID: <1533265868-28110-11-git-send-email-stu.hsieh@mediatek.com>
 References: <1533265868-28110-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <1533265868-28110-1-git-send-email-stu.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Stu Hsieh <stu.hsieh@mediatek.com>
+Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch add memory mode for RDMA
-
-If use RDMA to read data from memory, it should set memory mode to RDMA
-
-Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index 60851bb2dd63..1985035451ce 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -31,6 +31,7 @@
- #define RDMA_REG_UPDATE_INT				BIT(0)
- #define DISP_REG_RDMA_GLOBAL_CON		0x0010
- #define RDMA_ENGINE_EN					BIT(0)
-+#define RDMA_MODE_MEMORY				BIT(1)
- #define DISP_REG_RDMA_SIZE_CON_0		0x0014
- #define DISP_REG_RDMA_SIZE_CON_1		0x0018
- #define DISP_REG_RDMA_TARGET_LINE		0x001c
-@@ -53,6 +54,7 @@ struct mtk_disp_rdma {
- 	struct mtk_ddp_comp		ddp_comp;
- 	struct drm_crtc			*crtc;
- 	const struct mtk_disp_rdma_data	*data;
-+	bool rdma_memory_mode;
- };
- 
- static inline struct mtk_disp_rdma *comp_to_rdma(struct mtk_ddp_comp *comp)
-@@ -121,10 +123,15 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
- 	unsigned int threshold;
- 	unsigned int reg;
- 	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
-+	bool *rdma_memory_mode = comp->comp_mode;
- 
- 	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0, 0xfff, width);
- 	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_1, 0xfffff, height);
- 
-+	if (*rdma_memory_mode == true)
-+		rdma_update_bits(comp, DISP_REG_RDMA_GLOBAL_CON,
-+				 RDMA_MODE_MEMORY, RDMA_MODE_MEMORY);
-+
- 	/*
- 	 * Enable FIFO underflow since DSI and DPI can't be blocked.
- 	 * Keep the FIFO pseudo size reset default of 8 KiB. Set the
--- 
-2.12.5.2.gbdf23ab
+VGhpcyBwYXRjaCBhZGQgZnVuY3Rpb24gdG8gZ2V0IGxheWVyIG51bWJlciBmb3IgY29tcG9uZW50
+CgpTaWduZWQtb2ZmLWJ5OiBTdHUgSHNpZWggPHN0dS5oc2llaEBtZWRpYXRlay5jb20+Ci0tLQog
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaCB8IDcgKysrKysrKwog
+MSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9kZHBfY29tcC5oCmluZGV4IGExOTg4Y2UxNTE0MS4uODM3N2U0ZjljZTNkIDEw
+MDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oCisr
+KyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmgKQEAgLTc4LDYg
+Kzc4LDcgQEAgc3RydWN0IG10a19kZHBfY29tcF9mdW5jcyB7CiAJdm9pZCAoKnN0b3ApKHN0cnVj
+dCBtdGtfZGRwX2NvbXAgKmNvbXApOwogCXZvaWQgKCplbmFibGVfdmJsYW5rKShzdHJ1Y3QgbXRr
+X2RkcF9jb21wICpjb21wLCBzdHJ1Y3QgZHJtX2NydGMgKmNydGMpOwogCXZvaWQgKCpkaXNhYmxl
+X3ZibGFuaykoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCk7CisJdW5zaWduZWQgaW50ICgqbGF5
+ZXJfbnIpKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXApOwogCXZvaWQgKCpsYXllcl9vbikoc3Ry
+dWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IGlkeCk7CiAJdm9pZCAoKmxheWVy
+X29mZikoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IGlkeCk7CiAJdm9p
+ZCAoKmxheWVyX2NvbmZpZykoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50
+IGlkeCwKQEAgLTEyOSw2ICsxMzAsMTIgQEAgc3RhdGljIGlubGluZSB2b2lkIG10a19kZHBfY29t
+cF9kaXNhYmxlX3ZibGFuayhzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wKQogCQljb21wLT5mdW5j
+cy0+ZGlzYWJsZV92YmxhbmsoY29tcCk7CiB9CiAKK3N0YXRpYyBpbmxpbmUgdW5zaWduZWQgaW50
+IG10a19kZHBfY29tcF9sYXllcl9ucihzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wKQoreworCWlm
+IChjb21wLT5mdW5jcyAmJiBjb21wLT5mdW5jcy0+bGF5ZXJfbnIpCisJCXJldHVybiBjb21wLT5m
+dW5jcy0+bGF5ZXJfbnIoY29tcCk7Cit9CisKIHN0YXRpYyBpbmxpbmUgdm9pZCBtdGtfZGRwX2Nv
+bXBfbGF5ZXJfb24oc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwKIAkJCQkJIHVuc2lnbmVkIGlu
+dCBpZHgpCiB7Ci0tIAoyLjEyLjUuMi5nYmRmMjNhYgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
