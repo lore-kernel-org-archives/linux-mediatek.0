@@ -1,59 +1,76 @@
-From: Stu Hsieh <stu.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3 09/13] drm/mediatek: add callback function to return OVL
- layer number
-Date: Mon, 6 Aug 2018 19:58:16 +0800
-Message-ID: <1533556700-26525-10-git-send-email-stu.hsieh@mediatek.com>
+From: Stu Hsieh <stu.hsieh@mediatek.com>
+Subject: [PATCH v3 06/13] drm/mediatek: add RGB color format support for RDMA
+Date: Mon, 6 Aug 2018 19:58:13 +0800
+Message-ID: <1533556700-26525-7-git-send-email-stu.hsieh@mediatek.com>
 References: <1533556700-26525-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1533556700-26525-1-git-send-email-stu.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stu Hsieh <stu.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1533556700-26525-1-git-send-email-stu.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch add callback function to return OVL layer number
-
-For now, MT8173, MT2712, MT2701 OVL all has 4 layer.
-
-Signed-off-by: Stu Hsieh <stu.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 978782a77629..66060e79afbc 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -132,6 +132,11 @@ static void mtk_ovl_config(struct mtk_ddp_comp *comp, unsigned int w,
- 	writel(0x0, comp->regs + DISP_REG_OVL_RST);
- }
- 
-+static unsigned int mtk_ovl_layer_nr(struct mtk_ddp_comp *comp)
-+{
-+	return 4;
-+}
-+
- static void mtk_ovl_layer_on(struct mtk_ddp_comp *comp, unsigned int idx)
- {
- 	unsigned int reg;
-@@ -221,6 +226,7 @@ static const struct mtk_ddp_comp_funcs mtk_disp_ovl_funcs = {
- 	.stop = mtk_ovl_stop,
- 	.enable_vblank = mtk_ovl_enable_vblank,
- 	.disable_vblank = mtk_ovl_disable_vblank,
-+	.layer_nr = mtk_ovl_layer_nr,
- 	.layer_on = mtk_ovl_layer_on,
- 	.layer_off = mtk_ovl_layer_off,
- 	.layer_config = mtk_ovl_layer_config,
--- 
-2.12.5.2.gbdf23ab
+VGhpcyBwYXRjaCBhZGQgUkdCIGNvbG9yIGZvcm1hdCBzdXBwb3J0IGZvciBSRE1BLAppbmNsdWRp
+bmcgUkdCNTY1LCBSR0I4ODgsIFJHQkE4ODg4IGFuZCBBUkdCODg4OC4KClNpZ25lZC1vZmYtYnk6
+IFN0dSBIc2llaCA8c3R1LmhzaWVoQG1lZGlhdGVrLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jIHwgNDEgKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysKIDEgZmlsZSBjaGFuZ2VkLCA0MSBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyBiL2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMKaW5kZXggMDg4NjY1NTA3NDBmLi5iYTcyZDM5MmRjMjcg
+MTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMKKysr
+IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwpAQCAtMzUsNiArMzUs
+OCBAQAogI2RlZmluZSBESVNQX1JFR19SRE1BX1NJWkVfQ09OXzAJCTB4MDAxNAogI2RlZmluZSBE
+SVNQX1JFR19SRE1BX1NJWkVfQ09OXzEJCTB4MDAxOAogI2RlZmluZSBESVNQX1JFR19SRE1BX1RB
+UkdFVF9MSU5FCQkweDAwMWMKKyNkZWZpbmUgRElTUF9SRE1BX01FTV9DT04JCQkweDAwMjQKKyNk
+ZWZpbmUgTUVNX01PREVfSU5QVVRfU1dBUAkJCQlCSVQoOCkKICNkZWZpbmUgRElTUF9SRE1BX01F
+TV9TUkNfUElUQ0gJCQkweDAwMmMKICNkZWZpbmUgRElTUF9SRE1BX01FTV9HTUNfU0VUVElOR18w
+CQkweDAwMzAKICNkZWZpbmUgRElTUF9SRUdfUkRNQV9GSUZPX0NPTgkJCTB4MDA0MApAQCAtNDYs
+NiArNDgsMTEgQEAKIAogI2RlZmluZSBSRE1BX01FTV9HTUMJCQkJMHg0MDQwMjAyMAogCisjZGVm
+aW5lIE1FTV9NT0RFX0lOUFVUX0ZPUk1BVF9SR0I1NjUJCTB4MAorI2RlZmluZSBNRU1fTU9ERV9J
+TlBVVF9GT1JNQVRfUkdCODg4CQkoMHgwMDEgPDwgNCkKKyNkZWZpbmUgTUVNX01PREVfSU5QVVRf
+Rk9STUFUX1JHQkE4ODg4CQkoMHgwMDIgPDwgNCkKKyNkZWZpbmUgTUVNX01PREVfSU5QVVRfRk9S
+TUFUX0FSR0I4ODg4CQkoMHgwMDMgPDwgNCkKKwogc3RydWN0IG10a19kaXNwX3JkbWFfZGF0YSB7
+CiAJdW5zaWduZWQgaW50IGZpZm9fc2l6ZTsKIH07CkBAIC0xNDQsMTIgKzE1MSw0NiBAQCBzdGF0
+aWMgdm9pZCBtdGtfcmRtYV9jb25maWcoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWdu
+ZWQgaW50IHdpZHRoLAogCXdyaXRlbChyZWcsIGNvbXAtPnJlZ3MgKyBESVNQX1JFR19SRE1BX0ZJ
+Rk9fQ09OKTsKIH0KIAorc3RhdGljIHVuc2lnbmVkIGludCByZG1hX2ZtdF9jb252ZXJ0KHN0cnVj
+dCBtdGtfZGlzcF9yZG1hICpyZG1hLAorCQkJCSAgICAgdW5zaWduZWQgaW50IGZtdCkKK3sKKwlz
+d2l0Y2ggKGZtdCkgeworCWRlZmF1bHQ6CisJY2FzZSBEUk1fRk9STUFUX1JHQjU2NToKKwkJcmV0
+dXJuIE1FTV9NT0RFX0lOUFVUX0ZPUk1BVF9SR0I1NjU7CisJY2FzZSBEUk1fRk9STUFUX0JHUjU2
+NToKKwkJcmV0dXJuIE1FTV9NT0RFX0lOUFVUX0ZPUk1BVF9SR0I1NjUgfCBNRU1fTU9ERV9JTlBV
+VF9TV0FQOworCWNhc2UgRFJNX0ZPUk1BVF9SR0I4ODg6CisJCXJldHVybiBNRU1fTU9ERV9JTlBV
+VF9GT1JNQVRfUkdCODg4OworCWNhc2UgRFJNX0ZPUk1BVF9CR1I4ODg6CisJCXJldHVybiBNRU1f
+TU9ERV9JTlBVVF9GT1JNQVRfUkdCODg4IHwgTUVNX01PREVfSU5QVVRfU1dBUDsKKwljYXNlIERS
+TV9GT1JNQVRfUkdCWDg4ODg6CisJY2FzZSBEUk1fRk9STUFUX1JHQkE4ODg4OgorCQlyZXR1cm4g
+TUVNX01PREVfSU5QVVRfRk9STUFUX0FSR0I4ODg4OworCWNhc2UgRFJNX0ZPUk1BVF9CR1JYODg4
+ODoKKwljYXNlIERSTV9GT1JNQVRfQkdSQTg4ODg6CisJCXJldHVybiBNRU1fTU9ERV9JTlBVVF9G
+T1JNQVRfQVJHQjg4ODggfCBNRU1fTU9ERV9JTlBVVF9TV0FQOworCWNhc2UgRFJNX0ZPUk1BVF9Y
+UkdCODg4ODoKKwljYXNlIERSTV9GT1JNQVRfQVJHQjg4ODg6CisJCXJldHVybiBNRU1fTU9ERV9J
+TlBVVF9GT1JNQVRfUkdCQTg4ODg7CisJY2FzZSBEUk1fRk9STUFUX1hCR1I4ODg4OgorCWNhc2Ug
+RFJNX0ZPUk1BVF9BQkdSODg4ODoKKwkJcmV0dXJuIE1FTV9NT0RFX0lOUFVUX0ZPUk1BVF9SR0JB
+ODg4OCB8IE1FTV9NT0RFX0lOUFVUX1NXQVA7CisJfQorfQorCiBzdGF0aWMgdm9pZCBtdGtfcmRt
+YV9sYXllcl9jb25maWcoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IGlk
+eCwKIAkJCQkgIHN0cnVjdCBtdGtfcGxhbmVfc3RhdGUgKnN0YXRlKQogeworCXN0cnVjdCBtdGtf
+ZGlzcF9yZG1hICpyZG1hID0gY29tcF90b19yZG1hKGNvbXApOwogCXN0cnVjdCBtdGtfcGxhbmVf
+cGVuZGluZ19zdGF0ZSAqcGVuZGluZyA9ICZzdGF0ZS0+cGVuZGluZzsKIAl1bnNpZ25lZCBpbnQg
+YWRkciA9IHBlbmRpbmctPmFkZHI7CiAJdW5zaWduZWQgaW50IHBpdGNoID0gcGVuZGluZy0+cGl0
+Y2ggJiAweGZmZmY7CisJdW5zaWduZWQgaW50IGZtdCA9IHBlbmRpbmctPmZvcm1hdDsKKwl1bnNp
+Z25lZCBpbnQgY29uOworCisJY29uID0gcmRtYV9mbXRfY29udmVydChyZG1hLCBmbXQpOworCXdy
+aXRlbF9yZWxheGVkKGNvbiwgY29tcC0+cmVncyArIERJU1BfUkRNQV9NRU1fQ09OKTsKIAogCXdy
+aXRlbF9yZWxheGVkKGFkZHIsIGNvbXAtPnJlZ3MgKyBESVNQX1JETUFfTUVNX1NUQVJUX0FERFIp
+OwogCXdyaXRlbF9yZWxheGVkKHBpdGNoLCBjb21wLT5yZWdzICsgRElTUF9SRE1BX01FTV9TUkNf
+UElUQ0gpOwotLSAKMi4xMi41LjIuZ2JkZjIzYWIKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
+c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2RyaS1kZXZlbAo=
