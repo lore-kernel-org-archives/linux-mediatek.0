@@ -1,86 +1,67 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: Re: [PATCH v2 12/15] drm/mediatek: add callback function to return
- RDMA layer number
-Date: Mon, 6 Aug 2018 19:53:54 +0800
-Message-ID: <1533556434.11190.70.camel@mtksdccf07>
+Subject: Re: [PATCH v2 11/15] drm/mediatek: add callback function to return
+ OVL layer number
+Date: Mon, 6 Aug 2018 19:54:32 +0800
+Message-ID: <1533556472.11190.71.camel@mtksdccf07>
 References: <1533265868-28110-1-git-send-email-stu.hsieh@mediatek.com>
-         <1533265868-28110-13-git-send-email-stu.hsieh@mediatek.com>
-         <1533273202.31144.8.camel@mtksdaap41>
+ <1533265868-28110-12-git-send-email-stu.hsieh@mediatek.com>
+ <1533273092.31144.7.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1533273202.31144.8.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1533273092.31144.7.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: CK Hu <ck.hu@mediatek.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
+Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, CK:
-
-On Fri, 2018-08-03 at 13:13 +0800, CK Hu wrote:
-> Hi, Stu:
-> 
-> On Fri, 2018-08-03 at 11:11 +0800, Stu Hsieh wrote:
-> > This patch add callback function to return RDMA layer number
-> > 
-> > Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 10 ++++++++++
-> >  1 file changed, 10 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> > index b728f0f42611..8c145a87c9e5 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> > @@ -60,6 +60,7 @@
-> >  
-> >  struct mtk_disp_rdma_data {
-> >  	unsigned int fifo_size;
-> > +	unsigned int layer_nr;
-> >  };
-> >  
-> >  /**
-> > @@ -194,6 +195,13 @@ static unsigned int rdma_fmt_convert(struct mtk_disp_rdma *rdma,
-> >  	}
-> >  }
-> >  
-> > +static unsigned int mtk_rdma_layer_nr(struct mtk_ddp_comp *comp)
-> > +{
-> > +	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
-> > +
-> > +	return rdma->data->layer_nr;
-> 
-> Maybe RDMA always has one layer, so you could just return 1 here.
-> 
-> Regards,
-> CK
-> 
-OK
-
-Regards,
-Stu
-
-> > +}
-> > +
-> >  static void mtk_rdma_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
-> >  				  struct mtk_plane_state *state)
-> >  {
-> > @@ -227,6 +235,7 @@ static const struct mtk_ddp_comp_funcs mtk_disp_rdma_funcs = {
-> >  	.stop = mtk_rdma_stop,
-> >  	.enable_vblank = mtk_rdma_enable_vblank,
-> >  	.disable_vblank = mtk_rdma_disable_vblank,
-> > +	.layer_nr = mtk_rdma_layer_nr,
-> >  	.layer_config = mtk_rdma_layer_config,
-> >  };
-> >  
-> > @@ -329,6 +338,7 @@ static const struct mtk_disp_rdma_data mt2701_rdma_driver_data = {
-> >  
-> >  static const struct mtk_disp_rdma_data mt8173_rdma_driver_data = {
-> >  	.fifo_size = SZ_8K,
-> > +	.layer_nr = 1,
-> >  };
-> >  
-> >  static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
-> 
-> 
+SGksIENLOgpPbiBGcmksIDIwMTgtMDgtMDMgYXQgMTM6MTEgKzA4MDAsIENLIEh1IHdyb3RlOgo+
+IEhpLCBTdHU6Cj4gCj4gT24gRnJpLCAyMDE4LTA4LTAzIGF0IDExOjExICswODAwLCBTdHUgSHNp
+ZWggd3JvdGU6Cj4gPiBUaGlzIHBhdGNoIGFkZCBjYWxsYmFjayBmdW5jdGlvbiB0byByZXR1cm4g
+T1ZMIGxheWVyIG51bWJlcgo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBTdHUgSHNpZWggPHN0dS5o
+c2llaEBtZWRpYXRlay5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2Rpc3Bfb3ZsLmMgfCAxMCArKysrKysrKysrCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDEwIGlu
+c2VydGlvbnMoKykKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZGlzcF9vdmwuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwu
+Ywo+ID4gaW5kZXggOTc4NzgyYTc3NjI5Li5hNDJjZmEwNTdmNDIgMTAwNjQ0Cj4gPiAtLS0gYS9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMKPiA+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYwo+ID4gQEAgLTU4LDYgKzU4LDcgQEAKPiA+
+ICBzdHJ1Y3QgbXRrX2Rpc3Bfb3ZsX2RhdGEgewo+ID4gIAl1bnNpZ25lZCBpbnQgYWRkcjsKPiA+
+ICAJYm9vbCBmbXRfcmdiNTY1X2lzXzA7Cj4gPiArCXVuc2lnbmVkIGludCBsYXllcl9ucjsKPiA+
+ICB9Owo+ID4gIAo+ID4gIC8qKgo+ID4gQEAgLTEzMiw2ICsxMzMsMTMgQEAgc3RhdGljIHZvaWQg
+bXRrX292bF9jb25maWcoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IHcs
+Cj4gPiAgCXdyaXRlbCgweDAsIGNvbXAtPnJlZ3MgKyBESVNQX1JFR19PVkxfUlNUKTsKPiA+ICB9
+Cj4gPiAgCj4gPiArc3RhdGljIHVuc2lnbmVkIGludCBtdGtfb3ZsX2xheWVyX25yKHN0cnVjdCBt
+dGtfZGRwX2NvbXAgKmNvbXApCj4gPiArewo+ID4gKwlzdHJ1Y3QgbXRrX2Rpc3Bfb3ZsICpvdmwg
+PSBjb21wX3RvX292bChjb21wKTsKPiA+ICsKPiA+ICsJcmV0dXJuIG92bC0+ZGF0YS0+bGF5ZXJf
+bnI7Cj4gCj4gRm9yIG5vdywgTVQ4MTczLCBNVDI3MTIsIE1UMjcwMSBPVkwgYWxsIGhhcyA0IGxh
+eWVyLCBzbyB5b3UgY291bGQgcmV0dXJuCj4gNCBoZXJlLiBPbmNlIGEgU29DIE9WTCBoYXMgYW5v
+dGhlciBsYXllciBudW1iZXIsIHRoZW4gbW9kaWZpZWQgdGhlIGNvZGUKPiB0byB0aGlzIHN0YXRl
+bWVudC4KPiAKPiBSZWdhcmRzLAo+IENLCj4gCk9LCgpSZWdhcmRzLApTdHUKCj4gPiArfQo+ID4g
+Kwo+ID4gIHN0YXRpYyB2b2lkIG10a19vdmxfbGF5ZXJfb24oc3RydWN0IG10a19kZHBfY29tcCAq
+Y29tcCwgdW5zaWduZWQgaW50IGlkeCkKPiA+ICB7Cj4gPiAgCXVuc2lnbmVkIGludCByZWc7Cj4g
+PiBAQCAtMjIxLDYgKzIyOSw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RkcF9jb21wX2Z1
+bmNzIG10a19kaXNwX292bF9mdW5jcyA9IHsKPiA+ICAJLnN0b3AgPSBtdGtfb3ZsX3N0b3AsCj4g
+PiAgCS5lbmFibGVfdmJsYW5rID0gbXRrX292bF9lbmFibGVfdmJsYW5rLAo+ID4gIAkuZGlzYWJs
+ZV92YmxhbmsgPSBtdGtfb3ZsX2Rpc2FibGVfdmJsYW5rLAo+ID4gKwkubGF5ZXJfbnIgPSBtdGtf
+b3ZsX2xheWVyX25yLAo+ID4gIAkubGF5ZXJfb24gPSBtdGtfb3ZsX2xheWVyX29uLAo+ID4gIAku
+bGF5ZXJfb2ZmID0gbXRrX292bF9sYXllcl9vZmYsCj4gPiAgCS5sYXllcl9jb25maWcgPSBtdGtf
+b3ZsX2xheWVyX2NvbmZpZywKPiA+IEBAIC0zMTksNiArMzI4LDcgQEAgc3RhdGljIGNvbnN0IHN0
+cnVjdCBtdGtfZGlzcF9vdmxfZGF0YSBtdDI3MDFfb3ZsX2RyaXZlcl9kYXRhID0gewo+ID4gIHN0
+YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2Rpc3Bfb3ZsX2RhdGEgbXQ4MTczX292bF9kcml2ZXJfZGF0
+YSA9IHsKPiA+ICAJLmFkZHIgPSBESVNQX1JFR19PVkxfQUREUl9NVDgxNzMsCj4gPiAgCS5mbXRf
+cmdiNTY1X2lzXzAgPSB0cnVlLAo+ID4gKwkubGF5ZXJfbnIgPSA0LAo+ID4gIH07Cj4gPiAgCj4g
+PiAgc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXRrX2Rpc3Bfb3ZsX2RyaXZlcl9k
+dF9tYXRjaFtdID0gewo+IAo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
+ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaS1kZXZlbAo=
