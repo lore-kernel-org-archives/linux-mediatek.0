@@ -1,112 +1,59 @@
-From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v3 12/13] drm/mediatek: update some variable name from ovl to
- comp
-Date: Mon, 6 Aug 2018 19:58:19 +0800
-Message-ID: <1533556700-26525-13-git-send-email-stu.hsieh@mediatek.com>
+From: Stu Hsieh <stu.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v3 09/13] drm/mediatek: add callback function to return OVL
+ layer number
+Date: Mon, 6 Aug 2018 19:58:16 +0800
+Message-ID: <1533556700-26525-10-git-send-email-stu.hsieh@mediatek.com>
 References: <1533556700-26525-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1533556700-26525-1-git-send-email-stu.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1533556700-26525-1-git-send-email-stu.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stu Hsieh <stu.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhpcyBwYXRjaCB1cGRhdGUgc29tZSB2YXJpYWJsZSBuYW1lIGZyb20gb3ZsIHRvIGNvbXAKCkJl
-Y2F1c2UgUkRNQSB3b3VsZCBiZSBmaXJzdCBIVyBpbiBkZHAsIHRoZSBuYW1pbmcgb3ZsCnNob3Vs
-ZCBiZSBjaGFuZ2UgdG8gY29tcC4KClNpZ25lZC1vZmYtYnk6IFN0dSBIc2llaCA8c3R1LmhzaWVo
-QG1lZGlhdGVrLmNvbT4KUmV2aWV3ZWQtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+Ci0t
-LQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jIHwgMjYgKysrKysrKysr
-KysrKy0tLS0tLS0tLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMu
-aCB8ICAyICstCiAyIGZpbGVzIGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKyksIDE0IGRlbGV0aW9u
-cygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMu
-YyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYwppbmRleCAxYTg2ODVm
-YmJmNTcuLmUzMTcyMmRiMzE4NCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kcm1fY3J0Yy5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Ny
-dGMuYwpAQCAtMTcyLDkgKzE3Miw5IEBAIHN0YXRpYyB2b2lkIG10a19kcm1fY3J0Y19tb2RlX3Nl
-dF9ub2ZiKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKIHN0YXRpYyBpbnQgbXRrX2RybV9jcnRjX2Vu
-YWJsZV92Ymxhbmsoc3RydWN0IGRybV9jcnRjICpjcnRjKQogewogCXN0cnVjdCBtdGtfZHJtX2Ny
-dGMgKm10a19jcnRjID0gdG9fbXRrX2NydGMoY3J0Yyk7Ci0Jc3RydWN0IG10a19kZHBfY29tcCAq
-b3ZsID0gbXRrX2NydGMtPmRkcF9jb21wWzBdOworCXN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAg
-PSBtdGtfY3J0Yy0+ZGRwX2NvbXBbMF07CiAKLQltdGtfZGRwX2NvbXBfZW5hYmxlX3ZibGFuayhv
-dmwsICZtdGtfY3J0Yy0+YmFzZSk7CisJbXRrX2RkcF9jb21wX2VuYWJsZV92YmxhbmsoY29tcCwg
-Jm10a19jcnRjLT5iYXNlKTsKIAogCXJldHVybiAwOwogfQpAQCAtMTgyLDkgKzE4Miw5IEBAIHN0
-YXRpYyBpbnQgbXRrX2RybV9jcnRjX2VuYWJsZV92Ymxhbmsoc3RydWN0IGRybV9jcnRjICpjcnRj
-KQogc3RhdGljIHZvaWQgbXRrX2RybV9jcnRjX2Rpc2FibGVfdmJsYW5rKHN0cnVjdCBkcm1fY3J0
-YyAqY3J0YykKIHsKIAlzdHJ1Y3QgbXRrX2RybV9jcnRjICptdGtfY3J0YyA9IHRvX210a19jcnRj
-KGNydGMpOwotCXN0cnVjdCBtdGtfZGRwX2NvbXAgKm92bCA9IG10a19jcnRjLT5kZHBfY29tcFsw
-XTsKKwlzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wID0gbXRrX2NydGMtPmRkcF9jb21wWzBdOwog
-Ci0JbXRrX2RkcF9jb21wX2Rpc2FibGVfdmJsYW5rKG92bCk7CisJbXRrX2RkcF9jb21wX2Rpc2Fi
-bGVfdmJsYW5rKGNvbXApOwogfQogCiBzdGF0aWMgaW50IG10a19jcnRjX2RkcF9jbGtfZW5hYmxl
-KHN0cnVjdCBtdGtfZHJtX2NydGMgKm10a19jcnRjKQpAQCAtMzM1LDcgKzMzNSw3IEBAIHN0YXRp
-YyB2b2lkIG10a19jcnRjX2RkcF9jb25maWcoc3RydWN0IGRybV9jcnRjICpjcnRjKQogewogCXN0
-cnVjdCBtdGtfZHJtX2NydGMgKm10a19jcnRjID0gdG9fbXRrX2NydGMoY3J0Yyk7CiAJc3RydWN0
-IG10a19jcnRjX3N0YXRlICpzdGF0ZSA9IHRvX210a19jcnRjX3N0YXRlKG10a19jcnRjLT5iYXNl
-LnN0YXRlKTsKLQlzdHJ1Y3QgbXRrX2RkcF9jb21wICpvdmwgPSBtdGtfY3J0Yy0+ZGRwX2NvbXBb
-MF07CisJc3RydWN0IG10a19kZHBfY29tcCAqY29tcCA9IG10a19jcnRjLT5kZHBfY29tcFswXTsK
-IAl1bnNpZ25lZCBpbnQgaTsKIAogCS8qCkBAIC0zNDQsNyArMzQ0LDcgQEAgc3RhdGljIHZvaWQg
-bXRrX2NydGNfZGRwX2NvbmZpZyhzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCiAJICogcXVldWUgdXBk
-YXRlIG1vZHVsZSByZWdpc3RlcnMgb24gdmJsYW5rLgogCSAqLwogCWlmIChzdGF0ZS0+cGVuZGlu
-Z19jb25maWcpIHsKLQkJbXRrX2RkcF9jb21wX2NvbmZpZyhvdmwsIHN0YXRlLT5wZW5kaW5nX3dp
-ZHRoLAorCQltdGtfZGRwX2NvbXBfY29uZmlnKGNvbXAsIHN0YXRlLT5wZW5kaW5nX3dpZHRoLAog
-CQkJCSAgICBzdGF0ZS0+cGVuZGluZ19oZWlnaHQsCiAJCQkJICAgIHN0YXRlLT5wZW5kaW5nX3Zy
-ZWZyZXNoLCAwKTsKIApAQCAtMzU5LDcgKzM1OSw3IEBAIHN0YXRpYyB2b2lkIG10a19jcnRjX2Rk
-cF9jb25maWcoc3RydWN0IGRybV9jcnRjICpjcnRjKQogCQkJcGxhbmVfc3RhdGUgPSB0b19tdGtf
-cGxhbmVfc3RhdGUocGxhbmUtPnN0YXRlKTsKIAogCQkJaWYgKHBsYW5lX3N0YXRlLT5wZW5kaW5n
-LmNvbmZpZykgewotCQkJCW10a19kZHBfY29tcF9sYXllcl9jb25maWcob3ZsLCBpLCBwbGFuZV9z
-dGF0ZSk7CisJCQkJbXRrX2RkcF9jb21wX2xheWVyX2NvbmZpZyhjb21wLCBpLCBwbGFuZV9zdGF0
-ZSk7CiAJCQkJcGxhbmVfc3RhdGUtPnBlbmRpbmcuY29uZmlnID0gZmFsc2U7CiAJCQl9CiAJCX0K
-QEAgLTM3MSwxMiArMzcxLDEyIEBAIHN0YXRpYyB2b2lkIG10a19kcm1fY3J0Y19hdG9taWNfZW5h
-YmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKIAkJCQkgICAgICAgc3RydWN0IGRybV9jcnRjX3N0
-YXRlICpvbGRfc3RhdGUpCiB7CiAJc3RydWN0IG10a19kcm1fY3J0YyAqbXRrX2NydGMgPSB0b19t
-dGtfY3J0YyhjcnRjKTsKLQlzdHJ1Y3QgbXRrX2RkcF9jb21wICpvdmwgPSBtdGtfY3J0Yy0+ZGRw
-X2NvbXBbMF07CisJc3RydWN0IG10a19kZHBfY29tcCAqY29tcCA9IG10a19jcnRjLT5kZHBfY29t
-cFswXTsKIAlpbnQgcmV0OwogCiAJRFJNX0RFQlVHX0RSSVZFUigiJXMgJWRcbiIsIF9fZnVuY19f
-LCBjcnRjLT5iYXNlLmlkKTsKIAotCXJldCA9IG10a19zbWlfbGFyYl9nZXQob3ZsLT5sYXJiX2Rl
-dik7CisJcmV0ID0gbXRrX3NtaV9sYXJiX2dldChjb21wLT5sYXJiX2Rldik7CiAJaWYgKHJldCkg
-ewogCQlEUk1fRVJST1IoIkZhaWxlZCB0byBnZXQgbGFyYjogJWRcbiIsIHJldCk7CiAJCXJldHVy
-bjsKQEAgLTM4NCw3ICszODQsNyBAQCBzdGF0aWMgdm9pZCBtdGtfZHJtX2NydGNfYXRvbWljX2Vu
-YWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCiAKIAlyZXQgPSBtdGtfY3J0Y19kZHBfaHdfaW5p
-dChtdGtfY3J0Yyk7CiAJaWYgKHJldCkgewotCQltdGtfc21pX2xhcmJfcHV0KG92bC0+bGFyYl9k
-ZXYpOworCQltdGtfc21pX2xhcmJfcHV0KGNvbXAtPmxhcmJfZGV2KTsKIAkJcmV0dXJuOwogCX0K
-IApAQCAtMzk2LDcgKzM5Niw3IEBAIHN0YXRpYyB2b2lkIG10a19kcm1fY3J0Y19hdG9taWNfZGlz
-YWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCiAJCQkJCXN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAq
-b2xkX3N0YXRlKQogewogCXN0cnVjdCBtdGtfZHJtX2NydGMgKm10a19jcnRjID0gdG9fbXRrX2Ny
-dGMoY3J0Yyk7Ci0Jc3RydWN0IG10a19kZHBfY29tcCAqb3ZsID0gbXRrX2NydGMtPmRkcF9jb21w
-WzBdOworCXN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAgPSBtdGtfY3J0Yy0+ZGRwX2NvbXBbMF07
-CiAJaW50IGk7CiAKIAlEUk1fREVCVUdfRFJJVkVSKCIlcyAlZFxuIiwgX19mdW5jX18sIGNydGMt
-PmJhc2UuaWQpOwpAQCAtNDE5LDcgKzQxOSw3IEBAIHN0YXRpYyB2b2lkIG10a19kcm1fY3J0Y19h
-dG9taWNfZGlzYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCiAKIAlkcm1fY3J0Y192Ymxhbmtf
-b2ZmKGNydGMpOwogCW10a19jcnRjX2RkcF9od19maW5pKG10a19jcnRjKTsKLQltdGtfc21pX2xh
-cmJfcHV0KG92bC0+bGFyYl9kZXYpOworCW10a19zbWlfbGFyYl9wdXQoY29tcC0+bGFyYl9kZXYp
-OwogCiAJbXRrX2NydGMtPmVuYWJsZWQgPSBmYWxzZTsKIH0KQEAgLTUxNyw3ICs1MTcsNyBAQCBz
-dGF0aWMgaW50IG10a19kcm1fY3J0Y19pbml0KHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sCiAJcmV0
-dXJuIHJldDsKIH0KIAotdm9pZCBtdGtfY3J0Y19kZHBfaXJxKHN0cnVjdCBkcm1fY3J0YyAqY3J0
-Yywgc3RydWN0IG10a19kZHBfY29tcCAqb3ZsKQordm9pZCBtdGtfY3J0Y19kZHBfaXJxKHN0cnVj
-dCBkcm1fY3J0YyAqY3J0Yywgc3RydWN0IG10a19kZHBfY29tcCAqY29tcCkKIHsKIAlzdHJ1Y3Qg
-bXRrX2RybV9jcnRjICptdGtfY3J0YyA9IHRvX210a19jcnRjKGNydGMpOwogCXN0cnVjdCBtdGtf
-ZHJtX3ByaXZhdGUgKnByaXYgPSBjcnRjLT5kZXYtPmRldl9wcml2YXRlOwpkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5oIGIvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kcm1fY3J0Yy5oCmluZGV4IDYwYmNjOGFiYThlMy4uMDkxYWRiMjA4N2Vi
-IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmgKKysr
-IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5oCkBAIC0yMyw3ICsyMyw3
-IEBACiAjZGVmaW5lIE1US19NSU5fQlBDCTMKIAogdm9pZCBtdGtfZHJtX2NydGNfY29tbWl0KHN0
-cnVjdCBkcm1fY3J0YyAqY3J0Yyk7Ci12b2lkIG10a19jcnRjX2RkcF9pcnEoc3RydWN0IGRybV9j
-cnRjICpjcnRjLCBzdHJ1Y3QgbXRrX2RkcF9jb21wICpvdmwpOwordm9pZCBtdGtfY3J0Y19kZHBf
-aXJxKHN0cnVjdCBkcm1fY3J0YyAqY3J0Yywgc3RydWN0IG10a19kZHBfY29tcCAqY29tcCk7CiBp
-bnQgbXRrX2RybV9jcnRjX2NyZWF0ZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldiwKIAkJCWNv
-bnN0IGVudW0gbXRrX2RkcF9jb21wX2lkICpwYXRoLAogCQkJdW5zaWduZWQgaW50IHBhdGhfbGVu
-KTsKLS0gCjIuMTIuNS4yLmdiZGYyM2FiCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+This patch add callback function to return OVL layer number
+
+For now, MT8173, MT2712, MT2701 OVL all has 4 layer.
+
+Signed-off-by: Stu Hsieh <stu.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 978782a77629..66060e79afbc 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -132,6 +132,11 @@ static void mtk_ovl_config(struct mtk_ddp_comp *comp, unsigned int w,
+ 	writel(0x0, comp->regs + DISP_REG_OVL_RST);
+ }
+ 
++static unsigned int mtk_ovl_layer_nr(struct mtk_ddp_comp *comp)
++{
++	return 4;
++}
++
+ static void mtk_ovl_layer_on(struct mtk_ddp_comp *comp, unsigned int idx)
+ {
+ 	unsigned int reg;
+@@ -221,6 +226,7 @@ static const struct mtk_ddp_comp_funcs mtk_disp_ovl_funcs = {
+ 	.stop = mtk_ovl_stop,
+ 	.enable_vblank = mtk_ovl_enable_vblank,
+ 	.disable_vblank = mtk_ovl_disable_vblank,
++	.layer_nr = mtk_ovl_layer_nr,
+ 	.layer_on = mtk_ovl_layer_on,
+ 	.layer_off = mtk_ovl_layer_off,
+ 	.layer_config = mtk_ovl_layer_config,
+-- 
+2.12.5.2.gbdf23ab
