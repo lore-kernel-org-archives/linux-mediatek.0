@@ -1,105 +1,50 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v3 11/13] drm/mediatek: use layer_nr function to get layer
- number to init plane
-Date: Mon, 6 Aug 2018 19:58:18 +0800
-Message-ID: <1533556700-26525-12-git-send-email-stu.hsieh@mediatek.com>
+Subject: [PATCH v3 08/13] drm/mediatek: add function to get layer number for component
+Date: Mon, 6 Aug 2018 19:58:15 +0800
+Message-ID: <1533556700-26525-9-git-send-email-stu.hsieh@mediatek.com>
 References: <1533556700-26525-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1533556700-26525-1-git-send-email-stu.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Stu Hsieh <stu.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhpcyBwYXRjaCB1c2UgbGF5ZXJfbnIgZnVuY3Rpb24gdG8gZ2V0IGxheWVyIG51bWJlciB0byBp
-bml0IHBsYW5lCgpXaGVuIHBsYW5lIGluaXQgaW4gY3J0YyBjcmVhdGUsCml0IHVzZSB0aGUgbnVt
-YmVyIG9mIE9WTCBsYXllciB0byBpbml0IHBsYW5lLgpUaGF0J3MgT1ZMIGNhbiByZWFkIDQgbWVt
-b3J5IGFkZHJlc3MuCgpGb3IgbXQyNzEyIHRoaXJkIGRkcCwgaXQgdXNlIFJETUEgdG8gcmVhZCBt
-ZW1vcnkuClJETUEgY2FuIHJlYWQgMSBtZW1vcnkgYWRkcmVzcywgc28gaXQganVzdCBpbml0IG9u
-ZSBwbGFuZS4KCkZvciBjb21wYXRpYmlsaXR5LCB0aGlzIHBhdGNoIHVzZSBtdGtfZGRwX2NvbXBf
-bGF5ZXJfbnIgZnVuY3Rpb24KdG8gZ2V0IGxheWVyIG51bWJlciBmcm9tIHRoZWlyIEhXIGNvbXBv
-bmVudCBpbiBkZHAgZm9yIHBsYW5lIGluaXQuCgpTaWduZWQtb2ZmLWJ5OiBTdHUgSHNpZWggPHN0
-dS5oc2llaEBtZWRpYXRlay5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-cm1fY3J0Yy5jIHwgMzcgKysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tCiBkcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmggfCAgMSAtCiAyIGZpbGVzIGNoYW5nZWQs
-IDI0IGluc2VydGlvbnMoKyksIDE0IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHJtX2NydGMuYwppbmRleCAyZDZhYTE1MGE5ZmYuLjFhODY4NWZiYmY1NyAxMDA2NDQK
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jCisrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYwpAQCAtNDUsNyArNDUsOCBAQCBzdHJ1
-Y3QgbXRrX2RybV9jcnRjIHsKIAlib29sCQkJCXBlbmRpbmdfbmVlZHNfdmJsYW5rOwogCXN0cnVj
-dCBkcm1fcGVuZGluZ192YmxhbmtfZXZlbnQJKmV2ZW50OwogCi0Jc3RydWN0IGRybV9wbGFuZQkJ
-cGxhbmVzW09WTF9MQVlFUl9OUl07CisJc3RydWN0IGRybV9wbGFuZQkJKipwbGFuZXM7CisJdW5z
-aWduZWQgaW50CQkJbGF5ZXJfbnI7CiAJYm9vbAkJCQlwZW5kaW5nX3BsYW5lczsKIAogCXZvaWQg
-X19pb21lbQkJCSpjb25maWdfcmVnczsKQEAgLTI4Niw4ICsyODcsOCBAQCBzdGF0aWMgaW50IG10
-a19jcnRjX2RkcF9od19pbml0KHN0cnVjdCBtdGtfZHJtX2NydGMgKm10a19jcnRjKQogCX0KIAog
-CS8qIEluaXRpYWxseSBjb25maWd1cmUgYWxsIHBsYW5lcyAqLwotCWZvciAoaSA9IDA7IGkgPCBP
-VkxfTEFZRVJfTlI7IGkrKykgewotCQlzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSA9ICZtdGtfY3J0
-Yy0+cGxhbmVzW2ldOworCWZvciAoaSA9IDA7IGkgPCBtdGtfY3J0Yy0+bGF5ZXJfbnI7IGkrKykg
-eworCQlzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSA9IG10a19jcnRjLT5wbGFuZXNbaV07CiAJCXN0
-cnVjdCBtdGtfcGxhbmVfc3RhdGUgKnBsYW5lX3N0YXRlOwogCiAJCXBsYW5lX3N0YXRlID0gdG9f
-bXRrX3BsYW5lX3N0YXRlKHBsYW5lLT5zdGF0ZSk7CkBAIC0zNTEsOCArMzUyLDggQEAgc3RhdGlj
-IHZvaWQgbXRrX2NydGNfZGRwX2NvbmZpZyhzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCiAJfQogCiAJ
-aWYgKG10a19jcnRjLT5wZW5kaW5nX3BsYW5lcykgewotCQlmb3IgKGkgPSAwOyBpIDwgT1ZMX0xB
-WUVSX05SOyBpKyspIHsKLQkJCXN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lID0gJm10a19jcnRjLT5w
-bGFuZXNbaV07CisJCWZvciAoaSA9IDA7IGkgPCBtdGtfY3J0Yy0+bGF5ZXJfbnI7IGkrKykgewor
-CQkJc3RydWN0IGRybV9wbGFuZSAqcGxhbmUgPSBtdGtfY3J0Yy0+cGxhbmVzW2ldOwogCQkJc3Ry
-dWN0IG10a19wbGFuZV9zdGF0ZSAqcGxhbmVfc3RhdGU7CiAKIAkJCXBsYW5lX3N0YXRlID0gdG9f
-bXRrX3BsYW5lX3N0YXRlKHBsYW5lLT5zdGF0ZSk7CkBAIC00MDMsOCArNDA0LDggQEAgc3RhdGlj
-IHZvaWQgbXRrX2RybV9jcnRjX2F0b21pY19kaXNhYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywK
-IAkJcmV0dXJuOwogCiAJLyogU2V0IGFsbCBwZW5kaW5nIHBsYW5lIHN0YXRlIHRvIGRpc2FibGVk
-ICovCi0JZm9yIChpID0gMDsgaSA8IE9WTF9MQVlFUl9OUjsgaSsrKSB7Ci0JCXN0cnVjdCBkcm1f
-cGxhbmUgKnBsYW5lID0gJm10a19jcnRjLT5wbGFuZXNbaV07CisJZm9yIChpID0gMDsgaSA8IG10
-a19jcnRjLT5sYXllcl9ucjsgaSsrKSB7CisJCXN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lID0gbXRr
-X2NydGMtPnBsYW5lc1tpXTsKIAkJc3RydWN0IG10a19wbGFuZV9zdGF0ZSAqcGxhbmVfc3RhdGU7
-CiAKIAkJcGxhbmVfc3RhdGUgPSB0b19tdGtfcGxhbmVfc3RhdGUocGxhbmUtPnN0YXRlKTsKQEAg
-LTQ1MCw4ICs0NTEsOCBAQCBzdGF0aWMgdm9pZCBtdGtfZHJtX2NydGNfYXRvbWljX2ZsdXNoKHN0
-cnVjdCBkcm1fY3J0YyAqY3J0YywKIAogCWlmIChtdGtfY3J0Yy0+ZXZlbnQpCiAJCW10a19jcnRj
-LT5wZW5kaW5nX25lZWRzX3ZibGFuayA9IHRydWU7Ci0JZm9yIChpID0gMDsgaSA8IE9WTF9MQVlF
-Ul9OUjsgaSsrKSB7Ci0JCXN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lID0gJm10a19jcnRjLT5wbGFu
-ZXNbaV07CisJZm9yIChpID0gMDsgaSA8IG10a19jcnRjLT5sYXllcl9ucjsgaSsrKSB7CisJCXN0
-cnVjdCBkcm1fcGxhbmUgKnBsYW5lID0gbXRrX2NydGMtPnBsYW5lc1tpXTsKIAkJc3RydWN0IG10
-a19wbGFuZV9zdGF0ZSAqcGxhbmVfc3RhdGU7CiAKIAkJcGxhbmVfc3RhdGUgPSB0b19tdGtfcGxh
-bmVfc3RhdGUocGxhbmUtPnN0YXRlKTsKQEAgLTU5OCwxOCArNTk5LDI4IEBAIGludCBtdGtfZHJt
-X2NydGNfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2LAogCQltdGtfY3J0Yy0+ZGRw
-X2NvbXBbaV0gPSBjb21wOwogCX0KIAotCWZvciAoenBvcyA9IDA7IHpwb3MgPCBPVkxfTEFZRVJf
-TlI7IHpwb3MrKykgeworCW10a19jcnRjLT5sYXllcl9uciA9IG10a19kZHBfY29tcF9sYXllcl9u
-cihtdGtfY3J0Yy0+ZGRwX2NvbXBbMF0pOworCW10a19jcnRjLT5wbGFuZXMgPSBkZXZtX2ttYWxs
-b2NfYXJyYXkoZGV2LCBtdGtfY3J0Yy0+bGF5ZXJfbnIsCisJCQkJCSAgICAgIHNpemVvZigqbXRr
-X2NydGMtPnBsYW5lcyksCisJCQkJCSAgICAgIEdGUF9LRVJORUwpOworCisJZm9yICh6cG9zID0g
-MDsgenBvcyA8IG10a19jcnRjLT5sYXllcl9ucjsgenBvcysrKSB7CisJCW10a19jcnRjLT5wbGFu
-ZXNbenBvc10gPSBkZXZtX2t6YWxsb2MoZGV2LAorCQkJCQkJc2l6ZW9mKCptdGtfY3J0Yy0+cGxh
-bmVzW3pwb3NdKSwKKwkJCQkJCUdGUF9LRVJORUwpOworCiAJCXR5cGUgPSAoenBvcyA9PSAwKSA/
-IERSTV9QTEFORV9UWVBFX1BSSU1BUlkgOgogCQkJCSh6cG9zID09IDEpID8gRFJNX1BMQU5FX1RZ
-UEVfQ1VSU09SIDoKIAkJCQkJCURSTV9QTEFORV9UWVBFX09WRVJMQVk7Ci0JCXJldCA9IG10a19w
-bGFuZV9pbml0KGRybV9kZXYsICZtdGtfY3J0Yy0+cGxhbmVzW3pwb3NdLAorCQlyZXQgPSBtdGtf
-cGxhbmVfaW5pdChkcm1fZGV2LCBtdGtfY3J0Yy0+cGxhbmVzW3pwb3NdLAogCQkJCSAgICAgQklU
-KHBpcGUpLCB0eXBlKTsKIAkJaWYgKHJldCkKIAkJCWdvdG8gdW5wcmVwYXJlOwogCX0KIAotCXJl
-dCA9IG10a19kcm1fY3J0Y19pbml0KGRybV9kZXYsIG10a19jcnRjLCAmbXRrX2NydGMtPnBsYW5l
-c1swXSwKLQkJCQkmbXRrX2NydGMtPnBsYW5lc1sxXSwgcGlwZSk7CisJcmV0ID0gbXRrX2RybV9j
-cnRjX2luaXQoZHJtX2RldiwgbXRrX2NydGMsIG10a19jcnRjLT5wbGFuZXNbMF0sCisJCQkJbXRr
-X2NydGMtPmxheWVyX25yID4gMSA/IG10a19jcnRjLT5wbGFuZXNbMV0gOgorCQkJCU5VTEwsIHBp
-cGUpOwogCWlmIChyZXQgPCAwKQogCQlnb3RvIHVucHJlcGFyZTsKIAlkcm1fbW9kZV9jcnRjX3Nl
-dF9nYW1tYV9zaXplKCZtdGtfY3J0Yy0+YmFzZSwgTVRLX0xVVF9TSVpFKTsKZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuaCBiL2RyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2NydGMuaAppbmRleCA5ZDk0MTBjNjdhZTkuLjYwYmNjOGFiYThl
-MyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5oCisr
-KyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuaApAQCAtMTgsNyArMTgs
-NiBAQAogI2luY2x1ZGUgIm10a19kcm1fZGRwX2NvbXAuaCIKICNpbmNsdWRlICJtdGtfZHJtX3Bs
-YW5lLmgiCiAKLSNkZWZpbmUgT1ZMX0xBWUVSX05SCTQKICNkZWZpbmUgTVRLX0xVVF9TSVpFCTUx
-MgogI2RlZmluZSBNVEtfTUFYX0JQQwkxMAogI2RlZmluZSBNVEtfTUlOX0JQQwkzCi0tIAoyLjEy
-LjUuMi5nYmRmMjNhYgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
-dmVsCg==
+This patch add function to get layer number for component
+
+Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index 7413ffeb3c9d..8399229e6ad2 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -78,6 +78,7 @@ struct mtk_ddp_comp_funcs {
+ 	void (*stop)(struct mtk_ddp_comp *comp);
+ 	void (*enable_vblank)(struct mtk_ddp_comp *comp, struct drm_crtc *crtc);
+ 	void (*disable_vblank)(struct mtk_ddp_comp *comp);
++	unsigned int (*layer_nr)(struct mtk_ddp_comp *comp);
+ 	void (*layer_on)(struct mtk_ddp_comp *comp, unsigned int idx);
+ 	void (*layer_off)(struct mtk_ddp_comp *comp, unsigned int idx);
+ 	void (*layer_config)(struct mtk_ddp_comp *comp, unsigned int idx,
+@@ -128,6 +129,14 @@ static inline void mtk_ddp_comp_disable_vblank(struct mtk_ddp_comp *comp)
+ 		comp->funcs->disable_vblank(comp);
+ }
+ 
++static inline unsigned int mtk_ddp_comp_layer_nr(struct mtk_ddp_comp *comp)
++{
++	if (comp->funcs && comp->funcs->layer_nr)
++		return comp->funcs->layer_nr(comp);
++
++	return 0;
++}
++
+ static inline void mtk_ddp_comp_layer_on(struct mtk_ddp_comp *comp,
+ 					 unsigned int idx)
+ {
+-- 
+2.12.5.2.gbdf23ab
