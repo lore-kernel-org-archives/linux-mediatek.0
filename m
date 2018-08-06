@@ -1,38 +1,86 @@
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Subject: [PATCH] soc: mediatek: pwrap: use true and false for boolean values
-Date: Sat, 4 Aug 2018 20:02:01 -0500
-Message-ID: <20180805010201.GA7320@embeddedor.com>
+From: Stu Hsieh <stu.hsieh@mediatek.com>
+Subject: Re: [PATCH v2 12/15] drm/mediatek: add callback function to return
+ RDMA layer number
+Date: Mon, 6 Aug 2018 19:53:54 +0800
+Message-ID: <1533556434.11190.70.camel@mtksdccf07>
+References: <1533265868-28110-1-git-send-email-stu.hsieh@mediatek.com>
+         <1533265868-28110-13-git-send-email-stu.hsieh@mediatek.com>
+         <1533273202.31144.8.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <1533273202.31144.8.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Return statements in functions returning bool should use true or false
-instead of an integer value.
+Hi, CK:
 
-This issue was detected with the help of Coccinelle.
+On Fri, 2018-08-03 at 13:13 +0800, CK Hu wrote:
+> Hi, Stu:
+> 
+> On Fri, 2018-08-03 at 11:11 +0800, Stu Hsieh wrote:
+> > This patch add callback function to return RDMA layer number
+> > 
+> > Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 10 ++++++++++
+> >  1 file changed, 10 insertions(+)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> > index b728f0f42611..8c145a87c9e5 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> > @@ -60,6 +60,7 @@
+> >  
+> >  struct mtk_disp_rdma_data {
+> >  	unsigned int fifo_size;
+> > +	unsigned int layer_nr;
+> >  };
+> >  
+> >  /**
+> > @@ -194,6 +195,13 @@ static unsigned int rdma_fmt_convert(struct mtk_disp_rdma *rdma,
+> >  	}
+> >  }
+> >  
+> > +static unsigned int mtk_rdma_layer_nr(struct mtk_ddp_comp *comp)
+> > +{
+> > +	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
+> > +
+> > +	return rdma->data->layer_nr;
+> 
+> Maybe RDMA always has one layer, so you could just return 1 here.
+> 
+> Regards,
+> CK
+> 
+OK
 
-Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Regards,
+Stu
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 4e931fd..932470a 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -1096,7 +1096,7 @@ static bool pwrap_is_pmic_cipher_ready(struct pmic_wrapper *wrp)
- 	ret = pwrap_read(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_RDY],
- 			 &rdata);
- 	if (ret)
--		return 0;
-+		return false;
- 
- 	return rdata == 1;
- }
--- 
-2.7.4
+> > +}
+> > +
+> >  static void mtk_rdma_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
+> >  				  struct mtk_plane_state *state)
+> >  {
+> > @@ -227,6 +235,7 @@ static const struct mtk_ddp_comp_funcs mtk_disp_rdma_funcs = {
+> >  	.stop = mtk_rdma_stop,
+> >  	.enable_vblank = mtk_rdma_enable_vblank,
+> >  	.disable_vblank = mtk_rdma_disable_vblank,
+> > +	.layer_nr = mtk_rdma_layer_nr,
+> >  	.layer_config = mtk_rdma_layer_config,
+> >  };
+> >  
+> > @@ -329,6 +338,7 @@ static const struct mtk_disp_rdma_data mt2701_rdma_driver_data = {
+> >  
+> >  static const struct mtk_disp_rdma_data mt8173_rdma_driver_data = {
+> >  	.fifo_size = SZ_8K,
+> > +	.layer_nr = 1,
+> >  };
+> >  
+> >  static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
+> 
+> 
