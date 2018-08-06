@@ -1,68 +1,45 @@
-From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v3 00/13] Add RDMA memory mode support for mediatek SOC MT2712
-Date: Mon, 6 Aug 2018 19:58:07 +0800
-Message-ID: <1533556700-26525-1-git-send-email-stu.hsieh@mediatek.com>
+From: Colin King <colin.king@canonical.com>
+Subject: [PATCH] clk: mediatek: remove unused array audio_parents
+Date: Mon,  6 Aug 2018 14:44:02 +0100
+Message-ID: <20180806134402.1055-1-colin.king@canonical.com>
 Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhpcyBwYXRjaCBzZXJpZXMgYWRkIFJETUEgbWVtb3J5IG1vZGUgc3VwcG9ydCBmb3IgbWVkaWF0
-ZWsgU09DIE1UMjcxMi4KTVQyNzEyIGhhcyB0aHJlZSBkaXNwbGF5IGRhdGEgcGF0aCwgaW5jbHVk
-aW5nIHRocmVlIEhXIGVuZ2luZSwKdHdvIE9WTCBhbmQgb25lIFJETUEuCgpUaGUgUkRNQSB1c2Vk
-IGluIHRoaXJkIGRkcCBhbmQgaXQgbmVlZCB0byBiZSBzZXQgbWVtb3J5IG1vZGUsCnRoZW4gUkRN
-QSBjb3VsZCByZWFkIGRhdGEgZnJvbSBtZW1vcnkgYW5kIG91dHB1dCB0byBwYW5lbC4KCkNoYW5n
-ZSBpbiB2MzoKLSBNZXJnZSBwYXRjaAogICJkcm0vbWVkaWF0ZWs6IGFkZCBtZW1vcnkgbW9kZSBm
-b3IgUkRNQSIgYW5kCiAgImRybS9tZWRpYXRlazogYWRkIGxheWVyIGNvbmZpZyB0byBzZXQgUkRN
-QSBmb3IgcGxhbmUgc2V0dGluZyIKICB0byAiZHJtL21lZGlhdGVrOiBhZGQgbWVtb3J5IG1vZGUg
-YW5kIGxheWVyX2NvbmZpZyBmb3IgUkRNQSIKLSBNb3ZlIHRoZSAiUkRNQSBtZW1vcnkgbW9kZSBz
-ZXR0aW5nIiBmcm9tIHJkbWFfY29uZmlnIHRvCiAgcmRtYV9sYXllcl9jb25maWcgaW4gcGF0Y2gK
-ICAiZHJtL21lZGlhdGVrOiBhZGQgbWVtb3J5IG1vZGUgYW5kIGxheWVyX2NvbmZpZyBmb3IgUkRN
-QSIKLSBSZW1vdmUgdGhlIHBhdGhjaAogICJkcm0vbWVkaWF0ZWs6IGFkZCBSRE1BIG1lbW9yeSBt
-b2RlIGZvciBjcnRjIGNyZWF0ZWQiCi0gYWRkIHRoZSByZXR1cm4gc3RhdGVtZW50IGluIHBhdGNo
-CiAgImRybS9tZWRpYXRlazogYWRkIGZ1bmN0aW9uIHRvIGdldCBsYXllciBudW1iZXIgZm9yIGNv
-bXBvbmVudCIKICB0byBhYnZvaWQgd2FybmluZyBtZXNzYWdlIGluIGJ1aWxkIHRpbWUKLSBSZXR1
-cm4gbGF5ZXJfbnIgaXMgNCBpbiBwYXRjaAogICJkcm0vbWVkaWF0ZWs6IGFkZCBjYWxsYmFjayBm
-dW5jdGlvbiB0byByZXR1cm4gT1ZMIGxheWVyIG51bWJlciIKLSBSZXR1cm4gbGF5ZXJfbnIgaXMg
-MSBpbiBwYXRjaAogICJkcm0vbWVkaWF0ZWs6IGFkZCBjYWxsYmFjayBmdW5jdGlvbiB0byByZXR1
-cm4gUkRNQSBsYXllciBudW1iZXIiCi0gRHluYW1haWMgZGVmaW5lIHRoZSBzaXplIG9mIHBsYW5l
-cyBieSBsYXllcl9uciBpbiBwYXRjaAogICJkcm0vbWVkaWF0ZWs6IHVzZSBsYXllcl9uciBmdW5j
-dGlvbiB0byBnZXQgbGF5ZXIgbnVtYmVyIHRvIGluaXQgcGxhbmUiCi0gVXNlID86IHRvIGluaXQg
-Y3J0YyBmb3IgT1ZMIG9yIFJETUEgaW4gcGF0Y2gKICAiZHJtL21lZGlhdGVrOiB1c2UgbGF5ZXJf
-bnIgZnVuY3Rpb24gdG8gZ2V0IGxheWVyIG51bWJlciB0byBpbml0IHBsYW5lIgoKU3R1IEhzaWVo
-ICgxMyk6CiAgZHJtL21lZGlhdGVrOiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEwIHRvIERQSTEK
-ICBkcm0vbWVkaWF0ZWs6IGFkZCBjb25uZWN0aW9uIGZyb20gUkRNQTAgdG8gRFNJMQogIGRybS9t
-ZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMSB0byBEU0kwCiAgZHJtL21lZGlhdGVr
-OiBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEyIHRvIERTSTAKICBkcm0vbWVkaWF0ZWs6IGFkZCBt
-ZW1vcnkgbW9kZSBhbmQgbGF5ZXJfY29uZmlnIGZvciBSRE1BCiAgZHJtL21lZGlhdGVrOiBhZGQg
-UkdCIGNvbG9yIGZvcm1hdCBzdXBwb3J0IGZvciBSRE1BCiAgZHJtL21lZGlhdGVrOiBhZGQgWVVZ
-Vi9VWVZZIGNvbG9yIGZvcm1hdCBzdXBwb3J0IGZvciBSRE1BCiAgZHJtL21lZGlhdGVrOiBhZGQg
-ZnVuY3Rpb24gdG8gZ2V0IGxheWVyIG51bWJlciBmb3IgY29tcG9uZW50CiAgZHJtL21lZGlhdGVr
-OiBhZGQgY2FsbGJhY2sgZnVuY3Rpb24gdG8gcmV0dXJuIE9WTCBsYXllciBudW1iZXIKICBkcm0v
-bWVkaWF0ZWs6IGFkZCBjYWxsYmFjayBmdW5jdGlvbiB0byByZXR1cm4gUkRNQSBsYXllciBudW1i
-ZXIKICBkcm0vbWVkaWF0ZWs6IHVzZSBsYXllcl9uciBmdW5jdGlvbiB0byBnZXQgbGF5ZXIgbnVt
-YmVyIHRvIGluaXQgcGxhbmUKICBkcm0vbWVkaWF0ZWs6IHVwZGF0ZSBzb21lIHZhcmlhYmxlIG5h
-bWUgZnJvbSBvdmwgdG8gY29tcAogIGRybS9tZWRpYXRlazogZml4IGNvbm5lY3Rpb24gZnJvbSBS
-RE1BMiB0byBEU0kxCgogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jICAg
-ICB8ICA2ICsrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyAgICB8
-IDgzICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9jcnRjLmMgICAgIHwgNjMgKysrKysrKysrKysrKy0tLS0tLS0tLQogZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5oICAgICB8ICAzICstCiBkcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgICAgIHwgMTggKysrKysrLQogZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaCB8ICA5ICsrKysKIDYgZmlsZXMgY2hh
-bmdlZCwgMTUzIGluc2VydGlvbnMoKyksIDI5IGRlbGV0aW9ucygtKQoKLS0gCjIuMTIuNS4yLmdi
-ZGYyM2FiCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+From: Colin Ian King <colin.king@canonical.com>
+
+Array audio_parents is declared but never used, hence it is redundant
+and can be removed.
+
+Cleans up clang warning:
+warning: 'audio_parents' defined but not used [-Wunused-const-variable=]
+
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/clk/mediatek/clk-mt2701.c | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/drivers/clk/mediatek/clk-mt2701.c b/drivers/clk/mediatek/clk-mt2701.c
+index 4dda8988b2f0..ab6ab07f53e6 100644
+--- a/drivers/clk/mediatek/clk-mt2701.c
++++ b/drivers/clk/mediatek/clk-mt2701.c
+@@ -249,11 +249,6 @@ static const char * const msdc30_parents[] = {
+ 	"univpll2_d4"
+ };
+ 
+-static const char * const audio_parents[] = {
+-	"clk26m",
+-	"syspll1_d16"
+-};
+-
+ static const char * const aud_intbus_parents[] = {
+ 	"clk26m",
+ 	"syspll1_d4",
+-- 
+2.17.1
