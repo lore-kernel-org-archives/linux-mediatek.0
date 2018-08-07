@@ -1,88 +1,93 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v3 06/13] drm/mediatek: add RGB color format support for
- RDMA
-Date: Tue, 7 Aug 2018 11:01:32 +0800
-Message-ID: <1533610892.10818.10.camel@mtksdaap41>
+Subject: Re: [PATCH v3 07/13] drm/mediatek: add YUYV/UYVY color format
+ support for RDMA
+Date: Tue, 7 Aug 2018 11:33:37 +0800
+Message-ID: <1533612817.22668.5.camel@mtksdaap41>
 References: <1533556700-26525-1-git-send-email-stu.hsieh@mediatek.com>
- <1533556700-26525-7-git-send-email-stu.hsieh@mediatek.com>
+         <1533556700-26525-8-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1533556700-26525-7-git-send-email-stu.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1533556700-26525-8-git-send-email-stu.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFN0dToKCk9uIE1vbiwgMjAxOC0wOC0wNiBhdCAxOTo1OCArMDgwMCwgU3R1IEhzaWVoIHdy
-b3RlOgo+IFRoaXMgcGF0Y2ggYWRkIFJHQiBjb2xvciBmb3JtYXQgc3VwcG9ydCBmb3IgUkRNQSwK
-PiBpbmNsdWRpbmcgUkdCNTY1LCBSR0I4ODgsIFJHQkE4ODg4IGFuZCBBUkdCODg4OC4KPiAKPiBT
-aWduZWQtb2ZmLWJ5OiBTdHUgSHNpZWggPHN0dS5oc2llaEBtZWRpYXRlay5jb20+Cj4gLS0tCj4g
-IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMgfCA0MSArKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgNDEgaW5zZXJ0aW9ucygr
-KQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRt
-YS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwo+IGluZGV4IDA4
-ODY2NTUwNzQwZi4uYmE3MmQzOTJkYzI3IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2Rpc3BfcmRtYS5jCj4gQEAgLTM1LDYgKzM1LDggQEAKPiAgI2RlZmluZSBESVNQX1JFR19S
-RE1BX1NJWkVfQ09OXzAJCTB4MDAxNAo+ICAjZGVmaW5lIERJU1BfUkVHX1JETUFfU0laRV9DT05f
-MQkJMHgwMDE4Cj4gICNkZWZpbmUgRElTUF9SRUdfUkRNQV9UQVJHRVRfTElORQkJMHgwMDFjCj4g
-KyNkZWZpbmUgRElTUF9SRE1BX01FTV9DT04JCQkweDAwMjQKPiArI2RlZmluZSBNRU1fTU9ERV9J
-TlBVVF9TV0FQCQkJCUJJVCg4KQo+ICAjZGVmaW5lIERJU1BfUkRNQV9NRU1fU1JDX1BJVENICQkJ
-MHgwMDJjCj4gICNkZWZpbmUgRElTUF9SRE1BX01FTV9HTUNfU0VUVElOR18wCQkweDAwMzAKPiAg
-I2RlZmluZSBESVNQX1JFR19SRE1BX0ZJRk9fQ09OCQkJMHgwMDQwCj4gQEAgLTQ2LDYgKzQ4LDEx
-IEBACj4gIAo+ICAjZGVmaW5lIFJETUFfTUVNX0dNQwkJCQkweDQwNDAyMDIwCj4gIAo+ICsjZGVm
-aW5lIE1FTV9NT0RFX0lOUFVUX0ZPUk1BVF9SR0I1NjUJCTB4MAo+ICsjZGVmaW5lIE1FTV9NT0RF
-X0lOUFVUX0ZPUk1BVF9SR0I4ODgJCSgweDAwMSA8PCA0KQo+ICsjZGVmaW5lIE1FTV9NT0RFX0lO
-UFVUX0ZPUk1BVF9SR0JBODg4OAkJKDB4MDAyIDw8IDQpCj4gKyNkZWZpbmUgTUVNX01PREVfSU5Q
-VVRfRk9STUFUX0FSR0I4ODg4CQkoMHgwMDMgPDwgNCkKPiArCj4gIHN0cnVjdCBtdGtfZGlzcF9y
-ZG1hX2RhdGEgewo+ICAJdW5zaWduZWQgaW50IGZpZm9fc2l6ZTsKPiAgfTsKPiBAQCAtMTQ0LDEy
-ICsxNTEsNDYgQEAgc3RhdGljIHZvaWQgbXRrX3JkbWFfY29uZmlnKHN0cnVjdCBtdGtfZGRwX2Nv
-bXAgKmNvbXAsIHVuc2lnbmVkIGludCB3aWR0aCwKPiAgCXdyaXRlbChyZWcsIGNvbXAtPnJlZ3Mg
-KyBESVNQX1JFR19SRE1BX0ZJRk9fQ09OKTsKPiAgfQo+ICAKPiArc3RhdGljIHVuc2lnbmVkIGlu
-dCByZG1hX2ZtdF9jb252ZXJ0KHN0cnVjdCBtdGtfZGlzcF9yZG1hICpyZG1hLAo+ICsJCQkJICAg
-ICB1bnNpZ25lZCBpbnQgZm10KQo+ICt7Cj4gKwlzd2l0Y2ggKGZtdCkgewo+ICsJZGVmYXVsdDoK
-PiArCWNhc2UgRFJNX0ZPUk1BVF9SR0I1NjU6Cj4gKwkJcmV0dXJuIE1FTV9NT0RFX0lOUFVUX0ZP
-Uk1BVF9SR0I1NjU7Cj4gKwljYXNlIERSTV9GT1JNQVRfQkdSNTY1Ogo+ICsJCXJldHVybiBNRU1f
-TU9ERV9JTlBVVF9GT1JNQVRfUkdCNTY1IHwgTUVNX01PREVfSU5QVVRfU1dBUDsKPiArCWNhc2Ug
-RFJNX0ZPUk1BVF9SR0I4ODg6Cj4gKwkJcmV0dXJuIE1FTV9NT0RFX0lOUFVUX0ZPUk1BVF9SR0I4
-ODg7Cj4gKwljYXNlIERSTV9GT1JNQVRfQkdSODg4Ogo+ICsJCXJldHVybiBNRU1fTU9ERV9JTlBV
-VF9GT1JNQVRfUkdCODg4IHwgTUVNX01PREVfSU5QVVRfU1dBUDsKPiArCWNhc2UgRFJNX0ZPUk1B
-VF9SR0JYODg4ODoKPiArCWNhc2UgRFJNX0ZPUk1BVF9SR0JBODg4ODoKPiArCQlyZXR1cm4gTUVN
-X01PREVfSU5QVVRfRk9STUFUX0FSR0I4ODg4OwoKSSB0aGluayB0aGUgYWxwaGFiZXQgb3JkZXIg
-b2YgdGhlIG5hbWluZyByZWZsZWN0IHRoZSBkcmFtIG9yZGVyIGZvciBlYWNoCmNvbG9yLiBPZiBj
-b3Vyc2UsIGJpZy1lbmRpYW4gYW5kIGxpdHRsZS1lbmRpYW4gd291bGQgcmVzdWx0IGluIHJldmVy
-c2VkCm5hbWluZyBvcmRlci4gSSBjb3VsZCBub3QgdW5kZXJzdGFuZCB3aHkgUkRNQSB1c2UgQVJH
-Qjg4ODggbmFtaW5nIGZvcgpEUk0gUkdCQTg4ODguIElmIHRoZSB0eXBvIGlzIGZyb20gZGF0YSBz
-aGVldCwgSSBjb3VsZCBqdXN0IGFjY2VwdCB0aGlzCnR5cG8gYW5kIGdpdmUgYW4gZXhwbGFpbiBp
-biBkcml2ZXIgYmVjYXVzZSBJIHdhbnQgdG8gYWxpZ24gZHJpdmVyIHdpdGgKZGF0YSBzaGVldC4K
-ClJlZ2FyZHMsCkNLCgo+ICsJY2FzZSBEUk1fRk9STUFUX0JHUlg4ODg4Ogo+ICsJY2FzZSBEUk1f
-Rk9STUFUX0JHUkE4ODg4Ogo+ICsJCXJldHVybiBNRU1fTU9ERV9JTlBVVF9GT1JNQVRfQVJHQjg4
-ODggfCBNRU1fTU9ERV9JTlBVVF9TV0FQOwo+ICsJY2FzZSBEUk1fRk9STUFUX1hSR0I4ODg4Ogo+
-ICsJY2FzZSBEUk1fRk9STUFUX0FSR0I4ODg4Ogo+ICsJCXJldHVybiBNRU1fTU9ERV9JTlBVVF9G
-T1JNQVRfUkdCQTg4ODg7Cj4gKwljYXNlIERSTV9GT1JNQVRfWEJHUjg4ODg6Cj4gKwljYXNlIERS
-TV9GT1JNQVRfQUJHUjg4ODg6Cj4gKwkJcmV0dXJuIE1FTV9NT0RFX0lOUFVUX0ZPUk1BVF9SR0JB
-ODg4OCB8IE1FTV9NT0RFX0lOUFVUX1NXQVA7Cj4gKwl9Cj4gK30KPiArCj4gIHN0YXRpYyB2b2lk
-IG10a19yZG1hX2xheWVyX2NvbmZpZyhzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLCB1bnNpZ25l
-ZCBpbnQgaWR4LAo+ICAJCQkJICBzdHJ1Y3QgbXRrX3BsYW5lX3N0YXRlICpzdGF0ZSkKPiAgewo+
-ICsJc3RydWN0IG10a19kaXNwX3JkbWEgKnJkbWEgPSBjb21wX3RvX3JkbWEoY29tcCk7Cj4gIAlz
-dHJ1Y3QgbXRrX3BsYW5lX3BlbmRpbmdfc3RhdGUgKnBlbmRpbmcgPSAmc3RhdGUtPnBlbmRpbmc7
-Cj4gIAl1bnNpZ25lZCBpbnQgYWRkciA9IHBlbmRpbmctPmFkZHI7Cj4gIAl1bnNpZ25lZCBpbnQg
-cGl0Y2ggPSBwZW5kaW5nLT5waXRjaCAmIDB4ZmZmZjsKPiArCXVuc2lnbmVkIGludCBmbXQgPSBw
-ZW5kaW5nLT5mb3JtYXQ7Cj4gKwl1bnNpZ25lZCBpbnQgY29uOwo+ICsKPiArCWNvbiA9IHJkbWFf
-Zm10X2NvbnZlcnQocmRtYSwgZm10KTsKPiArCXdyaXRlbF9yZWxheGVkKGNvbiwgY29tcC0+cmVn
-cyArIERJU1BfUkRNQV9NRU1fQ09OKTsKPiAgCj4gIAl3cml0ZWxfcmVsYXhlZChhZGRyLCBjb21w
-LT5yZWdzICsgRElTUF9SRE1BX01FTV9TVEFSVF9BRERSKTsKPiAgCXdyaXRlbF9yZWxheGVkKHBp
-dGNoLCBjb21wLT5yZWdzICsgRElTUF9SRE1BX01FTV9TUkNfUElUQ0gpOwoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
-c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNr
-dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi, Stu:
+
+On Mon, 2018-08-06 at 19:58 +0800, Stu Hsieh wrote:
+> This patch add YUYV/UYVY color format support for RDMA
+> and transform matrix for YUYV/UYVY.
+> 
+> Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 15 +++++++++++++++
+>  1 file changed, 15 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> index ba72d392dc27..91a8b6e27d39 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> @@ -33,6 +33,8 @@
+>  #define RDMA_ENGINE_EN					BIT(0)
+>  #define RDMA_MODE_MEMORY				BIT(1)
+>  #define DISP_REG_RDMA_SIZE_CON_0		0x0014
+> +#define RDMA_MATRIX_ENABLE				BIT(17)
+> +#define RDMA_MATRIX_INT_MTX_SEL				(7UL << 20)
+>  #define DISP_REG_RDMA_SIZE_CON_1		0x0018
+>  #define DISP_REG_RDMA_TARGET_LINE		0x001c
+>  #define DISP_RDMA_MEM_CON			0x0024
+> @@ -46,12 +48,15 @@
+>  #define RDMA_FIFO_SIZE(rdma)			((rdma)->data->fifo_size)
+>  #define DISP_RDMA_MEM_START_ADDR		0x0f00
+>  
+> +#define MATRIX_INT_MTX_SEL_DEFAULT		0xb00000
+>  #define RDMA_MEM_GMC				0x40402020
+>  
+>  #define MEM_MODE_INPUT_FORMAT_RGB565		0x0
+>  #define MEM_MODE_INPUT_FORMAT_RGB888		(0x001 << 4)
+>  #define MEM_MODE_INPUT_FORMAT_RGBA8888		(0x002 << 4)
+>  #define MEM_MODE_INPUT_FORMAT_ARGB8888		(0x003 << 4)
+> +#define MEM_MODE_INPUT_FORMAT_UYVY		(0x004 << 4)
+> +#define MEM_MODE_INPUT_FORMAT_YUYV		(0x005 << 4)
+>  
+>  struct mtk_disp_rdma_data {
+>  	unsigned int fifo_size;
+> @@ -176,6 +181,10 @@ static unsigned int rdma_fmt_convert(struct mtk_disp_rdma *rdma,
+>  	case DRM_FORMAT_XBGR8888:
+>  	case DRM_FORMAT_ABGR8888:
+>  		return MEM_MODE_INPUT_FORMAT_RGBA8888 | MEM_MODE_INPUT_SWAP;
+> +	case DRM_FORMAT_UYVY:
+> +		return MEM_MODE_INPUT_FORMAT_UYVY;
+> +	case DRM_FORMAT_YUYV:
+> +		return MEM_MODE_INPUT_FORMAT_YUYV;
+>  	}
+>  }
+>  
+> @@ -191,6 +200,12 @@ static void mtk_rdma_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
+>  
+>  	con = rdma_fmt_convert(rdma, fmt);
+>  	writel_relaxed(con, comp->regs + DISP_RDMA_MEM_CON);
+> +	if (fmt == DRM_FORMAT_UYVY || fmt == DRM_FORMAT_YUYV)
+> +		rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0, 0xff0000,
+
+Symbolize 0xff0000. Maybe you should define as
+
+#define RDMA_MATRIX_INT_MTX_SEL GENMASK(23, 20)
+#define RDMA_MATRIX_INT_MTX_YUV_TO_RGB   0x7
+#define RDMA_MATRIX_INT_MTX_RGB_TO_RGB   0xb
+
+Correct the naming to align data sheet.
+
+Regards,
+CK
+
+> +				 RDMA_MATRIX_ENABLE | RDMA_MATRIX_INT_MTX_SEL);
+> +	else
+> +		rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0, 0xff0000,
+> +				 MATRIX_INT_MTX_SEL_DEFAULT);
+>  
+>  	writel_relaxed(addr, comp->regs + DISP_RDMA_MEM_START_ADDR);
+>  	writel_relaxed(pitch, comp->regs + DISP_RDMA_MEM_SRC_PITCH);
