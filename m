@@ -1,61 +1,54 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v3 09/13] drm/mediatek: add callback function to return
- OVL layer number
-Date: Tue, 7 Aug 2018 11:47:10 +0800
-Message-ID: <1533613630.22668.10.camel@mtksdaap41>
+Subject: Re: [PATCH v3 10/13] drm/mediatek: add callback function to return
+ RDMA layer number
+Date: Tue, 7 Aug 2018 11:47:49 +0800
+Message-ID: <1533613669.22668.11.camel@mtksdaap41>
 References: <1533556700-26525-1-git-send-email-stu.hsieh@mediatek.com>
-         <1533556700-26525-10-git-send-email-stu.hsieh@mediatek.com>
+ <1533556700-26525-11-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1533556700-26525-10-git-send-email-stu.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1533556700-26525-11-git-send-email-stu.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
+Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Stu:
-
-On Mon, 2018-08-06 at 19:58 +0800, Stu Hsieh wrote:
-> This patch add callback function to return OVL layer number
-> 
-> For now, MT8173, MT2712, MT2701 OVL all has 4 layer.
-> 
-> Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
-
-I would like to remove the term 'callback' because this is just function
-pointer rather than callback function. OVL does not register callback
-function to crtc and crtc call OVL function directly. The modification
-is good to me, so
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> index 978782a77629..66060e79afbc 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -132,6 +132,11 @@ static void mtk_ovl_config(struct mtk_ddp_comp *comp, unsigned int w,
->  	writel(0x0, comp->regs + DISP_REG_OVL_RST);
->  }
->  
-> +static unsigned int mtk_ovl_layer_nr(struct mtk_ddp_comp *comp)
-> +{
-> +	return 4;
-> +}
-> +
->  static void mtk_ovl_layer_on(struct mtk_ddp_comp *comp, unsigned int idx)
->  {
->  	unsigned int reg;
-> @@ -221,6 +226,7 @@ static const struct mtk_ddp_comp_funcs mtk_disp_ovl_funcs = {
->  	.stop = mtk_ovl_stop,
->  	.enable_vblank = mtk_ovl_enable_vblank,
->  	.disable_vblank = mtk_ovl_disable_vblank,
-> +	.layer_nr = mtk_ovl_layer_nr,
->  	.layer_on = mtk_ovl_layer_on,
->  	.layer_off = mtk_ovl_layer_off,
->  	.layer_config = mtk_ovl_layer_config,
+SGksIFN0dToKCk9uIE1vbiwgMjAxOC0wOC0wNiBhdCAxOTo1OCArMDgwMCwgU3R1IEhzaWVoIHdy
+b3RlOgo+IFRoaXMgcGF0Y2ggYWRkIGNhbGxiYWNrIGZ1bmN0aW9uIHRvIHJldHVybiBSRE1BIGxh
+eWVyIG51bWJlcgo+IAo+IFJETUEgYWx3YXlzIGhhcyBvbmUgbGF5ZXIuCj4gCj4gU2lnbmVkLW9m
+Zi1ieTogU3R1IEhzaWVoIDxzdHUuaHNpZWhAbWVkaWF0ZWsuY29tPgoKSSB3b3VsZCBsaWtlIHRv
+IHJlbW92ZSB0aGUgdGVybSAnY2FsbGJhY2snIGJlY2F1c2UgdGhpcyBpcyBqdXN0IGZ1bmN0aW9u
+CnBvaW50ZXIgcmF0aGVyIHRoYW4gY2FsbGJhY2sgZnVuY3Rpb24uIE9WTCBkb2VzIG5vdCByZWdp
+c3RlciBjYWxsYmFjawpmdW5jdGlvbiB0byBjcnRjIGFuZCBjcnRjIGNhbGwgT1ZMIGZ1bmN0aW9u
+IGRpcmVjdGx5LiBUaGUgbW9kaWZpY2F0aW9uCmlzIGdvb2QgdG8gbWUsIHNvCgpSZXZpZXdlZC1i
+eTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMgfCA2ICsrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgNiBp
+bnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfZGlzcF9yZG1hLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5j
+Cj4gaW5kZXggOTFhOGI2ZTI3ZDM5Li42OGM5OTI1MzI4NWIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMKPiBAQCAtMTg4LDYgKzE4OCwxMSBAQCBzdGF0aWMg
+dW5zaWduZWQgaW50IHJkbWFfZm10X2NvbnZlcnQoc3RydWN0IG10a19kaXNwX3JkbWEgKnJkbWEs
+Cj4gIAl9Cj4gIH0KPiAgCj4gK3N0YXRpYyB1bnNpZ25lZCBpbnQgbXRrX3JkbWFfbGF5ZXJfbnIo
+c3RydWN0IG10a19kZHBfY29tcCAqY29tcCkKPiArewo+ICsJcmV0dXJuIDE7Cj4gK30KPiArCj4g
+IHN0YXRpYyB2b2lkIG10a19yZG1hX2xheWVyX2NvbmZpZyhzdHJ1Y3QgbXRrX2RkcF9jb21wICpj
+b21wLCB1bnNpZ25lZCBpbnQgaWR4LAo+ICAJCQkJICBzdHJ1Y3QgbXRrX3BsYW5lX3N0YXRlICpz
+dGF0ZSkKPiAgewo+IEBAIC0yMjAsNiArMjI1LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtf
+ZGRwX2NvbXBfZnVuY3MgbXRrX2Rpc3BfcmRtYV9mdW5jcyA9IHsKPiAgCS5zdG9wID0gbXRrX3Jk
+bWFfc3RvcCwKPiAgCS5lbmFibGVfdmJsYW5rID0gbXRrX3JkbWFfZW5hYmxlX3ZibGFuaywKPiAg
+CS5kaXNhYmxlX3ZibGFuayA9IG10a19yZG1hX2Rpc2FibGVfdmJsYW5rLAo+ICsJLmxheWVyX25y
+ID0gbXRrX3JkbWFfbGF5ZXJfbnIsCj4gIAkubGF5ZXJfY29uZmlnID0gbXRrX3JkbWFfbGF5ZXJf
+Y29uZmlnLAo+ICB9Owo+ICAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
+cmktZGV2ZWwK
