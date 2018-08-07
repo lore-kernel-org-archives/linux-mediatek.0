@@ -1,160 +1,82 @@
-From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: Re: [PATCH v3 11/13] drm/mediatek: use layer_nr function to get
- layer number to init plane
-Date: Tue, 7 Aug 2018 17:51:52 +0800
-Message-ID: <1533635512.11190.76.camel@mtksdccf07>
-References: <1533556700-26525-1-git-send-email-stu.hsieh@mediatek.com>
-         <1533556700-26525-12-git-send-email-stu.hsieh@mediatek.com>
-         <1533616331.22668.15.camel@mtksdaap41>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v7 2/3] Bluetooth: mediatek: Add protocol support for
+ MediaTek serial devices
+Date: Tue, 7 Aug 2018 22:34:05 +0800
+Message-ID: <1533652445.3472.230.camel@mtkswgap22>
+References: <cover.1533056925.git.sean.wang@mediatek.com>
+         <c92ed10cf16f36d9a3b390e864af92e2dfe7b771.1533056925.git.sean.wang@mediatek.com>
+         <1707FFA1-A294-4A95-A3BF-0910CE455232@holtmann.org>
+         <1533192799.3472.122.camel@mtkswgap22>
+         <FF45A90A-F9F1-47CB-AB1F-1E92BF587FBE@holtmann.org>
+         <1533199720.3472.136.camel@mtkswgap22>
+         <9526E5D9-50BA-4D57-80F5-083DB7D28AFE@holtmann.org>
+         <1533205495.3472.144.camel@mtkswgap22>
+         <A6D48D49-52CE-405D-8C5D-C4D54CE67221@holtmann.org>
+         <1533303749.3472.160.camel@mtkswgap22>
+         <D2336CD2-B69B-4B5B-8125-F0CAD29E3243@holtmann.org>
+         <1533319214.3472.187.camel@mtkswgap22>
+         <7A3537C5-5940-45AD-AB80-77418CCFE130@holtmann.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1533616331.22668.15.camel@mtksdaap41>
+In-Reply-To: <7A3537C5-5940-45AD-AB80-77418CCFE130@holtmann.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
+To: Marcel Holtmann <marcel@holtmann.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, Johan Hedberg <johan.hedberg@gmail.com>, linux-kernel@vger.kernel.org, "open list:BLUETOOTH DRIVERS" <linux-bluetooth@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,CK:
+On Mon, 2018-08-06 at 17:39 +0200, Marcel Holtmann wrote:
+> Hi Sean,
+> 
+> >>>>>>>>>>> +
 
-On Tue, 2018-08-07 at 12:32 +0800, CK Hu wrote:
-> Hi, Stu:
-> 
-> On Mon, 2018-08-06 at 19:58 +0800, Stu Hsieh wrote:
-> > This patch use layer_nr function to get layer number to init plane
-> > 
-> > When plane init in crtc create,
-> > it use the number of OVL layer to init plane.
-> > That's OVL can read 4 memory address.
-> > 
-> > For mt2712 third ddp, it use RDMA to read memory.
-> > RDMA can read 1 memory address, so it just init one plane.
-> > 
-> > For compatibility, this patch use mtk_ddp_comp_layer_nr function
-> > to get layer number from their HW component in ddp for plane init.
-> > 
-> > Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 37 +++++++++++++++++++++------------
-> >  drivers/gpu/drm/mediatek/mtk_drm_crtc.h |  1 -
-> >  2 files changed, 24 insertions(+), 14 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > index 2d6aa150a9ff..1a8685fbbf57 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > @@ -45,7 +45,8 @@ struct mtk_drm_crtc {
-> >  	bool				pending_needs_vblank;
-> >  	struct drm_pending_vblank_event	*event;
-> >  
-> > -	struct drm_plane		planes[OVL_LAYER_NR];
-> > +	struct drm_plane		**planes;
-> 
-> Why double pointer? This make things more complicated.
-> Single pointer is equal to array, so you need not to modify so many
-> place.
-> 
-> Regards,
-> CK
-> 
-ok
+[ ... ]
 
-Regards,
-Stu
+> >> this is even more hackish since the __hci_cmd_sync_ev command is really meant to get a cmd status first before waiting for that event.
+> >> 
+> > 
+> > Understood.
+> > 
+> > I've stopped the hack in v8. could we merge v8 first ? and then I will a fix up with __hci_raw_sync_ev that uses the hdev->raw_q instead of __hci_cmd_sync_ev in TODO.
+> 
+> so I looked into this a bit more. We actually added __hci_cmd_send for a Qualcomm firmware loader that was doing something similar. So instead of trying to add a yet another command to the core, I actually used that and implemented the wait for vendor event in the driver.
+> 
+> You will see my v9 on the mailing list. I also did a bunch of cosmetic minor cleanup and spelling correction. Please test this version. I also make __le16 dlen instead of dlen1 + dlen2 since I think that is what your hardware does.
 
-> > +	unsigned int			layer_nr;
-> >  	bool				pending_planes;
-> >  
-> >  	void __iomem			*config_regs;
-> > @@ -286,8 +287,8 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
-> >  	}
-> >  
-> >  	/* Initially configure all planes */
-> > -	for (i = 0; i < OVL_LAYER_NR; i++) {
-> > -		struct drm_plane *plane = &mtk_crtc->planes[i];
-> > +	for (i = 0; i < mtk_crtc->layer_nr; i++) {
-> > +		struct drm_plane *plane = mtk_crtc->planes[i];
-> >  		struct mtk_plane_state *plane_state;
-> >  
-> >  		plane_state = to_mtk_plane_state(plane->state);
-> > @@ -351,8 +352,8 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
-> >  	}
-> >  
-> >  	if (mtk_crtc->pending_planes) {
-> > -		for (i = 0; i < OVL_LAYER_NR; i++) {
-> > -			struct drm_plane *plane = &mtk_crtc->planes[i];
-> > +		for (i = 0; i < mtk_crtc->layer_nr; i++) {
-> > +			struct drm_plane *plane = mtk_crtc->planes[i];
-> >  			struct mtk_plane_state *plane_state;
-> >  
-> >  			plane_state = to_mtk_plane_state(plane->state);
-> > @@ -403,8 +404,8 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
-> >  		return;
-> >  
-> >  	/* Set all pending plane state to disabled */
-> > -	for (i = 0; i < OVL_LAYER_NR; i++) {
-> > -		struct drm_plane *plane = &mtk_crtc->planes[i];
-> > +	for (i = 0; i < mtk_crtc->layer_nr; i++) {
-> > +		struct drm_plane *plane = mtk_crtc->planes[i];
-> >  		struct mtk_plane_state *plane_state;
-> >  
-> >  		plane_state = to_mtk_plane_state(plane->state);
-> > @@ -450,8 +451,8 @@ static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
-> >  
-> >  	if (mtk_crtc->event)
-> >  		mtk_crtc->pending_needs_vblank = true;
-> > -	for (i = 0; i < OVL_LAYER_NR; i++) {
-> > -		struct drm_plane *plane = &mtk_crtc->planes[i];
-> > +	for (i = 0; i < mtk_crtc->layer_nr; i++) {
-> > +		struct drm_plane *plane = mtk_crtc->planes[i];
-> >  		struct mtk_plane_state *plane_state;
-> >  
-> >  		plane_state = to_mtk_plane_state(plane->state);
-> > @@ -598,18 +599,28 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
-> >  		mtk_crtc->ddp_comp[i] = comp;
-> >  	}
-> >  
-> > -	for (zpos = 0; zpos < OVL_LAYER_NR; zpos++) {
-> > +	mtk_crtc->layer_nr = mtk_ddp_comp_layer_nr(mtk_crtc->ddp_comp[0]);
-> > +	mtk_crtc->planes = devm_kmalloc_array(dev, mtk_crtc->layer_nr,
-> > +					      sizeof(*mtk_crtc->planes),
-> > +					      GFP_KERNEL);
-> > +
-> > +	for (zpos = 0; zpos < mtk_crtc->layer_nr; zpos++) {
-> > +		mtk_crtc->planes[zpos] = devm_kzalloc(dev,
-> > +						sizeof(*mtk_crtc->planes[zpos]),
-> > +						GFP_KERNEL);
-> > +
-> >  		type = (zpos == 0) ? DRM_PLANE_TYPE_PRIMARY :
-> >  				(zpos == 1) ? DRM_PLANE_TYPE_CURSOR :
-> >  						DRM_PLANE_TYPE_OVERLAY;
-> > -		ret = mtk_plane_init(drm_dev, &mtk_crtc->planes[zpos],
-> > +		ret = mtk_plane_init(drm_dev, mtk_crtc->planes[zpos],
-> >  				     BIT(pipe), type);
-> >  		if (ret)
-> >  			goto unprepare;
-> >  	}
-> >  
-> > -	ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, &mtk_crtc->planes[0],
-> > -				&mtk_crtc->planes[1], pipe);
-> > +	ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, mtk_crtc->planes[0],
-> > +				mtk_crtc->layer_nr > 1 ? mtk_crtc->planes[1] :
-> > +				NULL, pipe);
-> >  	if (ret < 0)
-> >  		goto unprepare;
-> >  	drm_mode_crtc_set_gamma_size(&mtk_crtc->base, MTK_LUT_SIZE);
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-> > index 9d9410c67ae9..60bcc8aba8e3 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-> > @@ -18,7 +18,6 @@
-> >  #include "mtk_drm_ddp_comp.h"
-> >  #include "mtk_drm_plane.h"
-> >  
-> > -#define OVL_LAYER_NR	4
-> >  #define MTK_LUT_SIZE	512
-> >  #define MTK_MAX_BPC	10
-> >  #define MTK_MIN_BPC	3
+Only one thing needs to be corrected in v9. that is __be16 is required instead of dlen1 + dlen2. I will fix it up in v10 and the other changes all look good to me.
+
+> If this version of the driver works for you then I am happy to merge it. You can then add support for hdev->set_bdaddr and hdev->set_diag in later patches. I also like to clean up the STP receive handler since it can be done a lot simpler and smaller, but that has to wait.
+> 
+
+hopefully v10 also can be merged :)
+
+I will investigate more about how to add ->set_bdaddr, ->set_diag and STP receive enhancement in later patches.
+
+but so far I have not much idea about how to make STP multiplexer be a independent driver.
+
+my thought is that it would be really better and cleaner a chain of serdev is be used as the base of mtkbtuart. something like
+  
+8250 serial bus <----> STP multiplexer serdev <----> mtkbtuart serdev
+
+however, STP multiplexer serdev is not a real device, that doesn't no request any resource. I think it should not be allowed to be added in a device tree and even in dt-binding document.
+
+> >> Are all Mediatek vendor commands this way? Or just the ones for loading the firmware? So only the WMT ones?
+> >> 
+> > 
+> > Only the WMT ones, WMT commands/events are usually used in system controlling, for example, global function on/off, firmware download, reset and so on. most only appear on device initialization
+> 
+> Since you never checked the result of the vendor event, I opted for just signaling that it arrived. If they can report success or failure, we need to add some extra code for that.
+> 
+
+I will consider more WMT event status when I add more Bluetooth devices such as MT7668U usb based Bluetooth which I plan to add the support in later patches in the next weeks 
+
+> Regards
+> 
+> Marcel
 > 
 > 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
