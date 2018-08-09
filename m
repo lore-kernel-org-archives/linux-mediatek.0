@@ -1,48 +1,147 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v4 02/14] drm/mediatek: add connection from RDMA0 to DSI1
-Date: Thu, 9 Aug 2018 10:15:37 +0800
-Message-ID: <1533780949-30141-3-git-send-email-stu.hsieh@mediatek.com>
+Subject: [PATCH v4 13/14] drm/mediatek: update some variable name from ovl to comp
+Date: Thu, 9 Aug 2018 10:15:48 +0800
+Message-ID: <1533780949-30141-14-git-send-email-stu.hsieh@mediatek.com>
 References: <1533780949-30141-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1533780949-30141-1-git-send-email-stu.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Stu Hsieh <stu.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhpcyBwYXRjaCBhZGQgY29ubmVjdGlvbiBmcm9tIFJETUEwIHRvIERTSTEKClNpZ25lZC1vZmYt
-Ynk6IFN0dSBIc2llaCA8c3R1LmhzaWVoQG1lZGlhdGVrLmNvbT4KUmV2aWV3ZWQtYnk6IENLIEh1
-IDxjay5odUBtZWRpYXRlay5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-cm1fZGRwLmMgfCA0ICsrKysKIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKykKCmRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyBiL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCmluZGV4IDAzZTM2MjhiNWIwZC4uMzEwZDg0
-ODJkNWEwIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAu
-YworKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwpAQCAtMTA3LDYg
-KzEwNyw3IEBACiAjZGVmaW5lIEdBTU1BX01PVVRfRU5fUkRNQTEJCTB4MQogI2RlZmluZSBSRE1B
-MF9TT1VUX0RQSTAJCQkweDIKICNkZWZpbmUgUkRNQTBfU09VVF9EUEkxCQkJMHgzCisjZGVmaW5l
-IFJETUEwX1NPVVRfRFNJMQkJCTB4MQogI2RlZmluZSBSRE1BMF9TT1VUX0RTSTIJCQkweDQKICNk
-ZWZpbmUgUkRNQTBfU09VVF9EU0kzCQkJMHg1CiAjZGVmaW5lIFJETUExX1NPVVRfRFBJMAkJCTB4
-MgpAQCAtMjI4LDYgKzIyOSw5IEBAIHN0YXRpYyB1bnNpZ25lZCBpbnQgbXRrX2RkcF9tb3V0X2Vu
-KGVudW0gbXRrX2RkcF9jb21wX2lkIGN1ciwKIAl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9O
-RU5UX1JETUEwICYmIG5leHQgPT0gRERQX0NPTVBPTkVOVF9EUEkxKSB7CiAJCSphZGRyID0gRElT
-UF9SRUdfQ09ORklHX0RJU1BfUkRNQTBfU09VVF9FTjsKIAkJdmFsdWUgPSBSRE1BMF9TT1VUX0RQ
-STE7CisJfSBlbHNlIGlmIChjdXIgPT0gRERQX0NPTVBPTkVOVF9SRE1BMCAmJiBuZXh0ID09IERE
-UF9DT01QT05FTlRfRFNJMSkgeworCQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19ESVNQX1JETUEw
-X1NPVVRfRU47CisJCXZhbHVlID0gUkRNQTBfU09VVF9EU0kxOwogCX0gZWxzZSBpZiAoY3VyID09
-IEREUF9DT01QT05FTlRfUkRNQTAgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTIpIHsKIAkJ
-KmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMF9TT1VUX0VOOwogCQl2YWx1ZSA9IFJE
-TUEwX1NPVVRfRFNJMjsKLS0gCjIuMTIuNS4yLmdiZGYyM2FiCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+This patch update some variable name from ovl to comp
+
+Because RDMA would be first HW in ddp, the naming ovl
+should be change to comp.
+
+Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 26 +++++++++++++-------------
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h |  2 +-
+ 2 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 845d1608465e..0b976dfd04df 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -172,9 +172,9 @@ static void mtk_drm_crtc_mode_set_nofb(struct drm_crtc *crtc)
+ static int mtk_drm_crtc_enable_vblank(struct drm_crtc *crtc)
+ {
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+-	struct mtk_ddp_comp *ovl = mtk_crtc->ddp_comp[0];
++	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+ 
+-	mtk_ddp_comp_enable_vblank(ovl, &mtk_crtc->base);
++	mtk_ddp_comp_enable_vblank(comp, &mtk_crtc->base);
+ 
+ 	return 0;
+ }
+@@ -182,9 +182,9 @@ static int mtk_drm_crtc_enable_vblank(struct drm_crtc *crtc)
+ static void mtk_drm_crtc_disable_vblank(struct drm_crtc *crtc)
+ {
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+-	struct mtk_ddp_comp *ovl = mtk_crtc->ddp_comp[0];
++	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+ 
+-	mtk_ddp_comp_disable_vblank(ovl);
++	mtk_ddp_comp_disable_vblank(comp);
+ }
+ 
+ static int mtk_crtc_ddp_clk_enable(struct mtk_drm_crtc *mtk_crtc)
+@@ -335,7 +335,7 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+ {
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+ 	struct mtk_crtc_state *state = to_mtk_crtc_state(mtk_crtc->base.state);
+-	struct mtk_ddp_comp *ovl = mtk_crtc->ddp_comp[0];
++	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+ 	unsigned int i;
+ 
+ 	/*
+@@ -344,7 +344,7 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+ 	 * queue update module registers on vblank.
+ 	 */
+ 	if (state->pending_config) {
+-		mtk_ddp_comp_config(ovl, state->pending_width,
++		mtk_ddp_comp_config(comp, state->pending_width,
+ 				    state->pending_height,
+ 				    state->pending_vrefresh, 0);
+ 
+@@ -359,7 +359,7 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+ 			plane_state = to_mtk_plane_state(plane->state);
+ 
+ 			if (plane_state->pending.config) {
+-				mtk_ddp_comp_layer_config(ovl, i, plane_state);
++				mtk_ddp_comp_layer_config(comp, i, plane_state);
+ 				plane_state->pending.config = false;
+ 			}
+ 		}
+@@ -371,12 +371,12 @@ static void mtk_drm_crtc_atomic_enable(struct drm_crtc *crtc,
+ 				       struct drm_crtc_state *old_state)
+ {
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+-	struct mtk_ddp_comp *ovl = mtk_crtc->ddp_comp[0];
++	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+ 	int ret;
+ 
+ 	DRM_DEBUG_DRIVER("%s %d\n", __func__, crtc->base.id);
+ 
+-	ret = mtk_smi_larb_get(ovl->larb_dev);
++	ret = mtk_smi_larb_get(comp->larb_dev);
+ 	if (ret) {
+ 		DRM_ERROR("Failed to get larb: %d\n", ret);
+ 		return;
+@@ -384,7 +384,7 @@ static void mtk_drm_crtc_atomic_enable(struct drm_crtc *crtc,
+ 
+ 	ret = mtk_crtc_ddp_hw_init(mtk_crtc);
+ 	if (ret) {
+-		mtk_smi_larb_put(ovl->larb_dev);
++		mtk_smi_larb_put(comp->larb_dev);
+ 		return;
+ 	}
+ 
+@@ -396,7 +396,7 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
+ 					struct drm_crtc_state *old_state)
+ {
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+-	struct mtk_ddp_comp *ovl = mtk_crtc->ddp_comp[0];
++	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+ 	int i;
+ 
+ 	DRM_DEBUG_DRIVER("%s %d\n", __func__, crtc->base.id);
+@@ -419,7 +419,7 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
+ 
+ 	drm_crtc_vblank_off(crtc);
+ 	mtk_crtc_ddp_hw_fini(mtk_crtc);
+-	mtk_smi_larb_put(ovl->larb_dev);
++	mtk_smi_larb_put(comp->larb_dev);
+ 
+ 	mtk_crtc->enabled = false;
+ }
+@@ -517,7 +517,7 @@ static int mtk_drm_crtc_init(struct drm_device *drm,
+ 	return ret;
+ }
+ 
+-void mtk_crtc_ddp_irq(struct drm_crtc *crtc, struct mtk_ddp_comp *ovl)
++void mtk_crtc_ddp_irq(struct drm_crtc *crtc, struct mtk_ddp_comp *comp)
+ {
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+ 	struct mtk_drm_private *priv = crtc->dev->dev_private;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+index 60bcc8aba8e3..091adb2087eb 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+@@ -23,7 +23,7 @@
+ #define MTK_MIN_BPC	3
+ 
+ void mtk_drm_crtc_commit(struct drm_crtc *crtc);
+-void mtk_crtc_ddp_irq(struct drm_crtc *crtc, struct mtk_ddp_comp *ovl);
++void mtk_crtc_ddp_irq(struct drm_crtc *crtc, struct mtk_ddp_comp *comp);
+ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 			const enum mtk_ddp_comp_id *path,
+ 			unsigned int path_len);
+-- 
+2.12.5.2.gbdf23ab
