@@ -1,109 +1,131 @@
-From: "A.s. Dong" <aisheng.dong@nxp.com>
-Subject: RE: [PATCH v7 3/6] dt-bindings: mailbox: imx-mu: add generic MU
- channel support
-Date: Thu, 9 Aug 2018 06:45:21 +0000
-Message-ID: <AM0PR04MB42117A7564C6E1AA4D1232F780250@AM0PR04MB4211.eurprd04.prod.outlook.com>
-References: <AM0PR04MB42116C756EC78AD12EB254D6802B0@AM0PR04MB4211.eurprd04.prod.outlook.com>
- <CABb+yY0yn9os6nqH8eUfAr3Q3ev4=TfpTp=5ZDBR7FN67eb-wg@mail.gmail.com>
- <VI1PR04MB4222672B8F7B6AF2B11A4442802A0@VI1PR04MB4222.eurprd04.prod.outlook.com>
- <CABb+yY1EkHk85H72xYoYA3JbQL03+-o3UcRVdA_Zub-Q+D=OHw@mail.gmail.com>
- <VI1PR04MB422216469EE5F3ED8E53A4F1802A0@VI1PR04MB4222.eurprd04.prod.outlook.com>
- <CABb+yY0SfdFr8TMOMosTVb5+LFWqB8nQkKj3ze8usi-s7Cko4g@mail.gmail.com>
- <VI1PR04MB4222B4877B341C0FA07A6A8D802A0@VI1PR04MB4222.eurprd04.prod.outlook.com>
- <CABb+yY1MSSQKZ6BOQXC-x=qy4VZ5HqDBjmh_BJTXSkAm3+P8mA@mail.gmail.com>
- <bf7aca98-7ec8-bcf3-b1a8-d86a7cf28d31@pengutronix.de>
- <CABb+yY3PLcjduxm7uJ9xZpPP2zkcQ5Qngs4PjnhGAXp43QVzFA@mail.gmail.com>
- <20180730144435.srxgohwgdhrmw2rz@pengutronix.de>
- <CABb+yY0sUxGatozwdQVM55z7ACtpK8HCepnfvQNunQ=r5y_kVw@mail.gmail.com>
- <CABb+yY04dm_N1Ud2Mhi-g-eFdNVkxJKE8ONOqntZjN_QKwgLcg@mail.gmail.com>
- <AM0PR04MB42118617A7F29C1D7BE59242802E0@AM0PR04MB4211.eurprd04.prod.outlook.com>
- <CABb+yY2HaTK9tq539+m1fyMMPr1eyygJZ7QvzWNp9E7aYxpoVQ@mail.gmail.com>
- <CABb+yY0KB7RLK1DyPNNPaXoXkx5WoJhkoKX5XVa+4Q94vC7p4A@mail.gmail.com>
- <AM0PR04MB42112E77338240832E2E5077802C0@AM0PR04MB4211.eurprd04.prod.outlook.com>
- <AM0PR04MB42110FCA0F68A73BA7416EA480250@AM0PR04MB4211.eurprd04.prod.outlook.com>
- <CABb+yY1wGv8XHcTy7WPeD_GGx0J4QF8bcgowJYOoTgTD1R6wPA@mail.gmail.com>
+From: Mikko Perttunen <cyndis@kapsi.fi>
+Subject: Re: [PATCH v3 3/8] mailbox: Add transmit done by blocking option
+Date: Thu, 9 Aug 2018 11:49:19 +0300
+Message-ID: <b3045f85-eacb-a5ec-1690-b9c63d0f3373@kapsi.fi>
+References: <20180702114033.15654-1-mperttunen@nvidia.com>
+ <20180702114033.15654-4-mperttunen@nvidia.com>
+ <CABb+yY0_dKC_cYFwwb-aeRgrx=sjv=8VLP=C6DJEecFf=v+mkQ@mail.gmail.com>
+ <907bac36-0c54-8f38-0f5e-f59196d414c6@kapsi.fi>
+ <afc8a305-79ea-2194-0af0-919bbb8f675e@kapsi.fi>
+ <CABb+yY2mpNV186=M2anmZANgMOra4JM7ybyUT4yCxhqAG6-AZg@mail.gmail.com>
+ <b5a91f9e-c3ff-371c-d355-4a5e8a147796@kapsi.fi>
+ <CABb+yY3Ng+rbKRYXTncfHKv6HXBW5hHjMKDpepz31MxpE9bwRQ@mail.gmail.com>
+ <a57fccaa-fcfe-6611-45a5-8c224f4ee2b6@kapsi.fi>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CABb+yY1wGv8XHcTy7WPeD_GGx0J4QF8bcgowJYOoTgTD1R6wPA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <a57fccaa-fcfe-6611-45a5-8c224f4ee2b6@kapsi.fi>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: Jassi Brar <jassisinghbrar@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Devicetree List <devicetree@vger.kernel.org>, Oleksij Rempel <o.rempel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, ",
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- srv_heupstream" <linux-mediatek@lists.infradead.org>",
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- srv_heupstream" <linux-arm-kernel@lists.infradead.org>, ",
- Sascha Hauer" <kernel@pengutronix.de>, Fabio Estevam <fabio.estevam@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Vladimir Zapolskiy <vladimir_zapolskiy@mentor.com>, dl-linux-imx <linux-imx@nxp.com>
+Cc: Mikko Perttunen <mperttunen@nvidia.com>, Greg KH <gregkh@linuxfoundation.org>, Thierry Reding <thierry.reding@gmail.com>, Jon Hunter <jonathanh@nvidia.com>, Devicetree List <devicetree@vger.kernel.org>, linux-serial@vger.kernel.org, linux-tegra@vger.kernel.org, ", linux-arm-kernel"@lists.infradead.org, srv_heupstream <linux-mediatek@lists.infradead.org>, srv_heupstream <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-> -----Original Message-----
-> From: Jassi Brar [mailto:jassisinghbrar@gmail.com]
-> Sent: Thursday, August 9, 2018 10:56 AM
-[...]
-> On Thu, Aug 9, 2018 at 7:52 AM, A.s. Dong <aisheng.dong@nxp.com> wrote:
-> > Hi Jassi,
-> >
-> > Do you have any comments about this reply?
-> >
-> I did read your post. And my opinion isn't changed. If mailbox is new to you,
-> please try to see how other subsystems works, especially SPI, I2C and DMA.
+Here's my current code:
+
+https://github.com/cyndis/linux/commits/wip/t194-tcu-4
+
+"fixup! mailbox: tegra-hsp: Add support for shared mailboxes" splits up 
+the controller into two. "tegra-hsp: use polling" changes it to use polling.
+
+There are two lines in the top patch with comments:
+
+- at the end of tegra_hsp_mailbox_send_data, I left a "while 
+(!tegra_hsp_mailbox_last_tx_done(chan));". Without it I wasn't able to 
+see even a few garbled characters in the output.
+
+- as mentioned, if I enable tx_block on the client side, I get a BUG: 
+scheduling while atomic. I assume this gets printed through the earlycon 
+as it's printing out correctly.
+
+Thanks,
+Mikko
+
+On 08.08.2018 17:46, Mikko Perttunen wrote:
+> On 08/08/2018 05:39 PM, Jassi Brar wrote:
+>> On Wed, Aug 8, 2018 at 8:04 PM, Mikko Perttunen <cyndis@kapsi.fi> wrote:
+>>>
+>>>
+>>> On 08/08/2018 05:10 PM, Jassi Brar wrote:
+>>>>
+>>>> On Wed, Aug 8, 2018 at 5:08 PM, Mikko Perttunen <cyndis@kapsi.fi> 
+>>>> wrote:
+>>>>>
+>>>>>
+>>>>>
+>>>>> On 04.08.2018 13:45, Mikko Perttunen wrote:
+>>>>>>
+>>>>>>
+>>>>>> On 08/03/2018 03:54 PM, Jassi Brar wrote:
+>>>>>>>
+>>>>>>>
+>>>>>>> On Mon, Jul 2, 2018 at 5:10 PM, Mikko Perttunen 
+>>>>>>> <mperttunen@nvidia.com>
+>>>>>>> wrote:
+>>>>>>>>
+>>>>>>>>
+>>>>>>>> Add a new TXDONE option, TXDONE_BY_BLOCK. With this option, the
+>>>>>>>> send_data function of the mailbox driver is expected to block until
+>>>>>>>> the message has been sent. The new option is used with the Tegra
+>>>>>>>> Combined UART driver to minimize unnecessary overhead when
+>>>>>>>> transmitting
+>>>>>>>> data.
+>>>>>>>>
+>>>>>>> 1) TXDONE_BY_BLOCK flag :-
+>>>>>>>            Have you tried setting the flag
+>>>>>>> mbox_chan->mbox_client->tx_block
+>>>>>>> ?
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>> No - I suppose I should have done that. I'm a bit concerned about
+>>>>>> overhead
+>>>>>> as send_data may be called thousands of times per second, so I 
+>>>>>> tried to
+>>>>>> make
+>>>>>> it as close as possible to the downstream driver that just pokes the
+>>>>>> mailbox
+>>>>>> register directly.
+>>>>>
+>>>>>
+>>>>>
+>>>>> I tried using polling in the mailbox framework. Some printing is done
+>>>>> from
+>>>>> atomic context so it seems tx_block cannot be used -
+>>>>> wait_for_completion_timeout understandably does not work in atomic
+>>>>> context.
+>>>>> I also tried without tx_block, in which case I got some horribly 
+>>>>> garbled
+>>>>> output, but "Try increasing MBOX_TX_QUEUE_LEN" was readable there.
+>>>>>
+>>>>> Any opinions?
+>>>>>
+>>>> The problems arise because your hardware (SM) supports TXDONE_BY_POLL,
+>>>> but your client drives it by TXDONE_BY_ACK because the older DB
+>>>> channels are so.
+>>>>
+>>>> Please populate SM channels as a separate controller than DB.
+>>>> The DB controller, as is, run by ACK method.
+>>>> The SM controller should be run by polling, i.e, set txdone_poll =
+>>>> true and the poll period small enough. The virtual tty client driver
+>>>> should be able to safely set tx_block from appropriate context.
+>>>>
+>>>
+>>> Sorry, I should have clarified that I already split up the 
+>>> controllers. The
+>>> SM controller has txdone_poll = true. I didn't adjust txpoll_period so I
+>>> guess it's zero.
+>>>
+>> Can you please share your code (controller and client) ? Maybe offline
+>> if you wish.
+>>
 > 
-
-Okay.
-What's your comments about the known issues if doing that way?
-1) Many unnecessary and meaningless interrupts handling of Tx and RX
-2) Performance downgrading
-    A 4 word SCU MSG may need 8 interrupts to handle which terribly slow
-    down the speed. (Interrupt latency will be terrible if many). SCU msg
-    are mostly handled within 10 us.
-3) Complex RX flow in order to align with framework design
-
-Are you referring to them as not a real issue?
-Or even they're issues/limitations, you would still prefer multi channels way
-In order to be consistent with mailbox subsystem by sacrificing the
-performance drop?
-
-And to be clear, the working flow you want is exactly as follows, right?
-Sending Word 0 ->
-Chan 0 interrupt -> (meaningless)
-Sending Word 1 ->
-Chan1 interrupt -> (meaningless)
-Sending Word 2 ->
-Chan2 interrupt -> (meaningless)
-Sending Word 3 ->
-Chan3 interrupt-> (meaningless)
-
-Sending Word 4 on Chan 0 again ->
-Wait for Chan 0 interrupt (meaningless) -> ...
-
-Then waiting for Rx:
-
-Chan 0 Rx interrupt ->
-Read Word 0   ->
-(Then we know response size here)
-
-Chan 1 Rx interrupt ->
-Read Word 1 ->
-Chan 2 Rx interrupt ->
-Read Word 2 ->
-Chan 3 Rx interrupt ->
-Read Word 3 ->
-
-(If msg size > 4 words)
-Chan 0 Rx interrupt ->
-Read Word 4
-
-Regards
-Dong Aisheng
-
-> Thanks.
+> I'll upload a git branch tomorrow -- I'm not at the machine with the 
+> code now.
+> 
+> Mikko
+> -- 
+> To unsubscribe from this list: send the line "unsubscribe linux-tegra" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
