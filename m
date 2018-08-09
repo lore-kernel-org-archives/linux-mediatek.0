@@ -1,8 +1,8 @@
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Subject: Re: [PATCH v7 3/6] dt-bindings: mailbox: imx-mu: add generic MU
+From: "A.s. Dong" <aisheng.dong@nxp.com>
+Subject: RE: [PATCH v7 3/6] dt-bindings: mailbox: imx-mu: add generic MU
  channel support
-Date: Thu, 9 Aug 2018 08:25:54 +0530
-Message-ID: <CABb+yY1wGv8XHcTy7WPeD_GGx0J4QF8bcgowJYOoTgTD1R6wPA@mail.gmail.com>
+Date: Thu, 9 Aug 2018 06:45:21 +0000
+Message-ID: <AM0PR04MB42117A7564C6E1AA4D1232F780250@AM0PR04MB4211.eurprd04.prod.outlook.com>
 References: <AM0PR04MB42116C756EC78AD12EB254D6802B0@AM0PR04MB4211.eurprd04.prod.outlook.com>
  <CABb+yY0yn9os6nqH8eUfAr3Q3ev4=TfpTp=5ZDBR7FN67eb-wg@mail.gmail.com>
  <VI1PR04MB4222672B8F7B6AF2B11A4442802A0@VI1PR04MB4222.eurprd04.prod.outlook.com>
@@ -21,11 +21,13 @@ References: <AM0PR04MB42116C756EC78AD12EB254D6802B0@AM0PR04MB4211.eurprd04.prod.
  <CABb+yY0KB7RLK1DyPNNPaXoXkx5WoJhkoKX5XVa+4Q94vC7p4A@mail.gmail.com>
  <AM0PR04MB42112E77338240832E2E5077802C0@AM0PR04MB4211.eurprd04.prod.outlook.com>
  <AM0PR04MB42110FCA0F68A73BA7416EA480250@AM0PR04MB4211.eurprd04.prod.outlook.com>
+ <CABb+yY1wGv8XHcTy7WPeD_GGx0J4QF8bcgowJYOoTgTD1R6wPA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <AM0PR04MB42110FCA0F68A73BA7416EA480250@AM0PR04MB4211.eurprd04.prod.outlook.com>
+In-Reply-To: <CABb+yY1wGv8XHcTy7WPeD_GGx0J4QF8bcgowJYOoTgTD1R6wPA@mail.gmail.com>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -35,7 +37,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: "A.s. Dong" <aisheng.dong@nxp.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>
 Cc: Mark Rutland <mark.rutland@arm.com>, Devicetree List <devicetree@vger.kernel.org>, Oleksij Rempel <o.rempel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, ",
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  srv_heupstream" <linux-mediatek@lists.infradead.org>",
@@ -44,13 +46,64 @@ Cc: Mark Rutland <mark.rutland@arm.com>, Devicetree List <devicetree@vger.kernel
  Sascha Hauer" <kernel@pengutronix.de>, Fabio Estevam <fabio.estevam@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Vladimir Zapolskiy <vladimir_zapolskiy@mentor.com>, dl-linux-imx <linux-imx@nxp.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 9, 2018 at 7:52 AM, A.s. Dong <aisheng.dong@nxp.com> wrote:
-> Hi Jassi,
->
-> Do you have any comments about this reply?
->
-I did read your post. And my opinion isn't changed. If mailbox is new
-to you, please try to see how other subsystems works, especially SPI,
-I2C and DMA.
+> -----Original Message-----
+> From: Jassi Brar [mailto:jassisinghbrar@gmail.com]
+> Sent: Thursday, August 9, 2018 10:56 AM
+[...]
+> On Thu, Aug 9, 2018 at 7:52 AM, A.s. Dong <aisheng.dong@nxp.com> wrote:
+> > Hi Jassi,
+> >
+> > Do you have any comments about this reply?
+> >
+> I did read your post. And my opinion isn't changed. If mailbox is new to you,
+> please try to see how other subsystems works, especially SPI, I2C and DMA.
+> 
 
-Thanks.
+Okay.
+What's your comments about the known issues if doing that way?
+1) Many unnecessary and meaningless interrupts handling of Tx and RX
+2) Performance downgrading
+    A 4 word SCU MSG may need 8 interrupts to handle which terribly slow
+    down the speed. (Interrupt latency will be terrible if many). SCU msg
+    are mostly handled within 10 us.
+3) Complex RX flow in order to align with framework design
+
+Are you referring to them as not a real issue?
+Or even they're issues/limitations, you would still prefer multi channels way
+In order to be consistent with mailbox subsystem by sacrificing the
+performance drop?
+
+And to be clear, the working flow you want is exactly as follows, right?
+Sending Word 0 ->
+Chan 0 interrupt -> (meaningless)
+Sending Word 1 ->
+Chan1 interrupt -> (meaningless)
+Sending Word 2 ->
+Chan2 interrupt -> (meaningless)
+Sending Word 3 ->
+Chan3 interrupt-> (meaningless)
+
+Sending Word 4 on Chan 0 again ->
+Wait for Chan 0 interrupt (meaningless) -> ...
+
+Then waiting for Rx:
+
+Chan 0 Rx interrupt ->
+Read Word 0   ->
+(Then we know response size here)
+
+Chan 1 Rx interrupt ->
+Read Word 1 ->
+Chan 2 Rx interrupt ->
+Read Word 2 ->
+Chan 3 Rx interrupt ->
+Read Word 3 ->
+
+(If msg size > 4 words)
+Chan 0 Rx interrupt ->
+Read Word 4
+
+Regards
+Dong Aisheng
+
+> Thanks.
