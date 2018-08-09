@@ -1,76 +1,127 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v4 08/14] drm/mediatek: add YUYV/UYVY color format
- support for RDMA
-Date: Thu, 9 Aug 2018 10:41:26 +0800
-Message-ID: <1533782486.29986.2.camel@mtksdaap41>
+Subject: Re: [PATCH v4 12/14] drm/mediatek: use layer_nr function to get
+ layer number to init plane
+Date: Thu, 9 Aug 2018 10:46:30 +0800
+Message-ID: <1533782790.29986.3.camel@mtksdaap41>
 References: <1533780949-30141-1-git-send-email-stu.hsieh@mediatek.com>
- <1533780949-30141-9-git-send-email-stu.hsieh@mediatek.com>
+         <1533780949-30141-13-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1533780949-30141-9-git-send-email-stu.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1533780949-30141-13-git-send-email-stu.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFN0dToKCk9uIFRodSwgMjAxOC0wOC0wOSBhdCAxMDoxNSArMDgwMCwgU3R1IEhzaWVoIHdy
-b3RlOgo+IFRoaXMgcGF0Y2ggYWRkIFlVWVYvVVlWWSBjb2xvciBmb3JtYXQgc3VwcG9ydCBmb3Ig
-UkRNQQo+IGFuZCB0cmFuc2Zvcm0gbWF0cml4IGZvciBZVVlWL1VZVlkuCj4gCj4gU2lnbmVkLW9m
-Zi1ieTogU3R1IEhzaWVoIDxzdHUuaHNpZWhAbWVkaWF0ZWsuY29tPgoKUmV2aWV3ZWQtYnk6IENL
-IEh1IDxjay5odUBtZWRpYXRlay5jb20+Cgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2Rpc3BfcmRtYS5jIHwgMjAgKysrKysrKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNo
-YW5nZWQsIDIwIGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kaXNwX3JkbWEuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-ZGlzcF9yZG1hLmMKPiBpbmRleCAxZjU3Zjg2Yzc5MTAuLjhiMDE1YzJkNDQxOCAxMDA2NDQKPiAt
-LS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jCj4gKysrIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwo+IEBAIC0zMyw2ICszMyw4IEBA
-Cj4gICNkZWZpbmUgUkRNQV9FTkdJTkVfRU4JCQkJCUJJVCgwKQo+ICAjZGVmaW5lIFJETUFfTU9E
-RV9NRU1PUlkJCQkJQklUKDEpCj4gICNkZWZpbmUgRElTUF9SRUdfUkRNQV9TSVpFX0NPTl8wCQkw
-eDAwMTQKPiArI2RlZmluZSBSRE1BX01BVFJJWF9FTkFCTEUJCQkJQklUKDE3KQo+ICsjZGVmaW5l
-IFJETUFfTUFUUklYX0lOVF9NVFhfQlQ2MDFfdG9fUkdCCQkoNiA8PCAyMCkKPiAgI2RlZmluZSBE
-SVNQX1JFR19SRE1BX1NJWkVfQ09OXzEJCTB4MDAxOAo+ICAjZGVmaW5lIERJU1BfUkVHX1JETUFf
-VEFSR0VUX0xJTkUJCTB4MDAxYwo+ICAjZGVmaW5lIERJU1BfUkRNQV9NRU1fQ09OCQkJMHgwMDI0
-Cj4gQEAgLTQ2LDEyICs0OCwxNSBAQAo+ICAjZGVmaW5lIFJETUFfRklGT19TSVpFKHJkbWEpCQkJ
-KChyZG1hKS0+ZGF0YS0+Zmlmb19zaXplKQo+ICAjZGVmaW5lIERJU1BfUkRNQV9NRU1fU1RBUlRf
-QUREUgkJMHgwZjAwCj4gIAo+ICsjZGVmaW5lIFJETUFfTUFUUklYX0lOVF9NVFhfU0VMCQkJR0VO
-TUFTSygyMywgMjApCj4gICNkZWZpbmUgUkRNQV9NRU1fR01DCQkJCTB4NDA0MDIwMjAKPiAgCj4g
-ICNkZWZpbmUgTUVNX01PREVfSU5QVVRfRk9STUFUX1JHQjU2NQkJMHgwCj4gICNkZWZpbmUgTUVN
-X01PREVfSU5QVVRfRk9STUFUX1JHQjg4OAkJKDB4MDAxIDw8IDQpCj4gICNkZWZpbmUgTUVNX01P
-REVfSU5QVVRfRk9STUFUX1JHQkE4ODg4CQkoMHgwMDIgPDwgNCkKPiAgI2RlZmluZSBNRU1fTU9E
-RV9JTlBVVF9GT1JNQVRfQVJHQjg4ODgJCSgweDAwMyA8PCA0KQo+ICsjZGVmaW5lIE1FTV9NT0RF
-X0lOUFVUX0ZPUk1BVF9VWVZZCQkoMHgwMDQgPDwgNCkKPiArI2RlZmluZSBNRU1fTU9ERV9JTlBV
-VF9GT1JNQVRfWVVZVgkJKDB4MDA1IDw8IDQpCj4gIAo+ICBzdHJ1Y3QgbXRrX2Rpc3BfcmRtYV9k
-YXRhIHsKPiAgCXVuc2lnbmVkIGludCBmaWZvX3NpemU7Cj4gQEAgLTE4MSw2ICsxODYsMTAgQEAg
-c3RhdGljIHVuc2lnbmVkIGludCByZG1hX2ZtdF9jb252ZXJ0KHN0cnVjdCBtdGtfZGlzcF9yZG1h
-ICpyZG1hLAo+ICAJY2FzZSBEUk1fRk9STUFUX1hCR1I4ODg4Ogo+ICAJY2FzZSBEUk1fRk9STUFU
-X0FCR1I4ODg4Ogo+ICAJCXJldHVybiBNRU1fTU9ERV9JTlBVVF9GT1JNQVRfUkdCQTg4ODggfCBN
-RU1fTU9ERV9JTlBVVF9TV0FQOwo+ICsJY2FzZSBEUk1fRk9STUFUX1VZVlk6Cj4gKwkJcmV0dXJu
-IE1FTV9NT0RFX0lOUFVUX0ZPUk1BVF9VWVZZOwo+ICsJY2FzZSBEUk1fRk9STUFUX1lVWVY6Cj4g
-KwkJcmV0dXJuIE1FTV9NT0RFX0lOUFVUX0ZPUk1BVF9ZVVlWOwo+ICAJfQo+ICB9Cj4gIAo+IEBA
-IC0xOTcsNiArMjA2LDE3IEBAIHN0YXRpYyB2b2lkIG10a19yZG1hX2xheWVyX2NvbmZpZyhzdHJ1
-Y3QgbXRrX2RkcF9jb21wICpjb21wLCB1bnNpZ25lZCBpbnQgaWR4LAo+ICAJY29uID0gcmRtYV9m
-bXRfY29udmVydChyZG1hLCBmbXQpOwo+ICAJd3JpdGVsX3JlbGF4ZWQoY29uLCBjb21wLT5yZWdz
-ICsgRElTUF9SRE1BX01FTV9DT04pOwo+ICAKPiArCWlmIChmbXQgPT0gRFJNX0ZPUk1BVF9VWVZZ
-IHx8IGZtdCA9PSBEUk1fRk9STUFUX1lVWVYpIHsKPiArCQlyZG1hX3VwZGF0ZV9iaXRzKGNvbXAs
-IERJU1BfUkVHX1JETUFfU0laRV9DT05fMCwKPiArCQkJCSBSRE1BX01BVFJJWF9FTkFCTEUsIFJE
-TUFfTUFUUklYX0VOQUJMRSk7Cj4gKwkJcmRtYV91cGRhdGVfYml0cyhjb21wLCBESVNQX1JFR19S
-RE1BX1NJWkVfQ09OXzAsCj4gKwkJCQkgUkRNQV9NQVRSSVhfSU5UX01UWF9TRUwsCj4gKwkJCQkg
-UkRNQV9NQVRSSVhfSU5UX01UWF9CVDYwMV90b19SR0IpOwo+ICsJfSBlbHNlIHsKPiArCQlyZG1h
-X3VwZGF0ZV9iaXRzKGNvbXAsIERJU1BfUkVHX1JETUFfU0laRV9DT05fMCwKPiArCQkJCSBSRE1B
-X01BVFJJWF9FTkFCTEUsIDApOwo+ICsJfQo+ICsKPiAgCXdyaXRlbF9yZWxheGVkKGFkZHIsIGNv
-bXAtPnJlZ3MgKyBESVNQX1JETUFfTUVNX1NUQVJUX0FERFIpOwo+ICAJd3JpdGVsX3JlbGF4ZWQo
-cGl0Y2gsIGNvbXAtPnJlZ3MgKyBESVNQX1JETUFfTUVNX1NSQ19QSVRDSCk7Cj4gIAl3cml0ZWwo
-UkRNQV9NRU1fR01DLCBjb21wLT5yZWdzICsgRElTUF9SRE1BX01FTV9HTUNfU0VUVElOR18wKTsK
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
-ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi, Stu:
+
+On Thu, 2018-08-09 at 10:15 +0800, Stu Hsieh wrote:
+> This patch use layer_nr function to get layer number to init plane
+> 
+> When plane init in crtc create,
+> it use the number of OVL layer to init plane.
+> That's OVL can read 4 memory address.
+> 
+> For mt2712 third ddp, it use RDMA to read memory.
+> RDMA can read 1 memory address, so it just init one plane.
+> 
+> For compatibility, this patch use mtk_ddp_comp_layer_nr function
+> to get layer number from their HW component in ddp for plane init.
+> 
+> Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 21 ++++++++++++++-------
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.h |  1 -
+>  2 files changed, 14 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> index 2d6aa150a9ff..845d1608465e 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -45,7 +45,8 @@ struct mtk_drm_crtc {
+>  	bool				pending_needs_vblank;
+>  	struct drm_pending_vblank_event	*event;
+>  
+> -	struct drm_plane		planes[OVL_LAYER_NR];
+> +	struct drm_plane		*planes;
+> +	unsigned int			layer_nr;
+>  	bool				pending_planes;
+>  
+>  	void __iomem			*config_regs;
+> @@ -286,7 +287,7 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+>  	}
+>  
+>  	/* Initially configure all planes */
+> -	for (i = 0; i < OVL_LAYER_NR; i++) {
+> +	for (i = 0; i < mtk_crtc->layer_nr; i++) {
+>  		struct drm_plane *plane = &mtk_crtc->planes[i];
+>  		struct mtk_plane_state *plane_state;
+>  
+> @@ -351,7 +352,7 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+>  	}
+>  
+>  	if (mtk_crtc->pending_planes) {
+> -		for (i = 0; i < OVL_LAYER_NR; i++) {
+> +		for (i = 0; i < mtk_crtc->layer_nr; i++) {
+>  			struct drm_plane *plane = &mtk_crtc->planes[i];
+>  			struct mtk_plane_state *plane_state;
+>  
+> @@ -403,7 +404,7 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
+>  		return;
+>  
+>  	/* Set all pending plane state to disabled */
+> -	for (i = 0; i < OVL_LAYER_NR; i++) {
+> +	for (i = 0; i < mtk_crtc->layer_nr; i++) {
+>  		struct drm_plane *plane = &mtk_crtc->planes[i];
+>  		struct mtk_plane_state *plane_state;
+>  
+> @@ -450,7 +451,7 @@ static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
+>  
+>  	if (mtk_crtc->event)
+>  		mtk_crtc->pending_needs_vblank = true;
+> -	for (i = 0; i < OVL_LAYER_NR; i++) {
+> +	for (i = 0; i < mtk_crtc->layer_nr; i++) {
+>  		struct drm_plane *plane = &mtk_crtc->planes[i];
+>  		struct mtk_plane_state *plane_state;
+>  
+> @@ -598,7 +599,12 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+>  		mtk_crtc->ddp_comp[i] = comp;
+>  	}
+>  
+> -	for (zpos = 0; zpos < OVL_LAYER_NR; zpos++) {
+> +	mtk_crtc->layer_nr = mtk_ddp_comp_layer_nr(mtk_crtc->ddp_comp[0]);
+> +	mtk_crtc->planes = devm_kzalloc(dev, mtk_crtc->layer_nr *
+> +					sizeof(struct drm_plane),
+> +					GFP_KERNEL);
+> +
+> +	for (zpos = 0; zpos < mtk_crtc->layer_nr; zpos++) {
+>  		type = (zpos == 0) ? DRM_PLANE_TYPE_PRIMARY :
+>  				(zpos == 1) ? DRM_PLANE_TYPE_CURSOR :
+>  						DRM_PLANE_TYPE_OVERLAY;
+> @@ -609,7 +615,8 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+>  	}
+>  
+>  	ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, &mtk_crtc->planes[0],
+> -				&mtk_crtc->planes[1], pipe);
+> +				mtk_crtc->layer_nr > 1 ? &mtk_crtc->planes[1] :
+> +				NULL, pipe);
+>  	if (ret < 0)
+>  		goto unprepare;
+>  	drm_mode_crtc_set_gamma_size(&mtk_crtc->base, MTK_LUT_SIZE);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> index 9d9410c67ae9..60bcc8aba8e3 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> @@ -18,7 +18,6 @@
+>  #include "mtk_drm_ddp_comp.h"
+>  #include "mtk_drm_plane.h"
+>  
+> -#define OVL_LAYER_NR	4
+>  #define MTK_LUT_SIZE	512
+>  #define MTK_MAX_BPC	10
+>  #define MTK_MIN_BPC	3
