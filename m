@@ -1,50 +1,92 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v4 11/14] drm/mediatek: add function to return RDMA layer number
-Date: Thu, 9 Aug 2018 10:15:46 +0800
-Message-ID: <1533780949-30141-12-git-send-email-stu.hsieh@mediatek.com>
+Subject: [PATCH v4 12/14] drm/mediatek: use layer_nr function to get layer
+ number to init plane
+Date: Thu, 9 Aug 2018 10:15:47 +0800
+Message-ID: <1533780949-30141-13-git-send-email-stu.hsieh@mediatek.com>
 References: <1533780949-30141-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <1533780949-30141-1-git-send-email-stu.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Stu Hsieh <stu.hsieh@mediatek.com>
+Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch add function to return RDMA layer number
-
-RDMA always has one layer.
-
-Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index 8b015c2d4418..9da0fa6c6806 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -193,6 +193,11 @@ static unsigned int rdma_fmt_convert(struct mtk_disp_rdma *rdma,
- 	}
- }
- 
-+static unsigned int mtk_rdma_layer_nr(struct mtk_ddp_comp *comp)
-+{
-+	return 1;
-+}
-+
- static void mtk_rdma_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
- 				  struct mtk_plane_state *state)
- {
-@@ -230,6 +235,7 @@ static const struct mtk_ddp_comp_funcs mtk_disp_rdma_funcs = {
- 	.stop = mtk_rdma_stop,
- 	.enable_vblank = mtk_rdma_enable_vblank,
- 	.disable_vblank = mtk_rdma_disable_vblank,
-+	.layer_nr = mtk_rdma_layer_nr,
- 	.layer_config = mtk_rdma_layer_config,
- };
- 
--- 
-2.12.5.2.gbdf23ab
+VGhpcyBwYXRjaCB1c2UgbGF5ZXJfbnIgZnVuY3Rpb24gdG8gZ2V0IGxheWVyIG51bWJlciB0byBp
+bml0IHBsYW5lCgpXaGVuIHBsYW5lIGluaXQgaW4gY3J0YyBjcmVhdGUsCml0IHVzZSB0aGUgbnVt
+YmVyIG9mIE9WTCBsYXllciB0byBpbml0IHBsYW5lLgpUaGF0J3MgT1ZMIGNhbiByZWFkIDQgbWVt
+b3J5IGFkZHJlc3MuCgpGb3IgbXQyNzEyIHRoaXJkIGRkcCwgaXQgdXNlIFJETUEgdG8gcmVhZCBt
+ZW1vcnkuClJETUEgY2FuIHJlYWQgMSBtZW1vcnkgYWRkcmVzcywgc28gaXQganVzdCBpbml0IG9u
+ZSBwbGFuZS4KCkZvciBjb21wYXRpYmlsaXR5LCB0aGlzIHBhdGNoIHVzZSBtdGtfZGRwX2NvbXBf
+bGF5ZXJfbnIgZnVuY3Rpb24KdG8gZ2V0IGxheWVyIG51bWJlciBmcm9tIHRoZWlyIEhXIGNvbXBv
+bmVudCBpbiBkZHAgZm9yIHBsYW5lIGluaXQuCgpTaWduZWQtb2ZmLWJ5OiBTdHUgSHNpZWggPHN0
+dS5oc2llaEBtZWRpYXRlay5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+cm1fY3J0Yy5jIHwgMjEgKysrKysrKysrKysrKystLS0tLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RybV9jcnRjLmggfCAgMSAtCiAyIGZpbGVzIGNoYW5nZWQsIDE0IGluc2VydGlv
+bnMoKyksIDggZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fY3J0Yy5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0
+Yy5jCmluZGV4IDJkNmFhMTUwYTlmZi4uODQ1ZDE2MDg0NjVlIDEwMDY0NAotLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fY3J0Yy5jCkBAIC00NSw3ICs0NSw4IEBAIHN0cnVjdCBtdGtfZHJtX2Ny
+dGMgewogCWJvb2wJCQkJcGVuZGluZ19uZWVkc192Ymxhbms7CiAJc3RydWN0IGRybV9wZW5kaW5n
+X3ZibGFua19ldmVudAkqZXZlbnQ7CiAKLQlzdHJ1Y3QgZHJtX3BsYW5lCQlwbGFuZXNbT1ZMX0xB
+WUVSX05SXTsKKwlzdHJ1Y3QgZHJtX3BsYW5lCQkqcGxhbmVzOworCXVuc2lnbmVkIGludAkJCWxh
+eWVyX25yOwogCWJvb2wJCQkJcGVuZGluZ19wbGFuZXM7CiAKIAl2b2lkIF9faW9tZW0JCQkqY29u
+ZmlnX3JlZ3M7CkBAIC0yODYsNyArMjg3LDcgQEAgc3RhdGljIGludCBtdGtfY3J0Y19kZHBfaHdf
+aW5pdChzdHJ1Y3QgbXRrX2RybV9jcnRjICptdGtfY3J0YykKIAl9CiAKIAkvKiBJbml0aWFsbHkg
+Y29uZmlndXJlIGFsbCBwbGFuZXMgKi8KLQlmb3IgKGkgPSAwOyBpIDwgT1ZMX0xBWUVSX05SOyBp
+KyspIHsKKwlmb3IgKGkgPSAwOyBpIDwgbXRrX2NydGMtPmxheWVyX25yOyBpKyspIHsKIAkJc3Ry
+dWN0IGRybV9wbGFuZSAqcGxhbmUgPSAmbXRrX2NydGMtPnBsYW5lc1tpXTsKIAkJc3RydWN0IG10
+a19wbGFuZV9zdGF0ZSAqcGxhbmVfc3RhdGU7CiAKQEAgLTM1MSw3ICszNTIsNyBAQCBzdGF0aWMg
+dm9pZCBtdGtfY3J0Y19kZHBfY29uZmlnKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKIAl9CiAKIAlp
+ZiAobXRrX2NydGMtPnBlbmRpbmdfcGxhbmVzKSB7Ci0JCWZvciAoaSA9IDA7IGkgPCBPVkxfTEFZ
+RVJfTlI7IGkrKykgeworCQlmb3IgKGkgPSAwOyBpIDwgbXRrX2NydGMtPmxheWVyX25yOyBpKysp
+IHsKIAkJCXN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lID0gJm10a19jcnRjLT5wbGFuZXNbaV07CiAJ
+CQlzdHJ1Y3QgbXRrX3BsYW5lX3N0YXRlICpwbGFuZV9zdGF0ZTsKIApAQCAtNDAzLDcgKzQwNCw3
+IEBAIHN0YXRpYyB2b2lkIG10a19kcm1fY3J0Y19hdG9taWNfZGlzYWJsZShzdHJ1Y3QgZHJtX2Ny
+dGMgKmNydGMsCiAJCXJldHVybjsKIAogCS8qIFNldCBhbGwgcGVuZGluZyBwbGFuZSBzdGF0ZSB0
+byBkaXNhYmxlZCAqLwotCWZvciAoaSA9IDA7IGkgPCBPVkxfTEFZRVJfTlI7IGkrKykgeworCWZv
+ciAoaSA9IDA7IGkgPCBtdGtfY3J0Yy0+bGF5ZXJfbnI7IGkrKykgewogCQlzdHJ1Y3QgZHJtX3Bs
+YW5lICpwbGFuZSA9ICZtdGtfY3J0Yy0+cGxhbmVzW2ldOwogCQlzdHJ1Y3QgbXRrX3BsYW5lX3N0
+YXRlICpwbGFuZV9zdGF0ZTsKIApAQCAtNDUwLDcgKzQ1MSw3IEBAIHN0YXRpYyB2b2lkIG10a19k
+cm1fY3J0Y19hdG9taWNfZmx1c2goc3RydWN0IGRybV9jcnRjICpjcnRjLAogCiAJaWYgKG10a19j
+cnRjLT5ldmVudCkKIAkJbXRrX2NydGMtPnBlbmRpbmdfbmVlZHNfdmJsYW5rID0gdHJ1ZTsKLQlm
+b3IgKGkgPSAwOyBpIDwgT1ZMX0xBWUVSX05SOyBpKyspIHsKKwlmb3IgKGkgPSAwOyBpIDwgbXRr
+X2NydGMtPmxheWVyX25yOyBpKyspIHsKIAkJc3RydWN0IGRybV9wbGFuZSAqcGxhbmUgPSAmbXRr
+X2NydGMtPnBsYW5lc1tpXTsKIAkJc3RydWN0IG10a19wbGFuZV9zdGF0ZSAqcGxhbmVfc3RhdGU7
+CiAKQEAgLTU5OCw3ICs1OTksMTIgQEAgaW50IG10a19kcm1fY3J0Y19jcmVhdGUoc3RydWN0IGRy
+bV9kZXZpY2UgKmRybV9kZXYsCiAJCW10a19jcnRjLT5kZHBfY29tcFtpXSA9IGNvbXA7CiAJfQog
+Ci0JZm9yICh6cG9zID0gMDsgenBvcyA8IE9WTF9MQVlFUl9OUjsgenBvcysrKSB7CisJbXRrX2Ny
+dGMtPmxheWVyX25yID0gbXRrX2RkcF9jb21wX2xheWVyX25yKG10a19jcnRjLT5kZHBfY29tcFsw
+XSk7CisJbXRrX2NydGMtPnBsYW5lcyA9IGRldm1fa3phbGxvYyhkZXYsIG10a19jcnRjLT5sYXll
+cl9uciAqCisJCQkJCXNpemVvZihzdHJ1Y3QgZHJtX3BsYW5lKSwKKwkJCQkJR0ZQX0tFUk5FTCk7
+CisKKwlmb3IgKHpwb3MgPSAwOyB6cG9zIDwgbXRrX2NydGMtPmxheWVyX25yOyB6cG9zKyspIHsK
+IAkJdHlwZSA9ICh6cG9zID09IDApID8gRFJNX1BMQU5FX1RZUEVfUFJJTUFSWSA6CiAJCQkJKHpw
+b3MgPT0gMSkgPyBEUk1fUExBTkVfVFlQRV9DVVJTT1IgOgogCQkJCQkJRFJNX1BMQU5FX1RZUEVf
+T1ZFUkxBWTsKQEAgLTYwOSw3ICs2MTUsOCBAQCBpbnQgbXRrX2RybV9jcnRjX2NyZWF0ZShzdHJ1
+Y3QgZHJtX2RldmljZSAqZHJtX2RldiwKIAl9CiAKIAlyZXQgPSBtdGtfZHJtX2NydGNfaW5pdChk
+cm1fZGV2LCBtdGtfY3J0YywgJm10a19jcnRjLT5wbGFuZXNbMF0sCi0JCQkJJm10a19jcnRjLT5w
+bGFuZXNbMV0sIHBpcGUpOworCQkJCW10a19jcnRjLT5sYXllcl9uciA+IDEgPyAmbXRrX2NydGMt
+PnBsYW5lc1sxXSA6CisJCQkJTlVMTCwgcGlwZSk7CiAJaWYgKHJldCA8IDApCiAJCWdvdG8gdW5w
+cmVwYXJlOwogCWRybV9tb2RlX2NydGNfc2V0X2dhbW1hX3NpemUoJm10a19jcnRjLT5iYXNlLCBN
+VEtfTFVUX1NJWkUpOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+cm1fY3J0Yy5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5oCmluZGV4
+IDlkOTQxMGM2N2FlOS4uNjBiY2M4YWJhOGUzIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2RybV9jcnRjLmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kcm1fY3J0Yy5oCkBAIC0xOCw3ICsxOCw2IEBACiAjaW5jbHVkZSAibXRrX2RybV9kZHBfY29t
+cC5oIgogI2luY2x1ZGUgIm10a19kcm1fcGxhbmUuaCIKIAotI2RlZmluZSBPVkxfTEFZRVJfTlIJ
+NAogI2RlZmluZSBNVEtfTFVUX1NJWkUJNTEyCiAjZGVmaW5lIE1US19NQVhfQlBDCTEwCiAjZGVm
+aW5lIE1US19NSU5fQlBDCTMKLS0gCjIuMTIuNS4yLmdiZGYyM2FiCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
