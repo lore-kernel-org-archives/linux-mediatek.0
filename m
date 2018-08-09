@@ -1,72 +1,58 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v4 08/14] drm/mediatek: add YUYV/UYVY color format support for
- RDMA
-Date: Thu, 9 Aug 2018 10:15:43 +0800
-Message-ID: <1533780949-30141-9-git-send-email-stu.hsieh@mediatek.com>
-References: <1533780949-30141-1-git-send-email-stu.hsieh@mediatek.com>
+Subject: [PATCH v4 00/14] Add RDMA memory mode support for mediatek SOC MT2712
+Date: Thu, 9 Aug 2018 10:15:35 +0800
+Message-ID: <1533780949-30141-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1533780949-30141-1-git-send-email-stu.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Stu Hsieh <stu.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhpcyBwYXRjaCBhZGQgWVVZVi9VWVZZIGNvbG9yIGZvcm1hdCBzdXBwb3J0IGZvciBSRE1BCmFu
-ZCB0cmFuc2Zvcm0gbWF0cml4IGZvciBZVVlWL1VZVlkuCgpTaWduZWQtb2ZmLWJ5OiBTdHUgSHNp
-ZWggPHN0dS5oc2llaEBtZWRpYXRlay5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kaXNwX3JkbWEuYyB8IDIwICsrKysrKysrKysrKysrKysrKysrCiAxIGZpbGUgY2hhbmdl
-ZCwgMjAgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZGlzcF9yZG1hLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRt
-YS5jCmluZGV4IDFmNTdmODZjNzkxMC4uOGIwMTVjMmQ0NDE4IDEwMDY0NAotLS0gYS9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMKQEAgLTMzLDYgKzMzLDggQEAKICNkZWZpbmUgUkRNQV9F
-TkdJTkVfRU4JCQkJCUJJVCgwKQogI2RlZmluZSBSRE1BX01PREVfTUVNT1JZCQkJCUJJVCgxKQog
-I2RlZmluZSBESVNQX1JFR19SRE1BX1NJWkVfQ09OXzAJCTB4MDAxNAorI2RlZmluZSBSRE1BX01B
-VFJJWF9FTkFCTEUJCQkJQklUKDE3KQorI2RlZmluZSBSRE1BX01BVFJJWF9JTlRfTVRYX0JUNjAx
-X3RvX1JHQgkJKDYgPDwgMjApCiAjZGVmaW5lIERJU1BfUkVHX1JETUFfU0laRV9DT05fMQkJMHgw
-MDE4CiAjZGVmaW5lIERJU1BfUkVHX1JETUFfVEFSR0VUX0xJTkUJCTB4MDAxYwogI2RlZmluZSBE
-SVNQX1JETUFfTUVNX0NPTgkJCTB4MDAyNApAQCAtNDYsMTIgKzQ4LDE1IEBACiAjZGVmaW5lIFJE
-TUFfRklGT19TSVpFKHJkbWEpCQkJKChyZG1hKS0+ZGF0YS0+Zmlmb19zaXplKQogI2RlZmluZSBE
-SVNQX1JETUFfTUVNX1NUQVJUX0FERFIJCTB4MGYwMAogCisjZGVmaW5lIFJETUFfTUFUUklYX0lO
-VF9NVFhfU0VMCQkJR0VOTUFTSygyMywgMjApCiAjZGVmaW5lIFJETUFfTUVNX0dNQwkJCQkweDQw
-NDAyMDIwCiAKICNkZWZpbmUgTUVNX01PREVfSU5QVVRfRk9STUFUX1JHQjU2NQkJMHgwCiAjZGVm
-aW5lIE1FTV9NT0RFX0lOUFVUX0ZPUk1BVF9SR0I4ODgJCSgweDAwMSA8PCA0KQogI2RlZmluZSBN
-RU1fTU9ERV9JTlBVVF9GT1JNQVRfUkdCQTg4ODgJCSgweDAwMiA8PCA0KQogI2RlZmluZSBNRU1f
-TU9ERV9JTlBVVF9GT1JNQVRfQVJHQjg4ODgJCSgweDAwMyA8PCA0KQorI2RlZmluZSBNRU1fTU9E
-RV9JTlBVVF9GT1JNQVRfVVlWWQkJKDB4MDA0IDw8IDQpCisjZGVmaW5lIE1FTV9NT0RFX0lOUFVU
-X0ZPUk1BVF9ZVVlWCQkoMHgwMDUgPDwgNCkKIAogc3RydWN0IG10a19kaXNwX3JkbWFfZGF0YSB7
-CiAJdW5zaWduZWQgaW50IGZpZm9fc2l6ZTsKQEAgLTE4MSw2ICsxODYsMTAgQEAgc3RhdGljIHVu
-c2lnbmVkIGludCByZG1hX2ZtdF9jb252ZXJ0KHN0cnVjdCBtdGtfZGlzcF9yZG1hICpyZG1hLAog
-CWNhc2UgRFJNX0ZPUk1BVF9YQkdSODg4ODoKIAljYXNlIERSTV9GT1JNQVRfQUJHUjg4ODg6CiAJ
-CXJldHVybiBNRU1fTU9ERV9JTlBVVF9GT1JNQVRfUkdCQTg4ODggfCBNRU1fTU9ERV9JTlBVVF9T
-V0FQOworCWNhc2UgRFJNX0ZPUk1BVF9VWVZZOgorCQlyZXR1cm4gTUVNX01PREVfSU5QVVRfRk9S
-TUFUX1VZVlk7CisJY2FzZSBEUk1fRk9STUFUX1lVWVY6CisJCXJldHVybiBNRU1fTU9ERV9JTlBV
-VF9GT1JNQVRfWVVZVjsKIAl9CiB9CiAKQEAgLTE5Nyw2ICsyMDYsMTcgQEAgc3RhdGljIHZvaWQg
-bXRrX3JkbWFfbGF5ZXJfY29uZmlnKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAsIHVuc2lnbmVk
-IGludCBpZHgsCiAJY29uID0gcmRtYV9mbXRfY29udmVydChyZG1hLCBmbXQpOwogCXdyaXRlbF9y
-ZWxheGVkKGNvbiwgY29tcC0+cmVncyArIERJU1BfUkRNQV9NRU1fQ09OKTsKIAorCWlmIChmbXQg
-PT0gRFJNX0ZPUk1BVF9VWVZZIHx8IGZtdCA9PSBEUk1fRk9STUFUX1lVWVYpIHsKKwkJcmRtYV91
-cGRhdGVfYml0cyhjb21wLCBESVNQX1JFR19SRE1BX1NJWkVfQ09OXzAsCisJCQkJIFJETUFfTUFU
-UklYX0VOQUJMRSwgUkRNQV9NQVRSSVhfRU5BQkxFKTsKKwkJcmRtYV91cGRhdGVfYml0cyhjb21w
-LCBESVNQX1JFR19SRE1BX1NJWkVfQ09OXzAsCisJCQkJIFJETUFfTUFUUklYX0lOVF9NVFhfU0VM
-LAorCQkJCSBSRE1BX01BVFJJWF9JTlRfTVRYX0JUNjAxX3RvX1JHQik7CisJfSBlbHNlIHsKKwkJ
-cmRtYV91cGRhdGVfYml0cyhjb21wLCBESVNQX1JFR19SRE1BX1NJWkVfQ09OXzAsCisJCQkJIFJE
-TUFfTUFUUklYX0VOQUJMRSwgMCk7CisJfQorCiAJd3JpdGVsX3JlbGF4ZWQoYWRkciwgY29tcC0+
-cmVncyArIERJU1BfUkRNQV9NRU1fU1RBUlRfQUREUik7CiAJd3JpdGVsX3JlbGF4ZWQocGl0Y2gs
-IGNvbXAtPnJlZ3MgKyBESVNQX1JETUFfTUVNX1NSQ19QSVRDSCk7CiAJd3JpdGVsKFJETUFfTUVN
-X0dNQywgY29tcC0+cmVncyArIERJU1BfUkRNQV9NRU1fR01DX1NFVFRJTkdfMCk7Ci0tIAoyLjEy
-LjUuMi5nYmRmMjNhYgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
-dmVsCg==
+This patch series add RDMA memory mode support for mediatek SOC MT2712.
+MT2712 has three display data path, including three HW engine,
+two OVL and one RDMA.
+
+The RDMA used in third ddp and it need to be set memory mode,
+then RDMA could read data from memory and output to panel.
+
+Change in v4:
+- Add the comment about naming color format definition for RDMA in patch
+  "drm/mediatek: add memory mode and layer_config for RDMA"
+- Add the comment about naming color format definition for OVL in patch
+  "drm/mediatek: add the comment about color format setting for OVL"
+- Update the naming about matrix definition and Symbolize the mask in patch
+  "drm/mediatek: add YUYV/UYVY color format support for RDMA"
+- remove the word "callback" for title in patch
+  "drm/mediatek: add function to return OVL layer number" and
+  "drm/mediatek: add function to return RDMA layer number"
+- Use single pointer to declare the planes array in patch
+  "drm/mediatek: use layer_nr function to get layer number to init plane"
+
+Stu Hsieh (14):
+  drm/mediatek: add connection from RDMA0 to DPI1
+  drm/mediatek: add connection from RDMA0 to DSI1
+  drm/mediatek: add connection from RDMA1 to DSI0
+  drm/mediatek: add connection from RDMA2 to DSI0
+  drm/mediatek: add memory mode and layer_config for RDMA
+  drm/mediatek: add RGB color format support for RDMA
+  drm/mediatek: add the comment about color format setting for OVL
+  drm/mediatek: add YUYV/UYVY color format support for RDMA
+  drm/mediatek: add function to get layer number for component
+  drm/mediatek: add function to return OVL layer number
+  drm/mediatek: add function to return RDMA layer number
+  drm/mediatek: use layer_nr function to get layer number to init plane
+  drm/mediatek: update some variable name from ovl to comp
+  drm/mediatek: fix connection from RDMA2 to DSI1
+
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c     | 11 ++++
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c    | 93 +++++++++++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 47 ++++++++-------
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  3 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c      | 18 +++++-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  9 +++
+ 6 files changed, 158 insertions(+), 23 deletions(-)
+
+-- 
+2.12.5.2.gbdf23ab
