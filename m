@@ -1,31 +1,36 @@
-From: Peter Wong <peterwonghsbl-g/b1ySJe57IN+BqQ9rBEUg@public.gmane.org>
-Subject: Investment opportunity
-Date: Fri, 10 Aug 2018 20:12:06 +0200 (CEST)
-Message-ID: <20162412.35662.1533924748855.JavaMail.javamailuser@localhost>
-Reply-To: Peter Wong <peterwonghsbl-g/b1ySJe57IN+BqQ9rBEUg@public.gmane.org>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v1 0/2] Bluetooth: mediatek: Add protocol support for MediaTek USB devices
+Date: Sun, 12 Aug 2018 16:46:50 +0800
+Message-ID: <cover.1534062988.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: marcel@holtmann.org, johan.hedberg@gmail.com
+Cc: linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Greetings,
-I am contacting you for an opportunity to invest in any profitable business in your country.
-We also offer a quick loan at low interest rate, please reply on my private e-mail: hsbcpeterwong-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Sincerely: Peter Wong
+From: Sean Wang <sean.wang@mediatek.com>
 
+This adds the support of enabling MT7668U and MT7663U Bluetooth
+function running on the top of btusb driver. The patch also adds
+a newly created file mtkbt.c able to be reused independently from
+the transport type such as UART, USB and SDIO.
 
+Sean Wang (2):
+  Bluetooth: mediatek: Add protocol support for MediaTek MT7668U USB
+    devices
+  Bluetooth: mediatek: Add protocol support for MediaTek MT7663U USB
+    devices
 
+ drivers/bluetooth/Kconfig  |  16 +++
+ drivers/bluetooth/Makefile |   1 +
+ drivers/bluetooth/btmtk.c  | 309 +++++++++++++++++++++++++++++++++++++++++++++
+ drivers/bluetooth/btmtk.h  | 100 +++++++++++++++
+ drivers/bluetooth/btusb.c  | 177 ++++++++++++++++++++++++++
+ 5 files changed, 603 insertions(+)
+ create mode 100644 drivers/bluetooth/btmtk.c
+ create mode 100644 drivers/bluetooth/btmtk.h
 
-----------------------------------------------------
-This email was sent by the shareware version of Postman Professional.
+-- 
+2.7.4
