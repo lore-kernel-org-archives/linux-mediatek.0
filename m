@@ -1,10 +1,12 @@
 From: <sean.wang@mediatek.com>
-Subject: [PATCH v1 0/2] Bluetooth: mediatek: Add protocol support for MediaTek USB devices
-Date: Sun, 12 Aug 2018 16:46:50 +0800
-Message-ID: <cover.1534062988.git.sean.wang@mediatek.com>
+Subject: [PATCH v1 2/2] Bluetooth: mediatek: Add protocol support for MediaTek MT7663U USB devices
+Date: Sun, 12 Aug 2018 16:46:52 +0800
+Message-ID: <faa3b96dd4597b59e8ec7395629f3d3cd44657c3.1534062988.git.sean.wang@mediatek.com>
+References: <cover.1534062988.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1534062988.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: marcel@holtmann.org, johan.hedberg@gmail.com
 Cc: linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
@@ -12,25 +14,51 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-This adds the support of enabling MT7668U and MT7663U Bluetooth
-function running on the top of btusb driver. The patch also adds
-a newly created file mtkbt.c able to be reused independently from
-the transport type such as UART, USB and SDIO.
+This adds the support of enabling MT7663U Bluetooth function running
+on the top of btusb driver.
 
-Sean Wang (2):
-  Bluetooth: mediatek: Add protocol support for MediaTek MT7668U USB
-    devices
-  Bluetooth: mediatek: Add protocol support for MediaTek MT7663U USB
-    devices
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/bluetooth/btmtk.c | 1 +
+ drivers/bluetooth/btmtk.h | 1 +
+ drivers/bluetooth/btusb.c | 3 +++
+ 3 files changed, 5 insertions(+)
 
- drivers/bluetooth/Kconfig  |  16 +++
- drivers/bluetooth/Makefile |   1 +
- drivers/bluetooth/btmtk.c  | 309 +++++++++++++++++++++++++++++++++++++++++++++
- drivers/bluetooth/btmtk.h  | 100 +++++++++++++++
- drivers/bluetooth/btusb.c  | 177 ++++++++++++++++++++++++++
- 5 files changed, 603 insertions(+)
- create mode 100644 drivers/bluetooth/btmtk.c
- create mode 100644 drivers/bluetooth/btmtk.h
-
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 9e39a0a..d46c25d 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -305,4 +305,5 @@ MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
+ MODULE_DESCRIPTION("MediaTek Bluetooth device driver ver " VERSION);
+ MODULE_VERSION(VERSION);
+ MODULE_LICENSE("GPL");
++MODULE_FIRMWARE(FIRMWARE_MT7663);
+ MODULE_FIRMWARE(FIRMWARE_MT7668);
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index 64fc395..f90292c 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -9,6 +9,7 @@
+  *
+  */
+ 
++#define FIRMWARE_MT7663		"mt7663pr2h.bin"
+ #define FIRMWARE_MT7668		"mt7668pr2h.bin"
+ 
+ enum {
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 773238b..56f7862 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2494,6 +2494,9 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
+ 	}
+ 
+ 	switch (dev_id) {
++	case 0x7663:
++		fwname = FIRMWARE_MT7663;
++		break;
+ 	case 0x7668:
+ 		fwname = FIRMWARE_MT7668;
+ 		break;
 -- 
 2.7.4
