@@ -1,46 +1,28 @@
-From: Randy Dunlap <rdunlap@infradead.org>
-Subject: Re: [PATCH] mailbox: mediatek: add module license
-Date: Mon, 13 Aug 2018 15:50:18 -0700
-Message-ID: <e5ccb767-2c8c-b677-42ae-436666570c14@infradead.org>
-References: <20180813214500.3398337-1-arnd@arndb.de>
+From: Josh Boyer <jwboyer-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] linux-firmware: add firmware for mt76x0
+Date: Tue, 14 Aug 2018 10:44:14 -0400
+Message-ID: <CA+5PVA43=DQBdGE4CvpTki5caSyfQ02TgV=6CRHukGzAuhsytQ@mail.gmail.com>
+References: <1533306095-19946-1-git-send-email-sgruszka@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180813214500.3398337-1-arnd@arndb.de>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>, Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: HS Liao <hs.liao@mediatek.com>, CK Hu <ck.hu@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1533306095-19946-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: Linux Firmware <linux-firmware-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux Wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 08/13/2018 02:44 PM, Arnd Bergmann wrote:
-> The missing license tag in the new driver causes a compile-time warning,
-> and may result in the module being unusable if it calls EXPORT_SYMBOL_GPL()
-> functions:
-> 
-> WARNING: modpost: missing MODULE_LICENSE() in drivers/mailbox/mtk-cmdq-mailbox.o
-> 
-> Fixes: 623a6143a845 ("mailbox: mediatek: Add Mediatek CMDQ driver")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+On Fri, Aug 3, 2018 at 10:21 AM Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
+>
+> Add binary firmware for MT7610u based devices.
+>
+> Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 > ---
->  drivers/mailbox/mtk-cmdq-mailbox.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index 6f92c5ee12f7..aec46d5d3506 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -567,3 +567,5 @@ static void __exit cmdq_drv_exit(void)
->  
->  subsys_initcall(cmdq_drv_init);
->  module_exit(cmdq_drv_exit);
-> +
-> +MODULE_LICENSE("GPL v2");
-> 
+>  WHENCE               |   9 +++++++++
+>  mediatek/mt7610u.bin | Bin 0 -> 80288 bytes
+>  2 files changed, 9 insertions(+)
+>  create mode 100644 mediatek/mt7610u.bin
 
-https://lore.kernel.org/lkml/99f4666b-95fc-a1dd-04d3-3d1d803990fb@infradead.org/
+Applied and pushed out.  Thanks.
 
-
--- 
-~Randy
+josh
