@@ -1,28 +1,52 @@
-From: Josh Boyer <jwboyer-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] linux-firmware: add firmware for mt76x0
-Date: Tue, 14 Aug 2018 10:44:14 -0400
-Message-ID: <CA+5PVA43=DQBdGE4CvpTki5caSyfQ02TgV=6CRHukGzAuhsytQ@mail.gmail.com>
-References: <1533306095-19946-1-git-send-email-sgruszka@redhat.com>
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Subject: [PATCH] Bluetooth: mediatek: Fix memory leak
+Date: Tue, 14 Aug 2018 10:10:31 -0500
+Message-ID: <20180814151031.GA25096@embeddedor.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1533306095-19946-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Linux Firmware <linux-firmware-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux Wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>, Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, "Gustavo A. R. Silva" <gustavo@embeddedor.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Aug 3, 2018 at 10:21 AM Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
->
-> Add binary firmware for MT7610u based devices.
->
-> Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-> ---
->  WHENCE               |   9 +++++++++
->  mediatek/mt7610u.bin | Bin 0 -> 80288 bytes
->  2 files changed, 9 insertions(+)
->  create mode 100644 mediatek/mt7610u.bin
+In case memory resources for *fw* were allocated, release them before
+return.
 
-Applied and pushed out.  Thanks.
+Addresses-Coverity-ID: 1472611 ("Resource leak")
+Fixes: 7237c4c9ec92 ("Bluetooth: mediatek: Add protocol support for MediaTek serial devices")
+Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
+---
+ drivers/bluetooth/btmtkuart.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-josh
+diff --git a/drivers/bluetooth/btmtkuart.c b/drivers/bluetooth/btmtkuart.c
+index ed2a5c7..4593baf 100644
+--- a/drivers/bluetooth/btmtkuart.c
++++ b/drivers/bluetooth/btmtkuart.c
+@@ -144,8 +144,10 @@ static int mtk_setup_fw(struct hci_dev *hdev)
+ 	fw_size = fw->size;
+ 
+ 	/* The size of patch header is 30 bytes, should be skip */
+-	if (fw_size < 30)
+-		return -EINVAL;
++	if (fw_size < 30) {
++		err = -EINVAL;
++		goto free_fw;
++	}
+ 
+ 	fw_size -= 30;
+ 	fw_ptr += 30;
+@@ -172,8 +174,8 @@ static int mtk_setup_fw(struct hci_dev *hdev)
+ 		fw_ptr += dlen;
+ 	}
+ 
++free_fw:
+ 	release_firmware(fw);
+-
+ 	return err;
+ }
+ 
+-- 
+2.7.4
