@@ -1,56 +1,74 @@
-From: houlong wei <houlong.wei@mediatek.com>
-Subject: Re: [PATCH v23 3/4] arm64: dts: mt8173: Add GCE node
-Date: Wed, 15 Aug 2018 09:48:14 +0800
-Message-ID: <1534297694.21668.5.camel@mhfsdcap03>
-References: <1532482002-11164-1-git-send-email-houlong.wei@mediatek.com>
-         <1532482002-11164-4-git-send-email-houlong.wei@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v4 00/14] Add RDMA memory mode support for mediatek SOC
+ MT2712
+Date: Wed, 15 Aug 2018 09:55:29 +0800
+Message-ID: <1534298129.29201.3.camel@mtksdaap41>
+References: <1533780949-30141-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1532482002-11164-4-git-send-email-houlong.wei@mediatek.com>
+In-Reply-To: <1533780949-30141-1-git-send-email-stu.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, JassiBrar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>, Bibby Hsieh =?UTF-8?Q?=28=E8=AC=9D=E6=BF=9F=E9=8
+To: Stu Hsieh <stu.hsieh@mediatek.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-07-25 at 09:26 +0800, Houlong Wei wrote:
-> This patch adds the device node of the GCE hardware for CMDQ module.
-> 
-> Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
-> Signed-off-by: HS Liao <hs.liao@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi |   10 ++++++++++
->  1 file changed, 10 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index 94597e3..97b1ec6 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -18,6 +18,7 @@
->  #include <dt-bindings/phy/phy.h>
->  #include <dt-bindings/power/mt8173-power.h>
->  #include <dt-bindings/reset/mt8173-resets.h>
-> +#include <dt-bindings/gce/mt8173-gce.h>
->  #include "mt8173-pinfunc.h"
->  
->  / {
-> @@ -519,6 +520,15 @@
->  			status = "disabled";
->  		};
->  
-> +		gce: mailbox@10212000 {
-> +			compatible = "mediatek,mt8173-gce";
-> +			reg = <0 0x10212000 0 0x1000>;
-> +			interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&infracfg CLK_INFRA_GCE>;
-> +			clock-names = "gce";
-> +			#mbox-cells = <3>;
-> +		};
-> +
->  		mipi_tx0: mipi-dphy@10215000 {
->  			compatible = "mediatek,mt8173-mipi-tx";
->  			reg = <0 0x10215000 0 0x1000>;
+Hi, Stu:
 
-Hi Matthias,
-  Could you please review this patch when you are available? Thanks a
-lot.
+For the series, applied to mediatek-drm-next-4.19 [1], but I modified
+'drm/mediatek: add RGB color format support for RDMA' and 'drm/mediatek:
+add YUYV/UYVY color format support for RDMA' because I would like to
+place related register definition together.
+
+[1]
+https://github.com/ckhu-mediatek/linux.git-tags/commits/mediatek-drm-fixes-4.19
+
+Regards,
+CK
+
+On Thu, 2018-08-09 at 10:15 +0800, Stu Hsieh wrote:
+> This patch series add RDMA memory mode support for mediatek SOC MT2712.
+> MT2712 has three display data path, including three HW engine,
+> two OVL and one RDMA.
+> 
+> The RDMA used in third ddp and it need to be set memory mode,
+> then RDMA could read data from memory and output to panel.
+> 
+> Change in v4:
+> - Add the comment about naming color format definition for RDMA in patch
+>   "drm/mediatek: add memory mode and layer_config for RDMA"
+> - Add the comment about naming color format definition for OVL in patch
+>   "drm/mediatek: add the comment about color format setting for OVL"
+> - Update the naming about matrix definition and Symbolize the mask in patch
+>   "drm/mediatek: add YUYV/UYVY color format support for RDMA"
+> - remove the word "callback" for title in patch
+>   "drm/mediatek: add function to return OVL layer number" and
+>   "drm/mediatek: add function to return RDMA layer number"
+> - Use single pointer to declare the planes array in patch
+>   "drm/mediatek: use layer_nr function to get layer number to init plane"
+> 
+> Stu Hsieh (14):
+>   drm/mediatek: add connection from RDMA0 to DPI1
+>   drm/mediatek: add connection from RDMA0 to DSI1
+>   drm/mediatek: add connection from RDMA1 to DSI0
+>   drm/mediatek: add connection from RDMA2 to DSI0
+>   drm/mediatek: add memory mode and layer_config for RDMA
+>   drm/mediatek: add RGB color format support for RDMA
+>   drm/mediatek: add the comment about color format setting for OVL
+>   drm/mediatek: add YUYV/UYVY color format support for RDMA
+>   drm/mediatek: add function to get layer number for component
+>   drm/mediatek: add function to return OVL layer number
+>   drm/mediatek: add function to return RDMA layer number
+>   drm/mediatek: use layer_nr function to get layer number to init plane
+>   drm/mediatek: update some variable name from ovl to comp
+>   drm/mediatek: fix connection from RDMA2 to DSI1
+> 
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c     | 11 ++++
+>  drivers/gpu/drm/mediatek/mtk_disp_rdma.c    | 93 +++++++++++++++++++++++++++++
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 47 ++++++++-------
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  3 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c      | 18 +++++-
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  9 +++
+>  6 files changed, 158 insertions(+), 23 deletions(-)
+> 
