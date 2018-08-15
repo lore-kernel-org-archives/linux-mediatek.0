@@ -1,74 +1,37 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v4 00/14] Add RDMA memory mode support for mediatek SOC
- MT2712
-Date: Wed, 15 Aug 2018 09:55:29 +0800
-Message-ID: <1534298129.29201.3.camel@mtksdaap41>
-References: <1533780949-30141-1-git-send-email-stu.hsieh@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 5/5] dt-bindings: arm: mediatek: add support for bananapi BPI-R64 board
+Date: Wed, 15 Aug 2018 13:18:17 +0800
+Message-ID: <93e3763cee209d7610307565a3ac02a0792417ae.1534130854.git.ryder.lee@mediatek.com>
+References: <68c4ca0158518d6bf50f2f7becfcb87ff3ce158a.1534130854.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1533780949-30141-1-git-send-email-stu.hsieh@mediatek.com>
+In-Reply-To: <68c4ca0158518d6bf50f2f7becfcb87ff3ce158a.1534130854.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Sean Wang <sean.wang@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Stu:
+Update binding document for bananapi BPI-R64 board being supported.
 
-For the series, applied to mediatek-drm-next-4.19 [1], but I modified
-'drm/mediatek: add RGB color format support for RDMA' and 'drm/mediatek:
-add YUYV/UYVY color format support for RDMA' because I would like to
-place related register definition together.
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ Documentation/devicetree/bindings/arm/mediatek.txt | 3 +++
+ 1 file changed, 3 insertions(+)
 
-[1]
-https://github.com/ckhu-mediatek/linux.git-tags/commits/mediatek-drm-fixes-4.19
-
-Regards,
-CK
-
-On Thu, 2018-08-09 at 10:15 +0800, Stu Hsieh wrote:
-> This patch series add RDMA memory mode support for mediatek SOC MT2712.
-> MT2712 has three display data path, including three HW engine,
-> two OVL and one RDMA.
-> 
-> The RDMA used in third ddp and it need to be set memory mode,
-> then RDMA could read data from memory and output to panel.
-> 
-> Change in v4:
-> - Add the comment about naming color format definition for RDMA in patch
->   "drm/mediatek: add memory mode and layer_config for RDMA"
-> - Add the comment about naming color format definition for OVL in patch
->   "drm/mediatek: add the comment about color format setting for OVL"
-> - Update the naming about matrix definition and Symbolize the mask in patch
->   "drm/mediatek: add YUYV/UYVY color format support for RDMA"
-> - remove the word "callback" for title in patch
->   "drm/mediatek: add function to return OVL layer number" and
->   "drm/mediatek: add function to return RDMA layer number"
-> - Use single pointer to declare the planes array in patch
->   "drm/mediatek: use layer_nr function to get layer number to init plane"
-> 
-> Stu Hsieh (14):
->   drm/mediatek: add connection from RDMA0 to DPI1
->   drm/mediatek: add connection from RDMA0 to DSI1
->   drm/mediatek: add connection from RDMA1 to DSI0
->   drm/mediatek: add connection from RDMA2 to DSI0
->   drm/mediatek: add memory mode and layer_config for RDMA
->   drm/mediatek: add RGB color format support for RDMA
->   drm/mediatek: add the comment about color format setting for OVL
->   drm/mediatek: add YUYV/UYVY color format support for RDMA
->   drm/mediatek: add function to get layer number for component
->   drm/mediatek: add function to return OVL layer number
->   drm/mediatek: add function to return RDMA layer number
->   drm/mediatek: use layer_nr function to get layer number to init plane
->   drm/mediatek: update some variable name from ovl to comp
->   drm/mediatek: fix connection from RDMA2 to DSI1
-> 
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c     | 11 ++++
->  drivers/gpu/drm/mediatek/mtk_disp_rdma.c    | 93 +++++++++++++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 47 ++++++++-------
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  3 +-
->  drivers/gpu/drm/mediatek/mtk_drm_ddp.c      | 18 +++++-
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  9 +++
->  6 files changed, 158 insertions(+), 23 deletions(-)
-> 
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt b/Documentation/devicetree/bindings/arm/mediatek.txt
+index 7d21ab3..677fdcf 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek.txt
+@@ -50,6 +50,9 @@ Supported boards:
+ - Reference board variant 1 for MT7622:
+     Required root node properties:
+       - compatible = "mediatek,mt7622-rfb1", "mediatek,mt7622";
++- Bananapi BPI-R64 for MT7622:
++    Required root node properties:
++      - compatible = "bananapi,bpi-r64", "mediatek,mt7622";
+ - Reference board for MT7623a with eMMC:
+     Required root node properties:
+       - compatible = "mediatek,mt7623a-rfb-emmc", "mediatek,mt7623";
+-- 
+1.9.1
