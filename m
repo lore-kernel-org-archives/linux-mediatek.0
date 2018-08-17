@@ -1,253 +1,40 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH 3/5] arm64: dts: mt7622: fix ram size for rfb1
-Date: Thu, 16 Aug 2018 16:07:46 +0800
-Message-ID: <1534406866.31978.47.camel@mtkswgap22>
-References: <68c4ca0158518d6bf50f2f7becfcb87ff3ce158a.1534130854.git.ryder.lee@mediatek.com>
-         <3be2ef51a1dffed93538d256273bdecfc59cdea5.1534130854.git.ryder.lee@mediatek.com>
+From: Saber Rezvani <irsaber-ytc+IHgoah0@public.gmane.org>
+Subject: porting 6797 to upstream kernel
+Date: Fri, 17 Aug 2018 20:12:33 +0430
+Message-ID: <726c100d-945e-3081-1090-f23364b29f5c@zoho.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3be2ef51a1dffed93538d256273bdecfc59cdea5.1534130854.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Roy Luo <cheng-hao.luo@mediatek.com>, Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: "Mr. Matthias Brugger" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, amirhosseinkh-gKUI0J7JwL7FRk3jFJgznQ@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-08-15 at 13:18 +0800, Ryder Lee wrote:
-> Fix ram size and sort nodes in alphabetical order.
-> 
-
-The size of the ram should be selective range from 512 megabytes to 2
-gigabytes depending on what the specific application is being run on the
-Soc and I actually thought 512 megabytes should be the better value for
-the base of rfb1, so 
-
-Acked-by: Sean Wang <sean.wang@mediatek.com>
-
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts | 196 +++++++++++++--------------
->  1 file changed, 98 insertions(+), 98 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> index b783764..033d7d1 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> @@ -51,7 +51,7 @@
->  	};
->  
->  	memory {
-> -		reg = <0 0x40000000 0 0x3F000000>;
-> +		reg = <0 0x40000000 0 0x20000000>;
->  	};
->  
->  	reg_1p8v: regulator-1p8v {
-> @@ -81,6 +81,103 @@
->  	};
->  };
->  
-> +&bch {
-> +	status = "disabled";
-> +};
-> +
-> +&btif {
-> +	status = "okay";
-> +};
-> +
-> +&cir {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&irrx_pins>;
-> +	status = "okay";
-> +};
-> +
-> +&eth {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&eth_pins>;
-> +	status = "okay";
-> +
-> +	gmac1: mac@1 {
-> +		compatible = "mediatek,eth-mac";
-> +		reg = <1>;
-> +		phy-handle = <&phy5>;
-> +	};
-> +
-> +	mdio-bus {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		phy5: ethernet-phy@5 {
-> +			reg = <5>;
-> +			phy-mode = "sgmii";
-> +		};
-> +	};
-> +};
-> +
-> +&i2c1 {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&i2c1_pins>;
-> +	status = "okay";
-> +};
-> +
-> +&i2c2 {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&i2c2_pins>;
-> +	status = "okay";
-> +};
-> +
-> +&mmc0 {
-> +	pinctrl-names = "default", "state_uhs";
-> +	pinctrl-0 = <&emmc_pins_default>;
-> +	pinctrl-1 = <&emmc_pins_uhs>;
-> +	status = "okay";
-> +	bus-width = <8>;
-> +	max-frequency = <50000000>;
-> +	cap-mmc-highspeed;
-> +	mmc-hs200-1_8v;
-> +	vmmc-supply = <&reg_3p3v>;
-> +	vqmmc-supply = <&reg_1p8v>;
-> +	assigned-clocks = <&topckgen CLK_TOP_MSDC30_0_SEL>;
-> +	assigned-clock-parents = <&topckgen CLK_TOP_UNIV48M>;
-> +	non-removable;
-> +};
-> +
-> +&mmc1 {
-> +	pinctrl-names = "default", "state_uhs";
-> +	pinctrl-0 = <&sd0_pins_default>;
-> +	pinctrl-1 = <&sd0_pins_uhs>;
-> +	status = "okay";
-> +	bus-width = <4>;
-> +	max-frequency = <50000000>;
-> +	cap-sd-highspeed;
-> +	r_smpl = <1>;
-> +	cd-gpios = <&pio 81 GPIO_ACTIVE_LOW>;
-> +	vmmc-supply = <&reg_3p3v>;
-> +	vqmmc-supply = <&reg_3p3v>;
-> +	assigned-clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>;
-> +	assigned-clock-parents = <&topckgen CLK_TOP_UNIV48M>;
-> +};
-> +
-> +&nandc {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&parallel_nand_pins>;
-> +	status = "disabled";
-> +};
-> +
-> +&nor_flash {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&spi_nor_pins>;
-> +	status = "disabled";
-> +
-> +	flash@0 {
-> +		compatible = "jedec,spi-nor";
-> +		reg = <0>;
-> +	};
-> +};
-> +
->  &pcie {
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&pcie0_pins>;
-> @@ -344,103 +441,6 @@
->  	};
->  };
->  
-> -&bch {
-> -	status = "disabled";
-> -};
-> -
-> -&btif {
-> -	status = "okay";
-> -};
-> -
-> -&cir {
-> -	pinctrl-names = "default";
-> -	pinctrl-0 = <&irrx_pins>;
-> -	status = "okay";
-> -};
-> -
-> -&eth {
-> -	pinctrl-names = "default";
-> -	pinctrl-0 = <&eth_pins>;
-> -	status = "okay";
-> -
-> -	gmac1: mac@1 {
-> -		compatible = "mediatek,eth-mac";
-> -		reg = <1>;
-> -		phy-handle = <&phy5>;
-> -	};
-> -
-> -	mdio-bus {
-> -		#address-cells = <1>;
-> -		#size-cells = <0>;
-> -
-> -		phy5: ethernet-phy@5 {
-> -			reg = <5>;
-> -			phy-mode = "sgmii";
-> -		};
-> -	};
-> -};
-> -
-> -&i2c1 {
-> -	pinctrl-names = "default";
-> -	pinctrl-0 = <&i2c1_pins>;
-> -	status = "okay";
-> -};
-> -
-> -&i2c2 {
-> -	pinctrl-names = "default";
-> -	pinctrl-0 = <&i2c2_pins>;
-> -	status = "okay";
-> -};
-> -
-> -&mmc0 {
-> -	pinctrl-names = "default", "state_uhs";
-> -	pinctrl-0 = <&emmc_pins_default>;
-> -	pinctrl-1 = <&emmc_pins_uhs>;
-> -	status = "okay";
-> -	bus-width = <8>;
-> -	max-frequency = <50000000>;
-> -	cap-mmc-highspeed;
-> -	mmc-hs200-1_8v;
-> -	vmmc-supply = <&reg_3p3v>;
-> -	vqmmc-supply = <&reg_1p8v>;
-> -	assigned-clocks = <&topckgen CLK_TOP_MSDC30_0_SEL>;
-> -	assigned-clock-parents = <&topckgen CLK_TOP_UNIV48M>;
-> -	non-removable;
-> -};
-> -
-> -&mmc1 {
-> -	pinctrl-names = "default", "state_uhs";
-> -	pinctrl-0 = <&sd0_pins_default>;
-> -	pinctrl-1 = <&sd0_pins_uhs>;
-> -	status = "okay";
-> -	bus-width = <4>;
-> -	max-frequency = <50000000>;
-> -	cap-sd-highspeed;
-> -	r_smpl = <1>;
-> -	cd-gpios = <&pio 81 GPIO_ACTIVE_LOW>;
-> -	vmmc-supply = <&reg_3p3v>;
-> -	vqmmc-supply = <&reg_3p3v>;
-> -	assigned-clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>;
-> -	assigned-clock-parents = <&topckgen CLK_TOP_UNIV48M>;
-> -};
-> -
-> -&nandc {
-> -	pinctrl-names = "default";
-> -	pinctrl-0 = <&parallel_nand_pins>;
-> -	status = "disabled";
-> -};
-> -
-> -&nor_flash {
-> -	pinctrl-names = "default";
-> -	pinctrl-0 = <&spi_nor_pins>;
-> -	status = "disabled";
-> -
-> -	flash@0 {
-> -		compatible = "jedec,spi-nor";
-> -		reg = <0>;
-> -	};
-> -};
-> -
->  &pwm {
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&pwm7_pins>;
+SGksCgoKTXkgZnJpZW5kIGFuZCBJIGhhdmUgZGVjaWRlZCB0byBwb3J0IE1lZGlhdGVrIDY3OTcg
+Ym9hcmQgcGluY3RybCB0byAKdXBzdHJlYW0ga2VybmVsIChyZWdhcmRpbmcgdG8gb3VyIHRhbGtl
+ZCB0byBNYXR0aGlhcykuIEFzIG91ciBkaXNjdXNzaW9uIAp3aXRoIE1hdHRoaWFzLCB3ZSBhcmUg
+cG9yaW5nIHRoZSBkcml2ZXIgYmFzZWQgb24gNzYyMiBwaW5jdHJsIHN0eWxlIGluIAp1cHN0cmVh
+bSBrZXJuZWwuCgpSaWdodCBub3cgd2UgaGF2ZSB0b3RhbGx5IHVuZGVyc3Rvb2QgdGhlIDY3OTcg
+YW5kIDc2MjIgcGluY3RybCBkcml2ZXJzLCAKYnV0IHdlIGRvIG5vdCBrbm93IHdoZXJlIHdlIGNh
+biBmaW5kIHRoZSBkYXRhIG9mIHRoZSBmb2xsb3dpbmfCoCBkYXRhIApzdHJ1Y3R1cmVzOgoKCiDC
+oMKgwqAgKikgc3RydWN0IG10a19waW5fZmllbGRfY2FsYwoKIMKgwqDCoCAqKSBwaW5jdHJsX3Bp
+bl9kZXNjCgoKQXMgb3VyIHNlYXJjaCBvbiBCU1AgcmVwb3NpdG9yeSwgYnJhbmNoIG5hbWU6IGhl
+bGlvLXgyMCB3ZSBmaWd1cmVkIG91dCAKdGhlcmUgYXJlIHNvbWUgZmlsZSBhcyBmb2xsb3dpbmc6
+Cgpkcml2ZXJzL21pc2MvbWVkaWF0ZWsvZ3Bpby9tdDY3OTcvZ3Bpb19jZmcuaAoKYXJjaC9hcm02
+NC9ib290L2R0cy9pbmNsdWRlL2R0LWJpbmRpbmdzL3BpbmN0cmwvbXQ2Nzk3LXBpbmZ1bmMuaAoK
+CkJ1dCB3ZSBoYXZlIG5vdCB5ZXQga25vd24gd2hldGhlciB0aGVzZSBkYXRhIGlzIHVzZWZ1bCBv
+ciBub3QsIGFuZCBpZiAKWWVzLCBob3cgd2UgY2FuIHRyYW5zcG9ydCB0aGVtIGluIDc2MjIgc3R5
+bGVzLgoKCgpCZXN0IHJlZ2FyZHMsCgpTYWJlcgoKCgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4
+LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
