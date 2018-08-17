@@ -1,40 +1,126 @@
-From: Saber Rezvani <irsaber-ytc+IHgoah0@public.gmane.org>
-Subject: porting 6797 to upstream kernel
-Date: Fri, 17 Aug 2018 20:12:33 +0430
-Message-ID: <726c100d-945e-3081-1090-f23364b29f5c@zoho.com>
+From: Boris Brezillon <boris.brezillon@bootlin.com>
+Subject: [PATCH 04/23] mtd: rawnand: Pass a nand_chip object to
+ nand_wait_ready()
+Date: Fri, 17 Aug 2018 18:09:03 +0200
+Message-ID: <20180817160922.6224-5-boris.brezillon@bootlin.com>
+References: <20180817160922.6224-1-boris.brezillon@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: "Mr. Matthias Brugger" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, amirhosseinkh-gKUI0J7JwL7FRk3jFJgznQ@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+In-Reply-To: <20180817160922.6224-1-boris.brezillon@bootlin.com>
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: Boris Brezillon <boris.brezillon@bootlin.com>, Richard Weinberger <richard@nod.at>, Miquel Raynal <miquel.raynal@bootlin.com>, linux-mtd@lists.infradead.org
+Cc: Andrew Lunn <andrew@lunn.ch>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Rich Felker <dalias@libc.org>, linux-doc@vger.kernel.org, Tony Lindgren <tony@atomide.com>, linux-mips@linux-mips.org, Stefan Agner <stefan@agner.ch>, Masahiro Yamada <yamada.masahiro@socionext.com>, Mans Rullgard <mans@mansr.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Jason Cooper <jason@lakedaemon.net>, devel@driverdev.osuosl.org, Maxime Ripard <maxime.ripard@bootlin.com>, Maxim Levitsky <maximlevitsky@gmail.com>, Yoshinori Sato <ysato@users.sourceforge.jp>, Aaro Koskinen <aaro.koskinen@iki.fi>, Gregory Clement <gregory.clement@bootlin.com>, linux-sh@vger.kernel.org, Lukasz Majewski <lukma@denx.de>, Neil Armstrong <narmstrong@baylibre.com>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, NXP Linux Team <linux-imx@nxp.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksCgoKTXkgZnJpZW5kIGFuZCBJIGhhdmUgZGVjaWRlZCB0byBwb3J0IE1lZGlhdGVrIDY3OTcg
-Ym9hcmQgcGluY3RybCB0byAKdXBzdHJlYW0ga2VybmVsIChyZWdhcmRpbmcgdG8gb3VyIHRhbGtl
-ZCB0byBNYXR0aGlhcykuIEFzIG91ciBkaXNjdXNzaW9uIAp3aXRoIE1hdHRoaWFzLCB3ZSBhcmUg
-cG9yaW5nIHRoZSBkcml2ZXIgYmFzZWQgb24gNzYyMiBwaW5jdHJsIHN0eWxlIGluIAp1cHN0cmVh
-bSBrZXJuZWwuCgpSaWdodCBub3cgd2UgaGF2ZSB0b3RhbGx5IHVuZGVyc3Rvb2QgdGhlIDY3OTcg
-YW5kIDc2MjIgcGluY3RybCBkcml2ZXJzLCAKYnV0IHdlIGRvIG5vdCBrbm93IHdoZXJlIHdlIGNh
-biBmaW5kIHRoZSBkYXRhIG9mIHRoZSBmb2xsb3dpbmfCoCBkYXRhIApzdHJ1Y3R1cmVzOgoKCiDC
-oMKgwqAgKikgc3RydWN0IG10a19waW5fZmllbGRfY2FsYwoKIMKgwqDCoCAqKSBwaW5jdHJsX3Bp
-bl9kZXNjCgoKQXMgb3VyIHNlYXJjaCBvbiBCU1AgcmVwb3NpdG9yeSwgYnJhbmNoIG5hbWU6IGhl
-bGlvLXgyMCB3ZSBmaWd1cmVkIG91dCAKdGhlcmUgYXJlIHNvbWUgZmlsZSBhcyBmb2xsb3dpbmc6
-Cgpkcml2ZXJzL21pc2MvbWVkaWF0ZWsvZ3Bpby9tdDY3OTcvZ3Bpb19jZmcuaAoKYXJjaC9hcm02
-NC9ib290L2R0cy9pbmNsdWRlL2R0LWJpbmRpbmdzL3BpbmN0cmwvbXQ2Nzk3LXBpbmZ1bmMuaAoK
-CkJ1dCB3ZSBoYXZlIG5vdCB5ZXQga25vd24gd2hldGhlciB0aGVzZSBkYXRhIGlzIHVzZWZ1bCBv
-ciBub3QsIGFuZCBpZiAKWWVzLCBob3cgd2UgY2FuIHRyYW5zcG9ydCB0aGVtIGluIDc2MjIgc3R5
-bGVzLgoKCgpCZXN0IHJlZ2FyZHMsCgpTYWJlcgoKCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4
-LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Let's make the raw NAND API consistent by patching all helpers to
+take a nand_chip object instead of an mtd_info one.
+
+Now is nand_wait_ready()'s turn.
+
+Signed-off-by: Boris Brezillon <boris.brezillon@bootlin.com>
+---
+ drivers/mtd/nand/raw/bcm47xxnflash/ops_bcm4706.c |  2 +-
+ drivers/mtd/nand/raw/cafe_nand.c                 |  2 +-
+ drivers/mtd/nand/raw/nand_base.c                 | 12 ++++++------
+ include/linux/mtd/rawnand.h                      |  2 +-
+ 4 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/mtd/nand/raw/bcm47xxnflash/ops_bcm4706.c b/drivers/mtd/nand/raw/bcm47xxnflash/ops_bcm4706.c
+index 9b62bc2d25a0..7022ffd271ad 100644
+--- a/drivers/mtd/nand/raw/bcm47xxnflash/ops_bcm4706.c
++++ b/drivers/mtd/nand/raw/bcm47xxnflash/ops_bcm4706.c
+@@ -232,7 +232,7 @@ static void bcm47xxnflash_ops_bcm4706_cmdfunc(struct mtd_info *mtd,
+ 		nand_chip->cmd_ctrl(mtd, command, NAND_CTRL_CLE);
+ 
+ 		ndelay(100);
+-		nand_wait_ready(mtd);
++		nand_wait_ready(nand_chip);
+ 		break;
+ 	case NAND_CMD_READID:
+ 		ctlcode = NCTL_CSA | 0x01000000 | NCTL_CMD1W | NCTL_CMD0;
+diff --git a/drivers/mtd/nand/raw/cafe_nand.c b/drivers/mtd/nand/raw/cafe_nand.c
+index 3304594177c6..94e5f7a56084 100644
+--- a/drivers/mtd/nand/raw/cafe_nand.c
++++ b/drivers/mtd/nand/raw/cafe_nand.c
+@@ -313,7 +313,7 @@ static void cafe_nand_cmdfunc(struct mtd_info *mtd, unsigned command,
+ 		cafe_writel(cafe, cafe->ctl2, NAND_CTRL2);
+ 		return;
+ 	}
+-	nand_wait_ready(mtd);
++	nand_wait_ready(chip);
+ 	cafe_writel(cafe, cafe->ctl2, NAND_CTRL2);
+ }
+ 
+diff --git a/drivers/mtd/nand/raw/nand_base.c b/drivers/mtd/nand/raw/nand_base.c
+index f937efe145af..9d684f1d9e26 100644
+--- a/drivers/mtd/nand/raw/nand_base.c
++++ b/drivers/mtd/nand/raw/nand_base.c
+@@ -624,13 +624,13 @@ static void panic_nand_wait_ready(struct mtd_info *mtd, unsigned long timeo)
+ 
+ /**
+  * nand_wait_ready - [GENERIC] Wait for the ready pin after commands.
+- * @mtd: MTD device structure
++ * @chip: NAND chip object
+  *
+  * Wait for the ready pin after a command, and warn if a timeout occurs.
+  */
+-void nand_wait_ready(struct mtd_info *mtd)
++void nand_wait_ready(struct nand_chip *chip)
+ {
+-	struct nand_chip *chip = mtd_to_nand(mtd);
++	struct mtd_info *mtd = nand_to_mtd(chip);
+ 	unsigned long timeo = 400;
+ 
+ 	if (in_interrupt() || oops_in_progress)
+@@ -852,7 +852,7 @@ static void nand_command(struct mtd_info *mtd, unsigned int command,
+ 	 */
+ 	ndelay(100);
+ 
+-	nand_wait_ready(mtd);
++	nand_wait_ready(chip);
+ }
+ 
+ static void nand_ccs_delay(struct nand_chip *chip)
+@@ -1004,7 +1004,7 @@ static void nand_command_lp(struct mtd_info *mtd, unsigned int command,
+ 	 */
+ 	ndelay(100);
+ 
+-	nand_wait_ready(mtd);
++	nand_wait_ready(chip);
+ }
+ 
+ /**
+@@ -2251,7 +2251,7 @@ static int nand_wait_rdy_op(struct nand_chip *chip, unsigned int timeout_ms,
+ 	if (!chip->dev_ready)
+ 		udelay(chip->chip_delay);
+ 	else
+-		nand_wait_ready(nand_to_mtd(chip));
++		nand_wait_ready(chip);
+ 
+ 	return 0;
+ }
+diff --git a/include/linux/mtd/rawnand.h b/include/linux/mtd/rawnand.h
+index e9c59f0624ad..55014e42912a 100644
+--- a/include/linux/mtd/rawnand.h
++++ b/include/linux/mtd/rawnand.h
+@@ -37,7 +37,7 @@ static inline int nand_scan(struct nand_chip *chip, int max_chips)
+ }
+ 
+ /* Internal helper for board drivers which need to override command function */
+-void nand_wait_ready(struct mtd_info *mtd);
++void nand_wait_ready(struct nand_chip *chip);
+ 
+ /* The maximum number of NAND chips in an array */
+ #define NAND_MAX_CHIPS		8
+-- 
+2.14.1
