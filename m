@@ -1,42 +1,98 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v1 2/5] arm64: dts: mt7622: add a bluetooth 5 device node
-Date: Sun, 19 Aug 2018 00:02:25 +0800
-Message-ID: <347fb990f33680a71b6ac825606333af79e7dfab.1534607107.git.ryder.lee@mediatek.com>
-References: <7d3ce6a89ffeb221dc3197b763521582bf300577.1534607107.git.ryder.lee@mediatek.com>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: porting 6797 to upstream kernel
+Date: Sun, 19 Aug 2018 04:21:31 +0800
+Message-ID: <1534623691.31978.86.camel@mtkswgap22>
+References: <726c100d-945e-3081-1090-f23364b29f5c@zoho.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <7d3ce6a89ffeb221dc3197b763521582bf300577.1534607107.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Sean Wang <sean.wang@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <726c100d-945e-3081-1090-f23364b29f5c-ytc+IHgoah0@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Saber Rezvani <irsaber-ytc+IHgoah0@public.gmane.org>
+Cc: "Mr.
+ Matthias Brugger" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, amirhosseinkh-gKUI0J7JwL7FRk3jFJgznQ@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add a built-in bluetooth 5 support for MT7622.
+Hi, Saber
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Acked-by: Sean Wang <sean.wang@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt7622.dtsi | 7 +++++++
- 1 file changed, 7 insertions(+)
+On Fri, 2018-08-17 at 20:12 +0430, Saber Rezvani wrote:
+> Hi,
+> 
+> 
+> My friend and I have decided to port Mediatek 6797 board pinctrl to 
+> upstream kernel (regarding to our talked to Matthias). As our discussion 
+> with Matthias, we are poring the driver based on 7622 pinctrl style in 
+> upstream kernel.
+> 
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-index d297100..b4d7934 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-@@ -530,6 +530,13 @@
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
- 		status = "disabled";
-+
-+		bluetooth {
-+			compatible = "mediatek,mt7622-bluetooth";
-+			power-domains = <&scpsys MT7622_POWER_DOMAIN_WB>;
-+			clocks = <&clk25m>;
-+			clock-names = "ref";
-+		};
- 	};
+It's really nice to see more people have interests on mediatek soc.
+
+It is actually feasible that mt6797 ported to mt7622 pinctrl style
+driver. In fact, mt7622 driver should be generic enough to allow any
+mediatek soc to be ported to with the driver style even though a certain
+soc owns the irregular register layout.
+
+> Right now we have totally understood the 6797 and 7622 pinctrl drivers, 
+> but we do not know where we can find the data of the following  data 
+> structures:
+> 
+> 
+>      *) struct mtk_pin_field_calc
+
+if you have hardware datasheet, it'd be easy to do this part. otherwise,
+being interpreted from vendor driver is a little annoy but doable, I
+think.
+
+the structure needs to be filled by the information register field per
+pin has about where the register offset it is located at, and
+information required to identify the same field for the neighbor pin.
  
- 	nandc: nfi@1100d000 {
--- 
-1.9.1
+>      *) pinctrl_pin_desc
+> 
+> 
+
+I used to fill the structure with pin number and the name of ballout,
+
+> As our search on BSP repository, branch name: helio-x20 we figured out 
+> there are some file as following:
+> 
+> drivers/misc/mediatek/gpio/mt6797/gpio_cfg.h
+> 
+
+I am not actually sure what content it has, but I guess it the result
+generated by a vendor tool.
+
+> arch/arm64/boot/dts/include/dt-bindings/pinctrl/mt6797-pinfunc.h
+
+it provides pin and its mode the pin can support and can be switched to.
+
+it would be useful and good to develop pinctrl_pin_desc and
+
+and the mode mt6797_xxx_funcs would imply as [1] have that will be
+registered into the generic core lay.
+
+[1] for example with mt7622 pinctrl
+
+https://elixir.bootlin.com/linux/v4.18-rc8/source/drivers/pinctrl/mediatek/pinctrl-mt7622.c#L437
+
+> 
+> But we have not yet known whether these data is useful or not, and if 
+> Yes, how we can transport them in 7622 styles.
+> 
+> 
+> 
+> Best regards,
+> 
+> Saber
+> 
+> 
+> 
