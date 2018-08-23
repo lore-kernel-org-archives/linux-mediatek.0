@@ -1,47 +1,62 @@
-From: Li Yang <leoyang.li@nxp.com>
-Subject: Re: [PATCH] arm64: dts: Fix various entry-method properties to
- reflect documentation
-Date: Thu, 23 Aug 2018 15:46:47 -0500
-Message-ID: <CADRPPNRpquUgwjft=vLNcxy223BLrS=toWii1XExPb7SghGr-A@mail.gmail.com>
-References: <113f28acbc55f64762c9f0bcefe076a811f2ed82.1535014078.git.amit.kucheria@linaro.org>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Subject: [PATCH] mt76: Fix comparisons with invalid hardware key index
+Date: Thu, 23 Aug 2018 23:27:38 +0200
+Message-ID: <20180823212738.18431-1-geert@linux-m68k.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <113f28acbc55f64762c9f0bcefe076a811f2ed82.1535014078.git.amit.kucheria@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: amit.kucheria@linaro.org
-Cc: lkml <linux-kernel@vger.kernel.org>, lorenzo.pieralisi@arm.com, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, liviu.dudau@arm.com, Sudeep Holla <sudeep.holla@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, matthias.bgg@gmail.com, orsonzhai@gmail.com, baolin.wang@linaro.org, zhang.lyra@gmail.com, Michal Simek <michal.simek@xilinx.com>, Shawn Guo <shawnguo@kernel.org>, Zhiqiang Hou <Zhiqiang.Hou@nxp.com>, Minghuan Lian <minghuan.Lian@nxp.com>, andy.tang@nxp.com, Ran Wang <ran.wang_1@nxp.com>, Fabio Estevam <fabio.estevam@nxp.com>, Yao Yuan <yao.yuan@nxp.com>, sumit.garg@nxp.com, Marc Zyngier <marc.zyngier@arm.com>, madalin.bucur@nxp.com, Thomas Gleixner <tglx@linutronix.de>, open list:OPEN FIRMW
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: Kalle Valo <kvalo@codeaurora.org>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Stanislaw Gruszka <sgruszka@redhat.com>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+Cc: Arnd Bergmann <arnd@arndb.de>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Geert Uytterhoeven <geert@linux-m68k.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 23, 2018 at 3:55 AM Amit Kucheria <amit.kucheria@linaro.org> wrote:
->
-> The idle-states binding documentation[1] mentions that the
-> 'entry-method' property is required on 64-bit platforms and must be
-> set to "psci".
->
-> commit a13f18f59d26 ("Documentation: arm: Fix typo in the idle-states
-> bindings examples") attempted to fix this earlier but clearly more is
-> needed.
->
-> Fix the cpu-capacity.txt documentation that uses the incorrect value so
-> we don't get copy-paste errors like these. Clarify the language in
-> idle-states.txt by removing the reference to the psci bindings that
-> might be causing this confusion.
->
-> Finally, fix devicetrees of various boards to reflect current
-> documentation.
->
-> [1] Documentation/devicetree/bindings/arm/idle-states.txt (see
-> idle-states node)
->
-> Signed-off-by: Amit Kucheria <amit.kucheria@linaro.org>
+With gcc 4.1.2:
 
-Acked-by: Li Yang <leoyang.li@nxp.com>
+    drivers/net/wireless/mediatek/mt76/mt76x0/tx.c: In function ‘mt76x0_tx’:
+    drivers/net/wireless/mediatek/mt76/mt76x0/tx.c:169: warning: comparison is always true due to limited range of data type
+    drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c: In function ‘mt76x2_tx’:
+    drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c:35: warning: comparison is always true due to limited range of data type
 
-For fsl/nxp device trees:
+While assigning -1 to a u8 works fine, comparing with -1 does not work
+as expected.
 
->  arch/arm64/boot/dts/freescale/fsl-ls1012a.dtsi         | 2 +-
->  arch/arm64/boot/dts/freescale/fsl-ls1043a.dtsi         | 2 +-
->  arch/arm64/boot/dts/freescale/fsl-ls1046a.dtsi         | 2 +-
+Fix this by comparing with 0xff, like is already done in some other
+places.
 
-- Leo
+Signed-off-by: Geert Uytterhoeven <geert@linux-m68k.org>
+---
+Compile-tested only.
+---
+ drivers/net/wireless/mediatek/mt76/mt76x0/tx.c        | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
+index 751b49c28ae53f0f..c45d05d5aab1d207 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
+@@ -166,7 +166,7 @@ void mt76x0_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
+ 	if (sta) {
+ 		msta = (struct mt76_sta *) sta->drv_priv;
+ 		wcid = &msta->wcid;
+-	} else if (vif && (!info->control.hw_key && wcid->hw_key_idx != -1)) {
++	} else if (vif && (!info->control.hw_key && wcid->hw_key_idx != 0xff)) {
+ 		struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
+ 
+ 		wcid = &mvif->group_wcid;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
+index 36afb166fa3ffd29..c0ca0df84ed8b86a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
+@@ -32,7 +32,7 @@ void mt76x2_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
+ 		msta = (struct mt76x2_sta *)control->sta->drv_priv;
+ 		wcid = &msta->wcid;
+ 		/* sw encrypted frames */
+-		if (!info->control.hw_key && wcid->hw_key_idx != -1)
++		if (!info->control.hw_key && wcid->hw_key_idx != 0xff)
+ 			control->sta = NULL;
+ 	}
+ 
+-- 
+2.17.1
