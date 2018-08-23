@@ -1,46 +1,191 @@
-From: Boris Brezillon <boris.brezillon@bootlin.com>
-Subject: Re: [PATCH 01/23] mtd: rawnand: plat_nand: Pass a nand_chip object
- to all platform_nand_ctrl hooks
-Date: Wed, 22 Aug 2018 21:24:16 +0200
-Message-ID: <20180822212416.404c47e6@bbrezillon>
-References: <20180817160922.6224-1-boris.brezillon@bootlin.com>
- <20180817160922.6224-2-boris.brezillon@bootlin.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-In-Reply-To: <20180817160922.6224-2-boris.brezillon@bootlin.com>
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Boris Brezillon <boris.brezillon@bootlin.com>, Richard Weinberger <richard@nod.at>, Miquel Raynal <miquel.raynal@bootlin.com>, linux-mtd@lists.infradead.org
-Cc: Andrew Lunn <andrew@lunn.ch>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Rich Felker <dalias@libc.org>, linux-doc@vger.kernel.org, Tony Lindgren <tony@atomide.com>, linux-mips@linux-mips.org, Stefan Agner <stefan@agner.ch>, Masahiro Yamada <yamada.masahiro@socionext.com>, Mans Rullgard <mans@mansr.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Jason Cooper <jason@lakedaemon.net>, devel@driverdev.osuosl.org, Maxime Ripard <maxime.ripard@bootlin.com>, Maxim Levitsky <maximlevitsky@gmail.com>, Yoshinori Sato <ysato@users.sourceforge.jp>, Aaro Koskinen <aaro.koskinen@iki.fi>, Gregory Clement <gregory.clement@bootlin.com>, linux-sh@vger.kernel.org, Lukasz Majewski <lukma@denx.de>, Neil Armstrong <narmstrong@baylibre.com>, Marek Vasut <marek.vasut@gmail.com>, Chen-Yu Tsai <wens@csie.org>, NXP Linux Team <linux-imx@nxp.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>
+From: Amit Kucheria <amit.kucheria@linaro.org>
+Subject: [PATCH] arm64: dts: Fix various entry-method properties to reflect documentation
+Date: Thu, 23 Aug 2018 14:23:29 +0530
+Message-ID: <113f28acbc55f64762c9f0bcefe076a811f2ed82.1535014078.git.amit.kucheria@linaro.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: lorenzo.pieralisi@arm.com, robh+dt@kernel.org, Mark Rutland <mark.rutland@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linaro.org>, Chunyan Zhang <zhang.lyra@gmail.com>, Michal Simek <michal.simek@xilinx.com>, Shawn Guo <shawnguo@kernel.org>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Minghuan Lian <minghuan.Lian@nxp.com>, Yuantian Tang <andy.tang@nxp.com>, Ran Wang <ran.wang_1@nxp.com>, Fabio Estevam <fabio.estevam@nxp.com>, Yuan Yao <yao.yuan@nxp.com>, Sumit Garg <sumit.garg@nxp.com>, Marc Zyngier <marc.zyngier@arm.com>, Mada
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 17 Aug 2018 18:09:00 +0200
-Boris Brezillon <boris.brezillon@bootlin.com> wrote:
+The idle-states binding documentation[1] mentions that the
+'entry-method' property is required on 64-bit platforms and must be
+set to "psci".
 
-> Let's make the raw NAND API consistent by patching all helpers and
-> hooks to take a nand_chip object instead of an mtd_info one or
-> remove the mtd_info object when both are passed.
-> 
-> In order to do that, we first need to update the platform_nand_ctrl
-> hooks to take a nand_chip object instead of an mtd_info.
-> 
-> We had temporary plat_nand_xxx() wrappers to the do the mtd -> chip
+commit a13f18f59d26 ("Documentation: arm: Fix typo in the idle-states
+bindings examples") attempted to fix this earlier but clearly more is
+needed.
 
-     ^ add
+Fix the cpu-capacity.txt documentation that uses the incorrect value so
+we don't get copy-paste errors like these. Clarify the language in
+idle-states.txt by removing the reference to the psci bindings that
+might be causing this confusion.
 
-> conversion, but those will be dropped when doing the patching nand_chip
+Finally, fix devicetrees of various boards to reflect current
+documentation.
 
-					     ^ s/doing the//
+[1] Documentation/devicetree/bindings/arm/idle-states.txt (see
+idle-states node)
 
-> hooks to take a nand_chip object.
+Signed-off-by: Amit Kucheria <amit.kucheria@linaro.org>
+---
+ Documentation/devicetree/bindings/arm/cpu-capacity.txt | 2 +-
+ Documentation/devicetree/bindings/arm/idle-states.txt  | 4 ++--
+ arch/arm64/boot/dts/arm/juno-r1.dts                    | 2 +-
+ arch/arm64/boot/dts/arm/juno-r2.dts                    | 2 +-
+ arch/arm64/boot/dts/arm/juno.dts                       | 2 +-
+ arch/arm64/boot/dts/freescale/fsl-ls1012a.dtsi         | 2 +-
+ arch/arm64/boot/dts/freescale/fsl-ls1043a.dtsi         | 2 +-
+ arch/arm64/boot/dts/freescale/fsl-ls1046a.dtsi         | 2 +-
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi              | 2 +-
+ arch/arm64/boot/dts/sprd/sc9860.dtsi                   | 2 +-
+ arch/arm64/boot/dts/xilinx/zynqmp.dtsi                 | 2 +-
+ 11 files changed, 12 insertions(+), 12 deletions(-)
 
-Will fix those typos in v2.
+diff --git a/Documentation/devicetree/bindings/arm/cpu-capacity.txt b/Documentation/devicetree/bindings/arm/cpu-capacity.txt
+index 7809fbe0cdb7..9b5685a1d15d 100644
+--- a/Documentation/devicetree/bindings/arm/cpu-capacity.txt
++++ b/Documentation/devicetree/bindings/arm/cpu-capacity.txt
+@@ -94,7 +94,7 @@ cpus {
+ 	};
+ 
+ 	idle-states {
+-		entry-method = "arm,psci";
++		entry-method = "psci";
+ 
+ 		CPU_SLEEP_0: cpu-sleep-0 {
+ 			compatible = "arm,idle-state";
+diff --git a/Documentation/devicetree/bindings/arm/idle-states.txt b/Documentation/devicetree/bindings/arm/idle-states.txt
+index 7a591333f2b1..2c73847499ab 100644
+--- a/Documentation/devicetree/bindings/arm/idle-states.txt
++++ b/Documentation/devicetree/bindings/arm/idle-states.txt
+@@ -237,8 +237,8 @@ processor idle states, defined as device tree nodes, are listed.
+ 		Value type: <stringlist>
+ 		Usage and definition depend on ARM architecture version.
+ 			# On ARM v8 64-bit this property is required and must
+-			  be one of:
+-			   - "psci" (see bindings in [2])
++			  be:
++			   - "psci"
+ 			# On ARM 32-bit systems this property is optional
+ 
+ The nodes describing the idle states (state) can only be defined within the
+diff --git a/arch/arm64/boot/dts/arm/juno-r1.dts b/arch/arm64/boot/dts/arm/juno-r1.dts
+index 2c5db03f226c..b2b7ced633cf 100644
+--- a/arch/arm64/boot/dts/arm/juno-r1.dts
++++ b/arch/arm64/boot/dts/arm/juno-r1.dts
+@@ -63,7 +63,7 @@
+ 		};
+ 
+ 		idle-states {
+-			entry-method = "arm,psci";
++			entry-method = "psci";
+ 
+ 			CPU_SLEEP_0: cpu-sleep-0 {
+ 				compatible = "arm,idle-state";
+diff --git a/arch/arm64/boot/dts/arm/juno-r2.dts b/arch/arm64/boot/dts/arm/juno-r2.dts
+index c51950f4a1b6..ab77adb4f3c2 100644
+--- a/arch/arm64/boot/dts/arm/juno-r2.dts
++++ b/arch/arm64/boot/dts/arm/juno-r2.dts
+@@ -63,7 +63,7 @@
+ 		};
+ 
+ 		idle-states {
+-			entry-method = "arm,psci";
++			entry-method = "psci";
+ 
+ 			CPU_SLEEP_0: cpu-sleep-0 {
+ 				compatible = "arm,idle-state";
+diff --git a/arch/arm64/boot/dts/arm/juno.dts b/arch/arm64/boot/dts/arm/juno.dts
+index 2b2bf39c30ef..1fb5c5a0f32e 100644
+--- a/arch/arm64/boot/dts/arm/juno.dts
++++ b/arch/arm64/boot/dts/arm/juno.dts
+@@ -62,7 +62,7 @@
+ 		};
+ 
+ 		idle-states {
+-			entry-method = "arm,psci";
++			entry-method = "psci";
+ 
+ 			CPU_SLEEP_0: cpu-sleep-0 {
+ 				compatible = "arm,idle-state";
+diff --git a/arch/arm64/boot/dts/freescale/fsl-ls1012a.dtsi b/arch/arm64/boot/dts/freescale/fsl-ls1012a.dtsi
+index 205f0f4c5df0..3a2784117139 100644
+--- a/arch/arm64/boot/dts/freescale/fsl-ls1012a.dtsi
++++ b/arch/arm64/boot/dts/freescale/fsl-ls1012a.dtsi
+@@ -79,7 +79,7 @@
+ 		 * PSCI node is not added default, U-boot will add missing
+ 		 * parts if it determines to use PSCI.
+ 		 */
+-		entry-method = "arm,psci";
++		entry-method = "psci";
+ 
+ 		CPU_PH20: cpu-ph20 {
+ 			compatible = "arm,idle-state";
+diff --git a/arch/arm64/boot/dts/freescale/fsl-ls1043a.dtsi b/arch/arm64/boot/dts/freescale/fsl-ls1043a.dtsi
+index 1109f22bda5e..e238b86e95fb 100644
+--- a/arch/arm64/boot/dts/freescale/fsl-ls1043a.dtsi
++++ b/arch/arm64/boot/dts/freescale/fsl-ls1043a.dtsi
+@@ -121,7 +121,7 @@
+ 		 * PSCI node is not added default, U-boot will add missing
+ 		 * parts if it determines to use PSCI.
+ 		 */
+-		entry-method = "arm,psci";
++		entry-method = "psci";
+ 
+ 		CPU_PH20: cpu-ph20 {
+ 			compatible = "arm,idle-state";
+diff --git a/arch/arm64/boot/dts/freescale/fsl-ls1046a.dtsi b/arch/arm64/boot/dts/freescale/fsl-ls1046a.dtsi
+index 136ebfa9b333..1b200f7be0ba 100644
+--- a/arch/arm64/boot/dts/freescale/fsl-ls1046a.dtsi
++++ b/arch/arm64/boot/dts/freescale/fsl-ls1046a.dtsi
+@@ -117,7 +117,7 @@
+ 		 * PSCI node is not added default, U-boot will add missing
+ 		 * parts if it determines to use PSCI.
+ 		 */
+-		entry-method = "arm,psci";
++		entry-method = "psci";
+ 
+ 		CPU_PH20: cpu-ph20 {
+ 			compatible = "arm,idle-state";
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+index 6d8532af8346..75cc0f7cc088 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+@@ -119,7 +119,7 @@
+ 		};
+ 
+ 		idle-states {
+-			entry-method = "arm,psci";
++			entry-method = "psci";
+ 
+ 			CPU_SLEEP_0: cpu-sleep-0 {
+ 				compatible = "arm,idle-state";
+diff --git a/arch/arm64/boot/dts/sprd/sc9860.dtsi b/arch/arm64/boot/dts/sprd/sc9860.dtsi
+index 3f5160d2f130..48f5928ed45c 100644
+--- a/arch/arm64/boot/dts/sprd/sc9860.dtsi
++++ b/arch/arm64/boot/dts/sprd/sc9860.dtsi
+@@ -114,7 +114,7 @@
+ 	};
+ 
+ 	idle-states{
+-		entry-method = "arm,psci";
++		entry-method = "psci";
+ 
+ 		CORE_PD: core_pd {
+ 			compatible = "arm,idle-state";
+diff --git a/arch/arm64/boot/dts/xilinx/zynqmp.dtsi b/arch/arm64/boot/dts/xilinx/zynqmp.dtsi
+index a091e6f03014..29ce23422acf 100644
+--- a/arch/arm64/boot/dts/xilinx/zynqmp.dtsi
++++ b/arch/arm64/boot/dts/xilinx/zynqmp.dtsi
+@@ -58,7 +58,7 @@
+ 		};
+ 
+ 		idle-states {
+-			entry-method = "arm,psci";
++			entry-method = "psci";
+ 
+ 			CPU_SLEEP_0: cpu-sleep-0 {
+ 				compatible = "arm,idle-state";
+-- 
+2.17.1
