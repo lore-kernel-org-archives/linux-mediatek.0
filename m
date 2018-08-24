@@ -1,62 +1,36 @@
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: [PATCH] mt76: Fix comparisons with invalid hardware key index
-Date: Thu, 23 Aug 2018 23:27:38 +0200
-Message-ID: <20180823212738.18431-1-geert@linux-m68k.org>
+From: Stanislaw Gruszka <sgruszka@redhat.com>
+Subject: Re: [PATCH] mt76: Fix comparisons with invalid hardware key index
+Date: Fri, 24 Aug 2018 10:08:18 +0200
+Message-ID: <20180824080817.GA6651@redhat.com>
+References: <20180823212738.18431-1-geert@linux-m68k.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: Kalle Valo <kvalo@codeaurora.org>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Stanislaw Gruszka <sgruszka@redhat.com>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Geert Uytterhoeven <geert@linux-m68k.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20180823212738.18431-1-geert@linux-m68k.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Kalle Valo <kvalo@codeaurora.org>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Arnd Bergmann <arnd@arndb.de>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-With gcc 4.1.2:
+On Thu, Aug 23, 2018 at 11:27:38PM +0200, Geert Uytterhoeven wrote:
+> With gcc 4.1.2:
+> 
+>     drivers/net/wireless/mediatek/mt76/mt76x0/tx.c: In function ‘mt76x0_tx’:
+>     drivers/net/wireless/mediatek/mt76/mt76x0/tx.c:169: warning: comparison is always true due to limited range of data type
+>     drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c: In function ‘mt76x2_tx’:
+>     drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c:35: warning: comparison is always true due to limited range of data type
+> 
+> While assigning -1 to a u8 works fine, comparing with -1 does not work
+> as expected.
+> 
+> Fix this by comparing with 0xff, like is already done in some other
+> places.
+> 
+> Signed-off-by: Geert Uytterhoeven <geert@linux-m68k.org>
 
-    drivers/net/wireless/mediatek/mt76/mt76x0/tx.c: In function ‘mt76x0_tx’:
-    drivers/net/wireless/mediatek/mt76/mt76x0/tx.c:169: warning: comparison is always true due to limited range of data type
-    drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c: In function ‘mt76x2_tx’:
-    drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c:35: warning: comparison is always true due to limited range of data type
+Ack for mt76x0. I think Lorenzo already posted patch for mt76x2.
 
-While assigning -1 to a u8 works fine, comparing with -1 does not work
-as expected.
-
-Fix this by comparing with 0xff, like is already done in some other
-places.
-
-Signed-off-by: Geert Uytterhoeven <geert@linux-m68k.org>
----
-Compile-tested only.
----
- drivers/net/wireless/mediatek/mt76/mt76x0/tx.c        | 2 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
-index 751b49c28ae53f0f..c45d05d5aab1d207 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
-@@ -166,7 +166,7 @@ void mt76x0_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
- 	if (sta) {
- 		msta = (struct mt76_sta *) sta->drv_priv;
- 		wcid = &msta->wcid;
--	} else if (vif && (!info->control.hw_key && wcid->hw_key_idx != -1)) {
-+	} else if (vif && (!info->control.hw_key && wcid->hw_key_idx != 0xff)) {
- 		struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
- 
- 		wcid = &mvif->group_wcid;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
-index 36afb166fa3ffd29..c0ca0df84ed8b86a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
-@@ -32,7 +32,7 @@ void mt76x2_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
- 		msta = (struct mt76x2_sta *)control->sta->drv_priv;
- 		wcid = &msta->wcid;
- 		/* sw encrypted frames */
--		if (!info->control.hw_key && wcid->hw_key_idx != -1)
-+		if (!info->control.hw_key && wcid->hw_key_idx != 0xff)
- 			control->sta = NULL;
- 	}
- 
--- 
-2.17.1
+Thanks
+Stanislaw
