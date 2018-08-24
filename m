@@ -1,50 +1,81 @@
-From: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [PATCH] mt76: Fix comparisons with invalid hardware key index
-Date: Fri, 24 Aug 2018 11:20:35 +0300
-Message-ID: <87pny8jhv0.fsf@kamboji.qca.qualcomm.com>
-References: <20180823212738.18431-1-geert@linux-m68k.org>
-        <20180824080817.GA6651@redhat.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180824080817.GA6651@redhat.com> (Stanislaw Gruszka's message
-        of "Fri, 24 Aug 2018 10:08:18 +0200")
-Sender: linux-kernel-owner@vger.kernel.org
-To: Stanislaw Gruszka <sgruszka@redhat.com>
-Cc: Geert Uytterhoeven <geert@linux-m68k.org>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Arnd Bergmann <arnd@arndb.de>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH 00/17] mt76 patches 2018-08-24
+Date: Fri, 24 Aug 2018 13:15:04 +0200
+Message-ID: <1535109321-17126-1-git-send-email-sgruszka@redhat.com>
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Stanislaw Gruszka <sgruszka@redhat.com> writes:
+This is the begin work of integration between mt76x0 and mt76x2.
 
-> On Thu, Aug 23, 2018 at 11:27:38PM +0200, Geert Uytterhoeven wrote:
->> With gcc 4.1.2:
->>=20
->>     drivers/net/wireless/mediatek/mt76/mt76x0/tx.c: In function =E2=80=
-=98mt76x0_tx=E2=80=99:
->>     drivers/net/wireless/mediatek/mt76/mt76x0/tx.c:169: warning:
->> comparison is always true due to limited range of data type
->>     drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c: In function =
-=E2=80=98mt76x2_tx=E2=80=99:
->>     drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c:35:
->> warning: comparison is always true due to limited range of data type
->>=20
->> While assigning -1 to a u8 works fine, comparing with -1 does not work
->> as expected.
->>=20
->> Fix this by comparing with 0xff, like is already done in some other
->> places.
->>=20
->> Signed-off-by: Geert Uytterhoeven <geert@linux-m68k.org>
->
-> Ack for mt76x0. I think Lorenzo already posted patch for mt76x2.
+Further development can be seen here:
+https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft-v2
 
-Yeah, Lorenzo's patch is here:
+Stanislaw Gruszka (17):
+  mt76: unify wait_for_mac
+  mt76: rename mt76x2_regs.h
+  mt76: merge mt76x0/regs.h into mt76xx_regs.h
+  mt76: create new mt76xx-lib module for common mt76x{0,2} code
+  mt76: fix mt76xx-lib module license
+  mt76: unify mac_get_key_info
+  mt76: add helpers for register access with mt76_dev struct
+  mt76: unify mac_shared_key_setup
+  mt76: unify mt76xx_mac_wcid_set_key
+  mt76: unify mac_wcid_setup
+  mt76: use mac_wcid_set_drop in mt76x0
+  mt76x0: use mt76_wcid_free in mt76x0
+  mt76: unify mt76xx_vif struct
+  mt76: unify sta stucture part 1
+  mt76: unify sta structure part 2
+  mt76x0: initalize custom tx queues
+  mt76x0: use mt76xx_sta and mt76xx_tx_status
 
-https://patchwork.kernel.org/patch/10570555/
+ drivers/net/wireless/mediatek/mt76/Kconfig         |   6 +
+ drivers/net/wireless/mediatek/mt76/Makefile        |   3 +
+ drivers/net/wireless/mediatek/mt76/mac80211.c      |   1 +
+ drivers/net/wireless/mediatek/mt76/mt76.h          |  13 +
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c   |  37 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/mac.c    | 126 +---
+ drivers/net/wireless/mediatek/mt76/mt76x0/mac.h    |   8 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/main.c   | 127 ++--
+ drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c    |   4 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  35 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/regs.h   | 651 --------------------
+ drivers/net/wireless/mediatek/mt76/mt76x0/trace.h  |   4 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/tx.c     |   8 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/usb.c    |   5 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2.h        |  50 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_common.c |  99 +--
+ drivers/net/wireless/mediatek/mt76/mt76x2_init.c   |  15 +-
+ .../wireless/mediatek/mt76/mt76x2_init_common.c    |   4 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_mac.c    |   4 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_mac.h    |  21 +-
+ .../net/wireless/mediatek/mt76/mt76x2_mac_common.c | 130 +---
+ drivers/net/wireless/mediatek/mt76/mt76x2_main.c   |  47 +-
+ .../net/wireless/mediatek/mt76/mt76x2_phy_common.c |   4 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_regs.h   | 619 -------------------
+ drivers/net/wireless/mediatek/mt76/mt76x2_trace.h  |   2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_tx.c     |   8 +-
+ .../net/wireless/mediatek/mt76/mt76x2_tx_common.c  |   8 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2u_core.c  |   2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2u_init.c  |   8 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2u_mac.c   |   2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2u_main.c  |  29 +-
+ drivers/net/wireless/mediatek/mt76/mt76xx_mac.c    | 157 +++++
+ drivers/net/wireless/mediatek/mt76/mt76xx_mac.h    |  85 +++
+ drivers/net/wireless/mediatek/mt76/mt76xx_regs.h   | 685 +++++++++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76xx_util.c   |  55 ++
+ drivers/net/wireless/mediatek/mt76/mt76xx_util.h   |  25 +
+ 36 files changed, 1226 insertions(+), 1861 deletions(-)
+ delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/regs.h
+ delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x2_regs.h
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76xx_mac.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76xx_mac.h
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76xx_regs.h
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76xx_util.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76xx_util.h
 
-As Geert's patch seems to be more complete I'm planning to take Geert's
-version.
-
---=20
-Kalle Valo
+-- 
+1.9.3
