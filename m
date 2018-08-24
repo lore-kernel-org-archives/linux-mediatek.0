@@ -1,81 +1,222 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 00/17] mt76 patches 2018-08-24
-Date: Fri, 24 Aug 2018 13:15:04 +0200
-Message-ID: <1535109321-17126-1-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 01/17] mt76: unify wait_for_mac
+Date: Fri, 24 Aug 2018 13:15:05 +0200
+Message-ID: <1535109321-17126-2-git-send-email-sgruszka@redhat.com>
+References: <1535109321-17126-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1535109321-17126-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This is the begin work of integration between mt76x0 and mt76x2.
+Create new mt76xx_mac.h for common mac functions of mt76x0 and mt76x2
+and unity wait_for_mac for both drivers.
 
-Further development can be seen here:
-https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft-v2
-
-Stanislaw Gruszka (17):
-  mt76: unify wait_for_mac
-  mt76: rename mt76x2_regs.h
-  mt76: merge mt76x0/regs.h into mt76xx_regs.h
-  mt76: create new mt76xx-lib module for common mt76x{0,2} code
-  mt76: fix mt76xx-lib module license
-  mt76: unify mac_get_key_info
-  mt76: add helpers for register access with mt76_dev struct
-  mt76: unify mac_shared_key_setup
-  mt76: unify mt76xx_mac_wcid_set_key
-  mt76: unify mac_wcid_setup
-  mt76: use mac_wcid_set_drop in mt76x0
-  mt76x0: use mt76_wcid_free in mt76x0
-  mt76: unify mt76xx_vif struct
-  mt76: unify sta stucture part 1
-  mt76: unify sta structure part 2
-  mt76x0: initalize custom tx queues
-  mt76x0: use mt76xx_sta and mt76xx_tx_status
-
- drivers/net/wireless/mediatek/mt76/Kconfig         |   6 +
- drivers/net/wireless/mediatek/mt76/Makefile        |   3 +
- drivers/net/wireless/mediatek/mt76/mac80211.c      |   1 +
- drivers/net/wireless/mediatek/mt76/mt76.h          |  13 +
- drivers/net/wireless/mediatek/mt76/mt76x0/init.c   |  37 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/mac.c    | 126 +---
- drivers/net/wireless/mediatek/mt76/mt76x0/mac.h    |   8 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/main.c   | 127 ++--
- drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c    |   4 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  35 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/regs.h   | 651 --------------------
- drivers/net/wireless/mediatek/mt76/mt76x0/trace.h  |   4 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/tx.c     |   8 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/usb.c    |   5 +-
- drivers/net/wireless/mediatek/mt76/mt76x2.h        |  50 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_common.c |  99 +--
- drivers/net/wireless/mediatek/mt76/mt76x2_init.c   |  15 +-
- .../wireless/mediatek/mt76/mt76x2_init_common.c    |   4 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_mac.c    |   4 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_mac.h    |  21 +-
- .../net/wireless/mediatek/mt76/mt76x2_mac_common.c | 130 +---
- drivers/net/wireless/mediatek/mt76/mt76x2_main.c   |  47 +-
- .../net/wireless/mediatek/mt76/mt76x2_phy_common.c |   4 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_regs.h   | 619 -------------------
- drivers/net/wireless/mediatek/mt76/mt76x2_trace.h  |   2 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_tx.c     |   8 +-
- .../net/wireless/mediatek/mt76/mt76x2_tx_common.c  |   8 +-
- drivers/net/wireless/mediatek/mt76/mt76x2u_core.c  |   2 +-
- drivers/net/wireless/mediatek/mt76/mt76x2u_init.c  |   8 +-
- drivers/net/wireless/mediatek/mt76/mt76x2u_mac.c   |   2 +-
- drivers/net/wireless/mediatek/mt76/mt76x2u_main.c  |  29 +-
- drivers/net/wireless/mediatek/mt76/mt76xx_mac.c    | 157 +++++
- drivers/net/wireless/mediatek/mt76/mt76xx_mac.h    |  85 +++
- drivers/net/wireless/mediatek/mt76/mt76xx_regs.h   | 685 +++++++++++++++++++++
- drivers/net/wireless/mediatek/mt76/mt76xx_util.c   |  55 ++
- drivers/net/wireless/mediatek/mt76/mt76xx_util.h   |  25 +
- 36 files changed, 1226 insertions(+), 1861 deletions(-)
- delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/regs.h
- delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x2_regs.h
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt76xx_mac.c
+Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c   | 11 +++---
+ drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  3 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/usb.c    |  5 +--
+ drivers/net/wireless/mediatek/mt76/mt76x2.h        | 17 ---------
+ drivers/net/wireless/mediatek/mt76/mt76x2_init.c   |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_mac.h    |  1 +
+ drivers/net/wireless/mediatek/mt76/mt76x2u_init.c  |  4 +--
+ drivers/net/wireless/mediatek/mt76/mt76xx_mac.h    | 42 ++++++++++++++++++++++
+ 8 files changed, 57 insertions(+), 28 deletions(-)
  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76xx_mac.h
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt76xx_regs.h
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt76xx_util.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt76xx_util.h
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+index 7cdb3e740522..f6e9ef300761 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+@@ -384,9 +384,11 @@ int mt76x0_init_hardware(struct mt76x0_dev *dev)
+ 
+ 	mt76x0_chip_onoff(dev, true, true);
+ 
+-	ret = mt76x0_wait_asic_ready(dev);
+-	if (ret)
++	if (!mt76xx_wait_for_mac(&dev->mt76)) {
++		ret = -ETIMEDOUT;
+ 		goto err;
++	}
++
+ 	ret = mt76x0_mcu_init(dev);
+ 	if (ret)
+ 		goto err;
+@@ -399,9 +401,10 @@ int mt76x0_init_hardware(struct mt76x0_dev *dev)
+ 	}
+ 
+ 	/* Wait for ASIC ready after FW load. */
+-	ret = mt76x0_wait_asic_ready(dev);
+-	if (ret)
++	if (!mt76xx_wait_for_mac(&dev->mt76)) {
++		ret = -ETIMEDOUT;
+ 		goto err;
++	}
+ 
+ 	mt76x0_reset_csr_bbp(dev);
+ 	mt76x0_init_usb_dma(dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+index fc9857f61771..83aabb60eed8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+@@ -26,6 +26,7 @@
+ #include <linux/debugfs.h>
+ 
+ #include "../mt76.h"
++#include "../mt76xx_mac.h"
+ #include "regs.h"
+ 
+ #define MT_CALIBRATE_INTERVAL		(4 * HZ)
+@@ -263,8 +264,6 @@ static inline bool is_mt7610e(struct mt76x0_dev *dev)
+ 
+ void mt76x0_init_debugfs(struct mt76x0_dev *dev);
+ 
+-int mt76x0_wait_asic_ready(struct mt76x0_dev *dev);
+-
+ /* Compatibility with mt76 */
+ #define mt76_rmw_field(_dev, _reg, _field, _val)	\
+ 	mt76_rmw(_dev, _reg, _field, FIELD_PREP(_field, _val))
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+index 54ae1f113be2..d535012c506e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+@@ -287,9 +287,10 @@ static int mt76x0_probe(struct usb_interface *usb_intf,
+ 	/* Disable the HW, otherwise MCU fail to initalize on hot reboot */
+ 	mt76x0_chip_onoff(dev, false, false);
+ 
+-	ret = mt76x0_wait_asic_ready(dev);
+-	if (ret)
++	if (!mt76xx_wait_for_mac(&dev->mt76)) {
++		ret = -ETIMEDOUT;
+ 		goto err;
++	}
+ 
+ 	asic_rev = mt76_rr(dev, MT_ASIC_VERSION);
+ 	mac_rev = mt76_rr(dev, MT_MAC_CSR0);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2.h b/drivers/net/wireless/mediatek/mt76/mt76x2.h
+index dca3209bf5f1..4c952b8a777c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2.h
+@@ -163,23 +163,6 @@ struct mt76x2_sta {
+ 	int inactive_count;
+ };
+ 
+-static inline bool mt76x2_wait_for_mac(struct mt76x2_dev *dev)
+-{
+-	int i;
+-
+-	for (i = 0; i < 500; i++) {
+-		switch (mt76_rr(dev, MT_MAC_CSR0)) {
+-		case 0:
+-		case ~0:
+-			break;
+-		default:
+-			return true;
+-		}
+-		usleep_range(5000, 10000);
+-	}
+-	return false;
+-}
+-
+ static inline bool is_mt7612(struct mt76x2_dev *dev)
+ {
+ 	return mt76_chip(&dev->mt76) == 0x7612;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_init.c b/drivers/net/wireless/mediatek/mt76/mt76x2_init.c
+index b814391f79ac..d3c846e5504d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_init.c
+@@ -101,7 +101,7 @@ static int mt76x2_mac_reset(struct mt76x2_dev *dev, bool hard)
+ 	u32 val;
+ 	int i, k;
+ 
+-	if (!mt76x2_wait_for_mac(dev))
++	if (!mt76xx_wait_for_mac(&dev->mt76))
+ 		return -ETIMEDOUT;
+ 
+ 	val = mt76_rr(dev, MT_WPDMA_GLO_CFG);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_mac.h b/drivers/net/wireless/mediatek/mt76/mt76x2_mac.h
+index 5af0107ba748..b692208880c4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_mac.h
+@@ -18,6 +18,7 @@
+ #define __MT76x2_MAC_H
+ 
+ #include "mt76.h"
++#include "mt76xx_mac.h"
+ 
+ struct mt76x2_dev;
+ struct mt76x2_sta;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u_init.c b/drivers/net/wireless/mediatek/mt76/mt76x2u_init.c
+index 9b81e7641c06..3c5712f04184 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2u_init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2u_init.c
+@@ -184,7 +184,7 @@ int mt76x2u_init_hardware(struct mt76x2_dev *dev)
+ 	mt76x2_reset_wlan(dev, true);
+ 	mt76x2u_power_on(dev);
+ 
+-	if (!mt76x2_wait_for_mac(dev))
++	if (!mt76xx_wait_for_mac(&dev->mt76))
+ 		return -ETIMEDOUT;
+ 
+ 	err = mt76x2u_mcu_fw_init(dev);
+@@ -197,7 +197,7 @@ int mt76x2u_init_hardware(struct mt76x2_dev *dev)
+ 		return -EIO;
+ 
+ 	/* wait for asic ready after fw load. */
+-	if (!mt76x2_wait_for_mac(dev))
++	if (!mt76xx_wait_for_mac(&dev->mt76))
+ 		return -ETIMEDOUT;
+ 
+ 	mt76_wr(dev, MT_HEADER_TRANS_CTRL_REG, 0);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76xx_mac.h b/drivers/net/wireless/mediatek/mt76/mt76xx_mac.h
+new file mode 100644
+index 000000000000..177f8770136f
+--- /dev/null
++++ b/drivers/net/wireless/mediatek/mt76/mt76xx_mac.h
+@@ -0,0 +1,42 @@
++/*
++ * Copyright (C) 2016 Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
++ * Copyright (C) 2018 Stanislaw Gruszka <stf_xl-5tc4TXWwyLM@public.gmane.org>
++ *
++ * Permission to use, copy, modify, and/or distribute this software for any
++ * purpose with or without fee is hereby granted, provided that the above
++ * copyright notice and this permission notice appear in all copies.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
++ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
++ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
++ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
++ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
++ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
++ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++ */
++
++#ifndef __MT76XX_MAC_H
++#define __MT76XX_MAC_H
++
++static inline bool mt76xx_wait_for_mac(struct mt76_dev *dev)
++{
++	const u32 MAC_CSR0 = 0x1000;
++	int i;
++
++	for (i = 0; i < 500; i++) {
++		if (test_bit(MT76_REMOVED, &dev->state))
++			return -EIO;
++
++		switch (dev->bus->rr(dev, MAC_CSR0)) {
++		case 0:
++		case ~0:
++			break;
++		default:
++			return true;
++		}
++		usleep_range(5000, 10000);
++	}
++	return false;
++}
++
++#endif
 -- 
 1.9.3
