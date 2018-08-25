@@ -1,80 +1,31 @@
-From: Olof Johansson <olof@lixom.net>
-Subject: Re: [PATCH] arm64: dts: Fix various entry-method properties to
- reflect documentation
-Date: Fri, 24 Aug 2018 08:38:04 -0700
-Message-ID: <CAOesGMjcs=h4DHn7coo5iixUUY2GR2wWeTyMWQ_SBE9rrPZQgg@mail.gmail.com>
-References: <113f28acbc55f64762c9f0bcefe076a811f2ed82.1535014078.git.amit.kucheria@linaro.org>
- <20180823153110.GA19131@e107155-lin> <CAHLCerNoRj6GQRF=NJXwc0U+mJNe=06JGADQr7uT-chD2W-J+A@mail.gmail.com>
+From: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+Subject: Re: [PATCH 02/17] mt76: rename mt76x2_regs.h
+Date: Sat, 25 Aug 2018 11:00:39 +0200
+Message-ID: <2172355a-0703-e432-96cb-fba2383c3890@nbd.name>
+References: <1535109321-17126-1-git-send-email-sgruszka@redhat.com>
+ <1535109321-17126-3-git-send-email-sgruszka@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAHLCerNoRj6GQRF=NJXwc0U+mJNe=06JGADQr7uT-chD2W-J+A@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Amit Kucheria <amit.kucheria@linaro.org>
-Cc: Sudeep Holla <sudeep.holla@arm.com>, ARM-SoC Maintainers <arm@kernel.org>, LKML <linux-kernel@vger.kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linaro.org>, Chunyan Zhang <zhang.lyra@gmail.com>, Michal Simek <michal.simek@xilinx.com>, Shawn Guo <shawnguo@kernel.org>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Minghuan Lian <minghuan.Lian@nxp.com>, Yuantian Tang <andy.tang@nxp.com>, Ran Wang <ran.wang_1@nxp.com>, Fabio Estevam <fabio.estevam@nxp.>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1535109321-17126-3-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Content-Language: en-US
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 23, 2018 at 1:02 PM, Amit Kucheria <amit.kucheria@linaro.org> wrote:
-> (Adding arm-soc folks)
->
-> On Thu, Aug 23, 2018 at 9:01 PM, Sudeep Holla <sudeep.holla@arm.com> wrote:
->> Hi Amit,
->>
->> Thanks for fixing this.
->>
->> On Thu, Aug 23, 2018 at 02:23:29PM +0530, Amit Kucheria wrote:
->>> The idle-states binding documentation[1] mentions that the
->>> 'entry-method' property is required on 64-bit platforms and must be
->>> set to "psci".
->>>
->>> commit a13f18f59d26 ("Documentation: arm: Fix typo in the idle-states
->>> bindings examples") attempted to fix this earlier but clearly more is
->>> needed.
->>>
->>
->> In fact, I assumed I fixed things with commit 978fa436231a ("drivers:
->> firmware: psci: unify enable-method binding on ARM {64,32}-bit systems"),
->> but I was wrong. I left quite a few instances including juno dtbs.
->>
->>> Fix the cpu-capacity.txt documentation that uses the incorrect value so
->>> we don't get copy-paste errors like these. Clarify the language in
->>> idle-states.txt by removing the reference to the psci bindings that
->>> might be causing this confusion.
->>>
->>> Finally, fix devicetrees of various boards to reflect current
->>> documentation.
->>>
->>> [1] Documentation/devicetree/bindings/arm/idle-states.txt (see
->>> idle-states node)
->>>
->>> Signed-off-by: Amit Kucheria <amit.kucheria@linaro.org>
->>> ---
->>>  Documentation/devicetree/bindings/arm/cpu-capacity.txt | 2 +-
->>>  Documentation/devicetree/bindings/arm/idle-states.txt  | 4 ++--
->>>  arch/arm64/boot/dts/arm/juno-r1.dts                    | 2 +-
->>>  arch/arm64/boot/dts/arm/juno-r2.dts                    | 2 +-
->>>  arch/arm64/boot/dts/arm/juno.dts                       | 2 +-
->>
->> For all the above files,
->>
->> Acked-by: Sudeep Holla <sudeep.holla@arm.com>
->
-> Thanks for reviewing, Sudeep.
->
->> How do you plan to merge ? I prefer if you can send it via arm-soc as
->> fixes for this cycle with all the necessary acks. Otherwise you may have
->> to split this to send via platform maintainers which is bit mundane.
->
-> I was hoping to get this merged thru arm-soc tree instead of creating
-> a patch per platform. But if anybody feels strongly about it, I'm
-> happy to split them up and feed it through the platform maintainer
-> trees.
+On 2018-08-24 13:15, Stanislaw Gruszka wrote:
+> MAC registers are the same for mt76x0 and mt76x2. Rename mt76x2_regs.h
+> file to reflect that.
+> 
+> Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt76x2.h      |   2 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x2_regs.h | 619 -----------------------
+>  drivers/net/wireless/mediatek/mt76/mt76xx_regs.h | 619 +++++++++++++++++++++++
+I think mt76xx_regs.h is named too generic. MT7603, MT7628, MT7615 and
+all newer chips use a completely different register layout.
+I'd prefer to stick with mt76x2_regs for now and use it for x0 as well.
 
-Given that we're at the tail end of the merge window, before -rc1,
-it's easiest if we just take it directly and platform maintainers base
-their new contents on top of it.
-
-Applying to our next/late (i.e. merge-window-fixes) branch now.
-
-
--Olof
+- Felix
