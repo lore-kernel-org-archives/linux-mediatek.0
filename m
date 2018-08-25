@@ -1,145 +1,94 @@
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 15/16] mt76x0: use mt76u_mcu_fw_send_data for fw uploading
-Date: Sat, 25 Aug 2018 12:40:55 +0200
-Message-ID: <20180825104056.9130-16-lorenzo.bianconi@redhat.com>
+Subject: [PATCH 16/16] mt76x0: remove unused routines for usb_buff alloc/free
+Date: Sat, 25 Aug 2018 12:40:56 +0200
+Message-ID: <20180825104056.9130-17-lorenzo.bianconi@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: nbd-Vt+b4OUoWG0@public.gmane.org
 Cc: sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Use mt76u_mcu_fw_send_data utility routine for firmware uploading and
-remove unused __mt76x0_dma_fw/mt76x0_dma_fw functions
+Remove the following unused routines for usb buffer
+allocation/free/submit:
+- mt76x0_usb_alloc_buf
+- mt76x0_usb_free_buf
+- mt76x0_usb_submit_buf
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- .../net/wireless/mediatek/mt76/mt76x0/mcu.c   | 88 ++-----------------
- 1 file changed, 6 insertions(+), 82 deletions(-)
+ .../net/wireless/mediatek/mt76/mt76x0/usb.c   | 47 -------------------
+ .../net/wireless/mediatek/mt76/mt76x0/usb.h   |  7 ---
+ 2 files changed, 54 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c b/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
-index d49557834658..0a0deaf1c65d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
-@@ -239,83 +239,9 @@ struct mt76_fw {
- 	u8 ilm[];
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+index e2b55d0d31da..4e71a13ff54c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+@@ -46,53 +46,6 @@ static struct usb_device_id mt76x0_device_table[] = {
+ 	{ 0, }
  };
  
--static int __mt76x0_dma_fw(struct mt76x0_dev *dev,
--			    const struct mt76x0_dma_buf *dma_buf,
--			    const void *data, u32 len, u32 dst_addr)
+-bool mt76x0_usb_alloc_buf(struct mt76x0_dev *dev, size_t len,
+-			   struct mt76x0_dma_buf *buf)
 -{
--	DECLARE_COMPLETION_ONSTACK(cmpl);
--	struct mt76x0_dma_buf buf = *dma_buf; /* we need to fake length */
--	__le32 reg;
--	u32 val;
+-	struct usb_device *usb_dev = mt76x0_to_usb_dev(dev);
+-
+-	buf->len = len;
+-	buf->urb = usb_alloc_urb(0, GFP_KERNEL);
+-	buf->buf = usb_alloc_coherent(usb_dev, buf->len, GFP_KERNEL, &buf->dma);
+-
+-	return !buf->urb || !buf->buf;
+-}
+-
+-void mt76x0_usb_free_buf(struct mt76x0_dev *dev, struct mt76x0_dma_buf *buf)
+-{
+-	struct usb_device *usb_dev = mt76x0_to_usb_dev(dev);
+-
+-	usb_free_coherent(usb_dev, buf->len, buf->buf, buf->dma);
+-	usb_free_urb(buf->urb);
+-}
+-
+-int mt76x0_usb_submit_buf(struct mt76x0_dev *dev, int dir, int ep_idx,
+-			   struct mt76x0_dma_buf *buf, gfp_t gfp,
+-			   usb_complete_t complete_fn, void *context)
+-{
+-	struct usb_device *usb_dev = mt76x0_to_usb_dev(dev);
+-	struct mt76_usb *usb = &dev->mt76.usb;
+-	unsigned pipe;
 -	int ret;
 -
--	reg = cpu_to_le32(FIELD_PREP(MT_TXD_INFO_TYPE, DMA_COMMAND) |
--			  FIELD_PREP(MT_TXD_INFO_D_PORT, CPU_TX_PORT) |
--			  FIELD_PREP(MT_TXD_INFO_LEN, len));
--	memcpy(buf.buf, &reg, sizeof(reg));
--	memcpy(buf.buf + sizeof(reg), data, len);
--	memset(buf.buf + sizeof(reg) + len, 0, 8);
+-	if (dir == USB_DIR_IN)
+-		pipe = usb_rcvbulkpipe(usb_dev, usb->in_ep[ep_idx]);
+-	else
+-		pipe = usb_sndbulkpipe(usb_dev, usb->out_ep[ep_idx]);
 -
--	mt76u_single_wr(&dev->mt76, MT_VEND_WRITE_FCE, MT_FCE_DMA_ADDR,
--			dst_addr);
+-	usb_fill_bulk_urb(buf->urb, usb_dev, pipe, buf->buf, buf->len,
+-			  complete_fn, context);
+-	buf->urb->transfer_dma = buf->dma;
+-	buf->urb->transfer_flags |= URB_NO_TRANSFER_DMA_MAP;
 -
--	len = roundup(len, 4);
--	mt76u_single_wr(&dev->mt76, MT_VEND_WRITE_FCE, MT_FCE_DMA_LEN,
--			len << 16);
--
--	buf.len = MT_DMA_HDR_LEN + len + 4;
--	ret = mt76x0_usb_submit_buf(dev, USB_DIR_OUT, MT_EP_OUT_INBAND_CMD,
--				     &buf, GFP_KERNEL,
--				     mt76u_mcu_complete_urb, &cmpl);
+-	trace_mt76x0_submit_urb(&dev->mt76, buf->urb);
+-	ret = usb_submit_urb(buf->urb, gfp);
 -	if (ret)
--		return ret;
--
--	if (!wait_for_completion_timeout(&cmpl, msecs_to_jiffies(1000))) {
--		dev_err(dev->mt76.dev, "Error: firmware upload timed out\n");
--		usb_kill_urb(buf.urb);
--		return -ETIMEDOUT;
--	}
--	if (mt76x0_urb_has_error(buf.urb)) {
--		dev_err(dev->mt76.dev, "Error: firmware upload urb failed:%d\n",
--			buf.urb->status);
--		return buf.urb->status;
--	}
--
--	val = mt76_rr(dev, MT_TX_CPU_FROM_FCE_CPU_DESC_IDX);
--	val++;
--	mt76_wr(dev, MT_TX_CPU_FROM_FCE_CPU_DESC_IDX, val);
--
--	msleep(5);
--
--	return 0;
+-		dev_err(dev->mt76.dev, "Error: submit URB dir:%d ep:%d failed:%d\n",
+-			dir, ep_idx, ret);
+-	return ret;
 -}
 -
--static int
--mt76x0_dma_fw(struct mt76x0_dev *dev, struct mt76x0_dma_buf *dma_buf,
--	       const void *data, int len, u32 dst_addr)
--{
--	int n, ret;
--
--	if (len == 0)
--		return 0;
--
--	n = min(MCU_FW_URB_MAX_PAYLOAD, len);
--	ret = __mt76x0_dma_fw(dev, dma_buf, data, n, dst_addr);
--	if (ret)
--		return ret;
--
--#if 0
--	if (!mt76_poll_msec(dev, MT_MCU_COM_REG1, BIT(31), BIT(31), 500))
--		return -ETIMEDOUT;
--#endif
--
--	return mt76x0_dma_fw(dev, dma_buf, data + n, len - n, dst_addr + n);
--}
--
- static int
- mt76x0_upload_firmware(struct mt76x0_dev *dev, const struct mt76_fw *fw)
+ void mt76x0_addr_wr(struct mt76x0_dev *dev, const u32 offset, const u8 *addr)
  {
--	struct mt76x0_dma_buf dma_buf;
- 	void *ivb;
- 	u32 ilm_len, dlm_len;
- 	int i, ret;
-@@ -323,22 +249,21 @@ mt76x0_upload_firmware(struct mt76x0_dev *dev, const struct mt76_fw *fw)
- 	ivb = kmemdup(fw->ivb, sizeof(fw->ivb), GFP_KERNEL);
- 	if (!ivb)
- 		return -ENOMEM;
--	if (mt76x0_usb_alloc_buf(dev, MCU_FW_URB_SIZE, &dma_buf)) {
--		ret = -ENOMEM;
--		goto error;
--	}
- 
- 	ilm_len = le32_to_cpu(fw->hdr.ilm_len) - sizeof(fw->ivb);
- 	dev_dbg(dev->mt76.dev, "loading FW - ILM %u + IVB %zu\n",
- 		ilm_len, sizeof(fw->ivb));
--	ret = mt76x0_dma_fw(dev, &dma_buf, fw->ilm, ilm_len, sizeof(fw->ivb));
-+	ret = mt76u_mcu_fw_send_data(&dev->mt76, fw->ilm, ilm_len,
-+				     MCU_FW_URB_MAX_PAYLOAD,
-+				     sizeof(fw->ivb));
- 	if (ret)
- 		goto error;
- 
- 	dlm_len = le32_to_cpu(fw->hdr.dlm_len);
- 	dev_dbg(dev->mt76.dev, "loading FW - DLM %u\n", dlm_len);
--	ret = mt76x0_dma_fw(dev, &dma_buf, fw->ilm + ilm_len,
--			     dlm_len, MT_MCU_DLM_OFFSET);
-+	ret = mt76u_mcu_fw_send_data(&dev->mt76, fw->ilm + ilm_len,
-+				     dlm_len, MCU_FW_URB_MAX_PAYLOAD,
-+				     MT_MCU_DLM_OFFSET);
- 	if (ret)
- 		goto error;
- 
-@@ -359,7 +284,6 @@ mt76x0_upload_firmware(struct mt76x0_dev *dev, const struct mt76_fw *fw)
- 	dev_dbg(dev->mt76.dev, "Firmware running!\n");
- error:
- 	kfree(ivb);
--	mt76x0_usb_free_buf(dev, &dma_buf);
- 
- 	return ret;
+ 	mt76_wr(dev, offset, get_unaligned_le32(addr));
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.h b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.h
+index b4a5d98416ab..7bd075319f5b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.h
+@@ -43,11 +43,4 @@ static inline bool mt76x0_urb_has_error(struct urb *urb)
+ 		urb->status != -ESHUTDOWN;
  }
--- 
-2.18.0
+ 
+-bool mt76x0_usb_alloc_buf(struct mt76x0_dev *dev, size_t len,
+-			   struct mt76x0_dma_buf *buf);
+-void mt76x0_usb_free_buf(struct mt76x0_dev *dev, struct mt76x0_dma_buf *buf);
+-int mt76x0_usb_submit_buf(struct mt76x0_dev *dev, int dir, int ep_idx,
+-			   struct mt76x0_dma_buf *buf, gfp_t gfp,
+-			   usb_complete_t complete_fn, void *context);
