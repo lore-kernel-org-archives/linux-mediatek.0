@@ -1,90 +1,69 @@
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 11/16] mt76x0: remove mt76x0_vendor_request routine
-Date: Sat, 25 Aug 2018 12:40:51 +0200
-Message-ID: <20180825104056.9130-12-lorenzo.bianconi@redhat.com>
+Subject: [PATCH 12/16] mt76x0: remove unused mt76x0_wait_asic_ready routine
+Date: Sat, 25 Aug 2018 12:40:52 +0200
+Message-ID: <20180825104056.9130-13-lorenzo.bianconi@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: nbd-Vt+b4OUoWG0@public.gmane.org
 Cc: sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Remove mt76x0_vendor_request routine and use
-mt76u_vendor_request utility function from mt76-usb
-layer in mt76x0_upload_firmware
+Delete core.c source file since, removing mt76x0_wait_asic_ready
+routine, it is no longer needed
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- .../net/wireless/mediatek/mt76/mt76x0/mcu.c   |  5 +--
- .../net/wireless/mediatek/mt76/mt76x0/usb.c   | 31 -------------------
- .../net/wireless/mediatek/mt76/mt76x0/usb.h   |  4 ---
- 3 files changed, 3 insertions(+), 37 deletions(-)
+ .../wireless/mediatek/mt76/mt76x0/Makefile    |  2 +-
+ .../net/wireless/mediatek/mt76/mt76x0/core.c  | 34 -------------------
+ 2 files changed, 1 insertion(+), 35 deletions(-)
+ delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/core.c
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c b/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
-index 3f985c1d45f0..7c2217307828 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
-@@ -488,8 +488,9 @@ mt76x0_upload_firmware(struct mt76x0_dev *dev, const struct mt76_fw *fw)
- 	if (ret)
- 		goto error;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/Makefile b/drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
+index 7843908261ba..2f1721263aa5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
+@@ -2,6 +2,6 @@ obj-$(CONFIG_MT76x0U)    += mt76x0.o
  
--	ret = mt76x0_vendor_request(dev, MT_VEND_DEV_MODE, USB_DIR_OUT,
--				     0x12, 0, ivb, sizeof(fw->ivb));
-+	ret = mt76u_vendor_request(&dev->mt76, MT_VEND_DEV_MODE,
-+				   USB_DIR_OUT | USB_TYPE_VENDOR,
-+				   0x12, 0, ivb, sizeof(fw->ivb));
- 	if (ret < 0)
- 		goto error;
- 	ret = 0;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
-index fcca1e990475..e2b55d0d31da 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
-@@ -93,37 +93,6 @@ int mt76x0_usb_submit_buf(struct mt76x0_dev *dev, int dir, int ep_idx,
- 	return ret;
- }
- 
--int mt76x0_vendor_request(struct mt76x0_dev *dev, const u8 req,
--			   const u8 direction, const u16 val, const u16 offset,
--			   void *buf, const size_t buflen)
+ mt76x0-objs	= \
+ 	usb.o init.o main.o mcu.o trace.o dma.o eeprom.o phy.o \
+-	mac.o util.o debugfs.o tx.o core.o
++	mac.o util.o debugfs.o tx.o
+ # ccflags-y := -DDEBUG
+ CFLAGS_trace.o := -I$(src)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/core.c b/drivers/net/wireless/mediatek/mt76/mt76x0/core.c
+deleted file mode 100644
+index 892803fce842..000000000000
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/core.c
++++ /dev/null
+@@ -1,34 +0,0 @@
+-/*
+- * Copyright (C) 2014 Felix Fietkau <nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+- * Copyright (C) 2015 Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>
+- *
+- * This program is free software; you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License version 2
+- * as published by the Free Software Foundation
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- */
+-
+-#include "mt76x0.h"
+-
+-int mt76x0_wait_asic_ready(struct mt76x0_dev *dev)
 -{
--	int i, ret;
--	struct usb_device *usb_dev = mt76x0_to_usb_dev(dev);
--	const u8 req_type = direction | USB_TYPE_VENDOR | USB_RECIP_DEVICE;
--	const unsigned int pipe = (direction == USB_DIR_IN) ?
--		usb_rcvctrlpipe(usb_dev, 0) : usb_sndctrlpipe(usb_dev, 0);
+-	int i = 100;
+-	u32 val;
 -
--	for (i = 0; i < MT_VEND_REQ_MAX_RETRY; i++) {
--		ret = usb_control_msg(usb_dev, pipe, req, req_type,
--				      val, offset, buf, buflen,
--				      MT_VEND_REQ_TOUT_MS);
--		trace_mt76x0_vend_req(&dev->mt76, pipe, req, req_type, val, offset,
--				  buf, buflen, ret);
+-	do {
+-		if (test_bit(MT76_REMOVED, &dev->mt76.state))
+-			return -EIO;
 -
--		if (ret == -ENODEV)
--			set_bit(MT76_REMOVED, &dev->mt76.state);
--		if (ret >= 0 || ret == -ENODEV)
--			return ret;
+-		val = mt76_rr(dev, MT_MAC_CSR0);
+-		if (val && ~val)
+-			return 0;
 -
--		msleep(5);
--	}
--
--	dev_err(dev->mt76.dev, "Vendor request req:%02x off:%04x failed:%d\n",
--		req, offset, ret);
--
--	return ret;
--}
--
- void mt76x0_addr_wr(struct mt76x0_dev *dev, const u32 offset, const u8 *addr)
- {
- 	mt76_wr(dev, offset, get_unaligned_le32(addr));
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.h b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.h
-index 0d1ba95dcf2e..b4a5d98416ab 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.h
-@@ -50,8 +50,4 @@ int mt76x0_usb_submit_buf(struct mt76x0_dev *dev, int dir, int ep_idx,
- 			   struct mt76x0_dma_buf *buf, gfp_t gfp,
- 			   usb_complete_t complete_fn, void *context);
- 
--int mt76x0_vendor_request(struct mt76x0_dev *dev, const u8 req,
--			   const u8 direction, const u16 val, const u16 offset,
--			   void *buf, const size_t buflen);
+-		udelay(10);
+-	} while (i--);
