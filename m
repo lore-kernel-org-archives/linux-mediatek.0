@@ -1,94 +1,51 @@
-From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 16/16] mt76x0: remove unused routines for usb_buff alloc/free
-Date: Sat, 25 Aug 2018 12:40:56 +0200
-Message-ID: <20180825104056.9130-17-lorenzo.bianconi@redhat.com>
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: nbd-Vt+b4OUoWG0@public.gmane.org
-Cc: sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH 02/17] mt76: rename mt76x2_regs.h
+Date: Sat, 25 Aug 2018 13:31:51 +0200
+Message-ID: <20180825113149.GA13833@redhat.com>
+References: <1535109321-17126-1-git-send-email-sgruszka@redhat.com>
+ <1535109321-17126-3-git-send-email-sgruszka@redhat.com>
+ <2172355a-0703-e432-96cb-fba2383c3890@nbd.name>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <2172355a-0703-e432-96cb-fba2383c3890-Vt+b4OUoWG0@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Remove the following unused routines for usb buffer
-allocation/free/submit:
-- mt76x0_usb_alloc_buf
-- mt76x0_usb_free_buf
-- mt76x0_usb_submit_buf
+On Sat, Aug 25, 2018 at 11:00:39AM +0200, Felix Fietkau wrote:
+> On 2018-08-24 13:15, Stanislaw Gruszka wrote:
+> > MAC registers are the same for mt76x0 and mt76x2. Rename mt76x2_regs.h
+> > file to reflect that.
+> > 
+> > Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+> > ---
+> >  drivers/net/wireless/mediatek/mt76/mt76x2.h      |   2 +-
+> >  drivers/net/wireless/mediatek/mt76/mt76x2_regs.h | 619 -----------------------
+> >  drivers/net/wireless/mediatek/mt76/mt76xx_regs.h | 619 +++++++++++++++++++++++
+> I think mt76xx_regs.h is named too generic. MT7603, MT7628, MT7615 and
+> all newer chips use a completely different register layout.
+> I'd prefer to stick with mt76x2_regs for now and use it for x0 as well.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
----
- .../net/wireless/mediatek/mt76/mt76x0/usb.c   | 47 -------------------
- .../net/wireless/mediatek/mt76/mt76x0/usb.h   |  7 ---
- 2 files changed, 54 deletions(-)
+I thought about that too, but choose it will be better to have some
+prefix that will indicate the function/structure/header is shared between
+the x0 and x2 drivers to not confuse mt76x2 code that is mt76x2 only
+and one that is shared.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
-index e2b55d0d31da..4e71a13ff54c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
-@@ -46,53 +46,6 @@ static struct usb_device_id mt76x0_device_table[] = {
- 	{ 0, }
- };
- 
--bool mt76x0_usb_alloc_buf(struct mt76x0_dev *dev, size_t len,
--			   struct mt76x0_dma_buf *buf)
--{
--	struct usb_device *usb_dev = mt76x0_to_usb_dev(dev);
--
--	buf->len = len;
--	buf->urb = usb_alloc_urb(0, GFP_KERNEL);
--	buf->buf = usb_alloc_coherent(usb_dev, buf->len, GFP_KERNEL, &buf->dma);
--
--	return !buf->urb || !buf->buf;
--}
--
--void mt76x0_usb_free_buf(struct mt76x0_dev *dev, struct mt76x0_dma_buf *buf)
--{
--	struct usb_device *usb_dev = mt76x0_to_usb_dev(dev);
--
--	usb_free_coherent(usb_dev, buf->len, buf->buf, buf->dma);
--	usb_free_urb(buf->urb);
--}
--
--int mt76x0_usb_submit_buf(struct mt76x0_dev *dev, int dir, int ep_idx,
--			   struct mt76x0_dma_buf *buf, gfp_t gfp,
--			   usb_complete_t complete_fn, void *context)
--{
--	struct usb_device *usb_dev = mt76x0_to_usb_dev(dev);
--	struct mt76_usb *usb = &dev->mt76.usb;
--	unsigned pipe;
--	int ret;
--
--	if (dir == USB_DIR_IN)
--		pipe = usb_rcvbulkpipe(usb_dev, usb->in_ep[ep_idx]);
--	else
--		pipe = usb_sndbulkpipe(usb_dev, usb->out_ep[ep_idx]);
--
--	usb_fill_bulk_urb(buf->urb, usb_dev, pipe, buf->buf, buf->len,
--			  complete_fn, context);
--	buf->urb->transfer_dma = buf->dma;
--	buf->urb->transfer_flags |= URB_NO_TRANSFER_DMA_MAP;
--
--	trace_mt76x0_submit_urb(&dev->mt76, buf->urb);
--	ret = usb_submit_urb(buf->urb, gfp);
--	if (ret)
--		dev_err(dev->mt76.dev, "Error: submit URB dir:%d ep:%d failed:%d\n",
--			dir, ep_idx, ret);
--	return ret;
--}
--
- void mt76x0_addr_wr(struct mt76x0_dev *dev, const u32 offset, const u8 *addr)
- {
- 	mt76_wr(dev, offset, get_unaligned_le32(addr));
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.h b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.h
-index b4a5d98416ab..7bd075319f5b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.h
-@@ -43,11 +43,4 @@ static inline bool mt76x0_urb_has_error(struct urb *urb)
- 		urb->status != -ESHUTDOWN;
- }
- 
--bool mt76x0_usb_alloc_buf(struct mt76x0_dev *dev, size_t len,
--			   struct mt76x0_dma_buf *buf);
--void mt76x0_usb_free_buf(struct mt76x0_dev *dev, struct mt76x0_dma_buf *buf);
--int mt76x0_usb_submit_buf(struct mt76x0_dev *dev, int dir, int ep_idx,
--			   struct mt76x0_dma_buf *buf, gfp_t gfp,
--			   usb_complete_t complete_fn, void *context);
+I choose mt76xx name, considered mt76 to be generic prefix shared also 
+between old and new chips. But yeah this mt76xx name also "contains" new
+chips. How about mt76old_ or mt76og_ (old generation) ?
+
+Thanks
+Stanislaw
