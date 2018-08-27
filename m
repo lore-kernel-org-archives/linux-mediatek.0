@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH v2 03/17] mt76: merge mt76x0/regs.h into mt76x02_regs.h
-Date: Mon, 27 Aug 2018 16:56:17 +0200
-Message-ID: <1535381791-14908-4-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH v2 04/17] mt76: create new mt76x02-lib module for common mt76x{0,2} code
+Date: Mon, 27 Aug 2018 16:56:18 +0200
+Message-ID: <1535381791-14908-5-git-send-email-sgruszka@redhat.com>
 References: <1535381791-14908-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1535381791-14908-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,1034 +10,832 @@ To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add missed definitions for mt76x0 into mt76x02_regs.h. Remove
-mt76x0/regs.h and fixup mt76x0 code to adjust to some diffrent
-registers/fields names.
+Move rxfilter and mutex to common structure. Create mt76x02-lib.ko
+for mt76x0 and mt76x2 common functions and create new unified
+mt76x02_configure_filter() function there.
 
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/init.c   |  16 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/mac.c    |  10 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/main.c   |   4 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c    |   4 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |   2 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/regs.h   | 651 ---------------------
- drivers/net/wireless/mediatek/mt76/mt76x02_regs.h  |  74 ++-
- .../net/wireless/mediatek/mt76/mt76x2_mac_common.c |   6 +-
- 8 files changed, 91 insertions(+), 676 deletions(-)
- delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/regs.h
+ drivers/net/wireless/mediatek/mt76/Kconfig         |  6 ++
+ drivers/net/wireless/mediatek/mt76/Makefile        |  3 +
+ drivers/net/wireless/mediatek/mt76/mac80211.c      |  1 +
+ drivers/net/wireless/mediatek/mt76/mt76.h          |  5 ++
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c   |  6 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/main.c   | 69 +++++-----------------
+ drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  3 -
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.c  | 53 +++++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.h  | 25 ++++++++
+ drivers/net/wireless/mediatek/mt76/mt76x2.h        |  5 --
+ drivers/net/wireless/mediatek/mt76/mt76x2_common.c | 42 ++-----------
+ drivers/net/wireless/mediatek/mt76/mt76x2_init.c   |  5 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_main.c   | 37 ++++++------
+ drivers/net/wireless/mediatek/mt76/mt76x2u_init.c  |  4 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2u_mac.c   |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2u_main.c  | 25 ++++----
+ 16 files changed, 150 insertions(+), 141 deletions(-)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_util.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_util.h
 
+diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wireless/mediatek/mt76/Kconfig
+index b6c5f17dca30..6a270e759006 100644
+--- a/drivers/net/wireless/mediatek/mt76/Kconfig
++++ b/drivers/net/wireless/mediatek/mt76/Kconfig
+@@ -5,8 +5,13 @@ config MT76_USB
+ 	tristate
+ 	depends on MT76_CORE
+ 
++config MT76x02_LIB
++	tristate
++	depends on MT76_CORE
++
+ config MT76x2_COMMON
+ 	tristate
++	select MT76x02_LIB
+ 	depends on MT76_CORE
+ 
+ config MT76x0U
+@@ -14,6 +19,7 @@ config MT76x0U
+ 	select MT76_CORE
+ 	depends on MAC80211
+ 	depends on USB
++	select MT76x02_LIB
+ 	help
+ 	  This adds support for MT7610U-based wireless USB dongles.
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
+index 158d10d2716c..7d95f141cd73 100644
+--- a/drivers/net/wireless/mediatek/mt76/Makefile
++++ b/drivers/net/wireless/mediatek/mt76/Makefile
+@@ -1,6 +1,7 @@
+ obj-$(CONFIG_MT76_CORE) += mt76.o
+ obj-$(CONFIG_MT76_USB) += mt76-usb.o
+ obj-$(CONFIG_MT76x0U) += mt76x0/
++obj-$(CONFIG_MT76x02_LIB) += mt76x02-lib.o
+ obj-$(CONFIG_MT76x2_COMMON) += mt76x2-common.o
+ obj-$(CONFIG_MT76x2E) += mt76x2e.o
+ obj-$(CONFIG_MT76x2U) += mt76x2u.o
+@@ -13,6 +14,8 @@ mt76-usb-y := usb.o usb_trace.o usb_mcu.o
+ CFLAGS_trace.o := -I$(src)
+ CFLAGS_usb_trace.o := -I$(src)
+ 
++mt76x02-lib-y := mt76x02_util.o
++
+ mt76x2-common-y := \
+ 	mt76x2_eeprom.o mt76x2_tx_common.o mt76x2_mac_common.o \
+ 	mt76x2_init_common.o mt76x2_common.o mt76x2_phy_common.o \
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
+index 029d54bce9e8..df670d04f5a2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -283,6 +283,7 @@ mt76_alloc_device(unsigned int size, const struct ieee80211_ops *ops)
+ 	spin_lock_init(&dev->rx_lock);
+ 	spin_lock_init(&dev->lock);
+ 	spin_lock_init(&dev->cc_lock);
++	mutex_init(&dev->mutex);
+ 	init_waitqueue_head(&dev->tx_wait);
+ 
+ 	return dev;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 2eab35879163..79017dbd364d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -317,6 +317,9 @@ struct mt76_dev {
+ 
+ 	spinlock_t lock;
+ 	spinlock_t cc_lock;
++
++	struct mutex mutex;
++
+ 	const struct mt76_bus_ops *bus;
+ 	const struct mt76_driver_ops *drv;
+ 	void __iomem *regs;
+@@ -353,6 +356,8 @@ struct mt76_dev {
+ 	bool led_al;
+ 	u8 led_pin;
+ 
++	u32 rxfilter;
++
+ 	struct mt76_usb usb;
+ };
+ 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-index a1883da0543b..f23d1a04b35f 100644
+index f23d1a04b35f..33924643946d 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-@@ -127,9 +127,9 @@ static void mt76x0_init_usb_dma(struct mt76x0_dev *dev)
+@@ -290,14 +290,14 @@ int mt76x0_mac_start(struct mt76x0_dev *dev)
+ 		       MT_WPDMA_GLO_CFG_RX_DMA_BUSY, 0, 200000))
+ 		return -ETIMEDOUT;
  
- 	val = mt76_rr(dev, MT_USB_DMA_CFG);
+-	dev->rxfilter = MT_RX_FILTR_CFG_CRC_ERR |
++	dev->mt76.rxfilter = MT_RX_FILTR_CFG_CRC_ERR |
+ 		MT_RX_FILTR_CFG_PHY_ERR | MT_RX_FILTR_CFG_PROMISC |
+ 		MT_RX_FILTR_CFG_VER_ERR | MT_RX_FILTR_CFG_DUP |
+ 		MT_RX_FILTR_CFG_CFACK | MT_RX_FILTR_CFG_CFEND |
+ 		MT_RX_FILTR_CFG_ACK | MT_RX_FILTR_CFG_CTS |
+ 		MT_RX_FILTR_CFG_RTS | MT_RX_FILTR_CFG_PSPOLL |
+ 		MT_RX_FILTR_CFG_BA | MT_RX_FILTR_CFG_CTRL_RSV;
+-	mt76_wr(dev, MT_RX_FILTR_CFG, dev->rxfilter);
++	mt76_wr(dev, MT_RX_FILTR_CFG, dev->mt76.rxfilter);
  
--	val |= MT_USB_DMA_CFG_RX_DROP_OR_PADDING;
-+	val |= MT_USB_DMA_CFG_RX_DROP_OR_PAD;
- 	mt76_wr(dev, MT_USB_DMA_CFG, val);
--	val &= ~MT_USB_DMA_CFG_RX_DROP_OR_PADDING;
-+	val &= ~MT_USB_DMA_CFG_RX_DROP_OR_PAD;
- 	mt76_wr(dev, MT_USB_DMA_CFG, val);
- }
- 
-@@ -274,12 +274,12 @@ static int mt76x0_init_wcid_attr_mem(struct mt76x0_dev *dev)
- 
- static void mt76x0_reset_counters(struct mt76x0_dev *dev)
- {
--	mt76_rr(dev, MT_RX_STA_CNT0);
--	mt76_rr(dev, MT_RX_STA_CNT1);
--	mt76_rr(dev, MT_RX_STA_CNT2);
--	mt76_rr(dev, MT_TX_STA_CNT0);
--	mt76_rr(dev, MT_TX_STA_CNT1);
--	mt76_rr(dev, MT_TX_STA_CNT2);
-+	mt76_rr(dev, MT_RX_STAT_0);
-+	mt76_rr(dev, MT_RX_STAT_1);
-+	mt76_rr(dev, MT_RX_STAT_2);
-+	mt76_rr(dev, MT_TX_STA_0);
-+	mt76_rr(dev, MT_TX_STA_1);
-+	mt76_rr(dev, MT_TX_STA_2);
- }
- 
- int mt76x0_mac_start(struct mt76x0_dev *dev)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
-index 91a84be36d3b..74e922026c9f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
-@@ -355,8 +355,8 @@ void mt76x0_mac_work(struct work_struct *work)
- 		u32 span;
- 		u64 *stat_base;
- 	} spans[] = {
--		{ MT_RX_STA_CNT0,	3,	dev->stats.rx_stat },
--		{ MT_TX_STA_CNT0,	3,	dev->stats.tx_stat },
-+		{ MT_RX_STAT_0,	3,	dev->stats.rx_stat },
-+		{ MT_TX_STA_0,	3,	dev->stats.tx_stat },
- 		{ MT_TX_AGG_STAT,	1,	dev->stats.aggr_stat },
- 		{ MT_MPDU_DENSITY_CNT,	1,	dev->stats.zero_len_del },
- 		{ MT_TX_AGG_CNT_BASE0,	8,	&dev->stats.aggr_n[0] },
-@@ -566,7 +566,7 @@ u32 mt76x0_mac_process_rx(struct mt76x0_dev *dev, struct sk_buff *skb,
- 	return len;
- }
- 
--static enum mt76_cipher_type
-+static enum mt76x02_cipher_type
- mt76_mac_get_key_info(struct ieee80211_key_conf *key, u8 *key_data)
- {
- 	memset(key_data, 0, 32);
-@@ -595,7 +595,7 @@ mt76_mac_get_key_info(struct ieee80211_key_conf *key, u8 *key_data)
- int mt76x0_mac_wcid_set_key(struct mt76x0_dev *dev, u8 idx,
- 			  struct ieee80211_key_conf *key)
- {
--	enum mt76_cipher_type cipher;
-+	enum mt76x02_cipher_type cipher;
- 	u8 key_data[32];
- 	u8 iv_data[8];
- 	u32 val;
-@@ -636,7 +636,7 @@ int mt76x0_mac_wcid_set_key(struct mt76x0_dev *dev, u8 idx,
- int mt76x0_mac_shared_key_setup(struct mt76x0_dev *dev, u8 vif_idx, u8 key_idx,
- 			      struct ieee80211_key_conf *key)
- {
--	enum mt76_cipher_type cipher;
-+	enum mt76x02_cipher_type cipher;
- 	u8 key_data[32];
- 	u32 val;
- 
+ 	mt76_wr(dev, MT_MAC_SYS_CTRL,
+ 		   MT_MAC_SYS_CTRL_ENABLE_TX | MT_MAC_SYS_CTRL_ENABLE_RX);
+@@ -495,7 +495,7 @@ struct mt76x0_dev *mt76x0_alloc_device(struct device *pdev)
+ 	mutex_init(&dev->usb_ctrl_mtx);
+ 	mutex_init(&dev->reg_atomic_mutex);
+ 	mutex_init(&dev->hw_atomic_mutex);
+-	mutex_init(&dev->mutex);
++	mutex_init(&dev->mt76.mutex);
+ 	spin_lock_init(&dev->tx_lock);
+ 	spin_lock_init(&dev->rx_lock);
+ 	spin_lock_init(&dev->mt76.lock);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
-index cf6ffb1ba4a2..46e458835e58 100644
+index 46e458835e58..8fc270b94819 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
-@@ -166,8 +166,8 @@ mt76x0_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+@@ -15,6 +15,7 @@
  
- 	if (changed & BSS_CHANGED_BASIC_RATES) {
- 		mt76_wr(dev, MT_LEGACY_BASIC_RATE, info->basic_rates);
--		mt76_wr(dev, MT_HT_FBK_CFG0, 0x65432100);
--		mt76_wr(dev, MT_HT_FBK_CFG1, 0xedcba980);
-+		mt76_wr(dev, MT_VHT_HT_FBK_CFG0, 0x65432100);
-+		mt76_wr(dev, MT_VHT_HT_FBK_CFG1, 0xedcba980);
- 		mt76_wr(dev, MT_LG_FBK_CFG0, 0xedcba988);
- 		mt76_wr(dev, MT_LG_FBK_CFG1, 0x00002100);
+ #include "mt76x0.h"
+ #include "mac.h"
++#include "../mt76x02_util.h"
+ #include <linux/etherdevice.h>
+ 
+ static int mt76x0_start(struct ieee80211_hw *hw)
+@@ -22,7 +23,7 @@ static int mt76x0_start(struct ieee80211_hw *hw)
+ 	struct mt76x0_dev *dev = hw->priv;
+ 	int ret;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 
+ 	ret = mt76x0_mac_start(dev);
+ 	if (ret)
+@@ -33,7 +34,7 @@ static int mt76x0_start(struct ieee80211_hw *hw)
+ 	ieee80211_queue_delayed_work(dev->mt76.hw, &dev->cal_work,
+ 				     MT_CALIBRATE_INTERVAL);
+ out:
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ 	return ret;
+ }
+ 
+@@ -41,13 +42,13 @@ static void mt76x0_stop(struct ieee80211_hw *hw)
+ {
+ 	struct mt76x0_dev *dev = hw->priv;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 
+ 	cancel_delayed_work_sync(&dev->cal_work);
+ 	cancel_delayed_work_sync(&dev->mac_work);
+ 	mt76x0_mac_stop(dev);
+ 
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ }
+ 
+ 
+@@ -87,16 +88,7 @@ static int mt76x0_config(struct ieee80211_hw *hw, u32 changed)
+ 	struct mt76x0_dev *dev = hw->priv;
+ 	int ret = 0;
+ 
+-	mutex_lock(&dev->mutex);
+-
+-	if (changed & IEEE80211_CONF_CHANGE_MONITOR) {
+-		if (!(hw->conf.flags & IEEE80211_CONF_MONITOR))
+-			dev->rxfilter |= MT_RX_FILTR_CFG_PROMISC;
+-		else
+-			dev->rxfilter &= ~MT_RX_FILTR_CFG_PROMISC;
+-
+-		mt76_wr(dev, MT_RX_FILTR_CFG, dev->rxfilter);
+-	}
++	mutex_lock(&dev->mt76.mutex);
+ 
+ 	if (changed & IEEE80211_CONF_CHANGE_CHANNEL) {
+ 		ieee80211_stop_queues(hw);
+@@ -104,51 +96,18 @@ static int mt76x0_config(struct ieee80211_hw *hw, u32 changed)
+ 		ieee80211_wake_queues(hw);
  	}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c b/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
-index 8affacbab90a..96e04afc73f4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
-@@ -591,9 +591,9 @@ static int mt76x0_load_firmware(struct mt76x0_dev *dev)
- 	mt76_wr(dev, MT_FCE_SKIP_FS, 3);
  
- 	val = mt76_rr(dev, MT_USB_DMA_CFG);
--	val |= MT_USB_DMA_CFG_TX_WL_DROP;
-+	val |= MT_USB_DMA_CFG_UDMA_TX_WL_DROP;
- 	mt76_wr(dev, MT_USB_DMA_CFG, val);
--	val &= ~MT_USB_DMA_CFG_TX_WL_DROP;
-+	val &= ~MT_USB_DMA_CFG_UDMA_TX_WL_DROP;
- 	mt76_wr(dev, MT_USB_DMA_CFG, val);
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
  
- 	ret = mt76x0_upload_firmware(dev, (const struct mt76_fw *)fw->data);
+ 	return ret;
+ }
+ 
+ static void
+-mt76_configure_filter(struct ieee80211_hw *hw, unsigned int changed_flags,
+-		      unsigned int *total_flags, u64 multicast)
+-{
+-	struct mt76x0_dev *dev = hw->priv;
+-	u32 flags = 0;
+-
+-#define MT76_FILTER(_flag, _hw) do { \
+-		flags |= *total_flags & FIF_##_flag;			\
+-		dev->rxfilter &= ~(_hw);				\
+-		dev->rxfilter |= !(flags & FIF_##_flag) * (_hw);	\
+-	} while (0)
+-
+-	mutex_lock(&dev->mutex);
+-
+-	dev->rxfilter &= ~MT_RX_FILTR_CFG_OTHER_BSS;
+-
+-	MT76_FILTER(FCSFAIL, MT_RX_FILTR_CFG_CRC_ERR);
+-	MT76_FILTER(PLCPFAIL, MT_RX_FILTR_CFG_PHY_ERR);
+-	MT76_FILTER(CONTROL, MT_RX_FILTR_CFG_ACK |
+-			     MT_RX_FILTR_CFG_CTS |
+-			     MT_RX_FILTR_CFG_CFEND |
+-			     MT_RX_FILTR_CFG_CFACK |
+-			     MT_RX_FILTR_CFG_BA |
+-			     MT_RX_FILTR_CFG_CTRL_RSV);
+-	MT76_FILTER(PSPOLL, MT_RX_FILTR_CFG_PSPOLL);
+-
+-	*total_flags = flags;
+-	mt76_wr(dev, MT_RX_FILTR_CFG, dev->rxfilter);
+-
+-	mutex_unlock(&dev->mutex);
+-}
+-
+-static void
+ mt76x0_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 			 struct ieee80211_bss_conf *info, u32 changed)
+ {
+ 	struct mt76x0_dev *dev = hw->priv;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 
+ 	if (changed & BSS_CHANGED_ASSOC)
+ 		mt76x0_phy_con_cal_onoff(dev, info);
+@@ -192,7 +151,7 @@ mt76x0_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	if (changed & BSS_CHANGED_ASSOC)
+ 		mt76x0_phy_recalibrate_after_assoc(dev);
+ 
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ }
+ 
+ static int
+@@ -205,7 +164,7 @@ mt76x0_sta_add(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	int ret = 0;
+ 	int idx = 0;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 
+ 	idx = mt76_wcid_alloc(dev->wcid_mask, ARRAY_SIZE(dev->wcid));
+ 	if (idx < 0) {
+@@ -221,7 +180,7 @@ mt76x0_sta_add(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	mt76x0_mac_set_ampdu_factor(dev);
+ 
+ out:
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ 
+ 	return ret;
+ }
+@@ -234,13 +193,13 @@ mt76x0_sta_remove(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	struct mt76_sta *msta = (struct mt76_sta *) sta->drv_priv;
+ 	int idx = msta->wcid.idx;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 	rcu_assign_pointer(dev->wcid[idx], NULL);
+ 	mt76_set(dev, MT_WCID_DROP(idx), MT_WCID_DROP_MASK(idx));
+ 	dev->wcid_mask[idx / BITS_PER_LONG] &= ~BIT(idx % BITS_PER_LONG);
+ 	mt76x0_mac_wcid_setup(dev, idx, 0, NULL);
+ 	mt76x0_mac_set_ampdu_factor(dev);
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ 
+ 	return 0;
+ }
+@@ -388,7 +347,7 @@ const struct ieee80211_ops mt76x0_ops = {
+ 	.add_interface = mt76x0_add_interface,
+ 	.remove_interface = mt76x0_remove_interface,
+ 	.config = mt76x0_config,
+-	.configure_filter = mt76_configure_filter,
++	.configure_filter = mt76x02_configure_filter,
+ 	.bss_info_changed = mt76x0_bss_info_changed,
+ 	.sta_add = mt76x0_sta_add,
+ 	.sta_remove = mt76x0_sta_remove,
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-index 84d1afc21f57..6c52f73c1b94 100644
+index 6c52f73c1b94..967b262495e7 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-@@ -26,8 +26,8 @@
- #include <linux/debugfs.h>
+@@ -147,8 +147,6 @@ enum mt_bw {
+ struct mt76x0_dev {
+ 	struct mt76_dev mt76; /* must be first */
  
- #include "../mt76.h"
-+#include "../mt76x02_regs.h"
- #include "../mt76x02_mac.h"
--#include "regs.h"
+-	struct mutex mutex;
+-
+ 	struct mutex usb_ctrl_mtx;
+ 	u8 data[32];
  
- #define MT_CALIBRATE_INTERVAL		(4 * HZ)
+@@ -184,7 +182,6 @@ struct mt76x0_dev {
+ 	struct mutex reg_atomic_mutex;
+ 	struct mutex hw_atomic_mutex;
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/regs.h b/drivers/net/wireless/mediatek/mt76/mt76x0/regs.h
-deleted file mode 100644
-index 16bed4aaa242..000000000000
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/regs.h
-+++ /dev/null
-@@ -1,651 +0,0 @@
--/*
-- * Copyright (C) 2014 Felix Fietkau <nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-- * Copyright (C) 2015 Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>
-- * Copyright (C) 2018 Stanislaw Gruszka <stf_xl-5tc4TXWwyLM@public.gmane.org>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2
-- * as published by the Free Software Foundation
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
--
--#ifndef __MT76_REGS_H
--#define __MT76_REGS_H
--
--#include <linux/bitops.h>
--
--#define MT_ASIC_VERSION			0x0000
--
--#define MT76XX_REV_E3		0x22
--#define MT76XX_REV_E4		0x33
--
--#define MT_CMB_CTRL			0x0020
--#define MT_CMB_CTRL_XTAL_RDY		BIT(22)
--#define MT_CMB_CTRL_PLL_LD		BIT(23)
--
--#define MT_EFUSE_CTRL			0x0024
--#define MT_EFUSE_CTRL_AOUT		GENMASK(5, 0)
--#define MT_EFUSE_CTRL_MODE		GENMASK(7, 6)
--#define MT_EFUSE_CTRL_LDO_OFF_TIME	GENMASK(13, 8)
--#define MT_EFUSE_CTRL_LDO_ON_TIME	GENMASK(15, 14)
--#define MT_EFUSE_CTRL_AIN		GENMASK(25, 16)
--#define MT_EFUSE_CTRL_KICK		BIT(30)
--#define MT_EFUSE_CTRL_SEL		BIT(31)
--
--#define MT_EFUSE_DATA_BASE		0x0028
--#define MT_EFUSE_DATA(_n)		(MT_EFUSE_DATA_BASE + ((_n) << 2))
--
--#define MT_COEXCFG0			0x0040
--#define MT_COEXCFG0_COEX_EN		BIT(0)
--
--#define MT_COEXCFG3			0x004c
--
--#define MT_LDO_CTRL_0			0x006c
--#define MT_LDO_CTRL_1			0x0070
--
--#define MT_WLAN_FUN_CTRL		0x0080
--#define MT_WLAN_FUN_CTRL_WLAN_EN	BIT(0)
--#define MT_WLAN_FUN_CTRL_WLAN_CLK_EN	BIT(1)
--#define MT_WLAN_FUN_CTRL_WLAN_RESET_RF	BIT(2)
--
--#define MT_WLAN_FUN_CTRL_WLAN_RESET	BIT(3) /* MT76x0 */
--#define MT_WLAN_FUN_CTRL_CSR_F20M_CKEN	BIT(3) /* MT76x2 */
--
--#define MT_WLAN_FUN_CTRL_PCIE_CLK_REQ	BIT(4)
--#define MT_WLAN_FUN_CTRL_FRC_WL_ANT_SEL	BIT(5)
--#define MT_WLAN_FUN_CTRL_INV_ANT_SEL	BIT(6)
--#define MT_WLAN_FUN_CTRL_WAKE_HOST	BIT(7)
--
--#define MT_WLAN_FUN_CTRL_THERM_RST	BIT(8) /* MT76x2 */
--#define MT_WLAN_FUN_CTRL_THERM_CKEN	BIT(9) /* MT76x2 */
--
--#define MT_WLAN_FUN_CTRL_GPIO_IN	GENMASK(15, 8) /* MT76x0 */
--#define MT_WLAN_FUN_CTRL_GPIO_OUT	GENMASK(23, 16) /* MT76x0 */
--#define MT_WLAN_FUN_CTRL_GPIO_OUT_EN	GENMASK(31, 24) /* MT76x0 */
--
--#define MT_XO_CTRL0			0x0100
--#define MT_XO_CTRL1			0x0104
--#define MT_XO_CTRL2			0x0108
--#define MT_XO_CTRL3			0x010c
--#define MT_XO_CTRL4			0x0110
--
--#define MT_XO_CTRL5			0x0114
--#define MT_XO_CTRL5_C2_VAL		GENMASK(14, 8)
--
--#define MT_XO_CTRL6			0x0118
--#define MT_XO_CTRL6_C2_CTRL		GENMASK(14, 8)
--
--#define MT_XO_CTRL7			0x011c
--
--#define MT_IOCFG_6			0x0124
--#define MT_WLAN_MTC_CTRL		0x10148
--#define MT_WLAN_MTC_CTRL_MTCMOS_PWR_UP	BIT(0)
--#define MT_WLAN_MTC_CTRL_PWR_ACK	BIT(12)
--#define MT_WLAN_MTC_CTRL_PWR_ACK_S	BIT(13)
--#define MT_WLAN_MTC_CTRL_BBP_MEM_PD	GENMASK(19, 16)
--#define MT_WLAN_MTC_CTRL_PBF_MEM_PD	BIT(20)
--#define MT_WLAN_MTC_CTRL_FCE_MEM_PD	BIT(21)
--#define MT_WLAN_MTC_CTRL_TSO_MEM_PD	BIT(22)
--#define MT_WLAN_MTC_CTRL_BBP_MEM_RB	BIT(24)
--#define MT_WLAN_MTC_CTRL_PBF_MEM_RB	BIT(25)
--#define MT_WLAN_MTC_CTRL_FCE_MEM_RB	BIT(26)
--#define MT_WLAN_MTC_CTRL_TSO_MEM_RB	BIT(27)
--#define MT_WLAN_MTC_CTRL_STATE_UP	BIT(28)
--
--#define MT_INT_SOURCE_CSR		0x0200
--#define MT_INT_MASK_CSR			0x0204
--
--#define MT_INT_RX_DONE(_n)		BIT(_n)
--#define MT_INT_RX_DONE_ALL		GENMASK(1, 0)
--#define MT_INT_TX_DONE_ALL		GENMASK(13, 4)
--#define MT_INT_TX_DONE(_n)		BIT(_n + 4)
--#define MT_INT_RX_COHERENT		BIT(16)
--#define MT_INT_TX_COHERENT		BIT(17)
--#define MT_INT_ANY_COHERENT		BIT(18)
--#define MT_INT_MCU_CMD			BIT(19)
--#define MT_INT_TBTT			BIT(20)
--#define MT_INT_PRE_TBTT			BIT(21)
--#define MT_INT_TX_STAT			BIT(22)
--#define MT_INT_AUTO_WAKEUP		BIT(23)
--#define MT_INT_GPTIMER			BIT(24)
--#define MT_INT_RXDELAYINT		BIT(26)
--#define MT_INT_TXDELAYINT		BIT(27)
--
--#define MT_WPDMA_GLO_CFG		0x0208
--#define MT_WPDMA_GLO_CFG_TX_DMA_EN	BIT(0)
--#define MT_WPDMA_GLO_CFG_TX_DMA_BUSY	BIT(1)
--#define MT_WPDMA_GLO_CFG_RX_DMA_EN	BIT(2)
--#define MT_WPDMA_GLO_CFG_RX_DMA_BUSY	BIT(3)
--#define MT_WPDMA_GLO_CFG_DMA_BURST_SIZE	GENMASK(5, 4)
--#define MT_WPDMA_GLO_CFG_TX_WRITEBACK_DONE	BIT(6)
--#define MT_WPDMA_GLO_CFG_BIG_ENDIAN	BIT(7)
--#define MT_WPDMA_GLO_CFG_HDR_SEG_LEN	GENMASK(15, 8)
--#define MT_WPDMA_GLO_CFG_CLK_GATE_DIS	BIT(30)
--#define MT_WPDMA_GLO_CFG_RX_2B_OFFSET	BIT(31)
--
--#define MT_WPDMA_RST_IDX		0x020c
--
--#define MT_WPDMA_DELAY_INT_CFG		0x0210
--
--#define MT_WMM_AIFSN		0x0214
--#define MT_WMM_AIFSN_MASK		GENMASK(3, 0)
--#define MT_WMM_AIFSN_SHIFT(_n)		((_n) * 4)
--
--#define MT_WMM_CWMIN		0x0218
--#define MT_WMM_CWMIN_MASK		GENMASK(3, 0)
--#define MT_WMM_CWMIN_SHIFT(_n)		((_n) * 4)
--
--#define MT_WMM_CWMAX		0x021c
--#define MT_WMM_CWMAX_MASK		GENMASK(3, 0)
--#define MT_WMM_CWMAX_SHIFT(_n)		((_n) * 4)
--
--#define MT_WMM_TXOP_BASE		0x0220
--#define MT_WMM_TXOP(_n)			(MT_WMM_TXOP_BASE + (((_n) / 2) << 2))
--#define MT_WMM_TXOP_SHIFT(_n)		((_n & 1) * 16)
--#define MT_WMM_TXOP_MASK		GENMASK(15, 0)
--
--#define MT_WMM_CTRL			0x0230 /* MT76x0 */
--
--#define MT_FCE_DMA_ADDR			0x0230
--#define MT_FCE_DMA_LEN			0x0234
--
--#define MT_USB_DMA_CFG			0x238
--#define MT_USB_DMA_CFG_RX_BULK_AGG_TOUT	GENMASK(7, 0)
--#define MT_USB_DMA_CFG_RX_BULK_AGG_LMT	GENMASK(15, 8)
--#define MT_USB_DMA_CFG_TX_WL_DROP	BIT(16)
--#define MT_USB_DMA_CFG_WAKEUP_EN	BIT(17)
--#define MT_USB_DMA_CFG_RX_DROP_OR_PADDING	BIT(18)
--#define MT_USB_DMA_CFG_TX_CLR		BIT(19)
--#define MT_USB_DMA_CFG_WL_LPK_EN	BIT(20)
--#define MT_USB_DMA_CFG_RX_BULK_AGG_EN	BIT(21)
--#define MT_USB_DMA_CFG_RX_BULK_EN	BIT(22)
--#define MT_USB_DMA_CFG_TX_BULK_EN	BIT(23)
--#define MT_USB_DMA_CFG_EP_OUT_VALID	GENMASK(29, 24)
--#define MT_USB_DMA_CFG_RX_BUSY		BIT(30)
--#define MT_USB_DMA_CFG_TX_BUSY		BIT(31)
--#if 0
--#define MT_USB_DMA_CFG_TX_CLR		BIT(19)
--#define MT_USB_DMA_CFG_TXOP_HALT	BIT(20)
--#define MT_USB_DMA_CFG_RX_BULK_AGG_EN	BIT(21)
--#define MT_USB_DMA_CFG_RX_BULK_EN	BIT(22)
--#define MT_USB_DMA_CFG_TX_BULK_EN	BIT(23)
--#define MT_USB_DMA_CFG_UDMA_RX_WL_DROP	BIT(25)
--#endif
--
--#define MT_TSO_CTRL			0x0250
--#define MT_HEADER_TRANS_CTRL_REG	0x0260
--
--#define MT_US_CYC_CFG			0x02a4
--#define MT_US_CYC_CNT			GENMASK(7, 0)
--
--#define MT_TX_RING_BASE			0x0300
--#define MT_RX_RING_BASE			0x03c0
--#define MT_RING_SIZE			0x10
--
--#define MT_TX_HW_QUEUE_MCU		8
--#define MT_TX_HW_QUEUE_MGMT		9
--
--#define MT_PBF_SYS_CTRL			0x0400
--#define MT_PBF_SYS_CTRL_MCU_RESET	BIT(0)
--#define MT_PBF_SYS_CTRL_DMA_RESET	BIT(1)
--#define MT_PBF_SYS_CTRL_MAC_RESET	BIT(2)
--#define MT_PBF_SYS_CTRL_PBF_RESET	BIT(3)
--#define MT_PBF_SYS_CTRL_ASY_RESET	BIT(4)
--
--#define MT_PBF_CFG			0x0404
--#define MT_PBF_CFG_TX0Q_EN		BIT(0)
--#define MT_PBF_CFG_TX1Q_EN		BIT(1)
--#define MT_PBF_CFG_TX2Q_EN		BIT(2)
--#define MT_PBF_CFG_TX3Q_EN		BIT(3)
--#define MT_PBF_CFG_RX0Q_EN		BIT(4)
--#define MT_PBF_CFG_RX_DROP_EN		BIT(8)
--
--#define MT_PBF_TX_MAX_PCNT		0x0408
--#define MT_PBF_RX_MAX_PCNT		0x040c
--
--#define MT_BCN_OFFSET_BASE		0x041c
--#define MT_BCN_OFFSET(_n)		(MT_BCN_OFFSET_BASE + ((_n) << 2))
--
--#define MT_RXQ_STA			0x0430
--#define MT_TXQ_STA			0x0434
--#define	MT_RF_CSR_CFG			0x0500
--#define MT_RF_CSR_CFG_DATA		GENMASK(7, 0)
--#define MT_RF_CSR_CFG_REG_ID		GENMASK(13, 8)
--#define MT_RF_CSR_CFG_REG_BANK		GENMASK(17, 14)
--#define MT_RF_CSR_CFG_WR		BIT(30)
--#define MT_RF_CSR_CFG_KICK		BIT(31)
--
--#define MT_RF_BYPASS_0			0x0504
--#define MT_RF_BYPASS_1			0x0508
--#define MT_RF_SETTING_0			0x050c
--
--#define MT_RF_MISC			0x0518
--#define MT_RF_DATA_WRITE		0x0524
--
--#define MT_RF_CTRL			0x0528
--#define MT_RF_CTRL_ADDR			GENMASK(11, 0)
--#define MT_RF_CTRL_WRITE		BIT(12)
--#define MT_RF_CTRL_BUSY			BIT(13)
--#define MT_RF_CTRL_IDX			BIT(16)
--
--#define MT_RF_DATA_READ			0x052c
--
--#define MT_COM_REG0			0x0730
--#define MT_COM_REG1			0x0734
--#define MT_COM_REG2			0x0738
--#define MT_COM_REG3			0x073C
--
--#define MT_FCE_PSE_CTRL			0x0800
--#define MT_FCE_PARAMETERS		0x0804
--#define MT_FCE_CSO			0x0808
--
--#define MT_FCE_L2_STUFF			0x080c
--#define MT_FCE_L2_STUFF_HT_L2_EN	BIT(0)
--#define MT_FCE_L2_STUFF_QOS_L2_EN	BIT(1)
--#define MT_FCE_L2_STUFF_RX_STUFF_EN	BIT(2)
--#define MT_FCE_L2_STUFF_TX_STUFF_EN	BIT(3)
--#define MT_FCE_L2_STUFF_WR_MPDU_LEN_EN	BIT(4)
--#define MT_FCE_L2_STUFF_MVINV_BSWAP	BIT(5)
--#define MT_FCE_L2_STUFF_TS_CMD_QSEL_EN	GENMASK(15, 8)
--#define MT_FCE_L2_STUFF_TS_LEN_EN	GENMASK(23, 16)
--#define MT_FCE_L2_STUFF_OTHER_PORT	GENMASK(25, 24)
--
--#define MT_FCE_WLAN_FLOW_CONTROL1	0x0824
--
--#define MT_TX_CPU_FROM_FCE_BASE_PTR	0x09a0
--#define MT_TX_CPU_FROM_FCE_MAX_COUNT	0x09a4
--#define MT_TX_CPU_FROM_FCE_CPU_DESC_IDX	0x09a8
--
--#define MT_FCE_PDMA_GLOBAL_CONF		0x09c4
--
--#define MT_PAUSE_ENABLE_CONTROL1	0x0a38
--
--#define MT_FCE_SKIP_FS			0x0a6c
--
--#define MT_MAC_CSR0			0x1000
--#define MT_MAC_SYS_CTRL			0x1004
--#define MT_MAC_SYS_CTRL_RESET_CSR	BIT(0)
--#define MT_MAC_SYS_CTRL_RESET_BBP	BIT(1)
--#define MT_MAC_SYS_CTRL_ENABLE_TX	BIT(2)
--#define MT_MAC_SYS_CTRL_ENABLE_RX	BIT(3)
--
--#define MT_MAC_ADDR_DW0			0x1008
--#define MT_MAC_ADDR_DW1			0x100c
--#define MT_MAC_ADDR_DW1_U2ME_MASK	GENMASK(23, 16)
--
--#define MT_MAC_BSSID_DW0		0x1010
--#define MT_MAC_BSSID_DW1		0x1014
--#define MT_MAC_BSSID_DW1_ADDR		GENMASK(15, 0)
--#define MT_MAC_BSSID_DW1_MBSS_MODE	GENMASK(17, 16)
--#define MT_MAC_BSSID_DW1_MBEACON_N	GENMASK(20, 18)
--#define MT_MAC_BSSID_DW1_MBSS_LOCAL_BIT	BIT(21)
--#define MT_MAC_BSSID_DW1_MBSS_MODE_B2	BIT(22)
--#define MT_MAC_BSSID_DW1_MBEACON_N_B3	BIT(23)
--#define MT_MAC_BSSID_DW1_MBSS_IDX_BYTE	GENMASK(26, 24)
--
--#define MT_MAX_LEN_CFG			0x1018
--#define MT_MAX_LEN_CFG_AMPDU		GENMASK(13, 12)
--
--#define MT_LED_CFG			0x102c
--
--#define MT_AMPDU_MAX_LEN_20M1S		0x1030
--#define MT_AMPDU_MAX_LEN_20M2S		0x1034
--#define MT_AMPDU_MAX_LEN_40M1S		0x1038
--#define MT_AMPDU_MAX_LEN_40M2S		0x103c
--#define MT_AMPDU_MAX_LEN		0x1040
--
--#define MT_WCID_DROP_BASE		0x106c
--#define MT_WCID_DROP(_n)		(MT_WCID_DROP_BASE + ((_n) >> 5) * 4)
--#define MT_WCID_DROP_MASK(_n)		BIT((_n) % 32)
--
--#define MT_BCN_BYPASS_MASK		0x108c
--
--#define MT_MAC_APC_BSSID_BASE		0x1090
--#define MT_MAC_APC_BSSID_L(_n)		(MT_MAC_APC_BSSID_BASE + ((_n) * 8))
--#define MT_MAC_APC_BSSID_H(_n)		(MT_MAC_APC_BSSID_BASE + ((_n) * 8 + 4))
--#define MT_MAC_APC_BSSID_H_ADDR		GENMASK(15, 0)
--#define MT_MAC_APC_BSSID0_H_EN		BIT(16)
--
--#define MT_XIFS_TIME_CFG		0x1100
--#define MT_XIFS_TIME_CFG_CCK_SIFS	GENMASK(7, 0)
--#define MT_XIFS_TIME_CFG_OFDM_SIFS	GENMASK(15, 8)
--#define MT_XIFS_TIME_CFG_OFDM_XIFS	GENMASK(19, 16)
--#define MT_XIFS_TIME_CFG_EIFS		GENMASK(28, 20)
--#define MT_XIFS_TIME_CFG_BB_RXEND_EN	BIT(29)
--
--#define MT_BKOFF_SLOT_CFG		0x1104
--#define MT_BKOFF_SLOT_CFG_SLOTTIME	GENMASK(7, 0)
--#define MT_BKOFF_SLOT_CFG_CC_DELAY	GENMASK(11, 8)
--
--#define MT_BEACON_TIME_CFG		0x1114
--#define MT_BEACON_TIME_CFG_INTVAL	GENMASK(15, 0)
--#define MT_BEACON_TIME_CFG_TIMER_EN	BIT(16)
--#define MT_BEACON_TIME_CFG_SYNC_MODE	GENMASK(18, 17)
--#define MT_BEACON_TIME_CFG_TBTT_EN	BIT(19)
--#define MT_BEACON_TIME_CFG_BEACON_TX	BIT(20)
--#define MT_BEACON_TIME_CFG_TSF_COMP	GENMASK(31, 24)
--
--#define MT_TBTT_SYNC_CFG		0x1118
--#define MT_TBTT_TIMER_CFG		0x1124
--
--#define MT_INT_TIMER_CFG		0x1128
--#define MT_INT_TIMER_CFG_PRE_TBTT	GENMASK(15, 0)
--#define MT_INT_TIMER_CFG_GP_TIMER	GENMASK(31, 16)
--
--#define MT_INT_TIMER_EN			0x112c
--#define MT_INT_TIMER_EN_PRE_TBTT_EN	BIT(0)
--#define MT_INT_TIMER_EN_GP_TIMER_EN	BIT(1)
--
--#define MT_MAC_STATUS			0x1200
--#define MT_MAC_STATUS_TX		BIT(0)
--#define MT_MAC_STATUS_RX		BIT(1)
--
--#define MT_PWR_PIN_CFG			0x1204
--#define MT_AUX_CLK_CFG			0x120c
--
--#define MT_BB_PA_MODE_CFG0		0x1214
--#define MT_BB_PA_MODE_CFG1		0x1218
--#define MT_RF_PA_MODE_CFG0		0x121c
--#define MT_RF_PA_MODE_CFG1		0x1220
--
--#define MT_RF_PA_MODE_ADJ0		0x1228
--#define MT_RF_PA_MODE_ADJ1		0x122c
--
--#define MT_DACCLK_EN_DLY_CFG		0x1264
--
--#define MT_EDCA_CFG_BASE		0x1300
--#define MT_EDCA_CFG_AC(_n)		(MT_EDCA_CFG_BASE + ((_n) << 2))
--#define MT_EDCA_CFG_TXOP		GENMASK(7, 0)
--#define MT_EDCA_CFG_AIFSN		GENMASK(11, 8)
--#define MT_EDCA_CFG_CWMIN		GENMASK(15, 12)
--#define MT_EDCA_CFG_CWMAX		GENMASK(19, 16)
--
--#define MT_TX_PWR_CFG_0			0x1314
--#define MT_TX_PWR_CFG_1			0x1318
--#define MT_TX_PWR_CFG_2			0x131c
--#define MT_TX_PWR_CFG_3			0x1320
--#define MT_TX_PWR_CFG_4			0x1324
--
--#define MT_TX_BAND_CFG			0x132c
--#define MT_TX_BAND_CFG_UPPER_40M	BIT(0)
--#define MT_TX_BAND_CFG_5G		BIT(1)
--#define MT_TX_BAND_CFG_2G		BIT(2)
--
--#define MT_HT_FBK_TO_LEGACY		0x1384
--#define MT_TX_MPDU_ADJ_INT		0x1388
--
--#define MT_TX_PWR_CFG_7			0x13d4
--#define MT_TX_PWR_CFG_8			0x13d8
--#define MT_TX_PWR_CFG_9			0x13dc
--
--#define MT_TX_SW_CFG0			0x1330
--#define MT_TX_SW_CFG1			0x1334
--#define MT_TX_SW_CFG2			0x1338
--
--#define MT_TXOP_CTRL_CFG		0x1340
--#define MT_TXOP_TRUN_EN			GENMASK(5, 0)
--#define MT_TXOP_EXT_CCA_DLY		GENMASK(15, 8)
--#define MT_TXOP_CTRL
--
--#define MT_TX_RTS_CFG			0x1344
--#define MT_TX_RTS_CFG_RETRY_LIMIT	GENMASK(7, 0)
--#define MT_TX_RTS_CFG_THRESH		GENMASK(23, 8)
--#define MT_TX_RTS_FALLBACK		BIT(24)
--
--#define MT_TX_TIMEOUT_CFG		0x1348
--#define MT_TX_RETRY_CFG			0x134c
--#define MT_TX_LINK_CFG			0x1350
--#define MT_HT_FBK_CFG0			0x1354
--#define MT_HT_FBK_CFG1			0x1358
--#define MT_LG_FBK_CFG0			0x135c
--#define MT_LG_FBK_CFG1			0x1360
--
--#define MT_CCK_PROT_CFG			0x1364
--#define MT_OFDM_PROT_CFG		0x1368
--#define MT_MM20_PROT_CFG		0x136c
--#define MT_MM40_PROT_CFG		0x1370
--#define MT_GF20_PROT_CFG		0x1374
--#define MT_GF40_PROT_CFG		0x1378
--
--#define MT_PROT_RATE			GENMASK(15, 0)
--#define MT_PROT_CTRL_RTS_CTS		BIT(16)
--#define MT_PROT_CTRL_CTS2SELF		BIT(17)
--#define MT_PROT_NAV_SHORT		BIT(18)
--#define MT_PROT_NAV_LONG		BIT(19)
--#define MT_PROT_TXOP_ALLOW_CCK		BIT(20)
--#define MT_PROT_TXOP_ALLOW_OFDM		BIT(21)
--#define MT_PROT_TXOP_ALLOW_MM20		BIT(22)
--#define MT_PROT_TXOP_ALLOW_MM40		BIT(23)
--#define MT_PROT_TXOP_ALLOW_GF20		BIT(24)
--#define MT_PROT_TXOP_ALLOW_GF40		BIT(25)
--#define MT_PROT_RTS_THR_EN		BIT(26)
--#define MT_PROT_RATE_CCK_11		0x0003
--#define MT_PROT_RATE_OFDM_6		0x4000
--#define MT_PROT_RATE_OFDM_24		0x4004
--#define MT_PROT_RATE_DUP_OFDM_24	0x4084
--#define MT_PROT_TXOP_ALLOW_ALL		GENMASK(25, 20)
--#define MT_PROT_TXOP_ALLOW_BW20		(MT_PROT_TXOP_ALLOW_ALL &	\
--					 ~MT_PROT_TXOP_ALLOW_MM40 &	\
--					 ~MT_PROT_TXOP_ALLOW_GF40)
--
--#define MT_EXP_ACK_TIME			0x1380
--
--#define MT_TX_PWR_CFG_0_EXT		0x1390
--#define MT_TX_PWR_CFG_1_EXT		0x1394
--
--#define MT_TX_FBK_LIMIT			0x1398
--#define MT_TX_FBK_LIMIT_MPDU_FBK	GENMASK(7, 0)
--#define MT_TX_FBK_LIMIT_AMPDU_FBK	GENMASK(15, 8)
--#define MT_TX_FBK_LIMIT_MPDU_UP_CLEAR	BIT(16)
--#define MT_TX_FBK_LIMIT_AMPDU_UP_CLEAR	BIT(17)
--#define MT_TX_FBK_LIMIT_RATE_LUT	BIT(18)
--
--#define MT_TX0_RF_GAIN_CORR		0x13a0
--#define MT_TX1_RF_GAIN_CORR		0x13a4
--#define MT_TX0_RF_GAIN_ATTEN		0x13a8
--
--#define MT_TX_ALC_CFG_0			0x13b0
--#define MT_TX_ALC_CFG_0_CH_INIT_0	GENMASK(5, 0)
--#define MT_TX_ALC_CFG_0_CH_INIT_1	GENMASK(13, 8)
--#define MT_TX_ALC_CFG_0_LIMIT_0		GENMASK(21, 16)
--#define MT_TX_ALC_CFG_0_LIMIT_1		GENMASK(29, 24)
--
--#define MT_TX_ALC_CFG_1			0x13b4
--#define MT_TX_ALC_CFG_1_TEMP_COMP	GENMASK(5, 0)
--
--#define MT_TX_ALC_CFG_2			0x13a8
--#define MT_TX_ALC_CFG_2_TEMP_COMP	GENMASK(5, 0)
--
--#define MT_TX0_BB_GAIN_ATTEN		0x13c0
--
--#define MT_TX_ALC_VGA3			0x13c8
--
--#define MT_TX_PROT_CFG6			0x13e0
--#define MT_TX_PROT_CFG7			0x13e4
--#define MT_TX_PROT_CFG8			0x13e8
--
--#define MT_PIFS_TX_CFG			0x13ec
--
--#define MT_RX_FILTR_CFG			0x1400
--
--#define MT_RX_FILTR_CFG_CRC_ERR		BIT(0)
--#define MT_RX_FILTR_CFG_PHY_ERR		BIT(1)
--#define MT_RX_FILTR_CFG_PROMISC		BIT(2)
--#define MT_RX_FILTR_CFG_OTHER_BSS	BIT(3)
--#define MT_RX_FILTR_CFG_VER_ERR		BIT(4)
--#define MT_RX_FILTR_CFG_MCAST		BIT(5)
--#define MT_RX_FILTR_CFG_BCAST		BIT(6)
--#define MT_RX_FILTR_CFG_DUP		BIT(7)
--#define MT_RX_FILTR_CFG_CFACK		BIT(8)
--#define MT_RX_FILTR_CFG_CFEND		BIT(9)
--#define MT_RX_FILTR_CFG_ACK		BIT(10)
--#define MT_RX_FILTR_CFG_CTS		BIT(11)
--#define MT_RX_FILTR_CFG_RTS		BIT(12)
--#define MT_RX_FILTR_CFG_PSPOLL		BIT(13)
--#define MT_RX_FILTR_CFG_BA		BIT(14)
--#define MT_RX_FILTR_CFG_BAR		BIT(15)
--#define MT_RX_FILTR_CFG_CTRL_RSV	BIT(16)
--
--#define MT_AUTO_RSP_CFG			0x1404
--
--#define MT_AUTO_RSP_PREAMB_SHORT	BIT(4)
--
--#define MT_LEGACY_BASIC_RATE		0x1408
--#define MT_HT_BASIC_RATE		0x140c
--#define MT_HT_CTRL_CFG			0x1410
--#define MT_RX_PARSER_CFG		0x1418
--#define MT_RX_PARSER_RX_SET_NAV_ALL	BIT(0)
--
--#define MT_EXT_CCA_CFG			0x141c
--#define MT_EXT_CCA_CFG_CCA0		GENMASK(1, 0)
--#define MT_EXT_CCA_CFG_CCA1		GENMASK(3, 2)
--#define MT_EXT_CCA_CFG_CCA2		GENMASK(5, 4)
--#define MT_EXT_CCA_CFG_CCA3		GENMASK(7, 6)
--#define MT_EXT_CCA_CFG_CCA_MASK		GENMASK(11, 8)
--#define MT_EXT_CCA_CFG_ED_CCA_MASK	GENMASK(15, 12)
--
--#define MT_TX_SW_CFG3			0x1478
--
--#define MT_PN_PAD_MODE			0x150c
--
--#define MT_TXOP_HLDR_ET			0x1608
--
--#define MT_PROT_AUTO_TX_CFG		0x1648
--
--#define MT_RX_STA_CNT0			0x1700
--#define MT_RX_STA_CNT1			0x1704
--#define MT_RX_STA_CNT2			0x1708
--#define MT_TX_STA_CNT0			0x170c
--#define MT_TX_STA_CNT1			0x1710
--#define MT_TX_STA_CNT2			0x1714
--
--/* Vendor driver defines content of the second word of STAT_FIFO as follows:
-- *	MT_TX_STAT_FIFO_RATE		GENMASK(26, 16)
-- *	MT_TX_STAT_FIFO_ETXBF		BIT(27)
-- *	MT_TX_STAT_FIFO_SND		BIT(28)
-- *	MT_TX_STAT_FIFO_ITXBF		BIT(29)
-- * However, tests show that b16-31 have the same layout as TXWI rate_ctl
-- * with rate set to rate at which frame was acked.
-- */
--#define MT_TX_STAT_FIFO			0x1718
--#define MT_TX_STAT_FIFO_VALID		BIT(0)
--#define MT_TX_STAT_FIFO_SUCCESS		BIT(5)
--#define MT_TX_STAT_FIFO_AGGR		BIT(6)
--#define MT_TX_STAT_FIFO_ACKREQ		BIT(7)
--#define MT_TX_STAT_FIFO_WCID		GENMASK(15, 8)
--#define MT_TX_STAT_FIFO_RATE		GENMASK(31, 16)
--
--#define MT_TX_AGG_STAT			0x171c
--
--#define MT_TX_AGG_CNT_BASE0		0x1720
--
--#define MT_MPDU_DENSITY_CNT		0x1740
--
--#define MT_TX_AGG_CNT_BASE1		0x174c
--
--#define MT_TX_AGG_CNT(_id)		((_id) < 8 ?			\
--					 MT_TX_AGG_CNT_BASE0 + ((_id) << 2) : \
--					 MT_TX_AGG_CNT_BASE1 + ((_id - 8) << 2))
--
--#define MT_TX_STAT_FIFO_EXT		0x1798
--#define MT_TX_STAT_FIFO_EXT_RETRY	GENMASK(7, 0)
--#define MT_TX_STAT_FIFO_EXT_PKTID	GENMASK(15, 8)
--
--#define MT_BBP_CORE_BASE		0x2000
--#define MT_BBP_IBI_BASE			0x2100
--#define MT_BBP_AGC_BASE			0x2300
--#define MT_BBP_TXC_BASE			0x2400
--#define MT_BBP_RXC_BASE			0x2500
--#define MT_BBP_TXO_BASE			0x2600
--#define MT_BBP_TXBE_BASE		0x2700
--#define MT_BBP_RXFE_BASE		0x2800
--#define MT_BBP_RXO_BASE			0x2900
--#define MT_BBP_DFS_BASE			0x2a00
--#define MT_BBP_TR_BASE			0x2b00
--#define MT_BBP_CAL_BASE			0x2c00
--#define MT_BBP_DSC_BASE			0x2e00
--#define MT_BBP_PFMU_BASE		0x2f00
--
--#define MT_BBP(_type, _n)		(MT_BBP_##_type##_BASE + ((_n) << 2))
--
--#define MT_BBP_CORE_R1_BW		GENMASK(4, 3)
--
--#define MT_BBP_AGC_R0_CTRL_CHAN		GENMASK(9, 8)
--#define MT_BBP_AGC_R0_BW		GENMASK(14, 12)
--
--/* AGC, R4/R5 */
--#define MT_BBP_AGC_LNA_GAIN		GENMASK(21, 16)
--
--/* AGC, R8/R9 */
--#define MT_BBP_AGC_GAIN			GENMASK(14, 8)
--
--#define MT_BBP_AGC20_RSSI0		GENMASK(7, 0)
--#define MT_BBP_AGC20_RSSI1		GENMASK(15, 8)
--
--#define MT_BBP_TXBE_R0_CTRL_CHAN	GENMASK(1, 0)
--
--#define MT_WCID_ADDR_BASE		0x1800
--#define MT_WCID_ADDR(_n)		(MT_WCID_ADDR_BASE + (_n) * 8)
--
--#define MT_SRAM_BASE			0x4000
--
--#define MT_WCID_KEY_BASE		0x8000
--#define MT_WCID_KEY(_n)			(MT_WCID_KEY_BASE + (_n) * 32)
--
--#define MT_WCID_IV_BASE			0xa000
--#define MT_WCID_IV(_n)			(MT_WCID_IV_BASE + (_n) * 8)
--
--#define MT_WCID_ATTR_BASE		0xa800
--#define MT_WCID_ATTR(_n)		(MT_WCID_ATTR_BASE + (_n) * 4)
--
--#define MT_WCID_ATTR_PAIRWISE		BIT(0)
--#define MT_WCID_ATTR_PKEY_MODE		GENMASK(3, 1)
--#define MT_WCID_ATTR_BSS_IDX		GENMASK(6, 4)
--#define MT_WCID_ATTR_RXWI_UDF		GENMASK(9, 7)
--#define MT_WCID_ATTR_PKEY_MODE_EXT	BIT(10)
--#define MT_WCID_ATTR_BSS_IDX_EXT	BIT(11)
--#define MT_WCID_ATTR_WAPI_MCBC		BIT(15)
--#define MT_WCID_ATTR_WAPI_KEYID		GENMASK(31, 24)
--
--#define MT_SKEY_BASE_0			0xac00
--#define MT_SKEY_BASE_1			0xb400
--#define MT_SKEY_0(_bss, _idx)		\
--	(MT_SKEY_BASE_0 + (4 * (_bss) + _idx) * 32)
--#define MT_SKEY_1(_bss, _idx)		\
--	(MT_SKEY_BASE_1 + (4 * ((_bss) & 7) + _idx) * 32)
--#define MT_SKEY(_bss, _idx)		\
--	((_bss & 8) ? MT_SKEY_1(_bss, _idx) : MT_SKEY_0(_bss, _idx))
--
--#define MT_SKEY_MODE_BASE_0		0xb000
--#define MT_SKEY_MODE_BASE_1		0xb3f0
--#define MT_SKEY_MODE_0(_bss)		\
--	(MT_SKEY_MODE_BASE_0 + ((_bss / 2) << 2))
--#define MT_SKEY_MODE_1(_bss)		\
--	(MT_SKEY_MODE_BASE_1 + ((((_bss) & 7) / 2) << 2))
--#define MT_SKEY_MODE(_bss)		\
--	((_bss & 8) ? MT_SKEY_MODE_1(_bss) : MT_SKEY_MODE_0(_bss))
--#define MT_SKEY_MODE_MASK		GENMASK(3, 0)
--#define MT_SKEY_MODE_SHIFT(_bss, _idx)	(4 * ((_idx) + 4 * (_bss & 1)))
--
--#define MT_BEACON_BASE			0xc000
--
--#define MT_TEMP_SENSOR			0x1d000
--#define MT_TEMP_SENSOR_VAL		GENMASK(6, 0)
--
--enum mt76_cipher_type {
--	MT_CIPHER_NONE,
--	MT_CIPHER_WEP40,
--	MT_CIPHER_WEP104,
--	MT_CIPHER_TKIP,
--	MT_CIPHER_AES_CCMP,
--	MT_CIPHER_CKIP40,
--	MT_CIPHER_CKIP104,
--	MT_CIPHER_CKIP128,
--	MT_CIPHER_WAPI,
--};
--
--#endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_regs.h b/drivers/net/wireless/mediatek/mt76/mt76x02_regs.h
-index b0f00107cf2d..24d1e6d747dd 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_regs.h
-@@ -46,6 +46,11 @@
- #define MT_WLAN_FUN_CTRL_WLAN_CLK_EN	BIT(1)
- #define MT_WLAN_FUN_CTRL_WLAN_RESET_RF	BIT(2)
+-	u32 rxfilter;
+ 	u32 debugfs_reg;
  
-+#define MT_COEXCFG3			0x004c
+ 	/* TX */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
+new file mode 100644
+index 000000000000..f0a88221c1bd
+--- /dev/null
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
+@@ -0,0 +1,53 @@
++/*
++ * Copyright (C) 2018 Stanislaw Gruszka <stf_xl-5tc4TXWwyLM@public.gmane.org>
++ * Copyright (C) 2016 Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
++ *
++ * Permission to use, copy, modify, and/or distribute this software for any
++ * purpose with or without fee is hereby granted, provided that the above
++ * copyright notice and this permission notice appear in all copies.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
++ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
++ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
++ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
++ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
++ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
++ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++ */
 +
-+#define	MT_LDO_CTRL_0			0x006c
-+#define	MT_LDO_CTRL_1			0x0070
++#include "mt76.h"
++#include "mt76x02_regs.h"
 +
- #define MT_WLAN_FUN_CTRL_WLAN_RESET	BIT(3) /* MT76x0 */
- #define MT_WLAN_FUN_CTRL_CSR_F20M_CKEN	BIT(3) /* MT76x2 */
- 
-@@ -75,6 +80,8 @@
- 
- #define MT_XO_CTRL7			0x011c
- 
-+#define MT_IOCFG_6			0x0124
++void mt76x02_configure_filter(struct ieee80211_hw *hw,
++			     unsigned int changed_flags,
++			     unsigned int *total_flags, u64 multicast)
++{
++	struct mt76_dev *dev = hw->priv;
++	u32 flags = 0;
 +
- #define MT_USB_U3DMA_CFG		0x9018
- #define MT_USB_DMA_CFG_RX_BULK_AGG_TOUT	GENMASK(7, 0)
- #define MT_USB_DMA_CFG_RX_BULK_AGG_LMT	GENMASK(15, 8)
-@@ -156,18 +163,23 @@
- #define MT_WMM_TXOP_SHIFT(_n)		((_n & 1) * 16)
- #define MT_WMM_TXOP_MASK		GENMASK(15, 0)
- 
-+#define MT_WMM_CTRL			0x0230 /* MT76x0 */
-+#define MT_FCE_DMA_ADDR			0x0230
-+#define MT_FCE_DMA_LEN			0x0234
-+#define MT_USB_DMA_CFG			0x0238
++#define MT76_FILTER(_flag, _hw) do { \
++		flags |= *total_flags & FIF_##_flag;			\
++		dev->rxfilter &= ~(_hw);				\
++		dev->rxfilter |= !(flags & FIF_##_flag) * (_hw);	\
++	} while (0)
 +
- #define MT_TSO_CTRL			0x0250
- #define MT_HEADER_TRANS_CTRL_REG	0x0260
- 
-+#define MT_US_CYC_CFG			0x02a4
-+#define MT_US_CYC_CNT			GENMASK(7, 0)
++	mutex_lock(&dev->mutex);
 +
- #define MT_TX_RING_BASE			0x0300
- #define MT_RX_RING_BASE			0x03c0
++	dev->rxfilter &= ~MT_RX_FILTR_CFG_OTHER_BSS;
++
++	MT76_FILTER(FCSFAIL, MT_RX_FILTR_CFG_CRC_ERR);
++	MT76_FILTER(PLCPFAIL, MT_RX_FILTR_CFG_PHY_ERR);
++	MT76_FILTER(CONTROL, MT_RX_FILTR_CFG_ACK |
++			     MT_RX_FILTR_CFG_CTS |
++			     MT_RX_FILTR_CFG_CFEND |
++			     MT_RX_FILTR_CFG_CFACK |
++			     MT_RX_FILTR_CFG_BA |
++			     MT_RX_FILTR_CFG_CTRL_RSV);
++	MT76_FILTER(PSPOLL, MT_RX_FILTR_CFG_PSPOLL);
++
++	*total_flags = flags;
++	dev->bus->wr(dev, MT_RX_FILTR_CFG, dev->rxfilter);
++
++	mutex_unlock(&dev->mutex);
++}
++EXPORT_SYMBOL_GPL(mt76x02_configure_filter);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.h b/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
+new file mode 100644
+index 000000000000..7ff3d473bc75
+--- /dev/null
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
+@@ -0,0 +1,25 @@
++/*
++ * Copyright (C) 2016 Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
++ * Copyright (C) 2018 Stanislaw Gruszka <stf_xl-5tc4TXWwyLM@public.gmane.org>
++ *
++ * Permission to use, copy, modify, and/or distribute this software for any
++ * purpose with or without fee is hereby granted, provided that the above
++ * copyright notice and this permission notice appear in all copies.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
++ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
++ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
++ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
++ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
++ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
++ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++ */
++
++#ifndef __MT76X02_UTIL_H
++#define __MT76X02_UTIL_H
++
++void mt76x02_configure_filter(struct ieee80211_hw *hw,
++			     unsigned int changed_flags,
++			     unsigned int *total_flags, u64 multicast);
++
++#endif
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2.h b/drivers/net/wireless/mediatek/mt76/mt76x2.h
+index 8b5c3de9ea32..e9b57fce9685 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2.h
+@@ -131,8 +131,6 @@ struct mt76x2_dev {
  
- #define MT_TX_HW_QUEUE_MCU		8
- #define MT_TX_HW_QUEUE_MGMT		9
+ 	u16 chainmask;
  
--#define MT_US_CYC_CFG			0x02a4
--#define MT_US_CYC_CNT			GENMASK(7, 0)
+-	u32 rxfilter;
 -
- #define MT_PBF_SYS_CTRL			0x0400
- #define MT_PBF_SYS_CTRL_MCU_RESET	BIT(0)
- #define MT_PBF_SYS_CTRL_DMA_RESET	BIT(1)
-@@ -189,10 +201,20 @@
- #define MT_BCN_OFFSET_BASE		0x041c
- #define MT_BCN_OFFSET(_n)		(MT_BCN_OFFSET_BASE + ((_n) << 2))
+ 	struct mt76x2_calibration cal;
  
-+#define MT_RXQ_STA			0x0430
-+#define MT_TXQ_STA			0x0434
-+#define	MT_RF_CSR_CFG			0x0500
-+#define MT_RF_CSR_CFG_DATA		GENMASK(7, 0)
-+#define MT_RF_CSR_CFG_REG_ID		GENMASK(13, 8)
-+#define MT_RF_CSR_CFG_REG_BANK		GENMASK(17, 14)
-+#define MT_RF_CSR_CFG_WR		BIT(30)
-+#define MT_RF_CSR_CFG_KICK		BIT(31)
-+
- #define MT_RF_BYPASS_0			0x0504
- #define MT_RF_BYPASS_1			0x0508
- #define MT_RF_SETTING_0			0x050c
+ 	s8 target_power;
+@@ -293,9 +291,6 @@ int mt76x2_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ 		   struct ieee80211_key_conf *key);
+ int mt76x2_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		   u16 queue, const struct ieee80211_tx_queue_params *params);
+-void mt76x2_configure_filter(struct ieee80211_hw *hw,
+-			     unsigned int changed_flags,
+-			     unsigned int *total_flags, u64 multicast);
+ void mt76x2_txq_init(struct mt76x2_dev *dev, struct ieee80211_txq *txq);
+ void mt76x2_sta_rate_tbl_update(struct ieee80211_hw *hw,
+ 				struct ieee80211_vif *vif,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
+index a2338ba139b4..fe0b394fd9ea 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
+@@ -102,7 +102,7 @@ int mt76x2_sta_add(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	int idx = 0;
+ 	int i;
  
-+#define MT_RF_MISC			0x0518
- #define MT_RF_DATA_WRITE		0x0524
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
  
- #define MT_RF_CTRL			0x0528
-@@ -203,6 +225,11 @@
+ 	idx = mt76_wcid_alloc(dev->wcid_mask, ARRAY_SIZE(dev->wcid));
+ 	if (idx < 0) {
+@@ -127,7 +127,7 @@ int mt76x2_sta_add(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	rcu_assign_pointer(dev->wcid[idx], &msta->wcid);
  
- #define MT_RF_DATA_READ			0x052c
+ out:
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
  
-+#define MT_COM_REG0			0x0730
-+#define MT_COM_REG1			0x0734
-+#define MT_COM_REG2			0x0738
-+#define MT_COM_REG3			0x073C
-+
- #define MT_FCE_PSE_CTRL			0x0800
- #define MT_FCE_PARAMETERS		0x0804
- #define MT_FCE_CSO			0x0808
-@@ -222,6 +249,7 @@
- 
- #define MT_TX_CPU_FROM_FCE_BASE_PTR	0x09a0
- #define MT_TX_CPU_FROM_FCE_MAX_COUNT	0x09a4
-+#define MT_TX_CPU_FROM_FCE_CPU_DESC_IDX	0x09a8
- #define MT_FCE_PDMA_GLOBAL_CONF		0x09c4
- #define MT_FCE_SKIP_FS			0x0a6c
- 
-@@ -250,6 +278,9 @@
- #define MT_MAC_BSSID_DW1_MBSS_IDX_BYTE	GENMASK(26, 24)
- 
- #define MT_MAX_LEN_CFG			0x1018
-+#define MT_MAX_LEN_CFG_AMPDU		GENMASK(13, 12)
-+
-+#define MT_LED_CFG			0x102c
- 
- #define MT_AMPDU_MAX_LEN_20M1S		0x1030
- #define MT_AMPDU_MAX_LEN_20M2S		0x1034
-@@ -365,6 +396,8 @@
- #define MT_TX_SW_CFG2			0x1338
- 
- #define MT_TXOP_CTRL_CFG		0x1340
-+#define MT_TXOP_TRUN_EN			GENMASK(5, 0)
-+#define MT_TXOP_EXT_CCA_DLY		GENMASK(15, 8)
- 
- #define MT_TX_RTS_CFG			0x1344
- #define MT_TX_RTS_CFG_RETRY_LIMIT	GENMASK(7, 0)
-@@ -376,7 +409,10 @@
- 
- #define MT_TX_RETRY_CFG			0x134c
- #define MT_TX_LINK_CFG			0x1350
-+#define MT_VHT_HT_FBK_CFG0		0x1354
- #define MT_VHT_HT_FBK_CFG1		0x1358
-+#define MT_LG_FBK_CFG0			0x135c
-+#define MT_LG_FBK_CFG1			0x1360
- 
- #define MT_PROT_CFG_RATE		GENMASK(15, 0)
- #define MT_PROT_CFG_CTRL		GENMASK(17, 16)
-@@ -391,6 +427,27 @@
- #define MT_GF20_PROT_CFG		0x1374
- #define MT_GF40_PROT_CFG		0x1378
- 
-+#define MT_PROT_RATE			GENMASK(15, 0)
-+#define MT_PROT_CTRL_RTS_CTS		BIT(16)
-+#define MT_PROT_CTRL_CTS2SELF		BIT(17)
-+#define MT_PROT_NAV_SHORT		BIT(18)
-+#define MT_PROT_NAV_LONG		BIT(19)
-+#define MT_PROT_TXOP_ALLOW_CCK		BIT(20)
-+#define MT_PROT_TXOP_ALLOW_OFDM		BIT(21)
-+#define MT_PROT_TXOP_ALLOW_MM20		BIT(22)
-+#define MT_PROT_TXOP_ALLOW_MM40		BIT(23)
-+#define MT_PROT_TXOP_ALLOW_GF20		BIT(24)
-+#define MT_PROT_TXOP_ALLOW_GF40		BIT(25)
-+#define MT_PROT_RTS_THR_EN		BIT(26)
-+#define MT_PROT_RATE_CCK_11		0x0003
-+#define MT_PROT_RATE_OFDM_6		0x4000
-+#define MT_PROT_RATE_OFDM_24		0x4004
-+#define MT_PROT_RATE_DUP_OFDM_24	0x4084
-+#define MT_PROT_TXOP_ALLOW_ALL		GENMASK(25, 20)
-+#define MT_PROT_TXOP_ALLOW_BW20		(MT_PROT_TXOP_ALLOW_ALL &	\
-+					 ~MT_PROT_TXOP_ALLOW_MM40 &	\
-+					 ~MT_PROT_TXOP_ALLOW_GF40)
-+
- #define MT_EXP_ACK_TIME			0x1380
- 
- #define MT_TX_PWR_CFG_0_EXT		0x1390
-@@ -405,6 +462,8 @@
- 
- #define MT_TX0_RF_GAIN_CORR		0x13a0
- #define MT_TX1_RF_GAIN_CORR		0x13a4
-+#define MT_TX0_RF_GAIN_ATTEN		0x13a8
-+#define MT_TX0_RF_GAIN_ATTEN		0x13a8 /* MT76x0 */
- 
- #define MT_TX_ALC_CFG_0			0x13b0
- #define MT_TX_ALC_CFG_0_CH_INIT_0	GENMASK(5, 0)
-@@ -421,6 +480,7 @@
- #define MT_TX_ALC_CFG_3			0x13ac
- #define MT_TX_ALC_CFG_4			0x13c0
- #define MT_TX_ALC_CFG_4_LOWGAIN_CH_EN	BIT(31)
-+#define MT_TX0_BB_GAIN_ATTEN		0x13c0 /* MT76x0 */
- 
- #define MT_TX_ALC_VGA3			0x13c8
- 
-@@ -451,10 +511,13 @@
- #define MT_RX_FILTR_CFG_CTRL_RSV	BIT(16)
- 
- #define MT_AUTO_RSP_CFG			0x1404
-+#define MT_AUTO_RSP_PREAMB_SHORT	BIT(4)
- #define MT_LEGACY_BASIC_RATE		0x1408
- #define MT_HT_BASIC_RATE		0x140c
- 
- #define MT_HT_CTRL_CFG			0x1410
-+#define MT_RX_PARSER_CFG		0x1418
-+#define MT_RX_PARSER_RX_SET_NAV_ALL	BIT(0)
- 
- #define MT_EXT_CCA_CFG			0x141c
- #define MT_EXT_CCA_CFG_CCA0		GENMASK(1, 0)
-@@ -498,7 +561,10 @@
- #define MT_TX_STAT_FIFO_WCID		GENMASK(15, 8)
- #define MT_TX_STAT_FIFO_RATE		GENMASK(31, 16)
- 
-+#define MT_TX_AGG_STAT			0x171c
-+
- #define MT_TX_AGG_CNT_BASE0		0x1720
-+#define MT_MPDU_DENSITY_CNT		0x1740
- #define MT_TX_AGG_CNT_BASE1		0x174c
- 
- #define MT_TX_AGG_CNT(_id)		((_id) < 8 ?			\
-@@ -604,7 +670,7 @@ struct mt76_wcid_key {
- 	u8 rx_mic[8];
- } __packed __aligned(4);
- 
--enum mt76x2_cipher_type {
-+enum mt76x02_cipher_type {
- 	MT_CIPHER_NONE,
- 	MT_CIPHER_WEP40,
- 	MT_CIPHER_WEP104,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c
-index 6542644bc325..95770111918c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c
-@@ -229,7 +229,7 @@ void mt76x2_send_tx_status(struct mt76x2_dev *dev,
+ 	return ret;
  }
- EXPORT_SYMBOL_GPL(mt76x2_send_tx_status);
+@@ -141,14 +141,14 @@ int mt76x2_sta_remove(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	int idx = msta->wcid.idx;
+ 	int i;
  
--static enum mt76x2_cipher_type
-+static enum mt76x02_cipher_type
- mt76x2_mac_get_key_info(struct ieee80211_key_conf *key, u8 *key_data)
- {
- 	memset(key_data, 0, 32);
-@@ -258,7 +258,7 @@ mt76x2_mac_get_key_info(struct ieee80211_key_conf *key, u8 *key_data)
- int mt76x2_mac_shared_key_setup(struct mt76x2_dev *dev, u8 vif_idx, u8 key_idx,
- 				struct ieee80211_key_conf *key)
- {
--	enum mt76x2_cipher_type cipher;
-+	enum mt76x02_cipher_type cipher;
- 	u8 key_data[32];
- 	u32 val;
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 	rcu_assign_pointer(dev->wcid[idx], NULL);
+ 	for (i = 0; i < ARRAY_SIZE(sta->txq); i++)
+ 		mt76_txq_remove(&dev->mt76, sta->txq[i]);
+ 	mt76x2_mac_wcid_set_drop(dev, idx, true);
+ 	mt76_wcid_free(dev->wcid_mask, idx);
+ 	mt76x2_mac_wcid_setup(dev, idx, 0, NULL);
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
  
-@@ -281,7 +281,7 @@ EXPORT_SYMBOL_GPL(mt76x2_mac_shared_key_setup);
- int mt76x2_mac_wcid_set_key(struct mt76x2_dev *dev, u8 idx,
- 			    struct ieee80211_key_conf *key)
- {
--	enum mt76x2_cipher_type cipher;
-+	enum mt76x02_cipher_type cipher;
- 	u8 key_data[32];
- 	u8 iv_data[8];
+ 	return 0;
+ }
+@@ -274,40 +274,6 @@ int mt76x2_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ }
+ EXPORT_SYMBOL_GPL(mt76x2_conf_tx);
  
+-void mt76x2_configure_filter(struct ieee80211_hw *hw,
+-			     unsigned int changed_flags,
+-			     unsigned int *total_flags, u64 multicast)
+-{
+-	struct mt76x2_dev *dev = hw->priv;
+-	u32 flags = 0;
+-
+-#define MT76_FILTER(_flag, _hw) do { \
+-		flags |= *total_flags & FIF_##_flag;			\
+-		dev->rxfilter &= ~(_hw);				\
+-		dev->rxfilter |= !(flags & FIF_##_flag) * (_hw);	\
+-	} while (0)
+-
+-	mutex_lock(&dev->mutex);
+-
+-	dev->rxfilter &= ~MT_RX_FILTR_CFG_OTHER_BSS;
+-
+-	MT76_FILTER(FCSFAIL, MT_RX_FILTR_CFG_CRC_ERR);
+-	MT76_FILTER(PLCPFAIL, MT_RX_FILTR_CFG_PHY_ERR);
+-	MT76_FILTER(CONTROL, MT_RX_FILTR_CFG_ACK |
+-			     MT_RX_FILTR_CFG_CTS |
+-			     MT_RX_FILTR_CFG_CFEND |
+-			     MT_RX_FILTR_CFG_CFACK |
+-			     MT_RX_FILTR_CFG_BA |
+-			     MT_RX_FILTR_CFG_CTRL_RSV);
+-	MT76_FILTER(PSPOLL, MT_RX_FILTR_CFG_PSPOLL);
+-
+-	*total_flags = flags;
+-	mt76_wr(dev, MT_RX_FILTR_CFG, dev->rxfilter);
+-
+-	mutex_unlock(&dev->mutex);
+-}
+-EXPORT_SYMBOL_GPL(mt76x2_configure_filter);
+-
+ void mt76x2_sta_rate_tbl_update(struct ieee80211_hw *hw,
+ 				struct ieee80211_vif *vif,
+ 				struct ieee80211_sta *sta)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_init.c b/drivers/net/wireless/mediatek/mt76/mt76x2_init.c
+index 75a4e171da6d..07ef0a368f1e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_init.c
+@@ -214,7 +214,7 @@ int mt76x2_mac_start(struct mt76x2_dev *dev)
+ 
+ 	mt76_clear(dev, MT_WPDMA_GLO_CFG, MT_WPDMA_GLO_CFG_TX_WRITEBACK_DONE);
+ 
+-	mt76_wr(dev, MT_RX_FILTR_CFG, dev->rxfilter);
++	mt76_wr(dev, MT_RX_FILTR_CFG, dev->mt76.rxfilter);
+ 
+ 	mt76_wr(dev, MT_MAC_SYS_CTRL,
+ 		MT_MAC_SYS_CTRL_ENABLE_TX |
+@@ -377,7 +377,7 @@ int mt76x2_init_hardware(struct mt76x2_dev *dev)
+ 	if (ret)
+ 		return ret;
+ 
+-	dev->rxfilter = mt76_rr(dev, MT_RX_FILTR_CFG);
++	dev->mt76.rxfilter = mt76_rr(dev, MT_RX_FILTR_CFG);
+ 
+ 	ret = mt76x2_dma_init(dev);
+ 	if (ret)
+@@ -435,7 +435,6 @@ struct mt76x2_dev *mt76x2_alloc_device(struct device *pdev)
+ 	dev = container_of(mdev, struct mt76x2_dev, mt76);
+ 	mdev->dev = pdev;
+ 	mdev->drv = &drv_ops;
+-	mutex_init(&dev->mutex);
+ 	spin_lock_init(&dev->irq_lock);
+ 
+ 	return dev;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_main.c b/drivers/net/wireless/mediatek/mt76/mt76x2_main.c
+index 680a89f8aa87..577c6ee39fb8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_main.c
+@@ -15,6 +15,7 @@
+  */
+ 
+ #include "mt76x2.h"
++#include "mt76x02_util.h"
+ 
+ static int
+ mt76x2_start(struct ieee80211_hw *hw)
+@@ -22,7 +23,7 @@ mt76x2_start(struct ieee80211_hw *hw)
+ 	struct mt76x2_dev *dev = hw->priv;
+ 	int ret;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 
+ 	ret = mt76x2_mac_start(dev);
+ 	if (ret)
+@@ -38,7 +39,7 @@ mt76x2_start(struct ieee80211_hw *hw)
+ 	set_bit(MT76_STATE_RUNNING, &dev->mt76.state);
+ 
+ out:
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ 	return ret;
+ }
+ 
+@@ -47,10 +48,10 @@ mt76x2_stop(struct ieee80211_hw *hw)
+ {
+ 	struct mt76x2_dev *dev = hw->priv;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 	clear_bit(MT76_STATE_RUNNING, &dev->mt76.state);
+ 	mt76x2_stop_hardware(dev);
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ }
+ 
+ static int
+@@ -127,15 +128,15 @@ mt76x2_config(struct ieee80211_hw *hw, u32 changed)
+ 	struct mt76x2_dev *dev = hw->priv;
+ 	int ret = 0;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 
+ 	if (changed & IEEE80211_CONF_CHANGE_MONITOR) {
+ 		if (!(hw->conf.flags & IEEE80211_CONF_MONITOR))
+-			dev->rxfilter |= MT_RX_FILTR_CFG_PROMISC;
++			dev->mt76.rxfilter |= MT_RX_FILTR_CFG_PROMISC;
+ 		else
+-			dev->rxfilter &= ~MT_RX_FILTR_CFG_PROMISC;
++			dev->mt76.rxfilter &= ~MT_RX_FILTR_CFG_PROMISC;
+ 
+-		mt76_wr(dev, MT_RX_FILTR_CFG, dev->rxfilter);
++		mt76_wr(dev, MT_RX_FILTR_CFG, dev->mt76.rxfilter);
+ 	}
+ 
+ 	if (changed & IEEE80211_CONF_CHANGE_POWER) {
+@@ -156,7 +157,7 @@ mt76x2_config(struct ieee80211_hw *hw, u32 changed)
+ 		ieee80211_wake_queues(hw);
+ 	}
+ 
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ 
+ 	return ret;
+ }
+@@ -168,7 +169,7 @@ mt76x2_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	struct mt76x2_dev *dev = hw->priv;
+ 	struct mt76x2_vif *mvif = (struct mt76x2_vif *) vif->drv_priv;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 
+ 	if (changed & BSS_CHANGED_BSSID)
+ 		mt76x2_mac_set_bssid(dev, mvif->idx, info->bssid);
+@@ -195,7 +196,7 @@ mt76x2_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		mt76x2_set_tx_ackto(dev);
+ 	}
+ 
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ }
+ 
+ void
+@@ -252,10 +253,10 @@ static void mt76x2_set_coverage_class(struct ieee80211_hw *hw,
+ {
+ 	struct mt76x2_dev *dev = hw->priv;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 	dev->coverage_class = coverage_class;
+ 	mt76x2_set_tx_ackto(dev);
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ }
+ 
+ static int
+@@ -272,7 +273,7 @@ static int mt76x2_set_antenna(struct ieee80211_hw *hw, u32 tx_ant,
+ 	if (!tx_ant || tx_ant > 3 || tx_ant != rx_ant)
+ 		return -EINVAL;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 
+ 	dev->chainmask = (tx_ant == 3) ? 0x202 : 0x101;
+ 	dev->mt76.antenna_mask = tx_ant;
+@@ -280,7 +281,7 @@ static int mt76x2_set_antenna(struct ieee80211_hw *hw, u32 tx_ant,
+ 	mt76_set_stream_caps(&dev->mt76, true);
+ 	mt76x2_phy_set_antenna(dev);
+ 
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ 
+ 	return 0;
+ }
+@@ -290,10 +291,10 @@ static int mt76x2_get_antenna(struct ieee80211_hw *hw, u32 *tx_ant,
+ {
+ 	struct mt76x2_dev *dev = hw->priv;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 	*tx_ant = dev->mt76.antenna_mask;
+ 	*rx_ant = dev->mt76.antenna_mask;
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ 
+ 	return 0;
+ }
+@@ -320,7 +321,7 @@ const struct ieee80211_ops mt76x2_ops = {
+ 	.add_interface = mt76x2_add_interface,
+ 	.remove_interface = mt76x2_remove_interface,
+ 	.config = mt76x2_config,
+-	.configure_filter = mt76x2_configure_filter,
++	.configure_filter = mt76x02_configure_filter,
+ 	.bss_info_changed = mt76x2_bss_info_changed,
+ 	.sta_add = mt76x2_sta_add,
+ 	.sta_remove = mt76x2_sta_remove,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u_init.c b/drivers/net/wireless/mediatek/mt76/mt76x2u_init.c
+index 276e30608cea..709e37de3b3f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2u_init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2u_init.c
+@@ -151,8 +151,6 @@ struct mt76x2_dev *mt76x2u_alloc_device(struct device *pdev)
+ 	mdev->dev = pdev;
+ 	mdev->drv = &drv_ops;
+ 
+-	mutex_init(&dev->mutex);
+-
+ 	return dev;
+ }
+ 
+@@ -214,7 +212,7 @@ int mt76x2u_init_hardware(struct mt76x2_dev *dev)
+ 		return err;
+ 
+ 	mt76x2u_mac_setaddr(dev, dev->mt76.eeprom.data + MT_EE_MAC_ADDR);
+-	dev->rxfilter = mt76_rr(dev, MT_RX_FILTR_CFG);
++	dev->mt76.rxfilter = mt76_rr(dev, MT_RX_FILTR_CFG);
+ 
+ 	mt76x2u_init_beacon_offsets(dev);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x2u_mac.c
+index eab7ab297aa6..9604c6a809be 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2u_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2u_mac.c
+@@ -122,7 +122,7 @@ int mt76x2u_mac_start(struct mt76x2_dev *dev)
+ 	wait_for_wpdma(dev);
+ 	usleep_range(50, 100);
+ 
+-	mt76_wr(dev, MT_RX_FILTR_CFG, dev->rxfilter);
++	mt76_wr(dev, MT_RX_FILTR_CFG, dev->mt76.rxfilter);
+ 
+ 	mt76_wr(dev, MT_MAC_SYS_CTRL,
+ 		MT_MAC_SYS_CTRL_ENABLE_TX |
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c b/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c
+index 7367ba111119..9180debc0946 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c
+@@ -15,13 +15,14 @@
+  */
+ 
+ #include "mt76x2u.h"
++#include "mt76x02_util.h"
+ 
+ static int mt76x2u_start(struct ieee80211_hw *hw)
+ {
+ 	struct mt76x2_dev *dev = hw->priv;
+ 	int ret;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 
+ 	ret = mt76x2u_mac_start(dev);
+ 	if (ret)
+@@ -30,7 +31,7 @@ static int mt76x2u_start(struct ieee80211_hw *hw)
+ 	set_bit(MT76_STATE_RUNNING, &dev->mt76.state);
+ 
+ out:
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ 	return ret;
+ }
+ 
+@@ -38,10 +39,10 @@ static void mt76x2u_stop(struct ieee80211_hw *hw)
+ {
+ 	struct mt76x2_dev *dev = hw->priv;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 	clear_bit(MT76_STATE_RUNNING, &dev->mt76.state);
+ 	mt76x2u_stop_hw(dev);
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ }
+ 
+ static int mt76x2u_add_interface(struct ieee80211_hw *hw,
+@@ -93,7 +94,7 @@ mt76x2u_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ {
+ 	struct mt76x2_dev *dev = hw->priv;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 
+ 	if (changed & BSS_CHANGED_ASSOC) {
+ 		mt76x2u_phy_channel_calibrate(dev);
+@@ -107,7 +108,7 @@ mt76x2u_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 			get_unaligned_le16(info->bssid + 4));
+ 	}
+ 
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ }
+ 
+ static int
+@@ -116,14 +117,14 @@ mt76x2u_config(struct ieee80211_hw *hw, u32 changed)
+ 	struct mt76x2_dev *dev = hw->priv;
+ 	int err = 0;
+ 
+-	mutex_lock(&dev->mutex);
++	mutex_lock(&dev->mt76.mutex);
+ 
+ 	if (changed & IEEE80211_CONF_CHANGE_MONITOR) {
+ 		if (!(hw->conf.flags & IEEE80211_CONF_MONITOR))
+-			dev->rxfilter |= MT_RX_FILTR_CFG_PROMISC;
++			dev->mt76.rxfilter |= MT_RX_FILTR_CFG_PROMISC;
+ 		else
+-			dev->rxfilter &= ~MT_RX_FILTR_CFG_PROMISC;
+-		mt76_wr(dev, MT_RX_FILTR_CFG, dev->rxfilter);
++			dev->mt76.rxfilter &= ~MT_RX_FILTR_CFG_PROMISC;
++		mt76_wr(dev, MT_RX_FILTR_CFG, dev->mt76.rxfilter);
+ 	}
+ 
+ 	if (changed & IEEE80211_CONF_CHANGE_CHANNEL) {
+@@ -142,7 +143,7 @@ mt76x2u_config(struct ieee80211_hw *hw, u32 changed)
+ 			mt76x2_phy_set_txpower(dev);
+ 	}
+ 
+-	mutex_unlock(&dev->mutex);
++	mutex_unlock(&dev->mt76.mutex);
+ 
+ 	return err;
+ }
+@@ -177,7 +178,7 @@ const struct ieee80211_ops mt76x2u_ops = {
+ 	.config = mt76x2u_config,
+ 	.wake_tx_queue = mt76_wake_tx_queue,
+ 	.bss_info_changed = mt76x2u_bss_info_changed,
+-	.configure_filter = mt76x2_configure_filter,
++	.configure_filter = mt76x02_configure_filter,
+ 	.conf_tx = mt76x2_conf_tx,
+ 	.sw_scan_start = mt76x2u_sw_scan,
+ 	.sw_scan_complete = mt76x2u_sw_scan_complete,
 -- 
 2.7.5
