@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH v2 07/17] mt76: add helpers for register access with mt76_dev struct
-Date: Mon, 27 Aug 2018 16:56:21 +0200
-Message-ID: <1535381791-14908-8-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH v2 08/17] mt76: unify mac_shared_key_setup
+Date: Mon, 27 Aug 2018 16:56:22 +0200
+Message-ID: <1535381791-14908-9-git-send-email-sgruszka@redhat.com>
 References: <1535381791-14908-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1535381791-14908-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,28 +10,196 @@ To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add helpers for register access from common code.
+Merge mt76x{0,2} mac_shared_key_setup into common code.
 
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt76x0/mac.c    | 24 ----------------------
+ drivers/net/wireless/mediatek/mt76/mt76x0/mac.h    |  2 --
+ drivers/net/wireless/mediatek/mt76/mt76x0/main.c   |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x02_mac.c   | 23 +++++++++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76x02_mac.h   |  2 ++
+ drivers/net/wireless/mediatek/mt76/mt76x2_common.c |  3 ++-
+ drivers/net/wireless/mediatek/mt76/mt76x2_init.c   |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_mac.h    |  3 ---
+ .../net/wireless/mediatek/mt76/mt76x2_mac_common.c | 23 ---------------------
+ 9 files changed, 29 insertions(+), 55 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 79017dbd364d..10959c4669bd 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -404,6 +404,11 @@ struct mt76_rx_status {
- 	s8 chain_signal[IEEE80211_MAX_CHAINS];
- };
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
+index 4b5d48246879..6d0a6fb18be9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
+@@ -606,27 +606,3 @@ int mt76x0_mac_wcid_set_key(struct mt76x0_dev *dev, u8 idx,
  
-+#define __mt76_rr(dev, ...)	(dev)->bus->rr((dev), __VA_ARGS__)
-+#define __mt76_wr(dev, ...)	(dev)->bus->wr((dev), __VA_ARGS__)
-+#define __mt76_rmw(dev, ...)	(dev)->bus->rmw((dev), __VA_ARGS__)
-+#define __mt76_wr_copy(dev, ...)	(dev)->bus->copy((dev), __VA_ARGS__)
+ 	return 0;
+ }
+-
+-int mt76x0_mac_shared_key_setup(struct mt76x0_dev *dev, u8 vif_idx, u8 key_idx,
+-			      struct ieee80211_key_conf *key)
+-{
+-	enum mt76x02_cipher_type cipher;
+-	u8 key_data[32];
+-	u32 val;
+-
+-	cipher = mt76x02_mac_get_key_info(key, key_data);
+-	if (cipher == MT_CIPHER_NONE && key)
+-		return -EINVAL;
+-
+-	trace_mt76x0_set_shared_key(&dev->mt76, vif_idx, key_idx);
+-
+-	mt76_wr_copy(dev, MT_SKEY(vif_idx, key_idx),
+-			key_data, sizeof(key_data));
+-
+-	val = mt76_rr(dev, MT_SKEY_MODE(vif_idx));
+-	val &= ~(MT_SKEY_MODE_MASK << MT_SKEY_MODE_SHIFT(vif_idx, key_idx));
+-	val |= cipher << MT_SKEY_MODE_SHIFT(vif_idx, key_idx);
+-	mt76_wr(dev, MT_SKEY_MODE(vif_idx), val);
+-
+-	return 0;
+-}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.h
+index bea067b71c13..d44ef1e9a1dd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.h
+@@ -143,8 +143,6 @@ int mt76x0_mac_wcid_set_key(struct mt76x0_dev *dev, u8 idx,
+ void mt76x0_mac_wcid_set_rate(struct mt76x0_dev *dev, struct mt76_wcid *wcid,
+ 			    const struct ieee80211_tx_rate *rate);
+ 
+-int mt76x0_mac_shared_key_setup(struct mt76x0_dev *dev, u8 vif_idx, u8 key_idx,
+-			      struct ieee80211_key_conf *key);
+ u16 mt76x0_mac_tx_rate_val(struct mt76x0_dev *dev,
+ 			 const struct ieee80211_tx_rate *rate, u8 *nss_val);
+ struct mt76_tx_status
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
+index 8fc270b94819..fb31c103aeee 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
+@@ -264,7 +264,7 @@ mt76x0_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ 				return ret;
+ 		}
+ 
+-		return mt76x0_mac_shared_key_setup(dev, mvif->idx, idx, key);
++		return mt76x02_mac_shared_key_setup(&dev->mt76, mvif->idx, idx, key);
+ 	}
+ 
+ 	return mt76x0_mac_wcid_set_key(dev, msta->wcid.idx, key);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
+index 7137fd2a370e..6d45adc0522f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
+@@ -44,3 +44,26 @@ mt76x02_mac_get_key_info(struct ieee80211_key_conf *key, u8 *key_data)
+ 	}
+ }
+ EXPORT_SYMBOL_GPL(mt76x02_mac_get_key_info);
 +
- #define mt76_rr(dev, ...)	(dev)->mt76.bus->rr(&((dev)->mt76), __VA_ARGS__)
- #define mt76_wr(dev, ...)	(dev)->mt76.bus->wr(&((dev)->mt76), __VA_ARGS__)
- #define mt76_rmw(dev, ...)	(dev)->mt76.bus->rmw(&((dev)->mt76), __VA_ARGS__)
--- 
-2.7.5
++int mt76x02_mac_shared_key_setup(struct mt76_dev *dev, u8 vif_idx, u8 key_idx,
++				struct ieee80211_key_conf *key)
++{
++	enum mt76x02_cipher_type cipher;
++	u8 key_data[32];
++	u32 val;
++
++	cipher = mt76x02_mac_get_key_info(key, key_data);
++	if (cipher == MT_CIPHER_NONE && key)
++		return -EOPNOTSUPP;
++
++	val = __mt76_rr(dev, MT_SKEY_MODE(vif_idx));
++	val &= ~(MT_SKEY_MODE_MASK << MT_SKEY_MODE_SHIFT(vif_idx, key_idx));
++	val |= cipher << MT_SKEY_MODE_SHIFT(vif_idx, key_idx);
++	__mt76_wr(dev, MT_SKEY_MODE(vif_idx), val);
++
++	__mt76_wr_copy(dev, MT_SKEY(vif_idx, key_idx), key_data,
++		       sizeof(key_data));
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(mt76x02_mac_shared_key_setup);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.h b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.h
+index e06a1ff3a77f..6f8b8a1d02cf 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.h
+@@ -42,4 +42,6 @@ static inline bool mt76x02_wait_for_mac(struct mt76_dev *dev)
+ enum mt76x02_cipher_type
+ mt76x02_mac_get_key_info(struct ieee80211_key_conf *key, u8 *key_data);
+ 
++int mt76x02_mac_shared_key_setup(struct mt76_dev *dev, u8 vif_idx, u8 key_idx,
++				struct ieee80211_key_conf *key);
+ #endif
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
+index fe0b394fd9ea..56cceeac78d8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
+@@ -16,6 +16,7 @@
+  */
+ 
+ #include "mt76x2.h"
++#include "mt76x02_mac.h"
+ 
+ void mt76x2_txq_init(struct mt76x2_dev *dev, struct ieee80211_txq *txq)
+ {
+@@ -223,7 +224,7 @@ int mt76x2_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ 				return ret;
+ 		}
+ 
+-		return mt76x2_mac_shared_key_setup(dev, mvif->idx, idx, key);
++		return mt76x02_mac_shared_key_setup(&dev->mt76, mvif->idx, idx, key);
+ 	}
+ 
+ 	return mt76x2_mac_wcid_set_key(dev, msta->wcid.idx, key);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_init.c b/drivers/net/wireless/mediatek/mt76/mt76x2_init.c
+index 07ef0a368f1e..1c5c3552a719 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_init.c
+@@ -167,7 +167,7 @@ static int mt76x2_mac_reset(struct mt76x2_dev *dev, bool hard)
+ 
+ 	for (i = 0; i < 16; i++)
+ 		for (k = 0; k < 4; k++)
+-			mt76x2_mac_shared_key_setup(dev, i, k, NULL);
++			mt76x02_mac_shared_key_setup(&dev->mt76, i, k, NULL);
+ 
+ 	for (i = 0; i < 8; i++) {
+ 		mt76x2_mac_set_bssid(dev, i, null_addr);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_mac.h b/drivers/net/wireless/mediatek/mt76/mt76x2_mac.h
+index 0f07fc1a19ab..4be2e0e64847 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_mac.h
+@@ -175,9 +175,6 @@ void mt76x2_mac_wcid_set_rate(struct mt76x2_dev *dev, struct mt76_wcid *wcid,
+ 			      const struct ieee80211_tx_rate *rate);
+ void mt76x2_mac_wcid_set_drop(struct mt76x2_dev *dev, u8 idx, bool drop);
+ 
+-int mt76x2_mac_shared_key_setup(struct mt76x2_dev *dev, u8 vif_idx, u8 key_idx,
+-				struct ieee80211_key_conf *key);
+-
+ int mt76x2_mac_set_beacon(struct mt76x2_dev *dev, u8 vif_idx,
+ 			  struct sk_buff *skb);
+ void mt76x2_mac_set_beacon_enable(struct mt76x2_dev *dev, u8 vif_idx, bool val);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c
+index 92621fc5fbf8..7359ef647268 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c
+@@ -229,29 +229,6 @@ void mt76x2_send_tx_status(struct mt76x2_dev *dev,
+ }
+ EXPORT_SYMBOL_GPL(mt76x2_send_tx_status);
+ 
+-int mt76x2_mac_shared_key_setup(struct mt76x2_dev *dev, u8 vif_idx, u8 key_idx,
+-				struct ieee80211_key_conf *key)
+-{
+-	enum mt76x02_cipher_type cipher;
+-	u8 key_data[32];
+-	u32 val;
+-
+-	cipher = mt76x02_mac_get_key_info(key, key_data);
+-	if (cipher == MT_CIPHER_NONE && key)
+-		return -EOPNOTSUPP;
+-
+-	val = mt76_rr(dev, MT_SKEY_MODE(vif_idx));
+-	val &= ~(MT_SKEY_MODE_MASK << MT_SKEY_MODE_SHIFT(vif_idx, key_idx));
+-	val |= cipher << MT_SKEY_MODE_SHIFT(vif_idx, key_idx);
+-	mt76_wr(dev, MT_SKEY_MODE(vif_idx), val);
+-
+-	mt76_wr_copy(dev, MT_SKEY(vif_idx, key_idx), key_data,
+-		     sizeof(key_data));
+-
+-	return 0;
+-}
+-EXPORT_SYMBOL_GPL(mt76x2_mac_shared_key_setup);
