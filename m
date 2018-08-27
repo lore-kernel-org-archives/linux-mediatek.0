@@ -1,39 +1,60 @@
-From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH 02/17] mt76: rename mt76x2_regs.h
-Date: Sat, 25 Aug 2018 16:44:54 +0200
-Message-ID: <20180825144453.GA14397@redhat.com>
-References: <1535109321-17126-1-git-send-email-sgruszka@redhat.com>
- <1535109321-17126-3-git-send-email-sgruszka@redhat.com>
- <2172355a-0703-e432-96cb-fba2383c3890@nbd.name>
- <20180825113149.GA13833@redhat.com>
- <f5537708-b3b6-1d0c-1461-7a08ca48b51b@nbd.name>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: [GIT PULL] mediatek drm fixes for 4.19
+Date: Mon, 27 Aug 2018 13:03:14 +0800
+Message-ID: <1535346194.27648.5.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <f5537708-b3b6-1d0c-1461-7a08ca48b51b-Vt+b4OUoWG0@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
-Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: Stu Hsieh <stu.hsieh@mediatek.com>, Souptick Joarder <jrdr.linux@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Aug 25, 2018 at 01:56:47PM +0200, Felix Fietkau wrote:
-> >> I think mt76xx_regs.h is named too generic. MT7603, MT7628, MT7615 and
-> >> all newer chips use a completely different register layout.
-> >> I'd prefer to stick with mt76x2_regs for now and use it for x0 as well.
-> > 
-> > I thought about that too, but choose it will be better to have some
-> > prefix that will indicate the function/structure/header is shared between
-> > the x0 and x2 drivers to not confuse mt76x2 code that is mt76x2 only
-> > and one that is shared.
-> > 
-> > I choose mt76xx name, considered mt76 to be generic prefix shared also 
-> > between old and new chips. But yeah this mt76xx name also "contains" new
-> > chips. How about mt76old_ or mt76og_ (old generation) ?
-> I think this looks even more confusing. Also, please keep in mind that
-> 'old' is relative as well.
-> How about mt76x02?
-
-Ok to me. 
-
-Stanislaw
+SGksIERhdmU6CgpIZXJlIGFyZSBzb21lIGZpeGVzIGZvciBtZWRpYXRlayBkcm0gZHJpdmVyLgoK
+UmVnYXJkcywKQ0sKClRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQKNWIzOTRiMmRk
+ZjAzNDdiZWY1NmU1MGM2OWE1ODc3M2M5NDM0M2ZmMzoKCiAgTGludXggNC4xOS1yYzEgKDIwMTgt
+MDgtMjYgMTQ6MTE6NTkgLTA3MDApCgphcmUgYXZhaWxhYmxlIGluIHRoZSBnaXQgcmVwb3NpdG9y
+eSBhdDoKCiAgaHR0cHM6Ly9naXRodWIuY29tL2NraHUtbWVkaWF0ZWsvbGludXguZ2l0LXRhZ3Mu
+Z2l0Cm1lZGlhdGVrLWRybS1maXhlcy00LjE5Cgpmb3IgeW91IHRvIGZldGNoIGNoYW5nZXMgdXAg
+dG8gMDhiY2JlZDc0N2ViODdmMDBkMmUyNTkwYjQ5NjA3YWYxYTlmNGZlOToKCiAgZHJtL21lZGlh
+dGVrOiBmaXggY29ubmVjdGlvbiBmcm9tIFJETUEyIHRvIERTSTEgKDIwMTgtMDgtMjcgMTE6MjQ6
+MzcKKzA4MDApCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tClNvdXB0aWNrIEpvYXJkZXIgKDEpOgogICAgICBkcm0vbWVkaWF0
+ZWs6IENvbnZlcnQgZHJtX2F0b21pY19oZWxwZXJfc3VzcGVuZC9yZXN1bWUoKQoKU3R1IEhzaWVo
+ICgxNCk6CiAgICAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMCB0byBE
+UEkxCiAgICAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMCB0byBEU0kx
+CiAgICAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMSB0byBEU0kwCiAg
+ICAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMiB0byBEU0kwCiAgICAg
+IGRybS9tZWRpYXRlazogYWRkIG1lbW9yeSBtb2RlIGFuZCBsYXllcl9jb25maWcgZm9yIFJETUEK
+ICAgICAgZHJtL21lZGlhdGVrOiBhZGQgUkdCIGNvbG9yIGZvcm1hdCBzdXBwb3J0IGZvciBSRE1B
+CiAgICAgIGRybS9tZWRpYXRlazogYWRkIHRoZSBjb21tZW50IGFib3V0IGNvbG9yIGZvcm1hdCBz
+ZXR0aW5nIGZvciBPVkwKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgWVVZVi9VWVZZIGNvbG9yIGZv
+cm1hdCBzdXBwb3J0IGZvciBSRE1BCiAgICAgIGRybS9tZWRpYXRlazogYWRkIGZ1bmN0aW9uIHRv
+IGdldCBsYXllciBudW1iZXIgZm9yIGNvbXBvbmVudAogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBm
+dW5jdGlvbiB0byByZXR1cm4gT1ZMIGxheWVyIG51bWJlcgogICAgICBkcm0vbWVkaWF0ZWs6IGFk
+ZCBmdW5jdGlvbiB0byByZXR1cm4gUkRNQSBsYXllciBudW1iZXIKICAgICAgZHJtL21lZGlhdGVr
+OiB1c2UgbGF5ZXJfbnIgZnVuY3Rpb24gdG8gZ2V0IGxheWVyIG51bWJlciB0byBpbml0CnBsYW5l
+CiAgICAgIGRybS9tZWRpYXRlazogdXBkYXRlIHNvbWUgdmFyaWFibGUgbmFtZSBmcm9tIG92bCB0
+byBjb21wCiAgICAgIGRybS9tZWRpYXRlazogZml4IGNvbm5lY3Rpb24gZnJvbSBSRE1BMiB0byBE
+U0kxCgpUaG9tYXMgWmltbWVybWFubiAoMSk6CiAgICAgIGRybS9tZWRpYXRlazogUmVwbGFjZSBk
+cm1fZGV2X3VucmVmIHdpdGggZHJtX2Rldl9wdXQKCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2Rpc3Bfb3ZsLmMgICAgIHwgMTEgKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kaXNwX3JkbWEuYyAgICB8IDkyCisrKysrKysrKysrKysrKysrKysrKysrKysrKysrCiBkcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgICAgIHwgNDcgKysrKysrKystLS0t
+LS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmggICAgIHwgIDMgKy0K
+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jICAgICAgfCAxOCArKysrKy0K
+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmggfCAgOSArKysKIGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICAgICAgfCAyNyArKysrLS0tLS0K
+IDcgZmlsZXMgY2hhbmdlZCwgMTY4IGluc2VydGlvbnMoKyksIDM5IGRlbGV0aW9ucygtKQoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
