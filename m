@@ -1,60 +1,75 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: [GIT PULL] mediatek drm fixes for 4.19
-Date: Mon, 27 Aug 2018 13:03:14 +0800
-Message-ID: <1535346194.27648.5.camel@mtksdaap41>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH 00/16] Unify MediaTek pinctrl in preparation for MT8183 and MT6765
+Date: Mon, 27 Aug 2018 18:09:59 +0800
+Message-ID: <cover.1535363951.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Dave Airlie <airlied@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Stu Hsieh <stu.hsieh@mediatek.com>, Souptick Joarder <jrdr.linux@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linus.walleij@linaro.org, linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIERhdmU6CgpIZXJlIGFyZSBzb21lIGZpeGVzIGZvciBtZWRpYXRlayBkcm0gZHJpdmVyLgoK
-UmVnYXJkcywKQ0sKClRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQKNWIzOTRiMmRk
-ZjAzNDdiZWY1NmU1MGM2OWE1ODc3M2M5NDM0M2ZmMzoKCiAgTGludXggNC4xOS1yYzEgKDIwMTgt
-MDgtMjYgMTQ6MTE6NTkgLTA3MDApCgphcmUgYXZhaWxhYmxlIGluIHRoZSBnaXQgcmVwb3NpdG9y
-eSBhdDoKCiAgaHR0cHM6Ly9naXRodWIuY29tL2NraHUtbWVkaWF0ZWsvbGludXguZ2l0LXRhZ3Mu
-Z2l0Cm1lZGlhdGVrLWRybS1maXhlcy00LjE5Cgpmb3IgeW91IHRvIGZldGNoIGNoYW5nZXMgdXAg
-dG8gMDhiY2JlZDc0N2ViODdmMDBkMmUyNTkwYjQ5NjA3YWYxYTlmNGZlOToKCiAgZHJtL21lZGlh
-dGVrOiBmaXggY29ubmVjdGlvbiBmcm9tIFJETUEyIHRvIERTSTEgKDIwMTgtMDgtMjcgMTE6MjQ6
-MzcKKzA4MDApCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tClNvdXB0aWNrIEpvYXJkZXIgKDEpOgogICAgICBkcm0vbWVkaWF0
-ZWs6IENvbnZlcnQgZHJtX2F0b21pY19oZWxwZXJfc3VzcGVuZC9yZXN1bWUoKQoKU3R1IEhzaWVo
-ICgxNCk6CiAgICAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMCB0byBE
-UEkxCiAgICAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMCB0byBEU0kx
-CiAgICAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMSB0byBEU0kwCiAg
-ICAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3Rpb24gZnJvbSBSRE1BMiB0byBEU0kwCiAgICAg
-IGRybS9tZWRpYXRlazogYWRkIG1lbW9yeSBtb2RlIGFuZCBsYXllcl9jb25maWcgZm9yIFJETUEK
-ICAgICAgZHJtL21lZGlhdGVrOiBhZGQgUkdCIGNvbG9yIGZvcm1hdCBzdXBwb3J0IGZvciBSRE1B
-CiAgICAgIGRybS9tZWRpYXRlazogYWRkIHRoZSBjb21tZW50IGFib3V0IGNvbG9yIGZvcm1hdCBz
-ZXR0aW5nIGZvciBPVkwKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgWVVZVi9VWVZZIGNvbG9yIGZv
-cm1hdCBzdXBwb3J0IGZvciBSRE1BCiAgICAgIGRybS9tZWRpYXRlazogYWRkIGZ1bmN0aW9uIHRv
-IGdldCBsYXllciBudW1iZXIgZm9yIGNvbXBvbmVudAogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBm
-dW5jdGlvbiB0byByZXR1cm4gT1ZMIGxheWVyIG51bWJlcgogICAgICBkcm0vbWVkaWF0ZWs6IGFk
-ZCBmdW5jdGlvbiB0byByZXR1cm4gUkRNQSBsYXllciBudW1iZXIKICAgICAgZHJtL21lZGlhdGVr
-OiB1c2UgbGF5ZXJfbnIgZnVuY3Rpb24gdG8gZ2V0IGxheWVyIG51bWJlciB0byBpbml0CnBsYW5l
-CiAgICAgIGRybS9tZWRpYXRlazogdXBkYXRlIHNvbWUgdmFyaWFibGUgbmFtZSBmcm9tIG92bCB0
-byBjb21wCiAgICAgIGRybS9tZWRpYXRlazogZml4IGNvbm5lY3Rpb24gZnJvbSBSRE1BMiB0byBE
-U0kxCgpUaG9tYXMgWmltbWVybWFubiAoMSk6CiAgICAgIGRybS9tZWRpYXRlazogUmVwbGFjZSBk
-cm1fZGV2X3VucmVmIHdpdGggZHJtX2Rldl9wdXQKCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2Rpc3Bfb3ZsLmMgICAgIHwgMTEgKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kaXNwX3JkbWEuYyAgICB8IDkyCisrKysrKysrKysrKysrKysrKysrKysrKysrKysrCiBkcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgICAgIHwgNDcgKysrKysrKystLS0t
-LS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmggICAgIHwgIDMgKy0K
-IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jICAgICAgfCAxOCArKysrKy0K
-IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmggfCAgOSArKysKIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICAgICAgfCAyNyArKysrLS0tLS0K
-IDcgZmlsZXMgY2hhbmdlZCwgMTY4IGluc2VydGlvbnMoKyksIDM5IGRlbGV0aW9ucygtKQoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+From: Sean Wang <sean.wang@mediatek.com>
+
+Irregular register arrangement and their logic access from various MediaTek
+SoCs being introduced already causes pinctrl-mtk-common to bloat and became
+really hard to maintain so that the patch creates pinctrl-mtk-common-v2 based
+on the core of mt7622 pinctrl to try make the register operations to be simple.
+
+The goals pinctrl-mtk-common-v2 want to achieve are to hopefully support
+all of MediaTek SoCs, and two kinds of dt-bindings being supported,
+Linux generic pinctrl dt-binding which mt762x like to support and MediaTek
+vendor per-pin dt-binding the other SoCs support the MT8183 and MT6765 incline
+to make use of.
+
+The patch starts to refactor MT7622 pinctrl driver first with splitting
+out these portable ways from there such as table-based register operation
+and the other operations in common in the both kinds of driver.
+
+Sean Wang (16):
+  pinctrl: mediatek: add pinctrl-mtk-common-v2 for all MediaTek pinctrls
+  pinctrl: mediatek: add pinctrl-moore that implements the generic
+    pinctrl dt-bindings
+  pinctrl: mediatek: extend struct mtk_pin_field_calc to
+    pinctrl-mtk-common-v2.c
+  pinctrl: mediatek: extend struct mtk_pin_desc to
+    pinctrl-mtk-common-v2.c
+  pinctrl: mediatek: extend struct mtk_pin_soc to
+    pinctrl-mtk-common-v2.c
+  pinctrl: mediatek: add driving strength related support to
+    pinctrl-mtk-common-v2.c
+  pinctrl: mediatek: add drv register support to pinctrl-mtk-common-v2.c
+  pinctrl: mediatek: add pull related support to pinctrl-mtk-common-v2.c
+  pinctrl: mediatek: add advanced pull related support to
+    pinctrl-mtk-common-v2.c
+  pinctrl: mediatek: add ies register support to pinctrl-mtk-common-v2.c
+  pinctrl: mediatek: add pullen, pullsel register support to
+    pinctrl-mtk-common-v2.c
+  pinctrl: mediatek: add MT7623 pinctrl driver based on generic pinctrl
+    binding
+  pinctrl: mediatek: use pin descriptor all in pinctrl-mtk-common-v2.c
+  pinctrl: mediatek: add multiple register bases support to
+    pinctrl-mtk-common-v2.c
+  pinctrl: mediatek: adjust error code and message when some register
+    not supported is found
+  pinctrl: mediatek: extend struct mtk_pin_desc which per-pin driver
+    depends on
+
+ drivers/pinctrl/mediatek/Kconfig                 |   25 +-
+ drivers/pinctrl/mediatek/Makefile                |    2 +
+ drivers/pinctrl/mediatek/pinctrl-moore.c         |  813 ++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-moore.h         |   57 +
+ drivers/pinctrl/mediatek/pinctrl-mt7622.c        | 1407 ++++-----------------
+ drivers/pinctrl/mediatek/pinctrl-mt7623.c        | 1441 ++++++++++++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c |  510 ++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h |  281 +++++
+ 8 files changed, 3345 insertions(+), 1191 deletions(-)
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-moore.c
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-moore.h
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt7623.c
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+
+-- 
+2.7.4
