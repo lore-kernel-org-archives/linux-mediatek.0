@@ -1,675 +1,566 @@
-From: Leilk Liu <leilk.liu@mediatek.com>
-Subject: [PATCH 2/3] spis: mediatek: add spi slave for Mediatek MT2712
-Date: Tue, 28 Aug 2018 14:28:04 +0800
-Message-ID: <1535437685-30230-3-git-send-email-leilk.liu@mediatek.com>
-References: <1535437685-30230-1-git-send-email-leilk.liu@mediatek.com>
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Subject: Re: [PATCH] pinctrl: Convert to using %pOFn instead of
+ device_node.name
+Date: Tue, 28 Aug 2018 09:21:18 +0200
+Message-ID: <20180828072118.GK24549@piout.net>
+References: <20180828015252.28511-1-robh@kernel.org>
+ <20180828015252.28511-40-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1535437685-30230-1-git-send-email-leilk.liu@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20180828015252.28511-40-robh@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, mengqi.zhang@mediatek.com, yt.shen@mediatek.com, Leilk Liu <leilk.liu@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Cc: linux-kernel@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Stefan Agner <stefan@agner.ch>, Pengutronix Kernel Team <kernel@pengutronix.de>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Heiko Stuebner <heiko@sntech.de>, Tony Lindgren <tony@atomide.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patchs add basic spi slave for MT2712.
+On 27/08/2018 20:52:41-0500, Rob Herring wrote:
+> In preparation to remove the node name pointer from struct device_node,
+> convert printf users to use the %pOFn format specifier.
+> 
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: Dong Aisheng <aisheng.dong@nxp.com>
+> Cc: Fabio Estevam <festevam@gmail.com>
+> Cc: Shawn Guo <shawnguo@kernel.org>
+> Cc: Stefan Agner <stefan@agner.ch>
+> Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
+> Cc: Sean Wang <sean.wang@mediatek.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Carlo Caione <carlo@caione.org>
+> Cc: Kevin Hilman <khilman@baylibre.com>
+> Cc: Jason Cooper <jason@lakedaemon.net>
+> Cc: Andrew Lunn <andrew@lunn.ch>
+> Cc: Gregory Clement <gregory.clement@bootlin.com>
+> Cc: Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>
+> Cc: Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>
+> Cc: Nicolas Ferre <nicolas.ferre@microchip.com>
+> Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Tony Lindgren <tony@atomide.com>
+> Cc: Haojian Zhuang <haojian.zhuang@linaro.org>
+> Cc: Patrice Chotard <patrice.chotard@st.com>
+> Cc: Barry Song <baohua@kernel.org>
+> Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>
+> Cc: Alexandre Torgue <alexandre.torgue@st.com>
+> Cc: Maxime Ripard <maxime.ripard@bootlin.com>
+> Cc: Chen-Yu Tsai <wens@csie.org>
+> Cc: linux-gpio@vger.kernel.org
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-amlogic@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-omap@vger.kernel.org
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
----
- drivers/spi/Kconfig            |    8 +
- drivers/spi/Makefile           |    1 +
- drivers/spi/spi-slave-mt27xx.c |  613 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 622 insertions(+)
- create mode 100644 drivers/spi/spi-slave-mt27xx.c
+For at91:
+Reviewed-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
 
-diff --git a/drivers/spi/Kconfig b/drivers/spi/Kconfig
-index 671d078..86ef6a5 100644
---- a/drivers/spi/Kconfig
-+++ b/drivers/spi/Kconfig
-@@ -802,6 +802,14 @@ config SPI_SLAVE
- 	  slave protocol handlers.
- 
- if SPI_SLAVE
-+config SPI_SLAVE_MT27XX
-+	tristate "MediaTek SPI slave device"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	help
-+	  This selects the MediaTek(R) SPI slave device driver.
-+	  If you want to use MediaTek(R) SPI slave interface,
-+	  say Y or M here.If you are not sure, say N.
-+	  SPI slave drivers for Mediatek MT27XX series ARM SoCs.
- 
- config SPI_SLAVE_TIME
- 	tristate "SPI slave handler reporting boot up time"
-diff --git a/drivers/spi/Makefile b/drivers/spi/Makefile
-index a90d559..a5e7b3c 100644
---- a/drivers/spi/Makefile
-+++ b/drivers/spi/Makefile
-@@ -109,5 +109,6 @@ obj-$(CONFIG_SPI_XTENSA_XTFPGA)		+= spi-xtensa-xtfpga.o
- obj-$(CONFIG_SPI_ZYNQMP_GQSPI)		+= spi-zynqmp-gqspi.o
- 
- # SPI slave protocol handlers
-+obj-$(CONFIG_SPI_SLAVE_MT27XX)		+= spi-slave-mt27xx.o
- obj-$(CONFIG_SPI_SLAVE_TIME)		+= spi-slave-time.o
- obj-$(CONFIG_SPI_SLAVE_SYSTEM_CONTROL)	+= spi-slave-system-control.o
-diff --git a/drivers/spi/spi-slave-mt27xx.c b/drivers/spi/spi-slave-mt27xx.c
-new file mode 100644
-index 0000000..2aa12f3
---- /dev/null
-+++ b/drivers/spi/spi-slave-mt27xx.c
-@@ -0,0 +1,613 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+//
-+// Copyright (c) 2018 MediaTek Inc.
-+// Author: Leilk Liu <leilk.liu@mediatek.com>
-+//
-+// This program is free software; you can redistribute it and/or modify
-+// it under the terms of the GNU General Public License version 2 as
-+// published by the Free Software Foundation.
-+//
-+// This program is distributed in the hope that it will be useful,
-+// but WITHOUT ANY WARRANTY; without even the implied warranty of
-+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+// GNU General Public License for more details.
-+
-+#include <linux/clk.h>
-+#include <linux/device.h>
-+#include <linux/dma-mapping.h>
-+#include <linux/err.h>
-+#include <linux/interrupt.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/spi/spi.h>
-+
-+#define SPIS_IRQ_EN_REG		0x0
-+#define SPIS_IRQ_CLR_REG	0x4
-+#define SPIS_IRQ_ST_REG		0x8
-+#define SPIS_IRQ_MASK_REG	0xc
-+#define SPIS_CFG_REG		0x10
-+#define SPIS_RX_DATA_REG	0x14
-+#define SPIS_TX_DATA_REG	0x18
-+#define SPIS_RX_DST_REG		0x1c
-+#define SPIS_TX_SRC_REG		0x20
-+#define SPIS_RX_CMD_REG		0x24
-+#define SPIS_FIFO_ST_REG	0x28
-+#define SPIS_MON_SEL_REG	0x2c
-+#define SPIS_DMA_CFG_REG	0x30
-+#define SPIS_FIFO_THR_REG	0x34
-+#define SPIS_DEBUG_ST_REG	0x38
-+#define SPIS_BYTE_CNT_REG	0x3c
-+#define SPIS_SOFT_RST_REG	0x40
-+
-+/* SPIS_IRQ_EN_REG */
-+#define DMA_DONE_EN		BIT(7)
-+#define TX_FIFO_EMPTY_EN	BIT(6)
-+#define TX_FIFO_FULL_EN		BIT(5)
-+#define RX_FIFO_EMPTY_EN	BIT(4)
-+#define RX_FIFO_FULL_EN		BIT(3)
-+#define DATA_DONE_EN		BIT(2)
-+#define RSTA_DONE_EN		BIT(1)
-+#define CMD_INVALID_EN		BIT(0)
-+
-+/* SPIS_IRQ_CLR_REG */
-+#define DMA_DONE_CLR		BIT(7)
-+#define TX_FIFO_EMPTY_CLR	BIT(6)
-+#define TX_FIFO_FULL_CLR	BIT(5)
-+#define RX_FIFO_EMPTY_CLR	BIT(4)
-+#define RX_FIFO_FULL_CLR	BIT(3)
-+#define DATA_DONE_CLR		BIT(2)
-+#define RSTA_DONE_CLR		BIT(1)
-+#define CMD_INVALID_CLR		BIT(0)
-+
-+/* SPIS_IRQ_ST_REG */
-+#define DMA_DONE_ST		BIT(7)
-+#define TX_FIFO_EMPTY_ST	BIT(6)
-+#define TX_FIFO_FULL_ST		BIT(5)
-+#define RX_FIFO_EMPTY_ST	BIT(4)
-+#define RX_FIFO_FULL_ST		BIT(3)
-+#define DATA_DONE_ST		BIT(2)
-+#define RSTA_DONE_ST		BIT(1)
-+#define CMD_INVALID_ST		BIT(0)
-+
-+/* SPIS_IRQ_MASK_REG */
-+#define DMA_DONE_MASK		BIT(7)
-+#define DATA_DONE_MASK		BIT(2)
-+#define RSTA_DONE_MASK		BIT(1)
-+#define CMD_INVALID_MASK	BIT(0)
-+
-+/* SPIS_CFG_REG */
-+#define SPIS_TX_ENDIAN		BIT(7)
-+#define SPIS_RX_ENDIAN		BIT(6)
-+#define SPIS_TXMSBF		BIT(5)
-+#define SPIS_RXMSBF		BIT(4)
-+#define SPIS_CPHA		BIT(3)
-+#define SPIS_CPOL		BIT(2)
-+#define SPIS_TX_EN		BIT(1)
-+#define SPIS_RX_EN		BIT(0)
-+
-+/* SPIS_DMA_CFG_REG */
-+#define TX_DMA_TRIG_EN		BIT(31)
-+#define TX_DMA_EN		BIT(30)
-+#define RX_DMA_EN		BIT(29)
-+#define TX_DMA_LEN		0xfffff
-+
-+/* SPIS_SOFT_RST_REG */
-+#define SPIS_DMA_ADDR_EN	BIT(1)
-+#define SPIS_SOFT_RST		BIT(0)
-+
-+#define MTK_SPI_SLAVE_MAX_FIFO_SIZE 512U
-+
-+struct mtk_spi_slave {
-+	struct device *dev;
-+	void __iomem *base;
-+	struct clk *parent_clk, *sel_clk, *spi_clk;
-+	struct completion xfer_done;
-+	struct spi_transfer *cur_transfer;
-+	bool slave_aborted;
-+};
-+
-+static const struct of_device_id mtk_spi_slave_of_match[] = {
-+	{ .compatible = "mediatek,mt2712-spi-slave", },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, mtk_spi_slave_of_match);
-+
-+static void mtk_spi_slave_disable_dma(struct mtk_spi_slave *mdata)
-+{
-+	u32 reg_val;
-+
-+	reg_val = readl(mdata->base + SPIS_DMA_CFG_REG);
-+	reg_val &= ~RX_DMA_EN;
-+	reg_val &= ~TX_DMA_EN;
-+	writel(reg_val, mdata->base + SPIS_DMA_CFG_REG);
-+}
-+
-+static void mtk_spi_slave_disable_xfer(struct mtk_spi_slave *mdata)
-+{
-+	u32 reg_val;
-+
-+	reg_val = readl(mdata->base + SPIS_CFG_REG);
-+	reg_val &= ~SPIS_TX_EN;
-+	reg_val &= ~SPIS_RX_EN;
-+	writel(reg_val, mdata->base + SPIS_CFG_REG);
-+}
-+
-+static int mtk_spi_slave_wait_for_completion(struct mtk_spi_slave *mdata)
-+{
-+	if (wait_for_completion_interruptible(&mdata->xfer_done) ||
-+	    mdata->slave_aborted) {
-+		pr_err("interrupted\n");
-+		return -EINTR;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_spi_slave_prepare_message(struct spi_controller *ctlr,
-+					 struct spi_message *msg)
-+{
-+	u16 cpha, cpol;
-+	u32 reg_val;
-+	struct spi_device *spi = msg->spi;
-+	struct mtk_spi_slave *mdata = spi_controller_get_devdata(ctlr);
-+
-+	cpha = spi->mode & SPI_CPHA ? 1 : 0;
-+	cpol = spi->mode & SPI_CPOL ? 1 : 0;
-+
-+	reg_val = readl(mdata->base + SPIS_CFG_REG);
-+	if (cpha)
-+		reg_val |= SPIS_CPHA;
-+	else
-+		reg_val &= ~SPIS_CPHA;
-+	if (cpol)
-+		reg_val |= SPIS_CPOL;
-+	else
-+		reg_val &= ~SPIS_CPOL;
-+
-+	if (spi->mode & SPI_LSB_FIRST)
-+		reg_val &= ~(SPIS_TXMSBF | SPIS_RXMSBF);
-+	else
-+		reg_val |= SPIS_TXMSBF | SPIS_RXMSBF;
-+
-+	/* set the tx/rx endian */
-+#ifdef __LITTLE_ENDIAN
-+	reg_val &= ~SPIS_TX_ENDIAN;
-+	reg_val &= ~SPIS_RX_ENDIAN;
-+#else
-+	reg_val |= SPIS_TX_ENDIAN;
-+	reg_val |= SPIS_RX_ENDIAN;
-+#endif
-+	writel(reg_val, mdata->base + SPIS_CFG_REG);
-+
-+	return 0;
-+}
-+
-+static int mtk_spi_slave_fifo_transfer(struct spi_controller *ctlr,
-+				       struct spi_device *spi,
-+				       struct spi_transfer *xfer)
-+{
-+	int reg_val, cnt, remainder, ret;
-+	struct mtk_spi_slave *mdata = spi_controller_get_devdata(ctlr);
-+
-+	writel(SPIS_SOFT_RST, mdata->base + SPIS_SOFT_RST_REG);
-+
-+	reg_val = readl(mdata->base + SPIS_CFG_REG);
-+	if (xfer->rx_buf)
-+		reg_val |= SPIS_RX_EN;
-+	if (xfer->tx_buf)
-+		reg_val |= SPIS_TX_EN;
-+	writel(reg_val, mdata->base + SPIS_CFG_REG);
-+
-+	cnt = xfer->len / 4;
-+	if (xfer->tx_buf)
-+		iowrite32_rep(mdata->base + SPIS_TX_DATA_REG,
-+			      xfer->tx_buf, cnt);
-+
-+	remainder = xfer->len % 4;
-+	if (xfer->tx_buf && remainder > 0) {
-+		reg_val = 0;
-+		memcpy(&reg_val, xfer->tx_buf + (cnt * 4), remainder);
-+		writel(reg_val, mdata->base + SPIS_TX_DATA_REG);
-+	}
-+
-+	ret = mtk_spi_slave_wait_for_completion(mdata);
-+	if (ret) {
-+		mtk_spi_slave_disable_xfer(mdata);
-+		writel(SPIS_SOFT_RST, mdata->base + SPIS_SOFT_RST_REG);
-+	}
-+
-+	return ret;
-+}
-+
-+static int mtk_spi_slave_dma_transfer(struct spi_controller *ctlr,
-+				      struct spi_device *spi,
-+				      struct spi_transfer *xfer)
-+{
-+	int reg_val, ret;
-+	struct mtk_spi_slave *mdata = spi_controller_get_devdata(ctlr);
-+	struct device *dev = mdata->dev;
-+
-+	writel(SPIS_SOFT_RST, mdata->base + SPIS_SOFT_RST_REG);
-+
-+	if (xfer->tx_buf) {
-+		xfer->tx_dma = dma_map_single(dev, (void *)xfer->tx_buf,
-+					      xfer->len, DMA_TO_DEVICE);
-+		if (dma_mapping_error(dev, xfer->tx_dma)) {
-+			ret = -ENOMEM;
-+			goto disable_transfer;
-+		}
-+	}
-+
-+	if (xfer->rx_buf) {
-+		xfer->rx_dma = dma_map_single(dev, (void *)xfer->rx_buf,
-+					      xfer->len, DMA_FROM_DEVICE);
-+		if (dma_mapping_error(dev, xfer->rx_dma)) {
-+			ret = -ENOMEM;
-+			goto unmap_txdma;
-+		}
-+	}
-+
-+	writel(xfer->tx_dma, mdata->base + SPIS_TX_SRC_REG);
-+	writel(xfer->rx_dma, mdata->base + SPIS_RX_DST_REG);
-+
-+	writel(SPIS_DMA_ADDR_EN, mdata->base + SPIS_SOFT_RST_REG);
-+
-+	/* enable config reg tx rx_enable */
-+	reg_val = readl(mdata->base + SPIS_CFG_REG);
-+	if (xfer->tx_buf)
-+		reg_val |= SPIS_TX_EN;
-+	if (xfer->rx_buf)
-+		reg_val |= SPIS_RX_EN;
-+	writel(reg_val, mdata->base + SPIS_CFG_REG);
-+
-+	/* config dma */
-+	reg_val = 0;
-+	reg_val &= ~TX_DMA_LEN;
-+	reg_val |= (xfer->len - 1) & TX_DMA_LEN;
-+	writel(reg_val, mdata->base + SPIS_DMA_CFG_REG);
-+
-+	reg_val = readl(mdata->base + SPIS_DMA_CFG_REG);
-+	if (xfer->tx_buf)
-+		reg_val |= TX_DMA_EN;
-+	if (xfer->rx_buf)
-+		reg_val |= RX_DMA_EN;
-+	reg_val |= TX_DMA_TRIG_EN;
-+	writel(reg_val, mdata->base + SPIS_DMA_CFG_REG);
-+
-+	ret = mtk_spi_slave_wait_for_completion(mdata);
-+	if (ret)
-+		goto unmap_rxdma;
-+
-+	return 0;
-+
-+unmap_rxdma:
-+	if (xfer->rx_buf)
-+		dma_unmap_single(dev, xfer->rx_dma,
-+				 xfer->len, DMA_FROM_DEVICE);
-+
-+unmap_txdma:
-+	if (xfer->tx_buf)
-+		dma_unmap_single(dev, xfer->tx_dma,
-+				 xfer->len, DMA_TO_DEVICE);
-+
-+disable_transfer:
-+	mtk_spi_slave_disable_dma(mdata);
-+	mtk_spi_slave_disable_xfer(mdata);
-+	writel(SPIS_SOFT_RST, mdata->base + SPIS_SOFT_RST_REG);
-+
-+	return ret;
-+}
-+
-+static int mtk_spi_slave_transfer_one(struct spi_controller *ctlr,
-+				      struct spi_device *spi,
-+				      struct spi_transfer *xfer)
-+{
-+	struct mtk_spi_slave *mdata = spi_controller_get_devdata(ctlr);
-+
-+	reinit_completion(&mdata->xfer_done);
-+	mdata->slave_aborted = false;
-+	mdata->cur_transfer = xfer;
-+
-+	if (xfer->len > MTK_SPI_SLAVE_MAX_FIFO_SIZE)
-+		return mtk_spi_slave_dma_transfer(ctlr, spi, xfer);
-+	else
-+		return mtk_spi_slave_fifo_transfer(ctlr, spi, xfer);
-+}
-+
-+static int mtk_spi_slave_setup(struct spi_device *spi)
-+{
-+	u32 reg_val;
-+	struct mtk_spi_slave *mdata = spi_controller_get_devdata(spi->master);
-+
-+	reg_val = DMA_DONE_EN | DATA_DONE_EN |
-+		  RSTA_DONE_EN | CMD_INVALID_EN;
-+	writel(reg_val, mdata->base + SPIS_IRQ_EN_REG);
-+
-+	reg_val = DMA_DONE_MASK | DATA_DONE_MASK |
-+		  RSTA_DONE_MASK | CMD_INVALID_MASK;
-+	writel(reg_val, mdata->base + SPIS_IRQ_MASK_REG);
-+
-+	mtk_spi_slave_disable_dma(mdata);
-+	mtk_spi_slave_disable_xfer(mdata);
-+
-+	return 0;
-+}
-+
-+static int mtk_slave_abort(struct spi_controller *ctlr)
-+{
-+	struct mtk_spi_slave *mdata = spi_controller_get_devdata(ctlr);
-+
-+	mdata->slave_aborted = true;
-+	complete(&mdata->xfer_done);
-+
-+	return 0;
-+}
-+
-+static irqreturn_t mtk_spi_slave_interrupt(int irq, void *dev_id)
-+{
-+	u32 cmd, int_status, reg_val, cnt, remainder;
-+	struct spi_controller *ctlr = dev_id;
-+	struct mtk_spi_slave *mdata = spi_controller_get_devdata(ctlr);
-+	struct spi_transfer *trans = mdata->cur_transfer;
-+
-+	int_status = readl(mdata->base + SPIS_IRQ_ST_REG);
-+	writel(int_status, mdata->base + SPIS_IRQ_CLR_REG);
-+
-+	if (!trans)
-+		return IRQ_HANDLED;
-+
-+	if ((int_status & DMA_DONE_ST) &&
-+	    ((int_status & DATA_DONE_ST) ||
-+	    (int_status & RSTA_DONE_ST))) {
-+		writel(SPIS_SOFT_RST, mdata->base + SPIS_SOFT_RST_REG);
-+
-+		mtk_spi_slave_disable_dma(mdata);
-+		mtk_spi_slave_disable_xfer(mdata);
-+
-+		if (trans->tx_buf)
-+			dma_unmap_single(mdata->dev, trans->tx_dma,
-+					 trans->len, DMA_TO_DEVICE);
-+		if (trans->rx_buf)
-+			dma_unmap_single(mdata->dev, trans->rx_dma,
-+					 trans->len, DMA_FROM_DEVICE);
-+	}
-+
-+	if ((!(int_status & DMA_DONE_ST)) &&
-+	    ((int_status & DATA_DONE_ST) ||
-+	    (int_status & RSTA_DONE_ST))) {
-+		cnt = trans->len / 4;
-+		if (trans->rx_buf)
-+			ioread32_rep(mdata->base + SPIS_RX_DATA_REG,
-+				     trans->rx_buf, cnt);
-+		remainder = trans->len % 4;
-+		if (trans->rx_buf && remainder > 0) {
-+			reg_val = readl(mdata->base + SPIS_RX_DATA_REG);
-+			memcpy(trans->rx_buf + (cnt * 4),
-+			       &reg_val, remainder);
-+		}
-+
-+		mtk_spi_slave_disable_xfer(mdata);
-+	}
-+
-+	if (int_status & CMD_INVALID_ST)
-+		dev_err(&ctlr->dev, "cmd invalid\n");
-+
-+	mdata->cur_transfer = NULL;
-+	complete(&mdata->xfer_done);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static int mtk_spi_slave_probe(struct platform_device *pdev)
-+{
-+	struct spi_controller *ctlr;
-+	struct mtk_spi_slave *mdata;
-+	const struct of_device_id *of_id;
-+	struct resource *res;
-+	int i, irq, ret;
-+
-+	ctlr = spi_alloc_slave(&pdev->dev, sizeof(*mdata));
-+	if (!ctlr) {
-+		dev_err(&pdev->dev, "failed to alloc spi slave\n");
-+		return -ENOMEM;
-+	}
-+
-+	ctlr->auto_runtime_pm = true;
-+	ctlr->dev.of_node = pdev->dev.of_node;
-+	ctlr->mode_bits = SPI_CPOL | SPI_CPHA;
-+	ctlr->mode_bits |= SPI_LSB_FIRST;
-+
-+	ctlr->prepare_message = mtk_spi_slave_prepare_message;
-+	ctlr->transfer_one = mtk_spi_slave_transfer_one;
-+	ctlr->setup = mtk_spi_slave_setup;
-+	ctlr->slave_abort = mtk_slave_abort;
-+
-+	mdata = spi_controller_get_devdata(ctlr);
-+
-+	platform_set_drvdata(pdev, ctlr);
-+
-+	init_completion(&mdata->xfer_done);
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	if (!res) {
-+		ret = -ENODEV;
-+		dev_err(&pdev->dev, "failed to determine base address\n");
-+		goto err_put_ctlr;
-+	}
-+
-+	mdata->dev = &pdev->dev;
-+
-+	mdata->base = devm_ioremap_resource(&pdev->dev, res);
-+	if (IS_ERR(mdata->base)) {
-+		ret = PTR_ERR(mdata->base);
-+		goto err_put_ctlr;
-+	}
-+
-+	irq = platform_get_irq(pdev, 0);
-+	if (irq < 0) {
-+		dev_err(&pdev->dev, "failed to get irq (%d)\n", irq);
-+		ret = irq;
-+		goto err_put_ctlr;
-+	}
-+
-+	ret = devm_request_irq(&pdev->dev, irq, mtk_spi_slave_interrupt,
-+			       IRQF_TRIGGER_NONE, dev_name(&pdev->dev), ctlr);
-+	if (ret) {
-+		dev_err(&pdev->dev, "failed to register irq (%d)\n", ret);
-+		goto err_put_ctlr;
-+	}
-+
-+	mdata->parent_clk = devm_clk_get(&pdev->dev, "parent-clk");
-+	if (IS_ERR(mdata->parent_clk)) {
-+		ret = PTR_ERR(mdata->parent_clk);
-+		dev_err(&pdev->dev, "failed to get parent-clk: %d\n", ret);
-+		goto err_put_ctlr;
-+	}
-+
-+	mdata->sel_clk = devm_clk_get(&pdev->dev, "sel-clk");
-+	if (IS_ERR(mdata->sel_clk)) {
-+		ret = PTR_ERR(mdata->sel_clk);
-+		dev_err(&pdev->dev, "failed to get sel-clk: %d\n", ret);
-+		goto err_put_ctlr;
-+	}
-+
-+	mdata->spi_clk = devm_clk_get(&pdev->dev, "spi-clk");
-+	if (IS_ERR(mdata->spi_clk)) {
-+		ret = PTR_ERR(mdata->spi_clk);
-+		dev_err(&pdev->dev, "failed to get spi-clk: %d\n", ret);
-+		goto err_put_ctlr;
-+	}
-+
-+	ret = clk_prepare_enable(mdata->spi_clk);
-+	if (ret < 0) {
-+		dev_err(&pdev->dev, "failed to enable spi_clk (%d)\n", ret);
-+		goto err_put_ctlr;
-+	}
-+
-+	ret = clk_set_parent(mdata->sel_clk, mdata->parent_clk);
-+	if (ret < 0) {
-+		dev_err(&pdev->dev, "failed to clk_set_parent (%d)\n", ret);
-+		goto err_disable_clk;
-+	}
-+
-+	pm_runtime_enable(&pdev->dev);
-+
-+	ret = devm_spi_register_controller(&pdev->dev, ctlr);
-+	if (ret) {
-+		dev_err(&pdev->dev,
-+			"failed to register slave controller(%d)\n", ret);
-+		goto err_disable_runtime_pm;
-+	}
-+
-+	clk_disable_unprepare(mdata->spi_clk);
-+
-+	return 0;
-+
-+err_disable_runtime_pm:
-+	pm_runtime_disable(&pdev->dev);
-+err_disable_clk:
-+	clk_disable_unprepare(mdata->spi_clk);
-+err_put_ctlr:
-+	spi_controller_put(ctlr);
-+
-+	return ret;
-+}
-+
-+static int mtk_spi_slave_remove(struct platform_device *pdev)
-+{
-+	struct spi_controller *ctlr = platform_get_drvdata(pdev);
-+
-+	pm_runtime_disable(&pdev->dev);
-+
-+	return 0;
-+}
-+
-+#ifdef CONFIG_PM_SLEEP
-+static int mtk_spi_slave_suspend(struct device *dev)
-+{
-+	int ret;
-+	struct spi_controller *ctlr = dev_get_drvdata(dev);
-+	struct mtk_spi_slave *mdata = spi_controller_get_devdata(ctlr);
-+
-+	ret = spi_controller_suspend(ctlr);
-+	if (ret)
-+		return ret;
-+
-+	if (!pm_runtime_suspended(dev))
-+		clk_disable_unprepare(mdata->spi_clk);
-+
-+	return ret;
-+}
-+
-+static int mtk_spi_slave_resume(struct device *dev)
-+{
-+	int ret;
-+	struct spi_controller *ctlr = dev_get_drvdata(dev);
-+	struct mtk_spi_slave *mdata = spi_controller_get_devdata(ctlr);
-+
-+	if (!pm_runtime_suspended(dev)) {
-+		ret = clk_prepare_enable(mdata->spi_clk);
-+		if (ret < 0) {
-+			dev_err(dev, "failed to enable spi_clk (%d)\n", ret);
-+			return ret;
-+		}
-+	}
-+
-+	ret = spi_controller_resume(ctlr);
-+	if (ret < 0)
-+		clk_disable_unprepare(mdata->spi_clk);
-+
-+	return ret;
-+}
-+#endif /* CONFIG_PM_SLEEP */
-+
-+#ifdef CONFIG_PM
-+static int mtk_spi_slave_runtime_suspend(struct device *dev)
-+{
-+	struct spi_controller *ctlr = dev_get_drvdata(dev);
-+	struct mtk_spi_slave *mdata = spi_controller_get_devdata(ctlr);
-+
-+	clk_disable_unprepare(mdata->spi_clk);
-+
-+	return 0;
-+}
-+
-+static int mtk_spi_slave_runtime_resume(struct device *dev)
-+{
-+	struct spi_controller *ctlr = dev_get_drvdata(dev);
-+	struct mtk_spi_slave *mdata = spi_controller_get_devdata(ctlr);
-+	int ret;
-+
-+	ret = clk_prepare_enable(mdata->spi_clk);
-+	if (ret < 0) {
-+		dev_err(dev, "failed to enable spi_clk (%d)\n", ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+#endif /* CONFIG_PM */
-+
-+static const struct dev_pm_ops mtk_spi_slave_pm = {
-+	SET_SYSTEM_SLEEP_PM_OPS(mtk_spi_slave_suspend, mtk_spi_slave_resume)
-+	SET_RUNTIME_PM_OPS(mtk_spi_slave_runtime_suspend,
-+			   mtk_spi_slave_runtime_resume, NULL)
-+};
-+
-+static struct platform_driver mtk_spi_slave_driver = {
-+	.driver = {
-+		.name = "mtk-spi-slave",
-+		.pm	= &mtk_spi_slave_pm,
-+		.of_match_table = mtk_spi_slave_of_match,
-+	},
-+	.probe = mtk_spi_slave_probe,
-+	.remove = mtk_spi_slave_remove,
-+};
-+
-+module_platform_driver(mtk_spi_slave_driver);
-+
-+MODULE_DESCRIPTION("MTK SPI Slave Controller driver");
-+MODULE_AUTHOR("Leilk Liu <leilk.liu@mediatek.com>");
-+MODULE_LICENSE("GPL v2");
-+MODULE_ALIAS("platform:mtk-spi-slave");
+
+> ---
+>  drivers/pinctrl/berlin/berlin.c               |  6 ++--
+>  drivers/pinctrl/freescale/pinctrl-imx.c       |  7 ++--
+>  drivers/pinctrl/freescale/pinctrl-imx1-core.c | 12 +++----
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c |  4 +--
+>  drivers/pinctrl/meson/pinctrl-meson.c         |  2 +-
+>  drivers/pinctrl/mvebu/pinctrl-mvebu.c         |  4 +--
+>  drivers/pinctrl/nomadik/pinctrl-nomadik.c     |  6 ++--
+>  drivers/pinctrl/pinctrl-at91.c                |  8 ++---
+>  drivers/pinctrl/pinctrl-lantiq.c              |  8 ++---
+>  drivers/pinctrl/pinctrl-rockchip.c            |  8 ++---
+>  drivers/pinctrl/pinctrl-rza1.c                |  8 ++---
+>  drivers/pinctrl/pinctrl-single.c              | 32 +++++++++----------
+>  drivers/pinctrl/pinctrl-st.c                  |  6 ++--
+>  drivers/pinctrl/sirf/pinctrl-atlas7.c         |  4 +--
+>  drivers/pinctrl/stm32/pinctrl-stm32.c         |  4 +--
+>  drivers/pinctrl/sunxi/pinctrl-sunxi.c         |  8 ++---
+>  drivers/pinctrl/ti/pinctrl-ti-iodelay.c       |  8 ++---
+>  17 files changed, 66 insertions(+), 69 deletions(-)
+> 
+> diff --git a/drivers/pinctrl/berlin/berlin.c b/drivers/pinctrl/berlin/berlin.c
+> index b5903fffb3d0..b17a03cf87be 100644
+> --- a/drivers/pinctrl/berlin/berlin.c
+> +++ b/drivers/pinctrl/berlin/berlin.c
+> @@ -64,16 +64,14 @@ static int berlin_pinctrl_dt_node_to_map(struct pinctrl_dev *pctrl_dev,
+>  	ret = of_property_read_string(node, "function", &function_name);
+>  	if (ret) {
+>  		dev_err(pctrl->dev,
+> -			"missing function property in node %s\n",
+> -			node->name);
+> +			"missing function property in node %pOFn\n", node);
+>  		return -EINVAL;
+>  	}
+>  
+>  	ngroups = of_property_count_strings(node, "groups");
+>  	if (ngroups < 0) {
+>  		dev_err(pctrl->dev,
+> -			"missing groups property in node %s\n",
+> -			node->name);
+> +			"missing groups property in node %pOFn\n", node);
+>  		return -EINVAL;
+>  	}
+>  
+> diff --git a/drivers/pinctrl/freescale/pinctrl-imx.c b/drivers/pinctrl/freescale/pinctrl-imx.c
+> index b04edc22dad7..4e8cf0e357c6 100644
+> --- a/drivers/pinctrl/freescale/pinctrl-imx.c
+> +++ b/drivers/pinctrl/freescale/pinctrl-imx.c
+> @@ -69,8 +69,7 @@ static int imx_dt_node_to_map(struct pinctrl_dev *pctldev,
+>  	 */
+>  	grp = imx_pinctrl_find_group_by_name(pctldev, np->name);
+>  	if (!grp) {
+> -		dev_err(ipctl->dev, "unable to find group for node %s\n",
+> -			np->name);
+> +		dev_err(ipctl->dev, "unable to find group for node %pOFn\n", np);
+>  		return -EINVAL;
+>  	}
+>  
+> @@ -434,7 +433,7 @@ static int imx_pinctrl_parse_groups(struct device_node *np,
+>  	int i;
+>  	u32 config;
+>  
+> -	dev_dbg(ipctl->dev, "group(%d): %s\n", index, np->name);
+> +	dev_dbg(ipctl->dev, "group(%d): %pOFn\n", index, np);
+>  
+>  	if (info->flags & SHARE_MUX_CONF_REG)
+>  		pin_size = FSL_PIN_SHARE_SIZE;
+> @@ -544,7 +543,7 @@ static int imx_pinctrl_parse_functions(struct device_node *np,
+>  	struct group_desc *grp;
+>  	u32 i = 0;
+>  
+> -	dev_dbg(pctl->dev, "parse function(%d): %s\n", index, np->name);
+> +	dev_dbg(pctl->dev, "parse function(%d): %pOFn\n", index, np);
+>  
+>  	func = pinmux_generic_get_function(pctl, index);
+>  	if (!func)
+> diff --git a/drivers/pinctrl/freescale/pinctrl-imx1-core.c b/drivers/pinctrl/freescale/pinctrl-imx1-core.c
+> index deb7870b3d1a..7e29e3fecdb2 100644
+> --- a/drivers/pinctrl/freescale/pinctrl-imx1-core.c
+> +++ b/drivers/pinctrl/freescale/pinctrl-imx1-core.c
+> @@ -233,8 +233,8 @@ static int imx1_dt_node_to_map(struct pinctrl_dev *pctldev,
+>  	 */
+>  	grp = imx1_pinctrl_find_group_by_name(info, np->name);
+>  	if (!grp) {
+> -		dev_err(info->dev, "unable to find group for node %s\n",
+> -			np->name);
+> +		dev_err(info->dev, "unable to find group for node %pOFn\n",
+> +			np);
+>  		return -EINVAL;
+>  	}
+>  
+> @@ -466,7 +466,7 @@ static int imx1_pinctrl_parse_groups(struct device_node *np,
+>  	const __be32 *list;
+>  	int i;
+>  
+> -	dev_dbg(info->dev, "group(%d): %s\n", index, np->name);
+> +	dev_dbg(info->dev, "group(%d): %pOFn\n", index, np);
+>  
+>  	/* Initialise group */
+>  	grp->name = np->name;
+> @@ -477,8 +477,8 @@ static int imx1_pinctrl_parse_groups(struct device_node *np,
+>  	list = of_get_property(np, "fsl,pins", &size);
+>  	/* we do not check return since it's safe node passed down */
+>  	if (!size || size % 12) {
+> -		dev_notice(info->dev, "Not a valid fsl,pins property (%s)\n",
+> -				np->name);
+> +		dev_notice(info->dev, "Not a valid fsl,pins property (%pOFn)\n",
+> +				np);
+>  		return -EINVAL;
+>  	}
+>  
+> @@ -513,7 +513,7 @@ static int imx1_pinctrl_parse_functions(struct device_node *np,
+>  	static u32 grp_index;
+>  	u32 i = 0;
+>  
+> -	dev_dbg(info->dev, "parse function(%d): %s\n", index, np->name);
+> +	dev_dbg(info->dev, "parse function(%d): %pOFn\n", index, np);
+>  
+>  	func = &info->functions[index];
+>  
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> index 16ff56f93501..071623873ca5 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> @@ -514,8 +514,8 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+>  
+>  	pins = of_find_property(node, "pinmux", NULL);
+>  	if (!pins) {
+> -		dev_err(pctl->dev, "missing pins property in node %s .\n",
+> -				node->name);
+> +		dev_err(pctl->dev, "missing pins property in node %pOFn .\n",
+> +				node);
+>  		return -EINVAL;
+>  	}
+>  
+> diff --git a/drivers/pinctrl/meson/pinctrl-meson.c b/drivers/pinctrl/meson/pinctrl-meson.c
+> index 29a458da78db..9cb81aec4e3b 100644
+> --- a/drivers/pinctrl/meson/pinctrl-meson.c
+> +++ b/drivers/pinctrl/meson/pinctrl-meson.c
+> @@ -451,7 +451,7 @@ static struct regmap *meson_map_resource(struct meson_pinctrl *pc,
+>  
+>  	meson_regmap_config.max_register = resource_size(&res) - 4;
+>  	meson_regmap_config.name = devm_kasprintf(pc->dev, GFP_KERNEL,
+> -						  "%s-%s", node->name,
+> +						  "%pOFn-%s", node,
+>  						  name);
+>  	if (!meson_regmap_config.name)
+>  		return ERR_PTR(-ENOMEM);
+> diff --git a/drivers/pinctrl/mvebu/pinctrl-mvebu.c b/drivers/pinctrl/mvebu/pinctrl-mvebu.c
+> index d7ec7119701b..7ee5f7970585 100644
+> --- a/drivers/pinctrl/mvebu/pinctrl-mvebu.c
+> +++ b/drivers/pinctrl/mvebu/pinctrl-mvebu.c
+> @@ -413,14 +413,14 @@ static int mvebu_pinctrl_dt_node_to_map(struct pinctrl_dev *pctldev,
+>  	ret = of_property_read_string(np, "marvell,function", &function);
+>  	if (ret) {
+>  		dev_err(pctl->dev,
+> -			"missing marvell,function in node %s\n", np->name);
+> +			"missing marvell,function in node %pOFn\n", np);
+>  		return 0;
+>  	}
+>  
+>  	nmaps = of_property_count_strings(np, "marvell,pins");
+>  	if (nmaps < 0) {
+>  		dev_err(pctl->dev,
+> -			"missing marvell,pins in node %s\n", np->name);
+> +			"missing marvell,pins in node %pOFn\n", np);
+>  		return 0;
+>  	}
+>  
+> diff --git a/drivers/pinctrl/nomadik/pinctrl-nomadik.c b/drivers/pinctrl/nomadik/pinctrl-nomadik.c
+> index f0e7a8c114b2..866db2706b8b 100644
+> --- a/drivers/pinctrl/nomadik/pinctrl-nomadik.c
+> +++ b/drivers/pinctrl/nomadik/pinctrl-nomadik.c
+> @@ -1051,7 +1051,7 @@ static struct nmk_gpio_chip *nmk_gpio_populate_chip(struct device_node *np,
+>  
+>  	gpio_pdev = of_find_device_by_node(np);
+>  	if (!gpio_pdev) {
+> -		pr_err("populate \"%s\": device not found\n", np->name);
+> +		pr_err("populate \"%pOFn\": device not found\n", np);
+>  		return ERR_PTR(-ENODEV);
+>  	}
+>  	if (of_property_read_u32(np, "gpio-bank", &id)) {
+> @@ -1904,8 +1904,8 @@ static int nmk_pinctrl_probe(struct platform_device *pdev)
+>  		gpio_np = of_parse_phandle(np, "nomadik-gpio-chips", i);
+>  		if (gpio_np) {
+>  			dev_info(&pdev->dev,
+> -				 "populate NMK GPIO %d \"%s\"\n",
+> -				 i, gpio_np->name);
+> +				 "populate NMK GPIO %d \"%pOFn\"\n",
+> +				 i, gpio_np);
+>  			nmk_chip = nmk_gpio_populate_chip(gpio_np, pdev);
+>  			if (IS_ERR(nmk_chip))
+>  				dev_err(&pdev->dev,
+> diff --git a/drivers/pinctrl/pinctrl-at91.c b/drivers/pinctrl/pinctrl-at91.c
+> index 50f0ec42c637..cfd8239f2727 100644
+> --- a/drivers/pinctrl/pinctrl-at91.c
+> +++ b/drivers/pinctrl/pinctrl-at91.c
+> @@ -263,8 +263,8 @@ static int at91_dt_node_to_map(struct pinctrl_dev *pctldev,
+>  	 */
+>  	grp = at91_pinctrl_find_group_by_name(info, np->name);
+>  	if (!grp) {
+> -		dev_err(info->dev, "unable to find group for node %s\n",
+> -			np->name);
+> +		dev_err(info->dev, "unable to find group for node %pOFn\n",
+> +			np);
+>  		return -EINVAL;
+>  	}
+>  
+> @@ -1071,7 +1071,7 @@ static int at91_pinctrl_parse_groups(struct device_node *np,
+>  	const __be32 *list;
+>  	int i, j;
+>  
+> -	dev_dbg(info->dev, "group(%d): %s\n", index, np->name);
+> +	dev_dbg(info->dev, "group(%d): %pOFn\n", index, np);
+>  
+>  	/* Initialise group */
+>  	grp->name = np->name;
+> @@ -1122,7 +1122,7 @@ static int at91_pinctrl_parse_functions(struct device_node *np,
+>  	static u32 grp_index;
+>  	u32 i = 0;
+>  
+> -	dev_dbg(info->dev, "parse function(%d): %s\n", index, np->name);
+> +	dev_dbg(info->dev, "parse function(%d): %pOFn\n", index, np);
+>  
+>  	func = &info->functions[index];
+>  
+> diff --git a/drivers/pinctrl/pinctrl-lantiq.c b/drivers/pinctrl/pinctrl-lantiq.c
+> index 81632af3a86a..22e80613e269 100644
+> --- a/drivers/pinctrl/pinctrl-lantiq.c
+> +++ b/drivers/pinctrl/pinctrl-lantiq.c
+> @@ -80,14 +80,14 @@ static void ltq_pinctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+>  	int ret, i;
+>  
+>  	if (!pins && !groups) {
+> -		dev_err(pctldev->dev, "%s defines neither pins nor groups\n",
+> -			np->name);
+> +		dev_err(pctldev->dev, "%pOFn defines neither pins nor groups\n",
+> +			np);
+>  		return;
+>  	}
+>  
+>  	if (pins && groups) {
+> -		dev_err(pctldev->dev, "%s defines both pins and groups\n",
+> -			np->name);
+> +		dev_err(pctldev->dev, "%pOFn defines both pins and groups\n",
+> +			np);
+>  		return;
+>  	}
+>  
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+> index f4a61429e06e..1fe72af3717b 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -501,8 +501,8 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
+>  	 */
+>  	grp = pinctrl_name_to_group(info, np->name);
+>  	if (!grp) {
+> -		dev_err(info->dev, "unable to find group for node %s\n",
+> -			np->name);
+> +		dev_err(info->dev, "unable to find group for node %pOFn\n",
+> +			np);
+>  		return -EINVAL;
+>  	}
+>  
+> @@ -2454,7 +2454,7 @@ static int rockchip_pinctrl_parse_groups(struct device_node *np,
+>  	int i, j;
+>  	int ret;
+>  
+> -	dev_dbg(info->dev, "group(%d): %s\n", index, np->name);
+> +	dev_dbg(info->dev, "group(%d): %pOFn\n", index, np);
+>  
+>  	/* Initialise group */
+>  	grp->name = np->name;
+> @@ -2519,7 +2519,7 @@ static int rockchip_pinctrl_parse_functions(struct device_node *np,
+>  	static u32 grp_index;
+>  	u32 i = 0;
+>  
+> -	dev_dbg(info->dev, "parse function(%d): %s\n", index, np->name);
+> +	dev_dbg(info->dev, "parse function(%d): %pOFn\n", index, np);
+>  
+>  	func = &info->functions[index];
+>  
+> diff --git a/drivers/pinctrl/pinctrl-rza1.c b/drivers/pinctrl/pinctrl-rza1.c
+> index f76edf664539..042ede3b8ada 100644
+> --- a/drivers/pinctrl/pinctrl-rza1.c
+> +++ b/drivers/pinctrl/pinctrl-rza1.c
+> @@ -930,8 +930,8 @@ static int rza1_parse_pinmux_node(struct rza1_pinctrl *rza1_pctl,
+>  					      &npin_configs);
+>  	if (ret) {
+>  		dev_err(rza1_pctl->dev,
+> -			"Unable to parse pin configuration options for %s\n",
+> -			np->name);
+> +			"Unable to parse pin configuration options for %pOFn\n",
+> +			np);
+>  		return ret;
+>  	}
+>  
+> @@ -1226,8 +1226,8 @@ static int rza1_parse_gpiochip(struct rza1_pinctrl *rza1_pctl,
+>  
+>  	*chip		= rza1_gpiochip_template;
+>  	chip->base	= -1;
+> -	chip->label	= devm_kasprintf(rza1_pctl->dev, GFP_KERNEL, "%s",
+> -					 np->name);
+> +	chip->label	= devm_kasprintf(rza1_pctl->dev, GFP_KERNEL, "%pOFn",
+> +					 np);
+>  	chip->ngpio	= of_args.args[2];
+>  	chip->of_node	= np;
+>  	chip->parent	= rza1_pctl->dev;
+> diff --git a/drivers/pinctrl/pinctrl-single.c b/drivers/pinctrl/pinctrl-single.c
+> index 7ec72ff2419a..1e0614daee9b 100644
+> --- a/drivers/pinctrl/pinctrl-single.c
+> +++ b/drivers/pinctrl/pinctrl-single.c
+> @@ -1022,14 +1022,14 @@ static int pcs_parse_one_pinctrl_entry(struct pcs_device *pcs,
+>  		vals[found].reg = pcs->base + offset;
+>  		vals[found].val = pinctrl_spec.args[1];
+>  
+> -		dev_dbg(pcs->dev, "%s index: 0x%x value: 0x%x\n",
+> -			pinctrl_spec.np->name, offset, pinctrl_spec.args[1]);
+> +		dev_dbg(pcs->dev, "%pOFn index: 0x%x value: 0x%x\n",
+> +			pinctrl_spec.np, offset, pinctrl_spec.args[1]);
+>  
+>  		pin = pcs_get_pin_by_offset(pcs, offset);
+>  		if (pin < 0) {
+>  			dev_err(pcs->dev,
+> -				"could not add functions for %s %ux\n",
+> -				np->name, offset);
+> +				"could not add functions for %pOFn %ux\n",
+> +				np, offset);
+>  			break;
+>  		}
+>  		pins[found++] = pin;
+> @@ -1135,8 +1135,8 @@ static int pcs_parse_bits_in_pinctrl_entry(struct pcs_device *pcs,
+>  		val = pinctrl_spec.args[1];
+>  		mask = pinctrl_spec.args[2];
+>  
+> -		dev_dbg(pcs->dev, "%s index: 0x%x value: 0x%x mask: 0x%x\n",
+> -			pinctrl_spec.np->name, offset, val, mask);
+> +		dev_dbg(pcs->dev, "%pOFn index: 0x%x value: 0x%x mask: 0x%x\n",
+> +			pinctrl_spec.np, offset, val, mask);
+>  
+>  		/* Parse pins in each row from LSB */
+>  		while (mask) {
+> @@ -1148,8 +1148,8 @@ static int pcs_parse_bits_in_pinctrl_entry(struct pcs_device *pcs,
+>  
+>  			if ((mask & mask_pos) == 0) {
+>  				dev_err(pcs->dev,
+> -					"Invalid mask for %s at 0x%x\n",
+> -					np->name, offset);
+> +					"Invalid mask for %pOFn at 0x%x\n",
+> +					np, offset);
+>  				break;
+>  			}
+>  
+> @@ -1157,8 +1157,8 @@ static int pcs_parse_bits_in_pinctrl_entry(struct pcs_device *pcs,
+>  
+>  			if (submask != mask_pos) {
+>  				dev_warn(pcs->dev,
+> -						"Invalid submask 0x%x for %s at 0x%x\n",
+> -						submask, np->name, offset);
+> +						"Invalid submask 0x%x for %pOFn at 0x%x\n",
+> +						submask, np, offset);
+>  				continue;
+>  			}
+>  
+> @@ -1169,8 +1169,8 @@ static int pcs_parse_bits_in_pinctrl_entry(struct pcs_device *pcs,
+>  			pin = pcs_get_pin_by_offset(pcs, offset);
+>  			if (pin < 0) {
+>  				dev_err(pcs->dev,
+> -					"could not add functions for %s %ux\n",
+> -					np->name, offset);
+> +					"could not add functions for %pOFn %ux\n",
+> +					np, offset);
+>  				break;
+>  			}
+>  			pins[found++] = pin + pin_num_from_lsb;
+> @@ -1254,16 +1254,16 @@ static int pcs_dt_node_to_map(struct pinctrl_dev *pctldev,
+>  		ret = pcs_parse_bits_in_pinctrl_entry(pcs, np_config, map,
+>  				num_maps, pgnames);
+>  		if (ret < 0) {
+> -			dev_err(pcs->dev, "no pins entries for %s\n",
+> -				np_config->name);
+> +			dev_err(pcs->dev, "no pins entries for %pOFn\n",
+> +				np_config);
+>  			goto free_pgnames;
+>  		}
+>  	} else {
+>  		ret = pcs_parse_one_pinctrl_entry(pcs, np_config, map,
+>  				num_maps, pgnames);
+>  		if (ret < 0) {
+> -			dev_err(pcs->dev, "no pins entries for %s\n",
+> -				np_config->name);
+> +			dev_err(pcs->dev, "no pins entries for %pOFn\n",
+> +				np_config);
+>  			goto free_pgnames;
+>  		}
+>  	}
+> diff --git a/drivers/pinctrl/pinctrl-st.c b/drivers/pinctrl/pinctrl-st.c
+> index 0966bb0bf71f..e66af93f2cbf 100644
+> --- a/drivers/pinctrl/pinctrl-st.c
+> +++ b/drivers/pinctrl/pinctrl-st.c
+> @@ -817,8 +817,8 @@ static int st_pctl_dt_node_to_map(struct pinctrl_dev *pctldev,
+>  
+>  	grp = st_pctl_find_group_by_name(info, np->name);
+>  	if (!grp) {
+> -		dev_err(info->dev, "unable to find group for node %s\n",
+> -			np->name);
+> +		dev_err(info->dev, "unable to find group for node %pOFn\n",
+> +			np);
+>  		return -EINVAL;
+>  	}
+>  
+> @@ -1184,7 +1184,7 @@ static int st_pctl_dt_parse_groups(struct device_node *np,
+>  		if (pp->length / sizeof(__be32) >= OF_GPIO_ARGS_MIN) {
+>  			npins++;
+>  		} else {
+> -			pr_warn("Invalid st,pins in %s node\n", np->name);
+> +			pr_warn("Invalid st,pins in %pOFn node\n", np);
+>  			return -EINVAL;
+>  		}
+>  	}
+> diff --git a/drivers/pinctrl/sirf/pinctrl-atlas7.c b/drivers/pinctrl/sirf/pinctrl-atlas7.c
+> index 3abb028f6158..1d16df128b1a 100644
+> --- a/drivers/pinctrl/sirf/pinctrl-atlas7.c
+> +++ b/drivers/pinctrl/sirf/pinctrl-atlas7.c
+> @@ -6058,8 +6058,8 @@ static int atlas7_gpio_probe(struct platform_device *pdev)
+>  	ret = gpiochip_add_data(chip, a7gc);
+>  	if (ret) {
+>  		dev_err(&pdev->dev,
+> -			"%s: error in probe function with status %d\n",
+> -			np->name, ret);
+> +			"%pOF: error in probe function with status %d\n",
+> +			np, ret);
+>  		goto failed;
+>  	}
+>  
+> diff --git a/drivers/pinctrl/stm32/pinctrl-stm32.c b/drivers/pinctrl/stm32/pinctrl-stm32.c
+> index a9bec6e6fdd1..0fbfcc9ea07c 100644
+> --- a/drivers/pinctrl/stm32/pinctrl-stm32.c
+> +++ b/drivers/pinctrl/stm32/pinctrl-stm32.c
+> @@ -416,8 +416,8 @@ static int stm32_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+>  
+>  	pins = of_find_property(node, "pinmux", NULL);
+>  	if (!pins) {
+> -		dev_err(pctl->dev, "missing pins property in node %s .\n",
+> -				node->name);
+> +		dev_err(pctl->dev, "missing pins property in node %pOFn .\n",
+> +				node);
+>  		return -EINVAL;
+>  	}
+>  
+> diff --git a/drivers/pinctrl/sunxi/pinctrl-sunxi.c b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+> index 4d9bf9b3e9f3..3ccbe221e024 100644
+> --- a/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+> +++ b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+> @@ -332,15 +332,15 @@ static int sunxi_pctrl_dt_node_to_map(struct pinctrl_dev *pctldev,
+>  
+>  	function = sunxi_pctrl_parse_function_prop(node);
+>  	if (!function) {
+> -		dev_err(pctl->dev, "missing function property in node %s\n",
+> -			node->name);
+> +		dev_err(pctl->dev, "missing function property in node %pOFn\n",
+> +			node);
+>  		return -EINVAL;
+>  	}
+>  
+>  	pin_prop = sunxi_pctrl_find_pins_prop(node, &npins);
+>  	if (!pin_prop) {
+> -		dev_err(pctl->dev, "missing pins property in node %s\n",
+> -			node->name);
+> +		dev_err(pctl->dev, "missing pins property in node %pOFn\n",
+> +			node);
+>  		return -EINVAL;
+>  	}
+>  
+> diff --git a/drivers/pinctrl/ti/pinctrl-ti-iodelay.c b/drivers/pinctrl/ti/pinctrl-ti-iodelay.c
+> index 8782c348ebe9..a4bc506a01a3 100644
+> --- a/drivers/pinctrl/ti/pinctrl-ti-iodelay.c
+> +++ b/drivers/pinctrl/ti/pinctrl-ti-iodelay.c
+> @@ -452,8 +452,8 @@ static int ti_iodelay_node_iterator(struct pinctrl_dev *pctldev,
+>  
+>  	pin = ti_iodelay_offset_to_pin(iod, cfg[pin_index].offset);
+>  	if (pin < 0) {
+> -		dev_err(iod->dev, "could not add functions for %s %ux\n",
+> -			np->name, cfg[pin_index].offset);
+> +		dev_err(iod->dev, "could not add functions for %pOFn %ux\n",
+> +			np, cfg[pin_index].offset);
+>  		return -ENODEV;
+>  	}
+>  	pins[pin_index] = pin;
+> @@ -461,8 +461,8 @@ static int ti_iodelay_node_iterator(struct pinctrl_dev *pctldev,
+>  	pd = &iod->pa[pin];
+>  	pd->drv_data = &cfg[pin_index];
+>  
+> -	dev_dbg(iod->dev, "%s offset=%x a_delay = %d g_delay = %d\n",
+> -		np->name, cfg[pin_index].offset, cfg[pin_index].a_delay,
+> +	dev_dbg(iod->dev, "%pOFn offset=%x a_delay = %d g_delay = %d\n",
+> +		np, cfg[pin_index].offset, cfg[pin_index].a_delay,
+>  		cfg[pin_index].g_delay);
+>  
+>  	return 0;
+> -- 
+> 2.17.1
+> 
+
 -- 
-1.7.9.5
+Alexandre Belloni, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
