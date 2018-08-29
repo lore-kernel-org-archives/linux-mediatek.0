@@ -1,151 +1,91 @@
-From: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 00/17] mt76 patches 2018-08-24 v2
-Date: Wed, 29 Aug 2018 02:26:44 +0000
-Message-ID: <CAM0KTbB5k54BvA2UOmoss-PuGtgHE_SGy2cG4n4ROxPH7kxYXA@mail.gmail.com>
-References: <1535381791-14908-1-git-send-email-sgruszka@redhat.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH 2/2] usb: mtu3: disable vbus rise/fall interrupts of ltssm
+Date: Wed, 29 Aug 2018 10:36:50 +0800
+Message-ID: <72ee83112167ceb394ec5d89a824be866a7a21f0.1535509922.git.chunfeng.yun@mediatek.com>
+References: <c4279eccff765006b78f87bf3c8c9ac94a06c04d.1535509922.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1535381791-14908-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org
-Cc: linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, nbd-Vt+b4OUoWG0@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <c4279eccff765006b78f87bf3c8c9ac94a06c04d.1535509922.git.chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Stanislaw et al,
+The vbus rise & fall interrupts are used to enable and disable
+U3 function of device automatically, this cause some issues when
+class driver is initialized as deactivated, and will skip over
+software-controlled connect by pullup(), but UDC wants to keep
+disconnect until usb_gadget_activate() is called which calls
+pullup() if needed. So we disable vbus rise & fall interrupts
+and just use pullup() to enable & disable U3 function, and reset
+mtu3 state when disconnect instead when vbus fall.
 
-Thanks for working on this, I have a small stack of different devices
-covered by this driver which I'm excited to test with.
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/usb/mtu3/mtu3_core.c   |  4 ++--
+ drivers/usb/mtu3/mtu3_gadget.c | 22 ++++++++++++++--------
+ 2 files changed, 16 insertions(+), 10 deletions(-)
 
-I'm running wireless-testing which may or may not be fully up to date
-on the patches you have sent (head is at
-c9cd161770dd1866207b70d41ec03c9a26eea94f from Aug 13th), so please
-tell me if this has already been fixed.  I have a script that attempts
-to connect to 16 differently configured SSIDs using 33 different (yet
-compatible) wpa_supplicant.conf files and reports failures to me.
-It's hardly perfect, but it gives me an idea if something is obviously
-broken and needs a deeper dive.  When I run this script against a
-device supported by mt76x2 or mt76x0 I get an unusual error.
-Everything goes fine, connect, dhcp, disconnect, connect, dhcp,
-disconnect, but after about 5 or 6 connections I start getting errors
-like this during wpa_supplicant:
-
-Could not set interface t2uh flags (UP): No space left on device
-nl80211: Could not set interface 't2uh' UP
-nl80211: deinit ifname=t2uh disabled_11b_rates=0
-t2uh: Failed to initialize driver interface
-
-and then this with dhcpcd:
-
-dhcpcd_prestartinterface: t2uh: No space left on device
-t2uh: waiting for carrier
-
-the same happens with just ifconfig up:
-
-SIOCSIFFLAGS: No space left on device
-
-I see nothing useful in dmesg, and this happens after multiple
-successful connections.  I've used this test setup before, and never
-seen anything like this.  I will be happy to provide more detail if
-requested, but for now here is a list of the tested device which
-exhibit this behavior (named for my convenience to the model):
-
-phy1    036acm          mt76x2u         MediaTek Inc.
-phy0    pau0a           mt76x0          MediaTek Inc.
-phy2    t1u             mt76x0
-phy3    t2u             mt76x0          Ralink Technology, Corp.
-MT7610U ("Archer T2U" 2.4G+5G WLAN Adapter
-phy4    t2uh            mt76x0          Ralink Technology, Corp.
-MT7610U ("Archer T2U" 2.4G+5G WLAN Adapter
-
-Last thing I can think of, the tests were not conducted
-simultaneously, meaning they didn't all start or fail at once.  I had
-multiple successful connections with each one before they
-independently failed.
-
-Hope that helps.
-
-Thanks,
-Zero_Chaos
-
-(apologies if you got this twice, original bounced from ML)
-
-On Mon, Aug 27, 2018 at 2:58 PM Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
->
-> This is the begin work of integration between mt76x0 and mt76x2.
->
-> Further development can be seen here:
-> https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft-v2
->
-> v1 -> v2:
-> - rename mt76xx to mt76x02 to reflect that common code is for mt76x0
->   and mt76x2 only, not for new chips.
-> - fixup 'stucture typo' in one patch
->
-> Stanislaw Gruszka (17):
->   mt76: unify wait_for_mac
->   mt76: rename mt76x2_regs.h
->   mt76: merge mt76x0/regs.h into mt76x02_regs.h
->   mt76: create new mt76x02-lib module for common mt76x{0,2} code
->   mt76: fix mt76x02-lib module license
->   mt76: unify mac_get_key_info
->   mt76: add helpers for register access with mt76_dev struct
->   mt76: unify mac_shared_key_setup
->   mt76: unify mt76x02_mac_wcid_set_key
->   mt76: unify mac_wcid_setup
->   mt76: use mac_wcid_set_drop in mt76x0
->   mt76x0: use mt76_wcid_free in mt76x0
->   mt76: unify mt76x02_vif struct
->   mt76: unify sta structure part 1
->   mt76: unify sta structure part 2
->   mt76x0: initalize custom tx queues
->   mt76x0: use mt76x02_sta and mt76x02_tx_status
->
->  drivers/net/wireless/mediatek/mt76/Kconfig         |   6 +
->  drivers/net/wireless/mediatek/mt76/Makefile        |   3 +
->  drivers/net/wireless/mediatek/mt76/mac80211.c      |   1 +
->  drivers/net/wireless/mediatek/mt76/mt76.h          |  13 +
->  drivers/net/wireless/mediatek/mt76/mt76x0/init.c   |  37 +-
->  drivers/net/wireless/mediatek/mt76/mt76x0/mac.c    | 126 +---
->  drivers/net/wireless/mediatek/mt76/mt76x0/mac.h    |   8 +-
->  drivers/net/wireless/mediatek/mt76/mt76x0/main.c   | 127 ++--
->  drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c    |   4 +-
->  drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  35 +-
->  drivers/net/wireless/mediatek/mt76/mt76x0/regs.h   | 651 --------------------
->  drivers/net/wireless/mediatek/mt76/mt76x0/trace.h  |   4 +-
->  drivers/net/wireless/mediatek/mt76/mt76x0/tx.c     |   8 +-
->  drivers/net/wireless/mediatek/mt76/mt76x0/usb.c    |   5 +-
->  drivers/net/wireless/mediatek/mt76/mt76x02_mac.c   | 157 +++++
->  drivers/net/wireless/mediatek/mt76/mt76x02_mac.h   |  85 +++
->  drivers/net/wireless/mediatek/mt76/mt76x02_regs.h  | 685 +++++++++++++++++++++
->  drivers/net/wireless/mediatek/mt76/mt76x02_util.c  |  55 ++
->  drivers/net/wireless/mediatek/mt76/mt76x02_util.h  |  25 +
->  drivers/net/wireless/mediatek/mt76/mt76x2.h        |  50 +-
->  drivers/net/wireless/mediatek/mt76/mt76x2_common.c |  99 +--
->  drivers/net/wireless/mediatek/mt76/mt76x2_init.c   |  15 +-
->  .../wireless/mediatek/mt76/mt76x2_init_common.c    |   4 +-
->  drivers/net/wireless/mediatek/mt76/mt76x2_mac.c    |   4 +-
->  drivers/net/wireless/mediatek/mt76/mt76x2_mac.h    |  21 +-
->  .../net/wireless/mediatek/mt76/mt76x2_mac_common.c | 130 +---
->  drivers/net/wireless/mediatek/mt76/mt76x2_main.c   |  47 +-
->  .../net/wireless/mediatek/mt76/mt76x2_phy_common.c |   4 +-
->  drivers/net/wireless/mediatek/mt76/mt76x2_regs.h   | 619 -------------------
->  drivers/net/wireless/mediatek/mt76/mt76x2_trace.h  |   2 +-
->  drivers/net/wireless/mediatek/mt76/mt76x2_tx.c     |   8 +-
->  .../net/wireless/mediatek/mt76/mt76x2_tx_common.c  |   8 +-
->  drivers/net/wireless/mediatek/mt76/mt76x2u_core.c  |   2 +-
->  drivers/net/wireless/mediatek/mt76/mt76x2u_init.c  |   8 +-
->  drivers/net/wireless/mediatek/mt76/mt76x2u_mac.c   |   2 +-
->  drivers/net/wireless/mediatek/mt76/mt76x2u_main.c  |  29 +-
->  36 files changed, 1226 insertions(+), 1861 deletions(-)
->  delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/regs.h
->  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
->  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_mac.h
->  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_regs.h
->  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_util.c
->  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_util.h
->  delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x2_regs.h
->
-> --
-> 2.7.5
->
+diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
+index d045d84..ae70b9b 100644
+--- a/drivers/usb/mtu3/mtu3_core.c
++++ b/drivers/usb/mtu3/mtu3_core.c
+@@ -185,8 +185,8 @@ static void mtu3_intr_enable(struct mtu3 *mtu)
+ 
+ 	if (mtu->is_u3_ip) {
+ 		/* Enable U3 LTSSM interrupts */
+-		value = HOT_RST_INTR | WARM_RST_INTR | VBUS_RISE_INTR |
+-		    VBUS_FALL_INTR | ENTER_U3_INTR | EXIT_U3_INTR;
++		value = HOT_RST_INTR | WARM_RST_INTR |
++			ENTER_U3_INTR | EXIT_U3_INTR;
+ 		mtu3_writel(mbase, U3D_LTSSM_INTR_ENABLE, value);
+ 	}
+ 
+diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
+index 5c60a8c..bbcd333 100644
+--- a/drivers/usb/mtu3/mtu3_gadget.c
++++ b/drivers/usb/mtu3/mtu3_gadget.c
+@@ -585,6 +585,17 @@ static int mtu3_gadget_stop(struct usb_gadget *g)
+ 	.udc_stop = mtu3_gadget_stop,
+ };
+ 
++static void mtu3_state_reset(struct mtu3 *mtu)
++{
++	mtu->address = 0;
++	mtu->ep0_state = MU3D_EP0_STATE_SETUP;
++	mtu->may_wakeup = 0;
++	mtu->u1_enable = 0;
++	mtu->u2_enable = 0;
++	mtu->delayed_status = false;
++	mtu->test_mode = false;
++}
++
+ static void init_hw_ep(struct mtu3 *mtu, struct mtu3_ep *mep,
+ 		u32 epnum, u32 is_in)
+ {
+@@ -702,6 +713,7 @@ void mtu3_gadget_disconnect(struct mtu3 *mtu)
+ 		spin_lock(&mtu->lock);
+ 	}
+ 
++	mtu3_state_reset(mtu);
+ 	usb_gadget_set_state(&mtu->g, USB_STATE_NOTATTACHED);
+ }
+ 
+@@ -712,12 +724,6 @@ void mtu3_gadget_reset(struct mtu3 *mtu)
+ 	/* report disconnect, if we didn't flush EP state */
+ 	if (mtu->g.speed != USB_SPEED_UNKNOWN)
+ 		mtu3_gadget_disconnect(mtu);
+-
+-	mtu->address = 0;
+-	mtu->ep0_state = MU3D_EP0_STATE_SETUP;
+-	mtu->may_wakeup = 0;
+-	mtu->u1_enable = 0;
+-	mtu->u2_enable = 0;
+-	mtu->delayed_status = false;
+-	mtu->test_mode = false;
++	else
++		mtu3_state_reset(mtu);
+ }
+-- 
+1.9.1
