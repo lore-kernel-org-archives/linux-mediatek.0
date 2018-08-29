@@ -1,94 +1,100 @@
-From: Jasper Mattsson <jasu-tmnvWD0sGVAk+I/owrrOrA@public.gmane.org>
-Subject: [PATCH 2/3] clk: mediatek: Add flags to mtk_gate
-Date: Tue, 28 Aug 2018 23:50:28 +0300
-Message-ID: <20180828205028.GA7492@xn--njmtys-xxab.info>
+From: lei liu <leilk.liu@mediatek.com>
+Subject: Re: [SPAM]Re: [PATCH 1/3] spis: mediatek: add bindings for Mediatek
+ MT2712 soc platform
+Date: Wed, 29 Aug 2018 09:43:44 +0800
+Message-ID: <1535507024.3043.16.camel@mhfsdcap03>
+References: <1535437685-30230-1-git-send-email-leilk.liu@mediatek.com>
+ <1535437685-30230-2-git-send-email-leilk.liu@mediatek.com>
+ <d91449a1-87f4-77e0-dd94-09e9989aaa7e@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <d91449a1-87f4-77e0-dd94-09e9989aaa7e@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, mengqi.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This is required to mark gates as CLK_IS_CRITICAL.
+On Tue, 2018-08-28 at 17:44 +0200, Matthias Brugger wrote:
+> 
+> On 28/08/18 08:28, Leilk Liu wrote:
+> > This patch adds a DT binding documentation for the MT2712 soc.
+> > 
+> > Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/spi/spi-slave-mt27xx.txt   |   39 ++++++++++++++++++++
+> >  1 file changed, 39 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
+> 
+> Do I understand correctly that mt6xxx, mt7xxx and mt8xxx SoCs have a totally
+> different architecture then mt27xx so they will need a totally different
+> binding. If not, then please rename the binding description file and the driver.
+> 
+> Regards,
+> Matthias
+> 
 
-Signed-off-by: Jasper Mattsson <jasu-tmnvWD0sGVAk+I/owrrOrA@public.gmane.org>
----
- drivers/clk/mediatek/clk-gate.c | 4 +++-
- drivers/clk/mediatek/clk-gate.h | 3 ++-
- drivers/clk/mediatek/clk-mtk.c  | 2 +-
- drivers/clk/mediatek/clk-mtk.h  | 1 +
- 4 files changed, 7 insertions(+), 3 deletions(-)
+This series are for spi slave, and mt27xx spi slave design has a
+entirely different architecture with mt6xxx, mt7xxx and mt8xxx SoCs.
 
-diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
-index 934bf0e45..9628d4e76 100644
---- a/drivers/clk/mediatek/clk-gate.c
-+++ b/drivers/clk/mediatek/clk-gate.c
-@@ -157,7 +157,8 @@ struct clk *mtk_clk_register_gate(
- 		int clr_ofs,
- 		int sta_ofs,
- 		u8 bit,
--		const struct clk_ops *ops)
-+		const struct clk_ops *ops,
-+		unsigned long flags)
- {
- 	struct mtk_clk_gate *cg;
- 	struct clk *clk;
-@@ -172,6 +173,7 @@ struct clk *mtk_clk_register_gate(
- 	init.parent_names = parent_name ? &parent_name : NULL;
- 	init.num_parents = parent_name ? 1 : 0;
- 	init.ops = ops;
-+	init.flags = flags;
- 
- 	cg->regmap = regmap;
- 	cg->set_ofs = set_ofs;
-diff --git a/drivers/clk/mediatek/clk-gate.h b/drivers/clk/mediatek/clk-gate.h
-index 72ef89b3a..9f766dfe1 100644
---- a/drivers/clk/mediatek/clk-gate.h
-+++ b/drivers/clk/mediatek/clk-gate.h
-@@ -47,6 +47,7 @@ struct clk *mtk_clk_register_gate(
- 		int clr_ofs,
- 		int sta_ofs,
- 		u8 bit,
--		const struct clk_ops *ops);
-+		const struct clk_ops *ops,
-+		unsigned long flags);
- 
- #endif /* __DRV_CLK_GATE_H */
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index 9c0ae4278..ef410413b 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -130,7 +130,7 @@ int mtk_clk_register_gates(struct device_node *node,
- 				gate->regs->set_ofs,
- 				gate->regs->clr_ofs,
- 				gate->regs->sta_ofs,
--				gate->shift, gate->ops);
-+				gate->shift, gate->ops, gate->flags);
- 
- 		if (IS_ERR(clk)) {
- 			pr_err("Failed to register clk %s: %ld\n",
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index daab6ee94..987ff2855 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -162,6 +162,7 @@ struct mtk_gate {
- 	const struct mtk_gate_regs *regs;
- 	int shift;
- 	const struct clk_ops *ops;
-+	unsigned long flags;
- };
- 
- int mtk_clk_register_gates(struct device_node *node,
--- 
-2.18.0
+> > 
+> > diff --git a/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt b/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
+> > new file mode 100644
+> > index 0000000..dcb8934
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
+> > @@ -0,0 +1,39 @@
+> > +Binding for MTK SPI Slave controller
+> > +
+> > +Required properties:
+> > +- compatible: should be one of the following.
+> > +    - mediatek,mt2712-spi: for mt2712 platforms
+> > +
+> > +- reg: Address and length of the register set for the device
+> > +
+> > +- interrupts: Should contain spi interrupt
+> > +
+> > +- clocks: phandles to input clocks.
+> > +  The first should be one of the following. It's PLL.
+> > +   -  <&topckgen CLK_TOP_UNIVPLL1_D2>: specify parent clock 312MHZ.
+> > +				      It's the default one.
+> > +   -  <&topckgen CLK_TOP_UNIVPLL1_D4>: specify parent clock 156MHZ.
+> > +   -  <&topckgen CLK_TOP_UNIVPLL2_D4>: specify parent clock 104MHZ.
+> > +   -  <&topckgen CLK_TOP_UNIVPLL1_D8>: specify parent clock 78MHZ.
+> > +  The second should be <&topckgen CLK_TOP_SPISLV_SEL>. It's clock mux.
+> > +  The third is <&infracfg CLK_INFRA_AO_SPI1>. It's clock gate.
+> > +
+> > +- clock-names: shall be "parent-clk" for the parent clock, "sel-clk" for the
+> > +  muxes clock, and "spi-clk" for the clock gate.
+> > +
+> > +- spi-slave: Empty property indicating the SPI controller is used in slave mode.
+> > +
+> > +Example:
+> > +
+> > +- SoC Specific Portion:
+> > +spis: spi@10013000 {
+> > +	compatible = "mediatek,mt2712-spi-slave";
+> > +	reg = <0 0x10013000 0 0x100>;
+> > +	interrupts = <GIC_SPI 283 IRQ_TYPE_LEVEL_LOW>;
+> > +	clocks = <&topckgen CLK_TOP_UNIVPLL1_D2>,
+> > +		<&topckgen CLK_TOP_SPISLV_SEL>,
+> > +		<&infracfg CLK_INFRA_AO_SPI1>;
+> > +	clock-names = "parent-clk", "sel-clk", "spi-clk";
+> > +	spi-slave;
+> > +	status = "disabled";
+> > +};
+> > 
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
