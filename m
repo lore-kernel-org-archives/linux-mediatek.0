@@ -1,69 +1,23 @@
-From: Johan Hovold <johan@kernel.org>
-Subject: Re: [PATCH v2] usb: core: phy: fix return value checking about
- devm_of_phy_get_by_index()
-Date: Wed, 29 Aug 2018 10:30:50 +0200
-Message-ID: <20180829083050.GG28861@localhost>
-References: <8263a8d0f87d595dd35efa5432d294d9f7b38719.1535507412.git.chunfeng.yun@mediatek.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] pinctrl: Convert to using %pOFn instead of device_node.name
+Date: Wed, 29 Aug 2018 10:31:51 +0200
+Message-ID: <4627271.TU6sX7boZt@diego>
+References: <20180828015252.28511-1-robh@kernel.org> <20180828015252.28511-40-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <8263a8d0f87d595dd35efa5432d294d9f7b38719.1535507412.git.chunfeng.yun@mediatek.com>
+In-Reply-To: <20180828015252.28511-40-robh@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Johan Hovold <johan@kernel.org>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Rob Herring <robh@kernel.org>, Chen-Yu Tsai <wens@csie.org>, Alexandre Belloni <alexandre.belloni@bootlin.com>, linux-gpio@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Stefan Agner <stefan@agner.ch>, Pengutronix Kernel Team <kernel@pengutronix.de>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-omap@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Aug 29, 2018 at 10:10:48AM +0800, Chunfeng Yun wrote:
-> Use IS_ERR() instead of IS_ERR_OR_NULL() because devm_of_phy_get_by_index()
-> never return NULL value;
-> But still need ignore the error of -ENODEV, for more information, please
-> refer to:
-> [0] https://lkml.org/lkml/2018/4/19/88
-> [1] https://patchwork.kernel.org/patch/10160181/
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> V2: keep the -ENODEV check
-> ---
->  drivers/usb/core/phy.c | 11 ++++-------
->  1 file changed, 4 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
-> index 9879767..e3cc743 100644
-> --- a/drivers/usb/core/phy.c
-> +++ b/drivers/usb/core/phy.c
-> @@ -23,14 +23,11 @@ static int usb_phy_roothub_add_phy(struct device *dev, int index,
->  				   struct list_head *list)
->  {
->  	struct usb_phy_roothub *roothub_entry;
-> -	struct phy *phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
-> +	struct phy *phy;
->  
-> -	if (IS_ERR_OR_NULL(phy)) {
-> -		if (!phy || PTR_ERR(phy) == -ENODEV)
-> -			return 0;
-> -		else
-> -			return PTR_ERR(phy);
-> -	}
-> +	phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
-> +	if (IS_ERR(phy))
-> +		return (PTR_ERR(phy) == -ENODEV) ? 0 : PTR_ERR(phy);
+Am Dienstag, 28. August 2018, 03:52:41 CEST schrieb Rob Herring:
+> In preparation to remove the node name pointer from struct device_node,
+> convert printf users to use the %pOFn format specifier.
 
-I prefer not to use the terse ternary operator in general, and
-especially so in this case where we are doing something unexpected (i.e.
-we want to highlight that the -ENODEV case is special).
+>  drivers/pinctrl/pinctrl-rockchip.c            |  8 ++---
 
-So please keep the current construct, and just replace IS_ERR_OR_NULL
-and drop the !phy test.
-
-I think separating the declaration and (non-trivial) initialisation of
-phy here is a good thing that can remain in the patch, even if it's
-arguable separate change.
-
->  
->  	roothub_entry = devm_kzalloc(dev, sizeof(*roothub_entry), GFP_KERNEL);
->  	if (!roothub_entry)
-
-Thanks,
-Johan
+For the Rockchip-part
+Acked-by: Heiko Stuebner <heiko@sntech.de>
