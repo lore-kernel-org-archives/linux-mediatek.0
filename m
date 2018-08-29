@@ -1,100 +1,51 @@
-From: lei liu <leilk.liu@mediatek.com>
-Subject: Re: [SPAM]Re: [PATCH 1/3] spis: mediatek: add bindings for Mediatek
- MT2712 soc platform
-Date: Wed, 29 Aug 2018 09:43:44 +0800
-Message-ID: <1535507024.3043.16.camel@mhfsdcap03>
-References: <1535437685-30230-1-git-send-email-leilk.liu@mediatek.com>
- <1535437685-30230-2-git-send-email-leilk.liu@mediatek.com>
- <d91449a1-87f4-77e0-dd94-09e9989aaa7e@gmail.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH v2] usb: core: phy: fix return value checking about devm_of_phy_get_by_index()
+Date: Wed, 29 Aug 2018 10:10:48 +0800
+Message-ID: <8263a8d0f87d595dd35efa5432d294d9f7b38719.1535507412.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <d91449a1-87f4-77e0-dd94-09e9989aaa7e@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, mengqi.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>
+Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Johan Hovold <johan@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-08-28 at 17:44 +0200, Matthias Brugger wrote:
-> 
-> On 28/08/18 08:28, Leilk Liu wrote:
-> > This patch adds a DT binding documentation for the MT2712 soc.
-> > 
-> > Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/spi/spi-slave-mt27xx.txt   |   39 ++++++++++++++++++++
-> >  1 file changed, 39 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
-> 
-> Do I understand correctly that mt6xxx, mt7xxx and mt8xxx SoCs have a totally
-> different architecture then mt27xx so they will need a totally different
-> binding. If not, then please rename the binding description file and the driver.
-> 
-> Regards,
-> Matthias
-> 
+Use IS_ERR() instead of IS_ERR_OR_NULL() because devm_of_phy_get_by_index()
+never return NULL value;
+But still need ignore the error of -ENODEV, for more information, please
+refer to:
+[0] https://lkml.org/lkml/2018/4/19/88
+[1] https://patchwork.kernel.org/patch/10160181/
 
-This series are for spi slave, and mt27xx spi slave design has a
-entirely different architecture with mt6xxx, mt7xxx and mt8xxx SoCs.
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+V2: keep the -ENODEV check
+---
+ drivers/usb/core/phy.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
 
-> > 
-> > diff --git a/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt b/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
-> > new file mode 100644
-> > index 0000000..dcb8934
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
-> > @@ -0,0 +1,39 @@
-> > +Binding for MTK SPI Slave controller
-> > +
-> > +Required properties:
-> > +- compatible: should be one of the following.
-> > +    - mediatek,mt2712-spi: for mt2712 platforms
-> > +
-> > +- reg: Address and length of the register set for the device
-> > +
-> > +- interrupts: Should contain spi interrupt
-> > +
-> > +- clocks: phandles to input clocks.
-> > +  The first should be one of the following. It's PLL.
-> > +   -  <&topckgen CLK_TOP_UNIVPLL1_D2>: specify parent clock 312MHZ.
-> > +				      It's the default one.
-> > +   -  <&topckgen CLK_TOP_UNIVPLL1_D4>: specify parent clock 156MHZ.
-> > +   -  <&topckgen CLK_TOP_UNIVPLL2_D4>: specify parent clock 104MHZ.
-> > +   -  <&topckgen CLK_TOP_UNIVPLL1_D8>: specify parent clock 78MHZ.
-> > +  The second should be <&topckgen CLK_TOP_SPISLV_SEL>. It's clock mux.
-> > +  The third is <&infracfg CLK_INFRA_AO_SPI1>. It's clock gate.
-> > +
-> > +- clock-names: shall be "parent-clk" for the parent clock, "sel-clk" for the
-> > +  muxes clock, and "spi-clk" for the clock gate.
-> > +
-> > +- spi-slave: Empty property indicating the SPI controller is used in slave mode.
-> > +
-> > +Example:
-> > +
-> > +- SoC Specific Portion:
-> > +spis: spi@10013000 {
-> > +	compatible = "mediatek,mt2712-spi-slave";
-> > +	reg = <0 0x10013000 0 0x100>;
-> > +	interrupts = <GIC_SPI 283 IRQ_TYPE_LEVEL_LOW>;
-> > +	clocks = <&topckgen CLK_TOP_UNIVPLL1_D2>,
-> > +		<&topckgen CLK_TOP_SPISLV_SEL>,
-> > +		<&infracfg CLK_INFRA_AO_SPI1>;
-> > +	clock-names = "parent-clk", "sel-clk", "spi-clk";
-> > +	spi-slave;
-> > +	status = "disabled";
-> > +};
-> > 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
+index 9879767..e3cc743 100644
+--- a/drivers/usb/core/phy.c
++++ b/drivers/usb/core/phy.c
+@@ -23,14 +23,11 @@ static int usb_phy_roothub_add_phy(struct device *dev, int index,
+ 				   struct list_head *list)
+ {
+ 	struct usb_phy_roothub *roothub_entry;
+-	struct phy *phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
++	struct phy *phy;
+ 
+-	if (IS_ERR_OR_NULL(phy)) {
+-		if (!phy || PTR_ERR(phy) == -ENODEV)
+-			return 0;
+-		else
+-			return PTR_ERR(phy);
+-	}
++	phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
++	if (IS_ERR(phy))
++		return (PTR_ERR(phy) == -ENODEV) ? 0 : PTR_ERR(phy);
+ 
+ 	roothub_entry = devm_kzalloc(dev, sizeof(*roothub_entry), GFP_KERNEL);
+ 	if (!roothub_entry)
+-- 
+1.9.1
