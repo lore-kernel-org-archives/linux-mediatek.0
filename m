@@ -1,73 +1,151 @@
-From: Chen-Yu Tsai <wens@csie.org>
-Subject: Re: [PATCH] pinctrl: Convert to using %pOFn instead of device_node.name
-Date: Wed, 29 Aug 2018 10:15:20 +0800
-Message-ID: <CAGb2v64Hy-RQiXBhYrcy7FtNnqRUOhwGNZc8jko=FVrDDUH_hQ@mail.gmail.com>
-References: <20180828015252.28511-1-robh@kernel.org> <20180828015252.28511-40-robh@kernel.org>
+From: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 00/17] mt76 patches 2018-08-24 v2
+Date: Wed, 29 Aug 2018 02:26:44 +0000
+Message-ID: <CAM0KTbB5k54BvA2UOmoss-PuGtgHE_SGy2cG4n4ROxPH7kxYXA@mail.gmail.com>
+References: <1535381791-14908-1-git-send-email-sgruszka@redhat.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180828015252.28511-40-robh@kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: linux-kernel <linux-kernel@vger.kernel.org>, Linus Walleij <linus.walleij@linaro.org>, aisheng.dong@nxp.com, Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, stefan@agner.ch, Sascha Hauer <kernel@pengutronix.de>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>, gregory.clement@bootlin.com, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, alexandre.belloni@bootlin.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Tony Lindgren <tony@atomide.com>, Haojian
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1535381791-14908-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org
+Cc: linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, nbd-Vt+b4OUoWG0@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Aug 28, 2018 at 9:55 AM Rob Herring <robh@kernel.org> wrote:
->
-> In preparation to remove the node name pointer from struct device_node,
-> convert printf users to use the %pOFn format specifier.
->
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Cc: Dong Aisheng <aisheng.dong@nxp.com>
-> Cc: Fabio Estevam <festevam@gmail.com>
-> Cc: Shawn Guo <shawnguo@kernel.org>
-> Cc: Stefan Agner <stefan@agner.ch>
-> Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
-> Cc: Sean Wang <sean.wang@mediatek.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Carlo Caione <carlo@caione.org>
-> Cc: Kevin Hilman <khilman@baylibre.com>
-> Cc: Jason Cooper <jason@lakedaemon.net>
-> Cc: Andrew Lunn <andrew@lunn.ch>
-> Cc: Gregory Clement <gregory.clement@bootlin.com>
-> Cc: Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>
-> Cc: Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>
-> Cc: Nicolas Ferre <nicolas.ferre@microchip.com>
-> Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Tony Lindgren <tony@atomide.com>
-> Cc: Haojian Zhuang <haojian.zhuang@linaro.org>
-> Cc: Patrice Chotard <patrice.chotard@st.com>
-> Cc: Barry Song <baohua@kernel.org>
-> Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>
-> Cc: Alexandre Torgue <alexandre.torgue@st.com>
-> Cc: Maxime Ripard <maxime.ripard@bootlin.com>
-> Cc: Chen-Yu Tsai <wens@csie.org>
-> Cc: linux-gpio@vger.kernel.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-amlogic@lists.infradead.org
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-omap@vger.kernel.org
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  drivers/pinctrl/berlin/berlin.c               |  6 ++--
->  drivers/pinctrl/freescale/pinctrl-imx.c       |  7 ++--
->  drivers/pinctrl/freescale/pinctrl-imx1-core.c | 12 +++----
->  drivers/pinctrl/mediatek/pinctrl-mtk-common.c |  4 +--
->  drivers/pinctrl/meson/pinctrl-meson.c         |  2 +-
->  drivers/pinctrl/mvebu/pinctrl-mvebu.c         |  4 +--
->  drivers/pinctrl/nomadik/pinctrl-nomadik.c     |  6 ++--
->  drivers/pinctrl/pinctrl-at91.c                |  8 ++---
->  drivers/pinctrl/pinctrl-lantiq.c              |  8 ++---
->  drivers/pinctrl/pinctrl-rockchip.c            |  8 ++---
->  drivers/pinctrl/pinctrl-rza1.c                |  8 ++---
->  drivers/pinctrl/pinctrl-single.c              | 32 +++++++++----------
->  drivers/pinctrl/pinctrl-st.c                  |  6 ++--
->  drivers/pinctrl/sirf/pinctrl-atlas7.c         |  4 +--
->  drivers/pinctrl/stm32/pinctrl-stm32.c         |  4 +--
->  drivers/pinctrl/sunxi/pinctrl-sunxi.c         |  8 ++---
+Stanislaw et al,
 
-For sunxi:
+Thanks for working on this, I have a small stack of different devices
+covered by this driver which I'm excited to test with.
 
-Acked-by: Chen-Yu Tsai <wens@csie.org>
+I'm running wireless-testing which may or may not be fully up to date
+on the patches you have sent (head is at
+c9cd161770dd1866207b70d41ec03c9a26eea94f from Aug 13th), so please
+tell me if this has already been fixed.  I have a script that attempts
+to connect to 16 differently configured SSIDs using 33 different (yet
+compatible) wpa_supplicant.conf files and reports failures to me.
+It's hardly perfect, but it gives me an idea if something is obviously
+broken and needs a deeper dive.  When I run this script against a
+device supported by mt76x2 or mt76x0 I get an unusual error.
+Everything goes fine, connect, dhcp, disconnect, connect, dhcp,
+disconnect, but after about 5 or 6 connections I start getting errors
+like this during wpa_supplicant:
+
+Could not set interface t2uh flags (UP): No space left on device
+nl80211: Could not set interface 't2uh' UP
+nl80211: deinit ifname=t2uh disabled_11b_rates=0
+t2uh: Failed to initialize driver interface
+
+and then this with dhcpcd:
+
+dhcpcd_prestartinterface: t2uh: No space left on device
+t2uh: waiting for carrier
+
+the same happens with just ifconfig up:
+
+SIOCSIFFLAGS: No space left on device
+
+I see nothing useful in dmesg, and this happens after multiple
+successful connections.  I've used this test setup before, and never
+seen anything like this.  I will be happy to provide more detail if
+requested, but for now here is a list of the tested device which
+exhibit this behavior (named for my convenience to the model):
+
+phy1    036acm          mt76x2u         MediaTek Inc.
+phy0    pau0a           mt76x0          MediaTek Inc.
+phy2    t1u             mt76x0
+phy3    t2u             mt76x0          Ralink Technology, Corp.
+MT7610U ("Archer T2U" 2.4G+5G WLAN Adapter
+phy4    t2uh            mt76x0          Ralink Technology, Corp.
+MT7610U ("Archer T2U" 2.4G+5G WLAN Adapter
+
+Last thing I can think of, the tests were not conducted
+simultaneously, meaning they didn't all start or fail at once.  I had
+multiple successful connections with each one before they
+independently failed.
+
+Hope that helps.
+
+Thanks,
+Zero_Chaos
+
+(apologies if you got this twice, original bounced from ML)
+
+On Mon, Aug 27, 2018 at 2:58 PM Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
+>
+> This is the begin work of integration between mt76x0 and mt76x2.
+>
+> Further development can be seen here:
+> https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft-v2
+>
+> v1 -> v2:
+> - rename mt76xx to mt76x02 to reflect that common code is for mt76x0
+>   and mt76x2 only, not for new chips.
+> - fixup 'stucture typo' in one patch
+>
+> Stanislaw Gruszka (17):
+>   mt76: unify wait_for_mac
+>   mt76: rename mt76x2_regs.h
+>   mt76: merge mt76x0/regs.h into mt76x02_regs.h
+>   mt76: create new mt76x02-lib module for common mt76x{0,2} code
+>   mt76: fix mt76x02-lib module license
+>   mt76: unify mac_get_key_info
+>   mt76: add helpers for register access with mt76_dev struct
+>   mt76: unify mac_shared_key_setup
+>   mt76: unify mt76x02_mac_wcid_set_key
+>   mt76: unify mac_wcid_setup
+>   mt76: use mac_wcid_set_drop in mt76x0
+>   mt76x0: use mt76_wcid_free in mt76x0
+>   mt76: unify mt76x02_vif struct
+>   mt76: unify sta structure part 1
+>   mt76: unify sta structure part 2
+>   mt76x0: initalize custom tx queues
+>   mt76x0: use mt76x02_sta and mt76x02_tx_status
+>
+>  drivers/net/wireless/mediatek/mt76/Kconfig         |   6 +
+>  drivers/net/wireless/mediatek/mt76/Makefile        |   3 +
+>  drivers/net/wireless/mediatek/mt76/mac80211.c      |   1 +
+>  drivers/net/wireless/mediatek/mt76/mt76.h          |  13 +
+>  drivers/net/wireless/mediatek/mt76/mt76x0/init.c   |  37 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x0/mac.c    | 126 +---
+>  drivers/net/wireless/mediatek/mt76/mt76x0/mac.h    |   8 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x0/main.c   | 127 ++--
+>  drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c    |   4 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  35 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x0/regs.h   | 651 --------------------
+>  drivers/net/wireless/mediatek/mt76/mt76x0/trace.h  |   4 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x0/tx.c     |   8 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x0/usb.c    |   5 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x02_mac.c   | 157 +++++
+>  drivers/net/wireless/mediatek/mt76/mt76x02_mac.h   |  85 +++
+>  drivers/net/wireless/mediatek/mt76/mt76x02_regs.h  | 685 +++++++++++++++++++++
+>  drivers/net/wireless/mediatek/mt76/mt76x02_util.c  |  55 ++
+>  drivers/net/wireless/mediatek/mt76/mt76x02_util.h  |  25 +
+>  drivers/net/wireless/mediatek/mt76/mt76x2.h        |  50 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x2_common.c |  99 +--
+>  drivers/net/wireless/mediatek/mt76/mt76x2_init.c   |  15 +-
+>  .../wireless/mediatek/mt76/mt76x2_init_common.c    |   4 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x2_mac.c    |   4 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x2_mac.h    |  21 +-
+>  .../net/wireless/mediatek/mt76/mt76x2_mac_common.c | 130 +---
+>  drivers/net/wireless/mediatek/mt76/mt76x2_main.c   |  47 +-
+>  .../net/wireless/mediatek/mt76/mt76x2_phy_common.c |   4 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x2_regs.h   | 619 -------------------
+>  drivers/net/wireless/mediatek/mt76/mt76x2_trace.h  |   2 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x2_tx.c     |   8 +-
+>  .../net/wireless/mediatek/mt76/mt76x2_tx_common.c  |   8 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x2u_core.c  |   2 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x2u_init.c  |   8 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x2u_mac.c   |   2 +-
+>  drivers/net/wireless/mediatek/mt76/mt76x2u_main.c  |  29 +-
+>  36 files changed, 1226 insertions(+), 1861 deletions(-)
+>  delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/regs.h
+>  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
+>  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_mac.h
+>  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_regs.h
+>  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_util.c
+>  create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_util.h
+>  delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x2_regs.h
+>
+> --
+> 2.7.5
+>
