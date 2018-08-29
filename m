@@ -1,55 +1,40 @@
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH 1/2] usb: mtu3: fix error of xhci port id when enable U3 dual role
-Date: Wed, 29 Aug 2018 10:36:49 +0800
-Message-ID: <c4279eccff765006b78f87bf3c8c9ac94a06c04d.1535509922.git.chunfeng.yun@mediatek.com>
+Subject: [PATCH 1/6] usb: xhci-mtk: resume USB3 roothub first
+Date: Wed, 29 Aug 2018 10:55:13 +0800
+Message-ID: <3bcc220aa54bfebc39cea54cd736388ad37ee0c5.1535510898.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Mathias Nyman <mathias.nyman@intel.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-If dual role mode is enabled, when switch u3port0 to device mode,
-it will affect port id calculation of host(xHCI), specially when
-host supports multi U2 ports or U3 ports, so need enable its dual
-role mode, and fix it here.
+Give USB3 devices a better chance to enumerate at USB3 speeds if
+they are connected to a suspended host.
+Porting from "671ffdf xhci: resume USB 3 roothub first"
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/mtu3/mtu3_core.c    | 6 +++++-
- drivers/usb/mtu3/mtu3_hw_regs.h | 1 +
- 2 files changed, 6 insertions(+), 1 deletion(-)
+ drivers/usb/host/xhci-mtk.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
-index eecfd06..d045d84 100644
---- a/drivers/usb/mtu3/mtu3_core.c
-+++ b/drivers/usb/mtu3/mtu3_core.c
-@@ -107,8 +107,12 @@ static int mtu3_device_enable(struct mtu3 *mtu)
- 		(SSUSB_U2_PORT_DIS | SSUSB_U2_PORT_PDN |
- 		SSUSB_U2_PORT_HOST_SEL));
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index 7334da9..71d0d33 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -642,10 +642,10 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
+ 	xhci_mtk_host_enable(mtk);
  
--	if (mtu->ssusb->dr_mode == USB_DR_MODE_OTG)
-+	if (mtu->ssusb->dr_mode == USB_DR_MODE_OTG) {
- 		mtu3_setbits(ibase, SSUSB_U2_CTRL(0), SSUSB_U2_PORT_OTG_SEL);
-+		if (mtu->is_u3_ip)
-+			mtu3_setbits(ibase, SSUSB_U3_CTRL(0),
-+				     SSUSB_U3_PORT_DUAL_MODE);
-+	}
- 
- 	return ssusb_check_clocks(mtu->ssusb, check_clk);
+ 	xhci_dbg(xhci, "%s: restart port polling\n", __func__);
+-	set_bit(HCD_FLAG_POLL_RH, &hcd->flags);
+-	usb_hcd_poll_rh_status(hcd);
+ 	set_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
+ 	usb_hcd_poll_rh_status(xhci->shared_hcd);
++	set_bit(HCD_FLAG_POLL_RH, &hcd->flags);
++	usb_hcd_poll_rh_status(hcd);
+ 	return 0;
  }
-diff --git a/drivers/usb/mtu3/mtu3_hw_regs.h b/drivers/usb/mtu3/mtu3_hw_regs.h
-index 6ee3714..a45bb25 100644
---- a/drivers/usb/mtu3/mtu3_hw_regs.h
-+++ b/drivers/usb/mtu3/mtu3_hw_regs.h
-@@ -459,6 +459,7 @@
  
- /* U3D_SSUSB_U3_CTRL_0P */
- #define SSUSB_U3_PORT_SSP_SPEED	BIT(9)
-+#define SSUSB_U3_PORT_DUAL_MODE	BIT(7)
- #define SSUSB_U3_PORT_HOST_SEL		BIT(2)
- #define SSUSB_U3_PORT_PDN		BIT(1)
- #define SSUSB_U3_PORT_DIS		BIT(0)
 -- 
 1.9.1
