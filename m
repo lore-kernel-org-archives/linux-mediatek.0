@@ -1,49 +1,74 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH v3] usb: core: phy: fix return value checking about devm_of_phy_get_by_index()
-Date: Thu, 30 Aug 2018 09:16:40 +0800
-Message-ID: <626cea85395e3a1f002ef0a241bb508d770a33c0.1535536218.git.chunfeng.yun@mediatek.com>
+From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH v2 00/17] mt76 patches 2018-08-24 v2
+Date: Thu, 30 Aug 2018 12:08:50 +0200
+Message-ID: <20180830100848.GA3029@redhat.com>
+References: <1535381791-14908-1-git-send-email-sgruszka@redhat.com>
+ <CAM0KTbB5k54BvA2UOmoss-PuGtgHE_SGy2cG4n4ROxPH7kxYXA@mail.gmail.com>
+ <20180829102737.GA20763@redhat.com>
+ <CAM0KTbALSzvxagKTtDV7X0G9wtnSEogxNbch046LCsN_rUz4eA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Johan Hovold <johan@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAM0KTbALSzvxagKTtDV7X0G9wtnSEogxNbch046LCsN_rUz4eA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, nbd-Vt+b4OUoWG0@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Use IS_ERR() instead of IS_ERR_OR_NULL() because devm_of_phy_get_by_index()
-never return NULL value;
-But still need ignore the error of -ENODEV, for more information, please
-refer to:
-[0] https://lkml.org/lkml/2018/4/19/88
-[1] https://patchwork.kernel.org/patch/10160181/
+On Wed, Aug 29, 2018 at 06:10:01PM +0000, Sid Hayn wrote:
+> I rebuilt wireless-testing (which updated today)  with
+> CONFIG_DEBUG_KMEMLEAK=y.  I am still able to replicate the issue, and
+> presently have 4 devices in the "No space left on device" state.
+> 
+> This is from /sys/kernel/debug/kmemleak:
+> 
+> unreferenced object 0xffff9183f9a4d000 (size 2048):
+>   comm "iwconfig", pid 14872, jiffies 4295540797 (age 1233.338s)
+>   hex dump (first 32 bytes):
+>     46 00 00 00 00 00 00 00 05 00 00 00 00 00 00 00  F...............
+>     12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+>   backtrace:
+>     [<000000003ec4c8c4>] sta_set_sinfo+0x5d2/0x890 [mac80211]
+>     [<000000008bbf0699>] ieee80211_get_station+0x4b/0x70 [mac80211]
+>     [<0000000030cbddbc>] cfg80211_wext_giwrate+0xdb/0x140 [cfg80211]
+>     [<000000001e9277be>] ioctl_standard_call+0x49/0xd0
+>     [<00000000a0eeae49>] wext_handle_ioctl+0xbe/0x120
+>     [<00000000832bf9a4>] sock_ioctl+0x164/0x360
+>     [<00000000d3578d89>] do_vfs_ioctl+0xa3/0x6c0
+>     [<0000000036a4185e>] ksys_ioctl+0x6b/0x80
+>     [<00000000e8443423>] __x64_sys_ioctl+0x11/0x20
+>     [<00000000e2ddce89>] do_syscall_64+0x50/0xf0
+>     [<000000005d6a8051>] entry_SYSCALL_64_after_hwframe+0x44/0xa9
+>     [<00000000e724c32b>] 0xffffffffffffffff
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-V3: abandon the ternary operator suggested by Johan
+I do not see what can leak here. Did you run clear and scan commands,
+i.e:
 
-V2: keep the -ENODEV check
----
- drivers/usb/core/phy.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+echo clear > /sys/kernel/debug/kmemleak
+Run test
+echo scan > /sys/kernel/debug/kmemleak
+cat /sys/kernel/debug/kmemleak
 
-diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
-index 9879767..38b2c77 100644
---- a/drivers/usb/core/phy.c
-+++ b/drivers/usb/core/phy.c
-@@ -23,10 +23,11 @@ static int usb_phy_roothub_add_phy(struct device *dev, int index,
- 				   struct list_head *list)
- {
- 	struct usb_phy_roothub *roothub_entry;
--	struct phy *phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
-+	struct phy *phy;
- 
--	if (IS_ERR_OR_NULL(phy)) {
--		if (!phy || PTR_ERR(phy) == -ENODEV)
-+	phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
-+	if (IS_ERR(phy)) {
-+		if (PTR_ERR(phy) == -ENODEV)
- 			return 0;
- 		else
- 			return PTR_ERR(phy);
--- 
-1.9.1
+to get results ? I forgot that this is required (full docs can
+be found here: 
+https://www.kernel.org/doc/html/v4.16/dev-tools/kmemleak.html).
+
+> None of my scripts directly use iwconfig, but it is possible that
+> wpa_supplicant or dhcpcd invoke it (although a grep of their source
+> code indicates they do not). In case it matters, this is what my
+> wpa_supplicant invokation looks like:
+> 
+> wpa_supplicant -Dnl80211 -i ${interface} -c test_config/${conffile}
+> 
+> I am leaving the system in this state for now, I can resume from
+> broken or reboot to working for whatever testing you suggest next.
+> This is a test rig, so it takes a few but I'm happy to rebuild
+> whatever you want however you want it to debug this.
+
+You can move /usr/sbin/iwconfig somewhere and see what will fail,
+or remove WEXT support from kernel, perhaps that itself will solve
+the problem ;-)
+
+Regards
+Stanislaw
