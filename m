@@ -1,44 +1,63 @@
-From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH 00/16] unify usb mcu layer between mt76x2u and mt76x0u
- drivers
-Date: Fri, 31 Aug 2018 11:12:38 +0200
-Message-ID: <20180831091237.GA7261@redhat.com>
-References: <20180825104056.9130-1-lorenzo.bianconi@redhat.com>
+From: Johan Hovold <johan@kernel.org>
+Subject: Re: [PATCH v3] usb: core: phy: fix return value checking about
+ devm_of_phy_get_by_index()
+Date: Fri, 31 Aug 2018 11:41:54 +0200
+Message-ID: <20180831094154.GL28861@localhost>
+References: <626cea85395e3a1f002ef0a241bb508d770a33c0.1535536218.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20180825104056.9130-1-lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: nbd-Vt+b4OUoWG0@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <626cea85395e3a1f002ef0a241bb508d770a33c0.1535536218.git.chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Johan Hovold <johan@kernel.org>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Aug 25, 2018 at 12:40:40PM +0200, Lorenzo Bianconi wrote:
-> Use shared mt76u mcu routines available in mt76-usb module and
-> unify usb mcu layer between mt76x2u and mt76x0u drivers.
-> Remove unused mt76x0 routines.
-> This patchset is based on top of Stanislaw's patchset (not applied yet):
-> https://marc.info/?l=linux-wireless&m=153510933510810&w=2
+On Thu, Aug 30, 2018 at 09:16:40AM +0800, Chunfeng Yun wrote:
+> Use IS_ERR() instead of IS_ERR_OR_NULL() because devm_of_phy_get_by_index()
+> never return NULL value;
+> But still need ignore the error of -ENODEV, for more information, please
+> refer to:
+> [0] https://lkml.org/lkml/2018/4/19/88
+> [1] https://patchwork.kernel.org/patch/10160181/
 > 
-> Lorenzo Bianconi (16):
->   mt76: move mt76_reg_pair definition in mt76.h
->   mt76: split __mt76u_mcu_send_msg and mt76u_mcu_send_msg routines
->   mt76: move mt76x2u_mcu_deinit routine in mt76-usb module
->   mt76: add multiple regs read support to usb_mcu layer
->   mt76x0: use mt76u_init for bus initialization
->   mt76x0: remove mt76x0_vendor_reset routine
->   mt76x0: remove mt76x0_vendor_single_wr routine
->   mt76x0: remove mt76x0_mcu_msg_alloc routine
->   mt76x0: use shared mt76 usb mcu completion
->   mt76x0: remove mt76x0_complete_urb routine
->   mt76x0: remove mt76x0_vendor_request routine
->   mt76x0: remove unused mt76x0_wait_asic_ready routine
->   mt76x0: use mt76u_mcu_send_msg utility routine to send fw cmds
->   mt76x0: remove unused mt76x0_mcu structure
->   mt76x0: use mt76u_mcu_fw_send_data for fw uploading
->   mt76x0: remove unused routines for usb_buff alloc/free
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> V3: abandon the ternary operator suggested by Johan
+> 
+> V2: keep the -ENODEV check
 
-For the series:
+Perhaps the patch Subject is a little misleading as this is more of a
+clean up than a fix (as there's no bug here).
 
-Reviewed-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+But apart from that this looks good to me.
+
+Reviewed-by: Johan Hovold <johan@kernel.org>
+
+> ---
+>  drivers/usb/core/phy.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
+> index 9879767..38b2c77 100644
+> --- a/drivers/usb/core/phy.c
+> +++ b/drivers/usb/core/phy.c
+> @@ -23,10 +23,11 @@ static int usb_phy_roothub_add_phy(struct device *dev, int index,
+>  				   struct list_head *list)
+>  {
+>  	struct usb_phy_roothub *roothub_entry;
+> -	struct phy *phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
+> +	struct phy *phy;
+>  
+> -	if (IS_ERR_OR_NULL(phy)) {
+> -		if (!phy || PTR_ERR(phy) == -ENODEV)
+> +	phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
+> +	if (IS_ERR(phy)) {
+> +		if (PTR_ERR(phy) == -ENODEV)
+>  			return 0;
+>  		else
+>  			return PTR_ERR(phy);
+
+Thanks,
+Johan
