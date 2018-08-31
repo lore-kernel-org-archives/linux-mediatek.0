@@ -1,56 +1,39 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH] usb: core: phy: clean up return value check about
- devm_of_phy_get_by_index()
-Date: Fri, 31 Aug 2018 18:05:35 +0800
-Message-ID: <1535709935.32173.35.camel@mhfsdcap03>
-References: <258d57f5c8559c5fd3ba6d1ac1dcc5463737da2e.1535709096.git.chunfeng.yun@mediatek.com>
+From: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: [PATCH] mt76: Fix comparisons with invalid hardware key index
+Date: Fri, 31 Aug 2018 15:52:48 +0000 (UTC)
+Message-ID: <20180831155248.B4F3460445@smtp.codeaurora.org>
+References: <20180823212738.18431-1-geert@linux-m68k.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <258d57f5c8559c5fd3ba6d1ac1dcc5463737da2e.1535709096.git.chunfeng.yun@mediatek.com>
+In-Reply-To: <20180823212738.18431-1-geert@linux-m68k.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Johan Hovold <johan@kernel.org>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Stanislaw Gruszka <sgruszka@redhat.com>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Arnd Bergmann <arnd@arndb.de>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Geert Uytterhoeven <geert@linux-m68k.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-hi,
-Sorry, please ignore the patch, forgot version number
+Geert Uytterhoeven <geert@linux-m68k.org> wrote:
 
-On Fri, 2018-08-31 at 17:55 +0800, Chunfeng Yun wrote:
-> Use IS_ERR() instead of IS_ERR_OR_NULL() because devm_of_phy_get_by_index()
-> never return NULL value;
-> But still need ignore the error of -ENODEV, for more information, please
-> refer to:
-> [0] https://lkml.org/lkml/2018/4/19/88
-> [1] https://patchwork.kernel.org/patch/10160181/
+> With gcc 4.1.2:
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> V4: modify the patch subject suggested by Johan
-> V3: abandon the ternary operator suggested by Johan
-> V2: keep the -ENODEV check
-> ---
+>     drivers/net/wireless/mediatek/mt76/mt76x0/tx.c: In function ‘mt76x0_tx’:
+>     drivers/net/wireless/mediatek/mt76/mt76x0/tx.c:169: warning: comparison is always true due to limited range of data type
+>     drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c: In function ‘mt76x2_tx’:
+>     drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c:35: warning: comparison is always true due to limited range of data type
 > 
->  drivers/usb/core/phy.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
+> While assigning -1 to a u8 works fine, comparing with -1 does not work
+> as expected.
 > 
-> diff --git a/drivers/usb/core/phy.c b/drivers/usb/core/phy.c
-> index 9879767..38b2c77 100644
-> --- a/drivers/usb/core/phy.c
-> +++ b/drivers/usb/core/phy.c
-> @@ -23,10 +23,11 @@ static int usb_phy_roothub_add_phy(struct device *dev, int index,
->  				   struct list_head *list)
->  {
->  	struct usb_phy_roothub *roothub_entry;
-> -	struct phy *phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
-> +	struct phy *phy;
->  
-> -	if (IS_ERR_OR_NULL(phy)) {
-> -		if (!phy || PTR_ERR(phy) == -ENODEV)
-> +	phy = devm_of_phy_get_by_index(dev, dev->of_node, index);
-> +	if (IS_ERR(phy)) {
-> +		if (PTR_ERR(phy) == -ENODEV)
->  			return 0;
->  		else
->  			return PTR_ERR(phy);
+> Fix this by comparing with 0xff, like is already done in some other
+> places.
+> 
+> Signed-off-by: Geert Uytterhoeven <geert@linux-m68k.org>
+
+Patch applied to wireless-drivers-next.git, thanks.
+
+81c8eccc2404 mt76: Fix comparisons with invalid hardware key index
+
+-- 
+https://patchwork.kernel.org/patch/10574583/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
