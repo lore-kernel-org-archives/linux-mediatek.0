@@ -1,43 +1,31 @@
-From: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [PATCH] mt76: Fix comparisons with invalid hardware key index
-Date: Fri, 31 Aug 2018 15:52:48 +0000 (UTC)
-Message-ID: <20180831155248.D7F8D607F7@smtp.codeaurora.org>
-References: <20180823212738.18431-1-geert@linux-m68k.org>
+From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH v2 00/17] mt76 patches 2018-08-24 v2
+Date: Sat, 1 Sep 2018 09:47:58 +0200
+Message-ID: <20180901074757.GB3719@redhat.com>
+References: <1535381791-14908-1-git-send-email-sgruszka@redhat.com>
+ <CAM0KTbB5k54BvA2UOmoss-PuGtgHE_SGy2cG4n4ROxPH7kxYXA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180823212738.18431-1-geert@linux-m68k.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-Cc: Stanislaw Gruszka <sgruszka@redhat.com>, Arnd Bergmann <arnd@arndb.de>, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, "David S . Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAM0KTbB5k54BvA2UOmoss-PuGtgHE_SGy2cG4n4ROxPH7kxYXA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, nbd-Vt+b4OUoWG0@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-R2VlcnQgVXl0dGVyaG9ldmVuIDxnZWVydEBsaW51eC1tNjhrLm9yZz4gd3JvdGU6Cgo+IFdpdGgg
-Z2NjIDQuMS4yOgo+IAo+ICAgICBkcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210
-NzZ4MC90eC5jOiBJbiBmdW5jdGlvbiDigJhtdDc2eDBfdHjigJk6Cj4gICAgIGRyaXZlcnMvbmV0
-L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3NngwL3R4LmM6MTY5OiB3YXJuaW5nOiBjb21wYXJp
-c29uIGlzIGFsd2F5cyB0cnVlIGR1ZSB0byBsaW1pdGVkIHJhbmdlIG9mIGRhdGEgdHlwZQo+ICAg
-ICBkcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzZ4Ml90eF9jb21tb24uYzog
-SW4gZnVuY3Rpb24g4oCYbXQ3NngyX3R44oCZOgo+ICAgICBkcml2ZXJzL25ldC93aXJlbGVzcy9t
-ZWRpYXRlay9tdDc2L210NzZ4Ml90eF9jb21tb24uYzozNTogd2FybmluZzogY29tcGFyaXNvbiBp
-cyBhbHdheXMgdHJ1ZSBkdWUgdG8gbGltaXRlZCByYW5nZSBvZiBkYXRhIHR5cGUKPiAKPiBXaGls
-ZSBhc3NpZ25pbmcgLTEgdG8gYSB1OCB3b3JrcyBmaW5lLCBjb21wYXJpbmcgd2l0aCAtMSBkb2Vz
-IG5vdCB3b3JrCj4gYXMgZXhwZWN0ZWQuCj4gCj4gRml4IHRoaXMgYnkgY29tcGFyaW5nIHdpdGgg
-MHhmZiwgbGlrZSBpcyBhbHJlYWR5IGRvbmUgaW4gc29tZSBvdGhlcgo+IHBsYWNlcy4KPiAKPiBT
-aWduZWQtb2ZmLWJ5OiBHZWVydCBVeXR0ZXJob2V2ZW4gPGdlZXJ0QGxpbnV4LW02OGsub3JnPgoK
-UGF0Y2ggYXBwbGllZCB0byB3aXJlbGVzcy1kcml2ZXJzLW5leHQuZ2l0LCB0aGFua3MuCgo4MWM4
-ZWNjYzI0MDQgbXQ3NjogRml4IGNvbXBhcmlzb25zIHdpdGggaW52YWxpZCBoYXJkd2FyZSBrZXkg
-aW5kZXgKCi0tIApodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwNTc0NTgzLwoK
-aHR0cHM6Ly93aXJlbGVzcy53aWtpLmtlcm5lbC5vcmcvZW4vZGV2ZWxvcGVycy9kb2N1bWVudGF0
-aW9uL3N1Ym1pdHRpbmdwYXRjaGVzCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtl
-cm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+On Wed, Aug 29, 2018 at 02:26:44AM +0000, Sid Hayn wrote:
+> dhcpcd_prestartinterface: t2uh: No space left on device
+> t2uh: waiting for carrier
+> 
+> the same happens with just ifconfig up:
+> 
+> SIOCSIFFLAGS: No space left on device
+
+I think I found bug that could result in this. Please test
+below patch:
+
+https://github.com/sgruszka/wireless-drivers-next/commit/be446879afd6b0e315691e379a2aa4412f05884e.patch
+
+Thanks
+Stanislaw
