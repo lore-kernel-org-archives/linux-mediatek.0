@@ -1,188 +1,86 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 13/13] iommu/mediatek: Switch to SPDX license identifier
-Date: Mon, 3 Sep 2018 14:01:42 +0800
-Message-ID: <1535954502-30646-14-git-send-email-yong.wu@mediatek.com>
-References: <1535954502-30646-1-git-send-email-yong.wu@mediatek.com>
+From: Patrice CHOTARD <patrice.chotard@st.com>
+Subject: Re: [PATCH] pinctrl: Convert to using %pOFn instead of
+ device_node.name
+Date: Mon, 3 Sep 2018 09:57:11 +0000
+Message-ID: <3335422d-0b46-fde6-d172-005ba9b60d76@st.com>
+References: <20180828015252.28511-1-robh@kernel.org>
+ <20180828015252.28511-40-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1535954502-30646-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180828015252.28511-40-robh@kernel.org>
+Content-Language: en-US
+Content-ID: <220F3FA47CE90748951B84F0602886F6@st.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Stefan Agner <stefan@agner.ch>, Pengutronix Kernel Team <kernel@pengutronix.de>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, Tony
 List-Id: linux-mediatek@lists.infradead.org
 
-Switch to SPDX license identifier for MediaTek iommu/smi and their
-header files.
-
-Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/iommu/mtk_iommu.c                     | 10 +---------
- drivers/iommu/mtk_iommu.h                     | 10 +---------
- drivers/iommu/mtk_iommu_v1.c                  | 10 +---------
- drivers/memory/mtk-smi.c                      | 10 +---------
- include/dt-bindings/memory/mt2701-larb-port.h | 10 +---------
- include/dt-bindings/memory/mt8173-larb-port.h | 10 +---------
- include/soc/mediatek/smi.h                    | 10 +---------
- 7 files changed, 7 insertions(+), 63 deletions(-)
-
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index dd7521c..6e4209e 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -1,15 +1,7 @@
-+// SPDX-License-Identifier: GPL-2.0
- /*
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- #include <linux/bootmem.h>
- #include <linux/bug.h>
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index 1b423fe..856c10d 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -1,15 +1,7 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- 
- #ifndef _MTK_IOMMU_H_
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 676c029..f477300 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -1,17 +1,9 @@
-+// SPDX-License-Identifier: GPL-2.0
- /*
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-  *
-  * Based on driver/iommu/mtk_iommu.c
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- #include <linux/bootmem.h>
- #include <linux/bug.h>
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index 1a00f5b..a053295 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -1,15 +1,7 @@
-+// SPDX-License-Identifier: GPL-2.0
- /*
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- #include <linux/clk.h>
- #include <linux/component.h>
-diff --git a/include/dt-bindings/memory/mt2701-larb-port.h b/include/dt-bindings/memory/mt2701-larb-port.h
-index 6764d74..c511f0f 100644
---- a/include/dt-bindings/memory/mt2701-larb-port.h
-+++ b/include/dt-bindings/memory/mt2701-larb-port.h
-@@ -1,15 +1,7 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Copyright (c) 2015 MediaTek Inc.
-  * Author: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- 
- #ifndef _MT2701_LARB_PORT_H_
-diff --git a/include/dt-bindings/memory/mt8173-larb-port.h b/include/dt-bindings/memory/mt8173-larb-port.h
-index 111b4b0..a62bfeb 100644
---- a/include/dt-bindings/memory/mt8173-larb-port.h
-+++ b/include/dt-bindings/memory/mt8173-larb-port.h
-@@ -1,15 +1,7 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- #ifndef __DTS_IOMMU_PORT_MT8173_H
- #define __DTS_IOMMU_PORT_MT8173_H
-diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-index 5201e90..2b410d2 100644
---- a/include/soc/mediatek/smi.h
-+++ b/include/soc/mediatek/smi.h
-@@ -1,15 +1,7 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- #ifndef MTK_IOMMU_SMI_H
- #define MTK_IOMMU_SMI_H
--- 
-1.9.1
+SGkgUm9iDQoNCk9uIDA4LzI4LzIwMTggMDM6NTIgQU0sIFJvYiBIZXJyaW5nIHdyb3RlOg0KPiBJ
+biBwcmVwYXJhdGlvbiB0byByZW1vdmUgdGhlIG5vZGUgbmFtZSBwb2ludGVyIGZyb20gc3RydWN0
+IGRldmljZV9ub2RlLA0KPiBjb252ZXJ0IHByaW50ZiB1c2VycyB0byB1c2UgdGhlICVwT0ZuIGZv
+cm1hdCBzcGVjaWZpZXIuDQo+IA0KPiBDYzogTGludXMgV2FsbGVpaiA8bGludXMud2FsbGVpakBs
+aW5hcm8ub3JnPg0KPiBDYzogRG9uZyBBaXNoZW5nIDxhaXNoZW5nLmRvbmdAbnhwLmNvbT4NCj4g
+Q2M6IEZhYmlvIEVzdGV2YW0gPGZlc3RldmFtQGdtYWlsLmNvbT4NCj4gQ2M6IFNoYXduIEd1byA8
+c2hhd25ndW9Aa2VybmVsLm9yZz4NCj4gQ2M6IFN0ZWZhbiBBZ25lciA8c3RlZmFuQGFnbmVyLmNo
+Pg0KPiBDYzogUGVuZ3V0cm9uaXggS2VybmVsIFRlYW0gPGtlcm5lbEBwZW5ndXRyb25peC5kZT4N
+Cj4gQ2M6IFNlYW4gV2FuZyA8c2Vhbi53YW5nQG1lZGlhdGVrLmNvbT4NCj4gQ2M6IE1hdHRoaWFz
+IEJydWdnZXIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+DQo+IENjOiBDYXJsbyBDYWlvbmUgPGNh
+cmxvQGNhaW9uZS5vcmc+DQo+IENjOiBLZXZpbiBIaWxtYW4gPGtoaWxtYW5AYmF5bGlicmUuY29t
+Pg0KPiBDYzogSmFzb24gQ29vcGVyIDxqYXNvbkBsYWtlZGFlbW9uLm5ldD4NCj4gQ2M6IEFuZHJl
+dyBMdW5uIDxhbmRyZXdAbHVubi5jaD4NCj4gQ2M6IEdyZWdvcnkgQ2xlbWVudCA8Z3JlZ29yeS5j
+bGVtZW50QGJvb3RsaW4uY29tPg0KPiBDYzogU2ViYXN0aWFuIEhlc3NlbGJhcnRoIDxzZWJhc3Rp
+YW4uaGVzc2VsYmFydGhAZ21haWwuY29tPg0KPiBDYzogSmVhbi1DaHJpc3RvcGhlIFBsYWduaW9s
+LVZpbGxhcmQgPHBsYWduaW9qQGpjcm9zb2Z0LmNvbT4NCj4gQ2M6IE5pY29sYXMgRmVycmUgPG5p
+Y29sYXMuZmVycmVAbWljcm9jaGlwLmNvbT4NCj4gQ2M6IEFsZXhhbmRyZSBCZWxsb25pIDxhbGV4
+YW5kcmUuYmVsbG9uaUBib290bGluLmNvbT4NCj4gQ2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0Bz
+bnRlY2guZGU+DQo+IENjOiBUb255IExpbmRncmVuIDx0b255QGF0b21pZGUuY29tPg0KPiBDYzog
+SGFvamlhbiBaaHVhbmcgPGhhb2ppYW4uemh1YW5nQGxpbmFyby5vcmc+DQo+IENjOiBQYXRyaWNl
+IENob3RhcmQgPHBhdHJpY2UuY2hvdGFyZEBzdC5jb20+DQo+IENjOiBCYXJyeSBTb25nIDxiYW9o
+dWFAa2VybmVsLm9yZz4NCj4gQ2M6IE1heGltZSBDb3F1ZWxpbiA8bWNvcXVlbGluLnN0bTMyQGdt
+YWlsLmNvbT4NCj4gQ2M6IEFsZXhhbmRyZSBUb3JndWUgPGFsZXhhbmRyZS50b3JndWVAc3QuY29t
+Pg0KPiBDYzogTWF4aW1lIFJpcGFyZCA8bWF4aW1lLnJpcGFyZEBib290bGluLmNvbT4NCj4gQ2M6
+IENoZW4tWXUgVHNhaSA8d2Vuc0Bjc2llLm9yZz4NCj4gQ2M6IGxpbnV4LWdwaW9Admdlci5rZXJu
+ZWwub3JnDQo+IENjOiBsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnDQo+IENjOiBs
+aW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcNCj4gQ2M6IGxpbnV4LWFtbG9naWNA
+bGlzdHMuaW5mcmFkZWFkLm9yZw0KPiBDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZw0KPiBDYzogbGludXgtb21hcEB2Z2VyLmtlcm5lbC5vcmcNCj4gU2lnbmVkLW9mZi1ieTog
+Um9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4NCj4gLS0tDQo+ICAgZHJpdmVycy9waW5jdHJs
+L2Jlcmxpbi9iZXJsaW4uYyAgICAgICAgICAgICAgIHwgIDYgKystLQ0KPiAgIGRyaXZlcnMvcGlu
+Y3RybC9mcmVlc2NhbGUvcGluY3RybC1pbXguYyAgICAgICB8ICA3ICsrLS0NCj4gICBkcml2ZXJz
+L3BpbmN0cmwvZnJlZXNjYWxlL3BpbmN0cmwtaW14MS1jb3JlLmMgfCAxMiArKystLS0tDQo+ICAg
+ZHJpdmVycy9waW5jdHJsL21lZGlhdGVrL3BpbmN0cmwtbXRrLWNvbW1vbi5jIHwgIDQgKy0tDQo+
+ICAgZHJpdmVycy9waW5jdHJsL21lc29uL3BpbmN0cmwtbWVzb24uYyAgICAgICAgIHwgIDIgKy0N
+Cj4gICBkcml2ZXJzL3BpbmN0cmwvbXZlYnUvcGluY3RybC1tdmVidS5jICAgICAgICAgfCAgNCAr
+LS0NCj4gICBkcml2ZXJzL3BpbmN0cmwvbm9tYWRpay9waW5jdHJsLW5vbWFkaWsuYyAgICAgfCAg
+NiArKy0tDQo+ICAgZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtYXQ5MS5jICAgICAgICAgICAgICAg
+IHwgIDggKystLS0NCj4gICBkcml2ZXJzL3BpbmN0cmwvcGluY3RybC1sYW50aXEuYyAgICAgICAg
+ICAgICAgfCAgOCArKy0tLQ0KPiAgIGRyaXZlcnMvcGluY3RybC9waW5jdHJsLXJvY2tjaGlwLmMg
+ICAgICAgICAgICB8ICA4ICsrLS0tDQo+ICAgZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtcnphMS5j
+ICAgICAgICAgICAgICAgIHwgIDggKystLS0NCj4gICBkcml2ZXJzL3BpbmN0cmwvcGluY3RybC1z
+aW5nbGUuYyAgICAgICAgICAgICAgfCAzMiArKysrKysrKystLS0tLS0tLS0tDQo+ICAgZHJpdmVy
+cy9waW5jdHJsL3BpbmN0cmwtc3QuYyAgICAgICAgICAgICAgICAgIHwgIDYgKystLQ0KPiAgIGRy
+aXZlcnMvcGluY3RybC9zaXJmL3BpbmN0cmwtYXRsYXM3LmMgICAgICAgICB8ICA0ICstLQ0KPiAg
+IGRyaXZlcnMvcGluY3RybC9zdG0zMi9waW5jdHJsLXN0bTMyLmMgICAgICAgICB8ICA0ICstLQ0K
+PiAgIGRyaXZlcnMvcGluY3RybC9zdW54aS9waW5jdHJsLXN1bnhpLmMgICAgICAgICB8ICA4ICsr
+LS0tDQo+ICAgZHJpdmVycy9waW5jdHJsL3RpL3BpbmN0cmwtdGktaW9kZWxheS5jICAgICAgIHwg
+IDggKystLS0NCj4gICAxNyBmaWxlcyBjaGFuZ2VkLCA2NiBpbnNlcnRpb25zKCspLCA2OSBkZWxl
+dGlvbnMoLSkNCj4gDQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BpbmN0cmwvcGluY3RybC1zdC5j
+IGIvZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtc3QuYw0KPiBpbmRleCAwOTY2YmIwYmY3MWYuLmU2
+NmFmOTNmMmNiZiAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtc3QuYw0K
+PiArKysgYi9kcml2ZXJzL3BpbmN0cmwvcGluY3RybC1zdC5jDQo+IEBAIC04MTcsOCArODE3LDgg
+QEAgc3RhdGljIGludCBzdF9wY3RsX2R0X25vZGVfdG9fbWFwKHN0cnVjdCBwaW5jdHJsX2RldiAq
+cGN0bGRldiwNCj4gICANCj4gICAJZ3JwID0gc3RfcGN0bF9maW5kX2dyb3VwX2J5X25hbWUoaW5m
+bywgbnAtPm5hbWUpOw0KPiAgIAlpZiAoIWdycCkgew0KPiAtCQlkZXZfZXJyKGluZm8tPmRldiwg
+InVuYWJsZSB0byBmaW5kIGdyb3VwIGZvciBub2RlICVzXG4iLA0KPiAtCQkJbnAtPm5hbWUpOw0K
+PiArCQlkZXZfZXJyKGluZm8tPmRldiwgInVuYWJsZSB0byBmaW5kIGdyb3VwIGZvciBub2RlICVw
+T0ZuXG4iLA0KPiArCQkJbnApOw0KPiAgIAkJcmV0dXJuIC1FSU5WQUw7DQo+ICAgCX0NCj4gICAN
+Cj4gQEAgLTExODQsNyArMTE4NCw3IEBAIHN0YXRpYyBpbnQgc3RfcGN0bF9kdF9wYXJzZV9ncm91
+cHMoc3RydWN0IGRldmljZV9ub2RlICpucCwNCj4gICAJCWlmIChwcC0+bGVuZ3RoIC8gc2l6ZW9m
+KF9fYmUzMikgPj0gT0ZfR1BJT19BUkdTX01JTikgew0KPiAgIAkJCW5waW5zKys7DQo+ICAgCQl9
+IGVsc2Ugew0KPiAtCQkJcHJfd2FybigiSW52YWxpZCBzdCxwaW5zIGluICVzIG5vZGVcbiIsIG5w
+LT5uYW1lKTsNCj4gKwkJCXByX3dhcm4oIkludmFsaWQgc3QscGlucyBpbiAlcE9GbiBub2RlXG4i
+LCBucCk7DQo+ICAgCQkJcmV0dXJuIC1FSU5WQUw7DQo+ICAgCQl9DQo+ICAgCX0NCg0KRm9yIHBp
+bmN0cmwtc3Q6DQoNCkFja2VkLWJ5OiBQYXRyaWNlIENob3RhcmQgPHBhdHJpY2UuY2hvdGFyZEBz
+dC5jb20+DQoNClRoYW5rcw0KUGF0cmljZQ0K
