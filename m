@@ -1,7 +1,7 @@
 From: Jasper Mattsson <jasu-tmnvWD0sGVAk+I/owrrOrA@public.gmane.org>
-Subject: [PATCH 0/3] Fix scpsys on MT6797
-Date: Mon, 3 Sep 2018 23:06:25 +0300
-Message-ID: <20180903200625.GA6388@xn--njmtys-xxab.info>
+Subject: [PATCH 1/3] soc: mediatek: Bind missing clocks to scpsys on the MT6797
+Date: Mon, 3 Sep 2018 23:07:59 +0300
+Message-ID: <20180903200759.GA6703@xn--njmtys-xxab.info>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -20,50 +20,84 @@ To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello,
+Add missing clocks to MJC, AUDIO, VENC, VDEC domains. Also add MM clock
+to VENC and VDEC domains, since the power domains are initially turned
+on in the order of the scp_domain_data array, not in dependency order.
+VENC and VDEC are subdomains of MM, but MM is defined after them, so
+they are turned on before their parent. If the MM domain is not
+initially on, boot will fail. This is the case e.g. with kexec boot.
 
-On MT6797, SCPSYS probe fails due to gaps in the scp_domain_data_mt6797
-array. The gaps are due to omitted MFG_* power domains. This could be
-solved by rearranging the #defines in dt-bindings, but I'm not sure if
-that's allowed as it would break compatibility with existing DTBs.
+Signed-off-by: Jasper Mattsson <jasu-tmnvWD0sGVAk+I/owrrOrA@public.gmane.org>
 
-Audio, VENC, VDEC, and MJC were also missing clocks, which I added.
+addclk
+---
+ drivers/soc/mediatek/mtk-scpsys.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
-Additionally, if SCPSYS is started with the power domains initially
-disabled (e.g. when booting with kexec), it will hang the system. This
-is because all the domains are initially powered on in the order they
-are defined in the scp_domain_data array, disregarding any subdomain
-dependencies. VENC and VDEC are subdomains of MM, but appear before it
-in the array. This makes the system hang. Again, this could be solved by
-reordering the #defines, but instead I added the MM clock to the domains
-and that fixed things even if the MM domain is not powerd on by SPM.
-
-There *might* be a bug that I did not fix, because I am not sure if it
-is a bug at all - MFG_ASYNC does not have any bus protection flags,
-but on Android
-
-To properly test this patch, you'll need to apply my previous patch
-which fixes some clocks, otherwise the system would not work properly
-without clk_ignore_unused. The previous patch shows wrong on Patchwork,
-not sure what I messed up (should I re-send?), so here's a link to all
-my patches, which should only include this and the clk patch at the time
-of writing:
-
-https://patchwork.kernel.org/project/linux-mediatek/list/?submitter=182219
-
-
-Best regards,
-Jasper Mattsson
-
-Jasper Mattsson (3):
-  soc: mediatek: Bind missing clocks to scpsys on the MT6797
-  soc: mediatek: Allow gaps in SCP PDs
-  dts: mediatek: mt6797: Bind audio, mjc, and venc clocks to SCPSYS
-
- .../bindings/soc/mediatek/scpsys.txt          |  2 +-
- arch/arm64/boot/dts/mediatek/mt6797.dtsi      |  9 +++++---
- drivers/soc/mediatek/mtk-scpsys.c             | 21 ++++++++++++++-----
- 3 files changed, 23 insertions(+), 9 deletions(-)
-
---
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 5b24bb4bf..4808d71c5 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -97,6 +97,7 @@ enum clk_id {
+ 	CLK_HIFSEL,
+ 	CLK_JPGDEC,
+ 	CLK_AUDIO,
++	CLK_MJC,
+ 	CLK_MAX,
+ };
+ 
+@@ -111,6 +112,7 @@ static const char * const clk_names[] = {
+ 	"hif_sel",
+ 	"jpgdec",
+ 	"audio",
++	"mjc",
+ 	NULL,
+ };
+ 
+@@ -690,7 +692,7 @@ static const struct scp_domain_data scp_domain_data_mt6797[] = {
+ 		.ctl_offs = 0x300,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+-		.clk_id = {CLK_VDEC},
++		.clk_id = {CLK_MM, CLK_VDEC},
+ 	},
+ 	[MT6797_POWER_DOMAIN_VENC] = {
+ 		.name = "venc",
+@@ -698,7 +700,7 @@ static const struct scp_domain_data scp_domain_data_mt6797[] = {
+ 		.ctl_offs = 0x304,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_NONE},
++		.clk_id = {CLK_MM, CLK_VENC},
+ 	},
+ 	[MT6797_POWER_DOMAIN_ISP] = {
+ 		.name = "isp",
+@@ -706,7 +708,7 @@ static const struct scp_domain_data scp_domain_data_mt6797[] = {
+ 		.ctl_offs = 0x308,
+ 		.sram_pdn_bits = GENMASK(9, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+-		.clk_id = {CLK_NONE},
++		.clk_id = {CLK_MM},
+ 	},
+ 	[MT6797_POWER_DOMAIN_MM] = {
+ 		.name = "mm",
+@@ -723,7 +725,7 @@ static const struct scp_domain_data scp_domain_data_mt6797[] = {
+ 		.ctl_offs = 0x314,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_NONE},
++		.clk_id = {CLK_AUDIO},
+ 	},
+ 	[MT6797_POWER_DOMAIN_MFG_ASYNC] = {
+ 		.name = "mfg_async",
+@@ -739,7 +741,7 @@ static const struct scp_domain_data scp_domain_data_mt6797[] = {
+ 		.ctl_offs = 0x310,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+-		.clk_id = {CLK_NONE},
++		.clk_id = {CLK_MJC},
+ 	},
+ };
+ 
+-- 
 2.18.0
