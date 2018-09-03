@@ -1,8 +1,7 @@
 From: Jasper Mattsson <jasu-tmnvWD0sGVAk+I/owrrOrA@public.gmane.org>
-Subject: [PATCH 3/3] dts: mediatek: mt6797: Bind audio, mjc, and venc clocks
- to SCPSYS
-Date: Mon, 3 Sep 2018 23:08:33 +0300
-Message-ID: <20180903200833.GA6792@xn--njmtys-xxab.info>
+Subject: [PATCH 2/3] soc: mediatek: Allow gaps in SCP PDs
+Date: Mon, 3 Sep 2018 23:08:16 +0300
+Message-ID: <20180903200816.GA6752@xn--njmtys-xxab.info>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -21,48 +20,51 @@ To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add newly supported SCPSYS clocks to mt6797.dtsi and devicetree bindings
-documentation.
+The power domains array for MT6797 contains gaps, since most MFG-related
+power domains are missing. This causes a lookup for a regulator with
+a NULL name fail, and this will cause the probe of SCPSYS to fail. This
+patch skips gaps in the array by detecting if the power domain name is
+NULL. This could all be easily solved by reordering the #defines in
+dt-bindings, but that could break existing DTBs.
 
 Signed-off-by: Jasper Mattsson <jasu-tmnvWD0sGVAk+I/owrrOrA@public.gmane.org>
 ---
- .../devicetree/bindings/soc/mediatek/scpsys.txt          | 2 +-
- arch/arm64/boot/dts/mediatek/mt6797.dtsi                 | 9 ++++++---
- 2 files changed, 7 insertions(+), 4 deletions(-)
+ drivers/soc/mediatek/mtk-scpsys.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-index d6fe16f09..07121f7a4 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-+++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-@@ -32,7 +32,7 @@ Required properties:
-                       enabled before enabling certain power domains.
- 	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
- 	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
--	Required clocks for MT6797: "mm", "mfg", "vdec"
-+	Required clocks for MT6797: "mm", "mfg", "vdec", "mjc", "audio", "vdec"
- 	Required clocks for MT7622: "hif_sel"
- 	Required clocks for MT7622A: "ethif"
- 	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
-diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-index 4beaa7110..9c05c4fa2 100644
---- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-@@ -133,10 +133,13 @@
- 		compatible = "mediatek,mt6797-scpsys";
- 		#power-domain-cells = <1>;
- 		reg = <0 0x10006000 0 0x1000>;
--		clocks = <&topckgen CLK_TOP_MUX_MFG>,
-+		clocks = <&infrasys CLK_INFRA_AUDIO_26M>,
-+			 <&topckgen CLK_TOP_MUX_MFG>,
-+			 <&topckgen CLK_TOP_MUX_MJC>,
- 			 <&topckgen CLK_TOP_MUX_MM>,
--			 <&topckgen CLK_TOP_MUX_VDEC>;
--		clock-names = "mfg", "mm", "vdec";
-+			 <&topckgen CLK_TOP_MUX_VDEC>,
-+			 <&topckgen CLK_TOP_MUX_VENC>;
-+		clock-names = "audio", "mfg", "mjc", "mm", "vdec", "venc";
- 		infracfg = <&infrasys>;
- 	};
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 4808d71c5..c60a17e56 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -402,6 +402,9 @@ static struct scp *init_scp(struct platform_device *pdev,
+ 		struct scp_domain *scpd = &scp->domains[i];
+ 		const struct scp_domain_data *data = &scp_domain_data[i];
  
++		if (!data->name)
++			continue;
++
+ 		scpd->supply = devm_regulator_get_optional(&pdev->dev, data->name);
+ 		if (IS_ERR(scpd->supply)) {
+ 			if (PTR_ERR(scpd->supply) == -ENODEV)
+@@ -420,6 +423,9 @@ static struct scp *init_scp(struct platform_device *pdev,
+ 		struct generic_pm_domain *genpd = &scpd->genpd;
+ 		const struct scp_domain_data *data = &scp_domain_data[i];
+ 
++		if (!data->name)
++			continue;
++
+ 		pd_data->domains[i] = genpd;
+ 		scpd->scp = scp;
+ 
+@@ -457,6 +463,9 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		struct scp_domain *scpd = &scp->domains[i];
+ 		struct generic_pm_domain *genpd = &scpd->genpd;
+ 
++		if (!genpd->name)
++			continue;
++
+ 		/*
+ 		 * Initially turn on all domains to make the domains usable
+ 		 * with !CONFIG_PM and to get the hardware in sync with the
 -- 
 2.18.0
