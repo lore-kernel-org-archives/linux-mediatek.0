@@ -1,86 +1,60 @@
-From: Patrice CHOTARD <patrice.chotard@st.com>
-Subject: Re: [PATCH] pinctrl: Convert to using %pOFn instead of
- device_node.name
-Date: Mon, 3 Sep 2018 09:57:11 +0000
-Message-ID: <3335422d-0b46-fde6-d172-005ba9b60d76@st.com>
-References: <20180828015252.28511-1-robh@kernel.org>
- <20180828015252.28511-40-robh@kernel.org>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v3 0/2] Bluetooth: mediatek: Add protocol support for MediaTek USB devices
+Date: Mon, 3 Sep 2018 20:53:38 +0800
+Message-ID: <cover.1535978548.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180828015252.28511-40-robh@kernel.org>
-Content-Language: en-US
-Content-ID: <220F3FA47CE90748951B84F0602886F6@st.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Stefan Agner <stefan@agner.ch>, Pengutronix Kernel Team <kernel@pengutronix.de>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, Tony
+To: marcel@holtmann.org, johan.hedberg@gmail.com
+Cc: linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgUm9iDQoNCk9uIDA4LzI4LzIwMTggMDM6NTIgQU0sIFJvYiBIZXJyaW5nIHdyb3RlOg0KPiBJ
-biBwcmVwYXJhdGlvbiB0byByZW1vdmUgdGhlIG5vZGUgbmFtZSBwb2ludGVyIGZyb20gc3RydWN0
-IGRldmljZV9ub2RlLA0KPiBjb252ZXJ0IHByaW50ZiB1c2VycyB0byB1c2UgdGhlICVwT0ZuIGZv
-cm1hdCBzcGVjaWZpZXIuDQo+IA0KPiBDYzogTGludXMgV2FsbGVpaiA8bGludXMud2FsbGVpakBs
-aW5hcm8ub3JnPg0KPiBDYzogRG9uZyBBaXNoZW5nIDxhaXNoZW5nLmRvbmdAbnhwLmNvbT4NCj4g
-Q2M6IEZhYmlvIEVzdGV2YW0gPGZlc3RldmFtQGdtYWlsLmNvbT4NCj4gQ2M6IFNoYXduIEd1byA8
-c2hhd25ndW9Aa2VybmVsLm9yZz4NCj4gQ2M6IFN0ZWZhbiBBZ25lciA8c3RlZmFuQGFnbmVyLmNo
-Pg0KPiBDYzogUGVuZ3V0cm9uaXggS2VybmVsIFRlYW0gPGtlcm5lbEBwZW5ndXRyb25peC5kZT4N
-Cj4gQ2M6IFNlYW4gV2FuZyA8c2Vhbi53YW5nQG1lZGlhdGVrLmNvbT4NCj4gQ2M6IE1hdHRoaWFz
-IEJydWdnZXIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+DQo+IENjOiBDYXJsbyBDYWlvbmUgPGNh
-cmxvQGNhaW9uZS5vcmc+DQo+IENjOiBLZXZpbiBIaWxtYW4gPGtoaWxtYW5AYmF5bGlicmUuY29t
-Pg0KPiBDYzogSmFzb24gQ29vcGVyIDxqYXNvbkBsYWtlZGFlbW9uLm5ldD4NCj4gQ2M6IEFuZHJl
-dyBMdW5uIDxhbmRyZXdAbHVubi5jaD4NCj4gQ2M6IEdyZWdvcnkgQ2xlbWVudCA8Z3JlZ29yeS5j
-bGVtZW50QGJvb3RsaW4uY29tPg0KPiBDYzogU2ViYXN0aWFuIEhlc3NlbGJhcnRoIDxzZWJhc3Rp
-YW4uaGVzc2VsYmFydGhAZ21haWwuY29tPg0KPiBDYzogSmVhbi1DaHJpc3RvcGhlIFBsYWduaW9s
-LVZpbGxhcmQgPHBsYWduaW9qQGpjcm9zb2Z0LmNvbT4NCj4gQ2M6IE5pY29sYXMgRmVycmUgPG5p
-Y29sYXMuZmVycmVAbWljcm9jaGlwLmNvbT4NCj4gQ2M6IEFsZXhhbmRyZSBCZWxsb25pIDxhbGV4
-YW5kcmUuYmVsbG9uaUBib290bGluLmNvbT4NCj4gQ2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0Bz
-bnRlY2guZGU+DQo+IENjOiBUb255IExpbmRncmVuIDx0b255QGF0b21pZGUuY29tPg0KPiBDYzog
-SGFvamlhbiBaaHVhbmcgPGhhb2ppYW4uemh1YW5nQGxpbmFyby5vcmc+DQo+IENjOiBQYXRyaWNl
-IENob3RhcmQgPHBhdHJpY2UuY2hvdGFyZEBzdC5jb20+DQo+IENjOiBCYXJyeSBTb25nIDxiYW9o
-dWFAa2VybmVsLm9yZz4NCj4gQ2M6IE1heGltZSBDb3F1ZWxpbiA8bWNvcXVlbGluLnN0bTMyQGdt
-YWlsLmNvbT4NCj4gQ2M6IEFsZXhhbmRyZSBUb3JndWUgPGFsZXhhbmRyZS50b3JndWVAc3QuY29t
-Pg0KPiBDYzogTWF4aW1lIFJpcGFyZCA8bWF4aW1lLnJpcGFyZEBib290bGluLmNvbT4NCj4gQ2M6
-IENoZW4tWXUgVHNhaSA8d2Vuc0Bjc2llLm9yZz4NCj4gQ2M6IGxpbnV4LWdwaW9Admdlci5rZXJu
-ZWwub3JnDQo+IENjOiBsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnDQo+IENjOiBs
-aW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcNCj4gQ2M6IGxpbnV4LWFtbG9naWNA
-bGlzdHMuaW5mcmFkZWFkLm9yZw0KPiBDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZw0KPiBDYzogbGludXgtb21hcEB2Z2VyLmtlcm5lbC5vcmcNCj4gU2lnbmVkLW9mZi1ieTog
-Um9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4NCj4gLS0tDQo+ICAgZHJpdmVycy9waW5jdHJs
-L2Jlcmxpbi9iZXJsaW4uYyAgICAgICAgICAgICAgIHwgIDYgKystLQ0KPiAgIGRyaXZlcnMvcGlu
-Y3RybC9mcmVlc2NhbGUvcGluY3RybC1pbXguYyAgICAgICB8ICA3ICsrLS0NCj4gICBkcml2ZXJz
-L3BpbmN0cmwvZnJlZXNjYWxlL3BpbmN0cmwtaW14MS1jb3JlLmMgfCAxMiArKystLS0tDQo+ICAg
-ZHJpdmVycy9waW5jdHJsL21lZGlhdGVrL3BpbmN0cmwtbXRrLWNvbW1vbi5jIHwgIDQgKy0tDQo+
-ICAgZHJpdmVycy9waW5jdHJsL21lc29uL3BpbmN0cmwtbWVzb24uYyAgICAgICAgIHwgIDIgKy0N
-Cj4gICBkcml2ZXJzL3BpbmN0cmwvbXZlYnUvcGluY3RybC1tdmVidS5jICAgICAgICAgfCAgNCAr
-LS0NCj4gICBkcml2ZXJzL3BpbmN0cmwvbm9tYWRpay9waW5jdHJsLW5vbWFkaWsuYyAgICAgfCAg
-NiArKy0tDQo+ICAgZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtYXQ5MS5jICAgICAgICAgICAgICAg
-IHwgIDggKystLS0NCj4gICBkcml2ZXJzL3BpbmN0cmwvcGluY3RybC1sYW50aXEuYyAgICAgICAg
-ICAgICAgfCAgOCArKy0tLQ0KPiAgIGRyaXZlcnMvcGluY3RybC9waW5jdHJsLXJvY2tjaGlwLmMg
-ICAgICAgICAgICB8ICA4ICsrLS0tDQo+ICAgZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtcnphMS5j
-ICAgICAgICAgICAgICAgIHwgIDggKystLS0NCj4gICBkcml2ZXJzL3BpbmN0cmwvcGluY3RybC1z
-aW5nbGUuYyAgICAgICAgICAgICAgfCAzMiArKysrKysrKystLS0tLS0tLS0tDQo+ICAgZHJpdmVy
-cy9waW5jdHJsL3BpbmN0cmwtc3QuYyAgICAgICAgICAgICAgICAgIHwgIDYgKystLQ0KPiAgIGRy
-aXZlcnMvcGluY3RybC9zaXJmL3BpbmN0cmwtYXRsYXM3LmMgICAgICAgICB8ICA0ICstLQ0KPiAg
-IGRyaXZlcnMvcGluY3RybC9zdG0zMi9waW5jdHJsLXN0bTMyLmMgICAgICAgICB8ICA0ICstLQ0K
-PiAgIGRyaXZlcnMvcGluY3RybC9zdW54aS9waW5jdHJsLXN1bnhpLmMgICAgICAgICB8ICA4ICsr
-LS0tDQo+ICAgZHJpdmVycy9waW5jdHJsL3RpL3BpbmN0cmwtdGktaW9kZWxheS5jICAgICAgIHwg
-IDggKystLS0NCj4gICAxNyBmaWxlcyBjaGFuZ2VkLCA2NiBpbnNlcnRpb25zKCspLCA2OSBkZWxl
-dGlvbnMoLSkNCj4gDQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BpbmN0cmwvcGluY3RybC1zdC5j
-IGIvZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtc3QuYw0KPiBpbmRleCAwOTY2YmIwYmY3MWYuLmU2
-NmFmOTNmMmNiZiAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtc3QuYw0K
-PiArKysgYi9kcml2ZXJzL3BpbmN0cmwvcGluY3RybC1zdC5jDQo+IEBAIC04MTcsOCArODE3LDgg
-QEAgc3RhdGljIGludCBzdF9wY3RsX2R0X25vZGVfdG9fbWFwKHN0cnVjdCBwaW5jdHJsX2RldiAq
-cGN0bGRldiwNCj4gICANCj4gICAJZ3JwID0gc3RfcGN0bF9maW5kX2dyb3VwX2J5X25hbWUoaW5m
-bywgbnAtPm5hbWUpOw0KPiAgIAlpZiAoIWdycCkgew0KPiAtCQlkZXZfZXJyKGluZm8tPmRldiwg
-InVuYWJsZSB0byBmaW5kIGdyb3VwIGZvciBub2RlICVzXG4iLA0KPiAtCQkJbnAtPm5hbWUpOw0K
-PiArCQlkZXZfZXJyKGluZm8tPmRldiwgInVuYWJsZSB0byBmaW5kIGdyb3VwIGZvciBub2RlICVw
-T0ZuXG4iLA0KPiArCQkJbnApOw0KPiAgIAkJcmV0dXJuIC1FSU5WQUw7DQo+ICAgCX0NCj4gICAN
-Cj4gQEAgLTExODQsNyArMTE4NCw3IEBAIHN0YXRpYyBpbnQgc3RfcGN0bF9kdF9wYXJzZV9ncm91
-cHMoc3RydWN0IGRldmljZV9ub2RlICpucCwNCj4gICAJCWlmIChwcC0+bGVuZ3RoIC8gc2l6ZW9m
-KF9fYmUzMikgPj0gT0ZfR1BJT19BUkdTX01JTikgew0KPiAgIAkJCW5waW5zKys7DQo+ICAgCQl9
-IGVsc2Ugew0KPiAtCQkJcHJfd2FybigiSW52YWxpZCBzdCxwaW5zIGluICVzIG5vZGVcbiIsIG5w
-LT5uYW1lKTsNCj4gKwkJCXByX3dhcm4oIkludmFsaWQgc3QscGlucyBpbiAlcE9GbiBub2RlXG4i
-LCBucCk7DQo+ICAgCQkJcmV0dXJuIC1FSU5WQUw7DQo+ICAgCQl9DQo+ICAgCX0NCg0KRm9yIHBp
-bmN0cmwtc3Q6DQoNCkFja2VkLWJ5OiBQYXRyaWNlIENob3RhcmQgPHBhdHJpY2UuY2hvdGFyZEBz
-dC5jb20+DQoNClRoYW5rcw0KUGF0cmljZQ0K
+From: Sean Wang <sean.wang@mediatek.com>
+
+v3:
+add fixes and enhancements based on [1]
+* reuse flags and evt_skb btusb already had
+* add ctrl_anchor and the corresponding handling
+* apply mtk specific recv function
+* add more comments explaining wmt ctrl urbs behavior.
+
+[1]
+http://lists.infradead.org/pipermail/linux-mediatek/2018-August/014724.html
+
+v2:
+
+add fixes and enhancements based on [1]
+* include /sys/kernel/debug/usb/devices portion in the commit message.
+* turn default into n for config BT_HCIBTUSB_MTK in Kconfig
+* only add MediaTek support to btusb.c
+* drop cmd_sync callback usage
+* use __hci_cmd_send to send WMT commands
+* add wait event handling similar to what is being done in btmtkuart.c
+* submit a control IN URB similar to interrupt IN URB on demand for the WMT
+  commands during setup 
+* add cosmetic changes
+
+[1]
+http://lists.infradead.org/pipermail/linux-mediatek/2018-August/014650.html
+http://lists.infradead.org/pipermail/linux-mediatek/2018-August/014656.html
+
+v1:
+
+This adds the support of enabling MT7668U and MT7663U Bluetooth
+function running on the top of btusb driver. The patch also adds
+a newly created file mtkbt.c able to be reused independently from
+the transport type such as UART, USB and SDIO.
+
+Sean Wang (2):
+  Bluetooth: mediatek: Add protocol support for MediaTek MT7668U USB
+    devices
+  Bluetooth: mediatek: Add protocol support for MediaTek MT7663U USB
+    devices
+
+ drivers/bluetooth/Kconfig |  11 +
+ drivers/bluetooth/btusb.c | 552 ++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 563 insertions(+)
+
+-- 
+2.7.4
