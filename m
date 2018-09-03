@@ -1,7 +1,8 @@
 From: Jasper Mattsson <jasu-tmnvWD0sGVAk+I/owrrOrA@public.gmane.org>
-Subject: [PATCH 1/3] soc: mediatek: Bind missing clocks to scpsys on the MT6797
-Date: Mon, 3 Sep 2018 23:07:59 +0300
-Message-ID: <20180903200759.GA6703@xn--njmtys-xxab.info>
+Subject: [PATCH 3/3] dts: mediatek: mt6797: Bind audio, mjc, and venc clocks
+ to SCPSYS
+Date: Mon, 3 Sep 2018 23:08:33 +0300
+Message-ID: <20180903200833.GA6792@xn--njmtys-xxab.info>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -20,84 +21,48 @@ To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add missing clocks to MJC, AUDIO, VENC, VDEC domains. Also add MM clock
-to VENC and VDEC domains, since the power domains are initially turned
-on in the order of the scp_domain_data array, not in dependency order.
-VENC and VDEC are subdomains of MM, but MM is defined after them, so
-they are turned on before their parent. If the MM domain is not
-initially on, boot will fail. This is the case e.g. with kexec boot.
+Add newly supported SCPSYS clocks to mt6797.dtsi and devicetree bindings
+documentation.
 
 Signed-off-by: Jasper Mattsson <jasu-tmnvWD0sGVAk+I/owrrOrA@public.gmane.org>
-
-addclk
 ---
- drivers/soc/mediatek/mtk-scpsys.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ .../devicetree/bindings/soc/mediatek/scpsys.txt          | 2 +-
+ arch/arm64/boot/dts/mediatek/mt6797.dtsi                 | 9 ++++++---
+ 2 files changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 5b24bb4bf..4808d71c5 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -97,6 +97,7 @@ enum clk_id {
- 	CLK_HIFSEL,
- 	CLK_JPGDEC,
- 	CLK_AUDIO,
-+	CLK_MJC,
- 	CLK_MAX,
- };
- 
-@@ -111,6 +112,7 @@ static const char * const clk_names[] = {
- 	"hif_sel",
- 	"jpgdec",
- 	"audio",
-+	"mjc",
- 	NULL,
- };
- 
-@@ -690,7 +692,7 @@ static const struct scp_domain_data scp_domain_data_mt6797[] = {
- 		.ctl_offs = 0x300,
- 		.sram_pdn_bits = GENMASK(8, 8),
- 		.sram_pdn_ack_bits = GENMASK(12, 12),
--		.clk_id = {CLK_VDEC},
-+		.clk_id = {CLK_MM, CLK_VDEC},
- 	},
- 	[MT6797_POWER_DOMAIN_VENC] = {
- 		.name = "venc",
-@@ -698,7 +700,7 @@ static const struct scp_domain_data scp_domain_data_mt6797[] = {
- 		.ctl_offs = 0x304,
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(15, 12),
--		.clk_id = {CLK_NONE},
-+		.clk_id = {CLK_MM, CLK_VENC},
- 	},
- 	[MT6797_POWER_DOMAIN_ISP] = {
- 		.name = "isp",
-@@ -706,7 +708,7 @@ static const struct scp_domain_data scp_domain_data_mt6797[] = {
- 		.ctl_offs = 0x308,
- 		.sram_pdn_bits = GENMASK(9, 8),
- 		.sram_pdn_ack_bits = GENMASK(13, 12),
--		.clk_id = {CLK_NONE},
-+		.clk_id = {CLK_MM},
- 	},
- 	[MT6797_POWER_DOMAIN_MM] = {
- 		.name = "mm",
-@@ -723,7 +725,7 @@ static const struct scp_domain_data scp_domain_data_mt6797[] = {
- 		.ctl_offs = 0x314,
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(15, 12),
--		.clk_id = {CLK_NONE},
-+		.clk_id = {CLK_AUDIO},
- 	},
- 	[MT6797_POWER_DOMAIN_MFG_ASYNC] = {
- 		.name = "mfg_async",
-@@ -739,7 +741,7 @@ static const struct scp_domain_data scp_domain_data_mt6797[] = {
- 		.ctl_offs = 0x310,
- 		.sram_pdn_bits = GENMASK(8, 8),
- 		.sram_pdn_ack_bits = GENMASK(12, 12),
--		.clk_id = {CLK_NONE},
-+		.clk_id = {CLK_MJC},
- 	},
- };
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+index d6fe16f09..07121f7a4 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
++++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+@@ -32,7 +32,7 @@ Required properties:
+                       enabled before enabling certain power domains.
+ 	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
+ 	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
+-	Required clocks for MT6797: "mm", "mfg", "vdec"
++	Required clocks for MT6797: "mm", "mfg", "vdec", "mjc", "audio", "vdec"
+ 	Required clocks for MT7622: "hif_sel"
+ 	Required clocks for MT7622A: "ethif"
+ 	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
+diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+index 4beaa7110..9c05c4fa2 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+@@ -133,10 +133,13 @@
+ 		compatible = "mediatek,mt6797-scpsys";
+ 		#power-domain-cells = <1>;
+ 		reg = <0 0x10006000 0 0x1000>;
+-		clocks = <&topckgen CLK_TOP_MUX_MFG>,
++		clocks = <&infrasys CLK_INFRA_AUDIO_26M>,
++			 <&topckgen CLK_TOP_MUX_MFG>,
++			 <&topckgen CLK_TOP_MUX_MJC>,
+ 			 <&topckgen CLK_TOP_MUX_MM>,
+-			 <&topckgen CLK_TOP_MUX_VDEC>;
+-		clock-names = "mfg", "mm", "vdec";
++			 <&topckgen CLK_TOP_MUX_VDEC>,
++			 <&topckgen CLK_TOP_MUX_VENC>;
++		clock-names = "audio", "mfg", "mjc", "mm", "vdec", "venc";
+ 		infracfg = <&infrasys>;
+ 	};
  
 -- 
 2.18.0
