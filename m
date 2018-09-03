@@ -1,32 +1,69 @@
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Subject: Re: [PATCH v5] usb: core: phy: clean up return value check about devm_of_phy_get_by_index()
-Date: Mon, 3 Sep 2018 20:09:31 +0200
-Message-ID: <CAFBinCB8J1TP_xsg8cprHBzQrNwUVg7TxbRBw3GamyWUe8yH7g@mail.gmail.com>
-References: <18d8d311a32497abce39c796b353a878a13b09b6.1535709565.git.chunfeng.yun@mediatek.com>
+From: Jasper Mattsson <jasu-tmnvWD0sGVAk+I/owrrOrA@public.gmane.org>
+Subject: [PATCH 0/3] Fix scpsys on MT6797
+Date: Mon, 3 Sep 2018 23:06:25 +0300
+Message-ID: <20180903200625.GA6388@xn--njmtys-xxab.info>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <18d8d311a32497abce39c796b353a878a13b09b6.1535709565.git.chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: chunfeng.yun@mediatek.com
-Cc: gregkh@linuxfoundation.org, felipe.balbi@linux.intel.com, matthias.bgg@gmail.com, johan@kernel.org, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Aug 31, 2018 at 12:02 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
->
-> Use IS_ERR() instead of IS_ERR_OR_NULL() because devm_of_phy_get_by_index()
-> never return NULL value;
-> But still need ignore the error of -ENODEV, for more information, please
-> refer to:
-> [0] https://lkml.org/lkml/2018/4/19/88
-> [1] https://patchwork.kernel.org/patch/10160181/
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> Reviewed-by: Johan Hovold <johan@kernel.org>
-Reviewed-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Hello,
 
-thanks to both of you for fixing my code!
+On MT6797, SCPSYS probe fails due to gaps in the scp_domain_data_mt6797
+array. The gaps are due to omitted MFG_* power domains. This could be
+solved by rearranging the #defines in dt-bindings, but I'm not sure if
+that's allowed as it would break compatibility with existing DTBs.
+
+Audio, VENC, VDEC, and MJC were also missing clocks, which I added.
+
+Additionally, if SCPSYS is started with the power domains initially
+disabled (e.g. when booting with kexec), it will hang the system. This
+is because all the domains are initially powered on in the order they
+are defined in the scp_domain_data array, disregarding any subdomain
+dependencies. VENC and VDEC are subdomains of MM, but appear before it
+in the array. This makes the system hang. Again, this could be solved by
+reordering the #defines, but instead I added the MM clock to the domains
+and that fixed things even if the MM domain is not powerd on by SPM.
+
+There *might* be a bug that I did not fix, because I am not sure if it
+is a bug at all - MFG_ASYNC does not have any bus protection flags,
+but on Android
+
+To properly test this patch, you'll need to apply my previous patch
+which fixes some clocks, otherwise the system would not work properly
+without clk_ignore_unused. The previous patch shows wrong on Patchwork,
+not sure what I messed up (should I re-send?), so here's a link to all
+my patches, which should only include this and the clk patch at the time
+of writing:
+
+https://patchwork.kernel.org/project/linux-mediatek/list/?submitter=182219
 
 
-Regards
-Martin
+Best regards,
+Jasper Mattsson
+
+Jasper Mattsson (3):
+  soc: mediatek: Bind missing clocks to scpsys on the MT6797
+  soc: mediatek: Allow gaps in SCP PDs
+  dts: mediatek: mt6797: Bind audio, mjc, and venc clocks to SCPSYS
+
+ .../bindings/soc/mediatek/scpsys.txt          |  2 +-
+ arch/arm64/boot/dts/mediatek/mt6797.dtsi      |  9 +++++---
+ drivers/soc/mediatek/mtk-scpsys.c             | 21 ++++++++++++++-----
+ 3 files changed, 23 insertions(+), 9 deletions(-)
+
+--
+2.18.0
