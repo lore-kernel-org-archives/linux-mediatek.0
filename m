@@ -1,35 +1,84 @@
-From: Mathias Nyman <mathias.nyman@linux.intel.com>
-Subject: Re: [PATCH 1/6] usb: xhci-mtk: resume USB3 roothub first
-Date: Tue, 4 Sep 2018 17:44:23 +0300
-Message-ID: <93e36b7b-f0d0-4f5e-69b7-4195c25628f4@linux.intel.com>
-References: <3bcc220aa54bfebc39cea54cd736388ad37ee0c5.1535510898.git.chunfeng.yun@mediatek.com>
- <f144173b-6131-21cf-1ead-60d938ac289a@cogentembedded.com>
- <1535591392.32173.30.camel@mhfsdcap03>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1535591392.32173.30.camel@mhfsdcap03>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Cc: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH 00/22] mt76 patches 2018-09-04
+Date: Tue,  4 Sep 2018 16:40:53 +0200
+Message-ID: <1536072075-6990-1-git-send-email-sgruszka@redhat.com>
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 30.08.2018 04:09, Chunfeng Yun wrote:
-> Hi,
-> On Wed, 2018-08-29 at 12:13 +0300, Sergei Shtylyov wrote:
->> On 8/29/2018 5:55 AM, Chunfeng Yun wrote:
->>
->>> Give USB3 devices a better chance to enumerate at USB3 speeds if
->>> they are connected to a suspended host.
->>> Porting from "671ffdf xhci: resume USB 3 roothub first"
->>
->>      From commit 671ffdff5b13 ("xhci: resume USB 3 roothub first").
-> 
-> Ok, Thanks
-> 
+More mt76x0/mt76x2 integration.
 
-adding to queue (I'll fix that commit ID)
+This set is quite big but I would like to move patches upstream
+from my github tree as fast as possible. I have there 42 more
+ready to post patches from me and Lorenzo.
+https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft-v3
 
--Mathias
+Note this set include:
+"mt76x0: fix wrong usage of wcid_mask in remove_interface"
+patch with I posted as fix for 4.19 . I assume this will be
+auto (or manually?) merged when -next will go to 4.20.
+
+Stanislaw Gruszka (22):
+  mt76: move wcid fields to common mt76_dev struct
+  mt76: unify sta_add / sta_remove
+  mt76: pratially unify add_interface
+  mt76x0: fix wrong usage of wcid_mask in remove_interface
+  mt76: unify ampdu_action
+  mt76: unify set_key
+  mt76x0: remove empty sta_notify
+  mt76: unify AC to hw queue mapping
+  mt76: remove q->hw_idx
+  mt76: unify conf_tx
+  mt76x0: remove vif_mask
+  mt76: unify remove_interface
+  mt76: unify add_interface
+  mt76: unify sta_rate_tbl_update and related helpers
+  mt76: unify txwi and rxwi structures
+  mt76: unify load_tx_status
+  mt76: unify send_tx_status and related helpers
+  mt76: use mt76_rx_status in mt76x0
+  mt76: unify mac_process_rate
+  mt76x0: reserve enough space in mac80211
+  mt76: unify {insert/remove}_hdr_pad
+  mt76: partially unify filling txwi fields
+
+ drivers/net/wireless/mediatek/mt76/mac80211.c      |   3 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h          |  23 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/Makefile |   2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/dma.c    |  14 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c   |  24 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/mac.c    | 310 +----------------
+ drivers/net/wireless/mediatek/mt76/mt76x0/mac.h    | 130 --------
+ drivers/net/wireless/mediatek/mt76/mt76x0/main.c   | 215 +-----------
+ drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  26 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/phy.c    |   2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/trace.h  |  12 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/tx.c     | 144 +-------
+ drivers/net/wireless/mediatek/mt76/mt76x0/util.c   |  42 ---
+ drivers/net/wireless/mediatek/mt76/mt76x02_mac.c   | 347 +++++++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76x02_mac.h   | 122 ++++++-
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.c  | 325 ++++++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.h  |  23 ++
+ drivers/net/wireless/mediatek/mt76/mt76x2.h        |  23 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_common.c | 254 +-------------
+ drivers/net/wireless/mediatek/mt76/mt76x2_dma.c    |  17 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_init.c   |   3 +-
+ .../wireless/mediatek/mt76/mt76x2_init_common.c    |   4 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_mac.c    |  12 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_mac.h    | 110 +-----
+ .../net/wireless/mediatek/mt76/mt76x2_mac_common.c | 368 +--------------------
+ drivers/net/wireless/mediatek/mt76/mt76x2_main.c   |  50 +--
+ .../net/wireless/mediatek/mt76/mt76x2_phy_common.c |   6 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_tx.c     |   3 +-
+ .../net/wireless/mediatek/mt76/mt76x2_tx_common.c  |  21 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2u_core.c  |  18 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2u_main.c  |  22 +-
+ drivers/net/wireless/mediatek/mt76/tx.c            |  16 +
+ drivers/net/wireless/mediatek/mt76/usb.c           |   6 +-
+ 33 files changed, 974 insertions(+), 1723 deletions(-)
+ delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/util.c
+
+-- 
+2.7.5
