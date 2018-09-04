@@ -1,99 +1,35 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/3] spis: mediatek: add bindings for Mediatek MT2712 soc
- platform
-Date: Tue, 4 Sep 2018 08:18:38 -0500
-Message-ID: <5b8e8a7f.1c69fb81.dab09.e985@mx.google.com>
-References: <1535437685-30230-1-git-send-email-leilk.liu@mediatek.com>
- <1535437685-30230-2-git-send-email-leilk.liu@mediatek.com>
+From: Mathias Nyman <mathias.nyman@linux.intel.com>
+Subject: Re: [PATCH 1/6] usb: xhci-mtk: resume USB3 roothub first
+Date: Tue, 4 Sep 2018 17:44:23 +0300
+Message-ID: <93e36b7b-f0d0-4f5e-69b7-4195c25628f4@linux.intel.com>
+References: <3bcc220aa54bfebc39cea54cd736388ad37ee0c5.1535510898.git.chunfeng.yun@mediatek.com>
+ <f144173b-6131-21cf-1ead-60d938ac289a@cogentembedded.com>
+ <1535591392.32173.30.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <1535437685-30230-2-git-send-email-leilk.liu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Leilk Liu <leilk.liu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, yt.shen@mediatek.com, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, mengqi.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1535591392.32173.30.camel@mhfsdcap03>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Cc: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Aug 28, 2018 at 02:28:03PM +0800, Leilk Liu wrote:
-> This patch adds a DT binding documentation for the MT2712 soc.
+On 30.08.2018 04:09, Chunfeng Yun wrote:
+> Hi,
+> On Wed, 2018-08-29 at 12:13 +0300, Sergei Shtylyov wrote:
+>> On 8/29/2018 5:55 AM, Chunfeng Yun wrote:
+>>
+>>> Give USB3 devices a better chance to enumerate at USB3 speeds if
+>>> they are connected to a suspended host.
+>>> Porting from "671ffdf xhci: resume USB 3 roothub first"
+>>
+>>      From commit 671ffdff5b13 ("xhci: resume USB 3 roothub first").
 > 
-> Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
-> ---
->  .../devicetree/bindings/spi/spi-slave-mt27xx.txt   |   39 ++++++++++++++++++++
->  1 file changed, 39 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
+> Ok, Thanks
 > 
-> diff --git a/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt b/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
-> new file mode 100644
-> index 0000000..dcb8934
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
-> @@ -0,0 +1,39 @@
-> +Binding for MTK SPI Slave controller
 
-Only does slave mode? If not, then the file name and doc should be just 
-for the SPI controller (master and slave). The "spi-slave" property 
-selects the mode. If it is only slave mode, then you don't need the 
-spi-slave property.
+adding to queue (I'll fix that commit ID)
 
-
-> +
-> +Required properties:
-> +- compatible: should be one of the following.
-> +    - mediatek,mt2712-spi: for mt2712 platforms
-> +
-> +- reg: Address and length of the register set for the device
-> +
-> +- interrupts: Should contain spi interrupt
-> +
-> +- clocks: phandles to input clocks.
-> +  The first should be one of the following. It's PLL.
-> +   -  <&topckgen CLK_TOP_UNIVPLL1_D2>: specify parent clock 312MHZ.
-> +				      It's the default one.
-> +   -  <&topckgen CLK_TOP_UNIVPLL1_D4>: specify parent clock 156MHZ.
-> +   -  <&topckgen CLK_TOP_UNIVPLL2_D4>: specify parent clock 104MHZ.
-> +   -  <&topckgen CLK_TOP_UNIVPLL1_D8>: specify parent clock 78MHZ.
-> +  The second should be <&topckgen CLK_TOP_SPISLV_SEL>. It's clock mux.
-> +  The third is <&infracfg CLK_INFRA_AO_SPI1>. It's clock gate.
-> +
-> +- clock-names: shall be "parent-clk" for the parent clock, "sel-clk" for the
-> +  muxes clock, and "spi-clk" for the clock gate.
-
-"-clk" is redundant.
-
-Is the parent clock actually connected to the block? The assigned-clocks 
-properties are used for constraints on parent clocks.
-
-> +
-> +- spi-slave: Empty property indicating the SPI controller is used in slave mode.
-> +
-> +Example:
-> +
-> +- SoC Specific Portion:
-> +spis: spi@10013000 {
-> +	compatible = "mediatek,mt2712-spi-slave";
-> +	reg = <0 0x10013000 0 0x100>;
-> +	interrupts = <GIC_SPI 283 IRQ_TYPE_LEVEL_LOW>;
-> +	clocks = <&topckgen CLK_TOP_UNIVPLL1_D2>,
-> +		<&topckgen CLK_TOP_SPISLV_SEL>,
-> +		<&infracfg CLK_INFRA_AO_SPI1>;
-> +	clock-names = "parent-clk", "sel-clk", "spi-clk";
-> +	spi-slave;
-> +	status = "disabled";
-
-Don't should status in examples.
-
-> +};
-> -- 
-> 1.7.9.5
-> 
+-Mathias
