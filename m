@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 12/22] mt76: unify remove_interface
-Date: Tue,  4 Sep 2018 16:41:05 +0200
-Message-ID: <1536072075-6990-13-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 13/22] mt76: unify add_interface
+Date: Tue,  4 Sep 2018 16:41:06 +0200
+Message-ID: <1536072075-6990-14-git-send-email-sgruszka@redhat.com>
 References: <1536072075-6990-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536072075-6990-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,124 +10,137 @@ To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Use common remove_interface callback in mt76x0 and mt76x2.
+Make common add_interface for mt76x0 and mt76x2e. This change behavior
+for mt76x0, but it should work with the new implementation.
+
+mt76x2u has different implementation. Maybe it can use common one,
+but for now leave it as is.
 
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/main.c   | 10 +---------
- drivers/net/wireless/mediatek/mt76/mt76x02_util.c  |  9 +++++++++
- drivers/net/wireless/mediatek/mt76/mt76x02_util.h  |  2 ++
- drivers/net/wireless/mediatek/mt76/mt76x2_common.c |  9 ---------
- drivers/net/wireless/mediatek/mt76/mt76x2_main.c   |  2 +-
- drivers/net/wireless/mediatek/mt76/mt76x2u_main.c  |  2 +-
- 6 files changed, 14 insertions(+), 20 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x0/main.c  | 13 +---------
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.c | 30 ++++++++++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.h |  2 ++
+ drivers/net/wireless/mediatek/mt76/mt76x2_main.c  | 31 +----------------------
+ 4 files changed, 34 insertions(+), 42 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
-index a818a47f8e4e..d8efa009126c 100644
+index d8efa009126c..809ee41e7121 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
-@@ -62,14 +62,6 @@ static int mt76x0_add_interface(struct ieee80211_hw *hw,
- 	return 0;
+@@ -51,17 +51,6 @@ static void mt76x0_stop(struct ieee80211_hw *hw)
+ 	mutex_unlock(&dev->mt76.mutex);
  }
  
--static void mt76x0_remove_interface(struct ieee80211_hw *hw,
--				     struct ieee80211_vif *vif)
+-
+-static int mt76x0_add_interface(struct ieee80211_hw *hw,
+-				 struct ieee80211_vif *vif)
 -{
 -	struct mt76x0_dev *dev = hw->priv;
+-	unsigned int idx = 0;
 -
--	mt76_txq_remove(&dev->mt76, vif->txq);
+-	mt76x02_vif_init(&dev->mt76, vif, idx);
+-	return 0;
 -}
 -
  static int mt76x0_config(struct ieee80211_hw *hw, u32 changed)
  {
  	struct mt76x0_dev *dev = hw->priv;
-@@ -203,7 +195,7 @@ const struct ieee80211_ops mt76x0_ops = {
+@@ -194,7 +183,7 @@ const struct ieee80211_ops mt76x0_ops = {
+ 	.tx = mt76x0_tx,
  	.start = mt76x0_start,
  	.stop = mt76x0_stop,
- 	.add_interface = mt76x0_add_interface,
--	.remove_interface = mt76x0_remove_interface,
-+	.remove_interface = mt76x02_remove_interface,
+-	.add_interface = mt76x0_add_interface,
++	.add_interface = mt76x02_add_interface,
+ 	.remove_interface = mt76x02_remove_interface,
  	.config = mt76x0_config,
  	.configure_filter = mt76x02_configure_filter,
- 	.bss_info_changed = mt76x0_bss_info_changed,
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-index 706f522f11d9..69f19ef361a1 100644
+index 69f19ef361a1..04cd4dc394d5 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-@@ -127,6 +127,15 @@ void mt76x02_vif_init(struct mt76_dev *dev, struct ieee80211_vif *vif,
+@@ -127,6 +127,36 @@ void mt76x02_vif_init(struct mt76_dev *dev, struct ieee80211_vif *vif,
  }
  EXPORT_SYMBOL_GPL(mt76x02_vif_init);
  
-+void mt76x02_remove_interface(struct ieee80211_hw *hw,
-+			     struct ieee80211_vif *vif)
++int
++mt76x02_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
 +{
 +	struct mt76_dev *dev = hw->priv;
++	unsigned int idx = 0;
 +
-+	mt76_txq_remove(dev, vif->txq);
++	if (vif->addr[0] & BIT(1))
++		idx = 1 + (((dev->macaddr[0] ^ vif->addr[0]) >> 2) & 7);
++
++	/*
++	 * Client mode typically only has one configurable BSSID register,
++	 * which is used for bssidx=0. This is linked to the MAC address.
++	 * Since mac80211 allows changing interface types, and we cannot
++	 * force the use of the primary MAC address for a station mode
++	 * interface, we need some other way of configuring a per-interface
++	 * remote BSSID.
++	 * The hardware provides an AP-Client feature, where bssidx 0-7 are
++	 * used for AP mode and bssidx 8-15 for client mode.
++	 * We shift the station interface bss index by 8 to force the
++	 * hardware to recognize the BSSID.
++	 * The resulting bssidx mismatch for unicast frames is ignored by hw.
++	 */
++	if (vif->type == NL80211_IFTYPE_STATION)
++		idx += 8;
++
++	mt76x02_vif_init(dev, vif, idx);
++	return 0;
 +}
-+EXPORT_SYMBOL_GPL(mt76x02_remove_interface);
++EXPORT_SYMBOL_GPL(mt76x02_add_interface);
 +
- int mt76x02_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 			struct ieee80211_ampdu_params *params)
+ void mt76x02_remove_interface(struct ieee80211_hw *hw,
+ 			     struct ieee80211_vif *vif)
  {
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.h b/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
-index 54f895d8cdbe..a61c9f2b9a62 100644
+index a61c9f2b9a62..f8890ab7b04e 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
 @@ -28,6 +28,8 @@ int mt76x02_sta_remove(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
  
  void mt76x02_vif_init(struct mt76_dev *dev, struct ieee80211_vif *vif,
  		     unsigned int idx);
-+void mt76x02_remove_interface(struct ieee80211_hw *hw,
-+			     struct ieee80211_vif *vif);
++int mt76x02_add_interface(struct ieee80211_hw *hw,
++			 struct ieee80211_vif *vif);
+ void mt76x02_remove_interface(struct ieee80211_hw *hw,
+ 			     struct ieee80211_vif *vif);
  
- int mt76x02_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 			struct ieee80211_ampdu_params *params);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
-index 5ce9fbc654a2..be4e00fe7586 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
-@@ -18,15 +18,6 @@
- #include "mt76x2.h"
- #include "mt76x02_mac.h"
- 
--void mt76x2_remove_interface(struct ieee80211_hw *hw,
--			     struct ieee80211_vif *vif)
--{
--	struct mt76x2_dev *dev = hw->priv;
--
--	mt76_txq_remove(&dev->mt76, vif->txq);
--}
--EXPORT_SYMBOL_GPL(mt76x2_remove_interface);
--
- void mt76x2_sta_rate_tbl_update(struct ieee80211_hw *hw,
- 				struct ieee80211_vif *vif,
- 				struct ieee80211_sta *sta)
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_main.c b/drivers/net/wireless/mediatek/mt76/mt76x2_main.c
-index 87302845d582..128a1c1c0f64 100644
+index 128a1c1c0f64..99d9033efa15 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x2_main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x2_main.c
-@@ -314,7 +314,7 @@ const struct ieee80211_ops mt76x2_ops = {
- 	.start = mt76x2_start,
- 	.stop = mt76x2_stop,
- 	.add_interface = mt76x2_add_interface,
--	.remove_interface = mt76x2_remove_interface,
-+	.remove_interface = mt76x02_remove_interface,
- 	.config = mt76x2_config,
- 	.configure_filter = mt76x02_configure_filter,
- 	.bss_info_changed = mt76x2_bss_info_changed,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c b/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c
-index 1dcc6ced15a5..66a923a32e51 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c
-@@ -164,7 +164,7 @@ const struct ieee80211_ops mt76x2u_ops = {
- 	.start = mt76x2u_start,
- 	.stop = mt76x2u_stop,
- 	.add_interface = mt76x2u_add_interface,
--	.remove_interface = mt76x2_remove_interface,
-+	.remove_interface = mt76x02_remove_interface,
- 	.sta_add = mt76x02_sta_add,
- 	.sta_remove = mt76x02_sta_remove,
- 	.set_key = mt76x02_set_key,
--- 
-2.7.5
+@@ -55,35 +55,6 @@ mt76x2_stop(struct ieee80211_hw *hw)
+ }
+ 
+ static int
+-mt76x2_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+-{
+-	struct mt76x2_dev *dev = hw->priv;
+-	unsigned int idx = 0;
+-
+-	if (vif->addr[0] & BIT(1))
+-		idx = 1 + (((dev->mt76.macaddr[0] ^ vif->addr[0]) >> 2) & 7);
+-
+-	/*
+-	 * Client mode typically only has one configurable BSSID register,
+-	 * which is used for bssidx=0. This is linked to the MAC address.
+-	 * Since mac80211 allows changing interface types, and we cannot
+-	 * force the use of the primary MAC address for a station mode
+-	 * interface, we need some other way of configuring a per-interface
+-	 * remote BSSID.
+-	 * The hardware provides an AP-Client feature, where bssidx 0-7 are
+-	 * used for AP mode and bssidx 8-15 for client mode.
+-	 * We shift the station interface bss index by 8 to force the
+-	 * hardware to recognize the BSSID.
+-	 * The resulting bssidx mismatch for unicast frames is ignored by hw.
+-	 */
+-	if (vif->type == NL80211_IFTYPE_STATION)
+-		idx += 8;
+-
+-	mt76x02_vif_init(&dev->mt76, vif, idx);
+-	return 0;
+-}
