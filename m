@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 18/22] mt76: use mt76_rx_status in mt76x0
-Date: Tue,  4 Sep 2018 16:41:11 +0200
-Message-ID: <1536072075-6990-19-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 19/22] mt76: unify mac_process_rate
+Date: Tue,  4 Sep 2018 16:41:12 +0200
+Message-ID: <1536072075-6990-20-git-send-email-sgruszka@redhat.com>
 References: <1536072075-6990-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536072075-6990-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,84 +10,261 @@ To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Make rx status processing similar to mt76x2.
+Merge mac_process_rate from mt76x0 and mt76x2.
 
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mac80211.c   | 3 ++-
- drivers/net/wireless/mediatek/mt76/mt76.h       | 2 ++
- drivers/net/wireless/mediatek/mt76/mt76x0/dma.c | 2 ++
- drivers/net/wireless/mediatek/mt76/mt76x0/mac.c | 4 ++--
- 4 files changed, 8 insertions(+), 3 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x0/mac.c    | 69 +---------------------
+ drivers/net/wireless/mediatek/mt76/mt76x02_mac.c   | 68 +++++++++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76x02_mac.h   |  2 +
+ .../net/wireless/mediatek/mt76/mt76x2_mac_common.c | 69 +---------------------
+ 4 files changed, 72 insertions(+), 136 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 2bc386f4387c..639cbafc1d50 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -475,7 +475,7 @@ void mt76_wcid_key_setup(struct mt76_dev *dev, struct mt76_wcid *wcid,
- }
- EXPORT_SYMBOL(mt76_wcid_key_setup);
- 
--static struct ieee80211_sta *mt76_rx_convert(struct sk_buff *skb)
-+struct ieee80211_sta *mt76_rx_convert(struct sk_buff *skb)
- {
- 	struct ieee80211_rx_status *status = IEEE80211_SKB_RXCB(skb);
- 	struct mt76_rx_status mstat;
-@@ -500,6 +500,7 @@ static struct ieee80211_sta *mt76_rx_convert(struct sk_buff *skb)
- 
- 	return wcid_to_sta(mstat.wcid);
- }
-+EXPORT_SYMBOL(mt76_rx_convert);
- 
- static int
- mt76_check_ccmp_pn(struct sk_buff *skb)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 53d3c201e610..cdd470952004 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -572,6 +572,8 @@ void mt76_rx_aggr_stop(struct mt76_dev *dev, struct mt76_wcid *wcid, u8 tid);
- void mt76_wcid_key_setup(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 			 struct ieee80211_key_conf *key);
- 
-+struct ieee80211_sta *mt76_rx_convert(struct sk_buff *skb);
-+
- /* internal */
- void mt76_tx_free(struct mt76_dev *dev);
- struct mt76_txwi_cache *mt76_get_txwi(struct mt76_dev *dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/dma.c b/drivers/net/wireless/mediatek/mt76/mt76x0/dma.c
-index 05e577342a90..f29402861ced 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/dma.c
-@@ -111,6 +111,8 @@ static void mt76x0_rx_process_seg(struct mt76x0_dev *dev, u8 *data,
- 	if (!skb)
- 		return;
- 
-+	mt76_rx_convert(skb);
-+
- 	spin_lock(&dev->mac_lock);
- 	ieee80211_rx(dev->mt76.hw, skb);
- 	spin_unlock(&dev->mac_lock);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
-index eecb9d015d70..c1170d4800b4 100644
+index c1170d4800b4..99e2e1225d55 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
-@@ -196,7 +196,7 @@ void mt76x0_mac_set_ampdu_factor(struct mt76x0_dev *dev)
+@@ -196,73 +196,6 @@ void mt76x0_mac_set_ampdu_factor(struct mt76x0_dev *dev)
  }
  
  static void
--mt76_mac_process_rate(struct ieee80211_rx_status *status, u16 rate)
-+mt76_mac_process_rate(struct mt76_rx_status *status, u16 rate)
+-mt76_mac_process_rate(struct mt76_rx_status *status, u16 rate)
+-{
+-	u8 idx = FIELD_GET(MT_RXWI_RATE_INDEX, rate);
+-
+-	switch (FIELD_GET(MT_RXWI_RATE_PHY, rate)) {
+-	case MT_PHY_TYPE_OFDM:
+-		if (idx >= 8)
+-			idx = 0;
+-
+-		if (status->band == NL80211_BAND_2GHZ)
+-			idx += 4;
+-
+-		status->rate_idx = idx;
+-		return;
+-	case MT_PHY_TYPE_CCK:
+-		if (idx >= 8) {
+-			idx -= 8;
+-			status->enc_flags |= RX_ENC_FLAG_SHORTPRE;
+-		}
+-
+-		if (idx >= 4)
+-			idx = 0;
+-
+-		status->rate_idx = idx;
+-		return;
+-	case MT_PHY_TYPE_HT_GF:
+-		status->enc_flags |= RX_ENC_FLAG_HT_GF;
+-		/* fall through */
+-	case MT_PHY_TYPE_HT:
+-		status->encoding = RX_ENC_HT;
+-		status->rate_idx = idx;
+-		break;
+-	case MT_PHY_TYPE_VHT:
+-		status->encoding = RX_ENC_VHT;
+-		status->rate_idx = FIELD_GET(MT_RATE_INDEX_VHT_IDX, idx);
+-		status->nss = FIELD_GET(MT_RATE_INDEX_VHT_NSS, idx) + 1;
+-		break;
+-	default:
+-		WARN_ON(1);
+-		return;
+-	}
+-
+-	if (rate & MT_RXWI_RATE_LDPC)
+-		status->enc_flags |= RX_ENC_FLAG_LDPC;
+-
+-	if (rate & MT_RXWI_RATE_SGI)
+-		status->enc_flags |= RX_ENC_FLAG_SHORT_GI;
+-
+-	if (rate & MT_RXWI_RATE_STBC)
+-		status->enc_flags |= 1 << RX_ENC_FLAG_STBC_SHIFT;
+-
+-	switch (FIELD_GET(MT_RXWI_RATE_BW, rate)) {
+-	case MT_PHY_BW_20:
+-		break;
+-	case MT_PHY_BW_40:
+-		status->bw = RATE_INFO_BW_40;
+-		break;
+-	case MT_PHY_BW_80:
+-		status->bw = RATE_INFO_BW_80;
+-		break;
+-	default:
+-		WARN_ON(1);
+-		break;
+-	}
+-}
+-
+-static void
+ mt76x0_rx_monitor_beacon(struct mt76x0_dev *dev, struct mt76x02_rxwi *rxwi,
+ 			  u16 rate, int rssi)
  {
- 	u8 idx = FIELD_GET(MT_RXWI_RATE_INDEX, rate);
+@@ -303,7 +236,7 @@ u32 mt76x0_mac_process_rx(struct mt76x0_dev *dev, struct sk_buff *skb,
+ 	status->freq = dev->mt76.chandef.chan->center_freq;
+ 	status->band = dev->mt76.chandef.chan->band;
  
-@@ -282,7 +282,7 @@ mt76x0_rx_is_our_beacon(struct mt76x0_dev *dev, u8 *data)
- u32 mt76x0_mac_process_rx(struct mt76x0_dev *dev, struct sk_buff *skb,
- 			u8 *data, void *rxi)
- {
--	struct ieee80211_rx_status *status = IEEE80211_SKB_RXCB(skb);
-+	struct mt76_rx_status *status = (struct mt76_rx_status *) skb->cb;
- 	struct mt76x02_rxwi *rxwi = rxi;
- 	u32 len, ctl = le32_to_cpu(rxwi->ctl);
- 	u16 rate = le16_to_cpu(rxwi->rate);
--- 
-2.7.5
+-	mt76_mac_process_rate(status, rate);
++	mt76x02_mac_process_rate(status, rate);
+ 
+ 	spin_lock_bh(&dev->con_mon_lock);
+ 	if (mt76x0_rx_is_our_beacon(dev, data)) {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
+index 873e4701b403..f80290d4442a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
+@@ -392,3 +392,71 @@ void mt76x02_send_tx_status(struct mt76_dev *dev,
+ 	rcu_read_unlock();
+ }
+ EXPORT_SYMBOL_GPL(mt76x02_send_tx_status);
++
++int
++mt76x02_mac_process_rate(struct mt76_rx_status *status, u16 rate)
++{
++	u8 idx = FIELD_GET(MT_RXWI_RATE_INDEX, rate);
++
++	switch (FIELD_GET(MT_RXWI_RATE_PHY, rate)) {
++	case MT_PHY_TYPE_OFDM:
++		if (idx >= 8)
++			idx = 0;
++
++		if (status->band == NL80211_BAND_2GHZ)
++			idx += 4;
++
++		status->rate_idx = idx;
++		return 0;
++	case MT_PHY_TYPE_CCK:
++		if (idx >= 8) {
++			idx -= 8;
++			status->enc_flags |= RX_ENC_FLAG_SHORTPRE;
++		}
++
++		if (idx >= 4)
++			idx = 0;
++
++		status->rate_idx = idx;
++		return 0;
++	case MT_PHY_TYPE_HT_GF:
++		status->enc_flags |= RX_ENC_FLAG_HT_GF;
++		/* fall through */
++	case MT_PHY_TYPE_HT:
++		status->encoding = RX_ENC_HT;
++		status->rate_idx = idx;
++		break;
++	case MT_PHY_TYPE_VHT:
++		status->encoding = RX_ENC_VHT;
++		status->rate_idx = FIELD_GET(MT_RATE_INDEX_VHT_IDX, idx);
++		status->nss = FIELD_GET(MT_RATE_INDEX_VHT_NSS, idx) + 1;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	if (rate & MT_RXWI_RATE_LDPC)
++		status->enc_flags |= RX_ENC_FLAG_LDPC;
++
++	if (rate & MT_RXWI_RATE_SGI)
++		status->enc_flags |= RX_ENC_FLAG_SHORT_GI;
++
++	if (rate & MT_RXWI_RATE_STBC)
++		status->enc_flags |= 1 << RX_ENC_FLAG_STBC_SHIFT;
++
++	switch (FIELD_GET(MT_RXWI_RATE_BW, rate)) {
++	case MT_PHY_BW_20:
++		break;
++	case MT_PHY_BW_40:
++		status->bw = RATE_INFO_BW_40;
++		break;
++	case MT_PHY_BW_80:
++		status->bw = RATE_INFO_BW_80;
++		break;
++	default:
++		break;
++	}
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(mt76x02_mac_process_rate);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.h b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.h
+index 4ba38f2aa24c..61dd2efb5cbc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.h
+@@ -199,4 +199,6 @@ bool mt76x02_mac_load_tx_status(struct mt76_dev *dev,
+ 			       struct mt76x02_tx_status *stat);
+ void mt76x02_send_tx_status(struct mt76_dev *dev,
+ 			   struct mt76x02_tx_status *stat, u8 *update);
++int
++mt76x02_mac_process_rate(struct mt76_rx_status *status, u16 rate);
+ #endif
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c
+index 1ebc3bfa9d6a..039fce3d1daa 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c
+@@ -146,73 +146,6 @@ void mt76x2_mac_write_txwi(struct mt76x2_dev *dev, struct mt76x02_txwi *txwi,
+ }
+ EXPORT_SYMBOL_GPL(mt76x2_mac_write_txwi);
+ 
+-static int
+-mt76x2_mac_process_rate(struct mt76_rx_status *status, u16 rate)
+-{
+-	u8 idx = FIELD_GET(MT_RXWI_RATE_INDEX, rate);
+-
+-	switch (FIELD_GET(MT_RXWI_RATE_PHY, rate)) {
+-	case MT_PHY_TYPE_OFDM:
+-		if (idx >= 8)
+-			idx = 0;
+-
+-		if (status->band == NL80211_BAND_2GHZ)
+-			idx += 4;
+-
+-		status->rate_idx = idx;
+-		return 0;
+-	case MT_PHY_TYPE_CCK:
+-		if (idx >= 8) {
+-			idx -= 8;
+-			status->enc_flags |= RX_ENC_FLAG_SHORTPRE;
+-		}
+-
+-		if (idx >= 4)
+-			idx = 0;
+-
+-		status->rate_idx = idx;
+-		return 0;
+-	case MT_PHY_TYPE_HT_GF:
+-		status->enc_flags |= RX_ENC_FLAG_HT_GF;
+-		/* fall through */
+-	case MT_PHY_TYPE_HT:
+-		status->encoding = RX_ENC_HT;
+-		status->rate_idx = idx;
+-		break;
+-	case MT_PHY_TYPE_VHT:
+-		status->encoding = RX_ENC_VHT;
+-		status->rate_idx = FIELD_GET(MT_RATE_INDEX_VHT_IDX, idx);
+-		status->nss = FIELD_GET(MT_RATE_INDEX_VHT_NSS, idx) + 1;
+-		break;
+-	default:
+-		return -EINVAL;
+-	}
+-
+-	if (rate & MT_RXWI_RATE_LDPC)
+-		status->enc_flags |= RX_ENC_FLAG_LDPC;
+-
+-	if (rate & MT_RXWI_RATE_SGI)
+-		status->enc_flags |= RX_ENC_FLAG_SHORT_GI;
+-
+-	if (rate & MT_RXWI_RATE_STBC)
+-		status->enc_flags |= 1 << RX_ENC_FLAG_STBC_SHIFT;
+-
+-	switch (FIELD_GET(MT_RXWI_RATE_BW, rate)) {
+-	case MT_PHY_BW_20:
+-		break;
+-	case MT_PHY_BW_40:
+-		status->bw = RATE_INFO_BW_40;
+-		break;
+-	case MT_PHY_BW_80:
+-		status->bw = RATE_INFO_BW_80;
+-		break;
+-	default:
+-		break;
+-	}
+-
+-	return 0;
+-}
