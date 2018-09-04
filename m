@@ -1,13 +1,16 @@
-From: Argus Lin <argus.lin@mediatek.com>
-Subject: [PATCH 3/3] soc: mediatek: pwrap: add mt6357 driver for mt6765 SoCs
-Date: Tue, 4 Sep 2018 20:31:54 +0800
-Message-ID: <1536064314-31967-4-git-send-email-argus.lin@mediatek.com>
-References: <1536064314-31967-1-git-send-email-argus.lin@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/3] spis: mediatek: add bindings for Mediatek MT2712 soc
+ platform
+Date: Tue, 4 Sep 2018 08:18:38 -0500
+Message-ID: <5b8e8a7f.1c69fb81.dab09.e985@mx.google.com>
+References: <1535437685-30230-1-git-send-email-leilk.liu@mediatek.com>
+ <1535437685-30230-2-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1536064314-31967-1-git-send-email-argus.lin@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1535437685-30230-2-git-send-email-leilk.liu@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -17,97 +20,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
-Cc: devicetree@vger.kernel.org, argus.lin@mediatek.com, wsd_upstream@mediatek.com, Chenglin Xu <chenglin.xu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, henryc.chen@mediatek.com, flora.fu@mediatek.com, Christophe Jaillet <christophe.jaillet@wanadoo.fr>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Chen Zhong <chen.zhong@mediatek.com>, "shailendra.v" <shailendra.v@samsung.com>
+To: Leilk Liu <leilk.liu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, yt.shen@mediatek.com, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, mengqi.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-MT6357 is a new power management IC and it is used for mt6765 SoCs.
-To define mt6357_regs for pmic register mapping and pmic_mt6357
-for accessing register.
+On Tue, Aug 28, 2018 at 02:28:03PM +0800, Leilk Liu wrote:
+> This patch adds a DT binding documentation for the MT2712 soc.
+> 
+> Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+> ---
+>  .../devicetree/bindings/spi/spi-slave-mt27xx.txt   |   39 ++++++++++++++++++++
+>  1 file changed, 39 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt b/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
+> new file mode 100644
+> index 0000000..dcb8934
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
+> @@ -0,0 +1,39 @@
+> +Binding for MTK SPI Slave controller
 
-Signed-off-by: Argus Lin <argus.lin@mediatek.com>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 35 ++++++++++++++++++++++++++++++++---
- 1 file changed, 32 insertions(+), 3 deletions(-)
+Only does slave mode? If not, then the file name and doc should be just 
+for the SPI controller (master and slave). The "spi-slave" property 
+selects the mode. If it is only slave mode, then you don't need the 
+spi-slave property.
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index ddaeace..2b2cee1 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -161,6 +161,21 @@ enum dew_regs {
- 	[PWRAP_DEW_RDDMY_NO] =		0x030C,
- };
- 
-+static const u32 mt6357_regs[] = {
-+	[PWRAP_DEW_DIO_EN] =		0x040A,
-+	[PWRAP_DEW_READ_TEST] =		0x040C,
-+	[PWRAP_DEW_WRITE_TEST] =	0x040E,
-+	[PWRAP_DEW_CRC_EN] =		0x0412,
-+	[PWRAP_DEW_CRC_VAL] =		0x0414,
-+	[PWRAP_DEW_CIPHER_KEY_SEL] =	0x0418,
-+	[PWRAP_DEW_CIPHER_IV_SEL] =	0x041A,
-+	[PWRAP_DEW_CIPHER_EN] =		0x041C,
-+	[PWRAP_DEW_CIPHER_RDY] =	0x041E,
-+	[PWRAP_DEW_CIPHER_MODE] =	0x0420,
-+	[PWRAP_DEW_CIPHER_SWRST] =	0x0422,
-+	[PWRAP_DEW_RDDMY_NO] =		0x0424,
-+};
-+
- enum pwrap_regs {
- 	PWRAP_MUX_SEL,
- 	PWRAP_WRAP_EN,
-@@ -716,6 +731,7 @@ enum pwrap_regs {
- enum pmic_type {
- 	PMIC_MT6323,
- 	PMIC_MT6351,
-+	PMIC_MT6357,
- 	PMIC_MT6380,
- 	PMIC_MT6397,
- };
-@@ -1175,6 +1191,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
- 		break;
- 	case PMIC_MT6323:
- 	case PMIC_MT6351:
-+	case PMIC_MT6357:
- 		pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_EN],
- 			    0x1);
- 		break;
-@@ -1460,11 +1477,26 @@ static irqreturn_t pwrap_interrupt(int irqno, void *dev_id)
- 	.pwrap_write = pwrap_write16,
- };
- 
-+static const struct pwrap_slv_type pmic_mt6357 = {
-+	.dew_regs = mt6357_regs,
-+	.type = PMIC_MT6357,
-+	.regmap = &pwrap_regmap_config16,
-+	.caps = 0,
-+	.pwrap_read = pwrap_read16,
-+	.pwrap_write = pwrap_write16,
-+};
-+
- static const struct of_device_id of_slave_match_tbl[] = {
- 	{
- 		.compatible = "mediatek,mt6323",
- 		.data = &pmic_mt6323,
- 	}, {
-+		.compatible = "mediatek,mt6351",
-+		.data = &pmic_mt6351,
-+	}, {
-+		.compatible = "mediatek,mt6357",
-+		.data = &pmic_mt6357,
-+	}, {
- 		/* The MT6380 PMIC only implements a regulator, so we bind it
- 		 * directly instead of using a MFD.
- 		 */
-@@ -1474,9 +1506,6 @@ static irqreturn_t pwrap_interrupt(int irqno, void *dev_id)
- 		.compatible = "mediatek,mt6397",
- 		.data = &pmic_mt6397,
- 	}, {
--		.compatible = "mediatek,mt6351",
--		.data = &pmic_mt6351,
--	}, {
- 		/* sentinel */
- 	}
- };
--- 
-1.8.1.1.dirty
+
+> +
+> +Required properties:
+> +- compatible: should be one of the following.
+> +    - mediatek,mt2712-spi: for mt2712 platforms
+> +
+> +- reg: Address and length of the register set for the device
+> +
+> +- interrupts: Should contain spi interrupt
+> +
+> +- clocks: phandles to input clocks.
+> +  The first should be one of the following. It's PLL.
+> +   -  <&topckgen CLK_TOP_UNIVPLL1_D2>: specify parent clock 312MHZ.
+> +				      It's the default one.
+> +   -  <&topckgen CLK_TOP_UNIVPLL1_D4>: specify parent clock 156MHZ.
+> +   -  <&topckgen CLK_TOP_UNIVPLL2_D4>: specify parent clock 104MHZ.
+> +   -  <&topckgen CLK_TOP_UNIVPLL1_D8>: specify parent clock 78MHZ.
+> +  The second should be <&topckgen CLK_TOP_SPISLV_SEL>. It's clock mux.
+> +  The third is <&infracfg CLK_INFRA_AO_SPI1>. It's clock gate.
+> +
+> +- clock-names: shall be "parent-clk" for the parent clock, "sel-clk" for the
+> +  muxes clock, and "spi-clk" for the clock gate.
+
+"-clk" is redundant.
+
+Is the parent clock actually connected to the block? The assigned-clocks 
+properties are used for constraints on parent clocks.
+
+> +
+> +- spi-slave: Empty property indicating the SPI controller is used in slave mode.
+> +
+> +Example:
+> +
+> +- SoC Specific Portion:
+> +spis: spi@10013000 {
+> +	compatible = "mediatek,mt2712-spi-slave";
+> +	reg = <0 0x10013000 0 0x100>;
+> +	interrupts = <GIC_SPI 283 IRQ_TYPE_LEVEL_LOW>;
+> +	clocks = <&topckgen CLK_TOP_UNIVPLL1_D2>,
+> +		<&topckgen CLK_TOP_SPISLV_SEL>,
+> +		<&infracfg CLK_INFRA_AO_SPI1>;
+> +	clock-names = "parent-clk", "sel-clk", "spi-clk";
+> +	spi-slave;
+> +	status = "disabled";
+
+Don't should status in examples.
+
+> +};
+> -- 
+> 1.7.9.5
+> 
