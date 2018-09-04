@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 11/22] mt76x0: remove vif_mask
-Date: Tue,  4 Sep 2018 16:41:04 +0200
-Message-ID: <1536072075-6990-12-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 12/22] mt76: unify remove_interface
+Date: Tue,  4 Sep 2018 16:41:05 +0200
+Message-ID: <1536072075-6990-13-git-send-email-sgruszka@redhat.com>
 References: <1536072075-6990-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536072075-6990-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,50 +10,124 @@ To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Make remove_interface more similar to mt76x2.
+Use common remove_interface callback in mt76x0 and mt76x2.
 
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/main.c   | 11 +----------
- drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  2 --
- 2 files changed, 1 insertion(+), 12 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x0/main.c   | 10 +---------
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.c  |  9 +++++++++
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.h  |  2 ++
+ drivers/net/wireless/mediatek/mt76/mt76x2_common.c |  9 ---------
+ drivers/net/wireless/mediatek/mt76/mt76x2_main.c   |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2u_main.c  |  2 +-
+ 6 files changed, 14 insertions(+), 20 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
-index f87103aea868..a818a47f8e4e 100644
+index a818a47f8e4e..d8efa009126c 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
-@@ -56,14 +56,7 @@ static int mt76x0_add_interface(struct ieee80211_hw *hw,
- 				 struct ieee80211_vif *vif)
- {
- 	struct mt76x0_dev *dev = hw->priv;
--	unsigned int idx;
--
--	idx = ffs(~dev->vif_mask);
--	if (!idx || idx > 8)
--		return -ENOSPC;
--
--	idx--;
--	dev->vif_mask |= BIT(idx);
-+	unsigned int idx = 0;
- 
- 	mt76x02_vif_init(&dev->mt76, vif, idx);
+@@ -62,14 +62,6 @@ static int mt76x0_add_interface(struct ieee80211_hw *hw,
  	return 0;
-@@ -73,9 +66,7 @@ static void mt76x0_remove_interface(struct ieee80211_hw *hw,
- 				     struct ieee80211_vif *vif)
- {
- 	struct mt76x0_dev *dev = hw->priv;
--	struct mt76x02_vif *mvif = (struct mt76x02_vif *) vif->drv_priv;
- 
--	dev->vif_mask &= ~BIT(mvif->idx);
- 	mt76_txq_remove(&dev->mt76, vif->txq);
  }
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-index e65e6c09877c..c3669735965b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-@@ -134,8 +134,6 @@ struct mt76x0_dev {
- 	u8 in_ep[__MT_EP_IN_MAX];
- 	u16 in_max_packet;
+-static void mt76x0_remove_interface(struct ieee80211_hw *hw,
+-				     struct ieee80211_vif *vif)
+-{
+-	struct mt76x0_dev *dev = hw->priv;
+-
+-	mt76_txq_remove(&dev->mt76, vif->txq);
+-}
+-
+ static int mt76x0_config(struct ieee80211_hw *hw, u32 changed)
+ {
+ 	struct mt76x0_dev *dev = hw->priv;
+@@ -203,7 +195,7 @@ const struct ieee80211_ops mt76x0_ops = {
+ 	.start = mt76x0_start,
+ 	.stop = mt76x0_stop,
+ 	.add_interface = mt76x0_add_interface,
+-	.remove_interface = mt76x0_remove_interface,
++	.remove_interface = mt76x02_remove_interface,
+ 	.config = mt76x0_config,
+ 	.configure_filter = mt76x02_configure_filter,
+ 	.bss_info_changed = mt76x0_bss_info_changed,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
+index 706f522f11d9..69f19ef361a1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
+@@ -127,6 +127,15 @@ void mt76x02_vif_init(struct mt76_dev *dev, struct ieee80211_vif *vif,
+ }
+ EXPORT_SYMBOL_GPL(mt76x02_vif_init);
  
--	unsigned long vif_mask;
++void mt76x02_remove_interface(struct ieee80211_hw *hw,
++			     struct ieee80211_vif *vif)
++{
++	struct mt76_dev *dev = hw->priv;
++
++	mt76_txq_remove(dev, vif->txq);
++}
++EXPORT_SYMBOL_GPL(mt76x02_remove_interface);
++
+ int mt76x02_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 			struct ieee80211_ampdu_params *params)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.h b/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
+index 54f895d8cdbe..a61c9f2b9a62 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
+@@ -28,6 +28,8 @@ int mt76x02_sta_remove(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 
+ void mt76x02_vif_init(struct mt76_dev *dev, struct ieee80211_vif *vif,
+ 		     unsigned int idx);
++void mt76x02_remove_interface(struct ieee80211_hw *hw,
++			     struct ieee80211_vif *vif);
+ 
+ int mt76x02_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 			struct ieee80211_ampdu_params *params);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
+index 5ce9fbc654a2..be4e00fe7586 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
+@@ -18,15 +18,6 @@
+ #include "mt76x2.h"
+ #include "mt76x02_mac.h"
+ 
+-void mt76x2_remove_interface(struct ieee80211_hw *hw,
+-			     struct ieee80211_vif *vif)
+-{
+-	struct mt76x2_dev *dev = hw->priv;
+-
+-	mt76_txq_remove(&dev->mt76, vif->txq);
+-}
+-EXPORT_SYMBOL_GPL(mt76x2_remove_interface);
+-
+ void mt76x2_sta_rate_tbl_update(struct ieee80211_hw *hw,
+ 				struct ieee80211_vif *vif,
+ 				struct ieee80211_sta *sta)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_main.c b/drivers/net/wireless/mediatek/mt76/mt76x2_main.c
+index 87302845d582..128a1c1c0f64 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_main.c
+@@ -314,7 +314,7 @@ const struct ieee80211_ops mt76x2_ops = {
+ 	.start = mt76x2_start,
+ 	.stop = mt76x2_stop,
+ 	.add_interface = mt76x2_add_interface,
+-	.remove_interface = mt76x2_remove_interface,
++	.remove_interface = mt76x02_remove_interface,
+ 	.config = mt76x2_config,
+ 	.configure_filter = mt76x02_configure_filter,
+ 	.bss_info_changed = mt76x2_bss_info_changed,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c b/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c
+index 1dcc6ced15a5..66a923a32e51 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c
+@@ -164,7 +164,7 @@ const struct ieee80211_ops mt76x2u_ops = {
+ 	.start = mt76x2u_start,
+ 	.stop = mt76x2u_stop,
+ 	.add_interface = mt76x2u_add_interface,
+-	.remove_interface = mt76x2_remove_interface,
++	.remove_interface = mt76x02_remove_interface,
+ 	.sta_add = mt76x02_sta_add,
+ 	.sta_remove = mt76x02_sta_remove,
+ 	.set_key = mt76x02_set_key,
+-- 
+2.7.5
