@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 09/22] mt76: remove q->hw_idx
-Date: Tue,  4 Sep 2018 16:41:02 +0200
-Message-ID: <1536072075-6990-10-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 10/22] mt76: unify conf_tx
+Date: Tue,  4 Sep 2018 16:41:03 +0200
+Message-ID: <1536072075-6990-11-git-send-email-sgruszka@redhat.com>
 References: <1536072075-6990-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536072075-6990-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,106 +10,260 @@ To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-We use q->hw_idx in very few places, remove it and provide hwq index
-by diffrent way. This will allow ot unify conf_tx mac80211 callback.
+Use one conf_tx implementation in mt76x0 and mt76x2. Note this change
+conf_tx for mt76x0, but it should work with mt76x2 version.
 
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h          | 1 -
- drivers/net/wireless/mediatek/mt76/mt76x2_common.c | 2 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_dma.c    | 1 -
- drivers/net/wireless/mediatek/mt76/mt76x2u_core.c  | 3 ++-
- drivers/net/wireless/mediatek/mt76/usb.c           | 6 +++---
- 5 files changed, 6 insertions(+), 7 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x0/main.c   |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  2 -
+ drivers/net/wireless/mediatek/mt76/mt76x0/tx.c     | 57 ----------------------
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.c  | 44 +++++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.h  |  3 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_common.c | 44 -----------------
+ drivers/net/wireless/mediatek/mt76/mt76x2_main.c   |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2u_main.c  |  2 +-
+ 8 files changed, 49 insertions(+), 107 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 7a7d13b16508..cef3e513b8f0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -113,7 +113,6 @@ struct mt76_queue {
- 	int buf_size;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
+index 24fe92febe50..f87103aea868 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
+@@ -219,7 +219,7 @@ const struct ieee80211_ops mt76x0_ops = {
+ 	.sta_add = mt76x02_sta_add,
+ 	.sta_remove = mt76x02_sta_remove,
+ 	.set_key = mt76x02_set_key,
+-	.conf_tx = mt76x0_conf_tx,
++	.conf_tx = mt76x02_conf_tx,
+ 	.sw_scan_start = mt76x0_sw_scan,
+ 	.sw_scan_complete = mt76x0_sw_scan_complete,
+ 	.ampdu_action = mt76x02_ampdu_action,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+index 3fc2b6efeda3..e65e6c09877c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+@@ -246,8 +246,6 @@ void mt76x0_mac_set_ampdu_factor(struct mt76x0_dev *dev);
+ /* TX */
+ void mt76x0_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
+ 		struct sk_buff *skb);
+-int mt76x0_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+-		    u16 queue, const struct ieee80211_tx_queue_params *params);
+ void mt76x0_tx_status(struct mt76x0_dev *dev, struct sk_buff *skb);
+ void mt76x0_tx_stat(struct work_struct *work);
  
- 	u8 buf_offset;
--	u8 hw_idx;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
+index acf830bc9b4e..ce80763ec557 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
+@@ -211,60 +211,3 @@ void mt76x0_tx_stat(struct work_struct *work)
+ 		clear_bit(MT76_READING_STATS, &dev->mt76.state);
+ 	spin_unlock_irqrestore(&dev->tx_lock, flags);
+ }
+-
+-int mt76x0_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+-		    u16 queue, const struct ieee80211_tx_queue_params *params)
+-{
+-	struct mt76x0_dev *dev = hw->priv;
+-	u8 cw_min = 5, cw_max = 10, hw_q = mt76_ac_to_hwq(queue);
+-	u32 val;
+-
+-	/* TODO: should we do funny things with the parameters?
+-	 *	 See what mt76x0_set_default_edca() used to do in init.c.
+-	 */
+-
+-	if (params->cw_min)
+-		cw_min = fls(params->cw_min);
+-	if (params->cw_max)
+-		cw_max = fls(params->cw_max);
+-
+-	WARN_ON(params->txop > 0xff);
+-	WARN_ON(params->aifs > 0xf);
+-	WARN_ON(cw_min > 0xf);
+-	WARN_ON(cw_max > 0xf);
+-
+-	val = FIELD_PREP(MT_EDCA_CFG_AIFSN, params->aifs) |
+-	      FIELD_PREP(MT_EDCA_CFG_CWMIN, cw_min) |
+-	      FIELD_PREP(MT_EDCA_CFG_CWMAX, cw_max);
+-	/* TODO: based on user-controlled EnableTxBurst var vendor drv sets
+-	 *	 a really long txop on AC0 (see connect.c:2009) but only on
+-	 *	 connect? When not connected should be 0.
+-	 */
+-	if (!hw_q)
+-		val |= 0x60;
+-	else
+-		val |= FIELD_PREP(MT_EDCA_CFG_TXOP, params->txop);
+-	mt76_wr(dev, MT_EDCA_CFG_AC(hw_q), val);
+-
+-	val = mt76_rr(dev, MT_WMM_TXOP(hw_q));
+-	val &= ~(MT_WMM_TXOP_MASK << MT_WMM_TXOP_SHIFT(hw_q));
+-	val |= params->txop << MT_WMM_TXOP_SHIFT(hw_q);
+-	mt76_wr(dev, MT_WMM_TXOP(hw_q), val);
+-
+-	val = mt76_rr(dev, MT_WMM_AIFSN);
+-	val &= ~(MT_WMM_AIFSN_MASK << MT_WMM_AIFSN_SHIFT(hw_q));
+-	val |= params->aifs << MT_WMM_AIFSN_SHIFT(hw_q);
+-	mt76_wr(dev, MT_WMM_AIFSN, val);
+-
+-	val = mt76_rr(dev, MT_WMM_CWMIN);
+-	val &= ~(MT_WMM_CWMIN_MASK << MT_WMM_CWMIN_SHIFT(hw_q));
+-	val |= cw_min << MT_WMM_CWMIN_SHIFT(hw_q);
+-	mt76_wr(dev, MT_WMM_CWMIN, val);
+-
+-	val = mt76_rr(dev, MT_WMM_CWMAX);
+-	val &= ~(MT_WMM_CWMAX_MASK << MT_WMM_CWMAX_SHIFT(hw_q));
+-	val |= cw_max << MT_WMM_CWMAX_SHIFT(hw_q);
+-	mt76_wr(dev, MT_WMM_CWMAX, val);
+-
+-	return 0;
+-}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
+index 4375fce0606d..706f522f11d9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
+@@ -244,4 +244,48 @@ int mt76x02_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ }
+ EXPORT_SYMBOL_GPL(mt76x02_set_key);
  
- 	dma_addr_t desc_dma;
- 	struct sk_buff *rx_head;
++int mt76x02_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
++		   u16 queue, const struct ieee80211_tx_queue_params *params)
++{
++	struct mt76_dev *dev = hw->priv;
++	u8 cw_min = 5, cw_max = 10, qid;
++	u32 val;
++
++	qid = mt76_ac_to_hwq(queue);
++
++	if (params->cw_min)
++		cw_min = fls(params->cw_min);
++	if (params->cw_max)
++		cw_max = fls(params->cw_max);
++
++	val = FIELD_PREP(MT_EDCA_CFG_TXOP, params->txop) |
++	      FIELD_PREP(MT_EDCA_CFG_AIFSN, params->aifs) |
++	      FIELD_PREP(MT_EDCA_CFG_CWMIN, cw_min) |
++	      FIELD_PREP(MT_EDCA_CFG_CWMAX, cw_max);
++	__mt76_wr(dev, MT_EDCA_CFG_AC(qid), val);
++
++	val = __mt76_rr(dev, MT_WMM_TXOP(qid));
++	val &= ~(MT_WMM_TXOP_MASK << MT_WMM_TXOP_SHIFT(qid));
++	val |= params->txop << MT_WMM_TXOP_SHIFT(qid);
++	__mt76_wr(dev, MT_WMM_TXOP(qid), val);
++
++	val = __mt76_rr(dev, MT_WMM_AIFSN);
++	val &= ~(MT_WMM_AIFSN_MASK << MT_WMM_AIFSN_SHIFT(qid));
++	val |= params->aifs << MT_WMM_AIFSN_SHIFT(qid);
++	__mt76_wr(dev, MT_WMM_AIFSN, val);
++
++	val = __mt76_rr(dev, MT_WMM_CWMIN);
++	val &= ~(MT_WMM_CWMIN_MASK << MT_WMM_CWMIN_SHIFT(qid));
++	val |= cw_min << MT_WMM_CWMIN_SHIFT(qid);
++	__mt76_wr(dev, MT_WMM_CWMIN, val);
++
++	val = __mt76_rr(dev, MT_WMM_CWMAX);
++	val &= ~(MT_WMM_CWMAX_MASK << MT_WMM_CWMAX_SHIFT(qid));
++	val |= cw_max << MT_WMM_CWMAX_SHIFT(qid);
++	__mt76_wr(dev, MT_WMM_CWMAX, val);
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(mt76x02_conf_tx);
++
+ MODULE_LICENSE("Dual BSD/GPL");
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.h b/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
+index 31f144d7f6d5..54f895d8cdbe 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
+@@ -31,8 +31,9 @@ void mt76x02_vif_init(struct mt76_dev *dev, struct ieee80211_vif *vif,
+ 
+ int mt76x02_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 			struct ieee80211_ampdu_params *params);
+-
+ int mt76x02_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ 		   struct ieee80211_vif *vif, struct ieee80211_sta *sta,
+ 		   struct ieee80211_key_conf *key);
++int mt76x02_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
++		   u16 queue, const struct ieee80211_tx_queue_params *params);
+ #endif
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
-index 7f05aebf67ec..ead53faa1fb3 100644
+index ead53faa1fb3..5ce9fbc654a2 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
-@@ -34,7 +34,7 @@ int mt76x2_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	u8 cw_min = 5, cw_max = 10, qid;
- 	u32 val;
- 
--	qid = dev->mt76.q_tx[queue].hw_idx;
-+	qid = mt76_ac_to_hwq(queue);
- 
- 	if (params->cw_min)
- 		cw_min = fls(params->cw_min);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_dma.c b/drivers/net/wireless/mediatek/mt76/mt76x2_dma.c
-index 1c8e5d7be425..919dc3f36255 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2_dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2_dma.c
-@@ -55,7 +55,6 @@ mt76x2_init_tx_queue(struct mt76x2_dev *dev, struct mt76_queue *q,
- 
- 	q->regs = dev->mt76.regs + MT_TX_RING_BASE + idx * MT_RING_SIZE;
- 	q->ndesc = n_desc;
--	q->hw_idx = idx;
- 
- 	ret = mt76_queue_alloc(dev, q);
- 	if (ret)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c b/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c
-index 500d7db338aa..d5dc4eb15818 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c
-@@ -84,6 +84,7 @@ int mt76x2u_tx_prepare_skb(struct mt76_dev *mdev, void *data,
- 	struct mt76x2_dev *dev = container_of(mdev, struct mt76x2_dev, mt76);
- 	struct mt76x2_txwi *txwi;
- 	int err, len = skb->len;
-+	int *hwq_ptr = (int *) data;
- 
- 	err = mt76x2u_check_skb_rooms(skb);
- 	if (err < 0)
-@@ -94,7 +95,7 @@ int mt76x2u_tx_prepare_skb(struct mt76_dev *mdev, void *data,
- 	txwi = skb_push(skb, sizeof(struct mt76x2_txwi));
- 	mt76x2_mac_write_txwi(dev, txwi, skb, wcid, sta, len);
- 
--	return mt76x2u_set_txinfo(skb, wcid, q2ep(q->hw_idx));
-+	return mt76x2u_set_txinfo(skb, wcid, q2ep(*hwq_ptr));
+@@ -27,50 +27,6 @@ void mt76x2_remove_interface(struct ieee80211_hw *hw,
  }
+ EXPORT_SYMBOL_GPL(mt76x2_remove_interface);
  
- void mt76x2u_tx_complete_skb(struct mt76_dev *mdev, struct mt76_queue *q,
-diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
-index 333b2c8ca7a4..5785e54c32d0 100644
---- a/drivers/net/wireless/mediatek/mt76/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/usb.c
-@@ -652,7 +652,8 @@ mt76u_tx_queue_skb(struct mt76_dev *dev, struct mt76_queue *q,
- {
- 	struct usb_interface *intf = to_usb_interface(dev->dev);
- 	struct usb_device *udev = interface_to_usbdev(intf);
--	u8 ep = q2ep(q->hw_idx);
-+	int hwq = mt76_ac_to_hwq(skb_get_queue_mapping(skb));
-+	u8 ep = q2ep(hwq);
- 	struct mt76u_buf *buf;
- 	u16 idx = q->tail;
- 	unsigned int pipe;
-@@ -661,7 +662,7 @@ mt76u_tx_queue_skb(struct mt76_dev *dev, struct mt76_queue *q,
- 	if (q->queued == q->ndesc)
- 		return -ENOSPC;
- 
--	err = dev->drv->tx_prepare_skb(dev, NULL, skb, q, wcid, sta, NULL);
-+	err = dev->drv->tx_prepare_skb(dev, &hwq, skb, q, wcid, sta, NULL);
- 	if (err < 0)
- 		return err;
- 
-@@ -715,7 +716,6 @@ static int mt76u_alloc_tx(struct mt76_dev *dev)
- 		q = &dev->q_tx[i];
- 		spin_lock_init(&q->lock);
- 		INIT_LIST_HEAD(&q->swq);
--		q->hw_idx = mt76_ac_to_hwq(i);
- 
- 		q->entry = devm_kzalloc(dev->dev,
- 					MT_NUM_TX_ENTRIES * sizeof(*q->entry),
+-int mt76x2_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+-		   u16 queue, const struct ieee80211_tx_queue_params *params)
+-{
+-	struct mt76x2_dev *dev = hw->priv;
+-	u8 cw_min = 5, cw_max = 10, qid;
+-	u32 val;
+-
+-	qid = mt76_ac_to_hwq(queue);
+-
+-	if (params->cw_min)
+-		cw_min = fls(params->cw_min);
+-	if (params->cw_max)
+-		cw_max = fls(params->cw_max);
+-
+-	val = FIELD_PREP(MT_EDCA_CFG_TXOP, params->txop) |
+-	      FIELD_PREP(MT_EDCA_CFG_AIFSN, params->aifs) |
+-	      FIELD_PREP(MT_EDCA_CFG_CWMIN, cw_min) |
+-	      FIELD_PREP(MT_EDCA_CFG_CWMAX, cw_max);
+-	mt76_wr(dev, MT_EDCA_CFG_AC(qid), val);
+-
+-	val = mt76_rr(dev, MT_WMM_TXOP(qid));
+-	val &= ~(MT_WMM_TXOP_MASK << MT_WMM_TXOP_SHIFT(qid));
+-	val |= params->txop << MT_WMM_TXOP_SHIFT(qid);
+-	mt76_wr(dev, MT_WMM_TXOP(qid), val);
+-
+-	val = mt76_rr(dev, MT_WMM_AIFSN);
+-	val &= ~(MT_WMM_AIFSN_MASK << MT_WMM_AIFSN_SHIFT(qid));
+-	val |= params->aifs << MT_WMM_AIFSN_SHIFT(qid);
+-	mt76_wr(dev, MT_WMM_AIFSN, val);
+-
+-	val = mt76_rr(dev, MT_WMM_CWMIN);
+-	val &= ~(MT_WMM_CWMIN_MASK << MT_WMM_CWMIN_SHIFT(qid));
+-	val |= cw_min << MT_WMM_CWMIN_SHIFT(qid);
+-	mt76_wr(dev, MT_WMM_CWMIN, val);
+-
+-	val = mt76_rr(dev, MT_WMM_CWMAX);
+-	val &= ~(MT_WMM_CWMAX_MASK << MT_WMM_CWMAX_SHIFT(qid));
+-	val |= cw_max << MT_WMM_CWMAX_SHIFT(qid);
+-	mt76_wr(dev, MT_WMM_CWMAX, val);
+-
+-	return 0;
+-}
+-EXPORT_SYMBOL_GPL(mt76x2_conf_tx);
+-
+ void mt76x2_sta_rate_tbl_update(struct ieee80211_hw *hw,
+ 				struct ieee80211_vif *vif,
+ 				struct ieee80211_sta *sta)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_main.c b/drivers/net/wireless/mediatek/mt76/mt76x2_main.c
+index 143d8abed403..87302845d582 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_main.c
+@@ -321,7 +321,7 @@ const struct ieee80211_ops mt76x2_ops = {
+ 	.sta_add = mt76x02_sta_add,
+ 	.sta_remove = mt76x02_sta_remove,
+ 	.set_key = mt76x02_set_key,
+-	.conf_tx = mt76x2_conf_tx,
++	.conf_tx = mt76x02_conf_tx,
+ 	.sw_scan_start = mt76x2_sw_scan,
+ 	.sw_scan_complete = mt76x2_sw_scan_complete,
+ 	.flush = mt76x2_flush,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c b/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c
+index 62d0eb75cac3..1dcc6ced15a5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2u_main.c
+@@ -173,7 +173,7 @@ const struct ieee80211_ops mt76x2u_ops = {
+ 	.wake_tx_queue = mt76_wake_tx_queue,
+ 	.bss_info_changed = mt76x2u_bss_info_changed,
+ 	.configure_filter = mt76x02_configure_filter,
+-	.conf_tx = mt76x2_conf_tx,
++	.conf_tx = mt76x02_conf_tx,
+ 	.sw_scan_start = mt76x2u_sw_scan,
+ 	.sw_scan_complete = mt76x2u_sw_scan_complete,
+ 	.sta_rate_tbl_update = mt76x2_sta_rate_tbl_update,
 -- 
 2.7.5
