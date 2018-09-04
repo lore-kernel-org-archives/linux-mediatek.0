@@ -1,84 +1,372 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 00/22] mt76 patches 2018-09-04
-Date: Tue,  4 Sep 2018 16:40:53 +0200
-Message-ID: <1536072075-6990-1-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 01/22] mt76: move wcid fields to common mt76_dev struct
+Date: Tue,  4 Sep 2018 16:40:54 +0200
+Message-ID: <1536072075-6990-2-git-send-email-sgruszka@redhat.com>
+References: <1536072075-6990-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1536072075-6990-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-More mt76x0/mt76x2 integration.
+All current MT devices including new MT7603 type chips support 128
+WCIDs, we can unify wcid data in common mt76_dev structure.
 
-This set is quite big but I would like to move patches upstream
-from my github tree as fast as possible. I have there 42 more
-ready to post patches from me and Lorenzo.
-https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft-v3
+Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt76.h          |  7 +++++++
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c   | 22 +++++++++-------------
+ drivers/net/wireless/mediatek/mt76/mt76x0/mac.c    |  8 ++++----
+ drivers/net/wireless/mediatek/mt76/mt76x0/main.c   | 10 +++++-----
+ drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  5 -----
+ drivers/net/wireless/mediatek/mt76/mt76x0/tx.c     |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2.h        |  5 -----
+ drivers/net/wireless/mediatek/mt76/mt76x2_common.c |  8 ++++----
+ .../wireless/mediatek/mt76/mt76x2_init_common.c    |  4 ++--
+ .../net/wireless/mediatek/mt76/mt76x2_mac_common.c |  8 ++++----
+ .../net/wireless/mediatek/mt76/mt76x2_phy_common.c |  6 +++---
+ .../net/wireless/mediatek/mt76/mt76x2_tx_common.c  |  2 +-
+ 12 files changed, 40 insertions(+), 47 deletions(-)
 
-Note this set include:
-"mt76x0: fix wrong usage of wcid_mask in remove_interface"
-patch with I posted as fix for 4.19 . I assume this will be
-auto (or manually?) merged when -next will go to 4.20.
-
-Stanislaw Gruszka (22):
-  mt76: move wcid fields to common mt76_dev struct
-  mt76: unify sta_add / sta_remove
-  mt76: pratially unify add_interface
-  mt76x0: fix wrong usage of wcid_mask in remove_interface
-  mt76: unify ampdu_action
-  mt76: unify set_key
-  mt76x0: remove empty sta_notify
-  mt76: unify AC to hw queue mapping
-  mt76: remove q->hw_idx
-  mt76: unify conf_tx
-  mt76x0: remove vif_mask
-  mt76: unify remove_interface
-  mt76: unify add_interface
-  mt76: unify sta_rate_tbl_update and related helpers
-  mt76: unify txwi and rxwi structures
-  mt76: unify load_tx_status
-  mt76: unify send_tx_status and related helpers
-  mt76: use mt76_rx_status in mt76x0
-  mt76: unify mac_process_rate
-  mt76x0: reserve enough space in mac80211
-  mt76: unify {insert/remove}_hdr_pad
-  mt76: partially unify filling txwi fields
-
- drivers/net/wireless/mediatek/mt76/mac80211.c      |   3 +-
- drivers/net/wireless/mediatek/mt76/mt76.h          |  23 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/Makefile |   2 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/dma.c    |  14 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/init.c   |  24 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/mac.c    | 310 +----------------
- drivers/net/wireless/mediatek/mt76/mt76x0/mac.h    | 130 --------
- drivers/net/wireless/mediatek/mt76/mt76x0/main.c   | 215 +-----------
- drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  26 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/phy.c    |   2 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/trace.h  |  12 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/tx.c     | 144 +-------
- drivers/net/wireless/mediatek/mt76/mt76x0/util.c   |  42 ---
- drivers/net/wireless/mediatek/mt76/mt76x02_mac.c   | 347 +++++++++++++++++++
- drivers/net/wireless/mediatek/mt76/mt76x02_mac.h   | 122 ++++++-
- drivers/net/wireless/mediatek/mt76/mt76x02_util.c  | 325 ++++++++++++++++++
- drivers/net/wireless/mediatek/mt76/mt76x02_util.h  |  23 ++
- drivers/net/wireless/mediatek/mt76/mt76x2.h        |  23 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_common.c | 254 +-------------
- drivers/net/wireless/mediatek/mt76/mt76x2_dma.c    |  17 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_init.c   |   3 +-
- .../wireless/mediatek/mt76/mt76x2_init_common.c    |   4 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_mac.c    |  12 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_mac.h    | 110 +-----
- .../net/wireless/mediatek/mt76/mt76x2_mac_common.c | 368 +--------------------
- drivers/net/wireless/mediatek/mt76/mt76x2_main.c   |  50 +--
- .../net/wireless/mediatek/mt76/mt76x2_phy_common.c |   6 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_tx.c     |   3 +-
- .../net/wireless/mediatek/mt76/mt76x2_tx_common.c  |  21 +-
- drivers/net/wireless/mediatek/mt76/mt76x2u_core.c  |  18 +-
- drivers/net/wireless/mediatek/mt76/mt76x2u_main.c  |  22 +-
- drivers/net/wireless/mediatek/mt76/tx.c            |  16 +
- drivers/net/wireless/mediatek/mt76/usb.c           |   6 +-
- 33 files changed, 974 insertions(+), 1723 deletions(-)
- delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/util.c
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index e9e46612c7f3..2d0ab28a0977 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -148,6 +148,8 @@ enum mt76_wcid_flags {
+ 	MT_WCID_FLAG_PS,
+ };
+ 
++#define MT76_N_WCIDS 128
++
+ struct mt76_wcid {
+ 	struct mt76_rx_tid __rcu *aggr[IEEE80211_NUM_TIDS];
+ 
+@@ -348,6 +350,11 @@ struct mt76_dev {
+ 
+ 	wait_queue_head_t tx_wait;
+ 
++	unsigned long wcid_mask[MT76_N_WCIDS / BITS_PER_LONG];
++
++	struct mt76_wcid global_wcid;
++	struct mt76_wcid __rcu *wcid[MT76_N_WCIDS];
++
+ 	u8 macaddr[ETH_ALEN];
+ 	u32 rev;
+ 	unsigned long state;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+index 80783edd9ca5..b5bf22184a69 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+@@ -230,17 +230,17 @@ static int mt76x0_init_wcid_mem(struct mt76x0_dev *dev)
+ 	u32 *vals;
+ 	int i, ret;
+ 
+-	vals = kmalloc(sizeof(*vals) * N_WCIDS * 2, GFP_KERNEL);
++	vals = kmalloc(sizeof(*vals) * MT76_N_WCIDS * 2, GFP_KERNEL);
+ 	if (!vals)
+ 		return -ENOMEM;
+ 
+-	for (i = 0; i < N_WCIDS; i++)  {
++	for (i = 0; i < MT76_N_WCIDS; i++)  {
+ 		vals[i * 2] = 0xffffffff;
+ 		vals[i * 2 + 1] = 0x00ffffff;
+ 	}
+ 
+ 	ret = mt76x0_burst_write_regs(dev, MT_WCID_ADDR_BASE,
+-				      vals, N_WCIDS * 2);
++				      vals, MT76_N_WCIDS * 2);
+ 	kfree(vals);
+ 
+ 	return ret;
+@@ -259,15 +259,15 @@ static int mt76x0_init_wcid_attr_mem(struct mt76x0_dev *dev)
+ 	u32 *vals;
+ 	int i, ret;
+ 
+-	vals = kmalloc(sizeof(*vals) * N_WCIDS * 2, GFP_KERNEL);
++	vals = kmalloc(sizeof(*vals) * MT76_N_WCIDS * 2, GFP_KERNEL);
+ 	if (!vals)
+ 		return -ENOMEM;
+ 
+-	for (i = 0; i < N_WCIDS * 2; i++)
++	for (i = 0; i < MT76_N_WCIDS * 2; i++)
+ 		vals[i] = 1;
+ 
+ 	ret = mt76x0_burst_write_regs(dev, MT_WCID_ATTR_BASE,
+-				      vals, N_WCIDS * 2);
++				      vals, MT76_N_WCIDS * 2);
+ 	kfree(vals);
+ 
+ 	return ret;
+@@ -667,15 +667,11 @@ int mt76x0_register_device(struct mt76x0_dev *dev)
+ 	/* Reserve WCID 0 for mcast - thanks to this APs WCID will go to
+ 	 * entry no. 1 like it does in the vendor driver.
+ 	 */
+-	dev->wcid_mask[0] |= 1;
++	dev->mt76.wcid_mask[0] |= 1;
+ 
+ 	/* init fake wcid for monitor interfaces */
+-	dev->mon_wcid = devm_kmalloc(dev->mt76.dev, sizeof(*dev->mon_wcid),
+-				     GFP_KERNEL);
+-	if (!dev->mon_wcid)
+-		return -ENOMEM;
+-	dev->mon_wcid->idx = 0xff;
+-	dev->mon_wcid->hw_key_idx = -1;
++	dev->mt76.global_wcid.idx = 0xff;
++	dev->mt76.global_wcid.hw_key_idx = -1;
+ 
+ 	SET_IEEE80211_DEV(hw, dev->mt76.dev);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
+index 0931c1821597..4c4962bcca11 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
+@@ -206,8 +206,8 @@ void mt76x0_send_tx_status(struct mt76x0_dev *dev, struct mt76x02_tx_status *sta
+ 	struct mt76x02_sta *msta = NULL;
+ 
+ 	rcu_read_lock();
+-	if (stat->wcid < ARRAY_SIZE(dev->wcid))
+-		wcid = rcu_dereference(dev->wcid[stat->wcid]);
++	if (stat->wcid < ARRAY_SIZE(dev->mt76.wcid))
++		wcid = rcu_dereference(dev->mt76.wcid[stat->wcid]);
+ 
+ 	if (wcid) {
+ 		void *priv;
+@@ -408,8 +408,8 @@ void mt76x0_mac_set_ampdu_factor(struct mt76x0_dev *dev)
+ 	int i;
+ 
+ 	rcu_read_lock();
+-	for (i = 0; i < ARRAY_SIZE(dev->wcid); i++) {
+-		wcid = rcu_dereference(dev->wcid[i]);
++	for (i = 0; i < ARRAY_SIZE(dev->mt76.wcid); i++) {
++		wcid = rcu_dereference(dev->mt76.wcid[i]);
+ 		if (!wcid)
+ 			continue;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
+index a969fa9fcd57..bbfbd1ac74eb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
+@@ -81,7 +81,7 @@ static void mt76x0_remove_interface(struct ieee80211_hw *hw,
+ 	struct mt76x02_vif *mvif = (struct mt76x02_vif *) vif->drv_priv;
+ 	unsigned int wcid = mvif->group_wcid.idx;
+ 
+-	dev->wcid_mask[wcid / BITS_PER_LONG] &= ~BIT(wcid % BITS_PER_LONG);
++	dev->mt76.wcid_mask[wcid / BITS_PER_LONG] &= ~BIT(wcid % BITS_PER_LONG);
+ 	mt76_txq_remove(&dev->mt76, vif->txq);
+ }
+ 
+@@ -169,7 +169,7 @@ mt76x0_sta_add(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 
+ 	mutex_lock(&dev->mt76.mutex);
+ 
+-	idx = mt76_wcid_alloc(dev->wcid_mask, ARRAY_SIZE(dev->wcid));
++	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, ARRAY_SIZE(dev->mt76.wcid));
+ 	if (idx < 0) {
+ 		ret = -ENOSPC;
+ 		goto out;
+@@ -180,7 +180,7 @@ mt76x0_sta_add(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	mt76x02_mac_wcid_setup(&dev->mt76, idx, mvif->idx, sta->addr);
+ 	mt76x02_mac_wcid_set_drop(&dev->mt76, idx, false);
+ 	mt76_clear(dev, MT_WCID_DROP(idx), MT_WCID_DROP_MASK(idx));
+-	rcu_assign_pointer(dev->wcid[idx], &msta->wcid);
++	rcu_assign_pointer(dev->mt76.wcid[idx], &msta->wcid);
+ 	for (i = 0; i < ARRAY_SIZE(sta->txq); i++)
+ 		mt76x02_txq_init(&dev->mt76, sta->txq[i]);
+ 	mt76x0_mac_set_ampdu_factor(dev);
+@@ -201,9 +201,9 @@ mt76x0_sta_remove(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	int i;
+ 
+ 	mutex_lock(&dev->mt76.mutex);
+-	rcu_assign_pointer(dev->wcid[idx], NULL);
++	rcu_assign_pointer(dev->mt76.wcid[idx], NULL);
+ 	mt76x02_mac_wcid_set_drop(&dev->mt76, idx, true);
+-	mt76_wcid_free(dev->wcid_mask, idx);
++	mt76_wcid_free(dev->mt76.wcid_mask, idx);
+ 	for (i = 0; i < ARRAY_SIZE(sta->txq); i++)
+ 		mt76_txq_remove(&dev->mt76, sta->txq[i]);
+ 	mt76x02_mac_wcid_setup(&dev->mt76, idx, 0, NULL);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+index c53ea04e1618..afe592cc7aa9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+@@ -96,7 +96,6 @@ struct mt76x0_tx_queue {
+  * ...7e: group wcids
+  *    7f: reserved
+  */
+-#define N_WCIDS		128
+ #define GROUP_WCID(idx)	(254 - idx)
+ 
+ struct mt76x0_eeprom_params;
+@@ -144,7 +143,6 @@ struct mt76x0_dev {
+ 	u8 in_ep[__MT_EP_IN_MAX];
+ 	u16 in_max_packet;
+ 
+-	unsigned long wcid_mask[DIV_ROUND_UP(N_WCIDS, BITS_PER_LONG)];
+ 	unsigned long vif_mask;
+ 
+ 	struct delayed_work cal_work;
+@@ -153,9 +151,6 @@ struct mt76x0_dev {
+ 	struct workqueue_struct *stat_wq;
+ 	struct delayed_work stat_work;
+ 
+-	struct mt76_wcid *mon_wcid;
+-	struct mt76_wcid __rcu *wcid[N_WCIDS];
+-
+ 	spinlock_t mac_lock;
+ 
+ 	const u16 *beacon_offsets;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
+index fd2baa5cc92d..73ea6d3097f2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
+@@ -150,7 +150,7 @@ void mt76x0_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
+ 	struct ieee80211_vif *vif = info->control.vif;
+ 	struct ieee80211_sta *sta = control->sta;
+ 	struct mt76x02_sta *msta = NULL;
+-	struct mt76_wcid *wcid = dev->mon_wcid;
++	struct mt76_wcid *wcid = &dev->mt76.global_wcid;
+ 	struct mt76_txwi *txwi;
+ 	int pkt_len = skb->len;
+ 	int hw_q = skb2q(skb);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2.h b/drivers/net/wireless/mediatek/mt76/mt76x2.h
+index 63e88d9147a8..94c3f0cbee2a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2.h
+@@ -95,8 +95,6 @@ struct mt76x2_dev {
+ 	struct mutex mutex;
+ 
+ 	const u16 *beacon_offsets;
+-	unsigned long wcid_mask[128 / BITS_PER_LONG];
+-
+ 	int txpower_conf;
+ 	int txpower_cur;
+ 
+@@ -113,9 +111,6 @@ struct mt76x2_dev {
+ 
+ 	u32 aggr_stats[32];
+ 
+-	struct mt76_wcid global_wcid;
+-	struct mt76_wcid __rcu *wcid[128];
+-
+ 	spinlock_t irq_lock;
+ 	u32 irqmask;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
+index 11ff60360ce6..b613eb760be5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_common.c
+@@ -81,7 +81,7 @@ int mt76x2_sta_add(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 
+ 	mutex_lock(&dev->mt76.mutex);
+ 
+-	idx = mt76_wcid_alloc(dev->wcid_mask, ARRAY_SIZE(dev->wcid));
++	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, ARRAY_SIZE(dev->mt76.wcid));
+ 	if (idx < 0) {
+ 		ret = -ENOSPC;
+ 		goto out;
+@@ -101,7 +101,7 @@ int mt76x2_sta_add(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 
+ 	ewma_signal_init(&msta->rssi);
+ 
+-	rcu_assign_pointer(dev->wcid[idx], &msta->wcid);
++	rcu_assign_pointer(dev->mt76.wcid[idx], &msta->wcid);
+ 
+ out:
+ 	mutex_unlock(&dev->mt76.mutex);
+@@ -119,11 +119,11 @@ int mt76x2_sta_remove(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	int i;
+ 
+ 	mutex_lock(&dev->mt76.mutex);
+-	rcu_assign_pointer(dev->wcid[idx], NULL);
++	rcu_assign_pointer(dev->mt76.wcid[idx], NULL);
+ 	for (i = 0; i < ARRAY_SIZE(sta->txq); i++)
+ 		mt76_txq_remove(&dev->mt76, sta->txq[i]);
+ 	mt76x02_mac_wcid_set_drop(&dev->mt76, idx, true);
+-	mt76_wcid_free(dev->wcid_mask, idx);
++	mt76_wcid_free(dev->mt76.wcid_mask, idx);
+ 	mt76x02_mac_wcid_setup(&dev->mt76, idx, 0, NULL);
+ 	mutex_unlock(&dev->mt76.mutex);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_init_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_init_common.c
+index 9dca0e92e3f7..424d77a82f06 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_init_common.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_init_common.c
+@@ -213,8 +213,8 @@ void mt76x2_init_device(struct mt76x2_dev *dev)
+ 	dev->mt76.sband_5g.sband.ht_cap.cap |= IEEE80211_HT_CAP_LDPC_CODING;
+ 
+ 	dev->chainmask = 0x202;
+-	dev->global_wcid.idx = 255;
+-	dev->global_wcid.hw_key_idx = -1;
++	dev->mt76.global_wcid.idx = 255;
++	dev->mt76.global_wcid.hw_key_idx = -1;
+ 	dev->slottime = 9;
+ 
+ 	/* init antenna configuration */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c
+index bdad454108b9..ec2326cd724b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_mac_common.c
+@@ -186,8 +186,8 @@ void mt76x2_send_tx_status(struct mt76x2_dev *dev,
+ 	struct mt76x02_sta *msta = NULL;
+ 
+ 	rcu_read_lock();
+-	if (stat->wcid < ARRAY_SIZE(dev->wcid))
+-		wcid = rcu_dereference(dev->wcid[stat->wcid]);
++	if (stat->wcid < ARRAY_SIZE(dev->mt76.wcid))
++		wcid = rcu_dereference(dev->mt76.wcid[stat->wcid]);
+ 
+ 	if (wcid) {
+ 		void *priv;
+@@ -477,10 +477,10 @@ mt76x2_rx_get_sta(struct mt76x2_dev *dev, u8 idx)
+ {
+ 	struct mt76_wcid *wcid;
+ 
+-	if (idx >= ARRAY_SIZE(dev->wcid))
++	if (idx >= ARRAY_SIZE(dev->mt76.wcid))
+ 		return NULL;
+ 
+-	wcid = rcu_dereference(dev->wcid[idx]);
++	wcid = rcu_dereference(dev->mt76.wcid[idx]);
+ 	if (!wcid)
+ 		return NULL;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_phy_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_phy_common.c
+index 4830ca20a32d..c38855342731 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_phy_common.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_phy_common.c
+@@ -311,8 +311,8 @@ int mt76x2_phy_get_min_avg_rssi(struct mt76x2_dev *dev)
+ 	local_bh_disable();
+ 	rcu_read_lock();
+ 
+-	for (i = 0; i < ARRAY_SIZE(dev->wcid_mask); i++) {
+-		unsigned long mask = dev->wcid_mask[i];
++	for (i = 0; i < ARRAY_SIZE(dev->mt76.wcid_mask); i++) {
++		unsigned long mask = dev->mt76.wcid_mask[i];
+ 
+ 		if (!mask)
+ 			continue;
+@@ -321,7 +321,7 @@ int mt76x2_phy_get_min_avg_rssi(struct mt76x2_dev *dev)
+ 			if (!(mask & 1))
+ 				continue;
+ 
+-			wcid = rcu_dereference(dev->wcid[j]);
++			wcid = rcu_dereference(dev->mt76.wcid[j]);
+ 			if (!wcid)
+ 				continue;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
+index d968f9ad6f50..b6c6d657b2b7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
+@@ -24,7 +24,7 @@ void mt76x2_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
+ 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
+ 	struct mt76x2_dev *dev = hw->priv;
+ 	struct ieee80211_vif *vif = info->control.vif;
+-	struct mt76_wcid *wcid = &dev->global_wcid;
++	struct mt76_wcid *wcid = &dev->mt76.global_wcid;
+ 
+ 	if (control->sta) {
+ 		struct mt76x02_sta *msta;
 -- 
 2.7.5
