@@ -1,53 +1,45 @@
 From: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH v3 01/16] mt76: unify wait_for_mac
-Date: Tue,  4 Sep 2018 08:05:55 +0000 (UTC)
-Message-ID: <20180904080555.D07A160708@smtp.codeaurora.org>
-References: <1535541407-27149-2-git-send-email-sgruszka@redhat.com>
+Subject: Re: [PATCH 01/16] mt76: move mt76_reg_pair definition in mt76.h
+Date: Tue,  4 Sep 2018 08:12:21 +0000 (UTC)
+Message-ID: <20180904081221.4F3EB60708@smtp.codeaurora.org>
+References: <20180825104056.9130-2-lorenzo.bianconi@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1535541407-27149-2-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20180825104056.9130-2-lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: nbd-Vt+b4OUoWG0@public.gmane.org, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
+Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
 
-> Create new mt76x02_mac.h for common mac functions of mt76x0 and mt76x2
-> and unity wait_for_mac for both drivers.
+> Move common definition of mt76_reg_pair in mt76.h
+> and remove duplicated code in mt76x2_init_common.c
 > 
-> Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+> Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 
 16 patches applied to wireless-drivers-next.git, thanks.
 
-2735a6dd7df3 mt76: unify wait_for_mac
-89e1b1bc075a mt76: rename mt76x2_regs.h
-797ea2407825 mt76: merge mt76x0/regs.h into mt76x02_regs.h
-108a4861ef19 mt76: create new mt76x02-lib module for common mt76x{0,2} code
-c378f2473466 mt76: unify mac_get_key_info
-d413127359c3 mt76: add helpers for register access with mt76_dev struct
-047aed1c38cf mt76: unify mac_shared_key_setup
-46436b5ef9dd mt76: unify mac_wcid_set_key
-32bb405fe2bc mt76: unify mac_wcid_setup
-516ea2a2a9d4 mt76: use mac_wcid_set_drop in mt76x0
-459e237f14cd mt76x0: use mt76_wcid_free in mt76x0
-98ff26e5e217 mt76: unify mt76x02_vif struct
-f5a7f126e5fe mt76: unify sta structure part 1
-b2d91fb30223 mt76: unify sta structure part 2
-78dae93fd8ff mt76x0: initalize custom tx queues
-16c8a792ea44 mt76x0: use mt76x02_sta and mt76x02_tx_status
+5090efa4a2e8 mt76: move mt76_reg_pair definition in mt76.h
+4c89ff2c74e3 mt76: split __mt76u_mcu_send_msg and mt76u_mcu_send_msg routines
+288d600a8880 mt76: move mt76x2u_mcu_deinit routine in mt76-usb module
+851ab66e293c mt76: add multiple regs read support to usb_mcu layer
+795dbf0fd20c mt76x0: use mt76u_init for bus initialization
+e9fa647a0ad3 mt76x0: remove mt76x0_vendor_reset routine
+72750efddba9 mt76x0: remove mt76x0_vendor_single_wr routine
+84740d5dc66e mt76x0: remove mt76x0_mcu_msg_alloc routine
+ad27c4ae0ba7 mt76x0: use shared mt76 usb mcu completion
+73d411e2d499 mt76x0: remove mt76x0_complete_urb routine
+172222cff066 mt76x0: remove mt76x0_vendor_request routine
+876d3d02ee31 mt76x0: remove unused mt76x0_wait_asic_ready routine
+6f4796b7063e mt76x0: use mt76u_mcu_send_msg utility routine to send fw cmds
+0e3612e06be4 mt76x0: remove unused mt76x0_mcu structure
+a0b65ca60ec7 mt76x0: use mt76u_mcu_fw_send_data for fw uploading
+01b302cd5874 mt76x0: remove unused routines for usb_buff alloc/free
 
 -- 
-https://patchwork.kernel.org/patch/10579835/
+https://patchwork.kernel.org/patch/10576059/
 
 https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
