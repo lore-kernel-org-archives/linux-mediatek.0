@@ -1,89 +1,49 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 02/13] drm/mediatek: move hardware register to node data
-Date: Wed, 5 Sep 2018 17:50:03 +0800
-Message-ID: <1536141003.11913.6.camel@mtksdaap41>
-References: <20180905083146.14727-1-bibby.hsieh@mediatek.com>
- <20180905083146.14727-3-bibby.hsieh@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 4/5] arm: dts: mt7623: add jpeg decoder device node
+Date: Wed, 5 Sep 2018 18:22:20 +0800
+Message-ID: <2f810e9fc20d64d1e673b9ab9abd912d440d071a.1536141302.git.ryder.lee@mediatek.com>
+References: <84011aa94dd7be9239b7a2f944dd30fc70568fbb.1536141302.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180905083146.14727-3-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <84011aa94dd7be9239b7a2f944dd30fc70568fbb.1536141302.git.ryder.lee@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEJpYmJ5OgoKT25lIGlubGluZSBjb21tZW50LgoKT24gV2VkLCAyMDE4LTA5LTA1IGF0IDE2
-OjMxICswODAwLCBCaWJieSBIc2llaCB3cm90ZToKPiBGcm9tOiBjaHVuaHVpIGRhaSA8Y2h1bmh1
-aS5kYWlAbWVkaWF0ZWsuY29tPgo+IAo+IFRoZSBhZGRyZXNzIG9mIHJlZ2lzdGVyIERQSV9IX0ZS
-RV9DT04gaXMgZGlmZmVyZW50IGluIGRpZmZlcmVudCBJQy4KPiBVc2luZyBvZl9ub2RlIGRhdGEg
-dG8gZmluZCB0aGlzIGFkZHJlc3MuCj4gCj4gU2lnbmVkLW9mZi1ieTogY2h1bmh1aSBkYWkgPGNo
-dW5odWkuZGFpQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kcGkuYyAgICAgIHwgMjkgKysrKysrKysrKysrKysrKysrKysrKystLS0tLS0KPiAgZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGlfcmVncy5oIHwgIDEgLQo+ICAyIGZpbGVzIGNo
-YW5nZWQsIDIzIGluc2VydGlvbnMoKyksIDcgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RwaS5jCj4gaW5kZXggZDkzNzNlNjdkMzI4Li4zZGI5NTlmZWQ0OTMgMTAwNjQ0
-Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+ICsrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMKPiBAQCAtNzIsNiArNzIsNyBAQCBzdHJ1Y3Qg
-bXRrX2RwaSB7Cj4gIAlzdHJ1Y3QgY2xrICp0dmRfY2xrOwo+ICAJaW50IGlycTsKPiAgCXN0cnVj
-dCBkcm1fZGlzcGxheV9tb2RlIG1vZGU7Cj4gKwljb25zdCBzdHJ1Y3QgbXRrX2RwaV9jb25mICpj
-b25mOwo+ICAJZW51bSBtdGtfZHBpX291dF9jb2xvcl9mb3JtYXQgY29sb3JfZm9ybWF0Owo+ICAJ
-ZW51bSBtdGtfZHBpX291dF95Y19tYXAgeWNfbWFwOwo+ICAJZW51bSBtdGtfZHBpX291dF9iaXRf
-bnVtIGJpdF9udW07Cj4gQEAgLTExNyw2ICsxMTgsMTAgQEAgc3RydWN0IG10a19kcGlfeWNfbGlt
-aXQgewo+ICAJdTE2IGNfYm90dG9tOwo+ICB9Owo+ICAKPiArc3RydWN0IG10a19kcGlfY29uZiB7
-Cj4gKwljb25zdCB1MzIgcmVnX2hfZnJlX2NvbjsKPiArfTsKPiArCj4gIHN0YXRpYyB2b2lkIG10
-a19kcGlfbWFzayhzdHJ1Y3QgbXRrX2RwaSAqZHBpLCB1MzIgb2Zmc2V0LCB1MzIgdmFsLCB1MzIg
-bWFzaykKPiAgewo+ICAJdTMyIHRtcCA9IHJlYWRsKGRwaS0+cmVncyArIG9mZnNldCkgJiB+bWFz
-azsKPiBAQCAtMzQyLDcgKzM0Nyw3IEBAIHN0YXRpYyB2b2lkIG10a19kcGlfY29uZmlnX3N3YXBf
-aW5wdXQoc3RydWN0IG10a19kcGkgKmRwaSwgYm9vbCBlbmFibGUpCj4gIAo+ICBzdGF0aWMgdm9p
-ZCBtdGtfZHBpX2NvbmZpZ18ybl9oX2ZyZShzdHJ1Y3QgbXRrX2RwaSAqZHBpKQo+ICB7Cj4gLQlt
-dGtfZHBpX21hc2soZHBpLCBEUElfSF9GUkVfQ09OLCBIX0ZSRV8yTiwgSF9GUkVfMk4pOwo+ICsJ
-bXRrX2RwaV9tYXNrKGRwaSwgZHBpLT5jb25mLT5yZWdfaF9mcmVfY29uLCBIX0ZSRV8yTiwgSF9G
-UkVfMk4pOwo+ICB9Cj4gIAo+ICBzdGF0aWMgdm9pZCBtdGtfZHBpX2NvbmZpZ19jb2xvcl9mb3Jt
-YXQoc3RydWN0IG10a19kcGkgKmRwaSwKPiBAQCAtNjY4LDYgKzY3MywxOCBAQCBzdGF0aWMgY29u
-c3Qgc3RydWN0IGNvbXBvbmVudF9vcHMgbXRrX2RwaV9jb21wb25lbnRfb3BzID0gewo+ICAJLnVu
-YmluZCA9IG10a19kcGlfdW5iaW5kLAo+ICB9Owo+ICAKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBt
-dGtfZHBpX2NvbmYgbXQ4MTczX2NvbmYgPSB7Cj4gKwkucmVnX2hfZnJlX2NvbiA9IDB4ZTAsCj4g
-K307Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBtdGtfZHBpX29mX2lk
-c1tdID0gewo+ICsJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZHBpIiwKPiArCSAg
-LmRhdGEgPSAmbXQ4MTczX2NvbmYsCj4gKwl9LAo+ICsJeyB9LAo+ICt9Owo+ICtNT0RVTEVfREVW
-SUNFX1RBQkxFKG9mLCBtdGtfZHBpX29mX2lkcyk7Cj4gKwo+ICBzdGF0aWMgaW50IG10a19kcGlf
-cHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgewo+ICAJc3RydWN0IGRldmlj
-ZSAqZGV2ID0gJnBkZXYtPmRldjsKPiBAQCAtNjc1LDEzICs2OTIsMTggQEAgc3RhdGljIGludCBt
-dGtfZHBpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAlzdHJ1Y3QgcmVz
-b3VyY2UgKm1lbTsKPiAgCXN0cnVjdCBkZXZpY2Vfbm9kZSAqYnJpZGdlX25vZGU7Cj4gIAlpbnQg
-Y29tcF9pZDsKPiArCWNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgKm1hdGNoOwo+ICAJaW50IHJl
-dDsKPiAgCj4gKwltYXRjaCA9IG9mX21hdGNoX25vZGUobXRrX2RwaV9vZl9pZHMsIGRldi0+b2Zf
-bm9kZSk7Cj4gKwlpZiAoIW1hdGNoKQo+ICsJCXJldHVybiAtRU5PREVWOwoKT25lIG1vcmUgYmxh
-bmsgbGluZS4KClJlZ2FyZHMsCkNLCgo+ICAJZHBpID0gZGV2bV9remFsbG9jKGRldiwgc2l6ZW9m
-KCpkcGkpLCBHRlBfS0VSTkVMKTsKPiAgCWlmICghZHBpKQo+ICAJCXJldHVybiAtRU5PTUVNOwo+
-ICAKPiAgCWRwaS0+ZGV2ID0gZGV2Owo+ICsJZHBpLT5jb25mID0gKHN0cnVjdCBtdGtfZHBpX2Nv
-bmYgKiltYXRjaC0+ZGF0YTsKPiAgCj4gIAltZW0gPSBwbGF0Zm9ybV9nZXRfcmVzb3VyY2UocGRl
-diwgSU9SRVNPVVJDRV9NRU0sIDApOwo+ICAJZHBpLT5yZWdzID0gZGV2bV9pb3JlbWFwX3Jlc291
-cmNlKGRldiwgbWVtKTsKPiBAQCAtNzYwLDExICs3ODIsNiBAQCBzdGF0aWMgaW50IG10a19kcGlf
-cmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAlyZXR1cm4gMDsKPiAgfQo+
-ICAKPiAtc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXRrX2RwaV9vZl9pZHNbXSA9
-IHsKPiAtCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRwaSIsIH0sCj4gLQl7fQo+
-IC19Owo+IC0KPiAgc3RydWN0IHBsYXRmb3JtX2RyaXZlciBtdGtfZHBpX2RyaXZlciA9IHsKPiAg
-CS5wcm9iZSA9IG10a19kcGlfcHJvYmUsCj4gIAkucmVtb3ZlID0gbXRrX2RwaV9yZW1vdmUsCj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpX3JlZ3MuaCBiL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpX3JlZ3MuaAo+IGluZGV4IDRiNmFkNDc1MWEz
-MS4uMDQwNDQ0ZDc3MThkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHBpX3JlZ3MuaAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpX3Jl
-Z3MuaAo+IEBAIC0yMjMsNiArMjIzLDUgQEAKPiAgI2RlZmluZSBFU0FWX0NPREUyCQkJKDB4RkZG
-IDw8IDApCj4gICNkZWZpbmUgRVNBVl9DT0RFM19NU0IJCQlCSVQoMTYpCj4gIAo+IC0jZGVmaW5l
-IERQSV9IX0ZSRV9DT04JCTB4RTAKPiAgI2RlZmluZSBIX0ZSRV8yTgkJCUJJVCgyNSkKPiAgI2Vu
-ZGlmIC8qIF9fTVRLX0RQSV9SRUdTX0ggKi8KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWwK
+Add a jpeg decoder device node for MT7623.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ arch/arm/boot/dts/mt7623.dtsi | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+index a46987b..d01bdee 100644
+--- a/arch/arm/boot/dts/mt7623.dtsi
++++ b/arch/arm/boot/dts/mt7623.dtsi
+@@ -764,6 +764,21 @@
+ 		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
+ 	};
+ 
++	jpegdec: jpegdec@15004000 {
++		compatible = "mediatek,mt7623-jpgdec",
++			     "mediatek,mt2701-jpgdec";
++		reg = <0 0x15004000 0 0x1000>;
++		interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW>;
++		clocks =  <&imgsys CLK_IMG_JPGDEC_SMI>,
++			  <&imgsys CLK_IMG_JPGDEC>;
++		clock-names = "jpgdec-smi",
++			      "jpgdec";
++		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
++		mediatek,larb = <&larb2>;
++		iommus = <&iommu MT2701_M4U_PORT_JPGDEC_WDMA>,
++			 <&iommu MT2701_M4U_PORT_JPGDEC_BSDMA>;
++	};
++
+ 	vdecsys: syscon@16000000 {
+ 		compatible = "mediatek,mt7623-vdecsys",
+ 			     "mediatek,mt2701-vdecsys",
+-- 
+1.9.1
