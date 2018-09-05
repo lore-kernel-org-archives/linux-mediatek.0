@@ -1,48 +1,117 @@
-From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: mt76x0 bug report
-Date: Tue, 4 Sep 2018 23:04:29 +0200
-Message-ID: <CAJ0CqmWAqdB8Og7fabLDeZnzFO5Aw5Qd0cYGaLrs7Ls-zM_yQw@mail.gmail.com>
-References: <CAM0KTbBJuhuEyuZB_z_BcDSeXa-CJ+NwupssS2jLx0pJ0KXQGQ@mail.gmail.com>
+From: lei liu <leilk.liu@mediatek.com>
+Subject: Re: [PATCH 1/3] spis: mediatek: add bindings for Mediatek MT2712
+ soc platform
+Date: Wed, 5 Sep 2018 11:00:53 +0800
+Message-ID: <1536116453.27607.7.camel@mhfsdcap03>
+References: <1535437685-30230-1-git-send-email-leilk.liu@mediatek.com>
+ <1535437685-30230-2-git-send-email-leilk.liu@mediatek.com>
+ <5b8e8a7f.1c69fb81.dab09.e985@mx.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAM0KTbBJuhuEyuZB_z_BcDSeXa-CJ+NwupssS2jLx0pJ0KXQGQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <5b8e8a7f.1c69fb81.dab09.e985@mx.google.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, yt.shen@mediatek.com, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, mengqi.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
->
-> I have one mt76x2u (Alfa AWUS036ACM) and a few mt76x0.
->
-> I've noticed two additional issues in my testing.
->
-> First issue, is that it appears the mt76x0 devices don't work properly
-> in monitor mode.  Sometimes they seem to monitor one channel properly,
-> but nothing else.  The mt76x2u works great, channel control, lots of
-> packets, etc.
+On Tue, 2018-09-04 at 08:18 -0500, Rob Herring wrote:
+> On Tue, Aug 28, 2018 at 02:28:03PM +0800, Leilk Liu wrote:
+> > This patch adds a DT binding documentation for the MT2712 soc.
+> > 
+> > Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/spi/spi-slave-mt27xx.txt   |   39 ++++++++++++++++++++
+> >  1 file changed, 39 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt b/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
+> > new file mode 100644
+> > index 0000000..dcb8934
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
+> > @@ -0,0 +1,39 @@
+> > +Binding for MTK SPI Slave controller
+> 
+> Only does slave mode? If not, then the file name and doc should be just 
+> for the SPI controller (master and slave). The "spi-slave" property 
+> selects the mode. If it is only slave mode, then you don't need the 
+> spi-slave property.
+> 
 
-Could you elaborate a little bit please? how can you reproduce the issue?
-just add an interface in monitor mode and run a scan?
+yes, this is only for slave mode, and I'll remove spi-slave property,
+thanks.
 
->
-> Second issue, and frankly a very minor one, is that the TP-Link T1U
-> (which is a 5GHz only device) still thinks it has support for 2.4GHz,
-> both in managed and monitor mode.
+> 
+> > +
+> > +Required properties:
+> > +- compatible: should be one of the following.
+> > +    - mediatek,mt2712-spi: for mt2712 platforms
+> > +
+> > +- reg: Address and length of the register set for the device
+> > +
+> > +- interrupts: Should contain spi interrupt
+> > +
+> > +- clocks: phandles to input clocks.
+> > +  The first should be one of the following. It's PLL.
+> > +   -  <&topckgen CLK_TOP_UNIVPLL1_D2>: specify parent clock 312MHZ.
+> > +				      It's the default one.
+> > +   -  <&topckgen CLK_TOP_UNIVPLL1_D4>: specify parent clock 156MHZ.
+> > +   -  <&topckgen CLK_TOP_UNIVPLL2_D4>: specify parent clock 104MHZ.
+> > +   -  <&topckgen CLK_TOP_UNIVPLL1_D8>: specify parent clock 78MHZ.
+> > +  The second should be <&topckgen CLK_TOP_SPISLV_SEL>. It's clock mux.
+> > +  The third is <&infracfg CLK_INFRA_AO_SPI1>. It's clock gate.
+> > +
+> > +- clock-names: shall be "parent-clk" for the parent clock, "sel-clk" for the
+> > +  muxes clock, and "spi-clk" for the clock gate.
+> 
+> "-clk" is redundant.
+> 
 
-I guess it depends on eeprom values. Could you please enable debug
-messages a paste
-syslog output?
+ok, I'll fix it, thanks.
 
->
-> Lastly, I already mentioned in the other thread, but it would be
-> awesome if firmware version was available to ethtool.
->
+> Is the parent clock actually connected to the block? The assigned-clocks 
+> properties are used for constraints on parent clocks.
+> 
 
-Ack, I will take care of it
-Regards,
+Thanks for your comment.
+The parent and sel clk can select the source clk of spi module.
+And I already use assigned-clocks and assigned-clocks-parents to set
+them in patch v2.
 
-Lorenzo
+> > +
+> > +- spi-slave: Empty property indicating the SPI controller is used in slave mode.
+> > +
+> > +Example:
+> > +
+> > +- SoC Specific Portion:
+> > +spis: spi@10013000 {
+> > +	compatible = "mediatek,mt2712-spi-slave";
+> > +	reg = <0 0x10013000 0 0x100>;
+> > +	interrupts = <GIC_SPI 283 IRQ_TYPE_LEVEL_LOW>;
+> > +	clocks = <&topckgen CLK_TOP_UNIVPLL1_D2>,
+> > +		<&topckgen CLK_TOP_SPISLV_SEL>,
+> > +		<&infracfg CLK_INFRA_AO_SPI1>;
+> > +	clock-names = "parent-clk", "sel-clk", "spi-clk";
+> > +	spi-slave;
+> > +	status = "disabled";
+> 
+> Don't should status in examples.
+> 
 
-> Thanks for all your hard work on this,
-> Zero
+ok, I'll fix it, thanks
+
+> > +};
+> > -- 
+> > 1.7.9.5
+> > 
+> 
