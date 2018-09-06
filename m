@@ -1,65 +1,93 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 05/13] drm/mediatek: dpi use new API for finding bridge
-Date: Thu, 6 Sep 2018 09:49:53 +0800
-Message-ID: <1536198593.4618.9.camel@mtksdaap41>
+Subject: Re: [PATCH v2 04/13] drm/mediatek: add clock factor for different IC
+Date: Thu, 6 Sep 2018 10:11:47 +0800
+Message-ID: <1536199907.4618.17.camel@mtksdaap41>
 References: <20180905083146.14727-1-bibby.hsieh@mediatek.com>
- <20180905083146.14727-6-bibby.hsieh@mediatek.com>
+         <20180905083146.14727-5-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180905083146.14727-6-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180905083146.14727-5-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEJpYmJ5OgoKT24gV2VkLCAyMDE4LTA5LTA1IGF0IDE2OjMxICswODAwLCBCaWJieSBIc2ll
-aCB3cm90ZToKPiBGcm9tOiBjaHVuaHVpIGRhaSA8Y2h1bmh1aS5kYWlAbWVkaWF0ZWsuY29tPgo+
-IAo+IFVzaW5nIG5ldyBBUEkgZm9yIGZpbmRpbmcgYnJpZGdlLgo+IAoKVGhpcyBwYXRjaCBsb29r
-cyBnb29kLCBidXQgeW91ciBkZXNjcmlwdGlvbiBpcyBzbyBzaW1wbGUgdGhhdCB3ZSBkb24ndApr
-bm93IHdoeSB5b3Ugd2FudCB0byBkbyB0aGlzLiBJbiBbMV0sIFJvYiB3YW50cyB0byBjbGVhbiB1
-cCBPRiBncmFwaApBUEksIHNvIGluIFsyXSwgbXRrX2RzaS5jIHVzZSBkcm1fb2ZfZmluZF9wYW5l
-bF9vcl9icmlkZ2UoKSB0byBkbyB0aGlzCmNsZWFuLXVwLiBJZiB5b3VyIHJlYXNvbiBpcyBjbGVh
-bi11cCwgZGVzY3JpYmUgaXQgaW4gY29tbWl0IG1lc3NhZ2UuCgpbMV0gaHR0cHM6Ly9sa21sLm9y
-Zy9sa21sLzIwMTcvMi8zLzcxNgpbMl0gaHR0cHM6Ly9sa21sLm9yZy9sa21sLzIwMTcvMi8zLzcx
-OQoKUmVnYXJkcywKQ0sKCj4gU2lnbmVkLW9mZi1ieTogY2h1bmh1aSBkYWkgPGNodW5odWkuZGFp
-QG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGku
-YyB8IDE3ICsrKysrKystLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA3IGluc2VydGlvbnMo
-KyksIDEwIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RwaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+IGlu
-ZGV4IDM3NThjZmViNTg2Yi4uZWQyYzE1M2M3MGEyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHBpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RwaS5jCj4gQEAgLTE0LDYgKzE0LDcgQEAKPiAgI2luY2x1ZGUgPGRybS9kcm1QLmg+Cj4g
-ICNpbmNsdWRlIDxkcm0vZHJtX2NydGMuaD4KPiAgI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxw
-ZXIuaD4KPiArI2luY2x1ZGUgPGRybS9kcm1fb2YuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L2tlcm5l
-bC5oPgo+ICAjaW5jbHVkZSA8bGludXgvY29tcG9uZW50Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9w
-bGF0Zm9ybV9kZXZpY2UuaD4KPiBAQCAtNzA4LDcgKzcwOSw2IEBAIHN0YXRpYyBpbnQgbXRrX2Rw
-aV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAJc3RydWN0IGRldmljZSAq
-ZGV2ID0gJnBkZXYtPmRldjsKPiAgCXN0cnVjdCBtdGtfZHBpICpkcGk7Cj4gIAlzdHJ1Y3QgcmVz
-b3VyY2UgKm1lbTsKPiAtCXN0cnVjdCBkZXZpY2Vfbm9kZSAqYnJpZGdlX25vZGU7Cj4gIAlpbnQg
-Y29tcF9pZDsKPiAgCWNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgKm1hdGNoOwo+ICAJaW50IHJl
-dDsKPiBAQCAtNzU4LDE2ICs3NTgsMTMgQEAgc3RhdGljIGludCBtdGtfZHBpX3Byb2JlKHN0cnVj
-dCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAkJcmV0dXJuIC1FSU5WQUw7Cj4gIAl9Cj4gIAo+
-IC0JYnJpZGdlX25vZGUgPSBvZl9ncmFwaF9nZXRfcmVtb3RlX25vZGUoZGV2LT5vZl9ub2RlLCAw
-LCAwKTsKPiAtCWlmICghYnJpZGdlX25vZGUpCj4gLQkJcmV0dXJuIC1FTk9ERVY7Cj4gLQo+IC0J
-ZGV2X2luZm8oZGV2LCAiRm91bmQgYnJpZGdlIG5vZGU6ICVwT0ZcbiIsIGJyaWRnZV9ub2RlKTsK
-PiAtCj4gLQlkcGktPmJyaWRnZSA9IG9mX2RybV9maW5kX2JyaWRnZShicmlkZ2Vfbm9kZSk7Cj4g
-LQlvZl9ub2RlX3B1dChicmlkZ2Vfbm9kZSk7Cj4gLQlpZiAoIWRwaS0+YnJpZGdlKQo+ICsJcmV0
-ID0gZHJtX29mX2ZpbmRfcGFuZWxfb3JfYnJpZGdlKGRldi0+b2Zfbm9kZSwgMCwgMCwKPiArCQkJ
-CQkgIE5VTEwsICZkcGktPmJyaWRnZSk7Cj4gKwlpZiAocmV0KSB7Cj4gKwkJZGV2X2VycihkZXYs
-ICJGYWlsZWQgdG8gZmluZCBwYW5lbCBvciBicmlkZ2U6ICVkXG4iLCByZXQpOwo+ICAJCXJldHVy
-biAtRVBST0JFX0RFRkVSOwo+ICsJfQo+ICsJZGV2X2luZm8oZGV2LCAiRm91bmQgYnJpZGdlIG5v
-ZGU6ICVwT0ZcbiIsIGRwaS0+YnJpZGdlKTsKPiAgCj4gIAljb21wX2lkID0gbXRrX2RkcF9jb21w
-X2dldF9pZChkZXYtPm9mX25vZGUsIE1US19EUEkpOwo+ICAJaWYgKGNvbXBfaWQgPCAwKSB7CgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi, Bibby:
+
+One inline comment.
+
+On Wed, 2018-09-05 at 16:31 +0800, Bibby Hsieh wrote:
+> From: chunhui dai <chunhui.dai@mediatek.com>
+> 
+> different IC has different clock designed in HDMI, the factor for
+> calculate clock should be different. Usinng the data in of_node
+> to find this factor.
+> 
+> Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dpi.c | 28 +++++++++++++++++++---------
+>  1 file changed, 19 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> index df27107b1f0b..3758cfeb586b 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -119,6 +119,7 @@ struct mtk_dpi_yc_limit {
+>  };
+>  
+>  struct mtk_dpi_conf {
+> +	unsigned int (*cal_factor)(int clock);
+>  	const u32 reg_h_fre_con;
+>  	bool edge_sel_en;
+>  };
+> @@ -458,16 +459,12 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+>  	unsigned long pll_rate;
+>  	unsigned int factor;
+>  
+> +	if (!dpi) {
+> +		dev_err(dpi->dev, "invalid argument\n");
+> +		return -EINVAL;
+> +	}
+
+I think this should not be in this patch, move to an independent patch.
+
+Regards,
+CK
+
+>  	/* let pll_rate can fix the valid range of tvdpll (1G~2GHz) */
+> -
+> -	if (mode->clock <= 27000)
+> -		factor = 3 << 4;
+> -	else if (mode->clock <= 84000)
+> -		factor = 3 << 3;
+> -	else if (mode->clock <= 167000)
+> -		factor = 3 << 2;
+> -	else
+> -		factor = 3 << 1;
+> +	factor = dpi->conf->cal_factor(mode->clock);
+>  	drm_display_mode_to_videomode(mode, &vm);
+>  	pll_rate = vm.pixelclock * factor;
+>  
+> @@ -681,7 +678,20 @@ static const struct component_ops mtk_dpi_component_ops = {
+>  	.unbind = mtk_dpi_unbind,
+>  };
+>  
+> +static unsigned int mt8173_calculate_factor(int clock)
+> +{
+> +	if (clock <= 27000)
+> +		return 3 << 4;
+> +	else if (clock <= 84000)
+> +		return 3 << 3;
+> +	else if (clock <= 167000)
+> +		return 3 << 2;
+> +	else
+> +		return 3 << 1;
+> +}
+> +
+>  static const struct mtk_dpi_conf mt8173_conf = {
+> +	.cal_factor = mt8173_calculate_factor,
+>  	.reg_h_fre_con = 0xe0,
+>  };
+>  
