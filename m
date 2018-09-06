@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 13/42] mt76x0: simplify mt76_mac_process_rx signature
-Date: Thu,  6 Sep 2018 11:18:29 +0200
-Message-ID: <1536225538-16454-14-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 14/42] mt76x0: add mt76x0_queue_rx_skb routine
+Date: Thu,  6 Sep 2018 11:18:30 +0200
+Message-ID: <1536225538-16454-15-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -12,61 +12,56 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 
-Remove data pointer from mt76_mac_process_rx routine signature
+Introduce mt76x0_queue_rx_skb routine as mt76x0 driver
+frame rx handler. mt76x0_queue_rx_skb will be run by mt76-usb layer
+rx datapath
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/dma.c | 2 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/mac.c | 4 ++--
- drivers/net/wireless/mediatek/mt76/mt76x0/mac.h | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  3 +++
+ drivers/net/wireless/mediatek/mt76/mt76x0/tx.c     | 15 +++++++++++++++
+ 2 files changed, 18 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/dma.c b/drivers/net/wireless/mediatek/mt76/mt76x0/dma.c
-index f29402861ced..82c2b37d0896 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/dma.c
-@@ -44,7 +44,7 @@ mt76x0_rx_skb_from_seg(struct mt76x0_dev *dev, struct mt76x02_rxwi *rxwi,
- 	if (!skb)
- 		return NULL;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+index 8b0bef9a15e4..8a01efb8d499 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+@@ -245,6 +245,9 @@ void mt76x0_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
+ void mt76x0_tx_status(struct mt76x0_dev *dev, struct sk_buff *skb);
+ void mt76x0_tx_stat(struct work_struct *work);
  
--	true_len = mt76x0_mac_process_rx(dev, skb, data, rxwi);
-+	true_len = mt76x0_mac_process_rx(dev, skb, rxwi);
- 	if (!true_len || true_len > seg_len)
- 		goto bad_frame;
++void mt76x0_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
++			 struct sk_buff *skb);
++
+ int mt76x0_dma_init(struct mt76x0_dev *dev);
+ void mt76x0_dma_cleanup(struct mt76x0_dev *dev);
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
-index 99e2e1225d55..2d8abeb413ac 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
-@@ -213,7 +213,7 @@ mt76x0_rx_is_our_beacon(struct mt76x0_dev *dev, u8 *data)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
+index d6dbd9b8d68b..7de739b7c46c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
+@@ -131,6 +131,21 @@ int mt76x0_tx_prepare_skb(struct mt76_dev *mdev, void *data,
+ 	return mt76x02_set_txinfo(skb, wcid, q2ep(*hwq_ptr));
  }
  
- u32 mt76x0_mac_process_rx(struct mt76x0_dev *dev, struct sk_buff *skb,
--			u8 *data, void *rxi)
-+			void *rxi)
++void mt76x0_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
++			 struct sk_buff *skb)
++{
++	struct mt76x0_dev *dev = container_of(mdev, struct mt76x0_dev, mt76);
++	void *rxwi = skb->data;
++
++	skb_pull(skb, sizeof(struct mt76x02_rxwi));
++	if (!mt76x0_mac_process_rx(dev, skb, rxwi)) {
++		dev_kfree_skb(skb);
++		return;
++	}
++
++	mt76_rx(&dev->mt76, q, skb);
++}
++
+ void mt76x0_tx_stat(struct work_struct *work)
  {
- 	struct mt76_rx_status *status = (struct mt76_rx_status *) skb->cb;
- 	struct mt76x02_rxwi *rxwi = rxi;
-@@ -239,7 +239,7 @@ u32 mt76x0_mac_process_rx(struct mt76x0_dev *dev, struct sk_buff *skb,
- 	mt76x02_mac_process_rate(status, rate);
- 
- 	spin_lock_bh(&dev->con_mon_lock);
--	if (mt76x0_rx_is_our_beacon(dev, data)) {
-+	if (mt76x0_rx_is_our_beacon(dev, skb->data)) {
- 		mt76x0_rx_monitor_beacon(dev, rxwi, rate, rssi);
- 	} else if (rxwi->rxinfo & cpu_to_le32(MT_RXINFO_UNICAST)) {
- 		if (dev->avg_rssi == 0)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.h
-index abce22a51c87..b887693a56b6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.h
-@@ -16,5 +16,5 @@
- #define __MT76_MAC_H
- 
- u32 mt76x0_mac_process_rx(struct mt76x0_dev *dev, struct sk_buff *skb,
--			u8 *data, void *rxi);
-+			void *rxi);
- #endif
+ 	struct mt76x0_dev *dev = container_of(work, struct mt76x0_dev,
 -- 
 2.7.5
