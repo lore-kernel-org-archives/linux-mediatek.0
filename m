@@ -1,132 +1,56 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 42/42] mt76x0: make device allocation bus neutral
-Date: Thu,  6 Sep 2018 11:18:58 +0200
-Message-ID: <1536225538-16454-43-git-send-email-sgruszka@redhat.com>
-References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
+Subject: Re: mt76x0 bug report
+Date: Thu, 6 Sep 2018 11:32:14 +0200
+Message-ID: <20180906093213.GB16539@redhat.com>
+References: <CAM0KTbBJuhuEyuZB_z_BcDSeXa-CJ+NwupssS2jLx0pJ0KXQGQ@mail.gmail.com>
+ <CAJ0CqmWAqdB8Og7fabLDeZnzFO5Aw5Qd0cYGaLrs7Ls-zM_yQw@mail.gmail.com>
+ <CAM0KTbAbjDYNOzivxMdLmYrV9QHgwkLp7zXpdCvn1Kf1uEcQTQ@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAM0KTbAbjDYNOzivxMdLmYrV9QHgwkLp7zXpdCvn1Kf1uEcQTQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Remove some USB specific code form mt76x0_alloc_device.
+On Wed, Sep 05, 2018 at 08:52:18PM +0000, Sid Hayn wrote:
+> On Tue, Sep 4, 2018 at 5:11 PM Lorenzo Bianconi
+> <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
+> >
+> > >
+> > > I have one mt76x2u (Alfa AWUS036ACM) and a few mt76x0.
+> > >
+> > > I've noticed two additional issues in my testing.
+> > >
+> > > First issue, is that it appears the mt76x0 devices don't work properly
+> > > in monitor mode.  Sometimes they seem to monitor one channel properly,
+> > > but nothing else.  The mt76x2u works great, channel control, lots of
+> > > packets, etc.
+> >
+> > Could you elaborate a little bit please? how can you reproduce the issue?
+> > just add an interface in monitor mode and run a scan?
+> 
+> Correct, standard stuff, use iw to create a monitor mode interface,
+> use iw to remove managed mode interface, run some tool such as kismet
+> or airodump-ng or even wireshark.
 
-Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
----
- drivers/net/wireless/mediatek/mt76/mt76x0/init.c   | 11 +++--------
- drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  3 ++-
- drivers/net/wireless/mediatek/mt76/mt76x0/pci.c    |  2 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/tx.c     |  3 ++-
- drivers/net/wireless/mediatek/mt76/mt76x0/usb.c    |  9 ++++++++-
- 5 files changed, 16 insertions(+), 12 deletions(-)
+But what exactly are the syptomps, I don't understand what you mean by
+"mt76x0 devices don't work properly in monitor mode" ?
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-index 4a899904d518..9c720906ea13 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-@@ -482,14 +482,9 @@ void mt76x0_cleanup(struct mt76x0_dev *dev)
- }
- EXPORT_SYMBOL_GPL(mt76x0_cleanup);
- 
--struct mt76x0_dev *mt76x0_alloc_device(struct device *pdev)
-+struct mt76x0_dev *
-+mt76x0_alloc_device(struct device *pdev, const struct mt76_driver_ops *drv_ops)
- {
--	static const struct mt76_driver_ops drv_ops = {
--		.tx_prepare_skb = mt76x0_tx_prepare_skb,
--		.tx_complete_skb = mt76x02_tx_complete_skb,
--		.tx_status_data = mt76x02_tx_status_data,
--		.rx_skb = mt76x0_queue_rx_skb,
--	};
- 	struct mt76x0_dev *dev;
- 	struct mt76_dev *mdev;
- 
-@@ -498,7 +493,7 @@ struct mt76x0_dev *mt76x0_alloc_device(struct device *pdev)
- 		return NULL;
- 
- 	mdev->dev = pdev;
--	mdev->drv = &drv_ops;
-+	mdev->drv = drv_ops;
- 
- 	dev = container_of(mdev, struct mt76x0_dev, mt76);
- 	mutex_init(&dev->reg_atomic_mutex);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-index 31267a180573..87eb084bd270 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-@@ -134,7 +134,8 @@ int mt76x0_burst_write_regs(struct mt76x0_dev *dev, u32 offset,
- 			     const u32 *data, int n);
- 
- /* Init */
--struct mt76x0_dev *mt76x0_alloc_device(struct device *dev);
-+struct mt76x0_dev *
-+mt76x0_alloc_device(struct device *pdev, const struct mt76_driver_ops *drv_ops);
- int mt76x0_init_hardware(struct mt76x0_dev *dev);
- int mt76x0_register_device(struct mt76x0_dev *dev);
- void mt76x0_cleanup(struct mt76x0_dev *dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
-index 244ab64560a6..eb383f96ec9a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
-@@ -40,7 +40,7 @@ mt76x0e_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 	if (ret)
- 		return ret;
- 
--	dev = mt76x0_alloc_device(&pdev->dev);
-+	dev = mt76x0_alloc_device(&pdev->dev, NULL);
- 	if (!dev)
- 		return -ENOMEM;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
-index b59b16d374e1..5306fc3a90fb 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
-@@ -95,6 +95,7 @@ int mt76x0_tx_prepare_skb(struct mt76_dev *mdev, void *data,
- 
- 	return mt76x02_set_txinfo(skb, wcid, q2ep(*hwq_ptr));
- }
-+EXPORT_SYMBOL_GPL(mt76x0_tx_prepare_skb);
- 
- void mt76x0_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
- 			 struct sk_buff *skb)
-@@ -110,4 +111,4 @@ void mt76x0_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
- 
- 	mt76_rx(&dev->mt76, q, skb);
- }
--
-+EXPORT_SYMBOL_GPL(mt76x0_queue_rx_skb);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
-index 9a803fb0cd5d..89e856745fec 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
-@@ -18,6 +18,7 @@
- #include "mt76x0.h"
- #include "usb.h"
- #include "trace.h"
-+#include "../mt76x02_util.h"
- 
- static struct usb_device_id mt76x0_device_table[] = {
- 	{ USB_DEVICE(0x148F, 0x7610) },	/* MT7610U */
-@@ -49,12 +50,18 @@ static struct usb_device_id mt76x0_device_table[] = {
- static int mt76x0u_probe(struct usb_interface *usb_intf,
- 			 const struct usb_device_id *id)
- {
-+	static const struct mt76_driver_ops drv_ops = {
-+		.tx_prepare_skb = mt76x0_tx_prepare_skb,
-+		.tx_complete_skb = mt76x02_tx_complete_skb,
-+		.tx_status_data = mt76x02_tx_status_data,
-+		.rx_skb = mt76x0_queue_rx_skb,
-+	};
- 	struct usb_device *usb_dev = interface_to_usbdev(usb_intf);
- 	struct mt76x0_dev *dev;
- 	u32 asic_rev, mac_rev;
- 	int ret;
- 
--	dev = mt76x0_alloc_device(&usb_intf->dev);
-+	dev = mt76x0_alloc_device(&usb_intf->dev, &drv_ops);
- 	if (!dev)
- 		return -ENOMEM;
- 
--- 
-2.7.5
+> > I guess it depends on eeprom values. Could you please enable debug
+> > messages a paste
+> > syslog output?
+> 
+> I don't see a mediatek specific debug near the driver selection in
+> menuconfig, what debug messages do you want me to enable and how?
+
+You need to uncomment this line:
+
+# ccflags-y := -DDEBUG
+
+in drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
+
+Thanks
+Stanislaw
