@@ -1,129 +1,118 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 00/42] mt76 patches 2018-09-06
-Date: Thu,  6 Sep 2018 11:18:16 +0200
-Message-ID: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 02/42] mt76: move mt76x2_tx_complete routine in mt76x02-lib module
+Date: Thu,  6 Sep 2018 11:18:18 +0200
+Message-ID: <1536225538-16454-3-git-send-email-sgruszka@redhat.com>
+References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-First of all I know that I should post small set of about 12 patches max,
-but let say this is last exception. Starting from now, I'll not gathering
-patches on my github tree and mt76 patches need to be posted directly to
-linux-wireless mailing list.
-  
-The set include:
-- more of mt76x0/mt76x2 integration
-- various cleanups
-- split between mmio and usb bus modules 
-- initial mt76x0e bus probe/remove functions.
+From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 
-This is on top of my previous set:
-https://marc.info/?l=linux-wireless&m=153607208328431&w=2
+Move mt76x2_tx_complete routine in mt76x02-lib module and rename it in
+mt76x02_tx_complete in order to be used in mt76x0 driver
 
-Lorenzo's patches were reviewed and tested by me and my patches were
-hopefully reviewed by Lorenzo. If some issues will be found in this
-or previous set, I hope the issues could by addressed by incremental 
-patch(es) on top of this set.
+Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.c     | 15 +++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.h     |  1 +
+ drivers/net/wireless/mediatek/mt76/mt76x2.h           |  1 -
+ drivers/net/wireless/mediatek/mt76/mt76x2_mac.c       |  3 ++-
+ drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c | 16 ----------------
+ drivers/net/wireless/mediatek/mt76/mt76x2u_core.c     |  2 +-
+ 6 files changed, 19 insertions(+), 19 deletions(-)
 
-Lorenzo Bianconi (35):
-  mt76x2: change mt76x2_tx_complete routine signature
-  mt76: move mt76x2_tx_complete routine in mt76x02-lib module
-  mt76: move mt76x2u_remove_dma_hdr in mt76x02-lib module
-  mt76: move mt76x2u_tx_complete_skb in mt76x02-lib moudule
-  mt76: move mt76_qsel definition in dma.h
-  mt76: move mt76x2u_set_txinfo in mt76x02-lib module
-  mt76x0: introduce mt76x0_tx_prepare_skb routine
-  mt76: move mt76x2u_tx_status_data in mt76x02-lib module
-  mt76x0: init mt76_driver_ops callbacks
-  mt76x0: use mt76_alloc_device for device allocation
-  mt76x0: disable usb rx bulk aggregation
-  mt76x0: mark device as running in mt76x0_start
-  mt76x0: simplify mt76_mac_process_rx signature
-  mt76x0: add mt76x0_queue_rx_skb routine
-  mt76x0: unify tx/rx datapath with mt76x2u driver
-  mt76x0: stop stat workqueue at hw stop
-  mt76x0: set max fragments size
-  mt76x0: remove unused dma.c source file
-  mt76x0: remove unused stat work_queue
-  mt76x0: remove unused {tx/rx}_queue definitions
-  mt76x0: remove unused mt76x0_tx_status routine
-  mt76x0: remove unused endpoint definitions
-  mt76x0: remove unused stat_work
-  mt76x0: enable per-sta tx queueing
-  mt76x0: init hw capabilities
-  mt76: remove unused MT76_MORE_STATS state
-  mt76x0: remove mt76x0_stop_hardware routine
-  mt76: move mt76 rate definitions in mt76x02-lib module
-  mt76x0: alloc mcu buffers first in mt76x0_mcu_cmd_init
-  mt76x0: fix memory leak during hw probe
-  mt76x0: move stop related routines in mt76x0_mac_stop
-  mt76x0: move mt76x0_init_hardware in mt76x0_register_device
-  mt76x0: do not free/alloc buffers during suspend/resume
-  mt76x0: remove has_{2,5}ghz fields of mt76x0_eeprom_params
-  mt76x0: use mt76_register_device for device registration
-
-Stanislaw Gruszka (7):
-  mt76x0: trim rx skb to proper length
-  mt76x0: inital split between pci and usb
-  mt76: initial separation of mmio part
-  mt76: move some irq code to common mmio module
-  mt76x0: remove unused mt76x0_wcid
-  mt76x0: remove some usb specific code from mt76x0_register_device
-  mt76x0: make device allocation bus neutral
-
- drivers/net/wireless/mediatek/mt76/Kconfig         |  31 +-
- drivers/net/wireless/mediatek/mt76/Makefile        |  10 +-
- drivers/net/wireless/mediatek/mt76/dma.c           |  68 +++
- drivers/net/wireless/mediatek/mt76/dma.h           |   7 +
- drivers/net/wireless/mediatek/mt76/mac80211.c      |   1 -
- drivers/net/wireless/mediatek/mt76/mmio.c          |  32 +-
- drivers/net/wireless/mediatek/mt76/mmio.h          |  34 ++
- drivers/net/wireless/mediatek/mt76/mmio_trace.c    |  23 +
- drivers/net/wireless/mediatek/mt76/mmio_trace.h    |  71 +++
- drivers/net/wireless/mediatek/mt76/mt76.h          |  20 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/Makefile |  11 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/dma.c    | 526 ---------------------
- drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c |  26 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h |   3 -
- drivers/net/wireless/mediatek/mt76/mt76x0/init.c   | 332 ++++---------
- drivers/net/wireless/mediatek/mt76/mt76x0/mac.c    |  13 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/mac.h    |   2 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/main.c   |  14 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c    |   6 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  92 +---
- drivers/net/wireless/mediatek/mt76/mt76x0/pci.c    |  81 ++++
- drivers/net/wireless/mediatek/mt76/mt76x0/tx.c     | 122 ++---
- drivers/net/wireless/mediatek/mt76/mt76x0/usb.c    |  63 ++-
- drivers/net/wireless/mediatek/mt76/mt76x02_util.c  |  98 ++++
- drivers/net/wireless/mediatek/mt76/mt76x02_util.h  |   8 +
- drivers/net/wireless/mediatek/mt76/mt76x2.h        |  18 -
- drivers/net/wireless/mediatek/mt76/mt76x2_core.c   |  26 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_dfs.c    |   7 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_dma.c    |  13 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_dma.h    |  29 --
- drivers/net/wireless/mediatek/mt76/mt76x2_init.c   |  11 +-
- .../wireless/mediatek/mt76/mt76x2_init_common.c    |  29 --
- drivers/net/wireless/mediatek/mt76/mt76x2_mac.c    |  12 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_mcu.c    |   2 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_tx.c     |   2 +-
- .../net/wireless/mediatek/mt76/mt76x2_tx_common.c  |  18 +-
- drivers/net/wireless/mediatek/mt76/mt76x2u.h       |   5 +-
- drivers/net/wireless/mediatek/mt76/mt76x2u_core.c  |  59 +--
- drivers/net/wireless/mediatek/mt76/mt76x2u_init.c  |   9 +-
- drivers/net/wireless/mediatek/mt76/trace.c         |  23 -
- drivers/net/wireless/mediatek/mt76/trace.h         |  71 ---
- drivers/net/wireless/mediatek/mt76/tx.c            |  66 ---
- 42 files changed, 725 insertions(+), 1369 deletions(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mmio.h
- create mode 100644 drivers/net/wireless/mediatek/mt76/mmio_trace.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mmio_trace.h
- delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/dma.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
- delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x2_dma.h
- delete mode 100644 drivers/net/wireless/mediatek/mt76/trace.c
- delete mode 100644 drivers/net/wireless/mediatek/mt76/trace.h
-
--- 
-2.7.5
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
+index a32ce164fb76..37b70d723fba 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
+@@ -377,4 +377,19 @@ void mt76x02_remove_hdr_pad(struct sk_buff *skb, int len)
+ }
+ EXPORT_SYMBOL_GPL(mt76x02_remove_hdr_pad);
+ 
++void mt76x02_tx_complete(struct mt76_dev *dev, struct sk_buff *skb)
++{
++	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
++
++	if (info->flags & IEEE80211_TX_CTL_AMPDU) {
++		ieee80211_free_txskb(dev->hw, skb);
++	} else {
++		ieee80211_tx_info_clear_status(info);
++		info->status.rates[0].idx = -1;
++		info->flags |= IEEE80211_TX_STAT_ACK;
++		ieee80211_tx_status(dev->hw, skb);
++	}
++}
++EXPORT_SYMBOL_GPL(mt76x02_tx_complete);
++
+ MODULE_LICENSE("Dual BSD/GPL");
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.h b/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
+index 953c4bea4051..19fe42c40bed 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
+@@ -45,4 +45,5 @@ void mt76x02_sta_rate_tbl_update(struct ieee80211_hw *hw,
+ 				struct ieee80211_sta *sta);
+ int mt76x02_insert_hdr_pad(struct sk_buff *skb);
+ void mt76x02_remove_hdr_pad(struct sk_buff *skb, int len);
++void mt76x02_tx_complete(struct mt76_dev *dev, struct sk_buff *skb);
+ #endif
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2.h b/drivers/net/wireless/mediatek/mt76/mt76x2.h
+index 9f495d4cfb6a..efed3c0a82ce 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2.h
+@@ -215,7 +215,6 @@ int mt76x2_tx_queue_mcu(struct mt76x2_dev *dev, enum mt76_txq_id qid,
+ 			struct sk_buff *skb, int cmd, int seq);
+ void mt76x2_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
+ 	       struct sk_buff *skb);
+-void mt76x2_tx_complete(struct mt76_dev *dev, struct sk_buff *skb);
+ int mt76x2_tx_prepare_skb(struct mt76_dev *mdev, void *txwi,
+ 			  struct sk_buff *skb, struct mt76_queue *q,
+ 			  struct mt76_wcid *wcid, struct ieee80211_sta *sta,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c
+index db0cb4a2500b..241ede98e6d3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c
+@@ -19,6 +19,7 @@
+ #include "mt76x2_mcu.h"
+ #include "mt76x2_eeprom.h"
+ #include "mt76x2_trace.h"
++#include "mt76x02_util.h"
+ 
+ void mt76x2_mac_set_bssid(struct mt76x2_dev *dev, u8 idx, const u8 *addr)
+ {
+@@ -73,7 +74,7 @@ mt76x2_mac_queue_txdone(struct mt76x2_dev *dev, struct sk_buff *skb,
+ 	txi->wcid = txwi->wcid;
+ 	txi->pktid = txwi->pktid;
+ 	trace_mac_txdone_add(dev, txwi->wcid, txwi->pktid);
+-	mt76x2_tx_complete(&dev->mt76, skb);
++	mt76x02_tx_complete(&dev->mt76, skb);
+ }
+ 
+ void mt76x2_mac_process_tx_status_fifo(struct mt76x2_dev *dev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
+index 663229dc269d..c3c06e036832 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
+@@ -116,19 +116,3 @@ void mt76x2_tx_set_txpwr_auto(struct mt76x2_dev *dev, s8 txpwr)
+ 		       MT_PROT_AUTO_TX_CFG_AUTO_PADJ, txpwr_adj);
+ }
+ EXPORT_SYMBOL_GPL(mt76x2_tx_set_txpwr_auto);
+-
+-void mt76x2_tx_complete(struct mt76_dev *dev, struct sk_buff *skb)
+-{
+-	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
+-
+-	if (info->flags & IEEE80211_TX_CTL_AMPDU) {
+-		ieee80211_free_txskb(dev->hw, skb);
+-	} else {
+-		ieee80211_tx_info_clear_status(info);
+-		info->status.rates[0].idx = -1;
+-		info->flags |= IEEE80211_TX_STAT_ACK;
+-		ieee80211_tx_status(dev->hw, skb);
+-	}
+-}
+-EXPORT_SYMBOL_GPL(mt76x2_tx_complete);
