@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 04/42] mt76: move mt76x2u_tx_complete_skb in mt76x02-lib moudule
-Date: Thu,  6 Sep 2018 11:18:20 +0200
-Message-ID: <1536225538-16454-5-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 05/42] mt76: move mt76_qsel definition in dma.h
+Date: Thu,  6 Sep 2018 11:18:21 +0200
+Message-ID: <1536225538-16454-6-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -12,73 +12,142 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 
-Move mt76x2u_tx_complete_skb routine in mt76x02-lib module
-and rename it in mt76x02_tx_complete_skb in order to be reused
-in mt76x0 driver
+Move mt76_qsel definition in dma.h in order to be reused in mt76x0
+driver. Moreover remove empty mt76x2_dma.h header file
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x02_util.c | 8 ++++++++
- drivers/net/wireless/mediatek/mt76/mt76x02_util.h | 2 ++
- drivers/net/wireless/mediatek/mt76/mt76x2u.h      | 2 --
- drivers/net/wireless/mediatek/mt76/mt76x2u_core.c | 8 --------
- drivers/net/wireless/mediatek/mt76/mt76x2u_init.c | 3 ++-
- 5 files changed, 12 insertions(+), 11 deletions(-)
+ drivers/net/wireless/mediatek/mt76/dma.h           |  7 ++++++
+ drivers/net/wireless/mediatek/mt76/mt76x2_dma.c    |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_dma.h    | 29 ----------------------
+ drivers/net/wireless/mediatek/mt76/mt76x2_mcu.c    |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_tx.c     |  2 +-
+ .../net/wireless/mediatek/mt76/mt76x2_tx_common.c  |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2u.h       |  2 +-
+ 7 files changed, 12 insertions(+), 34 deletions(-)
+ delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x2_dma.h
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-index a8ad3088ad8b..e4cf4e934153 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-@@ -404,4 +404,12 @@ void mt76x02_tx_complete(struct mt76_dev *dev, struct sk_buff *skb)
- }
- EXPORT_SYMBOL_GPL(mt76x02_tx_complete);
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.h b/drivers/net/wireless/mediatek/mt76/dma.h
+index 828e52ae70e8..aa2faf19bf05 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.h
++++ b/drivers/net/wireless/mediatek/mt76/dma.h
+@@ -75,6 +75,13 @@ enum dma_msg_port {
+ 	DISCARD,
+ };
  
-+void mt76x02_tx_complete_skb(struct mt76_dev *mdev, struct mt76_queue *q,
-+			    struct mt76_queue_entry *e, bool flush)
-+{
-+	mt76x02_remove_dma_hdr(e->skb);
-+	mt76x02_tx_complete(mdev, e->skb);
-+}
-+EXPORT_SYMBOL_GPL(mt76x02_tx_complete_skb);
++enum mt76_qsel {
++	MT_QSEL_MGMT,
++	MT_QSEL_HCCA,
++	MT_QSEL_EDCA,
++	MT_QSEL_EDCA_2,
++};
 +
- MODULE_LICENSE("Dual BSD/GPL");
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.h b/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
-index 6b6e963454c8..a7c20e6fb4ab 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
-@@ -47,4 +47,6 @@ int mt76x02_insert_hdr_pad(struct sk_buff *skb);
- void mt76x02_remove_hdr_pad(struct sk_buff *skb, int len);
- void mt76x02_tx_complete(struct mt76_dev *dev, struct sk_buff *skb);
- void mt76x02_remove_dma_hdr(struct sk_buff *skb);
-+void mt76x02_tx_complete_skb(struct mt76_dev *mdev, struct mt76_queue *q,
-+			    struct mt76_queue_entry *e, bool flush);
- #endif
+ enum mt76_mcu_evt_type {
+ 	EVT_CMD_DONE,
+ 	EVT_CMD_ERROR,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_dma.c b/drivers/net/wireless/mediatek/mt76/mt76x2_dma.c
+index 98ecc8b68723..44ca660775fd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_dma.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_dma.c
+@@ -15,7 +15,7 @@
+  */
+ 
+ #include "mt76x2.h"
+-#include "mt76x2_dma.h"
++#include "dma.h"
+ 
+ int
+ mt76x2_tx_queue_mcu(struct mt76x2_dev *dev, enum mt76_txq_id qid,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_dma.h b/drivers/net/wireless/mediatek/mt76/mt76x2_dma.h
+deleted file mode 100644
+index da294558c268..000000000000
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_dma.h
++++ /dev/null
+@@ -1,29 +0,0 @@
+-/*
+- * Copyright (C) 2016 Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+- *
+- * Permission to use, copy, modify, and/or distribute this software for any
+- * purpose with or without fee is hereby granted, provided that the above
+- * copyright notice and this permission notice appear in all copies.
+- *
+- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+- * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+- * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+- * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+- * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+- * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+- * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+- */
+-
+-#ifndef __MT76x2_DMA_H
+-#define __MT76x2_DMA_H
+-
+-#include "dma.h"
+-
+-enum mt76x2_qsel {
+-	MT_QSEL_MGMT,
+-	MT_QSEL_HCCA,
+-	MT_QSEL_EDCA,
+-	MT_QSEL_EDCA_2,
+-};
+-
+-#endif
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76x2_mcu.c
+index 743da57760dc..c90803334ef0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_mcu.c
+@@ -20,8 +20,8 @@
+ 
+ #include "mt76x2.h"
+ #include "mt76x2_mcu.h"
+-#include "mt76x2_dma.h"
+ #include "mt76x2_eeprom.h"
++#include "dma.h"
+ 
+ static struct sk_buff *mt76x2_mcu_msg_alloc(const void *data, int len)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_tx.c b/drivers/net/wireless/mediatek/mt76/mt76x2_tx.c
+index 41bae90e5f6a..41d660991839 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_tx.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_tx.c
+@@ -15,8 +15,8 @@
+  */
+ 
+ #include "mt76x2.h"
+-#include "mt76x2_dma.h"
+ #include "mt76x02_util.h"
++#include "dma.h"
+ 
+ struct beacon_bc_data {
+ 	struct mt76x2_dev *dev;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
+index c3c06e036832..dbb3071bed1b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
+@@ -16,7 +16,7 @@
+  */
+ 
+ #include "mt76x2.h"
+-#include "mt76x2_dma.h"
++#include "dma.h"
+ 
+ void mt76x2_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
+ 	       struct sk_buff *skb)
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u.h b/drivers/net/wireless/mediatek/mt76/mt76x2u.h
-index a83c17cb6be5..6946123820e8 100644
+index 6946123820e8..180779bebaa2 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x2u.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x2u.h
-@@ -74,8 +74,6 @@ int mt76x2u_tx_prepare_skb(struct mt76_dev *mdev, void *data,
- 			   struct sk_buff *skb, struct mt76_queue *q,
- 			   struct mt76_wcid *wcid, struct ieee80211_sta *sta,
- 			   u32 *tx_info);
--void mt76x2u_tx_complete_skb(struct mt76_dev *mdev, struct mt76_queue *q,
--			     struct mt76_queue_entry *e, bool flush);
- int mt76x2u_skb_dma_info(struct sk_buff *skb, enum dma_msg_port port,
- 			 u32 flags);
+@@ -20,8 +20,8 @@
+ #include <linux/device.h>
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c b/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c
-index 01dcc5382798..7ba5e5c71dc3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c
-@@ -86,11 +86,3 @@ int mt76x2u_tx_prepare_skb(struct mt76_dev *mdev, void *data,
+ #include "mt76x2.h"
+-#include "mt76x2_dma.h"
+ #include "mt76x2_mcu.h"
++#include "dma.h"
  
- 	return mt76x2u_set_txinfo(skb, wcid, q2ep(*hwq_ptr));
- }
--
--void mt76x2u_tx_complete_skb(struct mt76_dev *mdev, struct mt76_queue *q,
--			     struct mt76_queue_entry *e, bool flush)
--{
--	mt76x02_remove_dma_hdr(e->skb);
--	mt76x02_tx_complete(mdev, e->skb);
--}
+ #define MT7612U_EEPROM_SIZE		512
+ 
+-- 
+2.7.5
