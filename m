@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 01/42] mt76x2: change mt76x2_tx_complete routine signature
-Date: Thu,  6 Sep 2018 11:18:17 +0200
-Message-ID: <1536225538-16454-2-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 33/42] mt76x0: move mt76x0_init_hardware in mt76x0_register_device
+Date: Thu,  6 Sep 2018 11:18:49 +0200
+Message-ID: <1536225538-16454-34-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -12,75 +12,140 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 
-Use mt76_dev instead of mt76x2_dev in mt76x2_tx_complete signature
-in order to be reused in mt76x0 driver
+Move mt76x0_init_hardware routine in mt76x0_register_device
+during hw probe. This is a preliminary patch to avoid {tx/rx}
+buffer allocation during resume/suspend
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x2.h           | 2 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_mac.c       | 2 +-
- drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c | 6 +++---
- drivers/net/wireless/mediatek/mt76/mt76x2u_core.c     | 4 +---
- 4 files changed, 6 insertions(+), 8 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c | 55 ++++++++++--------------
+ drivers/net/wireless/mediatek/mt76/mt76x0/usb.c  |  8 ++--
+ 2 files changed, 26 insertions(+), 37 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2.h b/drivers/net/wireless/mediatek/mt76/mt76x2.h
-index f275411f0e3d..9f495d4cfb6a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2.h
-@@ -215,7 +215,7 @@ int mt76x2_tx_queue_mcu(struct mt76x2_dev *dev, enum mt76_txq_id qid,
- 			struct sk_buff *skb, int cmd, int seq);
- void mt76x2_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
- 	       struct sk_buff *skb);
--void mt76x2_tx_complete(struct mt76x2_dev *dev, struct sk_buff *skb);
-+void mt76x2_tx_complete(struct mt76_dev *dev, struct sk_buff *skb);
- int mt76x2_tx_prepare_skb(struct mt76_dev *mdev, void *txwi,
- 			  struct sk_buff *skb, struct mt76_queue *q,
- 			  struct mt76_wcid *wcid, struct ieee80211_sta *sta,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c
-index 3bb02b55f146..db0cb4a2500b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c
-@@ -73,7 +73,7 @@ mt76x2_mac_queue_txdone(struct mt76x2_dev *dev, struct sk_buff *skb,
- 	txi->wcid = txwi->wcid;
- 	txi->pktid = txwi->pktid;
- 	trace_mac_txdone_add(dev, txwi->wcid, txwi->pktid);
--	mt76x2_tx_complete(dev, skb);
-+	mt76x2_tx_complete(&dev->mt76, skb);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+index b1d5f647eac5..deceece52492 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+@@ -382,27 +382,21 @@ int mt76x0_init_hardware(struct mt76x0_dev *dev)
+ 
+ 	mt76x0_chip_onoff(dev, true, true);
+ 
+-	if (!mt76x02_wait_for_mac(&dev->mt76)) {
+-		ret = -ETIMEDOUT;
+-		goto err;
+-	}
++	if (!mt76x02_wait_for_mac(&dev->mt76))
++		return -ETIMEDOUT;
+ 
+ 	ret = mt76x0_mcu_init(dev);
+ 	if (ret)
+-		goto err;
++		return ret;
+ 
+ 	if (!mt76_poll_msec(dev, MT_WPDMA_GLO_CFG,
+ 			    MT_WPDMA_GLO_CFG_TX_DMA_BUSY |
+-			    MT_WPDMA_GLO_CFG_RX_DMA_BUSY, 0, 100)) {
+-		ret = -EIO;
+-		goto err;
+-	}
++			    MT_WPDMA_GLO_CFG_RX_DMA_BUSY, 0, 100))
++		return -EIO;
+ 
+ 	/* Wait for ASIC ready after FW load. */
+-	if (!mt76x02_wait_for_mac(&dev->mt76)) {
+-		ret = -ETIMEDOUT;
+-		goto err;
+-	}
++	if (!mt76x02_wait_for_mac(&dev->mt76))
++		return -ETIMEDOUT;
+ 
+ 	mt76x0_reset_csr_bbp(dev);
+ 	mt76x0_init_usb_dma(dev);
+@@ -412,33 +406,33 @@ int mt76x0_init_hardware(struct mt76x0_dev *dev)
+ 
+ 	ret = mt76x0_mcu_cmd_init(dev);
+ 	if (ret)
+-		goto err;
++		return ret;
+ 
+ 	ret = mt76u_alloc_queues(&dev->mt76);
+ 	if (ret < 0)
+-		goto err_mcu;
++		return ret;
+ 
+ 	mt76x0_init_mac_registers(dev);
+ 
+ 	if (!mt76_poll_msec(dev, MT_MAC_STATUS,
+-			    MT_MAC_STATUS_TX | MT_MAC_STATUS_RX, 0, 1000)) {
+-		ret = -EIO;
+-		goto err_rx;
+-	}
++			    MT_MAC_STATUS_TX | MT_MAC_STATUS_RX, 0, 1000))
++		return -EIO;
+ 
+ 	ret = mt76x0_init_bbp(dev);
+ 	if (ret)
+-		goto err_rx;
++		return ret;
+ 
+ 	ret = mt76x0_init_wcid_mem(dev);
+ 	if (ret)
+-		goto err_rx;
++		return ret;
++
+ 	ret = mt76x0_init_key_mem(dev);
+ 	if (ret)
+-		goto err_rx;
++		return ret;
++
+ 	ret = mt76x0_init_wcid_attr_mem(dev);
+ 	if (ret)
+-		goto err_rx;
++		return ret;
+ 
+ 	mt76_clear(dev, MT_BEACON_TIME_CFG, (MT_BEACON_TIME_CFG_TIMER_EN |
+ 					     MT_BEACON_TIME_CFG_SYNC_MODE |
+@@ -455,18 +449,11 @@ int mt76x0_init_hardware(struct mt76x0_dev *dev)
+ 
+ 	ret = mt76x0_eeprom_init(dev);
+ 	if (ret)
+-		goto err_rx;
++		return ret;
+ 
+ 	mt76x0_phy_init(dev);
+-	return 0;
+ 
+-err_rx:
+-	mt76u_queues_deinit(&dev->mt76);
+-err_mcu:
+-	mt76u_mcu_deinit(&dev->mt76);
+-err:
+-	mt76x0_chip_onoff(dev, false, false);
+-	return ret;
++	return 0;
  }
  
- void mt76x2_mac_process_tx_status_fifo(struct mt76x2_dev *dev)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
-index 056a21b006df..663229dc269d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
-@@ -117,17 +117,17 @@ void mt76x2_tx_set_txpwr_auto(struct mt76x2_dev *dev, s8 txpwr)
- }
- EXPORT_SYMBOL_GPL(mt76x2_tx_set_txpwr_auto);
+ void mt76x0_cleanup(struct mt76x0_dev *dev)
+@@ -627,6 +614,10 @@ int mt76x0_register_device(struct mt76x0_dev *dev)
+ 	struct wiphy *wiphy = hw->wiphy;
+ 	int ret;
  
--void mt76x2_tx_complete(struct mt76x2_dev *dev, struct sk_buff *skb)
-+void mt76x2_tx_complete(struct mt76_dev *dev, struct sk_buff *skb)
- {
- 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
++	ret = mt76x0_init_hardware(dev);
++	if (ret)
++		return ret;
++
+ 	/* Reserve WCID 0 for mcast - thanks to this APs WCID will go to
+ 	 * entry no. 1 like it does in the vendor driver.
+ 	 */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+index 219524c233ee..09b544890450 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+@@ -90,10 +90,6 @@ static int mt76x0_probe(struct usb_interface *usb_intf,
+ 	if (!(mt76_rr(dev, MT_EFUSE_CTRL) & MT_EFUSE_CTRL_SEL))
+ 		dev_warn(dev->mt76.dev, "Warning: eFUSE not present\n");
  
- 	if (info->flags & IEEE80211_TX_CTL_AMPDU) {
--		ieee80211_free_txskb(mt76_hw(dev), skb);
-+		ieee80211_free_txskb(dev->hw, skb);
- 	} else {
- 		ieee80211_tx_info_clear_status(info);
- 		info->status.rates[0].idx = -1;
- 		info->flags |= IEEE80211_TX_STAT_ACK;
--		ieee80211_tx_status(mt76_hw(dev), skb);
-+		ieee80211_tx_status(dev->hw, skb);
- 	}
- }
- EXPORT_SYMBOL_GPL(mt76x2_tx_complete);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c b/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c
-index ed62d6243bb9..cdc2f2cd9141 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c
-@@ -102,9 +102,7 @@ int mt76x2u_tx_prepare_skb(struct mt76_dev *mdev, void *data,
- void mt76x2u_tx_complete_skb(struct mt76_dev *mdev, struct mt76_queue *q,
- 			     struct mt76_queue_entry *e, bool flush)
- {
--	struct mt76x2_dev *dev = container_of(mdev, struct mt76x2_dev, mt76);
+-	ret = mt76x0_init_hardware(dev);
+-	if (ret)
+-		goto err;
