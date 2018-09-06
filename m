@@ -1,56 +1,24 @@
-From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: mt76x0 bug report
-Date: Thu, 6 Sep 2018 11:32:14 +0200
-Message-ID: <20180906093213.GB16539@redhat.com>
-References: <CAM0KTbBJuhuEyuZB_z_BcDSeXa-CJ+NwupssS2jLx0pJ0KXQGQ@mail.gmail.com>
- <CAJ0CqmWAqdB8Og7fabLDeZnzFO5Aw5Qd0cYGaLrs7Ls-zM_yQw@mail.gmail.com>
- <CAM0KTbAbjDYNOzivxMdLmYrV9QHgwkLp7zXpdCvn1Kf1uEcQTQ@mail.gmail.com>
+From: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+Subject: Re: [PATCH 39/42] mt76: move some irq code to common mmio module
+Date: Thu, 6 Sep 2018 11:33:55 +0200
+Message-ID: <91c0c1d5-12a9-7155-c4bf-191a511080ee@nbd.name>
+References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
+ <1536225538-16454-40-git-send-email-sgruszka@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAM0KTbAbjDYNOzivxMdLmYrV9QHgwkLp7zXpdCvn1Kf1uEcQTQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <1536225538-16454-40-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Content-Language: en-US
 Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 05, 2018 at 08:52:18PM +0000, Sid Hayn wrote:
-> On Tue, Sep 4, 2018 at 5:11 PM Lorenzo Bianconi
-> <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
-> >
-> > >
-> > > I have one mt76x2u (Alfa AWUS036ACM) and a few mt76x0.
-> > >
-> > > I've noticed two additional issues in my testing.
-> > >
-> > > First issue, is that it appears the mt76x0 devices don't work properly
-> > > in monitor mode.  Sometimes they seem to monitor one channel properly,
-> > > but nothing else.  The mt76x2u works great, channel control, lots of
-> > > packets, etc.
-> >
-> > Could you elaborate a little bit please? how can you reproduce the issue?
-> > just add an interface in monitor mode and run a scan?
+On 2018-09-06 11:18, Stanislaw Gruszka wrote:
+> Move some irq handling code to generic mmio module.
 > 
-> Correct, standard stuff, use iw to create a monitor mode interface,
-> use iw to remove managed mode interface, run some tool such as kismet
-> or airodump-ng or even wireshark.
+> Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Please drop this patch. This won't work on MT7603 and later.
 
-But what exactly are the syptomps, I don't understand what you mean by
-"mt76x0 devices don't work properly in monitor mode" ?
-
-> > I guess it depends on eeprom values. Could you please enable debug
-> > messages a paste
-> > syslog output?
-> 
-> I don't see a mediatek specific debug near the driver selection in
-> menuconfig, what debug messages do you want me to enable and how?
-
-You need to uncomment this line:
-
-# ccflags-y := -DDEBUG
-
-in drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
-
-Thanks
-Stanislaw
+- Felix
