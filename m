@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 41/42] mt76x0: remove some usb specific code from mt76x0_register_device
-Date: Thu,  6 Sep 2018 11:18:57 +0200
-Message-ID: <1536225538-16454-42-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 42/42] mt76x0: make device allocation bus neutral
+Date: Thu,  6 Sep 2018 11:18:58 +0200
+Message-ID: <1536225538-16454-43-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,69 +10,123 @@ To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Initial effort to make mt76x0_register_device bus neutral.
+Remove some USB specific code form mt76x0_alloc_device.
 
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/init.c |  8 --------
- drivers/net/wireless/mediatek/mt76/mt76x0/usb.c  | 12 ++++++++++--
- 2 files changed, 10 insertions(+), 10 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c   | 11 +++--------
+ drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  3 ++-
+ drivers/net/wireless/mediatek/mt76/mt76x0/pci.c    |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/tx.c     |  3 ++-
+ drivers/net/wireless/mediatek/mt76/mt76x0/usb.c    |  9 ++++++++-
+ 5 files changed, 16 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-index 0e4a13fa42cb..4a899904d518 100644
+index 4a899904d518..9c720906ea13 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-@@ -518,14 +518,6 @@ int mt76x0_register_device(struct mt76x0_dev *dev)
- 	struct wiphy *wiphy = hw->wiphy;
- 	int ret;
+@@ -482,14 +482,9 @@ void mt76x0_cleanup(struct mt76x0_dev *dev)
+ }
+ EXPORT_SYMBOL_GPL(mt76x0_cleanup);
  
--	ret = mt76u_mcu_init_rx(mdev);
--	if (ret < 0)
--		return ret;
--
--	ret = mt76u_alloc_queues(mdev);
--	if (ret < 0)
--		return ret;
--
- 	ret = mt76x0_init_hardware(dev);
+-struct mt76x0_dev *mt76x0_alloc_device(struct device *pdev)
++struct mt76x0_dev *
++mt76x0_alloc_device(struct device *pdev, const struct mt76_driver_ops *drv_ops)
+ {
+-	static const struct mt76_driver_ops drv_ops = {
+-		.tx_prepare_skb = mt76x0_tx_prepare_skb,
+-		.tx_complete_skb = mt76x02_tx_complete_skb,
+-		.tx_status_data = mt76x02_tx_status_data,
+-		.rx_skb = mt76x0_queue_rx_skb,
+-	};
+ 	struct mt76x0_dev *dev;
+ 	struct mt76_dev *mdev;
+ 
+@@ -498,7 +493,7 @@ struct mt76x0_dev *mt76x0_alloc_device(struct device *pdev)
+ 		return NULL;
+ 
+ 	mdev->dev = pdev;
+-	mdev->drv = &drv_ops;
++	mdev->drv = drv_ops;
+ 
+ 	dev = container_of(mdev, struct mt76x0_dev, mt76);
+ 	mutex_init(&dev->reg_atomic_mutex);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+index 31267a180573..87eb084bd270 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+@@ -134,7 +134,8 @@ int mt76x0_burst_write_regs(struct mt76x0_dev *dev, u32 offset,
+ 			     const u32 *data, int n);
+ 
+ /* Init */
+-struct mt76x0_dev *mt76x0_alloc_device(struct device *dev);
++struct mt76x0_dev *
++mt76x0_alloc_device(struct device *pdev, const struct mt76_driver_ops *drv_ops);
+ int mt76x0_init_hardware(struct mt76x0_dev *dev);
+ int mt76x0_register_device(struct mt76x0_dev *dev);
+ void mt76x0_cleanup(struct mt76x0_dev *dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+index 244ab64560a6..eb383f96ec9a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+@@ -40,7 +40,7 @@ mt76x0e_probe(struct pci_dev *pdev, const struct pci_device_id *id)
  	if (ret)
  		return ret;
+ 
+-	dev = mt76x0_alloc_device(&pdev->dev);
++	dev = mt76x0_alloc_device(&pdev->dev, NULL);
+ 	if (!dev)
+ 		return -ENOMEM;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
+index b59b16d374e1..5306fc3a90fb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
+@@ -95,6 +95,7 @@ int mt76x0_tx_prepare_skb(struct mt76_dev *mdev, void *data,
+ 
+ 	return mt76x02_set_txinfo(skb, wcid, q2ep(*hwq_ptr));
+ }
++EXPORT_SYMBOL_GPL(mt76x0_tx_prepare_skb);
+ 
+ void mt76x0_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
+ 			 struct sk_buff *skb)
+@@ -110,4 +111,4 @@ void mt76x0_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
+ 
+ 	mt76_rx(&dev->mt76, q, skb);
+ }
+-
++EXPORT_SYMBOL_GPL(mt76x0_queue_rx_skb);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
-index b9382092f47f..9a803fb0cd5d 100644
+index 9a803fb0cd5d..89e856745fec 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
-@@ -46,7 +46,7 @@ static struct usb_device_id mt76x0_device_table[] = {
- 	{ 0, }
- };
+@@ -18,6 +18,7 @@
+ #include "mt76x0.h"
+ #include "usb.h"
+ #include "trace.h"
++#include "../mt76x02_util.h"
  
--static int mt76x0_probe(struct usb_interface *usb_intf,
-+static int mt76x0u_probe(struct usb_interface *usb_intf,
+ static struct usb_device_id mt76x0_device_table[] = {
+ 	{ USB_DEVICE(0x148F, 0x7610) },	/* MT7610U */
+@@ -49,12 +50,18 @@ static struct usb_device_id mt76x0_device_table[] = {
+ static int mt76x0u_probe(struct usb_interface *usb_intf,
  			 const struct usb_device_id *id)
  {
++	static const struct mt76_driver_ops drv_ops = {
++		.tx_prepare_skb = mt76x0_tx_prepare_skb,
++		.tx_complete_skb = mt76x02_tx_complete_skb,
++		.tx_status_data = mt76x02_tx_status_data,
++		.rx_skb = mt76x0_queue_rx_skb,
++	};
  	struct usb_device *usb_dev = interface_to_usbdev(usb_intf);
-@@ -84,6 +84,14 @@ static int mt76x0_probe(struct usb_interface *usb_intf,
- 	if (!(mt76_rr(dev, MT_EFUSE_CTRL) & MT_EFUSE_CTRL_SEL))
- 		dev_warn(dev->mt76.dev, "Warning: eFUSE not present\n");
+ 	struct mt76x0_dev *dev;
+ 	u32 asic_rev, mac_rev;
+ 	int ret;
  
-+	ret = mt76u_mcu_init_rx(&dev->mt76);
-+	if (ret < 0)
-+		goto err;
-+
-+	ret = mt76u_alloc_queues(&dev->mt76);
-+	if (ret < 0)
-+		goto err;
-+
- 	ret = mt76x0_register_device(dev);
- 	if (ret)
- 		goto err_hw;
-@@ -170,7 +178,7 @@ MODULE_LICENSE("GPL");
- static struct usb_driver mt76x0_driver = {
- 	.name		= KBUILD_MODNAME,
- 	.id_table	= mt76x0_device_table,
--	.probe		= mt76x0_probe,
-+	.probe		= mt76x0u_probe,
- 	.disconnect	= mt76x0_disconnect,
- 	.suspend	= mt76x0_suspend,
- 	.resume		= mt76x0_resume,
+-	dev = mt76x0_alloc_device(&usb_intf->dev);
++	dev = mt76x0_alloc_device(&usb_intf->dev, &drv_ops);
+ 	if (!dev)
+ 		return -ENOMEM;
+ 
 -- 
 2.7.5
