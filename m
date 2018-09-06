@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 20/42] mt76x0: remove unused {tx/rx}_queue definitions
-Date: Thu,  6 Sep 2018 11:18:36 +0200
-Message-ID: <1536225538-16454-21-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 12/42] mt76x0: mark device as running in mt76x0_start
+Date: Thu,  6 Sep 2018 11:18:28 +0200
+Message-ID: <1536225538-16454-13-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -12,106 +12,37 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 
-Remove unused tx_queue and rx_queue definitions since
-now mt76x0 driver uses mt76-usb {tx/rx}_queues
+Set MT76_STATE_RUNNING flag in mt76x0_start routine and
+clear it in mt76x0_stop one
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/init.c   |  2 -
- drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h | 50 ----------------------
- 2 files changed, 52 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x0/main.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-index 5be4c48936e4..a7d6e747f221 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-@@ -505,8 +505,6 @@ struct mt76x0_dev *mt76x0_alloc_device(struct device *pdev)
- 	mutex_init(&dev->usb_ctrl_mtx);
- 	mutex_init(&dev->reg_atomic_mutex);
- 	mutex_init(&dev->hw_atomic_mutex);
--	spin_lock_init(&dev->tx_lock);
--	spin_lock_init(&dev->rx_lock);
- 	spin_lock_init(&dev->mac_lock);
- 	spin_lock_init(&dev->con_mon_lock);
- 	atomic_set(&dev->avg_ampdu_len, 1);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-index f63c44999bdd..6ba5e9ba2c7f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-@@ -40,13 +40,6 @@
- #define MT_USB_AGGR_SIZE_LIMIT		21 /* * 1024B */
- #define MT_USB_AGGR_TIMEOUT		0x80 /* * 33ns */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
+index a14f03b1ac54..3ac8e36d1c24 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
+@@ -33,6 +33,9 @@ static int mt76x0_start(struct ieee80211_hw *hw)
+ 				     MT_CALIBRATE_INTERVAL);
+ 	ieee80211_queue_delayed_work(dev->mt76.hw, &dev->cal_work,
+ 				     MT_CALIBRATE_INTERVAL);
++
++	set_bit(MT76_STATE_RUNNING, &dev->mt76.state);
++
+ out:
+ 	mutex_unlock(&dev->mt76.mutex);
+ 	return ret;
+@@ -44,6 +47,8 @@ static void mt76x0_stop(struct ieee80211_hw *hw)
  
--struct mt76x0_dma_buf {
--	struct urb *urb;
--	void *buf;
--	dma_addr_t dma;
--	size_t len;
--};
--
- struct mac_stats {
- 	u64 rx_stat[6];
- 	u64 tx_stat[6];
-@@ -55,38 +48,6 @@ struct mac_stats {
- 	u64 zero_len_del[2];
- };
+ 	mutex_lock(&dev->mt76.mutex);
  
--#define N_RX_ENTRIES	16
--struct mt76x0_rx_queue {
--	struct mt76x0_dev *dev;
--
--	struct mt76x0_dma_buf_rx {
--		struct urb *urb;
--		struct page *p;
--	} e[N_RX_ENTRIES];
--
--	unsigned int start;
--	unsigned int end;
--	unsigned int entries;
--	unsigned int pending;
--};
--
--#define N_TX_ENTRIES	64
--
--struct mt76x0_tx_queue {
--	struct mt76x0_dev *dev;
--
--	struct mt76x0_dma_buf_tx {
--		struct urb *urb;
--		struct sk_buff *skb;
--	} e[N_TX_ENTRIES];
--
--	unsigned int start;
--	unsigned int end;
--	unsigned int entries;
--	unsigned int used;
--	unsigned int fifo_seq;
--};
--
- struct mt76x0_eeprom_params;
- 
- #define MT_EE_TEMPERATURE_SLOPE		39
-@@ -108,9 +69,6 @@ enum mt_bw {
-  * struct mt76x0_dev - adapter structure
-  * @lock:		protects @wcid->tx_rate.
-  * @mac_lock:		locks out mac80211's tx status and rx paths.
-- * @tx_lock:		protects @tx_q and changes of MT76_STATE_*_STATS
-- *			flags in @state.
-- * @rx_lock:		protects @rx_q.
-  * @con_mon_lock:	protects @ap_bssid, @bcn_*, @avg_rssi.
-  * @mutex:		ensures exclusive access from mac80211 callbacks.
-  * @reg_atomic_mutex:	ensures atomicity of indirect register accesses
-@@ -146,16 +104,8 @@ struct mt76x0_dev {
- 
- 	u32 debugfs_reg;
- 
--	/* TX */
--	spinlock_t tx_lock;
--	struct mt76x0_tx_queue *tx_q;
--
- 	atomic_t avg_ampdu_len;
- 
--	/* RX */
--	spinlock_t rx_lock;
--	struct mt76x0_rx_queue rx_q;
++	clear_bit(MT76_STATE_RUNNING, &dev->mt76.state);
++
+ 	cancel_delayed_work_sync(&dev->cal_work);
+ 	cancel_delayed_work_sync(&dev->mac_work);
+ 	mt76x0_mac_stop(dev);
+-- 
+2.7.5
