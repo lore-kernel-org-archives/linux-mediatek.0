@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 25/42] mt76x0: init hw capabilities
-Date: Thu,  6 Sep 2018 11:18:41 +0200
-Message-ID: <1536225538-16454-26-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 26/42] mt76x0: trim rx skb to proper length
+Date: Thu,  6 Sep 2018 11:18:42 +0200
+Message-ID: <1536225538-16454-27-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,37 +10,27 @@ To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+We need to truncate skb to proper length. This fix below message:
 
-Enable hw capabilities supported by mt76-usb layer
-- fast_xmit
-- tx/rx amsdu
-- MFP
-- non-linear tx skbs
+wlan0: associating with AP with corrupt beacon and probe response
 
-Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Fixes: 9d87d9fad47e ("mt76x0: unify tx/rx datapath with mt76x2u driver")
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/init.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt76x0/mac.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-index 7cd939c97efe..418e1918086d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-@@ -676,6 +676,13 @@ int mt76x0_register_device(struct mt76x0_dev *dev)
- 	ieee80211_hw_set(hw, SUPPORTS_HT_CCK_RATES);
- 	ieee80211_hw_set(hw, AMPDU_AGGREGATION);
- 	ieee80211_hw_set(hw, SUPPORTS_RC_TABLE);
-+	ieee80211_hw_set(hw, SUPPORT_FAST_XMIT);
-+	ieee80211_hw_set(hw, SUPPORTS_CLONED_SKBS);
-+	ieee80211_hw_set(hw, SUPPORTS_AMSDU_IN_AMPDU);
-+	ieee80211_hw_set(hw, TX_AMSDU);
-+	ieee80211_hw_set(hw, TX_FRAG_LIST);
-+	ieee80211_hw_set(hw, MFP_CAPABLE);
-+
- 	hw->max_rates = 1;
- 	hw->max_report_rates = 7;
- 	hw->max_rate_tries = 1;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
+index 8fdc246964b9..f55734a922aa 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mac.c
+@@ -236,6 +236,7 @@ u32 mt76x0_mac_process_rx(struct mt76x0_dev *dev, struct sk_buff *skb,
+ 
+ 	mt76x02_remove_hdr_pad(skb, pad_len);
+ 
++	pskb_trim(skb, len);
+ 	status->chains = BIT(0);
+ 	rssi = mt76x0_phy_get_rssi(dev, rxwi);
+ 	status->chain_signal[0] = status->signal = rssi;
 -- 
 2.7.5
