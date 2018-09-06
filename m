@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 36/42] mt76x0: use mt76_register_device for device registration
-Date: Thu,  6 Sep 2018 11:18:52 +0200
-Message-ID: <1536225538-16454-37-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 37/42] mt76x0: inital split between pci and usb
+Date: Thu,  6 Sep 2018 11:18:53 +0200
+Message-ID: <1536225538-16454-38-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,300 +10,296 @@ To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+For now pci driver can read ASIC version from the device :-)
 
-Use mt76_register_device routine for device registration.
-mt76_register_device allows to enable VHT support on 5GHz band.
-Overwrite unsupported vht features with mt76x0_vht_cap_mask routine.
-Remove macaddr field of mt76x0_dev data structure and
-use the mt76_dev one. Moreover remove following unused routines:
-- mt76_init_sband
-- mt76_init_sband_2g
-- mt76_init_sband_5g
-
-Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c |  13 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/init.c   | 187 ++++-----------------
- drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |   1 -
- 3 files changed, 39 insertions(+), 162 deletions(-)
+ drivers/net/wireless/mediatek/mt76/Kconfig         | 23 ++++--
+ drivers/net/wireless/mediatek/mt76/Makefile        |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/Makefile | 11 ++-
+ drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c |  2 +
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c   |  6 ++
+ drivers/net/wireless/mediatek/mt76/mt76x0/main.c   |  7 ++
+ drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  1 -
+ drivers/net/wireless/mediatek/mt76/mt76x0/pci.c    | 81 ++++++++++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76x0/usb.c    |  6 --
+ 9 files changed, 121 insertions(+), 18 deletions(-)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
 
+diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wireless/mediatek/mt76/Kconfig
+index 6a270e759006..e460a3a5e763 100644
+--- a/drivers/net/wireless/mediatek/mt76/Kconfig
++++ b/drivers/net/wireless/mediatek/mt76/Kconfig
+@@ -7,25 +7,35 @@ config MT76_USB
+ 
+ config MT76x02_LIB
+ 	tristate
+-	depends on MT76_CORE
++	select MT76_CORE
++
++config MT76x0_COMMON
++	tristate
++	select MT76x02_LIB
+ 
+ config MT76x2_COMMON
+ 	tristate
+ 	select MT76x02_LIB
+-	depends on MT76_CORE
+ 
+ config MT76x0U
+ 	tristate "MediaTek MT76x0U (USB) support"
+-	select MT76_CORE
++	select MT76x0_COMMON
++	select MT76_USB
+ 	depends on MAC80211
+ 	depends on USB
+-	select MT76x02_LIB
+ 	help
+ 	  This adds support for MT7610U-based wireless USB dongles.
+ 
++config MT76x0E
++	tristate "MediaTek MT76x0E (PCIe) support"
++	select MT76x0_COMMON
++	depends on MAC80211
++	depends on PCI
++	help
++	  This adds support for MT7610/MT7630-based wireless PCIe devices.
++
+ config MT76x2E
+ 	tristate "MediaTek MT76x2E (PCIe) support"
+-	select MT76_CORE
+ 	select MT76x2_COMMON
+ 	depends on MAC80211
+ 	depends on PCI
+@@ -34,9 +44,8 @@ config MT76x2E
+ 
+ config MT76x2U
+ 	tristate "MediaTek MT76x2U (USB) support"
+-	select MT76_CORE
+-	select MT76_USB
+ 	select MT76x2_COMMON
++	select MT76_USB
+ 	depends on MAC80211
+ 	depends on USB
+ 	help
+diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
+index a7fe5d6da857..129ac71446d6 100644
+--- a/drivers/net/wireless/mediatek/mt76/Makefile
++++ b/drivers/net/wireless/mediatek/mt76/Makefile
+@@ -1,6 +1,6 @@
+ obj-$(CONFIG_MT76_CORE) += mt76.o
+ obj-$(CONFIG_MT76_USB) += mt76-usb.o
+-obj-$(CONFIG_MT76x0U) += mt76x0/
++obj-$(CONFIG_MT76x0_COMMON) += mt76x0/
+ obj-$(CONFIG_MT76x02_LIB) += mt76x02-lib.o
+ obj-$(CONFIG_MT76x2_COMMON) += mt76x2-common.o
+ obj-$(CONFIG_MT76x2E) += mt76x2e.o
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/Makefile b/drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
+index df70690e3aff..644c867c107a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
+@@ -1,7 +1,12 @@
+-obj-$(CONFIG_MT76x0U)    += mt76x0.o
++obj-$(CONFIG_MT76x0U) += mt76x0u.o
++obj-$(CONFIG_MT76x0E) += mt76x0e.o
++obj-$(CONFIG_MT76x0_COMMON) += mt76x0-common.o
+ 
+-mt76x0-objs	= \
+-	usb.o init.o main.o mcu.o trace.o eeprom.o phy.o \
++mt76x0-common-y := \
++	init.o main.o mcu.o trace.o eeprom.o phy.o \
+ 	mac.o debugfs.o tx.o
++mt76x0u-y := usb.o
++mt76x0e-y := pci.o
++
+ # ccflags-y := -DDEBUG
+ CFLAGS_trace.o := -I$(src)
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-index 0fd178d84277..2ce27de511f5 100644
+index 2ce27de511f5..79856bde1632 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-@@ -160,18 +160,19 @@ static int
- mt76x0_set_macaddr(struct mt76x0_dev *dev, const u8 *eeprom)
- {
- 	const void *src = eeprom + MT_EE_MAC_ADDR;
-+	u8 *dst = dev->mt76.macaddr;
- 
--	ether_addr_copy(dev->macaddr, src);
-+	ether_addr_copy(dev->mt76.macaddr, src);
- 
--	if (!is_valid_ether_addr(dev->macaddr)) {
--		eth_random_addr(dev->macaddr);
-+	if (!is_valid_ether_addr(dst)) {
-+		eth_random_addr(dst);
- 		dev_info(dev->mt76.dev,
- 			 "Invalid MAC address, using random address %pM\n",
--			 dev->macaddr);
-+			 dst);
- 	}
- 
--	mt76_wr(dev, MT_MAC_ADDR_DW0, get_unaligned_le32(dev->macaddr));
--	mt76_wr(dev, MT_MAC_ADDR_DW1, get_unaligned_le16(dev->macaddr + 4) |
-+	mt76_wr(dev, MT_MAC_ADDR_DW0, get_unaligned_le32(dst));
-+	mt76_wr(dev, MT_MAC_ADDR_DW1, get_unaligned_le16(dst + 4) |
- 		FIELD_PREP(MT_MAC_ADDR_DW1_U2ME_MASK, 0xff));
- 
- 	return 0;
+@@ -445,3 +445,5 @@ mt76x0_eeprom_init(struct mt76x0_dev *dev)
+ 	kfree(eeprom);
+ 	return ret;
+ }
++
++MODULE_LICENSE("Dual BSD/GPL");
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-index d075b29977e3..44fcad2315a7 100644
+index 44fcad2315a7..0e4a13fa42cb 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-@@ -23,6 +23,24 @@
+@@ -111,6 +111,7 @@ void mt76x0_chip_onoff(struct mt76x0_dev *dev, bool enable, bool reset)
  
- #include "initvals.h"
+ 	mutex_unlock(&dev->hw_atomic_mutex);
+ }
++EXPORT_SYMBOL_GPL(mt76x0_chip_onoff);
  
-+static void mt76x0_vht_cap_mask(struct ieee80211_supported_band *sband)
-+{
-+	struct ieee80211_sta_vht_cap *vht_cap = &sband->vht_cap;
-+	u16 mcs_map = 0;
-+	int i;
-+
-+	vht_cap->cap &= ~IEEE80211_VHT_CAP_RXLDPC;
-+	for (i = 0; i < 8; i++) {
-+		if (!i)
-+			mcs_map |= (IEEE80211_VHT_MCS_SUPPORT_0_7 << (i * 2));
-+		else
-+			mcs_map |=
-+				(IEEE80211_VHT_MCS_NOT_SUPPORTED << (i * 2));
-+	}
-+	vht_cap->vht_mcs.rx_mcs_map = cpu_to_le16(mcs_map);
-+	vht_cap->vht_mcs.tx_mcs_map = cpu_to_le16(mcs_map);
-+}
-+
- static void
- mt76x0_set_wlan_state(struct mt76x0_dev *dev, u32 val, bool enable)
+ static void mt76x0_reset_csr_bbp(struct mt76x0_dev *dev)
  {
-@@ -488,125 +506,10 @@ struct mt76x0_dev *mt76x0_alloc_device(struct device *pdev)
+@@ -384,6 +385,7 @@ void mt76x0_mac_stop(struct mt76x0_dev *dev)
+ 	mt76u_stop_stat_wk(&dev->mt76);
+ 	mt76x0_mac_stop_hw(dev);
+ }
++EXPORT_SYMBOL_GPL(mt76x0_mac_stop);
+ 
+ int mt76x0_init_hardware(struct mt76x0_dev *dev)
+ {
+@@ -469,6 +471,7 @@ int mt76x0_init_hardware(struct mt76x0_dev *dev)
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mt76x0_init_hardware);
+ 
+ void mt76x0_cleanup(struct mt76x0_dev *dev)
+ {
+@@ -477,6 +480,7 @@ void mt76x0_cleanup(struct mt76x0_dev *dev)
+ 	mt76u_queues_deinit(&dev->mt76);
+ 	mt76u_mcu_deinit(&dev->mt76);
+ }
++EXPORT_SYMBOL_GPL(mt76x0_cleanup);
+ 
+ struct mt76x0_dev *mt76x0_alloc_device(struct device *pdev)
+ {
+@@ -505,6 +509,7 @@ struct mt76x0_dev *mt76x0_alloc_device(struct device *pdev)
+ 
  	return dev;
  }
++EXPORT_SYMBOL_GPL(mt76x0_alloc_device);
  
--#define CHAN2G(_idx, _freq) {			\
--	.band = NL80211_BAND_2GHZ,		\
--	.center_freq = (_freq),			\
--	.hw_value = (_idx),			\
--	.max_power = 30,			\
--}
--
--static const struct ieee80211_channel mt76_channels_2ghz[] = {
--	CHAN2G(1, 2412),
--	CHAN2G(2, 2417),
--	CHAN2G(3, 2422),
--	CHAN2G(4, 2427),
--	CHAN2G(5, 2432),
--	CHAN2G(6, 2437),
--	CHAN2G(7, 2442),
--	CHAN2G(8, 2447),
--	CHAN2G(9, 2452),
--	CHAN2G(10, 2457),
--	CHAN2G(11, 2462),
--	CHAN2G(12, 2467),
--	CHAN2G(13, 2472),
--	CHAN2G(14, 2484),
--};
--
--#define CHAN5G(_idx, _freq) {			\
--	.band = NL80211_BAND_5GHZ,		\
--	.center_freq = (_freq),			\
--	.hw_value = (_idx),			\
--	.max_power = 30,			\
--}
--
--static const struct ieee80211_channel mt76_channels_5ghz[] = {
--	CHAN5G(36, 5180),
--	CHAN5G(40, 5200),
--	CHAN5G(44, 5220),
--	CHAN5G(46, 5230),
--	CHAN5G(48, 5240),
--	CHAN5G(52, 5260),
--	CHAN5G(56, 5280),
--	CHAN5G(60, 5300),
--	CHAN5G(64, 5320),
--
--	CHAN5G(100, 5500),
--	CHAN5G(104, 5520),
--	CHAN5G(108, 5540),
--	CHAN5G(112, 5560),
--	CHAN5G(116, 5580),
--	CHAN5G(120, 5600),
--	CHAN5G(124, 5620),
--	CHAN5G(128, 5640),
--	CHAN5G(132, 5660),
--	CHAN5G(136, 5680),
--	CHAN5G(140, 5700),
--};
--
--static int
--mt76_init_sband(struct mt76x0_dev *dev, struct ieee80211_supported_band *sband,
--		const struct ieee80211_channel *chan, int n_chan,
--		struct ieee80211_rate *rates, int n_rates)
--{
--	struct ieee80211_sta_ht_cap *ht_cap;
--	void *chanlist;
--	int size;
--
--	size = n_chan * sizeof(*chan);
--	chanlist = devm_kmemdup(dev->mt76.dev, chan, size, GFP_KERNEL);
--	if (!chanlist)
--		return -ENOMEM;
--
--	sband->channels = chanlist;
--	sband->n_channels = n_chan;
--	sband->bitrates = rates;
--	sband->n_bitrates = n_rates;
--
--	ht_cap = &sband->ht_cap;
--	ht_cap->ht_supported = true;
--	ht_cap->cap = IEEE80211_HT_CAP_SUP_WIDTH_20_40 |
--		      IEEE80211_HT_CAP_GRN_FLD |
--		      IEEE80211_HT_CAP_SGI_20 |
--		      IEEE80211_HT_CAP_SGI_40 |
--		      (1 << IEEE80211_HT_CAP_RX_STBC_SHIFT);
--
--	ht_cap->mcs.rx_mask[0] = 0xff;
--	ht_cap->mcs.rx_mask[4] = 0x1;
--	ht_cap->mcs.tx_params = IEEE80211_HT_MCS_TX_DEFINED;
--	ht_cap->ampdu_factor = IEEE80211_HT_MAX_AMPDU_64K;
--	ht_cap->ampdu_density = IEEE80211_HT_MPDU_DENSITY_2;
--
--	return 0;
--}
--
--static int
--mt76_init_sband_2g(struct mt76x0_dev *dev)
--{
--	dev->mt76.hw->wiphy->bands[NL80211_BAND_2GHZ] = &dev->mt76.sband_2g.sband;
--
--	WARN_ON(dev->ee->reg.start - 1 + dev->ee->reg.num >
--		ARRAY_SIZE(mt76_channels_2ghz));
--
--
--	return mt76_init_sband(dev, &dev->mt76.sband_2g.sband,
--			       mt76_channels_2ghz, ARRAY_SIZE(mt76_channels_2ghz),
--			       mt76x02_rates, ARRAY_SIZE(mt76x02_rates));
--}
--
--static int
--mt76_init_sband_5g(struct mt76x0_dev *dev)
--{
--	dev->mt76.hw->wiphy->bands[NL80211_BAND_5GHZ] = &dev->mt76.sband_5g.sband;
--
--	return mt76_init_sband(dev, &dev->mt76.sband_5g.sband,
--			       mt76_channels_5ghz, ARRAY_SIZE(mt76_channels_5ghz),
--			       mt76x02_rates + 4, ARRAY_SIZE(mt76x02_rates) - 4);
--}
--
--
  int mt76x0_register_device(struct mt76x0_dev *dev)
  {
--	struct ieee80211_hw *hw = dev->mt76.hw;
-+	struct mt76_dev *mdev = &dev->mt76;
-+	struct ieee80211_hw *hw = mdev->hw;
- 	struct wiphy *wiphy = hw->wiphy;
- 	int ret;
+@@ -569,3 +574,4 @@ int mt76x0_register_device(struct mt76x0_dev *dev)
  
-@@ -625,27 +528,16 @@ int mt76x0_register_device(struct mt76x0_dev *dev)
- 	/* Reserve WCID 0 for mcast - thanks to this APs WCID will go to
- 	 * entry no. 1 like it does in the vendor driver.
- 	 */
--	dev->mt76.wcid_mask[0] |= 1;
-+	mdev->wcid_mask[0] |= 1;
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mt76x0_register_device);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
+index 0d3c7accb4f8..c84e00abfac9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
+@@ -72,6 +72,13 @@ static int mt76x0_config(struct ieee80211_hw *hw, u32 changed)
+ }
  
- 	/* init fake wcid for monitor interfaces */
--	dev->mt76.global_wcid.idx = 0xff;
--	dev->mt76.global_wcid.hw_key_idx = -1;
-+	mdev->global_wcid.idx = 0xff;
-+	mdev->global_wcid.hw_key_idx = -1;
- 
--	SET_IEEE80211_DEV(hw, dev->mt76.dev);
-+	/* init antenna configuration */
-+	mdev->antenna_mask = 1;
- 
- 	hw->queues = 4;
--	ieee80211_hw_set(hw, SIGNAL_DBM);
--	ieee80211_hw_set(hw, PS_NULLFUNC_STACK);
--	ieee80211_hw_set(hw, SUPPORTS_HT_CCK_RATES);
--	ieee80211_hw_set(hw, AMPDU_AGGREGATION);
--	ieee80211_hw_set(hw, SUPPORTS_RC_TABLE);
--	ieee80211_hw_set(hw, SUPPORT_FAST_XMIT);
--	ieee80211_hw_set(hw, SUPPORTS_CLONED_SKBS);
--	ieee80211_hw_set(hw, SUPPORTS_AMSDU_IN_AMPDU);
--	ieee80211_hw_set(hw, TX_AMSDU);
--	ieee80211_hw_set(hw, TX_FRAG_LIST);
--	ieee80211_hw_set(hw, MFP_CAPABLE);
--
- 	hw->max_rates = 1;
- 	hw->max_report_rates = 7;
- 	hw->max_rate_tries = 1;
-@@ -654,36 +546,21 @@ int mt76x0_register_device(struct mt76x0_dev *dev)
- 	hw->sta_data_size = sizeof(struct mt76x02_sta);
- 	hw->vif_data_size = sizeof(struct mt76x02_vif);
- 
--	hw->txq_data_size = sizeof(struct mt76_txq);
--	hw->max_tx_fragments = 16;
--
--	SET_IEEE80211_PERM_ADDR(hw, dev->macaddr);
--
--	wiphy->features |= NL80211_FEATURE_ACTIVE_MONITOR;
- 	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION);
- 
--	if (dev->mt76.cap.has_2ghz) {
--		ret = mt76_init_sband_2g(dev);
--		if (ret)
--			return ret;
--	}
--
--	if (dev->mt76.cap.has_5ghz) {
--		ret = mt76_init_sband_5g(dev);
--		if (ret)
--			return ret;
--	}
--
--	dev->mt76.chandef.chan = &dev->mt76.sband_2g.sband.channels[0];
--
- 	INIT_DELAYED_WORK(&dev->mac_work, mt76x0_mac_work);
- 
--	ret = ieee80211_register_hw(hw);
-+	ret = mt76_register_device(mdev, true, mt76x02_rates,
-+				   ARRAY_SIZE(mt76x02_rates));
- 	if (ret)
- 		return ret;
- 
-+	/* overwrite unsupported features */
-+	if (mdev->cap.has_5ghz)
-+		mt76x0_vht_cap_mask(&dev->mt76.sband_5g.sband);
+ static void
++mt76x0_addr_wr(struct mt76x0_dev *dev, const u32 offset, const u8 *addr)
++{
++	mt76_wr(dev, offset, get_unaligned_le32(addr));
++	mt76_wr(dev, offset + 4, addr[4] | addr[5] << 8);
++}
 +
- 	/* check hw sg support in order to enable AMSDU */
--	if (mt76u_check_sg(&dev->mt76))
-+	if (mt76u_check_sg(mdev))
- 		hw->max_tx_fragments = MT_SG_MAX_SIZE;
- 	else
- 		hw->max_tx_fragments = 1;
++static void
+ mt76x0_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 			 struct ieee80211_bss_conf *info, u32 changed)
+ {
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-index cd260317de27..2918abc95c71 100644
+index 2918abc95c71..d775d9951695 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-@@ -88,7 +88,6 @@ struct mt76x0_dev {
+@@ -141,7 +141,6 @@ int mt76x0_read_reg_pairs(struct mt76x0_dev *dev, u32 base,
+ 			  struct mt76_reg_pair *data, int len);
+ int mt76x0_burst_write_regs(struct mt76x0_dev *dev, u32 offset,
+ 			     const u32 *data, int n);
+-void mt76x0_addr_wr(struct mt76x0_dev *dev, const u32 offset, const u8 *addr);
  
- 	const u16 *beacon_offsets;
+ /* Init */
+ struct mt76x0_dev *mt76x0_alloc_device(struct device *dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+new file mode 100644
+index 000000000000..244ab64560a6
+--- /dev/null
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+@@ -0,0 +1,81 @@
++/*
++ * Copyright (C) 2016 Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
++ *
++ * Permission to use, copy, modify, and/or distribute this software for any
++ * purpose with or without fee is hereby granted, provided that the above
++ * copyright notice and this permission notice appear in all copies.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
++ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
++ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
++ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
++ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
++ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
++ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++ */
++
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/pci.h>
++
++#include "mt76x0.h"
++
++static int
++mt76x0e_probe(struct pci_dev *pdev, const struct pci_device_id *id)
++{
++	struct mt76x0_dev *dev;
++	int ret = -ENODEV;
++
++	ret = pcim_enable_device(pdev);
++	if (ret)
++		return ret;
++
++	ret = pcim_iomap_regions(pdev, BIT(0), pci_name(pdev));
++	if (ret)
++		return ret;
++
++	pci_set_master(pdev);
++
++	ret = pci_set_dma_mask(pdev, DMA_BIT_MASK(32));
++	if (ret)
++		return ret;
++
++	dev = mt76x0_alloc_device(&pdev->dev);
++	if (!dev)
++		return -ENOMEM;
++
++	mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
++
++	dev->mt76.rev = mt76_rr(dev, MT_ASIC_VERSION);
++	dev_info(dev->mt76.dev, "ASIC revision: %08x\n", dev->mt76.rev);
++
++/* error: */
++	ieee80211_free_hw(mt76_hw(dev));
++	return ret;
++}
++
++static void
++mt76x0e_remove(struct pci_dev *pdev)
++{
++	struct mt76_dev *mdev = pci_get_drvdata(pdev);
++
++	mt76_unregister_device(mdev);
++	ieee80211_free_hw(mdev->hw);
++}
++
++static const struct pci_device_id mt76x0e_device_table[] = {
++	{ PCI_DEVICE(0x14c3, 0x7630) },
++	{ },
++};
++
++MODULE_DEVICE_TABLE(pci, mt76x0e_device_table);
++MODULE_LICENSE("Dual BSD/GPL");
++
++static struct pci_driver mt76x0e_driver = {
++	.name		= KBUILD_MODNAME,
++	.id_table	= mt76x0e_device_table,
++	.probe		= mt76x0e_probe,
++	.remove		= mt76x0e_remove,
++};
++
++module_pci_driver(mt76x0e_driver);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+index fc8884c38f7e..b9382092f47f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+@@ -46,12 +46,6 @@ static struct usb_device_id mt76x0_device_table[] = {
+ 	{ 0, }
+ };
  
--	u8 macaddr[ETH_ALEN];
- 	struct mt76x0_eeprom_params *ee;
- 
- 	struct mutex reg_atomic_mutex;
--- 
-2.7.5
+-void mt76x0_addr_wr(struct mt76x0_dev *dev, const u32 offset, const u8 *addr)
+-{
+-	mt76_wr(dev, offset, get_unaligned_le32(addr));
+-	mt76_wr(dev, offset + 4, addr[4] | addr[5] << 8);
+-}
