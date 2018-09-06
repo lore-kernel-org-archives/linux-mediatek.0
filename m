@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 16/42] mt76x0: stop stat workqueue at hw stop
-Date: Thu,  6 Sep 2018 11:18:32 +0200
-Message-ID: <1536225538-16454-17-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 17/42] mt76x0: set max fragments size
+Date: Thu,  6 Sep 2018 11:18:33 +0200
+Message-ID: <1536225538-16454-18-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -12,25 +12,31 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 
-Cancel tx status workqueue during vif teardown
+Set maximum number of tx fragments according to usb controller
+features
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/main.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
-index 3ac8e36d1c24..b0a1f7a7209a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
-@@ -51,6 +51,7 @@ static void mt76x0_stop(struct ieee80211_hw *hw)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+index 33730c93c63f..cd7cdf3d9731 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+@@ -722,6 +722,12 @@ int mt76x0_register_device(struct mt76x0_dev *dev)
+ 	if (ret)
+ 		return ret;
  
- 	cancel_delayed_work_sync(&dev->cal_work);
- 	cancel_delayed_work_sync(&dev->mac_work);
-+	mt76u_stop_stat_wk(&dev->mt76);
- 	mt76x0_mac_stop(dev);
++	/* check hw sg support in order to enable AMSDU */
++	if (mt76u_check_sg(&dev->mt76))
++		hw->max_tx_fragments = MT_SG_MAX_SIZE;
++	else
++		hw->max_tx_fragments = 1;
++
+ 	mt76x0_init_debugfs(dev);
  
- 	mutex_unlock(&dev->mt76.mutex);
+ 	return 0;
 -- 
 2.7.5
