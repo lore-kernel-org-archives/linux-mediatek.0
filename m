@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 02/42] mt76: move mt76x2_tx_complete routine in mt76x02-lib module
-Date: Thu,  6 Sep 2018 11:18:18 +0200
-Message-ID: <1536225538-16454-3-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 03/42] mt76: move mt76x2u_remove_dma_hdr in mt76x02-lib module
+Date: Thu,  6 Sep 2018 11:18:19 +0200
+Message-ID: <1536225538-16454-4-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -12,107 +12,105 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 
-Move mt76x2_tx_complete routine in mt76x02-lib module and rename it in
-mt76x02_tx_complete in order to be used in mt76x0 driver
+Move mt76x2u_remove_dma_hdr in mt76x02-lib module and rename it in
+mt76x02_remove_dma_hdr. Moreover use mt76x02_remove_hdr_pad routine
+in mt76x02_remove_dma_hdr function.
+Furthermore remove mt76x0_tx_skb_remove_dma_overhead routine
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x02_util.c     | 15 +++++++++++++++
- drivers/net/wireless/mediatek/mt76/mt76x02_util.h     |  1 +
- drivers/net/wireless/mediatek/mt76/mt76x2.h           |  1 -
- drivers/net/wireless/mediatek/mt76/mt76x2_mac.c       |  3 ++-
- drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c | 16 ----------------
- drivers/net/wireless/mediatek/mt76/mt76x2u_core.c     |  2 +-
- 6 files changed, 19 insertions(+), 19 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x0/tx.c    | 14 +-------------
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.c | 12 ++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.h |  1 +
+ drivers/net/wireless/mediatek/mt76/mt76x2u_core.c | 14 +-------------
+ 4 files changed, 15 insertions(+), 26 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
+index 0dab1c6528f9..de2643d54a1e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
+@@ -29,23 +29,11 @@ static u8 skb2q(struct sk_buff *skb)
+ 	return mt76_ac_to_hwq(qid);
+ }
+ 
+-static void mt76x0_tx_skb_remove_dma_overhead(struct sk_buff *skb,
+-					       struct ieee80211_tx_info *info)
+-{
+-	int pkt_len = (unsigned long)info->status.status_driver_data[0];
+-
+-	skb_pull(skb, sizeof(struct mt76x02_txwi) + 4);
+-	if (ieee80211_get_hdrlen_from_skb(skb) % 4)
+-		mt76x02_remove_hdr_pad(skb, 2);
+-
+-	skb_trim(skb, pkt_len);
+-}
+-
+ void mt76x0_tx_status(struct mt76x0_dev *dev, struct sk_buff *skb)
+ {
+ 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
+ 
+-	mt76x0_tx_skb_remove_dma_overhead(skb, info);
++	mt76x02_remove_dma_hdr(skb);
+ 
+ 	ieee80211_tx_info_clear_status(info);
+ 	info->status.rates[0].idx = -1;
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-index a32ce164fb76..37b70d723fba 100644
+index 37b70d723fba..a8ad3088ad8b 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-@@ -377,4 +377,19 @@ void mt76x02_remove_hdr_pad(struct sk_buff *skb, int len)
+@@ -16,6 +16,7 @@
+  */
+ 
+ #include "mt76.h"
++#include "dma.h"
+ #include "mt76x02_regs.h"
+ #include "mt76x02_mac.h"
+ 
+@@ -377,6 +378,17 @@ void mt76x02_remove_hdr_pad(struct sk_buff *skb, int len)
  }
  EXPORT_SYMBOL_GPL(mt76x02_remove_hdr_pad);
  
-+void mt76x02_tx_complete(struct mt76_dev *dev, struct sk_buff *skb)
++void mt76x02_remove_dma_hdr(struct sk_buff *skb)
 +{
-+	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
++	int hdr_len;
 +
-+	if (info->flags & IEEE80211_TX_CTL_AMPDU) {
-+		ieee80211_free_txskb(dev->hw, skb);
-+	} else {
-+		ieee80211_tx_info_clear_status(info);
-+		info->status.rates[0].idx = -1;
-+		info->flags |= IEEE80211_TX_STAT_ACK;
-+		ieee80211_tx_status(dev->hw, skb);
-+	}
++	skb_pull(skb, sizeof(struct mt76x02_txwi) + MT_DMA_HDR_LEN);
++	hdr_len = ieee80211_get_hdrlen_from_skb(skb);
++	if (hdr_len % 4)
++		mt76x02_remove_hdr_pad(skb, 2);
 +}
-+EXPORT_SYMBOL_GPL(mt76x02_tx_complete);
++EXPORT_SYMBOL_GPL(mt76x02_remove_dma_hdr);
 +
- MODULE_LICENSE("Dual BSD/GPL");
+ void mt76x02_tx_complete(struct mt76_dev *dev, struct sk_buff *skb)
+ {
+ 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.h b/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
-index 953c4bea4051..19fe42c40bed 100644
+index 19fe42c40bed..6b6e963454c8 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.h
-@@ -45,4 +45,5 @@ void mt76x02_sta_rate_tbl_update(struct ieee80211_hw *hw,
- 				struct ieee80211_sta *sta);
+@@ -46,4 +46,5 @@ void mt76x02_sta_rate_tbl_update(struct ieee80211_hw *hw,
  int mt76x02_insert_hdr_pad(struct sk_buff *skb);
  void mt76x02_remove_hdr_pad(struct sk_buff *skb, int len);
-+void mt76x02_tx_complete(struct mt76_dev *dev, struct sk_buff *skb);
+ void mt76x02_tx_complete(struct mt76_dev *dev, struct sk_buff *skb);
++void mt76x02_remove_dma_hdr(struct sk_buff *skb);
  #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2.h b/drivers/net/wireless/mediatek/mt76/mt76x2.h
-index 9f495d4cfb6a..efed3c0a82ce 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2.h
-@@ -215,7 +215,6 @@ int mt76x2_tx_queue_mcu(struct mt76x2_dev *dev, enum mt76_txq_id qid,
- 			struct sk_buff *skb, int cmd, int seq);
- void mt76x2_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
- 	       struct sk_buff *skb);
--void mt76x2_tx_complete(struct mt76_dev *dev, struct sk_buff *skb);
- int mt76x2_tx_prepare_skb(struct mt76_dev *mdev, void *txwi,
- 			  struct sk_buff *skb, struct mt76_queue *q,
- 			  struct mt76_wcid *wcid, struct ieee80211_sta *sta,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c
-index db0cb4a2500b..241ede98e6d3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c
-@@ -19,6 +19,7 @@
- #include "mt76x2_mcu.h"
- #include "mt76x2_eeprom.h"
- #include "mt76x2_trace.h"
-+#include "mt76x02_util.h"
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c b/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c
+index 7b72482b8275..01dcc5382798 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2u_core.c
+@@ -18,18 +18,6 @@
+ #include "dma.h"
+ #include "mt76x02_util.h"
  
- void mt76x2_mac_set_bssid(struct mt76x2_dev *dev, u8 idx, const u8 *addr)
- {
-@@ -73,7 +74,7 @@ mt76x2_mac_queue_txdone(struct mt76x2_dev *dev, struct sk_buff *skb,
- 	txi->wcid = txwi->wcid;
- 	txi->pktid = txwi->pktid;
- 	trace_mac_txdone_add(dev, txwi->wcid, txwi->pktid);
--	mt76x2_tx_complete(&dev->mt76, skb);
-+	mt76x02_tx_complete(&dev->mt76, skb);
- }
- 
- void mt76x2_mac_process_tx_status_fifo(struct mt76x2_dev *dev)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c b/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
-index 663229dc269d..c3c06e036832 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2_tx_common.c
-@@ -116,19 +116,3 @@ void mt76x2_tx_set_txpwr_auto(struct mt76x2_dev *dev, s8 txpwr)
- 		       MT_PROT_AUTO_TX_CFG_AUTO_PADJ, txpwr_adj);
- }
- EXPORT_SYMBOL_GPL(mt76x2_tx_set_txpwr_auto);
--
--void mt76x2_tx_complete(struct mt76_dev *dev, struct sk_buff *skb)
+-static void mt76x2u_remove_dma_hdr(struct sk_buff *skb)
 -{
--	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
+-	int hdr_len;
 -
--	if (info->flags & IEEE80211_TX_CTL_AMPDU) {
--		ieee80211_free_txskb(dev->hw, skb);
--	} else {
--		ieee80211_tx_info_clear_status(info);
--		info->status.rates[0].idx = -1;
--		info->flags |= IEEE80211_TX_STAT_ACK;
--		ieee80211_tx_status(dev->hw, skb);
+-	skb_pull(skb, sizeof(struct mt76x02_txwi) + MT_DMA_HDR_LEN);
+-	hdr_len = ieee80211_get_hdrlen_from_skb(skb);
+-	if (hdr_len % 4) {
+-		memmove(skb->data + 2, skb->data, hdr_len);
+-		skb_pull(skb, 2);
 -	}
 -}
--EXPORT_SYMBOL_GPL(mt76x2_tx_complete);
