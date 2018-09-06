@@ -1,48 +1,75 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 09/13] drm/mediatek: add support for SPDIF audio in
- HDMI
-Date: Thu, 6 Sep 2018 11:37:42 +0800
-Message-ID: <1536205062.4618.23.camel@mtksdaap41>
+Subject: Re: [PATCH v2 08/13] drm/mediatek: register hdmi codec more earlier
+Date: Thu, 6 Sep 2018 13:36:22 +0800
+Message-ID: <1536212182.4618.36.camel@mtksdaap41>
 References: <20180905083146.14727-1-bibby.hsieh@mediatek.com>
-         <20180905083146.14727-10-bibby.hsieh@mediatek.com>
+ <20180905083146.14727-9-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180905083146.14727-10-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180905083146.14727-9-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Bibby:
-
-On Wed, 2018-09-05 at 16:31 +0800, Bibby Hsieh wrote:
-> From: chunhui dai <chunhui.dai@mediatek.com>
-> 
-> add support for SPDIF audio  in HDMI
-> 
-> Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
-> ---
->  drivers/gpu/drm/mediatek/mtk_hdmi.c | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> index 2cb33098ec1a..cd8aaeebb436 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> @@ -1594,6 +1594,11 @@ static int mtk_hdmi_audio_hw_params(struct device *dev, void *data,
->  		hdmi_params.aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
->  		hdmi_params.aud_mclk = HDMI_AUD_MCLK_128FS;
->  		break;
-> +	case HDMI_SPDIF:
-> +		hdmi_params.aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
-> +		hdmi_params.aud_sampe_size = HDMI_AUDIO_SAMPLE_SIZE_16;
-> +		hdmi_params.aud_input_type = HDMI_AUD_INPUT_SPDIF;
-> +		break;
->  	default:
->  		dev_err(hdmi->dev, "%s: Invalid DAI format %d\n", __func__,
->  			daifmt->fmt);
+SGksIEJpYmJ5OgoKT24gV2VkLCAyMDE4LTA5LTA1IGF0IDE2OjMxICswODAwLCBCaWJieSBIc2ll
+aCB3cm90ZToKPiBGcm9tOiBjaHVuaHVpIGRhaSA8Y2h1bmh1aS5kYWlAbWVkaWF0ZWsuY29tPgo+
+IAo+IHNvbWV0aW1lcyBoZG1pIHJlcHJvYmUgZHVlIHRvIGVuY29kZXIgcHJvYmUgbGF0ZSwKPiBi
+dXQgYXVkaW8gZGFpIHByb2JlIGVhcmxpZXIgdGhhbiBoZG1pLiBpdCB3b3VsZCBtYWtlCj4gYXVk
+aW8gZGFpIGNhbm5vdCBmaW5kIHRoZSBoZG1pIGNvZGVjLiB3ZSBuZWVkIHRvCj4gcmVnaXN0ZXIg
+aGRtaSBjb2RlYyBlYXJsaWVyLCBhbmQgdGhlIGJhc2UgbmFtZSB3aGljaAo+IHVzZWQgaW4gdGhl
+IHJlZ2lzdGVyIHNob3VsZCBiZSBQTEFURk9STV9ERVZJRF9OT05FLAo+IG90aGVyd2lzZSBzb21l
+IGF1ZGlvIGRhaSBkaXJ2ZXIgY291bGQgbm90IG1hdGNoIGl0Lgo+IAo+IFNpZ25lZC1vZmYtYnk6
+IGNodW5odWkgZGFpIDxjaHVuaHVpLmRhaUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIHwgMTYgKysrKysrKy0tLS0tLS0tLQo+ICAxIGZp
+bGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspLCA5IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfaGRtaS5jCj4gaW5kZXggN2MwMjJmM2Y1M2VjLi4yY2IzMzA5OGVjMWEg
+MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKPiArKysg
+Yi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwo+IEBAIC0xNjY5LDE1ICsxNjY5
+LDE0IEBAIHN0YXRpYyB2b2lkIG10a19oZG1pX3JlZ2lzdGVyX2F1ZGlvX2RyaXZlcihzdHJ1Y3Qg
+ZGV2aWNlICpkZXYpCj4gIAkJLm1heF9pMnNfY2hhbm5lbHMgPSAyLAo+ICAJCS5pMnMgPSAxLAo+
+ICAJfTsKPiAtCXN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXY7Cj4gKwlzdGF0aWMgc3RydWN0
+IHBsYXRmb3JtX2RldmljZSAqcGRldjsKPiAgCj4gLQlwZGV2ID0gcGxhdGZvcm1fZGV2aWNlX3Jl
+Z2lzdGVyX2RhdGEoZGV2LCBIRE1JX0NPREVDX0RSVl9OQU1FLAo+IC0JCQkJCSAgICAgUExBVEZP
+Uk1fREVWSURfQVVUTywgJmNvZGVjX2RhdGEsCj4gLQkJCQkJICAgICBzaXplb2YoY29kZWNfZGF0
+YSkpOwo+IC0JaWYgKElTX0VSUihwZGV2KSkKPiArCWlmICghcGRldikgewo+ICsJCXBkZXYgPSBw
+bGF0Zm9ybV9kZXZpY2VfcmVnaXN0ZXJfZGF0YShkZXYsIEhETUlfQ09ERUNfRFJWX05BTUUsCj4g
+KwkJCQkJCSAgICAgUExBVEZPUk1fREVWSURfTk9ORSwKPiArCQkJCQkJICAgICAmY29kZWNfZGF0
+YSwKPiArCQkJCQkJICAgICBzaXplb2YoY29kZWNfZGF0YSkpOwo+ICsJCURSTV9JTkZPKCIlcyBk
+cml2ZXIgYm91bmQgdG8gSERNSVxuIiwgSERNSV9DT0RFQ19EUlZfTkFNRSk7Cj4gKwl9CgpJbiB0
+aGUgb3JpZ2luYWwgY29kZSwgaXQgb25seSByZWdpc3RlciBkZXZpY2UgYnV0IG5vdCB1bnJlZ2lz
+dGVyIGRldmljZS4KVGhpcyBsb29rcyBsaWtlIGEgYnVnIGluIGhkbWkgZHJpdmVyLiBTbyB3ZSBu
+ZWVkIHRvIHJlZ2lzdGVyIGFuZAp1bnJlZ2lzdGVyLiBZb3UgZGVmaW5lIGEgJ3N0YXRpYycgdmFy
+aWFibGUgaGVyZSB3b3VsZCBtYWtlCnJlZ2lzdGVyL3VucmVnaXN0ZXIgYXN5bW1ldHJpYy4gQW5k
+IGhvdyBkbyB5b3UgbWFrZSBzdXJlIHRoYXQgaGRtaQpkcml2ZXIgaXMgcHJvYmVkIGJlZm9yZSBh
+dWRpbyBkYWkgZHJpdmVyPyBCeSB0aGUgZGV2aWNlIHRyZWUgb3JkZXI/CkRldmljZSB0cmVlIG9s
+ZGVyIG1heSB2YXJ5IGZvciBlYWNoIFNvQy4gSSB3b3VsZCBsaWtlIG1vcmUgZ2VuZXJhbApzb2x1
+dGlvbiB0byBtYWtlIHN1cmUgdGhhdCBoZG1pIGRyaXZlciBpcyBwcm9iZWQgYmVmb3JlIGF1ZGlv
+IGRhaQpkcml2ZXIuIFRoZXJlIGFyZSBzb21lIG1ldGhvZCB0byBtYWtlIGRyaXZlcnMgcHJvYmUg
+aW4gb3JkZXIsIHNvIHRyeSB0bwp1c2UgdGhlIGJldHRlciBtZXRob2QuCgpSZWdhcmRzLApDSwoK
+PiAgCQlyZXR1cm47Cj4gLQo+IC0JRFJNX0lORk8oIiVzIGRyaXZlciBib3VuZCB0byBIRE1JXG4i
+LCBIRE1JX0NPREVDX0RSVl9OQU1FKTsKPiAgfQo+ICAKPiAgc3RhdGljIGludCBtdGtfZHJtX2hk
+bWlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiBAQCAtMTY5MSw2ICsxNjkw
+LDcgQEAgc3RhdGljIGludCBtdGtfZHJtX2hkbWlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2Rldmlj
+ZSAqcGRldikKPiAgCQlyZXR1cm4gLUVOT01FTTsKPiAgCj4gIAloZG1pLT5kZXYgPSBkZXY7Cj4g
+KwltdGtfaGRtaV9yZWdpc3Rlcl9hdWRpb19kcml2ZXIoZGV2KTsKPiAgCj4gIAlyZXQgPSBtdGtf
+aGRtaV9kdF9wYXJzZV9wZGF0YShoZG1pLCBwZGV2KTsKPiAgCWlmIChyZXQpCj4gQEAgLTE3MDQs
+OCArMTcwNCw2IEBAIHN0YXRpYyBpbnQgbXRrX2RybV9oZG1pX3Byb2JlKHN0cnVjdCBwbGF0Zm9y
+bV9kZXZpY2UgKnBkZXYpCj4gIAkJcmV0dXJuIHJldDsKPiAgCX0KPiAgCj4gLQltdGtfaGRtaV9y
+ZWdpc3Rlcl9hdWRpb19kcml2ZXIoZGV2KTsKPiAtCj4gIAloZG1pLT5icmlkZ2UuZnVuY3MgPSAm
+bXRrX2hkbWlfYnJpZGdlX2Z1bmNzOwo+ICAJaGRtaS0+YnJpZGdlLm9mX25vZGUgPSBwZGV2LT5k
+ZXYub2Zfbm9kZTsKPiAgCWRybV9icmlkZ2VfYWRkKCZoZG1pLT5icmlkZ2UpOwoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
