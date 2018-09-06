@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 38/42] mt76: initial separation of mmio part
-Date: Thu,  6 Sep 2018 11:18:54 +0200
-Message-ID: <1536225538-16454-39-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 39/42] mt76: move some irq code to common mmio module
+Date: Thu,  6 Sep 2018 11:18:55 +0200
+Message-ID: <1536225538-16454-40-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,246 +10,64 @@ To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Create mt76_mmio module to contain generic mt76 PCEe/SOC code.
+Move some irq handling code to generic mmio module.
 
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/Kconfig      |  8 ++-
- drivers/net/wireless/mediatek/mt76/Makefile     |  8 +--
- drivers/net/wireless/mediatek/mt76/dma.c        | 68 +++++++++++++++++++++++
- drivers/net/wireless/mediatek/mt76/mac80211.c   |  1 -
- drivers/net/wireless/mediatek/mt76/mmio.c       | 17 ++++--
- drivers/net/wireless/mediatek/mt76/mmio_trace.c | 23 ++++++++
- drivers/net/wireless/mediatek/mt76/mmio_trace.h | 71 +++++++++++++++++++++++++
- drivers/net/wireless/mediatek/mt76/mt76.h       | 16 ++++--
- drivers/net/wireless/mediatek/mt76/mt76x2_dma.c |  4 +-
- drivers/net/wireless/mediatek/mt76/trace.c      | 23 --------
- drivers/net/wireless/mediatek/mt76/trace.h      | 71 -------------------------
- drivers/net/wireless/mediatek/mt76/tx.c         | 66 -----------------------
- 12 files changed, 198 insertions(+), 178 deletions(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mmio_trace.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mmio_trace.h
- delete mode 100644 drivers/net/wireless/mediatek/mt76/trace.c
- delete mode 100644 drivers/net/wireless/mediatek/mt76/trace.h
+ drivers/net/wireless/mediatek/mt76/mmio.c        | 15 +++++++++++
+ drivers/net/wireless/mediatek/mt76/mmio.h        | 34 ++++++++++++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76.h        |  3 +++
+ drivers/net/wireless/mediatek/mt76/mt76x2.h      | 15 -----------
+ drivers/net/wireless/mediatek/mt76/mt76x2_core.c | 26 ++++++------------
+ drivers/net/wireless/mediatek/mt76/mt76x2_dfs.c  |  7 ++---
+ drivers/net/wireless/mediatek/mt76/mt76x2_dma.c  |  7 ++---
+ drivers/net/wireless/mediatek/mt76/mt76x2_init.c |  6 ++---
+ drivers/net/wireless/mediatek/mt76/mt76x2_mac.c  |  9 ++++---
+ 9 files changed, 76 insertions(+), 46 deletions(-)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mmio.h
 
-diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wireless/mediatek/mt76/Kconfig
-index e460a3a5e763..0fe581ed8693 100644
---- a/drivers/net/wireless/mediatek/mt76/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/Kconfig
-@@ -3,7 +3,11 @@ config MT76_CORE
- 
- config MT76_USB
- 	tristate
--	depends on MT76_CORE
-+	select MT76_CORE
-+
-+config MT76_MMIO
-+	tristate
-+	select MT76_CORE
- 
- config MT76x02_LIB
- 	tristate
-@@ -29,6 +33,7 @@ config MT76x0U
- config MT76x0E
- 	tristate "MediaTek MT76x0E (PCIe) support"
- 	select MT76x0_COMMON
-+	select MT76_MMIO
- 	depends on MAC80211
- 	depends on PCI
- 	help
-@@ -37,6 +42,7 @@ config MT76x0E
- config MT76x2E
- 	tristate "MediaTek MT76x2E (PCIe) support"
- 	select MT76x2_COMMON
-+	select MT76_MMIO
- 	depends on MAC80211
- 	depends on PCI
- 	---help---
-diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
-index 129ac71446d6..1d366348f799 100644
---- a/drivers/net/wireless/mediatek/mt76/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/Makefile
-@@ -1,17 +1,17 @@
- obj-$(CONFIG_MT76_CORE) += mt76.o
- obj-$(CONFIG_MT76_USB) += mt76-usb.o
-+obj-$(CONFIG_MT76_MMIO) += mt76-mmio.o
- obj-$(CONFIG_MT76x0_COMMON) += mt76x0/
- obj-$(CONFIG_MT76x02_LIB) += mt76x02-lib.o
- obj-$(CONFIG_MT76x2_COMMON) += mt76x2-common.o
- obj-$(CONFIG_MT76x2E) += mt76x2e.o
- obj-$(CONFIG_MT76x2U) += mt76x2u.o
- 
--mt76-y := \
--	mmio.o util.o trace.o dma.o mac80211.o debugfs.o eeprom.o tx.o agg-rx.o
--
-+mt76-y := util.o mac80211.o debugfs.o eeprom.o tx.o agg-rx.o
-+mt76-mmio-y := dma.o mmio_trace.o mmio.o
- mt76-usb-y := usb.o usb_trace.o usb_mcu.o
- 
--CFLAGS_trace.o := -I$(src)
-+CFLAGS_mmio_trace.o := -I$(src)
- CFLAGS_usb_trace.o := -I$(src)
- 
- mt76x02-lib-y := mt76x02_util.o mt76x02_mac.o
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
-index c51da2205b93..138f3faa6138 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -20,6 +20,72 @@
- 
- #define DMA_DUMMY_TXWI	((void *) ~0)
- 
-+static struct mt76_txwi_cache *
-+mt76_alloc_txwi(struct mt76_dev *dev)
-+{
-+	struct mt76_txwi_cache *t;
-+	dma_addr_t addr;
-+	int size;
-+
-+	size = (sizeof(*t) + L1_CACHE_BYTES - 1) & ~(L1_CACHE_BYTES - 1);
-+	t = devm_kzalloc(dev->dev, size, GFP_ATOMIC);
-+	if (!t)
-+		return NULL;
-+
-+	addr = dma_map_single(dev->dev, &t->txwi, sizeof(t->txwi),
-+			      DMA_TO_DEVICE);
-+	t->dma_addr = addr;
-+
-+	return t;
-+}
-+
-+static struct mt76_txwi_cache *
-+__mt76_get_txwi(struct mt76_dev *dev)
-+{
-+	struct mt76_txwi_cache *t = NULL;
-+
-+	spin_lock_bh(&dev->lock);
-+	if (!list_empty(&dev->txwi_cache)) {
-+		t = list_first_entry(&dev->txwi_cache, struct mt76_txwi_cache,
-+				     list);
-+		list_del(&t->list);
-+	}
-+	spin_unlock_bh(&dev->lock);
-+
-+	return t;
-+}
-+
-+struct mt76_txwi_cache *
-+mt76_get_txwi(struct mt76_dev *dev)
-+{
-+	struct mt76_txwi_cache *t = __mt76_get_txwi(dev);
-+
-+	if (t)
-+		return t;
-+
-+	return mt76_alloc_txwi(dev);
-+}
-+
-+static void
-+mt76_put_txwi(struct mt76_dev *dev, struct mt76_txwi_cache *t)
-+{
-+	if (!t)
-+		return;
-+
-+	spin_lock_bh(&dev->lock);
-+	list_add(&t->list, &dev->txwi_cache);
-+	spin_unlock_bh(&dev->lock);
-+}
-+
-+static void mt76_tx_free(struct mt76_dev *dev)
-+{
-+	struct mt76_txwi_cache *t;
-+
-+	while ((t = __mt76_get_txwi(dev)) != NULL)
-+		dma_unmap_single(dev->dev, t->dma_addr, sizeof(t->txwi),
-+				 DMA_TO_DEVICE);
-+}
-+
- static int
- mt76_dma_alloc_queue(struct mt76_dev *dev, struct mt76_queue *q)
- {
-@@ -534,5 +600,7 @@ void mt76_dma_cleanup(struct mt76_dev *dev)
- 		netif_napi_del(&dev->napi[i]);
- 		mt76_dma_rx_cleanup(dev, &dev->q_rx[i]);
- 	}
-+
-+	mt76_tx_free(dev);
- }
- EXPORT_SYMBOL_GPL(mt76_dma_cleanup);
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 639cbafc1d50..4615040e782e 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -358,7 +358,6 @@ void mt76_unregister_device(struct mt76_dev *dev)
- 	struct ieee80211_hw *hw = dev->hw;
- 
- 	ieee80211_unregister_hw(hw);
--	mt76_tx_free(dev);
- }
- EXPORT_SYMBOL_GPL(mt76_unregister_device);
- 
 diff --git a/drivers/net/wireless/mediatek/mt76/mmio.c b/drivers/net/wireless/mediatek/mt76/mmio.c
-index 09a14dead6e3..c836a2a8986a 100644
+index c836a2a8986a..e29d3ed3a6ce 100644
 --- a/drivers/net/wireless/mediatek/mt76/mmio.c
 +++ b/drivers/net/wireless/mediatek/mt76/mmio.c
-@@ -15,13 +15,14 @@
-  */
- 
- #include "mt76.h"
--#include "trace.h"
-+#include "mmio_trace.h"
- 
- static u32 mt76_mmio_rr(struct mt76_dev *dev, u32 offset)
- {
-+	struct mt76_mmio *mmio = &dev->mmio;
- 	u32 val;
- 
--	val = ioread32(dev->regs + offset);
-+	val = ioread32(mmio->regs + offset);
- 	trace_reg_rr(dev, offset, val);
- 
- 	return val;
-@@ -29,8 +30,10 @@ static u32 mt76_mmio_rr(struct mt76_dev *dev, u32 offset)
- 
- static void mt76_mmio_wr(struct mt76_dev *dev, u32 offset, u32 val)
- {
-+	struct mt76_mmio *mmio = &dev->mmio;
-+
- 	trace_reg_wr(dev, offset, val);
--	iowrite32(val, dev->regs + offset);
-+	iowrite32(val, mmio->regs + offset);
+@@ -51,6 +51,20 @@ static void mt76_mmio_copy(struct mt76_dev *dev, u32 offset, const void *data,
+ 	__iowrite32_copy(mmio->regs + offset, data, len >> 2);
  }
  
- static u32 mt76_mmio_rmw(struct mt76_dev *dev, u32 offset, u32 mask, u32 val)
-@@ -43,7 +46,9 @@ static u32 mt76_mmio_rmw(struct mt76_dev *dev, u32 offset, u32 mask, u32 val)
- static void mt76_mmio_copy(struct mt76_dev *dev, u32 offset, const void *data,
- 			   int len)
- {
--	__iowrite32_copy(dev->regs + offset, data, len >> 2);
++void mt76e_set_irq_mask(struct mt76_dev *dev, u32 clear, u32 set)
++{
 +	struct mt76_mmio *mmio = &dev->mmio;
++	const int MT_INT_MASK_CSR = 0x0204;
++	unsigned long flags;
 +
-+	__iowrite32_copy(mmio->regs + offset, data, len >> 2);
- }
- 
++	spin_lock_irqsave(&mmio->irq_lock, flags);
++	mmio->irqmask &= ~clear;
++	mmio->irqmask |= set;
++	__mt76_wr(dev, MT_INT_MASK_CSR, mmio->irqmask);
++	spin_unlock_irqrestore(&mmio->irq_lock, flags);
++}
++EXPORT_SYMBOL_GPL(mt76e_set_irq_mask);
++
  void mt76_mmio_init(struct mt76_dev *dev, void __iomem *regs)
-@@ -56,6 +61,8 @@ void mt76_mmio_init(struct mt76_dev *dev, void __iomem *regs)
- 	};
+ {
+ 	static const struct mt76_bus_ops mt76_mmio_ops = {
+@@ -62,6 +76,7 @@ void mt76_mmio_init(struct mt76_dev *dev, void __iomem *regs)
  
  	dev->bus = &mt76_mmio_ops;
--	dev->regs = regs;
-+	dev->mmio.regs = regs;
+ 	dev->mmio.regs = regs;
++	spin_lock_init(&dev->mmio.irq_lock);
  }
  EXPORT_SYMBOL_GPL(mt76_mmio_init);
-+
-+MODULE_LICENSE("Dual BSD/GPL");
-diff --git a/drivers/net/wireless/mediatek/mt76/mmio_trace.c b/drivers/net/wireless/mediatek/mt76/mmio_trace.c
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mmio.h b/drivers/net/wireless/mediatek/mt76/mmio.h
 new file mode 100644
-index 000000000000..13945ec18cfa
+index 000000000000..7f01ba31b3e1
 --- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mmio_trace.c
-@@ -0,0 +1,23 @@
++++ b/drivers/net/wireless/mediatek/mt76/mmio.h
+@@ -0,0 +1,34 @@
 +/*
 + * Copyright (C) 2016 Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
++ * Copyright (C) 2018 Stanislaw Gruszka <stf_xl-5tc4TXWwyLM@public.gmane.org>
 + *
 + * Permission to use, copy, modify, and/or distribute this software for any
 + * purpose with or without fee is hereby granted, provided that the above
@@ -264,338 +82,290 @@ index 000000000000..13945ec18cfa
 + * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 + */
 +
-+#include <linux/module.h>
++#ifndef __MT76_MMIO_H
++#define __MT76_MMIO_H
 +
-+#ifndef __CHECKER__
-+#define CREATE_TRACE_POINTS
-+#include "mmio_trace.h"
-+
-+#endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mmio_trace.h b/drivers/net/wireless/mediatek/mt76/mmio_trace.h
-new file mode 100644
-index 000000000000..f0de0b094dea
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mmio_trace.h
-@@ -0,0 +1,71 @@
-+/*
-+ * Copyright (C) 2016 Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
-+ *
-+ * Permission to use, copy, modify, and/or distribute this software for any
-+ * purpose with or without fee is hereby granted, provided that the above
-+ * copyright notice and this permission notice appear in all copies.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-+ */
-+
-+#if !defined(__MT76_MMIO_TRACE_H) || defined(TRACE_HEADER_MULTI_READ)
-+#define __MT76_MMIO_TRACE_H
-+
-+#include <linux/tracepoint.h>
 +#include "mt76.h"
 +
-+#undef TRACE_SYSTEM
-+#define TRACE_SYSTEM mt76_mmio
++void mt76e_set_irq_mask(struct mt76_dev *dev, u32 clear, u32 set);
 +
-+#define MAXNAME		32
-+#define DEV_ENTRY   __array(char, wiphy_name, 32)
-+#define DEV_ASSIGN  strlcpy(__entry->wiphy_name, wiphy_name(dev->hw->wiphy), MAXNAME)
-+#define DEV_PR_FMT  "%s"
-+#define DEV_PR_ARG  __entry->wiphy_name
++static inline void mt76e_irq_enable(struct mt76_dev *dev, u32 mask)
++{
++	mt76e_set_irq_mask(dev, 0, mask);
++}
 +
-+#define REG_ENTRY	__field(u32, reg) __field(u32, val)
-+#define REG_ASSIGN	__entry->reg = reg; __entry->val = val
-+#define REG_PR_FMT	" %04x=%08x"
-+#define REG_PR_ARG	__entry->reg, __entry->val
-+
-+DECLARE_EVENT_CLASS(dev_reg_evt,
-+	TP_PROTO(struct mt76_dev *dev, u32 reg, u32 val),
-+	TP_ARGS(dev, reg, val),
-+	TP_STRUCT__entry(
-+		DEV_ENTRY
-+		REG_ENTRY
-+	),
-+	TP_fast_assign(
-+		DEV_ASSIGN;
-+		REG_ASSIGN;
-+	),
-+	TP_printk(
-+		DEV_PR_FMT REG_PR_FMT,
-+		DEV_PR_ARG, REG_PR_ARG
-+	)
-+);
-+
-+DEFINE_EVENT(dev_reg_evt, reg_rr,
-+	TP_PROTO(struct mt76_dev *dev, u32 reg, u32 val),
-+	TP_ARGS(dev, reg, val)
-+);
-+
-+DEFINE_EVENT(dev_reg_evt, reg_wr,
-+	TP_PROTO(struct mt76_dev *dev, u32 reg, u32 val),
-+	TP_ARGS(dev, reg, val)
-+);
-+
++static inline void mt76e_irq_disable(struct mt76_dev *dev, u32 mask)
++{
++	mt76e_set_irq_mask(dev, mask, 0);
++}
 +#endif
-+
-+#undef TRACE_INCLUDE_PATH
-+#define TRACE_INCLUDE_PATH .
-+#undef TRACE_INCLUDE_FILE
-+#define TRACE_INCLUDE_FILE mmio_trace
-+
-+#include <trace/define_trace.h>
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 80390be041cb..2987ade3cb1a 100644
+index 2987ade3cb1a..064897439a29 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -323,6 +323,10 @@ struct mt76_usb {
- 	} mcu;
+@@ -324,6 +324,9 @@ struct mt76_usb {
  };
  
-+struct mt76_mmio {
-+	void __iomem *regs;
-+};
+ struct mt76_mmio {
++	spinlock_t irq_lock;
++	u32 irqmask;
 +
- struct mt76_dev {
- 	struct ieee80211_hw *hw;
- 	struct cfg80211_chan_def chandef;
-@@ -335,7 +339,6 @@ struct mt76_dev {
- 
- 	const struct mt76_bus_ops *bus;
- 	const struct mt76_driver_ops *drv;
--	void __iomem *regs;
- 	struct device *dev;
- 
- 	struct net_device napi_dev;
-@@ -376,9 +379,15 @@ struct mt76_dev {
- 
- 	u32 rxfilter;
- 
--	struct mt76_usb usb;
-+	union {
-+		struct mt76_usb usb;
-+		struct mt76_mmio mmio;
-+	};
+ 	void __iomem *regs;
  };
  
-+#define mt76_usb(dev) (&((dev)->mt76.usb))
-+#define mt76_mmio(dev) (&((dev)->mt76.mmio))
-+
- enum mt76_phy_type {
- 	MT_PHY_TYPE_CCK,
- 	MT_PHY_TYPE_OFDM,
-@@ -574,9 +583,6 @@ void mt76_wcid_key_setup(struct mt76_dev *dev, struct mt76_wcid *wcid,
- struct ieee80211_sta *mt76_rx_convert(struct sk_buff *skb);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2.h b/drivers/net/wireless/mediatek/mt76/mt76x2.h
+index 87b805637ff8..b71e4247d42a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2.h
+@@ -108,9 +108,6 @@ struct mt76x2_dev {
  
- /* internal */
--void mt76_tx_free(struct mt76_dev *dev);
--struct mt76_txwi_cache *mt76_get_txwi(struct mt76_dev *dev);
--void mt76_put_txwi(struct mt76_dev *dev, struct mt76_txwi_cache *t);
- void mt76_rx_complete(struct mt76_dev *dev, struct sk_buff_head *frames,
- 		      struct napi_struct *napi);
- void mt76_rx_poll_complete(struct mt76_dev *dev, enum mt76_rxq_id q,
+ 	u32 aggr_stats[32];
+ 
+-	spinlock_t irq_lock;
+-	u32 irqmask;
+-
+ 	struct sk_buff *beacons[8];
+ 	u8 beacon_mask;
+ 	u8 beacon_data_mask;
+@@ -138,8 +135,6 @@ static inline bool is_mt7612(struct mt76x2_dev *dev)
+ 	return mt76_chip(&dev->mt76) == 0x7612;
+ }
+ 
+-void mt76x2_set_irq_mask(struct mt76x2_dev *dev, u32 clear, u32 set);
+-
+ static inline bool mt76x2_channel_silent(struct mt76x2_dev *dev)
+ {
+ 	struct ieee80211_channel *chan = dev->mt76.chandef.chan;
+@@ -148,16 +143,6 @@ static inline bool mt76x2_channel_silent(struct mt76x2_dev *dev)
+ 		chan->dfs_state != NL80211_DFS_AVAILABLE);
+ }
+ 
+-static inline void mt76x2_irq_enable(struct mt76x2_dev *dev, u32 mask)
+-{
+-	mt76x2_set_irq_mask(dev, 0, mask);
+-}
+-
+-static inline void mt76x2_irq_disable(struct mt76x2_dev *dev, u32 mask)
+-{
+-	mt76x2_set_irq_mask(dev, mask, 0);
+-}
+-
+ static inline bool mt76x2_wait_for_bbp(struct mt76x2_dev *dev)
+ {
+ 	return mt76_poll_msec(dev, MT_MAC_STATUS,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_core.c b/drivers/net/wireless/mediatek/mt76/mt76x2_core.c
+index 2629779e8d3e..aa1946fe6703 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_core.c
+@@ -15,25 +15,15 @@
+  */
+ 
+ #include <linux/delay.h>
++#include "mmio.h"
+ #include "mt76x2.h"
+ #include "mt76x2_trace.h"
+ 
+-void mt76x2_set_irq_mask(struct mt76x2_dev *dev, u32 clear, u32 set)
+-{
+-	unsigned long flags;
+-
+-	spin_lock_irqsave(&dev->irq_lock, flags);
+-	dev->irqmask &= ~clear;
+-	dev->irqmask |= set;
+-	mt76_wr(dev, MT_INT_MASK_CSR, dev->irqmask);
+-	spin_unlock_irqrestore(&dev->irq_lock, flags);
+-}
+-
+ void mt76x2_rx_poll_complete(struct mt76_dev *mdev, enum mt76_rxq_id q)
+ {
+ 	struct mt76x2_dev *dev = container_of(mdev, struct mt76x2_dev, mt76);
+ 
+-	mt76x2_irq_enable(dev, MT_INT_RX_DONE(q));
++	mt76e_irq_enable(&dev->mt76, MT_INT_RX_DONE(q));
+ }
+ 
+ irqreturn_t mt76x2_irq_handler(int irq, void *dev_instance)
+@@ -47,22 +37,22 @@ irqreturn_t mt76x2_irq_handler(int irq, void *dev_instance)
+ 	if (!test_bit(MT76_STATE_INITIALIZED, &dev->mt76.state))
+ 		return IRQ_NONE;
+ 
+-	trace_dev_irq(dev, intr, dev->irqmask);
++	trace_dev_irq(dev, intr, dev->mt76.mmio.irqmask);
+ 
+-	intr &= dev->irqmask;
++	intr &= dev->mt76.mmio.irqmask;
+ 
+ 	if (intr & MT_INT_TX_DONE_ALL) {
+-		mt76x2_irq_disable(dev, MT_INT_TX_DONE_ALL);
++		mt76e_irq_disable(&dev->mt76, MT_INT_TX_DONE_ALL);
+ 		tasklet_schedule(&dev->tx_tasklet);
+ 	}
+ 
+ 	if (intr & MT_INT_RX_DONE(0)) {
+-		mt76x2_irq_disable(dev, MT_INT_RX_DONE(0));
++		mt76e_irq_disable(&dev->mt76, MT_INT_RX_DONE(0));
+ 		napi_schedule(&dev->mt76.napi[0]);
+ 	}
+ 
+ 	if (intr & MT_INT_RX_DONE(1)) {
+-		mt76x2_irq_disable(dev, MT_INT_RX_DONE(1));
++		mt76e_irq_disable(&dev->mt76, MT_INT_RX_DONE(1));
+ 		napi_schedule(&dev->mt76.napi[1]);
+ 	}
+ 
+@@ -79,7 +69,7 @@ irqreturn_t mt76x2_irq_handler(int irq, void *dev_instance)
+ 	}
+ 
+ 	if (intr & MT_INT_GPTIMER) {
+-		mt76x2_irq_disable(dev, MT_INT_GPTIMER);
++		mt76e_irq_disable(&dev->mt76, MT_INT_GPTIMER);
+ 		tasklet_schedule(&dev->dfs_pd.dfs_tasklet);
+ 	}
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_dfs.c b/drivers/net/wireless/mediatek/mt76/mt76x2_dfs.c
+index 374cc655c11d..621946834102 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_dfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_dfs.c
+@@ -15,6 +15,7 @@
+  */
+ 
+ #include "mt76x2.h"
++#include "mmio.h"
+ 
+ #define RADAR_SPEC(m, len, el, eh, wl, wh,		\
+ 		   w_tolerance, tl, th, t_tolerance,	\
+@@ -678,7 +679,7 @@ static void mt76x2_dfs_tasklet(unsigned long arg)
+ 	mt76_wr(dev, MT_BBP(DFS, 1), 0xf);
+ 
+ out:
+-	mt76x2_irq_enable(dev, MT_INT_GPTIMER);
++	mt76e_irq_enable(&dev->mt76, MT_INT_GPTIMER);
+ }
+ 
+ static void mt76x2_dfs_init_sw_detector(struct mt76x2_dev *dev)
+@@ -834,7 +835,7 @@ void mt76x2_dfs_init_params(struct mt76x2_dev *dev)
+ 		/* enable debug mode */
+ 		mt76x2_dfs_set_capture_mode_ctrl(dev, true);
+ 
+-		mt76x2_irq_enable(dev, MT_INT_GPTIMER);
++		mt76e_irq_enable(&dev->mt76, MT_INT_GPTIMER);
+ 		mt76_rmw_field(dev, MT_INT_TIMER_EN,
+ 			       MT_INT_TIMER_EN_GP_TIMER_EN, 1);
+ 	} else {
+@@ -844,7 +845,7 @@ void mt76x2_dfs_init_params(struct mt76x2_dev *dev)
+ 		mt76_wr(dev, MT_BBP(DFS, 1), 0xf);
+ 		mt76_wr(dev, 0x212c, 0);
+ 
+-		mt76x2_irq_disable(dev, MT_INT_GPTIMER);
++		mt76e_irq_disable(&dev->mt76, MT_INT_GPTIMER);
+ 		mt76_rmw_field(dev, MT_INT_TIMER_EN,
+ 			       MT_INT_TIMER_EN_GP_TIMER_EN, 0);
+ 	}
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_dma.c b/drivers/net/wireless/mediatek/mt76/mt76x2_dma.c
-index 44ca660775fd..8d9a599aa4ad 100644
+index 8d9a599aa4ad..a85db9cb0163 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x2_dma.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x2_dma.c
-@@ -53,7 +53,7 @@ mt76x2_init_tx_queue(struct mt76x2_dev *dev, struct mt76_queue *q,
+@@ -16,6 +16,7 @@
+ 
+ #include "mt76x2.h"
+ #include "dma.h"
++#include "mmio.h"
+ 
+ int
+ mt76x2_tx_queue_mcu(struct mt76x2_dev *dev, enum mt76_txq_id qid,
+@@ -60,7 +61,7 @@ mt76x2_init_tx_queue(struct mt76x2_dev *dev, struct mt76_queue *q,
+ 	if (ret)
+ 		return ret;
+ 
+-	mt76x2_irq_enable(dev, MT_INT_TX_DONE(idx));
++	mt76e_irq_enable(&dev->mt76, MT_INT_TX_DONE(idx));
+ 
+ 	return 0;
+ }
+@@ -79,7 +80,7 @@ mt76x2_init_rx_queue(struct mt76x2_dev *dev, struct mt76_queue *q,
+ 	if (ret)
+ 		return ret;
+ 
+-	mt76x2_irq_enable(dev, MT_INT_RX_DONE(idx));
++	mt76e_irq_enable(&dev->mt76, MT_INT_RX_DONE(idx));
+ 
+ 	return 0;
+ }
+@@ -96,7 +97,7 @@ mt76x2_tx_tasklet(unsigned long data)
+ 		mt76_queue_tx_cleanup(dev, i, false);
+ 
+ 	mt76x2_mac_poll_tx_status(dev, false);
+-	mt76x2_irq_enable(dev, MT_INT_TX_DONE_ALL);
++	mt76e_irq_enable(&dev->mt76, MT_INT_TX_DONE_ALL);
+ }
+ 
+ int mt76x2_dma_init(struct mt76x2_dev *dev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_init.c b/drivers/net/wireless/mediatek/mt76/mt76x2_init.c
+index 56a4b86bb665..65fdebd2eeff 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_init.c
+@@ -19,6 +19,7 @@
+ #include "mt76x2_eeprom.h"
+ #include "mt76x2_mcu.h"
+ #include "mt76x02_util.h"
++#include "mmio.h"
+ 
+ static void
+ mt76x2_mac_pbf_init(struct mt76x2_dev *dev)
+@@ -221,8 +222,8 @@ int mt76x2_mac_start(struct mt76x2_dev *dev)
+ 		MT_MAC_SYS_CTRL_ENABLE_TX |
+ 		MT_MAC_SYS_CTRL_ENABLE_RX);
+ 
+-	mt76x2_irq_enable(dev, MT_INT_RX_DONE_ALL | MT_INT_TX_DONE_ALL |
+-			       MT_INT_TX_STAT);
++	mt76e_irq_enable(&dev->mt76, MT_INT_RX_DONE_ALL | MT_INT_TX_DONE_ALL |
++				     MT_INT_TX_STAT);
+ 
+ 	return 0;
+ }
+@@ -437,7 +438,6 @@ struct mt76x2_dev *mt76x2_alloc_device(struct device *pdev)
+ 	dev = container_of(mdev, struct mt76x2_dev, mt76);
+ 	mdev->dev = pdev;
+ 	mdev->drv = &drv_ops;
+-	spin_lock_init(&dev->irq_lock);
+ 
+ 	return dev;
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c
+index 241ede98e6d3..dc5012202b41 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_mac.c
+@@ -20,6 +20,7 @@
+ #include "mt76x2_eeprom.h"
+ #include "mt76x2_trace.h"
+ #include "mt76x02_util.h"
++#include "mmio.h"
+ 
+ void mt76x2_mac_set_bssid(struct mt76x2_dev *dev, u8 idx, const u8 *addr)
  {
- 	int ret;
+@@ -42,9 +43,9 @@ void mt76x2_mac_poll_tx_status(struct mt76x2_dev *dev, bool irq)
+ 	trace_mac_txstat_poll(dev);
  
--	q->regs = dev->mt76.regs + MT_TX_RING_BASE + idx * MT_RING_SIZE;
-+	q->regs = mt76_mmio(dev)->regs + MT_TX_RING_BASE + idx * MT_RING_SIZE;
- 	q->ndesc = n_desc;
+ 	while (!irq || !kfifo_is_full(&dev->txstatus_fifo)) {
+-		spin_lock_irqsave(&dev->irq_lock, flags);
++		spin_lock_irqsave(&dev->mt76.mmio.irq_lock, flags);
+ 		ret = mt76x02_mac_load_tx_status(&dev->mt76, &stat);
+-		spin_unlock_irqrestore(&dev->irq_lock, flags);
++		spin_unlock_irqrestore(&dev->mt76.mmio.irq_lock, flags);
  
- 	ret = mt76_queue_alloc(dev, q);
-@@ -71,7 +71,7 @@ mt76x2_init_rx_queue(struct mt76x2_dev *dev, struct mt76_queue *q,
- {
- 	int ret;
+ 		if (!ret)
+ 			break;
+@@ -202,9 +203,9 @@ void mt76x2_mac_set_beacon_enable(struct mt76x2_dev *dev, u8 vif_idx, bool val)
+ 	mt76_rmw(dev, MT_BEACON_TIME_CFG, reg, reg * en);
  
--	q->regs = dev->mt76.regs + MT_RX_RING_BASE + idx * MT_RING_SIZE;
-+	q->regs = mt76_mmio(dev)->regs + MT_RX_RING_BASE + idx * MT_RING_SIZE;
- 	q->ndesc = n_desc;
- 	q->buf_size = bufsize;
+ 	if (en)
+-		mt76x2_irq_enable(dev, MT_INT_PRE_TBTT | MT_INT_TBTT);
++		mt76e_irq_enable(&dev->mt76, MT_INT_PRE_TBTT | MT_INT_TBTT);
+ 	else
+-		mt76x2_irq_disable(dev, MT_INT_PRE_TBTT | MT_INT_TBTT);
++		mt76e_irq_disable(&dev->mt76, MT_INT_PRE_TBTT | MT_INT_TBTT);
+ }
  
-diff --git a/drivers/net/wireless/mediatek/mt76/trace.c b/drivers/net/wireless/mediatek/mt76/trace.c
-deleted file mode 100644
-index ea4ab8729ae4..000000000000
---- a/drivers/net/wireless/mediatek/mt76/trace.c
-+++ /dev/null
-@@ -1,23 +0,0 @@
--/*
-- * Copyright (C) 2016 Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
-- *
-- * Permission to use, copy, modify, and/or distribute this software for any
-- * purpose with or without fee is hereby granted, provided that the above
-- * copyright notice and this permission notice appear in all copies.
-- *
-- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-- * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-- * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-- * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-- * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-- * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-- * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-- */
--
--#include <linux/module.h>
--
--#ifndef __CHECKER__
--#define CREATE_TRACE_POINTS
--#include "trace.h"
--
--#endif
-diff --git a/drivers/net/wireless/mediatek/mt76/trace.h b/drivers/net/wireless/mediatek/mt76/trace.h
-deleted file mode 100644
-index ea30895933c5..000000000000
---- a/drivers/net/wireless/mediatek/mt76/trace.h
-+++ /dev/null
-@@ -1,71 +0,0 @@
--/*
-- * Copyright (C) 2016 Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
-- *
-- * Permission to use, copy, modify, and/or distribute this software for any
-- * purpose with or without fee is hereby granted, provided that the above
-- * copyright notice and this permission notice appear in all copies.
-- *
-- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-- * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-- * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-- * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-- * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-- * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-- * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-- */
--
--#if !defined(__MT76_TRACE_H) || defined(TRACE_HEADER_MULTI_READ)
--#define __MT76_TRACE_H
--
--#include <linux/tracepoint.h>
--#include "mt76.h"
--
--#undef TRACE_SYSTEM
--#define TRACE_SYSTEM mt76
--
--#define MAXNAME		32
--#define DEV_ENTRY   __array(char, wiphy_name, 32)
--#define DEV_ASSIGN  strlcpy(__entry->wiphy_name, wiphy_name(dev->hw->wiphy), MAXNAME)
--#define DEV_PR_FMT  "%s"
--#define DEV_PR_ARG  __entry->wiphy_name
--
--#define REG_ENTRY	__field(u32, reg) __field(u32, val)
--#define REG_ASSIGN	__entry->reg = reg; __entry->val = val
--#define REG_PR_FMT	" %04x=%08x"
--#define REG_PR_ARG	__entry->reg, __entry->val
--
--DECLARE_EVENT_CLASS(dev_reg_evt,
--	TP_PROTO(struct mt76_dev *dev, u32 reg, u32 val),
--	TP_ARGS(dev, reg, val),
--	TP_STRUCT__entry(
--		DEV_ENTRY
--		REG_ENTRY
--	),
--	TP_fast_assign(
--		DEV_ASSIGN;
--		REG_ASSIGN;
--	),
--	TP_printk(
--		DEV_PR_FMT REG_PR_FMT,
--		DEV_PR_ARG, REG_PR_ARG
--	)
--);
--
--DEFINE_EVENT(dev_reg_evt, reg_rr,
--	TP_PROTO(struct mt76_dev *dev, u32 reg, u32 val),
--	TP_ARGS(dev, reg, val)
--);
--
--DEFINE_EVENT(dev_reg_evt, reg_wr,
--	TP_PROTO(struct mt76_dev *dev, u32 reg, u32 val),
--	TP_ARGS(dev, reg, val)
--);
--
--#endif
--
--#undef TRACE_INCLUDE_PATH
--#define TRACE_INCLUDE_PATH .
--#undef TRACE_INCLUDE_FILE
--#define TRACE_INCLUDE_FILE trace
--
--#include <trace/define_trace.h>
-diff --git a/drivers/net/wireless/mediatek/mt76/tx.c b/drivers/net/wireless/mediatek/mt76/tx.c
-index cf79b8c67b52..984ea2db2696 100644
---- a/drivers/net/wireless/mediatek/mt76/tx.c
-+++ b/drivers/net/wireless/mediatek/mt76/tx.c
-@@ -16,72 +16,6 @@
- 
- #include "mt76.h"
- 
--static struct mt76_txwi_cache *
--mt76_alloc_txwi(struct mt76_dev *dev)
--{
--	struct mt76_txwi_cache *t;
--	dma_addr_t addr;
--	int size;
--
--	size = (sizeof(*t) + L1_CACHE_BYTES - 1) & ~(L1_CACHE_BYTES - 1);
--	t = devm_kzalloc(dev->dev, size, GFP_ATOMIC);
--	if (!t)
--		return NULL;
--
--	addr = dma_map_single(dev->dev, &t->txwi, sizeof(t->txwi),
--			      DMA_TO_DEVICE);
--	t->dma_addr = addr;
--
--	return t;
--}
--
--static struct mt76_txwi_cache *
--__mt76_get_txwi(struct mt76_dev *dev)
--{
--	struct mt76_txwi_cache *t = NULL;
--
--	spin_lock_bh(&dev->lock);
--	if (!list_empty(&dev->txwi_cache)) {
--		t = list_first_entry(&dev->txwi_cache, struct mt76_txwi_cache,
--				     list);
--		list_del(&t->list);
--	}
--	spin_unlock_bh(&dev->lock);
--
--	return t;
--}
--
--struct mt76_txwi_cache *
--mt76_get_txwi(struct mt76_dev *dev)
--{
--	struct mt76_txwi_cache *t = __mt76_get_txwi(dev);
--
--	if (t)
--		return t;
--
--	return mt76_alloc_txwi(dev);
--}
--
--void
--mt76_put_txwi(struct mt76_dev *dev, struct mt76_txwi_cache *t)
--{
--	if (!t)
--		return;
--
--	spin_lock_bh(&dev->lock);
--	list_add(&t->list, &dev->txwi_cache);
--	spin_unlock_bh(&dev->lock);
--}
--
--void mt76_tx_free(struct mt76_dev *dev)
--{
--	struct mt76_txwi_cache *t;
--
--	while ((t = __mt76_get_txwi(dev)) != NULL)
--		dma_unmap_single(dev->dev, t->dma_addr, sizeof(t->txwi),
--				 DMA_TO_DEVICE);
--}
+ void mt76x2_update_channel(struct mt76_dev *mdev)
+-- 
+2.7.5
