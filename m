@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 40/42] mt76x0: remove unused mt76x0_wcid
-Date: Thu,  6 Sep 2018 11:18:56 +0200
-Message-ID: <1536225538-16454-41-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 41/42] mt76x0: remove some usb specific code from mt76x0_register_device
+Date: Thu,  6 Sep 2018 11:18:57 +0200
+Message-ID: <1536225538-16454-42-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,26 +10,69 @@ To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-We do not use mt76x0_wcid any longer.
+Initial effort to make mt76x0_register_device bus neutral.
 
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h | 9 ---------
- 1 file changed, 9 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c |  8 --------
+ drivers/net/wireless/mediatek/mt76/mt76x0/usb.c  | 12 ++++++++++--
+ 2 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-index d775d9951695..31267a180573 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-@@ -112,15 +112,6 @@ struct mt76x0_dev {
- 	struct mac_stats stats;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+index 0e4a13fa42cb..4a899904d518 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+@@ -518,14 +518,6 @@ int mt76x0_register_device(struct mt76x0_dev *dev)
+ 	struct wiphy *wiphy = hw->wiphy;
+ 	int ret;
+ 
+-	ret = mt76u_mcu_init_rx(mdev);
+-	if (ret < 0)
+-		return ret;
+-
+-	ret = mt76u_alloc_queues(mdev);
+-	if (ret < 0)
+-		return ret;
+-
+ 	ret = mt76x0_init_hardware(dev);
+ 	if (ret)
+ 		return ret;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+index b9382092f47f..9a803fb0cd5d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+@@ -46,7 +46,7 @@ static struct usb_device_id mt76x0_device_table[] = {
+ 	{ 0, }
  };
  
--struct mt76x0_wcid {
--	u8 idx;
--	u8 hw_key_idx;
--
--	u16 tx_rate;
--	bool tx_rate_set;
--	u8 tx_rate_nss;
--};
+-static int mt76x0_probe(struct usb_interface *usb_intf,
++static int mt76x0u_probe(struct usb_interface *usb_intf,
+ 			 const struct usb_device_id *id)
+ {
+ 	struct usb_device *usb_dev = interface_to_usbdev(usb_intf);
+@@ -84,6 +84,14 @@ static int mt76x0_probe(struct usb_interface *usb_intf,
+ 	if (!(mt76_rr(dev, MT_EFUSE_CTRL) & MT_EFUSE_CTRL_SEL))
+ 		dev_warn(dev->mt76.dev, "Warning: eFUSE not present\n");
+ 
++	ret = mt76u_mcu_init_rx(&dev->mt76);
++	if (ret < 0)
++		goto err;
++
++	ret = mt76u_alloc_queues(&dev->mt76);
++	if (ret < 0)
++		goto err;
++
+ 	ret = mt76x0_register_device(dev);
+ 	if (ret)
+ 		goto err_hw;
+@@ -170,7 +178,7 @@ MODULE_LICENSE("GPL");
+ static struct usb_driver mt76x0_driver = {
+ 	.name		= KBUILD_MODNAME,
+ 	.id_table	= mt76x0_device_table,
+-	.probe		= mt76x0_probe,
++	.probe		= mt76x0u_probe,
+ 	.disconnect	= mt76x0_disconnect,
+ 	.suspend	= mt76x0_suspend,
+ 	.resume		= mt76x0_resume,
+-- 
+2.7.5
