@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 23/42] mt76x0: remove unused stat_work
-Date: Thu,  6 Sep 2018 11:18:39 +0200
-Message-ID: <1536225538-16454-24-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 24/42] mt76x0: enable per-sta tx queueing
+Date: Thu,  6 Sep 2018 11:18:40 +0200
+Message-ID: <1536225538-16454-25-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -12,35 +12,40 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 
-Remove unused definition of stat_work delayed_work definition and
-related flush/cancel routines
+Initialize wake_tx_queue function pointer in ieee80211_ops
+in order to enable per-sta tx queueing. Moreover set driver
+private txq size
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/init.c   | 2 --
- drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h | 2 --
- 2 files changed, 4 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c | 3 +++
+ drivers/net/wireless/mediatek/mt76/mt76x0/main.c | 1 +
+ 2 files changed, 4 insertions(+)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-index 75597b5a2427..1f4a0fff684b 100644
+index 1f4a0fff684b..7cd939c97efe 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-@@ -362,8 +362,6 @@ static void mt76x0_mac_stop_hw(struct mt76x0_dev *dev)
- void mt76x0_mac_stop(struct mt76x0_dev *dev)
- {
- 	mt76x0_mac_stop_hw(dev);
--	flush_delayed_work(&dev->stat_work);
--	cancel_delayed_work_sync(&dev->stat_work);
- }
+@@ -684,6 +684,9 @@ int mt76x0_register_device(struct mt76x0_dev *dev)
+ 	hw->sta_data_size = sizeof(struct mt76x02_sta);
+ 	hw->vif_data_size = sizeof(struct mt76x02_vif);
  
- static void mt76x0_stop_hardware(struct mt76x0_dev *dev)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-index 0bcf54c0a06f..cd260317de27 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
-@@ -84,8 +84,6 @@ struct mt76x0_dev {
- 	struct delayed_work cal_work;
- 	struct delayed_work mac_work;
++	hw->txq_data_size = sizeof(struct mt76_txq);
++	hw->max_tx_fragments = 16;
++
+ 	SET_IEEE80211_PERM_ADDR(hw, dev->macaddr);
  
--	struct delayed_work stat_work;
+ 	wiphy->features |= NL80211_FEATURE_ACTIVE_MONITOR;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
+index b0a1f7a7209a..8c8a0f676228 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
+@@ -180,4 +180,5 @@ const struct ieee80211_ops mt76x0_ops = {
+ 	.ampdu_action = mt76x02_ampdu_action,
+ 	.sta_rate_tbl_update = mt76x02_sta_rate_tbl_update,
+ 	.set_rts_threshold = mt76x0_set_rts_threshold,
++	.wake_tx_queue = mt76_wake_tx_queue,
+ };
+-- 
+2.7.5
