@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 30/42] mt76x0: alloc mcu buffers first in mt76x0_mcu_cmd_init
-Date: Thu,  6 Sep 2018 11:18:46 +0200
-Message-ID: <1536225538-16454-31-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 31/42] mt76x0: fix memory leak during hw probe
+Date: Thu,  6 Sep 2018 11:18:47 +0200
+Message-ID: <1536225538-16454-32-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -12,33 +12,23 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 
-swap mt76u_mcu_init_rx and mt76x0_mcu_function_select in
-mt76x0_mcu_cmd_init routine in order to allocate mcu buffers
-first and then send mcu commands
+Fix memory leak during hw probe if mt76x0_register_device fails
+since MT76_STATE_INITIALIZED has not set yet and mt76x0_cleanup
+does not free tx/rx queues and mcu buffers
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c b/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
-index 0a0deaf1c65d..7be2835f3b4f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
-@@ -387,9 +387,11 @@ int mt76x0_mcu_init(struct mt76x0_dev *dev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+index ca70b62442a1..d186f509b5a8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
+@@ -468,9 +468,7 @@ int mt76x0_init_hardware(struct mt76x0_dev *dev)
  
- int mt76x0_mcu_cmd_init(struct mt76x0_dev *dev)
+ void mt76x0_cleanup(struct mt76x0_dev *dev)
  {
--	int ret = mt76x0_mcu_function_select(dev, Q_SELECT, 1);
-+	int ret;
-+
-+	ret = mt76u_mcu_init_rx(&dev->mt76);
- 	if (ret)
- 		return ret;
- 
--	return mt76u_mcu_init_rx(&dev->mt76);
-+	return mt76x0_mcu_function_select(dev, Q_SELECT, 1);
- }
--- 
-2.7.5
+-	if (!test_and_clear_bit(MT76_STATE_INITIALIZED, &dev->mt76.state))
+-		return;
