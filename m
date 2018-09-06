@@ -1,107 +1,129 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 13/13] drm/mediatek: config component output by
- device node port
-Date: Thu, 6 Sep 2018 14:03:22 +0800
-Message-ID: <1536213802.4618.41.camel@mtksdaap41>
-References: <20180905083146.14727-1-bibby.hsieh@mediatek.com>
- <20180905083146.14727-14-bibby.hsieh@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180905083146.14727-14-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH 00/42] mt76 patches 2018-09-06
+Date: Thu,  6 Sep 2018 11:18:16 +0200
+Message-ID: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEJpYmJ5OgoKT24gV2VkLCAyMDE4LTA5LTA1IGF0IDE2OjMxICswODAwLCBCaWJieSBIc2ll
-aCB3cm90ZToKPiBXZSBjYW4gc2VsZWN0IG91dHB1dCBjb21wb25lbnQgYnkgZGVjaXZlIG5vZGUg
-cG9ydC4KPiBNYWluIHBhdGggZGVmYXVsdCBvdXRwdXQgY29tcG9uZW50IGlzIERTSS4KPiBFeHRl
-cm5hbCBwYXRoIGRlZmF1bHQgb3V0cHV0IGNvbXBvbmVudCBpcyBEUEkuCj4gCj4gU2lnbmVkLW9m
-Zi1ieTogQmliYnkgSHNpZWggPGJpYmJ5LmhzaWVoQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgfCAzNyArKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKystLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Ry
-di5oIHwgIDQgKystLQo+ICAyIGZpbGVzIGNoYW5nZWQsIDM1IGluc2VydGlvbnMoKyksIDYgZGVs
-ZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-ZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiBpbmRl
-eCBkOTYxMTEyZmEyZjUuLmE0NzdmYjg3OGMwNiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHJtX2Rydi5jCj4gQEAgLTIxLDcgKzIxLDkgQEAKPiAgI2luY2x1ZGUgPGRybS9kcm1f
-b2YuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L2NvbXBvbmVudC5oPgo+ICAjaW5jbHVkZSA8bGludXgv
-aW9tbXUuaD4KPiArI2luY2x1ZGUgPGxpbnV4L29mLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9vZl9h
-ZGRyZXNzLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9vZl9ncmFwaC5oPgo+ICAjaW5jbHVkZSA8bGlu
-dXgvb2ZfcGxhdGZvcm0uaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4KPiAgCj4g
-QEAgLTEzMyw3ICsxMzUsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9tb2RlX2NvbmZpZ19m
-dW5jcyBtdGtfZHJtX21vZGVfY29uZmlnX2Z1bmNzID0gewo+ICAJLmF0b21pY19jb21taXQgPSBt
-dGtfYXRvbWljX2NvbW1pdCwKPiAgfTsKPiAgCj4gLXN0YXRpYyBjb25zdCBlbnVtIG10a19kZHBf
-Y29tcF9pZCBtdDI3MDFfbXRrX2RkcF9tYWluW10gPSB7Cj4gK3N0YXRpYyBlbnVtIG10a19kZHBf
-Y29tcF9pZCBtdDI3MDFfbXRrX2RkcF9tYWluW10gPSB7Cj4gIAlERFBfQ09NUE9ORU5UX09WTDAs
-Cj4gIAlERFBfQ09NUE9ORU5UX1JETUEwLAo+ICAJRERQX0NPTVBPTkVOVF9DT0xPUjAsCj4gQEAg
-LTE0MSw3ICsxNDMsNyBAQCBzdGF0aWMgY29uc3QgZW51bSBtdGtfZGRwX2NvbXBfaWQgbXQyNzAx
-X210a19kZHBfbWFpbltdID0gewo+ICAJRERQX0NPTVBPTkVOVF9EU0kwLAo+ICB9Owo+ICAKPiAt
-c3RhdGljIGNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkIG10MjcwMV9tdGtfZGRwX2V4dFtdID0g
-ewo+ICtzdGF0aWMgZW51bSBtdGtfZGRwX2NvbXBfaWQgbXQyNzAxX210a19kZHBfZXh0W10gPSB7
-Cj4gIAlERFBfQ09NUE9ORU5UX1JETUExLAo+ICAJRERQX0NPTVBPTkVOVF9EUEkwLAo+ICB9Owo+
-IEBAIC0xNzIsNyArMTc0LDcgQEAgc3RhdGljIGNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkIG10
-MjcxMl9tdGtfZGRwX3RoaXJkW10gPSB7Cj4gIAlERFBfQ09NUE9ORU5UX1BXTTIsCj4gIH07Cj4g
-IAo+IC1zdGF0aWMgY29uc3QgZW51bSBtdGtfZGRwX2NvbXBfaWQgbXQ4MTczX210a19kZHBfbWFp
-bltdID0gewo+ICtzdGF0aWMgZW51bSBtdGtfZGRwX2NvbXBfaWQgbXQ4MTczX210a19kZHBfbWFp
-bltdID0gewo+ICAJRERQX0NPTVBPTkVOVF9PVkwwLAo+ICAJRERQX0NPTVBPTkVOVF9DT0xPUjAs
-Cj4gIAlERFBfQ09NUE9ORU5UX0FBTDAsCj4gQEAgLTE4Myw3ICsxODUsNyBAQCBzdGF0aWMgY29u
-c3QgZW51bSBtdGtfZGRwX2NvbXBfaWQgbXQ4MTczX210a19kZHBfbWFpbltdID0gewo+ICAJRERQ
-X0NPTVBPTkVOVF9QV00wLAo+ICB9Owo+ICAKPiAtc3RhdGljIGNvbnN0IGVudW0gbXRrX2RkcF9j
-b21wX2lkIG10ODE3M19tdGtfZGRwX2V4dFtdID0gewo+ICtzdGF0aWMgZW51bSBtdGtfZGRwX2Nv
-bXBfaWQgbXQ4MTczX210a19kZHBfZXh0W10gPSB7Cj4gIAlERFBfQ09NUE9ORU5UX09WTDEsCj4g
-IAlERFBfQ09NUE9ORU5UX0NPTE9SMSwKPiAgCUREUF9DT01QT05FTlRfR0FNTUEsCj4gQEAgLTQ3
-Miw2ICs0NzQsNyBAQCBzdGF0aWMgaW50IG10a19kcm1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2Rl
-dmljZSAqcGRldikKPiAgCj4gIAkvKiBJdGVyYXRlIG92ZXIgc2libGluZyBESVNQIGZ1bmN0aW9u
-IGJsb2NrcyAqLwo+ICAJZm9yX2VhY2hfY2hpbGRfb2Zfbm9kZShkZXYtPm9mX25vZGUtPnBhcmVu
-dCwgbm9kZSkgewo+ICsJCXN0cnVjdCBkZXZpY2Vfbm9kZSAqcG9ydCwgKmVwLCAqcmVtb3RlOwo+
-ICAJCWNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgKm9mX2lkOwo+ICAJCWVudW0gbXRrX2RkcF9j
-b21wX3R5cGUgY29tcF90eXBlOwo+ICAJCWludCBjb21wX2lkOwo+IEBAIC01MzEsNiArNTM0LDMy
-IEBAIHN0YXRpYyBpbnQgbXRrX2RybV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2
-KQo+ICAKPiAgCQkJcHJpdmF0ZS0+ZGRwX2NvbXBbY29tcF9pZF0gPSBjb21wOwo+ICAJCX0KPiAr
-Cj4gKwkJaWYgKGNvbXBfdHlwZSAhPSBNVEtfRFNJICYmIGNvbXBfdHlwZSAhPSBNVEtfRFBJKSB7
-Cj4gKwkJCXBvcnQgPSBvZl9ncmFwaF9nZXRfcG9ydF9ieV9pZChub2RlLCAwKTsKPiArCQkJaWYg
-KCFwb3J0KQo+ICsJCQkJY29udGludWU7Cj4gKwkJCWVwID0gb2ZfZ2V0X2NoaWxkX2J5X25hbWUo
-cG9ydCwgImVuZHBvaW50Iik7Cj4gKwkJCW9mX25vZGVfcHV0KHBvcnQpOwo+ICsJCQlpZiAoIWVw
-KQo+ICsJCQkJY29udGludWU7Cj4gKwkJCXJlbW90ZSA9IG9mX2dyYXBoX2dldF9yZW1vdGVfcG9y
-dF9wYXJlbnQoZXApOwo+ICsJCQlvZl9ub2RlX3B1dChlcCk7Cj4gKwkJCWlmICghcmVtb3RlKQo+
-ICsJCQkJY29udGludWU7Cj4gKwkJCW9mX2lkID0gb2ZfbWF0Y2hfbm9kZShtdGtfZGRwX2NvbXBf
-ZHRfaWRzLCByZW1vdGUpOwo+ICsJCQlpZiAoIW9mX2lkKQo+ICsJCQkJY29udGludWU7Cj4gKwkJ
-CWNvbXBfdHlwZSA9IChlbnVtIG10a19kZHBfY29tcF90eXBlKW9mX2lkLT5kYXRhOwo+ICsJCQlm
-b3IgKGkgPSAwOyBpIDwgcHJpdmF0ZS0+ZGF0YS0+bWFpbl9sZW4gLSAxOyBpKyspCj4gKwkJCQlp
-ZiAocHJpdmF0ZS0+ZGF0YS0+bWFpbl9wYXRoW2ldID09IGNvbXBfaWQpCj4gKwkJCQkJcHJpdmF0
-ZS0+ZGF0YS0+bWFpbl9wYXRoW2kgKyAxXSA9Cj4gKwkJCQkJbXRrX2RkcF9jb21wX2dldF9pZChu
-b2RlLCBjb21wX3R5cGUpOwo+ICsJCQlmb3IgKGkgPSAwOyBpIDwgcHJpdmF0ZS0+ZGF0YS0+ZXh0
-X2xlbiAtIDE7IGkrKykKPiArCQkJCWlmIChwcml2YXRlLT5kYXRhLT5leHRfcGF0aFtpXSA9PSBj
-b21wX2lkKQo+ICsJCQkJCXByaXZhdGUtPmRhdGEtPmV4dF9wYXRoW2kgKyAxXSA9Cj4gKwkJCQkJ
-bXRrX2RkcF9jb21wX2dldF9pZChub2RlLCBjb21wX3R5cGUpOwo+ICsJCX0KCkkgdGhpbmsgeW91
-IHNob3VsZCBhZGQgZGVzY3JpcHRpb24gaW4gYmluZGluZyBkb2N1bWVudAooRG9jdW1lbnRhdGlv
-bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQp
-CmZvciB0aGlzLiBBZnRlciB0aGUgYmluZGluZyBkb2N1bWVudCBpcyBmdWxseSByZXZpZXdlZCwg
-d2UgY291bGQgc3RhcnQKdG8gcmV2aWV3IHRoaXMgcGF0Y2guCgpSZWdhcmRzLApDSwoKPiAgCX0K
-PiAgCj4gIAlpZiAoIXByaXZhdGUtPm11dGV4X25vZGUpIHsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9kcnYuaAo+IGluZGV4IGVjYzAwY2EzMjIxZC4uMjU2YTNmZjJlNjZlIDEwMDY0
-NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5oCj4gKysrIGIv
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmgKPiBAQCAtMjksOSArMjksOSBA
-QCBzdHJ1Y3QgZHJtX3Byb3BlcnR5Owo+ICBzdHJ1Y3QgcmVnbWFwOwo+ICAKPiAgc3RydWN0IG10
-a19tbXN5c19kcml2ZXJfZGF0YSB7Cj4gLQljb25zdCBlbnVtIG10a19kZHBfY29tcF9pZCAqbWFp
-bl9wYXRoOwo+ICsJZW51bSBtdGtfZGRwX2NvbXBfaWQgKm1haW5fcGF0aDsKPiAgCXVuc2lnbmVk
-IGludCBtYWluX2xlbjsKPiAtCWNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkICpleHRfcGF0aDsK
-PiArCWVudW0gbXRrX2RkcF9jb21wX2lkICpleHRfcGF0aDsKPiAgCXVuc2lnbmVkIGludCBleHRf
-bGVuOwo+ICAJY29uc3QgZW51bSBtdGtfZGRwX2NvbXBfaWQgKnRoaXJkX3BhdGg7Cj4gIAl1bnNp
-Z25lZCBpbnQgdGhpcmRfbGVuOwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
-ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2RyaS1kZXZlbAo=
+First of all I know that I should post small set of about 12 patches max,
+but let say this is last exception. Starting from now, I'll not gathering
+patches on my github tree and mt76 patches need to be posted directly to
+linux-wireless mailing list.
+  
+The set include:
+- more of mt76x0/mt76x2 integration
+- various cleanups
+- split between mmio and usb bus modules 
+- initial mt76x0e bus probe/remove functions.
+
+This is on top of my previous set:
+https://marc.info/?l=linux-wireless&m=153607208328431&w=2
+
+Lorenzo's patches were reviewed and tested by me and my patches were
+hopefully reviewed by Lorenzo. If some issues will be found in this
+or previous set, I hope the issues could by addressed by incremental 
+patch(es) on top of this set.
+
+Lorenzo Bianconi (35):
+  mt76x2: change mt76x2_tx_complete routine signature
+  mt76: move mt76x2_tx_complete routine in mt76x02-lib module
+  mt76: move mt76x2u_remove_dma_hdr in mt76x02-lib module
+  mt76: move mt76x2u_tx_complete_skb in mt76x02-lib moudule
+  mt76: move mt76_qsel definition in dma.h
+  mt76: move mt76x2u_set_txinfo in mt76x02-lib module
+  mt76x0: introduce mt76x0_tx_prepare_skb routine
+  mt76: move mt76x2u_tx_status_data in mt76x02-lib module
+  mt76x0: init mt76_driver_ops callbacks
+  mt76x0: use mt76_alloc_device for device allocation
+  mt76x0: disable usb rx bulk aggregation
+  mt76x0: mark device as running in mt76x0_start
+  mt76x0: simplify mt76_mac_process_rx signature
+  mt76x0: add mt76x0_queue_rx_skb routine
+  mt76x0: unify tx/rx datapath with mt76x2u driver
+  mt76x0: stop stat workqueue at hw stop
+  mt76x0: set max fragments size
+  mt76x0: remove unused dma.c source file
+  mt76x0: remove unused stat work_queue
+  mt76x0: remove unused {tx/rx}_queue definitions
+  mt76x0: remove unused mt76x0_tx_status routine
+  mt76x0: remove unused endpoint definitions
+  mt76x0: remove unused stat_work
+  mt76x0: enable per-sta tx queueing
+  mt76x0: init hw capabilities
+  mt76: remove unused MT76_MORE_STATS state
+  mt76x0: remove mt76x0_stop_hardware routine
+  mt76: move mt76 rate definitions in mt76x02-lib module
+  mt76x0: alloc mcu buffers first in mt76x0_mcu_cmd_init
+  mt76x0: fix memory leak during hw probe
+  mt76x0: move stop related routines in mt76x0_mac_stop
+  mt76x0: move mt76x0_init_hardware in mt76x0_register_device
+  mt76x0: do not free/alloc buffers during suspend/resume
+  mt76x0: remove has_{2,5}ghz fields of mt76x0_eeprom_params
+  mt76x0: use mt76_register_device for device registration
+
+Stanislaw Gruszka (7):
+  mt76x0: trim rx skb to proper length
+  mt76x0: inital split between pci and usb
+  mt76: initial separation of mmio part
+  mt76: move some irq code to common mmio module
+  mt76x0: remove unused mt76x0_wcid
+  mt76x0: remove some usb specific code from mt76x0_register_device
+  mt76x0: make device allocation bus neutral
+
+ drivers/net/wireless/mediatek/mt76/Kconfig         |  31 +-
+ drivers/net/wireless/mediatek/mt76/Makefile        |  10 +-
+ drivers/net/wireless/mediatek/mt76/dma.c           |  68 +++
+ drivers/net/wireless/mediatek/mt76/dma.h           |   7 +
+ drivers/net/wireless/mediatek/mt76/mac80211.c      |   1 -
+ drivers/net/wireless/mediatek/mt76/mmio.c          |  32 +-
+ drivers/net/wireless/mediatek/mt76/mmio.h          |  34 ++
+ drivers/net/wireless/mediatek/mt76/mmio_trace.c    |  23 +
+ drivers/net/wireless/mediatek/mt76/mmio_trace.h    |  71 +++
+ drivers/net/wireless/mediatek/mt76/mt76.h          |  20 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/Makefile |  11 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/dma.c    | 526 ---------------------
+ drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c |  26 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h |   3 -
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c   | 332 ++++---------
+ drivers/net/wireless/mediatek/mt76/mt76x0/mac.c    |  13 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/mac.h    |   2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/main.c   |  14 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c    |   6 +-
+ drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  92 +---
+ drivers/net/wireless/mediatek/mt76/mt76x0/pci.c    |  81 ++++
+ drivers/net/wireless/mediatek/mt76/mt76x0/tx.c     | 122 ++---
+ drivers/net/wireless/mediatek/mt76/mt76x0/usb.c    |  63 ++-
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.c  |  98 ++++
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.h  |   8 +
+ drivers/net/wireless/mediatek/mt76/mt76x2.h        |  18 -
+ drivers/net/wireless/mediatek/mt76/mt76x2_core.c   |  26 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_dfs.c    |   7 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_dma.c    |  13 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_dma.h    |  29 --
+ drivers/net/wireless/mediatek/mt76/mt76x2_init.c   |  11 +-
+ .../wireless/mediatek/mt76/mt76x2_init_common.c    |  29 --
+ drivers/net/wireless/mediatek/mt76/mt76x2_mac.c    |  12 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_mcu.c    |   2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2_tx.c     |   2 +-
+ .../net/wireless/mediatek/mt76/mt76x2_tx_common.c  |  18 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2u.h       |   5 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2u_core.c  |  59 +--
+ drivers/net/wireless/mediatek/mt76/mt76x2u_init.c  |   9 +-
+ drivers/net/wireless/mediatek/mt76/trace.c         |  23 -
+ drivers/net/wireless/mediatek/mt76/trace.h         |  71 ---
+ drivers/net/wireless/mediatek/mt76/tx.c            |  66 ---
+ 42 files changed, 725 insertions(+), 1369 deletions(-)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mmio.h
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mmio_trace.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mmio_trace.h
+ delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/dma.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+ delete mode 100644 drivers/net/wireless/mediatek/mt76/mt76x2_dma.h
+ delete mode 100644 drivers/net/wireless/mediatek/mt76/trace.c
+ delete mode 100644 drivers/net/wireless/mediatek/mt76/trace.h
+
+-- 
+2.7.5
