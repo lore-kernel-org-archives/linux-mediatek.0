@@ -1,62 +1,65 @@
-From: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: mt76x0 bug report
-Date: Wed, 5 Sep 2018 20:52:18 +0000
-Message-ID: <CAM0KTbAbjDYNOzivxMdLmYrV9QHgwkLp7zXpdCvn1Kf1uEcQTQ@mail.gmail.com>
-References: <CAM0KTbBJuhuEyuZB_z_BcDSeXa-CJ+NwupssS2jLx0pJ0KXQGQ@mail.gmail.com>
- <CAJ0CqmWAqdB8Og7fabLDeZnzFO5Aw5Qd0cYGaLrs7Ls-zM_yQw@mail.gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v2 05/13] drm/mediatek: dpi use new API for finding bridge
+Date: Thu, 6 Sep 2018 09:49:53 +0800
+Message-ID: <1536198593.4618.9.camel@mtksdaap41>
+References: <20180905083146.14727-1-bibby.hsieh@mediatek.com>
+ <20180905083146.14727-6-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAJ0CqmWAqdB8Og7fabLDeZnzFO5Aw5Qd0cYGaLrs7Ls-zM_yQw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180905083146.14727-6-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Sep 4, 2018 at 5:11 PM Lorenzo Bianconi
-<lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
->
-> >
-> > I have one mt76x2u (Alfa AWUS036ACM) and a few mt76x0.
-> >
-> > I've noticed two additional issues in my testing.
-> >
-> > First issue, is that it appears the mt76x0 devices don't work properly
-> > in monitor mode.  Sometimes they seem to monitor one channel properly,
-> > but nothing else.  The mt76x2u works great, channel control, lots of
-> > packets, etc.
->
-> Could you elaborate a little bit please? how can you reproduce the issue?
-> just add an interface in monitor mode and run a scan?
-
-Correct, standard stuff, use iw to create a monitor mode interface,
-use iw to remove managed mode interface, run some tool such as kismet
-or airodump-ng or even wireshark.
->
-> >
-> > Second issue, and frankly a very minor one, is that the TP-Link T1U
-> > (which is a 5GHz only device) still thinks it has support for 2.4GHz,
-> > both in managed and monitor mode.
->
-> I guess it depends on eeprom values. Could you please enable debug
-> messages a paste
-> syslog output?
-
-I don't see a mediatek specific debug near the driver selection in
-menuconfig, what debug messages do you want me to enable and how?
-
-Thanks,
-Zero
->
-> >
-> > Lastly, I already mentioned in the other thread, but it would be
-> > awesome if firmware version was available to ethtool.
-> >
->
-> Ack, I will take care of it
-> Regards,
->
-> Lorenzo
->
-> > Thanks for all your hard work on this,
-> > Zero
+SGksIEJpYmJ5OgoKT24gV2VkLCAyMDE4LTA5LTA1IGF0IDE2OjMxICswODAwLCBCaWJieSBIc2ll
+aCB3cm90ZToKPiBGcm9tOiBjaHVuaHVpIGRhaSA8Y2h1bmh1aS5kYWlAbWVkaWF0ZWsuY29tPgo+
+IAo+IFVzaW5nIG5ldyBBUEkgZm9yIGZpbmRpbmcgYnJpZGdlLgo+IAoKVGhpcyBwYXRjaCBsb29r
+cyBnb29kLCBidXQgeW91ciBkZXNjcmlwdGlvbiBpcyBzbyBzaW1wbGUgdGhhdCB3ZSBkb24ndApr
+bm93IHdoeSB5b3Ugd2FudCB0byBkbyB0aGlzLiBJbiBbMV0sIFJvYiB3YW50cyB0byBjbGVhbiB1
+cCBPRiBncmFwaApBUEksIHNvIGluIFsyXSwgbXRrX2RzaS5jIHVzZSBkcm1fb2ZfZmluZF9wYW5l
+bF9vcl9icmlkZ2UoKSB0byBkbyB0aGlzCmNsZWFuLXVwLiBJZiB5b3VyIHJlYXNvbiBpcyBjbGVh
+bi11cCwgZGVzY3JpYmUgaXQgaW4gY29tbWl0IG1lc3NhZ2UuCgpbMV0gaHR0cHM6Ly9sa21sLm9y
+Zy9sa21sLzIwMTcvMi8zLzcxNgpbMl0gaHR0cHM6Ly9sa21sLm9yZy9sa21sLzIwMTcvMi8zLzcx
+OQoKUmVnYXJkcywKQ0sKCj4gU2lnbmVkLW9mZi1ieTogY2h1bmh1aSBkYWkgPGNodW5odWkuZGFp
+QG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGku
+YyB8IDE3ICsrKysrKystLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA3IGluc2VydGlvbnMo
+KyksIDEwIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RwaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+IGlu
+ZGV4IDM3NThjZmViNTg2Yi4uZWQyYzE1M2M3MGEyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHBpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2RwaS5jCj4gQEAgLTE0LDYgKzE0LDcgQEAKPiAgI2luY2x1ZGUgPGRybS9kcm1QLmg+Cj4g
+ICNpbmNsdWRlIDxkcm0vZHJtX2NydGMuaD4KPiAgI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxw
+ZXIuaD4KPiArI2luY2x1ZGUgPGRybS9kcm1fb2YuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L2tlcm5l
+bC5oPgo+ICAjaW5jbHVkZSA8bGludXgvY29tcG9uZW50Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9w
+bGF0Zm9ybV9kZXZpY2UuaD4KPiBAQCAtNzA4LDcgKzcwOSw2IEBAIHN0YXRpYyBpbnQgbXRrX2Rw
+aV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAJc3RydWN0IGRldmljZSAq
+ZGV2ID0gJnBkZXYtPmRldjsKPiAgCXN0cnVjdCBtdGtfZHBpICpkcGk7Cj4gIAlzdHJ1Y3QgcmVz
+b3VyY2UgKm1lbTsKPiAtCXN0cnVjdCBkZXZpY2Vfbm9kZSAqYnJpZGdlX25vZGU7Cj4gIAlpbnQg
+Y29tcF9pZDsKPiAgCWNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgKm1hdGNoOwo+ICAJaW50IHJl
+dDsKPiBAQCAtNzU4LDE2ICs3NTgsMTMgQEAgc3RhdGljIGludCBtdGtfZHBpX3Byb2JlKHN0cnVj
+dCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAkJcmV0dXJuIC1FSU5WQUw7Cj4gIAl9Cj4gIAo+
+IC0JYnJpZGdlX25vZGUgPSBvZl9ncmFwaF9nZXRfcmVtb3RlX25vZGUoZGV2LT5vZl9ub2RlLCAw
+LCAwKTsKPiAtCWlmICghYnJpZGdlX25vZGUpCj4gLQkJcmV0dXJuIC1FTk9ERVY7Cj4gLQo+IC0J
+ZGV2X2luZm8oZGV2LCAiRm91bmQgYnJpZGdlIG5vZGU6ICVwT0ZcbiIsIGJyaWRnZV9ub2RlKTsK
+PiAtCj4gLQlkcGktPmJyaWRnZSA9IG9mX2RybV9maW5kX2JyaWRnZShicmlkZ2Vfbm9kZSk7Cj4g
+LQlvZl9ub2RlX3B1dChicmlkZ2Vfbm9kZSk7Cj4gLQlpZiAoIWRwaS0+YnJpZGdlKQo+ICsJcmV0
+ID0gZHJtX29mX2ZpbmRfcGFuZWxfb3JfYnJpZGdlKGRldi0+b2Zfbm9kZSwgMCwgMCwKPiArCQkJ
+CQkgIE5VTEwsICZkcGktPmJyaWRnZSk7Cj4gKwlpZiAocmV0KSB7Cj4gKwkJZGV2X2VycihkZXYs
+ICJGYWlsZWQgdG8gZmluZCBwYW5lbCBvciBicmlkZ2U6ICVkXG4iLCByZXQpOwo+ICAJCXJldHVy
+biAtRVBST0JFX0RFRkVSOwo+ICsJfQo+ICsJZGV2X2luZm8oZGV2LCAiRm91bmQgYnJpZGdlIG5v
+ZGU6ICVwT0ZcbiIsIGRwaS0+YnJpZGdlKTsKPiAgCj4gIAljb21wX2lkID0gbXRrX2RkcF9jb21w
+X2dldF9pZChkZXYtPm9mX25vZGUsIE1US19EUEkpOwo+ICAJaWYgKGNvbXBfaWQgPCAwKSB7CgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
