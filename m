@@ -1,97 +1,50 @@
-From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: mt76x0 bug report
-Date: Thu, 6 Sep 2018 19:13:44 +0200
-Message-ID: <CAJ0CqmU0TBc42k=RX3T1DJd2dfGFHu4WuhbATYoe-7poUk3Ekw@mail.gmail.com>
-References: <CAM0KTbBJuhuEyuZB_z_BcDSeXa-CJ+NwupssS2jLx0pJ0KXQGQ@mail.gmail.com>
- <CAJ0CqmWAqdB8Og7fabLDeZnzFO5Aw5Qd0cYGaLrs7Ls-zM_yQw@mail.gmail.com>
- <CAM0KTbAbjDYNOzivxMdLmYrV9QHgwkLp7zXpdCvn1Kf1uEcQTQ@mail.gmail.com>
- <20180906093213.GB16539@redhat.com> <CAM0KTbAPh5J+cguhE0Qh9c8n_UVK9UyqsHtWUydrXzLTz9sXgQ@mail.gmail.com>
+From: Paul Burton <paul.burton-8NJIiSa5LzA@public.gmane.org>
+Subject: Re: [PATCH v2 01/23] mtd: rawnand: plat_nand: Pass a nand_chip
+ object to all platform_nand_ctrl hooks
+Date: Thu, 6 Sep 2018 10:37:32 -0700
+Message-ID: <20180906173732.yrh47v46p2huhyrv@pburton-laptop>
+References: <20180906120535.21255-1-boris.brezillon@bootlin.com>
+ <20180906120535.21255-2-boris.brezillon@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAM0KTbAPh5J+cguhE0Qh9c8n_UVK9UyqsHtWUydrXzLTz9sXgQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Zero Chaos <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180906120535.21255-2-boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Alexandre Belloni <alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Rich Felker <dalias-8zAoT0mYgF4@public.gmane.org>, linux-doc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tony Lindgren <tony-4v6yS6AI5VpBDgjK7y7TUQ@public.gmane.org>, linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, Stefan Agner <stefan-XLVq0VzYD2Y@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Mans Rullgard <mans-2StjZFpD7GcAvxtiuMwx3w@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Robert Jarzmik <robert.jarzmik-GANU6spQydw@public.gmane.org>, Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>, devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Maxim Levitsky <maximlevitsky-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yoshinori Sato <ysato-Rn4VEauK+AKRv+LV9MX5uooqe+aC9MnS@public.gmane.org>, Aaro Koskinen <aaro.koskinen-X3B1VOXEql0@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lukasz Majewski <lukma-ynQEQJNshbs@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-> On Thu, Sep 6, 2018 at 5:32 AM Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
-> >
-> > On Wed, Sep 05, 2018 at 08:52:18PM +0000, Sid Hayn wrote:
-> > > On Tue, Sep 4, 2018 at 5:11 PM Lorenzo Bianconi
-> > > <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
-> > > >
-> > > > >
-> > > > > I have one mt76x2u (Alfa AWUS036ACM) and a few mt76x0.
-> > > > >
-> > > > > I've noticed two additional issues in my testing.
-> > > > >
-> > > > > First issue, is that it appears the mt76x0 devices don't work properly
-> > > > > in monitor mode.  Sometimes they seem to monitor one channel properly,
-> > > > > but nothing else.  The mt76x2u works great, channel control, lots of
-> > > > > packets, etc.
-> > > >
-> > > > Could you elaborate a little bit please? how can you reproduce the issue?
-> > > > just add an interface in monitor mode and run a scan?
-> > >
-> > > Correct, standard stuff, use iw to create a monitor mode interface,
-> > > use iw to remove managed mode interface, run some tool such as kismet
-> > > or airodump-ng or even wireshark.
-> >
-> > But what exactly are the syptomps, I don't understand what you mean by
-> > "mt76x0 devices don't work properly in monitor mode" ?
-> >
-> > > > I guess it depends on eeprom values. Could you please enable debug
-> > > > messages a paste
-> > > > syslog output?
-> > >
-> > > I don't see a mediatek specific debug near the driver selection in
-> > > menuconfig, what debug messages do you want me to enable and how?
-> >
-> > You need to uncomment this line:
-> >
-> > # ccflags-y := -DDEBUG
-> >
-> > in drivers/net/wireless/mediatek/mt76/mt76x0/Makefile
->
-> I have done this change, rebooted, and plugged in the TP-Link t1u
-> dongle which is 5GHz only.  This is dmesg:
-> [   30.058587] usb 2-2: new high-speed USB device number 3 using xhci_hcd
-> [   30.200008] usb 2-2: New USB device found, idVendor=2357,
-> idProduct=0105, bcdDevice= 1.00
-> [   30.200010] usb 2-2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
-> [   30.200012] usb 2-2: Product: WiFi
-> [   30.200013] usb 2-2: Manufacturer: MediaTek
-> [   30.200015] usb 2-2: SerialNumber: 1.0
-> [   30.332895] usb 2-2: reset high-speed USB device number 3 using xhci_hcd
-> [   30.466124] mt76x0 2-2:1.0: ASIC revision: 76100002 MAC revision: 76502000
-> [   30.467534] mt76x0 2-2:1.0: Firmware Version: 0.1.00 Build: 7640
-> Build time: 201308221655____
-> [   30.789455] mt76x0 2-2:1.0: loading FW - ILM 68716 + IVB 64
-> [   30.844588] mt76x0 2-2:1.0: loading FW - DLM 11476
-> [   31.172677] mt76x0 2-2:1.0: Firmware running!
-> [   31.378879] mt76x0 2-2:1.0: MCU not ready
-> [   31.393770] BBP version f000f200
-> [   31.410935] mt76x0 2-2:1.0: EEPROM ver:02 fae:01
-> [   31.411086] mt76x0 2-2:1.0: NIC_CONF0: fd11 NIC_CONF1: 3084
-> [   31.411088] mt76x0 2-2:1.0: Has 2GHZ 1 5GHZ 1
+Hi Boris,
 
-as you can see the eeprom reports both bands. I will review mt76x0
-eeprom layout later today
+On Thu, Sep 06, 2018 at 02:05:13PM +0200, Boris Brezillon wrote:
+> Let's make the raw NAND API consistent by patching all helpers and
+> hooks to take a nand_chip object instead of an mtd_info one or
+> remove the mtd_info object when both are passed.
+> 
+> In order to do that, we first need to update the platform_nand_ctrl
+> hooks to take a nand_chip object instead of an mtd_info.
+> 
+> We add temporary plat_nand_xxx() wrappers to the do the mtd -> chip
+> conversion, but those will be dropped when patching nand_chip hooks to
+> take a nand_chip object.
+> 
+> Signed-off-by: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+> Reviewed-by: Alexander Sverdlin <alexander.sverdlin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Acked-by: Alexander Sverdlin <alexander.sverdlin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Acked-by: Robert Jarzmik <robert.jarzmik-GANU6spQydw@public.gmane.org>
+> Acked-by: Krzysztof Halasa <khalasa-NlWvg49iv0c@public.gmane.org>
 
-Regards,
-Lorenzo
+Acked-by: Paul Burton <paul.burton-8NJIiSa5LzA@public.gmane.org> # MIPS parts
 
-> [   31.411089] mt76x0 2-2:1.0: PA Type 1
-> [   31.411090] mt76x0 2-2:1.0: REG 2GHZ 0 REG 5GHZ 9
-> [   31.411092] mt76x0 2-2:1.0: EEPROM country region 00 (channels 1-11)
-> [   31.416308] ieee80211 phy1: Selected rate control algorithm 'minstrel_ht'
-> [   31.417285] usbcore: registered new interface driver mt76x0
->
-> What would you like next?
->
-> -Zero
-> >
-> > Thanks
-> > Stanislaw
-> >
+Thanks,
+    Paul
