@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 12/42] mt76x0: mark device as running in mt76x0_start
-Date: Thu,  6 Sep 2018 11:18:28 +0200
-Message-ID: <1536225538-16454-13-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 21/42] mt76x0: remove unused mt76x0_tx_status routine
+Date: Thu,  6 Sep 2018 11:18:37 +0200
+Message-ID: <1536225538-16454-22-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -12,37 +12,47 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 
-Set MT76_STATE_RUNNING flag in mt76x0_start routine and
-clear it in mt76x0_stop one
+Remove no longer used mt76x0_tx_status routine since
+mt76x0 driver uses mt76-usb utility routines to report tx-feedbacks
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/main.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h |  1 -
+ drivers/net/wireless/mediatek/mt76/mt76x0/tx.c     | 15 ---------------
+ 2 files changed, 16 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
-index a14f03b1ac54..3ac8e36d1c24 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
-@@ -33,6 +33,9 @@ static int mt76x0_start(struct ieee80211_hw *hw)
- 				     MT_CALIBRATE_INTERVAL);
- 	ieee80211_queue_delayed_work(dev->mt76.hw, &dev->cal_work,
- 				     MT_CALIBRATE_INTERVAL);
-+
-+	set_bit(MT76_STATE_RUNNING, &dev->mt76.state);
-+
- out:
- 	mutex_unlock(&dev->mt76.mutex);
- 	return ret;
-@@ -44,6 +47,8 @@ static void mt76x0_stop(struct ieee80211_hw *hw)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+index 6ba5e9ba2c7f..24712ac924ef 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+@@ -185,7 +185,6 @@ void mt76x0_mac_set_ampdu_factor(struct mt76x0_dev *dev);
+ /* TX */
+ void mt76x0_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
+ 		struct sk_buff *skb);
+-void mt76x0_tx_status(struct mt76x0_dev *dev, struct sk_buff *skb);
  
- 	mutex_lock(&dev->mt76.mutex);
+ void mt76x0_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
+ 			 struct sk_buff *skb);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
+index de12c769b353..b59b16d374e1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/tx.c
+@@ -16,21 +16,6 @@
+ #include "trace.h"
+ #include "../mt76x02_util.h"
  
-+	clear_bit(MT76_STATE_RUNNING, &dev->mt76.state);
-+
- 	cancel_delayed_work_sync(&dev->cal_work);
- 	cancel_delayed_work_sync(&dev->mac_work);
- 	mt76x0_mac_stop(dev);
--- 
-2.7.5
+-void mt76x0_tx_status(struct mt76x0_dev *dev, struct sk_buff *skb)
+-{
+-	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
+-
+-	mt76x02_remove_dma_hdr(skb);
+-
+-	ieee80211_tx_info_clear_status(info);
+-	info->status.rates[0].idx = -1;
+-	info->flags |= IEEE80211_TX_STAT_ACK;
+-
+-	spin_lock(&dev->mac_lock);
+-	ieee80211_tx_status(dev->mt76.hw, skb);
+-	spin_unlock(&dev->mac_lock);
+-}
