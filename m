@@ -1,7 +1,7 @@
 From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 33/42] mt76x0: move mt76x0_init_hardware in mt76x0_register_device
-Date: Thu,  6 Sep 2018 11:18:49 +0200
-Message-ID: <1536225538-16454-34-git-send-email-sgruszka@redhat.com>
+Subject: [PATCH 34/42] mt76x0: do not free/alloc buffers during suspend/resume
+Date: Thu,  6 Sep 2018 11:18:50 +0200
+Message-ID: <1536225538-16454-35-git-send-email-sgruszka@redhat.com>
 References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1536225538-16454-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -12,140 +12,127 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 
-Move mt76x0_init_hardware routine in mt76x0_register_device
-during hw probe. This is a preliminary patch to avoid {tx/rx}
-buffer allocation during resume/suspend
+Do not free/alloc {tx,rx} buffers during suspend/resume phases
+but use the ones previously allocated during hw probe.
+Move {tx,rx}/mcu buffers allocation from mt76x0_init_hardware routine
+to mt76x0_register_device
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/init.c | 55 ++++++++++--------------
- drivers/net/wireless/mediatek/mt76/mt76x0/usb.c  |  8 ++--
- 2 files changed, 26 insertions(+), 37 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x0/init.c | 12 +++++---
+ drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c  |  6 ----
+ drivers/net/wireless/mediatek/mt76/mt76x0/usb.c  | 38 ++++++++++++++++++------
+ 3 files changed, 37 insertions(+), 19 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-index b1d5f647eac5..deceece52492 100644
+index deceece52492..8f4b3197ab95 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/init.c
-@@ -382,27 +382,21 @@ int mt76x0_init_hardware(struct mt76x0_dev *dev)
- 
- 	mt76x0_chip_onoff(dev, true, true);
- 
--	if (!mt76x02_wait_for_mac(&dev->mt76)) {
--		ret = -ETIMEDOUT;
--		goto err;
--	}
-+	if (!mt76x02_wait_for_mac(&dev->mt76))
-+		return -ETIMEDOUT;
- 
- 	ret = mt76x0_mcu_init(dev);
+@@ -408,10 +408,6 @@ int mt76x0_init_hardware(struct mt76x0_dev *dev)
  	if (ret)
--		goto err;
-+		return ret;
+ 		return ret;
  
- 	if (!mt76_poll_msec(dev, MT_WPDMA_GLO_CFG,
- 			    MT_WPDMA_GLO_CFG_TX_DMA_BUSY |
--			    MT_WPDMA_GLO_CFG_RX_DMA_BUSY, 0, 100)) {
--		ret = -EIO;
--		goto err;
--	}
-+			    MT_WPDMA_GLO_CFG_RX_DMA_BUSY, 0, 100))
-+		return -EIO;
- 
- 	/* Wait for ASIC ready after FW load. */
--	if (!mt76x02_wait_for_mac(&dev->mt76)) {
--		ret = -ETIMEDOUT;
--		goto err;
--	}
-+	if (!mt76x02_wait_for_mac(&dev->mt76))
-+		return -ETIMEDOUT;
- 
- 	mt76x0_reset_csr_bbp(dev);
- 	mt76x0_init_usb_dma(dev);
-@@ -412,33 +406,33 @@ int mt76x0_init_hardware(struct mt76x0_dev *dev)
- 
- 	ret = mt76x0_mcu_cmd_init(dev);
- 	if (ret)
--		goto err;
-+		return ret;
- 
- 	ret = mt76u_alloc_queues(&dev->mt76);
- 	if (ret < 0)
--		goto err_mcu;
-+		return ret;
- 
+-	ret = mt76u_alloc_queues(&dev->mt76);
+-	if (ret < 0)
+-		return ret;
+-
  	mt76x0_init_mac_registers(dev);
  
  	if (!mt76_poll_msec(dev, MT_MAC_STATUS,
--			    MT_MAC_STATUS_TX | MT_MAC_STATUS_RX, 0, 1000)) {
--		ret = -EIO;
--		goto err_rx;
--	}
-+			    MT_MAC_STATUS_TX | MT_MAC_STATUS_RX, 0, 1000))
-+		return -EIO;
- 
- 	ret = mt76x0_init_bbp(dev);
- 	if (ret)
--		goto err_rx;
-+		return ret;
- 
- 	ret = mt76x0_init_wcid_mem(dev);
- 	if (ret)
--		goto err_rx;
-+		return ret;
-+
- 	ret = mt76x0_init_key_mem(dev);
- 	if (ret)
--		goto err_rx;
-+		return ret;
-+
- 	ret = mt76x0_init_wcid_attr_mem(dev);
- 	if (ret)
--		goto err_rx;
-+		return ret;
- 
- 	mt76_clear(dev, MT_BEACON_TIME_CFG, (MT_BEACON_TIME_CFG_TIMER_EN |
- 					     MT_BEACON_TIME_CFG_SYNC_MODE |
-@@ -455,18 +449,11 @@ int mt76x0_init_hardware(struct mt76x0_dev *dev)
- 
- 	ret = mt76x0_eeprom_init(dev);
- 	if (ret)
--		goto err_rx;
-+		return ret;
- 
- 	mt76x0_phy_init(dev);
--	return 0;
- 
--err_rx:
--	mt76u_queues_deinit(&dev->mt76);
--err_mcu:
--	mt76u_mcu_deinit(&dev->mt76);
--err:
--	mt76x0_chip_onoff(dev, false, false);
--	return ret;
-+	return 0;
- }
- 
- void mt76x0_cleanup(struct mt76x0_dev *dev)
-@@ -627,6 +614,10 @@ int mt76x0_register_device(struct mt76x0_dev *dev)
+@@ -614,6 +610,14 @@ int mt76x0_register_device(struct mt76x0_dev *dev)
  	struct wiphy *wiphy = hw->wiphy;
  	int ret;
  
-+	ret = mt76x0_init_hardware(dev);
-+	if (ret)
++	ret = mt76u_mcu_init_rx(mdev);
++	if (ret < 0)
 +		return ret;
 +
- 	/* Reserve WCID 0 for mcast - thanks to this APs WCID will go to
- 	 * entry no. 1 like it does in the vendor driver.
- 	 */
++	ret = mt76u_alloc_queues(mdev);
++	if (ret < 0)
++		return ret;
++
+ 	ret = mt76x0_init_hardware(dev);
+ 	if (ret)
+ 		return ret;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c b/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
+index 7be2835f3b4f..29c0b3978af7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mcu.c
+@@ -387,11 +387,5 @@ int mt76x0_mcu_init(struct mt76x0_dev *dev)
+ 
+ int mt76x0_mcu_cmd_init(struct mt76x0_dev *dev)
+ {
+-	int ret;
+-
+-	ret = mt76u_mcu_init_rx(&dev->mt76);
+-	if (ret)
+-		return ret;
+-
+ 	return mt76x0_mcu_function_select(dev, Q_SELECT, 1);
+ }
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
-index 219524c233ee..09b544890450 100644
+index 09b544890450..fc8884c38f7e 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
-@@ -90,10 +90,6 @@ static int mt76x0_probe(struct usb_interface *usb_intf,
- 	if (!(mt76_rr(dev, MT_EFUSE_CTRL) & MT_EFUSE_CTRL_SEL))
- 		dev_warn(dev->mt76.dev, "Warning: eFUSE not present\n");
+@@ -124,29 +124,49 @@ static void mt76x0_disconnect(struct usb_interface *usb_intf)
+ 	ieee80211_free_hw(dev->mt76.hw);
+ }
+ 
+-static int mt76x0_suspend(struct usb_interface *usb_intf, pm_message_t state)
++static int __maybe_unused mt76x0_suspend(struct usb_interface *usb_intf,
++					 pm_message_t state)
+ {
+ 	struct mt76x0_dev *dev = usb_get_intfdata(usb_intf);
++	struct mt76_usb *usb = &dev->mt76.usb;
+ 
+-	mt76x0_cleanup(dev);
++	mt76u_stop_queues(&dev->mt76);
++	mt76x0_mac_stop(dev);
++	usb_kill_urb(usb->mcu.res.urb);
+ 
+ 	return 0;
+ }
+ 
+-static int mt76x0_resume(struct usb_interface *usb_intf)
++static int __maybe_unused mt76x0_resume(struct usb_interface *usb_intf)
+ {
+ 	struct mt76x0_dev *dev = usb_get_intfdata(usb_intf);
++	struct mt76_usb *usb = &dev->mt76.usb;
+ 	int ret;
  
 -	ret = mt76x0_init_hardware(dev);
--	if (ret)
--		goto err;
+-	if (ret) {
+-		mt76x0_cleanup(dev);
+-		return ret;
+-	}
++	reinit_completion(&usb->mcu.cmpl);
++	ret = mt76u_submit_buf(&dev->mt76, USB_DIR_IN,
++			       MT_EP_IN_CMD_RESP,
++			       &usb->mcu.res, GFP_KERNEL,
++			       mt76u_mcu_complete_urb,
++			       &usb->mcu.cmpl);
++	if (ret < 0)
++		goto err;
+ 
+-	set_bit(MT76_STATE_INITIALIZED, &dev->mt76.state);
++	ret = mt76u_submit_rx_buffers(&dev->mt76);
++	if (ret < 0)
++		goto err;
++
++	tasklet_enable(&usb->rx_tasklet);
++	tasklet_enable(&usb->tx_tasklet);
++
++	ret = mt76x0_init_hardware(dev);
++	if (ret)
++		goto err;
+ 
+ 	return 0;
++err:
++	mt76x0_cleanup(dev);
++	return ret;
+ }
+ 
+ MODULE_DEVICE_TABLE(usb, mt76x0_device_table);
+-- 
+2.7.5
