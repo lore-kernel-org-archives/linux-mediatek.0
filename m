@@ -1,37 +1,108 @@
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v2] usb: xhci: fix interrupt transfer error happened on
- MTK platforms
-Date: Fri, 7 Sep 2018 10:56:45 +0200
-Message-ID: <20180907085645.GA17270@kroah.com>
-References: <e8698cc5710a9d1f25e33e2201e2177bfbfec75c.1536305256.git.chunfeng.yun@mediatek.com>
- <20180907074251.GA2079@kroah.com>
- <1536309826.32173.45.camel@mhfsdcap03>
+From: Honghui Zhang <honghui.zhang@mediatek.com>
+Subject: Re: [PATCH v3 3/4] PCI: mediatek: Add system pm support for MT2712
+ and MT7622
+Date: Fri, 7 Sep 2018 17:43:30 +0800
+Message-ID: <1536313410.31406.30.camel@mhfsdcap03>
+References: <1530518264-6125-1-git-send-email-honghui.zhang@mediatek.com>
+         <1530518264-6125-4-git-send-email-honghui.zhang@mediatek.com>
+         <20180717171543.GA20991@red-moon> <1531893761.31406.15.camel@mhfsdcap03>
+         <20180718094924.GA21463@red-moon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <stable-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1536309826.32173.45.camel@mhfsdcap03>
-Sender: stable-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Mathias Nyman <mathias.nyman@intel.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180718094924.GA21463@red-moon>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: weiyi.lu@mediatek.com, chen.zhong@mediatek.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, rjw@rjwysocki.net, khilman@kernel.org, ulf.hansson@linaro.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Sep 07, 2018 at 04:43:46PM +0800, Chunfeng Yun wrote:
-> Hi,
+On Wed, 2018-07-18 at 10:49 +0100, Lorenzo Pieralisi wrote:
+> On Wed, Jul 18, 2018 at 02:02:41PM +0800, Honghui Zhang wrote:
 > 
-> On Fri, 2018-09-07 at 09:42 +0200, Greg Kroah-Hartman wrote:
-> > On Fri, Sep 07, 2018 at 03:29:12PM +0800, Chunfeng Yun wrote:
-> > > The MTK xHCI controller use some reserved bytes in endpoint context for
-> > > bandwidth scheduling, so need keep them in xhci_endpoint_copy();
+> <snip>
+> 
+> > > > +static int __maybe_unused mtk_pcie_resume_noirq(struct device *dev)
+> > > > +{
+> > > > +	struct mtk_pcie *pcie = dev_get_drvdata(dev);
+> > > > +	const struct mtk_pcie_soc *soc = pcie->soc;
+> > > > +	struct mtk_pcie_port *port, *tmp;
+> > > > +
+> > > > +	if (!soc->pm_support)
+> > > > +		return 0;
+> > > > +
+> > > > +	if (list_empty(&pcie->ports))
+> > > > +		return 0;
+> > > > +
+> > > > +	if (dev->pm_domain) {
+> > > > +		pm_runtime_enable(dev);
+> > > > +		pm_runtime_get_sync(dev);
+> > > > +	}
+> > > 
+> > > Are these runtime PM calls needed/abused here ?
+> > > 
+> > > Mind explaining the logic ?
+> > > 
+> > > There is certainly an asymmetry with the suspend callback which made me
+> > > suspicious, I am pretty certain Rafael/Kevin/Ulf can help me clarify so
+> > > that we can make progress with this patch.
+> > > 
+> > > Lorenzo
+> > > 
+> > Hi Lorenzo, thanks for your comments.
+> > Sorry I don't get you.
+> > I believe that in suspend callbacks the pm_runtime_put_sync and
+> > pm_runtime_disable should be called to gated the CMOS for this module,
+> > while the pm_rumtime_enable and pm_rumtime_get_sync should be called
+> > in resume callback.
+
+> That's why I CC'ed Rafael, Kevin and Ulf, to answer this question
+> thoroughly, I am not sure it is needed and that's the right way
+> of doing it in system suspend callbacks.
+> 
+
+hi, Rafael, Kevin and Ulf,
+
+after reading of the power related documents in Documents/power/, I'm
+still confused whether the runtime_pm callbacks should be called in
+system suspend callbacks.
+
+I believe that system suspend does not care about the device's CMOS
+status. And the device's CMOS status is controlled by runtime pm.
+That why I gated the CMOS through runtime pm in the system suspend
+callbacks.
+
+But I checked all existing system suspend callbacks and found there's no
+runtime pm was executed in system suspend callbacks. Does that means
+when system suspend, the system suspend framework does not care about
+the power consume? Or does it gated each device's CMOS in somewhere
+else?
+
+Or should I just remove the runtime pm callbacks in the system suspend
+flow?
+
+Could someone kindly give me some comments?
+
+Thanks in advance.
+
+> > That's exactly this patch doing.
+> > But the pm_rumtime_put_sync and pm_runtime_disable functions was wrapped
+> > in the mtk_pcie_subsys_powerdown.
+> 
+> Ah, sorry, I missed that.
+> 
+> > I did not call mtk_pcie_subsys_powerup since it does not just wrapped
+> > pm_rumtime related functions but also do the platform_resource_get,
+> > devm_ioremap, and free_ck clock get which I do not needed in resume
+> > callback.
 > > 
-> > If they are "reserved" shouldn't they be properly named?  And by using
-> > reserved bytes, isn't that a spec violation?
-> It indeed violates the spec, "they shall be treated by system software
-> as Reserved and Opaque", and it's a quirk of the MTK xHCI controller.
-
-So as the "system software" here, we should just ignore them otherwise
-we violate the spec?  :)
-
-Anyway, that's fine, no objection from me for the patch, thanks.
-
-greg k-h
+> > Do you think it will be much clear if I abstract the
+> > platform_resource_get, devm_ioremap functions from
+> > mtk_pcie_subsys_powerup and put it to a new functions like
+> > mtk_pcie_subsys_resource_get, and then we may call the
+> > mtk_pcie_subsys_powerup in the resume function?
+> 
+> I think so but let's wait first for feedback on whether those
+> runtime PM calls are needed in the first place.
+> 
+> Lorenzo
