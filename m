@@ -1,89 +1,81 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [RESEND PATCH] usb: mtu3: disable vbus rise/fall interrupts of ltssm
-Date: Fri, 7 Sep 2018 14:00:39 +0800
-Message-ID: <6e7bed46598dfb65f43c2490802a51a8b50cd257.1536299914.git.chunfeng.yun@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [SPAM][PATCH] usb: xhci: fix interrupt transfer error happened
+ on MTK platforms
+Date: Fri, 7 Sep 2018 14:31:36 +0800
+Message-ID: <1536301896.6414.48.camel@mtkswgap22>
+References: <afafa68eb3a74a414848c116382e95811f924905.1536298766.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <afafa68eb3a74a414848c116382e95811f924905.1536298766.git.chunfeng.yun@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: devicetree@vger.kernel.org, Mathias Nyman <mathias.nyman@intel.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The vbus rise & fall interrupts are used to enable and disable
-U3 function of device automatically, this cause some issues when
-class driver is initialized as deactivated, and will skip over
-software-controlled connect by pullup(), but UDC wants to keep
-disconnect until usb_gadget_activate() is called which calls
-pullup() if needed. So we disable vbus rise & fall interrupts
-and just use pullup() to enable & disable U3 function, and reset
-mtu3 state when disconnect instead when vbus fall.
+Hi,
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/mtu3/mtu3_core.c   |  4 ++--
- drivers/usb/mtu3/mtu3_gadget.c | 22 ++++++++++++++--------
- 2 files changed, 16 insertions(+), 10 deletions(-)
+Should add Fixes: tag and Cc: <stable@vger.kernel.org> also to apply the patch to the stable tree. Otherwise, the problem still is kept in the stable kernel.
 
-diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
-index d045d84..ae70b9b 100644
---- a/drivers/usb/mtu3/mtu3_core.c
-+++ b/drivers/usb/mtu3/mtu3_core.c
-@@ -185,8 +185,8 @@ static void mtu3_intr_enable(struct mtu3 *mtu)
+The patch really can solve the problem by testing with the ASIX AX88179 u3 Ethernet can't work since v4.17.x.
+
+So, Tested-by: Sean Wang <sean.wang@mediatek.com>
  
- 	if (mtu->is_u3_ip) {
- 		/* Enable U3 LTSSM interrupts */
--		value = HOT_RST_INTR | WARM_RST_INTR | VBUS_RISE_INTR |
--		    VBUS_FALL_INTR | ENTER_U3_INTR | EXIT_U3_INTR;
-+		value = HOT_RST_INTR | WARM_RST_INTR |
-+			ENTER_U3_INTR | EXIT_U3_INTR;
- 		mtu3_writel(mbase, U3D_LTSSM_INTR_ENABLE, value);
- 	}
- 
-diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
-index 5c60a8c..bbcd333 100644
---- a/drivers/usb/mtu3/mtu3_gadget.c
-+++ b/drivers/usb/mtu3/mtu3_gadget.c
-@@ -585,6 +585,17 @@ static int mtu3_gadget_stop(struct usb_gadget *g)
- 	.udc_stop = mtu3_gadget_stop,
- };
- 
-+static void mtu3_state_reset(struct mtu3 *mtu)
-+{
-+	mtu->address = 0;
-+	mtu->ep0_state = MU3D_EP0_STATE_SETUP;
-+	mtu->may_wakeup = 0;
-+	mtu->u1_enable = 0;
-+	mtu->u2_enable = 0;
-+	mtu->delayed_status = false;
-+	mtu->test_mode = false;
-+}
-+
- static void init_hw_ep(struct mtu3 *mtu, struct mtu3_ep *mep,
- 		u32 epnum, u32 is_in)
- {
-@@ -702,6 +713,7 @@ void mtu3_gadget_disconnect(struct mtu3 *mtu)
- 		spin_lock(&mtu->lock);
- 	}
- 
-+	mtu3_state_reset(mtu);
- 	usb_gadget_set_state(&mtu->g, USB_STATE_NOTATTACHED);
- }
- 
-@@ -712,12 +724,6 @@ void mtu3_gadget_reset(struct mtu3 *mtu)
- 	/* report disconnect, if we didn't flush EP state */
- 	if (mtu->g.speed != USB_SPEED_UNKNOWN)
- 		mtu3_gadget_disconnect(mtu);
--
--	mtu->address = 0;
--	mtu->ep0_state = MU3D_EP0_STATE_SETUP;
--	mtu->may_wakeup = 0;
--	mtu->u1_enable = 0;
--	mtu->u2_enable = 0;
--	mtu->delayed_status = false;
--	mtu->test_mode = false;
-+	else
-+		mtu3_state_reset(mtu);
- }
--- 
-1.9.1
+and attach the log testing with AX88179
+
+[  126.369574] usb 2-1: new SuperSpeed Gen 1 USB device number 2 using xhci-mtk
+[  126.730806] ax88179_178a 2-1:1.0 eth2: register 'ax88179_178a' at usb-1a0c0000.usb-1, ASIX AX88179 USB 3.0 Gigabit Ethernet, 00:11:6b:68:4c:9e
+[  126.759932] ax88179_178a 2-1:1.0 enx00116b684c9e: renamed from eth2
+
+~# ifconfig enx00116b684c9e 10.10.10.1
+~# ping 10[  147.613266] ax88179_178a 2-1:1.0 enx00116b684c9e: ax88179 - Link status is: 1
+.10.10.3
+PING 10.10.10.3 (10.10.10.3) 56(84) bytes of data.
+64 bytes from 10.10.10.3: icmp_seq=1 ttl=64 time=0.414 ms
+64 bytes from 10.10.10.3: icmp_seq=2 ttl=64 time=0.422 ms
+64 bytes from 10.10.10.3: icmp_seq=3 ttl=64 time=0.376 ms
+64 bytes from 10.10.10.3: icmp_seq=4 ttl=64 time=0.309 ms
+64 bytes from 10.10.10.3: icmp_seq=5 ttl=64 time=0.392 ms
+64 bytes from 10.10.10.3: icmp_seq=6 ttl=64 time=0.355 ms
+64 bytes from 10.10.10.3: icmp_seq=7 ttl=64 time=0.407 ms
+64 bytes from 10.10.10.3: icmp_seq=8 ttl=64 time=0.325 ms
+
+On Fri, 2018-09-07 at 13:51 +0800, Chunfeng Yun wrote:
+> The MTK xHCI controller use some reserved bytes in endpoint context for
+> bandwidth scheduling, so need keep them in xhci_endpoint_copy();
+> 
+> The issue is introduced by:
+> commit f5249461b504 ("xhci: Clear the host side toggle manually when
+> endpoint is soft reset")
+> It resets endpoints and will drop bandwidth scheduling parameters used
+> by interrupt or isochronous endpoints on MTK xHCI controller.
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  drivers/usb/host/xhci-mem.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/drivers/usb/host/xhci-mem.c b/drivers/usb/host/xhci-mem.c
+> index ef350c3..b1f27aa 100644
+> --- a/drivers/usb/host/xhci-mem.c
+> +++ b/drivers/usb/host/xhci-mem.c
+> @@ -1613,6 +1613,10 @@ void xhci_endpoint_copy(struct xhci_hcd *xhci,
+>  	in_ep_ctx->ep_info2 = out_ep_ctx->ep_info2;
+>  	in_ep_ctx->deq = out_ep_ctx->deq;
+>  	in_ep_ctx->tx_info = out_ep_ctx->tx_info;
+> +	if (xhci->quirks & XHCI_MTK_HOST) {
+> +		in_ep_ctx->reserved[0] = out_ep_ctx->reserved[0];
+> +		in_ep_ctx->reserved[1] = out_ep_ctx->reserved[1];
+> +	}
+>  }
+>  
+>  /* Copy output xhci_slot_ctx to the input xhci_slot_ctx.
