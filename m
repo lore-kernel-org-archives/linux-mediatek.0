@@ -1,49 +1,26 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH v2] usb: xhci: fix interrupt transfer error happened on MTK platforms
-Date: Fri, 7 Sep 2018 15:29:12 +0800
-Message-ID: <e8698cc5710a9d1f25e33e2201e2177bfbfec75c.1536305256.git.chunfeng.yun@mediatek.com>
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v2] usb: xhci: fix interrupt transfer error happened on
+ MTK platforms
+Date: Fri, 7 Sep 2018 09:42:51 +0200
+Message-ID: <20180907074251.GA2079@kroah.com>
+References: <e8698cc5710a9d1f25e33e2201e2177bfbfec75c.1536305256.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <e8698cc5710a9d1f25e33e2201e2177bfbfec75c.1536305256.git.chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, stable@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Mathias Nyman <mathias.nyman@intel.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, stable@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The MTK xHCI controller use some reserved bytes in endpoint context for
-bandwidth scheduling, so need keep them in xhci_endpoint_copy();
+On Fri, Sep 07, 2018 at 03:29:12PM +0800, Chunfeng Yun wrote:
+> The MTK xHCI controller use some reserved bytes in endpoint context for
+> bandwidth scheduling, so need keep them in xhci_endpoint_copy();
 
-The issue is introduced by:
-commit f5249461b504 ("xhci: Clear the host side toggle manually when
-endpoint is soft reset")
-It resets endpoints and will drop bandwidth scheduling parameters used
-by interrupt or isochronous endpoints on MTK xHCI controller.
-Fixes: f5249461b504 ("xhci: Clear the host side toggle manually when
-endpoint is soft reset")
+If they are "reserved" shouldn't they be properly named?  And by using
+reserved bytes, isn't that a spec violation?
 
-Cc: stable@vger.kernel.org
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Tested-by: Sean Wang <sean.wang@mediatek.com>
----
-v2: add fix tag, Cc and Tested-by
----
- drivers/usb/host/xhci-mem.c | 4 ++++
- 1 file changed, 4 insertions(+)
+thanks,
 
-diff --git a/drivers/usb/host/xhci-mem.c b/drivers/usb/host/xhci-mem.c
-index ef350c3..b1f27aa 100644
---- a/drivers/usb/host/xhci-mem.c
-+++ b/drivers/usb/host/xhci-mem.c
-@@ -1613,6 +1613,10 @@ void xhci_endpoint_copy(struct xhci_hcd *xhci,
- 	in_ep_ctx->ep_info2 = out_ep_ctx->ep_info2;
- 	in_ep_ctx->deq = out_ep_ctx->deq;
- 	in_ep_ctx->tx_info = out_ep_ctx->tx_info;
-+	if (xhci->quirks & XHCI_MTK_HOST) {
-+		in_ep_ctx->reserved[0] = out_ep_ctx->reserved[0];
-+		in_ep_ctx->reserved[1] = out_ep_ctx->reserved[1];
-+	}
- }
- 
- /* Copy output xhci_slot_ctx to the input xhci_slot_ctx.
--- 
-1.9.1
+greg k-h
