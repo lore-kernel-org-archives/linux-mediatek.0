@@ -1,60 +1,85 @@
-From: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
-Subject: Re: [PATCH 06/42] mt76: move mt76x2u_set_txinfo in mt76x02-lib module
-Date: Mon, 10 Sep 2018 11:45:02 +0200
-Message-ID: <9d5b51ce-12c8-1195-1447-5d1beaf4d967@nbd.name>
-References: <1536225538-16454-1-git-send-email-sgruszka@redhat.com>
- <1536225538-16454-7-git-send-email-sgruszka@redhat.com>
+From: <honghui.zhang@mediatek.com>
+Subject: [PATCH v4 1/4] PCI: mediatek: fixup mtk_pcie_find_port logical
+Date: Mon, 10 Sep 2018 17:50:20 +0800
+Message-ID: <1536573023-6720-2-git-send-email-honghui.zhang@mediatek.com>
+References: <1536573023-6720-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1536225538-16454-7-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Content-Language: en-US
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1536573023-6720-1-git-send-email-honghui.zhang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: lorenzo.pieralisi@arm.com, marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com
+Cc: ulf.hansson@linaro.org, honghui.zhang@mediatek.com, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2018-09-06 11:18, Stanislaw Gruszka wrote:
-> From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-> 
-> Move mt76x2u_set_txinfo routine in mt76x02-lib module and rename it in
-> mt76x02_set_txinfo in order to be reused in mt76x0 driver
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-> Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt76x02_util.c | 21 ++++++++++++++++++++
->  drivers/net/wireless/mediatek/mt76/mt76x02_util.h |  1 +
->  drivers/net/wireless/mediatek/mt76/mt76x2u_core.c | 24 +----------------------
->  3 files changed, 23 insertions(+), 23 deletions(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-> index e4cf4e934153..6ed558c12786 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-> @@ -412,4 +412,25 @@ void mt76x02_tx_complete_skb(struct mt76_dev *mdev, struct mt76_queue *q,
->  }
->  EXPORT_SYMBOL_GPL(mt76x02_tx_complete_skb);
->  
-> +int mt76x02_set_txinfo(struct sk_buff *skb, struct mt76_wcid *wcid, u8 ep)
-> +{
-> +	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
-> +	enum mt76_qsel qsel;
-> +	u32 flags;
-> +
-> +	if ((info->flags & IEEE80211_TX_CTL_RATE_CTRL_PROBE) ||
-> +	    ep == MT_EP_OUT_HCCA)
-> +		qsel = MT_QSEL_MGMT;
-> +	else
-> +		qsel = MT_QSEL_EDCA;
-> +
-> +	flags = FIELD_PREP(MT_TXD_INFO_QSEL, qsel) |
-> +		MT_TXD_INFO_80211;
-> +	if (!wcid || wcid->hw_key_idx == 0xff || wcid->sw_iv)
-> +		flags |= MT_TXD_INFO_WIV;
-> +
-> +	return mt76u_skb_dma_info(skb, WLAN_PORT, flags);
-Common MT76x02 code must not call USB specific functions.
+From: Honghui Zhang <honghui.zhang@mediatek.com>
 
-- Felix
+The Mediatek's host controller has two slots, each with it's own control
+registers. The host driver need to identify which slot was connected
+in order to access the device's configuration space. There's problem
+for current host driver to find out which slot was connected to for
+a given EP device.
+
+Assuming each slot have connect with one EP device as below:
+
+                host bridge
+  bus 0 --> __________|_______
+           |                  |
+           |                  |
+         slot 0             slot 1
+  bus 1 -->|        bus 2 --> |
+           |                  |
+         EP 0               EP 1
+
+During PCI enumeration, system software will scan all the PCI device
+starting from devfn 0. So it will get the proper port for slot0 and
+slot1 device when using PCI_SLOT(devfn) for match. But it will get
+the wrong slot for EP1: The devfn will be start from 0 when scanning
+EP1 behind slot1, it will get port0 since the PCI_SLOT(EP1) is match
+for port0's slot value. So the host driver should not using EP's devfn
+but the slot's devfn(the slot which EP was connected to) for match.
+
+This patch fix the mtk_pcie_find_port's logical by using the slot's
+devfn for match.
+
+Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/pci/controller/pcie-mediatek.c | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 861dda6..20b9088 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -337,11 +337,26 @@ static struct mtk_pcie_port *mtk_pcie_find_port(struct pci_bus *bus,
+ {
+ 	struct mtk_pcie *pcie = bus->sysdata;
+ 	struct mtk_pcie_port *port;
++	struct pci_dev *dev;
++	struct pci_bus *pbus;
+ 
+-	list_for_each_entry(port, &pcie->ports, list)
+-		if (port->slot == PCI_SLOT(devfn))
++	list_for_each_entry(port, &pcie->ports, list) {
++		if (!bus->number && port->slot == PCI_SLOT(devfn))
+ 			return port;
+ 
++		if (bus->number) {
++			pbus = bus;
++
++			while (pbus->number) {
++				dev = pbus->self;
++				pbus = dev->bus;
++			}
++
++			if (port->slot == PCI_SLOT(dev->devfn))
++				return port;
++		}
++	}
++
+ 	return NULL;
+ }
+ 
+-- 
+2.6.4
