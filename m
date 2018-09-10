@@ -1,120 +1,27 @@
-From: Peter Shih <pihsun@chromium.org>
-Subject: [PATCH v2] spi: mediatek: Don't modify spi_transfer when transfer.
-Date: Mon, 10 Sep 2018 11:54:21 +0800
-Message-ID: <20180910035421.101505-1-pihsun@chromium.org>
-References: <20180910035047.98496-1-pihsun@chromium.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 3/3] rtc: pl031: switch to devm_rtc_allocate_device/rtc_register_device
+Date: Mon, 10 Sep 2018 08:44:42 +0200
+Message-ID: <CACRpkdaVH7_eVGC+CRQqsA1Y1+oMkkVhVPJmpiE=k90qa23SQQ@mail.gmail.com>
+References: <20180909203848.3470-1-alexandre.belloni@bootlin.com> <20180909203848.3470-3-alexandre.belloni@bootlin.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180910035047.98496-1-pihsun@chromium.org>
+In-Reply-To: <20180909203848.3470-3-alexandre.belloni@bootlin.com>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: pihsun@chromium.org, Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Cc: linux-rtc@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Mediatek SPI driver modifies some fields (tx_buf, rx_buf, len, tx_dma,
-rx_dma) of the spi_transfer* passed in when doing transfer_one and in
-interrupt handler. This is somewhat unexpected, and there are some
-caller (e.g. Cr50 spi driver) that reuse the spi_transfer for multiple
-messages. Add a field to record how many bytes have been transferred,
-and calculate the right len / buffer based on it instead.
+On Sun, Sep 9, 2018 at 10:38 PM Alexandre Belloni
+<alexandre.belloni@bootlin.com> wrote:
 
-Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+> Switch to devm_rtc_allocate_device to simplify the erro and driver removal
+> paths.
+>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Signed-off-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
 
-Change-Id: I23e218cd964f16c0b2b26127d4a5ca6529867673
----
- drivers/spi/spi-mt65xx.c | 37 +++++++++++++++++++++----------------
- 1 file changed, 21 insertions(+), 16 deletions(-)
+Acked-by: Linus Walleij <linus.walleij@linaro.org>
 
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 86bf45667a040..3dc31627c6558 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -98,6 +98,7 @@ struct mtk_spi {
- 	struct clk *parent_clk, *sel_clk, *spi_clk;
- 	struct spi_transfer *cur_transfer;
- 	u32 xfer_len;
-+	u32 num_xfered;
- 	struct scatterlist *tx_sgl, *rx_sgl;
- 	u32 tx_sgl_len, rx_sgl_len;
- 	const struct mtk_spi_compatible *dev_comp;
-@@ -385,6 +386,7 @@ static int mtk_spi_fifo_transfer(struct spi_master *master,
- 
- 	mdata->cur_transfer = xfer;
- 	mdata->xfer_len = min(MTK_SPI_MAX_FIFO_SIZE, xfer->len);
-+	mdata->num_xfered = 0;
- 	mtk_spi_prepare_transfer(master, xfer);
- 	mtk_spi_setup_packet(master);
- 
-@@ -415,6 +417,7 @@ static int mtk_spi_dma_transfer(struct spi_master *master,
- 	mdata->tx_sgl_len = 0;
- 	mdata->rx_sgl_len = 0;
- 	mdata->cur_transfer = xfer;
-+	mdata->num_xfered = 0;
- 
- 	mtk_spi_prepare_transfer(master, xfer);
- 
-@@ -482,7 +485,7 @@ static int mtk_spi_setup(struct spi_device *spi)
- 
- static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
- {
--	u32 cmd, reg_val, cnt, remainder;
-+	u32 cmd, reg_val, cnt, remainder, len;
- 	struct spi_master *master = dev_id;
- 	struct mtk_spi *mdata = spi_master_get_devdata(master);
- 	struct spi_transfer *trans = mdata->cur_transfer;
-@@ -497,36 +500,38 @@ static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
- 		if (trans->rx_buf) {
- 			cnt = mdata->xfer_len / 4;
- 			ioread32_rep(mdata->base + SPI_RX_DATA_REG,
--				     trans->rx_buf, cnt);
-+				     trans->rx_buf + mdata->num_xfered, cnt);
- 			remainder = mdata->xfer_len % 4;
- 			if (remainder > 0) {
- 				reg_val = readl(mdata->base + SPI_RX_DATA_REG);
--				memcpy(trans->rx_buf + (cnt * 4),
--					&reg_val, remainder);
-+				memcpy(trans->rx_buf +
-+					mdata->num_xfered +
-+					(cnt * 4),
-+					&reg_val,
-+					remainder);
- 			}
- 		}
- 
--		trans->len -= mdata->xfer_len;
--		if (!trans->len) {
-+		mdata->num_xfered += mdata->xfer_len;
-+		if (mdata->num_xfered == trans->len) {
- 			spi_finalize_current_transfer(master);
- 			return IRQ_HANDLED;
- 		}
- 
--		if (trans->tx_buf)
--			trans->tx_buf += mdata->xfer_len;
--		if (trans->rx_buf)
--			trans->rx_buf += mdata->xfer_len;
--
--		mdata->xfer_len = min(MTK_SPI_MAX_FIFO_SIZE, trans->len);
-+		len = trans->len - mdata->num_xfered;
-+		mdata->xfer_len = min(MTK_SPI_MAX_FIFO_SIZE, len);
- 		mtk_spi_setup_packet(master);
- 
--		cnt = trans->len / 4;
--		iowrite32_rep(mdata->base + SPI_TX_DATA_REG, trans->tx_buf, cnt);
-+		cnt = len / 4;
-+		iowrite32_rep(mdata->base + SPI_TX_DATA_REG,
-+				trans->tx_buf + mdata->num_xfered, cnt);
- 
--		remainder = trans->len % 4;
-+		remainder = len % 4;
- 		if (remainder > 0) {
- 			reg_val = 0;
--			memcpy(&reg_val, trans->tx_buf + (cnt * 4), remainder);
-+			memcpy(&reg_val,
-+				trans->tx_buf + (cnt * 4) + mdata->num_xfered,
-+				remainder);
- 			writel(reg_val, mdata->base + SPI_TX_DATA_REG);
- 		}
- 
--- 
-2.19.0.rc2.392.g5ba43deb5a-goog
+Yours,
+Linus Walleij
