@@ -1,73 +1,43 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [PATCH 1/3] rtc: mt6397: fix possible race condition
-Date: Tue, 11 Sep 2018 19:32:26 +0800
-Message-ID: <1536665546.25102.1.camel@mtksdaap41>
-References: <20180909203848.3470-1-alexandre.belloni@bootlin.com>
+From: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH 00/22] mt76 patches 2018-09-04
+Date: Tue, 11 Sep 2018 17:19:37 +0300
+Message-ID: <87h8iwru9y.fsf@purkki.adurom.net>
+References: <1536072075-6990-1-git-send-email-sgruszka@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180909203848.3470-1-alexandre.belloni@bootlin.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1536072075-6990-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> (Stanislaw
+        Gruszka's message of "Tue, 4 Sep 2018 16:40:53 +0200")
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, 2018-09-09 at 22:38 +0200, Alexandre Belloni wrote:
-> The IRQ is requested before the struct rtc is allocated and registered, but
-> this struct is used in the IRQ handler. This may lead to a NULL pointer
-> dereference.
-> 
-> Switch to devm_rtc_allocate_device/rtc_register_device to allocate the rtc
-> before requesting the IRQ.
-> 
-> Cc: Eddie Huang <eddie.huang@mediatek.com>
-> Cc: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
-> ---
->  drivers/rtc/rtc-mt6397.c | 13 ++++++++-----
->  1 file changed, 8 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-> index 385f8303bb41..e9a25ec4d434 100644
-> --- a/drivers/rtc/rtc-mt6397.c
-> +++ b/drivers/rtc/rtc-mt6397.c
-> @@ -332,6 +332,10 @@ static int mtk_rtc_probe(struct platform_device *pdev)
->  
->  	platform_set_drvdata(pdev, rtc);
->  
-> +	rtc->rtc_dev = devm_rtc_allocate_device(rtc->dev);
-> +	if (IS_ERR(rtc->rtc_dev))
-> +		return PTR_ERR(rtc->rtc_dev);
-> +
->  	ret = request_threaded_irq(rtc->irq, NULL,
->  				   mtk_rtc_irq_handler_thread,
->  				   IRQF_ONESHOT | IRQF_TRIGGER_HIGH,
-> @@ -344,11 +348,11 @@ static int mtk_rtc_probe(struct platform_device *pdev)
->  
->  	device_init_wakeup(&pdev->dev, 1);
->  
-> -	rtc->rtc_dev = rtc_device_register("mt6397-rtc", &pdev->dev,
-> -					   &mtk_rtc_ops, THIS_MODULE);
-> -	if (IS_ERR(rtc->rtc_dev)) {
-> +	rtc->rtc_dev->ops = &mtk_rtc_ops;
-> +
-> +	ret = rtc_register_device(rtc->rtc_dev);
-> +	if (ret) {
->  		dev_err(&pdev->dev, "register rtc device failed\n");
-> -		ret = PTR_ERR(rtc->rtc_dev);
->  		goto out_free_irq;
->  	}
->  
-> @@ -365,7 +369,6 @@ static int mtk_rtc_remove(struct platform_device *pdev)
->  {
->  	struct mt6397_rtc *rtc = platform_get_drvdata(pdev);
->  
-> -	rtc_device_unregister(rtc->rtc_dev);
->  	free_irq(rtc->irq, rtc->rtc_dev);
->  	irq_dispose_mapping(rtc->irq);
->  
+Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> writes:
 
-Thanks
+> More mt76x0/mt76x2 integration.
+>
+> This set is quite big but I would like to move patches upstream
+> from my github tree as fast as possible. I have there 42 more
+> ready to post patches from me and Lorenzo.
+> https://github.com/sgruszka/wireless-drivers-next/commits/mt76x0-draft-v3
+>
+> Note this set include:
+> "mt76x0: fix wrong usage of wcid_mask in remove_interface"
+> patch with I posted as fix for 4.19 . I assume this will be
+> auto (or manually?) merged when -next will go to 4.20.
 
-Acked-by: Eddie Huang <eddie.huang@mediatek.com>
+The problem is that having two identical patches with different commit
+ids will confuse git and can create annoying merge conflicts. A much
+safer approach is that the patch is first applied to wireless-drivers
+and then I merge wireless-drivers into wireless-drivers-next. I'm
+planning to do that in a day or two, I was away for a long weekend so
+lagging behind again.
+
+But the patch "mt76x0: fix wrong usage of wcid_mask in remove_interface"
+should be dropped from this series. But Felix is planning to send all
+pending mt76 to me via a pull request anyway so you don't need to worry
+about this.
+
+-- 
+Kalle Valo
