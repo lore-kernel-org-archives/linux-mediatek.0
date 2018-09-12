@@ -1,32 +1,36 @@
-From: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [PATCH] mt76: MT76x0U requires MT76_USB
-Date: Tue, 11 Sep 2018 17:37:49 +0300
-Message-ID: <87worst802.fsf@codeaurora.org>
-References: <1536239203-21733-1-git-send-email-martin@kaiser.cx>
+From: YueHaibing <yuehaibing@huawei.com>
+Subject: [PATCH -next] staging: mt7621-pci: Use PTR_ERR_OR_ZERO in mt7621_pcie_parse_dt()
+Date: Wed, 12 Sep 2018 02:50:08 +0000
+Message-ID: <1536720608-106123-1-git-send-email-yuehaibing@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1536239203-21733-1-git-send-email-martin@kaiser.cx> (Martin
-        Kaiser's message of "Thu, 6 Sep 2018 15:06:43 +0200")
 Sender: linux-kernel-owner@vger.kernel.org
-To: Martin Kaiser <martin@kaiser.cx>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Valdis Kletnieks <valdis.kletnieks@vt.edu>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, matthias.bgg@gmail.com, blogic@openwrt.org, sergio.paracuellos@gmail.com, neil@brown.name, peter.vernia@gmail.com, oliver.huebers@web.de
+Cc: YueHaibing <yuehaibing@huawei.com>, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-(please cc linux-wireless on wireless patches)
+Use PTR_ERR_OR_ZERO rather than if(IS_ERR(...)) + PTR_ERR
 
-Martin Kaiser <martin@kaiser.cx> writes:
+Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+---
+ drivers/staging/mt7621-pci/pci-mt7621.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-> If we're building MT76x0U, we must select MT76_USB. Otherwise,
-> compilation fails because of undefined references.
->
-> MT76x2U already does this correctly, fix it for MT76x0U as well.
->
-> Signed-off-by: Martin Kaiser <martin@kaiser.cx>
-
-I believe there's a patch pending to fix this, but due to so many mt76
-patches it might take few days before the fix is applied to
-wireless-drivers-next.
-
--- 
-Kalle Valo
+diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
+index ba1f117..d2cb910 100644
+--- a/drivers/staging/mt7621-pci/pci-mt7621.c
++++ b/drivers/staging/mt7621-pci/pci-mt7621.c
+@@ -396,10 +396,7 @@ static int mt7621_pcie_parse_dt(struct mt7621_pcie *pcie)
+ 	}
+ 
+ 	pcie->base = devm_ioremap_resource(dev, &regs);
+-	if (IS_ERR(pcie->base))
+-		return PTR_ERR(pcie->base);
+-
+-	return 0;
++	return PTR_ERR_OR_ZERO(pcie->base);
+ }
+ 
+ static int mt7621_pcie_request_resources(struct mt7621_pcie *pcie,
