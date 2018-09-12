@@ -1,54 +1,79 @@
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Subject: Re: [PATCH -next] staging: mt7621-pci: Use PTR_ERR_OR_ZERO in
- mt7621_pcie_parse_dt()
-Date: Wed, 12 Sep 2018 07:35:50 +0200
-Message-ID: <20180912053550.GA17293@foobar>
-References: <1536720608-106123-1-git-send-email-yuehaibing@huawei.com>
+From: Stu Hsieh <stu.hsieh@mediatek.com>
+Subject: [PATCH v1 1/1] drm/mediatek: add function to match the connector and
+ crtc
+Date: Wed, 12 Sep 2018 14:02:50 +0800
+Message-ID: <1536732170-30046-2-git-send-email-stu.hsieh@mediatek.com>
+References: <1536732170-30046-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1536720608-106123-1-git-send-email-yuehaibing@huawei.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: YueHaibing <yuehaibing@huawei.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, matthias.bgg@gmail.com, blogic@openwrt.org, neil@brown.name, peter.vernia@gmail.com, oliver.huebers@web.de, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1536732170-30046-1-git-send-email-stu.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 12, 2018 at 02:50:08AM +0000, YueHaibing wrote:
-> Use PTR_ERR_OR_ZERO rather than if(IS_ERR(...)) + PTR_ERR
-> 
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-> ---
->  drivers/staging/mt7621-pci/pci-mt7621.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
-> index ba1f117..d2cb910 100644
-> --- a/drivers/staging/mt7621-pci/pci-mt7621.c
-> +++ b/drivers/staging/mt7621-pci/pci-mt7621.c
-> @@ -396,10 +396,7 @@ static int mt7621_pcie_parse_dt(struct mt7621_pcie *pcie)
->  	}
->  
->  	pcie->base = devm_ioremap_resource(dev, &regs);
-> -	if (IS_ERR(pcie->base))
-> -		return PTR_ERR(pcie->base);
-> -
-> -	return 0;
-> +	return PTR_ERR_OR_ZERO(pcie->base);
->  }
-
-This patch looks good but the 'mt7621_pcie_parse_dt' function is not completed at all.
-There is a lot of missing for each pci node to be parsed yet and some patch series which
-are doing this have not been tested yet so those patches are not included.
-
-Please see: 
-    http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2018-September/125937.html
-
-Best regards,
-    Sergio Paracuellos
-
->  
->  static int mt7621_pcie_request_resources(struct mt7621_pcie *pcie,
-> 
-> 
-> 
+VGhpcyBwYXRjaCBhZGQgZnVuY3Rpb24gdG8gbWF0Y2ggdGhlIGNvbm5lY3RvciBhbmQgY3J0YwoK
+QmVjYXVzZSB0aGUgY29ubmVjdG9yIHNldCB0aGUgcG9zc2libGVfY3J0YyB0byBtYXRjaCB0aGUg
+Y3J0Yy4KClRoaXMgZnVuY3Rpb24gd291bGQgc2VhcmNoIHRoZSBjb25uZWN0b3IgaW4gZXZlcnkg
+ZGRwIHBhdGggYW5kCnJldHVybiB0aGUgY29ycmVzcG9uZGluZyB2YWx1ZSBmb3IgcG9zc2libGVf
+Y3J0Yy4KCkNoYW5nZS1JZDogSWQ1MWRlNTNiOTUwMzlmODE3NDQ2MmQ0ODNlYjliZmVlMzFiM2I5
+M2IKU2lnbmVkLW9mZi1ieTogU3R1IEhzaWVoIDxzdHUuaHNpZWhAbWVkaWF0ZWsuY29tPgotLS0K
+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgfCA0MSArKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
+ZGRwX2NvbXAuaCB8ICAyICsrCiAyIGZpbGVzIGNoYW5nZWQsIDQzIGluc2VydGlvbnMoKykKCmRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jIGIv
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwppbmRleCBmZjk3NGQ4
+MmE0YTYuLjFmNzM0YjgwNmEwMCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kcm1fZGRwX2NvbXAuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9kZHBfY29tcC5jCkBAIC0yNDUsNiArMjQ1LDIyIEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRr
+X2RkcF9jb21wX21hdGNoIG10a19kZHBfbWF0Y2hlc1tERFBfQ09NUE9ORU5UX0lEX01BWF0gPSB7
+CiAJW0REUF9DT01QT05FTlRfV0RNQTFdCT0geyBNVEtfRElTUF9XRE1BLAkxLCBOVUxMIH0sCiB9
+OwogCitzdGF0aWMgYm9vbCBtdGtfZHJtX2ZpbmRfY29tcF9pbl9kZHAoc3RydWN0IG10a19kZHBf
+Y29tcCBkZHBfY29tcCwKKwkJCQkgICAgIGNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkICpwYXRo
+LAorCQkJCSAgICAgdW5zaWduZWQgaW50IHBhdGhfbGVuKQoreworCWludCBpOworCisJaWYgKCFw
+YXRoKQorCQlyZXR1cm4gZmFsc2U7CisKKwlmb3IgKGkgPSAwOyBpIDwgcGF0aF9sZW47IGkrKykK
+KwkJaWYgKGRkcF9jb21wLmlkID09IHBhdGhbaV0pCisJCQlyZXR1cm4gdHJ1ZTsKKworCXJldHVy
+biBmYWxzZTsKK30KKwogaW50IG10a19kZHBfY29tcF9nZXRfaWQoc3RydWN0IGRldmljZV9ub2Rl
+ICpub2RlLAogCQkJZW51bSBtdGtfZGRwX2NvbXBfdHlwZSBjb21wX3R5cGUpCiB7CkBAIC0yNjAs
+NiArMjc2LDMxIEBAIGludCBtdGtfZGRwX2NvbXBfZ2V0X2lkKHN0cnVjdCBkZXZpY2Vfbm9kZSAq
+bm9kZSwKIAlyZXR1cm4gLUVJTlZBTDsKIH0KIAordW5zaWduZWQgaW50IG10a19kcm1fZmluZF9w
+b3NzaWJsZV9jcnRjX2J5X2NvbXAoc3RydWN0IGRybV9kZXZpY2UgKmRybSwKKwkJCQkJCXN0cnVj
+dCBtdGtfZGRwX2NvbXAgZGRwX2NvbXApCit7CisJc3RydWN0IG10a19kcm1fcHJpdmF0ZSAqcHJp
+dmF0ZSA9IGRybS0+ZGV2X3ByaXZhdGU7CisJdW5zaWduZWQgaW50IHJldDsKKworCWlmIChtdGtf
+ZHJtX2ZpbmRfY29tcF9pbl9kZHAoZGRwX2NvbXAsIHByaXZhdGUtPmRhdGEtPm1haW5fcGF0aCwK
+KwkJCQkgICAgIHByaXZhdGUtPmRhdGEtPm1haW5fbGVuKSA9PSB0cnVlKSB7CisJCXJldCA9IEJJ
+VCgwKTsKKwl9IGVsc2UgaWYgKG10a19kcm1fZmluZF9jb21wX2luX2RkcChkZHBfY29tcCwKKwkJ
+CQkJICAgIHByaXZhdGUtPmRhdGEtPmV4dF9wYXRoLAorCQkJCQkgICAgcHJpdmF0ZS0+ZGF0YS0+
+ZXh0X2xlbikgPT0gdHJ1ZSkgeworCQlyZXQgPSBCSVQoMSk7CisJfSBlbHNlIGlmIChtdGtfZHJt
+X2ZpbmRfY29tcF9pbl9kZHAoZGRwX2NvbXAsCisJCQkJCSAgICBwcml2YXRlLT5kYXRhLT50aGly
+ZF9wYXRoLAorCQkJCQkgICAgcHJpdmF0ZS0+ZGF0YS0+dGhpcmRfbGVuKSA9PSB0cnVlKSB7CisJ
+CXJldCA9IEJJVCgyKTsKKwl9IGVsc2UgeworCQlEUk1fSU5GTygiRmFpbGVkIHRvIGZpbmQgY29t
+cCBpbiBkZHAgdGFibGVcbiIpOworCQlyZXQgPSAwOworCX0KKworCXJldHVybiByZXQ7Cit9CisK
+IGludCBtdGtfZGRwX2NvbXBfaW5pdChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2Vf
+bm9kZSAqbm9kZSwKIAkJICAgICAgc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgZW51bSBtdGtf
+ZGRwX2NvbXBfaWQgY29tcF9pZCwKIAkJICAgICAgY29uc3Qgc3RydWN0IG10a19kZHBfY29tcF9m
+dW5jcyAqZnVuY3MpCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9kZHBfY29tcC5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAu
+aAppbmRleCA4Mzk5MjI5ZTZhZDIuLmY4ODJlNjkwODhiOCAxMDA2NDQKLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaAorKysgYi9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oCkBAIC0xNjYsNiArMTY2LDggQEAgc3RhdGljIGlu
+bGluZSB2b2lkIG10a19kZHBfZ2FtbWFfc2V0KHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAsCiAJ
+CWNvbXAtPmZ1bmNzLT5nYW1tYV9zZXQoY29tcCwgc3RhdGUpOwogfQogCit1bnNpZ25lZCBpbnQg
+bXRrX2RybV9maW5kX3Bvc3NpYmxlX2NydGNfYnlfY29tcChzdHJ1Y3QgZHJtX2RldmljZSAqZHJt
+LAorCQkJCQkJc3RydWN0IG10a19kZHBfY29tcCBkZHBfY29tcCk7CiBpbnQgbXRrX2RkcF9jb21w
+X2dldF9pZChzdHJ1Y3QgZGV2aWNlX25vZGUgKm5vZGUsCiAJCQllbnVtIG10a19kZHBfY29tcF90
+eXBlIGNvbXBfdHlwZSk7CiBpbnQgbXRrX2RkcF9jb21wX2luaXQoc3RydWN0IGRldmljZSAqZGV2
+LCBzdHJ1Y3QgZGV2aWNlX25vZGUgKmNvbXBfbm9kZSwKLS0gCjIuMTIuNS4yLmdiZGYyM2FiCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
