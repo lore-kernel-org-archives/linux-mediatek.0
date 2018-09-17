@@ -1,63 +1,45 @@
-From: YueHaibing <yuehaibing@huawei.com>
-Subject: Re: [PATCH v2] ARM: dma-mapping: always clear allocated buffers
-Date: Sat, 15 Sep 2018 19:29:20 +0800
-Message-ID: <dd77bd05-074b-c331-7ce5-30f78c75d3c3@huawei.com>
-References: <20180725070706.19576-1-yuehaibing@huawei.com>
+From: Leilk Liu <leilk.liu@mediatek.com>
+Subject: [PATCH v3 0/3] Add Mediatek SPI slave driver
+Date: Mon, 17 Sep 2018 10:19:19 +0800
+Message-ID: <1537150762-7072-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180725070706.19576-1-yuehaibing@huawei.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux@armlinux.org.uk, matthias.bgg@gmail.com, vladimir.murzin@arm.com
-Cc: zhongjiang@huawei.com, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, Christoph Hellwig <hch@infradead.org>, linux-mediatek@lists.infradead.org, iamjoonsoo.kim@lge.com, treding@nvidia.com, robin.murphy@arm.com, akpm@linux-foundation.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
+>From 82bced99683343899dea4634452940b15d6374eb Mon Sep 17 00:00:00 2001
+From: Leilk Liu <leilk.liu@mediatek.com>
+Date: Mon, 17 Sep 2018 10:07:45 +0800
+Subject: [PATCH v3 0/3] Add Mediatek SPI slave driver
 
-Ping.
+v3:
+1. Fix Rob Herring review comment about bindings.
+2. remove unused variables in driver.
 
-On 2018/7/25 15:07, YueHaibing wrote:
-> Sean Wang reported dma_zalloc_coherent doesn't work as expect on his
-> armv7,the allocated mem is not zeroed.The reason is __alloc_from_pool
-> doesn't honor __GFP_ZERO.
-> 
-> As commit 6829e274a623 ("arm64: dma-mapping: always clear allocated buffers")
-> has pointed out,buffers allocated by dma_alloc_coherent() are always zeroed
-> on most architectures. some drivers rely on this 'feature'. Allocated buffer
-> might be also exposed to userspace with dma_mmap() call,so clearing it is
-> desired from security point of view to avoid exposing random memory to userspace.
-> 
-> This patch unifies dma_alloc_coherent() behavior on ARM architecture with other
-> implementations by unconditionally zeroing allocated buffer.Also to fix
-> dma_zalloc_coherent behavior.
-> 
-> Reported-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-> Reviewed-by: zhong jiang <zhongjiang@huawei.com>
-> ---
-> v2: reference more argument from arm64 commit as Christoph suggested
-> ---
->  arch/arm/mm/dma-mapping.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/arch/arm/mm/dma-mapping.c b/arch/arm/mm/dma-mapping.c
-> index 6656647..cf5882f 100644
-> --- a/arch/arm/mm/dma-mapping.c
-> +++ b/arch/arm/mm/dma-mapping.c
-> @@ -564,6 +564,7 @@ static void *__alloc_from_pool(size_t size, struct page **ret_page)
->  
->  		*ret_page = phys_to_page(phys);
->  		ptr = (void *)val;
-> +		memset(ptr, 0, size);
->  	}
->  
->  	return ptr;
-> 
+v2:
+1. Fix Sean Wang review comment.
+2. remove unused register and offset define.
+3. update bindings file with assigned-clocks and assigned-clocks-parents.
+
+v1:
+This series are based on 4.19-rc1 and provide three patches to add mediatek spi slave driver.
+
+Leilk Liu (3):
+  spis: mediatek: add bindings for Mediatek MT2712 soc platform
+  spis: mediatek: add spi slave for Mediatek MT2712
+  arm64: dts: Add spi slave dts
+
+ .../devicetree/bindings/spi/spi-slave-mt27xx.txt   |  32 ++
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi          |  11 +
+ drivers/spi/Kconfig                                |   8 +
+ drivers/spi/Makefile                               |   1 +
+ drivers/spi/spi-slave-mt27xx.c                     | 553 +++++++++++++++++++++
+ 5 files changed, 605 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
+ create mode 100644 drivers/spi/spi-slave-mt27xx.c
+
+-- 
+1.9.1
