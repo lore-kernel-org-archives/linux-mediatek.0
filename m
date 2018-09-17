@@ -1,88 +1,77 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [PATCH 1/2] dt-binding: mediatek: Add binding document for
- MediaTek GMAC
-Date: Mon, 17 Sep 2018 11:33:22 +0300
-Message-ID: <fb327132-0830-9df0-434e-06bb0033bac4@cogentembedded.com>
-References: <1537165763-13112-1-git-send-email-biao.huang@mediatek.com>
- <1537165763-13112-2-git-send-email-biao.huang@mediatek.com>
+From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH] [media] VPU: mediatek: don't pass an unused parameter
+Date: Mon, 17 Sep 2018 16:56:22 +0300
+Message-ID: <20180917135622.GA23073@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1537165763-13112-2-git-send-email-biao.huang@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Biao Huang <biao.huang@mediatek.com>, davem@davemloft.net, robh+dt@kernel.org
-Cc: honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, sean.wang@mediatek.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Houlong Wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 9/17/2018 9:29 AM, Biao Huang wrote:
+The load_requested_vpu() function returns a freed vpu_fw pointer.  It's
+not used so it doesn't cause any problems, but Smatch complains about
+it:
 
-> The commit adds the device tree binding documentation for the MediaTek
-> GMAC found on Mediatek MT2712.
-> 
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> ---
->   .../devicetree/bindings/net/mediatek-gmac.txt      |   45 ++++++++++++++++++++
->   1 file changed, 45 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/net/mediatek-gmac.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/net/mediatek-gmac.txt b/Documentation/devicetree/bindings/net/mediatek-gmac.txt
-> new file mode 100644
-> index 0000000..14876ed
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/mediatek-gmac.txt
-> @@ -0,0 +1,45 @@
-> +MediaTek Gigabit Ethernet controller
-> +=========================================
-> +
-> +The gigabit ethernet controller can be found on MediaTek SoCs.
-> +
-> +* Ethernet controller node
-> +
-> +Required properties:
-> +- compatible: Should be
-> +	"mediatek,mt2712-eth": for MT2712 SoC
-> +- reg: Address and length of the register set for the device
-> +- interrupts: Should contain the MAC interrupts
-> +- interrupt-names: the name of interrupt in the interrupts property. These are
-> +	"macirq": For MT2712 SoC
-> +- clocks: the clock used by the controller
-> +- clock-names: the names of the clock listed in the clocks property. These are
-> +	"axi", "apb", "mac_ext", "ptp", "ptp_parent", "ptp_top": For MT2712 SoC
-> +- mac-address: See ethernet.txt in the same directory
-> +- power-domains: phandle to the power domain that the ethernet is part of
+    drivers/media/platform/mtk-vpu/mtk_vpu.c:578 vpu_load_firmware()
+    warn: passing freed memory 'vpu_fw'
 
-    This (required) prop is absent in your example.
+We can clean up the code a bit and silence the static checker warning
+by not passing the parameter at all.
 
-> +- phy-mode: See ethernet.txt file in the same directory.
-> +- reset-gpio: gpio number for phy reset.
-> +
-> +Example:
-> +
-> +eth: eth@1101c000 {
+Signed-off-by: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
 
-eth: ethernet@1101c000 {
-
-> +		compatible = "mediatek,mt2712-eth";
-> +		reg = <0 0x1101c000 0 0x1200>;
-> +		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
-> +		interrupt-names = "macirq";
-> +		phy-mode ="rgmii";
-> +		mac-address = [00 55 7b b5 7d f7];
-> +		clock-names = "axi",
-> +			      "apb",
-> +			      "mac_ext",
-> +			      "ptp",
-> +			      "ptp_parent",
-> +			      "ptp_top";
-> +		clocks = <&pericfg CLK_PERI_GMAC>,
-> +			 <&pericfg CLK_PERI_GMAC_PCLK>,
-> +			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
-> +			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
-> +			 <&topckgen CLK_TOP_APLL1_D3>,
-> +			 <&topckgen CLK_TOP_APLL1>;
-> +		reset-gpio = <&pio 87 GPIO_ACTIVE_HIGH>;
-> +	};
-
-MBR, Sergei
+diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+index f8d35e3ac1dc..616f78b24a79 100644
+--- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
++++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+@@ -480,12 +480,12 @@ EXPORT_SYMBOL_GPL(vpu_get_plat_device);
+ 
+ /* load vpu program/data memory */
+ static int load_requested_vpu(struct mtk_vpu *vpu,
+-			      const struct firmware *vpu_fw,
+ 			      u8 fw_type)
+ {
+ 	size_t tcm_size = fw_type ? VPU_DTCM_SIZE : VPU_PTCM_SIZE;
+ 	size_t fw_size = fw_type ? VPU_D_FW_SIZE : VPU_P_FW_SIZE;
+ 	char *fw_name = fw_type ? VPU_D_FW : VPU_P_FW;
++	const struct firmware *vpu_fw;
+ 	size_t dl_size = 0;
+ 	size_t extra_fw_size = 0;
+ 	void *dest;
+@@ -539,7 +539,6 @@ int vpu_load_firmware(struct platform_device *pdev)
+ 	struct mtk_vpu *vpu;
+ 	struct device *dev = &pdev->dev;
+ 	struct vpu_run *run;
+-	const struct firmware *vpu_fw = NULL;
+ 	int ret;
+ 
+ 	if (!pdev) {
+@@ -568,14 +567,14 @@ int vpu_load_firmware(struct platform_device *pdev)
+ 	run->signaled = false;
+ 	dev_dbg(vpu->dev, "firmware request\n");
+ 	/* Downloading program firmware to device*/
+-	ret = load_requested_vpu(vpu, vpu_fw, P_FW);
++	ret = load_requested_vpu(vpu, P_FW);
+ 	if (ret < 0) {
+ 		dev_err(dev, "Failed to request %s, %d\n", VPU_P_FW, ret);
+ 		goto OUT_LOAD_FW;
+ 	}
+ 
+ 	/* Downloading data firmware to device */
+-	ret = load_requested_vpu(vpu, vpu_fw, D_FW);
++	ret = load_requested_vpu(vpu, D_FW);
+ 	if (ret < 0) {
+ 		dev_err(dev, "Failed to request %s, %d\n", VPU_D_FW, ret);
+ 		goto OUT_LOAD_FW;
