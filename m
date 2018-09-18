@@ -1,49 +1,28 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH] PCI: mediatek: Fix unchecked return value
-Date: Tue, 18 Sep 2018 11:46:29 +0100
-Message-ID: <20180918104629.GC26886@e107981-ln.cambridge.arm.com>
-References: <20180720150158.GA10922@embeddedor.com>
+From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH] mt76x0: run vco calibration for each channel
+ configuration
+Date: Tue, 18 Sep 2018 13:43:57 +0200
+Message-ID: <20180918114356.GB15285@redhat.com>
+References: <20180907211312.17918-1-lorenzo.bianconi@redhat.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <20180720150158.GA10922@embeddedor.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20180907211312.17918-1-lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: nbd-Vt+b4OUoWG0@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jul 20, 2018 at 10:01:58AM -0500, Gustavo A. R. Silva wrote:
-> Check return value of devm_pci_remap_iospace.
+On Fri, Sep 07, 2018 at 11:13:12PM +0200, Lorenzo Bianconi wrote:
+> According to vendor sdk, vco calibration has to be executed
+> for each channel configuration whereas mcu calibration has to be
+> performed during channel scanning. This patch fixes the mt76x0
+> monitor mode issue since in that configuration vco calibration
+> was never executed
 > 
-> Notice that, currently, all instances of devm_pci_remap_iospace
-> are being checked.
-> 
-> Addresses-Coverity-ID: 1471965 ("Unchecked return value")
-> Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
-> ---
->  drivers/pci/controller/pcie-mediatek.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+> Fixes: 10de7a8b4ab9 ("mt76x0: phy files")
+> Tested-by: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 
-Applied to pci/mediatek for v4.20, thanks.
-
-Lorenzo
-
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 861dda6..1477939 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -1109,7 +1109,9 @@ static int mtk_pcie_request_resources(struct mtk_pcie *pcie)
->  	if (err < 0)
->  		return err;
->  
-> -	devm_pci_remap_iospace(dev, &pcie->pio, pcie->io.start);
-> +	err = devm_pci_remap_iospace(dev, &pcie->pio, pcie->io.start);
-> +	if (err)
-> +		return err;
->  
->  	return 0;
->  }
-> -- 
-> 2.7.4
-> 
+Acked-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
