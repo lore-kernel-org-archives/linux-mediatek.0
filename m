@@ -1,50 +1,78 @@
-From: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] mt76x0: run vco calibration for each channel configuration
-Date: Tue, 18 Sep 2018 10:26:09 -0400
-Message-ID: <CAM0KTbAPHPK04SntA9UL0rGaaNjTy=E2hRoO7xiRkbMcq9b7Sw@mail.gmail.com>
-References: <20180907211312.17918-1-lorenzo.bianconi@redhat.com>
- <20180918114356.GB15285@redhat.com> <20180918120234.GD15285@redhat.com> <871s9r2d3g.fsf@kamboji.qca.qualcomm.com>
+From: Jose Abreu <Jose.Abreu@synopsys.com>
+Subject: Re: [PATCH 0/2] add Ethernet driver support for mt2712
+Date: Tue, 18 Sep 2018 16:47:49 +0100
+Message-ID: <ff1ddad8-8f27-2e10-1b3e-09d17915779e@synopsys.com>
+References: <1537165763-13112-1-git-send-email-biao.huang@mediatek.com>
+ <20180917152441.GD5458@lunn.ch>
+ <a8c0a091-6bee-6504-04cd-36e214e805aa@synopsys.com>
+ <1537241087.7058.6.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <871s9r2d3g.fsf-HodKDYzPHsUD5k0oWYwrnHL1okKdlPRT@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1537241087.7058.6.camel@mhfsdcap03>
+Sender: linux-kernel-owner@vger.kernel.org
+To: biao huang <biao.huang@mediatek.com>, Jose Abreu <Jose.Abreu@synopsys.com>, Andrew Lunn <andrew@lunn.ch>
+Cc: peppe.cavallaro@st.com, alexandre.torgue@st.com, davem@davemloft.net, robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, sean.wang@mediatek.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-mt76x0 isn't in 4.18 at all, it's being added in 4.19 isn't it?  I'm
-not sure you can call it a regression, but adding a new driver with a
-known bug that breaks an entire use case (monitor mode) seems silly
-when a small and tested fix is available.  Pretty please.
+Hi Biao,
 
-Thanks,
-Zero
-On Tue, Sep 18, 2018 at 8:43 AM Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org> wrote:
+On 18-09-2018 04:24, biao huang wrote:
+> Hi Jose, Andrew,
+> 	Thanks for your comments.
+> 	Synopsys ip version in mt2712 is 4.21a, and followed ic will use 5.10a.
+> it seems GMAC4+ is a good choice. I'll try to  extend STMMAC to support
+> mt2712.
+> 	Any tips about extend STMMAC? or anythings I should pay attention to?
+
+STMMAC already supports 4.21a and 5.10a. You only have to make
+sure that your regbank and descriptors matches.
+
+Thanks and Best Regards,
+Jose Miguel Abreu
+
+> 	
+> On Mon, 2018-09-17 at 17:18 +0100, Jose Abreu wrote:
+>> Hi Andrew, Biao,
+>>
+>> On 17-09-2018 16:24, Andrew Lunn wrote:
+>>> On Mon, Sep 17, 2018 at 02:29:21PM +0800, Biao Huang wrote:
+>>>
+>>> Adding in the STMMAC driver maintainers.
+>>>
+>>>> Ethernet in mt2712 is totally different from that in
+>>>> drivers/net/ethernet/mediatek/*, so we add new folder for mt2712 SoC.
+>>>>
+>>>> The mt2712 Ethernet IP is from Synopsys, and we notice that there is a
+>>>> reference driver in drivers/net/ethernet/synopsys/*. But
+>>>> 1. our version is only for 10/100/1000Mbps, not for 2.5/4/5Gbps.
+>>>> mt2712 Ethernet design is differnet from that in synopsys folder in many
+>>>> aspects, and some key features are not included in mt2712, such as rss
+>>>> and split header. At the same time, some features we need have not been
+>>>> implenmented in synopsys folder.
+>>> In general, we don't have two very similar drivers. We try to have one
+>>> driver. If the problem was just missing features in the stmmac driver,
+>>> you can add them. I doubt not supporting 2.5/4/5Gbps in your silicon
+>>> is an issue, since very few STMMAC devices have this. By split header,
+>>> do you mean support for TSO? That seems to be a gmac4 or newer
+>>> feature, but the driver supports not having tso support in hardware.
+>>>
+>>> Giuseppe, Alexandre, Jose: Please can you look at the proposed driver
+>>> and see how much it really differs from the STMMAC driver. 
+>> Thanks for the cc Andrew, indeed this looks very similar and the
+>> register bank matches, by what I've seen, GMAC 4+.
+>>
+>>> How easy
+>>> would it be to extend stmmac it to support the mt2712?
+>> Very easy, as I've just done with XGMAC2. If Biao wants to expand
+>> stmmac functionality I'm all in favor!
+>>
+>> Thanks and Best Regards,
+>> Jose Miguel Abreu
+>>
+>>> Thanks
+>>> 	Andrew
+> Best Regards!
+> Biao
 >
-> Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> writes:
->
-> > On Tue, Sep 18, 2018 at 01:43:56PM +0200, Stanislaw Gruszka wrote:
-> >> On Fri, Sep 07, 2018 at 11:13:12PM +0200, Lorenzo Bianconi wrote:
-> >> > According to vendor sdk, vco calibration has to be executed
-> >> > for each channel configuration whereas mcu calibration has to be
-> >> > performed during channel scanning. This patch fixes the mt76x0
-> >> > monitor mode issue since in that configuration vco calibration
-> >> > was never executed
-> >> >
-> >> > Fixes: 10de7a8b4ab9 ("mt76x0: phy files")
-> >> > Tested-by: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> >> > Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-> >>
-> >> Acked-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-> >
-> > For the record this is 4.19 material.
->
-> I really want to minimise conflicts and because of so many mt76 patches
-> conflicts are likely to happen, so I'm keeping the bar high for mt76
-> patches going 4.19. Is this a regression from 4.18? If not, I think this
-> should go to -next and cc stable. And besides, monitor mode isn't that
-> critical anyway.
->
-> --
-> Kalle Valo
