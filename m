@@ -1,93 +1,157 @@
-From: biao huang <biao.huang@mediatek.com>
-Subject: Re: [PATCH 1/2] dt-binding: mediatek: Add binding document for
- MediaTek GMAC
-Date: Tue, 18 Sep 2018 09:14:19 +0800
-Message-ID: <1537233259.12247.3.camel@mhfsdcap03>
-References: <1537165763-13112-1-git-send-email-biao.huang@mediatek.com>
-         <1537165763-13112-2-git-send-email-biao.huang@mediatek.com>
-         <fb327132-0830-9df0-434e-06bb0033bac4@cogentembedded.com>
+From: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: mt76x0 bug report
+Date: Mon, 17 Sep 2018 23:18:57 -0400
+Message-ID: <CAM0KTbA0QE-5oTz-aeU9zmnCS-LrYZmHwmEv0afjR0yFWvTevA@mail.gmail.com>
+References: <CAM0KTbBJuhuEyuZB_z_BcDSeXa-CJ+NwupssS2jLx0pJ0KXQGQ@mail.gmail.com>
+ <CAJ0CqmWAqdB8Og7fabLDeZnzFO5Aw5Qd0cYGaLrs7Ls-zM_yQw@mail.gmail.com>
+ <CAM0KTbAbjDYNOzivxMdLmYrV9QHgwkLp7zXpdCvn1Kf1uEcQTQ@mail.gmail.com>
+ <20180906093213.GB16539@redhat.com> <CAM0KTbBRGqNAu1H0myVoWg6Qu1aMXMneSJ7bXQUKbJGZUFkC_A@mail.gmail.com>
+ <CAJ0CqmXHHE2J5O4irPogrypL_H95EDm2y+1_6rpWG1v3ZHxzXA@mail.gmail.com>
+ <CAM0KTbAF_ztZzFk_iECyPbiWY69xrcdT_93ypnuTzocjX_fRuQ@mail.gmail.com>
+ <20180907082413.GC2725@localhost.localdomain> <CAM0KTbAputKNN3seOfN-1zhz5XmT6yg_pbKBnapOsR6Vigv1XQ@mail.gmail.com>
+ <CAM0KTbAu-LJ2ThAHbmbrggMw_ttpQ8fXr0+HTjGBZF6PBPiD8Q@mail.gmail.com>
+ <CAJ0CqmUDT44W7sb4qpmt6mPDZ5LwUDPgKCrhor_8POWpx_RaQA@mail.gmail.com> <CAM0KTbDb4X7JZgYZa6-NmjD72_UHOqQ43Czv=HwWS3D0WcWrgQ@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <fb327132-0830-9df0-434e-06bb0033bac4@cogentembedded.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Cc: davem@davemloft.net, robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, sean.wang@mediatek.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAM0KTbDb4X7JZgYZa6-NmjD72_UHOqQ43Czv=HwWS3D0WcWrgQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dcaratti-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-09-17 at 11:33 +0300, Sergei Shtylyov wrote:
-> On 9/17/2018 9:29 AM, Biao Huang wrote:
-> 
-> > The commit adds the device tree binding documentation for the MediaTek
-> > GMAC found on Mediatek MT2712.
-> > 
-> > Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> > ---
-> >   .../devicetree/bindings/net/mediatek-gmac.txt      |   45 ++++++++++++++++++++
-> >   1 file changed, 45 insertions(+)
-> >   create mode 100644 Documentation/devicetree/bindings/net/mediatek-gmac.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/net/mediatek-gmac.txt b/Documentation/devicetree/bindings/net/mediatek-gmac.txt
-> > new file mode 100644
-> > index 0000000..14876ed
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/net/mediatek-gmac.txt
-> > @@ -0,0 +1,45 @@
-> > +MediaTek Gigabit Ethernet controller
-> > +=========================================
-> > +
-> > +The gigabit ethernet controller can be found on MediaTek SoCs.
-> > +
-> > +* Ethernet controller node
-> > +
-> > +Required properties:
-> > +- compatible: Should be
-> > +	"mediatek,mt2712-eth": for MT2712 SoC
-> > +- reg: Address and length of the register set for the device
-> > +- interrupts: Should contain the MAC interrupts
-> > +- interrupt-names: the name of interrupt in the interrupts property. These are
-> > +	"macirq": For MT2712 SoC
-> > +- clocks: the clock used by the controller
-> > +- clock-names: the names of the clock listed in the clocks property. These are
-> > +	"axi", "apb", "mac_ext", "ptp", "ptp_parent", "ptp_top": For MT2712 SoC
-> > +- mac-address: See ethernet.txt in the same directory
-> > +- power-domains: phandle to the power domain that the ethernet is part of
-> 
->     This (required) prop is absent in your example.
-thanks for your comments, power-domains is not a required property, and
-I'll modify this property in next version.
-> 
-> > +- phy-mode: See ethernet.txt file in the same directory.
-> > +- reset-gpio: gpio number for phy reset.
-> > +
-> > +Example:
-> > +
-> > +eth: eth@1101c000 {
-> 
-> eth: ethernet@1101c000 {
-> 
-> > +		compatible = "mediatek,mt2712-eth";
-> > +		reg = <0 0x1101c000 0 0x1200>;
-> > +		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
-> > +		interrupt-names = "macirq";
-> > +		phy-mode ="rgmii";
-> > +		mac-address = [00 55 7b b5 7d f7];
-> > +		clock-names = "axi",
-> > +			      "apb",
-> > +			      "mac_ext",
-> > +			      "ptp",
-> > +			      "ptp_parent",
-> > +			      "ptp_top";
-> > +		clocks = <&pericfg CLK_PERI_GMAC>,
-> > +			 <&pericfg CLK_PERI_GMAC_PCLK>,
-> > +			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
-> > +			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
-> > +			 <&topckgen CLK_TOP_APLL1_D3>,
-> > +			 <&topckgen CLK_TOP_APLL1>;
-> > +		reset-gpio = <&pio 87 GPIO_ACTIVE_HIGH>;
-> > +	};
-> 
-> MBR, Sergei
-Best Regards!
-Biao
+On Fri, Sep 14, 2018 at 11:51 AM Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>
+> On Fri, Sep 14, 2018 at 11:47 AM Lorenzo Bianconi
+> <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
+> >
+> > >
+> > > *bump*
+> > >
+> > > Been a few days, just a reminder that your monitor mode patch fixed
+> > > all channels below 144 but something appears incorrect in regdomain
+> > > handling as I cannot get channels 144 or higher working (my main AP
+> > > being on channel 149.  Again, this works on mt76x2u but not on mt76x0.
+> > > The patch I tested doesn't appear to have landed in wireless-testing
+> > > yet, so if you haven't, please do push that up.
+> >
+> > I have already sent the patch to linux-wireless ml
+> > https://patchwork.kernel.org/patch/10592597/
+>
+> Excellent, thank you.  Is someone working on the channel/regdomain
+> issue as well?
+> >
+> > >
+> > > Secondarily, ethtool still doesn't report firmware version and that
+> > > would be a very helpful thing to have before 4.19 hits.
+> > >
+> >
+> > +Davide Caratti
+>
+> Thanks, saw his message and will watch for it to test.
+> >
+> > > Additionally, with much less severity, t1u still thinks it is dual
+> > > band and I'm happy to run any command, test any patch, etc.  I
+> > > honestly don't care about this at all short term, but it does slow the
+> > > hardware down tuning to a bunch of channels which it cannot access so
+> > > long term it should probably be fixed in some way.
+> > >
+> >
+> > I am busy with other mt76 activities at the moment, I will look into
+> > it as soon as I have time
+>
+> Listed third and we seem to agree this is a "as time allows" task.
+
+Sorry to bump the one thing that we both agreed was low priority but....
+
+So was testing all of my dongles that use the driver you are working
+on, and running them through my connect scripts.  I moved the AP to
+maybe <5ft from the clients and something wierd happened.  The t1u
+tried to connect to one of the 2.4GHz only networks.  It failed, but
+it actually got enough scan data back to attempt authentication with a
+valid 2.4GHz only bssid.  Which means in short, that the eeprom isn't
+lying and your parsing of it is correct.  Something obviously makes
+this a 5GHz only device, as the connection failed and most of the time
+nothing at all is seen on 2.4GHz, but clearly it's some filter or
+antenna or some other mechanism which makes it 5GHz only.  So probably
+hardware lying to you is now even lower on your list since this safely
+rules out the driver parsing the eeprom incorrectly.
+
+Thanks,
+Zero
+>
+> Thanks for the prompt response.
+>
+> -Zero
+> >
+> > Regards,
+> > Lorenzo
+> >
+> > > Thanks again for all your hard work, watching the mailing list it is
+> > > obvious how much effort is going into this right now.
+> > >
+> > > -Zero
+> > > On Fri, Sep 7, 2018 at 3:55 PM Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> > > >
+> > > > On Fri, Sep 7, 2018 at 4:24 AM Lorenzo Bianconi
+> > > > <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
+> > > > >
+> > > > > > Actions like that have caused great problems in the past, as the
+> > > > > > kernel won't allow channel control of a monitor interface at all when
+> > > > > > there is a managed interface on the same phy (afaik).
+> > > > > >
+> > > > > > But just for fun and codepath testing here are two test scenarios:
+> > > > > >
+> > > > > > Test 1: "iwconfig t2u mode monitor"
+> > > > > > Sees nothing on any channel, no packets reported
+> > > > > >
+> > > > > > Test 2(requested test): "iw phy phy11 interface add t2uhmon type monitor"
+> > > > > > Sees nothing on any channel, no packets reported.
+> > > > > > Despite having a monitor and managed interface on the same phy,
+> > > > > > iwconfig is reporting that the channel is changing as requested.  So
+> > > > > > perhaps my above "afaik" comment is partially outdated.
+> > > > > >
+> > > > > > For both tests the interface was not used to connect to any ap prior
+> > > > > > to or during testing.
+> > > > > >
+> > > > >
+> > > > > Could you please try following patch?
+> > > >
+> > > > Excellent!  This seems to work for all channels up to 140, however,
+> > > > not 144 or above.  "iw list" shows these are supported but I cannot
+> > > > set them in monitor mode:
+> > > >
+> > > > * 5720 MHz [144] (22.0 dBm) (no IR, radar detection)
+> > > > * 5745 MHz [149] (22.0 dBm) (no IR)
+> > > > * 5765 MHz [153] (22.0 dBm) (no IR)
+> > > > * 5785 MHz [157] (22.0 dBm) (no IR)
+> > > > * 5805 MHz [161] (22.0 dBm) (no IR)
+> > > > * 5825 MHz [165] (22.0 dBm) (no IR)
+> > > >
+> > > > remote2 ~ # iw dev t2uhmon set channel 140
+> > > > remote2 ~ # iw dev t2uhmon set channel 144
+> > > > command failed: Invalid argument (-22)
+> > > >
+> > > > Thanks,
+> > > > Zero
+> > > >
+> > > > > Regards,
+> > > > >
+> > > > > Lorenzo
+> > > > >
+> > > > > --- a/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c
+> > > > > +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c
+> > > > > @@ -756,11 +756,10 @@ __mt76x0_phy_set_channel(struct mt76x0_dev *dev,
+> > > > >
+> > > > >         /* Vendor driver don't do it */
+> > > > >         /* mt76x0_phy_set_tx_power(dev, channel, rf_bw_band); */
+> > > > > +       mt76x0_vco_cal(dev, channel);
+> > > > >
+> > > > >         if (scan)
+> > > > > -               mt76x0_vco_cal(dev, channel);
+> > > > > -
+> > > > > -       mt76x0_mcu_calibrate(dev, MCU_CAL_RXDCOC, 1);
+> > > > > +               mt76x0_mcu_calibrate(dev, MCU_CAL_RXDCOC, 1);
+> > > > >         mt76x0_phy_set_chan_pwr(dev, channel);
+> > > > >
+> > > > >         dev->mt76.chandef = *chandef;
