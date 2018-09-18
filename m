@@ -1,58 +1,93 @@
-From: Jose Abreu <Jose.Abreu@synopsys.com>
-Subject: Re: [PATCH 0/2] add Ethernet driver support for mt2712
-Date: Mon, 17 Sep 2018 17:18:14 +0100
-Message-ID: <a8c0a091-6bee-6504-04cd-36e214e805aa@synopsys.com>
+From: biao huang <biao.huang@mediatek.com>
+Subject: Re: [PATCH 1/2] dt-binding: mediatek: Add binding document for
+ MediaTek GMAC
+Date: Tue, 18 Sep 2018 09:14:19 +0800
+Message-ID: <1537233259.12247.3.camel@mhfsdcap03>
 References: <1537165763-13112-1-git-send-email-biao.huang@mediatek.com>
- <20180917152441.GD5458@lunn.ch>
+         <1537165763-13112-2-git-send-email-biao.huang@mediatek.com>
+         <fb327132-0830-9df0-434e-06bb0033bac4@cogentembedded.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180917152441.GD5458@lunn.ch>
+In-Reply-To: <fb327132-0830-9df0-434e-06bb0033bac4@cogentembedded.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew Lunn <andrew@lunn.ch>, Biao Huang <biao.huang@mediatek.com>, peppe.cavallaro@st.com, alexandre.torgue@st.com, Jose.Abreu@synopsys.com
+To: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
 Cc: davem@davemloft.net, robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, sean.wang@mediatek.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Andrew, Biao,
-
-On 17-09-2018 16:24, Andrew Lunn wrote:
-> On Mon, Sep 17, 2018 at 02:29:21PM +0800, Biao Huang wrote:
->
-> Adding in the STMMAC driver maintainers.
->
->> Ethernet in mt2712 is totally different from that in
->> drivers/net/ethernet/mediatek/*, so we add new folder for mt2712 SoC.
->>
->> The mt2712 Ethernet IP is from Synopsys, and we notice that there is a
->> reference driver in drivers/net/ethernet/synopsys/*. But
->> 1. our version is only for 10/100/1000Mbps, not for 2.5/4/5Gbps.
->> mt2712 Ethernet design is differnet from that in synopsys folder in many
->> aspects, and some key features are not included in mt2712, such as rss
->> and split header. At the same time, some features we need have not been
->> implenmented in synopsys folder.
-> In general, we don't have two very similar drivers. We try to have one
-> driver. If the problem was just missing features in the stmmac driver,
-> you can add them. I doubt not supporting 2.5/4/5Gbps in your silicon
-> is an issue, since very few STMMAC devices have this. By split header,
-> do you mean support for TSO? That seems to be a gmac4 or newer
-> feature, but the driver supports not having tso support in hardware.
->
-> Giuseppe, Alexandre, Jose: Please can you look at the proposed driver
-> and see how much it really differs from the STMMAC driver. 
-
-Thanks for the cc Andrew, indeed this looks very similar and the
-register bank matches, by what I've seen, GMAC 4+.
-
-> How easy
-> would it be to extend stmmac it to support the mt2712?
-
-Very easy, as I've just done with XGMAC2. If Biao wants to expand
-stmmac functionality I'm all in favor!
-
-Thanks and Best Regards,
-Jose Miguel Abreu
-
->
-> Thanks
-> 	Andrew
+On Mon, 2018-09-17 at 11:33 +0300, Sergei Shtylyov wrote:
+> On 9/17/2018 9:29 AM, Biao Huang wrote:
+> 
+> > The commit adds the device tree binding documentation for the MediaTek
+> > GMAC found on Mediatek MT2712.
+> > 
+> > Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> > ---
+> >   .../devicetree/bindings/net/mediatek-gmac.txt      |   45 ++++++++++++++++++++
+> >   1 file changed, 45 insertions(+)
+> >   create mode 100644 Documentation/devicetree/bindings/net/mediatek-gmac.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/net/mediatek-gmac.txt b/Documentation/devicetree/bindings/net/mediatek-gmac.txt
+> > new file mode 100644
+> > index 0000000..14876ed
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/net/mediatek-gmac.txt
+> > @@ -0,0 +1,45 @@
+> > +MediaTek Gigabit Ethernet controller
+> > +=========================================
+> > +
+> > +The gigabit ethernet controller can be found on MediaTek SoCs.
+> > +
+> > +* Ethernet controller node
+> > +
+> > +Required properties:
+> > +- compatible: Should be
+> > +	"mediatek,mt2712-eth": for MT2712 SoC
+> > +- reg: Address and length of the register set for the device
+> > +- interrupts: Should contain the MAC interrupts
+> > +- interrupt-names: the name of interrupt in the interrupts property. These are
+> > +	"macirq": For MT2712 SoC
+> > +- clocks: the clock used by the controller
+> > +- clock-names: the names of the clock listed in the clocks property. These are
+> > +	"axi", "apb", "mac_ext", "ptp", "ptp_parent", "ptp_top": For MT2712 SoC
+> > +- mac-address: See ethernet.txt in the same directory
+> > +- power-domains: phandle to the power domain that the ethernet is part of
+> 
+>     This (required) prop is absent in your example.
+thanks for your comments, power-domains is not a required property, and
+I'll modify this property in next version.
+> 
+> > +- phy-mode: See ethernet.txt file in the same directory.
+> > +- reset-gpio: gpio number for phy reset.
+> > +
+> > +Example:
+> > +
+> > +eth: eth@1101c000 {
+> 
+> eth: ethernet@1101c000 {
+> 
+> > +		compatible = "mediatek,mt2712-eth";
+> > +		reg = <0 0x1101c000 0 0x1200>;
+> > +		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
+> > +		interrupt-names = "macirq";
+> > +		phy-mode ="rgmii";
+> > +		mac-address = [00 55 7b b5 7d f7];
+> > +		clock-names = "axi",
+> > +			      "apb",
+> > +			      "mac_ext",
+> > +			      "ptp",
+> > +			      "ptp_parent",
+> > +			      "ptp_top";
+> > +		clocks = <&pericfg CLK_PERI_GMAC>,
+> > +			 <&pericfg CLK_PERI_GMAC_PCLK>,
+> > +			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
+> > +			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
+> > +			 <&topckgen CLK_TOP_APLL1_D3>,
+> > +			 <&topckgen CLK_TOP_APLL1>;
+> > +		reset-gpio = <&pio 87 GPIO_ACTIVE_HIGH>;
+> > +	};
+> 
+> MBR, Sergei
+Best Regards!
+Biao
