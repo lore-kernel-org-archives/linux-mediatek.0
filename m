@@ -1,157 +1,70 @@
-From: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: mt76x0 bug report
-Date: Mon, 17 Sep 2018 23:18:57 -0400
-Message-ID: <CAM0KTbA0QE-5oTz-aeU9zmnCS-LrYZmHwmEv0afjR0yFWvTevA@mail.gmail.com>
-References: <CAM0KTbBJuhuEyuZB_z_BcDSeXa-CJ+NwupssS2jLx0pJ0KXQGQ@mail.gmail.com>
- <CAJ0CqmWAqdB8Og7fabLDeZnzFO5Aw5Qd0cYGaLrs7Ls-zM_yQw@mail.gmail.com>
- <CAM0KTbAbjDYNOzivxMdLmYrV9QHgwkLp7zXpdCvn1Kf1uEcQTQ@mail.gmail.com>
- <20180906093213.GB16539@redhat.com> <CAM0KTbBRGqNAu1H0myVoWg6Qu1aMXMneSJ7bXQUKbJGZUFkC_A@mail.gmail.com>
- <CAJ0CqmXHHE2J5O4irPogrypL_H95EDm2y+1_6rpWG1v3ZHxzXA@mail.gmail.com>
- <CAM0KTbAF_ztZzFk_iECyPbiWY69xrcdT_93ypnuTzocjX_fRuQ@mail.gmail.com>
- <20180907082413.GC2725@localhost.localdomain> <CAM0KTbAputKNN3seOfN-1zhz5XmT6yg_pbKBnapOsR6Vigv1XQ@mail.gmail.com>
- <CAM0KTbAu-LJ2ThAHbmbrggMw_ttpQ8fXr0+HTjGBZF6PBPiD8Q@mail.gmail.com>
- <CAJ0CqmUDT44W7sb4qpmt6mPDZ5LwUDPgKCrhor_8POWpx_RaQA@mail.gmail.com> <CAM0KTbDb4X7JZgYZa6-NmjD72_UHOqQ43Czv=HwWS3D0WcWrgQ@mail.gmail.com>
+From: biao huang <biao.huang@mediatek.com>
+Subject: Re: [PATCH 0/2] add Ethernet driver support for mt2712
+Date: Tue, 18 Sep 2018 11:24:47 +0800
+Message-ID: <1537241087.7058.6.camel@mhfsdcap03>
+References: <1537165763-13112-1-git-send-email-biao.huang@mediatek.com>
+         <20180917152441.GD5458@lunn.ch>
+         <a8c0a091-6bee-6504-04cd-36e214e805aa@synopsys.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAM0KTbDb4X7JZgYZa6-NmjD72_UHOqQ43Czv=HwWS3D0WcWrgQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dcaratti-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <a8c0a091-6bee-6504-04cd-36e214e805aa@synopsys.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jose Abreu <Jose.Abreu@synopsys.com>, Andrew Lunn <andrew@lunn.ch>
+Cc: peppe.cavallaro@st.com, alexandre.torgue@st.com, davem@davemloft.net, robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, sean.wang@mediatek.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Sep 14, 2018 at 11:51 AM Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
-> On Fri, Sep 14, 2018 at 11:47 AM Lorenzo Bianconi
-> <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
+Hi Jose, Andrew,
+	Thanks for your comments.
+	Synopsys ip version in mt2712 is 4.21a, and followed ic will use 5.10a.
+it seems GMAC4+ is a good choice. I'll try to  extend STMMAC to support
+mt2712.
+	Any tips about extend STMMAC? or anythings I should pay attention to?
+	
+On Mon, 2018-09-17 at 17:18 +0100, Jose Abreu wrote:
+> Hi Andrew, Biao,
+> 
+> On 17-09-2018 16:24, Andrew Lunn wrote:
+> > On Mon, Sep 17, 2018 at 02:29:21PM +0800, Biao Huang wrote:
 > >
-> > >
-> > > *bump*
-> > >
-> > > Been a few days, just a reminder that your monitor mode patch fixed
-> > > all channels below 144 but something appears incorrect in regdomain
-> > > handling as I cannot get channels 144 or higher working (my main AP
-> > > being on channel 149.  Again, this works on mt76x2u but not on mt76x0.
-> > > The patch I tested doesn't appear to have landed in wireless-testing
-> > > yet, so if you haven't, please do push that up.
+> > Adding in the STMMAC driver maintainers.
 > >
-> > I have already sent the patch to linux-wireless ml
-> > https://patchwork.kernel.org/patch/10592597/
->
-> Excellent, thank you.  Is someone working on the channel/regdomain
-> issue as well?
+> >> Ethernet in mt2712 is totally different from that in
+> >> drivers/net/ethernet/mediatek/*, so we add new folder for mt2712 SoC.
+> >>
+> >> The mt2712 Ethernet IP is from Synopsys, and we notice that there is a
+> >> reference driver in drivers/net/ethernet/synopsys/*. But
+> >> 1. our version is only for 10/100/1000Mbps, not for 2.5/4/5Gbps.
+> >> mt2712 Ethernet design is differnet from that in synopsys folder in many
+> >> aspects, and some key features are not included in mt2712, such as rss
+> >> and split header. At the same time, some features we need have not been
+> >> implenmented in synopsys folder.
+> > In general, we don't have two very similar drivers. We try to have one
+> > driver. If the problem was just missing features in the stmmac driver,
+> > you can add them. I doubt not supporting 2.5/4/5Gbps in your silicon
+> > is an issue, since very few STMMAC devices have this. By split header,
+> > do you mean support for TSO? That seems to be a gmac4 or newer
+> > feature, but the driver supports not having tso support in hardware.
 > >
-> > >
-> > > Secondarily, ethtool still doesn't report firmware version and that
-> > > would be a very helpful thing to have before 4.19 hits.
-> > >
+> > Giuseppe, Alexandre, Jose: Please can you look at the proposed driver
+> > and see how much it really differs from the STMMAC driver. 
+> 
+> Thanks for the cc Andrew, indeed this looks very similar and the
+> register bank matches, by what I've seen, GMAC 4+.
+> 
+> > How easy
+> > would it be to extend stmmac it to support the mt2712?
+> 
+> Very easy, as I've just done with XGMAC2. If Biao wants to expand
+> stmmac functionality I'm all in favor!
+> 
+> Thanks and Best Regards,
+> Jose Miguel Abreu
+> 
 > >
-> > +Davide Caratti
->
-> Thanks, saw his message and will watch for it to test.
-> >
-> > > Additionally, with much less severity, t1u still thinks it is dual
-> > > band and I'm happy to run any command, test any patch, etc.  I
-> > > honestly don't care about this at all short term, but it does slow the
-> > > hardware down tuning to a bunch of channels which it cannot access so
-> > > long term it should probably be fixed in some way.
-> > >
-> >
-> > I am busy with other mt76 activities at the moment, I will look into
-> > it as soon as I have time
->
-> Listed third and we seem to agree this is a "as time allows" task.
-
-Sorry to bump the one thing that we both agreed was low priority but....
-
-So was testing all of my dongles that use the driver you are working
-on, and running them through my connect scripts.  I moved the AP to
-maybe <5ft from the clients and something wierd happened.  The t1u
-tried to connect to one of the 2.4GHz only networks.  It failed, but
-it actually got enough scan data back to attempt authentication with a
-valid 2.4GHz only bssid.  Which means in short, that the eeprom isn't
-lying and your parsing of it is correct.  Something obviously makes
-this a 5GHz only device, as the connection failed and most of the time
-nothing at all is seen on 2.4GHz, but clearly it's some filter or
-antenna or some other mechanism which makes it 5GHz only.  So probably
-hardware lying to you is now even lower on your list since this safely
-rules out the driver parsing the eeprom incorrectly.
-
-Thanks,
-Zero
->
-> Thanks for the prompt response.
->
-> -Zero
-> >
-> > Regards,
-> > Lorenzo
-> >
-> > > Thanks again for all your hard work, watching the mailing list it is
-> > > obvious how much effort is going into this right now.
-> > >
-> > > -Zero
-> > > On Fri, Sep 7, 2018 at 3:55 PM Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> > > >
-> > > > On Fri, Sep 7, 2018 at 4:24 AM Lorenzo Bianconi
-> > > > <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
-> > > > >
-> > > > > > Actions like that have caused great problems in the past, as the
-> > > > > > kernel won't allow channel control of a monitor interface at all when
-> > > > > > there is a managed interface on the same phy (afaik).
-> > > > > >
-> > > > > > But just for fun and codepath testing here are two test scenarios:
-> > > > > >
-> > > > > > Test 1: "iwconfig t2u mode monitor"
-> > > > > > Sees nothing on any channel, no packets reported
-> > > > > >
-> > > > > > Test 2(requested test): "iw phy phy11 interface add t2uhmon type monitor"
-> > > > > > Sees nothing on any channel, no packets reported.
-> > > > > > Despite having a monitor and managed interface on the same phy,
-> > > > > > iwconfig is reporting that the channel is changing as requested.  So
-> > > > > > perhaps my above "afaik" comment is partially outdated.
-> > > > > >
-> > > > > > For both tests the interface was not used to connect to any ap prior
-> > > > > > to or during testing.
-> > > > > >
-> > > > >
-> > > > > Could you please try following patch?
-> > > >
-> > > > Excellent!  This seems to work for all channels up to 140, however,
-> > > > not 144 or above.  "iw list" shows these are supported but I cannot
-> > > > set them in monitor mode:
-> > > >
-> > > > * 5720 MHz [144] (22.0 dBm) (no IR, radar detection)
-> > > > * 5745 MHz [149] (22.0 dBm) (no IR)
-> > > > * 5765 MHz [153] (22.0 dBm) (no IR)
-> > > > * 5785 MHz [157] (22.0 dBm) (no IR)
-> > > > * 5805 MHz [161] (22.0 dBm) (no IR)
-> > > > * 5825 MHz [165] (22.0 dBm) (no IR)
-> > > >
-> > > > remote2 ~ # iw dev t2uhmon set channel 140
-> > > > remote2 ~ # iw dev t2uhmon set channel 144
-> > > > command failed: Invalid argument (-22)
-> > > >
-> > > > Thanks,
-> > > > Zero
-> > > >
-> > > > > Regards,
-> > > > >
-> > > > > Lorenzo
-> > > > >
-> > > > > --- a/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c
-> > > > > +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c
-> > > > > @@ -756,11 +756,10 @@ __mt76x0_phy_set_channel(struct mt76x0_dev *dev,
-> > > > >
-> > > > >         /* Vendor driver don't do it */
-> > > > >         /* mt76x0_phy_set_tx_power(dev, channel, rf_bw_band); */
-> > > > > +       mt76x0_vco_cal(dev, channel);
-> > > > >
-> > > > >         if (scan)
-> > > > > -               mt76x0_vco_cal(dev, channel);
-> > > > > -
-> > > > > -       mt76x0_mcu_calibrate(dev, MCU_CAL_RXDCOC, 1);
-> > > > > +               mt76x0_mcu_calibrate(dev, MCU_CAL_RXDCOC, 1);
-> > > > >         mt76x0_phy_set_chan_pwr(dev, channel);
-> > > > >
-> > > > >         dev->mt76.chandef = *chandef;
+> > Thanks
+> > 	Andrew
+> 
+Best Regards!
+Biao
