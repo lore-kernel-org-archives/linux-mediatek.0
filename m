@@ -1,58 +1,42 @@
-From: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: mt76x0 bug report
-Date: Tue, 18 Sep 2018 13:36:51 -0400
-Message-ID: <CAM0KTbDq7v6phbr72LXEoYzu9iQ9L-MN85Zzn5Oz9kGsuVCV_Q@mail.gmail.com>
-References: <20180906093213.GB16539@redhat.com> <CAM0KTbBRGqNAu1H0myVoWg6Qu1aMXMneSJ7bXQUKbJGZUFkC_A@mail.gmail.com>
- <CAJ0CqmXHHE2J5O4irPogrypL_H95EDm2y+1_6rpWG1v3ZHxzXA@mail.gmail.com>
- <CAM0KTbAF_ztZzFk_iECyPbiWY69xrcdT_93ypnuTzocjX_fRuQ@mail.gmail.com>
- <20180907082413.GC2725@localhost.localdomain> <CAM0KTbAputKNN3seOfN-1zhz5XmT6yg_pbKBnapOsR6Vigv1XQ@mail.gmail.com>
- <CAM0KTbAu-LJ2ThAHbmbrggMw_ttpQ8fXr0+HTjGBZF6PBPiD8Q@mail.gmail.com>
- <CAJ0CqmUDT44W7sb4qpmt6mPDZ5LwUDPgKCrhor_8POWpx_RaQA@mail.gmail.com>
- <CAM0KTbDb4X7JZgYZa6-NmjD72_UHOqQ43Czv=HwWS3D0WcWrgQ@mail.gmail.com>
- <CAM0KTbA0QE-5oTz-aeU9zmnCS-LrYZmHwmEv0afjR0yFWvTevA@mail.gmail.com> <20180918115616.GC15285@redhat.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v2 01/22] pinctrl: mediatek: add pinctrl-mtk-common-v2 for
+ all MediaTek pinctrls
+Date: Tue, 18 Sep 2018 12:36:18 -0700
+Message-ID: <CACRpkdaLc8i0QtpqsBJVLmcRewahRWKqkr5vys8_w0Ld0gEc7w@mail.gmail.com>
+References: <cover.1536404280.git.sean.wang@mediatek.com> <75d8f8c745d60b49ee1ec60de7f776ef51f97f79.1536404280.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180918115616.GC15285-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org
-Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dcaratti-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <75d8f8c745d60b49ee1ec60de7f776ef51f97f79.1536404280.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Sep 18, 2018 at 7:56 AM Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
->
-> On Mon, Sep 17, 2018 at 11:18:57PM -0400, Sid Hayn wrote:
-> > Sorry to bump the one thing that we both agreed was low priority but....
-> >
-> > So was testing all of my dongles that use the driver you are working
-> > on, and running them through my connect scripts.  I moved the AP to
-> > maybe <5ft from the clients and something wierd happened.  The t1u
-> > tried to connect to one of the 2.4GHz only networks.  It failed, but
-> > it actually got enough scan data back to attempt authentication with a
-> > valid 2.4GHz only bssid.  Which means in short, that the eeprom isn't
-> > lying and your parsing of it is correct.  Something obviously makes
-> > this a 5GHz only device, as the connection failed and most of the time
-> > nothing at all is seen on 2.4GHz, but clearly it's some filter or
-> > antenna or some other mechanism which makes it 5GHz only.  So probably
-> > hardware lying to you is now even lower on your list since this safely
-> > rules out the driver parsing the eeprom incorrectly.
->
-> First of all would be good to check if problem is not already solved,
-> latest version of the driver can be found here:
-> https://github.com/nbd168/wireless
+On Sat, Sep 8, 2018 at 4:07 AM <sean.wang@mediatek.com> wrote:
 
-Booting that kernel gets me instant to near instant kernel panics, so
-I am unable to test much.
+> From: Sean Wang <sean.wang@mediatek.com>
 >
-> Second, is there vendor driver available for this particular device?
-> Perhaps there are some tweeks needed that are not provided by generic
-> driver.
-
-No clue, haven't even tried to look.  This hardware was all sitting on
-a shelf till it looked like a real driver was being merged into the
-kernel.... so um, thanks :-)
-
--Zero
+> Irregular register arrangement and distinct logic access from various
+> MediaTek SoCs would cause pinctrl-mtk-common to bloat and really hard to
+> maintain in the future so that the patch creates pinctrl-mtk-common-v2
+> based on the core of mt7622-pinctrl.
 >
-> Thanks
-> Stanislaw
+> The goals pinctrl-mtk-common-v2 want to achieve are to hopefully support
+> all of MediaTek SoCs, and two kinds of dt-bindings being supported,
+> Linux generic pinctrl dt-binding mt7622 supports and MediaTek per-pin
+> dt-binding the other SoCs support the MT8183 and MT6765 incline to make
+> use of.
+>
+> The patch starts to refactor MT7622 pinctrl driver first with splitting
+> out these portable ways from there such as table-based register operation
+> and drive strength control that is common in both kinds of driver.
+>
+> Signed-off-by: Ryder.Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+
+Patch applied, had to use some fuzzing and removed a <linux/gpio.h>
+include that was not used.
+
+Yours,
+Linus Walleij
