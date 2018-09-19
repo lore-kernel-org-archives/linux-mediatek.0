@@ -1,120 +1,36 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v1 1/1] drm/mediatek: add function to match the
- connector and crtc
-Date: Wed, 19 Sep 2018 19:56:35 +0800
-Message-ID: <1537358195.5124.6.camel@mtksdaap41>
-References: <1536732170-30046-1-git-send-email-stu.hsieh@mediatek.com>
-         <1536732170-30046-2-git-send-email-stu.hsieh@mediatek.com>
+From: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH] mt76x0: run vco calibration for each channel configuration
+Date: Wed, 19 Sep 2018 15:03:52 +0300
+Message-ID: <87worh1yon.fsf@kamboji.qca.qualcomm.com>
+References: <20180907211312.17918-1-lorenzo.bianconi@redhat.com>
+        <20180918114356.GB15285@redhat.com>
+        <20180918120234.GD15285@redhat.com>
+        <871s9r2d3g.fsf@kamboji.qca.qualcomm.com>
+        <CAM0KTbAPHPK04SntA9UL0rGaaNjTy=E2hRoO7xiRkbMcq9b7Sw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1536732170-30046-2-git-send-email-stu.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
+Content-Type: text/plain
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAM0KTbAPHPK04SntA9UL0rGaaNjTy=E2hRoO7xiRkbMcq9b7Sw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+        (Sid Hayn's message of "Tue, 18 Sep 2018 10:26:09 -0400")
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Stu:
+Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> writes:
 
-On Wed, 2018-09-12 at 14:02 +0800, Stu Hsieh wrote:
-> This patch add function to match the connector and crtc
-> 
-> Because the connector set the possible_crtc to match the crtc.
-> 
-> This function would search the connector in every ddp path and
-> return the corresponding value for possible_crtc.
-> 
-> Change-Id: Id51de53b95039f8174462d483eb9bfee31b3b93b
-> Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 41 +++++++++++++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  2 ++
->  2 files changed, 43 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> index ff974d82a4a6..1f734b806a00 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> @@ -245,6 +245,22 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
->  	[DDP_COMPONENT_WDMA1]	= { MTK_DISP_WDMA,	1, NULL },
->  };
->  
-> +static bool mtk_drm_find_comp_in_ddp(struct mtk_ddp_comp ddp_comp,
-> +				     const enum mtk_ddp_comp_id *path,
-> +				     unsigned int path_len)
-> +{
-> +	int i;
-> +
-> +	if (!path)
-> +		return false;
-> +
-> +	for (i = 0; i < path_len; i++)
-> +		if (ddp_comp.id == path[i])
-> +			return true;
-> +
-> +	return false;
-> +}
-> +
->  int mtk_ddp_comp_get_id(struct device_node *node,
->  			enum mtk_ddp_comp_type comp_type)
->  {
-> @@ -260,6 +276,31 @@ int mtk_ddp_comp_get_id(struct device_node *node,
->  	return -EINVAL;
->  }
->  
-> +unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
-> +						struct mtk_ddp_comp ddp_comp)
-> +{
-> +	struct mtk_drm_private *private = drm->dev_private;
-> +	unsigned int ret;
-> +
-> +	if (mtk_drm_find_comp_in_ddp(ddp_comp, private->data->main_path,
-> +				     private->data->main_len) == true) {
-> +		ret = BIT(0);
-> +	} else if (mtk_drm_find_comp_in_ddp(ddp_comp,
-> +					    private->data->ext_path,
-> +					    private->data->ext_len) == true) {
-> +		ret = BIT(1);
-> +	} else if (mtk_drm_find_comp_in_ddp(ddp_comp,
-> +					    private->data->third_path,
-> +					    private->data->third_len) == true) {
-> +		ret = BIT(2);
-> +	} else {
-> +		DRM_INFO("Failed to find comp in ddp table\n");
-> +		ret = 0;
-> +	}
+> mt76x0 isn't in 4.18 at all, it's being added in 4.19 isn't it?  I'm
+> not sure you can call it a regression, but adding a new driver with a
+> known bug that breaks an entire use case (monitor mode) seems silly
+> when a small and tested fix is available.  Pretty please.
 
-The variable naming is very important. If one day there are fourth path,
-fifth path, and sixth path, you would find everywhere where are such 'if
-else'. So I would like you to change main_path, ext_path, third_path to
-an array such as path[]. So this patch would be only a simple for-loop
-and when you add more path, you need not to modify this function.
+Unfortunately it's not that simple as you think. And do take into
+account that the maintainers need to deal with a lot of patches and
+email so keeping things simple is important.
 
-And would you also send the patch that include the caller call
-mtk_drm_find_possible_crtc_by_comp(), so I could understand how do you
-pass the parameter.
+And please do not top post:
 
-Regards,
-CK
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches#do_not_top_post_and_edit_your_quotes
 
-> +
-> +	return ret;
-> +}
-> +
->  int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
->  		      struct mtk_ddp_comp *comp, enum mtk_ddp_comp_id comp_id,
->  		      const struct mtk_ddp_comp_funcs *funcs)
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> index 8399229e6ad2..f882e69088b8 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> @@ -166,6 +166,8 @@ static inline void mtk_ddp_gamma_set(struct mtk_ddp_comp *comp,
->  		comp->funcs->gamma_set(comp, state);
->  }
->  
-> +unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
-> +						struct mtk_ddp_comp ddp_comp);
->  int mtk_ddp_comp_get_id(struct device_node *node,
->  			enum mtk_ddp_comp_type comp_type);
->  int mtk_ddp_comp_init(struct device *dev, struct device_node *comp_node,
+-- 
+Kalle Valo
