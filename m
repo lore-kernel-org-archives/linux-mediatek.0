@@ -1,49 +1,105 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: Re: [PATCH v2 00/22] Unify MediaTek pinctrl in preparation for
- MT8183 and MT6765
-Date: Tue, 18 Sep 2018 21:37:22 -0700
-Message-ID: <20180919043722.GA14181@Mani-XPS-13-9360>
-References: <cover.1536404280.git.sean.wang@mediatek.com>
- <CACRpkdZtVBjYGs5C7-HWEyX7f7pnCqvnRYBH=fFmLKhN4FGymA@mail.gmail.com>
- <1537325650.572.9.camel@mtkswgap22>
+From: lei liu <leilk.liu@mediatek.com>
+Subject: Re: [PATCH v3 2/3] spis: mediatek: add spi slave for Mediatek MT2712
+Date: Wed, 19 Sep 2018 13:50:05 +0800
+Message-ID: <1537336205.27607.23.camel@mhfsdcap03>
+References: <1537150762-7072-1-git-send-email-leilk.liu@mediatek.com>
+         <1537150762-7072-3-git-send-email-leilk.liu@mediatek.com>
+         <20180918163048.GN2471@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1537325650.572.9.camel@mtkswgap22>
+In-Reply-To: <20180918163048.GN2471@sirena.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Mark Brown <broonie@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 19, 2018 at 10:54:10AM +0800, Sean Wang wrote:
-> On Tue, 2018-09-18 at 15:07 -0700, Linus Walleij wrote:
-> > On Sat, Sep 8, 2018 at 4:07 AM <sean.wang@mediatek.com> wrote:
-> > 
-> > > v2 and changes since v1:
-> > 
-> > I had trouble applying the last patches in the series so I applied
-> > all on an immutable branch (ib-mtk) then merged that into devel
-> > and added a patch on top to fix up some GPIO includes (just sent).
-> > 
-> > Please check the result!
-> > 
-> 
-> Sure, I'll take a look and and test on the devel branch.
-> 
-> On the top, I'll add a fix for the issue recently reported by kbuild
-> test robot about implicit declaration and a new MT6765 driver based
-> on the series.
->
+Hi Mark,
+  Thanks for your comments.
 
-Hi Sean,
-
-Do you have any plans to add support for MT6797?
-
-Thanks,
-Mani
-
-> > Yours,
-> > Linus Walleij
+On Tue, 2018-09-18 at 09:30 -0700, Mark Brown wrote:
+> On Mon, Sep 17, 2018 at 10:19:21AM +0800, Leilk Liu wrote:
 > 
+> This looks overall pretty good, a few smallish comments below:
 > 
+> Please use subject lines matching the style for the subsystem.  This
+> makes it easier for people to identify relevant patches.
+> 
+OK, I'll fix it, thanks.
+
+> >  if SPI_SLAVE
+> > +config SPI_SLAVE_MT27XX
+> > +	tristate "MediaTek SPI slave device"
+> > +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +	help
+> > +	  This selects the MediaTek(R) SPI slave device driver.
+> > +	  If you want to use MediaTek(R) SPI slave interface,
+> > +	  say Y or M here.If you are not sure, say N.
+> > +	  SPI slave drivers for Mediatek MT27XX series ARM SoCs.
+> >  
+> >  config SPI_SLAVE_TIME
+> 
+> This is a driver not a slave implementation, it should be with the other
+> drivers in the Kconfig.  The slave implementations are for the
+> functionality that uses the drivers, not the drivers themselves.
+> 
+OK, I'll fix it, thanks.
+
+> > +	/* set the tx/rx endian */
+> > +#ifdef __LITTLE_ENDIAN
+> > +	reg_val &= ~SPIS_TX_ENDIAN;
+> > +	reg_val &= ~SPIS_RX_ENDIAN;
+> > +#else
+> > +	reg_val |= SPIS_TX_ENDIAN;
+> > +	reg_val |= SPIS_RX_ENDIAN;
+> > +#endif
+> > +	writel(reg_val, mdata->base + SPIS_CFG_REG);
+> 
+> This seems weird - it looks like it's changing the endianess of the
+> protocol based on the endianness the processor is running in.  What's
+> going on here?  I'd expect the driver to be just treating everything as
+> a byte stream and letting the protocol driver handle the endianness
+> issues, otherwise we might end up with double converions.
+> 
+OK, I'll set the endian of SPI the same with the processor. Thanks.
+
+> > +		xfer->tx_dma = dma_map_single(dev, (void *)xfer->tx_buf,
+> > +					      xfer->len, DMA_TO_DEVICE);
+> 
+> Why is there a cast to void here?  That's usually a sign that there's a
+> type safety issue, the whole point with void is that it's compatible
+> with any other pointer.
+> 
+tx_buf is a const void*, here it need a void * for the dma mapping.
+And I'll remove void * from dma_map_single((void *)rx_buf).
+Thanks.
+
+> > +static irqreturn_t mtk_spi_slave_interrupt(int irq, void *dev_id)
+> > +{
+> > +	struct spi_controller *ctlr = dev_id;
+> > +	struct mtk_spi_slave *mdata = spi_controller_get_devdata(ctlr);
+> > +	struct spi_transfer *trans = mdata->cur_transfer;
+> > +	u32 int_status, reg_val, cnt, remainder;
+> > +
+> > +	int_status = readl(mdata->base + SPIS_IRQ_ST_REG);
+> > +	writel(int_status, mdata->base + SPIS_IRQ_CLR_REG);
+> > +
+> > +	if (!trans)
+> > +		return IRQ_HANDLED;
+> 
+> Are you sure that this is the right thing to do if we get a spurious
+> interrupt - the normal thing would be to return IRQ_NONE, possibly
+> logging a warning as well?
+> 
+OK, it should reture IRQ_NONE here, thanks.
+
+> > +	if (int_status & CMD_INVALID_ST)
+> > +		dev_err(&ctlr->dev, "cmd invalid\n");
+> 
+> If there's an interrupt that doesn't have any of the interrupt status
+> flags set I'd expect to see a warning and probably IRQ_NONE being
+> returned.  That way if the interrupt line is shared we work correctly
+> and if something goes wrong and the interrupt gets stuck on then the
+> core interrupt code's error handling can kick in.
+OK, I'll fix it, thanks.
