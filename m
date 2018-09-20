@@ -1,7 +1,7 @@
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 14/20] mt76x0: unify freq offset parsing
-Date: Thu, 20 Sep 2018 11:12:01 +0200
-Message-ID: <3a1d075efd810e114233f941b7b15b3c88955c8f.1537433365.git.lorenzo.bianconi@redhat.com>
+Subject: [PATCH 20/20] mt76x0: use shared debugfs implementation
+Date: Thu, 20 Sep 2018 11:12:07 +0200
+Message-ID: <91751ba6b25f23a8da693d237282988057f1a60a.1537433365.git.lorenzo.bianconi@redhat.com>
 References: <cover.1537433365.git.lorenzo.bianconi@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <cover.1537433365.git.lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,127 +10,115 @@ To: nbd-Vt+b4OUoWG0@public.gmane.org
 Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Unify frequency offset parsing with mt76x2 driver using
-eeprom utility routines available in mt76x02-lib module
+Use mt76 shared debugfs implementation and remove duplicated code
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- .../wireless/mediatek/mt76/mt76x0/debugfs.c   |  3 ++-
- .../wireless/mediatek/mt76/mt76x0/eeprom.c    | 26 +++++++++----------
- .../wireless/mediatek/mt76/mt76x0/eeprom.h    |  3 +--
- .../net/wireless/mediatek/mt76/mt76x0/phy.c   |  3 ++-
- .../wireless/mediatek/mt76/mt76x02_eeprom.h   |  5 ++++
- 5 files changed, 22 insertions(+), 18 deletions(-)
+ .../wireless/mediatek/mt76/mt76x0/debugfs.c   | 66 +------------------
+ .../wireless/mediatek/mt76/mt76x0/mt76x0.h    |  2 -
+ 2 files changed, 1 insertion(+), 67 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
-index d138ed3bda17..39c2c846f808 100644
+index a34feead2cc4..5fc68bd81d3f 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
-@@ -102,7 +102,8 @@ mt76x0_eeprom_param_read(struct seq_file *file, void *data)
- 	u16 val;
- 	int i;
+@@ -18,26 +18,6 @@
+ #include "mt76x0.h"
+ #include "eeprom.h"
  
--	seq_printf(file, "RF freq offset: %hhx\n", dev->ee->rf_freq_off);
-+	seq_printf(file, "RF freq offset: %hhx\n",
-+		   dev->caldata.freq_offset);
- 	seq_printf(file, "RSSI offset: %hhx %hhx\n",
- 		   dev->caldata.rssi_offset[0], dev->caldata.rssi_offset[1]);
- 	seq_printf(file, "Temperature offset: %hhx\n",
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-index ae7c11519b0a..70dd96051e77 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-@@ -103,23 +103,21 @@ static void mt76x0_set_temp_offset(struct mt76x0_dev *dev)
- 		dev->caldata.temp_offset = -10;
- }
- 
--static void
--mt76x0_set_rf_freq_off(struct mt76x0_dev *dev, u8 *eeprom)
-+static void mt76x0_set_freq_offset(struct mt76x0_dev *dev)
+-static int
+-mt76_reg_set(void *data, u64 val)
+-{
+-	struct mt76x0_dev *dev = data;
+-
+-	mt76_wr(dev, dev->debugfs_reg, val);
+-	return 0;
+-}
+-
+-static int
+-mt76_reg_get(void *data, u64 *val)
+-{
+-	struct mt76x0_dev *dev = data;
+-
+-	*val = mt76_rr(dev, dev->debugfs_reg);
+-	return 0;
+-}
+-
+-DEFINE_SIMPLE_ATTRIBUTE(fops_regval, mt76_reg_get, mt76_reg_set, "0x%08llx\n");
+-
+ static int
+ mt76x0_ampdu_stat_read(struct seq_file *file, void *data)
  {
--	u8 comp;
-+	struct mt76x0_caldata *caldata = &dev->caldata;
-+	u8 val;
- 
--	comp = eeprom[MT_EE_FREQ_OFFSET_COMPENSATION];
--	if (!mt76x02_field_valid(comp))
--		comp = 0;
-+	val = mt76x02_eeprom_get(&dev->mt76, MT_EE_FREQ_OFFSET);
-+	if (!mt76x02_field_valid(val))
-+		val = 0;
-+	caldata->freq_offset = val;
- 
--	dev->ee->rf_freq_off = eeprom[MT_EE_FREQ_OFFSET];
--	if (!mt76x02_field_valid(dev->ee->rf_freq_off))
--		dev->ee->rf_freq_off = 0;
-+	val = mt76x02_eeprom_get(&dev->mt76, MT_EE_TSSI_BOUND4) >> 8;
-+	if (!mt76x02_field_valid(val))
-+		val = 0;
- 
--	if (comp & BIT(7))
--		dev->ee->rf_freq_off -= comp & 0x7f;
--	else
--		dev->ee->rf_freq_off += comp;
-+	caldata->freq_offset -= mt76x02_sign_extend(val, 8);
- }
- 
- void mt76x0_read_rx_gain(struct mt76x0_dev *dev)
-@@ -286,7 +284,7 @@ mt76x0_eeprom_init(struct mt76x0_dev *dev)
- 
- 	mt76x02_mac_setaddr(&dev->mt76, eeprom + MT_EE_MAC_ADDR);
- 	mt76x0_set_chip_cap(dev, eeprom);
--	mt76x0_set_rf_freq_off(dev, eeprom);
-+	mt76x0_set_freq_offset(dev);
- 	mt76x0_set_temp_offset(dev);
- 	dev->chainmask = 0x0101;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-index 55e624cf7f2a..8006d08cba45 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-@@ -33,11 +33,10 @@ struct mt76x0_caldata {
- 	s8 lna_gain;
- 
- 	s16 temp_offset;
-+	u8 freq_offset;
+@@ -95,45 +75,6 @@ static const struct file_operations fops_ampdu_stat = {
+ 	.release = single_release,
  };
  
- struct mt76x0_eeprom_params {
--	u8 rf_freq_off;
+-static int
+-mt76x0_eeprom_param_read(struct seq_file *file, void *data)
+-{
+-	struct mt76x0_dev *dev = file->private;
+-	u16 val;
+-	int i;
 -
- 	/* TX_PWR_CFG_* values from EEPROM for 20 and 40 Mhz bandwidths. */
- 	u32 tx_pwr_cfg_2g[5][2];
- 	u32 tx_pwr_cfg_5g[5][2];
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c b/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c
-index dbe9e2ee5def..c3db4c1cd4fe 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c
-@@ -942,7 +942,8 @@ mt76x0_rf_init(struct mt76x0_dev *dev)
- 	   E1: B0.R22<6:0>: xo_cxo<6:0>
- 	   E2: B0.R21<0>: xo_cxo<0>, B0.R22<7:0>: xo_cxo<8:1>
- 	 */
--	rf_wr(dev, MT_RF(0, 22), min_t(u8, dev->ee->rf_freq_off, 0xBF));
-+	rf_wr(dev, MT_RF(0, 22),
-+	      min_t(u8, dev->caldata.freq_offset, 0xbf));
- 	val = rf_rr(dev, MT_RF(0, 22));
+-	seq_printf(file, "RF freq offset: %hhx\n",
+-		   dev->caldata.freq_offset);
+-	seq_printf(file, "RSSI offset: %hhx %hhx\n",
+-		   dev->caldata.rssi_offset[0], dev->caldata.rssi_offset[1]);
+-	seq_printf(file, "Temperature offset: %hhx\n",
+-		   dev->caldata.temp_offset);
+-	seq_printf(file, "LNA gain: %x\n", dev->caldata.lna_gain);
+-
+-	val = mt76x02_eeprom_get(&dev->mt76, MT_EE_NIC_CONF_0);
+-	seq_printf(file, "Power Amplifier type %lx\n",
+-		   val & MT_EE_NIC_CONF_0_PA_TYPE);
+-
+-	seq_puts(file, "Per channel power:\n");
+-	for (i = 0; i < MT76X0_NUM_CHANS; i++)
+-		seq_printf(file, "\t%d chan:%d pwr:%d\n", i, i,
+-			   dev->caldata.tx_pwr_per_chan[i]);
+-	return 0;
+-}
+-
+-static int
+-mt76x0_eeprom_param_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt76x0_eeprom_param_read, inode->i_private);
+-}
+-
+-static const struct file_operations fops_eeprom_param = {
+-	.open = mt76x0_eeprom_param_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
+-
+ static int mt76x0_read_txpower(struct seq_file *file, void *data)
+ {
+ 	struct mt76x0_dev *dev = dev_get_drvdata(file->private);
+@@ -155,16 +96,11 @@ void mt76x0_init_debugfs(struct mt76x0_dev *dev)
+ {
+ 	struct dentry *dir;
  
- 	/*
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
-index 2132af9f8c94..995aebbcc194 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
-@@ -74,7 +74,12 @@ enum mt76x02_eeprom_field {
+-	dir = debugfs_create_dir("mt76x0", dev->mt76.hw->wiphy->debugfsdir);
++	dir = mt76_register_debugfs(&dev->mt76);
+ 	if (!dir)
+ 		return;
  
- 	MT_EE_2G_TARGET_POWER =			0x0d0,
- 	MT_EE_TEMP_OFFSET =			0x0d1,
-+	MT_EE_TSSI_BOUND1 =			0x0d4,
-+	MT_EE_TSSI_BOUND2 =			0x0d6,
-+	MT_EE_TSSI_BOUND3 =			0x0d8,
-+	MT_EE_TSSI_BOUND4 =			0x0da,
- 	MT_EE_FREQ_OFFSET_COMPENSATION =	0x0db,
-+	MT_EE_TSSI_BOUND5 =			0x0dc,
- 	MT_EE_TX_POWER_BYRATE_BASE =		0x0de,
+-	debugfs_create_u32("regidx", S_IRUSR | S_IWUSR, dir, &dev->debugfs_reg);
+-	debugfs_create_file("regval", S_IRUSR | S_IWUSR, dir, dev,
+-			    &fops_regval);
+ 	debugfs_create_file("ampdu_stat", S_IRUSR, dir, dev, &fops_ampdu_stat);
+-	debugfs_create_file("eeprom_param", S_IRUSR, dir, dev,
+-			    &fops_eeprom_param);
+ 	debugfs_create_devm_seqfile(dev->mt76.dev, "txpower", dir,
+ 				    mt76x0_read_txpower);
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+index 101332a35f40..e0b349c921b1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/mt76x0.h
+@@ -94,8 +94,6 @@ struct mt76x0_dev {
+ 	struct mutex reg_atomic_mutex;
+ 	struct mutex hw_atomic_mutex;
  
- 	MT_EE_RF_TEMP_COMP_SLOPE_5G =		0x0f2,
--- 
-2.17.1
+-	u32 debugfs_reg;
