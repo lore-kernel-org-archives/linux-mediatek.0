@@ -1,7 +1,7 @@
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 12/20] mt76x0: unify rssi_offset parsing
-Date: Thu, 20 Sep 2018 11:11:59 +0200
-Message-ID: <bf40ebf801fb9af46430de56a45b109eebdaa3e0.1537433365.git.lorenzo.bianconi@redhat.com>
+Subject: [PATCH 15/20] mt76: move mt76x02_eeprom_parse_hw_cap in mt76x02-lib module
+Date: Thu, 20 Sep 2018 11:12:02 +0200
+Message-ID: <47b4bab5725f91f5c689fb079912a5435971eb62.1537433365.git.lorenzo.bianconi@redhat.com>
 References: <cover.1537433365.git.lorenzo.bianconi@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <cover.1537433365.git.lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,134 +10,119 @@ To: nbd-Vt+b4OUoWG0@public.gmane.org
 Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Unify rssi_offset parsing with mt76x2 driver using eeprom utility
-routines available in mt76x02-lib module
+Move mt76x02_eeprom_parse_hw_cap utility routine in mt76x02-lib
+module in order to be reused in mt76x0 driver
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- .../wireless/mediatek/mt76/mt76x0/debugfs.c   |  7 +---
- .../wireless/mediatek/mt76/mt76x0/eeprom.c    | 38 ++++---------------
- .../wireless/mediatek/mt76/mt76x0/eeprom.h    |  3 +-
- .../net/wireless/mediatek/mt76/mt76x0/phy.c   | 12 +-----
- 4 files changed, 11 insertions(+), 49 deletions(-)
+ .../wireless/mediatek/mt76/mt76x02_eeprom.c   | 19 +++++++++++++++++
+ .../wireless/mediatek/mt76/mt76x02_eeprom.h   |  6 ++++++
+ .../wireless/mediatek/mt76/mt76x2_eeprom.c    | 21 +------------------
+ .../wireless/mediatek/mt76/mt76x2_eeprom.h    |  6 ------
+ .../net/wireless/mediatek/mt76/mt76x2u_init.c |  2 +-
+ 5 files changed, 27 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
-index 566ed0b61035..b6f467e7ee8c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
-@@ -103,11 +103,8 @@ mt76x0_eeprom_param_read(struct seq_file *file, void *data)
- 	int i;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
+index 2377c758da5d..d3efeb8a72b7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
+@@ -71,6 +71,25 @@ int mt76x02_get_efuse_data(struct mt76_dev *dev, u16 base, void *buf,
+ }
+ EXPORT_SYMBOL_GPL(mt76x02_get_efuse_data);
  
- 	seq_printf(file, "RF freq offset: %hhx\n", dev->ee->rf_freq_off);
--	seq_printf(file, "RSSI offset 2GHz: %hhx %hhx\n",
--		   dev->ee->rssi_offset_2ghz[0], dev->ee->rssi_offset_2ghz[1]);
--	seq_printf(file, "RSSI offset 5GHz: %hhx %hhx %hhx\n",
--		   dev->ee->rssi_offset_5ghz[0], dev->ee->rssi_offset_5ghz[1],
--		   dev->ee->rssi_offset_5ghz[2]);
-+	seq_printf(file, "RSSI offset: %hhx %hhx\n",
-+		   dev->caldata.rssi_offset[0], dev->caldata.rssi_offset[1]);
- 	seq_printf(file, "Temperature offset: %hhx\n", dev->ee->temp_off);
- 	seq_printf(file, "LNA gain: %x\n", dev->caldata.lna_gain);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-index 20a9f8fb20da..6c24274d23f4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-@@ -126,44 +126,21 @@ void mt76x0_read_rx_gain(struct mt76x0_dev *dev)
++void mt76x02_eeprom_parse_hw_cap(struct mt76_dev *dev)
++{
++	u16 val = mt76x02_eeprom_get(dev, MT_EE_NIC_CONF_0);
++
++	switch (FIELD_GET(MT_EE_NIC_CONF_0_BOARD_TYPE, val)) {
++	case BOARD_TYPE_5GHZ:
++		dev->cap.has_5ghz = true;
++		break;
++	case BOARD_TYPE_2GHZ:
++		dev->cap.has_2ghz = true;
++		break;
++	default:
++		dev->cap.has_2ghz = true;
++		dev->cap.has_5ghz = true;
++		break;
++	}
++}
++EXPORT_SYMBOL_GPL(mt76x02_eeprom_parse_hw_cap);
++
+ bool mt76x02_ext_pa_enabled(struct mt76_dev *dev, enum nl80211_band band)
  {
- 	struct ieee80211_channel *chan = dev->mt76.chandef.chan;
- 	struct mt76x0_caldata *caldata = &dev->caldata;
--	s8 lna_5g[3], lna_2g;
-+	s8 val, lna_5g[3], lna_2g;
- 	u16 rssi_offset;
-+	int i;
+ 	u16 conf0 = mt76x02_eeprom_get(dev, MT_EE_NIC_CONF_0);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
+index 995aebbcc194..119813960fe7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
+@@ -132,6 +132,11 @@ enum mt76x02_eeprom_modes {
+ 	MT_EE_PHYSICAL_READ,
+ };
  
- 	mt76x02_get_rx_gain(&dev->mt76, chan->band, &rssi_offset,
- 			    &lna_2g, lna_5g);
- 	caldata->lna_gain = mt76x02_get_lna_gain(&dev->mt76, &lna_2g,
- 						 lna_5g, chan);
++enum mt76x02_board_type {
++	BOARD_TYPE_2GHZ = 1,
++	BOARD_TYPE_5GHZ = 2,
++};
++
+ static inline bool mt76x02_field_valid(u8 val)
+ {
+ 	return val != 0 && val != 0xff;
+@@ -165,5 +170,6 @@ void mt76x02_get_rx_gain(struct mt76_dev *dev, enum nl80211_band band,
+ u8 mt76x02_get_lna_gain(struct mt76_dev *dev,
+ 			s8 *lna_2g, s8 *lna_5g,
+ 			struct ieee80211_channel *chan);
++void mt76x02_eeprom_parse_hw_cap(struct mt76_dev *dev);
  
--}
--
--static void
--mt76x0_set_rssi_offset(struct mt76x0_dev *dev, u8 *eeprom)
--{
--	int i;
--	s8 *rssi_offset = dev->ee->rssi_offset_2ghz;
--
--	for (i = 0; i < 2; i++) {
--		rssi_offset[i] = eeprom[MT_EE_RSSI_OFFSET_2G_0 + i];
-+	for (i = 0; i < ARRAY_SIZE(caldata->rssi_offset); i++) {
-+		val = rssi_offset >> (8 * i);
-+		if (val < -10 || val > 10)
-+			val = 0;
- 
--		if (rssi_offset[i] < -10 || rssi_offset[i] > 10) {
--			dev_warn(dev->mt76.dev,
--				 "Warning: EEPROM RSSI is invalid %02hhx\n",
--				 rssi_offset[i]);
--			rssi_offset[i] = 0;
--		}
--	}
--
--	rssi_offset = dev->ee->rssi_offset_5ghz;
--
--	for (i = 0; i < 3; i++) {
--		rssi_offset[i] = eeprom[MT_EE_RSSI_OFFSET_5G_0 + i];
--
--		if (rssi_offset[i] < -10 || rssi_offset[i] > 10) {
--			dev_warn(dev->mt76.dev,
--				 "Warning: EEPROM RSSI is invalid %02hhx\n",
--				 rssi_offset[i]);
--			rssi_offset[i] = 0;
--		}
-+		caldata->rssi_offset[i] = val;
- 	}
+ #endif /* __MT76x02_EEPROM_H */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
+index b9641e2408ee..d295851cf2f9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
+@@ -40,25 +40,6 @@ mt76x2_eeprom_get_macaddr(struct mt76x2_dev *dev)
+ 	return 0;
  }
  
-@@ -311,7 +288,6 @@ mt76x0_eeprom_init(struct mt76x0_dev *dev)
- 	mt76x0_set_chip_cap(dev, eeprom);
- 	mt76x0_set_rf_freq_off(dev, eeprom);
- 	mt76x0_set_temp_offset(dev, eeprom);
--	mt76x0_set_rssi_offset(dev, eeprom);
- 	dev->chainmask = 0x0101;
- 
- 	mt76x0_set_tx_power_per_rate(dev, eeprom);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-index e62c61d91505..dd9cb0d2de41 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-@@ -29,14 +29,13 @@ struct reg_channel_bounds {
- };
- 
- struct mt76x0_caldata {
-+	s8 rssi_offset[2];
- 	s8 lna_gain;
- };
- 
- struct mt76x0_eeprom_params {
- 	u8 rf_freq_off;
- 	s16 temp_off;
--	s8 rssi_offset_2ghz[2];
--	s8 rssi_offset_5ghz[3];
- 
- 	/* TX_PWR_CFG_* values from EEPROM for 20 and 40 Mhz bandwidths. */
- 	u32 tx_pwr_cfg_2g[5][2];
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c b/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c
-index 08041ea70a1c..72d0ddc381b9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/phy.c
-@@ -229,18 +229,8 @@ mt76x0_bbp_set_ctrlch(struct mt76x0_dev *dev, enum nl80211_chan_width width,
- int mt76x0_phy_get_rssi(struct mt76x0_dev *dev, struct mt76x02_rxwi *rxwi)
- {
- 	struct mt76x0_caldata *caldata = &dev->caldata;
--	s8 rssi_offset;
--	int val;
- 
--	if (dev->mt76.chandef.chan->band == NL80211_BAND_2GHZ) {
--		rssi_offset = dev->ee->rssi_offset_2ghz[0];
--	} else {
--		rssi_offset = dev->ee->rssi_offset_5ghz[0];
--	}
+-void mt76x2_eeprom_parse_hw_cap(struct mt76x2_dev *dev)
+-{
+-	u16 val = mt76x02_eeprom_get(&dev->mt76, MT_EE_NIC_CONF_0);
 -
--	val = rxwi->rssi[0] + rssi_offset - caldata->lna_gain;
+-	switch (FIELD_GET(MT_EE_NIC_CONF_0_BOARD_TYPE, val)) {
+-	case BOARD_TYPE_5GHZ:
+-		dev->mt76.cap.has_5ghz = true;
+-		break;
+-	case BOARD_TYPE_2GHZ:
+-		dev->mt76.cap.has_2ghz = true;
+-		break;
+-	default:
+-		dev->mt76.cap.has_2ghz = true;
+-		dev->mt76.cap.has_5ghz = true;
+-		break;
+-	}
+-}
+-EXPORT_SYMBOL_GPL(mt76x2_eeprom_parse_hw_cap);
+-
+ static bool
+ mt76x2_has_cal_free_data(struct mt76x2_dev *dev, u8 *efuse)
+ {
+@@ -563,7 +544,7 @@ int mt76x2_eeprom_init(struct mt76x2_dev *dev)
+ 	if (ret)
+ 		return ret;
+ 
+-	mt76x2_eeprom_parse_hw_cap(dev);
++	mt76x02_eeprom_parse_hw_cap(&dev->mt76);
+ 	mt76x2_eeprom_get_macaddr(dev);
+ 	mt76_eeprom_override(&dev->mt76);
+ 	dev->mt76.macaddr[0] &= ~BIT(1);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.h
+index da476aad65fb..ad98a52ec69f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.h
+@@ -19,11 +19,6 @@
+ 
+ #include "mt76x02_eeprom.h"
+ 
+-enum mt76x2_board_type {
+-	BOARD_TYPE_2GHZ = 1,
+-	BOARD_TYPE_5GHZ = 2,
+-};
