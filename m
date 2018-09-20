@@ -1,7 +1,7 @@
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 03/20] mt76: move common eeprom definitions in mt76x02-lib module
-Date: Thu, 20 Sep 2018 11:11:50 +0200
-Message-ID: <14b5f6a780701abd9b88ed23857059afcd38e854.1537433365.git.lorenzo.bianconi@redhat.com>
+Subject: [PATCH 07/20] mt76: move mt76x2_get_efuse_data in mt76x02-lib module
+Date: Thu, 20 Sep 2018 11:11:54 +0200
+Message-ID: <5403d92a53303ed70c8257342a02e6d4d76804d5.1537433365.git.lorenzo.bianconi@redhat.com>
 References: <cover.1537433365.git.lorenzo.bianconi@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <cover.1537433365.git.lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,176 +10,154 @@ To: nbd-Vt+b4OUoWG0@public.gmane.org
 Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Move mt76x2 and mt76x0 common definitions in mt76x02_eeprom.h
-and remove duplicated code
+Move mt76x2_efuse_read and mt76x2_get_efuse_data in mt76x02_eeprom.c
+in order to be reused in mt76x0 driver for eeprom parsing
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- .../wireless/mediatek/mt76/mt76x0/eeprom.c    |  18 +--
- .../wireless/mediatek/mt76/mt76x0/eeprom.h    |  71 +---------
- .../wireless/mediatek/mt76/mt76x02_eeprom.h   | 124 ++++++++++++++++++
- .../wireless/mediatek/mt76/mt76x2_eeprom.c    |   2 +-
- .../wireless/mediatek/mt76/mt76x2_eeprom.h    |  85 +-----------
- 5 files changed, 140 insertions(+), 160 deletions(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
+ drivers/net/wireless/mediatek/mt76/Makefile   |  3 +-
+ .../wireless/mediatek/mt76/mt76x0/eeprom.c    | 59 +++------------
+ .../wireless/mediatek/mt76/mt76x0/eeprom.h    |  5 --
+ .../wireless/mediatek/mt76/mt76x02_eeprom.c   | 72 +++++++++++++++++++
+ .../wireless/mediatek/mt76/mt76x02_eeprom.h   |  8 +++
+ .../wireless/mediatek/mt76/mt76x2_eeprom.c    | 49 +------------
+ 6 files changed, 95 insertions(+), 101 deletions(-)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
 
+diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
+index 4d25b5c3b70b..dbe0ec020391 100644
+--- a/drivers/net/wireless/mediatek/mt76/Makefile
++++ b/drivers/net/wireless/mediatek/mt76/Makefile
+@@ -15,7 +15,8 @@ mt76-usb-y := usb.o usb_trace.o usb_mcu.o
+ CFLAGS_trace.o := -I$(src)
+ CFLAGS_usb_trace.o := -I$(src)
+ 
+-mt76x02-lib-y := mt76x02_util.o mt76x02_mac.o mt76x02_mcu.o
++mt76x02-lib-y := mt76x02_util.o mt76x02_mac.o mt76x02_mcu.o \
++		 mt76x02_eeprom.o
+ 
+ mt76x02-usb-y := mt76x02_usb_mcu.o mt76x02_usb_core.o
+ 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-index 79856bde1632..8a8244c1cdaa 100644
+index a93da6c5ce59..43239a1cb1e5 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-@@ -245,8 +245,8 @@ mt76x0_set_lna_gain(struct mt76x0_dev *dev, u8 *eeprom)
+@@ -21,41 +21,6 @@
+ #include "mt76x0.h"
+ #include "eeprom.h"
+ 
+-static int
+-mt76x0_efuse_read(struct mt76x0_dev *dev, u16 addr, u8 *data,
+-		   enum mt76x0_eeprom_access_modes mode)
+-{
+-	u32 val;
+-	int i;
+-
+-	val = mt76_rr(dev, MT_EFUSE_CTRL);
+-	val &= ~(MT_EFUSE_CTRL_AIN |
+-		 MT_EFUSE_CTRL_MODE);
+-	val |= FIELD_PREP(MT_EFUSE_CTRL_AIN, addr & ~0xf) |
+-	       FIELD_PREP(MT_EFUSE_CTRL_MODE, mode) |
+-	       MT_EFUSE_CTRL_KICK;
+-	mt76_wr(dev, MT_EFUSE_CTRL, val);
+-
+-	if (!mt76_poll(dev, MT_EFUSE_CTRL, MT_EFUSE_CTRL_KICK, 0, 1000))
+-		return -ETIMEDOUT;
+-
+-	val = mt76_rr(dev, MT_EFUSE_CTRL);
+-	if ((val & MT_EFUSE_CTRL_AOUT) == MT_EFUSE_CTRL_AOUT) {
+-		/* Parts of eeprom not in the usage map (0x80-0xc0,0xf0)
+-		 * will not return valid data but it's ok.
+-		 */
+-		memset(data, 0xff, 16);
+-		return 0;
+-	}
+-
+-	for (i = 0; i < 4; i++) {
+-		val = mt76_rr(dev, MT_EFUSE_DATA(i));
+-		put_unaligned_le32(val, data + 4 * i);
+-	}
+-
+-	return 0;
+-}
+-
+ #define MT_MAP_READS	DIV_ROUND_UP(MT_EFUSE_USAGE_MAP_SIZE, 16)
+ static int
+ mt76x0_efuse_physical_size_check(struct mt76x0_dev *dev)
+@@ -64,12 +29,10 @@ mt76x0_efuse_physical_size_check(struct mt76x0_dev *dev)
+ 	int ret, i;
+ 	u32 start = 0, end = 0, cnt_free;
+ 
+-	for (i = 0; i < MT_MAP_READS; i++) {
+-		ret = mt76x0_efuse_read(dev, MT_EE_USAGE_MAP_START + i * 16,
+-					 data + i * 16, MT_EE_PHYSICAL_READ);
+-		if (ret)
+-			return ret;
+-	}
++	ret = mt76x02_get_efuse_data(&dev->mt76, MT_EE_USAGE_MAP_START,
++				     data, sizeof(data), MT_EE_PHYSICAL_READ);
++	if (ret)
++		return ret;
+ 
+ 	for (i = 0; i < MT_EFUSE_USAGE_MAP_SIZE; i++)
+ 		if (!data[i]) {
+@@ -80,7 +43,8 @@ mt76x0_efuse_physical_size_check(struct mt76x0_dev *dev)
+ 	cnt_free = end - start + 1;
+ 
+ 	if (MT_EFUSE_USAGE_MAP_SIZE - cnt_free < 5) {
+-		dev_err(dev->mt76.dev, "Error: your device needs default EEPROM file and this driver doesn't support it!\n");
++		dev_err(dev->mt76.dev,
++			"driver does not support default EEPROM\n");
+ 		return -EINVAL;
+ 	}
+ 
+@@ -360,7 +324,7 @@ int
+ mt76x0_eeprom_init(struct mt76x0_dev *dev)
  {
- 	u8 gain;
+ 	u8 *eeprom;
+-	int i, ret;
++	int ret;
  
--	dev->ee->lna_gain_2ghz = eeprom[MT_EE_LNA_GAIN_2GHZ];
--	dev->ee->lna_gain_5ghz[0] = eeprom[MT_EE_LNA_GAIN_5GHZ_0];
-+	dev->ee->lna_gain_2ghz = eeprom[MT_EE_LNA_GAIN];
-+	dev->ee->lna_gain_5ghz[0] = eeprom[MT_EE_LNA_GAIN + 1];
+ 	ret = mt76x0_efuse_physical_size_check(dev);
+ 	if (ret)
+@@ -374,11 +338,10 @@ mt76x0_eeprom_init(struct mt76x0_dev *dev)
+ 	if (!eeprom)
+ 		return -ENOMEM;
  
- 	gain = eeprom[MT_EE_LNA_GAIN_5GHZ_1];
- 	if (gain == 0xff || gain == 0)
-@@ -268,7 +268,7 @@ mt76x0_set_rssi_offset(struct mt76x0_dev *dev, u8 *eeprom)
- 	s8 *rssi_offset = dev->ee->rssi_offset_2ghz;
+-	for (i = 0; i + 16 <= MT76X0_EEPROM_SIZE; i += 16) {
+-		ret = mt76x0_efuse_read(dev, i, eeprom + i, MT_EE_READ);
+-		if (ret)
+-			goto out;
+-	}
++	ret = mt76x02_get_efuse_data(&dev->mt76, 0, eeprom,
++				     MT76X0_EEPROM_SIZE, MT_EE_READ);
++	if (ret)
++		goto out;
  
- 	for (i = 0; i < 2; i++) {
--		rssi_offset[i] = eeprom[MT_EE_RSSI_OFFSET + i];
-+		rssi_offset[i] = eeprom[MT_EE_RSSI_OFFSET_2G_0 + i];
- 
- 		if (rssi_offset[i] < -10 || rssi_offset[i] > 10) {
- 			dev_warn(dev->mt76.dev,
-@@ -281,7 +281,7 @@ mt76x0_set_rssi_offset(struct mt76x0_dev *dev, u8 *eeprom)
- 	rssi_offset = dev->ee->rssi_offset_5ghz;
- 
- 	for (i = 0; i < 3; i++) {
--		rssi_offset[i] = eeprom[MT_EE_RSSI_OFFSET_5GHZ + i];
-+		rssi_offset[i] = eeprom[MT_EE_RSSI_OFFSET_5G_0 + i];
- 
- 		if (rssi_offset[i] < -10 || rssi_offset[i] > 10) {
- 			dev_warn(dev->mt76.dev,
-@@ -377,7 +377,7 @@ mt76x0_set_tx_power_per_chan(struct mt76x0_dev *dev, u8 *eeprom)
- 	u8 tx_pwr;
- 
- 	for (i = 0; i < 14; i++) {
--		tx_pwr = eeprom[MT_EE_TX_POWER_OFFSET_2GHZ + i];
-+		tx_pwr = eeprom[MT_EE_TX_POWER_DELTA_BW80 + i];
- 		if (tx_pwr <= 0x3f && tx_pwr > 0)
- 			dev->ee->tx_pwr_per_chan[i] = tx_pwr;
- 		else
-@@ -385,7 +385,7 @@ mt76x0_set_tx_power_per_chan(struct mt76x0_dev *dev, u8 *eeprom)
- 	}
- 
- 	for (i = 0; i < 40; i++) {
--		tx_pwr = eeprom[MT_EE_TX_POWER_OFFSET_5GHZ + i];
-+		tx_pwr = eeprom[MT_EE_TX_POWER_0_GRP4_TSSI_SLOPE + 2 + i];
- 		if (tx_pwr <= 0x3f && tx_pwr > 0)
- 			dev->ee->tx_pwr_per_chan[14 + i] = tx_pwr;
- 		else
-@@ -422,12 +422,12 @@ mt76x0_eeprom_init(struct mt76x0_dev *dev)
- 			goto out;
- 	}
- 
--	if (eeprom[MT_EE_VERSION_EE] > MT76X0U_EE_MAX_VER)
-+	if (eeprom[MT_EE_VERSION + 1] > MT76X0U_EE_MAX_VER)
+ 	if (eeprom[MT_EE_VERSION + 1] > MT76X0U_EE_MAX_VER)
  		dev_warn(dev->mt76.dev,
- 			 "Warning: unsupported EEPROM version %02hhx\n",
--			 eeprom[MT_EE_VERSION_EE]);
-+			 eeprom[MT_EE_VERSION + 1]);
- 	dev_info(dev->mt76.dev, "EEPROM ver:%02hhx fae:%02hhx\n",
--		 eeprom[MT_EE_VERSION_EE], eeprom[MT_EE_VERSION_FAE]);
-+		 eeprom[MT_EE_VERSION + 1], eeprom[MT_EE_VERSION]);
- 
- 	mt76x0_set_macaddr(dev, eeprom);
- 	mt76x0_set_chip_cap(dev, eeprom);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-index cd0f14361405..1da90f056442 100644
+index 1da90f056442..1051e3216614 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-@@ -16,75 +16,12 @@
- #ifndef __MT76X0U_EEPROM_H
- #define __MT76X0U_EEPROM_H
+@@ -23,11 +23,6 @@ struct mt76x0_dev;
+ #define MT76X0U_EE_MAX_VER		0x0c
+ #define MT76X0_EEPROM_SIZE		512
  
--struct mt76x0_dev;
--
--#define MT76X0U_EE_MAX_VER			0x0c
--#define MT76X0_EEPROM_SIZE			512
--
--#define MT76X0U_DEFAULT_TX_POWER		6
--
--enum mt76_eeprom_field {
--	MT_EE_CHIP_ID =				0x00,
--	MT_EE_VERSION_FAE =			0x02,
--	MT_EE_VERSION_EE =			0x03,
--	MT_EE_MAC_ADDR =			0x04,
--	MT_EE_NIC_CONF_0 =			0x34,
--	MT_EE_NIC_CONF_1 =			0x36,
--	MT_EE_COUNTRY_REGION_5GHZ =		0x38,
--	MT_EE_COUNTRY_REGION_2GHZ =		0x39,
--	MT_EE_FREQ_OFFSET =			0x3a,
--	MT_EE_NIC_CONF_2 =			0x42,
--
--	MT_EE_LNA_GAIN_2GHZ =			0x44,
--	MT_EE_LNA_GAIN_5GHZ_0 =			0x45,
--	MT_EE_RSSI_OFFSET =			0x46,
--	MT_EE_RSSI_OFFSET_5GHZ =		0x4a,
--	MT_EE_LNA_GAIN_5GHZ_1 =			0x49,
--	MT_EE_LNA_GAIN_5GHZ_2 =			0x4d,
--
--	MT_EE_TX_POWER_DELTA_BW40 =		0x50,
--
--	MT_EE_TX_POWER_OFFSET_2GHZ =		0x52,
-+#include "../mt76x02_eeprom.h"
- 
--	MT_EE_TX_TSSI_SLOPE =			0x6e,
--	MT_EE_TX_TSSI_OFFSET_GROUP =		0x6f,
--	MT_EE_TX_TSSI_OFFSET =			0x76,
--
--	MT_EE_TX_POWER_OFFSET_5GHZ =		0x78,
--
--	MT_EE_TEMP_OFFSET =			0xd1,
--	MT_EE_FREQ_OFFSET_COMPENSATION =	0xdb,
--	MT_EE_TX_POWER_BYRATE_BASE =		0xde,
--
--	MT_EE_TX_POWER_BYRATE_BASE_5GHZ =	0x120,
--
--	MT_EE_USAGE_MAP_START =			0x1e0,
--	MT_EE_USAGE_MAP_END =			0x1fc,
+-enum mt76x0_eeprom_access_modes {
+-	MT_EE_READ = 0,
+-	MT_EE_PHYSICAL_READ = 1,
 -};
-+struct mt76x0_dev;
- 
--#define MT_EE_NIC_CONF_0_RX_PATH		GENMASK(3, 0)
--#define MT_EE_NIC_CONF_0_TX_PATH		GENMASK(7, 4)
--#define MT_EE_NIC_CONF_0_PA_TYPE		GENMASK(9, 8)
--#define MT_EE_NIC_CONF_0_BOARD_TYPE		GENMASK(13, 12)
 -
--#define MT_EE_NIC_CONF_1_HW_RF_CTRL		BIT(0)
--#define MT_EE_NIC_CONF_1_TEMP_TX_ALC		BIT(1)
--#define MT_EE_NIC_CONF_1_LNA_EXT_2G		BIT(2)
--#define MT_EE_NIC_CONF_1_LNA_EXT_5G		BIT(3)
--#define MT_EE_NIC_CONF_1_TX_ALC_EN		BIT(13)
--
--#define MT_EE_NIC_CONF_2_RX_STREAM		GENMASK(3, 0)
--#define MT_EE_NIC_CONF_2_TX_STREAM		GENMASK(7, 4)
--#define MT_EE_NIC_CONF_2_HW_ANTDIV		BIT(8)
--#define MT_EE_NIC_CONF_2_XTAL_OPTION		GENMASK(10, 9)
--#define MT_EE_NIC_CONF_2_TEMP_DISABLE		BIT(11)
--#define MT_EE_NIC_CONF_2_COEX_METHOD		GENMASK(15, 13)
--
--#define MT_EE_TX_POWER_BYRATE(i)		(MT_EE_TX_POWER_BYRATE_BASE + \
--						 (i) * 4)
--
--#define MT_EFUSE_USAGE_MAP_SIZE			(MT_EE_USAGE_MAP_END -	\
--						 MT_EE_USAGE_MAP_START + 1)
-+#define MT76X0U_EE_MAX_VER		0x0c
-+#define MT76X0_EEPROM_SIZE		512
- 
- enum mt76x0_eeprom_access_modes {
- 	MT_EE_READ = 0,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
+ struct reg_channel_bounds {
+ 	u8 start;
+ 	u8 num;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
 new file mode 100644
-index 000000000000..d50387f2ef46
+index 000000000000..21fe7eb0652d
 --- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
-@@ -0,0 +1,124 @@
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
+@@ -0,0 +1,72 @@
 +/*
 + * Copyright (C) 2016 Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
 + * Copyright (C) 2018 Lorenzo Bianconi <lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
@@ -197,206 +175,135 @@ index 000000000000..d50387f2ef46
 + * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 + */
 +
-+#ifndef __MT76x02_EEPROM_H
-+#define __MT76x02_EEPROM_H
++#include <asm/unaligned.h>
 +
-+enum mt76x02_eeprom_field {
-+	MT_EE_CHIP_ID =				0x000,
-+	MT_EE_VERSION =				0x002,
-+	MT_EE_MAC_ADDR =			0x004,
-+	MT_EE_PCI_ID =				0x00A,
-+	MT_EE_NIC_CONF_0 =			0x034,
-+	MT_EE_NIC_CONF_1 =			0x036,
-+	MT_EE_COUNTRY_REGION_5GHZ =		0x038,
-+	MT_EE_COUNTRY_REGION_2GHZ =		0x039,
-+	MT_EE_FREQ_OFFSET =			0x03a,
-+	MT_EE_NIC_CONF_2 =			0x042,
++#include "mt76.h"
++#include "mt76x02_eeprom.h"
++#include "mt76x02_regs.h"
 +
-+	MT_EE_XTAL_TRIM_1 =			0x03a,
-+	MT_EE_XTAL_TRIM_2 =			0x09e,
++static int
++mt76x02_efuse_read(struct mt76_dev *dev, u16 addr, u8 *data,
++		   enum mt76x02_eeprom_modes mode)
++{
++	u32 val;
++	int i;
 +
-+	MT_EE_LNA_GAIN =			0x044,
-+	MT_EE_RSSI_OFFSET_2G_0 =		0x046,
-+	MT_EE_RSSI_OFFSET_2G_1 =		0x048,
-+	MT_EE_LNA_GAIN_5GHZ_1 =			0x049,
-+	MT_EE_RSSI_OFFSET_5G_0 =		0x04a,
-+	MT_EE_RSSI_OFFSET_5G_1 =		0x04c,
-+	MT_EE_LNA_GAIN_5GHZ_2 =			0x04d,
++	val = __mt76_rr(dev, MT_EFUSE_CTRL);
++	val &= ~(MT_EFUSE_CTRL_AIN |
++		 MT_EFUSE_CTRL_MODE);
++	val |= FIELD_PREP(MT_EFUSE_CTRL_AIN, addr & ~0xf);
++	val |= FIELD_PREP(MT_EFUSE_CTRL_MODE, mode);
++	val |= MT_EFUSE_CTRL_KICK;
++	__mt76_wr(dev, MT_EFUSE_CTRL, val);
 +
-+	MT_EE_TX_POWER_DELTA_BW40 =		0x050,
-+	MT_EE_TX_POWER_DELTA_BW80 =		0x052,
++	if (!__mt76_poll_msec(dev, MT_EFUSE_CTRL, MT_EFUSE_CTRL_KICK,
++			      0, 1000))
++		return -ETIMEDOUT;
 +
-+	MT_EE_TX_POWER_EXT_PA_5G =		0x054,
++	udelay(2);
 +
-+	MT_EE_TX_POWER_0_START_2G =		0x056,
-+	MT_EE_TX_POWER_1_START_2G =		0x05c,
++	val = __mt76_rr(dev, MT_EFUSE_CTRL);
++	if ((val & MT_EFUSE_CTRL_AOUT) == MT_EFUSE_CTRL_AOUT) {
++		memset(data, 0xff, 16);
++		return 0;
++	}
 +
-+	/* used as byte arrays */
-+#define MT_TX_POWER_GROUP_SIZE_5G		5
-+#define MT_TX_POWER_GROUPS_5G			6
-+	MT_EE_TX_POWER_0_START_5G =		0x062,
++	for (i = 0; i < 4; i++) {
++		val = __mt76_rr(dev, MT_EFUSE_DATA(i));
++		put_unaligned_le32(val, data + 4 * i);
++	}
 +
-+	MT_EE_TX_POWER_0_GRP3_TX_POWER_DELTA =	0x074,
-+	MT_EE_TX_POWER_0_GRP4_TSSI_SLOPE =	0x076,
++	return 0;
++}
 +
-+	MT_EE_TX_POWER_1_START_5G =		0x080,
++int mt76x02_get_efuse_data(struct mt76_dev *dev, u16 base, void *buf,
++			   int len, enum mt76x02_eeprom_modes mode)
++{
++	int ret, i;
 +
-+	MT_EE_TX_POWER_CCK =			0x0a0,
-+	MT_EE_TX_POWER_OFDM_2G_6M =		0x0a2,
-+	MT_EE_TX_POWER_OFDM_2G_24M =		0x0a4,
-+	MT_EE_TX_POWER_OFDM_5G_6M =		0x0b2,
-+	MT_EE_TX_POWER_OFDM_5G_24M =		0x0b4,
-+	MT_EE_TX_POWER_HT_MCS0 =		0x0a6,
-+	MT_EE_TX_POWER_HT_MCS4 =		0x0a8,
-+	MT_EE_TX_POWER_HT_MCS8 =		0x0aa,
-+	MT_EE_TX_POWER_HT_MCS12 =		0x0ac,
-+	MT_EE_TX_POWER_VHT_MCS0 =		0x0ba,
-+	MT_EE_TX_POWER_VHT_MCS4 =		0x0bc,
-+	MT_EE_TX_POWER_VHT_MCS8 =		0x0be,
++	for (i = 0; i + 16 <= len; i += 16) {
++		ret = mt76x02_efuse_read(dev, base + i, buf + i, mode);
++		if (ret)
++			return ret;
++	}
 +
-+	MT_EE_TEMP_OFFSET =			0x0d1,
-+	MT_EE_FREQ_OFFSET_COMPENSATION =	0x0db,
-+	MT_EE_TX_POWER_BYRATE_BASE =		0x0de,
-+
-+	MT_EE_RF_TEMP_COMP_SLOPE_5G =		0x0f2,
-+	MT_EE_RF_TEMP_COMP_SLOPE_2G =		0x0f4,
-+
-+	MT_EE_RF_2G_TSSI_OFF_TXPOWER =		0x0f6,
-+	MT_EE_RF_2G_RX_HIGH_GAIN =		0x0f8,
-+	MT_EE_RF_5G_GRP0_1_RX_HIGH_GAIN =	0x0fa,
-+	MT_EE_RF_5G_GRP2_3_RX_HIGH_GAIN =	0x0fc,
-+	MT_EE_RF_5G_GRP4_5_RX_HIGH_GAIN =	0x0fe,
-+
-+	MT_EE_BT_RCAL_RESULT =			0x138,
-+	MT_EE_BT_VCDL_CALIBRATION =		0x13c,
-+	MT_EE_BT_PMUCFG =			0x13e,
-+
-+	MT_EE_USAGE_MAP_START =			0x1e0,
-+	MT_EE_USAGE_MAP_END =			0x1fc,
-+
-+	__MT_EE_MAX
++	return 0;
++}
++EXPORT_SYMBOL_GPL(mt76x02_get_efuse_data);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
+index 85dd4f9b97a5..852ea9b51e97 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
+@@ -121,6 +121,11 @@ enum mt76x02_eeprom_field {
+ #define MT_EFUSE_USAGE_MAP_SIZE			(MT_EE_USAGE_MAP_END - \
+ 						 MT_EE_USAGE_MAP_START + 1)
+ 
++enum mt76x02_eeprom_modes {
++	MT_EE_READ,
++	MT_EE_PHYSICAL_READ,
 +};
 +
-+#define MT_EE_NIC_CONF_0_RX_PATH		GENMASK(3, 0)
-+#define MT_EE_NIC_CONF_0_TX_PATH		GENMASK(7, 4)
-+#define MT_EE_NIC_CONF_0_PA_TYPE		GENMASK(9, 8)
-+#define MT_EE_NIC_CONF_0_PA_INT_2G		BIT(8)
-+#define MT_EE_NIC_CONF_0_PA_INT_5G		BIT(9)
-+#define MT_EE_NIC_CONF_0_BOARD_TYPE		GENMASK(13, 12)
+ static inline bool mt76x02_field_valid(u8 val)
+ {
+ 	return val != 0 && val != 0xff;
+@@ -146,4 +151,7 @@ mt76x02_eeprom_get(struct mt76_dev *dev,
+ 	return get_unaligned_le16(dev->eeprom.data + field);
+ }
+ 
++int mt76x02_get_efuse_data(struct mt76_dev *dev, u16 base, void *buf,
++			   int len, enum mt76x02_eeprom_modes mode);
 +
-+#define MT_EE_NIC_CONF_1_HW_RF_CTRL		BIT(0)
-+#define MT_EE_NIC_CONF_1_TEMP_TX_ALC		BIT(1)
-+#define MT_EE_NIC_CONF_1_LNA_EXT_2G		BIT(2)
-+#define MT_EE_NIC_CONF_1_LNA_EXT_5G		BIT(3)
-+#define MT_EE_NIC_CONF_1_TX_ALC_EN		BIT(13)
-+
-+#define MT_EE_NIC_CONF_2_RX_STREAM		GENMASK(3, 0)
-+#define MT_EE_NIC_CONF_2_TX_STREAM		GENMASK(7, 4)
-+#define MT_EE_NIC_CONF_2_HW_ANTDIV		BIT(8)
-+#define MT_EE_NIC_CONF_2_XTAL_OPTION		GENMASK(10, 9)
-+#define MT_EE_NIC_CONF_2_TEMP_DISABLE		BIT(11)
-+#define MT_EE_NIC_CONF_2_COEX_METHOD		GENMASK(15, 13)
-+
-+#define MT_EE_TX_POWER_BYRATE(x)		(MT_EE_TX_POWER_BYRATE_BASE + \
-+						 (x) * 4)
-+
-+#define MT_EFUSE_USAGE_MAP_SIZE			(MT_EE_USAGE_MAP_END - \
-+						 MT_EE_USAGE_MAP_START + 1)
-+
-+#endif /* __MT76x02_EEPROM_H */
+ #endif /* __MT76x02_EEPROM_H */
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
-index 807bf46e0dd9..7c3d65f9d18d 100644
+index aea8033f13ce..333faa44d7cc 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
-@@ -21,7 +21,7 @@
- #define EE_FIELD(_name, _value) [MT_EE_##_name] = (_value) | 1
+@@ -59,52 +59,6 @@ void mt76x2_eeprom_parse_hw_cap(struct mt76x2_dev *dev)
+ }
+ EXPORT_SYMBOL_GPL(mt76x2_eeprom_parse_hw_cap);
  
- static int
--mt76x2_eeprom_copy(struct mt76x2_dev *dev, enum mt76x2_eeprom_field field,
-+mt76x2_eeprom_copy(struct mt76x2_dev *dev, enum mt76x02_eeprom_field field,
- 		   void *dest, int len)
- {
- 	if (field + len > dev->mt76.eeprom.size)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.h
-index 0f3e4d2f4fee..64b91fb57e3b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.h
-@@ -17,88 +17,7 @@
- #ifndef __MT76x2_EEPROM_H
- #define __MT76x2_EEPROM_H
- 
--#include "mt76x2.h"
+-static int
+-mt76x2_efuse_read(struct mt76x2_dev *dev, u16 addr, u8 *data)
+-{
+-	u32 val;
+-	int i;
 -
--enum mt76x2_eeprom_field {
--	MT_EE_CHIP_ID =				0x000,
--	MT_EE_VERSION =				0x002,
--	MT_EE_MAC_ADDR =			0x004,
--	MT_EE_PCI_ID =				0x00A,
--	MT_EE_NIC_CONF_0 =			0x034,
--	MT_EE_NIC_CONF_1 =			0x036,
--	MT_EE_NIC_CONF_2 =			0x042,
+-	val = mt76_rr(dev, MT_EFUSE_CTRL);
+-	val &= ~(MT_EFUSE_CTRL_AIN |
+-		 MT_EFUSE_CTRL_MODE);
+-	val |= FIELD_PREP(MT_EFUSE_CTRL_AIN, addr & ~0xf);
+-	val |= MT_EFUSE_CTRL_KICK;
+-	mt76_wr(dev, MT_EFUSE_CTRL, val);
 -
--	MT_EE_XTAL_TRIM_1 =			0x03a,
--	MT_EE_XTAL_TRIM_2 =			0x09e,
+-	if (!mt76_poll(dev, MT_EFUSE_CTRL, MT_EFUSE_CTRL_KICK, 0, 1000))
+-		return -ETIMEDOUT;
 -
--	MT_EE_LNA_GAIN =			0x044,
--	MT_EE_RSSI_OFFSET_2G_0 =		0x046,
--	MT_EE_RSSI_OFFSET_2G_1 =		0x048,
--	MT_EE_RSSI_OFFSET_5G_0 =		0x04a,
--	MT_EE_RSSI_OFFSET_5G_1 =		0x04c,
+-	udelay(2);
 -
--	MT_EE_TX_POWER_DELTA_BW40 =		0x050,
--	MT_EE_TX_POWER_DELTA_BW80 =		0x052,
+-	val = mt76_rr(dev, MT_EFUSE_CTRL);
+-	if ((val & MT_EFUSE_CTRL_AOUT) == MT_EFUSE_CTRL_AOUT) {
+-		memset(data, 0xff, 16);
+-		return 0;
+-	}
 -
--	MT_EE_TX_POWER_EXT_PA_5G =		0x054,
+-	for (i = 0; i < 4; i++) {
+-		val = mt76_rr(dev, MT_EFUSE_DATA(i));
+-		put_unaligned_le32(val, data + 4 * i);
+-	}
 -
--	MT_EE_TX_POWER_0_START_2G =		0x056,
--	MT_EE_TX_POWER_1_START_2G =		0x05c,
+-	return 0;
+-}
 -
--	/* used as byte arrays */
--#define MT_TX_POWER_GROUP_SIZE_5G		5
--#define MT_TX_POWER_GROUPS_5G			6
--	MT_EE_TX_POWER_0_START_5G =		0x062,
+-static int
+-mt76x2_get_efuse_data(struct mt76x2_dev *dev, void *buf, int len)
+-{
+-	int ret, i;
 -
--	MT_EE_TX_POWER_0_GRP3_TX_POWER_DELTA =	0x074,
--	MT_EE_TX_POWER_0_GRP4_TSSI_SLOPE =	0x076,
+-	for (i = 0; i + 16 <= len; i += 16) {
+-		ret = mt76x2_efuse_read(dev, i, buf + i);
+-		if (ret)
+-			return ret;
+-	}
 -
--	MT_EE_TX_POWER_1_START_5G =		0x080,
--
--	MT_EE_TX_POWER_CCK =			0x0a0,
--	MT_EE_TX_POWER_OFDM_2G_6M =		0x0a2,
--	MT_EE_TX_POWER_OFDM_2G_24M =		0x0a4,
--	MT_EE_TX_POWER_OFDM_5G_6M =		0x0b2,
--	MT_EE_TX_POWER_OFDM_5G_24M =		0x0b4,
--	MT_EE_TX_POWER_HT_MCS0 =		0x0a6,
--	MT_EE_TX_POWER_HT_MCS4 =		0x0a8,
--	MT_EE_TX_POWER_HT_MCS8 =		0x0aa,
--	MT_EE_TX_POWER_HT_MCS12 =		0x0ac,
--	MT_EE_TX_POWER_VHT_MCS0 =		0x0ba,
--	MT_EE_TX_POWER_VHT_MCS4 =		0x0bc,
--	MT_EE_TX_POWER_VHT_MCS8 =		0x0be,
--
--	MT_EE_RF_TEMP_COMP_SLOPE_5G =		0x0f2,
--	MT_EE_RF_TEMP_COMP_SLOPE_2G =		0x0f4,
--
--	MT_EE_RF_2G_TSSI_OFF_TXPOWER =		0x0f6,
--	MT_EE_RF_2G_RX_HIGH_GAIN =		0x0f8,
--	MT_EE_RF_5G_GRP0_1_RX_HIGH_GAIN =	0x0fa,
--	MT_EE_RF_5G_GRP2_3_RX_HIGH_GAIN =	0x0fc,
--	MT_EE_RF_5G_GRP4_5_RX_HIGH_GAIN =	0x0fe,
--
--	MT_EE_BT_RCAL_RESULT =			0x138,
--	MT_EE_BT_VCDL_CALIBRATION =		0x13c,
--	MT_EE_BT_PMUCFG =			0x13e,
--
--	__MT_EE_MAX
--};
--
--#define MT_EE_NIC_CONF_0_PA_INT_2G		BIT(8)
--#define MT_EE_NIC_CONF_0_PA_INT_5G		BIT(9)
--#define MT_EE_NIC_CONF_0_BOARD_TYPE		GENMASK(13, 12)
--
--#define MT_EE_NIC_CONF_1_TEMP_TX_ALC		BIT(1)
--#define MT_EE_NIC_CONF_1_LNA_EXT_2G		BIT(2)
--#define MT_EE_NIC_CONF_1_LNA_EXT_5G		BIT(3)
--#define MT_EE_NIC_CONF_1_TX_ALC_EN		BIT(13)
+-	return 0;
+-}
