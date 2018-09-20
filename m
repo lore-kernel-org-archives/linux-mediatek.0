@@ -1,70 +1,108 @@
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 00/20] unify mt76x2 and mt76x0 eeprom code
-Date: Thu, 20 Sep 2018 11:11:47 +0200
-Message-ID: <cover.1537433365.git.lorenzo.bianconi@redhat.com>
+Subject: [PATCH 01/20] mt76: move seq_put_array in mt76-core module
+Date: Thu, 20 Sep 2018 11:11:48 +0200
+Message-ID: <c908dfcaf7a0f5333e6ebd6fb5f7a9a58961c7a0.1537433365.git.lorenzo.bianconi@redhat.com>
+References: <cover.1537433365.git.lorenzo.bianconi@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <cover.1537433365.git.lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: nbd-Vt+b4OUoWG0@public.gmane.org
 Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This series unify most of eeprom parsing between mt76x2 and
-mt76x0 driver. That patchset will be used to properly support
-mt76x0e chipsets without duplicating the code.
+Move seq_put_array utility routine in mt76-core module
+in order to be reused in mt76x0 driver
 
-Lorenzo Bianconi (19):
-  mt76: move seq_put_array in mt76-core module
-  mt76: move common eeprom definitions in mt76x02-lib module
-  mt76: move eeprom utility routines in mt76x02_eeprom.h
-  mt76: move mt76x2_eeprom_get in mt76x02_eeprom.h
-  mt76: move mt76x02_mac_setaddr in mt76x02-lib module
-  mt76: move mt76x2_get_efuse_data in mt76x02-lib module
-  mt76: move mt76x2_ext_pa_enabled routine in mt76x02_eeprom.c
-  mt76x0: remove mt76x0_set_country_reg routine
-  mt76: add mt76x02_get_rx_gain and mt76x02_get_lna_gain utility
-    routines
-  mt76x0: unify lna_gain parsing
-  mt76x0: unify rssi_offset parsing
-  mt76x0: unify temperature offset parsing
-  mt76x0: unify freq offset parsing
-  mt76: move mt76x02_eeprom_parse_hw_cap in mt76x02-lib module
-  mt76x0: unify parse hw capabilities
-  mt76: move mt76x2_tssi_enabled in mt76x02_eeprom.h
-  mt76x0: remove eeprom dependency from mt76x0_set_tx_power_per_rate
-  mt76x0: remove eeprom dependency from mt76x0_set_tx_power_per_chan
-  mt76x0: use shared debugfs implementation
+Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+---
+ drivers/net/wireless/mediatek/mt76/debugfs.c  | 12 +++++++
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  2 ++
+ .../wireless/mediatek/mt76/mt76x2_debugfs.c   | 31 ++++++-------------
+ 3 files changed, 24 insertions(+), 21 deletions(-)
 
-Felix Fietkau (1):
-  mt76: add stbc entries to mt76_rate_power
-
- drivers/net/wireless/mediatek/mt76/Makefile   |   3 +-
- drivers/net/wireless/mediatek/mt76/debugfs.c  |  12 +
- drivers/net/wireless/mediatek/mt76/mt76.h     |   5 +-
- .../wireless/mediatek/mt76/mt76x0/debugfs.c   |  92 +---
- .../wireless/mediatek/mt76/mt76x0/eeprom.c    | 513 +++++++-----------
- .../wireless/mediatek/mt76/mt76x0/eeprom.h    | 119 +---
- .../wireless/mediatek/mt76/mt76x0/mt76x0.h    |   5 +-
- .../net/wireless/mediatek/mt76/mt76x0/phy.c   |  68 +--
- .../wireless/mediatek/mt76/mt76x02_eeprom.c   | 156 ++++++
- .../wireless/mediatek/mt76/mt76x02_eeprom.h   | 194 +++++++
- .../net/wireless/mediatek/mt76/mt76x02_mac.c  |  18 +
- .../net/wireless/mediatek/mt76/mt76x02_mac.h  |   1 +
- .../wireless/mediatek/mt76/mt76x2_debugfs.c   |  33 +-
- .../wireless/mediatek/mt76/mt76x2_eeprom.c    | 239 +++-----
- .../wireless/mediatek/mt76/mt76x2_eeprom.h    | 122 +----
- .../net/wireless/mediatek/mt76/mt76x2_init.c  |   6 +-
- .../net/wireless/mediatek/mt76/mt76x2_mcu.c   |   2 +-
- .../mediatek/mt76/mt76x2_mcu_common.c         |   5 +-
- .../net/wireless/mediatek/mt76/mt76x2_phy.c   |   8 +-
- .../mediatek/mt76/mt76x2_phy_common.c         |  16 +-
- drivers/net/wireless/mediatek/mt76/mt76x2u.h  |   1 -
- .../net/wireless/mediatek/mt76/mt76x2u_init.c |   5 +-
- .../net/wireless/mediatek/mt76/mt76x2u_mac.c  |  24 +-
- .../net/wireless/mediatek/mt76/mt76x2u_main.c |   2 +-
- .../net/wireless/mediatek/mt76/mt76x2u_phy.c  |   6 +-
- 25 files changed, 740 insertions(+), 915 deletions(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
-
+diff --git a/drivers/net/wireless/mediatek/mt76/debugfs.c b/drivers/net/wireless/mediatek/mt76/debugfs.c
+index a38d05dea599..03ce635334fa 100644
+--- a/drivers/net/wireless/mediatek/mt76/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/debugfs.c
+@@ -56,6 +56,18 @@ mt76_queues_read(struct seq_file *s, void *data)
+ 	return 0;
+ }
+ 
++void mt76_seq_puts_array(struct seq_file *file, const char *str,
++			 s8 *val, int len)
++{
++	int i;
++
++	seq_printf(file, "%10s:", str);
++	for (i = 0; i < len; i++)
++		seq_printf(file, " %2d", val[i]);
++	seq_puts(file, "\n");
++}
++EXPORT_SYMBOL_GPL(mt76_seq_puts_array);
++
+ struct dentry *mt76_register_debugfs(struct mt76_dev *dev)
+ {
+ 	struct dentry *dir;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index dbda49243a10..b4980959efa7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -539,6 +539,8 @@ int mt76_register_device(struct mt76_dev *dev, bool vht,
+ void mt76_unregister_device(struct mt76_dev *dev);
+ 
+ struct dentry *mt76_register_debugfs(struct mt76_dev *dev);
++void mt76_seq_puts_array(struct seq_file *file, const char *str,
++			 s8 *val, int len);
+ 
+ int mt76_eeprom_init(struct mt76_dev *dev, int len);
+ void mt76_eeprom_override(struct mt76_dev *dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_debugfs.c b/drivers/net/wireless/mediatek/mt76/mt76x2_debugfs.c
+index 77b5ff1be05f..2cd0d8200a57 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_debugfs.c
+@@ -47,33 +47,22 @@ mt76x2_ampdu_stat_open(struct inode *inode, struct file *f)
+ 	return single_open(f, mt76x2_ampdu_stat_read, inode->i_private);
+ }
+ 
+-static void
+-seq_puts_array(struct seq_file *file, const char *str, s8 *val, int len)
+-{
+-	int i;
+-
+-	seq_printf(file, "%10s:", str);
+-	for (i = 0; i < len; i++)
+-		seq_printf(file, " %2d", val[i]);
+-	seq_puts(file, "\n");
+-}
+-
+ static int read_txpower(struct seq_file *file, void *data)
+ {
+ 	struct mt76x2_dev *dev = dev_get_drvdata(file->private);
+ 
+ 	seq_printf(file, "Target power: %d\n", dev->target_power);
+ 
+-	seq_puts_array(file, "Delta", dev->target_power_delta,
+-		       ARRAY_SIZE(dev->target_power_delta));
+-	seq_puts_array(file, "CCK", dev->rate_power.cck,
+-		       ARRAY_SIZE(dev->rate_power.cck));
+-	seq_puts_array(file, "OFDM", dev->rate_power.ofdm,
+-		       ARRAY_SIZE(dev->rate_power.ofdm));
+-	seq_puts_array(file, "HT", dev->rate_power.ht,
+-		       ARRAY_SIZE(dev->rate_power.ht));
+-	seq_puts_array(file, "VHT", dev->rate_power.vht,
+-		       ARRAY_SIZE(dev->rate_power.vht));
++	mt76_seq_puts_array(file, "Delta", dev->target_power_delta,
++			    ARRAY_SIZE(dev->target_power_delta));
++	mt76_seq_puts_array(file, "CCK", dev->rate_power.cck,
++			    ARRAY_SIZE(dev->rate_power.cck));
++	mt76_seq_puts_array(file, "OFDM", dev->rate_power.ofdm,
++			    ARRAY_SIZE(dev->rate_power.ofdm));
++	mt76_seq_puts_array(file, "HT", dev->rate_power.ht,
++			    ARRAY_SIZE(dev->rate_power.ht));
++	mt76_seq_puts_array(file, "VHT", dev->rate_power.vht,
++			    ARRAY_SIZE(dev->rate_power.vht));
+ 	return 0;
+ }
+ 
 -- 
 2.17.1
