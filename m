@@ -1,7 +1,7 @@
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 01/20] mt76: move seq_put_array in mt76-core module
-Date: Thu, 20 Sep 2018 11:11:48 +0200
-Message-ID: <c908dfcaf7a0f5333e6ebd6fb5f7a9a58961c7a0.1537433365.git.lorenzo.bianconi@redhat.com>
+Subject: [PATCH 04/20] mt76: move eeprom utility routines in mt76x02_eeprom.h
+Date: Thu, 20 Sep 2018 11:11:51 +0200
+Message-ID: <d8b6dac36415f59d302aff65a4aae3f88b3efe74.1537433365.git.lorenzo.bianconi@redhat.com>
 References: <cover.1537433365.git.lorenzo.bianconi@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <cover.1537433365.git.lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,99 +10,229 @@ To: nbd-Vt+b4OUoWG0@public.gmane.org
 Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Move seq_put_array utility routine in mt76-core module
-in order to be reused in mt76x0 driver
+Move shared eeprom utility routines in mt76x02_eeprom.h and
+remove duplicated code
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/debugfs.c  | 12 +++++++
- drivers/net/wireless/mediatek/mt76/mt76.h     |  2 ++
- .../wireless/mediatek/mt76/mt76x2_debugfs.c   | 31 ++++++-------------
- 3 files changed, 24 insertions(+), 21 deletions(-)
+ .../wireless/mediatek/mt76/mt76x0/eeprom.c    | 44 +++++--------------
+ .../wireless/mediatek/mt76/mt76x02_eeprom.h   | 15 +++++++
+ .../wireless/mediatek/mt76/mt76x2_eeprom.c    | 37 +++++-----------
+ 3 files changed, 38 insertions(+), 58 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/debugfs.c b/drivers/net/wireless/mediatek/mt76/debugfs.c
-index a38d05dea599..03ce635334fa 100644
---- a/drivers/net/wireless/mediatek/mt76/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/debugfs.c
-@@ -56,6 +56,18 @@ mt76_queues_read(struct seq_file *s, void *data)
- 	return 0;
- }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
+index 8a8244c1cdaa..c935d98f5710 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
+@@ -21,31 +21,6 @@
+ #include "mt76x0.h"
+ #include "eeprom.h"
  
-+void mt76_seq_puts_array(struct seq_file *file, const char *str,
-+			 s8 *val, int len)
-+{
-+	int i;
-+
-+	seq_printf(file, "%10s:", str);
-+	for (i = 0; i < len; i++)
-+		seq_printf(file, " %2d", val[i]);
-+	seq_puts(file, "\n");
-+}
-+EXPORT_SYMBOL_GPL(mt76_seq_puts_array);
-+
- struct dentry *mt76_register_debugfs(struct mt76_dev *dev)
- {
- 	struct dentry *dir;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index dbda49243a10..b4980959efa7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -539,6 +539,8 @@ int mt76_register_device(struct mt76_dev *dev, bool vht,
- void mt76_unregister_device(struct mt76_dev *dev);
- 
- struct dentry *mt76_register_debugfs(struct mt76_dev *dev);
-+void mt76_seq_puts_array(struct seq_file *file, const char *str,
-+			 s8 *val, int len);
- 
- int mt76_eeprom_init(struct mt76_dev *dev, int len);
- void mt76_eeprom_override(struct mt76_dev *dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_debugfs.c b/drivers/net/wireless/mediatek/mt76/mt76x2_debugfs.c
-index 77b5ff1be05f..2cd0d8200a57 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2_debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2_debugfs.c
-@@ -47,33 +47,22 @@ mt76x2_ampdu_stat_open(struct inode *inode, struct file *f)
- 	return single_open(f, mt76x2_ampdu_stat_read, inode->i_private);
- }
- 
--static void
--seq_puts_array(struct seq_file *file, const char *str, s8 *val, int len)
+-static bool
+-field_valid(u8 val)
 -{
--	int i;
--
--	seq_printf(file, "%10s:", str);
--	for (i = 0; i < len; i++)
--		seq_printf(file, " %2d", val[i]);
--	seq_puts(file, "\n");
+-	return val != 0xff;
 -}
 -
- static int read_txpower(struct seq_file *file, void *data)
+-static s8
+-field_validate(u8 val)
+-{
+-	if (!field_valid(val))
+-		return 0;
+-
+-	return val;
+-}
+-
+-static inline int
+-sign_extend(u32 val, unsigned int size)
+-{
+-	bool sign = val & BIT(size - 1);
+-
+-	val &= BIT(size - 1) - 1;
+-
+-	return sign ? val : -val;
+-}
+-
+ static int
+ mt76x0_efuse_read(struct mt76x0_dev *dev, u16 addr, u8 *data,
+ 		   enum mt76x0_eeprom_access_modes mode)
+@@ -137,14 +112,14 @@ mt76x0_set_chip_cap(struct mt76x0_dev *dev, u8 *eeprom)
+ 	dev_dbg(dev->mt76.dev, "Has 2GHZ %d 5GHZ %d\n",
+ 		dev->mt76.cap.has_2ghz, dev->mt76.cap.has_5ghz);
+ 
+-	if (!field_valid(nic_conf1 & 0xff))
++	if (!mt76x02_field_valid(nic_conf1 & 0xff))
+ 		nic_conf1 &= 0xff00;
+ 
+ 	if (nic_conf1 & MT_EE_NIC_CONF_1_HW_RF_CTRL)
+ 		dev_err(dev->mt76.dev,
+ 			"Error: this driver does not support HW RF ctrl\n");
+ 
+-	if (!field_valid(nic_conf0 >> 8))
++	if (!mt76x02_field_valid(nic_conf0 >> 8))
+ 		return;
+ 
+ 	if (FIELD_GET(MT_EE_NIC_CONF_0_RX_PATH, nic_conf0) > 1 ||
+@@ -183,8 +158,8 @@ mt76x0_set_temp_offset(struct mt76x0_dev *dev, u8 *eeprom)
  {
- 	struct mt76x2_dev *dev = dev_get_drvdata(file->private);
+ 	u8 temp = eeprom[MT_EE_TEMP_OFFSET];
  
- 	seq_printf(file, "Target power: %d\n", dev->target_power);
+-	if (field_valid(temp))
+-		dev->ee->temp_off = sign_extend(temp, 8);
++	if (mt76x02_field_valid(temp))
++		dev->ee->temp_off = mt76x02_sign_extend(temp, 8);
+ 	else
+ 		dev->ee->temp_off = -10;
+ }
+@@ -231,8 +206,13 @@ mt76x0_set_rf_freq_off(struct mt76x0_dev *dev, u8 *eeprom)
+ {
+ 	u8 comp;
  
--	seq_puts_array(file, "Delta", dev->target_power_delta,
--		       ARRAY_SIZE(dev->target_power_delta));
--	seq_puts_array(file, "CCK", dev->rate_power.cck,
--		       ARRAY_SIZE(dev->rate_power.cck));
--	seq_puts_array(file, "OFDM", dev->rate_power.ofdm,
--		       ARRAY_SIZE(dev->rate_power.ofdm));
--	seq_puts_array(file, "HT", dev->rate_power.ht,
--		       ARRAY_SIZE(dev->rate_power.ht));
--	seq_puts_array(file, "VHT", dev->rate_power.vht,
--		       ARRAY_SIZE(dev->rate_power.vht));
-+	mt76_seq_puts_array(file, "Delta", dev->target_power_delta,
-+			    ARRAY_SIZE(dev->target_power_delta));
-+	mt76_seq_puts_array(file, "CCK", dev->rate_power.cck,
-+			    ARRAY_SIZE(dev->rate_power.cck));
-+	mt76_seq_puts_array(file, "OFDM", dev->rate_power.ofdm,
-+			    ARRAY_SIZE(dev->rate_power.ofdm));
-+	mt76_seq_puts_array(file, "HT", dev->rate_power.ht,
-+			    ARRAY_SIZE(dev->rate_power.ht));
-+	mt76_seq_puts_array(file, "VHT", dev->rate_power.vht,
-+			    ARRAY_SIZE(dev->rate_power.vht));
+-	dev->ee->rf_freq_off = field_validate(eeprom[MT_EE_FREQ_OFFSET]);
+-	comp = field_validate(eeprom[MT_EE_FREQ_OFFSET_COMPENSATION]);
++	comp = eeprom[MT_EE_FREQ_OFFSET_COMPENSATION];
++	if (!mt76x02_field_valid(comp))
++		comp = 0;
++
++	dev->ee->rf_freq_off = eeprom[MT_EE_FREQ_OFFSET];
++	if (!mt76x02_field_valid(dev->ee->rf_freq_off))
++		dev->ee->rf_freq_off = 0;
+ 
+ 	if (comp & BIT(7))
+ 		dev->ee->rf_freq_off -= comp & 0x7f;
+@@ -311,7 +291,7 @@ get_delta(u8 val)
+ {
+ 	s8 ret;
+ 
+-	if (!field_valid(val) || !(val & BIT(7)))
++	if (!mt76x02_field_valid(val) || !(val & BIT(7)))
+ 		return 0;
+ 
+ 	ret = val & 0x1f;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
+index d50387f2ef46..1575c2352d9b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
+@@ -121,4 +121,19 @@ enum mt76x02_eeprom_field {
+ #define MT_EFUSE_USAGE_MAP_SIZE			(MT_EE_USAGE_MAP_END - \
+ 						 MT_EE_USAGE_MAP_START + 1)
+ 
++static inline bool mt76x02_field_valid(u8 val)
++{
++	return val != 0 && val != 0xff;
++}
++
++static inline int
++mt76x02_sign_extend(u32 val, unsigned int size)
++{
++	bool sign = val & BIT(size - 1);
++
++	val &= BIT(size - 1) - 1;
++
++	return sign ? val : -val;
++}
++
+ #endif /* __MT76x02_EEPROM_H */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
+index 7c3d65f9d18d..2db495d9f99f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
+@@ -259,28 +259,12 @@ mt76x2_eeprom_load(struct mt76x2_dev *dev)
  	return 0;
  }
  
+-static inline int
+-mt76x2_sign_extend(u32 val, unsigned int size)
+-{
+-	bool sign = val & BIT(size - 1);
+-
+-	val &= BIT(size - 1) - 1;
+-
+-	return sign ? val : -val;
+-}
+-
+ static inline int
+ mt76x2_sign_extend_optional(u32 val, unsigned int size)
+ {
+ 	bool enable = val & BIT(size);
+ 
+-	return enable ? mt76x2_sign_extend(val, size) : 0;
+-}
+-
+-static bool
+-field_valid(u8 val)
+-{
+-	return val != 0 && val != 0xff;
++	return enable ? mt76x02_sign_extend(val, size) : 0;
+ }
+ 
+ static void
+@@ -288,14 +272,14 @@ mt76x2_set_rx_gain_group(struct mt76x2_dev *dev, u8 val)
+ {
+ 	s8 *dest = dev->cal.rx.high_gain;
+ 
+-	if (!field_valid(val)) {
++	if (!mt76x02_field_valid(val)) {
+ 		dest[0] = 0;
+ 		dest[1] = 0;
+ 		return;
+ 	}
+ 
+-	dest[0] = mt76x2_sign_extend(val, 4);
+-	dest[1] = mt76x2_sign_extend(val >> 4, 4);
++	dest[0] = mt76x02_sign_extend(val, 4);
++	dest[1] = mt76x02_sign_extend(val >> 4, 4);
+ }
+ 
+ static void
+@@ -303,7 +287,7 @@ mt76x2_set_rssi_offset(struct mt76x2_dev *dev, int chain, u8 val)
+ {
+ 	s8 *dest = dev->cal.rx.rssi_offset;
+ 
+-	if (!field_valid(val)) {
++	if (!mt76x02_field_valid(val)) {
+ 		dest[chain] = 0;
+ 		return;
+ 	}
+@@ -384,10 +368,10 @@ void mt76x2_read_rx_gain(struct mt76x2_dev *dev)
+ 	val = mt76x2_eeprom_get(dev, MT_EE_RSSI_OFFSET_5G_1);
+ 	lna_5g[2] = val >> 8;
+ 
+-	if (!field_valid(lna_5g[1]))
++	if (!mt76x02_field_valid(lna_5g[1]))
+ 		lna_5g[1] = lna_5g[0];
+ 
+-	if (!field_valid(lna_5g[2]))
++	if (!mt76x02_field_valid(lna_5g[2]))
+ 		lna_5g[2] = lna_5g[0];
+ 
+ 	dev->cal.rx.mcu_gain =  (lna_2g & 0xff);
+@@ -413,14 +397,14 @@ void mt76x2_read_rx_gain(struct mt76x2_dev *dev)
+ 	if (lna == 0xff)
+ 		lna = 0;
+ 
+-	dev->cal.rx.lna_gain = mt76x2_sign_extend(lna, 8);
++	dev->cal.rx.lna_gain = mt76x02_sign_extend(lna, 8);
+ }
+ EXPORT_SYMBOL_GPL(mt76x2_read_rx_gain);
+ 
+ static s8
+ mt76x2_rate_power_val(u8 val)
+ {
+-	if (!field_valid(val))
++	if (!mt76x02_field_valid(val))
+ 		return 0;
+ 
+ 	return mt76x2_sign_extend_optional(val, 7);
+@@ -598,7 +582,8 @@ void mt76x2_get_power_info(struct mt76x2_dev *dev,
+ 					 MT_EE_TX_POWER_1_START_2G);
+ 	}
+ 
+-	if (mt76x2_tssi_enabled(dev) || !field_valid(t->target_power))
++	if (mt76x2_tssi_enabled(dev) ||
++	    !mt76x02_field_valid(t->target_power))
+ 		t->target_power = t->chain[0].target_power;
+ 
+ 	t->delta_bw40 = mt76x2_rate_power_val(bw40);
 -- 
 2.17.1
