@@ -1,63 +1,70 @@
-From: Long Cheng <long.cheng@mediatek.com>
-Subject: [PATCH 1/4] dt-bindings: dma: uart: add uart dma bindings
-Date: Thu, 20 Sep 2018 14:41:10 +0800
-Message-ID: <1537425673-18807-2-git-send-email-long.cheng@mediatek.com>
-References: <1537425673-18807-1-git-send-email-long.cheng@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1537425673-18807-1-git-send-email-long.cheng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Ed Blake <ed.blake@sondrel.com>, Long Cheng <long.cheng@mediatek.com>, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, YT Shen <yt.shen@mediatek.com>
+From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH 00/20] unify mt76x2 and mt76x0 eeprom code
+Date: Thu, 20 Sep 2018 11:11:47 +0200
+Message-ID: <cover.1537433365.git.lorenzo.bianconi@redhat.com>
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: nbd-Vt+b4OUoWG0@public.gmane.org
+Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-add uart dma bindings
+This series unify most of eeprom parsing between mt76x2 and
+mt76x0 driver. That patchset will be used to properly support
+mt76x0e chipsets without duplicating the code.
 
-Signed-off-by: Long Cheng <long.cheng@mediatek.com>
----
- .../devicetree/bindings/dma/8250_mtk_dma.txt       |   32 ++++++++++++++++++++
- 1 file changed, 32 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/dma/8250_mtk_dma.txt
+Lorenzo Bianconi (19):
+  mt76: move seq_put_array in mt76-core module
+  mt76: move common eeprom definitions in mt76x02-lib module
+  mt76: move eeprom utility routines in mt76x02_eeprom.h
+  mt76: move mt76x2_eeprom_get in mt76x02_eeprom.h
+  mt76: move mt76x02_mac_setaddr in mt76x02-lib module
+  mt76: move mt76x2_get_efuse_data in mt76x02-lib module
+  mt76: move mt76x2_ext_pa_enabled routine in mt76x02_eeprom.c
+  mt76x0: remove mt76x0_set_country_reg routine
+  mt76: add mt76x02_get_rx_gain and mt76x02_get_lna_gain utility
+    routines
+  mt76x0: unify lna_gain parsing
+  mt76x0: unify rssi_offset parsing
+  mt76x0: unify temperature offset parsing
+  mt76x0: unify freq offset parsing
+  mt76: move mt76x02_eeprom_parse_hw_cap in mt76x02-lib module
+  mt76x0: unify parse hw capabilities
+  mt76: move mt76x2_tssi_enabled in mt76x02_eeprom.h
+  mt76x0: remove eeprom dependency from mt76x0_set_tx_power_per_rate
+  mt76x0: remove eeprom dependency from mt76x0_set_tx_power_per_chan
+  mt76x0: use shared debugfs implementation
 
-diff --git a/Documentation/devicetree/bindings/dma/8250_mtk_dma.txt b/Documentation/devicetree/bindings/dma/8250_mtk_dma.txt
-new file mode 100644
-index 0000000..b140cf4
---- /dev/null
-+++ b/Documentation/devicetree/bindings/dma/8250_mtk_dma.txt
-@@ -0,0 +1,32 @@
-+* Mediatek UART APDMA Controller
-+
-+Required properties:
-+- compatible should contain:
-+  * "mediatek,mt2712-uart-dma" for MT2712 compatible APDMA
-+  * "mediatek,mt6577-uart-dma" for MT6577 and all of the above
-+
-+- reg: The base address of the APDMA register bank.
-+
-+- interrupts: A single interrupt specifier.
-+
-+- clocks : Must contain an entry for each entry in clock-names.
-+  See ../clocks/clock-bindings.txt for details.
-+- clock-names: The APDMA clock for register accesses
-+
-+Examples:
-+
-+	apdma: dma-controller@11000380 {
-+		compatible = "mediatek,mt2712-uart-dma";
-+		reg = <0 0x11000380 0 0x400>;
-+		interrupts = <GIC_SPI 63 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 64 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 65 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 66 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 67 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 68 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 69 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 70 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&pericfg CLK_PERI_AP_DMA>;
-+		clock-names = "apdma";
-+		#dma-cells = <1>;
-+	};
-\ No newline at end of file
+Felix Fietkau (1):
+  mt76: add stbc entries to mt76_rate_power
+
+ drivers/net/wireless/mediatek/mt76/Makefile   |   3 +-
+ drivers/net/wireless/mediatek/mt76/debugfs.c  |  12 +
+ drivers/net/wireless/mediatek/mt76/mt76.h     |   5 +-
+ .../wireless/mediatek/mt76/mt76x0/debugfs.c   |  92 +---
+ .../wireless/mediatek/mt76/mt76x0/eeprom.c    | 513 +++++++-----------
+ .../wireless/mediatek/mt76/mt76x0/eeprom.h    | 119 +---
+ .../wireless/mediatek/mt76/mt76x0/mt76x0.h    |   5 +-
+ .../net/wireless/mediatek/mt76/mt76x0/phy.c   |  68 +--
+ .../wireless/mediatek/mt76/mt76x02_eeprom.c   | 156 ++++++
+ .../wireless/mediatek/mt76/mt76x02_eeprom.h   | 194 +++++++
+ .../net/wireless/mediatek/mt76/mt76x02_mac.c  |  18 +
+ .../net/wireless/mediatek/mt76/mt76x02_mac.h  |   1 +
+ .../wireless/mediatek/mt76/mt76x2_debugfs.c   |  33 +-
+ .../wireless/mediatek/mt76/mt76x2_eeprom.c    | 239 +++-----
+ .../wireless/mediatek/mt76/mt76x2_eeprom.h    | 122 +----
+ .../net/wireless/mediatek/mt76/mt76x2_init.c  |   6 +-
+ .../net/wireless/mediatek/mt76/mt76x2_mcu.c   |   2 +-
+ .../mediatek/mt76/mt76x2_mcu_common.c         |   5 +-
+ .../net/wireless/mediatek/mt76/mt76x2_phy.c   |   8 +-
+ .../mediatek/mt76/mt76x2_phy_common.c         |  16 +-
+ drivers/net/wireless/mediatek/mt76/mt76x2u.h  |   1 -
+ .../net/wireless/mediatek/mt76/mt76x2u_init.c |   5 +-
+ .../net/wireless/mediatek/mt76/mt76x2u_mac.c  |  24 +-
+ .../net/wireless/mediatek/mt76/mt76x2u_main.c |   2 +-
+ .../net/wireless/mediatek/mt76/mt76x2u_phy.c  |   6 +-
+ 25 files changed, 740 insertions(+), 915 deletions(-)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
+
 -- 
-1.7.9.5
+2.17.1
