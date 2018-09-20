@@ -1,7 +1,7 @@
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 15/20] mt76: move mt76x02_eeprom_parse_hw_cap in mt76x02-lib module
-Date: Thu, 20 Sep 2018 11:12:02 +0200
-Message-ID: <47b4bab5725f91f5c689fb079912a5435971eb62.1537433365.git.lorenzo.bianconi@redhat.com>
+Subject: [PATCH 17/20] mt76: move mt76x2_tssi_enabled in mt76x02_eeprom.h
+Date: Thu, 20 Sep 2018 11:12:04 +0200
+Message-ID: <c0f2851cd37842add121a0086dec6c387bf94ba6.1537433365.git.lorenzo.bianconi@redhat.com>
 References: <cover.1537433365.git.lorenzo.bianconi@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <cover.1537433365.git.lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,119 +10,138 @@ To: nbd-Vt+b4OUoWG0@public.gmane.org
 Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Move mt76x02_eeprom_parse_hw_cap utility routine in mt76x02-lib
-module in order to be reused in mt76x0 driver
+Move mt76x2_tssi_enabled and mt76x02_temp_tx_alc_enabled in
+mt76x02_eeprom.h in order to be reused in mt76x0 driver
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- .../wireless/mediatek/mt76/mt76x02_eeprom.c   | 19 +++++++++++++++++
- .../wireless/mediatek/mt76/mt76x02_eeprom.h   |  6 ++++++
- .../wireless/mediatek/mt76/mt76x2_eeprom.c    | 21 +------------------
- .../wireless/mediatek/mt76/mt76x2_eeprom.h    |  6 ------
- .../net/wireless/mediatek/mt76/mt76x2u_init.c |  2 +-
- 5 files changed, 27 insertions(+), 27 deletions(-)
+ .../wireless/mediatek/mt76/mt76x02_eeprom.h   | 21 +++++++++++++++++++
+ .../wireless/mediatek/mt76/mt76x2_eeprom.c    |  4 ++--
+ .../wireless/mediatek/mt76/mt76x2_eeprom.h    | 21 -------------------
+ .../net/wireless/mediatek/mt76/mt76x2_phy.c   |  4 ++--
+ .../net/wireless/mediatek/mt76/mt76x2u_phy.c  |  2 +-
+ 5 files changed, 26 insertions(+), 26 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
-index 2377c758da5d..d3efeb8a72b7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
-@@ -71,6 +71,25 @@ int mt76x02_get_efuse_data(struct mt76_dev *dev, u16 base, void *buf,
- }
- EXPORT_SYMBOL_GPL(mt76x02_get_efuse_data);
- 
-+void mt76x02_eeprom_parse_hw_cap(struct mt76_dev *dev)
-+{
-+	u16 val = mt76x02_eeprom_get(dev, MT_EE_NIC_CONF_0);
-+
-+	switch (FIELD_GET(MT_EE_NIC_CONF_0_BOARD_TYPE, val)) {
-+	case BOARD_TYPE_5GHZ:
-+		dev->cap.has_5ghz = true;
-+		break;
-+	case BOARD_TYPE_2GHZ:
-+		dev->cap.has_2ghz = true;
-+		break;
-+	default:
-+		dev->cap.has_2ghz = true;
-+		dev->cap.has_5ghz = true;
-+		break;
-+	}
-+}
-+EXPORT_SYMBOL_GPL(mt76x02_eeprom_parse_hw_cap);
-+
- bool mt76x02_ext_pa_enabled(struct mt76_dev *dev, enum nl80211_band band)
- {
- 	u16 conf0 = mt76x02_eeprom_get(dev, MT_EE_NIC_CONF_0);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
-index 995aebbcc194..119813960fe7 100644
+index 119813960fe7..9339514fb073 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
-@@ -132,6 +132,11 @@ enum mt76x02_eeprom_modes {
- 	MT_EE_PHYSICAL_READ,
- };
- 
-+enum mt76x02_board_type {
-+	BOARD_TYPE_2GHZ = 1,
-+	BOARD_TYPE_5GHZ = 2,
-+};
-+
- static inline bool mt76x02_field_valid(u8 val)
- {
- 	return val != 0 && val != 0xff;
-@@ -165,5 +170,6 @@ void mt76x02_get_rx_gain(struct mt76_dev *dev, enum nl80211_band band,
- u8 mt76x02_get_lna_gain(struct mt76_dev *dev,
- 			s8 *lna_2g, s8 *lna_5g,
- 			struct ieee80211_channel *chan);
-+void mt76x02_eeprom_parse_hw_cap(struct mt76_dev *dev);
- 
- #endif /* __MT76x02_EEPROM_H */
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
-index b9641e2408ee..d295851cf2f9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
-@@ -40,25 +40,6 @@ mt76x2_eeprom_get_macaddr(struct mt76x2_dev *dev)
- 	return 0;
+@@ -162,6 +162,27 @@ mt76x02_eeprom_get(struct mt76_dev *dev,
+ 	return get_unaligned_le16(dev->eeprom.data + field);
  }
  
--void mt76x2_eeprom_parse_hw_cap(struct mt76x2_dev *dev)
--{
--	u16 val = mt76x02_eeprom_get(&dev->mt76, MT_EE_NIC_CONF_0);
--
--	switch (FIELD_GET(MT_EE_NIC_CONF_0_BOARD_TYPE, val)) {
--	case BOARD_TYPE_5GHZ:
--		dev->mt76.cap.has_5ghz = true;
--		break;
--	case BOARD_TYPE_2GHZ:
--		dev->mt76.cap.has_2ghz = true;
--		break;
--	default:
--		dev->mt76.cap.has_2ghz = true;
--		dev->mt76.cap.has_5ghz = true;
--		break;
--	}
--}
--EXPORT_SYMBOL_GPL(mt76x2_eeprom_parse_hw_cap);
--
- static bool
- mt76x2_has_cal_free_data(struct mt76x2_dev *dev, u8 *efuse)
- {
-@@ -563,7 +544,7 @@ int mt76x2_eeprom_init(struct mt76x2_dev *dev)
- 	if (ret)
- 		return ret;
++static inline bool
++mt76x02_temp_tx_alc_enabled(struct mt76_dev *dev)
++{
++	u16 val;
++
++	val = mt76x02_eeprom_get(dev, MT_EE_TX_POWER_EXT_PA_5G);
++	if (!(val & BIT(15)))
++		return false;
++
++	return mt76x02_eeprom_get(dev, MT_EE_NIC_CONF_1) &
++	       MT_EE_NIC_CONF_1_TEMP_TX_ALC;
++}
++
++static inline bool
++mt76x02_tssi_enabled(struct mt76_dev *dev)
++{
++	return !mt76x02_temp_tx_alc_enabled(dev) &&
++	       (mt76x02_eeprom_get(dev, MT_EE_NIC_CONF_1) &
++		MT_EE_NIC_CONF_1_TX_ALC_EN);
++}
++
+ bool mt76x02_ext_pa_enabled(struct mt76_dev *dev, enum nl80211_band band);
+ int mt76x02_get_efuse_data(struct mt76_dev *dev, u16 base, void *buf,
+ 			   int len, enum mt76x02_eeprom_modes mode);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
+index d295851cf2f9..21b8fb2e0e28 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
+@@ -490,7 +490,7 @@ void mt76x2_get_power_info(struct mt76x2_dev *dev,
+ 					 MT_EE_TX_POWER_1_START_2G);
+ 	}
  
--	mt76x2_eeprom_parse_hw_cap(dev);
-+	mt76x02_eeprom_parse_hw_cap(&dev->mt76);
- 	mt76x2_eeprom_get_macaddr(dev);
- 	mt76_eeprom_override(&dev->mt76);
- 	dev->mt76.macaddr[0] &= ~BIT(1);
+-	if (mt76x2_tssi_enabled(dev) ||
++	if (mt76x02_tssi_enabled(&dev->mt76) ||
+ 	    !mt76x02_field_valid(t->target_power))
+ 		t->target_power = t->chain[0].target_power;
+ 
+@@ -507,7 +507,7 @@ int mt76x2_get_temp_comp(struct mt76x2_dev *dev, struct mt76x2_temp_comp *t)
+ 
+ 	memset(t, 0, sizeof(*t));
+ 
+-	if (!mt76x2_temp_tx_alc_enabled(dev))
++	if (!mt76x02_temp_tx_alc_enabled(&dev->mt76))
+ 		return -EINVAL;
+ 
+ 	if (!mt76x02_ext_pa_enabled(&dev->mt76, band))
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.h
-index da476aad65fb..ad98a52ec69f 100644
+index ad98a52ec69f..650f9564f0f4 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.h
-@@ -19,11 +19,6 @@
+@@ -60,27 +60,6 @@ void mt76x2_get_power_info(struct mt76x2_dev *dev,
+ int mt76x2_get_temp_comp(struct mt76x2_dev *dev, struct mt76x2_temp_comp *t);
+ void mt76x2_read_rx_gain(struct mt76x2_dev *dev);
  
- #include "mt76x02_eeprom.h"
+-static inline bool
+-mt76x2_temp_tx_alc_enabled(struct mt76x2_dev *dev)
+-{
+-	u16 val;
+-
+-	val = mt76x02_eeprom_get(&dev->mt76, MT_EE_TX_POWER_EXT_PA_5G);
+-	if (!(val & BIT(15)))
+-		return false;
+-
+-	return mt76x02_eeprom_get(&dev->mt76, MT_EE_NIC_CONF_1) &
+-	       MT_EE_NIC_CONF_1_TEMP_TX_ALC;
+-}
+-
+-static inline bool
+-mt76x2_tssi_enabled(struct mt76x2_dev *dev)
+-{
+-	return !mt76x2_temp_tx_alc_enabled(dev) &&
+-	       (mt76x02_eeprom_get(&dev->mt76, MT_EE_NIC_CONF_1) &
+-		MT_EE_NIC_CONF_1_TX_ALC_EN);
+-}
+-
+ static inline bool
+ mt76x2_has_ext_lna(struct mt76x2_dev *dev)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_phy.c b/drivers/net/wireless/mediatek/mt76/mt76x2_phy.c
+index 3f786596e586..22e66006a5f8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_phy.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_phy.c
+@@ -25,7 +25,7 @@ mt76x2_phy_tssi_init_cal(struct mt76x2_dev *dev)
+ 	struct ieee80211_channel *chan = dev->mt76.chandef.chan;
+ 	u32 flag = 0;
  
--enum mt76x2_board_type {
--	BOARD_TYPE_2GHZ = 1,
--	BOARD_TYPE_5GHZ = 2,
--};
+-	if (!mt76x2_tssi_enabled(dev))
++	if (!mt76x02_tssi_enabled(&dev->mt76))
+ 		return false;
+ 
+ 	if (mt76x2_channel_silent(dev))
+@@ -390,7 +390,7 @@ int mt76x2_phy_set_channel(struct mt76x2_dev *dev,
+ 	       sizeof(dev->cal.agc_gain_cur));
+ 
+ 	/* init default values for temp compensation */
+-	if (mt76x2_tssi_enabled(dev)) {
++	if (mt76x02_tssi_enabled(&dev->mt76)) {
+ 		mt76_rmw_field(dev, MT_TX_ALC_CFG_1, MT_TX_ALC_CFG_1_TEMP_COMP,
+ 			       0x38);
+ 		mt76_rmw_field(dev, MT_TX_ALC_CFG_2, MT_TX_ALC_CFG_2_TEMP_COMP,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u_phy.c b/drivers/net/wireless/mediatek/mt76/mt76x2u_phy.c
+index 1cd9b2468ef0..b3ec56d35e7f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2u_phy.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2u_phy.c
+@@ -235,7 +235,7 @@ int mt76x2u_phy_set_channel(struct mt76x2_dev *dev,
+ 	if (scan)
+ 		return 0;
+ 
+-	if (mt76x2_tssi_enabled(dev)) {
++	if (mt76x02_tssi_enabled(&dev->mt76)) {
+ 		/* init default values for temp compensation */
+ 		mt76_rmw_field(dev, MT_TX_ALC_CFG_1, MT_TX_ALC_CFG_1_TEMP_COMP,
+ 			       0x38);
+-- 
+2.17.1
