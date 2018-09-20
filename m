@@ -1,7 +1,7 @@
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 09/20] mt76x0: remove mt76x0_set_country_reg routine
-Date: Thu, 20 Sep 2018 11:11:56 +0200
-Message-ID: <249232763e7ee05755b26bbb0a05c933d2a1ae95.1537433365.git.lorenzo.bianconi@redhat.com>
+Subject: [PATCH 10/20] mt76: add mt76x02_get_rx_gain and mt76x02_get_lna_gain utility routines
+Date: Thu, 20 Sep 2018 11:11:57 +0200
+Message-ID: <4a7eb29d1cc6193b58a89de88c6b3b6af65c75f3.1537433365.git.lorenzo.bianconi@redhat.com>
 References: <cover.1537433365.git.lorenzo.bianconi@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <cover.1537433365.git.lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,90 +10,150 @@ To: nbd-Vt+b4OUoWG0@public.gmane.org
 Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Remove mt76x0_set_country_reg routine for the moment
-since it is partial and it is not actually used
+Add mt76x02_get_rx_gain and mt76x02_get_lna_gain utility routines
+for rx gain parsing. mt76x02_get_rx_gain and mt76x02_get_lna_gain
+will be reused for eeprom parsing in mt76x0 driver
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- .../wireless/mediatek/mt76/mt76x0/debugfs.c   |  2 -
- .../wireless/mediatek/mt76/mt76x0/eeprom.c    | 38 -------------------
- .../wireless/mediatek/mt76/mt76x0/eeprom.h    |  2 -
- 3 files changed, 42 deletions(-)
+ .../wireless/mediatek/mt76/mt76x02_eeprom.c   | 54 +++++++++++++++++++
+ .../wireless/mediatek/mt76/mt76x02_eeprom.h   |  5 ++
+ .../wireless/mediatek/mt76/mt76x2_eeprom.c    | 47 ++--------------
+ 3 files changed, 63 insertions(+), 43 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
-index f9e305840176..932c0e41196c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
-@@ -117,8 +117,6 @@ mt76x0_eeprom_param_read(struct seq_file *file, void *data)
- 	val = mt76x02_eeprom_get(&dev->mt76, MT_EE_NIC_CONF_0);
- 	seq_printf(file, "Power Amplifier type %lx\n",
- 		   val & MT_EE_NIC_CONF_0_PA_TYPE);
--	seq_printf(file, "Reg channels: %hhu-%hhu\n", dev->ee->reg.start,
--		   dev->ee->reg.start + dev->ee->reg.num - 1);
- 
- 	seq_puts(file, "Per channel power:\n");
- 	for (i = 0; i < 58; i++)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-index 6c492a21be26..5d08a7bb16ce 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-@@ -103,43 +103,6 @@ mt76x0_set_temp_offset(struct mt76x0_dev *dev, u8 *eeprom)
- 		dev->ee->temp_off = -10;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
+index edb08863e4ba..2377c758da5d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
+@@ -81,3 +81,57 @@ bool mt76x02_ext_pa_enabled(struct mt76_dev *dev, enum nl80211_band band)
+ 		return !(conf0 & MT_EE_NIC_CONF_0_PA_INT_2G);
  }
+ EXPORT_SYMBOL_GPL(mt76x02_ext_pa_enabled);
++
++void mt76x02_get_rx_gain(struct mt76_dev *dev, enum nl80211_band band,
++			 u16 *rssi_offset, s8 *lna_2g, s8 *lna_5g)
++{
++	u16 val;
++
++	val = mt76x02_eeprom_get(dev, MT_EE_LNA_GAIN);
++	*lna_2g = val & 0xff;
++	lna_5g[0] = val >> 8;
++
++	val = mt76x02_eeprom_get(dev, MT_EE_RSSI_OFFSET_2G_1);
++	lna_5g[1] = val >> 8;
++
++	val = mt76x02_eeprom_get(dev, MT_EE_RSSI_OFFSET_5G_1);
++	lna_5g[2] = val >> 8;
++
++	if (!mt76x02_field_valid(lna_5g[1]))
++		lna_5g[1] = lna_5g[0];
++
++	if (!mt76x02_field_valid(lna_5g[2]))
++		lna_5g[2] = lna_5g[0];
++
++	if (band == NL80211_BAND_2GHZ)
++		*rssi_offset = mt76x02_eeprom_get(dev, MT_EE_RSSI_OFFSET_2G_0);
++	else
++		*rssi_offset = mt76x02_eeprom_get(dev, MT_EE_RSSI_OFFSET_5G_0);
++}
++EXPORT_SYMBOL_GPL(mt76x02_get_rx_gain);
++
++u8 mt76x02_get_lna_gain(struct mt76_dev *dev,
++			s8 *lna_2g, s8 *lna_5g,
++			struct ieee80211_channel *chan)
++{
++	u16 val;
++	u8 lna;
++
++	val = mt76x02_eeprom_get(dev, MT_EE_NIC_CONF_1);
++	if (val & MT_EE_NIC_CONF_1_LNA_EXT_2G)
++		*lna_2g = 0;
++	if (val & MT_EE_NIC_CONF_1_LNA_EXT_5G)
++		memset(lna_5g, 0, sizeof(s8) * 3);
++
++	if (chan->band == NL80211_BAND_2GHZ)
++		lna = *lna_2g;
++	else if (chan->hw_value <= 64)
++		lna = lna_5g[0];
++	else if (chan->hw_value <= 128)
++		lna = lna_5g[1];
++	else
++		lna = lna_5g[2];
++
++	return lna != 0xff ? lna : 0;
++}
++EXPORT_SYMBOL_GPL(mt76x02_get_lna_gain);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
+index 70ca2729895c..c22ca507b418 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
+@@ -154,5 +154,10 @@ mt76x02_eeprom_get(struct mt76_dev *dev,
+ bool mt76x02_ext_pa_enabled(struct mt76_dev *dev, enum nl80211_band band);
+ int mt76x02_get_efuse_data(struct mt76_dev *dev, u16 base, void *buf,
+ 			   int len, enum mt76x02_eeprom_modes mode);
++void mt76x02_get_rx_gain(struct mt76_dev *dev, enum nl80211_band band,
++			 u16 *rssi_offset, s8 *lna_2g, s8 *lna_5g);
++u8 mt76x02_get_lna_gain(struct mt76_dev *dev,
++			s8 *lna_2g, s8 *lna_5g,
++			struct ieee80211_channel *chan);
  
--static void
--mt76x0_set_country_reg(struct mt76x0_dev *dev, u8 *eeprom)
--{
--	/* Note: - region 31 is not valid for mt76x0 (see rtmp_init.c)
--	 *	 - comments in rtmp_def.h are incorrect (see rt_channel.c)
--	 */
--	static const struct reg_channel_bounds chan_bounds[] = {
--		/* EEPROM country regions 0 - 7 */
--		{  1, 11 },	{  1, 13 },	{ 10,  2 },	{ 10,  4 },
--		{ 14,  1 },	{  1, 14 },	{  3,  7 },	{  5,  9 },
--		/* EEPROM country regions 32 - 33 */
--		{  1, 11 },	{  1, 14 }
--	};
--	u8 val = eeprom[MT_EE_COUNTRY_REGION_2GHZ];
--	int idx = -1;
+ #endif /* __MT76x02_EEPROM_H */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
+index ab52a7f19611..b9641e2408ee 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
+@@ -310,55 +310,16 @@ void mt76x2_read_rx_gain(struct mt76x2_dev *dev)
+ 
+ 	mt76x2_set_rx_gain_group(dev, val);
+ 
+-	if (chan->band == NL80211_BAND_2GHZ) {
+-		val = mt76x02_eeprom_get(&dev->mt76, MT_EE_RSSI_OFFSET_2G_0);
+-		mt76x2_set_rssi_offset(dev, 0, val);
+-		mt76x2_set_rssi_offset(dev, 1, val >> 8);
+-	} else {
+-		val = mt76x02_eeprom_get(&dev->mt76, MT_EE_RSSI_OFFSET_5G_0);
+-		mt76x2_set_rssi_offset(dev, 0, val);
+-		mt76x2_set_rssi_offset(dev, 1, val >> 8);
+-	}
 -
--	dev_dbg(dev->mt76.dev, "REG 2GHZ %u REG 5GHZ %u\n", val, eeprom[MT_EE_COUNTRY_REGION_5GHZ]);
--	if (val < 8)
--		idx = val;
--	if (val > 31 && val < 33)
--		idx = val - 32 + 8;
+-	val = mt76x02_eeprom_get(&dev->mt76, MT_EE_LNA_GAIN);
+-	lna_2g = val & 0xff;
+-	lna_5g[0] = val >> 8;
 -
--	if (idx != -1)
--		dev_info(dev->mt76.dev,
--			 "EEPROM country region %02hhx (channels %hhd-%hhd)\n",
--			 val, chan_bounds[idx].start,
--			 chan_bounds[idx].start + chan_bounds[idx].num - 1);
+-	val = mt76x02_eeprom_get(&dev->mt76, MT_EE_RSSI_OFFSET_2G_1);
+-	lna_5g[1] = val >> 8;
+-
+-	val = mt76x02_eeprom_get(&dev->mt76, MT_EE_RSSI_OFFSET_5G_1);
+-	lna_5g[2] = val >> 8;
+-
+-	if (!mt76x02_field_valid(lna_5g[1]))
+-		lna_5g[1] = lna_5g[0];
+-
+-	if (!mt76x02_field_valid(lna_5g[2]))
+-		lna_5g[2] = lna_5g[0];
++	mt76x02_get_rx_gain(&dev->mt76, chan->band, &val, &lna_2g, lna_5g);
++	mt76x2_set_rssi_offset(dev, 0, val);
++	mt76x2_set_rssi_offset(dev, 1, val >> 8);
+ 
+ 	dev->cal.rx.mcu_gain =  (lna_2g & 0xff);
+ 	dev->cal.rx.mcu_gain |= (lna_5g[0] & 0xff) << 8;
+ 	dev->cal.rx.mcu_gain |= (lna_5g[1] & 0xff) << 16;
+ 	dev->cal.rx.mcu_gain |= (lna_5g[2] & 0xff) << 24;
+ 
+-	val = mt76x02_eeprom_get(&dev->mt76, MT_EE_NIC_CONF_1);
+-	if (val & MT_EE_NIC_CONF_1_LNA_EXT_2G)
+-		lna_2g = 0;
+-	if (val & MT_EE_NIC_CONF_1_LNA_EXT_5G)
+-		memset(lna_5g, 0, sizeof(lna_5g));
+-
+-	if (chan->band == NL80211_BAND_2GHZ)
+-		lna = lna_2g;
+-	else if (channel <= 64)
+-		lna = lna_5g[0];
+-	else if (channel <= 128)
+-		lna = lna_5g[1];
 -	else
--		idx = 5; /* channels 1 - 14 */
+-		lna = lna_5g[2];
 -
--	dev->ee->reg = chan_bounds[idx];
--
--	/* TODO: country region 33 is special - phy should be set to B-mode
--	 *	 before entering channel 14 (see sta/connect.c)
--	 */
--}
--
- static void
- mt76x0_set_rf_freq_off(struct mt76x0_dev *dev, u8 *eeprom)
- {
-@@ -353,7 +316,6 @@ mt76x0_eeprom_init(struct mt76x0_dev *dev)
- 
- 	mt76x02_mac_setaddr(&dev->mt76, eeprom + MT_EE_MAC_ADDR);
- 	mt76x0_set_chip_cap(dev, eeprom);
--	mt76x0_set_country_reg(dev, eeprom);
- 	mt76x0_set_rf_freq_off(dev, eeprom);
- 	mt76x0_set_temp_offset(dev, eeprom);
- 	mt76x0_set_lna_gain(dev, eeprom);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-index e58a30589aa2..dbfcbfa71291 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-@@ -41,8 +41,6 @@ struct mt76x0_eeprom_params {
- 	u32 tx_pwr_cfg_5g[5][2];
- 
- 	u8 tx_pwr_per_chan[58];
+-	if (lna == 0xff)
+-		lna = 0;
