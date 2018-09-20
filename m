@@ -1,7 +1,7 @@
 From: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 07/20] mt76: move mt76x2_get_efuse_data in mt76x02-lib module
-Date: Thu, 20 Sep 2018 11:11:54 +0200
-Message-ID: <5403d92a53303ed70c8257342a02e6d4d76804d5.1537433365.git.lorenzo.bianconi@redhat.com>
+Subject: [PATCH 06/20] mt76: move mt76x02_mac_setaddr in mt76x02-lib module
+Date: Thu, 20 Sep 2018 11:11:53 +0200
+Message-ID: <ea07bdd7425e1740a85d55107a5468065c785466.1537433365.git.lorenzo.bianconi@redhat.com>
 References: <cover.1537433365.git.lorenzo.bianconi@redhat.com>
 Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <cover.1537433365.git.lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
@@ -10,300 +10,147 @@ To: nbd-Vt+b4OUoWG0@public.gmane.org
 Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Move mt76x2_efuse_read and mt76x2_get_efuse_data in mt76x02_eeprom.c
-in order to be reused in mt76x0 driver for eeprom parsing
+Move mt76x02_mac_setaddr utility routine in mt76x02-lib
+module and remove duplicated code. This is a preliminary patch
+to unify eeprom code between mt76x2 and mt76x0 driver
 
 Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/net/wireless/mediatek/mt76/Makefile   |  3 +-
- .../wireless/mediatek/mt76/mt76x0/eeprom.c    | 59 +++------------
- .../wireless/mediatek/mt76/mt76x0/eeprom.h    |  5 --
- .../wireless/mediatek/mt76/mt76x02_eeprom.c   | 72 +++++++++++++++++++
- .../wireless/mediatek/mt76/mt76x02_eeprom.h   |  8 +++
- .../wireless/mediatek/mt76/mt76x2_eeprom.c    | 49 +------------
- 6 files changed, 95 insertions(+), 101 deletions(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
+ .../wireless/mediatek/mt76/mt76x0/eeprom.c    | 24 +------------------
+ .../net/wireless/mediatek/mt76/mt76x02_mac.c  | 18 ++++++++++++++
+ .../net/wireless/mediatek/mt76/mt76x02_mac.h  |  1 +
+ drivers/net/wireless/mediatek/mt76/mt76x2u.h  |  1 -
+ .../net/wireless/mediatek/mt76/mt76x2u_init.c |  3 ++-
+ .../net/wireless/mediatek/mt76/mt76x2u_mac.c  | 18 --------------
+ .../net/wireless/mediatek/mt76/mt76x2u_main.c |  2 +-
+ 7 files changed, 23 insertions(+), 44 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
-index 4d25b5c3b70b..dbe0ec020391 100644
---- a/drivers/net/wireless/mediatek/mt76/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/Makefile
-@@ -15,7 +15,8 @@ mt76-usb-y := usb.o usb_trace.o usb_mcu.o
- CFLAGS_trace.o := -I$(src)
- CFLAGS_usb_trace.o := -I$(src)
- 
--mt76x02-lib-y := mt76x02_util.o mt76x02_mac.o mt76x02_mcu.o
-+mt76x02-lib-y := mt76x02_util.o mt76x02_mac.o mt76x02_mcu.o \
-+		 mt76x02_eeprom.o
- 
- mt76x02-usb-y := mt76x02_usb_mcu.o mt76x02_usb_core.o
- 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-index a93da6c5ce59..43239a1cb1e5 100644
+index c935d98f5710..a93da6c5ce59 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-@@ -21,41 +21,6 @@
- #include "mt76x0.h"
- #include "eeprom.h"
+@@ -131,28 +131,6 @@ mt76x0_set_chip_cap(struct mt76x0_dev *dev, u8 *eeprom)
+ 	dev_dbg(dev->mt76.dev, "PA Type %d\n", dev->ee->pa_type);
+ }
  
 -static int
--mt76x0_efuse_read(struct mt76x0_dev *dev, u16 addr, u8 *data,
--		   enum mt76x0_eeprom_access_modes mode)
+-mt76x0_set_macaddr(struct mt76x0_dev *dev, const u8 *eeprom)
 -{
--	u32 val;
--	int i;
+-	const void *src = eeprom + MT_EE_MAC_ADDR;
+-	u8 *dst = dev->mt76.macaddr;
 -
--	val = mt76_rr(dev, MT_EFUSE_CTRL);
--	val &= ~(MT_EFUSE_CTRL_AIN |
--		 MT_EFUSE_CTRL_MODE);
--	val |= FIELD_PREP(MT_EFUSE_CTRL_AIN, addr & ~0xf) |
--	       FIELD_PREP(MT_EFUSE_CTRL_MODE, mode) |
--	       MT_EFUSE_CTRL_KICK;
--	mt76_wr(dev, MT_EFUSE_CTRL, val);
+-	ether_addr_copy(dev->mt76.macaddr, src);
 -
--	if (!mt76_poll(dev, MT_EFUSE_CTRL, MT_EFUSE_CTRL_KICK, 0, 1000))
--		return -ETIMEDOUT;
--
--	val = mt76_rr(dev, MT_EFUSE_CTRL);
--	if ((val & MT_EFUSE_CTRL_AOUT) == MT_EFUSE_CTRL_AOUT) {
--		/* Parts of eeprom not in the usage map (0x80-0xc0,0xf0)
--		 * will not return valid data but it's ok.
--		 */
--		memset(data, 0xff, 16);
--		return 0;
+-	if (!is_valid_ether_addr(dst)) {
+-		eth_random_addr(dst);
+-		dev_info(dev->mt76.dev,
+-			 "Invalid MAC address, using random address %pM\n",
+-			 dst);
 -	}
 -
--	for (i = 0; i < 4; i++) {
--		val = mt76_rr(dev, MT_EFUSE_DATA(i));
--		put_unaligned_le32(val, data + 4 * i);
--	}
+-	mt76_wr(dev, MT_MAC_ADDR_DW0, get_unaligned_le32(dst));
+-	mt76_wr(dev, MT_MAC_ADDR_DW1, get_unaligned_le16(dst + 4) |
+-		FIELD_PREP(MT_MAC_ADDR_DW1_U2ME_MASK, 0xff));
 -
 -	return 0;
 -}
 -
- #define MT_MAP_READS	DIV_ROUND_UP(MT_EFUSE_USAGE_MAP_SIZE, 16)
- static int
- mt76x0_efuse_physical_size_check(struct mt76x0_dev *dev)
-@@ -64,12 +29,10 @@ mt76x0_efuse_physical_size_check(struct mt76x0_dev *dev)
- 	int ret, i;
- 	u32 start = 0, end = 0, cnt_free;
- 
--	for (i = 0; i < MT_MAP_READS; i++) {
--		ret = mt76x0_efuse_read(dev, MT_EE_USAGE_MAP_START + i * 16,
--					 data + i * 16, MT_EE_PHYSICAL_READ);
--		if (ret)
--			return ret;
--	}
-+	ret = mt76x02_get_efuse_data(&dev->mt76, MT_EE_USAGE_MAP_START,
-+				     data, sizeof(data), MT_EE_PHYSICAL_READ);
-+	if (ret)
-+		return ret;
- 
- 	for (i = 0; i < MT_EFUSE_USAGE_MAP_SIZE; i++)
- 		if (!data[i]) {
-@@ -80,7 +43,8 @@ mt76x0_efuse_physical_size_check(struct mt76x0_dev *dev)
- 	cnt_free = end - start + 1;
- 
- 	if (MT_EFUSE_USAGE_MAP_SIZE - cnt_free < 5) {
--		dev_err(dev->mt76.dev, "Error: your device needs default EEPROM file and this driver doesn't support it!\n");
-+		dev_err(dev->mt76.dev,
-+			"driver does not support default EEPROM\n");
- 		return -EINVAL;
- 	}
- 
-@@ -360,7 +324,7 @@ int
- mt76x0_eeprom_init(struct mt76x0_dev *dev)
+ static void
+ mt76x0_set_temp_offset(struct mt76x0_dev *dev, u8 *eeprom)
  {
- 	u8 *eeprom;
--	int i, ret;
-+	int ret;
+@@ -409,7 +387,7 @@ mt76x0_eeprom_init(struct mt76x0_dev *dev)
+ 	dev_info(dev->mt76.dev, "EEPROM ver:%02hhx fae:%02hhx\n",
+ 		 eeprom[MT_EE_VERSION + 1], eeprom[MT_EE_VERSION]);
  
- 	ret = mt76x0_efuse_physical_size_check(dev);
- 	if (ret)
-@@ -374,11 +338,10 @@ mt76x0_eeprom_init(struct mt76x0_dev *dev)
- 	if (!eeprom)
- 		return -ENOMEM;
- 
--	for (i = 0; i + 16 <= MT76X0_EEPROM_SIZE; i += 16) {
--		ret = mt76x0_efuse_read(dev, i, eeprom + i, MT_EE_READ);
--		if (ret)
--			goto out;
--	}
-+	ret = mt76x02_get_efuse_data(&dev->mt76, 0, eeprom,
-+				     MT76X0_EEPROM_SIZE, MT_EE_READ);
-+	if (ret)
-+		goto out;
- 
- 	if (eeprom[MT_EE_VERSION + 1] > MT76X0U_EE_MAX_VER)
- 		dev_warn(dev->mt76.dev,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-index 1da90f056442..1051e3216614 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.h
-@@ -23,11 +23,6 @@ struct mt76x0_dev;
- #define MT76X0U_EE_MAX_VER		0x0c
- #define MT76X0_EEPROM_SIZE		512
- 
--enum mt76x0_eeprom_access_modes {
--	MT_EE_READ = 0,
--	MT_EE_PHYSICAL_READ = 1,
--};
--
- struct reg_channel_bounds {
- 	u8 start;
- 	u8 num;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
-new file mode 100644
-index 000000000000..21fe7eb0652d
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.c
-@@ -0,0 +1,72 @@
-+/*
-+ * Copyright (C) 2016 Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
-+ * Copyright (C) 2018 Lorenzo Bianconi <lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-+ *
-+ * Permission to use, copy, modify, and/or distribute this software for any
-+ * purpose with or without fee is hereby granted, provided that the above
-+ * copyright notice and this permission notice appear in all copies.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-+ */
-+
-+#include <asm/unaligned.h>
-+
-+#include "mt76.h"
-+#include "mt76x02_eeprom.h"
-+#include "mt76x02_regs.h"
-+
-+static int
-+mt76x02_efuse_read(struct mt76_dev *dev, u16 addr, u8 *data,
-+		   enum mt76x02_eeprom_modes mode)
-+{
-+	u32 val;
-+	int i;
-+
-+	val = __mt76_rr(dev, MT_EFUSE_CTRL);
-+	val &= ~(MT_EFUSE_CTRL_AIN |
-+		 MT_EFUSE_CTRL_MODE);
-+	val |= FIELD_PREP(MT_EFUSE_CTRL_AIN, addr & ~0xf);
-+	val |= FIELD_PREP(MT_EFUSE_CTRL_MODE, mode);
-+	val |= MT_EFUSE_CTRL_KICK;
-+	__mt76_wr(dev, MT_EFUSE_CTRL, val);
-+
-+	if (!__mt76_poll_msec(dev, MT_EFUSE_CTRL, MT_EFUSE_CTRL_KICK,
-+			      0, 1000))
-+		return -ETIMEDOUT;
-+
-+	udelay(2);
-+
-+	val = __mt76_rr(dev, MT_EFUSE_CTRL);
-+	if ((val & MT_EFUSE_CTRL_AOUT) == MT_EFUSE_CTRL_AOUT) {
-+		memset(data, 0xff, 16);
-+		return 0;
-+	}
-+
-+	for (i = 0; i < 4; i++) {
-+		val = __mt76_rr(dev, MT_EFUSE_DATA(i));
-+		put_unaligned_le32(val, data + 4 * i);
-+	}
-+
-+	return 0;
-+}
-+
-+int mt76x02_get_efuse_data(struct mt76_dev *dev, u16 base, void *buf,
-+			   int len, enum mt76x02_eeprom_modes mode)
-+{
-+	int ret, i;
-+
-+	for (i = 0; i + 16 <= len; i += 16) {
-+		ret = mt76x02_efuse_read(dev, base + i, buf + i, mode);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mt76x02_get_efuse_data);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
-index 85dd4f9b97a5..852ea9b51e97 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_eeprom.h
-@@ -121,6 +121,11 @@ enum mt76x02_eeprom_field {
- #define MT_EFUSE_USAGE_MAP_SIZE			(MT_EE_USAGE_MAP_END - \
- 						 MT_EE_USAGE_MAP_START + 1)
- 
-+enum mt76x02_eeprom_modes {
-+	MT_EE_READ,
-+	MT_EE_PHYSICAL_READ,
-+};
-+
- static inline bool mt76x02_field_valid(u8 val)
- {
- 	return val != 0 && val != 0xff;
-@@ -146,4 +151,7 @@ mt76x02_eeprom_get(struct mt76_dev *dev,
- 	return get_unaligned_le16(dev->eeprom.data + field);
+-	mt76x0_set_macaddr(dev, eeprom);
++	mt76x02_mac_setaddr(&dev->mt76, eeprom + MT_EE_MAC_ADDR);
+ 	mt76x0_set_chip_cap(dev, eeprom);
+ 	mt76x0_set_country_reg(dev, eeprom);
+ 	mt76x0_set_rf_freq_off(dev, eeprom);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
+index 0b12299c7a41..df4366a702c9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
+@@ -502,3 +502,21 @@ mt76x02_mac_process_rate(struct mt76_rx_status *status, u16 rate)
+ 	return 0;
  }
- 
-+int mt76x02_get_efuse_data(struct mt76_dev *dev, u16 base, void *buf,
-+			   int len, enum mt76x02_eeprom_modes mode);
+ EXPORT_SYMBOL_GPL(mt76x02_mac_process_rate);
 +
- #endif /* __MT76x02_EEPROM_H */
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
-index aea8033f13ce..333faa44d7cc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2_eeprom.c
-@@ -59,52 +59,6 @@ void mt76x2_eeprom_parse_hw_cap(struct mt76x2_dev *dev)
- }
- EXPORT_SYMBOL_GPL(mt76x2_eeprom_parse_hw_cap);
++void mt76x02_mac_setaddr(struct mt76_dev *dev, u8 *addr)
++{
++	ether_addr_copy(dev->macaddr, addr);
++
++	if (!is_valid_ether_addr(dev->macaddr)) {
++		eth_random_addr(dev->macaddr);
++		dev_info(dev->dev,
++			 "Invalid MAC address, using random address %pM\n",
++			 dev->macaddr);
++	}
++
++	__mt76_wr(dev, MT_MAC_ADDR_DW0, get_unaligned_le32(dev->macaddr));
++	__mt76_wr(dev, MT_MAC_ADDR_DW1,
++		  get_unaligned_le16(dev->macaddr + 4) |
++		  FIELD_PREP(MT_MAC_ADDR_DW1_U2ME_MASK, 0xff));
++}
++EXPORT_SYMBOL_GPL(mt76x02_mac_setaddr);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.h b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.h
+index 1a5da35702e6..f12ecbe15d8c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.h
+@@ -202,4 +202,5 @@ void mt76x02_send_tx_status(struct mt76_dev *dev,
+ 			   struct mt76x02_tx_status *stat, u8 *update);
+ int
+ mt76x02_mac_process_rate(struct mt76_rx_status *status, u16 rate);
++void mt76x02_mac_setaddr(struct mt76_dev *dev, u8 *addr);
+ #endif
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u.h b/drivers/net/wireless/mediatek/mt76/mt76x2u.h
+index a0ff6472de1f..74fde9f107e1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2u.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2u.h
+@@ -36,7 +36,6 @@ int mt76x2u_init_hardware(struct mt76x2_dev *dev);
+ void mt76x2u_cleanup(struct mt76x2_dev *dev);
+ void mt76x2u_stop_hw(struct mt76x2_dev *dev);
  
--static int
--mt76x2_efuse_read(struct mt76x2_dev *dev, u16 addr, u8 *data)
+-void mt76x2u_mac_setaddr(struct mt76x2_dev *dev, u8 *addr);
+ int mt76x2u_mac_reset(struct mt76x2_dev *dev);
+ void mt76x2u_mac_resume(struct mt76x2_dev *dev);
+ int mt76x2u_mac_start(struct mt76x2_dev *dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u_init.c b/drivers/net/wireless/mediatek/mt76/mt76x2u_init.c
+index e41880c43fa7..89cfacfb276c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2u_init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2u_init.c
+@@ -212,7 +212,8 @@ int mt76x2u_init_hardware(struct mt76x2_dev *dev)
+ 	if (err < 0)
+ 		return err;
+ 
+-	mt76x2u_mac_setaddr(dev, dev->mt76.eeprom.data + MT_EE_MAC_ADDR);
++	mt76x02_mac_setaddr(&dev->mt76,
++			    dev->mt76.eeprom.data + MT_EE_MAC_ADDR);
+ 	dev->mt76.rxfilter = mt76_rr(dev, MT_RX_FILTR_CFG);
+ 
+ 	mt76x2u_init_beacon_offsets(dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2u_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x2u_mac.c
+index b59336110746..0f5d781b13dc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2u_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2u_mac.c
+@@ -220,21 +220,3 @@ void mt76x2u_mac_resume(struct mt76x2_dev *dev)
+ 	mt76_set(dev, MT_TXOP_CTRL_CFG, BIT(20));
+ 	mt76_set(dev, MT_TXOP_HLDR_ET, BIT(1));
+ }
+-
+-void mt76x2u_mac_setaddr(struct mt76x2_dev *dev, u8 *addr)
 -{
--	u32 val;
--	int i;
+-	ether_addr_copy(dev->mt76.macaddr, addr);
 -
--	val = mt76_rr(dev, MT_EFUSE_CTRL);
--	val &= ~(MT_EFUSE_CTRL_AIN |
--		 MT_EFUSE_CTRL_MODE);
--	val |= FIELD_PREP(MT_EFUSE_CTRL_AIN, addr & ~0xf);
--	val |= MT_EFUSE_CTRL_KICK;
--	mt76_wr(dev, MT_EFUSE_CTRL, val);
--
--	if (!mt76_poll(dev, MT_EFUSE_CTRL, MT_EFUSE_CTRL_KICK, 0, 1000))
--		return -ETIMEDOUT;
--
--	udelay(2);
--
--	val = mt76_rr(dev, MT_EFUSE_CTRL);
--	if ((val & MT_EFUSE_CTRL_AOUT) == MT_EFUSE_CTRL_AOUT) {
--		memset(data, 0xff, 16);
--		return 0;
+-	if (!is_valid_ether_addr(dev->mt76.macaddr)) {
+-		eth_random_addr(dev->mt76.macaddr);
+-		dev_info(dev->mt76.dev,
+-			 "Invalid MAC address, using random address %pM\n",
+-			 dev->mt76.macaddr);
 -	}
 -
--	for (i = 0; i < 4; i++) {
--		val = mt76_rr(dev, MT_EFUSE_DATA(i));
--		put_unaligned_le32(val, data + 4 * i);
--	}
--
--	return 0;
--}
--
--static int
--mt76x2_get_efuse_data(struct mt76x2_dev *dev, void *buf, int len)
--{
--	int ret, i;
--
--	for (i = 0; i + 16 <= len; i += 16) {
--		ret = mt76x2_efuse_read(dev, i, buf + i);
--		if (ret)
--			return ret;
--	}
--
--	return 0;
+-	mt76_wr(dev, MT_MAC_ADDR_DW0, get_unaligned_le32(dev->mt76.macaddr));
+-	mt76_wr(dev, MT_MAC_ADDR_DW1,
+-		get_unaligned_le16(dev->mt76.macaddr + 4) |
+-		FIELD_PREP(MT_MAC_ADDR_DW1_U2ME_MASK, 0xff));
 -}
