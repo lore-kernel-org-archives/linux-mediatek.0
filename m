@@ -1,51 +1,72 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH -next] pinctrl: mediatek: make symbol 'mtk_drive' static
-Date: Fri, 21 Sep 2018 10:00:42 +0800
-Message-ID: <1537495242.9654.1.camel@mtkswgap22>
-References: <1537424502-23554-1-git-send-email-weiyongjun1@huawei.com>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [bug report] pinctrl: mediatek: add eint support to MT8183
+ pinctrl driver
+Date: Fri, 21 Sep 2018 10:16:04 +0800
+Message-ID: <1537496164.9654.7.camel@mtkswgap22>
+References: <20180920195338.GA31947@mwanda>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1537424502-23554-1-git-send-email-weiyongjun1@huawei.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Wei Yongjun <weiyongjun1@huawei.com>
-Cc: "Ryder.Lee" <ryder.lee@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, kernel-janitors@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180920195338.GA31947@mwanda>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Cc: linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2018-09-20 at 06:21 +0000, Wei Yongjun wrote:
-> Fixes the following sparse warning:
-> 
-> drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c:37:29: warning:
->  symbol 'mtk_drive' was not declared. Should it be static?
-> 
-> Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
+Hi,
 
-Acked-by: Sean Wang <sean.wang@mediatek.com>
+On Thu, 2018-09-20 at 22:53 +0300, Dan Carpenter wrote:
+> Hello Sean Wang,
+> 
+> The patch 6561859b067f: "pinctrl: mediatek: add eint support to
+> MT8183 pinctrl driver" from Sep 8, 2018, leads to the following
+> static checker warning:
+> 
+> 	drivers/pinctrl/mediatek/pinctrl-paris.c:732 mtk_gpio_to_irq()
+> 	warn: impossible condition '(desc->eint.eint_n == -1) => (0-u16max == (-1))'
+> 
+> drivers/pinctrl/mediatek/pinctrl-paris.c
+>    722  static int mtk_gpio_to_irq(struct gpio_chip *chip, unsigned int offset)
+>    723  {
+>    724          struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+>    725          const struct mtk_pin_desc *desc;
+>    726  
+>    727          if (!hw->eint)
+>    728                  return -ENOTSUPP;
+>    729  
+>    730          desc = (const struct mtk_pin_desc *)&hw->soc->pins[offset];
+>    731  
+>    732          if (desc->eint.eint_n == EINT_NA)
+>                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> Do you want to define EINT_NA as 0xffff maybe?
 
-> ---
->  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+yup, it should be U16_MAX instead. I'll have a fixup later on. Really thanks for the catchup.
+
 > 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> index 167ebf4..4a9e0d4 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> @@ -34,7 +34,7 @@ struct mtk_drive_desc {
->  };
->  
->  /* The groups of drive strength */
-> -const struct mtk_drive_desc mtk_drive[] = {
-> +static const struct mtk_drive_desc mtk_drive[] = {
->  	[DRV_GRP0] = { 4, 16, 4, 1 },
->  	[DRV_GRP1] = { 4, 16, 4, 2 },
->  	[DRV_GRP2] = { 2, 8, 2, 1 },
+>    733                  return -ENOTSUPP;
+>    734  
+>    735          return mtk_eint_find_irq(hw->eint, desc->eint.eint_n);
+>    736  }
 > 
+> See also:
+> 
+> drivers/pinctrl/mediatek/pinctrl-paris.c:749 mtk_gpio_set_config() warn: impossible condition '(desc->eint.eint_n == -1) => (0-u16max == (-1))'
+> drivers/pinctrl/mediatek/pinctrl-moore.c:479 mtk_gpio_to_irq() warn: impossible condition '(desc->eint.eint_n == -1) => (0-u16max == (-1))'
+> drivers/pinctrl/mediatek/pinctrl-moore.c:496 mtk_gpio_set_config() warn: impossible condition '(desc->eint.eint_n == -1) => (0-u16max == (-1))'
+> 
+> regards,
+> dan carpenter
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
