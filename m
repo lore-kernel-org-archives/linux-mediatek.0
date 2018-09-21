@@ -1,65 +1,116 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH -next] pinctrl: mediatek: moore: fix return value check
- in mtk_moore_pinctrl_probe()
-Date: Fri, 21 Sep 2018 10:18:01 +0800
-Message-ID: <1537496281.9654.8.camel@mtkswgap22>
-References: <1537424510-23623-1-git-send-email-weiyongjun1@huawei.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: Re: [PATCH v2 13/13] drm/mediatek: config component output by
+ device node port
+Date: Fri, 21 Sep 2018 11:02:02 +0800
+Message-ID: <1537498922.17379.3.camel@mtksdaap41>
+References: <20180905083146.14727-1-bibby.hsieh@mediatek.com>
+ <20180905083146.14727-14-bibby.hsieh@mediatek.com>
+ <1536213802.4618.41.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1537424510-23623-1-git-send-email-weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
-Cc: "Ryder.Lee" <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1536213802.4618.41.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2018-09-20 at 06:21 +0000, Wei Yongjun wrote:
-> In case of error, the function devm_kmalloc_array() returns NULL pointer
-> not ERR_PTR(). The IS_ERR() test in the return value check should be
-> replaced with NULL test.
-> 
-> Fixes: b7d7f9eeca55 ("pinctrl: mediatek: extend struct mtk_pin_desc which per-pin driver depends on")
-> Signed-off-by: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
-
-Acked-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-> ---
->  drivers/pinctrl/mediatek/pinctrl-moore.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c b/drivers/pinctrl/mediatek/pinctrl-moore.c
-> index c27597c..3bf5dd5 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-moore.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
-> @@ -608,8 +608,8 @@ int mtk_moore_pinctrl_probe(struct platform_device *pdev,
->  
->  	hw->base = devm_kmalloc_array(&pdev->dev, hw->soc->nbase_names,
->  				      sizeof(*hw->base), GFP_KERNEL);
-> -	if (IS_ERR(hw->base))
-> -		return PTR_ERR(hw->base);
-> +	if (!hw->base)
-> +		return -ENOMEM;
->  
->  	for (i = 0; i < hw->soc->nbase_names; i++) {
->  		res = platform_get_resource_byname(pdev, IORESOURCE_MEM,
-> @@ -629,8 +629,8 @@ int mtk_moore_pinctrl_probe(struct platform_device *pdev,
->  	/* Copy from internal struct mtk_pin_desc to register to the core */
->  	pins = devm_kmalloc_array(&pdev->dev, hw->soc->npins, sizeof(*pins),
->  				  GFP_KERNEL);
-> -	if (IS_ERR(pins))
-> -		return PTR_ERR(pins);
-> +	if (!pins)
-> +		return -ENOMEM;
->  
->  	for (i = 0; i < hw->soc->npins; i++) {
->  		pins[i].number = hw->soc->pins[i].number;
-> 
+SGksIENLLAoKVGhhbmtzIGZvciB0aGUgcmV2aWV3IGNvbW1lbnQuCkkgd2lsbCBhZGQgdGhlIGRl
+c2NyaXB0aW9uIGluIHRoZSBiaW5kaW5nIGRvY3VtZW50IGluIHY0LgoKSSB3YW50IHRvIHNlbmQg
+dGhlIG90aGVyIGNoYW5nZXMgaW4gdjMgZmlyc3QuCgpUaGFua3MuCgpCaWJieQoKCk9uIFRodSwg
+MjAxOC0wOS0wNiBhdCAxNDowMyArMDgwMCwgQ0sgSHUgd3JvdGU6Cj4gSGksIEJpYmJ5Ogo+IAo+
+IE9uIFdlZCwgMjAxOC0wOS0wNSBhdCAxNjozMSArMDgwMCwgQmliYnkgSHNpZWggd3JvdGU6Cj4g
+PiBXZSBjYW4gc2VsZWN0IG91dHB1dCBjb21wb25lbnQgYnkgZGVjaXZlIG5vZGUgcG9ydC4KPiA+
+IE1haW4gcGF0aCBkZWZhdWx0IG91dHB1dCBjb21wb25lbnQgaXMgRFNJLgo+ID4gRXh0ZXJuYWwg
+cGF0aCBkZWZhdWx0IG91dHB1dCBjb21wb25lbnQgaXMgRFBJLgo+ID4gCj4gPiBTaWduZWQtb2Zm
+LWJ5OiBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29tPgo+ID4gLS0tCj4gPiAg
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgfCAzNyArKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKystLS0tCj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+cm1fZHJ2LmggfCAgNCArKy0tCj4gPiAgMiBmaWxlcyBjaGFuZ2VkLCAzNSBpbnNlcnRpb25zKCsp
+LCA2IGRlbGV0aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9k
+cnYuYwo+ID4gaW5kZXggZDk2MTExMmZhMmY1Li5hNDc3ZmI4NzhjMDYgMTAwNjQ0Cj4gPiAtLS0g
+YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ID4gKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiA+IEBAIC0yMSw3ICsyMSw5IEBACj4g
+PiAgI2luY2x1ZGUgPGRybS9kcm1fb2YuaD4KPiA+ICAjaW5jbHVkZSA8bGludXgvY29tcG9uZW50
+Lmg+Cj4gPiAgI2luY2x1ZGUgPGxpbnV4L2lvbW11Lmg+Cj4gPiArI2luY2x1ZGUgPGxpbnV4L29m
+Lmg+Cj4gPiAgI2luY2x1ZGUgPGxpbnV4L29mX2FkZHJlc3MuaD4KPiA+ICsjaW5jbHVkZSA8bGlu
+dXgvb2ZfZ3JhcGguaD4KPiA+ICAjaW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4KPiA+ICAj
+aW5jbHVkZSA8bGludXgvcG1fcnVudGltZS5oPgo+ID4gIAo+ID4gQEAgLTEzMyw3ICsxMzUsNyBA
+QCBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9tb2RlX2NvbmZpZ19mdW5jcyBtdGtfZHJtX21vZGVf
+Y29uZmlnX2Z1bmNzID0gewo+ID4gIAkuYXRvbWljX2NvbW1pdCA9IG10a19hdG9taWNfY29tbWl0
+LAo+ID4gIH07Cj4gPiAgCj4gPiAtc3RhdGljIGNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkIG10
+MjcwMV9tdGtfZGRwX21haW5bXSA9IHsKPiA+ICtzdGF0aWMgZW51bSBtdGtfZGRwX2NvbXBfaWQg
+bXQyNzAxX210a19kZHBfbWFpbltdID0gewo+ID4gIAlERFBfQ09NUE9ORU5UX09WTDAsCj4gPiAg
+CUREUF9DT01QT05FTlRfUkRNQTAsCj4gPiAgCUREUF9DT01QT05FTlRfQ09MT1IwLAo+ID4gQEAg
+LTE0MSw3ICsxNDMsNyBAQCBzdGF0aWMgY29uc3QgZW51bSBtdGtfZGRwX2NvbXBfaWQgbXQyNzAx
+X210a19kZHBfbWFpbltdID0gewo+ID4gIAlERFBfQ09NUE9ORU5UX0RTSTAsCj4gPiAgfTsKPiA+
+ICAKPiA+IC1zdGF0aWMgY29uc3QgZW51bSBtdGtfZGRwX2NvbXBfaWQgbXQyNzAxX210a19kZHBf
+ZXh0W10gPSB7Cj4gPiArc3RhdGljIGVudW0gbXRrX2RkcF9jb21wX2lkIG10MjcwMV9tdGtfZGRw
+X2V4dFtdID0gewo+ID4gIAlERFBfQ09NUE9ORU5UX1JETUExLAo+ID4gIAlERFBfQ09NUE9ORU5U
+X0RQSTAsCj4gPiAgfTsKPiA+IEBAIC0xNzIsNyArMTc0LDcgQEAgc3RhdGljIGNvbnN0IGVudW0g
+bXRrX2RkcF9jb21wX2lkIG10MjcxMl9tdGtfZGRwX3RoaXJkW10gPSB7Cj4gPiAgCUREUF9DT01Q
+T05FTlRfUFdNMiwKPiA+ICB9Owo+ID4gIAo+ID4gLXN0YXRpYyBjb25zdCBlbnVtIG10a19kZHBf
+Y29tcF9pZCBtdDgxNzNfbXRrX2RkcF9tYWluW10gPSB7Cj4gPiArc3RhdGljIGVudW0gbXRrX2Rk
+cF9jb21wX2lkIG10ODE3M19tdGtfZGRwX21haW5bXSA9IHsKPiA+ICAJRERQX0NPTVBPTkVOVF9P
+VkwwLAo+ID4gIAlERFBfQ09NUE9ORU5UX0NPTE9SMCwKPiA+ICAJRERQX0NPTVBPTkVOVF9BQUww
+LAo+ID4gQEAgLTE4Myw3ICsxODUsNyBAQCBzdGF0aWMgY29uc3QgZW51bSBtdGtfZGRwX2NvbXBf
+aWQgbXQ4MTczX210a19kZHBfbWFpbltdID0gewo+ID4gIAlERFBfQ09NUE9ORU5UX1BXTTAsCj4g
+PiAgfTsKPiA+ICAKPiA+IC1zdGF0aWMgY29uc3QgZW51bSBtdGtfZGRwX2NvbXBfaWQgbXQ4MTcz
+X210a19kZHBfZXh0W10gPSB7Cj4gPiArc3RhdGljIGVudW0gbXRrX2RkcF9jb21wX2lkIG10ODE3
+M19tdGtfZGRwX2V4dFtdID0gewo+ID4gIAlERFBfQ09NUE9ORU5UX09WTDEsCj4gPiAgCUREUF9D
+T01QT05FTlRfQ09MT1IxLAo+ID4gIAlERFBfQ09NUE9ORU5UX0dBTU1BLAo+ID4gQEAgLTQ3Miw2
+ICs0NzQsNyBAQCBzdGF0aWMgaW50IG10a19kcm1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2Rldmlj
+ZSAqcGRldikKPiA+ICAKPiA+ICAJLyogSXRlcmF0ZSBvdmVyIHNpYmxpbmcgRElTUCBmdW5jdGlv
+biBibG9ja3MgKi8KPiA+ICAJZm9yX2VhY2hfY2hpbGRfb2Zfbm9kZShkZXYtPm9mX25vZGUtPnBh
+cmVudCwgbm9kZSkgewo+ID4gKwkJc3RydWN0IGRldmljZV9ub2RlICpwb3J0LCAqZXAsICpyZW1v
+dGU7Cj4gPiAgCQljb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkICpvZl9pZDsKPiA+ICAJCWVudW0g
+bXRrX2RkcF9jb21wX3R5cGUgY29tcF90eXBlOwo+ID4gIAkJaW50IGNvbXBfaWQ7Cj4gPiBAQCAt
+NTMxLDYgKzUzNCwzMiBAQCBzdGF0aWMgaW50IG10a19kcm1fcHJvYmUoc3RydWN0IHBsYXRmb3Jt
+X2RldmljZSAqcGRldikKPiA+ICAKPiA+ICAJCQlwcml2YXRlLT5kZHBfY29tcFtjb21wX2lkXSA9
+IGNvbXA7Cj4gPiAgCQl9Cj4gPiArCj4gPiArCQlpZiAoY29tcF90eXBlICE9IE1US19EU0kgJiYg
+Y29tcF90eXBlICE9IE1US19EUEkpIHsKPiA+ICsJCQlwb3J0ID0gb2ZfZ3JhcGhfZ2V0X3BvcnRf
+YnlfaWQobm9kZSwgMCk7Cj4gPiArCQkJaWYgKCFwb3J0KQo+ID4gKwkJCQljb250aW51ZTsKPiA+
+ICsJCQllcCA9IG9mX2dldF9jaGlsZF9ieV9uYW1lKHBvcnQsICJlbmRwb2ludCIpOwo+ID4gKwkJ
+CW9mX25vZGVfcHV0KHBvcnQpOwo+ID4gKwkJCWlmICghZXApCj4gPiArCQkJCWNvbnRpbnVlOwo+
+ID4gKwkJCXJlbW90ZSA9IG9mX2dyYXBoX2dldF9yZW1vdGVfcG9ydF9wYXJlbnQoZXApOwo+ID4g
+KwkJCW9mX25vZGVfcHV0KGVwKTsKPiA+ICsJCQlpZiAoIXJlbW90ZSkKPiA+ICsJCQkJY29udGlu
+dWU7Cj4gPiArCQkJb2ZfaWQgPSBvZl9tYXRjaF9ub2RlKG10a19kZHBfY29tcF9kdF9pZHMsIHJl
+bW90ZSk7Cj4gPiArCQkJaWYgKCFvZl9pZCkKPiA+ICsJCQkJY29udGludWU7Cj4gPiArCQkJY29t
+cF90eXBlID0gKGVudW0gbXRrX2RkcF9jb21wX3R5cGUpb2ZfaWQtPmRhdGE7Cj4gPiArCQkJZm9y
+IChpID0gMDsgaSA8IHByaXZhdGUtPmRhdGEtPm1haW5fbGVuIC0gMTsgaSsrKQo+ID4gKwkJCQlp
+ZiAocHJpdmF0ZS0+ZGF0YS0+bWFpbl9wYXRoW2ldID09IGNvbXBfaWQpCj4gPiArCQkJCQlwcml2
+YXRlLT5kYXRhLT5tYWluX3BhdGhbaSArIDFdID0KPiA+ICsJCQkJCW10a19kZHBfY29tcF9nZXRf
+aWQobm9kZSwgY29tcF90eXBlKTsKPiA+ICsJCQlmb3IgKGkgPSAwOyBpIDwgcHJpdmF0ZS0+ZGF0
+YS0+ZXh0X2xlbiAtIDE7IGkrKykKPiA+ICsJCQkJaWYgKHByaXZhdGUtPmRhdGEtPmV4dF9wYXRo
+W2ldID09IGNvbXBfaWQpCj4gPiArCQkJCQlwcml2YXRlLT5kYXRhLT5leHRfcGF0aFtpICsgMV0g
+PQo+ID4gKwkJCQkJbXRrX2RkcF9jb21wX2dldF9pZChub2RlLCBjb21wX3R5cGUpOwo+ID4gKwkJ
+fQo+IAo+IEkgdGhpbmsgeW91IHNob3VsZCBhZGQgZGVzY3JpcHRpb24gaW4gYmluZGluZyBkb2N1
+bWVudAo+IChEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRl
+ay9tZWRpYXRlayxkaXNwLnR4dCkKPiBmb3IgdGhpcy4gQWZ0ZXIgdGhlIGJpbmRpbmcgZG9jdW1l
+bnQgaXMgZnVsbHkgcmV2aWV3ZWQsIHdlIGNvdWxkIHN0YXJ0Cj4gdG8gcmV2aWV3IHRoaXMgcGF0
+Y2guCj4gCj4gUmVnYXJkcywKPiBDSwo+IAo+ID4gIAl9Cj4gPiAgCj4gPiAgCWlmICghcHJpdmF0
+ZS0+bXV0ZXhfbm9kZSkgewo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZHJtX2Rydi5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmgK
+PiA+IGluZGV4IGVjYzAwY2EzMjIxZC4uMjU2YTNmZjJlNjZlIDEwMDY0NAo+ID4gLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmgKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5oCj4gPiBAQCAtMjksOSArMjksOSBAQCBzdHJ1Y3Qg
+ZHJtX3Byb3BlcnR5Owo+ID4gIHN0cnVjdCByZWdtYXA7Cj4gPiAgCj4gPiAgc3RydWN0IG10a19t
+bXN5c19kcml2ZXJfZGF0YSB7Cj4gPiAtCWNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkICptYWlu
+X3BhdGg7Cj4gPiArCWVudW0gbXRrX2RkcF9jb21wX2lkICptYWluX3BhdGg7Cj4gPiAgCXVuc2ln
+bmVkIGludCBtYWluX2xlbjsKPiA+IC0JY29uc3QgZW51bSBtdGtfZGRwX2NvbXBfaWQgKmV4dF9w
+YXRoOwo+ID4gKwllbnVtIG10a19kZHBfY29tcF9pZCAqZXh0X3BhdGg7Cj4gPiAgCXVuc2lnbmVk
+IGludCBleHRfbGVuOwo+ID4gIAljb25zdCBlbnVtIG10a19kZHBfY29tcF9pZCAqdGhpcmRfcGF0
+aDsKPiA+ICAJdW5zaWduZWQgaW50IHRoaXJkX2xlbjsKPiAKPiAKCi0tIApCaWJieQoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
+bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
