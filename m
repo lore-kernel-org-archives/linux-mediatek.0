@@ -1,62 +1,42 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v3 05/12] drm/mediatek: convert dpi driver to use
- drm_of_find_panel_or_bridge
-Date: Fri, 21 Sep 2018 11:28:15 +0800
-Message-ID: <20180921032822.30771-6-bibby.hsieh@mediatek.com>
+Subject: [PATCH v3 08/12] drm/mediatek: add support for SPDIF audio in HDMI
+Date: Fri, 21 Sep 2018 11:28:18 +0800
+Message-ID: <20180921032822.30771-9-bibby.hsieh@mediatek.com>
 References: <20180921032822.30771-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180921032822.30771-1-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: chunhui dai <chunhui.dai@mediatek.com>, linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogY2h1bmh1aSBkYWkgPGNodW5odWkuZGFpQG1lZGlhdGVrLmNvbT4KCkNvbnZlcnQgZHBp
-IGRyaXZlciB0byB1c2UgZHJtX29mX2ZpbmRfcGFuZWxfb3JfYnJpZGdlLgpUaGlzIGNoYW5nZXMg
-c29tZSBlcnJvciBtZXNzYWdlcyB0byBkZWJ1ZyBtZXNzYWdlcyAoaW4gdGhlIGdyYXBoIGNvcmUp
-LgpHcmFwaCBjb25uZWN0aW9ucyBhcmUgb2Z0ZW4gIm5vIGNvbm5lY3RzIiBkZXBlbmRpbmcgb24g
-dGhlIHBhcnRpY3VsYXIKYm9hcmQsIHNvIHdlIHdhbnQgdG8gYXZvaWQgc3B1cmlvdXMgbWVzc2Fn
-ZXMuIFBsdXMgdGhlIGtlcm5lbCBpcyBub3QgYQpEVCB2YWxpZGF0b3IuCnJlbGF0ZWQgbGlua3M6
-ClsxXSBodHRwczovL2xrbWwub3JnL2xrbWwvMjAxNy8yLzMvNzE2ClsyXSBodHRwczovL2xrbWwu
-b3JnL2xrbWwvMjAxNy8yLzMvNzE5CgpTaWduZWQtb2ZmLWJ5OiBjaHVuaHVpIGRhaSA8Y2h1bmh1
-aS5kYWlAbWVkaWF0ZWsuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBp
-LmMgfCAxOCArKysrKysrKy0tLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMo
-KyksIDEwIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHBpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCmluZGV4IDAy
-MmNjZWM0OWNlYS4uN2E0ODY4YTBhZmVjIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RwaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMK
-QEAgLTE0LDYgKzE0LDcgQEAKICNpbmNsdWRlIDxkcm0vZHJtUC5oPgogI2luY2x1ZGUgPGRybS9k
-cm1fY3J0Yy5oPgogI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KKyNpbmNsdWRlIDxk
-cm0vZHJtX29mLmg+CiAjaW5jbHVkZSA8bGludXgva2VybmVsLmg+CiAjaW5jbHVkZSA8bGludXgv
-Y29tcG9uZW50Lmg+CiAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+CkBAIC02OTcs
-NyArNjk4LDYgQEAgc3RhdGljIGludCBtdGtfZHBpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZp
-Y2UgKnBkZXYpCiAJc3RydWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRldjsKIAlzdHJ1Y3QgbXRr
-X2RwaSAqZHBpOwogCXN0cnVjdCByZXNvdXJjZSAqbWVtOwotCXN0cnVjdCBkZXZpY2Vfbm9kZSAq
-YnJpZGdlX25vZGU7CiAJaW50IGNvbXBfaWQ7CiAJaW50IHJldDsKIApAQCAtNzQzLDE2ICs3NDMs
-MTQgQEAgc3RhdGljIGludCBtdGtfZHBpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBk
-ZXYpCiAJCXJldHVybiAtRUlOVkFMOwogCX0KIAotCWJyaWRnZV9ub2RlID0gb2ZfZ3JhcGhfZ2V0
-X3JlbW90ZV9ub2RlKGRldi0+b2Zfbm9kZSwgMCwgMCk7Ci0JaWYgKCFicmlkZ2Vfbm9kZSkKLQkJ
-cmV0dXJuIC1FTk9ERVY7Ci0KLQlkZXZfaW5mbyhkZXYsICJGb3VuZCBicmlkZ2Ugbm9kZTogJXBP
-RlxuIiwgYnJpZGdlX25vZGUpOwotCi0JZHBpLT5icmlkZ2UgPSBvZl9kcm1fZmluZF9icmlkZ2Uo
-YnJpZGdlX25vZGUpOwotCW9mX25vZGVfcHV0KGJyaWRnZV9ub2RlKTsKLQlpZiAoIWRwaS0+YnJp
-ZGdlKQorCXJldCA9IGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZShkZXYtPm9mX25vZGUsIDAs
-IDAsCisJCQkJCSAgTlVMTCwgJmRwaS0+YnJpZGdlKTsKKwlpZiAocmV0KSB7CisJCWRldl9lcnIo
-ZGV2LCAiRmFpbGVkIHRvIGZpbmQgcGFuZWwgb3IgYnJpZGdlOiAlZFxuIiwgcmV0KTsKIAkJcmV0
-dXJuIC1FUFJPQkVfREVGRVI7CisJfQorCisJZGV2X2luZm8oZGV2LCAiRm91bmQgYnJpZGdlIG5v
-ZGU6ICVwT0ZcbiIsIGRwaS0+YnJpZGdlLT5vZl9ub2RlKTsKIAogCWNvbXBfaWQgPSBtdGtfZGRw
-X2NvbXBfZ2V0X2lkKGRldi0+b2Zfbm9kZSwgTVRLX0RQSSk7CiAJaWYgKGNvbXBfaWQgPCAwKSB7
-Ci0tIAoyLjEyLjUuMi5nYmRmMjNhYgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpLWRldmVsCg==
+From: chunhui dai <chunhui.dai@mediatek.com>
+
+add support for SPDIF audio  in HDMI
+
+Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index 2ca9f6a64dab..d62e685cec73 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -1576,6 +1576,11 @@ static int mtk_hdmi_audio_hw_params(struct device *dev, void *data,
+ 		hdmi_params.aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
+ 		hdmi_params.aud_mclk = HDMI_AUD_MCLK_128FS;
+ 		break;
++	case HDMI_SPDIF:
++		hdmi_params.aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
++		hdmi_params.aud_sampe_size = HDMI_AUDIO_SAMPLE_SIZE_16;
++		hdmi_params.aud_input_type = HDMI_AUD_INPUT_SPDIF;
++		break;
+ 	default:
+ 		dev_err(hdmi->dev, "%s: Invalid DAI format %d\n", __func__,
+ 			daifmt->fmt);
+-- 
+2.12.5.2.gbdf23ab
