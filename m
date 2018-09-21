@@ -1,74 +1,66 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v3 00/13] drm/mediatek: support hdmi output for mt2701 and
- mt7623
-Date: Fri, 21 Sep 2018 11:28:10 +0800
-Message-ID: <20180921032822.30771-1-bibby.hsieh@mediatek.com>
+Subject: [PATCH v3 10/12] drm/mediatek: implement connection from BLS to DPI0
+Date: Fri, 21 Sep 2018 11:28:20 +0800
+Message-ID: <20180921032822.30771-11-bibby.hsieh@mediatek.com>
+References: <20180921032822.30771-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180921032822.30771-1-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-SW4gb3JkZXIgdG8gc3VwcG9ydCBIRE1JIG9uIG10MjcwMSwKd2UgaGF2ZSB0byBtYWtlIHNvbWUg
-bW9kaWZpY2F0aW9ucy4KMSkgQWRkIHRoZSBIRE1JIGRyaXZlci4KMikgQWRkIHRoZSBEUEkgZHJp
-dmVyLgozKSBBZGQgYSBtZWNoYW5pc20gdGhhdCBjb25maWcgb3V0cHV0IGNvbXBvbmVudCBieSBk
-dHMuCgpDaGFuZ2VzIHNpbmNlIHYyOgogLSBGaXggdGhlIHR5cG8gaW4gY29tbWl0IG1lc3NhZ2Uu
-CiAtIFJlbW92ZSBjb25zdCBvZiByZWdfaF9mcmVfY29uIGluIHRoZSBtdGtfZHBpX2NvbmYgc3Ry
-dWN0CiAtIFJlbW92ZSB1bnVzZWQgZXJyb3IgbG9nCiAtIFVzZSBsb3dlciBjYXNlZSBmb3IgaGV4
-IG51bWJlcgogLSBVc2UgY29tbW9uIEFQSSB3aGljaCBkZWZpbmVkIGluIG10a19oZG1pX3BoeS5j
-IHRvIHJlZHVjZSBjb2RlIHNpemUKIC0gSW1wbGVtZXQgdGhlIGVuYWJsZS9kaXNhYmxlIG9mIHBo
-eV9wbGxfb3BzIHRoZSBzYW1lIGFzIDgxNzMKIC0gTW92ZSB0aGUgY29tbW9uIGhlYWRlciB0byBt
-dGtfaGRtaV9waHkuaAogLSBSZW1vdmUgdGhlIGluY2x1ZGluZyBvZiBkZWJ1Z2ZzLmgKTk9URToK
-IC0gYWRkIGRlc2NyaXB0aW9uIGFib3V0IHRoZWNvcG9uZW50IG91dHB1dCBpbiB0aGUgYmluZGlu
-ZyBkb2N1bWVudCBpbiB2NC4KCkNoYW5nZXMgc2luY2UgdjE6CiAtIFNlcGFyYXRlIHNvbWUgcGF0
-Y2hlcyB0byBpbmRlcGVuZGVudCBwYXRjaC4KIC0gYWRkIERJU1BfUkVHX0NPTkZJR19EU0lfU0VM
-IGFuZCBESVNQX1JFR19DT05GSUdfRFBJX1NFTAogICBjb25maWd1cmF0aW9uIGluIHRoZSBjb25k
-aXRpb24gb2YgQkxTJkRQSTAgY29ubmVjdGlvbi4KCkNoYW5nZXMgc2luY2UgdjA6CiAtIENvcnJl
-Y3Qgc29tZSB0eXBvcyBpbiBjb21taXQgbWVzc2FnZS4KIC0gRml4dXAgdGhlIGJ1aWxkIHdhcm5p
-bmcgKHRtcCB2YXJpYWJsZSBkaWRuJ3QgYmUgaW5pdGlhbGl6ZWQpCgpCaWJieSBIc2llaCAoMyk6
-CiAgZHJtL21lZGlhdGVrOiBpbXBsZW1lbnQgY29ubmVjdGlvbiBmcm9tIEJMUyB0byBEUEkwCiAg
-ZHJtL21lZGlhdGVrOiBhZGQgYSBlcnJvciByZXR1cm4gdmFsdWUgd2hlbiBjbG9jayBkcml2ZXIg
-aGFzIGJlZW4KICAgIHByZXBhcmVkCiAgZHJtL21lZGlhdGVrOiBjb25maWcgY29tcG9uZW50IG91
-dHB1dCBieSBkZXZpY2Ugbm9kZSBwb3J0CgpjaHVuaHVpIGRhaSAoOSk6CiAgZHJtL21lZGlhdGVr
-OiBhZGQgcmVmY291bnQgZm9yIERQSSBwb3dlciBvbi9vZmYKICBkcm0vbWVkaWF0ZWs6IG1vdmUg
-aGFyZHdhcmUgcmVnaXN0ZXIgdG8gbm9kZSBkYXRhCiAgZHJtL21lZGlhdGVrOiBhZGp1c3QgRURH
-RSB0byBtYXRjaCBjbG9jayBhbmQgZGF0YQogIGRybS9tZWRpYXRlazogYWRkIGNsb2NrIGZhY3Rv
-ciBmb3IgZGlmZmVyZW50IElDCiAgZHJtL21lZGlhdGVrOiBjb252ZXJ0IGRwaSBkcml2ZXIgdG8g
-dXNlIGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZQogIGRybS9tZWRpYXRlazogYWRkIGRwaSBk
-cml2ZXIgZm9yIG10MjcwMSBhbmQgbXQ3NjIzCiAgZHJtL21lZGlhdGVrOiBzZXBhcmF0ZSBoZG1p
-IHBoeSB0byBkaWZmZXJlbnQgZmlsZQogIGRybS9tZWRpYXRlazogYWRkIHN1cHBvcnQgZm9yIFNQ
-RElGIGF1ZGlvIGluIEhETUkKICBkcm0vbWVkaWF0ZWs6IGFkZCBoZG1pIGRyaXZlciBmb3IgTVQy
-NzAxIGFuZCBNVDc2MjMKCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvTWFrZWZpbGUgICAgICAg
-ICAgICAgIHwgICA1ICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jICAgICAg
-ICAgICAgIHwgMTA2ICsrKysrKysrLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rw
-aV9yZWdzLmggICAgICAgIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
-bV9kZHAuYyAgICAgICAgIHwgIDE0ICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
-bV9kZHBfY29tcC5jICAgIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
-bV9kcnYuYyAgICAgICAgIHwgIDM5ICsrKystCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kcnYuaCAgICAgICAgIHwgICA0ICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2hkbWkuYyAgICAgICAgICAgIHwgIDE1ICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2hkbWkuaCAgICAgICAgICAgIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2hkbWlfcGh5LmMgICAgICAgIHwgMjEzICsrKysrKysrKysrKysrKysrKysrKysKIGRyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaCAgICAgICAgfCAgNTYgKysrKysrCiBkcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jIHwgMjM0ICsrKysrKysr
-KysrKysrKysrKysrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hk
-bWlfcGh5LmMgfCAyMDQgKy0tLS0tLS0tLS0tLS0tLS0tLS0tCiAxMyBmaWxlcyBjaGFuZ2VkLCA2
-NjEgaW5zZXJ0aW9ucygrKSwgMjM1IGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuYwogY3JlYXRlIG1vZGUgMTAwNjQ0
-IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaAogY3JlYXRlIG1vZGUgMTAw
-NjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQyNzAxX2hkbWlfcGh5LmMKCi0tIAoy
-LjEyLjUuMi5nYmRmMjNhYgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-LWRldmVsCg==
+Modify display driver to support connection from BLS to DPI.
+
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+index 87e4191c250e..f3068c62ed48 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+@@ -39,6 +39,7 @@
+ #define DISP_REG_CONFIG_DISP_OVL_MOUT_EN	0x030
+ #define DISP_REG_CONFIG_OUT_SEL			0x04c
+ #define DISP_REG_CONFIG_DSI_SEL			0x050
++#define DISP_REG_CONFIG_DPI_SEL			0x064
+ 
+ #define DISP_REG_MUTEX_EN(n)	(0x20 + 0x20 * (n))
+ #define DISP_REG_MUTEX(n)	(0x24 + 0x20 * (n))
+@@ -132,7 +133,10 @@
+ 
+ #define OVL_MOUT_EN_RDMA		0x1
+ #define BLS_TO_DSI_RDMA1_TO_DPI1	0x8
++#define BLS_TO_DPI_RDMA1_TO_DSI		0x2
+ #define DSI_SEL_IN_BLS			0x0
++#define DPI_SEL_IN_BLS			0x0
++#define DSI_SEL_IN_RDMA			0x1
+ 
+ struct mtk_disp_mutex {
+ 	int id;
+@@ -323,9 +327,17 @@ static void mtk_ddp_sout_sel(void __iomem *config_regs,
+ 			     enum mtk_ddp_comp_id cur,
+ 			     enum mtk_ddp_comp_id next)
+ {
+-	if (cur == DDP_COMPONENT_BLS && next == DDP_COMPONENT_DSI0)
++	if (cur == DDP_COMPONENT_BLS && next == DDP_COMPONENT_DSI0) {
+ 		writel_relaxed(BLS_TO_DSI_RDMA1_TO_DPI1,
+ 			       config_regs + DISP_REG_CONFIG_OUT_SEL);
++	} else if (cur == DDP_COMPONENT_BLS && next == DDP_COMPONENT_DPI0) {
++		writel_relaxed(BLS_TO_DPI_RDMA1_TO_DSI,
++			       config_regs + DISP_REG_CONFIG_OUT_SEL);
++		writel_relaxed(DSI_SEL_IN_RDMA,
++			       config_regs + DISP_REG_CONFIG_DSI_SEL);
++		writel_relaxed(DPI_SEL_IN_BLS,
++			       config_regs + DISP_REG_CONFIG_DPI_SEL);
++	}
+ }
+ 
+ void mtk_ddp_add_comp_to_path(void __iomem *config_regs,
+-- 
+2.12.5.2.gbdf23ab
