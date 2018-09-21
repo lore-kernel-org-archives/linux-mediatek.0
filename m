@@ -1,110 +1,51 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v3 02/12] drm/mediatek: move hardware register to node data
-Date: Fri, 21 Sep 2018 11:28:12 +0800
-Message-ID: <20180921032822.30771-3-bibby.hsieh@mediatek.com>
-References: <20180921032822.30771-1-bibby.hsieh@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH 4/4] pinctrl: mediatek: add eint support to MT6765 pinctrl driver
+Date: Fri, 21 Sep 2018 12:07:38 +0800
+Message-ID: <82d47055aec8e40422eb72568e96bfbaf199d9d2.1537502494.git.sean.wang@mediatek.com>
+References: <ab85fbee4d8286cbedbcc7317f89dc0d2dd83965.1537502494.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180921032822.30771-1-bibby.hsieh@mediatek.com>
+In-Reply-To: <ab85fbee4d8286cbedbcc7317f89dc0d2dd83965.1537502494.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>
+To: linus.walleij@linaro.org, linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, Mars Cheng <mars.cheng@mediatek.com>, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: chunhui dai <chunhui.dai@mediatek.com>
+From: Mars Cheng <mars.cheng@mediatek.com>
 
-The address of register DPI_H_FRE_CON is different in different IC.
-Using of_node data to find this address.
+Just add eint support to MT6765 pinctrl driver as usual as
+happens on the other SoCs.
 
-Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
+Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c      | 19 ++++++++++++++++---
- drivers/gpu/drm/mediatek/mtk_dpi_regs.h |  1 -
- 2 files changed, 16 insertions(+), 4 deletions(-)
+ drivers/pinctrl/mediatek/pinctrl-mt6765.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index d9373e67d328..74a32833bde1 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -18,6 +18,7 @@
- #include <linux/component.h>
- #include <linux/platform_device.h>
- #include <linux/of.h>
-+#include <linux/of_device.h>
- #include <linux/of_graph.h>
- #include <linux/interrupt.h>
- #include <linux/types.h>
-@@ -72,6 +73,7 @@ struct mtk_dpi {
- 	struct clk *tvd_clk;
- 	int irq;
- 	struct drm_display_mode mode;
-+	const struct mtk_dpi_conf *conf;
- 	enum mtk_dpi_out_color_format color_format;
- 	enum mtk_dpi_out_yc_map yc_map;
- 	enum mtk_dpi_out_bit_num bit_num;
-@@ -117,6 +119,10 @@ struct mtk_dpi_yc_limit {
- 	u16 c_bottom;
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6765.c b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
+index 1cae634..32451e8 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt6765.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
+@@ -1056,11 +1056,19 @@ static const char * const mt6765_pinctrl_register_base_names[] = {
+ 	"iocfg6", "iocfg7",
  };
  
-+struct mtk_dpi_conf {
-+	u32 reg_h_fre_con;
++static const struct mtk_eint_hw mt6765_eint_hw = {
++	.port_mask = 7,
++	.ports     = 6,
++	.ap_num    = 160,
++	.db_cnt    = 13,
 +};
 +
- static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
- {
- 	u32 tmp = readl(dpi->regs + offset) & ~mask;
-@@ -342,7 +348,7 @@ static void mtk_dpi_config_swap_input(struct mtk_dpi *dpi, bool enable)
- 
- static void mtk_dpi_config_2n_h_fre(struct mtk_dpi *dpi)
- {
--	mtk_dpi_mask(dpi, DPI_H_FRE_CON, H_FRE_2N, H_FRE_2N);
-+	mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, H_FRE_2N, H_FRE_2N);
- }
- 
- static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
-@@ -668,6 +674,10 @@ static const struct component_ops mtk_dpi_component_ops = {
- 	.unbind = mtk_dpi_unbind,
- };
- 
-+static const struct mtk_dpi_conf mt8173_conf = {
-+	.reg_h_fre_con = 0xe0,
-+};
-+
- static int mtk_dpi_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -682,6 +692,7 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	dpi->dev = dev;
-+	dpi->conf = (struct mtk_dpi_conf *)of_device_get_match_data(dev);
- 
- 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	dpi->regs = devm_ioremap_resource(dev, mem);
-@@ -761,8 +772,10 @@ static int mtk_dpi_remove(struct platform_device *pdev)
- }
- 
- static const struct of_device_id mtk_dpi_of_ids[] = {
--	{ .compatible = "mediatek,mt8173-dpi", },
--	{}
-+	{ .compatible = "mediatek,mt8173-dpi",
-+	  .data = &mt8173_conf,
-+	},
-+	{ },
- };
- 
- struct platform_driver mtk_dpi_driver = {
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-index 4b6ad4751a31..040444d7718d 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-@@ -223,6 +223,5 @@
- #define ESAV_CODE2			(0xFFF << 0)
- #define ESAV_CODE3_MSB			BIT(16)
- 
--#define DPI_H_FRE_CON		0xE0
- #define H_FRE_2N			BIT(25)
- #endif /* __MTK_DPI_REGS_H */
+ static const struct mtk_pin_soc mt6765_data = {
+ 	.reg_cal = mt6765_reg_cals,
+ 	.pins = mtk_pins_mt6765,
+ 	.npins = ARRAY_SIZE(mtk_pins_mt6765),
+ 	.ngrps = ARRAY_SIZE(mtk_pins_mt6765),
++	.eint_hw = &mt6765_eint_hw,
+ 	.gpio_m = 0,
+ 	.ies_present = true,
+ 	.base_names = mt6765_pinctrl_register_base_names,
 -- 
-2.12.5.2.gbdf23ab
+2.7.4
