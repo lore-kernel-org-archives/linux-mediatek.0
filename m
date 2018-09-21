@@ -1,133 +1,74 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v3 12/12] drm/mediatek: config component output by device node port
-Date: Fri, 21 Sep 2018 11:28:22 +0800
-Message-ID: <20180921032822.30771-13-bibby.hsieh@mediatek.com>
-References: <20180921032822.30771-1-bibby.hsieh@mediatek.com>
+Subject: [PATCH v3 00/13] drm/mediatek: support hdmi output for mt2701 and
+ mt7623
+Date: Fri, 21 Sep 2018 11:28:10 +0800
+Message-ID: <20180921032822.30771-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180921032822.30771-1-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
+Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-We can select output component by decive node port.
-Main path default output component is DSI.
-External path default output component is DPI.
-
-Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 37 ++++++++++++++++++++++++++++++----
- drivers/gpu/drm/mediatek/mtk_drm_drv.h |  4 ++--
- 2 files changed, 35 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index d961112fa2f5..a477fb878c06 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -21,7 +21,9 @@
- #include <drm/drm_of.h>
- #include <linux/component.h>
- #include <linux/iommu.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
-+#include <linux/of_graph.h>
- #include <linux/of_platform.h>
- #include <linux/pm_runtime.h>
- 
-@@ -133,7 +135,7 @@ static const struct drm_mode_config_funcs mtk_drm_mode_config_funcs = {
- 	.atomic_commit = mtk_atomic_commit,
- };
- 
--static const enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
-+static enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
- 	DDP_COMPONENT_OVL0,
- 	DDP_COMPONENT_RDMA0,
- 	DDP_COMPONENT_COLOR0,
-@@ -141,7 +143,7 @@ static const enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
- 	DDP_COMPONENT_DSI0,
- };
- 
--static const enum mtk_ddp_comp_id mt2701_mtk_ddp_ext[] = {
-+static enum mtk_ddp_comp_id mt2701_mtk_ddp_ext[] = {
- 	DDP_COMPONENT_RDMA1,
- 	DDP_COMPONENT_DPI0,
- };
-@@ -172,7 +174,7 @@ static const enum mtk_ddp_comp_id mt2712_mtk_ddp_third[] = {
- 	DDP_COMPONENT_PWM2,
- };
- 
--static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
-+static enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
- 	DDP_COMPONENT_OVL0,
- 	DDP_COMPONENT_COLOR0,
- 	DDP_COMPONENT_AAL0,
-@@ -183,7 +185,7 @@ static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
- 	DDP_COMPONENT_PWM0,
- };
- 
--static const enum mtk_ddp_comp_id mt8173_mtk_ddp_ext[] = {
-+static enum mtk_ddp_comp_id mt8173_mtk_ddp_ext[] = {
- 	DDP_COMPONENT_OVL1,
- 	DDP_COMPONENT_COLOR1,
- 	DDP_COMPONENT_GAMMA,
-@@ -472,6 +474,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 
- 	/* Iterate over sibling DISP function blocks */
- 	for_each_child_of_node(dev->of_node->parent, node) {
-+		struct device_node *port, *ep, *remote;
- 		const struct of_device_id *of_id;
- 		enum mtk_ddp_comp_type comp_type;
- 		int comp_id;
-@@ -531,6 +534,32 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 
- 			private->ddp_comp[comp_id] = comp;
- 		}
-+
-+		if (comp_type != MTK_DSI && comp_type != MTK_DPI) {
-+			port = of_graph_get_port_by_id(node, 0);
-+			if (!port)
-+				continue;
-+			ep = of_get_child_by_name(port, "endpoint");
-+			of_node_put(port);
-+			if (!ep)
-+				continue;
-+			remote = of_graph_get_remote_port_parent(ep);
-+			of_node_put(ep);
-+			if (!remote)
-+				continue;
-+			of_id = of_match_node(mtk_ddp_comp_dt_ids, remote);
-+			if (!of_id)
-+				continue;
-+			comp_type = (enum mtk_ddp_comp_type)of_id->data;
-+			for (i = 0; i < private->data->main_len - 1; i++)
-+				if (private->data->main_path[i] == comp_id)
-+					private->data->main_path[i + 1] =
-+					mtk_ddp_comp_get_id(node, comp_type);
-+			for (i = 0; i < private->data->ext_len - 1; i++)
-+				if (private->data->ext_path[i] == comp_id)
-+					private->data->ext_path[i + 1] =
-+					mtk_ddp_comp_get_id(node, comp_type);
-+		}
- 	}
- 
- 	if (!private->mutex_node) {
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index ecc00ca3221d..256a3ff2e66e 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -29,9 +29,9 @@ struct drm_property;
- struct regmap;
- 
- struct mtk_mmsys_driver_data {
--	const enum mtk_ddp_comp_id *main_path;
-+	enum mtk_ddp_comp_id *main_path;
- 	unsigned int main_len;
--	const enum mtk_ddp_comp_id *ext_path;
-+	enum mtk_ddp_comp_id *ext_path;
- 	unsigned int ext_len;
- 	const enum mtk_ddp_comp_id *third_path;
- 	unsigned int third_len;
--- 
-2.12.5.2.gbdf23ab
+SW4gb3JkZXIgdG8gc3VwcG9ydCBIRE1JIG9uIG10MjcwMSwKd2UgaGF2ZSB0byBtYWtlIHNvbWUg
+bW9kaWZpY2F0aW9ucy4KMSkgQWRkIHRoZSBIRE1JIGRyaXZlci4KMikgQWRkIHRoZSBEUEkgZHJp
+dmVyLgozKSBBZGQgYSBtZWNoYW5pc20gdGhhdCBjb25maWcgb3V0cHV0IGNvbXBvbmVudCBieSBk
+dHMuCgpDaGFuZ2VzIHNpbmNlIHYyOgogLSBGaXggdGhlIHR5cG8gaW4gY29tbWl0IG1lc3NhZ2Uu
+CiAtIFJlbW92ZSBjb25zdCBvZiByZWdfaF9mcmVfY29uIGluIHRoZSBtdGtfZHBpX2NvbmYgc3Ry
+dWN0CiAtIFJlbW92ZSB1bnVzZWQgZXJyb3IgbG9nCiAtIFVzZSBsb3dlciBjYXNlZSBmb3IgaGV4
+IG51bWJlcgogLSBVc2UgY29tbW9uIEFQSSB3aGljaCBkZWZpbmVkIGluIG10a19oZG1pX3BoeS5j
+IHRvIHJlZHVjZSBjb2RlIHNpemUKIC0gSW1wbGVtZXQgdGhlIGVuYWJsZS9kaXNhYmxlIG9mIHBo
+eV9wbGxfb3BzIHRoZSBzYW1lIGFzIDgxNzMKIC0gTW92ZSB0aGUgY29tbW9uIGhlYWRlciB0byBt
+dGtfaGRtaV9waHkuaAogLSBSZW1vdmUgdGhlIGluY2x1ZGluZyBvZiBkZWJ1Z2ZzLmgKTk9URToK
+IC0gYWRkIGRlc2NyaXB0aW9uIGFib3V0IHRoZWNvcG9uZW50IG91dHB1dCBpbiB0aGUgYmluZGlu
+ZyBkb2N1bWVudCBpbiB2NC4KCkNoYW5nZXMgc2luY2UgdjE6CiAtIFNlcGFyYXRlIHNvbWUgcGF0
+Y2hlcyB0byBpbmRlcGVuZGVudCBwYXRjaC4KIC0gYWRkIERJU1BfUkVHX0NPTkZJR19EU0lfU0VM
+IGFuZCBESVNQX1JFR19DT05GSUdfRFBJX1NFTAogICBjb25maWd1cmF0aW9uIGluIHRoZSBjb25k
+aXRpb24gb2YgQkxTJkRQSTAgY29ubmVjdGlvbi4KCkNoYW5nZXMgc2luY2UgdjA6CiAtIENvcnJl
+Y3Qgc29tZSB0eXBvcyBpbiBjb21taXQgbWVzc2FnZS4KIC0gRml4dXAgdGhlIGJ1aWxkIHdhcm5p
+bmcgKHRtcCB2YXJpYWJsZSBkaWRuJ3QgYmUgaW5pdGlhbGl6ZWQpCgpCaWJieSBIc2llaCAoMyk6
+CiAgZHJtL21lZGlhdGVrOiBpbXBsZW1lbnQgY29ubmVjdGlvbiBmcm9tIEJMUyB0byBEUEkwCiAg
+ZHJtL21lZGlhdGVrOiBhZGQgYSBlcnJvciByZXR1cm4gdmFsdWUgd2hlbiBjbG9jayBkcml2ZXIg
+aGFzIGJlZW4KICAgIHByZXBhcmVkCiAgZHJtL21lZGlhdGVrOiBjb25maWcgY29tcG9uZW50IG91
+dHB1dCBieSBkZXZpY2Ugbm9kZSBwb3J0CgpjaHVuaHVpIGRhaSAoOSk6CiAgZHJtL21lZGlhdGVr
+OiBhZGQgcmVmY291bnQgZm9yIERQSSBwb3dlciBvbi9vZmYKICBkcm0vbWVkaWF0ZWs6IG1vdmUg
+aGFyZHdhcmUgcmVnaXN0ZXIgdG8gbm9kZSBkYXRhCiAgZHJtL21lZGlhdGVrOiBhZGp1c3QgRURH
+RSB0byBtYXRjaCBjbG9jayBhbmQgZGF0YQogIGRybS9tZWRpYXRlazogYWRkIGNsb2NrIGZhY3Rv
+ciBmb3IgZGlmZmVyZW50IElDCiAgZHJtL21lZGlhdGVrOiBjb252ZXJ0IGRwaSBkcml2ZXIgdG8g
+dXNlIGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZQogIGRybS9tZWRpYXRlazogYWRkIGRwaSBk
+cml2ZXIgZm9yIG10MjcwMSBhbmQgbXQ3NjIzCiAgZHJtL21lZGlhdGVrOiBzZXBhcmF0ZSBoZG1p
+IHBoeSB0byBkaWZmZXJlbnQgZmlsZQogIGRybS9tZWRpYXRlazogYWRkIHN1cHBvcnQgZm9yIFNQ
+RElGIGF1ZGlvIGluIEhETUkKICBkcm0vbWVkaWF0ZWs6IGFkZCBoZG1pIGRyaXZlciBmb3IgTVQy
+NzAxIGFuZCBNVDc2MjMKCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvTWFrZWZpbGUgICAgICAg
+ICAgICAgIHwgICA1ICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jICAgICAg
+ICAgICAgIHwgMTA2ICsrKysrKysrLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rw
+aV9yZWdzLmggICAgICAgIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9kZHAuYyAgICAgICAgIHwgIDE0ICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9kZHBfY29tcC5jICAgIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9kcnYuYyAgICAgICAgIHwgIDM5ICsrKystCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RybV9kcnYuaCAgICAgICAgIHwgICA0ICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2hkbWkuYyAgICAgICAgICAgIHwgIDE1ICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2hkbWkuaCAgICAgICAgICAgIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2hkbWlfcGh5LmMgICAgICAgIHwgMjEzICsrKysrKysrKysrKysrKysrKysrKysKIGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaCAgICAgICAgfCAgNTYgKysrKysrCiBkcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jIHwgMjM0ICsrKysrKysr
+KysrKysrKysrKysrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hk
+bWlfcGh5LmMgfCAyMDQgKy0tLS0tLS0tLS0tLS0tLS0tLS0tCiAxMyBmaWxlcyBjaGFuZ2VkLCA2
+NjEgaW5zZXJ0aW9ucygrKSwgMjM1IGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuYwogY3JlYXRlIG1vZGUgMTAwNjQ0
+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaAogY3JlYXRlIG1vZGUgMTAw
+NjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQyNzAxX2hkbWlfcGh5LmMKCi0tIAoy
+LjEyLjUuMi5nYmRmMjNhYgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+LWRldmVsCg==
