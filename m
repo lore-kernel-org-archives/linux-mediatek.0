@@ -1,69 +1,92 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v3 05/12] drm/mediatek: convert dpi driver to use
- drm_of_find_panel_or_bridge
-Date: Fri, 21 Sep 2018 17:47:34 +0800
-Message-ID: <1537523254.20660.9.camel@mtksdaap41>
+Subject: Re: [PATCH v3 06/12] drm/mediatek: add dpi driver for mt2701 and
+ mt7623
+Date: Fri, 21 Sep 2018 17:50:04 +0800
+Message-ID: <1537523404.20660.10.camel@mtksdaap41>
 References: <20180921032822.30771-1-bibby.hsieh@mediatek.com>
- <20180921032822.30771-6-bibby.hsieh@mediatek.com>
+         <20180921032822.30771-7-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180921032822.30771-6-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180921032822.30771-7-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEJpYmJ5OgoKT24gRnJpLCAyMDE4LTA5LTIxIGF0IDExOjI4ICswODAwLCBCaWJieSBIc2ll
-aCB3cm90ZToKPiBGcm9tOiBjaHVuaHVpIGRhaSA8Y2h1bmh1aS5kYWlAbWVkaWF0ZWsuY29tPgo+
-IAo+IENvbnZlcnQgZHBpIGRyaXZlciB0byB1c2UgZHJtX29mX2ZpbmRfcGFuZWxfb3JfYnJpZGdl
-Lgo+IFRoaXMgY2hhbmdlcyBzb21lIGVycm9yIG1lc3NhZ2VzIHRvIGRlYnVnIG1lc3NhZ2VzIChp
-biB0aGUgZ3JhcGggY29yZSkuCj4gR3JhcGggY29ubmVjdGlvbnMgYXJlIG9mdGVuICJubyBjb25u
-ZWN0cyIgZGVwZW5kaW5nIG9uIHRoZSBwYXJ0aWN1bGFyCj4gYm9hcmQsIHNvIHdlIHdhbnQgdG8g
-YXZvaWQgc3B1cmlvdXMgbWVzc2FnZXMuIFBsdXMgdGhlIGtlcm5lbCBpcyBub3QgYQo+IERUIHZh
-bGlkYXRvci4KPiByZWxhdGVkIGxpbmtzOgo+IFsxXSBodHRwczovL2xrbWwub3JnL2xrbWwvMjAx
-Ny8yLzMvNzE2Cj4gWzJdIGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDE3LzIvMy83MTkKPiAKPiBT
-aWduZWQtb2ZmLWJ5OiBjaHVuaHVpIGRhaSA8Y2h1bmh1aS5kYWlAbWVkaWF0ZWsuY29tPgo+IC0t
-LQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jIHwgMTggKysrKysrKystLS0t
-LS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygt
-KQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jIGIv
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+IGluZGV4IDAyMmNjZWM0OWNlYS4u
-N2E0ODY4YTBhZmVjIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-ZHBpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gQEAgLTE0
-LDYgKzE0LDcgQEAKPiAgI2luY2x1ZGUgPGRybS9kcm1QLmg+Cj4gICNpbmNsdWRlIDxkcm0vZHJt
-X2NydGMuaD4KPiAgI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KPiArI2luY2x1ZGUg
-PGRybS9kcm1fb2YuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L2tlcm5lbC5oPgo+ICAjaW5jbHVkZSA8
-bGludXgvY29tcG9uZW50Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4K
-PiBAQCAtNjk3LDcgKzY5OCw2IEBAIHN0YXRpYyBpbnQgbXRrX2RwaV9wcm9iZShzdHJ1Y3QgcGxh
-dGZvcm1fZGV2aWNlICpwZGV2KQo+ICAJc3RydWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRldjsK
-PiAgCXN0cnVjdCBtdGtfZHBpICpkcGk7Cj4gIAlzdHJ1Y3QgcmVzb3VyY2UgKm1lbTsKPiAtCXN0
-cnVjdCBkZXZpY2Vfbm9kZSAqYnJpZGdlX25vZGU7Cj4gIAlpbnQgY29tcF9pZDsKPiAgCWludCBy
-ZXQ7Cj4gIAo+IEBAIC03NDMsMTYgKzc0MywxNCBAQCBzdGF0aWMgaW50IG10a19kcGlfcHJvYmUo
-c3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCQlyZXR1cm4gLUVJTlZBTDsKPiAgCX0K
-PiAgCj4gLQlicmlkZ2Vfbm9kZSA9IG9mX2dyYXBoX2dldF9yZW1vdGVfbm9kZShkZXYtPm9mX25v
-ZGUsIDAsIDApOwo+IC0JaWYgKCFicmlkZ2Vfbm9kZSkKPiAtCQlyZXR1cm4gLUVOT0RFVjsKPiAt
-Cj4gLQlkZXZfaW5mbyhkZXYsICJGb3VuZCBicmlkZ2Ugbm9kZTogJXBPRlxuIiwgYnJpZGdlX25v
-ZGUpOwo+IC0KPiAtCWRwaS0+YnJpZGdlID0gb2ZfZHJtX2ZpbmRfYnJpZGdlKGJyaWRnZV9ub2Rl
-KTsKPiAtCW9mX25vZGVfcHV0KGJyaWRnZV9ub2RlKTsKPiAtCWlmICghZHBpLT5icmlkZ2UpCj4g
-KwlyZXQgPSBkcm1fb2ZfZmluZF9wYW5lbF9vcl9icmlkZ2UoZGV2LT5vZl9ub2RlLCAwLCAwLAo+
-ICsJCQkJCSAgTlVMTCwgJmRwaS0+YnJpZGdlKTsKPiArCWlmIChyZXQpIHsKPiArCQlkZXZfZXJy
-KGRldiwgIkZhaWxlZCB0byBmaW5kIHBhbmVsIG9yIGJyaWRnZTogJWRcbiIsIHJldCk7Cj4gIAkJ
-cmV0dXJuIC1FUFJPQkVfREVGRVI7CgpJJ3ZlIHRyYWNlZCBpbnRvIGRybV9vZl9maW5kX3BhbmVs
-X29yX2JyaWRnZSgpLCBpdCBtYXkgcmV0dXJuIC1FTk9ERVYKd2hlbiBkZXZpY2UgdHJlZSBoYXMg
-ZXJyb3IsIHdoeSBkbyB5b3UgdHJlYXQgdGhpcyBlcnJvciB0bwotRVBST0JFX0RFRkVSPyBJIHRo
-aW5rIHlvdSBtYXkgbW9kaWZ5IHRoaXMgYXMKCmlmIChyZXQpCglyZXR1cm4gcmV0OwoKUmVnYXJk
-cywKQ0sKCj4gKwl9Cj4gKwo+ICsJZGV2X2luZm8oZGV2LCAiRm91bmQgYnJpZGdlIG5vZGU6ICVw
-T0ZcbiIsIGRwaS0+YnJpZGdlLT5vZl9ub2RlKTsKPiAgCj4gIAljb21wX2lkID0gbXRrX2RkcF9j
-b21wX2dldF9pZChkZXYtPm9mX25vZGUsIE1US19EUEkpOwo+ICAJaWYgKGNvbXBfaWQgPCAwKSB7
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
-dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi, Bibby:
+
+On Fri, 2018-09-21 at 11:28 +0800, Bibby Hsieh wrote:
+> From: chunhui dai <chunhui.dai@mediatek.com>
+> 
+> This patch adds dpi dirver suppot for both mt2701 and mt7623.
+> And also support other (existing or future) chips that use
+> the same binding and driver.
+> 
+
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+
+> Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dpi.c     | 21 +++++++++++++++++++++
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c |  2 ++
+>  2 files changed, 23 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> index 7a4868a0afec..a9d8231a0a9e 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -688,11 +688,29 @@ static unsigned int mt8173_calculate_factor(int clock)
+>  		return 3 << 1;
+>  }
+>  
+> +static unsigned int mt2701_calculate_factor(int clock)
+> +{
+> +	if (clock <= 64000)
+> +		return 16;
+> +	else if (clock <= 128000)
+> +		return 8;
+> +	else if (clock <= 256000)
+> +		return 4;
+> +	else
+> +		return 2;
+> +}
+> +
+>  static const struct mtk_dpi_conf mt8173_conf = {
+>  	.cal_factor = mt8173_calculate_factor,
+>  	.reg_h_fre_con = 0xe0,
+>  };
+>  
+> +static const struct mtk_dpi_conf mt2701_conf = {
+> +	.cal_factor = mt2701_calculate_factor,
+> +	.reg_h_fre_con = 0xb0,
+> +	.edge_sel_en = true,
+> +};
+> +
+>  static int mtk_dpi_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> @@ -784,6 +802,9 @@ static int mtk_dpi_remove(struct platform_device *pdev)
+>  }
+>  
+>  static const struct of_device_id mtk_dpi_of_ids[] = {
+> +	{ .compatible = "mediatek,mt2701-dpi",
+> +	  .data = &mt2701_conf,
+> +	},
+>  	{ .compatible = "mediatek,mt8173-dpi",
+>  	  .data = &mt8173_conf,
+>  	},
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index 39721119713b..d961112fa2f5 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -424,6 +424,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+>  	  .data = (void *)MTK_DSI },
+>  	{ .compatible = "mediatek,mt8173-dsi",
+>  	  .data = (void *)MTK_DSI },
+> +	{ .compatible = "mediatek,mt2701-dpi",
+> +	  .data = (void *)MTK_DPI },
+>  	{ .compatible = "mediatek,mt8173-dpi",
+>  	  .data = (void *)MTK_DPI },
+>  	{ .compatible = "mediatek,mt2701-disp-mutex",
