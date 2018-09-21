@@ -1,7 +1,7 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v3 04/12] drm/mediatek: add clock factor for different IC
-Date: Fri, 21 Sep 2018 11:28:14 +0800
-Message-ID: <20180921032822.30771-5-bibby.hsieh@mediatek.com>
+Subject: [PATCH v3 02/12] drm/mediatek: move hardware register to node data
+Date: Fri, 21 Sep 2018 11:28:12 +0800
+Message-ID: <20180921032822.30771-3-bibby.hsieh@mediatek.com>
 References: <20180921032822.30771-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,64 +14,97 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: chunhui dai <chunhui.dai@mediatek.com>
 
-different IC has different clock designed in HDMI, the factor for
-calculate clock should be different. Usinng the data in of_node
-to find this factor.
+The address of register DPI_H_FRE_CON is different in different IC.
+Using of_node data to find this address.
 
 Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c | 24 +++++++++++++++---------
- 1 file changed, 15 insertions(+), 9 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dpi.c      | 19 ++++++++++++++++---
+ drivers/gpu/drm/mediatek/mtk_dpi_regs.h |  1 -
+ 2 files changed, 16 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 1e7369e0d91c..022ccec49cea 100644
+index d9373e67d328..74a32833bde1 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -120,6 +120,7 @@ struct mtk_dpi_yc_limit {
+@@ -18,6 +18,7 @@
+ #include <linux/component.h>
+ #include <linux/platform_device.h>
+ #include <linux/of.h>
++#include <linux/of_device.h>
+ #include <linux/of_graph.h>
+ #include <linux/interrupt.h>
+ #include <linux/types.h>
+@@ -72,6 +73,7 @@ struct mtk_dpi {
+ 	struct clk *tvd_clk;
+ 	int irq;
+ 	struct drm_display_mode mode;
++	const struct mtk_dpi_conf *conf;
+ 	enum mtk_dpi_out_color_format color_format;
+ 	enum mtk_dpi_out_yc_map yc_map;
+ 	enum mtk_dpi_out_bit_num bit_num;
+@@ -117,6 +119,10 @@ struct mtk_dpi_yc_limit {
+ 	u16 c_bottom;
  };
  
- struct mtk_dpi_conf {
-+	unsigned int (*cal_factor)(int clock);
- 	u32 reg_h_fre_con;
- 	bool edge_sel_en;
- };
-@@ -460,15 +461,7 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 	unsigned int factor;
++struct mtk_dpi_conf {
++	u32 reg_h_fre_con;
++};
++
+ static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
+ {
+ 	u32 tmp = readl(dpi->regs + offset) & ~mask;
+@@ -342,7 +348,7 @@ static void mtk_dpi_config_swap_input(struct mtk_dpi *dpi, bool enable)
  
- 	/* let pll_rate can fix the valid range of tvdpll (1G~2GHz) */
--
--	if (mode->clock <= 27000)
--		factor = 3 << 4;
--	else if (mode->clock <= 84000)
--		factor = 3 << 3;
--	else if (mode->clock <= 167000)
--		factor = 3 << 2;
--	else
--		factor = 3 << 1;
-+	factor = dpi->conf->cal_factor(mode->clock);
- 	drm_display_mode_to_videomode(mode, &vm);
- 	pll_rate = vm.pixelclock * factor;
+ static void mtk_dpi_config_2n_h_fre(struct mtk_dpi *dpi)
+ {
+-	mtk_dpi_mask(dpi, DPI_H_FRE_CON, H_FRE_2N, H_FRE_2N);
++	mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, H_FRE_2N, H_FRE_2N);
+ }
  
-@@ -682,7 +675,20 @@ static const struct component_ops mtk_dpi_component_ops = {
+ static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+@@ -668,6 +674,10 @@ static const struct component_ops mtk_dpi_component_ops = {
  	.unbind = mtk_dpi_unbind,
  };
  
-+static unsigned int mt8173_calculate_factor(int clock)
-+{
-+	if (clock <= 27000)
-+		return 3 << 4;
-+	else if (clock <= 84000)
-+		return 3 << 3;
-+	else if (clock <= 167000)
-+		return 3 << 2;
-+	else
-+		return 3 << 1;
-+}
++static const struct mtk_dpi_conf mt8173_conf = {
++	.reg_h_fre_con = 0xe0,
++};
 +
- static const struct mtk_dpi_conf mt8173_conf = {
-+	.cal_factor = mt8173_calculate_factor,
- 	.reg_h_fre_con = 0xe0,
+ static int mtk_dpi_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -682,6 +692,7 @@ static int mtk_dpi_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	dpi->dev = dev;
++	dpi->conf = (struct mtk_dpi_conf *)of_device_get_match_data(dev);
+ 
+ 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	dpi->regs = devm_ioremap_resource(dev, mem);
+@@ -761,8 +772,10 @@ static int mtk_dpi_remove(struct platform_device *pdev)
+ }
+ 
+ static const struct of_device_id mtk_dpi_of_ids[] = {
+-	{ .compatible = "mediatek,mt8173-dpi", },
+-	{}
++	{ .compatible = "mediatek,mt8173-dpi",
++	  .data = &mt8173_conf,
++	},
++	{ },
  };
  
+ struct platform_driver mtk_dpi_driver = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+index 4b6ad4751a31..040444d7718d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
++++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+@@ -223,6 +223,5 @@
+ #define ESAV_CODE2			(0xFFF << 0)
+ #define ESAV_CODE3_MSB			BIT(16)
+ 
+-#define DPI_H_FRE_CON		0xE0
+ #define H_FRE_2N			BIT(25)
+ #endif /* __MTK_DPI_REGS_H */
 -- 
 2.12.5.2.gbdf23ab
