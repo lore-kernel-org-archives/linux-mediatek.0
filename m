@@ -1,39 +1,64 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v3 11/12] drm/mediatek: add a error return value when clock driver has been prepared
-Date: Fri, 21 Sep 2018 11:28:21 +0800
-Message-ID: <20180921032822.30771-12-bibby.hsieh@mediatek.com>
+Subject: [PATCH v3 06/12] drm/mediatek: add dpi driver for mt2701 and mt7623
+Date: Fri, 21 Sep 2018 11:28:16 +0800
+Message-ID: <20180921032822.30771-7-bibby.hsieh@mediatek.com>
 References: <20180921032822.30771-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20180921032822.30771-1-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
+Cc: chunhui dai <chunhui.dai@mediatek.com>, linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-DRM driver get the comp->clk by of_clk_get(), we only
-assign NULL to comp->clk when error happened, but do
-not return the error number.
-
-Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index ff974d82a4a6..54ca794db3e9 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -294,7 +294,7 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
- 	comp->irq = of_irq_get(node, 0);
- 	comp->clk = of_clk_get(node, 0);
- 	if (IS_ERR(comp->clk))
--		comp->clk = NULL;
-+		return PTR_ERR(comp->clk);
- 
- 	/* Only DMA capable components need the LARB property */
- 	comp->larb_dev = NULL;
--- 
-2.12.5.2.gbdf23ab
+RnJvbTogY2h1bmh1aSBkYWkgPGNodW5odWkuZGFpQG1lZGlhdGVrLmNvbT4KClRoaXMgcGF0Y2gg
+YWRkcyBkcGkgZGlydmVyIHN1cHBvdCBmb3IgYm90aCBtdDI3MDEgYW5kIG10NzYyMy4KQW5kIGFs
+c28gc3VwcG9ydCBvdGhlciAoZXhpc3Rpbmcgb3IgZnV0dXJlKSBjaGlwcyB0aGF0IHVzZQp0aGUg
+c2FtZSBiaW5kaW5nIGFuZCBkcml2ZXIuCgpTaWduZWQtb2ZmLWJ5OiBjaHVuaHVpIGRhaSA8Y2h1
+bmh1aS5kYWlAbWVkaWF0ZWsuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHBpLmMgICAgIHwgMjEgKysrKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RybV9kcnYuYyB8ICAyICsrCiAyIGZpbGVzIGNoYW5nZWQsIDIzIGluc2VydGlv
+bnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jIGIv
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwppbmRleCA3YTQ4NjhhMGFmZWMuLmE5
+ZDgyMzFhMGE5ZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGku
+YworKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCkBAIC02ODgsMTEgKzY4
+OCwyOSBAQCBzdGF0aWMgdW5zaWduZWQgaW50IG10ODE3M19jYWxjdWxhdGVfZmFjdG9yKGludCBj
+bG9jaykKIAkJcmV0dXJuIDMgPDwgMTsKIH0KIAorc3RhdGljIHVuc2lnbmVkIGludCBtdDI3MDFf
+Y2FsY3VsYXRlX2ZhY3RvcihpbnQgY2xvY2spCit7CisJaWYgKGNsb2NrIDw9IDY0MDAwKQorCQly
+ZXR1cm4gMTY7CisJZWxzZSBpZiAoY2xvY2sgPD0gMTI4MDAwKQorCQlyZXR1cm4gODsKKwllbHNl
+IGlmIChjbG9jayA8PSAyNTYwMDApCisJCXJldHVybiA0OworCWVsc2UKKwkJcmV0dXJuIDI7Cit9
+CisKIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RwaV9jb25mIG10ODE3M19jb25mID0gewogCS5j
+YWxfZmFjdG9yID0gbXQ4MTczX2NhbGN1bGF0ZV9mYWN0b3IsCiAJLnJlZ19oX2ZyZV9jb24gPSAw
+eGUwLAogfTsKIAorc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfZHBpX2NvbmYgbXQyNzAxX2NvbmYg
+PSB7CisJLmNhbF9mYWN0b3IgPSBtdDI3MDFfY2FsY3VsYXRlX2ZhY3RvciwKKwkucmVnX2hfZnJl
+X2NvbiA9IDB4YjAsCisJLmVkZ2Vfc2VsX2VuID0gdHJ1ZSwKK307CisKIHN0YXRpYyBpbnQgbXRr
+X2RwaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogewogCXN0cnVjdCBkZXZp
+Y2UgKmRldiA9ICZwZGV2LT5kZXY7CkBAIC03ODQsNiArODAyLDkgQEAgc3RhdGljIGludCBtdGtf
+ZHBpX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogfQogCiBzdGF0aWMgY29u
+c3Qgc3RydWN0IG9mX2RldmljZV9pZCBtdGtfZHBpX29mX2lkc1tdID0geworCXsgLmNvbXBhdGli
+bGUgPSAibWVkaWF0ZWssbXQyNzAxLWRwaSIsCisJICAuZGF0YSA9ICZtdDI3MDFfY29uZiwKKwl9
+LAogCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRwaSIsCiAJICAuZGF0YSA9ICZt
+dDgxNzNfY29uZiwKIAl9LApkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwppbmRl
+eCAzOTcyMTExOTcxM2IuLmQ5NjExMTJmYTJmNSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fZHJ2LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kcm1fZHJ2LmMKQEAgLTQyNCw2ICs0MjQsOCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2Rl
+dmljZV9pZCBtdGtfZGRwX2NvbXBfZHRfaWRzW10gPSB7CiAJICAuZGF0YSA9ICh2b2lkICopTVRL
+X0RTSSB9LAogCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRzaSIsCiAJICAuZGF0
+YSA9ICh2b2lkICopTVRLX0RTSSB9LAorCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAx
+LWRwaSIsCisJICAuZGF0YSA9ICh2b2lkICopTVRLX0RQSSB9LAogCXsgLmNvbXBhdGlibGUgPSAi
+bWVkaWF0ZWssbXQ4MTczLWRwaSIsCiAJICAuZGF0YSA9ICh2b2lkICopTVRLX0RQSSB9LAogCXsg
+LmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWRpc3AtbXV0ZXgiLAotLSAKMi4xMi41LjIu
+Z2JkZjIzYWIKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
