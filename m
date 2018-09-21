@@ -1,36 +1,110 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH -next] pinctrl: mediatek: make symbol 'mtk_drive' static
-Date: Fri, 21 Sep 2018 09:03:20 -0700
-Message-ID: <CACRpkdb6yYV-KaHUOUXHLsKDYtPNe-bYq7wHGHqqberRzTJcbA@mail.gmail.com>
-References: <1537424502-23554-1-git-send-email-weiyongjun1@huawei.com>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH v4 1/4] PCI: mediatek: fixup mtk_pcie_find_port logical
+Date: Fri, 21 Sep 2018 17:07:45 +0100
+Message-ID: <20180921160745.GB21644@e107981-ln.cambridge.arm.com>
+References: <1536573023-6720-1-git-send-email-honghui.zhang@mediatek.com>
+ <1536573023-6720-2-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1537424502-23554-1-git-send-email-weiyongjun1@huawei.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Wei Yongjun <weiyongjun1@huawei.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, kernel-janitors@vger.kernel.org, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1536573023-6720-2-git-send-email-honghui.zhang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: honghui.zhang@mediatek.com
+Cc: marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, ulf.hansson@linaro.org, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 19, 2018 at 11:12 PM Wei Yongjun <weiyongjun1@huawei.com> wrote:
+On Mon, Sep 10, 2018 at 05:50:20PM +0800, honghui.zhang@mediatek.com wrote:
+> From: Honghui Zhang <honghui.zhang@mediatek.com>
+> 
+> The Mediatek's host controller has two slots, each with it's own control
+> registers. The host driver need to identify which slot was connected
+> in order to access the device's configuration space. There's problem
+> for current host driver to find out which slot was connected to for
+> a given EP device.
+> 
+> Assuming each slot have connect with one EP device as below:
+> 
+>                 host bridge
+>   bus 0 --> __________|_______
+>            |                  |
+>            |                  |
+>          slot 0             slot 1
+>   bus 1 -->|        bus 2 --> |
+>            |                  |
+>          EP 0               EP 1
+> 
+> During PCI enumeration, system software will scan all the PCI device
+> starting from devfn 0. So it will get the proper port for slot0 and
+> slot1 device when using PCI_SLOT(devfn) for match. But it will get
+> the wrong slot for EP1: The devfn will be start from 0 when scanning
+> EP1 behind slot1, it will get port0 since the PCI_SLOT(EP1) is match
+> for port0's slot value. So the host driver should not using EP's devfn
+> but the slot's devfn(the slot which EP was connected to) for match.
+> 
+> This patch fix the mtk_pcie_find_port's logical by using the slot's
+> devfn for match.
+> 
+> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  drivers/pci/controller/pcie-mediatek.c | 19 +++++++++++++++++--
+>  1 file changed, 17 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index 861dda6..20b9088 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -337,11 +337,26 @@ static struct mtk_pcie_port *mtk_pcie_find_port(struct pci_bus *bus,
+>  {
+>  	struct mtk_pcie *pcie = bus->sysdata;
+>  	struct mtk_pcie_port *port;
+> +	struct pci_dev *dev;
+> +	struct pci_bus *pbus;
+>  
+> -	list_for_each_entry(port, &pcie->ports, list)
+> -		if (port->slot == PCI_SLOT(devfn))
+> +	list_for_each_entry(port, &pcie->ports, list) {
+> +		if (!bus->number && port->slot == PCI_SLOT(devfn))
+>  			return port;
+>  
+> +		if (bus->number) {
+> +			pbus = bus;
+> +
+> +			while (pbus->number) {
+> +				dev = pbus->self;
+> +				pbus = dev->bus;
+> +			}
+> +
+> +			if (port->slot == PCI_SLOT(dev->devfn))
+> +				return port;
+> +		}
+> +	}
 
-> Fixes the following sparse warning:
->
-> drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c:37:29: warning:
->  symbol 'mtk_drive' was not declared. Should it be static?
->
-> Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
+	/*
+	 * Walk the bus hierarchy to get the devfn value
+	 * of the port in the root bus.
+	 */
+	while (bus && bus->number) {
+		devfn = bus->self->devfn;
+		bus = bus->parent;
+	}
 
-Patch applied with Sean's ACK.
+	list_for_each_entry(port, &pcie->ports, list) {
+		if (port->slot == PCI_SLOT(devfn))
+			return port;
 
-Yours,
-Linus Walleij
+	return NULL;
+
+Would it work ? Maybe it is a little easier to parse.
+
+I think this can even be made easier by using struct device_node* as
+comparison (and store it in port->slot instead of the port number), I
+think that the pci_dev representing the port should have the right
+of_node associated with it by core code, so it is just a matter of
+finding the first pci_dev parent with an of_node set and compare it
+against port->slot (that should be converted to a struct device_node*).
+
+This ought to be tested and written but I think that's doable.
+
+Lorenzo
