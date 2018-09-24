@@ -1,64 +1,96 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 00/22] Unify MediaTek pinctrl in preparation for MT8183
- and MT6765
-Date: Tue, 25 Sep 2018 12:48:09 +0200
-Message-ID: <9f0a8868-a06e-d378-1008-df758b898fbe@gmail.com>
-References: <cover.1536404280.git.sean.wang@mediatek.com>
- <CACRpkdZtVBjYGs5C7-HWEyX7f7pnCqvnRYBH=fFmLKhN4FGymA@mail.gmail.com>
- <1537325650.572.9.camel@mtkswgap22> <20180919043722.GA14181@Mani-XPS-13-9360>
- <1537503761.9654.17.camel@mtkswgap22>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/2] dt-binding: mediatek: Add binding document for
+ MediaTek GMAC
+Date: Mon, 24 Sep 2018 14:07:36 -0700
+Message-ID: <5baa1aea.1c69fb81.cc7c6.3408@mx.google.com>
+References: <1537165763-13112-1-git-send-email-biao.huang@mediatek.com>
+ <1537165763-13112-2-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1537503761.9654.17.camel@mtkswgap22>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linus Walleij <linus.walleij@linaro.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Saber Rezvani <irsaber@gmail.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <1537165763-13112-2-git-send-email-biao.huang@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Biao Huang <biao.huang@mediatek.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, nelson.chang@mediatek.com, netdev@vger.kernel.org, sean.wang@mediatek.com, liguo.zhang@mediatek.com, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, davem@davemloft.net, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 21/09/2018 06:22, Sean Wang wrote:
-> On Tue, 2018-09-18 at 21:37 -0700, Manivannan Sadhasivam wrote:
->> On Wed, Sep 19, 2018 at 10:54:10AM +0800, Sean Wang wrote:
->>> On Tue, 2018-09-18 at 15:07 -0700, Linus Walleij wrote:
->>>> On Sat, Sep 8, 2018 at 4:07 AM <sean.wang@mediatek.com> wrote:
->>>>
->>>>> v2 and changes since v1:
->>>>
->>>> I had trouble applying the last patches in the series so I applied
->>>> all on an immutable branch (ib-mtk) then merged that into devel
->>>> and added a patch on top to fix up some GPIO includes (just sent).
->>>>
->>>> Please check the result!
->>>>
->>>
->>> Sure, I'll take a look and and test on the devel branch.
->>>
->>> On the top, I'll add a fix for the issue recently reported by kbuild
->>> test robot about implicit declaration and a new MT6765 driver based
->>> on the series.
->>>
->>
->> Hi Sean,
->>
->> Do you have any plans to add support for MT6797?
->>
+On Mon, Sep 17, 2018 at 02:29:22PM +0800, Biao Huang wrote:
+> The commit adds the device tree binding documentation for the MediaTek
+> GMAC found on Mediatek MT2712.
 > 
-> I personally have no the plan to add support to MT6797 because I have no
-> the device, but as I knew some of people in mediatek have interest to
-> add them by volunteers and thus there is no clear schedule. Eventually,
-> if they're really done, they would be still based on vendor binding not
-> by generic binding.
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> ---
+>  .../devicetree/bindings/net/mediatek-gmac.txt      |   45 ++++++++++++++++++++
+>  1 file changed, 45 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/mediatek-gmac.txt
 > 
+> diff --git a/Documentation/devicetree/bindings/net/mediatek-gmac.txt b/Documentation/devicetree/bindings/net/mediatek-gmac.txt
+> new file mode 100644
+> index 0000000..14876ed
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/mediatek-gmac.txt
+> @@ -0,0 +1,45 @@
+> +MediaTek Gigabit Ethernet controller
+> +=========================================
+> +
+> +The gigabit ethernet controller can be found on MediaTek SoCs.
+> +
+> +* Ethernet controller node
+> +
+> +Required properties:
+> +- compatible: Should be
+> +	"mediatek,mt2712-eth": for MT2712 SoC
+> +- reg: Address and length of the register set for the device
+> +- interrupts: Should contain the MAC interrupts
+> +- interrupt-names: the name of interrupt in the interrupts property. These are
+> +	"macirq": For MT2712 SoC
 
-CCing Saber as he is working on the pinctrl for this device. Actually he as some
-questions regarding the register layout.
+Not really necessary to have interrupt-names when there is only 1 irq.
 
-Sean maybe you can bring him in contact with someone inside Mediatek who could
-help him :)
+> +- clocks: the clock used by the controller
+> +- clock-names: the names of the clock listed in the clocks property. These are
+> +	"axi", "apb", "mac_ext", "ptp", "ptp_parent", "ptp_top": For MT2712 SoC
+> +- mac-address: See ethernet.txt in the same directory
+> +- power-domains: phandle to the power domain that the ethernet is part of
+> +- phy-mode: See ethernet.txt file in the same directory.
+> +- reset-gpio: gpio number for phy reset.
 
-Regards.
-Matthias
+reset-gpios
+
+> +
+> +Example:
+> +
+> +eth: eth@1101c000 {
+> +		compatible = "mediatek,mt2712-eth";
+> +		reg = <0 0x1101c000 0 0x1200>;
+> +		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupt-names = "macirq";
+> +		phy-mode ="rgmii";
+> +		mac-address = [00 55 7b b5 7d f7];
+> +		clock-names = "axi",
+> +			      "apb",
+> +			      "mac_ext",
+> +			      "ptp",
+> +			      "ptp_parent",
+> +			      "ptp_top";
+> +		clocks = <&pericfg CLK_PERI_GMAC>,
+> +			 <&pericfg CLK_PERI_GMAC_PCLK>,
+> +			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
+> +			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
+> +			 <&topckgen CLK_TOP_APLL1_D3>,
+> +			 <&topckgen CLK_TOP_APLL1>;
+> +		reset-gpio = <&pio 87 GPIO_ACTIVE_HIGH>;
+> +	};
+> -- 
+> 1.7.9.5
+> 
