@@ -1,49 +1,44 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] soc: mediatek: pwrap: use true and false for boolean
- values
-Date: Tue, 25 Sep 2018 16:36:11 +0200
-Message-ID: <a28e3cce-99e7-fb6d-e57b-9c41f1296f29@gmail.com>
-References: <20180805010201.GA7320@embeddedor.com>
+From: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH] pinctrl: paris: fix check on EINT_NA comparison
+Date: Tue, 25 Sep 2018 17:58:21 +0300
+Message-ID: <20180925145821.bwumsuzz4tgsxc4b@mwanda>
+References: <20180925132130.27044-1-colin.king@canonical.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180805010201.GA7320@embeddedor.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20180925132130.27044-1-colin.king@canonical.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Colin King <colin.king@canonical.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 05/08/2018 03:02, Gustavo A. R. Silva wrote:
-> Return statements in functions returning bool should use true or false
-> instead of an integer value.
+On Tue, Sep 25, 2018 at 02:21:30PM +0100, Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
 > 
-> This issue was detected with the help of Coccinelle.
+> Currently, the check on desc->eint.eint_n == EINT_NA is always false
+> because this is comparing a u16 to -1 which can never be true.  Fix
+> this by casting EINT_NA to u16.
 > 
-> Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
+> Fixes: fb5fa8dc151b ("pinctrl: mediatek: extend struct mtk_pin_desc to pinctrl-mtk-common-v2.c")
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
 > ---
-
-Applied, thanks!
-
-Matthias
-
->  drivers/soc/mediatek/mtk-pmic-wrap.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/pinctrl/mediatek/pinctrl-paris.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index 4e931fd..932470a 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -1096,7 +1096,7 @@ static bool pwrap_is_pmic_cipher_ready(struct pmic_wrapper *wrp)
->  	ret = pwrap_read(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_RDY],
->  			 &rdata);
->  	if (ret)
-> -		return 0;
-> +		return false;
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> index 4cf0fea30b7d..77d380145dfd 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> @@ -729,7 +729,7 @@ static int mtk_gpio_to_irq(struct gpio_chip *chip, unsigned int offset)
 >  
->  	return rdata == 1;
->  }
-> 
+>  	desc = (const struct mtk_pin_desc *)&hw->soc->pins[offset];
+>  
+> -	if (desc->eint.eint_n == EINT_NA)
+> +	if (desc->eint.eint_n == (u16)EINT_NA)
+
+Adding casts is ugly...  I reported this earlier and think Sean Wang is
+going to send a fix for it.
+
+regards,
+dan carpenter
