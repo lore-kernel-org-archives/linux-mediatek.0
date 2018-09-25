@@ -1,30 +1,37 @@
-From: MOHAMMAD RASIM <mohammad.rasim96-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Wiki to track changes and progress ?
-Date: Tue, 25 Sep 2018 22:36:11 +0300
-Message-ID: <256e20ee-ce22-2ff8-a2c7-cde75fc681e2@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Language: en-US-large
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Hauke Mehrtens <hauke-5/S+JYg5SzeELgA04lAiVw@public.gmane.org>
+Subject: [PATCH] mt76: use skb_pad() instead of __skb_pad()
+Date: Tue, 25 Sep 2018 21:52:51 +0200
+Message-ID: <20180925195251.10568-1-hauke@hauke-m.de>
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Hauke Mehrtens <hauke-5/S+JYg5SzeELgA04lAiVw@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+mt76 uses __skb_pad() with free_on_error set to true, this is the same
+as calling skb_pad().
+This patch does not change any functionality, but it makes it easier to
+backport this driver in backports, because skb_pad() is also available
+in older kernel versions.
 
-Is there a wiki for linux-mediatek where I can see the progress of 
-mainlining, what works and what doesn't (status matrix) ?
+Fixes: b40b15e1521f ("mt76: add usb support to mt76 layer")
+Signed-off-by: Hauke Mehrtens <hauke-5/S+JYg5SzeELgA04lAiVw@public.gmane.org>
+---
+ drivers/net/wireless/mediatek/mt76/usb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Something similar to other projects like http://linux-meson.com/doku.php 
-and http://linux-sunxi.org/Linux_mainlining_effort
-
-Regards
+diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
+index 7780b07543bb..e03de13f5afe 100644
+--- a/drivers/net/wireless/mediatek/mt76/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/usb.c
+@@ -535,7 +535,7 @@ int mt76u_skb_dma_info(struct sk_buff *skb, int port, u32 flags)
+ 	}
+ 
+ 	if (unlikely(pad)) {
+-		if (__skb_pad(last, pad, true))
++		if (skb_pad(last, pad))
+ 			return -ENOMEM;
+ 		__skb_put(last, pad);
+ 	}
+-- 
+2.11.0
