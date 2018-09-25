@@ -1,128 +1,46 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v1 1/5] arm64: dts: mt7622: add timer, CCI-400 and PMU
- nodes
-Date: Tue, 25 Sep 2018 17:10:02 +0200
-Message-ID: <5cd2bf92-251d-7a48-5bb0-95060d6ccb51@gmail.com>
-References: <7d3ce6a89ffeb221dc3197b763521582bf300577.1534607107.git.ryder.lee@mediatek.com>
+Subject: Re: [PATCH 1/3] dt-bindings: pwrap: mediatek: add pwrap support for
+ MT6765
+Date: Tue, 25 Sep 2018 17:37:40 +0200
+Message-ID: <ce016218-bfa7-4599-7140-fb89e5c19faa@gmail.com>
+References: <1536064314-31967-1-git-send-email-argus.lin@mediatek.com>
+ <1536064314-31967-2-git-send-email-argus.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <7d3ce6a89ffeb221dc3197b763521582bf300577.1534607107.git.ryder.lee@mediatek.com>
+In-Reply-To: <1536064314-31967-2-git-send-email-argus.lin@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Sean Wang <sean.wang@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Argus Lin <argus.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
+Cc: Chenglin Xu <chenglin.xu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, wsd_upstream@mediatek.com, henryc.chen@mediatek.com, flora.fu@mediatek.com, Chen Zhong <chen.zhong@mediatek.com>, Christophe Jaillet <christophe.jaillet@wanadoo.fr>, "shailendra.v" <shailendra.v@samsung.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Whole series pushed to v4.19-next/dts64
 
-Thanks!
 
-On 18/08/2018 18:02, Ryder Lee wrote:
-> Add device tree entries for timer, ARM CCI-400 and its PMU.
-> Otherwise, we add a cortex-a53-pmu node to enable hw perfevents.
+On 04/09/2018 14:31, Argus Lin wrote:
+> Add binding document of pwrap for MT6765 SoCs.
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Argus Lin <argus.lin@mediatek.com>
 > ---
-> change since v1:
-> - add a pmu node.
-> ---
->  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 55 ++++++++++++++++++++++++++++++++
->  1 file changed, 55 insertions(+)
+
+Applied to v4.19-next/soc
+
+
+
+>  Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> index de2c47bd..d297100 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> @@ -79,6 +79,7 @@
->  			#cooling-cells = <2>;
->  			enable-method = "psci";
->  			clock-frequency = <1300000000>;
-> +			cci-control-port = <&cci_control2>;
->  		};
->  
->  		cpu1: cpu@1 {
-> @@ -92,6 +93,7 @@
->  			#cooling-cells = <2>;
->  			enable-method = "psci";
->  			clock-frequency = <1300000000>;
-> +			cci-control-port = <&cci_control2>;
->  		};
->  	};
->  
-> @@ -113,6 +115,13 @@
->  		method      = "smc";
->  	};
->  
-> +	pmu {
-> +		compatible = "arm,cortex-a53-pmu";
-> +		interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 9 IRQ_TYPE_LEVEL_LOW>;
-> +		interrupt-affinity = <&cpu0>, <&cpu1>;
-> +	};
-> +
->  	reserved-memory {
->  		#address-cells = <2>;
->  		#size-cells = <2>;
-> @@ -218,6 +227,16 @@
->  		#reset-cells = <1>;
->  	};
->  
-> +        timer: timer@10004000 {
-> +                compatible = "mediatek,mt7622-timer",
-> +                             "mediatek,mt6577-timer";
-> +                reg = <0 0x10004000 0 0x80>;
-> +                interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW>;
-> +                clocks = <&infracfg CLK_INFRA_APXGPT_PD>,
-> +                         <&topckgen CLK_TOP_RTC>;
-> +                clock-names = "system-clk", "rtc-clk";
-> +        };
-> +
->  	scpsys: scpsys@10006000 {
->  		compatible = "mediatek,mt7622-scpsys",
->  			     "syscon";
-> @@ -325,6 +344,42 @@
->  		      <0 0x10360000 0 0x2000>;
->  	};
->  
-> +	cci: cci@10390000 {
-> +		compatible = "arm,cci-400";
-> +		#address-cells = <1>;
-> +		#size-cells = <1>;
-> +		reg = <0 0x10390000 0 0x1000>;
-> +		ranges = <0 0 0x10390000 0x10000>;
-> +
-> +		cci_control0: slave-if@1000 {
-> +			compatible = "arm,cci-400-ctrl-if";
-> +			interface-type = "ace-lite";
-> +			reg = <0x1000 0x1000>;
-> +		};
-> +
-> +		cci_control1: slave-if@4000 {
-> +			compatible = "arm,cci-400-ctrl-if";
-> +			interface-type = "ace";
-> +			reg = <0x4000 0x1000>;
-> +		};
-> +
-> +		cci_control2: slave-if@5000 {
-> +			compatible = "arm,cci-400-ctrl-if";
-> +			interface-type = "ace";
-> +			reg = <0x5000 0x1000>;
-> +		};
-> +
-> +		pmu@9000 {
-> +			compatible = "arm,cci-400-pmu,r1";
-> +			reg = <0x9000 0x5000>;
-> +			interrupts = <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 59 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 60 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 61 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 62 IRQ_TYPE_LEVEL_HIGH>;
-> +		};
-> +	};
-> +
->  	auxadc: adc@11001000 {
->  		compatible = "mediatek,mt7622-auxadc";
->  		reg = <0 0x11001000 0 0x1000>;
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> index f9987c3..359d64f 100644
+> --- a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> @@ -19,6 +19,7 @@ IP Pairing
+>  Required properties in pwrap device node.
+>  - compatible:
+>  	"mediatek,mt2701-pwrap" for MT2701/7623 SoCs
+> +	"mediatek,mt6765-pwrap" for MT6765 SoCs
+>  	"mediatek,mt6797-pwrap" for MT6797 SoCs
+>  	"mediatek,mt7622-pwrap" for MT7622 SoCs
+>  	"mediatek,mt8135-pwrap" for MT8135 SoCs
 > 
