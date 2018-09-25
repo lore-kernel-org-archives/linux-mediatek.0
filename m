@@ -1,51 +1,128 @@
-From: Colin Ian King <colin.king@canonical.com>
-Subject: Re: [PATCH] pinctrl: paris: fix check on EINT_NA comparison
-Date: Tue, 25 Sep 2018 16:02:48 +0100
-Message-ID: <365f2df0-6c06-a165-59ca-2be0fa798683@canonical.com>
-References: <20180925132130.27044-1-colin.king@canonical.com>
- <20180925145821.bwumsuzz4tgsxc4b@mwanda>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v1 1/5] arm64: dts: mt7622: add timer, CCI-400 and PMU
+ nodes
+Date: Tue, 25 Sep 2018 17:10:02 +0200
+Message-ID: <5cd2bf92-251d-7a48-5bb0-95060d6ccb51@gmail.com>
+References: <7d3ce6a89ffeb221dc3197b763521582bf300577.1534607107.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180925145821.bwumsuzz4tgsxc4b@mwanda>
+In-Reply-To: <7d3ce6a89ffeb221dc3197b763521582bf300577.1534607107.git.ryder.lee@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Sean Wang <sean.wang@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 25/09/18 15:58, Dan Carpenter wrote:
-> On Tue, Sep 25, 2018 at 02:21:30PM +0100, Colin King wrote:
->> From: Colin Ian King <colin.king@canonical.com>
->>
->> Currently, the check on desc->eint.eint_n == EINT_NA is always false
->> because this is comparing a u16 to -1 which can never be true.  Fix
->> this by casting EINT_NA to u16.
->>
->> Fixes: fb5fa8dc151b ("pinctrl: mediatek: extend struct mtk_pin_desc to pinctrl-mtk-common-v2.c")
->> Signed-off-by: Colin Ian King <colin.king@canonical.com>
->> ---
->>  drivers/pinctrl/mediatek/pinctrl-paris.c | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
->> index 4cf0fea30b7d..77d380145dfd 100644
->> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
->> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
->> @@ -729,7 +729,7 @@ static int mtk_gpio_to_irq(struct gpio_chip *chip, unsigned int offset)
->>  
->>  	desc = (const struct mtk_pin_desc *)&hw->soc->pins[offset];
->>  
->> -	if (desc->eint.eint_n == EINT_NA)
->> +	if (desc->eint.eint_n == (u16)EINT_NA)
-> 
-> Adding casts is ugly...  I reported this earlier and think Sean Wang is
-> going to send a fix for it.
+Whole series pushed to v4.19-next/dts64
 
-Fair enough. Thanks for letting me know.
+Thanks!
 
+On 18/08/2018 18:02, Ryder Lee wrote:
+> Add device tree entries for timer, ARM CCI-400 and its PMU.
+> Otherwise, we add a cortex-a53-pmu node to enable hw perfevents.
 > 
-> regards,
-> dan carpenter
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+> change since v1:
+> - add a pmu node.
+> ---
+>  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 55 ++++++++++++++++++++++++++++++++
+>  1 file changed, 55 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> index de2c47bd..d297100 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> @@ -79,6 +79,7 @@
+>  			#cooling-cells = <2>;
+>  			enable-method = "psci";
+>  			clock-frequency = <1300000000>;
+> +			cci-control-port = <&cci_control2>;
+>  		};
+>  
+>  		cpu1: cpu@1 {
+> @@ -92,6 +93,7 @@
+>  			#cooling-cells = <2>;
+>  			enable-method = "psci";
+>  			clock-frequency = <1300000000>;
+> +			cci-control-port = <&cci_control2>;
+>  		};
+>  	};
+>  
+> @@ -113,6 +115,13 @@
+>  		method      = "smc";
+>  	};
+>  
+> +	pmu {
+> +		compatible = "arm,cortex-a53-pmu";
+> +		interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 9 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupt-affinity = <&cpu0>, <&cpu1>;
+> +	};
+> +
+>  	reserved-memory {
+>  		#address-cells = <2>;
+>  		#size-cells = <2>;
+> @@ -218,6 +227,16 @@
+>  		#reset-cells = <1>;
+>  	};
+>  
+> +        timer: timer@10004000 {
+> +                compatible = "mediatek,mt7622-timer",
+> +                             "mediatek,mt6577-timer";
+> +                reg = <0 0x10004000 0 0x80>;
+> +                interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW>;
+> +                clocks = <&infracfg CLK_INFRA_APXGPT_PD>,
+> +                         <&topckgen CLK_TOP_RTC>;
+> +                clock-names = "system-clk", "rtc-clk";
+> +        };
+> +
+>  	scpsys: scpsys@10006000 {
+>  		compatible = "mediatek,mt7622-scpsys",
+>  			     "syscon";
+> @@ -325,6 +344,42 @@
+>  		      <0 0x10360000 0 0x2000>;
+>  	};
+>  
+> +	cci: cci@10390000 {
+> +		compatible = "arm,cci-400";
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +		reg = <0 0x10390000 0 0x1000>;
+> +		ranges = <0 0 0x10390000 0x10000>;
+> +
+> +		cci_control0: slave-if@1000 {
+> +			compatible = "arm,cci-400-ctrl-if";
+> +			interface-type = "ace-lite";
+> +			reg = <0x1000 0x1000>;
+> +		};
+> +
+> +		cci_control1: slave-if@4000 {
+> +			compatible = "arm,cci-400-ctrl-if";
+> +			interface-type = "ace";
+> +			reg = <0x4000 0x1000>;
+> +		};
+> +
+> +		cci_control2: slave-if@5000 {
+> +			compatible = "arm,cci-400-ctrl-if";
+> +			interface-type = "ace";
+> +			reg = <0x5000 0x1000>;
+> +		};
+> +
+> +		pmu@9000 {
+> +			compatible = "arm,cci-400-pmu,r1";
+> +			reg = <0x9000 0x5000>;
+> +			interrupts = <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 59 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 60 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 61 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 62 IRQ_TYPE_LEVEL_HIGH>;
+> +		};
+> +	};
+> +
+>  	auxadc: adc@11001000 {
+>  		compatible = "mediatek,mt7622-auxadc";
+>  		reg = <0 0x11001000 0 0x1000>;
 > 
