@@ -1,117 +1,51 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 3/3] soc: mediatek: pwrap: add mt6357 driver for mt6765
- SoCs
-Date: Tue, 25 Sep 2018 17:39:29 +0200
-Message-ID: <1fd800c0-9e7c-9533-6724-55cd8eee9964@gmail.com>
-References: <1536064314-31967-1-git-send-email-argus.lin@mediatek.com>
- <1536064314-31967-4-git-send-email-argus.lin@mediatek.com>
+Subject: Re: [PATCH 1/5] arm: dts: mt7623: add a performance counter unit
+ device node
+Date: Tue, 25 Sep 2018 17:46:42 +0200
+Message-ID: <8376f683-68d2-32b8-c299-32a143dcf2de@gmail.com>
+References: <84011aa94dd7be9239b7a2f944dd30fc70568fbb.1536141302.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1536064314-31967-4-git-send-email-argus.lin@mediatek.com>
+In-Reply-To: <84011aa94dd7be9239b7a2f944dd30fc70568fbb.1536141302.git.ryder.lee@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Argus Lin <argus.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
-Cc: Chenglin Xu <chenglin.xu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, wsd_upstream@mediatek.com, henryc.chen@mediatek.com, flora.fu@mediatek.com, Chen Zhong <chen.zhong@mediatek.com>, Christophe Jaillet <christophe.jaillet@wanadoo.fr>, "shailendra.v" <shailendra.v@samsung.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 04/09/2018 14:31, Argus Lin wrote:
-> MT6357 is a new power management IC and it is used for mt6765 SoCs.
-> To define mt6357_regs for pmic register mapping and pmic_mt6357
-> for accessing register.
+On 05/09/2018 12:22, Ryder Lee wrote:
+> Add ARM PMU device node to enable hardware perf events.
 > 
-> Signed-off-by: Argus Lin <argus.lin@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 
-Needed some handwork to get it applied, please check that no bug slipped in.
-
-Applied to v4.19-ext/soc
-
-Thanks a lot.
+Applied to v4.19-next/dts32
 
 > ---
->  drivers/soc/mediatek/mtk-pmic-wrap.c | 35 ++++++++++++++++++++++++++++++++---
->  1 file changed, 32 insertions(+), 3 deletions(-)
+>  arch/arm/boot/dts/mt7623.dtsi | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 > 
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index ddaeace..2b2cee1 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -161,6 +161,21 @@ enum dew_regs {
->  	[PWRAP_DEW_RDDMY_NO] =		0x030C,
->  };
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index 1cdc346..8c43bd0 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -121,6 +121,15 @@
+>  		};
+>  	};
 >  
-> +static const u32 mt6357_regs[] = {
-> +	[PWRAP_DEW_DIO_EN] =		0x040A,
-> +	[PWRAP_DEW_READ_TEST] =		0x040C,
-> +	[PWRAP_DEW_WRITE_TEST] =	0x040E,
-> +	[PWRAP_DEW_CRC_EN] =		0x0412,
-> +	[PWRAP_DEW_CRC_VAL] =		0x0414,
-> +	[PWRAP_DEW_CIPHER_KEY_SEL] =	0x0418,
-> +	[PWRAP_DEW_CIPHER_IV_SEL] =	0x041A,
-> +	[PWRAP_DEW_CIPHER_EN] =		0x041C,
-> +	[PWRAP_DEW_CIPHER_RDY] =	0x041E,
-> +	[PWRAP_DEW_CIPHER_MODE] =	0x0420,
-> +	[PWRAP_DEW_CIPHER_SWRST] =	0x0422,
-> +	[PWRAP_DEW_RDDMY_NO] =		0x0424,
-> +};
+> +	pmu {
+> +		compatible = "arm,cortex-a7-pmu";
+> +		interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 5 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 6 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 7 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupt-affinity = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>;
+> +	};
 > +
->  enum pwrap_regs {
->  	PWRAP_MUX_SEL,
->  	PWRAP_WRAP_EN,
-> @@ -716,6 +731,7 @@ enum pwrap_regs {
->  enum pmic_type {
->  	PMIC_MT6323,
->  	PMIC_MT6351,
-> +	PMIC_MT6357,
->  	PMIC_MT6380,
->  	PMIC_MT6397,
->  };
-> @@ -1175,6 +1191,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
->  		break;
->  	case PMIC_MT6323:
->  	case PMIC_MT6351:
-> +	case PMIC_MT6357:
->  		pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_EN],
->  			    0x1);
->  		break;
-> @@ -1460,11 +1477,26 @@ static irqreturn_t pwrap_interrupt(int irqno, void *dev_id)
->  	.pwrap_write = pwrap_write16,
->  };
->  
-> +static const struct pwrap_slv_type pmic_mt6357 = {
-> +	.dew_regs = mt6357_regs,
-> +	.type = PMIC_MT6357,
-> +	.regmap = &pwrap_regmap_config16,
-> +	.caps = 0,
-> +	.pwrap_read = pwrap_read16,
-> +	.pwrap_write = pwrap_write16,
-> +};
-> +
->  static const struct of_device_id of_slave_match_tbl[] = {
->  	{
->  		.compatible = "mediatek,mt6323",
->  		.data = &pmic_mt6323,
->  	}, {
-> +		.compatible = "mediatek,mt6351",
-> +		.data = &pmic_mt6351,
-> +	}, {
-> +		.compatible = "mediatek,mt6357",
-> +		.data = &pmic_mt6357,
-> +	}, {
->  		/* The MT6380 PMIC only implements a regulator, so we bind it
->  		 * directly instead of using a MFD.
->  		 */
-> @@ -1474,9 +1506,6 @@ static irqreturn_t pwrap_interrupt(int irqno, void *dev_id)
->  		.compatible = "mediatek,mt6397",
->  		.data = &pmic_mt6397,
->  	}, {
-> -		.compatible = "mediatek,mt6351",
-> -		.data = &pmic_mt6351,
-> -	}, {
->  		/* sentinel */
->  	}
->  };
+>  	system_clk: dummy13m {
+>  		compatible = "fixed-clock";
+>  		clock-frequency = <13000000>;
 > 
