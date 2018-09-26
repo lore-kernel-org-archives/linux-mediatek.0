@@ -1,31 +1,39 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] pinctrl: mediatek: fix check on EINT_NA comparison
-Date: Wed, 26 Sep 2018 09:42:00 +0200
-Message-ID: <CACRpkdZC9L78P-vXvXsKndLAwOmeLDgSjf0+VzVfua-j+3GcDQ@mail.gmail.com>
-References: <20180925095556.19779-1-colin.king@canonical.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: Wiki to track changes and progress ?
+Date: Wed, 26 Sep 2018 10:35:33 +0200
+Message-ID: <e9edf6fc-6659-5b40-b433-499d97e4886f@gmail.com>
+References: <256e20ee-ce22-2ff8-a2c7-cde75fc681e2@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180925095556.19779-1-colin.king@canonical.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Colin King <colin.king@canonical.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, kernel-janitors@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <256e20ee-ce22-2ff8-a2c7-cde75fc681e2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: MOHAMMAD RASIM <mohammad.rasim96-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Sep 25, 2018 at 11:55 AM Colin King <colin.king@canonical.com> wrote:
+Hi Mohammad,
 
-> From: Colin Ian King <colin.king@canonical.com>
->
-> Currently, the check on desc->eint.eint_n == EINT_NA is always false
-> because this is comparing a u16 to -1 which can never be true.  Fix
-> this by casting EINT_NA to u16.
->
-> Detected by CoverityScan, CID#1473610 ("Operands don't affect result")
->
-> Fixes: fb5fa8dc151b ("pinctrl: mediatek: extend struct mtk_pin_desc to pinctrl-mtk-common-v2.c")
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+On 25/09/2018 21:36, MOHAMMAD RASIM wrote:
+> Hi,
+> 
+> Is there a wiki for linux-mediatek where I can see the progress of mainlining,
+> what works and what doesn't (status matrix) ?
+> 
+> Something similar to other projects like http://linux-meson.com/doku.php and
+> http://linux-sunxi.org/Linux_mainlining_effort
 
-Patch applied.
+I started an effort at mtk.bcnfs.org
+Let me know if you want to help to update the info.
 
-Yours,
-Linus Walleij
+Regards,
+Matthias
