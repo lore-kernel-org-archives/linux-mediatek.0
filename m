@@ -1,39 +1,214 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: Wiki to track changes and progress ?
-Date: Wed, 26 Sep 2018 10:35:33 +0200
-Message-ID: <e9edf6fc-6659-5b40-b433-499d97e4886f@gmail.com>
-References: <256e20ee-ce22-2ff8-a2c7-cde75fc681e2@gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [Resend PATCH 5/5] arm: dts: mt7623: add display subsystem
+ related device nodes
+Date: Wed, 26 Sep 2018 10:50:13 +0200
+Message-ID: <67eb0b9c-f2a3-a9c4-202f-d3c64b6a2b3e@gmail.com>
+References: <84011aa94dd7be9239b7a2f944dd30fc70568fbb.1536155449.git.ryder.lee@mediatek.com>
+ <7105c341de3525761ad4067ca57c641c7097f773.1536155449.git.ryder.lee@mediatek.com>
+ <1537925879.20118.3.camel@mtksdaap41> <1537929498.32631.16.camel@mtkswgap22>
+ <1537939280.20005.19.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <256e20ee-ce22-2ff8-a2c7-cde75fc681e2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1537939280.20005.19.camel@mtksdaap41>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: MOHAMMAD RASIM <mohammad.rasim96-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, chunhui dai <chunhui.dai@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mohammad,
 
-On 25/09/2018 21:36, MOHAMMAD RASIM wrote:
-> Hi,
-> 
-> Is there a wiki for linux-mediatek where I can see the progress of mainlining,
-> what works and what doesn't (status matrix) ?
-> 
-> Something similar to other projects like http://linux-meson.com/doku.php and
-> http://linux-sunxi.org/Linux_mainlining_effort
 
-I started an effort at mtk.bcnfs.org
-Let me know if you want to help to update the info.
+On 26/09/2018 07:21, CK Hu wrote:
+> Hi, Ryder:
+> 
+> On Wed, 2018-09-26 at 10:38 +0800, Ryder Lee wrote:
+>> On Wed, 2018-09-26 at 09:37 +0800, CK Hu wrote:
+>>> Hi, Ryder:
+>>>
+>>> On Wed, 2018-09-05 at 22:09 +0800, Ryder Lee wrote:
+>>>> Add display subsystem related device nodes for MT7623.
+>>>>
+>>>> Cc: CK Hu <ck.hu@mediatek.com>
+>>>> Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
+>>>> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+>>>> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+>>>> ---
+>>>> I forgot to sort nodes in my previous mail. Sorry for the inconvenience.
+>>>>
+>>>> This patch depends on the series: https://lkml.org/lkml/2018/9/5/223
+>>>>
+>>>> @Matthias,
+>>>> I know you're working on broken MMSYS - just want to ask whether it's possible
+>>>> to let the patch to go to your tree (if others are okay with it), and send a
+>>>> fixup one for MT7623 MMSYS later?
+>>>> ---
+>>>>  arch/arm/boot/dts/mt7623.dtsi                 | 177 ++++++++++++++++++++++++++
+>>>>  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |  83 ++++++++++++
+>>>>  arch/arm/boot/dts/mt7623n-rfb-emmc.dts        |  83 ++++++++++++
+>>>>  3 files changed, 343 insertions(+)
+>>>>
+>>>> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+>>>> index d01bdee..fdf9078 100644
+>>>> --- a/arch/arm/boot/dts/mt7623.dtsi
+>>>> +++ b/arch/arm/boot/dts/mt7623.dtsi
+>>>> @@ -23,6 +23,11 @@
+>>>>  	#address-cells = <2>;
+>>>>  	#size-cells = <2>;
+>>>>  
+>>>> +	aliases {
+>>>> +		rdma0 = &rdma0;
+>>>> +		rdma1 = &rdma1;
+>>>> +	};
+>>>> +
+>>>>  	cpu_opp_table: opp-table {
+>>>>  		compatible = "operating-points-v2";
+>>>>  		opp-shared;
+>>>> @@ -311,6 +316,25 @@
+>>>>  		clock-names = "spi", "wrap";
+>>>>  	};
+>>>>  
+>>>> +	mipi_tx0: mipi-dphy@10010000 {
+>>>> +		compatible = "mediatek,mt7623-mipi-tx",
+>>>> +			     "mediatek,mt2701-mipi-tx";
+>>>> +		reg = <0 0x10010000 0 0x90>;
+>>>> +		clocks = <&clk26m>;
+>>>> +		clock-output-names = "mipi_tx0_pll";
+>>>> +		#clock-cells = <0>;
+>>>> +		#phy-cells = <0>;
+>>>> +	};
+>>>> +
+>>>> +	cec: cec@10012000 {
+>>>> +		compatible = "mediatek,mt7623-cec",
+>>>> +			     "mediatek,mt8173-cec";
+>>>> +		reg = <0 0x10012000 0 0xbc>;
+>>>> +		interrupts = <GIC_SPI 182 IRQ_TYPE_LEVEL_LOW>;
+>>>> +		clocks = <&infracfg CLK_INFRA_CEC>;
+>>>> +		status = "disabled";
+>>>> +	};
+>>>> +
+>>>>  	cir: cir@10013000 {
+>>>>  		compatible = "mediatek,mt7623-cir";
+>>>>  		reg = <0 0x10013000 0 0x1000>;
+>>>> @@ -359,6 +383,18 @@
+>>>>  		#clock-cells = <1>;
+>>>>  	};
+>>>>  
+>>>> +	hdmi_phy: phy@10209100 {
+>>>> +		compatible = "mediatek,mt7623-hdmi-phy",
+>>>> +			     "mediatek,mt2701-hdmi-phy";
+>>>> +		reg = <0 0x10209100 0 0x24>;
+>>>> +		clocks = <&apmixedsys CLK_APMIXED_HDMI_REF>;
+>>>> +		clock-names = "pll_ref";
+>>>> +		clock-output-names = "hdmitx_dig_cts";
+>>>> +		#clock-cells = <0>;
+>>>> +		#phy-cells = <0>;
+>>>> +		status = "disabled";
+>>>> +	};
+>>>> +
+>>>>  	rng: rng@1020f000 {
+>>>>  		compatible = "mediatek,mt7623-rng";
+>>>>  		reg = <0 0x1020f000 0 0x1000>;
+>>>> @@ -558,6 +594,16 @@
+>>>>  		status = "disabled";
+>>>>  	};
+>>>>  
+>>>> +	hdmiddc0: i2c@11013000 {
+>>>> +		compatible = "mediatek,mt7623-hdmi-ddc",
+>>>> +			     "mediatek,mt8173-hdmi-ddc";
+>>>> +		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_LOW>;
+>>>> +		reg = <0 0x11013000 0 0x1C>;
+>>>> +		clocks = <&pericfg CLK_PERI_I2C3>;
+>>>> +		clock-names = "ddc-i2c";
+>>>> +		status = "disabled";
+>>>> +	};
+>>>> +
+>>>>  	nor_flash: spi@11014000 {
+>>>>  		compatible = "mediatek,mt7623-nor",
+>>>>  			     "mediatek,mt8173-nor";
+>>>> @@ -732,6 +778,84 @@
+>>>>  		#clock-cells = <1>;
+>>>>  	};
+>>>>  
+>>>> +	display_components: dispsys@14000000 {
+>>>> +		compatible = "mediatek,mt7623-mmsys",
+>>>
+>>> Checkpatch warning:
+>>>
+>>> WARNING: DT compatible string "mediatek,mt7623-mmsys" appears
+>>> un-documented -- check ./Documentation/devicetree/bindings/
+>>> #101: FILE: arch/arm/boot/dts/mt7623.dtsi:782:
+>>> +               compatible = "mediatek,mt7623-mmsys",
+>>>
+>>>
+>>>> +			     "mediatek,mt2701-mmsys";
+>>>> +		reg = <0 0x14000000 0 0x1000>;
+>>>> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
+>>>> +	};
+>>>> +
+>>>> +	ovl@14007000 {
+>>>> +		compatible = "mediatek,mt7623-disp-ovl",
+>>>
+>>> I think this is also un-documented, but I don't know why checkpatch does
+>>> not show any warning.
+>>>
+>>> Regards,
+>>> CK
+>>>> +			     "mediatek,mt2701-disp-ovl";
+>>>> +		reg = <0 0x14007000 0 0x1000>;
+>>>> +		interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_LOW>;
+>>>> +		clocks = <&mmsys CLK_MM_DISP_OVL>;
+>>>> +		iommus = <&iommu MT2701_M4U_PORT_DISP_OVL_0>;
+>>>> +		mediatek,larb = <&larb0>;
+>>>> +	};
+>>>> +
+>>
+>> I fallback to use the MT2701's compatible string here and there, but I
+>> could add a new one for MT7623.
+>>
+>> BTW, I've had this question for a long time - should I add a new
+>> compatible for the very same IPs, or could we just use the old one in
+>> DTS?
+>>
+>> Ryder
+>>
+> 
+> From [1], there is a description for the multiple compatible string
+> scheme:
+> 
+> ====
+> The reasoning behind this scheme is the observation that in the majority
+> of cases, a single machine_desc can support a large number of boards
+> if they all use the same SoC, or same family of SoCs.  However,
+> invariably there will be some exceptions where a specific board will
+> require special setup code that is not useful in the generic case.
+> Special cases could be handled by explicitly checking for the
+> troublesome board(s) in generic setup code, but doing so very quickly
+> becomes ugly and/or unmaintainable if it is more than just a couple of
+> cases.
+> 
+> Instead, the compatible list allows a generic machine_desc to provide
+> support for a wide common set of boards by specifying "less
+> compatible" values in the dt_compat list.  In the example above,
+> generic board support can claim compatibility with "ti,omap3" or
+> "ti,omap3450".  If a bug was discovered on the original beagleboard
+> that required special workaround code during early boot, then a new
+> machine_desc could be added which implements the workarounds and only
+> matches on "ti,omap3-beagleboard".
+> ====
+> 
+> I don't know would there be a problem happened only in MT7623 even
+> though this hardware is identical in both MT2701 and MT7623. Maybe the
+> system-wide configuration would influence this driver. So the easy way
+> is to add the compatible string for MT7623. If you could prove that 
+> this driver would never be influenced by system-wide configuration,
+> using only MT2701 compatible string is acceptable for me.
+> 
+> This is my opinion, but the most important is maintainer's opinion.
+> 
+
+The compatible string looks good. But you should update the binding documentation :)
 
 Regards,
 Matthias
