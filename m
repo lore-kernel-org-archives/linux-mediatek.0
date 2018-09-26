@@ -1,214 +1,125 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [Resend PATCH 5/5] arm: dts: mt7623: add display subsystem
- related device nodes
-Date: Wed, 26 Sep 2018 10:50:13 +0200
-Message-ID: <67eb0b9c-f2a3-a9c4-202f-d3c64b6a2b3e@gmail.com>
-References: <84011aa94dd7be9239b7a2f944dd30fc70568fbb.1536155449.git.ryder.lee@mediatek.com>
- <7105c341de3525761ad4067ca57c641c7097f773.1536155449.git.ryder.lee@mediatek.com>
- <1537925879.20118.3.camel@mtksdaap41> <1537929498.32631.16.camel@mtkswgap22>
- <1537939280.20005.19.camel@mtksdaap41>
+From: Honghui Zhang <honghui.zhang@mediatek.com>
+Subject: Re: [PATCH v4 1/4] PCI: mediatek: fixup mtk_pcie_find_port logical
+Date: Wed, 26 Sep 2018 17:06:57 +0800
+Message-ID: <1537952817.14753.4.camel@mhfsdcap03>
+References: <1536573023-6720-1-git-send-email-honghui.zhang@mediatek.com>
+         <1536573023-6720-2-git-send-email-honghui.zhang@mediatek.com>
+         <20180921160745.GB21644@e107981-ln.cambridge.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1537939280.20005.19.camel@mtksdaap41>
-Content-Language: en-US
+In-Reply-To: <20180921160745.GB21644@e107981-ln.cambridge.arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, chunhui dai <chunhui.dai@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: marc.zyngier@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, ryder.lee@mediatek.com, ulf.hansson@linaro.org, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, yong.wu@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 26/09/2018 07:21, CK Hu wrote:
-> Hi, Ryder:
+On Fri, 2018-09-21 at 17:07 +0100, Lorenzo Pieralisi wrote:
+> On Mon, Sep 10, 2018 at 05:50:20PM +0800, honghui.zhang@mediatek.com wrote:
+> > From: Honghui Zhang <honghui.zhang@mediatek.com>
+> > 
+> > The Mediatek's host controller has two slots, each with it's own control
+> > registers. The host driver need to identify which slot was connected
+> > in order to access the device's configuration space. There's problem
+> > for current host driver to find out which slot was connected to for
+> > a given EP device.
+> > 
+> > Assuming each slot have connect with one EP device as below:
+> > 
+> >                 host bridge
+> >   bus 0 --> __________|_______
+> >            |                  |
+> >            |                  |
+> >          slot 0             slot 1
+> >   bus 1 -->|        bus 2 --> |
+> >            |                  |
+> >          EP 0               EP 1
+> > 
+> > During PCI enumeration, system software will scan all the PCI device
+> > starting from devfn 0. So it will get the proper port for slot0 and
+> > slot1 device when using PCI_SLOT(devfn) for match. But it will get
+> > the wrong slot for EP1: The devfn will be start from 0 when scanning
+> > EP1 behind slot1, it will get port0 since the PCI_SLOT(EP1) is match
+> > for port0's slot value. So the host driver should not using EP's devfn
+> > but the slot's devfn(the slot which EP was connected to) for match.
+> > 
+> > This patch fix the mtk_pcie_find_port's logical by using the slot's
+> > devfn for match.
+> > 
+> > Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+> > Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+> > ---
+> >  drivers/pci/controller/pcie-mediatek.c | 19 +++++++++++++++++--
+> >  1 file changed, 17 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> > index 861dda6..20b9088 100644
+> > --- a/drivers/pci/controller/pcie-mediatek.c
+> > +++ b/drivers/pci/controller/pcie-mediatek.c
+> > @@ -337,11 +337,26 @@ static struct mtk_pcie_port *mtk_pcie_find_port(struct pci_bus *bus,
+> >  {
+> >  	struct mtk_pcie *pcie = bus->sysdata;
+> >  	struct mtk_pcie_port *port;
+> > +	struct pci_dev *dev;
+> > +	struct pci_bus *pbus;
+> >  
+> > -	list_for_each_entry(port, &pcie->ports, list)
+> > -		if (port->slot == PCI_SLOT(devfn))
+> > +	list_for_each_entry(port, &pcie->ports, list) {
+> > +		if (!bus->number && port->slot == PCI_SLOT(devfn))
+> >  			return port;
+> >  
+> > +		if (bus->number) {
+> > +			pbus = bus;
+> > +
+> > +			while (pbus->number) {
+> > +				dev = pbus->self;
+> > +				pbus = dev->bus;
+> > +			}
+> > +
+> > +			if (port->slot == PCI_SLOT(dev->devfn))
+> > +				return port;
+> > +		}
+> > +	}
 > 
-> On Wed, 2018-09-26 at 10:38 +0800, Ryder Lee wrote:
->> On Wed, 2018-09-26 at 09:37 +0800, CK Hu wrote:
->>> Hi, Ryder:
->>>
->>> On Wed, 2018-09-05 at 22:09 +0800, Ryder Lee wrote:
->>>> Add display subsystem related device nodes for MT7623.
->>>>
->>>> Cc: CK Hu <ck.hu@mediatek.com>
->>>> Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
->>>> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
->>>> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
->>>> ---
->>>> I forgot to sort nodes in my previous mail. Sorry for the inconvenience.
->>>>
->>>> This patch depends on the series: https://lkml.org/lkml/2018/9/5/223
->>>>
->>>> @Matthias,
->>>> I know you're working on broken MMSYS - just want to ask whether it's possible
->>>> to let the patch to go to your tree (if others are okay with it), and send a
->>>> fixup one for MT7623 MMSYS later?
->>>> ---
->>>>  arch/arm/boot/dts/mt7623.dtsi                 | 177 ++++++++++++++++++++++++++
->>>>  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |  83 ++++++++++++
->>>>  arch/arm/boot/dts/mt7623n-rfb-emmc.dts        |  83 ++++++++++++
->>>>  3 files changed, 343 insertions(+)
->>>>
->>>> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
->>>> index d01bdee..fdf9078 100644
->>>> --- a/arch/arm/boot/dts/mt7623.dtsi
->>>> +++ b/arch/arm/boot/dts/mt7623.dtsi
->>>> @@ -23,6 +23,11 @@
->>>>  	#address-cells = <2>;
->>>>  	#size-cells = <2>;
->>>>  
->>>> +	aliases {
->>>> +		rdma0 = &rdma0;
->>>> +		rdma1 = &rdma1;
->>>> +	};
->>>> +
->>>>  	cpu_opp_table: opp-table {
->>>>  		compatible = "operating-points-v2";
->>>>  		opp-shared;
->>>> @@ -311,6 +316,25 @@
->>>>  		clock-names = "spi", "wrap";
->>>>  	};
->>>>  
->>>> +	mipi_tx0: mipi-dphy@10010000 {
->>>> +		compatible = "mediatek,mt7623-mipi-tx",
->>>> +			     "mediatek,mt2701-mipi-tx";
->>>> +		reg = <0 0x10010000 0 0x90>;
->>>> +		clocks = <&clk26m>;
->>>> +		clock-output-names = "mipi_tx0_pll";
->>>> +		#clock-cells = <0>;
->>>> +		#phy-cells = <0>;
->>>> +	};
->>>> +
->>>> +	cec: cec@10012000 {
->>>> +		compatible = "mediatek,mt7623-cec",
->>>> +			     "mediatek,mt8173-cec";
->>>> +		reg = <0 0x10012000 0 0xbc>;
->>>> +		interrupts = <GIC_SPI 182 IRQ_TYPE_LEVEL_LOW>;
->>>> +		clocks = <&infracfg CLK_INFRA_CEC>;
->>>> +		status = "disabled";
->>>> +	};
->>>> +
->>>>  	cir: cir@10013000 {
->>>>  		compatible = "mediatek,mt7623-cir";
->>>>  		reg = <0 0x10013000 0 0x1000>;
->>>> @@ -359,6 +383,18 @@
->>>>  		#clock-cells = <1>;
->>>>  	};
->>>>  
->>>> +	hdmi_phy: phy@10209100 {
->>>> +		compatible = "mediatek,mt7623-hdmi-phy",
->>>> +			     "mediatek,mt2701-hdmi-phy";
->>>> +		reg = <0 0x10209100 0 0x24>;
->>>> +		clocks = <&apmixedsys CLK_APMIXED_HDMI_REF>;
->>>> +		clock-names = "pll_ref";
->>>> +		clock-output-names = "hdmitx_dig_cts";
->>>> +		#clock-cells = <0>;
->>>> +		#phy-cells = <0>;
->>>> +		status = "disabled";
->>>> +	};
->>>> +
->>>>  	rng: rng@1020f000 {
->>>>  		compatible = "mediatek,mt7623-rng";
->>>>  		reg = <0 0x1020f000 0 0x1000>;
->>>> @@ -558,6 +594,16 @@
->>>>  		status = "disabled";
->>>>  	};
->>>>  
->>>> +	hdmiddc0: i2c@11013000 {
->>>> +		compatible = "mediatek,mt7623-hdmi-ddc",
->>>> +			     "mediatek,mt8173-hdmi-ddc";
->>>> +		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_LOW>;
->>>> +		reg = <0 0x11013000 0 0x1C>;
->>>> +		clocks = <&pericfg CLK_PERI_I2C3>;
->>>> +		clock-names = "ddc-i2c";
->>>> +		status = "disabled";
->>>> +	};
->>>> +
->>>>  	nor_flash: spi@11014000 {
->>>>  		compatible = "mediatek,mt7623-nor",
->>>>  			     "mediatek,mt8173-nor";
->>>> @@ -732,6 +778,84 @@
->>>>  		#clock-cells = <1>;
->>>>  	};
->>>>  
->>>> +	display_components: dispsys@14000000 {
->>>> +		compatible = "mediatek,mt7623-mmsys",
->>>
->>> Checkpatch warning:
->>>
->>> WARNING: DT compatible string "mediatek,mt7623-mmsys" appears
->>> un-documented -- check ./Documentation/devicetree/bindings/
->>> #101: FILE: arch/arm/boot/dts/mt7623.dtsi:782:
->>> +               compatible = "mediatek,mt7623-mmsys",
->>>
->>>
->>>> +			     "mediatek,mt2701-mmsys";
->>>> +		reg = <0 0x14000000 0 0x1000>;
->>>> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
->>>> +	};
->>>> +
->>>> +	ovl@14007000 {
->>>> +		compatible = "mediatek,mt7623-disp-ovl",
->>>
->>> I think this is also un-documented, but I don't know why checkpatch does
->>> not show any warning.
->>>
->>> Regards,
->>> CK
->>>> +			     "mediatek,mt2701-disp-ovl";
->>>> +		reg = <0 0x14007000 0 0x1000>;
->>>> +		interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_LOW>;
->>>> +		clocks = <&mmsys CLK_MM_DISP_OVL>;
->>>> +		iommus = <&iommu MT2701_M4U_PORT_DISP_OVL_0>;
->>>> +		mediatek,larb = <&larb0>;
->>>> +	};
->>>> +
->>
->> I fallback to use the MT2701's compatible string here and there, but I
->> could add a new one for MT7623.
->>
->> BTW, I've had this question for a long time - should I add a new
->> compatible for the very same IPs, or could we just use the old one in
->> DTS?
->>
->> Ryder
->>
+> 	/*
+> 	 * Walk the bus hierarchy to get the devfn value
+> 	 * of the port in the root bus.
+> 	 */
+> 	while (bus && bus->number) {
+> 		devfn = bus->self->devfn;
+> 		bus = bus->parent;
+> 	}
 > 
-> From [1], there is a description for the multiple compatible string
-> scheme:
+> 	list_for_each_entry(port, &pcie->ports, list) {
+> 		if (port->slot == PCI_SLOT(devfn))
+> 			return port;
 > 
-> ====
-> The reasoning behind this scheme is the observation that in the majority
-> of cases, a single machine_desc can support a large number of boards
-> if they all use the same SoC, or same family of SoCs.  However,
-> invariably there will be some exceptions where a specific board will
-> require special setup code that is not useful in the generic case.
-> Special cases could be handled by explicitly checking for the
-> troublesome board(s) in generic setup code, but doing so very quickly
-> becomes ugly and/or unmaintainable if it is more than just a couple of
-> cases.
+> 	return NULL;
 > 
-> Instead, the compatible list allows a generic machine_desc to provide
-> support for a wide common set of boards by specifying "less
-> compatible" values in the dt_compat list.  In the example above,
-> generic board support can claim compatibility with "ti,omap3" or
-> "ti,omap3450".  If a bug was discovered on the original beagleboard
-> that required special workaround code during early boot, then a new
-> machine_desc could be added which implements the workarounds and only
-> matches on "ti,omap3-beagleboard".
-> ====
-> 
-> I don't know would there be a problem happened only in MT7623 even
-> though this hardware is identical in both MT2701 and MT7623. Maybe the
-> system-wide configuration would influence this driver. So the easy way
-> is to add the compatible string for MT7623. If you could prove that 
-> this driver would never be influenced by system-wide configuration,
-> using only MT2701 compatible string is acceptable for me.
-> 
-> This is my opinion, but the most important is maintainer's opinion.
+> Would it work ? Maybe it is a little easier to parse.
 > 
 
-The compatible string looks good. But you should update the binding documentation :)
+Thanks, this is much better.
 
-Regards,
-Matthias
+> I think this can even be made easier by using struct device_node* as
+> comparison (and store it in port->slot instead of the port number), I
+> think that the pci_dev representing the port should have the right
+> of_node associated with it by core code, so it is just a matter of
+> finding the first pci_dev parent with an of_node set and compare it
+> against port->slot (that should be converted to a struct device_node*).
+> 
+> This ought to be tested and written but I think that's doable.
+> 
+
+Thanks, I will do my homework and figure a way out through this
+solution.
+Currently port->slot is used in too much place to be removed, I guess I
+need to added a new parameter in the port struct to store the of_node
+for compare.
+I'm not sure which way is better, anyway, let me try the new solution.
+
+thanks.
+
+> Lorenzo
