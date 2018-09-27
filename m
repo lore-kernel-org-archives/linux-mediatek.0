@@ -1,127 +1,67 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
+From: houlong wei <houlong.wei@mediatek.com>
 Subject: Re: [PATCH v23 4/4] soc: mediatek: Add Mediatek CMDQ helper
-Date: Thu, 27 Sep 2018 09:55:00 +0200
-Message-ID: <23d76d03-c0e9-cd83-f9a8-f5efa0c72938@gmail.com>
+Date: Thu, 27 Sep 2018 18:30:46 +0800
+Message-ID: <1538044246.17514.51.camel@mhfsdcap03>
 References: <1532482002-11164-1-git-send-email-houlong.wei@mediatek.com>
- <1532482002-11164-5-git-send-email-houlong.wei@mediatek.com>
- <1534297570.21668.3.camel@mhfsdcap03>
+         <1532482002-11164-5-git-send-email-houlong.wei@mediatek.com>
+         <ca12e8ab-e3d1-1cf0-8fe9-756d57bd5a3a@gmail.com>
+         <1538013431.17514.31.camel@mhfsdcap03>
+         <3773f620-e135-578d-5307-08483436f4c2@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1534297570.21668.3.camel@mhfsdcap03>
-Content-Language: en-US
+In-Reply-To: <3773f620-e135-578d-5307-08483436f4c2@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: houlong wei <houlong.wei@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>, =?UTF-8?B?QmliYnkgSHNpZWggKOisnea/n+mBoCk=?= <Bibby.Hsieh@mediatek.com>, =?UTF-8?B?WVQgU2hlbiAo5rKI5bKz6ZyGK
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>, Bibby Hsieh =?UTF-8?Q?=28=E8=AC=9D=E6=BF=9F=E9=81=A0=29?= <Bibby.Hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 15/08/2018 03:46, houlong wei wrote:
+On Thu, 2018-09-27 at 15:50 +0800, Matthias Brugger wrote:
+> 
+> On 27/09/2018 03:57, houlong wei wrote:
 [...]
->> +
->> +static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
->> +				   u32 arg_a, u32 arg_b)
->> +{
->> +	u64 *cmd_ptr;
->> +
->> +	if (unlikely(pkt->cmd_buf_size + CMDQ_INST_SIZE > pkt->buf_size)) {
->> +		pkt->cmd_buf_size += CMDQ_INST_SIZE;
->> +		return -ENOMEM;
->> +	}
->> +	cmd_ptr = pkt->va_base + pkt->cmd_buf_size;
->> +	(*cmd_ptr) = (u64)((code << CMDQ_OP_CODE_SHIFT) | arg_a) << 32 | arg_b;
->> +	pkt->cmd_buf_size += CMDQ_INST_SIZE;
->> +
->> +	return 0;
->> +}
->> +
->> +int cmdq_pkt_write(struct cmdq_pkt *pkt, u32 value, u32 subsys, u32 offset)
->> +{
->> +	u32 arg_a = (offset & CMDQ_ARG_A_WRITE_MASK) |
->> +		    (subsys << CMDQ_SUBSYS_SHIFT);
->> +
->> +	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WRITE, arg_a, value);
->> +}
->> +EXPORT_SYMBOL(cmdq_pkt_write);
->> +
->> +int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u32 value,
->> +			u32 subsys, u32 offset, u32 mask)
->> +{
->> +	u32 offset_mask = offset;
->> +	int err;
->> +
->> +	if (mask != 0xffffffff) {
->> +		err = cmdq_pkt_append_command(pkt, CMDQ_CODE_MASK, 0, ~mask);
->> +		WARN_ON(err < 0);
+> >>> +
+> >>> +static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
+> >>> +				   u32 arg_a, u32 arg_b)
+> >>> +{
+> >>> +	u64 *cmd_ptr;
+> >>> +
+> >>> +	if (unlikely(pkt->cmd_buf_size + CMDQ_INST_SIZE > pkt->buf_size)) {
+> >>> +		pkt->cmd_buf_size += CMDQ_INST_SIZE;
+> >>
+> >> Why do we update the cmd_buf_size here?
+> > 
+> > Because in developing phase of consumer driver, the consumer has to know
+> > the real command buffer size after adding command failure. Then the
+> > consumer will increase the size and run the cmdq flow (cmdq_pkt_create,
+> > cmdq_pkt_write/wfe...) again. Finally, the consumer get the real size
+> > and fix it.
+> > 
+> 
+> But the consumer should know the size it needs for it's buffer and if not it
+> should be able to decide on it's own how much space it needs. If he get's a
+> -ENOMEM he implicitly knows that he has to increase the buf_size. Now the size
+> depends on how many command he has pending and wasn't able to write to the cmdq_pkt.
+> 
+> Regards,
+> Matthias
 
-If we want to write out a warning to the kernel log, then we should but that in
-the if (unlikely(pkt->cmd_buf_size + CMDQ_INST_SIZE > pkt->buf_size)) from
-cmdq_pkt_append_command to make it consistent between cmdq_pkt_write,
-cmdq_pkt_write_mask and cmdq_pkt_finalize
+The consumer doesn't know how to calculate the command buffer size that
+he needs.
+When the consumer driver is developing, he could ignore the return value
+of cmdq_pkt_write and other command appending functions.
+He can print the pkt->cmdq_buf_size after cmdq_pkt_flush() or
+cmdq_pkt_flush_async() failure. Now he can get the buffer size he needs.
 
-Sorry, just saw this right now.
+I copy your another comment here, so I can reply in one mail.
+>>If we want to write out a warning to the kernel log, then we should
+>>but that in the if (unlikely(pkt->cmd_buf_size + CMDQ_INST_SIZE
+>>pkt->buf_size)) from cmdq_pkt_append_command to make it consistent
+>>between cmdq_pkt_write, cmdq_pkt_write_mask and cmdq_pkt_finalize.
 
->> +		offset_mask |= CMDQ_WRITE_ENABLE_MASK;
->> +	}
->> +
->> +	return cmdq_pkt_write(pkt, value, subsys, offset_mask);
->> +}
->> +EXPORT_SYMBOL(cmdq_pkt_write_mask);
->> +
->> +int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u32 event)
->> +{
->> +	u32 arg_b;
->> +
->> +	if (event >= CMDQ_MAX_EVENT)
->> +		return -EINVAL;
->> +
->> +	/*
->> +	 * WFE arg_b
->> +	 * bit 0-11: wait value
->> +	 * bit 15: 1 - wait, 0 - no wait
->> +	 * bit 16-27: update value
->> +	 * bit 31: 1 - update, 0 - no update
->> +	 */
->> +	arg_b = CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | CMDQ_WFE_WAIT_VALUE;
->> +
->> +	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WFE, event, arg_b);
->> +}
->> +EXPORT_SYMBOL(cmdq_pkt_wfe);
->> +
->> +int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u32 event)
->> +{
->> +	if (event >= CMDQ_MAX_EVENT)
->> +		return -EINVAL;
->> +
->> +	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WFE, event,
->> +				       CMDQ_WFE_UPDATE);
->> +}
->> +EXPORT_SYMBOL(cmdq_pkt_clear_event);
->> +
->> +static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
->> +{
->> +	int err;
->> +
->> +	/* insert EOC and generate IRQ for each command iteration */
->> +	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_EOC, 0, CMDQ_EOC_IRQ_EN);
->> +	WARN_ON(err < 0);
+Thanks, I will move WARN_ON() into cmdq_pkt_append_command() before
+returning -ENOMEM.
 
-Should move into cmdq_pkt_append_command
-
->> +
->> +	/* JUMP to end */
->> +	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_JUMP, 0, CMDQ_JUMP_PASS);
->> +	WARN_ON(err < 0);
-
-same here.
-
->> +
->> +	return err;
->> +}
->> +
-[...]
-
-Regards,
-Matthias
+After your confirmation of the comments above, I will re-send a new
+patch.
