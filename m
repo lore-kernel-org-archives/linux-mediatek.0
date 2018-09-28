@@ -1,33 +1,80 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] pinctrl: mediatek: mark dummy helpers as 'static inline'
-Date: Fri, 28 Sep 2018 09:27:36 +0200
-Message-ID: <CACRpkdY-9VhNJdh2FtzRUiwZTUfKQ+KKM5cFA2LuCwhCC+Ao6Q@mail.gmail.com>
-References: <20180926193818.2481220-1-arnd@arndb.de>
+From: <honghui.zhang@mediatek.com>
+Subject: [PATCH v5 0/9] PCI: mediatek: fixup find_port, enable_msi and add pm, module support
+Date: Fri, 28 Sep 2018 18:04:31 +0800
+Message-ID: <1538129080-8206-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180926193818.2481220-1-arnd@arndb.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: lorenzo.pieralisi@arm.com, bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com
+Cc: ulf.hansson@linaro.org, marc.zyngier@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, honghui.zhang@mediatek.com, youlin.pei@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 26, 2018 at 9:38 PM Arnd Bergmann <arnd@arndb.de> wrote:
+From: Honghui Zhang <honghui.zhang@mediatek.com>
 
-> mtk_eint_set_debounce and mtk_eint_find_irq are defined as stub functions
-> in a header file, but without marking them as 'static inline', we get
-> a copy for each file that includes the header:
->
-> drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.o: In function `mtk_eint_set_debounce':
-> pinctrl-mtk-common-v2.c:(.text+0x134): multiple definition of `mtk_eint_set_debounce'
-> drivers/pinctrl/mediatek/pinctrl-moore.o:pinctrl-moore.c:(.text+0x7d0): first defined here
-> drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.o: In function `mtk_eint_find_irq':
-> pinctrl-mtk-common-v2.c:(.text+0x13c): multiple definition of `mtk_eint_find_irq'
->
-> Fixes: e46df235b4e6 ("pinctrl: mediatek: refactor EINT related code for all MediaTek pinctrl can fit")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+This patchset includes misc patchs:
 
-Patch applied with Sean's ACK.
+The patch 1 fixup the mtk_pcie_find_port logic which will cause system
+could not touch the EP's configuration space that connected to PCIe slot 1.
 
-Yours,
-Linus Walleij
+The patch 2 fixup the class type for MT7622.
+The patch 6 fixup the enable msi logic, the operation to enable msi
+should be after system clock is enabled. Call mtk_pcie_enable_msi in
+mtk_pcie_startup_port_v2 since the clock was all enabled at that time.
+
+The patch 7 was rebased and refactor of the v4 patch[1], changes are:
+ -Add PM support for MT7622.
+ -Using mtk_pcie_enable_port to re-establish the link when resumed.
+ -Rebased on this patchset.
+
+The patch 9 add loadable kernel module support.
+
+[1] https://patchwork.kernel.org/patch/10479079
+
+Change since v4:
+ - Add patch 2 to fixup class type for MT7622.
+ - Add patch 3 to remove the redundant dev->pm_domain check
+ - Add patch 4 to covert to use pci_host_probe
+ - Add patch 5 to re-arrange the function define, this is a prepare patch for
+   fixup the enable_msi logic, no functional changed have been made by this one.
+ - Add patch 8 to save the GIC IRQ in mtk_pcie_port as a prepare patch for tear
+   down the irq when remove the kernel module.
+ - Re-arrange the find_port flow suggest by Lorenzo to make the code parse easier
+   for the patch 1.
+ - Remove the .pm_support in mtk_pcie_soc in patch 7 since if system pm was not
+   supported, then those pm callbacks will never be executed for MT7622. So the
+   .pm_support is not needed.
+
+Change since v3:
+ - Remove pm_runtime_XXX ops in suspend and resume callbacks in the third patch.
+ - Rebase to 4.19-rc1.
+
+Change since v2:
+ - Fix the list_for_each_entry_safe parameter error.
+ - Add Ryder's Acked-by flag.
+
+Change since v1:
+ - A bit of code refact of the first patch suggested by Andy Shevchenko, and
+   commit message updated.
+ - Using __maybe_unused.
+ - Remove the redundant list_empty check of the fourth patch.
+
+Honghui Zhang (9):
+  PCI: mediatek: Using slot's devfn for compare to fix
+    mtk_pcie_find_port logic
+  PCI: mediatek: Fixup class ID for MT7622 as PCI_CLASS_BRIDGE_PCI
+  PCI: mediatek: Remove the redundant dev->pm_domain check
+  PCI: mediatek: Convert to use pci_host_probe()
+  PCI: mediatek: Move the mtk_pcie_startup_port_v2 function's define
+    after mtk_pcie_setup_irq
+  PCI: mediatek: Enable msi after clock enabled
+  PCI: mediatek: Add system pm support for MT2712 and MT7622
+  PCI: mediatek: Save the GIC IRQ in mtk_pcie_port
+  PCI: mediatek: Add loadable kernel module support
+
+ drivers/pci/controller/Kconfig         |   2 +-
+ drivers/pci/controller/pcie-mediatek.c | 326 +++++++++++++++++++++------------
+ 2 files changed, 210 insertions(+), 118 deletions(-)
+
+-- 
+2.6.4
