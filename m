@@ -1,42 +1,55 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH 1/2] mmc: dt-bindings: add "bus-clk" for MT2712
-Date: Sat, 29 Sep 2018 01:34:00 +0800
-Message-ID: <1538156040.30348.89.camel@mtkswgap22>
-References: <1538134855-11198-1-git-send-email-chaotian.jing@mediatek.com>
-         <1538134855-11198-2-git-send-email-chaotian.jing@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v5 3/3] arm64: dts: Add spi slave dts
+Date: Fri, 28 Sep 2018 23:07:32 +0200
+Message-ID: <aef8fb56-e774-b9bd-e361-a1ea69e1885d@gmail.com>
+References: <1538131985-9471-1-git-send-email-leilk.liu@mediatek.com>
+ <1538131985-9471-4-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1538134855-11198-2-git-send-email-chaotian.jing@mediatek.com>
+In-Reply-To: <1538131985-9471-4-git-send-email-leilk.liu@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
+To: Leilk Liu <leilk.liu@mediatek.com>, Mark Brown <broonie@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2018-09-28 at 19:40 +0800, Chaotian Jing wrote:
-> On MT2712 MSDC0/3, HCLK/bus-clk need gate/ungate together,
-> or will hang when access MSDC register.
+
+
+On 28/09/2018 12:53, Leilk Liu wrote:
+> This patch adds MT2712 spi slave into device tree.
 > 
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 1 +
->  1 file changed, 1 insertion(+)
+
+Pushed to v4.19-next/dts64
+
+Thanks!
+
+>  arch/arm64/boot/dts/mediatek/mt2712e.dtsi |   11 +++++++++++
+>  1 file changed, 11 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> index f33467a..182299b 100644
-> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> @@ -22,6 +22,7 @@ Required properties:
->  	"source" - source clock (required)
->  	"hclk" - HCLK which used for host (required)
->  	"source_cg" - independent source clock gate (required for MT2712)
-> +	"bus_clk" - bus clk used for internal register access(required for MT2712 MSDC0/3)
-
-use a full name in the description such as changing "clk" to "clock" and
-
-add an extra blank char prior to left parenthesis
-
->  - pinctrl-names: should be "default", "state_uhs"
->  - pinctrl-0: should contain default/high speed pin ctrl
->  - pinctrl-1: should contain uhs mode pin ctrl
+> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> index 75cc0f7..ee627a7 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> @@ -301,6 +301,17 @@
+>  		status = "disabled";
+>  	};
+>  
+> +	spis1: spi@10013000 {
+> +		compatible = "mediatek,mt2712-spi-slave";
+> +		reg = <0 0x10013000 0 0x100>;
+> +		interrupts = <GIC_SPI 283 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&infracfg CLK_INFRA_AO_SPI1>;
+> +		clock-names = "spi";
+> +		assigned-clocks = <&topckgen CLK_TOP_SPISLV_SEL>;
+> +		assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL1_D2>;
+> +		status = "disabled";
+> +	};
+> +
+>  	apmixedsys: syscon@10209000 {
+>  		compatible = "mediatek,mt2712-apmixedsys", "syscon";
+>  		reg = <0 0x10209000 0 0x1000>;
+> 
