@@ -1,50 +1,51 @@
-From: <honghui.zhang@mediatek.com>
-Subject: [PATCH v5 2/9] PCI: mediatek: Fixup class ID for MT7622 as PCI_CLASS_BRIDGE_PCI
-Date: Fri, 28 Sep 2018 18:04:33 +0800
-Message-ID: <1538129080-8206-3-git-send-email-honghui.zhang@mediatek.com>
-References: <1538129080-8206-1-git-send-email-honghui.zhang@mediatek.com>
+From: Leilk Liu <leilk.liu@mediatek.com>
+Subject: [PATCH v5 0/3] Add Mediatek SPI slave driver
+Date: Fri, 28 Sep 2018 18:53:02 +0800
+Message-ID: <1538131985-9471-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1538129080-8206-1-git-send-email-honghui.zhang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: lorenzo.pieralisi@arm.com, bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com
-Cc: ulf.hansson@linaro.org, marc.zyngier@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, honghui.zhang@mediatek.com, youlin.pei@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com
+To: Mark Brown <broonie@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+>From 5479c692171dc52990290d88c505c074fa4db7d4 Mon Sep 17 00:00:00 2001
+From: Leilk Liu <leilk.liu@mediatek.com>
+Date: Fri, 28 Sep 2018 18:37:40 +0800
+Subject: [PATCH v5 0/3] Add Mediatek SPI slave driver
 
-The PCIe controller of MT7622 has TYPE 1 configuration space type, but
-the HW default class type values is invalid.
+v5:
+1. Fix typos in bindings file.
 
-The commit 101c92dc80c8 ("PCI: mediatek: Set up vendor ID and class
-type for MT7622") have set the class ID for MT7622 as
-PCI_CLASS_BRIDGE_HOST, but it's not workable for MT7622:
+v4:
+1. Fix Mark Brown review comment about kconfig & driver.
 
-In __pci_bus_assign_resources, the framework only setup bridge's
-resource window only if class type is PCI_CLASS_BRIDGE_PCI. Or it
-will leave the subordinary PCIe device's MMIO window un-touched.
+v3:
+1. Fix Rob Herring review comment about bindings.
+2. remove unused variables in driver.
 
-Fixup the class type to PCI_CLASS_BRIDGE_PCI as most of the controller
-driver do.
+v2:
+1. Fix Sean Wang review comment.
+2. remove unused register and offset define.
+3. update bindings file with assigned-clocks and assigned-clocks-parents.
 
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
----
- drivers/pci/controller/pcie-mediatek.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+v1:
+This series are based on 4.19-rc1 and provide three patches to add mediatek spi slave driver.
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 264e03f..3ab80d6 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -436,7 +436,7 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
- 		val = PCI_VENDOR_ID_MEDIATEK;
- 		writew(val, port->base + PCIE_CONF_VEND_ID);
- 
--		val = PCI_CLASS_BRIDGE_HOST;
-+		val = PCI_CLASS_BRIDGE_PCI;
- 		writew(val, port->base + PCIE_CONF_CLASS_ID);
- 	}
- 
+Leilk Liu (3):
+  spi: mediatek: add bindings for Mediatek MT2712 soc platform
+  spi: mediatek: add spi slave for Mediatek MT2712
+  arm64: dts: Add spi slave dts
+
+ .../devicetree/bindings/spi/spi-slave-mt27xx.txt   |  32 ++
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi          |  11 +
+ drivers/spi/Kconfig                                |  10 +
+ drivers/spi/Makefile                               |   1 +
+ drivers/spi/spi-slave-mt27xx.c                     | 554 +++++++++++++++++++++
+ 5 files changed, 608 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/spi/spi-slave-mt27xx.txt
+ create mode 100644 drivers/spi/spi-slave-mt27xx.c
+
 -- 
-2.6.4
+1.9.1
