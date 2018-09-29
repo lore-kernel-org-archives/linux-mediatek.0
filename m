@@ -1,58 +1,53 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 4/4] arm64: dts: mediatek: add pwrap device node for
- mt8183
-Date: Sat, 29 Sep 2018 15:30:54 +0200
-Message-ID: <f1cc2f58-ad3c-2f88-8e86-b80848e17cc5@gmail.com>
-References: <1537341961-20736-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1537341961-20736-5-git-send-email-hsin-hsiung.wang@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [GIT PULL] ARM: defconfig update for v4.20
+Date: Sat, 29 Sep 2018 17:16:15 +0200
+Message-ID: <8bb0af1d-8323-9833-ee1c-bbbb9d65a686@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1537341961-20736-5-git-send-email-hsin-hsiung.wang@mediatek.com>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, robh+dt@kernel.org, mark.rutland@arm.com
-Cc: argus.lin@mediatek.com, sean.wang@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, chenglin.xu@mediatek.com, chen.zhong@mediatek.com, srv_heupstream@mediatek.com
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Olof and Arnd,
 
-
-On 19/09/2018 09:26, Hsin-Hsiung Wang wrote:
-> add pwrap device node for mt8183.
-> 
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 10 ++++++++++
->  1 file changed, 10 insertions(+)
-
-The basic support for mt8183 is not ready to be merged.
-I'll also try to not forget about this patch.
-If you re-submit after basic mt8183 support got accepted, that will help me. :)
+Please have a look on the following pull request.
 
 Thanks,
 Matthias
 
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index c22a2dc..fa67d781 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -170,6 +170,16 @@
->  		#clock-cells = <1>;
->  	};
->  
-> +	pwrap: pwrap@1000d000 {
-> +		compatible = "mediatek,mt8183-pwrap";
-> +		reg = <0 0x1000d000 0 0x1000>;
-> +		reg-names = "pwrap";
-> +		interrupts = <GIC_SPI 209 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&topckgen CLK_TOP_MUX_PMICSPI>,
-> +			 <&infracfg CLK_INFRA_PMIC_AP>;
-> +		clock-names = "spi", "wrap";
-> +	};
-> +
->  	uart0: serial@11002000 {
->  		compatible = "mediatek,mt8183-uart",
->  			     "mediatek,mt6577-uart";
-> 
+---
+The following changes since commit 5b394b2ddf0347bef56e50c69a58773c94343ff3:
+
+  Linux 4.19-rc1 (2018-08-26 14:11:59 -0700)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+tags/v4.19-next-defconfig
+
+for you to fetch changes up to f718739d1c219decf2e4e4f0121753439850e5ab:
+
+  ARM: defconfig: add mediatek_v7_defconfig (2018-09-25 16:18:15 +0200)
+
+----------------------------------------------------------------
+- add arm32 defconfig for mediatek SoCs.
+
+----------------------------------------------------------------
+Sean Wang (1):
+      ARM: defconfig: add mediatek_v7_defconfig
+
+ arch/arm/configs/mediatek_v7_defconfig | 319 +++++++++++++++++++++++++++++++++
+ 1 file changed, 319 insertions(+)
+ create mode 100644 arch/arm/configs/mediatek_v7_defconfig
