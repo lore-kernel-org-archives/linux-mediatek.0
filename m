@@ -1,72 +1,58 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v1 2/2] mmc: mediatek: add bus_clk control
-Date: Sat, 29 Sep 2018 14:56:13 +0200
-Message-ID: <b9a6e56c-0762-e8d7-08df-7633a8e28ec0@gmail.com>
-References: <1538188195-3608-1-git-send-email-chaotian.jing@mediatek.com>
- <1538188195-3608-2-git-send-email-chaotian.jing@mediatek.com>
+Subject: Re: [PATCH 4/4] arm64: dts: mediatek: add pwrap device node for
+ mt8183
+Date: Sat, 29 Sep 2018 15:30:54 +0200
+Message-ID: <f1cc2f58-ad3c-2f88-8e86-b80848e17cc5@gmail.com>
+References: <1537341961-20736-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1537341961-20736-5-git-send-email-hsin-hsiung.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1538188195-3608-2-git-send-email-chaotian.jing@mediatek.com>
+In-Reply-To: <1537341961-20736-5-git-send-email-hsin-hsiung.wang@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Sean Wang <sean.wang@mediatek.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: argus.lin@mediatek.com, sean.wang@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, chenglin.xu@mediatek.com, chen.zhong@mediatek.com, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 29/09/2018 04:29, Chaotian Jing wrote:
-> when gate MSDC0_HCLK, access register will hang, even the MSDC driver
-> will never accessing register after HCLK was gated, but for safety, need
-> gate the bus_clk(which used to access register) too.
+On 19/09/2018 09:26, Hsin-Hsiung Wang wrote:
+> add pwrap device node for mt8183.
 > 
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 > ---
->  drivers/mmc/host/mtk-sd.c | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 0484138..1c1c967 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -387,6 +387,7 @@ struct msdc_host {
->  
->  	struct clk *src_clk;	/* msdc source clock */
->  	struct clk *h_clk;      /* msdc h_clk */
-> +	struct clk *bus_clk;	/* bus clock which used to access register */
->  	struct clk *src_clk_cg; /* msdc source clock control gate */
->  	u32 mclk;		/* mmc subsystem clock frequency */
->  	u32 src_clk_freq;	/* source clock frequency */
-> @@ -660,12 +661,14 @@ static void msdc_gate_clock(struct msdc_host *host)
->  {
->  	clk_disable_unprepare(host->src_clk_cg);
->  	clk_disable_unprepare(host->src_clk);
-> +	clk_disable_unprepare(host->bus_clk);
->  	clk_disable_unprepare(host->h_clk);
->  }
->  
->  static void msdc_ungate_clock(struct msdc_host *host)
->  {
->  	clk_prepare_enable(host->h_clk);
-> +	clk_prepare_enable(host->bus_clk);
->  	clk_prepare_enable(host->src_clk);
->  	clk_prepare_enable(host->src_clk_cg);
->  	while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
-> @@ -1900,6 +1903,9 @@ static int msdc_drv_probe(struct platform_device *pdev)
->  		goto host_free;
->  	}
->  
-> +	host->bus_clk = devm_clk_get(&pdev->dev, "bus_clk");
-> +	if (IS_ERR(host->bus_clk))
-> +		host->bus_clk = NULL;
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
 
-That means the bus_clk is not requiered, even for mt2712, although the binding
-says so. Not sure if this is good enough or if we want to enforce the driver to
-actually error out, when the clock is not present in a mt2712 DTS.
+The basic support for mt8183 is not ready to be merged.
+I'll also try to not forget about this patch.
+If you re-submit after basic mt8183 support got accepted, that will help me. :)
 
-I suppose that's up to the maintainer :)
-
-Regards,
+Thanks,
 Matthias
+
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index c22a2dc..fa67d781 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -170,6 +170,16 @@
+>  		#clock-cells = <1>;
+>  	};
+>  
+> +	pwrap: pwrap@1000d000 {
+> +		compatible = "mediatek,mt8183-pwrap";
+> +		reg = <0 0x1000d000 0 0x1000>;
+> +		reg-names = "pwrap";
+> +		interrupts = <GIC_SPI 209 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&topckgen CLK_TOP_MUX_PMICSPI>,
+> +			 <&infracfg CLK_INFRA_PMIC_AP>;
+> +		clock-names = "spi", "wrap";
+> +	};
+> +
+>  	uart0: serial@11002000 {
+>  		compatible = "mediatek,mt8183-uart",
+>  			     "mediatek,mt6577-uart";
+> 
