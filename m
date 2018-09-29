@@ -1,7 +1,7 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [GIT PULL] ARM: defconfig update for v4.20
-Date: Sat, 29 Sep 2018 17:16:15 +0200
-Message-ID: <8bb0af1d-8323-9833-ee1c-bbbb9d65a686@gmail.com>
+Subject: [GIT PULL] ARM: dts updates for arm 32 bits for v4.20
+Date: Sat, 29 Sep 2018 17:18:04 +0200
+Message-ID: <0195dc38-908e-c403-5f12-d266a037ca1b@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -17,17 +17,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Cc: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi Olof and Arnd,
 
-Please have a look on the following pull request.
+Please take the following pull request into account.
 
-Thanks,
+Thanks a lot,
 Matthias
 
+
 ---
+
 The following changes since commit 5b394b2ddf0347bef56e50c69a58773c94343ff3:
 
   Linux 4.19-rc1 (2018-08-26 14:11:59 -0700)
@@ -35,19 +37,25 @@ The following changes since commit 5b394b2ddf0347bef56e50c69a58773c94343ff3:
 are available in the Git repository at:
 
   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-tags/v4.19-next-defconfig
+tags/v4.19-next-dts32
 
-for you to fetch changes up to f718739d1c219decf2e4e4f0121753439850e5ab:
+for you to fetch changes up to 5646a2f6d584e80bd4555c2ce3e286b35b9eaa61:
 
-  ARM: defconfig: add mediatek_v7_defconfig (2018-09-25 16:18:15 +0200)
-
-----------------------------------------------------------------
-- add arm32 defconfig for mediatek SoCs.
+  arm: dts: mt7623: add jpeg decoder device node (2018-09-25 17:44:35 +0200)
 
 ----------------------------------------------------------------
-Sean Wang (1):
-      ARM: defconfig: add mediatek_v7_defconfig
+mt7623:
+- add pmu node
+- add subsystem clocks
+- add nodes needed for iommu
+- add node for the jpeg decoder
 
- arch/arm/configs/mediatek_v7_defconfig | 319 +++++++++++++++++++++++++++++++++
- 1 file changed, 319 insertions(+)
- create mode 100644 arch/arm/configs/mediatek_v7_defconfig
+----------------------------------------------------------------
+Ryder Lee (4):
+      arm: dts: mt7623: add a performance counter unit device node
+      arm: dts: mt7623: update subsystem clock controller device nodes
+      arm: dts: mt7623: add iommu/smi device nodes
+      arm: dts: mt7623: add jpeg decoder device node
+
+ arch/arm/boot/dts/mt7623.dtsi | 124 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 124 insertions(+)
