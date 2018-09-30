@@ -1,73 +1,63 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [GIT PULL] ARM: soc driver updates for v4.20
-Date: Sat, 29 Sep 2018 17:22:34 +0200
-Message-ID: <fa4576fd-e8a5-8cfb-381f-e2343bb97786@gmail.com>
+From: Colin King <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>
+Subject: [PATCH]  mt76: fix header guard macro define names
+Date: Sun, 30 Sep 2018 23:57:15 +0100
+Message-ID: <20180930225715.18491-1-colin.king@canonical.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Hsin-Hsiung Wang <hsin-hsiung.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Argus Lin <argus.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "Gustavo A. R. Silva" <gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "David S . Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Olof and Arnd,
+From: Colin Ian King <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>
 
-Please have a look on the following soc driver commits.
+The header guards that are #defined are different from those being
+checked.  Fix this by #defining them to the correct name.
 
-Thanks a lot,
-Matthias
+Fixes clang warnings:
+drivers/net/wireless/mediatek/mt76/mt76x02_mcu.h:17:9:
+warning: '__MT76x02_MCU_H' is used as a header guard here, followed
+by #define of a different macro [-Wheader-guard]
 
+drivers/net/wireless/mediatek/mt76/mt76x02_usb.h:17:9:
+warning: '__MT76x02_USB_H' is used as a header guard here, followed
+by #define of a different macro [-Wheader-guard]
+
+Fixes: 905db7470199 ("mt76: usb: move mt76x02 mcu code in mt76x02-usb module")
+Fixes: edaa580bc830 ("mt76: move shared mcu_calibrate routine in mt76x02-lib module")
+Signed-off-by: Colin Ian King <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>
 ---
+ drivers/net/wireless/mediatek/mt76/mt76x02_mcu.h | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x02_usb.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-The following changes since commit 5b394b2ddf0347bef56e50c69a58773c94343ff3:
-
-  Linux 4.19-rc1 (2018-08-26 14:11:59 -0700)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-tags/v4.19-next-soc
-
-for you to fetch changes up to 3013b410a8f50cf251e09da00b8241fd43bb41fa:
-
-  soc: mediatek: pwrap: add mt6357 driver for mt6765 SoCs (2018-09-25 17:36:38
-+0200)
-
-----------------------------------------------------------------
-PMIC wrapper:
-- sort SoCs and PMICs ascending
-- add capabilities
-- add support for mt8183 SoC + mt6358 PMIC
-- return false instead of 0
-- add support for mt6765 SoC + mt6357 PMIC
-
-----------------------------------------------------------------
-Argus Lin (3):
-      dt-bindings: pwrap: mediatek: add pwrap support for MT6765
-      soc: mediatek: pwrap: add pwrap driver for mt6765 SoCs
-      soc: mediatek: pwrap: add mt6357 driver for mt6765 SoCs
-
-Gustavo A. R. Silva (1):
-      soc: mediatek: pwrap: use true and false for boolean values
-
-Hsin-Hsiung Wang (3):
-      dt-bindings: mediatek: add compatible for mt8183 pwrap
-      soc: mediatek: pwrap: use group of bits for pwrap capability
-      soc: mediatek: add mt8183 pwrap support
-
-Matthias Brugger (1):
-      soc: mediatek: pwrap: order SoCs and PMICs ascending
-
- .../devicetree/bindings/soc/mediatek/pwrap.txt     |   2 +
- drivers/soc/mediatek/mtk-pmic-wrap.c               | 519 ++++++++++++++++-----
- 2 files changed, 399 insertions(+), 122 deletions(-)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76x02_mcu.h
+index 2f5af3dad2bb..6e178bec07d8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mcu.h
+@@ -15,7 +15,7 @@
+  */
+ 
+ #ifndef __MT76x02_MCU_H
+-#define __MT76x0x_MCU_H
++#define __MT76x02_MCU_H
+ 
+ #define MT_MCU_RESET_CTL		0x070C
+ #define MT_MCU_INT_LEVEL		0x0718
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_usb.h b/drivers/net/wireless/mediatek/mt76/mt76x02_usb.h
+index 2482f9761fcd..39dcfeee39f2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_usb.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_usb.h
+@@ -15,7 +15,7 @@
+  */
+ 
+ #ifndef __MT76x02_USB_H
+-#define __MT76x0x_USB_H
++#define __MT76x02_USB_H
+ 
+ #include "mt76.h"
+ 
+-- 
+2.17.1
