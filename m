@@ -1,99 +1,37 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH v5 1/9] PCI: mediatek: Using slot's devfn for compare to
- fix mtk_pcie_find_port logic
-Date: Mon, 1 Oct 2018 15:36:41 +0100
-Message-ID: <20181001143641.GB13049@red-moon>
-References: <1538129080-8206-1-git-send-email-honghui.zhang@mediatek.com>
- <1538129080-8206-2-git-send-email-honghui.zhang@mediatek.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL] ARM: defconfig update for v4.20
+Date: Mon, 1 Oct 2018 18:06:37 +0200
+Message-ID: <CAK8P3a1jtA77tunDWEjqAvYgNac-EFVdg07Va6neya4r2HSdQQ@mail.gmail.com>
+References: <8bb0af1d-8323-9833-ee1c-bbbb9d65a686@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1538129080-8206-2-git-send-email-honghui.zhang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com
-Cc: bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, ulf.hansson@linaro.org, marc.zyngier@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, youlin.pei@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <8bb0af1d-8323-9833-ee1c-bbbb9d65a686@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Sep 28, 2018 at 06:04:32PM +0800, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
-> 
-> The Mediatek's host controller has two slots, each with it's own control
-> registers. The host driver need to identify which slot was connected
-> in order to access the device's configuration space. There's problem
-> for current host driver to find out which slot was connected to for
-> a given EP device.
-> 
-> Assuming each slot have connect with one EP device as below:
-> 
->                 host bridge
->   bus 0 --> __________|_______
->            |                  |
->            |                  |
->          slot 0             slot 1
->   bus 1 -->|        bus 2 --> |
->            |                  |
->          EP 0               EP 1
-> 
-> During PCI enumeration, system software will scan all the PCI device
-> starting from devfn 0. So it will get the proper port for slot0 and
-> slot1 device when using PCI_SLOT(devfn) for match. But it will get
-> the wrong slot for EP1: The devfn will be start from 0 when scanning
-> EP1 behind slot1, it will get port0 since the PCI_SLOT(EP1) is match
-> for port0's slot value. So the host driver should not using EP's devfn
-> but the slot's devfn(the slot which EP was connected to) for match.
-> 
-> This patch fix the mtk_pcie_find_port's logic by using the slot's
-> devfn for match if finding device connected to the subordinate bus.
-> 
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> ---
->  drivers/pci/controller/pcie-mediatek.c | 17 ++++++++++++++++-
->  1 file changed, 16 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 9999dae..264e03f 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -337,10 +337,25 @@ static struct mtk_pcie_port *mtk_pcie_find_port(struct pci_bus *bus,
->  {
->  	struct mtk_pcie *pcie = bus->sysdata;
->  	struct mtk_pcie_port *port;
-> +	struct pci_dev *dev = NULL;
-> +
-> +	/*
-> +	 * Walk the bus hierarchy to get the devfn value
-> +	 * of the port in the root bus.
-> +	 */
-> +	while (bus && bus->number) {
-> +		dev = bus->self;
-> +		bus = dev->bus;
+On Sat, Sep 29, 2018 at 5:16 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
 
-If you add:
+>
+> for you to fetch changes up to f718739d1c219decf2e4e4f0121753439850e5ab:
+>
+>   ARM: defconfig: add mediatek_v7_defconfig (2018-09-25 16:18:15 +0200)
+>
+> ----------------------------------------------------------------
+> - add arm32 defconfig for mediatek SoCs.
 
-devfn = dev->devfn;
+You probably don't want CONFIG_DEBUG_LL=y, or CONFIG_COMPILE_TEST=y
+in there. Please review the file for additional options that might be incorrect.
 
-here
-
-> +	}
-> +
-> +	list_for_each_entry(port, &pcie->ports, list) {
-> +		/* Using slot's devfn to compare for subordinary bus. */
-> +		if (dev)
-> +			devfn = dev->devfn;
-
-You can remove this ugly hunk altogether (and dev initialization
-to NULL).
-
-Lorenzo
-
-> -	list_for_each_entry(port, &pcie->ports, list)
->  		if (port->slot == PCI_SLOT(devfn))
->  			return port;
-> +	}
->  
->  	return NULL;
->  }
-> -- 
-> 2.6.4
-> 
+       Arnd
