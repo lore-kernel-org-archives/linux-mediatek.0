@@ -1,63 +1,96 @@
-From: Colin King <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>
-Subject: [PATCH]  mt76: fix header guard macro define names
-Date: Sun, 30 Sep 2018 23:57:15 +0100
-Message-ID: <20180930225715.18491-1-colin.king@canonical.com>
+From: <miles.chen@mediatek.com>
+Subject: [RFC/PATCH] mm/shmem: add a NULL pointer test to shmem_free_inode
+Date: Mon, 1 Oct 2018 17:52:55 +0800
+Message-ID: <1538387575-28914-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "David S . Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hugh Dickins <hughd@google.com>
+Cc: linux-mm@kvack.org, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, Mark Salyzyn <salyzyn@google.com>, Miles Chen <miles.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Colin Ian King <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>
+From: Miles Chen <miles.chen@mediatek.com>
 
-The header guards that are #defined are different from those being
-checked.  Fix this by #defining them to the correct name.
+We noticed a kernel panic when unmounting tmpfs. It looks like a
+race condition in the following scenario:
 
-Fixes clang warnings:
-drivers/net/wireless/mediatek/mt76/mt76x02_mcu.h:17:9:
-warning: '__MT76x02_MCU_H' is used as a header guard here, followed
-by #define of a different macro [-Wheader-guard]
+shmem_put_super() set sb->s_fs_info to NULL and shmem_evict_inode() tries
+to access sb->s_fs_info right after the sb->s_fs_info becomes NULL.
 
-drivers/net/wireless/mediatek/mt76/mt76x02_usb.h:17:9:
-warning: '__MT76x02_USB_H' is used as a header guard here, followed
-by #define of a different macro [-Wheader-guard]
+CPU1				CPU2
 
-Fixes: 905db7470199 ("mt76: usb: move mt76x02 mcu code in mt76x02-usb module")
-Fixes: edaa580bc830 ("mt76: move shared mcu_calibrate routine in mt76x02-lib module")
-Signed-off-by: Colin Ian King <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>
+work_pending			work_pending
+do_notify_resume		do_notify_resume
+____fput			task_work_run
+__fput				__cleanup_mnt
+inotify_release			cleanup_mnt
+fsnotify_destroy_group		deactivate_super
+fsnotify_detach_group_marks	deactivate_locked_super
+fsnotify_detach_mark		kill_litter_super /* sb->s_fs_info = NULL */
+iput
+evict /* use sb->s_fs_info */
+
+Add a NULL pointer test in shmem_evict_inode(). We have stress-tested
+the patch for 5 days with no panic.
+
+Please note that this patch is a band-aid patch.
+
+VFS: Busy inodes after unmount of tmpfs. Self-destruct in 5 seconds.
+Have a nice day...
+[name:traps&]Internal error: Accessing user space memory outside uaccess.h
+routines:
+[name:aee&]disable aee kernel api
+[name:mrdump&]Kernel Offset: 0x1326000000 from 0xffffff8008000000
+[name:mrdump&]Non-crashing CPUs did not react to IPI
+CPU: 7 PID: 552 Comm: HwBinder:426_1 Tainted: G        W  O    4.9.117+ #2
+Hardware name: MT6765 (DT)
+task: ffffffc62d340000 task.stack: ffffffc62d2b4000
+PC is at shmem_evict_inode+0x150/0x19c
+LR is at evict+0xa4/0x1f4
+[<ffffff932e083148>] el1_da+0x24/0x40
+[<ffffff932e2acbac>] evict+0xa4/0x1f4
+[<ffffff932e2aadc8>] iput+0x338/0x384
+[<ffffff932e2db110>] fsnotify_detach_mark+0xac/0xe0
+[<ffffff932e2dba20>] fsnotify_detach_group_marks+0x78/0xdc
+[<ffffff932e2daac4>] fsnotify_destroy_group+0x34/0x98
+[<ffffff932e2dd810>] inotify_release+0x28/0x5c
+[<ffffff932e289614>] __fput+0xcc/0x1c8
+[<ffffff932e2894f4>] ____fput+0xc/0x14
+[<ffffff932e0da7cc>] task_work_run+0x88/0x11c
+[<ffffff932e08b53c>] do_notify_resume+0x5c/0x165c
+[<ffffff932e083c54>] work_pending+0x8/0x14
+
+If we put a BUG() after after "VFS: Busy inodes after unmount of tmpfs.
+Self-destruct in 5 seconds.  Have a nice day...", we can get another
+backtrace:
+[<ffffff94de6830e8>] el1_dbg+0x18/0xb8
+[<ffffff94de8875ec>] kill_litter_super+0x28/0x74
+[<ffffff94de885b40>] deactivate_locked_super+0x58/0x110
+[<ffffff94de885c64>] deactivate_super+0x6c/0x78
+[<ffffff94de8b20a0>] cleanup_mnt+0xb4/0x130
+[<ffffff94de8b1fe4>] __cleanup_mnt+0x10/0x18
+[<ffffff94de6d9bd0>] task_work_run+0x88/0x11c
+[<ffffff94de68ad64>] do_notify_resume+0x5c/0x1664
+[<ffffff94de683a28>] work_pending+0x8/0x14
+
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x02_mcu.h | 2 +-
- drivers/net/wireless/mediatek/mt76/mt76x02_usb.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ mm/shmem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76x02_mcu.h
-index 2f5af3dad2bb..6e178bec07d8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mcu.h
-@@ -15,7 +15,7 @@
-  */
- 
- #ifndef __MT76x02_MCU_H
--#define __MT76x0x_MCU_H
-+#define __MT76x02_MCU_H
- 
- #define MT_MCU_RESET_CTL		0x070C
- #define MT_MCU_INT_LEVEL		0x0718
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_usb.h b/drivers/net/wireless/mediatek/mt76/mt76x02_usb.h
-index 2482f9761fcd..39dcfeee39f2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_usb.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_usb.h
-@@ -15,7 +15,7 @@
-  */
- 
- #ifndef __MT76x02_USB_H
--#define __MT76x0x_USB_H
-+#define __MT76x02_USB_H
- 
- #include "mt76.h"
- 
+diff --git a/mm/shmem.c b/mm/shmem.c
+index 4469426..a50a2c8 100644
+--- a/mm/shmem.c
++++ b/mm/shmem.c
+@@ -257,7 +257,7 @@ static int shmem_reserve_inode(struct super_block *sb)
+ static void shmem_free_inode(struct super_block *sb)
+ {
+ 	struct shmem_sb_info *sbinfo = SHMEM_SB(sb);
+-	if (sbinfo->max_inodes) {
++	if (sbinfo && sbinfo->max_inodes) {
+ 		spin_lock(&sbinfo->stat_lock);
+ 		sbinfo->free_inodes++;
+ 		spin_unlock(&sbinfo->stat_lock);
 -- 
-2.17.1
+1.9.1
