@@ -1,48 +1,74 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [GIT PULL] ARM: soc driver updates for v4.20
-Date: Tue, 2 Oct 2018 10:01:41 +0200
-Message-ID: <CAK8P3a3sRnzAHY+UvU9CZ1d3H1+1SsRWf_S0Bh_puQ=PTcL=jQ@mail.gmail.com>
-References: <fa4576fd-e8a5-8cfb-381f-e2343bb97786@gmail.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v4 05/11] drm/mediatek: convert dpi driver to use drm_of_find_panel_or_bridge
+Date: Tue, 2 Oct 2018 16:10:35 +0800
+Message-ID: <20181002081041.32629-6-bibby.hsieh@mediatek.com>
+References: <20181002081041.32629-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <fa4576fd-e8a5-8cfb-381f-e2343bb97786@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: argus.lin@mediatek.com, "Gustavo A. R. Silva" <gustavo@embeddedor.com>, arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, hsin-hsiung.wang@mediatek.com
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181002081041.32629-1-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Sep 29, 2018 at 5:22 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
->
->   Linux 4.19-rc1 (2018-08-26 14:11:59 -0700)
->
-> are available in the Git repository at:
->
->   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-> tags/v4.19-next-soc
->
-> for you to fetch changes up to 3013b410a8f50cf251e09da00b8241fd43bb41fa:
->
->   soc: mediatek: pwrap: add mt6357 driver for mt6765 SoCs (2018-09-25 17:36:38
-> +0200)
->
-> ----------------------------------------------------------------
-> PMIC wrapper:
-> - sort SoCs and PMICs ascending
-> - add capabilities
-> - add support for mt8183 SoC + mt6358 PMIC
-> - return false instead of 0
-> - add support for mt6765 SoC + mt6357 PMIC
+From: chunhui dai <chunhui.dai@mediatek.com>
 
-Pulled into next/drivers, thanks
+Convert dpi driver to use drm_of_find_panel_or_bridge.
+This changes some error messages to debug messages (in the graph core).
+Graph connections are often "no connects" depending on the particular
+board, so we want to avoid spurious messages. Plus the kernel is not a
+DT validator.
+related links:
+[1] https://lkml.org/lkml/2017/2/3/716
+[2] https://lkml.org/lkml/2017/2/3/719
 
-       Arnd
+Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 16 ++++++----------
+ 1 file changed, 6 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 0dbe9345fa2e..08915e1765f8 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -14,6 +14,7 @@
+ #include <drm/drmP.h>
+ #include <drm/drm_crtc.h>
+ #include <drm/drm_crtc_helper.h>
++#include <drm/drm_of.h>
+ #include <linux/kernel.h>
+ #include <linux/component.h>
+ #include <linux/platform_device.h>
+@@ -668,7 +669,6 @@ static int mtk_dpi_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct mtk_dpi *dpi;
+ 	struct resource *mem;
+-	struct device_node *bridge_node;
+ 	int comp_id;
+ 	int ret;
+ 
+@@ -714,16 +714,12 @@ static int mtk_dpi_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 	}
+ 
+-	bridge_node = of_graph_get_remote_node(dev->of_node, 0, 0);
+-	if (!bridge_node)
+-		return -ENODEV;
+-
+-	dev_info(dev, "Found bridge node: %pOF\n", bridge_node);
++	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0,
++					  NULL, &dpi->bridge);
++	if (ret)
++		return ret;
+ 
+-	dpi->bridge = of_drm_find_bridge(bridge_node);
+-	of_node_put(bridge_node);
+-	if (!dpi->bridge)
+-		return -EPROBE_DEFER;
++	dev_info(dev, "Found bridge node: %pOF\n", dpi->bridge->of_node);
+ 
+ 	comp_id = mtk_ddp_comp_get_id(dev->of_node, MTK_DPI);
+ 	if (comp_id < 0) {
+-- 
+2.12.5.2.gbdf23ab
