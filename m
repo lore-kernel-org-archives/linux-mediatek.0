@@ -1,63 +1,97 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [GIT PULL] ARM: dts updates for arm 32 bits for v4.20
-Date: Tue, 2 Oct 2018 12:34:37 +0200
-Message-ID: <9f0dd563-b921-8d31-c82c-327fea5c026f@gmail.com>
-References: <0195dc38-908e-c403-5f12-d266a037ca1b@gmail.com>
- <CAK8P3a1AVrP_vrvUJrEHp1i_LrdDCwCmiVP_aRYpATwEK+B3Yg@mail.gmail.com>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH v5 1/9] PCI: mediatek: Using slot's devfn for compare to
+ fix mtk_pcie_find_port logic
+Date: Tue, 2 Oct 2018 11:59:45 +0100
+Message-ID: <20181002105945.GA27736@e107981-ln.cambridge.arm.com>
+References: <1538129080-8206-1-git-send-email-honghui.zhang@mediatek.com>
+ <1538129080-8206-2-git-send-email-honghui.zhang@mediatek.com>
+ <20181001143641.GB13049@red-moon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAK8P3a1AVrP_vrvUJrEHp1i_LrdDCwCmiVP_aRYpATwEK+B3Yg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Cc: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20181001143641.GB13049@red-moon>
+Sender: linux-kernel-owner@vger.kernel.org
+To: honghui.zhang@mediatek.com
+Cc: bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, ulf.hansson@linaro.org, marc.zyngier@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, youlin.pei@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 02/10/2018 11:12, Arnd Bergmann wrote:
-> On Sat, Sep 29, 2018 at 5:18 PM Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+On Mon, Oct 01, 2018 at 03:36:41PM +0100, Lorenzo Pieralisi wrote:
+> On Fri, Sep 28, 2018 at 06:04:32PM +0800, honghui.zhang@mediatek.com wrote:
+> > From: Honghui Zhang <honghui.zhang@mediatek.com>
+> > 
+> > The Mediatek's host controller has two slots, each with it's own control
+> > registers. The host driver need to identify which slot was connected
+> > in order to access the device's configuration space. There's problem
+> > for current host driver to find out which slot was connected to for
+> > a given EP device.
+> > 
+> > Assuming each slot have connect with one EP device as below:
+> > 
+> >                 host bridge
+> >   bus 0 --> __________|_______
+> >            |                  |
+> >            |                  |
+> >          slot 0             slot 1
+> >   bus 1 -->|        bus 2 --> |
+> >            |                  |
+> >          EP 0               EP 1
+> > 
+> > During PCI enumeration, system software will scan all the PCI device
+> > starting from devfn 0. So it will get the proper port for slot0 and
+> > slot1 device when using PCI_SLOT(devfn) for match. But it will get
+> > the wrong slot for EP1: The devfn will be start from 0 when scanning
+> > EP1 behind slot1, it will get port0 since the PCI_SLOT(EP1) is match
+> > for port0's slot value. So the host driver should not using EP's devfn
+> > but the slot's devfn(the slot which EP was connected to) for match.
+> > 
+> > This patch fix the mtk_pcie_find_port's logic by using the slot's
+> > devfn for match if finding device connected to the subordinate bus.
+> > 
+> > Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+> > ---
+> >  drivers/pci/controller/pcie-mediatek.c | 17 ++++++++++++++++-
+> >  1 file changed, 16 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> > index 9999dae..264e03f 100644
+> > --- a/drivers/pci/controller/pcie-mediatek.c
+> > +++ b/drivers/pci/controller/pcie-mediatek.c
+> > @@ -337,10 +337,25 @@ static struct mtk_pcie_port *mtk_pcie_find_port(struct pci_bus *bus,
+> >  {
+> >  	struct mtk_pcie *pcie = bus->sysdata;
+> >  	struct mtk_pcie_port *port;
+> > +	struct pci_dev *dev = NULL;
+> > +
+> > +	/*
+> > +	 * Walk the bus hierarchy to get the devfn value
+> > +	 * of the port in the root bus.
+> > +	 */
+> > +	while (bus && bus->number) {
+> > +		dev = bus->self;
+> > +		bus = dev->bus;
 > 
->> The following changes since commit 5b394b2ddf0347bef56e50c69a58773c94343ff3:
->>
->>   Linux 4.19-rc1 (2018-08-26 14:11:59 -0700)
->>
->> are available in the Git repository at:
->>
->>   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
->> tags/v4.19-next-dts32
->>
->> for you to fetch changes up to 5646a2f6d584e80bd4555c2ce3e286b35b9eaa61:
->>
->>   arm: dts: mt7623: add jpeg decoder device node (2018-09-25 17:44:35 +0200)
->>
->> ----------------------------------------------------------------
->> mt7623:
->> - add pmu node
->> - add subsystem clock>> - add nodes needed for iommu
->> - add node for the jpeg decoder
+> If you add:
 > 
-> None of these (aside from the pmu) seem to have DT bindings
-> or drivers posted on the list. Can you explain why that is and what
-> the plan is for supporting them?
+> devfn = dev->devfn;
 > 
+> here
+> 
+> > +	}
+> > +
+> > +	list_for_each_entry(port, &pcie->ports, list) {
+> > +		/* Using slot's devfn to compare for subordinary bus. */
+> > +		if (dev)
+> > +			devfn = dev->devfn;
+> 
+> You can remove this ugly hunk altogether (and dev initialization
+> to NULL).
 
-We rely on the fallback compatible here, as mt2701 and mt7623 are identically in
-most of their components. If you require to get the bindings documented before
-merging the DT, then I propose to drop the pull request for now.
+Hi Honghui,
 
-Other option would be to get the bindings documented in v4.21. AFAIK up to now
-there haven't been sent any patches to update the bindings.
+if you can make this change I would merge this series, it has been
+been in the mailing lists for a while, I can make that change too
+just let me know please.
 
-Regards,
-Matthias
+Thanks,
+Lorenzo
