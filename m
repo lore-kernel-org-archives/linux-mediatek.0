@@ -1,77 +1,111 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v4 00/11] drm/mediatek: support hdmi output for mt2701 and
- mt7623
-Date: Tue, 2 Oct 2018 16:10:30 +0800
-Message-ID: <20181002081041.32629-1-bibby.hsieh@mediatek.com>
+Subject: [PATCH v4 02/11] drm/mediatek: move hardware register to node data
+Date: Tue, 2 Oct 2018 16:10:32 +0800
+Message-ID: <20181002081041.32629-3-bibby.hsieh@mediatek.com>
+References: <20181002081041.32629-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181002081041.32629-1-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SW4gb3JkZXIgdG8gc3VwcG9ydCBIRE1JIG9uIG10MjcwMSwKd2UgaGF2ZSB0byBtYWtlIHNvbWUg
-bW9kaWZpY2F0aW9ucy4KMSkgQWRkIHRoZSBIRE1JIGRyaXZlci4KMikgQWRkIHRoZSBEUEkgZHJp
-dmVyLgozKSBBZGQgYSBtZWNoYW5pc20gdGhhdCBjb25maWcgb3V0cHV0IGNvbXBvbmVudCBieSBk
-dHMuCgpDaGFuZ2Ugc2luY2UgdjM6CiAtIFJlbW92ZSBkcm0vbWVkaWF0ZWs6IGNvbmZpZyBjb21w
-b25lbnQgb3V0cHV0IGJ5IGRldmljZSBub2RlIHBvcnQKICAgcGF0Y2gsIHdlIHdpbGwgcHVzaCBh
-bm90aGVyIHBhdGNoZXMgdG8gZmxleGlibHkgY29uZmlnIHRoZSBjb21wb25lbnQgb3V0cHV0Lgog
-LSBmaXh1cCB0aGUgcmV0dXJuIHZhbHVlCiAtIHJlcGxhY2UgZHBpLT5wb3dlcl9jdGwgYW5kIHBv
-d2VyX3N0YSB3aXRoIHJlZmVyZW5jZSBjb3VudCBtZWNoYW5pc20uCiAtIG1vdmUgdGhlIGNvbW1v
-biBmdW5jdGlvbiB0byBtdGtfaGRtaV9waHkuYy9oCgpDaGFuZ2VzIHNpbmNlIHYyOgogLSBGaXgg
-dGhlIHR5cG8gaW4gY29tbWl0IG1lc3NhZ2UuCiAtIFJlbW92ZSBjb25zdCBvZiByZWdfaF9mcmVf
-Y29uIGluIHRoZSBtdGtfZHBpX2NvbmYgc3RydWN0CiAtIFJlbW92ZSB1bnVzZWQgZXJyb3IgbG9n
-CiAtIFVzZSBsb3dlciBjYXNlZSBmb3IgaGV4IG51bWJlcgogLSBVc2UgY29tbW9uIEFQSSB3aGlj
-aCBkZWZpbmVkIGluIG10a19oZG1pX3BoeS5jIHRvIHJlZHVjZSBjb2RlIHNpemUKIC0gSW1wbGVt
-ZXQgdGhlIGVuYWJsZS9kaXNhYmxlIG9mIHBoeV9wbGxfb3BzIHRoZSBzYW1lIGFzIDgxNzMKIC0g
-TW92ZSB0aGUgY29tbW9uIGhlYWRlciB0byBtdGtfaGRtaV9waHkuaAogLSBSZW1vdmUgdGhlIGlu
-Y2x1ZGluZyBvZiBkZWJ1Z2ZzLmgKTk9URToKIC0gYWRkIGRlc2NyaXB0aW9uIGFib3V0IHRoZWNv
-cG9uZW50IG91dHB1dCBpbiB0aGUgYmluZGluZyBkb2N1bWVudCBpbiB2NC4KCkNoYW5nZXMgc2lu
-Y2UgdjE6CiAtIFNlcGFyYXRlIHNvbWUgcGF0Y2hlcyB0byBpbmRlcGVuZGVudCBwYXRjaC4KIC0g
-YWRkIERJU1BfUkVHX0NPTkZJR19EU0lfU0VMIGFuZCBESVNQX1JFR19DT05GSUdfRFBJX1NFTAog
-ICBjb25maWd1cmF0aW9uIGluIHRoZSBjb25kaXRpb24gb2YgQkxTJkRQSTAgY29ubmVjdGlvbi4K
-CkNoYW5nZXMgc2luY2UgdjA6CiAtIENvcnJlY3Qgc29tZSB0eXBvcyBpbiBjb21taXQgbWVzc2Fn
-ZS4KIC0gRml4dXAgdGhlIGJ1aWxkIHdhcm5pbmcgKHRtcCB2YXJpYWJsZSBkaWRuJ3QgYmUgaW5p
-dGlhbGl6ZWQpCgpCaWJieSBIc2llaCAoMik6CiAgZHJtL21lZGlhdGVrOiBpbXBsZW1lbnQgY29u
-bmVjdGlvbiBmcm9tIEJMUyB0byBEUEkwCiAgZHJtL21lZGlhdGVrOiBhZGQgYSBlcnJvciByZXR1
-cm4gdmFsdWUgd2hlbiBjbG9jayBkcml2ZXIgaGFzIGJlZW4KICAgIHByZXBhcmVkCgpjaHVuaHVp
-IGRhaSAoOSk6CiAgZHJtL21lZGlhdGVrOiBhZGQgcmVmY291bnQgZm9yIERQSSBwb3dlciBvbi9v
-ZmYKICBkcm0vbWVkaWF0ZWs6IG1vdmUgaGFyZHdhcmUgcmVnaXN0ZXIgdG8gbm9kZSBkYXRhCiAg
-ZHJtL21lZGlhdGVrOiBhZGp1c3QgRURHRSB0byBtYXRjaCBjbG9jayBhbmQgZGF0YQogIGRybS9t
-ZWRpYXRlazogYWRkIGNsb2NrIGZhY3RvciBmb3IgZGlmZmVyZW50IElDCiAgZHJtL21lZGlhdGVr
-OiBjb252ZXJ0IGRwaSBkcml2ZXIgdG8gdXNlIGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZQog
-IGRybS9tZWRpYXRlazogYWRkIGRwaSBkcml2ZXIgZm9yIG10MjcwMSBhbmQgbXQ3NjIzCiAgZHJt
-L21lZGlhdGVrOiBzZXBhcmF0ZSBoZG1pIHBoeSB0byBkaWZmZXJlbnQgZmlsZQogIGRybS9tZWRp
-YXRlazogYWRkIHN1cHBvcnQgZm9yIFNQRElGIGF1ZGlvIGluIEhETUkKICBkcm0vbWVkaWF0ZWs6
-IGFkZCBoZG1pIGRyaXZlciBmb3IgTVQyNzAxIGFuZCBNVDc2MjMKCiBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvTWFrZWZpbGUgICAgICAgICAgICAgIHwgICA1ICstCiBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RwaS5jICAgICAgICAgICAgIHwgMTMxICsrKysrKysrLS0tLS0tCiBkcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaV9yZWdzLmggICAgICAgIHwgICAyICstCiBkcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgICAgICAgIHwgIDE0ICstCiBkcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jICAgIHwgICAyICstCiBkcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyAgICAgICAgIHwgICAyICsKIGRyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jICAgICAgICAgICAgfCAgMTUgKy0KIGRyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5oICAgICAgICAgICAgfCAgIDIgKy0KIGRyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuYyAgICAgICAgfCAyMzUgKysrKysrKysr
-KysrKysrKysrKysrKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5o
-ICAgICAgICB8ICA2MCArKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210Mjcw
-MV9oZG1pX3BoeS5jIHwgMjEyICsrKysrKysrKysrKysrKysrKysrKysKIGRyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMgfCAyMjYgKy0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tCiAxMiBmaWxlcyBjaGFuZ2VkLCA2MjcgaW5zZXJ0aW9ucygrKSwgMjc5IGRlbGV0aW9u
-cygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRt
-aV9waHkuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-aGRtaV9waHkuaAogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfbXQyNzAxX2hkbWlfcGh5LmMKCi0tIAoyLjEyLjUuMi5nYmRmMjNhYgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
-dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+From: chunhui dai <chunhui.dai@mediatek.com>
+
+The address of register DPI_H_FRE_CON is different in different IC.
+Using of_node data to find this address.
+
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c      | 19 ++++++++++++++++---
+ drivers/gpu/drm/mediatek/mtk_dpi_regs.h |  1 -
+ 2 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 5ede1ddbaa1a..72aa43187731 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -18,6 +18,7 @@
+ #include <linux/component.h>
+ #include <linux/platform_device.h>
+ #include <linux/of.h>
++#include <linux/of_device.h>
+ #include <linux/of_graph.h>
+ #include <linux/interrupt.h>
+ #include <linux/types.h>
+@@ -72,6 +73,7 @@ struct mtk_dpi {
+ 	struct clk *tvd_clk;
+ 	int irq;
+ 	struct drm_display_mode mode;
++	const struct mtk_dpi_conf *conf;
+ 	enum mtk_dpi_out_color_format color_format;
+ 	enum mtk_dpi_out_yc_map yc_map;
+ 	enum mtk_dpi_out_bit_num bit_num;
+@@ -110,6 +112,10 @@ struct mtk_dpi_yc_limit {
+ 	u16 c_bottom;
+ };
+ 
++struct mtk_dpi_conf {
++	u32 reg_h_fre_con;
++};
++
+ static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
+ {
+ 	u32 tmp = readl(dpi->regs + offset) & ~mask;
+@@ -335,7 +341,7 @@ static void mtk_dpi_config_swap_input(struct mtk_dpi *dpi, bool enable)
+ 
+ static void mtk_dpi_config_2n_h_fre(struct mtk_dpi *dpi)
+ {
+-	mtk_dpi_mask(dpi, DPI_H_FRE_CON, H_FRE_2N, H_FRE_2N);
++	mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, H_FRE_2N, H_FRE_2N);
+ }
+ 
+ static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+@@ -639,6 +645,10 @@ static const struct component_ops mtk_dpi_component_ops = {
+ 	.unbind = mtk_dpi_unbind,
+ };
+ 
++static const struct mtk_dpi_conf mt8173_conf = {
++	.reg_h_fre_con = 0xe0,
++};
++
+ static int mtk_dpi_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -653,6 +663,7 @@ static int mtk_dpi_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	dpi->dev = dev;
++	dpi->conf = (struct mtk_dpi_conf *)of_device_get_match_data(dev);
+ 
+ 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	dpi->regs = devm_ioremap_resource(dev, mem);
+@@ -732,8 +743,10 @@ static int mtk_dpi_remove(struct platform_device *pdev)
+ }
+ 
+ static const struct of_device_id mtk_dpi_of_ids[] = {
+-	{ .compatible = "mediatek,mt8173-dpi", },
+-	{}
++	{ .compatible = "mediatek,mt8173-dpi",
++	  .data = &mt8173_conf,
++	},
++	{ },
+ };
+ 
+ struct platform_driver mtk_dpi_driver = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+index 4b6ad4751a31..040444d7718d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
++++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+@@ -223,6 +223,5 @@
+ #define ESAV_CODE2			(0xFFF << 0)
+ #define ESAV_CODE3_MSB			BIT(16)
+ 
+-#define DPI_H_FRE_CON		0xE0
+ #define H_FRE_2N			BIT(25)
+ #endif /* __MTK_DPI_REGS_H */
+-- 
+2.12.5.2.gbdf23ab
