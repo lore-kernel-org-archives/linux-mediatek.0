@@ -1,60 +1,50 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH v5 6/9] PCI: mediatek: Enable msi after clock enabled
-Date: Tue, 2 Oct 2018 12:01:14 +0100
-Message-ID: <20181002110114.GB27736@e107981-ln.cambridge.arm.com>
-References: <1538129080-8206-1-git-send-email-honghui.zhang@mediatek.com>
- <1538129080-8206-7-git-send-email-honghui.zhang@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [GIT PULL] ARM: defconfig update for v4.20
+Date: Tue, 2 Oct 2018 13:09:08 +0200
+Message-ID: <0e713ca2-b8e4-dbf1-8160-f8e40ab21558@gmail.com>
+References: <8bb0af1d-8323-9833-ee1c-bbbb9d65a686@gmail.com>
+ <CAK8P3a1jtA77tunDWEjqAvYgNac-EFVdg07Va6neya4r2HSdQQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1538129080-8206-7-git-send-email-honghui.zhang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com
-Cc: bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, ulf.hansson@linaro.org, marc.zyngier@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, youlin.pei@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAK8P3a1jtA77tunDWEjqAvYgNac-EFVdg07Va6neya4r2HSdQQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Cc: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Sep 28, 2018 at 06:04:37PM +0800, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
-> 
-> The clocks was not enabled when enable MSI. This patch fix this
-> issue by calling mtk_pcie_enable_msi in mtk_pcie_startup_port_v2
-> since the clock was all enabled at that time.
-> 
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> ---
->  drivers/pci/controller/pcie-mediatek.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
 
-If this is a fix, and I think it is, I would appreciate a Fixes: tag
-so that we can actully pinpoint the faulty commit.
 
-Thanks,
-Lorenzo
-
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index d150be1..be38b38 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -572,8 +572,6 @@ static int mtk_pcie_init_irq_domain(struct mtk_pcie_port *port,
->  		ret = mtk_pcie_allocate_msi_domains(port);
->  		if (ret)
->  			return ret;
-> -
-> -		mtk_pcie_enable_msi(port);
->  	}
->  
->  	return 0;
-> @@ -694,6 +692,9 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
->  	val &= ~INTX_MASK;
->  	writel(val, port->base + PCIE_INT_MASK);
->  
-> +	if (IS_ENABLED(CONFIG_PCI_MSI))
-> +		mtk_pcie_enable_msi(port);
-> +
->  	/* Set AHB to PCIe translation windows */
->  	size = mem->end - mem->start;
->  	val = lower_32_bits(mem->start) | AHB2PCIE_SIZE(fls(size));
-> -- 
-> 2.6.4
+On 01/10/2018 18:06, Arnd Bergmann wrote:
+> On Sat, Sep 29, 2018 at 5:16 PM Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
 > 
+>>
+>> for you to fetch changes up to f718739d1c219decf2e4e4f0121753439850e5ab:
+>>
+>>   ARM: defconfig: add mediatek_v7_defconfig (2018-09-25 16:18:15 +0200)
+>>
+>> ----------------------------------------------------------------
+>> - add arm32 defconfig for mediatek SoCs.
+> 
+> You probably don't want CONFIG_DEBUG_LL=y, or CONFIG_COMPILE_TEST=y
+> in there. Please review the file for additional options that might be incorrect.
+> 
+
+Correct. Apart I just realized that it only enabled mt7623 and leaves alone the
+other armv7 mediatek SoCs. So there is more work to be done here.
+
+I propose you drop the merge request for this release.
+
+Sorry for the inconvenience.
+
+Matthias
