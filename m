@@ -1,65 +1,66 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v4 06/11] drm/mediatek: add dpi driver for mt2701 and mt7623
-Date: Tue, 2 Oct 2018 16:10:36 +0800
-Message-ID: <20181002081041.32629-7-bibby.hsieh@mediatek.com>
+Subject: [PATCH v4 10/11] drm/mediatek: implement connection from BLS to DPI0
+Date: Tue, 2 Oct 2018 16:10:40 +0800
+Message-ID: <20181002081041.32629-11-bibby.hsieh@mediatek.com>
 References: <20181002081041.32629-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20181002081041.32629-1-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: chunhui dai <chunhui.dai@mediatek.com>, linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogY2h1bmh1aSBkYWkgPGNodW5odWkuZGFpQG1lZGlhdGVrLmNvbT4KClRoaXMgcGF0Y2gg
-YWRkcyBkcGkgZGlydmVyIHN1cHBvdCBmb3IgYm90aCBtdDI3MDEgYW5kIG10NzYyMy4KQW5kIGFs
-c28gc3VwcG9ydCBvdGhlciAoZXhpc3Rpbmcgb3IgZnV0dXJlKSBjaGlwcyB0aGF0IHVzZQp0aGUg
-c2FtZSBiaW5kaW5nIGFuZCBkcml2ZXIuCgpSZXZpZXdlZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlh
-dGVrLmNvbT4KU2lnbmVkLW9mZi1ieTogY2h1bmh1aSBkYWkgPGNodW5odWkuZGFpQG1lZGlhdGVr
-LmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jICAgICB8IDIxICsr
-KysrKysrKysrKysrKysrKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2
-LmMgfCAgMiArKwogMiBmaWxlcyBjaGFuZ2VkLCAyMyBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYyBiL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHBpLmMKaW5kZXggMDg5MTVlMTc2NWY4Li42MmE5ZDQ3ZGY5NDggMTAwNjQ0
-Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMKKysrIGIvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kcGkuYwpAQCAtNjU5LDExICs2NTksMjkgQEAgc3RhdGljIHVu
-c2lnbmVkIGludCBtdDgxNzNfY2FsY3VsYXRlX2ZhY3RvcihpbnQgY2xvY2spCiAJCXJldHVybiAz
-IDw8IDE7CiB9CiAKK3N0YXRpYyB1bnNpZ25lZCBpbnQgbXQyNzAxX2NhbGN1bGF0ZV9mYWN0b3Io
-aW50IGNsb2NrKQoreworCWlmIChjbG9jayA8PSA2NDAwMCkKKwkJcmV0dXJuIDE2OworCWVsc2Ug
-aWYgKGNsb2NrIDw9IDEyODAwMCkKKwkJcmV0dXJuIDg7CisJZWxzZSBpZiAoY2xvY2sgPD0gMjU2
-MDAwKQorCQlyZXR1cm4gNDsKKwllbHNlCisJCXJldHVybiAyOworfQorCiBzdGF0aWMgY29uc3Qg
-c3RydWN0IG10a19kcGlfY29uZiBtdDgxNzNfY29uZiA9IHsKIAkuY2FsX2ZhY3RvciA9IG10ODE3
-M19jYWxjdWxhdGVfZmFjdG9yLAogCS5yZWdfaF9mcmVfY29uID0gMHhlMCwKIH07CiAKK3N0YXRp
-YyBjb25zdCBzdHJ1Y3QgbXRrX2RwaV9jb25mIG10MjcwMV9jb25mID0geworCS5jYWxfZmFjdG9y
-ID0gbXQyNzAxX2NhbGN1bGF0ZV9mYWN0b3IsCisJLnJlZ19oX2ZyZV9jb24gPSAweGIwLAorCS5l
-ZGdlX3NlbF9lbiA9IHRydWUsCit9OworCiBzdGF0aWMgaW50IG10a19kcGlfcHJvYmUoc3RydWN0
-IHBsYXRmb3JtX2RldmljZSAqcGRldikKIHsKIAlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+
-ZGV2OwpAQCAtNzUzLDYgKzc3MSw5IEBAIHN0YXRpYyBpbnQgbXRrX2RwaV9yZW1vdmUoc3RydWN0
-IHBsYXRmb3JtX2RldmljZSAqcGRldikKIH0KIAogc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZp
-Y2VfaWQgbXRrX2RwaV9vZl9pZHNbXSA9IHsKKwl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10
-MjcwMS1kcGkiLAorCSAgLmRhdGEgPSAmbXQyNzAxX2NvbmYsCisJfSwKIAl7IC5jb21wYXRpYmxl
-ID0gIm1lZGlhdGVrLG10ODE3My1kcGkiLAogCSAgLmRhdGEgPSAmbXQ4MTczX2NvbmYsCiAJfSwK
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKaW5kZXggMzk3MjExMTk3MTNiLi5k
-OTYxMTEyZmEyZjUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
-X2Rydi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCkBAIC00
-MjQsNiArNDI0LDggQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXRrX2RkcF9j
-b21wX2R0X2lkc1tdID0gewogCSAgLmRhdGEgPSAodm9pZCAqKU1US19EU0kgfSwKIAl7IC5jb21w
-YXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kc2kiLAogCSAgLmRhdGEgPSAodm9pZCAqKU1US19E
-U0kgfSwKKwl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10MjcwMS1kcGkiLAorCSAgLmRhdGEg
-PSAodm9pZCAqKU1US19EUEkgfSwKIAl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1k
-cGkiLAogCSAgLmRhdGEgPSAodm9pZCAqKU1US19EUEkgfSwKIAl7IC5jb21wYXRpYmxlID0gIm1l
-ZGlhdGVrLG10MjcwMS1kaXNwLW11dGV4IiwKLS0gCjIuMTIuNS4yLmdiZGYyM2FiCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Modify display driver to support connection from BLS to DPI.
+
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+index 87e4191c250e..f3068c62ed48 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+@@ -39,6 +39,7 @@
+ #define DISP_REG_CONFIG_DISP_OVL_MOUT_EN	0x030
+ #define DISP_REG_CONFIG_OUT_SEL			0x04c
+ #define DISP_REG_CONFIG_DSI_SEL			0x050
++#define DISP_REG_CONFIG_DPI_SEL			0x064
+ 
+ #define DISP_REG_MUTEX_EN(n)	(0x20 + 0x20 * (n))
+ #define DISP_REG_MUTEX(n)	(0x24 + 0x20 * (n))
+@@ -132,7 +133,10 @@
+ 
+ #define OVL_MOUT_EN_RDMA		0x1
+ #define BLS_TO_DSI_RDMA1_TO_DPI1	0x8
++#define BLS_TO_DPI_RDMA1_TO_DSI		0x2
+ #define DSI_SEL_IN_BLS			0x0
++#define DPI_SEL_IN_BLS			0x0
++#define DSI_SEL_IN_RDMA			0x1
+ 
+ struct mtk_disp_mutex {
+ 	int id;
+@@ -323,9 +327,17 @@ static void mtk_ddp_sout_sel(void __iomem *config_regs,
+ 			     enum mtk_ddp_comp_id cur,
+ 			     enum mtk_ddp_comp_id next)
+ {
+-	if (cur == DDP_COMPONENT_BLS && next == DDP_COMPONENT_DSI0)
++	if (cur == DDP_COMPONENT_BLS && next == DDP_COMPONENT_DSI0) {
+ 		writel_relaxed(BLS_TO_DSI_RDMA1_TO_DPI1,
+ 			       config_regs + DISP_REG_CONFIG_OUT_SEL);
++	} else if (cur == DDP_COMPONENT_BLS && next == DDP_COMPONENT_DPI0) {
++		writel_relaxed(BLS_TO_DPI_RDMA1_TO_DSI,
++			       config_regs + DISP_REG_CONFIG_OUT_SEL);
++		writel_relaxed(DSI_SEL_IN_RDMA,
++			       config_regs + DISP_REG_CONFIG_DSI_SEL);
++		writel_relaxed(DPI_SEL_IN_BLS,
++			       config_regs + DISP_REG_CONFIG_DPI_SEL);
++	}
+ }
+ 
+ void mtk_ddp_add_comp_to_path(void __iomem *config_regs,
+-- 
+2.12.5.2.gbdf23ab
