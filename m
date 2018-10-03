@@ -1,87 +1,43 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 0/3] Mark clocks as critical for MT6797
-Date: Tue, 2 Oct 2018 23:25:01 +0200
-Message-ID: <96351fde-1702-8e12-9ec0-4cf4e1f88501@gmail.com>
-References: <20180828204932.GA6721@xn--njmtys-xxab.info>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v5 11/11] drm/mediatek: add a error return value when clock
+ driver has been prepared
+Date: Wed, 3 Oct 2018 11:41:51 +0800
+Message-ID: <20181003034151.31452-12-bibby.hsieh@mediatek.com>
+References: <20181003034151.31452-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180828204932.GA6721-YV3CXrm7SyhVsOwjNIwEKpm7MGRryh++@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jasper Mattsson <jasu-tmnvWD0sGVAk+I/owrrOrA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20181003034151.31452-1-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jasper,
-
-On 28/08/2018 22:49, Jasper Mattsson wrote:
-> Hi,
-> 
-> Currently, DRAM-related clocks and the axi_sel MUX are not marked with
-> CLK_IS_CRITICAL for MT6797. This causes memory corruption when the
-> system is booted without clk_ignore_unused.
-> 
-> This patchset
-> 
-> 1. Makes it possible to mark outputs of MUXes as critical by introducing
->    a new macro, MUX_FLAGS,
-> 2. Makes it possible to mark gates as critical by adding flags to
->    mtk_gate, and
-> 3. Marks axi_sel, ddrphycfg_sel, infra_dramc_f26m and infra_dramc_b_f26m
->    as critical.
-> 
-
-I just tested your patches and they are actually fixing the problem.
-Great, I wasn't even aware of it!
-
-You can add a
-Tested-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-
-Please resend and use ./scripts/get_maintainers.pl on the whole series to see
-whom you should send and CC.
-
-Especially as this series should go through the clk tree. The normal is, to add
-maintainers with To and all the rest including mailinglists with CC. Beware that
-you will need to send this to several mailinglists.
-
-If you study a bit git send-email, there is an option to send the series as a
-thread, that helps normally to get things in your maintainers inbox in a sorted
-way :)
-
-Thanks for the patches and hope to see more of them in the future.
-
-Best regards,
-Matthias
-
-> The addition of flags to mtk_gate also exists in the patch series "Add
-> basic and clock support for Mediatek MT8183 SoC" [1].  The type of
-> flags is unsigned int in that series, but the real type is unsigned
-> long, so my patch differs from that patch.
-> 
-> [1] https://patchwork.kernel.org/patch/10549953/
-> 
-> 
-> Jasper Mattsson (3):
->   clk: mediatek: Add MUX_FLAGS macro
->   clk: mediatek: Add flags to mtk_gate
->   clk: mediatek: Mark bus and DRAM related clocks as critical
-> 
->  drivers/clk/mediatek/clk-gate.c   |  4 +-
->  drivers/clk/mediatek/clk-gate.h   |  3 +-
->  drivers/clk/mediatek/clk-mt6797.c | 64 ++++++++++++++++++-------------
->  drivers/clk/mediatek/clk-mtk.c    |  2 +-
->  drivers/clk/mediatek/clk-mtk.h    |  9 ++++-
->  5 files changed, 50 insertions(+), 32 deletions(-)
-> 
-> --
-> 2.18.0
-> 
+RFJNIGRyaXZlciBnZXQgdGhlIGNvbXAtPmNsayBieSBvZl9jbGtfZ2V0KCksIHdlIG9ubHkKYXNz
+aWduIE5VTEwgdG8gY29tcC0+Y2xrIHdoZW4gZXJyb3IgaGFwcGVuZWQsIGJ1dCBkbwpub3QgcmV0
+dXJuIHRoZSBlcnJvciBudW1iZXIuCgpTaWduZWQtb2ZmLWJ5OiBCaWJieSBIc2llaCA8YmliYnku
+aHNpZWhAbWVkaWF0ZWsuY29tPgpSZXZpZXdlZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNv
+bT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jIHwgMiAr
+LQogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYyBiL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMKaW5kZXggZmY5NzRkODJhNGE2
+Li41NGNhNzk0ZGIzZTkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHJtX2RkcF9jb21wLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRw
+X2NvbXAuYwpAQCAtMjk0LDcgKzI5NCw3IEBAIGludCBtdGtfZGRwX2NvbXBfaW5pdChzdHJ1Y3Qg
+ZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2Vfbm9kZSAqbm9kZSwKIAljb21wLT5pcnEgPSBvZl9p
+cnFfZ2V0KG5vZGUsIDApOwogCWNvbXAtPmNsayA9IG9mX2Nsa19nZXQobm9kZSwgMCk7CiAJaWYg
+KElTX0VSUihjb21wLT5jbGspKQotCQljb21wLT5jbGsgPSBOVUxMOworCQlyZXR1cm4gUFRSX0VS
+Uihjb21wLT5jbGspOwogCiAJLyogT25seSBETUEgY2FwYWJsZSBjb21wb25lbnRzIG5lZWQgdGhl
+IExBUkIgcHJvcGVydHkgKi8KIAljb21wLT5sYXJiX2RldiA9IE5VTEw7Ci0tIAoyLjEyLjUuMi5n
+YmRmMjNhYgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
+dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
