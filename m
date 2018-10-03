@@ -1,86 +1,17 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v5 00/11] drm/mediatek: support hdmi output for mt2701
- and mt7623
-Date: Wed, 3 Oct 2018 12:54:19 +0800
-Message-ID: <1538542459.14795.2.camel@mtksdaap41>
-References: <20181003034151.31452-1-bibby.hsieh@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH 0/4] Add MT7623 dts bindings documentation
+Date: Wed,  3 Oct 2018 11:09:08 +0200
+Message-ID: <20181003090912.30501-1-matthias.bgg@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20181003034151.31452-1-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, mark.rutland@arm.com, joro@8bytes.org, arnd@arndb.de
+Cc: rick.chang@mediatek.com, bin.liu@mediatek.com, mchehab@kernel.org, matthias.bgg@gmail.com, sboyd@codeaurora.org, sean.wang@mediatek.com, chen.zhong@mediatek.com, weiyi.lu@mediatek.com, ryder.lee@mediatek.com, yong.wu@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEJpYmJ5OgoKQXBwbGllZCB0byBtZWRpYXRlay1kcm0tbmV4dC00LjIwIFsxXSwgdGhhbmtz
-LgoKWzFdCmh0dHBzOi8vZ2l0aHViLmNvbS9ja2h1LW1lZGlhdGVrL2xpbnV4LmdpdC10YWdzL2Nv
-bW1pdHMvbWVkaWF0ZWstZHJtLW5leHQtNC4yMAoKUmVnYXJkcywKQ0sKCk9uIFdlZCwgMjAxOC0x
-MC0wMyBhdCAxMTo0MSArMDgwMCwgQmliYnkgSHNpZWggd3JvdGU6Cj4gSW4gb3JkZXIgdG8gc3Vw
-cG9ydCBIRE1JIG9uIG10MjcwMSwKPiB3ZSBoYXZlIHRvIG1ha2Ugc29tZSBtb2RpZmljYXRpb25z
-Lgo+IDEpIEFkZCB0aGUgSERNSSBkcml2ZXIuCj4gMikgQWRkIHRoZSBEUEkgZHJpdmVyLgo+IDMp
-IEFkZCBhIG1lY2hhbmlzbSB0aGF0IGNvbmZpZyBvdXRwdXQgY29tcG9uZW50IGJ5IGR0cy4KPiAK
-PiBDaGFuZ2Ugc2luY2UgdjQ6Cj4gIC0gbW92ZSBzb21lIGNoYW5nZSBmcm9tIHBhdGNoOSB0byBw
-YXRjaDcKPiAKPiBDaGFuZ2Ugc2luY2UgdjM6Cj4gIC0gUmVtb3ZlIGRybS9tZWRpYXRlazogY29u
-ZmlnIGNvbXBvbmVudCBvdXRwdXQgYnkgZGV2aWNlIG5vZGUgcG9ydAo+ICAgIHBhdGNoLCB3ZSB3
-aWxsIHB1c2ggYW5vdGhlciBwYXRjaGVzIHRvIGZsZXhpYmx5IGNvbmZpZyB0aGUgY29tcG9uZW50
-IG91dHB1dC4KPiAgLSBmaXh1cCB0aGUgcmV0dXJuIHZhbHVlCj4gIC0gcmVwbGFjZSBkcGktPnBv
-d2VyX2N0bCBhbmQgcG93ZXJfc3RhIHdpdGggcmVmZXJlbmNlIGNvdW50IG1lY2hhbmlzbS4KPiAg
-LSBtb3ZlIHRoZSBjb21tb24gZnVuY3Rpb24gdG8gbXRrX2hkbWlfcGh5LmMvaAo+IAo+IENoYW5n
-ZXMgc2luY2UgdjI6Cj4gIC0gRml4IHRoZSB0eXBvIGluIGNvbW1pdCBtZXNzYWdlLgo+ICAtIFJl
-bW92ZSBjb25zdCBvZiByZWdfaF9mcmVfY29uIGluIHRoZSBtdGtfZHBpX2NvbmYgc3RydWN0Cj4g
-IC0gUmVtb3ZlIHVudXNlZCBlcnJvciBsb2cKPiAgLSBVc2UgbG93ZXIgY2FzZWUgZm9yIGhleCBu
-dW1iZXIKPiAgLSBVc2UgY29tbW9uIEFQSSB3aGljaCBkZWZpbmVkIGluIG10a19oZG1pX3BoeS5j
-IHRvIHJlZHVjZSBjb2RlIHNpemUKPiAgLSBJbXBsZW1ldCB0aGUgZW5hYmxlL2Rpc2FibGUgb2Yg
-cGh5X3BsbF9vcHMgdGhlIHNhbWUgYXMgODE3Mwo+ICAtIE1vdmUgdGhlIGNvbW1vbiBoZWFkZXIg
-dG8gbXRrX2hkbWlfcGh5LmgKPiAgLSBSZW1vdmUgdGhlIGluY2x1ZGluZyBvZiBkZWJ1Z2ZzLmgK
-PiBOT1RFOgo+ICAtIGFkZCBkZXNjcmlwdGlvbiBhYm91dCB0aGVjb3BvbmVudCBvdXRwdXQgaW4g
-dGhlIGJpbmRpbmcgZG9jdW1lbnQgaW4gdjQuCj4gCj4gQ2hhbmdlcyBzaW5jZSB2MToKPiAgLSBT
-ZXBhcmF0ZSBzb21lIHBhdGNoZXMgdG8gaW5kZXBlbmRlbnQgcGF0Y2guCj4gIC0gYWRkIERJU1Bf
-UkVHX0NPTkZJR19EU0lfU0VMIGFuZCBESVNQX1JFR19DT05GSUdfRFBJX1NFTAo+ICAgIGNvbmZp
-Z3VyYXRpb24gaW4gdGhlIGNvbmRpdGlvbiBvZiBCTFMmRFBJMCBjb25uZWN0aW9uLgo+IAo+IENo
-YW5nZXMgc2luY2UgdjA6Cj4gIC0gQ29ycmVjdCBzb21lIHR5cG9zIGluIGNvbW1pdCBtZXNzYWdl
-Lgo+ICAtIEZpeHVwIHRoZSBidWlsZCB3YXJuaW5nICh0bXAgdmFyaWFibGUgZGlkbid0IGJlIGlu
-aXRpYWxpemVkKQo+IAo+IEJpYmJ5IEhzaWVoICgyKToKPiAgIGRybS9tZWRpYXRlazogaW1wbGVt
-ZW50IGNvbm5lY3Rpb24gZnJvbSBCTFMgdG8gRFBJMAo+ICAgZHJtL21lZGlhdGVrOiBhZGQgYSBl
-cnJvciByZXR1cm4gdmFsdWUgd2hlbiBjbG9jayBkcml2ZXIgaGFzIGJlZW4KPiAgICAgcHJlcGFy
-ZWQKPiAKPiBjaHVuaHVpIGRhaSAoOSk6Cj4gICBkcm0vbWVkaWF0ZWs6IGFkZCByZWZjb3VudCBm
-b3IgRFBJIHBvd2VyIG9uL29mZgo+ICAgZHJtL21lZGlhdGVrOiBtb3ZlIGhhcmR3YXJlIHJlZ2lz
-dGVyIHRvIG5vZGUgZGF0YQo+ICAgZHJtL21lZGlhdGVrOiBhZGp1c3QgRURHRSB0byBtYXRjaCBj
-bG9jayBhbmQgZGF0YQo+ICAgZHJtL21lZGlhdGVrOiBhZGQgY2xvY2sgZmFjdG9yIGZvciBkaWZm
-ZXJlbnQgSUMKPiAgIGRybS9tZWRpYXRlazogY29udmVydCBkcGkgZHJpdmVyIHRvIHVzZSBkcm1f
-b2ZfZmluZF9wYW5lbF9vcl9icmlkZ2UKPiAgIGRybS9tZWRpYXRlazogYWRkIGRwaSBkcml2ZXIg
-Zm9yIG10MjcwMSBhbmQgbXQ3NjIzCj4gICBkcm0vbWVkaWF0ZWs6IHNlcGFyYXRlIGhkbWkgcGh5
-IHRvIGRpZmZlcmVudCBmaWxlCj4gICBkcm0vbWVkaWF0ZWs6IGFkZCBzdXBwb3J0IGZvciBTUERJ
-RiBhdWRpbyBpbiBIRE1JCj4gICBkcm0vbWVkaWF0ZWs6IGFkZCBoZG1pIGRyaXZlciBmb3IgTVQy
-NzAxIGFuZCBNVDc2MjMKPiAKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01ha2VmaWxlICAg
-ICAgICAgICAgICB8ICAgNSArLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5j
-ICAgICAgICAgICAgIHwgMTMxICsrKysrKysrLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZHBpX3JlZ3MuaCAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcm1fZGRwLmMgICAgICAgICB8ICAxNCArLQo+ICBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jICAgIHwgICAyICstCj4gIGRyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICAgICAgICAgfCAgIDIgKwo+ICBkcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2hkbWkuYyAgICAgICAgICAgIHwgIDE1ICstCj4gIGRyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfaGRtaS5oICAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5jICAgICAgICB8IDIzNSArKysrKysrKysrKysr
-KysrKysrKysrKysrCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaCAg
-ICAgICAgfCAgNjAgKysrKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210Mjcw
-MV9oZG1pX3BoeS5jIHwgMjEyICsrKysrKysrKysrKysrKysrKysrKysKPiAgZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRtaV9waHkuYyB8IDIyNiArLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0KPiAgMTIgZmlsZXMgY2hhbmdlZCwgNjI3IGluc2VydGlvbnMoKyksIDI3OSBkZWxl
-dGlvbnMoLSkKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfaGRtaV9waHkuYwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19oZG1pX3BoeS5oCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jCj4gCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
-ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Mediateks MT7623 SoC shares most of its component with MT2701.
+This series adds devicetree documentation for all the devices.
+
+It applies cleanly against linux next, so I don't expect any merge
+conflicts if this is taken by Arnd through the arm-soc tree for v4.20
