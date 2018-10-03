@@ -1,75 +1,59 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v5 05/11] drm/mediatek: convert dpi driver to use drm_of_find_panel_or_bridge
-Date: Wed, 3 Oct 2018 11:41:45 +0800
-Message-ID: <20181003034151.31452-6-bibby.hsieh@mediatek.com>
+Subject: [PATCH v5 10/11] drm/mediatek: implement connection from BLS to DPI0
+Date: Wed, 3 Oct 2018 11:41:50 +0800
+Message-ID: <20181003034151.31452-11-bibby.hsieh@mediatek.com>
 References: <20181003034151.31452-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20181003034151.31452-1-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: chunhui dai <chunhui.dai@mediatek.com>
-
-Convert dpi driver to use drm_of_find_panel_or_bridge.
-This changes some error messages to debug messages (in the graph core).
-Graph connections are often "no connects" depending on the particular
-board, so we want to avoid spurious messages. Plus the kernel is not a
-DT validator.
-related links:
-[1] https://lkml.org/lkml/2017/2/3/716
-[2] https://lkml.org/lkml/2017/2/3/719
-
-Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dpi.c | 16 ++++++----------
- 1 file changed, 6 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 0dbe9345fa2e..08915e1765f8 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -14,6 +14,7 @@
- #include <drm/drmP.h>
- #include <drm/drm_crtc.h>
- #include <drm/drm_crtc_helper.h>
-+#include <drm/drm_of.h>
- #include <linux/kernel.h>
- #include <linux/component.h>
- #include <linux/platform_device.h>
-@@ -668,7 +669,6 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct mtk_dpi *dpi;
- 	struct resource *mem;
--	struct device_node *bridge_node;
- 	int comp_id;
- 	int ret;
- 
-@@ -714,16 +714,12 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 		return -EINVAL;
- 	}
- 
--	bridge_node = of_graph_get_remote_node(dev->of_node, 0, 0);
--	if (!bridge_node)
--		return -ENODEV;
--
--	dev_info(dev, "Found bridge node: %pOF\n", bridge_node);
-+	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0,
-+					  NULL, &dpi->bridge);
-+	if (ret)
-+		return ret;
- 
--	dpi->bridge = of_drm_find_bridge(bridge_node);
--	of_node_put(bridge_node);
--	if (!dpi->bridge)
--		return -EPROBE_DEFER;
-+	dev_info(dev, "Found bridge node: %pOF\n", dpi->bridge->of_node);
- 
- 	comp_id = mtk_ddp_comp_get_id(dev->of_node, MTK_DPI);
- 	if (comp_id < 0) {
--- 
-2.12.5.2.gbdf23ab
+TW9kaWZ5IGRpc3BsYXkgZHJpdmVyIHRvIHN1cHBvcnQgY29ubmVjdGlvbiBmcm9tIEJMUyB0byBE
+UEkuCgpTaWduZWQtb2ZmLWJ5OiBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29t
+PgpSZXZpZXdlZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KLS0tCiBkcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyB8IDE0ICsrKysrKysrKysrKystCiAxIGZpbGUg
+Y2hhbmdlZCwgMTMgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jIGIvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fZGRwLmMKaW5kZXggODdlNDE5MWMyNTBlLi5mMzA2OGM2MmVkNDggMTAw
+NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCisrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCkBAIC0zOSw2ICszOSw3IEBACiAj
+ZGVmaW5lIERJU1BfUkVHX0NPTkZJR19ESVNQX09WTF9NT1VUX0VOCTB4MDMwCiAjZGVmaW5lIERJ
+U1BfUkVHX0NPTkZJR19PVVRfU0VMCQkJMHgwNGMKICNkZWZpbmUgRElTUF9SRUdfQ09ORklHX0RT
+SV9TRUwJCQkweDA1MAorI2RlZmluZSBESVNQX1JFR19DT05GSUdfRFBJX1NFTAkJCTB4MDY0CiAK
+ICNkZWZpbmUgRElTUF9SRUdfTVVURVhfRU4obikJKDB4MjAgKyAweDIwICogKG4pKQogI2RlZmlu
+ZSBESVNQX1JFR19NVVRFWChuKQkoMHgyNCArIDB4MjAgKiAobikpCkBAIC0xMzIsNyArMTMzLDEw
+IEBACiAKICNkZWZpbmUgT1ZMX01PVVRfRU5fUkRNQQkJMHgxCiAjZGVmaW5lIEJMU19UT19EU0lf
+UkRNQTFfVE9fRFBJMQkweDgKKyNkZWZpbmUgQkxTX1RPX0RQSV9SRE1BMV9UT19EU0kJCTB4Mgog
+I2RlZmluZSBEU0lfU0VMX0lOX0JMUwkJCTB4MAorI2RlZmluZSBEUElfU0VMX0lOX0JMUwkJCTB4
+MAorI2RlZmluZSBEU0lfU0VMX0lOX1JETUEJCQkweDEKIAogc3RydWN0IG10a19kaXNwX211dGV4
+IHsKIAlpbnQgaWQ7CkBAIC0zMjMsOSArMzI3LDE3IEBAIHN0YXRpYyB2b2lkIG10a19kZHBfc291
+dF9zZWwodm9pZCBfX2lvbWVtICpjb25maWdfcmVncywKIAkJCSAgICAgZW51bSBtdGtfZGRwX2Nv
+bXBfaWQgY3VyLAogCQkJICAgICBlbnVtIG10a19kZHBfY29tcF9pZCBuZXh0KQogewotCWlmIChj
+dXIgPT0gRERQX0NPTVBPTkVOVF9CTFMgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTApCisJ
+aWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX0JMUyAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJ
+MCkgewogCQl3cml0ZWxfcmVsYXhlZChCTFNfVE9fRFNJX1JETUExX1RPX0RQSTEsCiAJCQkgICAg
+ICAgY29uZmlnX3JlZ3MgKyBESVNQX1JFR19DT05GSUdfT1VUX1NFTCk7CisJfSBlbHNlIGlmIChj
+dXIgPT0gRERQX0NPTVBPTkVOVF9CTFMgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RQSTApIHsK
+KwkJd3JpdGVsX3JlbGF4ZWQoQkxTX1RPX0RQSV9SRE1BMV9UT19EU0ksCisJCQkgICAgICAgY29u
+ZmlnX3JlZ3MgKyBESVNQX1JFR19DT05GSUdfT1VUX1NFTCk7CisJCXdyaXRlbF9yZWxheGVkKERT
+SV9TRUxfSU5fUkRNQSwKKwkJCSAgICAgICBjb25maWdfcmVncyArIERJU1BfUkVHX0NPTkZJR19E
+U0lfU0VMKTsKKwkJd3JpdGVsX3JlbGF4ZWQoRFBJX1NFTF9JTl9CTFMsCisJCQkgICAgICAgY29u
+ZmlnX3JlZ3MgKyBESVNQX1JFR19DT05GSUdfRFBJX1NFTCk7CisJfQogfQogCiB2b2lkIG10a19k
+ZHBfYWRkX2NvbXBfdG9fcGF0aCh2b2lkIF9faW9tZW0gKmNvbmZpZ19yZWdzLAotLSAKMi4xMi41
+LjIuZ2JkZjIzYWIKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
+ZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
+bAo=
