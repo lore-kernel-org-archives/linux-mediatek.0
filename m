@@ -1,7 +1,7 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v5 06/11] drm/mediatek: add dpi driver for mt2701 and mt7623
-Date: Wed, 3 Oct 2018 11:41:46 +0800
-Message-ID: <20181003034151.31452-7-bibby.hsieh@mediatek.com>
+Subject: [PATCH v5 05/11] drm/mediatek: convert dpi driver to use drm_of_find_panel_or_bridge
+Date: Wed, 3 Oct 2018 11:41:45 +0800
+Message-ID: <20181003034151.31452-6-bibby.hsieh@mediatek.com>
 References: <20181003034151.31452-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,73 +14,62 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: chunhui dai <chunhui.dai@mediatek.com>
 
-This patch adds dpi dirver suppot for both mt2701 and mt7623.
-And also support other (existing or future) chips that use
-the same binding and driver.
+Convert dpi driver to use drm_of_find_panel_or_bridge.
+This changes some error messages to debug messages (in the graph core).
+Graph connections are often "no connects" depending on the particular
+board, so we want to avoid spurious messages. Plus the kernel is not a
+DT validator.
+related links:
+[1] https://lkml.org/lkml/2017/2/3/716
+[2] https://lkml.org/lkml/2017/2/3/719
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c     | 21 +++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c |  2 ++
- 2 files changed, 23 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 16 ++++++----------
+ 1 file changed, 6 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 08915e1765f8..62a9d47df948 100644
+index 0dbe9345fa2e..08915e1765f8 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -659,11 +659,29 @@ static unsigned int mt8173_calculate_factor(int clock)
- 		return 3 << 1;
- }
- 
-+static unsigned int mt2701_calculate_factor(int clock)
-+{
-+	if (clock <= 64000)
-+		return 16;
-+	else if (clock <= 128000)
-+		return 8;
-+	else if (clock <= 256000)
-+		return 4;
-+	else
-+		return 2;
-+}
-+
- static const struct mtk_dpi_conf mt8173_conf = {
- 	.cal_factor = mt8173_calculate_factor,
- 	.reg_h_fre_con = 0xe0,
- };
- 
-+static const struct mtk_dpi_conf mt2701_conf = {
-+	.cal_factor = mt2701_calculate_factor,
-+	.reg_h_fre_con = 0xb0,
-+	.edge_sel_en = true,
-+};
-+
- static int mtk_dpi_probe(struct platform_device *pdev)
- {
+@@ -14,6 +14,7 @@
+ #include <drm/drmP.h>
+ #include <drm/drm_crtc.h>
+ #include <drm/drm_crtc_helper.h>
++#include <drm/drm_of.h>
+ #include <linux/kernel.h>
+ #include <linux/component.h>
+ #include <linux/platform_device.h>
+@@ -668,7 +669,6 @@ static int mtk_dpi_probe(struct platform_device *pdev)
  	struct device *dev = &pdev->dev;
-@@ -753,6 +771,9 @@ static int mtk_dpi_remove(struct platform_device *pdev)
- }
+ 	struct mtk_dpi *dpi;
+ 	struct resource *mem;
+-	struct device_node *bridge_node;
+ 	int comp_id;
+ 	int ret;
  
- static const struct of_device_id mtk_dpi_of_ids[] = {
-+	{ .compatible = "mediatek,mt2701-dpi",
-+	  .data = &mt2701_conf,
-+	},
- 	{ .compatible = "mediatek,mt8173-dpi",
- 	  .data = &mt8173_conf,
- 	},
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 39721119713b..d961112fa2f5 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -424,6 +424,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DSI },
- 	{ .compatible = "mediatek,mt8173-dsi",
- 	  .data = (void *)MTK_DSI },
-+	{ .compatible = "mediatek,mt2701-dpi",
-+	  .data = (void *)MTK_DPI },
- 	{ .compatible = "mediatek,mt8173-dpi",
- 	  .data = (void *)MTK_DPI },
- 	{ .compatible = "mediatek,mt2701-disp-mutex",
+@@ -714,16 +714,12 @@ static int mtk_dpi_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 	}
+ 
+-	bridge_node = of_graph_get_remote_node(dev->of_node, 0, 0);
+-	if (!bridge_node)
+-		return -ENODEV;
+-
+-	dev_info(dev, "Found bridge node: %pOF\n", bridge_node);
++	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0,
++					  NULL, &dpi->bridge);
++	if (ret)
++		return ret;
+ 
+-	dpi->bridge = of_drm_find_bridge(bridge_node);
+-	of_node_put(bridge_node);
+-	if (!dpi->bridge)
+-		return -EPROBE_DEFER;
++	dev_info(dev, "Found bridge node: %pOF\n", dpi->bridge->of_node);
+ 
+ 	comp_id = mtk_ddp_comp_get_id(dev->of_node, MTK_DPI);
+ 	if (comp_id < 0) {
 -- 
 2.12.5.2.gbdf23ab
