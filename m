@@ -1,66 +1,49 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: [GIT PULL] mediatek drm next for 4.20
-Date: Thu, 4 Oct 2018 09:22:28 +0800
-Message-ID: <1538616148.28906.1.camel@mtksdaap41>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH] MAINTAINERS: update entry for Mediatek pin controller
+Date: Thu, 4 Oct 2018 19:40:38 +0800
+Message-ID: <98b17a3b47f75d4f3f17dae81a087b4163fcd857.1538652946.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Dave Airlie <airlied@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Ryder Lee <ryder.lee@mediatek.com>, chunhui dai <chunhui.dai@mediatek.com>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linus.walleij@linaro.org, linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Sean Wang <sean.wang@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-CkhpLCBEYXZlOgoKVGhpcyBpbmNsdWRlIGhkbWkgb3V0cHV0IHN1cHBvcnQgZm9yIG10MjcwMSBh
-bmQgbXQ3NjIzLgoKUmVnYXJkcywKQ0sKClRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21t
-aXQKODdjMmVlNzQwYzA3ZjFlZGFlOWVlYzhiYzQ1Y2I5YjMyYTY4ZjMyMzoKCiAgTWVyZ2UgYnJh
-bmNoICdkcm0tbmV4dC00LjIwJyBvZgpnaXQ6Ly9wZW9wbGUuZnJlZWRlc2t0b3Aub3JnL35hZ2Q1
-Zi9saW51eCBpbnRvIGRybS1uZXh0ICgyMDE4LTA5LTI4CjA5OjQ4OjQwICsxMDAwKQoKYXJlIGF2
-YWlsYWJsZSBpbiB0aGUgZ2l0IHJlcG9zaXRvcnkgYXQ6CgoKICBodHRwczovL2dpdGh1Yi5jb20v
-Y2todS1tZWRpYXRlay9saW51eC5naXQtdGFncy5naXQKbWVkaWF0ZWstZHJtLW5leHQtNC4yMAoK
-Zm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDg0ZGFjYjljYWQyODA0YTlmNTQzNGI3NzVj
-Y2VhNmFhNWQ5ZmM2Y2E6CgogIGRybS9tZWRpYXRlazogYWRkIGEgZXJyb3IgcmV0dXJuIHZhbHVl
-IHdoZW4gY2xvY2sgZHJpdmVyIGhhcyBiZWVuCnByZXBhcmVkICgyMDE4LTEwLTAzIDExOjU2OjMz
-ICswODAwKQoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLQpCaWJieSBIc2llaCAoMik6CiAgICAgIGRybS9tZWRpYXRlazogaW1w
-bGVtZW50IGNvbm5lY3Rpb24gZnJvbSBCTFMgdG8gRFBJMAogICAgICBkcm0vbWVkaWF0ZWs6IGFk
-ZCBhIGVycm9yIHJldHVybiB2YWx1ZSB3aGVuIGNsb2NrIGRyaXZlciBoYXMgYmVlbgpwcmVwYXJl
-ZAoKY2h1bmh1aSBkYWkgKDkpOgogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCByZWZjb3VudCBmb3Ig
-RFBJIHBvd2VyIG9uL29mZgogICAgICBkcm0vbWVkaWF0ZWs6IG1vdmUgaGFyZHdhcmUgcmVnaXN0
-ZXIgdG8gbm9kZSBkYXRhCiAgICAgIGRybS9tZWRpYXRlazogYWRqdXN0IEVER0UgdG8gbWF0Y2gg
-Y2xvY2sgYW5kIGRhdGEKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgY2xvY2sgZmFjdG9yIGZvciBk
-aWZmZXJlbnQgSUMKICAgICAgZHJtL21lZGlhdGVrOiBjb252ZXJ0IGRwaSBkcml2ZXIgdG8gdXNl
-CmRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZQogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBkcGkg
-ZHJpdmVyIGZvciBtdDI3MDEgYW5kIG10NzYyMwogICAgICBkcm0vbWVkaWF0ZWs6IHNlcGFyYXRl
-IGhkbWkgcGh5IHRvIGRpZmZlcmVudCBmaWxlCiAgICAgIGRybS9tZWRpYXRlazogYWRkIHN1cHBv
-cnQgZm9yIFNQRElGIGF1ZGlvIGluIEhETUkKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgaGRtaSBk
-cml2ZXIgZm9yIE1UMjcwMSBhbmQgTVQ3NjIzCgogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01h
-a2VmaWxlICAgICAgICAgICAgICB8ICAgNSArLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcGkuYyAgICAgICAgICAgICB8IDEzMSArKysrKysrKy0tLS0tLQogZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kcGlfcmVncy5oICAgICAgICB8ICAgMiArLQogZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kcm1fZGRwLmMgICAgICAgICB8ICAxNCArLQogZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYyAgICB8ICAgMiArLQogZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kcm1fZHJ2LmMgICAgICAgICB8ICAgMiArCiBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2hkbWkuYyAgICAgICAgICAgIHwgIDE1ICstCiBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2hkbWkuaCAgICAgICAgICAgIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMgICAgICAgIHwgMjM1CisrKysrKysrKysrKysrKysrKysr
-KysrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaCAgICAgICAgfCAg
-NjAgKysrKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHku
-YyB8IDIxMgorKysrKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX210ODE3M19oZG1pX3BoeS5jIHwgMjI2CistLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogMTIg
-ZmlsZXMgY2hhbmdlZCwgNjI3IGluc2VydGlvbnMoKyksIDI3OSBkZWxldGlvbnMoLSkKIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMKIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmgK
-IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210MjcwMV9o
-ZG1pX3BoeS5jCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-Cg==
+From: Sean Wang <sean.wang@mediatek.com>
+
+Add all source files under drivers/pinctrl/mediatek for the entry and
+change the address to a permanent one since I have a personal leave
+over the next few months and the address would be suspended for a while.
+
+Cc: Linus Walleij <linus.walleij@linaro.org>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@kernel.org>
+---
+ MAINTAINERS | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 73a692e..bc0e03a 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -11654,15 +11654,12 @@ S:	Maintained
+ F:	drivers/pinctrl/intel/
+ 
+ PIN CONTROLLER - MEDIATEK
+-M:	Sean Wang <sean.wang@mediatek.com>
++M:	Sean Wang <sean.wang@kernel.org>
+ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+ S:	Maintained
+ F:	Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
+ F:	Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
+-F:	drivers/pinctrl/mediatek/mtk-eint.*
+-F:	drivers/pinctrl/mediatek/pinctrl-mtk-common.*
+-F:	drivers/pinctrl/mediatek/pinctrl-mt2701.c
+-F:	drivers/pinctrl/mediatek/pinctrl-mt7622.c
++F:	drivers/pinctrl/mediatek/
+ 
+ PIN CONTROLLER - QUALCOMM
+ M:	Bjorn Andersson <bjorn.andersson@linaro.org>
+-- 
+2.7.4
