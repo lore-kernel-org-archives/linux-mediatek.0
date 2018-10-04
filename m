@@ -1,49 +1,59 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH] MAINTAINERS: update entry for Mediatek pin controller
-Date: Thu, 4 Oct 2018 19:40:38 +0800
-Message-ID: <98b17a3b47f75d4f3f17dae81a087b4163fcd857.1538652946.git.sean.wang@mediatek.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL] ARM: dts updates for arm 32 bits for v4.20
+Date: Thu, 4 Oct 2018 16:55:30 +0200
+Message-ID: <CAK8P3a1LddFNuw_yjnqOcMMj4VaN-c0+rLoaJEezurHJOV2WYw@mail.gmail.com>
+References: <0195dc38-908e-c403-5f12-d266a037ca1b@gmail.com>
+ <CAK8P3a1AVrP_vrvUJrEHp1i_LrdDCwCmiVP_aRYpATwEK+B3Yg@mail.gmail.com>
+ <9f0dd563-b921-8d31-c82c-327fea5c026f@gmail.com>
+ <CAK8P3a0dih9hFib05L2C31ONnraxN67H4wJAzQWD9gMg2Ek1Eg@mail.gmail.com>
+ <a2295a12-db8b-978f-69ad-b0078d763135@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linus.walleij@linaro.org, linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Sean Wang <sean.wang@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <a2295a12-db8b-978f-69ad-b0078d763135@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Wed, Oct 3, 2018 at 11:18 AM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> On 02/10/2018 13:10, Arnd Bergmann wrote:
+> > On Tue, Oct 2, 2018 at 12:34 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> >> On 02/10/2018 11:12, Arnd Bergmann wrote:
+> >>> On Sat, Sep 29, 2018 at 5:18 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> >>
+> >> We rely on the fallback compatible here, as mt2701 and mt7623 are identically in
+> >> most of their components. If you require to get the bindings documented before
+> >> merging the DT, then I propose to drop the pull request for now.
+> >>
+> >> Other option would be to get the bindings documented in v4.21. AFAIK up to now
+> >> there haven't been sent any patches to update the bindings.
+> >
+> > Ok, I missed that the mt2701 strings are all documented and used in drivers,
+> > so I don't think it's a problem to merge your changes. How about you add
+> > another patch to your tree to update the respective bindings? I think that
+> > should be fine even for 4.20.
+> >
+>
+> I just send a series of 4 patches which updates the binding documentation. I
+> realized that there were more bindings missing, hopefully I caught them all.
+>
+> The series applies cleanly against linux-next, so I suppose there won't be any
+> merge conflicts if you decide to take it through your tree for v4.20.
+>
+> If you want to send me another pull request, just let me know.
 
-Add all source files under drivers/pinctrl/mediatek for the entry and
-change the address to a permanent one since I have a personal leave
-over the next few months and the address would be suspended for a while.
+Yes, please do, the patches you sent all look fine. I've pulled
+tags/v4.19-next-dts32 into next/dt now, so please base the branch
+on top of that.
 
-Cc: Linus Walleij <linus.walleij@linaro.org>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@kernel.org>
----
- MAINTAINERS | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 73a692e..bc0e03a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -11654,15 +11654,12 @@ S:	Maintained
- F:	drivers/pinctrl/intel/
- 
- PIN CONTROLLER - MEDIATEK
--M:	Sean Wang <sean.wang@mediatek.com>
-+M:	Sean Wang <sean.wang@kernel.org>
- L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
- S:	Maintained
- F:	Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
- F:	Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
--F:	drivers/pinctrl/mediatek/mtk-eint.*
--F:	drivers/pinctrl/mediatek/pinctrl-mtk-common.*
--F:	drivers/pinctrl/mediatek/pinctrl-mt2701.c
--F:	drivers/pinctrl/mediatek/pinctrl-mt7622.c
-+F:	drivers/pinctrl/mediatek/
- 
- PIN CONTROLLER - QUALCOMM
- M:	Bjorn Andersson <bjorn.andersson@linaro.org>
--- 
-2.7.4
+      arnd
