@@ -1,77 +1,66 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 0/3] Mark clocks as critical for MT6797
-Date: Wed, 3 Oct 2018 11:22:34 +0200
-Message-ID: <0a5e5615-3ed2-a47a-7f3e-50bab809a14e@gmail.com>
-References: <20180828204932.GA6721@xn--njmtys-xxab.info>
- <96351fde-1702-8e12-9ec0-4cf4e1f88501@gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: [GIT PULL] mediatek drm next for 4.20
+Date: Thu, 4 Oct 2018 09:22:28 +0800
+Message-ID: <1538616148.28906.1.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <96351fde-1702-8e12-9ec0-4cf4e1f88501-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jasper Mattsson <jasu-tmnvWD0sGVAk+I/owrrOrA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: Ryder Lee <ryder.lee@mediatek.com>, chunhui dai <chunhui.dai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 02/10/2018 23:25, Matthias Brugger wrote:
-> Hi Jasper,
-> 
-> On 28/08/2018 22:49, Jasper Mattsson wrote:
->> Hi,
->>
->> Currently, DRAM-related clocks and the axi_sel MUX are not marked with
->> CLK_IS_CRITICAL for MT6797. This causes memory corruption when the
->> system is booted without clk_ignore_unused.
->>
->> This patchset
->>
->> 1. Makes it possible to mark outputs of MUXes as critical by introducing
->>    a new macro, MUX_FLAGS,
->> 2. Makes it possible to mark gates as critical by adding flags to
->>    mtk_gate, and
->> 3. Marks axi_sel, ddrphycfg_sel, infra_dramc_f26m and infra_dramc_b_f26m
->>    as critical.
->>
-> 
-> I just tested your patches and they are actually fixing the problem.
-> Great, I wasn't even aware of it!
-> 
-> You can add a
-> Tested-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> 
-> Please resend and use ./scripts/get_maintainers.pl on the whole series to see
-> whom you should send and CC.
-> 
-> Especially as this series should go through the clk tree. The normal is, to add
-> maintainers with To and all the rest including mailinglists with CC. Beware that
-> you will need to send this to several mailinglists.
-> 
-> If you study a bit git send-email, there is an option to send the series as a
-> thread, that helps normally to get things in your maintainers inbox in a sorted
-> way :)
-> 
-> Thanks for the patches and hope to see more of them in the future.
-> 
-
-I forgot one thing. You are actually fixing a (quite severe) bug here. So you
-should provide a fixes tag, something like:
-Fixes: 96596aa06628 ("clk: mediatek: add clk support for MT6797")
-
-Beware that I haven't checked if this is the commit you are fixing with that.
-This will tell the stable maintainer that they should backport the patch to the
-respective branches. I don't suppose that anyone uses mt6797 via the stable
-branch, but better add the fixes always then forget it on a important fix.
-
-Thanks a lot,
-Matthias
+CkhpLCBEYXZlOgoKVGhpcyBpbmNsdWRlIGhkbWkgb3V0cHV0IHN1cHBvcnQgZm9yIG10MjcwMSBh
+bmQgbXQ3NjIzLgoKUmVnYXJkcywKQ0sKClRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21t
+aXQKODdjMmVlNzQwYzA3ZjFlZGFlOWVlYzhiYzQ1Y2I5YjMyYTY4ZjMyMzoKCiAgTWVyZ2UgYnJh
+bmNoICdkcm0tbmV4dC00LjIwJyBvZgpnaXQ6Ly9wZW9wbGUuZnJlZWRlc2t0b3Aub3JnL35hZ2Q1
+Zi9saW51eCBpbnRvIGRybS1uZXh0ICgyMDE4LTA5LTI4CjA5OjQ4OjQwICsxMDAwKQoKYXJlIGF2
+YWlsYWJsZSBpbiB0aGUgZ2l0IHJlcG9zaXRvcnkgYXQ6CgoKICBodHRwczovL2dpdGh1Yi5jb20v
+Y2todS1tZWRpYXRlay9saW51eC5naXQtdGFncy5naXQKbWVkaWF0ZWstZHJtLW5leHQtNC4yMAoK
+Zm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDg0ZGFjYjljYWQyODA0YTlmNTQzNGI3NzVj
+Y2VhNmFhNWQ5ZmM2Y2E6CgogIGRybS9tZWRpYXRlazogYWRkIGEgZXJyb3IgcmV0dXJuIHZhbHVl
+IHdoZW4gY2xvY2sgZHJpdmVyIGhhcyBiZWVuCnByZXBhcmVkICgyMDE4LTEwLTAzIDExOjU2OjMz
+ICswODAwKQoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLQpCaWJieSBIc2llaCAoMik6CiAgICAgIGRybS9tZWRpYXRlazogaW1w
+bGVtZW50IGNvbm5lY3Rpb24gZnJvbSBCTFMgdG8gRFBJMAogICAgICBkcm0vbWVkaWF0ZWs6IGFk
+ZCBhIGVycm9yIHJldHVybiB2YWx1ZSB3aGVuIGNsb2NrIGRyaXZlciBoYXMgYmVlbgpwcmVwYXJl
+ZAoKY2h1bmh1aSBkYWkgKDkpOgogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCByZWZjb3VudCBmb3Ig
+RFBJIHBvd2VyIG9uL29mZgogICAgICBkcm0vbWVkaWF0ZWs6IG1vdmUgaGFyZHdhcmUgcmVnaXN0
+ZXIgdG8gbm9kZSBkYXRhCiAgICAgIGRybS9tZWRpYXRlazogYWRqdXN0IEVER0UgdG8gbWF0Y2gg
+Y2xvY2sgYW5kIGRhdGEKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgY2xvY2sgZmFjdG9yIGZvciBk
+aWZmZXJlbnQgSUMKICAgICAgZHJtL21lZGlhdGVrOiBjb252ZXJ0IGRwaSBkcml2ZXIgdG8gdXNl
+CmRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZQogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBkcGkg
+ZHJpdmVyIGZvciBtdDI3MDEgYW5kIG10NzYyMwogICAgICBkcm0vbWVkaWF0ZWs6IHNlcGFyYXRl
+IGhkbWkgcGh5IHRvIGRpZmZlcmVudCBmaWxlCiAgICAgIGRybS9tZWRpYXRlazogYWRkIHN1cHBv
+cnQgZm9yIFNQRElGIGF1ZGlvIGluIEhETUkKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgaGRtaSBk
+cml2ZXIgZm9yIE1UMjcwMSBhbmQgTVQ3NjIzCgogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01h
+a2VmaWxlICAgICAgICAgICAgICB8ICAgNSArLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kcGkuYyAgICAgICAgICAgICB8IDEzMSArKysrKysrKy0tLS0tLQogZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcGlfcmVncy5oICAgICAgICB8ICAgMiArLQogZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fZGRwLmMgICAgICAgICB8ICAxNCArLQogZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYyAgICB8ICAgMiArLQogZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fZHJ2LmMgICAgICAgICB8ICAgMiArCiBkcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2hkbWkuYyAgICAgICAgICAgIHwgIDE1ICstCiBkcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2hkbWkuaCAgICAgICAgICAgIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMgICAgICAgIHwgMjM1CisrKysrKysrKysrKysrKysrKysr
+KysrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaCAgICAgICAgfCAg
+NjAgKysrKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHku
+YyB8IDIxMgorKysrKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX210ODE3M19oZG1pX3BoeS5jIHwgMjI2CistLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogMTIg
+ZmlsZXMgY2hhbmdlZCwgNjI3IGluc2VydGlvbnMoKyksIDI3OSBkZWxldGlvbnMoLSkKIGNyZWF0
+ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMKIGNy
+ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmgK
+IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210MjcwMV9o
+ZG1pX3BoeS5jCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Cg==
