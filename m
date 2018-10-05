@@ -1,59 +1,76 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [GIT PULL] ARM: dts updates for arm 32 bits for v4.20
-Date: Thu, 4 Oct 2018 16:55:30 +0200
-Message-ID: <CAK8P3a1LddFNuw_yjnqOcMMj4VaN-c0+rLoaJEezurHJOV2WYw@mail.gmail.com>
-References: <0195dc38-908e-c403-5f12-d266a037ca1b@gmail.com>
- <CAK8P3a1AVrP_vrvUJrEHp1i_LrdDCwCmiVP_aRYpATwEK+B3Yg@mail.gmail.com>
- <9f0dd563-b921-8d31-c82c-327fea5c026f@gmail.com>
- <CAK8P3a0dih9hFib05L2C31ONnraxN67H4wJAzQWD9gMg2Ek1Eg@mail.gmail.com>
- <a2295a12-db8b-978f-69ad-b0078d763135@gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [GIT PULL] updates for DT 32bit for v4.20 round 2
+Date: Fri, 5 Oct 2018 10:28:05 +0200
+Message-ID: <6cd94d4a-63d0-5959-2fe2-c0c084f38ad7@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <a2295a12-db8b-978f-69ad-b0078d763135@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Oct 3, 2018 at 11:18 AM Matthias Brugger <matthias.bgg@gmail.com> wrote:
-> On 02/10/2018 13:10, Arnd Bergmann wrote:
-> > On Tue, Oct 2, 2018 at 12:34 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
-> >> On 02/10/2018 11:12, Arnd Bergmann wrote:
-> >>> On Sat, Sep 29, 2018 at 5:18 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
-> >>
-> >> We rely on the fallback compatible here, as mt2701 and mt7623 are identically in
-> >> most of their components. If you require to get the bindings documented before
-> >> merging the DT, then I propose to drop the pull request for now.
-> >>
-> >> Other option would be to get the bindings documented in v4.21. AFAIK up to now
-> >> there haven't been sent any patches to update the bindings.
-> >
-> > Ok, I missed that the mt2701 strings are all documented and used in drivers,
-> > so I don't think it's a problem to merge your changes. How about you add
-> > another patch to your tree to update the respective bindings? I think that
-> > should be fine even for 4.20.
-> >
->
-> I just send a series of 4 patches which updates the binding documentation. I
-> realized that there were more bindings missing, hopefully I caught them all.
->
-> The series applies cleanly against linux-next, so I suppose there won't be any
-> merge conflicts if you decide to take it through your tree for v4.20.
->
-> If you want to send me another pull request, just let me know.
+Hi Arnd,
+Hi Olof,
 
-Yes, please do, the patches you sent all look fine. I've pulled
-tags/v4.19-next-dts32 into next/dt now, so please base the branch
-on top of that.
+Please have a look on the commits below. They are the second round of the
+arm 32 bit device tree patches. The pull request is based on the first one
+(v4.19-next-dts32) that you already merged.
 
-      arnd
+Thanks a lot,
+Matthias
+
+---
+
+The following changes since commit 5646a2f6d584e80bd4555c2ce3e286b35b9eaa61:
+
+  arm: dts: mt7623: add jpeg decoder device node (2018-09-25 17:44:35 +0200)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+tags/v4.19-next-dts32-2
+
+for you to fetch changes up to f5e489e6ee7a7c8fb7c3ed3997597a109f0813aa:
+
+  dt-bindings: mediatek: Add bindig for MT7623 IOMMU and SMI (2018-10-05
+10:11:33 +0200)
+
+----------------------------------------------------------------
+Add binding description for devices from
+MT7623. Clock controller, iommu, JPEG Decoder
+and SMI conotroller.
+
+----------------------------------------------------------------
+Matthias Brugger (4):
+      dt-bindings: clock: mediatek: add support for MT7623
+      dt-bindings: iommu: mediatek: Add binding for MT7623
+      dt-bindings: mediatek: Add JPEG Decoder binding for MT7623
+      dt-bindings: mediatek: Add bindig for MT7623 IOMMU and SMI
+
+ .../devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt          | 1 +
+ Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt    | 1 +
+ Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt    | 1 +
+ Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt    | 1 +
+ Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt    | 1 +
+ Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt    | 1 +
+ Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt  | 1 +
+ Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt     | 1 +
+ Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt   | 1 +
+ Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt  | 1 +
+ Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt   | 1 +
+ Documentation/devicetree/bindings/iommu/mediatek,iommu.txt            | 4 +++-
+ Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt     | 1 +
+ .../devicetree/bindings/memory-controllers/mediatek,smi-common.txt    | 1 +
+ .../devicetree/bindings/memory-controllers/mediatek,smi-larb.txt      | 3 ++-
+ 15 files changed, 18 insertions(+), 2 deletions(-)
