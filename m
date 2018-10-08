@@ -1,498 +1,168 @@
-From: Houlong Wei <houlong.wei@mediatek.com>
-Subject: [PATCH v26 2/2] soc: mediatek: Add Mediatek CMDQ helper
-Date: Mon, 8 Oct 2018 11:43:24 +0800
-Message-ID: <1538970204-7517-3-git-send-email-houlong.wei@mediatek.com>
-References: <1538970204-7517-1-git-send-email-houlong.wei@mediatek.com>
+From: Sergio Paracuellos <sergio.paracuellos-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: mt7621/mt7628 PCIe linux driver
+Date: Mon, 8 Oct 2018 06:20:42 +0200
+Message-ID: <20181008042042.GA14820@foobar>
+References: <8fd595af-53fa-c100-c369-8c7a30eba8e3@gmail.com>
+ <CAMhs-H-CM3bb9fg2eX6G_534bmuQYcoFa+pJSuNeArXLSXO4=Q@mail.gmail.com>
+ <283247bf-fa56-875a-6669-eddd6142d399@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1538970204-7517-1-git-send-email-houlong.wei@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Monica Wang <monica.wang@mediatek.com>, Houlong Wei <houlong.wei@mediatek.c>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <283247bf-fa56-875a-6669-eddd6142d399-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Petr Cvek <petrcvekcz-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add Mediatek CMDQ helper to create CMDQ packet and assemble GCE op code.
-
-Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
-Signed-off-by: HS Liao <hs.liao@mediatek.com>
----
- drivers/soc/mediatek/Kconfig           |   12 ++
- drivers/soc/mediatek/Makefile          |    1 +
- drivers/soc/mediatek/mtk-cmdq-helper.c |  292 ++++++++++++++++++++++++++++++++
- include/linux/soc/mediatek/mtk-cmdq.h  |  133 +++++++++++++++
- 4 files changed, 438 insertions(+)
- create mode 100644 drivers/soc/mediatek/mtk-cmdq-helper.c
- create mode 100644 include/linux/soc/mediatek/mtk-cmdq.h
-
-diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-index a7d0667..17bd759 100644
---- a/drivers/soc/mediatek/Kconfig
-+++ b/drivers/soc/mediatek/Kconfig
-@@ -4,6 +4,18 @@
- menu "MediaTek SoC drivers"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
+On Sun, Oct 07, 2018 at 03:25:30PM +0200, Petr Cvek wrote:
+> Hello,
+>
+Hi Petr,
  
-+config MTK_CMDQ
-+	tristate "MediaTek CMDQ Support"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	select MAILBOX
-+	select MTK_CMDQ_MBOX
-+	select MTK_INFRACFG
-+	help
-+	  Say yes here to add support for the MediaTek Command Queue (CMDQ)
-+	  driver. The CMDQ is used to help read/write registers with critical
-+	  time limitation, such as updating display configuration during the
-+	  vblank.
-+
- config MTK_INFRACFG
- 	bool "MediaTek INFRACFG Support"
- 	select REGMAP
-diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
-index 12998b0..64ce5ee 100644
---- a/drivers/soc/mediatek/Makefile
-+++ b/drivers/soc/mediatek/Makefile
-@@ -1,3 +1,4 @@
-+obj-$(CONFIG_MTK_CMDQ) += mtk-cmdq-helper.o
- obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
- obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
- obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
-diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-new file mode 100644
-index 0000000..45aa0cf
---- /dev/null
-+++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -0,0 +1,292 @@
-+// SPDX-License-Identifier: GPL-2.0
-+//
-+// Copyright (c) 2018 MediaTek Inc.
-+
-+#include <linux/completion.h>
-+#include <linux/errno.h>
-+#include <linux/dma-mapping.h>
-+#include <linux/module.h>
-+#include <linux/mailbox_controller.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
-+
-+#define CMDQ_ARG_A_WRITE_MASK	0xffff
-+#define CMDQ_WRITE_ENABLE_MASK	BIT(0)
-+#define CMDQ_EOC_IRQ_EN		BIT(0)
-+#define CMDQ_EOC_CMD		((u64)((CMDQ_CODE_EOC << CMDQ_OP_CODE_SHIFT)) \
-+				<< 32 | CMDQ_EOC_IRQ_EN)
-+
-+static void cmdq_client_timeout(struct timer_list *t)
-+{
-+	struct cmdq_client *client = from_timer(client, t, timer);
-+
-+	dev_err(client->client.dev, "cmdq timeout!\n");
-+}
-+
-+struct cmdq_client *cmdq_mbox_create(struct device *dev, int index, u32 timeout)
-+{
-+	struct cmdq_client *client;
-+
-+	client = kzalloc(sizeof(*client), GFP_KERNEL);
-+	if (!client)
-+		return (struct cmdq_client *)-ENOMEM;
-+
-+	client->timeout_ms = timeout;
-+	if (timeout != CMDQ_NO_TIMEOUT) {
-+		spin_lock_init(&client->lock);
-+		timer_setup(&client->timer, cmdq_client_timeout, 0);
-+	}
-+	client->pkt_cnt = 0;
-+	client->client.dev = dev;
-+	client->client.tx_block = false;
-+	client->chan = mbox_request_channel(&client->client, index);
-+
-+	if (IS_ERR(client->chan)) {
-+		long err;
-+
-+		dev_err(dev, "failed to request channel\n");
-+		err = PTR_ERR(client->chan);
-+		kfree(client);
-+
-+		return ERR_PTR(err);
-+	}
-+
-+	return client;
-+}
-+EXPORT_SYMBOL(cmdq_mbox_create);
-+
-+void cmdq_mbox_destroy(struct cmdq_client *client)
-+{
-+	if (client->timeout_ms != CMDQ_NO_TIMEOUT) {
-+		spin_lock(&client->lock);
-+		del_timer_sync(&client->timer);
-+		spin_unlock(&client->lock);
-+	}
-+	mbox_free_channel(client->chan);
-+	kfree(client);
-+}
-+EXPORT_SYMBOL(cmdq_mbox_destroy);
-+
-+struct cmdq_pkt *cmdq_pkt_create(struct cmdq_client *client, size_t size)
-+{
-+	struct cmdq_pkt *pkt;
-+	struct device *dev;
-+	dma_addr_t dma_addr;
-+
-+	pkt = kzalloc(sizeof(*pkt), GFP_KERNEL);
-+	if (!pkt)
-+		return ERR_PTR(-ENOMEM);
-+	pkt->va_base = kzalloc(size, GFP_KERNEL);
-+	if (!pkt->va_base) {
-+		kfree(pkt);
-+		return ERR_PTR(-ENOMEM);
-+	}
-+	pkt->buf_size = size;
-+	pkt->cl = (void *)client;
-+
-+	dev = client->chan->mbox->dev;
-+	dma_addr = dma_map_single(dev, pkt->va_base, pkt->buf_size,
-+				  DMA_TO_DEVICE);
-+	if (dma_mapping_error(dev, dma_addr)) {
-+		dev_err(dev, "dma map failed, size=%u\n", (u32)(u64)size);
-+		kfree(pkt->va_base);
-+		kfree(pkt);
-+		return ERR_PTR(-ENOMEM);
-+	}
-+
-+	pkt->pa_base = dma_addr;
-+
-+	return pkt;
-+}
-+EXPORT_SYMBOL(cmdq_pkt_create);
-+
-+void cmdq_pkt_destroy(struct cmdq_pkt *pkt)
-+{
-+	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
-+
-+	dma_unmap_single(client->chan->mbox->dev, pkt->pa_base, pkt->buf_size,
-+			 DMA_TO_DEVICE);
-+	kfree(pkt->va_base);
-+	kfree(pkt);
-+}
-+EXPORT_SYMBOL(cmdq_pkt_destroy);
-+
-+static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
-+				   u32 arg_a, u32 arg_b)
-+{
-+	u64 *cmd_ptr;
-+
-+	if (unlikely(pkt->cmd_buf_size + CMDQ_INST_SIZE > pkt->buf_size)) {
-+		pkt->cmd_buf_size += CMDQ_INST_SIZE;
-+		WARN_ONCE(1, "%s: buffer size %u is too small !\n",
-+			__func__, (u32)pkt->buf_size);
-+		return -ENOMEM;
-+	}
-+	cmd_ptr = pkt->va_base + pkt->cmd_buf_size;
-+	(*cmd_ptr) = (u64)((code << CMDQ_OP_CODE_SHIFT) | arg_a) << 32 | arg_b;
-+	pkt->cmd_buf_size += CMDQ_INST_SIZE;
-+
-+	return 0;
-+}
-+
-+int cmdq_pkt_write(struct cmdq_pkt *pkt, u32 value, u32 subsys, u32 offset)
-+{
-+	u32 arg_a = (offset & CMDQ_ARG_A_WRITE_MASK) |
-+		    (subsys << CMDQ_SUBSYS_SHIFT);
-+
-+	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WRITE, arg_a, value);
-+}
-+EXPORT_SYMBOL(cmdq_pkt_write);
-+
-+int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u32 value,
-+			u32 subsys, u32 offset, u32 mask)
-+{
-+	u32 offset_mask = offset;
-+	int err = 0;
-+
-+	if (mask != 0xffffffff) {
-+		err = cmdq_pkt_append_command(pkt, CMDQ_CODE_MASK, 0, ~mask);
-+		offset_mask |= CMDQ_WRITE_ENABLE_MASK;
-+	}
-+	err |= cmdq_pkt_write(pkt, value, subsys, offset_mask);
-+
-+	return err;
-+}
-+EXPORT_SYMBOL(cmdq_pkt_write_mask);
-+
-+int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u32 event)
-+{
-+	u32 arg_b;
-+
-+	if (event >= CMDQ_MAX_EVENT)
-+		return -EINVAL;
-+
-+	/*
-+	 * WFE arg_b
-+	 * bit 0-11: wait value
-+	 * bit 15: 1 - wait, 0 - no wait
-+	 * bit 16-27: update value
-+	 * bit 31: 1 - update, 0 - no update
-+	 */
-+	arg_b = CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | CMDQ_WFE_WAIT_VALUE;
-+
-+	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WFE, event, arg_b);
-+}
-+EXPORT_SYMBOL(cmdq_pkt_wfe);
-+
-+int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u32 event)
-+{
-+	if (event >= CMDQ_MAX_EVENT)
-+		return -EINVAL;
-+
-+	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WFE, event,
-+				       CMDQ_WFE_UPDATE);
-+}
-+EXPORT_SYMBOL(cmdq_pkt_clear_event);
-+
-+static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
-+{
-+	int err;
-+
-+	/* insert EOC and generate IRQ for each command iteration */
-+	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_EOC, 0, CMDQ_EOC_IRQ_EN);
-+
-+	/* JUMP to end */
-+	err |= cmdq_pkt_append_command(pkt, CMDQ_CODE_JUMP, 0, CMDQ_JUMP_PASS);
-+
-+	return err;
-+}
-+
-+static void cmdq_pkt_flush_async_cb(struct cmdq_cb_data data)
-+{
-+	struct cmdq_pkt *pkt = (struct cmdq_pkt *)data.data;
-+	struct cmdq_task_cb *cb = &pkt->cb;
-+	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
-+
-+	if (client->timeout_ms != CMDQ_NO_TIMEOUT) {
-+		unsigned long flags = 0;
-+
-+		spin_lock_irqsave(&client->lock, flags);
-+		if (--client->pkt_cnt == 0)
-+			del_timer(&client->timer);
-+		else
-+			mod_timer(&client->timer, jiffies +
-+				  msecs_to_jiffies(client->timeout_ms));
-+		spin_unlock_irqrestore(&client->lock, flags);
-+	}
-+
-+	dma_sync_single_for_cpu(client->chan->mbox->dev, pkt->pa_base,
-+				pkt->cmd_buf_size, DMA_TO_DEVICE);
-+	if (cb->cb) {
-+		data.data = cb->data;
-+		cb->cb(data);
-+	}
-+}
-+
-+int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
-+			 void *data)
-+{
-+	int err;
-+	unsigned long flags = 0;
-+	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
-+
-+	err = cmdq_pkt_finalize(pkt);
-+	if (err < 0)
-+		return err;
-+
-+	pkt->cb.cb = cb;
-+	pkt->cb.data = data;
-+	pkt->async_cb.cb = cmdq_pkt_flush_async_cb;
-+	pkt->async_cb.data = pkt;
-+
-+	dma_sync_single_for_device(client->chan->mbox->dev, pkt->pa_base,
-+				   pkt->cmd_buf_size, DMA_TO_DEVICE);
-+
-+	if (client->timeout_ms != CMDQ_NO_TIMEOUT) {
-+		spin_lock_irqsave(&client->lock, flags);
-+		if (client->pkt_cnt++ == 0)
-+			mod_timer(&client->timer, jiffies +
-+				  msecs_to_jiffies(client->timeout_ms));
-+		spin_unlock_irqrestore(&client->lock, flags);
-+	}
-+
-+	mbox_send_message(client->chan, pkt);
-+	/* We can send next packet immediately, so just call txdone. */
-+	mbox_client_txdone(client->chan, 0);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL(cmdq_pkt_flush_async);
-+
-+struct cmdq_flush_completion {
-+	struct completion cmplt;
-+	bool err;
-+};
-+
-+static void cmdq_pkt_flush_cb(struct cmdq_cb_data data)
-+{
-+	struct cmdq_flush_completion *cmplt;
-+
-+	cmplt = (struct cmdq_flush_completion *)data.data;
-+	if (data.sta != CMDQ_CB_NORMAL)
-+		cmplt->err = true;
-+	else
-+		cmplt->err = false;
-+	complete(&cmplt->cmplt);
-+}
-+
-+int cmdq_pkt_flush(struct cmdq_pkt *pkt)
-+{
-+	struct cmdq_flush_completion cmplt;
-+	int err;
-+
-+	init_completion(&cmplt.cmplt);
-+	err = cmdq_pkt_flush_async(pkt, cmdq_pkt_flush_cb, &cmplt);
-+	if (err < 0)
-+		return err;
-+	wait_for_completion(&cmplt.cmplt);
-+
-+	return cmplt.err ? -EFAULT : 0;
-+}
-+EXPORT_SYMBOL(cmdq_pkt_flush);
-+
-+MODULE_LICENSE("GPL v2");
-diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-new file mode 100644
-index 0000000..54ade13
---- /dev/null
-+++ b/include/linux/soc/mediatek/mtk-cmdq.h
-@@ -0,0 +1,133 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2018 MediaTek Inc.
-+ *
-+ */
-+
-+#ifndef __MTK_CMDQ_H__
-+#define __MTK_CMDQ_H__
-+
-+#include <linux/mailbox_client.h>
-+#include <linux/mailbox/mtk-cmdq-mailbox.h>
-+#include <linux/timer.h>
-+
-+#define CMDQ_NO_TIMEOUT		0xffffffffu
-+
-+/** cmdq event maximum */
-+#define CMDQ_MAX_EVENT				0x3ff
-+
-+struct cmdq_pkt;
-+
-+struct cmdq_client {
-+	spinlock_t lock;
-+	u32 pkt_cnt;
-+	struct mbox_client client;
-+	struct mbox_chan *chan;
-+	struct timer_list timer;
-+	u32 timeout_ms; /* in unit of microsecond */
-+};
-+
-+/**
-+ * cmdq_mbox_create() - create CMDQ mailbox client and channel
-+ * @dev:	device of CMDQ mailbox client
-+ * @index:	index of CMDQ mailbox channel
-+ * @timeout:	timeout of a pkt execution by GCE, in unit of microsecond, set
-+ *		CMDQ_NO_TIMEOUT if a timer is not used.
-+ *
-+ * Return: CMDQ mailbox client pointer
-+ */
-+struct cmdq_client *cmdq_mbox_create(struct device *dev, int index,
-+				     u32 timeout);
-+
-+/**
-+ * cmdq_mbox_destroy() - destroy CMDQ mailbox client and channel
-+ * @client:	the CMDQ mailbox client
-+ */
-+void cmdq_mbox_destroy(struct cmdq_client *client);
-+
-+/**
-+ * cmdq_pkt_create() - create a CMDQ packet
-+ * @client:	the CMDQ mailbox client
-+ * @size:	required CMDQ buffer size
-+ *
-+ * Return: CMDQ packet pointer
-+ */
-+struct cmdq_pkt *cmdq_pkt_create(struct cmdq_client *client, size_t size);
-+
-+/**
-+ * cmdq_pkt_destroy() - destroy the CMDQ packet
-+ * @pkt:	the CMDQ packet
-+ */
-+void cmdq_pkt_destroy(struct cmdq_pkt *pkt);
-+
-+/**
-+ * cmdq_pkt_write() - append write command to the CMDQ packet
-+ * @pkt:	the CMDQ packet
-+ * @value:	the specified target register value
-+ * @subsys:	the CMDQ sub system code
-+ * @offset:	register offset from CMDQ sub system
-+ *
-+ * Return: 0 for success; else the error code is returned
-+ */
-+int cmdq_pkt_write(struct cmdq_pkt *pkt, u32 value, u32 subsys, u32 offset);
-+
-+/**
-+ * cmdq_pkt_write_mask() - append write command with mask to the CMDQ packet
-+ * @pkt:	the CMDQ packet
-+ * @value:	the specified target register value
-+ * @subsys:	the CMDQ sub system code
-+ * @offset:	register offset from CMDQ sub system
-+ * @mask:	the specified target register mask
-+ *
-+ * Return: 0 for success; else the error code is returned
-+ */
-+int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u32 value,
-+			u32 subsys, u32 offset, u32 mask);
-+
-+/**
-+ * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
-+ * @pkt:	the CMDQ packet
-+ * @event:	the desired event type to "wait and CLEAR"
-+ *
-+ * Return: 0 for success; else the error code is returned
-+ */
-+int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u32 event);
-+
-+/**
-+ * cmdq_pkt_clear_event() - append clear event command to the CMDQ packet
-+ * @pkt:	the CMDQ packet
-+ * @event:	the desired event to be cleared
-+ *
-+ * Return: 0 for success; else the error code is returned
-+ */
-+int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u32 event);
-+
-+/**
-+ * cmdq_pkt_flush_async() - trigger CMDQ to asynchronously execute the CMDQ
-+ *                          packet and call back at the end of done packet
-+ * @pkt:	the CMDQ packet
-+ * @cb:		called at the end of done packet
-+ * @data:	this data will pass back to cb
-+ *
-+ * Return: 0 for success; else the error code is returned
-+ *
-+ * Trigger CMDQ to asynchronously execute the CMDQ packet and call back
-+ * at the end of done packet. Note that this is an ASYNC function. When the
-+ * function returned, it may or may not be finished.
-+ */
-+int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
-+			 void *data);
-+
-+/**
-+ * cmdq_pkt_flush() - trigger CMDQ to execute the CMDQ packet
-+ * @pkt:	the CMDQ packet
-+ *
-+ * Return: 0 for success; else the error code is returned
-+ *
-+ * Trigger CMDQ to execute the CMDQ packet. Note that this is a
-+ * synchronous flush function. When the function returned, the recorded
-+ * commands have been done.
-+ */
-+int cmdq_pkt_flush(struct cmdq_pkt *pkt);
-+
-+#endif	/* __MTK_CMDQ_H__ */
--- 
-1.7.9.5
+> sorry for a late reaction and thanks for your input. It took me two
+> weeks to get MT7628 ethernet driver to start working (so I could use the
+> current kernel version).
+
+Those are good news :-).
+
+> 
+> Dne 23.9.2018 v 08:20 Sergio Paracuellos napsal(a):
+> > Hi Petr,
+> > 
+> > On Sat, Sep 22, 2018 at 11:06 PM, Petr Cvek <petrcvekcz-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> >> Hello,
+> >>
+> >> I'm trying to play with mt7628 PCIe (and it's old driver mt7620), but
+> >> the system keeps freezing. It is probably because of bus master access
+> >> of my PCIe cards but I don't see any memory access controls for PCIe <->
+> >> RAM in the datasheet. The same problem is with MSI. It seems the root
+> >> complex supports MSI (it has an MSI capability field), but there isn't
+> >> any mention in the MT7628 datasheet too. As it seems the MT7628 PCIe is
+> >> based on MT7621 PCIe, I went for an MT7621 datasheet, but sadly in the
+> >> datasheet the PCIe section is missing completely.
+> > 
+> > AFAIK, MT7628 should be covered with mt7620 driver. The source code is in
+> > arch/mips/pci/pci-mt7620.c. For initialization in really depends on
+> > the "ralink_soc"
+> > variable exported in arch/mips/ralink/prom.c.
+> > 
+> 
+> I was able to fix some of the problems. But still there are still
+> missing pieces.
+> 
+> The PCI driver (from pci-mt7620.c) isn't working in the vanilla version.
+> It has a lot of problems:
+> - Wrong access to the reset register (the wrong writing function used)
+> - IO access is not working at all. There is a function call missing to
+> setting MMIO base. The indirect access base register has a wrong value
+> and I've had to force code some other IOPORT related stuff.
+> - Forcing BAR0 is irrelevant for a root complex and it interferes with
+> kernel resources assignment.
+> - Cards other than 01:00.0 will have no IRQ set (and the drivers will fail).
+> - Some minor problem like using the mdelay vs msleep.
+
+mt7620 driver is an old driver and it uses the PCI legacy kernel options to build
+and correct compilation. So I don't know if you are just looking to the PCI_GENERIC
+support in the kernel.
+
+> 
+> 
+> > You have to figure out why and where is really freezing. Does a clean kernel
+> > boots and success on setting up PCI? A 'dmesg' would be helpful.
+> > 
+> >>
+> >> Does anybody have a working MT7621/28 bus master setup or a more
+> >> completed datasheet? I would like to get some information for fixing the
+> >> mt7620 PCIe driver. It is possible the MSI/bus master is controlled by
+> >> the undocumented bridge registers (in the pci-mt7621 they controls the
+> >> manual oscillator settings, I've found a link quality register at
+> >> 0x101490c4) or in a PCI config space of the root complex (around 0x700
+> >> offset). If you have a working SoC with MSI/bus mastering (= mem access
+> >> from card), can you send me the dump of there spaces?
+> > 
+> > The datasheet for the mt7620 contains information about PCI registers.
+> > Linux initializes the
+> > pci topology but master bit of command registers for endpoints is
+> > disabled and is mission of final
+> > card driver to enable it in order to allow memory accessing to the card.
+> > 
+> 
+> But even with things (above) in the driver fixed, there will be still
+> questions for the documentation left:
+> - No MSI support or at least documentation for implementation (I could
+> do it myself probably). The MSI functionality is IMO required for PCIe
+> hosts, the MT7628 root complex itself has MSI capability.
+> - The 3.10 kernel from linux-mips.org had a support for spread spectrum
+> and manual PLL setting (no documentation for these registers too).
+> - No additional documentation for the interrupt of the controller
+> events. It could be useful to have its behavior because the PCIe
+> controller resets itself when it loses the link connection (and the
+> mention of this behavior could be useful to have in the datasheet too).
+> - Can the PCIe device/bus-master card access all 4 GiB of the MT7628
+> address space? What about 64bit address access?
+> - Does MT7628 support PCIe device mode (as observed from the hardware
+> behavior, when it sets it's own config space to a device/wireless
+> network class, from the residual mentions in the datasheet, from PCIe
+> device oriented registers and from similarities with MT SoCs which
+> support PCIe host/device mode)
+> - No documentation if there are any PCIe resistive terminations on chip
+> (I cannot get a connection without external resistors)
+> - I would like to have the documentation of 0x101490c4 register as it is
+> link quality oriented (which I've had to reverse engineer from hw
+> behavior when I was searching for a solution to resistor termination
+> problem).
+
+I agree that the physical part of the PCI is not documented anywhere. 
+I think all of this support is reverse engineering from the mediatek SDK.
+Maybe you can get better feedback from the mediatek guys.
+
+> 
+> > Hope this helps.
+> 
+> Well in a way it did ;-).
+
+Good to know :-).
+
+> 
+> BTW the idea about merging with MT7621 is from TODO file from MT7621 driver:
+> 
+> https://elixir.bootlin.com/linux/v4.19-rc5/source/drivers/staging/mt7621-pci/TODO#L8
+> 
+> ... and from that 3.10 kernel where all ralink/mediatek PCIe drivers
+> were in a single file (it seems the controllers are really similar).
+
+Since mt7621 is a staging driver it is not possible at all to use PCI_LEGACY in order to
+get it mainlined with the rest of the kernel (with mt7620 together I mean). Anyway mt7621 has three PCI express controllers.
+I sent some patches cleaning the PCI_LEGACY part (these have been applied):
+
+http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2018-August/124480.html
+
+and there are still some series which are not applied yet (I don't have the HW and I can't test it by myself).
+In case of interest see the followings:
+
+Some cleanups and others:
+    * http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2018-September/125937.html
+
+About device tree bindings:
+    * http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2018-September/126604.html
+
+Best regards,
+    Sergio Paracuellos
+> 
+> > 
+> > Best regards,
+> >     Sergio Paracuellos
+> > 
+> 
+> cheers,
+> Petr
