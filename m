@@ -1,130 +1,67 @@
-From: Petr Cvek <petrcvekcz-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: mt7621/mt7628 PCIe linux driver
-Date: Sun, 7 Oct 2018 15:25:30 +0200
-Message-ID: <283247bf-fa56-875a-6669-eddd6142d399@gmail.com>
-References: <8fd595af-53fa-c100-c369-8c7a30eba8e3@gmail.com>
- <CAMhs-H-CM3bb9fg2eX6G_534bmuQYcoFa+pJSuNeArXLSXO4=Q@mail.gmail.com>
+From: houlong wei <houlong.wei@mediatek.com>
+Subject: Re: [PATCH v25 2/2] soc: mediatek: Add Mediatek CMDQ helper
+Date: Mon, 8 Oct 2018 10:29:06 +0800
+Message-ID: <1538965746.4271.20.camel@mhfsdcap03>
+References: <1538212903-14331-1-git-send-email-houlong.wei@mediatek.com>
+         <1538212903-14331-3-git-send-email-houlong.wei@mediatek.com>
+         <7040427b-f580-ec33-8afa-35dcf5735abb@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAMhs-H-CM3bb9fg2eX6G_534bmuQYcoFa+pJSuNeArXLSXO4=Q@mail.gmail.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sergio Paracuellos <sergio.paracuellos-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <7040427b-f580-ec33-8afa-35dcf5735abb@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>, Bibby Hsieh =?UTF-8?Q?=28=E8=AC=9D=E6=BF=9F=E9=81=A0=29?= <Bibby.Hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello,
-
-sorry for a late reaction and thanks for your input. It took me two
-weeks to get MT7628 ethernet driver to start working (so I could use the
-current kernel version).
-
-Dne 23.9.2018 v 08:20 Sergio Paracuellos napsal(a):
-> Hi Petr,
+On Sat, 2018-09-29 at 20:50 +0800, Matthias Brugger wrote:
 > 
-> On Sat, Sep 22, 2018 at 11:06 PM, Petr Cvek <petrcvekcz-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->> Hello,
->>
->> I'm trying to play with mt7628 PCIe (and it's old driver mt7620), but
->> the system keeps freezing. It is probably because of bus master access
->> of my PCIe cards but I don't see any memory access controls for PCIe <->
->> RAM in the datasheet. The same problem is with MSI. It seems the root
->> complex supports MSI (it has an MSI capability field), but there isn't
->> any mention in the MT7628 datasheet too. As it seems the MT7628 PCIe is
->> based on MT7621 PCIe, I went for an MT7621 datasheet, but sadly in the
->> datasheet the PCIe section is missing completely.
+> On 29/09/2018 11:21, Houlong Wei wrote:
+> [...]
 > 
-> AFAIK, MT7628 should be covered with mt7620 driver. The source code is in
-> arch/mips/pci/pci-mt7620.c. For initialization in really depends on
-> the "ralink_soc"
-> variable exported in arch/mips/ralink/prom.c.
+> > +static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
+> > +				   u32 arg_a, u32 arg_b)
+> > +{
+> > +	u64 *cmd_ptr;
+> > +
+> > +	if (unlikely(pkt->cmd_buf_size + CMDQ_INST_SIZE > pkt->buf_size)) {
+> > +		pkt->cmd_buf_size += CMDQ_INST_SIZE;
 > 
+> Can you plesae provide some example code of a driver that will use this API, I
+> still don't understand why you need to update the cmd_buf_size here.
 
-I was able to fix some of the problems. But still there are still
-missing pieces.
-
-The PCI driver (from pci-mt7620.c) isn't working in the vanilla version.
-It has a lot of problems:
-- Wrong access to the reset register (the wrong writing function used)
-- IO access is not working at all. There is a function call missing to
-setting MMIO base. The indirect access base register has a wrong value
-and I've had to force code some other IOPORT related stuff.
-- Forcing BAR0 is irrelevant for a root complex and it interferes with
-kernel resources assignment.
-- Cards other than 01:00.0 will have no IRQ set (and the drivers will fail).
-- Some minor problem like using the mdelay vs msleep.
-
-
-> You have to figure out why and where is really freezing. Does a clean kernel
-> boots and success on setting up PCI? A 'dmesg' would be helpful.
-> 
->>
->> Does anybody have a working MT7621/28 bus master setup or a more
->> completed datasheet? I would like to get some information for fixing the
->> mt7620 PCIe driver. It is possible the MSI/bus master is controlled by
->> the undocumented bridge registers (in the pci-mt7621 they controls the
->> manual oscillator settings, I've found a link quality register at
->> 0x101490c4) or in a PCI config space of the root complex (around 0x700
->> offset). If you have a working SoC with MSI/bus mastering (= mem access
->> from card), can you send me the dump of there spaces?
-> 
-> The datasheet for the mt7620 contains information about PCI registers.
-> Linux initializes the
-> pci topology but master bit of command registers for endpoints is
-> disabled and is mission of final
-> card driver to enable it in order to allow memory accessing to the card.
-> 
-
-But even with things (above) in the driver fixed, there will be still
-questions for the documentation left:
-- No MSI support or at least documentation for implementation (I could
-do it myself probably). The MSI functionality is IMO required for PCIe
-hosts, the MT7628 root complex itself has MSI capability.
-- The 3.10 kernel from linux-mips.org had a support for spread spectrum
-and manual PLL setting (no documentation for these registers too).
-- No additional documentation for the interrupt of the controller
-events. It could be useful to have its behavior because the PCIe
-controller resets itself when it loses the link connection (and the
-mention of this behavior could be useful to have in the datasheet too).
-- Can the PCIe device/bus-master card access all 4 GiB of the MT7628
-address space? What about 64bit address access?
-- Does MT7628 support PCIe device mode (as observed from the hardware
-behavior, when it sets it's own config space to a device/wireless
-network class, from the residual mentions in the datasheet, from PCIe
-device oriented registers and from similarities with MT SoCs which
-support PCIe host/device mode)
-- No documentation if there are any PCIe resistive terminations on chip
-(I cannot get a connection without external resistors)
-- I would like to have the documentation of 0x101490c4 register as it is
-link quality oriented (which I've had to reverse engineer from hw
-behavior when I was searching for a solution to resistor termination
-problem).
-
-> Hope this helps.
-
-Well in a way it did ;-).
-
-BTW the idea about merging with MT7621 is from TODO file from MT7621 driver:
-
-https://elixir.bootlin.com/linux/v4.19-rc5/source/drivers/staging/mt7621-pci/TODO#L8
-
-... and from that 3.10 kernel where all ralink/mediatek PCIe drivers
-were in a single file (it seems the controllers are really similar).
+In our previous design, when appending a new command to buffer and the
+buffer gets overflow, we will re-allocate a larger buffer to use.
+CK.Hu had concern about the performance of buffer re-allocation. Please
+refer:
+http://lists.infradead.org/pipermail/linux-mediatek/2018-June/013797.html
+One of his suggestions is that the consumer dynamically allocates buffer
+with a initial size. Because the consumer doesn't know how to calculate
+the buffer size. So we increase cmdq_buf_size here, that will help the
+consumer get the buffer size in developing phase. In release driver
+code, consumer passes a constant value to function call
+cmdq_pkt_create(client, cmdq_buffer_size), cmdq_buffer_size is the
+specified command queue buffer size.
 
 > 
-> Best regards,
->     Sergio Paracuellos
+> > +		WARN_ON(1);
 > 
+> can we add some debug information:
+> WARN_ON(1, "%s: buffer size too small for the amount of commands", __func__);
+> 
+> Would it make sense to use WARN_ONCE()?
+> 
+Yes, I will add debug information and use WARN_ONCE().
 
-cheers,
-Petr
+> > +		return -ENOMEM;
+> > +	}
+> > +	cmd_ptr = pkt->va_base + pkt->cmd_buf_size;
+> > +	(*cmd_ptr) = (u64)((code << CMDQ_OP_CODE_SHIFT) | arg_a) << 32 | arg_b;
+> > +	pkt->cmd_buf_size += CMDQ_INST_SIZE;
+> > +
+> > +	return 0;
+> > +}
+> 
+> Thanks,
+> Matthias
