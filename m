@@ -1,40 +1,73 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH] pinctrl: mediatek: select GPIOLIB
-Date: Mon,  8 Oct 2018 17:57:43 +0200
-Message-ID: <20181008155803.3322412-1-arnd@arndb.de>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH v6 2/9] PCI: mediatek: Fixup class ID for MT7622 as
+ PCI_CLASS_BRIDGE_PCI
+Date: Mon, 8 Oct 2018 18:23:37 +0100
+Message-ID: <20181008172337.GA13538@e107981-ln.cambridge.arm.com>
+References: <1538969088-7136-1-git-send-email-honghui.zhang@mediatek.com>
+ <1538969088-7136-3-git-send-email-honghui.zhang@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1538969088-7136-3-git-send-email-honghui.zhang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, Biao Huang <biao.huang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, ZH Chen <zh.chen@mediatek.com>, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: honghui.zhang@mediatek.com, bhelgaas@google.com
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, ulf.hansson@linaro.org, marc.zyngier@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, youlin.pei@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Removing the linux/gpio.h include means we no longer have a declaration
-of gpiochip_lock_as_irq() when CONFIG_GPIOLIB is disabled:
+On Mon, Oct 08, 2018 at 11:24:41AM +0800, honghui.zhang@mediatek.com wrote:
+> From: Honghui Zhang <honghui.zhang@mediatek.com>
+> 
+> The PCIe controller of MT7622 has TYPE 1 configuration space type, but
+> the HW default class type values is invalid.
+> 
+> The commit 101c92dc80c8 ("PCI: mediatek: Set up vendor ID and class
+> type for MT7622") have set the class ID for MT7622 as
+> PCI_CLASS_BRIDGE_HOST, but it's not workable for MT7622:
+> 
+> In __pci_bus_assign_resources, the framework only setup bridge's
+> resource window only if class type is PCI_CLASS_BRIDGE_PCI. Or it
+> will leave the subordinary PCIe device's MMIO window un-touched.
+> 
+> Fixup the class type to PCI_CLASS_BRIDGE_PCI as most of the controller
+> driver do.
 
-drivers/pinctrl/mediatek/mtk-eint.c: In function 'mtk_eint_irq_request_resources':
-drivers/pinctrl/mediatek/mtk-eint.c:247:8: error: implicit declaration of function 'gpiochip_lock_as_irq'; did you mean 'spin_lock_irq'? [-Werror=implicit-function-declaration]
-drivers/pinctrl/mediatek/mtk-eint.c: In function 'mtk_eint_irq_release_resources':
-drivers/pinctrl/mediatek/mtk-eint.c:272:2: error: implicit declaration of function 'gpiochip_unlock_as_irq'; did you mean 'spin_unlock_irq'? [-Werror=implicit-function-declaration]
+I think that this patch is correct but the commit log fails to pin point
+the problem. The IP you are programming is a root port, that's why you
+have to have the proper class code, the patch looks fine but I would
+like to peek Bjorn's brain on this since it is a fundamental concept.
 
-Select it explictly instead.
+If the kernel does not assign resources unless it detects a
+PCI_CLASS_BRIDGE_PCI this means that for components that are
+actually PCI_CLASS_BRIDGE_HOST their register set must come
+preprogrammed unless I am missing something.
 
-Fixes: 1c5fb66afa2a ("pinctrl: Include <linux/gpio/driver.h> nothing else")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/pinctrl/mediatek/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+I would like to get to the bottom of this since it is a fundamental
+enumeration concept.
 
-diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-index 05be5ddafec4..9d142e1da567 100644
---- a/drivers/pinctrl/mediatek/Kconfig
-+++ b/drivers/pinctrl/mediatek/Kconfig
-@@ -4,6 +4,7 @@ menu "MediaTek pinctrl drivers"
- config EINT_MTK
- 	bool "MediaTek External Interrupt Support"
- 	depends on PINCTRL_MTK || PINCTRL_MTK_MOORE || COMPILE_TEST
-+	select GPIOLIB
- 	select IRQ_DOMAIN
- 
- config PINCTRL_MTK
--- 
-2.18.0
+Thanks,
+Lorenzo
+
+> 
+> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  drivers/pci/controller/pcie-mediatek.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index 288b8e2..bcdac9b 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -432,7 +432,7 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+>  		val = PCI_VENDOR_ID_MEDIATEK;
+>  		writew(val, port->base + PCIE_CONF_VEND_ID);
+>  
+> -		val = PCI_CLASS_BRIDGE_HOST;
+> +		val = PCI_CLASS_BRIDGE_PCI;
+>  		writew(val, port->base + PCIE_CONF_CLASS_ID);
+>  	}
+>  
+> -- 
+> 2.6.4
+> 
