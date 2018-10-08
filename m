@@ -1,168 +1,70 @@
-From: Sergio Paracuellos <sergio.paracuellos-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: mt7621/mt7628 PCIe linux driver
-Date: Mon, 8 Oct 2018 06:20:42 +0200
-Message-ID: <20181008042042.GA14820@foobar>
-References: <8fd595af-53fa-c100-c369-8c7a30eba8e3@gmail.com>
- <CAMhs-H-CM3bb9fg2eX6G_534bmuQYcoFa+pJSuNeArXLSXO4=Q@mail.gmail.com>
- <283247bf-fa56-875a-6669-eddd6142d399@gmail.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v1 2/2] mmc: mediatek: add bus_clk control
+Date: Mon, 8 Oct 2018 13:51:15 +0200
+Message-ID: <CAPDyKFr7BeED5Zzkfacknrh=usBwHXcDF=GGPYNpOb9R7itopA@mail.gmail.com>
+References: <1538188195-3608-1-git-send-email-chaotian.jing@mediatek.com> <1538188195-3608-2-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <283247bf-fa56-875a-6669-eddd6142d399-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Petr Cvek <petrcvekcz-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1538188195-3608-2-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Sean Wang <sean.wang@mediatek.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, DTML <devicetree@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Oct 07, 2018 at 03:25:30PM +0200, Petr Cvek wrote:
-> Hello,
+On 29 September 2018 at 04:29, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+> when gate MSDC0_HCLK, access register will hang, even the MSDC driver
+> will never accessing register after HCLK was gated, but for safety, need
+> gate the bus_clk(which used to access register) too.
 >
-Hi Petr,
- 
-> sorry for a late reaction and thanks for your input. It took me two
-> weeks to get MT7628 ethernet driver to start working (so I could use the
-> current kernel version).
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
 
-Those are good news :-).
+Applied for next, thanks!
 
-> 
-> Dne 23.9.2018 v 08:20 Sergio Paracuellos napsal(a):
-> > Hi Petr,
-> > 
-> > On Sat, Sep 22, 2018 at 11:06 PM, Petr Cvek <petrcvekcz-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> >> Hello,
-> >>
-> >> I'm trying to play with mt7628 PCIe (and it's old driver mt7620), but
-> >> the system keeps freezing. It is probably because of bus master access
-> >> of my PCIe cards but I don't see any memory access controls for PCIe <->
-> >> RAM in the datasheet. The same problem is with MSI. It seems the root
-> >> complex supports MSI (it has an MSI capability field), but there isn't
-> >> any mention in the MT7628 datasheet too. As it seems the MT7628 PCIe is
-> >> based on MT7621 PCIe, I went for an MT7621 datasheet, but sadly in the
-> >> datasheet the PCIe section is missing completely.
-> > 
-> > AFAIK, MT7628 should be covered with mt7620 driver. The source code is in
-> > arch/mips/pci/pci-mt7620.c. For initialization in really depends on
-> > the "ralink_soc"
-> > variable exported in arch/mips/ralink/prom.c.
-> > 
-> 
-> I was able to fix some of the problems. But still there are still
-> missing pieces.
-> 
-> The PCI driver (from pci-mt7620.c) isn't working in the vanilla version.
-> It has a lot of problems:
-> - Wrong access to the reset register (the wrong writing function used)
-> - IO access is not working at all. There is a function call missing to
-> setting MMIO base. The indirect access base register has a wrong value
-> and I've had to force code some other IOPORT related stuff.
-> - Forcing BAR0 is irrelevant for a root complex and it interferes with
-> kernel resources assignment.
-> - Cards other than 01:00.0 will have no IRQ set (and the drivers will fail).
-> - Some minor problem like using the mdelay vs msleep.
+Kind regards
+Uffe
 
-mt7620 driver is an old driver and it uses the PCI legacy kernel options to build
-and correct compilation. So I don't know if you are just looking to the PCI_GENERIC
-support in the kernel.
-
-> 
-> 
-> > You have to figure out why and where is really freezing. Does a clean kernel
-> > boots and success on setting up PCI? A 'dmesg' would be helpful.
-> > 
-> >>
-> >> Does anybody have a working MT7621/28 bus master setup or a more
-> >> completed datasheet? I would like to get some information for fixing the
-> >> mt7620 PCIe driver. It is possible the MSI/bus master is controlled by
-> >> the undocumented bridge registers (in the pci-mt7621 they controls the
-> >> manual oscillator settings, I've found a link quality register at
-> >> 0x101490c4) or in a PCI config space of the root complex (around 0x700
-> >> offset). If you have a working SoC with MSI/bus mastering (= mem access
-> >> from card), can you send me the dump of there spaces?
-> > 
-> > The datasheet for the mt7620 contains information about PCI registers.
-> > Linux initializes the
-> > pci topology but master bit of command registers for endpoints is
-> > disabled and is mission of final
-> > card driver to enable it in order to allow memory accessing to the card.
-> > 
-> 
-> But even with things (above) in the driver fixed, there will be still
-> questions for the documentation left:
-> - No MSI support or at least documentation for implementation (I could
-> do it myself probably). The MSI functionality is IMO required for PCIe
-> hosts, the MT7628 root complex itself has MSI capability.
-> - The 3.10 kernel from linux-mips.org had a support for spread spectrum
-> and manual PLL setting (no documentation for these registers too).
-> - No additional documentation for the interrupt of the controller
-> events. It could be useful to have its behavior because the PCIe
-> controller resets itself when it loses the link connection (and the
-> mention of this behavior could be useful to have in the datasheet too).
-> - Can the PCIe device/bus-master card access all 4 GiB of the MT7628
-> address space? What about 64bit address access?
-> - Does MT7628 support PCIe device mode (as observed from the hardware
-> behavior, when it sets it's own config space to a device/wireless
-> network class, from the residual mentions in the datasheet, from PCIe
-> device oriented registers and from similarities with MT SoCs which
-> support PCIe host/device mode)
-> - No documentation if there are any PCIe resistive terminations on chip
-> (I cannot get a connection without external resistors)
-> - I would like to have the documentation of 0x101490c4 register as it is
-> link quality oriented (which I've had to reverse engineer from hw
-> behavior when I was searching for a solution to resistor termination
-> problem).
-
-I agree that the physical part of the PCI is not documented anywhere. 
-I think all of this support is reverse engineering from the mediatek SDK.
-Maybe you can get better feedback from the mediatek guys.
-
-> 
-> > Hope this helps.
-> 
-> Well in a way it did ;-).
-
-Good to know :-).
-
-> 
-> BTW the idea about merging with MT7621 is from TODO file from MT7621 driver:
-> 
-> https://elixir.bootlin.com/linux/v4.19-rc5/source/drivers/staging/mt7621-pci/TODO#L8
-> 
-> ... and from that 3.10 kernel where all ralink/mediatek PCIe drivers
-> were in a single file (it seems the controllers are really similar).
-
-Since mt7621 is a staging driver it is not possible at all to use PCI_LEGACY in order to
-get it mainlined with the rest of the kernel (with mt7620 together I mean). Anyway mt7621 has three PCI express controllers.
-I sent some patches cleaning the PCI_LEGACY part (these have been applied):
-
-http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2018-August/124480.html
-
-and there are still some series which are not applied yet (I don't have the HW and I can't test it by myself).
-In case of interest see the followings:
-
-Some cleanups and others:
-    * http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2018-September/125937.html
-
-About device tree bindings:
-    * http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2018-September/126604.html
-
-Best regards,
-    Sergio Paracuellos
-> 
-> > 
-> > Best regards,
-> >     Sergio Paracuellos
-> > 
-> 
-> cheers,
-> Petr
+> ---
+>  drivers/mmc/host/mtk-sd.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 0484138..1c1c967 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -387,6 +387,7 @@ struct msdc_host {
+>
+>         struct clk *src_clk;    /* msdc source clock */
+>         struct clk *h_clk;      /* msdc h_clk */
+> +       struct clk *bus_clk;    /* bus clock which used to access register */
+>         struct clk *src_clk_cg; /* msdc source clock control gate */
+>         u32 mclk;               /* mmc subsystem clock frequency */
+>         u32 src_clk_freq;       /* source clock frequency */
+> @@ -660,12 +661,14 @@ static void msdc_gate_clock(struct msdc_host *host)
+>  {
+>         clk_disable_unprepare(host->src_clk_cg);
+>         clk_disable_unprepare(host->src_clk);
+> +       clk_disable_unprepare(host->bus_clk);
+>         clk_disable_unprepare(host->h_clk);
+>  }
+>
+>  static void msdc_ungate_clock(struct msdc_host *host)
+>  {
+>         clk_prepare_enable(host->h_clk);
+> +       clk_prepare_enable(host->bus_clk);
+>         clk_prepare_enable(host->src_clk);
+>         clk_prepare_enable(host->src_clk_cg);
+>         while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
+> @@ -1900,6 +1903,9 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>                 goto host_free;
+>         }
+>
+> +       host->bus_clk = devm_clk_get(&pdev->dev, "bus_clk");
+> +       if (IS_ERR(host->bus_clk))
+> +               host->bus_clk = NULL;
+>         /*source clock control gate is optional clock*/
+>         host->src_clk_cg = devm_clk_get(&pdev->dev, "source_cg");
+>         if (IS_ERR(host->src_clk_cg))
+> --
+> 1.8.1.1.dirty
+>
