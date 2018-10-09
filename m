@@ -1,110 +1,49 @@
-From: Honghui Zhang <honghui.zhang@mediatek.com>
-Subject: Re: [PATCH v6 2/9] PCI: mediatek: Fixup class ID for MT7622 as
- PCI_CLASS_BRIDGE_PCI
-Date: Tue, 9 Oct 2018 11:08:15 +0800
-Message-ID: <1539054495.6246.31.camel@mhfsdcap03>
-References: <1538969088-7136-1-git-send-email-honghui.zhang@mediatek.com>
-         <1538969088-7136-3-git-send-email-honghui.zhang@mediatek.com>
-         <20181008172337.GA13538@e107981-ln.cambridge.arm.com>
+From: Chunhui Li <chunhui.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] kasan: avoid out-of-bounds in unwind_frame
+Date: Tue, 9 Oct 2018 18:11:03 +0800
+Message-ID: <1539079863-19645-1-git-send-email-chunhui.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181008172337.GA13538@e107981-ln.cambridge.arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, ulf.hansson@linaro.org, marc.zyngier@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, youlin.pei@mediatek.com, yt.shen@mediatek.com, sean.wang@mediatek.com
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Ard Biesheuvel <ard.biesheuvel-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, James Morse <james.morse-5wv7dgnIgG8@public.gmane.org>, "chunhui.li" <chunhui.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-10-08 at 18:23 +0100, Lorenzo Pieralisi wrote:
-> On Mon, Oct 08, 2018 at 11:24:41AM +0800, honghui.zhang@mediatek.com wrote:
-> > From: Honghui Zhang <honghui.zhang@mediatek.com>
-> > 
-> > The PCIe controller of MT7622 has TYPE 1 configuration space type, but
-> > the HW default class type values is invalid.
-> > 
-> > The commit 101c92dc80c8 ("PCI: mediatek: Set up vendor ID and class
-> > type for MT7622") have set the class ID for MT7622 as
-> > PCI_CLASS_BRIDGE_HOST, but it's not workable for MT7622:
-> > 
-> > In __pci_bus_assign_resources, the framework only setup bridge's
-> > resource window only if class type is PCI_CLASS_BRIDGE_PCI. Or it
-> > will leave the subordinary PCIe device's MMIO window un-touched.
-> > 
-> > Fixup the class type to PCI_CLASS_BRIDGE_PCI as most of the controller
-> > driver do.
-> 
-> I think that this patch is correct but the commit log fails to pin point
-> the problem. The IP you are programming is a root port, that's why you
-> have to have the proper class code, the patch looks fine but I would
-> like to peek Bjorn's brain on this since it is a fundamental concept.
-> 
+From: "chunhui.li" <chunhui.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-I'm a bit confused with the concepts of PCI_CLASS_BRIDGE_HOST and
-PCI_CLASS_BRIDGE_PCI, from PCI express spec,
-4.0r1.0(PCI_Express_Base_4.0r1.0_September-27-2017-c), Host Bridge is
-"part of a Root Complex that connects a host CPU or CPUs to a
-Hierarchy". While Root Complex defines as "A defined System Element that
-includes at least one Host Bridge, Root port, or Root complex Integrated
-Endpoint".
+   kasan detect unwind_frame out-of-bounds error when one task
+dump another, log as below
+BUG: KASAN: out-of-bounds in unwind_frame+0x140/0x20c Read of
+size 8 at addr ffffffea1e2378e0 by task AnrMonitorThrea/1111
+avoid kasan out-of-bounds error by disable kasan for stacktrace.c
 
-But according to my understanding, most of the root port IPs integrated
-with a "PCI_CLASS_BRIDGE_PCI", which has type 1 configuration space and
-could be saw as a pci device when using lspci.
+Signed-off-by: chunhui.li <chunhui.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ arch/arm64/kernel/Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
 
-And for MT7622, it integrated with block of internal control registers,
-type 1 configuration space, and is considered as a root complex.
-
-I'm not sure which CLASS type it should have:
->From PCI_Code-ID_r_1_10__v8-Nov_2017, class type of
-0x0604(PCI_CLASS_BRIDGE_PCI) is defined as a PCI-to-PCI bridge, not
-literally suitable for MT7622(which is a root complex)(In my personal
-opinion). But it is the only workable CLASS type for MT7622 in current
-kernel.
-
-> If the kernel does not assign resources unless it detects a
-> PCI_CLASS_BRIDGE_PCI this means that for components that are
-> actually PCI_CLASS_BRIDGE_HOST their register set must come
-> preprogrammed unless I am missing something.
-> 
-
-In the function pci_request_resource_alignment, it will by pass the
-resource assignment for PCI_CLASS_BRIDGE_HOST, though I'm not figured
-out why.
-
-> I would like to get to the bottom of this since it is a fundamental
-> enumeration concept.
-> 
-
-Do you like me to re-write the commit message for this patch and put the
-above information in? Or just not mention the PCI_CLASS_BRIDGE_HOST
-assign resource routine?
-
-Thanks
-
-> Thanks,
-> Lorenzo
-> 
-> > 
-> > Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> > Acked-by: Ryder Lee <ryder.lee@mediatek.com>
-> > ---
-> >  drivers/pci/controller/pcie-mediatek.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> > index 288b8e2..bcdac9b 100644
-> > --- a/drivers/pci/controller/pcie-mediatek.c
-> > +++ b/drivers/pci/controller/pcie-mediatek.c
-> > @@ -432,7 +432,7 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
-> >  		val = PCI_VENDOR_ID_MEDIATEK;
-> >  		writew(val, port->base + PCIE_CONF_VEND_ID);
-> >  
-> > -		val = PCI_CLASS_BRIDGE_HOST;
-> > +		val = PCI_CLASS_BRIDGE_PCI;
-> >  		writew(val, port->base + PCIE_CONF_CLASS_ID);
-> >  	}
-> >  
-> > -- 
-> > 2.6.4
-> > 
+diff --git a/arch/arm64/kernel/Makefile b/arch/arm64/kernel/Makefile
+index 95ac737..606d0e2 100644
+--- a/arch/arm64/kernel/Makefile
++++ b/arch/arm64/kernel/Makefile
+@@ -57,6 +57,8 @@ arm64-obj-$(CONFIG_CRASH_DUMP)		+= crash_dump.o
+ arm64-obj-$(CONFIG_ARM_SDE_INTERFACE)	+= sdei.o
+ arm64-obj-$(CONFIG_ARM64_SSBD)		+= ssbd.o
+ 
++KASAN_SANITIZE_stacktrace.o := n
++
+ obj-y					+= $(arm64-obj-y) vdso/ probes/
+ obj-m					+= $(arm64-obj-m)
+ head-y					:= head.o
+-- 
+1.9.1
