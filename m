@@ -1,63 +1,63 @@
-From: Mark Rutland <mark.rutland@arm.com>
-Subject: Re: =?utf-8?B?562U5aSN?= =?utf-8?Q?=3A?= [PATCH] kasan: avoid
- out-of-bounds in unwind_frame
-Date: Wed, 10 Oct 2018 10:26:18 +0100
-Message-ID: <20181010092618.pwkrqqw7br7762rs@lakrids.cambridge.arm.com>
+From: =?utf-8?B?Q2h1bmh1aSBMaSAo5p2O5pil6L6JKQ==?=
+        <chunhui.li@mediatek.com>
+Subject: =?utf-8?B?562U5aSNOiDnrZTlpI06IFtQQVRDSF0ga2FzYW46IGF2b2lkIG91dC1vZi1i?=
+ =?utf-8?Q?ounds_in_unwind=5Fframe?=
+Date: Wed, 10 Oct 2018 11:20:16 +0000
+Message-ID: <a96f9343ed35422498432cc24405f39b@MTKMBS32N1.mediatek.inc>
 References: <1539079863-19645-1-git-send-email-chunhui.li@mediatek.com>
  <20181009103833.sk2jyhl77f5fb64r@lakrids.cambridge.arm.com>
  <193a2b2efdaf41f39cb35a72feb3b39e@MTKMBS32N1.mediatek.inc>
+ <20181010092618.pwkrqqw7br7762rs@lakrids.cambridge.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <193a2b2efdaf41f39cb35a72feb3b39e@MTKMBS32N1.mediatek.inc>
+In-Reply-To: <20181010092618.pwkrqqw7br7762rs@lakrids.cambridge.arm.com>
+Content-Language: zh-CN
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunhui Li =?utf-8?B?KOadjuaYpei+iSk=?= <chunhui.li@mediatek.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Marc Zyngier <marc.zyngier@arm.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, James Morse <james.morse@arm.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, wsd_upstream <wsd_upstream@mediatek.com>, Miles Chen =?utf-8?B?KOmZs+awkeaouik=?= <Miles.Chen@mediatek.com>, Walter-ZH Wu =?utf-8?B?KOWQs+elluWvsCk=?= <Walter-ZH.Wu@mediatek.com>, Yu Liang =?utf-8?B?KOaigeWuhyk=?= <Yu.Liang@mediatek.com>, Nichol
+To: Mark Rutland <mark.rutland@arm.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Marc Zyngier <marc.zyngier@arm.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, James Morse <james.morse@arm.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, wsd_upstream <wsd_upstream@mediatek.com>, =?utf-8?B?TWlsZXMgQ2hlbiAo6Zmz5rCR5qi6KQ==?= <Miles.Chen@mediatek.com>, =?utf-8?B?V2FsdGVyLVpIIFd1ICjlkLPnpZblr7Ap?= <Walter-ZH.Wu@mediatek.com>, =?utf-8?B?WXUgTGlhbmcgKOaigeWuhyk=?= <Yu.Liang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Oct 10, 2018 at 06:45:17AM +0000, Chunhui Li (李春辉) wrote:
-> Hi Mark,
-> 
-> kasan detect out-of-bounds in stacktrace.c line 70, it's already over READ_ONCE_NOCHECK, but still crash
-> kernel-4.9/arch/arm64/kernel/stacktrace.c
-> 69frame->sp = fp + 0x10;
-> 70frame->fp = READ_ONCE_NOCHECK(*(unsigned long *)(fp));
-> 
-> we test on Android platform, kernel-4.9 build with clang 6.0.2, we will do experiment to clarify whether compiler related issue.
-> 
-> READ_ONCE_NOCHECK->__read_once_size_nocheck with __no_sanitize_address if enable CONFIG_KASAN
-> 
-> kernel-4.9/include/linux/compiler-gcc.h
-> #define __no_sanitize_address __attribute__((no_sanitize_address))
-> 
-> kernel-4.9/include/linux/compiler-clang.h
-> #define __no_sanitize_address __attribute__((no_sanitize("address")))
-
-If READ_ONCE_NOCHECK() isn't working as intended, then this is a
-compiler issue, and there are bigger problems regardless.
-
-If we need to workaround some compiler issue, that should be done in the
-implementation of READ_ONCE_NOCHECK().
-
-Please note that there are other issues with using clang to compile the
-kernel; at minimum 7.0.0 is required to build a mainline kernel (and
-even then, the LSE atomics have to be explicitly disabled), so if this
-only affects 6.0.x, I don't think we need to carry any workaround
-upstream.
-
-> there is patch from internet, avoid kasan by wrapping with kasan_disable_current, it seems better.
-> https://lore.kernel.org/patchwork/patch/644463
-> such as:
-> +kasan_disable_current();
->   // access fp
-> +kasan_enable_current();
-
-Please note that the solution later in the thread [1] was to use
-READ_ONCE_NOCHECK().
-
-Thanks,
-Mark.
-
-[1] https://lore.kernel.org/patchwork/patch/644463/#829858
+SGkgTWFyaywNCg0KT2ssIHRoYW5rcyBmb3IgeW91ciBoZWxwDQoNCkJlc3QgcmVnYXJkcywNCkNo
+dW5odWkgTGkNCg0KLS0tLS3pgq7ku7bljp/ku7YtLS0tLQ0K5Y+R5Lu25Lq6OiBNYXJrIFJ1dGxh
+bmQgW21haWx0bzptYXJrLnJ1dGxhbmRAYXJtLmNvbV0gDQrlj5HpgIHml7bpl7Q6IDIwMTjlubQx
+MOaciDEw5pelIDE3OjI2DQrmlLbku7bkuro6IENodW5odWkgTGkgKOadjuaYpei+iSkNCuaKhOmA
+gTogQ2F0YWxpbiBNYXJpbmFzOyBXaWxsIERlYWNvbjsgTWF0dGhpYXMgQnJ1Z2dlcjsgTWFyYyBa
+eW5naWVyOyBBcmQgQmllc2hldXZlbDsgSmFtZXMgTW9yc2U7IE1hc2FoaXJvIFlhbWFkYTsgbGlu
+dXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnOyBsaW51eC1rZXJuZWxAdmdlci5rZXJu
+ZWwub3JnOyBsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnOyB3c2RfdXBzdHJlYW07
+IE1pbGVzIENoZW4gKOmZs+awkeaouik7IFdhbHRlci1aSCBXdSAo5ZCz56WW5a+wKTsgWXUgTGlh
+bmcgKOaigeWuhyk7IE5pY2hvbGFzIFRhbmcgKOmEreenpui8nSkNCuS4u+mimDogUmU6IOetlOWk
+jTogW1BBVENIXSBrYXNhbjogYXZvaWQgb3V0LW9mLWJvdW5kcyBpbiB1bndpbmRfZnJhbWUNCg0K
+T24gV2VkLCBPY3QgMTAsIDIwMTggYXQgMDY6NDU6MTdBTSArMDAwMCwgQ2h1bmh1aSBMaSAo5p2O
+5pil6L6JKSB3cm90ZToNCj4gSGkgTWFyaywNCj4gDQo+IGthc2FuIGRldGVjdCBvdXQtb2YtYm91
+bmRzIGluIHN0YWNrdHJhY2UuYyBsaW5lIDcwLCBpdCdzIGFscmVhZHkgb3ZlciANCj4gUkVBRF9P
+TkNFX05PQ0hFQ0ssIGJ1dCBzdGlsbCBjcmFzaCANCj4ga2VybmVsLTQuOS9hcmNoL2FybTY0L2tl
+cm5lbC9zdGFja3RyYWNlLmMNCj4gNjlmcmFtZS0+c3AgPSBmcCArIDB4MTA7DQo+IDcwZnJhbWUt
+PmZwID0gUkVBRF9PTkNFX05PQ0hFQ0soKih1bnNpZ25lZCBsb25nICopKGZwKSk7DQo+IA0KPiB3
+ZSB0ZXN0IG9uIEFuZHJvaWQgcGxhdGZvcm0sIGtlcm5lbC00LjkgYnVpbGQgd2l0aCBjbGFuZyA2
+LjAuMiwgd2Ugd2lsbCBkbyBleHBlcmltZW50IHRvIGNsYXJpZnkgd2hldGhlciBjb21waWxlciBy
+ZWxhdGVkIGlzc3VlLg0KPiANCj4gUkVBRF9PTkNFX05PQ0hFQ0stPl9fcmVhZF9vbmNlX3NpemVf
+bm9jaGVjayB3aXRoIF9fbm9fc2FuaXRpemVfYWRkcmVzcyANCj4gaWYgZW5hYmxlIENPTkZJR19L
+QVNBTg0KPiANCj4ga2VybmVsLTQuOS9pbmNsdWRlL2xpbnV4L2NvbXBpbGVyLWdjYy5oDQo+ICNk
+ZWZpbmUgX19ub19zYW5pdGl6ZV9hZGRyZXNzIF9fYXR0cmlidXRlX18oKG5vX3Nhbml0aXplX2Fk
+ZHJlc3MpKQ0KPiANCj4ga2VybmVsLTQuOS9pbmNsdWRlL2xpbnV4L2NvbXBpbGVyLWNsYW5nLmgN
+Cj4gI2RlZmluZSBfX25vX3Nhbml0aXplX2FkZHJlc3MgX19hdHRyaWJ1dGVfXygobm9fc2FuaXRp
+emUoImFkZHJlc3MiKSkpDQoNCklmIFJFQURfT05DRV9OT0NIRUNLKCkgaXNuJ3Qgd29ya2luZyBh
+cyBpbnRlbmRlZCwgdGhlbiB0aGlzIGlzIGEgY29tcGlsZXIgaXNzdWUsIGFuZCB0aGVyZSBhcmUg
+YmlnZ2VyIHByb2JsZW1zIHJlZ2FyZGxlc3MuDQoNCklmIHdlIG5lZWQgdG8gd29ya2Fyb3VuZCBz
+b21lIGNvbXBpbGVyIGlzc3VlLCB0aGF0IHNob3VsZCBiZSBkb25lIGluIHRoZSBpbXBsZW1lbnRh
+dGlvbiBvZiBSRUFEX09OQ0VfTk9DSEVDSygpLg0KDQpQbGVhc2Ugbm90ZSB0aGF0IHRoZXJlIGFy
+ZSBvdGhlciBpc3N1ZXMgd2l0aCB1c2luZyBjbGFuZyB0byBjb21waWxlIHRoZSBrZXJuZWw7IGF0
+IG1pbmltdW0gNy4wLjAgaXMgcmVxdWlyZWQgdG8gYnVpbGQgYSBtYWlubGluZSBrZXJuZWwgKGFu
+ZCBldmVuIHRoZW4sIHRoZSBMU0UgYXRvbWljcyBoYXZlIHRvIGJlIGV4cGxpY2l0bHkgZGlzYWJs
+ZWQpLCBzbyBpZiB0aGlzIG9ubHkgYWZmZWN0cyA2LjAueCwgSSBkb24ndCB0aGluayB3ZSBuZWVk
+IHRvIGNhcnJ5IGFueSB3b3JrYXJvdW5kIHVwc3RyZWFtLg0KDQo+IHRoZXJlIGlzIHBhdGNoIGZy
+b20gaW50ZXJuZXQsIGF2b2lkIGthc2FuIGJ5IHdyYXBwaW5nIHdpdGgga2FzYW5fZGlzYWJsZV9j
+dXJyZW50LCBpdCBzZWVtcyBiZXR0ZXIuDQo+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3BhdGNo
+d29yay9wYXRjaC82NDQ0NjMNCj4gc3VjaCBhczoNCj4gK2thc2FuX2Rpc2FibGVfY3VycmVudCgp
+Ow0KPiAgIC8vIGFjY2VzcyBmcA0KPiAra2FzYW5fZW5hYmxlX2N1cnJlbnQoKTsNCg0KUGxlYXNl
+IG5vdGUgdGhhdCB0aGUgc29sdXRpb24gbGF0ZXIgaW4gdGhlIHRocmVhZCBbMV0gd2FzIHRvIHVz
+ZSBSRUFEX09OQ0VfTk9DSEVDSygpLg0KDQpUaGFua3MsDQpNYXJrLg0KDQpbMV0gaHR0cHM6Ly9s
+b3JlLmtlcm5lbC5vcmcvcGF0Y2h3b3JrL3BhdGNoLzY0NDQ2My8jODI5ODU4DQo=
