@@ -1,33 +1,72 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] pinctrl: mediatek: select GPIOLIB
-Date: Wed, 10 Oct 2018 13:53:46 +0200
-Message-ID: <CACRpkdYwGyMosmwW9YkMSKs4VCet7c0itwx0jUKOXnGMkS2g9w@mail.gmail.com>
-References: <20181008155803.3322412-1-arnd@arndb.de>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [GIT PULL] mediatek drm next for 4.20
+Date: Thu, 11 Oct 2018 09:25:19 +0800
+Message-ID: <1539221119.8351.1.camel@mtksdaap41>
+References: <1538616148.28906.1.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181008155803.3322412-1-arnd@arndb.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, Biao Huang <biao.huang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, zh.chen@mediatek.com, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1538616148.28906.1.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, chunhui dai <chunhui.dai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Oct 8, 2018 at 5:58 PM Arnd Bergmann <arnd@arndb.de> wrote:
-
-> Removing the linux/gpio.h include means we no longer have a declaration
-> of gpiochip_lock_as_irq() when CONFIG_GPIOLIB is disabled:
->
-> drivers/pinctrl/mediatek/mtk-eint.c: In function 'mtk_eint_irq_request_resources':
-> drivers/pinctrl/mediatek/mtk-eint.c:247:8: error: implicit declaration of function 'gpiochip_lock_as_irq'; did you mean 'spin_lock_irq'? [-Werror=implicit-function-declaration]
-> drivers/pinctrl/mediatek/mtk-eint.c: In function 'mtk_eint_irq_release_resources':
-> drivers/pinctrl/mediatek/mtk-eint.c:272:2: error: implicit declaration of function 'gpiochip_unlock_as_irq'; did you mean 'spin_unlock_irq'? [-Werror=implicit-function-declaration]
->
-> Select it explictly instead.
->
-> Fixes: 1c5fb66afa2a ("pinctrl: Include <linux/gpio/driver.h> nothing else")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-
-Patch applied.
-
-Yours,
-Linus Walleij
+SGksIERhdmU6CgpQaW5nIHRoaXMuIElmIHRoZXJlIGlzIGFueSBwcm9ibGVtLCB0ZWxsIG1lIGFu
+ZCBJIHdvdWxkIGZpeCBpdC4KClJlZ2FyZHMsCkNLCgpPbiBUaHUsIDIwMTgtMTAtMDQgYXQgMDk6
+MjIgKzA4MDAsIENLIEh1IHdyb3RlOgo+IEhpLCBEYXZlOgo+IAo+IFRoaXMgaW5jbHVkZSBoZG1p
+IG91dHB1dCBzdXBwb3J0IGZvciBtdDI3MDEgYW5kIG10NzYyMy4KPiAKPiBSZWdhcmRzLAo+IENL
+Cj4gCj4gVGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdAo+IDg3YzJlZTc0MGMwN2Yx
+ZWRhZTllZWM4YmM0NWNiOWIzMmE2OGYzMjM6Cj4gCj4gICBNZXJnZSBicmFuY2ggJ2RybS1uZXh0
+LTQuMjAnIG9mCj4gZ2l0Oi8vcGVvcGxlLmZyZWVkZXNrdG9wLm9yZy9+YWdkNWYvbGludXggaW50
+byBkcm0tbmV4dCAoMjAxOC0wOS0yOAo+IDA5OjQ4OjQwICsxMDAwKQo+IAo+IGFyZSBhdmFpbGFi
+bGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0Ogo+IAo+IAo+ICAgaHR0cHM6Ly9naXRodWIuY29t
+L2NraHUtbWVkaWF0ZWsvbGludXguZ2l0LXRhZ3MuZ2l0Cj4gbWVkaWF0ZWstZHJtLW5leHQtNC4y
+MAo+IAo+IGZvciB5b3UgdG8gZmV0Y2ggY2hhbmdlcyB1cCB0byA4NGRhY2I5Y2FkMjgwNGE5ZjU0
+MzRiNzc1Y2NlYTZhYTVkOWZjNmNhOgo+IAo+ICAgZHJtL21lZGlhdGVrOiBhZGQgYSBlcnJvciBy
+ZXR1cm4gdmFsdWUgd2hlbiBjbG9jayBkcml2ZXIgaGFzIGJlZW4KPiBwcmVwYXJlZCAoMjAxOC0x
+MC0wMyAxMTo1NjozMyArMDgwMCkKPiAKPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gQmliYnkgSHNpZWggKDIpOgo+ICAg
+ICAgIGRybS9tZWRpYXRlazogaW1wbGVtZW50IGNvbm5lY3Rpb24gZnJvbSBCTFMgdG8gRFBJMAo+
+ICAgICAgIGRybS9tZWRpYXRlazogYWRkIGEgZXJyb3IgcmV0dXJuIHZhbHVlIHdoZW4gY2xvY2sg
+ZHJpdmVyIGhhcyBiZWVuCj4gcHJlcGFyZWQKPiAKPiBjaHVuaHVpIGRhaSAoOSk6Cj4gICAgICAg
+ZHJtL21lZGlhdGVrOiBhZGQgcmVmY291bnQgZm9yIERQSSBwb3dlciBvbi9vZmYKPiAgICAgICBk
+cm0vbWVkaWF0ZWs6IG1vdmUgaGFyZHdhcmUgcmVnaXN0ZXIgdG8gbm9kZSBkYXRhCj4gICAgICAg
+ZHJtL21lZGlhdGVrOiBhZGp1c3QgRURHRSB0byBtYXRjaCBjbG9jayBhbmQgZGF0YQo+ICAgICAg
+IGRybS9tZWRpYXRlazogYWRkIGNsb2NrIGZhY3RvciBmb3IgZGlmZmVyZW50IElDCj4gICAgICAg
+ZHJtL21lZGlhdGVrOiBjb252ZXJ0IGRwaSBkcml2ZXIgdG8gdXNlCj4gZHJtX29mX2ZpbmRfcGFu
+ZWxfb3JfYnJpZGdlCj4gICAgICAgZHJtL21lZGlhdGVrOiBhZGQgZHBpIGRyaXZlciBmb3IgbXQy
+NzAxIGFuZCBtdDc2MjMKPiAgICAgICBkcm0vbWVkaWF0ZWs6IHNlcGFyYXRlIGhkbWkgcGh5IHRv
+IGRpZmZlcmVudCBmaWxlCj4gICAgICAgZHJtL21lZGlhdGVrOiBhZGQgc3VwcG9ydCBmb3IgU1BE
+SUYgYXVkaW8gaW4gSERNSQo+ICAgICAgIGRybS9tZWRpYXRlazogYWRkIGhkbWkgZHJpdmVyIGZv
+ciBNVDI3MDEgYW5kIE1UNzYyMwo+IAo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvTWFrZWZp
+bGUgICAgICAgICAgICAgIHwgICA1ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHBpLmMgICAgICAgICAgICAgfCAxMzEgKysrKysrKystLS0tLS0KPiAgZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcGlfcmVncy5oICAgICAgICB8ICAgMiArLQo+ICBkcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgICAgICAgIHwgIDE0ICstCj4gIGRyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgICAgICAgICB8ICAgMiArCj4gIGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jICAgICAgICAgICAgfCAgMTUgKy0KPiAgZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmggICAgICAgICAgICB8ICAgMiArLQo+ICBkcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMgICAgICAgIHwgMjM1Cj4gKysrKysr
+KysrKysrKysrKysrKysrKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlf
+cGh5LmggICAgICAgIHwgIDYwICsrKysrKysKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19tdDI3MDFfaGRtaV9waHkuYyB8IDIxMgo+ICsrKysrKysrKysrKysrKysrKysrKysKPiAgZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRtaV9waHkuYyB8IDIyNgo+ICstLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLQo+ICAxMiBmaWxlcyBjaGFuZ2VkLCA2MjcgaW5zZXJ0aW9ucygr
+KSwgMjc5IGRlbGV0aW9ucygtKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19oZG1pX3BoeS5jCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmgKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQyNzAxX2hkbWlfcGh5LmMKPiAKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
