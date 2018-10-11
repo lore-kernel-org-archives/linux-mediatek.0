@@ -1,72 +1,62 @@
-From: Dave Airlie <airlied-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: CK Hu <ck.hu@mediatek.com>
 Subject: Re: [GIT PULL] mediatek drm next for 4.20
-Date: Thu, 11 Oct 2018 13:56:22 +1000
-Message-ID: <CAPM=9tzr2f+=iyZb0yPjjABNiehRqL4xEQMqirr__qaPgu-T6w@mail.gmail.com>
+Date: Thu, 11 Oct 2018 14:21:19 +0800
+Message-ID: <1539238879.9926.3.camel@mtksdaap41>
 References: <1538616148.28906.1.camel@mtksdaap41>
  <1539221119.8351.1.camel@mtksdaap41>
  <CAPM=9tyeONZ3Kft6_S9CNU98_ORNQ6WnV_20tDwqHTydWsQoRw@mail.gmail.com>
  <1539224970.19622.3.camel@mtksdaap41>
+ <CAPM=9tzr2f+=iyZb0yPjjABNiehRqL4xEQMqirr__qaPgu-T6w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1539224970.19622.3.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chunhui.dai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAPM=9tzr2f+=iyZb0yPjjABNiehRqL4xEQMqirr__qaPgu-T6w@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>
+Cc: ryder.lee@mediatek.com, linux-mediatek@lists.infradead.org, dri-devel <dri-devel@lists.freedesktop.org>, chunhui.dai@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 11 Oct 2018 at 12:29, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->
-> Hi, Dave:
->
-> On Thu, 2018-10-11 at 11:42 +1000, Dave Airlie wrote:
-> > On Thu, 11 Oct 2018 at 11:25, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > >
-> > > Hi, Dave:
-> > >
-> > > Ping this. If there is any problem, tell me and I would fix it.
-> > >
-> > > Regards,
-> > > CK
-> > >
-> > > On Thu, 2018-10-04 at 09:22 +0800, CK Hu wrote:
-> > > > Hi, Dave:
-> > > >
-> > > > This include hdmi output support for mt2701 and mt7623.
-> > > >
-> > > > Regards,
-> > > > CK
-> > > >
-> > > > The following changes since commit
-> > > > 87c2ee740c07f1edae9eec8bc45cb9b32a68f323:
-> > > >
-> > > >   Merge branch 'drm-next-4.20' of
-> > > > git://people.freedesktop.org/~agd5f/linux into drm-next (2018-09-28
-> > > > 09:48:40 +1000)
-> > > >
-> > > > are available in the git repository at:
-> > > >
-> > > >
-> > > >   https://github.com/ckhu-mediatek/linux.git-tags.git
-> > > > mediatek-drm-next-4.20
-> >
-> > This has two newlines which might suggest and older version of git was
-> > being used.
->
-> I'll take care of the newline part in future. But I don't understand
-> what is the problem of older version of git? Maybe I could prevent this
-> next time.
-
-In the recent hisilicon-next pulls Xinliang Liu mentioned the double
-lines are from git 1.9.1, and were fixed in a later version.
-
-Dave.
+SGksIERhdmU6CgpPbiBUaHUsIDIwMTgtMTAtMTEgYXQgMTM6NTYgKzEwMDAsIERhdmUgQWlybGll
+IHdyb3RlOgo+IE9uIFRodSwgMTEgT2N0IDIwMTggYXQgMTI6MjksIENLIEh1IDxjay5odUBtZWRp
+YXRlay5jb20+IHdyb3RlOgo+ID4KPiA+IEhpLCBEYXZlOgo+ID4KPiA+IE9uIFRodSwgMjAxOC0x
+MC0xMSBhdCAxMTo0MiArMTAwMCwgRGF2ZSBBaXJsaWUgd3JvdGU6Cj4gPiA+IE9uIFRodSwgMTEg
+T2N0IDIwMTggYXQgMTE6MjUsIENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+IHdyb3RlOgo+ID4g
+PiA+Cj4gPiA+ID4gSGksIERhdmU6Cj4gPiA+ID4KPiA+ID4gPiBQaW5nIHRoaXMuIElmIHRoZXJl
+IGlzIGFueSBwcm9ibGVtLCB0ZWxsIG1lIGFuZCBJIHdvdWxkIGZpeCBpdC4KPiA+ID4gPgo+ID4g
+PiA+IFJlZ2FyZHMsCj4gPiA+ID4gQ0sKPiA+ID4gPgo+ID4gPiA+IE9uIFRodSwgMjAxOC0xMC0w
+NCBhdCAwOToyMiArMDgwMCwgQ0sgSHUgd3JvdGU6Cj4gPiA+ID4gPiBIaSwgRGF2ZToKPiA+ID4g
+PiA+Cj4gPiA+ID4gPiBUaGlzIGluY2x1ZGUgaGRtaSBvdXRwdXQgc3VwcG9ydCBmb3IgbXQyNzAx
+IGFuZCBtdDc2MjMuCj4gPiA+ID4gPgo+ID4gPiA+ID4gUmVnYXJkcywKPiA+ID4gPiA+IENLCj4g
+PiA+ID4gPgo+ID4gPiA+ID4gVGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdAo+ID4g
+PiA+ID4gODdjMmVlNzQwYzA3ZjFlZGFlOWVlYzhiYzQ1Y2I5YjMyYTY4ZjMyMzoKPiA+ID4gPiA+
+Cj4gPiA+ID4gPiAgIE1lcmdlIGJyYW5jaCAnZHJtLW5leHQtNC4yMCcgb2YKPiA+ID4gPiA+IGdp
+dDovL3Blb3BsZS5mcmVlZGVza3RvcC5vcmcvfmFnZDVmL2xpbnV4IGludG8gZHJtLW5leHQgKDIw
+MTgtMDktMjgKPiA+ID4gPiA+IDA5OjQ4OjQwICsxMDAwKQo+ID4gPiA+ID4KPiA+ID4gPiA+IGFy
+ZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0Ogo+ID4gPiA+ID4KPiA+ID4gPiA+
+Cj4gPiA+ID4gPiAgIGh0dHBzOi8vZ2l0aHViLmNvbS9ja2h1LW1lZGlhdGVrL2xpbnV4LmdpdC10
+YWdzLmdpdAo+ID4gPiA+ID4gbWVkaWF0ZWstZHJtLW5leHQtNC4yMAo+ID4gPgo+ID4gPiBUaGlz
+IGhhcyB0d28gbmV3bGluZXMgd2hpY2ggbWlnaHQgc3VnZ2VzdCBhbmQgb2xkZXIgdmVyc2lvbiBv
+ZiBnaXQgd2FzCj4gPiA+IGJlaW5nIHVzZWQuCj4gPgo+ID4gSSdsbCB0YWtlIGNhcmUgb2YgdGhl
+IG5ld2xpbmUgcGFydCBpbiBmdXR1cmUuIEJ1dCBJIGRvbid0IHVuZGVyc3RhbmQKPiA+IHdoYXQg
+aXMgdGhlIHByb2JsZW0gb2Ygb2xkZXIgdmVyc2lvbiBvZiBnaXQ/IE1heWJlIEkgY291bGQgcHJl
+dmVudCB0aGlzCj4gPiBuZXh0IHRpbWUuCj4gCj4gSW4gdGhlIHJlY2VudCBoaXNpbGljb24tbmV4
+dCBwdWxscyBYaW5saWFuZyBMaXUgbWVudGlvbmVkIHRoZSBkb3VibGUKPiBsaW5lcyBhcmUgZnJv
+bSBnaXQgMS45LjEsIGFuZCB3ZXJlIGZpeGVkIGluIGEgbGF0ZXIgdmVyc2lvbi4KClllcywgdGhp
+cyByZXF1ZXN0IGlzIGdlbmVyYXRlZCBieSBnaXQgMS45LjEuIEkgdHJ5IHdpdGggZ2l0IDIuMTUu
+NSBhbmQKaXQgaGFzIG5vIHRoaXMgcHJvYmxlbS4gSSB3aWxsIGdlbmVyYXRlIHB1bGwgcmVxdWVz
+dCBieSBhIGxhdGVyIHZlcnNpb24uCgpSZWdhcmRzLApDSwoKPiAKPiBEYXZlLgo+IAo+IF9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtbWVkaWF0
+ZWsgbWFpbGluZyBsaXN0Cj4gTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
+ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
+aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
