@@ -1,66 +1,48 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [GIT PULL] mediatek drm next for 4.20
-Date: Thu, 11 Oct 2018 10:21:04 +0200
-Message-ID: <20181011082104.GS31561@phenom.ffwll.local>
-References: <1538616148.28906.1.camel@mtksdaap41>
- <1539221119.8351.1.camel@mtksdaap41>
- <CAPM=9tyeONZ3Kft6_S9CNU98_ORNQ6WnV_20tDwqHTydWsQoRw@mail.gmail.com>
- <1539224970.19622.3.camel@mtksdaap41>
- <CAPM=9tzr2f+=iyZb0yPjjABNiehRqL4xEQMqirr__qaPgu-T6w@mail.gmail.com>
- <1539238879.9926.3.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 4/5] pinctrl: mediatek: pinctrl-mtk-common-v2: Make eint_m
+ u16
+Date: Thu, 11 Oct 2018 11:29:27 +0200
+Message-ID: <e2df8c8a-34a1-ef32-838d-776053b1b707@gmail.com>
+References: <20181008191411.32555-1-manivannan.sadhasivam@linaro.org>
+ <20181008191411.32555-5-manivannan.sadhasivam@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1539238879.9926.3.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org, ryder.lee@mediatek.com, dri-devel <dri-devel@lists.freedesktop.org>, chunhui.dai@mediatek.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181008191411.32555-5-manivannan.sadhasivam@linaro.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, sean.wang@mediatek.com, linus.walleij@linaro.org, robh+dt@kernel.org
+Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, amit.kucheria@linaro.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVGh1LCBPY3QgMTEsIDIwMTggYXQgMDI6MjE6MTlQTSArMDgwMCwgQ0sgSHUgd3JvdGU6Cj4g
-SGksIERhdmU6Cj4gCj4gT24gVGh1LCAyMDE4LTEwLTExIGF0IDEzOjU2ICsxMDAwLCBEYXZlIEFp
-cmxpZSB3cm90ZToKPiA+IE9uIFRodSwgMTEgT2N0IDIwMTggYXQgMTI6MjksIENLIEh1IDxjay5o
-dUBtZWRpYXRlay5jb20+IHdyb3RlOgo+ID4gPgo+ID4gPiBIaSwgRGF2ZToKPiA+ID4KPiA+ID4g
-T24gVGh1LCAyMDE4LTEwLTExIGF0IDExOjQyICsxMDAwLCBEYXZlIEFpcmxpZSB3cm90ZToKPiA+
-ID4gPiBPbiBUaHUsIDExIE9jdCAyMDE4IGF0IDExOjI1LCBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsu
-Y29tPiB3cm90ZToKPiA+ID4gPiA+Cj4gPiA+ID4gPiBIaSwgRGF2ZToKPiA+ID4gPiA+Cj4gPiA+
-ID4gPiBQaW5nIHRoaXMuIElmIHRoZXJlIGlzIGFueSBwcm9ibGVtLCB0ZWxsIG1lIGFuZCBJIHdv
-dWxkIGZpeCBpdC4KPiA+ID4gPiA+Cj4gPiA+ID4gPiBSZWdhcmRzLAo+ID4gPiA+ID4gQ0sKPiA+
-ID4gPiA+Cj4gPiA+ID4gPiBPbiBUaHUsIDIwMTgtMTAtMDQgYXQgMDk6MjIgKzA4MDAsIENLIEh1
-IHdyb3RlOgo+ID4gPiA+ID4gPiBIaSwgRGF2ZToKPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gVGhp
-cyBpbmNsdWRlIGhkbWkgb3V0cHV0IHN1cHBvcnQgZm9yIG10MjcwMSBhbmQgbXQ3NjIzLgo+ID4g
-PiA+ID4gPgo+ID4gPiA+ID4gPiBSZWdhcmRzLAo+ID4gPiA+ID4gPiBDSwo+ID4gPiA+ID4gPgo+
-ID4gPiA+ID4gPiBUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0Cj4gPiA+ID4gPiA+
-IDg3YzJlZTc0MGMwN2YxZWRhZTllZWM4YmM0NWNiOWIzMmE2OGYzMjM6Cj4gPiA+ID4gPiA+Cj4g
-PiA+ID4gPiA+ICAgTWVyZ2UgYnJhbmNoICdkcm0tbmV4dC00LjIwJyBvZgo+ID4gPiA+ID4gPiBn
-aXQ6Ly9wZW9wbGUuZnJlZWRlc2t0b3Aub3JnL35hZ2Q1Zi9saW51eCBpbnRvIGRybS1uZXh0ICgy
-MDE4LTA5LTI4Cj4gPiA+ID4gPiA+IDA5OjQ4OjQwICsxMDAwKQo+ID4gPiA+ID4gPgo+ID4gPiA+
-ID4gPiBhcmUgYXZhaWxhYmxlIGluIHRoZSBnaXQgcmVwb3NpdG9yeSBhdDoKPiA+ID4gPiA+ID4K
-PiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gICBodHRwczovL2dpdGh1Yi5jb20vY2todS1tZWRpYXRl
-ay9saW51eC5naXQtdGFncy5naXQKPiA+ID4gPiA+ID4gbWVkaWF0ZWstZHJtLW5leHQtNC4yMAo+
-ID4gPiA+Cj4gPiA+ID4gVGhpcyBoYXMgdHdvIG5ld2xpbmVzIHdoaWNoIG1pZ2h0IHN1Z2dlc3Qg
-YW5kIG9sZGVyIHZlcnNpb24gb2YgZ2l0IHdhcwo+ID4gPiA+IGJlaW5nIHVzZWQuCj4gPiA+Cj4g
-PiA+IEknbGwgdGFrZSBjYXJlIG9mIHRoZSBuZXdsaW5lIHBhcnQgaW4gZnV0dXJlLiBCdXQgSSBk
-b24ndCB1bmRlcnN0YW5kCj4gPiA+IHdoYXQgaXMgdGhlIHByb2JsZW0gb2Ygb2xkZXIgdmVyc2lv
-biBvZiBnaXQ/IE1heWJlIEkgY291bGQgcHJldmVudCB0aGlzCj4gPiA+IG5leHQgdGltZS4KPiA+
-IAo+ID4gSW4gdGhlIHJlY2VudCBoaXNpbGljb24tbmV4dCBwdWxscyBYaW5saWFuZyBMaXUgbWVu
-dGlvbmVkIHRoZSBkb3VibGUKPiA+IGxpbmVzIGFyZSBmcm9tIGdpdCAxLjkuMSwgYW5kIHdlcmUg
-Zml4ZWQgaW4gYSBsYXRlciB2ZXJzaW9uLgo+IAo+IFllcywgdGhpcyByZXF1ZXN0IGlzIGdlbmVy
-YXRlZCBieSBnaXQgMS45LjEuIEkgdHJ5IHdpdGggZ2l0IDIuMTUuNSBhbmQKPiBpdCBoYXMgbm8g
-dGhpcyBwcm9ibGVtLiBJIHdpbGwgZ2VuZXJhdGUgcHVsbCByZXF1ZXN0IGJ5IGEgbGF0ZXIgdmVy
-c2lvbi4KCkZvciBzZWN1cml0eSByZWFzb25zIHlvdSByZWFsbHkgd2FudCB0byB1c2UgdGhlIHZl
-cnkgbGF0ZXN0IGdpdCwgYWx3YXlzLgotRGFuaWVsCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJl
-IEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+
+On 08/10/2018 21:14, Manivannan Sadhasivam wrote:
+> For SoC's which lacks EINT support, U16_MAX is assigned to both eint_m
+> and eint_n through macro NO_EINT_SUPPORT. This will generate integer
+> overflow warning because eint_m is declared as u8 type. Hence modify
+> the eint_m type to u16.
+> 
+> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+> index 991c1c56670c..6d24522739d9 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+> @@ -154,7 +154,7 @@ struct mtk_func_desc {
+>   * @eitn_n:		the eint number for this pin
+>   */
+>  struct mtk_eint_desc {
+> -	u8 eint_m;
+> +	u16 eint_m;
+>  	u16 eint_n;
+>  };
+>  
+> 
