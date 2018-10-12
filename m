@@ -1,86 +1,89 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v6 2/9] PCI: mediatek: Fixup class ID for MT7622 as
- PCI_CLASS_BRIDGE_PCI
-Date: Fri, 12 Oct 2018 09:12:02 -0500
-Message-ID: <20181012141202.GV5906@bhelgaas-glaptop.roam.corp.google.com>
-References: <1538969088-7136-1-git-send-email-honghui.zhang@mediatek.com>
- <1538969088-7136-3-git-send-email-honghui.zhang@mediatek.com>
- <20181008172337.GA13538@e107981-ln.cambridge.arm.com>
- <1539054495.6246.31.camel@mhfsdcap03>
- <20181011113748.GA3574@e107981-ln.cambridge.arm.com>
- <1539331289.6246.61.camel@mhfsdcap03>
- <20181012102230.GA23257@e107981-ln.cambridge.arm.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v1 3/3] clk: mediatek: mt2712: add pll reference support
+Date: Fri, 12 Oct 2018 10:53:23 -0700
+Message-ID: <153936680359.5275.14901579706860255114@swboyd.mtv.corp.google.com>
+References: <20180920095727.11868-1-weiyi.lu@mediatek.com>
+ <20180920095727.11868-5-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20181012102230.GA23257@e107981-ln.cambridge.arm.com>
+In-Reply-To: <20180920095727.11868-5-weiyi.lu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Honghui Zhang <honghui.zhang@mediatek.com>, youlin.pei@mediatek.com, devicetree@vger.kernel.org, ulf.hansson@linaro.org, ryder.lee@mediatek.com, marc.zyngier@arm.com, linux-pci@vger.kernel.org, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, yt.shen@mediatek.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, bhelgaas@google.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Oct 12, 2018 at 11:22:30AM +0100, Lorenzo Pieralisi wrote:
-> On Fri, Oct 12, 2018 at 04:01:29PM +0800, Honghui Zhang wrote:
->> On Thu, 2018-10-11 at 12:38 +0100, Lorenzo Pieralisi wrote:
->>> On Tue, Oct 09, 2018 at 11:08:15AM +0800, Honghui Zhang wrote:
->>>> On Mon, 2018-10-08 at 18:23 +0100, Lorenzo Pieralisi wrote:
->>>>> On Mon, Oct 08, 2018 at 11:24:41AM +0800, honghui.zhang@mediatek.com wrote:
->>>>>> From: Honghui Zhang <honghui.zhang@mediatek.com>
->>>>>> 
->>>>>> The PCIe controller of MT7622 has TYPE 1 configuration
->>>>>> space type, but the HW default class type values is
->>>>>> invalid.
->>>>>> 
->>>>>> The commit 101c92dc80c8 ("PCI: mediatek: Set up vendor ID
->>>>>> and class type for MT7622") have set the class ID for
->>>>>> MT7622 as PCI_CLASS_BRIDGE_HOSTe, but it's not workable
->>>>>> for MT7622:
->>>>>> 
->>>>>> In __pci_bus_assign_resources, the framework only setup
->>>>>> bridge's resource window only if class type is
->>>>>> PCI_CLASS_BRIDGE_PCI. Or it will leave the subordinary PCIe
->>>>>> device's MMIO window un-touched.
+Quoting Weiyi Lu (2018-09-20 02:57:27)
+> For some MT2712 projects, audpll could select another reference
+> clock source if there exists an extra Crystal Oscillators than
+> the default clk26m XTAL.
+> Declare with the property "mediatek,refclk-aud" to switch
+> the audpll reference clock.
+> And also support to modify the reference clock of all PLL with
+> property "mediatek,refclk" instead of the default source "clk26m".
+> =
 
-I think __pci_bus_assign_resources() should be testing dev->hdr_type
-instead of dev->class.  The connection between "Header Type" and the
-layout of the rest of the header is very explicit (PCI r3.0 sec 6.1,
-PCIe r4.0 sec 7.5.1.1.9), and the reason for the switch statement in
-__pci_bus_assign_resources() is precisely to determine which layout to
-use.
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> ---
+> diff --git a/drivers/clk/mediatek/clk-mt2712.c b/drivers/clk/mediatek/clk=
+-mt2712.c
+> index e36f4aab634d..2a4db1718089 100644
+> --- a/drivers/clk/mediatek/clk-mt2712.c
+> +++ b/drivers/clk/mediatek/clk-mt2712.c
+[...]
+> +       size_t i;
+> +       u32 r;
+> +
+> +       base =3D of_iomap(node, 0);
+> +       if (base) {
+> +               sel_addr =3D base + 0x40;
+> +       } else {
+> +               pr_err("%s(): ioremap failed\n", __func__);
+> +               return;
+> +       }
 
-There are several other uses of dev->class in setup-bus.c that I think
-should also be changed to use dev->hdr_type.
+Nitpick: Write this as
 
-If we make these changes in setup-bus.c, I suspect the class code you
-assign won't matter too much.  There are a few other tests of the
-class code to figure out whether to leave certain things untouched.
-These seem a little hacky to me, but we're probably stuck with them
-for now, so you should look and see whether they apply to your
-situation.
+	base =3D of_iomap();
+	if (!base)
+		return;
+	sel_addr =3D base + 0x40;
 
->>>> And for MT7622, it integrated with block of internal control
->>>> registers, type 1 configuration space, and is considered as a
->>>> root complex.
->>> 
->>> I assume you mean a type 1 config header here. I do not think it
->>> is mandatory for a host bridge to have a type 1 config header (and
->>> related bridge windows + primary/secondary/subordinate bus
->>> numbers) but I do not know how the IP you are programming is
->>> designed.
+> +
+> +       rc =3D of_parse_phandle_with_args(node, "mediatek,refclk",
+> +                       "#clock-cells", 0, &refclk);
+> +       if (!rc) {
+> +               of_property_read_string(refclk.np, "clock-output-names",
+> +                               &refclk_name);
+> +               for (i =3D 0; i < num_plls; i++)
+> +                       plls[i].parent_name =3D refclk_name;
 
-It is definitely not mandatory for a host bridge to have a type 1
-header.  I'm not even sure that would make sense: the "Primary Bus
-Number" would not apply to a host bridge (since a host bridge's
-primary bus is some sort of CPU bus, not a PCI bus), and a type 1
-device cannot perform address translation between its primary and
-secondary buses, while a host bridge can.
+Use of_clk_parent_fill()?
 
-A Root Port is a type 1 device where the primary bus is logically
-internal to the Root Complex.  A host bridge bridges from the CPU bus
-to that internal bus and might perform address translation.  The Root
-Port must be a PCI device.  A host bridge, being a bridge *to* the PCI
-domain, is not itself generally programmed via PCI config space and
-might not even be visible as a device in PCI config space.
+> +       }
+> +
+> +       rc =3D of_parse_phandle_with_args(node, "mediatek,refclk-aud",
+> +                       "#clock-cells", 0, &refclk_aud);
 
-Bjorn
+This is odd. Is this a custom 'clocks' property? What's going on here?
+Why can't we use assigned clock parents for this?
+
+> +       if (!rc) {
+> +               of_property_read_string(refclk_aud.np, "clock-output-name=
+s",
+> +                               &refclk_aud_name);
+> +               if (strcmp(refclk_name, refclk_aud_name)) {
+> +                       plls[CLK_APMIXED_APLL1].parent_name =3D refclk_au=
+d_name;
+> +                       plls[CLK_APMIXED_APLL2].parent_name =3D refclk_au=
+d_name;
+> +                       r =3D readl(sel_addr) | 0x60000;
+> +               } else {
+> +                       r =3D readl(sel_addr) & ~0x60000;
+> +               }
+> +
+> +               writel(r, sel_addr);
+> +       }
+> +}
+> +
