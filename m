@@ -1,89 +1,71 @@
 From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v1 3/3] clk: mediatek: mt2712: add pll reference support
-Date: Fri, 12 Oct 2018 10:53:23 -0700
-Message-ID: <153936680359.5275.14901579706860255114@swboyd.mtv.corp.google.com>
-References: <20180920095727.11868-1-weiyi.lu@mediatek.com>
- <20180920095727.11868-5-weiyi.lu@mediatek.com>
+Subject: Re: [resend PATCH v4 4/5] drm/mediatek: Add support for mmsys through a pdev
+Date: Fri, 12 Oct 2018 11:23:14 -0700
+Message-ID: <153936859491.5275.13670768818136325103@swboyd.mtv.corp.google.com>
+References: <20180717220328.792-1-matthias.bgg@kernel.org>
+ <20180717220328.792-5-matthias.bgg@kernel.org>
+ <1531882655.8953.83.camel@mtkswgap22> <51066716.k5MkZnrqCl@avalon>
+ <1531908387.8953.147.camel@mtkswgap22>
+ <153259051470.48062.4735087631606629738@swboyd.mtv.corp.google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180920095727.11868-5-weiyi.lu@mediatek.com>
+In-Reply-To: <153259051470.48062.4735087631606629738@swboyd.mtv.corp.google.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sean Wang <sean.wang@mediatek.com>
+Cc: mark.rutland@arm.com, airlied@linux.ie, mturquette@baylibre.com, dri-devel@lists.freedesktop.org, ulrich.hecht+renesas@gmail.com, lee.jones@linaro.org, linux-clk@vger.kernel.org, linux@armlinux.org.uk, ck.hu@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>, gregkh@linuxfoundation.org, rdunlap@infradead.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, p.zabel@pengutronix.de, matthias.bgg@kernel.org, pi-cheng.chen@linaro.org, davem@davemloft.net
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Weiyi Lu (2018-09-20 02:57:27)
-> For some MT2712 projects, audpll could select another reference
-> clock source if there exists an extra Crystal Oscillators than
-> the default clk26m XTAL.
-> Declare with the property "mediatek,refclk-aud" to switch
-> the audpll reference clock.
-> And also support to modify the reference clock of all PLL with
-> property "mediatek,refclk" instead of the default source "clk26m".
+Quoting Stephen Boyd (2018-07-26 00:35:14)
+> Quoting Sean Wang (2018-07-18 03:06:27)
+> > On Wed, 2018-07-18 at 11:05 +0300, Laurent Pinchart wrote:
+> > > Hi Sean,
+> > > =
+
+> > > This looks very strange to me. I'm not familiar with the hardware =
+
+> > > architecture, but a clock controller that includes an audio controlle=
+r seems =
+
+> > > like a very weird design. It's usually the other way around, you have=
+ an audio
+> > =
+
+> > yes, naming audsys as clock controller is really not good. it should be
+> > worth a better naming.
+> > =
+
+> > mtk subsystem AFAIK works as a container, at least provides clocks,
+> > reset, syscon access, these common resource to these devices running on
+> > the subsystem. It also has a power gate independent from other
+> > subsystem, that can be controlled when these devices all powered down
+> > or once up.
+> > =
+
+> > And it should be better that we don't assume what exact devices are
+> > running on since it is possible that there're different devices running
+> > on the same subsystem per SoC. mtk has many subsystem working in this
+> > way. mmsys is just a case. we can see in [1]
+> > =
+
+> > =
+
+> > [1]
+> > https://elixir.bootlin.com/linux/v4.18-rc5/source/Documentation/devicet=
+ree/bindings/arm/mediatek
+> >  =
+
 > =
 
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
-> diff --git a/drivers/clk/mediatek/clk-mt2712.c b/drivers/clk/mediatek/clk=
--mt2712.c
-> index e36f4aab634d..2a4db1718089 100644
-> --- a/drivers/clk/mediatek/clk-mt2712.c
-> +++ b/drivers/clk/mediatek/clk-mt2712.c
-[...]
-> +       size_t i;
-> +       u32 r;
-> +
-> +       base =3D of_iomap(node, 0);
-> +       if (base) {
-> +               sel_addr =3D base + 0x40;
-> +       } else {
-> +               pr_err("%s(): ioremap failed\n", __func__);
-> +               return;
-> +       }
+> Sean, is this an ack for this patch series? I think the consensus is to
+> not modify DT to add a subnode for the "clk" part of the hardware, but
+> instead either register the clks from the device driver that has the clk
+> hardware inside of it, or do what this patch series does and register a
+> device in software from the "parent" device driver so that logically clk
+> things are contained in drivers/clk/
+> =
 
-Nitpick: Write this as
 
-	base =3D of_iomap();
-	if (!base)
-		return;
-	sel_addr =3D base + 0x40;
-
-> +
-> +       rc =3D of_parse_phandle_with_args(node, "mediatek,refclk",
-> +                       "#clock-cells", 0, &refclk);
-> +       if (!rc) {
-> +               of_property_read_string(refclk.np, "clock-output-names",
-> +                               &refclk_name);
-> +               for (i =3D 0; i < num_plls; i++)
-> +                       plls[i].parent_name =3D refclk_name;
-
-Use of_clk_parent_fill()?
-
-> +       }
-> +
-> +       rc =3D of_parse_phandle_with_args(node, "mediatek,refclk-aud",
-> +                       "#clock-cells", 0, &refclk_aud);
-
-This is odd. Is this a custom 'clocks' property? What's going on here?
-Why can't we use assigned clock parents for this?
-
-> +       if (!rc) {
-> +               of_property_read_string(refclk_aud.np, "clock-output-name=
-s",
-> +                               &refclk_aud_name);
-> +               if (strcmp(refclk_name, refclk_aud_name)) {
-> +                       plls[CLK_APMIXED_APLL1].parent_name =3D refclk_au=
-d_name;
-> +                       plls[CLK_APMIXED_APLL2].parent_name =3D refclk_au=
-d_name;
-> +                       r =3D readl(sel_addr) | 0x60000;
-> +               } else {
-> +                       r =3D readl(sel_addr) & ~0x60000;
-> +               }
-> +
-> +               writel(r, sel_addr);
-> +       }
-> +}
-> +
+Please resend this series. This is too old now and I'm dropping this
+from (the very tail) of my queue.
