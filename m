@@ -1,71 +1,35 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [resend PATCH v4 4/5] drm/mediatek: Add support for mmsys through a pdev
-Date: Fri, 12 Oct 2018 11:23:14 -0700
-Message-ID: <153936859491.5275.13670768818136325103@swboyd.mtv.corp.google.com>
-References: <20180717220328.792-1-matthias.bgg@kernel.org>
- <20180717220328.792-5-matthias.bgg@kernel.org>
- <1531882655.8953.83.camel@mtkswgap22> <51066716.k5MkZnrqCl@avalon>
- <1531908387.8953.147.camel@mtkswgap22>
- <153259051470.48062.4735087631606629738@swboyd.mtv.corp.google.com>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: mmc: mediatek: add MT8183 MMC driver support
+Date: Sat, 13 Oct 2018 15:20:44 +0800
+Message-ID: <1539415250-32337-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <153259051470.48062.4735087631606629738@swboyd.mtv.corp.google.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sean Wang <sean.wang@mediatek.com>
-Cc: mark.rutland@arm.com, airlied@linux.ie, mturquette@baylibre.com, dri-devel@lists.freedesktop.org, ulrich.hecht+renesas@gmail.com, lee.jones@linaro.org, linux-clk@vger.kernel.org, linux@armlinux.org.uk, ck.hu@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>, gregkh@linuxfoundation.org, rdunlap@infradead.org, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, p.zabel@pengutronix.de, matthias.bgg@kernel.org, pi-cheng.chen@linaro.org, davem@davemloft.net
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Sean Wang <sean.wang@mediatek.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, jjian.zhou@mediatek.com, wenbin.mei@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Stephen Boyd (2018-07-26 00:35:14)
-> Quoting Sean Wang (2018-07-18 03:06:27)
-> > On Wed, 2018-07-18 at 11:05 +0300, Laurent Pinchart wrote:
-> > > Hi Sean,
-> > > =
+this series of patch include below changes:
+1. Add MT8183 SoC support in Mediatek MMC DT bindings
+2. Fill mmc->actual_clock
+3. Fix cannot receive new request issue
+4. Tune CMD/DATA together to save tuning time
+5. Add MT8183 MMC driver support
+6. Refine the tuning method to drop too much redundant code
 
-> > > This looks very strange to me. I'm not familiar with the hardware =
+Chaotian Jing (6):
+  mmc: dt-bindings: add support for MT8183 SoC
+  mmc: mediatek: fill the actual clock for mmc debugfs
+  mmc: mediatek: fix cannot receive new request when msdc_cmd_is_ready
+    fail
+  mmc: mediatek: tune CMD/DATA together
+  mmc: mediatek: add MT8183 MMC driver support
+  mmc: mediatek: drop too much code of tuning method
 
-> > > architecture, but a clock controller that includes an audio controlle=
-r seems =
+ Documentation/devicetree/bindings/mmc/mtk-sd.txt |   1 +
+ drivers/mmc/host/mtk-sd.c                        | 292 ++++++++++++++++++++---
+ 2 files changed, 254 insertions(+), 39 deletions(-)
 
-> > > like a very weird design. It's usually the other way around, you have=
- an audio
-> > =
-
-> > yes, naming audsys as clock controller is really not good. it should be
-> > worth a better naming.
-> > =
-
-> > mtk subsystem AFAIK works as a container, at least provides clocks,
-> > reset, syscon access, these common resource to these devices running on
-> > the subsystem. It also has a power gate independent from other
-> > subsystem, that can be controlled when these devices all powered down
-> > or once up.
-> > =
-
-> > And it should be better that we don't assume what exact devices are
-> > running on since it is possible that there're different devices running
-> > on the same subsystem per SoC. mtk has many subsystem working in this
-> > way. mmsys is just a case. we can see in [1]
-> > =
-
-> > =
-
-> > [1]
-> > https://elixir.bootlin.com/linux/v4.18-rc5/source/Documentation/devicet=
-ree/bindings/arm/mediatek
-> >  =
-
-> =
-
-> Sean, is this an ack for this patch series? I think the consensus is to
-> not modify DT to add a subnode for the "clk" part of the hardware, but
-> instead either register the clks from the device driver that has the clk
-> hardware inside of it, or do what this patch series does and register a
-> device in software from the "parent" device driver so that logically clk
-> things are contained in drivers/clk/
-> =
-
-
-Please resend this series. This is too old now and I'm dropping this
-from (the very tail) of my queue.
+-- 
+1.8.1.1.dirty
