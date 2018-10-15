@@ -1,100 +1,44 @@
-From: <honghui.zhang@mediatek.com>
-Subject: [PATCH v8 7/9] PCI: mediatek: Add system PM support for MT2712 and MT7622
-Date: Mon, 15 Oct 2018 16:08:58 +0800
-Message-ID: <1539590940-13355-8-git-send-email-honghui.zhang@mediatek.com>
-References: <1539590940-13355-1-git-send-email-honghui.zhang@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: mmc: mediatek: add MT8183 MMC driver support
+Date: Mon, 15 Oct 2018 15:15:55 +0200
+Message-ID: <CAPDyKFp3Wn9Wz8bmaSXFmNe0HOKCMcy7Pue3C7+9w5kq2AO0Sw@mail.gmail.com>
+References: <1539415250-32337-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1539590940-13355-1-git-send-email-honghui.zhang@mediatek.com>
+In-Reply-To: <1539415250-32337-1-git-send-email-chaotian.jing@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: lorenzo.pieralisi@arm.com, bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com
-Cc: ulf.hansson@linaro.org, marc.zyngier@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, honghui.zhang@mediatek.com, youlin.pei@mediatek.com, yt.shen@mediatek.com, jianjun.wang@mediatek.com, yong.wu@mediatek.com
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Sean Wang <sean.wang@mediatek.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, DTML <devicetree@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, jjian.zhou@mediatek.com, wenbin.mei@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+On 13 October 2018 at 09:20, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+> this series of patch include below changes:
+> 1. Add MT8183 SoC support in Mediatek MMC DT bindings
+> 2. Fill mmc->actual_clock
+> 3. Fix cannot receive new request issue
+> 4. Tune CMD/DATA together to save tuning time
+> 5. Add MT8183 MMC driver support
+> 6. Refine the tuning method to drop too much redundant code
+>
+> Chaotian Jing (6):
+>   mmc: dt-bindings: add support for MT8183 SoC
+>   mmc: mediatek: fill the actual clock for mmc debugfs
+>   mmc: mediatek: fix cannot receive new request when msdc_cmd_is_ready
+>     fail
+>   mmc: mediatek: tune CMD/DATA together
+>   mmc: mediatek: add MT8183 MMC driver support
+>   mmc: mediatek: drop too much code of tuning method
+>
+>  Documentation/devicetree/bindings/mmc/mtk-sd.txt |   1 +
+>  drivers/mmc/host/mtk-sd.c                        | 292 ++++++++++++++++++++---
+>  2 files changed, 254 insertions(+), 39 deletions(-)
+>
+> --
+> 1.8.1.1.dirty
+>
 
-In order to reduce the PCIe power consuming while system suspend,
-the physical layer should be gated. And the PCIe link should be
-re-established and the related control register values should be
-re-initialized after system resume.
+Applied for next, thanks!
 
-Register suspend_noirq & resume_noirq callback functions to allow
-PCIe to come up after resume from RAM.
-
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-Acked-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/pci/controller/pcie-mediatek.c | 50 ++++++++++++++++++++++++++++++++++
- 1 file changed, 50 insertions(+)
-
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index d3f4694..42cf2a4 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -1168,6 +1168,55 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 	return err;
- }
- 
-+static int __maybe_unused mtk_pcie_suspend_noirq(struct device *dev)
-+{
-+	struct mtk_pcie *pcie = dev_get_drvdata(dev);
-+	struct mtk_pcie_port *port;
-+
-+	if (list_empty(&pcie->ports))
-+		return 0;
-+
-+	list_for_each_entry(port, &pcie->ports, list) {
-+		clk_disable_unprepare(port->pipe_ck);
-+		clk_disable_unprepare(port->obff_ck);
-+		clk_disable_unprepare(port->axi_ck);
-+		clk_disable_unprepare(port->aux_ck);
-+		clk_disable_unprepare(port->ahb_ck);
-+		clk_disable_unprepare(port->sys_ck);
-+		phy_power_off(port->phy);
-+		phy_exit(port->phy);
-+	}
-+
-+	clk_disable_unprepare(pcie->free_ck);
-+
-+	return 0;
-+}
-+
-+static int __maybe_unused mtk_pcie_resume_noirq(struct device *dev)
-+{
-+	struct mtk_pcie *pcie = dev_get_drvdata(dev);
-+	struct mtk_pcie_port *port, *tmp;
-+
-+	if (list_empty(&pcie->ports))
-+		return 0;
-+
-+	clk_prepare_enable(pcie->free_ck);
-+
-+	list_for_each_entry_safe(port, tmp, &pcie->ports, list)
-+		mtk_pcie_enable_port(port);
-+
-+	/* In case of EP was removed while system suspend. */
-+	if (list_empty(&pcie->ports))
-+		clk_disable_unprepare(pcie->free_ck);
-+
-+	return 0;
-+}
-+
-+static const struct dev_pm_ops mtk_pcie_pm_ops = {
-+	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_pcie_suspend_noirq,
-+				      mtk_pcie_resume_noirq)
-+};
-+
- static const struct mtk_pcie_soc mtk_pcie_soc_v1 = {
- 	.ops = &mtk_pcie_ops,
- 	.startup = mtk_pcie_startup_port,
-@@ -1200,6 +1249,7 @@ static struct platform_driver mtk_pcie_driver = {
- 		.name = "mtk-pcie",
- 		.of_match_table = mtk_pcie_ids,
- 		.suppress_bind_attrs = true,
-+		.pm = &mtk_pcie_pm_ops,
- 	},
- };
- builtin_platform_driver(mtk_pcie_driver);
--- 
-2.6.4
+Kind regards
+Uffe
