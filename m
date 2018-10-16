@@ -1,68 +1,31 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v8 2/9] PCI: mediatek: Fix class type for MT7622 as
- PCI_CLASS_BRIDGE_PCI
-Date: Mon, 15 Oct 2018 13:37:13 -0500
-Message-ID: <20181015183713.GC5906@bhelgaas-glaptop.roam.corp.google.com>
-References: <1539590940-13355-1-git-send-email-honghui.zhang@mediatek.com>
- <1539590940-13355-3-git-send-email-honghui.zhang@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 0/5] Add initial pinctrl support for MT6797 SoC
+Date: Tue, 16 Oct 2018 10:36:56 +0200
+Message-ID: <CACRpkdbOpfDMGhUFAwXUX=-fhGNfhvQq6NgtFtAoTsu8Vo+BQg@mail.gmail.com>
+References: <20181008191411.32555-1-manivannan.sadhasivam@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1539590940-13355-3-git-send-email-honghui.zhang@mediatek.com>
+In-Reply-To: <20181008191411.32555-1-manivannan.sadhasivam@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com
-Cc: lorenzo.pieralisi@arm.com, bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, youlin.pei@mediatek.com, devicetree@vger.kernel.org, ulf.hansson@linaro.org, marc.zyngier@arm.com, jianjun.wang@mediatek.com, yt.shen@mediatek.com, matthias.bgg@gmail.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, yong.wu@mediatek.com
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Sean Wang <sean.wang@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Amit Kucheria <amit.kucheria@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Oct 15, 2018 at 04:08:53PM +0800, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
-> 
-> The commit 101c92dc80c8 ("PCI: mediatek: Set up vendor ID and class
-> type for MT7622") have set the class type for MT7622 as un-properly
-> value of PCI_CLASS_BRIDGE_HOST.
-> 
-> The PCIe controller of MT7622 is complexed with Root Port and PCI-to-PCI
-> bridge, the bridge has type 1 configuration space header and related bridge
-> windows. The HW default value of this bridge's class type is invalid. Fix
-> its class type as PCI_CLASS_BRIDGE_PCI since it is HW defines.
-> 
-> Making the bridge visiable to PCI framework by setting its class type
-> properly will get its bridge windows configurated during PCI device
-> enumerate.
-> 
-> Fixes: 101c92dc80c8 ("PCI: mediatek: Set up vendor ID and class type for MT7622")
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+On Mon, Oct 8, 2018 at 9:14 PM Manivannan Sadhasivam
+<manivannan.sadhasivam@linaro.org> wrote:
 
-Nak until this patch is preceded by one that fixes the PCI core defect
-I pointed out earlier [1].  It's OK to change the class code, but
-not as a way of working around that PCI core defect.
+> This patchset adds initial pinctrl support for Mediatek MT6797 SoC.
+> The pinctrl driver is based on the vendor binding as like MT6765 and
+> implements only GPIO and pinmux functionalities.
+>
+> The devicetree binding doc is not added because it does not exist for
+> MT6765 and I'm not sure about the structure of it.
+>
+> This patchset has been tested on 96Boards MediatekX20 development board.
 
-[1] https://lore.kernel.org/linux-pci/20181012141202.GV5906@bhelgaas-glaptop.roam.corp.google.com
+I'd be delighted to merge the pin control bindings and driver
+as soon as I have an OK from Sean Wang.
 
-> ---
->  drivers/pci/controller/pcie-mediatek.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 288b8e2..bcdac9b 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -432,7 +432,7 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
->  		val = PCI_VENDOR_ID_MEDIATEK;
->  		writew(val, port->base + PCIE_CONF_VEND_ID);
->  
-> -		val = PCI_CLASS_BRIDGE_HOST;
-> +		val = PCI_CLASS_BRIDGE_PCI;
->  		writew(val, port->base + PCIE_CONF_CLASS_ID);
->  	}
->  
-> -- 
-> 2.6.4
-> 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+Yours,
+Linus Walleij
