@@ -1,110 +1,138 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 5/5] pinctrl: mediatek: Add initial pinctrl driver for
- MT6797 SoC
-Date: Tue, 16 Oct 2018 15:58:41 +0200
-Message-ID: <e7abee72-23a3-4716-baf0-484514bbb019@gmail.com>
-References: <20181008191411.32555-1-manivannan.sadhasivam@linaro.org>
- <20181008191411.32555-6-manivannan.sadhasivam@linaro.org>
- <c8d65395-c60c-5d06-92ad-c389642c22ba@gmail.com>
- <20181011164429.GA18174@Mani-XPS-13-9360>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH v9 2/9] PCI: Using PCI configuration space header type
+ instead of class type to assign resource
+Date: Tue, 16 Oct 2018 15:53:55 +0100
+Message-ID: <20181016145355.GB16390@e107981-ln.cambridge.arm.com>
+References: <1539686690-24068-1-git-send-email-honghui.zhang@mediatek.com>
+ <1539686690-24068-3-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181011164429.GA18174@Mani-XPS-13-9360>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1539686690-24068-3-git-send-email-honghui.zhang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: sean.wang@mediatek.com, linus.walleij@linaro.org, robh+dt@kernel.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, amit.kucheria@linaro.org, Mars Cheng <mars.cheng@mediatek.com>
+To: honghui.zhang@mediatek.com
+Cc: bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, ulf.hansson@linaro.org, marc.zyngier@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, youlin.pei@mediatek.com, yt.shen@mediatek.com, jianjun.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 11/10/2018 18:44, Manivannan Sadhasivam wrote:
-> On Thu, Oct 11, 2018 at 05:50:19PM +0200, Matthias Brugger wrote:
->>
->>
->> On 08/10/2018 21:14, Manivannan Sadhasivam wrote:
->>> Add initial pinctrl driver for Mediatek MT6797 SoC supporting only
->>> GPIO and pinmux configurations.
->>>
->>> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
->>> ---
->>>  drivers/pinctrl/mediatek/Kconfig              |    7 +
->>>  drivers/pinctrl/mediatek/Makefile             |    1 +
->>>  drivers/pinctrl/mediatek/pinctrl-mt6797.c     |   82 +
->>>  drivers/pinctrl/mediatek/pinctrl-mtk-mt6797.h | 2430 +++++++++++++++++
->>>  4 files changed, 2520 insertions(+)
->>>  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt6797.c
->>>  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt6797.h
->>>
->> [...]
->>> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-mt6797.h b/drivers/pinctrl/mediatek/pinctrl-mtk-mt6797.h
->>> new file mode 100644
->>> index 000000000000..8949d2a15c39
->>> --- /dev/null
->>> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-mt6797.h
->>> @@ -0,0 +1,2430 @@
->>> +/* SPDX-License-Identifier: GPL-2.0 */
->>> +/*
->>> + * Based on pinctrl-mtk-mt6765.h
->>> + *
->>> + * Copyright (C) 2018 MediaTek Inc.
->>> + *
->>> + * Author: ZH Chen <zh.chen@mediatek.com>
->>> + *
->>> + * Copyright (c) 2018 Manivannan Sadhasivam
->>> + */
->>> +
->>> +#ifndef __PINCTRL_MTK_MT6797_H
->>> +#define __PINCTRL_MTK_MT6797_H
->>> +
->>> +#include "pinctrl-paris.h"
->>> +
->>> +static const struct mtk_pin_desc mtk_pins_mt6797[] = {
->>> +	MTK_PIN(
->>> +		0, "GPIO0",
->>> +		MTK_EINT_FUNCTION(NO_EINT_SUPPORT, NO_EINT_SUPPORT),
->>> +		DRV_GRP3,
->>
->> As far as I have seen, you put all pins in driving group 3, but from the public
->> available "Functional Specification" (page 51-81) I can see that there exist
->> several driving groups:
->> 2/4/6/8 mA (DRV_GRP3)
->> 4/8/12/16 mA (not sure which group this is)
->> 2/4/6/8/10/12/14/16 mA (DRV_GRP4).
->>
+On Tue, Oct 16, 2018 at 06:44:43PM +0800, honghui.zhang@mediatek.com wrote:
+> From: Honghui Zhang <honghui.zhang@mediatek.com>
 > 
-> Not sure about that. But I derived the configuration from DRV_CFGx
-> registers available in "Application Software Register Table - Part 1"
-> from page no: 906.
+> The PCI configuration space header type defines the layout of the rest
+> of the header (PCI r3.0 sec 6.1, PCIe r4.0 sec 7.5.1.1.9) while the
+> resource assignment is based on the configuration space layout instead
+> of its class type. Using configuration space header type instead of
+> class type for the resource assignment.
 > 
-> This register supports 2/4/6/8mA and this belongs to DRV_GRP2/DRV_GRP3
-> [1].
-
-I can see other driving groups as defined in the "Functional Specification" [1]
-which gets also reflected in the "Application Software Register Table - Part 1"
-[2], see for example page 852.
-
-CCing Mars, maybe he can help to clarify.
-
-Regards,
-Matthias
-
-[1]
-https://www.96boards.org/documentation/consumer/mediatekx20/additional-docs/docs/MT6797_Functional_Specification_V1_0.pdf
-[2]
-https://www.96boards.org/documentation/consumer/mediatekx20/additional-docs/docs/MT6797_Register_Table_Part_1.pdf
-
+> Suggested-by: Bjorn Helgaas <bhelgaas@google.com>
+> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+> ---
+>  drivers/pci/pci.c       |  3 +--
+>  drivers/pci/probe.c     |  3 ---
+>  drivers/pci/setup-bus.c | 20 ++++++++++----------
+>  3 files changed, 11 insertions(+), 15 deletions(-)
 > 
-> Still I'm not fully confident of my choice here. Maybe Sean can throw
-> some inputs!
+> diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+> index 29ff961..7d379ca 100644
+> --- a/drivers/pci/pci.c
+> +++ b/drivers/pci/pci.c
+> @@ -5908,8 +5908,7 @@ void pci_reassigndev_resource_alignment(struct pci_dev *dev)
+>  	 * to enable the kernel to reassign new resource
+>  	 * window later on.
+>  	 */
+> -	if (dev->hdr_type == PCI_HEADER_TYPE_BRIDGE &&
+> -	    (dev->class >> 8) == PCI_CLASS_BRIDGE_PCI) {
+> +	if (dev->hdr_type == PCI_HEADER_TYPE_BRIDGE) {
+>  		for (i = PCI_BRIDGE_RESOURCES; i < PCI_NUM_RESOURCES; i++) {
+>  			r = &dev->resource[i];
+>  			if (!(r->flags & IORESOURCE_MEM))
+> diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+> index ec78400..29a35c1 100644
+> --- a/drivers/pci/probe.c
+> +++ b/drivers/pci/probe.c
+> @@ -1695,9 +1695,6 @@ int pci_setup_device(struct pci_dev *dev)
+>  		break;
+>  
+>  	case PCI_HEADER_TYPE_BRIDGE:		    /* bridge header */
+> -		if (class != PCI_CLASS_BRIDGE_PCI)
+> -			goto bad;
+> -
+>  		/*
+>  		 * The PCI-to-PCI bridge spec requires that subtractive
+>  		 * decoding (i.e. transparent) bridge must have programming
+> diff --git a/drivers/pci/setup-bus.c b/drivers/pci/setup-bus.c
+> index 79b1824..69f90f4 100644
+> --- a/drivers/pci/setup-bus.c
+> +++ b/drivers/pci/setup-bus.c
+> @@ -182,7 +182,7 @@ static void __dev_sort_resources(struct pci_dev *dev,
+>  	u16 class = dev->class >> 8;
+>  
+>  	/* Don't touch classless devices or host bridges or ioapics.  */
+> -	if (class == PCI_CLASS_NOT_DEFINED || class == PCI_CLASS_BRIDGE_HOST)
+> +	if (class == PCI_CLASS_NOT_DEFINED)
+
+I think this check has been there since the first initial git commit,
+whether that's _really_ needed or not in the current kernel it is very
+hard to say.
+
+I am not that sure it is safe to remove it, especially given that we are at
+-rc8 and close to a release, it would be good if this patch could sit in
+next to give it some exposure to testing before merging it upstream.
+
+Lorenzo
+
+>  		return;
+>  
+>  	/* Don't touch ioapic devices already enabled by firmware */
+> @@ -1221,12 +1221,12 @@ void __pci_bus_size_bridges(struct pci_bus *bus, struct list_head *realloc_head)
+>  		if (!b)
+>  			continue;
+>  
+> -		switch (dev->class >> 8) {
+> -		case PCI_CLASS_BRIDGE_CARDBUS:
+> +		switch (dev->hdr_type) {
+> +		case PCI_HEADER_TYPE_CARDBUS:
+>  			pci_bus_size_cardbus(b, realloc_head);
+>  			break;
+>  
+> -		case PCI_CLASS_BRIDGE_PCI:
+> +		case PCI_HEADER_TYPE_BRIDGE:
+>  		default:
+>  			__pci_bus_size_bridges(b, realloc_head);
+>  			break;
+> @@ -1237,12 +1237,12 @@ void __pci_bus_size_bridges(struct pci_bus *bus, struct list_head *realloc_head)
+>  	if (pci_is_root_bus(bus))
+>  		return;
+>  
+> -	switch (bus->self->class >> 8) {
+> -	case PCI_CLASS_BRIDGE_CARDBUS:
+> +	switch (bus->self->hdr_type) {
+> +	case PCI_HEADER_TYPE_CARDBUS:
+>  		/* don't size cardbuses yet. */
+>  		break;
+>  
+> -	case PCI_CLASS_BRIDGE_PCI:
+> +	case PCI_HEADER_TYPE_BRIDGE:
+>  		pci_bridge_check_ranges(bus);
+>  		if (bus->self->is_hotplug_bridge) {
+>  			additional_io_size  = pci_hotplug_io_size;
+> @@ -1391,13 +1391,13 @@ void __pci_bus_assign_resources(const struct pci_bus *bus,
+>  
+>  		__pci_bus_assign_resources(b, realloc_head, fail_head);
+>  
+> -		switch (dev->class >> 8) {
+> -		case PCI_CLASS_BRIDGE_PCI:
+> +		switch (dev->hdr_type) {
+> +		case PCI_HEADER_TYPE_BRIDGE:
+>  			if (!pci_is_enabled(dev))
+>  				pci_setup_bridge(b);
+>  			break;
+>  
+> -		case PCI_CLASS_BRIDGE_CARDBUS:
+> +		case PCI_HEADER_TYPE_CARDBUS:
+>  			pci_setup_cardbus(b);
+>  			break;
+>  
+> -- 
+> 2.6.4
 > 
-> Thanks,
-> Mani
-> 
-> [1] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c#n40
-> 
->> Regards,
->> Matthias
->>
