@@ -1,74 +1,110 @@
-From: <honghui.zhang@mediatek.com>
-Subject: [PATCH v9 1/9] PCI: mediatek: Using slot's devfn for compare to fix mtk_pcie_find_port logic
-Date: Tue, 16 Oct 2018 18:44:42 +0800
-Message-ID: <1539686690-24068-2-git-send-email-honghui.zhang@mediatek.com>
-References: <1539686690-24068-1-git-send-email-honghui.zhang@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 5/5] pinctrl: mediatek: Add initial pinctrl driver for
+ MT6797 SoC
+Date: Tue, 16 Oct 2018 15:58:41 +0200
+Message-ID: <e7abee72-23a3-4716-baf0-484514bbb019@gmail.com>
+References: <20181008191411.32555-1-manivannan.sadhasivam@linaro.org>
+ <20181008191411.32555-6-manivannan.sadhasivam@linaro.org>
+ <c8d65395-c60c-5d06-92ad-c389642c22ba@gmail.com>
+ <20181011164429.GA18174@Mani-XPS-13-9360>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1539686690-24068-1-git-send-email-honghui.zhang@mediatek.com>
+In-Reply-To: <20181011164429.GA18174@Mani-XPS-13-9360>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: lorenzo.pieralisi@arm.com, bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com
-Cc: ulf.hansson@linaro.org, marc.zyngier@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, honghui.zhang@mediatek.com, youlin.pei@mediatek.com, yt.shen@mediatek.com, jianjun.wang@mediatek.com
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: sean.wang@mediatek.com, linus.walleij@linaro.org, robh+dt@kernel.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, amit.kucheria@linaro.org, Mars Cheng <mars.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
 
-The Mediatek's host controller has two slots, each with it's own control
-registers. The host driver need to identify which slot was connected
-in order to access the device's configuration space. There's problem
-for current host driver to find out which slot was connected to for
-a given EP device.
 
-Assuming each slot have connect with one EP device as below:
+On 11/10/2018 18:44, Manivannan Sadhasivam wrote:
+> On Thu, Oct 11, 2018 at 05:50:19PM +0200, Matthias Brugger wrote:
+>>
+>>
+>> On 08/10/2018 21:14, Manivannan Sadhasivam wrote:
+>>> Add initial pinctrl driver for Mediatek MT6797 SoC supporting only
+>>> GPIO and pinmux configurations.
+>>>
+>>> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+>>> ---
+>>>  drivers/pinctrl/mediatek/Kconfig              |    7 +
+>>>  drivers/pinctrl/mediatek/Makefile             |    1 +
+>>>  drivers/pinctrl/mediatek/pinctrl-mt6797.c     |   82 +
+>>>  drivers/pinctrl/mediatek/pinctrl-mtk-mt6797.h | 2430 +++++++++++++++++
+>>>  4 files changed, 2520 insertions(+)
+>>>  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt6797.c
+>>>  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt6797.h
+>>>
+>> [...]
+>>> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-mt6797.h b/drivers/pinctrl/mediatek/pinctrl-mtk-mt6797.h
+>>> new file mode 100644
+>>> index 000000000000..8949d2a15c39
+>>> --- /dev/null
+>>> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-mt6797.h
+>>> @@ -0,0 +1,2430 @@
+>>> +/* SPDX-License-Identifier: GPL-2.0 */
+>>> +/*
+>>> + * Based on pinctrl-mtk-mt6765.h
+>>> + *
+>>> + * Copyright (C) 2018 MediaTek Inc.
+>>> + *
+>>> + * Author: ZH Chen <zh.chen@mediatek.com>
+>>> + *
+>>> + * Copyright (c) 2018 Manivannan Sadhasivam
+>>> + */
+>>> +
+>>> +#ifndef __PINCTRL_MTK_MT6797_H
+>>> +#define __PINCTRL_MTK_MT6797_H
+>>> +
+>>> +#include "pinctrl-paris.h"
+>>> +
+>>> +static const struct mtk_pin_desc mtk_pins_mt6797[] = {
+>>> +	MTK_PIN(
+>>> +		0, "GPIO0",
+>>> +		MTK_EINT_FUNCTION(NO_EINT_SUPPORT, NO_EINT_SUPPORT),
+>>> +		DRV_GRP3,
+>>
+>> As far as I have seen, you put all pins in driving group 3, but from the public
+>> available "Functional Specification" (page 51-81) I can see that there exist
+>> several driving groups:
+>> 2/4/6/8 mA (DRV_GRP3)
+>> 4/8/12/16 mA (not sure which group this is)
+>> 2/4/6/8/10/12/14/16 mA (DRV_GRP4).
+>>
+> 
+> Not sure about that. But I derived the configuration from DRV_CFGx
+> registers available in "Application Software Register Table - Part 1"
+> from page no: 906.
+> 
+> This register supports 2/4/6/8mA and this belongs to DRV_GRP2/DRV_GRP3
+> [1].
 
-                host bridge
-  bus 0 --> __________|_______
-           |                  |
-           |                  |
-         slot 0             slot 1
-  bus 1 -->|        bus 2 --> |
-           |                  |
-         EP 0               EP 1
+I can see other driving groups as defined in the "Functional Specification" [1]
+which gets also reflected in the "Application Software Register Table - Part 1"
+[2], see for example page 852.
 
-During PCI enumeration, system software will scan all the PCI device
-starting from devfn 0. So it will get the proper port for slot0 and
-slot1 device when using PCI_SLOT(devfn) for match. But it will get
-the wrong slot for EP1: The devfn will be start from 0 when scanning
-EP1 behind slot1, it will get port0 since the PCI_SLOT(EP1) is match
-for port0's slot value. So the host driver should not using EP's devfn
-but the slot's devfn(the slot which EP was connected to) for match.
+CCing Mars, maybe he can help to clarify.
 
-This patch fix the mtk_pcie_find_port's logic by using the slot's
-devfn for match if finding device connected to the subordinate bus.
+Regards,
+Matthias
 
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-Acked-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/pci/controller/pcie-mediatek.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+[1]
+https://www.96boards.org/documentation/consumer/mediatekx20/additional-docs/docs/MT6797_Functional_Specification_V1_0.pdf
+[2]
+https://www.96boards.org/documentation/consumer/mediatekx20/additional-docs/docs/MT6797_Register_Table_Part_1.pdf
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 9999dae..288b8e2 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -337,6 +337,17 @@ static struct mtk_pcie_port *mtk_pcie_find_port(struct pci_bus *bus,
- {
- 	struct mtk_pcie *pcie = bus->sysdata;
- 	struct mtk_pcie_port *port;
-+	struct pci_dev *dev = NULL;
-+
-+	/*
-+	 * Walk the bus hierarchy to get the devfn value
-+	 * of the port in the root bus.
-+	 */
-+	while (bus && bus->number) {
-+		dev = bus->self;
-+		bus = dev->bus;
-+		devfn = dev->devfn;
-+	}
- 
- 	list_for_each_entry(port, &pcie->ports, list)
- 		if (port->slot == PCI_SLOT(devfn))
--- 
-2.6.4
+> 
+> Still I'm not fully confident of my choice here. Maybe Sean can throw
+> some inputs!
+> 
+> Thanks,
+> Mani
+> 
+> [1] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c#n40
+> 
+>> Regards,
+>> Matthias
+>>
