@@ -1,45 +1,38 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH] MAINTAINERS: mediatek: Update SoC entry
-Date: Tue, 16 Oct 2018 16:57:58 +0200
-Message-ID: <20181016145758.12995-1-matthias.bgg@gmail.com>
+From: <shun-chih.yu@mediatek.com>
+Subject: [PATCH v2] add support for Mediatek Command-Queue DMA controller on MT6765 SoC
+Date: Wed, 17 Oct 2018 17:36:57 +0800
+Message-ID: <1539769019-32107-1-git-send-email-shun-chih.yu@mediatek.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: arnd@arndb.de, gregkh@linuxfoundation.org, mchehab+samsung@kernel.org, davem@davemloft.net, akpm@linux-foundation.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
+To: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>
+Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Add IRC channel and URL of the wiki.
-Also add soc drivers folder and regex to catch more
-mediatek components.
 
-Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- MAINTAINERS | 4 ++++
- 1 file changed, 4 insertions(+)
+Changes since v1:
+- remove unused macros, typos
+- leverage ASYNC_TX_ENABLE_CHANNEL_SWITCH to maintain DMA descriptor list
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 6ac000cc006d..66782dad6487 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1676,13 +1676,17 @@ ARM/Mediatek SoC support
- M:	Matthias Brugger <matthias.bgg@gmail.com>
- L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
- L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
-+W:	https://mtk.bcnfs.org/
-+C:	irc://chat.freenode.net/linux-mediatek
- S:	Maintained
- F:	arch/arm/boot/dts/mt6*
- F:	arch/arm/boot/dts/mt7*
- F:	arch/arm/boot/dts/mt8*
- F:	arch/arm/mach-mediatek/
- F:	arch/arm64/boot/dts/mediatek/
-+F:	drivers/soc/mediatek/
- N:	mtk
-+N:	mt[678]
- K:	mediatek
- 
- ARM/Mediatek USB3 PHY DRIVER
--- 
-2.19.1
+
+This patchset introduces support for MediaTek Command-Queue DMA controller.
+
+MediaTek Command-Queue DMA controller (CQDMA) on MT6765 SoC is dedicated to memory-to-memory transfer through queue-based descriptor management.
+
+There are only 3 physical channels inside CQDMA, while the driver is extended to support 32 virtual channels for multiple dma users to issue dma requests onto the CQDMA simultaneously.
+
+
+Shun-Chih Yu (2):
+  dt-bindings: dmaengine: Add MediaTek Command-Queue DMA controller
+    bindings
+  dmaengine: mediatek: Add MediaTek Command-Queue DMA controller for
+    MT6765 SoC
+
+ .../devicetree/bindings/dma/mtk-cqdma.txt          |   31 +
+ drivers/dma/mediatek/Kconfig                       |   13 +
+ drivers/dma/mediatek/Makefile                      |    1 +
+ drivers/dma/mediatek/mtk-cqdma.c                   |  943 ++++++++++++++++++++
+ 4 files changed, 988 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/dma/mtk-cqdma.txt
+ create mode 100644 drivers/dma/mediatek/mtk-cqdma.c
