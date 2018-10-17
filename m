@@ -1,76 +1,112 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [SPAM]Re: [PATCH v1 3/3] clk: mediatek: mt2712: add pll reference
- support
-Date: Wed, 17 Oct 2018 07:15:28 -0700
-Message-ID: <153978572885.5275.2199850145066961212@swboyd.mtv.corp.google.com>
-References: <20180920095727.11868-1-weiyi.lu@mediatek.com>
- <20180920095727.11868-5-weiyi.lu@mediatek.com>
- <153936680359.5275.14901579706860255114@swboyd.mtv.corp.google.com>
- <1539784392.16401.28.camel@mtksdaap41>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH v8 0/9] PCI: mediatek: fixup find_port, enable_msi and
+ add PM, module support
+Date: Wed, 17 Oct 2018 16:19:54 +0100
+Message-ID: <20181017151954.GA9374@e107981-ln.cambridge.arm.com>
+References: <1539590940-13355-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1539784392.16401.28.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Weiyi Lu <weiyi.lu@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, srv_heupstream@mediatek.com, James Liao <jamesjj.liao@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1539590940-13355-1-git-send-email-honghui.zhang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: honghui.zhang@mediatek.com
+Cc: bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, ulf.hansson@linaro.org, marc.zyngier@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, youlin.pei@mediatek.com, yt.shen@mediatek.com, jianjun.wang@mediatek.com, yong.wu@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Weiyi Lu (2018-10-17 06:53:12)
-> On Fri, 2018-10-12 at 10:53 -0700, Stephen Boyd wrote:
-> > Quoting Weiyi Lu (2018-09-20 02:57:27)
-> > > +
-> > > +       rc = of_parse_phandle_with_args(node, "mediatek,refclk",
-> > > +                       "#clock-cells", 0, &refclk);
-> > > +       if (!rc) {
-> > > +               of_property_read_string(refclk.np, "clock-output-names",
-> > > +                               &refclk_name);
-> > > +               for (i = 0; i < num_plls; i++)
-> > > +                       plls[i].parent_name = refclk_name;
-> > 
-> > Use of_clk_parent_fill()?
-> > 
-> Thanks for the hint, i might use of_clk_get_parent_name() instead like
-> below to get each parent clock name.
-> refclk_name = of_clk_get_parent_name(node, 0);
-> refclk_aud_name = of_clk_get_parent_name(node, 1);
-
-Alright.
-
+On Mon, Oct 15, 2018 at 04:08:51PM +0800, honghui.zhang@mediatek.com wrote:
+> From: Honghui Zhang <honghui.zhang@mediatek.com>
 > 
-> > > +       }
-> > > +
-> > > +       rc = of_parse_phandle_with_args(node, "mediatek,refclk-aud",
-> > > +                       "#clock-cells", 0, &refclk_aud);
-> > 
-> > This is odd. Is this a custom 'clocks' property? What's going on here?
-> > Why can't we use assigned clock parents for this?
-> Yes. both the reference clock of all PLL and the reference clock of
-> audio PLL could be customized.These two reference clocks shall be
-> provided by some component like crystal oscillators on the board. So we
-> might unable to switch the PLL reference source at runtime, in other
-> words, it should be set statically. That's why we didn't provide the
-> set_parent ops for pll clock type. It's also the main reason we choose
-> not to use assigned-clock-parents for this requirement.
+> This patchset includes misc patchs:
 > 
+> The patch 1 fixup the mtk_pcie_find_port logic which will cause system
+> could not touch the EP's configuration space that connected to PCIe slot 1.
+> 
+> The patch 2 fixup the class type for MT7622.
+> The patch 6 fixup the enable msi logic, the operation to enable MSI
+> should be after system clock is enabled. Call mtk_pcie_enable_msi in
+> mtk_pcie_startup_port_v2 since the clock was all enabled at that time.
+> 
+> The patch 7 was rebased and refactor of the v4 patch[1], changes are:
+>  -Add PM support for MT7622.
+>  -Using mtk_pcie_enable_port to re-establish the link when resumed.
+>  -Rebased on this patchset.
+> 
+> The patch 9 add loadable kernel module support.
+> 
+> [1] https://patchwork.kernel.org/patch/10479079
 
-Ok. Do you need some new software clk flag that indicates we should
-"lock" the parent or rate configured at boot time? I would like to see
-this driver implement the clk_ops for the hardware and have the
-framework be the one that configures the tree, instead of doing it some
-custom way for this single driver.
+I have pushed out (after basically rewriting all commit logs and
+squashing two patches) this version of the patchset to my pci/mediatek
+branch for v4.20, keeping in mind that you must follow-up with Bjorn on
+this patch:
 
-> > > +       if (!rc) {
-> > > +               of_property_read_string(refclk_aud.np, "clock-output-names",
-> > > +                               &refclk_aud_name);
-> > > +               if (strcmp(refclk_name, refclk_aud_name)) {
-> > > +                       plls[CLK_APMIXED_APLL1].parent_name = refclk_aud_name;
+https://patchwork.ozlabs.org/patch/984668/
+
+that we shall still consider for v4.21.
+
+Lorenzo
+
+> Change since v7:
+>  - Add Acked-by tags from Ryder Lee.
+>  - Add Fix tags for patch 2(Fix calss type for MT7622 as PCI_CLASS_BRIDGE_PCI)
+>    and patch 6(Fixup enable MSI logic by enable MSI after clock enabled)
+> 
+> Change since v6:
+>  - Remove the pci_unmap_iospace when remove the device since the
+>    devm_pci_remap_iospace is an devm_ version.
+>  - Commit message changed for patch 2(Fix class type for MT7622 as PCI_CLASS_BRIDGE_PCI).
+>  - Capitilizing "MSI" and "PM" in the patch title.
+> 
+> Change since v5:
+>  - A bit improvement of mtk_pcie_find_port suggest by Lorenzo.
+>    MSI after clock enabled).
+>  - Add Acked-by tags from Ryder.
+> 
+> Change since v4:
+>  - Add patch 2 to fixup class type for MT7622.
+>  - Add patch 3 to remove the redundant dev->pm_domain check
+>  - Add patch 4 to covert to use pci_host_probe
+>  - Add patch 5 to re-arrange the function define, this is a prepare patch for
+>    fixup the enable_msi logic, no functional changed have been made by this one.
+>  - Add patch 8 to save the GIC IRQ in mtk_pcie_port as a prepare patch for tear
+>    down the irq when remove the kernel module.
+>  - Re-arrange the find_port flow suggest by Lorenzo to make the code parse easier
+>    for the patch 1.
+>  - Remove the .pm_support in mtk_pcie_soc in patch 7 since if system pm was not
+>    supported, then those pm callbacks will never be executed for MT7622. So the
+>    .pm_support is not needed.
+> 
+> Change since v3:
+>  - Remove pm_runtime_XXX ops in suspend and resume callbacks in the third patch.
+>  - Rebase to 4.19-rc1.
+> 
+> Change since v2:
+>  - Fix the list_for_each_entry_safe parameter error.
+>  - Add Ryder's Acked-by flag.
+> 
+> Change since v1:
+>  - A bit of code refact of the first patch suggested by Andy Shevchenko, and
+>    commit message updated.
+> 
+> Honghui Zhang (9):
+>   PCI: mediatek: Using slot's devfn for compare to fix
+>     mtk_pcie_find_port logic
+>   PCI: mediatek: Fix class type for MT7622 as PCI_CLASS_BRIDGE_PCI
+>   PCI: mediatek: Remove the redundant dev->pm_domain check
+>   PCI: mediatek: Convert to use pci_host_probe()
+>   PCI: mediatek: Move the mtk_pcie_startup_port_v2 function's define
+>     after mtk_pcie_setup_irq
+>   PCI: mediatek: Fixup enable MSI logic by enable MSI after clock
+>     enabled
+>   PCI: mediatek: Add system PM support for MT2712 and MT7622
+>   PCI: mediatek: Save the GIC IRQ in mtk_pcie_port
+>   PCI: mediatek: Add loadable kernel module support
+> 
+>  drivers/pci/controller/Kconfig         |   2 +-
+>  drivers/pci/controller/pcie-mediatek.c | 319 +++++++++++++++++++++------------
+>  2 files changed, 204 insertions(+), 117 deletions(-)
+> 
+> -- 
+> 2.6.4
+> 
