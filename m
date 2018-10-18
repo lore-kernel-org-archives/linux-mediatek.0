@@ -1,87 +1,68 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2] iommu/mediatek: Constify iommu_ops
-Date: Thu, 18 Oct 2018 19:13:38 +0800
-Message-ID: <1539861218-14937-1-git-send-email-yong.wu@mediatek.com>
+From: Sean Wang <sean.wang@kernel.org>
+Subject: Re: [PATCH 2/5] arm64: dts: mediatek: mt6797: Add pinctrl support
+Date: Thu, 18 Oct 2018 22:24:25 +0800
+Message-ID: <CAGp9LzqKEpmJMZhU0KW2GWXT4mxEiMqA0xhGxeX2kv+7_ADtKw@mail.gmail.com>
+References: <20181008191411.32555-1-manivannan.sadhasivam@linaro.org> <20181008191411.32555-3-manivannan.sadhasivam@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Arvind Yadav <arvind.yadav.cs-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181008191411.32555-3-manivannan.sadhasivam@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: manivannan.sadhasivam@linaro.org
+Cc: =?UTF-8?B?U2VhbiBXYW5nICjnjovlv5fkupgp?= <sean.wang@mediatek.com>, linus.walleij@linaro.org, matthias.bgg@gmail.com, robh+dt@kernel.org, linux-kernel@vger.kernel.org, amit.kucheria@linaro.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Arvind Yadav <arvind.yadav.cs-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+On Tue, Oct 9, 2018 at 3:16 AM Manivannan Sadhasivam
+<manivannan.sadhasivam@linaro.org> wrote:
+>
+> Add pinctrl support for Mediatek MT6797 SoC.
+>
+> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt6797.dtsi | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+> index 4beaa71107d7..231230d32d09 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+> @@ -14,6 +14,7 @@
+>  #include <dt-bindings/clock/mt6797-clk.h>
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +#include <dt-bindings/pinctrl/mt6797-pinfunc.h>
+>
+>  / {
+>         compatible = "mediatek,mt6797";
+> @@ -129,6 +130,19 @@
+>                 #clock-cells = <1>;
+>         };
+>
+> +       pio: pinctrl@10005000 {
+> +               compatible = "mediatek,mt6797-pinctrl";
+> +               reg = <0 0x10005000 0 0x1000>,
+> +                     <0 0x10002000 0 0x400>,
+> +                     <0 0x10002400 0 0x400>,
+> +                     <0 0x10002800 0 0x400>,
+> +                     <0 0x10002C00 0 0x400>;
+> +               reg-names = "gpio", "iocfgl", "iocfgb",
+> +                           "iocfgr", "iocfgt";
+> +               gpio-controller;
+> +               #gpio-cells = <2>;
+> +       };
+> +
 
-iommu_ops are not supposed to change at runtime.
-Functions 'iommu_device_set_ops' and 'bus_set_iommu' working with
-const iommu_ops provided by <linux/iommu.h>. So mark the non-const
-structs as const.
+The content looks good to me, but the dt-binding document is required
+to be added for MT6797 SoC before the DTS instance is being added.
 
-Signed-off-by: Arvind Yadav <arvind.yadav.cs-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-(Change the title to iommu/mediatek: xx)
----
-v2: 1) rebase on v4.19
-    2) change the title.
-
-v1: https://patchwork.kernel.org/patch/9925413/
----
- drivers/iommu/mtk_iommu.c    | 4 ++--
- drivers/iommu/mtk_iommu_v1.c | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index f9f69f7..fa63c56 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -113,7 +113,7 @@ struct mtk_iommu_domain {
- 	struct iommu_domain		domain;
- };
- 
--static struct iommu_ops mtk_iommu_ops;
-+static const struct iommu_ops mtk_iommu_ops;
- 
- static LIST_HEAD(m4ulist);	/* List all the M4U HWs */
- 
-@@ -488,7 +488,7 @@ static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
- 	return iommu_fwspec_add_ids(dev, args->args, 1);
- }
- 
--static struct iommu_ops mtk_iommu_ops = {
-+static const struct iommu_ops mtk_iommu_ops = {
- 	.domain_alloc	= mtk_iommu_domain_alloc,
- 	.domain_free	= mtk_iommu_domain_free,
- 	.attach_dev	= mtk_iommu_attach_device,
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 676c029..25d793c 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -362,7 +362,7 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
- 	return pa;
- }
- 
--static struct iommu_ops mtk_iommu_ops;
-+static const struct iommu_ops mtk_iommu_ops;
- 
- /*
-  * MTK generation one iommu HW only support one iommu domain, and all the client
-@@ -524,7 +524,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
- 	return 0;
- }
- 
--static struct iommu_ops mtk_iommu_ops = {
-+static const struct iommu_ops mtk_iommu_ops = {
- 	.domain_alloc	= mtk_iommu_domain_alloc,
- 	.domain_free	= mtk_iommu_domain_free,
- 	.attach_dev	= mtk_iommu_attach_device,
--- 
-1.9.1
+>         scpsys: scpsys@10006000 {
+>                 compatible = "mediatek,mt6797-scpsys";
+>                 #power-domain-cells = <1>;
+> --
+> 2.17.1
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
