@@ -1,197 +1,86 @@
-From: <honghui.zhang@mediatek.com>
-Subject: [PATCH] PCI: mediatek: Use devm_of_pci_get_host_bridge_resources() to parse DT
-Date: Thu, 18 Oct 2018 11:23:34 +0800
-Message-ID: <1539833014-1738-1-git-send-email-honghui.zhang@mediatek.com>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: Re: [SPAM]Re: [PATCH v1 3/3] clk: mediatek: mt2712: add pll
+ reference support
+Date: Thu, 18 Oct 2018 14:00:17 +0800
+Message-ID: <1539842417.22495.7.camel@mtksdaap41>
+References: <20180920095727.11868-1-weiyi.lu@mediatek.com>
+ <20180920095727.11868-5-weiyi.lu@mediatek.com>
+ <153936680359.5275.14901579706860255114@swboyd.mtv.corp.google.com>
+ <1539784392.16401.28.camel@mtksdaap41>
+ <153978572885.5275.2199850145066961212@swboyd.mtv.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, ryder.lee@mediatek.com, lorenzo.pieralisi@arm.com
-Cc: linux-kernel@vger.kernel.org, youlin.pei@mediatek.com, yt.shen@mediatek.com, jianjun.wang@mediatek.com, Honghui Zhang <honghui.zhang@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <153978572885.5275.2199850145066961212@swboyd.mtv.corp.google.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, srv_heupstream@mediatek.com, James Liao <jamesjj.liao@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+On Wed, 2018-10-17 at 07:15 -0700, Stephen Boyd wrote:
+> Quoting Weiyi Lu (2018-10-17 06:53:12)
+> > On Fri, 2018-10-12 at 10:53 -0700, Stephen Boyd wrote:
+> > > Quoting Weiyi Lu (2018-09-20 02:57:27)
+> > > > +
+> > > > +       rc = of_parse_phandle_with_args(node, "mediatek,refclk",
+> > > > +                       "#clock-cells", 0, &refclk);
+> > > > +       if (!rc) {
+> > > > +               of_property_read_string(refclk.np, "clock-output-names",
+> > > > +                               &refclk_name);
+> > > > +               for (i = 0; i < num_plls; i++)
+> > > > +                       plls[i].parent_name = refclk_name;
+> > > 
+> > > Use of_clk_parent_fill()?
+> > > 
+> > Thanks for the hint, i might use of_clk_get_parent_name() instead like
+> > below to get each parent clock name.
+> > refclk_name = of_clk_get_parent_name(node, 0);
+> > refclk_aud_name = of_clk_get_parent_name(node, 1);
+> 
+> Alright.
+> 
+> > 
+> > > > +       }
+> > > > +
+> > > > +       rc = of_parse_phandle_with_args(node, "mediatek,refclk-aud",
+> > > > +                       "#clock-cells", 0, &refclk_aud);
+> > > 
+> > > This is odd. Is this a custom 'clocks' property? What's going on here?
+> > > Why can't we use assigned clock parents for this?
+> > Yes. both the reference clock of all PLL and the reference clock of
+> > audio PLL could be customized.These two reference clocks shall be
+> > provided by some component like crystal oscillators on the board. So we
+> > might unable to switch the PLL reference source at runtime, in other
+> > words, it should be set statically. That's why we didn't provide the
+> > set_parent ops for pll clock type. It's also the main reason we choose
+> > not to use assigned-clock-parents for this requirement.
+> > 
+> 
+> Ok. Do you need some new software clk flag that indicates we should
+> "lock" the parent or rate configured at boot time? I would like to see
+> this driver implement the clk_ops for the hardware and have the
+> framework be the one that configures the tree, instead of doing it some
+> custom way for this single driver.
+> 
+Hi Stephen, do you mean we might be able to add a flag just like
+CLK_IS_CRITICAL and how it works on clk_enable & clk_disable ops?
+And should we make this new flag to allow to set parent before clock is
+registered and prohibit from changing the rate and parent after clock
+registration. If my understanding is correct, I'll give a try.
+BTW, how about the two patch for the ECO change before this patch. Is
+there any problem on those two patches?
 
-Use the devm_of_pci_get_host_bridge_resources() API in place of the PCI OF
-DT parser.
-
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
----
- drivers/pci/controller/pcie-mediatek.c | 109 +++++++++------------------------
- 1 file changed, 29 insertions(+), 80 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 2a1f97c..6632d4e 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -197,29 +197,20 @@ struct mtk_pcie_port {
-  * @dev: pointer to PCIe device
-  * @base: IO mapped register base
-  * @free_ck: free-run reference clock
-- * @io: IO resource
-- * @pio: PIO resource
-  * @mem: non-prefetchable memory resource
-- * @busn: bus range
-- * @offset: IO / Memory offset
-  * @ports: pointer to PCIe port information
-  * @soc: pointer to SoC-dependent operations
-+ * @busnr: root bus number
-  */
- struct mtk_pcie {
- 	struct device *dev;
- 	void __iomem *base;
- 	struct clk *free_ck;
- 
--	struct resource io;
--	struct resource pio;
- 	struct resource mem;
--	struct resource busn;
--	struct {
--		resource_size_t mem;
--		resource_size_t io;
--	} offset;
- 	struct list_head ports;
- 	const struct mtk_pcie_soc *soc;
-+	int busnr;
- };
- 
- static void mtk_pcie_subsys_powerdown(struct mtk_pcie *pcie)
-@@ -1045,55 +1036,42 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
- {
- 	struct device *dev = pcie->dev;
- 	struct device_node *node = dev->of_node, *child;
--	struct of_pci_range_parser parser;
--	struct of_pci_range range;
--	struct resource res;
- 	struct mtk_pcie_port *port, *tmp;
-+	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
-+	struct list_head *windows = &host->windows;
-+	struct resource_entry *win, *tmp_win;
-+	resource_size_t io_base;
- 	int err;
- 
--	if (of_pci_range_parser_init(&parser, node)) {
--		dev_err(dev, "missing \"ranges\" property\n");
--		return -EINVAL;
--	}
-+	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
-+						    windows, &io_base);
-+	if (err)
-+		return err;
- 
--	for_each_of_pci_range(&parser, &range) {
--		err = of_pci_range_to_resource(&range, node, &res);
--		if (err < 0)
--			return err;
-+	err = devm_request_pci_bus_resources(dev, windows);
-+	if (err < 0)
-+		return err;
- 
--		switch (res.flags & IORESOURCE_TYPE_BITS) {
-+	/* Get the I/O and memory ranges from DT */
-+	resource_list_for_each_entry_safe(win, tmp_win, windows) {
-+		switch (resource_type(win->res)) {
- 		case IORESOURCE_IO:
--			pcie->offset.io = res.start - range.pci_addr;
--
--			memcpy(&pcie->pio, &res, sizeof(res));
--			pcie->pio.name = node->full_name;
--
--			pcie->io.start = range.cpu_addr;
--			pcie->io.end = range.cpu_addr + range.size - 1;
--			pcie->io.flags = IORESOURCE_MEM;
--			pcie->io.name = "I/O";
--
--			memcpy(&res, &pcie->io, sizeof(res));
--			break;
--
-+			err = devm_pci_remap_iospace(dev, win->res, io_base);
-+			if (err) {
-+				dev_warn(dev, "error %d: failed to map resource %pR\n",
-+					 err, win->res);
-+				resource_list_destroy_entry(win);
-+			}
- 		case IORESOURCE_MEM:
--			pcie->offset.mem = res.start - range.pci_addr;
--
--			memcpy(&pcie->mem, &res, sizeof(res));
-+			memcpy(&pcie->mem, win->res, sizeof(*win->res));
- 			pcie->mem.name = "non-prefetchable";
- 			break;
-+		case IORESOURCE_BUS:
-+			pcie->busnr = win->res->start;
-+			break;
- 		}
- 	}
- 
--	err = of_pci_parse_bus_range(node, &pcie->busn);
--	if (err < 0) {
--		dev_err(dev, "failed to parse bus ranges property: %d\n", err);
--		pcie->busn.name = node->name;
--		pcie->busn.start = 0;
--		pcie->busn.end = 0xff;
--		pcie->busn.flags = IORESOURCE_BUS;
--	}
--
- 	for_each_available_child_of_node(node, child) {
- 		int slot;
- 
-@@ -1125,28 +1103,6 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
- 	return 0;
- }
- 
--static int mtk_pcie_request_resources(struct mtk_pcie *pcie)
--{
--	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
--	struct list_head *windows = &host->windows;
--	struct device *dev = pcie->dev;
--	int err;
--
--	pci_add_resource_offset(windows, &pcie->pio, pcie->offset.io);
--	pci_add_resource_offset(windows, &pcie->mem, pcie->offset.mem);
--	pci_add_resource(windows, &pcie->busn);
--
--	err = devm_request_pci_bus_resources(dev, windows);
--	if (err < 0)
--		return err;
--
--	err = devm_pci_remap_iospace(dev, &pcie->pio, pcie->io.start);
--	if (err < 0)
--		return err;
--
--	return 0;
--}
--
- static int mtk_pcie_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -1169,11 +1125,7 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 	if (err)
- 		return err;
- 
--	err = mtk_pcie_request_resources(pcie);
--	if (err)
--		goto put_resources;
--
--	host->busnr = pcie->busn.start;
-+	host->busnr = pcie->busnr;
- 	host->dev.parent = pcie->dev;
- 	host->ops = pcie->soc->ops;
- 	host->map_irq = of_irq_parse_and_map_pci;
-@@ -1181,12 +1133,9 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 	host->sysdata = pcie;
- 
- 	err = pci_host_probe(host);
--	if (err)
--		goto put_resources;
--
--	return 0;
-+	if (!err)
-+		return 0;
- 
--put_resources:
- 	if (!list_empty(&pcie->ports))
- 		mtk_pcie_put_resources(pcie);
- 
--- 
-2.6.4
+> > > > +       if (!rc) {
+> > > > +               of_property_read_string(refclk_aud.np, "clock-output-names",
+> > > > +                               &refclk_aud_name);
+> > > > +               if (strcmp(refclk_name, refclk_aud_name)) {
+> > > > +                       plls[CLK_APMIXED_APLL1].parent_name = refclk_aud_name;
