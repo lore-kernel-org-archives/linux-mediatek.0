@@ -1,86 +1,33 @@
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: Re: [SPAM]Re: [PATCH v1 3/3] clk: mediatek: mt2712: add pll
- reference support
-Date: Thu, 18 Oct 2018 14:00:17 +0800
-Message-ID: <1539842417.22495.7.camel@mtksdaap41>
-References: <20180920095727.11868-1-weiyi.lu@mediatek.com>
- <20180920095727.11868-5-weiyi.lu@mediatek.com>
- <153936680359.5275.14901579706860255114@swboyd.mtv.corp.google.com>
- <1539784392.16401.28.camel@mtksdaap41>
- <153978572885.5275.2199850145066961212@swboyd.mtv.corp.google.com>
+From: <shun-chih.yu@mediatek.com>
+Subject: [PATCH v3] add support for Mediatek Command-Queue DMA controller on MT6765 SoC
+Date: Thu, 18 Oct 2018 15:49:09 +0800
+Message-ID: <1539848951-14798-1-git-send-email-shun-chih.yu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <153978572885.5275.2199850145066961212@swboyd.mtv.corp.google.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: Rob Herring <robh@kernel.org>, srv_heupstream@mediatek.com, James Liao <jamesjj.liao@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>
+Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-10-17 at 07:15 -0700, Stephen Boyd wrote:
-> Quoting Weiyi Lu (2018-10-17 06:53:12)
-> > On Fri, 2018-10-12 at 10:53 -0700, Stephen Boyd wrote:
-> > > Quoting Weiyi Lu (2018-09-20 02:57:27)
-> > > > +
-> > > > +       rc = of_parse_phandle_with_args(node, "mediatek,refclk",
-> > > > +                       "#clock-cells", 0, &refclk);
-> > > > +       if (!rc) {
-> > > > +               of_property_read_string(refclk.np, "clock-output-names",
-> > > > +                               &refclk_name);
-> > > > +               for (i = 0; i < num_plls; i++)
-> > > > +                       plls[i].parent_name = refclk_name;
-> > > 
-> > > Use of_clk_parent_fill()?
-> > > 
-> > Thanks for the hint, i might use of_clk_get_parent_name() instead like
-> > below to get each parent clock name.
-> > refclk_name = of_clk_get_parent_name(node, 0);
-> > refclk_aud_name = of_clk_get_parent_name(node, 1);
-> 
-> Alright.
-> 
-> > 
-> > > > +       }
-> > > > +
-> > > > +       rc = of_parse_phandle_with_args(node, "mediatek,refclk-aud",
-> > > > +                       "#clock-cells", 0, &refclk_aud);
-> > > 
-> > > This is odd. Is this a custom 'clocks' property? What's going on here?
-> > > Why can't we use assigned clock parents for this?
-> > Yes. both the reference clock of all PLL and the reference clock of
-> > audio PLL could be customized.These two reference clocks shall be
-> > provided by some component like crystal oscillators on the board. So we
-> > might unable to switch the PLL reference source at runtime, in other
-> > words, it should be set statically. That's why we didn't provide the
-> > set_parent ops for pll clock type. It's also the main reason we choose
-> > not to use assigned-clock-parents for this requirement.
-> > 
-> 
-> Ok. Do you need some new software clk flag that indicates we should
-> "lock" the parent or rate configured at boot time? I would like to see
-> this driver implement the clk_ops for the hardware and have the
-> framework be the one that configures the tree, instead of doing it some
-> custom way for this single driver.
-> 
-Hi Stephen, do you mean we might be able to add a flag just like
-CLK_IS_CRITICAL and how it works on clk_enable & clk_disable ops?
-And should we make this new flag to allow to set parent before clock is
-registered and prohibit from changing the rate and parent after clock
-registration. If my understanding is correct, I'll give a try.
-BTW, how about the two patch for the ECO change before this patch. Is
-there any problem on those two patches?
 
-> > > > +       if (!rc) {
-> > > > +               of_property_read_string(refclk_aud.np, "clock-output-names",
-> > > > +                               &refclk_aud_name);
-> > > > +               if (strcmp(refclk_name, refclk_aud_name)) {
-> > > > +                       plls[CLK_APMIXED_APLL1].parent_name = refclk_aud_name;
+Changes since v2:
+- fix build warning for kernel with DMA address in 32-bit
+
+Changes since v1:
+- remove unused macros, typos
+- leverage ASYNC_TX_ENABLE_CHANNEL_SWITCH to maintain DMA descriptor list
+
+Shun-Chih Yu (2):
+  dt-bindings: dmaengine: Add MediaTek Command-Queue DMA controller
+    bindings
+  dmaengine: mediatek: Add MediaTek Command-Queue DMA controller for
+    MT6765 SoC
+
+ .../devicetree/bindings/dma/mtk-cqdma.txt          |   31 +
+ drivers/dma/mediatek/Kconfig                       |   13 +
+ drivers/dma/mediatek/Makefile                      |    1 +
+ drivers/dma/mediatek/mtk-cqdma.c                   |  951 ++++++++++++++++++++
+ 4 files changed, 996 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/dma/mtk-cqdma.txt
+ create mode 100644 drivers/dma/mediatek/mtk-cqdma.c
