@@ -1,82 +1,147 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: Re: [PATCH 2/5] arm64: dts: mediatek: mt6797: Add pinctrl support
-Date: Fri, 19 Oct 2018 13:57:13 +0530
-Message-ID: <20181019082713.GA2641@Mani-XPS-13-9360>
-References: <20181008191411.32555-1-manivannan.sadhasivam@linaro.org>
- <20181008191411.32555-3-manivannan.sadhasivam@linaro.org>
- <CAGp9LzoSA=06CF_yNMOHnfmRnFzpBA4R2YGhbWmxdSKci2uF0w@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 4/6] mmc: mediatek: tune CMD/DATA together
+Date: Fri, 19 Oct 2018 10:46:38 +0200
+Message-ID: <51d95ab5-896e-c386-7a3e-362e8a3c2960@gmail.com>
+References: <1539415250-32337-1-git-send-email-chaotian.jing@mediatek.com>
+ <1539415250-32337-5-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAGp9LzoSA=06CF_yNMOHnfmRnFzpBA4R2YGhbWmxdSKci2uF0w@mail.gmail.com>
+In-Reply-To: <1539415250-32337-5-git-send-email-chaotian.jing@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@kernel.org>
-Cc: Sean Wang =?utf-8?B?KOeOi+W/l+S6mCk=?= <sean.wang@mediatek.com>, linus.walleij@linaro.org, matthias.bgg@gmail.com, robh+dt@kernel.org, linux-kernel@vger.kernel.org, amit.kucheria@linaro.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Sean Wang <sean.wang@mediatek.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, jjian.zhou@mediatek.com, wenbin.mei@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Oct 18, 2018 at 10:07:52PM +0800, Sean Wang wrote:
-> On Tue, Oct 9, 2018 at 3:16 AM Manivannan Sadhasivam <
-> manivannan.sadhasivam@linaro.org> wrote:
-> 
-> > Add pinctrl support for Mediatek MT6797 SoC.
-> >
-> > Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> > ---
-> >  arch/arm64/boot/dts/mediatek/mt6797.dtsi | 14 ++++++++++++++
-> >  1 file changed, 14 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> > index 4beaa71107d7..231230d32d09 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> > @@ -14,6 +14,7 @@
-> >  #include <dt-bindings/clock/mt6797-clk.h>
-> >  #include <dt-bindings/interrupt-controller/irq.h>
-> >  #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +#include <dt-bindings/pinctrl/mt6797-pinfunc.h>
-> >
-> >  / {
-> >         compatible = "mediatek,mt6797";
-> > @@ -129,6 +130,19 @@
-> >                 #clock-cells = <1>;
-> >         };
-> >
-> > +       pio: pinctrl@10005000 {
-> > +               compatible = "mediatek,mt6797-pinctrl";
-> > +               reg = <0 0x10005000 0 0x1000>,
-> > +                     <0 0x10002000 0 0x400>,
-> > +                     <0 0x10002400 0 0x400>,
-> > +                     <0 0x10002800 0 0x400>,
-> > +                     <0 0x10002C00 0 0x400>;
-> > +               reg-names = "gpio", "iocfgl", "iocfgb",
-> > +                           "iocfgr", "iocfgt";
-> > +               gpio-controller;
-> > +               #gpio-cells = <2>;
-> > +       };
-> > +
-> >
-> 
-> The content looks good to me, but the dt-binding document is still being
-> added the support for MT6797 SoC before the dts instance is being applied.
-> 
->
 
-Okay, will add a binding doc in next revision.
 
-Thanks,
-Mani
+On 13/10/2018 09:20, Chaotian Jing wrote:
+> for MSDC IP which supports both data tune and async fifo, it can
+> tune cmd/data together. which can save the time and make the tune
+> result of CMD more stable as data line are 4bit or 8bit.
+> 
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> ---
+>  drivers/mmc/host/mtk-sd.c | 87 +++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 87 insertions(+)
+> 
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index fe80a1d..09d7e44 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -1773,12 +1773,98 @@ static int msdc_tune_data(struct mmc_host *mmc, u32 opcode)
+>  	return final_delay == 0xff ? -EIO : 0;
+>  }
+>  
+> +/*
+> + * MSDC IP which supports data tune + async fifo can do CMD/DAT tune
+> + * together, which can save the tuning time.
+> + */
+> +static int msdc_tune_together(struct mmc_host *mmc, u32 opcode)
+> +{
+> +	struct msdc_host *host = mmc_priv(mmc);
+> +	u32 rise_delay = 0, fall_delay = 0;
+> +	struct msdc_delay_phase final_rise_delay, final_fall_delay = { 0,};
+> +	u8 final_delay, final_maxlen;
+> +	u32 tune_reg = host->dev_comp->pad_tune_reg;
+> +	int i, ret;
+> +
+> +	sdr_set_field(host->base + MSDC_PATCH_BIT, MSDC_INT_DAT_LATCH_CK_SEL,
+> +		      host->latch_ck);
+> +
+> +	sdr_clr_bits(host->base + MSDC_IOCON, MSDC_IOCON_RSPL);
+> +	sdr_clr_bits(host->base + MSDC_IOCON,
+> +		     MSDC_IOCON_DSPL | MSDC_IOCON_W_DSPL);
+> +	for (i = 0 ; i < PAD_DELAY_MAX; i++) {
+> +		sdr_set_field(host->base + tune_reg,
+> +			      MSDC_PAD_TUNE_CMDRDLY, i);
+> +		sdr_set_field(host->base + tune_reg,
+> +			      MSDC_PAD_TUNE_DATRRDLY, i);
+> +		ret = mmc_send_tuning(mmc, opcode, NULL);
+> +		if (!ret)
+> +			rise_delay |= (1 << i);
+> +	}
+> +	final_rise_delay = get_best_delay(host, rise_delay);
+> +	/* if rising edge has enough margin, then do not scan falling edge */
+> +	if (final_rise_delay.maxlen >= 12 ||
+> +	    (final_rise_delay.start == 0 && final_rise_delay.maxlen >= 4))
+> +		goto skip_fall;
+> +
+> +	sdr_set_bits(host->base + MSDC_IOCON, MSDC_IOCON_RSPL);
+> +	sdr_set_bits(host->base + MSDC_IOCON,
+> +		     MSDC_IOCON_DSPL | MSDC_IOCON_W_DSPL);
+> +	for (i = 0; i < PAD_DELAY_MAX; i++) {
+> +		sdr_set_field(host->base + tune_reg,
+> +			      MSDC_PAD_TUNE_CMDRDLY, i);
+> +		sdr_set_field(host->base + tune_reg,
+> +			      MSDC_PAD_TUNE_DATRRDLY, i);
+> +		ret = mmc_send_tuning(mmc, opcode, NULL);
+> +		if (!ret)
+> +			fall_delay |= (1 << i);
+> +	}
+> +	final_fall_delay = get_best_delay(host, fall_delay);
+> +
+> +skip_fall:
+> +	final_maxlen = max(final_rise_delay.maxlen, final_fall_delay.maxlen);
+> +	if (final_maxlen == final_rise_delay.maxlen) {
+> +		sdr_clr_bits(host->base + MSDC_IOCON, MSDC_IOCON_RSPL);
+> +		sdr_clr_bits(host->base + MSDC_IOCON,
+> +			     MSDC_IOCON_DSPL | MSDC_IOCON_W_DSPL);
+> +		sdr_set_field(host->base + tune_reg, MSDC_PAD_TUNE_CMDRDLY,
+> +			      final_rise_delay.final_phase);
+> +		sdr_set_field(host->base + tune_reg,
+> +			      MSDC_PAD_TUNE_DATRRDLY,
+> +			      final_rise_delay.final_phase);
+> +		final_delay = final_rise_delay.final_phase;
+> +	} else {
+> +		sdr_set_bits(host->base + MSDC_IOCON, MSDC_IOCON_RSPL);
+> +		sdr_set_bits(host->base + MSDC_IOCON,
+> +			     MSDC_IOCON_DSPL | MSDC_IOCON_W_DSPL);
+> +		sdr_set_field(host->base + tune_reg, MSDC_PAD_TUNE_CMDRDLY,
+> +			      final_fall_delay.final_phase);
+> +		sdr_set_field(host->base + tune_reg,
+> +			      MSDC_PAD_TUNE_DATRRDLY,
+> +			      final_fall_delay.final_phase);
+> +		final_delay = final_fall_delay.final_phase;
+> +	}
+> +
+> +	dev_dbg(host->dev, "Final pad delay: %x\n", final_delay);
+> +	return final_delay == 0xff ? -EIO : 0;
+> +}
+> +
+>  static int msdc_execute_tuning(struct mmc_host *mmc, u32 opcode)
+>  {
+>  	struct msdc_host *host = mmc_priv(mmc);
+>  	int ret;
+>  	u32 tune_reg = host->dev_comp->pad_tune_reg;
+>  
+> +	if (host->dev_comp->data_tune && host->dev_comp->async_fifo) {
+> +		ret = msdc_tune_together(mmc, opcode);
+> +		if (host->hs400_mode) {
+> +			sdr_clr_bits(host->base + MSDC_IOCON,
+> +				     MSDC_IOCON_DSPL | MSDC_IOCON_W_DSPL);
+> +			sdr_set_field(host->base + tune_reg,
+> +				      MSDC_PAD_TUNE_DATRRDLY, 0);
+> +		}
+> +		goto tune_done;
+> +	}
+>  	if (host->hs400_mode &&
 
-> >         scpsys: scpsys@10006000 {
-> >                 compatible = "mediatek,mt6797-scpsys";
-> >                 #power-domain-cells = <1>;
-> > --
-> > 2.17.1
-> >
-> >
-> > _______________________________________________
-> > Linux-mediatek mailing list
-> > Linux-mediatek@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> >
+Couldn't we put a else if here instead of using a goto?
+
+Regards,
+Matthias
+
+>  	    host->dev_comp->hs400_tune)
+>  		ret = hs400_tune_response(mmc, opcode);
+> @@ -1794,6 +1880,7 @@ static int msdc_execute_tuning(struct mmc_host *mmc, u32 opcode)
+>  			dev_err(host->dev, "Tune data fail!\n");
+>  	}
+>  
+> +tune_done:
+>  	host->saved_tune_para.iocon = readl(host->base + MSDC_IOCON);
+>  	host->saved_tune_para.pad_tune = readl(host->base + tune_reg);
+>  	host->saved_tune_para.pad_cmd_tune = readl(host->base + PAD_CMD_TUNE);
+> 
