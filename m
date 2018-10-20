@@ -1,41 +1,61 @@
-From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: MT7630E firmware and Mediatek support
-Date: Fri, 19 Oct 2018 11:15:51 +0200
-Message-ID: <20181019091550.GA7360@redhat.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Alexey Khoroshilov <khoroshilov@ispras.ru>
+Subject: [PATCH] media: mtk-vcodec: Release device nodes in mtk_vcodec_init_enc_pm()
+Date: Sat, 20 Oct 2018 20:50:19 +0300
+Message-ID: <1540057819-5075-1-git-send-email-khoroshilov@ispras.ru>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Alexey Khoroshilov <khoroshilov@ispras.ru>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, ldv-project@linuxtesting.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello MediaTek
+of_parse_phandle() returns the device node with refcount incremented.
+There are two nodes that are used temporary in mtk_vcodec_init_enc_pm(),
+but their refcounts are not decremented.
 
-I plan to submit this firmware to linux-firwmare git tree:
-https://github.com/neurobin/MT7630E/tree/release/firmware/Wi-FI
-to add support for MT7630E with mt76/mt76x0 driver, is this ok ?
+The patch adds one of_node_put() and fixes returning error codes.
 
-I would also ask if Mediatek can provide some support for us
-to have their WiFi products working better with mainline linux?
+Found by Linux Driver Verification project (linuxtesting.org).
 
-Some example things that Mediatek could do that come in mind
-and I would like to request are:
+Signed-off-by: Alexey Khoroshilov <khoroshilov@ispras.ru>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-- Testing and reviewing our patches.
-- Assign support engineer for us who could answer questions about
-  low level configuration and help solving problems.
-- Financing to Felix for doing maintainace and development work of
-  mt76 driver.
-- Provide newer/better version of Mediatek driver/SDK for reference.
-- Provide hardware not yet released on the market for adding
-  support for new chips.
-- Provide documentation.
-
-If any of that could be done by Mediatek would be great.
-
-You can answer me off-list, if you prefer that.
-
-Thanks
-Stanislaw
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+index 3e73e9db781f..7c025045ea90 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+@@ -41,25 +41,27 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
+ 	node = of_parse_phandle(dev->of_node, "mediatek,larb", 0);
+ 	if (!node) {
+ 		mtk_v4l2_err("no mediatek,larb found");
+-		return -1;
++		return -ENODEV;
+ 	}
+ 	pdev = of_find_device_by_node(node);
++	of_node_put(node);
+ 	if (!pdev) {
+ 		mtk_v4l2_err("no mediatek,larb device found");
+-		return -1;
++		return -ENODEV;
+ 	}
+ 	pm->larbvenc = &pdev->dev;
+ 
+ 	node = of_parse_phandle(dev->of_node, "mediatek,larb", 1);
+ 	if (!node) {
+ 		mtk_v4l2_err("no mediatek,larb found");
+-		return -1;
++		return -ENODEV;
+ 	}
+ 
+ 	pdev = of_find_device_by_node(node);
++	of_node_put(node);
+ 	if (!pdev) {
+ 		mtk_v4l2_err("no mediatek,larb device found");
+-		return -1;
++		return -ENODEV;
+ 	}
+ 
+ 	pm->larbvenclt = &pdev->dev;
+-- 
+2.7.4
