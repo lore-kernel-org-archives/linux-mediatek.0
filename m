@@ -1,61 +1,39 @@
-From: Alexey Khoroshilov <khoroshilov@ispras.ru>
-Subject: [PATCH] media: mtk-vcodec: Release device nodes in mtk_vcodec_init_enc_pm()
-Date: Sat, 20 Oct 2018 20:50:19 +0300
-Message-ID: <1540057819-5075-1-git-send-email-khoroshilov@ispras.ru>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Subject: [PATCH] mfd: mt6397: Do not call irq_domain_remove if PMIC unsupported
+Date: Mon, 22 Oct 2018 10:55:06 +0800
+Message-ID: <20181022025505.27919-1-drinkcat@chromium.org>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Alexey Khoroshilov <khoroshilov@ispras.ru>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, ldv-project@linuxtesting.org
+To: "Lee Jones )" <lee.jones@linaro.org>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-of_parse_phandle() returns the device node with refcount incremented.
-There are two nodes that are used temporary in mtk_vcodec_init_enc_pm(),
-but their refcounts are not decremented.
+If the PMIC ID is unknown, the current code would call
+irq_domain_remove and panic, as pmic->irq_domain is only
+initialized by mt6397_irq_init.
 
-The patch adds one of_node_put() and fixes returning error codes.
+Return immediately with an error, if the chip ID is unsupported.
 
-Found by Linux Driver Verification project (linuxtesting.org).
-
-Signed-off-by: Alexey Khoroshilov <khoroshilov@ispras.ru>
+Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ drivers/mfd/mt6397-core.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-index 3e73e9db781f..7c025045ea90 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-@@ -41,25 +41,27 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
- 	node = of_parse_phandle(dev->of_node, "mediatek,larb", 0);
- 	if (!node) {
- 		mtk_v4l2_err("no mediatek,larb found");
--		return -1;
-+		return -ENODEV;
- 	}
- 	pdev = of_find_device_by_node(node);
-+	of_node_put(node);
- 	if (!pdev) {
- 		mtk_v4l2_err("no mediatek,larb device found");
--		return -1;
-+		return -ENODEV;
- 	}
- 	pm->larbvenc = &pdev->dev;
+diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+index 77b64bd64df36a..ab24e176ef4487 100644
+--- a/drivers/mfd/mt6397-core.c
++++ b/drivers/mfd/mt6397-core.c
+@@ -329,8 +329,7 @@ static int mt6397_probe(struct platform_device *pdev)
  
- 	node = of_parse_phandle(dev->of_node, "mediatek,larb", 1);
- 	if (!node) {
- 		mtk_v4l2_err("no mediatek,larb found");
--		return -1;
+ 	default:
+ 		dev_err(&pdev->dev, "unsupported chip: %d\n", id);
+-		ret = -ENODEV;
+-		break;
 +		return -ENODEV;
  	}
  
- 	pdev = of_find_device_by_node(node);
-+	of_node_put(node);
- 	if (!pdev) {
- 		mtk_v4l2_err("no mediatek,larb device found");
--		return -1;
-+		return -ENODEV;
- 	}
- 
- 	pm->larbvenclt = &pdev->dev;
+ 	if (ret) {
 -- 
-2.7.4
+2.19.1.568.g152ad8e336-goog
