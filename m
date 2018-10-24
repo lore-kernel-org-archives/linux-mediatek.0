@@ -1,46 +1,83 @@
-From: Russell King - ARM Linux <linux@armlinux.org.uk>
-Subject: Re: [PATCH v3 0/7] include: add
- setbits32/clrbits32/clrsetbits32/setbits64/clrbits64/clrsetbits64
-Date: Wed, 24 Oct 2018 09:57:00 +0100
-Message-ID: <20181024085700.GR30658@n2100.armlinux.org.uk>
-References: <1540366553-18541-1-git-send-email-clabbe@baylibre.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2] staging: mt7621-dma: Add braces around else branches
+Date: Wed, 24 Oct 2018 12:45:44 +0200
+Message-ID: <af4594cc-05c0-672c-d560-b50705ceaab3@gmail.com>
+References: <20181023211142.GA2661@v> <20181024045653.GA2864@v>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1540366553-18541-1-git-send-email-clabbe@baylibre.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Corentin Labbe <clabbe@baylibre.com>
-Cc: Gilles.Muller@lip6.fr, maxime.ripard@bootlin.com, dri-devel@lists.freedesktop.org, linux-ide@vger.kernel.org, linux-sunxi@googlegroups.com, paulus@samba.org, linux-amlogic@lists.infradead.org, cocci@systeme.lip6.fr, mpe@ellerman.id.au, narmstrong@baylibre.com, galak@kernel.crashing.org, airlied@linux.ie, wens@csie.org, joabreu@synopsys.com, vitb@kernel.crashing.org, mporter@kernel.crashing.org, agust@denx.de, alexandre.torgue@st.com, alistair@popple.id.au, nicolas.palix@imag.fr, oss@buserror.net, Julia.Lawall@lip6.fr, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, peppe.cavallaro@st.com, linux-arm-kernel@lists.infradead.org, michal.lkml@markovi.net, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, khilman@baylibre.com, carlo@caione.org, tj@kernel.org, linuxppc-dev@lists.ozlabs.org, davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+In-Reply-To: <20181024045653.GA2864@v>
+Content-Language: en-US
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: Kimberly Brown <kimbrownkd@gmail.com>, outreachy-kernel@googlegroups.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: devel@driverdev.osuosl.org, linux-mediatek@lists.infradead.org, NeilBrown <neil@brown.name>, =?UTF-8?Q?Christian_L=c3=bctke-Stetzkamp?= <christian@lkamp.de>, linux-arm-kernel@lists.infradead.org, John Crispin <blogic@openwrt.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gV2VkLCBPY3QgMjQsIDIwMTggYXQgMDc6MzU6NDZBTSArMDAwMCwgQ29yZW50aW4gTGFiYmUg
-d3JvdGU6Cj4gVGhpcyBwYXRjaHNldCBhZGRzIGEgbmV3IHNldCBvZiBmdW5jdGlvbnMgd2hpY2gg
-YXJlIG9wZW4tY29kZWQgaW4gbG90IG9mCj4gcGxhY2UuCj4gQmFzaWNseSB0aGUgcGF0dGVybiBp
-cyBhbHdheXMgdGhlIHNhbWUsICJyZWFkLCBtb2RpZnkgYSBiaXQsIHdyaXRlIgo+IHNvbWUgZHJp
-dmVyIGFuZCB0aGUgcG93ZXJwYyBhcmNoIGFscmVhZHkgaGF2ZSB0aG9zZXMgcGF0dGVybiB0aGVt
-IGFzIGZ1bmN0aW9ucy4gKGxpa2UgYWhjaV9zdW54aS5jIG9yIGR3bWFjLW1lc29uOGIpCgpUaGUg
-YWR2YW50YWdlIG9mIHRoZW0gYmVpbmcgb3Blbi1jb2RlZCBpcyB0aGF0IGl0J3MgX29idmlvdXNf
-IHRvIHRoZQpyZXZpZXdlciB0aGF0IHRoZXJlIGlzIGEgcmVhZC1tb2RpZnktd3JpdGUgZ29pbmcg
-b24gd2hpY2gsIGluIGEgbXVsdGktCnRocmVhZGVkIGVudmlyb25tZW50LCBtYXkgbmVlZCBzb21l
-IGxvY2tpbmcgKHNvIGl0IHNob3VsZCB0cmlnZ2VyIGEKcmV2aWV3IG9mIHRoZSBsb2NraW5nIGFy
-b3VuZCB0aGF0IGNvZGUuKQoKV2l0aCBpdCBoaWRkZW4gaW5zaWRlIGEgaGVscGVyIHdoaWNoIGhh
-cyBubyBsb2NraW5nIGl0c2VsZiwgaXQgYmVjb21lcwptdWNoIGVhc2llciB0byBwYXNzIG92ZXIg
-aW4gcmV2aWV3LCB3aGljaCBtZWFucyB0aGF0IHJhY2VzIGFyZSBtdWNoCm1vcmUgbGlrZWx5IHRv
-IGdvIHVuc3BvdHRlZCAtIGFuZCB0aGF0IGlzIGJhZCBuZXdzLgoKLS0gClJNSydzIFBhdGNoIHN5
-c3RlbTogaHR0cDovL3d3dy5hcm1saW51eC5vcmcudWsvZGV2ZWxvcGVyL3BhdGNoZXMvCkZUVEMg
-YnJvYWRiYW5kIGZvciAwLjhtaWxlIGxpbmUgaW4gc3VidXJiaWE6IHN5bmMgYXQgMTIuMU1icHMg
-ZG93biA2MjJrYnBzIHVwCkFjY29yZGluZyB0byBzcGVlZHRlc3QubmV0OiAxMS45TWJwcyBkb3du
-IDUwMGticHMgdXAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-Cg==
+Hi Kiberly,
+
+Thanks for adding all the emails in CC.
+I would encourage you for your next patch to distinguish between CC and TO.
+You should send your patch TO important maintainers in the get_maintainers.pl
+list (as default, to all of them). If there is someone you really want to look
+into the patch, then add him/her in TO as well.
+
+Put the rest (people and mailing lists) in CC. Why? Some people filter their
+mails so that they can concentrate on the mails they got send directly and look
+on mails they are in CC with lower priority (maybe not at all, because there are
+too much?). So it is important to have the maintainers in the TO list and not in CC.
+
+Keep up the good work :)
+Matthias
+
+On 24/10/2018 06:56, Kimberly Brown wrote:
+> Add braces around else branches in conditional statements that include
+> branches with multiple statements. This style complies with the Linux
+> kernel coding style and improves consistency and readability. Issues found by
+> checkpatch.
+> 
+> Signed-off-by: Kimberly Brown <kimbrownkd@gmail.com>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> ---
+> Changes in v2:
+> - Added people and mailing lists from get_maintainer.pl to the CC list
+> - Added Reviewed-by line
+> 
+>  drivers/staging/mt7621-dma/mtk-hsdma.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
+> index df6ebf41bdea..35556f024aa1 100644
+> --- a/drivers/staging/mt7621-dma/mtk-hsdma.c
+> +++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
+> @@ -418,8 +418,9 @@ static void mtk_hsdma_chan_done(struct mtk_hsdam_engine *hsdma,
+>  			vchan_cookie_complete(&desc->vdesc);
+>  			chan_issued = gdma_next_desc(chan);
+>  		}
+> -	} else
+> +	} else {
+>  		dev_dbg(hsdma->ddev.dev, "no desc to complete\n");
+> +	}
+>  
+>  	if (chan_issued)
+>  		set_bit(chan->id, &hsdma->chan_issued);
+> @@ -456,8 +457,9 @@ static void mtk_hsdma_issue_pending(struct dma_chan *c)
+>  		if (gdma_next_desc(chan)) {
+>  			set_bit(chan->id, &hsdma->chan_issued);
+>  			tasklet_schedule(&hsdma->task);
+> -		} else
+> +		} else {
+>  			dev_dbg(hsdma->ddev.dev, "no desc to issue\n");
+> +		}
+>  	}
+>  	spin_unlock_bh(&chan->vchan.lock);
+>  }
+> 
