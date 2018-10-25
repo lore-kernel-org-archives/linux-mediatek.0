@@ -1,21 +1,19 @@
-From: Joe Perches <joe@perches.com>
+From: Matthew Wilcox <willy@infradead.org>
 Subject: Re: [PATCH] mm/page_owner: use vmalloc instead of kmalloc
-Date: Thu, 25 Oct 2018 11:44:38 -0700
-Message-ID: <e0cd65fdd6afc17b2be9b3ac64d50b95b2c2f32e.camel@perches.com>
+Date: Thu, 25 Oct 2018 12:27:01 -0700
+Message-ID: <20181025192701.GK25444@bombadil.infradead.org>
 References: <1540492481-4144-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
 In-Reply-To: <1540492481-4144-1-git-send-email-miles.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: miles.chen@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: miles.chen@mediatek.com
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-mm@kvack.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2018-10-26 at 02:34 +0800, miles.chen@mediatek.com wrote:
-> From: Miles Chen <miles.chen@mediatek.com>
-> 
+On Fri, Oct 26, 2018 at 02:34:41AM +0800, miles.chen@mediatek.com wrote:
 > The kbuf used by page owner is allocated by kmalloc(),
 > which means it can use only normal memory and there might
 > be a "out of memory" issue when we're out of normal memory.
@@ -23,47 +21,29 @@ On Fri, 2018-10-26 at 02:34 +0800, miles.chen@mediatek.com wrote:
 > Use vmalloc() so we can also allocate kbuf from highmem
 > on 32bit kernel.
 
-If this is really necessary, using kvmalloc/kvfree would
-be better as the vmalloc space is also limited.
+... hang on, there's a bigger problem here.
 
-> diff --git a/mm/page_owner.c b/mm/page_owner.c
-[]
-> @@ -1,7 +1,6 @@
->  // SPDX-License-Identifier: GPL-2.0
->  #include <linux/debugfs.h>
->  #include <linux/mm.h>
-> -#include <linux/slab.h>
->  #include <linux/uaccess.h>
->  #include <linux/bootmem.h>
->  #include <linux/stacktrace.h>
-> @@ -10,6 +9,7 @@
->  #include <linux/migrate.h>
->  #include <linux/stackdepot.h>
->  #include <linux/seq_file.h>
-> +#include <linux/vmalloc.h>
->  
->  #include "internal.h"
->  
-> @@ -351,7 +351,7 @@ print_page_owner(char __user *buf, size_t count, unsigned long pfn,
->  		.skip = 0
->  	};
->  
-> -	kbuf = kmalloc(count, GFP_KERNEL);
-> +	kbuf = vmalloc(count);
->  	if (!kbuf)
->  		return -ENOMEM;
->  
-> @@ -397,11 +397,11 @@ print_page_owner(char __user *buf, size_t count, unsigned long pfn,
->  	if (copy_to_user(buf, kbuf, ret))
->  		ret = -EFAULT;
->  
-> -	kfree(kbuf);
-> +	vfree(kbuf);
->  	return ret;
->  
->  err:
-> -	kfree(kbuf);
-> +	vfree(kbuf);
->  	return -ENOMEM;
->  }
->  
+static const struct file_operations proc_page_owner_operations = {
+        .read           = read_page_owner,
+};
+
+read_page_owner(struct file *file, char __user *buf, size_t count, loff_t *ppos)
+{
+...
+                return print_page_owner(buf, count, pfn, page,
+                                page_owner, handle);
+}
+
+static ssize_t
+print_page_owner(char __user *buf, size_t count, unsigned long pfn,
+                struct page *page, struct page_owner *page_owner,
+                depot_stack_handle_t handle)
+{
+...
+      kbuf = kmalloc(count, GFP_KERNEL);
+
+So I can force the kernel to make an arbitrary size allocation, triggering
+OOMs and forcing swapping if I can get a file handle to this file.
+The only saving grace is that (a) this is a debugfs file and (b) it's
+root-only (mode 0400).  Nevertheless, I feel some clamping is called
+for here.  Do we really need to output more than 4kB worth of text here?
