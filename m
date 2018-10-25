@@ -1,37 +1,71 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH] mfd: mt6397: Do not call irq_domain_remove if PMIC
- unsupported
-Date: Thu, 25 Oct 2018 10:10:01 +0100
-Message-ID: <20181025091001.GM4939@dell>
-References: <20181022025505.27919-1-drinkcat@chromium.org>
+From: <miles.chen@mediatek.com>
+Subject: [PATCH] mm/page_owner: use vmalloc instead of kmalloc
+Date: Fri, 26 Oct 2018 02:34:41 +0800
+Message-ID: <1540492481-4144-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20181022025505.27919-1-drinkcat@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Boichat <drinkcat@chromium.org>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Miles Chen <miles.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 22 Oct 2018, Nicolas Boichat wrote:
+From: Miles Chen <miles.chen@mediatek.com>
 
-> If the PMIC ID is unknown, the current code would call
-> irq_domain_remove and panic, as pmic->irq_domain is only
-> initialized by mt6397_irq_init.
-> 
-> Return immediately with an error, if the chip ID is unsupported.
-> 
-> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> ---
->  drivers/mfd/mt6397-core.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+The kbuf used by page owner is allocated by kmalloc(),
+which means it can use only normal memory and there might
+be a "out of memory" issue when we're out of normal memory.
 
-Applied for v4.21, thanks.
+Use vmalloc() so we can also allocate kbuf from highmem
+on 32bit kernel.
 
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ mm/page_owner.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/mm/page_owner.c b/mm/page_owner.c
+index d80adfe702d3..7e6962adaa79 100644
+--- a/mm/page_owner.c
++++ b/mm/page_owner.c
+@@ -1,7 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0
+ #include <linux/debugfs.h>
+ #include <linux/mm.h>
+-#include <linux/slab.h>
+ #include <linux/uaccess.h>
+ #include <linux/bootmem.h>
+ #include <linux/stacktrace.h>
+@@ -10,6 +9,7 @@
+ #include <linux/migrate.h>
+ #include <linux/stackdepot.h>
+ #include <linux/seq_file.h>
++#include <linux/vmalloc.h>
+ 
+ #include "internal.h"
+ 
+@@ -351,7 +351,7 @@ print_page_owner(char __user *buf, size_t count, unsigned long pfn,
+ 		.skip = 0
+ 	};
+ 
+-	kbuf = kmalloc(count, GFP_KERNEL);
++	kbuf = vmalloc(count);
+ 	if (!kbuf)
+ 		return -ENOMEM;
+ 
+@@ -397,11 +397,11 @@ print_page_owner(char __user *buf, size_t count, unsigned long pfn,
+ 	if (copy_to_user(buf, kbuf, ret))
+ 		ret = -EFAULT;
+ 
+-	kfree(kbuf);
++	vfree(kbuf);
+ 	return ret;
+ 
+ err:
+-	kfree(kbuf);
++	vfree(kbuf);
+ 	return -ENOMEM;
+ }
+ 
 -- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+2.18.0
