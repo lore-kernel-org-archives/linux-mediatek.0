@@ -1,23 +1,21 @@
 From: Miles Chen <miles.chen@mediatek.com>
 Subject: Re: [PATCH] mm/page_owner: use vmalloc instead of kmalloc
-Date: Fri, 26 Oct 2018 16:01:07 +0800
-Message-ID: <1540540867.21297.2.camel@mtkswgap22>
+Date: Fri, 26 Oct 2018 16:50:34 +0800
+Message-ID: <1540543834.21297.14.camel@mtkswgap22>
 References: <1540492481-4144-1-git-send-email-miles.chen@mediatek.com>
-         <e0cd65fdd6afc17b2be9b3ac64d50b95b2c2f32e.camel@perches.com>
+         <20181025192701.GK25444@bombadil.infradead.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e0cd65fdd6afc17b2be9b3ac64d50b95b2c2f32e.camel@perches.com>
+In-Reply-To: <20181025192701.GK25444@bombadil.infradead.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Joe Perches <joe@perches.com>
+To: Matthew Wilcox <willy@infradead.org>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-mm@kvack.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2018-10-25 at 11:44 -0700, Joe Perches wrote:
-> On Fri, 2018-10-26 at 02:34 +0800, miles.chen@mediatek.com wrote:
-> > From: Miles Chen <miles.chen@mediatek.com>
-> > 
+On Thu, 2018-10-25 at 12:27 -0700, Matthew Wilcox wrote:
+> On Fri, Oct 26, 2018 at 02:34:41AM +0800, miles.chen@mediatek.com wrote:
 > > The kbuf used by page owner is allocated by kmalloc(),
 > > which means it can use only normal memory and there might
 > > be a "out of memory" issue when we're out of normal memory.
@@ -25,52 +23,56 @@ On Thu, 2018-10-25 at 11:44 -0700, Joe Perches wrote:
 > > Use vmalloc() so we can also allocate kbuf from highmem
 > > on 32bit kernel.
 > 
-> If this is really necessary, using kvmalloc/kvfree would
-> be better as the vmalloc space is also limited.
-
-thanks for the advise.
-kvmalloc/kvfree is better here.
-
+> ... hang on, there's a bigger problem here.
 > 
-> > diff --git a/mm/page_owner.c b/mm/page_owner.c
-> []
-> > @@ -1,7 +1,6 @@
-> >  // SPDX-License-Identifier: GPL-2.0
-> >  #include <linux/debugfs.h>
-> >  #include <linux/mm.h>
-> > -#include <linux/slab.h>
-> >  #include <linux/uaccess.h>
-> >  #include <linux/bootmem.h>
-> >  #include <linux/stacktrace.h>
-> > @@ -10,6 +9,7 @@
-> >  #include <linux/migrate.h>
-> >  #include <linux/stackdepot.h>
-> >  #include <linux/seq_file.h>
-> > +#include <linux/vmalloc.h>
-> >  
-> >  #include "internal.h"
-> >  
-> > @@ -351,7 +351,7 @@ print_page_owner(char __user *buf, size_t count, unsigned long pfn,
-> >  		.skip = 0
-> >  	};
-> >  
-> > -	kbuf = kmalloc(count, GFP_KERNEL);
-> > +	kbuf = vmalloc(count);
-> >  	if (!kbuf)
-> >  		return -ENOMEM;
-> >  
-> > @@ -397,11 +397,11 @@ print_page_owner(char __user *buf, size_t count, unsigned long pfn,
-> >  	if (copy_to_user(buf, kbuf, ret))
-> >  		ret = -EFAULT;
-> >  
-> > -	kfree(kbuf);
-> > +	vfree(kbuf);
-> >  	return ret;
-> >  
-> >  err:
-> > -	kfree(kbuf);
-> > +	vfree(kbuf);
-> >  	return -ENOMEM;
-> >  }
-> >  
+> static const struct file_operations proc_page_owner_operations = {
+>         .read           = read_page_owner,
+> };
 > 
+> read_page_owner(struct file *file, char __user *buf, size_t count, loff_t *ppos)
+> {
+> ...
+>                 return print_page_owner(buf, count, pfn, page,
+>                                 page_owner, handle);
+> }
+> 
+> static ssize_t
+> print_page_owner(char __user *buf, size_t count, unsigned long pfn,
+>                 struct page *page, struct page_owner *page_owner,
+>                 depot_stack_handle_t handle)
+> {mount -t debugfs none /sys/kernel/debug/
+> ...
+>       kbuf = kmalloc(count, GFP_KERNEL);
+> 
+> So I can force the kernel to make an arbitrary size allocation, triggering
+> OOMs and forcing swapping if I can get a file handle to this file.
+> The only saving grace is that (a) this is a debugfs file and (b) it's
+> root-only (mode 0400).  Nevertheless, I feel some clamping is called
+> for here.  Do we really need to output more than 4kB worth of text here?
+> 
+I did a test on my device, the allocation count is 4096 and around 6xx
+bytes are used each print_page_owner() is called. It looks like that
+clamping the reading count to PAGE_SIZE is ok.
+
+The following output from print_page_owner() is 660 bytes long, I think
+PAGE_SIZE should be enough to print the information we need.
+
+Page allocated via order 0, mask 0x6200ca(GFP_HIGHUSER_MOVABLE)
+PFN 262199 type Movable Block 512 type Movable Flags 0x4003c(referenced|
+uptodate|dirty|lru|swapbacked)
+ get_page_from_freelist+0x1580/0x1650
+ __alloc_pages_nodemask+0xcc/0xfa4
+ shmem_alloc_page+0xa4/0xc8
+ shmem_alloc_and_acct_page+0x138/0x2b8
+ shmem_getpage_gfp.isra.54+0x164/0xfc8
+ shmem_write_begin+0x84/0xcc
+ generic_perform_write+0xe8/0x210
+ __generic_file_write_iter+0x1d4/0x230
+ generic_file_write_iter+0x184/0x2e8
+ new_sync_write+0x144/0x1c4
+ vfs_write+0x194/0x278
+ ksys_write+0x64/0xd4
+ xwrite+0x34/0x84
+ do_copy+0xf4/0x168
+ flush_buffer+0x68/0xec
+ __gunzip+0x370/0x448
