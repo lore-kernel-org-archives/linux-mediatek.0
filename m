@@ -1,89 +1,49 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: [PATCH 1/3] drm: Add dma_dev in struct drm_device
-Date: Fri, 26 Oct 2018 15:22:01 +0800
-Message-ID: <1540538523-1973-2-git-send-email-ck.hu@mediatek.com>
-References: <1540538523-1973-1-git-send-email-ck.hu@mediatek.com>
+Subject: [PATCH 0/3] Mediatek drm driver use drm_gem_cma_object instead of mtk_drm_gem_obj
+Date: Fri, 26 Oct 2018 15:22:00 +0800
+Message-ID: <1540538523-1973-1-git-send-email-ck.hu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1540538523-1973-1-git-send-email-ck.hu@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Daniel Vetter <daniel.vetter@ffwll.ch>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <sean@poorly.run>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Rm9yIGRybSBkZXZpY2Ugd2hpY2ggaGFzIHN1YiBkZXZpY2UsIHRoZSBkbWEgZnVuY3Rpb24gbWF5
-IGJlIGluIHRoZSBzdWIKZGV2aWNlIHJhdGhlciB0aGFuIGl0LCBzbyB0aGUgZG1hX2RldiBpcyB0
-aGUgZGV2aWNlIHdoaWNoIGhhcyBkbWEKZnVuY3Rpb24gYW5kIHVzZSB0aGlzIGRldmljZSBmb3Ig
-ZG1hIG9wZXJhdGlvbi4KClNpZ25lZC1vZmYtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+
-Ci0tLQogZHJpdmVycy9ncHUvZHJtL2RybV9nZW1fY21hX2hlbHBlci5jIHwgMTkgKysrKysrKysr
-KysrKystLS0tLQogaW5jbHVkZS9kcm0vZHJtX2RldmljZS5oICAgICAgICAgICAgIHwgIDEgKwog
-MiBmaWxlcyBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspLCA1IGRlbGV0aW9ucygtKQoKZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fZ2VtX2NtYV9oZWxwZXIuYyBiL2RyaXZlcnMvZ3B1
-L2RybS9kcm1fZ2VtX2NtYV9oZWxwZXIuYwppbmRleCA4MGE1MTE1Li4wYmEyYzJhIDEwMDY0NAot
-LS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2dlbV9jbWFfaGVscGVyLmMKKysrIGIvZHJpdmVycy9n
-cHUvZHJtL2RybV9nZW1fY21hX2hlbHBlci5jCkBAIC0xMDEsNiArMTAxLDcgQEAgc3RydWN0IGRy
-bV9nZW1fY21hX29iamVjdCAqZHJtX2dlbV9jbWFfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpk
-cm0sCiAJCQkJCSAgICAgIHNpemVfdCBzaXplKQogewogCXN0cnVjdCBkcm1fZ2VtX2NtYV9vYmpl
-Y3QgKmNtYV9vYmo7CisJc3RydWN0IGRldmljZSAqZGV2ID0gZHJtLT5kbWFfZGV2ID8gZHJtLT5k
-bWFfZGV2IDogZHJtLT5kZXY7CiAJaW50IHJldDsKIAogCXNpemUgPSByb3VuZF91cChzaXplLCBQ
-QUdFX1NJWkUpOwpAQCAtMTA5LDEwICsxMTAsMTAgQEAgc3RydWN0IGRybV9nZW1fY21hX29iamVj
-dCAqZHJtX2dlbV9jbWFfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sCiAJaWYgKElTX0VS
-UihjbWFfb2JqKSkKIAkJcmV0dXJuIGNtYV9vYmo7CiAKLQljbWFfb2JqLT52YWRkciA9IGRtYV9h
-bGxvY193Yyhkcm0tPmRldiwgc2l6ZSwgJmNtYV9vYmotPnBhZGRyLAorCWNtYV9vYmotPnZhZGRy
-ID0gZG1hX2FsbG9jX3djKGRldiwgc2l6ZSwgJmNtYV9vYmotPnBhZGRyLAogCQkJCSAgICAgIEdG
-UF9LRVJORUwgfCBfX0dGUF9OT1dBUk4pOwogCWlmICghY21hX29iai0+dmFkZHIpIHsKLQkJZGV2
-X2RiZyhkcm0tPmRldiwgImZhaWxlZCB0byBhbGxvY2F0ZSBidWZmZXIgd2l0aCBzaXplICV6dVxu
-IiwKKwkJZGV2X2RiZyhkZXYsICJmYWlsZWQgdG8gYWxsb2NhdGUgYnVmZmVyIHdpdGggc2l6ZSAl
-enVcbiIsCiAJCQlzaXplKTsKIAkJcmV0ID0gLUVOT01FTTsKIAkJZ290byBlcnJvcjsKQEAgLTE4
-MiwxMSArMTgzLDE0IEBAIHN0cnVjdCBkcm1fZ2VtX2NtYV9vYmplY3QgKmRybV9nZW1fY21hX2Ny
-ZWF0ZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLAogdm9pZCBkcm1fZ2VtX2NtYV9mcmVlX29iamVj
-dChzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKmdlbV9vYmopCiB7CiAJc3RydWN0IGRybV9nZW1fY21h
-X29iamVjdCAqY21hX29iajsKKwlzdHJ1Y3QgZGV2aWNlICpkZXY7CiAKIAljbWFfb2JqID0gdG9f
-ZHJtX2dlbV9jbWFfb2JqKGdlbV9vYmopOwogCiAJaWYgKGNtYV9vYmotPnZhZGRyKSB7Ci0JCWRt
-YV9mcmVlX3djKGdlbV9vYmotPmRldi0+ZGV2LCBjbWFfb2JqLT5iYXNlLnNpemUsCisJCWRldiA9
-IGdlbV9vYmotPmRldi0+ZG1hX2RldiA/CisJCSAgICAgIGdlbV9vYmotPmRldi0+ZG1hX2RldiA6
-IGdlbV9vYmotPmRldi0+ZGV2OworCQlkbWFfZnJlZV93YyhkZXYsIGNtYV9vYmotPmJhc2Uuc2l6
-ZSwKIAkJCSAgICBjbWFfb2JqLT52YWRkciwgY21hX29iai0+cGFkZHIpOwogCX0gZWxzZSBpZiAo
-Z2VtX29iai0+aW1wb3J0X2F0dGFjaCkgewogCQlkcm1fcHJpbWVfZ2VtX2Rlc3Ryb3koZ2VtX29i
-aiwgY21hX29iai0+c2d0KTsKQEAgLTI3NCw2ICsyNzgsNyBAQCBzdGF0aWMgaW50IGRybV9nZW1f
-Y21hX21tYXBfb2JqKHN0cnVjdCBkcm1fZ2VtX2NtYV9vYmplY3QgKmNtYV9vYmosCiAJCQkJc3Ry
-dWN0IHZtX2FyZWFfc3RydWN0ICp2bWEpCiB7CiAJaW50IHJldDsKKwlzdHJ1Y3QgZGV2aWNlICpk
-ZXY7CiAKIAkvKgogCSAqIENsZWFyIHRoZSBWTV9QRk5NQVAgZmxhZyB0aGF0IHdhcyBzZXQgYnkg
-ZHJtX2dlbV9tbWFwKCksIGFuZCBzZXQgdGhlCkBAIC0yODMsNyArMjg4LDkgQEAgc3RhdGljIGlu
-dCBkcm1fZ2VtX2NtYV9tbWFwX29iaihzdHJ1Y3QgZHJtX2dlbV9jbWFfb2JqZWN0ICpjbWFfb2Jq
-LAogCXZtYS0+dm1fZmxhZ3MgJj0gflZNX1BGTk1BUDsKIAl2bWEtPnZtX3Bnb2ZmID0gMDsKIAot
-CXJldCA9IGRtYV9tbWFwX3djKGNtYV9vYmotPmJhc2UuZGV2LT5kZXYsIHZtYSwgY21hX29iai0+
-dmFkZHIsCisJZGV2ID0gY21hX29iai0+YmFzZS5kZXYtPmRtYV9kZXYgPworCSAgICAgIGNtYV9v
-YmotPmJhc2UuZGV2LT5kbWFfZGV2IDogY21hX29iai0+YmFzZS5kZXYtPmRldjsKKwlyZXQgPSBk
-bWFfbW1hcF93YyhkZXYsIHZtYSwgY21hX29iai0+dmFkZHIsCiAJCQkgIGNtYV9vYmotPnBhZGRy
-LCB2bWEtPnZtX2VuZCAtIHZtYS0+dm1fc3RhcnQpOwogCWlmIChyZXQpCiAJCWRybV9nZW1fdm1f
-Y2xvc2Uodm1hKTsKQEAgLTQzMiwxMyArNDM5LDE1IEBAIHN0cnVjdCBzZ190YWJsZSAqZHJtX2dl
-bV9jbWFfcHJpbWVfZ2V0X3NnX3RhYmxlKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKQogewog
-CXN0cnVjdCBkcm1fZ2VtX2NtYV9vYmplY3QgKmNtYV9vYmogPSB0b19kcm1fZ2VtX2NtYV9vYmoo
-b2JqKTsKIAlzdHJ1Y3Qgc2dfdGFibGUgKnNndDsKKwlzdHJ1Y3QgZGV2aWNlICpkZXY7CiAJaW50
-IHJldDsKIAogCXNndCA9IGt6YWxsb2Moc2l6ZW9mKCpzZ3QpLCBHRlBfS0VSTkVMKTsKIAlpZiAo
-IXNndCkKIAkJcmV0dXJuIE5VTEw7CiAKLQlyZXQgPSBkbWFfZ2V0X3NndGFibGUob2JqLT5kZXYt
-PmRldiwgc2d0LCBjbWFfb2JqLT52YWRkciwKKwlkZXYgPSBvYmotPmRldi0+ZG1hX2RldiA/IG9i
-ai0+ZGV2LT5kbWFfZGV2IDogb2JqLT5kZXYtPmRldjsKKwlyZXQgPSBkbWFfZ2V0X3NndGFibGUo
-ZGV2LCBzZ3QsIGNtYV9vYmotPnZhZGRyLAogCQkJICAgICAgY21hX29iai0+cGFkZHIsIG9iai0+
-c2l6ZSk7CiAJaWYgKHJldCA8IDApCiAJCWdvdG8gb3V0OwpkaWZmIC0tZ2l0IGEvaW5jbHVkZS9k
-cm0vZHJtX2RldmljZS5oIGIvaW5jbHVkZS9kcm0vZHJtX2RldmljZS5oCmluZGV4IGY5YzZlMGUu
-LmVkZTkyMjggMTAwNjQ0Ci0tLSBhL2luY2x1ZGUvZHJtL2RybV9kZXZpY2UuaAorKysgYi9pbmNs
-dWRlL2RybS9kcm1fZGV2aWNlLmgKQEAgLTExMyw2ICsxMTMsNyBAQCBzdHJ1Y3QgZHJtX2Rldmlj
-ZSB7CiAKIAkvKiogXG5hbWUgRE1BIHN1cHBvcnQgKi8KIAkvKkB7ICovCisJc3RydWN0IGRldmlj
-ZSAqZG1hX2RldjsJCS8qKjwgRGV2aWNlIHN0cnVjdHVyZSBvZiBkbWEgZGV2aWNlICovCiAJc3Ry
-dWN0IGRybV9kZXZpY2VfZG1hICpkbWE7CQkvKio8IE9wdGlvbmFsIHBvaW50ZXIgZm9yIERNQSBz
-dXBwb3J0ICovCiAJLypAfSAqLwogCi0tIAoxLjkuMQoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+Because there are many similar code in drm_gem_cma_helper.c and mtk_drm_gem.c,
+merging these two files would reduce code size and be easier to maintain. The
+major difference between these two gem object is that drm_gem_cma_object is for
+CMA buffer and mtk_drm_gem_obj is for iommu buffer. This series just add two
+iommu feature which is used by mediatek drm driver into cma helper, so there
+is still some feature just support CMA buffer. The first feature is making sub
+device as dma device for dma operation. So far drm core treat drm device as
+dma device, but mediatek drm device is not a dma device and it use sub device
+as dma device. The second feature is providing interface to create dumb buffer
+without mapping kernel virtual address. For iommu buffer, mapping kernel virtual
+address would reduce free virtual memory area. Some feature still support only
+CMA buffer, for example, drm_gem_cma_prime_vmap(), so we still treat these
+helper function as 'cma' helper function.
+
+CK Hu (3):
+  drm: Add dma_dev in struct drm_device
+  drm: Add drm_gem_cma_dumb_create_no_kmap() helper function
+  drm/mediatek: Use drm_gem_cma_object instead of mtk_drm_gem_obj
+
+ drivers/gpu/drm/drm_gem_cma_helper.c     | 110 +++++++++++---
+ drivers/gpu/drm/mediatek/Makefile        |   1 -
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c  |   1 -
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c   |  15 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h   |   1 -
+ drivers/gpu/drm/mediatek/mtk_drm_fb.c    |   1 -
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c   | 243 -------------------------------
+ drivers/gpu/drm/mediatek/mtk_drm_gem.h   |  56 -------
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c |   8 +-
+ include/drm/drm_device.h                 |   1 +
+ include/drm/drm_gem_cma_helper.h         |   7 +
+ 11 files changed, 110 insertions(+), 334 deletions(-)
+ delete mode 100644 drivers/gpu/drm/mediatek/mtk_drm_gem.c
+ delete mode 100644 drivers/gpu/drm/mediatek/mtk_drm_gem.h
+
+-- 
+1.9.1
