@@ -1,123 +1,89 @@
-From: Boris Brezillon <boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH 3/3] spi: spi-mem: MediaTek: Add SPI NAND Flash
- interface driver for MediaTek MT7622
-Date: Fri, 26 Oct 2018 08:08:33 +0200
-Message-ID: <20181026080833.2fedbd94@bbrezillon>
-References: <1536716612-24610-1-git-send-email-xiangsheng.hou@mediatek.com>
- <1536716612-24610-4-git-send-email-xiangsheng.hou@mediatek.com>
- <20181023075247.004982c9@bbrezillon>
- <1540532796.24602.11.camel@mhfsdcap03>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: [PATCH 1/3] drm: Add dma_dev in struct drm_device
+Date: Fri, 26 Oct 2018 15:22:01 +0800
+Message-ID: <1540538523-1973-2-git-send-email-ck.hu@mediatek.com>
+References: <1540538523-1973-1-git-send-email-ck.hu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1540532796.24602.11.camel@mhfsdcap03>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xiangsheng Hou <xiangsheng.hou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, benliang.zhao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1540538523-1973-1-git-send-email-ck.hu@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel.vetter@ffwll.ch>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <sean@poorly.run>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 26 Oct 2018 13:46:36 +0800
-Xiangsheng Hou <xiangsheng.hou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-
-> Hi Boris,
-> 
-> On Tue, 2018-10-23 at 07:52 +0200, Boris Brezillon wrote:
-> > +Mark (the SPI maintainer, please remember to Cc him next time you
-> > send a SPI related patch).
-> > 
-> > Hi Xiangsheng,
-> > 
-> > On Wed, 12 Sep 2018 09:43:32 +0800
-> > Xiangsheng Hou <xiangsheng.hou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > 
-> > Please add a commit message here.
-> >   
-> > > Signed-off-by: Xiangsheng Hou <xiangsheng.hou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > ---
-> > >  drivers/spi/Kconfig        |   10 +
-> > >  drivers/spi/Makefile       |    1 +
-> > >  drivers/spi/spi-mtk-snfi.c |  918 ++++++++++++++++++++++++++++++++++++++++++++
-> > >  3 files changed, 929 insertions(+)
-> > >  create mode 100644 drivers/spi/spi-mtk-snfi.c
-> > > 
-> > > diff --git a/drivers/spi/Kconfig b/drivers/spi/Kconfig
-> > > index 671d078..9f94921 100644
-> > > --- a/drivers/spi/Kconfig
-> > > +++ b/drivers/spi/Kconfig
-> > > @@ -389,6 +389,16 @@ config SPI_MT65XX
-> > >  	  say Y or M here.If you are not sure, say N.
-> > >  	  SPI drivers for Mediatek MT65XX and MT81XX series ARM SoCs.
-> > >  
-> > > +config SPI_MTK_SNFI
-> > > +	tristate "MediaTek SPI NAND interface"
-> > > +	select MTD_SPI_NAND
-> > > +	help
-> > > +	  This selects the MediaTek(R) SPI NAND FLASH interface (SNFI)
-> > > +	  driver, which could be found on MT7622 Soc, say Y or M here.
-> > > +	  If you are not sure, say N. This driver use SPI NAND FLASH
-> > > +          on-die ECC.  
-> > 
-> > Should be aligned on the previous line.
-> >   
-> > > +	  Note Parallel Nand and SPI NAND is alternative on MediaTek SoCs.  
-> > 
-> > There's a fundamental issue with this driver: spi-mem was designed to be
-> > memory agnostic, and you seem to have a SPI controller that supports
-> > only SPI NANDs. Is that correct, or is it just that you developed the
-> > driver with SPI NANDs in  mind?
-> >   
-> Yes, this driver supports only SPI NANDs.
-> Actually, Mediatek's controller is designed for NAND specifically, which
-> can support SPI NANDs and PARALLEL NANDs,and this driver is just for SPI
-> NANDs.
-
-Hm, I'm not so sure about that (I might be wrong though), it seems you
-can send any command you want, not only SPI NAND related ones. Maybe the
-controller is optimized for SPI NANDs but can do all kind of SPI
-transfers.
-
-> 
-> > > +
-> > >  config SPI_NUC900
-> > >  	tristate "Nuvoton NUC900 series SPI"
-> > >  	depends on ARCH_W90X900  
-> >   
-> > > +static int mtk_snfc_read(struct spi_mem *mem,
-> > > +			 const struct spi_mem_op *op)
-> > > +{
-> > > +	struct mtk_snfc *snfc = spi_controller_get_devdata(mem->spi->master);
-> > > +	struct spinand_device *spinand = spi_mem_get_drvdata(mem);  
-> > 
-> > Just one example of things I don't want to see in spi-mem drivers.
-> > Clearly you're breaking the layering we're trying to enforce:
-> > 
-> > 		       MTD
-> > 		------------------
-> > 		spi-nor | spinand
-> > 		------------------
-> > 		     spi-mem
-> > 		------------------
-> > 		       spi
-> > 
-> > spi-mem should no know nothing about the memory it's manipulating, all
-> > it should do is execute SPI memory operations.
-> > 
-> > Don't know what's possible to do with your controller, and maybe it's
-> > not able to execute random SPI memory operations, but in this case we
-> > should consider a different solution to support this driver.
-> > 
-> > Do you have a public datasheet I can look at?
-> >   
-> We do not have a public datasheet for Mediatek controller currently.
-
-Unfortunately, there's not much I can do without a clear understanding
-of how the controller works.
+Rm9yIGRybSBkZXZpY2Ugd2hpY2ggaGFzIHN1YiBkZXZpY2UsIHRoZSBkbWEgZnVuY3Rpb24gbWF5
+IGJlIGluIHRoZSBzdWIKZGV2aWNlIHJhdGhlciB0aGFuIGl0LCBzbyB0aGUgZG1hX2RldiBpcyB0
+aGUgZGV2aWNlIHdoaWNoIGhhcyBkbWEKZnVuY3Rpb24gYW5kIHVzZSB0aGlzIGRldmljZSBmb3Ig
+ZG1hIG9wZXJhdGlvbi4KClNpZ25lZC1vZmYtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+
+Ci0tLQogZHJpdmVycy9ncHUvZHJtL2RybV9nZW1fY21hX2hlbHBlci5jIHwgMTkgKysrKysrKysr
+KysrKystLS0tLQogaW5jbHVkZS9kcm0vZHJtX2RldmljZS5oICAgICAgICAgICAgIHwgIDEgKwog
+MiBmaWxlcyBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspLCA1IGRlbGV0aW9ucygtKQoKZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fZ2VtX2NtYV9oZWxwZXIuYyBiL2RyaXZlcnMvZ3B1
+L2RybS9kcm1fZ2VtX2NtYV9oZWxwZXIuYwppbmRleCA4MGE1MTE1Li4wYmEyYzJhIDEwMDY0NAot
+LS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2dlbV9jbWFfaGVscGVyLmMKKysrIGIvZHJpdmVycy9n
+cHUvZHJtL2RybV9nZW1fY21hX2hlbHBlci5jCkBAIC0xMDEsNiArMTAxLDcgQEAgc3RydWN0IGRy
+bV9nZW1fY21hX29iamVjdCAqZHJtX2dlbV9jbWFfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpk
+cm0sCiAJCQkJCSAgICAgIHNpemVfdCBzaXplKQogewogCXN0cnVjdCBkcm1fZ2VtX2NtYV9vYmpl
+Y3QgKmNtYV9vYmo7CisJc3RydWN0IGRldmljZSAqZGV2ID0gZHJtLT5kbWFfZGV2ID8gZHJtLT5k
+bWFfZGV2IDogZHJtLT5kZXY7CiAJaW50IHJldDsKIAogCXNpemUgPSByb3VuZF91cChzaXplLCBQ
+QUdFX1NJWkUpOwpAQCAtMTA5LDEwICsxMTAsMTAgQEAgc3RydWN0IGRybV9nZW1fY21hX29iamVj
+dCAqZHJtX2dlbV9jbWFfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sCiAJaWYgKElTX0VS
+UihjbWFfb2JqKSkKIAkJcmV0dXJuIGNtYV9vYmo7CiAKLQljbWFfb2JqLT52YWRkciA9IGRtYV9h
+bGxvY193Yyhkcm0tPmRldiwgc2l6ZSwgJmNtYV9vYmotPnBhZGRyLAorCWNtYV9vYmotPnZhZGRy
+ID0gZG1hX2FsbG9jX3djKGRldiwgc2l6ZSwgJmNtYV9vYmotPnBhZGRyLAogCQkJCSAgICAgIEdG
+UF9LRVJORUwgfCBfX0dGUF9OT1dBUk4pOwogCWlmICghY21hX29iai0+dmFkZHIpIHsKLQkJZGV2
+X2RiZyhkcm0tPmRldiwgImZhaWxlZCB0byBhbGxvY2F0ZSBidWZmZXIgd2l0aCBzaXplICV6dVxu
+IiwKKwkJZGV2X2RiZyhkZXYsICJmYWlsZWQgdG8gYWxsb2NhdGUgYnVmZmVyIHdpdGggc2l6ZSAl
+enVcbiIsCiAJCQlzaXplKTsKIAkJcmV0ID0gLUVOT01FTTsKIAkJZ290byBlcnJvcjsKQEAgLTE4
+MiwxMSArMTgzLDE0IEBAIHN0cnVjdCBkcm1fZ2VtX2NtYV9vYmplY3QgKmRybV9nZW1fY21hX2Ny
+ZWF0ZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLAogdm9pZCBkcm1fZ2VtX2NtYV9mcmVlX29iamVj
+dChzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKmdlbV9vYmopCiB7CiAJc3RydWN0IGRybV9nZW1fY21h
+X29iamVjdCAqY21hX29iajsKKwlzdHJ1Y3QgZGV2aWNlICpkZXY7CiAKIAljbWFfb2JqID0gdG9f
+ZHJtX2dlbV9jbWFfb2JqKGdlbV9vYmopOwogCiAJaWYgKGNtYV9vYmotPnZhZGRyKSB7Ci0JCWRt
+YV9mcmVlX3djKGdlbV9vYmotPmRldi0+ZGV2LCBjbWFfb2JqLT5iYXNlLnNpemUsCisJCWRldiA9
+IGdlbV9vYmotPmRldi0+ZG1hX2RldiA/CisJCSAgICAgIGdlbV9vYmotPmRldi0+ZG1hX2RldiA6
+IGdlbV9vYmotPmRldi0+ZGV2OworCQlkbWFfZnJlZV93YyhkZXYsIGNtYV9vYmotPmJhc2Uuc2l6
+ZSwKIAkJCSAgICBjbWFfb2JqLT52YWRkciwgY21hX29iai0+cGFkZHIpOwogCX0gZWxzZSBpZiAo
+Z2VtX29iai0+aW1wb3J0X2F0dGFjaCkgewogCQlkcm1fcHJpbWVfZ2VtX2Rlc3Ryb3koZ2VtX29i
+aiwgY21hX29iai0+c2d0KTsKQEAgLTI3NCw2ICsyNzgsNyBAQCBzdGF0aWMgaW50IGRybV9nZW1f
+Y21hX21tYXBfb2JqKHN0cnVjdCBkcm1fZ2VtX2NtYV9vYmplY3QgKmNtYV9vYmosCiAJCQkJc3Ry
+dWN0IHZtX2FyZWFfc3RydWN0ICp2bWEpCiB7CiAJaW50IHJldDsKKwlzdHJ1Y3QgZGV2aWNlICpk
+ZXY7CiAKIAkvKgogCSAqIENsZWFyIHRoZSBWTV9QRk5NQVAgZmxhZyB0aGF0IHdhcyBzZXQgYnkg
+ZHJtX2dlbV9tbWFwKCksIGFuZCBzZXQgdGhlCkBAIC0yODMsNyArMjg4LDkgQEAgc3RhdGljIGlu
+dCBkcm1fZ2VtX2NtYV9tbWFwX29iaihzdHJ1Y3QgZHJtX2dlbV9jbWFfb2JqZWN0ICpjbWFfb2Jq
+LAogCXZtYS0+dm1fZmxhZ3MgJj0gflZNX1BGTk1BUDsKIAl2bWEtPnZtX3Bnb2ZmID0gMDsKIAot
+CXJldCA9IGRtYV9tbWFwX3djKGNtYV9vYmotPmJhc2UuZGV2LT5kZXYsIHZtYSwgY21hX29iai0+
+dmFkZHIsCisJZGV2ID0gY21hX29iai0+YmFzZS5kZXYtPmRtYV9kZXYgPworCSAgICAgIGNtYV9v
+YmotPmJhc2UuZGV2LT5kbWFfZGV2IDogY21hX29iai0+YmFzZS5kZXYtPmRldjsKKwlyZXQgPSBk
+bWFfbW1hcF93YyhkZXYsIHZtYSwgY21hX29iai0+dmFkZHIsCiAJCQkgIGNtYV9vYmotPnBhZGRy
+LCB2bWEtPnZtX2VuZCAtIHZtYS0+dm1fc3RhcnQpOwogCWlmIChyZXQpCiAJCWRybV9nZW1fdm1f
+Y2xvc2Uodm1hKTsKQEAgLTQzMiwxMyArNDM5LDE1IEBAIHN0cnVjdCBzZ190YWJsZSAqZHJtX2dl
+bV9jbWFfcHJpbWVfZ2V0X3NnX3RhYmxlKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKQogewog
+CXN0cnVjdCBkcm1fZ2VtX2NtYV9vYmplY3QgKmNtYV9vYmogPSB0b19kcm1fZ2VtX2NtYV9vYmoo
+b2JqKTsKIAlzdHJ1Y3Qgc2dfdGFibGUgKnNndDsKKwlzdHJ1Y3QgZGV2aWNlICpkZXY7CiAJaW50
+IHJldDsKIAogCXNndCA9IGt6YWxsb2Moc2l6ZW9mKCpzZ3QpLCBHRlBfS0VSTkVMKTsKIAlpZiAo
+IXNndCkKIAkJcmV0dXJuIE5VTEw7CiAKLQlyZXQgPSBkbWFfZ2V0X3NndGFibGUob2JqLT5kZXYt
+PmRldiwgc2d0LCBjbWFfb2JqLT52YWRkciwKKwlkZXYgPSBvYmotPmRldi0+ZG1hX2RldiA/IG9i
+ai0+ZGV2LT5kbWFfZGV2IDogb2JqLT5kZXYtPmRldjsKKwlyZXQgPSBkbWFfZ2V0X3NndGFibGUo
+ZGV2LCBzZ3QsIGNtYV9vYmotPnZhZGRyLAogCQkJICAgICAgY21hX29iai0+cGFkZHIsIG9iai0+
+c2l6ZSk7CiAJaWYgKHJldCA8IDApCiAJCWdvdG8gb3V0OwpkaWZmIC0tZ2l0IGEvaW5jbHVkZS9k
+cm0vZHJtX2RldmljZS5oIGIvaW5jbHVkZS9kcm0vZHJtX2RldmljZS5oCmluZGV4IGY5YzZlMGUu
+LmVkZTkyMjggMTAwNjQ0Ci0tLSBhL2luY2x1ZGUvZHJtL2RybV9kZXZpY2UuaAorKysgYi9pbmNs
+dWRlL2RybS9kcm1fZGV2aWNlLmgKQEAgLTExMyw2ICsxMTMsNyBAQCBzdHJ1Y3QgZHJtX2Rldmlj
+ZSB7CiAKIAkvKiogXG5hbWUgRE1BIHN1cHBvcnQgKi8KIAkvKkB7ICovCisJc3RydWN0IGRldmlj
+ZSAqZG1hX2RldjsJCS8qKjwgRGV2aWNlIHN0cnVjdHVyZSBvZiBkbWEgZGV2aWNlICovCiAJc3Ry
+dWN0IGRybV9kZXZpY2VfZG1hICpkbWE7CQkvKio8IE9wdGlvbmFsIHBvaW50ZXIgZm9yIERNQSBz
+dXBwb3J0ICovCiAJLypAfSAqLwogCi0tIAoxLjkuMQoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
