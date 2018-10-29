@@ -1,28 +1,73 @@
-From: Josh Boyer <jwboyer-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] linux-firmware: add firmware for mt7650e
-Date: Fri, 26 Oct 2018 08:06:37 -0400
-Message-ID: <CA+5PVA5ujUo=GaZKsrGW+HhcEctYdkx9HYgRog1eYR0Yz=VO1Q@mail.gmail.com>
-References: <1540210566-3192-1-git-send-email-sgruszka@redhat.com>
+From: <miles.chen@mediatek.com>
+Subject: [PATCHv2] mm/page_owner: use kvmalloc instead of kmalloc
+Date: Mon, 29 Oct 2018 10:16:43 +0800
+Message-ID: <1540779403-27622-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1540210566-3192-1-git-send-email-sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Linux Firmware <linux-firmware-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux Wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, sean.wang-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Joe Perches <joe@perches.com>, Michal Hocko <mhocko@kernel.org>, Matthew Wilcox <willy@infradead.org>, Miles Chen <miles.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Oct 22, 2018 at 8:16 AM Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
->
-> Add binary firmware for mt7650e based devices
->
-> Signed-off-by: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-> ---
->  WHENCE               |   2 ++
->  mediatek/mt7650e.bin | Bin 0 -> 382212 bytes
->  2 files changed, 2 insertions(+)
->  create mode 100644 mediatek/mt7650e.bin
+From: Miles Chen <miles.chen@mediatek.com>
 
-Applied and pushed out.
+The kbuf used by page owner is allocated by kmalloc(), which means it
+can use only normal memory and there might be a "out of memory"
+issue when we're out of normal memory.
 
-josh
+Use kvmalloc() so we can also allocate kbuf from
+normal/hihghmem on 32bit kernel.
+
+Clamp the kbuf size to PAGE_SIZE.
+
+Change since v1:
+  - use kvmalloc()
+  - clamp buffer size to PAGE_SIZE
+
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+Cc: Joe Perches <joe@perches.com>
+Cc: Matthew Wilcox <willy@infradead.org>
+Cc: Michal Hocko <mhocko@kernel.org>
+---
+ mm/page_owner.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/mm/page_owner.c b/mm/page_owner.c
+index d80adfe..a064cd0 100644
+--- a/mm/page_owner.c
++++ b/mm/page_owner.c
+@@ -1,7 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0
+ #include <linux/debugfs.h>
+ #include <linux/mm.h>
+-#include <linux/slab.h>
+ #include <linux/uaccess.h>
+ #include <linux/bootmem.h>
+ #include <linux/stacktrace.h>
+@@ -351,7 +350,8 @@ void pagetypeinfo_showmixedcount_print(struct seq_file *m,
+ 		.skip = 0
+ 	};
+ 
+-	kbuf = kmalloc(count, GFP_KERNEL);
++	count = count > PAGE_SIZE ? PAGE_SIZE : count;
++	kbuf = kvmalloc(count, GFP_KERNEL);
+ 	if (!kbuf)
+ 		return -ENOMEM;
+ 
+@@ -397,11 +397,11 @@ void pagetypeinfo_showmixedcount_print(struct seq_file *m,
+ 	if (copy_to_user(buf, kbuf, ret))
+ 		ret = -EFAULT;
+ 
+-	kfree(kbuf);
++	kvfree(kbuf);
+ 	return ret;
+ 
+ err:
+-	kfree(kbuf);
++	kvfree(kbuf);
+ 	return -ENOMEM;
+ }
+ 
+-- 
+1.9.1
