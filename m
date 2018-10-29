@@ -1,7 +1,7 @@
-From: Corentin Labbe <clabbe.montjoie@gmail.com>
+From: Andrew Lunn <andrew@lunn.ch>
 Subject: Re: [PATCH 1/2] net:stmmac: dwmac-mediatek: add support for mt2712
-Date: Mon, 29 Oct 2018 11:08:28 +0100
-Message-ID: <20181029100828.GA19103@Red>
+Date: Mon, 29 Oct 2018 13:27:31 +0100
+Message-ID: <20181029122731.GA9174@lunn.ch>
 References: <1540782294-27721-1-git-send-email-biao.huang@mediatek.com>
  <1540782294-27721-2-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
@@ -11,121 +11,36 @@ Content-Disposition: inline
 In-Reply-To: <1540782294-27721-2-git-send-email-biao.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Biao Huang <biao.huang@mediatek.com>
-Cc: davem@davemloft.net, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, nelson.chang@mediatek.com, andrew@lunn.ch, netdev@vger.kernel.org, sean.wang@mediatek.com, liguo.zhang@mediatek.com, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, joabreu@synopsys.com, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, linux-arm-kernel@lists.infradead.org
+Cc: davem@davemloft.net, robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, sean.wang@mediatek.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello
-I have some minor comments below
-
-On Mon, Oct 29, 2018 at 11:04:53AM +0800, Biao Huang wrote:
-> Add Ethernet support for MediaTek SoCs from the mt2712 family
-> 
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> ---
->  drivers/net/ethernet/stmicro/stmmac/Kconfig        |    8 +
->  drivers/net/ethernet/stmicro/stmmac/Makefile       |    1 +
->  .../net/ethernet/stmicro/stmmac/dwmac-mediatek.c   |  364 ++++++++++++++++++++
->  3 files changed, 373 insertions(+)
->  create mode 100644 drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> 
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/Kconfig b/drivers/net/ethernet/stmicro/stmmac/Kconfig
-> index edf2036..76d779e 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/Kconfig
-> +++ b/drivers/net/ethernet/stmicro/stmmac/Kconfig
-> @@ -75,6 +75,14 @@ config DWMAC_LPC18XX
->  	---help---
->  	  Support for NXP LPC18xx/43xx DWMAC Ethernet.
->  
-> +config DWMAC_MEDIATEK
-> +	tristate "MediaTek MT27xx GMAC support"
-> +	depends on OF
-
-You should add something like && (COMPILE_TEST || ARCH_MEDIATEK)
-
-[...]
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> new file mode 100644
-> index 0000000..9ccf3a5
-> --- /dev/null
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> @@ -0,0 +1,364 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +//
-> +// Copyright (c) 2018 MediaTek Inc.
-
-Only SPDX can use the // comment style, the rest should use /**/
-
-
-[...]
-> +static int mt2712_set_interface(struct mediatek_dwmac_plat_data *plat)
+> +static int mt2712_config_dt(struct mediatek_dwmac_plat_data *plat)
 > +{
-> +	int rmii_rxc = plat->rmii_rxc ? RMII_CLK_SRC_RXC : 0;
-> +	u32 intf_val = 0;
+> +	u32 mac_timings[4];
 > +
-> +	/* select phy interface in top control domain */
-> +	switch (plat->phy_mode) {
-> +	case PHY_INTERFACE_MODE_MII:
-> +		intf_val |= PHY_INTF_MII_GMII;
-> +		break;
-> +	case PHY_INTERFACE_MODE_RMII:
-> +		intf_val |= PHY_INTF_RMII;
-> +		intf_val |= rmii_rxc;
-> +		break;
-> +	case PHY_INTERFACE_MODE_RGMII:
-> +	case PHY_INTERFACE_MODE_RGMII_TXID:
-> +	case PHY_INTERFACE_MODE_RGMII_RXID:
-> +	case PHY_INTERFACE_MODE_RGMII_ID:
-> +		intf_val |= PHY_INTF_RGMII;
-> +		break;
-> +	default:
-> +		pr_err("phy interface not support\n");
-
-I think you could use dev_err() instead.
-And I think it is better spelled "not supported".
-
-
-[...]
-> +static int mediatek_dwmac_probe(struct platform_device *pdev)
-> +{
-> +	int ret = 0;
-> +	struct plat_stmmacenet_data *plat_dat;
-> +	struct stmmac_resources stmmac_res;
-> +	struct mediatek_dwmac_plat_data *priv_plat;
-> +
-> +	priv_plat = devm_kzalloc(&pdev->dev, sizeof(*priv_plat), GFP_KERNEL);
-> +	if (!priv_plat)
-> +		return -ENOMEM;
-> +
-> +	priv_plat->variant = of_device_get_match_data(&pdev->dev);
-> +	if (!priv_plat->variant) {
-> +		dev_err(&pdev->dev, "Missing dwmac-mediatek variant\n");
-> +		return -EINVAL;
+> +	plat->peri_regmap = syscon_regmap_lookup_by_compatible("mediatek,mt2712-pericfg");
+> +	if (IS_ERR(plat->peri_regmap)) {
+> +		dev_err(plat->dev, "Failed to get pericfg syscon\n");
+> +		return PTR_ERR(plat->peri_regmap);
 > +	}
 > +
-> +	priv_plat->dev = &pdev->dev;
-> +	priv_plat->np = pdev->dev.of_node;
-> +	priv_plat->phy_mode = of_get_phy_mode(priv_plat->np);
+> +	if (!of_property_read_u32_array(plat->np, "mac-delay", mac_timings,
+> +					ARRAY_SIZE(mac_timings))) {
+> +		plat->mac_delay.tx_delay = mac_timings[0];
+> +		plat->mac_delay.rx_delay = mac_timings[1];
+> +		plat->mac_delay.tx_inv = mac_timings[2];
+> +		plat->mac_delay.rx_inv = mac_timings[3];
+> +	}
 > +
-> +	ret = mediatek_dwmac_config_dt(priv_plat);
-> +	if (ret)
-> +		return ret;
+> +	plat->fine_tune = of_property_read_bool(plat->np, "fine-tune");
 > +
-> +	ret = stmmac_get_platform_resources(pdev, &stmmac_res);
-> +	if (ret)
-> +		return ret;
-> +
-> +	plat_dat = stmmac_probe_config_dt(pdev, &stmmac_res.mac);
-> +	if (IS_ERR(plat_dat))
-> +		return PTR_ERR(plat_dat);
-> +
-> +	plat_dat->interface = priv_plat->phy_mode;
-> +	/* clk_csr_i = 250-300MHz & MDC = clk_csr_i/124 */
-> +	plat_dat->clk_csr = 5;
-> +	plat_dat->has_gmac4 = 1;
-> +	plat_dat->has_gmac = 0;
-> +	plat_dat->pmt = 0;
-> +	plat_dat->maxmtu = 1500;
+> +	plat->rmii_rxc = of_property_read_bool(plat->np, "rmii-rxc");
 
-ETH_DATA_LEN ?
+Please add document for these properties in the binding.
 
-Regards
+Ideally, you should reuse the binding that some of the other stmmac
+glue layer uses. e.g. there is already allwinner,tx-delay-ps,
+allwinner,rx-delay-ps.
+
+       Thanks
+              Andrew
