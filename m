@@ -1,84 +1,27 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 3/3] drm/mediatek: Use drm_gem_cma_object instead of
- mtk_drm_gem_obj
-Date: Mon, 29 Oct 2018 11:11:16 +0800
-Message-ID: <1540782676.13715.4.camel@mtksdaap41>
-References: <1540538523-1973-1-git-send-email-ck.hu@mediatek.com>
- <1540538523-1973-4-git-send-email-ck.hu@mediatek.com>
- <20181026102156.GH21967@phenom.ffwll.local>
+From: biao huang <biao.huang@mediatek.com>
+Subject: Re: [v2, PATCH 0/2] add Ethernet driver support for mt2712
+Date: Mon, 29 Oct 2018 11:32:25 +0800
+Message-ID: <1540783945.26982.6.camel@mhfsdcap03>
+References: <1540782294-27721-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20181026102156.GH21967@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1540782294-27721-1-git-send-email-biao.huang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: davem@davemloft.net
+Cc: robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com, andrew@lunn.ch
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksRGFuaWVsOgoKT24gRnJpLCAyMDE4LTEwLTI2IGF0IDEyOjIxICswMjAwLCBEYW5pZWwgVmV0
-dGVyIHdyb3RlOgo+IE9uIEZyaSwgT2N0IDI2LCAyMDE4IGF0IDAzOjIyOjAzUE0gKzA4MDAsIENL
-IEh1IHdyb3RlOgo+ID4gQWZ0ZXIgYWRkaW5nIGRtYV9kZXYgaW4gc3RydWN0IGRybV9kZXZpY2Ug
-YW5kCj4gPiBkcm1fZ2VtX2NtYV9kdW1iX2NyZWF0ZV9ub19rbWFwKCksIGRybV9nZW1fY21hX29i
-amVjdCBjb3VsZCByZXBsYWNlCj4gPiBtdGtfZHJtX2dlbV9vYmosIHNvIHVzZSBkcm1fZ2VtX2Nt
-YV9vYmplY3QgaW5zdGVhZCBvZiBtdGtfZHJtX2dlbV9vYmogdG8KPiA+IHJlZHVjZSByZWR1bmRh
-bnQgY29kZS4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNv
-bT4KPiAKPiBBIGZldyBxdWVzdGlvbnMvdGhvdWdodHM6Cj4gCj4gLSBXaHkgZG8geW91IG5lZWQg
-Ym90aCBkcm1fZGV2aWNlLT5kZXYgYW5kIGRybV9kZXZpY2UtPmRtYV9kZXY/IENhbid0IHlvdQo+
-ICAganVzdCByZWdpc3RlciB0aGUgZHJtX2RldmljZSB3aXRoIHRoZSByaWdodCBzdHJ1Y3QgZGV2
-aWNlPwo+IAoKSW4gWzFdLCBtbXN5cyBpcyB0aGUgZHJtIGRyaXZlciBhbmQgb3ZsMCBhbmQgb3Zs
-MSBpcyB0aGUgc3ViIGRldmljZQp3aGljaCBoYXMgZG1hIGZ1bmN0aW9uLgpJbiB0aGlzIGRybSwg
-dGhlcmUgYXJlIHR3byBjcnRjIGFuZCBlYWNoIG9uZSBpcyBjb21wcmlzZWQgb2YgbWFueQpjb21w
-b25lbnQuClRoaXMgaXMgYW4gZXhhbXBsZSBvZiBtdDgxNzM6CgpjcnRjMDogb3ZsMCwgY29sb3Iw
-LCBhYWwsIG9kLCByZG1hMCwgdWZvZSwgZHNpMApjcnRjMTogb3ZsMSwgY29sb3IxLCBnYW1tYSwg
-cmRtYTEsIGRwaTAKCkluIHRoZSBkZXZpY2Ugbm9kZSBvZiBvdmwwIGFuZCBvdmwxLCB0aGVyZSBp
-cyBhICdpb21tdXMnIHBhcmFtZXRlciBpbgppdCwgc28gdXNlIGRtYV9hbGxvY194eHgoKSBhbmQg
-ZG1hX21hcF94eHgoKSB3aXRoIHRoYXQgZGV2aWNlIHdvdWxkIGdldAppb3ZhIHJhdGhlciB0aGFu
-IHBhLiBJIGRvbid0IHRoaW5rIGl0J3MgYSBnb29kIGlkZWEgdG8gcmVnaXN0ZXIgb3ZsMCBvcgpv
-dmwxIGFzIGRybSBkZXZpY2UgYmVjYXVzZSBlYWNoIG9uZSBpcyBqdXN0IGEgY29tcG9uZW50IGlu
-IGEgcGlwZWxpbmUuCm1tc3lzIGNvbnRyb2xzIHRoZSBjbG9jayBhbmQgcm91dGluZyBvZiBtdWx0
-aS1tZWRpYSBzeXN0ZW0gd2hpY2ggaW5jbHVkZQp0aGlzIGRybSBzeXN0ZW0sIHNvIGl0J3MgYmV0
-dGVyIHRvIHJlZ2lzdGVyIG1tc3lzIGFzIGRybSBkZXZpY2UuIE1heWJlCndlIGNvdWxkIG1vdmUg
-J2lvbW11cycgcGFyYW1ldGVyIGZyb20gb3ZsIGRldmljZSB0byBtbXN5cyBkZXZpY2UsIHNvIHRo
-ZQpkbWEgZGV2aWNlIGNoYW5nZXMgZnJvbSBvdmwgZGV2aWNlIHRvIG1tc3lzIGRldmljZS4gSSdt
-IG5vdCBzdXJlIHRoaXMKd291bGQgYmUgYSBnb29kIGNob2ljZSwgaG93IGRvIHlvdSB0aGluaz8K
-ClsxXQpodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2
-YWxkcy9saW51eC5naXQvdHJlZS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE3My5k
-dHNpP2g9djQuMTkKCj4gLSBZb3UgZG9uJ3QgdXNlIGRybV9nZW1fcHJpbWVfaW1wb3J0X2Rldiwg
-c28gcHJpbWUgaW1wb3J0IGlzbid0IHVzaW5nIHRoZQo+ICAgcmlnaHQgZGV2aWNlIGVpdGhlci4K
-ClllcywgeW91IGFyZSByaWdodC4gSSdtIG5vdCBmYW1pbGlhciB3aXRoIHdob3JlIGRybSBjb3Jl
-LCBzbyBJIHN0YXJ0IHRvCm1vZGlmeSB3aGF0IE1lZGlhdGVrIGRybSB1c2UuIEJ1dCB0aGlzIGZ1
-bmN0aW9uIHN0aWxsIHdvcmtzIGZvciB0aGUgZHJtCmRldmljZSB0aGF0IGl0c2VsZiBpcyBkbWEg
-ZGV2aWNlLiBJZiBvbmUgZGF5IHRoZXJlIGlzIGEgZHJtIGRldmljZSB3aGljaAppdHNlbGYgaXMg
-bm90IGEgZG1hIGRldmljZSBhbmQgbmVlZCB0aGlzIGZ1bmN0aW9uLCBzZW5kIGEgcGF0Y2ggdG8K
-bW9kaWZ5IHRoaXMgZnVuY3Rpb24gYW5kIHRlc3QgaXQgd2l0aCB0aGF0IGRybSBkZXZpY2UuIElm
-IHlvdSB3YW50IG1lIHRvCm1vZGlmeSBhbGwgaW4gYWR2YW5jZSwgSSdtIG9rIGJ1dCBuZWVkIG90
-aGVycyB0byB0ZXN0IGl0IGJlY2F1c2UKTWVkaWF0ZWsgZHJtIGRyaXZlciBkb2VzIG5vdCB1c2Ug
-dGhlbS4KCj4gCj4gLSBleHlub3Mgc2VlbXMgdG8gaGF2ZSB0aGUgc2FtZSBvciBhdCBsZWFzdCBz
-aW1pbGFyIGlzc3VlLCBzdHJvbmdlciBjYXNlCj4gICBmb3IgeW91ciBwYXRjaGVzIGlmIHlvdSBj
-YW4gc29sdmUgYm90aC4KCkknbSBzdGlsbCBNZWRpYXRlaydzIGVtcGxveWVlLiBJZiBJIG1vZGlm
-eSBvdGhlciBjb21wYW55J3MgZHJpdmVyIGFuZCBpdAppcyBub3QgYSBNVVNULUJFIGZvciBNZWRp
-YXRlaywgTWVkaWF0ZWsgbWF5IHRoaW5rIEkgZ2l2ZSBjb250cmlidXRpb24gdG8Kb3RoZXIgY29t
-cGFueS4gU28gSSd2ZSBiZXR0ZXIgbm90IHRvIG1vZGlmeSBleHlub3MgZHJpdmVyLgoKPiAtIEkn
-ZCBzdGFydCBvdXQgd2l0aCB1c2luZyBzdHJ1Y3QgZHJtX2dlbV9jbWFfb2JqZWN0IGluIG10ayAo
-c2ltaWxhciB0bwo+ICAgd2hhdCB2YzQgZG9lcyksIGFuZCB0aGVuIHJldXNpbmcgYXMgbXVjaCBh
-cyBwb3NzaWJsZSBvZiB0aGUgZXhpc3RpbmcKPiAgIGhlbHBlcnMuIEFuZCB0aGVuIGxvb2tpbmcg
-bGF0ZXIgb24gd2hhdCdzIHN0aWxsIGxlZnQgKGxpa2UgdGhlIHN1cHBvcnQKPiAgIGZvciBsZWF2
-aW5nIG91dCB0aGUgdmlydHVhbCBtYXBwaW5nKS4KCkknbSBub3QgY2xlYXIgd2hhdCB2YzQgZG9l
-cy4gSXQgbG9va3MgbGlrZSB0aGF0IHlvdSB3YW50IG1lIHRvIHJlZGVmaW5lCm10a19kcm1fZ2Vt
-X29iaiBiYXNlZCBvbiBkcm1fZ2VtX2NtYV9vYmplY3QuIFNvIGl0IHdvdWxkIGJlIGxpa2UKCnN0
-cnVjdCBtdGtfZHJtX2dlbV9vYmogewoJc3RydWN0IGRybV9nZW1fY21hX29iamVjdCBiYXNlOwoJ
-dm9pZCAqY29va2llOwoJdW5zaWduZWQgbG9uZyBkbWFfYXR0cnM7Cn07CgpJIGNvdWxkIHRyeSB0
-byBtb2RpZnkgYXMgdGhpcyBhbmQgc2VlIHdoYXQgaGF2ZSBsZWZ0LgoKUmVnYXJkcywKQ0sKCj4g
-Cj4gLURhbmllbAo+IAoKW1NuaXAuLi5dCgo+ID4gLS0tCj4gPiAtLSAKPiA+IDEuOS4xCj4gPiAK
-PiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
-ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
-Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Mon, 2018-10-29 at 11:04 +0800, Biao Huang wrote:
+> The mt2712 Ethernet IP is from Synopsys, so extend stmmac to support mt2712.
+> 
+sorry, I forgot to add detail descriptions for these patches.
+
+changes in v2:
+--since STMMAC driver applied to most Synopsys ip Ethernet, I add
+dwmac-mediatek.c to support MediaTek mt2712 in v2.
+--abandon Ethernet drivers proposed in v1.
+--rewrite dt-binding document for v2 driver.
+
+Best Regards!
