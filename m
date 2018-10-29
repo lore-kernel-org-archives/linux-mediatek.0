@@ -1,55 +1,80 @@
-From: Matthew Wilcox <willy@infradead.org>
-Subject: Re: [PATCHv2] mm/page_owner: use kvmalloc instead of kmalloc
-Date: Sun, 28 Oct 2018 19:30:26 -0700
-Message-ID: <20181029023026.GC28520@bombadil.infradead.org>
-References: <1540779403-27622-1-git-send-email-miles.chen@mediatek.com>
+From: Biao Huang <biao.huang@mediatek.com>
+Subject: [PATCH 2/2] dt-binding: mediatek-dwmac: add binding document for MediaTek MT2712 DWMAC
+Date: Mon, 29 Oct 2018 11:04:54 +0800
+Message-ID: <1540782294-27721-3-git-send-email-biao.huang@mediatek.com>
+References: <1540782294-27721-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1540779403-27622-1-git-send-email-miles.chen@mediatek.com>
+In-Reply-To: <1540782294-27721-1-git-send-email-biao.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: miles.chen@mediatek.com
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-mm@kvack.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Joe Perches <joe@perches.com>, Michal Hocko <mhocko@kernel.org>
+To: davem@davemloft.net, robh+dt@kernel.org
+Cc: honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, sean.wang@mediatek.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, biao.huang@mediatek.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com, andrew@lunn.ch
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Oct 29, 2018 at 10:16:43AM +0800, miles.chen@mediatek.com wrote:
-> The kbuf used by page owner is allocated by kmalloc(), which means it
-> can use only normal memory and there might be a "out of memory"
-> issue when we're out of normal memory.
-> 
-> Use kvmalloc() so we can also allocate kbuf from
-> normal/hihghmem on 32bit kernel.
+The commit adds the device tree binding documentation for the MediaTek DWMAC
+found on MediaTek MT2712.
 
-That's a misconception:
+Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+---
+ .../devicetree/bindings/net/mediatek-dwmac.txt     |   49 ++++++++++++++++++++
+ 1 file changed, 49 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
 
-        ret = kmalloc_node(size, kmalloc_flags, node);
-
-        /*
-         * It doesn't really make sense to fallback to vmalloc for sub page
-         * requests
-         */
-        if (ret || size <= PAGE_SIZE)
-                return ret;
-
-Now, maybe this is an opportunity for us to improve kvmalloc.  Maybe like
-this ...
-
-diff --git a/mm/util.c b/mm/util.c
-index 8bf08b5b5760..fdf5b34d2c28 100644
---- a/mm/util.c
-+++ b/mm/util.c
-@@ -416,10 +416,10 @@ void *kvmalloc_node(size_t size, gfp_t flags, int node)
- 	ret = kmalloc_node(size, kmalloc_flags, node);
- 
- 	/*
--	 * It doesn't really make sense to fallback to vmalloc for sub page
--	 * requests
-+	 * It only makes sense to fallback to vmalloc for sub page
-+	 * requests if we might be able to allocate highmem pages.
- 	 */
--	if (ret || size <= PAGE_SIZE)
-+	if (ret || (!IS_ENABLED(CONFIG_HIGHMEM) && size <= PAGE_SIZE))
- 		return ret;
- 
- 	return __vmalloc_node_flags_caller(size, node, flags,
+diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.txt b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+new file mode 100644
+index 0000000..8baf0e4
+--- /dev/null
++++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+@@ -0,0 +1,49 @@
++MediaTek DWMAC glue layer controller
++
++This file documents platform glue layer for stmmac.
++Please see stmmac.txt for the other unchanged properties.
++
++The device node has following properties.
++
++Required properties:
++- compatible:  Should be "mediatek,mt2712-gmac" for MT2712 SoC
++- reg:  Address and length of the register set for the device
++- interrupts:  Should contain the MAC interrupts
++- interrupt-names: Should contain a list of interrupt names corresponding to
++	the interrupts in the interrupts property, if available.
++	Should be "macirq" for the main MAC IRQ
++- clocks: Must contain a phandle for each entry in clock-names.
++- clock-names: the name of the clock listed in the clocks property. These are
++	"axi", "apb", "mac_ext", "mac_parent", "ptp_ref", "ptp_parent", "ptp_top"
++	for MT2712 SoC
++- mac-address: See ethernet.txt in the same directory
++- phy-mode: See ethernet.txt in the same directory
++
++Example:
++
++	eth: ethernet@1101c000 {
++		compatible = "mediatek,mt2712-gmac";
++		reg = <0 0x1101c000 0 0x1300>;
++		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-names = "macirq";
++		phy-mode ="rgmii-id";
++		mac-address = [00 55 7b b5 7d f7];
++		clock-names = "axi",
++			      "apb",
++			      "mac_ext",
++			      "mac_parent",
++			      "ptp_ref",
++			      "ptp_parent",
++			      "ptp_top";
++		clocks = <&pericfg CLK_PERI_GMAC>,
++			 <&pericfg CLK_PERI_GMAC_PCLK>,
++			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
++			 <&topckgen CLK_TOP_ETHERPLL_125M>,
++			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
++			 <&topckgen CLK_TOP_APLL1_D3>,
++			 <&topckgen CLK_TOP_APLL1>;
++		snps,txpbl = <32>;
++		snps,rxpbl = <32>;
++		snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
++		snps,reset-active-low;
++	};
+-- 
+1.7.9.5
