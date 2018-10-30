@@ -1,46 +1,72 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [PATCH 1/2] net:stmmac: dwmac-mediatek: add support for mt2712
-Date: Mon, 29 Oct 2018 13:27:31 +0100
-Message-ID: <20181029122731.GA9174@lunn.ch>
-References: <1540782294-27721-1-git-send-email-biao.huang@mediatek.com>
- <1540782294-27721-2-git-send-email-biao.huang@mediatek.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: Re: [PATCH v3] mm/page_owner: use kvmalloc instead of kmalloc
+Date: Tue, 30 Oct 2018 09:29:10 +0800
+Message-ID: <1540862950.12374.40.camel@mtkswgap22>
+References: <1540790176-32339-1-git-send-email-miles.chen@mediatek.com>
+         <20181029080708.GA32673@dhcp22.suse.cz>
+         <20181029081706.GC32673@dhcp22.suse.cz>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1540782294-27721-2-git-send-email-biao.huang@mediatek.com>
+In-Reply-To: <20181029081706.GC32673@dhcp22.suse.cz>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: davem@davemloft.net, robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, sean.wang@mediatek.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com
+To: Michal Hocko <mhocko@kernel.org>
+Cc: Andrew Morton <akpm@linux-foundation.org>, Joe Perches <joe@perches.com>, Matthew Wilcox <willy@infradead.org>, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-> +static int mt2712_config_dt(struct mediatek_dwmac_plat_data *plat)
-> +{
-> +	u32 mac_timings[4];
-> +
-> +	plat->peri_regmap = syscon_regmap_lookup_by_compatible("mediatek,mt2712-pericfg");
-> +	if (IS_ERR(plat->peri_regmap)) {
-> +		dev_err(plat->dev, "Failed to get pericfg syscon\n");
-> +		return PTR_ERR(plat->peri_regmap);
-> +	}
-> +
-> +	if (!of_property_read_u32_array(plat->np, "mac-delay", mac_timings,
-> +					ARRAY_SIZE(mac_timings))) {
-> +		plat->mac_delay.tx_delay = mac_timings[0];
-> +		plat->mac_delay.rx_delay = mac_timings[1];
-> +		plat->mac_delay.tx_inv = mac_timings[2];
-> +		plat->mac_delay.rx_inv = mac_timings[3];
-> +	}
-> +
-> +	plat->fine_tune = of_property_read_bool(plat->np, "fine-tune");
-> +
-> +	plat->rmii_rxc = of_property_read_bool(plat->np, "rmii-rxc");
+On Mon, 2018-10-29 at 09:17 +0100, Michal Hocko wrote:
+> On Mon 29-10-18 09:07:08, Michal Hocko wrote:
+> [...]
+> > Besides that, the following doesn't make much sense to me. It simply
+> > makes no sense to use vmalloc for sub page allocation regardless of
+> > HIGHMEM.
+> 
+> OK, it is still early morning here. Now I get the point of the patch.
+> You just want to (ab)use highmeme for smaller requests. I do not like
+> this, to be honest. It causes an internal fragmentation and more
+> importantly the VMALLOC space on 32b where HIGHMEM is enabled (do we
+> have any 64b with HIGHMEM btw?) is quite small to be wasted like that.
+> 
+thanks for your comment. It looks like that using vmalloc fallback for
+sub page allocation is not good here.
 
-Please add document for these properties in the binding.
+Your comment gave another idea:
 
-Ideally, you should reuse the binding that some of the other stmmac
-glue layer uses. e.g. there is already allwinner,tx-delay-ps,
-allwinner,rx-delay-ps.
+1. force kbuf to PAGE_SIZE
+2. allocate a page by alloc_page(GFP_KERNEL | __GFP_HIGHMEM); so we can
+get a highmem page if possible
+3. use kmap/kunmap pair to create mapping for this page. No vmalloc
+space is used.
+4. do not change kvmalloc logic.
 
-       Thanks
-              Andrew
+
+> In any case such a changes should come with some numbers and as a
+> separate patch for sure.
+> 
+> > > diff --git a/mm/util.c b/mm/util.c
+> > > index 8bf08b5b5760..7b1c59b9bfbf 100644
+> > > --- a/mm/util.c
+> > > +++ b/mm/util.c
+> > > @@ -416,10 +416,10 @@ void *kvmalloc_node(size_t size, gfp_t flags, int node)
+> > >  	ret = kmalloc_node(size, kmalloc_flags, node);
+> > >  
+> > >  	/*
+> > > -	 * It doesn't really make sense to fallback to vmalloc for sub page
+> > > -	 * requests
+> > > +	 * It only makes sense to fallback to vmalloc for sub page
+> > > +	 * requests if we might be able to allocate highmem pages.
+> > >  	 */
+> > > -	if (ret || size <= PAGE_SIZE)
+> > > +	if (ret || (!IS_ENABLED(CONFIG_HIGHMEM) && size <= PAGE_SIZE))
+> > >  		return ret;
+> > >  
+> > >  	return __vmalloc_node_flags_caller(size, node, flags,
+> > > -- 
+> > > 2.18.0
+> > > 
+> > 
+> > -- 
+> > Michal Hocko
+> > SUSE Labs
+> 
