@@ -1,64 +1,52 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [PATCH v3] mm/page_owner: use kvmalloc instead of kmalloc
-Date: Tue, 30 Oct 2018 14:55:51 +0800
-Message-ID: <1540882551.23278.12.camel@mtkswgap22>
-References: <1540790176-32339-1-git-send-email-miles.chen@mediatek.com>
-         <20181029080708.GA32673@dhcp22.suse.cz>
-         <20181029081706.GC32673@dhcp22.suse.cz>
-         <1540862950.12374.40.camel@mtkswgap22>
-         <20181030060601.GR32673@dhcp22.suse.cz>
+From: biao huang <biao.huang@mediatek.com>
+Subject: Re: [PATCH 1/2] net:stmmac: dwmac-mediatek: add support for mt2712
+Date: Tue, 30 Oct 2018 15:11:52 +0800
+Message-ID: <1540883512.26982.10.camel@mhfsdcap03>
+References: <1540782294-27721-1-git-send-email-biao.huang@mediatek.com>
+         <1540782294-27721-2-git-send-email-biao.huang@mediatek.com>
+         <20181029122731.GA9174@lunn.ch>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181030060601.GR32673@dhcp22.suse.cz>
+In-Reply-To: <20181029122731.GA9174@lunn.ch>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Michal Hocko <mhocko@kernel.org>
-Cc: Andrew Morton <akpm@linux-foundation.org>, Joe Perches <joe@perches.com>, Matthew Wilcox <willy@infradead.org>, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: davem@davemloft.net, robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, sean.wang@mediatek.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-10-30 at 07:06 +0100, Michal Hocko wrote:
-> On Tue 30-10-18 09:29:10, Miles Chen wrote:
-> > On Mon, 2018-10-29 at 09:17 +0100, Michal Hocko wrote:
-> > > On Mon 29-10-18 09:07:08, Michal Hocko wrote:
-> > > [...]
-> > > > Besides that, the following doesn't make much sense to me. It simply
-> > > > makes no sense to use vmalloc for sub page allocation regardless of
-> > > > HIGHMEM.
-> > > 
-> > > OK, it is still early morning here. Now I get the point of the patch.
-> > > You just want to (ab)use highmeme for smaller requests. I do not like
-> > > this, to be honest. It causes an internal fragmentation and more
-> > > importantly the VMALLOC space on 32b where HIGHMEM is enabled (do we
-> > > have any 64b with HIGHMEM btw?) is quite small to be wasted like that.
-> > > 
-> > thanks for your comment. It looks like that using vmalloc fallback for
-> > sub page allocation is not good here.
-> > 
-> > Your comment gave another idea:
-> > 
-> > 1. force kbuf to PAGE_SIZE
-> > 2. allocate a page by alloc_page(GFP_KERNEL | __GFP_HIGHMEM); so we can
-> > get a highmem page if possible
-> > 3. use kmap/kunmap pair to create mapping for this page. No vmalloc
-> > space is used.
-> > 4. do not change kvmalloc logic.
+Thanks for your kindly comments.
+On Mon, 2018-10-29 at 13:27 +0100, Andrew Lunn wrote:
+> > +static int mt2712_config_dt(struct mediatek_dwmac_plat_data *plat)
+> > +{
+> > +	u32 mac_timings[4];
+> > +
+> > +	plat->peri_regmap = syscon_regmap_lookup_by_compatible("mediatek,mt2712-pericfg");
+> > +	if (IS_ERR(plat->peri_regmap)) {
+> > +		dev_err(plat->dev, "Failed to get pericfg syscon\n");
+> > +		return PTR_ERR(plat->peri_regmap);
+> > +	}
+> > +
+> > +	if (!of_property_read_u32_array(plat->np, "mac-delay", mac_timings,
+> > +					ARRAY_SIZE(mac_timings))) {
+> > +		plat->mac_delay.tx_delay = mac_timings[0];
+> > +		plat->mac_delay.rx_delay = mac_timings[1];
+> > +		plat->mac_delay.tx_inv = mac_timings[2];
+> > +		plat->mac_delay.rx_inv = mac_timings[3];
+> > +	}
+> > +
+> > +	plat->fine_tune = of_property_read_bool(plat->np, "fine-tune");
+> > +
+> > +	plat->rmii_rxc = of_property_read_bool(plat->np, "rmii-rxc");
 > 
-> If you mean for this particular situation then is this really worth
-> it? I mean this is a short term allocation for root only so you do not
-> have to worry about low mem depletion.
-
-The 1...3 are applied to print_page_owner(), not in kmalloc() or
-kvmalloc() logic. 
-
-
-It's a real problem when using page_owner.
-I found this issue recently: I'm not able to read page_owner information
-during a overnight test. (error: read failed: Out of memory). I replace
-kmalloc() with vmalloc() and it worked well.
-
+> Please add document for these properties in the binding.
+ok, I forgot these properties.
 > 
-> If you are thiking in more generic terms to allow kmalloc to use highmem
-> then I am not really sure this will work out.
-
-I'm thinking about modify print_page_owner().
+> Ideally, you should reuse the binding that some of the other stmmac
+> glue layer uses. e.g. there is already allwinner,tx-delay-ps,
+> allwinner,rx-delay-ps.
+take it, seems that tx-delay/rx-delay will be more readable than
+mac-delay in dts. will be changed in next patch.
+> 
+>        Thanks
+>               Andrew
