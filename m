@@ -1,41 +1,48 @@
-From: Leilk Liu <leilk.liu@mediatek.com>
-Subject: [PATCH] spi: mediatek: use correct mata->xfer_len when in fifo transfer
-Date: Wed, 31 Oct 2018 16:49:16 +0800
-Message-ID: <1540975756-2021-1-git-send-email-leilk.liu@mediatek.com>
+From: Michal Hocko <mhocko@kernel.org>
+Subject: Re: [PATCH v3] mm/page_owner: use kvmalloc instead of kmalloc
+Date: Wed, 31 Oct 2018 11:15:01 +0100
+Message-ID: <20181031101501.GL32673@dhcp22.suse.cz>
+References: <1540790176-32339-1-git-send-email-miles.chen@mediatek.com>
+ <20181029080708.GA32673@dhcp22.suse.cz>
+ <20181029081706.GC32673@dhcp22.suse.cz>
+ <1540862950.12374.40.camel@mtkswgap22>
+ <20181030060601.GR32673@dhcp22.suse.cz>
+ <1540882551.23278.12.camel@mtkswgap22>
+ <20181030081537.GV32673@dhcp22.suse.cz>
+ <1540975637.10275.10.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1540975637.10275.10.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, xinping.qian@mediatek.com, Leilk Liu <leilk.liu@mediatek.com>
+To: Miles Chen <miles.chen@mediatek.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>, Joe Perches <joe@perches.com>, Matthew Wilcox <willy@infradead.org>, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-when xfer_len is greater than 64 bytes and use fifo mode
-to transfer, the actual length from the third time is mata->xfer_len
-but not len in mtk_spi_interrupt().
+On Wed 31-10-18 16:47:17, Miles Chen wrote:
+> On Tue, 2018-10-30 at 09:15 +0100, Michal Hocko wrote:
+> > On Tue 30-10-18 14:55:51, Miles Chen wrote:
+> > [...]
+> > > It's a real problem when using page_owner.
+> > > I found this issue recently: I'm not able to read page_owner information
+> > > during a overnight test. (error: read failed: Out of memory). I replace
+> > > kmalloc() with vmalloc() and it worked well.
+> > 
+> > Is this with trimming the allocation to a single page and doing shorter
+> > than requested reads?
+> 
+> 
+> I printed out the allocate count on my device the request count is <=
+> 4096. So I tested this scenario by trimming the count to from 4096 to
+> 1024 bytes and it works fine. 
+> 
+> count = count > 1024? 1024: count;
+> 
+> It tested it on both 32bit and 64bit kernel.
 
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
----
- drivers/spi/spi-mt65xx.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Are you saying that you see OOMs for 4k size?
 
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 3dc3162..0c2867d 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -522,11 +522,11 @@ static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
- 		mdata->xfer_len = min(MTK_SPI_MAX_FIFO_SIZE, len);
- 		mtk_spi_setup_packet(master);
- 
--		cnt = len / 4;
-+		cnt = mdata->xfer_len / 4;
- 		iowrite32_rep(mdata->base + SPI_TX_DATA_REG,
- 				trans->tx_buf + mdata->num_xfered, cnt);
- 
--		remainder = len % 4;
-+		remainder = mdata->xfer_len % 4;
- 		if (remainder > 0) {
- 			reg_val = 0;
- 			memcpy(&reg_val,
 -- 
-1.7.9.5
+Michal Hocko
+SUSE Labs
