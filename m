@@ -1,38 +1,40 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH 5/5] pinctrl: mediatek: Add initial pinctrl driver for
- MT6797 SoC
-Date: Tue, 30 Oct 2018 16:45:52 -0700
-Message-ID: <CAGp9LzpssWX2TxPdD0yWtmav2XGdG68ztx+hV1DxjRX52q0qvg@mail.gmail.com>
-References: <20181008191411.32555-1-manivannan.sadhasivam@linaro.org>
- <20181008191411.32555-6-manivannan.sadhasivam@linaro.org> <c8d65395-c60c-5d06-92ad-c389642c22ba@gmail.com>
- <20181011164429.GA18174@Mani-XPS-13-9360> <e7abee72-23a3-4716-baf0-484514bbb019@gmail.com>
- <CAGp9LzoP2zkryhJCQNGpe9X0+7yUd31ffV7vM4j6KvTdfPpCrA@mail.gmail.com> <CACRpkdb-Er8z6JdvYWE8UXUa3dfVSu4S-VbnqvcV+vf9erJuNw@mail.gmail.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: Re: [PATCH v3] mm/page_owner: use kvmalloc instead of kmalloc
+Date: Wed, 31 Oct 2018 16:47:17 +0800
+Message-ID: <1540975637.10275.10.camel@mtkswgap22>
+References: <1540790176-32339-1-git-send-email-miles.chen@mediatek.com>
+         <20181029080708.GA32673@dhcp22.suse.cz>
+         <20181029081706.GC32673@dhcp22.suse.cz>
+         <1540862950.12374.40.camel@mtkswgap22>
+         <20181030060601.GR32673@dhcp22.suse.cz>
+         <1540882551.23278.12.camel@mtkswgap22>
+         <20181030081537.GV32673@dhcp22.suse.cz>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CACRpkdb-Er8z6JdvYWE8UXUa3dfVSu4S-VbnqvcV+vf9erJuNw@mail.gmail.com>
+In-Reply-To: <20181030081537.GV32673@dhcp22.suse.cz>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, =?UTF-8?B?U2VhbiBXYW5nICjnjovlv5fkupgp?= <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, amit.kucheria@linaro.org, linux-gpio@vger.kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, Cheng Mars <mars.cheng@mediatek.com>, linux-arm-kernel@lists.infradead.org
+To: Michal Hocko <mhocko@kernel.org>
+Cc: Andrew Morton <akpm@linux-foundation.org>, Joe Perches <joe@perches.com>, Matthew Wilcox <willy@infradead.org>, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-sure, the version of driver looked good to me, add the missing Acked-by from me
+On Tue, 2018-10-30 at 09:15 +0100, Michal Hocko wrote:
+> On Tue 30-10-18 14:55:51, Miles Chen wrote:
+> [...]
+> > It's a real problem when using page_owner.
+> > I found this issue recently: I'm not able to read page_owner information
+> > during a overnight test. (error: read failed: Out of memory). I replace
+> > kmalloc() with vmalloc() and it worked well.
+> 
+> Is this with trimming the allocation to a single page and doing shorter
+> than requested reads?
 
-Acked-by: Sean Wang <sean.wang@kernel.org>
 
+I printed out the allocate count on my device the request count is <=
+4096. So I tested this scenario by trimming the count to from 4096 to
+1024 bytes and it works fine. 
 
-On Tue, Oct 30, 2018 at 5:51 AM Linus Walleij <linus.walleij@linaro.org> wrote:
->
-> On Thu, Oct 18, 2018 at 5:06 PM Sean Wang <sean.wang@kernel.org> wrote:
->
-> > the driver currently only supports the basic operation, not including
-> > driving operation, so
-> > what value for the driving mode for a certain pin seems not really
-> > matter in the early patch. I think these advanced operations can be
-> > added with another patch.
->
-> Sean can you provide an Acked-by for the pinctrl part so I can merge
-> it once Manivannan resends it for v4.21?
->
-> Yours,
-> Linus Walleij
+count = count > 1024? 1024: count;
+
+It tested it on both 32bit and 64bit kernel.
