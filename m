@@ -1,61 +1,56 @@
-From: Michal Hocko <mhocko@kernel.org>
-Subject: Re: [PATCH v3] mm/page_owner: use kvmalloc instead of kmalloc
-Date: Wed, 31 Oct 2018 12:41:07 +0100
-Message-ID: <20181031114107.GM32673@dhcp22.suse.cz>
-References: <1540790176-32339-1-git-send-email-miles.chen@mediatek.com>
- <20181029080708.GA32673@dhcp22.suse.cz>
- <20181029081706.GC32673@dhcp22.suse.cz>
- <1540862950.12374.40.camel@mtkswgap22>
- <20181030060601.GR32673@dhcp22.suse.cz>
- <1540882551.23278.12.camel@mtkswgap22>
- <20181030081537.GV32673@dhcp22.suse.cz>
- <1540975637.10275.10.camel@mtkswgap22>
- <20181031101501.GL32673@dhcp22.suse.cz>
- <1540981182.16084.1.camel@mtkswgap22>
+From: Colin King <colin.king@canonical.com>
+Subject: [PATCH] pinctrl: mediatek: clean up indentation issues, add missing tab
+Date: Wed, 31 Oct 2018 18:42:41 +0000
+Message-ID: <20181031184241.5439-1-colin.king@canonical.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1540981182.16084.1.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Miles Chen <miles.chen@mediatek.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>, Joe Perches <joe@perches.com>, Matthew Wilcox <willy@infradead.org>, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed 31-10-18 18:19:42, Miles Chen wrote:
-> On Wed, 2018-10-31 at 11:15 +0100, Michal Hocko wrote:
-> > On Wed 31-10-18 16:47:17, Miles Chen wrote:
-> > > On Tue, 2018-10-30 at 09:15 +0100, Michal Hocko wrote:
-> > > > On Tue 30-10-18 14:55:51, Miles Chen wrote:
-> > > > [...]
-> > > > > It's a real problem when using page_owner.
-> > > > > I found this issue recently: I'm not able to read page_owner information
-> > > > > during a overnight test. (error: read failed: Out of memory). I replace
-> > > > > kmalloc() with vmalloc() and it worked well.
-> > > > 
-> > > > Is this with trimming the allocation to a single page and doing shorter
-> > > > than requested reads?
-> > > 
-> > > 
-> > > I printed out the allocate count on my device the request count is <=
-> > > 4096. So I tested this scenario by trimming the count to from 4096 to
-> > > 1024 bytes and it works fine. 
-> > > 
-> > > count = count > 1024? 1024: count;
-> > > 
-> > > It tested it on both 32bit and 64bit kernel.
-> > 
-> > Are you saying that you see OOMs for 4k size?
-> > 
-> yes, because kmalloc only use normal memor, not highmem + normal memory
-> I think that's why vmalloc() works.
+From: Colin Ian King <colin.king@canonical.com>
 
-Can I see an OOM report please? I am especially interested that 1k
-doesn't cause the problem because there shouldn't be that much of a
-difference between the two. Larger allocations could be a result of
-memory fragmentation but 1k vs. 4k to make a difference really seems
-unexpected.
+Trivial fix to clean up indentation issues, add one level of
+indentation on two if statements.
 
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-moore.c | 4 ++--
+ drivers/pinctrl/mediatek/pinctrl-paris.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c b/drivers/pinctrl/mediatek/pinctrl-moore.c
+index 3133ec0f2e67..aa1068d2867f 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-moore.c
++++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
+@@ -310,8 +310,8 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+ 		case PIN_CONFIG_DRIVE_STRENGTH:
+ 			if (hw->soc->drive_set) {
+ 				err = hw->soc->drive_set(hw, desc, arg);
+-			if (err)
+-				return err;
++				if (err)
++					return err;
+ 			} else {
+ 				err = -ENOTSUPP;
+ 			}
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index d2179028f134..50e68b1e9065 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -282,8 +282,8 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+ 	case PIN_CONFIG_DRIVE_STRENGTH:
+ 		if (hw->soc->drive_set) {
+ 			err = hw->soc->drive_set(hw, desc, arg);
+-		if (err)
+-			return err;
++			if (err)
++				return err;
+ 		} else {
+ 			return -ENOTSUPP;
+ 		}
 -- 
-Michal Hocko
-SUSE Labs
+2.19.1
