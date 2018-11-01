@@ -1,100 +1,50 @@
-From: Stephen Rothwell <sfr@canb.auug.org.au>
-Subject: Re: [LKP] b179f0826c BUG: kernel hang in boot stage
-Date: Thu, 1 Nov 2018 14:54:04 +1100
-Message-ID: <20181101145404.396c0973@canb.auug.org.au>
-References: <20181101011307.GW24195@shao2-debian>
+From: Leilk Liu <leilk.liu@mediatek.com>
+Subject: [PATCH 2/2] spi: mediatek: add spi support for mt8183 IC
+Date: Thu, 1 Nov 2018 14:02:19 +0800
+Message-ID: <1541052139-8845-3-git-send-email-leilk.liu@mediatek.com>
+References: <1541052139-8845-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- boundary="Sig_/i9A6T4lRLSjTyiH8kXZSqyR"; protocol="application/pgp-signature"
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181101011307.GW24195@shao2-debian>
+In-Reply-To: <1541052139-8845-1-git-send-email-leilk.liu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: kernel test robot <rong.a.chen@intel.com>
-Cc: linux-kernel@vger.kernel.org, linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, LKP <lkp@01.org>
+To: Mark Brown <broonie@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, Leilk Liu <leilk.liu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
---Sig_/i9A6T4lRLSjTyiH8kXZSqyR
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+this patch add support for mt8183 IC.
 
-Hi all,
+Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+---
+ drivers/spi/spi-mt65xx.c |    9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-On Thu, 1 Nov 2018 09:13:07 +0800 kernel test robot <rong.a.chen@intel.com>=
- wrote:
->
-> Greetings,
->=20
-> 0day kernel testing robot got the below dmesg and the first bad commit is
->=20
-> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
->=20
-> commit b179f0826c6a13563c5ce0554c6da6748a1fa699
-> Author:     Stephen Rothwell <sfr@canb.auug.org.au>
-> AuthorDate: Mon Oct 29 16:55:21 2018 +1100
-> Commit:     Stephen Rothwell <sfr@canb.auug.org.au>
-> CommitDate: Mon Oct 29 16:55:21 2018 +1100
->=20
->     Add linux-next specific files for 20181029
->    =20
->     Signed-off-by: Stephen Rothwell <sfr@canb.auug.org.au>
->=20
-> a3bbfc79c4  Merge branch 'akpm/master'
-> b179f0826c  Add linux-next specific files for 20181029
-> +------------------------------------------------+------------+----------=
------+
-> |                                                | a3bbfc79c4 | next-2018=
-1029 |
-> +------------------------------------------------+------------+----------=
------+
-> | boot_successes                                 | 33         | 0        =
-     |
-> | boot_failures                                  | 2          | 30       =
-     |
-> | BUG:kernel_hang_in_boot_stage                  | 1          | 30       =
-     |
-> | IP-Config:Auto-configuration_of_network_failed | 1          |          =
-     |
-> +------------------------------------------------+------------+----------=
------+
-
-That is really hard to believe given that the commit above only adds
-documentation to the tree :-)
-
-$ git log --stat -1 next-20181029
-commit b179f0826c6a13563c5ce0554c6da6748a1fa699 (tag: next-20181029)
-Author: Stephen Rothwell <sfr@canb.auug.org.au>
-Date:   Mon Oct 29 16:55:21 2018 +1100
-
-    Add linux-next specific files for 20181029
-   =20
-    Signed-off-by: Stephen Rothwell <sfr@canb.auug.org.au>
-
- Next/SHA1s            |   292 +
- Next/Trees            |   294 +
- Next/merge.log        | 14253 ++++++++++++++++++++++++++++++++++++++++++++=
-++++
- Next/quilt-import.log |     2 +
- localversion-next     |     1 +
- 5 files changed, 14842 insertions(+)
-
---=20
-Cheers,
-Stephen Rothwell
-
---Sig_/i9A6T4lRLSjTyiH8kXZSqyR
-Content-Type: application/pgp-signature
-Content-Description: OpenPGP digital signature
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEENIC96giZ81tWdLgKAVBC80lX0GwFAlvaeNwACgkQAVBC80lX
-0GxOLggAnpk6HxvLIYKe/CZLw9/oOqmU/ixfyjjnScAZwP1353VTSaUClwtTQ7gs
-2HiWBR+7IKqmjkFrzdrOMj999LvRdsmsp1Da5sr7fdSmc6xYBinCorwkwd3jR4RA
-sMsmvTJSn1mgwbe7ENDqz8JMZ2wy2mift2D5BLqWSfS1OogInAqzZVU6EV1nuzXO
-navO+D07GIXanphTw5ct3e/XLYU/IEMvDdge/ApJ9pClKOPO80kI+BLn2ngeZaeR
-Ss5Exs9MJvFh4/0uzT+HVozJLNTlDBrfaxB53QvCQanfCTIh3Ax81isDBWuSI+Od
-fadFxwSTiFPX3GMJ8yQQJhuSIkdsTQ==
-=Wmy1
------END PGP SIGNATURE-----
-
---Sig_/i9A6T4lRLSjTyiH8kXZSqyR--
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index 0c2867d..9ee1fe9 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -120,6 +120,12 @@ struct mtk_spi {
+ 	.must_tx = true,
+ };
+ 
++static const struct mtk_spi_compatible mt8183_compat = {
++	.need_pad_sel = true,
++	.must_tx = true,
++	.enhance_timing = true,
++};
++
+ /*
+  * A piece of default chip info unless the platform
+  * supplies it.
+@@ -150,6 +156,9 @@ struct mtk_spi {
+ 	{ .compatible = "mediatek,mt8173-spi",
+ 		.data = (void *)&mt8173_compat,
+ 	},
++	{ .compatible = "mediatek,mt8183-spi",
++		.data = (void *)&mt8183_compat,
++	},
+ 	{}
+ };
+ MODULE_DEVICE_TABLE(of, mtk_spi_of_match);
+-- 
+1.7.9.5
