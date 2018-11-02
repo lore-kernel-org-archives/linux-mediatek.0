@@ -1,235 +1,148 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 05/14] iommu/io-pgtable-arm-v7s: Extend MediaTek 4GB
-	Mode
-Date: Fri, 2 Nov 2018 14:23:55 +0800
-Message-ID: <1541139835.22369.12.camel@mhfsdcap03>
-References: <1537779534-23575-1-git-send-email-yong.wu@mediatek.com>
-	<1537779534-23575-6-git-send-email-yong.wu@mediatek.com>
-	<2033be12-3d32-3155-4202-386281cbbaa0@arm.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: Re: [SPAM][PATCH] PCI: mediatek: Use
+ devm_of_pci_get_host_bridge_resources() to parse DT
+Date: Fri, 2 Nov 2018 14:36:23 +0800
+Message-ID: <1541140583.10519.1.camel@mtkswgap22>
+References: <1539833014-1738-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <2033be12-3d32-3155-4202-386281cbbaa0-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Robin Murphy <Robin.Murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: "youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "arnd-r2nGTMty4D4@public.gmane.org" <arnd-r2nGTMty4D4@public.gmane.org>, "srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Will Deacon <Will.Deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, nd <nd-5wv7dgnIgG8@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1539833014-1738-1-git-send-email-honghui.zhang@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Honghui Zhang =?UTF-8?Q?=28=E5=BC=A0=E6=B4=AA=E8=BE=89=29?= <Honghui.Zhang@mediatek.com>
+Cc: Youlin Pei =?UTF-8?Q?=28=E8=A3=B4=E5=8F=8B=E6=9E=97=29?= <youlin.pei@mediatek.com>, "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Jianjun Wang =?UTF-8?Q?=28=E7=8E=8B=E5=BB=BA=E5=86=9B=29?= <Jianjun.Wang@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "bhelgaas@google.com" <bhelgaas@google.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2018-11-01 at 16:35 +0000, Robin Murphy wrote:
-> On 24/09/2018 09:58, Yong Wu wrote:
-> > MediaTek extend the arm v7s descriptor to support the dram over 4GB.
-> > 
-> > In the mt2712 and mt8173, it's called "4GB mode", the physical address
-> > is from 0x4000_0000 to 0x1_3fff_ffff, but from EMI point of view, it
-> > is remapped to high address from 0x1_0000_0000 to 0x1_ffff_ffff, the
-> > bit32 is always enabled. thus, in the M4U, we always enable the bit9
-> > for all PTEs which means to enable bit32 of physical address.
-> > 
-> > but in mt8183, M4U support the dram from 0x4000_0000 to 0x3_ffff_ffff
-> > which isn't remaped. We extend the PTEs: the bit9 represent bit32 of
-> > PA and the bit4 represent bit33 of PA. Meanwhile the iova still is
-> > 32bits.
-> > 
-> > In order to unify code, in the "4GB mode", we add the bit32 for the
-> > physical address manually in our driver.
-> > 
-> > Correspondingly, Adding bit32 and bit33 for the PA in the iova_to_phys
-> > has to been moved into v7s.
-> > 
-> > Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >   drivers/iommu/io-pgtable-arm-v7s.c | 34 +++++++++++++++++++++++++++-------
-> >   drivers/iommu/io-pgtable.h         |  7 +++----
-> >   drivers/iommu/mtk_iommu.c          | 16 ++++++++++------
-> >   drivers/iommu/mtk_iommu.h          |  1 +
-> >   4 files changed, 41 insertions(+), 17 deletions(-)
-> > 
-> > diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
-> > index fa3b9ec..3679a5f 100644
-> > --- a/drivers/iommu/io-pgtable-arm-v7s.c
-> > +++ b/drivers/iommu/io-pgtable-arm-v7s.c
-> > @@ -124,7 +124,9 @@
-> >   #define ARM_V7S_TEX_MASK		0x7
-> >   #define ARM_V7S_ATTR_TEX(val)		(((val) & ARM_V7S_TEX_MASK) << ARM_V7S_TEX_SHIFT)
-> >   
-> > -#define ARM_V7S_ATTR_MTK_4GB		BIT(9) /* MTK extend it for 4GB mode */
-> > +/* MediaTek extend the two bits below for over 4GB mode */
-> > +#define ARM_V7S_ATTR_MTK_PA_BIT32	BIT(9)
-> > +#define ARM_V7S_ATTR_MTK_PA_BIT33	BIT(4)
-> >   
-> >   /* *well, except for TEX on level 2 large pages, of course :( */
-> >   #define ARM_V7S_CONT_PAGE_TEX_SHIFT	6
-> > @@ -183,13 +185,24 @@ static dma_addr_t __arm_v7s_dma_addr(void *pages)
-> >   static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
-> >   				    struct arm_v7s_io_pgtable *data)
-> >   {
-> > -	return paddr & ARM_V7S_LVL_MASK(lvl);
-> > +	arm_v7s_iopte pte = paddr & ARM_V7S_LVL_MASK(lvl);
-> > +	struct io_pgtable_cfg *cfg = &data->iop.cfg;
-> > +
-> > +	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_4GB) {
-> > +		if (paddr & BIT_ULL(32))
-> > +			pte |= ARM_V7S_ATTR_MTK_PA_BIT32;
-> > +		if (paddr & BIT_ULL(33))
-> > +			pte |= ARM_V7S_ATTR_MTK_PA_BIT33;
-> > +	}
-> > +	return pte;
-> >   }
-> >   
-> >   static phys_addr_t iopte_to_paddr(arm_v7s_iopte pte, int lvl,
-> >   				  struct arm_v7s_io_pgtable *data)
-> >   {
-> > +	struct io_pgtable_cfg *cfg = &data->iop.cfg;
-> >   	arm_v7s_iopte mask;
-> > +	phys_addr_t paddr;
-> >   
-> >   	if (ARM_V7S_PTE_IS_TABLE(pte, lvl))
-> >   		mask = ARM_V7S_TABLE_MASK;
-> > @@ -198,7 +211,15 @@ static phys_addr_t iopte_to_paddr(arm_v7s_iopte pte, int lvl,
-> >   	else
-> >   		mask = ARM_V7S_LVL_MASK(lvl);
-> >   
-> > -	return pte & mask;
-> > +	paddr = pte & mask;
-> > +	if (IS_ENABLED(CONFIG_PHYS_ADDR_T_64BIT) &&
-> 
-> I don't think we need this IS_ENABLED() check - we don't have one in the 
-> equivalent paddr_to_iopte() case above, and what it's protecting is 
-> clearly a no-op anyway when paddr has a 32-bit type (a GCC 7 build for 
-> non-LPAE arch/arm doesn't complain with the check removed).
-
-OK.I will delete IS_ENABLED here.
-Thanks.
-
-> 
-> Other than that, though, the rest looks good now;
-> 
-> Reviewed-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-> 
-> > +	    cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_4GB) {
-> > +		if (pte & ARM_V7S_ATTR_MTK_PA_BIT32)
-> > +			paddr |= BIT_ULL(32);
-> > +		if (pte & ARM_V7S_ATTR_MTK_PA_BIT33)
-> > +			paddr |= BIT_ULL(33);
-> > +	}
-> > +	return paddr;
-> >   }
-> >   
-> >   static arm_v7s_iopte *iopte_deref(arm_v7s_iopte pte, int lvl,
-> > @@ -315,9 +336,6 @@ static arm_v7s_iopte arm_v7s_prot_to_pte(int prot, int lvl,
-> >   	if (lvl == 1 && (cfg->quirks & IO_PGTABLE_QUIRK_ARM_NS))
-> >   		pte |= ARM_V7S_ATTR_NS_SECTION;
-> >   
-> > -	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_4GB)
-> > -		pte |= ARM_V7S_ATTR_MTK_4GB;
-> > -
-> >   	return pte;
-> >   }
-> >   
-> > @@ -504,7 +522,9 @@ static int arm_v7s_map(struct io_pgtable_ops *ops, unsigned long iova,
-> >   	if (!(prot & (IOMMU_READ | IOMMU_WRITE)))
-> >   		return 0;
-> >   
-> > -	if (WARN_ON(upper_32_bits(iova) || upper_32_bits(paddr)))
-> > +	if (WARN_ON(upper_32_bits(iova)) ||
-> > +	    WARN_ON(upper_32_bits(paddr) &&
-> > +		    !(iop->cfg.quirks & IO_PGTABLE_QUIRK_ARM_MTK_4GB)))
-> >   		return -ERANGE;
-> >   
-> >   	ret = __arm_v7s_map(data, iova, paddr, size, prot, 1, data->pgd);
-> > diff --git a/drivers/iommu/io-pgtable.h b/drivers/iommu/io-pgtable.h
-> > index 2df7909..ee7beb5 100644
-> > --- a/drivers/iommu/io-pgtable.h
-> > +++ b/drivers/iommu/io-pgtable.h
-> > @@ -62,10 +62,9 @@ struct io_pgtable_cfg {
-> >   	 *	(unmapped) entries but the hardware might do so anyway, perform
-> >   	 *	TLB maintenance when mapping as well as when unmapping.
-> >   	 *
-> > -	 * IO_PGTABLE_QUIRK_ARM_MTK_4GB: (ARM v7s format) Set bit 9 in all
-> > -	 *	PTEs, for Mediatek IOMMUs which treat it as a 33rd address bit
-> > -	 *	when the SoC is in "4GB mode" and they can only access the high
-> > -	 *	remap of DRAM (0x1_00000000 to 0x1_ffffffff).
-> > +	 * IO_PGTABLE_QUIRK_ARM_MTK_4GB: (ARM v7s format) MediaTek IOMMUs extend
-> > +	 *	to support up to 34 bits PA where the bit32 and bit33 are
-> > +	 *	encoded in the bit9 and bit4 of the PTE respectively.
-> >   	 *
-> >   	 * IO_PGTABLE_QUIRK_NO_DMA: Guarantees that the tables will only ever
-> >   	 *	be accessed by a fully cache-coherent IOMMU or CPU (e.g. for a
-> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> > index c0e2da5..84a12ed 100644
-> > --- a/drivers/iommu/mtk_iommu.c
-> > +++ b/drivers/iommu/mtk_iommu.c
-> > @@ -367,12 +367,18 @@ static int mtk_iommu_map(struct iommu_domain *domain, unsigned long iova,
-> >   			 phys_addr_t paddr, size_t size, int prot)
-> >   {
-> >   	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-> > +	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
-> >   	unsigned long flags;
-> >   	int ret;
-> >   
-> > +	/* The "4GB mode" M4U physically can not use the lower remap of Dram. */
-> > +	if (IS_ENABLED(CONFIG_PHYS_ADDR_T_64BIT) &&
-> > +	    data->plat_data->has_4gb_mode &&
-> > +	    data->enable_4GB)
-> > +		paddr |= BIT_ULL(32);
-> > +
-> >   	spin_lock_irqsave(&dom->pgtlock, flags);
-> > -	ret = dom->iop->map(dom->iop, iova, paddr & DMA_BIT_MASK(32),
-> > -			    size, prot);
-> > +	ret = dom->iop->map(dom->iop, iova, paddr, size, prot);
-> >   	spin_unlock_irqrestore(&dom->pgtlock, flags);
-> >   
-> >   	return ret;
-> > @@ -401,7 +407,6 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
-> >   					  dma_addr_t iova)
-> >   {
-> >   	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-> > -	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
-> >   	unsigned long flags;
-> >   	phys_addr_t pa;
-> >   
-> > @@ -409,9 +414,6 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
-> >   	pa = dom->iop->iova_to_phys(dom->iop, iova);
-> >   	spin_unlock_irqrestore(&dom->pgtlock, flags);
-> >   
-> > -	if (data->enable_4GB)
-> > -		pa |= BIT_ULL(32);
-> > -
-> >   	return pa;
-> >   }
-> >   
-> > @@ -735,10 +737,12 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
-> >   
-> >   static const struct mtk_iommu_plat_data mt2712_data = {
-> >   	.m4u_plat = M4U_MT2712,
-> > +	.has_4gb_mode = true,
-> >   };
-> >   
-> >   static const struct mtk_iommu_plat_data mt8173_data = {
-> >   	.m4u_plat = M4U_MT8173,
-> > +	.has_4gb_mode = true,
-> >   };
-> >   
-> >   static const struct of_device_id mtk_iommu_of_ids[] = {
-> > diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> > index 333a0ef..a243047 100644
-> > --- a/drivers/iommu/mtk_iommu.h
-> > +++ b/drivers/iommu/mtk_iommu.h
-> > @@ -43,6 +43,7 @@ enum mtk_iommu_plat {
-> >   
-> >   struct mtk_iommu_plat_data {
-> >   	enum mtk_iommu_plat m4u_plat;
-> > +	bool has_4gb_mode;
-> >   };
-> >   
-> >   struct mtk_iommu_domain;
-> > 
+T24gVGh1LCAyMDE4LTEwLTE4IGF0IDExOjIzICswODAwLCBIb25naHVpIFpoYW5nICjlvKDmtKro
+vokpIHdyb3RlOgo+IEZyb206IEhvbmdodWkgWmhhbmcgPGhvbmdodWkuemhhbmdAbWVkaWF0ZWsu
+Y29tPgo+IAo+IFVzZSB0aGUgZGV2bV9vZl9wY2lfZ2V0X2hvc3RfYnJpZGdlX3Jlc291cmNlcygp
+IEFQSSBpbiBwbGFjZSBvZiB0aGUgUENJIE9GCj4gRFQgcGFyc2VyLgo+IAo+IFNpZ25lZC1vZmYt
+Ynk6IEhvbmdodWkgWmhhbmcgPGhvbmdodWkuemhhbmdAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBk
+cml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtbWVkaWF0ZWsuYyB8IDEwOSArKysrKysrKystLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDI5IGluc2VydGlvbnMoKyks
+IDgwIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250cm9sbGVy
+L3BjaWUtbWVkaWF0ZWsuYyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay5j
+Cj4gaW5kZXggMmExZjk3Yy4uNjYzMmQ0ZSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BjaS9jb250
+cm9sbGVyL3BjaWUtbWVkaWF0ZWsuYwo+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNp
+ZS1tZWRpYXRlay5jCj4gQEAgLTE5NywyOSArMTk3LDIwIEBAIHN0cnVjdCBtdGtfcGNpZV9wb3J0
+IHsKPiAgICogQGRldjogcG9pbnRlciB0byBQQ0llIGRldmljZQo+ICAgKiBAYmFzZTogSU8gbWFw
+cGVkIHJlZ2lzdGVyIGJhc2UKPiAgICogQGZyZWVfY2s6IGZyZWUtcnVuIHJlZmVyZW5jZSBjbG9j
+awo+IC0gKiBAaW86IElPIHJlc291cmNlCj4gLSAqIEBwaW86IFBJTyByZXNvdXJjZQo+ICAgKiBA
+bWVtOiBub24tcHJlZmV0Y2hhYmxlIG1lbW9yeSByZXNvdXJjZQo+IC0gKiBAYnVzbjogYnVzIHJh
+bmdlCj4gLSAqIEBvZmZzZXQ6IElPIC8gTWVtb3J5IG9mZnNldAo+ICAgKiBAcG9ydHM6IHBvaW50
+ZXIgdG8gUENJZSBwb3J0IGluZm9ybWF0aW9uCj4gICAqIEBzb2M6IHBvaW50ZXIgdG8gU29DLWRl
+cGVuZGVudCBvcGVyYXRpb25zCj4gKyAqIEBidXNucjogcm9vdCBidXMgbnVtYmVyCj4gICAqLwo+
+ICBzdHJ1Y3QgbXRrX3BjaWUgewo+ICAgICAgICAgc3RydWN0IGRldmljZSAqZGV2Owo+ICAgICAg
+ICAgdm9pZCBfX2lvbWVtICpiYXNlOwo+ICAgICAgICAgc3RydWN0IGNsayAqZnJlZV9jazsKPiAK
+PiAtICAgICAgIHN0cnVjdCByZXNvdXJjZSBpbzsKPiAtICAgICAgIHN0cnVjdCByZXNvdXJjZSBw
+aW87Cj4gICAgICAgICBzdHJ1Y3QgcmVzb3VyY2UgbWVtOwo+IC0gICAgICAgc3RydWN0IHJlc291
+cmNlIGJ1c247Cj4gLSAgICAgICBzdHJ1Y3Qgewo+IC0gICAgICAgICAgICAgICByZXNvdXJjZV9z
+aXplX3QgbWVtOwo+IC0gICAgICAgICAgICAgICByZXNvdXJjZV9zaXplX3QgaW87Cj4gLSAgICAg
+ICB9IG9mZnNldDsKPiAgICAgICAgIHN0cnVjdCBsaXN0X2hlYWQgcG9ydHM7Cj4gICAgICAgICBj
+b25zdCBzdHJ1Y3QgbXRrX3BjaWVfc29jICpzb2M7Cj4gKyAgICAgICBpbnQgYnVzbnI7Cj4gIH07
+Cj4gCj4gIHN0YXRpYyB2b2lkIG10a19wY2llX3N1YnN5c19wb3dlcmRvd24oc3RydWN0IG10a19w
+Y2llICpwY2llKQo+IEBAIC0xMDQ1LDU1ICsxMDM2LDQyIEBAIHN0YXRpYyBpbnQgbXRrX3BjaWVf
+c2V0dXAoc3RydWN0IG10a19wY2llICpwY2llKQo+ICB7Cj4gICAgICAgICBzdHJ1Y3QgZGV2aWNl
+ICpkZXYgPSBwY2llLT5kZXY7Cj4gICAgICAgICBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5vZGUgPSBk
+ZXYtPm9mX25vZGUsICpjaGlsZDsKPiAtICAgICAgIHN0cnVjdCBvZl9wY2lfcmFuZ2VfcGFyc2Vy
+IHBhcnNlcjsKPiAtICAgICAgIHN0cnVjdCBvZl9wY2lfcmFuZ2UgcmFuZ2U7Cj4gLSAgICAgICBz
+dHJ1Y3QgcmVzb3VyY2UgcmVzOwo+ICAgICAgICAgc3RydWN0IG10a19wY2llX3BvcnQgKnBvcnQs
+ICp0bXA7Cj4gKyAgICAgICBzdHJ1Y3QgcGNpX2hvc3RfYnJpZGdlICpob3N0ID0gcGNpX2hvc3Rf
+YnJpZGdlX2Zyb21fcHJpdihwY2llKTsKPiArICAgICAgIHN0cnVjdCBsaXN0X2hlYWQgKndpbmRv
+d3MgPSAmaG9zdC0+d2luZG93czsKPiArICAgICAgIHN0cnVjdCByZXNvdXJjZV9lbnRyeSAqd2lu
+LCAqdG1wX3dpbjsKPiArICAgICAgIHJlc291cmNlX3NpemVfdCBpb19iYXNlOwo+ICAgICAgICAg
+aW50IGVycjsKPiAKPiAtICAgICAgIGlmIChvZl9wY2lfcmFuZ2VfcGFyc2VyX2luaXQoJnBhcnNl
+ciwgbm9kZSkpIHsKPiAtICAgICAgICAgICAgICAgZGV2X2VycihkZXYsICJtaXNzaW5nIFwicmFu
+Z2VzXCIgcHJvcGVydHlcbiIpOwo+IC0gICAgICAgICAgICAgICByZXR1cm4gLUVJTlZBTDsKPiAt
+ICAgICAgIH0KPiArICAgICAgIGVyciA9IGRldm1fb2ZfcGNpX2dldF9ob3N0X2JyaWRnZV9yZXNv
+dXJjZXMoZGV2LCAwLCAweGZmLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICB3aW5kb3dzLCAmaW9fYmFzZSk7Cj4gKyAgICAgICBpZiAoZXJyKQo+
+ICsgICAgICAgICAgICAgICByZXR1cm4gZXJyOwo+IAo+IC0gICAgICAgZm9yX2VhY2hfb2ZfcGNp
+X3JhbmdlKCZwYXJzZXIsICZyYW5nZSkgewo+IC0gICAgICAgICAgICAgICBlcnIgPSBvZl9wY2lf
+cmFuZ2VfdG9fcmVzb3VyY2UoJnJhbmdlLCBub2RlLCAmcmVzKTsKPiAtICAgICAgICAgICAgICAg
+aWYgKGVyciA8IDApCj4gLSAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIGVycjsKPiArICAg
+ICAgIGVyciA9IGRldm1fcmVxdWVzdF9wY2lfYnVzX3Jlc291cmNlcyhkZXYsIHdpbmRvd3MpOwo+
+ICsgICAgICAgaWYgKGVyciA8IDApCj4gKyAgICAgICAgICAgICAgIHJldHVybiBlcnI7Cj4gCj4g
+LSAgICAgICAgICAgICAgIHN3aXRjaCAocmVzLmZsYWdzICYgSU9SRVNPVVJDRV9UWVBFX0JJVFMp
+IHsKPiArICAgICAgIC8qIEdldCB0aGUgSS9PIGFuZCBtZW1vcnkgcmFuZ2VzIGZyb20gRFQgKi8K
+PiArICAgICAgIHJlc291cmNlX2xpc3RfZm9yX2VhY2hfZW50cnlfc2FmZSh3aW4sIHRtcF93aW4s
+IHdpbmRvd3MpIHsKPiArICAgICAgICAgICAgICAgc3dpdGNoIChyZXNvdXJjZV90eXBlKHdpbi0+
+cmVzKSkgewo+ICAgICAgICAgICAgICAgICBjYXNlIElPUkVTT1VSQ0VfSU86Cj4gLSAgICAgICAg
+ICAgICAgICAgICAgICAgcGNpZS0+b2Zmc2V0LmlvID0gcmVzLnN0YXJ0IC0gcmFuZ2UucGNpX2Fk
+ZHI7Cj4gLQo+IC0gICAgICAgICAgICAgICAgICAgICAgIG1lbWNweSgmcGNpZS0+cGlvLCAmcmVz
+LCBzaXplb2YocmVzKSk7Cj4gLSAgICAgICAgICAgICAgICAgICAgICAgcGNpZS0+cGlvLm5hbWUg
+PSBub2RlLT5mdWxsX25hbWU7Cj4gLQo+IC0gICAgICAgICAgICAgICAgICAgICAgIHBjaWUtPmlv
+LnN0YXJ0ID0gcmFuZ2UuY3B1X2FkZHI7Cj4gLSAgICAgICAgICAgICAgICAgICAgICAgcGNpZS0+
+aW8uZW5kID0gcmFuZ2UuY3B1X2FkZHIgKyByYW5nZS5zaXplIC0gMTsKPiAtICAgICAgICAgICAg
+ICAgICAgICAgICBwY2llLT5pby5mbGFncyA9IElPUkVTT1VSQ0VfTUVNOwo+IC0gICAgICAgICAg
+ICAgICAgICAgICAgIHBjaWUtPmlvLm5hbWUgPSAiSS9PIjsKPiAtCj4gLSAgICAgICAgICAgICAg
+ICAgICAgICAgbWVtY3B5KCZyZXMsICZwY2llLT5pbywgc2l6ZW9mKHJlcykpOwo+IC0gICAgICAg
+ICAgICAgICAgICAgICAgIGJyZWFrOwo+IC0KPiArICAgICAgICAgICAgICAgICAgICAgICBlcnIg
+PSBkZXZtX3BjaV9yZW1hcF9pb3NwYWNlKGRldiwgd2luLT5yZXMsIGlvX2Jhc2UpOwo+ICsgICAg
+ICAgICAgICAgICAgICAgICAgIGlmIChlcnIpIHsKPiArICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIGRldl93YXJuKGRldiwgImVycm9yICVkOiBmYWlsZWQgdG8gbWFwIHJlc291cmNlICVw
+UlxuIiwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVyciwgd2lu
+LT5yZXMpOwo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVzb3VyY2VfbGlzdF9k
+ZXN0cm95X2VudHJ5KHdpbik7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgfQo+ICAgICAgICAg
+ICAgICAgICBjYXNlIElPUkVTT1VSQ0VfTUVNOgo+IC0gICAgICAgICAgICAgICAgICAgICAgIHBj
+aWUtPm9mZnNldC5tZW0gPSByZXMuc3RhcnQgLSByYW5nZS5wY2lfYWRkcjsKPiAtCj4gLSAgICAg
+ICAgICAgICAgICAgICAgICAgbWVtY3B5KCZwY2llLT5tZW0sICZyZXMsIHNpemVvZihyZXMpKTsK
+PiArICAgICAgICAgICAgICAgICAgICAgICBtZW1jcHkoJnBjaWUtPm1lbSwgd2luLT5yZXMsIHNp
+emVvZigqd2luLT5yZXMpKTsKPiAgICAgICAgICAgICAgICAgICAgICAgICBwY2llLT5tZW0ubmFt
+ZSA9ICJub24tcHJlZmV0Y2hhYmxlIjsKPiAgICAgICAgICAgICAgICAgICAgICAgICBicmVhazsK
+PiArICAgICAgICAgICAgICAgY2FzZSBJT1JFU09VUkNFX0JVUzoKPiArICAgICAgICAgICAgICAg
+ICAgICAgICBwY2llLT5idXNuciA9IHdpbi0+cmVzLT5zdGFydDsKPiArICAgICAgICAgICAgICAg
+ICAgICAgICBicmVhazsKPiAgICAgICAgICAgICAgICAgfQo+ICAgICAgICAgfQo+IAo+IC0gICAg
+ICAgZXJyID0gb2ZfcGNpX3BhcnNlX2J1c19yYW5nZShub2RlLCAmcGNpZS0+YnVzbik7Cj4gLSAg
+ICAgICBpZiAoZXJyIDwgMCkgewo+IC0gICAgICAgICAgICAgICBkZXZfZXJyKGRldiwgImZhaWxl
+ZCB0byBwYXJzZSBidXMgcmFuZ2VzIHByb3BlcnR5OiAlZFxuIiwgZXJyKTsKPiAtICAgICAgICAg
+ICAgICAgcGNpZS0+YnVzbi5uYW1lID0gbm9kZS0+bmFtZTsKPiAtICAgICAgICAgICAgICAgcGNp
+ZS0+YnVzbi5zdGFydCA9IDA7Cj4gLSAgICAgICAgICAgICAgIHBjaWUtPmJ1c24uZW5kID0gMHhm
+ZjsKPiAtICAgICAgICAgICAgICAgcGNpZS0+YnVzbi5mbGFncyA9IElPUkVTT1VSQ0VfQlVTOwo+
+IC0gICAgICAgfQo+IC0KPiAgICAgICAgIGZvcl9lYWNoX2F2YWlsYWJsZV9jaGlsZF9vZl9ub2Rl
+KG5vZGUsIGNoaWxkKSB7Cj4gICAgICAgICAgICAgICAgIGludCBzbG90Owo+IAo+IEBAIC0xMTI1
+LDI4ICsxMTAzLDYgQEAgc3RhdGljIGludCBtdGtfcGNpZV9zZXR1cChzdHJ1Y3QgbXRrX3BjaWUg
+KnBjaWUpCj4gICAgICAgICByZXR1cm4gMDsKPiAgfQo+IAo+IC1zdGF0aWMgaW50IG10a19wY2ll
+X3JlcXVlc3RfcmVzb3VyY2VzKHN0cnVjdCBtdGtfcGNpZSAqcGNpZSkKPiAtewo+IC0gICAgICAg
+c3RydWN0IHBjaV9ob3N0X2JyaWRnZSAqaG9zdCA9IHBjaV9ob3N0X2JyaWRnZV9mcm9tX3ByaXYo
+cGNpZSk7Cj4gLSAgICAgICBzdHJ1Y3QgbGlzdF9oZWFkICp3aW5kb3dzID0gJmhvc3QtPndpbmRv
+d3M7Cj4gLSAgICAgICBzdHJ1Y3QgZGV2aWNlICpkZXYgPSBwY2llLT5kZXY7Cj4gLSAgICAgICBp
+bnQgZXJyOwo+IC0KPiAtICAgICAgIHBjaV9hZGRfcmVzb3VyY2Vfb2Zmc2V0KHdpbmRvd3MsICZw
+Y2llLT5waW8sIHBjaWUtPm9mZnNldC5pbyk7Cj4gLSAgICAgICBwY2lfYWRkX3Jlc291cmNlX29m
+ZnNldCh3aW5kb3dzLCAmcGNpZS0+bWVtLCBwY2llLT5vZmZzZXQubWVtKTsKPiAtICAgICAgIHBj
+aV9hZGRfcmVzb3VyY2Uod2luZG93cywgJnBjaWUtPmJ1c24pOwo+IC0KPiAtICAgICAgIGVyciA9
+IGRldm1fcmVxdWVzdF9wY2lfYnVzX3Jlc291cmNlcyhkZXYsIHdpbmRvd3MpOwo+IC0gICAgICAg
+aWYgKGVyciA8IDApCj4gLSAgICAgICAgICAgICAgIHJldHVybiBlcnI7Cj4gLQo+IC0gICAgICAg
+ZXJyID0gZGV2bV9wY2lfcmVtYXBfaW9zcGFjZShkZXYsICZwY2llLT5waW8sIHBjaWUtPmlvLnN0
+YXJ0KTsKPiAtICAgICAgIGlmIChlcnIgPCAwKQo+IC0gICAgICAgICAgICAgICByZXR1cm4gZXJy
+Owo+IC0KPiAtICAgICAgIHJldHVybiAwOwo+IC19Cj4gLQo+ICBzdGF0aWMgaW50IG10a19wY2ll
+X3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIHsKPiAgICAgICAgIHN0cnVj
+dCBkZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7Cj4gQEAgLTExNjksMTEgKzExMjUsNyBAQCBzdGF0
+aWMgaW50IG10a19wY2llX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gICAg
+ICAgICBpZiAoZXJyKQo+ICAgICAgICAgICAgICAgICByZXR1cm4gZXJyOwo+IAo+IC0gICAgICAg
+ZXJyID0gbXRrX3BjaWVfcmVxdWVzdF9yZXNvdXJjZXMocGNpZSk7Cj4gLSAgICAgICBpZiAoZXJy
+KQo+IC0gICAgICAgICAgICAgICBnb3RvIHB1dF9yZXNvdXJjZXM7Cj4gLQo+IC0gICAgICAgaG9z
+dC0+YnVzbnIgPSBwY2llLT5idXNuLnN0YXJ0Owo+ICsgICAgICAgaG9zdC0+YnVzbnIgPSBwY2ll
+LT5idXNucjsKPiAgICAgICAgIGhvc3QtPmRldi5wYXJlbnQgPSBwY2llLT5kZXY7Cj4gICAgICAg
+ICBob3N0LT5vcHMgPSBwY2llLT5zb2MtPm9wczsKPiAgICAgICAgIGhvc3QtPm1hcF9pcnEgPSBv
+Zl9pcnFfcGFyc2VfYW5kX21hcF9wY2k7Cj4gQEAgLTExODEsMTIgKzExMzMsOSBAQCBzdGF0aWMg
+aW50IG10a19wY2llX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gICAgICAg
+ICBob3N0LT5zeXNkYXRhID0gcGNpZTsKPiAKPiAgICAgICAgIGVyciA9IHBjaV9ob3N0X3Byb2Jl
+KGhvc3QpOwo+IC0gICAgICAgaWYgKGVycikKPiAtICAgICAgICAgICAgICAgZ290byBwdXRfcmVz
+b3VyY2VzOwo+IC0KPiAtICAgICAgIHJldHVybiAwOwo+ICsgICAgICAgaWYgKCFlcnIpCj4gKyAg
+ICAgICAgICAgICAgIHJldHVybiAwOwo+IAo+IC1wdXRfcmVzb3VyY2VzOgo+ICAgICAgICAgaWYg
+KCFsaXN0X2VtcHR5KCZwY2llLT5wb3J0cykpCj4gICAgICAgICAgICAgICAgIG10a19wY2llX3B1
+dF9yZXNvdXJjZXMocGNpZSk7Cj4gCj4gLS0KPiAyLjYuNAo+IAoKQWNrZWQtYnk6IFJ5ZGVyIExl
+ZSA8cnlkZXIubGVlQG1lZGlhdGVrLmNvbT4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgt
+YXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
