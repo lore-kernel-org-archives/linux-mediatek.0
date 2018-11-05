@@ -1,148 +1,170 @@
 From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [SPAM][PATCH] PCI: mediatek: Use
- devm_of_pci_get_host_bridge_resources() to parse DT
-Date: Fri, 2 Nov 2018 14:36:23 +0800
-Message-ID: <1541140583.10519.1.camel@mtkswgap22>
-References: <1539833014-1738-1-git-send-email-honghui.zhang@mediatek.com>
+Subject: [PATCH 2/2] dt-bindings: pinctrl: update bindings for MT7629 SoC
+Date: Mon, 5 Nov 2018 16:43:41 +0800
+Message-ID: <85278445c65854dca6d4f9993a0ca2d048b9e5d8.1541143226.git.ryder.lee@mediatek.com>
+References: <6fe4c5fbed14391b6b7fb7d44e42e133e718d6f9.1541143226.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1539833014-1738-1-git-send-email-honghui.zhang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Honghui Zhang =?UTF-8?Q?=28=E5=BC=A0=E6=B4=AA=E8=BE=89=29?= <Honghui.Zhang@mediatek.com>
-Cc: Youlin Pei =?UTF-8?Q?=28=E8=A3=B4=E5=8F=8B=E6=9E=97=29?= <youlin.pei@mediatek.com>, "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Jianjun Wang =?UTF-8?Q?=28=E7=8E=8B=E5=BB=BA=E5=86=9B=29?= <Jianjun.Wang@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "bhelgaas@google.com" <bhelgaas@google.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <6fe4c5fbed14391b6b7fb7d44e42e133e718d6f9.1541143226.git.ryder.lee@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-gpio@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVGh1LCAyMDE4LTEwLTE4IGF0IDExOjIzICswODAwLCBIb25naHVpIFpoYW5nICjlvKDmtKro
-vokpIHdyb3RlOgo+IEZyb206IEhvbmdodWkgWmhhbmcgPGhvbmdodWkuemhhbmdAbWVkaWF0ZWsu
-Y29tPgo+IAo+IFVzZSB0aGUgZGV2bV9vZl9wY2lfZ2V0X2hvc3RfYnJpZGdlX3Jlc291cmNlcygp
-IEFQSSBpbiBwbGFjZSBvZiB0aGUgUENJIE9GCj4gRFQgcGFyc2VyLgo+IAo+IFNpZ25lZC1vZmYt
-Ynk6IEhvbmdodWkgWmhhbmcgPGhvbmdodWkuemhhbmdAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBk
-cml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtbWVkaWF0ZWsuYyB8IDEwOSArKysrKysrKystLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDI5IGluc2VydGlvbnMoKyks
-IDgwIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250cm9sbGVy
-L3BjaWUtbWVkaWF0ZWsuYyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay5j
-Cj4gaW5kZXggMmExZjk3Yy4uNjYzMmQ0ZSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BjaS9jb250
-cm9sbGVyL3BjaWUtbWVkaWF0ZWsuYwo+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNp
-ZS1tZWRpYXRlay5jCj4gQEAgLTE5NywyOSArMTk3LDIwIEBAIHN0cnVjdCBtdGtfcGNpZV9wb3J0
-IHsKPiAgICogQGRldjogcG9pbnRlciB0byBQQ0llIGRldmljZQo+ICAgKiBAYmFzZTogSU8gbWFw
-cGVkIHJlZ2lzdGVyIGJhc2UKPiAgICogQGZyZWVfY2s6IGZyZWUtcnVuIHJlZmVyZW5jZSBjbG9j
-awo+IC0gKiBAaW86IElPIHJlc291cmNlCj4gLSAqIEBwaW86IFBJTyByZXNvdXJjZQo+ICAgKiBA
-bWVtOiBub24tcHJlZmV0Y2hhYmxlIG1lbW9yeSByZXNvdXJjZQo+IC0gKiBAYnVzbjogYnVzIHJh
-bmdlCj4gLSAqIEBvZmZzZXQ6IElPIC8gTWVtb3J5IG9mZnNldAo+ICAgKiBAcG9ydHM6IHBvaW50
-ZXIgdG8gUENJZSBwb3J0IGluZm9ybWF0aW9uCj4gICAqIEBzb2M6IHBvaW50ZXIgdG8gU29DLWRl
-cGVuZGVudCBvcGVyYXRpb25zCj4gKyAqIEBidXNucjogcm9vdCBidXMgbnVtYmVyCj4gICAqLwo+
-ICBzdHJ1Y3QgbXRrX3BjaWUgewo+ICAgICAgICAgc3RydWN0IGRldmljZSAqZGV2Owo+ICAgICAg
-ICAgdm9pZCBfX2lvbWVtICpiYXNlOwo+ICAgICAgICAgc3RydWN0IGNsayAqZnJlZV9jazsKPiAK
-PiAtICAgICAgIHN0cnVjdCByZXNvdXJjZSBpbzsKPiAtICAgICAgIHN0cnVjdCByZXNvdXJjZSBw
-aW87Cj4gICAgICAgICBzdHJ1Y3QgcmVzb3VyY2UgbWVtOwo+IC0gICAgICAgc3RydWN0IHJlc291
-cmNlIGJ1c247Cj4gLSAgICAgICBzdHJ1Y3Qgewo+IC0gICAgICAgICAgICAgICByZXNvdXJjZV9z
-aXplX3QgbWVtOwo+IC0gICAgICAgICAgICAgICByZXNvdXJjZV9zaXplX3QgaW87Cj4gLSAgICAg
-ICB9IG9mZnNldDsKPiAgICAgICAgIHN0cnVjdCBsaXN0X2hlYWQgcG9ydHM7Cj4gICAgICAgICBj
-b25zdCBzdHJ1Y3QgbXRrX3BjaWVfc29jICpzb2M7Cj4gKyAgICAgICBpbnQgYnVzbnI7Cj4gIH07
-Cj4gCj4gIHN0YXRpYyB2b2lkIG10a19wY2llX3N1YnN5c19wb3dlcmRvd24oc3RydWN0IG10a19w
-Y2llICpwY2llKQo+IEBAIC0xMDQ1LDU1ICsxMDM2LDQyIEBAIHN0YXRpYyBpbnQgbXRrX3BjaWVf
-c2V0dXAoc3RydWN0IG10a19wY2llICpwY2llKQo+ICB7Cj4gICAgICAgICBzdHJ1Y3QgZGV2aWNl
-ICpkZXYgPSBwY2llLT5kZXY7Cj4gICAgICAgICBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5vZGUgPSBk
-ZXYtPm9mX25vZGUsICpjaGlsZDsKPiAtICAgICAgIHN0cnVjdCBvZl9wY2lfcmFuZ2VfcGFyc2Vy
-IHBhcnNlcjsKPiAtICAgICAgIHN0cnVjdCBvZl9wY2lfcmFuZ2UgcmFuZ2U7Cj4gLSAgICAgICBz
-dHJ1Y3QgcmVzb3VyY2UgcmVzOwo+ICAgICAgICAgc3RydWN0IG10a19wY2llX3BvcnQgKnBvcnQs
-ICp0bXA7Cj4gKyAgICAgICBzdHJ1Y3QgcGNpX2hvc3RfYnJpZGdlICpob3N0ID0gcGNpX2hvc3Rf
-YnJpZGdlX2Zyb21fcHJpdihwY2llKTsKPiArICAgICAgIHN0cnVjdCBsaXN0X2hlYWQgKndpbmRv
-d3MgPSAmaG9zdC0+d2luZG93czsKPiArICAgICAgIHN0cnVjdCByZXNvdXJjZV9lbnRyeSAqd2lu
-LCAqdG1wX3dpbjsKPiArICAgICAgIHJlc291cmNlX3NpemVfdCBpb19iYXNlOwo+ICAgICAgICAg
-aW50IGVycjsKPiAKPiAtICAgICAgIGlmIChvZl9wY2lfcmFuZ2VfcGFyc2VyX2luaXQoJnBhcnNl
-ciwgbm9kZSkpIHsKPiAtICAgICAgICAgICAgICAgZGV2X2VycihkZXYsICJtaXNzaW5nIFwicmFu
-Z2VzXCIgcHJvcGVydHlcbiIpOwo+IC0gICAgICAgICAgICAgICByZXR1cm4gLUVJTlZBTDsKPiAt
-ICAgICAgIH0KPiArICAgICAgIGVyciA9IGRldm1fb2ZfcGNpX2dldF9ob3N0X2JyaWRnZV9yZXNv
-dXJjZXMoZGV2LCAwLCAweGZmLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICB3aW5kb3dzLCAmaW9fYmFzZSk7Cj4gKyAgICAgICBpZiAoZXJyKQo+
-ICsgICAgICAgICAgICAgICByZXR1cm4gZXJyOwo+IAo+IC0gICAgICAgZm9yX2VhY2hfb2ZfcGNp
-X3JhbmdlKCZwYXJzZXIsICZyYW5nZSkgewo+IC0gICAgICAgICAgICAgICBlcnIgPSBvZl9wY2lf
-cmFuZ2VfdG9fcmVzb3VyY2UoJnJhbmdlLCBub2RlLCAmcmVzKTsKPiAtICAgICAgICAgICAgICAg
-aWYgKGVyciA8IDApCj4gLSAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIGVycjsKPiArICAg
-ICAgIGVyciA9IGRldm1fcmVxdWVzdF9wY2lfYnVzX3Jlc291cmNlcyhkZXYsIHdpbmRvd3MpOwo+
-ICsgICAgICAgaWYgKGVyciA8IDApCj4gKyAgICAgICAgICAgICAgIHJldHVybiBlcnI7Cj4gCj4g
-LSAgICAgICAgICAgICAgIHN3aXRjaCAocmVzLmZsYWdzICYgSU9SRVNPVVJDRV9UWVBFX0JJVFMp
-IHsKPiArICAgICAgIC8qIEdldCB0aGUgSS9PIGFuZCBtZW1vcnkgcmFuZ2VzIGZyb20gRFQgKi8K
-PiArICAgICAgIHJlc291cmNlX2xpc3RfZm9yX2VhY2hfZW50cnlfc2FmZSh3aW4sIHRtcF93aW4s
-IHdpbmRvd3MpIHsKPiArICAgICAgICAgICAgICAgc3dpdGNoIChyZXNvdXJjZV90eXBlKHdpbi0+
-cmVzKSkgewo+ICAgICAgICAgICAgICAgICBjYXNlIElPUkVTT1VSQ0VfSU86Cj4gLSAgICAgICAg
-ICAgICAgICAgICAgICAgcGNpZS0+b2Zmc2V0LmlvID0gcmVzLnN0YXJ0IC0gcmFuZ2UucGNpX2Fk
-ZHI7Cj4gLQo+IC0gICAgICAgICAgICAgICAgICAgICAgIG1lbWNweSgmcGNpZS0+cGlvLCAmcmVz
-LCBzaXplb2YocmVzKSk7Cj4gLSAgICAgICAgICAgICAgICAgICAgICAgcGNpZS0+cGlvLm5hbWUg
-PSBub2RlLT5mdWxsX25hbWU7Cj4gLQo+IC0gICAgICAgICAgICAgICAgICAgICAgIHBjaWUtPmlv
-LnN0YXJ0ID0gcmFuZ2UuY3B1X2FkZHI7Cj4gLSAgICAgICAgICAgICAgICAgICAgICAgcGNpZS0+
-aW8uZW5kID0gcmFuZ2UuY3B1X2FkZHIgKyByYW5nZS5zaXplIC0gMTsKPiAtICAgICAgICAgICAg
-ICAgICAgICAgICBwY2llLT5pby5mbGFncyA9IElPUkVTT1VSQ0VfTUVNOwo+IC0gICAgICAgICAg
-ICAgICAgICAgICAgIHBjaWUtPmlvLm5hbWUgPSAiSS9PIjsKPiAtCj4gLSAgICAgICAgICAgICAg
-ICAgICAgICAgbWVtY3B5KCZyZXMsICZwY2llLT5pbywgc2l6ZW9mKHJlcykpOwo+IC0gICAgICAg
-ICAgICAgICAgICAgICAgIGJyZWFrOwo+IC0KPiArICAgICAgICAgICAgICAgICAgICAgICBlcnIg
-PSBkZXZtX3BjaV9yZW1hcF9pb3NwYWNlKGRldiwgd2luLT5yZXMsIGlvX2Jhc2UpOwo+ICsgICAg
-ICAgICAgICAgICAgICAgICAgIGlmIChlcnIpIHsKPiArICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIGRldl93YXJuKGRldiwgImVycm9yICVkOiBmYWlsZWQgdG8gbWFwIHJlc291cmNlICVw
-UlxuIiwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVyciwgd2lu
-LT5yZXMpOwo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVzb3VyY2VfbGlzdF9k
-ZXN0cm95X2VudHJ5KHdpbik7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgfQo+ICAgICAgICAg
-ICAgICAgICBjYXNlIElPUkVTT1VSQ0VfTUVNOgo+IC0gICAgICAgICAgICAgICAgICAgICAgIHBj
-aWUtPm9mZnNldC5tZW0gPSByZXMuc3RhcnQgLSByYW5nZS5wY2lfYWRkcjsKPiAtCj4gLSAgICAg
-ICAgICAgICAgICAgICAgICAgbWVtY3B5KCZwY2llLT5tZW0sICZyZXMsIHNpemVvZihyZXMpKTsK
-PiArICAgICAgICAgICAgICAgICAgICAgICBtZW1jcHkoJnBjaWUtPm1lbSwgd2luLT5yZXMsIHNp
-emVvZigqd2luLT5yZXMpKTsKPiAgICAgICAgICAgICAgICAgICAgICAgICBwY2llLT5tZW0ubmFt
-ZSA9ICJub24tcHJlZmV0Y2hhYmxlIjsKPiAgICAgICAgICAgICAgICAgICAgICAgICBicmVhazsK
-PiArICAgICAgICAgICAgICAgY2FzZSBJT1JFU09VUkNFX0JVUzoKPiArICAgICAgICAgICAgICAg
-ICAgICAgICBwY2llLT5idXNuciA9IHdpbi0+cmVzLT5zdGFydDsKPiArICAgICAgICAgICAgICAg
-ICAgICAgICBicmVhazsKPiAgICAgICAgICAgICAgICAgfQo+ICAgICAgICAgfQo+IAo+IC0gICAg
-ICAgZXJyID0gb2ZfcGNpX3BhcnNlX2J1c19yYW5nZShub2RlLCAmcGNpZS0+YnVzbik7Cj4gLSAg
-ICAgICBpZiAoZXJyIDwgMCkgewo+IC0gICAgICAgICAgICAgICBkZXZfZXJyKGRldiwgImZhaWxl
-ZCB0byBwYXJzZSBidXMgcmFuZ2VzIHByb3BlcnR5OiAlZFxuIiwgZXJyKTsKPiAtICAgICAgICAg
-ICAgICAgcGNpZS0+YnVzbi5uYW1lID0gbm9kZS0+bmFtZTsKPiAtICAgICAgICAgICAgICAgcGNp
-ZS0+YnVzbi5zdGFydCA9IDA7Cj4gLSAgICAgICAgICAgICAgIHBjaWUtPmJ1c24uZW5kID0gMHhm
-ZjsKPiAtICAgICAgICAgICAgICAgcGNpZS0+YnVzbi5mbGFncyA9IElPUkVTT1VSQ0VfQlVTOwo+
-IC0gICAgICAgfQo+IC0KPiAgICAgICAgIGZvcl9lYWNoX2F2YWlsYWJsZV9jaGlsZF9vZl9ub2Rl
-KG5vZGUsIGNoaWxkKSB7Cj4gICAgICAgICAgICAgICAgIGludCBzbG90Owo+IAo+IEBAIC0xMTI1
-LDI4ICsxMTAzLDYgQEAgc3RhdGljIGludCBtdGtfcGNpZV9zZXR1cChzdHJ1Y3QgbXRrX3BjaWUg
-KnBjaWUpCj4gICAgICAgICByZXR1cm4gMDsKPiAgfQo+IAo+IC1zdGF0aWMgaW50IG10a19wY2ll
-X3JlcXVlc3RfcmVzb3VyY2VzKHN0cnVjdCBtdGtfcGNpZSAqcGNpZSkKPiAtewo+IC0gICAgICAg
-c3RydWN0IHBjaV9ob3N0X2JyaWRnZSAqaG9zdCA9IHBjaV9ob3N0X2JyaWRnZV9mcm9tX3ByaXYo
-cGNpZSk7Cj4gLSAgICAgICBzdHJ1Y3QgbGlzdF9oZWFkICp3aW5kb3dzID0gJmhvc3QtPndpbmRv
-d3M7Cj4gLSAgICAgICBzdHJ1Y3QgZGV2aWNlICpkZXYgPSBwY2llLT5kZXY7Cj4gLSAgICAgICBp
-bnQgZXJyOwo+IC0KPiAtICAgICAgIHBjaV9hZGRfcmVzb3VyY2Vfb2Zmc2V0KHdpbmRvd3MsICZw
-Y2llLT5waW8sIHBjaWUtPm9mZnNldC5pbyk7Cj4gLSAgICAgICBwY2lfYWRkX3Jlc291cmNlX29m
-ZnNldCh3aW5kb3dzLCAmcGNpZS0+bWVtLCBwY2llLT5vZmZzZXQubWVtKTsKPiAtICAgICAgIHBj
-aV9hZGRfcmVzb3VyY2Uod2luZG93cywgJnBjaWUtPmJ1c24pOwo+IC0KPiAtICAgICAgIGVyciA9
-IGRldm1fcmVxdWVzdF9wY2lfYnVzX3Jlc291cmNlcyhkZXYsIHdpbmRvd3MpOwo+IC0gICAgICAg
-aWYgKGVyciA8IDApCj4gLSAgICAgICAgICAgICAgIHJldHVybiBlcnI7Cj4gLQo+IC0gICAgICAg
-ZXJyID0gZGV2bV9wY2lfcmVtYXBfaW9zcGFjZShkZXYsICZwY2llLT5waW8sIHBjaWUtPmlvLnN0
-YXJ0KTsKPiAtICAgICAgIGlmIChlcnIgPCAwKQo+IC0gICAgICAgICAgICAgICByZXR1cm4gZXJy
-Owo+IC0KPiAtICAgICAgIHJldHVybiAwOwo+IC19Cj4gLQo+ICBzdGF0aWMgaW50IG10a19wY2ll
-X3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIHsKPiAgICAgICAgIHN0cnVj
-dCBkZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7Cj4gQEAgLTExNjksMTEgKzExMjUsNyBAQCBzdGF0
-aWMgaW50IG10a19wY2llX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gICAg
-ICAgICBpZiAoZXJyKQo+ICAgICAgICAgICAgICAgICByZXR1cm4gZXJyOwo+IAo+IC0gICAgICAg
-ZXJyID0gbXRrX3BjaWVfcmVxdWVzdF9yZXNvdXJjZXMocGNpZSk7Cj4gLSAgICAgICBpZiAoZXJy
-KQo+IC0gICAgICAgICAgICAgICBnb3RvIHB1dF9yZXNvdXJjZXM7Cj4gLQo+IC0gICAgICAgaG9z
-dC0+YnVzbnIgPSBwY2llLT5idXNuLnN0YXJ0Owo+ICsgICAgICAgaG9zdC0+YnVzbnIgPSBwY2ll
-LT5idXNucjsKPiAgICAgICAgIGhvc3QtPmRldi5wYXJlbnQgPSBwY2llLT5kZXY7Cj4gICAgICAg
-ICBob3N0LT5vcHMgPSBwY2llLT5zb2MtPm9wczsKPiAgICAgICAgIGhvc3QtPm1hcF9pcnEgPSBv
-Zl9pcnFfcGFyc2VfYW5kX21hcF9wY2k7Cj4gQEAgLTExODEsMTIgKzExMzMsOSBAQCBzdGF0aWMg
-aW50IG10a19wY2llX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gICAgICAg
-ICBob3N0LT5zeXNkYXRhID0gcGNpZTsKPiAKPiAgICAgICAgIGVyciA9IHBjaV9ob3N0X3Byb2Jl
-KGhvc3QpOwo+IC0gICAgICAgaWYgKGVycikKPiAtICAgICAgICAgICAgICAgZ290byBwdXRfcmVz
-b3VyY2VzOwo+IC0KPiAtICAgICAgIHJldHVybiAwOwo+ICsgICAgICAgaWYgKCFlcnIpCj4gKyAg
-ICAgICAgICAgICAgIHJldHVybiAwOwo+IAo+IC1wdXRfcmVzb3VyY2VzOgo+ICAgICAgICAgaWYg
-KCFsaXN0X2VtcHR5KCZwY2llLT5wb3J0cykpCj4gICAgICAgICAgICAgICAgIG10a19wY2llX3B1
-dF9yZXNvdXJjZXMocGNpZSk7Cj4gCj4gLS0KPiAyLjYuNAo+IAoKQWNrZWQtYnk6IFJ5ZGVyIExl
-ZSA8cnlkZXIubGVlQG1lZGlhdGVrLmNvbT4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgt
-YXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+This updates bindings for MT7629 pinctrl driver.
+
+Cc: Sean Wang <sean.wang@kernel.org>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ .../devicetree/bindings/pinctrl/pinctrl-mt7622.txt | 128 +++++++++++++++++++++
+ 1 file changed, 128 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
+index 3b69513..4dedce4 100644
+--- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
++++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
+@@ -3,6 +3,7 @@
+ Required properties for the root node:
+  - compatible: Should be one of the following
+ 	       "mediatek,mt7622-pinctrl" for MT7622 SoC
++	       "mediatek,mt7629-pinctrl" for MT7629 SoC
+  - reg: offset and length of the pinctrl space
+ 
+  - gpio-controller: Marks the device node as a GPIO controller.
+@@ -324,6 +325,133 @@ group.
+ 	"uart4_2_rts_cts"		"uart"		95, 96
+ 	"watchdog"			"watchdog"	78
+ 
++
++== Valid values for pins, function and groups on MT7629 ==
++
++	Pin #:  Valid values for pins
++	-----------------------------
++	PIN 0: "TOP_5G_CLK"
++	PIN 1: "TOP_5G_DATA"
++	PIN 2: "WF0_5G_HB0"
++	PIN 3: "WF0_5G_HB1"
++	PIN 4: "WF0_5G_HB2"
++	PIN 5: "WF0_5G_HB3"
++	PIN 6: "WF0_5G_HB4"
++	PIN 7: "WF0_5G_HB5"
++	PIN 8: "WF0_5G_HB6"
++	PIN 9: "XO_REQ"
++	PIN 10: "TOP_RST_N"
++	PIN 11: "SYS_WATCHDOG"
++	PIN 12: "EPHY_LED0_N_JTDO"
++	PIN 13: "EPHY_LED1_N_JTDI"
++	PIN 14: "EPHY_LED2_N_JTMS"
++	PIN 15: "EPHY_LED3_N_JTCLK"
++	PIN 16: "EPHY_LED4_N_JTRST_N"
++	PIN 17: "WF2G_LED_N"
++	PIN 18: "WF5G_LED_N"
++	PIN 19: "I2C_SDA"
++	PIN 20: "I2C_SCL"
++	PIN 21: "GPIO_9"
++	PIN 22: "GPIO_10"
++	PIN 23: "GPIO_11"
++	PIN 24: "GPIO_12"
++	PIN 25: "UART1_TXD"
++	PIN 26: "UART1_RXD"
++	PIN 27: "UART1_CTS"
++	PIN 28: "UART1_RTS"
++	PIN 29: "UART2_TXD"
++	PIN 30: "UART2_RXD"
++	PIN 31: "UART2_CTS"
++	PIN 32: "UART2_RTS"
++	PIN 33: "MDI_TP_P1"
++	PIN 34: "MDI_TN_P1"
++	PIN 35: "MDI_RP_P1"
++	PIN 36: "MDI_RN_P1"
++	PIN 37: "MDI_RP_P2"
++	PIN 38: "MDI_RN_P2"
++	PIN 39: "MDI_TP_P2"
++	PIN 40: "MDI_TN_P2"
++	PIN 41: "MDI_TP_P3"
++	PIN 42: "MDI_TN_P3"
++	PIN 43: "MDI_RP_P3"
++	PIN 44: "MDI_RN_P3"
++	PIN 45: "MDI_RP_P4"
++	PIN 46: "MDI_RN_P4"
++	PIN 47: "MDI_TP_P4"
++	PIN 48: "MDI_TN_P4"
++	PIN 49: "SMI_MDC"
++	PIN 50: "SMI_MDIO"
++	PIN 51: "PCIE_PERESET_N"
++	PIN 52: "PWM_0"
++	PIN 53: "GPIO_0"
++	PIN 54: "GPIO_1"
++	PIN 55: "GPIO_2"
++	PIN 56: "GPIO_3"
++	PIN 57: "GPIO_4"
++	PIN 58: "GPIO_5"
++	PIN 59: "GPIO_6"
++	PIN 60: "GPIO_7"
++	PIN 61: "GPIO_8"
++	PIN 62: "SPI_CLK"
++	PIN 63: "SPI_CS"
++	PIN 64: "SPI_MOSI"
++	PIN 65: "SPI_MISO"
++	PIN 66: "SPI_WP"
++	PIN 67: "SPI_HOLD"
++	PIN 68: "UART0_TXD"
++	PIN 69: "UART0_RXD"
++	PIN 70: "TOP_2G_CLK"
++	PIN 71: "TOP_2G_DATA"
++	PIN 72: "WF0_2G_HB0"
++	PIN 73: "WF0_2G_HB1"
++	PIN 74: "WF0_2G_HB2"
++	PIN 75: "WF0_2G_HB3"
++	PIN 76: "WF0_2G_HB4"
++	PIN 77: "WF0_2G_HB5"
++	PIN 78: "WF0_2G_HB6"
++
++Valid values for function are:
++	"eth", "i2c", "led", "flash", "pcie", "pwm", "spi", "uart", "watchdog"
++
++	Valid value			function	pins (in pin#)
++	-------------------------------------------------------------------------
++	"wf0_2g"			"eth"		70, 71, 72, 73, 74, 75,
++							76, 77, 78
++	"wf0_5g"			"eth"		0, 1, 2, 3, 4, 5, 6, 7
++							8, 9, 10
++	"mdc_mdio"			"eth"		23, 24
++	"i2c_0"				"i2c"		19, 20
++	"i2c_1"				"i2c"		53, 54
++	"ephy_leds"			"led"		12, 13, 14, 15, 16, 17, 18
++	"ephy0_led"			"led"		12
++	"ephy1_led"			"led"		13
++	"ephy2_led"			"led"		14
++	"ephy3_led"			"led"		15
++	"ephy4_led"			"led"		16
++	"wf2g_led"			"led"		17
++	"wf5g_led"			"led"		18
++	"snfi"				"flash"		62, 63, 64, 65, 66, 67
++	"spi_nor"			"flash"		62, 63, 64, 65, 66, 67
++	"pcie_pereset"			"pcie"		51
++	"pcie_wake"			"pcie"		55
++	"pcie_clkreq"			"pcie"		56
++	"pwm_0"				"pwm"		52
++	"pwm_1"				"pwm"		61
++	"spi_0"				"spi"		21, 22, 23, 24
++	"spi_1"				"spi"		62, 63, 64, 65
++	"spi_wp"			"spi"		66
++	"spi_hold"			"spi"		67
++	"uart0_txd_rxd"			"uart"		68, 69
++	"uart1_0_txd_rxd"		"uart"		25, 26
++	"uart1_0_cts_rts"		"uart"		27, 28
++	"uart1_1_txd_rxd"		"uart"		53, 54
++	"uart1_1_cts_rts"		"uart"		55, 56
++	"uart2_0_txd_rxd"		"uart"		29, 30
++	"uart2_0_cts_rts"		"uart"		31, 32
++	"uart2_1_txd_rxd"		"uart"		57, 58
++	"uart2_1_cts_rts"		"uart"		59, 60
++	"watchdog"			"watchdog"	11
++
+ Example:
+ 
+ 	pio: pinctrl@10211000 {
+-- 
+1.9.1
