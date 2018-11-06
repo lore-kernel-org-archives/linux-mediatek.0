@@ -1,29 +1,33 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH 1/4] of/device: Add a way to probe drivers by match data
-Date: Tue, 6 Nov 2018 14:44:52 -0600
-Message-ID: <CAL_JsqLvKWcJUYDyWOg3rMeEWv7JV4zw7-YkOUWiL5rfXgVRvQ@mail.gmail.com>
-References: <20181106183609.207702-1-sboyd@kernel.org> <20181106183609.207702-2-sboyd@kernel.org>
+From: Andrew Morton <akpm@linux-foundation.org>
+Subject: Re: [PATCH v4] mm/page_owner: clamp read count to PAGE_SIZE
+Date: Tue, 6 Nov 2018 13:51:21 -0800
+Message-ID: <20181106135121.dd015f188709c4ccb2bff52c@linux-foundation.org>
+References: <1541091607-27402-1-git-send-email-miles.chen@mediatek.com>
+        <20181101144723.3ddc1fa1ab7f81184bc2fdb8@linux-foundation.org>
+        <FD1082D9-916E-47A4-95D3-59F308AD6D55@oracle.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181106183609.207702-2-sboyd@kernel.org>
+In-Reply-To: <FD1082D9-916E-47A4-95D3-59F308AD6D55@oracle.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-clk <linux-clk@vger.kernel.org>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Frank Rowand <frowand.list@gmail.com>
+To: William Kucharski <william.kucharski@oracle.com>
+Cc: miles.chen@mediatek.com, Michal Hocko <mhocko@suse.com>, Joe Perches <joe@perches.com>, Matthew Wilcox <willy@infradead.org>, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Michal Hocko <mhocko@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Nov 6, 2018 at 12:36 PM Stephen Boyd <sboyd@kernel.org> wrote:
->
-> We have a handful of clk drivers that have a collection of slightly
-> variant device support keyed off of the compatible string. In each of
-> these drivers, we demux the variant and then call the "real" probe
-> function based on whatever is stored in the match data for that
-> compatible string. Let's generalize this function so that it can be
-> re-used as the platform_driver probe function directly.
+On Thu, 1 Nov 2018 18:41:33 -0600 William Kucharski <william.kucharski@oracle.com> wrote:
 
-This looks really hacky to me. It sounds kind of general, but really
-only works if we have match data that's a single function and we lose
-any type checking on the function. What about things other than
-platform devices?
+> 
+> 
+> > On Nov 1, 2018, at 3:47 PM, Andrew Morton <akpm@linux-foundation.org> wrote:
+> > 
+> > -	count = count > PAGE_SIZE ? PAGE_SIZE : count;
+> > +	count = min_t(size_t, count, PAGE_SIZE);
+> > 	kbuf = kmalloc(count, GFP_KERNEL);
+> > 	if (!kbuf)
+> > 		return -ENOMEM;
+> 
+> Is the use of min_t vs. the C conditional mostly to be more self-documenting?
 
-Rob
+Yup.  It saves the reader from having to parse the code to figure out
+"this is a min operation".
