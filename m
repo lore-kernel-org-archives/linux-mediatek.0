@@ -1,39 +1,45 @@
-From: Honghui Zhang <honghui.zhang@mediatek.com>
-Subject: Re: [PATCH] PCI: mediatek: Use
- devm_of_pci_get_host_bridge_resources() to parse DT
-Date: Wed, 7 Nov 2018 11:19:04 +0800
-Message-ID: <1541560744.11281.15.camel@mhfsdcap03>
-References: <1539833014-1738-1-git-send-email-honghui.zhang@mediatek.com>
-         <1541140583.10519.1.camel@mtkswgap22>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 1/2] arm64: dts: mt7622: fix console output issue on rfb1
+Date: Wed, 7 Nov 2018 12:59:43 +0800
+Message-ID: <8043d487e7bd20a11b14d832702bda214a9a694f.1541566473.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1541140583.10519.1.camel@mtkswgap22>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: "bhelgaas@google.com" <bhelgaas@google.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>, Youlin Pei =?UTF-8?Q?=28=E8=A3=B4=E5=8F=8B=E6=9E=97=29?= <youlin.pei@mediatek.com>, Jianjun Wang =?UTF-8?Q?=28=E7=8E=8B=E5=BB=BA=E5=86=9B=29?= <Jianjun.Wang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain
+Return-path: <stable-owner@vger.kernel.org>
+Sender: stable-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, stable@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2018-11-02 at 14:36 +0800, Ryder Lee wrote:
-> On Thu, 2018-10-18 at 11:23 +0800, Honghui Zhang (张洪辉) wrote:
-> > From: Honghui Zhang <honghui.zhang@mediatek.com>
-> > 
-> > Use the devm_of_pci_get_host_bridge_resources() API in place of the PCI OF
-> > DT parser.
-> > 
-> > Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> > ---
-> >  drivers/pci/controller/pcie-mediatek.c | 109 +++++++++------------------------
-> >  1 file changed, 29 insertions(+), 80 deletions(-)
-> > 
-[......]
-> > 
-> 
-> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
-> 
-> 
+The issue was introduced by Kernel CI:
+https://kernelci.org/boot/id/5bbdcbad59b5146fc5b43592/
 
-Hi, Lorenzo, could you help take a look at this patch?
+Fix this by using a 'stdout-path' property that points to the device.
 
-Thanks.
+Fixes: c0d9f9ad4f76 ("arm64: dts: mt7622: add earlycon to mt7622-rfb1 board")
+Cc: stable@vger.kernel.org
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+index dcad086..3f78334 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+@@ -17,8 +17,13 @@
+ 	model = "MediaTek MT7622 RFB1 board";
+ 	compatible = "mediatek,mt7622-rfb1", "mediatek,mt7622";
+ 
++	aliases {
++		serial0 = &uart0;
++	};
++
+ 	chosen {
+-		bootargs = "earlycon=uart8250,mmio32,0x11002000 console=ttyS0,115200n1 swiotlb=512";
++		stdout-path = "serial0:115200n8";
++		bootargs = "earlycon=uart8250,mmio32,0x11002000 swiotlb=512";
+ 	};
+ 
+ 	cpus {
+-- 
+1.9.1
