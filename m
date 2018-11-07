@@ -1,44 +1,37 @@
 From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 2/2] arm64: dts: mt7622: fix console output issue on BPI-R64 board
-Date: Wed, 7 Nov 2018 12:59:44 +0800
-Message-ID: <7f72b1c73c98e88fb9d5f4b40968aab9807041f9.1541566473.git.ryder.lee@mediatek.com>
-References: <8043d487e7bd20a11b14d832702bda214a9a694f.1541566473.git.ryder.lee@mediatek.com>
+Subject: [PATCH] dt-bindings: rng: update bindings for MT7629 SoC
+Date: Wed, 7 Nov 2018 15:10:16 +0800
+Message-ID: <0f5fe0d5b6a9c81b3f4395a1007ed0ba2239ae45.1541574485.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <8043d487e7bd20a11b14d832702bda214a9a694f.1541566473.git.ryder.lee@mediatek.com>
-Sender: stable-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, stable@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh+dt@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-crypto@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Fix this by using a 'stdout-path' property that points to the device.
+This updates bindings for MT7629 RNG driver.
 
-Fixes: 0b6286dd96c0 ("arm64: dts: mt7622: add bananapi BPI-R64 board")
-Cc: stable@vger.kernel.org
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/rng/mtk-rng.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-index 5d6005c..710c5c3 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-@@ -16,8 +16,13 @@
- 	model = "Bananapi BPI-R64";
- 	compatible = "bananapi,bpi-r64", "mediatek,mt7622";
+diff --git a/Documentation/devicetree/bindings/rng/mtk-rng.txt b/Documentation/devicetree/bindings/rng/mtk-rng.txt
+index 366b99b..ffa6a66 100644
+--- a/Documentation/devicetree/bindings/rng/mtk-rng.txt
++++ b/Documentation/devicetree/bindings/rng/mtk-rng.txt
+@@ -1,9 +1,10 @@
+ Device-Tree bindings for Mediatek random number generator
+-found in Mediatek SoC family
++found in MediaTek SoC family
  
-+	aliases {
-+		serial0 = &uart0;
-+	};
-+
- 	chosen {
--		bootargs = "earlycon=uart8250,mmio32,0x11002000 console=ttyS0,115200n1 swiotlb=512";
-+		stdout-path = "serial0:115200n8";
-+		bootargs = "earlycon=uart8250,mmio32,0x11002000 swiotlb=512";
- 	};
- 
- 	cpus {
+ Required properties:
+ - compatible	    : Should be
+ 			"mediatek,mt7622-rng", 	"mediatek,mt7623-rng" : for MT7622
++			"mediatek,mt7629-rng",  "mediatek,mt7623-rng" : for MT7629
+ 			"mediatek,mt7623-rng" : for MT7623
+ - clocks	    : list of clock specifiers, corresponding to
+ 		      entries in clock-names property;
 -- 
 1.9.1
