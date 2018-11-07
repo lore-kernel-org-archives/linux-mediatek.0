@@ -1,35 +1,56 @@
-From: Kevin Hilman <khilman@baylibre.com>
-Subject: Re: [PATCH 1/2] arm64: dts: mt7622: fix console output issue on rfb1
-Date: Wed, 07 Nov 2018 07:48:45 -0800
-Message-ID: <7hr2fwevmq.fsf@baylibre.com>
-References: <8043d487e7bd20a11b14d832702bda214a9a694f.1541566473.git.ryder.lee@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Subject: [PATCH v3 0/4] Add initial pinctrl support for MT6797 SoC
+Date: Wed,  7 Nov 2018 23:18:40 +0530
+Message-ID: <20181107174844.5381-1-manivannan.sadhasivam@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <8043d487e7bd20a11b14d832702bda214a9a694f.1541566473.git.ryder.lee@mediatek.com>
-        (Ryder Lee's message of "Wed, 7 Nov 2018 12:59:43 +0800")
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, stable@vger.kernel.org
+To: sean.wang@kernel.org, linus.walleij@linaro.org, matthias.bgg@gmail.com, robh+dt@kernel.org
+Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, amit.kucheria@linaro.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Ryder Lee <ryder.lee@mediatek.com> writes:
+This patchset adds initial pinctrl support for Mediatek MT6797 SoC.
+The pinctrl driver is based on the vendor binding as like MT6765 and
+implements only GPIO and pinmux functionalities.
 
-> The issue was introduced by Kernel CI:
-> https://kernelci.org/boot/id/5bbdcbad59b5146fc5b43592/
+The devicetree binding document consists of pinmux, pinconf and
+interrupt functionalities documented since the binding should describe
+what the hardware is capable of rather than what the driver offers.
 
-The issue was *found* by kernelCI, not introduced by kernelCI. ;)
+This patchset has been tested on 96Boards MediatekX20 development board.
 
-> Fix this by using a 'stdout-path' property that points to the device.
->
-> Fixes: c0d9f9ad4f76 ("arm64: dts: mt7622: add earlycon to mt7622-rfb1 board")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Thanks,
+Mani
 
-Tested-by: Kevin Hilman <khilman@baylibre.com>
+Changes in v3:
 
-Note that this patch fixes the problem where there is no more console
-output, but current mainline still doesn't boot as there's another
-crash: http://termbin.com/zitb
+* Modified bindings doc according to Sean's suggestion.
 
-Kevin
+Changes in v2:
+
+* Added devicetree bindings for Pin Controller
+* Dropped the applied warning fix patch
+* Added Tested-by tag from Matthias Brugger
+* Added Acked-by tag from Sean Wang
+
+Manivannan Sadhasivam (4):
+  dt-bindings: pinctrl: Add devicetree bindings for MT6797 SoC Pinctrl
+  arm64: dts: mediatek: mt6797: Add pinctrl support
+  arm64: dts: mediatek: x20: Add pinmux support for UART1
+  pinctrl: mediatek: Add initial pinctrl driver for MT6797 SoC
+
+ .../bindings/pinctrl/pinctrl-mt6797.txt       |   83 +
+ .../boot/dts/mediatek/mt6797-x20-dev.dts      |    2 +
+ arch/arm64/boot/dts/mediatek/mt6797.dtsi      |   21 +
+ drivers/pinctrl/mediatek/Kconfig              |    7 +
+ drivers/pinctrl/mediatek/Makefile             |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt6797.c     |   82 +
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt6797.h | 2430 +++++++++++++++++
+ include/dt-bindings/pinctrl/mt6797-pinfunc.h  | 1368 ++++++++++
+ 8 files changed, 3994 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt6797.txt
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt6797.c
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt6797.h
+ create mode 100644 include/dt-bindings/pinctrl/mt6797-pinfunc.h
+
+-- 
+2.17.1
