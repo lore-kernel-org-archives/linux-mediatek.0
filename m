@@ -1,33 +1,39 @@
-From: Andrew Morton <akpm@linux-foundation.org>
-Subject: Re: [PATCH v4] mm/page_owner: clamp read count to PAGE_SIZE
-Date: Tue, 6 Nov 2018 13:51:21 -0800
-Message-ID: <20181106135121.dd015f188709c4ccb2bff52c@linux-foundation.org>
-References: <1541091607-27402-1-git-send-email-miles.chen@mediatek.com>
-        <20181101144723.3ddc1fa1ab7f81184bc2fdb8@linux-foundation.org>
-        <FD1082D9-916E-47A4-95D3-59F308AD6D55@oracle.com>
+From: Honghui Zhang <honghui.zhang@mediatek.com>
+Subject: Re: [PATCH] PCI: mediatek: Use
+ devm_of_pci_get_host_bridge_resources() to parse DT
+Date: Wed, 7 Nov 2018 11:19:04 +0800
+Message-ID: <1541560744.11281.15.camel@mhfsdcap03>
+References: <1539833014-1738-1-git-send-email-honghui.zhang@mediatek.com>
+         <1541140583.10519.1.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <FD1082D9-916E-47A4-95D3-59F308AD6D55@oracle.com>
+In-Reply-To: <1541140583.10519.1.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: William Kucharski <william.kucharski@oracle.com>
-Cc: miles.chen@mediatek.com, Michal Hocko <mhocko@suse.com>, Joe Perches <joe@perches.com>, Matthew Wilcox <willy@infradead.org>, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Michal Hocko <mhocko@kernel.org>
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: "bhelgaas@google.com" <bhelgaas@google.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>, Youlin Pei =?UTF-8?Q?=28=E8=A3=B4=E5=8F=8B=E6=9E=97=29?= <youlin.pei@mediatek.com>, Jianjun Wang =?UTF-8?Q?=28=E7=8E=8B=E5=BB=BA=E5=86=9B=29?= <Jianjun.Wang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 1 Nov 2018 18:41:33 -0600 William Kucharski <william.kucharski@oracle.com> wrote:
-
-> 
-> 
-> > On Nov 1, 2018, at 3:47 PM, Andrew Morton <akpm@linux-foundation.org> wrote:
+On Fri, 2018-11-02 at 14:36 +0800, Ryder Lee wrote:
+> On Thu, 2018-10-18 at 11:23 +0800, Honghui Zhang (张洪辉) wrote:
+> > From: Honghui Zhang <honghui.zhang@mediatek.com>
 > > 
-> > -	count = count > PAGE_SIZE ? PAGE_SIZE : count;
-> > +	count = min_t(size_t, count, PAGE_SIZE);
-> > 	kbuf = kmalloc(count, GFP_KERNEL);
-> > 	if (!kbuf)
-> > 		return -ENOMEM;
+> > Use the devm_of_pci_get_host_bridge_resources() API in place of the PCI OF
+> > DT parser.
+> > 
+> > Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+> > ---
+> >  drivers/pci/controller/pcie-mediatek.c | 109 +++++++++------------------------
+> >  1 file changed, 29 insertions(+), 80 deletions(-)
+> > 
+[......]
+> > 
 > 
-> Is the use of min_t vs. the C conditional mostly to be more self-documenting?
+> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+> 
+> 
 
-Yup.  It saves the reader from having to parse the code to figure out
-"this is a min operation".
+Hi, Lorenzo, could you help take a look at this patch?
+
+Thanks.
