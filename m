@@ -1,105 +1,66 @@
-From: Grygorii Strashko <grygorii.strashko-l0cyMroinI0@public.gmane.org>
-Subject: [PATCH 3/5] phy: ocelot-serdes: convert to use eth phy mode and
- submode
-Date: Wed, 7 Nov 2018 18:36:15 -0600
-Message-ID: <20181108003617.10334-4-grygorii.strashko@ti.com>
-References: <20181108003617.10334-1-grygorii.strashko@ti.com>
+From: Grygorii Strashko <grygorii.strashko@ti.com>
+Subject: [PATCH 0/5] hy: core: rework phy_set_mode to accept phy mode and submode
+Date: Wed, 7 Nov 2018 18:36:12 -0600
+Message-ID: <20181108003617.10334-1-grygorii.strashko@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20181108003617.10334-1-grygorii.strashko-l0cyMroinI0@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: Alexandre Belloni <alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Grygorii Strashko <grygorii.strashko-l0cyMroinI0@public.gmane.org>, Quentin Schulz <quentin.schulz-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Manu Gautam <mgautam-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Tony Lindgren <tony-4v6yS6AI5VpBDgjK7y7TUQ@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Antoine Tenart <antoine.tenart-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Sekhar Nori <nsekhar-l0cyMroinI0@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Vivek Gautam <vivek.gautam-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "David S. Miller" <davem@davemloft.net>, Kishon Vijay Abraham I <kishon@ti.com>
+Cc: netdev@vger.kernel.org, Sekhar Nori <nsekhar@ti.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Tony Lindgren <tony@atomide.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Quentin Schulz <quentin.schulz@bootlin.com>, Vivek Gautam <vivek.gautam@codeaurora.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Carlo Caione <carlo@caione.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Manu Gautam <mgautam@codeaurora.org>, Grygorii Strashko <grygorii.strashko@ti.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Convert ocelot-serdes PHY driver to use recently introduced
-PHY_MODE_ETHERNET and phy_set_mode_ext().
+Hi Kishon, All,
 
-Signed-off-by: Grygorii Strashko <grygorii.strashko-l0cyMroinI0@public.gmane.org>
----
- drivers/net/ethernet/mscc/ocelot.c   |  9 ++-------
- drivers/phy/mscc/phy-ocelot-serdes.c | 14 ++++++++++----
- 2 files changed, 12 insertions(+), 11 deletions(-)
+As was discussed in [1] I'm posting series which introduces rework of
+phy_set_mode to accept phy mode and submode. I've dropped TI specific patches as
+this change is pretty big by itself.
 
-diff --git a/drivers/net/ethernet/mscc/ocelot.c b/drivers/net/ethernet/mscc/ocelot.c
-index 3238b9e..3edb608 100644
---- a/drivers/net/ethernet/mscc/ocelot.c
-+++ b/drivers/net/ethernet/mscc/ocelot.c
-@@ -472,7 +472,6 @@ static int ocelot_port_open(struct net_device *dev)
- {
- 	struct ocelot_port *port = netdev_priv(dev);
- 	struct ocelot *ocelot = port->ocelot;
--	enum phy_mode phy_mode;
- 	int err;
- 
- 	/* Enable receiving frames on the port, and activate auto-learning of
-@@ -484,12 +483,8 @@ static int ocelot_port_open(struct net_device *dev)
- 			 ANA_PORT_PORT_CFG, port->chip_port);
- 
- 	if (port->serdes) {
--		if (port->phy_mode == PHY_INTERFACE_MODE_SGMII)
--			phy_mode = PHY_MODE_SGMII;
--		else
--			phy_mode = PHY_MODE_QSGMII;
--
--		err = phy_set_mode(port->serdes, phy_mode);
-+		err = phy_set_mode_ext(port->serdes, PHY_MODE_ETHERNET,
-+				       port->phy_mode);
- 		if (err) {
- 			netdev_err(dev, "Could not set mode of SerDes\n");
- 			return err;
-diff --git a/drivers/phy/mscc/phy-ocelot-serdes.c b/drivers/phy/mscc/phy-ocelot-serdes.c
-index c61a9890..f525a21 100644
---- a/drivers/phy/mscc/phy-ocelot-serdes.c
-+++ b/drivers/phy/mscc/phy-ocelot-serdes.c
-@@ -11,6 +11,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_platform.h>
-+#include <linux/phy.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-@@ -116,8 +117,10 @@ struct serdes_mux {
- 	.mux = _mux,						\
- }
- 
--#define SERDES_MUX_SGMII(i, p, m, c) SERDES_MUX(i, p, PHY_MODE_SGMII, m, c)
--#define SERDES_MUX_QSGMII(i, p, m, c) SERDES_MUX(i, p, PHY_MODE_QSGMII, m, c)
-+#define SERDES_MUX_SGMII(i, p, m, c) \
-+	SERDES_MUX(i, p, PHY_INTERFACE_MODE_SGMII, m, c)
-+#define SERDES_MUX_QSGMII(i, p, m, c) \
-+	SERDES_MUX(i, p, PHY_INTERFACE_MODE_QSGMII, m, c)
- 
- static const struct serdes_mux ocelot_serdes_muxes[] = {
- 	SERDES_MUX_SGMII(SERDES1G(0), 0, 0, 0),
-@@ -164,12 +167,15 @@ static int serdes_set_mode(struct phy *phy, enum phy_mode mode, int submode)
- 	unsigned int i;
- 	int ret;
- 
-+	if (mode != PHY_MODE_ETHERNET)
-+		return -EINVAL;
-+
- 	for (i = 0; i < ARRAY_SIZE(ocelot_serdes_muxes); i++) {
- 		if (macro->idx != ocelot_serdes_muxes[i].idx ||
--		    mode != ocelot_serdes_muxes[i].mode)
-+		    submode != ocelot_serdes_muxes[i].mode)
- 			continue;
- 
--		if (mode != PHY_MODE_QSGMII &&
-+		if (submode != PHY_INTERFACE_MODE_QSGMII &&
- 		    macro->port != ocelot_serdes_muxes[i].port)
- 			continue;
- 
+Patch 1 is cumulative change which refactors PHY framework code to
+support dual level PHYs mode configuration - PHY mode and PHY submode. It
+extends .set_mode() callback to support additional parameter "int submode"
+and converts all corresponding PHY drivers to support new .set_mode()
+callback declaration.
+The new extended PHY API
+ int phy_set_mode_ext(struct phy *phy, enum phy_mode mode, int submode)
+is introduced to support dual level PHYs mode configuration and existing
+phy_set_mode() API is converted to macros, so PHY framework consumers do
+not need to be changed (~21 matches).
+
+Patches 2-4: Add new PHY's mode to be used by Ethernet PHY interface drivers or
+multipurpose PHYs like serdes and convert ocelot-serdes and mvebu-cp110-comphy
+PHY drivers to use recently introduced PHY_MODE_ETHERNET and phy_set_mode_ext().
+
+Patch 5 - removes unused, ethernet specific phy modes from enum phy_mode.
+
+[1] https://lkml.org/lkml/2018/10/25/366
+
+Grygorii Strashko (5):
+  phy: core: rework phy_set_mode to accept phy mode and submode
+  phy: core: add PHY_MODE_ETHERNET
+  phy: ocelot-serdes: convert to use eth phy mode and submode
+  phy: mvebu-cp110-comphy: convert to use eth phy mode and submode
+  phy: core: clean up unused ethernet specific phy modes
+
+ drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c | 21 ++-----
+ drivers/net/ethernet/mscc/ocelot.c              |  9 +--
+ drivers/phy/allwinner/phy-sun4i-usb.c           |  3 +-
+ drivers/phy/amlogic/phy-meson-gxl-usb2.c        |  5 +-
+ drivers/phy/amlogic/phy-meson-gxl-usb3.c        |  5 +-
+ drivers/phy/marvell/phy-mvebu-cp110-comphy.c    | 83 ++++++++++++++-----------
+ drivers/phy/mediatek/phy-mtk-tphy.c             |  2 +-
+ drivers/phy/mediatek/phy-mtk-xsphy.c            |  2 +-
+ drivers/phy/mscc/phy-ocelot-serdes.c            | 16 +++--
+ drivers/phy/phy-core.c                          |  6 +-
+ drivers/phy/qualcomm/phy-qcom-qmp.c             |  3 +-
+ drivers/phy/qualcomm/phy-qcom-qusb2.c           |  3 +-
+ drivers/phy/qualcomm/phy-qcom-ufs-qmp-14nm.c    |  3 +-
+ drivers/phy/qualcomm/phy-qcom-ufs-qmp-20nm.c    |  3 +-
+ drivers/phy/qualcomm/phy-qcom-usb-hs.c          |  3 +-
+ drivers/phy/ti/phy-da8xx-usb.c                  |  3 +-
+ drivers/phy/ti/phy-tusb1210.c                   |  2 +-
+ include/linux/phy/phy.h                         | 18 +++---
+ 18 files changed, 100 insertions(+), 90 deletions(-)
+
 -- 
 2.10.5
