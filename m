@@ -1,50 +1,40 @@
-From: Russell King - ARM Linux <linux@armlinux.org.uk>
-Subject: Re: [PATCH 2/5] phy: core: add PHY_MODE_ETHERNET
-Date: Thu, 8 Nov 2018 00:42:00 +0000
-Message-ID: <20181108004200.GW30658@n2100.armlinux.org.uk>
-References: <20181108003617.10334-1-grygorii.strashko@ti.com>
- <20181108003617.10334-3-grygorii.strashko@ti.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH v3 1/4] dt-bindings: pinctrl: Add devicetree bindings
+ for MT6797 SoC Pinctrl
+Date: Thu, 8 Nov 2018 10:11:12 +0800
+Message-ID: <1541643072.23791.3.camel@mtksdaap41>
+References: <20181107174844.5381-1-manivannan.sadhasivam@linaro.org>
+         <20181107174844.5381-2-manivannan.sadhasivam@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20181108003617.10334-3-grygorii.strashko@ti.com>
+In-Reply-To: <20181107174844.5381-2-manivannan.sadhasivam@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Grygorii Strashko <grygorii.strashko@ti.com>
-Cc: "David S. Miller" <davem@davemloft.net>, Kishon Vijay Abraham I <kishon@ti.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Quentin Schulz <quentin.schulz@bootlin.com>, Manu Gautam <mgautam@codeaurora.org>, Tony Lindgren <tony@atomide.com>, netdev@vger.kernel.org, Antoine Tenart <antoine.tenart@free-electrons.com>, Sekhar Nori <nsekhar@ti.com>, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org, Vivek Gautam <vivek.gautam@codeaurora.org>, Carlo Caione <carlo@caione.org>, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: sean.wang@kernel.org, linus.walleij@linaro.org, matthias.bgg@gmail.com, robh+dt@kernel.org, linux-kernel@vger.kernel.org, amit.kucheria@linaro.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Nov 07, 2018 at 06:36:14PM -0600, Grygorii Strashko wrote:
-> Add new PHY's mode to be used by Ethernet PHY interface drivers or
-> multipurpose PHYs like serdes. It will be reused in further changes.
+On Wed, 2018-11-07 at 23:18 +0530, Manivannan Sadhasivam wrote:
+> Add devicetree bindings for Mediatek MT6797 SoC Pin Controller.
 > 
-> Signed-off-by: Grygorii Strashko <grygorii.strashko@ti.com>
+> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 > ---
->  include/linux/phy/phy.h | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/include/linux/phy/phy.h b/include/linux/phy/phy.h
-> index b17e770..02c9ef0 100644
-> --- a/include/linux/phy/phy.h
-> +++ b/include/linux/phy/phy.h
-> @@ -42,6 +42,7 @@ enum phy_mode {
->  	PHY_MODE_UFS_HS_A,
->  	PHY_MODE_UFS_HS_B,
->  	PHY_MODE_PCIE,
-> +	PHY_MODE_ETHERNET,
+>  .../bindings/pinctrl/pinctrl-mt6797.txt       |   83 +
+>  include/dt-bindings/pinctrl/mt6797-pinfunc.h  | 1368 +++++++++++++++++
+>  2 files changed, 1451 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt6797.txt
+>  create mode 100644 include/dt-bindings/pinctrl/mt6797-pinfunc.h
+> diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt6797.txt b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt6797.txt
+> new file mode 100644
+> index 000000000000..bd83401e6179
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt6797.txt
 
-Are you sure about this - we already have a bunch of "ethernet" modes
-that are more specific, like PHY_MODE_SGMII, PHY_MODE_2500SGMII and
-PHY_MODE_10GKR which require PHYs to be configured differently.  Having
-a very generic "ethernet" mode brings up questions about when it should
-be used vs the more specific modes.
+Sorry if this is discussed.
 
-(I've already mentioned that the SGMII modes are mis-named, since
-they also apply to 1000base-X and 2500base-X - the only difference
-is how one 16-bit word in the data stream is used which has no effect
-on the PHY.)
+What's the difference between this and
+Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt?
+Should this be added to pinctrl-mt65xx.txt?
 
--- 
-RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-According to speedtest.net: 11.9Mbps down 500kbps up
+Joe.C
