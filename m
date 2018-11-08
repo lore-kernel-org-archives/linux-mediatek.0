@@ -1,63 +1,94 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: Re: [PATCH v3 1/4] dt-bindings: pinctrl: Add devicetree bindings for
- MT6797 SoC Pinctrl
-Date: Thu, 8 Nov 2018 09:35:54 +0530
-Message-ID: <20181108040551.GB3046@Mani-XPS-13-9360>
-References: <20181107174844.5381-1-manivannan.sadhasivam@linaro.org>
- <20181107174844.5381-2-manivannan.sadhasivam@linaro.org>
- <1541643072.23791.3.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 1/4] of/device: Add a way to probe drivers by match data
+Date: Thu, 8 Nov 2018 09:29:46 +0100
+Message-ID: <efa13e0b-0daf-3bf3-27ba-ed90f15c7dfe@gmail.com>
+References: <20181106183609.207702-1-sboyd@kernel.org>
+ <20181106183609.207702-2-sboyd@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1541643072.23791.3.camel@mtksdaap41>
+In-Reply-To: <20181106183609.207702-2-sboyd@kernel.org>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: sean.wang@kernel.org, linus.walleij@linaro.org, matthias.bgg@gmail.com, robh+dt@kernel.org, linux-kernel@vger.kernel.org, amit.kucheria@linaro.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Nov 08, 2018 at 10:11:12AM +0800, Yingjoe Chen wrote:
-> On Wed, 2018-11-07 at 23:18 +0530, Manivannan Sadhasivam wrote:
-> > Add devicetree bindings for Mediatek MT6797 SoC Pin Controller.
-> > 
-> > Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> > ---
-> >  .../bindings/pinctrl/pinctrl-mt6797.txt       |   83 +
-> >  include/dt-bindings/pinctrl/mt6797-pinfunc.h  | 1368 +++++++++++++++++
-> >  2 files changed, 1451 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt6797.txt
-> >  create mode 100644 include/dt-bindings/pinctrl/mt6797-pinfunc.h
-> > diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt6797.txt b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt6797.txt
-> > new file mode 100644
-> > index 000000000000..bd83401e6179
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt6797.txt
+
+
+On 06/11/2018 19:36, Stephen Boyd wrote:
+> We have a handful of clk drivers that have a collection of slightly
+> variant device support keyed off of the compatible string. In each of
+> these drivers, we demux the variant and then call the "real" probe
+> function based on whatever is stored in the match data for that
+> compatible string. Let's generalize this function so that it can be
+> re-used as the platform_driver probe function directly.
 > 
-> Sorry if this is discussed.
+> Cc: Ryder Lee <ryder.lee@mediatek.com>
+> Cc: Rob Herring <robh+dt@kernel.org>
+> Cc: Frank Rowand <frowand.list@gmail.com>
+> Signed-off-by: Stephen Boyd <sboyd@kernel.org>
+> ---
+>  drivers/of/device.c       | 31 +++++++++++++++++++++++++++++++
+>  include/linux/of_device.h |  1 +
+>  2 files changed, 32 insertions(+)
 > 
-> What's the difference between this and
-> Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt?
-> Should this be added to pinctrl-mt65xx.txt?
->
+> diff --git a/drivers/of/device.c b/drivers/of/device.c
+> index 0f27fad9fe94..8381f33ed2d8 100644
+> --- a/drivers/of/device.c
+> +++ b/drivers/of/device.c
+> @@ -195,6 +195,37 @@ const void *of_device_get_match_data(const struct device *dev)
+>  }
+>  EXPORT_SYMBOL(of_device_get_match_data);
+>  
+> +/**
+> + * platform_driver_probe_by_of_match_data - Probe a platform device using match data
+> + * @pdev: platform device to probe
+> + *
+> + * For use by device drivers that multiplex their probe function through DT
+> + * match data. Drivers can use this function to call their platform
+> + * device probe directly without having to implement a wrapper function.
+> + *
+> + * static const struct of_device_id probe_funcs[] = {
+> + *      { .compatible = "compat,foo", .data = foo_probe },
+> + *      {}
+> + * };
+> + *
+> + * struct platform_driver foo_driver = {
+> + *      .probe = platform_driver_probe_by_of_match_data,
+> + *      .driver = {
+> + *            of_match_table = probe_funcs,
+> + *      },
+> + * };
+> + *
+> + */
+> +int platform_driver_probe_by_of_match_data(struct platform_device *pdev)
+> +{
+> +	int (*probe_func)(struct platform_device *pdev);
+> +
+> +	probe_func = of_device_get_match_data(&pdev->dev);
 
-Currently there are 3 different pinctrl core's available for MediaTek
-SoCs:
+Shouldn't we check if probe_func is not NULL?
 
-1. Legacy core - pinctrl-mtk-common.c
-2. Moore core - pinctrl-moore.c pinctrl-mtk-common-v2.c
-3. Paris core - pinctrl-paris.c pinctrl-mtk-common-v2.c
-
-AFAIU pinctrl-mt65xx binding documents the SoC's based on MediaTek's legacy
-pinctrl-mtk-common.c core. Whereas MT6797 is based on the MediaTek's Paris
-core. There isn't any binding doc available for the Paris core SoC's yet.
-That's why I have created a new bindings doc and expecting the remaining SoC's
-of Paris family to be included in new pinctrl-mt6797.txt.
-
-Hope this makes clear!
-
-Thanks,
-Mani
-
-> Joe.C
-> 
+> +
+> +	return probe_func(pdev);
+> +}
+> +EXPORT_SYMBOL_GPL(platform_driver_probe_by_of_match_data);
+> +
+>  static ssize_t of_device_get_modalias(struct device *dev, char *str, ssize_t len)
+>  {
+>  	const char *compat;
+> diff --git a/include/linux/of_device.h b/include/linux/of_device.h
+> index 8d31e39dd564..4de84691d1c6 100644
+> --- a/include/linux/of_device.h
+> +++ b/include/linux/of_device.h
+> @@ -33,6 +33,7 @@ extern int of_device_add(struct platform_device *pdev);
+>  extern int of_device_register(struct platform_device *ofdev);
+>  extern void of_device_unregister(struct platform_device *ofdev);
+>  
+> +extern int platform_driver_probe_by_of_match_data(struct platform_device *pdev);
+>  extern const void *of_device_get_match_data(const struct device *dev);
+>  
+>  extern ssize_t of_device_modalias(struct device *dev, char *str, ssize_t len);
 > 
