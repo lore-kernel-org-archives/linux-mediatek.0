@@ -1,84 +1,43 @@
-From: Grygorii Strashko <grygorii.strashko@ti.com>
-Subject: Re: [PATCH 4/5] phy: mvebu-cp110-comphy: convert to use eth phy mode
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH 0/5] hy: core: rework phy_set_mode to accept phy mode
  and submode
-Date: Thu, 8 Nov 2018 16:42:02 -0600
-Message-ID: <61832475-9828-078c-170a-0d25915687d7@ti.com>
+Date: Thu, 08 Nov 2018 19:20:23 -0800 (PST)
+Message-ID: <20181108.192023.2260722462634716993.davem@davemloft.net>
 References: <20181108003617.10334-1-grygorii.strashko@ti.com>
- <20181108003617.10334-5-grygorii.strashko@ti.com>
- <20181108222123.GZ30658@n2100.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181108222123.GZ30658@n2100.armlinux.org.uk>
-Content-Language: en-US
+In-Reply-To: <20181108003617.10334-1-grygorii.strashko@ti.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King - ARM Linux <linux@armlinux.org.uk>
-Cc: "David S. Miller" <davem@davemloft.net>, Kishon Vijay Abraham I <kishon@ti.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Quentin Schulz <quentin.schulz@bootlin.com>, Manu Gautam <mgautam@codeaurora.org>, Tony Lindgren <tony@atomide.com>, netdev@vger.kernel.org, Antoine Tenart <antoine.tenart@free-electrons.com>, Sekhar Nori <nsekhar@ti.com>, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org, Vivek Gautam <vivek.gautam@codeaurora.org>, Carlo Caione <carlo@caione.org>, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
+To: grygorii.strashko@ti.com
+Cc: kishon@ti.com, netdev@vger.kernel.org, nsekhar@ti.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, tony@atomide.com, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, alexandre.belloni@bootlin.com, antoine.tenart@free-electrons.com, quentin.schulz@bootlin.com, vivek.gautam@codeaurora.org, maxime.ripard@bootlin.com, wens@csie.org, carlo@caione.org, chunfeng.yun@mediatek.com, matthias.bgg@gmail.com, mgautam@codeaurora.org
 List-Id: linux-mediatek@lists.infradead.org
 
-hi Russell,
+From: Grygorii Strashko <grygorii.strashko@ti.com>
+Date: Wed, 7 Nov 2018 18:36:12 -0600
 
-On 11/8/18 4:21 PM, Russell King - ARM Linux wrote:
-> On Wed, Nov 07, 2018 at 06:36:16PM -0600, Grygorii Strashko wrote:
->> diff --git a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
->> index 7a37a37..fb28b71 100644
->> --- a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
->> +++ b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
->> @@ -1165,28 +1165,17 @@ static void mvpp22_gop_setup_irq(struct mvpp2_port *port)
->>    */
->>   static int mvpp22_comphy_init(struct mvpp2_port *port)
->>   {
->> -	enum phy_mode mode;
->> +	int submode;
->>   	int ret;
->>   
->>   	if (!port->comphy)
->>   		return 0;
->>   
->> -	switch (port->phy_interface) {
->> -	case PHY_INTERFACE_MODE_SGMII:
->> -	case PHY_INTERFACE_MODE_1000BASEX:
->> -		mode = PHY_MODE_SGMII;
->> -		break;
->> -	case PHY_INTERFACE_MODE_2500BASEX:
->> -		mode = PHY_MODE_2500SGMII;
->> -		break;
->> -	case PHY_INTERFACE_MODE_10GKR:
->> -		mode = PHY_MODE_10GKR;
->> -		break;
->> -	default:
->> -		return -EINVAL;
->> -	}
->> +	submode = port->phy_interface;
->> +	if (submode == PHY_INTERFACE_MODE_1000BASEX)
->> +		submode = PHY_INTERFACE_MODE_SGMII;
+> As was discussed in [1] I'm posting series which introduces rework of
+> phy_set_mode to accept phy mode and submode. I've dropped TI specific patches as
+> this change is pretty big by itself.
 > 
-> If the intention is to move the ethernet PHY mode into the generic PHY
-> layer, I'd suggest that the equivalence of 1000base-X and SGMII is
-> handled in the generic PHY driver rather than ethernet drivers.  Just
-> move this into this hunk of the comphy driver:
-
-sure, will do
-
+> Patch 1 is cumulative change which refactors PHY framework code to
+> support dual level PHYs mode configuration - PHY mode and PHY submode. It
+> extends .set_mode() callback to support additional parameter "int submode"
+> and converts all corresponding PHY drivers to support new .set_mode()
+> callback declaration.
+> The new extended PHY API
+>  int phy_set_mode_ext(struct phy *phy, enum phy_mode mode, int submode)
+> is introduced to support dual level PHYs mode configuration and existing
+> phy_set_mode() API is converted to macros, so PHY framework consumers do
+> not need to be changed (~21 matches).
 > 
->> @@ -517,10 +519,14 @@ static int mvebu_comphy_set_mode(struct phy *phy,
->>   {
->>   	struct mvebu_comphy_lane *lane = phy_get_drvdata(phy);
->>   
->> -	if (mvebu_comphy_get_mux(lane->id, lane->port, mode) < 0)
->> +	if (mode != PHY_MODE_ETHERNET)
->> +		return -EINVAL;
->> +
->> +	if (mvebu_comphy_get_mux(lane->id, lane->port, mode, submode) < 0)
->>   		return -EINVAL;
->>   
->>   	lane->mode = mode;
->> +	lane->submode = submode;
->>   	return 0;
->>   }
+> Patches 2-4: Add new PHY's mode to be used by Ethernet PHY interface drivers or
+> multipurpose PHYs like serdes and convert ocelot-serdes and mvebu-cp110-comphy
+> PHY drivers to use recently introduced PHY_MODE_ETHERNET and phy_set_mode_ext().
 > 
+> Patch 5 - removes unused, ethernet specific phy modes from enum phy_mode.
+> 
+> [1] https://lkml.org/lkml/2018/10/25/366
 
--- 
-regards,
--grygorii
+I guess this will go via Kishon's tree.
