@@ -1,43 +1,28 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH 0/5] hy: core: rework phy_set_mode to accept phy mode
- and submode
-Date: Thu, 08 Nov 2018 19:20:23 -0800 (PST)
-Message-ID: <20181108.192023.2260722462634716993.davem@davemloft.net>
-References: <20181108003617.10334-1-grygorii.strashko@ti.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH] pinctrl: mediatek: clean up indentation issues, add
+ missing tab
+Date: Fri, 9 Nov 2018 09:55:23 +0100
+Message-ID: <CACRpkdYv08SESk5psSin+PogkV3m+1QDSdiWMRE9tREUZVxemA@mail.gmail.com>
+References: <20181031184241.5439-1-colin.king@canonical.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181108003617.10334-1-grygorii.strashko@ti.com>
+In-Reply-To: <20181031184241.5439-1-colin.king@canonical.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: grygorii.strashko@ti.com
-Cc: kishon@ti.com, netdev@vger.kernel.org, nsekhar@ti.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, tony@atomide.com, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, alexandre.belloni@bootlin.com, antoine.tenart@free-electrons.com, quentin.schulz@bootlin.com, vivek.gautam@codeaurora.org, maxime.ripard@bootlin.com, wens@csie.org, carlo@caione.org, chunfeng.yun@mediatek.com, matthias.bgg@gmail.com, mgautam@codeaurora.org
+To: Colin King <colin.king@canonical.com>
+Cc: sean.wang@kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, kernel-janitors@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Grygorii Strashko <grygorii.strashko@ti.com>
-Date: Wed, 7 Nov 2018 18:36:12 -0600
+On Wed, Oct 31, 2018 at 7:42 PM Colin King <colin.king@canonical.com> wrote:
 
-> As was discussed in [1] I'm posting series which introduces rework of
-> phy_set_mode to accept phy mode and submode. I've dropped TI specific patches as
-> this change is pretty big by itself.
-> 
-> Patch 1 is cumulative change which refactors PHY framework code to
-> support dual level PHYs mode configuration - PHY mode and PHY submode. It
-> extends .set_mode() callback to support additional parameter "int submode"
-> and converts all corresponding PHY drivers to support new .set_mode()
-> callback declaration.
-> The new extended PHY API
->  int phy_set_mode_ext(struct phy *phy, enum phy_mode mode, int submode)
-> is introduced to support dual level PHYs mode configuration and existing
-> phy_set_mode() API is converted to macros, so PHY framework consumers do
-> not need to be changed (~21 matches).
-> 
-> Patches 2-4: Add new PHY's mode to be used by Ethernet PHY interface drivers or
-> multipurpose PHYs like serdes and convert ocelot-serdes and mvebu-cp110-comphy
-> PHY drivers to use recently introduced PHY_MODE_ETHERNET and phy_set_mode_ext().
-> 
-> Patch 5 - removes unused, ethernet specific phy modes from enum phy_mode.
-> 
-> [1] https://lkml.org/lkml/2018/10/25/366
+> From: Colin Ian King <colin.king@canonical.com>
+>
+> Trivial fix to clean up indentation issues, add one level of
+> indentation on two if statements.
+>
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
 
-I guess this will go via Kishon's tree.
+Patch applied.
+
+Yours,
+Linus Walleij
