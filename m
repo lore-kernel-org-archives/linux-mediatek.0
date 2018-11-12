@@ -1,53 +1,44 @@
 From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH v1 3/3] arm64: dts: mt7622: Drop the general purpose
- timer node
-Date: Mon, 12 Nov 2018 11:49:54 +0800
-Message-ID: <1541994594.31175.4.camel@mtkswgap22>
-References: <30f4a4110190a175307ac4dfebc98ffe96c44b90.1541643419.git.ryder.lee@mediatek.com>
-         <17fde639c7d37f9cfabab230379913e652cf869a.1541643419.git.ryder.lee@mediatek.com>
-         <20181112024556.GI2642@sasha-vm> <1541993608.30437.3.camel@mtkswgap22>
+Subject: [PATCH v1 2/3] pwm: mediatek: add pwm support for MT7629 SoC
+Date: Mon, 12 Nov 2018 15:33:56 +0800
+Message-ID: <9043534495d49c532bdb0b904344b77faeb41359.1542007642.git.ryder.lee@mediatek.com>
+References: <4c9044427b1aab373acd6ac76f0c905e2be79784.1542007642.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <1541993608.30437.3.camel@mtkswgap22>
-Sender: stable-owner@vger.kernel.org
-To: Sasha Levin <sashal@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, stable@vger.kernel.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <4c9044427b1aab373acd6ac76f0c905e2be79784.1542007642.git.ryder.lee@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, llinux-pwm@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-11-12 at 11:33 +0800, Ryder Lee wrote:
-> On Sun, 2018-11-11 at 21:45 -0500, Sasha Levin wrote:
-> > On Mon, Nov 12, 2018 at 09:28:08AM +0800, Ryder Lee wrote:
-> > >The crash http://termbin.com/zitb is caused by the timer register
-> > >into system in early pahse during kernel boot, but the clock
-> > >sources didn't get ready at that time.
-> > >
-> > >A better way is to switch to use CLK_OF_DECLARE() in driver for things
-> > >that need them early, but this node is actually useless in MT7622.
-> > >So we drop it.
-> > >
-> > >Fixes: 9cc7f0de9e67 ("arm64: dts: mt7622: add timer, CCI-400 and PMU nodes")
-> > >Cc: stable@vger.kernel.org
-> > >Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> > 
-> > To confirm: the patch this fixes was added in v4.20-rc1, which means
-> > that this current patch doesn't apply to any of the stable trees.
-> > 
-> > Did we miss something?
-> > 
-> 
-> I didn't see any fixup for this?
-> 
-> Ryder
+This adds pwm controller support for MT7629 SoC.
 
-Oh, I didn't get it right. Yes, there is no need to apply to the stable
-trees.
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/pwm/pwm-mediatek.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-@Matthias, could you help to drop the CC tag when you take this patch
-through your tree?
-
-Sorry for the inconvenience.
-
-Thanks
-Ryder
+diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+index 9400c41..4ed95e5 100644
+--- a/drivers/pwm/pwm-mediatek.c
++++ b/drivers/pwm/pwm-mediatek.c
+@@ -292,11 +292,16 @@ static int mtk_pwm_remove(struct platform_device *pdev)
+ 	.pwm45_fixup = true,
+ };
+ 
++static const struct mtk_pwm_platform_data mt7629_pwm_data = {
++	.num_pwms = 1,
++};
++
+ static const struct of_device_id mtk_pwm_of_match[] = {
+ 	{ .compatible = "mediatek,mt2712-pwm", .data = &mt2712_pwm_data },
+ 	{ .compatible = "mediatek,mt7622-pwm", .data = &mt7622_pwm_data },
+ 	{ .compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data },
+ 	{ .compatible = "mediatek,mt7628-pwm", .data = &mt7628_pwm_data },
++	{ .compatible = "mediatek,mt7629-pwm", .data = &mt7629_pwm_data },
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, mtk_pwm_of_match);
+-- 
+1.9.1
