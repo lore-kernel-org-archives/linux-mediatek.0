@@ -1,99 +1,106 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v1 1/3] pwm: mediatek: drop flag 'has_clks'
-Date: Mon, 12 Nov 2018 15:33:55 +0800
-Message-ID: <4c9044427b1aab373acd6ac76f0c905e2be79784.1542007642.git.ryder.lee@mediatek.com>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Subject: Re: [PATCH v2 3/5] phy: ocelot-serdes: convert to use eth phy mode
+ and submode
+Date: Mon, 12 Nov 2018 16:12:38 +0530
+Message-ID: <7fbbaae0-6c6d-a813-109c-15c45e20555e@ti.com>
+References: <20181109234755.21687-1-grygorii.strashko@ti.com>
+ <20181109234755.21687-4-grygorii.strashko@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181109234755.21687-4-grygorii.strashko@ti.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, llinux-pwm@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, John Crispin <john@phrozen.org>
+To: Grygorii Strashko <grygorii.strashko@ti.com>, "David S. Miller" <davem@davemloft.net>, Russell King - ARM Linux <linux@armlinux.org.uk>, Quentin Schulz <quentin.schulz@bootlin.com>
+Cc: netdev@vger.kernel.org, Sekhar Nori <nsekhar@ti.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Tony Lindgren <tony@atomide.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Vivek Gautam <vivek.gautam@codeaurora.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Carlo Caione <carlo@caione.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Manu Gautam <mgautam@codeaurora.org>, "Gustavo A. R. Silva" <gustavo@embeddedor.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The flag 'has_clks' and related checks are superfluous as the CCF
-subsystem does this for you.
+Hi Quentin, David Miller
 
-Cc: John Crispin <john@phrozen.org>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/pwm/pwm-mediatek.c | 20 +++++---------------
- 1 file changed, 5 insertions(+), 15 deletions(-)
+Need your ACK on this patch.
 
-diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-index eb6674c..9400c41 100644
---- a/drivers/pwm/pwm-mediatek.c
-+++ b/drivers/pwm/pwm-mediatek.c
-@@ -57,7 +57,6 @@ enum {
- struct mtk_pwm_platform_data {
- 	unsigned int num_pwms;
- 	bool pwm45_fixup;
--	bool has_clks;
- };
- 
- /**
-@@ -87,9 +86,6 @@ static int mtk_pwm_clk_enable(struct pwm_chip *chip, struct pwm_device *pwm)
- 	struct mtk_pwm_chip *pc = to_mtk_pwm_chip(chip);
- 	int ret;
- 
--	if (!pc->soc->has_clks)
--		return 0;
--
- 	ret = clk_prepare_enable(pc->clks[MTK_CLK_TOP]);
- 	if (ret < 0)
- 		return ret;
-@@ -116,9 +112,6 @@ static void mtk_pwm_clk_disable(struct pwm_chip *chip, struct pwm_device *pwm)
- {
- 	struct mtk_pwm_chip *pc = to_mtk_pwm_chip(chip);
- 
--	if (!pc->soc->has_clks)
--		return;
--
- 	clk_disable_unprepare(pc->clks[MTK_CLK_PWM1 + pwm->hwpwm]);
- 	clk_disable_unprepare(pc->clks[MTK_CLK_MAIN]);
- 	clk_disable_unprepare(pc->clks[MTK_CLK_TOP]);
-@@ -246,12 +239,13 @@ static int mtk_pwm_probe(struct platform_device *pdev)
- 	if (IS_ERR(pc->regs))
- 		return PTR_ERR(pc->regs);
- 
--	for (i = 0; i < data->num_pwms + 2 && pc->soc->has_clks; i++) {
-+	for (i = 0; i < data->num_pwms + 2; i++) {
- 		pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
- 		if (IS_ERR(pc->clks[i])) {
--			dev_err(&pdev->dev, "clock: %s fail: %ld\n",
--				mtk_pwm_clk_name[i], PTR_ERR(pc->clks[i]));
--			return PTR_ERR(pc->clks[i]);
-+			if (PTR_ERR(pc->clks[i]) == -EPROBE_DEFER)
-+				return -EPROBE_DEFER;
-+
-+			pc->clks[i] = NULL;
- 		}
- 	}
- 
-@@ -281,25 +275,21 @@ static int mtk_pwm_remove(struct platform_device *pdev)
- static const struct mtk_pwm_platform_data mt2712_pwm_data = {
- 	.num_pwms = 8,
- 	.pwm45_fixup = false,
--	.has_clks = true,
- };
- 
- static const struct mtk_pwm_platform_data mt7622_pwm_data = {
- 	.num_pwms = 6,
- 	.pwm45_fixup = false,
--	.has_clks = true,
- };
- 
- static const struct mtk_pwm_platform_data mt7623_pwm_data = {
- 	.num_pwms = 5,
- 	.pwm45_fixup = true,
--	.has_clks = true,
- };
- 
- static const struct mtk_pwm_platform_data mt7628_pwm_data = {
- 	.num_pwms = 4,
- 	.pwm45_fixup = true,
--	.has_clks = false,
- };
- 
- static const struct of_device_id mtk_pwm_of_match[] = {
--- 
-1.9.1
+Thanks
+Kishon
+
+On 10/11/18 5:17 AM, Grygorii Strashko wrote:
+> Convert ocelot-serdes PHY driver to use recently introduced
+> PHY_MODE_ETHERNET and phy_set_mode_ext().
+> 
+> Signed-off-by: Grygorii Strashko <grygorii.strashko@ti.com>
+> ---
+>  drivers/net/ethernet/mscc/ocelot.c   |  9 ++-------
+>  drivers/phy/mscc/phy-ocelot-serdes.c | 14 ++++++++++----
+>  2 files changed, 12 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/mscc/ocelot.c b/drivers/net/ethernet/mscc/ocelot.c
+> index 3238b9e..3edb608 100644
+> --- a/drivers/net/ethernet/mscc/ocelot.c
+> +++ b/drivers/net/ethernet/mscc/ocelot.c
+> @@ -472,7 +472,6 @@ static int ocelot_port_open(struct net_device *dev)
+>  {
+>  	struct ocelot_port *port = netdev_priv(dev);
+>  	struct ocelot *ocelot = port->ocelot;
+> -	enum phy_mode phy_mode;
+>  	int err;
+>  
+>  	/* Enable receiving frames on the port, and activate auto-learning of
+> @@ -484,12 +483,8 @@ static int ocelot_port_open(struct net_device *dev)
+>  			 ANA_PORT_PORT_CFG, port->chip_port);
+>  
+>  	if (port->serdes) {
+> -		if (port->phy_mode == PHY_INTERFACE_MODE_SGMII)
+> -			phy_mode = PHY_MODE_SGMII;
+> -		else
+> -			phy_mode = PHY_MODE_QSGMII;
+> -
+> -		err = phy_set_mode(port->serdes, phy_mode);
+> +		err = phy_set_mode_ext(port->serdes, PHY_MODE_ETHERNET,
+> +				       port->phy_mode);
+>  		if (err) {
+>  			netdev_err(dev, "Could not set mode of SerDes\n");
+>  			return err;
+> diff --git a/drivers/phy/mscc/phy-ocelot-serdes.c b/drivers/phy/mscc/phy-ocelot-serdes.c
+> index c61a9890..f525a21 100644
+> --- a/drivers/phy/mscc/phy-ocelot-serdes.c
+> +++ b/drivers/phy/mscc/phy-ocelot-serdes.c
+> @@ -11,6 +11,7 @@
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+>  #include <linux/of_platform.h>
+> +#include <linux/phy.h>
+>  #include <linux/phy/phy.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/regmap.h>
+> @@ -116,8 +117,10 @@ struct serdes_mux {
+>  	.mux = _mux,						\
+>  }
+>  
+> -#define SERDES_MUX_SGMII(i, p, m, c) SERDES_MUX(i, p, PHY_MODE_SGMII, m, c)
+> -#define SERDES_MUX_QSGMII(i, p, m, c) SERDES_MUX(i, p, PHY_MODE_QSGMII, m, c)
+> +#define SERDES_MUX_SGMII(i, p, m, c) \
+> +	SERDES_MUX(i, p, PHY_INTERFACE_MODE_SGMII, m, c)
+> +#define SERDES_MUX_QSGMII(i, p, m, c) \
+> +	SERDES_MUX(i, p, PHY_INTERFACE_MODE_QSGMII, m, c)
+>  
+>  static const struct serdes_mux ocelot_serdes_muxes[] = {
+>  	SERDES_MUX_SGMII(SERDES1G(0), 0, 0, 0),
+> @@ -164,12 +167,15 @@ static int serdes_set_mode(struct phy *phy, enum phy_mode mode, int submode)
+>  	unsigned int i;
+>  	int ret;
+>  
+> +	if (mode != PHY_MODE_ETHERNET)
+> +		return -EINVAL;
+> +
+>  	for (i = 0; i < ARRAY_SIZE(ocelot_serdes_muxes); i++) {
+>  		if (macro->idx != ocelot_serdes_muxes[i].idx ||
+> -		    mode != ocelot_serdes_muxes[i].mode)
+> +		    submode != ocelot_serdes_muxes[i].mode)
+>  			continue;
+>  
+> -		if (mode != PHY_MODE_QSGMII &&
+> +		if (submode != PHY_INTERFACE_MODE_QSGMII &&
+>  		    macro->port != ocelot_serdes_muxes[i].port)
+>  			continue;
+>  
+> 
