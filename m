@@ -1,100 +1,48 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH v1 02/11] clk: mediatek: add new member to mtk_pll_data
-Date: Tue, 13 Nov 2018 08:18:52 -0800
-Message-ID: <CANMq1KBjtyQFyJ-mZBndPDSfSDnD0K8izy39jp9zKE4xfiCiog@mail.gmail.com>
-References: <20181106064206.17535-1-weiyi.lu@mediatek.com> <20181106064206.17535-4-weiyi.lu@mediatek.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [resend PATCH 1/3] pwm: mediatek: drop flag 'has_clks'
+Date: Tue, 13 Nov 2018 10:00:58 -0800
+Message-ID: <154213205843.88331.7023190778461777093@swboyd.mtv.corp.google.com>
+References: <4c9044427b1aab373acd6ac76f0c905e2be79784.1542074855.git.ryder.lee@mediatek.com>
+ <20181113095210.mh3iy5tcsu6w6tem@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181106064206.17535-4-weiyi.lu@mediatek.com>
+In-Reply-To: <20181113095210.mh3iy5tcsu6w6tem@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: weiyi.lu@mediatek.com
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, sboyd@codeaurora.org, Rob Herring <robh@kernel.org>, jamesjj.liao@mediatek.com, fan.chen@mediatek.com, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, owen.chen@mediatek.com
+To: Ryder Lee <ryder.lee@mediatek.com>, =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-pwm@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, kernel@pengutronix.de, linux-clk@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Nov 5, 2018 at 10:43 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
->
-> From: Owen Chen <owen.chen@mediatek.com>
->
-> 1. pcwibits: The integer bits of pcw for plls is extend to 8 bits,
->    add a variable to indicate this change and
->    backward-compatible.
-> 2. fmin: The pll freqency lower-bound is vary from 1GMhz to
->    1.5Ghz, add a variable to indicate platform-dependent.
->
-> Signed-off-by: Owen Chen <owen.chen@mediatek.com>
-> ---
->  drivers/clk/mediatek/clk-mtk.h |  2 ++
->  drivers/clk/mediatek/clk-pll.c | 10 +++++++---
->  2 files changed, 9 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-> index f83c2bbb677e..1882221fe994 100644
-> --- a/drivers/clk/mediatek/clk-mtk.h
-> +++ b/drivers/clk/mediatek/clk-mtk.h
-> @@ -215,7 +215,9 @@ struct mtk_pll_data {
->         const struct clk_ops *ops;
->         u32 rst_bar_mask;
->         unsigned long fmax;
-> +       unsigned long fmin;
+Quoting Uwe Kleine-K=C3=B6nig (2018-11-13 01:52:10)
+> =
 
-Minor nit: I'd put fmin before fmax in the structure.
+> I wonder if it would make sense to introduce functions like:
+> =
 
->         int pcwbits;
-> +       int pcwibits;
->         uint32_t pcw_reg;
->         int pcw_shift;
->         const struct mtk_pll_div_table *div_table;
-> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-> index f54e4015b0b1..0ec2c62d9383 100644
-> --- a/drivers/clk/mediatek/clk-pll.c
-> +++ b/drivers/clk/mediatek/clk-pll.c
+>         struct clk *clk_get_optional(struct device *dev, const char *id)
+> =
 
-I'd add a note next to:
-#define INTEGER_BITS            7
-to say that this is the default, and can be overridden with pcwibits.
+> that return NULL instead of ERR_PTR(-ENODEV).
+> =
 
-> @@ -69,11 +69,13 @@ static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
->  {
->         int pcwbits = pll->data->pcwbits;
->         int pcwfbits;
-> +       int ibits;
->         u64 vco;
->         u8 c = 0;
->
->         /* The fractional part of the PLL divider. */
-> -       pcwfbits = pcwbits > INTEGER_BITS ? pcwbits - INTEGER_BITS : 0;
-> +       ibits = pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BITS;
-> +       pcwfbits = pcwbits > ibits ? pcwbits - ibits : 0;
->
->         vco = (u64)fin * pcw;
->
-> @@ -138,9 +140,10 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
->  static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
->                 u32 freq, u32 fin)
->  {
-> -       unsigned long fmin = 1000 * MHZ;
-> +       unsigned long fmin = pll->data->fmin ? pll->data->fmin : 1000 * MHZ;
+> Then the above would simplify to:
+> =
 
-I'd put parentheses around (1000 * MHZ), to avoid the need to think
-about precedence...
-
->         const struct mtk_pll_div_table *div_table = pll->data->div_table;
->         u64 _pcw;
-> +       int ibits;
->         u32 val;
->
->         if (freq > pll->data->fmax)
-> @@ -164,7 +167,8 @@ static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
+>         pc->clks[i] =3D devm_clk_get_optional(&pdev->dev, mtk_pwm_clk_nam=
+e[i]);
+>         if (IS_ERR(pc->clks[i]) {
+>                 if (PTR_ERR(pc->clks[i]) =3D=3D -EPROBE_DEFER)
+>                         dev_err(...);
+>                 return PTR_ERR(pc->clks[i]);
 >         }
->
->         /* _pcw = freq * postdiv / fin * 2^pcwfbits */
-> -       _pcw = ((u64)freq << val) << (pll->data->pcwbits - INTEGER_BITS);
-> +       ibits = pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BITS;
-> +       _pcw = ((u64)freq << val) << (pll->data->pcwbits - ibits);
->         do_div(_pcw, fin);
->
->         *pcw = (u32)_pcw;
-> --
-> 2.18.0
->
+> =
+
+> (added the clk people to Cc for this question).
+> =
+
+
+Such a patch is already on the list and not getting much review.
+
+http://lkml.kernel.org/r/1535724443-21150-1-git-send-email-phil.edworthy@re=
+nesas.com
