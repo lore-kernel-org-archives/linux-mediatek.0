@@ -1,466 +1,100 @@
 From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH v1 01/11] clk: mediatek: add new clkmux register API
-Date: Tue, 13 Nov 2018 08:00:37 -0800
-Message-ID: <CANMq1KDEg-9WzfaRB-n4Ab0PxjqfZL_aeTAXD336N6VzX8oFhQ@mail.gmail.com>
-References: <20181106064206.17535-1-weiyi.lu@mediatek.com> <20181106064206.17535-3-weiyi.lu@mediatek.com>
+Subject: Re: [PATCH v1 02/11] clk: mediatek: add new member to mtk_pll_data
+Date: Tue, 13 Nov 2018 08:18:52 -0800
+Message-ID: <CANMq1KBjtyQFyJ-mZBndPDSfSDnD0K8izy39jp9zKE4xfiCiog@mail.gmail.com>
+References: <20181106064206.17535-1-weiyi.lu@mediatek.com> <20181106064206.17535-4-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181106064206.17535-3-weiyi.lu@mediatek.com>
+In-Reply-To: <20181106064206.17535-4-weiyi.lu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: weiyi.lu@mediatek.com
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, sboyd@codeaurora.org, Rob Herring <robh@kernel.org>, jamesjj.liao@mediatek.com, fan.chen@mediatek.com, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, owen.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Nov 5, 2018 at 10:42 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
+On Mon, Nov 5, 2018 at 10:43 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
 >
 > From: Owen Chen <owen.chen@mediatek.com>
 >
-> On both MT8183 & MT6765, there add "set/clr" register for
-> each clkmux setting, and one update register to trigger value change.
-> It is designed to prevent read-modify-write racing issue.
-> The sw design need to add a new API to handle this hw change with
-> a new mtk_clk_mux/mtk_mux struct in new file "clk-mux.c", "clk-mux.h".
+> 1. pcwibits: The integer bits of pcw for plls is extend to 8 bits,
+>    add a variable to indicate this change and
+>    backward-compatible.
+> 2. fmin: The pll freqency lower-bound is vary from 1GMhz to
+>    1.5Ghz, add a variable to indicate platform-dependent.
 >
 > Signed-off-by: Owen Chen <owen.chen@mediatek.com>
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 > ---
->  drivers/clk/mediatek/Makefile  |   2 +-
->  drivers/clk/mediatek/clk-mux.c | 252 +++++++++++++++++++++++++++++++++
->  drivers/clk/mediatek/clk-mux.h | 101 +++++++++++++
->  3 files changed, 354 insertions(+), 1 deletion(-)
->  create mode 100644 drivers/clk/mediatek/clk-mux.c
->  create mode 100644 drivers/clk/mediatek/clk-mux.h
+>  drivers/clk/mediatek/clk-mtk.h |  2 ++
+>  drivers/clk/mediatek/clk-pll.c | 10 +++++++---
+>  2 files changed, 9 insertions(+), 3 deletions(-)
 >
-> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-> index 844b55d2770d..b97980dbb738 100644
-> --- a/drivers/clk/mediatek/Makefile
-> +++ b/drivers/clk/mediatek/Makefile
-> @@ -1,5 +1,5 @@
->  # SPDX-License-Identifier: GPL-2.0
-> -obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o reset.o
-> +obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o reset.o clk-mux.o
->  obj-$(CONFIG_COMMON_CLK_MT6797) += clk-mt6797.o
->  obj-$(CONFIG_COMMON_CLK_MT6797_IMGSYS) += clk-mt6797-img.o
->  obj-$(CONFIG_COMMON_CLK_MT6797_MMSYS) += clk-mt6797-mm.o
-> diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
-> new file mode 100644
-> index 000000000000..18bc9a146be0
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mux.c
-> @@ -0,0 +1,252 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2018 MediaTek Inc.
-> + * Author: Owen Chen <owen.chen@mediatek.com>
-> + */
-> +
-> +#include <linux/of.h>
-> +#include <linux/of_address.h>
-> +#include <linux/slab.h>
-> +#include <linux/mfd/syscon.h>
-> +
-> +#include "clk-mtk.h"
-> +#include "clk-mux.h"
-> +
-> +static inline struct mtk_clk_mux
-> +       *to_mtk_clk_mux(struct clk_hw *hw)
-> +{
-> +       return container_of(hw, struct mtk_clk_mux, hw);
-> +}
-> +
-> +static int mtk_clk_mux_enable(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +       u32 mask = BIT(mux->gate_shift);
-> +
-> +       regmap_update_bits(mux->regmap, mux->mux_ofs, mask, 0);
-> +
-> +       return 0;
+> diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+> index f83c2bbb677e..1882221fe994 100644
+> --- a/drivers/clk/mediatek/clk-mtk.h
+> +++ b/drivers/clk/mediatek/clk-mtk.h
+> @@ -215,7 +215,9 @@ struct mtk_pll_data {
+>         const struct clk_ops *ops;
+>         u32 rst_bar_mask;
+>         unsigned long fmax;
+> +       unsigned long fmin;
 
-Might as well return regmap_update_bits(...).
+Minor nit: I'd put fmin before fmax in the structure.
 
-> +}
-> +
-> +static void mtk_clk_mux_disable(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +       u32 mask = BIT(mux->gate_shift);
-> +
-> +       regmap_update_bits(mux->regmap, mux->mux_ofs, mask, mask);
-> +}
-> +
-> +static int mtk_clk_mux_enable_setclr(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +       u32 val;
-> +
-> +       val = BIT(mux->gate_shift);
-> +       regmap_write(mux->regmap, mux->mux_clr_ofs, val);
-> +
-> +       return 0;
+>         int pcwbits;
+> +       int pcwibits;
+>         uint32_t pcw_reg;
+>         int pcw_shift;
+>         const struct mtk_pll_div_table *div_table;
+> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+> index f54e4015b0b1..0ec2c62d9383 100644
+> --- a/drivers/clk/mediatek/clk-pll.c
+> +++ b/drivers/clk/mediatek/clk-pll.c
 
-ditto: return regmap_write(...) .
+I'd add a note next to:
+#define INTEGER_BITS            7
+to say that this is the default, and can be overridden with pcwibits.
 
-> +}
-> +
-> +static void mtk_clk_mux_disable_setclr(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +       u32 val;
-> +
-> +       val = BIT(mux->gate_shift);
-> +       regmap_write(mux->regmap, mux->mux_set_ofs, val);
-> +}
-> +
-> +static int mtk_clk_mux_is_enabled(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +       u32 val = 0;
+> @@ -69,11 +69,13 @@ static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
+>  {
+>         int pcwbits = pll->data->pcwbits;
+>         int pcwfbits;
+> +       int ibits;
+>         u64 vco;
+>         u8 c = 0;
+>
+>         /* The fractional part of the PLL divider. */
+> -       pcwfbits = pcwbits > INTEGER_BITS ? pcwbits - INTEGER_BITS : 0;
+> +       ibits = pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BITS;
+> +       pcwfbits = pcwbits > ibits ? pcwbits - ibits : 0;
+>
+>         vco = (u64)fin * pcw;
+>
+> @@ -138,9 +140,10 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+>  static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
+>                 u32 freq, u32 fin)
+>  {
+> -       unsigned long fmin = 1000 * MHZ;
+> +       unsigned long fmin = pll->data->fmin ? pll->data->fmin : 1000 * MHZ;
 
-No need to init to 0.
+I'd put parentheses around (1000 * MHZ), to avoid the need to think
+about precedence...
 
-> +
-> +       regmap_read(mux->regmap, mux->mux_ofs, &val);
-> +
-> +       return ((val & BIT(mux->gate_shift)) == 0) ? 1 : 0;
-
-Just (val & BIT(mux->gate_shift)) != 0. Or more simply val &
-BIT(mux->gate_shift).
-
-> +}
-> +
-> +static u8 mtk_clk_mux_get_parent(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +       int num_parents = clk_hw_get_num_parents(hw);
-> +       u32 mask = GENMASK(mux->mux_width - 1, 0);
-> +       u32 val;
-> +
-> +       regmap_read(mux->regmap, mux->mux_ofs, &val);
-> +       val = (val >> mux->mux_shift) & mask;
-> +
-> +       if (val >= num_parents || val >= U8_MAX)
-
-val > U8_MAX, technically.
-
-> +               return -ERANGE;
-
-This looks wrong, -34 will be cast to an u8 and appear to be valid...
-
-> +
-> +       return val;
-> +}
-> +
-> +static int mtk_clk_mux_set_parent_lock(struct clk_hw *hw, u8 index)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +       u32 mask = GENMASK(mux->mux_width - 1, 0);
-> +       u32 val;
-> +       unsigned long flags = 0;
-
-No need to init to 0.
-
-> +
-> +       if (mux->lock)
-> +               spin_lock_irqsave(mux->lock, flags);
-> +       else
-> +               __acquire(mux->lock);
-> +
-> +       regmap_read(mux->regmap, mux->mux_ofs, &val);
-> +       val = (val & mask) >> mux->mux_shift;
-> +
-> +       if (val != index) {
-> +               val = index << mux->mux_shift;
-> +               regmap_update_bits(mux->regmap, mux->mux_ofs, mask, val);
-> +       }
-
-What's the point of doing read/compare/update? Are there side effects
-if you just write the value unconditionally?
-
-> +
-> +       if (mux->lock)
-> +               spin_unlock_irqrestore(mux->lock, flags);
-> +       else
-> +               __release(mux->lock);
-> +
-> +       return 0;
-> +}
-> +
-> +static int mtk_clk_mux_set_parent_setclr_lock(struct clk_hw *hw, u8 index)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +       u32 mask = GENMASK(mux->mux_width - 1, 0);
-> +       u32 val, orig;
-> +       unsigned long flags = 0;
-> +
-> +       if (mux->lock)
-> +               spin_lock_irqsave(mux->lock, flags);
-> +       else
-> +               __acquire(mux->lock);
-> +
-> +       regmap_read(mux->regmap, mux->mux_ofs, &val);
-> +       orig = val;
-
-Just read into &orig above.
-
-> +       val &= ~(mask << mux->mux_shift);
-> +       val |= index << mux->mux_shift;
-
-Maybe this is more readable?
-val = orig &  ~(mask << mux->mux_shift) | (index << mux->mux_shift)
-
-> +
-> +       if (val != orig) {
-> +               val = (mask << mux->mux_shift);
-> +               regmap_write(mux->regmap, mux->mux_clr_ofs, val);
-
-I'd just regmap_write(..., mask << mux->mux_shift), instead if overriding val.
-
-> +               val = (index << mux->mux_shift);
-> +               regmap_write(mux->regmap, mux->mux_set_ofs, val);
-> +
-> +               if (mux->upd_shift >= 0)
-> +                       regmap_write(mux->regmap, mux->upd_ofs,
-> +                                    BIT(mux->upd_shift));
-> +       }
-> +
-> +       if (mux->lock)
-> +               spin_unlock_irqrestore(mux->lock, flags);
-> +       else
-> +               __release(mux->lock);
-> +
-> +       return 0;
-> +}
-> +
-> +const struct clk_ops mtk_mux_ops = {
-> +       .get_parent = mtk_clk_mux_get_parent,
-> +       .set_parent = mtk_clk_mux_set_parent_lock,
-> +};
-> +
-> +const struct clk_ops mtk_mux_clr_set_upd_ops = {
-> +       .get_parent = mtk_clk_mux_get_parent,
-> +       .set_parent = mtk_clk_mux_set_parent_setclr_lock,
-> +};
-> +
-> +const struct clk_ops mtk_mux_gate_ops = {
-> +       .enable = mtk_clk_mux_enable,
-> +       .disable = mtk_clk_mux_disable,
-> +       .is_enabled = mtk_clk_mux_is_enabled,
-> +       .get_parent = mtk_clk_mux_get_parent,
-> +       .set_parent = mtk_clk_mux_set_parent_lock,
-> +};
-> +
-> +const struct clk_ops mtk_mux_gate_clr_set_upd_ops = {
-> +       .enable = mtk_clk_mux_enable_setclr,
-> +       .disable = mtk_clk_mux_disable_setclr,
-> +       .is_enabled = mtk_clk_mux_is_enabled,
-> +       .get_parent = mtk_clk_mux_get_parent,
-> +       .set_parent = mtk_clk_mux_set_parent_setclr_lock,
-> +};
-> +
-> +struct clk *mtk_clk_register_mux(const struct mtk_mux *mux,
-> +                                struct regmap *regmap,
-> +                                spinlock_t *lock)
-> +{
-> +       struct mtk_clk_mux *mtk_mux = NULL;
-
-Not necessary to init to NULL.
-
-> +       struct clk_init_data init;
-> +       struct clk *clk;
-> +
-> +       mtk_mux = kzalloc(sizeof(*mtk_mux), GFP_KERNEL);
-> +       if (!mtk_mux)
-> +               return ERR_PTR(-ENOMEM);
-> +
-> +       init.name = mux->name;
-> +       init.flags = (mux->flags) | CLK_SET_RATE_PARENT;
-
-mux->flags | CLK_SET_RATE_PARENT
-
-> +       init.parent_names = mux->parent_names;
-> +       init.num_parents = mux->num_parents;
-> +       init.ops = mux->ops;
-> +
-> +       mtk_mux->regmap = regmap;
-> +       mtk_mux->name = mux->name;
-> +       mtk_mux->mux_ofs = mux->mux_ofs;
-> +       mtk_mux->mux_set_ofs = mux->set_ofs;
-> +       mtk_mux->mux_clr_ofs = mux->clr_ofs;
-> +       mtk_mux->upd_ofs = mux->upd_ofs;
-> +       mtk_mux->mux_shift = mux->mux_shift;
-> +       mtk_mux->mux_width = mux->mux_width;
-> +       mtk_mux->gate_shift = mux->gate_shift;
-> +       mtk_mux->upd_shift = mux->upd_shift;
-> +
-> +       mtk_mux->lock = lock;
-> +       mtk_mux->hw.init = &init;
-> +
-> +       clk = clk_register(NULL, &mtk_mux->hw);
-> +       if (IS_ERR(clk)) {
-> +               kfree(mtk_mux);
-> +               return clk;
-> +       }
-> +
-> +       return clk;
-> +}
-> +
-> +int mtk_clk_register_muxes(const struct mtk_mux *muxes,
-> +                          int num, struct device_node *node,
-> +                          spinlock_t *lock,
-> +                          struct clk_onecell_data *clk_data)
-> +{
-> +       struct regmap *regmap;
-> +       struct clk *clk;
-> +       int i;
-> +
-> +       if (!clk_data)
-> +               return -ENOMEM;
-
-Is this check necessary? After all you know who the callers are and
-maybe you need to be careful not to call this with NULL clk_data?
-
-> +
-> +       regmap = syscon_node_to_regmap(node);
-> +       if (IS_ERR(regmap)) {
-> +               pr_err("Cannot find regmap for %pOF: %ld\n", node,
-> +                      PTR_ERR(regmap));
-> +               return PTR_ERR(regmap);
-> +       }
-> +
-> +       for (i = 0; i < num; i++) {
-> +               const struct mtk_mux *mux = &muxes[i];
-> +
-> +               if (IS_ERR_OR_NULL(clk_data->clks[mux->id])) {
-
-A NULL check seems enough, as you'll never assign a PTR_ERR(..) value
-into clk_data->clks[mux->id].
-
-> +                       clk = mtk_clk_register_mux(mux, regmap, lock);
-> +
-> +                       if (IS_ERR(clk)) {
-> +                               pr_err("Failed to register clk %s: %ld\n",
-> +                                      mux->name, PTR_ERR(clk));
-> +                               continue;
-
-Are we ok with returning 0 even though some of these calls failed?
-
-> +                       }
-> +
-> +                       clk_data->clks[mux->id] = clk;
-> +               }
-> +       }
-> +
-> +       return 0;
-> +}
-> diff --git a/drivers/clk/mediatek/clk-mux.h b/drivers/clk/mediatek/clk-mux.h
-> new file mode 100644
-> index 000000000000..ff0276bb771c
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mux.h
-> @@ -0,0 +1,101 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * Copyright (c) 2018 MediaTek Inc.
-> + * Author: Owen Chen <owen.chen@mediatek.com>
-> + */
-> +
-> +#ifndef __DRV_CLK_MUX_H
-> +#define __DRV_CLK_MUX_H
-> +
-> +#include <linux/clk-provider.h>
-> +
-> +struct mtk_clk_mux {
-> +       struct clk_hw hw;
-> +       struct regmap *regmap;
-> +
-> +       const char *name;
-> +
-> +       u32 mux_set_ofs;
-> +       u32 mux_clr_ofs;
-> +       u32 mux_ofs;
-> +       u32 upd_ofs;
-> +
-> +       u8 mux_shift;
-> +       u8 mux_width;
-> +       u8 gate_shift;
-> +       u8 upd_shift;
-> +
-> +       spinlock_t *lock;
-> +};
-> +
-> +struct mtk_mux {
-> +       int id;
-> +       const char *name;
-> +       const char * const *parent_names;
-> +       unsigned int flags;
-> +
-> +       u32 mux_ofs;
-> +       u32 set_ofs;
-> +       u32 clr_ofs;
-> +       u32 upd_ofs;
-> +
-> +       u8 mux_shift;
-> +       u8 mux_width;
-> +       u8 gate_shift;
-> +       u8 upd_shift;
-> +
-> +       const struct clk_ops *ops;
-> +
-> +       signed char num_parents;
-> +};
-> +
-> +extern const struct clk_ops mtk_mux_ops;
-> +extern const struct clk_ops mtk_mux_clr_set_upd_ops;
-> +extern const struct clk_ops mtk_mux_gate_ops;
-> +extern const struct clk_ops mtk_mux_gate_clr_set_upd_ops;
-> +
-> +#define GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,         \
-> +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
-> +                       _gate, _upd_ofs, _upd, _flags, _ops) {          \
-> +               .id = _id,                                              \
-> +               .name = _name,                                          \
-> +               .mux_ofs = _mux_ofs,                                    \
-> +               .set_ofs = _mux_set_ofs,                                \
-> +               .clr_ofs = _mux_clr_ofs,                                \
-> +               .upd_ofs = _upd_ofs,                                    \
-> +               .mux_shift = _shift,                                    \
-> +               .mux_width = _width,                                    \
-> +               .gate_shift = _gate,                                    \
-> +               .upd_shift = _upd,                                      \
-> +               .parent_names = _parents,                               \
-> +               .num_parents = ARRAY_SIZE(_parents),                    \
-> +               .flags = _flags,                                        \
-> +               .ops = &_ops,                                           \
-> +       }
-> +
-> +#define MUX_GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,     \
-> +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
-> +                       _gate, _upd_ofs, _upd, _flags)                  \
-> +               GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,  \
-> +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
-> +                       _gate, _upd_ofs, _upd, _flags,                  \
-> +                       mtk_mux_gate_clr_set_upd_ops)
-> +
-> +#define MUX_GATE_CLR_SET_UPD(_id, _name, _parents, _mux_ofs,           \
-> +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
-> +                       _gate, _upd_ofs, _upd)                          \
-> +               MUX_GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents,        \
-> +                       _mux_ofs, _mux_set_ofs, _mux_clr_ofs, _shift,   \
-> +                       _width, _gate, _upd_ofs, _upd,                  \
-> +                       CLK_SET_RATE_PARENT)
-> +
-> +struct clk *mtk_clk_register_mux(const struct mtk_mux *mux,
-> +                                struct regmap *regmap,
-> +                                spinlock_t *lock);
-> +
-> +int mtk_clk_register_muxes(const struct mtk_mux *muxes,
-> +                          int num, struct device_node *node,
-> +                          spinlock_t *lock,
-> +                          struct clk_onecell_data *clk_data);
-> +
-> +#endif /* __DRV_CLK_MUX_H */
+>         const struct mtk_pll_div_table *div_table = pll->data->div_table;
+>         u64 _pcw;
+> +       int ibits;
+>         u32 val;
+>
+>         if (freq > pll->data->fmax)
+> @@ -164,7 +167,8 @@ static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
+>         }
+>
+>         /* _pcw = freq * postdiv / fin * 2^pcwfbits */
+> -       _pcw = ((u64)freq << val) << (pll->data->pcwbits - INTEGER_BITS);
+> +       ibits = pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BITS;
+> +       _pcw = ((u64)freq << val) << (pll->data->pcwbits - ibits);
+>         do_div(_pcw, fin);
+>
+>         *pcw = (u32)_pcw;
 > --
 > 2.18.0
 >
