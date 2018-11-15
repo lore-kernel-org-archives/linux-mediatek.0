@@ -1,30 +1,42 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] pinctrl: mediatek: Fix dependencies for EINT_MTK
-Date: Thu, 15 Nov 2018 10:26:15 +0100
-Message-ID: <CACRpkdbRZGxQoi7Pe=-unjHC4ToyOR1MJjKQqySs1Hunhs+TYA@mail.gmail.com>
-References: <20181102025728.963-1-olof@lixom.net>
+From: LABBE Corentin <clabbe@baylibre.com>
+Subject: Re: [PATCH v3 0/7] include: add
+ setbits32/clrbits32/clrsetbits32/setbits64/clrbits64/clrsetbits64
+Date: Thu, 15 Nov 2018 10:30:34 +0100
+Message-ID: <20181115093034.GB23965@Red>
+References: <1540366553-18541-1-git-send-email-clabbe@baylibre.com>
+ <20181024085700.GR30658@n2100.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181102025728.963-1-olof@lixom.net>
+Content-Disposition: inline
+In-Reply-To: <20181024085700.GR30658@n2100.armlinux.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Olof Johansson <olof@lixom.net>
-Cc: sean.wang@kernel.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+To: Russell King - ARM Linux <linux@armlinux.org.uk>
+Cc: Gilles.Muller@lip6.fr, Julia.Lawall@lip6.fr, agust@denx.de, airlied@linux.ie, alexandre.torgue@st.com, alistair@popple.id.au, benh@kernel.crashing.org, carlo@caione.org, davem@davemloft.net, galak@kernel.crashing.org, joabreu@synopsys.com, khilman@baylibre.com, matthias.bgg@gmail.com, maxime.ripard@bootlin.com, michal.lkml@markovi.net, mpe@ellerman.id.au, mporter@kernel.crashing.org, narmstrong@baylibre.com, nicolas.palix@imag.fr, oss@buserror.net, paulus@samba.org, peppe.cavallaro@st.com, tj@kernel.org, vitb@kernel.crashing.org, wens@csie.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-ide@vger.kernel.org, linux-sunxi@googlegroups.com, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, linuxppc-dev@lists.ozlabs.
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Nov 2, 2018 at 3:57 AM Olof Johansson <olof@lixom.net> wrote:
+On Wed, Oct 24, 2018 at 09:57:00AM +0100, Russell King - ARM Linux wrote:
+> On Wed, Oct 24, 2018 at 07:35:46AM +0000, Corentin Labbe wrote:
+> > This patchset adds a new set of functions which are open-coded in lot of
+> > place.
+> > Basicly the pattern is always the same, "read, modify a bit, write"
+> > some driver and the powerpc arch already have thoses pattern them as functions. (like ahci_sunxi.c or dwmac-meson8b)
+> 
+> The advantage of them being open-coded is that it's _obvious_ to the
+> reviewer that there is a read-modify-write going on which, in a multi-
+> threaded environment, may need some locking (so it should trigger a
+> review of the locking around that code.)
+> 
+> With it hidden inside a helper which has no locking itself, it becomes
+> much easier to pass over in review, which means that races are much
+> more likely to go unspotted - and that is bad news.
+> 
 
-> Fixes the following config-time warning:
->
-> WARNING: unmet direct dependencies detected for EINT_MTK
->   Depends on [n]: PINCTRL [=y] && (ARCH_MEDIATEK [=y] || COMPILE_TEST [=n]) && (PINCTRL_MTK [=n] || PINCTRL_MTK_MOORE [=n] || COMPILE_TEST [=n])
->   Selected by [y]:
->   - PINCTRL_MTK_PARIS [=y] && PINCTRL [=y] && OF [=y] && (ARCH_MEDIATEK [=y] || COMPILE_TEST [=n])
->
-> Fixes: 805250982bb5 ("pinctrl: mediatek: add pinctrl-paris that implements the vendor dt-bindings")
-> Signed-off-by: Olof Johansson <olof@lixom.net>
+Hello
 
-Patch applied with Sean's ACK!
+I understand your fear, but I think the benefit overhaul thoses.
+Furthermore, drivers which I have converted does not need such locking.
 
-Yours,
-Linus Walleij
+If you want I can rename the header to linux/setbits-non-atomic.h for making obvious the lack of locking.
+
+Regards
