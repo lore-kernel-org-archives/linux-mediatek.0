@@ -1,72 +1,39 @@
 From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 4/4] mtd: spi-nor: mtk-quadspi: rename config to a common one
-Date: Thu, 15 Nov 2018 14:26:26 +0800
-Message-ID: <45132f6a1f9ea82dd8312a60815dc0007450f56e.1542262833.git.ryder.lee@mediatek.com>
-References: <1dc7b27cbad59c413d7076ff7d16b6757014d727.1542262833.git.ryder.lee@mediatek.com>
+Subject: [PATCH 1/4] dt-bindings: mtd: mtk-quadspi: update bindings for MT7629 SoC
+Date: Thu, 15 Nov 2018 14:31:04 +0800
+Message-ID: <81d142dce539f0863c365d4657b71533ace44982.1542263446.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1dc7b27cbad59c413d7076ff7d16b6757014d727.1542262833.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Marek Vasut <marek.vasut@gmail.com>, Brian Norris <computersforpeace@gmail.com>, Boris Brezillon <boris.brezillon@bootlin.com>
 Cc: Rob Herring <robh+dt@kernel.org>, linux-mtd@lists.infradead.org, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, Guochun Mao <guochun.mao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The quadspi is a generic communication interface which could be shared
-with other MediaTek SoCs. Hence rename it to a common one.
+This updates bindings for the MT7629 SPI-NOR controller.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/mtd/spi-nor/Kconfig  | 16 ++++++++--------
- drivers/mtd/spi-nor/Makefile |  2 +-
- 2 files changed, 9 insertions(+), 9 deletions(-)
+ Documentation/devicetree/bindings/mtd/mtk-quadspi.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/mtd/spi-nor/Kconfig b/drivers/mtd/spi-nor/Kconfig
-index 6cc9c92..2062611 100644
---- a/drivers/mtd/spi-nor/Kconfig
-+++ b/drivers/mtd/spi-nor/Kconfig
-@@ -7,14 +7,6 @@ menuconfig MTD_SPI_NOR
+diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+index 56d3668..a12e3b5 100644
+--- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
++++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+@@ -1,4 +1,4 @@
+-* Serial NOR flash controller for MTK MT81xx (and similar)
++* Serial NOR flash controller for MediaTek SoCs
  
- if MTD_SPI_NOR
- 
--config MTD_MT81xx_NOR
--	tristate "Mediatek MT81xx SPI NOR flash controller"
--	depends on HAS_IOMEM
--	help
--	  This enables access to SPI NOR flash, using MT81xx SPI NOR flash
--	  controller. This controller does not support generic SPI BUS, it only
--	  supports SPI NOR Flash.
--
- config MTD_SPI_NOR_USE_4K_SECTORS
- 	bool "Use small 4096 B erase sectors"
- 	default y
-@@ -86,6 +78,14 @@ config SPI_NXP_SPIFI
- 	  Flash. Enable this option if you have a device with a SPIFI
- 	  controller and want to access the Flash as a mtd device.
- 
-+config SPI_MTK_QUADSPI
-+	tristate "MediaTek Quad SPI controller"
-+	depends on HAS_IOMEM
-+	help
-+	  This enables support for the Quad SPI controller in master mode.
-+	  This controller does not support generic SPI. It only supports
-+	  SPI NOR.
-+
- config SPI_INTEL_SPI
- 	tristate
- 
-diff --git a/drivers/mtd/spi-nor/Makefile b/drivers/mtd/spi-nor/Makefile
-index f4c61d2..7f4b6f6 100644
---- a/drivers/mtd/spi-nor/Makefile
-+++ b/drivers/mtd/spi-nor/Makefile
-@@ -5,7 +5,7 @@ obj-$(CONFIG_SPI_ATMEL_QUADSPI)	+= atmel-quadspi.o
- obj-$(CONFIG_SPI_CADENCE_QUADSPI)	+= cadence-quadspi.o
- obj-$(CONFIG_SPI_FSL_QUADSPI)	+= fsl-quadspi.o
- obj-$(CONFIG_SPI_HISI_SFC)	+= hisi-sfc.o
--obj-$(CONFIG_MTD_MT81xx_NOR)    += mtk-quadspi.o
-+obj-$(CONFIG_SPI_MTK_QUADSPI)    += mtk-quadspi.o
- obj-$(CONFIG_SPI_NXP_SPIFI)	+= nxp-spifi.o
- obj-$(CONFIG_SPI_INTEL_SPI)	+= intel-spi.o
- obj-$(CONFIG_SPI_INTEL_SPI_PCI)	+= intel-spi-pci.o
+ Required properties:
+ - compatible: 	  For mt8173, compatible should be "mediatek,mt8173-nor",
+@@ -10,6 +10,7 @@ Required properties:
+ 		  "mediatek,mt2712-nor", "mediatek,mt8173-nor"
+ 		  "mediatek,mt7622-nor", "mediatek,mt8173-nor"
+ 		  "mediatek,mt7623-nor", "mediatek,mt8173-nor"
++		  "mediatek,mt7629-nor", "mediatek,mt8173-nor"
+ 		  "mediatek,mt8173-nor"
+ - reg: 		  physical base address and length of the controller's register
+ - clocks: 	  the phandle of the clocks needed by the nor controller
 -- 
 1.9.1
