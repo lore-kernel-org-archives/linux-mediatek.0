@@ -1,50 +1,48 @@
-From: LABBE Corentin <clabbe@baylibre.com>
-Subject: Re: [PATCH v3 0/7] include: add
- setbits32/clrbits32/clrsetbits32/setbits64/clrbits64/clrsetbits64
-Date: Thu, 15 Nov 2018 13:24:44 +0100
-Message-ID: <20181115122444.GA29281@Red>
-References: <1540366553-18541-1-git-send-email-clabbe@baylibre.com>
- <20181024085700.GR30658@n2100.armlinux.org.uk>
- <20181115093034.GB23965@Red>
- <20181115093348.GV30658@n2100.armlinux.org.uk>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 1/4] dt-bindings: pwm: update bindings for MT7629 SoC
+Date: Thu, 15 Nov 2018 17:43:10 +0100
+Message-ID: <b96ef8a5-ea09-2d24-23a1-ca9192e29ab5@gmail.com>
+References: <1dc7b27cbad59c413d7076ff7d16b6757014d727.1542262833.git.ryder.lee@mediatek.com>
+ <1542263704.7928.2.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20181115093348.GV30658@n2100.armlinux.org.uk>
+In-Reply-To: <1542263704.7928.2.camel@mtkswgap22>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King - ARM Linux <linux@armlinux.org.uk>
-Cc: Gilles.Muller@lip6.fr, Julia.Lawall@lip6.fr, agust@denx.de, airlied@linux.ie, alexandre.torgue@st.com, alistair@popple.id.au, benh@kernel.crashing.org, carlo@caione.org, davem@davemloft.net, galak@kernel.crashing.org, joabreu@synopsys.com, khilman@baylibre.com, matthias.bgg@gmail.com, maxime.ripard@bootlin.com, michal.lkml@markovi.net, mpe@ellerman.id.au, mporter@kernel.crashing.org, narmstrong@baylibre.com, nicolas.palix@imag.fr, oss@buserror.net, paulus@samba.org, peppe.cavallaro@st.com, tj@kernel.org, vitb@kernel.crashing.org, wens@csie.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-ide@vger.kernel.org, linux-sunxi@googlegroups.com, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, linuxppc-dev@lists.ozlabs.
+To: Ryder Lee <ryder.lee@mediatek.com>, Marek Vasut <marek.vasut@gmail.com>
+Cc: devicetree@vger.kernel.org, Guochun Mao <guochun.mao@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, Weijie Gao <weijie.gao@mediatek.com>, linux-kernel@vger.kernel.org, Boris Brezillon <boris.brezillon@bootlin.com>, Rob Herring <robh+dt@kernel.org>, linux-mtd@lists.infradead.org, linux-mediatek@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Nov 15, 2018 at 09:33:48AM +0000, Russell King - ARM Linux wrote:
-> On Thu, Nov 15, 2018 at 10:30:34AM +0100, LABBE Corentin wrote:
-> > On Wed, Oct 24, 2018 at 09:57:00AM +0100, Russell King - ARM Linux wrote:
-> > > On Wed, Oct 24, 2018 at 07:35:46AM +0000, Corentin Labbe wrote:
-> > > > This patchset adds a new set of functions which are open-coded in lot of
-> > > > place.
-> > > > Basicly the pattern is always the same, "read, modify a bit, write"
-> > > > some driver and the powerpc arch already have thoses pattern them as functions. (like ahci_sunxi.c or dwmac-meson8b)
-> > > 
-> > > The advantage of them being open-coded is that it's _obvious_ to the
-> > > reviewer that there is a read-modify-write going on which, in a multi-
-> > > threaded environment, may need some locking (so it should trigger a
-> > > review of the locking around that code.)
-> > > 
-> > > With it hidden inside a helper which has no locking itself, it becomes
-> > > much easier to pass over in review, which means that races are much
-> > > more likely to go unspotted - and that is bad news.
-> > > 
-> > 
-> > Hello
-> > 
-> > I understand your fear, but I think the benefit overhaul thoses.
-> > Furthermore, drivers which I have converted does not need such locking.
-> > 
-> > If you want I can rename the header to linux/setbits-non-atomic.h for making obvious the lack of locking.
+
+
+On 15/11/2018 07:35, Ryder Lee wrote:
+> On Thu, 2018-11-15 at 14:26 +0800, Ryder Lee wrote:
+>> This updates bindings for MT7629 pwm controller.
+>>
+>> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+>> ---
+>>  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+>> index 991728c..4a2885b 100644
+>> --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+>> +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+>> @@ -6,6 +6,7 @@ Required properties:
+>>     - "mediatek,mt7622-pwm": found on mt7622 SoC.
+>>     - "mediatek,mt7623-pwm": found on mt7623 SoC.
+>>     - "mediatek,mt7628-pwm": found on mt7628 SoC.
+>> +   - "mediatek,mt7629-pwm": found on mt7629 SoC.
+>>   - reg: physical base address and length of the controller's registers.
+>>   - #pwm-cells: must be 2. See pwm.txt in this directory for a description of
+>>     the cell format.
 > 
-> It'd probably be better in the function name - it then doesn't get
-> "lost" that it's non-atomic when it's included via other headers.
+> Please ignore this PWM patch. Sorry for the inconvenience :(
 > 
 
-I proposed that way for doing like writeq have do it with io-64-nonatomic-hi-lo.h
+Right, this would at least need a fallback compatible :)
+
+Regards,
+Matthias
