@@ -1,143 +1,95 @@
-From: Quentin Schulz <quentin.schulz@bootlin.com>
-Subject: Re: [PATCH v2 3/5] phy: ocelot-serdes: convert to use eth phy mode
- and submode
-Date: Fri, 16 Nov 2018 12:15:31 +0100
-Message-ID: <20181116111530.iqqcchtcnmlssvdp@qschulz>
-References: <20181109234755.21687-1-grygorii.strashko@ti.com>
- <20181109234755.21687-4-grygorii.strashko@ti.com>
+From: matthias.bgg@kernel.org
+Subject: [PATCH v5 00/12] arm/arm64: mediatek: Fix mmsys device probing
+Date: Fri, 16 Nov 2018 13:54:37 +0100
+Message-ID: <20181116125449.23581-1-matthias.bgg@kernel.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="zjsxrk3dvxpgxdoc"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20181109234755.21687-4-grygorii.strashko@ti.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Grygorii Strashko <grygorii.strashko@ti.com>
-Cc: "David S. Miller" <davem@davemloft.net>, Kishon Vijay Abraham I <kishon@ti.com>, Russell King - ARM Linux <linux@armlinux.org.uk>, netdev@vger.kernel.org, Sekhar Nori <nsekhar@ti.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Tony Lindgren <tony@atomide.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Vivek Gautam <vivek.gautam@codeaurora.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Carlo Caione <carlo@caione.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Manu Gautam <mgautam@codeaurora.org>
+To: robh+dt@kernel.org, mark.rutland@arm.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, mturquette@baylibre.com, sboyd@codeaurora.org, ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, matthias.bgg@gmail.com
+Cc: sean.wang@mediatek.com, sean.wang@kernel.org, rdunlap@infradead.org, wens@csie.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+From: Matthias Brugger <mbrugger@suse.com>
 
---zjsxrk3dvxpgxdoc
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This is version four of the series. The biggest change are the last
+four patches which introduce how this should be handled in the future.
+Instead of creating the platform device in the DRM driver the device
+tree has in the mmsys memory range a child node to probe the clock
+part. That breaks backwards compatibility, so I only introduce that for
+SoCs which are not available to the general public (mt2712e) or only
+have the mmsys clock driver part implemented (mt6797).
 
-Hi Grygorii,
 
-On Fri, Nov 09, 2018 at 05:47:53PM -0600, Grygorii Strashko wrote:
-> Convert ocelot-serdes PHY driver to use recently introduced
-> PHY_MODE_ETHERNET and phy_set_mode_ext().
->=20
+Changes since v4:
+- fix missing regmap accessors in drm diver (patch 1)
+- omit probe deffered warning on all drivers (patch 5)
+- update drm and clk bindings (patch 6 and 7)
+- put mmsys clock part in dts child node of mmsys. Only done
+for HW where no dts backport compatible breakage is expected 
+(either DRM driver not yet implemented or no HW available to
+the public) (patch 9 to 12)
 
-Thanks for the patch, it's annoying to have to map PHY_MODE_SGMII and
-PHY_INTERFACE_MODE_SGMII :)
+Changes since v3:
+- use platform device to probe clock driver
+- add Acked-by CK Hu for the probe deferred patch
 
-> Signed-off-by: Grygorii Strashko <grygorii.strashko@ti.com>
-> ---
->  drivers/net/ethernet/mscc/ocelot.c   |  9 ++-------
->  drivers/phy/mscc/phy-ocelot-serdes.c | 14 ++++++++++----
->  2 files changed, 12 insertions(+), 11 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/mscc/ocelot.c b/drivers/net/ethernet/ms=
-cc/ocelot.c
-> index 3238b9e..3edb608 100644
-> --- a/drivers/net/ethernet/mscc/ocelot.c
-> +++ b/drivers/net/ethernet/mscc/ocelot.c
-> @@ -472,7 +472,6 @@ static int ocelot_port_open(struct net_device *dev)
->  {
->  	struct ocelot_port *port =3D netdev_priv(dev);
->  	struct ocelot *ocelot =3D port->ocelot;
-> -	enum phy_mode phy_mode;
->  	int err;
-> =20
->  	/* Enable receiving frames on the port, and activate auto-learning of
-> @@ -484,12 +483,8 @@ static int ocelot_port_open(struct net_device *dev)
->  			 ANA_PORT_PORT_CFG, port->chip_port);
-> =20
->  	if (port->serdes) {
-> -		if (port->phy_mode =3D=3D PHY_INTERFACE_MODE_SGMII)
-> -			phy_mode =3D PHY_MODE_SGMII;
-> -		else
-> -			phy_mode =3D PHY_MODE_QSGMII;
-> -
-> -		err =3D phy_set_mode(port->serdes, phy_mode);
-> +		err =3D phy_set_mode_ext(port->serdes, PHY_MODE_ETHERNET,
-> +				       port->phy_mode);
->  		if (err) {
->  			netdev_err(dev, "Could not set mode of SerDes\n");
->  			return err;
-> diff --git a/drivers/phy/mscc/phy-ocelot-serdes.c b/drivers/phy/mscc/phy-=
-ocelot-serdes.c
-> index c61a9890..f525a21 100644
-> --- a/drivers/phy/mscc/phy-ocelot-serdes.c
-> +++ b/drivers/phy/mscc/phy-ocelot-serdes.c
-> @@ -11,6 +11,7 @@
->  #include <linux/module.h>
->  #include <linux/of.h>
->  #include <linux/of_platform.h>
-> +#include <linux/phy.h>
->  #include <linux/phy/phy.h>
->  #include <linux/platform_device.h>
->  #include <linux/regmap.h>
-> @@ -116,8 +117,10 @@ struct serdes_mux {
->  	.mux =3D _mux,						\
->  }
-> =20
-> -#define SERDES_MUX_SGMII(i, p, m, c) SERDES_MUX(i, p, PHY_MODE_SGMII, m,=
- c)
-> -#define SERDES_MUX_QSGMII(i, p, m, c) SERDES_MUX(i, p, PHY_MODE_QSGMII, =
-m, c)
-> +#define SERDES_MUX_SGMII(i, p, m, c) \
-> +	SERDES_MUX(i, p, PHY_INTERFACE_MODE_SGMII, m, c)
-> +#define SERDES_MUX_QSGMII(i, p, m, c) \
-> +	SERDES_MUX(i, p, PHY_INTERFACE_MODE_QSGMII, m, c)
-> =20
->  static const struct serdes_mux ocelot_serdes_muxes[] =3D {
->  	SERDES_MUX_SGMII(SERDES1G(0), 0, 0, 0),
-> @@ -164,12 +167,15 @@ static int serdes_set_mode(struct phy *phy, enum ph=
-y_mode mode, int submode)
->  	unsigned int i;
->  	int ret;
-> =20
-> +	if (mode !=3D PHY_MODE_ETHERNET)
-> +		return -EINVAL;
-> +
+Changes since v2:
+- fix kconfig typo (shame on me)
+- delete __initconst from mm_clocks as converted to a platform driver
+  
+Changes since v1:
+- add binding documentation
+- ddp: use regmap_update_bits
+- ddp: ignore EPROBE_DEFER on clock probing
+- mfd: delete mmsys_private
+- add Reviewed-by and Acked-by tags
+ 
+MMSYS in Mediatek SoCs has some registers to control clock gates (which is 
+used in the clk driver) and some registers to set the routing and enable
+the differnet blocks of the display subsystem.
 
-This works for now because we only support Ethernet muxes for now but
-this IP also supports PHY_MODE_PCIE.
+Up to now both drivers, clock and drm are probed with the same device tree
+compatible. But only the first driver get probed, which in effect breaks
+graphics on mt8173 and mt2701.
 
-It seems weird to me that the day we'll add support for PCIE muxing we
-will have in ocelot_serdes_muxes[i].mode either a PHY_INTERFACE_MODE_*
-or a PHY_MODE_PCIE. This is not an issue for now since you do the mode
-!=3D PHY_MODE_ETHERNET just above but once we get rid of this, we only
-test for submode !=3D ocelot_serdes_muxes[i].mode and both
-PHY_INTERFACE_MODE_1000BASEX and PHY_MODE_PCIE will have the same index
-thus might be confused.
+This patch uses a platform device registration in the DRM driver, which
+will trigger the probe of the corresponding clock driver. It was tested on the
+bananapi-r2 and the Acer R13 Chromebook.
 
-Should we add a submode to the SERDES_MUX macro, move PHY_MODE_*MII to
-this submode and have PHY_MODE_ETHERNET/PCIE in the mode field?
 
-Thanks,
-Quentin
+Matthias Brugger (12):
+  drm/mediatek: Use regmap for register access
+  clk: mediatek: mt2701-mmsys: switch to platform device probing
+  clk: mediatek: mt8173: switch mmsys to platform device probing
+  drm/mediatek: Add support for mmsys through a pdev
+  drm: mediatek: Omit warning on probe defers
+  drm/mediatek: update dt-bindings
+  dt-bindings: clock: mediatek: delete mmsys clocks
+  dt-bindings: mediatek: Change the binding for mmsys clocks
+  arm64: dts: mt2712e: Use the new mmsys clock compatible
+  arm64: dts: mt6797: Use the new mmsys clock compatible
+  clk: mediatek: mt2712e: Probe with new compatible
+  clk: mediatek: mt6797: Probe with new compatible
 
---zjsxrk3dvxpgxdoc
-Content-Type: application/pgp-signature; name="signature.asc"
+ .../bindings/arm/mediatek/mediatek,mmsys.txt  | 24 +++++----
+ .../display/mediatek/mediatek,disp.txt        | 34 +++++++-----
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  8 ++-
+ arch/arm64/boot/dts/mediatek/mt6797.dtsi      |  8 ++-
+ drivers/clk/mediatek/clk-mt2701-mm.c          | 42 ++++++++++-----
+ drivers/clk/mediatek/clk-mt2712-mm.c          |  9 ++--
+ drivers/clk/mediatek/clk-mt6797-mm.c          |  9 ++--
+ drivers/clk/mediatek/clk-mt8173.c             | 51 +++++++++++++++---
+ drivers/gpu/drm/mediatek/mtk_disp_color.c     |  4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c       |  4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c      |  4 +-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c       |  4 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c        | 53 ++++++++-----------
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.h        |  4 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 34 +++++++++---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h        |  4 +-
+ drivers/gpu/drm/mediatek/mtk_dsi.c            |  6 ++-
+ 17 files changed, 200 insertions(+), 102 deletions(-)
 
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEEXeEYjDsJh38OoyMzhLiadT7g8aMFAlvuptIACgkQhLiadT7g
-8aN3Hw/9Hd993cdBVgS3311aNV54CnV9yH1KIVpqt2eSYu0MM+UP8/nLt6caJdG8
-ZPhCyLUH/M82vb16yDszb28/B4JfugZzuPRxuPUHRXJYGks7v15dDqryHfusJtSK
-YOMAb5Hr1AUrMoP1O2hf8rh62C6N8yzxsvjCV+4kWKWLFwaYAq8BAuV4fPWm+twT
-JI4U1l2UboLoLIK85ScuqXHoxJ9/gPFL3IT+zHxh67R7AOBnv8juZItHiNmaKoSs
-CJUJIVZYKr0yhNEvVMG6Op6F94C1pV1VHk86UI3sCRSM7qawxjO/0vS9DyVZXwyS
-R9l49u849cty+H+JIRiulImgWtF2BV6TB4hBEdo9Ujl8Qub8fkH8MwONAvJKQNIl
-jaV7SkkUJBh4EIVFM7XVZ+N3x/EjIrvZH1esq2+0AGYZFpBFfaY3lt9akn6BZkBp
-2rH8+XwiISHoRozOf6BQrUsYL3yc0zYkcZwP9c1NASPSkMTJQlrKnUIJuRxCLNW3
-U6zjJRDitLtLBGyNcwghC/fa4u9NyMSUU5aPeblZA5dKL8Xb0oqIMu9+Czkpujo8
-ujBsfHh2cu0+xY5qLlCe0HagflxkAy+W+nC3aErE9ndISNZ2kZi76eD3w/njgl/y
-8LM5SLrnzMubfX1+Sa+yo/s6qWLDrUWOvZ1jfV241yUKkWPmzGw=
-=C2cQ
------END PGP SIGNATURE-----
-
---zjsxrk3dvxpgxdoc--
+-- 
+2.19.1
