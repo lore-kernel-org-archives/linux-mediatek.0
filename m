@@ -1,74 +1,51 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v5 08/12] dt-bindings: mediatek: Change the binding for
- mmsys clocks
-Date: Fri, 16 Nov 2018 17:15:22 -0600
-Message-ID: <20181116231522.GA18006@bogus>
-References: <20181116125449.23581-1-matthias.bgg@kernel.org>
- <20181116125449.23581-9-matthias.bgg@kernel.org>
+From: Sean Wang <sean.wang@kernel.org>
+Subject: Re: [PATCH] pinctrl: mediatek: Convert to using %pOFn instead of device_node.name
+Date: Fri, 16 Nov 2018 15:46:19 -0800
+Message-ID: <CAGp9LzpgZsj79Tf5Hee45Wt6ag+WHV0SMWd6qvvtj4G3pzAZKQ@mail.gmail.com>
+References: <20181116220540.17222-1-robh@kernel.org> <20181116220540.17222-4-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20181116125449.23581-9-matthias.bgg@kernel.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: matthias.bgg@kernel.org
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, sean.wang@kernel.org, airlied@linux.ie, mturquette@baylibre.com, sean.wang@mediatek.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, ulrich.hecht+renesas@gmail.com, wens@csie.org, Matthias Brugger <mbrugger@suse.com>, matthias.bgg@gmail.com, laurent.pinchart@ideasonboard.com, linux-mediatek@lists.infradead.org, rdunlap@infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181116220540.17222-4-robh@kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh@kernel.org
+Cc: Linus Walleij <linus.walleij@linaro.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gRnJpLCBOb3YgMTYsIDIwMTggYXQgMDE6NTQ6NDVQTSArMDEwMCwgbWF0dGhpYXMuYmdnQGtl
-cm5lbC5vcmcgd3JvdGU6Cj4gRnJvbTogTWF0dGhpYXMgQnJ1Z2dlciA8bWJydWdnZXJAc3VzZS5j
-b20+Cj4gCj4gT24gU29DcyB3aXRoIG5vIHB1YmxpY2FsIGF2YWlsYWJsZSBIVyBvciBubyB3b3Jr
-aW5nIGdyYXBoaWMgc3RhY2sKPiB3ZSBjaGFuZ2UgdGhlIGRldmljZXRyZWUgYmluZGluZyBmb3Ig
-dGhlIG1tc3lzIGNsb2NrIHBhcnQuIFRoaXMKPiB3YXkgd2UgZG9uJ3QgbmVlZCB0byByZWdpc3Rl
-ciBhIHBsYXRmb3JtIGRldmljZSBleHBsaWNpdGx5IGluIHRoZQo+IGRybSBkcml2ZXIuIEluc3Rl
-YWQgd2UgY2FuIGNyZWF0ZSBhIG1tc3lzIGNoaWxkIHdoaWNoIGludm9rZXMgdGhlCj4gY2xvY2sg
-ZHJpdmVyLgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1hdHRoaWFzIEJydWdnZXIgPG1icnVnZ2VyQHN1
-c2UuY29tPgo+IC0tLQo+ICAuLi4vYmluZGluZ3MvYXJtL21lZGlhdGVrL21lZGlhdGVrLG1tc3lz
-LnR4dCAgfCAyMSArKysrKysrKysrKystLS0tLS0tCj4gIC4uLi9kaXNwbGF5L21lZGlhdGVrL21l
-ZGlhdGVrLGRpc3AudHh0ICAgICAgICB8ICA0ICsrKysKPiAgMiBmaWxlcyBjaGFuZ2VkLCAxOCBp
-bnNlcnRpb25zKCspLCA3IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0
-aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL21lZGlhdGVrL21lZGlhdGVrLG1tc3lzLnR4dCBi
-L0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vbWVkaWF0ZWsvbWVkaWF0ZWss
-bW1zeXMudHh0Cj4gaW5kZXggNDQ2ODM0NWY4YjFhLi5kNGUyMDU5ODEzNjMgMTAwNjQ0Cj4gLS0t
-IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRl
-ayxtbXN5cy50eHQKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJt
-L21lZGlhdGVrL21lZGlhdGVrLG1tc3lzLnR4dAo+IEBAIC0xLDQgKzEsNCBAQAo+IC1NZWRpYXRl
-ayBtbXN5cyBjb250cm9sbGVyCj4gK01lZGlhdGVrIG1tc3lzIGNsb2NrIGNvbnRyb2xsZXIKPiAg
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PQo+ICAKPiAgVGhlIE1lZGlhdGVrIG1tc3lzIGNv
-bnRyb2xsZXIgcHJvdmlkZXMgdmFyaW91cyBjbG9ja3MgdG8gdGhlIHN5c3RlbS4KPiBAQCAtNiwx
-OCArNiwyNSBAQCBUaGUgTWVkaWF0ZWsgbW1zeXMgY29udHJvbGxlciBwcm92aWRlcyB2YXJpb3Vz
-IGNsb2NrcyB0byB0aGUgc3lzdGVtLgo+ICBSZXF1aXJlZCBQcm9wZXJ0aWVzOgo+ICAKPiAgLSBj
-b21wYXRpYmxlOiBTaG91bGQgYmUgb25lIG9mOgo+IC0JLSAibWVkaWF0ZWssbXQyNzEyLW1tc3lz
-IiwgInN5c2NvbiIKPiAtCS0gIm1lZGlhdGVrLG10Njc5Ny1tbXN5cyIsICJzeXNjb24iCj4gKwkt
-ICJtZWRpYXRlayxtdDI3MTItbW1zeXMtY2xrIiwgInN5c2NvbiIKPiArCS0gIm1lZGlhdGVrLG10
-Njc5Ny1tbXN5cy1jbGsiLCAic3lzY29uIgoKRG9lc24ndCBtYXRjaCB0aGUgZXhhbXBsZS4KCj4g
-IC0gI2Nsb2NrLWNlbGxzOiBNdXN0IGJlIDEKPiAgCj4gLVRoZSBtbXN5cyBjb250cm9sbGVyIHVz
-ZXMgdGhlIGNvbW1vbiBjbGsgYmluZGluZyBmcm9tCj4gK1RoZSBtbXN5cyBjbG9jayBjb250cm9s
-bGVyIHVzZXMgdGhlIGNvbW1vbiBjbGsgYmluZGluZyBmcm9tCj4gIERvY3VtZW50YXRpb24vZGV2
-aWNldHJlZS9iaW5kaW5ncy9jbG9jay9jbG9jay1iaW5kaW5ncy50eHQKPiAgVGhlIGF2YWlsYWJs
-ZSBjbG9ja3MgYXJlIGRlZmluZWQgaW4gZHQtYmluZGluZ3MvY2xvY2svbXQqLWNsay5oLgo+ICtJ
-dCBpcyBhIGNoaWxkIG9mIHRoZSBtbXN5cyBibG9jaywgc2VlIGJpbmRpbmcgYXQ6Cj4gK0RvY3Vt
-ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRp
-c3AudHh0Cj4gIAo+ICBFeGFtcGxlOgo+ICAKPiAtbW1zeXM6IGNsb2NrLWNvbnRyb2xsZXJAMTQw
-MDAwMDAgewo+IC0JY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtbW1zeXMiLCAic3lzY29u
-IjsKPiArbW1zeXM6IHN5c2NvbkAxNDAwMDAwMCB7Cj4gKwljb21wYXRpYmxlID0gIm1lZGlhdGVr
-LG10MjcxMi1tbXN5cyIsICJzeXNjb24iLCAic2ltcGxlLW1mZCI7Cj4gIAlyZWcgPSA8MCAweDE0
-MDAwMDAwIDAgMHgxMDAwPjsKPiAtCSNjbG9jay1jZWxscyA9IDwxPjsKPiArCj4gKwltbXN5c19j
-bGs6IGNsb2NrLWNvbnRyb2xsZXJAMTQwMDAwMDAgewo+ICsJCWNvbXBhdGlibGUgPSAibWVkaWF0
-ZWssbXQyNzEyLW1tc3lzLWNsayI7Cj4gKwkJI2Nsb2NrLWNlbGxzID0gPDE+OwoKVGhpcyBnb2Vz
-IGFnYWluc3QgdGhlIGdlbmVyYWwgZGlyZWN0aW9uIG9mIG5vdCBkZWZpbmluZyBzZXBhcmF0ZSBu
-b2RlcyAKZm9yIHByb3ZpZGVycyB3aXRoIG5vIHJlc291cmNlcy4KCldoeSBkbyB5b3UgbmVlZCB0
-aGlzIGFuZCB3aGF0IGRvZXMgaXQgYnV5IGlmIHlvdSBoYXZlIHRvIGNvbnRpbnVlIHRvIApzdXBw
-b3J0IHRoZSBleGlzdGluZyBjaGlwcz8KClJvYgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWwK
+On Fri, Nov 16, 2018 at 2:06 PM Rob Herring <robh@kernel.org> wrote:
+>
+> In preparation to remove the node name pointer from struct device_node,
+> convert printf users to use the %pOFn format specifier.
+>
+> Cc: Sean Wang <sean.wang@kernel.org>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-gpio@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Signed-off-by: Rob Herring <robh@kernel.org>
+
+Acked-by: Sean Wang <sean.wang@kernel.org>
+
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-paris.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> index d2179028f134..7ff5ffa88198 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> @@ -419,8 +419,8 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+>
+>         pins = of_find_property(node, "pinmux", NULL);
+>         if (!pins) {
+> -               dev_err(hw->dev, "missing pins property in node %s .\n",
+> -                       node->name);
+> +               dev_err(hw->dev, "missing pins property in node %pOFn .\n",
+> +                       node);
+>                 return -EINVAL;
+>         }
+>
+> --
+> 2.19.1
+>
