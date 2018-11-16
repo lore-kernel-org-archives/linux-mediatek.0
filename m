@@ -1,59 +1,36 @@
-From: matthias.bgg@kernel.org
-Subject: [PATCH v5 12/12] clk: mediatek: mt6797: Probe with new compatible
-Date: Fri, 16 Nov 2018 13:54:49 +0100
-Message-ID: <20181116125449.23581-13-matthias.bgg@kernel.org>
-References: <20181116125449.23581-1-matthias.bgg@kernel.org>
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Subject: Re: [PATCH 4/5] phy: mvebu-cp110-comphy: convert to use eth phy
+ mode and submode
+Date: Fri, 16 Nov 2018 17:05:21 +0100
+Message-ID: <20181116170521.11ee68e9@bootlin.com>
+References: <20181108003617.10334-1-grygorii.strashko@ti.com>
+        <20181108003617.10334-5-grygorii.strashko@ti.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181116125449.23581-1-matthias.bgg@kernel.org>
+In-Reply-To: <20181108003617.10334-5-grygorii.strashko@ti.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, mark.rutland@arm.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, mturquette@baylibre.com, sboyd@codeaurora.org, ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, matthias.bgg@gmail.com
-Cc: sean.wang@mediatek.com, sean.wang@kernel.org, rdunlap@infradead.org, wens@csie.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>
+To: Grygorii Strashko <grygorii.strashko@ti.com>
+Cc: "David S. Miller" <davem@davemloft.net>, Kishon Vijay Abraham I <kishon@ti.com>, netdev@vger.kernel.org, Sekhar Nori <nsekhar@ti.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Tony Lindgren <tony@atomide.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Quentin Schulz <quentin.schulz@bootlin.com>, Vivek Gautam <vivek.gautam@codeaurora.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Carlo Caione <carlo@caione.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Manu Gautam <mgautam@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Matthias Brugger <mbrugger@suse.com>
+Hello Grygorii,
 
-The clock node is now a child of the mmsys node.
-Update the driver to support this and thenew compatible
-in the driver.
+On Wed, 7 Nov 2018 18:36:16 -0600
+Grygorii Strashko <grygorii.strashko@ti.com> wrote:
 
-Signed-off-by: Matthias Brugger <mbrugger@suse.com>
----
- drivers/clk/mediatek/clk-mt6797-mm.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+>Convert mvebu-cp110-comphy PHY driver to use recently introduced
+>PHY_MODE_ETHERNET and phy_set_mode_ext().
 
-diff --git a/drivers/clk/mediatek/clk-mt6797-mm.c b/drivers/clk/mediatek/clk-mt6797-mm.c
-index c57d3eed270d..051bab99d10f 100644
---- a/drivers/clk/mediatek/clk-mt6797-mm.c
-+++ b/drivers/clk/mediatek/clk-mt6797-mm.c
-@@ -101,7 +101,7 @@ static const struct mtk_gate mm_clks[] = {
- };
- 
- static const struct of_device_id of_match_clk_mt6797_mm[] = {
--	{ .compatible = "mediatek,mt6797-mmsys", },
-+	{ .compatible = "mediatek,mt6797-mmsys-clk", },
- 	{}
- };
- 
-@@ -109,14 +109,15 @@ static int clk_mt6797_mm_probe(struct platform_device *pdev)
- {
- 	struct clk_onecell_data *clk_data;
- 	int r;
--	struct device_node *node = pdev->dev.of_node;
-+	struct device *parent = pdev->dev.parent;
- 
- 	clk_data = mtk_alloc_clk_data(CLK_MM_NR);
- 
--	mtk_clk_register_gates(node, mm_clks, ARRAY_SIZE(mm_clks),
-+	mtk_clk_register_gates(parent->of_node, mm_clks, ARRAY_SIZE(mm_clks),
- 			       clk_data);
- 
--	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-+	r = of_clk_add_provider(parent->of_node, of_clk_src_onecell_get,
-+			clk_data);
- 	if (r)
- 		dev_err(&pdev->dev,
- 			"could not register clock provider: %s: %d\n",
+I gave it a quick test on MacchiatoBin, it works fine and the automatic
+mode switching in the comphy happens as expected, so :
+
+Tested-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
+
+>Signed-off-by: Grygorii Strashko <grygorii.strashko@ti.com>
+
 -- 
-2.19.1
+Maxime Chevallier, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
