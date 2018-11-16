@@ -1,25 +1,16 @@
 From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: [PATCH 0/6] ARM: dts: Fix incomplete cooling-maps
-Date: Fri, 16 Nov 2018 15:31:09 +0530
-Message-ID: <cover.1542362000.git.viresh.kumar@linaro.org>
+Subject: [PATCH 3/6] ARM: dts: mt7623: Add all CPUs in cooling maps
+Date: Fri, 16 Nov 2018 15:31:12 +0530
+Message-ID: <3c44454d70c9c9bafcf86f2c020d17d048f33360.1542362000.git.viresh.kumar@linaro.org>
+References: <cover.1542362000.git.viresh.kumar@linaro.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1542362000.git.viresh.kumar@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>, Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>, Li Yang <leoyang.li@nxp.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Shawn Guo <shawnguo@kernel.org>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, devicetree@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org
+To: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, devicetree@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
-
-Hello,
-
-Now that the below commit are merged in mainline, we can start fixing
-the platform specific DT files:
-
-commit d7a4303b8d1f ("dt-bindings: thermal: Allow multiple devices to
-share cooling map")
-
-commit a92bab8919e3 ("of: thermal: Allow multiple devices to share
-cooling map")
 
 Each CPU can (and does) participate in cooling down the system but the
 DT only captures a handful of them, normally CPU0, in the cooling maps.
@@ -35,40 +26,44 @@ cooling maps, as the hardware doesn't have any such limitations.
 Update cooling maps to include all devices affected by individual trip
 points.
 
---
-viresh
+Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+---
+ arch/arm/boot/dts/mt7623.dtsi | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
 
-Viresh Kumar (6):
-  ARM: dts: exynos: Add all CPUs in cooling maps
-  ARM: dts: ls1021a: Add all CPUs in cooling maps
-  ARM: dts: mt7623: Add all CPUs in cooling maps
-  ARM: dts: rockchip: Add all CPUs in cooling maps
-  ARM: dts: sunxi: Add all CPUs in cooling maps
-  ARM: dts: uniphier: Add all CPUs in cooling maps
-
- arch/arm/boot/dts/exynos3250-artik5.dtsi      |   6 +-
- arch/arm/boot/dts/exynos3250-monk.dts         |   6 +-
- arch/arm/boot/dts/exynos3250-rinato.dts       |   6 +-
- arch/arm/boot/dts/exynos4210-trats.dts        |   4 +-
- arch/arm/boot/dts/exynos4210.dtsi             |   2 +-
- .../boot/dts/exynos4412-itop-scp-core.dtsi    |   8 +-
- arch/arm/boot/dts/exynos4412-midas.dtsi       |   8 +-
- .../boot/dts/exynos4412-odroid-common.dtsi    |   8 +-
- arch/arm/boot/dts/exynos4412-odroidu3.dts     |  17 ++-
- arch/arm/boot/dts/exynos4412.dtsi             |   6 +-
- arch/arm/boot/dts/exynos5250.dtsi             |   7 +-
- arch/arm/boot/dts/exynos5422-odroidhc1.dts    | 106 +++++++++++-------
- .../boot/dts/exynos5422-odroidxu3-common.dtsi | 106 +++++++++++-------
- arch/arm/boot/dts/ls1021a.dtsi                |   2 +
- arch/arm/boot/dts/mt7623.dtsi                 |  15 ++-
- arch/arm/boot/dts/rk322x.dtsi                 |  10 +-
- arch/arm/boot/dts/rk3288-veyron-mickey.dts    |  24 ++--
- arch/arm/boot/dts/rk3288.dtsi                 |  15 ++-
- arch/arm/boot/dts/sun6i-a31.dtsi              |  11 +-
- arch/arm/boot/dts/sun7i-a20.dtsi              |   5 +-
- arch/arm/boot/dts/sun8i-a33.dtsi              |  16 ++-
- arch/arm/boot/dts/uniphier-pxs2.dtsi          |   6 +-
- 22 files changed, 250 insertions(+), 144 deletions(-)
-
+diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+index d01bdee6f2f3..7cae886f79c9 100644
+--- a/arch/arm/boot/dts/mt7623.dtsi
++++ b/arch/arm/boot/dts/mt7623.dtsi
+@@ -187,17 +187,26 @@
+ 			cooling-maps {
+ 				map0 {
+ 					trip = <&cpu_passive>;
+-					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 				};
+ 
+ 				map1 {
+ 					trip = <&cpu_active>;
+-					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 				};
+ 
+ 				map2 {
+ 					trip = <&cpu_hot>;
+-					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 				};
+ 			};
+ 		};
 -- 
 2.19.1.568.g152ad8e3369a
