@@ -1,90 +1,53 @@
 From: matthias.bgg@kernel.org
-Subject: [PATCH v2 2/3] clk: mediatek: Add flags to mtk_gate
-Date: Fri, 16 Nov 2018 19:09:00 +0100
-Message-ID: <20181116180901.17737-3-matthias.bgg@kernel.org>
-References: <20181116180901.17737-1-matthias.bgg@kernel.org>
+Subject: [PATCH] arm64: dts: Add uart for mt6797 EVB
+Date: Fri, 16 Nov 2018 19:30:40 +0100
+Message-ID: <20181116183040.18696-1-matthias.bgg@kernel.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181116180901.17737-1-matthias.bgg@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com
-Cc: jasu@njomotys.info, sean.wang@kernel.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Jasper Mattsson <jasu@njomotys.info>
+From: Matthias Brugger <mbrugger@suse.com>
 
-This is required to mark gates as CLK_IS_CRITICAL.
+This patch adds the pinctrl configuration for the mt6797 EVB.
 
-Fixes: 96596aa06628 ("clk: mediatek: add clk support for MT6797")
-Signed-off-by: Jasper Mattsson <jasu@njomotys.info>
-Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 ---
- drivers/clk/mediatek/clk-gate.c | 4 +++-
- drivers/clk/mediatek/clk-gate.h | 3 ++-
- drivers/clk/mediatek/clk-mtk.c  | 2 +-
- drivers/clk/mediatek/clk-mtk.h  | 1 +
- 4 files changed, 7 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt6797-evb.dts | 2 ++
+ arch/arm64/boot/dts/mediatek/mt6797.dtsi    | 7 +++++++
+ 2 files changed, 9 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
-index 934bf0e45e26..9628d4e7690b 100644
---- a/drivers/clk/mediatek/clk-gate.c
-+++ b/drivers/clk/mediatek/clk-gate.c
-@@ -157,7 +157,8 @@ struct clk *mtk_clk_register_gate(
- 		int clr_ofs,
- 		int sta_ofs,
- 		u8 bit,
--		const struct clk_ops *ops)
-+		const struct clk_ops *ops,
-+		unsigned long flags)
- {
- 	struct mtk_clk_gate *cg;
- 	struct clk *clk;
-@@ -172,6 +173,7 @@ struct clk *mtk_clk_register_gate(
- 	init.parent_names = parent_name ? &parent_name : NULL;
- 	init.num_parents = parent_name ? 1 : 0;
- 	init.ops = ops;
-+	init.flags = flags;
+diff --git a/arch/arm64/boot/dts/mediatek/mt6797-evb.dts b/arch/arm64/boot/dts/mediatek/mt6797-evb.dts
+index c79109c65409..237e869a5fa1 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6797-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt6797-evb.dts
+@@ -33,4 +33,6 @@
  
- 	cg->regmap = regmap;
- 	cg->set_ofs = set_ofs;
-diff --git a/drivers/clk/mediatek/clk-gate.h b/drivers/clk/mediatek/clk-gate.h
-index 72ef89b3ad7b..9f766dfe1d57 100644
---- a/drivers/clk/mediatek/clk-gate.h
-+++ b/drivers/clk/mediatek/clk-gate.h
-@@ -47,6 +47,7 @@ struct clk *mtk_clk_register_gate(
- 		int clr_ofs,
- 		int sta_ofs,
- 		u8 bit,
--		const struct clk_ops *ops);
-+		const struct clk_ops *ops,
-+		unsigned long flags);
- 
- #endif /* __DRV_CLK_GATE_H */
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index 9c0ae4278a94..ef410413bb0b 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -130,7 +130,7 @@ int mtk_clk_register_gates(struct device_node *node,
- 				gate->regs->set_ofs,
- 				gate->regs->clr_ofs,
- 				gate->regs->sta_ofs,
--				gate->shift, gate->ops);
-+				gate->shift, gate->ops, gate->flags);
- 
- 		if (IS_ERR(clk)) {
- 			pr_err("Failed to register clk %s: %ld\n",
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index daab6ee94788..987ff2855249 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -162,6 +162,7 @@ struct mtk_gate {
- 	const struct mtk_gate_regs *regs;
- 	int shift;
- 	const struct clk_ops *ops;
-+	unsigned long flags;
+ &uart0 {
+ 	status = "okay";
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart0_pins_a>;
  };
+diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+index a64bb84bdec3..2b2a69c7567f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+@@ -142,6 +142,13 @@
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
  
- int mtk_clk_register_gates(struct device_node *node,
++		uart0_pins_a: uart0 {
++			pins0 {
++				pinmux = <MT6797_GPIO234__FUNC_UTXD0>,
++					 <MT6797_GPIO235__FUNC_URXD0>;
++			};
++		};
++
+ 		uart1_pins_a: uart1 {
+ 			pins1 {
+ 				pinmux = <MT6797_GPIO232__FUNC_URXD1>,
 -- 
 2.19.1
