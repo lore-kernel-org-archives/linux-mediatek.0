@@ -1,83 +1,143 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [resend PATCH 1/3] pwm: mediatek: drop flag 'has_clks'
-Date: Fri, 16 Nov 2018 11:22:44 +0100
-Message-ID: <20181116102244.GB14769@ulmo>
-References: <4c9044427b1aab373acd6ac76f0c905e2be79784.1542074855.git.ryder.lee@mediatek.com>
- <20181114124752.GI2620@ulmo>
- <20181116064748.6c7shn3am4wejrnj@pengutronix.de>
+From: Quentin Schulz <quentin.schulz@bootlin.com>
+Subject: Re: [PATCH v2 3/5] phy: ocelot-serdes: convert to use eth phy mode
+ and submode
+Date: Fri, 16 Nov 2018 12:15:31 +0100
+Message-ID: <20181116111530.iqqcchtcnmlssvdp@qschulz>
+References: <20181109234755.21687-1-grygorii.strashko@ti.com>
+ <20181109234755.21687-4-grygorii.strashko@ti.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="s2ZSL+KKDSLx8OML"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="zjsxrk3dvxpgxdoc"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20181116064748.6c7shn3am4wejrnj@pengutronix.de>
+In-Reply-To: <20181109234755.21687-4-grygorii.strashko@ti.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-pwm@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>
+To: Grygorii Strashko <grygorii.strashko@ti.com>
+Cc: "David S. Miller" <davem@davemloft.net>, Kishon Vijay Abraham I <kishon@ti.com>, Russell King - ARM Linux <linux@armlinux.org.uk>, netdev@vger.kernel.org, Sekhar Nori <nsekhar@ti.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Tony Lindgren <tony@atomide.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Vivek Gautam <vivek.gautam@codeaurora.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Carlo Caione <carlo@caione.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Manu Gautam <mgautam@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 
---s2ZSL+KKDSLx8OML
-Content-Type: text/plain; charset=utf-8
+--zjsxrk3dvxpgxdoc
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Nov 16, 2018 at 07:47:48AM +0100, Uwe Kleine-K=C3=B6nig wrote:
-> On Wed, Nov 14, 2018 at 01:47:52PM +0100, Thierry Reding wrote:
-> > On Tue, Nov 13, 2018 at 10:08:22AM +0800, Ryder Lee wrote:
-> > > The flag 'has_clks' and related checks are superfluous as the CCF
-> > > subsystem does this for you.
-> >=20
-> > Both of these mechanisms aren't equivalent. While CCF can deal with
-> > optional clocks, what the has_clks flag actually means is that the
-> > device doesn't need a clock (or doesn't have a clock input) on the
-> > devices where it is cleared.
-> >=20
-> > So I'd actually be in favor of keeping the has_clks property because it
-> > serves as an additional sanity check. For example if you run this driver
-> > on an SoC that "has clocks" but if you don't list them in DT, then after
-> > this patch the driver will happily continue without clocks, even though
-> > it may break completely without those clocks. I've seen SoCs respond to
-> > disabled clocks for a hardware block in different ways, in many cases an
-> > access to any of the registers will completely hang the CPU. In other
-> > cases it may just crash in some other way or give you some sort of
-> > machine exception. None of those are good, and make the tiny bit of
-> > additional code required to support the has_clks flag very attractive.
-> >=20
-> > But that's just my opinion. If you prefer to throw away that safety
-> > barrier, be my guest. But if you do, please move this functionality into
-> > the clock framework first and then make the driver use it.
+Hi Grygorii,
+
+On Fri, Nov 09, 2018 at 05:47:53PM -0600, Grygorii Strashko wrote:
+> Convert ocelot-serdes PHY driver to use recently introduced
+> PHY_MODE_ETHERNET and phy_set_mode_ext().
 >=20
-> The usual policy is: If the things specified in the dt are
-> wrong or incomplete, it's ok to fail however you like. So from a
-> correctness POV I think the change is fine.
 
-Erm... that's pretty much what I said. It doesn't necessarily mean that
-it's the right thing to do, though. If we know that clocks are required
-and we don't find them in DT, it's better to complain and let the user
-know exactly what is wrong rather than just let it crash and have them
-track down the bug without additional information.
+Thanks for the patch, it's annoying to have to map PHY_MODE_SGMII and
+PHY_INTERFACE_MODE_SGMII :)
 
-Thierry
+> Signed-off-by: Grygorii Strashko <grygorii.strashko@ti.com>
+> ---
+>  drivers/net/ethernet/mscc/ocelot.c   |  9 ++-------
+>  drivers/phy/mscc/phy-ocelot-serdes.c | 14 ++++++++++----
+>  2 files changed, 12 insertions(+), 11 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/mscc/ocelot.c b/drivers/net/ethernet/ms=
+cc/ocelot.c
+> index 3238b9e..3edb608 100644
+> --- a/drivers/net/ethernet/mscc/ocelot.c
+> +++ b/drivers/net/ethernet/mscc/ocelot.c
+> @@ -472,7 +472,6 @@ static int ocelot_port_open(struct net_device *dev)
+>  {
+>  	struct ocelot_port *port =3D netdev_priv(dev);
+>  	struct ocelot *ocelot =3D port->ocelot;
+> -	enum phy_mode phy_mode;
+>  	int err;
+> =20
+>  	/* Enable receiving frames on the port, and activate auto-learning of
+> @@ -484,12 +483,8 @@ static int ocelot_port_open(struct net_device *dev)
+>  			 ANA_PORT_PORT_CFG, port->chip_port);
+> =20
+>  	if (port->serdes) {
+> -		if (port->phy_mode =3D=3D PHY_INTERFACE_MODE_SGMII)
+> -			phy_mode =3D PHY_MODE_SGMII;
+> -		else
+> -			phy_mode =3D PHY_MODE_QSGMII;
+> -
+> -		err =3D phy_set_mode(port->serdes, phy_mode);
+> +		err =3D phy_set_mode_ext(port->serdes, PHY_MODE_ETHERNET,
+> +				       port->phy_mode);
+>  		if (err) {
+>  			netdev_err(dev, "Could not set mode of SerDes\n");
+>  			return err;
+> diff --git a/drivers/phy/mscc/phy-ocelot-serdes.c b/drivers/phy/mscc/phy-=
+ocelot-serdes.c
+> index c61a9890..f525a21 100644
+> --- a/drivers/phy/mscc/phy-ocelot-serdes.c
+> +++ b/drivers/phy/mscc/phy-ocelot-serdes.c
+> @@ -11,6 +11,7 @@
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+>  #include <linux/of_platform.h>
+> +#include <linux/phy.h>
+>  #include <linux/phy/phy.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/regmap.h>
+> @@ -116,8 +117,10 @@ struct serdes_mux {
+>  	.mux =3D _mux,						\
+>  }
+> =20
+> -#define SERDES_MUX_SGMII(i, p, m, c) SERDES_MUX(i, p, PHY_MODE_SGMII, m,=
+ c)
+> -#define SERDES_MUX_QSGMII(i, p, m, c) SERDES_MUX(i, p, PHY_MODE_QSGMII, =
+m, c)
+> +#define SERDES_MUX_SGMII(i, p, m, c) \
+> +	SERDES_MUX(i, p, PHY_INTERFACE_MODE_SGMII, m, c)
+> +#define SERDES_MUX_QSGMII(i, p, m, c) \
+> +	SERDES_MUX(i, p, PHY_INTERFACE_MODE_QSGMII, m, c)
+> =20
+>  static const struct serdes_mux ocelot_serdes_muxes[] =3D {
+>  	SERDES_MUX_SGMII(SERDES1G(0), 0, 0, 0),
+> @@ -164,12 +167,15 @@ static int serdes_set_mode(struct phy *phy, enum ph=
+y_mode mode, int submode)
+>  	unsigned int i;
+>  	int ret;
+> =20
+> +	if (mode !=3D PHY_MODE_ETHERNET)
+> +		return -EINVAL;
+> +
 
---s2ZSL+KKDSLx8OML
+This works for now because we only support Ethernet muxes for now but
+this IP also supports PHY_MODE_PCIE.
+
+It seems weird to me that the day we'll add support for PCIE muxing we
+will have in ocelot_serdes_muxes[i].mode either a PHY_INTERFACE_MODE_*
+or a PHY_MODE_PCIE. This is not an issue for now since you do the mode
+!=3D PHY_MODE_ETHERNET just above but once we get rid of this, we only
+test for submode !=3D ocelot_serdes_muxes[i].mode and both
+PHY_INTERFACE_MODE_1000BASEX and PHY_MODE_PCIE will have the same index
+thus might be confused.
+
+Should we add a submode to the SERDES_MUX macro, move PHY_MODE_*MII to
+this submode and have PHY_MODE_ETHERNET/PCIE in the mode field?
+
+Thanks,
+Quentin
+
+--zjsxrk3dvxpgxdoc
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlvumnQACgkQ3SOs138+
-s6FeCg/+IGbZAVX4NM9KqGMAlCKbZZHB50ybxRy44LZmoepfGNAyx/aTSRIUqJPJ
-nZpBi4xS+lDw2cDg9yhBkIGbDvcKZciTsR7zq2AEPgg0jeigRlqZk0uTSkzJdYnA
-WcNnv1MW8L3X74MpLlBVU7iqpQb1ihj3VaLgqH7ySdMVp70G+b18SSZYjxoxvsGP
-9PbCroW823NhLfNLLYe6Goc3B2AzHFY3imB0wHhE3qPCewxT5qv9v7VqGRozGR4Y
-Ne2gY738btUEPCiU/1ncMzNQ3zSB16ip3YUSX7abJFf8FGR2W9EZZ0KzNsNPreV/
-hEDF56dJNDDB3HrpxW7t4KBOzct2tbjWLQLKNuDYxshdsOolNIb7IgtOCiddTHi/
-Yo+vA74iquxsAFlL5bjWwkSyem6UeZFztBt6IQHL/WvaiosrvxGzYau061Nf3E6T
-q+13Bv3bUKU3H2Fm8bLi1OnRkENUsbHurzXY+Q9uw8i0k08FIf8lH2LbDYs6E7U7
-lLYfQhAaJlurHPepdctFzCZGXpUStYu/sVj/QDbhqPssXi6/AgiMcYnWLxufWDwN
-/wKfjMAg9AmBpXuZTmDJBQF6KuUzDsAhvhxcbHgpfO/8tAMHC2aDKp6dTmAvC3/W
-VNo/2hmln98pZlhy+cqhjygcqXl77BnSBUKSS/h1UjTuIeBvi+k=
-=oX8L
+iQIzBAEBCgAdFiEEXeEYjDsJh38OoyMzhLiadT7g8aMFAlvuptIACgkQhLiadT7g
+8aN3Hw/9Hd993cdBVgS3311aNV54CnV9yH1KIVpqt2eSYu0MM+UP8/nLt6caJdG8
+ZPhCyLUH/M82vb16yDszb28/B4JfugZzuPRxuPUHRXJYGks7v15dDqryHfusJtSK
+YOMAb5Hr1AUrMoP1O2hf8rh62C6N8yzxsvjCV+4kWKWLFwaYAq8BAuV4fPWm+twT
+JI4U1l2UboLoLIK85ScuqXHoxJ9/gPFL3IT+zHxh67R7AOBnv8juZItHiNmaKoSs
+CJUJIVZYKr0yhNEvVMG6Op6F94C1pV1VHk86UI3sCRSM7qawxjO/0vS9DyVZXwyS
+R9l49u849cty+H+JIRiulImgWtF2BV6TB4hBEdo9Ujl8Qub8fkH8MwONAvJKQNIl
+jaV7SkkUJBh4EIVFM7XVZ+N3x/EjIrvZH1esq2+0AGYZFpBFfaY3lt9akn6BZkBp
+2rH8+XwiISHoRozOf6BQrUsYL3yc0zYkcZwP9c1NASPSkMTJQlrKnUIJuRxCLNW3
+U6zjJRDitLtLBGyNcwghC/fa4u9NyMSUU5aPeblZA5dKL8Xb0oqIMu9+Czkpujo8
+ujBsfHh2cu0+xY5qLlCe0HagflxkAy+W+nC3aErE9ndISNZ2kZi76eD3w/njgl/y
+8LM5SLrnzMubfX1+Sa+yo/s6qWLDrUWOvZ1jfV241yUKkWPmzGw=
+=C2cQ
 -----END PGP SIGNATURE-----
 
---s2ZSL+KKDSLx8OML--
+--zjsxrk3dvxpgxdoc--
