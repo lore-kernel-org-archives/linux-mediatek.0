@@ -1,499 +1,138 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [v3, PATCH 1/2] net:stmmac: dwmac-mediatek: add support for mt2712
-Date: Fri, 16 Nov 2018 17:03:25 -0800
-Message-ID: <CAGp9Lzq_4w656HpUYMNDp64e=0mKDGvs46d4fq61wp1GAyzmvA@mail.gmail.com>
-References: <1542359926-28800-1-git-send-email-biao.huang@mediatek.com>
+From: Yong Wu <yong.wu@mediatek.com>
+Subject: [PATCH v3 00/15] MT8183 IOMMU SUPPORT
+Date: Sat, 17 Nov 2018 10:35:27 +0800
+Message-ID: <1542422142-30688-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1542359926-28800-1-git-send-email-biao.huang@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: biao.huang@mediatek.com
-Cc: davem@davemloft.net, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, nelson.chang@mediatek.com, andrew@lunn.ch, netdev@vger.kernel.org, liguo.zhang@mediatek.com, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, joabreu@synopsys.com, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, arnd@arndb.de, yingjoe.chen@mediatek.com, yong.wu@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, Arvind Yadav <arvind.yadav.cs@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
- wi
-On Fri, Nov 16, 2018 at 1:19 AM Biao Huang <biao.huang@mediatek.com> wrote:
->
-> Add Ethernet support for MediaTek SoCs from the mt2712 family
->
-> Change-Id: Id3c535627088227793bd36405994edf2dc765e6a
+This patchset mainly adds support for mt8183 IOMMU and SMI.
 
-Drop change-Id
+mt8183 has only one M4U like mt8173 and is also MTK IOMMU gen2 which
+uses ARM Short-Descriptor translation table format.
 
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> ---
->  drivers/net/ethernet/stmicro/stmmac/Kconfig        |    8 +
->  drivers/net/ethernet/stmicro/stmmac/Makefile       |    1 +
->  .../net/ethernet/stmicro/stmmac/dwmac-mediatek.c   |  383 ++++++++++++++++++++
->  3 files changed, 392 insertions(+)
->  create mode 100644 drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
->
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/Kconfig b/drivers/net/ethernet/stmicro/stmmac/Kconfig
-> index edf2036..28a7a28 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/Kconfig
-> +++ b/drivers/net/ethernet/stmicro/stmmac/Kconfig
-> @@ -75,6 +75,14 @@ config DWMAC_LPC18XX
->         ---help---
->           Support for NXP LPC18xx/43xx DWMAC Ethernet.
->
-> +config DWMAC_MEDIATEK
-> +       tristate "MediaTek MT27xx GMAC support"
-> +       depends on OF && (ARCH_MEDIATEK || COMPILE_TEST)
-> +       help
-> +         Support for MediaTek GMAC Ethernet controller.
-> +
-> +         This selects the MT2712 SoC support for the stmmac driver.
-> +
->  config DWMAC_MESON
->         tristate "Amlogic Meson dwmac support"
->         default ARCH_MESON
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/Makefile b/drivers/net/ethernet/stmicro/stmmac/Makefile
-> index 99967a8..bf09701 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/Makefile
-> +++ b/drivers/net/ethernet/stmicro/stmmac/Makefile
-> @@ -13,6 +13,7 @@ obj-$(CONFIG_STMMAC_PLATFORM) += stmmac-platform.o
->  obj-$(CONFIG_DWMAC_ANARION)    += dwmac-anarion.o
->  obj-$(CONFIG_DWMAC_IPQ806X)    += dwmac-ipq806x.o
->  obj-$(CONFIG_DWMAC_LPC18XX)    += dwmac-lpc18xx.o
-> +obj-$(CONFIG_DWMAC_MEDIATEK)   += dwmac-mediatek.o
->  obj-$(CONFIG_DWMAC_MESON)      += dwmac-meson.o dwmac-meson8b.o
->  obj-$(CONFIG_DWMAC_OXNAS)      += dwmac-oxnas.o
->  obj-$(CONFIG_DWMAC_ROCKCHIP)   += dwmac-rk.o
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> new file mode 100644
-> index 0000000..a80b3e0
-> --- /dev/null
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> @@ -0,0 +1,383 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2018 MediaTek Inc.
-> + */
-> +#include <linux/io.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <linux/of.h>
-> +#include <linux/of_device.h>
-> +#include <linux/of_net.h>
-> +#include <linux/regmap.h>
-> +#include <linux/stmmac.h>
-> +
-> +#include "stmmac.h"
-> +#include "stmmac_platform.h"
-> +
-> +/* Peri Configuration register */
-> +#define PERI_ETH_PHY_INTF_SEL  0x418
-> +#define PHY_INTF_MII_GMII      0
-> +#define PHY_INTF_RGMII         1
-> +#define PHY_INTF_RMII          4
-> +#define RMII_CLK_SRC_RXC       BIT(4)
-> +#define RMII_CLK_SRC_INTERNAL  BIT(5)
-> +
-> +#define PERI_ETH_PHY_DLY       0x428
-> +#define PHY_DLY_GTXC_INV       BIT(6)
-> +#define PHY_DLY_GTXC_ENABLE    BIT(5)
-> +#define PHY_DLY_GTXC_STAGES    GENMASK(4, 0)
-> +#define PHY_DLY_TXC_INV                BIT(20)
-> +#define PHY_DLY_TXC_ENABLE     BIT(19)
-> +#define PHY_DLY_TXC_STAGES     GENMASK(18, 14)
-> +#define PHY_DLY_TXC_SHIFT      14
-> +#define PHY_DLY_RXC_INV                BIT(13)
-> +#define PHY_DLY_RXC_ENABLE     BIT(12)
-> +#define PHY_DLY_RXC_STAGES     GENMASK(11, 7)
-> +#define PHY_DLY_RXC_SHIFT      7
-> +
-> +#define PERI_ETH_DLY_FINE      0x800
-> +#define ETH_RMII_DLY_TX_INV    BIT(2)
-> +#define ETH_FINE_DLY_GTXC      BIT(1)
-> +#define ETH_FINE_DLY_RXC       BIT(0)
-> +
-> +enum dwmac_clks_map {
-> +       DWMAC_CLK_AXI_DRAM,
-> +       DWMAC_CLK_APB_REG,
-> +       DWMAC_CLK_MAC_EXT,
-> +       DWMAC_CLK_MAC_PARENT,
-> +       DWMAC_CLK_PTP_REF,
-> +       DWMAC_CLK_PTP_PARENT,
-> +       DWMAC_CLK_PTP_TOP,
-> +       DWMAC_CLK_MAX
-> +};
-> +
-> +struct mac_delay_struct {
-> +       u32 tx_delay;
-> +       u32 rx_delay;
-> +       u32 tx_inv;
-> +       u32 rx_inv;
-> +};
-> +
-> +struct mediatek_dwmac_plat_data {
-> +       struct device *dev;
-> +       struct regmap *peri_regmap;
-> +       struct clk *clks[DWMAC_CLK_MAX];
-> +       struct device_node *np;
-> +       int phy_mode;
-> +       struct mac_delay_struct mac_delay;
-> +       const struct mediatek_dwmac_variant *variant;
-> +       int fine_tune;
-> +       int rmii_rxc;
-> +};
-> +
-> +struct mediatek_dwmac_variant {
-> +       int (*dwmac_config_dt)(struct mediatek_dwmac_plat_data *plat);
-> +       int (*dwmac_enable_clks)(struct mediatek_dwmac_plat_data *plat);
-> +       void (*dwmac_disable_clks)(struct mediatek_dwmac_plat_data *plat);
+The mt8183 M4U-SMI HW diagram is as below:
 
-Each variant usually can reuse the same config_dt, enable/disable_clks function.
+                          EMI
+                           |
+                          M4U
+                           |
+                       ----------
+                       |        |
+                   gals0-rx   gals1-rx
+                       |        |
+                       |        |
+                   gals0-tx   gals1-tx
+                       |        |
+                      ------------
+                       SMI Common
+                      ------------
+                           |
+  +-----+-----+--------+-----+-----+-------+-------+
+  |     |     |        |     |     |       |       |
+  |     |  gals-rx  gals-rx  |   gals-rx gals-rx gals-rx
+  |     |     |        |     |     |       |       |
+  |     |     |        |     |     |       |       |
+  |     |  gals-tx  gals-tx  |   gals-tx gals-tx gals-tx
+  |     |     |        |     |     |       |       |
+larb0 larb1  IPU0    IPU1  larb4  larb5  larb6    CCU
+disp  vdec   img     cam    venc   img    cam
 
-> +       u32 rx_delay_max;
-> +       u32 tx_delay_max;
-> +};
-> +
-> +static const char * const mediatek_dwmac_clks_name[] = {
-> +       "axi", "apb", "mac_ext", "mac_parent", "ptp_ref", "ptp_parent", "ptp_top"
-> +};
-> +
-> +static int mt2712_set_interface(struct mediatek_dwmac_plat_data *plat)
+All the connections are HW fixed, SW can NOT adjust it.
 
-Kconfig indicates it's a mt27xx driver. so it's good if there is a
-more generic prefix.
+Compared with mt8173, we add a GALS(Global Async Local Sync) module
+between SMI-common and M4U, and additional GALS between larb2/3/5/6
+and SMI-common. GALS can help synchronize for the modules in different
+clock frequency, it can be seen as a "asynchronous fifo".
 
-> +{
-> +       int rmii_rxc = plat->rmii_rxc ? RMII_CLK_SRC_RXC : 0;
-> +       u32 intf_val = 0;
-> +
-> +       /* select phy interface in top control domain */
-> +       switch (plat->phy_mode) {
-> +       case PHY_INTERFACE_MODE_MII:
-> +               intf_val |= PHY_INTF_MII_GMII;
-> +               break;
-> +       case PHY_INTERFACE_MODE_RMII:
-> +               intf_val |= PHY_INTF_RMII;
-> +               intf_val |= rmii_rxc;
-> +               break;
-> +       case PHY_INTERFACE_MODE_RGMII:
-> +       case PHY_INTERFACE_MODE_RGMII_TXID:
-> +       case PHY_INTERFACE_MODE_RGMII_RXID:
-> +       case PHY_INTERFACE_MODE_RGMII_ID:
-> +               intf_val |= PHY_INTF_RGMII;
-> +               break;
-> +       default:
-> +               dev_err(plat->dev, "phy interface not supported\n");
-> +               return -EINVAL;
-> +       }
-> +
-> +       regmap_write(plat->peri_regmap, PERI_ETH_PHY_INTF_SEL, intf_val);
-> +
-> +       return 0;
-> +}
-> +
-> +static int mt2712_set_delay(struct mediatek_dwmac_plat_data *plat)
-> +{
-> +       struct mac_delay_struct *mac_delay = &plat->mac_delay;
-> +       u32 delay_val = 0;
-> +       u32 fine_val = 0;
-> +
-> +       switch (plat->phy_mode) {
-> +       case PHY_INTERFACE_MODE_MII:
-> +               delay_val |= mac_delay->tx_delay ? PHY_DLY_TXC_ENABLE : 0;
-> +               delay_val |= (mac_delay->tx_delay << PHY_DLY_TXC_SHIFT) &
-> +                            PHY_DLY_TXC_STAGES;
-> +               delay_val |= mac_delay->tx_inv ? PHY_DLY_TXC_INV : 0;
-> +               delay_val |= mac_delay->rx_delay ? PHY_DLY_RXC_ENABLE : 0;
-> +               delay_val |= (mac_delay->rx_delay << PHY_DLY_RXC_SHIFT) &
-> +                            PHY_DLY_RXC_STAGES;
-> +               delay_val |= mac_delay->rx_inv ? PHY_DLY_RXC_INV : 0;
-> +               break;
-> +       case PHY_INTERFACE_MODE_RMII:
-> +               if (plat->rmii_rxc) {
-> +                       delay_val |= mac_delay->rx_delay ?
-> +                                    PHY_DLY_RXC_ENABLE : 0;
-> +                       delay_val |= (mac_delay->rx_delay <<
-> +                                     PHY_DLY_RXC_SHIFT) & PHY_DLY_RXC_STAGES;
-> +                       delay_val |= mac_delay->rx_inv ? PHY_DLY_RXC_INV : 0;
-> +                       fine_val |= mac_delay->tx_inv ?
-> +                                    ETH_RMII_DLY_TX_INV : 0;
-> +               } else {
-> +                       delay_val |= mac_delay->rx_delay ?
-> +                                    PHY_DLY_TXC_ENABLE : 0;
-> +                       delay_val |= (mac_delay->rx_delay <<
-> +                                    PHY_DLY_TXC_SHIFT) & PHY_DLY_TXC_STAGES;
-> +                       delay_val |= mac_delay->rx_inv ? PHY_DLY_TXC_INV : 0;
-> +                       fine_val |= mac_delay->tx_inv ?
-> +                                    ETH_RMII_DLY_TX_INV : 0;
-> +               }
-> +               break;
-> +       case PHY_INTERFACE_MODE_RGMII:
-> +               fine_val = plat->fine_tune ?
-> +                           (ETH_FINE_DLY_GTXC | ETH_FINE_DLY_RXC) : 0;
-> +               delay_val |= mac_delay->tx_delay ? PHY_DLY_GTXC_ENABLE : 0;
-> +               delay_val |= mac_delay->tx_delay & PHY_DLY_GTXC_STAGES;
-> +               delay_val |= mac_delay->tx_inv ? PHY_DLY_GTXC_INV : 0;
-> +               delay_val |= mac_delay->rx_delay ? PHY_DLY_RXC_ENABLE : 0;
-> +               delay_val |= (mac_delay->rx_delay << PHY_DLY_RXC_SHIFT) &
-> +                            PHY_DLY_RXC_STAGES;
-> +               delay_val |= mac_delay->rx_inv ? PHY_DLY_RXC_INV : 0;
-> +               break;
-> +       case PHY_INTERFACE_MODE_RGMII_TXID:
-> +               fine_val = plat->fine_tune ? ETH_FINE_DLY_RXC : 0;
-> +               delay_val |= mac_delay->rx_delay ? PHY_DLY_RXC_ENABLE : 0;
-> +               delay_val |= (mac_delay->rx_delay << PHY_DLY_RXC_SHIFT) &
-> +                            PHY_DLY_RXC_STAGES;
-> +               delay_val |= mac_delay->rx_inv ? PHY_DLY_RXC_INV : 0;
-> +               break;
-> +       case PHY_INTERFACE_MODE_RGMII_RXID:
-> +               fine_val = plat->fine_tune ? ETH_FINE_DLY_GTXC : 0;
-> +               delay_val |= mac_delay->tx_delay ? PHY_DLY_GTXC_ENABLE : 0;
-> +               delay_val |= mac_delay->tx_delay & PHY_DLY_GTXC_STAGES;
-> +               delay_val |= mac_delay->tx_inv ? PHY_DLY_GTXC_INV : 0;
-> +               break;
-> +       case PHY_INTERFACE_MODE_RGMII_ID:
-> +               break;
-> +       default:
-> +               dev_err(plat->dev, "phy interface not supported\n");
-> +               return -EINVAL;
-> +       }
-> +       regmap_write(plat->peri_regmap, PERI_ETH_PHY_DLY, delay_val);
-> +       regmap_write(plat->peri_regmap, PERI_ETH_DLY_FINE, fine_val);
-> +
-> +       return 0;
-> +}
-> +
-> +static int mt2712_get_clks(struct mediatek_dwmac_plat_data *plat)
-> +{
-> +       int i;
-> +
-> +       for (i = 0; i < ARRAY_SIZE(plat->clks); i++) {
-> +               plat->clks[i] = devm_clk_get(plat->dev,
-> +                                            mediatek_dwmac_clks_name[i]);
-> +               if (IS_ERR(plat->clks[i]))
-> +                       return PTR_ERR(plat->clks[i]);
-> +       }
+GALS can only help transfer the command/data while it doesn't have
+the configuring register, thus it has the special "smi" clock and it
+doesn't have the "apb" clock. From the diagram above, we add "gals0"
+and "gals1" clocks for smi-common and add a "gals" clock for smi-larb.
 
-can we use devm_clk_bulk_get?
+>From the diagram above, IPU0/IPU1(Image Processor Unit) and CCU(Camera
+Control Unit) is connected with smi-common directly, we can take them
+as "larb2", "larb3" and "larb7", and their register spaces are
+different with the normal larb.
 
-> +
-> +       return 0;
-> +}
-> +
-> +static int mt2712_enable_clks(struct mediatek_dwmac_plat_data *plat)
-> +{
-> +       int clk, ret;
-> +
-> +       for (clk = 0; clk < DWMAC_CLK_MAX ; clk++) {
-> +               ret = clk_prepare_enable(plat->clks[clk]);
-> +               if (ret)
-> +                       goto err_disable_clks;
-> +       }
+This is the general purpose of each patch in this patchset:
+the patch 1/2/3/4/5/6 add the iommu/smi support for mt8183;
+the patch 7/8/9/10 add mmu1 support;
+the last patches contain some minor changes:
+   -patch 11 fix a issue.
+   -patch 12 improve the code flow(add shutdown).
+   -patch 13 cleanup some smi codes(delete need_larbid).
+   -patch 14 switch to SPDX license.
+   -patch 15 Constify iommu_ops.
+this patchset don't contain the dtsi part since it need depend on the
+ccf and power-domain nodes which has not been accepted.
 
-can we use clk_bulk_enable?
+Change notes:
 
-> +
-> +       ret = clk_set_parent(plat->clks[DWMAC_CLK_MAC_EXT], plat->clks[DWMAC_CLK_MAC_PARENT]);
-> +       if (ret)
-> +               goto err_disable_clks;
-> +
-> +       ret = clk_set_parent(plat->clks[DWMAC_CLK_PTP_REF], plat->clks[DWMAC_CLK_PTP_PARENT]);
-> +       if (ret)
-> +               goto err_disable_clks;
-> +
+v3: 1) rebase on v4.20-rc1.
+    2) In the dt-binding, add a minor string "mt7623" which also use gen1
+       since Matthias added it in v4.20.
+    3) About v7s:
+       a) for paddr_to_pte, change the param from "arm_v7s_io_pgtable" to
+          "arm_pgtable_cfg", according to Robin suggestion.
+       b) Don't use CONFIG_PHYS_ADDR_T_64BIT.
+       c) add a little comment(pgtable address still don't over 4GB) in the
+          commit message of the patch "Extend MediaTek 4GB Mode".
+    4) add "iommu/mediatek: Constify iommu_ops" into this patchset. this may
+       be helpful for review and merge.
+       https://lists.linuxfoundation.org/pipermail/iommu/2018-October/030637.html
 
-I guess clk_set_parent can be trimmed if we involve assigned-clocks,
-assigned-clock-parents, assigned-clock-rates in the dts
+v2: https://lists.linuxfoundation.org/pipermail/iommu/2018-September/030164.html
+    1) Fix typo in the commit message of dt-binding.
+    2) Change larb2/larb3 to the special larbs.
+    3) Refactor the larb-id remapped array(larbid_remapped), then we
+    don't need add the new function(mtk_iommu_get_larbid).
+    4) Add a new patch for v7s two helpers(paddr_to_iopte and
+    iopte_to_paddr).
+    5) Change some comment for MTK 4GB mode.
 
-> +       return 0;
-> +
-> +err_disable_clks:
-> +       while (--clk >= 0)
-> +               clk_disable_unprepare(plat->clks[clk]);
-> +
+v1: base on v4.19-rc1.
+http://lists.infradead.org/pipermail/linux-mediatek/2018-September/014881.html
 
-clk_bulk_enable would take care about the failed case
+Arvind Yadav (1):
+  iommu/mediatek: Constify iommu_ops
 
-> +       return ret;
-> +}
-> +
-> +static void mt2712_disable_clks(struct mediatek_dwmac_plat_data *plat)
-> +{
-> +       int clk;
-> +
-> +       for (clk = DWMAC_CLK_MAX - 1; clk >= 0; clk--)
-> +               clk_disable_unprepare(plat->clks[clk]);
-> +}
+Yong Wu (14):
+  dt-bindings: mediatek: Add binding for mt8183 IOMMU and SMI
+  iommu/mediatek: Use a struct as the platform data
+  memory: mtk-smi: Use a general config_port interface
+  iommu/io-pgtable-arm-v7s: Add paddr_to_iopte and iopte_to_paddr
+    helpers
+  iommu/io-pgtable-arm-v7s: Extend MediaTek 4GB Mode
+  iommu/mediatek: Add mt8183 IOMMU support
+  iommu/mediatek: Add mmu1 support
+  memory: mtk-smi: Invoke pm runtime_callback to enable clocks
+  memory: mtk-smi: Use a struct for the platform data for smi-common
+  memory: mtk-smi: Add bus_sel for mt8183
+  iommu/mediatek: Add VLD_PA_RANGE register backup when suspend
+  iommu/mediatek: Add shutdown callback
+  memory: mtk-smi: Get rid of need_larbid
+  iommu/mediatek: Switch to SPDX license identifier
 
-can we use clk_bulk_disable ?
+ .../devicetree/bindings/iommu/mediatek,iommu.txt   |  15 +-
+ .../memory-controllers/mediatek,smi-common.txt     |  11 +-
+ .../memory-controllers/mediatek,smi-larb.txt       |   3 +
+ drivers/iommu/io-pgtable-arm-v7s.c                 |  72 ++++--
+ drivers/iommu/io-pgtable.h                         |   7 +-
+ drivers/iommu/mtk_iommu.c                          | 134 +++++++----
+ drivers/iommu/mtk_iommu.h                          |  23 +-
+ drivers/iommu/mtk_iommu_v1.c                       |  14 +-
+ drivers/memory/mtk-smi.c                           | 267 ++++++++++++++-------
+ include/dt-bindings/memory/mt2701-larb-port.h      |  10 +-
+ include/dt-bindings/memory/mt8173-larb-port.h      |  10 +-
+ include/dt-bindings/memory/mt8183-larb-port.h      | 130 ++++++++++
+ include/soc/mediatek/smi.h                         |  10 +-
+ 13 files changed, 491 insertions(+), 215 deletions(-)
+ create mode 100644 include/dt-bindings/memory/mt8183-larb-port.h
 
-> +
-> +static int mt2712_config_dt(struct mediatek_dwmac_plat_data *plat)
-> +{
-> +       u32 tx_delay, rx_delay;
-> +
-> +       plat->peri_regmap = syscon_regmap_lookup_by_compatible("mediatek,mt2712-pericfg");
-
-the driver would be not generic enough if we assigned a specific
-string into here.
-how about apply syscon_regmap_lookup_by_phandle in here?
-
-> +       if (IS_ERR(plat->peri_regmap)) {
-> +               dev_err(plat->dev, "Failed to get pericfg syscon\n");
-> +               return PTR_ERR(plat->peri_regmap);
-> +       }
-> +
-> +       if (!of_property_read_u32(plat->np, "tx-delay", &tx_delay)) {
-> +               if (tx_delay < plat->variant->tx_delay_max) {
-> +                       plat->mac_delay.tx_delay = tx_delay;
-> +               } else {
-> +                       dev_err(plat->dev, "Invalid TX clock delay: %d\n", tx_delay);
-> +                       return -EINVAL;
-> +               }
-> +       }
-> +
-> +       if (!of_property_read_u32(plat->np, "rx-delay", &rx_delay)) {
-> +               if (rx_delay < plat->variant->rx_delay_max) {
-> +                       plat->mac_delay.rx_delay = rx_delay;
-> +               } else {
-> +                       dev_err(plat->dev, "Invalid RX clock delay: %d\n", rx_delay);
-> +                       return -EINVAL;
-> +               }
-> +       }
-> +
-> +       plat->mac_delay.tx_inv = of_property_read_bool(plat->np, "txc-inverse");
-> +
-can we drop the empty line?
-
-> +       plat->mac_delay.rx_inv = of_property_read_bool(plat->np, "rxc-inverse");
-> +
-can we drop the empty line?
-
-> +       plat->fine_tune = of_property_read_bool(plat->np, "fine-tune");
-> +
-can we drop the empty line?
-
-> +       plat->rmii_rxc = of_property_read_bool(plat->np, "rmii-rxc");
-> +
-> +       mt2712_set_interface(plat);
-> +
-> +       mt2712_set_delay(plat);
-> +
-> +       return mt2712_get_clks(plat);
-> +}
-> +
-> +static const struct mediatek_dwmac_variant mt2712_gmac_variant = {
-> +               .dwmac_config_dt = mt2712_config_dt,
-> +               .dwmac_enable_clks = mt2712_enable_clks,
-> +               .dwmac_disable_clks = mt2712_disable_clks,
-> +               .rx_delay_max = 32,
-> +               .tx_delay_max = 32,
-> +};
-
-I thought we add the variant structure when the SoC variant is really in.
-
-> +
-> +static int mediatek_dwmac_config_dt(struct mediatek_dwmac_plat_data *plat)
-> +{
-> +       const struct mediatek_dwmac_variant *variant = plat->variant;
-> +
-> +       /* Set the DMA mask, 4GB mode enabled */
-> +       dma_set_mask_and_coherent(plat->dev, DMA_BIT_MASK(33));
-> +
-> +       return variant->dwmac_config_dt(plat);
-> +}
-> +
-> +static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
-> +{
-> +       struct mediatek_dwmac_plat_data *plat = priv;
-> +       const struct mediatek_dwmac_variant *variant = plat->variant;
-> +
-> +       return variant->dwmac_enable_clks(plat);
-> +}
-> +
-> +static void mediatek_dwmac_exit(struct platform_device *pdev, void *priv)
-> +{
-> +       struct mediatek_dwmac_plat_data *plat = priv;
-> +       const struct mediatek_dwmac_variant *variant = plat->variant;
-> +
-> +       variant->dwmac_disable_clks(plat);
-> +}
-> +
-> +static int mediatek_dwmac_probe(struct platform_device *pdev)
-> +{
-> +       int ret = 0;
-> +       struct plat_stmmacenet_data *plat_dat;
-> +       struct stmmac_resources stmmac_res;
-> +       struct mediatek_dwmac_plat_data *priv_plat;
-
-sorting these declarations into reverse Xmas tree seems to be good
-
-> +
-> +       priv_plat = devm_kzalloc(&pdev->dev, sizeof(*priv_plat), GFP_KERNEL);
-> +       if (!priv_plat)
-> +               return -ENOMEM;
-> +
-> +       priv_plat->variant = of_device_get_match_data(&pdev->dev);
-> +       if (!priv_plat->variant) {
-> +               dev_err(&pdev->dev, "Missing dwmac-mediatek variant\n");
-> +               return -EINVAL;
-> +       }
-> +
-> +       priv_plat->dev = &pdev->dev;
-> +       priv_plat->np = pdev->dev.of_node;
-> +       priv_plat->phy_mode = of_get_phy_mode(priv_plat->np);
-> +
-> +       ret = mediatek_dwmac_config_dt(priv_plat);
-> +       if (ret)
-> +               return ret;
-> +
-> +       ret = stmmac_get_platform_resources(pdev, &stmmac_res);
-> +       if (ret)
-> +               return ret;
-> +
-> +       plat_dat = stmmac_probe_config_dt(pdev, &stmmac_res.mac);
-> +       if (IS_ERR(plat_dat))
-> +               return PTR_ERR(plat_dat);
-> +
-> +       plat_dat->interface = priv_plat->phy_mode;
-> +       /* clk_csr_i = 250-300MHz & MDC = clk_csr_i/124 */
-> +       plat_dat->clk_csr = 5;
-> +       plat_dat->has_gmac4 = 1;
-> +       plat_dat->has_gmac = 0;
-> +       plat_dat->pmt = 0;
-> +       plat_dat->maxmtu = ETH_DATA_LEN;
-> +       plat_dat->bsp_priv = priv_plat;
-> +       plat_dat->init = mediatek_dwmac_init;
-> +       plat_dat->exit = mediatek_dwmac_exit;
-> +       mediatek_dwmac_init(pdev, priv_plat);
-> +
-> +       ret = stmmac_dvr_probe(&pdev->dev, plat_dat, &stmmac_res);
-> +       if (ret) {
-> +               stmmac_remove_config_dt(pdev, plat_dat);
-> +               return ret;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
-> +static const struct of_device_id mediatek_dwmac_match[] = {
-> +       { .compatible = "mediatek,mt2712-gmac",
-> +         .data = &mt2712_gmac_variant },
-> +       { }
-> +};
-> +
-> +MODULE_DEVICE_TABLE(of, mediatek_dwmac_match);
-> +
-> +static struct platform_driver mediatek_dwmac_driver = {
-> +       .probe  = mediatek_dwmac_probe,
-> +       .remove = stmmac_pltfr_remove,
-> +       .driver = {
-> +               .name           = "dwmac-mediatek",
-> +               .pm             = &stmmac_pltfr_pm_ops,
-> +               .of_match_table = mediatek_dwmac_match,
-> +       },
-> +};
-> +module_platform_driver(mediatek_dwmac_driver);
-> --
-> 1.7.9.5
->
->
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+-- 
+1.9.1
