@@ -1,30 +1,33 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v1 2/2] dt-bindings: pinctrl: update bindings for MT7629
- SoC
-Date: Sat, 17 Nov 2018 10:04:43 -0600
-Message-ID: <20181117160443.GA1462@bogus>
-References: <5d63d26156d2972b7e9f55c9743b66d7c6dac2ec.1541986223.git.ryder.lee@mediatek.com>
- <46ee25bb5ac7a7aa0245e2b02e9a0e870ff09551.1541986223.git.ryder.lee@mediatek.com>
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Subject: Re: [PATCH] dt-bindings: rng: update bindings for MT7629 SoC
+Date: Sun, 18 Nov 2018 07:07:46 +0800
+Message-ID: <20181117230746.r6xsnqqo5nd6fxts@gondor.apana.org.au>
+References: <0f5fe0d5b6a9c81b3f4395a1007ed0ba2239ae45.1541574485.git.ryder.lee@mediatek.com>
+ <20181116061854.ahs6jz7bmztoi3w7@gondor.apana.org.au>
+ <20181116223110.GA19271@bogus>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <46ee25bb5ac7a7aa0245e2b02e9a0e870ff09551.1541986223.git.ryder.lee@mediatek.com>
+In-Reply-To: <20181116223110.GA19271@bogus>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-gpio@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-crypto@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 12 Nov 2018 09:45:06 +0800, Ryder Lee wrote:
-> This updates bindings for MT7629 pinctrl driver.
+On Fri, Nov 16, 2018 at 04:31:10PM -0600, Rob Herring wrote:
+> On Fri, Nov 16, 2018 at 02:18:54PM +0800, Herbert Xu wrote:
+> > On Wed, Nov 07, 2018 at 03:10:16PM +0800, Ryder Lee wrote:
+> > > This updates bindings for MT7629 RNG driver.
+> > > 
+> > > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> > 
+> > Who is meant to take this patch?
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> ---
-> Changes since v1:
-> -add new function for wifi.
-> -add more descriptions.
-> ---
->  .../devicetree/bindings/pinctrl/pinctrl-mt7622.txt | 131 +++++++++++++++++++++
->  1 file changed, 131 insertions(+)
-> 
+> I've applied it.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Thanks Rob!
+-- 
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
