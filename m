@@ -1,189 +1,129 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3 15/15] iommu/mediatek: Switch to SPDX license identifier
-Date: Sat, 17 Nov 2018 10:35:42 +0800
-Message-ID: <1542422142-30688-16-git-send-email-yong.wu@mediatek.com>
-References: <1542422142-30688-1-git-send-email-yong.wu@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [v3, PATCH 2/2] dt-binding: mediatek-dwmac: add binding document
+ for MediaTek MT2712 DWMAC
+Date: Sat, 17 Nov 2018 08:56:11 -0600
+Message-ID: <20181117145611.GA26013@bogus>
+References: <1542359926-28800-1-git-send-email-biao.huang@mediatek.com>
+ <1542359926-28800-2-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1542422142-30688-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Arvind Yadav <arvind.yadav.cs-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1542359926-28800-2-git-send-email-biao.huang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Biao Huang <biao.huang@mediatek.com>
+Cc: davem@davemloft.net, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com, andrew@lunn.ch
 List-Id: linux-mediatek@lists.infradead.org
 
-Switch to SPDX license identifier for MediaTek iommu/smi and their
-header files.
+On Fri, Nov 16, 2018 at 05:18:46PM +0800, Biao Huang wrote:
+> The commit adds the device tree binding documentation for the MediaTek DWMAC
+> found on MediaTek MT2712.
+> 
+> Change-Id: I3728666bf65927164bd82fa8dddb90df8270bd44
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> ---
+>  .../devicetree/bindings/net/mediatek-dwmac.txt     |   77 ++++++++++++++++++++
+>  1 file changed, 77 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.txt b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+> new file mode 100644
+> index 0000000..7fd56e0
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+> @@ -0,0 +1,77 @@
+> +MediaTek DWMAC glue layer controller
+> +
+> +This file documents platform glue layer for stmmac.
+> +Please see stmmac.txt for the other unchanged properties.
+> +
+> +The device node has following properties.
+> +
+> +Required properties:
+> +- compatible:  Should be "mediatek,mt2712-gmac" for MT2712 SoC
+> +- reg:  Address and length of the register set for the device
+> +- interrupts:  Should contain the MAC interrupts
 
-Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- drivers/iommu/mtk_iommu.c                     |  9 +--------
- drivers/iommu/mtk_iommu.h                     | 10 +---------
- drivers/iommu/mtk_iommu_v1.c                  | 10 +---------
- drivers/memory/mtk-smi.c                      | 10 +---------
- include/dt-bindings/memory/mt2701-larb-port.h | 10 +---------
- include/dt-bindings/memory/mt8173-larb-port.h | 10 +---------
- include/soc/mediatek/smi.h                    | 10 +---------
- 7 files changed, 7 insertions(+), 62 deletions(-)
+How many?
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 5775e8f..01fe39f 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -1,15 +1,8 @@
-+// SPDX-License-Identifier: GPL-2.0
- /*
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-  *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- #include <linux/memblock.h>
- #include <linux/bug.h>
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index dfe9a07..d8bfba5 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -1,15 +1,7 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- 
- #ifndef _MTK_IOMMU_H_
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 27867b8..6571e5c 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -1,17 +1,9 @@
-+// SPDX-License-Identifier: GPL-2.0
- /*
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-  *
-  * Based on driver/iommu/mtk_iommu.c
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- #include <linux/memblock.h>
- #include <linux/bug.h>
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index e0265fe..30a3e00 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -1,15 +1,7 @@
-+// SPDX-License-Identifier: GPL-2.0
- /*
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- #include <linux/clk.h>
- #include <linux/component.h>
-diff --git a/include/dt-bindings/memory/mt2701-larb-port.h b/include/dt-bindings/memory/mt2701-larb-port.h
-index 6764d74..c511f0f 100644
---- a/include/dt-bindings/memory/mt2701-larb-port.h
-+++ b/include/dt-bindings/memory/mt2701-larb-port.h
-@@ -1,15 +1,7 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Copyright (c) 2015 MediaTek Inc.
-  * Author: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- 
- #ifndef _MT2701_LARB_PORT_H_
-diff --git a/include/dt-bindings/memory/mt8173-larb-port.h b/include/dt-bindings/memory/mt8173-larb-port.h
-index 111b4b0..a62bfeb 100644
---- a/include/dt-bindings/memory/mt8173-larb-port.h
-+++ b/include/dt-bindings/memory/mt8173-larb-port.h
-@@ -1,15 +1,7 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- #ifndef __DTS_IOMMU_PORT_MT8173_H
- #define __DTS_IOMMU_PORT_MT8173_H
-diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-index 5201e90..2b410d2 100644
---- a/include/soc/mediatek/smi.h
-+++ b/include/soc/mediatek/smi.h
-@@ -1,15 +1,7 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- #ifndef MTK_IOMMU_SMI_H
- #define MTK_IOMMU_SMI_H
--- 
-1.9.1
+> +- interrupt-names: Should contain a list of interrupt names corresponding to
+> +	the interrupts in the interrupts property, if available.
+> +	Should be "macirq" for the main MAC IRQ
+> +- clocks: Must contain a phandle for each entry in clock-names.
+> +- clock-names: The name of the clock listed in the clocks property. These are
+> +	"axi", "apb", "mac_ext", "mac_parent", "ptp_ref", "ptp_parent", "ptp_top"
+> +	for MT2712 SoC
+
+Clocks should represent the physical clocks connected to a block. Parent 
+clocks are not in that category.
+
+> +- mac-address: See ethernet.txt in the same directory
+> +- phy-mode: See ethernet.txt in the same directory
+> +
+> +Optional properties:
+> +- tx-delay: TX clock delay macro value. Range is 0~31. Default is 0.
+> +	It should be defined for rgmii/rgmii-rxid/mii interface.
+> +- rx-delay: RX clock delay macro value. Range is 0~31. Default is 0.
+> +	It should be defined for rgmii/rgmii-txid/mii/rmii interface.
+> +- fine-tune: This property will select coarse-tune delay or fine delay
+> +	for rgmii interface.
+> +	If fine-tune delay is enabled, tx-delay/rx-delay is 170+/-50ps
+> +	per stage.
+> +	Else coarse-tune delay is enabled, tx-delay/rx-delay is 0.55+/-0.2ns
+> +	per stage.
+> +	This property do not apply to non-rgmii PHYs.
+> +	Only coarse-tune delay is supported for mii/rmii PHYs.
+
+Perhaps the delays should be in ps and the driver can figure out 
+fine-tune or not based on the value.
+
+> +- rmii-rxc: Reference clock of rmii is from external PHYs,
+> +	and it can be connected to TXC or RXC pin on MT2712 SoC.
+> +	If ref_clk <--> TXC, disable it.
+> +	Else ref_clk <--> RXC, enable it.
+> +- txc-inverse: Inverse tx clock for mii/rgmii.
+> +	Inverse tx clock inside MAC relative to reference clock for rmii,
+> +	and it rarely happen.
+> +- rxc-inverse: Inverse rx clock for mii/rgmii interfaces.
+> +	Inverse reference clock for rmii.
+
+These should all have vendor prefixes. 'snps' if these are all standard 
+GMAC controls or 'mediatek' if Mediatek specific.
+
+> +
+> +Example:
+> +	eth: ethernet@1101c000 {
+> +		compatible = "mediatek,mt2712-gmac";
+> +		reg = <0 0x1101c000 0 0x1300>;
+> +		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupt-names = "macirq";
+> +		phy-mode ="rgmii-id";
+> +		mac-address = [00 55 7b b5 7d f7];
+> +		clock-names = "axi",
+> +			      "apb",
+> +			      "mac_ext",
+> +			      "mac_parent",
+> +			      "ptp_ref",
+> +			      "ptp_parent",
+> +			      "ptp_top";
+> +		clocks = <&pericfg CLK_PERI_GMAC>,
+> +			 <&pericfg CLK_PERI_GMAC_PCLK>,
+> +			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
+> +			 <&topckgen CLK_TOP_ETHERPLL_125M>,
+> +			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
+> +			 <&topckgen CLK_TOP_APLL1_D3>,
+> +			 <&topckgen CLK_TOP_APLL1>;
+> +		snps,txpbl = <32>;
+> +		snps,rxpbl = <32>;
+> +		snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
+> +		snps,reset-active-low;
+> +		tx-delay = <9>;
+> +		rx-delay = <9>;
+> +		fine-tune;
+> +		rmii-rxc;
+> +		txc-inverse;
+> +		rxc-inverse;
+> +	};
+> -- 
+> 1.7.9.5
+> 
