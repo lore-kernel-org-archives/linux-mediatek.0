@@ -1,129 +1,30 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [v3, PATCH 2/2] dt-binding: mediatek-dwmac: add binding document
- for MediaTek MT2712 DWMAC
-Date: Sat, 17 Nov 2018 08:56:11 -0600
-Message-ID: <20181117145611.GA26013@bogus>
-References: <1542359926-28800-1-git-send-email-biao.huang@mediatek.com>
- <1542359926-28800-2-git-send-email-biao.huang@mediatek.com>
+Subject: Re: [PATCH v1 2/2] dt-bindings: pinctrl: update bindings for MT7629
+ SoC
+Date: Sat, 17 Nov 2018 10:04:43 -0600
+Message-ID: <20181117160443.GA1462@bogus>
+References: <5d63d26156d2972b7e9f55c9743b66d7c6dac2ec.1541986223.git.ryder.lee@mediatek.com>
+ <46ee25bb5ac7a7aa0245e2b02e9a0e870ff09551.1541986223.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1542359926-28800-2-git-send-email-biao.huang@mediatek.com>
+In-Reply-To: <46ee25bb5ac7a7aa0245e2b02e9a0e870ff09551.1541986223.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: davem@davemloft.net, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com, andrew@lunn.ch
+Cc: Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-gpio@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Nov 16, 2018 at 05:18:46PM +0800, Biao Huang wrote:
-> The commit adds the device tree binding documentation for the MediaTek DWMAC
-> found on MediaTek MT2712.
+On Mon, 12 Nov 2018 09:45:06 +0800, Ryder Lee wrote:
+> This updates bindings for MT7629 pinctrl driver.
 > 
-> Change-Id: I3728666bf65927164bd82fa8dddb90df8270bd44
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 > ---
->  .../devicetree/bindings/net/mediatek-dwmac.txt     |   77 ++++++++++++++++++++
->  1 file changed, 77 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+> Changes since v1:
+> -add new function for wifi.
+> -add more descriptions.
+> ---
+>  .../devicetree/bindings/pinctrl/pinctrl-mt7622.txt | 131 +++++++++++++++++++++
+>  1 file changed, 131 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.txt b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
-> new file mode 100644
-> index 0000000..7fd56e0
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
-> @@ -0,0 +1,77 @@
-> +MediaTek DWMAC glue layer controller
-> +
-> +This file documents platform glue layer for stmmac.
-> +Please see stmmac.txt for the other unchanged properties.
-> +
-> +The device node has following properties.
-> +
-> +Required properties:
-> +- compatible:  Should be "mediatek,mt2712-gmac" for MT2712 SoC
-> +- reg:  Address and length of the register set for the device
-> +- interrupts:  Should contain the MAC interrupts
 
-How many?
-
-> +- interrupt-names: Should contain a list of interrupt names corresponding to
-> +	the interrupts in the interrupts property, if available.
-> +	Should be "macirq" for the main MAC IRQ
-> +- clocks: Must contain a phandle for each entry in clock-names.
-> +- clock-names: The name of the clock listed in the clocks property. These are
-> +	"axi", "apb", "mac_ext", "mac_parent", "ptp_ref", "ptp_parent", "ptp_top"
-> +	for MT2712 SoC
-
-Clocks should represent the physical clocks connected to a block. Parent 
-clocks are not in that category.
-
-> +- mac-address: See ethernet.txt in the same directory
-> +- phy-mode: See ethernet.txt in the same directory
-> +
-> +Optional properties:
-> +- tx-delay: TX clock delay macro value. Range is 0~31. Default is 0.
-> +	It should be defined for rgmii/rgmii-rxid/mii interface.
-> +- rx-delay: RX clock delay macro value. Range is 0~31. Default is 0.
-> +	It should be defined for rgmii/rgmii-txid/mii/rmii interface.
-> +- fine-tune: This property will select coarse-tune delay or fine delay
-> +	for rgmii interface.
-> +	If fine-tune delay is enabled, tx-delay/rx-delay is 170+/-50ps
-> +	per stage.
-> +	Else coarse-tune delay is enabled, tx-delay/rx-delay is 0.55+/-0.2ns
-> +	per stage.
-> +	This property do not apply to non-rgmii PHYs.
-> +	Only coarse-tune delay is supported for mii/rmii PHYs.
-
-Perhaps the delays should be in ps and the driver can figure out 
-fine-tune or not based on the value.
-
-> +- rmii-rxc: Reference clock of rmii is from external PHYs,
-> +	and it can be connected to TXC or RXC pin on MT2712 SoC.
-> +	If ref_clk <--> TXC, disable it.
-> +	Else ref_clk <--> RXC, enable it.
-> +- txc-inverse: Inverse tx clock for mii/rgmii.
-> +	Inverse tx clock inside MAC relative to reference clock for rmii,
-> +	and it rarely happen.
-> +- rxc-inverse: Inverse rx clock for mii/rgmii interfaces.
-> +	Inverse reference clock for rmii.
-
-These should all have vendor prefixes. 'snps' if these are all standard 
-GMAC controls or 'mediatek' if Mediatek specific.
-
-> +
-> +Example:
-> +	eth: ethernet@1101c000 {
-> +		compatible = "mediatek,mt2712-gmac";
-> +		reg = <0 0x1101c000 0 0x1300>;
-> +		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
-> +		interrupt-names = "macirq";
-> +		phy-mode ="rgmii-id";
-> +		mac-address = [00 55 7b b5 7d f7];
-> +		clock-names = "axi",
-> +			      "apb",
-> +			      "mac_ext",
-> +			      "mac_parent",
-> +			      "ptp_ref",
-> +			      "ptp_parent",
-> +			      "ptp_top";
-> +		clocks = <&pericfg CLK_PERI_GMAC>,
-> +			 <&pericfg CLK_PERI_GMAC_PCLK>,
-> +			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
-> +			 <&topckgen CLK_TOP_ETHERPLL_125M>,
-> +			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
-> +			 <&topckgen CLK_TOP_APLL1_D3>,
-> +			 <&topckgen CLK_TOP_APLL1>;
-> +		snps,txpbl = <32>;
-> +		snps,rxpbl = <32>;
-> +		snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
-> +		snps,reset-active-low;
-> +		tx-delay = <9>;
-> +		rx-delay = <9>;
-> +		fine-tune;
-> +		rmii-rxc;
-> +		txc-inverse;
-> +		rxc-inverse;
-> +	};
-> -- 
-> 1.7.9.5
-> 
+Reviewed-by: Rob Herring <robh@kernel.org>
