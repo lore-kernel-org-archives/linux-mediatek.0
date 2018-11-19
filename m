@@ -1,294 +1,147 @@
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Subject: Re: [PATCH v2 4/5] phy: mvebu-cp110-comphy: convert to use eth phy
- mode and submode
-Date: Mon, 19 Nov 2018 09:26:32 +0100
-Message-ID: <20181119092632.7048bc46@bootlin.com>
-References: <20181109234755.21687-1-grygorii.strashko@ti.com>
-        <20181109234755.21687-5-grygorii.strashko@ti.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v5 05/12] drm: mediatek: Omit warning on probe defers
+Date: Mon, 19 Nov 2018 10:26:48 +0100
+Message-ID: <0a02edf9-78da-dde9-4b69-38c4719b711b@gmail.com>
+References: <20181116125449.23581-1-matthias.bgg@kernel.org>
+ <20181116125449.23581-6-matthias.bgg@kernel.org>
+ <1542605939.32082.12.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181109234755.21687-5-grygorii.strashko@ti.com>
+In-Reply-To: <1542605939.32082.12.camel@mtksdaap41>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Grygorii Strashko <grygorii.strashko@ti.com>
-Cc: "David S. Miller" <davem@davemloft.net>, Kishon Vijay Abraham I <kishon@ti.com>, Russell King - ARM Linux <linux@armlinux.org.uk>, netdev@vger.kernel.org, Sekhar Nori <nsekhar@ti.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Tony Lindgren <tony@atomide.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Quentin Schulz <quentin.schulz@bootlin.com>, Vivek Gautam <vivek.gautam@codeaurora.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Carlo Caione <carlo@caione.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Manu
+To: CK Hu <ck.hu@mediatek.com>, matthias.bgg@kernel.org
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, p.zabel@pengutronix.de, airlied@linux.ie, mturquette@baylibre.com, sboyd@codeaurora.org, ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, sean.wang@mediatek.com, sean.wang@kernel.org, rdunlap@infradead.org, wens@csie.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Grygorii,
-
-On Fri, 9 Nov 2018 17:47:54 -0600
-Grygorii Strashko <grygorii.strashko@ti.com> wrote:
-
->Convert mvebu-cp110-comphy PHY driver to use recently introduced
->PHY_MODE_ETHERNET and phy_set_mode_ext().
-
-Sorry I missed your V2, hopefully I tested the right version this time.
-Tested on MCBin, this works just fine.
-
-Thanks,
-
-Tested-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
-
->Signed-off-by: Grygorii Strashko <grygorii.strashko@ti.com>
->---
-> drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c | 19 +-----
-> drivers/phy/marvell/phy-mvebu-cp110-comphy.c    | 83 ++++++++++++++-----------
-> 2 files changed, 48 insertions(+), 54 deletions(-)
->
->diff --git a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
->index 7a37a37..731793a 100644
->--- a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
->+++ b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
->@@ -1165,28 +1165,13 @@ static void mvpp22_gop_setup_irq(struct mvpp2_port *port)
->  */
-> static int mvpp22_comphy_init(struct mvpp2_port *port)
-> {
->-	enum phy_mode mode;
-> 	int ret;
-> 
-> 	if (!port->comphy)
-> 		return 0;
-> 
->-	switch (port->phy_interface) {
->-	case PHY_INTERFACE_MODE_SGMII:
->-	case PHY_INTERFACE_MODE_1000BASEX:
->-		mode = PHY_MODE_SGMII;
->-		break;
->-	case PHY_INTERFACE_MODE_2500BASEX:
->-		mode = PHY_MODE_2500SGMII;
->-		break;
->-	case PHY_INTERFACE_MODE_10GKR:
->-		mode = PHY_MODE_10GKR;
->-		break;
->-	default:
->-		return -EINVAL;
->-	}
->-
->-	ret = phy_set_mode(port->comphy, mode);
->+	ret = phy_set_mode_ext(port->comphy, PHY_MODE_ETHERNET,
->+			       port->phy_interface);
-> 	if (ret)
-> 		return ret;
-> 
->diff --git a/drivers/phy/marvell/phy-mvebu-cp110-comphy.c b/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
->index 79b52c3..7dee72b 100644
->--- a/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
->+++ b/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
->@@ -9,6 +9,7 @@
-> #include <linux/iopoll.h>
-> #include <linux/mfd/syscon.h>
-> #include <linux/module.h>
->+#include <linux/phy.h>
-> #include <linux/phy/phy.h>
-> #include <linux/platform_device.h>
-> #include <linux/regmap.h>
->@@ -131,26 +132,26 @@ struct mvebu_comhy_conf {
-> 
-> static const struct mvebu_comhy_conf mvebu_comphy_cp110_modes[] = {
-> 	/* lane 0 */
->-	MVEBU_COMPHY_CONF(0, 1, PHY_MODE_SGMII, 0x1),
->-	MVEBU_COMPHY_CONF(0, 1, PHY_MODE_2500SGMII, 0x1),
->+	MVEBU_COMPHY_CONF(0, 1, PHY_INTERFACE_MODE_SGMII, 0x1),
->+	MVEBU_COMPHY_CONF(0, 1, PHY_INTERFACE_MODE_2500BASEX, 0x1),
-> 	/* lane 1 */
->-	MVEBU_COMPHY_CONF(1, 2, PHY_MODE_SGMII, 0x1),
->-	MVEBU_COMPHY_CONF(1, 2, PHY_MODE_2500SGMII, 0x1),
->+	MVEBU_COMPHY_CONF(1, 2, PHY_INTERFACE_MODE_SGMII, 0x1),
->+	MVEBU_COMPHY_CONF(1, 2, PHY_INTERFACE_MODE_2500BASEX, 0x1),
-> 	/* lane 2 */
->-	MVEBU_COMPHY_CONF(2, 0, PHY_MODE_SGMII, 0x1),
->-	MVEBU_COMPHY_CONF(2, 0, PHY_MODE_2500SGMII, 0x1),
->-	MVEBU_COMPHY_CONF(2, 0, PHY_MODE_10GKR, 0x1),
->+	MVEBU_COMPHY_CONF(2, 0, PHY_INTERFACE_MODE_SGMII, 0x1),
->+	MVEBU_COMPHY_CONF(2, 0, PHY_INTERFACE_MODE_2500BASEX, 0x1),
->+	MVEBU_COMPHY_CONF(2, 0, PHY_INTERFACE_MODE_10GKR, 0x1),
-> 	/* lane 3 */
->-	MVEBU_COMPHY_CONF(3, 1, PHY_MODE_SGMII, 0x2),
->-	MVEBU_COMPHY_CONF(3, 1, PHY_MODE_2500SGMII, 0x2),
->+	MVEBU_COMPHY_CONF(3, 1, PHY_INTERFACE_MODE_SGMII, 0x2),
->+	MVEBU_COMPHY_CONF(3, 1, PHY_INTERFACE_MODE_2500BASEX, 0x2),
-> 	/* lane 4 */
->-	MVEBU_COMPHY_CONF(4, 0, PHY_MODE_SGMII, 0x2),
->-	MVEBU_COMPHY_CONF(4, 0, PHY_MODE_2500SGMII, 0x2),
->-	MVEBU_COMPHY_CONF(4, 0, PHY_MODE_10GKR, 0x2),
->-	MVEBU_COMPHY_CONF(4, 1, PHY_MODE_SGMII, 0x1),
->+	MVEBU_COMPHY_CONF(4, 0, PHY_INTERFACE_MODE_SGMII, 0x2),
->+	MVEBU_COMPHY_CONF(4, 0, PHY_INTERFACE_MODE_2500BASEX, 0x2),
->+	MVEBU_COMPHY_CONF(4, 0, PHY_INTERFACE_MODE_10GKR, 0x2),
->+	MVEBU_COMPHY_CONF(4, 1, PHY_INTERFACE_MODE_SGMII, 0x1),
-> 	/* lane 5 */
->-	MVEBU_COMPHY_CONF(5, 2, PHY_MODE_SGMII, 0x1),
->-	MVEBU_COMPHY_CONF(5, 2, PHY_MODE_2500SGMII, 0x1),
->+	MVEBU_COMPHY_CONF(5, 2, PHY_INTERFACE_MODE_SGMII, 0x1),
->+	MVEBU_COMPHY_CONF(5, 2, PHY_INTERFACE_MODE_2500BASEX, 0x1),
-> };
-> 
-> struct mvebu_comphy_priv {
->@@ -163,10 +164,12 @@ struct mvebu_comphy_lane {
-> 	struct mvebu_comphy_priv *priv;
-> 	unsigned id;
-> 	enum phy_mode mode;
->+	int submode;
-> 	int port;
-> };
-> 
->-static int mvebu_comphy_get_mux(int lane, int port, enum phy_mode mode)
->+static int mvebu_comphy_get_mux(int lane, int port,
->+				enum phy_mode mode, int submode)
-> {
-> 	int i, n = ARRAY_SIZE(mvebu_comphy_cp110_modes);
-> 
->@@ -177,7 +180,7 @@ static int mvebu_comphy_get_mux(int lane, int port, enum phy_mode mode)
-> 	for (i = 0; i < n; i++) {
-> 		if (mvebu_comphy_cp110_modes[i].lane == lane &&
-> 		    mvebu_comphy_cp110_modes[i].port == port &&
->-		    mvebu_comphy_cp110_modes[i].mode == mode)
->+		    mvebu_comphy_cp110_modes[i].mode == submode)
-> 			break;
-> 	}
-> 
->@@ -187,8 +190,7 @@ static int mvebu_comphy_get_mux(int lane, int port, enum phy_mode mode)
-> 	return mvebu_comphy_cp110_modes[i].mux;
-> }
-> 
->-static void mvebu_comphy_ethernet_init_reset(struct mvebu_comphy_lane *lane,
->-					     enum phy_mode mode)
->+static void mvebu_comphy_ethernet_init_reset(struct mvebu_comphy_lane *lane)
-> {
-> 	struct mvebu_comphy_priv *priv = lane->priv;
-> 	u32 val;
->@@ -206,14 +208,14 @@ static void mvebu_comphy_ethernet_init_reset(struct mvebu_comphy_lane *lane,
-> 		 MVEBU_COMPHY_SERDES_CFG0_HALF_BUS |
-> 		 MVEBU_COMPHY_SERDES_CFG0_GEN_RX(0xf) |
-> 		 MVEBU_COMPHY_SERDES_CFG0_GEN_TX(0xf));
->-	if (mode == PHY_MODE_10GKR)
->+	if (lane->submode == PHY_INTERFACE_MODE_10GKR)
-> 		val |= MVEBU_COMPHY_SERDES_CFG0_GEN_RX(0xe) |
-> 		       MVEBU_COMPHY_SERDES_CFG0_GEN_TX(0xe);
->-	else if (mode == PHY_MODE_2500SGMII)
->+	else if (lane->submode == PHY_INTERFACE_MODE_2500BASEX)
-> 		val |= MVEBU_COMPHY_SERDES_CFG0_GEN_RX(0x8) |
-> 		       MVEBU_COMPHY_SERDES_CFG0_GEN_TX(0x8) |
-> 		       MVEBU_COMPHY_SERDES_CFG0_HALF_BUS;
->-	else if (mode == PHY_MODE_SGMII)
->+	else if (lane->submode == PHY_INTERFACE_MODE_SGMII)
-> 		val |= MVEBU_COMPHY_SERDES_CFG0_GEN_RX(0x6) |
-> 		       MVEBU_COMPHY_SERDES_CFG0_GEN_TX(0x6) |
-> 		       MVEBU_COMPHY_SERDES_CFG0_HALF_BUS;
->@@ -243,7 +245,7 @@ static void mvebu_comphy_ethernet_init_reset(struct mvebu_comphy_lane *lane,
-> 	/* refclk selection */
-> 	val = readl(priv->base + MVEBU_COMPHY_MISC_CTRL0(lane->id));
-> 	val &= ~MVEBU_COMPHY_MISC_CTRL0_REFCLK_SEL;
->-	if (mode == PHY_MODE_10GKR)
->+	if (lane->submode == PHY_INTERFACE_MODE_10GKR)
-> 		val |= MVEBU_COMPHY_MISC_CTRL0_ICP_FORCE;
-> 	writel(val, priv->base + MVEBU_COMPHY_MISC_CTRL0(lane->id));
-> 
->@@ -261,8 +263,7 @@ static void mvebu_comphy_ethernet_init_reset(struct mvebu_comphy_lane *lane,
-> 	writel(val, priv->base + MVEBU_COMPHY_LOOPBACK(lane->id));
-> }
-> 
->-static int mvebu_comphy_init_plls(struct mvebu_comphy_lane *lane,
->-				  enum phy_mode mode)
->+static int mvebu_comphy_init_plls(struct mvebu_comphy_lane *lane)
-> {
-> 	struct mvebu_comphy_priv *priv = lane->priv;
-> 	u32 val;
->@@ -303,13 +304,13 @@ static int mvebu_comphy_init_plls(struct mvebu_comphy_lane *lane,
-> 	return 0;
-> }
-> 
->-static int mvebu_comphy_set_mode_sgmii(struct phy *phy, enum phy_mode mode)
->+static int mvebu_comphy_set_mode_sgmii(struct phy *phy)
-> {
-> 	struct mvebu_comphy_lane *lane = phy_get_drvdata(phy);
-> 	struct mvebu_comphy_priv *priv = lane->priv;
-> 	u32 val;
-> 
->-	mvebu_comphy_ethernet_init_reset(lane, mode);
->+	mvebu_comphy_ethernet_init_reset(lane);
-> 
-> 	val = readl(priv->base + MVEBU_COMPHY_RX_CTRL1(lane->id));
-> 	val &= ~MVEBU_COMPHY_RX_CTRL1_CLK8T_EN;
->@@ -330,7 +331,7 @@ static int mvebu_comphy_set_mode_sgmii(struct phy *phy, enum phy_mode mode)
-> 	val |= MVEBU_COMPHY_GEN1_S0_TX_EMPH(0x1);
-> 	writel(val, priv->base + MVEBU_COMPHY_GEN1_S0(lane->id));
-> 
->-	return mvebu_comphy_init_plls(lane, PHY_MODE_SGMII);
->+	return mvebu_comphy_init_plls(lane);
-> }
-> 
-> static int mvebu_comphy_set_mode_10gkr(struct phy *phy)
->@@ -339,7 +340,7 @@ static int mvebu_comphy_set_mode_10gkr(struct phy *phy)
-> 	struct mvebu_comphy_priv *priv = lane->priv;
-> 	u32 val;
-> 
->-	mvebu_comphy_ethernet_init_reset(lane, PHY_MODE_10GKR);
->+	mvebu_comphy_ethernet_init_reset(lane);
-> 
-> 	val = readl(priv->base + MVEBU_COMPHY_RX_CTRL1(lane->id));
-> 	val |= MVEBU_COMPHY_RX_CTRL1_RXCLK2X_SEL |
->@@ -469,7 +470,7 @@ static int mvebu_comphy_set_mode_10gkr(struct phy *phy)
-> 	val |= MVEBU_COMPHY_EXT_SELV_RX_SAMPL(0x1a);
-> 	writel(val, priv->base + MVEBU_COMPHY_EXT_SELV(lane->id));
-> 
->-	return mvebu_comphy_init_plls(lane, PHY_MODE_10GKR);
->+	return mvebu_comphy_init_plls(lane);
-> }
-> 
-> static int mvebu_comphy_power_on(struct phy *phy)
->@@ -479,7 +480,8 @@ static int mvebu_comphy_power_on(struct phy *phy)
-> 	int ret, mux;
-> 	u32 val;
-> 
->-	mux = mvebu_comphy_get_mux(lane->id, lane->port, lane->mode);
->+	mux = mvebu_comphy_get_mux(lane->id, lane->port,
->+				   lane->mode, lane->submode);
-> 	if (mux < 0)
-> 		return -ENOTSUPP;
-> 
->@@ -492,12 +494,12 @@ static int mvebu_comphy_power_on(struct phy *phy)
-> 	val |= mux << MVEBU_COMPHY_SELECTOR_PHY(lane->id);
-> 	regmap_write(priv->regmap, MVEBU_COMPHY_SELECTOR, val);
-> 
->-	switch (lane->mode) {
->-	case PHY_MODE_SGMII:
->-	case PHY_MODE_2500SGMII:
->-		ret = mvebu_comphy_set_mode_sgmii(phy, lane->mode);
->+	switch (lane->submode) {
->+	case PHY_INTERFACE_MODE_SGMII:
->+	case PHY_INTERFACE_MODE_2500BASEX:
->+		ret = mvebu_comphy_set_mode_sgmii(phy);
-> 		break;
->-	case PHY_MODE_10GKR:
->+	case PHY_INTERFACE_MODE_10GKR:
-> 		ret = mvebu_comphy_set_mode_10gkr(phy);
-> 		break;
-> 	default:
->@@ -517,10 +519,17 @@ static int mvebu_comphy_set_mode(struct phy *phy,
-> {
-> 	struct mvebu_comphy_lane *lane = phy_get_drvdata(phy);
-> 
->-	if (mvebu_comphy_get_mux(lane->id, lane->port, mode) < 0)
->+	if (mode != PHY_MODE_ETHERNET)
->+		return -EINVAL;
->+
->+	if (submode == PHY_INTERFACE_MODE_1000BASEX)
->+		submode = PHY_INTERFACE_MODE_SGMII;
->+
->+	if (mvebu_comphy_get_mux(lane->id, lane->port, mode, submode) < 0)
-> 		return -EINVAL;
-> 
-> 	lane->mode = mode;
->+	lane->submode = submode;
-> 	return 0;
-> }
-> 
 
 
+On 19/11/2018 06:38, CK Hu wrote:
+> Hi, Matthias:
+> 
+> On Fri, 2018-11-16 at 13:54 +0100, matthias.bgg@kernel.org wrote:
+>> From: Matthias Brugger <mbrugger@suse.com>
+>>
+>> It can happen that the mmsys clock drivers aren't probed before the
+>> platform driver gets invoked. The platform driver used to print a warning
+>> that the driver failed to get the clocks. Omit this error on
+>> the defered probe path.
+> 
+> This patch looks good to me, but you have not modified the sub driver in
+> HDMI path. We could let HDMI path print the warning and someone send
+> another patch later, or you modify for HDMI path in this patch.
 
--- 
-Maxime Chevallier, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
+Sure, I'll add this in v6. After inspecting the code, I think we will need to
+also check for not initialized clocks in mtk_mdp_comp_init, as the driver for
+now does not even check if the clocks are present. What do you think?
+
+I'll address the coding style issue you metioned below as well.
+
+Regards,
+Matthias
+
+>>
+>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+>> ---
+>>  drivers/gpu/drm/mediatek/mtk_disp_color.c | 4 +++-
+>>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c   | 4 +++-
+>>  drivers/gpu/drm/mediatek/mtk_disp_rdma.c  | 4 +++-
+>>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c    | 3 ++-
+>>  drivers/gpu/drm/mediatek/mtk_dsi.c        | 6 ++++--
+>>  5 files changed, 15 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/drm/mediatek/mtk_disp_color.c
+>> index f609b62b8be6..1ea3178d4c18 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
+>> @@ -126,7 +126,9 @@ static int mtk_disp_color_probe(struct platform_device *pdev)
+>>  	ret = mtk_ddp_comp_init(dev, dev->of_node, &priv->ddp_comp, comp_id,
+>>  				&mtk_disp_color_funcs);
+>>  	if (ret) {
+>> -		dev_err(dev, "Failed to initialize component: %d\n", ret);
+>> +		if (ret != -EPROBE_DEFER)
+>> +			dev_err(dev, "Failed to initialize component: %d\n",
+>> +					ret);
+> 
+> I would like one more blank line here.
+> 
+>>  		return ret;
+>>  	}
+>>  
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+>> index 28d191192945..5ebbcaa4e70e 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+>> @@ -293,7 +293,9 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
+>>  	ret = mtk_ddp_comp_init(dev, dev->of_node, &priv->ddp_comp, comp_id,
+>>  				&mtk_disp_ovl_funcs);
+>>  	if (ret) {
+>> -		dev_err(dev, "Failed to initialize component: %d\n", ret);
+>> +		if (ret != -EPROBE_DEFER)
+>> +			dev_err(dev, "Failed to initialize component: %d\n",
+>> +					ret);
+> 
+> I would like to align to the right of '('.
+> 
+> Regards,
+> CK
+> 
+>>  		return ret;
+>>  	}
+>>  
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+>> index b0a5cffe345a..59a08ed5fea5 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+>> @@ -295,7 +295,9 @@ static int mtk_disp_rdma_probe(struct platform_device *pdev)
+>>  	ret = mtk_ddp_comp_init(dev, dev->of_node, &priv->ddp_comp, comp_id,
+>>  				&mtk_disp_rdma_funcs);
+>>  	if (ret) {
+>> -		dev_err(dev, "Failed to initialize component: %d\n", ret);
+>> +		if (ret != -EPROBE_DEFER)
+>> +			dev_err(dev, "Failed to initialize component: %d\n",
+>> +					ret);
+>>  		return ret;
+>>  	}
+>>  
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+>> index b06cd9d4b525..b76a2d071a97 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+>> @@ -566,7 +566,8 @@ static int mtk_ddp_probe(struct platform_device *pdev)
+>>  
+>>  	ddp->clk = devm_clk_get(dev, NULL);
+>>  	if (IS_ERR(ddp->clk)) {
+>> -		dev_err(dev, "Failed to get clock\n");
+>> +		if (PTR_ERR(ddp->clk) != -EPROBE_DEFER)
+>> +			dev_err(dev, "Failed to get clock\n");
+>>  		return PTR_ERR(ddp->clk);
+>>  	}
+>>  
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+>> index 90109a0d6fff..cc6de75636c3 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+>> @@ -1103,14 +1103,16 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+>>  	dsi->engine_clk = devm_clk_get(dev, "engine");
+>>  	if (IS_ERR(dsi->engine_clk)) {
+>>  		ret = PTR_ERR(dsi->engine_clk);
+>> -		dev_err(dev, "Failed to get engine clock: %d\n", ret);
+>> +		if (ret != -EPROBE_DEFER)
+>> +			dev_err(dev, "Failed to get engine clock: %d\n", ret);
+>>  		return ret;
+>>  	}
+>>  
+>>  	dsi->digital_clk = devm_clk_get(dev, "digital");
+>>  	if (IS_ERR(dsi->digital_clk)) {
+>>  		ret = PTR_ERR(dsi->digital_clk);
+>> -		dev_err(dev, "Failed to get digital clock: %d\n", ret);
+>> +		if (ret != -EPROBE_DEFER)
+>> +			dev_err(dev, "Failed to get digital clock: %d\n", ret);
+>>  		return ret;
+>>  	}
+>>  
+> 
+> 
