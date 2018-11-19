@@ -1,31 +1,366 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] pinctrl: mediatek: Convert to using %pOFn instead of device_node.name
-Date: Mon, 19 Nov 2018 15:14:19 +0100
-Message-ID: <CACRpkdZnS4BkUJN_rjjPcCQAMDd0_4KZ_LgmYYtmuuBuRg6jgw@mail.gmail.com>
-References: <20181116220540.17222-1-robh@kernel.org> <20181116220540.17222-4-robh@kernel.org>
+From: Antoine Tenart <antoine.tenart@free-electrons.com>
+Subject: Re: [PATCH v2 4/5] phy: mvebu-cp110-comphy: convert to use eth phy
+ mode and submode
+Date: Mon, 19 Nov 2018 16:48:42 +0000
+Message-ID: <20181119164842.GA31822@kwain>
+References: <20181109234755.21687-1-grygorii.strashko@ti.com>
+ <20181109234755.21687-5-grygorii.strashko@ti.com>
+ <20181119092632.7048bc46@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181116220540.17222-4-robh@kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, sean.wang@kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20181119092632.7048bc46@bootlin.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, Grygorii Strashko <grygorii.strashko@ti.com>, Quentin Schulz <quentin.schulz@bootlin.com>, Manu Gautam <mgautam@codeaurora.org>, Tony Lindgren <tony@atomide.com>, netdev@vger.kernel.org, Antoine Tenart <antoine.tenart@free-electrons.com>, Sekhar Nori <nsekhar@ti.com>, Russell King - ARM Linux <linux@armlinux.org.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Vivek Gautam <vivek.gautam@codeaurora.org>, Carlo Caione <carlo@caione.org>, linux-amlogic@lists.infradead.org, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Nov 16, 2018 at 11:06 PM Rob Herring <robh@kernel.org> wrote:
+Hi,
 
-> In preparation to remove the node name pointer from struct device_node,
-> convert printf users to use the %pOFn format specifier.
->
-> Cc: Sean Wang <sean.wang@kernel.org>
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-gpio@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Signed-off-by: Rob Herring <robh@kernel.org>
+On Mon, Nov 19, 2018 at 09:26:32AM +0100, Maxime Chevallier wrote:
+> =
 
-Patch applied with Sean's ACK.
+> On Fri, 9 Nov 2018 17:47:54 -0600
+> Grygorii Strashko <grygorii.strashko@ti.com> wrote:
+> =
 
-Yours,
-Linus Walleij
+> >Convert mvebu-cp110-comphy PHY driver to use recently introduced
+> >PHY_MODE_ETHERNET and phy_set_mode_ext().
+> =
+
+> Sorry I missed your V2, hopefully I tested the right version this time.
+> Tested on MCBin, this works just fine.
+> =
+
+> Tested-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
+
+Thank you for testing!
+
+Acked-by: Antoine Tenart <antoine.tenart@bootlin.com>
+
+Antoine
+
+> >Signed-off-by: Grygorii Strashko <grygorii.strashko@ti.com>
+> >---
+> > drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c | 19 +-----
+> > drivers/phy/marvell/phy-mvebu-cp110-comphy.c    | 83 ++++++++++++++----=
+-------
+> > 2 files changed, 48 insertions(+), 54 deletions(-)
+> >
+> >diff --git a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c b/drivers/n=
+et/ethernet/marvell/mvpp2/mvpp2_main.c
+> >index 7a37a37..731793a 100644
+> >--- a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+> >+++ b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+> >@@ -1165,28 +1165,13 @@ static void mvpp22_gop_setup_irq(struct mvpp2_po=
+rt *port)
+> >  */
+> > static int mvpp22_comphy_init(struct mvpp2_port *port)
+> > {
+> >-	enum phy_mode mode;
+> > 	int ret;
+> > =
+
+> > 	if (!port->comphy)
+> > 		return 0;
+> > =
+
+> >-	switch (port->phy_interface) {
+> >-	case PHY_INTERFACE_MODE_SGMII:
+> >-	case PHY_INTERFACE_MODE_1000BASEX:
+> >-		mode =3D PHY_MODE_SGMII;
+> >-		break;
+> >-	case PHY_INTERFACE_MODE_2500BASEX:
+> >-		mode =3D PHY_MODE_2500SGMII;
+> >-		break;
+> >-	case PHY_INTERFACE_MODE_10GKR:
+> >-		mode =3D PHY_MODE_10GKR;
+> >-		break;
+> >-	default:
+> >-		return -EINVAL;
+> >-	}
+> >-
+> >-	ret =3D phy_set_mode(port->comphy, mode);
+> >+	ret =3D phy_set_mode_ext(port->comphy, PHY_MODE_ETHERNET,
+> >+			       port->phy_interface);
+> > 	if (ret)
+> > 		return ret;
+> > =
+
+> >diff --git a/drivers/phy/marvell/phy-mvebu-cp110-comphy.c b/drivers/phy/=
+marvell/phy-mvebu-cp110-comphy.c
+> >index 79b52c3..7dee72b 100644
+> >--- a/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
+> >+++ b/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
+> >@@ -9,6 +9,7 @@
+> > #include <linux/iopoll.h>
+> > #include <linux/mfd/syscon.h>
+> > #include <linux/module.h>
+> >+#include <linux/phy.h>
+> > #include <linux/phy/phy.h>
+> > #include <linux/platform_device.h>
+> > #include <linux/regmap.h>
+> >@@ -131,26 +132,26 @@ struct mvebu_comhy_conf {
+> > =
+
+> > static const struct mvebu_comhy_conf mvebu_comphy_cp110_modes[] =3D {
+> > 	/* lane 0 */
+> >-	MVEBU_COMPHY_CONF(0, 1, PHY_MODE_SGMII, 0x1),
+> >-	MVEBU_COMPHY_CONF(0, 1, PHY_MODE_2500SGMII, 0x1),
+> >+	MVEBU_COMPHY_CONF(0, 1, PHY_INTERFACE_MODE_SGMII, 0x1),
+> >+	MVEBU_COMPHY_CONF(0, 1, PHY_INTERFACE_MODE_2500BASEX, 0x1),
+> > 	/* lane 1 */
+> >-	MVEBU_COMPHY_CONF(1, 2, PHY_MODE_SGMII, 0x1),
+> >-	MVEBU_COMPHY_CONF(1, 2, PHY_MODE_2500SGMII, 0x1),
+> >+	MVEBU_COMPHY_CONF(1, 2, PHY_INTERFACE_MODE_SGMII, 0x1),
+> >+	MVEBU_COMPHY_CONF(1, 2, PHY_INTERFACE_MODE_2500BASEX, 0x1),
+> > 	/* lane 2 */
+> >-	MVEBU_COMPHY_CONF(2, 0, PHY_MODE_SGMII, 0x1),
+> >-	MVEBU_COMPHY_CONF(2, 0, PHY_MODE_2500SGMII, 0x1),
+> >-	MVEBU_COMPHY_CONF(2, 0, PHY_MODE_10GKR, 0x1),
+> >+	MVEBU_COMPHY_CONF(2, 0, PHY_INTERFACE_MODE_SGMII, 0x1),
+> >+	MVEBU_COMPHY_CONF(2, 0, PHY_INTERFACE_MODE_2500BASEX, 0x1),
+> >+	MVEBU_COMPHY_CONF(2, 0, PHY_INTERFACE_MODE_10GKR, 0x1),
+> > 	/* lane 3 */
+> >-	MVEBU_COMPHY_CONF(3, 1, PHY_MODE_SGMII, 0x2),
+> >-	MVEBU_COMPHY_CONF(3, 1, PHY_MODE_2500SGMII, 0x2),
+> >+	MVEBU_COMPHY_CONF(3, 1, PHY_INTERFACE_MODE_SGMII, 0x2),
+> >+	MVEBU_COMPHY_CONF(3, 1, PHY_INTERFACE_MODE_2500BASEX, 0x2),
+> > 	/* lane 4 */
+> >-	MVEBU_COMPHY_CONF(4, 0, PHY_MODE_SGMII, 0x2),
+> >-	MVEBU_COMPHY_CONF(4, 0, PHY_MODE_2500SGMII, 0x2),
+> >-	MVEBU_COMPHY_CONF(4, 0, PHY_MODE_10GKR, 0x2),
+> >-	MVEBU_COMPHY_CONF(4, 1, PHY_MODE_SGMII, 0x1),
+> >+	MVEBU_COMPHY_CONF(4, 0, PHY_INTERFACE_MODE_SGMII, 0x2),
+> >+	MVEBU_COMPHY_CONF(4, 0, PHY_INTERFACE_MODE_2500BASEX, 0x2),
+> >+	MVEBU_COMPHY_CONF(4, 0, PHY_INTERFACE_MODE_10GKR, 0x2),
+> >+	MVEBU_COMPHY_CONF(4, 1, PHY_INTERFACE_MODE_SGMII, 0x1),
+> > 	/* lane 5 */
+> >-	MVEBU_COMPHY_CONF(5, 2, PHY_MODE_SGMII, 0x1),
+> >-	MVEBU_COMPHY_CONF(5, 2, PHY_MODE_2500SGMII, 0x1),
+> >+	MVEBU_COMPHY_CONF(5, 2, PHY_INTERFACE_MODE_SGMII, 0x1),
+> >+	MVEBU_COMPHY_CONF(5, 2, PHY_INTERFACE_MODE_2500BASEX, 0x1),
+> > };
+> > =
+
+> > struct mvebu_comphy_priv {
+> >@@ -163,10 +164,12 @@ struct mvebu_comphy_lane {
+> > 	struct mvebu_comphy_priv *priv;
+> > 	unsigned id;
+> > 	enum phy_mode mode;
+> >+	int submode;
+> > 	int port;
+> > };
+> > =
+
+> >-static int mvebu_comphy_get_mux(int lane, int port, enum phy_mode mode)
+> >+static int mvebu_comphy_get_mux(int lane, int port,
+> >+				enum phy_mode mode, int submode)
+> > {
+> > 	int i, n =3D ARRAY_SIZE(mvebu_comphy_cp110_modes);
+> > =
+
+> >@@ -177,7 +180,7 @@ static int mvebu_comphy_get_mux(int lane, int port, =
+enum phy_mode mode)
+> > 	for (i =3D 0; i < n; i++) {
+> > 		if (mvebu_comphy_cp110_modes[i].lane =3D=3D lane &&
+> > 		    mvebu_comphy_cp110_modes[i].port =3D=3D port &&
+> >-		    mvebu_comphy_cp110_modes[i].mode =3D=3D mode)
+> >+		    mvebu_comphy_cp110_modes[i].mode =3D=3D submode)
+> > 			break;
+> > 	}
+> > =
+
+> >@@ -187,8 +190,7 @@ static int mvebu_comphy_get_mux(int lane, int port, =
+enum phy_mode mode)
+> > 	return mvebu_comphy_cp110_modes[i].mux;
+> > }
+> > =
+
+> >-static void mvebu_comphy_ethernet_init_reset(struct mvebu_comphy_lane *=
+lane,
+> >-					     enum phy_mode mode)
+> >+static void mvebu_comphy_ethernet_init_reset(struct mvebu_comphy_lane *=
+lane)
+> > {
+> > 	struct mvebu_comphy_priv *priv =3D lane->priv;
+> > 	u32 val;
+> >@@ -206,14 +208,14 @@ static void mvebu_comphy_ethernet_init_reset(struc=
+t mvebu_comphy_lane *lane,
+> > 		 MVEBU_COMPHY_SERDES_CFG0_HALF_BUS |
+> > 		 MVEBU_COMPHY_SERDES_CFG0_GEN_RX(0xf) |
+> > 		 MVEBU_COMPHY_SERDES_CFG0_GEN_TX(0xf));
+> >-	if (mode =3D=3D PHY_MODE_10GKR)
+> >+	if (lane->submode =3D=3D PHY_INTERFACE_MODE_10GKR)
+> > 		val |=3D MVEBU_COMPHY_SERDES_CFG0_GEN_RX(0xe) |
+> > 		       MVEBU_COMPHY_SERDES_CFG0_GEN_TX(0xe);
+> >-	else if (mode =3D=3D PHY_MODE_2500SGMII)
+> >+	else if (lane->submode =3D=3D PHY_INTERFACE_MODE_2500BASEX)
+> > 		val |=3D MVEBU_COMPHY_SERDES_CFG0_GEN_RX(0x8) |
+> > 		       MVEBU_COMPHY_SERDES_CFG0_GEN_TX(0x8) |
+> > 		       MVEBU_COMPHY_SERDES_CFG0_HALF_BUS;
+> >-	else if (mode =3D=3D PHY_MODE_SGMII)
+> >+	else if (lane->submode =3D=3D PHY_INTERFACE_MODE_SGMII)
+> > 		val |=3D MVEBU_COMPHY_SERDES_CFG0_GEN_RX(0x6) |
+> > 		       MVEBU_COMPHY_SERDES_CFG0_GEN_TX(0x6) |
+> > 		       MVEBU_COMPHY_SERDES_CFG0_HALF_BUS;
+> >@@ -243,7 +245,7 @@ static void mvebu_comphy_ethernet_init_reset(struct =
+mvebu_comphy_lane *lane,
+> > 	/* refclk selection */
+> > 	val =3D readl(priv->base + MVEBU_COMPHY_MISC_CTRL0(lane->id));
+> > 	val &=3D ~MVEBU_COMPHY_MISC_CTRL0_REFCLK_SEL;
+> >-	if (mode =3D=3D PHY_MODE_10GKR)
+> >+	if (lane->submode =3D=3D PHY_INTERFACE_MODE_10GKR)
+> > 		val |=3D MVEBU_COMPHY_MISC_CTRL0_ICP_FORCE;
+> > 	writel(val, priv->base + MVEBU_COMPHY_MISC_CTRL0(lane->id));
+> > =
+
+> >@@ -261,8 +263,7 @@ static void mvebu_comphy_ethernet_init_reset(struct =
+mvebu_comphy_lane *lane,
+> > 	writel(val, priv->base + MVEBU_COMPHY_LOOPBACK(lane->id));
+> > }
+> > =
+
+> >-static int mvebu_comphy_init_plls(struct mvebu_comphy_lane *lane,
+> >-				  enum phy_mode mode)
+> >+static int mvebu_comphy_init_plls(struct mvebu_comphy_lane *lane)
+> > {
+> > 	struct mvebu_comphy_priv *priv =3D lane->priv;
+> > 	u32 val;
+> >@@ -303,13 +304,13 @@ static int mvebu_comphy_init_plls(struct mvebu_com=
+phy_lane *lane,
+> > 	return 0;
+> > }
+> > =
+
+> >-static int mvebu_comphy_set_mode_sgmii(struct phy *phy, enum phy_mode m=
+ode)
+> >+static int mvebu_comphy_set_mode_sgmii(struct phy *phy)
+> > {
+> > 	struct mvebu_comphy_lane *lane =3D phy_get_drvdata(phy);
+> > 	struct mvebu_comphy_priv *priv =3D lane->priv;
+> > 	u32 val;
+> > =
+
+> >-	mvebu_comphy_ethernet_init_reset(lane, mode);
+> >+	mvebu_comphy_ethernet_init_reset(lane);
+> > =
+
+> > 	val =3D readl(priv->base + MVEBU_COMPHY_RX_CTRL1(lane->id));
+> > 	val &=3D ~MVEBU_COMPHY_RX_CTRL1_CLK8T_EN;
+> >@@ -330,7 +331,7 @@ static int mvebu_comphy_set_mode_sgmii(struct phy *p=
+hy, enum phy_mode mode)
+> > 	val |=3D MVEBU_COMPHY_GEN1_S0_TX_EMPH(0x1);
+> > 	writel(val, priv->base + MVEBU_COMPHY_GEN1_S0(lane->id));
+> > =
+
+> >-	return mvebu_comphy_init_plls(lane, PHY_MODE_SGMII);
+> >+	return mvebu_comphy_init_plls(lane);
+> > }
+> > =
+
+> > static int mvebu_comphy_set_mode_10gkr(struct phy *phy)
+> >@@ -339,7 +340,7 @@ static int mvebu_comphy_set_mode_10gkr(struct phy *p=
+hy)
+> > 	struct mvebu_comphy_priv *priv =3D lane->priv;
+> > 	u32 val;
+> > =
+
+> >-	mvebu_comphy_ethernet_init_reset(lane, PHY_MODE_10GKR);
+> >+	mvebu_comphy_ethernet_init_reset(lane);
+> > =
+
+> > 	val =3D readl(priv->base + MVEBU_COMPHY_RX_CTRL1(lane->id));
+> > 	val |=3D MVEBU_COMPHY_RX_CTRL1_RXCLK2X_SEL |
+> >@@ -469,7 +470,7 @@ static int mvebu_comphy_set_mode_10gkr(struct phy *p=
+hy)
+> > 	val |=3D MVEBU_COMPHY_EXT_SELV_RX_SAMPL(0x1a);
+> > 	writel(val, priv->base + MVEBU_COMPHY_EXT_SELV(lane->id));
+> > =
+
+> >-	return mvebu_comphy_init_plls(lane, PHY_MODE_10GKR);
+> >+	return mvebu_comphy_init_plls(lane);
+> > }
+> > =
+
+> > static int mvebu_comphy_power_on(struct phy *phy)
+> >@@ -479,7 +480,8 @@ static int mvebu_comphy_power_on(struct phy *phy)
+> > 	int ret, mux;
+> > 	u32 val;
+> > =
+
+> >-	mux =3D mvebu_comphy_get_mux(lane->id, lane->port, lane->mode);
+> >+	mux =3D mvebu_comphy_get_mux(lane->id, lane->port,
+> >+				   lane->mode, lane->submode);
+> > 	if (mux < 0)
+> > 		return -ENOTSUPP;
+> > =
+
+> >@@ -492,12 +494,12 @@ static int mvebu_comphy_power_on(struct phy *phy)
+> > 	val |=3D mux << MVEBU_COMPHY_SELECTOR_PHY(lane->id);
+> > 	regmap_write(priv->regmap, MVEBU_COMPHY_SELECTOR, val);
+> > =
+
+> >-	switch (lane->mode) {
+> >-	case PHY_MODE_SGMII:
+> >-	case PHY_MODE_2500SGMII:
+> >-		ret =3D mvebu_comphy_set_mode_sgmii(phy, lane->mode);
+> >+	switch (lane->submode) {
+> >+	case PHY_INTERFACE_MODE_SGMII:
+> >+	case PHY_INTERFACE_MODE_2500BASEX:
+> >+		ret =3D mvebu_comphy_set_mode_sgmii(phy);
+> > 		break;
+> >-	case PHY_MODE_10GKR:
+> >+	case PHY_INTERFACE_MODE_10GKR:
+> > 		ret =3D mvebu_comphy_set_mode_10gkr(phy);
+> > 		break;
+> > 	default:
+> >@@ -517,10 +519,17 @@ static int mvebu_comphy_set_mode(struct phy *phy,
+> > {
+> > 	struct mvebu_comphy_lane *lane =3D phy_get_drvdata(phy);
+> > =
+
+> >-	if (mvebu_comphy_get_mux(lane->id, lane->port, mode) < 0)
+> >+	if (mode !=3D PHY_MODE_ETHERNET)
+> >+		return -EINVAL;
+> >+
+> >+	if (submode =3D=3D PHY_INTERFACE_MODE_1000BASEX)
+> >+		submode =3D PHY_INTERFACE_MODE_SGMII;
+> >+
+> >+	if (mvebu_comphy_get_mux(lane->id, lane->port, mode, submode) < 0)
+> > 		return -EINVAL;
+> > =
+
+> > 	lane->mode =3D mode;
+> >+	lane->submode =3D submode;
+> > 	return 0;
+> > }
+> > =
+
+> =
+
+> =
+
+> =
+
+> -- =
+
+> Maxime Chevallier, Bootlin
+> Embedded Linux and kernel engineering
+> https://bootlin.com
+
+-- =
+
+Antoine T=E9nart, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
