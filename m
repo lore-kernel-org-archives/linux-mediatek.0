@@ -1,145 +1,159 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v5 08/12] dt-bindings: mediatek: Change the binding for
- mmsys clocks
-Date: Sun, 18 Nov 2018 18:12:15 +0100
-Message-ID: <2a23e407-4cd4-2e2b-97a5-4e2bb96846e0@gmail.com>
-References: <20181116125449.23581-1-matthias.bgg@kernel.org>
- <20181116125449.23581-9-matthias.bgg@kernel.org>
- <20181116231522.GA18006@bogus>
+From: biao huang <biao.huang@mediatek.com>
+Subject: Re: [v3, PATCH 2/2] dt-binding: mediatek-dwmac: add binding
+ document for MediaTek MT2712 DWMAC
+Date: Mon, 19 Nov 2018 10:12:48 +0800
+Message-ID: <1542593568.24219.5.camel@mhfsdcap03>
+References: <1542359926-28800-1-git-send-email-biao.huang@mediatek.com>
+         <1542359926-28800-2-git-send-email-biao.huang@mediatek.com>
+         <CAGp9LzrHm-ympV2zAKZKcEfA25aJp8BSS+=01B6G=sP_HiSSdA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="------------DE07BBB8F39CF4FD41CA126C"
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181116231522.GA18006@bogus>
-Content-Language: en-US
+In-Reply-To: <CAGp9LzrHm-ympV2zAKZKcEfA25aJp8BSS+=01B6G=sP_HiSSdA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>, matthias.bgg@kernel.org
-Cc: mark.rutland@arm.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, mturquette@baylibre.com, sboyd@codeaurora.org, ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com, sean.wang@mediatek.com, sean.wang@kernel.org, rdunlap@infradead.org, wens@csie.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>
+To: Sean Wang <sean.wang@kernel.org>
+Cc: "davem@davemloft.net" <davem@davemloft.net>, "robh+dt@kernel.org" <robh+dt@kernel.org>, "mark.rutland@arm.com" <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Nelson Chang =?UTF-8?Q?=28=E5=BC=B5=E5=AE=B6=E7=A5=A5=29?= <nelson.chang@mediatek.com>, "andrew@lunn.ch" <andrew@lunn.ch>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, Liguo Zhang =?UTF-8?Q?=28=E5=BC=A0=E7=AB=8B=E5=9B=BD=29?= <Liguo.Zhang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "joabreu@synopsys.com" <joabreu@synopsys.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Honghui Zhang =?UTF-8?Q?=28=E5=BC=A0=E6=B4=AA=E8=BE=89=29?= <Honghui.Zhang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This is a multi-part message in MIME format.
---------------DE07BBB8F39CF4FD41CA126C
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Dear Sean,
 
+	Thanks for your detailed comments~
 
-
-On 11/17/18 12:15 AM, Rob Herring wrote:
-> On Fri, Nov 16, 2018 at 01:54:45PM +0100, matthias.bgg@kernel.org wrote=
-:
->> From: Matthias Brugger <mbrugger@suse.com>
->>
->> On SoCs with no publical available HW or no working graphic stack
->> we change the devicetree binding for the mmsys clock part. This
->> way we don't need to register a platform device explicitly in the
->> drm driver. Instead we can create a mmsys child which invokes the
->> clock driver.
->>
->> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
->> ---
->>  .../bindings/arm/mediatek/mediatek,mmsys.txt  | 21 ++++++++++++------=
--
->>  .../display/mediatek/mediatek,disp.txt        |  4 ++++
->>  2 files changed, 18 insertions(+), 7 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,m=
-msys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.=
-txt
->> index 4468345f8b1a..d4e205981363 100644
->> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.tx=
-t
->> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.tx=
-t
->> @@ -1,4 +1,4 @@
->> -Mediatek mmsys controller
->> +Mediatek mmsys clock controller
->>  =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D
->> =20
->>  The Mediatek mmsys controller provides various clocks to the system.
->> @@ -6,18 +6,25 @@ The Mediatek mmsys controller provides various clock=
-s to the system.
->>  Required Properties:
->> =20
->>  - compatible: Should be one of:
->> -	- "mediatek,mt2712-mmsys", "syscon"
->> -	- "mediatek,mt6797-mmsys", "syscon"
->> +	- "mediatek,mt2712-mmsys-clk", "syscon"
->> +	- "mediatek,mt6797-mmsys-clk", "syscon"
->=20
-> Doesn't match the example.>
->>  - #clock-cells: Must be 1
->> =20
->> -The mmsys controller uses the common clk binding from
->> +The mmsys clock controller uses the common clk binding from
->>  Documentation/devicetree/bindings/clock/clock-bindings.txt
->>  The available clocks are defined in dt-bindings/clock/mt*-clk.h.
->> +It is a child of the mmsys block, see binding at:
->> +Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
->> =20
->>  Example:
->> =20
->> -mmsys: clock-controller@14000000 {
->> -	compatible =3D "mediatek,mt8173-mmsys", "syscon";
->> +mmsys: syscon@14000000 {
->> +	compatible =3D "mediatek,mt2712-mmsys", "syscon", "simple-mfd";
->>  	reg =3D <0 0x14000000 0 0x1000>;
->> -	#clock-cells =3D <1>;
->> +
->> +	mmsys_clk: clock-controller@14000000 {
->> +		compatible =3D "mediatek,mt2712-mmsys-clk";
->> +		#clock-cells =3D <1>;
->=20
-> This goes against the general direction of not defining separate nodes =
-
-> for providers with no resources.
->=20
-> Why do you need this and what does it buy if you have to continue to=20
-> support the existing chips?
->=20
-
-It would show explicitly that the mmsys block is used to probe two
-drivers, one for the gpu and one for the clocks. Otherwise that is
-hidden in the drm driver code. I think it is cleaner to describe that in
-the device tree.
-
---------------DE07BBB8F39CF4FD41CA126C
-Content-Type: application/pgp-keys;
- name="pEpkey.asc"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
- filename="pEpkey.asc"
-
------BEGIN PGP PUBLIC KEY BLOCK-----
-
-mQENBFuECLIBCADD/t6l9ZYo+koZfGSuIrxbdrI1wR3iCxem+yKPz6cTUtRE6HNe
-fRKM83CjBt5iPFFwBkofXFoTGS/9zKcoPAWM9QK2f6ibkmUIYH4mNZfYmYbVWg/e
-nWQru5SLl8LzNKIQm3adJKL+PiLMiDuoSJ7Z6sD8dhxxjZgCn12ulKzJuzjTp9+v
-AlByTWs0U4UibjZyJrcGN5ZL3lbYDqHxAVLeN5os+VezXYXa6GglscmSv8QdVMui
-XY37mNkhBGr7MD81JckqXn/95Z+nWpRE3upHSxGtUNfkoW4PNpBOa8jPO1TBA4f0
-0xZtDB7bFNzZYtdsJ2LnyXqsrwWoxPQiRoQFABEBAAG0KU1hdHRoaWFzIEJydWdn
-ZXIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+iQFUBBMBCAA+FiEEhdxoJL7wYu3O
-B7UPj8JuPkuXuCkFAluECLMCGwMFCQHhM4AFCwkIBwIGFQoJCAsCBBYCAwECHgEC
-F4AACgkQj8JuPkuXuCk3IwgAkW6Q3folu6SMcIVa47KQIms7K3qUgXoi4nt8HbET
-T1wm83ZmHXyI2S3ibzR+9yhbrqZZ7d6mHMjwvEnS3RVGw1dUGs9DgliREeyErC/5
-SHTXYm2EvsPVCUd9yEe0VabhtTdLk5saQC1SncMnjorIWCWHyuBbIEIzSYmiVZlw
-VbcD9kDYSKHmi/RSv0EeyedKW6aanbkB9j+M0NaRbCPbsmDrfJY31T8Jf66bLH7h
-WfI6HURtQuvhSRzYWypp9yO6ndizoMmv1NQk/OO40j7QCVzaOmqJxc41FAxz57cg
-6fN4ic/o7KNf6ZXoTuicb0Ft9gpUNtSj72dQymhdaXGFcbkBDQRbhAizAQgAv1Bs
-N6c451tfbXWM754NxHhXVwhR/JKKD+PpHsYh1BSSvE7wwu4dW1Uu60GPeRM0jq7g
-pfu5BB2X6V2qL2mO8FdVf83Xp4h6nsEl220Ep1dq8zXBajX9cZVkzbkEXRs751xx
-o4HzOP6sTjimQLG1ALWdAZtE4HSyIafh4GWs0uPFYYSie7w1no4pXzLBTAcQ1PB7
-hMw9pHBu3Lx7FsgWU4k3riBGSklr1AEbJl0Z3wEuV7wC6BLUAqvQ/lmkf6Dg7URa
-aKzlgkDh4g/L5k3VeznJBLITTMprbN97zV13mvss9FCKduRY+YcAXpTVtOlLeIPD
-L/0AATCO2Y/WiAndgQARAQABiQE8BBgBCAAmFiEEhdxoJL7wYu3OB7UPj8JuPkuX
-uCkFAluECLMCGwwFCQHhM4AACgkQj8JuPkuXuCk1TQf/es2YD5q3GFce9wxGsm0j
-pPo8xuP1KKeORIMPXieHqVphlRgZp/ppWnSU3ZwgG8y65+8nW2iFJGmNyRxtgDiY
-J9Ji33ulefz66oDlC7YNZhA4MKFVW7A2pjvQSEkXmadk3N0RNBZQ6LKAY0+/2EbF
-atb6Cm46qahc/AkXegmLWaP/frb3p7peT6KCu59m94m6sj8yPre0USp6CiqkZK4G
-wF7sUgU1BwTveTZFwlnV1LySmZVBE7Ro7de/24HDO/1U2iUfvatlfkT2OrrkA7O4
-zBJY75tooUAUNcYczF+WAtHKBNyJwHo1ZXyRCUgddw9JosmapYAwOkZgYlVzSWxS
-Ww=3D=3D
-=3DapZK
------END PGP PUBLIC KEY BLOCK-----
-
---------------DE07BBB8F39CF4FD41CA126C--
+On Sat, 2018-11-17 at 08:21 +0800, Sean Wang wrote:
+> On Fri, Nov 16, 2018 at 1:19 AM Biao Huang <biao.huang@mediatek.com> wrote:
+> >
+> > The commit adds the device tree binding documentation for the MediaTek DWMAC
+> > found on MediaTek MT2712.
+> >
+> > Change-Id: I3728666bf65927164bd82fa8dddb90df8270bd44
+> 
+> Drop change-id
+sorry, I forgot it. will remove in next version.
+> 
+> > Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/net/mediatek-dwmac.txt     |   77 ++++++++++++++++++++
+> >  1 file changed, 77 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+> >
+> > diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.txt b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+> > new file mode 100644
+> > index 0000000..7fd56e0
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+> > @@ -0,0 +1,77 @@
+> > +MediaTek DWMAC glue layer controller
+> > +
+> > +This file documents platform glue layer for stmmac.
+> > +Please see stmmac.txt for the other unchanged properties.
+> > +
+> > +The device node has following properties.
+> > +
+> > +Required properties:
+> > +- compatible:  Should be "mediatek,mt2712-gmac" for MT2712 SoC
+> > +- reg:  Address and length of the register set for the device
+> > +- interrupts:  Should contain the MAC interrupts
+> > +- interrupt-names: Should contain a list of interrupt names corresponding to
+> > +       the interrupts in the interrupts property, if available.
+> > +       Should be "macirq" for the main MAC IRQ
+> > +- clocks: Must contain a phandle for each entry in clock-names.
+> > +- clock-names: The name of the clock listed in the clocks property. These are
+> > +       "axi", "apb", "mac_ext", "mac_parent", "ptp_ref", "ptp_parent", "ptp_top"
+> > +       for MT2712 SoC
+> 
+> About not including these parent clocks to the controller, you can
+> refer to assigned-clocks, assigned-clock-parents, assigned-clock-rates
+> noted in Documentation/devicetree/bindings/clock/clock-bindings.txt to
+> determine what speed these MUXs should be run at and see [1] as the
+> example how applied in dts.
+> 
+> [1]
+> https://elixir.bootlin.com/linux/latest/source/arch/arm/boot/dts/mt7623.dtsi#L660
+> 
+Got it, I'll remove parent info to dts.
+> > +- mac-address: See ethernet.txt in the same directory
+> > +- phy-mode: See ethernet.txt in the same directory
+> > +
+> > +Optional properties:
+> > +- tx-delay: TX clock delay macro value. Range is 0~31. Default is 0.
+> > +       It should be defined for rgmii/rgmii-rxid/mii interface.
+> > +- rx-delay: RX clock delay macro value. Range is 0~31. Default is 0.
+> > +       It should be defined for rgmii/rgmii-txid/mii/rmii interface.
+> > +- fine-tune: This property will select coarse-tune delay or fine delay
+> > +       for rgmii interface.
+> what is the property's type?
+> 
+ok, property type info will be added in next version.
+> > +       If fine-tune delay is enabled, tx-delay/rx-delay is 170+/-50ps
+> > +       per stage.
+> > +       Else coarse-tune delay is enabled, tx-delay/rx-delay is 0.55+/-0.2ns
+> > +       per stage.
+> > +       This property do not apply to non-rgmii PHYs.
+> > +       Only coarse-tune delay is supported for mii/rmii PHYs.
+> > +- rmii-rxc: Reference clock of rmii is from external PHYs,
+> what is the property's type?
+> 
+got it.
+> > +       and it can be connected to TXC or RXC pin on MT2712 SoC.
+> > +       If ref_clk <--> TXC, disable it.
+> > +       Else ref_clk <--> RXC, enable it.
+> > +- txc-inverse: Inverse tx clock for mii/rgmii.
+> what is the property's type?
+> 
+> > +       Inverse tx clock inside MAC relative to reference clock for rmii,
+> > +       and it rarely happen.
+> > +- rxc-inverse: Inverse rx clock for mii/rgmii interfaces.
+> what is the property's type?
+> 
+got it.
+> > +       Inverse reference clock for rmii.
+> 
+> If these optional properties look like generic enough, it would be
+> good that place them to stmmac.txt. Otherwise, they should be added
+> "mediatek," as the prefix string for these vendor-specific things.
+> 
+it's mediatek-specific, and the prefix string will be added in next
+version.
+> > +
+> > +Example:
+> > +       eth: ethernet@1101c000 {
+> > +               compatible = "mediatek,mt2712-gmac";
+> > +               reg = <0 0x1101c000 0 0x1300>;
+> > +               interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
+> > +               interrupt-names = "macirq";
+> > +               phy-mode ="rgmii-id";
+> > +               mac-address = [00 55 7b b5 7d f7];
+> > +               clock-names = "axi",
+> > +                             "apb",
+> > +                             "mac_ext",
+> > +                             "mac_parent",
+> > +                             "ptp_ref",
+> > +                             "ptp_parent",
+> > +                             "ptp_top";
+> > +               clocks = <&pericfg CLK_PERI_GMAC>,
+> > +                        <&pericfg CLK_PERI_GMAC_PCLK>,
+> > +                        <&topckgen CLK_TOP_ETHER_125M_SEL>,
+> > +                        <&topckgen CLK_TOP_ETHERPLL_125M>,
+> > +                        <&topckgen CLK_TOP_ETHER_50M_SEL>,
+> > +                        <&topckgen CLK_TOP_APLL1_D3>,
+> > +                        <&topckgen CLK_TOP_APLL1>;
+> > +               snps,txpbl = <32>;
+> > +               snps,rxpbl = <32>;
+> > +               snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
+> > +               snps,reset-active-low;
+> > +               tx-delay = <9>;
+> > +               rx-delay = <9>;
+> > +               fine-tune;
+> > +               rmii-rxc;
+> > +               txc-inverse;
+> > +               rxc-inverse;
+> > +       };
+> > --
+> > 1.7.9.5
+> >
+> >
+> > _______________________________________________
+> > Linux-mediatek mailing list
+> > Linux-mediatek@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
