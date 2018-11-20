@@ -1,139 +1,520 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v5 05/12] drm: mediatek: Omit warning on probe defers
-Date: Tue, 20 Nov 2018 12:09:42 +0800
-Message-ID: <1542686982.26483.1.camel@mtksdaap41>
-References: <20181116125449.23581-1-matthias.bgg@kernel.org>
- <20181116125449.23581-6-matthias.bgg@kernel.org>
- <1542605939.32082.12.camel@mtksdaap41>
- <0a02edf9-78da-dde9-4b69-38c4719b711b@gmail.com>
- <1542686700.9073.15.camel@mtksdaap41>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: Re: [PATCH v1 01/11] clk: mediatek: add new clkmux register API
+Date: Tue, 20 Nov 2018 14:34:57 +0800
+Message-ID: <1542695697.5132.24.camel@mtksdaap41>
+References: <20181106064206.17535-1-weiyi.lu@mediatek.com>
+         <20181106064206.17535-3-weiyi.lu@mediatek.com>
+         <CANMq1KDEg-9WzfaRB-n4Ab0PxjqfZL_aeTAXD336N6VzX8oFhQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1542686700.9073.15.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, sean.wang@kernel.org, Matthias Brugger <mbrugger@suse.com>, airlied@linux.ie, mturquette@baylibre.com, sean.wang@mediatek.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, wens@csie.org, robh+dt@kernel.org, rdunlap@infradead.org, laurent.pinchart@ideasonboard.com, matthias.bgg@kernel.org, ulrich.hecht+renesas@gmail.com, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CANMq1KDEg-9WzfaRB-n4Ab0PxjqfZL_aeTAXD336N6VzX8oFhQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nicolas Boichat <drinkcat@chromium.org>
+Cc: Rob Herring <robh@kernel.org>, srv_heupstream@mediatek.com, jamesjj.liao@mediatek.com, sboyd@codeaurora.org, lkml <linux-kernel@vger.kernel.org>, fan.chen@mediatek.com, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, owen.chen@mediatek.com, linux-clk@vger.kernel.org, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksCgpPbiBUdWUsIDIwMTgtMTEtMjAgYXQgMTI6MDUgKzA4MDAsIENLIEh1IHdyb3RlOgo+IEhp
-LCBNYXR0aGlhczoKPiAKPiBPbiBNb24sIDIwMTgtMTEtMTkgYXQgMTA6MjYgKzAxMDAsIE1hdHRo
-aWFzIEJydWdnZXIgd3JvdGU6Cj4gPiAKPiA+IE9uIDE5LzExLzIwMTggMDY6MzgsIENLIEh1IHdy
-b3RlOgo+ID4gPiBIaSwgTWF0dGhpYXM6Cj4gPiA+IAo+ID4gPiBPbiBGcmksIDIwMTgtMTEtMTYg
-YXQgMTM6NTQgKzAxMDAsIG1hdHRoaWFzLmJnZ0BrZXJuZWwub3JnIHdyb3RlOgo+ID4gPj4gRnJv
-bTogTWF0dGhpYXMgQnJ1Z2dlciA8bWJydWdnZXJAc3VzZS5jb20+Cj4gPiA+Pgo+ID4gPj4gSXQg
-Y2FuIGhhcHBlbiB0aGF0IHRoZSBtbXN5cyBjbG9jayBkcml2ZXJzIGFyZW4ndCBwcm9iZWQgYmVm
-b3JlIHRoZQo+ID4gPj4gcGxhdGZvcm0gZHJpdmVyIGdldHMgaW52b2tlZC4gVGhlIHBsYXRmb3Jt
-IGRyaXZlciB1c2VkIHRvIHByaW50IGEgd2FybmluZwo+ID4gPj4gdGhhdCB0aGUgZHJpdmVyIGZh
-aWxlZCB0byBnZXQgdGhlIGNsb2Nrcy4gT21pdCB0aGlzIGVycm9yIG9uCj4gPiA+PiB0aGUgZGVm
-ZXJlZCBwcm9iZSBwYXRoLgo+ID4gPiAKPiA+ID4gVGhpcyBwYXRjaCBsb29rcyBnb29kIHRvIG1l
-LCBidXQgeW91IGhhdmUgbm90IG1vZGlmaWVkIHRoZSBzdWIgZHJpdmVyIGluCj4gPiA+IEhETUkg
-cGF0aC4gV2UgY291bGQgbGV0IEhETUkgcGF0aCBwcmludCB0aGUgd2FybmluZyBhbmQgc29tZW9u
-ZSBzZW5kCj4gPiA+IGFub3RoZXIgcGF0Y2ggbGF0ZXIsIG9yIHlvdSBtb2RpZnkgZm9yIEhETUkg
-cGF0aCBpbiB0aGlzIHBhdGNoLgo+ID4gCj4gPiBTdXJlLCBJJ2xsIGFkZCB0aGlzIGluIHY2LiBB
-ZnRlciBpbnNwZWN0aW5nIHRoZSBjb2RlLCBJIHRoaW5rIHdlIHdpbGwgbmVlZCB0bwo+ID4gYWxz
-byBjaGVjayBmb3Igbm90IGluaXRpYWxpemVkIGNsb2NrcyBpbiBtdGtfbWRwX2NvbXBfaW5pdCwg
-YXMgdGhlIGRyaXZlciBmb3IKPiA+IG5vdyBkb2VzIG5vdCBldmVuIGNoZWNrIGlmIHRoZSBjbG9j
-a3MgYXJlIHByZXNlbnQuIFdoYXQgZG8geW91IHRoaW5rPwo+IAo+IFllcywgd2UgZG8gcmVhbGx5
-IG5lZWQgdG8gY29uc2lkZXIgbWRwIGRyaXZlciBiZWNhdXNlIG1tc3lzIGNsb2NrCj4gaW5jbHVk
-ZSBtZHAgY2xvY2suIFlvdSByZW1pbmQgbWUgdGhhdCBtbXN5cyBjb250cm9sIDQgbWFqb3IgZnVu
-Y3Rpb246Cj4gZHJtIHJvdXRpbmcsIGRybSBjbG9jaywgbWRwIHJvdXRpbmcsIGFuZCBtZHAgY2xv
-Y2suIFlvdXIgZGVzaWduIGxldCB0aGUKPiBtbXN5cyBkZXZpY2UgYXMgZHJtIGRldmljZSAoY29u
-dHJvbCBkcm0gcm91dGluZykgYW5kIGNyZWF0ZSBhIHN1YiBkZXZpY2UKPiBhcyBjbG9jayBkZXZp
-Y2UgKGNvbnRyb2wgZHJtIGNsb2NrLCBtZHAgY2xvY2spLiBJZiBvbmUgZGF5IG1kcCBkZXZpY2UK
-PiAobWF5IG5lZWQgY29udHJvbCBkcm0gcm91dGluZykgbmVlZCB0byBjb250cm9sIHRoZSByZWdp
-c3RlciBvZiBtZHAKClNvcnJ5IGZvciB0eXBvOiAnbWRwIGRldmljZSAobWF5IG5lZWQgY29udHJv
-bCBtZHAgcm91dGluZyknCgpSZWdhcmRzLApDSwoKPiByb3V0aW5nLCB3b3VsZCBtZHAgZGV2aWNl
-IGJlIGEgc3ViIGRldmljZT8gT3Igd2UgbmVlZCBub3QgdG8gY29uc2lkZXIKPiB0aGlzIGJlY2F1
-c2UgaXQgbmVlZCBub3QgdG8gYWNjZXNzIG1tc3lzIHJlZ2lzdGVyIG5vdz8KPiAKPiBSZWdhcmRz
-LAo+IENLCj4gCj4gPiAKPiA+IEknbGwgYWRkcmVzcyB0aGUgY29kaW5nIHN0eWxlIGlzc3VlIHlv
-dSBtZXRpb25lZCBiZWxvdyBhcyB3ZWxsLgo+ID4gCj4gPiBSZWdhcmRzLAo+ID4gTWF0dGhpYXMK
-PiA+IAo+ID4gPj4KPiA+ID4+IFNpZ25lZC1vZmYtYnk6IE1hdHRoaWFzIEJydWdnZXIgPG1icnVn
-Z2VyQHN1c2UuY29tPgo+ID4gPj4gLS0tCj4gPiA+PiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kaXNwX2NvbG9yLmMgfCA0ICsrKy0KPiA+ID4+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2Rpc3Bfb3ZsLmMgICB8IDQgKysrLQo+ID4gPj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZGlzcF9yZG1hLmMgIHwgNCArKystCj4gPiA+PiAgZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcm1fZGRwLmMgICAgfCAzICsrLQo+ID4gPj4gIGRyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHNpLmMgICAgICAgIHwgNiArKysrLS0KPiA+ID4+ICA1IGZpbGVzIGNoYW5n
-ZWQsIDE1IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4gPiA+Pgo+ID4gPj4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9jb2xvci5jIGIvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX2NvbG9yLmMKPiA+ID4+IGluZGV4IGY2MDliNjJi
-OGJlNi4uMWVhMzE3OGQ0YzE4IDEwMDY0NAo+ID4gPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kaXNwX2NvbG9yLmMKPiA+ID4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZGlzcF9jb2xvci5jCj4gPiA+PiBAQCAtMTI2LDcgKzEyNiw5IEBAIHN0YXRpYyBp
-bnQgbXRrX2Rpc3BfY29sb3JfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiA+
-ID4+ICAJcmV0ID0gbXRrX2RkcF9jb21wX2luaXQoZGV2LCBkZXYtPm9mX25vZGUsICZwcml2LT5k
-ZHBfY29tcCwgY29tcF9pZCwKPiA+ID4+ICAJCQkJJm10a19kaXNwX2NvbG9yX2Z1bmNzKTsKPiA+
-ID4+ICAJaWYgKHJldCkgewo+ID4gPj4gLQkJZGV2X2VycihkZXYsICJGYWlsZWQgdG8gaW5pdGlh
-bGl6ZSBjb21wb25lbnQ6ICVkXG4iLCByZXQpOwo+ID4gPj4gKwkJaWYgKHJldCAhPSAtRVBST0JF
-X0RFRkVSKQo+ID4gPj4gKwkJCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGluaXRpYWxpemUgY29t
-cG9uZW50OiAlZFxuIiwKPiA+ID4+ICsJCQkJCXJldCk7Cj4gPiA+IAo+ID4gPiBJIHdvdWxkIGxp
-a2Ugb25lIG1vcmUgYmxhbmsgbGluZSBoZXJlLgo+ID4gPiAKPiA+ID4+ICAJCXJldHVybiByZXQ7
-Cj4gPiA+PiAgCX0KPiA+ID4+ICAKPiA+ID4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rp
-c3Bfb3ZsLmMKPiA+ID4+IGluZGV4IDI4ZDE5MTE5Mjk0NS4uNWViYmNhYTRlNzBlIDEwMDY0NAo+
-ID4gPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jCj4gPiA+
-PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMKPiA+ID4+IEBA
-IC0yOTMsNyArMjkzLDkgQEAgc3RhdGljIGludCBtdGtfZGlzcF9vdmxfcHJvYmUoc3RydWN0IHBs
-YXRmb3JtX2RldmljZSAqcGRldikKPiA+ID4+ICAJcmV0ID0gbXRrX2RkcF9jb21wX2luaXQoZGV2
-LCBkZXYtPm9mX25vZGUsICZwcml2LT5kZHBfY29tcCwgY29tcF9pZCwKPiA+ID4+ICAJCQkJJm10
-a19kaXNwX292bF9mdW5jcyk7Cj4gPiA+PiAgCWlmIChyZXQpIHsKPiA+ID4+IC0JCWRldl9lcnIo
-ZGV2LCAiRmFpbGVkIHRvIGluaXRpYWxpemUgY29tcG9uZW50OiAlZFxuIiwgcmV0KTsKPiA+ID4+
-ICsJCWlmIChyZXQgIT0gLUVQUk9CRV9ERUZFUikKPiA+ID4+ICsJCQlkZXZfZXJyKGRldiwgIkZh
-aWxlZCB0byBpbml0aWFsaXplIGNvbXBvbmVudDogJWRcbiIsCj4gPiA+PiArCQkJCQlyZXQpOwo+
-ID4gPiAKPiA+ID4gSSB3b3VsZCBsaWtlIHRvIGFsaWduIHRvIHRoZSByaWdodCBvZiAnKCcuCj4g
-PiA+IAo+ID4gPiBSZWdhcmRzLAo+ID4gPiBDSwo+ID4gPiAKPiA+ID4+ICAJCXJldHVybiByZXQ7
-Cj4gPiA+PiAgCX0KPiA+ID4+ICAKPiA+ID4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-aXNwX3JkbWEuYwo+ID4gPj4gaW5kZXggYjBhNWNmZmUzNDVhLi41OWEwOGVkNWZlYTUgMTAwNjQ0
-Cj4gPiA+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jCj4g
-PiA+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jCj4gPiA+
-PiBAQCAtMjk1LDcgKzI5NSw5IEBAIHN0YXRpYyBpbnQgbXRrX2Rpc3BfcmRtYV9wcm9iZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4gPj4gIAlyZXQgPSBtdGtfZGRwX2NvbXBfaW5p
-dChkZXYsIGRldi0+b2Zfbm9kZSwgJnByaXYtPmRkcF9jb21wLCBjb21wX2lkLAo+ID4gPj4gIAkJ
-CQkmbXRrX2Rpc3BfcmRtYV9mdW5jcyk7Cj4gPiA+PiAgCWlmIChyZXQpIHsKPiA+ID4+IC0JCWRl
-dl9lcnIoZGV2LCAiRmFpbGVkIHRvIGluaXRpYWxpemUgY29tcG9uZW50OiAlZFxuIiwgcmV0KTsK
-PiA+ID4+ICsJCWlmIChyZXQgIT0gLUVQUk9CRV9ERUZFUikKPiA+ID4+ICsJCQlkZXZfZXJyKGRl
-diwgIkZhaWxlZCB0byBpbml0aWFsaXplIGNvbXBvbmVudDogJWRcbiIsCj4gPiA+PiArCQkJCQly
-ZXQpOwo+ID4gPj4gIAkJcmV0dXJuIHJldDsKPiA+ID4+ICAJfQo+ID4gPj4gIAo+ID4gPj4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jIGIvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiA+ID4+IGluZGV4IGIwNmNkOWQ0YjUy
-NS4uYjc2YTJkMDcxYTk3IDEwMDY0NAo+ID4gPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kcm1fZGRwLmMKPiA+ID4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX2RkcC5jCj4gPiA+PiBAQCAtNTY2LDcgKzU2Niw4IEBAIHN0YXRpYyBpbnQgbXRrX2Rk
-cF9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4gPj4gIAo+ID4gPj4gIAlk
-ZHAtPmNsayA9IGRldm1fY2xrX2dldChkZXYsIE5VTEwpOwo+ID4gPj4gIAlpZiAoSVNfRVJSKGRk
-cC0+Y2xrKSkgewo+ID4gPj4gLQkJZGV2X2VycihkZXYsICJGYWlsZWQgdG8gZ2V0IGNsb2NrXG4i
-KTsKPiA+ID4+ICsJCWlmIChQVFJfRVJSKGRkcC0+Y2xrKSAhPSAtRVBST0JFX0RFRkVSKQo+ID4g
-Pj4gKwkJCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCBjbG9ja1xuIik7Cj4gPiA+PiAgCQly
-ZXR1cm4gUFRSX0VSUihkZHAtPmNsayk7Cj4gPiA+PiAgCX0KPiA+ID4+ICAKPiA+ID4+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIGIvZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kc2kuYwo+ID4gPj4gaW5kZXggOTAxMDlhMGQ2ZmZmLi5jYzZkZTc1
-NjM2YzMgMTAwNjQ0Cj4gPiA+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rz
-aS5jCj4gPiA+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gPiA+
-PiBAQCAtMTEwMywxNCArMTEwMywxNiBAQCBzdGF0aWMgaW50IG10a19kc2lfcHJvYmUoc3RydWN0
-IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiA+ID4+ICAJZHNpLT5lbmdpbmVfY2xrID0gZGV2bV9j
-bGtfZ2V0KGRldiwgImVuZ2luZSIpOwo+ID4gPj4gIAlpZiAoSVNfRVJSKGRzaS0+ZW5naW5lX2Ns
-aykpIHsKPiA+ID4+ICAJCXJldCA9IFBUUl9FUlIoZHNpLT5lbmdpbmVfY2xrKTsKPiA+ID4+IC0J
-CWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCBlbmdpbmUgY2xvY2s6ICVkXG4iLCByZXQpOwo+
-ID4gPj4gKwkJaWYgKHJldCAhPSAtRVBST0JFX0RFRkVSKQo+ID4gPj4gKwkJCWRldl9lcnIoZGV2
-LCAiRmFpbGVkIHRvIGdldCBlbmdpbmUgY2xvY2s6ICVkXG4iLCByZXQpOwo+ID4gPj4gIAkJcmV0
-dXJuIHJldDsKPiA+ID4+ICAJfQo+ID4gPj4gIAo+ID4gPj4gIAlkc2ktPmRpZ2l0YWxfY2xrID0g
-ZGV2bV9jbGtfZ2V0KGRldiwgImRpZ2l0YWwiKTsKPiA+ID4+ICAJaWYgKElTX0VSUihkc2ktPmRp
-Z2l0YWxfY2xrKSkgewo+ID4gPj4gIAkJcmV0ID0gUFRSX0VSUihkc2ktPmRpZ2l0YWxfY2xrKTsK
-PiA+ID4+IC0JCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCBkaWdpdGFsIGNsb2NrOiAlZFxu
-IiwgcmV0KTsKPiA+ID4+ICsJCWlmIChyZXQgIT0gLUVQUk9CRV9ERUZFUikKPiA+ID4+ICsJCQlk
-ZXZfZXJyKGRldiwgIkZhaWxlZCB0byBnZXQgZGlnaXRhbCBjbG9jazogJWRcbiIsIHJldCk7Cj4g
-PiA+PiAgCQlyZXR1cm4gcmV0Owo+ID4gPj4gIAl9Cj4gPiA+PiAgCj4gPiA+IAo+ID4gPiAKPiAK
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
-ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Tue, 2018-11-13 at 08:00 -0800, Nicolas Boichat wrote:
+> On Mon, Nov 5, 2018 at 10:42 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
+> >
+> > From: Owen Chen <owen.chen@mediatek.com>
+> >
+> > On both MT8183 & MT6765, there add "set/clr" register for
+> > each clkmux setting, and one update register to trigger value change.
+> > It is designed to prevent read-modify-write racing issue.
+> > The sw design need to add a new API to handle this hw change with
+> > a new mtk_clk_mux/mtk_mux struct in new file "clk-mux.c", "clk-mux.h".
+> >
+> > Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+> > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> > ---
+> >  drivers/clk/mediatek/Makefile  |   2 +-
+> >  drivers/clk/mediatek/clk-mux.c | 252 +++++++++++++++++++++++++++++++++
+> >  drivers/clk/mediatek/clk-mux.h | 101 +++++++++++++
+> >  3 files changed, 354 insertions(+), 1 deletion(-)
+> >  create mode 100644 drivers/clk/mediatek/clk-mux.c
+> >  create mode 100644 drivers/clk/mediatek/clk-mux.h
+> >
+> > diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+> > index 844b55d2770d..b97980dbb738 100644
+> > --- a/drivers/clk/mediatek/Makefile
+> > +++ b/drivers/clk/mediatek/Makefile
+> > @@ -1,5 +1,5 @@
+> >  # SPDX-License-Identifier: GPL-2.0
+> > -obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o reset.o
+> > +obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o reset.o clk-mux.o
+> >  obj-$(CONFIG_COMMON_CLK_MT6797) += clk-mt6797.o
+> >  obj-$(CONFIG_COMMON_CLK_MT6797_IMGSYS) += clk-mt6797-img.o
+> >  obj-$(CONFIG_COMMON_CLK_MT6797_MMSYS) += clk-mt6797-mm.o
+> > diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
+> > new file mode 100644
+> > index 000000000000..18bc9a146be0
+> > --- /dev/null
+> > +++ b/drivers/clk/mediatek/clk-mux.c
+> > @@ -0,0 +1,252 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * Copyright (c) 2018 MediaTek Inc.
+> > + * Author: Owen Chen <owen.chen@mediatek.com>
+> > + */
+> > +
+> > +#include <linux/of.h>
+> > +#include <linux/of_address.h>
+> > +#include <linux/slab.h>
+> > +#include <linux/mfd/syscon.h>
+> > +
+> > +#include "clk-mtk.h"
+> > +#include "clk-mux.h"
+> > +
+> > +static inline struct mtk_clk_mux
+> > +       *to_mtk_clk_mux(struct clk_hw *hw)
+> > +{
+> > +       return container_of(hw, struct mtk_clk_mux, hw);
+> > +}
+> > +
+> > +static int mtk_clk_mux_enable(struct clk_hw *hw)
+> > +{
+> > +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> > +       u32 mask = BIT(mux->gate_shift);
+> > +
+> > +       regmap_update_bits(mux->regmap, mux->mux_ofs, mask, 0);
+> > +
+> > +       return 0;
+> 
+> Might as well return regmap_update_bits(...).
+> 
+
+OK, will fix in next version
+
+> > +}
+> > +
+> > +static void mtk_clk_mux_disable(struct clk_hw *hw)
+> > +{
+> > +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> > +       u32 mask = BIT(mux->gate_shift);
+> > +
+> > +       regmap_update_bits(mux->regmap, mux->mux_ofs, mask, mask);
+> > +}
+> > +
+> > +static int mtk_clk_mux_enable_setclr(struct clk_hw *hw)
+> > +{
+> > +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> > +       u32 val;
+> > +
+> > +       val = BIT(mux->gate_shift);
+> > +       regmap_write(mux->regmap, mux->mux_clr_ofs, val);
+> > +
+> > +       return 0;
+> 
+> ditto: return regmap_write(...) .
+> 
+
+will fix in next version
+
+> > +}
+> > +
+> > +static void mtk_clk_mux_disable_setclr(struct clk_hw *hw)
+> > +{
+> > +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> > +       u32 val;
+> > +
+> > +       val = BIT(mux->gate_shift);
+> > +       regmap_write(mux->regmap, mux->mux_set_ofs, val);
+> > +}
+> > +
+> > +static int mtk_clk_mux_is_enabled(struct clk_hw *hw)
+> > +{
+> > +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> > +       u32 val = 0;
+> 
+> No need to init to 0.
+> 
+
+will fix in next version
+
+> > +
+> > +       regmap_read(mux->regmap, mux->mux_ofs, &val);
+> > +
+> > +       return ((val & BIT(mux->gate_shift)) == 0) ? 1 : 0;
+> 
+> Just (val & BIT(mux->gate_shift)) != 0. Or more simply val &
+> BIT(mux->gate_shift).
+> 
+
+will fix in next version
+
+> > +}
+> > +
+> > +static u8 mtk_clk_mux_get_parent(struct clk_hw *hw)
+> > +{
+> > +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> > +       int num_parents = clk_hw_get_num_parents(hw);
+> > +       u32 mask = GENMASK(mux->mux_width - 1, 0);
+> > +       u32 val;
+> > +
+> > +       regmap_read(mux->regmap, mux->mux_ofs, &val);
+> > +       val = (val >> mux->mux_shift) & mask;
+> > +
+> > +       if (val >= num_parents || val >= U8_MAX)
+> 
+> val > U8_MAX, technically.
+> 
+> > +               return -ERANGE;
+> 
+> This looks wrong, -34 will be cast to an u8 and appear to be valid...
+> 
+
+will fix in next version
+
+> > +
+> > +       return val;
+> > +}
+> > +
+> > +static int mtk_clk_mux_set_parent_lock(struct clk_hw *hw, u8 index)
+> > +{
+> > +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> > +       u32 mask = GENMASK(mux->mux_width - 1, 0);
+> > +       u32 val;
+> > +       unsigned long flags = 0;
+> 
+> No need to init to 0.
+> 
+
+will fix in next version.
+
+> > +
+> > +       if (mux->lock)
+> > +               spin_lock_irqsave(mux->lock, flags);
+> > +       else
+> > +               __acquire(mux->lock);
+> > +
+> > +       regmap_read(mux->regmap, mux->mux_ofs, &val);
+> > +       val = (val & mask) >> mux->mux_shift;
+> > +
+> > +       if (val != index) {
+> > +               val = index << mux->mux_shift;
+> > +               regmap_update_bits(mux->regmap, mux->mux_ofs, mask, val);
+> > +       }
+> 
+> What's the point of doing read/compare/update? Are there side effects
+> if you just write the value unconditionally?
+> 
+
+Actually writing the value directly has no side effects. We just want to
+reduce unnecessary operations if the target parent of mux is already
+selected.
+
+> > +
+> > +       if (mux->lock)
+> > +               spin_unlock_irqrestore(mux->lock, flags);
+> > +       else
+> > +               __release(mux->lock);
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +static int mtk_clk_mux_set_parent_setclr_lock(struct clk_hw *hw, u8 index)
+> > +{
+> > +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+> > +       u32 mask = GENMASK(mux->mux_width - 1, 0);
+> > +       u32 val, orig;
+> > +       unsigned long flags = 0;
+> > +
+> > +       if (mux->lock)
+> > +               spin_lock_irqsave(mux->lock, flags);
+> > +       else
+> > +               __acquire(mux->lock);
+> > +
+> > +       regmap_read(mux->regmap, mux->mux_ofs, &val);
+> > +       orig = val;
+> 
+> Just read into &orig above.
+> 
+
+will fix in next version
+
+> > +       val &= ~(mask << mux->mux_shift);
+> > +       val |= index << mux->mux_shift;
+> 
+> Maybe this is more readable?
+> val = orig &  ~(mask << mux->mux_shift) | (index << mux->mux_shift)
+> 
+
+will fix in next version
+
+> > +
+> > +       if (val != orig) {
+> > +               val = (mask << mux->mux_shift);
+> > +               regmap_write(mux->regmap, mux->mux_clr_ofs, val);
+> 
+> I'd just regmap_write(..., mask << mux->mux_shift), instead if overriding val.
+> 
+
+will fix in next version
+
+> > +               val = (index << mux->mux_shift);
+> > +               regmap_write(mux->regmap, mux->mux_set_ofs, val);
+> > +
+> > +               if (mux->upd_shift >= 0)
+> > +                       regmap_write(mux->regmap, mux->upd_ofs,
+> > +                                    BIT(mux->upd_shift));
+> > +       }
+> > +
+> > +       if (mux->lock)
+> > +               spin_unlock_irqrestore(mux->lock, flags);
+> > +       else
+> > +               __release(mux->lock);
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +const struct clk_ops mtk_mux_ops = {
+> > +       .get_parent = mtk_clk_mux_get_parent,
+> > +       .set_parent = mtk_clk_mux_set_parent_lock,
+> > +};
+> > +
+> > +const struct clk_ops mtk_mux_clr_set_upd_ops = {
+> > +       .get_parent = mtk_clk_mux_get_parent,
+> > +       .set_parent = mtk_clk_mux_set_parent_setclr_lock,
+> > +};
+> > +
+> > +const struct clk_ops mtk_mux_gate_ops = {
+> > +       .enable = mtk_clk_mux_enable,
+> > +       .disable = mtk_clk_mux_disable,
+> > +       .is_enabled = mtk_clk_mux_is_enabled,
+> > +       .get_parent = mtk_clk_mux_get_parent,
+> > +       .set_parent = mtk_clk_mux_set_parent_lock,
+> > +};
+> > +
+> > +const struct clk_ops mtk_mux_gate_clr_set_upd_ops = {
+> > +       .enable = mtk_clk_mux_enable_setclr,
+> > +       .disable = mtk_clk_mux_disable_setclr,
+> > +       .is_enabled = mtk_clk_mux_is_enabled,
+> > +       .get_parent = mtk_clk_mux_get_parent,
+> > +       .set_parent = mtk_clk_mux_set_parent_setclr_lock,
+> > +};
+> > +
+> > +struct clk *mtk_clk_register_mux(const struct mtk_mux *mux,
+> > +                                struct regmap *regmap,
+> > +                                spinlock_t *lock)
+> > +{
+> > +       struct mtk_clk_mux *mtk_mux = NULL;
+> 
+> Not necessary to init to NULL.
+> 
+
+will fix in next version
+
+> > +       struct clk_init_data init;
+> > +       struct clk *clk;
+> > +
+> > +       mtk_mux = kzalloc(sizeof(*mtk_mux), GFP_KERNEL);
+> > +       if (!mtk_mux)
+> > +               return ERR_PTR(-ENOMEM);
+> > +
+> > +       init.name = mux->name;
+> > +       init.flags = (mux->flags) | CLK_SET_RATE_PARENT;
+> 
+> mux->flags | CLK_SET_RATE_PARENT
+> 
+
+will fix in next version
+
+> > +       init.parent_names = mux->parent_names;
+> > +       init.num_parents = mux->num_parents;
+> > +       init.ops = mux->ops;
+> > +
+> > +       mtk_mux->regmap = regmap;
+> > +       mtk_mux->name = mux->name;
+> > +       mtk_mux->mux_ofs = mux->mux_ofs;
+> > +       mtk_mux->mux_set_ofs = mux->set_ofs;
+> > +       mtk_mux->mux_clr_ofs = mux->clr_ofs;
+> > +       mtk_mux->upd_ofs = mux->upd_ofs;
+> > +       mtk_mux->mux_shift = mux->mux_shift;
+> > +       mtk_mux->mux_width = mux->mux_width;
+> > +       mtk_mux->gate_shift = mux->gate_shift;
+> > +       mtk_mux->upd_shift = mux->upd_shift;
+> > +
+> > +       mtk_mux->lock = lock;
+> > +       mtk_mux->hw.init = &init;
+> > +
+> > +       clk = clk_register(NULL, &mtk_mux->hw);
+> > +       if (IS_ERR(clk)) {
+> > +               kfree(mtk_mux);
+> > +               return clk;
+> > +       }
+> > +
+> > +       return clk;
+> > +}
+> > +
+> > +int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+> > +                          int num, struct device_node *node,
+> > +                          spinlock_t *lock,
+> > +                          struct clk_onecell_data *clk_data)
+> > +{
+> > +       struct regmap *regmap;
+> > +       struct clk *clk;
+> > +       int i;
+> > +
+> > +       if (!clk_data)
+> > +               return -ENOMEM;
+> 
+> Is this check necessary? After all you know who the callers are and
+> maybe you need to be careful not to call this with NULL clk_data?
+> 
+
+You're right. it's unnecessary. will fix in next version
+
+> > +
+> > +       regmap = syscon_node_to_regmap(node);
+> > +       if (IS_ERR(regmap)) {
+> > +               pr_err("Cannot find regmap for %pOF: %ld\n", node,
+> > +                      PTR_ERR(regmap));
+> > +               return PTR_ERR(regmap);
+> > +       }
+> > +
+> > +       for (i = 0; i < num; i++) {
+> > +               const struct mtk_mux *mux = &muxes[i];
+> > +
+> > +               if (IS_ERR_OR_NULL(clk_data->clks[mux->id])) {
+> 
+> A NULL check seems enough, as you'll never assign a PTR_ERR(..) value
+> into clk_data->clks[mux->id].
+> 
+> > +                       clk = mtk_clk_register_mux(mux, regmap, lock);
+> > +
+> > +                       if (IS_ERR(clk)) {
+> > +                               pr_err("Failed to register clk %s: %ld\n",
+> > +                                      mux->name, PTR_ERR(clk));
+> > +                               continue;
+> 
+> Are we ok with returning 0 even though some of these calls failed?
+> 
+
+We'd like to skip the failed one first and keep registering the
+remainings.
+
+> > +                       }
+> > +
+> > +                       clk_data->clks[mux->id] = clk;
+> > +               }
+> > +       }
+> > +
+> > +       return 0;
+> > +}
+> > diff --git a/drivers/clk/mediatek/clk-mux.h b/drivers/clk/mediatek/clk-mux.h
+> > new file mode 100644
+> > index 000000000000..ff0276bb771c
+> > --- /dev/null
+> > +++ b/drivers/clk/mediatek/clk-mux.h
+> > @@ -0,0 +1,101 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +/*
+> > + * Copyright (c) 2018 MediaTek Inc.
+> > + * Author: Owen Chen <owen.chen@mediatek.com>
+> > + */
+> > +
+> > +#ifndef __DRV_CLK_MUX_H
+> > +#define __DRV_CLK_MUX_H
+> > +
+> > +#include <linux/clk-provider.h>
+> > +
+> > +struct mtk_clk_mux {
+> > +       struct clk_hw hw;
+> > +       struct regmap *regmap;
+> > +
+> > +       const char *name;
+> > +
+> > +       u32 mux_set_ofs;
+> > +       u32 mux_clr_ofs;
+> > +       u32 mux_ofs;
+> > +       u32 upd_ofs;
+> > +
+> > +       u8 mux_shift;
+> > +       u8 mux_width;
+> > +       u8 gate_shift;
+> > +       u8 upd_shift;
+> > +
+> > +       spinlock_t *lock;
+> > +};
+> > +
+> > +struct mtk_mux {
+> > +       int id;
+> > +       const char *name;
+> > +       const char * const *parent_names;
+> > +       unsigned int flags;
+> > +
+> > +       u32 mux_ofs;
+> > +       u32 set_ofs;
+> > +       u32 clr_ofs;
+> > +       u32 upd_ofs;
+> > +
+> > +       u8 mux_shift;
+> > +       u8 mux_width;
+> > +       u8 gate_shift;
+> > +       u8 upd_shift;
+> > +
+> > +       const struct clk_ops *ops;
+> > +
+> > +       signed char num_parents;
+> > +};
+> > +
+> > +extern const struct clk_ops mtk_mux_ops;
+> > +extern const struct clk_ops mtk_mux_clr_set_upd_ops;
+> > +extern const struct clk_ops mtk_mux_gate_ops;
+> > +extern const struct clk_ops mtk_mux_gate_clr_set_upd_ops;
+> > +
+> > +#define GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,         \
+> > +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
+> > +                       _gate, _upd_ofs, _upd, _flags, _ops) {          \
+> > +               .id = _id,                                              \
+> > +               .name = _name,                                          \
+> > +               .mux_ofs = _mux_ofs,                                    \
+> > +               .set_ofs = _mux_set_ofs,                                \
+> > +               .clr_ofs = _mux_clr_ofs,                                \
+> > +               .upd_ofs = _upd_ofs,                                    \
+> > +               .mux_shift = _shift,                                    \
+> > +               .mux_width = _width,                                    \
+> > +               .gate_shift = _gate,                                    \
+> > +               .upd_shift = _upd,                                      \
+> > +               .parent_names = _parents,                               \
+> > +               .num_parents = ARRAY_SIZE(_parents),                    \
+> > +               .flags = _flags,                                        \
+> > +               .ops = &_ops,                                           \
+> > +       }
+> > +
+> > +#define MUX_GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,     \
+> > +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
+> > +                       _gate, _upd_ofs, _upd, _flags)                  \
+> > +               GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,  \
+> > +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
+> > +                       _gate, _upd_ofs, _upd, _flags,                  \
+> > +                       mtk_mux_gate_clr_set_upd_ops)
+> > +
+> > +#define MUX_GATE_CLR_SET_UPD(_id, _name, _parents, _mux_ofs,           \
+> > +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
+> > +                       _gate, _upd_ofs, _upd)                          \
+> > +               MUX_GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents,        \
+> > +                       _mux_ofs, _mux_set_ofs, _mux_clr_ofs, _shift,   \
+> > +                       _width, _gate, _upd_ofs, _upd,                  \
+> > +                       CLK_SET_RATE_PARENT)
+> > +
+> > +struct clk *mtk_clk_register_mux(const struct mtk_mux *mux,
+> > +                                struct regmap *regmap,
+> > +                                spinlock_t *lock);
+> > +
+> > +int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+> > +                          int num, struct device_node *node,
+> > +                          spinlock_t *lock,
+> > +                          struct clk_onecell_data *clk_data);
+> > +
+> > +#endif /* __DRV_CLK_MUX_H */
+> > --
+> > 2.18.0
+> >
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
