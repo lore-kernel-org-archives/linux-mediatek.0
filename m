@@ -1,50 +1,83 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 1/2] spi: mediatek: Add bindings for mediatek MT7629 soc
- platform
-Date: Tue, 20 Nov 2018 11:28:25 +0100
-Message-ID: <7bc1777c-fb24-d150-c13f-658c2a33cd71@gmail.com>
-References: <1542703268-17285-1-git-send-email-leilk.liu@mediatek.com>
- <1542703268-17285-2-git-send-email-leilk.liu@mediatek.com>
+From: "Frank Wunderlich" <frank-w@public-files.de>
+Subject: Aw: Re:  Re: [PATCH v5 05/12] drm: mediatek
+Date: Tue, 20 Nov 2018 11:34:14 +0100
+Message-ID: <trinity-cbebb6c8-0084-49a7-b07a-8ea3dbd13e6e-1542710054258@3c-app-gmx-bs39>
+References: <20181116125449.23581-1-matthias.bgg@kernel.org>
+ <20181116125449.23581-6-matthias.bgg@kernel.org>
+ <1542605939.32082.12.camel@mtksdaap41>
+ <0a02edf9-78da-dde9-4b69-38c4719b711b@gmail.com>
+ <1542686700.9073.15.camel@mtksdaap41> <1542686982.26483.1.camel@mtksdaap41>
+ <trinity-8f0fde8e-5ef3-4272-b009-49e180c934eb-1542702383860@3c-app-gmx-bs39>
+ <1192d203-fcd1-47b0-00bc-9d513e5ffc3e@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1542703268-17285-2-git-send-email-leilk.liu@mediatek.com>
-Content-Language: en-US
+In-Reply-To: <1192d203-fcd1-47b0-00bc-9d513e5ffc3e@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Leilk Liu <leilk.liu@mediatek.com>, Mark Brown <broonie@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, ryder.lee@mediatek.com
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: CK Hu <ck.hu@mediatek.com>, mark.rutland@arm.com, devicetree@vger.kernel.org, sean.wang@kernel.org, Matthias Brugger <mbrugger@suse.com>, airlied@linux.ie, mturquette@baylibre.com, sean.wang@mediatek.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, wens@csie.org, robh+dt@kernel.org, rdunlap@infradead.org, laurent.pinchart@ideasonboard.com, p.zabel@pengutronix.de, matthias.bgg@kernel.org, ulrich.hecht+renesas@gmail.com, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+right this branch based on rc1 with some other commits, but v5-patches are applied on Oct 3rd (listed in Oct 5th)
 
+frank@frank-N56VZ:/media/data_ext/bpi-r2-kernel/github
+[11:29:10]$ git checkout 4.19-hdmiv5
+Already on '4.19-hdmiv5'
+Your branch is up to date with 'origin/4.19-hdmiv5'.
+frank@frank-N56VZ:/media/data_ext/bpi-r2-kernel/github
+[11:29:13]$ make kernelversion
+4.19.0-rc1
+frank@frank-N56VZ:/media/data_ext/bpi-r2-kernel/github
+[11:29:19]$ git log --oneline
+...
+fc14b8c515de drm/mediatek: add a error return value when clock driver has been prepared
+0dc856306aaf drm/mediatek: implement connection from BLS to DPI0
+3d0a6749bfe3 drm/mediatek: add hdmi driver for MT2701 and MT7623
+b03e1b353b28 drm/mediatek: add support for SPDIF audio in HDMI
+c5564966272e drm/mediatek: separate hdmi phy to different file
+dee3954828db drm/mediatek: add dpi driver for mt2701 and mt7623
+a838ae8b415c drm/mediatek: convert dpi driver to use drm_of_find_panel_or_bridge
+f7f9f7c080ae drm/mediatek: add clock factor for different IC
+be1a5447330f drm/mediatek: adjust EDGE to match clock and data
+fec4504ea318 drm/mediatek: move hardware register to node data
+db992e429b9c drm/mediatek: add refcount for DPI power on/off
+...
 
-On 20/11/2018 09:41, Leilk Liu wrote:
-> This patch adds a DT binding documentation for the MT7629 soc.
+compared with 4.19.0-release there is merge https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/gpu/drm/mediatek?id=53b3b6bbfde6aae8d1ededc86ad4e0e1e00eb5f8 which seems to break v5-patches
+
+> Gesendet: Dienstag, 20. November 2018 um 11:14 Uhr
+> Von: "Matthias Brugger" <matthias.bgg@gmail.com>
+> An: "Frank Wunderlich" <frank-w@public-files.de>, "CK Hu" <ck.hu@mediatek.com>
+> Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, sean.wang@kernel.org, "Matthias Brugger" <mbrugger@suse.com>, airlied@linux.ie, mturquette@baylibre.com, sean.wang@mediatek.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, wens@csie.org, robh+dt@kernel.org, rdunlap@infradead.org, laurent.pinchart@ideasonboard.com, p.zabel@pengutronix.de, matthias.bgg@kernel.org, ulrich.hecht+renesas@gmail.com, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+> Betreff: Re: Aw: Re: [PATCH v5 05/12] drm: mediatek
+>
 > 
-> Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
-> ---
->  .../devicetree/bindings/spi/spi-mt65xx.txt         |    1 +
->  1 file changed, 1 insertion(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-> index 7940940..6cc4e87 100644
-> --- a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-> +++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-> @@ -6,6 +6,7 @@ Required properties:
->      - mediatek,mt2712-spi: for mt2712 platforms
->      - mediatek,mt6589-spi: for mt6589 platforms
->      - mediatek,mt7622-spi: for mt7622 platforms
-> +    - mediatek,mt7629-spi: for mt7629 platforms
-
-That's ok, as you add support in the driver. As it actually doesn't change
-anything in the driver itself you could just describe the binding as something like:
-" mediatek,mt7629-spi", "mediatek,mt7622-spi": for mt7629 platforms
-
-This way the driver will just probe the driver using the fallback (mt7622)
-compatible, but if you realize in the future that you will need to distinguish
-between the two SoCs, you can add a mt7629 compatible.
-
-Just as information for the future :)
-
-Regards,
-Matthias
+> On 20/11/2018 09:26, Frank Wunderlich wrote:
+> > Hi,
+> > 
+> > i got v5-patches working on bpi-r2 (mt7623) with a Patch from Ryder.lee and 2 from Bibby Hsieh on 4.19-rc1
+> > 
+> > https://github.com/frank-w/BPI-R2-4.14/commits/4.19-hdmiv5
+> > 
+> 
+> I don't see the patches applied to this tree. Apart from that this tree has a
+> lot of other patches applied. It differs greatly from mainline, so nothing we
+> should discuss on this mailinglist.
+> 
+> Regards,
+> Matthias
+> 
+> > but after i tried to include them on 4.19.2, i got a strange behaviour (stretched and pink font instead of white/grey)
+> > 
+> > see here for detailed info:
+> > 
+> > http://forum.banana-pi.org/t/kernel-4-19-rc1-for-testers/6618/75
+> > 
+> > there are some patches between rc1 and final which i tried to revert, but no luck till now (cannot revert, no effect on the issue or no output). Had informed Bibby Hsieh...
+> > 
+> > is there any idea, why this happen?
+> > 
+> > regards Frank
+> > 
+> 
