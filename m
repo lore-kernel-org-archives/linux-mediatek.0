@@ -1,92 +1,33 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: Aw: Re: Re: [PATCH v5 05/12] drm: mediatek
-Date: Tue, 20 Nov 2018 12:39:44 +0100
-Message-ID: <4745c3ab-e6af-309e-d1c4-f07d937fb9af@gmail.com>
-References: <20181116125449.23581-1-matthias.bgg@kernel.org>
- <20181116125449.23581-6-matthias.bgg@kernel.org>
- <1542605939.32082.12.camel@mtksdaap41>
- <0a02edf9-78da-dde9-4b69-38c4719b711b@gmail.com>
- <1542686700.9073.15.camel@mtksdaap41> <1542686982.26483.1.camel@mtksdaap41>
- <trinity-8f0fde8e-5ef3-4272-b009-49e180c934eb-1542702383860@3c-app-gmx-bs39>
- <1192d203-fcd1-47b0-00bc-9d513e5ffc3e@gmail.com>
- <trinity-cbebb6c8-0084-49a7-b07a-8ea3dbd13e6e-1542710054258@3c-app-gmx-bs39>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [v4, PATCH 2/2] dt-binding: mediatek-dwmac: add binding document
+ for MediaTek MT2712 DWMAC
+Date: Tue, 20 Nov 2018 15:49:05 +0100
+Message-ID: <20181120144905.GD18335@lunn.ch>
+References: <1542705696-18507-1-git-send-email-biao.huang@mediatek.com>
+ <1542705696-18507-3-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <trinity-cbebb6c8-0084-49a7-b07a-8ea3dbd13e6e-1542710054258@3c-app-gmx-bs39>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1542705696-18507-3-git-send-email-biao.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: CK Hu <ck.hu@mediatek.com>, mark.rutland@arm.com, devicetree@vger.kernel.org, sean.wang@kernel.org, Matthias Brugger <mbrugger@suse.com>, airlied@linux.ie, mturquette@baylibre.com, sean.wang@mediatek.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, wens@csie.org, robh+dt@kernel.org, rdunlap@infradead.org, laurent.pinchart@ideasonboard.com, p.zabel@pengutronix.de, matthias.bgg@kernel.org, ulrich.hecht+renesas@gmail.com, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Biao Huang <biao.huang@mediatek.com>
+Cc: davem@davemloft.net, robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com
 List-Id: linux-mediatek@lists.infradead.org
 
+> +Optional properties:
+> +- mediatek,tx-delay: TX clock delay macro value. Range is 0~31. Default is 0.
+> +	It should be defined for rgmii/rgmii-rxid/mii interface.
+> +- mediatek,rx-delay: RX clock delay macro value. Range is 0~31. Default is 0.
+> +	It should be defined for rgmii/rgmii-txid/mii/rmii interface.
+> +- mediatek,fine-tune: boolean property, if present indicates that fine delay
+> +	is selected for rgmii interface.
+> +	If present, tx-delay/rx-delay is 170+/-50ps per stage.
+> +	Else tx-delay/rx-delay of coarse delay macro is 0.55+/-0.2ns per stage.
+> +	This property do not apply to non-rgmii PHYs.
+> +	Only coarse-tune delay is supported for mii/rmii PHYs.
 
+Didn't Rob say to express the delay in pS, and have the driver convert
+that to values to put into registers. That is what i would prefer.
 
-On 20/11/2018 11:34, Frank Wunderlich wrote:
-> right this branch based on rc1 with some other commits, but v5-patches are applied on Oct 3rd (listed in Oct 5th)
-> 
-> frank@frank-N56VZ:/media/data_ext/bpi-r2-kernel/github
-> [11:29:10]$ git checkout 4.19-hdmiv5
-> Already on '4.19-hdmiv5'
-> Your branch is up to date with 'origin/4.19-hdmiv5'.
-> frank@frank-N56VZ:/media/data_ext/bpi-r2-kernel/github
-> [11:29:13]$ make kernelversion
-> 4.19.0-rc1
-> frank@frank-N56VZ:/media/data_ext/bpi-r2-kernel/github
-> [11:29:19]$ git log --oneline
-> ...
-> fc14b8c515de drm/mediatek: add a error return value when clock driver has been prepared
-> 0dc856306aaf drm/mediatek: implement connection from BLS to DPI0
-> 3d0a6749bfe3 drm/mediatek: add hdmi driver for MT2701 and MT7623
-> b03e1b353b28 drm/mediatek: add support for SPDIF audio in HDMI
-> c5564966272e drm/mediatek: separate hdmi phy to different file
-> dee3954828db drm/mediatek: add dpi driver for mt2701 and mt7623
-> a838ae8b415c drm/mediatek: convert dpi driver to use drm_of_find_panel_or_bridge
-> f7f9f7c080ae drm/mediatek: add clock factor for different IC
-> be1a5447330f drm/mediatek: adjust EDGE to match clock and data
-> fec4504ea318 drm/mediatek: move hardware register to node data
-> db992e429b9c drm/mediatek: add refcount for DPI power on/off
-> ...
-
-This patches are not part of this patch series.
-
-> 
-> compared with 4.19.0-release there is merge https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/gpu/drm/mediatek?id=53b3b6bbfde6aae8d1ededc86ad4e0e1e00eb5f8 which seems to break v5-patches
-> 
->> Gesendet: Dienstag, 20. November 2018 um 11:14 Uhr
->> Von: "Matthias Brugger" <matthias.bgg@gmail.com>
->> An: "Frank Wunderlich" <frank-w@public-files.de>, "CK Hu" <ck.hu@mediatek.com>
->> Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, sean.wang@kernel.org, "Matthias Brugger" <mbrugger@suse.com>, airlied@linux.ie, mturquette@baylibre.com, sean.wang@mediatek.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, wens@csie.org, robh+dt@kernel.org, rdunlap@infradead.org, laurent.pinchart@ideasonboard.com, p.zabel@pengutronix.de, matthias.bgg@kernel.org, ulrich.hecht+renesas@gmail.com, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
->> Betreff: Re: Aw: Re: [PATCH v5 05/12] drm: mediatek
->>
->>
->>
->> On 20/11/2018 09:26, Frank Wunderlich wrote:
->>> Hi,
->>>
->>> i got v5-patches working on bpi-r2 (mt7623) with a Patch from Ryder.lee and 2 from Bibby Hsieh on 4.19-rc1
->>>
->>> https://github.com/frank-w/BPI-R2-4.14/commits/4.19-hdmiv5
->>>
->>
->> I don't see the patches applied to this tree. Apart from that this tree has a
->> lot of other patches applied. It differs greatly from mainline, so nothing we
->> should discuss on this mailinglist.
->>
->> Regards,
->> Matthias
->>
->>> but after i tried to include them on 4.19.2, i got a strange behaviour (stretched and pink font instead of white/grey)
->>>
->>> see here for detailed info:
->>>
->>> http://forum.banana-pi.org/t/kernel-4-19-rc1-for-testers/6618/75
->>>
->>> there are some patches between rc1 and final which i tried to revert, but no luck till now (cannot revert, no effect on the issue or no output). Had informed Bibby Hsieh...
->>>
->>> is there any idea, why this happen?
->>>
->>> regards Frank
->>>
->>
+     Andrew
