@@ -1,35 +1,29 @@
-From: "Frank Wunderlich" <frank-w@public-files.de>
-Subject: Aw: Re: [PATCH v5 05/12] drm: mediatek
-Date: Tue, 20 Nov 2018 09:26:23 +0100
-Message-ID: <trinity-8f0fde8e-5ef3-4272-b009-49e180c934eb-1542702383860@3c-app-gmx-bs39>
-References: <20181116125449.23581-1-matthias.bgg@kernel.org>
- <20181116125449.23581-6-matthias.bgg@kernel.org>
- <1542605939.32082.12.camel@mtksdaap41>
- <0a02edf9-78da-dde9-4b69-38c4719b711b@gmail.com>
- <1542686700.9073.15.camel@mtksdaap41> <1542686982.26483.1.camel@mtksdaap41>
+From: Leilk Liu <leilk.liu@mediatek.com>
+Subject: [PATCH 0/2] add SPI driver support for mt7629
+Date: Tue, 20 Nov 2018 16:41:06 +0800
+Message-ID: <1542703268-17285-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1542686982.26483.1.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, mark.rutland@arm.com, devicetree@vger.kernel.org, sean.wang@kernel.org, Matthias Brugger <mbrugger@suse.com>, airlied@linux.ie, mturquette@baylibre.com, sean.wang@mediatek.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, wens@csie.org, robh+dt@kernel.org, rdunlap@infradead.org, laurent.pinchart@ideasonboard.com, p.zabel@pengutronix.de, matthias.bgg@kernel.org, ulrich.hecht+renesas@gmail.com, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, ryder.lee@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+>From 51ab18abe1ad0f8ef0bc88696d956431f3e01f3f Mon Sep 17 00:00:00 2001
+From: Leilk Liu <leilk.liu@mediatek.com>
+Date: Tue, 20 Nov 2018 16:34:22 +0800
+Subject: [PATCH 0/2] add SPI driver support for mt7629
 
-i got v5-patches working on bpi-r2 (mt7623) with a Patch from Ryder.lee and 2 from Bibby Hsieh on 4.19-rc1
+This series are based on 4.20-rc1 and provide two patches to support mt7629 IC.
 
-https://github.com/frank-w/BPI-R2-4.14/commits/4.19-hdmiv5
+Leilk Liu (2):
+  spi: mediatek: Add bindings for mediatek MT7629 soc platform
+  spi: mediatek: add spi support for mt7629 IC
 
-but after i tried to include them on 4.19.2, i got a strange behaviour (stretched and pink font instead of white/grey)
+ Documentation/devicetree/bindings/spi/spi-mt65xx.txt | 1 +
+ drivers/spi/spi-mt65xx.c                             | 3 +++
+ 2 files changed, 4 insertions(+)
 
-see here for detailed info:
-
-http://forum.banana-pi.org/t/kernel-4-19-rc1-for-testers/6618/75
-
-there are some patches between rc1 and final which i tried to revert, but no luck till now (cannot revert, no effect on the issue or no output). Had informed Bibby Hsieh...
-
-is there any idea, why this happen?
-
-regards Frank
+-- 
+1.9.1
