@@ -1,118 +1,131 @@
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: Re: [PATCH v1 02/11] clk: mediatek: add new member to mtk_pll_data
-Date: Tue, 20 Nov 2018 11:51:20 +0800
-Message-ID: <1542685880.5132.11.camel@mtksdaap41>
-References: <20181106064206.17535-1-weiyi.lu@mediatek.com>
-         <20181106064206.17535-4-weiyi.lu@mediatek.com>
-         <CANMq1KBjtyQFyJ-mZBndPDSfSDnD0K8izy39jp9zKE4xfiCiog@mail.gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v5 05/12] drm: mediatek: Omit warning on probe defers
+Date: Tue, 20 Nov 2018 12:05:00 +0800
+Message-ID: <1542686700.9073.15.camel@mtksdaap41>
+References: <20181116125449.23581-1-matthias.bgg@kernel.org>
+ <20181116125449.23581-6-matthias.bgg@kernel.org>
+ <1542605939.32082.12.camel@mtksdaap41>
+ <0a02edf9-78da-dde9-4b69-38c4719b711b@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CANMq1KBjtyQFyJ-mZBndPDSfSDnD0K8izy39jp9zKE4xfiCiog@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Boichat <drinkcat@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, srv_heupstream@mediatek.com, jamesjj.liao@mediatek.com, sboyd@codeaurora.org, lkml <linux-kernel@vger.kernel.org>, fan.chen@mediatek.com, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, owen.chen@mediatek.com, linux-clk@vger.kernel.org, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <0a02edf9-78da-dde9-4b69-38c4719b711b@gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, sean.wang@kernel.org, Matthias Brugger <mbrugger@suse.com>, airlied@linux.ie, mturquette@baylibre.com, sean.wang@mediatek.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, wens@csie.org, robh+dt@kernel.org, rdunlap@infradead.org, laurent.pinchart@ideasonboard.com, matthias.bgg@kernel.org, ulrich.hecht+renesas@gmail.com, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-11-13 at 08:18 -0800, Nicolas Boichat wrote:
-> On Mon, Nov 5, 2018 at 10:43 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
-> >
-> > From: Owen Chen <owen.chen@mediatek.com>
-> >
-> > 1. pcwibits: The integer bits of pcw for plls is extend to 8 bits,
-> >    add a variable to indicate this change and
-> >    backward-compatible.
-> > 2. fmin: The pll freqency lower-bound is vary from 1GMhz to
-> >    1.5Ghz, add a variable to indicate platform-dependent.
-> >
-> > Signed-off-by: Owen Chen <owen.chen@mediatek.com>
-> > ---
-> >  drivers/clk/mediatek/clk-mtk.h |  2 ++
-> >  drivers/clk/mediatek/clk-pll.c | 10 +++++++---
-> >  2 files changed, 9 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-> > index f83c2bbb677e..1882221fe994 100644
-> > --- a/drivers/clk/mediatek/clk-mtk.h
-> > +++ b/drivers/clk/mediatek/clk-mtk.h
-> > @@ -215,7 +215,9 @@ struct mtk_pll_data {
-> >         const struct clk_ops *ops;
-> >         u32 rst_bar_mask;
-> >         unsigned long fmax;
-> > +       unsigned long fmin;
-> 
-> Minor nit: I'd put fmin before fmax in the structure.
-> 
-
-OK, thanks for the suggestion. will fix in next version
-
-> >         int pcwbits;
-> > +       int pcwibits;
-> >         uint32_t pcw_reg;
-> >         int pcw_shift;
-> >         const struct mtk_pll_div_table *div_table;
-> > diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-> > index f54e4015b0b1..0ec2c62d9383 100644
-> > --- a/drivers/clk/mediatek/clk-pll.c
-> > +++ b/drivers/clk/mediatek/clk-pll.c
-> 
-> I'd add a note next to:
-> #define INTEGER_BITS            7
-> to say that this is the default, and can be overridden with pcwibits.
-> 
-
-OK, thanks for the suggestion. will add in next version
-
-> > @@ -69,11 +69,13 @@ static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
-> >  {
-> >         int pcwbits = pll->data->pcwbits;
-> >         int pcwfbits;
-> > +       int ibits;
-> >         u64 vco;
-> >         u8 c = 0;
-> >
-> >         /* The fractional part of the PLL divider. */
-> > -       pcwfbits = pcwbits > INTEGER_BITS ? pcwbits - INTEGER_BITS : 0;
-> > +       ibits = pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BITS;
-> > +       pcwfbits = pcwbits > ibits ? pcwbits - ibits : 0;
-> >
-> >         vco = (u64)fin * pcw;
-> >
-> > @@ -138,9 +140,10 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
-> >  static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
-> >                 u32 freq, u32 fin)
-> >  {
-> > -       unsigned long fmin = 1000 * MHZ;
-> > +       unsigned long fmin = pll->data->fmin ? pll->data->fmin : 1000 * MHZ;
-> 
-> I'd put parentheses around (1000 * MHZ), to avoid the need to think
-> about precedence...
-> 
-
-OK, thanks for the suggestion. will add in next version
-
-> >         const struct mtk_pll_div_table *div_table = pll->data->div_table;
-> >         u64 _pcw;
-> > +       int ibits;
-> >         u32 val;
-> >
-> >         if (freq > pll->data->fmax)
-> > @@ -164,7 +167,8 @@ static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
-> >         }
-> >
-> >         /* _pcw = freq * postdiv / fin * 2^pcwfbits */
-> > -       _pcw = ((u64)freq << val) << (pll->data->pcwbits - INTEGER_BITS);
-> > +       ibits = pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BITS;
-> > +       _pcw = ((u64)freq << val) << (pll->data->pcwbits - ibits);
-> >         do_div(_pcw, fin);
-> >
-> >         *pcw = (u32)_pcw;
-> > --
-> > 2.18.0
-> >
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIE1hdHRoaWFzOgoKT24gTW9uLCAyMDE4LTExLTE5IGF0IDEwOjI2ICswMTAwLCBNYXR0aGlh
+cyBCcnVnZ2VyIHdyb3RlOgo+IAo+IE9uIDE5LzExLzIwMTggMDY6MzgsIENLIEh1IHdyb3RlOgo+
+ID4gSGksIE1hdHRoaWFzOgo+ID4gCj4gPiBPbiBGcmksIDIwMTgtMTEtMTYgYXQgMTM6NTQgKzAx
+MDAsIG1hdHRoaWFzLmJnZ0BrZXJuZWwub3JnIHdyb3RlOgo+ID4+IEZyb206IE1hdHRoaWFzIEJy
+dWdnZXIgPG1icnVnZ2VyQHN1c2UuY29tPgo+ID4+Cj4gPj4gSXQgY2FuIGhhcHBlbiB0aGF0IHRo
+ZSBtbXN5cyBjbG9jayBkcml2ZXJzIGFyZW4ndCBwcm9iZWQgYmVmb3JlIHRoZQo+ID4+IHBsYXRm
+b3JtIGRyaXZlciBnZXRzIGludm9rZWQuIFRoZSBwbGF0Zm9ybSBkcml2ZXIgdXNlZCB0byBwcmlu
+dCBhIHdhcm5pbmcKPiA+PiB0aGF0IHRoZSBkcml2ZXIgZmFpbGVkIHRvIGdldCB0aGUgY2xvY2tz
+LiBPbWl0IHRoaXMgZXJyb3Igb24KPiA+PiB0aGUgZGVmZXJlZCBwcm9iZSBwYXRoLgo+ID4gCj4g
+PiBUaGlzIHBhdGNoIGxvb2tzIGdvb2QgdG8gbWUsIGJ1dCB5b3UgaGF2ZSBub3QgbW9kaWZpZWQg
+dGhlIHN1YiBkcml2ZXIgaW4KPiA+IEhETUkgcGF0aC4gV2UgY291bGQgbGV0IEhETUkgcGF0aCBw
+cmludCB0aGUgd2FybmluZyBhbmQgc29tZW9uZSBzZW5kCj4gPiBhbm90aGVyIHBhdGNoIGxhdGVy
+LCBvciB5b3UgbW9kaWZ5IGZvciBIRE1JIHBhdGggaW4gdGhpcyBwYXRjaC4KPiAKPiBTdXJlLCBJ
+J2xsIGFkZCB0aGlzIGluIHY2LiBBZnRlciBpbnNwZWN0aW5nIHRoZSBjb2RlLCBJIHRoaW5rIHdl
+IHdpbGwgbmVlZCB0bwo+IGFsc28gY2hlY2sgZm9yIG5vdCBpbml0aWFsaXplZCBjbG9ja3MgaW4g
+bXRrX21kcF9jb21wX2luaXQsIGFzIHRoZSBkcml2ZXIgZm9yCj4gbm93IGRvZXMgbm90IGV2ZW4g
+Y2hlY2sgaWYgdGhlIGNsb2NrcyBhcmUgcHJlc2VudC4gV2hhdCBkbyB5b3UgdGhpbms/CgpZZXMs
+IHdlIGRvIHJlYWxseSBuZWVkIHRvIGNvbnNpZGVyIG1kcCBkcml2ZXIgYmVjYXVzZSBtbXN5cyBj
+bG9jawppbmNsdWRlIG1kcCBjbG9jay4gWW91IHJlbWluZCBtZSB0aGF0IG1tc3lzIGNvbnRyb2wg
+NCBtYWpvciBmdW5jdGlvbjoKZHJtIHJvdXRpbmcsIGRybSBjbG9jaywgbWRwIHJvdXRpbmcsIGFu
+ZCBtZHAgY2xvY2suIFlvdXIgZGVzaWduIGxldCB0aGUKbW1zeXMgZGV2aWNlIGFzIGRybSBkZXZp
+Y2UgKGNvbnRyb2wgZHJtIHJvdXRpbmcpIGFuZCBjcmVhdGUgYSBzdWIgZGV2aWNlCmFzIGNsb2Nr
+IGRldmljZSAoY29udHJvbCBkcm0gY2xvY2ssIG1kcCBjbG9jaykuIElmIG9uZSBkYXkgbWRwIGRl
+dmljZQoobWF5IG5lZWQgY29udHJvbCBkcm0gcm91dGluZykgbmVlZCB0byBjb250cm9sIHRoZSBy
+ZWdpc3RlciBvZiBtZHAKcm91dGluZywgd291bGQgbWRwIGRldmljZSBiZSBhIHN1YiBkZXZpY2U/
+IE9yIHdlIG5lZWQgbm90IHRvIGNvbnNpZGVyCnRoaXMgYmVjYXVzZSBpdCBuZWVkIG5vdCB0byBh
+Y2Nlc3MgbW1zeXMgcmVnaXN0ZXIgbm93PwoKUmVnYXJkcywKQ0sKCj4gCj4gSSdsbCBhZGRyZXNz
+IHRoZSBjb2Rpbmcgc3R5bGUgaXNzdWUgeW91IG1ldGlvbmVkIGJlbG93IGFzIHdlbGwuCj4gCj4g
+UmVnYXJkcywKPiBNYXR0aGlhcwo+IAo+ID4+Cj4gPj4gU2lnbmVkLW9mZi1ieTogTWF0dGhpYXMg
+QnJ1Z2dlciA8bWJydWdnZXJAc3VzZS5jb20+Cj4gPj4gLS0tCj4gPj4gIGRyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZGlzcF9jb2xvci5jIHwgNCArKystCj4gPj4gIGRyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYyAgIHwgNCArKystCj4gPj4gIGRyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMgIHwgNCArKystCj4gPj4gIGRyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jICAgIHwgMyArKy0KPiA+PiAgZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kc2kuYyAgICAgICAgfCA2ICsrKystLQo+ID4+ICA1IGZpbGVzIGNoYW5n
+ZWQsIDE1IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4gPj4KPiA+PiBkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX2NvbG9yLmMgYi9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfY29sb3IuYwo+ID4+IGluZGV4IGY2MDliNjJiOGJlNi4u
+MWVhMzE3OGQ0YzE4IDEwMDY0NAo+ID4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfZGlzcF9jb2xvci5jCj4gPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+aXNwX2NvbG9yLmMKPiA+PiBAQCAtMTI2LDcgKzEyNiw5IEBAIHN0YXRpYyBpbnQgbXRrX2Rpc3Bf
+Y29sb3JfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiA+PiAgCXJldCA9IG10
+a19kZHBfY29tcF9pbml0KGRldiwgZGV2LT5vZl9ub2RlLCAmcHJpdi0+ZGRwX2NvbXAsIGNvbXBf
+aWQsCj4gPj4gIAkJCQkmbXRrX2Rpc3BfY29sb3JfZnVuY3MpOwo+ID4+ICAJaWYgKHJldCkgewo+
+ID4+IC0JCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGluaXRpYWxpemUgY29tcG9uZW50OiAlZFxu
+IiwgcmV0KTsKPiA+PiArCQlpZiAocmV0ICE9IC1FUFJPQkVfREVGRVIpCj4gPj4gKwkJCWRldl9l
+cnIoZGV2LCAiRmFpbGVkIHRvIGluaXRpYWxpemUgY29tcG9uZW50OiAlZFxuIiwKPiA+PiArCQkJ
+CQlyZXQpOwo+ID4gCj4gPiBJIHdvdWxkIGxpa2Ugb25lIG1vcmUgYmxhbmsgbGluZSBoZXJlLgo+
+ID4gCj4gPj4gIAkJcmV0dXJuIHJldDsKPiA+PiAgCX0KPiA+PiAgCj4gPj4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYwo+ID4+IGluZGV4IDI4ZDE5MTE5Mjk0NS4uNWViYmNh
+YTRlNzBlIDEwMDY0NAo+ID4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlz
+cF9vdmwuYwo+ID4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwu
+Ywo+ID4+IEBAIC0yOTMsNyArMjkzLDkgQEAgc3RhdGljIGludCBtdGtfZGlzcF9vdmxfcHJvYmUo
+c3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiA+PiAgCXJldCA9IG10a19kZHBfY29tcF9p
+bml0KGRldiwgZGV2LT5vZl9ub2RlLCAmcHJpdi0+ZGRwX2NvbXAsIGNvbXBfaWQsCj4gPj4gIAkJ
+CQkmbXRrX2Rpc3Bfb3ZsX2Z1bmNzKTsKPiA+PiAgCWlmIChyZXQpIHsKPiA+PiAtCQlkZXZfZXJy
+KGRldiwgIkZhaWxlZCB0byBpbml0aWFsaXplIGNvbXBvbmVudDogJWRcbiIsIHJldCk7Cj4gPj4g
+KwkJaWYgKHJldCAhPSAtRVBST0JFX0RFRkVSKQo+ID4+ICsJCQlkZXZfZXJyKGRldiwgIkZhaWxl
+ZCB0byBpbml0aWFsaXplIGNvbXBvbmVudDogJWRcbiIsCj4gPj4gKwkJCQkJcmV0KTsKPiA+IAo+
+ID4gSSB3b3VsZCBsaWtlIHRvIGFsaWduIHRvIHRoZSByaWdodCBvZiAnKCcuCj4gPiAKPiA+IFJl
+Z2FyZHMsCj4gPiBDSwo+ID4gCj4gPj4gIAkJcmV0dXJuIHJldDsKPiA+PiAgCX0KPiA+PiAgCj4g
+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMg
+Yi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jCj4gPj4gaW5kZXggYjBh
+NWNmZmUzNDVhLi41OWEwOGVkNWZlYTUgMTAwNjQ0Cj4gPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kaXNwX3JkbWEuYwo+ID4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZGlzcF9yZG1hLmMKPiA+PiBAQCAtMjk1LDcgKzI5NSw5IEBAIHN0YXRpYyBpbnQg
+bXRrX2Rpc3BfcmRtYV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4+ICAJ
+cmV0ID0gbXRrX2RkcF9jb21wX2luaXQoZGV2LCBkZXYtPm9mX25vZGUsICZwcml2LT5kZHBfY29t
+cCwgY29tcF9pZCwKPiA+PiAgCQkJCSZtdGtfZGlzcF9yZG1hX2Z1bmNzKTsKPiA+PiAgCWlmIChy
+ZXQpIHsKPiA+PiAtCQlkZXZfZXJyKGRldiwgIkZhaWxlZCB0byBpbml0aWFsaXplIGNvbXBvbmVu
+dDogJWRcbiIsIHJldCk7Cj4gPj4gKwkJaWYgKHJldCAhPSAtRVBST0JFX0RFRkVSKQo+ID4+ICsJ
+CQlkZXZfZXJyKGRldiwgIkZhaWxlZCB0byBpbml0aWFsaXplIGNvbXBvbmVudDogJWRcbiIsCj4g
+Pj4gKwkJCQkJcmV0KTsKPiA+PiAgCQlyZXR1cm4gcmV0Owo+ID4+ICAJfQo+ID4+ICAKPiA+PiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMgYi9kcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwo+ID4+IGluZGV4IGIwNmNkOWQ0YjUy
+NS4uYjc2YTJkMDcxYTk3IDEwMDY0NAo+ID4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZHJtX2RkcC5jCj4gPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+cm1fZGRwLmMKPiA+PiBAQCAtNTY2LDcgKzU2Niw4IEBAIHN0YXRpYyBpbnQgbXRrX2RkcF9wcm9i
+ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4+ICAKPiA+PiAgCWRkcC0+Y2xrID0g
+ZGV2bV9jbGtfZ2V0KGRldiwgTlVMTCk7Cj4gPj4gIAlpZiAoSVNfRVJSKGRkcC0+Y2xrKSkgewo+
+ID4+IC0JCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCBjbG9ja1xuIik7Cj4gPj4gKwkJaWYg
+KFBUUl9FUlIoZGRwLT5jbGspICE9IC1FUFJPQkVfREVGRVIpCj4gPj4gKwkJCWRldl9lcnIoZGV2
+LCAiRmFpbGVkIHRvIGdldCBjbG9ja1xuIik7Cj4gPj4gIAkJcmV0dXJuIFBUUl9FUlIoZGRwLT5j
+bGspOwo+ID4+ICAJfQo+ID4+ICAKPiA+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiA+
+PiBpbmRleCA5MDEwOWEwZDZmZmYuLmNjNmRlNzU2MzZjMyAxMDA2NDQKPiA+PiAtLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gPj4gKysrIGIvZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kc2kuYwo+ID4+IEBAIC0xMTAzLDE0ICsxMTAzLDE2IEBAIHN0YXRpYyBp
+bnQgbXRrX2RzaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4+ICAJZHNp
+LT5lbmdpbmVfY2xrID0gZGV2bV9jbGtfZ2V0KGRldiwgImVuZ2luZSIpOwo+ID4+ICAJaWYgKElT
+X0VSUihkc2ktPmVuZ2luZV9jbGspKSB7Cj4gPj4gIAkJcmV0ID0gUFRSX0VSUihkc2ktPmVuZ2lu
+ZV9jbGspOwo+ID4+IC0JCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCBlbmdpbmUgY2xvY2s6
+ICVkXG4iLCByZXQpOwo+ID4+ICsJCWlmIChyZXQgIT0gLUVQUk9CRV9ERUZFUikKPiA+PiArCQkJ
+ZGV2X2VycihkZXYsICJGYWlsZWQgdG8gZ2V0IGVuZ2luZSBjbG9jazogJWRcbiIsIHJldCk7Cj4g
+Pj4gIAkJcmV0dXJuIHJldDsKPiA+PiAgCX0KPiA+PiAgCj4gPj4gIAlkc2ktPmRpZ2l0YWxfY2xr
+ID0gZGV2bV9jbGtfZ2V0KGRldiwgImRpZ2l0YWwiKTsKPiA+PiAgCWlmIChJU19FUlIoZHNpLT5k
+aWdpdGFsX2NsaykpIHsKPiA+PiAgCQlyZXQgPSBQVFJfRVJSKGRzaS0+ZGlnaXRhbF9jbGspOwo+
+ID4+IC0JCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCBkaWdpdGFsIGNsb2NrOiAlZFxuIiwg
+cmV0KTsKPiA+PiArCQlpZiAocmV0ICE9IC1FUFJPQkVfREVGRVIpCj4gPj4gKwkJCWRldl9lcnIo
+ZGV2LCAiRmFpbGVkIHRvIGdldCBkaWdpdGFsIGNsb2NrOiAlZFxuIiwgcmV0KTsKPiA+PiAgCQly
+ZXR1cm4gcmV0Owo+ID4+ICAJfQo+ID4+ICAKPiA+IAo+ID4gCgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
+ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
