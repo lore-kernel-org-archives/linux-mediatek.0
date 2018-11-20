@@ -1,346 +1,793 @@
-From: Grygorii Strashko <grygorii.strashko@ti.com>
-Subject: [PATCH v3 1/5] phy: core: rework phy_set_mode to accept phy mode and submode
-Date: Mon, 19 Nov 2018 19:24:20 -0600
-Message-ID: <20181120012424.11802-2-grygorii.strashko@ti.com>
-References: <20181120012424.11802-1-grygorii.strashko@ti.com>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: Re: [PATCH v1 04/11] soc: mediatek: add new flow for mtcmos power.
+Date: Tue, 20 Nov 2018 10:37:34 +0800
+Message-ID: <1542681454.5132.9.camel@mtksdaap41>
+References: <20181106064206.17535-1-weiyi.lu@mediatek.com>
+         <20181106064206.17535-6-weiyi.lu@mediatek.com>
+         <CANMq1KDbauouMDvsZS3KsNJrNs1gGg7mDjsKRw=zTcuQXSTa0Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181120012424.11802-1-grygorii.strashko@ti.com>
+In-Reply-To: <CANMq1KDbauouMDvsZS3KsNJrNs1gGg7mDjsKRw=zTcuQXSTa0Q@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "David S. Miller" <davem@davemloft.net>, Kishon Vijay Abraham I <kishon@ti.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Quentin Schulz <quentin.schulz@bootlin.com>, Russell King - ARM Linux <linux@armlinux.org.uk>, Maxime Chevallier <maxime.chevallier@bootlin.com>
-Cc: netdev@vger.kernel.org, Sekhar Nori <nsekhar@ti.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Tony Lindgren <tony@atomide.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Vivek Gautam <vivek.gautam@codeaurora.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Carlo Caione <carlo@caione.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Manu Gautam <mgautam@codeaurora.org>, Grygorii Strashko <grygorii.strashko@ti.com>
+To: Nicolas Boichat <drinkcat@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, sboyd@codeaurora.org, Rob Herring <robh@kernel.org>, jamesjj.liao@mediatek.com, fan.chen@mediatek.com, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, owen.chen@mediatek.com, mars.cheng@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Currently the attempt to add support for Ethernet interface mode PHY
-(MII/GMII/RGMII) will lead to the necessity of extending enum phy_mode and
-duplicate there values from phy_interface_t enum (or introduce more PHY
-callbacks) [1]. Both approaches are ineffective and would lead to fast
-bloating of enum phy_mode or struct phy_ops in the process of adding more
-PHYs for different subsystems which will make them unmaintainable.
-
-As discussed in [1] the solution could be to introduce dual level PHYs mode
-configuration - PHY mode and PHY submode. The PHY mode will define generic
-PHY type (subsystem - PCIE/ETHERNET/USB_) while the PHY submode - subsystem
-specific interface mode. The last is usually already defined in
-corresponding subsystem headers (phy_interface_t for Ethernet, enum
-usb_device_speed for USB).
-
-This patch is cumulative change which refactors PHY framework code to
-support dual level PHYs mode configuration - PHY mode and PHY submode. It
-extends .set_mode() callback to support additional parameter "int submode"
-and converts all corresponding PHY drivers to support new .set_mode()
-callback declaration.
-The new extended PHY API
- int phy_set_mode_ext(struct phy *phy, enum phy_mode mode, int submode)
-is introduced to support dual level PHYs mode configuration and existing
-phy_set_mode() API is converted to macros, so PHY framework consumers do
-not need to be changed (~21 matches).
-
-[1] https://lkml.org/lkml/2018/10/25/366
-Signed-off-by: Grygorii Strashko <grygorii.strashko@ti.com>
----
- drivers/phy/allwinner/phy-sun4i-usb.c        |  3 ++-
- drivers/phy/amlogic/phy-meson-gxl-usb2.c     |  5 +++--
- drivers/phy/amlogic/phy-meson-gxl-usb3.c     |  5 +++--
- drivers/phy/marvell/phy-mvebu-cp110-comphy.c |  3 ++-
- drivers/phy/mediatek/phy-mtk-tphy.c          |  2 +-
- drivers/phy/mediatek/phy-mtk-xsphy.c         |  2 +-
- drivers/phy/mscc/phy-ocelot-serdes.c         |  2 +-
- drivers/phy/phy-core.c                       |  6 +++---
- drivers/phy/qualcomm/phy-qcom-qmp.c          |  3 ++-
- drivers/phy/qualcomm/phy-qcom-qusb2.c        |  3 ++-
- drivers/phy/qualcomm/phy-qcom-ufs-qmp-14nm.c |  3 ++-
- drivers/phy/qualcomm/phy-qcom-ufs-qmp-20nm.c |  3 ++-
- drivers/phy/qualcomm/phy-qcom-usb-hs.c       |  3 ++-
- drivers/phy/ti/phy-da8xx-usb.c               |  3 ++-
- drivers/phy/ti/phy-tusb1210.c                |  2 +-
- include/linux/phy/phy.h                      | 13 ++++++++++---
- 16 files changed, 39 insertions(+), 22 deletions(-)
-
-diff --git a/drivers/phy/allwinner/phy-sun4i-usb.c b/drivers/phy/allwinner/phy-sun4i-usb.c
-index d4dcd39..1acdd73 100644
---- a/drivers/phy/allwinner/phy-sun4i-usb.c
-+++ b/drivers/phy/allwinner/phy-sun4i-usb.c
-@@ -474,7 +474,8 @@ static int sun4i_usb_phy_power_off(struct phy *_phy)
- 	return 0;
- }
- 
--static int sun4i_usb_phy_set_mode(struct phy *_phy, enum phy_mode mode)
-+static int sun4i_usb_phy_set_mode(struct phy *_phy,
-+				  enum phy_mode mode, int submode)
- {
- 	struct sun4i_usb_phy *phy = phy_get_drvdata(_phy);
- 	struct sun4i_usb_phy_data *data = to_sun4i_usb_phy_data(phy);
-diff --git a/drivers/phy/amlogic/phy-meson-gxl-usb2.c b/drivers/phy/amlogic/phy-meson-gxl-usb2.c
-index 9f9b541..148ef0b 100644
---- a/drivers/phy/amlogic/phy-meson-gxl-usb2.c
-+++ b/drivers/phy/amlogic/phy-meson-gxl-usb2.c
-@@ -152,7 +152,8 @@ static int phy_meson_gxl_usb2_reset(struct phy *phy)
- 	return 0;
- }
- 
--static int phy_meson_gxl_usb2_set_mode(struct phy *phy, enum phy_mode mode)
-+static int phy_meson_gxl_usb2_set_mode(struct phy *phy,
-+				       enum phy_mode mode, int submode)
- {
- 	struct phy_meson_gxl_usb2_priv *priv = phy_get_drvdata(phy);
- 
-@@ -209,7 +210,7 @@ static int phy_meson_gxl_usb2_power_on(struct phy *phy)
- 	/* power on the PHY by taking it out of reset mode */
- 	regmap_update_bits(priv->regmap, U2P_R0, U2P_R0_POWER_ON_RESET, 0);
- 
--	ret = phy_meson_gxl_usb2_set_mode(phy, priv->mode);
-+	ret = phy_meson_gxl_usb2_set_mode(phy, priv->mode, 0);
- 	if (ret) {
- 		phy_meson_gxl_usb2_power_off(phy);
- 
-diff --git a/drivers/phy/amlogic/phy-meson-gxl-usb3.c b/drivers/phy/amlogic/phy-meson-gxl-usb3.c
-index d37d94d..c0e9e4c 100644
---- a/drivers/phy/amlogic/phy-meson-gxl-usb3.c
-+++ b/drivers/phy/amlogic/phy-meson-gxl-usb3.c
-@@ -119,7 +119,8 @@ static int phy_meson_gxl_usb3_power_off(struct phy *phy)
- 	return 0;
- }
- 
--static int phy_meson_gxl_usb3_set_mode(struct phy *phy, enum phy_mode mode)
-+static int phy_meson_gxl_usb3_set_mode(struct phy *phy,
-+				       enum phy_mode mode, int submode)
- {
- 	struct phy_meson_gxl_usb3_priv *priv = phy_get_drvdata(phy);
- 
-@@ -164,7 +165,7 @@ static int phy_meson_gxl_usb3_init(struct phy *phy)
- 	if (ret)
- 		goto err_disable_clk_phy;
- 
--	ret = phy_meson_gxl_usb3_set_mode(phy, priv->mode);
-+	ret = phy_meson_gxl_usb3_set_mode(phy, priv->mode, 0);
- 	if (ret)
- 		goto err_disable_clk_peripheral;
- 
-diff --git a/drivers/phy/marvell/phy-mvebu-cp110-comphy.c b/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
-index 86a5f7b..79b52c3 100644
---- a/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
-+++ b/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
-@@ -512,7 +512,8 @@ static int mvebu_comphy_power_on(struct phy *phy)
- 	return ret;
- }
- 
--static int mvebu_comphy_set_mode(struct phy *phy, enum phy_mode mode)
-+static int mvebu_comphy_set_mode(struct phy *phy,
-+				 enum phy_mode mode, int submode)
- {
- 	struct mvebu_comphy_lane *lane = phy_get_drvdata(phy);
- 
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index 3eb8e1b..5b6a470 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -971,7 +971,7 @@ static int mtk_phy_exit(struct phy *phy)
- 	return 0;
- }
- 
--static int mtk_phy_set_mode(struct phy *phy, enum phy_mode mode)
-+static int mtk_phy_set_mode(struct phy *phy, enum phy_mode mode, int submode)
- {
- 	struct mtk_phy_instance *instance = phy_get_drvdata(phy);
- 	struct mtk_tphy *tphy = dev_get_drvdata(phy->dev.parent);
-diff --git a/drivers/phy/mediatek/phy-mtk-xsphy.c b/drivers/phy/mediatek/phy-mtk-xsphy.c
-index 020cd02..8c51131 100644
---- a/drivers/phy/mediatek/phy-mtk-xsphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-xsphy.c
-@@ -426,7 +426,7 @@ static int mtk_phy_exit(struct phy *phy)
- 	return 0;
- }
- 
--static int mtk_phy_set_mode(struct phy *phy, enum phy_mode mode)
-+static int mtk_phy_set_mode(struct phy *phy, enum phy_mode mode, int submode)
- {
- 	struct xsphy_instance *inst = phy_get_drvdata(phy);
- 	struct mtk_xsphy *xsphy = dev_get_drvdata(phy->dev.parent);
-diff --git a/drivers/phy/mscc/phy-ocelot-serdes.c b/drivers/phy/mscc/phy-ocelot-serdes.c
-index cbb49d9..c61a9890 100644
---- a/drivers/phy/mscc/phy-ocelot-serdes.c
-+++ b/drivers/phy/mscc/phy-ocelot-serdes.c
-@@ -158,7 +158,7 @@ static const struct serdes_mux ocelot_serdes_muxes[] = {
- 		   HSIO_HW_CFG_PCIE_ENA),
- };
- 
--static int serdes_set_mode(struct phy *phy, enum phy_mode mode)
-+static int serdes_set_mode(struct phy *phy, enum phy_mode mode, int submode)
- {
- 	struct serdes_macro *macro = phy_get_drvdata(phy);
- 	unsigned int i;
-diff --git a/drivers/phy/phy-core.c b/drivers/phy/phy-core.c
-index 35fd38c..df3d4ba 100644
---- a/drivers/phy/phy-core.c
-+++ b/drivers/phy/phy-core.c
-@@ -360,7 +360,7 @@ int phy_power_off(struct phy *phy)
- }
- EXPORT_SYMBOL_GPL(phy_power_off);
- 
--int phy_set_mode(struct phy *phy, enum phy_mode mode)
-+int phy_set_mode_ext(struct phy *phy, enum phy_mode mode, int submode)
- {
- 	int ret;
- 
-@@ -368,14 +368,14 @@ int phy_set_mode(struct phy *phy, enum phy_mode mode)
- 		return 0;
- 
- 	mutex_lock(&phy->mutex);
--	ret = phy->ops->set_mode(phy, mode);
-+	ret = phy->ops->set_mode(phy, mode, submode);
- 	if (!ret)
- 		phy->attrs.mode = mode;
- 	mutex_unlock(&phy->mutex);
- 
- 	return ret;
- }
--EXPORT_SYMBOL_GPL(phy_set_mode);
-+EXPORT_SYMBOL_GPL(phy_set_mode_ext);
- 
- int phy_reset(struct phy *phy)
- {
-diff --git a/drivers/phy/qualcomm/phy-qcom-qmp.c b/drivers/phy/qualcomm/phy-qcom-qmp.c
-index a833324..514db72 100644
---- a/drivers/phy/qualcomm/phy-qcom-qmp.c
-+++ b/drivers/phy/qualcomm/phy-qcom-qmp.c
-@@ -1365,7 +1365,8 @@ static int qcom_qmp_phy_poweron(struct phy *phy)
- 	return ret;
- }
- 
--static int qcom_qmp_phy_set_mode(struct phy *phy, enum phy_mode mode)
-+static int qcom_qmp_phy_set_mode(struct phy *phy,
-+				 enum phy_mode mode, int submode)
- {
- 	struct qmp_phy *qphy = phy_get_drvdata(phy);
- 	struct qcom_qmp *qmp = qphy->qmp;
-diff --git a/drivers/phy/qualcomm/phy-qcom-qusb2.c b/drivers/phy/qualcomm/phy-qcom-qusb2.c
-index 9ce5311..098d793 100644
---- a/drivers/phy/qualcomm/phy-qcom-qusb2.c
-+++ b/drivers/phy/qualcomm/phy-qcom-qusb2.c
-@@ -423,7 +423,8 @@ static void qusb2_phy_set_tune2_param(struct qusb2_phy *qphy)
- 
- }
- 
--static int qusb2_phy_set_mode(struct phy *phy, enum phy_mode mode)
-+static int qusb2_phy_set_mode(struct phy *phy,
-+			      enum phy_mode mode, int submode)
- {
- 	struct qusb2_phy *qphy = phy_get_drvdata(phy);
- 
-diff --git a/drivers/phy/qualcomm/phy-qcom-ufs-qmp-14nm.c b/drivers/phy/qualcomm/phy-qcom-ufs-qmp-14nm.c
-index ba1895b..1e0d4f2 100644
---- a/drivers/phy/qualcomm/phy-qcom-ufs-qmp-14nm.c
-+++ b/drivers/phy/qualcomm/phy-qcom-ufs-qmp-14nm.c
-@@ -65,7 +65,8 @@ static int ufs_qcom_phy_qmp_14nm_exit(struct phy *generic_phy)
- }
- 
- static
--int ufs_qcom_phy_qmp_14nm_set_mode(struct phy *generic_phy, enum phy_mode mode)
-+int ufs_qcom_phy_qmp_14nm_set_mode(struct phy *generic_phy,
-+				   enum phy_mode mode, int submode)
- {
- 	struct ufs_qcom_phy *phy_common = get_ufs_qcom_phy(generic_phy);
- 
-diff --git a/drivers/phy/qualcomm/phy-qcom-ufs-qmp-20nm.c b/drivers/phy/qualcomm/phy-qcom-ufs-qmp-20nm.c
-index 49f435c..aef40f7 100644
---- a/drivers/phy/qualcomm/phy-qcom-ufs-qmp-20nm.c
-+++ b/drivers/phy/qualcomm/phy-qcom-ufs-qmp-20nm.c
-@@ -84,7 +84,8 @@ static int ufs_qcom_phy_qmp_20nm_exit(struct phy *generic_phy)
- }
- 
- static
--int ufs_qcom_phy_qmp_20nm_set_mode(struct phy *generic_phy, enum phy_mode mode)
-+int ufs_qcom_phy_qmp_20nm_set_mode(struct phy *generic_phy,
-+				   enum phy_mode mode, int submode)
- {
- 	struct ufs_qcom_phy *phy_common = get_ufs_qcom_phy(generic_phy);
- 
-diff --git a/drivers/phy/qualcomm/phy-qcom-usb-hs.c b/drivers/phy/qualcomm/phy-qcom-usb-hs.c
-index abbbe75..04934f8 100644
---- a/drivers/phy/qualcomm/phy-qcom-usb-hs.c
-+++ b/drivers/phy/qualcomm/phy-qcom-usb-hs.c
-@@ -42,7 +42,8 @@ struct qcom_usb_hs_phy {
- 	struct notifier_block vbus_notify;
- };
- 
--static int qcom_usb_hs_phy_set_mode(struct phy *phy, enum phy_mode mode)
-+static int qcom_usb_hs_phy_set_mode(struct phy *phy,
-+				    enum phy_mode mode, int submode)
- {
- 	struct qcom_usb_hs_phy *uphy = phy_get_drvdata(phy);
- 	u8 addr;
-diff --git a/drivers/phy/ti/phy-da8xx-usb.c b/drivers/phy/ti/phy-da8xx-usb.c
-index befb886..d5f4fbc 100644
---- a/drivers/phy/ti/phy-da8xx-usb.c
-+++ b/drivers/phy/ti/phy-da8xx-usb.c
-@@ -93,7 +93,8 @@ static int da8xx_usb20_phy_power_off(struct phy *phy)
- 	return 0;
- }
- 
--static int da8xx_usb20_phy_set_mode(struct phy *phy, enum phy_mode mode)
-+static int da8xx_usb20_phy_set_mode(struct phy *phy,
-+				    enum phy_mode mode, int submode)
- {
- 	struct da8xx_usb_phy *d_phy = phy_get_drvdata(phy);
- 	u32 val;
-diff --git a/drivers/phy/ti/phy-tusb1210.c b/drivers/phy/ti/phy-tusb1210.c
-index b8ec39a..329fb93 100644
---- a/drivers/phy/ti/phy-tusb1210.c
-+++ b/drivers/phy/ti/phy-tusb1210.c
-@@ -53,7 +53,7 @@ static int tusb1210_power_off(struct phy *phy)
- 	return 0;
- }
- 
--static int tusb1210_set_mode(struct phy *phy, enum phy_mode mode)
-+static int tusb1210_set_mode(struct phy *phy, enum phy_mode mode, int submode)
- {
- 	struct tusb1210 *tusb = phy_get_drvdata(phy);
- 	int ret;
-diff --git a/include/linux/phy/phy.h b/include/linux/phy/phy.h
-index 03b319f..b17e770 100644
---- a/include/linux/phy/phy.h
-+++ b/include/linux/phy/phy.h
-@@ -60,7 +60,7 @@ struct phy_ops {
- 	int	(*exit)(struct phy *phy);
- 	int	(*power_on)(struct phy *phy);
- 	int	(*power_off)(struct phy *phy);
--	int	(*set_mode)(struct phy *phy, enum phy_mode mode);
-+	int	(*set_mode)(struct phy *phy, enum phy_mode mode, int submode);
- 	int	(*reset)(struct phy *phy);
- 	int	(*calibrate)(struct phy *phy);
- 	struct module *owner;
-@@ -164,7 +164,10 @@ int phy_init(struct phy *phy);
- int phy_exit(struct phy *phy);
- int phy_power_on(struct phy *phy);
- int phy_power_off(struct phy *phy);
--int phy_set_mode(struct phy *phy, enum phy_mode mode);
-+int phy_set_mode_ext(struct phy *phy, enum phy_mode mode, int submode);
-+#define phy_set_mode(phy, mode) \
-+	phy_set_mode_ext(phy, mode, 0)
-+
- static inline enum phy_mode phy_get_mode(struct phy *phy)
- {
- 	return phy->attrs.mode;
-@@ -278,13 +281,17 @@ static inline int phy_power_off(struct phy *phy)
- 	return -ENOSYS;
- }
- 
--static inline int phy_set_mode(struct phy *phy, enum phy_mode mode)
-+static inline int phy_set_mode_ext(struct phy *phy, enum phy_mode mode,
-+				   int submode)
- {
- 	if (!phy)
- 		return 0;
- 	return -ENOSYS;
- }
- 
-+#define phy_set_mode(phy, mode) \
-+	phy_set_mode_ext(phy, mode, 0)
-+
- static inline enum phy_mode phy_get_mode(struct phy *phy)
- {
- 	return PHY_MODE_INVALID;
--- 
-2.10.5
+On Tue, 2018-11-13 at 11:31 -0800, Nicolas Boichat wrote:
+> (not a complete review...)
+> 
+> On Mon, Nov 5, 2018 at 10:42 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
+> >
+> > From: Owen Chen <owen.chen@mediatek.com>
+> >
+> > Both MT8183 & MT6765 add more bus protect node than previous project,
+> > therefore we add two more register for setup bus protect, which reside
+> > at INFRA_CFG & SMI_COMMON.
+> >
+> > With the following change
+> > 1. bus protect need not only infracfg but smi_common registers involved
+> >    to setup. Therefore we add a set/clr APIs with more customize arguments.
+> >
+> > The second change is that we also add subsys CG control flow before/after
+> > the bus protect/sram control, due to bus protect need SMI bus relative CGs
+> > enable to feed-back its ack, and some master's sram control need CG enable
+> > to on/off its resource sequentially.
+> >
+> > With the following change
+> > 1. turn on subsys CG before sram pwron and release bus protect.
+> > 2. turn off subsys CG after the process of set bus protect/receive
+> >    ack/disable sram.
+> >
+> > The last change is for some power domains like vpu_core on MT8183 whose
+> > sram need to do clock and internal isolation while power on/off sram.
+> > We add a flag "sram_iso_ctrl" in scp_domain_data to judge if we need to
+> > do the extra sram isolation control or not.
+> >
+> > Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+> > Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> > ---
+> >  drivers/soc/mediatek/Makefile           |   2 +-
+> >  drivers/soc/mediatek/mtk-scpsys-ext.c   | 102 +++++++
+> >  drivers/soc/mediatek/mtk-scpsys.c       | 379 +++++++++++++++++++-----
+> >  include/linux/soc/mediatek/scpsys-ext.h |  39 +++
+> >  4 files changed, 451 insertions(+), 71 deletions(-)
+> >  create mode 100644 drivers/soc/mediatek/mtk-scpsys-ext.c
+> >  create mode 100644 include/linux/soc/mediatek/scpsys-ext.h
+> >
+> > diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
+> > index 12998b08819e..9dc6670c19cb 100644
+> > --- a/drivers/soc/mediatek/Makefile
+> > +++ b/drivers/soc/mediatek/Makefile
+> > @@ -1,3 +1,3 @@
+> > -obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
+> > +obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o mtk-scpsys-ext.o
+> >  obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
+> >  obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
+> > diff --git a/drivers/soc/mediatek/mtk-scpsys-ext.c b/drivers/soc/mediatek/mtk-scpsys-ext.c
+> > new file mode 100644
+> > index 000000000000..fa5623b47d6b
+> > --- /dev/null
+> > +++ b/drivers/soc/mediatek/mtk-scpsys-ext.c
+> > @@ -0,0 +1,102 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * Copyright (c) 2018 MediaTek Inc.
+> > + * Author: Owen Chen <Owen.Chen@mediatek.com>
+> > + */
+> > +#include <linux/ktime.h>
+> > +#include <linux/mfd/syscon.h>
+> > +#include <linux/of_device.h>
+> > +#include <linux/regmap.h>
+> > +#include <linux/soc/mediatek/scpsys-ext.h>
+> > +
+> > +#define MTK_POLL_DELAY_US   10
+> > +#define MTK_POLL_TIMEOUT    (jiffies_to_usecs(HZ))
+> 
+> This is just 1000000 (USEC_PER_SEC), right?
+> 
+Yes, correct.
+> > +
+> > +static int set_bus_protection(struct regmap *map, u32 mask, u32 ack_mask,
+> > +               u32 reg_set, u32 reg_sta, u32 reg_en)
+> > +{
+> > +       u32 val;
+> > +       int ret;
+> > +
+> > +       if (reg_set)
+> > +               regmap_write(map, reg_set, mask);
+> > +       else
+> > +               regmap_update_bits(map, reg_en, mask, mask);
+> > +
+> > +       ret = regmap_read_poll_timeout(map, reg_sta,
+> > +                       val, (val & ack_mask) == ack_mask,
+> > +                       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> 
+> Just return regmap_read...()
+> 
+will fix in next version
+> > +
+> > +       return ret;
+> > +}
+> > +
+> > +static int clear_bus_protection(struct regmap *map, u32 mask, u32 ack_mask,
+> > +               u32 reg_clr, u32 reg_sta, u32 reg_en)
+> > +{
+> > +       u32 val;
+> > +       int ret;
+> > +
+> > +       if (reg_clr)
+> > +               regmap_write(map, reg_clr, mask);
+> > +       else
+> > +               regmap_update_bits(map, reg_en, mask, 0);
+> > +
+> > +       ret = regmap_read_poll_timeout(map, reg_sta,
+> > +                       val, !(val & ack_mask),
+> > +                       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> > +
+> > +       return ret;
+> > +}
+> > +
+> > +int mtk_scpsys_ext_set_bus_protection(const struct bus_prot *bp_table,
+> > +       struct regmap *infracfg, struct regmap *smi_common)
+> > +{
+> > +       int i, ret;
+> 
+> You need to initialize ret = 0, in case bp_table[0].mask == 0 (unless
+> you want to do the changes below).
+> 
+Actually bp_table[].mask won't be 0, only bp_table[].clr_ack_mask could
+be 0. But we'll fix it.
+> > +       struct regmap *map;
+> 
+> I'd move this inside the loop.
+> 
+OK, will fix in next version
+> > +
+> > +       for (i = 0; i < MAX_STEPS && bp_table[i].mask; i++) {
+> > +               map = (bp_table[i].type == IFR_TYPE) ? infracfg :
+> > +                       (bp_table[i].type == SMI_TYPE) ? smi_common :
+> > +                       NULL;
+> > +               if (!map)
+> > +                       return -EINVAL;
+> 
+> This feels more readable:
+> if (bp_table[i].type == IFR_TYPE)
+>  map = infracfg;
+> else if (bp_table[i].type == SMI_TYPE)
+>   map = smi_common;
+> else
+>    return -EINVAL;
+> 
+OK, will fix in next version
+> > +
+> > +               ret = set_bus_protection(map,
+> > +                               bp_table[i].mask, bp_table[i].mask,
+> > +                               bp_table[i].set_ofs, bp_table[i].sta_ofs,
+> > +                               bp_table[i].en_ofs);
+> > +
+> > +               if (ret)
+> > +                       break;
+> 
+> Or just return ret?
+> 
+OK, will fix in next version
+> > +       }
+> > +
+> > +       return ret;
+> 
+> Then this can just be return 0;
+> 
+OK, will fix in next version
+> > +}
+> > +
+> > +int mtk_scpsys_ext_clear_bus_protection(const struct bus_prot *bp_table,
+> > +       struct regmap *infracfg, struct regmap *smi_common)
+> > +{
+> > +       int i, ret = 0;
+> > +       struct regmap *map;
+> > +
+> > +       for (i = MAX_STEPS - 1; i >= 0; i--) {
+> > +               if (!bp_table[i].mask)
+> > +                       continue;
+> > +
+> > +               map = (bp_table[i].type == IFR_TYPE) ? infracfg :
+> > +                       (bp_table[i].type == SMI_TYPE) ? smi_common :
+> > +                       NULL;
+> > +               if (!map)
+> > +                       return -EINVAL;
+> > +
+> > +               ret = clear_bus_protection(map,
+> > +                               bp_table[i].mask, bp_table[i].clr_ack_mask,
+> > +                               bp_table[i].clr_ofs, bp_table[i].sta_ofs,
+> > +                               bp_table[i].en_ofs);
+> > +
+> > +               if (ret)
+> > +                       break;
+> > +       }
+> > +
+> > +       return ret;
+> 
+> Similar comments for this function.
+OK, will fix in next version
+> 
+> > +}
+> > diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> > index 5b24bb4bfbf6..80be2e05e4e0 100644
+> > --- a/drivers/soc/mediatek/mtk-scpsys.c
+> > +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> > @@ -1,3 +1,4 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> >  /*
+> >   * Copyright (c) 2015 Pengutronix, Sascha Hauer <kernel@pengutronix.de>
+> >   *
+> > @@ -20,6 +21,7 @@
+> >  #include <linux/pm_domain.h>
+> >  #include <linux/regulator/consumer.h>
+> >  #include <linux/soc/mediatek/infracfg.h>
+> > +#include <linux/soc/mediatek/scpsys-ext.h>
+> >
+> >  #include <dt-bindings/power/mt2701-power.h>
+> >  #include <dt-bindings/power/mt2712-power.h>
+> > @@ -64,6 +66,8 @@
+> >  #define PWR_ON_BIT                     BIT(2)
+> >  #define PWR_ON_2ND_BIT                 BIT(3)
+> >  #define PWR_CLK_DIS_BIT                        BIT(4)
+> > +#define PWR_SRAM_CLKISO_BIT            BIT(5)
+> > +#define PWR_SRAM_ISOINT_B_BIT          BIT(6)
+> >
+> >  #define PWR_STATUS_CONN                        BIT(1)
+> >  #define PWR_STATUS_DISP                        BIT(3)
+> > @@ -115,16 +119,38 @@ static const char * const clk_names[] = {
+> >  };
+> >
+> >  #define MAX_CLKS       3
+> > -
+> > +#define MAX_SUBSYS_CLKS 10
+> > +
+> > +/**
+> > + * struct scp_domain_data - scp domain data for power on/off flow
+> > + * @name: The domain name.
+> > + * @sta_mask: The mask for power on/off status bit.
+> > + * @ctl_offs: The offset for main power control register.
+> > + * @sram_pdn_bits: The mask for sram power control bits.
+> > + * @sram_pdn_ack_bits: The mask for sram power control acked bits.
+> > + * @bus_prot_mask: The mask for single step bus protection.
+> > + * @clk_id: The basic clock needs to be enabled before enabling certain
+> > + *          power domains.
+> > + * @basic_clk_name: provide the same purpose with field "clk_id"
+> > + *                  by declaring basic clock prefix name rathan than clk_id.
+> > + * @subsys_clk_prefix: The prefix name of the clocks need to be enabled
+> > + *                     before releasing bus protection.
+> > + * @caps: The flag for active wake-up action.
+> > + * @bp_table: The mask table for multiple step bus protection.
+> > + */
+> >  struct scp_domain_data {
+> >         const char *name;
+> >         u32 sta_mask;
+> >         int ctl_offs;
+> > +       bool sram_iso_ctrl;
+> >         u32 sram_pdn_bits;
+> >         u32 sram_pdn_ack_bits;
+> >         u32 bus_prot_mask;
+> >         enum clk_id clk_id[MAX_CLKS];
+> > +       const char *basic_clk_name[MAX_CLKS];
+> > +       const char *subsys_clk_prefix;
+> >         u8 caps;
+> > +       struct bus_prot bp_table[MAX_STEPS];
+> >  };
+> >
+> >  struct scp;
+> > @@ -133,6 +159,7 @@ struct scp_domain {
+> >         struct generic_pm_domain genpd;
+> >         struct scp *scp;
+> >         struct clk *clk[MAX_CLKS];
+> > +       struct clk *subsys_clk[MAX_SUBSYS_CLKS];
+> >         const struct scp_domain_data *data;
+> >         struct regulator *supply;
+> >  };
+> > @@ -148,6 +175,7 @@ struct scp {
+> >         struct device *dev;
+> >         void __iomem *base;
+> >         struct regmap *infracfg;
+> > +       struct regmap *smi_common;
+> >         struct scp_ctrl_reg ctrl_reg;
+> >         bool bus_prot_reg_update;
+> >  };
+> > @@ -188,20 +216,26 @@ static int scpsys_domain_is_on(struct scp_domain *scpd)
+> >         return -EINVAL;
+> >  }
+> >
+> > -static int scpsys_power_on(struct generic_pm_domain *genpd)
+> > +static int scpsys_regulator_onoff(struct scp_domain *scpd, bool on)
+> >  {
+> > -       struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
+> > -       struct scp *scp = scpd->scp;
+> > -       void __iomem *ctl_addr = scp->base + scpd->data->ctl_offs;
+> > -       u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
+> > -       u32 val;
+> > -       int ret, tmp;
+> > +       struct regulator *s = scpd->supply;
+> > +
+> > +       if (!s)
+> > +               return 0;
+> > +
+> > +       return on ? regulator_enable(s) : regulator_disable(s);
+> > +}
+> > +
+> > +static int scpsys_basic_clk_onoff(struct scp_domain *scpd, bool on)
+> > +{
+> > +       int ret = 0;
+> >         int i;
+> >
+> > -       if (scpd->supply) {
+> > -               ret = regulator_enable(scpd->supply);
+> > -               if (ret)
+> > -                       return ret;
+> > +       if (!on) {
+> > +               for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++)
+> > +                       clk_disable_unprepare(scpd->clk[i]);
+> > +
+> > +               return ret;
+> >         }
+> >
+> >         for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++) {
+> > @@ -210,10 +244,147 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+> >                         for (--i; i >= 0; i--)
+> >                                 clk_disable_unprepare(scpd->clk[i]);
+> >
+> > -                       goto err_clk;
+> > +                       break;
+> >                 }
+> >         }
+> >
+> > +       return ret;
+> > +}
+> > +
+> > +static int scpsys_sram_onoff(struct scp_domain *scpd, void __iomem *ctl_addr,
+> > +               bool on)
+> > +{
+> > +       u32 val, ack;
+> > +       int tmp;
+> > +       int ret = 0;
+> > +       u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
+> > +
+> > +       if (!on && scpd->data->sram_iso_ctrl)   {
+> > +               val = readl(ctl_addr);
+> > +               val |= PWR_SRAM_CLKISO_BIT;
+> > +               writel(val, ctl_addr);
+> > +               val &= ~PWR_SRAM_ISOINT_B_BIT;
+> > +               writel(val, ctl_addr);
+> > +               udelay(1);
+> > +       }
+> > +
+> > +       val = readl(ctl_addr);
+> > +       if (on) {
+> > +               val &= ~scpd->data->sram_pdn_bits;
+> > +               ack = 0;
+> > +       } else {
+> > +               val |= scpd->data->sram_pdn_bits;
+> > +               ack = pdn_ack;
+> > +       }
+> > +       writel(val, ctl_addr);
+> > +
+> > +       /* Either wait until SRAM_PDN_ACK all 0 or have a force wait */
+> > +       if (on && MTK_SCPD_CAPS(scpd, MTK_SCPD_FWAIT_SRAM)) {
+> > +               /*
+> > +                * Currently, MTK_SCPD_FWAIT_SRAM is necessary only for
+> > +                * MT7622_POWER_DOMAIN_WB and thus just a trivial setup
+> > +                * is applied here.
+> > +                */
+> > +               usleep_range(12000, 12100);
+> > +       } else
+> > +               /* Either wait until SRAM_PDN_ACK all 1 or 0 */
+> > +               ret = readl_poll_timeout(ctl_addr, tmp,
+> > +                               (tmp & pdn_ack) == ack,
+> > +                               MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> > +
+> > +       if (on && scpd->data->sram_iso_ctrl)    {
+> > +               val = readl(ctl_addr);
+> > +               val |= PWR_SRAM_ISOINT_B_BIT;
+> > +               writel(val, ctl_addr);
+> > +               udelay(1);
+> > +               val &= ~PWR_SRAM_CLKISO_BIT;
+> > +               writel(val, ctl_addr);
+> > +       }
+> > +
+> > +       return ret;
+> > +}
+> > +
+> > +static int scpsys_subsys_clk_onoff(struct scp_domain *scpd, bool on)
+> > +{
+> > +       int ret = 0;
+> > +       int i;
+> > +
+> > +       if (!on) {
+> > +               for (i = MAX_SUBSYS_CLKS - 1; i >= 0; i--) {
+> > +                       struct clk *clk = scpd->subsys_clk[i];
+> > +
+> > +                       if (clk)
+> > +                               clk_disable_unprepare(clk);
+> > +               }
+> > +
+> > +               return ret;
+> > +       }
+> > +
+> > +       for (i = 0; i < MAX_SUBSYS_CLKS && scpd->subsys_clk[i]; i++) {
+> > +               struct clk *clk = scpd->subsys_clk[i];
+> > +
+> > +               ret = clk_prepare_enable(clk);
+> > +               if (ret) {
+> > +                       for (--i; i >= 0; i--) {
+> > +                               struct clk *clk = scpd->subsys_clk[i];
+> > +
+> > +                               clk_disable_unprepare(clk);
+> > +                       }
+> > +
+> > +                       break;
+> > +               }
+> > +       }
+> > +
+> > +       return ret;
+> > +}
+> > +
+> > +static int scpsys_bus_protect_onoff(struct scp_domain *scpd, bool on)
+> > +{
+> > +       struct scp *scp = scpd->scp;
+> > +       int ret = 0;
+> > +
+> > +       if (scpd->data->bus_prot_mask) {
+> > +               if (on)
+> > +                       ret = mtk_infracfg_set_bus_protection(scp->infracfg,
+> > +                                       scpd->data->bus_prot_mask,
+> > +                                       scp->bus_prot_reg_update);
+> > +               else
+> > +                       ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
+> > +                                       scpd->data->bus_prot_mask,
+> > +                                       scp->bus_prot_reg_update);
+> > +       } else if (scpd->data->bp_table[0].mask) {
+> > +               if (on)
+> > +                       ret = mtk_scpsys_ext_set_bus_protection(
+> > +                                       scpd->data->bp_table,
+> > +                                       scp->infracfg,
+> > +                                       scp->smi_common);
+> > +               else
+> > +                       ret = mtk_scpsys_ext_clear_bus_protection(
+> > +                                       scpd->data->bp_table,
+> > +                                       scp->infracfg,
+> > +                                       scp->smi_common);
+> > +       }
+> > +
+> > +       return ret;
+> > +}
+> > +
+> > +static int scpsys_power_on(struct generic_pm_domain *genpd)
+> > +{
+> > +       struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
+> > +       struct scp *scp = scpd->scp;
+> > +       void __iomem *ctl_addr = scp->base + scpd->data->ctl_offs;
+> > +       u32 val;
+> > +       int ret, tmp;
+> > +
+> > +       ret = scpsys_regulator_onoff(scpd, true);
+> > +       if (ret < 0)
+> > +               return ret;
+> > +
+> > +       ret = scpsys_basic_clk_onoff(scpd, true);
+> > +       if (ret)
+> > +               goto err_clk;
+> > +
+> > +       /* subsys power on */
+> >         val = readl(ctl_addr);
+> >         val |= PWR_ON_BIT;
+> >         writel(val, ctl_addr);
+> > @@ -226,6 +397,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+> >         if (ret < 0)
+> >                 goto err_pwr_ack;
+> >
+> > +
+> 
+> Drop this.
+Why do we try to drop this? Once the power-on step fail, the following
+steps should not be permitted.
+> 
+> >         val &= ~PWR_CLK_DIS_BIT;
+> >         writel(val, ctl_addr);
+> >
+> > @@ -235,43 +407,26 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+> >         val |= PWR_RST_B_BIT;
+> >         writel(val, ctl_addr);
+> >
+> > -       val &= ~scpd->data->sram_pdn_bits;
+> > -       writel(val, ctl_addr);
+> > -
+> > -       /* Either wait until SRAM_PDN_ACK all 0 or have a force wait */
+> > -       if (MTK_SCPD_CAPS(scpd, MTK_SCPD_FWAIT_SRAM)) {
+> > -               /*
+> > -                * Currently, MTK_SCPD_FWAIT_SRAM is necessary only for
+> > -                * MT7622_POWER_DOMAIN_WB and thus just a trivial setup is
+> > -                * applied here.
+> > -                */
+> > -               usleep_range(12000, 12100);
+> > +       ret = scpsys_subsys_clk_onoff(scpd, true);
+> > +       if (ret < 0)
+> > +               goto err_pwr_ack;
+> >
+> > -       } else {
+> > -               ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == 0,
+> > -                                        MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> > -               if (ret < 0)
+> > -                       goto err_pwr_ack;
+> > -       }
+> > +       ret = scpsys_sram_onoff(scpd, ctl_addr, true);
+> > +       if (ret < 0)
+> > +               goto err_sram;
+> >
+> > -       if (scpd->data->bus_prot_mask) {
+> > -               ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
+> > -                               scpd->data->bus_prot_mask,
+> > -                               scp->bus_prot_reg_update);
+> > -               if (ret)
+> > -                       goto err_pwr_ack;
+> > -       }
+> > +       ret = scpsys_bus_protect_onoff(scpd, false);
+> > +       if (ret < 0)
+> > +               goto err_sram;
+> >
+> >         return 0;
+> >
+> > +err_sram:
+> > +       scpsys_subsys_clk_onoff(scpd, false);
+> >  err_pwr_ack:
+> > -       for (i = MAX_CLKS - 1; i >= 0; i--) {
+> > -               if (scpd->clk[i])
+> > -                       clk_disable_unprepare(scpd->clk[i]);
+> > -       }
+> > +       scpsys_basic_clk_onoff(scpd, false);
+> >  err_clk:
+> > -       if (scpd->supply)
+> > -               regulator_disable(scpd->supply);
+> > +       scpsys_regulator_onoff(scpd, false);
+> >
+> >         dev_err(scp->dev, "Failed to power on domain %s\n", genpd->name);
+> >
+> > @@ -283,29 +438,21 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+> >         struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
+> >         struct scp *scp = scpd->scp;
+> >         void __iomem *ctl_addr = scp->base + scpd->data->ctl_offs;
+> > -       u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
+> >         u32 val;
+> >         int ret, tmp;
+> > -       int i;
+> >
+> > -       if (scpd->data->bus_prot_mask) {
+> > -               ret = mtk_infracfg_set_bus_protection(scp->infracfg,
+> > -                               scpd->data->bus_prot_mask,
+> > -                               scp->bus_prot_reg_update);
+> > -               if (ret)
+> > -                       goto out;
+> > -       }
+> > -
+> > -       val = readl(ctl_addr);
+> > -       val |= scpd->data->sram_pdn_bits;
+> > -       writel(val, ctl_addr);
+> > +       ret = scpsys_bus_protect_onoff(scpd, true);
+> > +       if (ret < 0)
+> > +               goto out;
+> >
+> > -       /* wait until SRAM_PDN_ACK all 1 */
+> > -       ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == pdn_ack,
+> > -                                MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> > +       ret = scpsys_sram_onoff(scpd, ctl_addr, false);
+> >         if (ret < 0)
+> >                 goto out;
+> >
+> > +       ret = scpsys_subsys_clk_onoff(scpd, false);
+> > +
+> > +       /* subsys power off */
+> > +       val = readl(ctl_addr);
+> >         val |= PWR_ISO_BIT;
+> >         writel(val, ctl_addr);
+> >
+> > @@ -327,11 +474,9 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+> >         if (ret < 0)
+> >                 goto out;
+> >
+> > -       for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++)
+> > -               clk_disable_unprepare(scpd->clk[i]);
+> > +       scpsys_basic_clk_onoff(scpd, false);
+> >
+> > -       if (scpd->supply)
+> > -               regulator_disable(scpd->supply);
+> > +       scpsys_regulator_onoff(scpd, false);
+> >
+> >         return 0;
+> >
+> > @@ -341,6 +486,69 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+> >         return ret;
+> >  }
+> >
+> > +static int init_subsys_clks(struct platform_device *pdev,
+> > +               const char *prefix, struct clk **clk)
+> > +{
+> > +       struct device_node *node = pdev->dev.of_node;
+> > +       u32 sub_clk_cnt = 0;
+> > +       u32 prefix_len = 0;
+> > +       int str_sz = 0;
+> > +       int clk_idx;
+> > +       int ret = 0;
+> > +
+> > +       if (!node) {
+> > +               dev_err(&pdev->dev, "Cannot find scpsys node: %ld\n",
+> > +                       PTR_ERR(node));
+> > +               return PTR_ERR(node);
+> > +       }
+> > +
+> > +       str_sz = of_property_count_strings(node, "clock-names");
+> > +       if (str_sz < 0) {
+> > +               dev_err(&pdev->dev, "Cannot get any subsys strings: %d\n",
+> > +                               str_sz);
+> > +               return str_sz;
+> > +       }
+> > +
+> > +       prefix_len = strlen(prefix);
+> > +
+> > +       for (clk_idx = 0; clk_idx < str_sz; clk_idx++) {
+> > +               const char *clk_name;
+> > +
+> > +               ret = of_property_read_string_index(node, "clock-names",
+> > +                                       clk_idx, &clk_name);
+> > +               if (ret < 0) {
+> > +                       dev_err(&pdev->dev,
+> > +                                       "Cannot read subsys string[%d]: %d\n",
+> > +                                       clk_idx, ret);
+> > +                       return ret;
+> > +               }
+> > +
+> > +               if (!strncmp(clk_name, prefix, prefix_len)
+> > +                               && (strchr(clk_name + prefix_len, '-')
+> > +                               != NULL)) {
+> > +                       if (sub_clk_cnt >= MAX_SUBSYS_CLKS) {
+> > +                               dev_err(&pdev->dev,
+> > +                                       "subsys clk out of range %d\n",
+> > +                                       sub_clk_cnt);
+> > +                               return -ENOMEM;
+> > +                       }
+> > +
+> > +                       clk[sub_clk_cnt] = devm_clk_get(
+> > +                                       &pdev->dev, clk_name);
+> > +
+> > +                       if (IS_ERR(clk)) {
+> > +                               dev_err(&pdev->dev,
+> > +                                       "Subsys clk read fail %ld\n",
+> > +                                       PTR_ERR(clk));
+> > +                               return PTR_ERR(clk);
+> > +                       }
+> > +                       sub_clk_cnt++;
+> > +               }
+> > +       }
+> > +
+> > +       return sub_clk_cnt;
+> > +}
+> > +
+> >  static void init_clks(struct platform_device *pdev, struct clk **clk)
+> >  {
+> >         int i;
+> > @@ -396,6 +604,17 @@ static struct scp *init_scp(struct platform_device *pdev,
+> >                 return ERR_CAST(scp->infracfg);
+> >         }
+> >
+> > +       scp->smi_common = syscon_regmap_lookup_by_phandle(pdev->dev.of_node,
+> > +                       "smi_comm");
+> > +
+> > +       if (scp->smi_common == ERR_PTR(-ENODEV)) {
+> > +               scp->smi_common = NULL;
+> > +       } else if (IS_ERR(scp->smi_common)) {
+> > +               dev_err(&pdev->dev, "Cannot find smi_common controller: %ld\n",
+> > +                               PTR_ERR(scp->smi_common));
+> > +               return ERR_CAST(scp->smi_common);
+> > +       }
+> > +
+> >         for (i = 0; i < num; i++) {
+> >                 struct scp_domain *scpd = &scp->domains[i];
+> >                 const struct scp_domain_data *data = &scp_domain_data[i];
+> > @@ -417,22 +636,42 @@ static struct scp *init_scp(struct platform_device *pdev,
+> >                 struct scp_domain *scpd = &scp->domains[i];
+> >                 struct generic_pm_domain *genpd = &scpd->genpd;
+> >                 const struct scp_domain_data *data = &scp_domain_data[i];
+> > +               int clk_cnt = 0;
+> >
+> >                 pd_data->domains[i] = genpd;
+> >                 scpd->scp = scp;
+> >
+> >                 scpd->data = data;
+> >
+> > -               for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
+> > -                       struct clk *c = clk[data->clk_id[j]];
+> > +               if (data->clk_id[0])
+> > +                       for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
+> > +                               struct clk *c = clk[data->clk_id[j]];
+> > +
+> > +                               if (IS_ERR(c)) {
+> > +                                       dev_err(&pdev->dev,
+> > +                                               "%s: clk unavailable\n",
+> > +                                               data->name);
+> > +                                       return ERR_CAST(c);
+> > +                               }
+> >
+> > -                       if (IS_ERR(c)) {
+> > -                               dev_err(&pdev->dev, "%s: clk unavailable\n",
+> > +                               scpd->clk[j] = c;
+> > +                       }
+> > +               else if (data->basic_clk_name[0])
+> > +                       for (j = 0; j < MAX_CLKS
+> > +                                       && data->basic_clk_name[j]; j++)
+> > +                               scpd->clk[j] = devm_clk_get(&pdev->dev,
+> > +                                               data->basic_clk_name[j]);
+> > +
+> > +               if (data->subsys_clk_prefix) {
+> > +                       clk_cnt = init_subsys_clks(pdev,
+> > +                                       data->subsys_clk_prefix,
+> > +                                       scpd->subsys_clk);
+> > +                       if (clk_cnt < 0) {
+> > +                               dev_err(&pdev->dev,
+> > +                                       "%s: subsys clk unavailable\n",
+> >                                         data->name);
+> > -                               return ERR_CAST(c);
+> > +                               return ERR_PTR(clk_cnt);
+> >                         }
+> > -
+> > -                       scpd->clk[j] = c;
+> >                 }
+> >
+> >                 genpd->name = data->name;
+> > diff --git a/include/linux/soc/mediatek/scpsys-ext.h b/include/linux/soc/mediatek/scpsys-ext.h
+> > new file mode 100644
+> > index 000000000000..d0ed295c88a7
+> > --- /dev/null
+> > +++ b/include/linux/soc/mediatek/scpsys-ext.h
+> > @@ -0,0 +1,39 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +#ifndef __SOC_MEDIATEK_SCPSYS_EXT_H
+> > +#define __SOC_MEDIATEK_SCPSYS_EXT_H
+> > +
+> > +#define MAX_STEPS      4
+> > +
+> > +#define BUS_PROT(_type, _set_ofs, _clr_ofs,                    \
+> > +               _en_ofs, _sta_ofs, _mask, _clr_ack_mask) {      \
+> > +               .type = _type,                                  \
+> > +               .set_ofs = _set_ofs,                            \
+> > +               .clr_ofs = _clr_ofs,                            \
+> > +               .en_ofs = _en_ofs,                              \
+> > +               .sta_ofs = _sta_ofs,                            \
+> > +               .mask = _mask,                                  \
+> > +               .clr_ack_mask = _clr_ack_mask,                  \
+> > +       }
+> > +
+> > +enum regmap_type {
+> > +       IFR_TYPE,
+> > +       SMI_TYPE,
+> > +       MAX_REGMAP_TYPE,
+> > +};
+> > +
+> > +struct bus_prot {
+> > +       enum regmap_type type;
+> > +       u32 set_ofs;
+> > +       u32 clr_ofs;
+> > +       u32 en_ofs;
+> > +       u32 sta_ofs;
+> > +       u32 mask;
+> > +       u32 clr_ack_mask;
+> > +};
+> > +
+> > +int mtk_scpsys_ext_set_bus_protection(const struct bus_prot *bp_table,
+> > +       struct regmap *infracfg, struct regmap *smi_common);
+> > +int mtk_scpsys_ext_clear_bus_protection(const struct bus_prot *bp_table,
+> > +       struct regmap *infracfg, struct regmap *smi_common);
+> > +
+> > +#endif /* __SOC_MEDIATEK_SCPSYS_EXT_H */
+> > --
+> > 2.18.0
+> >
