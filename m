@@ -1,52 +1,46 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [RFC PATCH] of: make MAX_RESERVED_REGIONS configurable
-Date: Wed, 21 Nov 2018 10:39:03 -0600
-Message-ID: <CAL_JsqLGvUYQmCGXLgSO+6kFj2i87dpaTbMGbyu5oMt=eeu35A@mail.gmail.com>
-References: <1542787873-8429-1-git-send-email-miles.chen@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+From: Nicholas Mc Guire <hofrat@osadl.org>
+Subject: [PATCH] gpio: mt7621: handle failure of devm_kasprintf()
+Date: Wed, 21 Nov 2018 17:35:42 +0100
+Message-ID: <1542818142-27800-1-git-send-email-hofrat@osadl.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1542787873-8429-1-git-send-email-miles.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Miles Chen <miles.chen@mediatek.com>
-Cc: Frank Rowand <frowand.list@gmail.com>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Bartosz Golaszewski <bgolaszewski@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Nicholas Mc Guire <hofrat@osadl.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Nov 21, 2018 at 2:11 AM <miles.chen@mediatek.com> wrote:
->
-> From: Miles Chen <miles.chen@mediatek.com>
->
-> When we use more than 32 entries in /resered-memory,
-> there will be an error message: "not enough space all defined regions.".
-> We can increase MAX_RESERVED_REGIONS to fix this.
->
-> commit 22f8cc6e3373 ("drivers: of: increase MAX_RESERVED_REGIONS to 32")
-> increased MAX_RESERVED_REGIONS to 32 but I'm not sure if increasing
-> MAX_RESERVED_REGIONS to 64 is suitable for everyone.
->
-> In this RFC patch, CONFIG_MAX_OF_RESERVED_REGIONS is added and used as
-> MAX_RESERVED_REGIONS. Add a sanity test to make sure that
-> MAX_RESERVED_REGIONS is less than INIT_MEMBLOCK_REGIONS.
-> Users can configure CONFIG_MAX_OF_RESERVED_REGIONS according to their
-> need.
+kasprintf() may return NULL on failure of internal allocation thus the
+assigned  label  is not safe if not explicitly checked. On error
+mediatek_gpio_bank_probe() returns negative values so -ENOMEM in the
+(unlikely) failure case should be fine here.
 
-I don't want a kconfig option for this. I think it should be dynamic instead.
+Signed-off-by: Nicholas Mc Guire <hofrat@osadl.org>
+Fixes: 4ba9c3afda41 ("gpio: mt7621: Add a driver for MT7621")
+---
 
-The current flow is like this:
+Problem located with experimental coccinelle script
 
-for each reserved node:
-  - call memblock_reserve
-  - Add info to reserved_mem array
+Patch was compile tested with: omega2p_defconfig, SOC_MT7621=y,
+GPIOLIB=y, GPIO_MT7621=y
 
-I think we should change it to:
+Patch is against 4.20-rc3 (localversion-next is next-20181121)
 
-for each reserved node:
-  - call memblock_reserve
-  - count number of nodes
+ drivers/gpio/gpio-mt7621.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Alloc array using memblock_alloc
-
-for each reserved node:
-   - Add info to reserved_mem array
-
-Rob
+diff --git a/drivers/gpio/gpio-mt7621.c b/drivers/gpio/gpio-mt7621.c
+index d72af6f..42f0c67 100644
+--- a/drivers/gpio/gpio-mt7621.c
++++ b/drivers/gpio/gpio-mt7621.c
+@@ -244,6 +244,10 @@ mediatek_gpio_bank_probe(struct device *dev,
+ 	rg->chip.of_xlate = mediatek_gpio_xlate;
+ 	rg->chip.label = devm_kasprintf(dev, GFP_KERNEL, "%s-bank%d",
+ 					dev_name(dev), bank);
++	if (!rg->chip.label) {
++		dev_err(dev, "Could not allocate label\n");
++		return -ENOMEM;
++	}
+ 
+ 	ret = devm_gpiochip_add_data(dev, &rg->chip, mtk);
+ 	if (ret < 0) {
+-- 
+2.1.4
