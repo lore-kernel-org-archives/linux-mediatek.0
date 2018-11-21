@@ -1,181 +1,86 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH v2] PCI: mediatek: Use
- devm_of_pci_get_host_bridge_resources() to parse DT
-Date: Wed, 21 Nov 2018 13:47:51 +0800
-Message-ID: <1542779271.2401.0.camel@mtkswgap22>
-References: <1541645815-30340-1-git-send-email-honghui.zhang@mediatek.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: [PATCH] media: mtk-vcodec: Remove VA from encoder frame buffers
+Date: Wed, 21 Nov 2018 15:37:59 +0900
+Message-ID: <20181121063759.26374-1-tfiga@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1541645815-30340-1-git-send-email-honghui.zhang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com
-Cc: lorenzo.pieralisi@arm.com, bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, youlin.pei@mediatek.com, jianjun.wang@mediatek.com
+To: linux-media@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, hiroh@chromium.org, Tomasz Figa <tfiga@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2018-11-08 at 10:56 +0800, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
-> 
-> Use the devm_of_pci_get_host_bridge_resources() API in place of the PCI OF
-> DT parser.
-> 
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> ---
->  drivers/pci/controller/pcie-mediatek.c | 98 +++++++++-------------------------
->  1 file changed, 24 insertions(+), 74 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 2a1f97c..0590a93 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -197,11 +197,7 @@ struct mtk_pcie_port {
->   * @dev: pointer to PCIe device
->   * @base: IO mapped register base
->   * @free_ck: free-run reference clock
-> - * @io: IO resource
-> - * @pio: PIO resource
->   * @mem: non-prefetchable memory resource
-> - * @busn: bus range
-> - * @offset: IO / Memory offset
->   * @ports: pointer to PCIe port information
->   * @soc: pointer to SoC-dependent operations
->   */
-> @@ -210,14 +206,7 @@ struct mtk_pcie {
->  	void __iomem *base;
->  	struct clk *free_ck;
->  
-> -	struct resource io;
-> -	struct resource pio;
->  	struct resource mem;
-> -	struct resource busn;
-> -	struct {
-> -		resource_size_t mem;
-> -		resource_size_t io;
-> -	} offset;
->  	struct list_head ports;
->  	const struct mtk_pcie_soc *soc;
->  };
-> @@ -1045,55 +1034,43 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
->  {
->  	struct device *dev = pcie->dev;
->  	struct device_node *node = dev->of_node, *child;
-> -	struct of_pci_range_parser parser;
-> -	struct of_pci_range range;
-> -	struct resource res;
->  	struct mtk_pcie_port *port, *tmp;
-> +	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
-> +	struct list_head *windows = &host->windows;
-> +	struct resource_entry *win, *tmp_win;
-> +	resource_size_t io_base;
->  	int err;
->  
-> -	if (of_pci_range_parser_init(&parser, node)) {
-> -		dev_err(dev, "missing \"ranges\" property\n");
-> -		return -EINVAL;
-> -	}
-> +	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
-> +						    windows, &io_base);
-> +	if (err)
-> +		return err;
->  
-> -	for_each_of_pci_range(&parser, &range) {
-> -		err = of_pci_range_to_resource(&range, node, &res);
-> -		if (err < 0)
-> -			return err;
-> +	err = devm_request_pci_bus_resources(dev, windows);
-> +	if (err < 0)
-> +		return err;
->  
-> -		switch (res.flags & IORESOURCE_TYPE_BITS) {
-> +	/* Get the I/O and memory ranges from DT */
-> +	resource_list_for_each_entry_safe(win, tmp_win, windows) {
-> +		switch (resource_type(win->res)) {
->  		case IORESOURCE_IO:
-> -			pcie->offset.io = res.start - range.pci_addr;
-> -
-> -			memcpy(&pcie->pio, &res, sizeof(res));
-> -			pcie->pio.name = node->full_name;
-> -
-> -			pcie->io.start = range.cpu_addr;
-> -			pcie->io.end = range.cpu_addr + range.size - 1;
-> -			pcie->io.flags = IORESOURCE_MEM;
-> -			pcie->io.name = "I/O";
-> -
-> -			memcpy(&res, &pcie->io, sizeof(res));
-> +			err = devm_pci_remap_iospace(dev, win->res, io_base);
-> +			if (err) {
-> +				dev_warn(dev, "error %d: failed to map resource %pR\n",
-> +					 err, win->res);
-> +				resource_list_destroy_entry(win);
-> +			}
->  			break;
-> -
->  		case IORESOURCE_MEM:
-> -			pcie->offset.mem = res.start - range.pci_addr;
-> -
-> -			memcpy(&pcie->mem, &res, sizeof(res));
-> +			memcpy(&pcie->mem, win->res, sizeof(*win->res));
->  			pcie->mem.name = "non-prefetchable";
->  			break;
-> +		case IORESOURCE_BUS:
-> +			host->busnr = win->res->start;
-> +			break;
->  		}
->  	}
->  
-> -	err = of_pci_parse_bus_range(node, &pcie->busn);
-> -	if (err < 0) {
-> -		dev_err(dev, "failed to parse bus ranges property: %d\n", err);
-> -		pcie->busn.name = node->name;
-> -		pcie->busn.start = 0;
-> -		pcie->busn.end = 0xff;
-> -		pcie->busn.flags = IORESOURCE_BUS;
-> -	}
-> -
->  	for_each_available_child_of_node(node, child) {
->  		int slot;
->  
-> @@ -1125,28 +1102,6 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
->  	return 0;
->  }
->  
-> -static int mtk_pcie_request_resources(struct mtk_pcie *pcie)
-> -{
-> -	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
-> -	struct list_head *windows = &host->windows;
-> -	struct device *dev = pcie->dev;
-> -	int err;
-> -
-> -	pci_add_resource_offset(windows, &pcie->pio, pcie->offset.io);
-> -	pci_add_resource_offset(windows, &pcie->mem, pcie->offset.mem);
-> -	pci_add_resource(windows, &pcie->busn);
-> -
-> -	err = devm_request_pci_bus_resources(dev, windows);
-> -	if (err < 0)
-> -		return err;
-> -
-> -	err = devm_pci_remap_iospace(dev, &pcie->pio, pcie->io.start);
-> -	if (err < 0)
-> -		return err;
-> -
-> -	return 0;
-> -}
-> -
->  static int mtk_pcie_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
-> @@ -1169,11 +1124,6 @@ static int mtk_pcie_probe(struct platform_device *pdev)
->  	if (err)
->  		return err;
->  
-> -	err = mtk_pcie_request_resources(pcie);
-> -	if (err)
-> -		goto put_resources;
-> -
-> -	host->busnr = pcie->busn.start;
->  	host->dev.parent = pcie->dev;
->  	host->ops = pcie->soc->ops;
->  	host->map_irq = of_irq_parse_and_map_pci;
+The encoder driver has no need to do any CPU access to the source frame
+buffers. Use a separate structure for holding DMA addresses and sizes
+for those and remove, so we do not end up introducing any erroneous
+dereferences of those VAs.
 
-Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+This fixes DMA-buf import from exporters that do not provide contiguous
+kernel mappings, which includes the MTK DRM driver.
+
+Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c  | 6 +-----
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h | 5 +++++
+ drivers/media/platform/mtk-vcodec/venc_drv_if.h     | 2 +-
+ 3 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+index 54631ad1c71e..d1f12257bf66 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+@@ -1087,7 +1087,6 @@ static void mtk_venc_worker(struct work_struct *work)
+ 	src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
+ 	memset(&frm_buf, 0, sizeof(frm_buf));
+ 	for (i = 0; i < src_buf->num_planes ; i++) {
+-		frm_buf.fb_addr[i].va = vb2_plane_vaddr(src_buf, i);
+ 		frm_buf.fb_addr[i].dma_addr =
+ 				vb2_dma_contig_plane_dma_addr(src_buf, i);
+ 		frm_buf.fb_addr[i].size =
+@@ -1098,14 +1097,11 @@ static void mtk_venc_worker(struct work_struct *work)
+ 	bs_buf.size = (size_t)dst_buf->planes[0].length;
+ 
+ 	mtk_v4l2_debug(2,
+-			"Framebuf VA=%p PA=%llx Size=0x%zx;VA=%p PA=0x%llx Size=0x%zx;VA=%p PA=0x%llx Size=%zu",
+-			frm_buf.fb_addr[0].va,
++			"Framebuf PA=%llx Size=0x%zx;PA=0x%llx Size=0x%zx;PA=0x%llx Size=%zu",
+ 			(u64)frm_buf.fb_addr[0].dma_addr,
+ 			frm_buf.fb_addr[0].size,
+-			frm_buf.fb_addr[1].va,
+ 			(u64)frm_buf.fb_addr[1].dma_addr,
+ 			frm_buf.fb_addr[1].size,
+-			frm_buf.fb_addr[2].va,
+ 			(u64)frm_buf.fb_addr[2].dma_addr,
+ 			frm_buf.fb_addr[2].size);
+ 
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
+index 06c254f5c171..9bf6e8d1b9c9 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
+@@ -25,6 +25,11 @@ struct mtk_vcodec_mem {
+ 	dma_addr_t dma_addr;
+ };
+ 
++struct mtk_vcodec_fb {
++	size_t size;
++	dma_addr_t dma_addr;
++};
++
+ struct mtk_vcodec_ctx;
+ struct mtk_vcodec_dev;
+ 
+diff --git a/drivers/media/platform/mtk-vcodec/venc_drv_if.h b/drivers/media/platform/mtk-vcodec/venc_drv_if.h
+index a6e7d32e55cb..55ecda844894 100644
+--- a/drivers/media/platform/mtk-vcodec/venc_drv_if.h
++++ b/drivers/media/platform/mtk-vcodec/venc_drv_if.h
+@@ -106,7 +106,7 @@ struct venc_enc_param {
+  * @fb_addr: plane frame buffer addresses
+  */
+ struct venc_frm_buf {
+-	struct mtk_vcodec_mem fb_addr[MTK_VCODEC_MAX_PLANES];
++	struct mtk_vcodec_fb fb_addr[MTK_VCODEC_MAX_PLANES];
+ };
+ 
+ /*
+-- 
+2.19.1.1215.g8438c0b245-goog
