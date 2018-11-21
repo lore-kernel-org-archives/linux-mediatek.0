@@ -1,42 +1,37 @@
 From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v1 02/11] clk: mediatek: add new member to mtk_pll_data
-Date: Wed, 21 Nov 2018 00:03:24 -0800
-Message-ID: <154278740462.88331.17720342357503268022@swboyd.mtv.corp.google.com>
+Subject: Re: [PATCH v1 04/11] soc: mediatek: add new flow for mtcmos power.
+Date: Wed, 21 Nov 2018 00:07:41 -0800
+Message-ID: <154278766192.88331.16232130563413450456@swboyd.mtv.corp.google.com>
 References: <20181106064206.17535-1-weiyi.lu@mediatek.com>
- <20181106064206.17535-4-weiyi.lu@mediatek.com>
- <CANMq1KBjtyQFyJ-mZBndPDSfSDnD0K8izy39jp9zKE4xfiCiog@mail.gmail.com>
- <1542685880.5132.11.camel@mtksdaap41>
+ <20181106064206.17535-6-weiyi.lu@mediatek.com>
+ <CANMq1KDbauouMDvsZS3KsNJrNs1gGg7mDjsKRw=zTcuQXSTa0Q@mail.gmail.com>
+ <1542681454.5132.9.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1542685880.5132.11.camel@mtksdaap41>
+In-Reply-To: <1542681454.5132.9.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Nicolas Boichat <drinkcat@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, srv_heupstream@mediatek.com, jamesjj.liao@mediatek.com, sboyd@codeaurora.org, lkml <linux-kernel@vger.kernel.org>, fan.chen@mediatek.com, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, owen.chen@mediatek.com, linux-clk@vger.kernel.org, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, sboyd@codeaurora.org, Rob Herring <robh@kernel.org>, jamesjj.liao@mediatek.com, fan.chen@mediatek.com, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, owen.chen@mediatek.com, mars.cheng@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Weiyi Lu (2018-11-19 19:51:20)
-> On Tue, 2018-11-13 at 08:18 -0800, Nicolas Boichat wrote:
-> > On Mon, Nov 5, 2018 at 10:43 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
-> > > @@ -138,9 +140,10 @@ static void mtk_pll_set_rate_regs(struct mtk_clk=
-_pll *pll, u32 pcw,
-> > >  static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u=
-32 *postdiv,
-> > >                 u32 freq, u32 fin)
-> > >  {
-> > > -       unsigned long fmin =3D 1000 * MHZ;
-> > > +       unsigned long fmin =3D pll->data->fmin ? pll->data->fmin : 10=
-00 * MHZ;
+Quoting Weiyi Lu (2018-11-19 18:37:34)
+> On Tue, 2018-11-13 at 11:31 -0800, Nicolas Boichat wrote:
+> > On Mon, Nov 5, 2018 at 10:42 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
+
+> > > @@ -226,6 +397,7 @@ static int scpsys_power_on(struct generic_pm_doma=
+in *genpd)
+> > >         if (ret < 0)
+> > >                 goto err_pwr_ack;
+> > >
+> > > +
 > > =
 
-> > I'd put parentheses around (1000 * MHZ), to avoid the need to think
-> > about precedence...
-> > =
+> > Drop this.
+> Why do we try to drop this? Once the power-on step fail, the following
+> steps should not be permitted.
 
-> =
-
-> OK, thanks for the suggestion. will add in next version
-
-Better style would be to not use a ternary statement for anything like
-this and have an if condition instead.
+I just see a whitespace addition that doesn't do anything. I suspect
+it's a style nitpick and common practice to not include spurious diffs
+in the patch. So remove this hunk?
