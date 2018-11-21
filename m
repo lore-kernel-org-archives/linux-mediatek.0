@@ -1,60 +1,55 @@
-From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Subject: Re: [PATCH] gpio: mt7621: handle failure of devm_kasprintf()
-Date: Wed, 21 Nov 2018 17:43:43 +0100
-Message-ID: <CAMpxmJUNYWqk4PEKcZ5o5PMR3RhMhudK+Pf+Pfo64mvJ8ND2wQ@mail.gmail.com>
-References: <1542818142-27800-1-git-send-email-hofrat@osadl.org>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v5 08/12] dt-bindings: mediatek: Change the binding for mmsys
+ clocks
+Date: Wed, 21 Nov 2018 08:46:27 -0800
+Message-ID: <154281878765.88331.10581984256202566195@swboyd.mtv.corp.google.com>
+References: <20181116125449.23581-1-matthias.bgg@kernel.org>
+ <20181116125449.23581-9-matthias.bgg@kernel.org>
+ <20181116231522.GA18006@bogus>
+ <2a23e407-4cd4-2e2b-97a5-4e2bb96846e0@gmail.com>
+ <CAL_JsqKJQwfDJbpmwW+oCxiDkSp5+6mG-uoURmCQVEMP_jFOEg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1542818142-27800-1-git-send-email-hofrat@osadl.org>
+In-Reply-To: <CAL_JsqKJQwfDJbpmwW+oCxiDkSp5+6mG-uoURmCQVEMP_jFOEg@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: hofrat@osadl.org
-Cc: Linus Walleij <linus.walleij@linaro.org>, matthias.bgg@gmail.com, sergio.paracuellos@gmail.com, linux-gpio <linux-gpio@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, arm-soc <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
+Cc: matthias.bgg@kernel.org, Mark Rutland <mark.rutland@arm.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Ulrich Hecht <ulrich.hecht+renesas@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sean Wang <sean.wang@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Chen-Yu Tsai <wens@csie.org>, dri-devel <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, linux-clk <linux-clk@vger.kernel.>
 List-Id: linux-mediatek@lists.infradead.org
 
-=C5=9Br., 21 lis 2018 o 17:39 Nicholas Mc Guire <hofrat@osadl.org> napisa=
-=C5=82(a):
->
-> kasprintf() may return NULL on failure of internal allocation thus the
-> assigned  label  is not safe if not explicitly checked. On error
-> mediatek_gpio_bank_probe() returns negative values so -ENOMEM in the
-> (unlikely) failure case should be fine here.
->
-> Signed-off-by: Nicholas Mc Guire <hofrat@osadl.org>
-> Fixes: 4ba9c3afda41 ("gpio: mt7621: Add a driver for MT7621")
-> ---
->
-> Problem located with experimental coccinelle script
->
-> Patch was compile tested with: omega2p_defconfig, SOC_MT7621=3Dy,
-> GPIOLIB=3Dy, GPIO_MT7621=3Dy
->
-> Patch is against 4.20-rc3 (localversion-next is next-20181121)
->
->  drivers/gpio/gpio-mt7621.c | 4 ++++
->  1 file changed, 4 insertions(+)
->
-> diff --git a/drivers/gpio/gpio-mt7621.c b/drivers/gpio/gpio-mt7621.c
-> index d72af6f..42f0c67 100644
-> --- a/drivers/gpio/gpio-mt7621.c
-> +++ b/drivers/gpio/gpio-mt7621.c
-> @@ -244,6 +244,10 @@ mediatek_gpio_bank_probe(struct device *dev,
->         rg->chip.of_xlate =3D mediatek_gpio_xlate;
->         rg->chip.label =3D devm_kasprintf(dev, GFP_KERNEL, "%s-bank%d",
->                                         dev_name(dev), bank);
-> +       if (!rg->chip.label) {
-> +               dev_err(dev, "Could not allocate label\n");
+Quoting Rob Herring (2018-11-19 11:15:16)
+> On Sun, Nov 18, 2018 at 11:12 AM Matthias Brugger
+> <matthias.bgg@gmail.com> wrote:
+> > On 11/17/18 12:15 AM, Rob Herring wrote:
+> > > On Fri, Nov 16, 2018 at 01:54:45PM +0100, matthias.bgg@kernel.org wro=
+te:
+> > >> -    #clock-cells =3D <1>;
+> > >> +
+> > >> +    mmsys_clk: clock-controller@14000000 {
+> > >> +            compatible =3D "mediatek,mt2712-mmsys-clk";
+> > >> +            #clock-cells =3D <1>;
+> > >
+> > > This goes against the general direction of not defining separate nodes
+> > > for providers with no resources.
+> > >
+> > > Why do you need this and what does it buy if you have to continue to
+> > > support the existing chips?
+> > >
+> >
+> > It would show explicitly that the mmsys block is used to probe two
+> > drivers, one for the gpu and one for the clocks. Otherwise that is
+> > hidden in the drm driver code. I think it is cleaner to describe that in
+> > the device tree.
+> =
 
-No need for an error message here, an -ENOMEM says enough.
+> No, that's maybe cleaner for the driver implementation in the Linux
+> kernel. What about other OS's or when Linux drivers and subsystems
+> needs change? Cleaner for DT is design bindings that reflect the h/w.
+> Hardware is sometimes just messy.
+> =
 
-Bart
 
-> +               return -ENOMEM;
-> +       }
->
->         ret =3D devm_gpiochip_add_data(dev, &rg->chip, mtk);
->         if (ret < 0) {
-> --
-> 2.1.4
->
+I agree. I fail to see what this patch series is doing besides changing
+driver probe and device creation methods and making a backwards
+incompatible change to DT. Is there any other benefit here?
