@@ -1,37 +1,79 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v1 04/11] soc: mediatek: add new flow for mtcmos power.
-Date: Wed, 21 Nov 2018 00:07:41 -0800
-Message-ID: <154278766192.88331.16232130563413450456@swboyd.mtv.corp.google.com>
-References: <20181106064206.17535-1-weiyi.lu@mediatek.com>
- <20181106064206.17535-6-weiyi.lu@mediatek.com>
- <CANMq1KDbauouMDvsZS3KsNJrNs1gGg7mDjsKRw=zTcuQXSTa0Q@mail.gmail.com>
- <1542681454.5132.9.camel@mtksdaap41>
+From: <miles.chen@mediatek.com>
+Subject: [RFC PATCH] of: make MAX_RESERVED_REGIONS configurable
+Date: Wed, 21 Nov 2018 16:11:13 +0800
+Message-ID: <1542787873-8429-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1542681454.5132.9.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Boichat <drinkcat@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, sboyd@codeaurora.org, Rob Herring <robh@kernel.org>, jamesjj.liao@mediatek.com, fan.chen@mediatek.com, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, owen.chen@mediatek.com, mars.cheng@mediatek.com
+To: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Weiyi Lu (2018-11-19 18:37:34)
-> On Tue, 2018-11-13 at 11:31 -0800, Nicolas Boichat wrote:
-> > On Mon, Nov 5, 2018 at 10:42 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
+From: Miles Chen <miles.chen@mediatek.com>
 
-> > > @@ -226,6 +397,7 @@ static int scpsys_power_on(struct generic_pm_doma=
-in *genpd)
-> > >         if (ret < 0)
-> > >                 goto err_pwr_ack;
-> > >
-> > > +
-> > =
+When we use more than 32 entries in /resered-memory,
+there will be an error message: "not enough space all defined regions.".
+We can increase MAX_RESERVED_REGIONS to fix this.
 
-> > Drop this.
-> Why do we try to drop this? Once the power-on step fail, the following
-> steps should not be permitted.
+commit 22f8cc6e3373 ("drivers: of: increase MAX_RESERVED_REGIONS to 32")
+increased MAX_RESERVED_REGIONS to 32 but I'm not sure if increasing
+MAX_RESERVED_REGIONS to 64 is suitable for everyone.
 
-I just see a whitespace addition that doesn't do anything. I suspect
-it's a style nitpick and common practice to not include spurious diffs
-in the patch. So remove this hunk?
+In this RFC patch, CONFIG_MAX_OF_RESERVED_REGIONS is added and used as
+MAX_RESERVED_REGIONS. Add a sanity test to make sure that
+MAX_RESERVED_REGIONS is less than INIT_MEMBLOCK_REGIONS.
+Users can configure CONFIG_MAX_OF_RESERVED_REGIONS according to their
+need.
+
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ drivers/of/Kconfig           | 9 +++++++++
+ drivers/of/of_reserved_mem.c | 5 ++++-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/of/Kconfig b/drivers/of/Kconfig
+index ad3fcad..63fff2e 100644
+--- a/drivers/of/Kconfig
++++ b/drivers/of/Kconfig
+@@ -86,6 +86,15 @@ config OF_RESERVED_MEM
+ 	help
+ 	  Helpers to allow for reservation of memory regions
+ 
++config MAX_OF_RESERVED_REGIONS
++	int "the max number of devicetree reserved memory regions"
++	depends on OF_RESERVED_MEM
++	default 32
++	help
++	  Setup the max number of devicetree reserved memory regions
++	  If unsure, leave the default value "32".
++
++
+ config OF_RESOLVE
+ 	bool
+ 
+diff --git a/drivers/of/of_reserved_mem.c b/drivers/of/of_reserved_mem.c
+index 1977ee0..18a7729 100644
+--- a/drivers/of/of_reserved_mem.c
++++ b/drivers/of/of_reserved_mem.c
+@@ -22,7 +22,7 @@
+ #include <linux/slab.h>
+ #include <linux/memblock.h>
+ 
+-#define MAX_RESERVED_REGIONS	32
++#define MAX_RESERVED_REGIONS	CONFIG_MAX_OF_RESERVED_REGIONS
+ static struct reserved_mem reserved_mem[MAX_RESERVED_REGIONS];
+ static int reserved_mem_count;
+ 
+@@ -246,6 +246,9 @@ void __init fdt_init_reserved_mem(void)
+ {
+ 	int i;
+ 
++	/* MAX_RESERVED_REGIONS should be bounded by INIT_MEMBLOCK_REGIONS */
++	BUILD_BUG_ON(MAX_RESERVED_REGIONS > INIT_MEMBLOCK_REGIONS);
++
+ 	/* check for overlapping reserved regions */
+ 	__rmem_check_for_overlap();
+ 
+-- 
+1.9.1
