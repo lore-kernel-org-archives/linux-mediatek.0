@@ -1,24 +1,45 @@
-From: Joerg Roedel <joro@8bytes.org>
-Subject: Re: [PATCH v3 00/15] MT8183 IOMMU SUPPORT
-Date: Thu, 22 Nov 2018 14:42:16 +0100
-Message-ID: <20181122134216.GD1586@8bytes.org>
-References: <1542422142-30688-1-git-send-email-yong.wu@mediatek.com>
- <20181122125931.GC1586@8bytes.org>
- <20181122133526.GA13896@arm.com>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [v5, PATCH 2/2] dt-binding: mediatek-dwmac: add binding document
+ for MediaTek MT2712 DWMAC
+Date: Thu, 22 Nov 2018 16:19:32 +0100
+Message-ID: <20181122151932.GD15403@lunn.ch>
+References: <1542882521-18874-1-git-send-email-biao.huang@mediatek.com>
+ <1542882521-18874-3-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20181122133526.GA13896@arm.com>
+In-Reply-To: <1542882521-18874-3-git-send-email-biao.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Will Deacon <will.deacon@arm.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, arnd@arndb.de, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, Arvind Yadav <arvind.yadav.cs@gmail.com>
+To: Biao Huang <biao.huang@mediatek.com>
+Cc: davem@davemloft.net, robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Nov 22, 2018 at 01:35:26PM +0000, Will Deacon wrote:
-> Robin already reviewed the pgtable bits, I think.
+On Thu, Nov 22, 2018 at 06:28:41PM +0800, Biao Huang wrote:
+> The commit adds the device tree binding documentation for the MediaTek DWMAC
+> found on MediaTek MT2712.
+> 
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 
-Right, I missed the tags, sorry.
+> +Optional properties:
+> +- mediatek,tx-delay: TX clock delay macro value. Range is 0~31. Default is 0.
+> +	It should be defined for rgmii/rgmii-rxid/mii interface.
+> +- mediatek,rx-delay: RX clock delay macro value. Range is 0~31. Default is 0.
+> +	It should be defined for rgmii/rgmii-txid/mii/rmii interface.
 
+You have received the same feedback at least twice now, from two
+different maintainers, that the delay should be specified in pS, and
+the driver should figure out what values to place into registers.
 
-Joerg
+You should not ignore feedback like that. If you don't understand the
+feedback, please ask us to explain it. If you don't agree with the
+feedback, you need to argue why you think it is wrong, or why what you
+are doing is better, etc.
+
+We are here to help, but just ignoring us won't get you anywhere.
+
+For the moment:
+
+NACK
+
+	Andrew
