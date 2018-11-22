@@ -1,45 +1,59 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [v5, PATCH 2/2] dt-binding: mediatek-dwmac: add binding document
- for MediaTek MT2712 DWMAC
-Date: Thu, 22 Nov 2018 16:19:32 +0100
-Message-ID: <20181122151932.GD15403@lunn.ch>
-References: <1542882521-18874-1-git-send-email-biao.huang@mediatek.com>
- <1542882521-18874-3-git-send-email-biao.huang@mediatek.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Subject: Re: [PATCH 1/2] gpio: mt7621: report failure of devm_kasprintf()
+Date: Thu, 22 Nov 2018 17:39:30 +0100
+Message-ID: <CAMRc=Mch4+wehvUE8zmofRYYL=PUmKOUJMYFbNvTqQC1C6b+YA@mail.gmail.com>
+References: <1542823573-20228-1-git-send-email-hofrat@osadl.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1542882521-18874-3-git-send-email-biao.huang@mediatek.com>
+In-Reply-To: <1542823573-20228-1-git-send-email-hofrat@osadl.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: davem@davemloft.net, robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com
+To: hofrat@osadl.org
+Cc: Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <bgolaszewski@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, sergio.paracuellos@gmail.com, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Nov 22, 2018 at 06:28:41PM +0800, Biao Huang wrote:
-> The commit adds the device tree binding documentation for the MediaTek DWMAC
-> found on MediaTek MT2712.
-> 
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+=C5=9Br., 21 lis 2018 o 19:13 Nicholas Mc Guire <hofrat@osadl.org> napisa=
+=C5=82(a):
+>
+> kasprintf() may return NULL on failure of internal allocation thus the
+> assigned  label  is not safe if not explicitly checked. On error
+> mediatek_gpio_bank_probe() returns negative values so -ENOMEM in the
+> (unlikely) failure case should be fine here.
+>
+> Signed-off-by: Nicholas Mc Guire <hofrat@osadl.org>
+> Fixes: 4ba9c3afda41 ("gpio: mt7621: Add a driver for MT7621")
+> ---
+>
+> V2: The dev_err() for the unlikely case of the devm_kasprintf()
+>     failing was removed on request from Bartosz Golaszewski
+>     <bgolaszewski@baylibre.com>
+>
+> Problem located with experimental coccinelle script
+>
+> Patch was compile tested with: omega2p_defconfig, SOC_MT7621=3Dy,
+> GPIOLIB=3Dy, GPIO_MT7621=3Dy
+>
+> Patch is against 4.20-rc3 (localversion-next is next-20181121)
+>
+>  drivers/gpio/gpio-mt7621.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/drivers/gpio/gpio-mt7621.c b/drivers/gpio/gpio-mt7621.c
+> index d72af6f..1ec95bc 100644
+> --- a/drivers/gpio/gpio-mt7621.c
+> +++ b/drivers/gpio/gpio-mt7621.c
+> @@ -244,6 +244,8 @@ mediatek_gpio_bank_probe(struct device *dev,
+>         rg->chip.of_xlate =3D mediatek_gpio_xlate;
+>         rg->chip.label =3D devm_kasprintf(dev, GFP_KERNEL, "%s-bank%d",
+>                                         dev_name(dev), bank);
+> +       if (!rg->chip.label)
+> +               return -ENOMEM;
+>
+>         ret =3D devm_gpiochip_add_data(dev, &rg->chip, mtk);
+>         if (ret < 0) {
+> --
+> 2.1.4
+>
 
-> +Optional properties:
-> +- mediatek,tx-delay: TX clock delay macro value. Range is 0~31. Default is 0.
-> +	It should be defined for rgmii/rgmii-rxid/mii interface.
-> +- mediatek,rx-delay: RX clock delay macro value. Range is 0~31. Default is 0.
-> +	It should be defined for rgmii/rgmii-txid/mii/rmii interface.
-
-You have received the same feedback at least twice now, from two
-different maintainers, that the delay should be specified in pS, and
-the driver should figure out what values to place into registers.
-
-You should not ignore feedback like that. If you don't understand the
-feedback, please ask us to explain it. If you don't agree with the
-feedback, you need to argue why you think it is wrong, or why what you
-are doing is better, etc.
-
-We are here to help, but just ignoring us won't get you anywhere.
-
-For the moment:
-
-NACK
-
-	Andrew
+Reviewed-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
