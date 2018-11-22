@@ -1,73 +1,136 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [RFC PATCH] of: make MAX_RESERVED_REGIONS configurable
-Date: Thu, 22 Nov 2018 10:51:28 +0800
-Message-ID: <1542855088.15789.6.camel@mtkswgap22>
-References: <1542787873-8429-1-git-send-email-miles.chen@mediatek.com>
-         <CAL_JsqLGvUYQmCGXLgSO+6kFj2i87dpaTbMGbyu5oMt=eeu35A@mail.gmail.com>
+From: Jjian Zhou <jjian.zhou@mediatek.com>
+Subject: [PATCH] mmc: mediatek: add MT8183 SDIO driver support
+Date: Thu, 22 Nov 2018 15:05:18 +0800
+Message-ID: <1542870318-10731-1-git-send-email-jjian.zhou@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqLGvUYQmCGXLgSO+6kFj2i87dpaTbMGbyu5oMt=eeu35A@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Frank Rowand <frowand.list@gmail.com>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, jjian zhou <jjian.zhou@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Yong Mao <yong.mao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-11-21 at 10:39 -0600, Rob Herring wrote:
-> On Wed, Nov 21, 2018 at 2:11 AM <miles.chen@mediatek.com> wrote:
-> >
-> > From: Miles Chen <miles.chen@mediatek.com>
-> >
-> > When we use more than 32 entries in /resered-memory,
-> > there will be an error message: "not enough space all defined regions.".
-> > We can increase MAX_RESERVED_REGIONS to fix this.
-> >
-> > commit 22f8cc6e3373 ("drivers: of: increase MAX_RESERVED_REGIONS to 32")
-> > increased MAX_RESERVED_REGIONS to 32 but I'm not sure if increasing
-> > MAX_RESERVED_REGIONS to 64 is suitable for everyone.
-> >
-> > In this RFC patch, CONFIG_MAX_OF_RESERVED_REGIONS is added and used as
-> > MAX_RESERVED_REGIONS. Add a sanity test to make sure that
-> > MAX_RESERVED_REGIONS is less than INIT_MEMBLOCK_REGIONS.
-> > Users can configure CONFIG_MAX_OF_RESERVED_REGIONS according to their
-> > need.
-> 
-> I don't want a kconfig option for this. I think it should be dynamic instead.
-> 
-> The current flow is like this:
-> 
-> for each reserved node:
->   - call memblock_reserve
->   - Add info to reserved_mem array
-> 
-> I think we should change it to:
-> 
-> for each reserved node:
->   - call memblock_reserve
->   - count number of nodes
-> 
-> Alloc array using memblock_alloc
-> 
-> for each reserved node:
->    - Add info to reserved_mem array
-> 
+From: jjian zhou <jjian.zhou@mediatek.com>
 
-thanks for your comment.
+MT8183 need SDIO driver. So it need add new code
+to support it.
 
-I reviewed the flow and it might be easier to count the
-nodes and setup array first:
+Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
+---
+ drivers/mmc/host/mtk-sd.c | 51 ++++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 48 insertions(+), 3 deletions(-)
 
-for each reserved node:
-    - count number of nodes
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 6334cc7..3128ee7 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -1114,6 +1114,7 @@ static void msdc_start_command(struct msdc_host *host,
+ 		struct mmc_request *mrq, struct mmc_command *cmd)
+ {
+ 	u32 rawcmd;
++	unsigned long flags;
 
-Alloc array using memblock_alloc
+ 	WARN_ON(host->cmd);
+ 	host->cmd = cmd;
+@@ -1131,7 +1132,12 @@ static void msdc_start_command(struct msdc_host *host,
+ 	cmd->error = 0;
+ 	rawcmd = msdc_cmd_prepare_raw_cmd(host, mrq, cmd);
 
++	if (host->mmc->caps & MMC_CAP_SDIO_IRQ)
++		spin_lock_irqsave(&host->lock, flags);
+ 	sdr_set_bits(host->base + MSDC_INTEN, cmd_ints_mask);
++	if (host->mmc->caps & MMC_CAP_SDIO_IRQ)
++		spin_unlock_irqrestore(&host->lock, flags);
++
+ 	writel(cmd->arg, host->base + SDC_ARG);
+ 	writel(rawcmd, host->base + SDC_CMD);
+ }
+@@ -1351,6 +1357,27 @@ static void msdc_request_timeout(struct work_struct *work)
+ 	}
+ }
 
-for each reserved node:
-   - call memblock_reserve
-   - Add info to reserved_mem array
++static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
++{
++	unsigned long flags;
++	struct msdc_host *host = mmc_priv(mmc);
++
++	if (enb)
++		pm_runtime_get_sync(host->dev);
++
++	spin_lock_irqsave(&host->lock, flags);
++	if (enb)
++		sdr_set_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
++	else
++		sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
++	spin_unlock_irqrestore(&host->lock, flags);
++
++	if (!enb) {
++		pm_runtime_mark_last_busy(host->dev);
++		pm_runtime_put_autosuspend(host->dev);
++	}
++}
++
+ static irqreturn_t msdc_irq(int irq, void *dev_id)
+ {
+ 	struct msdc_host *host = (struct msdc_host *) dev_id;
+@@ -1373,7 +1400,12 @@ static irqreturn_t msdc_irq(int irq, void *dev_id)
+ 		data = host->data;
+ 		spin_unlock_irqrestore(&host->lock, flags);
 
-What do you think?
+-		if (!(events & event_mask))
++		if ((events & event_mask) & MSDC_INT_SDIOIRQ) {
++			msdc_enable_sdio_irq(host->mmc, 0);
++			sdio_signal_irq(host->mmc);
++		}
++
++		if (!(events & (event_mask & ~MSDC_INT_SDIOIRQ)))
+ 			break;
 
-> Rob
+ 		if (!mrq) {
+@@ -1493,8 +1525,11 @@ static void msdc_init_hw(struct msdc_host *host)
+ 	 */
+ 	sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIO);
+
+-	/* disable detect SDIO device interrupt function */
+-	sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
++	/* Config SDIO device detect interrupt function */
++	if (host->mmc->caps & MMC_CAP_SDIO_IRQ)
++		sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
++	else
++		sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+
+ 	/* Configure to default data timeout */
+ 	sdr_set_field(host->base + SDC_CFG, SDC_CFG_DTOC, 3);
+@@ -2013,6 +2048,11 @@ static void msdc_hw_reset(struct mmc_host *mmc)
+ 	sdr_clr_bits(host->base + EMMC_IOCON, 1);
+ }
+
++static void msdc_ack_sdio_irq(struct mmc_host *mmc)
++{
++	msdc_enable_sdio_irq(mmc, 1);
++}
++
+ static const struct mmc_host_ops mt_msdc_ops = {
+ 	.post_req = msdc_post_req,
+ 	.pre_req = msdc_pre_req,
+@@ -2020,6 +2060,8 @@ static void msdc_hw_reset(struct mmc_host *mmc)
+ 	.set_ios = msdc_ops_set_ios,
+ 	.get_ro = mmc_gpio_get_ro,
+ 	.get_cd = mmc_gpio_get_cd,
++	.enable_sdio_irq = msdc_enable_sdio_irq,
++	.ack_sdio_irq = msdc_ack_sdio_irq,
+ 	.start_signal_voltage_switch = msdc_ops_switch_volt,
+ 	.card_busy = msdc_card_busy,
+ 	.execute_tuning = msdc_execute_tuning,
+@@ -2147,6 +2189,9 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 	else
+ 		mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 4095);
+
++	if (mmc->caps & MMC_CAP_SDIO_IRQ) {
++		mmc->caps2 |= MMC_CAP2_SDIO_IRQ_NOTHREAD;
++
+ 	mmc->caps |= MMC_CAP_ERASE | MMC_CAP_CMD23;
+ 	/* MMC core transfer sizes tunable parameters */
+ 	mmc->max_segs = MAX_BD_NUM;
+--
+1.9.1
