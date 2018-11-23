@@ -1,132 +1,422 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 10/15] memory: mtk-smi: Add bus_sel for mt8183
-Date: Fri, 23 Nov 2018 10:59:53 +0800
-Message-ID: <1542941993.15759.11.camel@mhfsdcap03>
-References: <1542422142-30688-1-git-send-email-yong.wu@mediatek.com>
-	<1542422142-30688-11-git-send-email-yong.wu@mediatek.com>
+From: Sean Wang <sean.wang@kernel.org>
+Subject: Re: [v5, PATCH 1/2] net:stmmac: dwmac-mediatek: add support for mt2712
+Date: Thu, 22 Nov 2018 23:04:09 -0800
+Message-ID: <CAGp9LzrdwXqQ+aHtCoKcxKx28xR21hKnpc+ruW4Gt7TyQLffsA@mail.gmail.com>
+References: <1542882521-18874-1-git-send-email-biao.huang@mediatek.com>
+ <1542882521-18874-2-git-send-email-biao.huang@mediatek.com>
+ <CAGp9LzoJTVm4OP+SRWCDk0TUmU5jNMFCsT_yyURXzXxjTF+-=g@mail.gmail.com> <1542939448.24219.95.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1542422142-30688-11-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1542939448.24219.95.camel@mhfsdcap03>
+Sender: linux-kernel-owner@vger.kernel.org
+To: biao.huang@mediatek.com
+Cc: davem@davemloft.net, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, nelson.chang@mediatek.com, Andrew Lunn <andrew@lunn.ch>, netdev@vger.kernel.org, Liguo Zhang <liguo.zhang@mediatek.com>, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, joabreu@synopsys.com, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 2018-11-17 at 10:35 +0800, Yong Wu wrote:
-> There are 2 mmu cells in a M4U HW. we could adjust some larbs entering
-> mmu0 or mmu1 to balance the bandwidth via the smi-common register
-> SMI_BUS_SEL(0x220)(Each larb occupy 2 bits).
-> 
-> In mt8183, For better performance, we switch larb1/2/3/7 to enter
-> mmu1 while the others still keep enter mmu0.
+< ... >
 
-The larb listed here don't match with the code below. I will fix it.
+> > > +       /* select phy interface in top control domain */
+> > > +       switch (plat->phy_mode) {
+> > > +       case PHY_INTERFACE_MODE_MII:
+> > > +               intf_val |= PHY_INTF_MII_GMII;
+> > > +               break;
+> > > +       case PHY_INTERFACE_MODE_RMII:
+> > > +               intf_val |= PHY_INTF_RMII;
+> > > +               intf_val |= rmii_rxc;
+> > how about putting into one line such as intf_val |= (PHY_INTF_RMII | rmii_rxc) ?
+> >
+> ok, will change in next version.
+> > > +               break;
+> > > +       case PHY_INTERFACE_MODE_RGMII:
+> > > +       case PHY_INTERFACE_MODE_RGMII_TXID:
+> > > +       case PHY_INTERFACE_MODE_RGMII_RXID:
+> > > +       case PHY_INTERFACE_MODE_RGMII_ID:
+> > > +               intf_val |= PHY_INTF_RGMII;
+> > > +               break;
+> > > +       default:
+> > > +               dev_err(plat->dev, "phy interface not supported\n");
+> > > +               return -EINVAL;
+> > > +       }
+> > > +
+> > > +       regmap_write(plat->peri_regmap, PERI_ETH_PHY_INTF_SEL, intf_val);
+> > > +
+> > > +       return 0;
+> > > +}
+> > > +
+> > > +static int mt2712_set_delay(struct mediatek_dwmac_plat_data *plat)
+> > > +{
+> > > +       struct mac_delay_struct *mac_delay = &plat->mac_delay;
+> > > +       u32 delay_val = 0;
+> > > +       u32 fine_val = 0;
+> > The same type declaration can be put into the one line
+> >
+> Got it.
+> > > +
+> > > +       switch (plat->phy_mode) {
+> >
+> > There exists some room for code optimization in the switch statement
+> > such as PHY_INTERFACE_MODE_MII and PHY_INTERFACE_MODE_RGMII both are
+> > almost the same and even the configuration for the other PHY modes can
+> > reuse their partial setup. It appears to be better using a common way
+> > to set up various PHY modes.
+> >
+> I'll try define a function to handle it.
+> And how about like this:
+>         static u32 delay_setting(u32 delay, bool inv, u32 en_bit, u32
+> clk_shift, u32 clk_mask, u32 inv_bit) {
+>                 u32 value = 0
+>
+>                 value |= delay ? en_bit : 0;
+>                 value |= (delay << clk_shift) & clk_mask;
+>                 value |= inv ? inv_bit : 0;
+>         }
+>
+>         case PHY_INTERFACE_MODE_MII:
+>                 delay_value |= delay_setting(mac_delay->tx_delay,
+>                                              mac_delay->tx_inv,
+>                                              PHY_DLY_TXC_ENABLE,
+>                                              PHY_DLY_TXC_SHIFT,
+>                                              PHY_DLY_TXC_STAGES,
+>                                              PHY_DLY_TXC_INV);
 
-> 
-> In mt8173 and mt2712, we don't get the performance issue,
-> Keep its default value(0x0), that means all the larbs enter mmu0.
-> 
-> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/memory/mtk-smi.c | 29 ++++++++++++++++++++++++++---
->  1 file changed, 26 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> index 3e6e0a8..e4daabb 100644
-> --- a/drivers/memory/mtk-smi.c
-> +++ b/drivers/memory/mtk-smi.c
-> @@ -49,6 +49,12 @@
->  #define SMI_LARB_NONSEC_CON(id)	(0x380 + ((id) * 4))
->  #define F_MMU_EN		BIT(0)
->  
-> +/* SMI COMMON */
-> +#define SMI_BUS_SEL			0x220
-> +#define SMI_BUS_LARB_SHIFT(larbid)	((larbid) << 1)
-> +/* All are MMU0 defaultly. Only specialize mmu1 here. */
-> +#define F_MMU1_LARB(larbid)		(0x1 << SMI_BUS_LARB_SHIFT(larbid))
-> +
->  enum mtk_smi_gen {
->  	MTK_SMI_GEN1,
->  	MTK_SMI_GEN2
-> @@ -56,6 +62,8 @@ enum mtk_smi_gen {
->  
->  struct mtk_smi_common_plat {
->  	enum mtk_smi_gen gen;
-> +
-> +	u32 bus_sel; /* Balance some larbs to enter mmu0 or mmu1 */
->  };
->  
->  struct mtk_smi_larb_gen {
-> @@ -70,8 +78,8 @@ struct mtk_smi {
->  	struct clk			*clk_apb, *clk_smi;
->  	struct clk			*clk_gals0, *clk_gals1;
->  	struct clk			*clk_async; /*only needed by mt2701*/
-> -	void __iomem			*smi_ao_base;
-> -
-> +	void __iomem			*smi_ao_base; /* only for gen1 */
-> +	void __iomem			*base;	      /* only for gen2 */
->  	const struct mtk_smi_common_plat *plat;
->  };
->  
-> @@ -401,6 +409,12 @@ static int __maybe_unused mtk_smi_larb_suspend(struct device *dev)
->  	.gen = MTK_SMI_GEN2,
->  };
->  
-> +static const struct mtk_smi_common_plat mtk_smi_common_mt8183 = {
-> +	.gen = MTK_SMI_GEN2,
-> +	.bus_sel = F_MMU1_LARB(1) | F_MMU1_LARB(3) | F_MMU1_LARB(4) |
-> +		   F_MMU1_LARB(7),
-> +};
-> +
->  static const struct of_device_id mtk_smi_common_of_ids[] = {
->  	{
->  		.compatible = "mediatek,mt8173-smi-common",
-> @@ -416,7 +430,7 @@ static int __maybe_unused mtk_smi_larb_suspend(struct device *dev)
->  	},
->  	{
->  		.compatible = "mediatek,mt8183-smi-common",
-> -		.data = &mtk_smi_common_gen2,
-> +		.data = &mtk_smi_common_mt8183,
->  	},
->  	{}
->  };
-> @@ -473,6 +487,11 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
->  		ret = clk_prepare_enable(common->clk_async);
->  		if (ret)
->  			return ret;
-> +	} else {
-> +		res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +		common->base = devm_ioremap_resource(dev, res);
-> +		if (IS_ERR(common->base))
-> +			return PTR_ERR(common->base);
->  	}
->  	pm_runtime_enable(dev);
->  	platform_set_drvdata(pdev, common);
-> @@ -488,6 +507,7 @@ static int mtk_smi_common_remove(struct platform_device *pdev)
->  static int __maybe_unused mtk_smi_common_resume(struct device *dev)
->  {
->  	struct mtk_smi *common = dev_get_drvdata(dev);
-> +	u32 bus_sel = common->plat->bus_sel;
->  	int ret;
->  
->  	ret = mtk_smi_clk_enable(common);
-> @@ -495,6 +515,9 @@ static int __maybe_unused mtk_smi_common_resume(struct device *dev)
->  		dev_err(common->dev, "Failed to enable clock(%d).\n", ret);
->  		return ret;
->  	}
-> +
-> +	if (common->plat->gen == MTK_SMI_GEN2 && bus_sel)
-> +		writel(bus_sel, common->base + SMI_BUS_SEL);
->  	return 0;
->  }
->  
+We can reuse FIELD_PREP defined in include/linux/bitfield.h to make up
+of the value instead of creating your own function delay_setting here,
+ and also PHY_DLY_TXC_SHIFT macro can be trimmed while you're using
+FIED_PREP
+
+>                 delay_value |= delay_setting(mac_delay->rx_delay,
+>                                              mac_delay->rx_inv,
+>                                              PHY_DLY_RXC_ENABLE,
+>                                              PHY_DLY_RXC_SHIFT,
+>                                              PHY_DLY_RXC_STAGES,
+>                                              PHY_DLY_RXC_INV);
+>
+>         case PHY_INTERFACE_MODE_RMII:
+>                 if (plat->rmii_rxc) {
+>                      delay_value |= delay_setting(mac_delay->rx_delay,
+>                                                  mac_delay->rx_inv,
+>                                                  PHY_DLY_RXC_ENABLE,
+>                                                  PHY_DLY_RXC_SHIFT,
+>                                                  PHY_DLY_RXC_STAGES,
+>                                                  PHY_DLY_RXC_INV);
+>                     fine_val |= mac_delay->tx_inv ?
+>                                    ETH_RMII_DLY_TX_INV : 0;
+>                 } else {
+>                      delay_value |= delay_setting(mac_delay->rx_delay,
+>                                                  mac_delay->rx_inv,
+
+shoudn't the parametors be mac_delay->tx_delay and mac_delay->tx_inv?
+
+>                                                  PHY_DLY_TXC_ENABLE,
+>                                                  PHY_DLY_TXC_SHIFT,
+>                                                  PHY_DLY_TXC_STAGES,
+>                                                  PHY_DLY_TXC_INV);
+>                     fine_val |= mac_delay->tx_inv ?
+>                                    ETH_RMII_DLY_TX_INV : 0;
+
+if (plat->tx_inv)
+      fine_val = ETH_RMII_DLY_TX_INV;
+the default fine_val is zero so zero assignement can be trimmed when
+!plat-> tx_inv
+
+>                 }
+>         case PHY_INTERFACE_MODE_RGMII:
+>               fine_val = plat->fine_tune ?
+>                           (ETH_FINE_DLY_GTXC | ETH_FINE_DLY_RXC) : 0;
+
+if (plat->fine_tune)
+      fine_val = ETH_FINE_DLY_GTXC | ETH_FINE_DLY_RXC;
+the default fine_val is zero so zero assignement can be trimmed when
+!plat->fine_tune
+
+>               delay_value |= delay_setting(mac_delay->tx_delay,
+>                                            mac_delay->tx_inv,
+>                                            PHY_DLY_GTXC_ENABLE,
+>                                            PHY_DLY_GTXC_SHIFT,
+>                                            PHY_DLY_GTXC_STAGES,
+>                                            PHY_DLY_GTXC_INV);
+>              delay_value |= delay_setting(mac_delay->rx_delay,
+>                                            mac_delay->rx_inv,
+>                                            PHY_DLY_RXC_ENABLE,
+>                                            PHY_DLY_RXC_SHIFT,
+>                                            PHY_DLY_RXC_STAGES,
+>                                            PHY_DLY_RXC_INV);
+>         case PHY_INTERFACE_MODE_RGMII_TXID:
+>               fine_val = plat->fine_tune ? ETH_FINE_DLY_RXC : 0;
+>               delay_value |= delay_setting(mac_delay->rx_delay,
+>                                            mac_delay->rx_inv,
+>                                            PHY_DLY_RXC_ENABLE,
+>                                            PHY_DLY_RXC_SHIFT,
+>                                            PHY_DLY_RXC_STAGES,
+>                                            PHY_DLY_RXC_INV);
+>         case PHY_INTERFACE_MODE_RGMII_RXID:
+>               fine_val = plat->fine_tune ? ETH_FINE_DLY_GTXC : 0;
+>               delay_value |= delay_setting(mac_delay->tx_delay,
+>                                            mac_delay->tx_inv,
+>                                            PHY_DLY_GTXC_ENABLE,
+>                                            PHY_DLY_GTXC_SHIFT,
+>                                            PHY_DLY_GTXC_STAGES,
+>                                            PHY_DLY_GTXC_INV);
+>
+
+phy_mode is used to indicate what phy mode would be tweaked when mac
+is connected to the phy so I thought mac delay can be independent from
+phy internal delay  that means PHY_INTERFACE_MODE_RGMII_RXID and
+PHY_INTERFACE_MODE_RGMII_TXID can apply the same setting as
+PHY_INTERFACE_MODE_RGMII does.
+
+> > > +       case PHY_INTERFACE_MODE_MII:
+> > > +               delay_val |= mac_delay->tx_delay ? PHY_DLY_TXC_ENABLE : 0;
+> > > +               delay_val |= (mac_delay->tx_delay << PHY_DLY_TXC_SHIFT) &
+> > > +                            PHY_DLY_TXC_STAGES;
+> > > +               delay_val |= mac_delay->tx_inv ? PHY_DLY_TXC_INV : 0;
+> > > +               delay_val |= mac_delay->rx_delay ? PHY_DLY_RXC_ENABLE : 0;
+> > > +               delay_val |= (mac_delay->rx_delay << PHY_DLY_RXC_SHIFT) &
+> > > +                            PHY_DLY_RXC_STAGES;
+> > > +               delay_val |= mac_delay->rx_inv ? PHY_DLY_RXC_INV : 0;
+> > > +               break;
+> > > +       case PHY_INTERFACE_MODE_RMII:
+> > > +               if (plat->rmii_rxc) {
+> > > +                       delay_val |= mac_delay->rx_delay ?
+> > > +                                    PHY_DLY_RXC_ENABLE : 0;
+> > > +                       delay_val |= (mac_delay->rx_delay <<
+> > > +                                     PHY_DLY_RXC_SHIFT) & PHY_DLY_RXC_STAGES;
+> > > +                       delay_val |= mac_delay->rx_inv ? PHY_DLY_RXC_INV : 0;
+> > > +                       fine_val |= mac_delay->tx_inv ?
+> > > +                                    ETH_RMII_DLY_TX_INV : 0;
+> > why is fine_val got from tx_inv?
+> >
+> becase the tx inv will inverse the tx clock inside mac relative to
+> reference clock from external phy, and this bit is located in the same
+> register with fine-tune.
+> maybe I should rename fine_val to avoid misunderstanding.
+
+If you add more comments to say that, fine_val remains would be okay
+
+> > > +               } else {
+> > > +                       delay_val |= mac_delay->rx_delay ?
+> > > +                                    PHY_DLY_TXC_ENABLE : 0;
+> > > +                       delay_val |= (mac_delay->rx_delay <<
+> > > +                                    PHY_DLY_TXC_SHIFT) & PHY_DLY_TXC_STAGES;
+> > > +                       delay_val |= mac_delay->rx_inv ? PHY_DLY_TXC_INV : 0;
+> > > +                       fine_val |= mac_delay->tx_inv ?
+> > > +                                    ETH_RMII_DLY_TX_INV : 0;
+> > ditto, why is fine_val got from tx_inv?
+> >
+> same as above. ETH_RMII_DLY_TX_INV is only for RMII, and located in the
+> same register with fine-tune.
+
+adding a fewer comments helps to avoid some confusion
+
+> > > +               }
+> > > +               break;
+> > > +       case PHY_INTERFACE_MODE_RGMII:
+> > > +               fine_val = plat->fine_tune ?
+> > > +                           (ETH_FINE_DLY_GTXC | ETH_FINE_DLY_RXC) : 0;
+> > > +               delay_val |= mac_delay->tx_delay ? PHY_DLY_GTXC_ENABLE : 0;
+> > > +               delay_val |= mac_delay->tx_delay & PHY_DLY_GTXC_STAGES;
+> > > +               delay_val |= mac_delay->tx_inv ? PHY_DLY_GTXC_INV : 0;
+> > > +               delay_val |= mac_delay->rx_delay ? PHY_DLY_RXC_ENABLE : 0;
+> > > +               delay_val |= (mac_delay->rx_delay << PHY_DLY_RXC_SHIFT) &
+> > > +                            PHY_DLY_RXC_STAGES;
+> > > +               delay_val |= mac_delay->rx_inv ? PHY_DLY_RXC_INV : 0;
+> > > +               break;
+> > > +       case PHY_INTERFACE_MODE_RGMII_TXID:
+> > > +               fine_val = plat->fine_tune ? ETH_FINE_DLY_RXC : 0;
+> > > +               delay_val |= mac_delay->rx_delay ? PHY_DLY_RXC_ENABLE : 0;
+> > > +               delay_val |= (mac_delay->rx_delay << PHY_DLY_RXC_SHIFT) &
+> > > +                            PHY_DLY_RXC_STAGES;
+> > > +               delay_val |= mac_delay->rx_inv ? PHY_DLY_RXC_INV : 0;
+> > why is PHY_INTERFACE_MODE_RGMII_TXID applied with *_RXC_* register
+> > bits, not with *_TXC_* bits? I'm a little confused about what path the
+> > register PHY_DLY_RXC_* cause the effects to? MAC to PHY or PHY to MAC?
+> >
+> The PHY_INTERFACE_MODE_RGMII_TXID is defined in
+> Documentation/networking/phy.txt
+> means phy will handle delay in tx path, so mac need handle delay in rx
+> path here.
+
+See the above explains: phy_mode is used to indicate what phy mode
+would be tweaked when mac is connected to the phy so I thought mac
+delay can be independent of phy internal delay that means
+PHY_INTERFACE_MODE_RGMII_RXID and PHY_INTERFACE_MODE_RGMII_TXID can
+apply the same setting as PHY_INTERFACE_MODE_RGMII does.
+
+> > > +               break;
+> > > +       case PHY_INTERFACE_MODE_RGMII_RXID:
+> > > +               fine_val = plat->fine_tune ? ETH_FINE_DLY_GTXC : 0;
+> > > +               delay_val |= mac_delay->tx_delay ? PHY_DLY_GTXC_ENABLE : 0;
+> > > +               delay_val |= mac_delay->tx_delay & PHY_DLY_GTXC_STAGES;
+> > > +               delay_val |= mac_delay->tx_inv ? PHY_DLY_GTXC_INV : 0;
+> > ditto, as the above quetion
+> >
+> Similar answer as above.
+> > > +               break;
+> > > +       case PHY_INTERFACE_MODE_RGMII_ID:
+> > > +               break;
+> > > +       default:
+> > > +               dev_err(plat->dev, "phy interface not supported\n");
+> > > +               return -EINVAL;
+> > > +       }
+> > > +       regmap_write(plat->peri_regmap, PERI_ETH_PHY_DLY, delay_val);
+> > > +       regmap_write(plat->peri_regmap, PERI_ETH_DLY_FINE, fine_val);
+> > > +
+> > > +       return 0;
+> > > +}
+> > > +
+> > > +static const struct mediatek_dwmac_variant mt2712_gmac_variant = {
+> > > +               .dwmac_set_phy_interface = mt2712_set_interface,
+> > > +               .dwmac_set_delay = mt2712_set_delay,
+> > > +               .clk_list = mt2712_dwmac_clk_l,
+> > > +               .num_clks = ARRAY_SIZE(mt2712_dwmac_clk_l),
+> > > +               .dma_bit_mask = 33,
+> > > +               .rx_delay_max = 32,
+> > > +               .tx_delay_max = 32,
+> > > +};
+> > > +
+> > > +static int mediatek_dwmac_config_dt(struct mediatek_dwmac_plat_data *plat)
+> > > +{
+> > > +       u32 tx_delay, rx_delay;
+> > > +
+> > > +       plat->peri_regmap = syscon_regmap_lookup_by_phandle(plat->np, "mediatek,pericfg");
+
+you're also missing the property definition in dt-binding.
+
+> > > +       if (IS_ERR(plat->peri_regmap)) {
+> > > +               dev_err(plat->dev, "Failed to get pericfg syscon\n");
+> > > +               return PTR_ERR(plat->peri_regmap);
+> > > +       }
+> > > +
+> > > +       plat->phy_mode = of_get_phy_mode(plat->np);
+> > > +       if (plat->phy_mode < 0) {
+> > > +               dev_err(plat->dev, "not find phy-mode\n");
+> > > +               return -EINVAL;
+> > > +       }
+> > > +
+> > > +       if (!of_property_read_u32(plat->np, "mediatek,tx-delay", &tx_delay)) {
+> > > +               if (tx_delay < plat->variant->tx_delay_max) {
+> > > +                       plat->mac_delay.tx_delay = tx_delay;
+> > > +               } else {
+> > > +                       dev_err(plat->dev, "Invalid TX clock delay: %d\n", tx_delay);
+> > > +                       return -EINVAL;
+> > > +               }
+> > > +       }
+> > > +
+> > > +       if (!of_property_read_u32(plat->np, "mediatek,rx-delay", &rx_delay)) {
+> > > +               if (rx_delay < plat->variant->rx_delay_max) {
+> > > +                       plat->mac_delay.rx_delay = rx_delay;
+> > > +               } else {
+> > > +                       dev_err(plat->dev, "Invalid RX clock delay: %d\n", rx_delay);
+> > > +                       return -EINVAL;
+> > > +               }
+> > > +       }
+> > > +
+> > > +       plat->mac_delay.tx_inv = of_property_read_bool(plat->np, "mediatek,txc-inverse");
+> > > +       plat->mac_delay.rx_inv = of_property_read_bool(plat->np, "mediatek,rxc-inverse");
+> > > +       plat->fine_tune = of_property_read_bool(plat->np, "mediatek,fine-tune");
+> > > +       plat->rmii_rxc = of_property_read_bool(plat->np, "mediatek,rmii-rxc");
+> > > +
+> > > +       return 0;
+> > > +}
+> > > +
+> > > +static int mediatek_dwmac_clk_init(struct mediatek_dwmac_plat_data *plat)
+> > > +{
+> > > +       const struct mediatek_dwmac_variant *variant = plat->variant;
+> > > +       int num = variant->num_clks;
+> > > +       int i;
+> > put into the same line seems good
+> >
+> ok
+> > > +
+> > > +       plat->clks = devm_kcalloc(plat->dev, num, sizeof(*plat->clks), GFP_KERNEL);
+> > > +       if (!plat->clks)
+> > > +               return -ENOMEM;
+> > > +
+> > > +       for (i = 0; i < num; i++)
+> > > +               plat->clks[i].id = variant->clk_list[i];
+> > > +
+> > > +       return devm_clk_bulk_get(plat->dev, num, plat->clks);
+> > > +}
+> > > +
+> > > +static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
+> > > +{
+> > > +       struct mediatek_dwmac_plat_data *plat = priv;
+> > > +       const struct mediatek_dwmac_variant *variant = plat->variant;
+> > > +       int ret = 0;
+> > zero initialized seems unnecessary
+> >
+> ok, will not initialized here
+> > > +
+> > > +       ret = dma_set_mask_and_coherent(plat->dev, DMA_BIT_MASK(variant->dma_bit_mask));
+> > > +       if (ret) {
+> > > +               dev_err(plat->dev, "No suitable DMA available, err = %d\n", ret);
+> > > +               return ret;
+> > > +       }
+> > > +
+> > > +       ret = variant->dwmac_set_phy_interface(plat);
+> > > +       if (ret) {
+> > > +               dev_err(plat->dev, "failed to set phy interface, err = %d\n", ret);
+> > > +               return ret;
+> > > +       }
+> > > +
+> > > +       ret = variant->dwmac_set_delay(plat);
+> > > +       if (ret) {
+> > > +               dev_err(plat->dev, "failed to set delay value, err = %d\n", ret);
+> > > +               return ret;
+> > > +       }
+> > > +
+> > > +       ret = clk_bulk_prepare_enable(variant->num_clks, plat->clks);
+> > > +       if (ret) {
+> > > +               dev_err(plat->dev, "failed to enable clks, err = %d\n", ret);
+> > > +               return ret;
+> > > +       }
+> > > +
+> > > +       return 0;
+> > > +}
+> > > +
+> > > +static void mediatek_dwmac_exit(struct platform_device *pdev, void *priv)
+> > > +{
+> > > +       struct mediatek_dwmac_plat_data *plat = priv;
+> > > +       const struct mediatek_dwmac_variant *variant = plat->variant;
+> > > +
+> > > +       clk_bulk_disable_unprepare(variant->num_clks, plat->clks);
+> > > +}
+> > > +
+> > > +static int mediatek_dwmac_probe(struct platform_device *pdev)
+> > > +{
+> > > +       struct mediatek_dwmac_plat_data *priv_plat;
+> > > +       struct plat_stmmacenet_data *plat_dat;
+> > > +       struct stmmac_resources stmmac_res;
+> > > +       int ret = 0;
+> > zero initialized seems unnecessary
+> >
+> ok, will not initialized here
+> > > +
+> > > +       priv_plat = devm_kzalloc(&pdev->dev, sizeof(*priv_plat), GFP_KERNEL);
+> > > +       if (!priv_plat)
+> > > +               return -ENOMEM;
+> > > +
+> > > +       priv_plat->variant = of_device_get_match_data(&pdev->dev);
+> > > +       if (!priv_plat->variant) {
+> > > +               dev_err(&pdev->dev, "Missing dwmac-mediatek variant\n");
+> > > +               return -EINVAL;
+> > > +       }
+> > > +
+> > > +       priv_plat->dev = &pdev->dev;
+> > > +       priv_plat->np = pdev->dev.of_node;
+> > > +
+> > > +       ret = mediatek_dwmac_config_dt(priv_plat);
+> > > +       if (ret)
+> > > +               return ret;
+> > > +
+> > > +       ret = mediatek_dwmac_clk_init(priv_plat);
+> > > +       if (ret)
+> > > +               return ret;
+> > > +
+> > > +       ret = stmmac_get_platform_resources(pdev, &stmmac_res);
+> > > +       if (ret)
+> > > +               return ret;
+> > > +
+
+< ... >
