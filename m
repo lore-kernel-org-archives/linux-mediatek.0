@@ -1,422 +1,563 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [v5, PATCH 1/2] net:stmmac: dwmac-mediatek: add support for mt2712
-Date: Thu, 22 Nov 2018 23:04:09 -0800
-Message-ID: <CAGp9LzrdwXqQ+aHtCoKcxKx28xR21hKnpc+ruW4Gt7TyQLffsA@mail.gmail.com>
-References: <1542882521-18874-1-git-send-email-biao.huang@mediatek.com>
- <1542882521-18874-2-git-send-email-biao.huang@mediatek.com>
- <CAGp9LzoJTVm4OP+SRWCDk0TUmU5jNMFCsT_yyURXzXxjTF+-=g@mail.gmail.com> <1542939448.24219.95.camel@mhfsdcap03>
+From: <qii.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] i2c: mediatek: Add driver for MediaTek MT8183 I2C controller
+Date: Fri, 23 Nov 2018 16:05:30 +0800
+Message-ID: <1542960330-28839-1-git-send-email-qii.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1542939448.24219.95.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: biao.huang@mediatek.com
-Cc: davem@davemloft.net, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, nelson.chang@mediatek.com, Andrew Lunn <andrew@lunn.ch>, netdev@vger.kernel.org, Liguo Zhang <liguo.zhang@mediatek.com>, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, joabreu@synopsys.com, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: qii wang <qii.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-< ... >
+From: qii wang <qii.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-> > > +       /* select phy interface in top control domain */
-> > > +       switch (plat->phy_mode) {
-> > > +       case PHY_INTERFACE_MODE_MII:
-> > > +               intf_val |= PHY_INTF_MII_GMII;
-> > > +               break;
-> > > +       case PHY_INTERFACE_MODE_RMII:
-> > > +               intf_val |= PHY_INTF_RMII;
-> > > +               intf_val |= rmii_rxc;
-> > how about putting into one line such as intf_val |= (PHY_INTF_RMII | rmii_rxc) ?
-> >
-> ok, will change in next version.
-> > > +               break;
-> > > +       case PHY_INTERFACE_MODE_RGMII:
-> > > +       case PHY_INTERFACE_MODE_RGMII_TXID:
-> > > +       case PHY_INTERFACE_MODE_RGMII_RXID:
-> > > +       case PHY_INTERFACE_MODE_RGMII_ID:
-> > > +               intf_val |= PHY_INTF_RGMII;
-> > > +               break;
-> > > +       default:
-> > > +               dev_err(plat->dev, "phy interface not supported\n");
-> > > +               return -EINVAL;
-> > > +       }
-> > > +
-> > > +       regmap_write(plat->peri_regmap, PERI_ETH_PHY_INTF_SEL, intf_val);
-> > > +
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +static int mt2712_set_delay(struct mediatek_dwmac_plat_data *plat)
-> > > +{
-> > > +       struct mac_delay_struct *mac_delay = &plat->mac_delay;
-> > > +       u32 delay_val = 0;
-> > > +       u32 fine_val = 0;
-> > The same type declaration can be put into the one line
-> >
-> Got it.
-> > > +
-> > > +       switch (plat->phy_mode) {
-> >
-> > There exists some room for code optimization in the switch statement
-> > such as PHY_INTERFACE_MODE_MII and PHY_INTERFACE_MODE_RGMII both are
-> > almost the same and even the configuration for the other PHY modes can
-> > reuse their partial setup. It appears to be better using a common way
-> > to set up various PHY modes.
-> >
-> I'll try define a function to handle it.
-> And how about like this:
->         static u32 delay_setting(u32 delay, bool inv, u32 en_bit, u32
-> clk_shift, u32 clk_mask, u32 inv_bit) {
->                 u32 value = 0
->
->                 value |= delay ? en_bit : 0;
->                 value |= (delay << clk_shift) & clk_mask;
->                 value |= inv ? inv_bit : 0;
->         }
->
->         case PHY_INTERFACE_MODE_MII:
->                 delay_value |= delay_setting(mac_delay->tx_delay,
->                                              mac_delay->tx_inv,
->                                              PHY_DLY_TXC_ENABLE,
->                                              PHY_DLY_TXC_SHIFT,
->                                              PHY_DLY_TXC_STAGES,
->                                              PHY_DLY_TXC_INV);
+Add mediatek MT8183 I2C controller driver. Compare to I2C controller
+of earlier mediatek SoC, MT8183 has different registers, offsets, clock,
+and add multi-user function.
 
-We can reuse FIELD_PREP defined in include/linux/bitfield.h to make up
-of the value instead of creating your own function delay_setting here,
- and also PHY_DLY_TXC_SHIFT macro can be trimmed while you're using
-FIED_PREP
+Change-Id: I6027787c978f1f2e4a923095bfc46e971879d1a6
+Signed-off-by: qii wang <qii.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/i2c/busses/i2c-mt65xx.c |  279 ++++++++++++++++++++++++++++++---------
+ 1 file changed, 214 insertions(+), 65 deletions(-)
 
->                 delay_value |= delay_setting(mac_delay->rx_delay,
->                                              mac_delay->rx_inv,
->                                              PHY_DLY_RXC_ENABLE,
->                                              PHY_DLY_RXC_SHIFT,
->                                              PHY_DLY_RXC_STAGES,
->                                              PHY_DLY_RXC_INV);
->
->         case PHY_INTERFACE_MODE_RMII:
->                 if (plat->rmii_rxc) {
->                      delay_value |= delay_setting(mac_delay->rx_delay,
->                                                  mac_delay->rx_inv,
->                                                  PHY_DLY_RXC_ENABLE,
->                                                  PHY_DLY_RXC_SHIFT,
->                                                  PHY_DLY_RXC_STAGES,
->                                                  PHY_DLY_RXC_INV);
->                     fine_val |= mac_delay->tx_inv ?
->                                    ETH_RMII_DLY_TX_INV : 0;
->                 } else {
->                      delay_value |= delay_setting(mac_delay->rx_delay,
->                                                  mac_delay->rx_inv,
-
-shoudn't the parametors be mac_delay->tx_delay and mac_delay->tx_inv?
-
->                                                  PHY_DLY_TXC_ENABLE,
->                                                  PHY_DLY_TXC_SHIFT,
->                                                  PHY_DLY_TXC_STAGES,
->                                                  PHY_DLY_TXC_INV);
->                     fine_val |= mac_delay->tx_inv ?
->                                    ETH_RMII_DLY_TX_INV : 0;
-
-if (plat->tx_inv)
-      fine_val = ETH_RMII_DLY_TX_INV;
-the default fine_val is zero so zero assignement can be trimmed when
-!plat-> tx_inv
-
->                 }
->         case PHY_INTERFACE_MODE_RGMII:
->               fine_val = plat->fine_tune ?
->                           (ETH_FINE_DLY_GTXC | ETH_FINE_DLY_RXC) : 0;
-
-if (plat->fine_tune)
-      fine_val = ETH_FINE_DLY_GTXC | ETH_FINE_DLY_RXC;
-the default fine_val is zero so zero assignement can be trimmed when
-!plat->fine_tune
-
->               delay_value |= delay_setting(mac_delay->tx_delay,
->                                            mac_delay->tx_inv,
->                                            PHY_DLY_GTXC_ENABLE,
->                                            PHY_DLY_GTXC_SHIFT,
->                                            PHY_DLY_GTXC_STAGES,
->                                            PHY_DLY_GTXC_INV);
->              delay_value |= delay_setting(mac_delay->rx_delay,
->                                            mac_delay->rx_inv,
->                                            PHY_DLY_RXC_ENABLE,
->                                            PHY_DLY_RXC_SHIFT,
->                                            PHY_DLY_RXC_STAGES,
->                                            PHY_DLY_RXC_INV);
->         case PHY_INTERFACE_MODE_RGMII_TXID:
->               fine_val = plat->fine_tune ? ETH_FINE_DLY_RXC : 0;
->               delay_value |= delay_setting(mac_delay->rx_delay,
->                                            mac_delay->rx_inv,
->                                            PHY_DLY_RXC_ENABLE,
->                                            PHY_DLY_RXC_SHIFT,
->                                            PHY_DLY_RXC_STAGES,
->                                            PHY_DLY_RXC_INV);
->         case PHY_INTERFACE_MODE_RGMII_RXID:
->               fine_val = plat->fine_tune ? ETH_FINE_DLY_GTXC : 0;
->               delay_value |= delay_setting(mac_delay->tx_delay,
->                                            mac_delay->tx_inv,
->                                            PHY_DLY_GTXC_ENABLE,
->                                            PHY_DLY_GTXC_SHIFT,
->                                            PHY_DLY_GTXC_STAGES,
->                                            PHY_DLY_GTXC_INV);
->
-
-phy_mode is used to indicate what phy mode would be tweaked when mac
-is connected to the phy so I thought mac delay can be independent from
-phy internal delay  that means PHY_INTERFACE_MODE_RGMII_RXID and
-PHY_INTERFACE_MODE_RGMII_TXID can apply the same setting as
-PHY_INTERFACE_MODE_RGMII does.
-
-> > > +       case PHY_INTERFACE_MODE_MII:
-> > > +               delay_val |= mac_delay->tx_delay ? PHY_DLY_TXC_ENABLE : 0;
-> > > +               delay_val |= (mac_delay->tx_delay << PHY_DLY_TXC_SHIFT) &
-> > > +                            PHY_DLY_TXC_STAGES;
-> > > +               delay_val |= mac_delay->tx_inv ? PHY_DLY_TXC_INV : 0;
-> > > +               delay_val |= mac_delay->rx_delay ? PHY_DLY_RXC_ENABLE : 0;
-> > > +               delay_val |= (mac_delay->rx_delay << PHY_DLY_RXC_SHIFT) &
-> > > +                            PHY_DLY_RXC_STAGES;
-> > > +               delay_val |= mac_delay->rx_inv ? PHY_DLY_RXC_INV : 0;
-> > > +               break;
-> > > +       case PHY_INTERFACE_MODE_RMII:
-> > > +               if (plat->rmii_rxc) {
-> > > +                       delay_val |= mac_delay->rx_delay ?
-> > > +                                    PHY_DLY_RXC_ENABLE : 0;
-> > > +                       delay_val |= (mac_delay->rx_delay <<
-> > > +                                     PHY_DLY_RXC_SHIFT) & PHY_DLY_RXC_STAGES;
-> > > +                       delay_val |= mac_delay->rx_inv ? PHY_DLY_RXC_INV : 0;
-> > > +                       fine_val |= mac_delay->tx_inv ?
-> > > +                                    ETH_RMII_DLY_TX_INV : 0;
-> > why is fine_val got from tx_inv?
-> >
-> becase the tx inv will inverse the tx clock inside mac relative to
-> reference clock from external phy, and this bit is located in the same
-> register with fine-tune.
-> maybe I should rename fine_val to avoid misunderstanding.
-
-If you add more comments to say that, fine_val remains would be okay
-
-> > > +               } else {
-> > > +                       delay_val |= mac_delay->rx_delay ?
-> > > +                                    PHY_DLY_TXC_ENABLE : 0;
-> > > +                       delay_val |= (mac_delay->rx_delay <<
-> > > +                                    PHY_DLY_TXC_SHIFT) & PHY_DLY_TXC_STAGES;
-> > > +                       delay_val |= mac_delay->rx_inv ? PHY_DLY_TXC_INV : 0;
-> > > +                       fine_val |= mac_delay->tx_inv ?
-> > > +                                    ETH_RMII_DLY_TX_INV : 0;
-> > ditto, why is fine_val got from tx_inv?
-> >
-> same as above. ETH_RMII_DLY_TX_INV is only for RMII, and located in the
-> same register with fine-tune.
-
-adding a fewer comments helps to avoid some confusion
-
-> > > +               }
-> > > +               break;
-> > > +       case PHY_INTERFACE_MODE_RGMII:
-> > > +               fine_val = plat->fine_tune ?
-> > > +                           (ETH_FINE_DLY_GTXC | ETH_FINE_DLY_RXC) : 0;
-> > > +               delay_val |= mac_delay->tx_delay ? PHY_DLY_GTXC_ENABLE : 0;
-> > > +               delay_val |= mac_delay->tx_delay & PHY_DLY_GTXC_STAGES;
-> > > +               delay_val |= mac_delay->tx_inv ? PHY_DLY_GTXC_INV : 0;
-> > > +               delay_val |= mac_delay->rx_delay ? PHY_DLY_RXC_ENABLE : 0;
-> > > +               delay_val |= (mac_delay->rx_delay << PHY_DLY_RXC_SHIFT) &
-> > > +                            PHY_DLY_RXC_STAGES;
-> > > +               delay_val |= mac_delay->rx_inv ? PHY_DLY_RXC_INV : 0;
-> > > +               break;
-> > > +       case PHY_INTERFACE_MODE_RGMII_TXID:
-> > > +               fine_val = plat->fine_tune ? ETH_FINE_DLY_RXC : 0;
-> > > +               delay_val |= mac_delay->rx_delay ? PHY_DLY_RXC_ENABLE : 0;
-> > > +               delay_val |= (mac_delay->rx_delay << PHY_DLY_RXC_SHIFT) &
-> > > +                            PHY_DLY_RXC_STAGES;
-> > > +               delay_val |= mac_delay->rx_inv ? PHY_DLY_RXC_INV : 0;
-> > why is PHY_INTERFACE_MODE_RGMII_TXID applied with *_RXC_* register
-> > bits, not with *_TXC_* bits? I'm a little confused about what path the
-> > register PHY_DLY_RXC_* cause the effects to? MAC to PHY or PHY to MAC?
-> >
-> The PHY_INTERFACE_MODE_RGMII_TXID is defined in
-> Documentation/networking/phy.txt
-> means phy will handle delay in tx path, so mac need handle delay in rx
-> path here.
-
-See the above explains: phy_mode is used to indicate what phy mode
-would be tweaked when mac is connected to the phy so I thought mac
-delay can be independent of phy internal delay that means
-PHY_INTERFACE_MODE_RGMII_RXID and PHY_INTERFACE_MODE_RGMII_TXID can
-apply the same setting as PHY_INTERFACE_MODE_RGMII does.
-
-> > > +               break;
-> > > +       case PHY_INTERFACE_MODE_RGMII_RXID:
-> > > +               fine_val = plat->fine_tune ? ETH_FINE_DLY_GTXC : 0;
-> > > +               delay_val |= mac_delay->tx_delay ? PHY_DLY_GTXC_ENABLE : 0;
-> > > +               delay_val |= mac_delay->tx_delay & PHY_DLY_GTXC_STAGES;
-> > > +               delay_val |= mac_delay->tx_inv ? PHY_DLY_GTXC_INV : 0;
-> > ditto, as the above quetion
-> >
-> Similar answer as above.
-> > > +               break;
-> > > +       case PHY_INTERFACE_MODE_RGMII_ID:
-> > > +               break;
-> > > +       default:
-> > > +               dev_err(plat->dev, "phy interface not supported\n");
-> > > +               return -EINVAL;
-> > > +       }
-> > > +       regmap_write(plat->peri_regmap, PERI_ETH_PHY_DLY, delay_val);
-> > > +       regmap_write(plat->peri_regmap, PERI_ETH_DLY_FINE, fine_val);
-> > > +
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +static const struct mediatek_dwmac_variant mt2712_gmac_variant = {
-> > > +               .dwmac_set_phy_interface = mt2712_set_interface,
-> > > +               .dwmac_set_delay = mt2712_set_delay,
-> > > +               .clk_list = mt2712_dwmac_clk_l,
-> > > +               .num_clks = ARRAY_SIZE(mt2712_dwmac_clk_l),
-> > > +               .dma_bit_mask = 33,
-> > > +               .rx_delay_max = 32,
-> > > +               .tx_delay_max = 32,
-> > > +};
-> > > +
-> > > +static int mediatek_dwmac_config_dt(struct mediatek_dwmac_plat_data *plat)
-> > > +{
-> > > +       u32 tx_delay, rx_delay;
-> > > +
-> > > +       plat->peri_regmap = syscon_regmap_lookup_by_phandle(plat->np, "mediatek,pericfg");
-
-you're also missing the property definition in dt-binding.
-
-> > > +       if (IS_ERR(plat->peri_regmap)) {
-> > > +               dev_err(plat->dev, "Failed to get pericfg syscon\n");
-> > > +               return PTR_ERR(plat->peri_regmap);
-> > > +       }
-> > > +
-> > > +       plat->phy_mode = of_get_phy_mode(plat->np);
-> > > +       if (plat->phy_mode < 0) {
-> > > +               dev_err(plat->dev, "not find phy-mode\n");
-> > > +               return -EINVAL;
-> > > +       }
-> > > +
-> > > +       if (!of_property_read_u32(plat->np, "mediatek,tx-delay", &tx_delay)) {
-> > > +               if (tx_delay < plat->variant->tx_delay_max) {
-> > > +                       plat->mac_delay.tx_delay = tx_delay;
-> > > +               } else {
-> > > +                       dev_err(plat->dev, "Invalid TX clock delay: %d\n", tx_delay);
-> > > +                       return -EINVAL;
-> > > +               }
-> > > +       }
-> > > +
-> > > +       if (!of_property_read_u32(plat->np, "mediatek,rx-delay", &rx_delay)) {
-> > > +               if (rx_delay < plat->variant->rx_delay_max) {
-> > > +                       plat->mac_delay.rx_delay = rx_delay;
-> > > +               } else {
-> > > +                       dev_err(plat->dev, "Invalid RX clock delay: %d\n", rx_delay);
-> > > +                       return -EINVAL;
-> > > +               }
-> > > +       }
-> > > +
-> > > +       plat->mac_delay.tx_inv = of_property_read_bool(plat->np, "mediatek,txc-inverse");
-> > > +       plat->mac_delay.rx_inv = of_property_read_bool(plat->np, "mediatek,rxc-inverse");
-> > > +       plat->fine_tune = of_property_read_bool(plat->np, "mediatek,fine-tune");
-> > > +       plat->rmii_rxc = of_property_read_bool(plat->np, "mediatek,rmii-rxc");
-> > > +
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +static int mediatek_dwmac_clk_init(struct mediatek_dwmac_plat_data *plat)
-> > > +{
-> > > +       const struct mediatek_dwmac_variant *variant = plat->variant;
-> > > +       int num = variant->num_clks;
-> > > +       int i;
-> > put into the same line seems good
-> >
-> ok
-> > > +
-> > > +       plat->clks = devm_kcalloc(plat->dev, num, sizeof(*plat->clks), GFP_KERNEL);
-> > > +       if (!plat->clks)
-> > > +               return -ENOMEM;
-> > > +
-> > > +       for (i = 0; i < num; i++)
-> > > +               plat->clks[i].id = variant->clk_list[i];
-> > > +
-> > > +       return devm_clk_bulk_get(plat->dev, num, plat->clks);
-> > > +}
-> > > +
-> > > +static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
-> > > +{
-> > > +       struct mediatek_dwmac_plat_data *plat = priv;
-> > > +       const struct mediatek_dwmac_variant *variant = plat->variant;
-> > > +       int ret = 0;
-> > zero initialized seems unnecessary
-> >
-> ok, will not initialized here
-> > > +
-> > > +       ret = dma_set_mask_and_coherent(plat->dev, DMA_BIT_MASK(variant->dma_bit_mask));
-> > > +       if (ret) {
-> > > +               dev_err(plat->dev, "No suitable DMA available, err = %d\n", ret);
-> > > +               return ret;
-> > > +       }
-> > > +
-> > > +       ret = variant->dwmac_set_phy_interface(plat);
-> > > +       if (ret) {
-> > > +               dev_err(plat->dev, "failed to set phy interface, err = %d\n", ret);
-> > > +               return ret;
-> > > +       }
-> > > +
-> > > +       ret = variant->dwmac_set_delay(plat);
-> > > +       if (ret) {
-> > > +               dev_err(plat->dev, "failed to set delay value, err = %d\n", ret);
-> > > +               return ret;
-> > > +       }
-> > > +
-> > > +       ret = clk_bulk_prepare_enable(variant->num_clks, plat->clks);
-> > > +       if (ret) {
-> > > +               dev_err(plat->dev, "failed to enable clks, err = %d\n", ret);
-> > > +               return ret;
-> > > +       }
-> > > +
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +static void mediatek_dwmac_exit(struct platform_device *pdev, void *priv)
-> > > +{
-> > > +       struct mediatek_dwmac_plat_data *plat = priv;
-> > > +       const struct mediatek_dwmac_variant *variant = plat->variant;
-> > > +
-> > > +       clk_bulk_disable_unprepare(variant->num_clks, plat->clks);
-> > > +}
-> > > +
-> > > +static int mediatek_dwmac_probe(struct platform_device *pdev)
-> > > +{
-> > > +       struct mediatek_dwmac_plat_data *priv_plat;
-> > > +       struct plat_stmmacenet_data *plat_dat;
-> > > +       struct stmmac_resources stmmac_res;
-> > > +       int ret = 0;
-> > zero initialized seems unnecessary
-> >
-> ok, will not initialized here
-> > > +
-> > > +       priv_plat = devm_kzalloc(&pdev->dev, sizeof(*priv_plat), GFP_KERNEL);
-> > > +       if (!priv_plat)
-> > > +               return -ENOMEM;
-> > > +
-> > > +       priv_plat->variant = of_device_get_match_data(&pdev->dev);
-> > > +       if (!priv_plat->variant) {
-> > > +               dev_err(&pdev->dev, "Missing dwmac-mediatek variant\n");
-> > > +               return -EINVAL;
-> > > +       }
-> > > +
-> > > +       priv_plat->dev = &pdev->dev;
-> > > +       priv_plat->np = pdev->dev.of_node;
-> > > +
-> > > +       ret = mediatek_dwmac_config_dt(priv_plat);
-> > > +       if (ret)
-> > > +               return ret;
-> > > +
-> > > +       ret = mediatek_dwmac_clk_init(priv_plat);
-> > > +       if (ret)
-> > > +               return ret;
-> > > +
-> > > +       ret = stmmac_get_platform_resources(pdev, &stmmac_res);
-> > > +       if (ret)
-> > > +               return ret;
-> > > +
-
-< ... >
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index a74ef76..5b515c8 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -35,22 +35,26 @@
+ #include <linux/slab.h>
+ 
+ #define I2C_RS_TRANSFER			(1 << 4)
++#define I2C_ARB_LOST			(1 << 3)
+ #define I2C_HS_NACKERR			(1 << 2)
+ #define I2C_ACKERR			(1 << 1)
+ #define I2C_TRANSAC_COMP		(1 << 0)
+ #define I2C_TRANSAC_START		(1 << 0)
++#define I2C_RESUME_ARBIT		(1 << 1)
+ #define I2C_RS_MUL_CNFG			(1 << 15)
+ #define I2C_RS_MUL_TRIG			(1 << 14)
+ #define I2C_DCM_DISABLE			0x0000
+ #define I2C_IO_CONFIG_OPEN_DRAIN	0x0003
+ #define I2C_IO_CONFIG_PUSH_PULL		0x0000
+ #define I2C_SOFT_RST			0x0001
+-#define I2C_FIFO_ADDR_CLR		0x0001
++#define I2C_FIFO_ADDR_CLR		0x0003
++#define I2C_HFIFO_DATA			0x8208
++#define I2C_FIFO_ADDR_CLR_MCH		0x0004
+ #define I2C_DELAY_LEN			0x0002
+ #define I2C_ST_START_CON		0x8001
+ #define I2C_FS_START_CON		0x1800
+ #define I2C_TIME_CLR_VALUE		0x0000
+-#define I2C_TIME_DEFAULT_VALUE		0x0003
++#define I2C_TIME_DEFAULT_VALUE		0x0083
+ #define I2C_WRRD_TRANAC_VALUE		0x0002
+ #define I2C_RD_TRANAC_VALUE		0x0001
+ 
+@@ -76,6 +80,8 @@
+ #define I2C_CONTROL_DIR_CHANGE          (0x1 << 4)
+ #define I2C_CONTROL_ACKERR_DET_EN       (0x1 << 5)
+ #define I2C_CONTROL_TRANSFER_LEN_CHANGE (0x1 << 6)
++#define I2C_CONTROL_DMAACK_EN           (0x1 << 8)
++#define I2C_CONTROL_ASYNC_MODE          (0x1 << 9)
+ #define I2C_CONTROL_WRAPPER             (0x1 << 0)
+ 
+ #define I2C_DRV_NAME		"i2c-mt65xx"
+@@ -106,34 +112,104 @@ enum mtk_trans_op {
+ };
+ 
+ enum I2C_REGS_OFFSET {
+-	OFFSET_DATA_PORT = 0x0,
+-	OFFSET_SLAVE_ADDR = 0x04,
+-	OFFSET_INTR_MASK = 0x08,
+-	OFFSET_INTR_STAT = 0x0c,
+-	OFFSET_CONTROL = 0x10,
+-	OFFSET_TRANSFER_LEN = 0x14,
+-	OFFSET_TRANSAC_LEN = 0x18,
+-	OFFSET_DELAY_LEN = 0x1c,
+-	OFFSET_TIMING = 0x20,
+-	OFFSET_START = 0x24,
+-	OFFSET_EXT_CONF = 0x28,
+-	OFFSET_FIFO_STAT = 0x30,
+-	OFFSET_FIFO_THRESH = 0x34,
+-	OFFSET_FIFO_ADDR_CLR = 0x38,
+-	OFFSET_IO_CONFIG = 0x40,
+-	OFFSET_RSV_DEBUG = 0x44,
+-	OFFSET_HS = 0x48,
+-	OFFSET_SOFTRESET = 0x50,
+-	OFFSET_DCM_EN = 0x54,
+-	OFFSET_PATH_DIR = 0x60,
+-	OFFSET_DEBUGSTAT = 0x64,
+-	OFFSET_DEBUGCTRL = 0x68,
+-	OFFSET_TRANSFER_LEN_AUX = 0x6c,
+-	OFFSET_CLOCK_DIV = 0x70,
++	OFFSET_DATA_PORT,
++	OFFSET_SLAVE_ADDR,
++	OFFSET_INTR_MASK,
++	OFFSET_INTR_STAT,
++	OFFSET_CONTROL,
++	OFFSET_TRANSFER_LEN,
++	OFFSET_TRANSAC_LEN,
++	OFFSET_DELAY_LEN,
++	OFFSET_TIMING,
++	OFFSET_START,
++	OFFSET_EXT_CONF,
++	OFFSET_FIFO_STAT,
++	OFFSET_FIFO_THRESH,
++	OFFSET_FIFO_ADDR_CLR,
++	OFFSET_IO_CONFIG,
++	OFFSET_RSV_DEBUG,
++	OFFSET_HS,
++	OFFSET_SOFTRESET,
++	OFFSET_DCM_EN,
++	OFFSET_PATH_DIR,
++	OFFSET_DEBUGSTAT,
++	OFFSET_DEBUGCTRL,
++	OFFSET_TRANSFER_LEN_AUX,
++	OFFSET_CLOCK_DIV,
++	/* MT8183 only regs */
++	OFFSET_LTIMING,
++	OFFSET_DATA_TIMING,
++	OFFSET_MCU_INTR,
++	OFFSET_HW_TIMEOUT,
++	OFFSET_HFIFO_DATA,
++	OFFSET_HFIFO_STAT,
++	OFFSET_MULTI_DMA,
++	OFFSET_ROLLBACK,
++};
++
++static const u16 mt_i2c_regs_v1[] = {
++	[OFFSET_DATA_PORT] = 0x0,
++	[OFFSET_SLAVE_ADDR] = 0x4,
++	[OFFSET_INTR_MASK] = 0x8,
++	[OFFSET_INTR_STAT] = 0xc,
++	[OFFSET_CONTROL] = 0x10,
++	[OFFSET_TRANSFER_LEN] = 0x14,
++	[OFFSET_TRANSAC_LEN] = 0x18,
++	[OFFSET_DELAY_LEN] = 0x1c,
++	[OFFSET_TIMING] = 0x20,
++	[OFFSET_START] = 0x24,
++	[OFFSET_EXT_CONF] = 0x28,
++	[OFFSET_FIFO_STAT] = 0x30,
++	[OFFSET_FIFO_THRESH] = 0x34,
++	[OFFSET_FIFO_ADDR_CLR] = 0x38,
++	[OFFSET_IO_CONFIG] = 0x40,
++	[OFFSET_RSV_DEBUG] = 0x44,
++	[OFFSET_HS] = 0x48,
++	[OFFSET_SOFTRESET] = 0x50,
++	[OFFSET_DCM_EN] = 0x54,
++	[OFFSET_PATH_DIR] = 0x60,
++	[OFFSET_DEBUGSTAT] = 0x64,
++	[OFFSET_DEBUGCTRL] = 0x68,
++	[OFFSET_TRANSFER_LEN_AUX] = 0x6c,
++	[OFFSET_CLOCK_DIV] = 0x70,
++};
++
++static const u16 mt_i2c_regs_v2[] = {
++	[OFFSET_DATA_PORT] = 0x0,
++	[OFFSET_SLAVE_ADDR] = 0x4,
++	[OFFSET_INTR_MASK] = 0x8,
++	[OFFSET_INTR_STAT] = 0xc,
++	[OFFSET_CONTROL] = 0x10,
++	[OFFSET_TRANSFER_LEN] = 0x14,
++	[OFFSET_TRANSAC_LEN] = 0x18,
++	[OFFSET_DELAY_LEN] = 0x1c,
++	[OFFSET_TIMING] = 0x20,
++	[OFFSET_START] = 0x24,
++	[OFFSET_EXT_CONF] = 0x28,
++	[OFFSET_LTIMING] = 0x2c,
++	[OFFSET_HS] = 0x30,
++	[OFFSET_IO_CONFIG] = 0x34,
++	[OFFSET_FIFO_ADDR_CLR] = 0x38,
++	[OFFSET_DATA_TIMING] = 0x3c,
++	[OFFSET_MCU_INTR] = 0x40,
++	[OFFSET_TRANSFER_LEN_AUX] = 0x44,
++	[OFFSET_CLOCK_DIV] = 0x48,
++	[OFFSET_HW_TIMEOUT] = 0x4c,
++	[OFFSET_SOFTRESET] = 0x50,
++	[OFFSET_HFIFO_DATA] = 0x70,
++	[OFFSET_DEBUGSTAT] = 0xe0,
++	[OFFSET_DEBUGCTRL] = 0xe8,
++	[OFFSET_FIFO_STAT] = 0xf4,
++	[OFFSET_FIFO_THRESH] = 0xf8,
++	[OFFSET_HFIFO_STAT] = 0xfc,
++	[OFFSET_DCM_EN] = 0xf88,
++	[OFFSET_MULTI_DMA] = 0xf8c,
++	[OFFSET_ROLLBACK] = 0xf98,
+ };
+ 
+ struct mtk_i2c_compatible {
+ 	const struct i2c_adapter_quirks *quirks;
++	const u16 *regs;
+ 	unsigned char pmic_i2c: 1;
+ 	unsigned char dcm: 1;
+ 	unsigned char auto_restart: 1;
+@@ -153,8 +229,10 @@ struct mtk_i2c {
+ 	struct clk *clk_main;		/* main clock for i2c bus */
+ 	struct clk *clk_dma;		/* DMA clock for i2c via DMA */
+ 	struct clk *clk_pmic;		/* PMIC clock for i2c from PMIC */
++	struct clk *clk_arb;		/* Arbitrator clock for i2c */
+ 	bool have_pmic;			/* can use i2c pins from PMIC */
+ 	bool use_push_pull;		/* IO config push-pull mode */
++	u32 ch_offset;			/* i2c multi-user channel offset */
+ 
+ 	u16 irq_stat;			/* interrupt status */
+ 	unsigned int clk_src_div;
+@@ -162,6 +240,7 @@ struct mtk_i2c {
+ 	enum mtk_trans_op op;
+ 	u16 timing_reg;
+ 	u16 high_speed_reg;
++	u16 ltiming_reg;
+ 	unsigned char auto_restart;
+ 	bool ignore_restart_irq;
+ 	const struct mtk_i2c_compatible *dev_comp;
+@@ -181,6 +260,7 @@ struct mtk_i2c {
+ };
+ 
+ static const struct mtk_i2c_compatible mt2712_compat = {
++	.regs = mt_i2c_regs_v1,
+ 	.pmic_i2c = 0,
+ 	.dcm = 1,
+ 	.auto_restart = 1,
+@@ -191,6 +271,7 @@ struct mtk_i2c {
+ 
+ static const struct mtk_i2c_compatible mt6577_compat = {
+ 	.quirks = &mt6577_i2c_quirks,
++	.regs = mt_i2c_regs_v1,
+ 	.pmic_i2c = 0,
+ 	.dcm = 1,
+ 	.auto_restart = 0,
+@@ -201,6 +282,7 @@ struct mtk_i2c {
+ 
+ static const struct mtk_i2c_compatible mt6589_compat = {
+ 	.quirks = &mt6577_i2c_quirks,
++	.regs = mt_i2c_regs_v1,
+ 	.pmic_i2c = 1,
+ 	.dcm = 0,
+ 	.auto_restart = 0,
+@@ -211,6 +293,7 @@ struct mtk_i2c {
+ 
+ static const struct mtk_i2c_compatible mt7622_compat = {
+ 	.quirks = &mt7622_i2c_quirks,
++	.regs = mt_i2c_regs_v1,
+ 	.pmic_i2c = 0,
+ 	.dcm = 1,
+ 	.auto_restart = 1,
+@@ -220,6 +303,7 @@ struct mtk_i2c {
+ };
+ 
+ static const struct mtk_i2c_compatible mt8173_compat = {
++	.regs = mt_i2c_regs_v1,
+ 	.pmic_i2c = 0,
+ 	.dcm = 1,
+ 	.auto_restart = 1,
+@@ -228,16 +312,38 @@ struct mtk_i2c {
+ 	.timing_adjust = 0,
+ };
+ 
++static const struct mtk_i2c_compatible mt8183_compat = {
++	.regs = mt_i2c_regs_v2,
++	.pmic_i2c = 0,
++	.dcm = 0,
++	.auto_restart = 1,
++	.aux_len_reg = 1,
++	.support_33bits = 1,
++	.timing_adjust = 1,
++};
++
+ static const struct of_device_id mtk_i2c_of_match[] = {
+ 	{ .compatible = "mediatek,mt2712-i2c", .data = &mt2712_compat },
+ 	{ .compatible = "mediatek,mt6577-i2c", .data = &mt6577_compat },
+ 	{ .compatible = "mediatek,mt6589-i2c", .data = &mt6589_compat },
+ 	{ .compatible = "mediatek,mt7622-i2c", .data = &mt7622_compat },
+ 	{ .compatible = "mediatek,mt8173-i2c", .data = &mt8173_compat },
++	{ .compatible = "mediatek,mt8183-i2c", .data = &mt8183_compat },
+ 	{}
+ };
+ MODULE_DEVICE_TABLE(of, mtk_i2c_of_match);
+ 
++static u16 mtk_i2c_readw(struct mtk_i2c *i2c, enum I2C_REGS_OFFSET reg)
++{
++	return readw(i2c->base + i2c->ch_offset + i2c->dev_comp->regs[reg]);
++}
++
++static void mtk_i2c_writew(struct mtk_i2c *i2c, u16 val,
++			   enum I2C_REGS_OFFSET reg)
++{
++	writew(val, i2c->base + i2c->ch_offset + i2c->dev_comp->regs[reg]);
++}
++
+ static int mtk_i2c_clock_enable(struct mtk_i2c *i2c)
+ {
+ 	int ret;
+@@ -255,8 +361,18 @@ static int mtk_i2c_clock_enable(struct mtk_i2c *i2c)
+ 		if (ret)
+ 			goto err_pmic;
+ 	}
++
++	if (i2c->clk_arb != NULL) {
++		ret = clk_prepare_enable(i2c->clk_arb);
++		if (ret)
++			goto err_arb;
++	}
++
+ 	return 0;
+ 
++err_arb:
++	if (i2c->have_pmic)
++		clk_disable_unprepare(i2c->clk_pmic);
+ err_pmic:
+ 	clk_disable_unprepare(i2c->clk_main);
+ err_main:
+@@ -267,6 +383,9 @@ static int mtk_i2c_clock_enable(struct mtk_i2c *i2c)
+ 
+ static void mtk_i2c_clock_disable(struct mtk_i2c *i2c)
+ {
++	if (i2c->clk_arb != NULL)
++		clk_disable_unprepare(i2c->clk_arb);
++
+ 	if (i2c->have_pmic)
+ 		clk_disable_unprepare(i2c->clk_pmic);
+ 
+@@ -278,31 +397,40 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
+ {
+ 	u16 control_reg;
+ 
+-	writew(I2C_SOFT_RST, i2c->base + OFFSET_SOFTRESET);
++	mtk_i2c_writew(i2c, I2C_SOFT_RST, OFFSET_SOFTRESET);
+ 
+ 	/* Set ioconfig */
+ 	if (i2c->use_push_pull)
+-		writew(I2C_IO_CONFIG_PUSH_PULL, i2c->base + OFFSET_IO_CONFIG);
++		mtk_i2c_writew(i2c, I2C_IO_CONFIG_PUSH_PULL, OFFSET_IO_CONFIG);
+ 	else
+-		writew(I2C_IO_CONFIG_OPEN_DRAIN, i2c->base + OFFSET_IO_CONFIG);
++		mtk_i2c_writew(i2c, I2C_IO_CONFIG_OPEN_DRAIN, OFFSET_IO_CONFIG);
+ 
+ 	if (i2c->dev_comp->dcm)
+-		writew(I2C_DCM_DISABLE, i2c->base + OFFSET_DCM_EN);
++		mtk_i2c_writew(i2c, I2C_DCM_DISABLE, OFFSET_DCM_EN);
++
++	if (i2c->ch_offset)
++		writew(I2C_RESUME_ARBIT, i2c->base +
++					 i2c->dev_comp->regs[OFFSET_START]);
+ 
+ 	if (i2c->dev_comp->timing_adjust)
+-		writew(I2C_DEFAULT_CLK_DIV - 1, i2c->base + OFFSET_CLOCK_DIV);
++		mtk_i2c_writew(i2c, (I2C_DEFAULT_CLK_DIV - 1) |
++				    (I2C_DEFAULT_CLK_DIV - 1) << 8,
++				    OFFSET_CLOCK_DIV);
+ 
+-	writew(i2c->timing_reg, i2c->base + OFFSET_TIMING);
+-	writew(i2c->high_speed_reg, i2c->base + OFFSET_HS);
++	mtk_i2c_writew(i2c, i2c->timing_reg, OFFSET_TIMING);
++	mtk_i2c_writew(i2c, i2c->high_speed_reg, OFFSET_HS);
++	if (i2c->dev_comp->regs == mt_i2c_regs_v2)
++		mtk_i2c_writew(i2c, i2c->ltiming_reg, OFFSET_LTIMING);
+ 
+ 	/* If use i2c pin from PMIC mt6397 side, need set PATH_DIR first */
+ 	if (i2c->have_pmic)
+-		writew(I2C_CONTROL_WRAPPER, i2c->base + OFFSET_PATH_DIR);
++		mtk_i2c_writew(i2c, I2C_CONTROL_WRAPPER, OFFSET_PATH_DIR);
+ 
+-	control_reg = I2C_CONTROL_ACKERR_DET_EN |
+-		      I2C_CONTROL_CLK_EXT_EN | I2C_CONTROL_DMA_EN;
+-	writew(control_reg, i2c->base + OFFSET_CONTROL);
+-	writew(I2C_DELAY_LEN, i2c->base + OFFSET_DELAY_LEN);
++	control_reg = I2C_CONTROL_ACKERR_DET_EN | I2C_CONTROL_DMAACK_EN |
++		      I2C_CONTROL_CLK_EXT_EN | I2C_CONTROL_DMA_EN |
++		      I2C_CONTROL_ASYNC_MODE;
++	mtk_i2c_writew(i2c, control_reg, OFFSET_CONTROL);
++	mtk_i2c_writew(i2c, I2C_DELAY_LEN, OFFSET_DELAY_LEN);
+ 
+ 	writel(I2C_DMA_HARD_RST, i2c->pdmabase + OFFSET_RST);
+ 	udelay(50);
+@@ -390,6 +518,8 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
+ 	unsigned int clk_src;
+ 	unsigned int step_cnt;
+ 	unsigned int sample_cnt;
++	unsigned int l_step_cnt;
++	unsigned int l_sample_cnt;
+ 	unsigned int target_speed;
+ 	int ret;
+ 
+@@ -399,11 +529,11 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
+ 	if (target_speed > MAX_FS_MODE_SPEED) {
+ 		/* Set master code speed register */
+ 		ret = mtk_i2c_calculate_speed(i2c, clk_src, MAX_FS_MODE_SPEED,
+-					      &step_cnt, &sample_cnt);
++					      &l_step_cnt, &l_sample_cnt);
+ 		if (ret < 0)
+ 			return ret;
+ 
+-		i2c->timing_reg = (sample_cnt << 8) | step_cnt;
++		i2c->timing_reg = (l_sample_cnt << 8) | l_step_cnt;
+ 
+ 		/* Set the high speed mode register */
+ 		ret = mtk_i2c_calculate_speed(i2c, clk_src, target_speed,
+@@ -413,6 +543,8 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
+ 
+ 		i2c->high_speed_reg = I2C_TIME_DEFAULT_VALUE |
+ 			(sample_cnt << 12) | (step_cnt << 8);
++		i2c->ltiming_reg = (l_sample_cnt << 6) | l_step_cnt |
++				   (sample_cnt << 12) | (step_cnt << 9);
+ 	} else {
+ 		ret = mtk_i2c_calculate_speed(i2c, clk_src, target_speed,
+ 					      &step_cnt, &sample_cnt);
+@@ -423,6 +555,8 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
+ 
+ 		/* Disable the high speed transaction */
+ 		i2c->high_speed_reg = I2C_TIME_CLR_VALUE;
++
++		i2c->ltiming_reg = (sample_cnt << 6) | step_cnt;
+ 	}
+ 
+ 	return 0;
+@@ -454,7 +588,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 
+ 	reinit_completion(&i2c->msg_complete);
+ 
+-	control_reg = readw(i2c->base + OFFSET_CONTROL) &
++	control_reg = mtk_i2c_readw(i2c, OFFSET_CONTROL) &
+ 			~(I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS);
+ 	if ((i2c->speed_hz > 400000) || (left_num >= 1))
+ 		control_reg |= I2C_CONTROL_RS;
+@@ -462,40 +596,47 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 	if (i2c->op == I2C_MASTER_WRRD)
+ 		control_reg |= I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS;
+ 
+-	writew(control_reg, i2c->base + OFFSET_CONTROL);
++	mtk_i2c_writew(i2c, control_reg, OFFSET_CONTROL);
+ 
+ 	/* set start condition */
+ 	if (i2c->speed_hz <= 100000)
+-		writew(I2C_ST_START_CON, i2c->base + OFFSET_EXT_CONF);
++		mtk_i2c_writew(i2c, I2C_ST_START_CON, OFFSET_EXT_CONF);
+ 	else
+-		writew(I2C_FS_START_CON, i2c->base + OFFSET_EXT_CONF);
++		mtk_i2c_writew(i2c, I2C_FS_START_CON, OFFSET_EXT_CONF);
+ 
+ 	addr_reg = i2c_8bit_addr_from_msg(msgs);
+-	writew(addr_reg, i2c->base + OFFSET_SLAVE_ADDR);
++	mtk_i2c_writew(i2c, addr_reg, OFFSET_SLAVE_ADDR);
+ 
+ 	/* Clear interrupt status */
+-	writew(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
+-	       I2C_TRANSAC_COMP, i2c->base + OFFSET_INTR_STAT);
+-	writew(I2C_FIFO_ADDR_CLR, i2c->base + OFFSET_FIFO_ADDR_CLR);
++	mtk_i2c_writew(i2c, restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
++			    I2C_ARB_LOST | I2C_TRANSAC_COMP,
++			    OFFSET_INTR_STAT);
++
++	mtk_i2c_writew(i2c, I2C_FIFO_ADDR_CLR_MCH | I2C_FIFO_ADDR_CLR,
++			    OFFSET_FIFO_ADDR_CLR);
++
++	if ((i2c->speed_hz > 400000) && (i2c->dev_comp->regs == mt_i2c_regs_v2))
++		mtk_i2c_writew(i2c, I2C_HFIFO_DATA, OFFSET_HFIFO_DATA);
+ 
+ 	/* Enable interrupt */
+-	writew(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
+-	       I2C_TRANSAC_COMP, i2c->base + OFFSET_INTR_MASK);
++	mtk_i2c_writew(i2c, restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
++			    I2C_ARB_LOST | I2C_TRANSAC_COMP,
++			    OFFSET_INTR_MASK);
+ 
+ 	/* Set transfer and transaction len */
+ 	if (i2c->op == I2C_MASTER_WRRD) {
+ 		if (i2c->dev_comp->aux_len_reg) {
+-			writew(msgs->len, i2c->base + OFFSET_TRANSFER_LEN);
+-			writew((msgs + 1)->len, i2c->base +
+-			       OFFSET_TRANSFER_LEN_AUX);
++			mtk_i2c_writew(i2c, msgs->len, OFFSET_TRANSFER_LEN);
++			mtk_i2c_writew(i2c, (msgs + 1)->len,
++					    OFFSET_TRANSFER_LEN_AUX);
+ 		} else {
+-			writew(msgs->len | ((msgs + 1)->len) << 8,
+-			       i2c->base + OFFSET_TRANSFER_LEN);
++			mtk_i2c_writew(i2c, msgs->len | ((msgs + 1)->len) << 8,
++					    OFFSET_TRANSFER_LEN);
+ 		}
+-		writew(I2C_WRRD_TRANAC_VALUE, i2c->base + OFFSET_TRANSAC_LEN);
++		mtk_i2c_writew(i2c, I2C_WRRD_TRANAC_VALUE, OFFSET_TRANSAC_LEN);
+ 	} else {
+-		writew(msgs->len, i2c->base + OFFSET_TRANSFER_LEN);
+-		writew(num, i2c->base + OFFSET_TRANSAC_LEN);
++		mtk_i2c_writew(i2c, msgs->len, OFFSET_TRANSFER_LEN);
++		mtk_i2c_writew(i2c, num, OFFSET_TRANSAC_LEN);
+ 	}
+ 
+ 	/* Prepare buffer data to start transfer */
+@@ -607,14 +748,14 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 		if (left_num >= 1)
+ 			start_reg |= I2C_RS_MUL_CNFG;
+ 	}
+-	writew(start_reg, i2c->base + OFFSET_START);
++	mtk_i2c_writew(i2c, start_reg, OFFSET_START);
+ 
+ 	ret = wait_for_completion_timeout(&i2c->msg_complete,
+ 					  i2c->adap.timeout);
+ 
+ 	/* Clear interrupt mask */
+-	writew(~(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
+-	       I2C_TRANSAC_COMP), i2c->base + OFFSET_INTR_MASK);
++	mtk_i2c_writew(i2c, ~(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
++			    I2C_ARB_LOST | I2C_TRANSAC_COMP), OFFSET_INTR_MASK);
+ 
+ 	if (i2c->op == I2C_MASTER_WR) {
+ 		dma_unmap_single(i2c->dev, wpaddr,
+@@ -726,8 +867,8 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
+ 	if (i2c->auto_restart)
+ 		restart_flag = I2C_RS_TRANSFER;
+ 
+-	intr_stat = readw(i2c->base + OFFSET_INTR_STAT);
+-	writew(intr_stat, i2c->base + OFFSET_INTR_STAT);
++	intr_stat = mtk_i2c_readw(i2c, OFFSET_INTR_STAT);
++	mtk_i2c_writew(i2c, intr_stat, OFFSET_INTR_STAT);
+ 
+ 	/*
+ 	 * when occurs ack error, i2c controller generate two interrupts
+@@ -739,8 +880,8 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
+ 	if (i2c->ignore_restart_irq && (i2c->irq_stat & restart_flag)) {
+ 		i2c->ignore_restart_irq = false;
+ 		i2c->irq_stat = 0;
+-		writew(I2C_RS_MUL_CNFG | I2C_RS_MUL_TRIG | I2C_TRANSAC_START,
+-		       i2c->base + OFFSET_START);
++		mtk_i2c_writew(i2c, I2C_RS_MUL_CNFG | I2C_RS_MUL_TRIG |
++				    I2C_TRANSAC_START, OFFSET_START);
+ 	} else {
+ 		if (i2c->irq_stat & (I2C_TRANSAC_COMP | restart_flag))
+ 			complete(&i2c->msg_complete);
+@@ -774,6 +915,10 @@ static int mtk_i2c_parse_dt(struct device_node *np, struct mtk_i2c *i2c)
+ 	if (i2c->clk_src_div == 0)
+ 		return -EINVAL;
+ 
++	ret = of_property_read_u32(np, "ch_offset", &i2c->ch_offset);
++	if (ret < 0)
++		i2c->ch_offset = 0;
++
+ 	i2c->have_pmic = of_property_read_bool(np, "mediatek,have-pmic");
+ 	i2c->use_push_pull =
+ 		of_property_read_bool(np, "mediatek,use-push-pull");
+@@ -841,6 +986,10 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+ 		return PTR_ERR(i2c->clk_dma);
+ 	}
+ 
++	i2c->clk_arb = devm_clk_get(&pdev->dev, "arb");
++	if (IS_ERR(i2c->clk_arb))
++		i2c->clk_arb = NULL;
++
+ 	clk = i2c->clk_main;
+ 	if (i2c->have_pmic) {
+ 		i2c->clk_pmic = devm_clk_get(&pdev->dev, "pmic");
+-- 
+1.7.9.5
